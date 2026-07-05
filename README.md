@@ -17,12 +17,14 @@ All configs produce token-identical output to eager greedy decoding.
 
 Hyperparameter sweep (`scripts/sweep_lookup.py`): draft length dominates, ngram size barely matters. Under CUDA graphs a rejected draft token costs almost nothing, so longer verify blocks win even at ~15% accept rates.
 
+MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_lookup_mlx.py`): greedy 56.9 tok/s → prompt-lookup 63.1 tok/s (1.1x, num_draft=5). The same generic loop runs unchanged and stays token-identical; the gain is smaller because MLX has no per-step launch overhead for drafting to amortize, so shorter drafts win.
+
 ## What's inside
 
 | Subpackage | Implemented | Roadmap |
 |---|---|---|
 | `decoding/` | prompt-lookup, speculative (greedy + rejection sampling), backend-agnostic lookup loop | sampler pipeline (top-k/p, min-p, DRY, mirostat), constrained/FSM decoding, Medusa/tree verify, chunked prefill + continuous batching |
-| `backends/` | `DecodeBackend` protocol, torch StaticCache + CUDA graphs | MLX (Apple silicon) |
+| `backends/` | `DecodeBackend` protocol, torch StaticCache + CUDA graphs, MLX (Apple silicon) | — |
 | `cache/` | radix prefix KV tree w/ LRU | paged blocks, KV int8/int4 quant, sinks/H2O/SnapKV eviction, sliding window |
 | `quantize/` | per-layer ΔKL sensitivity (fake-quant), min-memory bit allocator, Pareto sweep | GPTQ/AWQ/HQQ, pruning, 2:4 sparsity, low-rank SVD |
 | `train/` | batched ref-logprob precompute + disk cache | LoRA family, sequence packing, DPO/IPO/KTO/ORPO/SimPO/GRPO |
@@ -38,7 +40,7 @@ Prompt-lookup decoding drafts continuations by matching n-grams against the prom
 - Pads sit at the highest positions; causal masking means no real query attends them. Pad logits are ignored.
 - After acceptance, the StaticCache write pointer rewinds to the true sequence length so the next block overwrites stale slots.
 
-The decode loop itself is framework-agnostic (`decoding/lookup_generic.py` + `backends/base.py`): only Python ints cross the backend boundary. The torch backend lives in `backends/torch_static.py`; an MLX backend needs only `begin` / `step_argmax` / `rewind`.
+The decode loop itself is framework-agnostic (`decoding/lookup_generic.py` + `backends/base.py`): only Python ints cross the backend boundary. The torch backend lives in `backends/torch_static.py`; `backends/mlx_backend.py` implements the same three methods (`begin` / `step_argmax` / `rewind`) over mlx-lm's trimmable KV cache.
 
 ## Install
 
@@ -86,6 +88,7 @@ print(cfg.avg_bits, cfg.bits_by_layer)
 pytest                                  # pure-Python parts run without GPU
 python scripts/bench_lookup_static.py   # full stacked benchmark (GPU)
 python scripts/sweep_lookup.py          # ngram/draft hyperparameter sweep (GPU)
+python scripts/sweep_lookup_mlx.py      # same sweep on MLX (Apple silicon)
 ```
 
 On Windows, `torch.compile` needs MSVC — run benchmark scripts inside a vcvars64 environment (see `scripts/bench_compile.py` docstring).
