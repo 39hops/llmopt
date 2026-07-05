@@ -23,7 +23,7 @@ MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_look
 
 | Subpackage | Implemented | Roadmap |
 |---|---|---|
-| `decoding/` | prompt-lookup, speculative (greedy + rejection sampling), backend-agnostic lookup loop, sampler pipeline (top-k/p, min-p, DRY, mirostat v2) | constrained/FSM decoding, Medusa/tree verify, chunked prefill + continuous batching |
+| `decoding/` | prompt-lookup, speculative (greedy + rejection sampling), backend-agnostic lookup loop, sampler pipeline (top-k/p, min-p, DRY, mirostat v2), regex-constrained FSM decoding | Medusa/tree verify, chunked prefill + continuous batching |
 | `backends/` | `DecodeBackend` protocol, torch StaticCache + CUDA graphs, MLX (Apple silicon) | — |
 | `cache/` | radix prefix KV tree w/ LRU | paged blocks, KV int8/int4 quant, sinks/H2O/SnapKV eviction, sliding window |
 | `quantize/` | per-layer ΔKL sensitivity (fake-quant), min-memory bit allocator, Pareto sweep | GPTQ/AWQ/HQQ, pruning, 2:4 sparsity, low-rank SVD |
