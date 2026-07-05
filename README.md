@@ -25,6 +25,8 @@ Distilled-draft speculative (`scripts/bench_distilled_draft.py`, Qwen2.5-3B targ
 
 Quantized-KV decode attention (`scripts/bench_kv_quant_decode.py`, fused int8/int4 split-K kernels, RTX 3080): roofline says 2x/4x from halved/quartered KV bytes; measured at T=262k is int8 ~1.6–2.3x and packed int4 ~1.7–2.5x (max|err| 1e-4 / 1e-3) — the int4 nibble unpack goes instruction-bound, so it never doubles int8. Below T≈64k a ~75 µs launch/merge floor swallows the bandwidth win entirely. Dequant-then-attend loses 5–10x (the extra HBM trip).
 
+RULER long-context eval (`scripts/eval_ruler.py`, chunked prefill — one-shot 20k-token SDPA prefill OOMs on 10GB): Qwen2.5-3B-Instruct scores 100% on NIAH single/multi-key and variable tracking at every length tested, through 34k tokens — *past* its claimed 32k window. Ceiling result: these are RULER's easiest task families; finding this model's cliff needs harder variants (more hops/distractors), not more length.
+
 MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_lookup_mlx.py`): greedy 56.9 tok/s → prompt-lookup 63.1 tok/s (1.1x, num_draft=5). The same generic loop runs unchanged and stays token-identical; the gain is smaller because MLX has no per-step launch overhead for drafting to amortize, so shorter drafts win.
 
 ## What's inside
