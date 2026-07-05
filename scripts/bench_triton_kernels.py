@@ -16,6 +16,7 @@ import torch
 from llmopt.kernels.triton_kernels import (
     attention_decode,
     flash_attention,
+    paged_attention,
     rmsnorm,
     swiglu,
 )
@@ -72,5 +73,33 @@ def main() -> None:
     print(f"  llmopt triton     {bench(flash_attention, q, k, v):8.1f} us")
 
 
+def bench_paged() -> None:
+    # batched decode over a paged pool: kernel reads through block tables
+    # in place; baseline must first gather blocks into contiguous KV.
+    dev, dt = "cuda", torch.float16
+    batch, t, bs = 8, 4096, 16
+    kv_heads, group, hd = 8, 4, 128
+    nb = t // bs
+    k_pool = torch.randn(batch * nb, bs, kv_heads, hd, device=dev, dtype=dt)
+    v_pool = torch.randn(batch * nb, bs, kv_heads, hd, device=dev, dtype=dt)
+    perm = torch.randperm(batch * nb, device=dev)  # scattered physical blocks
+    bt = perm.reshape(batch, nb).to(torch.int32)
+    lens = torch.full((batch,), t, dtype=torch.int32, device=dev)
+    q = torch.randn(batch, kv_heads * group, hd, device=dev, dtype=dt)
+
+    def gather_sdpa():
+        k = k_pool[bt.long()].reshape(batch, t, kv_heads, hd).transpose(1, 2)
+        v = v_pool[bt.long()].reshape(batch, t, kv_heads, hd).transpose(1, 2)
+        # GQA: the `group` queries per KV head sit on SDPA's Tq axis
+        return torch.nn.functional.scaled_dot_product_attention(
+            q.view(batch, kv_heads, group, hd), k, v,
+        )
+
+    print(f"paged attention B={batch} T={t} kv_heads={kv_heads} group={group} dim={hd} fp16:")
+    print(f"  gather + SDPA     {bench(gather_sdpa):8.1f} us")
+    print(f"  llmopt triton     {bench(paged_attention, q, k_pool, v_pool, bt, lens):8.1f} us")
+
+
 if __name__ == "__main__":
     main()
+    bench_paged()

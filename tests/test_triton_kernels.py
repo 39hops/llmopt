@@ -11,6 +11,7 @@ if not torch.cuda.is_available():
 from llmopt.kernels.triton_kernels import (
     attention_decode,
     flash_attention,
+    paged_attention,
     rmsnorm,
     rope,
     swiglu,
@@ -92,6 +93,69 @@ def test_flash_attention_noncausal():
     q, k, v = _cuda((heads, t, dim), (heads, t, dim), (heads, t, dim), seed=6)
     ref = torch.nn.functional.scaled_dot_product_attention(q, k, v)
     torch.testing.assert_close(flash_attention(q, k, v, causal=False), ref, **_FLASH_TOL)
+
+
+def _paged_setup(seq_lens, block_size=16, kv_heads=2, dim=32, seed=0):
+    """Real BlockTable/PagedTensorStore plumbing, moved to CUDA: write
+    random KV per sequence, fork+COW the last one so the kernel reads
+    genuinely shared and diverged blocks."""
+    from llmopt.cache.paged import BlockAllocator, BlockTable, PagedTensorStore
+
+    g = torch.Generator().manual_seed(seed)
+    alloc = BlockAllocator(256)
+    store = PagedTensorStore(256, block_size, kv_heads, dim)
+    tables = []
+    for t in seq_lens[:-1]:
+        table = store.bind(BlockTable(alloc, block_size))
+        for _ in range(t):
+            store.write(table, torch.randn(kv_heads, dim, generator=g),
+                        torch.randn(kv_heads, dim, generator=g))
+        tables.append(table)
+    # last sequence: fork of the first + extra tokens (exercises COW + sharing)
+    child = tables[0].fork()
+    for _ in range(seq_lens[-1] - tables[0].length):
+        store.write(child, torch.randn(kv_heads, dim, generator=g),
+                    torch.randn(kv_heads, dim, generator=g))
+    tables.append(child)
+
+    max_blocks = max(len(t.blocks) for t in tables)
+    bt = torch.zeros(len(tables), max_blocks, dtype=torch.int32, device="cuda")
+    for i, t in enumerate(tables):
+        bt[i, : len(t.blocks)] = torch.tensor(t.blocks, dtype=torch.int32)
+    lens = torch.tensor([t.length for t in tables], dtype=torch.int32, device="cuda")
+    return store, tables, bt, lens
+
+
+def test_paged_attention_matches_gather_reference():
+    kv_heads, group, dim = 2, 4, 32
+    seq_lens = [50, 17, 70]  # last = fork of first extended past it
+    store, tables, bt, lens = _paged_setup(seq_lens, kv_heads=kv_heads, dim=dim)
+    k_pool, v_pool = store.k.cuda(), store.v.cuda()
+    q = torch.randn(len(tables), kv_heads * group, dim, device="cuda")
+
+    out = paged_attention(q, k_pool, v_pool, bt, lens)
+
+    for s, table in enumerate(tables):
+        ks, vs = store.gather(table)  # [T, kv_heads, dim] contiguous truth
+        ks, vs = ks.cuda(), vs.cuda()
+        for h in range(kv_heads * group):
+            kh = h // group
+            scores = (ks[:, kh] @ q[s, h]) / dim**0.5
+            ref = torch.softmax(scores, dim=0) @ vs[:, kh]
+            # tf32 dot tolerance, same as the flash tests
+            torch.testing.assert_close(out[s, h], ref, atol=5e-3, rtol=0.0)
+
+
+def test_paged_attention_cow_divergence_isolated():
+    # after COW, parent and forked child must attend different tails
+    store, tables, bt, lens = _paged_setup([32, 17, 40], block_size=16)
+    parent, child = tables[0], tables[-1]
+    assert parent.blocks[:2] == child.blocks[:2]  # full blocks shared
+    k_pool, v_pool = store.k.cuda(), store.v.cuda()
+    q = torch.randn(1, 8, 32, device="cuda").expand(3, -1, -1).contiguous()
+
+    out = paged_attention(q, k_pool, v_pool, bt, lens)
+    assert not torch.allclose(out[0], out[2])  # different lengths/tails
 
 
 def test_flash_attention_cross_lengths_causal():
