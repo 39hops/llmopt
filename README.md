@@ -29,7 +29,7 @@ MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_look
 | `quantize/` | per-layer ΔKL sensitivity (fake-quant), min-memory bit allocator, Pareto sweep | GPTQ/AWQ/HQQ, pruning, 2:4 sparsity, low-rank SVD |
 | `train/` | batched ref-logprob precompute + disk cache | LoRA family, sequence packing, DPO/IPO/KTO/ORPO/SimPO/GRPO |
 | `eval/` | perplexity, tokens/sec bench, pass@k, bootstrap CIs, equivalence harness, roofline / MFU / arithmetic-intensity model + per-op attribution (analytic FLOPs/bytes per op, memory- vs compute-bound, torch.profiler complement) | calibration (ECE), TTFT/TPOT |
-| `context/` | — | RoPE scaling (PI/NTK/YaRN), attention sinks, RULER-style eval, LLMLingua-style prompt compression / gist tokens (shrink the prompt, cut prefill cost) |
+| `context/` | RoPE scaling (PI/NTK/YaRN, in-place HF patch), LLMLingua-style prompt compression (self-information scoring, protected spans) | RULER-style eval, gist tokens (attention sinks live in `cache/`) |
 | `internals/` | — | logit lens, attention entropy, activation stats, CKA |
 | `kernels/` | — | fused RMSNorm, fused RoPE, fused SwiGLU, readable fused/flash attention (tiled online-softmax) |
 | `moe/` | — | top-k gated MoE layer, load-balancing losses, expert offload/caching, capacity + token-drop policies |
