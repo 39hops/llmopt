@@ -35,11 +35,14 @@ Encoding (go through `tokenize=False`), `cumulative_length` fills need
 steps — every distinct length re-captures the CUDA graph (~12 s).
 
 **Mac (36GB, Apple silicon)**: MLX backend in `backends/mlx_backend.py`,
-Metal kernels in `kernels/metal.py` (v1, educational). Queued work:
-port the Triton optimization lessons to Metal — group-shared K/V reads
-for GQA, exp2-domain softmax, boundary-split masking (interior tiles
-mask-free), autotuned tiles. 36GB fits larger teachers for `distill/`
-(logit-KD + GKD ready) with 0.5B–3B students.
+Metal kernels in `kernels/metal.py`. Split-K decode (single-head +
+GQA, exp2-domain softmax) landed 2026-07-05 — ties mx.fast sdpa at
+T=32k; see docstring for honest numbers. NOTE: the old bench harness
+timed lazy graph construction (MLX skips dropped unevaluated arrays);
+mx.eval every timed iteration. Still queued: flash prefill port
+(boundary-split masking, autotuned tiles), wiring kernels into the MLX
+backend. 36GB fits larger teachers for `distill/` (logit-KD + GKD
+ready) with 0.5B–3B students.
 
 ## Active research threads
 
