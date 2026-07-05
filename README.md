@@ -33,6 +33,7 @@ MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_look
 | `internals/` | — | logit lens, attention entropy, activation stats, CKA |
 | `kernels/` | — | fused RMSNorm, fused RoPE, fused SwiGLU, readable fused/flash attention (tiled online-softmax) |
 | `moe/` | — | top-k gated MoE layer, load-balancing losses, expert offload/caching, capacity + token-drop policies |
+| `distill/` | — | logit-KD, on-policy GKD, sequence-KD, draft-model distillation (feeds speculative decoding + quantize recovery) |
 
 ## How the fast path works
 
