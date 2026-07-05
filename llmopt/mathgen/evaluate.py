@@ -28,7 +28,11 @@ def format_chat(tok, problem: Problem) -> list[int]:
 
 
 def extract_expression(text: str) -> str:
-    """First non-empty line of the completion (the format we train for)."""
+    """Final 'Answer:' line if present (traced formats), else the first
+    non-empty line (single-expression formats)."""
+    if "Answer:" in text:
+        tail = text.rsplit("Answer:", 1)[1].strip()
+        return tail.splitlines()[0].strip() if tail else ""
     for line in text.strip().splitlines():
         if line.strip():
             return line.strip()

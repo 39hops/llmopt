@@ -64,9 +64,15 @@ def make_loop(level: int, seed: int) -> CProgram:
 def make_branch(level: int, seed: int) -> CProgram:
     rng = random.Random(f"branch-{level}-{seed}")
     a, b = rng.randint(1, 30), rng.randint(1, 30)
+    cond = rng.choice(["<", ">", "<=", ">=", "==", "%"])
+    arm = lambda: rng.choice([
+        "x + y", "x * y", "x - y", "y - x", f"x * {rng.randint(2, 9)} + y",
+        f"x + y * {rng.randint(2, 9)}", "x * x + y", f"(x + y) * {rng.randint(2, 5)}",
+        f"x - {rng.randint(1, 9)} * y",
+    ])
     src = "\n".join([
         "#include <stdio.h>",
-        f"int pick(int x, int y) {{ return x {rng.choice(['<', '>', '<=', '%'])} y ? x + y : x * y; }}",
+        f"int pick(int x, int y) {{ return x {cond} y ? {arm()} : {arm()}; }}",
         "int main(void) {",
         f'    printf("%d\\n", pick({a}, {b}));',
         "    return 0;",

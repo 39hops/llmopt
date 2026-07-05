@@ -21,6 +21,9 @@ from llmopt.train.lora import apply_lora
 
 MODEL = "Qwen/Qwen2.5-0.5B-Instruct"
 N_TRAIN, N_EVAL = 9000, 300
+# limits are trained/evaled in traced form: the answer format carries the
+# factor/cancel/substitute steps, the metric still scores only the final line
+KINDS = ("differentiate", "integrate", "limit_traced")
 EPOCHS, BATCH, LR = 3, 8, 2e-4
 TARGETS = ("q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj")
 RANK = 16
@@ -66,11 +69,11 @@ def main() -> None:
         MODEL, dtype=torch.bfloat16
     ).cuda()
 
-    eval_problems = make_dataset(N_EVAL, seed=99)
+    eval_problems = make_dataset(N_EVAL, kinds=KINDS, seed=99)
     banned = frozenset(p.prompt for p in eval_problems)
     print("baseline eval (symbolic equivalence):")
     model.eval()
-    for k, v in evaluate_model(model, tok, eval_problems).items():
+    for k, v in evaluate_model(model, tok, eval_problems, max_new_tokens=160).items():
         print(f"  {k:20s} {v:6.1%}")
 
     wrapped = apply_lora(model, TARGETS, r=RANK, alpha=2 * RANK)
@@ -80,7 +83,7 @@ def main() -> None:
 
     train = [
         encode(tok, p)
-        for p in make_dataset(N_TRAIN, seed=0, exclude=banned)
+        for p in make_dataset(N_TRAIN, kinds=KINDS, seed=0, exclude=banned)
     ]
     train.sort(key=lambda e: len(e[0]))  # length-sorted batches: less padding
     opt = torch.optim.AdamW(train_params, lr=LR)
@@ -107,7 +110,7 @@ def main() -> None:
 
     print("\npost-training eval:")
     model.eval()
-    for k, v in evaluate_model(model, tok, eval_problems).items():
+    for k, v in evaluate_model(model, tok, eval_problems, max_new_tokens=160).items():
         print(f"  {k:20s} {v:6.1%}")
 
     OUT.parent.mkdir(exist_ok=True)

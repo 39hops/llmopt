@@ -54,6 +54,8 @@ class Problem:
     _expr: object = field(compare=False, repr=False)  # task-specific payload
 
     def check(self, prediction: str) -> bool:
+        if self.kind == "limit_traced" and "Answer:" in prediction:
+            prediction = prediction.rsplit("Answer:", 1)[1].strip().splitlines()[0]
         pred = parse_answer(prediction)
         if pred is None:
             return False
@@ -112,19 +114,47 @@ def make_integrate(level: int, seed: int) -> Problem:
     )
 
 
-def make_limit(level: int, seed: int) -> Problem:
+def _limit_parts(level: int, seed: int):
     rng = random.Random(f"lim-{level}-{seed}")
     a = rng.randint(-3, 3)
     q = _expression(rng, min(level, 2))
     s_ = rng.randint(1, 4) * X + rng.randint(1, 5)
     if s_.subs(X, a) == 0 or q.subs(X, a) is sp.nan:
-        return make_limit(level, seed + 1_000_003)
+        return _limit_parts(level, seed + 1_000_003)
     num = sp.expand((X - a) * q)
     den = sp.expand((X - a) * s_)
-    ans = sp.simplify(q.subs(X, a) / s_.subs(X, a))
+    ans = sp.simplify(sp.Rational(1, 1) * q.subs(X, a) / s_.subs(X, a))
+    return a, q, s_, num, den, ans
+
+
+def make_limit(level: int, seed: int) -> Problem:
+    a, q, s_, num, den, ans = _limit_parts(level, seed)
     return Problem(
         prompt=f"Evaluate the limit as x approaches {a} of ({sp.sstr(num)}) / ({sp.sstr(den)})",
         answer=sp.sstr(ans), kind="limit", level=level, _expr=ans,
+    )
+
+
+def make_limit_traced(level: int, seed: int) -> Problem:
+    """Same limits, but the target is the worked factor/cancel/substitute
+    trace ending in 'Answer: <value>' — the generator knows its own
+    construction, so correct step decompositions are free. check() scores
+    only the final answer line (the steps are scaffolding, the metric
+    stays symbolic)."""
+    a, q, s_, num, den, ans = _limit_parts(level, seed)
+    trace = "\n".join([
+        f"Step 1: factor the numerator: {sp.sstr(num)} = (x - ({a}))*({sp.sstr(q)})",
+        f"Step 2: factor the denominator: {sp.sstr(den)} = (x - ({a}))*({sp.sstr(s_)})",
+        f"Step 3: cancel the common factor (x - ({a})): "
+        f"the limit equals ({sp.sstr(q)})/({sp.sstr(s_)}) at x = {a}",
+        f"Step 4: substitute x = {a}: ({sp.sstr(q.subs(X, a))})/({sp.sstr(s_.subs(X, a))})",
+        f"Answer: {sp.sstr(ans)}",
+    ])
+    return Problem(
+        prompt=(f"Evaluate the limit as x approaches {a} of "
+                f"({sp.sstr(num)}) / ({sp.sstr(den)}). Work step by step, "
+                "then give the final line as 'Answer: <value>'."),
+        answer=trace, kind="limit_traced", level=level, _expr=ans,
     )
 
 
@@ -178,6 +208,7 @@ _MAKERS = {
     "differentiate": make_differentiate,
     "integrate": make_integrate,
     "limit": make_limit,
+    "limit_traced": make_limit_traced,
     "second_derivative": make_second_derivative,
     "definite_integral": make_definite_integral,
     "tangent_line": make_tangent_line,
