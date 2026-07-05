@@ -15,14 +15,20 @@ patterns visible in plain Metal:
   (max, sumexp, weighted-V accumulator); partials merge at the end.
   Never materializes the [T] score vector.
 
+- attention_decode_splitk: the fix for the above — split-K across the
+  device. Phase 1: one threadgroup per BLOCK_T key chunk writes float32
+  partials (m, l, acc); phase 2 merges with corr_c = exp2(m_c - M).
+  Softmax runs in the exp2 domain (log2e folded into the scale).
+
 All kernels are verified elementwise against pure-MLX references in
 tests; benchmark with scripts/bench_metal_kernels.py. Measured (M3 Pro,
-4096x4096): rmsnorm 1.7x over unfused ops (Apple's mx.fast.rms_norm is
-another 2.3x — hand-tuned simdgroup reductions); swiglu 1.6x.
-attention_decode *loses* to naive softmax@V: a single 32-thread
-threadgroup demonstrates the online-softmax algorithm but can't match a
-GEMV that saturates the GPU — parallelizing across the whole device is
-where flash implementations earn their complexity.
+36GB; earlier numbers here were wrong — the old bench harness timed
+lazy graph construction, not the GPU): rmsnorm (4096x4096) 3.0x over
+unfused and on par with mx.fast.rms_norm; swiglu 2.2x. attention decode
+dim=128: v1 (32-thread) loses to naive softmax@V everywhere, 10x at
+T=32768. split-K (block_t=256) loses to naive at T=2048 (250 vs 197 us,
+launch overhead), wins from T~8192, and at T=32768 is 1.8x over naive
+and ties mx.fast.scaled_dot_product_attention (440 vs 443 us).
 """
 
 from __future__ import annotations
@@ -322,7 +328,7 @@ def attention_decode(q: mx.array, k: mx.array, v: mx.array) -> mx.array:
 
 
 def attention_decode_splitk(
-    q: mx.array, k: mx.array, v: mx.array, block_t: int = 512
+    q: mx.array, k: mx.array, v: mx.array, block_t: int = 256
 ) -> mx.array:
     """Single-query attention, split-K: q [dim], k/v [T, dim] -> [dim].
 

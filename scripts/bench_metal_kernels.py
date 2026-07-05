@@ -13,16 +13,23 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import mlx.core as mx
 
-from llmopt.kernels.metal import attention_decode, rmsnorm, swiglu
+from llmopt.kernels.metal import (
+    attention_decode,
+    attention_decode_splitk,
+    rmsnorm,
+    swiglu,
+)
 
 
 def bench(fn, *args, repeats=200):
+    # mx.eval every iteration: MLX is lazy and silently skips computing
+    # arrays that are dropped unevaluated — timing without it measures
+    # python graph construction, not the GPU (a real bug this file had).
     for _ in range(20):
         mx.eval(fn(*args))
     t0 = time.perf_counter()
     for _ in range(repeats):
-        out = fn(*args)
-    mx.eval(out)
+        mx.eval(fn(*args))
     return (time.perf_counter() - t0) / repeats * 1e6  # us
 
 
@@ -42,12 +49,20 @@ def main() -> None:
     print(f"  unfused mlx ops   {bench(unfused_swiglu):8.1f} us")
     print(f"  llmopt metal      {bench(swiglu, g, u):8.1f} us")
 
-    t, hd = 8192, 128
-    q, k, v = (mx.random.normal(s) for s in ((hd,), (t, hd), (t, hd)))
-    naive = lambda: mx.softmax((k @ q) / hd**0.5) @ v
-    print(f"attention decode T={t} dim={hd}:")
-    print(f"  naive softmax     {bench(naive):8.1f} us")
-    print(f"  llmopt metal      {bench(attention_decode, q, k, v):8.1f} us")
+    for t in (2048, 8192, 32768):
+        hd = 128
+        q, k, v = (mx.random.normal(s) for s in ((hd,), (t, hd), (t, hd)))
+        naive = lambda: mx.softmax((k @ q) / hd**0.5) @ v
+        sdpa = lambda: mx.fast.scaled_dot_product_attention(
+            q[None, None, None, :], k[None, None], v[None, None], scale=1.0 / hd**0.5
+        )[0, 0, 0]
+        print(f"attention decode T={t} dim={hd}:")
+        print(f"  naive softmax     {bench(naive):8.1f} us")
+        print(f"  mx.fast sdpa      {bench(sdpa):8.1f} us")
+        print(f"  llmopt v1 (32thr) {bench(attention_decode, q, k, v):8.1f} us")
+        for bt in (256, 512, 1024):
+            us = bench(lambda: attention_decode_splitk(q, k, v, block_t=bt))
+            print(f"  llmopt split-K bt={bt:<5d}{us:6.1f} us")
 
 
 if __name__ == "__main__":
