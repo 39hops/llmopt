@@ -19,12 +19,25 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from llmopt.decoding.datastore import SuffixDatastore
 from llmopt.decoding.stacked import StackedEngine
 from scripts.bench_prefix_reuse import DOCUMENT, QUESTIONS
 from scripts.bench_static import greedy_static
 
 MODEL = "Qwen/Qwen2.5-3B-Instruct"
 N_NEW = 100
+
+
+def diagnose_divergence(model, ref, out):
+    """At the first mismatch, measure the eager logit margin between the
+    two candidate tokens: |margin| ~ 0 means an fp16 near-tie (the two
+    paths round a coin-flip differently), large means a real bug."""
+    i = next(j for j, (a, b) in enumerate(zip(ref, out)) if a != b)
+    with torch.inference_mode():
+        logits = model(
+            input_ids=torch.tensor([ref[:i]], device="cuda")
+        ).logits[0, -1].float()
+    return i, float(logits[ref[i]] - logits[out[i]])
 
 
 def timed(fn):
@@ -46,19 +59,28 @@ def main() -> None:
     # max_len re-specializes the compiled step), excluded from timings
     engine = StackedEngine(model, compiled_step=compiled)
     engine.generate(prompts[0], max_new_tokens=N_NEW)
-    engine = StackedEngine(model, compiled_step=compiled)  # fresh radix
+    # fresh radix + REST datastore (drafts from previous generations)
+    engine = StackedEngine(
+        model, compiled_step=compiled, datastore=SuffixDatastore()
+    )
 
-    print(f"{'request':<10} {'eager greedy':>13} {'stack cold/warm':>16} {'speedup':>8}")
-    for i, p in enumerate(prompts):
-        ref, t_eager = timed(lambda: greedy_static(model, p, N_NEW))
-        (out, stats), t_stack = timed(
-            lambda: engine.generate(p, max_new_tokens=N_NEW)
-        )
-        tag = "cold" if stats["prefix_hit_tokens"] == 0 else "warm"
-        eq = "OK" if out == ref else "DIVERGED"
-        print(f"request {i} {t_eager * 1e3:11.0f}ms {t_stack * 1e3:9.0f}ms {tag} "
-              f"{t_eager / t_stack:7.1f}x  equiv={eq} "
-              f"(hit={stats['prefix_hit_tokens']}, passes={stats['forward_passes']})")
+    print(f"{'request':<14} {'eager greedy':>12} {'stack':>9} {'speedup':>8}")
+    for rnd in range(2):
+        for i, p in enumerate(prompts):
+            ref, t_eager = timed(lambda: greedy_static(model, p, N_NEW))
+            (out, stats), t_stack = timed(
+                lambda: engine.generate(p, max_new_tokens=N_NEW)
+            )
+            tag = "cold" if stats["prefix_hit_tokens"] == 0 else "warm"
+            if out == ref:
+                eq = "OK"
+            else:
+                pos, margin = diagnose_divergence(model, ref, out)
+                eq = f"DIVERGED@{pos} margin={margin:+.4f}"
+            print(f"r{rnd} request {i} {t_eager * 1e3:10.0f}ms {t_stack * 1e3:7.0f}ms "
+                  f"{t_eager / t_stack:7.1f}x  {tag} equiv={eq} "
+                  f"(hit={stats['prefix_hit_tokens']}, passes={stats['forward_passes']}, "
+                  f"accept={stats['accepted']}/{stats['drafted']})")
 
 
 if __name__ == "__main__":

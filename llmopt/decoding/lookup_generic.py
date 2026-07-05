@@ -23,8 +23,13 @@ def generate_lookup(
     max_ngram: int = 3,
     pad_token_id: int = 0,
     eos_token_id: int | None = None,
+    draft_fn=None,
 ):
     """Greedy prompt-lookup decoding over any DecodeBackend.
+
+    ``draft_fn(tokens, num_draft) -> list[int]`` overrides the draft
+    source (e.g. a retrieval datastore, see decoding/datastore.py);
+    default is n-gram lookup within the context itself.
 
     Returns (tokens, stats).
     """
@@ -42,9 +47,12 @@ def generate_lookup(
     produced = 1
 
     while produced < max_new_tokens:
-        draft = find_ngram_continuation(
-            tokens, max_ngram=max_ngram, num_draft=num_draft
-        )[:num_draft]
+        if draft_fn is not None:
+            draft = draft_fn(tokens, num_draft)[:num_draft]
+        else:
+            draft = find_ngram_continuation(
+                tokens, max_ngram=max_ngram, num_draft=num_draft
+            )[:num_draft]
         stats["drafted"] += len(draft)
         n_real = 1 + len(draft)  # last accepted token + draft
         fed = [tokens[-1]] + draft + [pad_token_id] * (block - n_real)
