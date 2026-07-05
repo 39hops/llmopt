@@ -25,7 +25,7 @@ MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_look
 |---|---|---|
 | `decoding/` | prompt-lookup, speculative (greedy + rejection sampling), backend-agnostic lookup loop, sampler pipeline (top-k/p, min-p, DRY, mirostat v2), regex-constrained FSM decoding, tree verify (multi-candidate lookup drafts, tree attention), Medusa heads (Medusa-1 training + tree-verified decode), chunked prefill + continuous batching engine, self-speculative / LayerSkip (early-exit draft, full-model verify), sampler-aware speculative verify (exact filtered-target distribution), EAGLE-2 (feature-level draft head, confidence-ranked dynamic trees), lookahead (Jacobi fixed-point), quality decoders (verify by target score: top-k / logprob margin), scheduler (priority admission, preemption w/ recompute-on-resume, prefill/decode disaggregation) | — |
 | `backends/` | `DecodeBackend` protocol, torch StaticCache + CUDA graphs, MLX (Apple silicon) | — |
-| `cache/` | radix prefix KV tree w/ LRU + mid-edge splitting, prefix reuse wired into the batching engine (prefill skips cached prefixes, token-identical output), paged blocks (ref-counted allocator, block tables, fork + copy-on-write), KV int8/int4 quant (quantized paged store), eviction policies (sliding window, attention sinks, H2O, SnapKV) | — |
+| `cache/` | radix prefix KV tree w/ LRU + mid-edge splitting, prefix reuse wired into the batching engine (prefill skips cached prefixes, token-identical output; Qwen2.5-3B, ~3.4k-token shared prefix: 13.8x faster TTFT on warm requests — `scripts/bench_prefix_reuse.py`), paged blocks (ref-counted allocator, block tables, fork + copy-on-write), KV int8/int4 quant (quantized paged store), eviction policies (sliding window, attention sinks, H2O, SnapKV) | — |
 | `quantize/` | per-layer ΔKL sensitivity (fake-quant), min-memory bit allocator, Pareto sweep, GPTQ (Hessian error compensation), AWQ (activation-aware scale search), HQQ (lp-robust zero-point, calibration-free), magnitude + 2:4 pruning, low-rank SVD | — |
 | `train/` | batched ref-logprob precompute + disk cache, LoRA + DoRA (wrap/freeze/merge), sequence packing (FFD bins, block-diag masks, position reset), preference losses (DPO/IPO/KTO/ORPO/SimPO/GRPO) | — |
 | `eval/` | perplexity, tokens/sec bench, pass@k, bootstrap CIs, equivalence harness, roofline / MFU / arithmetic-intensity model + per-op attribution (analytic FLOPs/bytes per op, memory- vs compute-bound, torch.profiler complement), calibration (ECE), TTFT/TPOT split | — |
@@ -93,6 +93,7 @@ python scripts/bench_lookup_static.py   # full stacked benchmark (GPU)
 python scripts/sweep_lookup.py          # ngram/draft hyperparameter sweep (GPU)
 python scripts/sweep_lookup_mlx.py      # same sweep on MLX (Apple silicon)
 python scripts/bench_triton_kernels.py  # Triton kernels vs torch (CUDA)
+python scripts/bench_prefix_reuse.py    # radix prefix reuse TTFT (GPU)
 python scripts/bench_metal_kernels.py   # Metal kernels vs MLX (Apple silicon)
 ```
 
