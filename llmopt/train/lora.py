@@ -22,8 +22,11 @@ class LoRALinear(nn.Module):
         self.base = base
         for p in self.base.parameters():
             p.requires_grad_(False)
-        self.a = nn.Parameter(torch.randn(r, base.in_features) / r**0.5)
-        self.b = nn.Parameter(torch.zeros(base.out_features, r))
+        dev, dt = base.weight.device, base.weight.dtype
+        self.a = nn.Parameter(
+            torch.randn(r, base.in_features, device=dev, dtype=dt) / r**0.5
+        )
+        self.b = nn.Parameter(torch.zeros(base.out_features, r, device=dev, dtype=dt))
         self.scaling = alpha / r
 
     def forward(self, x):
@@ -51,8 +54,11 @@ class DoRALinear(nn.Module):
         self.base = base
         for p in self.base.parameters():
             p.requires_grad_(False)
-        self.a = nn.Parameter(torch.randn(r, base.in_features) / r**0.5)
-        self.b = nn.Parameter(torch.zeros(base.out_features, r))
+        dev, dt = base.weight.device, base.weight.dtype
+        self.a = nn.Parameter(
+            torch.randn(r, base.in_features, device=dev, dtype=dt) / r**0.5
+        )
+        self.b = nn.Parameter(torch.zeros(base.out_features, r, device=dev, dtype=dt))
         self.scaling = alpha / r
         self.magnitude = nn.Parameter(base.weight.norm(dim=1).clone())
 
