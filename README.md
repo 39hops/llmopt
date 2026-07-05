@@ -1,18 +1,44 @@
 # llmopt
 
-Inference + training optimization library.
+LLM inference + training optimization lab. Small, readable implementations of the tricks that make local inference fast — each benchmarked and verified greedy-equivalent against the eager baseline.
+
+## Highlights
+
+Qwen2.5-3B-Instruct fp16, single prompt, greedy, 150 new tokens (`scripts/bench_lookup_static.py`):
+
+| Config | tok/s | Speedup |
+|---|---|---|
+| static KV cache, eager | 23.3 | 1.0x |
+| + CUDA graphs (`torch.compile` reduce-overhead) | 71.2 | 3.1x |
+| + prompt-lookup w/ fixed-shape verify blocks | 150.1 | 6.4x |
+| + longer draft (num_draft=16, max_ngram=4) | 156.7 | 6.7x |
+
+All configs produce token-identical output to eager greedy decoding.
+
+Hyperparameter sweep (`scripts/sweep_lookup.py`): draft length dominates, ngram size barely matters. Under CUDA graphs a rejected draft token costs almost nothing, so longer verify blocks win even at ~15% accept rates.
+
+## What's inside
 
 | Subpackage | Implemented | Roadmap |
 |---|---|---|
-| `decoding/` | prompt-lookup, speculative (greedy + rejection sampling) | sampler pipeline (top-k/p, min-p, DRY, mirostat), constrained/FSM decoding, beam/best-of-N/self-consistency, Medusa/tree verify, chunked prefill + continuous batching |
+| `decoding/` | prompt-lookup, speculative (greedy + rejection sampling), backend-agnostic lookup loop | sampler pipeline (top-k/p, min-p, DRY, mirostat), constrained/FSM decoding, Medusa/tree verify, chunked prefill + continuous batching |
+| `backends/` | `DecodeBackend` protocol, torch StaticCache + CUDA graphs | MLX (Apple silicon) |
 | `cache/` | radix prefix KV tree w/ LRU | paged blocks, KV int8/int4 quant, sinks/H2O/SnapKV eviction, sliding window |
 | `quantize/` | per-layer ΔKL sensitivity (fake-quant), min-memory bit allocator, Pareto sweep | GPTQ/AWQ/HQQ, pruning, 2:4 sparsity, low-rank SVD |
-| `train/` | batched ref-logprob precompute + disk cache | LoRA family, sequence packing, DPO/IPO/KTO/ORPO/SimPO/GRPO, optimizers/schedules |
-| `eval/` | perplexity, tokens/sec bench | pass@k, calibration (ECE), bootstrap CIs, numerical-equivalence harness, TTFT/TPOT |
+| `train/` | batched ref-logprob precompute + disk cache | LoRA family, sequence packing, DPO/IPO/KTO/ORPO/SimPO/GRPO |
+| `eval/` | perplexity, tokens/sec bench, pass@k, bootstrap CIs, equivalence harness | calibration (ECE), TTFT/TPOT |
 | `context/` | — | RoPE scaling (PI/NTK/YaRN), attention sinks, RULER-style eval |
 | `internals/` | — | logit lens, attention entropy, activation stats, CKA |
 
-Ref logprobs stored as top-k + tail mass (full-vocab for 164×1k×150k would be ~100 GB).
+## How the fast path works
+
+Prompt-lookup decoding drafts continuations by matching n-grams against the prompt (no draft model needed), then verifies the whole draft in one forward pass. Making that CUDA-graph compatible requires fixed shapes:
+
+- Every decode step feeds exactly `num_draft + 1` tokens: `[last_token, draft..., pads]`. One shape → one captured CUDA graph, replayed every step.
+- Pads sit at the highest positions; causal masking means no real query attends them. Pad logits are ignored.
+- After acceptance, the StaticCache write pointer rewinds to the true sequence length so the next block overwrites stale slots.
+
+The decode loop itself is framework-agnostic (`decoding/lookup_generic.py` + `backends/base.py`): only Python ints cross the backend boundary. The torch backend lives in `backends/torch_static.py`; an MLX backend needs only `begin` / `step_argmax` / `rewind`.
 
 ## Install
 
@@ -31,46 +57,46 @@ import torch
 tok = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-0.5B")
 model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2.5-0.5B", torch_dtype=torch.float16).cuda()
 
-# prompt-lookup decoding
-from llmopt.decoding.prompt_lookup import generate_with_prompt_lookup
-ids = tok("Summarize: ...", return_tensors="pt").input_ids
-tokens, stats = generate_with_prompt_lookup(model, ids, max_new_tokens=128)
+# fast path: lookup decoding over the backend protocol
+from llmopt.backends.torch_static import TorchStaticBackend
+from llmopt.decoding.lookup_generic import generate_lookup
+
+ids = tok("Summarize: ...").input_ids
+compiled = torch.compile(model, mode="reduce-overhead", fullgraph=True)
+backend = TorchStaticBackend(model, compiled_step=compiled)
+tokens, stats = generate_lookup(backend, ids, max_new_tokens=128, num_draft=16)
 print(stats)  # forward_passes << 128 on input-grounded tasks
 
-# ref logprobs (e.g. HumanEval's 164 prompts) cached to disk
-from llmopt.train.ref_logprobs import precompute_ref_logprobs
+# quantization: sensitivity -> bit allocator -> Pareto
+from llmopt.quantize.sensitivity import measure_sensitivity
+from llmopt.quantize.allocator import allocate_bits
+
 seqs = [tok(p).input_ids for p in prompts]
+from llmopt.train.ref_logprobs import precompute_ref_logprobs
 refs = precompute_ref_logprobs(model, seqs, model_name="qwen2.5-0.5b",
                                cache_dir=".refcache", batch_size=8)
-
-# sensitivity -> allocator -> Pareto
-from llmopt.quantize.sensitivity import measure_sensitivity
-from llmopt.quantize.allocator import allocate_bits, pareto_front
 sens = measure_sensitivity(model, seqs, refs, bit_widths=(2, 4))
 cfg = allocate_bits(sens, kl_budget=0.05)
 print(cfg.avg_bits, cfg.bits_by_layer)
 ```
 
-## Benchmarks
-
-Qwen2.5-0.5B fp16, single prompt, greedy, RTX GPU (`scripts/bench_lookup_static.py`):
-
-| Config | tok/s | Speedup |
-|---|---|---|
-| static cache, eager | 23.3 | 1.0x |
-| vanilla decode + CUDA graphs | 71.2 | 3.1x |
-| prompt-lookup + CUDA graphs (fixed [1,11] verify blocks) | 141.3 | 6.1x |
-
-Lookup run: 64 forward passes, 86/382 draft tokens accepted. All configs greedy-equivalent to eager baseline.
-
-## Tests
+## Benchmarks & tests
 
 ```bash
-pytest  # pure-Python parts (lookup, radix, allocator) run without GPU
+pytest                                  # pure-Python parts run without GPU
+python scripts/bench_lookup_static.py   # full stacked benchmark (GPU)
+python scripts/sweep_lookup.py          # ngram/draft hyperparameter sweep (GPU)
 ```
+
+On Windows, `torch.compile` needs MSVC — run benchmark scripts inside a vcvars64 environment (see `scripts/bench_compile.py` docstring).
 
 ## Design notes
 
-- Speculative/lookup loops recompute KV each step: correct and simple; KV reuse is the radix module's job, integration is a later phase.
+- Ref logprobs stored as top-k + tail mass (full-vocab for 164×1k×150k would be ~100 GB).
+- transformers 5.x StaticCache appends at an internal `cumulative_length` counter; rewinding resets that tensor in-place (`fill_`), CUDA-graph-safe because HF marks it as a static address.
 - Allocator assumes ΔKL additivity across layers — approximate; always re-measure the final mixed config end-to-end.
 - Fake-quant measures quality only. Real memory savings need bitpacked kernels (HQQ/GPTQ) at deploy time.
+
+## License
+
+MIT
