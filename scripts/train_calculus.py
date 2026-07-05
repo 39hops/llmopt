@@ -64,10 +64,11 @@ def batches(examples, pad_id, batch_size, device, epoch=0):
 
 
 def main() -> None:
+    device = "cuda" if torch.cuda.is_available() else "mps"
     tok = AutoTokenizer.from_pretrained(MODEL)
     model = AutoModelForCausalLM.from_pretrained(
         MODEL, dtype=torch.bfloat16
-    ).cuda()
+    ).to(device)
 
     eval_problems = make_dataset(N_EVAL, kinds=KINDS, seed=99)
     banned = frozenset(p.prompt for p in eval_problems)

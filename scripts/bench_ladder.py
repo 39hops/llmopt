@@ -92,7 +92,8 @@ def main() -> None:
                       for r, ts in train_tasks.items()))
 
     tok = AutoTokenizer.from_pretrained(MODEL)
-    model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16).cuda()
+    device = "cuda" if torch.cuda.is_available() else "mps"
+    model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16).to(device)
     model.eval()
 
     print("\ncold eval:")
