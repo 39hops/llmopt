@@ -107,6 +107,16 @@ class BatchEngine:
             return [[l.keys, l.values] for l in past.layers]
         return [list(kv) for kv in past]
 
+    def _to_cache(self):
+        """Rebuild a DynamicCache from self.kv (transformers 5.x dropped
+        from_legacy_cache; update() per layer works on every version)."""
+        from transformers import DynamicCache
+
+        cache = DynamicCache()
+        for i, (k, v) in enumerate(self.kv):
+            cache.update(k, v, i)
+        return cache
+
     def _join(self, req: Request) -> None:
         """Left-pad the newcomer's KV (or the batch) to equal T and stack."""
         import torch
@@ -163,7 +173,6 @@ class BatchEngine:
 
     def _decode(self) -> None:
         import torch
-        from transformers import DynamicCache
 
         self.stats["batch_occupancy"].append(len(self.running))
         last = [r.generated[-1] for r in self.running]
@@ -179,9 +188,7 @@ class BatchEngine:
         with torch.inference_mode():
             out = self.model(
                 input_ids=torch.tensor(last, device=self.device)[:, None],
-                past_key_values=DynamicCache.from_legacy_cache(
-                    tuple(tuple(kv) for kv in self.kv)
-                ),
+                past_key_values=self._to_cache(),
                 attention_mask=mask, position_ids=pos,
                 cache_position=torch.arange(t, t + 1, device=self.device),
                 use_cache=True,
