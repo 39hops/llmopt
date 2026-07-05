@@ -52,10 +52,13 @@ def generate_with_prompt_lookup(
     """
     import torch
 
+    from llmopt.decoding.kv import crop, to_legacy, valid_len
+
     device = next(model.parameters()).device
     tokens = input_ids[0].tolist() if hasattr(input_ids, "tolist") else list(input_ids)
-    stats = {"drafted": 0, "accepted": 0, "forward_passes": 0}
+    stats = {"drafted": 0, "accepted": 0, "forward_passes": 0, "prompt_len": len(tokens)}
     produced = 0
+    past = None  # legacy KV tuple covering tokens[:valid_len(past)]
 
     with torch.inference_mode():
         while produced < max_new_tokens:
@@ -65,13 +68,18 @@ def generate_with_prompt_lookup(
             draft = draft[: max_new_tokens - produced - 1]
             stats["drafted"] += len(draft)
 
-            # one forward over context + draft verifies all draft tokens
-            ids = torch.tensor([tokens + draft], device=device)
-            logits = model(input_ids=ids).logits[0]
+            # one forward over uncached tokens + draft verifies all drafts
+            cached = valid_len(past)
+            fed = tokens[cached:] + draft
+            ids = torch.tensor([fed], device=device)
+            out = model(input_ids=ids, past_key_values=past, use_cache=True)
             stats["forward_passes"] += 1
-            preds = logits.argmax(-1).tolist()  # preds[t] = greedy next after pos t
+            past = to_legacy(out.past_key_values)
+            preds = out.logits[0].argmax(-1).tolist()  # next-token per fed position
 
-            base = len(tokens) - 1
+            # fed position i sits at absolute position cached + i;
+            # prediction after tokens[-1] is at fed index len(tokens)-1-cached
+            base = len(tokens) - 1 - cached
             accepted = 0
             for j, d in enumerate(draft):
                 if preds[base + j] == d:
@@ -83,6 +91,9 @@ def generate_with_prompt_lookup(
             new = draft[:accepted] + [preds[base + accepted]]
             tokens.extend(new)
             produced += len(new)
+            # drop rejected draft positions from the cache; the bonus token
+            # was never fed, so cache covers len(tokens) - 1 positions
+            past = crop(past, len(tokens) - 1)
             if eos_token_id is not None and eos_token_id in new:
                 idx = tokens.index(eos_token_id, len(tokens) - len(new))
                 tokens = tokens[: idx + 1]
