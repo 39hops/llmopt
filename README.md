@@ -25,7 +25,7 @@ MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_look
 |---|---|---|
 | `decoding/` | prompt-lookup, speculative (greedy + rejection sampling), backend-agnostic lookup loop, sampler pipeline (top-k/p, min-p, DRY, mirostat v2), regex-constrained FSM decoding, tree verify (multi-candidate lookup drafts, tree attention), Medusa heads (Medusa-1 training + tree-verified decode), chunked prefill + continuous batching engine, self-speculative / LayerSkip (early-exit draft, full-model verify) | sampler-aware speculative verify (filtered sampling + rejection scheme), EAGLE-2 (feature-level drafting, dynamic draft trees), lookahead (Jacobi) decoding, quality decoders (verify by eval score, not bit-exact), readable scheduler (request queue, preemption, priority, prefill/decode disaggregation) |
 | `backends/` | `DecodeBackend` protocol, torch StaticCache + CUDA graphs, MLX (Apple silicon) | — |
-| `cache/` | radix prefix KV tree w/ LRU | paged blocks, KV int8/int4 quant, sinks/H2O/SnapKV eviction, sliding window |
+| `cache/` | radix prefix KV tree w/ LRU, paged blocks (ref-counted allocator, block tables, fork + copy-on-write) | KV int8/int4 quant, sinks/H2O/SnapKV eviction, sliding window |
 | `quantize/` | per-layer ΔKL sensitivity (fake-quant), min-memory bit allocator, Pareto sweep | GPTQ/AWQ/HQQ, pruning, 2:4 sparsity, low-rank SVD |
 | `train/` | batched ref-logprob precompute + disk cache | LoRA family, sequence packing, DPO/IPO/KTO/ORPO/SimPO/GRPO |
 | `eval/` | perplexity, tokens/sec bench, pass@k, bootstrap CIs, equivalence harness | calibration (ECE), TTFT/TPOT, roofline / MFU / arithmetic-intensity model + per-op time attribution (memory-bound vs compute-bound) |
