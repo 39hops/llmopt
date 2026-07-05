@@ -36,16 +36,26 @@ class Request:
 class BatchEngine:
     """Greedy continuous-batching engine. Call ``run`` or step manually."""
 
-    def __init__(self, model, *, max_batch: int = 4, chunk_size: int = 16):
+    def __init__(
+        self, model, *, max_batch: int = 4, chunk_size: int = 16,
+        prefix_cache=None,
+    ):
+        """``prefix_cache``: a cache.radix.RadixCache (built with
+        cache.prefix_reuse.split_payload) enables cross-request prompt
+        prefix reuse — prefill skips the longest cached prefix."""
         self.model = model
         self.max_batch = max_batch
         self.chunk_size = chunk_size
+        self.prefix_cache = prefix_cache
         self.device = next(model.parameters()).device
         self.waiting: list[Request] = []
         self.running: list[Request] = []
         self.kv = None  # list[(k, v)] per layer, [B, H, T, D]
         self.mask = None  # [B, T] 0/1
-        self.stats = {"steps": 0, "decode_tokens": 0, "batch_occupancy": []}
+        self.stats = {
+            "steps": 0, "decode_tokens": 0, "batch_occupancy": [],
+            "prefill_tokens": 0, "prefix_hit_tokens": 0,
+        }
 
     def submit(
         self, prompt, max_new_tokens: int, eos_token_id=None, priority: int = 0
@@ -79,7 +89,10 @@ class BatchEngine:
     def _prefill_chunk(self, req: Request) -> None:
         import torch
 
+        if req.cache is None and req.prefilled == 0 and self.prefix_cache is not None:
+            self._reuse_prefix(req)
         chunk = req.prompt[req.prefilled : req.prefilled + self.chunk_size]
+        self.stats["prefill_tokens"] += len(chunk)
         pos = torch.arange(
             req.prefilled, req.prefilled + len(chunk), device=self.device
         )
@@ -92,10 +105,35 @@ class BatchEngine:
         req.cache = out.past_key_values
         req.prefilled += len(chunk)
         if req.prefilled == len(req.prompt):
+            if self.prefix_cache is not None:
+                self._store_prefix(req)
             req.generated.append(int(out.logits[0, -1].argmax()))
             self.waiting.remove(req)
             self._join(req)
             self._check_done(req)
+
+    def _reuse_prefix(self, req: Request) -> None:
+        """Skip prefill of the longest radix-cached prefix. Cap at
+        len(prompt) - 1: the final prompt token must run through the model
+        to produce first-token logits."""
+        from llmopt.cache.prefix_reuse import payloads_to_cache
+
+        matched, payloads = self.prefix_cache.match(req.prompt)
+        matched = min(matched, len(req.prompt) - 1)
+        if matched:
+            req.cache = payloads_to_cache(payloads, upto=matched)
+            req.prefilled = matched
+            self.stats["prefix_hit_tokens"] += matched
+
+    def _store_prefix(self, req: Request) -> None:
+        """Insert this prompt's KV into the radix tree (uncached suffix
+        only; the tree slices what it needs)."""
+        from llmopt.cache.prefix_reuse import slice_payload
+
+        legacy = self._legacy(req.cache)
+        self.prefix_cache.insert(
+            req.prompt, lambda s, e: slice_payload(legacy, s, e)
+        )
 
     # --- batched cache plumbing --------------------------------------------
 

@@ -36,10 +36,15 @@ class RadixCache:
     evict(n_tokens) -> frees at least n_tokens of cached tokens, LRU first.
     """
 
-    def __init__(self, max_tokens: int = 1_000_000):
+    def __init__(self, max_tokens: int = 1_000_000, split_payload=None):
+        """``split_payload(payload, n) -> (head, tail)`` enables edge
+        splitting: a prompt diverging mid-edge reuses the common head
+        (SGLang behavior). Without it, partial edges are treated as a
+        miss and diverging prompts branch at the last full node."""
         self.root = _Node()
         self.max_tokens = max_tokens
         self.cached_tokens = 0
+        self.split_payload = split_payload
 
     def match(self, tokens: Sequence[int]) -> tuple[int, list[Any]]:
         node = self.root
@@ -53,14 +58,31 @@ class RadixCache:
                 break
             n_common = _common_len(child.edge, tokens[pos:])
             if n_common < len(child.edge):
-                # partial edge match: usable only if caller can slice payloads;
-                # keep it simple -- treat as no match past this point
-                break
+                if self.split_payload is None:
+                    # partial edge unusable without payload slicing
+                    break
+                child = self._split(child, n_common)
             payloads.append(child.payload)
             child.last_access = now
             node = child
-            pos += n_common
+            pos += len(child.edge)
         return pos, payloads
+
+    def _split(self, child: _Node, n: int) -> _Node:
+        """Split child's edge at n: new middle node owns edge[:n] (and the
+        head payload); child keeps edge[n:]. Returns the middle node."""
+        head, tail = self.split_payload(child.payload, n)
+        mid = _Node(
+            edge=child.edge[:n], payload=head, parent=child.parent,
+            last_access=child.last_access,
+        )
+        assert child.parent is not None
+        child.parent.children[mid.edge[0]] = mid
+        child.edge = child.edge[n:]
+        child.payload = tail
+        child.parent = mid
+        mid.children[child.edge[0]] = child
+        return mid
 
     def insert(self, tokens: Sequence[int], payload_fn) -> int:
         """Cache the uncached suffix of tokens. Returns tokens newly cached."""
