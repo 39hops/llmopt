@@ -178,6 +178,6 @@ def train_medusa_heads(
             opt.zero_grad()
             loss.backward()
             opt.step()
-            total, count = total + float(loss), count + 1
+            total, count = total + float(loss.detach()), count + 1
         losses.append(total / max(count, 1))
     return losses
