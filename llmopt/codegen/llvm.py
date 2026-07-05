@@ -1,28 +1,47 @@
-"""LLVM toolchain oracle: clang / llvm-mc / objdump (MSYS mingw64).
+"""LLVM toolchain oracle: clang / llvm-mc / objdump.
 
 Faster sibling of oracle.py (no vcvars shell), plus the two tools MSVC
 lacks: llvm-mc gives per-instruction byte encodings both directions, so
 a model's *predicted* assembly can be scored by assembling it — the
 toolchain judges semantics, not string distance.
+
+Tool discovery: MSYS mingw64 on Windows, homebrew LLVM + Xcode tools on
+macOS. The problem domain stays x86-64 everywhere — on arm64 Macs clang
+cross-compiles with --target=x86_64-apple-macosx and Rosetta runs the
+executables transparently.
 """
 
 from __future__ import annotations
 
+import platform
 import re
 import subprocess
+import sys
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
-_TOOL_DIRS = [r"C:\msys64\mingw64\bin", r"C:\msys64\ucrt64\bin", ""]
+_WIN = sys.platform == "win32"
+_TOOL_DIRS = (
+    [r"C:\msys64\mingw64\bin", r"C:\msys64\ucrt64\bin", ""]
+    if _WIN
+    else ["/opt/homebrew/opt/llvm/bin", ""]
+)
+# keep the task domain x86-64 when the host is not
+_X86_FLAGS = (
+    [] if platform.machine().lower() in ("amd64", "x86_64")
+    else [f"--target=x86_64-{'apple-macosx' if sys.platform == 'darwin' else 'linux-gnu'}"]
+)
 
 
 def _tool(name: str) -> str | None:
+    exe = f"{name}.exe" if _WIN else name
     for d in _TOOL_DIRS:
-        p = Path(d, f"{name}.exe") if d else None
-        if p and p.exists():
-            return str(p)
-        if not d:
+        if d:
+            p = Path(d, exe)
+            if p.exists():
+                return str(p)
+        else:
             from shutil import which
             return which(name)
     return None
@@ -71,7 +90,7 @@ def compile_c(
     with tempfile.TemporaryDirectory() as td:
         src = Path(td, "p.c")
         src.write_text(source)
-        rs = _run([clang, "-S", "-masm=intel", opt,
+        rs = _run([clang, *_X86_FLAGS, "-S", "-masm=intel", opt,
                    "-o", str(Path(td, "p.s")), str(src)])
         diags = [f"{lvl}: {msg}" for lvl, msg in _DIAG_RE.findall(rs.stderr)]
         ok = rs.returncode == 0
@@ -80,7 +99,7 @@ def compile_c(
         encodings: list[tuple[str, str]] = []
         stdout = None
         if ok:
-            _run([clang, "-c", opt, "-o", str(Path(td, "p.o")), str(src)])
+            _run([clang, *_X86_FLAGS, "-c", opt, "-o", str(Path(td, "p.o")), str(src)])
             d_raw = _run([_tool("objdump"), "-d", "-M", "intel",
                           str(Path(td, "p.o"))])
             encodings = [
@@ -88,7 +107,7 @@ def compile_c(
                 if not m.startswith(("nop", "int3", "lea    0x0"))
             ]
             if run:
-                _run([clang, opt, "-o", str(Path(td, "p.exe")), str(src)])
+                _run([clang, *_X86_FLAGS, opt, "-o", str(Path(td, "p.exe")), str(src)])
                 p = _run([str(Path(td, "p.exe"))], input_text=stdin, timeout=10)
                 stdout = p.stdout
         return ClangResult(ok, diags, asm, stdout, encodings)
@@ -116,8 +135,10 @@ def compile_cpp(source: str, *, run: bool = False) -> ClangResult:
     with tempfile.TemporaryDirectory() as td:
         src = Path(td, "p.cpp")
         src.write_text(source)
-        # -static: the exe must run without mingw's DLLs on PATH
-        r = _run([clangpp, "-O0", "-static", "-o", str(Path(td, "p.exe")), str(src)])
+        # -static (Windows only): the exe must run without mingw's DLLs
+        static = ["-static"] if _WIN else []
+        r = _run([clangpp, *_X86_FLAGS, "-O0", *static,
+                  "-o", str(Path(td, "p.exe")), str(src)])
         diags = [f"{lvl}: {msg}" for lvl, msg in _DIAG_RE.findall(r.stderr)]
         ok = r.returncode == 0
         stdout = None
@@ -134,15 +155,19 @@ def mangle(signature_src: str, fn_name: str) -> str | None:
     with tempfile.TemporaryDirectory() as td:
         src = Path(td, "m.cpp")
         src.write_text(signature_src)
-        r = _run([clangpp, "-c", "-o", str(Path(td, "m.o")), str(src)])
+        r = _run([clangpp, *_X86_FLAGS, "-c", "-o", str(Path(td, "m.o")), str(src)])
         if r.returncode != 0:
             return None
         nm = _run([_tool("llvm-nm"), str(Path(td, "m.o"))])
         for line in nm.stdout.splitlines():
             parts = line.split()
-            if (len(parts) == 3 and parts[2].startswith("_Z")
-                    and f"{len(fn_name)}{fn_name}" in parts[2]):
-                return parts[2]
+            if len(parts) != 3:
+                continue
+            # Mach-O prepends a leading underscore to every symbol;
+            # normalize to the canonical Itanium "_Z..." form.
+            sym = parts[2][1:] if parts[2].startswith("__Z") else parts[2]
+            if sym.startswith("_Z") and f"{len(fn_name)}{fn_name}" in sym:
+                return sym
     return None
 
 
