@@ -31,6 +31,17 @@ launch overhead), wins from T~8192, and at T=32768 is 1.8x over naive
 and ties mx.fast.scaled_dot_product_attention (440 vs 443 us).
 attention_decode_gqa (H=32, KVH=8) beats a per-head naive loop ~3x at
 every T (T=32768: 2322 vs 6910 us).
+
+Negative result worth keeping: restructuring the GQA kernel for
+group-shared K/V reads (grid (chunks, KVH), one threadgroup computing
+all GROUP query heads per K row read — the Triton/CUDA lesson) was
+consistently ~10% SLOWER here, even with per-head reductions done by
+parallel thread sections. Apple silicon's shared last-level cache
+already dedupes the duplicate K reads across query heads within a
+group, so the "saved" DRAM traffic was never being paid; the grouped
+kernel just loses grid parallelism (KVH vs H threadgroups) and adds
+register pressure. CUDA lessons about redundant global reads don't
+transfer 1:1 to the M-series memory hierarchy.
 """
 
 from __future__ import annotations
