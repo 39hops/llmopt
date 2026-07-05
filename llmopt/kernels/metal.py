@@ -29,6 +29,8 @@ dim=128: v1 (32-thread) loses to naive softmax@V everywhere, 10x at
 T=32768. split-K (block_t=256) loses to naive at T=2048 (250 vs 197 us,
 launch overhead), wins from T~8192, and at T=32768 is 1.8x over naive
 and ties mx.fast.scaled_dot_product_attention (440 vs 443 us).
+attention_decode_gqa (H=32, KVH=8) beats a per-head naive loop ~3x at
+every T (T=32768: 2322 vs 6910 us).
 """
 
 from __future__ import annotations
@@ -251,6 +253,110 @@ _ATTN_MERGE_SRC = """
 """
 
 
+_GQA_PARTIAL_SRC = """
+    // split-K + GQA: grid (chunks, q_heads). q head h reads kv head
+    // h / (H / KVH); K/V layout [T, KVH, DIM].
+    constexpr uint TG = 256;
+    uint chunk = threadgroup_position_in_grid.x;
+    uint h = threadgroup_position_in_grid.y;
+    uint tid = thread_position_in_threadgroup.x;
+    uint t0 = chunk * (uint)BLOCK_T;
+    uint kvh = h / ((uint)H / (uint)KVH);
+    uint krow = (uint)KVH * (uint)DIM;          // stride of one timestep
+    const device T* qh = q + h * (uint)DIM;
+
+    threadgroup float sc[(uint)BLOCK_T];
+    threadgroup float red[TG];
+    float local_max = -INFINITY;
+    for (uint j = tid; j < (uint)BLOCK_T; j += TG) {
+        float s = -INFINITY;
+        uint t = t0 + j;
+        if (t < (uint)TLEN) {
+            s = 0.0f;
+            const device T* kt = k + t * krow + kvh * (uint)DIM;
+            for (uint d = 0; d < (uint)DIM; d++)
+                s += (float)qh[d] * (float)kt[d];
+            s *= scale2[0];
+        }
+        sc[j] = s;
+        local_max = metal::max(local_max, s);
+    }
+    red[tid] = local_max;
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+    for (uint r = TG / 2; r > 0; r >>= 1) {
+        if (tid < r) red[tid] = metal::max(red[tid], red[tid + r]);
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+    }
+    float m = red[0];
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+
+    float local_sum = 0.0f;
+    for (uint j = tid; j < (uint)BLOCK_T; j += TG) {
+        float p = (sc[j] == -INFINITY) ? 0.0f : metal::exp2(sc[j] - m);
+        sc[j] = p;
+        local_sum += p;
+    }
+    red[tid] = local_sum;
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+    for (uint r = TG / 2; r > 0; r >>= 1) {
+        if (tid < r) red[tid] += red[tid + r];
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+    }
+
+    uint pidx = h * (uint)C + chunk;            // partials laid out [H, C]
+    if (tid == 0) { m_out[pidx] = m; l_out[pidx] = red[0]; }
+
+    uint chunk_len = metal::min((uint)BLOCK_T, (uint)TLEN - t0);
+    for (uint d = tid; d < (uint)DIM; d += TG) {
+        float a = 0.0f;
+        for (uint j = 0; j < chunk_len; j++)
+            a += sc[j] * (float)v[(t0 + j) * krow + kvh * (uint)DIM + d];
+        acc_out[pidx * (uint)DIM + d] = a;
+    }
+"""
+
+_GQA_MERGE_SRC = """
+    // grid (1, q_heads): merge C partials per head; layout [H, C].
+    constexpr uint TG = 256;
+    uint h = threadgroup_position_in_grid.y;
+    uint tid = thread_position_in_threadgroup.x;
+    uint base = h * (uint)C;
+
+    threadgroup float red[TG];
+    float local_max = -INFINITY;
+    for (uint c = tid; c < (uint)C; c += TG)
+        local_max = metal::max(local_max, m_in[base + c]);
+    red[tid] = local_max;
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+    for (uint r = TG / 2; r > 0; r >>= 1) {
+        if (tid < r) red[tid] = metal::max(red[tid], red[tid + r]);
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+    }
+    float M = red[0];
+
+    threadgroup float corr[(uint)C];
+    float local_l = 0.0f;
+    for (uint c = tid; c < (uint)C; c += TG) {
+        corr[c] = metal::exp2(m_in[base + c] - M);
+        local_l += corr[c] * l_in[base + c];
+    }
+    red[tid] = local_l;
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+    for (uint r = TG / 2; r > 0; r >>= 1) {
+        if (tid < r) red[tid] += red[tid + r];
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+    }
+    float L = red[0];
+
+    for (uint d = tid; d < (uint)DIM; d += TG) {
+        float a = 0.0f;
+        for (uint c = 0; c < (uint)C; c++)
+            a += corr[c] * acc_in[(base + c) * (uint)DIM + d];
+        out[h * (uint)DIM + d] = (T)(a / L);
+    }
+"""
+
+
 def _kernel(name, src, inputs):
     return mx.fast.metal_kernel(
         name=name, input_names=inputs, output_names=["out"], source=src
@@ -269,6 +375,15 @@ _attn_partial = mx.fast.metal_kernel(
 )
 _attn_merge = _kernel(
     "llmopt_attn_decode_merge", _ATTN_MERGE_SRC, ["m_in", "l_in", "acc_in"]
+)
+_gqa_partial = mx.fast.metal_kernel(
+    name="llmopt_attn_gqa_partial",
+    input_names=["q", "k", "v", "scale2"],
+    output_names=["m_out", "l_out", "acc_out"],
+    source=_GQA_PARTIAL_SRC,
+)
+_gqa_merge = _kernel(
+    "llmopt_attn_gqa_merge", _GQA_MERGE_SRC, ["m_in", "l_in", "acc_in"]
 )
 
 
@@ -353,6 +468,41 @@ def attention_decode_splitk(
         grid=(_TG, 1, 1),
         threadgroup=(_TG, 1, 1),
         output_shapes=[(dim,)],
+        output_dtypes=[q.dtype],
+    )
+    return out
+
+
+def attention_decode_gqa(
+    q: mx.array, k: mx.array, v: mx.array, block_t: int = 256
+) -> mx.array:
+    """GQA decode attention: q [H, dim], k/v [T, KVH, dim] -> [H, dim].
+
+    Same split-K structure as attention_decode_splitk with a 2D grid
+    (key chunks x query heads); query head h attends to kv head
+    h // (H // KVH).
+    """
+    h, dim = q.shape
+    t, kvh, _ = k.shape
+    assert h % kvh == 0, f"q heads {h} not a multiple of kv heads {kvh}"
+    nchunks = (t + block_t - 1) // block_t
+    scale2 = mx.array([_LOG2E / dim**0.5], dtype=mx.float32)
+    tmpl = [("T", q.dtype), ("DIM", dim), ("TLEN", t), ("BLOCK_T", block_t),
+            ("H", h), ("KVH", kvh), ("C", nchunks)]
+    m, l, acc = _gqa_partial(
+        inputs=[q, k, v, scale2],
+        template=tmpl,
+        grid=(nchunks * _TG, h, 1),
+        threadgroup=(_TG, 1, 1),
+        output_shapes=[(h, nchunks), (h, nchunks), (h, nchunks, dim)],
+        output_dtypes=[mx.float32, mx.float32, mx.float32],
+    )
+    (out,) = _gqa_merge(
+        inputs=[m, l, acc],
+        template=[("T", q.dtype), ("DIM", dim), ("C", nchunks), ("H", h)],
+        grid=(_TG, h, 1),
+        threadgroup=(_TG, 1, 1),
+        output_shapes=[(h, dim)],
         output_dtypes=[q.dtype],
     )
     return out

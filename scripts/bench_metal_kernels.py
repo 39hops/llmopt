@@ -15,6 +15,7 @@ import mlx.core as mx
 
 from llmopt.kernels.metal import (
     attention_decode,
+    attention_decode_gqa,
     attention_decode_splitk,
     rmsnorm,
     swiglu,
@@ -63,6 +64,18 @@ def main() -> None:
         for bt in (256, 512, 1024):
             us = bench(lambda: attention_decode_splitk(q, k, v, block_t=bt))
             print(f"  llmopt split-K bt={bt:<5d}{us:6.1f} us")
+
+        hq, hkv = 32, 8
+        qg = mx.random.normal((hq, hd))
+        kg = mx.random.normal((t, hkv, hd))
+        vg = mx.random.normal((t, hkv, hd))
+        per_head = lambda: mx.stack([
+            mx.softmax((kg[:, i // (hq // hkv)] @ qg[i]) / hd**0.5)
+            @ vg[:, i // (hq // hkv)] for i in range(hq)
+        ])
+        print(f"  gqa H={hq}/KVH={hkv}:")
+        print(f"    per-head naive  {bench(per_head):8.1f} us")
+        print(f"    llmopt gqa      {bench(attention_decode_gqa, qg, kg, vg):8.1f} us")
 
 
 if __name__ == "__main__":

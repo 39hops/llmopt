@@ -6,6 +6,7 @@ mx = pytest.importorskip("mlx.core")
 
 from llmopt.kernels.metal import (
     attention_decode,
+    attention_decode_gqa,
     attention_decode_splitk,
     rmsnorm,
     rope,
@@ -116,3 +117,35 @@ def test_splitk_extreme_scores_stable():
     out = attention_decode_splitk(q, k, v)
     assert mx.isfinite(out).all()
     assert mx.allclose(out, v[0], atol=1e-3)
+
+
+def _gqa_ref(q, k, v):
+    h, dim = q.shape
+    kvh = k.shape[1]
+    group = h // kvh
+    outs = []
+    for i in range(h):
+        ki, vi = k[:, i // group, :], v[:, i // group, :]
+        outs.append(mx.softmax((ki @ q[i]) / dim**0.5) @ vi)
+    return mx.stack(outs)
+
+
+@pytest.mark.parametrize("h,kvh", [(8, 8), (8, 2), (4, 1)])
+def test_gqa_matches_reference(h, kvh):
+    mx.random.seed(6)
+    t, dim = 1500, 64
+    q = mx.random.normal((h, dim))
+    k = mx.random.normal((t, kvh, dim))
+    v = mx.random.normal((t, kvh, dim))
+    assert mx.allclose(attention_decode_gqa(q, k, v), _gqa_ref(q, k, v), atol=1e-4)
+
+
+def test_gqa_single_head_matches_splitk():
+    mx.random.seed(7)
+    t, dim = 700, 32
+    q = mx.random.normal((dim,))
+    k = mx.random.normal((t, dim))
+    v = mx.random.normal((t, dim))
+    a = attention_decode_gqa(q[None], k[:, None], v[:, None])[0]
+    b = attention_decode_splitk(q, k, v)
+    assert mx.allclose(a, b, atol=1e-5)
