@@ -32,7 +32,7 @@ MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_look
 | `context/` | RoPE scaling (PI/NTK/YaRN, in-place HF patch), LLMLingua-style prompt compression (self-information scoring, protected spans) | RULER-style eval, gist tokens (attention sinks live in `cache/`) |
 | `internals/` | logit lens (per-layer KL to final), attention entropy + mean attended distance, activation stats (rms/kurtosis/outliers), linear CKA layer-similarity | — |
 | `kernels/` | — | fused RMSNorm, fused RoPE, fused SwiGLU, readable fused/flash attention (tiled online-softmax) |
-| `moe/` | — | top-k gated MoE layer, load-balancing losses, expert offload/caching, capacity + token-drop policies |
+| `moe/` | top-k gated MoE (SwiGLU experts), Switch load-balance + router z-loss, capacity/token-drop, LRU expert offload cache | — |
 | `distill/` | logit-KD (temperature-scaled forward KL) + draft-model distillation (accept-rate lift verified end-to-end), sequence-KD, on-policy GKD (generalized JSD) | — |
 
 ## How the fast path works
