@@ -17,6 +17,8 @@ All configs produce token-identical output to eager greedy decoding.
 
 Hyperparameter sweep (`scripts/sweep_lookup.py`): draft length dominates, ngram size barely matters. Under CUDA graphs a rejected draft token costs almost nothing, so longer verify blocks win even at ~15% accept rates.
 
+The full stack composed (`scripts/bench_stacked.py`, `decoding/stacked.py`): radix prefix reuse + prompt-lookup + CUDA graphs in one engine. Same Qwen2.5-3B, ~3.4k-token shared document + 4 questions, 100 new tokens each: 2.2x over eager greedy cold, 2.0–2.5x warm (prefill collapses to the question suffix), every request token-identical to eager greedy.
+
 MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_lookup_mlx.py`): greedy 56.9 tok/s → prompt-lookup 63.1 tok/s (1.1x, num_draft=5). The same generic loop runs unchanged and stays token-identical; the gain is smaller because MLX has no per-step launch overhead for drafting to amortize, so shorter drafts win.
 
 ## What's inside
@@ -94,6 +96,7 @@ python scripts/sweep_lookup.py          # ngram/draft hyperparameter sweep (GPU)
 python scripts/sweep_lookup_mlx.py      # same sweep on MLX (Apple silicon)
 python scripts/bench_triton_kernels.py  # Triton kernels vs torch (CUDA)
 python scripts/bench_prefix_reuse.py    # radix prefix reuse TTFT (GPU)
+python scripts/bench_stacked.py         # full stack: radix + lookup + graphs (GPU)
 python scripts/bench_metal_kernels.py   # Metal kernels vs MLX (Apple silicon)
 ```
 
