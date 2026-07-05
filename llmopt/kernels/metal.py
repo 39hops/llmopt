@@ -134,6 +134,117 @@ _ATTN_DECODE_SRC = """
 """
 
 
+_LOG2E = 1.4426950408889634  # softmax via exp2: exp(x) == exp2(x * log2(e))
+
+_ATTN_PARTIAL_SRC = """
+    // split-K phase 1: one threadgroup per BLOCK_T-key chunk.
+    // online softmax in exp2 domain; writes float32 partials
+    // (m, l, acc[DIM]) for the merge kernel. Mirrors the Triton
+    // _attn_decode_kernel in kernels/triton_kernels.py.
+    constexpr uint TG = 256;
+    uint chunk = threadgroup_position_in_grid.x;
+    uint tid = thread_position_in_threadgroup.x;
+    uint t0 = chunk * (uint)BLOCK_T;
+
+    // scores for this chunk into shared memory (thread tid takes
+    // keys t0+tid, t0+tid+TG, ...), tracking a per-thread max.
+    threadgroup float sc[(uint)BLOCK_T];
+    threadgroup float red[TG];
+    float local_max = -INFINITY;
+    for (uint j = tid; j < (uint)BLOCK_T; j += TG) {
+        float s = -INFINITY;
+        uint t = t0 + j;
+        if (t < (uint)TLEN) {
+            s = 0.0f;
+            for (uint d = 0; d < (uint)DIM; d++)
+                s += (float)q[d] * (float)k[t * (uint)DIM + d];
+            s *= scale2[0];
+        }
+        sc[j] = s;
+        local_max = metal::max(local_max, s);
+    }
+    red[tid] = local_max;
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+    for (uint r = TG / 2; r > 0; r >>= 1) {
+        if (tid < r) red[tid] = metal::max(red[tid], red[tid + r]);
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+    }
+    float m = red[0];
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+
+    // p = exp2(score - m) in place; l = sum(p) by tree reduction.
+    // padding keys carry score -inf; skip them explicitly so an
+    // all-padding tail can't produce exp2(-inf - -inf) = NaN.
+    float local_sum = 0.0f;
+    for (uint j = tid; j < (uint)BLOCK_T; j += TG) {
+        float p = (sc[j] == -INFINITY) ? 0.0f : metal::exp2(sc[j] - m);
+        sc[j] = p;
+        local_sum += p;
+    }
+    red[tid] = local_sum;
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+    for (uint r = TG / 2; r > 0; r >>= 1) {
+        if (tid < r) red[tid] += red[tid + r];
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+    }
+
+    if (tid == 0) { m_out[chunk] = m; l_out[chunk] = red[0]; }
+
+    // acc[d] = sum_j p[j] * V[t0+j][d]; threads stride over d so each
+    // V element is read exactly once by exactly one thread.
+    uint chunk_len = metal::min((uint)BLOCK_T, (uint)TLEN - t0);
+    for (uint d = tid; d < (uint)DIM; d += TG) {
+        float a = 0.0f;
+        for (uint j = 0; j < chunk_len; j++)
+            a += sc[j] * (float)v[(t0 + j) * (uint)DIM + d];
+        acc_out[chunk * (uint)DIM + d] = a;
+    }
+"""
+
+_ATTN_MERGE_SRC = """
+    // split-K phase 2: one threadgroup merges C partials.
+    constexpr uint TG = 256;
+    uint tid = thread_position_in_threadgroup.x;
+
+    threadgroup float red[TG];
+    float local_max = -INFINITY;
+    for (uint c = tid; c < (uint)C; c += TG)
+        local_max = metal::max(local_max, m_in[c]);
+    red[tid] = local_max;
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+    for (uint r = TG / 2; r > 0; r >>= 1) {
+        if (tid < r) red[tid] = metal::max(red[tid], red[tid + r]);
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+    }
+    float M = red[0];
+
+    // corr_c = exp2(m_c - M) rescales chunk c's partials to the global
+    // max. Precompute once into shared memory (parallel over c) instead
+    // of re-evaluating exp2 inside the per-d loop below.
+    threadgroup float corr[(uint)C];
+    float local_l = 0.0f;
+    for (uint c = tid; c < (uint)C; c += TG) {
+        corr[c] = metal::exp2(m_in[c] - M);
+        local_l += corr[c] * l_in[c];
+    }
+    red[tid] = local_l;                 // L = sum_c corr_c * l_c
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+    for (uint r = TG / 2; r > 0; r >>= 1) {
+        if (tid < r) red[tid] += red[tid + r];
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+    }
+    float L = red[0];
+
+    // one axis per stride: threads own output dims, chunks are serial.
+    for (uint d = tid; d < (uint)DIM; d += TG) {
+        float a = 0.0f;
+        for (uint c = 0; c < (uint)C; c++)
+            a += corr[c] * acc_in[c * (uint)DIM + d];
+        out[d] = (T)(a / L);
+    }
+"""
+
+
 def _kernel(name, src, inputs):
     return mx.fast.metal_kernel(
         name=name, input_names=inputs, output_names=["out"], source=src
@@ -144,6 +255,15 @@ _rmsnorm = _kernel("llmopt_rmsnorm", _RMSNORM_SRC, ["x", "w", "eps"])
 _swiglu = _kernel("llmopt_swiglu", _SWIGLU_SRC, ["gate", "up"])
 _rope = _kernel("llmopt_rope", _ROPE_SRC, ["x", "pos", "base"])
 _attn = _kernel("llmopt_attn_decode", _ATTN_DECODE_SRC, ["q", "k", "v", "scale"])
+_attn_partial = mx.fast.metal_kernel(
+    name="llmopt_attn_decode_partial",
+    input_names=["q", "k", "v", "scale2"],
+    output_names=["m_out", "l_out", "acc_out"],
+    source=_ATTN_PARTIAL_SRC,
+)
+_attn_merge = _kernel(
+    "llmopt_attn_decode_merge", _ATTN_MERGE_SRC, ["m_in", "l_in", "acc_in"]
+)
 
 
 def rmsnorm(x: mx.array, w: mx.array, eps: float = 1e-6) -> mx.array:
@@ -195,6 +315,37 @@ def attention_decode(q: mx.array, k: mx.array, v: mx.array) -> mx.array:
         template=[("T", q.dtype), ("DIM", dim), ("TLEN", t)],
         grid=(32, 1, 1),
         threadgroup=(32, 1, 1),
+        output_shapes=[(dim,)],
+        output_dtypes=[q.dtype],
+    )
+    return out
+
+
+def attention_decode_splitk(
+    q: mx.array, k: mx.array, v: mx.array, block_t: int = 512
+) -> mx.array:
+    """Single-query attention, split-K: q [dim], k/v [T, dim] -> [dim].
+
+    Phase 1 gives each threadgroup a BLOCK_T chunk of keys (parallel
+    across the device); phase 2 merges the per-chunk (m, l, acc)
+    partials. Partials are float32 regardless of input dtype.
+    """
+    t, dim = k.shape
+    nchunks = (t + block_t - 1) // block_t
+    scale2 = mx.array([_LOG2E / dim**0.5], dtype=mx.float32)
+    m, l, acc = _attn_partial(
+        inputs=[q, k, v, scale2],
+        template=[("T", q.dtype), ("DIM", dim), ("TLEN", t), ("BLOCK_T", block_t)],
+        grid=(nchunks * _TG, 1, 1),
+        threadgroup=(_TG, 1, 1),
+        output_shapes=[(nchunks,), (nchunks,), (nchunks, dim)],
+        output_dtypes=[mx.float32, mx.float32, mx.float32],
+    )
+    (out,) = _attn_merge(
+        inputs=[m, l, acc],
+        template=[("T", q.dtype), ("DIM", dim), ("C", nchunks)],
+        grid=(_TG, 1, 1),
+        threadgroup=(_TG, 1, 1),
         output_shapes=[(dim,)],
         output_dtypes=[q.dtype],
     )

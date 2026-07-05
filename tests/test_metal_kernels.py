@@ -4,7 +4,13 @@ import pytest
 
 mx = pytest.importorskip("mlx.core")
 
-from llmopt.kernels.metal import attention_decode, rmsnorm, rope, swiglu
+from llmopt.kernels.metal import (
+    attention_decode,
+    attention_decode_splitk,
+    rmsnorm,
+    rope,
+    swiglu,
+)
 
 
 def _rmsnorm_ref(x, w, eps=1e-6):
@@ -65,3 +71,48 @@ def test_attention_decode_extreme_scores_stable():
     out = attention_decode(q, k, v)
     assert mx.isfinite(out).all()
     assert mx.allclose(out, v[0], atol=1e-3)  # winner takes all
+
+
+def _decode_ref(q, k, v):
+    return mx.softmax((k @ q) / q.shape[0] ** 0.5) @ v
+
+
+def test_splitk_matches_softmax():
+    mx.random.seed(3)
+    t, dim = 3000, 64  # several chunks + a ragged final chunk
+    q = mx.random.normal((dim,))
+    k = mx.random.normal((t, dim))
+    v = mx.random.normal((t, dim))
+    assert mx.allclose(attention_decode_splitk(q, k, v), _decode_ref(q, k, v), atol=1e-4)
+
+
+@pytest.mark.parametrize("t", [1, 7, 512, 513])
+def test_splitk_boundary_lengths(t):
+    mx.random.seed(4)
+    dim = 32
+    q = mx.random.normal((dim,))
+    k = mx.random.normal((t, dim))
+    v = mx.random.normal((t, dim))
+    assert mx.allclose(attention_decode_splitk(q, k, v), _decode_ref(q, k, v), atol=1e-4)
+
+
+def test_splitk_fp16():
+    mx.random.seed(5)
+    t, dim = 2000, 128
+    q = mx.random.normal((dim,)).astype(mx.float16)
+    k = mx.random.normal((t, dim)).astype(mx.float16)
+    v = mx.random.normal((t, dim)).astype(mx.float16)
+    ref = _decode_ref(q.astype(mx.float32), k.astype(mx.float32), v.astype(mx.float32))
+    out = attention_decode_splitk(q, k, v)
+    assert out.dtype == mx.float16
+    assert mx.allclose(out.astype(mx.float32), ref, atol=2e-3)
+
+
+def test_splitk_extreme_scores_stable():
+    dim = 32
+    q = mx.ones((dim,)) * 6.0
+    k = mx.concatenate([mx.ones((1, dim)) * 10, -mx.ones((1100, dim)) * 10])
+    v = mx.random.normal((1101, dim))
+    out = attention_decode_splitk(q, k, v)
+    assert mx.isfinite(out).all()
+    assert mx.allclose(out, v[0], atol=1e-3)
