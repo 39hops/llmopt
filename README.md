@@ -51,6 +51,18 @@ cfg = allocate_bits(sens, kl_budget=0.05)
 print(cfg.avg_bits, cfg.bits_by_layer)
 ```
 
+## Benchmarks
+
+Qwen2.5-0.5B fp16, single prompt, greedy, RTX GPU (`scripts/bench_lookup_static.py`):
+
+| Config | tok/s | Speedup |
+|---|---|---|
+| static cache, eager | 23.3 | 1.0x |
+| vanilla decode + CUDA graphs | 71.2 | 3.1x |
+| prompt-lookup + CUDA graphs (fixed [1,11] verify blocks) | 141.3 | 6.1x |
+
+Lookup run: 64 forward passes for 382 accepted draft tokens (86 draft hits). All configs greedy-equivalent to eager baseline.
+
 ## Tests
 
 ```bash
