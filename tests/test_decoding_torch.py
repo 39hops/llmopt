@@ -88,6 +88,18 @@ def test_speculative_greedy_matches_vanilla_greedy(tiny_model, tiny_draft):
     assert stats["target_passes"] <= MAX_NEW
 
 
+def test_lookup_static_matches_vanilla_greedy(tiny_model):
+    from llmopt.decoding.lookup_static import generate_lookup_static
+
+    ref = vanilla_greedy(tiny_model, PROMPT, MAX_NEW)
+    out, stats = generate_lookup_static(
+        tiny_model, PROMPT, max_new_tokens=MAX_NEW, num_draft=6
+    )
+    r = assert_tokens_equal(ref, out)
+    assert r, r.detail
+    assert stats["forward_passes"] <= MAX_NEW
+
+
 def test_speculative_sampling_runs_and_lengths_ok(tiny_model, tiny_draft):
     out, stats = generate_speculative(
         tiny_model,
