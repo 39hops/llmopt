@@ -19,6 +19,12 @@ Hyperparameter sweep (`scripts/sweep_lookup.py`): draft length dominates, ngram 
 
 The full stack composed (`scripts/bench_stacked.py`, `decoding/stacked.py`): radix prefix reuse + REST-style datastore drafting + prompt-lookup + CUDA graphs in one engine. Same Qwen2.5-3B, ~3.4k-token shared document + 4 questions, 100 new tokens each. First round: 1.9–2.4x over eager greedy (prefill collapses to the question suffix). Second round, with the datastore drafting from round-1 generations: **8–17x** — forward passes drop from ~80 to 7–19 as accept rates hit 81–100%. Two of eight requests flip an fp16 near-tie (eager logit margin ≤ 0.016); the rest are token-identical to eager greedy.
 
+Tree verify vs linear lookup (`scripts/bench_tree_verify.py`, same model/prompt, eager): vanilla 23.7 tok/s → linear prompt-lookup 57.3 (2.4x) → tree verify 49.8–50.0 (2.1x) at 2/4/8 candidates. Honest negative: extra candidates add tree nodes faster than acceptances (accept rate 24% → 11% as width grows), so multi-candidate verify loses to the single best candidate on this workload. The one linear-lookup "divergence" is an fp16 near-tie (eager margin 0.0156 ≤ 0.02); tree verify is token-identical at every width.
+
+Distilled-draft speculative (`scripts/bench_distilled_draft.py`, Qwen2.5-3B target + Qwen2.5-0.5B draft, eager): logit-KD LoRA (r=16, fp32 KD — fp16 Adam NaN'd, loss 0.49→0.20) on the target's own generations lifts accept rate 49.8% → 52.4% and tok/s 19.2 → 19.6. Honest negative: both lose to plain greedy (23.5 tok/s) — an eager 0.5B draft costs too much per token relative to a 3B target on one GPU; the win requires a cheaper draft (CUDA-graphed steps or a much smaller head).
+
+Quantized-KV decode attention (`scripts/bench_kv_quant_decode.py`, fused int8/int4 split-K kernels, RTX 3080): roofline says 2x/4x from halved/quartered KV bytes; measured at T=262k is int8 ~1.6–2.3x and packed int4 ~1.7–2.5x (max|err| 1e-4 / 1e-3) — the int4 nibble unpack goes instruction-bound, so it never doubles int8. Below T≈64k a ~75 µs launch/merge floor swallows the bandwidth win entirely. Dequant-then-attend loses 5–10x (the extra HBM trip).
+
 MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_lookup_mlx.py`): greedy 56.9 tok/s → prompt-lookup 63.1 tok/s (1.1x, num_draft=5). The same generic loop runs unchanged and stays token-identical; the gain is smaller because MLX has no per-step launch overhead for drafting to amortize, so shorter drafts win.
 
 ## What's inside
@@ -99,6 +105,10 @@ python scripts/sweep_lookup_mlx.py      # same sweep on MLX (Apple silicon)
 python scripts/bench_triton_kernels.py  # Triton kernels vs torch (CUDA)
 python scripts/bench_prefix_reuse.py    # radix prefix reuse TTFT (GPU)
 python scripts/bench_stacked.py         # full stack: radix + lookup + graphs (GPU)
+python scripts/bench_tree_verify.py     # tree verify vs linear lookup (GPU)
+python scripts/bench_distilled_draft.py # draft KD -> speculative accept rate (GPU)
+python scripts/bench_kv_quant_decode.py # int8/int4 fused KV decode kernels (CUDA)
+python scripts/eval_ruler.py            # RULER long-context eval (GPU)
 python scripts/bench_metal_kernels.py   # Metal kernels vs MLX (Apple silicon)
 ```
 

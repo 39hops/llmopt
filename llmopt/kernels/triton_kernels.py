@@ -39,7 +39,10 @@ tests; benchmark with scripts/bench_triton_kernels.py. Measured (RTX 3080,
 torch.nn.RMSNorm; swiglu 2.7x over unfused; attention_decode 1.1x over
 naive softmax@V at T=8192 (the split-K + fused merge is what it takes to
 beat a cuBLAS GEMV pipeline); flash_attention 1.4x over torch's fused SDPA
-(heads=32, T=2048, dim=128, causal).
+(heads=32, T=2048, dim=128, causal); attention_decode_quant int8 ~1.6-2.3x
+and packed int4 ~1.7-2.5x over fp16 KV at T=262k (int4 unpack is
+instruction-bound, so it never reaches the roofline 4x; below T~64k a
+~75 us launch/merge floor hides the bandwidth win — bench_kv_quant_decode.py).
 """
 
 from __future__ import annotations
@@ -189,6 +192,131 @@ def attention_decode(q: torch.Tensor, k: torch.Tensor, v: torch.Tensor) -> torch
     BLOCK_D = triton.next_power_of_2(dim)
     _attn_decode_kernel[(nchunks,)](
         q, k, v, m, l, acc, t, _LOG2E / dim**0.5,
+        dim=dim, BLOCK_T=BLOCK_T, BLOCK_D=BLOCK_D,
+    )
+    _attn_merge_kernel[(1,)](
+        m, l, acc, out, nchunks,
+        dim=dim, BLOCK_C=triton.next_power_of_2(nchunks), BLOCK_D=BLOCK_D,
+    )
+    return out
+
+
+# ------------------------------------------------- attention_decode_quant
+
+
+@triton.jit
+def _attn_decode_int8_kernel(
+    q_ptr, kc_ptr, ks_ptr, vc_ptr, vs_ptr, m_ptr, l_ptr, acc_ptr,
+    tlen, scale2, dim: tl.constexpr, BLOCK_T: tl.constexpr, BLOCK_D: tl.constexpr,
+):
+    # attention_decode with int8 K/V codes + per-token fp32 scales,
+    # dequantized in registers: half the HBM traffic of fp16 K/V.
+    chunk = tl.program_id(0)
+    d = tl.arange(0, BLOCK_D)
+    dmask = d < dim
+    q = tl.load(q_ptr + d, mask=dmask, other=0.0).to(tl.float32)
+
+    t = chunk * BLOCK_T + tl.arange(0, BLOCK_T)
+    tmask = t < tlen
+    ks = tl.load(ks_ptr + t, mask=tmask, other=0.0)
+    kc = tl.load(kc_ptr + t[:, None] * dim + d[None, :],
+                 mask=tmask[:, None] & dmask[None, :], other=0)
+    score = tl.sum(kc.to(tl.float32) * q[None, :], axis=1) * ks * scale2
+    score = tl.where(tmask, score, float("-inf"))
+
+    m = tl.max(score)
+    p = tl.exp2(score - m)
+    l = tl.sum(p)
+    vs = tl.load(vs_ptr + t, mask=tmask, other=0.0)
+    vc = tl.load(vc_ptr + t[:, None] * dim + d[None, :],
+                 mask=tmask[:, None] & dmask[None, :], other=0)
+    acc = tl.sum((p * vs)[:, None] * vc.to(tl.float32), axis=0)
+
+    tl.store(m_ptr + chunk, m)
+    tl.store(l_ptr + chunk, l)
+    tl.store(acc_ptr + chunk * dim + d, acc, mask=dmask)
+
+
+@triton.jit
+def _attn_decode_int4_kernel(
+    q_ptr, kc_ptr, ks_ptr, vc_ptr, vs_ptr, m_ptr, l_ptr, acc_ptr,
+    tlen, scale2, dim: tl.constexpr, BLOCK_T: tl.constexpr, BLOCK_D: tl.constexpr,
+):
+    # packed int4: two offset-coded nibbles per byte (code = value + 7, so
+    # a nibble is unsigned in [0, 14]). Byte b holds elements (2b, 2b+1),
+    # so k . q = lo . q_even + hi . q_odd — each byte is loaded exactly
+    # once and unpacked in registers on half-width tiles.
+    chunk = tl.program_id(0)
+    half: tl.constexpr = dim // 2
+    HBLOCK: tl.constexpr = BLOCK_D // 2
+    dh = tl.arange(0, HBLOCK)
+    hmask = dh < half
+    q_even = tl.load(q_ptr + 2 * dh, mask=hmask, other=0.0).to(tl.float32)
+    q_odd = tl.load(q_ptr + 2 * dh + 1, mask=hmask, other=0.0).to(tl.float32)
+
+    t = chunk * BLOCK_T + tl.arange(0, BLOCK_T)
+    tmask = t < tlen
+    ldmask = tmask[:, None] & hmask[None, :]
+    byte_off = t[:, None] * half + dh[None, :]
+
+    kb = tl.load(kc_ptr + byte_off, mask=ldmask, other=0).to(tl.int32)
+    k_lo = ((kb & 0xF) - 7).to(tl.float32)
+    k_hi = ((kb >> 4) - 7).to(tl.float32)
+    ks = tl.load(ks_ptr + t, mask=tmask, other=0.0)
+    score = tl.sum(k_lo * q_even[None, :] + k_hi * q_odd[None, :], axis=1)
+    score = tl.where(tmask, score * ks * scale2, float("-inf"))
+
+    m = tl.max(score)
+    p = tl.exp2(score - m)
+    l = tl.sum(p)
+    vb = tl.load(vc_ptr + byte_off, mask=ldmask, other=0).to(tl.int32)
+    vs = tl.load(vs_ptr + t, mask=tmask, other=0.0)
+    pw = (p * vs)[:, None]
+    acc_even = tl.sum(pw * ((vb & 0xF) - 7).to(tl.float32), axis=0)
+    acc_odd = tl.sum(pw * ((vb >> 4) - 7).to(tl.float32), axis=0)
+
+    tl.store(m_ptr + chunk, m)
+    tl.store(l_ptr + chunk, l)
+    tl.store(acc_ptr + chunk * dim + 2 * dh, acc_even, mask=hmask)
+    tl.store(acc_ptr + chunk * dim + 2 * dh + 1, acc_odd, mask=hmask)
+
+
+def quantize_kv_rows(x: torch.Tensor, bits: int):
+    """Per-token symmetric quantization of K or V [T, dim] for the decode
+    kernels: int8 -> (codes int8 [T, dim], scale fp32 [T]); int4 -> codes
+    packed two-per-byte as uint8 [T, dim // 2] (offset code value + 7)."""
+    qmax = 2 ** (bits - 1) - 1
+    scale = x.float().abs().amax(dim=-1).clamp(min=1e-8) / qmax
+    codes = (x.float() / scale[:, None]).round().clamp(-qmax, qmax).to(torch.int8)
+    if bits == 8:
+        return codes, scale
+    u = (codes + 7).to(torch.uint8).view(x.shape[0], -1, 2)
+    return u[:, :, 0] | (u[:, :, 1] << 4), scale
+
+
+def attention_decode_quant(
+    q, k_codes, k_scale, v_codes, v_scale, bits: int = 8, block_t: int | None = None
+):
+    """attention_decode over quantized K/V (see quantize_kv_rows).
+
+    Decode attention is HBM-bound on the KV read, so int8 targets ~2x and
+    packed int4 ~4x over fp16 K/V; scales add 8 bytes/token of overhead.
+    Measured (RTX 3080, T=262k): the nibble unpack is instruction-bound
+    enough that int4 lands ~2.5x, not 4x. Chunk sizes swept per bit width.
+    """
+    t = k_codes.shape[0]
+    dim = q.shape[0]
+    BLOCK_T = block_t if block_t is not None else (512 if bits == 8 else 256)
+    nchunks = triton.cdiv(t, BLOCK_T)
+    dev = q.device
+    m = torch.empty(nchunks, device=dev, dtype=torch.float32)
+    l = torch.empty(nchunks, device=dev, dtype=torch.float32)
+    acc = torch.empty(nchunks, dim, device=dev, dtype=torch.float32)
+    out = torch.empty_like(q)
+    BLOCK_D = triton.next_power_of_2(dim)
+    kernel = _attn_decode_int8_kernel if bits == 8 else _attn_decode_int4_kernel
+    kernel[(nchunks,)](
+        q, k_codes, k_scale, v_codes, v_scale, m, l, acc, t, _LOG2E / dim**0.5,
         dim=dim, BLOCK_T=BLOCK_T, BLOCK_D=BLOCK_D,
     )
     _attn_merge_kernel[(1,)](

@@ -22,10 +22,12 @@ def kd_loss(student_logits, teacher_logits, temperature: float = 1.0):
     import torch.nn.functional as F
 
     t = temperature
+    # softmax/KL in fp32: fp16 log_softmax under-/overflows enough to NaN
+    # Adam on real models (seen with a fp16 Qwen teacher)
     return (
         F.kl_div(
-            F.log_softmax(student_logits / t, dim=-1),
-            F.log_softmax(teacher_logits / t, dim=-1),
+            F.log_softmax(student_logits.float() / t, dim=-1),
+            F.log_softmax(teacher_logits.float() / t, dim=-1),
             log_target=True,
             reduction="batchmean",
         )

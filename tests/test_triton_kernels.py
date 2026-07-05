@@ -10,8 +10,10 @@ if not torch.cuda.is_available():
 
 from llmopt.kernels.triton_kernels import (
     attention_decode,
+    attention_decode_quant,
     flash_attention,
     paged_attention,
+    quantize_kv_rows,
     rmsnorm,
     rope,
     swiglu,
@@ -74,6 +76,30 @@ def test_attention_decode_extreme_scores_stable():
     out = attention_decode(q, k, v)
     assert torch.isfinite(out).all()
     torch.testing.assert_close(out, v[0], atol=1e-3, rtol=1e-3)
+
+
+@pytest.mark.parametrize("bits,tol", [(8, 2e-2), (4, 2e-1)])
+def test_attention_decode_quant_matches_dequant_reference(bits, tol):
+    # exact reference: softmax attention over the *dequantized* K/V, so the
+    # test isolates kernel correctness from quantization error
+    t, dim = 700, 64  # T >> BLOCK_T exercises the split-K merge
+    q, k, v = _cuda((dim,), (t, dim), (t, dim), seed=7)
+    kc, ks = quantize_kv_rows(k, bits)
+    vc, vs = quantize_kv_rows(v, bits)
+    if bits == 8:
+        kd, vd = kc.float() * ks[:, None], vc.float() * vs[:, None]
+    else:
+        def unpack(c, s):
+            lo = (c & 0xF).to(torch.int8) - 7
+            hi = (c >> 4).to(torch.int8) - 7
+            return torch.stack([lo, hi], -1).reshape(t, dim).float() * s[:, None]
+        kd, vd = unpack(kc, ks), unpack(vc, vs)
+    ref = torch.softmax((kd @ q) / dim**0.5, dim=0) @ vd
+    out = attention_decode_quant(q, kc, ks, vc, vs, bits)
+    torch.testing.assert_close(out, ref, atol=1e-4, rtol=1e-4)
+    # and quantization error vs exact K/V stays bounded
+    exact = torch.softmax((k @ q) / dim**0.5, dim=0) @ v
+    assert (out - exact).abs().max() < tol
 
 
 # tl.dot uses tf32 tensor cores on fp32 inputs (~1e-3 abs error vs ieee);
