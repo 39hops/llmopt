@@ -28,7 +28,7 @@ MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_look
 | `cache/` | radix prefix KV tree w/ LRU, paged blocks (ref-counted allocator, block tables, fork + copy-on-write), KV int8/int4 quant (quantized paged store), eviction policies (sliding window, attention sinks, H2O, SnapKV) | — |
 | `quantize/` | per-layer ΔKL sensitivity (fake-quant), min-memory bit allocator, Pareto sweep | GPTQ/AWQ/HQQ, pruning, 2:4 sparsity, low-rank SVD |
 | `train/` | batched ref-logprob precompute + disk cache | LoRA family, sequence packing, DPO/IPO/KTO/ORPO/SimPO/GRPO |
-| `eval/` | perplexity, tokens/sec bench, pass@k, bootstrap CIs, equivalence harness | calibration (ECE), TTFT/TPOT, roofline / MFU / arithmetic-intensity model + per-op time attribution (memory-bound vs compute-bound) |
+| `eval/` | perplexity, tokens/sec bench, pass@k, bootstrap CIs, equivalence harness, roofline / MFU / arithmetic-intensity model + per-op attribution (analytic FLOPs/bytes per op, memory- vs compute-bound, torch.profiler complement) | calibration (ECE), TTFT/TPOT |
 | `context/` | — | RoPE scaling (PI/NTK/YaRN), attention sinks, RULER-style eval, LLMLingua-style prompt compression / gist tokens (shrink the prompt, cut prefill cost) |
 | `internals/` | — | logit lens, attention entropy, activation stats, CKA |
 | `kernels/` | — | fused RMSNorm, fused RoPE, fused SwiGLU, readable fused/flash attention (tiled online-softmax) |
