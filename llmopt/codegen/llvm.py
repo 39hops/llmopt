@@ -109,6 +109,49 @@ def assemble(instruction: str) -> str | None:
     return " ".join(x.strip().replace("0x", "") for x in m.group(1).split(","))
 
 
+def compile_cpp(source: str, *, run: bool = False) -> ClangResult:
+    """clang++ variant: same labels, C++ semantics (used for mangling and
+    object-lifetime tasks). Encodings are skipped (not needed here)."""
+    clangpp = _tool("clang++")
+    with tempfile.TemporaryDirectory() as td:
+        src = Path(td, "p.cpp")
+        src.write_text(source)
+        # -static: the exe must run without mingw's DLLs on PATH
+        r = _run([clangpp, "-O0", "-static", "-o", str(Path(td, "p.exe")), str(src)])
+        diags = [f"{lvl}: {msg}" for lvl, msg in _DIAG_RE.findall(r.stderr)]
+        ok = r.returncode == 0
+        stdout = None
+        if ok and run:
+            p = _run([str(Path(td, "p.exe"))], timeout=10)
+            stdout = p.stdout
+        return ClangResult(ok, diags, "", stdout, [])
+
+
+def mangle(signature_src: str, fn_name: str) -> str | None:
+    """Compile a translation unit and return fn_name's Itanium-mangled
+    symbol (llvm-nm). The compiler is the mangling oracle."""
+    clangpp = _tool("clang++")
+    with tempfile.TemporaryDirectory() as td:
+        src = Path(td, "m.cpp")
+        src.write_text(signature_src)
+        r = _run([clangpp, "-c", "-o", str(Path(td, "m.o")), str(src)])
+        if r.returncode != 0:
+            return None
+        nm = _run([_tool("llvm-nm"), str(Path(td, "m.o"))])
+        for line in nm.stdout.splitlines():
+            parts = line.split()
+            if (len(parts) == 3 and parts[2].startswith("_Z")
+                    and f"{len(fn_name)}{fn_name}" in parts[2]):
+                return parts[2]
+    return None
+
+
+def demangle(symbol: str) -> str | None:
+    r = _run([_tool("llvm-cxxfilt")], input_text=symbol.strip() + "\n")
+    out = r.stdout.strip()
+    return out if out and out != symbol.strip() else None
+
+
 def norm_bytes(hexstr: str) -> str:
     """Canonicalize a hex byte string for comparison ('B8 05' == 'b805')."""
     s = re.sub(r"[^0-9a-fA-F]", "", hexstr).lower()

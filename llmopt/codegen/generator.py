@@ -89,6 +89,51 @@ def make_bug_undeclared(level: int, seed: int) -> CProgram:
     return CProgram(src, "bug_undeclared", level, seed)
 
 
+_CPP_TYPES = ["int", "double", "float", "char", "long", "unsigned int",
+              "int*", "const char*", "bool", "short"]
+
+
+def make_signature(level: int, seed: int) -> tuple[str, str, str]:
+    """(source, fn_name, human signature) for mangling tasks."""
+    rng = random.Random(f"sig-{level}-{seed}")
+    name = "".join(rng.choice("abcdefghikmnoprstuvw") for _ in range(rng.randint(3, 8)))
+    nargs = rng.randint(0, 2 + level)
+    args = [rng.choice(_CPP_TYPES) for _ in range(nargs)]
+    ret = rng.choice(["int", "void", "double"])
+    ns = rng.choice([None, None, "util", "core"]) if level >= 2 else None
+    sig = f"{ret} {name}({', '.join(args) or 'void'})"
+    decl = f"{ret} {name}({', '.join(args)}) {{ {'' if ret == 'void' else 'return {};'.format('0')} }}"
+    src = f"namespace {ns} {{ {decl} }}" if ns else decl
+    human = f"{ns}::{sig.split(' ', 1)[1]}" if ns else sig.split(" ", 1)[1]
+    human = f"{ret} {human}"
+    return src, name, human
+
+
+def make_lifetime(level: int, seed: int) -> CProgram:
+    """C++ program printing ctor/dtor order — deterministic, oracle-run.
+    Nested scopes make destruction order (reverse of construction, inner
+    scope first) the thing to predict."""
+    rng = random.Random(f"life-{level}-{seed}")
+    names = rng.sample(["A", "B", "C", "D", "E"], 3 + min(level, 2))
+    lines = [
+        "#include <cstdio>",
+        "struct T { const char* n; T(const char* x):n(x){ std::printf(\"+%s\\n\", n);} "
+        "~T(){ std::printf(\"-%s\\n\", n);} };",
+        "int main() {",
+        f'    T {names[0].lower()}("{names[0]}");',
+        "    {",
+    ]
+    for nm in names[1:-1]:
+        lines.append(f'        T {nm.lower()}("{nm}");')
+    lines += [
+        "    }",
+        f'    T {names[-1].lower()}("{names[-1]}");',
+        "    return 0;",
+        "}",
+    ]
+    return CProgram("\n".join(lines), "lifetime", level, seed)
+
+
 _MAKERS = {
     "arith": make_arith,
     "loop": make_loop,

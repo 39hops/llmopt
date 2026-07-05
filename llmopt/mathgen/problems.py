@@ -30,7 +30,7 @@ X = sp.Symbol("x")
 _PARSE_LOCALS = {
     "x": X, "sin": sp.sin, "cos": sp.cos, "tan": sp.tan, "exp": sp.exp,
     "log": sp.log, "ln": sp.log, "sqrt": sp.sqrt, "pi": sp.pi, "E": sp.E,
-    "e": sp.E, "C": sp.Symbol("C"),
+    "e": sp.E, "C": sp.Symbol("C"), "Matrix": sp.Matrix,
 }
 
 
@@ -54,7 +54,7 @@ class Problem:
     _expr: object = field(compare=False, repr=False)  # task-specific payload
 
     def check(self, prediction: str) -> bool:
-        if self.kind == "limit_traced" and "Answer:" in prediction:
+        if "Answer:" in prediction:
             prediction = prediction.rsplit("Answer:", 1)[1].strip().splitlines()[0]
         pred = parse_answer(prediction)
         if pred is None:
@@ -64,6 +64,27 @@ class Problem:
                 # any antiderivative is correct: F'(pred) must equal integrand
                 pred = pred.subs(sp.Symbol("C"), 0)
                 return sp.simplify(sp.diff(pred, X) - self._expr) == 0
+            if self.kind == "eigenvalues":
+                # multiset equality, any order
+                got = pred if isinstance(pred, (tuple, list)) else (pred,)
+                return sorted(sp.sympify(g) for g in got) == self._expr
+            if self.kind == "matrix_inverse":
+                # verify, don't compare: A @ prediction must be identity
+                got = sp.Matrix(pred)
+                a = self._expr
+                return got.shape == a.shape and sp.simplify(a * got) == sp.eye(a.rows)
+            if self.kind == "ode":
+                # verify against the equation + initial conditions, so any
+                # equivalent closed form passes
+                eq, x0, y0, *rest = self._expr
+                y = sp.Function("y")
+                if not bool(sp.checkodesol(eq, sp.Eq(y(X), pred))[0]):
+                    return False
+                if sp.simplify(pred.subs(X, x0) - y0) != 0:
+                    return False
+                if rest:  # second-order: y'(x0) must match too
+                    return sp.simplify(sp.diff(pred, X).subs(X, x0) - rest[0]) == 0
+                return True
             return sp.simplify(pred - self._expr) == 0
         except Exception:
             return False
@@ -217,6 +238,17 @@ _MAKERS = {
 ALL_KINDS = tuple(_MAKERS)
 
 
+def _resolve_maker(kind: str):
+    """Makers from sibling modules (linalg, odes) register lazily — avoids
+    an import cycle since they build on Problem from this module."""
+    if kind not in _MAKERS:
+        from llmopt.mathgen import linalg, odes
+
+        _MAKERS.update(linalg.MAKERS)
+        _MAKERS.update(odes.MAKERS)
+    return _MAKERS[kind]
+
+
 def make_dataset(
     n: int, *, kinds=("differentiate", "integrate", "limit"),
     levels=(1, 2, 3), seed: int = 0, exclude: frozenset[str] = frozenset(),
@@ -234,7 +266,7 @@ def make_dataset(
     while len(out) < n:
         kind = kinds[i % len(kinds)]
         level = levels[(i // len(kinds)) % len(levels)]
-        p = _MAKERS[kind](level, seed * 1_000_000 + i)
+        p = _resolve_maker(kind)(level, seed * 1_000_000 + i)
         i += 1
         if p.prompt in seen:
             continue

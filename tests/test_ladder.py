@@ -45,6 +45,29 @@ def test_decode_scored_by_assembling_not_text():
     assert not t.check("blorp eax, 5")  # does not assemble
 
 
+def test_mangle_scored_by_demangling():
+    from llmopt.codegen.ladder import _mangle_task
+    from llmopt.codegen.llvm import mangle
+
+    t = _mangle_task(1, 3)
+    assert t is not None and t.check(t.target)
+    assert not t.check("_Z3fooid")
+    assert not t.check("not_a_symbol")
+
+
+def test_lifetime_output_is_scope_ordered():
+    from llmopt.codegen.ladder import _lifetime_task
+
+    t = _lifetime_task(1, 5)
+    assert t is not None
+    lines = t.target.splitlines()
+    ctors = [l[1:] for l in lines if l.startswith("+")]
+    dtors = [l[1:] for l in lines if l.startswith("-")]
+    assert sorted(ctors) == sorted(dtors)          # every ctor has a dtor
+    assert dtors[-1] == ctors[0]                   # outermost dies last
+    assert t.check(t.target) and not t.check("+A\n-A")
+
+
 def test_train_eval_exclusion():
     from llmopt.codegen.ladder import build_ladder
 

@@ -30,7 +30,7 @@ from typing import Callable, Mapping, Sequence
 from llmopt.codegen.generator import make_programs
 from llmopt.codegen.llvm import assemble, compile_c, norm_bytes
 
-RUNGS = ("encode", "decode", "output", "diagnose", "o2_asm")
+RUNGS = ("encode", "decode", "mangle", "lifetime", "output", "diagnose", "o2_asm")
 
 
 @dataclass(frozen=True)
@@ -156,6 +156,52 @@ def _o2_asm_task(source: str, asm: str) -> RungTask | None:
     )
 
 
+def _mangle_task(level: int, seed: int) -> RungTask | None:
+    """Itanium name mangling: another encode-class rung (learned mapping,
+    like instruction encoding). Prediction scored by demangling it — any
+    symbol that demangles to the same signature passes."""
+    from llmopt.codegen.generator import make_signature
+    from llmopt.codegen.llvm import demangle, mangle
+
+    src, fn, human = make_signature(level, seed)
+    target = mangle(src, fn)
+    if target is None:
+        return None
+    ref = demangle(target)
+
+    def check(pred: str, t=target, r=ref) -> bool:
+        p = _first_line(pred)
+        return p == t or (r is not None and demangle(p) == r)
+
+    return RungTask(
+        "mangle",
+        f"Give the Itanium-ABI mangled symbol name for this C++ function: {human}",
+        target, check,
+    )
+
+
+def _lifetime_task(level: int, seed: int) -> RungTask | None:
+    from llmopt.codegen.generator import make_lifetime
+    from llmopt.codegen.llvm import compile_cpp
+
+    prog = make_lifetime(level, seed)
+    r = compile_cpp(prog.source, run=True)
+    if not r.ok or not r.stdout:
+        return None
+    target = "\n".join(l.strip() for l in r.stdout.strip().splitlines())
+
+    def check(pred: str, t=target) -> bool:
+        got = [l.strip() for l in pred.strip().splitlines() if l.strip()]
+        return "\n".join(got) == t
+
+    return RungTask(
+        "lifetime",
+        "This C++ program prints on every construction and destruction. "
+        f"Give its exact output, one line per event:\n```cpp\n{prog.source}\n```",
+        target, check,
+    )
+
+
 def build_ladder(
     n_programs: int, *, seed: int = 0, exclude: frozenset[str] = frozenset(),
 ) -> dict[str, list[RungTask]]:
@@ -189,6 +235,10 @@ def build_ladder(
     for prog in buggy:
         r = compile_c(prog.source)
         add(_diagnose_task(prog.source, r.diagnostics))
+    for i in range(n_programs):
+        add(_mangle_task(1 + i % 3, seed * 1_000_000 + i))
+        if i < n_programs // 2:
+            add(_lifetime_task(1 + i % 3, seed * 1_000_000 + i))
     return tasks
 
 
