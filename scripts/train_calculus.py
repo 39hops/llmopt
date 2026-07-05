@@ -42,16 +42,24 @@ def encode(tok, problem):
     return ids, labels
 
 
-def batches(examples, pad_id, batch_size, device, epoch=0):
+def batches(examples, pad_id, batch_size, device, epoch=0, token_budget=2048):
     """Length-bucketed (little padding) but order-shuffled (decorrelated):
-    examples arrive length-sorted; batch composition stays, batch order is
-    re-shuffled every epoch."""
+    examples arrive length-sorted. Batches are cut by token budget
+    (width * rows), not fixed count, so long traced answers get small
+    batches instead of OOMing the 152k-vocab loss."""
     import random as _random
 
-    order = list(range(0, len(examples), batch_size))
-    _random.Random(epoch).shuffle(order)
-    for i in order:
-        chunk = examples[i : i + batch_size]
+    cuts, i = [], 0
+    while i < len(examples):
+        j = i + 1
+        while (j < len(examples) and j - i < batch_size
+               and len(examples[j][0]) * (j - i + 1) <= token_budget):
+            j += 1
+        cuts.append((i, j))
+        i = j
+    _random.Random(epoch).shuffle(cuts)
+    for i, j in cuts:
+        chunk = examples[i:j]
         width = max(len(ids) for ids, _ in chunk)
         ids = torch.full((len(chunk), width), pad_id, dtype=torch.long)
         labels = torch.full_like(ids, -100)
