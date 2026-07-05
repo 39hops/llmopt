@@ -31,7 +31,7 @@ MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_look
 | `eval/` | perplexity, tokens/sec bench, pass@k, bootstrap CIs, equivalence harness, roofline / MFU / arithmetic-intensity model + per-op attribution (analytic FLOPs/bytes per op, memory- vs compute-bound, torch.profiler complement), calibration (ECE), TTFT/TPOT split | — |
 | `context/` | RoPE scaling (PI/NTK/YaRN, in-place HF patch), LLMLingua-style prompt compression (self-information scoring, protected spans) | RULER-style eval, gist tokens (attention sinks live in `cache/`) |
 | `internals/` | logit lens (per-layer KL to final), attention entropy + mean attended distance, activation stats (rms/kurtosis/outliers), linear CKA layer-similarity | — |
-| `kernels/` | Metal (MLX): fused RMSNorm (1.7x vs unfused), fused SwiGLU (1.6x), RoPE, single-query flash-style attention (online softmax — educational; loses to full-GPU GEMV, honestly measured) | Triton (CUDA) versions, full tiled flash attention |
+| `kernels/` | Metal (MLX): fused RMSNorm (1.7x vs unfused), fused SwiGLU (1.6x), RoPE, single-query flash-style attention (online softmax — educational; loses to full-GPU GEMV, honestly measured); Triton (CUDA): same four ops (RMSNorm 3.7x vs unfused, 1.5x vs `torch.nn.RMSNorm`; SwiGLU 2.7x; split-K decode attention) + full tiled flash attention (causal, cross-length; ~0.5x of torch fused SDPA, honestly measured) | — |
 | `moe/` | top-k gated MoE (SwiGLU experts), Switch load-balance + router z-loss, capacity/token-drop, LRU expert offload cache | — |
 | `distill/` | logit-KD (temperature-scaled forward KL) + draft-model distillation (accept-rate lift verified end-to-end), sequence-KD, on-policy GKD (generalized JSD) | — |
 
@@ -92,6 +92,8 @@ pytest                                  # pure-Python parts run without GPU
 python scripts/bench_lookup_static.py   # full stacked benchmark (GPU)
 python scripts/sweep_lookup.py          # ngram/draft hyperparameter sweep (GPU)
 python scripts/sweep_lookup_mlx.py      # same sweep on MLX (Apple silicon)
+python scripts/bench_triton_kernels.py  # Triton kernels vs torch (CUDA)
+python scripts/bench_metal_kernels.py   # Metal kernels vs MLX (Apple silicon)
 ```
 
 On Windows, `torch.compile` needs MSVC — run benchmark scripts inside a vcvars64 environment (see `scripts/bench_compile.py` docstring).
