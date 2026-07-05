@@ -25,6 +25,7 @@ class Request:
     prompt: list[int]
     max_new_tokens: int
     eos_token_id: int | None = None
+    priority: int = 0  # higher = more urgent (used by scheduler.py)
     # engine state
     generated: list[int] = field(default_factory=list)
     prefilled: int = 0  # prompt tokens processed so far
@@ -46,10 +47,12 @@ class BatchEngine:
         self.mask = None  # [B, T] 0/1
         self.stats = {"steps": 0, "decode_tokens": 0, "batch_occupancy": []}
 
-    def submit(self, prompt, max_new_tokens: int, eos_token_id=None) -> int:
+    def submit(
+        self, prompt, max_new_tokens: int, eos_token_id=None, priority: int = 0
+    ) -> int:
         rid = self._next_rid = getattr(self, "_next_rid", -1) + 1
         self.waiting.append(
-            Request(rid, list(prompt), max_new_tokens, eos_token_id)
+            Request(rid, list(prompt), max_new_tokens, eos_token_id, priority)
         )
         return rid
 
