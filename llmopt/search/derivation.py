@@ -20,14 +20,14 @@ HCE v0 (lower = better):
 Calibration harness (does HCE correlate with solve rate?) lives in the
 bench script, per the roadmap.
 
-KNOWN LIMITATION (deliberate, rung 0): doit_one delegates to sympy's
-own solver, which is complete for this domain — so beam_search solves
-everything in ~1 ply and the search is degenerate. The chassis (State,
-legality-by-construction, HCE, beam) is the deliverable here. Rung 1
-must replace doit_one with PRIMITIVE rules (power rule, product-rule
-split, u-substitution as individual rewrites) so the search does the
-reasoning and sympy only verifies steps; that is also exactly where
-the model plugs in as a move proposer.
+Rung 1 (2026-07-06): doit_one is gone from the move set. Moves are
+(rule, Derivative-node) pairs from search.rules — the search composes
+the derivation and sympy is demoted to per-edge verifier (verify_edge).
+Algebra cleanup moves are kept trimmed (no simplify: an algebra
+mega-move that collapses plies). doit remains available to the
+verifier and to tests as ground truth. Differentiation only; Integral/
+Limit states are honestly unsolvable until rung 2. Spec:
+docs/superpowers/specs/2026-07-06-hce-rung1-primitive-moves-design.md
 """
 
 from __future__ import annotations
@@ -36,6 +36,8 @@ from dataclasses import dataclass, field
 from typing import Callable, Iterator
 
 import sympy as sp
+
+from llmopt.search.rules import CORE_RULES, MACRO_RULES
 
 UNSOLVED = (sp.Derivative, sp.Integral, sp.Limit)
 
@@ -62,56 +64,52 @@ def hce(state: State) -> float:
 
 # ------------------------------------------------------------- moves
 
-Move = tuple[str, Callable[[sp.Expr], sp.Expr]]
-
-MOVES: list[Move] = [
-    ("doit_one", lambda e: _doit_one(e)),
+ALGEBRA_MOVES: list[tuple[str, Callable[[sp.Expr], sp.Expr]]] = [
     ("expand", sp.expand),
     ("factor", sp.factor),
     ("cancel", sp.cancel),
     ("together", sp.together),
-    ("apart", lambda e: _apart_safe(e)),
     ("trigsimp", sp.trigsimp),
     ("powsimp", sp.powsimp),
-    ("simplify", sp.simplify),
 ]
 
 
-def _doit_one(e: sp.Expr) -> sp.Expr:
-    """Evaluate ONE unsolved node (innermost first) — the single-step
-    version of .doit(), so a derivation is a sequence of visible steps
-    instead of one opaque jump."""
-    nodes = sorted(e.atoms(*UNSOLVED), key=sp.count_ops)
-    if not nodes:
-        return e
-    target = nodes[0]
-    return e.xreplace({target: target.doit(deep=False)})
-
-
-def _apart_safe(e: sp.Expr) -> sp.Expr:
-    frees = e.free_symbols
-    if len(frees) != 1:
-        return e
+def verify_edge(parent: sp.Expr, child: sp.Expr) -> bool:
+    """Oracle check: a legal move preserves the value. doit() is the
+    complete solver — too strong as a mover (rung 0's mistake), exactly
+    right as a verifier."""
     try:
-        return sp.apart(e, *frees)
-    except (sp.PolynomialError, NotImplementedError):
-        return e
+        return sp.simplify(parent.doit() - child.doit()) == 0
+    except Exception:
+        return False
 
 
-def successors(state: State) -> Iterator[tuple[str, State]]:
-    """Legal, non-identity successor states. Every rewrite is performed
-    by sympy, so successors are equal to the parent by construction —
-    the oracle is embedded in move generation."""
+def successors(
+    state: State, *, use_macros: bool = False
+) -> Iterator[tuple[str, State]]:
+    """Legal, non-identity, sympy-verified successor states. Rule moves
+    target one Derivative node ((rule, node) pairs — real branching);
+    algebra moves rewrite the whole expression."""
     seen = {state.key()}
-    for name, fn in MOVES:
+    rules = CORE_RULES + MACRO_RULES if use_macros else CORE_RULES
+
+    def emit(name: str, new_expr: sp.Expr) -> Iterator[tuple[str, State]]:
+        child = State(new_expr, state.plies + 1, state.history + (name,))
+        if child.key() not in seen and verify_edge(state.expr, new_expr):
+            seen.add(child.key())
+            yield name, child
+
+    for node in sorted(state.expr.atoms(sp.Derivative), key=sp.count_ops):
+        for rule_name, rule in rules:
+            for rewrite in rule(node):
+                label = f"{rule_name}@{sp.sstr(node)}"
+                yield from emit(label, state.expr.xreplace({node: rewrite}))
+    for name, fn in ALGEBRA_MOVES:
         try:
             new = fn(state.expr)
         except Exception:
             continue
-        child = State(new, state.plies + 1, state.history + (name,))
-        if child.key() not in seen:
-            seen.add(child.key())
-            yield name, child
+        yield from emit(name, new)
 
 
 # ------------------------------------------------------------- search
@@ -123,7 +121,14 @@ class SearchResult:
     nodes: int
 
 
-def beam_search(expr: sp.Expr, *, width: int = 8, max_plies: int = 12) -> SearchResult:
+def beam_search(
+    expr: sp.Expr,
+    *,
+    width: int = 8,
+    max_plies: int = 12,
+    max_nodes: int | None = None,
+    use_macros: bool = False,
+) -> SearchResult:
     """Minimize hce over the rewrite tree. Returns the best solved
     state found, else the best-evaluated state at exhaustion."""
     root = State(expr)
@@ -136,16 +141,23 @@ def beam_search(expr: sp.Expr, *, width: int = 8, max_plies: int = 12) -> Search
     for _ in range(max_plies):
         candidates: list[State] = []
         for s in beam:
-            for _, child in successors(s):
+            for _, child in successors(s, use_macros=use_macros):
                 if child.key() in visited:
                     continue
                 visited.add(child.key())
                 nodes += 1
+                if max_nodes is not None and nodes >= max_nodes:
+                    candidates.append(child)
+                    break
                 if is_solved(child) and (
                     best_solved is None or hce(child) < hce(best_solved)
                 ):
                     best_solved = child
                 candidates.append(child)
+            if max_nodes is not None and nodes >= max_nodes:
+                break
+        if max_nodes is not None and nodes >= max_nodes:
+            break
         if not candidates:
             break
         candidates.sort(key=hce)
