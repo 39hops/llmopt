@@ -15,43 +15,52 @@ import sympy as sp
 
 from llmopt.mathgen.problems import _expression
 from llmopt.search.derivation import beam_search
+from llmopt.search.parallel import pmap
 
 X = sp.Symbol("x")
 
 
-def _make_problem(rng: random.Random, level: int, kind: str):
-    """Returns (root_expr, oracle_check). Integrands are reverse-sampled
-    (draw F, present F') so every problem is solvable in principle."""
+def _solve_one(args) -> tuple[bool, int, int]:
+    """Module-level worker (fork-pool picklable). Returns
+    (ok, nodes, plies)."""
+    root_s, truth_s, kind, width, max_plies, max_nodes, use_macros = args
+    root, truth = sp.sympify(root_s), sp.sympify(truth_s)
+    r = beam_search(root, width=width, max_plies=max_plies,
+                    max_nodes=max_nodes, use_macros=use_macros)
     if kind == "diff":
-        f = _expression(rng, level)
-        truth = sp.diff(f, X)
-        return sp.Derivative(f, X), lambda e: sp.simplify(e - truth) == 0
-    while True:
-        integrand = sp.simplify(sp.diff(_expression(rng, level), X))
-        if integrand != 0:
-            break
-    return (sp.Integral(integrand, X),
-            lambda e: sp.simplify(sp.diff(e, X) - integrand) == 0)
+        ok = r.solved and sp.simplify(r.state.expr - truth) == 0
+    else:
+        ok = r.solved and sp.simplify(sp.diff(r.state.expr, X) - truth) == 0
+    return bool(ok), r.nodes, r.state.plies
 
 
 def run(levels: list[int], n: int, width: int, max_plies: int,
-        max_nodes: int | None, use_macros: bool, kind: str) -> None:
+        max_nodes: int | None, use_macros: bool, kind: str,
+        jobs: int | None = None) -> None:
     tag = "macros ON" if use_macros else "core rules only"
     print(f"# rung bench — kind={kind}, {tag}, width={width}, "
-          f"max_plies={max_plies}, max_nodes={max_nodes}")
+          f"max_plies={max_plies}, max_nodes={max_nodes}, jobs={jobs}")
     print(f"{'level':>5} {'solved':>10} {'mean nodes':>11} {'mean plies':>11}")
     for level in levels:
         rng = random.Random(f"bench-deriv-{kind}-{level}-0")  # string seed
-        solved, nodes, plies = 0, [], []
+        items = []
         for _ in range(n):
-            root, check = _make_problem(rng, level, kind)
-            r = beam_search(root, width=width, max_plies=max_plies,
-                            max_nodes=max_nodes, use_macros=use_macros)
-            ok = r.solved and check(r.state.expr)
-            solved += ok
-            nodes.append(r.nodes)
-            if ok:
-                plies.append(r.state.plies)
+            if kind == "diff":
+                f = _expression(rng, level)
+                root, truth = sp.Derivative(f, X), sp.diff(f, X)
+            else:
+                root, _ = None, None
+                while True:
+                    truth = sp.simplify(sp.diff(_expression(rng, level), X))
+                    if truth != 0:
+                        break
+                root = sp.Integral(truth, X)
+            items.append((sp.srepr(root), sp.srepr(truth), kind, width,
+                          max_plies, max_nodes, use_macros))
+        results = pmap(_solve_one, items, jobs=jobs)
+        solved = sum(ok for ok, _, _ in results)
+        nodes = [nd for _, nd, _ in results]
+        plies = [pl for ok, _, pl in results if ok]
         mp = statistics.mean(plies) if plies else float("nan")
         print(f"{level:>5} {solved:>6}/{n:<3} {statistics.mean(nodes):>11.1f} "
               f"{mp:>11.1f}")
@@ -68,9 +77,13 @@ if __name__ == "__main__":
     ap.add_argument("--kind", choices=["diff", "int"], default="diff")
     ap.add_argument("--budgets", type=int, nargs="+", default=None,
                     help="loop max_nodes over these budgets (the chart)")
+    ap.add_argument("--jobs", type=int, default=None,
+                    help="parallel workers (default: cpu_count-2; 1=serial)")
     a = ap.parse_args()
     if a.budgets:
         for b in a.budgets:
-            run(a.levels, a.n, a.width, a.max_plies, b, a.macros, a.kind)
+            run(a.levels, a.n, a.width, a.max_plies, b, a.macros, a.kind,
+                jobs=a.jobs)
     else:
-        run(a.levels, a.n, a.width, a.max_plies, a.max_nodes, a.macros, a.kind)
+        run(a.levels, a.n, a.width, a.max_plies, a.max_nodes, a.macros,
+            a.kind, jobs=a.jobs)
