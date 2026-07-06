@@ -21,6 +21,15 @@ implementations. See README for the full inventory and measured numbers.
   possible bodies). Widen the generator space before trusting a split.
 - Benchmarks report honest losses too (Metal attention_decode losing to
   GEMV, first paged-attention cut losing to gather+SDPA). Keep that.
+- **Never score weights by weight distance.** The same function lives at
+  many weight arrangements (neuron permutations, rescalings), so
+  matching numbers is the wrong target for anything that predicts,
+  generates, or compares weights (weightspace/ rungs, task vectors,
+  distill). Score by *running* the weights against the oracle
+  (function MSE, symbolic accuracy, toolchain). Measured basis: the
+  2026-07-06 weight-reader ablation — raw weights already readable at
+  80.8%, permutation-augmentation (88.4%) beat canonical sorting
+  (82.4%); teach invariance, don't impose it.
 
 ## Machine-specific setup
 
