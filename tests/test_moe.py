@@ -80,3 +80,35 @@ def test_expert_cache_lru_and_hit_rate():
     assert cache.misses == 4
     assert list(cache.resident) == [0, 3]  # 0 kept warm by LRU, not FIFO
     assert cache.hit_rate == pytest.approx(2 / 6)
+
+
+def test_expert_cache_warm_prefetch_beats_cold_start():
+    """Domain-aware prefetch: warming with the trace's hot set should
+    beat a cold LRU on the same heavy-tailed routing trace."""
+    import random
+
+    rng = random.Random("warm-prefetch-0")
+    hot = [0, 1, 2]  # 3 hot experts of 16, capacity 4
+    trace = [rng.choice(hot) if rng.random() < 0.9 else rng.randrange(16)
+             for _ in range(400)]
+
+    def run(warm):
+        experts = [torch.nn.Linear(2, 2) for _ in range(16)]
+        cache = ExpertCache(experts, capacity=4)
+        if warm:
+            cache.warm(hot)
+        for i in trace:
+            cache.get(i)
+        return cache.hit_rate
+
+    cold, warmed = run(False), run(True)
+    assert warmed > cold
+    assert warmed >= 0.85  # hot set resident from step 0
+
+
+def test_expert_cache_warm_respects_capacity():
+    experts = [torch.nn.Linear(2, 2) for _ in range(8)]
+    cache = ExpertCache(experts, capacity=3)
+    cache.warm(range(8))
+    assert len(cache.resident) == 3
+    assert cache.hits == 0 and cache.misses == 0  # warming isn't traffic

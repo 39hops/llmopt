@@ -42,6 +42,20 @@ class ExpertCache:
             self.resident[i] = None
         return self.experts[i]
 
+    def warm(self, expert_ids) -> None:
+        """Preload experts into the resident set (domain-aware prefetch:
+        seed with a router-stats keep-set — moe/router_stats.py — so a
+        cold cache starts where the domain's routing mass lives, instead
+        of paying a miss to learn each hot expert). Only the first
+        ``capacity`` ids are loaded; warming does not count as traffic."""
+        for i in list(expert_ids)[: self.capacity]:
+            if i not in self.resident:
+                if len(self.resident) >= self.capacity:
+                    evicted, _ = self.resident.popitem(last=False)
+                    self.experts[evicted].to(self.home)
+                self.experts[i].to(self.device)
+                self.resident[i] = None
+
     @property
     def hit_rate(self) -> float:
         total = self.hits + self.misses
