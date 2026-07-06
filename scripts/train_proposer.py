@@ -25,7 +25,7 @@ TOKEN_BUDGET = 2048
 TARGETS = ("q_proj", "k_proj", "v_proj", "o_proj",
            "gate_proj", "up_proj", "down_proj")
 RANK = 16
-OUT = Path("checkpoints/proposer_lora.pt")
+OUT = Path("checkpoints/proposer_lora.pt")  # overridable via --out
 
 
 def encode(tok, row):
@@ -80,7 +80,7 @@ def move_accuracy(model, tok, rows, device, k=(1, 3)):
     return {kk: hits[kk] / len(rows) for kk in k}
 
 
-def main() -> None:
+def main(extra_data: list[str] | None = None, out: Path = OUT) -> None:
     device = ("cuda" if torch.cuda.is_available()
               else "mps" if torch.backends.mps.is_available() else "cpu")
     tok = AutoTokenizer.from_pretrained(MODEL)
@@ -88,6 +88,10 @@ def main() -> None:
         MODEL, dtype=torch.bfloat16).to(device)
 
     train_rows = [json.loads(l) for l in open("data/proposer_train.jsonl")]
+    for path in extra_data or []:
+        extra = [json.loads(l) for l in open(path)]
+        print(f"+ {len(extra)} rows from {path}")
+        train_rows += extra
     eval_rows = [json.loads(l) for l in open("data/proposer_eval.jsonl")]
     eval_rows = eval_rows[:300]
     print(f"train rows: {len(train_rows)}, eval rows: {len(eval_rows)}")
@@ -131,10 +135,17 @@ def main() -> None:
     trainable = {n for n, p in model.named_parameters() if p.requires_grad}
     lora_state = {k: v for k, v in model.state_dict().items() if k in trainable}
     assert lora_state, "no trainable params found — adapter naming changed?"
-    OUT.parent.mkdir(exist_ok=True)
-    torch.save(lora_state, OUT)
-    print(f"saved {OUT} ({len(lora_state)} tensors)")
+    out.parent.mkdir(exist_ok=True)
+    torch.save(lora_state, out)
+    print(f"saved {out} ({len(lora_state)} tensors)")
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--extra-data", nargs="+", default=None,
+                    help="additional winning-path jsonl files (e.g. frontier)")
+    ap.add_argument("--out", type=Path, default=OUT)
+    a = ap.parse_args()
+    main(extra_data=a.extra_data, out=a.out)
