@@ -94,6 +94,13 @@ def _is_zero(d: sp.Expr) -> bool:
     d = sp.expand(d)
     if d == 0:
         return True
+    if d.has(sp.Integral, sp.Subs):
+        # unsolved carriers survived structural cancellation (nested
+        # i_parts residue). evalf here would run numerical QUADRATURE
+        # (measured minutes per edge) and simplify is no better. Reject:
+        # verification incompleteness only prunes a legal move — it can
+        # never admit an illegal one, so soundness is preserved.
+        return False
     frees = sorted(d.free_symbols, key=str)
     if frees:
         decided = True
