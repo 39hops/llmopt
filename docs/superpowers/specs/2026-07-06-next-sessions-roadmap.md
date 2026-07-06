@@ -13,7 +13,13 @@ build-out.
 > HCE calibration rho(diff) = +0.685, rho(int) = +0.712. NNUE moment
 > SHIPPED 2026-07-07: 20-dim structural MLP, held-out state rho +0.937,
 > wins or ties all 24 race cells vs HCE (346/480 vs 331/480).
-> Remaining from this item: model as move proposer.
+> Move proposer SHIPPED 2026-07-07 (top3 99.7%; race champion
+> prop3+hce 288/360 vs full 264/360; model +11 over random-k control).
+> ITEM #1 COMPLETE — every rung measured. Follow-on specs opened:
+> adaptive-k (entropy-gated depth/breadth), optimization trio
+> (parallelism SHIPPED 3.1x, policy distill, sampled verification),
+> expert iteration round 2, depth-vs-breadth sweep (k1x3 aggregate
+> winner 264/360).
 
 The step-level-search goal from CLAUDE.md's expert-iteration thread,
 made concrete. Chess-engine mapping: position = derivation state (a
