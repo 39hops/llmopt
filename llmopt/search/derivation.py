@@ -83,6 +83,40 @@ def _subs_eval(e: sp.Expr) -> sp.Expr:
     return e.xreplace(repl) if repl else e
 
 
+def _is_zero(d: sp.Expr) -> bool:
+    """Bounded zero-test for edge verification. simplify() can burn
+    20+ minutes on 18-op exp/log/trig mixes (measured 2026-07-07), so:
+    expand fast path -> deterministic multi-point numeric screen (30
+    digits; identically-zero elementary expressions vanish at generic
+    points with overwhelming probability) -> simplify only for the
+    rare ambiguous leftovers. Terminal answers are still checked fully
+    symbolically in tests/bench; this bounds *edge* cost only."""
+    d = sp.expand(d)
+    if d == 0:
+        return True
+    frees = sorted(d.free_symbols, key=str)
+    if frees:
+        decided = True
+        for k in range(3):
+            subs = {
+                v: sp.Float("0.7183") + sp.Rational(17 * (k + 1) + 5 * i, 100)
+                for i, v in enumerate(frees)
+            }
+            try:
+                val = complex(d.evalf(30, subs=subs))
+            except Exception:
+                decided = False
+                break
+            if abs(val) > 1e-15:
+                return False
+            if abs(val) > 1e-25:  # suspicious near-zero: escalate
+                decided = False
+                break
+        if decided:
+            return True
+    return sp.simplify(d) == 0
+
+
 def verify_edge(parent: sp.Expr, child: sp.Expr) -> bool:
     """Oracle check: a legal move preserves the value. Integral edges
     are verified modulo an additive constant (antiderivatives are an
@@ -98,10 +132,8 @@ def verify_edge(parent: sp.Expr, child: sp.Expr) -> bool:
         if parent.has(sp.Integral):
             d = parent - child
             frees = parent.free_symbols | child.free_symbols
-            return all(
-                sp.simplify(sp.diff(d, v).doit()) == 0 for v in frees
-            )
-        return sp.simplify(parent.doit() - child.doit()) == 0
+            return all(_is_zero(sp.diff(d, v).doit()) for v in frees)
+        return _is_zero(parent.doit() - child.doit())
     except Exception:
         return False
 

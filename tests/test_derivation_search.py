@@ -123,6 +123,19 @@ def test_max_nodes_budget():
     assert r.nodes <= 2
 
 
+def test_is_zero_ladder():
+    from llmopt.search.derivation import _is_zero
+
+    # symbolic-zero forms that expand alone doesn't kill
+    assert _is_zero(sp.sin(x) ** 2 + sp.cos(x) ** 2 - 1)
+    assert _is_zero(sp.exp(x) * sp.exp(-x) - 1)
+    assert _is_zero((x + 1) ** 2 - x**2 - 2 * x - 1)
+    # nonzero must be rejected (numeric screen path)
+    assert not _is_zero(sp.sin(x) ** 2 + sp.cos(x) ** 2 - 2)
+    assert not _is_zero(sp.log(x) - x)
+    assert not _is_zero(sp.Integer(3))
+
+
 def test_trace_collects_equivalent_states():
     trace = []
     root = sp.Derivative(x**2 * sp.sin(x), x)
