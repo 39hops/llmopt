@@ -23,12 +23,12 @@ MODEL = "Qwen/Qwen2.5-0.5B-Instruct"
 N_TRAIN, N_EVAL = 9000, 300
 # limits are trained/evaled in traced form: the answer format carries the
 # factor/cancel/substitute steps, the metric still scores only the final line
-KINDS = ("differentiate",)  # single-skill adapter for task-arithmetic composition
+KINDS = ("integrate",)  # single-skill adapter for task-arithmetic composition
 EPOCHS, BATCH, LR = 3, 8, 2e-4
 TOKEN_BUDGET = 2048
 TARGETS = ("q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj")
 RANK = 16
-OUT = Path("checkpoints/diff_only_lora.pt")
+OUT = Path("checkpoints/int_only_lora.pt")
 
 
 def encode(tok, problem):
