@@ -128,6 +128,7 @@ def beam_search(
     max_plies: int = 12,
     max_nodes: int | None = None,
     use_macros: bool = False,
+    trace: list[State] | None = None,
 ) -> SearchResult:
     """Minimize hce over the rewrite tree. Returns the best solved
     state found, else the best-evaluated state at exhaustion."""
@@ -145,6 +146,8 @@ def beam_search(
                 if child.key() in visited:
                     continue
                 visited.add(child.key())
+                if trace is not None:
+                    trace.append(child)
                 nodes += 1
                 if max_nodes is not None and nodes >= max_nodes:
                     candidates.append(child)

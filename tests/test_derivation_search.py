@@ -101,6 +101,16 @@ def test_max_nodes_budget():
     assert r.nodes <= 2
 
 
+def test_trace_collects_equivalent_states():
+    trace = []
+    root = sp.Derivative(x**2 * sp.sin(x), x)
+    r = beam_search(root, trace=trace)
+    assert r.solved
+    assert len(trace) >= r.state.plies  # at least the winning path
+    for s in trace:
+        assert sp.simplify(s.expr.doit() - root.doit()) == 0
+
+
 def test_beam_records_history():
     r = beam_search(sp.Derivative(x**2, x))
     assert r.solved
