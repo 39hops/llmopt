@@ -39,6 +39,8 @@ Rotate-then-quantize (`scripts/bench_rotate_quantize.py`, CPU): an orthogonal ro
 
 mathgen calculus recipe reproduced cross-platform (`scripts/train_calculus.py`): Mac MPS 10.7% → 66.3% symbolic accuracy vs Windows CUDA 15.7% → 65.7% — same recipe, one point apart across different hardware, batch composition, and numerics. Limits stay the resistant family on both (≤21%), motivating the derivation-search engine (`search/derivation.py`, HCE + beam chassis landed, primitive move set is the next rung).
 
+Task arithmetic on LoRA task vectors (`scripts/task_arithmetic.py`, `scripts/task_composition.py`, 0.5B): the calculus adapter transfers **completely** across parent weights — grafted onto the base (non-Instruct) model it scores 66.3% vs the donor's 66.0% (base alone: 0.3%). Scaling peaks at exactly λ=1.0. The rest is honest failure: negation is a lobotomy (0% math, 6.2M perplexity), the vector carries a format-forcing component that costs 16x prose perplexity even at λ=1, and adding two single-skill adapters annihilates both (98%/89% alone → 1.3%/4.7% added; retention bar was 90%). At this scale and training intensity, plain addition doesn't merge skills — the TIES-style variants exist for a reason. Also an honest null: fusing swiglu into mlx-lm's MLP is +0.1% end-to-end at batch-1 decode.
+
 ## What's inside
 
 | Subpackage | Implemented | Roadmap |
