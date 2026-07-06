@@ -44,7 +44,11 @@ def evaluate(model, tok, problems) -> float:
             {"role": "system", "content": SYSTEM},
             {"role": "user", "content": p.prompt},
         ]
-        text = tok.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False)
+        # Qwen3 emits <think>... by default, which eats the whole token
+        # budget before any answer appears; measured 0.0% without this
+        text = tok.apply_chat_template(
+            msgs, add_generation_prompt=True, tokenize=False, enable_thinking=False
+        )
         completion = generate(model, tok, prompt=text, max_tokens=MAX_TOKENS)
         n_ok += p.check(extract_expression(completion))
         if (i + 1) % 20 == 0:
