@@ -29,6 +29,16 @@ RULER long-context eval (`scripts/eval_ruler.py`, chunked prefill — one-shot 2
 
 MLX (Apple silicon), Qwen2.5-3B-Instruct 4-bit, same prompt (`scripts/sweep_lookup_mlx.py`): greedy 56.9 tok/s → prompt-lookup 63.1 tok/s (1.1x, num_draft=5). The same generic loop runs unchanged and stays token-identical; the gain is smaller because MLX has no per-step launch overhead for drafting to amortize, so shorter drafts win.
 
+Metal split-K decode attention (`kernels/metal.py`, M3 Pro): two-phase split-K (exp2-domain softmax, float32 partials) ties `mx.fast.scaled_dot_product_attention` at T=32k (440 vs 443 µs) and beats naive softmax@V 1.8x; the GQA variant beats a per-head loop ~3x. Found en route: the old bench harness timed MLX's lazy graph construction, not the GPU — every earlier Metal number was an artifact (`mx.eval` every timed iteration). Honest negative: group-shared K/V reads for GQA — the standard CUDA lesson — are ~10% *slower* on M-series; the shared last-level cache already dedupes duplicate reads.
+
+MoE expert pruning by router stats (`scripts/moe_router_stats.py` + `scripts/eval_pruned_moe.py`, Qwen3-30B-A3B-4bit, mathgen symbolic eval): routers are strongly domain-biased (math-vs-prose keep-set Jaccard 0.14–0.51). Masking experts the router never picks on math (**"ever selected"**, 61% kept) holds full accuracy (54.2% vs 53.3%); a count-quantile at 50% kept scores highest (55.8%). Pruning by cumulative router mass @0.99 (42% kept) loses 14 points, and below ~28% kept the model doesn't degrade — it dies (0.0%). Expert pruning is a cliff, not a slope, and probability mass is the wrong knife.
+
+Weight-space reader (`scripts/train_weight_reader.py`, CPU): a ~1M-param neuron-token transformer classifies which function family a tiny MLP was trained on *from its raw weights* at 80.8% (chance 16.7%); permutation-augmented 88.4%. Both on-record predictions were wrong instructively: the neuron-token encoding is already order-invariant (raw never faced the symmetry), and augmentation beat canonical norm-sorting (imposing invariance is brittle under near-ties; teaching it isn't). Corollary now in CLAUDE.md: score weights by *running* them, never by weight distance.
+
+Rotate-then-quantize (`scripts/bench_rotate_quantize.py`, CPU): an orthogonal rotation — same function, every numeric value changed — cuts RTN quantization error 15–20% at 4/3 bits on real Qwen2.5-0.5B weights (down_proj 4b: 0.205 → 0.164); iid-Gaussian control unmoved, planted-outlier control 2.4x. Honest nuance: at 2 bits rotation *hurts* the outlier matrix — with 3 levels, smearing outliers makes nothing representable. The numerically best arrangement of the same weights depends on the bit width.
+
+mathgen calculus recipe reproduced cross-platform (`scripts/train_calculus.py`): Mac MPS 10.7% → 66.3% symbolic accuracy vs Windows CUDA 15.7% → 65.7% — same recipe, one point apart across different hardware, batch composition, and numerics. Limits stay the resistant family on both (≤21%), motivating the derivation-search engine (`search/derivation.py`, HCE + beam chassis landed, primitive move set is the next rung).
+
 ## What's inside
 
 | Subpackage | Implemented | Roadmap |
