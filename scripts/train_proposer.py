@@ -126,8 +126,11 @@ def main() -> None:
     acc = move_accuracy(model, tok, eval_rows, device)
     print(f"tuned move accuracy: top1={acc[1]:.1%} top3={acc[3]:.1%}")
 
-    lora_state = {k: v for k, v in model.state_dict().items()
-                  if "lora" in k.lower()}
+    # train/lora.py names adapter params `.a` / `.b` inside LoRALinear —
+    # save exactly the trainable set, keyed as in state_dict
+    trainable = {n for n, p in model.named_parameters() if p.requires_grad}
+    lora_state = {k: v for k, v in model.state_dict().items() if k in trainable}
+    assert lora_state, "no trainable params found — adapter naming changed?"
     OUT.parent.mkdir(exist_ok=True)
     torch.save(lora_state, OUT)
     print(f"saved {OUT} ({len(lora_state)} tensors)")
