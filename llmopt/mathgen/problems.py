@@ -102,6 +102,8 @@ def _atom(rng: random.Random, level: int):
 def _expression(rng: random.Random, level: int):
     if level <= 2:
         return sum(_atom(rng, level) for _ in range(rng.randint(2, 4)))
+    if level >= 4:
+        return _expression_l4(rng)
     kind = rng.choice(["product", "compose", "mixed"])
     if kind == "product":
         return _atom(rng, 2) * _atom(rng, 2)
@@ -111,6 +113,44 @@ def _expression(rng: random.Random, level: int):
         outer = rng.choice([sp.sin, sp.cos, sp.exp])
         return outer(inner)
     return _atom(rng, 2) * _atom(rng, 2) + _atom(rng, 2)
+
+
+def _expression_l4(rng: random.Random):
+    """Level 4 (expert-iteration frontier): depth-3 compositions,
+    composed products, chained-u-sub shapes, and sums of two. The
+    space must stay wide — collision guard in tests/test_mathgen_l4.py
+    (repo scar tissue: two real contamination incidents)."""
+    def poly():
+        while True:  # x-terms can cancel (3x - 3x + c): redraw
+            p = (rng.randint(1, 5) * X ** rng.randint(1, 3)
+                 + rng.randint(-4, 4) * X + rng.randint(0, 5))
+            if p.has(X):
+                return p
+
+    def deep():
+        outer = rng.choice([sp.sin, sp.cos, sp.exp])
+        mid = rng.choice([sp.sin, sp.cos, sp.sqrt])
+        return rng.randint(1, 9) * outer(poly() + mid(rng.randint(1, 9) * X))
+
+    def composed_product():
+        outer = rng.choice([sp.sin, sp.cos, sp.exp])
+        return _atom(rng, 2) * outer(poly()) * rng.randint(1, 9)
+
+    def chained():
+        g = poly()
+        fn = rng.choice([sp.sin, sp.cos, sp.exp])
+        return rng.randint(1, 9) * sp.diff(g, X) * fn(g) ** rng.randint(1, 4)
+
+    kind = rng.choice(["deep", "composed_product", "chained", "sum2"])
+    if kind == "deep":
+        return deep()
+    if kind == "composed_product":
+        return composed_product()
+    if kind == "chained":
+        return chained()
+    parts = [deep(), composed_product(), chained()]
+    rng.shuffle(parts)
+    return parts[0] + parts[1]
 
 
 def make_differentiate(level: int, seed: int) -> Problem:
