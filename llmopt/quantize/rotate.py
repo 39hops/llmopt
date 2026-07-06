@@ -9,6 +9,14 @@ grid spends its levels where the mass is.
 
 rotation_error measures the round-trip in the rotated basis:
 ||W - Q^T rtn(QW)||_F / ||W||_F, against the rotation=None baseline.
+
+Measured (scripts/bench_rotate_quantize.py, Qwen2.5-0.5B fp32 weights):
+rotation cuts RTN error ~15-20% at 4 and 3 bits on real layers
+(down_proj 4b: 0.205 -> 0.164; q_proj 4b: 0.187 -> 0.150); iid-Gaussian
+control unmoved (0.1430 -> 0.1423); planted-outlier control 2.4x better
+(0.269 -> 0.110). Honest nuance: at 2 bits rotation HURTS the outlier
+matrix (0.62 -> 0.73) — with 3 levels, smearing outliers makes nothing
+representable; the best arrangement depends on the bit width.
 """
 
 from __future__ import annotations
