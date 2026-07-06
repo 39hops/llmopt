@@ -96,6 +96,16 @@ as a table. Numbers go in the commit message.
 - Diff suite untouched and green (verify_edge change must not loosen
   Derivative-only edges).
 
+## Amendment (found during implementation)
+
+The textbook by-parts split u = x, dv = cos x has du = 1, so the emitted
+second term `Integral(Integral(cos x, x)·1, x)` collapses into the
+multi-limit `Integral(cos x, x, x)` at construction — which no rule
+matches, dead-ending the winning derivation path. Fix: `successors()`
+**peels** multi-limit integrals — rules are applied to a single-limit
+proxy of the innermost limit and the rewrite is rewrapped in the
+remaining limits. Rules themselves remain single-limit-only as designed.
+
 ## Out of scope
 
 Trig substitution, partial-fraction integration, definite integrals,

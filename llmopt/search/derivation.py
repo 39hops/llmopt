@@ -25,9 +25,11 @@ Rung 1 (2026-07-06): doit_one is gone from the move set. Moves are
 the derivation and sympy is demoted to per-edge verifier (verify_edge).
 Algebra cleanup moves are kept trimmed (no simplify: an algebra
 mega-move that collapses plies). doit remains available to the
-verifier and to tests as ground truth. Differentiation only; Integral/
-Limit states are honestly unsolvable until rung 2. Spec:
+verifier and to tests as ground truth. Rung 2 adds integration rules
+(u-sub via Subs carriers, stepwise by-parts); Limit states remain
+unsolvable. Integral edges verify modulo additive constants. Specs:
 docs/superpowers/specs/2026-07-06-hce-rung1-primitive-moves-design.md
+docs/superpowers/specs/2026-07-07-rung2-integration-moves-design.md
 """
 
 from __future__ import annotations
@@ -37,7 +39,7 @@ from typing import Callable, Iterator
 
 import sympy as sp
 
-from llmopt.search.rules import CORE_RULES, MACRO_RULES
+from llmopt.search.rules import CORE_RULES, INT_RULES, MACRO_RULES
 
 UNSOLVED = (sp.Derivative, sp.Integral, sp.Limit)
 
@@ -71,15 +73,27 @@ ALGEBRA_MOVES: list[tuple[str, Callable[[sp.Expr], sp.Expr]]] = [
     ("together", sp.together),
     ("trigsimp", sp.trigsimp),
     ("powsimp", sp.powsimp),
+    ("subs_eval", lambda e: _subs_eval(e)),
 ]
 
 
+def _subs_eval(e: sp.Expr) -> sp.Expr:
+    """Back-substitute solved Subs carriers (from i_usub) — a visible ply."""
+    repl = {s: s.doit() for s in e.atoms(sp.Subs) if not s.expr.has(*UNSOLVED)}
+    return e.xreplace(repl) if repl else e
+
+
 def verify_edge(parent: sp.Expr, child: sp.Expr) -> bool:
-    """Oracle check: a legal move preserves the value. doit() is the
-    complete solver — too strong as a mover (rung 0's mistake), exactly
-    right as a verifier."""
+    """Oracle check: a legal move preserves the value. Integral edges
+    are verified modulo an additive constant (antiderivatives are an
+    equivalence class); Derivative-only edges must match exactly."""
     try:
-        return sp.simplify(parent.doit() - child.doit()) == 0
+        d = sp.simplify(parent.doit() - child.doit())
+        if d == 0:
+            return True
+        return bool(parent.has(sp.Integral)) and not (
+            d.free_symbols & parent.free_symbols
+        )
     except Exception:
         return False
 
@@ -104,6 +118,19 @@ def successors(
             for rewrite in rule(node):
                 label = f"{rule_name}@{sp.sstr(node)}"
                 yield from emit(label, state.expr.xreplace({node: rewrite}))
+    for node in sorted(state.expr.atoms(sp.Integral), key=sp.count_ops):
+        # multi-limit integrals (sympy collapses ∫∫f at construction, e.g.
+        # from a du=1 by-parts split): peel — apply rules to the innermost
+        # limit, rewrap the rest. Rules themselves stay single-limit.
+        nested = len(node.limits) > 1
+        inner = sp.Integral(node.function, node.limits[0]) if nested else node
+        for rule_name, rule in INT_RULES:
+            for rewrite in rule(inner):
+                new_node = (
+                    sp.Integral(rewrite, *node.limits[1:]) if nested else rewrite
+                )
+                label = f"{rule_name}@{sp.sstr(inner)}"
+                yield from emit(label, state.expr.xreplace({node: new_node}))
     for name, fn in ALGEBRA_MOVES:
         try:
             new = fn(state.expr)

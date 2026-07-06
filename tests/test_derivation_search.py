@@ -47,11 +47,33 @@ def test_higher_order_unsolved_at_rung1():
     assert not r.solved
 
 
-def test_integral_unsolved_at_rung1():
-    # rung-1 scope is differentiation only (spec): no rule fires on
-    # Integral, and doit is a verifier now, not a move. Honest miss.
+def test_integral_solved_at_rung2():
     r = beam_search(sp.Integral(3 * x**2 + 2 * x, x))
-    assert not r.solved
+    assert r.solved
+    assert sp.simplify(sp.diff(r.state.expr, x) - (3 * x**2 + 2 * x)) == 0
+    assert r.state.plies > 1
+
+
+def test_usub_end_to_end():
+    r = beam_search(sp.Integral(2 * x * sp.cos(x**2), x), max_plies=16)
+    assert r.solved
+    assert sp.simplify(sp.diff(r.state.expr, x) - 2 * x * sp.cos(x**2)) == 0
+    assert any(h.startswith("i_usub@") for h in r.state.history)
+
+
+def test_parts_end_to_end():
+    r = beam_search(sp.Integral(x * sp.cos(x), x), max_plies=16)
+    assert r.solved
+    assert sp.simplify(sp.diff(r.state.expr, x) - x * sp.cos(x)) == 0
+
+
+def test_diff_edges_still_exact():
+    # the constant-offset tolerance must not leak into Derivative-only
+    # edges: solved diff answers still match sp.diff exactly
+    root = sp.Derivative(x**3 + sp.sin(x), x)
+    r = beam_search(root)
+    assert r.solved
+    assert sp.simplify(r.state.expr - sp.diff(x**3 + sp.sin(x), x)) == 0
 
 
 def test_search_is_not_degenerate():
