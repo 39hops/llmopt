@@ -129,3 +129,141 @@ CORE_RULES: list[tuple[str, DiffRule]] = [
 MACRO_RULES: list[tuple[str, DiffRule]] = [
     ("d_quotient", d_quotient),
 ]
+
+
+# ------------------------------------------------------ integration
+
+IntRule = Callable[[sp.Integral], "list[sp.Expr]"]
+
+U = sp.Symbol("u_")  # reserved substitution symbol (named: Dummy breaks srepr dedup)
+
+
+def _unpack_int(node: sp.Integral) -> tuple[sp.Expr, sp.Symbol] | None:
+    """(f, x) for single-variable indefinite Integrals, else None."""
+    if len(node.limits) != 1 or len(node.limits[0]) != 1:
+        return None
+    return node.function, node.limits[0][0]
+
+
+def i_const(node: sp.Integral) -> list[sp.Expr]:
+    u = _unpack_int(node)
+    if u is None:
+        return []
+    f, x = u
+    return [f * x] if not f.has(x) else []
+
+
+def i_power(node: sp.Integral) -> list[sp.Expr]:
+    u = _unpack_int(node)
+    if u is None:
+        return []
+    f, x = u
+    if f == x:
+        return [x**2 / 2]
+    if not (isinstance(f, sp.Pow) and f.base == x and not f.exp.has(x)):
+        return []
+    n = f.exp
+    return [sp.log(x)] if n == -1 else [x ** (n + 1) / (n + 1)]
+
+
+def i_sum(node: sp.Integral) -> list[sp.Expr]:
+    u = _unpack_int(node)
+    if u is None:
+        return []
+    f, x = u
+    if not isinstance(f, sp.Add):
+        return []
+    return [sp.Add(*(sp.Integral(t, x) for t in f.args))]
+
+
+def i_const_factor(node: sp.Integral) -> list[sp.Expr]:
+    u = _unpack_int(node)
+    if u is None:
+        return []
+    f, x = u
+    if not isinstance(f, sp.Mul):
+        return []
+    const = sp.Mul(*(a for a in f.args if not a.has(x)))
+    rest = sp.Mul(*(a for a in f.args if a.has(x)))
+    if const == 1 or rest == 1:
+        return []
+    return [const * sp.Integral(rest, x)]
+
+
+_INT_TABLE = {sp.sin: lambda v: -sp.cos(v), sp.cos: sp.sin, sp.exp: sp.exp}
+
+
+def i_table(node: sp.Integral) -> list[sp.Expr]:
+    u = _unpack_int(node)
+    if u is None:
+        return []
+    f, x = u
+    if isinstance(f, sp.Function) and f.func in _INT_TABLE and f.args == (x,):
+        return [_INT_TABLE[f.func](x)]
+    return []
+
+
+def _usub_candidates(f: sp.Expr, x: sp.Symbol) -> list[sp.Expr]:
+    cands = []
+    for fn in f.atoms(sp.Function):
+        cands.append(fn.args[0])
+    for p in f.atoms(sp.Pow):
+        cands.append(p.base)
+    seen = set()
+    out = []
+    for g in cands:
+        k = sp.srepr(g)
+        if k not in seen and g.has(x) and g != x:
+            seen.add(k)
+            out.append(g)
+    return out
+
+
+def i_usub(node: sp.Integral) -> list[sp.Expr]:
+    """u-substitution: if f == h(g)·g', rewrite to Subs(∫h(u)du, u, g).
+    One branch per candidate g — wrong choices are the search's problem."""
+    u = _unpack_int(node)
+    if u is None:
+        return []
+    f, x = u
+    out: list[sp.Expr] = []
+    for g in _usub_candidates(f, x):
+        dg = sp.diff(g, x)
+        if dg == 0:
+            continue
+        q = sp.simplify(sp.cancel(f / dg)).subs(g, U)
+        if q.has(x) or not q.has(U):
+            continue
+        out.append(sp.Subs(sp.Integral(q, U), U, g))
+    return out
+
+
+def i_parts(node: sp.Integral) -> list[sp.Expr]:
+    """Integration by parts, stepwise: ∫u dv = u·∫dv − ∫(∫dv)·u'.
+    Inner integrals stay unevaluated; one branch per (u, dv) split."""
+    u_ = _unpack_int(node)
+    if u_ is None:
+        return []
+    f, x = u_
+    if not isinstance(f, sp.Mul):
+        return []
+    out: list[sp.Expr] = []
+    for i, u_part in enumerate(f.args):
+        du = sp.diff(u_part, x)
+        if du == 0:
+            continue
+        dv = sp.Mul(*(a for j, a in enumerate(f.args) if j != i))
+        v = sp.Integral(dv, x)
+        out.append(u_part * v - sp.Integral(v * du, x))
+    return out
+
+
+INT_RULES: list[tuple[str, IntRule]] = [
+    ("i_const", i_const),
+    ("i_power", i_power),
+    ("i_sum", i_sum),
+    ("i_const_factor", i_const_factor),
+    ("i_table", i_table),
+    ("i_usub", i_usub),
+    ("i_parts", i_parts),
+]
