@@ -86,7 +86,7 @@ def _fit(family: str, coeffs: tuple, torch_seed: int) -> tuple[list[torch.Tensor
         opt.zero_grad()
         loss.backward()
         opt.step()
-    return [w.detach().clone() for w in weights], float(loss)
+    return [w.detach().clone() for w in weights], float(loss.detach())
 
 
 def make_subject(family: str, i: int, seed: int) -> Subject:
