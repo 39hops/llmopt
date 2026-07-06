@@ -10,8 +10,10 @@ build-out.
 > STATUS 2026-07-07: rungs 1-2 SHIPPED (specs: hce-rung1-primitive-moves,
 > hce-calibration, rung2-integration-moves). Measured: diff 20/20 at 6-9
 > plies; integration solve rate rises with budget, saturates <100% at L3;
-> HCE calibration rho(diff) = +0.685. Remaining from this item: NNUE
-> moment (learned eval vs the +0.685 baseline), model as move proposer.
+> HCE calibration rho(diff) = +0.685, rho(int) = +0.712. NNUE moment
+> SHIPPED 2026-07-07: 20-dim structural MLP, held-out state rho +0.937,
+> wins or ties all 24 race cells vs HCE (346/480 vs 331/480).
+> Remaining from this item: model as move proposer.
 
 The step-level-search goal from CLAUDE.md's expert-iteration thread,
 made concrete. Chess-engine mapping: position = derivation state (a
