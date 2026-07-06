@@ -7,6 +7,12 @@ build-out.
 
 ## 1. Derivation search engine with hand-crafted evaluation ("Stockfish for math")
 
+> STATUS 2026-07-07: rungs 1-2 SHIPPED (specs: hce-rung1-primitive-moves,
+> hce-calibration, rung2-integration-moves). Measured: diff 20/20 at 6-9
+> plies; integration solve rate rises with budget, saturates <100% at L3;
+> HCE calibration rho(diff) = +0.685. Remaining from this item: NNUE
+> moment (learned eval vs the +0.685 baseline), model as move proposer.
+
 The step-level-search goal from CLAUDE.md's expert-iteration thread,
 made concrete. Chess-engine mapping: position = derivation state (a
 sympy expression + goal); move = rewrite (factor, substitute,
