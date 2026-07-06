@@ -86,21 +86,23 @@ def _check(kind, expr, truth):
     return sp.simplify(sp.diff(expr, X) - truth) == 0
 
 
-def main(n: int, budgets: list[int]) -> None:
+def main(n: int, budgets: list[int], temperature: float = 1.0,
+         configs: list[str] | None = None) -> None:
     score_fn = load_model()
     scoring_prop = make_scoring_proposer(score_fn)
     fixed_prop = make_proposer(score_fn)
     signal.signal(signal.SIGALRM,
                   lambda s, f: (_ for _ in ()).throw(_Timeout()))
+    configs = configs or ["full", "k3prop", "k1x3", "adapt"]
     print(f"# adaptive-k race — n={n}/cell, wall {WALL}s/search, "
-          f"entropy_k(1,6)")
+          f"entropy_k(1,6,T={temperature}), configs={configs}")
     print(f"{'kind':>4} {'lvl':>3} {'budget':>6} {'full':>7} {'k3prop':>7} "
           f"{'k1x3':>7} {'adapt':>7} {'mean-k':>7} {'H-deciles':>22}")
     for kind in ("diff", "int"):
         for level in (1, 2, 3):
             for budget in budgets:
                 cells, mean_k, h_hist = {}, float("nan"), ""
-                for name in ("full", "k3prop", "k1x3", "adapt"):
+                for name in configs:
                     rng = random.Random(f"proposer-race-{kind}-{level}-0")
                     ok = 0
                     ks_seen: list[int] = []
@@ -121,7 +123,8 @@ def main(n: int, budgets: list[int]) -> None:
                                 r = restart_search(root, budget, 3,
                                                    f"{kind}-{level}-{p}")
                             else:
-                                base_policy = entropy_k(1, 6)
+                                base_policy = entropy_k(
+                                    1, 6, temperature=temperature)
 
                                 def policy(s_, ranked, scores):
                                     import math
@@ -156,9 +159,8 @@ def main(n: int, budgets: list[int]) -> None:
                         tot = max(1, sum(deciles))
                         h_hist = "".join(str(min(9, d * 10 // tot))
                                          for d in deciles)
-                print(f"{kind:>4} {level:>3} {budget:>6} "
-                      f"{cells['full']:>4}/{n:<2} {cells['k3prop']:>4}/{n:<2} "
-                      f"{cells['k1x3']:>4}/{n:<2} {cells['adapt']:>4}/{n:<2} "
+                row = " ".join(f"{cells[c]:>4}/{n:<2}" for c in configs)
+                print(f"{kind:>4} {level:>3} {budget:>6} {row} "
                       f"{mean_k:>7.2f} {h_hist:>22}", flush=True)
 
 
@@ -166,5 +168,8 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=15)
     ap.add_argument("--budgets", type=int, nargs="+", default=[25, 50, 100, 200])
+    ap.add_argument("--temperature", type=float, default=1.0)
+    ap.add_argument("--configs", nargs="+", default=None,
+                    choices=["full", "k3prop", "k1x3", "adapt"])
     a = ap.parse_args()
-    main(a.n, a.budgets)
+    main(a.n, a.budgets, temperature=a.temperature, configs=a.configs)
