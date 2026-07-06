@@ -68,7 +68,7 @@ def load_proposer(ckpt="checkpoints/proposer_lora.pt"):
         MODEL, dtype=torch.bfloat16).to(device)
     apply_lora(model, TARGETS, r=16, alpha=32)
     missing, unexpected = model.load_state_dict(
-        torch.load(ckpt, weights_only=True), strict=False)
+        torch.load(ckpt, weights_only=True, map_location="cpu"), strict=False)
     assert not unexpected, unexpected
     model.eval()
     return make_proposer(hf_score_fn(model, tok, device))
