@@ -25,6 +25,7 @@ N_TRAIN, N_EVAL = 9000, 300
 # factor/cancel/substitute steps, the metric still scores only the final line
 KINDS = ("differentiate", "integrate", "limit_traced")
 EPOCHS, BATCH, LR = 3, 8, 2e-4
+TOKEN_BUDGET = 2048
 TARGETS = ("q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj")
 RANK = 16
 OUT = Path("checkpoints/calculus_lora.pt")
@@ -42,13 +43,11 @@ def encode(tok, problem):
     return ids, labels
 
 
-def batches(examples, pad_id, batch_size, device, epoch=0, token_budget=2048):
-    """Length-bucketed (little padding) but order-shuffled (decorrelated):
-    examples arrive length-sorted. Batches are cut by token budget
+def cut_batches(examples, batch_size, token_budget):
+    """Batch boundaries over length-sorted examples, cut by token budget
     (width * rows), not fixed count, so long traced answers get small
-    batches instead of OOMing the 152k-vocab loss."""
-    import random as _random
-
+    batches instead of OOMing the 152k-vocab loss. Deterministic given
+    the sorted examples, so len(cuts) is the true steps-per-epoch."""
     cuts, i = [], 0
     while i < len(examples):
         j = i + 1
@@ -57,6 +56,15 @@ def batches(examples, pad_id, batch_size, device, epoch=0, token_budget=2048):
             j += 1
         cuts.append((i, j))
         i = j
+    return cuts
+
+
+def batches(examples, pad_id, batch_size, device, epoch=0, token_budget=TOKEN_BUDGET):
+    """Length-bucketed (little padding) but order-shuffled (decorrelated):
+    examples arrive length-sorted."""
+    import random as _random
+
+    cuts = cut_batches(examples, batch_size, token_budget)
     _random.Random(epoch).shuffle(cuts)
     for i, j in cuts:
         chunk = examples[i:j]
@@ -96,7 +104,9 @@ def main() -> None:
     ]
     train.sort(key=lambda e: len(e[0]))  # length-sorted batches: less padding
     opt = torch.optim.AdamW(train_params, lr=LR)
-    steps_total = EPOCHS * (len(train) // BATCH)
+    # token-budget cuts produce more batches than len(train)//BATCH; count
+    # the real cuts so the cosine schedule doesn't floor before training ends
+    steps_total = EPOCHS * len(cut_batches(train, BATCH, TOKEN_BUDGET))
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=steps_total)
 
     model.train()
