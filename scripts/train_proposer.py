@@ -80,7 +80,7 @@ def move_accuracy(model, tok, rows, device, k=(1, 3)):
     return {kk: hits[kk] / len(rows) for kk in k}
 
 
-def main(extra_data: list[str] | None = None, out: Path = OUT) -> None:
+def main(extra_data: list[str] | None = None, out_path: Path = OUT) -> None:
     device = ("cuda" if torch.cuda.is_available()
               else "mps" if torch.backends.mps.is_available() else "cpu")
     tok = AutoTokenizer.from_pretrained(MODEL)
@@ -135,9 +135,9 @@ def main(extra_data: list[str] | None = None, out: Path = OUT) -> None:
     trainable = {n for n, p in model.named_parameters() if p.requires_grad}
     lora_state = {k: v for k, v in model.state_dict().items() if k in trainable}
     assert lora_state, "no trainable params found — adapter naming changed?"
-    out.parent.mkdir(exist_ok=True)
-    torch.save(lora_state, out)
-    print(f"saved {out} ({len(lora_state)} tensors)")
+    out_path.parent.mkdir(exist_ok=True)
+    torch.save(lora_state, out_path)
+    print(f"saved {out_path} ({len(lora_state)} tensors)")
 
 
 if __name__ == "__main__":
@@ -148,4 +148,4 @@ if __name__ == "__main__":
                     help="additional winning-path jsonl files (e.g. frontier)")
     ap.add_argument("--out", type=Path, default=OUT)
     a = ap.parse_args()
-    main(extra_data=a.extra_data, out=a.out)
+    main(extra_data=a.extra_data, out_path=a.out)
