@@ -37,6 +37,41 @@ def make_proposer(score_fn: ScoreFn):
     return proposer
 
 
+def make_scoring_proposer(score_fn: ScoreFn):
+    """Like make_proposer, but returns (ranked_children, scores_desc)
+    so an adaptive-k policy can read the ranker's confidence."""
+
+    def proposer(state: State, children: list[tuple[str, State]]):
+        if not children:
+            return children, []
+        labels = [name for name, _ in children]
+        scores = score_fn(sp.sstr(state.expr), labels)
+        order = sorted(range(len(children)), key=lambda i: -scores[i])
+        return [children[i] for i in order], [scores[i] for i in order]
+
+    return proposer
+
+
+def entropy_k(k_min: int = 1, k_max: int = 6, temperature: float = 1.0):
+    """Confidence-gated branching: peaked ranking -> deep (k_min);
+    flat ranking -> wide (k_max). H is normalized entropy of the
+    softmax over child scores (spec: 2026-07-07-adaptive-k-design.md)."""
+    import math
+
+    def policy(state, ranked, scores) -> int:
+        n = len(scores)
+        if n <= 1:
+            return max(1, k_min)
+        m = max(s / temperature for s in scores)
+        exps = [math.exp(s / temperature - m) for s in scores]
+        z = sum(exps)
+        ps = [e / z for e in exps]
+        h = -sum(p * math.log(p) for p in ps if p > 0) / math.log(n)
+        return k_min + round(h * (k_max - k_min))
+
+    return policy
+
+
 def hf_score_fn(model, tok, device: str) -> ScoreFn:
     """Score each candidate as the mean logprob of its answer tokens
     (' {i}') given the numbered-choice prompt. Batched; 1-2 answer

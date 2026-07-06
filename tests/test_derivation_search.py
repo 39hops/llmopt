@@ -190,6 +190,23 @@ def test_proposer_rerank_changes_expansion_order():
     assert r.nodes >= 1
 
 
+def test_adaptive_propose_k_callable():
+    def scoring_proposer(state, children):
+        n = len(children)
+        return children, [float(n - i) for i in range(n)]
+
+    ks_seen = []
+
+    def policy(state, ranked, scores):
+        ks_seen.append(len(scores))
+        return 2
+
+    r = beam_search(sp.Derivative(x**2 * sp.sin(x), x),
+                    proposer=scoring_proposer, propose_k=policy)
+    assert r.solved
+    assert ks_seen, "policy never consulted"
+
+
 def test_beam_records_history():
     r = beam_search(sp.Derivative(x**2, x))
     assert r.solved
