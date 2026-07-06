@@ -1,0 +1,74 @@
+"""Move proposer: a policy model in front of the classical searcher
+(spec: 2026-07-07-move-proposer-design.md). The searcher enumerates
+LEGAL moves; the model only ranks them — rank-not-generate keeps
+legality by construction. Ranking = likelihood of each numbered choice's
+answer tokens under the fine-tuned model."""
+
+from __future__ import annotations
+
+from typing import Callable
+
+import sympy as sp
+
+from llmopt.search.derivation import State
+
+ScoreFn = Callable[[str, "list[str]"], "list[float]"]
+
+
+def build_prompt(state_str: str, labels: list[str]) -> str:
+    lines = [f"State: {state_str}", "Legal moves:"]
+    lines += [f"{i + 1}. {lab}" for i, lab in enumerate(labels)]
+    lines.append("Best move:")
+    return "\n".join(lines)
+
+
+def make_proposer(score_fn: ScoreFn):
+    """Wrap a scoring function into the beam_search proposer callable.
+    Higher score = better; sort is stable so ties keep enumeration order."""
+
+    def proposer(state: State, children: list[tuple[str, State]]):
+        if not children:
+            return children
+        labels = [name for name, _ in children]
+        scores = score_fn(sp.sstr(state.expr), labels)
+        order = sorted(range(len(children)), key=lambda i: -scores[i])
+        return [children[i] for i in order]
+
+    return proposer
+
+
+def hf_score_fn(model, tok, device: str) -> ScoreFn:
+    """Score each candidate as the mean logprob of its answer tokens
+    (' {i}') given the numbered-choice prompt. Batched; 1-2 answer
+    tokens per candidate keeps this cheap even at ~30 candidates."""
+    import torch
+
+    def score(state_str: str, labels: list[str]) -> list[float]:
+        prompt = build_prompt(state_str, labels)
+        p_ids = tok(prompt, add_special_tokens=False).input_ids
+        rows, spans = [], []
+        for i in range(len(labels)):
+            a_ids = tok(f" {i + 1}", add_special_tokens=False).input_ids
+            rows.append(p_ids + a_ids)
+            spans.append(len(a_ids))
+        width = max(len(r) for r in rows)
+        pad = tok.pad_token_id or tok.eos_token_id
+        ids = torch.full((len(rows), width), pad, dtype=torch.long)
+        mask = torch.zeros_like(ids)
+        for j, r in enumerate(rows):
+            ids[j, : len(r)] = torch.tensor(r)
+            mask[j, : len(r)] = 1
+        ids, mask = ids.to(device), mask.to(device)
+        with torch.no_grad():
+            logits = model(input_ids=ids, attention_mask=mask).logits
+        logprobs = torch.log_softmax(logits.float(), dim=-1)
+        out = []
+        for j, r in enumerate(rows):
+            n = spans[j]
+            lp = 0.0
+            for t in range(len(r) - n, len(r)):
+                lp += float(logprobs[j, t - 1, r[t]])
+            out.append(lp / n)
+        return out
+
+    return score
