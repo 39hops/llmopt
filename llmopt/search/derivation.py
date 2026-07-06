@@ -86,14 +86,22 @@ def _subs_eval(e: sp.Expr) -> sp.Expr:
 def verify_edge(parent: sp.Expr, child: sp.Expr) -> bool:
     """Oracle check: a legal move preserves the value. Integral edges
     are verified modulo an additive constant (antiderivatives are an
-    equivalence class); Derivative-only edges must match exactly."""
+    equivalence class); Derivative-only edges must match exactly.
+
+    Integral edges are checked by DIFFERENTIATING the difference, not
+    by doit(): d/dx of an unevaluated Integral is just its integrand,
+    so the check never asks sympy to integrate — the first version did
+    (one full integration per candidate edge) and was ~100x slower.
+    Derivative of the difference vanishing for every free symbol is
+    exactly equality-mod-constant."""
     try:
-        d = sp.simplify(parent.doit() - child.doit())
-        if d == 0:
-            return True
-        return bool(parent.has(sp.Integral)) and not (
-            d.free_symbols & parent.free_symbols
-        )
+        if parent.has(sp.Integral):
+            d = parent - child
+            frees = parent.free_symbols | child.free_symbols
+            return all(
+                sp.simplify(sp.diff(d, v).doit()) == 0 for v in frees
+            )
+        return sp.simplify(parent.doit() - child.doit()) == 0
     except Exception:
         return False
 
