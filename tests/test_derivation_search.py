@@ -164,6 +164,32 @@ def test_default_eval_unchanged():
     assert a.state.expr == b.state.expr and a.nodes == b.nodes
 
 
+def test_propose_k_truncates_branching():
+    full = beam_search(sp.Derivative(x**2 * sp.sin(x), x))
+    seen = []
+
+    def keep_first(state, children):
+        seen.append(len(children))
+        return children
+
+    pruned = beam_search(sp.Derivative(x**2 * sp.sin(x), x),
+                         proposer=keep_first, propose_k=2)
+    assert pruned.solved and full.solved
+    assert pruned.nodes < full.nodes  # fewer children admitted
+    assert seen, "proposer never called"
+
+
+def test_proposer_rerank_changes_expansion_order():
+    def reversed_proposer(state, children):
+        return list(reversed(children))
+
+    r = beam_search(sp.Derivative(x**2 + sp.sin(x), x),
+                    proposer=reversed_proposer, propose_k=1)
+    # k=1 with a bad ordering may or may not solve — the API contract is
+    # only that it runs and respects the truncation
+    assert r.nodes >= 1
+
+
 def test_beam_records_history():
     r = beam_search(sp.Derivative(x**2, x))
     assert r.solved

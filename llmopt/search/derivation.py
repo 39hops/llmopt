@@ -204,6 +204,11 @@ def beam_search(
     use_macros: bool = False,
     trace: list[State] | None = None,
     eval_fn: Callable[[State], float] = hce,
+    proposer: Callable[
+        [State, list[tuple[str, State]]], list[tuple[str, State]]
+    ]
+    | None = None,
+    propose_k: int | None = None,
 ) -> SearchResult:
     """Minimize hce over the rewrite tree. Returns the best solved
     state found, else the best-evaluated state at exhaustion."""
@@ -217,7 +222,12 @@ def beam_search(
     for _ in range(max_plies):
         candidates: list[State] = []
         for s in beam:
-            for _, child in successors(s, use_macros=use_macros):
+            kids = list(successors(s, use_macros=use_macros))
+            if proposer is not None:
+                kids = proposer(s, kids)
+            if propose_k is not None:
+                kids = kids[:propose_k]
+            for _, child in kids:
                 if child.key() in visited:
                     continue
                 visited.add(child.key())
