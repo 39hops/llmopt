@@ -203,6 +203,7 @@ def beam_search(
     max_nodes: int | None = None,
     use_macros: bool = False,
     trace: list[State] | None = None,
+    eval_fn: Callable[[State], float] = hce,
 ) -> SearchResult:
     """Minimize hce over the rewrite tree. Returns the best solved
     state found, else the best-evaluated state at exhaustion."""
@@ -227,7 +228,7 @@ def beam_search(
                     candidates.append(child)
                     break
                 if is_solved(child) and (
-                    best_solved is None or hce(child) < hce(best_solved)
+                    best_solved is None or eval_fn(child) < eval_fn(best_solved)
                 ):
                     best_solved = child
                 candidates.append(child)
@@ -237,11 +238,11 @@ def beam_search(
             break
         if not candidates:
             break
-        candidates.sort(key=hce)
+        candidates.sort(key=eval_fn)
         beam = candidates[:width]
         # a solved state that also tops the beam won't improve: stop
-        if best_solved is not None and hce(best_solved) <= hce(beam[0]):
+        if best_solved is not None and eval_fn(best_solved) <= eval_fn(beam[0]):
             break
     if best_solved is not None:
         return SearchResult(True, best_solved, nodes)
-    return SearchResult(False, min(beam, key=hce), nodes)
+    return SearchResult(False, min(beam, key=eval_fn), nodes)

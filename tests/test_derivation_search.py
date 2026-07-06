@@ -146,6 +146,24 @@ def test_trace_collects_equivalent_states():
         assert sp.simplify(s.expr.doit() - root.doit()) == 0
 
 
+def test_eval_fn_is_pluggable_and_used():
+    calls = []
+
+    def spy_eval(s):
+        calls.append(s)
+        return hce(s)
+
+    r = beam_search(sp.Derivative(x**2 + sp.sin(x), x), eval_fn=spy_eval)
+    assert r.solved
+    assert calls, "custom eval_fn was never consulted"
+
+
+def test_default_eval_unchanged():
+    a = beam_search(sp.Derivative(x**3 + sp.sin(x), x))
+    b = beam_search(sp.Derivative(x**3 + sp.sin(x), x), eval_fn=hce)
+    assert a.state.expr == b.state.expr and a.nodes == b.nodes
+
+
 def test_beam_records_history():
     r = beam_search(sp.Derivative(x**2, x))
     assert r.solved
