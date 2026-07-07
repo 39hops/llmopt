@@ -109,9 +109,27 @@ perfect four-way tie (92=92=92=92 across g in {0, 0.1, 1, 5}) with a
 structural proof — depth-synchronized beams compare only equal-depth
 candidates, so path cost adds a constant and cancels from every
 ranking; Dijkstra's question requires an asynchronous frontier to be
-askable, and hce's plies term was always dead weight in the sort. prop3+nnue stacking at high budget:
+askable, and hce's plies term was always dead weight in the sort.
+(That frontier was then built — see best-first below — and answered
+the question the beam structurally couldn't.) prop3+nnue stacking at high budget:
 collapses to 6/15 under the wall (spend wall-clock on nodes, not
 double ranking).
+
+## Best-first beats the beam (Dijkstra's question, finally askable)
+
+Priority-queue best-first (pop min(g·plies + markov-guided h), top-3
+expansion, sampled verification) vs the width-2 beam at equal node
+budgets, n=15/cell over diff/int L2-3 @ 25/50 nodes: **bf-g0 104,
+bf-g1 101, bf-g5 101, beam-w2 91**. Two findings: (1) an asynchronous
+frontier strictly beats the depth-synchronized beam — the beam wastes
+budget expanding whole plies when one branch is clearly best; (2) with
+the frontier finally asynchronous, g is askable and the answer is
+**greedy wins**: pure-h (g=0) edges the Dijkstra-weighted variants.
+In a domain where any solution is a proof (verifier-checked), path
+length is not a cost worth trading nodes for. The wins concentrate
+exactly where the beam was weakest (diff, tight budgets: 13/15 vs
+6/15 at diff L2 @ 25); on integration cells the two tie — the
+saturation there is rule-coverage, not search discipline.
 
 ## Origin story, closed
 
