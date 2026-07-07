@@ -499,12 +499,81 @@ def i_ansatz_exp(node: sp.Integral) -> list[sp.Expr]:
     return [sp.Add(*solved) + tail]
 
 
+def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
+    """Bidirectional search v0, collapsed into linear algebra: d/dx is
+    a LINEAR operator, so meet-in-the-middle over answer shapes is a
+    matrix solve. Enumerate a basis of candidate answer terms from the
+    integrand's own atoms (x^j * sin(u), cos(u), exp(w)), differentiate
+    the ansatz once, and equate coefficients in the extended polynomial
+    ring — one sp.solve call replaces the whole backward frontier.
+    Subsumes i_cyclic/i_ansatz_exp shapes and reaches mixed products
+    neither can. Wrong basis just returns [] (verifier never needed)."""
+    un = _unpack_int(node)
+    if un is None:
+        return []
+    f, x = un
+    f = sp.expand(f)
+    # transcendental generators present in the integrand
+    trig: list[sp.Expr] = []
+    for fn in f.atoms(sp.sin, sp.cos):
+        v = fn.args[0]
+        if v.has(x) and v.is_polynomial(x):
+            for g in (sp.sin(v), sp.cos(v)):  # pairs: they mix under d/dx
+                if g not in trig:
+                    trig.append(g)
+    exps = [e for e in f.atoms(sp.exp) if e.args[0].is_polynomial(x)
+            and e.args[0].has(x)]
+    gens = trig + exps  # Poly gens must be the ATOMS, never products
+    if not gens or len(gens) > 8:
+        return []
+    # basis monomials: trig, the (recombined) exp product, exp*trig
+    # cross terms, and 1 for a pure-polynomial part
+    ep = sp.Mul(*exps) if exps else None
+    mons: list[sp.Expr] = list(trig)
+    if ep is not None:
+        mons += [ep] + [ep * t for t in trig]
+    mons.append(sp.S.One)
+    # Poly can't take gens that contain x — substitute Dummy
+    # placeholders for the transcendental atoms first
+    ph = {g: sp.Dummy(f"g{i}") for i, g in enumerate(gens)}
+
+    def _poly(e: sp.Expr) -> sp.Poly | None:
+        try:
+            return sp.Poly(e.subs(ph), x, *ph.values())
+        except sp.PolynomialError:
+            return None
+
+    pf = _poly(f)
+    if pf is None:
+        return []
+    deg = max(int(sp.degree(pf, x)), 1)
+    nc = (deg + 2) * len(mons)  # +1 x-degree headroom for the poly part
+    if deg > 8 or nc > 80:
+        return []
+    cs = sp.symbols(f"c0:{nc}", cls=sp.Dummy)
+    cand = sp.Add(*(cs[i * (deg + 2) + j] * x**j * m
+                    for i, m in enumerate(mons)
+                    for j in range(deg + 2)))
+    pr = _poly(sp.expand(sp.diff(cand, x) - f))
+    if pr is None:
+        return []
+    eqs = pr.coeffs()
+    if any(not e.has(*cs) for e in eqs if e != 0):
+        return []  # residue outside the span: no solution exists
+    sol = sp.solve(eqs, cs, dict=True)
+    if not sol:
+        return []
+    a = cand.subs(sol[0]).subs({c: 0 for c in cs})
+    return [a] if a != 0 else []
+
+
 INT_RULES: list[tuple[str, IntRule]] = [
     ("i_const", i_const),
     ("i_apart", i_apart),
     ("i_cyclic", i_cyclic),
     ("i_unprod", i_unprod),
     ("i_ansatz_exp", i_ansatz_exp),
+    ("i_linear_basis", i_linear_basis),
     ("i_power", i_power),
     ("i_sum", i_sum),
     ("i_const_factor", i_const_factor),

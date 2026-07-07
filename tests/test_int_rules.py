@@ -163,6 +163,24 @@ def test_ansatz_exp_undetermined_coefficients():
     assert any(h.startswith("i_ansatz_exp@") for h in r.state.history)
 
 
+def test_linear_basis_bidirectional_v0():
+    """Bidirectional search collapsed into linear algebra: d/dx is
+    linear, so meet-in-the-middle over answer shapes = one matrix
+    solve. Must subsume the cyclic/unprod/ansatz families AND reach
+    mixed exp*trig products none of them can; must stay silent on
+    non-elementary integrands."""
+    solvable = [
+        sp.exp(x) * sp.sin(x),
+        sp.expand(sp.diff((x**2 + 1) * sp.exp(2 * x) * sp.sin(3 * x), x)),
+        sp.expand(sp.diff((2 * x - 1) * sp.sin(4 * x**2 + 3 * x + 5), x)),
+        sp.expand(sp.diff(x**3 * sp.exp(2 * x) * sp.cos(5 * x) + x**2, x)),
+    ]
+    for g in solvable:
+        out = RULES["i_linear_basis"](sp.Integral(g, x))
+        assert out and sp.simplify(sp.diff(out[0], x) - g) == 0, g
+    assert RULES["i_linear_basis"](sp.Integral(sp.exp(x**2), x)) == []
+
+
 def test_markov_prior_smoothing_reaches_unseen_rules():
     """Rules absent from the mined prior must not score 0 (they'd be
     guillotined by the top-3 cut until the prior is re-mined) —
