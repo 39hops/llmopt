@@ -80,19 +80,21 @@ def move_accuracy(model, tok, rows, device, k=(1, 3)):
     return {kk: hits[kk] / len(rows) for kk in k}
 
 
-def main(extra_data: list[str] | None = None, out_path: Path = OUT) -> None:
+def main(extra_data: list[str] | None = None, out_path: Path = OUT,
+         base_data: str = "data/proposer_train.jsonl",
+         eval_data: str = "data/proposer_eval.jsonl") -> None:
     device = ("cuda" if torch.cuda.is_available()
               else "mps" if torch.backends.mps.is_available() else "cpu")
     tok = AutoTokenizer.from_pretrained(MODEL)
     model = AutoModelForCausalLM.from_pretrained(
         MODEL, dtype=torch.bfloat16).to(device)
 
-    train_rows = [json.loads(l) for l in open("data/proposer_train.jsonl")]
+    train_rows = [json.loads(l) for l in open(base_data)]
     for path in extra_data or []:
         extra = [json.loads(l) for l in open(path)]
         print(f"+ {len(extra)} rows from {path}")
         train_rows += extra
-    eval_rows = [json.loads(l) for l in open("data/proposer_eval.jsonl")]
+    eval_rows = [json.loads(l) for l in open(eval_data)]
     eval_rows = eval_rows[:300]
     print(f"train rows: {len(train_rows)}, eval rows: {len(eval_rows)}")
 
@@ -147,5 +149,9 @@ if __name__ == "__main__":
     ap.add_argument("--extra-data", nargs="+", default=None,
                     help="additional winning-path jsonl files (e.g. frontier)")
     ap.add_argument("--out", type=Path, default=OUT)
+    ap.add_argument("--base-data", default="data/proposer_train.jsonl",
+                    help="primary training jsonl (tabula-rasa lineage passes its own rows here)")
+    ap.add_argument("--eval-data", default="data/proposer_eval.jsonl")
     a = ap.parse_args()
-    main(extra_data=a.extra_data, out_path=a.out)
+    main(extra_data=a.extra_data, out_path=a.out, base_data=a.base_data,
+         eval_data=a.eval_data)
