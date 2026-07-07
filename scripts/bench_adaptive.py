@@ -88,7 +88,7 @@ def _check(kind, expr, truth):
 
 def main(n: int, budgets: list[int], temperature: float = 1.0,
          configs: list[str] | None = None, width: int = 8,
-         k_max: int = 6) -> None:
+         k_max: int = 6, macros: bool = False) -> None:
     score_fn = load_model()
     scoring_prop = make_scoring_proposer(score_fn)
     fixed_prop = make_proposer(score_fn)
@@ -146,7 +146,8 @@ def main(n: int, budgets: list[int], temperature: float = 1.0,
                                 r = beam_search(root, width=width, max_plies=20,
                                                 max_nodes=budget,
                                                 proposer=scoring_prop,
-                                                propose_k=policy)
+                                                propose_k=policy,
+                                                use_macros=macros)
                             ok += r.solved and _check(kind, r.state.expr, truth)
                         except _Timeout:
                             pass
@@ -175,6 +176,7 @@ if __name__ == "__main__":
                     choices=["full", "k3prop", "k1x3", "adapt"])
     ap.add_argument("--width", type=int, default=8)
     ap.add_argument("--k-max", type=int, default=6)
+    ap.add_argument("--macros", action="store_true")
     a = ap.parse_args()
     main(a.n, a.budgets, temperature=a.temperature, configs=a.configs,
-         width=a.width, k_max=a.k_max)
+         width=a.width, k_max=a.k_max, macros=a.macros)
