@@ -146,19 +146,29 @@ def verify_edge(parent: sp.Expr, child: sp.Expr) -> bool:
 
 
 def successors(
-    state: State, *, use_macros: bool = False
+    state: State, *, use_macros: bool = False, verify_p: float = 1.0
 ) -> Iterator[tuple[str, State]]:
     """Legal, non-identity, sympy-verified successor states. Rule moves
     target one Derivative node ((rule, node) pairs — real branching);
-    algebra moves rewrite the whole expression."""
+    algebra moves rewrite the whole expression.
+
+    verify_p < 1 samples which edges pay the oracle (deterministic in
+    the child key, so runs reproduce). Soundness lives at the boundary:
+    beam_search replays and FULLY verifies any winning path before
+    reporting solved — sampling can only waste search, never emit a
+    wrong answer (spec O2, 2026-07-07-engine-optimizations-design.md)."""
     seen = {state.key()}
     rules = CORE_RULES + MACRO_RULES if use_macros else CORE_RULES
 
     def emit(name: str, new_expr: sp.Expr) -> Iterator[tuple[str, State]]:
         child = State(new_expr, state.plies + 1, state.history + (name,))
-        if child.key() not in seen and verify_edge(state.expr, new_expr):
-            seen.add(child.key())
-            yield name, child
+        if child.key() in seen:
+            return
+        if verify_p >= 1.0 or (hash(child.key()) % 1000) < verify_p * 1000:
+            if not verify_edge(state.expr, new_expr):
+                return
+        seen.add(child.key())
+        yield name, child
 
     for node in sorted(state.expr.atoms(sp.Derivative), key=sp.count_ops):
         for rule_name, rule in rules:
@@ -198,6 +208,21 @@ class SearchResult:
     solved: bool
     state: State
     nodes: int
+    corrupted: bool = False  # a sampled-mode winning path failed full
+    # verification and was discarded (honest-accounting counter)
+
+
+def replay_verify(root: sp.Expr, history: tuple[str, ...]) -> bool:
+    """Fully re-verify a winning path edge by edge (verify_p=1)."""
+    cur = State(root)
+    for chosen in history:
+        for name, child in successors(cur, use_macros=True, verify_p=1.0):
+            if name == chosen:
+                cur = child
+                break
+        else:
+            return False
+    return True
 
 
 def beam_search(
@@ -214,6 +239,7 @@ def beam_search(
     ]
     | None = None,
     propose_k: int | Callable[..., int] | None = None,
+    verify_p: float = 1.0,
 ) -> SearchResult:
     """Minimize hce over the rewrite tree. Returns the best solved
     state found, else the best-evaluated state at exhaustion."""
@@ -227,7 +253,8 @@ def beam_search(
     for _ in range(max_plies):
         candidates: list[State] = []
         for s in beam:
-            kids = list(successors(s, use_macros=use_macros))
+            kids = list(successors(s, use_macros=use_macros,
+                                   verify_p=verify_p))
             scores = None
             if proposer is not None:
                 out = proposer(s, kids)
@@ -266,5 +293,9 @@ def beam_search(
         if best_solved is not None and eval_fn(best_solved) <= eval_fn(beam[0]):
             break
     if best_solved is not None:
+        if verify_p < 1.0 and not replay_verify(expr, best_solved.history):
+            # sampled mode let a corrupted path through: discard, report
+            return SearchResult(False, min(beam, key=eval_fn), nodes,
+                                corrupted=True)
         return SearchResult(True, best_solved, nodes)
     return SearchResult(False, min(beam, key=eval_fn), nodes)

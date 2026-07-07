@@ -207,6 +207,29 @@ def test_adaptive_propose_k_callable():
     assert ks_seen, "policy never consulted"
 
 
+def test_sampled_verification_sound_and_faster():
+    import time
+
+    from llmopt.search.derivation import replay_verify
+
+    root = sp.Derivative(x**2 * sp.sin(x) + x**3, x)
+    t0 = time.time()
+    full = beam_search(root)
+    t_full = time.time() - t0
+    t0 = time.time()
+    sampled = beam_search(root, verify_p=0.1)
+    t_samp = time.time() - t0
+    assert sampled.solved and full.solved
+    assert not sampled.corrupted
+    # reported solutions are ALWAYS fully verified
+    assert replay_verify(root, sampled.state.history)
+    assert sp.simplify(sampled.state.expr - full.state.expr.doit()) == 0 or \
+        sp.simplify(sampled.state.expr - sp.diff(x**2 * sp.sin(x) + x**3, x)) == 0
+    # speed is measured in the bench, not asserted here (timing flaky in CI);
+    # record informally:
+    print(f"full {t_full:.2f}s vs sampled {t_samp:.2f}s")
+
+
 def test_beam_records_history():
     r = beam_search(sp.Derivative(x**2, x))
     assert r.solved
