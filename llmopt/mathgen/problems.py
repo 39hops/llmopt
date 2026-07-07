@@ -61,7 +61,7 @@ class Problem:
         if pred is None:
             return False
         try:
-            if self.kind == "integrate":
+            if self.kind in ("integrate", "cint"):
                 # any antiderivative is correct: F'(pred) must equal integrand
                 pred = pred.subs(sp.Symbol("C"), 0)
                 return sp.simplify(sp.diff(pred, X) - self._expr) == 0
@@ -210,12 +210,12 @@ def make_cint(level: int, seed: int) -> Problem:
     integrand = sp.simplify(sp.diff(F, X))
     if integrand == 0:
         return make_cint(level, seed + 1_000_003)
-    # kind="integrate" so check() verifies by differentiating: any
-    # antiderivative (mod constant, complex constants included) passes
+    # check() verifies by differentiating (shared with "integrate"):
+    # any antiderivative mod complex constant passes
     return Problem(
         prompt=f"Find an antiderivative (I is the imaginary unit) "
                f"of: {sp.sstr(integrand)}",
-        answer=sp.sstr(F), kind="integrate", level=level, _expr=integrand,
+        answer=sp.sstr(F), kind="cint", level=level, _expr=integrand,
     )
 
 
@@ -296,10 +296,15 @@ def make_continuity(level: int, seed: int) -> Problem:
     substitutes the prediction and compares seam values."""
     rng = random.Random(f"cont-{level}-{seed}")
     a = rng.randint(-2, 2)
-    p = _expression(rng, min(level, 2))
+    while True:  # p(a) must be finite (log(x) at a<=0 -> zoo/nan)
+        p = _expression(rng, min(level, 2))
+        v = p.subs(X, a)
+        if v.is_finite and not v.has(sp.zoo, sp.nan):
+            break
     while True:
         q = _expression(rng, min(level, 2))
-        if q.subs(X, a) != 0:
+        vq = q.subs(X, a)
+        if vq != 0 and vq.is_finite:
             break
     r = rng.randint(-5, 5)
     # continuity at a: p(a) = c*q(a) + r  =>  c = (p(a) - r)/q(a)
