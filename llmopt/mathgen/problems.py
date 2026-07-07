@@ -86,6 +86,22 @@ class Problem:
                 if rest:  # second-order: y'(x0) must match too
                     return sp.simplify(sp.diff(pred, X).subs(X, x0) - rest[0]) == 0
                 return True
+            if self.kind == "drec":
+                # verify, don't compare: prediction must satisfy the
+                # recurrence for symbolic n AND the initial conditions
+                eq, inits = self._expr
+                a = sp.Function("a")
+                n_ = sp.Symbol("n")
+
+                def val(expr_n):
+                    return pred.subs(n_, expr_n)
+
+                res = eq.rhs - eq.lhs
+                res = res.replace(a, lambda arg: val(arg))
+                if sp.simplify(res) != 0:
+                    return False
+                return all(sp.simplify(val(key.args[0]) - v) == 0
+                           for key, v in inits.items())
             return sp.simplify(pred - self._expr) == 0
         except Exception:
             return False
@@ -200,6 +216,54 @@ def make_cint(level: int, seed: int) -> Problem:
         prompt=f"Find an antiderivative (I is the imaginary unit) "
                f"of: {sp.sstr(integrand)}",
         answer=sp.sstr(F), kind="integrate", level=level, _expr=integrand,
+    )
+
+
+N = sp.Symbol("n")
+
+
+def make_sum(level: int, seed: int) -> Problem:
+    """Closed form of sum_{k=1}^{n} p(k). Answer checked by symbolic
+    equality in n — any equivalent form passes."""
+    rng = random.Random(f"dsum-{level}-{seed}")  # string seed
+    k = sp.Symbol("k")
+    deg = rng.randint(1, 2 if level == 1 else 3)
+    p = sum(rng.randint(1, 6) * k**d for d in range(deg + 1))
+    closed = sp.factor(sp.summation(p, (k, 1, N)))
+    return Problem(
+        prompt=f"Find the closed form of the sum of {sp.sstr(p)} "
+               f"for k from 1 to n:",
+        answer=sp.sstr(closed), kind="dsum", level=level, _expr=closed,
+    )
+
+
+def make_recurrence(level: int, seed: int) -> Problem:
+    """Solve a(n) = c1*a(n-1) [+ c2*a(n-2)] with initial conditions.
+    check() VERIFIES the prediction satisfies recurrence + initials
+    (the ODE-check pattern) rather than comparing to one closed form."""
+    rng = random.Random(f"drec-{level}-{seed}")
+    a = sp.Function("a")
+    if level == 1:
+        c1, a0 = rng.randint(2, 5), rng.randint(1, 6)
+        eq = sp.Eq(a(N), c1 * a(N - 1))
+        inits = {a(0): a0}
+        prompt = (f"Solve the recurrence a(n) = {c1}*a(n-1) with "
+                  f"a(0) = {a0}. Give a(n) in closed form:")
+    else:
+        while True:  # distinct real roots keep closed forms clean
+            c1, c2 = rng.randint(1, 4), rng.randint(1, 4)
+            disc = c1**2 + 4 * c2
+            if sp.sqrt(disc).is_rational:
+                break
+        a0, a1 = rng.randint(0, 4), rng.randint(1, 5)
+        eq = sp.Eq(a(N), c1 * a(N - 1) + c2 * a(N - 2))
+        inits = {a(0): a0, a(1): a1}
+        prompt = (f"Solve the recurrence a(n) = {c1}*a(n-1) + {c2}*a(n-2) "
+                  f"with a(0) = {a0}, a(1) = {a1}. Give a(n) in closed form:")
+    sol = sp.rsolve(eq, a(N), inits)
+    return Problem(
+        prompt=prompt, answer=sp.sstr(sol), kind="drec", level=level,
+        _expr=(eq, inits),
     )
 
 
