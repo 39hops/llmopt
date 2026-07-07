@@ -123,7 +123,13 @@ tactic moves, kernel verifier). Code domain (states = programs,
 oracle = toolchain + tests, eval = stopwatch; train on execution
 traces — the ladder's simulation-resists finding). Budget reallocation
 across problems (NNUE's predicted nodes-to-solve as a quit-early
-signal).
+signal). Digital-circuit port (states = netlists, moves = Yosys
+rewrites, oracle = ABC formal equivalence — math-grade and
+milliseconds; arguably the most tractable domain jump). The verifier
+cost gradient (formal > simulation > physical) maps the whole
+portability frontier: analog/SPICE and photonics/FDTD port with
+shrinking search budgets and growing reliance on learned evals; the
+fab is the regime where the loop inverts.
 
 ## Reproduction
 
