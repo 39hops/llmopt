@@ -1,0 +1,160 @@
+{
+ "unigram": {
+  "together": 6,
+  "d_product": 251,
+  "d_sum": 54,
+  "d_x": 156,
+  "d_const": 310,
+  "d_power": 90,
+  "d_chain_table": 114,
+  "factor": 3,
+  "powsimp": 1,
+  "expand": 12,
+  "i_const": 74,
+  "i_sum": 57,
+  "cancel": 60,
+  "i_power": 69,
+  "i_const_factor": 75,
+  "i_table": 64,
+  "i_usub": 21,
+  "i_parts": 12
+ },
+ "bigram": {
+  "together": {
+   "d_product": 6
+  },
+  "d_product": {
+   "d_sum": 2,
+   "d_const": 212,
+   "d_x": 22,
+   "d_chain_table": 7,
+   "d_product": 6,
+   "together": 1,
+   "d_power": 1
+  },
+  "d_sum": {
+   "d_x": 1,
+   "d_product": 41,
+   "d_const": 10,
+   "d_power": 2
+  },
+  "d_x": {
+   "d_const": 41,
+   "d_product": 82,
+   "d_sum": 27,
+   "d_power": 1,
+   "powsimp": 1,
+   "factor": 1,
+   "d_chain_table": 3
+  },
+  "d_const": {
+   "d_sum": 18,
+   "d_power": 69,
+   "d_product": 84,
+   "d_const": 47,
+   "d_x": 10,
+   "d_chain_table": 77,
+   "factor": 1,
+   "together": 2,
+   "expand": 1,
+   "i_const": 1
+  },
+  "d_power": {
+   "d_product": 21,
+   "d_x": 56,
+   "d_power": 4,
+   "d_chain_table": 9
+  },
+  "d_chain_table": {
+   "d_x": 67,
+   "d_chain_table": 18,
+   "d_power": 13,
+   "d_product": 8,
+   "d_sum": 6,
+   "together": 2
+  },
+  "factor": {
+   "d_product": 2,
+   "i_parts": 1
+  },
+  "powsimp": {
+   "d_product": 1
+  },
+  "expand": {
+   "d_sum": 1,
+   "cancel": 8,
+   "i_const": 1,
+   "i_const_factor": 2
+  },
+  "i_const": {
+   "i_sum": 15,
+   "cancel": 17,
+   "i_const": 12,
+   "i_power": 1,
+   "expand": 5,
+   "i_const_factor": 21,
+   "i_table": 2,
+   "i_usub": 1
+  },
+  "i_sum": {
+   "i_const": 19,
+   "cancel": 15,
+   "i_const_factor": 18,
+   "i_power": 1,
+   "i_parts": 3,
+   "i_usub": 1
+  },
+  "cancel": {
+   "i_power": 30,
+   "i_const": 4,
+   "i_table": 24,
+   "i_const_factor": 2
+  },
+  "i_power": {
+   "i_const": 23,
+   "i_const_factor": 5,
+   "i_power": 9,
+   "cancel": 8,
+   "i_sum": 15,
+   "i_table": 6,
+   "i_usub": 2
+  },
+  "i_const_factor": {
+   "i_power": 23,
+   "i_const_factor": 9,
+   "i_const": 5,
+   "i_sum": 15,
+   "expand": 2,
+   "i_table": 9,
+   "cancel": 3,
+   "i_usub": 5,
+   "i_parts": 4
+  },
+  "i_table": {
+   "cancel": 8,
+   "i_const": 5,
+   "i_const_factor": 8,
+   "i_sum": 12,
+   "i_table": 14,
+   "i_power": 5,
+   "i_usub": 7,
+   "i_parts": 4,
+   "expand": 1
+  },
+  "i_usub": {
+   "i_const_factor": 9,
+   "i_table": 3,
+   "i_usub": 3,
+   "expand": 3,
+   "i_const": 1,
+   "factor": 1,
+   "cancel": 1
+  },
+  "i_parts": {
+   "i_table": 6,
+   "i_const": 3,
+   "i_usub": 2,
+   "i_const_factor": 1
+  }
+ }
+}

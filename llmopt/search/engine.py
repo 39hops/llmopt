@@ -1,0 +1,92 @@
+"""The measured-best engines, as one import (integration of the
+2026-07-06..08 racing results — see docs/RESULTS.md).
+
+    from llmopt.search.engine import solve
+    result = solve(sp.Integral(x * sp.cos(x), x))
+
+Default = the zero-neural-network configuration that scored 316/360
+(87.8%) on the held-out races: rule-bigram Markov prior (top-3
+pruning), width-2 beam, sampled verification (winning paths always
+fully verified). The 337/360 record config additionally needs the
+LoRA'd 0.5B for entropy-gated adaptive k — pass its score_fn via
+`llm_score_fn` to enable it.
+"""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Callable
+
+import sympy as sp
+
+from llmopt.search.derivation import SearchResult, State, beam_search
+from llmopt.search.proposer import entropy_k, make_scoring_proposer
+
+_PRIOR_PATH = Path(__file__).resolve().parents[2] / "checkpoints" / "markov_prior.json"
+
+
+class MarkovPrior:
+    """Rule-bigram counts from verifier-approved winning paths. The
+    measured result behind it: ties the fine-tuned 0.5B at top-3
+    offline, beats it in-search (293 vs 288) at zero inference cost."""
+
+    def __init__(self, unigram: dict, bigram: dict):
+        self.unigram = unigram
+        self.bigram = bigram
+
+    @classmethod
+    def load(cls, path: Path = _PRIOR_PATH) -> "MarkovPrior":
+        d = json.loads(Path(path).read_text())
+        return cls(d["unigram"], d["bigram"])
+
+    @classmethod
+    def from_rows(cls, rows: list[dict]) -> "MarkovPrior":
+        unigram: dict = {}
+        bigram: dict = {}
+        prev = None
+        for row in rows:
+            chosen = row["moves"][row["answer"]].split("@")[0]
+            unigram[chosen] = unigram.get(chosen, 0) + 1
+            if prev is not None:
+                bigram.setdefault(prev, {})
+                bigram[prev][chosen] = bigram[prev].get(chosen, 0) + 1
+            prev = chosen
+        return cls(unigram, bigram)
+
+    def proposer(self):
+        def prop(state: State, children):
+            prev = (state.history[-1].split("@")[0]
+                    if state.history else None)
+            table = self.bigram.get(prev) if prev else None
+
+            def s(name: str) -> float:
+                r = name.split("@")[0]
+                return ((table.get(r, 0) if table else 0)
+                        + 0.01 * self.unigram.get(r, 0))
+
+            return sorted(children, key=lambda c: -s(c[0]))
+
+        return prop
+
+
+def solve(expr: sp.Expr, *, budget: int = 200,
+          prior: MarkovPrior | None = None,
+          llm_score_fn: Callable | None = None,
+          use_macros: bool = True) -> SearchResult:
+    """Solve with the measured-best configuration.
+
+    Without llm_score_fn: markov3 @ width 2 (316/360-class, zero NN).
+    With it (an hf_score_fn over the LoRA'd proposer): entropy-gated
+    adaptive k at T=0.1, k_max=3 (337/360-class record config)."""
+    if llm_score_fn is not None:
+        return beam_search(
+            expr, width=2, max_plies=24, max_nodes=budget,
+            proposer=make_scoring_proposer(llm_score_fn),
+            propose_k=entropy_k(1, 3, temperature=0.1),
+            use_macros=use_macros, verify_p=0.1)
+    prior = prior or MarkovPrior.load()
+    return beam_search(
+        expr, width=2, max_plies=24, max_nodes=budget,
+        proposer=prior.proposer(), propose_k=3,
+        use_macros=use_macros, verify_p=0.1)
