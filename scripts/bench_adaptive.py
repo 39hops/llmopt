@@ -59,7 +59,7 @@ def random_proposer(seed_tag: str):
     return prop
 
 
-def restart_search(root, total_budget, restarts, seed):
+def restart_search(root, total_budget, restarts, seed, width=8):
     per = max(1, total_budget // restarts)
     for i in range(restarts):
         r = beam_search(root, width=width, max_plies=20, max_nodes=per,
@@ -121,7 +121,8 @@ def main(n: int, budgets: list[int], temperature: float = 1.0,
                                                 propose_k=3)
                             elif name == "k1x3":
                                 r = restart_search(root, budget, 3,
-                                                   f"{kind}-{level}-{p}")
+                                                   f"{kind}-{level}-{p}",
+                                                   width=width)
                             else:
                                 base_policy = entropy_k(
                                     1, 6, temperature=temperature)
