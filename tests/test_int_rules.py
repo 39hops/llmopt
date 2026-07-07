@@ -108,3 +108,15 @@ def test_euler_rewrite_moves_the_ceiling():
     assert r.solved, "ceiling did not move"
     assert sp.simplify(sp.diff(r.state.expr, x) - sp.sin(x) ** 2) == 0
     assert any(h == "euler" for h in r.state.history)
+
+
+def test_apart_moves_the_second_ceiling():
+    """1/(x**2-1) had NO derivation pre-i_apart (measured); the move
+    opens i_sum -> i_const_factor -> i_usub -> i_power(log) chains."""
+    from llmopt.search.engine import solve
+
+    node = sp.Integral(1 / (x**2 - 1), x)
+    r = solve(node, budget=300)
+    assert r.solved, "second ceiling did not move"
+    assert sp.simplify(sp.diff(r.state.expr, x) - 1 / (x**2 - 1)) == 0
+    assert any(h.startswith("i_apart@") for h in r.state.history)

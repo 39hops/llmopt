@@ -356,8 +356,28 @@ LIM_RULES: list[tuple[str, LimRule]] = [
 ]
 
 
+def i_apart(node: sp.Integral) -> list[sp.Expr]:
+    """Partial fractions (ceiling-mover #2): rational integrands split
+    into pieces i_usub + i_power(log) already solve — e.g. 1/(x**2-1)
+    had no derivation until this move."""
+    u = _unpack_int(node)
+    if u is None:
+        return []
+    f, x = u
+    if not f.is_rational_function(x):
+        return []
+    try:
+        g = sp.apart(f, x)
+    except (sp.PolynomialError, NotImplementedError, ZeroDivisionError):
+        return []
+    if g == f:
+        return []
+    return [sp.Integral(g, x)]
+
+
 INT_RULES: list[tuple[str, IntRule]] = [
     ("i_const", i_const),
+    ("i_apart", i_apart),
     ("i_power", i_power),
     ("i_sum", i_sum),
     ("i_const_factor", i_const_factor),
