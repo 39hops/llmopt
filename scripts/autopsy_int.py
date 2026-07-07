@@ -12,7 +12,6 @@ from __future__ import annotations
 import argparse
 import heapq
 import itertools
-import json
 import random
 import signal
 
