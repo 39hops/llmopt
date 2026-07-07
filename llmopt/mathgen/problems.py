@@ -30,7 +30,8 @@ X = sp.Symbol("x")
 _PARSE_LOCALS = {
     "x": X, "sin": sp.sin, "cos": sp.cos, "tan": sp.tan, "exp": sp.exp,
     "log": sp.log, "ln": sp.log, "sqrt": sp.sqrt, "pi": sp.pi, "E": sp.E,
-    "e": sp.E, "C": sp.Symbol("C"), "Matrix": sp.Matrix,
+    "e": sp.E, "C": sp.Symbol("C"), "Matrix": sp.Matrix, "I": sp.I,
+    "i": sp.I,
 }
 
 
@@ -151,6 +152,55 @@ def _expression_l4(rng: random.Random):
     parts = [deep(), composed_product(), chained()]
     rng.shuffle(parts)
     return parts[0] + parts[1]
+
+
+def _cexpr(rng: random.Random, level: int):
+    """Complex-coefficient expression (spec: mathgen-expansion Part A).
+    Level 1: Gaussian-integer-coefficient polynomials; 2: + e^{ikx}
+    atoms; 3: products/compositions."""
+    def gauss():
+        while True:
+            z = rng.randint(-4, 4) + rng.randint(-4, 4) * sp.I
+            if z != 0:
+                return z
+
+    def catom():
+        choices = [gauss() * X ** rng.randint(1, 4), gauss() * X]
+        if level >= 2:
+            choices += [gauss() * sp.exp(sp.I * rng.randint(1, 5) * X),
+                        gauss() * sp.exp((rng.randint(-2, 2)
+                                          + rng.randint(1, 3) * sp.I) * X)]
+        return rng.choice(choices)
+
+    if level <= 2:
+        return sum(catom() for _ in range(rng.randint(2, 3)))
+    return catom() * catom() + catom()
+
+
+def make_cdiff(level: int, seed: int) -> Problem:
+    rng = random.Random(f"cdiff-{level}-{seed}")  # string seed
+    f = _cexpr(rng, level)
+    ans = sp.diff(f, X)
+    return Problem(
+        prompt=f"Differentiate with respect to x (I is the imaginary "
+               f"unit): {sp.sstr(f)}",
+        answer=sp.sstr(ans), kind="cdiff", level=level, _expr=ans,
+    )
+
+
+def make_cint(level: int, seed: int) -> Problem:
+    rng = random.Random(f"cint-{level}-{seed}")
+    F = _cexpr(rng, level)
+    integrand = sp.simplify(sp.diff(F, X))
+    if integrand == 0:
+        return make_cint(level, seed + 1_000_003)
+    # kind="integrate" so check() verifies by differentiating: any
+    # antiderivative (mod constant, complex constants included) passes
+    return Problem(
+        prompt=f"Find an antiderivative (I is the imaginary unit) "
+               f"of: {sp.sstr(integrand)}",
+        answer=sp.sstr(F), kind="integrate", level=level, _expr=integrand,
+    )
 
 
 def make_differentiate(level: int, seed: int) -> Problem:
