@@ -68,7 +68,15 @@ level — width hedges).
    problems the baseline provably fails, solved by the full engine —
    yielded 41% (51 frontier / 21 harvested / 183 rows; every int-L4
    problem was frontier). Retraining lifted offline top-3 to 100.0%.
-   Held-out frontier curve point: [PENDING — measuring at write time].
+   Held-out frontier curve point (L4, n=20/cell, budgets 100/200/400):
+   **r1 40 v r2 40 — a dead tie with a redistribution inside it.** r2
+   (retrained on the r1 harvest, which was integration-heavy) gains +2
+   on integration and gives back −2 on differentiation. One round of
+   expert iteration at this scale buys specialization toward the
+   harvested domain, not net capability — the reachable set moved
+   sideways, consistent with mechanism 2 being where ceilings actually
+   move (four autopsy-derived operator rules did more for int L4 in
+   one evening than the retrain did).
 2. **Moving the ceiling** (new operators): ∫sin²x had NO derivation in
    the real-form rule set — a provable operator-closure ceiling. One
    representation-change move (trig → complex exponentials) and the
