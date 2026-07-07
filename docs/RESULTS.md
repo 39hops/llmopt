@@ -51,10 +51,12 @@ level — width hedges).
   The Markov table cannot do this (rule-level scores tie same-rule
   candidates: structural, not fixable). *The GPU buys confidence, not
   choice.*
-- **Value (will this state solve):** absorbing-Markov P(solve|bucket)
-  from fast probes beats the hand-crafted eval 94 v 89; the learned
-  NNUE (20-dim structural MLP) had already beaten it at rho +0.937 vs
-  +0.721 and won/tied all 24 race cells.
+- **Value (will this state solve):** the title match ended in a photo
+  finish — NNUE 93, absorbing-Markov P(solve|bucket) 92, hand-crafted
+  HCE 89 (run-to-run jitter ±2 from wall-clock boundaries). Both
+  principled evals beat hand-tuning; between them, choose by
+  engineering taste (torch at inference vs a probe run and a dict).
+  NNUE's offline ordering advantage stands at rho +0.937 vs +0.721.
 - **Width:** the unquestioned width=8 was wrong — width=2 dominates at
   fixed budget (50 vs 36 on hard cells). Width is a partial substitute
   for confidence; k_max must be sized to width (6→3 was +9).
