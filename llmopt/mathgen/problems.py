@@ -267,6 +267,52 @@ def make_recurrence(level: int, seed: int) -> Problem:
     )
 
 
+def make_taylor(level: int, seed: int) -> Problem:
+    """Taylor polynomial of degree d about x=a. Level 1: Maclaurin
+    (a=0) of table functions; 2: shifted centers; 3: composites
+    (the special cases live in what sympy's series returns)."""
+    rng = random.Random(f"taylor-{level}-{seed}")  # string seed
+    base = rng.choice([sp.sin(X), sp.cos(X), sp.exp(X), sp.log(1 + X),
+                       1 / (1 - X)])
+    if level >= 3:
+        base = base.subs(X, rng.randint(2, 3) * X ** rng.randint(1, 2))
+    a = 0 if level == 1 else rng.randint(-1, 2)
+    d = rng.randint(2, 4)
+    if a != 0 and base.subs(X, a) in (sp.zoo, sp.nan):  # singular center
+        return make_taylor(level, seed + 1_000_003)
+    poly = sp.series(base, X, a, d + 1).removeO()
+    return Problem(
+        prompt=f"Find the Taylor polynomial of degree {d} of "
+               f"{sp.sstr(base)} about x = {a}:",
+        answer=sp.sstr(sp.expand(poly)), kind="taylor", level=level,
+        _expr=sp.expand(poly),
+    )
+
+
+def make_continuity(level: int, seed: int) -> Problem:
+    """Find c making a piecewise function continuous at the seam:
+    f(x) = p(x) for x < a, c*q(x)+r for x >= a. Verifiable: the two
+    one-sided limits must agree at a — check() solves nothing, it
+    substitutes the prediction and compares seam values."""
+    rng = random.Random(f"cont-{level}-{seed}")
+    a = rng.randint(-2, 2)
+    p = _expression(rng, min(level, 2))
+    while True:
+        q = _expression(rng, min(level, 2))
+        if q.subs(X, a) != 0:
+            break
+    r = rng.randint(-5, 5)
+    # continuity at a: p(a) = c*q(a) + r  =>  c = (p(a) - r)/q(a)
+    c_true = sp.Rational(1, 1) * (p.subs(X, a) - r) / q.subs(X, a)
+    return Problem(
+        prompt=f"Find the constant c that makes f continuous at "
+               f"x = {a}, where f(x) = {sp.sstr(p)} for x < {a} and "
+               f"f(x) = c*({sp.sstr(q)}) + {r} for x >= {a}:",
+        answer=sp.sstr(c_true), kind="continuity", level=level,
+        _expr=c_true,
+    )
+
+
 def make_differentiate(level: int, seed: int) -> Problem:
     rng = random.Random(f"diff-{level}-{seed}")  # string seed: stable across processes
     f = _expression(rng, level)
