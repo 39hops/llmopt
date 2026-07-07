@@ -480,7 +480,8 @@ def i_ansatz_exp(node: sp.Integral) -> list[sp.Expr]:
         w = sp.Add(*(e.args[0] for e in exps))
         fn = sp.Mul(*exps)
         P = sp.cancel(g / fn)
-        if int(sp.degree(w, x)) < 2 or not P.is_polynomial(x):
+        # w == 0 (cancelling exp args) makes degree() -oo: guard first
+        if w == 0 or sp.degree(w, x) < 2 or not P.is_polynomial(x):
             rest.extend(terms)
             continue
         dw = sp.diff(w, x)
