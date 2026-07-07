@@ -118,7 +118,13 @@ the rung-1 diff rules finish — the rungs composing in one derivation.
 
 Strategy-portfolio bandit (UCB over engines per problem class — the
 signals exist: H, P(solve), yield). Bidirectional/meet-in-the-middle
-search (backward-chain from solved-form shapes). Highway mining v2
+search — WITH a design warning discovered on paper: the natural
+backward pass (differentiate candidate forms into a lookup table)
+memorizes the problem generator's distribution when problems are
+reverse-sampled from the same family — contamination wearing an
+algorithm's clothes. The legitimate version stores coefficient-general
+patterns, i.e. bidirectional search in math either cheats or becomes
+rule mining. Highway mining v2
 (n-gram macro auto-promotion). Lean port (proofs: same architecture,
 tactic moves, kernel verifier). Code domain (states = programs,
 oracle = toolchain + tests, eval = stopwatch; train on execution
