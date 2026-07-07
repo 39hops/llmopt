@@ -81,7 +81,7 @@ def _check(kind, expr, truth):
     return sp.simplify(sp.diff(expr, X) - truth) == 0
 
 
-def main(n_probe: int, n_race: int) -> None:
+def main(n_probe: int, n_race: int, with_nnue: bool = False) -> None:
     prop = build_markov_proposer()
     signal.signal(signal.SIGALRM,
                   lambda s, f: (_ for _ in ()).throw(_Timeout()))
@@ -129,15 +129,43 @@ def main(n_probe: int, n_race: int) -> None:
     def markov_eval(state: State) -> float:
         return -p_solve.get(bucket(state.expr), 0.5)
 
-    # phase 2: race eval_fns (markov3 pruning both; only eval differs)
+    # phase 2: race eval_fns (markov3 pruning; only eval differs).
+    # --with-nnue adds the learned eval: the last unfought eval match.
+    contenders = [("hce", hce), ("P", markov_eval)]
+    if with_nnue:
+        import torch
+        from llmopt.search.features import N_FEATURES, featurize
+
+        class NnueEval(torch.nn.Module):
+            def __init__(self):
+                super().__init__()
+                self.net = torch.nn.Sequential(
+                    torch.nn.Linear(N_FEATURES, 64), torch.nn.ReLU(),
+                    torch.nn.Linear(64, 64), torch.nn.ReLU(),
+                    torch.nn.Linear(64, 1))
+
+            def forward(self, v):
+                return self.net(v).squeeze(-1)
+
+        ck = torch.load("checkpoints/nnue_eval.pt", weights_only=True)
+        net = NnueEval(); net.load_state_dict(ck["state_dict"]); net.eval()
+        mean, std = ck["mean"], ck["std"]
+
+        def nnue_ev(state):
+            v = torch.tensor([featurize(state.expr)], dtype=torch.float32)
+            with torch.no_grad():
+                return float(net((v - mean) / std))
+
+        contenders.append(("nnue", nnue_ev))
     print(f"\n# eval race — markov3 pruning, width 2, n={n_race}/cell")
-    print(f"{'kind':>4} {'lvl':>3} {'budget':>6} {'hce':>6} {'P-eval':>7}")
-    totals = {"hce": 0, "P": 0}
+    print(f"{'kind':>4} {'lvl':>3} {'budget':>6} " +
+          " ".join(f"{nm:>6}" for nm, _ in contenders))
+    totals = {nm: 0 for nm, _ in contenders}
     for kind in ("diff", "int"):
         for level in (2, 3):
             for budget in (25, 50):
                 row = {}
-                for name, ev in (("hce", hce), ("P", markov_eval)):
+                for name, ev in contenders:
                     rng = random.Random(f"proposer-race-{kind}-{level}-0")
                     ok = 0
                     for _ in range(n_race):
@@ -155,14 +183,16 @@ def main(n_probe: int, n_race: int) -> None:
                             signal.alarm(0)
                     row[name] = ok
                     totals[name] += ok
-                print(f"{kind:>4} {level:>3} {budget:>6} {row['hce']:>4}/{n_race:<2}"
-                      f" {row['P']:>4}/{n_race:<2}", flush=True)
-    print(f"TOTALS: hce {totals['hce']}  P-eval {totals['P']}")
+                print(f"{kind:>4} {level:>3} {budget:>6} " +
+                      " ".join(f"{row[nm]:>4}/{n_race:<2}" for nm, _ in contenders),
+                      flush=True)
+    print("TOTALS: " + "  ".join(f"{nm} {t}" for nm, t in totals.items()))
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--n-probe", type=int, default=10)
     ap.add_argument("--n-race", type=int, default=15)
+    ap.add_argument("--with-nnue", action="store_true")
     a = ap.parse_args()
-    main(a.n_probe, a.n_race)
+    main(a.n_probe, a.n_race, with_nnue=a.with_nnue)
