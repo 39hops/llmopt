@@ -515,22 +515,40 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
     f, x = un
     f = sp.expand(f)
     # transcendental generators present in the integrand
-    trig: list[sp.Expr] = []
+    args: list[sp.Expr] = []
     for fn in f.atoms(sp.sin, sp.cos):
         v = fn.args[0]
-        if v.has(x) and v.is_polynomial(x):
-            for g in (sp.sin(v), sp.cos(v)):  # pairs: they mix under d/dx
-                if g not in trig:
-                    trig.append(g)
+        if v.has(x) and v.is_polynomial(x) and v not in args:
+            args.append(v)
+    trig = [g for v in args for g in (sp.sin(v), sp.cos(v))]
     exps = [e for e in f.atoms(sp.exp) if e.args[0].is_polynomial(x)
             and e.args[0].has(x)]
     gens = trig + exps  # Poly gens must be the ATOMS, never products
     if not gens or len(gens) > 8:
         return []
-    # basis monomials: trig, the (recombined) exp product, exp*trig
-    # cross terms, and 1 for a pure-polynomial part
+    # basis monomials per trig arg v: sin^a(v)*cos^b(v) with
+    # 1 <= a+b <= M_v (the family is d/dx-closed at fixed total
+    # degree; M_v = max total trig power in f + 1 covers the
+    # sin^k*cos*u' -> sin^(k+1) integration bump). Plus the
+    # (recombined) exp product, exp*trig cross terms (power 1),
+    # and 1 for a pure-polynomial part.
     ep = sp.Mul(*exps) if exps else None
-    mons: list[sp.Expr] = list(trig)
+    mons: list[sp.Expr] = []
+    for v in args:
+        s_, c_ = sp.sin(v), sp.cos(v)
+        # max total sin+cos power of this arg in any one term of f
+        mv = 1
+        for t in (f.args if isinstance(f, sp.Add) else (f,)):
+            tot = 0
+            for b in (s_, c_):
+                e = max((int(p.exp) for p in t.atoms(sp.Pow)
+                         if p.base == b and p.exp.is_Integer
+                         and p.exp > 0), default=1 if t.has(b) else 0)
+                tot += e
+            mv = max(mv, tot)
+        mv = min(mv + 1, 5)
+        mons += [s_**a * c_**b for a in range(mv + 1)
+                 for b in range(mv + 1 - a) if a + b >= 1]
     if ep is not None:
         mons += [ep] + [ep * t for t in trig]
     mons.append(sp.S.One)
@@ -549,7 +567,7 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
         return []
     deg = max(int(sp.degree(pf, x)), 1)
     nc = (deg + 2) * len(mons)  # +1 x-degree headroom for the poly part
-    if deg > 8 or nc > 80:
+    if deg > 8 or nc > 200:  # linear solve: 200 unknowns is still fast
         return []
     cs = sp.symbols(f"c0:{nc}", cls=sp.Dummy)
     cand = sp.Add(*(cs[i * (deg + 2) + j] * x**j * m

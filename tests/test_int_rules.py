@@ -107,7 +107,10 @@ def test_euler_rewrite_moves_the_ceiling():
     r = beam_search(node, max_plies=24, max_nodes=300)
     assert r.solved, "ceiling did not move"
     assert sp.simplify(sp.diff(r.state.expr, x) - sp.sin(x) ** 2) == 0
-    assert any(h == "euler" for h in r.state.history)
+    # historically via euler (the first ceiling-mover); i_linear_basis
+    # now reaches it directly — sin*cos is in the trig-power span
+    assert any(h == "euler" or h.startswith("i_linear_basis@")
+               for h in r.state.history)
 
 
 def test_cyclic_moves_the_third_ceiling():
