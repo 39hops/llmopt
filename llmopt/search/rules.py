@@ -200,6 +200,8 @@ def i_table(node: sp.Integral) -> list[sp.Expr]:
     f, x = u
     if isinstance(f, sp.Function) and f.func in _INT_TABLE and f.args == (x,):
         return [_INT_TABLE[f.func](x)]
+    if f == sp.log(x):  # the invisible-·1 by-parts case i_parts can't see
+        return [x * sp.log(x) - x]
     return []
 
 
@@ -256,6 +258,83 @@ def i_parts(node: sp.Integral) -> list[sp.Expr]:
         v = sp.Integral(dv, x)
         out.append(u_part * v - sp.Integral(v * du, x))
     return out
+
+
+# --------------------------------------------------------- limits
+# The origin-story rung: limits resisted LoRA training (<=21%),
+# motivating this engine — these moves close that loop (spec:
+# 2026-07-07-mathgen-expansion-design.md Part B).
+
+LimRule = Callable[[sp.Limit], "list[sp.Expr]"]
+
+
+def _unpack_lim(node: sp.Limit):
+    """(f, x, a) for finite two-sided-representable limits, else None.
+    sympy Limit args: (expr, var, point, dir)."""
+    f, x, a, _dir = node.args
+    if a in (sp.oo, -sp.oo):
+        return None
+    return f, x, a
+
+
+def l_direct(node: sp.Limit) -> list[sp.Expr]:
+    """Continuity move: substitute when the value is finite/defined."""
+    u = _unpack_lim(node)
+    if u is None:
+        return []
+    f, x, a = u
+    try:
+        v = f.subs(x, a)
+    except Exception:
+        return []
+    if v.has(sp.zoo, sp.nan, sp.oo, -sp.oo) or isinstance(v, sp.Limit):
+        return []
+    return [v]
+
+
+def l_factor_cancel(node: sp.Limit) -> list[sp.Expr]:
+    """0/0 rational forms: cancel the common factor, emit a new Limit."""
+    u = _unpack_lim(node)
+    if u is None:
+        return []
+    f, x, a = u
+    num, den = f.as_numer_denom()
+    if den == 1:
+        return []
+    try:
+        if num.subs(x, a) != 0 or den.subs(x, a) != 0:
+            return []
+        g = sp.cancel(f)
+    except Exception:
+        return []
+    if g == f:
+        return []
+    return [sp.Limit(g, x, a)]
+
+
+def l_hopital(node: sp.Limit) -> list[sp.Expr]:
+    """L'Hopital on 0/0: Limit(f/g) -> Limit(f'/g') with UNEVALUATED
+    inner Derivatives — chains into the diff rules (rungs compose)."""
+    u = _unpack_lim(node)
+    if u is None:
+        return []
+    f, x, a = u
+    num, den = f.as_numer_denom()
+    if den == 1 or not den.has(x):
+        return []
+    try:
+        if num.subs(x, a) != 0 or den.subs(x, a) != 0:
+            return []
+    except Exception:
+        return []
+    return [sp.Limit(sp.Derivative(num, x) / sp.Derivative(den, x), x, a)]
+
+
+LIM_RULES: list[tuple[str, LimRule]] = [
+    ("l_direct", l_direct),
+    ("l_factor_cancel", l_factor_cancel),
+    ("l_hopital", l_hopital),
+]
 
 
 INT_RULES: list[tuple[str, IntRule]] = [

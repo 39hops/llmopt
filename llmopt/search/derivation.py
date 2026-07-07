@@ -39,7 +39,7 @@ from typing import Callable, Iterator
 
 import sympy as sp
 
-from llmopt.search.rules import CORE_RULES, INT_RULES, MACRO_RULES
+from llmopt.search.rules import CORE_RULES, INT_RULES, LIM_RULES, MACRO_RULES
 
 UNSOLVED = (sp.Derivative, sp.Integral, sp.Limit)
 
@@ -178,6 +178,11 @@ def successors(
                 )
                 label = f"{rule_name}@{sp.sstr(inner)}"
                 yield from emit(label, state.expr.xreplace({node: new_node}))
+    for node in sorted(state.expr.atoms(sp.Limit), key=sp.count_ops):
+        for rule_name, rule in LIM_RULES:
+            for rewrite in rule(node):
+                label = f"{rule_name}@{sp.sstr(node)}"
+                yield from emit(label, state.expr.xreplace({node: rewrite}))
     for name, fn in ALGEBRA_MOVES:
         try:
             new = fn(state.expr)
