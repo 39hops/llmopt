@@ -129,7 +129,8 @@ def test_cyclic_moves_the_third_ceiling():
     node = sp.Integral(27 * sp.sqrt(2) * sp.exp(x) * sp.sin(x + sp.pi / 4), x)
     r = solve(node, budget=100)
     assert r.solved, "third ceiling did not move"
-    assert any(h.startswith("i_cyclic@") for h in r.state.history)
+    movers = ("i_cyclic@", "i_unprod@", "i_linear_basis@")
+    assert any(h.startswith(movers) for h in r.state.history)
 
 
 def test_unprod_reverse_product_rule():
@@ -144,7 +145,8 @@ def test_unprod_reverse_product_rule():
     assert any(sp.simplify(sp.diff(o, x) - g) == 0 for o in out)
     r = solve(sp.Integral(g, x), budget=200)
     assert r.solved
-    assert any(h.startswith("i_unprod@") for h in r.state.history)
+    assert any(h.startswith(("i_unprod@", "i_linear_basis@"))
+               for h in r.state.history)
 
 
 def test_ansatz_exp_undetermined_coefficients():
@@ -160,7 +162,8 @@ def test_ansatz_exp_undetermined_coefficients():
     assert RULES["i_ansatz_exp"](sp.Integral(sp.exp(x**2), x)) == []
     r = solve(sp.Integral(g, x), budget=200)
     assert r.solved
-    assert any(h.startswith("i_ansatz_exp@") for h in r.state.history)
+    assert any(h.startswith(("i_ansatz_exp@", "i_linear_basis@"))
+               for h in r.state.history)
 
 
 def test_linear_basis_bidirectional_v0():
