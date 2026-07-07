@@ -87,7 +87,8 @@ def _check(kind, expr, truth):
 
 
 def main(n: int, budgets: list[int], temperature: float = 1.0,
-         configs: list[str] | None = None, width: int = 8) -> None:
+         configs: list[str] | None = None, width: int = 8,
+         k_max: int = 6) -> None:
     score_fn = load_model()
     scoring_prop = make_scoring_proposer(score_fn)
     fixed_prop = make_proposer(score_fn)
@@ -95,7 +96,7 @@ def main(n: int, budgets: list[int], temperature: float = 1.0,
                   lambda s, f: (_ for _ in ()).throw(_Timeout()))
     configs = configs or ["full", "k3prop", "k1x3", "adapt"]
     print(f"# adaptive-k race — n={n}/cell, wall {WALL}s/search, "
-          f"entropy_k(1,6,T={temperature}), configs={configs}, width={width}")
+          f"entropy_k(1,{k_max},T={temperature}), configs={configs}, width={width}")
     print(f"{'kind':>4} {'lvl':>3} {'budget':>6} {'full':>7} {'k3prop':>7} "
           f"{'k1x3':>7} {'adapt':>7} {'mean-k':>7} {'H-deciles':>22}")
     for kind in ("diff", "int"):
@@ -125,7 +126,7 @@ def main(n: int, budgets: list[int], temperature: float = 1.0,
                                                    width=width)
                             else:
                                 base_policy = entropy_k(
-                                    1, 6, temperature=temperature)
+                                    1, k_max, temperature=temperature)
 
                                 def policy(s_, ranked, scores):
                                     import math
@@ -173,6 +174,7 @@ if __name__ == "__main__":
     ap.add_argument("--configs", nargs="+", default=None,
                     choices=["full", "k3prop", "k1x3", "adapt"])
     ap.add_argument("--width", type=int, default=8)
+    ap.add_argument("--k-max", type=int, default=6)
     a = ap.parse_args()
     main(a.n, a.budgets, temperature=a.temperature, configs=a.configs,
-         width=a.width)
+         width=a.width, k_max=a.k_max)
