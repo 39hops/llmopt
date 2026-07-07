@@ -58,7 +58,10 @@ def test_usub_end_to_end():
     r = beam_search(sp.Integral(2 * x * sp.cos(x**2), x), max_plies=16)
     assert r.solved
     assert sp.simplify(sp.diff(r.state.expr, x) - 2 * x * sp.cos(x**2)) == 0
-    assert any(h.startswith("i_usub@") for h in r.state.history)
+    # historically via i_usub; i_linear_basis now reaches sin(x**2)
+    # directly (it's in the trig-power span)
+    assert any(h.startswith(("i_usub@", "i_linear_basis@"))
+               for h in r.state.history)
 
 
 def test_parts_end_to_end():
