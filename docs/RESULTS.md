@@ -104,7 +104,12 @@ Round 1+ in progress at write time.
 Luby vs equal-thirds restarts: 269 = 269 (theorem is asymptotic; R=3
 isn't). Golden-angle vs iid restart diversity: 90 v 87, noise.
 T=1.0 adaptive: 268 (flat softmax). Markov-adaptive: 282 (rule-level
-ties). d_quotient: never fires. prop3+nnue stacking at high budget:
+ties). d_quotient: never fires. G-weight (Dijkstra component): a
+perfect four-way tie (92=92=92=92 across g in {0, 0.1, 1, 5}) with a
+structural proof — depth-synchronized beams compare only equal-depth
+candidates, so path cost adds a constant and cancels from every
+ranking; Dijkstra's question requires an asynchronous frontier to be
+askable, and hce's plies term was always dead weight in the sort. prop3+nnue stacking at high budget:
 collapses to 6/15 under the wall (spend wall-clock on nodes, not
 double ranking).
 
