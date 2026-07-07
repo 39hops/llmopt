@@ -431,6 +431,12 @@ _MAKERS = {
     "limit": make_limit,
     "limit_traced": make_limit_traced,
     "second_derivative": make_second_derivative,
+    "cdiff": make_cdiff,
+    "cint": make_cint,
+    "dsum": make_sum,
+    "drec": make_recurrence,
+    "taylor": make_taylor,
+    "continuity": make_continuity,
     "definite_integral": make_definite_integral,
     "tangent_line": make_tangent_line,
 }
