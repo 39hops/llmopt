@@ -1,4 +1,4 @@
-# The derivation-search results: 73.6% → 93.6% in 48 hours
+# The derivation-search results: 73.6% → 95.3% in 48 hours
 
 *llmopt's "Stockfish for math" arc, 2026-07-06 → 07-08. Every number
 below is a committed measurement on held-out, string-seeded problem
@@ -9,7 +9,7 @@ sets, sympy-oracle-verified. Written as the handoff/publication draft.*
 A beam search over sympy rewrite rules, guided first by a hand-crafted
 eval, then by learned components, solves generated calculus problems.
 Over 48 hours of measure-everything iteration, held-out solve rate at
-fixed node budgets went **265/360 → 337/360** without changing the
+fixed node budgets went **265/360 → 343/360** without changing the
 rules, the model, or the problems — every gain came from *search
 wisdom*: confidence calibration, width/depth allocation, and knowing
 which components actually carry which capability. The headline
@@ -33,7 +33,8 @@ answer to "is there a limit to self-teaching."
 | markov bigram, width 2 | 316 | width dividend |
 | k3-LLM, width 2 | 318 | |
 | adaptive-LLM, width 2 | 328 | |
-| **adaptive-LLM, width 2, k_max=3** | **337 (93.6%)** | right-sized gate |
+| adaptive-LLM, width 2, k_max=3 | 337 | right-sized gate |
+| **+ mined macros (the shipped `engine.solve()` config)** | **343 (95.3%)** | highway dividend |
 
 n=30 confirmation of the adaptive-vs-fixed comparison: 593/720 vs
 560/720 (int L3 flips to fixed-k: over-confident dives at the hardest
