@@ -96,13 +96,23 @@ def hf_score_fn(model, tok, device: str) -> ScoreFn:
         ids, mask = ids.to(device), mask.to(device)
         with torch.no_grad():
             logits = model(input_ids=ids, attention_mask=mask).logits
-        logprobs = torch.log_softmax(logits.float(), dim=-1)
-        out = []
+        # gather ONLY the answer positions before softmax: full-tensor
+        # log_softmax is batch x seq x 152k vocab (~13 GB on long
+        # states) and OOM'd the 10 GB 3080; the needed slice is ~MB.
+        pos_j, pos_t = [], []
+        for j, r in enumerate(rows):
+            for t in range(len(r) - spans[j], len(r)):
+                pos_j.append(j)
+                pos_t.append(t - 1)
+        sel = logits[pos_j, pos_t]  # (n_positions, vocab)
+        sel = torch.log_softmax(sel.float(), dim=-1)
+        out, idx = [], 0
         for j, r in enumerate(rows):
             n = spans[j]
             lp = 0.0
             for t in range(len(r) - n, len(r)):
-                lp += float(logprobs[j, t - 1, r[t]])
+                lp += float(sel[idx, r[t]])
+                idx += 1
             out.append(lp / n)
         return out
 
