@@ -73,6 +73,15 @@ def test_d_quotient_macro():
     assert RULES["d_quotient"](sp.Derivative(sp.sin(x) / 3, x)) == []
 
 
+def test_d_const_factor_macro():
+    node = sp.Derivative(6 * x**2 * sp.sin(x), x)
+    (rw,) = RULES["d_const_factor"](node)
+    assert rw == 6 * sp.Derivative(x**2 * sp.sin(x), x)
+    assert _equiv(node, rw)
+    assert RULES["d_const_factor"](sp.Derivative(x * sp.sin(x), x)) == []
+    assert RULES["d_const_factor"](sp.Derivative(sp.Integer(6), x)) == []
+
+
 @pytest.mark.parametrize("level", [1, 2, 3])
 def test_property_all_rules_equivalent_on_generated_exprs(level):
     """Every rule, applied to Derivatives of mathgen-generated

@@ -126,8 +126,27 @@ CORE_RULES: list[tuple[str, DiffRule]] = [
     ("d_chain_table", d_chain_table),
 ]
 
+def d_const_factor(node: sp.Derivative) -> list[sp.Expr]:
+    """MACRO, data-certified: d_product -> d_const carries 14.8% of
+    winning-path traffic (scripts/mine_highways.py, 2026-07-07) — the
+    engine constantly splits a Mul just to kill the constant factor's
+    derivative. Fused: d(c*f) = c*Derivative(f) in ONE ply."""
+    u = _unpack(node)
+    if u is None:
+        return []
+    f, x = u
+    if not isinstance(f, sp.Mul):
+        return []
+    const = sp.Mul(*(a for a in f.args if not a.has(x)))
+    rest = sp.Mul(*(a for a in f.args if a.has(x)))
+    if const == 1 or rest == 1:
+        return []
+    return [const * sp.Derivative(rest, x)]
+
+
 MACRO_RULES: list[tuple[str, DiffRule]] = [
     ("d_quotient", d_quotient),
+    ("d_const_factor", d_const_factor),
 ]
 
 
