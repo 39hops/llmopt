@@ -147,6 +147,17 @@ the int L3 11/15 plateau (13/15 at both budgets) that every beam
 config had called a rule-coverage ceiling. 113/120 = 94.2%, the best
 structural (zero-LLM) result to date.
 
+Full stack (bf + NNUE h + entropy-gated 0.5B confidence, the three
+winners in one search): **114/120 (95.0%)**, the all-time record —
+but honestly a photo finish over markov's 113 (prior NNUE jitter was
+±2). The clean signal inside it: **diff sweeps 60/60**, the first
+perfect kind, while int L3 @ 25 dips 11 v 13 — the known
+overcommitment failure (tight budget + hardest level, confidence
+goes narrow when flat top-3 should have stayed wide). Verdict
+unchanged from the beam era: the GPU buys confidence, not choice —
+and on this problem distribution the free bigram dict remains the
+engineering pick (`engine.solve()` default stands).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
