@@ -62,20 +62,11 @@ def load_nnue(path: str):
 
 
 def markov():
-    d = json.load(open("checkpoints/markov_prior.json"))
-    uni, bi = d["unigram"], d["bigram"]
-
-    def prop(state, children):
-        prev = state.history[-1].split("@")[0] if state.history else None
-        t = bi.get(prev) if prev else None
-
-        def s(n):
-            r = n.split("@")[0]
-            return (t.get(r, 0) if t else 0) + 0.01 * uni.get(r, 0)
-
-        return sorted(children, key=lambda c: -s(c[0]))
-
-    return prop
+    # the engine's prior, WITH median smoothing for unseen rules —
+    # a local unsmoothed copy silently guillotined every new mover
+    # (measured: autopsy #3 reran the same cyclic failure as #2)
+    from llmopt.search.engine import MarkovPrior
+    return MarkovPrior.load().proposer()
 
 
 def best_first(root, budget, prop, h):
