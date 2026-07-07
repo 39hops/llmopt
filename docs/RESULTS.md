@@ -133,13 +133,15 @@ saturation there is rule-coverage, not search discipline.
 
 Follow-up race decomposed the win and set a new record (same cells,
 g=0, n=15): **bf-nnue 113, bf-struct 103, bf-nodedup 82** (beam-w2
-was 91). Two corrections to the story above: (1) the transposition
-table, not asynchrony, carries the beam win — strip the visited-set
-and the async frontier LOSES to the beam (82 v 91; the pure frontier
-re-treads commuting rewrite orders that ply-synchronization happens
-to avoid); (2) NNUE finally pays. In the beam it managed only a
-photo finish (93 v 92) because beams rank equal-depth siblings — a
-low bar. Best-first is h-dominated (pop order IS the eval), and the
+was 91). Both searches carry a transposition table (beam_search has
+had `visited` since rung 1), so the decomposition is clean:
+asynchrony is worth +12 given dedup (103 v 91, like-for-like), and
+dedup is worth +21 within best-first (103 v 82) — the frontier
+re-treads commuting rewrite orders far more than a synchronized ply
+does, so the visited-set matters MORE the more selective the search.
+And NNUE finally pays: in the beam it managed only a photo finish
+(93 v 92) because beams rank equal-depth siblings — a low bar.
+Best-first is h-dominated (pop order IS the eval), and the
 +0.937-vs-+0.72 rho gap converts to +10 solves, including breaking
 the int L3 11/15 plateau (13/15 at both budgets) that every beam
 config had called a rule-coverage ceiling. 113/120 = 94.2%, the best
