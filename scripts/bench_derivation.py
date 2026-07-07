@@ -23,10 +23,10 @@ X = sp.Symbol("x")
 def _solve_one(args) -> tuple[bool, int, int]:
     """Module-level worker (fork-pool picklable). Returns
     (ok, nodes, plies)."""
-    root_s, truth_s, kind, width, max_plies, max_nodes, use_macros = args
+    root_s, truth_s, kind, width, max_plies, max_nodes, use_macros, vp = args
     root, truth = sp.sympify(root_s), sp.sympify(truth_s)
     r = beam_search(root, width=width, max_plies=max_plies,
-                    max_nodes=max_nodes, use_macros=use_macros)
+                    max_nodes=max_nodes, use_macros=use_macros, verify_p=vp)
     if kind == "diff":
         ok = r.solved and sp.simplify(r.state.expr - truth) == 0
     else:
@@ -36,7 +36,7 @@ def _solve_one(args) -> tuple[bool, int, int]:
 
 def run(levels: list[int], n: int, width: int, max_plies: int,
         max_nodes: int | None, use_macros: bool, kind: str,
-        jobs: int | None = None) -> None:
+        jobs: int | None = None, verify_p: float = 1.0) -> None:
     tag = "macros ON" if use_macros else "core rules only"
     print(f"# rung bench — kind={kind}, {tag}, width={width}, "
           f"max_plies={max_plies}, max_nodes={max_nodes}, jobs={jobs}")
@@ -56,7 +56,7 @@ def run(levels: list[int], n: int, width: int, max_plies: int,
                         break
                 root = sp.Integral(truth, X)
             items.append((sp.srepr(root), sp.srepr(truth), kind, width,
-                          max_plies, max_nodes, use_macros))
+                          max_plies, max_nodes, use_macros, verify_p))
         results = pmap(_solve_one, items, jobs=jobs)
         solved = sum(ok for ok, _, _ in results)
         nodes = [nd for _, nd, _ in results]
@@ -79,11 +79,12 @@ if __name__ == "__main__":
                     help="loop max_nodes over these budgets (the chart)")
     ap.add_argument("--jobs", type=int, default=None,
                     help="parallel workers (default: cpu_count-2; 1=serial)")
+    ap.add_argument("--verify-p", type=float, default=1.0)
     a = ap.parse_args()
     if a.budgets:
         for b in a.budgets:
             run(a.levels, a.n, a.width, a.max_plies, b, a.macros, a.kind,
-                jobs=a.jobs)
+                jobs=a.jobs, verify_p=a.verify_p)
     else:
         run(a.levels, a.n, a.width, a.max_plies, a.max_nodes, a.macros,
-            a.kind, jobs=a.jobs)
+            a.kind, jobs=a.jobs, verify_p=a.verify_p)
