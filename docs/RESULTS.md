@@ -109,6 +109,14 @@ Round 1+ in progress at write time.
 
 ## Honest nulls (all pre-registered or instrumented)
 
+Strategy-portfolio bandit (UCB1 per problem class over beam-mk3 /
+bf-struct / bf-nnue, n=30/cell, budget 30): bf-nnue dominates every
+cell (119/120 = the per-cell oracle), so the bandit's exploration tax
+buys nothing — bandit 108, best fixed arm 119. Portfolios need arm
+complementarity, and the autopsy movers + NNUE erased it: the arms
+now form a total order. (The measured complementarity that motivated
+this lived in the LLM-config matrix — int L3 tight-budget preferring
+flat k — not across these engines.)
 Luby vs equal-thirds restarts: 269 = 269 (theorem is asymptotic; R=3
 isn't). Golden-angle vs iid restart diversity: 90 v 87, noise.
 T=1.0 adaptive: 268 (flat softmax). Markov-adaptive: 282 (rule-level
