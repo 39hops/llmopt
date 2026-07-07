@@ -131,6 +131,20 @@ exactly where the beam was weakest (diff, tight budgets: 13/15 vs
 6/15 at diff L2 @ 25); on integration cells the two tie — the
 saturation there is rule-coverage, not search discipline.
 
+Follow-up race decomposed the win and set a new record (same cells,
+g=0, n=15): **bf-nnue 113, bf-struct 103, bf-nodedup 82** (beam-w2
+was 91). Two corrections to the story above: (1) the transposition
+table, not asynchrony, carries the beam win — strip the visited-set
+and the async frontier LOSES to the beam (82 v 91; the pure frontier
+re-treads commuting rewrite orders that ply-synchronization happens
+to avoid); (2) NNUE finally pays. In the beam it managed only a
+photo finish (93 v 92) because beams rank equal-depth siblings — a
+low bar. Best-first is h-dominated (pop order IS the eval), and the
++0.937-vs-+0.72 rho gap converts to +10 solves, including breaking
+the int L3 11/15 plateau (13/15 at both budgets) that every beam
+config had called a rule-coverage ceiling. 113/120 = 94.2%, the best
+structural (zero-LLM) result to date.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
