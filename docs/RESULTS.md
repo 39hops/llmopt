@@ -186,7 +186,16 @@ this industrializes that.
 |---|---|---|---|
 | 0 | baseline movers | 28/30 | 12/30 |
 | 1 | +i_cyclic (unsmoothed prior) | 29/30 | 12/30 |
-| 2 | +i_unprod, i_ansatz_exp, i_linear_basis, smoothing | **30/30** | **17/30** |
+| 2 | +i_unprod, i_ansatz_exp, i_linear_basis, smoothing | **30/30** | 17/30 |
+| 3 | +trig-power basis (sin^a cos^b monomials) | **30/30** | **19/30** |
+
+After rung 3, 10 of the 11 remaining L4 failures are WALL timeouts —
+the missing-operator story is over; the residual is expression-size
+economics (sympy op costs exploding on monster integrands), which is
+an optimization problem, not a capability one. The trig-power rung
+also subsumed the ORIGINAL euler ceiling (int sin^2 = x/2 - sin*cos/2
+lives in the span) and the i_usub showcase (sin(x^2)): the linear
+solve is eating the rule ladder from below.
 
 Rules born from the census: **i_cyclic** (exp·trig closed forms — the
 winning step is algebra on the equation I = f − I, outside the rewrite
