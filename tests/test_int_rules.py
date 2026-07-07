@@ -96,3 +96,15 @@ def test_property_on_generated_integrands(level):
         for name, rule in INT_RULES:
             for rw in rule(node):
                 assert _equiv_mod_const(node, rw), f"{name} broke on {f}"
+
+
+def test_euler_rewrite_moves_the_ceiling():
+    """sin^2 has NO derivation in the real-form rule set (pre-registered
+    ceiling); the euler move opens an all-existing-rules chain."""
+    from llmopt.search.derivation import beam_search
+
+    node = sp.Integral(sp.sin(x) ** 2, x)
+    r = beam_search(node, max_plies=24, max_nodes=300)
+    assert r.solved, "ceiling did not move"
+    assert sp.simplify(sp.diff(r.state.expr, x) - sp.sin(x) ** 2) == 0
+    assert any(h == "euler" for h in r.state.history)

@@ -74,7 +74,19 @@ ALGEBRA_MOVES: list[tuple[str, Callable[[sp.Expr], sp.Expr]]] = [
     ("trigsimp", sp.trigsimp),
     ("powsimp", sp.powsimp),
     ("subs_eval", lambda e: _subs_eval(e)),
+    ("euler", lambda e: _euler_rewrite(e)),
 ]
+
+
+def _euler_rewrite(e: sp.Expr) -> sp.Expr:
+    """The ceiling-mover (Artin's complex-numbers thread): rewrite trig
+    to complex exponentials so integrals with no real-form derivation
+    (e.g. sin^2) become exponential chains the EXISTING rules solve.
+    Only fires when trig sits under an unsolved Integral (elsewhere it
+    just bloats states for the HCE to bury)."""
+    if not any(i.has(sp.sin, sp.cos, sp.tan) for i in e.atoms(sp.Integral)):
+        return e
+    return sp.expand(e.rewrite(sp.exp))
 
 
 def _subs_eval(e: sp.Expr) -> sp.Expr:
