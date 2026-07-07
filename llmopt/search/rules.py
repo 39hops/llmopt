@@ -375,9 +375,45 @@ def i_apart(node: sp.Integral) -> list[sp.Expr]:
     return [sp.Integral(g, x)]
 
 
+def _linear_coeff(e: sp.Expr, x: sp.Symbol) -> sp.Expr | None:
+    """Slope of e if e is linear in x (slope x-free), else None."""
+    d = sp.diff(e, x)
+    return d if not d.has(x) else None
+
+
+def i_cyclic(node: sp.Integral) -> list[sp.Expr]:
+    """Table macro (ceiling-mover #3): exp(ax+d)*sin/cos(bx+c) closed
+    forms. By-parts twice returns the original integral (I = f - I);
+    the winning step is algebra on the EQUATION, which no expression
+    rewrite can express — so emit the solved form directly. Verified
+    by differentiation like every edge, so soundness is free. Top
+    family in the 2026-07-07 integration failure autopsy."""
+    u = _unpack_int(node)
+    if u is None:
+        return []
+    f, x = u
+    if not (isinstance(f, sp.Mul) and len(f.args) == 2):
+        return []
+    ex = [a for a in f.args if isinstance(a, sp.exp)]
+    tr = [a for a in f.args if isinstance(a, (sp.sin, sp.cos))]
+    if len(ex) != 1 or len(tr) != 1:
+        return []
+    a = _linear_coeff(ex[0].args[0], x)
+    b = _linear_coeff(tr[0].args[0], x)
+    if a is None or b is None or a == 0 or b == 0:
+        return []
+    v = tr[0].args[0]
+    if isinstance(tr[0], sp.sin):
+        num = a * sp.sin(v) - b * sp.cos(v)
+    else:
+        num = a * sp.cos(v) + b * sp.sin(v)
+    return [ex[0] * num / (a**2 + b**2)]
+
+
 INT_RULES: list[tuple[str, IntRule]] = [
     ("i_const", i_const),
     ("i_apart", i_apart),
+    ("i_cyclic", i_cyclic),
     ("i_power", i_power),
     ("i_sum", i_sum),
     ("i_const_factor", i_const_factor),

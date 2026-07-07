@@ -110,6 +110,28 @@ def test_euler_rewrite_moves_the_ceiling():
     assert any(h == "euler" for h in r.state.history)
 
 
+def test_cyclic_moves_the_third_ceiling():
+    """exp(x)*sin(x) had NO derivation pre-i_cyclic (2026-07-07
+    autopsy top family): by-parts twice returns the original integral
+    and the winning step is algebra on the equation, outside the
+    rewrite space. The table macro emits the solved form directly."""
+    from llmopt.search.engine import solve
+
+    for f in (sp.exp(x) * sp.sin(x + sp.pi / 4),
+              sp.exp(2 * x) * sp.cos(3 * x - 1)):
+        assert len(RULES["i_cyclic"](sp.Integral(f, x))) == 1
+        got = RULES["i_cyclic"](sp.Integral(f, x))[0]
+        assert sp.simplify(sp.diff(got, x) - f) == 0
+    # non-matches stay silent
+    assert RULES["i_cyclic"](sp.Integral(sp.exp(x**2) * sp.sin(x), x)) == []
+    assert RULES["i_cyclic"](sp.Integral(sp.sin(x) * sp.cos(x), x)) == []
+
+    node = sp.Integral(27 * sp.sqrt(2) * sp.exp(x) * sp.sin(x + sp.pi / 4), x)
+    r = solve(node, budget=100)
+    assert r.solved, "third ceiling did not move"
+    assert any(h.startswith("i_cyclic@") for h in r.state.history)
+
+
 def test_apart_moves_the_second_ceiling():
     """1/(x**2-1) had NO derivation pre-i_apart (measured); the move
     opens i_sum -> i_const_factor -> i_usub -> i_power(log) chains."""
