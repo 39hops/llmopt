@@ -94,17 +94,21 @@ def hf_score_fn(model, tok, device: str) -> ScoreFn:
             ids[j, : len(r)] = torch.tensor(r)
             mask[j, : len(r)] = 1
         ids, mask = ids.to(device), mask.to(device)
-        with torch.no_grad():
-            logits = model(input_ids=ids, attention_mask=mask).logits
-        # gather ONLY the answer positions before softmax: full-tensor
-        # log_softmax is batch x seq x 152k vocab (~13 GB on long
-        # states) and OOM'd the 10 GB 3080; the needed slice is ~MB.
+        # NEVER materialize full logits: the LM head to a 152k vocab on
+        # batch x seq positions is ~11 GB on long states (OOM'd the
+        # 3080 twice — first in log_softmax, then in the head matmul
+        # itself). Run the transformer BODY (hidden states are MBs),
+        # then project ONLY the answer positions through the head.
         pos_j, pos_t = [], []
         for j, r in enumerate(rows):
             for t in range(len(r) - spans[j], len(r)):
                 pos_j.append(j)
                 pos_t.append(t - 1)
-        sel = logits[pos_j, pos_t]  # (n_positions, vocab)
+        with torch.no_grad():
+            hidden = model.model(input_ids=ids,
+                                 attention_mask=mask).last_hidden_state
+            sel_h = hidden[pos_j, pos_t]  # (n_positions, d_model)
+            sel = model.lm_head(sel_h)    # (n_positions, vocab) — tiny
         sel = torch.log_softmax(sel.float(), dim=-1)
         out, idx = [], 0
         for j, r in enumerate(rows):
