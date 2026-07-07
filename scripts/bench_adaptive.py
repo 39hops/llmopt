@@ -62,7 +62,7 @@ def random_proposer(seed_tag: str):
 def restart_search(root, total_budget, restarts, seed):
     per = max(1, total_budget // restarts)
     for i in range(restarts):
-        r = beam_search(root, width=8, max_plies=20, max_nodes=per,
+        r = beam_search(root, width=width, max_plies=20, max_nodes=per,
                         proposer=random_proposer(f"{seed}-r{i}"),
                         propose_k=1)
         if r.solved:
@@ -87,7 +87,7 @@ def _check(kind, expr, truth):
 
 
 def main(n: int, budgets: list[int], temperature: float = 1.0,
-         configs: list[str] | None = None) -> None:
+         configs: list[str] | None = None, width: int = 8) -> None:
     score_fn = load_model()
     scoring_prop = make_scoring_proposer(score_fn)
     fixed_prop = make_proposer(score_fn)
@@ -95,7 +95,7 @@ def main(n: int, budgets: list[int], temperature: float = 1.0,
                   lambda s, f: (_ for _ in ()).throw(_Timeout()))
     configs = configs or ["full", "k3prop", "k1x3", "adapt"]
     print(f"# adaptive-k race — n={n}/cell, wall {WALL}s/search, "
-          f"entropy_k(1,6,T={temperature}), configs={configs}")
+          f"entropy_k(1,6,T={temperature}), configs={configs}, width={width}")
     print(f"{'kind':>4} {'lvl':>3} {'budget':>6} {'full':>7} {'k3prop':>7} "
           f"{'k1x3':>7} {'adapt':>7} {'mean-k':>7} {'H-deciles':>22}")
     for kind in ("diff", "int"):
@@ -112,10 +112,10 @@ def main(n: int, budgets: list[int], temperature: float = 1.0,
                         signal.alarm(WALL)
                         try:
                             if name == "full":
-                                r = beam_search(root, width=8, max_plies=20,
+                                r = beam_search(root, width=width, max_plies=20,
                                                 max_nodes=budget)
                             elif name == "k3prop":
-                                r = beam_search(root, width=8, max_plies=20,
+                                r = beam_search(root, width=width, max_plies=20,
                                                 max_nodes=budget,
                                                 proposer=fixed_prop,
                                                 propose_k=3)
@@ -141,7 +141,7 @@ def main(n: int, budgets: list[int], temperature: float = 1.0,
                                         hs_seen.append(h / math.log(nsc))
                                     return k
 
-                                r = beam_search(root, width=8, max_plies=20,
+                                r = beam_search(root, width=width, max_plies=20,
                                                 max_nodes=budget,
                                                 proposer=scoring_prop,
                                                 propose_k=policy)
@@ -171,5 +171,7 @@ if __name__ == "__main__":
     ap.add_argument("--temperature", type=float, default=1.0)
     ap.add_argument("--configs", nargs="+", default=None,
                     choices=["full", "k3prop", "k1x3", "adapt"])
+    ap.add_argument("--width", type=int, default=8)
     a = ap.parse_args()
-    main(a.n, a.budgets, temperature=a.temperature, configs=a.configs)
+    main(a.n, a.budgets, temperature=a.temperature, configs=a.configs,
+         width=a.width)
