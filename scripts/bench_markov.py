@@ -68,13 +68,12 @@ def _check(kind, expr, truth):
     return sp.simplify(sp.diff(expr, X) - truth) == 0
 
 
-def main(n: int, budgets: list[int]) -> None:
+def main(n: int, budgets: list[int], width: int = 8) -> None:
     unigram, bigram = build_prior()
     prop = make_markov_proposer(unigram, bigram)
     signal.signal(signal.SIGALRM,
                   lambda s, f: (_ for _ in ()).throw(_Timeout()))
-    print(f"# markov3 race — n={n}/cell (compare: full 265, rand3 277, "
-          f"prop3-LLM 288, adapt 300)")
+    print(f"# markov3 race — n={n}/cell, width={width} (refs: markov3@w8 293, adapt 300)")
     print(f"{'kind':>4} {'lvl':>3} {'budget':>6} {'markov3':>8}")
     total = 0
     for kind in ("diff", "int"):
@@ -86,7 +85,7 @@ def main(n: int, budgets: list[int]) -> None:
                     root, truth = _root(rng, level, kind)
                     signal.alarm(WALL)
                     try:
-                        r = beam_search(root, width=8, max_plies=20,
+                        r = beam_search(root, width=width, max_plies=20,
                                         max_nodes=budget, proposer=prop,
                                         propose_k=3)
                         ok += r.solved and _check(kind, r.state.expr, truth)
@@ -104,5 +103,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=15)
     ap.add_argument("--budgets", type=int, nargs="+", default=[25, 50, 100, 200])
+    ap.add_argument("--width", type=int, default=8)
     a = ap.parse_args()
-    main(a.n, a.budgets)
+    main(a.n, a.budgets, width=a.width)
