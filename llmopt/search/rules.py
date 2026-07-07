@@ -410,10 +410,82 @@ def i_cyclic(node: sp.Integral) -> list[sp.Expr]:
     return [ex[0] * num / (a**2 + b**2)]
 
 
+def i_unprod(node: sp.Integral) -> list[sp.Expr]:
+    """Reverse product rule (ceiling-mover #4): sum integrands of the
+    shape f'·H(u) + f·u'·h(u) are an expanded d/dx[f·H(u)] — but after
+    expansion no single Mul node holds the pair, so i_parts never sees
+    it (dominant L4 family in the 2026-07-07 autopsy). For each term
+    c·f·u'·h(u) with h in the table, GUESS A = f_cof·H(u) and emit
+    A + ∫(rest − f_cof'·H(u)); a right guess cancels a sibling term,
+    a wrong one loses in ranking. Verifier-checked like every edge."""
+    un = _unpack_int(node)
+    if un is None:
+        return []
+    f, x = un
+    if not isinstance(f, sp.Add):
+        return []
+    out: list[sp.Expr] = []
+    seen: set[str] = set()
+    for t in f.args:
+        for fn in t.atoms(sp.sin, sp.cos, sp.exp):
+            v = fn.args[0]
+            dv = sp.diff(v, x)
+            if dv == 0:
+                continue
+            cof = sp.cancel(t / (dv * fn))
+            if cof.has(sp.sin, sp.cos, sp.exp, sp.log, sp.Integral):
+                continue
+            A = cof * _INT_TABLE[fn.func](v)
+            k = sp.srepr(A)
+            if k in seen:
+                continue
+            seen.add(k)
+            resid = sp.expand(f - sp.diff(A, x))
+            if sp.count_ops(resid) >= sp.count_ops(f):
+                continue
+            out.append(A + (sp.Integral(resid, x) if resid != 0 else 0))
+            if len(out) >= 6:
+                return out
+    return out
+
+
+def i_ansatz_exp(node: sp.Integral) -> list[sp.Expr]:
+    """Polynomial ansatz for P(x)·exp(w(x)) (ceiling-mover #4b): the
+    antiderivative, when elementary, is Q(x)·exp(w) with Q'+Q·w' = P —
+    solve for Q by undetermined coefficients. Catches the L4 family
+    where f·w' spans several expanded terms so i_unprod's per-term
+    cofactor guess can't reassemble it."""
+    un = _unpack_int(node)
+    if un is None:
+        return []
+    f, x = un
+    f = sp.expand(f)
+    # sympy auto-splits exp(w1+w2) into exp(w1)*exp(w2): recombine
+    exps = [e for e in f.atoms(sp.exp) if e.args[0].is_polynomial(x)]
+    if not exps:
+        return []
+    w = sp.Add(*(e.args[0] for e in exps))
+    if int(sp.degree(w, x)) < 2:
+        return []
+    fn = sp.Mul(*exps)
+    P = sp.cancel(f / fn)
+    if not P.is_polynomial(x):
+        return []
+    dw = sp.diff(w, x)
+    deg = max(int(sp.degree(P, x)) - int(sp.degree(dw, x)), 0)
+    cs = sp.symbols(f"c0:{deg + 1}", cls=sp.Dummy)
+    Q = sp.Add(*(c * x**i for i, c in enumerate(cs)))
+    eqs = sp.Poly(sp.expand(sp.diff(Q, x) + Q * dw - P), x).coeffs()
+    sol = sp.solve(eqs, cs, dict=True)
+    return [Q.subs(sol[0]) * fn] if sol else []
+
+
 INT_RULES: list[tuple[str, IntRule]] = [
     ("i_const", i_const),
     ("i_apart", i_apart),
     ("i_cyclic", i_cyclic),
+    ("i_unprod", i_unprod),
+    ("i_ansatz_exp", i_ansatz_exp),
     ("i_power", i_power),
     ("i_sum", i_sum),
     ("i_const_factor", i_const_factor),

@@ -132,6 +132,55 @@ def test_cyclic_moves_the_third_ceiling():
     assert any(h.startswith("i_cyclic@") for h in r.state.history)
 
 
+def test_unprod_reverse_product_rule():
+    """Expanded d/dx[f*G(u)] sums (dominant L4 autopsy family): no
+    single Mul node holds the product-rule pair, so i_parts never
+    sees it. Autopsy failure #3, now one ply via engine.solve."""
+    from llmopt.search.engine import solve
+
+    g = (162 * x * sp.cos(3 * x**3 + 3 * x + 2)
+         - 81 * (3 * x**2 + 1) ** 2 * sp.sin(3 * x**3 + 3 * x + 2))
+    out = RULES["i_unprod"](sp.Integral(g, x))
+    assert any(sp.simplify(sp.diff(o, x) - g) == 0 for o in out)
+    r = solve(sp.Integral(g, x), budget=200)
+    assert r.solved
+    assert any(h.startswith("i_unprod@") for h in r.state.history)
+
+
+def test_ansatz_exp_undetermined_coefficients():
+    """P(x)*exp(w) with f*w' spanning several expanded terms: per-term
+    cofactor guessing can't reassemble it; solve Q'+Q*w'=P instead.
+    Autopsy failure #19. Also guards the exp(w1+w2) auto-split."""
+    from llmopt.search.engine import solve
+
+    g = sp.expand((72 * x * (2 * x + 1) + 24) * sp.exp(3 * x**2 + 3 * x + 1))
+    out = RULES["i_ansatz_exp"](sp.Integral(g, x))
+    assert len(out) == 1 and sp.simplify(sp.diff(out[0], x) - g) == 0
+    # non-elementary: no polynomial Q exists, rule must stay silent
+    assert RULES["i_ansatz_exp"](sp.Integral(sp.exp(x**2), x)) == []
+    r = solve(sp.Integral(g, x), budget=200)
+    assert r.solved
+    assert any(h.startswith("i_ansatz_exp@") for h in r.state.history)
+
+
+def test_markov_prior_smoothing_reaches_unseen_rules():
+    """Rules absent from the mined prior must not score 0 (they'd be
+    guillotined by the top-3 cut until the prior is re-mined) —
+    unseen rules get the median unigram mass."""
+    from llmopt.search.engine import MarkovPrior
+
+    prior = MarkovPrior({"i_sum": 100, "i_power": 50, "expand": 10}, {})
+    prop = prior.proposer()
+    from llmopt.search.derivation import State
+    s = State(sp.Integral(sp.sin(x), x))
+    kids = [("i_sum@node", s), ("brand_new_rule@node", s),
+            ("expand@node", s)]
+    ranked = prop(s, kids)
+    names = [k[0] for k in ranked]
+    # median (50) puts the unseen rule ahead of the rare seen one
+    assert names.index("brand_new_rule@node") < names.index("expand@node")
+
+
 def test_apart_moves_the_second_ceiling():
     """1/(x**2-1) had NO derivation pre-i_apart (measured); the move
     opens i_sum -> i_const_factor -> i_usub -> i_power(log) chains."""

@@ -55,6 +55,14 @@ class MarkovPrior:
         return cls(unigram, bigram)
 
     def proposer(self):
+        # Uniform smoothing: rules the prior has never seen get the
+        # median unigram mass instead of 0. Without this, any newly
+        # added rule is guillotined by the top-k cut until the prior
+        # is re-mined (measured: i_unprod solved its target family in
+        # one ply full-enum but engine.solve() never proposed it).
+        med = sorted(self.unigram.values())[len(self.unigram) // 2] \
+            if self.unigram else 1
+
         def prop(state: State, children):
             prev = (state.history[-1].split("@")[0]
                     if state.history else None)
@@ -63,7 +71,7 @@ class MarkovPrior:
             def s(name: str) -> float:
                 r = name.split("@")[0]
                 return ((table.get(r, 0) if table else 0)
-                        + 0.01 * self.unigram.get(r, 0))
+                        + 0.01 * self.unigram.get(r, med))
 
             return sorted(children, key=lambda c: -s(c[0]))
 
