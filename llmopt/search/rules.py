@@ -460,24 +460,43 @@ def i_ansatz_exp(node: sp.Integral) -> list[sp.Expr]:
         return []
     f, x = un
     f = sp.expand(f)
-    # sympy auto-splits exp(w1+w2) into exp(w1)*exp(w2): recombine
-    exps = [e for e in f.atoms(sp.exp) if e.args[0].is_polynomial(x)]
-    if not exps:
+    # Group terms by exp-family signature (multi-family sums never
+    # reach per-family nodes in practice: `together`/hce re-merge
+    # them before i_sum splits — measured on autopsy case #9), and
+    # sympy auto-splits exp(w1+w2) into exp(w1)*exp(w2): recombine.
+    groups: dict[str, list[sp.Expr]] = {}
+    rest: list[sp.Expr] = []
+    for t in (f.args if isinstance(f, sp.Add) else (f,)):
+        exps = [e for e in t.atoms(sp.exp) if e.args[0].is_polynomial(x)]
+        if exps:
+            sig = sp.srepr(sp.Mul(*exps))
+            groups.setdefault(sig, []).append(t)
+        else:
+            rest.append(t)
+    solved: list[sp.Expr] = []
+    for terms in groups.values():
+        g = sp.Add(*terms)
+        exps = [e for e in g.atoms(sp.exp) if e.args[0].is_polynomial(x)]
+        w = sp.Add(*(e.args[0] for e in exps))
+        fn = sp.Mul(*exps)
+        P = sp.cancel(g / fn)
+        if int(sp.degree(w, x)) < 2 or not P.is_polynomial(x):
+            rest.extend(terms)
+            continue
+        dw = sp.diff(w, x)
+        deg = max(int(sp.degree(P, x)) - int(sp.degree(dw, x)), 0)
+        cs = sp.symbols(f"c0:{deg + 1}", cls=sp.Dummy)
+        Q = sp.Add(*(c * x**i for i, c in enumerate(cs)))
+        eqs = sp.Poly(sp.expand(sp.diff(Q, x) + Q * dw - P), x).coeffs()
+        sol = sp.solve(eqs, cs, dict=True)
+        if sol:
+            solved.append(Q.subs(sol[0]) * fn)
+        else:
+            rest.extend(terms)
+    if not solved:
         return []
-    w = sp.Add(*(e.args[0] for e in exps))
-    if int(sp.degree(w, x)) < 2:
-        return []
-    fn = sp.Mul(*exps)
-    P = sp.cancel(f / fn)
-    if not P.is_polynomial(x):
-        return []
-    dw = sp.diff(w, x)
-    deg = max(int(sp.degree(P, x)) - int(sp.degree(dw, x)), 0)
-    cs = sp.symbols(f"c0:{deg + 1}", cls=sp.Dummy)
-    Q = sp.Add(*(c * x**i for i, c in enumerate(cs)))
-    eqs = sp.Poly(sp.expand(sp.diff(Q, x) + Q * dw - P), x).coeffs()
-    sol = sp.solve(eqs, cs, dict=True)
-    return [Q.subs(sol[0]) * fn] if sol else []
+    tail = sp.Integral(sp.Add(*rest), x) if rest else sp.S.Zero
+    return [sp.Add(*solved) + tail]
 
 
 INT_RULES: list[tuple[str, IntRule]] = [
