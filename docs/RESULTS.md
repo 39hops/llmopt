@@ -166,6 +166,37 @@ unchanged from the beam era: the GPU buys confidence, not choice —
 and on this problem distribution the free bigram dict remains the
 engineering pick (`engine.solve()` default stands).
 
+## The autopsy ladder (failure census → operator rules, one rung each)
+
+Method: run the best structural engine at budget 400 on int L3/L4
+(n=30/level, same seeds every rung), dump every failure with the state
+it died on, classify, implement the top family, repeat. Both earlier
+ceiling-movers (euler, i_apart) came from reading ONE failing problem;
+this industrializes that.
+
+| rung | config | L3 | L4 |
+|---|---|---|---|
+| 0 | baseline movers | 28/30 | 12/30 |
+| 1 | +i_cyclic (unsmoothed prior) | 29/30 | 12/30 |
+| 2 | +i_unprod, i_ansatz_exp, i_linear_basis, smoothing | **30/30** | **17/30** |
+
+Rules born from the census: **i_cyclic** (exp·trig closed forms — the
+winning step is algebra on the equation I = f − I, outside the rewrite
+space entirely), **i_unprod** (reverse product rule: expanded
+d/dx[f·G(u)] sums whose halves no single Mul node holds), 
+**i_ansatz_exp** (P(x)·e^w by undetermined coefficients),
+**i_linear_basis** (bidirectional search collapsed into linear
+algebra: d/dx is linear, so meet-in-the-middle over answer shapes is
+ONE matrix solve — subsumes the other three and reaches mixed
+exp·trig·poly products none of them can). Rung 1's stuck-at-29 was
+itself a finding: the search REACHED the i_cyclic node but the
+unsmoothed markov prior scored the unseen rule 0.0 and the top-3 cut
+dropped it — mined priors structurally suppress new capabilities
+(fixed: unseen rules get median unigram mass; regression-tested).
+Remaining L4 failures: 10 wall-timeouts on expression blow-up + trig
+POWERS (sin^k·cos shapes, a basis extension) + non-polynomial inner
+args (trig-in-trig, sqrt args).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
