@@ -124,6 +124,13 @@ smoothed-old-prior vs 300 polluted. Conclusion pair: the quality gate
 is worth 35 solves; native mass vs median smoothing is worth ~1 —
 smoothing already gave new rules everything ranking could give them.
 Prior CONTENT saturates fast; prior HYGIENE is what matters.
+Size-cap pruning vs the L4 timeouts (nocap/300/150 ops, bf-nnue,
+budget 400, n=30): null — 22/30 all arms, timeouts 6/7/7. The
+diagnosis is the finding: the blow-up cost is paid GENERATING a
+monster child (successors + verify_edge), not keeping it — pruning at
+queue insertion is too late. Converting the timeouts needs time-boxed
+rule application inside successors (or per-op sympy budgets), a
+plumbing change banked for the optimization thread.
 Annealed best-first (Metropolis pop over NNUE energy, linear cool;
 diff/int L3-4, n=15): monotone null — greedy 112, T0=1: 108, T0=5:
 103, T0=25: 97. Every degree of temperature hurts. Annealing is
