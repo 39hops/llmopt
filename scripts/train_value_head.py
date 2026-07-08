@@ -59,7 +59,8 @@ def gen_labels(per_cell: int, cap: int) -> None:
     print(f"saved {LABELS_PATH}")
 
 
-def train_head(epochs: int, batch: int) -> None:
+def train_head(epochs: int, batch: int,
+               unfreeze_lora: bool = False) -> None:
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -77,6 +78,17 @@ def train_head(epochs: int, batch: int) -> None:
     model.eval()
     for p in model.parameters():
         p.requires_grad_(False)
+    lora_params = []
+    if unfreeze_lora:
+        # v2: let the trunk LEARN to represent judgment — train the
+        # LoRA jointly with the head (v1's frozen ranking-trunk lost
+        # 115 v 119: the head could only read a representation
+        # optimized for move choice). Saved separately as a VALUE
+        # adapter; the ranking adapter stays untouched on disk.
+        for name, p in model.named_parameters():
+            if name.endswith((".a", ".b")):
+                p.requires_grad_(True)
+                lora_params.append(p)
 
     rows = [json.loads(l) for l in LABELS_PATH.open()]
     ys = torch.tensor([r["y"] for r in rows], dtype=torch.float32)
@@ -87,12 +99,15 @@ def train_head(epochs: int, batch: int) -> None:
         torch.nn.Linear(d_model, 64), torch.nn.ReLU(),
         torch.nn.Linear(64, 64), torch.nn.ReLU(),
         torch.nn.Linear(64, 1)).to(device).to(torch.float32)
-    opt = torch.optim.Adam(head.parameters(), lr=1e-3)
+    opt = torch.optim.Adam(
+        [{"params": head.parameters(), "lr": 1e-3}]
+        + ([{"params": lora_params, "lr": 1e-4}] if lora_params else []))
 
-    def hidden(states: list[str]) -> "torch.Tensor":
+    def hidden(states: list[str], grad: bool = False) -> "torch.Tensor":
         enc = tok(states, return_tensors="pt", padding=True,
                   truncation=True, max_length=512).to(device)
-        with torch.no_grad():
+        ctx = torch.enable_grad() if grad else torch.no_grad()
+        with ctx:
             out = model.model(input_ids=enc.input_ids,
                               attention_mask=enc.attention_mask)
         h = out.last_hidden_state
@@ -110,7 +125,8 @@ def train_head(epochs: int, batch: int) -> None:
         tot = nb = 0
         for i in range(0, len(train_idx), batch):
             chunk = train_idx[i:i + batch]
-            hcat = hidden([rows[j]["state"] for j in chunk])
+            hcat = hidden([rows[j]["state"] for j in chunk],
+                          grad=unfreeze_lora)
             y = torch.tensor([(rows[j]["y"] - mean) / std for j in chunk],
                              device=device)
             loss = torch.nn.functional.mse_loss(head(hcat).squeeze(-1), y)
@@ -131,15 +147,21 @@ def train_head(epochs: int, batch: int) -> None:
     print(f"held-out spearman rho = {spearman(pred, true):+.3f} "
           f"(NNUE baseline: +0.937 on its own split)")
     import torch as _t
-    _t.save({"state_dict": head.state_dict(), "mean": mean, "std": std},
-            "checkpoints/value_head.pt")
-    print("saved checkpoints/value_head.pt")
+    out_name = ("checkpoints/value_head_v2.pt" if unfreeze_lora
+                else "checkpoints/value_head.pt")
+    payload = {"state_dict": head.state_dict(), "mean": mean, "std": std}
+    if unfreeze_lora:
+        payload["lora"] = {k: v for k, v in model.state_dict().items()
+                           if k.endswith((".a", ".b"))}
+    _t.save(payload, out_name)
+    print(f"saved {out_name}")
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--gen-labels", action="store_true")
     ap.add_argument("--train", action="store_true")
+    ap.add_argument("--unfreeze-lora", action="store_true")
     ap.add_argument("--per-cell", type=int, default=15)
     ap.add_argument("--cap", type=int, default=1500)
     ap.add_argument("--epochs", type=int, default=10)
@@ -149,4 +171,4 @@ if __name__ == "__main__":
     if a.gen_labels:
         gen_labels(a.per_cell, a.cap)
     if a.train:
-        train_head(a.epochs, a.batch)
+        train_head(a.epochs, a.batch, unfreeze_lora=a.unfreeze_lora)
