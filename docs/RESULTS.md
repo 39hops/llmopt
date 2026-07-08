@@ -117,6 +117,13 @@ mined prior inherits the POLICY QUALITY of the paths it's mined from,
 not just their verified correctness; re-mine only from harvests by an
 engine at least as strong as the prior's current user. (The verifier
 guarantees the paths are RIGHT; it cannot guarantee they are WISE.)
+The redemption arm: a fresh 982-row harvest by the CHAMPION engine
+(273/320, int L4 36/40 — the new rules' full effect at budget 300),
+re-mined with quality lineages only: control **335** vs 334
+smoothed-old-prior vs 300 polluted. Conclusion pair: the quality gate
+is worth 35 solves; native mass vs median smoothing is worth ~1 —
+smoothing already gave new rules everything ranking could give them.
+Prior CONTENT saturates fast; prior HYGIENE is what matters.
 Annealed best-first (Metropolis pop over NNUE energy, linear cool;
 diff/int L3-4, n=15): monotone null — greedy 112, T0=1: 108, T0=5:
 103, T0=25: 97. Every degree of temperature hurts. Annealing is
