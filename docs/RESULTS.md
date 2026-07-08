@@ -109,6 +109,13 @@ Round 1+ in progress at write time.
 
 ## Honest nulls (all pre-registered or instrumented)
 
+Annealed best-first (Metropolis pop over NNUE energy, linear cool;
+diff/int L3-4, n=15): monotone null — greedy 112, T0=1: 108, T0=5:
+103, T0=25: 97. Every degree of temperature hurts. Annealing is
+insurance against a deceptive landscape; NNUE (rho +0.937) makes the
+landscape honest, so random detours are pure budget waste. Cooling
+schedules and eval quality are substitutes — we're on the strong-eval
+side of the tradeoff.
 Strategy-portfolio bandit (UCB1 per problem class over beam-mk3 /
 bf-struct / bf-nnue, n=30/cell, budget 30): bf-nnue dominates every
 cell (119/120 = the per-cell oracle), so the bandit's exploration tax
