@@ -32,6 +32,7 @@ _PARSE_LOCALS = {
     "log": sp.log, "ln": sp.log, "sqrt": sp.sqrt, "pi": sp.pi, "E": sp.E,
     "e": sp.E, "C": sp.Symbol("C"), "Matrix": sp.Matrix, "I": sp.I,
     "i": sp.I, "y": sp.Symbol("y"), "t": sp.Symbol("t"),
+    "n": sp.Symbol("n"), "k": sp.Symbol("k"),
 }
 
 
@@ -55,6 +56,13 @@ class Problem:
     _expr: object = field(compare=False, repr=False)  # task-specific payload
 
     def check(self, prediction: str) -> bool:
+        if self.kind == "prove_ind":
+            # two-obligation induction checker (multi-line answer:
+            # keep the full prediction, not just the first line)
+            from llmopt.mathgen.proofs import check_induction
+            if "Answer:" in prediction:
+                prediction = prediction.rsplit("Answer:", 1)[1]
+            return check_induction(self._expr, prediction)
         if "Answer:" in prediction:
             prediction = prediction.rsplit("Answer:", 1)[1].strip().splitlines()[0]
         pred = parse_answer(prediction)
@@ -454,13 +462,14 @@ def _resolve_maker(kind: str):
     an import cycle since they build on Problem from this module."""
     if kind not in _MAKERS:
         from llmopt.mathgen import (linalg, mechanics, multivar, ntheory,
-                                    odes)
+                                    odes, proofs)
 
         _MAKERS.update(linalg.MAKERS)
         _MAKERS.update(odes.MAKERS)
         _MAKERS.update(ntheory.MAKERS)
         _MAKERS.update(multivar.MAKERS)
         _MAKERS.update(mechanics.MAKERS)
+        _MAKERS.update(proofs.MAKERS)
     return _MAKERS[kind]
 
 
