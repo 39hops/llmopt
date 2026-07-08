@@ -174,6 +174,23 @@ unchanged from the beam era: the GPU buys confidence, not choice —
 and on this problem distribution the free bigram dict remains the
 engineering pick (`engine.solve()` default stands).
 
+## The hybrid record: 349/360 (96.9%), honestly decomposed
+
+Artin's question ("could the dict rank while the 0.5B gates?") was the
+one untested cell of the ranking-x-confidence matrix. Measured on the
+standard 24 cells, same seeds, WITH the autopsy rules:
+markov3 fixed-k3 control **334** (the new operators alone lifted the
+dict +18 over its 316-era self); hybrid (markov ranks, LLM
+entropy-gates k at T=0.1) **349** — the confidence gating is worth
+**+15 on top of identical ranking and rules**, the largest confidence
+premium measured. Thesis confirmed at record scale: choice is grammar
+(free), confidence is the GPU's entire job (and it's worth paying
+for). Tabula-rasa round 1 landed the same night: r0 random 112 vs
+r1 trained 138 (+26; int L4 7->15, diff L4 6->13, 651 rows) — paired
+with the mature lineage's 40v40 curve-point tie, the self-teaching
+curve is now measured at both ends: steep far from the ceiling, flat
+against it.
+
 ## The autopsy ladder (failure census → operator rules, one rung each)
 
 Method: run the best structural engine at budget 400 on int L3/L4
