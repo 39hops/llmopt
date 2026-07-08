@@ -54,6 +54,43 @@ def test_integral_solved_at_rung2():
     assert r.state.plies > 1
 
 
+def test_timebox_preserves_outer_wall():
+    """Per-rule time boxes must never eat the search's outer alarm:
+    if the outer wall expires inside a box, it re-fires through the
+    outer handler (measured failure mode: infinite conversion of the
+    wall into rule timeouts)."""
+    import signal
+    import time
+
+    from llmopt.search.derivation import _timeboxed
+
+    def slow(_):
+        time.sleep(5)
+
+    t0 = time.monotonic()
+    assert _timeboxed(slow, None, default="boxed") == "boxed"
+    assert time.monotonic() - t0 < 4
+
+    class Outer(BaseException):
+        pass
+
+    def raise_outer(*_):
+        raise Outer()
+
+    old = signal.signal(signal.SIGALRM, raise_outer)
+    signal.alarm(2)
+    t0 = time.monotonic()
+    try:
+        for _ in range(50):
+            _timeboxed(slow, None, default=None)
+        raise AssertionError("outer wall never fired")
+    except Outer:
+        assert time.monotonic() - t0 < 4
+    finally:
+        signal.alarm(0)
+        signal.signal(signal.SIGALRM, old)
+
+
 def test_usub_end_to_end():
     r = beam_search(sp.Integral(2 * x * sp.cos(x**2), x), max_plies=16)
     assert r.solved

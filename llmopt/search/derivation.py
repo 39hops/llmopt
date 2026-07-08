@@ -34,6 +34,8 @@ docs/superpowers/specs/2026-07-07-rung2-integration-moves-design.md
 
 from __future__ import annotations
 
+import signal
+import time
 from dataclasses import dataclass, field
 from typing import Callable, Iterator
 
@@ -157,6 +159,56 @@ def verify_edge(parent: sp.Expr, child: sp.Expr) -> bool:
         return False
 
 
+class _RuleTimeout(BaseException):
+    # BaseException so a rule's own broad `except Exception` can't
+    # swallow it (pathology #4's lesson)
+    pass
+
+
+RULE_WALL = 2.0  # seconds per rule/move application
+
+
+def _timeboxed(fn, *args, default):
+    """Run fn under a RULE_WALL timer, returning default on timeout or
+    crash. Cooperates with the scripts' outer signal.alarm wall: the
+    outer timer's remaining time is saved and restored (minus elapsed),
+    so per-rule boxes never extend a search's total budget. If the
+    OUTER wall expires while a rule runs, our handler fires instead;
+    the restored remainder (floored at 50ms) re-raises it promptly.
+    Main-thread only, like every signal user in this repo."""
+    remaining, _ = signal.getitimer(signal.ITIMER_REAL)
+    old_handler = signal.getsignal(signal.SIGALRM)
+
+    def _fire(signum, frame):
+        raise _RuleTimeout()
+
+    signal.signal(signal.SIGALRM, _fire)
+    wall = RULE_WALL  # module global: replay_verify raises it
+    budget = wall if remaining <= 0 else min(wall, remaining)
+    signal.setitimer(signal.ITIMER_REAL, budget)
+    t0 = time.monotonic()
+    try:
+        return fn(*args)
+    except _RuleTimeout:
+        # if the OUTER wall expired while we held the handler, this
+        # fire belongs to it — re-raise through the outer handler or
+        # the box would convert the search's whole wall into rule
+        # timeouts forever (measured in the unit test)
+        if (remaining > 0 and time.monotonic() - t0 >= remaining
+                and callable(old_handler)):
+            signal.signal(signal.SIGALRM, old_handler)
+            old_handler(signal.SIGALRM, None)
+        return default
+    except Exception:
+        return default
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, old_handler)
+        if remaining > 0:
+            left = remaining - (time.monotonic() - t0)
+            signal.setitimer(signal.ITIMER_REAL, max(0.05, left))
+
+
 def successors(
     state: State, *, use_macros: bool = False, verify_p: float = 1.0
 ) -> Iterator[tuple[str, State]]:
@@ -177,7 +229,9 @@ def successors(
         if child.key() in seen:
             return
         if verify_p >= 1.0 or (hash(child.key()) % 1000) < verify_p * 1000:
-            if not verify_edge(state.expr, new_expr):
+            # timed-out verification rejects the edge (safe direction)
+            if not _timeboxed(verify_edge, state.expr, new_expr,
+                              default=False):
                 return
         seen.add(child.key())
         yield name, child
@@ -185,11 +239,12 @@ def successors(
     def _safe(rule, node) -> list:
         # a rule crashing deep in sympy (measured: i_usub's simplify
         # reached manualintegrate's non-real comparison on a euler
-        # state) must cost one move, never the whole search
-        try:
-            return rule(node)
-        except Exception:
-            return []
+        # state) must cost one move, never the whole search — and a
+        # rule STALLING on a monster expression must cost one time
+        # box, never the wall (the L4 timeout economics: the blow-up
+        # bill is paid generating children, so the budget must live
+        # here, not at queue insertion)
+        return _timeboxed(rule, node, default=[])
 
     for node in sorted(state.expr.atoms(sp.Derivative), key=sp.count_ops):
         for rule_name, rule in rules:
@@ -215,9 +270,9 @@ def successors(
                 label = f"{rule_name}@{sp.sstr(node)}"
                 yield from emit(label, state.expr.xreplace({node: rewrite}))
     for name, fn in ALGEBRA_MOVES:
-        try:
-            new = fn(state.expr)
-        except Exception:
+        # same time box: trigsimp/factor on a monster state can stall
+        new = _timeboxed(fn, state.expr, default=None)
+        if new is None:
             continue
         yield from emit(name, new)
 
@@ -234,16 +289,36 @@ class SearchResult:
 
 
 def replay_verify(root: sp.Expr, history: tuple[str, ...]) -> bool:
-    """Fully re-verify a winning path edge by edge (verify_p=1)."""
-    cur = State(root)
-    for chosen in history:
+    """Fully re-verify a winning path edge by edge (verify_p=1).
+
+    Runs with a generous rule wall: in-search verification is allowed
+    to be impatient (a timed-out verify just rejects one candidate
+    edge), but the soundness BOUNDARY replays only a handful of edges
+    per solve and must not discard a real win over a 2s budget
+    (measured: i_ansatz_exp's verify exceeded RULE_WALL and flagged a
+    correct path corrupted).
+
+    Labels are NOT unique: multi-branch rules (i_parts' (u,dv) splits,
+    i_usub's candidates) emit several children under one name, so a
+    first-match walk can follow the wrong sibling and falsely flag a
+    real win corrupted (latent since rung 2; exposed when the autopsy
+    rules made multi-split wins common). Replay therefore BACKTRACKS
+    over all same-label children."""
+    global RULE_WALL
+    saved, RULE_WALL = RULE_WALL, 60.0
+
+    def walk(cur: State, i: int) -> bool:
+        if i == len(history):
+            return True
         for name, child in successors(cur, use_macros=True, verify_p=1.0):
-            if name == chosen:
-                cur = child
-                break
-        else:
-            return False
-    return True
+            if name == history[i] and walk(child, i + 1):
+                return True
+        return False
+
+    try:
+        return walk(State(root), 0)
+    finally:
+        RULE_WALL = saved
 
 
 def beam_search(
