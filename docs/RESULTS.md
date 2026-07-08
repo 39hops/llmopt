@@ -109,6 +109,14 @@ Round 1+ in progress at write time.
 
 ## Honest nulls (all pre-registered or instrumented)
 
+Prior re-mining from mixed-quality paths: control DROPPED 334 -> 300
+when 41% of mined rows came from random-search wins (tabula lineage)
+— luck-shaped paths have luck-shaped grammar, and mining them dilutes
+the bigram structure (int L3 14/15 -> 9/15). Reverted. Lesson: a
+mined prior inherits the POLICY QUALITY of the paths it's mined from,
+not just their verified correctness; re-mine only from harvests by an
+engine at least as strong as the prior's current user. (The verifier
+guarantees the paths are RIGHT; it cannot guarantee they are WISE.)
 Annealed best-first (Metropolis pop over NNUE energy, linear cool;
 diff/int L3-4, n=15): monotone null — greedy 112, T0=1: 108, T0=5:
 103, T0=25: 97. Every degree of temperature hurts. Annealing is
