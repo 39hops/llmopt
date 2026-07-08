@@ -124,6 +124,16 @@ smoothed-old-prior vs 300 polluted. Conclusion pair: the quality gate
 is worth 35 solves; native mass vs median smoothing is worth ~1 —
 smoothing already gave new rules everything ranking could give them.
 Prior CONTENT saturates fast; prior HYGIENE is what matters.
+Lazy expansion WINS the timeout campaign (`scripts/bench_lazy.py`):
+the prior ranks by rule NAME — known before any sympy work — so
+applying rules in prior order and stopping at k children buys the
+same selection at a fraction of the bill. int L4: 18 v 16 solved,
+timeouts 4 v 10 (replicated 1 v 9 in a second run). A phantom made
+this hard to see: an overnight eager baseline of 22/30 could not be
+reproduced by ANY code version in daytime runs (16/30 including a
+pre-change worktree A/B) — wall-bounded benches are only comparable
+within a session (idle vs busy machine is worth ~6 solves at a 240s
+wall). Methodology rule adopted: paired arms, same run, always.
 Size-cap pruning vs the L4 timeouts (nocap/300/150 ops, bf-nnue,
 budget 400, n=30): null — 22/30 all arms, timeouts 6/7/7. The
 diagnosis is the finding: the blow-up cost is paid GENERATING a
