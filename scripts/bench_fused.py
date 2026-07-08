@@ -65,7 +65,7 @@ def load_nnue(path: str):
     return h
 
 
-def load_fused():
+def load_fused(v2: bool = False):
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     from llmopt.train.lora import apply_lora
@@ -80,8 +80,11 @@ def load_fused():
         torch.load("checkpoints/proposer_lora.pt", weights_only=True,
                    map_location="cpu"), strict=False)
     model.eval()
-    ck = torch.load("checkpoints/value_head.pt", weights_only=True,
-                    map_location="cpu")
+    ck_path = ("checkpoints/value_head_v2.pt" if v2
+               else "checkpoints/value_head.pt")
+    ck = torch.load(ck_path, weights_only=True, map_location="cpu")
+    if v2:  # v2 ships its own value-LoRA over the trunk
+        model.load_state_dict(ck["lora"], strict=False)
     d_model = model.config.hidden_size
     head = torch.nn.Sequential(
         torch.nn.Linear(d_model, 64), torch.nn.ReLU(),
@@ -140,10 +143,10 @@ def _check(kind, expr, truth):
     return sp.simplify(sp.diff(expr, X) - truth) == 0
 
 
-def main(n: int) -> None:
+def main(n: int, v2: bool = False) -> None:
     prop = MarkovPrior.load().proposer()
     arms = {"bf-nnue": load_nnue("checkpoints/nnue_eval.pt"),
-            "bf-fused": load_fused()}
+            "bf-fused": load_fused(v2=v2)}
     signal.signal(signal.SIGALRM,
                   lambda *_: (_ for _ in ()).throw(_Timeout()))
     print(f"# fused (trunk hidden-state value) vs NNUE (hand features) "
@@ -182,4 +185,6 @@ def main(n: int) -> None:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=15)
-    main(ap.parse_args().n)
+    ap.add_argument("--v2", action="store_true")
+    a = ap.parse_args()
+    main(a.n, v2=a.v2)
