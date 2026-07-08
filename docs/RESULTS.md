@@ -222,6 +222,16 @@ the rung-1 diff rules finish — the rungs composing in one derivation.
 
 ## Future work (spec'd or banked, in priority order)
 
+[2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
+(became i_linear_basis — the "rule mining" prediction was exactly
+right, and it was the good outcome).]
+
+Tensor-decomposition weight compression (banked 2026-07-07, Artin):
+TT/Tucker-compress real checkpoint weight matrices across ranks and
+score the compression-vs-capability curve BY RUNNING against the
+oracle (function MSE / symbolic accuracy) — never weight distance
+(the weightspace iron rule). LoRA is the low-rank special case the
+training threads already validate.
 Strategy-portfolio bandit (UCB over engines per problem class — the
 signals exist: H, P(solve), yield). Bidirectional/meet-in-the-middle
 search — WITH a design warning discovered on paper: the natural
