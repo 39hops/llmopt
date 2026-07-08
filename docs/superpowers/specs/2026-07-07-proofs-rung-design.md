@@ -86,3 +86,22 @@ alongside), rejects wrong base, wrong step, circular step (P(n+1)
 assumed); equivalent algebra accepted (factored vs expanded step).
 Engine tie-in: obligation-closing solve rate on n=30 statements at
 budget 100, reported per family.
+
+## Amendment (2026-07-08, after v0 shipped)
+
+Artin's re-assessment, adopted: v0's BASE/STEP payloads are
+mechanically derivable from the statement — a checker milestone, not
+an intelligence one. The ladder of where a model can actually shine:
+
+1. **prove_discover (SHIPPED)**: closed form not given — conjecture
+   F(n), then prove it. Checker is self-consistent but anchored at
+   a_1, so a wrong-but-consistent F fails. The conjecture step is the
+   first genuinely non-mechanical payload.
+2. **Hypothesis strengthening (BANKED, needs the inequality oracle)**:
+   statements where induction fails on P but succeeds on a stronger Q
+   (sum 1/k^2 < 2 vs <= 2 - 1/n). Generate Q first, weaken to P, ask
+   for Q; check three obligations (Q base, Q step, Q => P). The answer
+   is a creative mathematical object no grammar can emit — the purest
+   LLM-shines task this oracle family can express.
+3. The two-obligation checker itself is unchanged at every rung —
+   richer tasks are richer INPUTS to the same kernel.
