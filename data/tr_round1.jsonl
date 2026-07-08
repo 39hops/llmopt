@@ -1,0 +1,651 @@
+{"state": "Derivative(16, x) + Derivative(-9*x, x) + Derivative(2*x**3, x)", "moves": ["d_const@Derivative(16, x)", "d_product@Derivative(2*x**3, x)", "d_product@Derivative(-9*x, x)"], "answer": 2}
+{"state": "x*Derivative(-9, x) + Derivative(16, x) - 9*Derivative(x, x) + Derivative(2*x**3, x)", "moves": ["d_const@Derivative(16, x)", "d_x@Derivative(x, x)", "d_const@Derivative(-9, x)", "d_product@Derivative(2*x**3, x)"], "answer": 2}
+{"state": "Derivative(16, x) - 9*Derivative(x, x) + Derivative(2*x**3, x)", "moves": ["d_const@Derivative(16, x)", "d_x@Derivative(x, x)", "d_product@Derivative(2*x**3, x)"], "answer": 0}
+{"state": "-9*Derivative(x, x) + Derivative(2*x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(2*x**3, x)"], "answer": 1}
+{"state": "x**3*Derivative(2, x) - 9*Derivative(x, x) + 2*Derivative(x**3, x)", "moves": ["d_const@Derivative(2, x)", "d_x@Derivative(x, x)", "d_power@Derivative(x**3, x)"], "answer": 0}
+{"state": "-9*Derivative(x, x) + 2*Derivative(x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_power@Derivative(x**3, x)"], "answer": 1}
+{"state": "6*x**2*Derivative(x, x) - 9*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(8, x) + Derivative(-x, x)", "moves": ["d_const@Derivative(8, x)", "d_product@Derivative(-x, x)"], "answer": 1}
+{"state": "x*Derivative(-1, x) + Derivative(8, x) - Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(8, x)", "d_const@Derivative(-1, x)"], "answer": 2}
+{"state": "Derivative(8, x) - Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(8, x)"], "answer": 1}
+{"state": "Derivative(15*x**2 + 13*x, x)", "moves": ["d_sum@Derivative(15*x**2 + 13*x, x)", "together"], "answer": 0}
+{"state": "Derivative(13*x, x) + Derivative(15*x**2, x)", "moves": ["d_product@Derivative(13*x, x)", "d_product@Derivative(15*x**2, x)"], "answer": 0}
+{"state": "x*Derivative(13, x) + 13*Derivative(x, x) + Derivative(15*x**2, x)", "moves": ["d_const@Derivative(13, x)", "d_x@Derivative(x, x)", "d_product@Derivative(15*x**2, x)"], "answer": 0}
+{"state": "13*Derivative(x, x) + Derivative(15*x**2, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(15*x**2, x)"], "answer": 0}
+{"state": "x**2*Derivative(15, x) + 15*Derivative(x**2, x) + 13", "moves": ["d_const@Derivative(15, x)", "d_power@Derivative(x**2, x)"], "answer": 0}
+{"state": "Derivative(7*x**3 - 7, x)", "moves": ["d_sum@Derivative(7*x**3 - 7, x)", "together"], "answer": 0}
+{"state": "Derivative(-7, x) + Derivative(7*x**3, x)", "moves": ["d_const@Derivative(-7, x)", "d_product@Derivative(7*x**3, x)"], "answer": 0}
+{"state": "x**3*Derivative(7, x) + 7*Derivative(x**3, x)", "moves": ["d_const@Derivative(7, x)", "d_power@Derivative(x**3, x)"], "answer": 0}
+{"state": "Derivative(1, x) + Derivative(7*x**2, x)", "moves": ["d_const@Derivative(1, x)", "d_product@Derivative(7*x**2, x)"], "answer": 1}
+{"state": "x**2*Derivative(7, x) + Derivative(1, x) + 7*Derivative(x**2, x)", "moves": ["d_const@Derivative(1, x)", "d_const@Derivative(7, x)", "d_power@Derivative(x**2, x)"], "answer": 1}
+{"state": "Derivative(1, x) + 7*Derivative(x**2, x)", "moves": ["d_const@Derivative(1, x)", "d_power@Derivative(x**2, x)"], "answer": 0}
+{"state": "Derivative(4*x**2 + 6, x)", "moves": ["d_sum@Derivative(4*x**2 + 6, x)", "together"], "answer": 0}
+{"state": "Derivative(6, x) + Derivative(4*x**2, x)", "moves": ["d_const@Derivative(6, x)", "d_product@Derivative(4*x**2, x)"], "answer": 1}
+{"state": "x**2*Derivative(4, x) + Derivative(6, x) + 4*Derivative(x**2, x)", "moves": ["d_const@Derivative(4, x)", "d_const@Derivative(6, x)", "d_power@Derivative(x**2, x)"], "answer": 0}
+{"state": "Derivative(6, x) + 4*Derivative(x**2, x)", "moves": ["d_const@Derivative(6, x)", "d_power@Derivative(x**2, x)"], "answer": 0}
+{"state": "Derivative(-5, x) + Derivative(6*x, x)", "moves": ["d_product@Derivative(6*x, x)", "d_const@Derivative(-5, x)"], "answer": 1}
+{"state": "x*Derivative(6, x) + 6*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(6, x)"], "answer": 1}
+{"state": "Derivative(-x**3 + 4*x, x)", "moves": ["d_sum@Derivative(-x**3 + 4*x, x)", "together"], "answer": 0}
+{"state": "Derivative(4*x, x) + Derivative(-x**3, x)", "moves": ["d_product@Derivative(4*x, x)", "d_product@Derivative(-x**3, x)"], "answer": 0}
+{"state": "x*Derivative(4, x) + 4*Derivative(x, x) + Derivative(-x**3, x)", "moves": ["d_const@Derivative(4, x)", "d_x@Derivative(x, x)", "d_product@Derivative(-x**3, x)"], "answer": 0}
+{"state": "4*Derivative(x, x) + Derivative(-x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(-x**3, x)"], "answer": 0}
+{"state": "x**3*Derivative(-1, x) - Derivative(x**3, x) + 4", "moves": ["d_power@Derivative(x**3, x)", "d_const@Derivative(-1, x)"], "answer": 1}
+{"state": "Derivative(5*x**3 + 3*x**2 + 14*x, x)", "moves": ["d_sum@Derivative(5*x**3 + 3*x**2 + 14*x, x)", "together"], "answer": 0}
+{"state": "Derivative(14*x, x) + Derivative(3*x**2, x) + Derivative(5*x**3, x)", "moves": ["d_product@Derivative(14*x, x)", "d_product@Derivative(3*x**2, x)", "d_product@Derivative(5*x**3, x)"], "answer": 0}
+{"state": "x*Derivative(14, x) + 14*Derivative(x, x) + Derivative(3*x**2, x) + Derivative(5*x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(14, x)", "d_product@Derivative(3*x**2, x)", "d_product@Derivative(5*x**3, x)"], "answer": 1}
+{"state": "14*Derivative(x, x) + Derivative(3*x**2, x) + Derivative(5*x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(3*x**2, x)", "d_product@Derivative(5*x**3, x)"], "answer": 0}
+{"state": "Derivative(3*x**2, x) + Derivative(5*x**3, x) + 14", "moves": ["d_product@Derivative(3*x**2, x)", "d_product@Derivative(5*x**3, x)"], "answer": 0}
+{"state": "x**2*Derivative(3, x) + 3*Derivative(x**2, x) + Derivative(5*x**3, x) + 14", "moves": ["d_const@Derivative(3, x)", "d_power@Derivative(x**2, x)", "d_product@Derivative(5*x**3, x)"], "answer": 0}
+{"state": "3*Derivative(x**2, x) + Derivative(5*x**3, x) + 14", "moves": ["d_power@Derivative(x**2, x)", "d_product@Derivative(5*x**3, x)"], "answer": 0}
+{"state": "6*x*Derivative(x, x) + Derivative(5*x**3, x) + 14", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(5*x**3, x)"], "answer": 0}
+{"state": "x**3*Derivative(5, x) + 6*x + 5*Derivative(x**3, x) + 14", "moves": ["d_const@Derivative(5, x)", "d_power@Derivative(x**3, x)"], "answer": 0}
+{"state": "Derivative(9, x) + Derivative(4*x**3, x)", "moves": ["d_const@Derivative(9, x)", "d_product@Derivative(4*x**3, x)"], "answer": 1}
+{"state": "x**3*Derivative(4, x) + Derivative(9, x) + 4*Derivative(x**3, x)", "moves": ["d_const@Derivative(4, x)", "d_const@Derivative(9, x)", "d_power@Derivative(x**3, x)"], "answer": 0}
+{"state": "Derivative(9, x) + 4*Derivative(x**3, x)", "moves": ["d_const@Derivative(9, x)", "d_power@Derivative(x**3, x)"], "answer": 0}
+{"state": "Derivative(4*x**2 + 12*x, x)", "moves": ["d_sum@Derivative(4*x**2 + 12*x, x)", "together"], "answer": 1}
+{"state": "Derivative(4*x*(x + 3), x)", "moves": ["d_product@Derivative(4*x*(x + 3), x)", "d_product@Derivative(4*x*(x + 3), x)", "d_product@Derivative(4*x*(x + 3), x)", "expand"], "answer": 0}
+{"state": "x*(x + 3)*Derivative(4, x) + 4*Derivative(x*(x + 3), x)", "moves": ["d_const@Derivative(4, x)", "d_product@Derivative(x*(x + 3), x)", "expand"], "answer": 0}
+{"state": "4*Derivative(x*(x + 3), x)", "moves": ["d_product@Derivative(x*(x + 3), x)", "expand"], "answer": 1}
+{"state": "4*Derivative(x**2 + 3*x, x)", "moves": ["d_sum@Derivative(x**2 + 3*x, x)", "together"], "answer": 0}
+{"state": "4*Derivative(3*x, x) + 4*Derivative(x**2, x)", "moves": ["d_product@Derivative(3*x, x)", "d_power@Derivative(x**2, x)", "factor"], "answer": 1}
+{"state": "8*x*Derivative(x, x) + 4*Derivative(3*x, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(3*x, x)", "factor"], "answer": 0}
+{"state": "8*x + 4*Derivative(3*x, x)", "moves": ["d_product@Derivative(3*x, x)", "factor"], "answer": 0}
+{"state": "4*x*Derivative(3, x) + 8*x + 12*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(3, x)", "factor"], "answer": 1}
+{"state": "8*x + 12*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(9, x) + Derivative(-23*x, x)", "moves": ["d_const@Derivative(9, x)", "d_product@Derivative(-23*x, x)"], "answer": 1}
+{"state": "x*Derivative(-23, x) + Derivative(9, x) - 23*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(9, x)", "d_const@Derivative(-23, x)"], "answer": 2}
+{"state": "Derivative(9, x) - 23*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(9, x)"], "answer": 0}
+{"state": "Derivative(8*x + 10, x)", "moves": ["d_sum@Derivative(8*x + 10, x)", "together"], "answer": 0}
+{"state": "Derivative(10, x) + Derivative(8*x, x)", "moves": ["d_const@Derivative(10, x)", "d_product@Derivative(8*x, x)"], "answer": 1}
+{"state": "x*Derivative(8, x) + Derivative(10, x) + 8*Derivative(x, x)", "moves": ["d_const@Derivative(10, x)", "d_x@Derivative(x, x)", "d_const@Derivative(8, x)"], "answer": 2}
+{"state": "Derivative(10, x) + 8*Derivative(x, x)", "moves": ["d_const@Derivative(10, x)", "d_x@Derivative(x, x)"], "answer": 0}
+{"state": "Derivative(2, x) + Derivative(x**3, x)", "moves": ["d_const@Derivative(2, x)", "d_power@Derivative(x**3, x)"], "answer": 0}
+{"state": "Derivative(7*x**3 + 6*x, x)", "moves": ["d_sum@Derivative(7*x**3 + 6*x, x)", "together"], "answer": 0}
+{"state": "Derivative(6*x, x) + Derivative(7*x**3, x)", "moves": ["d_product@Derivative(6*x, x)", "d_product@Derivative(7*x**3, x)"], "answer": 0}
+{"state": "x*Derivative(6, x) + 6*Derivative(x, x) + Derivative(7*x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(6, x)", "d_product@Derivative(7*x**3, x)"], "answer": 1}
+{"state": "6*Derivative(x, x) + Derivative(7*x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(7*x**3, x)"], "answer": 0}
+{"state": "x**3*Derivative(7, x) + 7*Derivative(x**3, x) + 6", "moves": ["d_const@Derivative(7, x)", "d_power@Derivative(x**3, x)"], "answer": 0}
+{"state": "21*x**2*Derivative(x, x) + 6", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(-2, x) + Derivative(2*x, x) + Derivative(7*x**2, x) + Derivative(5*x**3, x)", "moves": ["d_product@Derivative(2*x, x)", "d_const@Derivative(-2, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(7*x**2, x)"], "answer": 1}
+{"state": "Derivative(2*x, x) + Derivative(7*x**2, x) + Derivative(5*x**3, x)", "moves": ["d_product@Derivative(2*x, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(7*x**2, x)"], "answer": 0}
+{"state": "x*Derivative(2, x) + 2*Derivative(x, x) + Derivative(7*x**2, x) + Derivative(5*x**3, x)", "moves": ["d_const@Derivative(2, x)", "d_x@Derivative(x, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(7*x**2, x)"], "answer": 0}
+{"state": "2*Derivative(x, x) + Derivative(7*x**2, x) + Derivative(5*x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(7*x**2, x)"], "answer": 1}
+{"state": "x**3*Derivative(5, x) + 2*Derivative(x, x) + Derivative(7*x**2, x) + 5*Derivative(x**3, x)", "moves": ["d_const@Derivative(5, x)", "d_x@Derivative(x, x)", "d_power@Derivative(x**3, x)", "d_product@Derivative(7*x**2, x)"], "answer": 0}
+{"state": "2*Derivative(x, x) + Derivative(7*x**2, x) + 5*Derivative(x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_power@Derivative(x**3, x)", "d_product@Derivative(7*x**2, x)"], "answer": 1}
+{"state": "15*x**2*Derivative(x, x) + 2*Derivative(x, x) + Derivative(7*x**2, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(7*x**2, x)"], "answer": 0}
+{"state": "x**2*Derivative(7, x) + 15*x**2 + 7*Derivative(x**2, x) + 2", "moves": ["d_const@Derivative(7, x)", "d_power@Derivative(x**2, x)"], "answer": 0}
+{"state": "Derivative(8*x**2 - 9*x, x)", "moves": ["d_sum@Derivative(8*x**2 - 9*x, x)", "together"], "answer": 0}
+{"state": "Derivative(-9*x, x) + Derivative(8*x**2, x)", "moves": ["d_product@Derivative(8*x**2, x)", "d_product@Derivative(-9*x, x)"], "answer": 1}
+{"state": "x*Derivative(-9, x) - 9*Derivative(x, x) + Derivative(8*x**2, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(-9, x)", "d_product@Derivative(8*x**2, x)"], "answer": 1}
+{"state": "-9*Derivative(x, x) + Derivative(8*x**2, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(8*x**2, x)"], "answer": 0}
+{"state": "x**2*Derivative(8, x) + 8*Derivative(x**2, x) - 9", "moves": ["d_const@Derivative(8, x)", "d_power@Derivative(x**2, x)"], "answer": 0}
+{"state": "Derivative(4*x**3 + 2*x, x)", "moves": ["d_sum@Derivative(4*x**3 + 2*x, x)", "together"], "answer": 0}
+{"state": "Derivative(2*x, x) + Derivative(4*x**3, x)", "moves": ["d_product@Derivative(2*x, x)", "d_product@Derivative(4*x**3, x)"], "answer": 0}
+{"state": "x*Derivative(2, x) + 2*Derivative(x, x) + Derivative(4*x**3, x)", "moves": ["d_const@Derivative(2, x)", "d_x@Derivative(x, x)", "d_product@Derivative(4*x**3, x)"], "answer": 0}
+{"state": "2*Derivative(x, x) + Derivative(4*x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(4*x**3, x)"], "answer": 0}
+{"state": "x**3*Derivative(4, x) + 4*Derivative(x**3, x) + 2", "moves": ["d_const@Derivative(4, x)", "d_power@Derivative(x**3, x)"], "answer": 0}
+{"state": "4*Derivative(x**3, x) + 2", "moves": ["d_power@Derivative(x**3, x)", "factor"], "answer": 0}
+{"state": "12*x**2*Derivative(x, x) + 2", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(3, x) + Derivative(7*x, x) + Derivative(7*x**2, x)", "moves": ["d_const@Derivative(3, x)", "d_product@Derivative(7*x, x)", "d_product@Derivative(7*x**2, x)"], "answer": 1}
+{"state": "x*Derivative(7, x) + Derivative(3, x) + 7*Derivative(x, x) + Derivative(7*x**2, x)", "moves": ["d_const@Derivative(7, x)", "d_x@Derivative(x, x)", "d_const@Derivative(3, x)", "d_product@Derivative(7*x**2, x)"], "answer": 0}
+{"state": "Derivative(3, x) + 7*Derivative(x, x) + Derivative(7*x**2, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(3, x)", "d_product@Derivative(7*x**2, x)"], "answer": 0}
+{"state": "Derivative(3, x) + Derivative(7*x**2, x) + 7", "moves": ["d_const@Derivative(3, x)", "d_product@Derivative(7*x**2, x)"], "answer": 1}
+{"state": "x**2*Derivative(7, x) + Derivative(3, x) + 7*Derivative(x**2, x) + 7", "moves": ["d_const@Derivative(7, x)", "d_const@Derivative(3, x)", "d_power@Derivative(x**2, x)"], "answer": 0}
+{"state": "Derivative(3, x) + 7*Derivative(x**2, x) + 7", "moves": ["d_const@Derivative(3, x)", "d_power@Derivative(x**2, x)"], "answer": 0}
+{"state": "7*Derivative(x**2, x) + 7", "moves": ["d_power@Derivative(x**2, x)", "factor"], "answer": 0}
+{"state": "14*x*Derivative(x, x) + 7", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(18, x) + Derivative(9*x**2, x) + Derivative(2*x**3, x)", "moves": ["d_const@Derivative(18, x)", "d_product@Derivative(2*x**3, x)", "d_product@Derivative(9*x**2, x)"], "answer": 1}
+{"state": "x**3*Derivative(2, x) + Derivative(18, x) + Derivative(9*x**2, x) + 2*Derivative(x**3, x)", "moves": ["d_const@Derivative(18, x)", "d_const@Derivative(2, x)", "d_power@Derivative(x**3, x)", "d_product@Derivative(9*x**2, x)"], "answer": 1}
+{"state": "Derivative(18, x) + Derivative(9*x**2, x) + 2*Derivative(x**3, x)", "moves": ["d_const@Derivative(18, x)", "d_power@Derivative(x**3, x)", "d_product@Derivative(9*x**2, x)"], "answer": 0}
+{"state": "Derivative(9*x**2, x) + 2*Derivative(x**3, x)", "moves": ["d_power@Derivative(x**3, x)", "d_product@Derivative(9*x**2, x)"], "answer": 0}
+{"state": "6*x**2*Derivative(x, x) + Derivative(9*x**2, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(9*x**2, x)"], "answer": 1}
+{"state": "x**2*Derivative(9, x) + 6*x**2*Derivative(x, x) + 9*Derivative(x**2, x)", "moves": ["d_const@Derivative(9, x)", "d_x@Derivative(x, x)", "d_power@Derivative(x**2, x)"], "answer": 0}
+{"state": "6*x**2*Derivative(x, x) + 9*Derivative(x**2, x)", "moves": ["d_x@Derivative(x, x)", "d_power@Derivative(x**2, x)", "factor"], "answer": 1}
+{"state": "6*x**2*Derivative(x, x) + 18*x*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(8*x**3, x) + Derivative(9*log(x), x)", "moves": ["d_product@Derivative(8*x**3, x)", "d_product@Derivative(9*log(x), x)"], "answer": 1}
+{"state": "log(x)*Derivative(9, x) + Derivative(8*x**3, x) + 9*Derivative(log(x), x)", "moves": ["d_const@Derivative(9, x)", "d_chain_table@Derivative(log(x), x)", "d_product@Derivative(8*x**3, x)"], "answer": 0}
+{"state": "Derivative(8*x**3, x) + 9*Derivative(log(x), x)", "moves": ["d_chain_table@Derivative(log(x), x)", "d_product@Derivative(8*x**3, x)"], "answer": 0}
+{"state": "Derivative(8*x**3, x) + 9*Derivative(x, x)/x", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(8*x**3, x)", "factor"], "answer": 0}
+{"state": "Derivative(8*x**3, x) + 9/x", "moves": ["d_product@Derivative(8*x**3, x)", "factor"], "answer": 0}
+{"state": "x**3*Derivative(8, x) + 8*Derivative(x**3, x) + 9/x", "moves": ["d_const@Derivative(8, x)", "d_power@Derivative(x**3, x)", "factor"], "answer": 0}
+{"state": "8*Derivative(x**3, x) + 9/x", "moves": ["d_power@Derivative(x**3, x)", "factor"], "answer": 0}
+{"state": "24*x**2*Derivative(x, x) + 9/x", "moves": ["d_x@Derivative(x, x)", "factor", "cancel"], "answer": 0}
+{"state": "Derivative(7, x) + Derivative(2*sin(x), x)", "moves": ["d_const@Derivative(7, x)", "d_product@Derivative(2*sin(x), x)"], "answer": 1}
+{"state": "sin(x)*Derivative(2, x) + Derivative(7, x) + 2*Derivative(sin(x), x)", "moves": ["d_const@Derivative(7, x)", "d_const@Derivative(2, x)", "d_chain_table@Derivative(sin(x), x)"], "answer": 1}
+{"state": "Derivative(7, x) + 2*Derivative(sin(x), x)", "moves": ["d_const@Derivative(7, x)", "d_chain_table@Derivative(sin(x), x)"], "answer": 0}
+{"state": "Derivative(9*x**3 + 8*x, x)", "moves": ["d_sum@Derivative(9*x**3 + 8*x, x)", "together"], "answer": 0}
+{"state": "Derivative(8*x, x) + Derivative(9*x**3, x)", "moves": ["d_product@Derivative(8*x, x)", "d_product@Derivative(9*x**3, x)"], "answer": 0}
+{"state": "x*Derivative(8, x) + 8*Derivative(x, x) + Derivative(9*x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(8, x)", "d_product@Derivative(9*x**3, x)"], "answer": 1}
+{"state": "8*Derivative(x, x) + Derivative(9*x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(9*x**3, x)"], "answer": 0}
+{"state": "x**3*Derivative(9, x) + 9*Derivative(x**3, x) + 8", "moves": ["d_const@Derivative(9, x)", "d_power@Derivative(x**3, x)"], "answer": 0}
+{"state": "Derivative(9*x**2 + 3*log(x) + 9*sin(x), x)", "moves": ["d_sum@Derivative(9*x**2 + 3*log(x) + 9*sin(x), x)", "together"], "answer": 0}
+{"state": "Derivative(9*x**2, x) + Derivative(3*log(x), x) + Derivative(9*sin(x), x)", "moves": ["d_product@Derivative(9*sin(x), x)", "d_product@Derivative(3*log(x), x)", "d_product@Derivative(9*x**2, x)"], "answer": 1}
+{"state": "log(x)*Derivative(3, x) + Derivative(9*x**2, x) + 3*Derivative(log(x), x) + Derivative(9*sin(x), x)", "moves": ["d_const@Derivative(3, x)", "d_chain_table@Derivative(log(x), x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(9*x**2, x)"], "answer": 0}
+{"state": "Derivative(9*x**2, x) + 3*Derivative(log(x), x) + Derivative(9*sin(x), x)", "moves": ["d_chain_table@Derivative(log(x), x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(9*x**2, x)"], "answer": 0}
+{"state": "Derivative(9*x**2, x) + Derivative(9*sin(x), x) + 3*Derivative(x, x)/x", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(9*x**2, x)", "factor"], "answer": 0}
+{"state": "Derivative(9*x**2, x) + Derivative(9*sin(x), x) + 3/x", "moves": ["d_product@Derivative(9*sin(x), x)", "d_product@Derivative(9*x**2, x)", "factor"], "answer": 0}
+{"state": "sin(x)*Derivative(9, x) + Derivative(9*x**2, x) + 9*Derivative(sin(x), x) + 3/x", "moves": ["d_const@Derivative(9, x)", "d_chain_table@Derivative(sin(x), x)", "d_product@Derivative(9*x**2, x)", "factor"], "answer": 0}
+{"state": "Derivative(9*x**2, x) + 9*Derivative(sin(x), x) + 3/x", "moves": ["d_chain_table@Derivative(sin(x), x)", "d_product@Derivative(9*x**2, x)", "factor"], "answer": 0}
+{"state": "9*cos(x)*Derivative(x, x) + Derivative(9*x**2, x) + 3/x", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(9*x**2, x)", "factor"], "answer": 0}
+{"state": "9*cos(x) + Derivative(9*x**2, x) + 3/x", "moves": ["d_product@Derivative(9*x**2, x)", "factor"], "answer": 0}
+{"state": "x**2*Derivative(9, x) + 9*cos(x) + 9*Derivative(x**2, x) + 3/x", "moves": ["d_const@Derivative(9, x)", "d_power@Derivative(x**2, x)", "factor"], "answer": 0}
+{"state": "9*cos(x) + 9*Derivative(x**2, x) + 3/x", "moves": ["d_power@Derivative(x**2, x)", "factor", "cancel"], "answer": 0}
+{"state": "18*x*Derivative(x, x) + 9*cos(x) + 3/x", "moves": ["d_x@Derivative(x, x)", "factor", "cancel"], "answer": 0}
+{"state": "Derivative(5*x, x) + Derivative(3*exp(x), x) + Derivative(4*log(x), x)", "moves": ["d_product@Derivative(5*x, x)", "d_product@Derivative(4*log(x), x)", "d_product@Derivative(3*exp(x), x)"], "answer": 0}
+{"state": "x*Derivative(5, x) + 5*Derivative(x, x) + Derivative(3*exp(x), x) + Derivative(4*log(x), x)", "moves": ["d_const@Derivative(5, x)", "d_x@Derivative(x, x)", "d_product@Derivative(4*log(x), x)", "d_product@Derivative(3*exp(x), x)"], "answer": 0}
+{"state": "5*Derivative(x, x) + Derivative(3*exp(x), x) + Derivative(4*log(x), x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(4*log(x), x)", "d_product@Derivative(3*exp(x), x)"], "answer": 0}
+{"state": "Derivative(3*exp(x), x) + Derivative(4*log(x), x) + 5", "moves": ["d_product@Derivative(4*log(x), x)", "d_product@Derivative(3*exp(x), x)"], "answer": 0}
+{"state": "log(x)*Derivative(4, x) + Derivative(3*exp(x), x) + 4*Derivative(log(x), x) + 5", "moves": ["d_const@Derivative(4, x)", "d_chain_table@Derivative(log(x), x)", "d_product@Derivative(3*exp(x), x)"], "answer": 0}
+{"state": "Derivative(3*exp(x), x) + 4*Derivative(log(x), x) + 5", "moves": ["d_chain_table@Derivative(log(x), x)", "d_product@Derivative(3*exp(x), x)"], "answer": 0}
+{"state": "Derivative(3*exp(x), x) + 5 + 4*Derivative(x, x)/x", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(3*exp(x), x)", "factor"], "answer": 0}
+{"state": "Derivative(3*exp(x), x) + 5 + 4/x", "moves": ["d_product@Derivative(3*exp(x), x)", "factor"], "answer": 0}
+{"state": "exp(x)*Derivative(3, x) + 3*Derivative(exp(x), x) + 5 + 4/x", "moves": ["d_const@Derivative(3, x)", "d_chain_table@Derivative(exp(x), x)", "factor"], "answer": 0}
+{"state": "3*Derivative(exp(x), x) + 5 + 4/x", "moves": ["d_chain_table@Derivative(exp(x), x)", "factor"], "answer": 0}
+{"state": "3*exp(x)*Derivative(x, x) + 5 + 4/x", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(5*x**4, x) + Derivative(3*log(x), x)", "moves": ["d_product@Derivative(3*log(x), x)", "d_product@Derivative(5*x**4, x)"], "answer": 0}
+{"state": "log(x)*Derivative(3, x) + Derivative(5*x**4, x) + 3*Derivative(log(x), x)", "moves": ["d_const@Derivative(3, x)", "d_chain_table@Derivative(log(x), x)", "d_product@Derivative(5*x**4, x)"], "answer": 0}
+{"state": "Derivative(5*x**4, x) + 3*Derivative(log(x), x)", "moves": ["d_chain_table@Derivative(log(x), x)", "d_product@Derivative(5*x**4, x)"], "answer": 0}
+{"state": "Derivative(5*x**4, x) + 3*Derivative(x, x)/x", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(5*x**4, x)", "factor"], "answer": 0}
+{"state": "Derivative(5*x**4, x) + 3/x", "moves": ["d_product@Derivative(5*x**4, x)", "factor"], "answer": 0}
+{"state": "x**4*Derivative(5, x) + 5*Derivative(x**4, x) + 3/x", "moves": ["d_const@Derivative(5, x)", "d_power@Derivative(x**4, x)", "factor"], "answer": 0}
+{"state": "5*Derivative(x**4, x) + 3/x", "moves": ["d_power@Derivative(x**4, x)", "factor"], "answer": 0}
+{"state": "20*x**3*Derivative(x, x) + 3/x", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(6, x) + Derivative(-3*exp(x), x) + Derivative(4*sin(x), x)", "moves": ["d_const@Derivative(6, x)", "d_product@Derivative(4*sin(x), x)", "d_product@Derivative(-3*exp(x), x)"], "answer": 2}
+{"state": "exp(x)*Derivative(-3, x) + Derivative(6, x) - 3*Derivative(exp(x), x) + Derivative(4*sin(x), x)", "moves": ["d_const@Derivative(6, x)", "d_const@Derivative(-3, x)", "d_chain_table@Derivative(exp(x), x)", "d_product@Derivative(4*sin(x), x)"], "answer": 1}
+{"state": "Derivative(6, x) - 3*Derivative(exp(x), x) + Derivative(4*sin(x), x)", "moves": ["d_const@Derivative(6, x)", "d_chain_table@Derivative(exp(x), x)", "d_product@Derivative(4*sin(x), x)"], "answer": 0}
+{"state": "-3*Derivative(exp(x), x) + Derivative(4*sin(x), x)", "moves": ["d_chain_table@Derivative(exp(x), x)", "d_product@Derivative(4*sin(x), x)"], "answer": 0}
+{"state": "-3*exp(x)*Derivative(x, x) + Derivative(4*sin(x), x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(4*sin(x), x)"], "answer": 0}
+{"state": "-3*exp(x) + sin(x)*Derivative(4, x) + 4*Derivative(sin(x), x)", "moves": ["d_const@Derivative(4, x)", "d_chain_table@Derivative(sin(x), x)"], "answer": 0}
+{"state": "Derivative(9*x - 9*log(x) + 3*cos(x), x)", "moves": ["d_sum@Derivative(9*x - 9*log(x) + 3*cos(x), x)", "together"], "answer": 0}
+{"state": "Derivative(9*x, x) + Derivative(-9*log(x), x) + Derivative(3*cos(x), x)", "moves": ["d_product@Derivative(9*x, x)", "d_product@Derivative(3*cos(x), x)", "d_product@Derivative(-9*log(x), x)"], "answer": 0}
+{"state": "x*Derivative(9, x) + 9*Derivative(x, x) + Derivative(-9*log(x), x) + Derivative(3*cos(x), x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(9, x)", "d_product@Derivative(3*cos(x), x)", "d_product@Derivative(-9*log(x), x)"], "answer": 0}
+{"state": "x*Derivative(9, x) + Derivative(-9*log(x), x) + Derivative(3*cos(x), x) + 9", "moves": ["d_const@Derivative(9, x)", "d_product@Derivative(3*cos(x), x)", "d_product@Derivative(-9*log(x), x)"], "answer": 0}
+{"state": "Derivative(-9*log(x), x) + Derivative(3*cos(x), x) + 9", "moves": ["d_product@Derivative(3*cos(x), x)", "d_product@Derivative(-9*log(x), x)"], "answer": 1}
+{"state": "log(x)*Derivative(-9, x) - 9*Derivative(log(x), x) + Derivative(3*cos(x), x) + 9", "moves": ["d_chain_table@Derivative(log(x), x)", "d_const@Derivative(-9, x)", "d_product@Derivative(3*cos(x), x)"], "answer": 1}
+{"state": "-9*Derivative(log(x), x) + Derivative(3*cos(x), x) + 9", "moves": ["d_chain_table@Derivative(log(x), x)", "d_product@Derivative(3*cos(x), x)"], "answer": 1}
+{"state": "cos(x)*Derivative(3, x) - 9*Derivative(log(x), x) + 3*Derivative(cos(x), x) + 9", "moves": ["d_const@Derivative(3, x)", "d_chain_table@Derivative(log(x), x)", "d_chain_table@Derivative(cos(x), x)"], "answer": 0}
+{"state": "-9*Derivative(log(x), x) + 3*Derivative(cos(x), x) + 9", "moves": ["d_chain_table@Derivative(log(x), x)", "d_chain_table@Derivative(cos(x), x)", "factor"], "answer": 0}
+{"state": "3*Derivative(cos(x), x) + 9 - 9*Derivative(x, x)/x", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(cos(x), x)", "factor", "cancel"], "answer": 1}
+{"state": "-3*sin(x)*Derivative(x, x) + 9 - 9*Derivative(x, x)/x", "moves": ["d_x@Derivative(x, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "Derivative(9, x) + Derivative(8*x**2, x) + Derivative(-8*x**5, x) + Derivative(cos(x), x)", "moves": ["d_const@Derivative(9, x)", "d_chain_table@Derivative(cos(x), x)", "d_product@Derivative(8*x**2, x)", "d_product@Derivative(-8*x**5, x)"], "answer": 2}
+{"state": "x**2*Derivative(8, x) + Derivative(9, x) + 8*Derivative(x**2, x) + Derivative(-8*x**5, x) + Derivative(cos(x), x)", "moves": ["d_const@Derivative(8, x)", "d_const@Derivative(9, x)", "d_chain_table@Derivative(cos(x), x)", "d_power@Derivative(x**2, x)", "d_product@Derivative(-8*x**5, x)"], "answer": 0}
+{"state": "Derivative(9, x) + 8*Derivative(x**2, x) + Derivative(-8*x**5, x) + Derivative(cos(x), x)", "moves": ["d_const@Derivative(9, x)", "d_chain_table@Derivative(cos(x), x)", "d_power@Derivative(x**2, x)", "d_product@Derivative(-8*x**5, x)"], "answer": 0}
+{"state": "8*Derivative(x**2, x) + Derivative(-8*x**5, x) + Derivative(cos(x), x)", "moves": ["d_chain_table@Derivative(cos(x), x)", "d_power@Derivative(x**2, x)", "d_product@Derivative(-8*x**5, x)"], "answer": 1}
+{"state": "16*x*Derivative(x, x) + Derivative(-8*x**5, x) + Derivative(cos(x), x)", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(cos(x), x)", "d_product@Derivative(-8*x**5, x)"], "answer": 0}
+{"state": "16*x + Derivative(-8*x**5, x) + Derivative(cos(x), x)", "moves": ["d_chain_table@Derivative(cos(x), x)", "d_product@Derivative(-8*x**5, x)"], "answer": 0}
+{"state": "16*x - sin(x)*Derivative(x, x) + Derivative(-8*x**5, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(-8*x**5, x)"], "answer": 1}
+{"state": "x**5*Derivative(-8, x) + 16*x - sin(x)*Derivative(x, x) - 8*Derivative(x**5, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(-8, x)", "d_power@Derivative(x**5, x)"], "answer": 1}
+{"state": "16*x - sin(x)*Derivative(x, x) - 8*Derivative(x**5, x)", "moves": ["d_x@Derivative(x, x)", "d_power@Derivative(x**5, x)"], "answer": 1}
+{"state": "Derivative(2*x**3, x) + Derivative(exp(x), x)", "moves": ["d_chain_table@Derivative(exp(x), x)", "d_product@Derivative(2*x**3, x)"], "answer": 1}
+{"state": "x**3*Derivative(2, x) + 2*Derivative(x**3, x) + Derivative(exp(x), x)", "moves": ["d_const@Derivative(2, x)", "d_power@Derivative(x**3, x)", "d_chain_table@Derivative(exp(x), x)"], "answer": 0}
+{"state": "2*Derivative(x**3, x) + Derivative(exp(x), x)", "moves": ["d_power@Derivative(x**3, x)", "d_chain_table@Derivative(exp(x), x)"], "answer": 0}
+{"state": "6*x**2*Derivative(x, x) + Derivative(exp(x), x)", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(exp(x), x)"], "answer": 0}
+{"state": "Derivative(5*x, x) + Derivative(7*log(x), x) + Derivative(9*sin(x), x)", "moves": ["d_product@Derivative(5*x, x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(7*log(x), x)"], "answer": 0}
+{"state": "x*Derivative(5, x) + 5*Derivative(x, x) + Derivative(7*log(x), x) + Derivative(9*sin(x), x)", "moves": ["d_const@Derivative(5, x)", "d_x@Derivative(x, x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(7*log(x), x)"], "answer": 0}
+{"state": "5*Derivative(x, x) + Derivative(7*log(x), x) + Derivative(9*sin(x), x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(7*log(x), x)"], "answer": 0}
+{"state": "Derivative(7*log(x), x) + Derivative(9*sin(x), x) + 5", "moves": ["d_product@Derivative(9*sin(x), x)", "d_product@Derivative(7*log(x), x)"], "answer": 0}
+{"state": "sin(x)*Derivative(9, x) + Derivative(7*log(x), x) + 9*Derivative(sin(x), x) + 5", "moves": ["d_const@Derivative(9, x)", "d_chain_table@Derivative(sin(x), x)", "d_product@Derivative(7*log(x), x)"], "answer": 0}
+{"state": "Derivative(7*log(x), x) + 9*Derivative(sin(x), x) + 5", "moves": ["d_chain_table@Derivative(sin(x), x)", "d_product@Derivative(7*log(x), x)"], "answer": 1}
+{"state": "log(x)*Derivative(7, x) + 7*Derivative(log(x), x) + 9*Derivative(sin(x), x) + 5", "moves": ["d_const@Derivative(7, x)", "d_chain_table@Derivative(log(x), x)", "d_chain_table@Derivative(sin(x), x)"], "answer": 0}
+{"state": "7*Derivative(log(x), x) + 9*Derivative(sin(x), x) + 5", "moves": ["d_chain_table@Derivative(log(x), x)", "d_chain_table@Derivative(sin(x), x)"], "answer": 0}
+{"state": "9*Derivative(sin(x), x) + 5 + 7*Derivative(x, x)/x", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(sin(x), x)", "factor"], "answer": 0}
+{"state": "9*Derivative(sin(x), x) + 5 + 7/x", "moves": ["d_chain_table@Derivative(sin(x), x)", "factor"], "answer": 0}
+{"state": "9*cos(x)*Derivative(x, x) + 5 + 7/x", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(9*x**5 - 9, x)", "moves": ["d_sum@Derivative(9*x**5 - 9, x)", "together"], "answer": 0}
+{"state": "Derivative(-9, x) + Derivative(9*x**5, x)", "moves": ["d_const@Derivative(-9, x)", "d_product@Derivative(9*x**5, x)"], "answer": 0}
+{"state": "x**5*Derivative(9, x) + 9*Derivative(x**5, x)", "moves": ["d_const@Derivative(9, x)", "d_power@Derivative(x**5, x)"], "answer": 0}
+{"state": "Derivative(-3*x, x) + Derivative(5*x**3, x) + Derivative(7*exp(x), x) + Derivative(4*cos(x), x)", "moves": ["d_product@Derivative(-3*x, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(7*exp(x), x)", "d_product@Derivative(4*cos(x), x)"], "answer": 0}
+{"state": "x*Derivative(-3, x) - 3*Derivative(x, x) + Derivative(5*x**3, x) + Derivative(7*exp(x), x) + Derivative(4*cos(x), x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(-3, x)", "d_product@Derivative(4*cos(x), x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(7*exp(x), x)"], "answer": 0}
+{"state": "x*Derivative(-3, x) + Derivative(5*x**3, x) + Derivative(7*exp(x), x) + Derivative(4*cos(x), x) - 3", "moves": ["d_const@Derivative(-3, x)", "d_product@Derivative(4*cos(x), x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(7*exp(x), x)"], "answer": 0}
+{"state": "Derivative(5*x**3, x) + Derivative(7*exp(x), x) + Derivative(4*cos(x), x) - 3", "moves": ["d_product@Derivative(4*cos(x), x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(7*exp(x), x)"], "answer": 0}
+{"state": "cos(x)*Derivative(4, x) + Derivative(5*x**3, x) + Derivative(7*exp(x), x) + 4*Derivative(cos(x), x) - 3", "moves": ["d_const@Derivative(4, x)", "d_chain_table@Derivative(cos(x), x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(7*exp(x), x)"], "answer": 0}
+{"state": "Derivative(5*x**3, x) + Derivative(7*exp(x), x) + 4*Derivative(cos(x), x) - 3", "moves": ["d_chain_table@Derivative(cos(x), x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(7*exp(x), x)"], "answer": 0}
+{"state": "-4*sin(x)*Derivative(x, x) + Derivative(5*x**3, x) + Derivative(7*exp(x), x) - 3", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(7*exp(x), x)"], "answer": 2}
+{"state": "exp(x)*Derivative(7, x) - 4*sin(x)*Derivative(x, x) + Derivative(5*x**3, x) + 7*Derivative(exp(x), x) - 3", "moves": ["d_const@Derivative(7, x)", "d_x@Derivative(x, x)", "d_chain_table@Derivative(exp(x), x)", "d_product@Derivative(5*x**3, x)"], "answer": 0}
+{"state": "-4*sin(x)*Derivative(x, x) + Derivative(5*x**3, x) + 7*Derivative(exp(x), x) - 3", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(exp(x), x)", "d_product@Derivative(5*x**3, x)"], "answer": 1}
+{"state": "7*exp(x)*Derivative(x, x) - 4*sin(x)*Derivative(x, x) + Derivative(5*x**3, x) - 3", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(5*x**3, x)"], "answer": 0}
+{"state": "x**3*Derivative(5, x) + 7*exp(x) - 4*sin(x) + 5*Derivative(x**3, x) - 3", "moves": ["d_const@Derivative(5, x)", "d_power@Derivative(x**3, x)"], "answer": 0}
+{"state": "Derivative(6*x, x) + Derivative(3*log(x), x) + Derivative(9*sin(x), x) + Derivative(-8*cos(x), x)", "moves": ["d_product@Derivative(6*x, x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(3*log(x), x)", "d_product@Derivative(-8*cos(x), x)"], "answer": 2}
+{"state": "log(x)*Derivative(3, x) + Derivative(6*x, x) + 3*Derivative(log(x), x) + Derivative(9*sin(x), x) + Derivative(-8*cos(x), x)", "moves": ["d_const@Derivative(3, x)", "d_product@Derivative(6*x, x)", "d_chain_table@Derivative(log(x), x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(-8*cos(x), x)"], "answer": 0}
+{"state": "Derivative(6*x, x) + 3*Derivative(log(x), x) + Derivative(9*sin(x), x) + Derivative(-8*cos(x), x)", "moves": ["d_chain_table@Derivative(log(x), x)", "d_product@Derivative(6*x, x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(-8*cos(x), x)"], "answer": 0}
+{"state": "Derivative(6*x, x) + Derivative(9*sin(x), x) + Derivative(-8*cos(x), x) + 3*Derivative(x, x)/x", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(6*x, x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(-8*cos(x), x)", "factor"], "answer": 0}
+{"state": "Derivative(6*x, x) + Derivative(9*sin(x), x) + Derivative(-8*cos(x), x) + 3/x", "moves": ["d_product@Derivative(6*x, x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(-8*cos(x), x)", "factor"], "answer": 0}
+{"state": "x*Derivative(6, x) + 6*Derivative(x, x) + Derivative(9*sin(x), x) + Derivative(-8*cos(x), x) + 3/x", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(6, x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(-8*cos(x), x)", "factor"], "answer": 0}
+{"state": "x*Derivative(6, x) + Derivative(9*sin(x), x) + Derivative(-8*cos(x), x) + 6 + 3/x", "moves": ["d_const@Derivative(6, x)", "d_product@Derivative(9*sin(x), x)", "d_product@Derivative(-8*cos(x), x)", "factor"], "answer": 0}
+{"state": "Derivative(9*sin(x), x) + Derivative(-8*cos(x), x) + 6 + 3/x", "moves": ["d_product@Derivative(9*sin(x), x)", "d_product@Derivative(-8*cos(x), x)", "factor"], "answer": 0}
+{"state": "sin(x)*Derivative(9, x) + 9*Derivative(sin(x), x) + Derivative(-8*cos(x), x) + 6 + 3/x", "moves": ["d_const@Derivative(9, x)", "d_chain_table@Derivative(sin(x), x)", "d_product@Derivative(-8*cos(x), x)", "factor"], "answer": 0}
+{"state": "9*Derivative(sin(x), x) + Derivative(-8*cos(x), x) + 6 + 3/x", "moves": ["d_chain_table@Derivative(sin(x), x)", "d_product@Derivative(-8*cos(x), x)", "factor"], "answer": 0}
+{"state": "9*cos(x)*Derivative(x, x) + Derivative(-8*cos(x), x) + 6 + 3/x", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(-8*cos(x), x)", "factor"], "answer": 0}
+{"state": "9*cos(x) + Derivative(-8*cos(x), x) + 6 + 3/x", "moves": ["d_product@Derivative(-8*cos(x), x)", "factor"], "answer": 0}
+{"state": "cos(x)*Derivative(-8, x) + 9*cos(x) - 8*Derivative(cos(x), x) + 6 + 3/x", "moves": ["d_chain_table@Derivative(cos(x), x)", "d_const@Derivative(-8, x)", "factor"], "answer": 1}
+{"state": "9*cos(x) - 8*Derivative(cos(x), x) + 6 + 3/x", "moves": ["d_chain_table@Derivative(cos(x), x)", "factor", "cancel"], "answer": 0}
+{"state": "8*sin(x)*Derivative(x, x) + 9*cos(x) + 6 + 3/x", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(-2*x**3, x) + Derivative(x**5, x) + Derivative(-2*exp(x), x) + Derivative(3*log(x), x)", "moves": ["d_power@Derivative(x**5, x)", "d_product@Derivative(3*log(x), x)", "d_product@Derivative(-2*x**3, x)", "d_product@Derivative(-2*exp(x), x)"], "answer": 3}
+{"state": "exp(x)*Derivative(-2, x) + Derivative(-2*x**3, x) + Derivative(x**5, x) - 2*Derivative(exp(x), x) + Derivative(3*log(x), x)", "moves": ["d_chain_table@Derivative(exp(x), x)", "d_power@Derivative(x**5, x)", "d_const@Derivative(-2, x)", "d_product@Derivative(3*log(x), x)", "d_product@Derivative(-2*x**3, x)"], "answer": 2}
+{"state": "Derivative(-2*x**3, x) + Derivative(x**5, x) - 2*Derivative(exp(x), x) + Derivative(3*log(x), x)", "moves": ["d_power@Derivative(x**5, x)", "d_chain_table@Derivative(exp(x), x)", "d_product@Derivative(3*log(x), x)", "d_product@Derivative(-2*x**3, x)"], "answer": 1}
+{"state": "-2*exp(x)*Derivative(x, x) + Derivative(-2*x**3, x) + Derivative(x**5, x) + Derivative(3*log(x), x)", "moves": ["d_x@Derivative(x, x)", "d_power@Derivative(x**5, x)", "d_product@Derivative(3*log(x), x)", "d_product@Derivative(-2*x**3, x)"], "answer": 0}
+{"state": "-2*exp(x) + Derivative(-2*x**3, x) + Derivative(x**5, x) + Derivative(3*log(x), x)", "moves": ["d_power@Derivative(x**5, x)", "d_product@Derivative(3*log(x), x)", "d_product@Derivative(-2*x**3, x)"], "answer": 0}
+{"state": "5*x**4*Derivative(x, x) - 2*exp(x) + Derivative(-2*x**3, x) + Derivative(3*log(x), x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(3*log(x), x)", "d_product@Derivative(-2*x**3, x)"], "answer": 2}
+{"state": "5*x**4*Derivative(x, x) + x**3*Derivative(-2, x) - 2*exp(x) - 2*Derivative(x**3, x) + Derivative(3*log(x), x)", "moves": ["d_x@Derivative(x, x)", "d_power@Derivative(x**3, x)", "d_const@Derivative(-2, x)", "d_product@Derivative(3*log(x), x)"], "answer": 2}
+{"state": "5*x**4*Derivative(x, x) - 2*exp(x) - 2*Derivative(x**3, x) + Derivative(3*log(x), x)", "moves": ["d_x@Derivative(x, x)", "d_power@Derivative(x**3, x)", "d_product@Derivative(3*log(x), x)"], "answer": 0}
+{"state": "5*x**4 - 2*exp(x) - 2*Derivative(x**3, x) + Derivative(3*log(x), x)", "moves": ["d_power@Derivative(x**3, x)", "d_product@Derivative(3*log(x), x)"], "answer": 0}
+{"state": "5*x**4 - 6*x**2*Derivative(x, x) - 2*exp(x) + Derivative(3*log(x), x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(3*log(x), x)"], "answer": 0}
+{"state": "5*x**4 - 6*x**2 - 2*exp(x) + log(x)*Derivative(3, x) + 3*Derivative(log(x), x)", "moves": ["d_const@Derivative(3, x)", "d_chain_table@Derivative(log(x), x)"], "answer": 0}
+{"state": "5*x**4 - 6*x**2 - 2*exp(x) + 3*Derivative(x, x)/x", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(9, x) + Derivative(4*x**5, x) + Derivative(8*cos(x), x)", "moves": ["d_const@Derivative(9, x)", "d_product@Derivative(8*cos(x), x)", "d_product@Derivative(4*x**5, x)"], "answer": 2}
+{"state": "x**5*Derivative(4, x) + Derivative(9, x) + 4*Derivative(x**5, x) + Derivative(8*cos(x), x)", "moves": ["d_const@Derivative(4, x)", "d_const@Derivative(9, x)", "d_power@Derivative(x**5, x)", "d_product@Derivative(8*cos(x), x)"], "answer": 0}
+{"state": "Derivative(9, x) + 4*Derivative(x**5, x) + Derivative(8*cos(x), x)", "moves": ["d_const@Derivative(9, x)", "d_power@Derivative(x**5, x)", "d_product@Derivative(8*cos(x), x)"], "answer": 0}
+{"state": "4*Derivative(x**5, x) + Derivative(8*cos(x), x)", "moves": ["d_power@Derivative(x**5, x)", "d_product@Derivative(8*cos(x), x)"], "answer": 0}
+{"state": "20*x**4*Derivative(x, x) + Derivative(8*cos(x), x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(8*cos(x), x)"], "answer": 1}
+{"state": "20*x**4*Derivative(x, x) + cos(x)*Derivative(8, x) + 8*Derivative(cos(x), x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(8, x)", "d_chain_table@Derivative(cos(x), x)"], "answer": 1}
+{"state": "20*x**4*Derivative(x, x) + 8*Derivative(cos(x), x)", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(cos(x), x)", "factor"], "answer": 1}
+{"state": "20*x**4*Derivative(x, x) - 8*sin(x)*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(-8*x - 9*cos(x), x)", "moves": ["d_sum@Derivative(-8*x - 9*cos(x), x)", "trigsimp"], "answer": 0}
+{"state": "Derivative(-8*x, x) + Derivative(-9*cos(x), x)", "moves": ["d_product@Derivative(-8*x, x)", "d_product@Derivative(-9*cos(x), x)"], "answer": 0}
+{"state": "x*Derivative(-8, x) - 8*Derivative(x, x) + Derivative(-9*cos(x), x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(-8, x)", "d_product@Derivative(-9*cos(x), x)"], "answer": 1}
+{"state": "-8*Derivative(x, x) + Derivative(-9*cos(x), x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(-9*cos(x), x)"], "answer": 0}
+{"state": "cos(x)*Derivative(-9, x) - 9*Derivative(cos(x), x) - 8", "moves": ["d_chain_table@Derivative(cos(x), x)", "d_const@Derivative(-9, x)"], "answer": 1}
+{"state": "Derivative(8*x**3 + 7*x, x)", "moves": ["d_sum@Derivative(8*x**3 + 7*x, x)", "together"], "answer": 0}
+{"state": "Derivative(7*x, x) + Derivative(8*x**3, x)", "moves": ["d_product@Derivative(7*x, x)", "d_product@Derivative(8*x**3, x)"], "answer": 0}
+{"state": "x*Derivative(7, x) + 7*Derivative(x, x) + Derivative(8*x**3, x)", "moves": ["d_const@Derivative(7, x)", "d_x@Derivative(x, x)", "d_product@Derivative(8*x**3, x)"], "answer": 0}
+{"state": "7*Derivative(x, x) + Derivative(8*x**3, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(8*x**3, x)"], "answer": 0}
+{"state": "x**3*Derivative(8, x) + 8*Derivative(x**3, x) + 7", "moves": ["d_const@Derivative(8, x)", "d_power@Derivative(x**3, x)"], "answer": 0}
+{"state": "Derivative(8, x) + Derivative(3*x**2, x) + Derivative(8*sin(x), x) + Derivative(cos(x), x)", "moves": ["d_const@Derivative(8, x)", "d_chain_table@Derivative(cos(x), x)", "d_product@Derivative(3*x**2, x)", "d_product@Derivative(8*sin(x), x)"], "answer": 3}
+{"state": "sin(x)*Derivative(8, x) + Derivative(8, x) + Derivative(3*x**2, x) + 8*Derivative(sin(x), x) + Derivative(cos(x), x)", "moves": ["d_const@Derivative(8, x)", "d_chain_table@Derivative(cos(x), x)", "d_chain_table@Derivative(sin(x), x)", "d_product@Derivative(3*x**2, x)"], "answer": 0}
+{"state": "Derivative(3*x**2, x) + 8*Derivative(sin(x), x) + Derivative(cos(x), x)", "moves": ["d_chain_table@Derivative(cos(x), x)", "d_chain_table@Derivative(sin(x), x)", "d_product@Derivative(3*x**2, x)"], "answer": 0}
+{"state": "-sin(x)*Derivative(x, x) + Derivative(3*x**2, x) + 8*Derivative(sin(x), x)", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(sin(x), x)", "d_product@Derivative(3*x**2, x)"], "answer": 1}
+{"state": "-sin(x)*Derivative(x, x) + 8*cos(x)*Derivative(x, x) + Derivative(3*x**2, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(3*x**2, x)"], "answer": 0}
+{"state": "x**2*Derivative(3, x) - sin(x) + 8*cos(x) + 3*Derivative(x**2, x)", "moves": ["d_const@Derivative(3, x)", "d_power@Derivative(x**2, x)"], "answer": 0}
+{"state": "-(Derivative(1, x) + Derivative(4*x, x) + Derivative(3*x**2, x))*sin(3*x**2 + 4*x + 1)", "moves": ["d_const@Derivative(1, x)", "d_product@Derivative(4*x, x)", "d_product@Derivative(3*x**2, x)", "expand", "trigsimp"], "answer": 0}
+{"state": "-(Derivative(4*x, x) + Derivative(3*x**2, x))*sin(3*x**2 + 4*x + 1)", "moves": ["d_product@Derivative(4*x, x)", "d_product@Derivative(3*x**2, x)", "expand", "trigsimp"], "answer": 0}
+{"state": "-(x*Derivative(4, x) + 4*Derivative(x, x) + Derivative(3*x**2, x))*sin(3*x**2 + 4*x + 1)", "moves": ["d_const@Derivative(4, x)", "d_x@Derivative(x, x)", "d_product@Derivative(3*x**2, x)", "expand", "trigsimp"], "answer": 0}
+{"state": "-(4*Derivative(x, x) + Derivative(3*x**2, x))*sin(3*x**2 + 4*x + 1)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(3*x**2, x)", "expand", "trigsimp"], "answer": 0}
+{"state": "-(Derivative(3*x**2, x) + 4)*sin(3*x**2 + 4*x + 1)", "moves": ["d_product@Derivative(3*x**2, x)", "expand", "trigsimp"], "answer": 0}
+{"state": "-(x**2*Derivative(3, x) + 3*Derivative(x**2, x) + 4)*sin(3*x**2 + 4*x + 1)", "moves": ["d_const@Derivative(3, x)", "d_power@Derivative(x**2, x)", "expand", "trigsimp"], "answer": 0}
+{"state": "-(3*Derivative(x**2, x) + 4)*sin(3*x**2 + 4*x + 1)", "moves": ["d_power@Derivative(x**2, x)", "expand", "trigsimp"], "answer": 0}
+{"state": "-(6*x*Derivative(x, x) + 4)*sin(3*x**2 + 4*x + 1)", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "trigsimp"], "answer": 0}
+{"state": "-(x*Derivative(3, x) + 3*Derivative(x, x))*sin(3*x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(3, x)", "expand", "trigsimp"], "answer": 1}
+{"state": "cos(x)*Derivative(12, x) + 12*Derivative(cos(x), x)", "moves": ["d_const@Derivative(12, x)", "d_chain_table@Derivative(cos(x), x)"], "answer": 0}
+{"state": "(Derivative(3, x) + Derivative(4*x, x) + Derivative(4*x**3, x))*cos(4*x**3 + 4*x + 3)", "moves": ["d_const@Derivative(3, x)", "d_product@Derivative(4*x, x)", "d_product@Derivative(4*x**3, x)", "expand"], "answer": 1}
+{"state": "(x*Derivative(4, x) + Derivative(3, x) + 4*Derivative(x, x) + Derivative(4*x**3, x))*cos(4*x**3 + 4*x + 3)", "moves": ["d_const@Derivative(4, x)", "d_x@Derivative(x, x)", "d_const@Derivative(3, x)", "d_product@Derivative(4*x**3, x)", "expand"], "answer": 0}
+{"state": "(Derivative(3, x) + 4*Derivative(x, x) + Derivative(4*x**3, x))*cos(4*x**3 + 4*x + 3)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(3, x)", "d_product@Derivative(4*x**3, x)", "expand"], "answer": 0}
+{"state": "(Derivative(3, x) + Derivative(4*x**3, x) + 4)*cos(4*x**3 + 4*x + 3)", "moves": ["d_const@Derivative(3, x)", "d_product@Derivative(4*x**3, x)", "expand"], "answer": 1}
+{"state": "(x**3*Derivative(4, x) + Derivative(3, x) + 4*Derivative(x**3, x) + 4)*cos(4*x**3 + 4*x + 3)", "moves": ["d_const@Derivative(4, x)", "d_const@Derivative(3, x)", "d_power@Derivative(x**3, x)", "expand"], "answer": 0}
+{"state": "(Derivative(3, x) + 4*Derivative(x**3, x) + 4)*cos(4*x**3 + 4*x + 3)", "moves": ["d_const@Derivative(3, x)", "d_power@Derivative(x**3, x)", "expand"], "answer": 0}
+{"state": "(4*Derivative(x**3, x) + 4)*cos(4*x**3 + 4*x + 3)", "moves": ["d_power@Derivative(x**3, x)", "expand", "factor"], "answer": 0}
+{"state": "(12*x**2*Derivative(x, x) + 4)*cos(4*x**3 + 4*x + 3)", "moves": ["d_x@Derivative(x, x)", "expand", "factor"], "answer": 0}
+{"state": "x**4*Derivative(45, x) + 45*Derivative(x**4, x)", "moves": ["d_const@Derivative(45, x)", "d_power@Derivative(x**4, x)"], "answer": 0}
+{"state": "Derivative(6*x**5 + 18*log(x), x)", "moves": ["d_sum@Derivative(6*x**5 + 18*log(x), x)", "together"], "answer": 0}
+{"state": "Derivative(6*x**5, x) + Derivative(18*log(x), x)", "moves": ["d_product@Derivative(18*log(x), x)", "d_product@Derivative(6*x**5, x)"], "answer": 0}
+{"state": "log(x)*Derivative(18, x) + Derivative(6*x**5, x) + 18*Derivative(log(x), x)", "moves": ["d_const@Derivative(18, x)", "d_chain_table@Derivative(log(x), x)", "d_product@Derivative(6*x**5, x)"], "answer": 0}
+{"state": "Derivative(6*x**5, x) + 18*Derivative(log(x), x)", "moves": ["d_chain_table@Derivative(log(x), x)", "d_product@Derivative(6*x**5, x)"], "answer": 0}
+{"state": "Derivative(6*x**5, x) + 18*Derivative(x, x)/x", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(6*x**5, x)", "factor"], "answer": 0}
+{"state": "Derivative(6*x**5, x) + 18/x", "moves": ["d_product@Derivative(6*x**5, x)", "factor"], "answer": 0}
+{"state": "x**5*Derivative(6, x) + 6*Derivative(x**5, x) + 18/x", "moves": ["d_const@Derivative(6, x)", "d_power@Derivative(x**5, x)", "factor"], "answer": 0}
+{"state": "6*Derivative(x**5, x) + 18/x", "moves": ["d_power@Derivative(x**5, x)", "factor", "cancel"], "answer": 0}
+{"state": "30*x**4*Derivative(x, x) + 18/x", "moves": ["d_x@Derivative(x, x)", "factor", "cancel"], "answer": 0}
+{"state": "Derivative(exp(3*x**2 + 4*x + 4), x)", "moves": ["d_chain_table@Derivative(exp(3*x**2 + 4*x + 4), x)", "expand"], "answer": 0}
+{"state": "exp(3*x**2 + 4*x + 4)*Derivative(3*x**2 + 4*x + 4, x)", "moves": ["d_sum@Derivative(3*x**2 + 4*x + 4, x)", "expand"], "answer": 0}
+{"state": "(Derivative(4, x) + Derivative(4*x, x) + Derivative(3*x**2, x))*exp(3*x**2 + 4*x + 4)", "moves": ["d_const@Derivative(4, x)", "d_product@Derivative(4*x, x)", "d_product@Derivative(3*x**2, x)", "expand", "factor"], "answer": 0}
+{"state": "(Derivative(4*x, x) + Derivative(3*x**2, x))*exp(3*x**2 + 4*x + 4)", "moves": ["d_product@Derivative(4*x, x)", "d_product@Derivative(3*x**2, x)", "expand", "factor"], "answer": 0}
+{"state": "(x*Derivative(4, x) + 4*Derivative(x, x) + Derivative(3*x**2, x))*exp(3*x**2 + 4*x + 4)", "moves": ["d_const@Derivative(4, x)", "d_x@Derivative(x, x)", "d_product@Derivative(3*x**2, x)", "expand", "factor"], "answer": 0}
+{"state": "(4*Derivative(x, x) + Derivative(3*x**2, x))*exp(3*x**2 + 4*x + 4)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(3*x**2, x)", "expand", "factor"], "answer": 0}
+{"state": "(Derivative(3*x**2, x) + 4)*exp(3*x**2 + 4*x + 4)", "moves": ["d_product@Derivative(3*x**2, x)", "expand", "factor"], "answer": 0}
+{"state": "(x**2*Derivative(3, x) + 3*Derivative(x**2, x) + 4)*exp(3*x**2 + 4*x + 4)", "moves": ["d_const@Derivative(3, x)", "d_power@Derivative(x**2, x)", "expand", "factor"], "answer": 0}
+{"state": "(3*Derivative(x**2, x) + 4)*exp(3*x**2 + 4*x + 4)", "moves": ["d_power@Derivative(x**2, x)", "expand", "factor"], "answer": 0}
+{"state": "(6*x*Derivative(x, x) + 4)*exp(3*x**2 + 4*x + 4)", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "together"], "answer": 0}
+{"state": "x**6*Derivative(15, x) + 15*Derivative(x**6, x)", "moves": ["d_const@Derivative(15, x)", "d_power@Derivative(x**6, x)"], "answer": 0}
+{"state": "x*Derivative(38, x) + 38*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(38, x)"], "answer": 1}
+{"state": "Derivative(exp(2*x**3 + 3*x + 2), x)", "moves": ["d_chain_table@Derivative(exp(2*x**3 + 3*x + 2), x)", "expand"], "answer": 0}
+{"state": "exp(2*x**3 + 3*x + 2)*Derivative(2*x**3 + 3*x + 2, x)", "moves": ["d_sum@Derivative(2*x**3 + 3*x + 2, x)", "expand"], "answer": 0}
+{"state": "(Derivative(2, x) + Derivative(3*x, x) + Derivative(2*x**3, x))*exp(2*x**3 + 3*x + 2)", "moves": ["d_const@Derivative(2, x)", "d_product@Derivative(3*x, x)", "d_product@Derivative(2*x**3, x)", "expand", "factor"], "answer": 0}
+{"state": "(Derivative(3*x, x) + Derivative(2*x**3, x))*exp(2*x**3 + 3*x + 2)", "moves": ["d_product@Derivative(3*x, x)", "d_product@Derivative(2*x**3, x)", "expand", "factor"], "answer": 0}
+{"state": "(x*Derivative(3, x) + 3*Derivative(x, x) + Derivative(2*x**3, x))*exp(2*x**3 + 3*x + 2)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(3, x)", "d_product@Derivative(2*x**3, x)", "expand", "factor"], "answer": 0}
+{"state": "(x*Derivative(3, x) + Derivative(2*x**3, x) + 3)*exp(2*x**3 + 3*x + 2)", "moves": ["d_const@Derivative(3, x)", "d_product@Derivative(2*x**3, x)", "expand", "factor"], "answer": 0}
+{"state": "(Derivative(2*x**3, x) + 3)*exp(2*x**3 + 3*x + 2)", "moves": ["d_product@Derivative(2*x**3, x)", "expand", "factor"], "answer": 0}
+{"state": "(x**3*Derivative(2, x) + 2*Derivative(x**3, x) + 3)*exp(2*x**3 + 3*x + 2)", "moves": ["d_const@Derivative(2, x)", "d_power@Derivative(x**3, x)", "expand", "factor"], "answer": 0}
+{"state": "(2*Derivative(x**3, x) + 3)*exp(2*x**3 + 3*x + 2)", "moves": ["d_power@Derivative(x**3, x)", "expand", "factor"], "answer": 0}
+{"state": "(6*x**2*Derivative(x, x) + 3)*exp(2*x**3 + 3*x + 2)", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "together"], "answer": 0}
+{"state": "Derivative(20*x**6, x) + Derivative(9*exp(x), x)", "moves": ["d_product@Derivative(9*exp(x), x)", "d_product@Derivative(20*x**6, x)"], "answer": 0}
+{"state": "exp(x)*Derivative(9, x) + Derivative(20*x**6, x) + 9*Derivative(exp(x), x)", "moves": ["d_const@Derivative(9, x)", "d_chain_table@Derivative(exp(x), x)", "d_product@Derivative(20*x**6, x)"], "answer": 0}
+{"state": "Derivative(20*x**6, x) + 9*Derivative(exp(x), x)", "moves": ["d_chain_table@Derivative(exp(x), x)", "d_product@Derivative(20*x**6, x)"], "answer": 0}
+{"state": "9*exp(x)*Derivative(x, x) + Derivative(20*x**6, x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(20*x**6, x)"], "answer": 0}
+{"state": "x**6*Derivative(20, x) + 9*exp(x) + 20*Derivative(x**6, x)", "moves": ["d_const@Derivative(20, x)", "d_power@Derivative(x**6, x)"], "answer": 0}
+{"state": "120*x**5*Derivative(x, x) + 9*exp(x)", "moves": ["d_x@Derivative(x, x)", "factor"], "answer": 0}
+{"state": "Derivative(-45*x**4*sin(x) + 5*x**3, x)", "moves": ["d_sum@Derivative(-45*x**4*sin(x) + 5*x**3, x)", "together"], "answer": 0}
+{"state": "Derivative(5*x**3, x) + Derivative(-45*x**4*sin(x), x)", "moves": ["d_product@Derivative(5*x**3, x)", "d_product@Derivative(-45*x**4*sin(x), x)", "d_product@Derivative(-45*x**4*sin(x), x)", "d_product@Derivative(-45*x**4*sin(x), x)"], "answer": 0}
+{"state": "x**3*Derivative(5, x) + 5*Derivative(x**3, x) + Derivative(-45*x**4*sin(x), x)", "moves": ["d_const@Derivative(5, x)", "d_power@Derivative(x**3, x)", "d_product@Derivative(-45*x**4*sin(x), x)", "d_product@Derivative(-45*x**4*sin(x), x)", "d_product@Derivative(-45*x**4*sin(x), x)"], "answer": 0}
+{"state": "5*Derivative(x**3, x) + Derivative(-45*x**4*sin(x), x)", "moves": ["d_power@Derivative(x**3, x)", "d_product@Derivative(-45*x**4*sin(x), x)", "d_product@Derivative(-45*x**4*sin(x), x)", "d_product@Derivative(-45*x**4*sin(x), x)"], "answer": 0}
+{"state": "15*x**2*Derivative(x, x) + Derivative(-45*x**4*sin(x), x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(-45*x**4*sin(x), x)", "d_product@Derivative(-45*x**4*sin(x), x)", "d_product@Derivative(-45*x**4*sin(x), x)"], "answer": 0}
+{"state": "15*x**2 + Derivative(-45*x**4*sin(x), x)", "moves": ["d_product@Derivative(-45*x**4*sin(x), x)", "d_product@Derivative(-45*x**4*sin(x), x)", "d_product@Derivative(-45*x**4*sin(x), x)"], "answer": 0}
+{"state": "x**4*sin(x)*Derivative(-45, x) + 15*x**2 - 45*Derivative(x**4*sin(x), x)", "moves": ["d_const@Derivative(-45, x)", "d_product@Derivative(x**4*sin(x), x)"], "answer": 0}
+{"state": "15*x**2 - 45*Derivative(x**4*sin(x), x)", "moves": ["d_product@Derivative(x**4*sin(x), x)", "factor"], "answer": 0}
+{"state": "-45*x**4*Derivative(sin(x), x) + 15*x**2 - 45*sin(x)*Derivative(x**4, x)", "moves": ["d_power@Derivative(x**4, x)", "d_chain_table@Derivative(sin(x), x)", "factor", "together"], "answer": 0}
+{"state": "-45*x**4*Derivative(sin(x), x) - 180*x**3*sin(x)*Derivative(x, x) + 15*x**2", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(sin(x), x)", "factor", "together"], "answer": 0}
+{"state": "-45*x**4*Derivative(sin(x), x) - 180*x**3*sin(x) + 15*x**2", "moves": ["d_chain_table@Derivative(sin(x), x)", "factor", "together"], "answer": 2}
+{"state": "15*x**2*(-3*x**2*Derivative(sin(x), x) - 12*x*sin(x) + 1)", "moves": ["d_chain_table@Derivative(sin(x), x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "15*x**2*(-3*x**2*cos(x)*Derivative(x, x) - 12*x*sin(x) + 1)", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "x**6*Derivative(15, x) + 15*Derivative(x**6, x)", "moves": ["d_const@Derivative(15, x)", "d_power@Derivative(x**6, x)"], "answer": 0}
+{"state": "cos(x)**2*Derivative(21, x) + 21*Derivative(cos(x)**2, x)", "moves": ["d_const@Derivative(21, x)", "d_power@Derivative(cos(x)**2, x)"], "answer": 0}
+{"state": "-42*sin(x)*cos(x)*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "trigsimp"], "answer": 0}
+{"state": "sin(5*x**2 + sin(3*x) + 1)*Derivative(8, x) + 8*Derivative(sin(5*x**2 + sin(3*x) + 1), x)", "moves": ["d_const@Derivative(8, x)", "d_chain_table@Derivative(sin(5*x**2 + sin(3*x) + 1), x)"], "answer": 0}
+{"state": "8*(Derivative(1, x) + Derivative(5*x**2, x) + Derivative(sin(3*x), x))*cos(5*x**2 + sin(3*x) + 1)", "moves": ["d_const@Derivative(1, x)", "d_product@Derivative(5*x**2, x)", "d_chain_table@Derivative(sin(3*x), x)", "expand"], "answer": 0}
+{"state": "8*(Derivative(5*x**2, x) + Derivative(sin(3*x), x))*cos(5*x**2 + sin(3*x) + 1)", "moves": ["d_product@Derivative(5*x**2, x)", "d_chain_table@Derivative(sin(3*x), x)", "expand"], "answer": 0}
+{"state": "8*(x**2*Derivative(5, x) + 5*Derivative(x**2, x) + Derivative(sin(3*x), x))*cos(5*x**2 + sin(3*x) + 1)", "moves": ["d_const@Derivative(5, x)", "d_power@Derivative(x**2, x)", "d_chain_table@Derivative(sin(3*x), x)", "expand"], "answer": 0}
+{"state": "8*(5*Derivative(x**2, x) + Derivative(sin(3*x), x))*cos(5*x**2 + sin(3*x) + 1)", "moves": ["d_power@Derivative(x**2, x)", "d_chain_table@Derivative(sin(3*x), x)", "expand"], "answer": 0}
+{"state": "8*(10*x*Derivative(x, x) + Derivative(sin(3*x), x))*cos(5*x**2 + sin(3*x) + 1)", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(sin(3*x), x)", "expand"], "answer": 1}
+{"state": "8*(10*x*Derivative(x, x) + cos(3*x)*Derivative(3*x, x))*cos(5*x**2 + sin(3*x) + 1)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(3*x, x)", "expand"], "answer": 1}
+{"state": "8*(10*x*Derivative(x, x) + (x*Derivative(3, x) + 3*Derivative(x, x))*cos(3*x))*cos(5*x**2 + sin(3*x) + 1)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(3, x)", "expand", "factor"], "answer": 0}
+{"state": "8*(10*x + (x*Derivative(3, x) + 3)*cos(3*x))*cos(5*x**2 + sin(3*x) + 1)", "moves": ["d_const@Derivative(3, x)", "expand", "factor"], "answer": 0}
+{"state": "sin(2*x**3 + 2*x + sin(2*x))*Derivative(6, x) + 6*Derivative(sin(2*x**3 + 2*x + sin(2*x)), x)", "moves": ["d_const@Derivative(6, x)", "d_chain_table@Derivative(sin(2*x**3 + 2*x + sin(2*x)), x)"], "answer": 0}
+{"state": "6*(Derivative(2*x, x) + Derivative(2*x**3, x) + Derivative(sin(2*x), x))*cos(2*x**3 + 2*x + sin(2*x))", "moves": ["d_product@Derivative(2*x, x)", "d_chain_table@Derivative(sin(2*x), x)", "d_product@Derivative(2*x**3, x)", "expand"], "answer": 0}
+{"state": "6*(x*Derivative(2, x) + 2*Derivative(x, x) + Derivative(2*x**3, x) + Derivative(sin(2*x), x))*cos(2*x**3 + 2*x + sin(2*x))", "moves": ["d_const@Derivative(2, x)", "d_x@Derivative(x, x)", "d_chain_table@Derivative(sin(2*x), x)", "d_product@Derivative(2*x**3, x)", "expand"], "answer": 0}
+{"state": "6*(2*Derivative(x, x) + Derivative(2*x**3, x) + Derivative(sin(2*x), x))*cos(2*x**3 + 2*x + sin(2*x))", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(sin(2*x), x)", "d_product@Derivative(2*x**3, x)", "expand"], "answer": 0}
+{"state": "6*(Derivative(2*x**3, x) + Derivative(sin(2*x), x) + 2)*cos(2*x**3 + 2*x + sin(2*x))", "moves": ["d_chain_table@Derivative(sin(2*x), x)", "d_product@Derivative(2*x**3, x)", "expand"], "answer": 1}
+{"state": "6*(x**3*Derivative(2, x) + 2*Derivative(x**3, x) + Derivative(sin(2*x), x) + 2)*cos(2*x**3 + 2*x + sin(2*x))", "moves": ["d_const@Derivative(2, x)", "d_power@Derivative(x**3, x)", "d_chain_table@Derivative(sin(2*x), x)", "expand"], "answer": 0}
+{"state": "6*(2*Derivative(x**3, x) + Derivative(sin(2*x), x) + 2)*cos(2*x**3 + 2*x + sin(2*x))", "moves": ["d_power@Derivative(x**3, x)", "d_chain_table@Derivative(sin(2*x), x)", "expand"], "answer": 0}
+{"state": "6*(6*x**2*Derivative(x, x) + Derivative(sin(2*x), x) + 2)*cos(2*x**3 + 2*x + sin(2*x))", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(sin(2*x), x)", "expand"], "answer": 1}
+{"state": "6*(6*x**2*Derivative(x, x) + cos(2*x)*Derivative(2*x, x) + 2)*cos(2*x**3 + 2*x + sin(2*x))", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(2*x, x)", "expand"], "answer": 1}
+{"state": "6*(6*x**2*Derivative(x, x) + (x*Derivative(2, x) + 2*Derivative(x, x))*cos(2*x) + 2)*cos(2*x**3 + 2*x + sin(2*x))", "moves": ["d_const@Derivative(2, x)", "d_x@Derivative(x, x)", "expand", "factor"], "answer": 1}
+{"state": "6*(6*x**2 + (x*Derivative(2, x) + 2)*cos(2*x) + 2)*cos(2*x**3 + 2*x + sin(2*x))", "moves": ["d_const@Derivative(2, x)", "expand", "factor"], "answer": 0}
+{"state": "Derivative(5*exp(sqrt(2)*sqrt(x) + 5*x**3 + x), x)", "moves": ["d_product@Derivative(5*exp(sqrt(2)*sqrt(x) + 5*x**3 + x), x)", "expand"], "answer": 0}
+{"state": "exp(sqrt(2)*sqrt(x) + 5*x**3 + x)*Derivative(5, x) + 5*Derivative(exp(sqrt(2)*sqrt(x) + 5*x**3 + x), x)", "moves": ["d_const@Derivative(5, x)", "d_chain_table@Derivative(exp(sqrt(2)*sqrt(x) + 5*x**3 + x), x)", "expand"], "answer": 0}
+{"state": "5*Derivative(exp(sqrt(2)*sqrt(x) + 5*x**3 + x), x)", "moves": ["d_chain_table@Derivative(exp(sqrt(2)*sqrt(x) + 5*x**3 + x), x)", "expand"], "answer": 0}
+{"state": "5*exp(sqrt(2)*sqrt(x) + 5*x**3 + x)*Derivative(sqrt(2)*sqrt(x) + 5*x**3 + x, x)", "moves": ["d_sum@Derivative(sqrt(2)*sqrt(x) + 5*x**3 + x, x)", "expand"], "answer": 0}
+{"state": "5*(Derivative(x, x) + Derivative(5*x**3, x) + Derivative(sqrt(2)*sqrt(x), x))*exp(sqrt(2)*sqrt(x) + 5*x**3 + x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(sqrt(2)*sqrt(x), x)", "expand", "factor", "powsimp"], "answer": 5}
+{"state": "(5*Derivative(x, x) + 5*Derivative(5*x**3, x) + 5*Derivative(sqrt(2)*sqrt(x), x))*exp(sqrt(2)*sqrt(x) + 5*x**3 + x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(sqrt(2)*sqrt(x), x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(5*Derivative(5*x**3, x) + 5*Derivative(sqrt(2)*sqrt(x), x) + 5)*exp(sqrt(2)*sqrt(x) + 5*x**3 + x)", "moves": ["d_product@Derivative(5*x**3, x)", "d_product@Derivative(sqrt(2)*sqrt(x), x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(5*x**3*Derivative(5, x) + 25*Derivative(x**3, x) + 5*Derivative(sqrt(2)*sqrt(x), x) + 5)*exp(sqrt(2)*sqrt(x) + 5*x**3 + x)", "moves": ["d_const@Derivative(5, x)", "d_power@Derivative(x**3, x)", "d_product@Derivative(sqrt(2)*sqrt(x), x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(25*Derivative(x**3, x) + 5*Derivative(sqrt(2)*sqrt(x), x) + 5)*exp(sqrt(2)*sqrt(x) + 5*x**3 + x)", "moves": ["d_power@Derivative(x**3, x)", "d_product@Derivative(sqrt(2)*sqrt(x), x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(75*x**2*Derivative(x, x) + 5*Derivative(sqrt(2)*sqrt(x), x) + 5)*exp(sqrt(2)*sqrt(x) + 5*x**3 + x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(sqrt(2)*sqrt(x), x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(75*x**2 + 5*Derivative(sqrt(2)*sqrt(x), x) + 5)*exp(sqrt(2)*sqrt(x) + 5*x**3 + x)", "moves": ["d_product@Derivative(sqrt(2)*sqrt(x), x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(5*sqrt(x)*Derivative(sqrt(2), x) + 75*x**2 + 5*sqrt(2)*Derivative(sqrt(x), x) + 5)*exp(sqrt(2)*sqrt(x) + 5*x**3 + x)", "moves": ["d_const@Derivative(sqrt(2), x)", "d_power@Derivative(sqrt(x), x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(75*x**2 + 5*sqrt(2)*Derivative(sqrt(x), x) + 5)*exp(sqrt(2)*sqrt(x) + 5*x**3 + x)", "moves": ["d_power@Derivative(sqrt(x), x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(75*x**2 + 5 + 5*sqrt(2)*Derivative(x, x)/(2*sqrt(x)))*exp(sqrt(2)*sqrt(x) + 5*x**3 + x)", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "cancel", "together"], "answer": 0}
+{"state": "Derivative(7*sin(3*x + 4)*cos(x), x)", "moves": ["d_product@Derivative(7*sin(3*x + 4)*cos(x), x)", "d_product@Derivative(7*sin(3*x + 4)*cos(x), x)", "d_product@Derivative(7*sin(3*x + 4)*cos(x), x)"], "answer": 0}
+{"state": "sin(3*x + 4)*cos(x)*Derivative(7, x) + 7*Derivative(sin(3*x + 4)*cos(x), x)", "moves": ["d_const@Derivative(7, x)", "d_product@Derivative(sin(3*x + 4)*cos(x), x)"], "answer": 0}
+{"state": "7*sin(3*x + 4)*Derivative(cos(x), x) + 7*cos(x)*Derivative(sin(3*x + 4), x)", "moves": ["d_chain_table@Derivative(cos(x), x)", "d_chain_table@Derivative(sin(3*x + 4), x)", "factor"], "answer": 0}
+{"state": "-7*sin(x)*sin(3*x + 4)*Derivative(x, x) + 7*cos(x)*Derivative(sin(3*x + 4), x)", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(sin(3*x + 4), x)", "factor"], "answer": 0}
+{"state": "-7*sin(x)*sin(3*x + 4) + 7*cos(x)*Derivative(sin(3*x + 4), x)", "moves": ["d_chain_table@Derivative(sin(3*x + 4), x)", "factor"], "answer": 0}
+{"state": "-7*sin(x)*sin(3*x + 4) + 7*cos(x)*cos(3*x + 4)*Derivative(3*x + 4, x)", "moves": ["d_sum@Derivative(3*x + 4, x)", "factor"], "answer": 0}
+{"state": "7*(Derivative(4, x) + Derivative(3*x, x))*cos(x)*cos(3*x + 4) - 7*sin(x)*sin(3*x + 4)", "moves": ["d_const@Derivative(4, x)", "d_product@Derivative(3*x, x)", "expand", "factor", "together", "trigsimp"], "answer": 0}
+{"state": "-7*sin(x)*sin(3*x + 4) + 7*cos(x)*cos(3*x + 4)*Derivative(3*x, x)", "moves": ["d_product@Derivative(3*x, x)", "factor"], "answer": 0}
+{"state": "7*(x*Derivative(3, x) + 3*Derivative(x, x))*cos(x)*cos(3*x + 4) - 7*sin(x)*sin(3*x + 4)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(3, x)", "expand", "factor", "together", "trigsimp"], "answer": 0}
+{"state": "7*(x*Derivative(3, x) + 3)*cos(x)*cos(3*x + 4) - 7*sin(x)*sin(3*x + 4)", "moves": ["d_const@Derivative(3, x)", "expand", "factor", "together", "trigsimp"], "answer": 0}
+{"state": "Derivative(3*cos(x**2 + 2*x), x)", "moves": ["d_product@Derivative(3*cos(x**2 + 2*x), x)", "trigsimp"], "answer": 0}
+{"state": "cos(x**2 + 2*x)*Derivative(3, x) + 3*Derivative(cos(x**2 + 2*x), x)", "moves": ["d_const@Derivative(3, x)", "d_chain_table@Derivative(cos(x**2 + 2*x), x)", "trigsimp"], "answer": 0}
+{"state": "3*Derivative(cos(x**2 + 2*x), x)", "moves": ["d_chain_table@Derivative(cos(x**2 + 2*x), x)", "trigsimp"], "answer": 1}
+{"state": "3*Derivative(cos(x*(x + 2)), x)", "moves": ["d_chain_table@Derivative(cos(x*(x + 2)), x)", "expand"], "answer": 0}
+{"state": "-3*sin(x*(x + 2))*Derivative(x*(x + 2), x)", "moves": ["d_product@Derivative(x*(x + 2), x)", "expand"], "answer": 0}
+{"state": "-3*(x*Derivative(x + 2, x) + (x + 2)*Derivative(x, x))*sin(x*(x + 2))", "moves": ["d_x@Derivative(x, x)", "d_sum@Derivative(x + 2, x)", "expand", "factor", "trigsimp"], "answer": 0}
+{"state": "-3*(x*Derivative(x + 2, x) + x + 2)*sin(x*(x + 2))", "moves": ["d_sum@Derivative(x + 2, x)", "expand", "factor", "trigsimp"], "answer": 0}
+{"state": "-3*(x*(Derivative(2, x) + Derivative(x, x)) + x + 2)*sin(x*(x + 2))", "moves": ["d_const@Derivative(2, x)", "d_x@Derivative(x, x)", "expand", "factor", "trigsimp"], "answer": 0}
+{"state": "-3*(x*Derivative(x, x) + x + 2)*sin(x*(x + 2))", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "trigsimp"], "answer": 0}
+{"state": "sin(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)*Derivative(4, x) + 4*Derivative(sin(sqrt(6)*sqrt(x) + 3*x**3 - x + 4), x)", "moves": ["d_const@Derivative(4, x)", "d_chain_table@Derivative(sin(sqrt(6)*sqrt(x) + 3*x**3 - x + 4), x)"], "answer": 1}
+{"state": "sin(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)*Derivative(4, x) + 4*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)*Derivative(sqrt(6)*sqrt(x) + 3*x**3 - x + 4, x)", "moves": ["d_const@Derivative(4, x)", "d_sum@Derivative(sqrt(6)*sqrt(x) + 3*x**3 - x + 4, x)"], "answer": 1}
+{"state": "4*(Derivative(4, x) + Derivative(-x, x) + Derivative(3*x**3, x) + Derivative(sqrt(6)*sqrt(x), x))*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4) + sin(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)*Derivative(4, x)", "moves": ["d_const@Derivative(4, x)", "d_product@Derivative(-x, x)", "d_product@Derivative(3*x**3, x)", "d_product@Derivative(sqrt(6)*sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "4*(Derivative(-x, x) + Derivative(3*x**3, x) + Derivative(sqrt(6)*sqrt(x), x))*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)", "moves": ["d_product@Derivative(-x, x)", "d_product@Derivative(3*x**3, x)", "d_product@Derivative(sqrt(6)*sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "4*(x*Derivative(-1, x) - Derivative(x, x) + Derivative(3*x**3, x) + Derivative(sqrt(6)*sqrt(x), x))*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(-1, x)", "d_product@Derivative(3*x**3, x)", "d_product@Derivative(sqrt(6)*sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "4*(x*Derivative(-1, x) + Derivative(3*x**3, x) + Derivative(sqrt(6)*sqrt(x), x) - 1)*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)", "moves": ["d_const@Derivative(-1, x)", "d_product@Derivative(3*x**3, x)", "d_product@Derivative(sqrt(6)*sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "4*(Derivative(3*x**3, x) + Derivative(sqrt(6)*sqrt(x), x) - 1)*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)", "moves": ["d_product@Derivative(3*x**3, x)", "d_product@Derivative(sqrt(6)*sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "4*(x**3*Derivative(3, x) + 3*Derivative(x**3, x) + Derivative(sqrt(6)*sqrt(x), x) - 1)*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)", "moves": ["d_const@Derivative(3, x)", "d_power@Derivative(x**3, x)", "d_product@Derivative(sqrt(6)*sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "4*(3*Derivative(x**3, x) + Derivative(sqrt(6)*sqrt(x), x) - 1)*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)", "moves": ["d_power@Derivative(x**3, x)", "d_product@Derivative(sqrt(6)*sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "4*(9*x**2*Derivative(x, x) + Derivative(sqrt(6)*sqrt(x), x) - 1)*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(sqrt(6)*sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "4*(9*x**2 + Derivative(sqrt(6)*sqrt(x), x) - 1)*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)", "moves": ["d_product@Derivative(sqrt(6)*sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "4*(sqrt(x)*Derivative(sqrt(6), x) + 9*x**2 + sqrt(6)*Derivative(sqrt(x), x) - 1)*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)", "moves": ["d_const@Derivative(sqrt(6), x)", "d_power@Derivative(sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "4*(9*x**2 + sqrt(6)*Derivative(sqrt(x), x) - 1)*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)", "moves": ["d_power@Derivative(sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "4*(9*x**2 - 1 + sqrt(6)*Derivative(x, x)/(2*sqrt(x)))*cos(sqrt(6)*sqrt(x) + 3*x**3 - x + 4)", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "cancel", "trigsimp"], "answer": 0}
+{"state": "Derivative(3*exp(3*x**2 + 4*x + sin(6*x) + 5), x)", "moves": ["d_product@Derivative(3*exp(3*x**2 + 4*x + sin(6*x) + 5), x)", "expand"], "answer": 0}
+{"state": "exp(3*x**2 + 4*x + sin(6*x) + 5)*Derivative(3, x) + 3*Derivative(exp(3*x**2 + 4*x + sin(6*x) + 5), x)", "moves": ["d_const@Derivative(3, x)", "d_chain_table@Derivative(exp(3*x**2 + 4*x + sin(6*x) + 5), x)", "expand"], "answer": 0}
+{"state": "3*Derivative(exp(3*x**2 + 4*x + sin(6*x) + 5), x)", "moves": ["d_chain_table@Derivative(exp(3*x**2 + 4*x + sin(6*x) + 5), x)", "expand"], "answer": 0}
+{"state": "3*exp(3*x**2 + 4*x + sin(6*x) + 5)*Derivative(3*x**2 + 4*x + sin(6*x) + 5, x)", "moves": ["d_sum@Derivative(3*x**2 + 4*x + sin(6*x) + 5, x)", "expand"], "answer": 0}
+{"state": "3*(Derivative(5, x) + Derivative(4*x, x) + Derivative(3*x**2, x) + Derivative(sin(6*x), x))*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_const@Derivative(5, x)", "d_product@Derivative(4*x, x)", "d_product@Derivative(3*x**2, x)", "d_chain_table@Derivative(sin(6*x), x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "3*(Derivative(4*x, x) + Derivative(3*x**2, x) + Derivative(sin(6*x), x))*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_product@Derivative(4*x, x)", "d_product@Derivative(3*x**2, x)", "d_chain_table@Derivative(sin(6*x), x)", "expand", "factor", "powsimp"], "answer": 2}
+{"state": "3*(cos(6*x)*Derivative(6*x, x) + Derivative(4*x, x) + Derivative(3*x**2, x))*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_product@Derivative(4*x, x)", "d_product@Derivative(6*x, x)", "d_product@Derivative(3*x**2, x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "3*(x*Derivative(4, x) + cos(6*x)*Derivative(6*x, x) + 4*Derivative(x, x) + Derivative(3*x**2, x))*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_const@Derivative(4, x)", "d_x@Derivative(x, x)", "d_product@Derivative(6*x, x)", "d_product@Derivative(3*x**2, x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "3*(cos(6*x)*Derivative(6*x, x) + 4*Derivative(x, x) + Derivative(3*x**2, x))*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(6*x, x)", "d_product@Derivative(3*x**2, x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "3*(cos(6*x)*Derivative(6*x, x) + Derivative(3*x**2, x) + 4)*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_product@Derivative(6*x, x)", "d_product@Derivative(3*x**2, x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "3*((x*Derivative(6, x) + 6*Derivative(x, x))*cos(6*x) + Derivative(3*x**2, x) + 4)*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(6, x)", "d_product@Derivative(3*x**2, x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "3*((x*Derivative(6, x) + 6)*cos(6*x) + Derivative(3*x**2, x) + 4)*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_const@Derivative(6, x)", "d_product@Derivative(3*x**2, x)", "expand", "factor", "powsimp"], "answer": 4}
+{"state": "(3*(x*Derivative(6, x) + 6)*cos(6*x) + 3*Derivative(3*x**2, x) + 12)*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_const@Derivative(6, x)", "d_product@Derivative(3*x**2, x)", "expand", "factor", "together", "trigsimp"], "answer": 0}
+{"state": "(18*cos(6*x) + 3*Derivative(3*x**2, x) + 12)*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_product@Derivative(3*x**2, x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(3*x**2*Derivative(3, x) + 18*cos(6*x) + 9*Derivative(x**2, x) + 12)*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_const@Derivative(3, x)", "d_power@Derivative(x**2, x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(18*cos(6*x) + 9*Derivative(x**2, x) + 12)*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_power@Derivative(x**2, x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(18*x*Derivative(x, x) + 18*cos(6*x) + 12)*exp(3*x**2 + 4*x + sin(6*x) + 5)", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "together"], "answer": 0}
+{"state": "cos(sqrt(7)*sqrt(x) + x**3 + x + 1)*Derivative(8, x) + 8*Derivative(cos(sqrt(7)*sqrt(x) + x**3 + x + 1), x)", "moves": ["d_const@Derivative(8, x)", "d_chain_table@Derivative(cos(sqrt(7)*sqrt(x) + x**3 + x + 1), x)"], "answer": 0}
+{"state": "-8*(Derivative(1, x) + Derivative(x, x) + Derivative(x**3, x) + Derivative(sqrt(7)*sqrt(x), x))*sin(sqrt(7)*sqrt(x) + x**3 + x + 1)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(1, x)", "d_power@Derivative(x**3, x)", "d_product@Derivative(sqrt(7)*sqrt(x), x)", "expand", "trigsimp"], "answer": 3}
+{"state": "-8*(sqrt(x)*Derivative(sqrt(7), x) + Derivative(1, x) + sqrt(7)*Derivative(sqrt(x), x) + Derivative(x, x) + Derivative(x**3, x))*sin(sqrt(7)*sqrt(x) + x**3 + x + 1)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(1, x)", "d_power@Derivative(x**3, x)", "d_const@Derivative(sqrt(7), x)", "d_power@Derivative(sqrt(x), x)", "expand", "trigsimp"], "answer": 3}
+{"state": "-8*(Derivative(1, x) + sqrt(7)*Derivative(sqrt(x), x) + Derivative(x, x) + Derivative(x**3, x))*sin(sqrt(7)*sqrt(x) + x**3 + x + 1)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(1, x)", "d_power@Derivative(x**3, x)", "d_power@Derivative(sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "-8*(Derivative(1, x) + sqrt(7)*Derivative(sqrt(x), x) + Derivative(x**3, x) + 1)*sin(sqrt(7)*sqrt(x) + x**3 + x + 1)", "moves": ["d_const@Derivative(1, x)", "d_power@Derivative(x**3, x)", "d_power@Derivative(sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "-8*(sqrt(7)*Derivative(sqrt(x), x) + Derivative(x**3, x) + 1)*sin(sqrt(7)*sqrt(x) + x**3 + x + 1)", "moves": ["d_power@Derivative(x**3, x)", "d_power@Derivative(sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "-8*(3*x**2*Derivative(x, x) + sqrt(7)*Derivative(sqrt(x), x) + 1)*sin(sqrt(7)*sqrt(x) + x**3 + x + 1)", "moves": ["d_x@Derivative(x, x)", "d_power@Derivative(sqrt(x), x)", "expand", "trigsimp"], "answer": 0}
+{"state": "-8*(3*x**2 + sqrt(7)*Derivative(sqrt(x), x) + 1)*sin(sqrt(7)*sqrt(x) + x**3 + x + 1)", "moves": ["d_power@Derivative(sqrt(x), x)", "expand", "trigsimp"], "answer": 2}
+{"state": "(-24*x**2 - 8*sqrt(7)*Derivative(sqrt(x), x) - 8)*sin(sqrt(7)*sqrt(x) + x**3 + x + 1)", "moves": ["d_power@Derivative(sqrt(x), x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(-24*x**2 - 8 - 4*sqrt(7)*Derivative(x, x)/sqrt(x))*sin(sqrt(7)*sqrt(x) + x**3 + x + 1)", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "cancel", "together"], "answer": 0}
+{"state": "Derivative(45*sin(x)*sin(4*x**3 + 2*x + 4), x)", "moves": ["d_product@Derivative(45*sin(x)*sin(4*x**3 + 2*x + 4), x)", "d_product@Derivative(45*sin(x)*sin(4*x**3 + 2*x + 4), x)", "d_product@Derivative(45*sin(x)*sin(4*x**3 + 2*x + 4), x)"], "answer": 0}
+{"state": "sin(x)*sin(4*x**3 + 2*x + 4)*Derivative(45, x) + 45*Derivative(sin(x)*sin(4*x**3 + 2*x + 4), x)", "moves": ["d_const@Derivative(45, x)", "d_product@Derivative(sin(x)*sin(4*x**3 + 2*x + 4), x)"], "answer": 0}
+{"state": "45*sin(x)*Derivative(sin(4*x**3 + 2*x + 4), x) + 45*sin(4*x**3 + 2*x + 4)*Derivative(sin(x), x)", "moves": ["d_chain_table@Derivative(sin(x), x)", "d_chain_table@Derivative(sin(4*x**3 + 2*x + 4), x)", "factor", "trigsimp"], "answer": 0}
+{"state": "45*sin(x)*Derivative(sin(4*x**3 + 2*x + 4), x) + 45*sin(4*x**3 + 2*x + 4)*cos(x)*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "d_chain_table@Derivative(sin(4*x**3 + 2*x + 4), x)", "factor"], "answer": 0}
+{"state": "45*sin(x)*Derivative(sin(4*x**3 + 2*x + 4), x) + 45*sin(4*x**3 + 2*x + 4)*cos(x)", "moves": ["d_chain_table@Derivative(sin(4*x**3 + 2*x + 4), x)", "factor"], "answer": 0}
+{"state": "45*sin(x)*cos(4*x**3 + 2*x + 4)*Derivative(4*x**3 + 2*x + 4, x) + 45*sin(4*x**3 + 2*x + 4)*cos(x)", "moves": ["d_sum@Derivative(4*x**3 + 2*x + 4, x)", "factor", "together"], "answer": 2}
+{"state": "45*(sin(x)*cos(4*x**3 + 2*x + 4)*Derivative(2*(2*x**3 + x + 2), x) + sin(4*x**3 + 2*x + 4)*cos(x))", "moves": ["d_product@Derivative(2*(2*x**3 + x + 2), x)", "expand", "factor", "trigsimp"], "answer": 0}
+{"state": "45*((2*x**3 + x + 2)*Derivative(2, x) + 2*Derivative(2*x**3 + x + 2, x))*sin(x)*cos(4*x**3 + 2*x + 4) + 45*sin(4*x**3 + 2*x + 4)*cos(x)", "moves": ["d_const@Derivative(2, x)", "d_sum@Derivative(2*x**3 + x + 2, x)", "expand", "factor", "together", "trigsimp"], "answer": 0}
+{"state": "90*sin(x)*cos(4*x**3 + 2*x + 4)*Derivative(2*x**3 + x + 2, x) + 45*sin(4*x**3 + 2*x + 4)*cos(x)", "moves": ["d_sum@Derivative(2*x**3 + x + 2, x)", "factor"], "answer": 0}
+{"state": "90*(Derivative(2, x) + Derivative(x, x) + Derivative(2*x**3, x))*sin(x)*cos(4*x**3 + 2*x + 4) + 45*sin(4*x**3 + 2*x + 4)*cos(x)", "moves": ["d_const@Derivative(2, x)", "d_x@Derivative(x, x)", "d_product@Derivative(2*x**3, x)", "expand", "factor", "together", "trigsimp"], "answer": 0}
+{"state": "90*(Derivative(x, x) + Derivative(2*x**3, x))*sin(x)*cos(4*x**3 + 2*x + 4) + 45*sin(4*x**3 + 2*x + 4)*cos(x)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(2*x**3, x)", "expand", "factor", "together", "trigsimp"], "answer": 0}
+{"state": "90*(Derivative(2*x**3, x) + 1)*sin(x)*cos(4*x**3 + 2*x + 4) + 45*sin(4*x**3 + 2*x + 4)*cos(x)", "moves": ["d_product@Derivative(2*x**3, x)", "expand", "factor", "together", "trigsimp"], "answer": 4}
+{"state": "(90*Derivative(2*x**3, x) + 90)*sin(x)*cos(4*x**3 + 2*x + 4) + 45*sin(4*x**3 + 2*x + 4)*cos(x)", "moves": ["d_product@Derivative(2*x**3, x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(90*x**3*Derivative(2, x) + 180*Derivative(x**3, x) + 90)*sin(x)*cos(4*x**3 + 2*x + 4) + 45*sin(4*x**3 + 2*x + 4)*cos(x)", "moves": ["d_const@Derivative(2, x)", "d_power@Derivative(x**3, x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(180*Derivative(x**3, x) + 90)*sin(x)*cos(4*x**3 + 2*x + 4) + 45*sin(4*x**3 + 2*x + 4)*cos(x)", "moves": ["d_power@Derivative(x**3, x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(540*x**2*Derivative(x, x) + 90)*sin(x)*cos(4*x**3 + 2*x + 4) + 45*sin(4*x**3 + 2*x + 4)*cos(x)", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "together"], "answer": 0}
+{"state": "Derivative(28*exp(5*x + 4), x)", "moves": ["d_product@Derivative(28*exp(5*x + 4), x)", "expand"], "answer": 0}
+{"state": "exp(5*x + 4)*Derivative(28, x) + 28*Derivative(exp(5*x + 4), x)", "moves": ["d_const@Derivative(28, x)", "d_chain_table@Derivative(exp(5*x + 4), x)", "expand"], "answer": 0}
+{"state": "28*Derivative(exp(5*x + 4), x)", "moves": ["d_chain_table@Derivative(exp(5*x + 4), x)", "expand"], "answer": 0}
+{"state": "28*exp(5*x + 4)*Derivative(5*x + 4, x)", "moves": ["d_sum@Derivative(5*x + 4, x)", "expand"], "answer": 0}
+{"state": "28*(Derivative(4, x) + Derivative(5*x, x))*exp(5*x + 4)", "moves": ["d_const@Derivative(4, x)", "d_product@Derivative(5*x, x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "28*exp(5*x + 4)*Derivative(5*x, x)", "moves": ["d_product@Derivative(5*x, x)", "expand"], "answer": 0}
+{"state": "28*(x*Derivative(5, x) + 5*Derivative(x, x))*exp(5*x + 4)", "moves": ["d_const@Derivative(5, x)", "d_x@Derivative(x, x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "140*exp(5*x + 4)*Derivative(x, x)", "moves": ["d_x@Derivative(x, x)", "expand"], "answer": 0}
+{"state": "Derivative(exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4), x)", "moves": ["d_chain_table@Derivative(exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4), x)", "expand"], "answer": 0}
+{"state": "exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)*Derivative(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4, x)", "moves": ["d_sum@Derivative(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4, x)", "expand"], "answer": 0}
+{"state": "(Derivative(4, x) + Derivative(-4*x, x) + Derivative(2*x**2, x) + Derivative(sqrt(3)*sqrt(x), x))*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_const@Derivative(4, x)", "d_product@Derivative(2*x**2, x)", "d_product@Derivative(-4*x, x)", "d_product@Derivative(sqrt(3)*sqrt(x), x)", "expand", "factor"], "answer": 0}
+{"state": "(Derivative(-4*x, x) + Derivative(2*x**2, x) + Derivative(sqrt(3)*sqrt(x), x))*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_product@Derivative(2*x**2, x)", "d_product@Derivative(-4*x, x)", "d_product@Derivative(sqrt(3)*sqrt(x), x)", "expand", "factor"], "answer": 0}
+{"state": "(x**2*Derivative(2, x) + Derivative(-4*x, x) + 2*Derivative(x**2, x) + Derivative(sqrt(3)*sqrt(x), x))*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_const@Derivative(2, x)", "d_power@Derivative(x**2, x)", "d_product@Derivative(-4*x, x)", "d_product@Derivative(sqrt(3)*sqrt(x), x)", "expand", "factor"], "answer": 0}
+{"state": "(Derivative(-4*x, x) + 2*Derivative(x**2, x) + Derivative(sqrt(3)*sqrt(x), x))*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_power@Derivative(x**2, x)", "d_product@Derivative(-4*x, x)", "d_product@Derivative(sqrt(3)*sqrt(x), x)", "expand", "factor"], "answer": 0}
+{"state": "(4*x*Derivative(x, x) + Derivative(-4*x, x) + Derivative(sqrt(3)*sqrt(x), x))*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(-4*x, x)", "d_product@Derivative(sqrt(3)*sqrt(x), x)", "expand", "factor"], "answer": 0}
+{"state": "(4*x + Derivative(-4*x, x) + Derivative(sqrt(3)*sqrt(x), x))*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_product@Derivative(-4*x, x)", "d_product@Derivative(sqrt(3)*sqrt(x), x)", "expand", "factor"], "answer": 0}
+{"state": "(x*Derivative(-4, x) + 4*x - 4*Derivative(x, x) + Derivative(sqrt(3)*sqrt(x), x))*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(-4, x)", "d_product@Derivative(sqrt(3)*sqrt(x), x)", "expand", "factor"], "answer": 0}
+{"state": "(x*Derivative(-4, x) + 4*x + Derivative(sqrt(3)*sqrt(x), x) - 4)*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_const@Derivative(-4, x)", "d_product@Derivative(sqrt(3)*sqrt(x), x)", "expand", "factor"], "answer": 0}
+{"state": "(4*x + Derivative(sqrt(3)*sqrt(x), x) - 4)*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_product@Derivative(sqrt(3)*sqrt(x), x)", "expand", "factor"], "answer": 0}
+{"state": "(sqrt(x)*Derivative(sqrt(3), x) + 4*x + sqrt(3)*Derivative(sqrt(x), x) - 4)*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_const@Derivative(sqrt(3), x)", "d_power@Derivative(sqrt(x), x)", "expand", "factor"], "answer": 0}
+{"state": "(4*x + sqrt(3)*Derivative(sqrt(x), x) - 4)*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_power@Derivative(sqrt(x), x)", "expand", "factor"], "answer": 0}
+{"state": "(4*x - 4 + sqrt(3)*Derivative(x, x)/(2*sqrt(x)))*exp(sqrt(3)*sqrt(x) + 2*x**2 - 4*x + 4)", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "cancel", "together"], "answer": 0}
+{"state": "sin(3*x - 5)*Derivative(9, x) + 9*Derivative(sin(3*x - 5), x)", "moves": ["d_const@Derivative(9, x)", "d_chain_table@Derivative(sin(3*x - 5), x)"], "answer": 0}
+{"state": "9*(Derivative(-5, x) + Derivative(3*x, x))*cos(3*x - 5)", "moves": ["d_const@Derivative(-5, x)", "d_product@Derivative(3*x, x)", "expand", "trigsimp"], "answer": 0}
+{"state": "9*(x*Derivative(3, x) + 3*Derivative(x, x))*cos(3*x - 5)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(3, x)", "expand", "trigsimp"], "answer": 1}
+{"state": "Derivative(8*exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4), x)", "moves": ["d_product@Derivative(8*exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4), x)", "expand"], "answer": 0}
+{"state": "exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4)*Derivative(8, x) + 8*Derivative(exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4), x)", "moves": ["d_const@Derivative(8, x)", "d_chain_table@Derivative(exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4), x)", "expand"], "answer": 0}
+{"state": "8*Derivative(exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4), x)", "moves": ["d_chain_table@Derivative(exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4), x)", "expand"], "answer": 0}
+{"state": "8*exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4)*Derivative(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4, x)", "moves": ["d_sum@Derivative(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4, x)", "expand"], "answer": 0}
+{"state": "8*(Derivative(4, x) + Derivative(3*x, x) + Derivative(5*x**3, x) + Derivative(sqrt(5)*sqrt(x), x))*exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4)", "moves": ["d_const@Derivative(4, x)", "d_product@Derivative(3*x, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(sqrt(5)*sqrt(x), x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "8*(Derivative(3*x, x) + Derivative(5*x**3, x) + Derivative(sqrt(5)*sqrt(x), x))*exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4)", "moves": ["d_product@Derivative(3*x, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(sqrt(5)*sqrt(x), x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "8*(x*Derivative(3, x) + 3*Derivative(x, x) + Derivative(5*x**3, x) + Derivative(sqrt(5)*sqrt(x), x))*exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4)", "moves": ["d_x@Derivative(x, x)", "d_const@Derivative(3, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(sqrt(5)*sqrt(x), x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "8*(x*Derivative(3, x) + Derivative(5*x**3, x) + Derivative(sqrt(5)*sqrt(x), x) + 3)*exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4)", "moves": ["d_const@Derivative(3, x)", "d_product@Derivative(5*x**3, x)", "d_product@Derivative(sqrt(5)*sqrt(x), x)", "expand", "factor", "powsimp"], "answer": 0}
+{"state": "8*(Derivative(5*x**3, x) + Derivative(sqrt(5)*sqrt(x), x) + 3)*exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4)", "moves": ["d_product@Derivative(5*x**3, x)", "d_product@Derivative(sqrt(5)*sqrt(x), x)", "expand", "factor", "powsimp"], "answer": 3}
+{"state": "8*(Derivative(5*x**3, x) + Derivative(sqrt(5)*sqrt(x), x) + 3)*exp(4)*exp(3*x)*exp(5*x**3)*exp(sqrt(5)*sqrt(x))", "moves": ["d_product@Derivative(5*x**3, x)", "d_product@Derivative(sqrt(5)*sqrt(x), x)", "expand", "powsimp"], "answer": 0}
+{"state": "8*(x**3*Derivative(5, x) + 5*Derivative(x**3, x) + Derivative(sqrt(5)*sqrt(x), x) + 3)*exp(4)*exp(3*x)*exp(5*x**3)*exp(sqrt(5)*sqrt(x))", "moves": ["d_const@Derivative(5, x)", "d_power@Derivative(x**3, x)", "d_product@Derivative(sqrt(5)*sqrt(x), x)", "expand", "powsimp"], "answer": 0}
+{"state": "8*(5*Derivative(x**3, x) + Derivative(sqrt(5)*sqrt(x), x) + 3)*exp(4)*exp(3*x)*exp(5*x**3)*exp(sqrt(5)*sqrt(x))", "moves": ["d_power@Derivative(x**3, x)", "d_product@Derivative(sqrt(5)*sqrt(x), x)", "expand", "powsimp"], "answer": 0}
+{"state": "8*(15*x**2*Derivative(x, x) + Derivative(sqrt(5)*sqrt(x), x) + 3)*exp(4)*exp(3*x)*exp(5*x**3)*exp(sqrt(5)*sqrt(x))", "moves": ["d_x@Derivative(x, x)", "d_product@Derivative(sqrt(5)*sqrt(x), x)", "expand", "powsimp"], "answer": 0}
+{"state": "8*(15*x**2 + Derivative(sqrt(5)*sqrt(x), x) + 3)*exp(4)*exp(3*x)*exp(5*x**3)*exp(sqrt(5)*sqrt(x))", "moves": ["d_product@Derivative(sqrt(5)*sqrt(x), x)", "expand", "powsimp"], "answer": 0}
+{"state": "8*(sqrt(x)*Derivative(sqrt(5), x) + 15*x**2 + sqrt(5)*Derivative(sqrt(x), x) + 3)*exp(4)*exp(3*x)*exp(5*x**3)*exp(sqrt(5)*sqrt(x))", "moves": ["d_power@Derivative(sqrt(x), x)", "d_const@Derivative(sqrt(5), x)", "expand", "powsimp"], "answer": 1}
+{"state": "8*(15*x**2 + sqrt(5)*Derivative(sqrt(x), x) + 3)*exp(4)*exp(3*x)*exp(5*x**3)*exp(sqrt(5)*sqrt(x))", "moves": ["d_power@Derivative(sqrt(x), x)", "expand", "powsimp"], "answer": 2}
+{"state": "(120*x**2 + 8*sqrt(5)*Derivative(sqrt(x), x) + 24)*exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4)", "moves": ["d_power@Derivative(sqrt(x), x)", "expand", "factor", "together"], "answer": 0}
+{"state": "(120*x**2 + 24 + 4*sqrt(5)*Derivative(x, x)/sqrt(x))*exp(sqrt(5)*sqrt(x) + 5*x**3 + 3*x + 4)", "moves": ["d_x@Derivative(x, x)", "expand", "factor", "cancel", "together"], "answer": 0}
+{"state": "Integral(6*x + 2, x)", "moves": ["i_sum@Integral(6*x + 2, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "Integral(2, x) + Integral(6*x, x)", "moves": ["i_const@Integral(2, x)", "i_const_factor@Integral(6*x, x)", "i_parts@Integral(6*x, x)", "cancel"], "answer": 0}
+{"state": "2*x + Integral(6*x, x)", "moves": ["i_const_factor@Integral(6*x, x)", "i_parts@Integral(6*x, x)"], "answer": 0}
+{"state": "2*x + 6*Integral(x, x)", "moves": ["i_power@Integral(x, x)", "factor"], "answer": 0}
+{"state": "Integral(-2, x)", "moves": ["i_const@Integral(-2, x)", "cancel"], "answer": 0}
+{"state": "Integral(2*x + 14, x)", "moves": ["i_sum@Integral(2*x + 14, x)", "factor", "cancel", "together"], "answer": 1}
+{"state": "2*Integral(x + 7, x)", "moves": ["i_sum@Integral(x + 7, x)", "factor"], "answer": 1}
+{"state": "2*(Integral(7, x) + Integral(x, x))", "moves": ["i_const@Integral(7, x)", "i_power@Integral(x, x)", "expand", "cancel"], "answer": 0}
+{"state": "14*x + 2*Integral(x, x)", "moves": ["i_power@Integral(x, x)", "factor"], "answer": 0}
+{"state": "Integral(9, x)", "moves": ["i_const@Integral(9, x)", "cancel"], "answer": 0}
+{"state": "Integral(9*x**2 - 7, x)", "moves": ["i_sum@Integral(9*x**2 - 7, x)", "cancel"], "answer": 0}
+{"state": "Integral(-7, x) + Integral(9*x**2, x)", "moves": ["i_const@Integral(-7, x)", "i_const_factor@Integral(9*x**2, x)", "i_parts@Integral(9*x**2, x)", "cancel"], "answer": 0}
+{"state": "-7*x + Integral(9*x**2, x)", "moves": ["i_const_factor@Integral(9*x**2, x)", "i_parts@Integral(9*x**2, x)"], "answer": 0}
+{"state": "Integral(12*x + 3, x)", "moves": ["i_sum@Integral(12*x + 3, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "Integral(3, x) + Integral(12*x, x)", "moves": ["i_const@Integral(3, x)", "i_const_factor@Integral(12*x, x)", "i_parts@Integral(12*x, x)", "cancel"], "answer": 0}
+{"state": "3*x + Integral(12*x, x)", "moves": ["i_const_factor@Integral(12*x, x)", "i_parts@Integral(12*x, x)"], "answer": 0}
+{"state": "3*x + 12*Integral(x, x)", "moves": ["i_power@Integral(x, x)", "factor"], "answer": 0}
+{"state": "Integral(13 - 20*x, x)", "moves": ["i_sum@Integral(13 - 20*x, x)", "cancel"], "answer": 0}
+{"state": "Integral(13, x) + Integral(-20*x, x)", "moves": ["i_const@Integral(13, x)", "i_const_factor@Integral(-20*x, x)", "i_parts@Integral(-20*x, x)", "cancel"], "answer": 1}
+{"state": "Integral(13, x) - 20*Integral(x, x)", "moves": ["i_const@Integral(13, x)", "i_power@Integral(x, x)", "cancel"], "answer": 0}
+{"state": "Integral(-7, x)", "moves": ["i_const@Integral(-7, x)", "cancel"], "answer": 0}
+{"state": "Integral(-9*x**2 + 6*x - 8, x)", "moves": ["i_sum@Integral(-9*x**2 + 6*x - 8, x)", "cancel"], "answer": 0}
+{"state": "Integral(-8, x) + Integral(6*x, x) + Integral(-9*x**2, x)", "moves": ["i_const@Integral(-8, x)", "i_const_factor@Integral(6*x, x)", "i_parts@Integral(6*x, x)", "i_const_factor@Integral(-9*x**2, x)", "i_parts@Integral(-9*x**2, x)", "cancel"], "answer": 0}
+{"state": "-8*x + Integral(6*x, x) + Integral(-9*x**2, x)", "moves": ["i_const_factor@Integral(6*x, x)", "i_parts@Integral(6*x, x)", "i_const_factor@Integral(-9*x**2, x)", "i_parts@Integral(-9*x**2, x)", "cancel"], "answer": 4}
+{"state": "-8*x + 6*Integral(x, x) - 9*Integral(x**2, x)", "moves": ["i_power@Integral(x, x)", "i_power@Integral(x**2, x)"], "answer": 1}
+{"state": "Integral(8 - 12*x, x)", "moves": ["i_sum@Integral(8 - 12*x, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "Integral(8, x) + Integral(-12*x, x)", "moves": ["i_const@Integral(8, x)", "i_const_factor@Integral(-12*x, x)", "i_parts@Integral(-12*x, x)", "cancel"], "answer": 1}
+{"state": "Integral(8, x) - 12*Integral(x, x)", "moves": ["i_const@Integral(8, x)", "i_power@Integral(x, x)", "cancel"], "answer": 0}
+{"state": "8*x - 12*Integral(x, x)", "moves": ["i_power@Integral(x, x)", "factor"], "answer": 0}
+{"state": "Integral(6*x**2 - 16*x + 13, x)", "moves": ["i_sum@Integral(6*x**2 - 16*x + 13, x)", "cancel"], "answer": 0}
+{"state": "Integral(13, x) + Integral(-16*x, x) + Integral(6*x**2, x)", "moves": ["i_const@Integral(13, x)", "i_const_factor@Integral(-16*x, x)", "i_parts@Integral(-16*x, x)", "i_const_factor@Integral(6*x**2, x)", "i_parts@Integral(6*x**2, x)", "cancel"], "answer": 0}
+{"state": "13*x + Integral(-16*x, x) + Integral(6*x**2, x)", "moves": ["i_const_factor@Integral(6*x**2, x)", "i_parts@Integral(6*x**2, x)", "i_const_factor@Integral(-16*x, x)", "i_parts@Integral(-16*x, x)", "cancel"], "answer": 4}
+{"state": "13*x - 16*Integral(x, x) + 6*Integral(x**2, x)", "moves": ["i_power@Integral(x, x)", "i_power@Integral(x**2, x)"], "answer": 1}
+{"state": "Integral(24*x**2 - 9, x)", "moves": ["i_sum@Integral(24*x**2 - 9, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "Integral(-9, x) + Integral(24*x**2, x)", "moves": ["i_const@Integral(-9, x)", "i_const_factor@Integral(24*x**2, x)", "i_parts@Integral(24*x**2, x)", "cancel"], "answer": 0}
+{"state": "-9*x + Integral(24*x**2, x)", "moves": ["i_const_factor@Integral(24*x**2, x)", "i_parts@Integral(24*x**2, x)"], "answer": 0}
+{"state": "-9*x + 24*Integral(x**2, x)", "moves": ["i_power@Integral(x**2, x)", "factor", "together"], "answer": 0}
+{"state": "Integral(-2, x)", "moves": ["i_const@Integral(-2, x)", "cancel"], "answer": 0}
+{"state": "Integral(12, x)", "moves": ["i_const@Integral(12, x)", "cancel"], "answer": 0}
+{"state": "Integral(2 - 18*x, x)", "moves": ["i_sum@Integral(2 - 18*x, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "Integral(2, x) + Integral(-18*x, x)", "moves": ["i_const@Integral(2, x)", "i_const_factor@Integral(-18*x, x)", "i_parts@Integral(-18*x, x)", "cancel"], "answer": 1}
+{"state": "Integral(2, x) - 18*Integral(x, x)", "moves": ["i_const@Integral(2, x)", "i_power@Integral(x, x)", "cancel"], "answer": 0}
+{"state": "2*x - 18*Integral(x, x)", "moves": ["i_power@Integral(x, x)", "factor"], "answer": 0}
+{"state": "Integral(-48*x**2, x)", "moves": ["i_const_factor@Integral(-48*x**2, x)", "i_parts@Integral(-48*x**2, x)"], "answer": 0}
+{"state": "Integral(16*x + 5, x)", "moves": ["i_sum@Integral(16*x + 5, x)", "cancel"], "answer": 0}
+{"state": "Integral(5, x) + Integral(16*x, x)", "moves": ["i_const@Integral(5, x)", "i_const_factor@Integral(16*x, x)", "i_parts@Integral(16*x, x)", "cancel"], "answer": 0}
+{"state": "5*x + Integral(16*x, x)", "moves": ["i_const_factor@Integral(16*x, x)", "i_parts@Integral(16*x, x)"], "answer": 0}
+{"state": "Integral(4*x - 3, x)", "moves": ["i_sum@Integral(4*x - 3, x)", "cancel"], "answer": 0}
+{"state": "Integral(-3, x) + Integral(4*x, x)", "moves": ["i_const@Integral(-3, x)", "i_const_factor@Integral(4*x, x)", "i_parts@Integral(4*x, x)", "cancel"], "answer": 0}
+{"state": "-3*x + Integral(4*x, x)", "moves": ["i_const_factor@Integral(4*x, x)", "i_parts@Integral(4*x, x)"], "answer": 0}
+{"state": "Integral(8*x - 3, x)", "moves": ["i_sum@Integral(8*x - 3, x)", "cancel"], "answer": 0}
+{"state": "Integral(-3, x) + Integral(8*x, x)", "moves": ["i_const@Integral(-3, x)", "i_const_factor@Integral(8*x, x)", "i_parts@Integral(8*x, x)", "cancel"], "answer": 0}
+{"state": "-3*x + Integral(8*x, x)", "moves": ["i_const_factor@Integral(8*x, x)", "i_parts@Integral(8*x, x)"], "answer": 0}
+{"state": "Integral(16*x + 6, x)", "moves": ["i_sum@Integral(16*x + 6, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "Integral(6, x) + Integral(16*x, x)", "moves": ["i_const@Integral(6, x)", "i_const_factor@Integral(16*x, x)", "i_parts@Integral(16*x, x)", "cancel"], "answer": 0}
+{"state": "6*x + Integral(16*x, x)", "moves": ["i_const_factor@Integral(16*x, x)", "i_parts@Integral(16*x, x)"], "answer": 0}
+{"state": "6*x + 16*Integral(x, x)", "moves": ["i_power@Integral(x, x)", "factor"], "answer": 0}
+{"state": "Integral(18*x - 9*sin(x), x)", "moves": ["i_unprod@Integral(18*x - 9*sin(x), x)", "i_linear_basis@Integral(18*x - 9*sin(x), x)", "i_sum@Integral(18*x - 9*sin(x), x)", "factor", "cancel", "together", "euler"], "answer": 5}
+{"state": "Integral(9*(2*x - sin(x)), x)", "moves": ["i_linear_basis@Integral(9*(2*x - sin(x)), x)", "i_const_factor@Integral(9*(2*x - sin(x)), x)", "i_parts@Integral(9*(2*x - sin(x)), x)", "expand", "cancel", "together", "euler"], "answer": 0}
+{"state": "Integral(-3*sin(x) + 11*cos(x), x)", "moves": ["i_unprod@Integral(-3*sin(x) + 11*cos(x), x)", "i_unprod@Integral(-3*sin(x) + 11*cos(x), x)", "i_linear_basis@Integral(-3*sin(x) + 11*cos(x), x)", "i_sum@Integral(-3*sin(x) + 11*cos(x), x)", "euler"], "answer": 0}
+{"state": "3*cos(x) + Integral(11*cos(x), x)", "moves": ["i_linear_basis@Integral(11*cos(x), x)", "i_const_factor@Integral(11*cos(x), x)", "i_parts@Integral(11*cos(x), x)", "euler"], "answer": 0}
+{"state": "Integral(30*x**4 + 9*exp(x) + 5, x)", "moves": ["i_unprod@Integral(30*x**4 + 9*exp(x) + 5, x)", "i_linear_basis@Integral(30*x**4 + 9*exp(x) + 5, x)", "i_sum@Integral(30*x**4 + 9*exp(x) + 5, x)", "cancel"], "answer": 0}
+{"state": "9*exp(x) + Integral(30*x**4 + 5, x)", "moves": ["i_sum@Integral(30*x**4 + 5, x)", "cancel", "together"], "answer": 0}
+{"state": "9*exp(x) + Integral(5, x) + Integral(30*x**4, x)", "moves": ["i_const@Integral(5, x)", "i_const_factor@Integral(30*x**4, x)", "i_parts@Integral(30*x**4, x)", "cancel"], "answer": 1}
+{"state": "9*exp(x) + Integral(5, x) + 30*Integral(x**4, x)", "moves": ["i_const@Integral(5, x)", "i_power@Integral(x**4, x)", "cancel"], "answer": 1}
+{"state": "6*x**5 + 9*exp(x) + Integral(5, x)", "moves": ["i_const@Integral(5, x)", "cancel"], "answer": 0}
+{"state": "Integral(3*(4*x**4 + 3)/x, x)", "moves": ["i_apart@Integral(3*(4*x**4 + 3)/x, x)", "i_const_factor@Integral(3*(4*x**4 + 3)/x, x)", "i_parts@Integral(3*(4*x**4 + 3)/x, x)", "i_parts@Integral(3*(4*x**4 + 3)/x, x)", "expand", "cancel"], "answer": 4}
+{"state": "Integral(9/x, x) + Integral(12*x**3, x)", "moves": ["i_const_factor@Integral(9/x, x)", "i_parts@Integral(9/x, x)", "i_const_factor@Integral(12*x**3, x)", "i_parts@Integral(12*x**3, x)", "cancel"], "answer": 2}
+{"state": "Integral(9/x, x) + 12*Integral(x**3, x)", "moves": ["i_const_factor@Integral(9/x, x)", "i_parts@Integral(9/x, x)", "i_power@Integral(x**3, x)"], "answer": 2}
+{"state": "3*x**4 + Integral(9/x, x)", "moves": ["i_const_factor@Integral(9/x, x)", "i_parts@Integral(9/x, x)"], "answer": 0}
+{"state": "3*x**4 + 9*Integral(1/x, x)", "moves": ["i_power@Integral(1/x, x)", "factor"], "answer": 0}
+{"state": "Integral(-20*x**3 - 8*x + 9*cos(x), x)", "moves": ["i_unprod@Integral(-20*x**3 - 8*x + 9*cos(x), x)", "i_linear_basis@Integral(-20*x**3 - 8*x + 9*cos(x), x)", "i_sum@Integral(-20*x**3 - 8*x + 9*cos(x), x)", "euler"], "answer": 2}
+{"state": "Integral(-8*x, x) + Integral(-20*x**3, x) + Integral(9*cos(x), x)", "moves": ["i_linear_basis@Integral(9*cos(x), x)", "i_const_factor@Integral(9*cos(x), x)", "i_parts@Integral(9*cos(x), x)", "i_const_factor@Integral(-8*x, x)", "i_parts@Integral(-8*x, x)", "i_const_factor@Integral(-20*x**3, x)", "i_parts@Integral(-20*x**3, x)", "cancel", "euler"], "answer": 7}
+{"state": "-8*Integral(x, x) - 20*Integral(x**3, x) + 9*Integral(cos(x), x)", "moves": ["i_power@Integral(x, x)", "i_linear_basis@Integral(cos(x), x)", "i_power@Integral(x**3, x)", "euler"], "answer": 1}
+{"state": "9*sin(x) - 8*Integral(x, x) - 20*Integral(x**3, x)", "moves": ["i_power@Integral(x, x)", "i_power@Integral(x**3, x)"], "answer": 1}
+{"state": "Integral(-7*sin(x) + 3/x, x)", "moves": ["i_unprod@Integral(-7*sin(x) + 3/x, x)", "i_sum@Integral(-7*sin(x) + 3/x, x)", "factor", "together", "euler"], "answer": 0}
+{"state": "7*cos(x) + Integral(3/x, x)", "moves": ["i_const_factor@Integral(3/x, x)", "i_parts@Integral(3/x, x)"], "answer": 0}
+{"state": "Integral(2*exp(x) + 6/x, x)", "moves": ["i_unprod@Integral(2*exp(x) + 6/x, x)", "i_sum@Integral(2*exp(x) + 6/x, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "2*exp(x) + Integral(6/x, x)", "moves": ["i_const_factor@Integral(6/x, x)", "i_parts@Integral(6/x, x)"], "answer": 0}
+{"state": "2*exp(x) + 6*Integral(1/x, x)", "moves": ["i_power@Integral(1/x, x)", "factor"], "answer": 0}
+{"state": "Integral((6*x*(exp(x) - sin(x)) + 1)/x, x)", "moves": ["i_parts@Integral((6*x*(exp(x) - sin(x)) + 1)/x, x)", "i_parts@Integral((6*x*(exp(x) - sin(x)) + 1)/x, x)", "expand", "factor", "trigsimp", "euler"], "answer": 4}
+{"state": "Integral(6*exp(x) - 6*sin(x) + 1/x, x)", "moves": ["i_unprod@Integral(6*exp(x) - 6*sin(x) + 1/x, x)", "i_unprod@Integral(6*exp(x) - 6*sin(x) + 1/x, x)", "i_sum@Integral(6*exp(x) - 6*sin(x) + 1/x, x)", "factor", "euler"], "answer": 0}
+{"state": "6*cos(x) + Integral(6*exp(x) + 1/x, x)", "moves": ["i_unprod@Integral(6*exp(x) + 1/x, x)", "i_sum@Integral(6*exp(x) + 1/x, x)", "together"], "answer": 0}
+{"state": "Integral(-9*sin(x), x)", "moves": ["i_linear_basis@Integral(-9*sin(x), x)", "i_const_factor@Integral(-9*sin(x), x)", "i_parts@Integral(-9*sin(x), x)", "euler"], "answer": 0}
+{"state": "Integral(10*x**4 + 15*x**2 - 8*exp(x), x)", "moves": ["i_unprod@Integral(10*x**4 + 15*x**2 - 8*exp(x), x)", "i_linear_basis@Integral(10*x**4 + 15*x**2 - 8*exp(x), x)", "i_sum@Integral(10*x**4 + 15*x**2 - 8*exp(x), x)"], "answer": 1}
+{"state": "Integral(-12*x**3 - sin(x) + 9*cos(x), x)", "moves": ["i_unprod@Integral(-12*x**3 - sin(x) + 9*cos(x), x)", "i_unprod@Integral(-12*x**3 - sin(x) + 9*cos(x), x)", "i_linear_basis@Integral(-12*x**3 - sin(x) + 9*cos(x), x)", "i_sum@Integral(-12*x**3 - sin(x) + 9*cos(x), x)", "euler"], "answer": 0}
+{"state": "cos(x) + Integral(-12*x**3 + 9*cos(x), x)", "moves": ["i_unprod@Integral(-12*x**3 + 9*cos(x), x)", "i_linear_basis@Integral(-12*x**3 + 9*cos(x), x)", "i_sum@Integral(-12*x**3 + 9*cos(x), x)", "cancel", "together", "euler"], "answer": 4}
+{"state": "cos(x) + Integral(3*(-4*x**3 + 3*cos(x)), x)", "moves": ["i_linear_basis@Integral(3*(-4*x**3 + 3*cos(x)), x)", "i_const_factor@Integral(3*(-4*x**3 + 3*cos(x)), x)", "i_parts@Integral(3*(-4*x**3 + 3*cos(x)), x)", "expand", "cancel", "together", "euler"], "answer": 0}
+{"state": "Integral(15*x**4 + 4*exp(x), x)", "moves": ["i_unprod@Integral(15*x**4 + 4*exp(x), x)", "i_linear_basis@Integral(15*x**4 + 4*exp(x), x)", "i_sum@Integral(15*x**4 + 4*exp(x), x)"], "answer": 1}
+{"state": "Integral(-6*x + 5*exp(x), x)", "moves": ["i_unprod@Integral(-6*x + 5*exp(x), x)", "i_linear_basis@Integral(-6*x + 5*exp(x), x)", "i_sum@Integral(-6*x + 5*exp(x), x)"], "answer": 1}
+{"state": "Integral(2*exp(x) - 9*sin(x) - 4/x, x)", "moves": ["i_unprod@Integral(2*exp(x) - 9*sin(x) - 4/x, x)", "i_unprod@Integral(2*exp(x) - 9*sin(x) - 4/x, x)", "i_sum@Integral(2*exp(x) - 9*sin(x) - 4/x, x)", "factor", "euler"], "answer": 0}
+{"state": "9*cos(x) + Integral(2*exp(x) - 4/x, x)", "moves": ["i_unprod@Integral(2*exp(x) - 4/x, x)", "i_sum@Integral(2*exp(x) - 4/x, x)", "cancel", "together"], "answer": 0}
+{"state": "2*exp(x) + 9*cos(x) + Integral(-4/x, x)", "moves": ["i_const_factor@Integral(-4/x, x)", "i_parts@Integral(-4/x, x)"], "answer": 0}
+{"state": "Integral(20*x**3 + 18*x**2 + exp(x) - 7*sin(x), x)", "moves": ["i_unprod@Integral(20*x**3 + 18*x**2 + exp(x) - 7*sin(x), x)", "i_unprod@Integral(20*x**3 + 18*x**2 + exp(x) - 7*sin(x), x)", "i_linear_basis@Integral(20*x**3 + 18*x**2 + exp(x) - 7*sin(x), x)", "i_sum@Integral(20*x**3 + 18*x**2 + exp(x) - 7*sin(x), x)", "euler"], "answer": 2}
+{"state": "Integral(6, x)", "moves": ["i_const@Integral(6, x)", "cancel"], "answer": 0}
+{"state": "Integral(21*x**2 - 6 + 6/x, x)", "moves": ["i_sum@Integral(21*x**2 - 6 + 6/x, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "Integral(-6, x) + Integral(6/x, x) + Integral(21*x**2, x)", "moves": ["i_const@Integral(-6, x)", "i_const_factor@Integral(6/x, x)", "i_parts@Integral(6/x, x)", "i_const_factor@Integral(21*x**2, x)", "i_parts@Integral(21*x**2, x)", "cancel"], "answer": 0}
+{"state": "-6*x + Integral(6/x, x) + Integral(21*x**2, x)", "moves": ["i_const_factor@Integral(6/x, x)", "i_parts@Integral(6/x, x)", "i_const_factor@Integral(21*x**2, x)", "i_parts@Integral(21*x**2, x)", "cancel"], "answer": 4}
+{"state": "-6*x + 6*Integral(1/x, x) + 21*Integral(x**2, x)", "moves": ["i_power@Integral(x**2, x)", "i_power@Integral(1/x, x)", "factor", "together"], "answer": 0}
+{"state": "Integral(-16*x + 6 + 8/x, x)", "moves": ["i_sum@Integral(-16*x + 6 + 8/x, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "Integral(6, x) + Integral(8/x, x) + Integral(-16*x, x)", "moves": ["i_const@Integral(6, x)", "i_const_factor@Integral(8/x, x)", "i_parts@Integral(8/x, x)", "i_const_factor@Integral(-16*x, x)", "i_parts@Integral(-16*x, x)", "cancel"], "answer": 0}
+{"state": "6*x + Integral(8/x, x) + Integral(-16*x, x)", "moves": ["i_const_factor@Integral(8/x, x)", "i_parts@Integral(8/x, x)", "i_const_factor@Integral(-16*x, x)", "i_parts@Integral(-16*x, x)", "cancel"], "answer": 4}
+{"state": "6*x + 8*Integral(1/x, x) - 16*Integral(x, x)", "moves": ["i_power@Integral(x, x)", "i_power@Integral(1/x, x)", "factor"], "answer": 1}
+{"state": "6*x + 8*log(x) - 16*Integral(x, x)", "moves": ["i_power@Integral(x, x)", "factor"], "answer": 0}
+{"state": "Integral(14*x - 4*sin(x) - 6*cos(x), x)", "moves": ["i_unprod@Integral(14*x - 4*sin(x) - 6*cos(x), x)", "i_unprod@Integral(14*x - 4*sin(x) - 6*cos(x), x)", "i_linear_basis@Integral(14*x - 4*sin(x) - 6*cos(x), x)", "i_sum@Integral(14*x - 4*sin(x) - 6*cos(x), x)", "factor", "cancel", "together", "euler"], "answer": 6}
+{"state": "Integral(2*(7*x - 2*sin(x) - 3*cos(x)), x)", "moves": ["i_linear_basis@Integral(2*(7*x - 2*sin(x) - 3*cos(x)), x)", "i_const_factor@Integral(2*(7*x - 2*sin(x) - 3*cos(x)), x)", "i_parts@Integral(2*(7*x - 2*sin(x) - 3*cos(x)), x)", "expand", "cancel", "together", "euler"], "answer": 0}
+{"state": "Integral(40*x**4 + 15*x**2 + 2, x)", "moves": ["i_sum@Integral(40*x**4 + 15*x**2 + 2, x)", "cancel"], "answer": 0}
+{"state": "Integral(2, x) + Integral(15*x**2, x) + Integral(40*x**4, x)", "moves": ["i_const@Integral(2, x)", "i_const_factor@Integral(40*x**4, x)", "i_parts@Integral(40*x**4, x)", "i_const_factor@Integral(15*x**2, x)", "i_parts@Integral(15*x**2, x)", "cancel"], "answer": 0}
+{"state": "2*x + Integral(15*x**2, x) + Integral(40*x**4, x)", "moves": ["i_const_factor@Integral(40*x**4, x)", "i_parts@Integral(40*x**4, x)", "i_const_factor@Integral(15*x**2, x)", "i_parts@Integral(15*x**2, x)", "cancel"], "answer": 4}
+{"state": "2*x + 15*Integral(x**2, x) + 40*Integral(x**4, x)", "moves": ["i_power@Integral(x**4, x)", "i_power@Integral(x**2, x)"], "answer": 0}
+{"state": "Integral(2*x**4*(-x*sin(x) + 5*cos(x)), x)", "moves": ["i_linear_basis@Integral(2*x**4*(-x*sin(x) + 5*cos(x)), x)", "i_const_factor@Integral(2*x**4*(-x*sin(x) + 5*cos(x)), x)", "i_parts@Integral(2*x**4*(-x*sin(x) + 5*cos(x)), x)", "i_parts@Integral(2*x**4*(-x*sin(x) + 5*cos(x)), x)", "expand", "factor", "cancel", "euler"], "answer": 0}
+{"state": "Integral(392*x**6, x)", "moves": ["i_const_factor@Integral(392*x**6, x)", "i_parts@Integral(392*x**6, x)"], "answer": 0}
+{"state": "Integral((15*x**2 + 2)*exp(5*x**3 + 2*x + 1), x)", "moves": ["i_ansatz_exp@Integral((15*x**2 + 2)*exp(5*x**3 + 2*x + 1), x)", "i_usub@Integral((15*x**2 + 2)*exp(5*x**3 + 2*x + 1), x)", "i_parts@Integral((15*x**2 + 2)*exp(5*x**3 + 2*x + 1), x)", "i_parts@Integral((15*x**2 + 2)*exp(5*x**3 + 2*x + 1), x)", "expand", "factor"], "answer": 0}
+{"state": "Integral(-60*x**5 + 4*cos(x), x)", "moves": ["i_unprod@Integral(-60*x**5 + 4*cos(x), x)", "i_linear_basis@Integral(-60*x**5 + 4*cos(x), x)", "i_sum@Integral(-60*x**5 + 4*cos(x), x)", "factor", "cancel", "together", "euler"], "answer": 5}
+{"state": "Integral(4*(-15*x**5 + cos(x)), x)", "moves": ["i_linear_basis@Integral(4*(-15*x**5 + cos(x)), x)", "i_const_factor@Integral(4*(-15*x**5 + cos(x)), x)", "i_parts@Integral(4*(-15*x**5 + cos(x)), x)", "expand", "factor", "cancel", "together", "euler"], "answer": 0}
+{"state": "Integral(5*cos(5*x + 3), x)", "moves": ["i_linear_basis@Integral(5*cos(5*x + 3), x)", "i_const_factor@Integral(5*cos(5*x + 3), x)", "i_usub@Integral(5*cos(5*x + 3), x)", "i_parts@Integral(5*cos(5*x + 3), x)", "euler"], "answer": 0}
+{"state": "Integral(18*sin(x), x)", "moves": ["i_linear_basis@Integral(18*sin(x), x)", "i_const_factor@Integral(18*sin(x), x)", "i_parts@Integral(18*sin(x), x)", "euler"], "answer": 0}
+{"state": "Integral(-6*sin(6*x), x)", "moves": ["i_linear_basis@Integral(-6*sin(6*x), x)", "i_const_factor@Integral(-6*sin(6*x), x)", "i_usub@Integral(-6*sin(6*x), x)", "i_parts@Integral(-6*sin(6*x), x)", "euler"], "answer": 0}
+{"state": "Integral(63*x**8 + 9, x)", "moves": ["i_sum@Integral(63*x**8 + 9, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "Integral(9, x) + Integral(63*x**8, x)", "moves": ["i_const@Integral(9, x)", "i_const_factor@Integral(63*x**8, x)", "i_parts@Integral(63*x**8, x)", "cancel"], "answer": 1}
+{"state": "Integral(9, x) + 63*Integral(x**8, x)", "moves": ["i_const@Integral(9, x)", "i_power@Integral(x**8, x)", "cancel"], "answer": 1}
+{"state": "7*x**9 + Integral(9, x)", "moves": ["i_const@Integral(9, x)", "cancel"], "answer": 0}
+{"state": "Integral(6*sqrt(2)*exp(x)*sin(x + pi/4) - 6*sin(x), x)", "moves": ["i_unprod@Integral(6*sqrt(2)*exp(x)*sin(x + pi/4) - 6*sin(x), x)", "i_linear_basis@Integral(6*sqrt(2)*exp(x)*sin(x + pi/4) - 6*sin(x), x)", "i_sum@Integral(6*sqrt(2)*exp(x)*sin(x + pi/4) - 6*sin(x), x)", "factor", "cancel", "together", "euler"], "answer": 5}
+{"state": "Integral(6*(sqrt(2)*exp(x)*sin(x + pi/4) - sin(x)), x)", "moves": ["i_linear_basis@Integral(6*(sqrt(2)*exp(x)*sin(x + pi/4) - sin(x)), x)", "i_const_factor@Integral(6*(sqrt(2)*exp(x)*sin(x + pi/4) - sin(x)), x)", "i_parts@Integral(6*(sqrt(2)*exp(x)*sin(x + pi/4) - sin(x)), x)", "expand", "cancel", "together", "euler"], "answer": 0}
+{"state": "Integral((-12*x**2 - 1)*sin(4*x**3 + x + 2), x)", "moves": ["i_linear_basis@Integral((-12*x**2 - 1)*sin(4*x**3 + x + 2), x)", "i_usub@Integral((-12*x**2 - 1)*sin(4*x**3 + x + 2), x)", "i_parts@Integral((-12*x**2 - 1)*sin(4*x**3 + x + 2), x)", "i_parts@Integral((-12*x**2 - 1)*sin(4*x**3 + x + 2), x)", "expand", "factor", "cancel", "euler"], "answer": 0}
+{"state": "Integral(-27*log(x) + 3*cos(x) - 27, x)", "moves": ["i_unprod@Integral(-27*log(x) + 3*cos(x) - 27, x)", "i_sum@Integral(-27*log(x) + 3*cos(x) - 27, x)", "factor", "cancel", "together", "euler"], "answer": 4}
+{"state": "Integral(3*(-9*log(x) + cos(x) - 9), x)", "moves": ["i_const_factor@Integral(3*(-9*log(x) + cos(x) - 9), x)", "i_parts@Integral(3*(-9*log(x) + cos(x) - 9), x)", "expand", "cancel", "together", "euler"], "answer": 0}
+{"state": "3*Integral(-9*log(x) + cos(x) - 9, x)", "moves": ["i_unprod@Integral(-9*log(x) + cos(x) - 9, x)", "i_sum@Integral(-9*log(x) + cos(x) - 9, x)", "factor", "euler"], "answer": 0}
+{"state": "3*sin(x) + 3*Integral(-9*log(x) - 9, x)", "moves": ["i_sum@Integral(-9*log(x) - 9, x)", "factor", "cancel", "together"], "answer": 1}
+{"state": "3*(sin(x) + Integral(-9, x) + Integral(-9*log(x), x))", "moves": ["i_const@Integral(-9, x)", "i_const_factor@Integral(-9*log(x), x)", "i_parts@Integral(-9*log(x), x)", "expand", "cancel"], "answer": 0}
+{"state": "-27*x + 3*sin(x) + 3*Integral(-9*log(x), x)", "moves": ["i_const_factor@Integral(-9*log(x), x)", "i_parts@Integral(-9*log(x), x)", "factor", "together"], "answer": 0}
+{"state": "-27*x + 3*sin(x) - 27*Integral(log(x), x)", "moves": ["i_table@Integral(log(x), x)", "factor", "together"], "answer": 0}
+{"state": "Integral(6*x*sin(x) - 11*cos(x), x)", "moves": ["i_unprod@Integral(6*x*sin(x) - 11*cos(x), x)", "i_unprod@Integral(6*x*sin(x) - 11*cos(x), x)", "i_linear_basis@Integral(6*x*sin(x) - 11*cos(x), x)", "i_sum@Integral(6*x*sin(x) - 11*cos(x), x)", "euler"], "answer": 0}
+{"state": "-11*sin(x) + Integral(6*x*sin(x), x)", "moves": ["i_linear_basis@Integral(6*x*sin(x), x)", "i_const_factor@Integral(6*x*sin(x), x)", "i_parts@Integral(6*x*sin(x), x)", "i_parts@Integral(6*x*sin(x), x)", "euler"], "answer": 0}
+{"state": "Integral(-40*sin(2*x), x)", "moves": ["i_linear_basis@Integral(-40*sin(2*x), x)", "i_const_factor@Integral(-40*sin(2*x), x)", "i_usub@Integral(-40*sin(2*x), x)", "i_parts@Integral(-40*sin(2*x), x)", "euler"], "answer": 0}
+{"state": "Integral(35*(-x - 1)*exp(x), x)", "moves": ["i_linear_basis@Integral(35*(-x - 1)*exp(x), x)", "i_const_factor@Integral(35*(-x - 1)*exp(x), x)", "i_parts@Integral(35*(-x - 1)*exp(x), x)", "i_parts@Integral(35*(-x - 1)*exp(x), x)", "expand", "factor", "cancel"], "answer": 0}
+{"state": "Integral(64*x**7 - 14*x, x)", "moves": ["i_sum@Integral(64*x**7 - 14*x, x)", "factor", "cancel", "together"], "answer": 0}
+{"state": "Integral(-14*x, x) + Integral(64*x**7, x)", "moves": ["i_const_factor@Integral(-14*x, x)", "i_parts@Integral(-14*x, x)", "i_const_factor@Integral(64*x**7, x)", "i_parts@Integral(64*x**7, x)", "cancel"], "answer": 4}
+{"state": "-14*Integral(x, x) + 64*Integral(x**7, x)", "moves": ["i_power@Integral(x, x)", "i_power@Integral(x**7, x)", "factor"], "answer": 1}
+{"state": "8*x**8 - 14*Integral(x, x)", "moves": ["i_power@Integral(x, x)", "factor"], "answer": 0}
+{"state": "Integral(-2*sin(2*x + 3), x)", "moves": ["i_linear_basis@Integral(-2*sin(2*x + 3), x)", "i_const_factor@Integral(-2*sin(2*x + 3), x)", "i_usub@Integral(-2*sin(2*x + 3), x)", "i_parts@Integral(-2*sin(2*x + 3), x)", "euler"], "answer": 0}
+{"state": "Integral(-exp(5 - x), x)", "moves": ["i_linear_basis@Integral(-exp(5 - x), x)", "i_const_factor@Integral(-exp(5 - x), x)", "i_usub@Integral(-exp(5 - x), x)", "i_parts@Integral(-exp(5 - x), x)", "expand", "factor", "cancel"], "answer": 0}
+{"state": "Integral(21*(10*x + (15*x**2 + 1)**2)*exp(15*x**3 + 3*x + 12), x)", "moves": ["i_ansatz_exp@Integral(21*(10*x + (15*x**2 + 1)**2)*exp(15*x**3 + 3*x + 12), x)", "i_linear_basis@Integral(21*(10*x + (15*x**2 + 1)**2)*exp(15*x**3 + 3*x + 12), x)", "i_const_factor@Integral(21*(10*x + (15*x**2 + 1)**2)*exp(15*x**3 + 3*x + 12), x)", "i_parts@Integral(21*(10*x + (15*x**2 + 1)**2)*exp(15*x**3 + 3*x + 12), x)", "i_parts@Integral(21*(10*x + (15*x**2 + 1)**2)*exp(15*x**3 + 3*x + 12), x)", "expand", "factor", "cancel"], "answer": 0}
+{"state": "Integral(72*x*(15*x**2 + 2)*exp(5*x**3 + 2*x + 2) + 54*x*sin(x*(x**2 + 2))**4 + 36*(3*x**2 + 2)**2*sin(x*(x**2 + 2))**3*cos(x*(x**2 + 2)) + 72*exp(5*x**3 + 2*x + 2), x)", "moves": ["i_ansatz_exp@Integral(72*x*(15*x**2 + 2)*exp(5*x**3 + 2*x + 2) + 54*x*sin(x*(x**2 + 2))**4 + 36*(3*x**2 + 2)**2*sin(x*(x**2 + 2))**3*cos(x*(x**2 + 2)) + 72*exp(5*x**3 + 2*x + 2), x)", "i_linear_basis@Integral(72*x*(15*x**2 + 2)*exp(5*x**3 + 2*x + 2) + 54*x*sin(x*(x**2 + 2))**4 + 36*(3*x**2 + 2)**2*sin(x*(x**2 + 2))**3*cos(x*(x**2 + 2)) + 72*exp(5*x**3 + 2*x + 2), x)", "i_sum@Integral(72*x*(15*x**2 + 2)*exp(5*x**3 + 2*x + 2) + 54*x*sin(x*(x**2 + 2))**4 + 36*(3*x**2 + 2)**2*sin(x*(x**2 + 2))**3*cos(x*(x**2 + 2)) + 72*exp(5*x**3 + 2*x + 2), x)", "expand", "factor", "cancel", "together", "euler"], "answer": 0}
+{"state": "72*x*exp(2)*exp(2*x)*exp(5*x**3) + Integral(324*x**4*sin(x**3 + 2*x)**3*cos(x**3 + 2*x) + 432*x**2*sin(x**3 + 2*x)**3*cos(x**3 + 2*x) + 54*x*sin(x**3 + 2*x)**4 + 144*sin(x**3 + 2*x)**3*cos(x**3 + 2*x), x)", "moves": ["i_linear_basis@Integral(324*x**4*sin(x**3 + 2*x)**3*cos(x**3 + 2*x) + 432*x**2*sin(x**3 + 2*x)**3*cos(x**3 + 2*x) + 54*x*sin(x**3 + 2*x)**4 + 144*sin(x**3 + 2*x)**3*cos(x**3 + 2*x), x)", "i_sum@Integral(324*x**4*sin(x**3 + 2*x)**3*cos(x**3 + 2*x) + 432*x**2*sin(x**3 + 2*x)**3*cos(x**3 + 2*x) + 54*x*sin(x**3 + 2*x)**4 + 144*sin(x**3 + 2*x)**3*cos(x**3 + 2*x), x)", "cancel", "together", "powsimp", "euler"], "answer": 0}
+{"state": "Integral(5184*x**4*exp(16*x**3 - 12*x + 16) - 2592*x**2*exp(16*x**3 - 12*x + 16) + 216*x*exp(16*x**3 - 12*x + 16) - 12*sqrt(2)*exp(x)*sin(x + pi/4 + 3) + 324*exp(16*x**3 - 12*x + 16), x)", "moves": ["i_ansatz_exp@Integral(5184*x**4*exp(16*x**3 - 12*x + 16) - 2592*x**2*exp(16*x**3 - 12*x + 16) + 216*x*exp(16*x**3 - 12*x + 16) - 12*sqrt(2)*exp(x)*sin(x + pi/4 + 3) + 324*exp(16*x**3 - 12*x + 16), x)", "i_sum@Integral(5184*x**4*exp(16*x**3 - 12*x + 16) - 2592*x**2*exp(16*x**3 - 12*x + 16) + 216*x*exp(16*x**3 - 12*x + 16) - 12*sqrt(2)*exp(x)*sin(x + pi/4 + 3) + 324*exp(16*x**3 - 12*x + 16), x)", "expand", "factor", "cancel", "together", "euler"], "answer": 0}
+{"state": "(108*x**2 - 27)*exp(16)*exp(-12*x)*exp(16*x**3) + Integral(-12*sqrt(2)*exp(x)*sin(x + pi/4 + 3), x)", "moves": ["i_linear_basis@Integral(-12*sqrt(2)*exp(x)*sin(x + pi/4 + 3), x)", "i_const_factor@Integral(-12*sqrt(2)*exp(x)*sin(x + pi/4 + 3), x)", "i_parts@Integral(-12*sqrt(2)*exp(x)*sin(x + pi/4 + 3), x)", "i_parts@Integral(-12*sqrt(2)*exp(x)*sin(x + pi/4 + 3), x)", "expand", "factor", "cancel", "together", "powsimp", "euler"], "answer": 8}
+{"state": "(108*x**2 - 27)*exp(16*x**3 - 12*x + 16) + Integral(-12*sqrt(2)*exp(x)*sin(x + pi/4 + 3), x)", "moves": ["i_linear_basis@Integral(-12*sqrt(2)*exp(x)*sin(x + pi/4 + 3), x)", "i_const_factor@Integral(-12*sqrt(2)*exp(x)*sin(x + pi/4 + 3), x)", "i_parts@Integral(-12*sqrt(2)*exp(x)*sin(x + pi/4 + 3), x)", "i_parts@Integral(-12*sqrt(2)*exp(x)*sin(x + pi/4 + 3), x)", "expand", "cancel", "together", "euler"], "answer": 0}
+{"state": "Integral((216*x**2 + 48)*sin(3*x**3 + 2*x + 1)*cos(x) + (70*x + 14*cos(2*x) + 21)*exp(5*x**2 + 3*x + sin(2*x) + 3) + 24*sin(x)*cos(3*x**3 + 2*x + 1), x)", "moves": ["i_unprod@Integral((216*x**2 + 48)*sin(3*x**3 + 2*x + 1)*cos(x) + (70*x + 14*cos(2*x) + 21)*exp(5*x**2 + 3*x + sin(2*x) + 3) + 24*sin(x)*cos(3*x**3 + 2*x + 1), x)", "i_sum@Integral((216*x**2 + 48)*sin(3*x**3 + 2*x + 1)*cos(x) + (70*x + 14*cos(2*x) + 21)*exp(5*x**2 + 3*x + sin(2*x) + 3) + 24*sin(x)*cos(3*x**3 + 2*x + 1), x)", "expand", "together", "euler"], "answer": 0}
+{"state": "7*exp(5*x**2 + 3*x + sin(2*x) + 3) + Integral(216*x**2*sin(3*x**3 + 2*x + 1)*cos(x) + 24*sin(x)*cos(3*x**3 + 2*x + 1) + 48*sin(3*x**3 + 2*x + 1)*cos(x), x)", "moves": ["i_sum@Integral(216*x**2*sin(3*x**3 + 2*x + 1)*cos(x) + 24*sin(x)*cos(3*x**3 + 2*x + 1) + 48*sin(3*x**3 + 2*x + 1)*cos(x), x)", "expand", "cancel", "together", "trigsimp", "euler"], "answer": 3}
+{"state": "7*exp(5*x**2 + 3*x + sin(2*x) + 3) + Integral(24*(9*x**2*sin(3*x**3 + 2*x + 1)*cos(x) + sin(x)*cos(3*x**3 + 2*x + 1) + 2*sin(3*x**3 + 2*x + 1)*cos(x)), x)", "moves": ["i_const_factor@Integral(24*(9*x**2*sin(3*x**3 + 2*x + 1)*cos(x) + sin(x)*cos(3*x**3 + 2*x + 1) + 2*sin(3*x**3 + 2*x + 1)*cos(x)), x)", "i_parts@Integral(24*(9*x**2*sin(3*x**3 + 2*x + 1)*cos(x) + sin(x)*cos(3*x**3 + 2*x + 1) + 2*sin(3*x**3 + 2*x + 1)*cos(x)), x)", "expand", "cancel", "together", "trigsimp", "euler"], "answer": 5}
+{"state": "7*exp(5*x**2 + 3*x + sin(2*x) + 3) + Integral(108*x**2*sin(3*x**3 + x + 1) + 108*x**2*sin(3*x**3 + 3*x + 1) + 12*sin(3*x**3 + x + 1) + 36*sin(3*x**3 + 3*x + 1), x)", "moves": ["i_linear_basis@Integral(108*x**2*sin(3*x**3 + x + 1) + 108*x**2*sin(3*x**3 + 3*x + 1) + 12*sin(3*x**3 + x + 1) + 36*sin(3*x**3 + 3*x + 1), x)", "i_sum@Integral(108*x**2*sin(3*x**3 + x + 1) + 108*x**2*sin(3*x**3 + 3*x + 1) + 12*sin(3*x**3 + x + 1) + 36*sin(3*x**3 + 3*x + 1), x)", "expand", "cancel", "together", "euler"], "answer": 0}
+{"state": "Integral(9*((3*x**2 + 1)*sin(x) + cos(x))*exp(x**3 + x + 2), x)", "moves": ["i_linear_basis@Integral(9*((3*x**2 + 1)*sin(x) + cos(x))*exp(x**3 + x + 2), x)", "i_const_factor@Integral(9*((3*x**2 + 1)*sin(x) + cos(x))*exp(x**3 + x + 2), x)", "i_parts@Integral(9*((3*x**2 + 1)*sin(x) + cos(x))*exp(x**3 + x + 2), x)", "i_parts@Integral(9*((3*x**2 + 1)*sin(x) + cos(x))*exp(x**3 + x + 2), x)", "expand", "factor", "cancel", "euler"], "answer": 0}
+{"state": "Integral(288*exp(8*x + 4), x)", "moves": ["i_linear_basis@Integral(288*exp(8*x + 4), x)", "i_const_factor@Integral(288*exp(8*x + 4), x)", "i_usub@Integral(288*exp(8*x + 4), x)", "i_parts@Integral(288*exp(8*x + 4), x)", "expand", "factor", "cancel"], "answer": 0}
+{"state": "Integral(5*((15*x**2 - 3)*cos(x) - sin(x))*exp(5*x**3 - 3*x + 5), x)", "moves": ["i_linear_basis@Integral(5*((15*x**2 - 3)*cos(x) - sin(x))*exp(5*x**3 - 3*x + 5), x)", "i_const_factor@Integral(5*((15*x**2 - 3)*cos(x) - sin(x))*exp(5*x**3 - 3*x + 5), x)", "i_parts@Integral(5*((15*x**2 - 3)*cos(x) - sin(x))*exp(5*x**3 - 3*x + 5), x)", "i_parts@Integral(5*((15*x**2 - 3)*cos(x) - sin(x))*exp(5*x**3 - 3*x + 5), x)", "expand", "factor", "cancel", "together", "euler"], "answer": 0}
+{"state": "Integral(8*(3*x*sin(2*x**3 - 4*x + 3) + 2*(3*x**2 - 2)**2*cos(2*x**3 - 4*x + 3))*sin(2*x**3 - 4*x + 3), x)", "moves": ["i_linear_basis@Integral(8*(3*x*sin(2*x**3 - 4*x + 3) + 2*(3*x**2 - 2)**2*cos(2*x**3 - 4*x + 3))*sin(2*x**3 - 4*x + 3), x)", "i_const_factor@Integral(8*(3*x*sin(2*x**3 - 4*x + 3) + 2*(3*x**2 - 2)**2*cos(2*x**3 - 4*x + 3))*sin(2*x**3 - 4*x + 3), x)", "i_parts@Integral(8*(3*x*sin(2*x**3 - 4*x + 3) + 2*(3*x**2 - 2)**2*cos(2*x**3 - 4*x + 3))*sin(2*x**3 - 4*x + 3), x)", "i_parts@Integral(8*(3*x*sin(2*x**3 - 4*x + 3) + 2*(3*x**2 - 2)**2*cos(2*x**3 - 4*x + 3))*sin(2*x**3 - 4*x + 3), x)", "expand", "factor", "cancel", "euler"], "answer": 0}
+{"state": "Integral(18*(9*x**2 + 1)*exp(x)*cos(3*x**3 + x) + 18*exp(x)*sin(3*x**3 + x) - 20*sin(x + 1)*cos(x + 1)**3, x)", "moves": ["i_linear_basis@Integral(18*(9*x**2 + 1)*exp(x)*cos(3*x**3 + x) + 18*exp(x)*sin(3*x**3 + x) - 20*sin(x + 1)*cos(x + 1)**3, x)", "i_sum@Integral(18*(9*x**2 + 1)*exp(x)*cos(3*x**3 + x) + 18*exp(x)*sin(3*x**3 + x) - 20*sin(x + 1)*cos(x + 1)**3, x)", "expand", "factor", "cancel", "together", "euler"], "answer": 0}
+{"state": "Integral(5*(15*x**2 + cos(x) + 1)*cos(5*x**3 + x + sin(x) + 5), x)", "moves": ["i_const_factor@Integral(5*(15*x**2 + cos(x) + 1)*cos(5*x**3 + x + sin(x) + 5), x)", "i_usub@Integral(5*(15*x**2 + cos(x) + 1)*cos(5*x**3 + x + sin(x) + 5), x)", "i_parts@Integral(5*(15*x**2 + cos(x) + 1)*cos(5*x**3 + x + sin(x) + 5), x)", "i_parts@Integral(5*(15*x**2 + cos(x) + 1)*cos(5*x**3 + x + sin(x) + 5), x)", "expand", "cancel", "euler"], "answer": 0}
+{"state": "5*Integral((15*x**2 + cos(x) + 1)*cos(5*x**3 + x + sin(x) + 5), x)", "moves": ["i_usub@Integral((15*x**2 + cos(x) + 1)*cos(5*x**3 + x + sin(x) + 5), x)", "i_parts@Integral((15*x**2 + cos(x) + 1)*cos(5*x**3 + x + sin(x) + 5), x)", "i_parts@Integral((15*x**2 + cos(x) + 1)*cos(5*x**3 + x + sin(x) + 5), x)", "expand", "factor", "euler"], "answer": 0}
+{"state": "5*Subs(Integral(cos(u_), u_), u_, 5*x**3 + x + sin(x) + 5)", "moves": ["i_linear_basis@Integral(cos(u_), u_)", "euler"], "answer": 0}
+{"state": "Integral(54*exp(x)*sin(5*x + 3) + 270*exp(x)*cos(5*x + 3) - 144*sin(4*x + 3), x)", "moves": ["i_unprod@Integral(54*exp(x)*sin(5*x + 3) + 270*exp(x)*cos(5*x + 3) - 144*sin(4*x + 3), x)", "i_linear_basis@Integral(54*exp(x)*sin(5*x + 3) + 270*exp(x)*cos(5*x + 3) - 144*sin(4*x + 3), x)", "i_sum@Integral(54*exp(x)*sin(5*x + 3) + 270*exp(x)*cos(5*x + 3) - 144*sin(4*x + 3), x)", "factor", "cancel", "together", "euler"], "answer": 0}
+{"state": "36*cos(4*x + 3) + Integral(54*exp(x)*sin(5*x + 3) + 270*exp(x)*cos(5*x + 3), x)", "moves": ["i_linear_basis@Integral(54*exp(x)*sin(5*x + 3) + 270*exp(x)*cos(5*x + 3), x)", "i_sum@Integral(54*exp(x)*sin(5*x + 3) + 270*exp(x)*cos(5*x + 3), x)", "cancel", "together", "euler"], "answer": 0}
+{"state": "Integral(8*(9*cos(9*x) + 5)*cos(5*x + sin(9*x)), x)", "moves": ["i_const_factor@Integral(8*(9*cos(9*x) + 5)*cos(5*x + sin(9*x)), x)", "i_usub@Integral(8*(9*cos(9*x) + 5)*cos(5*x + sin(9*x)), x)", "i_parts@Integral(8*(9*cos(9*x) + 5)*cos(5*x + sin(9*x)), x)", "i_parts@Integral(8*(9*cos(9*x) + 5)*cos(5*x + sin(9*x)), x)", "expand", "cancel", "euler"], "answer": 0}
+{"state": "8*Integral((9*cos(9*x) + 5)*cos(5*x + sin(9*x)), x)", "moves": ["i_usub@Integral((9*cos(9*x) + 5)*cos(5*x + sin(9*x)), x)", "i_parts@Integral((9*cos(9*x) + 5)*cos(5*x + sin(9*x)), x)", "i_parts@Integral((9*cos(9*x) + 5)*cos(5*x + sin(9*x)), x)", "expand", "factor", "euler"], "answer": 0}
+{"state": "8*Subs(Integral(cos(u_), u_), u_, 5*x + sin(9*x))", "moves": ["i_linear_basis@Integral(cos(u_), u_)", "euler"], "answer": 0}
+{"state": "Integral(12*(-3*x**2*cos(x) + sin(x))*exp(x**3 + 1), x)", "moves": ["i_linear_basis@Integral(12*(-3*x**2*cos(x) + sin(x))*exp(x**3 + 1), x)", "i_const_factor@Integral(12*(-3*x**2*cos(x) + sin(x))*exp(x**3 + 1), x)", "i_parts@Integral(12*(-3*x**2*cos(x) + sin(x))*exp(x**3 + 1), x)", "i_parts@Integral(12*(-3*x**2*cos(x) + sin(x))*exp(x**3 + 1), x)", "expand", "factor", "cancel", "euler"], "answer": 0}
+{"state": "Integral(56*x*(3*x*(2*x**2 - 1) + 2)*exp(2*x**3 - 3*x + 2), x)", "moves": ["i_ansatz_exp@Integral(56*x*(3*x*(2*x**2 - 1) + 2)*exp(2*x**3 - 3*x + 2), x)", "i_const_factor@Integral(56*x*(3*x*(2*x**2 - 1) + 2)*exp(2*x**3 - 3*x + 2), x)", "i_parts@Integral(56*x*(3*x*(2*x**2 - 1) + 2)*exp(2*x**3 - 3*x + 2), x)", "i_parts@Integral(56*x*(3*x*(2*x**2 - 1) + 2)*exp(2*x**3 - 3*x + 2), x)", "i_parts@Integral(56*x*(3*x*(2*x**2 - 1) + 2)*exp(2*x**3 - 3*x + 2), x)", "expand", "factor", "cancel"], "answer": 0}
+{"state": "Integral(4*((6*x**2 - 2)*cos(2*x**3 - 2*x + 1) + sin(2*x**3 - 2*x + 1))*exp(x), x)", "moves": ["i_linear_basis@Integral(4*((6*x**2 - 2)*cos(2*x**3 - 2*x + 1) + sin(2*x**3 - 2*x + 1))*exp(x), x)", "i_const_factor@Integral(4*((6*x**2 - 2)*cos(2*x**3 - 2*x + 1) + sin(2*x**3 - 2*x + 1))*exp(x), x)", "i_parts@Integral(4*((6*x**2 - 2)*cos(2*x**3 - 2*x + 1) + sin(2*x**3 - 2*x + 1))*exp(x), x)", "i_parts@Integral(4*((6*x**2 - 2)*cos(2*x**3 - 2*x + 1) + sin(2*x**3 - 2*x + 1))*exp(x), x)", "expand", "factor", "cancel", "together", "euler"], "answer": 0}
