@@ -162,6 +162,14 @@ monster child (successors + verify_edge), not keeping it — pruning at
 queue insertion is too late. Converting the timeouts needs time-boxed
 rule application inside successors (or per-op sympy budgets), a
 plumbing change banked for the optimization thread.
+Path-integral "interference" eval (arrival multiplicity as amplitude,
+bonus on re-arrival): null-to-harmful — classical 54, w=1: 48, w=3:
+48; diff L4 drops 15->10. The autopsy: high-multiplicity states are
+commuting-move DIAMONDS — many orderings of the same shallow moves —
+so multiplicity measures permutation redundancy (the transposition
+table's noise), not promise. Feynman's sum works because paths carry
+PHASE; arrival counts don't. Ties the commutator thread shut from the
+other side.
 Commutator-structure pruning (partial-order reduction: skip the
 non-canonical ordering of commuting local moves; certificate = target
 node present verbatim in the grandparent): int L4 solves flat 16=16,
