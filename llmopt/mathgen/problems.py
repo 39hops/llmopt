@@ -31,7 +31,7 @@ _PARSE_LOCALS = {
     "x": X, "sin": sp.sin, "cos": sp.cos, "tan": sp.tan, "exp": sp.exp,
     "log": sp.log, "ln": sp.log, "sqrt": sp.sqrt, "pi": sp.pi, "E": sp.E,
     "e": sp.E, "C": sp.Symbol("C"), "Matrix": sp.Matrix, "I": sp.I,
-    "i": sp.I, "y": sp.Symbol("y"),
+    "i": sp.I, "y": sp.Symbol("y"), "t": sp.Symbol("t"),
 }
 
 
@@ -453,12 +453,14 @@ def _resolve_maker(kind: str):
     """Makers from sibling modules (linalg, odes) register lazily — avoids
     an import cycle since they build on Problem from this module."""
     if kind not in _MAKERS:
-        from llmopt.mathgen import linalg, multivar, ntheory, odes
+        from llmopt.mathgen import (linalg, mechanics, multivar, ntheory,
+                                    odes)
 
         _MAKERS.update(linalg.MAKERS)
         _MAKERS.update(odes.MAKERS)
         _MAKERS.update(ntheory.MAKERS)
         _MAKERS.update(multivar.MAKERS)
+        _MAKERS.update(mechanics.MAKERS)
     return _MAKERS[kind]
 
 
