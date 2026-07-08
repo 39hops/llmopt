@@ -134,6 +134,17 @@ could only read a representation optimized for move choice. v2 =
 joint value-LoRA training (let the trunk learn to represent what
 matters for judgment); the architecture is right (it's AlphaZero's),
 the training recipe isn't yet.
+v2 (joint value-LoRA, the trunk learns to represent judgment):
+held-out rho **+0.966** — the learned representation beats the hand
+features offline. In-search: parity at the saturated L2-3 cells
+(118 v 119; one solve of headroom total), and at the frontier —
+int L4, budget 400, paired arms — **fused v2 wins 10 v 9** despite
+eating 5 timeouts to NNUE's 3: the judgment advantage outran its own
+inference bill. Full arc: frozen trunk +0.859/loses -> joint-trained
+trunk +0.966/wins-at-the-frontier. The strategic dividend over hand
+features: a learned representation improves with data and can
+transfer across kinds (proofs, ODEs), where fixed features cannot
+follow.
 Lazy expansion WINS the timeout campaign (`scripts/bench_lazy.py`):
 the prior ranks by rule NAME — known before any sympy work — so
 applying rules in prior order and stopping at k children buys the
