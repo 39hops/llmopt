@@ -254,38 +254,50 @@ def successors(
         return _timeboxed(rule, node, default=[])
 
     for node in sorted(state.expr.atoms(sp.Derivative), key=sp.count_ops):
+        node_s = None  # sstr only when needed: labels are lazy
         for rule_name, rule in rules:
-            label = f"{rule_name}@{sp.sstr(node)}"
-            if move_filter is not None and not move_filter(label):
-                continue
+            if move_filter is not None:
+                node_s = node_s or sp.sstr(node)
+                if not move_filter(f"{rule_name}@{node_s}"):
+                    continue
             for rewrite in _safe(rule, node):
-                yield from emit(label, state.expr.xreplace({node: rewrite}))
+                node_s = node_s or sp.sstr(node)
+                yield from emit(f"{rule_name}@{node_s}",
+                                state.expr.xreplace({node: rewrite}))
     for node in sorted(state.expr.atoms(sp.Integral), key=sp.count_ops):
         # multi-limit integrals (sympy collapses ∫∫f at construction, e.g.
         # from a du=1 by-parts split): peel — apply rules to the innermost
         # limit, rewrap the rest. Rules themselves stay single-limit.
         nested = len(node.limits) > 1
         inner = sp.Integral(node.function, node.limits[0]) if nested else node
+        inner_s = None
         for rule_name, rule in INT_RULES:
             if not want(rule_name):
                 continue
-            label = f"{rule_name}@{sp.sstr(inner)}"
-            if move_filter is not None and not move_filter(label):
-                continue
+            if move_filter is not None:
+                inner_s = inner_s or sp.sstr(inner)
+                if not move_filter(f"{rule_name}@{inner_s}"):
+                    continue
             for rewrite in _safe(rule, inner):
                 new_node = (
                     sp.Integral(rewrite, *node.limits[1:]) if nested else rewrite
                 )
-                yield from emit(label, state.expr.xreplace({node: new_node}))
+                inner_s = inner_s or sp.sstr(inner)
+                yield from emit(f"{rule_name}@{inner_s}",
+                                state.expr.xreplace({node: new_node}))
     for node in sorted(state.expr.atoms(sp.Limit), key=sp.count_ops):
+        node_s = None
         for rule_name, rule in LIM_RULES:
             if not want(rule_name):
                 continue
-            label = f"{rule_name}@{sp.sstr(node)}"
-            if move_filter is not None and not move_filter(label):
-                continue
+            if move_filter is not None:
+                node_s = node_s or sp.sstr(node)
+                if not move_filter(f"{rule_name}@{node_s}"):
+                    continue
             for rewrite in _safe(rule, node):
-                yield from emit(label, state.expr.xreplace({node: rewrite}))
+                node_s = node_s or sp.sstr(node)
+                yield from emit(f"{rule_name}@{node_s}",
+                                state.expr.xreplace({node: rewrite}))
     for name, fn in ALGEBRA_MOVES:
         # same time box: trigsimp/factor on a monster state can stall
         if not want(name):
