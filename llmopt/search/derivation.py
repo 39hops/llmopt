@@ -182,9 +182,18 @@ def successors(
         seen.add(child.key())
         yield name, child
 
+    def _safe(rule, node) -> list:
+        # a rule crashing deep in sympy (measured: i_usub's simplify
+        # reached manualintegrate's non-real comparison on a euler
+        # state) must cost one move, never the whole search
+        try:
+            return rule(node)
+        except Exception:
+            return []
+
     for node in sorted(state.expr.atoms(sp.Derivative), key=sp.count_ops):
         for rule_name, rule in rules:
-            for rewrite in rule(node):
+            for rewrite in _safe(rule, node):
                 label = f"{rule_name}@{sp.sstr(node)}"
                 yield from emit(label, state.expr.xreplace({node: rewrite}))
     for node in sorted(state.expr.atoms(sp.Integral), key=sp.count_ops):
@@ -194,7 +203,7 @@ def successors(
         nested = len(node.limits) > 1
         inner = sp.Integral(node.function, node.limits[0]) if nested else node
         for rule_name, rule in INT_RULES:
-            for rewrite in rule(inner):
+            for rewrite in _safe(rule, inner):
                 new_node = (
                     sp.Integral(rewrite, *node.limits[1:]) if nested else rewrite
                 )
@@ -202,7 +211,7 @@ def successors(
                 yield from emit(label, state.expr.xreplace({node: new_node}))
     for node in sorted(state.expr.atoms(sp.Limit), key=sp.count_ops):
         for rule_name, rule in LIM_RULES:
-            for rewrite in rule(node):
+            for rewrite in _safe(rule, node):
                 label = f"{rule_name}@{sp.sstr(node)}"
                 yield from emit(label, state.expr.xreplace({node: rewrite}))
     for name, fn in ALGEBRA_MOVES:

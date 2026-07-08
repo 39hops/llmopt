@@ -252,7 +252,10 @@ def i_usub(node: sp.Integral) -> list[sp.Expr]:
         dg = sp.diff(g, x)
         if dg == 0:
             continue
-        q = sp.simplify(sp.cancel(f / dg)).subs(g, U)
+        # doit=False: simplify's default doit EVALUATES inner Integral
+        # nodes (pathology #1 through the back door) — and crashes
+        # sympy's manualintegrate on complex integrands (euler states)
+        q = sp.simplify(sp.cancel(f / dg), doit=False).subs(g, U)
         if q.has(x) or not q.has(U):
             continue
         out.append(sp.Subs(sp.Integral(q, U), U, g))
