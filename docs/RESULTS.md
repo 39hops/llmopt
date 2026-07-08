@@ -162,6 +162,18 @@ monster child (successors + verify_edge), not keeping it — pruning at
 queue insertion is too late. Converting the timeouts needs time-boxed
 rule application inside successors (or per-op sympy budgets), a
 plumbing change banked for the optimization thread.
+The magic detector WINS (`scripts/bench_magic.py`; Artin's "magic for
+quantum chem, applied to math" -> Liouville 1835 as integration's
+Gottesman-Knill): sympy's Risch proves integrands non-elementary in
+~10ms; a state carrying a certified non-elementary Integral node is
+dead WITHIN OUR OPERATOR CLOSURE (no rule merges integral nodes, so
+the two-nonelementary-halves-recombine loophole is closed by the move
+set itself). Race: 55 v 54, the +1 at int L4 (10 v 9) with **71
+certified cuts** concentrated exactly there (4 at int L3, zero on
+diff — the detector correctly never fires without integrals).
+Theorem-per-cut: the only prune in the repo with provably zero
+false positives. Candidate for engine.solve() integration alongside
+lazy expansion.
 Path-integral "interference" eval (arrival multiplicity as amplitude,
 bonus on re-arrival): null-to-harmful — classical 54, w=1: 48, w=3:
 48; diff L4 drops 15->10. The autopsy: high-multiplicity states are
