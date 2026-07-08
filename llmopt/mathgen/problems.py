@@ -56,13 +56,15 @@ class Problem:
     _expr: object = field(compare=False, repr=False)  # task-specific payload
 
     def check(self, prediction: str) -> bool:
-        if self.kind == "prove_ind":
-            # two-obligation induction checker (multi-line answer:
-            # keep the full prediction, not just the first line)
-            from llmopt.mathgen.proofs import check_induction
+        if self.kind in ("prove_ind", "prove_discover"):
+            # multi-line proof answers: keep the full prediction
+            from llmopt.mathgen.proofs import (check_discovery,
+                                               check_induction)
             if "Answer:" in prediction:
                 prediction = prediction.rsplit("Answer:", 1)[1]
-            return check_induction(self._expr, prediction)
+            checker = (check_induction if self.kind == "prove_ind"
+                       else check_discovery)
+            return checker(self._expr, prediction)
         if "Answer:" in prediction:
             prediction = prediction.rsplit("Answer:", 1)[1].strip().splitlines()[0]
         pred = parse_answer(prediction)

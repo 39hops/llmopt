@@ -34,6 +34,22 @@ def test_wrong_obligations_rejected():
     assert not p.check("prose about induction, no lines")   # no format
 
 
+def test_discover_reference_and_wrong_closed_rejected():
+    from llmopt.mathgen.proofs import make_prove_discover
+
+    for level in (1, 2, 3):
+        for seed in range(8):
+            p = make_prove_discover(level, seed)
+            assert p.check(p.answer), p.prompt
+    p = make_prove_discover(1, 0)
+    lines = p.answer.splitlines()
+    # a self-consistent but WRONG closed form must fail (base anchor)
+    fake = "CLOSED: n**5\nBASE: 1\nSTEP: (n + 1)**5"
+    assert not p.check(fake)
+    # missing CLOSED line fails
+    assert not p.check("\n".join(lines[1:]))
+
+
 def test_registered_and_deterministic():
     mk = _resolve_maker("prove_ind")
     assert [mk(2, s).prompt for s in range(10)] == \
