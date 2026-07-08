@@ -212,6 +212,7 @@ def _timeboxed(fn, *args, default):
 def successors(
     state: State, *, use_macros: bool = False, verify_p: float = 1.0,
     only_rules: "set[str] | None" = None,
+    move_filter: "Callable[[str], bool] | None" = None,
 ) -> Iterator[tuple[str, State]]:
     """Legal, non-identity, sympy-verified successor states. Rule moves
     target one Derivative node ((rule, node) pairs — real branching);
@@ -254,8 +255,10 @@ def successors(
 
     for node in sorted(state.expr.atoms(sp.Derivative), key=sp.count_ops):
         for rule_name, rule in rules:
+            label = f"{rule_name}@{sp.sstr(node)}"
+            if move_filter is not None and not move_filter(label):
+                continue
             for rewrite in _safe(rule, node):
-                label = f"{rule_name}@{sp.sstr(node)}"
                 yield from emit(label, state.expr.xreplace({node: rewrite}))
     for node in sorted(state.expr.atoms(sp.Integral), key=sp.count_ops):
         # multi-limit integrals (sympy collapses ∫∫f at construction, e.g.
@@ -266,18 +269,22 @@ def successors(
         for rule_name, rule in INT_RULES:
             if not want(rule_name):
                 continue
+            label = f"{rule_name}@{sp.sstr(inner)}"
+            if move_filter is not None and not move_filter(label):
+                continue
             for rewrite in _safe(rule, inner):
                 new_node = (
                     sp.Integral(rewrite, *node.limits[1:]) if nested else rewrite
                 )
-                label = f"{rule_name}@{sp.sstr(inner)}"
                 yield from emit(label, state.expr.xreplace({node: new_node}))
     for node in sorted(state.expr.atoms(sp.Limit), key=sp.count_ops):
         for rule_name, rule in LIM_RULES:
             if not want(rule_name):
                 continue
+            label = f"{rule_name}@{sp.sstr(node)}"
+            if move_filter is not None and not move_filter(label):
+                continue
             for rewrite in _safe(rule, node):
-                label = f"{rule_name}@{sp.sstr(node)}"
                 yield from emit(label, state.expr.xreplace({node: rewrite}))
     for name, fn in ALGEBRA_MOVES:
         # same time box: trigsimp/factor on a monster state can stall
