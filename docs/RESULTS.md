@@ -124,6 +124,16 @@ smoothed-old-prior vs 300 polluted. Conclusion pair: the quality gate
 is worth 35 solves; native mass vs median smoothing is worth ~1 —
 smoothing already gave new rules everything ranking could give them.
 Prior CONTENT saturates fast; prior HYGIENE is what matters.
+Fused architecture v1 (Artin's design: one trunk, two heads — value
+head on the 0.5B's hidden state replacing NNUE's 20 hand features):
+honest loss, 115 v 119, gaps at tight budgets where eval precision
+binds (diff L2@25: 12 v 15), at 5-10x the per-node cost. Offline
+told the truth this time (+0.859 v +0.937). The caveat that keeps it
+alive: the trunk was FROZEN with ranking-tuned LoRA — the value head
+could only read a representation optimized for move choice. v2 =
+joint value-LoRA training (let the trunk learn to represent what
+matters for judgment); the architecture is right (it's AlphaZero's),
+the training recipe isn't yet.
 Lazy expansion WINS the timeout campaign (`scripts/bench_lazy.py`):
 the prior ranks by rule NAME — known before any sympy work — so
 applying rules in prior order and stopping at k children buys the
