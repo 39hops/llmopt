@@ -226,6 +226,16 @@ the rung-1 diff rules finish — the rungs composing in one derivation.
 (became i_linear_basis — the "rule mining" prediction was exactly
 right, and it was the good outcome).]
 
+Quantum-circuit T-count minimization (banked 2026-07-07, physics
+night): states = circuits, moves = gate-rewrite identities, oracle =
+stabilizer-tableau equivalence (GF(2), poly-time — CHEAPER than
+sympy), eval = T-count (the industry metric: post-error-correction,
+T gates cost ~100x Clifford). The whole engine architecture ports;
+"reduce the magic" is a real optimization market.
+Mechanics mathgen kind (banked 2026-07-07): Lagrangian -> equations
+of motion, Euler-Lagrange verify-by-substitution, Noether-checksum
+conservation tests, dimensional-analysis pre-verifier (the type
+checker of physics; reusable for all future physics kinds).
 Tensor-decomposition weight compression (banked 2026-07-07, Artin):
 TT/Tucker-compress real checkpoint weight matrices across ranks and
 score the compression-vs-capability curve BY RUNNING against the
