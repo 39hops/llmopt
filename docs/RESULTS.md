@@ -200,7 +200,8 @@ entropy-gates k at T=0.1) **349** — the confidence gating is worth
 **+15 on top of identical ranking and rules**, the largest confidence
 premium measured. Thesis confirmed at record scale: choice is grammar
 (free), confidence is the GPU's entire job (and it's worth paying
-for). Tabula-rasa round 1 landed the same night: r0 random 112 vs
+for). n=30 confirmation: **694/720 (96.4%)** — the record holds at
+double the sample. Tabula-rasa round 1 landed the same night: r0 random 112 vs
 r1 trained 138 (+26; int L4 7->15, diff L4 6->13, 651 rows) — paired
 with the mature lineage's 40v40 curve-point tie, the self-teaching
 curve is now measured at both ends: steep far from the ceiling, flat
