@@ -205,7 +205,13 @@ double the sample. Tabula-rasa round 1 landed the same night: r0 random 112 vs
 r1 trained 138 (+26; int L4 7->15, diff L4 6->13, 651 rows) — paired
 with the mature lineage's 40v40 curve-point tie, the self-teaching
 curve is now measured at both ends: steep far from the ceiling, flat
-against it.
+against it. **Round 2 completed the curve: r0 112 -> r1 138 (+26) ->
+r2 139 (+1).** The entire climb happens in ONE round; the plateau
+arrives immediately after, from either starting point (mature lineage
+tied at its own round 2 as well). The limit-of-self-teaching answer,
+final form: expert iteration is a step function to the reachable-set
+ceiling, not a gradual ascent — and only new operators (mechanism 2)
+move the ceiling itself.
 
 ## The autopsy ladder (failure census → operator rules, one rung each)
 
