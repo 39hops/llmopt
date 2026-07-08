@@ -174,6 +174,14 @@ diff — the detector correctly never fires without integrals).
 Theorem-per-cut: the only prune in the repo with provably zero
 false positives. Candidate for engine.solve() integration alongside
 lazy expansion.
+Winner stacking (classical/lazy/magic/both, paired, budget 400):
+magic 40 > classical 39 = lazy 39 = both 39. Magic's +1 at int L4
+REPLICATES (second independent run); lazy's value is timeout
+conversion and idle-machine evenings don't bind the wall; the combo
+gives magic's point back (lazy's restricted expansion starves the
+detector of prunable branches). engine.solve() decision: integrate
+MAGIC unconditionally (theorem-safe); lazy stays available as the
+under-load option, not the default.
 Path-integral "interference" eval (arrival multiplicity as amplitude,
 bonus on re-arrival): null-to-harmful — classical 54, w=1: 48, w=3:
 48; diff L4 drops 15->10. The autopsy: high-multiplicity states are
