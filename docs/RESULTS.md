@@ -131,6 +131,14 @@ monster child (successors + verify_edge), not keeping it — pruning at
 queue insertion is too late. Converting the timeouts needs time-boxed
 rule application inside successors (or per-op sympy budgets), a
 plumbing change banked for the optimization thread.
+Commutator-structure pruning (partial-order reduction: skip the
+non-canonical ordering of commuting local moves; certificate = target
+node present verbatim in the grandparent): int L4 solves flat 16=16,
+timeouts 11 -> 8. Real work saved, but generation cost wasn't the
+binding constraint — the transposition table had already made the
+duplicates cheap-ish, and the freed budget lands on branches that
+don't win. Kept as infrastructure (move_filter in successors);
+scientifically a null at this wall.
 Annealed best-first (Metropolis pop over NNUE energy, linear cool;
 diff/int L3-4, n=15): monotone null — greedy 112, T0=1: 108, T0=5:
 103, T0=25: 97. Every degree of temperature hurts. Annealing is
