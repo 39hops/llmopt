@@ -122,5 +122,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=30)
     ap.add_argument("--budget", type=int, default=400)
+    ap.add_argument("--rule-wall", type=float, default=None)
     a = ap.parse_args()
+    if a.rule_wall is not None:
+        import llmopt.search.derivation as _d
+        _d.RULE_WALL = a.rule_wall
     main(a.n, a.budget)
