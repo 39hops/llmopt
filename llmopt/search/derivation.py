@@ -210,7 +210,8 @@ def _timeboxed(fn, *args, default):
 
 
 def successors(
-    state: State, *, use_macros: bool = False, verify_p: float = 1.0
+    state: State, *, use_macros: bool = False, verify_p: float = 1.0,
+    only_rules: "set[str] | None" = None,
 ) -> Iterator[tuple[str, State]]:
     """Legal, non-identity, sympy-verified successor states. Rule moves
     target one Derivative node ((rule, node) pairs — real branching);
@@ -223,6 +224,11 @@ def successors(
     wrong answer (spec O2, 2026-07-07-engine-optimizations-design.md)."""
     seen = {state.key()}
     rules = CORE_RULES + MACRO_RULES if use_macros else CORE_RULES
+
+    def want(name: str) -> bool:
+        return only_rules is None or name in only_rules
+
+    rules = [(n, r) for n, r in rules if want(n)]
 
     def emit(name: str, new_expr: sp.Expr) -> Iterator[tuple[str, State]]:
         child = State(new_expr, state.plies + 1, state.history + (name,))
@@ -258,6 +264,8 @@ def successors(
         nested = len(node.limits) > 1
         inner = sp.Integral(node.function, node.limits[0]) if nested else node
         for rule_name, rule in INT_RULES:
+            if not want(rule_name):
+                continue
             for rewrite in _safe(rule, inner):
                 new_node = (
                     sp.Integral(rewrite, *node.limits[1:]) if nested else rewrite
@@ -266,11 +274,15 @@ def successors(
                 yield from emit(label, state.expr.xreplace({node: new_node}))
     for node in sorted(state.expr.atoms(sp.Limit), key=sp.count_ops):
         for rule_name, rule in LIM_RULES:
+            if not want(rule_name):
+                continue
             for rewrite in _safe(rule, node):
                 label = f"{rule_name}@{sp.sstr(node)}"
                 yield from emit(label, state.expr.xreplace({node: rewrite}))
     for name, fn in ALGEBRA_MOVES:
         # same time box: trigsimp/factor on a monster state can stall
+        if not want(name):
+            continue
         new = _timeboxed(fn, state.expr, default=None)
         if new is None:
             continue
