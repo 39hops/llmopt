@@ -540,6 +540,17 @@ probe of the rule set provides directly. Two-tier judge in practice:
 20-feature pass (~us) for bulk screening, +rule-fire pass (~ms) when
 the decision matters; both >> cheaper than search.
 
+The autopsy paid same-day: the L5 failure clusters (root 15%,
+inverse-trig 0%) became two rules — `i_sqrt_basis` (f*sqrt(P)
+polynomial => answer in A(x)*sqrt(P), the linear-basis move with a
+radical basis) and `i_inverse_trig` (atan/asin closed forms), both
+oracle-verified 4/4 at birth, 65 regression tests green. Same-seed
+L5 rerun: **42% -> 70% (105 -> 175 of 249; 71 gained, 1 lost), root
+family 14/94 -> 81/94.** i_sqrt_basis is the biggest single rule win
+since the Laurent extension. Known residue: inverse-trig shapes
+hiding inside re-fused sums (+3 of ~23 recovered) — next autopsy's
+target.
+
 Entropy-bonus beam (same day, pre-registered, physics motivation:
 mimicking magic costs entropy, so spend the beam on diversity when
 the eval stalls): greedy max-min selection in the 20-feature space
