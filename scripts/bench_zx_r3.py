@@ -66,6 +66,68 @@ def rule_of(label: str) -> str:
     return label.split("@")[0]
 
 
+_EXTRACT_CACHE = {}
+
+
+def extractable_tcount(state: ZXState) -> "int | None":
+    """Rung 4's eval: T-count of the EXTRACTED circuit — the only
+    T-count that corresponds to a real circuit (unextractable search
+    products scored 30/30 verify-failures in rungs 3 v1/v2; safe
+    rewrites preserve semantics but wander out of the extractable
+    subspace). None = unextractable."""
+    k = state.key()
+    if k not in _EXTRACT_CACHE:
+        try:
+            g = state.g.copy()
+            zx.full_reduce(g)
+            _EXTRACT_CACHE[k] = zx.tcount(zx.extract_circuit(g))
+        except Exception:
+            _EXTRACT_CACHE[k] = None
+    return _EXTRACT_CACHE[k]
+
+
+def bf_extract(g0, budget: int, prior: "dict | None" = None, k: int = 3):
+    """Best-first on extractable T-count. Unextractable states may be
+    TRAVERSED (they can lead back to extractable ones) but score a
+    penalty and never update best."""
+    import heapq
+    import itertools
+    tie = itertools.count()
+    start = ZXState(g0.copy())
+    best, best_t = start, extractable_tcount(start)
+    edge_cap = max(300, 3 * g0.num_edges())
+    pq = [((best_t if best_t is not None else 10**6, 0), next(tie), start)]
+    visited, nodes = {start.key()}, 1
+    while pq and nodes < budget:
+        _, _, s = heapq.heappop(pq)
+        kids = list(moves(s)) + list(macro_moves(s))
+        if prior is not None:
+            uni, bi = prior["unigram"], prior["bigram"]
+            med = sorted(uni.values())[len(uni) // 2] if uni else 1
+            prev = rule_of(s.history[-1]) if s.history else None
+            table = bi.get(prev) if prev else None
+            kids = sorted(kids, key=lambda c: -(
+                (table.get(rule_of(c[0]), 0) if table else 0)
+                + 0.01 * uni.get(rule_of(c[0]), med)))[:k]
+        for _, child in kids:
+            kk = child.key()
+            if kk in visited:
+                continue
+            visited.add(kk)
+            if child.g.num_edges() > edge_cap:
+                continue
+            nodes += 1
+            et = extractable_tcount(child)
+            if et is not None and (best_t is None or et < best_t):
+                best, best_t = child, et
+            score = (et if et is not None else 10**6,
+                     child.g.num_vertices())
+            heapq.heappush(pq, (score, next(tie), child))
+            if nodes >= budget:
+                break
+    return best, best_t
+
+
 def bf_markov(g0, budget: int, prior: dict, k: int = 3):
     """Best-first with bigram-ranked top-k expansion (the 293-dict,
     transplanted). Unseen rules get median unigram mass (the
@@ -152,12 +214,12 @@ def race(n: int, qubits: int, n_tofs: int, budget: int) -> None:
     prior = json.loads(PRIOR_PATH.read_text())
     rng = random.Random(f"zx-race3-{qubits}-{n_tofs}")  # disjoint stream
     stats = {a: {"w": 0, "t": 0, "l": 0, "T": 0} for a in
-             ("bf-full", "bf-markov3")}
+             ("bf-extract", "bf-extract-mk3")}
     badver = 0
     tg_sum = 0
     print(f"# rung-3 race — toffoli nets q={qubits} tofs={n_tofs} "
           f"n={n} budget={budget}")
-    print(f"{'i':>3} {'T0':>4} {'greedy':>7} {'bf-full':>8} {'markov3':>8}")
+    print(f"{'i':>3} {'T0':>4} {'greedy':>7} {'bf-extr':>8} {'extr-mk3':>8}")
     for i in range(n):
         c = structured_toffoli(qubits, n_tofs, rng)
         gg = c.to_graph()
@@ -170,12 +232,12 @@ def race(n: int, qubits: int, n_tofs: int, budget: int) -> None:
             zx.simplify.to_gh(gs)
             signal.alarm(240)
             try:
-                if arm == "bf-full":
-                    best, _ = best_first_zx(gs, budget=budget)
+                if arm == "bf-extract":
+                    best, bt = bf_extract(gs, budget)
                 else:
-                    best = bf_markov(gs, budget, prior)
-                tb = tcount(best.g)
-                if not verify_equal(c, best.g, qubits):
+                    best, bt = bf_extract(gs, budget, prior=prior)
+                tb = bt if bt is not None else 10**9
+                if bt is not None and not verify_equal(c, best.g, qubits):
                     badver += 1
                     tb = 10**9
             except _Timeout:
@@ -187,7 +249,8 @@ def race(n: int, qubits: int, n_tofs: int, budget: int) -> None:
             key = "w" if tb < tg else "t" if tb == tg else "l"
             stats[arm][key] += 1
         print(f"{i:>3} {zx.tcount(c.to_graph()):>4} {tg:>7} "
-              f"{row['bf-full']:>8} {row['bf-markov3']:>8}", flush=True)
+              f"{row['bf-extract']:>8} {row['bf-extract-mk3']:>8}",
+              flush=True)
     print(f"TOTALS greedy mean T {tg_sum / n:.1f}")
     for arm, st in stats.items():
         print(f"  {arm}: wins {st['w']}, ties {st['t']}, losses {st['l']}")
