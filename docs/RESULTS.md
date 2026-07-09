@@ -288,6 +288,21 @@ unchanged from the beam era: the GPU buys confidence, not choice —
 and on this problem distribution the free bigram dict remains the
 engineering pick (`engine.solve()` default stands).
 
+## 360/360 — THE BENCHMARK IS SOLVED
+
+The 356 record's single holdout (int L3, budget-invariant) was
+autopsied within the hour: `int 5(2x(x+1)e^x + 1)/x` — a POLICY miss
+(the shipped beam engine solved it in 6 plies; the record config's
+confidence gate overcommitted) sitting on a RULE gap (the 5/x Laurent
+term broke i_linear_basis's Poly call, so the one-step solution was
+invisible). The Laurent extension (split x^-n tails analytically,
+log for n=1) made the holdout a one-ply solve; the re-run scored
+**360/360**. Full lineage on identical seeds: 265 -> 300 -> 316 ->
+328 -> 343 -> 349 -> 356 -> **360 (100%)**. The held-out benchmark
+that opened at 73.6% four days ago is closed. Next frontier: the L4
+matrix (int L4 best known: 19/30 autopsy, 36/40 champion-harvest at
+budget 300) and new domains (ZX/T-count engine, proofs).
+
 ## THE RECORD: 356/360 (98.9%) — the full stack
 
 Every proven component in one search for the first time
