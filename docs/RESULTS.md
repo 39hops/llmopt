@@ -1,22 +1,29 @@
-# The derivation-search results: 73.6% → 95.3% in 48 hours
+# The derivation-search results: 73.6% → 100% in four days
 
-*llmopt's "Stockfish for math" arc, 2026-07-06 → 07-08. Every number
+*llmopt's "Stockfish for math" arc, 2026-07-06 → 07-09. Every number
 below is a committed measurement on held-out, string-seeded problem
-sets, sympy-oracle-verified. Written as the handoff/publication draft.*
+sets, sympy-oracle-verified. Written as the handoff/publication
+draft. Day five pointed the same chassis at quantum circuits (the
+ZX/T-count chapter, near the end).*
 
 ## The one-paragraph version
 
-A beam search over sympy rewrite rules, guided first by a hand-crafted
-eval, then by learned components, solves generated calculus problems.
-Over 48 hours of measure-everything iteration, held-out solve rate at
-fixed node budgets went **265/360 → 343/360** without changing the
-rules, the model, or the problems — every gain came from *search
-wisdom*: confidence calibration, width/depth allocation, and knowing
-which components actually carry which capability. The headline
-finding: **ranking moves is grammar and fits in a dictionary; knowing
-when you're sure requires learned per-node discrimination; and beam
-width is a partial substitute for confidence.** Plus a two-mechanism
-answer to "is there a limit to self-teaching."
+A search over sympy rewrite rules — beam first, best-first later —
+guided by a hand-crafted eval, then learned components, solves
+generated calculus problems. Over four days of measure-everything
+iteration, held-out solve rate at fixed node budgets went **265/360
+→ 360/360** — from 73.6% to a perfect score — with every gain a
+named, measured component: search wisdom (confidence calibration,
+width/depth allocation, transposition memory), autopsy-derived
+operator rules (a failure census that ended in one linear-algebra
+move subsuming half the rule book), and a theorem from 1835 pruning
+provably-dead branches. Headline findings: **ranking moves is
+grammar and fits in a dictionary; knowing when you're sure requires
+learned per-node discrimination; width partially substitutes for
+confidence; self-teaching is a STEP FUNCTION to the reachable-set
+ceiling, and only new operators move the ceiling.** The same
+methodology then speed-ran a second domain (quantum-circuit T-count
+minimization) to an honest greedy-wins verdict in one day.
 
 ## The racing arc (all: same held-out seeds, budgets 25/50/100/200, n=15/cell)
 
@@ -34,11 +41,149 @@ answer to "is there a limit to self-teaching."
 | k3-LLM, width 2 | 318 | |
 | adaptive-LLM, width 2 | 328 | |
 | adaptive-LLM, width 2, k_max=3 | 337 | right-sized gate |
-| **+ mined macros (the shipped `engine.solve()` config)** | **343 (95.3%)** | highway dividend |
+| + mined macros | 343 | highway dividend |
+| hybrid: markov ranks, LLM gates (+ autopsy rules) | 349 | confidence premium +15 |
+| full stack: best-first + NNUE + markov + gate + magic | 356 | perfect on 20/24 cells |
+| **+ Laurent extension (the last holdout's rule gap)** | **360 (100%)** | the benchmark closed |
 
-n=30 confirmation of the adaptive-vs-fixed comparison: 593/720 vs
-560/720 (int L3 flips to fixed-k: over-confident dives at the hardest
-level — width hedges).
+n=30 confirmations along the way: adaptive-vs-fixed 593/720 vs
+560/720 (int L3 flips to fixed-k: over-confident dives at the
+hardest level — width hedges); hybrid 694/720 (96.4%).
+
+## 360/360 — THE BENCHMARK IS SOLVED
+
+The 356 record's single holdout (int L3, budget-invariant) was
+autopsied within the hour: `int 5(2x(x+1)e^x + 1)/x` — a POLICY miss
+(the shipped beam engine solved it in 6 plies; the record config's
+confidence gate overcommitted) sitting on a RULE gap (the 5/x Laurent
+term broke i_linear_basis's Poly call, so the one-step solution was
+invisible). The Laurent extension (split x^-n tails analytically,
+log for n=1) made the holdout a one-ply solve; the re-run scored
+**360/360**. Full lineage on identical seeds: 265 -> 300 -> 316 ->
+328 -> 343 -> 349 -> 356 -> **360 (100%)**. The held-out benchmark
+that opened at 73.6% four days ago is closed. Next frontier: the L4
+matrix (int L4 best known: 19/30 autopsy, 36/40 champion-harvest at
+budget 300) and new domains (ZX/T-count engine, proofs).
+
+## THE RECORD: 356/360 (98.9%) — the full stack
+
+Every proven component in one search for the first time
+(`scripts/bench_record.py`): best-first frontier + NNUE h + markov
+ranking + LLM entropy-gated k (T=0.1) + Liouville magic pruning.
+**356/360 — perfect on 20 of 24 cells** (all of diff, all of int
+L1-2 at every budget); the only holdout is int L3 at 14/15 across
+all four budgets (one stubborn problem, budget-invariant — a
+capability miss, not a search miss). Lineage on identical seeds:
+265 (day-1 full enumeration) -> 300 -> 316 -> 328 -> 343 -> 349 ->
+**356**. Each arrow is one measured component; the stack is the
+paper.
+
+## The hybrid record: 349/360 (96.9%), honestly decomposed
+
+Artin's question ("could the dict rank while the 0.5B gates?") was the
+one untested cell of the ranking-x-confidence matrix. Measured on the
+standard 24 cells, same seeds, WITH the autopsy rules:
+markov3 fixed-k3 control **334** (the new operators alone lifted the
+dict +18 over its 316-era self); hybrid (markov ranks, LLM
+entropy-gates k at T=0.1) **349** — the confidence gating is worth
+**+15 on top of identical ranking and rules**, the largest confidence
+premium measured. Thesis confirmed at record scale: choice is grammar
+(free), confidence is the GPU's entire job (and it's worth paying
+for). n=30 confirmation: **694/720 (96.4%)** — the record holds at
+double the sample. Tabula-rasa round 1 landed the same night: r0 random 112 vs
+r1 trained 138 (+26; int L4 7->15, diff L4 6->13, 651 rows) — paired
+with the mature lineage's 40v40 curve-point tie, the self-teaching
+curve is now measured at both ends: steep far from the ceiling, flat
+against it. **Round 2 completed the curve: r0 112 -> r1 138 (+26) ->
+r2 139 (+1).** The entire climb happens in ONE round; the plateau
+arrives immediately after, from either starting point (mature lineage
+tied at its own round 2 as well). The limit-of-self-teaching answer,
+final form: expert iteration is a step function to the reachable-set
+ceiling, not a gradual ascent — and only new operators (mechanism 2)
+move the ceiling itself.
+
+## The autopsy ladder (failure census → operator rules, one rung each)
+
+Method: run the best structural engine at budget 400 on int L3/L4
+(n=30/level, same seeds every rung), dump every failure with the state
+it died on, classify, implement the top family, repeat. Both earlier
+ceiling-movers (euler, i_apart) came from reading ONE failing problem;
+this industrializes that.
+
+| rung | config | L3 | L4 |
+|---|---|---|---|
+| 0 | baseline movers | 28/30 | 12/30 |
+| 1 | +i_cyclic (unsmoothed prior) | 29/30 | 12/30 |
+| 2 | +i_unprod, i_ansatz_exp, i_linear_basis, smoothing | **30/30** | 17/30 |
+| 3 | +trig-power basis (sin^a cos^b monomials) | **30/30** | **19/30** |
+
+After rung 3, 10 of the 11 remaining L4 failures are WALL timeouts —
+the missing-operator story is over; the residual is expression-size
+economics (sympy op costs exploding on monster integrands), which is
+an optimization problem, not a capability one. The trig-power rung
+also subsumed the ORIGINAL euler ceiling (int sin^2 = x/2 - sin*cos/2
+lives in the span) and the i_usub showcase (sin(x^2)): the linear
+solve is eating the rule ladder from below.
+
+Rules born from the census: **i_cyclic** (exp·trig closed forms — the
+winning step is algebra on the equation I = f − I, outside the rewrite
+space entirely), **i_unprod** (reverse product rule: expanded
+d/dx[f·G(u)] sums whose halves no single Mul node holds), 
+**i_ansatz_exp** (P(x)·e^w by undetermined coefficients),
+**i_linear_basis** (bidirectional search collapsed into linear
+algebra: d/dx is linear, so meet-in-the-middle over answer shapes is
+ONE matrix solve — subsumes the other three and reaches mixed
+exp·trig·poly products none of them can). Rung 1's stuck-at-29 was
+itself a finding: the search REACHED the i_cyclic node but the
+unsmoothed markov prior scored the unseen rule 0.0 and the top-3 cut
+dropped it — mined priors structurally suppress new capabilities
+(fixed: unseen rules get median unigram mass; regression-tested).
+Remaining L4 failures: 10 wall-timeouts on expression blow-up + trig
+POWERS (sin^k·cos shapes, a basis extension) + non-polynomial inner
+args (trig-in-trig, sqrt args).
+
+## Best-first beats the beam (Dijkstra's question, finally askable)
+
+Priority-queue best-first (pop min(g·plies + markov-guided h), top-3
+expansion, sampled verification) vs the width-2 beam at equal node
+budgets, n=15/cell over diff/int L2-3 @ 25/50 nodes: **bf-g0 104,
+bf-g1 101, bf-g5 101, beam-w2 91**. Two findings: (1) an asynchronous
+frontier strictly beats the depth-synchronized beam — the beam wastes
+budget expanding whole plies when one branch is clearly best; (2) with
+the frontier finally asynchronous, g is askable and the answer is
+**greedy wins**: pure-h (g=0) edges the Dijkstra-weighted variants.
+In a domain where any solution is a proof (verifier-checked), path
+length is not a cost worth trading nodes for. The wins concentrate
+exactly where the beam was weakest (diff, tight budgets: 13/15 vs
+6/15 at diff L2 @ 25); on integration cells the two tie — the
+saturation there is rule-coverage, not search discipline.
+
+Follow-up race decomposed the win and set a new record (same cells,
+g=0, n=15): **bf-nnue 113, bf-struct 103, bf-nodedup 82** (beam-w2
+was 91). Both searches carry a transposition table (beam_search has
+had `visited` since rung 1), so the decomposition is clean:
+asynchrony is worth +12 given dedup (103 v 91, like-for-like), and
+dedup is worth +21 within best-first (103 v 82) — the frontier
+re-treads commuting rewrite orders far more than a synchronized ply
+does, so the visited-set matters MORE the more selective the search.
+And NNUE finally pays: in the beam it managed only a photo finish
+(93 v 92) because beams rank equal-depth siblings — a low bar.
+Best-first is h-dominated (pop order IS the eval), and the
++0.937-vs-+0.72 rho gap converts to +10 solves, including breaking
+the int L3 11/15 plateau (13/15 at both budgets) that every beam
+config had called a rule-coverage ceiling. 113/120 = 94.2%, the best
+structural (zero-LLM) result to date.
+
+Full stack (bf + NNUE h + entropy-gated 0.5B confidence, the three
+winners in one search): **114/120 (95.0%)**, the all-time record —
+but honestly a photo finish over markov's 113 (prior NNUE jitter was
+±2). The clean signal inside it: **diff sweeps 60/60**, the first
+perfect kind, while int L3 @ 25 dips 11 v 13 — the known
+overcommitment failure (tight budget + hardest level, confidence
+goes narrow when flat top-3 should have stayed wide). Verdict
+unchanged from the beam era: the GPU buys confidence, not choice —
+and on this problem distribution the free bigram dict remains the
+engineering pick (`engine.solve()` default stands).
 
 ## The component taxonomy (what actually carries what)
 
@@ -85,10 +230,15 @@ level — width hedges).
    Self-teaching optimizes within the closure; representations enlarge
    it. The limit of self-teaching is the limit of self-checking.
 
-Tabula rasa (AlphaZero-way ablation): round 0, knowledge-free (random
-k1 dives, count_ops tie-break, verifier only) solves 63% overall —
-perfect at L1-2, cliff at L4 (4/20, 2/20): the implicit curriculum.
-Round 1+ in progress at write time.
+Tabula rasa (AlphaZero-way ablation), the curve completed: round 0,
+knowledge-free (random k1 dives, count_ops tie-break, verifier only)
+solves 63% overall — perfect at L1-2, cliff at L4. Round 1 (trained
+only on its own random wins): **112 → 138 (+26, both L4 cells
+~double)**. Round 2: **139 (+1)** — the plateau arrives immediately,
+matching the mature lineage's 40v40 at ITS round 2. **Self-teaching
+is a step function to the reachable-set ceiling: the entire climb
+happens in one round, from either starting point; only new operators
+move the ceiling.**
 
 ## Engineering findings (each measured, each guarded in code)
 
@@ -107,7 +257,11 @@ Round 1+ in progress at write time.
   d_product→d_const highway (14.8% of winning-path traffic) pays +12;
   the textbook quotient rule (zero traffic) never fired.
 
-## Honest nulls (all pre-registered or instrumented)
+## The experiment ledger: wins, nulls, and lessons (days 3-4, chronological)
+
+*Everything below is pre-registered or instrumented; wins and nulls
+interleaved as they happened, because the nulls carry as much design
+information as the wins.*
 
 Prior re-mining from mixed-quality paths: control DROPPED 334 -> 300
 when 41% of mined rows came from random-search wins (tabula lineage)
@@ -245,49 +399,6 @@ the question the beam structurally couldn't.) prop3+nnue stacking at high budget
 collapses to 6/15 under the wall (spend wall-clock on nodes, not
 double ranking).
 
-## Best-first beats the beam (Dijkstra's question, finally askable)
-
-Priority-queue best-first (pop min(g·plies + markov-guided h), top-3
-expansion, sampled verification) vs the width-2 beam at equal node
-budgets, n=15/cell over diff/int L2-3 @ 25/50 nodes: **bf-g0 104,
-bf-g1 101, bf-g5 101, beam-w2 91**. Two findings: (1) an asynchronous
-frontier strictly beats the depth-synchronized beam — the beam wastes
-budget expanding whole plies when one branch is clearly best; (2) with
-the frontier finally asynchronous, g is askable and the answer is
-**greedy wins**: pure-h (g=0) edges the Dijkstra-weighted variants.
-In a domain where any solution is a proof (verifier-checked), path
-length is not a cost worth trading nodes for. The wins concentrate
-exactly where the beam was weakest (diff, tight budgets: 13/15 vs
-6/15 at diff L2 @ 25); on integration cells the two tie — the
-saturation there is rule-coverage, not search discipline.
-
-Follow-up race decomposed the win and set a new record (same cells,
-g=0, n=15): **bf-nnue 113, bf-struct 103, bf-nodedup 82** (beam-w2
-was 91). Both searches carry a transposition table (beam_search has
-had `visited` since rung 1), so the decomposition is clean:
-asynchrony is worth +12 given dedup (103 v 91, like-for-like), and
-dedup is worth +21 within best-first (103 v 82) — the frontier
-re-treads commuting rewrite orders far more than a synchronized ply
-does, so the visited-set matters MORE the more selective the search.
-And NNUE finally pays: in the beam it managed only a photo finish
-(93 v 92) because beams rank equal-depth siblings — a low bar.
-Best-first is h-dominated (pop order IS the eval), and the
-+0.937-vs-+0.72 rho gap converts to +10 solves, including breaking
-the int L3 11/15 plateau (13/15 at both budgets) that every beam
-config had called a rule-coverage ceiling. 113/120 = 94.2%, the best
-structural (zero-LLM) result to date.
-
-Full stack (bf + NNUE h + entropy-gated 0.5B confidence, the three
-winners in one search): **114/120 (95.0%)**, the all-time record —
-but honestly a photo finish over markov's 113 (prior NNUE jitter was
-±2). The clean signal inside it: **diff sweeps 60/60**, the first
-perfect kind, while int L3 @ 25 dips 11 v 13 — the known
-overcommitment failure (tight budget + hardest level, confidence
-goes narrow when flat top-3 should have stayed wide). Verdict
-unchanged from the beam era: the GPU buys confidence, not choice —
-and on this problem distribution the free bigram dict remains the
-engineering pick (`engine.solve()` default stands).
-
 ## T-count engine, day one (rungs 0-2, ZX/pyzx)
 
 Engine live (`llmopt/search/zx_engine.py`, `scripts/bench_zx.py`):
@@ -330,98 +441,6 @@ teleport/round-trip; unsafe_* moves corrupt; densification bombs;
 unextractable-T fiction); and the honest conclusion that beating
 greedy here needs the literature's heavier machinery (phase-poly/
 TODD-class moves) — future work, cleanly scoped.
-
-## 360/360 — THE BENCHMARK IS SOLVED
-
-The 356 record's single holdout (int L3, budget-invariant) was
-autopsied within the hour: `int 5(2x(x+1)e^x + 1)/x` — a POLICY miss
-(the shipped beam engine solved it in 6 plies; the record config's
-confidence gate overcommitted) sitting on a RULE gap (the 5/x Laurent
-term broke i_linear_basis's Poly call, so the one-step solution was
-invisible). The Laurent extension (split x^-n tails analytically,
-log for n=1) made the holdout a one-ply solve; the re-run scored
-**360/360**. Full lineage on identical seeds: 265 -> 300 -> 316 ->
-328 -> 343 -> 349 -> 356 -> **360 (100%)**. The held-out benchmark
-that opened at 73.6% four days ago is closed. Next frontier: the L4
-matrix (int L4 best known: 19/30 autopsy, 36/40 champion-harvest at
-budget 300) and new domains (ZX/T-count engine, proofs).
-
-## THE RECORD: 356/360 (98.9%) — the full stack
-
-Every proven component in one search for the first time
-(`scripts/bench_record.py`): best-first frontier + NNUE h + markov
-ranking + LLM entropy-gated k (T=0.1) + Liouville magic pruning.
-**356/360 — perfect on 20 of 24 cells** (all of diff, all of int
-L1-2 at every budget); the only holdout is int L3 at 14/15 across
-all four budgets (one stubborn problem, budget-invariant — a
-capability miss, not a search miss). Lineage on identical seeds:
-265 (day-1 full enumeration) -> 300 -> 316 -> 328 -> 343 -> 349 ->
-**356**. Each arrow is one measured component; the stack is the
-paper.
-
-## The hybrid record: 349/360 (96.9%), honestly decomposed
-
-Artin's question ("could the dict rank while the 0.5B gates?") was the
-one untested cell of the ranking-x-confidence matrix. Measured on the
-standard 24 cells, same seeds, WITH the autopsy rules:
-markov3 fixed-k3 control **334** (the new operators alone lifted the
-dict +18 over its 316-era self); hybrid (markov ranks, LLM
-entropy-gates k at T=0.1) **349** — the confidence gating is worth
-**+15 on top of identical ranking and rules**, the largest confidence
-premium measured. Thesis confirmed at record scale: choice is grammar
-(free), confidence is the GPU's entire job (and it's worth paying
-for). n=30 confirmation: **694/720 (96.4%)** — the record holds at
-double the sample. Tabula-rasa round 1 landed the same night: r0 random 112 vs
-r1 trained 138 (+26; int L4 7->15, diff L4 6->13, 651 rows) — paired
-with the mature lineage's 40v40 curve-point tie, the self-teaching
-curve is now measured at both ends: steep far from the ceiling, flat
-against it. **Round 2 completed the curve: r0 112 -> r1 138 (+26) ->
-r2 139 (+1).** The entire climb happens in ONE round; the plateau
-arrives immediately after, from either starting point (mature lineage
-tied at its own round 2 as well). The limit-of-self-teaching answer,
-final form: expert iteration is a step function to the reachable-set
-ceiling, not a gradual ascent — and only new operators (mechanism 2)
-move the ceiling itself.
-
-## The autopsy ladder (failure census → operator rules, one rung each)
-
-Method: run the best structural engine at budget 400 on int L3/L4
-(n=30/level, same seeds every rung), dump every failure with the state
-it died on, classify, implement the top family, repeat. Both earlier
-ceiling-movers (euler, i_apart) came from reading ONE failing problem;
-this industrializes that.
-
-| rung | config | L3 | L4 |
-|---|---|---|---|
-| 0 | baseline movers | 28/30 | 12/30 |
-| 1 | +i_cyclic (unsmoothed prior) | 29/30 | 12/30 |
-| 2 | +i_unprod, i_ansatz_exp, i_linear_basis, smoothing | **30/30** | 17/30 |
-| 3 | +trig-power basis (sin^a cos^b monomials) | **30/30** | **19/30** |
-
-After rung 3, 10 of the 11 remaining L4 failures are WALL timeouts —
-the missing-operator story is over; the residual is expression-size
-economics (sympy op costs exploding on monster integrands), which is
-an optimization problem, not a capability one. The trig-power rung
-also subsumed the ORIGINAL euler ceiling (int sin^2 = x/2 - sin*cos/2
-lives in the span) and the i_usub showcase (sin(x^2)): the linear
-solve is eating the rule ladder from below.
-
-Rules born from the census: **i_cyclic** (exp·trig closed forms — the
-winning step is algebra on the equation I = f − I, outside the rewrite
-space entirely), **i_unprod** (reverse product rule: expanded
-d/dx[f·G(u)] sums whose halves no single Mul node holds), 
-**i_ansatz_exp** (P(x)·e^w by undetermined coefficients),
-**i_linear_basis** (bidirectional search collapsed into linear
-algebra: d/dx is linear, so meet-in-the-middle over answer shapes is
-ONE matrix solve — subsumes the other three and reaches mixed
-exp·trig·poly products none of them can). Rung 1's stuck-at-29 was
-itself a finding: the search REACHED the i_cyclic node but the
-unsmoothed markov prior scored the unseen rule 0.0 and the top-3 cut
-dropped it — mined priors structurally suppress new capabilities
-(fixed: unseen rules get median unigram mass; regression-tested).
-Remaining L4 failures: 10 wall-timeouts on expression blow-up + trig
-POWERS (sin^k·cos shapes, a basis extension) + non-polynomial inner
-args (trig-in-trig, sqrt args).
 
 ## Origin story, closed
 
