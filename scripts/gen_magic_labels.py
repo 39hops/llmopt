@@ -63,12 +63,13 @@ def _worker(level: int, seed: int, budget: int, q: "mp.Queue") -> None:
     })
 
 
-def solve_isolated(level: int, seed: int, budget: int) -> "dict | None":
+def solve_isolated(level: int, seed: int, budget: int,
+                   wall: "int | None" = None) -> "dict | None":
     ctx = mp.get_context("fork")
     q = ctx.Queue()
     proc = ctx.Process(target=_worker, args=(level, seed, budget, q))
     proc.start()
-    proc.join(WORKER_WALL)
+    proc.join(wall or WORKER_WALL)
     if proc.is_alive():
         proc.kill()
         proc.join()
@@ -80,6 +81,52 @@ def solve_isolated(level: int, seed: int, budget: int) -> "dict | None":
         return q.get(timeout=10)
     except Exception:
         return None  # worker crashed before reporting
+
+
+def _run_parallel(jobs, walls, budget, f, workers: int) -> int:
+    """N isolated workers at once — labeling is embarrassingly
+    parallel (fork-isolated, no shared state), and the sequential
+    sweep was leaving ~8 cores idle. Each running job keeps its own
+    deadline; overruns get the same SIGKILL discipline."""
+    import time
+    ctx = mp.get_context("fork")
+    pending = list(reversed(jobs))
+    running = {}  # proc -> (level, seed_abs, queue, deadline)
+    rows = 0
+    while pending or running:
+        while pending and len(running) < workers:
+            level, seed_abs = pending.pop()
+            q = ctx.Queue()
+            p = ctx.Process(target=_worker,
+                            args=(level, seed_abs, budget, q))
+            p.start()
+            running[p] = (level, seed_abs, q,
+                          time.monotonic()
+                          + walls.get((level, seed_abs), WORKER_WALL))
+        time.sleep(0.3)
+        for p in list(running):
+            level, seed_abs, q, deadline = running[p]
+            if p.is_alive() and time.monotonic() < deadline:
+                continue
+            if p.is_alive():
+                p.kill()
+                p.join()
+                print(f"L{level} seed {seed_abs}: SKIP (wall)",
+                      flush=True)
+            else:
+                try:
+                    row = q.get(timeout=10)
+                    f.write(json.dumps(row) + "\n")
+                    f.flush()
+                    rows += 1
+                    if rows % 25 == 0:
+                        print(f"[{rows}] L{level} seed {seed_abs}: "
+                              f"solved={row['solved']}", flush=True)
+                except Exception:
+                    print(f"L{level} seed {seed_abs}: SKIP (crash)",
+                          flush=True)
+            del running[p]
+    return rows
 
 
 def _estimator_order(jobs: list) -> "tuple[list, dict]":
@@ -116,8 +163,8 @@ def _estimator_order(jobs: list) -> "tuple[list, dict]":
 
 
 def main(per_level: int, budget: int, out: Path, levels,
-         seed_base: int = 700_000, guided: bool = False) -> None:
-    global WORKER_WALL
+         seed_base: int = 700_000, guided: bool = False,
+         workers: int = 1) -> None:
     jobs = [(level, seed_base + s)
             for level in levels for s in range(per_level)]
     walls = {}
@@ -125,22 +172,23 @@ def main(per_level: int, budget: int, out: Path, levels,
         jobs, walls = _estimator_order(jobs)
         print(f"guided: walls [{min(walls.values())}, "
               f"{max(walls.values())}]s, cheapest-first", flush=True)
-    rows = 0
     with out.open("w") as f:
-        for level, seed_abs in jobs:
-                seed = seed_abs - seed_base
-                WORKER_WALL = walls.get((level, seed_abs), WORKER_WALL)
-                row = solve_isolated(level, seed_abs, budget)
+        if workers > 1:
+            rows = _run_parallel(jobs, walls, budget, f, workers)
+        else:
+            rows = 0
+            for level, seed_abs in jobs:
+                row = solve_isolated(level, seed_abs, budget,
+                                     walls.get((level, seed_abs)))
                 if row is None:
-                    print(f"L{level} seed {seed}: SKIP (hung/crashed)",
-                          flush=True)
+                    print(f"L{level} seed {seed_abs}: SKIP", flush=True)
                     continue
                 f.write(json.dumps(row) + "\n")
                 f.flush()
                 rows += 1
-                if seed % 25 == 0:
-                    print(f"L{level} seed {seed}: solved={row['solved']} "
-                          f"nodes={row['nodes']}", flush=True)
+                if rows % 25 == 0:
+                    print(f"[{rows}] L{level} seed {seed_abs}: "
+                          f"solved={row['solved']}", flush=True)
     print(f"wrote {rows} rows -> {out}")
 
 
@@ -154,5 +202,7 @@ if __name__ == "__main__":
                     default=[1, 2, 3, 4, 5])
     ap.add_argument("--seed-base", type=int, default=700_000)
     ap.add_argument("--guided", action="store_true")
+    ap.add_argument("--workers", type=int, default=1)
     a = ap.parse_args()
-    main(a.per_level, a.budget, a.out, a.levels, a.seed_base, a.guided)
+    main(a.per_level, a.budget, a.out, a.levels, a.seed_base, a.guided,
+         a.workers)
