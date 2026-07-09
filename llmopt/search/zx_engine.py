@@ -35,11 +35,13 @@ class ZXState:
     history: tuple = field(default_factory=tuple)
 
     def key(self) -> str:
-        # syntactic dedup (like srepr): stable stats + adjacency string
+        # syntactic dedup (like srepr), md5'd: raw adjacency strings
+        # are 10-100KB each and OOM'd a 30-circuit race on the Mac
+        import hashlib
         gs = self.g
         vs = sorted((gs.type(v), str(gs.phase(v)),
                      tuple(sorted(gs.neighbors(v)))) for v in gs.vertices())
-        return str(vs)
+        return hashlib.md5(str(vs).encode()).hexdigest()
 
 
 def _phases_ok(g) -> bool:
