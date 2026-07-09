@@ -42,6 +42,10 @@ handled in-tree: no `from_legacy_cache`, `apply_chat_template` returns an
 Encoding (go through `tokenize=False`), `cumulative_length` fills need
 `inference_mode`. StaticCache max_len is bucketed to 512 under compiled
 steps — every distinct length re-captures the CUDA graph (~12 s).
+WSL venv has NO C compiler: torch's `_native` eager router JITs triton
+kernels for aten ops (Qwen RoPE) even WITHOUT torch.compile —
+`TORCH_COMPILE_DISABLE`/`TORCHDYNAMO_DISABLE` don't stop it; set
+`TORCH_DISABLE_NATIVE_JIT=1` (knob lives in `torch/_native/common_utils.py`).
 
 **Mac (36GB, Apple silicon)**: MLX backend in `backends/mlx_backend.py`,
 Metal kernels in `kernels/metal.py`. Split-K decode (single-head +
