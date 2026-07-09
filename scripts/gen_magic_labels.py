@@ -42,7 +42,10 @@ from llmopt.search.magic import is_dead
 # fork a worker per problem (sympy already imported, fork is cheap),
 # join with a deadline, SIGKILL on overrun. The kill also discards
 # any sympy cache corruption a pathological problem left behind.
-WORKER_WALL = 150  # seconds; > the engine's own budget comfortably
+WORKER_WALL = 300  # seconds. NOT 150: an honest UNSOLVED search at
+# budget 200 can take >150s, and a tight wall silently eats exactly
+# the negatives the solved-head needs (measured: L4 seed 700001,
+# solved=False, walled at 150s but completes under 300)
 
 
 def _worker(level: int, seed: int, budget: int, q: "mp.Queue") -> None:

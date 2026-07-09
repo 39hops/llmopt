@@ -60,7 +60,11 @@ def gen_labels(per_cell: int, cap: int) -> None:
 
 
 def train_head(epochs: int, batch: int,
-               unfreeze_lora: bool = False) -> None:
+               unfreeze_lora: bool = False, layer: int = -1) -> None:
+    # layer: which hidden layer the head reads. -1 = last (the v1-v3
+    # probe point). Global-workspace paper (2026-07-09): flexible-
+    # reasoning representations live in MIDDLE layers (~38-92% depth);
+    # last layers are collapsing toward output. Sweep to test.
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -109,8 +113,10 @@ def train_head(epochs: int, batch: int,
         ctx = torch.enable_grad() if grad else torch.no_grad()
         with ctx:
             out = model.model(input_ids=enc.input_ids,
-                              attention_mask=enc.attention_mask)
-        h = out.last_hidden_state
+                              attention_mask=enc.attention_mask,
+                              output_hidden_states=True)
+        # hidden_states[0] = embeddings, [n_layers] = last
+        h = out.hidden_states[layer]
         # last REAL token per row (right padding)
         idx = enc.attention_mask.sum(1) - 1
         return h[torch.arange(h.shape[0]), idx].to(torch.float32)
@@ -149,7 +155,10 @@ def train_head(epochs: int, batch: int,
     import torch as _t
     out_name = ("checkpoints/value_head_v2.pt" if unfreeze_lora
                 else "checkpoints/value_head.pt")
-    payload = {"state_dict": head.state_dict(), "mean": mean, "std": std}
+    if layer != -1:
+        out_name = out_name.replace(".pt", f"_L{layer}.pt")
+    payload = {"state_dict": head.state_dict(), "mean": mean, "std": std,
+               "layer": layer}
     if unfreeze_lora:
         payload["lora"] = {k: v for k, v in model.state_dict().items()
                            if k.endswith((".a", ".b"))}
@@ -166,9 +175,11 @@ if __name__ == "__main__":
     ap.add_argument("--cap", type=int, default=1500)
     ap.add_argument("--epochs", type=int, default=10)
     ap.add_argument("--batch", type=int, default=32)
+    ap.add_argument("--layer", type=int, default=-1)
     a = ap.parse_args()
     signal.signal(signal.SIGALRM, _alarm)
     if a.gen_labels:
         gen_labels(a.per_cell, a.cap)
     if a.train:
-        train_head(a.epochs, a.batch, unfreeze_lora=a.unfreeze_lora)
+        train_head(a.epochs, a.batch, unfreeze_lora=a.unfreeze_lora,
+                   layer=a.layer)
