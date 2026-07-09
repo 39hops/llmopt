@@ -367,6 +367,7 @@ def beam_search(
     | None = None,
     propose_k: int | Callable[..., int] | None = None,
     verify_p: float = 1.0,
+    state_filter: "Callable[[State], bool] | None" = None,
 ) -> SearchResult:
     """Minimize hce over the rewrite tree. Returns the best solved
     state found, else the best-evaluated state at exhaustion."""
@@ -397,6 +398,8 @@ def beam_search(
                 if child.key() in visited:
                     continue
                 visited.add(child.key())
+                if state_filter is not None and not state_filter(child):
+                    continue  # e.g. magic.is_dead: theorem-certified cut
                 if trace is not None:
                     trace.append(child)
                 nodes += 1

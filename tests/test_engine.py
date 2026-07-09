@@ -30,3 +30,22 @@ def test_prior_roundtrip():
             {"state": "t", "moves": ["b@2", "a@1"], "answer": 0}]
     q = MarkovPrior.from_rows(rows)
     assert q.bigram["a"]["b"] == 1
+
+
+def test_magic_pruning_in_engine():
+    """engine.solve prunes Risch-certified dead states by default and
+    still solves the standard cases; the detector itself certifies
+    the canonical non-elementary integrand."""
+    import sympy as sp
+
+    from llmopt.search.derivation import State
+    from llmopt.search.engine import solve
+    from llmopt.search.magic import is_dead
+
+    x = sp.Symbol("x")
+    assert is_dead(State(sp.Integral(sp.exp(x**2), x)))
+    assert not is_dead(State(sp.Integral(sp.exp(x), x)))
+    r = solve(sp.Integral(x * sp.cos(x), x), budget=150)
+    assert r.solved
+    r2 = solve(sp.Integral(x * sp.cos(x), x), budget=150, magic=False)
+    assert r2.solved

@@ -81,20 +81,28 @@ class MarkovPrior:
 def solve(expr: sp.Expr, *, budget: int = 200,
           prior: MarkovPrior | None = None,
           llm_score_fn: Callable | None = None,
-          use_macros: bool = True) -> SearchResult:
+          use_macros: bool = True, magic: bool = True) -> SearchResult:
     """Solve with the measured-best configuration.
 
-    Without llm_score_fn: markov3 @ width 2 (316/360-class, zero NN).
-    With it (an hf_score_fn over the LoRA'd proposer): entropy-gated
-    adaptive k at T=0.1, k_max=3 (337/360-class record config)."""
+    Without llm_score_fn: markov3 @ width 2 (334/360-class with the
+    autopsy rules, zero NN). With it: hybrid markov-ranks +
+    entropy-gated k at T=0.1 (349/360-class record config).
+    magic=True prunes Risch-certified dead states (RESULTS: +1
+    replicated, 71 cuts at int L4, provably zero false positives)."""
+    state_filter = None
+    if magic:
+        from llmopt.search.magic import is_dead
+        state_filter = lambda s: not is_dead(s)  # noqa: E731
     if llm_score_fn is not None:
         return beam_search(
             expr, width=2, max_plies=24, max_nodes=budget,
             proposer=make_scoring_proposer(llm_score_fn),
             propose_k=entropy_k(1, 3, temperature=0.1),
-            use_macros=use_macros, verify_p=0.1)
+            use_macros=use_macros, verify_p=0.1,
+            state_filter=state_filter)
     prior = prior or MarkovPrior.load()
     return beam_search(
         expr, width=2, max_plies=24, max_nodes=budget,
         proposer=prior.proposer(), propose_k=3,
-        use_macros=use_macros, verify_p=0.1)
+        use_macros=use_macros, verify_p=0.1,
+        state_filter=state_filter)
