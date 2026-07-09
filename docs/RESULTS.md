@@ -288,6 +288,28 @@ unchanged from the beam era: the GPU buys confidence, not choice —
 and on this problem distribution the free bigram dict remains the
 engineering pick (`engine.solve()` default stands).
 
+## T-count engine, day one (rungs 0-2, ZX/pyzx)
+
+Engine live (`llmopt/search/zx_engine.py`, `scripts/bench_zx.py`):
+states = ZX graphs, (rule,site) moves from pyzx check/apply pairs +
+whole-graph macros (incl. macro-greedy full_reduce), eval = T-count,
+boundary oracle = extract-then-tensor-compare. Three memory bombs
+found and guarded in one afternoon (raw-string keys; lcomp/pivot
+densification cascades — edge-cap at insertion works here because
+graph size is free to read; treewidth-exponential tensor contraction
+on search products — 24GB, extract a circuit first). One soundness
+catch: pyzx's `unsafe_pivot_*` moves corrupted 17/30 reductions and
+THE BOUNDARY ORACLE CAUGHT ALL OF THEM — the verify-at-the-boundary
+discipline transferred to the new domain and paid immediately.
+**Rung-2 verdict (pre-registered bar: search wins >= 20%): FAILED
+honestly — 0 wins, 30/30 exact ties, 0 verify-failures** on random
+q6/d120 CNOT+H+T circuits. With macro-greedy in the move set, search
+is guaranteed >= greedy and found nothing beyond it: full_reduce is
+near-optimal ON RANDOM CIRCUITS (consistent with the literature —
+the known gains live on STRUCTURED circuits: adders, Toffoli-heavy
+arithmetic). Rung 3: structured benchmark suite + markov prior over
+ZX rewrites.
+
 ## 360/360 — THE BENCHMARK IS SOLVED
 
 The 356 record's single holdout (int L3, budget-invariant) was
