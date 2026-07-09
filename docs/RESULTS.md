@@ -549,6 +549,18 @@ retargets to the currency that DOES run out: wall-time with LLM
 calls (the hybrid's 5v3 timeout regime) — estimator decides which
 problems deserve LLM attention. Same mechanism, scarce currency.
 
+Final estimator (same night, 3,689 one-truth rows — big sweep ran
+GUIDED and 8-way parallel, the estimator accelerating its own label
+generation; 46 stale rows relabeled after the rule upgrades): **rf
+rho 0.906 / AUC 0.986 on 1,848 held-out rows** (plain 0.858/0.981).
+More data confirmed rather than improved — with capacity ruled out
+(LLM tie) and features ruled out (Bayes floor), ~0.91 is the
+practical plateau; the residue is rank noise among near-tied easy
+problems. Second fix wave from the same pipeline: improper-rational
+division in i_inverse_trig — **same-seed L5: 42% -> 70% -> 78%
+(+20/-0)**, and the day's full solve-rate arc every step a named,
+oracle-verified rule.
+
 The autopsy paid same-day: the L5 failure clusters (root 15%,
 inverse-trig 0%) became two rules — `i_sqrt_basis` (f*sqrt(P)
 polynomial => answer in A(x)*sqrt(P), the linear-basis move with a
