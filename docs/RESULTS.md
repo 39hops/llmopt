@@ -528,9 +528,13 @@ layer**, qualitatively the paper's geography at 1/1000th scale.
 REPLICATED on two fresh splits (`--split-seed`): L20 +0.866 vs last
 +0.785, and L20 +0.818 vs last +0.773 — L20 wins all three splits,
 mean gap ~+0.05, and the original +0.015 was the SMALLEST of the
-three. Measured, not a caveat. Banked follow-up: joint value-LoRA (v3,
-+0.980) retrained at layer 20 — if the probe advantage survives
-joint training, the record config's eval upgrades for free.
+three. Measured, not a caveat. Follow-up RUN (v4): joint value-LoRA retrained at layer 20 scored
++0.970 vs v3's +0.980 at the last layer — the probe-point advantage
+does NOT survive joint training. Sharper story, not a null: L20 is
+where value lives in the FROZEN (pretrained+ranking) representation;
+a jointly-trained LoRA re-routes the trunk so the probe point stops
+mattering. Geography constrains probes, not training. Record config
+keeps v3.
 Ops note from the same run: torch's _native eager router JITs triton
 kernels WITHOUT torch.compile; on the C-compiler-less WSL box only
 TORCH_DISABLE_NATIVE_JIT=1 stops it (now in CLAUDE.md).
