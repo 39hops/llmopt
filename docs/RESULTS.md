@@ -540,6 +540,15 @@ probe of the rule set provides directly. Two-tier judge in practice:
 20-feature pass (~us) for bulk screening, +rule-fire pass (~ms) when
 the decision matters; both >> cheaper than search.
 
+Budget allocation (`bench_budget_alloc.py`, pre-registered): **exact
+tie, 86/100 both arms — and the null's diagnosis is the finding.**
+Both arms spent ~1,750 of 20,000 allowed nodes: the zero-NN engine
+is bimodal (solve in <=30 nodes or never), so node-budget is never
+binding and reallocating it buys nothing. The allocation slot
+retargets to the currency that DOES run out: wall-time with LLM
+calls (the hybrid's 5v3 timeout regime) — estimator decides which
+problems deserve LLM attention. Same mechanism, scarce currency.
+
 The autopsy paid same-day: the L5 failure clusters (root 15%,
 inverse-trig 0%) became two rules — `i_sqrt_basis` (f*sqrt(P)
 polynomial => answer in A(x)*sqrt(P), the linear-basis move with a
