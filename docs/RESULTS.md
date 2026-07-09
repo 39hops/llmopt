@@ -482,6 +482,29 @@ scales: when one macro dominates descents, top-k bigram pruning
 discards exactly the exploration the wins come from. The 293-dict
 does not transplant to this domain; ledger entry, not a bug.
 
+## The magic estimator (2026-07-09): continuous hardness, measured
+
+The continuous companion to the Risch detector (Artin's framing:
+estimate how far a state sits beyond the "stabilizer" subspace,
+fast, so the estimate itself becomes an engine component).
+Labels: 827 generated integrals (L1-L4, stream disjoint from all
+training streams), each solved by the full engine at budget 200 and
+labeled with MEASURED cost (`scripts/gen_magic_labels.py`; L4
+truncated at 77 rows — sympy pathology #7: one problem hung 90 min
+in a loop that never delivered the outer SIGALRM). Estimator: the
+20 NNUE features -> 64x64 trunk, two heads (`train_magic_estimator.py`).
+**Held-out (411 rows): rho(predicted, log-nodes) = 0.822 vs
+count_ops baseline 0.124; solved-AUC 0.967** (thin: only ~10
+held-out negatives — the rho is the robust number). Expression SIZE
+carries almost no hardness signal; structure carries most of it —
+the magic thesis in one number. Cost: microseconds per state vs
+seconds-to-minutes of search (~1e5x), so it qualifies as a
+difficulty oracle for frontier generation (expert iteration's
+continuous ladder) and a search-ordering prior. All integrands are
+elementary by construction (generator differentiates a drawn F), so
+this is deliberately the CONTINUOUS regime — the binary certificate
+already owns the far end.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

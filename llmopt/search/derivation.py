@@ -368,6 +368,7 @@ def beam_search(
     propose_k: int | Callable[..., int] | None = None,
     verify_p: float = 1.0,
     state_filter: "Callable[[State], bool] | None" = None,
+    select_fn: "Callable[[list[State], int], list[State]] | None" = None,
 ) -> SearchResult:
     """Minimize hce over the rewrite tree. Returns the best solved
     state found, else the best-evaluated state at exhaustion."""
@@ -418,7 +419,10 @@ def beam_search(
         if not candidates:
             break
         candidates.sort(key=eval_fn)
-        beam = candidates[:width]
+        # select_fn sees eval-sorted candidates; default = pure top-width
+        # (entropy-bonus experiment: bench_entropy_beam.py)
+        beam = (select_fn(candidates, width) if select_fn is not None
+                else candidates[:width])
         # a solved state that also tops the beam won't improve: stop
         if best_solved is not None and eval_fn(best_solved) <= eval_fn(beam[0]):
             break
