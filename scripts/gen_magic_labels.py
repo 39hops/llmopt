@@ -82,13 +82,55 @@ def solve_isolated(level: int, seed: int, budget: int) -> "dict | None":
         return None  # worker crashed before reporting
 
 
+def _estimator_order(jobs: list) -> "tuple[list, dict]":
+    """Artin's active-labeling move (2026-07-09): the estimator
+    improves its OWN label generation. Sort jobs by predicted cost
+    ascending (cheap labels land first — the sweep becomes anytime:
+    kill it whenever, you keep the most labels per hour) and give
+    each job a predicted wall instead of the flat 300s (a problem
+    predicted at 4 nodes doesn't deserve a 300s hang allowance).
+    Walls only affect SKIPs, never label values — a mispredicted
+    tight wall loses a label, it cannot corrupt one."""
+    import torch
+    import sys
+    sys.path.insert(0, "scripts")
+    from train_magic_estimator import Estimator
+    payload = torch.load("checkpoints/magic_estimator.pt",
+                         weights_only=False)
+    m = Estimator(d_in=len(payload["mu"]))
+    m.load_state_dict(payload["state_dict"])
+    m.eval()
+    feats = []
+    for level, seed in jobs:
+        p = make_integrate(level, seed)
+        feats.append(featurize(sp.Integral(p._expr, sp.Symbol("x"))))
+    xs = (torch.tensor(feats, dtype=torch.float32)
+          - payload["mu"]) / payload["sd"]
+    with torch.no_grad():
+        _, cost = m(xs)
+    cost = cost.tolist()
+    order = sorted(range(len(jobs)), key=lambda i: cost[i])
+    walls = {jobs[i]: int(min(max(30 * 2 ** max(cost[i], 0), 60), 300))
+             for i in range(len(jobs))}
+    return [jobs[i] for i in order], walls
+
+
 def main(per_level: int, budget: int, out: Path, levels,
-         seed_base: int = 700_000) -> None:
+         seed_base: int = 700_000, guided: bool = False) -> None:
+    global WORKER_WALL
+    jobs = [(level, seed_base + s)
+            for level in levels for s in range(per_level)]
+    walls = {}
+    if guided:
+        jobs, walls = _estimator_order(jobs)
+        print(f"guided: walls [{min(walls.values())}, "
+              f"{max(walls.values())}]s, cheapest-first", flush=True)
     rows = 0
     with out.open("w") as f:
-        for level in levels:
-            for seed in range(per_level):
-                row = solve_isolated(level, seed_base + seed, budget)
+        for level, seed_abs in jobs:
+                seed = seed_abs - seed_base
+                WORKER_WALL = walls.get((level, seed_abs), WORKER_WALL)
+                row = solve_isolated(level, seed_abs, budget)
                 if row is None:
                     print(f"L{level} seed {seed}: SKIP (hung/crashed)",
                           flush=True)
@@ -111,5 +153,6 @@ if __name__ == "__main__":
     ap.add_argument("--levels", type=int, nargs="+",
                     default=[1, 2, 3, 4, 5])
     ap.add_argument("--seed-base", type=int, default=700_000)
+    ap.add_argument("--guided", action="store_true")
     a = ap.parse_args()
-    main(a.per_level, a.budget, a.out, a.levels, a.seed_base)
+    main(a.per_level, a.budget, a.out, a.levels, a.seed_base, a.guided)
