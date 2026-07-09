@@ -147,19 +147,51 @@ def _estimator_order(jobs: list) -> "tuple[list, dict]":
     m = Estimator(d_in=len(payload["mu"]))
     m.load_state_dict(payload["state_dict"])
     m.eval()
-    feats = []
-    for level, seed in jobs:
-        p = make_integrate(level, seed)
-        feats.append(featurize(sp.Integral(p._expr, sp.Symbol("x"))))
-    xs = (torch.tensor(feats, dtype=torch.float32)
+    # make_integrate itself can hang in simplify (pathology #7) and
+    # SIGALRM does not reach it — feature the jobs in fork-isolated
+    # chunks; a hung chunk is killed and its jobs get default
+    # order/wall (lost speed, never lost soundness)
+    ctx = mp.get_context("fork")
+
+    def _chunk_feats(chunk, q):
+        out = []
+        for level, seed in chunk:
+            p = make_integrate(level, seed)
+            out.append(featurize(sp.Integral(p._expr, sp.Symbol("x"))))
+        q.put(out)
+
+    feats: dict = {}
+    CH = 25
+    for i in range(0, len(jobs), CH):
+        chunk = jobs[i:i + CH]
+        q = ctx.Queue()
+        pr = ctx.Process(target=_chunk_feats, args=(chunk, q))
+        pr.start()
+        pr.join(60)
+        if pr.is_alive():
+            pr.kill()
+            pr.join()
+            continue  # chunk hung: its jobs keep default wall/order
+        try:
+            for job, fv in zip(chunk, q.get(timeout=10)):
+                feats[job] = fv
+        except Exception:
+            continue
+    known = [j for j in jobs if j in feats]
+    unknown = [j for j in jobs if j not in feats]
+    if not known:
+        return jobs, {}
+    xs = (torch.tensor([feats[j] for j in known], dtype=torch.float32)
           - payload["mu"]) / payload["sd"]
     with torch.no_grad():
         _, cost = m(xs)
     cost = cost.tolist()
-    order = sorted(range(len(jobs)), key=lambda i: cost[i])
-    walls = {jobs[i]: int(min(max(30 * 2 ** max(cost[i], 0), 60), 300))
-             for i in range(len(jobs))}
-    return [jobs[i] for i in order], walls
+    order = sorted(range(len(known)), key=lambda i: cost[i])
+    walls = {known[i]: int(min(max(30 * 2 ** max(cost[i], 0), 60), 300))
+             for i in range(len(known))}
+    # unfeaturizable jobs go LAST with the default wall (they already
+    # smell pathological)
+    return [known[i] for i in order] + unknown, walls
 
 
 def main(per_level: int, budget: int, out: Path, levels,
