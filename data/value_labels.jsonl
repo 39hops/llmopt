@@ -1,0 +1,1500 @@
+{"state": "2*x*Integral(6, x) + 2*Integral(7, x) - 2*Integral(6, x, x)", "y": 5.459431618637297}
+{"state": "(x*Derivative(-4, x) + 2*x - 4)*cos(x**2 - 4*x + 5)", "y": 1.584962500721156}
+{"state": "Integral(7*exp(-I*x)/(2*x), x) + Integral(7*exp(I*x)/(2*x), x) + 7*I*Integral(exp(I*x)*log(x), x)/2 + Integral(-7*I*exp(-I*x)*log(x)/2, x)", "y": 8.643856189774725}
+{"state": "-(x + 4*log(x)*sin(x))*Derivative(4, x) + 4*Derivative(-x - 4*log(x)*sin(x), x)", "y": 7.321928094887363}
+{"state": "x**3*Derivative(5, x) + x**2*log(x)*Derivative(5, x) + 5*Derivative(x**3 + x**2*log(x), x)", "y": 6.507794640198696}
+{"state": "35*x**5*Derivative(log(x), x) + 175*x**4*log(x)*Derivative(x, x) - 3/x", "y": 3.0}
+{"state": "(x**3*Derivative(21, x) + 21*x**3 + 21*Derivative(x**3, x))*exp(x)", "y": 4.087462841250339}
+{"state": "x*Derivative(-3, x) - 8*cos(x) + Derivative(7*x**4, x) + Derivative(-7*x**5, x) - 3", "y": 6.189824558880018}
+{"state": "x**2*(Derivative(5*x, x) + Derivative(5*log(x), x)) + (5*x + 5*log(x))*Derivative(x**2, x)", "y": 6.9886846867721655}
+{"state": "2*x**2 - Integral(-Integral(8, x)/x**2, x) + Integral(8, x)/x", "y": 5.754887502163468}
+{"state": "7*log(x)*cos(x) + 7*sin(x)*Derivative(log(x), x)", "y": 2.584962500721156}
+{"state": "exp(x)*Derivative(4, x) + Derivative(-8*x**3, x) + 4*Derivative(exp(x), x) + Derivative(8*cos(x), x)", "y": 7.076815597050831}
+{"state": "Integral(2*(6*x + 7), x)", "y": 5.459431618637297}
+{"state": "-48*(x*log(x) - x)*sin(x) + 48*(x*log(x) - x)*Integral(cos(x), x) + 48*Integral(cos(x)/x, x) - 48*Integral(log(x)*Integral(cos(x), x), x)", "y": 8.643856189774725}
+{"state": "2*x**2 + x*Derivative(2*x**2 + 4, x) + 4", "y": 5.614709844115208}
+{"state": "-7*(x*log(x) - x)*sin(x) + cos(x)*Integral(7/x, x) + 7*Integral((x*log(x) - x)*cos(x), x) - Integral(-sin(x)*Integral(7/x, x), x)", "y": 8.643856189774725}
+{"state": "x**5*Derivative(-7, x) - 35*x**4*Derivative(x, x) + sin(x)*Derivative(-8, x) + Derivative(-3*x, x) + Derivative(7*x**4, x) - 8*Derivative(sin(x), x)", "y": 7.139551352398794}
+{"state": "-7*x**5 + 5*sin(x) + Integral(6/x, x)", "y": 3.4594316186372973}
+{"state": "Integral(-2*Integral(-Integral(9*x*exp(x) + 4, x), x)/x**3, x) + Integral(9*x*exp(x) + 4, x)/x - Integral(-Integral(9*x*exp(x) + 4, x), x)/x**2", "y": 8.643856189774725}
+{"state": "3*(4*Integral(x, x) - Integral(5*x**2, x))", "y": 5.247927513443585}
+{"state": "x**3*Derivative(4, x) + x**2*Derivative(5, x) + Derivative(5*x, x) + 5*Derivative(x**2, x) + 4*Derivative(x**3, x)", "y": 6.321928094887363}
+{"state": "Integral(-2*Integral(35*x**6/6 - 5*x*sin(x) - 6*x - 5*cos(x), x)/x**3, x) + (-35*x**6/6 + 5*x*sin(x) + 6*x + 5*cos(x))/x - Integral(35*x**6/6 - 5*x*sin(x) - 6*x - 5*cos(x), x)/x**2", "y": 8.643856189774725}
+{"state": "4*(-x*log(x)*Derivative(4*sin(x), x) - x - 4*sin(x)*Derivative(x, x))/x", "y": 5.672425341971495}
+{"state": "x*(x*Derivative(8, x) - 3*x + 16)", "y": 1.584962500721156}
+{"state": "exp(x)*Derivative(3, x) + 3*exp(x)*Derivative(x, x) + Derivative(10*x, x) + Derivative(5*log(x), x)", "y": 6.442943495848728}
+{"state": "x**3 + x*Integral(8, x) + 9*Integral(1, x) - Integral(8, x, x)", "y": 4.954196310386875}
+{"state": "x**5*Derivative(-7, x) + x**4*Derivative(7, x) + Derivative(-3*x, x) + 7*Derivative(x**4, x) - 7*Derivative(x**5, x) + Derivative(-8*sin(x), x)", "y": 7.383704292474052}
+{"state": "x**4*Derivative(7, x) + Derivative(-3*x, x) + 7*Derivative(x**4, x) - 7*Derivative(x**5, x) + Derivative(-8*sin(x), x)", "y": 7.2384047393250786}
+{"state": "x*Integral(14, x) + 4*log(x) - Integral(14, x, x)", "y": 4.584962500721156}
+{"state": "8*Integral(1/x, x) + Integral(4*x, x)", "y": 4.523561956057013}
+{"state": "x*Derivative(-4, x) - 2*exp(x) + 7*Derivative(cos(x), x) - 4", "y": 2.584962500721156}
+{"state": "(x*(x*Derivative(10, x) + 10*Derivative(x, x)) + x*Derivative(3*exp(x), x) + 5)/x", "y": 6.044394119358453}
+{"state": "-35*x**4 + 28*x**3*Derivative(x, x) + x*Derivative(-3, x) - 3*Derivative(x, x) + Derivative(-8*sin(x), x)", "y": 4.584962500721156}
+{"state": "42*exp(x)*Integral(log(x), x) + 42*Integral(exp(x)/x, x) + Integral(log(x)*Integral(42*exp(x), x), x) - Integral(42*exp(x), x)*Integral(log(x), x)", "y": 7.139551352398794}
+{"state": "x*Derivative(6, x) + 18*x*Derivative(x, x) + Derivative(4, x) + 6", "y": 3.169925001442312}
+{"state": "x**5*Derivative(-7, x) - 35*x**4 + sin(x)*Derivative(-8, x) + Derivative(-3*x, x) + Derivative(7*x**4, x) - 8*Derivative(sin(x), x)", "y": 6.94251450533924}
+{"state": "-48*log(x)*Integral(sin(x), x) - 48*Integral(-Integral(sin(x), x, x)/x**2, x) + Integral(48*cos(x)/x, x) + 48*Integral(sin(x), x, x)/x", "y": 8.643856189774725}
+{"state": "9*x*exp(x)*Integral(1/x, x) + 4*Integral(1/x, x) - Integral(9*exp(x)*Integral(1/x, x), x) - Integral(9*x*exp(x)*Integral(1/x, x), x)", "y": 8.643856189774725}
+{"state": "-4*(-exp(x) + 2*Derivative(cos(x), x))", "y": 2.584962500721156}
+{"state": "x**2*log(x)*Derivative(5, x) + 5*x**2*Derivative(log(x), x) + 5*log(x)*Derivative(x**2, x) + Derivative(5*x**3, x)", "y": 6.247927513443585}
+{"state": "(x*(x**5*log(x)*Derivative(35, x) + 35*Derivative(x**5*log(x), x)) - 3)/x", "y": 5.930737337562887}
+{"state": "x*Derivative(4, x) + 3*Derivative(x**2, x) + 4", "y": 2.807354922057604}
+{"state": "-Integral(-(Integral(4, x) + Integral(9*x*exp(x), x))/x**2, x) + (Integral(4, x) + Integral(9*x*exp(x), x))/x", "y": 8.643856189774725}
+{"state": "(x**2 + 2)*Integral(4/x, x) - 2*Integral(x*Integral(4/x, x), x)", "y": 6.857980995127572}
+{"state": "7*exp(x)*Derivative(x, x) + Derivative(-8*x, x) + Derivative(4*cos(x), x)", "y": 5.584962500721156}
+{"state": "x**3*Derivative(21*exp(x), x) + 63*x**2*exp(x)*Derivative(x, x)", "y": 5.20945336562895}
+{"state": "5*x**2*Derivative(log(x), x) + log(x)*Derivative(5*x**2, x) + 5*Derivative(x**3, x)", "y": 6.20945336562895}
+{"state": "-4*Derivative(x, x) - 4*Derivative(4*log(x)*sin(x), x)", "y": 6.599912842187128}
+{"state": "-48*log(x)*Integral(sin(x), x) - 48*Integral(-cos(x)/x, x) + 48*Integral(Integral(sin(x), x)/x, x)", "y": 3.321928094887362}
+{"state": "x**2*Integral(15, x) + 3*x - Integral(15, x)*Integral(2*x, x) + Integral(15*Integral(2*x, x), x)", "y": 5.977279923499917}
+{"state": "-4*(6*x**2 - exp(x)*Derivative(x, x) + 2*sin(x))", "y": 1.584962500721156}
+{"state": "(-5*exp(x) + cos(x))*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "x**3*(exp(x)*Derivative(21, x) + 21*exp(x)) + 21*exp(x)*Derivative(x**3, x)", "y": 4.643856189774724}
+{"state": "14*x*Derivative(x, x) + Derivative(2, x) - 5*Derivative(x, x)", "y": 2.321928094887362}
+{"state": "2*Integral(2/x, x) + 2*Integral(7*x, x)", "y": 5.247927513443585}
+{"state": "(-35*x**6 - 6*x*((35*x**6 - 30*x*sin(x) - 36*x - 30*cos(x))*Integral(1/(6*x**2), x) - Integral((210*x**5 - 30*x*cos(x) - 36)*Integral(1/(6*x**2), x), x)) + 30*x*sin(x) + 36*x + 30*cos(x))/(6*x)", "y": 8.643856189774725}
+{"state": "-8*cos(x) - 3*Derivative(x, x) + Derivative(7*x**4, x) + Derivative(-7*x**5, x)", "y": 5.930737337562887}
+{"state": "3*(4 - 5*x)*Integral(x, x) - Integral(-15*Integral(x, x), x)", "y": 5.357552004618084}
+{"state": "7*Integral((Integral(-x*log(x)*sin(x), x) + Integral(cos(x), x))/x**2, x) + 7*(Integral(-x*log(x)*sin(x), x) + Integral(cos(x), x))/x", "y": 8.643856189774725}
+{"state": "x*Derivative(6, x) + 18*x*Derivative(x, x) + 6", "y": 2.321928094887362}
+{"state": "Derivative(-3*x, x) + Derivative(7*x**4, x) + Derivative(-7*x**5, x) + Derivative(-8*sin(x), x)", "y": 8.643856189774725}
+{"state": "log(x)*Derivative(5, x) + Derivative(10*x, x) + 3*Derivative(exp(x), x) + 5*Derivative(log(x), x)", "y": 6.357552004618084}
+{"state": "-5*cos(x) + 7*Derivative(x**3, x) + 8", "y": 1.584962500721156}
+{"state": "sin(x)**2*Derivative(-32, x) - 64*sin(x)*cos(x)", "y": 2.0}
+{"state": "4*Integral(1, x) + 4*Integral(x, x) - 3*Integral(x**2, x)", "y": 3.0}
+{"state": "7*exp(x) - 4*sin(x)*Derivative(x, x) - 8*Derivative(x, x)", "y": 1.0}
+{"state": "2*(-3*cos(x)*Derivative(x, x) + Derivative(cos(x), x))", "y": 3.169925001442312}
+{"state": "sin(x)*Derivative(-8, x) - 3*Derivative(x, x) + Derivative(7*x**4, x) + Derivative(-7*x**5, x) - 8*Derivative(sin(x), x)", "y": 7.011227255423254}
+{"state": "2*x*cos(x**2 - 4*x + 5)*Derivative(x, x) + cos(x**2 - 4*x + 5)*Derivative(5, x) - 4*cos(x**2 - 4*x + 5)*Derivative(x, x)", "y": 3.0}
+{"state": "7*log(x)*cos(x) - 7*Integral(-Integral(-cos(x), x)/x**2, x) + 7*Integral(cos(x)/x, x) + 7*Integral(-cos(x), x)/x", "y": 8.643856189774725}
+{"state": "x**3*Derivative(5, x) + x**2*log(x)*Derivative(5, x) + 5*x**2*Derivative(x + log(x), x) + 10*x**2 + 10*x*log(x)", "y": 5.643856189774724}
+{"state": "16*x*Derivative(x, x) + Derivative(-x**3, x)", "y": 4.169925001442312}
+{"state": "x**3*Derivative(-1, x) + 16*x*Derivative(x, x) - Derivative(x**3, x)", "y": 4.0}
+{"state": "21*x**2*Derivative(x, x) - 5*cos(x)*Derivative(x, x) + 8", "y": 1.0}
+{"state": "x*(x*Derivative(5*log(x), x) + 15*x + 10*log(x)*Derivative(x, x))", "y": 5.044394119358453}
+{"state": "Derivative(7*x**2, x) - 5", "y": 2.807354922057604}
+{"state": "3*(x + 3)*Derivative(x, x)/x", "y": 2.0}
+{"state": "-8*Integral(1, x)", "y": 1.0}
+{"state": "x**3*Derivative(4, x) + 10*x + Derivative(5*x, x) + 4*Derivative(x**3, x)", "y": 4.906890595608519}
+{"state": "4*log(x) + 9*Integral(exp(x), x)", "y": 1.0}
+{"state": "9*Integral(1, x) + Integral(8*x, x) + 3*Integral(x**2, x)", "y": 5.247927513443585}
+{"state": "-Integral(-Integral(-5*x*sin(x) + 5, x)/x**2, x) + Integral(-5*x*sin(x) + 5, x)/x", "y": 8.643856189774725}
+{"state": "x*(x*((-x - 2)*Derivative(4, x) + 4*Derivative(-x - 2, x)) + 8*(-x - 2)*Derivative(x, x))", "y": 6.554588851677638}
+{"state": "x**2*Derivative(-8, x) - 8*Derivative(x**2, x) + Derivative(-4*x**3, x)", "y": 5.727920454563199}
+{"state": "-3*sin(x)*Derivative(2, x) + cos(x)*Derivative(2, x) + 2*Derivative(-3*sin(x), x) + 2*Derivative(cos(x), x)", "y": 5.807354922057604}
+{"state": "(sin(x)*Derivative(7, x) + 7*Derivative(sin(x), x))*log(x) + 7*sin(x)*Derivative(log(x), x)", "y": 5.554588851677638}
+{"state": "10*x*Derivative(x, x) + 4*Derivative(x**3, x) + 5", "y": 2.321928094887362}
+{"state": "x**2*log(x)*Derivative(5, x) + 5*x**2*Derivative(log(x), x) + 15*x**2 + 5*log(x)*Derivative(x**2, x)", "y": 4.954196310386875}
+{"state": "exp(I*x)*Integral(5/2, x) + Integral(6/x, x) + Integral(-35*x**4, x) - Integral(I*exp(I*x)*Integral(5/2, x), x) + Integral(5*exp(-I*x)/2, x)", "y": 8.643856189774725}
+{"state": "x*Derivative(-5, x) + Derivative(7*x**2, x) - 5", "y": 3.807354922057604}
+{"state": "(x**3*(Derivative(21, x) + 21) + 63*x**2*Derivative(x, x))*exp(x)", "y": 3.700439718141092}
+{"state": "35*x**4*Derivative(x, x) + log(x)*Derivative(35*x**5, x) + Derivative(-3*log(x), x)", "y": 6.741466986401147}
+{"state": "x**5*Derivative(-7, x) + x**4*Derivative(7, x) - 8*cos(x)*Derivative(x, x) + 7*Derivative(x**4, x) - 7*Derivative(x**5, x) - 3", "y": 5.523561956057013}
+{"state": "7*Integral(-2*Integral(-Integral(-x*log(x)*sin(x) + cos(x), x), x)/x**3, x) + 7*Integral(-x*log(x)*sin(x) + cos(x), x)/x - 7*Integral(-Integral(-x*log(x)*sin(x) + cos(x), x), x)/x**2", "y": 8.643856189774725}
+{"state": "x**5*Derivative(35*log(x), x) + 175*x**4*log(x)*Derivative(x, x) + log(x)*Derivative(-3, x) - 3*Derivative(log(x), x)", "y": 6.044394119358453}
+{"state": "x**3*(-16*sin(x)*Derivative(x, x) + cos(x)*Derivative(16, x)) + 48*x**2*cos(x)*Derivative(x, x)", "y": 3.700439718141092}
+{"state": "5*Derivative(x**2*(x + log(x)), x)", "y": 6.108524456778169}
+{"state": "Derivative(1, x) + 3*Derivative(x, x) + Derivative(9*log(x), x)", "y": 5.20945336562895}
+{"state": "Integral(48*cos(x)/x, x) - 48*Integral(log(x)*sin(x), x)", "y": 8.643856189774725}
+{"state": "2*x*Integral(7, x) + 4*Integral(1/x, x) - 2*Integral(7, x, x)", "y": 5.672425341971495}
+{"state": "x*(x*((-x - 2)*Derivative(4, x) + 4*Derivative(-2, x) + 4*Derivative(-x, x)) - 8*x - 16)", "y": 6.066089190457772}
+{"state": "2*(7*x + Integral(6*x, x))", "y": 3.321928094887362}
+{"state": "-3*x**2*Derivative(x, x) + 16*x + Derivative(-2, x)", "y": 2.584962500721156}
+{"state": "-(x*log(x) + 1)*Integral(exp(x)*Integral(42/x**2, x), x) + Integral(42/x**2, x)*Integral((x*log(x) + 1)*exp(x), x) + Integral((log(x) + 1)*Integral(exp(x)*Integral(42/x**2, x), x), x) + 42*Integral((x*log(x) + 1)*exp(x), x)/x", "y": 8.643856189774725}
+{"state": "Integral(3*(6*x**2 + 2*x + 1), x)", "y": 6.3750394313469245}
+{"state": "x*Derivative(3, x) + 3 + 9/x", "y": 1.584962500721156}
+{"state": "-Integral(-Integral(4, x)/x**2, x) + 9*Integral(exp(x), x) + Integral(4, x)/x", "y": 6.20945336562895}
+{"state": "x*Derivative(-2, x) - 2*Derivative(x, x)", "y": 2.0}
+{"state": "35*x**5*Derivative(log(x), x) + 35*log(x)*Derivative(x**5, x) - 3/x", "y": 3.9068905956085187}
+{"state": "x**5*Derivative(-7, x) - 35*x**4*Derivative(x, x) + Derivative(-3*x, x) + Derivative(7*x**4, x) + Derivative(-8*sin(x), x)", "y": 7.330916878114617}
+{"state": "exp(x)*Derivative(54, x) + 6*Derivative(x**5, x) + 54*Derivative(exp(x), x)", "y": 4.584962500721156}
+{"state": "2*x + Integral(18*x, x) + Integral(12*x**2, x)", "y": 5.169925001442312}
+{"state": "18*x**3 + 6*x**2 + 3*x - 3*Integral(2*x, x) - 3*Integral(12*x**2, x)", "y": 5.285402218862249}
+{"state": "x**2*Derivative(4*(-x - 2), x) + 8*x*(-x - 2)*Derivative(x, x)", "y": 6.392317422778761}
+{"state": "-2*exp(x)*Derivative(x, x) - 7*sin(x) + cos(x)*Derivative(7, x) - 4", "y": 2.0}
+{"state": "9*Derivative(x**2, x) + 6", "y": 2.321928094887362}
+{"state": "10*x*Derivative(x, x) + 5*Derivative(x, x) + Derivative(4*x**3, x)", "y": 3.700439718141092}
+{"state": "Integral(((x*log(x) + 1)*Integral(42*exp(x), x) - Integral((log(x) + 1)*Integral(42*exp(x), x), x))/x**2, x) + ((x*log(x) + 1)*Integral(42*exp(x), x) - Integral((log(x) + 1)*Integral(42*exp(x), x), x))/x", "y": 8.643856189774725}
+{"state": "x**5*Derivative(35*log(x), x) + 175*x**4*log(x) - 3/x", "y": 4.392317422778761}
+{"state": "2*x + 2*Integral(9*x, x) + 12*Integral(x**2, x)", "y": 4.643856189774724}
+{"state": "7*exp(x)*Derivative(x, x) - 4*sin(x)*Derivative(x, x) - 8", "y": 1.0}
+{"state": "-16*x - 4*Derivative(x**3, x)", "y": 2.807354922057604}
+{"state": "x**3*exp(x)*Derivative(21, x) + 21*x**3*Derivative(exp(x), x) + 21*exp(x)*Derivative(x**3, x)", "y": 5.321928094887363}
+{"state": "(x*log(x)*Derivative(9, x) + x*Derivative(1, x) + x*Derivative(3*x, x) + 9*Derivative(x, x))/x", "y": 5.906890595608519}
+{"state": "2*(Integral(7, x) + 6*Integral(x, x))", "y": 3.321928094887362}
+{"state": "(x**3*(Derivative(21, x) + 21) + 21*Derivative(x**3, x))*exp(x)", "y": 4.459431618637297}
+{"state": "x**3*Derivative(7, x) + x*Derivative(8, x) + 7*Derivative(x**3, x) - 5*Derivative(sin(x), x) + 8", "y": 5.169925001442312}
+{"state": "-4*(x*(sin(x)*Derivative(4, x) + 4*Derivative(sin(x), x))*log(x) + x + 4*sin(x)*Derivative(x, x))/x", "y": 5.357552004618084}
+{"state": "x**2*Derivative(5, x) + Derivative(7, x) + Derivative(5*x, x) + 5*Derivative(x**2, x) + 4*Derivative(x**3, x)", "y": 6.303780748177103}
+{"state": "x*Derivative(-8, x) - 4*sin(x) - 8*Derivative(x, x) + Derivative(7*exp(x), x)", "y": 4.584962500721156}
+{"state": "-48*log(x)*Integral(sin(x), x) + 48*cos(x)*Integral(1/x, x) + 48*Integral(Integral(sin(x), x)/x, x) - 48*Integral(-sin(x)*Integral(1/x, x), x)", "y": 6.507794640198696}
+{"state": "x**3*Derivative(7, x) - 5*cos(x)*Derivative(x, x) + Derivative(8*x, x) + 7*Derivative(x**3, x)", "y": 5.285402218862249}
+{"state": "Derivative(-3*x, x) + Derivative(7*x**4, x) + Derivative(-7*x**5, x) - 8*Derivative(sin(x), x)", "y": 7.312882955284356}
+{"state": "x**3*Derivative(-1, x) + x**2*Derivative(8, x) - 3*x**2*Derivative(x, x) + Derivative(-2, x) + 8*Derivative(x**2, x)", "y": 5.523561956057013}
+{"state": "-Integral(-Integral(4, x)/x**2, x) - Integral(-Integral(9*x*exp(x), x)/x**2, x) + Integral(4, x)/x + Integral(9*x*exp(x), x)/x", "y": 8.643856189774725}
+{"state": "exp(x)*Derivative(-5, x) - 5*exp(x) + cos(x)", "y": 1.0}
+{"state": "Subs(Integral(exp(u_), u_), u_, 3*x**2 - x + 3)", "y": 1.0}
+{"state": "6*cos(x) + Integral(18*x**2, x)", "y": 3.321928094887362}
+{"state": "-7*Integral(-Integral(cos(x), x)/x**2, x) - 7*Integral(log(x)*sin(x), x) + 7*Integral(cos(x), x)/x", "y": 8.643856189774725}
+{"state": "-7*(x*log(x) - x)*sin(x) + 7*cos(x)*Integral(1/x, x) + 7*Integral((x*log(x) - x)*cos(x), x) - 7*Integral(-sin(x)*Integral(1/x, x), x)", "y": 7.400879436282184}
+{"state": "x*(x*(log(x)*Derivative(5, x) + Derivative(5*x, x) + 5*Derivative(log(x), x)) + 10*x + 10*log(x))", "y": 5.930737337562887}
+{"state": "x**4*Derivative(7, x) - 35*x**4 + 7*Derivative(x**4, x) + Derivative(-8*sin(x), x) - 3", "y": 5.357552004618084}
+{"state": "-8*x*cos(x)*Derivative(x, x) - 8*sin(x)*Derivative(x, x)", "y": 2.0}
+{"state": "x**2*Derivative(3, x) + x*Derivative(-9, x) + 3*Derivative(x**2, x) - 9", "y": 3.807354922057604}
+{"state": "(x*exp(x)*log(x)*Derivative(36, x) + 36*x*log(x)*Derivative(exp(x), x) + 36*exp(x)*Derivative(x, x))/x", "y": 4.700439718141092}
+{"state": "x**3 + 8*x*Integral(1, x) + 9*Integral(1, x) - 8*Integral(1, x, x)", "y": 2.584962500721156}
+{"state": "-7*(x*log(x) - x)*sin(x) + Integral(7*cos(x)/x, x) + 7*Integral((x*log(x) - x)*cos(x), x)", "y": 7.643856189774724}
+{"state": "-4*Derivative(x, x) + Derivative(-16*log(x)*sin(x), x)", "y": 6.442943495848728}
+{"state": "x*Derivative(-4, x) + exp(x)*Derivative(-2, x) - 2*exp(x) - 4*Derivative(x, x) + Derivative(7*cos(x), x)", "y": 5.523561956057013}
+{"state": "-48*(x*log(x) - x)*sin(x) + 48*Integral(cos(x)/x, x) + 48*Integral((x*log(x) - x)*cos(x), x)", "y": 8.643856189774725}
+{"state": "-8*cos(x) + Derivative(-3*x, x) + Derivative(7*x**4, x) + Derivative(-7*x**5, x)", "y": 6.845490050944375}
+{"state": "x**2*Integral(15, x) - x*Integral(2*Integral(15, x), x) + Integral(3, x) + Integral(2*Integral(15, x), x, x)", "y": 7.0}
+{"state": "cos(x)*Derivative(4, x) - 8*Derivative(x, x) + Derivative(7*exp(x), x) + 4*Derivative(cos(x), x)", "y": 5.78135971352466}
+{"state": "x**3*Derivative(4, x) + 10*x*Derivative(x, x) + Derivative(7, x) + Derivative(5*x, x) + 4*Derivative(x**3, x)", "y": 5.906890595608519}
+{"state": "6*x*Derivative(x, x) + Derivative(4*x, x)", "y": 3.169925001442312}
+{"state": "Integral(6/x, x) + Integral(-35*x**4, x) + Integral(5*exp(-I*x)/2, x) + Integral(5*exp(I*x)/2, x)", "y": 7.614709844115208}
+{"state": "Integral(42*exp(x)/x, x) + Integral(42*exp(x)*log(x), x)", "y": 5.554588851677638}
+{"state": "sin(3*x**3 + 4*x + 2)*Integral(-9*x**2 - 4, x) - Integral((9*x**2 + 4)*cos(3*x**3 + 4*x + 2)*Integral(-9*x**2 - 4, x), x)", "y": 7.483815777264256}
+{"state": "(42*x*Integral(x**(-2), x)*Integral(x*exp(x)*log(x), x) + 42*x*Integral(x**(-2), x)*Integral(exp(x), x) - 42*x*Integral(exp(x)*Integral(x**(-2), x), x) - 42*x*Integral(x*exp(x)*log(x)*Integral(x**(-2), x), x) + 42*Integral(x*exp(x)*log(x), x) + 42*Integral(exp(x), x))/x", "y": 8.643856189774725}
+{"state": "x**3*Derivative(-8, x) - 24*x**2*Derivative(x, x) + Derivative(4*exp(x), x) + Derivative(8*cos(x), x)", "y": 6.6865005271832185}
+{"state": "Derivative(7*log(x), x)", "y": 3.169925001442312}
+{"state": "(Derivative(-4*x, x) + Derivative(x**2, x))*cos(x**2 - 4*x + 5)", "y": 5.044394119358453}
+{"state": "x**2*Derivative(9, x) + Derivative(4, x) + Derivative(6*x, x) + 9*Derivative(x**2, x)", "y": 5.78135971352466}
+{"state": "4*x*(x*(Derivative(-2, x) + Derivative(-x, x)) - 2*x - 4)", "y": 5.129283016944966}
+{"state": "exp(x)*Derivative(7, x) + 7*Derivative(exp(x), x) + Derivative(4*cos(x), x) - 8", "y": 5.357552004618084}
+{"state": "8*log(x) + 4*Integral(x, x)", "y": 1.584962500721156}
+{"state": "4*exp(x)*Derivative(x, x) + 8*sin(x) + Derivative(3, x)", "y": 2.321928094887362}
+{"state": "10*x + 4*Derivative(x**3, x) + 5", "y": 1.584962500721156}
+{"state": "x*Derivative(-8, x) + Derivative(7*exp(x), x) + Derivative(4*cos(x), x) - 8", "y": 6.129283016944966}
+{"state": "x**2*(x*Derivative(-4, x) + Derivative(-8, x) - 4*Derivative(x, x)) - 8*x**2 - 16*x", "y": 4.857980995127572}
+{"state": "4*(-6*x**2 + exp(x)*Derivative(x, x) - 2*sin(x))", "y": 2.0}
+{"state": "x**4*Derivative(7, x) - 35*x**4*Derivative(x, x) - 3*Derivative(x, x) + 7*Derivative(x**4, x) + Derivative(-8*sin(x), x)", "y": 5.78135971352466}
+{"state": "7*x**2*Integral(3, x) + 2*x*Integral(3, x) + 3*Integral(3, x) - Integral(14*x*Integral(3, x), x) - Integral(2*Integral(3, x), x)", "y": 6.475733430966398}
+{"state": "(x*(exp(x)*Derivative(3, x) + 3*Derivative(exp(x), x)) + 10*x*Derivative(x, x) + 5)/x", "y": 4.700439718141092}
+{"state": "-5*exp(x) + cos(x)*Derivative(x, x)", "y": 1.0}
+{"state": "3*(Integral(1, x) + 2*Integral(x, x) + 6*Integral(x**2, x))", "y": 3.9068905956085187}
+{"state": "2*(2*log(x) + Integral(7*x, x))", "y": 3.321928094887362}
+{"state": "7*(-x*log(x)*sin(x) + cos(x))*Integral(1/x, x) - 7*Integral((-x*log(x)*cos(x) - log(x)*sin(x) - 2*sin(x))*Integral(1/x, x), x)", "y": 8.643856189774725}
+{"state": "2*(-sin(x)*Derivative(x, x) + Derivative(-3*sin(x), x))", "y": 4.643856189774724}
+{"state": "x**4*Derivative(7, x) - 8*cos(x) + 7*Derivative(x**4, x) - 7*Derivative(x**5, x) - 3", "y": 4.169925001442312}
+{"state": "-exp(x) + 6*Integral(1/x, x) + 2*Integral(2*x, x)", "y": 4.247927513443585}
+{"state": "sin(x)*Derivative(-6, x) - 2*sin(x) - 6*Derivative(sin(x), x)", "y": 3.321928094887362}
+{"state": "-27*x**3 + Integral(5, x) + 54*Integral(x**2, x)", "y": 2.584962500721156}
+{"state": "x*Derivative(10, x) + exp(x)*Derivative(3, x) + log(x)*Derivative(5, x) + 10*Derivative(x, x) + 3*Derivative(exp(x), x) + 5*Derivative(log(x), x)", "y": 6.523561956057013}
+{"state": "7*exp(x) + Derivative(-8*x, x) + Derivative(4*cos(x), x)", "y": 5.129283016944966}
+{"state": "9*x**3 - x**2*Integral(18, x) + 8*Integral(1, x) + Integral(2*x*Integral(18, x), x)", "y": 5.643856189774724}
+{"state": "x**5*Derivative(-18, x) - 18*Derivative(x**5, x) + 7*Derivative(cos(x), x)", "y": 4.321928094887363}
+{"state": "x*Derivative(8, x) + Derivative(5, x) + Derivative(7*x**3, x) + Derivative(-5*sin(x), x) + 8", "y": 6.643856189774724}
+{"state": "(Derivative(5, x) - 4*Derivative(x, x) + Derivative(x**2, x))*cos(x**2 - 4*x + 5)", "y": 4.247927513443585}
+{"state": "cos(x)*Derivative(2, x) - 6*Derivative(sin(x), x) + 2*Derivative(cos(x), x)", "y": 4.754887502163468}
+{"state": "x**2*Derivative(3, x) + x*Derivative(4, x) + 3*Derivative(x**2, x) + 4", "y": 3.700439718141092}
+{"state": "8*x*Integral(1, x) + 9*Integral(1, x) + 3*Integral(x**2, x) - 8*Integral(1, x, x)", "y": 3.584962500721156}
+{"state": "-2*sin(x) - 6*cos(x)*Derivative(x, x)", "y": 2.0}
+{"state": "(x*(exp(x)*Derivative(3, x) + 3*Derivative(exp(x), x)) + x*Derivative(10*x, x) + 5)/x", "y": 6.044394119358453}
+{"state": "x*(sin(x)*Derivative(-8, x) - 8*cos(x)*Derivative(x, x)) - 8*sin(x)", "y": 3.0}
+{"state": "(log(x)*Derivative(7, x) + 7*Derivative(log(x), x))*sin(x) + 7*log(x)*cos(x)*Derivative(x, x)", "y": 4.700439718141092}
+{"state": "2*x*(6*x**2 + 9*x + 1) - Integral(18*x, x) - Integral(24*x**2, x)", "y": 5.285402218862249}
+{"state": "-5*(x*sin(x) - 1)*Integral(1/x, x) + 5*Integral((x*cos(x) + sin(x))*Integral(1/x, x), x)", "y": 6.672425341971495}
+{"state": "-Integral(-Integral(48*cos(x), x)/x**2, x) - 48*Integral(log(x)*sin(x), x) + Integral(48*cos(x), x)/x", "y": 8.643856189774725}
+{"state": "x*Derivative(10, x) + exp(x)*Derivative(3, x) + 10*Derivative(x, x) + 3*Derivative(exp(x), x) + Derivative(5*log(x), x)", "y": 6.409390936137702}
+{"state": "exp(x)*Derivative(-5, x) - 5*exp(x)*Derivative(x, x) + Derivative(sin(x), x)", "y": 3.4594316186372973}
+{"state": "6*x**2*Integral(3, x) + 2*x*Integral(3, x) + Integral(3, x) - Integral(12*x*Integral(3, x), x) - Integral(2*Integral(3, x), x)", "y": 6.409390936137702}
+{"state": "5*x**2*Derivative(x + log(x), x) + x*Derivative(5*x**2, x) + log(x)*Derivative(5*x**2, x)", "y": 6.599912842187128}
+{"state": "-8*x*cos(x) + sin(x)*Derivative(-8*x, x)", "y": 3.169925001442312}
+{"state": "5*Integral(1/x, x) + 5*Integral(-I*exp(-I*x)/2, x) + 5*Integral(I*exp(I*x)/2, x)", "y": 6.285402218862249}
+{"state": "(15*x**2 - 3)*Integral(exp(5*x**3 - 3*x + 4), x) - Integral(30*x*Integral(exp(5*x**3 - 3*x + 4), x), x)", "y": 8.643856189774725}
+{"state": "(x*Derivative(-4, x) + 2*x*Derivative(x, x) - 4*Derivative(x, x))*cos(x**2 - 4*x + 5)", "y": 3.0}
+{"state": "2*(7*x + 6*Integral(x, x))", "y": 1.584962500721156}
+{"state": "9*Integral(1, x) + 8*Integral(x, x) + 3*Integral(x**2, x)", "y": 3.0}
+{"state": "5*cos(x) - Integral(-Integral(5, x)/x**2, x) + Integral(5, x)/x", "y": 5.882643049361842}
+{"state": "-3*x**2 + 16*x*Derivative(x, x)", "y": 2.0}
+{"state": "2*x**2*Derivative(x, x) + x*Derivative(2*x**2 + 4, x) + 4*Derivative(x, x)", "y": 6.044394119358453}
+{"state": "Derivative(7*x**4, x) + Derivative(-7*x**5, x) + Derivative(-8*sin(x), x) - 3", "y": 7.076815597050831}
+{"state": "7*I*x*exp(I*x)*log(x)**2/2 - 7*I*x*exp(-I*x)*log(x)**2/2 + 7*exp(I*x)*log(x)/2 - 7*Integral(-I*exp(-I*x)*log(x), x) - 7*Integral(-I*exp(-I*x)*log(x)**2/2, x) - 7*Integral(I*exp(I*x)*log(x), x) - 7*Integral(I*exp(I*x)*log(x)**2/2, x) - 7*Integral(-x*exp(-I*x)*log(x)**2/2, x) - 7*Integral(-x*exp(I*x)*log(x)**2/2, x) + 7*exp(-I*x)*log(x)/2", "y": 8.643856189774725}
+{"state": "x**3*Derivative(-8, x) + exp(x)*Derivative(4, x) - 8*Derivative(x**3, x) + 4*Derivative(exp(x), x) + Derivative(8*cos(x), x)", "y": 6.807354922057604}
+{"state": "7*cos(x)*Integral(1/x, x) - 7*Integral(log(x)*sin(x), x) - 7*Integral(-sin(x)*Integral(1/x, x), x)", "y": 5.754887502163468}
+{"state": "-24*x**2*Derivative(x, x) + exp(x)*Derivative(4, x) - 8*sin(x)*Derivative(x, x) + 4*Derivative(exp(x), x)", "y": 4.0}
+{"state": "sin(x)*Derivative(-5, x) + Derivative(5, x) + 8*Derivative(x, x) + Derivative(7*x**3, x) - 5*Derivative(sin(x), x)", "y": 6.20945336562895}
+{"state": "-8*x*cos(x)*Derivative(x, x) + sin(x)*Derivative(-8*x, x)", "y": 3.700439718141092}
+{"state": "-8*Derivative(x, x) + Derivative(7*exp(x), x) + 4*Derivative(cos(x), x)", "y": 5.0}
+{"state": "3*(3*Integral(1, x) + 2*Integral(x, x) + 7*Integral(x**2, x))", "y": 3.584962500721156}
+{"state": "x**3*Derivative(2, x) + 2*x*Derivative(2, x) + 2*Derivative(2*x, x) + 2*Derivative(x**3, x)", "y": 5.0}
+{"state": "(x*(exp(x)*Derivative(36, x) + 36*exp(x)*Derivative(x, x))*log(x) + 36*exp(x))/x", "y": 3.9068905956085187}
+{"state": "-5*cos(x)*Derivative(x, x) + Derivative(7*x**3, x) + 8", "y": 3.584962500721156}
+{"state": "Integral(5, x) + Integral(-27*x**2, x)", "y": 5.129283016944966}
+{"state": "x**3*Derivative(7, x) + 21*x**2*Derivative(x, x) + Derivative(5, x) + Derivative(8*x, x) + Derivative(-5*sin(x), x)", "y": 6.6293566200796095}
+{"state": "7*x**2 + 4*Integral(1/x, x)", "y": 1.0}
+{"state": "Derivative(x*(3*x + 4), x)", "y": 5.672425341971495}
+{"state": "-90*x**4*Derivative(x, x) + 7*Derivative(cos(x), x)", "y": 2.807354922057604}
+{"state": "(4*x**2 - x*exp(x) + 6)*log(x) - (-x*exp(x) + 8*x - exp(x))*Integral(log(x), x) + Integral((-x*exp(x) - 2*exp(x) + 8)*Integral(log(x), x), x)", "y": 7.3750394313469245}
+{"state": "x*Derivative(6, x) + 6*Derivative(x, x) + Derivative(x**3, x)", "y": 3.4594316186372973}
+{"state": "4*x**3*Derivative(-2, x) + 4*exp(x)*Derivative(x, x) - 8*Derivative(x**3, x) + 4*Derivative(2*cos(x), x)", "y": 6.169925001442312}
+{"state": "2*x + 2*Integral(9*x, x) + 2*Integral(6*x**2, x)", "y": 5.20945336562895}
+{"state": "x**2*Derivative(3, x) + x*Derivative(4, x) + 6*x*Derivative(x, x) + 4*Derivative(x, x)", "y": 3.169925001442312}
+{"state": "-Integral(-Integral(6, x)/x**2, x) - Integral(-Integral(-35*x**5, x)/x**2, x) - Integral(-Integral(5*x*cos(x), x)/x**2, x) + Integral(6, x)/x + Integral(-35*x**5, x)/x + Integral(5*x*cos(x), x)/x", "y": 8.643856189774725}
+{"state": "x*Integral(-4*sin(2*x**2 + 2), x) - Integral(-4*sin(2*x**2 + 2), x, x)", "y": 8.643856189774725}
+{"state": "x*(x**2*Derivative(5, x) + 5*x*(Derivative(x, x) + Derivative(log(x), x)) + x*log(x)*Derivative(5, x) + 10*x + 10*log(x))", "y": 5.044394119358453}
+{"state": "x**5*Derivative(-7, x) + 28*x**3*Derivative(x, x) - 8*cos(x)*Derivative(x, x) - 7*Derivative(x**5, x) - 3", "y": 3.321928094887362}
+{"state": "-8*x*Derivative(sin(x), x) + (x*Derivative(-8, x) - 8*Derivative(x, x))*sin(x)", "y": 4.392317422778761}
+{"state": "16*x**3*Derivative(cos(x), x) + (x**3*Derivative(16, x) + 48*x**2)*cos(x)", "y": 4.321928094887363}
+{"state": "-5*cos(x) + Derivative(8*x, x) + Derivative(7*x**3, x)", "y": 5.129283016944966}
+{"state": "(x*Derivative(-4, x) + 2*x - 4*Derivative(x, x))*cos(x**2 - 4*x + 5)", "y": 3.0}
+{"state": "log(x)*Derivative(7, x) + 7/x", "y": 1.584962500721156}
+{"state": "14*x*Derivative(x, x) + Derivative(2, x) + Derivative(-5*x, x)", "y": 4.087462841250339}
+{"state": "2*x**2 - exp(x) - 2*Integral(-Integral(3, x)/x**2, x) + 2*Integral(3, x)/x", "y": 5.754887502163468}
+{"state": "x**5*Derivative(-7, x) + x*Derivative(-3, x) + Derivative(7*x**4, x) - 7*Derivative(x**5, x) + Derivative(-8*sin(x), x) - 3", "y": 7.20945336562895}
+{"state": "-x**2*Integral(30, x) + 3*x*(5*x**2 + 1) + Integral(2*x*Integral(30, x), x)", "y": 5.643856189774724}
+{"state": "x**4*Derivative(7, x) - 3*Derivative(x, x) + 7*Derivative(x**4, x) - 7*Derivative(x**5, x) + Derivative(-8*sin(x), x)", "y": 6.339850002884624}
+{"state": "4*(-6*x**2 + exp(x)*Derivative(x, x) + 2*Derivative(cos(x), x))", "y": 3.4594316186372973}
+{"state": "-27*x**2*Integral(1, x) + 54*x*Integral(1, x, x) + 5*Integral(1, x) - 54*Integral(1, x, x, x)", "y": 6.0}
+{"state": "x*Integral(4, x) + 8*log(x) - Integral(4, x, x)", "y": 4.700439718141092}
+{"state": "x**2*Integral(-15, x) + 12*Integral(x, x) - Integral(2*x*Integral(-15, x), x)", "y": 5.930737337562887}
+{"state": "Integral(4, x) + Integral(6*x, x)", "y": 4.643856189774724}
+{"state": "exp(x)*Derivative(4, x) + 8*sin(x) + Derivative(3, x) + 4*Derivative(exp(x), x)", "y": 3.807354922057604}
+{"state": "x**5*Derivative(-18, x) - 90*x**4*Derivative(x, x) + Derivative(7*cos(x), x)", "y": 4.700439718141092}
+{"state": "42*(x*log(x) + 1)*(exp(x)*Integral(1/x, x) - Integral(exp(x)*Integral(1/x, x), x)) - Integral(42*(exp(x)*Integral(1/x, x) - Integral(exp(x)*Integral(1/x, x), x))*(log(x) + 1), x)", "y": 8.643856189774725}
+{"state": "Derivative(-8*x**2, x) + Derivative(-4*x**3, x)", "y": 5.882643049361842}
+{"state": "-7*sin(x)*Integral(log(x), x) + cos(x)*Integral(7/x, x) - Integral(-sin(x)*Integral(7/x, x), x) + 7*Integral(cos(x)*Integral(log(x), x), x)", "y": 7.066089190457772}
+{"state": "-35*x**4 + Derivative(-3*x, x) + Derivative(7*x**4, x) + Derivative(-8*sin(x), x)", "y": 6.845490050944375}
+{"state": "7*x**3 + Integral(9, x) + Integral(6*x, x)", "y": 4.459431618637297}
+{"state": "x*Derivative(8, x) + Derivative(5, x) + 8*Derivative(x, x) + Derivative(7*x**3, x) + Derivative(-5*sin(x), x)", "y": 7.03342300153745}
+{"state": "(5*x**2 + 1)*Integral(3, x) - 10*Integral(x*Integral(3, x), x)", "y": 5.491853096329675}
+{"state": "-35*x**4 + x*Derivative(-3, x) - 3*Derivative(x, x) + Derivative(7*x**4, x) + Derivative(-8*sin(x), x)", "y": 6.475733430966398}
+{"state": "-2*sin(x) + cos(x)*Derivative(2, x) - 6*cos(x)*Derivative(x, x)", "y": 2.584962500721156}
+{"state": "3*Integral(3, x) + 3*Integral(2*x, x) + 21*Integral(x**2, x)", "y": 5.129283016944966}
+{"state": "x*Derivative(-3, x) + sin(x)*Derivative(-8, x) - 8*cos(x) - 3*Derivative(x, x) + Derivative(7*x**4, x) + Derivative(-7*x**5, x)", "y": 6.9886846867721655}
+{"state": "-4*(4*x*log(x)*Derivative(sin(x), x) + x + 4*sin(x))/x", "y": 3.0}
+{"state": "-4*(x*log(x)*Derivative(4*sin(x), x) + x + 4*sin(x)*Derivative(x, x))/x", "y": 5.584962500721156}
+{"state": "exp(x)*Derivative(4, x) + 8*sin(x) + 4*Derivative(exp(x), x)", "y": 3.0}
+{"state": "28*x**3*Derivative(x, x) - 8*cos(x) + Derivative(-7*x**5, x) - 3", "y": 3.584962500721156}
+{"state": "(3*x**2*Derivative(x, x) + Derivative(-x, x))*cos(x**3 - x + 3)", "y": 4.169925001442312}
+{"state": "x**5*(log(x)*Derivative(35, x) + 35*Derivative(log(x), x)) + 175*x**4*log(x)*Derivative(x, x) + Derivative(-3*log(x), x)", "y": 5.977279923499917}
+{"state": "-4*(6*x**2 + 2*sin(x) - Derivative(exp(x), x))", "y": 2.807354922057604}
+{"state": "7*(-sin(x)*Integral(log(x), x) + Integral(cos(x)/x, x) + Integral(cos(x)*Integral(log(x), x), x))", "y": 7.643856189774724}
+{"state": "21*x**3*Derivative(exp(x), x) + 63*x**2*exp(x)*Derivative(x, x)", "y": 3.321928094887362}
+{"state": "-x*Derivative(4, x) - 4*log(x)*sin(x)*Derivative(4, x) + 4*Derivative(-(x + 4*log(x)*sin(x)), x)", "y": 7.169925001442312}
+{"state": "8*x**2 + 9*Integral(1, x) + Integral(3*x**2, x) - Integral(8, x, x)", "y": 5.857980995127572}
+{"state": "6*x**2*Derivative(x, x) + 4", "y": 1.584962500721156}
+{"state": "5*Derivative(x**3, x) + Derivative(5*x**2*log(x), x)", "y": 6.539158811108031}
+{"state": "exp(x)*Derivative(3, x) + log(x)*Derivative(5, x) + 10*Derivative(x, x) + 3*Derivative(exp(x), x) + 5*Derivative(log(x), x)", "y": 5.954196310386875}
+{"state": "(10*x*Derivative(x, x) + x*Derivative(3*exp(x), x) + 5)/x", "y": 4.906890595608519}
+{"state": "-Integral(-2*Integral(42*(x*log(x) + 1)*exp(x), x, x)/x**3, x) + Integral(42*(x*log(x) + 1)*exp(x), x)/x + Integral(42*(x*log(x) + 1)*exp(x), x, x)/x**2", "y": 8.643856189774725}
+{"state": "x**2*(x*Derivative(16*cos(x), x) + 48*cos(x)*Derivative(x, x))", "y": 5.169925001442312}
+{"state": "6*(5*x**4 + 9*exp(x))*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "x**2*Derivative(9, x) + 18*x + Derivative(4, x) + Derivative(6*x, x)", "y": 4.392317422778761}
+{"state": "x**3*Derivative(-8, x) + exp(x)*Derivative(4, x) + 4*exp(x)*Derivative(x, x) - 8*Derivative(x**3, x) + Derivative(8*cos(x), x)", "y": 6.459431618637297}
+{"state": "x**2*((x + log(x))*Derivative(5, x) + 5*Derivative(x + log(x), x)) + 10*x*(x + log(x))*Derivative(x, x)", "y": 5.832890014164741}
+{"state": "x*(Derivative(4, x) + Derivative(3*x, x)) + 3*x*Derivative(x, x) + 4*Derivative(x, x)", "y": 4.954196310386875}
+{"state": "-2*exp(x) + 7*Derivative(cos(x), x) - 4", "y": 1.584962500721156}
+{"state": "16*x**2*(-x*sin(x) + 3*cos(x))*Derivative(x, x)", "y": 2.0}
+{"state": "exp(x)*Derivative(-2, x) - 2*exp(x)*Derivative(x, x) + cos(x)*Derivative(7, x) + Derivative(-4*x, x) + 7*Derivative(cos(x), x)", "y": 5.954196310386875}
+{"state": "x**2*Derivative(5, x) + 12*x**2 + 5*Derivative(x, x) + 5*Derivative(x**2, x)", "y": 3.321928094887362}
+{"state": "-8*Derivative(x, x) + 7*Derivative(exp(x), x) + Derivative(4*cos(x), x)", "y": 5.0}
+{"state": "3*x**2 + Integral(9, x) + 21*Integral(x**2, x)", "y": 3.0}
+{"state": "exp(x)*Derivative(7, x) - 8*Derivative(x, x) + 7*Derivative(exp(x), x) + 4*Derivative(cos(x), x)", "y": 4.754887502163468}
+{"state": "x*Integral(4, x) - exp(x) + 6*Integral(1/x, x) - Integral(4, x, x)", "y": 5.169925001442312}
+{"state": "-(x - 2)*(Integral(2, x) + Integral(3*x, x)) + Integral(3*x + 2, x, x)", "y": 7.442943495848728}
+{"state": "7*Integral(-Integral(x*log(x)*sin(x) - cos(x), x)/x**2, x) - 7*Integral(x*log(x)*sin(x) - cos(x), x)/x", "y": 8.643856189774725}
+{"state": "3*exp(x) + Derivative(10*x, x) + 5/x", "y": 3.4594316186372973}
+{"state": "x*Derivative(-8, x) + exp(x)*Derivative(7, x) - 8*Derivative(x, x) + 7*Derivative(exp(x), x) + Derivative(4*cos(x), x)", "y": 6.247927513443585}
+{"state": "Integral(12*x, x) - 15*Integral(x**2, x)", "y": 4.523561956057013}
+{"state": "exp(x)*Derivative(7, x) - 4*sin(x) + Derivative(-8*x, x) + 7*Derivative(exp(x), x)", "y": 4.906890595608519}
+{"state": "cos(x)*Derivative(4, x) + Derivative(-8*x, x) + 7*Derivative(exp(x), x) + 4*Derivative(cos(x), x)", "y": 6.0}
+{"state": "-2*sin(x) + Derivative(-6*sin(x), x)", "y": 3.4594316186372973}
+{"state": "4*x**2*(Derivative(-2, x) + Derivative(-x, x)) + 8*x*(-x - 2)", "y": 5.614709844115208}
+{"state": "4*(-Derivative(4*log(x)*sin(x), x) - 1)", "y": 6.066089190457772}
+{"state": "x**2*Derivative(4*(-x - 2), x) - 4*x*Derivative(x**2, x) - 8*Derivative(x**2, x)", "y": 6.523561956057013}
+{"state": "7*I*exp(I*x)*Integral(log(x), x)/2 + 7*Integral(exp(-I*x)/(2*x), x) + 7*Integral(exp(I*x)/(2*x), x) + 7*Integral(exp(-I*x)*Integral(log(x), x)/2, x) + 7*Integral(exp(I*x)*Integral(log(x), x)/2, x) - 7*I*exp(-I*x)*Integral(log(x), x)/2", "y": 8.643856189774725}
+{"state": "2*Derivative(x**3 + 2*x, x)", "y": 5.20945336562895}
+{"state": "48*Integral((Integral(-x*log(x)*sin(x), x) + Integral(cos(x), x))/x**2, x) + 48*(Integral(-x*log(x)*sin(x), x) + Integral(cos(x), x))/x", "y": 8.643856189774725}
+{"state": "7*exp(x) - 4*sin(x)*Derivative(x, x) + cos(x)*Derivative(4, x) - 8*Derivative(x, x)", "y": 2.0}
+{"state": "42*exp(x)*Integral(1/x, x) - Integral(1/x, x)*Integral(42*exp(x), x) + Integral(Integral(42*exp(x), x)/x, x) + 42*Integral(exp(x)*log(x), x)", "y": 6.554588851677638}
+{"state": "x**2*Derivative(5, x) + x*Derivative(5, x) + 5*Derivative(x**2, x) + Derivative(4*x**3, x) + 5", "y": 5.357552004618084}
+{"state": "exp(5*x**3 - 3*x + 4)*Integral(15*x**2 - 3, x) - Integral((15*x**2 - 3)*exp(5*x**3 - 3*x + 4)*Integral(15*x**2 - 3, x), x)", "y": 7.554588851677638}
+{"state": "5*Derivative(x, x) + Derivative(5*x**2, x) + Derivative(4*x**3, x)", "y": 6.0}
+{"state": "x*Derivative(-3, x) - 3*Derivative(x, x) + Derivative(7*x**4, x) - 7*Derivative(x**5, x) + Derivative(-8*sin(x), x)", "y": 7.044394119358453}
+{"state": "-48*x*log(x)*sin(x)*Integral(1/x, x) + 48*cos(x)*Integral(1/x, x) - 48*Integral(-2*sin(x)*Integral(1/x, x), x) - 48*Integral(-log(x)*sin(x)*Integral(1/x, x), x) - 48*Integral(-x*log(x)*cos(x)*Integral(1/x, x), x)", "y": 8.643856189774725}
+{"state": "21*x**2*Derivative(x, x) + x*Derivative(8, x) + 8*Derivative(x, x) + Derivative(-5*sin(x), x)", "y": 4.643856189774724}
+{"state": "2*(Integral(2/x, x) + 7*Integral(x, x))", "y": 5.392317422778761}
+{"state": "x*Derivative(-8, x) + 7*exp(x) - 8*Derivative(x, x) + Derivative(4*cos(x), x)", "y": 4.584962500721156}
+{"state": "4*(-Derivative(x, x) - 4*Derivative(log(x)*sin(x), x))", "y": 5.392317422778761}
+{"state": "Integral(4/x, x) + Integral(14*x, x)", "y": 5.247927513443585}
+{"state": "10*Derivative(x, x) + Derivative(3*exp(x), x) + 5*Derivative(x, x)/x", "y": 4.857980995127572}
+{"state": "4*Integral(x + 2/x, x)", "y": 5.807354922057604}
+{"state": "-90*x**4*Derivative(x, x) + cos(x)*Derivative(7, x) + 7*Derivative(cos(x), x)", "y": 3.584962500721156}
+{"state": "cos(x)*Integral(7/x, x) - 7*Integral(log(x)*sin(x), x) - Integral(-sin(x)*Integral(7/x, x), x)", "y": 6.066089190457772}
+{"state": "exp(x)*Derivative(4, x) + 4*Derivative(exp(x), x) - 8*Derivative(cos(x), x)", "y": 4.754887502163468}
+{"state": "sin(x)*Derivative(-8, x) - 3*Derivative(x, x) + Derivative(7*x**4, x) - 7*Derivative(x**5, x) - 8*Derivative(sin(x), x)", "y": 6.321928094887363}
+{"state": "x*Derivative(3*x, x) + 3*x - 9", "y": 3.0}
+{"state": "x**3*(exp(x)*Derivative(21, x) + 21*exp(x)*Derivative(x, x)) + 63*x**2*exp(x)*Derivative(x, x)", "y": 3.584962500721156}
+{"state": "-4*cos(x**2 - 4*x + 5)*Derivative(x, x) + cos(x**2 - 4*x + 5)*Derivative(x**2, x)", "y": 3.169925001442312}
+{"state": "-48*Integral(log(x)*sin(x) - cos(x)/x, x)", "y": 6.339850002884624}
+{"state": "x*Derivative(-8*sin(x), x) - 8*sin(x)*Derivative(x, x)", "y": 4.523561956057013}
+{"state": "-8*Derivative(x**3, x) + Derivative(4*exp(x), x) + Derivative(8*cos(x), x)", "y": 6.807354922057604}
+{"state": "-35*x**4*Derivative(x, x) + Derivative(7*x**4, x) - 8*Derivative(sin(x), x) - 3", "y": 4.954196310386875}
+{"state": "x*Derivative(-8*sin(x), x) - 8*sin(x)", "y": 3.807354922057604}
+{"state": "cos(x**2 - 4*x + 5)*Derivative(5, x) - 4*cos(x**2 - 4*x + 5)*Derivative(x, x) + cos(x**2 - 4*x + 5)*Derivative(x**2, x)", "y": 4.247927513443585}
+{"state": "7*Integral(cos(x)/x, x) + 7*Integral(-log(x)*sin(x), x)", "y": 5.882643049361842}
+{"state": "Integral(-(Integral(-6, x) + Integral(35*x**5, x) + Integral(-5*x*cos(x), x))/x**2, x) - (Integral(-6, x) + Integral(35*x**5, x) + Integral(-5*x*cos(x), x))/x", "y": 8.643856189774725}
+{"state": "x**3*Derivative(7, x) + x*Derivative(8, x) - 5*cos(x) + 8*Derivative(x, x) + 7*Derivative(x**3, x)", "y": 4.321928094887363}
+{"state": "2*(x**2*Derivative(x, x) + x*Derivative(x**2 + 2, x) + 2*Derivative(x, x))", "y": 5.0}
+{"state": "log(x)*Derivative(35*x**5 - 3, x) + (35*x**5 - 3)/x", "y": 5.977279923499917}
+{"state": "5*sin(x)*Integral(-1, x) + 5*Integral(1/x, x) - 5*Integral(cos(x)*Integral(-1, x), x)", "y": 6.149747119504682}
+{"state": "x**2*Derivative(5*x + 5*log(x), x) + 10*x**2 + 10*x*log(x)", "y": 6.339850002884624}
+{"state": "exp(x)*Derivative(4, x) + Derivative(-8*x**3, x) + 4*Derivative(exp(x), x) + 8*Derivative(cos(x), x)", "y": 6.6293566200796095}
+{"state": "-24*x**2 + 4*exp(x)*Derivative(x, x) + Derivative(8*cos(x), x)", "y": 4.169925001442312}
+{"state": "x*(x*Derivative(5*log(x), x) + 15*x + 10*log(x))", "y": 4.392317422778761}
+{"state": "21*x**2*Derivative(x, x) + x*Derivative(8, x) + 8*Derivative(x, x) - 5*Derivative(sin(x), x)", "y": 3.4594316186372973}
+{"state": "-2*exp(x) - 7*sin(x)*Derivative(x, x) - 4*Derivative(x, x)", "y": 1.0}
+{"state": "42*exp(x)*Integral(1/x, x) + 42*Integral(exp(x)*log(x), x) - Integral(42*exp(x)*Integral(1/x, x), x)", "y": 5.129283016944966}
+{"state": "x*(x*(log(x)*Derivative(5, x) + 5*Derivative(log(x), x)) + 15*x + 10*log(x))", "y": 4.0}
+{"state": "exp(x)*Integral(-32*sqrt(2)*sin(x + pi/4), x) - Integral(exp(x)*Integral(-32*sqrt(2)*sin(x + pi/4), x), x)", "y": 6.108524456778169}
+{"state": "-(90*x**4 + 7*sin(x))*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "x**2*Derivative(5*(x + log(x)), x) + 10*x*(x + log(x))*Derivative(x, x)", "y": 6.22881869049588}
+{"state": "x**3*Derivative(4, x) + x**2*Derivative(5, x) + x*Derivative(5, x) + 10*x*Derivative(x, x) + 5*Derivative(x, x) + 4*Derivative(x**3, x)", "y": 4.392317422778761}
+{"state": "x*Integral(4, x) - exp(x) + 6*log(x) - Integral(4, x, x)", "y": 4.247927513443585}
+{"state": "4*Integral(1/x, x) + 14*Integral(x, x)", "y": 2.584962500721156}
+{"state": "42*log(x)*Integral(exp(x), x) - Integral(-Integral(42*exp(x), x)/x**2, x) - 42*Integral(Integral(exp(x), x)/x, x) + Integral(42*exp(x), x)/x", "y": 8.643856189774725}
+{"state": "x*(Derivative(-9, x) + Derivative(3*x, x)) + 3*x - 9", "y": 4.321928094887363}
+{"state": "(x*log(x)*Derivative(5, x) + x*Derivative(10*x, x) + x*Derivative(3*exp(x), x) + 5)/x", "y": 6.507794640198696}
+{"state": "sin(x)*Derivative(-8, x) + Derivative(-3*x, x) + Derivative(7*x**4, x) + Derivative(-7*x**5, x) - 8*Derivative(sin(x), x)", "y": 7.636624620543649}
+{"state": "-7*x**5 + 5*sin(x) - Integral(-Integral(6, x)/x**2, x) + Integral(6, x)/x", "y": 5.807354922057604}
+{"state": "x**3*Derivative(-8, x) - 8*Derivative(x**3, x) + Derivative(4*exp(x), x) + 8*Derivative(cos(x), x)", "y": 6.584962500721156}
+{"state": "exp(x)*Derivative(4, x) + 4*exp(x)*Derivative(x, x) + Derivative(3, x) + Derivative(-8*cos(x), x)", "y": 5.672425341971495}
+{"state": "-24*x**2*Derivative(x, x) - 8*sin(x)*Derivative(x, x) + Derivative(4*exp(x), x)", "y": 4.169925001442312}
+{"state": "-(35*x**5 - 5*x*cos(x) - 6)*Integral(1/x, x) + Integral((175*x**4 + 5*x*sin(x) - 5*cos(x))*Integral(1/x, x), x)", "y": 7.348728154231077}
+{"state": "-90*x**4 - 7*sin(x)*Derivative(x, x) + cos(x)*Derivative(7, x)", "y": 2.0}
+{"state": "x*Derivative(-8, x) - 4*sin(x)*Derivative(x, x) - 8*Derivative(x, x) + Derivative(7*exp(x), x)", "y": 4.643856189774724}
+{"state": "Integral(7*(-log(x)*sin(x) + cos(x)/x), x)", "y": 8.643856189774725}
+{"state": "x*Derivative(10, x) + exp(x)*Derivative(3, x) + 10*Derivative(x, x) + 3*Derivative(exp(x), x) + 5*Derivative(log(x), x)", "y": 5.954196310386875}
+{"state": "-2*x**2*Derivative(4, x) + 4*x**2*Derivative(-x - 2, x) - x*(x**2*Derivative(4, x) + 4*Derivative(x**2, x)) - 8*Derivative(x**2, x)", "y": 6.845490050944375}
+{"state": "6*x*Integral(1, x) + 4*x - 6*Integral(1, x, x)", "y": 3.584962500721156}
+{"state": "-35*x**4 + 28*x**3*Derivative(x, x) + sin(x)*Derivative(-8, x) + Derivative(-3*x, x) - 8*Derivative(sin(x), x)", "y": 5.247927513443585}
+{"state": "4*Derivative(x**2, x)", "y": 1.584962500721156}
+{"state": "3*x**2 + 3*x + 18*Integral(x**2, x)", "y": 1.584962500721156}
+{"state": "Integral(6/x, x) + Integral(-35*x**4, x) + Integral(5*cos(x), x)", "y": 6.426264754702098}
+{"state": "42*exp(x)*Integral(1/x, x) + log(x)*Integral(42*exp(x), x) - Integral(Integral(42*exp(x), x)/x, x) - 42*Integral(exp(x)*Integral(1/x, x), x)", "y": 6.523561956057013}
+{"state": "4*x**2*Integral(1/x, x) - x*exp(x)*Integral(1/x, x) + 6*Integral(1/x, x) - Integral(8*x*Integral(1/x, x), x) - Integral(-exp(x)*Integral(1/x, x), x) - Integral(-x*exp(x)*Integral(1/x, x), x)", "y": 8.643856189774725}
+{"state": "36*exp(x)*log(x) + 36*exp(x)*Derivative(x, x)/x", "y": 2.0}
+{"state": "14*x + Derivative(2, x) - 5", "y": 1.0}
+{"state": "x**2*Integral(-27, x) + 5*x - Integral(2*x*Integral(-27, x), x)", "y": 5.584962500721156}
+{"state": "sin(x)*Derivative(-5, x) + Derivative(5, x) + Derivative(8*x, x) + Derivative(7*x**3, x) - 5*Derivative(sin(x), x)", "y": 7.03342300153745}
+{"state": "(x*(x*Derivative(10, x) + 10*Derivative(x, x)) + 3*x*exp(x) + 5)/x", "y": 3.169925001442312}
+{"state": "-7*sin(x)*Derivative(x, x) + cos(x)*Derivative(7, x) + Derivative(-4*x, x) + Derivative(-2*exp(x), x)", "y": 6.149747119504682}
+{"state": "21*x**2*Derivative(x, x) - 5*cos(x)*Derivative(x, x) + Derivative(8*x, x)", "y": 3.169925001442312}
+{"state": "36*(log(x) + Derivative(log(x), x))*exp(x)", "y": 3.169925001442312}
+{"state": "(-4*x*(sin(x)*Derivative(4, x) + 4*Derivative(sin(x), x))*log(x) - 4*x - 16*sin(x))/x", "y": 4.700439718141092}
+{"state": "21*x**2*Derivative(x, x) + x*Derivative(8, x) + Derivative(5, x) + 8*Derivative(x, x) + Derivative(-5*sin(x), x)", "y": 5.614709844115208}
+{"state": "-Integral(-Integral(5, x)/x**2, x) + Integral(-5*sin(x), x) + Integral(5, x)/x", "y": 6.569855608330948}
+{"state": "-3*Integral(-4*x, x) - 3*Integral(5*x**2, x)", "y": 5.247927513443585}
+{"state": "54*exp(x)*Derivative(x, x) + 6*Derivative(x**5, x)", "y": 3.0}
+{"state": "8*(-x*cos(x) - sin(x))*Derivative(x, x)", "y": 2.0}
+{"state": "x**2*Derivative(7, x) + Derivative(2, x) - 5*Derivative(x, x) + 7*Derivative(x**2, x)", "y": 4.392317422778761}
+{"state": "Integral((-35*x**5 + 5*x*cos(x) + 6)/x, x)", "y": 8.643856189774725}
+{"state": "Derivative(7*x**3, x) - 5*Derivative(sin(x), x) + 8", "y": 4.392317422778761}
+{"state": "42*exp(x)*Integral((x*log(x) + 1)/x, x) - Integral((x*log(x) + 1)/x, x)*Integral(42*exp(x), x) + Integral((x*log(x) + 1)*Integral(42*exp(x), x)/x, x)", "y": 7.643856189774724}
+{"state": "-(-35*x**6/6 + 5*x*sin(x) + 6*x + 5*cos(x))*Integral(-1/x**2, x) + Integral((-35*x**5 + 5*x*cos(x) + 6)*Integral(-1/x**2, x), x) + (-35*x**6/6 + 5*x*sin(x) + 6*x + 5*cos(x))/x", "y": 8.643856189774725}
+{"state": "x**2*Derivative(8, x) + 16*x + Derivative(-2, x) + Derivative(-x**3, x)", "y": 5.169925001442312}
+{"state": "24*exp(I*x)*log(x) + 48*Integral(-exp(-I*x)/(2*x), x) + Integral(24*exp(-I*x)/x, x) + 48*Integral(-exp(I*x)/(2*x), x) + Integral(24*exp(I*x)/x, x) + 24*exp(-I*x)*log(x)", "y": 8.643856189774725}
+{"state": "x**2*Integral(18, x) + Integral(3, x) + Integral(6*x, x) - Integral(2*x*Integral(18, x), x)", "y": 6.475733430966398}
+{"state": "x*Derivative(8, x) - 5*cos(x)*Derivative(x, x) + Derivative(5, x) + 8*Derivative(x, x) + Derivative(7*x**3, x)", "y": 5.614709844115208}
+{"state": "15*x**3 - x**2*Integral(30, x) + Integral(3, x) + Integral(2*x*Integral(30, x), x)", "y": 5.672425341971495}
+{"state": "exp(x)*Derivative(4, x) + 4*exp(x)*Derivative(x, x) + cos(x)*Derivative(-8, x) - 8*Derivative(cos(x), x)", "y": 4.643856189774724}
+{"state": "-6*cos(x)*Derivative(x, x) + 2*Derivative(cos(x), x)", "y": 3.169925001442312}
+{"state": "exp(x)*Derivative(4, x) + 8*sin(x)*Derivative(x, x) + cos(x)*Derivative(-8, x) + 4*Derivative(exp(x), x)", "y": 4.523561956057013}
+{"state": "cos(x)*Derivative(-8, x) + Derivative(4*exp(x), x) - 8*Derivative(cos(x), x)", "y": 5.614709844115208}
+{"state": "sin(x)*Integral(-48*log(x), x) + Integral(48*cos(x)/x, x) - Integral(cos(x)*Integral(-48*log(x), x), x)", "y": 8.643856189774725}
+{"state": "2*x**2 + 4*x - 3*Integral(x**2, x)", "y": 1.0}
+{"state": "7*exp(x)*Derivative(x, x) - 4*sin(x) + cos(x)*Derivative(4, x) - 8", "y": 2.0}
+{"state": "-(35*x**5 - 5*x*cos(x) - 6)*Integral(1/x, x) + Integral(1/x, x)*Integral(175*x**4 + 5*x*sin(x) - 5*cos(x), x) - Integral(Integral(175*x**4 + 5*x*sin(x) - 5*cos(x), x)/x, x)", "y": 6.794415866350106}
+{"state": "42*exp(x)*Integral(1/x, x) + Integral(42*exp(x)*log(x), x) - 42*Integral(exp(x)*Integral(1/x, x), x)", "y": 5.169925001442312}
+{"state": "(x**5 + 9*exp(x))*Derivative(6, x) + 6*Derivative(x**5, x) + 6*Derivative(9*exp(x), x)", "y": 5.954196310386875}
+{"state": "x*Derivative(-4, x) + log(x)*sin(x)*Derivative(-16, x) - 16*Derivative(log(x)*sin(x), x) - 4", "y": 5.930737337562887}
+{"state": "x**3*Derivative(4, x) + 5*Derivative(x, x) + Derivative(5*x**2, x) + 4*Derivative(x**3, x)", "y": 5.807354922057604}
+{"state": "2*Integral(3*x + 2, x)", "y": 4.754887502163468}
+{"state": "x**3*Derivative(-1, x) + x**2*Derivative(8, x) + 8*Derivative(x**2, x) - Derivative(x**3, x)", "y": 5.523561956057013}
+{"state": "exp(x)*Derivative(-2, x) - 2*exp(x) + Derivative(-4*x, x) + Derivative(7*cos(x), x)", "y": 5.857980995127572}
+{"state": "x**2*Derivative(9, x) + x*Derivative(6, x) + 9*Derivative(x**2, x) + 6", "y": 3.807354922057604}
+{"state": "3*x*(6*x**2 + 2*x + 1) - 3*x*Integral(12*x + 2, x) + 3*Integral(12*x + 2, x, x)", "y": 7.643856189774724}
+{"state": "x**5*Derivative(-18, x) - 90*x**4 - 7*sin(x)", "y": 1.0}
+{"state": "(x*Derivative(35*x**5*log(x), x) - 3*Derivative(x, x))/x", "y": 6.714245517666122}
+{"state": "10*x + Derivative(5*x, x) + 4*Derivative(x**3, x)", "y": 3.9068905956085187}
+{"state": "x**3*(cos(x)*Derivative(16, x) + 16*Derivative(cos(x), x)) + 16*cos(x)*Derivative(x**3, x)", "y": 5.523561956057013}
+{"state": "x*(x*Derivative(-4*x, x) - 8*x - 16)", "y": 3.9068905956085187}
+{"state": "42*exp(x)*Integral((x*log(x) + 1)/x, x) - 42*Integral(exp(x)*Integral((x*log(x) + 1)/x, x), x)", "y": 6.321928094887363}
+{"state": "x**2*Derivative(9, x) + 18*x*Derivative(x, x) + Derivative(4, x) + 6", "y": 3.169925001442312}
+{"state": "-16*log(x)*cos(x)*Derivative(x, x) + sin(x)*Derivative(-16*log(x), x) + Derivative(-4*x, x)", "y": 6.321928094887363}
+{"state": "(x**5*Derivative(35, x) + Derivative(-3, x) + 35*Derivative(x**5, x))*log(x) + (35*x**5 - 3)/x", "y": 5.459431618637297}
+{"state": "35*x**4*Derivative(x, x) + (x**5*Derivative(35, x) + 35*Derivative(x**5, x))*log(x) - 3*Derivative(x, x)/x", "y": 4.954196310386875}
+{"state": "x*Derivative(2*(x**2 + 2), x) + 2*(x**2 + 2)*Derivative(x, x)", "y": 5.78135971352466}
+{"state": "x*Derivative(-5, x) + 14*x - 5*Derivative(x, x)", "y": 2.0}
+{"state": "-7*log(x)*Integral(sin(x), x) + Integral(7*cos(x)/x, x) + 7*Integral(Integral(sin(x), x)/x, x)", "y": 6.977279923499917}
+{"state": "x**4*Derivative(7, x) + sin(x)*Derivative(-8, x) + 7*Derivative(x**4, x) + Derivative(-7*x**5, x) - 8*Derivative(sin(x), x) - 3", "y": 6.614709844115208}
+{"state": "(35*x**5 - 3)*Derivative(log(x), x) + (x**5*Derivative(35, x) + Derivative(-3, x) + 35*Derivative(x**5, x))*log(x)", "y": 6.392317422778761}
+{"state": "x**5*Derivative(-7, x) + sin(x)*Derivative(-8, x) - 8*cos(x)*Derivative(x, x) + Derivative(-3*x, x) + Derivative(7*x**4, x) - 7*Derivative(x**5, x)", "y": 7.139551352398794}
+{"state": "432*Integral(x**5, x)", "y": 1.0}
+{"state": "x*Derivative(3, x) + 3*Derivative(x, x) + Derivative(9*log(x), x)", "y": 5.20945336562895}
+{"state": "x**2*Derivative(3, x) + x*Derivative(4, x) + 6*x*Derivative(x, x) + 4", "y": 3.169925001442312}
+{"state": "21*x**2*Integral(1, x) + 6*x*Integral(1, x) + 9*Integral(1, x) - 6*Integral(7*x*Integral(1, x), x) - 6*Integral(1, x, x)", "y": 6.266786540694901}
+{"state": "cos(x)*Integral(5, x) + Integral(6/x, x) + Integral(-35*x**4, x) - Integral(-sin(x)*Integral(5, x), x)", "y": 7.400879436282184}
+{"state": "x*Derivative(10, x) + Derivative(3*exp(x), x) + 5*Derivative(log(x), x) + 10", "y": 5.930737337562887}
+{"state": "x**2*Derivative(5, x) + 5*Derivative(x, x) + 5*Derivative(x**2, x) + Derivative(4*x**3, x)", "y": 5.754887502163468}
+{"state": "8*(-x*Derivative(sin(x), x) - sin(x)*Derivative(x, x))", "y": 3.4594316186372973}
+{"state": "exp(x)*Derivative(4, x) + cos(x)*Derivative(8, x) + Derivative(-8*x**3, x) + 4*Derivative(exp(x), x) + 8*Derivative(cos(x), x)", "y": 6.78135971352466}
+{"state": "42*(x*log(x) - x)*exp(x) + 42*Integral(exp(x)/x, x) - Integral(42*(x*log(x) - x)*exp(x), x)", "y": 8.643856189774725}
+{"state": "42*exp(x)*Integral(log(x), x) + 42*Integral(exp(x)/x, x) - 42*Integral(exp(x)*Integral(log(x), x), x)", "y": 6.554588851677638}
+{"state": "-48*(x*log(x) - x)*sin(x) - 48*Integral(-Integral(cos(x), x)/x**2, x) + 48*Integral((x*log(x) - x)*cos(x), x) + 48*Integral(cos(x), x)/x", "y": 8.643856189774725}
+{"state": "(exp(x)*Derivative(36, x) + 36*Derivative(exp(x), x))*log(x) + 36*exp(x)*Derivative(log(x), x)", "y": 5.807354922057604}
+{"state": "Derivative(4, x) + Derivative(6*x, x) + Derivative(9*x**2, x)", "y": 5.977279923499917}
+{"state": "-4*(Derivative(x, x) + Derivative(4*log(x)*sin(x), x))", "y": 6.643856189774724}
+{"state": "x*Derivative(4, x) + 6*x + 4", "y": 1.0}
+{"state": "-4*(sin(x)*Derivative(4, x) + 4*Derivative(sin(x), x))*log(x) - 4 - 16*sin(x)*Derivative(x, x)/x", "y": 5.392317422778761}
+{"state": "(x*Derivative(-1, x) - Derivative(x, x) + Derivative(x**3, x))*cos(x**3 - x + 3)", "y": 4.247927513443585}
+{"state": "Derivative(3*exp(x), x) + 10 + 5*Derivative(x, x)/x", "y": 4.807354922057604}
+{"state": "2*x + Integral(18*x, x) + 12*Integral(x**2, x)", "y": 4.459431618637297}
+{"state": "x**2*Derivative(9, x) + 18*x*Derivative(x, x) + Derivative(4, x) + Derivative(6*x, x)", "y": 5.0}
+{"state": "48*log(x)*cos(x) + 48*cos(x)*Integral(-1/x, x) + Integral(48*cos(x)/x, x) - 48*Integral(-sin(x)*Integral(-1/x, x), x)", "y": 6.266786540694901}
+{"state": "-48*(x*log(x)*sin(x)*Integral(1/x, x) - cos(x)*Integral(1/x, x) + Integral(-2*sin(x)*Integral(1/x, x), x) + Integral(-log(x)*sin(x)*Integral(1/x, x), x) + Integral(-x*log(x)*cos(x)*Integral(1/x, x), x))", "y": 8.643856189774725}
+{"state": "Derivative(3*x, x) + Derivative(9*log(x), x)", "y": 5.727920454563199}
+{"state": "21*x**2 + Derivative(5, x) + Derivative(8*x, x) + Derivative(-5*sin(x), x)", "y": 5.906890595608519}
+{"state": "3*(x**2 + x + 6*Integral(x**2, x))", "y": 1.584962500721156}
+{"state": "Derivative(4, x) + Derivative(-2*x, x)", "y": 3.321928094887362}
+{"state": "(log(x)*Derivative(36, x) + 36*Derivative(log(x), x))*exp(x) + 36*exp(x)*log(x)", "y": 4.523561956057013}
+{"state": "-Integral(-1/x**2, x)*Integral(4*x**2 - x*exp(x) + 6, x) + Integral((4*x**2 - x*exp(x) + 6)*Integral(-1/x**2, x), x) + Integral(4*x**2 - x*exp(x) + 6, x)/x", "y": 8.643856189774725}
+{"state": "5*x**2*Derivative(x + log(x), x) + 5*(x + log(x))*Derivative(x**2, x)", "y": 5.977279923499917}
+{"state": "-35*x**4*Derivative(x, x) + sin(x)*Derivative(-8, x) + Derivative(7*x**4, x) - 8*Derivative(sin(x), x) - 3", "y": 5.727920454563199}
+{"state": "(sin(x)*Derivative(-16, x) - 16*cos(x)*Derivative(x, x))*log(x) - 4 - 16*sin(x)/x", "y": 3.700439718141092}
+{"state": "x**3*Derivative(-1, x) + 16*x - Derivative(x**3, x)", "y": 3.321928094887362}
+{"state": "3*x*(7*x**2 + 2*x + 3) - 3*(14*x + 2)*Integral(x, x) + 3*Integral(14*Integral(x, x), x)", "y": 5.584962500721156}
+{"state": "x*Derivative(7, x) + 7", "y": 1.0}
+{"state": "x**2*Derivative(9, x) + 18*x*Derivative(x, x) + 6", "y": 2.321928094887362}
+{"state": "-3*sin(x)*Derivative(2, x) + cos(x)*Derivative(2, x) + 2*Derivative(-3*sin(x) + cos(x), x)", "y": 5.857980995127572}
+{"state": "(-90*x**4 - 7*sin(x))*Derivative(x, x)", "y": 2.0}
+{"state": "x**2*Derivative(8, x) + 16*x*Derivative(x, x) - Derivative(x**3, x)", "y": 4.0}
+{"state": "8*Derivative(x, x) + Derivative(7*x**3, x) - 5*Derivative(sin(x), x)", "y": 5.0}
+{"state": "21*x**2 + sin(x)*Derivative(-5, x) + Derivative(8*x, x) - 5*Derivative(sin(x), x)", "y": 4.906890595608519}
+{"state": "cos(x)*Integral(48/x, x) + Integral(-48*log(x)*sin(x), x) - Integral(-sin(x)*Integral(48/x, x), x)", "y": 6.129283016944966}
+{"state": "x**2*Integral(-27, x) + 5*Integral(1, x) - 2*Integral(x*Integral(-27, x), x)", "y": 5.357552004618084}
+{"state": "-7*sin(x) + cos(x)*Derivative(7, x) - 2*Derivative(exp(x), x) - 4", "y": 2.584962500721156}
+{"state": "42*exp(x)*Integral((x*log(x) + 1)/x, x) - exp(x)*Integral(42*Integral((x*log(x) + 1)/x, x), x) + Integral(exp(x)*Integral(42*Integral((x*log(x) + 1)/x, x), x), x)", "y": 8.643856189774725}
+{"state": "Derivative(-8*x**3, x) + Derivative(4*exp(x), x) + Derivative(8*cos(x), x)", "y": 7.303780748177103}
+{"state": "Integral(3, x) + Integral(15*x**2, x)", "y": 5.0}
+{"state": "2*Integral(6*x**2 + 9*x + 1, x)", "y": 5.754887502163468}
+{"state": "-Integral(-Integral(6, x)/x**2, x) - Integral(-Integral(-35*x**5, x)/x**2, x) - Integral(-Integral(5*x*exp(-I*x)/2, x)/x**2, x) - Integral(-Integral(5*x*exp(I*x)/2, x)/x**2, x) + Integral(6, x)/x + Integral(-35*x**5, x)/x + Integral(5*x*exp(-I*x)/2, x)/x + Integral(5*x*exp(I*x)/2, x)/x", "y": 8.643856189774725}
+{"state": "-48*Integral(-(log(x)*Integral(-x*sin(x), x) + sin(x) - Integral(Integral(-x*sin(x), x)/x, x))/x**2, x) + 48*(log(x)*Integral(-x*sin(x), x) + sin(x) - Integral(Integral(-x*sin(x), x)/x, x))/x", "y": 8.643856189774725}
+{"state": "x**2*Derivative(7, x) + x*Derivative(-5, x) + 14*x - 5*Derivative(x, x)", "y": 3.0}
+{"state": "cos(x)*Integral(48/x, x) - 48*Integral(log(x)*sin(x), x) - Integral(-sin(x)*Integral(48/x, x), x)", "y": 6.066089190457772}
+{"state": "x**3*Derivative(7, x) + Derivative(5, x) + Derivative(8*x, x) + 7*Derivative(x**3, x) - 5*Derivative(sin(x), x)", "y": 6.426264754702098}
+{"state": "(6*x**2 + 9*x + 1)*Integral(2, x) - Integral((12*x + 9)*Integral(2, x), x)", "y": 7.022367813028454}
+{"state": "x*Integral(12, x) + Integral(-15*x**2, x) - Integral(12, x, x)", "y": 5.906890595608519}
+{"state": "(x*log(x) + 1)*(-Integral(-Integral(42*exp(x), x)/x**2, x) + Integral(42*exp(x), x)/x) - Integral((log(x) + 1)*(-Integral(-Integral(42*exp(x), x)/x**2, x) + Integral(42*exp(x), x)/x), x)", "y": 8.643856189774725}
+{"state": "x**3*Derivative(7, x) + 7*Derivative(x**3, x) - 5*Derivative(sin(x), x) + 8", "y": 4.169925001442312}
+{"state": "8*Integral(1/x, x) + 4*Integral(x, x)", "y": 2.807354922057604}
+{"state": "7*(-x*(log(x) - 1)*sin(x) + Integral(cos(x)/x, x) + Integral(x*(log(x) - 1)*cos(x), x))", "y": 6.894817763307944}
+{"state": "x**2*Derivative(3, x) + 6*x*Derivative(x, x) + Derivative(4*x, x)", "y": 4.087462841250339}
+{"state": "x**3*Derivative(7, x) - 5*cos(x) + Derivative(5, x) + Derivative(8*x, x) + 7*Derivative(x**3, x)", "y": 5.700439718141092}
+{"state": "x**5*Derivative(-18, x) - 90*x**4*Derivative(x, x) - 7*sin(x)", "y": 2.0}
+{"state": "(x*log(x)*Derivative(13, x) + 13)/x", "y": 1.584962500721156}
+{"state": "-(12*x + 9)*Integral(2, x, x) + (6*x**2 + 9*x + 1)*Integral(2, x) + Integral(12*Integral(2, x, x), x)", "y": 6.845490050944375}
+{"state": "-Integral(-Integral(7*exp(-I*x)/2, x)/x**2, x) + Integral(7*exp(I*x)/(2*x), x) + Integral(-7*I*exp(-I*x)*log(x)/2, x) + Integral(7*I*exp(I*x)*log(x)/2, x) + Integral(7*exp(-I*x)/2, x)/x", "y": 8.643856189774725}
+{"state": "2*x**2 + x*(x**2*Derivative(2, x) + 2*Derivative(x**2, x)) + 4", "y": 3.700439718141092}
+{"state": "Integral(-(35*x**6/6 - 5*x*sin(x) - 6*x - 5*cos(x))/x**2, x) + (-35*x**6/6 + 5*x*sin(x) + 6*x + 5*cos(x))/x", "y": 8.643856189774725}
+{"state": "cos(x)*Derivative(7, x) - 4*Derivative(x, x) + Derivative(-2*exp(x), x) + 7*Derivative(cos(x), x)", "y": 5.78135971352466}
+{"state": "x*Derivative(10, x) + exp(x)*Derivative(3, x) + 3*exp(x) + 10*Derivative(x, x) + Derivative(5*log(x), x)", "y": 5.882643049361842}
+{"state": "36*exp(x)*Derivative(log(x), x) + 36*log(x)*Derivative(exp(x), x)", "y": 4.392317422778761}
+{"state": "exp(x)*Derivative(-2, x) - 4*Derivative(x, x) - 2*Derivative(exp(x), x) + 7*Derivative(cos(x), x)", "y": 4.807354922057604}
+{"state": "x*Derivative(5, x) + 10*x + 5*Derivative(x, x) + 4*Derivative(x**3, x)", "y": 3.321928094887362}
+{"state": "18*x**2*Integral(1, x) + 6*x*Integral(1, x) + 3*Integral(1, x) - 6*Integral(6*x*Integral(1, x), x) - 6*Integral(1, x, x)", "y": 6.247927513443585}
+{"state": "x*Integral(18, x) + 2*x + Integral(12*x**2, x) - Integral(18, x, x)", "y": 6.0}
+{"state": "Derivative(5*x**2, x) + Derivative(4*x**3, x) + 5", "y": 5.554588851677638}
+{"state": "9*x**2*Integral(1, x) + 8*x - 18*Integral(x*Integral(1, x), x)", "y": 3.4594316186372973}
+{"state": "5*sin(x) - Integral(-6/x, x) - Integral(35*x**4, x)", "y": 5.491853096329675}
+{"state": "x**4*Derivative(7, x) + 28*x**3 + sin(x)*Derivative(-8, x) + Derivative(-3*x, x) + Derivative(-7*x**5, x) - 8*Derivative(sin(x), x)", "y": 6.965784284662087}
+{"state": "6*(Derivative(x**5, x) + Derivative(9*exp(x), x))", "y": 5.20945336562895}
+{"state": "Derivative(4*x, x) + 2*Derivative(x**3, x)", "y": 4.169925001442312}
+{"state": "-Integral(-(5*x*sin(x) + Integral(-35*x**5 - 5*sin(x) + 6, x))/x**2, x) + (5*x*sin(x) + Integral(-35*x**5 - 5*sin(x) + 6, x))/x", "y": 8.643856189774725}
+{"state": "Derivative(8*x, x) + Derivative(7*x**3, x) + Derivative(-5*sin(x), x)", "y": 6.930737337562887}
+{"state": "Derivative(4*x**2, x)", "y": 3.169925001442312}
+{"state": "x**2*(16*x*Derivative(cos(x), x) + 48*cos(x))", "y": 3.0}
+{"state": "10*Integral(x, x)", "y": 1.0}
+{"state": "-42*Integral(-Integral(exp(x), x)/x**2, x) + Integral(42*exp(x)*log(x), x) + 42*Integral(exp(x), x)/x", "y": 8.643856189774725}
+{"state": "x*(-8*x*Derivative(x, x) + x*Derivative(-4*x - 8, x) - 16*Derivative(x, x))", "y": 6.044394119358453}
+{"state": "-4*(6*x**2 + 2*sin(x)*Derivative(x, x) - Derivative(exp(x), x))", "y": 3.4594316186372973}
+{"state": "-7*sin(x)*Derivative(x, x) - 2*Derivative(exp(x), x) - 4", "y": 2.321928094887362}
+{"state": "(35*x**5 - 3)*Derivative(log(x), x) + log(x)*Derivative(35*x**5 - 3, x)", "y": 6.491853096329675}
+{"state": "18*x*Derivative(x, x) + Derivative(4, x) + 6*Derivative(x, x)", "y": 2.321928094887362}
+{"state": "x*(x*Derivative(3, x) + 3*Derivative(x, x)) + 3*x - 9", "y": 2.807354922057604}
+{"state": "Integral(9, x) + 6*Integral(x, x) + Integral(21*x**2, x)", "y": 5.321928094887363}
+{"state": "4*exp(x)*Derivative(x, x) + cos(x)*Derivative(-8, x) - 8*Derivative(cos(x), x)", "y": 3.9068905956085187}
+{"state": "-2*exp(x)*Derivative(x, x) - 7*sin(x)*Derivative(x, x) - 4", "y": 1.0}
+{"state": "5*x**2*Derivative(x + log(x), x) + (x + log(x))*(x**2*Derivative(5, x) + 5*Derivative(x**2, x))", "y": 6.491853096329675}
+{"state": "3*(2*x**3 + x + 2*Integral(x, x))", "y": 1.584962500721156}
+{"state": "exp(x)*Integral(42*(x*log(x) + 1)/x, x) - Integral(42*(x*log(x) + 1)/x, x)*Integral(exp(x), x) + Integral(42*(x*log(x) + 1)*Integral(exp(x), x)/x, x)", "y": 8.643856189774725}
+{"state": "-24*x**2 + exp(x)*Derivative(4, x) + 4*exp(x)*Derivative(x, x) - 8*sin(x)*Derivative(x, x)", "y": 2.584962500721156}
+{"state": "exp(x)*Derivative(54, x) + Derivative(6*x**5, x) + 54*Derivative(exp(x), x)", "y": 5.523561956057013}
+{"state": "48*cos(x)*Integral(1/x, x) - 48*Integral(log(x)*sin(x), x) - Integral(-48*sin(x)*Integral(1/x, x), x)", "y": 5.832890014164741}
+{"state": "2*Integral(7*x + 2/x, x)", "y": 5.906890595608519}
+{"state": "16*x**3*Derivative(cos(x), x) + (x**3*Derivative(16, x) + 48*x**2*Derivative(x, x))*cos(x)", "y": 5.044394119358453}
+{"state": "-2*Derivative(x, x)", "y": 1.0}
+{"state": "x*sin(x)*Derivative(-8, x) - 8*x*Derivative(sin(x), x) - 8*sin(x)", "y": 3.321928094887362}
+{"state": "cos(x)*Integral(7/x, x) - 7*Integral(log(x)*sin(x), x) + Integral(sin(x)*Integral(7/x, x), x)", "y": 6.149747119504682}
+{"state": "log(x)*Derivative(9, x) + Derivative(3*x, x) + 9*Derivative(x, x)/x", "y": 5.20945336562895}
+{"state": "Integral(2*(3*x + 2), x)", "y": 5.392317422778761}
+{"state": "-5*x**3 + x*Integral(12, x) - Integral(12, x, x)", "y": 4.523561956057013}
+{"state": "x**3*Derivative(7, x) + sin(x)*Derivative(-5, x) + Derivative(8*x, x) + 7*Derivative(x**3, x) - 5*Derivative(sin(x), x)", "y": 6.392317422778761}
+{"state": "(x*Integral(42*Integral(x*exp(x)*log(x), x)/x**2, x) + x*Integral(42*Integral(exp(x), x)/x**2, x) + 42*Integral(x*exp(x)*log(x), x) + 42*Integral(exp(x), x))/x", "y": 8.643856189774725}
+{"state": "6*Integral(1/x, x) + 4*Integral(x, x) - Integral(exp(x), x)", "y": 3.0}
+{"state": "(x*log(x) + 1)*(exp(x)*Integral(42/x, x) - Integral(exp(x)*Integral(42/x, x), x)) - Integral((exp(x)*Integral(42/x, x) - Integral(exp(x)*Integral(42/x, x), x))*(log(x) + 1), x)", "y": 8.643856189774725}
+{"state": "Integral(6/x, x) + Integral(-35*x**4, x) - Integral(-I*exp(-I*x)*Integral(5/2, x), x) + Integral(5*exp(I*x)/2, x) + exp(-I*x)*Integral(5/2, x)", "y": 8.643856189774725}
+{"state": "x**4*Derivative(7, x) + 28*x**3*Derivative(x, x) + x*Derivative(-3, x) - 3*Derivative(x, x) + Derivative(-7*x**5, x) + Derivative(-8*sin(x), x)", "y": 7.03342300153745}
+{"state": "7*((-x*log(x)*sin(x) + cos(x))*Integral(1/x, x) - Integral((-x*log(x)*cos(x) - log(x)*sin(x) - 2*sin(x))*Integral(1/x, x), x))", "y": 8.643856189774725}
+{"state": "x**2*Derivative(-8, x) - 12*x**2*Derivative(x, x) - 8*Derivative(x**2, x)", "y": 4.321928094887363}
+{"state": "x*Derivative(8, x) + Derivative(7*x**3, x) - 5*Derivative(sin(x), x) + 8", "y": 5.357552004618084}
+{"state": "Derivative(5*x, x) + Derivative(5*x**2, x) + 4*Derivative(x**3, x)", "y": 6.044394119358453}
+{"state": "(x*(35*x**5*Derivative(log(x), x) + log(x)*Derivative(35*x**5, x)) - 3*Derivative(x, x))/x", "y": 6.339850002884624}
+{"state": "x**3*Derivative(5, x) + 5*x**2*Derivative(log(x), x) + log(x)*Derivative(5*x**2, x) + 5*Derivative(x**3, x)", "y": 6.303780748177103}
+{"state": "2*Integral(exp(x) - sin(x) + 1, x)", "y": 2.807354922057604}
+{"state": "21*x**3*Derivative(exp(x), x) + (x**3*Derivative(21, x) + 63*x**2*Derivative(x, x))*exp(x)", "y": 5.0}
+{"state": "-4*(4*x*log(x)*cos(x)*Derivative(x, x) + x + 4*sin(x)*Derivative(x, x))/x", "y": 2.0}
+{"state": "12*x**2 + 5*Derivative(x**2, x) + 5", "y": 1.584962500721156}
+{"state": "30*x**4*Derivative(x, x) + 6*exp(x)*Derivative(9, x) + 54*Derivative(exp(x), x)", "y": 4.169925001442312}
+{"state": "(14*x - 5)*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "x**2*Integral(3, x) + Integral(9, x) + 8*Integral(x, x) - Integral(2*x*Integral(3, x), x)", "y": 5.977279923499917}
+{"state": "x*Derivative(-8, x) + exp(x)*Derivative(7, x) - 4*sin(x) - 8*Derivative(x, x) + 7*Derivative(exp(x), x)", "y": 4.321928094887363}
+{"state": "Derivative(4*x**4, x)", "y": 3.169925001442312}
+{"state": "Integral(7*exp(-I*x)/(2*x), x) + Integral(7*exp(I*x)/(2*x), x) - 7*I*Integral(exp(-I*x)*log(x), x)/2 + Integral(7*I*exp(I*x)*log(x)/2, x)", "y": 8.643856189774725}
+{"state": "-Integral(-6/x, x) - Integral(35*x**4, x) - Integral(-5*exp(-I*x)/2, x) - Integral(-5*exp(I*x)/2, x)", "y": 7.426264754702098}
+{"state": "(x*log(x) + 1)*Integral(42*exp(x)/x, x) - (log(x) + 1)*Integral(42*exp(x)/x, x, x) + Integral(Integral(42*exp(x)/x, x, x)/x, x)", "y": 8.643856189774725}
+{"state": "x**3*Derivative(7, x) + 21*x**2*Derivative(x, x) + x*Derivative(8, x) + Derivative(5, x) + 8*Derivative(x, x) + Derivative(-5*sin(x), x)", "y": 6.20945336562895}
+{"state": "48*Integral(-Integral(x*log(x)*sin(x) - cos(x), x)/x**2, x) - 48*Integral(x*log(x)*sin(x) - cos(x), x)/x", "y": 8.643856189774725}
+{"state": "-16*log(x)*Derivative(sin(x), x) - 16*sin(x)*Derivative(log(x), x) - 4", "y": 4.584962500721156}
+{"state": "-35*x**5*log(x) + 5*x*log(x)*cos(x) + 6*log(x) + 5*Integral(35*x**4*log(x), x) + 5*Integral(-log(x)*cos(x), x) + 5*Integral(x*log(x)*sin(x), x)", "y": 8.643856189774725}
+{"state": "42*log(x)*Integral(exp(x), x) - Integral(42/x, x)*Integral(exp(x), x) + 42*Integral(exp(x)/x, x) + Integral(exp(x)*Integral(42/x, x), x)", "y": 6.569855608330948}
+{"state": "Derivative(8*x, x) + 7*Derivative(x**3, x) + Derivative(-5*sin(x), x)", "y": 6.149747119504682}
+{"state": "(-x - 4*log(x)*sin(x))*Derivative(4, x) + 4*Derivative(-x, x) + 4*Derivative(-4*log(x)*sin(x), x)", "y": 7.409390936137702}
+{"state": "x**2*Derivative(4, x) + 8*x*Derivative(x, x) + Derivative(5, x)", "y": 3.321928094887362}
+{"state": "exp(x)*Derivative(7, x) + 7*exp(x)*Derivative(x, x) - 4*sin(x) - 8*Derivative(x, x)", "y": 2.0}
+{"state": "6*(5*x**4 + 9*Derivative(exp(x), x))", "y": 2.321928094887362}
+{"state": "x**2*(x + log(x))*Derivative(5, x) + 5*Derivative(x**2*(x + log(x)), x)", "y": 6.569855608330948}
+{"state": "7*(log(x)*cos(x) + sin(x)/x)*Derivative(x, x)", "y": 2.321928094887362}
+{"state": "Integral(-2*I*x*exp(-2*I)*exp(-2*I*x**2), x) + Integral(2*I*x*exp(2*I)*exp(2*I*x**2), x)", "y": 6.044394119358453}
+{"state": "-16*x**3*sin(x)*Derivative(x, x) + 48*x**2*cos(x)*Derivative(x, x)", "y": 2.0}
+{"state": "x*(x*Derivative(3, x) + 3*Derivative(x, x)) + x*Derivative(4, x) + 3*x + 4", "y": 3.584962500721156}
+{"state": "7*(x*log(x)*cos(x) + sin(x))*Derivative(x, x)/x", "y": 2.0}
+{"state": "2*sin(x)*Derivative(-3, x) - 6*Derivative(sin(x), x) + 2*Derivative(cos(x), x)", "y": 5.087462841250339}
+{"state": "15*x**2 + 10*x*log(x)*Derivative(x, x) + 5*x*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "4*Derivative(-x, x) + 4*Derivative(-4*log(x)*sin(x), x)", "y": 6.9886846867721655}
+{"state": "-3*x*Integral(-2, x) - 3*x*Integral(x, x) - 2*Integral(-2, x) - 2*Integral(x, x) + Integral(3*Integral(-2, x), x) + Integral(3*Integral(x, x), x)", "y": 6.6865005271832185}
+{"state": "x**5*Derivative(-7, x) + x**4*Derivative(7, x) - 35*x**4*Derivative(x, x) + Derivative(-3*x, x) + 7*Derivative(x**4, x) + Derivative(-8*sin(x), x)", "y": 7.044394119358453}
+{"state": "x*(x*(x*Derivative(5, x) + 5*Derivative(x, x)) + x*Derivative(5*log(x), x) + 10*x + 10*log(x))", "y": 5.672425341971495}
+{"state": "x**3*Derivative(4, x) + Derivative(5*x**2, x) + 4*Derivative(x**3, x) + 5", "y": 5.357552004618084}
+{"state": "Integral(6/x, x) + Integral(4*x, x) - Integral(exp(x), x)", "y": 5.727920454563199}
+{"state": "x*Derivative(5, x) + Derivative(-7, x) + 5*Derivative(x, x)", "y": 3.0}
+{"state": "x**4*Derivative(7, x) + 28*x**3 + x*Derivative(-3, x) - 3*Derivative(x, x) + Derivative(-7*x**5, x) + Derivative(-8*sin(x), x)", "y": 7.022367813028454}
+{"state": "x**3*Derivative(-4, x) + x**2*Derivative(-8, x) - 8*Derivative(x**2, x) - 4*Derivative(x**3, x)", "y": 5.614709844115208}
+{"state": "42*x*(log(x) - 1)*exp(x) + Integral(42*exp(x)/x, x) - 42*Integral(x*(log(x) - 1)*exp(x), x)", "y": 7.3750394313469245}
+{"state": "x**3*Derivative(2, x) + 6*x**2 + 4", "y": 1.0}
+{"state": "-(35*x**5 - 5*x*cos(x) - 6)*log(x) + Integral((175*x**4 + 5*x*sin(x) - 5*cos(x))*log(x), x)", "y": 6.807354922057604}
+{"state": "x**2*Derivative(5, x) + 12*x**2 + 10*x*Derivative(x, x) + 5", "y": 2.0}
+{"state": "-4*(4*log(x)*Derivative(sin(x), x) + 4*sin(x)*Derivative(log(x), x) + 1)", "y": 4.584962500721156}
+{"state": "x**5*Derivative(-7, x) + 28*x**3*Derivative(x, x) - 7*Derivative(x**5, x) + Derivative(-8*sin(x), x) - 3", "y": 5.727920454563199}
+{"state": "x*Derivative(5, x) + 5*Derivative(x, x) + Derivative(5*x**2, x) + 4*Derivative(x**3, x)", "y": 5.392317422778761}
+{"state": "9*x + Integral(8*x, x) + 3*Integral(x**2, x)", "y": 4.247927513443585}
+{"state": "Integral(9, x) + 6*Integral(x, x) + 21*Integral(x**2, x)", "y": 4.0}
+{"state": "Integral(24*exp(-I*x)/x, x) + Integral(24*exp(I*x)/x, x) - Integral(-I*exp(-I*x)*Integral(-24*I*log(x), x), x) + Integral(24*I*exp(I*x)*log(x), x) + exp(-I*x)*Integral(-24*I*log(x), x)", "y": 8.643856189774725}
+{"state": "x*cos(x**2 - 4*x + 5)*Derivative(-4, x) + 2*x*cos(x**2 - 4*x + 5)*Derivative(x, x) + cos(x**2 - 4*x + 5)*Derivative(5, x) - 4*cos(x**2 - 4*x + 5)*Derivative(x, x)", "y": 4.0}
+{"state": "-2*(sin(x) + 3*cos(x))*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "-15*x*Integral(x, x) + 12*Integral(x, x) + 15*Integral(x, x, x)", "y": 5.20945336562895}
+{"state": "(sin(x)*Derivative(-32, x) - 64*cos(x))*sin(x)", "y": 2.0}
+{"state": "x*Derivative(-8, x) + exp(x)*Derivative(7, x) - 8*Derivative(x, x) + 7*Derivative(exp(x), x) + 4*Derivative(cos(x), x)", "y": 5.554588851677638}
+{"state": "-24*x**2 + cos(x)*Derivative(8, x) + 4*Derivative(exp(x), x) + 8*Derivative(cos(x), x)", "y": 4.906890595608519}
+{"state": "48*(-x*(log(x) - 1)*sin(x) + Integral(cos(x)/x, x) + Integral(x*(log(x) - 1)*cos(x), x))", "y": 6.894817763307944}
+{"state": "x**4*Derivative(7, x) + 7*Derivative(x**4, x) - 7*Derivative(x**5, x) + Derivative(-8*sin(x), x) - 3", "y": 6.285402218862249}
+{"state": "sin(x)*Derivative(-6, x) - 2*sin(x)*Derivative(x, x) + cos(x)*Derivative(2, x) - 6*Derivative(sin(x), x)", "y": 4.700439718141092}
+{"state": "(x*(sin(x)*Derivative(7, x) + 7*Derivative(sin(x), x))*log(x) + 7*sin(x))/x", "y": 4.0}
+{"state": "Derivative(3*x, x) + 9*Derivative(log(x), x)", "y": 4.807354922057604}
+{"state": "-Integral(-(9*x*exp(x) + 4*x - 9*exp(x))/x**2, x) + (9*x*exp(x) + 4*x - 9*exp(x))/x", "y": 8.643856189774725}
+{"state": "15*x**3 + Integral(3, x) - Integral(30*x**2, x)", "y": 5.044394119358453}
+{"state": "7*(log(x)*cos(x) + Integral(-cos(x)/x, x) + Integral(cos(x)/x, x))", "y": 3.0}
+{"state": "Integral(5/x, x) + Integral(5*I*exp(I*x)/2, x) - Integral(-I*exp(-I*x)*Integral(-5*I/2, x), x) + exp(-I*x)*Integral(-5*I/2, x)", "y": 7.643856189774724}
+{"state": "Integral(5/x, x) + Integral(5*I*exp(I*x)/2, x) + Subs(Integral(5*exp(u_)/2, u_), u_, -I*x)", "y": 6.672425341971495}
+{"state": "exp(I*x)*Integral(7/x, x)/2 - 7*Integral(I*exp(-I*x)*log(x)/2, x) - Integral(-I*exp(-I*x)*Integral(7/x, x)/2, x) - 7*Integral(-I*exp(I*x)*log(x)/2, x) - Integral(I*exp(I*x)*Integral(7/x, x)/2, x) + exp(-I*x)*Integral(7/x, x)/2", "y": 8.643856189774725}
+{"state": "x**2*Derivative(7, x) + 14*x*Derivative(x, x) + Derivative(-5*x, x)", "y": 4.087462841250339}
+{"state": "x**2*(-16*x*sin(x)*Derivative(x, x) + (x*Derivative(16, x) + 48)*cos(x))", "y": 3.4594316186372973}
+{"state": "5*sin(x) + Integral(6/x, x) - 35*Integral(x**4, x)", "y": 5.285402218862249}
+{"state": "48*(-log(x)*Integral(sin(x), x) + Integral(cos(x)/x, x) + Integral(Integral(sin(x), x)/x, x))", "y": 6.108524456778169}
+{"state": "(2*x + Derivative(5, x) + Derivative(-4*x, x))*cos(x**2 - 4*x + 5)", "y": 4.584962500721156}
+{"state": "21*x**3 + 6*x**2 + 9*x - Integral(6*x, x) - Integral(42*x**2, x)", "y": 5.169925001442312}
+{"state": "10*x**2*Derivative(x, x) + x**2*Derivative(5*x + 5*log(x), x) + 10*x*log(x)*Derivative(x, x)", "y": 6.569855608330948}
+{"state": "-32*Derivative(sin(x)**2, x)", "y": 2.321928094887362}
+{"state": "3*exp(x) + log(x)*Derivative(5, x) + 10 + 5*Derivative(x, x)/x", "y": 2.807354922057604}
+{"state": "cos(x)*Derivative(2, x) - 6*cos(x) + 2*Derivative(cos(x), x)", "y": 3.169925001442312}
+{"state": "x*(x*Derivative(3, x) + 3*Derivative(x, x)) + (3*x + 4)*Derivative(x, x)", "y": 3.0}
+{"state": "x**5*Integral(432, x) - 5*Integral(x**4*Integral(432, x), x)", "y": 5.321928094887363}
+{"state": "log(x)*Derivative(9, x) + 3 + 9*Derivative(x, x)/x", "y": 3.0}
+{"state": "-48*Integral(-1/x**2, x)*Integral(-x*log(x)*sin(x) + cos(x), x) + 48*Integral((-x*log(x)*sin(x) + cos(x))*Integral(-1/x**2, x), x) + 48*Integral(-x*log(x)*sin(x) + cos(x), x)/x", "y": 8.643856189774725}
+{"state": "log(x)*Derivative(36*exp(x), x) + 36*exp(x)*Derivative(x, x)/x", "y": 5.392317422778761}
+{"state": "42*Integral(Integral(x*exp(x)*log(x), x)/x**2, x) + 42*Integral(Integral(exp(x), x)/x**2, x) + 42*Integral(x*exp(x)*log(x), x)/x + 42*Integral(exp(x), x)/x", "y": 8.643856189774725}
+{"state": "log(x)*Derivative(35*x**5 - 3, x) + (35*x**5 - 3)*Derivative(x, x)/x", "y": 6.459431618637297}
+{"state": "7*(-x*log(x)*sin(x) + cos(x))*log(x) - 7*Integral(-(x*log(x)*cos(x) + log(x)*sin(x) + 2*sin(x))*log(x), x)", "y": 8.643856189774725}
+{"state": "2*x*cos(x**2 - 4*x + 5)*Derivative(x, x) + (x*Derivative(-4, x) - 4*Derivative(x, x))*cos(x**2 - 4*x + 5)", "y": 3.321928094887362}
+{"state": "3*x*(5*x**2 + 1) - 30*Integral(x**2, x)", "y": 2.321928094887362}
+{"state": "2*x + 18*Integral(x, x) + 2*Integral(6*x**2, x)", "y": 5.0}
+{"state": "12*x**2*Derivative(x, x) + x*Derivative(5, x) + Derivative(7, x) + 5*Derivative(x, x) + Derivative(5*x**2, x)", "y": 5.20945336562895}
+{"state": "x*(x*Derivative(5*(x + log(x)), x) + 10*x + 10*log(x))", "y": 5.954196310386875}
+{"state": "-x**3*Derivative(4, x) - 2*x**2*Derivative(4, x) + 4*Derivative(x**2*(-x - 2), x)", "y": 6.870364719583405}
+{"state": "-x**3 + 2*x**2 + Integral(4, x)", "y": 1.584962500721156}
+{"state": "log(x)*Derivative(9, x) + Derivative(1, x) + 9*Derivative(log(x), x) + 3", "y": 4.392317422778761}
+{"state": "3*Integral(6*x**2 + 2*x + 1, x)", "y": 5.882643049361842}
+{"state": "exp(x)*Derivative(3, x) + 3*Derivative(exp(x), x) + 10 + 5*Derivative(x, x)/x", "y": 4.169925001442312}
+{"state": "2*x*(3*x + 2) - Integral(6*x, x)", "y": 3.700439718141092}
+{"state": "(35*x*(x**5*Derivative(log(x), x) + 5*x**4*log(x)*Derivative(x, x)) - 3)/x", "y": 4.0}
+{"state": "x**2*(21*x*Derivative(exp(x), x) + 63*exp(x)*Derivative(x, x))", "y": 3.584962500721156}
+{"state": "8*Integral(1, x)", "y": 1.0}
+{"state": "-35*x**5/6 + 5*sin(x) - Integral(-6/x, x) - Integral(35*x**4/6, x) - Integral(-5*cos(x)/x**2, x) - Integral(-5*sin(x)/x, x) + 6 + 5*cos(x)/x", "y": 8.643856189774725}
+{"state": "24*I*exp(I*x)*Integral(log(x), x) + Integral(24*exp(-I*x)/x, x) + Integral(24*exp(I*x)/x, x) + 48*Integral(exp(-I*x)*Integral(log(x), x)/2, x) + 48*Integral(exp(I*x)*Integral(log(x), x)/2, x) - 24*I*exp(-I*x)*Integral(log(x), x)", "y": 8.643856189774725}
+{"state": "-7*x**5 + Integral(6/x, x) + Integral(5*exp(-I*x)/2, x) + Integral(5*exp(I*x)/2, x)", "y": 7.108524456778169}
+{"state": "5*x**2*Derivative(log(x), x) + 15*x**2 + 10*x*log(x)", "y": 2.321928094887362}
+{"state": "Integral(2, x) + 18*Integral(x, x) + Integral(12*x**2, x)", "y": 5.321928094887363}
+{"state": "x*Derivative(3, x) + log(x)*Derivative(9, x) + 3*Derivative(x, x) + 9*Derivative(x, x)/x", "y": 4.0}
+{"state": "18*x + Derivative(4, x) + 6", "y": 1.0}
+{"state": "2*(x**2 + x*Derivative(x**2 + 2, x) + 2)", "y": 4.247927513443585}
+{"state": "-24*x**2*Derivative(x, x) - 8*sin(x)*Derivative(x, x) + cos(x)*Derivative(8, x) + Derivative(4*exp(x), x)", "y": 4.906890595608519}
+{"state": "(Derivative(4, x) + 4)*exp(x)", "y": 1.584962500721156}
+{"state": "x*sin(x)*Derivative(-8, x) - 8*x*cos(x) - 8*sin(x)*Derivative(x, x)", "y": 2.584962500721156}
+{"state": "3*x*(7*x**2 + 2*x + 3) - Integral(6*x*(7*x + 1), x)", "y": 5.832890014164741}
+{"state": "x**5*Derivative(-18, x) - 7*sin(x)*Derivative(x, x) + cos(x)*Derivative(7, x) - 18*Derivative(x**5, x)", "y": 4.459431618637297}
+{"state": "-7*sin(x)*Derivative(x, x) + cos(x)*Derivative(7, x) - 4*Derivative(x, x) + Derivative(-2*exp(x), x)", "y": 4.700439718141092}
+{"state": "Derivative(-16*log(x)*sin(x), x) - 4", "y": 5.954196310386875}
+{"state": "-Integral(-2*Integral(-Integral(35*x**5 - 5*x*cos(x) - 6, x), x)/x**3, x) - Integral(35*x**5 - 5*x*cos(x) - 6, x)/x + Integral(-Integral(35*x**5 - 5*x*cos(x) - 6, x), x)/x**2", "y": 8.643856189774725}
+{"state": "3*x*Derivative(-3, x) - 9*Derivative(x, x) + 3*Derivative(x**2, x)", "y": 4.169925001442312}
+{"state": "4*x**2*Derivative(-x - 2, x) - 8*x**2 - 16*x", "y": 5.523561956057013}
+{"state": "Derivative(5, x) + Derivative(4*x**2, x)", "y": 4.0}
+{"state": "-16*x**3*sin(x)*Derivative(x, x) + cos(x)*Derivative(16*x**3, x)", "y": 4.906890595608519}
+{"state": "9*exp(x) + Integral(Integral(4, x)/x**2, x) + Integral(4, x)/x", "y": 5.700439718141092}
+{"state": "-6*cos(x) + 2*Derivative(cos(x), x)", "y": 2.584962500721156}
+{"state": "4*sqrt(2)*sin(x + pi/4) + Integral(45*x**4 + 2, x)", "y": 5.20945336562895}
+{"state": "6*(9*exp(x)*Derivative(x, x) + Derivative(x**5, x))", "y": 3.0}
+{"state": "3*Derivative(x, x) + Derivative(9*log(x), x)", "y": 4.247927513443585}
+{"state": "x*Derivative(3, x) + Derivative(9*log(x), x) + 3", "y": 4.523561956057013}
+{"state": "21*x**2*Derivative(x, x) + sin(x)*Derivative(-5, x) - 5*Derivative(sin(x), x) + 8", "y": 3.321928094887362}
+{"state": "2*x*cos(x**2 - 4*x + 5)*Derivative(x, x) - 4*cos(x**2 - 4*x + 5)*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "(9*x*exp(x) + 4)*Integral(1/x, x) - Integral((9*x*exp(x) + 9*exp(x))*Integral(1/x, x), x)", "y": 6.643856189774724}
+{"state": "x*Derivative(4, x) + 6*x*Derivative(x, x) + 4", "y": 2.321928094887362}
+{"state": "x**5*Derivative(-18, x) + cos(x)*Derivative(7, x) - 18*Derivative(x**5, x) + 7*Derivative(cos(x), x)", "y": 5.247927513443585}
+{"state": "exp(x)*Integral(9, x) - exp(x)*Integral(9, x, x) + Integral(4/x, x) + Integral(exp(x)*Integral(9, x, x), x)", "y": 7.266786540694901}
+{"state": "2*x*Derivative(x**2 + 2, x) + (x**2 + 2)*Derivative(2*x, x)", "y": 5.832890014164741}
+{"state": "(x*Integral(42/x**2, x)*Integral(x*exp(x)*log(x), x) + x*Integral(42/x**2, x)*Integral(exp(x), x) - x*Integral(exp(x)*Integral(42/x**2, x), x) - x*Integral(x*exp(x)*log(x)*Integral(42/x**2, x), x) + 42*Integral(x*exp(x)*log(x), x) + 42*Integral(exp(x), x))/x", "y": 8.643856189774725}
+{"state": "48*(Integral(cos(x)/x, x) + Integral(-log(x)*sin(x), x))", "y": 5.882643049361842}
+{"state": "x**2*log(x)*Derivative(5, x) + 15*x**2 + 5*Derivative(x**2*log(x), x)", "y": 5.087462841250339}
+{"state": "x**4*Derivative(7, x) + 28*x**3*Derivative(x, x) + Derivative(-7*x**5, x) + Derivative(-8*sin(x), x) - 3", "y": 6.442943495848728}
+{"state": "18*x + Derivative(4, x) + 6*Derivative(x, x)", "y": 2.321928094887362}
+{"state": "exp(I*x)*Integral(24*I*log(x), x) + Integral(24*exp(-I*x)/x, x) + Integral(24*exp(I*x)/x, x) + Integral(-24*I*exp(-I*x)*log(x), x) - Integral(I*exp(I*x)*Integral(24*I*log(x), x), x)", "y": 8.643856189774725}
+{"state": "(x*Derivative(1, x) + 3*x + 9*Derivative(x, x))/x", "y": 3.0}
+{"state": "4*x**2*Derivative(-x - 2, x) + (-x - 2)*Derivative(4*x**2, x)", "y": 7.159871336778389}
+{"state": "(-Derivative(x, x) + Derivative(x**3, x))*cos(x**3 - x + 3)", "y": 3.169925001442312}
+{"state": "-(14*x + 2)*Integral(3, x, x) + (7*x**2 + 2*x + 3)*Integral(3, x) + Integral(14*Integral(3, x, x), x)", "y": 6.894817763307944}
+{"state": "x*Derivative(-11, x) - 11", "y": 1.0}
+{"state": "4*x**2*Derivative(-x - 2, x) - x*Derivative(4*x**2, x) - 2*Derivative(4*x**2, x)", "y": 6.845490050944375}
+{"state": "4*(Derivative(exp(x), x) - 2*Derivative(cos(x), x))", "y": 4.169925001442312}
+{"state": "exp(x)*Derivative(-2, x) + Derivative(-4*x, x) - 2*Derivative(exp(x), x) + 7*Derivative(cos(x), x)", "y": 6.022367813028454}
+{"state": "(x*(35*x**5*Derivative(log(x), x) + (x**5*Derivative(35, x) + 35*Derivative(x**5, x))*log(x)) - 3)/x", "y": 5.857980995127572}
+{"state": "Derivative(1, x) + 4*Derivative(x**4, x)", "y": 2.584962500721156}
+{"state": "6*x + 3*Derivative(-3*x, x)", "y": 3.169925001442312}
+{"state": "-Integral(9*x**2*sin(3*x**3 + 4*x + 2), x) - Integral(4*sin(3*x**3 + 4*x + 2), x)", "y": 8.643856189774725}
+{"state": "x**4*Derivative(7, x) - 35*x**4 + 28*x**3*Derivative(x, x) + Derivative(-3*x, x) + Derivative(-8*sin(x), x)", "y": 6.108524456778169}
+{"state": "4*(-4*log(x)*cos(x) - 4*sin(x)*Derivative(log(x), x) - 1)", "y": 3.0}
+{"state": "9*x**3 + Integral(8, x) - 2*Integral(9*x**2, x)", "y": 5.169925001442312}
+{"state": "4*(-2*Derivative(x**2, x) + Derivative(-x**3, x))", "y": 5.392317422778761}
+{"state": "4*exp(x)*Derivative(x, x) + 8*sin(x)*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "-48*(x*log(x)**2*sin(x) - log(x)*cos(x) + Integral(-2*log(x)*sin(x), x) + Integral(-log(x)**2*sin(x), x) + Integral(-x*log(x)**2*cos(x), x))", "y": 8.643856189774725}
+{"state": "Derivative(3*x*(x - 3), x)", "y": 6.3750394313469245}
+{"state": "-x*Derivative(4, x) - 4*log(x)*sin(x)*Derivative(4, x) + 4*Derivative(-x, x) + 4*Derivative(-4*log(x)*sin(x), x)", "y": 7.20945336562895}
+{"state": "7*exp(x)*Derivative(x, x) - 4*sin(x) - 8*Derivative(x, x)", "y": 1.0}
+{"state": "21*(x**3*Derivative(exp(x), x) + exp(x)*Derivative(x**3, x))", "y": 4.247927513443585}
+{"state": "-48*(x*log(x) - x)*sin(x) + 48*cos(x)*Integral(1/x, x) + 48*Integral((x*log(x) - x)*cos(x), x) - 48*Integral(-sin(x)*Integral(1/x, x), x)", "y": 7.400879436282184}
+{"state": "2*(x + 9*Integral(x, x) + 6*Integral(x**2, x))", "y": 2.584962500721156}
+{"state": "3*(2*x**3 + Integral(1, x) + 2*Integral(x, x))", "y": 2.807354922057604}
+{"state": "(x*exp(x)*Derivative(3, x) + x*Derivative(10*x, x) + 3*x*Derivative(exp(x), x) + 5)/x", "y": 5.906890595608519}
+{"state": "exp(x)*Derivative(-5, x) - 5*exp(x) + cos(x)*Derivative(x, x)", "y": 2.0}
+{"state": "Integral(4, x) + 6*Integral(x, x)", "y": 3.0}
+{"state": "x*Derivative(3, x) + Derivative(1, x) + 3*Derivative(x, x) + 9*Derivative(log(x), x)", "y": 5.044394119358453}
+{"state": "42*Integral((exp(x)*Integral(x*log(x) + 1, x) - Integral(exp(x)*Integral(x*log(x) + 1, x), x))/x**2, x) + 42*(exp(x)*Integral(x*log(x) + 1, x) - Integral(exp(x)*Integral(x*log(x) + 1, x), x))/x", "y": 8.643856189774725}
+{"state": "21*x**3*exp(x)*Derivative(x, x) + 21*exp(x)*Derivative(x**3, x)", "y": 3.321928094887362}
+{"state": "x*Integral(12 - 15*x, x) - Integral(12 - 15*x, x, x)", "y": 8.643856189774725}
+{"state": "-24*x**2 + exp(x)*Derivative(4, x) - 8*sin(x) + cos(x)*Derivative(8, x) + 4*Derivative(exp(x), x)", "y": 4.0}
+{"state": "28*x**3 + sin(x)*Derivative(-8, x) + Derivative(-3*x, x) + Derivative(-7*x**5, x) - 8*Derivative(sin(x), x)", "y": 6.584962500721156}
+{"state": "3*exp(x)*Derivative(x, x) + 10*Derivative(x, x) + Derivative(5*log(x), x)", "y": 4.087462841250339}
+{"state": "21*Derivative(x, x)", "y": 1.0}
+{"state": "7*Integral(-log(x)*sin(x) + cos(x)/x, x)", "y": 6.321928094887363}
+{"state": "x**3*Derivative(4, x) + 10*x + Derivative(7, x) + Derivative(5*x, x) + 4*Derivative(x**3, x)", "y": 5.700439718141092}
+{"state": "2*Derivative(2*x, x) + 2*Derivative(x**3, x)", "y": 4.754887502163468}
+{"state": "-Integral(-((x*log(x) + 1)*Integral(42*exp(x), x) - Integral((log(x) + 1)*Integral(42*exp(x), x), x))/x**2, x) + ((x*log(x) + 1)*Integral(42*exp(x), x) - Integral((log(x) + 1)*Integral(42*exp(x), x), x))/x", "y": 8.643856189774725}
+{"state": "x**3*Derivative(4, x) + x*Derivative(5, x) + Derivative(7, x) + Derivative(5*x**2, x) + 4*Derivative(x**3, x) + 5", "y": 6.285402218862249}
+{"state": "(log(x)*Derivative(7, x) + 7/x)*sin(x) + 7*log(x)*Derivative(sin(x), x)", "y": 4.247927513443585}
+{"state": "2*x*(6*x**2 + 9*x + 1) - 6*Integral(x*(4*x + 3), x)", "y": 5.954196310386875}
+{"state": "48*Integral(exp(-I*x)/(2*x), x) + 48*Integral(exp(I*x)/(2*x), x) + Integral(-24*I*exp(-I*x)*log(x), x) + Integral(24*I*exp(I*x)*log(x), x)", "y": 8.643856189774725}
+{"state": "3*Integral(3, x) + 3*Integral(2*x, x) + 3*Integral(7*x**2, x)", "y": 5.832890014164741}
+{"state": "4*x**3 + 2*Integral(1, x) + 18*Integral(x, x)", "y": 2.584962500721156}
+{"state": "6*x**2 + Derivative(4*x, x)", "y": 2.584962500721156}
+{"state": "-90*x**4 + Derivative(7*cos(x), x)", "y": 2.807354922057604}
+{"state": "6*Integral(1/x, x) + Integral(4*x, x) - Integral(exp(x), x)", "y": 5.392317422778761}
+{"state": "x*Integral(18, x) + Integral(2, x) + 12*Integral(x**2, x) - Integral(18, x, x)", "y": 5.977279923499917}
+{"state": "2*x*Integral(3, x) + 4*x - 2*Integral(3, x, x)", "y": 5.044394119358453}
+{"state": "(x*Derivative(-4, x) + 2*x*Derivative(x, x) - 4)*cos(x**2 - 4*x + 5)", "y": 3.0}
+{"state": "3*(4 - 5*x)*Integral(x, x) - 3*Integral(-5*Integral(x, x), x)", "y": 5.491853096329675}
+{"state": "x**3*Derivative(4, x) + 12*x**2*Derivative(x, x) + 5*Derivative(x**2, x) + 5", "y": 3.321928094887362}
+{"state": "2*(x + Integral(9*x, x) + Integral(6*x**2, x))", "y": 5.20945336562895}
+{"state": "x**2*Derivative(5*log(x), x) + 10*x*log(x)*Derivative(x, x) + Derivative(5*x**3, x)", "y": 6.22881869049588}
+{"state": "(-4*x*log(x)*Derivative(4*sin(x), x) - 4*x - 16*sin(x))/x", "y": 5.129283016944966}
+{"state": "3*x**2 + 9*x + 3*Integral(7*x**2, x)", "y": 3.584962500721156}
+{"state": "2*(2*log(x) + 7*Integral(x, x))", "y": 1.584962500721156}
+{"state": "7*exp(x)*Derivative(x, x) - 4*sin(x)*Derivative(x, x) + cos(x)*Derivative(4, x) - 8", "y": 2.0}
+{"state": "2*x*cos(x**2 - 4*x + 5)*Derivative(x, x) + cos(x**2 - 4*x + 5)*Derivative(5, x) - 4*cos(x**2 - 4*x + 5)", "y": 3.0}
+{"state": "15*x**2*Derivative(x, x) + x**2*Derivative(5*log(x), x) + 5*log(x)*Derivative(x**2, x)", "y": 5.906890595608519}
+{"state": "x**5*log(x)*Derivative(35, x) + 35*Derivative(x**5*log(x), x) - 3/x", "y": 5.554588851677638}
+{"state": "3*Derivative(exp(x), x) + Derivative(5*log(x), x) + 10", "y": 4.906890595608519}
+{"state": "x**2*(x*Derivative(5, x) + 5*Derivative(x, x)) + x**2*Derivative(5*log(x), x) + 10*x**2 + 10*x*log(x)", "y": 5.672425341971495}
+{"state": "log(x)*Integral(7*I*exp(I*x)/2, x) + Integral(7*exp(-I*x)/(2*x), x) + Integral(7*exp(I*x)/(2*x), x) - Integral(Integral(7*I*exp(I*x)/2, x)/x, x) + Integral(-7*I*exp(-I*x)*log(x)/2, x)", "y": 7.357552004618084}
+{"state": "sin(x)*Derivative(-6, x) + cos(x)*Derivative(2, x) - 6*Derivative(sin(x), x) + 2*Derivative(cos(x), x)", "y": 5.459431618637297}
+{"state": "-Integral(-(exp(x)*Integral(42*x*log(x) + 42, x) - Integral(exp(x)*Integral(42*x*log(x) + 42, x), x))/x**2, x) + (exp(x)*Integral(42*x*log(x) + 42, x) - Integral(exp(x)*Integral(42*x*log(x) + 42, x), x))/x", "y": 8.643856189774725}
+{"state": "x*Integral(4, x) + 4*Integral(1, x) - 3*Integral(x**2, x) - Integral(4, x, x)", "y": 5.727920454563199}
+{"state": "7*x**2 + 2*Integral(2/x, x)", "y": 3.321928094887362}
+{"state": "6*x**2 + x*Derivative(4, x) + 4*Derivative(x, x)", "y": 2.321928094887362}
+{"state": "6*x*Integral(1, x) + 4*Integral(1, x) - 6*Integral(1, x, x)", "y": 3.321928094887362}
+{"state": "-16*x**2*(x*sin(x) - 3*cos(x))*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "-sin(x)*Integral(-Integral(48/x, x), x) + cos(x)*Integral(48/x, x) - 48*Integral(log(x)*sin(x), x) + Integral(cos(x)*Integral(-Integral(48/x, x), x), x)", "y": 7.366322214245816}
+{"state": "x*(x*(log(x)*Derivative(5, x) + 5*Derivative(log(x), x)) + x*Derivative(5*x, x) + 10*x + 10*log(x))", "y": 5.807354922057604}
+{"state": "log(x)*Derivative(-16*sin(x), x) - 4 - 16*sin(x)/x", "y": 4.523561956057013}
+{"state": "2*Derivative(2 - x, x)", "y": 4.169925001442312}
+{"state": "-35*x**4 + 28*x**3 + sin(x)*Derivative(-8, x) + Derivative(-3*x, x) - 8*Derivative(sin(x), x)", "y": 4.906890595608519}
+{"state": "-8*sin(x)*Derivative(x, x) + cos(x)*Derivative(8, x) + Derivative(-8*x**3, x) + Derivative(4*exp(x), x)", "y": 6.658211482751795}
+{"state": "(x*(x**5*(log(x)*Derivative(35, x) + 35*Derivative(log(x), x)) + 175*x**4*log(x)) - 3)/x", "y": 4.643856189774724}
+{"state": "48*log(x)*Integral(-sin(x), x) + 48*Integral(cos(x)/x, x) - 48*Integral(Integral(-sin(x), x)/x, x)", "y": 3.4594316186372973}
+{"state": "-7*Integral(-exp(-I*x)/(2*x), x) - 7*Integral(-exp(I*x)/(2*x), x) - 7*Integral(I*exp(-I*x)*log(x)/2, x) - 7*Integral(-I*exp(I*x)*log(x)/2, x)", "y": 7.643856189774724}
+{"state": "3*exp(x) + 10 + 5*Derivative(x, x)/x", "y": 1.584962500721156}
+{"state": "sin(x)*Derivative(-6, x) - 2*sin(x)*Derivative(x, x) - 6*Derivative(sin(x), x)", "y": 4.0}
+{"state": "-Integral(-Integral(7*exp(I*x)/2, x)/x**2, x) + Integral(7*exp(-I*x)/(2*x), x) + Integral(-7*I*exp(-I*x)*log(x)/2, x) + Integral(7*I*exp(I*x)*log(x)/2, x) + Integral(7*exp(I*x)/2, x)/x", "y": 8.643856189774725}
+{"state": "Integral(3, x) + 6*Integral(x, x) + 18*Integral(x**2, x)", "y": 4.169925001442312}
+{"state": "x*(sin(x)*Derivative(-8, x) - 8*cos(x)*Derivative(x, x)) - 8*sin(x)*Derivative(x, x)", "y": 3.0}
+{"state": "30*x**4*Derivative(x, x) + (x**5 + 9*exp(x))*Derivative(6, x) + 6*Derivative(9*exp(x), x)", "y": 5.491853096329675}
+{"state": "x*(5*x*(1 + Derivative(x, x)/x) + 10*x + 10*log(x))", "y": 2.0}
+{"state": "4*x**3*Derivative(-1, x) + 4*x**2*Derivative(-2, x) - 8*Derivative(x**2, x) - 4*Derivative(x**3, x)", "y": 5.857980995127572}
+{"state": "cos(x)*Derivative(4, x) + 7*Derivative(exp(x), x) + 4*Derivative(cos(x), x) - 8", "y": 4.169925001442312}
+{"state": "-16*log(x)*cos(x) - 16*sin(x)*Derivative(log(x), x) - 4", "y": 3.0}
+{"state": "x**4*Derivative(7, x) + x*Derivative(-3, x) - 3*Derivative(x, x) + 7*Derivative(x**4, x) - 7*Derivative(x**5, x) + Derivative(-8*sin(x), x)", "y": 6.78135971352466}
+{"state": "15*x**2 + 5*x + (x**2*Derivative(5, x) + 5*Derivative(x**2, x))*log(x)", "y": 4.0}
+{"state": "48*log(x)*cos(x) + 48*cos(x)*Integral(1/x, x) + 48*Integral(-cos(x)/x, x) - 48*Integral(-sin(x)*Integral(1/x, x), x)", "y": 6.044394119358453}
+{"state": "10*Derivative(x, x) + Derivative(3*exp(x), x) + 5/x", "y": 4.807354922057604}
+{"state": "(x**2*Derivative(10, x) + x*Derivative(3*exp(x), x) + 10*x + 5*Derivative(x, x))/x", "y": 5.832890014164741}
+{"state": "5*(x**2*Derivative(log(x), x) + 3*x**2 + log(x)*Derivative(x**2, x))", "y": 3.9068905956085187}
+{"state": "-48*Integral(-(sin(x) + Integral(-x*log(x)*sin(x), x))/x**2, x) + 48*(sin(x) + Integral(-x*log(x)*sin(x), x))/x", "y": 8.643856189774725}
+{"state": "36*exp(x)*log(x)*Derivative(x, x) + exp(x)*Derivative(36*log(x), x)", "y": 5.247927513443585}
+{"state": "2*Derivative(-3*sin(x), x) + 2*Derivative(cos(x), x)", "y": 5.321928094887363}
+{"state": "3*Integral(-2, x) + 3*Integral(-9*x**2, x) + 3*Integral(2*cos(x), x)", "y": 6.475733430966398}
+{"state": "Derivative(5*x, x) + 5*Derivative(x**2, x) + Derivative(4*x**3, x)", "y": 6.169925001442312}
+{"state": "-35*x**4 + 28*x**3*Derivative(x, x) + sin(x)*Derivative(-8, x) - 8*Derivative(sin(x), x) - 3", "y": 3.321928094887362}
+{"state": "log(x)*sin(x)*Derivative(7, x) + 7*log(x)*Derivative(sin(x), x) + 7*sin(x)*Derivative(log(x), x)", "y": 5.087462841250339}
+{"state": "(3*x**2 + x*Derivative(-1, x) - Derivative(x, x))*cos(x**3 - x + 3)", "y": 2.807354922057604}
+{"state": "x**3*Derivative(2, x) + 6*x**2*Derivative(x, x) + Derivative(4*x, x)", "y": 4.087462841250339}
+{"state": "x**5*Derivative(-7, x) + 28*x**3 - 7*Derivative(x**5, x) + Derivative(-8*sin(x), x) - 3", "y": 5.357552004618084}
+{"state": "Integral(-(-5*x*sin(x) + Integral(35*x**5 + 5*sin(x) - 6, x))/x**2, x) - (-5*x*sin(x) + Integral(35*x**5 + 5*sin(x) - 6, x))/x", "y": 8.643856189774725}
+{"state": "-7*Integral(-cos(x)/x, x) - 7*Integral(log(x)*sin(x), x)", "y": 5.977279923499917}
+{"state": "x*Derivative(-4, x) - 16*log(x)*Derivative(sin(x), x) - 16*sin(x)*Derivative(log(x), x) - 4", "y": 5.20945336562895}
+{"state": "x**3*Derivative(5, x) + x**2*Derivative(5*log(x), x) + 5*log(x)*Derivative(x**2, x) + 5*Derivative(x**3, x)", "y": 6.357552004618084}
+{"state": "(log(x)*Derivative(7, x) + 7*Derivative(x, x)/x)*sin(x) + 7*log(x)*cos(x)", "y": 3.584962500721156}
+{"state": "12*x**2 + 14*x - Integral(12, x, x)", "y": 3.4594316186372973}
+{"state": "cos(x**2 - 4*x + 5)*Derivative(-4*x, x) + cos(x**2 - 4*x + 5)*Derivative(x**2, x)", "y": 5.044394119358453}
+{"state": "(36*log(x)*Derivative(x, x) + 36*Derivative(log(x), x))*exp(x)", "y": 3.700439718141092}
+{"state": "x*Derivative(10, x) + Derivative(3*exp(x), x) + Derivative(5*log(x), x) + 10", "y": 6.523561956057013}
+{"state": "3*x**2 + Integral(3, x) + Integral(18*x**2, x)", "y": 5.044394119358453}
+{"state": "12*x**2 + 14*x - 12*Integral(x, x)", "y": 1.584962500721156}
+{"state": "2*(2*Integral(1, x) + 3*Integral(x, x))", "y": 2.584962500721156}
+{"state": "-4*(x*log(x)*Derivative(4*sin(x), x) + x + 4*sin(x))/x", "y": 5.087462841250339}
+{"state": "x**4*Derivative(4, x) + 16*x**3*Derivative(x, x) + Derivative(1, x)", "y": 3.321928094887362}
+{"state": "4*x**2/3 - exp(x) - Integral(-6/x, x) - Integral(-4*x/3, x) - Integral(-exp(x)/x**2, x) - Integral(exp(x)/x, x) + 6 + exp(x)/x", "y": 8.643856189774725}
+{"state": "-2*x**3*Derivative(4, x) + exp(x)*Derivative(4, x) + 2*cos(x)*Derivative(4, x) + 4*Derivative(-2*x**3, x) + 4*Derivative(exp(x), x) + 4*Derivative(2*cos(x), x)", "y": 7.066089190457772}
+{"state": "x**2*Derivative(7, x) + x*Derivative(-5, x) + 14*x + Derivative(2, x) - 5*Derivative(x, x)", "y": 4.0}
+{"state": "log(x)*Derivative(9, x) + Derivative(3*x, x) + 9/x", "y": 4.584962500721156}
+{"state": "-24*x**2 - 8*sin(x)*Derivative(x, x) + 4*Derivative(exp(x), x)", "y": 3.4594316186372973}
+{"state": "x*Derivative(3, x) + log(x)*Derivative(9, x) + Derivative(1, x) + 3*Derivative(x, x) + 9/x", "y": 5.0}
+{"state": "5*(Integral(1/x, x) + Integral(-sin(x), x))", "y": 4.954196310386875}
+{"state": "6*x**2 - 3*Integral(5*x**2, x)", "y": 3.700439718141092}
+{"state": "exp(x)*Derivative(7, x) - 4*sin(x)*Derivative(x, x) - 8*Derivative(x, x) + 7*Derivative(exp(x), x)", "y": 3.4594316186372973}
+{"state": "4*cos(x)*Derivative(2, x) + 4*Derivative(-2*x**3, x) + 4*Derivative(exp(x), x) + 8*Derivative(cos(x), x)", "y": 6.554588851677638}
+{"state": "x**3*Derivative(7, x) + sin(x)*Derivative(-5, x) + 7*Derivative(x**3, x) - 5*Derivative(sin(x), x) + 8", "y": 5.169925001442312}
+{"state": "x**5*Derivative(-7, x) + 7*Derivative(x**4, x) - 7*Derivative(x**5, x) + Derivative(-8*sin(x), x) - 3", "y": 6.20945336562895}
+{"state": "-(3*x + 2)*Integral(x - 2, x) + Integral(3, x)*Integral(x - 2, x) - Integral((x - 2)*Integral(3, x), x)", "y": 6.930737337562887}
+{"state": "21*x**2 + x*Derivative(8, x) - 5*cos(x) + 8*Derivative(x, x)", "y": 2.0}
+{"state": "x**2*Derivative(8, x) - 3*x**2*Derivative(x, x) + Derivative(-2, x) + 8*Derivative(x**2, x)", "y": 4.700439718141092}
+{"state": "3*x*Derivative(x, x) + 3*x*Derivative(x - 3, x) - 9*Derivative(x, x)", "y": 4.321928094887363}
+{"state": "x**2*Derivative(5*x + 5*log(x), x) + 10*x*(x + log(x))*Derivative(x, x)", "y": 6.658211482751795}
+{"state": "log(x)*Derivative(5, x) + Derivative(10*x, x) + Derivative(3*exp(x), x) + 5/x", "y": 6.643856189774724}
+{"state": "-3*sin(x)*Derivative(2, x) - 2*sin(x) + cos(x)*Derivative(2, x) + 2*Derivative(-3*sin(x), x)", "y": 4.459431618637297}
+{"state": "x**5*Derivative(-7, x) - 8*cos(x) - 3*Derivative(x, x) + Derivative(7*x**4, x) - 7*Derivative(x**5, x)", "y": 5.727920454563199}
+{"state": "sin(x)*Derivative(-5, x) - 5*cos(x)*Derivative(x, x) + Derivative(8*x, x) + Derivative(7*x**3, x)", "y": 6.129283016944966}
+{"state": "6*x**2 - 15*Integral(x**2, x)", "y": 1.584962500721156}
+{"state": "21*x**2 + x*Derivative(8, x) + Derivative(5, x) + 8*Derivative(x, x) + Derivative(-5*sin(x), x)", "y": 5.523561956057013}
+{"state": "14*x + Integral(12*x, x)", "y": 3.0}
+{"state": "-Integral(-4, x) - Integral(-4*x, x) - Integral(3*x**2, x)", "y": 5.643856189774724}
+{"state": "-4*(4*log(x)*cos(x) + 4*sin(x)*Derivative(log(x), x) + 1)", "y": 3.0}
+{"state": "x*Derivative(4, x) + 4*Derivative(x, x) + 2*Derivative(x**3, x)", "y": 3.700439718141092}
+{"state": "x**2*(Derivative(5*x, x) + Derivative(5*log(x), x)) + 2*x*(5*x + 5*log(x))*Derivative(x, x)", "y": 6.857980995127572}
+{"state": "(7*x*log(x)*Derivative(sin(x), x) + 7*sin(x)*Derivative(x, x))/x", "y": 3.584962500721156}
+{"state": "Integral(4, x) + 4*Integral(x, x) + Integral(-3*x**2, x)", "y": 5.459431618637297}
+{"state": "log(x)*Derivative(7, x) + Derivative(4, x) + 7*Derivative(log(x), x)", "y": 4.169925001442312}
+{"state": "2*Derivative(-x, x)", "y": 2.807354922057604}
+{"state": "x**2*Integral(15, x) + 3*x - 2*Integral(x*Integral(15, x), x)", "y": 5.321928094887363}
+{"state": "-16*log(x)*Derivative(sin(x), x) - 4*sin(x)*Derivative(4*log(x), x) - 4*Derivative(x, x)", "y": 6.149747119504682}
+{"state": "7*exp(x)*Derivative(x, x) + 4*Derivative(cos(x), x) - 8", "y": 2.321928094887362}
+{"state": "16*x + Derivative(-x**3, x)", "y": 3.4594316186372973}
+{"state": "35*x**4 + (x**5*Derivative(35, x) + 175*x**4*Derivative(x, x))*log(x) - 3/x", "y": 3.4594316186372973}
+{"state": "(x*Derivative(10*x, x) + x*Derivative(3*exp(x), x) + 5*Derivative(x, x))/x", "y": 6.303780748177103}
+{"state": "12*x**3 + 18*x**2 + 2*x - Integral(18*x, x) - Integral(24*x**2, x)", "y": 5.169925001442312}
+{"state": "x*Derivative(-4, x) + cos(x)*Derivative(7, x) - 2*Derivative(exp(x), x) + 7*Derivative(cos(x), x) - 4", "y": 5.169925001442312}
+{"state": "x*Derivative(-8, x) + cos(x)*Derivative(4, x) - 8*Derivative(x, x) + Derivative(7*exp(x), x) + 4*Derivative(cos(x), x)", "y": 6.247927513443585}
+{"state": "-16*log(x)*Derivative(sin(x), x) + 4*sin(x)*Derivative(-4*log(x), x) + 4*Derivative(-x, x)", "y": 6.672425341971495}
+{"state": "x**3*Derivative(4, x) + 5*Derivative(x**2, x) + 4*Derivative(x**3, x) + 5", "y": 4.169925001442312}
+{"state": "3*Integral(1, x) + 3*Integral(2*x, x) + 3*Integral(6*x**2, x)", "y": 5.857980995127572}
+{"state": "-48*log(x)*Integral(sin(x), x) - 48*Integral(-Integral(sin(x), x, x)/x**2, x) + 48*Integral(cos(x)/x, x) + 48*Integral(sin(x), x, x)/x", "y": 8.643856189774725}
+{"state": "(x**5*Derivative(35, x) + 175*x**4*Derivative(x, x))*log(x) + (35*x**5 - 3)/x", "y": 3.584962500721156}
+{"state": "2*x**2*Derivative(x, x) + x*(Derivative(4, x) + Derivative(2*x**2, x)) + 4*Derivative(x, x)", "y": 5.584962500721156}
+{"state": "7*cos(x)*Integral(1/x, x) - 7*Integral(log(x)*sin(x), x) - Integral(-7*sin(x)*Integral(1/x, x), x)", "y": 5.832890014164741}
+{"state": "-2*exp(x) - 7*sin(x) + Derivative(-4*x, x)", "y": 2.321928094887362}
+{"state": "-7*(x*log(x)*sin(x) - x*sin(x) - Integral(cos(x)/x, x) - Integral(-x*cos(x), x) - Integral(x*log(x)*cos(x), x))", "y": 7.189824558880018}
+{"state": "7*Integral(x**(-2), x)*Integral(-x*log(x)*sin(x) + cos(x), x) - 7*Integral((-x*log(x)*sin(x) + cos(x))*Integral(x**(-2), x), x) + 7*Integral(-x*log(x)*sin(x) + cos(x), x)/x", "y": 8.643856189774725}
+{"state": "(-35*x**5 + 30*sin(x) - 6*Integral((35*x**5 - 36)/(6*x), x) + 36)/6", "y": 6.087462841250339}
+{"state": "sin(x)*Derivative(-8, x) - 8*cos(x)*Derivative(x, x) + Derivative(-3*x, x) + Derivative(7*x**4, x) + Derivative(-7*x**5, x)", "y": 7.330916878114617}
+{"state": "-24*x**2 + 4*exp(x)*Derivative(x, x) - 8*sin(x)*Derivative(x, x) + cos(x)*Derivative(8, x)", "y": 2.584962500721156}
+{"state": "Derivative(2, x) + Derivative(-5*x, x) + Derivative(7*x**2, x)", "y": 5.906890595608519}
+{"state": "cos(2*x*(x**2 + 1))*Integral(6*x**2 + 2, x) - Integral(-(6*x**2 + 2)*sin(2*x*(x**2 + 1))*Integral(6*x**2 + 2, x), x)", "y": 7.592457037268081}
+{"state": "-48*log(x)*Integral(sin(x), x) + 48*Integral(cos(x)/x, x) + 48*Integral(Integral(sin(x), x)/x, x)", "y": 6.108524456778169}
+{"state": "-16*(x**3*sin(x) - cos(x)*Derivative(x**3, x))", "y": 2.807354922057604}
+{"state": "9*exp(x) - Integral(-4/x, x) + 4", "y": 3.321928094887362}
+{"state": "-7*sin(x)*Integral(log(x), x) + 7*cos(x)*Integral(1/x, x) - 7*Integral(-sin(x)*Integral(1/x, x), x) + 7*Integral(cos(x)*Integral(log(x), x), x)", "y": 6.768184324776926}
+{"state": "-2*exp(x)*Derivative(x, x) + Derivative(7*cos(x), x) - 4", "y": 3.584962500721156}
+{"state": "x**3*Derivative(-1, x) - 3*x**2*Derivative(x, x) + 8*Derivative(x**2, x)", "y": 4.0}
+{"state": "21*x**3 + 6*x**2 + 9*x - 6*Integral(x, x) - 6*Integral(7*x**2, x)", "y": 5.20945336562895}
+{"state": "x*Derivative(-2, x) - 2", "y": 1.0}
+{"state": "x*(x*((x + log(x))*Derivative(5, x) + 5*Derivative(x + log(x), x)) + 10*(x + log(x))*Derivative(x, x))", "y": 5.727920454563199}
+{"state": "Integral(9, x) + Integral(6*x, x) + 21*Integral(x**2, x)", "y": 5.247927513443585}
+{"state": "(sin(x)*Derivative(7, x) + 7*cos(x)*Derivative(x, x))*log(x) + 7*sin(x)/x", "y": 3.584962500721156}
+{"state": "8*sin(x)*Derivative(x, x) + cos(x)*Derivative(-8, x) + 4*Derivative(exp(x), x)", "y": 3.700439718141092}
+{"state": "x**3*Derivative(5, x) + 5*Derivative(x**3, x) + Derivative(5*x**2*log(x), x)", "y": 6.768184324776926}
+{"state": "7*(-x*log(x)*sin(x) + cos(x))*log(x) - 7*log(x)*Integral(-x*log(x)*cos(x) - log(x)*sin(x) - 2*sin(x), x) + 7*Integral(Integral(-x*log(x)*cos(x) - log(x)*sin(x) - 2*sin(x), x)/x, x)", "y": 8.643856189774725}
+{"state": "(x*exp(x)*Derivative(3, x) + 3*x*Derivative(exp(x), x) + 10*x + 5)/x", "y": 3.4594316186372973}
+{"state": "-Integral(-Integral(5, x)/x**2, x) - 5*Integral(sin(x), x) + Integral(5, x)/x", "y": 6.409390936137702}
+{"state": "x**3*Derivative(7, x) - 5*cos(x) + Derivative(8*x, x) + 7*Derivative(x**3, x)", "y": 4.906890595608519}
+{"state": "x*Integral(4, x) + 4*x + Integral(-3*x**2, x) - Integral(4, x, x)", "y": 5.832890014164741}
+{"state": "7*exp(I*x)*log(x)/2 + 7*Integral(-exp(-I*x)/(2*x), x) + Integral(7*exp(-I*x)/(2*x), x) + 7*Integral(-exp(I*x)/(2*x), x) + Integral(7*exp(I*x)/(2*x), x) + 7*exp(-I*x)*log(x)/2", "y": 8.643856189774725}
+{"state": "Integral(-15*x**2 + 12*x, x)", "y": 5.700439718141092}
+{"state": "Derivative(3*x**2, x) + 4", "y": 3.0}
+{"state": "-8*sin(x) + Derivative(-8*x**3, x) + 4*Derivative(exp(x), x)", "y": 5.0}
+{"state": "(35*x**5*Derivative(x, x) + x*log(x)*Derivative(35*x**5, x) - 3*Derivative(x, x))/x", "y": 5.129283016944966}
+{"state": "-35*x**5/6 + 5*sin(x) + Integral(6/x, x) + Integral(-35*x**4/6, x) + 6", "y": 5.392317422778761}
+{"state": "-8*x*cos(x) - 8*sin(x)*Derivative(x, x)", "y": 2.0}
+{"state": "x**2*Derivative(-4*x - 8, x) - 4*x*Derivative(x**2, x) - 8*Derivative(x**2, x)", "y": 6.491853096329675}
+{"state": "(2*x*Derivative(x, x) + Derivative(5, x) - 4*Derivative(x, x))*cos(x**2 - 4*x + 5)", "y": 3.0}
+{"state": "x*Derivative(-8, x) + exp(x)*Derivative(7, x) - 4*sin(x)*Derivative(x, x) - 8*Derivative(x, x) + 7*Derivative(exp(x), x)", "y": 4.392317422778761}
+{"state": "x**3*Derivative(-8, x) - 24*x**2*Derivative(x, x) + cos(x)*Derivative(8, x) + Derivative(4*exp(x), x) + 8*Derivative(cos(x), x)", "y": 6.491853096329675}
+{"state": "6*(3*x + 1)*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "(2*x*Derivative(x, x) + Derivative(5, x) + Derivative(-4*x, x))*cos(x**2 - 4*x + 5)", "y": 5.20945336562895}
+{"state": "42*exp(x)*Integral(1/x, x) + 42*exp(x)*Integral(log(x), x) - 42*Integral(exp(x)*Integral(1/x, x), x) - 42*Integral(exp(x)*Integral(log(x), x), x)", "y": 5.459431618637297}
+{"state": "x*Derivative(-4, x) - 2*exp(x)*Derivative(x, x) - 4*Derivative(x, x) + Derivative(7*cos(x), x)", "y": 4.700439718141092}
+{"state": "x**3*Derivative(16*cos(x), x) + 16*cos(x)*Derivative(x**3, x)", "y": 5.672425341971495}
+{"state": "(6*x**2 + 2*x + 1)*Integral(3, x) - Integral(2*(6*x + 1)*Integral(3, x), x)", "y": 6.6865005271832185}
+{"state": "42*(exp(x)*Integral((x*log(x) + 1)/x, x) - Integral(exp(x)*Integral((x*log(x) + 1)/x, x), x))", "y": 6.321928094887363}
+{"state": "(x*(exp(x)*Derivative(3, x) + 3*Derivative(exp(x), x)) + 10*x + 5)/x", "y": 4.0}
+{"state": "8*sin(x)*Derivative(x, x) + 4*Derivative(exp(x), x)", "y": 3.0}
+{"state": "36*exp(x)*Derivative(log(x), x) + log(x)*Derivative(36*exp(x), x)", "y": 5.906890595608519}
+{"state": "x*Derivative(2*x**2 + 4, x) + (2*x**2 + 4)*Derivative(x, x)", "y": 6.247927513443585}
+{"state": "x**2*Integral(9, x) + 8*Integral(1, x) - Integral(9, x)*Integral(2*x, x) + Integral(9*Integral(2*x, x), x)", "y": 6.189824558880018}
+{"state": "x*Derivative(5, x) + 5", "y": 1.0}
+{"state": "Integral(-7*I*exp(-I*x)/2, x) + Integral(7*I*exp(I*x)/2, x)", "y": 5.614709844115208}
+{"state": "x*Derivative(-8, x) + 7*exp(x) + 4*Derivative(cos(x), x) - 8", "y": 2.584962500721156}
+{"state": "36*log(x)*Derivative(exp(x), x) + 36*exp(x)/x", "y": 3.0}
+{"state": "-9*x**3 + Integral(5, x)", "y": 1.584962500721156}
+{"state": "x**5*Derivative(6, x) + 30*x**4*Derivative(x, x) + 9*exp(x)*Derivative(6, x) + 6*Derivative(9*exp(x), x)", "y": 5.087462841250339}
+{"state": "(7*x*log(x)*cos(x)*Derivative(x, x) + 7*sin(x)*Derivative(x, x))/x", "y": 2.0}
+{"state": "9*Derivative(log(x), x) + 3", "y": 2.584962500721156}
+{"state": "6*Integral(1/x, x) - 35*Integral(x**4, x) + Integral(5*cos(x), x)", "y": 5.754887502163468}
+{"state": "3*Integral(4*x, x) - 15*Integral(x**2, x)", "y": 4.584962500721156}
+{"state": "5*x**2*Derivative(x + log(x), x) + (x + log(x))*Derivative(5*x**2, x)", "y": 6.507794640198696}
+{"state": "exp(x)*Derivative(-2, x) - 2*exp(x)*Derivative(x, x) + 7*Derivative(cos(x), x) - 4", "y": 3.321928094887362}
+{"state": "4*(-4*log(x)*cos(x)*Derivative(x, x) - 4*sin(x)*Derivative(log(x), x) - 1)", "y": 3.584962500721156}
+{"state": "42*exp(x)*Integral(1/x, x) + 42*log(x)*Integral(exp(x), x) - 42*Integral(Integral(exp(x), x)/x, x) - Integral(42*exp(x)*Integral(1/x, x), x)", "y": 6.20945336562895}
+{"state": "exp(x)*Derivative(7, x) + 7*exp(x)*Derivative(x, x) + Derivative(-8*x, x) + Derivative(4*cos(x), x)", "y": 6.129283016944966}
+{"state": "sin(x)**2*Derivative(-32, x) - 32*sin(2*x)*Derivative(x, x)", "y": 2.0}
+{"state": "(-Integral(-Integral(7, x)/x**2, x) + Integral(7, x)/x)*cos(x) - Integral(-(-Integral(-Integral(7, x)/x**2, x) + Integral(7, x)/x)*sin(x), x) - 7*Integral(log(x)*sin(x), x)", "y": 7.643856189774724}
+{"state": "(x**2 + 2)*Integral(4/x, x) - Integral(2*x*Integral(4/x, x), x)", "y": 7.169925001442312}
+{"state": "x*Derivative(8, x) - 5*cos(x) + 8*Derivative(x, x) + 7*Derivative(x**3, x)", "y": 3.321928094887362}
+{"state": "(x*Derivative(10*x, x) + 3*x*Derivative(exp(x), x) + 5)/x", "y": 5.0}
+{"state": "exp(x)*Integral(42/x, x) + 42*Integral(exp(x)*log(x), x) - Integral(exp(x)*Integral(42/x, x), x)", "y": 5.614709844115208}
+{"state": "-48*sin(x)*Integral(log(x), x) + 48*cos(x)*Integral(log(x), x, x) + Integral(48*cos(x)/x, x) - 48*Integral(-sin(x)*Integral(log(x), x, x), x)", "y": 8.643856189774725}
+{"state": "x**3*Derivative(-1, x) + x**2*Derivative(8, x) + 16*x*Derivative(x, x) + Derivative(-2, x) - Derivative(x**3, x)", "y": 5.523561956057013}
+{"state": "4*(-6*x**2 - 2*sin(x)*Derivative(x, x) + Derivative(exp(x), x))", "y": 3.4594316186372973}
+{"state": "7*Integral(cos(x)/x, x) + Integral(-7*log(x)*sin(x), x)", "y": 6.658211482751795}
+{"state": "7*log(x)*cos(x) + 7*Integral(-cos(x)/x, x) + Integral(7*cos(x)/x, x)", "y": 6.169925001442312}
+{"state": "x**2*Derivative(7, x) + x*Derivative(-5, x) + 7*Derivative(x**2, x) - 5", "y": 3.584962500721156}
+{"state": "Integral(9*exp(-2*I*x)/2, x) + Integral(9*exp(2*I*x)/2, x)", "y": 5.584962500721156}
+{"state": "-7*Integral(-(sin(x) + Integral(-x*log(x)*sin(x), x))/x**2, x) + 7*(sin(x) + Integral(-x*log(x)*sin(x), x))/x", "y": 8.643856189774725}
+{"state": "(7*x + 1)*Derivative(3, x) + 3*Derivative(7*x + 1, x)", "y": 5.321928094887363}
+{"state": "3*x**2*Integral(7, x) + 3*Integral(3, x) + 3*Integral(2*x, x) - 3*Integral(2*x*Integral(7, x), x)", "y": 6.3750394313469245}
+{"state": "x**4*Derivative(7, x) - 3*Derivative(x, x) + 7*Derivative(x**4, x) + Derivative(-7*x**5, x) + Derivative(-8*sin(x), x)", "y": 7.044394119358453}
+{"state": "-(-175*x**4 - 5*x*sin(x) + 5*cos(x))*Integral(1/x, x, x) + (-35*x**5 + 5*x*cos(x) + 6)*Integral(1/x, x) + Integral((-700*x**3 - 5*x*cos(x) - 10*sin(x))*Integral(1/x, x, x), x)", "y": 7.643856189774724}
+{"state": "4*(-4*x - Derivative(x**3, x))", "y": 2.807354922057604}
+{"state": "(x*Derivative(-4, x) - 4*Derivative(x, x) + Derivative(x**2, x))*cos(x**2 - 4*x + 5)", "y": 4.247927513443585}
+{"state": "x**3*Derivative(21*exp(x), x) + 21*exp(x)*Derivative(x**3, x)", "y": 5.807354922057604}
+{"state": "30*x**4*Derivative(x, x) + Derivative(54*exp(x), x)", "y": 3.9068905956085187}
+{"state": "(x*log(x)*Derivative(7, x) + x*Derivative(4, x) + 7*Derivative(x, x))/x", "y": 3.807354922057604}
+{"state": "-16*x**3*sin(x) + (x**3*Derivative(16, x) + 48*x**2*Derivative(x, x))*cos(x)", "y": 3.700439718141092}
+{"state": "3*exp(x)*Derivative(x, x) + Derivative(10*x, x) + 5/x", "y": 4.087462841250339}
+{"state": "-7*log(x)*Integral(sin(x), x) - 7*Integral(-Integral(sin(x), x, x)/x**2, x) + Integral(7*cos(x)/x, x) + 7*Integral(sin(x), x, x)/x", "y": 8.643856189774725}
+{"state": "12*x**2 + x*Derivative(5, x) + 10*x + 5", "y": 1.0}
+{"state": "-5*Derivative(x, x)", "y": 1.0}
+{"state": "3*x**2*cos(x**3 - x + 3)*Derivative(x, x) + cos(x**3 - x + 3)*Derivative(-x, x)", "y": 4.169925001442312}
+{"state": "4*(-log(x)*Derivative(4*sin(x), x) - 4*sin(x)*Derivative(log(x), x) - 1)", "y": 5.906890595608519}
+{"state": "x**3*Derivative(7, x) + 21*x**2*Derivative(x, x) - 5*cos(x) + 8", "y": 2.0}
+{"state": "x**2*Integral(-27, x) + Integral(5, x) - 2*Integral(x*Integral(-27, x), x)", "y": 5.357552004618084}
+{"state": "x*Integral(8, x) + 9*Integral(1, x) - Integral(8*x, x) + Integral(3*x**2, x)", "y": 5.977279923499917}
+{"state": "x*Derivative(3, x) + 3*Derivative(x, x) + 9*Derivative(x, x)/x", "y": 3.0}
+{"state": "(x*Derivative(1, x) + x*Derivative(3*x, x) + 9*Derivative(x, x))/x", "y": 5.20945336562895}
+{"state": "exp(x)*Derivative(3, x) + 3*exp(x) + Derivative(10*x, x) + Derivative(5*log(x), x)", "y": 6.20945336562895}
+{"state": "x*Derivative(3, x) + Derivative(1, x) + 9*Derivative(log(x), x) + 3", "y": 4.392317422778761}
+{"state": "log(x)*Derivative(35*x**5, x) + (35*x**5 - 3)/x", "y": 4.754887502163468}
+{"state": "Derivative(3*(7*x + 1), x)", "y": 5.459431618637297}
+{"state": "5*sin(x) - Integral((35*x**5 - 6)/x, x)", "y": 5.882643049361842}
+{"state": "4*(x + 4*log(x)*sin(x))*Derivative(-1, x) - 4*Derivative(x + 4*log(x)*sin(x), x)", "y": 7.05528243550119}
+{"state": "(2*x*Derivative(x, x) + Derivative(5, x) - 4)*cos(x**2 - 4*x + 5)", "y": 3.0}
+{"state": "16*x**3*Derivative(x, x)", "y": 1.0}
+{"state": "-35*x**5/6 - 5*I*exp(I*x)/2 - Integral(-6/x, x) - Integral(35*x**4/6, x) - Integral(-5*exp(-I*x)/(2*x**2), x) - Integral(-5*exp(I*x)/(2*x**2), x) - Integral(-5*I*exp(-I*x)/(2*x), x) - Integral(5*I*exp(I*x)/(2*x), x) + 6 + 5*I*exp(-I*x)/2 + 5*exp(I*x)/(2*x) + 5*exp(-I*x)/(2*x)", "y": 8.643856189774725}
+{"state": "42*exp(x)*Integral(log(x), x) - exp(x)*Integral(42*Integral(log(x), x), x) + 42*Integral(exp(x)/x, x) + Integral(exp(x)*Integral(42*Integral(log(x), x), x), x)", "y": 8.643856189774725}
+{"state": "21*x**3*exp(x)*Derivative(x, x) + exp(x)*Derivative(21*x**3, x)", "y": 5.087462841250339}
+{"state": "4*(x**2*Derivative(-2, x) - 2*Derivative(x**2, x) + Derivative(-x**3, x))", "y": 5.857980995127572}
+{"state": "3*(x*(6*x**2 + 2*x + 1) - Integral(2*x*(6*x + 1), x))", "y": 5.906890595608519}
+{"state": "5*Integral(1/x, x) - 5*Integral(sin(x), x)", "y": 4.392317422778761}
+{"state": "5*x*(x*Derivative(x, x) + x*Derivative(log(x), x) + 2*x + 2*log(x))", "y": 3.0}
+{"state": "-24*x**2*Derivative(x, x) + Derivative(4*exp(x), x) + 8*Derivative(cos(x), x)", "y": 5.584962500721156}
+{"state": "3*x*Integral(2, x) + 9*x + 3*Integral(7*x**2, x) - 3*Integral(2, x, x)", "y": 6.022367813028454}
+{"state": "4*(-log(x)*sin(x)*Derivative(4, x) - 4*Derivative(log(x)*sin(x), x) - 1)", "y": 5.832890014164741}
+{"state": "Derivative(7, x) + Derivative(5*x, x) + Derivative(5*x**2, x) + Derivative(4*x**3, x)", "y": 7.108524456778169}
+{"state": "x**5*Derivative(6, x) + 54*exp(x)*Derivative(x, x) + 6*Derivative(x**5, x)", "y": 3.700439718141092}
+{"state": "x**4*Derivative(7, x) - 35*x**4 + Derivative(-3*x, x) + 7*Derivative(x**4, x) + Derivative(-8*sin(x), x)", "y": 6.584962500721156}
+{"state": "x*Derivative(21, x) + 21", "y": 1.0}
+{"state": "x*Derivative(21, x) + Derivative(3, x) + 21*Derivative(x, x)", "y": 3.0}
+{"state": "x*Derivative(3, x) + Derivative(1, x) + 3*Derivative(x, x) + 9/x", "y": 4.0}
+{"state": "6*(5*x**4*Derivative(x, x) + Derivative(9*exp(x), x))", "y": 4.459431618637297}
+{"state": "(x*Integral(6*Integral(1, x)/x**2, x) + x*Integral(Integral(-35*x**5, x)/x**2, x) + x*Integral(Integral(5*x*cos(x), x)/x**2, x) + 6*Integral(1, x) + Integral(-35*x**5, x) + Integral(5*x*cos(x), x))/x", "y": 8.643856189774725}
+{"state": "(-16*x*log(x)*Derivative(sin(x), x) - 4*x - 16*sin(x)*Derivative(x, x))/x", "y": 3.807354922057604}
+{"state": "-4*sin(x)*Derivative(x, x) + 7*Derivative(exp(x), x) - 8", "y": 2.321928094887362}
+{"state": "-24*x**2 + 4*exp(x)*Derivative(x, x) - 8*sin(x)*Derivative(x, x)", "y": 2.0}
+{"state": "-4*(Derivative(x, x) + 4*Derivative(log(x)*sin(x), x))", "y": 5.392317422778761}
+{"state": "(x*Derivative(3*x, x) + 9*Derivative(x, x))/x", "y": 4.169925001442312}
+{"state": "42*(x*log(x) + 1)*Integral(exp(x)/x, x) - 42*(log(x) + 1)*Integral(exp(x)/x, x, x) + 42*Integral(Integral(exp(x)/x, x, x)/x, x)", "y": 8.643856189774725}
+{"state": "(x**3*Derivative(21, x) + 21*x**3*Derivative(x, x) + 21*Derivative(x**3, x))*exp(x)", "y": 4.700439718141092}
+{"state": "4*exp(x) + Derivative(3, x) - 8*Derivative(cos(x), x)", "y": 3.169925001442312}
+{"state": "x*Derivative(10, x) + exp(x)*Derivative(3, x) + 3*Derivative(exp(x), x) + 5*Derivative(log(x), x) + 10", "y": 5.700439718141092}
+{"state": "-Integral(-Integral(-35*x**5 + 5*x*cos(x) + 6, x)/x**2, x) + Integral(-35*x**5 + 5*x*cos(x) + 6, x)/x", "y": 8.643856189774725}
+{"state": "15*x**2*Integral(1, x) + 3*x - 30*Integral(x*Integral(1, x), x)", "y": 3.9068905956085187}
+{"state": "exp(x)*Integral(-1, x) + Integral(6/x, x) + Integral(4*x, x) - Integral(exp(x)*Integral(-1, x), x)", "y": 6.954196310386875}
+{"state": "x**4*Derivative(7, x) + 28*x**3*Derivative(x, x) - 8*cos(x) + Derivative(-7*x**5, x) - 3", "y": 4.584962500721156}
+{"state": "Derivative(6*x**5, x) + 54*Derivative(exp(x), x)", "y": 4.754887502163468}
+{"state": "7*Integral(Integral(-x*log(x)*sin(x), x)/x**2, x) + 7*Integral(Integral(cos(x), x)/x**2, x) + 7*Integral(-x*log(x)*sin(x), x)/x + 7*Integral(cos(x), x)/x", "y": 8.643856189774725}
+{"state": "(35*x**5 - 3)*Derivative(log(x), x) + log(x)*Derivative(35*x**5, x)", "y": 5.977279923499917}
+{"state": "(9*x*exp(x) + 4*x*Integral(Integral(1, x)/x**2, x) + 4*Integral(1, x))/x", "y": 4.392317422778761}
+{"state": "Integral(7*exp(-I*x)/(2*x), x) + 7*Integral(exp(I*x)/x, x)/2 + Integral(-7*I*exp(-I*x)*log(x)/2, x) + Integral(7*I*exp(I*x)*log(x)/2, x)", "y": 8.643856189774725}
+{"state": "Integral(-2*Integral(-Integral(42*(x*log(x) + 1)*exp(x), x), x)/x**3, x) + Integral(42*(x*log(x) + 1)*exp(x), x)/x - Integral(-Integral(42*(x*log(x) + 1)*exp(x), x), x)/x**2", "y": 8.643856189774725}
+{"state": "(-3*sin(x) + cos(x))*Derivative(2, x) + 2*Derivative(-3*sin(x) + cos(x), x)", "y": 6.087462841250339}
+{"state": "2*(Integral(7, x) + Integral(6*x, x))", "y": 4.807354922057604}
+{"state": "exp(x)*Integral(42*(x*log(x) + 1)/x, x) - Integral(exp(x)*Integral(42*(x*log(x) + 1)/x, x), x)", "y": 6.768184324776926}
+{"state": "48*Integral(Integral(-x*log(x)*sin(x), x)/x**2, x) + 48*Integral(Integral(cos(x), x)/x**2, x) + 48*Integral(-x*log(x)*sin(x), x)/x + 48*Integral(cos(x), x)/x", "y": 8.643856189774725}
+{"state": "x**5*Derivative(6, x) + 6*Derivative(x**5, x) + Derivative(54*exp(x), x)", "y": 5.523561956057013}
+{"state": "2*(Derivative(2, x) + Derivative(-x, x))", "y": 4.087462841250339}
+{"state": "-24*x**2 + 4*exp(x)*Derivative(x, x) - 8*sin(x)", "y": 2.0}
+{"state": "-5*I*exp(I*x)/2 + Integral(6/x, x) + Integral(-35*x**4, x) + Integral(5*exp(-I*x)/2, x)", "y": 6.807354922057604}
+{"state": "(sin(x)*Derivative(-32, x) - 64*cos(x)*Derivative(x, x))*sin(x)", "y": 3.584962500721156}
+{"state": "x**2*Integral(3, x) + 9*Integral(1, x) + Integral(8*x, x) - Integral(2*x*Integral(3, x), x)", "y": 6.303780748177103}
+{"state": "2*Derivative(2, x) + 2*Derivative(-x, x)", "y": 4.087462841250339}
+{"state": "x*Integral(10, x) - Integral(10*x, x)", "y": 4.459431618637297}
+{"state": "-3*x**2*Derivative(x, x) + Derivative(-2, x) + Derivative(8*x**2, x)", "y": 4.906890595608519}
+{"state": "-4*sin(x)*Derivative(x, x) + cos(x)*Derivative(4, x) + Derivative(7*exp(x), x) - 8", "y": 4.584962500721156}
+{"state": "Integral(7*exp(-I*x)/(2*x), x) + Integral(7*exp(I*x)/(2*x), x) + Integral(-7*I*exp(-I*x)*log(x)/2, x) + Integral(7*I*exp(I*x)*log(x)/2, x)", "y": 8.643856189774725}
+{"state": "Derivative(-8*x, x) + Derivative(7*exp(x), x) + 4*Derivative(cos(x), x)", "y": 6.129283016944966}
+{"state": "(x*log(x)*Derivative(7, x) + x*Derivative(4, x) + 7)/x", "y": 2.807354922057604}
+{"state": "42*x*exp(x)*log(x) - 42*x*exp(x) + 42*Integral(exp(x)/x, x) - 42*Integral(-x*exp(x), x) - 42*Integral(x*exp(x)*log(x), x)", "y": 8.643856189774725}
+{"state": "x*Derivative(-9, x) + x*Derivative(3*x, x) + 3*x - 9", "y": 3.9068905956085187}
+{"state": "-35*x**5*log(x) + 5*x*exp(I*x)*log(x)/2 + 5*x*exp(-I*x)*log(x)/2 + 6*log(x) - Integral(-175*x**4*log(x), x) - Integral(5*exp(-I*x)*log(x)/2, x) - Integral(5*exp(I*x)*log(x)/2, x) - Integral(-5*I*x*exp(-I*x)*log(x)/2, x) - Integral(5*I*x*exp(I*x)*log(x)/2, x)", "y": 8.643856189774725}
+{"state": "5*Derivative(x**3 + x**2*log(x), x)", "y": 6.022367813028454}
+{"state": "-35*x**5/6 + 5*sin(x) - Integral(-6/x, x) - Integral(35*x**4/6, x) + 6", "y": 5.614709844115208}
+{"state": "-x**3 + 4*x*Integral(1, x) + 4*Integral(1, x) - 4*Integral(1, x, x)", "y": 2.584962500721156}
+{"state": "-3*(-4*Integral(x, x) + 5*Integral(x**2, x))", "y": 2.807354922057604}
+{"state": "Subs(Integral(cos(u_), u_), u_, 2*x*(x**2 + 1))", "y": 2.0}
+{"state": "x**4*Derivative(7, x) + 7*Derivative(x**4, x) + Derivative(-7*x**5, x) - 8*Derivative(sin(x), x) - 3", "y": 6.285402218862249}
+{"state": "log(x)*sin(x)*Derivative(-16, x) - 16*log(x)*Derivative(sin(x), x) - 16*sin(x)*Derivative(log(x), x) - 4", "y": 5.20945336562895}
+{"state": "42*(-Integral(-Integral(x*log(x) + 1, x)/x**2, x) + Integral(x*log(x) + 1, x)/x)*exp(x) - Integral(42*(-Integral(-Integral(x*log(x) + 1, x)/x**2, x) + Integral(x*log(x) + 1, x)/x)*exp(x), x)", "y": 8.643856189774725}
+{"state": "x**5*Derivative(-7, x) - 35*x**4 + x*Derivative(-3, x) - 3*Derivative(x, x) + Derivative(7*x**4, x) + Derivative(-8*sin(x), x)", "y": 6.9886846867721655}
+{"state": "exp(x)*Integral(42/x, x) - exp(x)*Integral(42/x, x, x) + 42*Integral(exp(x)*log(x), x) + Integral(exp(x)*Integral(42/x, x, x), x)", "y": 6.832890014164741}
+{"state": "3*x**2 + Integral(9, x) + Integral(21*x**2, x)", "y": 5.0}
+{"state": "3*x**2 + 2*Integral(2, x)", "y": 1.0}
+{"state": "Integral(42/x**2, x)*Integral(x*exp(x)*log(x), x) + Integral(42/x**2, x)*Integral(exp(x), x) - Integral(exp(x)*Integral(42/x**2, x), x) - Integral(x*exp(x)*log(x)*Integral(42/x**2, x), x) + 42*Integral(x*exp(x)*log(x), x)/x + 42*Integral(exp(x), x)/x", "y": 8.643856189774725}
+{"state": "exp(x)*Derivative(7, x) + Derivative(-8*x, x) + 7*Derivative(exp(x), x) + 4*Derivative(cos(x), x)", "y": 6.0}
+{"state": "x**5*Derivative(6, x) + 30*x**4 + exp(x)*Derivative(54, x) + 54*Derivative(exp(x), x)", "y": 3.807354922057604}
+{"state": "Integral(-I*exp(-I*x)/2, x) + Integral(I*exp(I*x)/2, x) + Integral(11*exp(x), x) + Integral(5*exp(-I*x)/2, x) + Integral(5*exp(I*x)/2, x)", "y": 7.643856189774724}
+{"state": "x*cos(x**2 - 4*x + 5)*Derivative(-4, x) + 2*x*cos(x**2 - 4*x + 5)*Derivative(x, x) - 4*cos(x**2 - 4*x + 5)", "y": 3.0}
+{"state": "-Integral(-Integral(14*x**2 + 4, x)/x**2, x) + Integral(14*x**2 + 4, x)/x", "y": 8.643856189774725}
+{"state": "2*sin(x)*Derivative(-3, x) - 2*sin(x) - 6*Derivative(sin(x), x)", "y": 3.700439718141092}
+{"state": "x*sin(x)*Derivative(-8, x) - 8*Derivative(x*sin(x), x)", "y": 4.169925001442312}
+{"state": "x**2*Derivative(7, x) + Derivative(2, x) + Derivative(-5*x, x) + 7*Derivative(x**2, x)", "y": 5.727920454563199}
+{"state": "x**4*Derivative(4, x) + 16*x**3 + Derivative(1, x)", "y": 2.321928094887362}
+{"state": "2*Integral(1, x) + 18*Integral(x, x) + 2*Integral(6*x**2, x)", "y": 5.584962500721156}
+{"state": "(x*Integral(-Integral(35*x**5 - 5*x*cos(x) - 6, x)/x**2, x) - Integral(35*x**5 - 5*x*cos(x) - 6, x))/x", "y": 8.643856189774725}
+{"state": "4*x**2*Derivative(-x - 2, x) + 8*x*(-x - 2)*Derivative(x, x)", "y": 6.285402218862249}
+{"state": "-7*Integral((x*log(x)*sin(x) - cos(x))/x, x)", "y": 6.409390936137702}
+{"state": "2*(2*x + 3*Integral(x, x))", "y": 1.584962500721156}
+{"state": "Integral(6/x, x) + Integral(-35*x**4, x) + 5*Integral(exp(-I*x), x)/2 + Integral(5*exp(I*x)/2, x)", "y": 7.417852514885898}
+{"state": "Integral(Integral(42*x*exp(x)*log(x), x)/x**2, x) + Integral(Integral(42*exp(x), x)/x**2, x) + Integral(42*x*exp(x)*log(x), x)/x + Integral(42*exp(x), x)/x", "y": 8.643856189774725}
+{"state": "sin(x)*Derivative(-8, x) + 7*Derivative(x**4, x) + Derivative(-7*x**5, x) - 8*Derivative(sin(x), x) - 3", "y": 6.20945336562895}
+{"state": "15*x**2 + 5*x + 5*log(x)*Derivative(x**2, x)", "y": 2.321928094887362}
+{"state": "-7*x*(log(x) - 1)*sin(x) + Integral(7*cos(x)/x, x) + 7*Integral(x*(log(x) - 1)*cos(x), x)", "y": 7.1799090900149345}
+{"state": "-90*x**4*Derivative(x, x) - 7*sin(x)*Derivative(x, x)", "y": 2.0}
+{"state": "Derivative(4, x) - 2", "y": 1.0}
+{"state": "x**2*Derivative(8, x) + 8*Derivative(x**2, x) - Derivative(x**3, x)", "y": 4.643856189774724}
+{"state": "x*Derivative(-4, x) - 2*exp(x) + cos(x)*Derivative(7, x) + 7*Derivative(cos(x), x) - 4", "y": 3.584962500721156}
+{"state": "Integral(6/x, x) - 35*Integral(x**4, x) + Integral(5*cos(x), x)", "y": 6.507794640198696}
+{"state": "4*(x**2 + 2)*Integral(1/x, x) - 4*Integral(1/x, x)*Integral(2*x, x) + 4*Integral(Integral(2*x, x)/x, x)", "y": 6.285402218862249}
+{"state": "-6*Derivative(sin(x), x) + 2*Derivative(cos(x), x)", "y": 4.169925001442312}
+{"state": "-24*x**2 + 4*exp(x) + cos(x)*Derivative(8, x) + 8*Derivative(cos(x), x)", "y": 3.321928094887362}
+{"state": "4*exp(x)*Derivative(x, x) + Derivative(3, x) + Derivative(-8*cos(x), x)", "y": 4.857980995127572}
+{"state": "(35*x**5 + x*log(x)*Derivative(-3, x) + x*log(x)*Derivative(35*x**5, x) - 3)/x", "y": 5.392317422778761}
+{"state": "Derivative(1, x) + Derivative(3*x, x) + 9*Derivative(x, x)/x", "y": 5.20945336562895}
+{"state": "Integral(5, x) - 27*Integral(x**2, x)", "y": 2.584962500721156}
+{"state": "x**3*Derivative(-4, x) - 8*Derivative(x**2, x) - 4*Derivative(x**3, x)", "y": 5.0}
+{"state": "35*x**4 + log(x)*Derivative(35*x**5, x) + Derivative(-3*log(x), x)", "y": 6.22881869049588}
+{"state": "12*x**2*Derivative(x, x) + 10*x + 5*Derivative(x, x)", "y": 1.0}
+{"state": "-32*sin(2*x)*Derivative(x, x)", "y": 1.0}
+{"state": "Derivative(7*exp(x), x) + Derivative(4*cos(x), x) - 8", "y": 5.554588851677638}
+{"state": "-24*x**2*Derivative(x, x) + exp(x)*Derivative(4, x) + 4*Derivative(exp(x), x) + 8*Derivative(cos(x), x)", "y": 5.426264754702098}
+{"state": "Derivative(5*x**2*(x + log(x)), x)", "y": 7.159871336778389}
+{"state": "-4*sin(x) + cos(x)*Derivative(4, x) + 7*Derivative(exp(x), x) - 8", "y": 2.584962500721156}
+{"state": "x**2*Integral(9, x) + 8*x - 2*Integral(x*Integral(9, x), x)", "y": 5.357552004618084}
+{"state": "3*x*(Derivative(-3, x) + Derivative(x, x)) + x*Derivative(3*x, x) - 3*Derivative(3*x, x)", "y": 5.169925001442312}
+{"state": "15*x**2 + 5*x + log(x)*Derivative(5*x**2, x)", "y": 4.087462841250339}
+{"state": "2*x*(6*x**2 + 9*x + 1) - 2*Integral(x*(12*x + 9), x)", "y": 6.108524456778169}
+{"state": "3*x**2*cos(x**3 - x + 3)*Derivative(x, x) + x*cos(x**3 - x + 3)*Derivative(-1, x) + cos(x**3 - x + 3)*Derivative(3, x) - cos(x**3 - x + 3)*Derivative(x, x)", "y": 4.0}
+{"state": "2*(x*(6*x**2 + 9*x + 1) - Integral(3*x*(4*x + 3), x))", "y": 5.954196310386875}
+{"state": "15*x**3 + Integral(3, x) - 30*Integral(x**2, x)", "y": 3.0}
+{"state": "Derivative(4*exp(x), x) + Derivative(-8*cos(x), x)", "y": 5.78135971352466}
+{"state": "-Integral(-2*Integral(42*Integral((x*log(x) + 1)*exp(x), x), x)/x**3, x) + 42*Integral((x*log(x) + 1)*exp(x), x)/x + Integral(42*Integral((x*log(x) + 1)*exp(x), x), x)/x**2", "y": 8.643856189774725}
+{"state": "cos(x) + Derivative(-5*exp(x), x)", "y": 2.807354922057604}
+{"state": "(35*x**5 + x*(Derivative(-3, x) + Derivative(35*x**5, x))*log(x) - 3)/x", "y": 5.459431618637297}
+{"state": "x**4*Derivative(7, x) - 35*x**4*Derivative(x, x) + sin(x)*Derivative(-8, x) + 7*Derivative(x**4, x) - 8*Derivative(sin(x), x) - 3", "y": 5.523561956057013}
+{"state": "x**4*Derivative(7, x) - 8*cos(x) + Derivative(-3*x, x) + 7*Derivative(x**4, x) + Derivative(-7*x**5, x)", "y": 6.584962500721156}
+{"state": "Derivative(1, x) + Derivative(3*x, x) + Derivative(9*log(x), x)", "y": 6.285402218862249}
+{"state": "5*(3*x**2 + x*Derivative(x, x) + log(x)*Derivative(x**2, x))", "y": 3.0}
+{"state": "cos(x)*Derivative(8, x) - 8*Derivative(x**3, x) + Derivative(4*exp(x), x) + 8*Derivative(cos(x), x)", "y": 6.584962500721156}
+{"state": "x*Derivative(8, x) + sin(x)*Derivative(-5, x) + Derivative(5, x) + Derivative(7*x**3, x) - 5*Derivative(sin(x), x) + 8", "y": 6.442943495848728}
+{"state": "48*Integral(cos(x)/x, x) + Integral(-48*log(x)*sin(x), x)", "y": 6.658211482751795}
+{"state": "5*Integral(1, x) - 27*Integral(x**2, x)", "y": 2.0}
+{"state": "(sin(x)*Derivative(-32, x) - 64*Derivative(sin(x), x))*sin(x)", "y": 3.9068905956085187}
+{"state": "3*x*Integral(4, x) - 15*Integral(x**2, x) - 3*Integral(4, x, x)", "y": 5.584962500721156}
+{"state": "3*x**2*cos(x**3 - x + 3) + cos(x**3 - x + 3)*Derivative(3, x) - cos(x**3 - x + 3)", "y": 1.584962500721156}
+{"state": "x**5*Derivative(-18, x) - 90*x**4*Derivative(x, x) - 7*sin(x)*Derivative(x, x)", "y": 2.584962500721156}
+{"state": "x**2*Derivative(8, x) - 3*x**2 + Derivative(-2, x) + 8*Derivative(x**2, x)", "y": 4.0}
+{"state": "-7*sin(x)*Derivative(x, x) + Derivative(-2*exp(x), x) - 4", "y": 3.584962500721156}
+{"state": "12*x**2 + Integral(14, x) - Integral(12, x, x)", "y": 4.906890595608519}
+{"state": "-7*Integral(-(Integral(-x*log(x)*sin(x), x) + Integral(cos(x), x))/x**2, x) + 7*(Integral(-x*log(x)*sin(x), x) + Integral(cos(x), x))/x", "y": 8.643856189774725}
+{"state": "(-3*sin(x) + cos(x))*Derivative(2, x) + 2*sin(x)*Derivative(-3, x) - 2*sin(x) - 6*Derivative(sin(x), x)", "y": 4.643856189774724}
+{"state": "x*Derivative(10, x) + Derivative(3*exp(x), x) + 10 + 5/x", "y": 5.169925001442312}
+{"state": "5*(Derivative(x**3, x) + Derivative(x**2*log(x), x))", "y": 5.614709844115208}
+{"state": "4*x**3*Derivative(-1, x) + 4*Derivative(-2*x**2, x) - 4*Derivative(x**3, x)", "y": 5.882643049361842}
+{"state": "-Integral(3, x)*Integral(-1/x**2, x) + Integral(3*Integral(-1/x**2, x), x) + Integral(3, x)/x", "y": 6.475733430966398}
+{"state": "3*(2*Derivative(x, x) + 3*Derivative(x**2, x))", "y": 3.0}
+{"state": "5*x**2*Derivative(log(x), x) + 5*log(x)*Derivative(x**2, x) + Derivative(5*x**3, x)", "y": 6.066089190457772}
+{"state": "4*x*(-3*x - 4*Derivative(x, x))", "y": 2.0}
+{"state": "-48*(sin(x) + Integral(-x*log(x)*sin(x), x))*Integral(-1/x**2, x) + 48*Integral((-x*log(x)*sin(x) + cos(x))*Integral(-1/x**2, x), x) + 48*(sin(x) + Integral(-x*log(x)*sin(x), x))/x", "y": 8.643856189774725}
+{"state": "sin(x)*Derivative(-8, x) + Derivative(-3*x, x) + Derivative(7*x**4, x) - 7*Derivative(x**5, x) - 8*Derivative(sin(x), x)", "y": 7.189824558880018}
+{"state": "(42*x*log(x) - 42*x)*exp(x) + Integral(42*exp(x)/x, x) - 42*Integral((x*log(x) - x)*exp(x), x)", "y": 7.426264754702098}
+{"state": "(x**3*(Derivative(21, x) + 21*Derivative(x, x)) + 21*Derivative(x**3, x))*exp(x)", "y": 5.044394119358453}
+{"state": "-Integral(-Integral(42*exp(x), x)/x**2, x) + 42*Integral(exp(x)*log(x), x) + Integral(42*exp(x), x)/x", "y": 8.643856189774725}
+{"state": "Derivative(-3*x, x) + Derivative(7*x**4, x) - 7*Derivative(x**5, x) + Derivative(-8*sin(x), x)", "y": 7.312882955284356}
+{"state": "4*x**2*Derivative(-2, x) - 16*x*Derivative(x, x) + 4*Derivative(-x**3, x)", "y": 5.584962500721156}
+{"state": "Integral(48*(-log(x)*sin(x) + cos(x)/x), x)", "y": 8.643856189774725}
+{"state": "6*exp(x)*Derivative(9, x) + 6*Derivative(x**5, x) + 54*Derivative(exp(x), x)", "y": 4.954196310386875}
+{"state": "exp(x)*Derivative(7, x) + 7*exp(x)*Derivative(x, x) + Derivative(4*cos(x), x) - 8", "y": 4.584962500721156}
+{"state": "-(35*x**6 - 30*x*sin(x) - 6*x*Integral(6/x, x) - 6*x*Integral(-35*x**4/6, x) - 6*x*Integral(5*cos(x)/x**2, x) - 6*x*Integral(5*sin(x)/x, x) - 36*x - 30*cos(x))/(6*x)", "y": 8.643856189774725}
+{"state": "42*exp(x)*Integral((x*log(x) + 1)/x, x) - 42*exp(x)*Integral((x*log(x) + 1)/x, x, x) + 42*Integral(exp(x)*Integral((x*log(x) + 1)/x, x, x), x)", "y": 7.400879436282184}
+{"state": "-7*sin(x) - 18*Derivative(x**5, x)", "y": 1.584962500721156}
+{"state": "(-48*x*log(x) + 48*x)*sin(x) + 48*Integral(cos(x)/x, x) + 48*Integral(x*(log(x) - 1)*cos(x), x)", "y": 7.098032082960526}
+{"state": "-8*cos(x) + Derivative(7*x**4, x) - 7*Derivative(x**5, x) - 3", "y": 4.392317422778761}
+{"state": "9*x + 3*Integral(2*x, x) + 3*Integral(7*x**2, x)", "y": 5.20945336562895}
+{"state": "12*x**2 + 5*Derivative(x, x) + Derivative(5*x**2, x)", "y": 3.584962500721156}
+{"state": "16*x**3*Derivative(cos(x), x) + (x**3*Derivative(16, x) + 16*Derivative(x**3, x))*cos(x)", "y": 5.523561956057013}
+{"state": "x**2*Integral(9, x) - x*Integral(2*Integral(9, x), x) + Integral(8, x) + Integral(2*Integral(9, x), x, x)", "y": 6.954196310386875}
+{"state": "x*Derivative(10, x) + 10*Derivative(x, x) + 3*Derivative(exp(x), x) + 5/x", "y": 4.169925001442312}
+{"state": "-7*(x*log(x) - x)*sin(x) + 7*cos(x)*Integral(x*log(x) - x, x) + Integral(7*cos(x)/x, x) - 7*Integral(-sin(x)*Integral(x*log(x) - x, x), x)", "y": 8.643856189774725}
+{"state": "21*(x**3*Derivative(x, x) + Derivative(x**3, x))*exp(x)", "y": 3.584962500721156}
+{"state": "6*Derivative(x**5, x) + 6*Derivative(9*exp(x), x)", "y": 5.20945336562895}
+{"state": "7*exp(x) + Derivative(4*cos(x), x) - 8", "y": 2.807354922057604}
+{"state": "x**2*Derivative(5, x) + 5*Derivative(x**2, x) + Derivative(4*x**3, x) + 5", "y": 5.357552004618084}
+{"state": "4*x**2*Derivative(-x - 2, x) + 4*(-x - 2)*Derivative(x**2, x)", "y": 6.539158811108031}
+{"state": "18*x + Derivative(6*x, x)", "y": 2.584962500721156}
+{"state": "cos(x)*Derivative(2, x) + Derivative(-6*sin(x), x) + 2*Derivative(cos(x), x)", "y": 5.614709844115208}
+{"state": "4*Integral(2/x, x) + 4*Integral(x, x)", "y": 5.285402218862249}
+{"state": "24*Integral(exp(-I*x)/x, x) + Integral(24*exp(I*x)/x, x) + Integral(-24*I*exp(-I*x)*log(x), x) + Integral(24*I*exp(I*x)*log(x), x)", "y": 8.643856189774725}
+{"state": "8*x*Derivative(x, x)", "y": 1.0}
+{"state": "Derivative(1, x) + Derivative(3*x, x) + 9*Derivative(log(x), x)", "y": 5.584962500721156}
+{"state": "5*x**2*Derivative(log(x), x) + (x**2*Derivative(5, x) + 5*Derivative(x**2, x))*log(x) + Derivative(5*x**3, x)", "y": 6.442943495848728}
+{"state": "9*x**2 + 2*x + Integral(12*x**2, x)", "y": 3.169925001442312}
+{"state": "Derivative(6*x, x) + Derivative(9*x**2, x)", "y": 5.247927513443585}
+{"state": "x*Derivative(-4, x) - 7*sin(x) + cos(x)*Derivative(7, x) - 4*Derivative(x, x) + Derivative(-2*exp(x), x)", "y": 5.523561956057013}
+{"state": "7*log(x)*cos(x) - 7*Integral(cos(x)/x, x) + Integral(7*cos(x)/x, x)", "y": 2.807354922057604}
+{"state": "6*x**3 + 3*x + Integral(6*x, x)", "y": 3.0}
+{"state": "x**2*(Derivative(-8, x) + Derivative(-4*x, x)) + 2*x*(-4*x - 8)", "y": 5.357552004618084}
+{"state": "6*x**2 + 4*x - Integral(6, x, x)", "y": 3.4594316186372973}
+{"state": "(x*(x**5*Derivative(35*log(x), x) + 35*log(x)*Derivative(x**5, x)) + x*log(x)*Derivative(-3, x) - 3)/x", "y": 6.357552004618084}
+{"state": "4*x**3 + Integral(2, x) + Integral(18*x, x)", "y": 4.643856189774724}
+{"state": "7*Integral(Integral(-x*log(x)*sin(x) + cos(x), x)/x**2, x) + 7*Integral(-x*log(x)*sin(x) + cos(x), x)/x", "y": 8.643856189774725}
+{"state": "16*x**3*Derivative(cos(x), x) + cos(x)*Derivative(16*x**3, x)", "y": 5.614709844115208}
+{"state": "4*Derivative(exp(x), x)", "y": 1.584962500721156}
+{"state": "x**5*Derivative(35*log(x), x) + 35*log(x)*Derivative(x**5, x) + Derivative(-3*log(x), x)", "y": 7.0}
+{"state": "4*x**3*Derivative(-2, x) - 8*Derivative(x**3, x) + 4*Derivative(exp(x), x) + 4*Derivative(2*cos(x), x)", "y": 6.523561956057013}
+{"state": "9*Integral(1, x) + 6*Integral(x, x) + 21*Integral(x**2, x)", "y": 3.584962500721156}
+{"state": "5*Integral((-x*sin(x) + 1)/x, x)", "y": 6.247927513443585}
+{"state": "x*Derivative(-3, x) - 3*Derivative(x, x) + Derivative(7*x**4, x) + Derivative(-7*x**5, x) + Derivative(-8*sin(x), x)", "y": 7.554588851677638}
+{"state": "x*Integral(44, x) - Integral(44*x, x)", "y": 4.459431618637297}
+{"state": "x**2*Derivative(-4*x - 8, x) - 8*x**2 - 16*x", "y": 5.807354922057604}
+{"state": "x**3*Derivative(7, x) + 21*x**2 + x*Derivative(8, x) + 8*Derivative(x, x) + Derivative(-5*sin(x), x)", "y": 5.523561956057013}
+{"state": "-(35*x**5 - 30*sin(x) - 6*Integral(6/x, x) - 6*Integral(-35*x**4/6, x) - 36)/6", "y": 6.044394119358453}
+{"state": "-2*x*Integral(4/x, x, x) + (x**2 + 2)*Integral(4/x, x) + 2*Integral(4/x, x, x, x)", "y": 8.643856189774725}
+{"state": "5*x**2*(Derivative(x, x) + Derivative(log(x), x)) + x*Derivative(5*x**2, x) + log(x)*Derivative(5*x**2, x)", "y": 6.22881869049588}
+{"state": "sin(x)*Derivative(-5, x) + Derivative(5, x) + Derivative(7*x**3, x) - 5*Derivative(sin(x), x) + 8", "y": 5.954196310386875}
+{"state": "-5*cos(x) + Derivative(7*x**3, x) + 8", "y": 2.807354922057604}
+{"state": "4*x**2*Integral(1/x, x) + 8*Integral(1/x, x) - 4*Integral(2*x*Integral(1/x, x), x)", "y": 6.539158811108031}
+{"state": "42*Integral(((x*log(x) + 1)*Integral(exp(x), x) - Integral((log(x) + 1)*Integral(exp(x), x), x))/x**2, x) + 42*((x*log(x) + 1)*Integral(exp(x), x) - Integral((log(x) + 1)*Integral(exp(x), x), x))/x", "y": 8.643856189774725}
+{"state": "-(35*x**6/6 - 5*x*sin(x) - 6*x - 5*cos(x))*Integral(x**(-2), x) + Integral((35*x**5 - 5*x*cos(x) - 6)*Integral(x**(-2), x), x) + (-35*x**6/6 + 5*x*sin(x) + 6*x + 5*cos(x))/x", "y": 7.643856189774724}
+{"state": "4*(-Derivative(x, x) - Derivative(4*log(x)*sin(x), x))", "y": 6.599912842187128}
+{"state": "(x*(Derivative(-3, x) + Derivative(35*x**5, x))*log(x) + (35*x**5 - 3)*Derivative(x, x))/x", "y": 6.129283016944966}
+{"state": "x**3*Derivative(-4, x) - 12*x**2*Derivative(x, x) + Derivative(-8*x**2, x)", "y": 5.285402218862249}
+{"state": "7*x**3 + Integral(9, x) + 6*Integral(x, x)", "y": 2.584962500721156}
+{"state": "-24*x**2 + 4*exp(x) + 8*Derivative(cos(x), x)", "y": 2.807354922057604}
+{"state": "3*x*(7*x**2 + 2*x + 3) - 3*x*Integral(14*x + 2, x) + 3*Integral(14*x + 2, x, x)", "y": 8.643856189774725}
+{"state": "x**3*(-16*sin(x)*Derivative(x, x) + cos(x)*Derivative(16, x)) + 48*x**2*cos(x)", "y": 3.700439718141092}
+{"state": "3*x*(6*x**2 + 2*x + 1) - (6*x + 1)*Integral(6*x, x) + Integral(6*Integral(6*x, x), x)", "y": 6.20945336562895}
+{"state": "log(x)*sin(x)*Derivative(-16, x) - 16*Derivative(log(x)*sin(x), x) - 4", "y": 5.357552004618084}
+{"state": "x*(x*Derivative(4*(-x - 2), x) + 8*(-x - 2)*Derivative(x, x))", "y": 6.339850002884624}
+{"state": "2*(Derivative(x**3, x) + 2)", "y": 2.321928094887362}
+{"state": "7*exp(x)*Derivative(x, x) - 8*Derivative(x, x) + Derivative(4*cos(x), x)", "y": 3.700439718141092}
+{"state": "4*x**3*Derivative(-1, x) - 8*Derivative(x**2, x) - 4*Derivative(x**3, x)", "y": 5.20945336562895}
+{"state": "Integral(2, x) + Integral(45*x**4, x) + Integral(4*sqrt(2)*cos(x + pi/4), x)", "y": 6.569855608330948}
+{"state": "x*Integral(6, x) + 4*x - Integral(6, x, x)", "y": 4.807354922057604}
+{"state": "2*sin(x)*Derivative(-3, x) - 2*sin(x)*Derivative(x, x) - 6*Derivative(sin(x), x)", "y": 4.392317422778761}
+{"state": "x**2*(-x - 2)*Derivative(4, x) + 4*Derivative(x**2*(-x - 2), x)", "y": 6.894817763307944}
+{"state": "x*(Derivative(4, x) + Derivative(3*x, x)) + (3*x + 4)*Derivative(x, x)", "y": 5.044394119358453}
+{"state": "5*sin(x) + 6*Integral(1/x, x) + Integral(-35*x**4, x)", "y": 5.169925001442312}
+{"state": "-48*log(x)*Integral(sin(x), x) - Integral(-Integral(48*cos(x), x)/x**2, x) + 48*Integral(Integral(sin(x), x)/x, x) + Integral(48*cos(x), x)/x", "y": 8.643856189774725}
+{"state": "x**3*cos(x)*Derivative(16, x) + 16*x**3*Derivative(cos(x), x) + 48*x**2*cos(x)*Derivative(x, x)", "y": 4.523561956057013}
+{"state": "-7*(x*log(x)**2*sin(x) - log(x)*cos(x) + Integral(-2*log(x)*sin(x), x) + Integral(-log(x)**2*sin(x), x) + Integral(-x*log(x)**2*cos(x), x))", "y": 8.643856189774725}
+{"state": "x*Integral(12 - 15*x, x) - Integral(Integral(12, x) + Integral(-15*x, x), x)", "y": 8.643856189774725}
+{"state": "35*x**4*Derivative(x, x) + 35*log(x)*Derivative(x**5, x) - 3/x", "y": 3.0}
+{"state": "x**2*Integral(3, x) + 4*x**2 + Integral(9, x) - Integral(2*x*Integral(3, x), x)", "y": 5.584962500721156}
+{"state": "8*x + Derivative(5, x)", "y": 1.0}
+{"state": "9*Integral(1, x) + 8*Integral(x, x) + Integral(3*x**2, x)", "y": 5.554588851677638}
+{"state": "x*(x*Derivative(5*x, x) + x*Derivative(5*log(x), x) + 10*x + 10*log(x))", "y": 6.409390936137702}
+{"state": "Derivative(6*x, x) + Derivative(x**3, x)", "y": 4.0}
+{"state": "-2*exp(x) - 7*sin(x)*Derivative(x, x) - 4", "y": 1.0}
+{"state": "4*(-4*x*log(x)*cos(x)*Derivative(x, x) - x - 4*sin(x)*Derivative(x, x))/x", "y": 2.321928094887362}
+{"state": "x**2*Derivative(3, x) + 3*Derivative(x**2, x) - 9", "y": 3.0}
+{"state": "-Integral(-(9*x*exp(x) + Integral(4 - 9*exp(x), x))/x**2, x) + (9*x*exp(x) + Integral(4 - 9*exp(x), x))/x", "y": 7.257387842692652}
+{"state": "6*x + Derivative(4*x, x)", "y": 2.584962500721156}
+{"state": "x**2*Derivative(8, x) + 8*Derivative(x**2, x) + Derivative(-x**3, x)", "y": 5.643856189774724}
+{"state": "(35*x**5*Derivative(x, x) + x*(x**5*Derivative(35, x) + 35*Derivative(x**5, x))*log(x) - 3)/x", "y": 4.700439718141092}
+{"state": "x*(x**2*Derivative(-4, x) - 12*x - 16)", "y": 1.584962500721156}
+{"state": "x*Derivative(-5, x) + Derivative(1, x) - 5", "y": 2.0}
+{"state": "12*x**3 + 18*x**2 + 2*x - 6*Integral(3*x, x) - 6*Integral(4*x**2, x)", "y": 5.169925001442312}
+{"state": "x**2*Derivative(7, x) + Derivative(-5*x, x) + 7*Derivative(x**2, x)", "y": 4.954196310386875}
+{"state": "(x*(x**5*(log(x)*Derivative(35, x) + 35*Derivative(log(x), x)) + 35*log(x)*Derivative(x**5, x)) - 3)/x", "y": 5.906890595608519}
+{"state": "(Derivative(-3, x) + Derivative(35*x**5, x))*log(x) + (35*x**5 - 3)*Derivative(x, x)/x", "y": 6.20945336562895}
+{"state": "exp(x)*log(x)*Derivative(36, x) + 36*Derivative(exp(x)*log(x), x)", "y": 5.426264754702098}
+{"state": "6*x**3 + 3*x**2 + 3*Integral(1, x)", "y": 1.584962500721156}
+{"state": "2*x + 18*Integral(x, x) + 12*Integral(x**2, x)", "y": 2.584962500721156}
+{"state": "(x**2*Derivative(10, x) + 3*x*exp(x) + 10*x + 5)/x", "y": 1.584962500721156}
+{"state": "48*(-x*log(x)*sin(x) + cos(x))*Integral(1/x, x) - 48*Integral(1/x, x)*Integral(-x*log(x)*cos(x) - log(x)*sin(x) - 2*sin(x), x) + 48*Integral(Integral(-x*log(x)*cos(x) - log(x)*sin(x) - 2*sin(x), x)/x, x)", "y": 8.643856189774725}
+{"state": "log(x)*Derivative(9, x) + Derivative(1, x) + 3 + 9*Derivative(x, x)/x", "y": 4.0}
+{"state": "3*x*(6*x**2 + 2*x + 1) - Integral(6*x, x) - Integral(36*x**2, x)", "y": 5.321928094887363}
+{"state": "x**4*Derivative(7, x) - 8*cos(x)*Derivative(x, x) + 7*Derivative(x**4, x) + Derivative(-7*x**5, x) - 3", "y": 5.727920454563199}
+{"state": "(2*x*Derivative(x, x) + Derivative(-4*x, x))*cos(x**2 - 4*x + 5)", "y": 4.169925001442312}
+{"state": "-x*Integral(10*Integral(3, x), x) + (5*x**2 + 1)*Integral(3, x) + Integral(10*Integral(3, x), x, x)", "y": 6.918863237274595}
+{"state": "21*x**2 - 5*Derivative(sin(x), x) + 8", "y": 1.584962500721156}
+{"state": "-4*sin(x)*Derivative(x, x) + Derivative(7*exp(x), x) - 8", "y": 3.584962500721156}
+{"state": "3*(x**2*Integral(5, x) + Integral(1, x) - Integral(2*x*Integral(5, x), x))", "y": 5.727920454563199}
+{"state": "x**5*Derivative(35*log(x), x) + 175*x**4*log(x)*Derivative(x, x) - 3/x", "y": 5.087462841250339}
+{"state": "2*x**2 + 8*Integral(1/x, x)", "y": 1.584962500721156}
+{"state": "4*(exp(x)*Derivative(x, x) + Derivative(-2*x**3, x) + Derivative(2*cos(x), x))", "y": 6.442943495848728}
+{"state": "-2*exp(x)*Derivative(x, x) - 4*Derivative(x, x) + Derivative(7*cos(x), x)", "y": 3.807354922057604}
+{"state": "x**5*Derivative(35*log(x), x) + 175*x**4*log(x)*Derivative(x, x) + Derivative(-3*log(x), x)", "y": 6.539158811108031}
+{"state": "-35*x**4*Derivative(x, x) - 8*cos(x)*Derivative(x, x) + Derivative(7*x**4, x) - 3", "y": 3.584962500721156}
+{"state": "35*x**5*Derivative(log(x), x) + (x**5*Derivative(35, x) + 35*Derivative(x**5, x))*log(x) - 3/x", "y": 5.672425341971495}
+{"state": "exp(x)*Derivative(7, x) - 4*sin(x)*Derivative(x, x) + cos(x)*Derivative(4, x) + Derivative(-8*x, x) + 7*Derivative(exp(x), x)", "y": 5.977279923499917}
+{"state": "-4*Derivative(x, x) + Derivative(-2*exp(x), x) + Derivative(7*cos(x), x)", "y": 5.977279923499917}
+{"state": "(Derivative(3, x) + Derivative(x**3, x) - 1)*cos(x**3 - x + 3)", "y": 3.4594316186372973}
+{"state": "21*x**2*Derivative(x, x) + x*Derivative(8, x) - 5*cos(x) + 8", "y": 2.0}
+{"state": "x*(5*x*(Derivative(x, x) + Derivative(log(x), x)) + 10*x + 10*log(x))", "y": 3.9068905956085187}
+{"state": "(x**6*Derivative(35*log(x), x) + 175*x**5*log(x) - 3)/x", "y": 4.392317422778761}
+{"state": "x**2*Derivative(3, x) + 6*x*Derivative(x, x) + Derivative(-9*x, x)", "y": 4.087462841250339}
+{"state": "Derivative(35*x**5*log(x), x) - 3*Derivative(log(x), x)", "y": 6.714245517666122}
+{"state": "Derivative(-4*x, x) + Derivative(-2*exp(x), x) + 7*Derivative(cos(x), x)", "y": 6.169925001442312}
+{"state": "x*(x*(Derivative(-8, x) + Derivative(-4*x, x)) - 8*x - 16)", "y": 5.087462841250339}
+{"state": "-7*log(x)*Integral(sin(x), x) - 7*Integral(-Integral(sin(x), x, x)/x**2, x) + 7*Integral(cos(x)/x, x) + 7*Integral(sin(x), x, x)/x", "y": 8.643856189774725}
+{"state": "-Integral(-Integral(4*x**2 - x*exp(x) + 6, x)/x**2, x) + Integral(4*x**2 - x*exp(x) + 6, x)/x", "y": 8.643856189774725}
+{"state": "x*Derivative(3, x) + log(x)*Derivative(9, x) + Derivative(1, x) + 3*Derivative(x, x) + 9*Derivative(x, x)/x", "y": 5.0}
+{"state": "-27*x**2*Integral(1, x) + 54*Integral(1, x)*Integral(x, x) + 5*Integral(1, x) - 54*Integral(x, x, x)", "y": 5.614709844115208}
+{"state": "3*x**2 + 9*x + Integral(21*x**2, x)", "y": 3.321928094887362}
+{"state": "4*Integral(1, x) + Integral(4*x, x) - 3*Integral(x**2, x)", "y": 5.247927513443585}
+{"state": "(3*x**2 + Derivative(3, x) - 1)*cos(x**3 - x + 3)", "y": 1.584962500721156}
+{"state": "x**2*Integral(9, x) + 8*Integral(1, x) - Integral(2*x*Integral(9, x), x)", "y": 5.672425341971495}
+{"state": "x**2*(log(x)*Derivative(5, x) + 5*Derivative(log(x), x)) + x**2*Derivative(5*x, x) + 10*x**2 + 10*x*log(x)", "y": 5.754887502163468}
+{"state": "2*Integral(3*x**2*cos(2*x**3 + 2*x), x) + 2*Integral(cos(2*x**3 + 2*x), x)", "y": 8.643856189774725}
+{"state": "x**5*Derivative(-18, x) - 7*sin(x) + cos(x)*Derivative(7, x) - 18*Derivative(x**5, x)", "y": 3.584962500721156}
+{"state": "5*sin(x) - 35*Integral(x**4, x) - Integral(-Integral(6, x)/x**2, x) + Integral(6, x)/x", "y": 6.22881869049588}
+{"state": "x**2*(Derivative(-8, x) + Derivative(-4*x, x)) + (-4*x - 8)*Derivative(x**2, x)", "y": 6.22881869049588}
+{"state": "48*(-x*log(x)*sin(x) + cos(x))*Integral(1/x, x) - 48*Integral((-x*log(x)*cos(x) - log(x)*sin(x) - 2*sin(x))*Integral(1/x, x), x)", "y": 8.643856189774725}
+{"state": "7*cos(x)*Integral(1/x, x) + Integral(-7*log(x)*sin(x), x) - 7*Integral(-sin(x)*Integral(1/x, x), x)", "y": 5.977279923499917}
+{"state": "x*log(x)*Integral(42*exp(x)/x, x) + Integral(42*exp(x)/x, x) - Integral(log(x)*Integral(42*exp(x)/x, x), x) - Integral(42*exp(x)/x, x, x)", "y": 8.643856189774725}
+{"state": "Subs(Integral(-sin(u_), u_), u_, x**3 + 5)", "y": 2.321928094887362}
+{"state": "x*Derivative(-3, x) + sin(x)*Derivative(-8, x) - 8*cos(x)*Derivative(x, x) - 3*Derivative(x, x) + Derivative(7*x**4, x) + Derivative(-7*x**5, x)", "y": 6.882643049361842}
+{"state": "-24*x**2 + 4*exp(x)*Derivative(x, x) + cos(x)*Derivative(8, x) + 8*Derivative(cos(x), x)", "y": 4.0}
+{"state": "x**4*Derivative(4, x) + 16*x**3", "y": 1.584962500721156}
+{"state": "-35*x**4*Derivative(x, x) + sin(x)*Derivative(-8, x) - 3*Derivative(x, x) + Derivative(7*x**4, x) - 8*Derivative(sin(x), x)", "y": 5.78135971352466}
+{"state": "x*Derivative(-8, x) + exp(x)*Derivative(7, x) + cos(x)*Derivative(4, x) - 8*Derivative(x, x) + 7*Derivative(exp(x), x) + 4*Derivative(cos(x), x)", "y": 6.189824558880018}
+{"state": "7*x**3 + 9*Integral(1, x) + 6*Integral(x, x)", "y": 2.0}
+{"state": "3*exp(x) + 5*Derivative(log(x), x) + 10", "y": 2.0}
+{"state": "-5*(Integral(-1/x, x) + Integral(sin(x), x))", "y": 5.523561956057013}
+{"state": "x**3*Derivative(7, x) + x*Derivative(8, x) - 5*cos(x)*Derivative(x, x) + 7*Derivative(x**3, x) + 8", "y": 4.321928094887363}
+{"state": "x**3 + Integral(9, x) + 8*Integral(x, x)", "y": 2.584962500721156}
+{"state": "(sin(x)*Derivative(7, x) + 7*Derivative(sin(x), x))*log(x) + 7*sin(x)/x", "y": 4.247927513443585}
+{"state": "-35*x**4 + 28*x**3*Derivative(x, x) + Derivative(-3*x, x) + Derivative(-8*sin(x), x)", "y": 5.523561956057013}
+{"state": "Integral(-2*Integral(-4*x**3/3 + x*exp(x) - 6*x - exp(x), x)/x**3, x) + (4*x**3/3 - x*exp(x) + 6*x + exp(x))/x - Integral(-4*x**3/3 + x*exp(x) - 6*x - exp(x), x)/x**2", "y": 8.643856189774725}
+{"state": "-3*Integral(-4*x, x) - 15*Integral(x**2, x)", "y": 4.754887502163468}
+{"state": "(log(x)*Derivative(36, x) + 36*log(x) + 36*Derivative(log(x), x))*exp(x)", "y": 4.321928094887363}
+{"state": "7*(Integral(cos(x)/x, x) + Integral(-log(x)*sin(x), x))", "y": 5.882643049361842}
+{"state": "x**2*Derivative(9, x) + Derivative(6*x, x) + 9*Derivative(x**2, x)", "y": 5.044394119358453}
+{"state": "7*x*Derivative(3, x) + 3*Derivative(1, x) + Derivative(3, x) + 3*Derivative(7*x, x)", "y": 4.754887502163468}
+{"state": "x**3*Derivative(4, x) + 12*x**2*Derivative(x, x) + 10*x + 5", "y": 2.0}
+{"state": "21*x**3*exp(x)*Derivative(x, x) + 63*x**2*exp(x)*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "x**2*Integral(21, x) + 9*x + 6*Integral(x, x) - Integral(2*x*Integral(21, x), x)", "y": 6.066089190457772}
+{"state": "x**2*Derivative(9, x) + 18*x*Derivative(x, x) + Derivative(6*x, x)", "y": 4.087462841250339}
+{"state": "x*(sin(x)*Derivative(-8, x) - 8*cos(x)) - 8*sin(x)", "y": 1.584962500721156}
+{"state": "3*Derivative(exp(x), x) + 10 + 5/x", "y": 2.321928094887362}
+{"state": "-5*cos(x)*Derivative(x, x) + 8*Derivative(x, x) + Derivative(7*x**3, x)", "y": 3.700439718141092}
+{"state": "cos(x)*Derivative(7, x) + Derivative(-4*x, x) - 2*Derivative(exp(x), x) + 7*Derivative(cos(x), x)", "y": 6.022367813028454}
+{"state": "7*(-log(x)*Integral(sin(x), x) + Integral(cos(x)/x, x) + Integral(Integral(sin(x), x)/x, x))", "y": 6.108524456778169}
+{"state": "-Integral(-Integral(7*cos(x), x)/x**2, x) + Integral(-7*log(x)*sin(x), x) + Integral(7*cos(x), x)/x", "y": 8.643856189774725}
+{"state": "x**5*Derivative(-7, x) + Derivative(7*x**4, x) - 7*Derivative(x**5, x) - 8*Derivative(sin(x), x) - 3", "y": 6.20945336562895}
+{"state": "-7*sin(x)*Integral(log(x), x) + 7*Integral(cos(x)/x, x) - 7*Integral(log(x)*Integral(cos(x), x), x) + 7*Integral(log(x), x)*Integral(cos(x), x)", "y": 8.643856189774725}
+{"state": "7*cos(x)*Integral(1/x, x) - 7*Integral(log(x)*sin(x), x) + 7*Integral(sin(x)*Integral(1/x, x), x)", "y": 3.0}
+{"state": "(6*x + 7)*Integral(2, x) - 6*Integral(2, x, x)", "y": 5.20945336562895}
+{"state": "(exp(x)*Derivative(36, x) + 36*Derivative(exp(x), x))*log(x) + 36*exp(x)*Derivative(x, x)/x", "y": 5.247927513443585}
+{"state": "x**3*Derivative(7, x) + 8*Derivative(x, x) + 7*Derivative(x**3, x) + Derivative(-5*sin(x), x)", "y": 5.754887502163468}
+{"state": "x**2*Derivative(5, x) + 12*x**2*Derivative(x, x) + 5*Derivative(x**2, x) + 5", "y": 3.321928094887362}
+{"state": "x*Integral(6, x) + 3*x + Integral(18*x**2, x) - Integral(6, x, x)", "y": 6.0}
+{"state": "2*Integral(1, x)", "y": 1.0}
+{"state": "21*x**3*exp(x)*Derivative(x, x) + (x**3*Derivative(21, x) + 63*x**2*Derivative(x, x))*exp(x)", "y": 3.321928094887362}
+{"state": "9*exp(x) - Integral(-Integral(4, x)/x**2, x) + Integral(4, x)/x", "y": 5.832890014164741}
+{"state": "-3*x**2*Derivative(x, x) + 8*Derivative(x**2, x)", "y": 2.807354922057604}
+{"state": "x*Integral(6, x) + Integral(9, x) + Integral(21*x**2, x) - Integral(6, x, x)", "y": 6.339850002884624}
+{"state": "9*x**2 + Integral(2, x) + Integral(12*x**2, x)", "y": 5.129283016944966}
+{"state": "log(x)*Derivative(9, x) + Derivative(1, x) + Derivative(3*x, x) + 9/x", "y": 5.554588851677638}
+{"state": "x**3*Derivative(7, x) + 21*x**2*Derivative(x, x) + sin(x)*Derivative(-5, x) + Derivative(5, x) + Derivative(8*x, x) - 5*Derivative(sin(x), x)", "y": 6.475733430966398}
+{"state": "21*x**2 + x*Derivative(8, x) - 5*cos(x)*Derivative(x, x) + 8*Derivative(x, x)", "y": 2.0}
+{"state": "-48*x*log(x)*sin(x) + 48*x*sin(x) + 48*Integral(cos(x)/x, x) + 48*Integral(-x*cos(x), x) + 48*Integral(x*log(x)*cos(x), x)", "y": 7.2761244052742375}
+{"state": "x**5*log(x)*Derivative(35, x) + log(x)*Derivative(-3, x) + 35*Derivative(x**5*log(x), x) - 3*Derivative(x, x)/x", "y": 6.321928094887363}
+{"state": "21*x**2*Derivative(x, x) - 5*Derivative(sin(x), x) + 8", "y": 2.321928094887362}
+{"state": "-35*x**4 + Derivative(-3*x, x) + 7*Derivative(x**4, x) + Derivative(-8*sin(x), x)", "y": 6.129283016944966}
+{"state": "2*x*Derivative(-1, x) + 2*Derivative(2, x) - 2*Derivative(x, x)", "y": 3.807354922057604}
+{"state": "exp(x)*Derivative(-2, x) + cos(x)*Derivative(7, x) - 2*Derivative(exp(x), x) + 7*Derivative(cos(x), x) - 4", "y": 5.169925001442312}
+{"state": "42*(x*log(x) + 1)*Integral(exp(x)/x, x) - 42*Integral((log(x) + 1)*Integral(exp(x)/x, x), x)", "y": 8.643856189774725}
+{"state": "x**2*Integral(3, x) + 9*x + 8*Integral(x, x) - Integral(2*x*Integral(3, x), x)", "y": 6.20945336562895}
+{"state": "x**2*(21*x*Derivative(exp(x), x) + 63*exp(x))", "y": 3.0}
+{"state": "2*x**2*Derivative(x, x) + (x**2 + 6)*Derivative(x, x)", "y": 2.0}
+{"state": "42*exp(x)*log(x) + 42*Integral(exp(x)*log(x), x) - Integral(42*exp(x)*log(x), x)", "y": 2.584962500721156}
+{"state": "Integral((9*x*exp(x) + 4)/x, x)", "y": 6.285402218862249}
+{"state": "Integral(4*x, x) - Integral(-Integral(6, x)/x**2, x) - Integral(exp(x), x) + Integral(6, x)/x", "y": 6.754887502163468}
+{"state": "-16*x*Derivative(x, x) + Derivative(-4*x**3, x)", "y": 4.459431618637297}
+{"state": "exp(x)*Derivative(4, x) + 4*Derivative(exp(x), x) + Derivative(-8*cos(x), x)", "y": 5.614709844115208}
+{"state": "4*Derivative(x, x) + 3*Derivative(x**2, x)", "y": 2.584962500721156}
+{"state": "-32*sin(2*x)*Derivative(x, x) - cos(2*x)*Derivative(-32, x)/2 + Derivative(-32, x)/2", "y": 3.0}
+{"state": "21*x**3*Derivative(exp(x), x) + 63*x**2*exp(x)", "y": 2.807354922057604}
+{"state": "x*Derivative(-4, x) - 16*log(x)*Derivative(sin(x), x) + sin(x)*Derivative(-16*log(x), x) - 4", "y": 6.169925001442312}
+{"state": "(sin(x)*Derivative(-16, x) - 16*Derivative(sin(x), x))*log(x) - 16*sin(x)*Derivative(log(x), x) + Derivative(-4*x, x)", "y": 6.794415866350106}
+{"state": "x**5*Derivative(-18, x) - 90*x**4 - 7*sin(x)*Derivative(x, x)", "y": 2.0}
+{"state": "6*x**2 + 4*x - 6*Integral(x, x)", "y": 1.584962500721156}
+{"state": "x*(Derivative(4, x) + Derivative(3*x, x)) + 3*x + 4", "y": 4.247927513443585}
+{"state": "Derivative(7*exp(x), x) + 4*Derivative(cos(x), x) - 8", "y": 4.392317422778761}
+{"state": "(35*x**6*Derivative(log(x), x) + 35*x*log(x)*Derivative(x**5, x) - 3)/x", "y": 3.9068905956085187}
+{"state": "log(x)*Integral(42*exp(x), x) + 42*Integral(exp(x)/x, x) - Integral(Integral(42*exp(x), x)/x, x)", "y": 5.977279923499917}
+{"state": "x*Integral(4, x) + 4*Integral(1, x) + Integral(-3*x**2, x) - Integral(4, x, x)", "y": 6.20945336562895}
+{"state": "log(x)*Derivative(5, x) + Derivative(10*x, x) + Derivative(3*exp(x), x) + 5*Derivative(log(x), x)", "y": 7.022367813028454}
+{"state": "3*(3*x + 2*Integral(x, x) + 7*Integral(x**2, x))", "y": 2.584962500721156}
+{"state": "x**2*Derivative(3, x) + x*Derivative(4, x) + 6*x + 4*Derivative(x, x)", "y": 3.169925001442312}
+{"state": "x*Derivative(x**2, x) + (x**2 + 6)*Derivative(x, x)", "y": 3.0}
+{"state": "x**2*Derivative(8, x) - 3*x**2*Derivative(x, x) + 8*Derivative(x**2, x)", "y": 4.0}
+{"state": "35*x**4 + (x**5*Derivative(35, x) + 35*Derivative(x**5, x))*log(x) + Derivative(-3*log(x), x)", "y": 6.321928094887363}
+{"state": "exp(x)*Integral(42*(x*log(x) + 1)/x, x) - exp(x)*Integral(42*(x*log(x) + 1)/x, x, x) + Integral(exp(x)*Integral(42*(x*log(x) + 1)/x, x, x), x)", "y": 8.643856189774725}
+{"state": "3*x + 6*Integral(x, x) + 18*Integral(x**2, x)", "y": 2.807354922057604}
+{"state": "-35*Integral(x**4, x) - Integral(-Integral(6, x)/x**2, x) + Integral(5*cos(x), x) + Integral(6, x)/x", "y": 7.118941072723508}
+{"state": "5*Integral(1, x) + Integral(-27*x**2, x)", "y": 5.169925001442312}
+{"state": "Integral(6/x, x) + Integral(-35*x**4, x) + Integral(5*exp(-I*x)/2, x) + Subs(Integral(-5*I*exp(u_)/2, u_), u_, I*x)", "y": 7.546894459887636}
+{"state": "exp(x)*Derivative(-5, x) + cos(x) - 5*Derivative(exp(x), x)", "y": 2.584962500721156}
+{"state": "(log(x)*Derivative(36, x) + 36*Derivative(log(x), x))*exp(x) + 36*exp(x)*log(x)*Derivative(x, x)", "y": 5.087462841250339}
+{"state": "-35*x**5*Integral(1/x, x) + 5*x*cos(x)*Integral(1/x, x) + 6*Integral(1/x, x) + Integral(175*x**4*Integral(1/x, x), x) + Integral(-5*cos(x)*Integral(1/x, x), x) + Integral(5*x*sin(x)*Integral(1/x, x), x)", "y": 8.643856189774725}
+{"state": "Integral(11*exp(x), x) + Integral(-sin(x), x) + Integral(5*cos(x), x)", "y": 6.129283016944966}
+{"state": "x**2*Integral(12, x) + Integral(2, x) + 18*Integral(x, x) - Integral(2*x*Integral(12, x), x)", "y": 6.044394119358453}
+{"state": "21*x**2 - 5*cos(x)*Derivative(x, x) + Derivative(8*x, x)", "y": 3.0}
+{"state": "(x + 4*log(x)*sin(x))*Derivative(-4, x) - 4*Derivative(x, x) - 4*Derivative(4*log(x)*sin(x), x)", "y": 6.9886846867721655}
+{"state": "28*x**3 + sin(x)*Derivative(-8, x) + Derivative(-7*x**5, x) - 8*Derivative(sin(x), x) - 3", "y": 5.357552004618084}
+{"state": "x**2*Integral(9, x) - x*Integral(2*Integral(9, x), x) + 8*x + Integral(2*Integral(9, x), x, x)", "y": 6.807354922057604}
+{"state": "x**2*(x*(-16*sin(x)*Derivative(x, x) + cos(x)*Derivative(16, x)) + 48*cos(x))", "y": 3.4594316186372973}
+{"state": "-48*x*log(x)*sin(x) + 48*x*sin(x) + Integral(48*cos(x)/x, x) + 48*Integral(-x*cos(x), x) + 48*Integral(x*log(x)*cos(x), x)", "y": 7.523561956057013}
+{"state": "x**2*Integral(-15, x) + Integral(12*x, x) - Integral(2*x*Integral(-15, x), x)", "y": 6.20945336562895}
+{"state": "4*(-6*x**2*Derivative(x, x) + exp(x)*Derivative(x, x) - 2*sin(x))", "y": 2.0}
+{"state": "(-2*x**3 + exp(x) + 2*cos(x))*Derivative(4, x) + 4*Derivative(-2*x**3 + exp(x) + 2*cos(x), x)", "y": 7.169925001442312}
+{"state": "48*cos(x)*Integral(1/x, x) - 48*Integral(log(x)*sin(x), x) + 48*Integral(sin(x)*Integral(1/x, x), x)", "y": 3.0}
+{"state": "x**4*Derivative(7, x) + Derivative(-3*x, x) + 7*Derivative(x**4, x) + Derivative(-7*x**5, x) + Derivative(-8*sin(x), x)", "y": 7.6293566200796095}
+{"state": "(sin(x)*Derivative(7, x) + 7*cos(x)*Derivative(x, x))*log(x) + 7*sin(x)*Derivative(x, x)/x", "y": 3.700439718141092}
+{"state": "x*Integral(6, x) + Integral(3, x) + 18*Integral(x**2, x) - Integral(6, x, x)", "y": 5.977279923499917}
+{"state": "x**2*Derivative(-4*x, x) - 8*x**2 - 16*x", "y": 3.9068905956085187}
+{"state": "Integral(2*(3*x**2 + 1)*cos(2*x*(x**2 + 1)), x)", "y": 3.4594316186372973}
+{"state": "6*log(x) + 4*Integral(x, x) - Integral(exp(x), x)", "y": 2.0}
+{"state": "x**5*Derivative(6, x) + 9*exp(x)*Derivative(6, x) + 6*Derivative(x**5, x) + 6*Derivative(9*exp(x), x)", "y": 5.727920454563199}
+{"state": "(x*Derivative(-4, x) + Derivative(5, x) - 4*Derivative(x, x) + Derivative(x**2, x))*cos(x**2 - 4*x + 5)", "y": 5.285402218862249}
+{"state": "-2*(sin(x) + 3*Derivative(sin(x), x))", "y": 2.807354922057604}
+{"state": "Derivative(7, x) + Derivative(5*x, x) + 5*Derivative(x**2, x) + Derivative(4*x**3, x)", "y": 6.643856189774724}
+{"state": "7*exp(x)*Derivative(x, x) - 4*sin(x) - 8", "y": 1.0}
+{"state": "-16*log(x)*Derivative(sin(x), x) - 16*sin(x)*Derivative(log(x), x) - 4*Derivative(x, x)", "y": 5.169925001442312}
+{"state": "x**2*Derivative(5, x) + 12*x**2*Derivative(x, x) + Derivative(7, x) + Derivative(5*x, x) + 5*Derivative(x**2, x)", "y": 5.78135971352466}
+{"state": "x*Derivative(-4, x) - 2*exp(x)*Derivative(x, x) + cos(x)*Derivative(7, x) - 4*Derivative(x, x) + 7*Derivative(cos(x), x)", "y": 4.459431618637297}
+{"state": "(x*log(x)*sin(x)*Derivative(7, x) + 7*x*log(x)*Derivative(sin(x), x) + 7*sin(x)*Derivative(x, x))/x", "y": 4.459431618637297}
+{"state": "3*x**2*Integral(-5, x) + 3*Integral(4*x, x) - 3*Integral(2*x*Integral(-5, x), x)", "y": 6.339850002884624}
+{"state": "4*(x**2 + 2)*Integral(1/x, x) - 8*Integral(x*Integral(1/x, x), x)", "y": 6.339850002884624}
+{"state": "x**4*Derivative(7, x) + sin(x)*Derivative(-8, x) - 8*cos(x)*Derivative(x, x) + Derivative(-3*x, x) + 7*Derivative(x**4, x) + Derivative(-7*x**5, x)", "y": 7.044394119358453}
+{"state": "(-x*Integral(-Integral(3, x)/x**2, x) + Integral(3, x))/x", "y": 5.78135971352466}
+{"state": "x*(10*x*Derivative(x, x) + x*Derivative(5*(x + log(x)), x) + 10*log(x)*Derivative(x, x))", "y": 6.149747119504682}
+{"state": "-48*log(x)*Integral(sin(x), x) - 48*Integral(-Integral(cos(x), x)/x**2, x) + 48*Integral(Integral(sin(x), x)/x, x) + 48*Integral(cos(x), x)/x", "y": 8.643856189774725}
+{"state": "3*x*(Derivative(-3, x) + Derivative(x, x)) + 3*x*Derivative(x, x) - 9*Derivative(x, x)", "y": 3.4594316186372973}
+{"state": "-4*(-Derivative(exp(x), x) + 2*Derivative(cos(x), x))", "y": 4.169925001442312}
+{"state": "x**5*Derivative(6, x) + 54*exp(x) + 6*Derivative(x**5, x)", "y": 3.0}
+{"state": "10*x + Derivative(5*x, x) + Derivative(4*x**3, x)", "y": 5.129283016944966}
+{"state": "Integral(-1, x) + Integral(16*sin(2*x), x)", "y": 5.247927513443585}
+{"state": "x*(x*Derivative(-8, x) + x*Derivative(-4*x, x) - 8*x - 16)", "y": 4.857980995127572}
+{"state": "14*Integral(1, x) + 12*Integral(x, x)", "y": 2.807354922057604}
+{"state": "x**3*Derivative(-1, x) - 3*x**2*Derivative(x, x) + 16*x", "y": 3.0}
+{"state": "48*Integral((sin(x) + Integral(-x*log(x)*sin(x), x))/x**2, x) + 48*(sin(x) + Integral(-x*log(x)*sin(x), x))/x", "y": 8.643856189774725}
+{"state": "-7*log(x)*Integral(sin(x), x) + 7*cos(x)*Integral(1/x, x) + 7*Integral(Integral(sin(x), x)/x, x) - 7*Integral(-sin(x)*Integral(1/x, x), x)", "y": 6.507794640198696}
+{"state": "7*x**2*Integral(2/x, x) + 2*Integral(2/x, x) - Integral(14*x*Integral(2/x, x), x)", "y": 7.1799090900149345}
+{"state": "x**2*Derivative(8, x) + 16*x*Derivative(x, x) + Derivative(-2, x) + Derivative(-x**3, x)", "y": 5.754887502163468}
+{"state": "x*cos(x**2 - 4*x + 5)*Derivative(-4, x) + 2*x*cos(x**2 - 4*x + 5) - 4*cos(x**2 - 4*x + 5)", "y": 1.584962500721156}
+{"state": "-48*(x*log(x) - x)*sin(x) + 48*cos(x)*Integral(x*log(x) - x, x) + 48*Integral(cos(x)/x, x) - 48*Integral(-sin(x)*Integral(x*log(x) - x, x), x)", "y": 8.643856189774725}
+{"state": "18*x + Derivative(4, x) + Derivative(6*x, x)", "y": 3.4594316186372973}
+{"state": "x**2*Integral(4/x, x) + 2*Integral(4/x, x) - 2*Integral(x*Integral(4/x, x), x)", "y": 6.409390936137702}
+{"state": "48*log(x)*cos(x) + 48*cos(x)*Integral(-1/x, x) + 48*Integral(cos(x)/x, x) - 48*Integral(-sin(x)*Integral(-1/x, x), x)", "y": 6.169925001442312}
+{"state": "5*sin(x) - Integral(35*x**4 - 6/x, x)", "y": 5.954196310386875}
+{"state": "x**2*Integral(-3*sin(x**3 + 5), x) - Integral(2*x*Integral(-3*sin(x**3 + 5), x), x)", "y": 6.658211482751795}
+{"state": "(x**2*Derivative(10, x) + x*(exp(x)*Derivative(3, x) + 3*Derivative(exp(x), x)) + 10*x + 5)/x", "y": 5.044394119358453}
+{"state": "x*(x*Derivative(8, x) - 3*x + 16*Derivative(x, x))", "y": 3.0}
+{"state": "x**3*Derivative(7, x) - 5*cos(x) + 7*Derivative(x**3, x) + 8", "y": 2.584962500721156}
+{"state": "42*(Integral(exp(x)/x, x) + Integral(exp(x)*log(x), x))", "y": 4.906890595608519}
+{"state": "x**3*Derivative(-1, x) + 8*Derivative(x**2, x) - Derivative(x**3, x)", "y": 4.643856189774724}
+{"state": "4*Integral(1, x) - Integral(-4*x, x) - Integral(3*x**2, x)", "y": 5.672425341971495}
+{"state": "5*x**3 + 3*Integral(1, x)", "y": 1.0}
+{"state": "x*Derivative(-4, x) - 2*exp(x) - 4*Derivative(x, x) + Derivative(7*cos(x), x)", "y": 4.584962500721156}
+{"state": "6*Derivative(x, x) + Derivative(9*x**2, x)", "y": 3.9068905956085187}
+{"state": "30*x**4 + 6*exp(x)*Derivative(9, x) + 54*exp(x)*Derivative(x, x)", "y": 2.807354922057604}
+{"state": "(3*x**2*Derivative(x, x) + x*Derivative(-1, x) + Derivative(3, x) - 1)*cos(x**3 - x + 3)", "y": 3.9068905956085187}
+{"state": "x*Derivative(3*(x - 3), x) + 3*x - 9", "y": 5.357552004618084}
+{"state": "-48*(x*log(x) - x)*sin(x) + 48*cos(x)*Integral(x*log(x) - x, x) + Integral(48*cos(x)/x, x) - 48*Integral(-sin(x)*Integral(x*log(x) - x, x), x)", "y": 8.643856189774725}
+{"state": "x**3 + 9*x + Integral(8*x, x)", "y": 2.807354922057604}
+{"state": "x**2*Derivative(-8, x) - 16*x*Derivative(x, x) + Derivative(-4*x**3, x)", "y": 5.285402218862249}
+{"state": "log(x)*Derivative(-16*sin(x), x) - 4 - 16*sin(x)*Derivative(x, x)/x", "y": 5.247927513443585}
+{"state": "x**3*Derivative(7, x) + Derivative(8*x, x) + 7*Derivative(x**3, x) - 5*Derivative(sin(x), x)", "y": 6.0}
+{"state": "Derivative(10*x, x) + 3*Derivative(exp(x), x) + 5/x", "y": 5.0}
+{"state": "Derivative(1, x) + Derivative(4*x**4, x)", "y": 4.0}
+{"state": "3*(Integral(3, x) + 2*Integral(x, x) + Integral(7*x**2, x))", "y": 5.169925001442312}
+{"state": "Derivative(-8*x, x) + 7*Derivative(exp(x), x) + Derivative(4*cos(x), x)", "y": 6.129283016944966}
+{"state": "Derivative(9, x) - 11", "y": 1.0}
+{"state": "-35*x**4 + sin(x)*Derivative(-8, x) + 7*Derivative(x**4, x) - 8*Derivative(sin(x), x) - 3", "y": 4.169925001442312}
+{"state": "30*x**4 + 54*exp(x)*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "x**4*Derivative(7, x) - 35*x**4*Derivative(x, x) - 8*cos(x)*Derivative(x, x) + 7*Derivative(x**4, x) - 3", "y": 3.321928094887362}
+{"state": "x**2*Derivative(5, x) + 12*x**2 + x*Derivative(5, x) + 10*x + 5", "y": 1.0}
+{"state": "log(x)*Derivative(9, x) + Derivative(3*x, x) + 9*Derivative(log(x), x)", "y": 5.584962500721156}
+{"state": "4*exp(x) - 8*Derivative(cos(x), x)", "y": 2.584962500721156}
+{"state": "-24*x**2*Derivative(x, x) + exp(x)*Derivative(4, x) + cos(x)*Derivative(8, x) + 4*Derivative(exp(x), x) + 8*Derivative(cos(x), x)", "y": 6.0}
+{"state": "x**4*Derivative(7, x) - 35*x**4 + 28*x**3*Derivative(x, x) + Derivative(-8*sin(x), x) - 3", "y": 4.584962500721156}
+{"state": "-2*Integral(-Integral(7*x**2 + 2, x)/x**2, x) + 2*Integral(7*x**2 + 2, x)/x", "y": 8.643856189774725}
+{"state": "sin(x)*Derivative(-5, x) + Derivative(7*x**3, x) - 5*Derivative(sin(x), x) + 8", "y": 5.357552004618084}
+{"state": "3*x*Derivative(x - 3, x) + (x - 3)*Derivative(3*x, x)", "y": 5.857980995127572}
+{"state": "x*Derivative(10, x) + 10*Derivative(x, x) + Derivative(3*exp(x), x) + 5*Derivative(x, x)/x", "y": 5.727920454563199}
+{"state": "48*Integral(x**(-2), x)*Integral(-x*log(x)*sin(x) + cos(x), x) - 48*Integral((-x*log(x)*sin(x) + cos(x))*Integral(x**(-2), x), x) + 48*Integral(-x*log(x)*sin(x) + cos(x), x)/x", "y": 8.643856189774725}
+{"state": "3*x*(6*x**2 + 2*x + 1) - Integral(6*x*(6*x + 1), x)", "y": 5.78135971352466}
+{"state": "cos(x)*Integral(48/x, x) - 48*Integral(log(x)*sin(x), x) + Integral(sin(x)*Integral(48/x, x), x)", "y": 6.149747119504682}
+{"state": "x*Derivative(3, x) + Derivative(1, x) + Derivative(9*log(x), x) + 3", "y": 5.491853096329675}
+{"state": "x*Derivative(-2, x) + Derivative(4, x) - 2*Derivative(x, x)", "y": 3.0}
+{"state": "3*Integral(-exp(4)*exp(-3*x)*exp(5*x**3), x) + 3*Integral(5*x**2*exp(4)*exp(-3*x)*exp(5*x**3), x)", "y": 6.108524456778169}
+{"state": "x**2*Derivative(9, x) + Derivative(4, x) + 6*Derivative(x, x) + 9*Derivative(x**2, x)", "y": 4.523561956057013}
+{"state": "x**5*Derivative(-7, x) + sin(x)*Derivative(-8, x) + Derivative(7*x**4, x) - 7*Derivative(x**5, x) - 8*Derivative(sin(x), x) - 3", "y": 6.599912842187128}
+{"state": "x**2*Derivative(9, x) + x*Derivative(6, x) + Derivative(4, x) + 6*Derivative(x, x) + 9*Derivative(x**2, x)", "y": 5.426264754702098}
+{"state": "42*((x*log(x) + 1)*Integral(1/x, x) - Integral((log(x) + 1)*Integral(1/x, x), x))*exp(x) - 42*Integral(((x*log(x) + 1)*Integral(1/x, x) - Integral((log(x) + 1)*Integral(1/x, x), x))*exp(x), x)", "y": 7.459431618637297}
+{"state": "-7*sin(x)*Integral(log(x), x) + 7*cos(x)*Integral(log(x), x, x) + Integral(7*cos(x)/x, x) - 7*Integral(-sin(x)*Integral(log(x), x, x), x)", "y": 8.643856189774725}
+{"state": "7*log(x)*cos(x)*Derivative(x, x) + 7*sin(x)*Derivative(x, x)/x", "y": 2.321928094887362}
+{"state": "-7*Integral(-Integral(cos(x), x)/x**2, x) + 7*Integral(-log(x)*sin(x), x) + 7*Integral(cos(x), x)/x", "y": 8.643856189774725}
+{"state": "-12*x**2*Derivative(x, x) + Derivative(-8*x**2, x)", "y": 4.459431618637297}
+{"state": "-24*x**2*Derivative(x, x) - 8*sin(x) + 4*Derivative(exp(x), x)", "y": 3.4594316186372973}
+{"state": "(x**6*Derivative(35*log(x), x) + 175*x**5*log(x)*Derivative(x, x) - 3)/x", "y": 5.087462841250339}
+{"state": "-7*Integral(-(log(x)*Integral(-x*sin(x), x) + sin(x) - Integral(Integral(-x*sin(x), x)/x, x))/x**2, x) + 7*(log(x)*Integral(-x*sin(x), x) + sin(x) - Integral(Integral(-x*sin(x), x)/x, x))/x", "y": 8.643856189774725}
+{"state": "x*Derivative(-4, x) + log(x)*Derivative(-16*sin(x), x) - 16*sin(x)*Derivative(log(x), x) - 4*Derivative(x, x)", "y": 6.523561956057013}
+{"state": "x*Derivative(10, x) + exp(x)*Derivative(3, x) + 3*exp(x)*Derivative(x, x) + 10*Derivative(x, x) + Derivative(5*log(x), x)", "y": 5.954196310386875}
+{"state": "x**5*Derivative(-7, x) - 35*x**4*Derivative(x, x) - 8*cos(x) + Derivative(7*x**4, x) - 3", "y": 4.584962500721156}
+{"state": "x**3*Derivative(5, x) + 15*x**2*Derivative(x, x) + Derivative(5*x**2*log(x), x)", "y": 6.189824558880018}
+{"state": "-x*(3*x - 16)*Derivative(x, x)", "y": 1.584962500721156}
+{"state": "-2*sin(x)*Derivative(x, x) + cos(x)*Derivative(2, x) + Derivative(-6*sin(x), x)", "y": 4.906890595608519}
+{"state": "5*(cos(x) + Integral(1/x, x))", "y": 1.584962500721156}
+{"state": "4*x**3 + 9*x**2 + 2*Integral(1, x)", "y": 1.0}
+{"state": "28*x**3 + x*Derivative(-3, x) - 3*Derivative(x, x) + Derivative(-7*x**5, x) + Derivative(-8*sin(x), x)", "y": 6.442943495848728}
+{"state": "7*Derivative(log(x)*sin(x), x)", "y": 4.392317422778761}
+{"state": "-48*(Integral(-cos(x)/x, x) + Integral(log(x)*sin(x), x))", "y": 5.977279923499917}
+{"state": "(exp(x)*Derivative(36, x) + 36*exp(x)*Derivative(x, x))*log(x) + 36*exp(x)*Derivative(x, x)/x", "y": 3.9068905956085187}
+{"state": "x**2*Derivative(7, x) + 14*x*Derivative(x, x) + Derivative(2, x) - 5*Derivative(x, x)", "y": 3.169925001442312}
+{"state": "Integral(-5*I*exp(-I*x)/2, x) + Integral(5*I*exp(I*x)/2, x) - Integral(-Integral(5, x)/x**2, x) + Integral(5, x)/x", "y": 7.643856189774724}
+{"state": "3*Integral(1/x, x)", "y": 1.0}
+{"state": "x*Derivative(-4, x) + log(x)*Derivative(-16*sin(x), x) - 16*sin(x)*Derivative(log(x), x) - 4", "y": 6.149747119504682}
+{"state": "5*(35*x**4 + x*sin(x) - cos(x))*Integral(log(x), x) - (35*x**5 - 5*x*cos(x) - 6)*log(x) - 5*Integral((140*x**3 + x*cos(x) + 2*sin(x))*Integral(log(x), x), x)", "y": 7.562242424221073}
+{"state": "Derivative(4, x) + Derivative(6*x, x) + 9*Derivative(x**2, x)", "y": 5.044394119358453}
+{"state": "cos(2*x)*Integral(9, x) - Integral(-2*sin(2*x)*Integral(9, x), x)", "y": 5.491853096329675}
+{"state": "5*x - 27*Integral(x**2, x)", "y": 1.0}
+{"state": "-sin(x)*Integral(-Integral(7/x, x), x) + cos(x)*Integral(7/x, x) - 7*Integral(log(x)*sin(x), x) + Integral(cos(x)*Integral(-Integral(7/x, x), x), x)", "y": 7.366322214245816}
+{"state": "x*Derivative(8, x) - 5*cos(x) + 8*Derivative(x, x) + Derivative(7*x**3, x)", "y": 4.584962500721156}
+{"state": "x*Derivative(4, x) + 6*x + 4*Derivative(x, x)", "y": 2.321928094887362}
+{"state": "21*x**2 + Derivative(-5*sin(x), x) + 8", "y": 2.807354922057604}
+{"state": "Derivative(3, x) + Derivative(21*x, x)", "y": 3.321928094887362}
+{"state": "21*x**2 + x*Derivative(8, x) + 8*Derivative(x, x) + Derivative(-5*sin(x), x)", "y": 4.584962500721156}
+{"state": "-48*x*(log(x) - 1)*sin(x) + Integral(48*cos(x)/x, x) + 48*Integral(x*(log(x) - 1)*cos(x), x)", "y": 7.1799090900149345}
+{"state": "2*(2*x**3 + Integral(1, x) + 9*Integral(x, x))", "y": 2.584962500721156}
+{"state": "-2*exp(x) - 4*Derivative(x, x) + 7*Derivative(cos(x), x)", "y": 2.321928094887362}
+{"state": "x*Derivative(-5, x) + 14*x*Derivative(x, x) - 5*Derivative(x, x)", "y": 2.321928094887362}
+{"state": "(x*(x*Derivative(3, x) + 3*Derivative(x, x)) + 9*Derivative(x, x))/x", "y": 3.321928094887362}
+{"state": "sin(x**3 + 5)*Integral(-3*x**2, x) - Integral(3*x**2*cos(x**3 + 5)*Integral(-3*x**2, x), x)", "y": 6.894817763307944}
+{"state": "x*Derivative(-9, x) - 9*Derivative(x, x) + 3*Derivative(x**2, x)", "y": 3.700439718141092}
+{"state": "7*x**2 - Integral(-Integral(4, x)/x**2, x) + Integral(4, x)/x", "y": 5.754887502163468}
+{"state": "3*exp(x)*Derivative(x, x) + log(x)*Derivative(5, x) + 5*Derivative(log(x), x) + 10", "y": 3.807354922057604}
+{"state": "x**2*Integral(15, x) + Integral(3, x) - Integral(2*x*Integral(15, x), x)", "y": 5.523561956057013}
+{"state": "-7*cos(x)*Integral(-1/x, x) - 7*Integral(log(x)*sin(x), x) + 7*Integral(-sin(x)*Integral(-1/x, x), x)", "y": 5.954196310386875}
+{"state": "(x*log(x)*Derivative(13, x) + 13*Derivative(x, x))/x", "y": 2.584962500721156}
+{"state": "x**3*Derivative(7, x) + 21*x**2 + Derivative(5, x) + Derivative(8*x, x) + Derivative(-5*sin(x), x)", "y": 6.409390936137702}
+{"state": "4*x**2*Derivative(-x - 2, x) + (-x - 2)*(x**2*Derivative(4, x) + 4*Derivative(x**2, x))", "y": 6.832890014164741}
+{"state": "Subs(Integral(9*cos(u_)/2, u_), u_, 2*x)", "y": 2.321928094887362}
+{"state": "5*Integral(1/x, x) - 5*I*Integral(exp(-I*x), x)/2 + 5*I*Integral(exp(I*x), x)/2", "y": 5.727920454563199}
+{"state": "-35*x**4 + 7*Derivative(x**4, x) + Derivative(-8*sin(x), x) - 3", "y": 4.392317422778761}
+{"state": "7*Derivative(x**3, x) - 5*Derivative(sin(x), x) + 8", "y": 3.169925001442312}
+{"state": "x**3*Derivative(-8, x) - 8*sin(x) - 8*Derivative(x**3, x) + Derivative(4*exp(x), x)", "y": 5.672425341971495}
+{"state": "4*x**2*(Derivative(-2, x) + Derivative(-x, x)) + 4*(-x - 2)*Derivative(x**2, x)", "y": 6.3750394313469245}
+{"state": "x*Derivative(-4, x) + exp(x)*Derivative(-2, x) - 2*exp(x)*Derivative(x, x) - 4*Derivative(x, x) + Derivative(7*cos(x), x)", "y": 5.643856189774724}
