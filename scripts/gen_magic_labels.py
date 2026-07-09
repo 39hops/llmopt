@@ -25,49 +25,67 @@ from __future__ import annotations
 
 import argparse
 import json
-import signal
+import multiprocessing as mp
 from pathlib import Path
 
+import sympy as sp
+
 from llmopt.mathgen.problems import make_integrate
+from llmopt.search.derivation import State
 from llmopt.search.engine import solve
 from llmopt.search.features import featurize
 from llmopt.search.magic import is_dead
-from llmopt.search.derivation import State
+
+# sympy pathology #7 (measured, first label sweep): one L4 problem
+# hung 90 min in a loop that never delivered SIGALRM — signal-based
+# walls have a hole no Python-level fix closes. Hard isolation:
+# fork a worker per problem (sympy already imported, fork is cheap),
+# join with a deadline, SIGKILL on overrun. The kill also discards
+# any sympy cache corruption a pathological problem left behind.
+WORKER_WALL = 150  # seconds; > the engine's own budget comfortably
 
 
-class _Timeout(BaseException):
-    pass
+def _worker(level: int, seed: int, budget: int, q: "mp.Queue") -> None:
+    p = make_integrate(level, seed)
+    root = sp.Integral(p._expr, sp.Symbol("x"))
+    res = solve(root, budget=budget)
+    q.put({
+        "level": level, "seed": seed,
+        "integrand": sp.sstr(p._expr),
+        "features": featurize(root),
+        "solved": bool(res.solved),
+        "nodes": res.nodes,
+        "plies": len(res.state.history) if res.solved else 0,
+        "risch_dead": bool(is_dead(State(root))),
+    })
 
 
-def main(per_level: int, budget: int, out: Path) -> None:
-    signal.signal(signal.SIGALRM,
-                  lambda *_: (_ for _ in ()).throw(_Timeout()))
+def solve_isolated(level: int, seed: int, budget: int) -> "dict | None":
+    ctx = mp.get_context("fork")
+    q = ctx.Queue()
+    proc = ctx.Process(target=_worker, args=(level, seed, budget, q))
+    proc.start()
+    proc.join(WORKER_WALL)
+    if proc.is_alive():
+        proc.kill()
+        proc.join()
+        return None  # hung: no label, honest skip
+    try:
+        return q.get_nowait()
+    except Exception:
+        return None  # worker crashed before reporting
+
+
+def main(per_level: int, budget: int, out: Path, levels) -> None:
     rows = 0
     with out.open("w") as f:
-        for level in (1, 2, 3, 4):
+        for level in levels:
             for seed in range(per_level):
-                p = make_integrate(level, 700_000 + seed)  # disjoint stream
-                import sympy as sp
-                root = sp.Integral(p._expr, sp.Symbol("x"))
-                signal.alarm(120)
-                try:
-                    res = solve(root, budget=budget)
-                    dead = is_dead(State(root))
-                except _Timeout:
+                row = solve_isolated(level, 700_000 + seed, budget)
+                if row is None:
+                    print(f"L{level} seed {seed}: SKIP (hung/crashed)",
+                          flush=True)
                     continue
-                except Exception:
-                    continue
-                finally:
-                    signal.alarm(0)
-                row = {
-                    "level": level, "seed": 700_000 + seed,
-                    "integrand": sp.sstr(p._expr),
-                    "features": featurize(root),
-                    "solved": bool(res.solved),
-                    "nodes": res.nodes,
-                    "plies": len(res.state.history) if res.solved else 0,
-                    "risch_dead": bool(dead),
-                }
                 f.write(json.dumps(row) + "\n")
                 f.flush()
                 rows += 1
@@ -83,5 +101,7 @@ if __name__ == "__main__":
     ap.add_argument("--budget", type=int, default=200)
     ap.add_argument("--out", type=Path,
                     default=Path("data/magic_labels.jsonl"))
+    ap.add_argument("--levels", type=int, nargs="+",
+                    default=[1, 2, 3, 4, 5])
     a = ap.parse_args()
-    main(a.per_level, a.budget, a.out)
+    main(a.per_level, a.budget, a.out, a.levels)

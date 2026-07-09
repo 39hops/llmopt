@@ -505,6 +505,17 @@ elementary by construction (generator differentiates a drawn F), so
 this is deliberately the CONTINUOUS regime — the binary certificate
 already owns the far end.
 
+Entropy-bonus beam (same day, pre-registered, physics motivation:
+mimicking magic costs entropy, so spend the beam on diversity when
+the eval stalls): greedy max-min selection in the 20-feature space
+via a new `select_fn` hook in beam_search (default unchanged).
+**NULL, losing direction: plain 53/60 solved vs diverse 51/60 at
+int L4 width 4, and diverse spent MORE nodes (3067 vs 2692).** The
+annealing null generalizes from random noise to structured
+diversity: with a small beam and a sharp eval, every slot spent on
+"different" instead of "second-best" occasionally drops the true
+path and buys nothing measurable back.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

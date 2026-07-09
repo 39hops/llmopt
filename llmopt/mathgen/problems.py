@@ -129,6 +129,8 @@ def _atom(rng: random.Random, level: int):
 def _expression(rng: random.Random, level: int):
     if level <= 2:
         return sum(_atom(rng, level) for _ in range(rng.randint(2, 4)))
+    if level >= 5:
+        return _expression_l5(rng)
     if level >= 4:
         return _expression_l4(rng)
     kind = rng.choice(["product", "compose", "mixed"])
@@ -178,6 +180,44 @@ def _expression_l4(rng: random.Random):
     parts = [deep(), composed_product(), chained()]
     rng.shuffle(parts)
     return parts[0] + parts[1]
+
+
+def _expression_l5(rng: random.Random):
+    """Level 5 (2026-07-09, magic-estimator saturation at L4: 806/827
+    solved at budget 200). Antiderivative families the L4 shapes never
+    produce: cross-family products (exp*trig — the double-by-parts
+    trick), inverse trig, log powers, sqrt compositions, and sums of
+    two. Same wide-space discipline as L4 (contamination scar tissue)."""
+    def poly():
+        while True:
+            p = (rng.randint(1, 5) * X ** rng.randint(1, 3)
+                 + rng.randint(-4, 4) * X + rng.randint(0, 5))
+            if p.has(X):
+                return p
+
+    def cross():  # F = exp(ax)*trig(bx): integrand needs the cycle trick
+        a, b = rng.randint(1, 4), rng.randint(1, 4)
+        return (rng.randint(1, 9) * sp.exp(a * X)
+                * rng.choice([sp.sin, sp.cos])(b * X))
+
+    def inv_trig():
+        return rng.randint(1, 9) * rng.choice([sp.atan, sp.asin])(
+            rng.randint(1, 3) * X) + rng.randint(1, 5) * X
+
+    def log_power():
+        return (rng.randint(1, 9) * X ** rng.randint(1, 3)
+                * sp.log(rng.randint(1, 5) * X) ** rng.randint(1, 2))
+
+    def root():
+        return rng.randint(1, 9) * sp.sqrt(poly()) * poly()
+
+    kind = rng.choice(["cross", "inv_trig", "log_power", "root", "sum2"])
+    if kind == "sum2":
+        parts = [cross(), inv_trig(), log_power()]
+        rng.shuffle(parts)
+        return parts[0] + parts[1]
+    return {"cross": cross, "inv_trig": inv_trig,
+            "log_power": log_power, "root": root}[kind]()
 
 
 def _cexpr(rng: random.Random, level: int):
