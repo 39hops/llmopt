@@ -71,7 +71,10 @@ def solve_isolated(level: int, seed: int, budget: int) -> "dict | None":
         proc.join()
         return None  # hung: no label, honest skip
     try:
-        return q.get_nowait()
+        # NOT get_nowait: join() returning does not mean the child's
+        # put() has crossed the pipe into the parent's queue thread
+        # (measured: seeds that solved fine were mislabeled SKIP)
+        return q.get(timeout=10)
     except Exception:
         return None  # worker crashed before reporting
 
