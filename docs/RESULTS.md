@@ -467,6 +467,21 @@ move set was the bottleneck, exactly as the rung-4 autopsy predicted,
 and one imported literature move flipped the domain from
 "greedy unbeatable" to "search wins 30% of scoreable circuits."
 
+**Rung 7 (scale + prior, `scripts/bench_zx_r7.py`): the win holds and
+grows; the prior dies honestly.** Fresh seed streams, three scales:
+bf-extract (macro in move set) beats greedy 9/30 (q6/8 — the rung-6
+result replicated on a fresh stream), 4/20 (q6/16), 7/20 = 35%
+(q8/12, tier-2 verify), beating the bare pipeline at every scale.
+On q6/16 only 7/20 circuits survive pyzx's round-trip — but bf wins
+4 of those 7: denser phase sharing means BIGGER wins, and the limiter
+at scale is library fragility (InitAncilla crashes scale with gadget
+density), not search — a gadget-aware graph->circuit converter is the
+scoped unlock. The markov prior, re-harvested WITH the macro (prior
+hygiene observed), scored ZERO wins vs greedy and vs bf at all three
+scales: when one macro dominates descents, top-k bigram pruning
+discards exactly the exploration the wins come from. The 293-dict
+does not transplant to this domain; ledger entry, not a bug.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
