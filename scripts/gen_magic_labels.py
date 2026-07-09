@@ -82,12 +82,13 @@ def solve_isolated(level: int, seed: int, budget: int) -> "dict | None":
         return None  # worker crashed before reporting
 
 
-def main(per_level: int, budget: int, out: Path, levels) -> None:
+def main(per_level: int, budget: int, out: Path, levels,
+         seed_base: int = 700_000) -> None:
     rows = 0
     with out.open("w") as f:
         for level in levels:
             for seed in range(per_level):
-                row = solve_isolated(level, 700_000 + seed, budget)
+                row = solve_isolated(level, seed_base + seed, budget)
                 if row is None:
                     print(f"L{level} seed {seed}: SKIP (hung/crashed)",
                           flush=True)
@@ -109,5 +110,6 @@ if __name__ == "__main__":
                     default=Path("data/magic_labels.jsonl"))
     ap.add_argument("--levels", type=int, nargs="+",
                     default=[1, 2, 3, 4, 5])
+    ap.add_argument("--seed-base", type=int, default=700_000)
     a = ap.parse_args()
-    main(a.per_level, a.budget, a.out, a.levels)
+    main(a.per_level, a.budget, a.out, a.levels, a.seed_base)
