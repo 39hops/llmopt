@@ -78,12 +78,12 @@ def moves(state: ZXState, max_per_rule: int = 8):
                     out += 1
                     if out >= max_per_rule:
                         break
+    # unsafe_pivot_gadget / unsafe_pivot_boundary REMOVED: the
+    # "unsafe_" prefix is real — 17/30 verify-failures in the first
+    # race (the boundary oracle catching corrupted reductions).
+    # Legality-by-construction moves only.
     for name, check, apply2 in (
             ("pivot", rr.check_pivot, rr.pivot),
-            ("pivot_gadget", rr.check_pivot_gadget,
-             rr.unsafe_pivot_gadget),
-            ("pivot_boundary", rr.check_pivot_boundary,
-             rr.unsafe_pivot_boundary),
             ("hopf", rr.check_hopf, rr.hopf)):
         out = 0
         for e in list(g.edges())[:200]:
