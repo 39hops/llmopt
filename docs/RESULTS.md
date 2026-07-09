@@ -529,9 +529,16 @@ estimator** (`train_magic_llm.py`, 0.5B proposer trunk, same split):
 frozen 0.749 (loses), joint-LoRA 0.855 / AUC 0.983 — an exact TIE
 with the microsecond MLP at ~1e5x the inference cost. The NNUE
 thesis measured a third time: the hand features already carry the
-signal; capacity re-derives it, expensively. Road to rho 0.9+ is
-MORE LABELS (cheap: labels are compute). (b) rule-fire features:
-deprioritized by (a)'s verdict.
+signal; capacity re-derives it, expensively. (b) **rule-fire
+features cleared the bar Artin pushed to keep**: one bit per
+INT_RULE ("does it produce a candidate on the root"), appended to
+the 20 -> **rho 0.905, AUC 0.982** (from 0.855/0.975). The
+three-sided verdict: information was already present (a), capacity
+couldn't convert it (d), inductive bias did (b) — the net was
+spending its samples re-deriving rule applicability that one shallow
+probe of the rule set provides directly. Two-tier judge in practice:
+20-feature pass (~us) for bulk screening, +rule-fire pass (~ms) when
+the decision matters; both >> cheaper than search.
 
 Entropy-bonus beam (same day, pre-registered, physics motivation:
 mimicking magic costs entropy, so spend the beam on diversity when

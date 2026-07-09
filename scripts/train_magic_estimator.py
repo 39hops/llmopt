@@ -72,7 +72,7 @@ def main(labels: Path, epochs: int, out: Path) -> None:
     xtr = (xtr - mu) / sd
     xte = (xte - mu) / sd
 
-    model = Estimator()
+    model = Estimator(d_in=xtr.shape[1])
     opt = torch.optim.Adam(model.parameters(), lr=1e-3)
     bce = nn.BCEWithLogitsLoss()
     rng = random.Random("magic-est-0")
