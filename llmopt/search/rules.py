@@ -517,6 +517,25 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
         return []
     f, x = un
     f = sp.expand(f)
+    # Laurent tail: c*x^-n terms break Poly, but their antiderivative
+    # is KNOWN (powers and a log) — split it off analytically, ansatz
+    # the rest (found via the 356-record holdout: (x+1)e^x + 1/x).
+    laurent = sp.S.Zero
+    kept = []
+    for t in (f.args if isinstance(f, sp.Add) else (f,)):
+        c, rest_t = t.as_coeff_Mul()
+        pw = rest_t.as_base_exp() if not rest_t.has(sp.sin, sp.cos,
+                                                    sp.exp) else None
+        if (pw is not None and pw[0] == x and pw[1].is_Integer
+                and pw[1] < 0):
+            n = -int(pw[1])
+            laurent += (c * sp.log(x) if n == 1
+                        else c * x ** (1 - n) / (1 - n))
+        else:
+            kept.append(t)
+    f = sp.Add(*kept)
+    if f == 0:
+        return [laurent] if laurent != 0 else []
     # transcendental generators present in the integrand
     args: list[sp.Expr] = []
     for fn in f.atoms(sp.sin, sp.cos):
@@ -585,7 +604,7 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
     sol = sp.solve(eqs, cs, dict=True)
     if not sol:
         return []
-    a = cand.subs(sol[0]).subs({c: 0 for c in cs})
+    a = cand.subs(sol[0]).subs({c: 0 for c in cs}) + laurent
     return [a] if a != 0 else []
 
 
