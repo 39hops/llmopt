@@ -32,14 +32,34 @@ class _Timeout(BaseException):
     pass
 
 
+def _toffoli_manual(c: Circuit, a: int, b: int, t: int) -> None:
+    # standard 7-T decomposition, raw gates: pyzx 0.10's TOF gate
+    # object produces graphs that break extraction, teleport_reduce,
+    # AND the circuit<->graph round-trip (three library fragilities,
+    # measured) — the manual form round-trips cleanly
+    seq = [("HAD", (t,), None), ("CNOT", (b, t), None),
+           ("T", (t,), True), ("CNOT", (a, t), None),
+           ("T", (t,), False), ("CNOT", (b, t), None),
+           ("T", (t,), True), ("CNOT", (a, t), None),
+           ("T", (b,), False), ("T", (t,), False),
+           ("HAD", (t,), None), ("CNOT", (a, b), None),
+           ("T", (a,), False), ("T", (b,), True),
+           ("CNOT", (a, b), None)]
+    for gname, args, adj in seq:
+        if adj is None:
+            c.add_gate(gname, *args)
+        else:
+            c.add_gate(gname, *args, adjoint=adj)
+
+
 def structured_toffoli(qubits: int, n_tofs: int, rng: random.Random):
     c = Circuit(qubits)
     for _ in range(n_tofs):
         a, b, t = rng.sample(range(qubits), 3)
-        c.add_gate("TOF", a, b, t)
+        _toffoli_manual(c, a, b, t)
         if rng.random() < 0.5:
             c.add_gate("CNOT", rng.randrange(qubits), t)
-    return c.to_basic_gates()
+    return c
 
 
 def rule_of(label: str) -> str:
