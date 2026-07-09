@@ -307,8 +307,9 @@ q6/d120 CNOT+H+T circuits. With macro-greedy in the move set, search
 is guaranteed >= greedy and found nothing beyond it: full_reduce is
 near-optimal ON RANDOM CIRCUITS (consistent with the literature —
 the known gains live on STRUCTURED circuits: adders, Toffoli-heavy
-arithmetic). Rung 3: structured benchmark suite + markov prior over
-ZX rewrites.
+arithmetic). Confirmed at q8/d150 on independent hardware: 30/30 ties, 0
+verify-failures. Rung 3: structured benchmark suite + markov prior
+over ZX rewrites.
 
 ## 360/360 — THE BENCHMARK IS SOLVED
 
