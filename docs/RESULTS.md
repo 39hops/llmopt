@@ -308,8 +308,18 @@ is guaranteed >= greedy and found nothing beyond it: full_reduce is
 near-optimal ON RANDOM CIRCUITS (consistent with the literature —
 the known gains live on STRUCTURED circuits: adders, Toffoli-heavy
 arithmetic). Confirmed at q8/d150 on independent hardware: 30/30 ties, 0
-verify-failures. Rung 3: structured benchmark suite + markov prior
-over ZX rewrites.
+verify-failures. Rung 3 (structured Toffoli networks + bigram prior):
+both search arms tie greedy where verifiable — and the deeper
+finding: **T-count of an unextractable diagram is fiction.** Half
+the race's search products failed circuit extraction (safe rewrites
+preserve SEMANTICS but can destroy GFLOW, the property that lets a
+diagram become a circuit again), so their tempting low T-counts
+correspond to no circuit. The harvest's "T 35 -> 15 descents" were
+partly mirages the boundary oracle refused to certify. Domain law
+learned: the eval must be extractable-T-count (score tcount of the
+EXTRACTED circuit), or the move set must be gflow-preserving — the
+ZX analog of "score weights by running them." Rung 4 = gflow-aware
+engine; the chassis survives, the eval was wrong.
 
 ## 360/360 — THE BENCHMARK IS SOLVED
 
