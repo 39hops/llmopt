@@ -76,18 +76,72 @@ def moves(state: ZXState, max_per_rule: int = 8):
                     out += 1
                     if out >= max_per_rule:
                         break
+    for name, check, apply2 in (
+            ("pivot", rr.check_pivot, rr.pivot),
+            ("pivot_gadget", rr.check_pivot_gadget,
+             rr.unsafe_pivot_gadget),
+            ("pivot_boundary", rr.check_pivot_boundary,
+             rr.unsafe_pivot_boundary),
+            ("hopf", rr.check_hopf, rr.hopf)):
+        out = 0
+        for e in list(g.edges())[:200]:
+            v, w = g.edge_st(e)
+            if check(g, v, w):
+                g2 = g.copy()
+                try:
+                    ok = apply2(g2, v, w)
+                except Exception:
+                    continue
+                if ok:
+                    lab = f"{name}@{v},{w}"
+                    yield lab, ZXState(g2, state.plies + 1,
+                                       state.history + (lab,))
+                    out += 1
+                    if out >= max_per_rule:
+                        break
     out = 0
-    for e in list(g.edges())[:200]:
-        v, w = g.edge_st(e)
-        if rr.check_pivot(g, v, w):
+    for v in verts:
+        if rr.check_copy(g, v):
             g2 = g.copy()
-            if rr.pivot(g2, v, w):
-                lab = f"pivot@{v},{w}"
+            try:
+                ok = rr.copy(g2, v)
+            except Exception:
+                continue
+            if ok:
+                lab = f"copy@{v}"
                 yield lab, ZXState(g2, state.plies + 1,
                                    state.history + (lab,))
                 out += 1
                 if out >= max_per_rule:
                     break
+
+
+def macro_moves(state: ZXState):
+    """Whole-graph macro moves (the algebra-moves analog): pyzx's
+    fused simplifiers as single plies — including full_reduce itself
+    as a move, which lets the search RESTART greedy from intermediate
+    shapes it steered to (the macro-greedy trick)."""
+    g = state.g
+
+    def try_macro(name, fn):
+        g2 = g.copy()
+        try:
+            fn(g2)
+        except Exception:
+            return None
+        if ZXState(g2).key() == state.key():
+            return None
+        return name, ZXState(g2, state.plies + 1, state.history + (name,))
+
+    for name, fn in (
+            ("M:gadget_merge", rr.merge_phase_gadgets_for_simp),
+            ("M:gadget_poly", rr.gadgets_phasepoly_for_simp),
+            ("M:full_reduce", zx.full_reduce),
+            ("M:clifford_simp",
+             lambda gg: zx.simplify.clifford_simp(gg, quiet=True))):
+        out = try_macro(name, fn)
+        if out is not None:
+            yield out
 
 
 def zx_eval(state: ZXState) -> tuple:
@@ -102,9 +156,11 @@ def best_first_zx(g0, budget: int = 300, max_per_rule: int = 8):
     best = start
     pq = [(zx_eval(start), next(tie), start)]
     visited, nodes = {start.key()}, 1
+    import itertools as _it
     while pq and nodes < budget:
         _, _, s = heapq.heappop(pq)
-        for _, child in moves(s, max_per_rule=max_per_rule):
+        for _, child in _it.chain(moves(s, max_per_rule=max_per_rule),
+                                  macro_moves(s)):
             k = child.key()
             if k in visited:
                 continue
