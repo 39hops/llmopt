@@ -21,7 +21,9 @@ from dataclasses import dataclass, field
 from fractions import Fraction
 
 import pyzx as zx
+from pyzx import optimize
 from pyzx import rewrite_rules as rr
+from pyzx.circuit import Circuit
 
 
 def tcount(g) -> int:
@@ -118,6 +120,27 @@ def moves(state: ZXState, max_per_rule: int = 8):
                     break
 
 
+def _phase_teleport_macro(g) -> None:
+    """Rung-5 winner as a macro move: teleport_reduce moves phases
+    into a shared polynomial, phase_block_optimize merges them
+    (TODD-class), and the optimized circuit re-enters graph form.
+    First machinery to beat greedy full_reduce (7/30 wins vs bar 6,
+    charged a loss for every crash — bench_zx_r5.py). Mutates g in
+    place; raising is fine (try_macro swallows it): pyzx 0.10's
+    graph->circuit round-trip crashes on ~55% of structured nets
+    (InitAncilla label bug — the ancillae are load-bearing, so no
+    stripping), and a crash simply means "no move here"."""
+    zx.teleport_reduce(g)
+    c = Circuit.from_graph(g).split_phase_gates()
+    if any(type(gate).__name__ == "InitAncilla" for gate in c.gates):
+        raise ValueError("round-trip needs ancillae (pyzx 0.10 bug)")
+    c = optimize.phase_block_optimize(c)
+    g2 = c.to_graph()
+    zx.simplify.to_gh(g2)
+    g.__dict__.clear()
+    g.__dict__.update(g2.__dict__)
+
+
 def macro_moves(state: ZXState):
     """Whole-graph macro moves (the algebra-moves analog): pyzx's
     fused simplifiers as single plies — including full_reduce itself
@@ -139,6 +162,7 @@ def macro_moves(state: ZXState):
     # exponential in gadget count — 24GB inside one call on a
     # mid-search state (fine on roots, lethal downstream)
     for name, fn in (
+            ("M:phase_teleport", _phase_teleport_macro),
             ("M:gadget_merge", rr.merge_phase_gadgets_for_simp),
             ("M:full_reduce", zx.full_reduce),
             ("M:clifford_simp",

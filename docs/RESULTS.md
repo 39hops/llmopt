@@ -442,6 +442,31 @@ unextractable-T fiction); and the honest conclusion that beating
 greedy here needs the literature's heavier machinery (phase-poly/
 TODD-class moves) — future work, cleanly scoped.
 
+**Rungs 5-6 (2026-07-09): the heavier machinery arrived and it
+wins.** Rung 5 raced pyzx's own phase-polynomial pipeline
+(teleport_reduce -> phase_block_optimize, TODD-class merging) against
+greedy full_reduce on the structured Toffoli nets
+(`scripts/bench_zx_r5.py`): **7/30 verified wins vs pre-registered
+bar 6 — the first machinery all chapter to beat full_reduce** — and
+that's with every pyzx crash charged to the pipeline as a loss
+(17/30 rows crash: `Circuit.from_graph` realizes leftover phase
+gadgets as load-bearing InitAncilla gates whose labels break
+`to_graph`, pyzx-0.10 fragility; a 4th was found during the autopsy —
+`extract_circuit` fails outright on some plain full-reduced circuit
+graphs, all five extractors, "No extractable vertex found"). The
+pipeline is now a macro move, `M:phase_teleport` in
+`zx_engine.macro_moves` (crash => no move, legality-by-construction
+intact). Rung 6 (`scripts/bench_zx_r6.py`, same seed stream as rung
+5): does search AROUND the macro beat the bare pipeline?
+**Composition bar passed: bf-extract 9/30 wins vs greedy and 7/30
+wins vs the pipeline itself (bar 6)** — unlike magic/lazy in the
+sympy domain, this macro composes with search (search reaches
+phase-teleport states the one-shot pipeline can't, e.g. row 1:
+greedy 32, pipeline 31, search 28). Chapter verdict upgraded: the
+move set was the bottleneck, exactly as the rung-4 autopsy predicted,
+and one imported literature move flipped the domain from
+"greedy unbeatable" to "search wins 30% of scoreable circuits."
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
