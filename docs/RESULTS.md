@@ -288,6 +288,19 @@ unchanged from the beam era: the GPU buys confidence, not choice —
 and on this problem distribution the free bigram dict remains the
 engineering pick (`engine.solve()` default stands).
 
+## THE RECORD: 356/360 (98.9%) — the full stack
+
+Every proven component in one search for the first time
+(`scripts/bench_record.py`): best-first frontier + NNUE h + markov
+ranking + LLM entropy-gated k (T=0.1) + Liouville magic pruning.
+**356/360 — perfect on 20 of 24 cells** (all of diff, all of int
+L1-2 at every budget); the only holdout is int L3 at 14/15 across
+all four budgets (one stubborn problem, budget-invariant — a
+capability miss, not a search miss). Lineage on identical seeds:
+265 (day-1 full enumeration) -> 300 -> 316 -> 328 -> 343 -> 349 ->
+**356**. Each arrow is one measured component; the stack is the
+paper.
+
 ## The hybrid record: 349/360 (96.9%), honestly decomposed
 
 Artin's question ("could the dict rank while the 0.5B gates?") was the
