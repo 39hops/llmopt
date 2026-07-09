@@ -167,6 +167,19 @@ monster child (successors + verify_edge), not keeping it — pruning at
 queue insertion is too late. Converting the timeouts needs time-boxed
 rule application inside successors (or per-op sympy budgets), a
 plumbing change banked for the optimization thread.
+The rule basis, measured (`scripts/bench_rule_basis.py`; Artin's
+Toffoli-universality question — what is the minimal gate set?):
+leave-one-out ablation of all 12 INT rules from the champion, paired
+arms. Generators: **i_power (-5), i_linear_basis (-2, all at L4),
+i_usub (-2), i_const (-1)**. Dead gates (zero cost to remove):
+i_parts, i_table, i_sum, i_const_factor, i_apart, i_cyclic,
+i_unprod, i_ansatz_exp — including by-parts, the textbook's crown
+jewel, fully subsumed by the linear solve. The 13-rule library rests
+on FOUR generators: power, substitution, the linear-algebra move,
+constants. Caveats: n=10, budget 200, our generator's distribution
+(i_apart's zero means rational integrands didn't appear in the
+seeds, not that partial fractions is globally dead). The
+subsumption phenomenon, now a theorem-shaped table.
 The magic detector WINS (`scripts/bench_magic.py`; Artin's "magic for
 quantum chem, applied to math" -> Liouville 1835 as integration's
 Gottesman-Knill): sympy's Risch proves integrands non-elementary in
