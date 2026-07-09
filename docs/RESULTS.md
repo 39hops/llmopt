@@ -351,6 +351,13 @@ the rung-1 diff rules finish — the rungs composing in one derivation.
 (became i_linear_basis — the "rule mining" prediction was exactly
 right, and it was the good outcome).]
 
+Symmetry-compressed ansatz (banked 2026-07-08, SCDF's logic minus the
+chemistry): parity of the integrand halves i_linear_basis's unknowns
+(odd f -> even F -> even monomials only); low fire-rate on the current
+generator's random constants — wants a symmetric problem family.
+Risch-as-solver (banked): sympy's Risch is a partial DECISION
+procedure — deeper integration could construct antiderivatives, not
+just certify death (the magic detector's constructive twin).
 Quantum-circuit T-count minimization (banked 2026-07-07, physics
 night): states = circuits, moves = gate-rewrite identities, oracle =
 stabilizer-tableau equivalence (GF(2), poly-time — CHEAPER than
