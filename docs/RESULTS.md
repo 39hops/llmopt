@@ -516,6 +516,23 @@ diversity: with a small beam and a sharp eval, every slot spent on
 "different" instead of "second-best" occasionally drops the true
 path and buys nothing measurable back.
 
+## Middle-layer value probe (2026-07-09, global-workspace paper test)
+
+The workspace paper locates flexible-reasoning representations in
+middle layers (~38-92% depth), last layers collapsing toward output.
+Our value head always read the LAST hidden state. Frozen-trunk probe
+sweep on the 0.5B proposer (24 layers, same 4500 labels, same split;
+`train_value_head.py --layer`): **L8 +0.828, L12 +0.854, L16 +0.851,
+L20 +0.873, last +0.858 — peak at 83% depth, dip at the output
+layer**, qualitatively the paper's geography at 1/1000th scale.
+Caveat: +0.015 over last-layer, single split, no error bars — needs a
+rerun before it's a claim. Banked follow-up: joint value-LoRA (v3,
++0.980) retrained at layer 20 — if the probe advantage survives
+joint training, the record config's eval upgrades for free.
+Ops note from the same run: torch's _native eager router JITs triton
+kernels WITHOUT torch.compile; on the C-compiler-less WSL box only
+TORCH_DISABLE_NATIVE_JIT=1 stops it (now in CLAUDE.md).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
