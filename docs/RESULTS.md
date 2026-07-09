@@ -521,6 +521,18 @@ with level) but the net beats it 2.5x. L5's unsolved 58% is the next
 rule-mining target (the limits -> l_hopital, holdout -> Laurent
 pattern).
 
+Accuracy ceiling, tested three ways (same day): (a) **Bayes floor of
+the feature set**: 907/1243 rows collide with another problem's exact
+feature vector, yet within-collision cost variance is 0.9% of total —
+R^2 ceiling ~0.99, features are NOT the bottleneck. (d) **LLM-trunk
+estimator** (`train_magic_llm.py`, 0.5B proposer trunk, same split):
+frozen 0.749 (loses), joint-LoRA 0.855 / AUC 0.983 — an exact TIE
+with the microsecond MLP at ~1e5x the inference cost. The NNUE
+thesis measured a third time: the hand features already carry the
+signal; capacity re-derives it, expensively. Road to rho 0.9+ is
+MORE LABELS (cheap: labels are compute). (b) rule-fire features:
+deprioritized by (a)'s verdict.
+
 Entropy-bonus beam (same day, pre-registered, physics motivation:
 mimicking magic costs entropy, so spend the beam on diversity when
 the eval stalls): greedy max-min selection in the 20-feature space
