@@ -21,6 +21,12 @@ implementations. See README for the full inventory and measured numbers.
   possible bodies). Widen the generator space before trusting a split.
 - Benchmarks report honest losses too (Metal attention_decode losing to
   GEMV, first paged-attention cut losing to gather+SDPA). Keep that.
+- **Any code path calling `make_integrate` on L4/L5 seeds needs fork
+  isolation** (`gen_magic_labels.solve_isolated` pattern: fork, join
+  with deadline, SIGKILL). Its `simplify(diff(F))` hangs in loops that
+  never deliver SIGALRM (sympy pathology #7) — bit four separate call
+  sites in one day (labeling, autopsy probe, guided ordering,
+  budget bench) before this rule was written.
 - **Never score weights by weight distance.** The same function lives at
   many weight arrangements (neuron permutations, rescalings), so
   matching numbers is the wrong target for anything that predicts,

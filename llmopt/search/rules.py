@@ -184,14 +184,25 @@ def i_inverse_trig(node: sp.Integral) -> list[sp.Expr]:
         return []
     f, x = un
     num, den = sp.fraction(sp.cancel(sp.together(f)))
+    poly_part = sp.S.Zero
     if num.has(x):
-        return []
+        # improper rational (the residue of the first L5 rerun: all 20
+        # still-failing rational shapes were (ax^2+c)/(bx^2+d)) —
+        # divide out the polynomial part, integrate it directly
+        if not (num.is_polynomial(x) and den.is_polynomial(x)):
+            return []
+        quo, rem = sp.div(num, den, x)
+        if rem.has(x) or quo == 0:
+            return []
+        poly_part = sp.integrate(quo, x)  # plain polynomial: safe
+        num = rem
     # rational form: den = a*x^2 + b
     p = den.as_poly(x)
     if p is not None and p.degree() == 2:
         a, m, b = p.all_coeffs()
         if m == 0 and a.is_positive and b.is_positive:
-            return [num / sp.sqrt(a * b) * sp.atan(x * sp.sqrt(a / b))]
+            return [poly_part
+                    + num / sp.sqrt(a * b) * sp.atan(x * sp.sqrt(a / b))]
     # sqrt form: den = sqrt(b - a*x^2) (possibly times a constant)
     co, rest = den.as_coeff_Mul()
     if (isinstance(rest, sp.Pow) and rest.exp == sp.Rational(1, 2)
