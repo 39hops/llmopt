@@ -172,6 +172,78 @@ def i_const(node: sp.Integral) -> list[sp.Expr]:
     return [f * x] if not f.has(x) else []
 
 
+def i_inverse_trig(node: sp.Integral) -> list[sp.Expr]:
+    """Inverse-trig antiderivatives (L5 autopsy 2026-07-09: the
+    engine solved 0/23 of these — no rule PRODUCED atan/asin, the
+    l_hopital-class gap). Two closed forms:
+      c/(a*x^2 + b)      -> c/sqrt(a*b) * atan(x*sqrt(a/b))   (a,b > 0)
+      c/sqrt(b - a*x^2)  -> c/sqrt(a)  * asin(x*sqrt(a/b))    (a,b > 0)
+    Candidates only; the edge verifier owns soundness."""
+    un = _unpack_int(node)
+    if un is None:
+        return []
+    f, x = un
+    num, den = sp.fraction(sp.cancel(sp.together(f)))
+    if num.has(x):
+        return []
+    # rational form: den = a*x^2 + b
+    p = den.as_poly(x)
+    if p is not None and p.degree() == 2:
+        a, m, b = p.all_coeffs()
+        if m == 0 and a.is_positive and b.is_positive:
+            return [num / sp.sqrt(a * b) * sp.atan(x * sp.sqrt(a / b))]
+    # sqrt form: den = sqrt(b - a*x^2) (possibly times a constant)
+    co, rest = den.as_coeff_Mul()
+    if (isinstance(rest, sp.Pow) and rest.exp == sp.Rational(1, 2)
+            and rest.base.is_polynomial(x)):
+        q = rest.base.as_poly(x)
+        if q is not None and q.degree() == 2:
+            na, nm, b = q.all_coeffs()
+            a = -na
+            if nm == 0 and a.is_positive and b.is_positive:
+                return [num / (co * sp.sqrt(a))
+                        * sp.asin(x * sp.sqrt(a / b))]
+    return []
+
+
+def i_sqrt_basis(node: sp.Integral) -> list[sp.Expr]:
+    """sqrt-of-poly ansatz (L5 autopsy: root family 14/94 solved —
+    the biggest gap). If f*sqrt(P) is a polynomial, the answer lives
+    in A(x)*sqrt(P): d/dx[A*sqrt(P)] = (2A'P + A*P')/(2*sqrt(P)), so
+    equate 2A'P + A*P' = 2*f*sqrt(P) in the poly ring and solve for
+    A's coefficients — i_linear_basis's move with a radical basis."""
+    un = _unpack_int(node)
+    if un is None:
+        return []
+    f, x = un
+    roots = [r for r in f.atoms(sp.Pow)
+             if abs(r.exp) == sp.Rational(1, 2)
+             and r.base.is_polynomial(x) and r.base.has(x)]
+    if not roots:
+        return []
+    P = max((r.base for r in roots), key=sp.count_ops)
+    h = sp.cancel(sp.expand(f * sp.sqrt(P)))
+    if not h.is_polynomial(x) or h.has(sp.sin, sp.cos, sp.exp, sp.log):
+        return []
+    h = sp.Poly(sp.expand(h), x)
+    Pp = sp.Poly(P, x)
+    degA = max(h.degree() - Pp.degree() + 1, 0) + 1
+    if degA > 8:
+        return []
+    cs = sp.symbols(f"s0:{degA + 1}", cls=sp.Dummy)
+    A = sp.Add(*(c * x**j for j, c in enumerate(cs)))
+    resid = sp.Poly(sp.expand(
+        2 * sp.diff(A, x) * P + A * sp.diff(P, x) - 2 * h.as_expr()), x)
+    eqs = resid.coeffs()
+    if any(not e.has(*cs) for e in eqs if e != 0):
+        return []
+    sol = sp.solve(eqs, cs, dict=True)
+    if not sol:
+        return []
+    a = (A.subs(sol[0]).subs({c: 0 for c in cs})) * sp.sqrt(P)
+    return [a] if a != 0 else []
+
+
 def i_power(node: sp.Integral) -> list[sp.Expr]:
     u = _unpack_int(node)
     if u is None:
@@ -615,6 +687,8 @@ INT_RULES: list[tuple[str, IntRule]] = [
     ("i_unprod", i_unprod),
     ("i_ansatz_exp", i_ansatz_exp),
     ("i_linear_basis", i_linear_basis),
+    ("i_inverse_trig", i_inverse_trig),
+    ("i_sqrt_basis", i_sqrt_basis),
     ("i_power", i_power),
     ("i_sum", i_sum),
     ("i_const_factor", i_const_factor),
