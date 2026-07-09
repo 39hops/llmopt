@@ -60,7 +60,8 @@ def gen_labels(per_cell: int, cap: int) -> None:
 
 
 def train_head(epochs: int, batch: int,
-               unfreeze_lora: bool = False, layer: int = -1) -> None:
+               unfreeze_lora: bool = False, layer: int = -1,
+               split_seed: int = 0) -> None:
     # layer: which hidden layer the head reads. -1 = last (the v1-v3
     # probe point). Global-workspace paper (2026-07-09): flexible-
     # reasoning representations live in MIDDLE layers (~38-92% depth);
@@ -122,7 +123,9 @@ def train_head(epochs: int, batch: int,
         return h[torch.arange(h.shape[0]), idx].to(torch.float32)
 
     order = list(range(len(rows)))
-    rng = random.Random("value-head-0")
+    rng = random.Random(f"value-head-{split_seed}")
+    if split_seed:  # 0 = historical split (v1-v3 comparability)
+        rng.shuffle(order)
     n_eval = max(1, len(rows) // 10)
     eval_idx = set(order[-n_eval:])
     train_idx = [i for i in order if i not in eval_idx]
@@ -176,10 +179,11 @@ if __name__ == "__main__":
     ap.add_argument("--epochs", type=int, default=10)
     ap.add_argument("--batch", type=int, default=32)
     ap.add_argument("--layer", type=int, default=-1)
+    ap.add_argument("--split-seed", type=int, default=0)
     a = ap.parse_args()
     signal.signal(signal.SIGALRM, _alarm)
     if a.gen_labels:
         gen_labels(a.per_cell, a.cap)
     if a.train:
         train_head(a.epochs, a.batch, unfreeze_lora=a.unfreeze_lora,
-                   layer=a.layer)
+                   layer=a.layer, split_seed=a.split_seed)
