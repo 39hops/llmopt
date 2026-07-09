@@ -144,7 +144,12 @@ inference bill. Full arc: frozen trunk +0.859/loses -> joint-trained
 trunk +0.966/wins-at-the-frontier. The strategic dividend over hand
 features: a learned representation improves with data and can
 transfer across kinds (proofs, ODEs), where fixed features cannot
-follow.
+follow. v3 (4500 labels, 3x data, same recipe): rho climbs to
+**+0.980** — the representation keeps improving with automated
+labels — but the frontier holds at 10 v 9 (fused still pays 5
+timeouts to NNUE's 3). Judgment is no longer the limiter; the
+inference bill is. Next lever: cheaper evaluation (batching,
+hidden-state caching, distill-back), not more data.
 Lazy expansion WINS the timeout campaign (`scripts/bench_lazy.py`):
 the prior ranks by rule NAME — known before any sympy work — so
 applying rules in prior order and stopping at k children buys the
