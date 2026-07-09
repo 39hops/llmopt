@@ -51,11 +51,36 @@ def main(n_per: int, flat: int) -> None:
                   lambda *_: (_ for _ in ()).throw(_Timeout()))
     model, mu, sd = load_estimator()
     x = sp.Symbol("x")
+    # make_integrate hangs beyond SIGALRM on some L4/L5 draws
+    # (pathology #7, FOURTH call site) — draw in fork-isolated chunks,
+    # ship integrand strings back, drop hung chunks
+    import multiprocessing as mp
+    ctx = mp.get_context("fork")
+
+    def _draw(chunk, q):
+        out = []
+        for level, seed in chunk:
+            p = make_integrate(level, seed)
+            out.append((level, sp.sstr(p._expr)))
+        q.put(out)
+
+    jobs = [(level, 900_000 + i) for level in (3, 4, 5)
+            for i in range(n_per)]
     probs = []
-    for level in (3, 4, 5):
-        for i in range(n_per):
-            p = make_integrate(level, 900_000 + i)  # fresh stream
-            probs.append((level, sp.Integral(p._expr, x)))
+    for i in range(0, len(jobs), 20):
+        q = ctx.Queue()
+        pr = ctx.Process(target=_draw, args=(jobs[i:i + 20], q))
+        pr.start()
+        pr.join(120)
+        if pr.is_alive():
+            pr.kill()
+            pr.join()
+            continue
+        try:
+            probs += [(lv, sp.Integral(sp.sympify(s), x))
+                      for lv, s in q.get(timeout=10)]
+        except Exception:
+            continue
     feats = torch.tensor([featurize(r) for _, r in probs],
                          dtype=torch.float32)
     with torch.no_grad():
