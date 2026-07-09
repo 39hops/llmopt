@@ -135,9 +135,11 @@ def macro_moves(state: ZXState):
             return None
         return name, ZXState(g2, state.plies + 1, state.history + (name,))
 
+    # M:gadget_poly REMOVED: phase-polynomial resynthesis is
+    # exponential in gadget count — 24GB inside one call on a
+    # mid-search state (fine on roots, lethal downstream)
     for name, fn in (
             ("M:gadget_merge", rr.merge_phase_gadgets_for_simp),
-            ("M:gadget_poly", rr.gadgets_phasepoly_for_simp),
             ("M:full_reduce", zx.full_reduce),
             ("M:clifford_simp",
              lambda gg: zx.simplify.clifford_simp(gg, quiet=True))):
@@ -150,12 +152,19 @@ def zx_eval(state: ZXState) -> tuple:
     return (tcount(state.g), state.g.num_vertices())
 
 
-def best_first_zx(g0, budget: int = 300, max_per_rule: int = 8):
+def best_first_zx(g0, budget: int = 300, max_per_rule: int = 8,
+                  edge_cap_factor: float = 3.0):
     """Minimize T-count by best-first over ZX rewrites. Returns the
-    best state seen (search never 'solves'; it descends)."""
+    best state seen (search never 'solves'; it descends).
+
+    edge_cap: lcomp/pivot chains DENSIFY quadratically (measured:
+    24GB resident at budget 500 on a q6 d120 circuit) — children
+    fatter than edge_cap are refused at insertion. Unlike the sympy
+    size-cap null, graph size is free to read pre-payment."""
     tie = itertools.count()
     start = ZXState(g0.copy())
     best = start
+    edge_cap = max(300, int(edge_cap_factor * g0.num_edges()))
     pq = [(zx_eval(start), next(tie), start)]
     visited, nodes = {start.key()}, 1
     import itertools as _it
@@ -167,6 +176,8 @@ def best_first_zx(g0, budget: int = 300, max_per_rule: int = 8):
             if k in visited:
                 continue
             visited.add(k)
+            if child.g.num_edges() > edge_cap:
+                continue  # densification bomb: refuse fat children
             nodes += 1
             if zx_eval(child) < zx_eval(best):
                 best = child
@@ -177,10 +188,18 @@ def best_first_zx(g0, budget: int = 300, max_per_rule: int = 8):
 
 
 def verify_equal(c_or_g1, g2, qubits: int) -> bool:
-    """Boundary oracle: exact tensor equality for small circuits."""
+    """Boundary oracle: exact tensor equality for small circuits.
+
+    EXTRACT a circuit from the graph first: contracting an arbitrary
+    ZX graph is treewidth-exponential (measured: 24GB on a q6 search
+    product), while circuit tensors contract sequentially (cheap).
+    Extraction failure -> verification failure (safe direction)."""
     if qubits > 8:
         return True  # tier-2: trust pyzx rule soundness (documented)
     try:
-        return bool(zx.compare_tensors(c_or_g1, g2))
+        g = g2.copy()
+        zx.full_reduce(g)  # extraction needs graph-like form
+        c2 = zx.extract_circuit(g)
+        return bool(zx.compare_tensors(c_or_g1, c2))
     except Exception:
         return False
