@@ -318,8 +318,18 @@ correspond to no circuit. The harvest's "T 35 -> 15 descents" were
 partly mirages the boundary oracle refused to certify. Domain law
 learned: the eval must be extractable-T-count (score tcount of the
 EXTRACTED circuit), or the move set must be gflow-preserving — the
-ZX analog of "score weights by running them." Rung 4 = gflow-aware
-engine; the chassis survives, the eval was wrong.
+ZX analog of "score weights by running them." Rung 4 (eval-by-extraction: score the EXTRACTED
+circuit's T-count, unextractable = penalty): first race with ZERO
+verify-failures — every number a real circuit count — and the honest
+final verdict: 0 wins, 9 ties, 11 timeout-losses. full_reduce keeps
+the domain crown at our budgets; extraction-per-node economics bind
+before search depth pays (the timeout story, third domain). The
+chapter's yield: a sound, verified ZX search chassis; four library/
+domain pathologies documented (TOF gate object breaks extraction/
+teleport/round-trip; unsafe_* moves corrupt; densification bombs;
+unextractable-T fiction); and the honest conclusion that beating
+greedy here needs the literature's heavier machinery (phase-poly/
+TODD-class moves) — future work, cleanly scoped.
 
 ## 360/360 — THE BENCHMARK IS SOLVED
 
