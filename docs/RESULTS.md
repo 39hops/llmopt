@@ -525,8 +525,10 @@ sweep on the 0.5B proposer (24 layers, same 4500 labels, same split;
 `train_value_head.py --layer`): **L8 +0.828, L12 +0.854, L16 +0.851,
 L20 +0.873, last +0.858 — peak at 83% depth, dip at the output
 layer**, qualitatively the paper's geography at 1/1000th scale.
-Caveat: +0.015 over last-layer, single split, no error bars — needs a
-rerun before it's a claim. Banked follow-up: joint value-LoRA (v3,
+REPLICATED on two fresh splits (`--split-seed`): L20 +0.866 vs last
++0.785, and L20 +0.818 vs last +0.773 — L20 wins all three splits,
+mean gap ~+0.05, and the original +0.015 was the SMALLEST of the
+three. Measured, not a caveat. Banked follow-up: joint value-LoRA (v3,
 +0.980) retrained at layer 20 — if the probe advantage survives
 joint training, the record config's eval upgrades for free.
 Ops note from the same run: torch's _native eager router JITs triton
