@@ -505,6 +505,22 @@ elementary by construction (generator differentiates a drawn F), so
 this is deliberately the CONTINUOUS regime — the binary certificate
 already owns the far end.
 
+Full-range v2 (same day): mathgen gained L5 (cross-family exp*trig
+needing the double-by-parts cycle, inverse trig, log powers,
+sqrt-of-poly products, sums of two — `_expression_l5`), and label
+generation gained subprocess isolation (fork + 300s hard kill; the
+SKIP autopsy found FOUR mechanisms under one label — a queue race
+where join() != delivered, the make_integrate simplify hang, honest
+slow negatives that a 150s wall was silently eating, and real hangs).
+Engine solve-rate ladder at budget 200: **L1 100%, L2 100%, L3 96%,
+L4 79%, L5 42%** — L5 is the new frontier band. Retrained estimator
+(1243 rows, 208 negatives): **held-out rho 0.855 (was 0.822),
+solved-AUC 0.975 now on ~104 held-out negatives** (the first run's
+AUC rode on 10); count_ops baseline rose to 0.342 (size correlates
+with level) but the net beats it 2.5x. L5's unsolved 58% is the next
+rule-mining target (the limits -> l_hopital, holdout -> Laurent
+pattern).
+
 Entropy-bonus beam (same day, pre-registered, physics motivation:
 mimicking magic costs entropy, so spend the beam on diversity when
 the eval stalls): greedy max-min selection in the 20-feature space
