@@ -24,6 +24,70 @@ from llmopt.search.derivation import SearchResult, State, beam_search
 from llmopt.search.proposer import entropy_k, make_scoring_proposer
 
 _PRIOR_PATH = Path(__file__).resolve().parents[2] / "checkpoints" / "markov_prior.json"
+_POLICY_PATH = Path(__file__).resolve().parents[2] / "checkpoints" / "syndrome_policy.pt"
+
+
+class SyndromePolicy:
+    """State-aware rule ranker (the qLDPC framing, production-grade):
+    rank kids by a net reading the state's features + rule-fire
+    syndrome bits (free — the search already evaluated every rule to
+    produce kids) + previous-rule one-hot. Adopted 2026-07-10 after
+    the brain races: beats markov 98v96 at -36% wall on fresh mixed,
+    ties fresh L5 (76/76), best pure arm on the L5-heavy router race
+    (124 v 121), and solves the nested-trig class markov cannot reach
+    at any propose_k. Trained by imitation + 2 DAgger rounds (round 3
+    checkpoint; round 4's pure-L5 mix REGRESSED — see RESULTS)."""
+
+    def __init__(self, net, payload):
+        self.net = net
+        self.payload = payload
+
+    @classmethod
+    def load(cls, path: Path = _POLICY_PATH) -> "SyndromePolicy":
+        import torch
+        p = torch.load(path, weights_only=False)
+        net = torch.nn.Sequential(
+            torch.nn.Linear(len(p["mu"]), 96), torch.nn.ReLU(),
+            torch.nn.Linear(96, 96), torch.nn.ReLU(),
+            torch.nn.Linear(96, len(p["vocab"])))
+        net.load_state_dict(p["state_dict"])
+        net.eval()
+        return cls(net, p)
+
+    def proposer(self):
+        import torch
+
+        from llmopt.search.features import featurize
+        from llmopt.search.rules import INT_RULES
+
+        p = self.payload
+        vi = {r: i for i, r in enumerate(p["vocab"])}
+        pidx = {r: i for i, r in enumerate(p["prevs"])}
+        rule_names = [n for n, _ in INT_RULES]
+
+        def prop(state: State, kids):
+            if not kids:
+                return kids
+            prev = (state.history[-1].split("@")[0] if state.history
+                    else "<start>")
+            oh = [0.0] * len(p["prevs"])
+            if prev in pidx:
+                oh[pidx[prev]] = 1.0
+            kid_rules = {lab.split("@")[0] for lab, _ in kids}
+            synd = [1.0 if n in kid_rules else 0.0 for n in rule_names]
+            feats = featurize(state.expr) + synd + oh
+            x = (torch.tensor([feats], dtype=torch.float32)
+                 - p["mu"]) / p["sd"]
+            with torch.no_grad():
+                logits = self.net(x)[0]
+
+            def score(lab):
+                r = lab.split("@")[0]
+                return logits[vi[r]].item() if r in vi else -50.0
+
+            return sorted(kids, key=lambda c: -score(c[0]))
+
+        return prop
 
 
 class MarkovPrior:
@@ -110,9 +174,15 @@ def solve(expr: sp.Expr, *, budget: int = 200,
     # raced L5 238/249 (95.6%, from 223) at 3.5x LESS wall; L3 +1,
     # L4 tied on 60-problem samples. Width 2 lost composition-fragile
     # chains whose every rule existed (9-problem residue -> 8 solved).
-    prior = prior or MarkovPrior.load()
+    # Brain: syndrome policy when its checkpoint exists (adoption
+    # ledger in the class docstring); explicit prior= or a missing
+    # checkpoint falls back to markov.
+    if prior is None and _POLICY_PATH.exists():
+        proposer = SyndromePolicy.load().proposer()
+    else:
+        proposer = (prior or MarkovPrior.load()).proposer()
     return beam_search(
         expr, width=3, max_plies=24, max_nodes=budget,
-        proposer=prior.proposer(), propose_k=3,
+        proposer=proposer, propose_k=3,
         use_macros=use_macros, verify_p=0.1,
         state_filter=state_filter)

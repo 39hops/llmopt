@@ -830,6 +830,37 @@ where the diagnosis pointed — but the teacher still wins its home
 turf. Round 3 (L5-weighted regret sampling) is the natural next
 move; the alternative is domain routing (policy off-L5, markov on).
 
+## The brain races, concluded: policy ADOPTED (2026-07-10 night)
+
+DAgger convergence curve, fully mapped: 218 -> 231 (round 2, uniform
+mix) -> 236 (round 3, 3:1 L5-weighted, 1,277 pairs) -> 222 (round 4,
+PURE-L5, 1,338 pairs — REGRESSION: skewing corrections entirely to
+the failure domain dilutes the general imitation signal; balanced
+beats targeted past the sweet spot). Round 3 checkpoint restored.
+Nested trig retained through every round.
+
+The 2-problem curated-gate deficit (236 v 238) was then tested on 80
+FRESH L5 problems: EXACT TIE 76/76 — benchmark-specific, not a
+capability gap. Wall flips by domain: markov 3x faster on pure L5
+(both brains find the same deep chains; the policy just pays its
+net cost), policy 3x faster on mixed (better ranking = fewer nodes).
+
+Router race (magic-estimator cost head at the root dispatches
+markov-vs-policy; the banked "magic router" materialized): routed
+123/130 at 290s vs policy 124 at 441s vs markov 121 at 402s — buys
+34% wall for one solve; near-miss on the strict bar. Decisive fact
+from the same race: pure policy is the best pure arm even on an
+L5-heavy mix.
+
+ADOPTED: solve() now runs the syndrome policy when its checkpoint
+exists (SyndromePolicy in engine.py; markov fallback). Solves are
+the currency: policy wins fresh mixed (98-99/100 v 95-96), ties
+fresh L5, uniquely reaches the reverse-product class, and solve()
+takes the nested-trig problem in production config for the first
+time. Markov remains as fallback and as the wall-time choice for
+deep-L5 batch work. Artin's qLDPC syndrome framing is now the
+engine's production brain.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
