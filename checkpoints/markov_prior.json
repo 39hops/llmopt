@@ -1,1 +1,260 @@
-{"unigram": {"together": 31, "d_product": 328, "d_sum": 100, "d_x": 317, "d_const": 444, "d_power": 162, "d_chain_table": 205, "factor": 15, "powsimp": 10, "expand": 31, "i_const": 122, "i_sum": 98, "cancel": 72, "i_power": 130, "i_const_factor": 179, "i_table": 74, "i_usub": 59, "i_parts": 35, "trigsimp": 10, "d_const_factor": 200, "i_apart": 3, "i_unprod": 33, "i_linear_basis": 175, "i_ansatz_exp": 18, "i_log_power": 13, "i_inverse_trig": 14, "i_sqrt_basis": 11}, "bigram": {"together": {"d_product": 12, "d_sum": 1, "d_const_factor": 6, "d_chain_table": 3, "trigsimp": 1, "i_const_factor": 4, "i_parts": 4}, "d_product": {"d_sum": 4, "d_const": 263, "d_x": 28, "d_chain_table": 14, "d_product": 9, "together": 1, "d_power": 4, "expand": 3, "factor": 1, "i_usub": 1}, "d_sum": {"d_x": 1, "d_product": 46, "d_const": 28, "d_power": 4, "d_chain_table": 2, "expand": 1, "d_const_factor": 18}, "d_x": {"d_const": 62, "d_product": 100, "d_sum": 46, "d_power": 2, "powsimp": 3, "factor": 9, "d_chain_table": 13, "together": 5, "expand": 2, "d_const_factor": 65, "d_x": 8, "trigsimp": 1, "i_const_factor": 1}, "d_const": {"d_sum": 20, "d_power": 84, "d_product": 109, "d_const": 56, "d_x": 29, "d_chain_table": 95, "factor": 1, "together": 4, "expand": 3, "i_const": 1, "d_const_factor": 42}, "d_power": {"d_product": 24, "d_x": 110, "d_power": 6, "d_chain_table": 16, "d_const": 1, "d_const_factor": 4, "trigsimp": 1}, "d_chain_table": {"d_x": 112, "d_chain_table": 23, "d_power": 17, "d_product": 12, "d_sum": 13, "together": 7, "d_const": 3, "trigsimp": 2, "d_const_factor": 16}, "factor": {"d_product": 2, "i_parts": 1, "powsimp": 6, "d_x": 1, "d_const_factor": 3, "trigsimp": 2}, "powsimp": {"d_product": 1, "d_const": 2, "d_chain_table": 3, "together": 4}, "expand": {"d_sum": 3, "cancel": 8, "i_const": 1, "i_const_factor": 3, "d_const": 1, "d_power": 2, "factor": 1, "d_product": 6, "powsimp": 1, "i_parts": 1, "d_chain_table": 1, "d_const_factor": 2, "together": 1}, "i_const": {"i_sum": 22, "cancel": 20, "i_const": 14, "i_power": 1, "expand": 5, "i_const_factor": 41, "i_table": 5, "i_usub": 1, "i_apart": 1, "i_linear_basis": 4, "i_unprod": 1, "i_log_power": 1}, "i_sum": {"i_const": 34, "cancel": 15, "i_const_factor": 29, "i_power": 2, "i_parts": 4, "i_usub": 3, "i_linear_basis": 3, "i_inverse_trig": 8}, "cancel": {"i_power": 34, "i_const": 10, "i_table": 24, "i_const_factor": 3, "i_parts": 1}, "i_power": {"i_const": 34, "i_const_factor": 21, "i_power": 17, "cancel": 8, "i_sum": 19, "i_table": 6, "i_usub": 2, "i_unprod": 2, "i_linear_basis": 2, "i_log_power": 2}, "i_const_factor": {"i_power": 62, "i_const_factor": 13, "i_const": 8, "i_sum": 22, "expand": 3, "i_table": 16, "cancel": 8, "i_usub": 19, "i_parts": 12, "i_apart": 1, "i_linear_basis": 9, "i_unprod": 1, "i_ansatz_exp": 1, "trigsimp": 1, "together": 2}, "i_table": {"cancel": 8, "i_const": 5, "i_const_factor": 10, "i_sum": 14, "i_table": 14, "i_power": 5, "i_usub": 7, "i_parts": 5, "expand": 1, "i_linear_basis": 2}, "i_usub": {"i_const_factor": 16, "i_table": 3, "i_usub": 4, "expand": 3, "i_const": 1, "factor": 1, "cancel": 1, "i_sum": 1, "i_linear_basis": 28, "i_log_power": 1}, "i_parts": {"i_table": 6, "i_const": 3, "i_usub": 4, "i_const_factor": 6, "i_sum": 1, "i_linear_basis": 2, "i_power": 8, "i_log_power": 5}, "trigsimp": {"d_const": 2, "d_chain_table": 3, "i_const_factor": 1, "i_unprod": 1, "i_linear_basis": 2, "i_parts": 1}, "d_const_factor": {"d_sum": 13, "d_power": 43, "d_const": 25, "d_x": 28, "d_const_factor": 43, "d_product": 7, "d_chain_table": 32, "expand": 8, "trigsimp": 1}, "i_apart": {"i_sum": 3}, "i_unprod": {"i_unprod": 4, "cancel": 3, "i_sum": 3, "i_const": 1, "i_const_factor": 5, "i_linear_basis": 9, "i_ansatz_exp": 1, "trigsimp": 1, "i_log_power": 1, "i_usub": 1, "together": 1}, "i_linear_basis": {"i_unprod": 15, "i_linear_basis": 40, "i_sum": 2, "cancel": 1, "i_const_factor": 14, "i_apart": 1, "i_const": 1, "i_usub": 1, "i_ansatz_exp": 2, "i_log_power": 1, "i_power": 1, "together": 1}, "i_ansatz_exp": {"i_const_factor": 1, "i_linear_basis": 3}, "i_inverse_trig": {"i_const": 8}, "i_log_power": {"i_log_power": 2, "i_const_factor": 2, "together": 3, "expand": 1}}}
+{
+"unigram": {
+"together": 22,
+"d_product": 328,
+"d_sum": 100,
+"d_x": 317,
+"d_const": 444,
+"d_power": 162,
+"d_chain_table": 205,
+"factor": 13,
+"powsimp": 10,
+"expand": 29,
+"i_const": 111,
+"i_sum": 86,
+"cancel": 70,
+"i_power": 102,
+"i_const_factor": 156,
+"i_table": 72,
+"i_usub": 41,
+"i_parts": 17,
+"trigsimp": 6,
+"d_const_factor": 200,
+"i_apart": 3,
+"i_unprod": 22,
+"i_linear_basis": 74,
+"i_ansatz_exp": 4
+},
+"bigram": {
+"together": {
+"d_product": 12,
+"d_sum": 1,
+"d_const_factor": 6,
+"d_chain_table": 3
+},
+"d_product": {
+"d_sum": 4,
+"d_const": 263,
+"d_x": 28,
+"d_chain_table": 14,
+"d_product": 9,
+"together": 1,
+"d_power": 4,
+"expand": 3,
+"factor": 1,
+"i_usub": 1
+},
+"d_sum": {
+"d_x": 1,
+"d_product": 46,
+"d_const": 28,
+"d_power": 4,
+"d_chain_table": 2,
+"expand": 1,
+"d_const_factor": 18
+},
+"d_x": {
+"d_const": 62,
+"d_product": 100,
+"d_sum": 46,
+"d_power": 2,
+"powsimp": 3,
+"factor": 9,
+"d_chain_table": 13,
+"together": 5,
+"expand": 2,
+"d_const_factor": 65,
+"d_x": 8,
+"trigsimp": 1,
+"i_const_factor": 1
+},
+"d_const": {
+"d_sum": 20,
+"d_power": 84,
+"d_product": 109,
+"d_const": 56,
+"d_x": 29,
+"d_chain_table": 95,
+"factor": 1,
+"together": 4,
+"expand": 3,
+"i_const": 1,
+"d_const_factor": 42
+},
+"d_power": {
+"d_product": 24,
+"d_x": 110,
+"d_power": 6,
+"d_chain_table": 16,
+"d_const": 1,
+"d_const_factor": 4,
+"trigsimp": 1
+},
+"d_chain_table": {
+"d_x": 112,
+"d_chain_table": 23,
+"d_power": 17,
+"d_product": 12,
+"d_sum": 13,
+"together": 7,
+"d_const": 3,
+"trigsimp": 2,
+"d_const_factor": 16
+},
+"factor": {
+"d_product": 2,
+"i_parts": 1,
+"powsimp": 6,
+"d_x": 1,
+"d_const_factor": 3
+},
+"powsimp": {
+"d_product": 1,
+"d_const": 2,
+"d_chain_table": 3,
+"together": 4
+},
+"expand": {
+"d_sum": 3,
+"cancel": 8,
+"i_const": 1,
+"i_const_factor": 2,
+"d_const": 1,
+"d_power": 2,
+"factor": 1,
+"d_product": 6,
+"powsimp": 1,
+"i_parts": 1,
+"d_chain_table": 1,
+"d_const_factor": 2
+},
+"i_const": {
+"i_sum": 22,
+"cancel": 20,
+"i_const": 14,
+"i_power": 1,
+"expand": 5,
+"i_const_factor": 41,
+"i_table": 3,
+"i_usub": 1,
+"i_apart": 1,
+"i_linear_basis": 2,
+"i_unprod": 1
+},
+"i_sum": {
+"i_const": 34,
+"cancel": 15,
+"i_const_factor": 28,
+"i_power": 2,
+"i_parts": 4,
+"i_usub": 3
+},
+"cancel": {
+"i_power": 34,
+"i_const": 8,
+"i_table": 24,
+"i_const_factor": 3,
+"i_parts": 1
+},
+"i_power": {
+"i_const": 34,
+"i_const_factor": 19,
+"i_power": 9,
+"cancel": 8,
+"i_sum": 19,
+"i_table": 6,
+"i_usub": 2,
+"i_unprod": 2,
+"i_linear_basis": 2
+},
+"i_const_factor": {
+"i_power": 51,
+"i_const_factor": 13,
+"i_const": 8,
+"i_sum": 21,
+"expand": 3,
+"i_table": 16,
+"cancel": 8,
+"i_usub": 19,
+"i_parts": 5,
+"i_apart": 1,
+"i_linear_basis": 9,
+"i_unprod": 1,
+"i_ansatz_exp": 1
+},
+"i_table": {
+"cancel": 8,
+"i_const": 5,
+"i_const_factor": 10,
+"i_sum": 14,
+"i_table": 14,
+"i_power": 5,
+"i_usub": 7,
+"i_parts": 5,
+"expand": 1,
+"i_linear_basis": 2
+},
+"i_usub": {
+"i_const_factor": 16,
+"i_table": 3,
+"i_usub": 4,
+"expand": 3,
+"i_const": 1,
+"factor": 1,
+"cancel": 1,
+"i_sum": 1,
+"i_linear_basis": 11
+},
+"i_parts": {
+"i_table": 6,
+"i_const": 3,
+"i_usub": 3,
+"i_const_factor": 4,
+"i_sum": 1
+},
+"trigsimp": {
+"d_const": 2,
+"d_chain_table": 3,
+"i_const_factor": 1
+},
+"d_const_factor": {
+"d_sum": 13,
+"d_power": 43,
+"d_const": 25,
+"d_x": 28,
+"d_const_factor": 43,
+"d_product": 7,
+"d_chain_table": 32,
+"expand": 8,
+"trigsimp": 1
+},
+"i_apart": {
+"i_sum": 3
+},
+"i_unprod": {
+"i_unprod": 3,
+"cancel": 1,
+"i_sum": 3,
+"i_const": 1,
+"i_const_factor": 5,
+"i_linear_basis": 7,
+"i_ansatz_exp": 1,
+"trigsimp": 1
+},
+"i_linear_basis": {
+"i_unprod": 15,
+"i_linear_basis": 38,
+"i_sum": 2,
+"cancel": 1,
+"i_const_factor": 12,
+"i_apart": 1,
+"i_const": 1,
+"i_usub": 1,
+"i_ansatz_exp": 2
+},
+"i_ansatz_exp": {
+"i_const_factor": 1,
+"i_linear_basis": 3
+}
+}
+}
