@@ -879,6 +879,19 @@ magic-estimator cost head (<= 5.5 -> policy, else markov), with
 policy-only and markov-only fallbacks as checkpoints allow. Both
 smoke branches verified; 342 tests green.
 
+Dispatcher net (the +3 ceiling chase, same night): NULL with
+mechanism. 1,192 dual-arm dominance labels (winner by (solved,
+wall)); offline disagreement accuracy 0.750 (n=32). Live, 4-arm race
+on a second virgin band: thr5.5 126/130 @ 164s (the champion
+REVALIDATES, beating both pures on a second independent OOS draw);
+dispatchnet 124/130 @ 163s — degenerated into pure policy (identical
+solves). Mechanism: FA-Law labels are 96/4 policy-skewed (policy
+wins ties on speed), so the net learns "when in doubt, policy" and
+almost never fires the markov branch; the crude cost threshold fires
+it exactly where it matters (deep chains). Banked: dispatcher v2
+needs disagreement-oversampled data (~6% incidence makes farming
+expensive — the DAgger move applied to routing).
+
 The FA Law (Fable-Artin, coined and earned the same night):
 **verified speed is intelligence** — at fixed wall, speed IS solves,
 and the fastest arm can be the most accurate one because cheap nodes
