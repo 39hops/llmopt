@@ -587,6 +587,13 @@ rule at every ply of a lost line — solve deltas are beam-composition
 noise (the fp16-near-tie class), while the speed win is consistent:
 **~4x faster (97s vs 375s at k=6, 72/80 vs 70/80 solves)**. Skipping
 2/3 of rule evaluations reprices every sweep and race the lab runs.
+The reordering job, meanwhile, LOST (markov 85/100 @ 1234s vs policy
+81/100 @ 1665s, 7 timeouts): the net imitates markov-guided
+derivations, so it cannot out-order its teacher — where it disagrees
+it is mostly wrong, expensively. Split verdict, one law: **imitation
+can't beat the teacher at the teacher's own job, but it can make the
+teacher ~4x cheaper.** Beating the ordering needs off-policy signal
+(search-derived regret, not imitation) — banked.
 
 The autopsy paid same-day: the L5 failure clusters (root 15%,
 inverse-trig 0%) became two rules — `i_sqrt_basis` (f*sqrt(P)
