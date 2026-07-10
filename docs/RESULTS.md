@@ -758,6 +758,27 @@ gap. Also observed: all five spec arms diverged from eager greedy at
 the SAME position on the 3B prose prompt (ref 7797 vs opt 4889) —
 the repo's documented fp16 near-tie class, target-side, arm-invariant.
 
+## Node-cost round 2 (2026-07-10): kill heurisch, spend the savings on width
+
+The 9-problem frontier-v2 residue (every needed rule present, greedy
+proposer-descent solves in 6 plies, solve() walls) profiled to ONE
+line: verify_edge's `.doit()` on diff'd nested Integrals reaches
+heurisch — sympy's own integrator, the thing this engine exists to
+avoid — legally burning its full 2s timebox on 34/34 verifies (56s of
+a 90s wall). Fix: `doit(integrals=False)`. Structurally-equal
+Integral atoms cancel in the subtraction; survivors are rejected by
+_is_zero's carrier check — the same conservative-sound outcome
+heurisch was buying at 2000x the price.
+
+That cheapened nodes enough to widen the beam: width 2 -> 3 at the
+same budget. Raced: residue 0/9 -> 8/9 (25s total, was 400s of
+walls); **same-seed L5 238/249 (95.6%, from 223) at 3.5x LESS wall
+(348s vs ~1200s)**; L3 58/60 (+1), L4 46/60 (tied). Production
+solve() is now width 3. The day's arc: 78% -> 89.6% (rules) -> 95.6%
+(node cost -> width). The one survivor at any width: a nested
+chain-rule trig shape (cos(x + cos(9x)) family) — a genuine u-sub
+chain gap, next autopsy's seed.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

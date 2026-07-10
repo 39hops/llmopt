@@ -105,9 +105,14 @@ def solve(expr: sp.Expr, *, budget: int = 200,
             propose_k=entropy_k(1, 3, temperature=0.1),
             use_macros=use_macros, verify_p=0.1,
             state_filter=state_filter)
+    # width 3 since 2026-07-10 node-cost round 2: the verify fix
+    # (doit(integrals=False)) made nodes cheap enough to widen —
+    # raced L5 238/249 (95.6%, from 223) at 3.5x LESS wall; L3 +1,
+    # L4 tied on 60-problem samples. Width 2 lost composition-fragile
+    # chains whose every rule existed (9-problem residue -> 8 solved).
     prior = prior or MarkovPrior.load()
     return beam_search(
-        expr, width=2, max_plies=24, max_nodes=budget,
+        expr, width=3, max_plies=24, max_nodes=budget,
         proposer=prior.proposer(), propose_k=3,
         use_macros=use_macros, verify_p=0.1,
         state_filter=state_filter)

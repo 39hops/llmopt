@@ -155,13 +155,22 @@ def verify_edge(parent: sp.Expr, child: sp.Expr) -> bool:
     # wall inside verify). A verify that can't finish inside the box
     # returns False: conservative-sound (may reject a true edge,
     # never accepts a false one).
+    # doit(integrals=False): a diff'd nested Integral must NEVER be
+    # handed to sympy's integrators — heurisch legally burned its full
+    # 2s box on 34/34 verifies (56s of a 90s wall, second profile).
+    # Structurally-equal Integral atoms cancel in the subtraction;
+    # survivors are rejected by _is_zero's carrier check, which is the
+    # same conservative-sound outcome heurisch was buying slowly.
     def _check() -> bool:
         try:
             if parent.has(sp.Integral):
                 d = parent - child
                 frees = parent.free_symbols | child.free_symbols
-                return all(_is_zero(sp.diff(d, v).doit()) for v in frees)
-            return _is_zero(parent.doit() - child.doit())
+                return all(
+                    _is_zero(sp.diff(d, v).doit(integrals=False))
+                    for v in frees)
+            return _is_zero(parent.doit(integrals=False)
+                            - child.doit(integrals=False))
         except Exception:
             return False
 
