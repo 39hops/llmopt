@@ -617,6 +617,33 @@ def i_unprod(node: sp.Integral) -> list[sp.Expr]:
             out.append(A + (sp.Integral(resid, x) if resid != 0 else 0))
             if len(out) >= 6:
                 return out
+        # second guess family (2026-07-10 frontier-v2 autopsy): the
+        # term may be the f'·H(u) HALF of the pair — e.g. 9cos(x)/x
+        # pairs with 9·log(x)·cos(x). Then f = ∫cofactor, so INTEGRATE
+        # the rational cofactor instead of table-lookup on u'.
+        for fn in t.atoms(sp.sin, sp.cos, sp.exp):
+            cof = sp.cancel(t / fn)
+            if (cof.has(sp.sin, sp.cos, sp.exp, sp.log, sp.Integral)
+                    or not cof.is_rational_function(x)
+                    or cof.is_polynomial(x)):
+                continue
+            try:
+                F = sp.integrate(cof, x)
+            except Exception:
+                continue
+            if F.has(sp.Integral) or not F.has(sp.log):
+                continue
+            A = F * fn
+            k = sp.srepr(A)
+            if k in seen:
+                continue
+            seen.add(k)
+            resid = sp.expand(f - sp.diff(A, x))
+            if sp.count_ops(resid) >= sp.count_ops(f):
+                continue
+            out.append(A + (sp.Integral(resid, x) if resid != 0 else 0))
+            if len(out) >= 6:
+                return out
     return out
 
 
