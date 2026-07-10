@@ -369,6 +369,7 @@ def beam_search(
     verify_p: float = 1.0,
     state_filter: "Callable[[State], bool] | None" = None,
     select_fn: "Callable[[list[State], int], list[State]] | None" = None,
+    expand_rules: "Callable[[State], set[str] | None] | None" = None,
 ) -> SearchResult:
     """Minimize hce over the rewrite tree. Returns the best solved
     state found, else the best-evaluated state at exhaustion."""
@@ -382,8 +383,15 @@ def beam_search(
     for _ in range(max_plies):
         candidates: list[State] = []
         for s in beam:
+            # policy-gated expansion: evaluate only the predicted rule
+            # subset; empty result falls back to the full rule set
+            # (a gate miss costs one full expansion, never a solution)
+            gate = expand_rules(s) if expand_rules is not None else None
             kids = list(successors(s, use_macros=use_macros,
-                                   verify_p=verify_p))
+                                   verify_p=verify_p, only_rules=gate))
+            if not kids and gate is not None:
+                kids = list(successors(s, use_macros=use_macros,
+                                       verify_p=verify_p))
             scores = None
             if proposer is not None:
                 out = proposer(s, kids)

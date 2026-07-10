@@ -20,8 +20,12 @@ from pathlib import Path
 import torch
 
 
-def main(labels: Path, epochs: int) -> None:
+def main(labels: Path, epochs: int, no_synd: bool = False) -> None:
     rows = [json.loads(l) for l in labels.read_text().splitlines()]
+    if no_synd:
+        # gate variant: pre-expansion, syndromes don't exist yet
+        for r in rows:
+            r["features"] = r["features"][:20]
     vocab = sorted({r["rule"] for r in rows})
     prevs = sorted({r["prev"] for r in rows})
     vi = {r: i for i, r in enumerate(vocab)}
@@ -79,10 +83,11 @@ def main(labels: Path, epochs: int) -> None:
     print(f"held-out ({len(test)}): net top-1 {top1:.3f} top-3 {top3:.3f}"
           f" | majority {maj_acc:.3f}"
           f" | markov top-1 {mk1/len(test):.3f} top-3 {mk3/len(test):.3f}")
+    out = ("checkpoints/rule_gate.pt" if no_synd
+           else "checkpoints/syndrome_policy.pt")
     torch.save({"state_dict": net.state_dict(), "mu": mu, "sd": sd,
-                "vocab": vocab, "prevs": prevs},
-               "checkpoints/syndrome_policy.pt")
-    print("saved checkpoints/syndrome_policy.pt")
+                "vocab": vocab, "prevs": prevs}, out)
+    print(f"saved {out}")
 
 
 if __name__ == "__main__":
@@ -90,5 +95,6 @@ if __name__ == "__main__":
     ap.add_argument("--labels", type=Path,
                     default=Path("data/policy_labels.jsonl"))
     ap.add_argument("--epochs", type=int, default=60)
+    ap.add_argument("--no-synd", action="store_true")
     a = ap.parse_args()
-    main(a.labels, a.epochs)
+    main(a.labels, a.epochs, a.no_synd)
