@@ -255,6 +255,84 @@ def i_sqrt_basis(node: sp.Integral) -> list[sp.Expr]:
     return [a] if a != 0 else []
 
 
+def i_log_power(node: sp.Integral) -> list[sp.Expr]:
+    """x**n * log(k*x)**m closed form (2026-07-09 frontier-gap autopsy:
+    27/36 mined failures contain this family). i_parts CAN reach it but
+    needs m chained by-parts plies through nested Integrals — a node-
+    budget death, not unreachability. Collapse to one ply:
+    n != -1: x^(n+1) * sum_j (-1)^(m-j) (m!/j!) L^j / (n+1)^(m-j+1);
+    n == -1: L^(m+1)/(m+1)."""
+    un = _unpack_int(node)
+    if un is None:
+        return []
+    f, x = un
+    c, rest = f.as_independent(x)
+    n = sp.Integer(0)
+    L = None
+    m = 0
+    for a in sp.Mul.make_args(rest):
+        base, e = a.as_base_exp()
+        if isinstance(base, sp.log):
+            if L is not None or not (e.is_Integer and e > 0):
+                return []
+            slope = _linear_coeff(base.args[0], x)
+            if slope is None or base.args[0] != slope * x:
+                return []
+            L, m = base, int(e)
+        elif base == x and e.is_Rational:
+            n = n + e
+        else:
+            return []
+    if L is None:
+        return []
+    if n == -1:
+        return [c * L ** (m + 1) / (m + 1)]
+    fact = sp.factorial(m)
+    s = sp.Add(*((-1) ** (m - j) * (fact / sp.factorial(j))
+                 * L**j / (n + 1) ** (m - j + 1)
+                 for j in range(m + 1)))
+    return [c * x ** (n + 1) * s]
+
+
+def i_transcend_div(node: sp.Integral) -> list[sp.Expr]:
+    """Generator-shape splitter (2026-07-09 frontier-gap autopsy:
+    rat+exp+trig family, 8/36). Integrands built as (den*g + c)/den
+    have sub-terms that are individually NON-elementary once expanded
+    (exp*trig/(x^2+1)), so i_sum/i_apart make things worse. Group the
+    numerator's additive terms by transcendental monomial, divide each
+    group's polynomial coefficient by the denominator, and re-emit —
+    exact per-group division recovers g + c/den."""
+    un = _unpack_int(node)
+    if un is None:
+        return []
+    f, x = un
+    num, den = sp.fraction(sp.together(f))
+    if den == 1 or not den.is_polynomial(x) or not den.has(x):
+        return []
+    groups: dict[sp.Expr, sp.Expr] = {}
+    for t in sp.Add.make_args(sp.expand(num)):
+        poly = sp.Integer(1)
+        trans = sp.Integer(1)
+        for a in sp.Mul.make_args(t):
+            if a.is_polynomial(x):
+                poly *= a
+            else:
+                trans *= a
+        groups[trans] = groups.get(trans, sp.Integer(0)) + poly
+    if len(groups) < 2:
+        return []
+    out = sp.Integer(0)
+    changed = False
+    for trans, p in groups.items():
+        q, r = sp.div(sp.expand(p), den, x)
+        if q != 0:
+            changed = True
+        out += trans * q + trans * r / den
+    if not changed or sp.expand(out - f) == 0:
+        return []
+    return [sp.Integral(out, x)]
+
+
 def i_power(node: sp.Integral) -> list[sp.Expr]:
     u = _unpack_int(node)
     if u is None:
@@ -700,6 +778,8 @@ INT_RULES: list[tuple[str, IntRule]] = [
     ("i_linear_basis", i_linear_basis),
     ("i_inverse_trig", i_inverse_trig),
     ("i_sqrt_basis", i_sqrt_basis),
+    ("i_log_power", i_log_power),
+    ("i_transcend_div", i_transcend_div),
     ("i_power", i_power),
     ("i_sum", i_sum),
     ("i_const_factor", i_const_factor),
