@@ -879,10 +879,14 @@ magic-estimator cost head (<= 5.5 -> policy, else markov), with
 policy-only and markov-only fallbacks as checkpoints allow. Both
 smoke branches verified; 342 tests green.
 
-Artin's law, earned twice tonight: at fixed wall, speed IS solves —
-the fastest arm is also the most accurate one. The magic-estimator
-judge-slot list gains its biggest client: the engine's own front
-door.
+The FA Law (Fable-Artin, coined and earned the same night):
+**verified speed is intelligence** — at fixed wall, speed IS solves,
+and the fastest arm can be the most accurate one because cheap nodes
+buy retries, width, and reach. Corollaries already measured in this
+repo: NNUE-over-handcrafted (depth bought with node price),
+verify-without-heurisch (+17 points from zero new knowledge), and
+the router itself (141/150 @ 167s). The magic-estimator judge-slot
+list gains its biggest client: the engine's own front door.
 
 ## Origin story, closed
 
