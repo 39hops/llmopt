@@ -561,6 +561,17 @@ division in i_inverse_trig — **same-seed L5: 42% -> 70% -> 78%
 (+20/-0)**, and the day's full solve-rate arc every step a named,
 oracle-verified rule.
 
+The syndrome decoder (Artin's qLDPC riff, same night): stabilizer
+codes don't just detect deviation, they DECODE — syndrome pattern ->
+which correction. Analog test: (20 features + 14 rule-fire
+syndromes) -> opening rule of the winning derivation, labels from
+re-solving 3,313 solved problems (`gen_syndrome_labels.py`).
+**Held-out top-1 97.5%, top-3 99.8% vs majority 45.6% / first-fire
+66.8%** (`train_syndrome_decoder.py`). Root policy from milliseconds
+of checks, wrong once in ~500 at top-3. Banked next: the per-state
+version — syndrome policy at every node = the move-proposer's job at
+NNUE cost (the policy-side rematch of the NNUE-vs-LLM question).
+
 The autopsy paid same-day: the L5 failure clusters (root 15%,
 inverse-trig 0%) became two rules — `i_sqrt_basis` (f*sqrt(P)
 polynomial => answer in A(x)*sqrt(P), the linear-basis move with a
