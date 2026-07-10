@@ -593,7 +593,15 @@ derivations, so it cannot out-order its teacher — where it disagrees
 it is mostly wrong, expensively. Split verdict, one law: **imitation
 can't beat the teacher at the teacher's own job, but it can make the
 teacher ~4x cheaper.** Beating the ordering needs off-policy signal
-(search-derived regret, not imitation) — banked.
+(search-derived regret, not imitation) — banked, then RUN the same
+night: 471 DAgger pairs (expert relabels of policy-visited states,
+the corrections concentrated on the policy's own failure
+distribution) closed the gap to EXACT PARITY — rematch 85/100 vs
+85/100 (from 81 vs 85). One regret round lands the imitator at its
+teacher; markov keeps the ordering job anyway (policy pays inference
+overhead for zero solve advantage). The complete policy ledger:
+imitation < teacher, imitation+regret = teacher, and the policy's
+real paycheck is the GATE (4x cheaper nodes).
 Adaptive gate (entropy-gated deference to the teacher, "who said the
 teacher can't participate"): 69/80 @ 86s — same solves as fixed k=4,
 so deference rescued nothing: the traced losses hold the winning
