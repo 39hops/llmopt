@@ -694,15 +694,24 @@ blockers exactly:
   each group's poly coefficient by the denominator recovers g + c/den
   by exact division.
 
-Full-enum: 0/36 -> 32/36 (one leftover is an i_unprod-shaped reverse
-product pair; the rest are beam-composition, not coverage). But
-solve() itself stayed at ~0: the markov prior's median-smoothing
-(0.01·median unigram for unseen rules) loses to full bigram counts at
-every node with a table — propose_k=3 guillotines any new rule. Same
-incident class as the recorded i_unprod case; the lesson is now a
-rule: ADDING A RULE REQUIRES RE-MINING THE PRIOR
-(`scripts/mine_prior_update.py`: full-enum harvest on fresh
-train-band seeds, merge counts into checkpoints/markov_prior.json).
+Full-enum AND solve(): 0/36 -> 32/36 (one leftover is an
+i_unprod-shaped reverse product pair; the rest are beam-composition,
+not coverage). Headline: **same-seed L5 42% -> 70% -> 78% -> 89.6%
+(223/249)** — the two rules are worth ~+12 points on the record
+config.
+
+A lesson written and then RETRACTED the same night, kept here because
+the retraction is the finding. Early holdout probes suggested the
+prior's unseen-rule smoothing guillotined the new rules, so the prior
+was re-mined (general 158-win harvest, then a 3x-weighted targeted
+one). Both merges REGRESSED: L5 89.6% -> 73.1%, and the rat+exp·trig
+gaps flipped from solved to failed — diluting the winning bigrams
+costs more than the new-rule mass gains. This is the SECOND measured
+prior-mining regression (478e269 reverted the first, for
+random-search wins). The durable rule: the 0.01·median smoothing is
+sufficient for new rules; NEVER adopt a merged prior without racing
+it against the incumbent on the same seeds
+(`scripts/mine_prior_update.py` stays as tooling for that race).
 
 ## Entropy-adaptive speculative decoding (2026-07-10, 3080): null with a price tag
 
