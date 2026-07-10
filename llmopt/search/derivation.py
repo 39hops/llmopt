@@ -149,14 +149,23 @@ def verify_edge(parent: sp.Expr, child: sp.Expr) -> bool:
     (one full integration per candidate edge) and was ~100x slower.
     Derivative of the difference vanishing for every free symbol is
     exactly equality-mod-constant."""
-    try:
-        if parent.has(sp.Integral):
-            d = parent - child
-            frees = parent.free_symbols | child.free_symbols
-            return all(_is_zero(sp.diff(d, v).doit()) for v in frees)
-        return _is_zero(parent.doit() - child.doit())
-    except Exception:
-        return False
+    # Timeboxed: .doit() on a diff'd nested Integral (i_parts emits
+    # Integral(g, x, x)) hands the residue to heurisch — sympy's own
+    # integrator, 1.7-60s per edge (2026-07-10 profile: 63s of a 120s
+    # wall inside verify). A verify that can't finish inside the box
+    # returns False: conservative-sound (may reject a true edge,
+    # never accepts a false one).
+    def _check() -> bool:
+        try:
+            if parent.has(sp.Integral):
+                d = parent - child
+                frees = parent.free_symbols | child.free_symbols
+                return all(_is_zero(sp.diff(d, v).doit()) for v in frees)
+            return _is_zero(parent.doit() - child.doit())
+        except Exception:
+            return False
+
+    return _timeboxed(_check, default=False)
 
 
 class _RuleTimeout(BaseException):

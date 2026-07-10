@@ -55,11 +55,14 @@ class MarkovPrior:
         return cls(unigram, bigram)
 
     def proposer(self):
-        # Uniform smoothing: rules the prior has never seen get the
-        # median unigram mass instead of 0. Without this, any newly
-        # added rule is guillotined by the top-k cut until the prior
-        # is re-mined (measured: i_unprod solved its target family in
-        # one ply full-enum but engine.solve() never proposed it).
+        # Unseen-rule trial mass: rules the prior has never seen score
+        # 0.5*median OUTRIGHT (not 0.01*median). The 0.01 factor was
+        # measured insufficient (2026-07-10 five-ply trace: i_log_power
+        # fired every ply, scored 0.74 vs bigram 34+, never cracked
+        # top-3). Full trial mass is safe because rules only fire on
+        # matching structure — the fire itself is the evidence. Do NOT
+        # fix this by re-mining the prior instead: measured twice to
+        # regress (dilution; L5 89.6% -> 73.1%, and 478e269).
         med = sorted(self.unigram.values())[len(self.unigram) // 2] \
             if self.unigram else 1
 
@@ -70,8 +73,10 @@ class MarkovPrior:
 
             def s(name: str) -> float:
                 r = name.split("@")[0]
+                if r not in self.unigram:
+                    return 0.5 * med
                 return ((table.get(r, 0) if table else 0)
-                        + 0.01 * self.unigram.get(r, med))
+                        + 0.01 * self.unigram[r])
 
             return sorted(children, key=lambda c: -s(c[0]))
 
