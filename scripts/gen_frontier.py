@@ -83,7 +83,8 @@ def _solve_batch(items, workers):
     return out
 
 
-def main(pool: int, keep: int, workers: int, out: Path) -> None:
+def main(pool: int, keep: int, workers: int, out: Path,
+         seed_base: int = 970_000) -> None:
     payload = torch.load("checkpoints/magic_estimator.pt",
                          weights_only=False)
     import sys
@@ -94,7 +95,7 @@ def main(pool: int, keep: int, workers: int, out: Path) -> None:
     net.eval()
 
     ctx = mp.get_context("fork")
-    jobs = [(lv, 970_000 + i) for lv in (3, 4, 5)
+    jobs = [(lv, seed_base + i) for lv in (3, 4, 5)
             for i in range(pool // 3)]
     cands = []
     for i in range(0, len(jobs), 25):
@@ -147,5 +148,6 @@ if __name__ == "__main__":
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--out", type=Path,
                     default=Path("data/frontier_gaps.jsonl"))
+    ap.add_argument("--seed-base", type=int, default=970_000)
     a = ap.parse_args()
-    main(a.pool, a.keep, a.workers, a.out)
+    main(a.pool, a.keep, a.workers, a.out, a.seed_base)
