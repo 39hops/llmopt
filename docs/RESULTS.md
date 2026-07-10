@@ -742,6 +742,22 @@ targets, or MTP-style heads where drafting is ~free) the measured
 target-pass halving converts to wall-time. This is also WHY
 production systems draft with heads rather than standalone models.
 
+Cost-ratio ladder (same night, 3B and 1.5B targets vs the same 0.5B
+draft, 3080): the prediction's naive form FAILS, and the mechanism
+that kills it is the finding. Going 1.5B -> 3B improves the cost
+ratio (1:3 -> 1:6) but DEGRADES acceptance on every prompt (grounded
+0.92 -> 0.66, prose 0.47 -> 0.55-with-lower-baseline, code
+0.79 -> 0.78 at k=3): an untrained standalone draft diverges from a
+bigger target roughly as fast as the economics improve. Adaptive
+never beat best-fixed at either ratio; at 3B, speculation itself lost
+to vanilla on 2 of 3 prompts (40.0 vs 37.1 tok/s grounded; 38.4 vs
+30.4 prose) — a 3080 at 3B fp16 is not memory-starved enough. Refined
+prediction: the cost-ratio law only cashes with drafts TRAINED to the
+target (distilled or MTP heads), where acceptance survives the scale
+gap. Also observed: all five spec arms diverged from eager greedy at
+the SAME position on the 3B prose prompt (ref 7797 vs opt 4889) —
+the repo's documented fp16 near-tie class, target-side, arm-invariant.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
