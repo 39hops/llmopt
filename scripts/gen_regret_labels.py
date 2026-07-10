@@ -63,7 +63,7 @@ def _worker(job, q):
     prop = make_policy_proposer(net, payload)
     trace = []
     try:
-        beam_search(root, width=2, max_plies=24, max_nodes=60,
+        beam_search(root, width=3, max_plies=24, max_nodes=60,
                     proposer=prop, propose_k=3, use_macros=True,
                     verify_p=0.1, trace=trace,
                     state_filter=lambda s: not is_dead(s))

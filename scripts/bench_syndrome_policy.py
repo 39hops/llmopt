@@ -92,7 +92,9 @@ def main(n_per: int, budget: int) -> None:
         q.put([(lv, sp.sstr(make_integrate(lv, sd)._expr))
                for lv, sd in chunk])
 
-    jobs = [(lv, 950_000 + i) for lv in (3, 4, 5) for i in range(n_per)]
+    # 992_000: the old 950_000 band became the v5 estimator-label
+    # sweep (2026-07-10) — keep race problems out of every label band
+    jobs = [(lv, 992_000 + i) for lv in (3, 4, 5) for i in range(n_per)]
     probs = []
     for i in range(0, len(jobs), 20):
         q = ctx.Queue()
@@ -117,7 +119,7 @@ def main(n_per: int, budget: int) -> None:
             signal.alarm(180)
             t0 = time.time()
             try:
-                r = beam_search(root, width=2, max_plies=24,
+                r = beam_search(root, width=3, max_plies=24,
                                 max_nodes=budget, proposer=prop,
                                 propose_k=3, use_macros=True,
                                 verify_p=0.1,

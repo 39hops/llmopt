@@ -803,6 +803,33 @@ like priors, labels, and frontier mines — fourth appearance of the
 lesson in 24h. Budget-allocation re-race is queued behind the v5
 estimator retrain.
 
+## Syndrome policy v2 + DAgger round 2 (2026-07-10 night): the brain race
+
+Policy v2 (7,313 pairs replayed under the CURRENT engine, 19-rule
+vocab, free kid-derived syndromes): offline top-1 93.5/top-3 98.9 vs
+markov 51.0/79.6 on identical held-out states. Live, the split
+verdict that matters:
+
+- Solves the nested-trig knob-proof problem in 1s — i_unprod ranked
+  #3 at the root by state evidence (markov: rank 5-6, needs k>=6).
+- Fresh-100 head-to-head: policy 98/96 solves at 36% LESS wall — the
+  v1 verdict ("ties, costs more") is overturned.
+- L5 249 gate: 218 vs markov 238 — FAILED. Diagnosis (12 failures
+  retried at 400s wall): 0/12 flipped — 100% rank-bound, zero
+  wall-bound; three are instant beam-deaths (36 nodes, 0s). The
+  policy marches deep-L5 beams into pruned cul-de-sacs.
+
+DAgger round 2 (851 expert relabels of policy-visited states, fresh
+980k band, production width): L5 218 -> 231 (13 of 20 losses
+recovered), fresh-100 solve edge kept (97/96) but the wall-time win
+evaporated (239s vs 155s). Markov keeps production: 238 > 231.
+
+Ledger for the rung so far: state-aware ranking provably reaches
+problems no global knob can, and DAgger corrections land exactly
+where the diagnosis pointed — but the teacher still wins its home
+turf. Round 3 (L5-weighted regret sampling) is the natural next
+move; the alternative is domain routing (policy off-L5, markov on).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
