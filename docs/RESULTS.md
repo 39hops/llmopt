@@ -572,6 +572,22 @@ of checks, wrong once in ~500 at top-3. Banked next: the per-state
 version — syndrome policy at every node = the move-proposer's job at
 NNUE cost (the policy-side rematch of the NNUE-vs-LLM question).
 
+Per-state syndrome policy + policy-gated expansion (same night,
+"per-state policy GO"): replaying 3,348 winning derivations gave
+6,664 (state, next-rule) pairs; the syndrome policy net predicts the
+engine's next move at **top-1 94.1% / top-3 98.8% vs markov bigram
+56.1/81.9** (`train_syndrome_policy.py`) — the policy-side NNUE
+rematch, won by cheap features again (a no-syndrome gate variant
+holds 91.4%, so featurize+prev carries almost everything). Live
+integration, two jobs: (1) reordering proposer — see policy race;
+(2) **gated expansion** (`expand_rules` hook: evaluate only the
+gate's top-k rules, empty result falls back to full): k=4 lost 2
+solves, k=6 WON 2, autopsy showed the gate contained the winning
+rule at every ply of a lost line — solve deltas are beam-composition
+noise (the fp16-near-tie class), while the speed win is consistent:
+**~4x faster (97s vs 375s at k=6, 72/80 vs 70/80 solves)**. Skipping
+2/3 of rule evaluations reprices every sweep and race the lab runs.
+
 The autopsy paid same-day: the L5 failure clusters (root 15%,
 inverse-trig 0%) became two rules — `i_sqrt_basis` (f*sqrt(P)
 polynomial => answer in A(x)*sqrt(P), the linear-basis move with a
