@@ -65,7 +65,10 @@ def generate_speculative_adaptive(
                 )
                 stats["draft_passes"] += 1
                 d_last = d_logits[-1]
-                p = torch.softmax(d_last, dim=-1)
+                # float32: in fp16 clamp_min(1e-9) underflows to 0 ->
+                # log2(0) = -inf -> 0*-inf = nan -> the stop test is
+                # never true (measured: 0 stops in 771 passes)
+                p = torch.softmax(d_last.float(), dim=-1)
                 ent = float(-(p * p.clamp_min(1e-9).log2()).sum())
                 if ent > ent_stop and len(draft_tokens) >= k_min:
                     stats["early_stops"] += 1
