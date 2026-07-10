@@ -594,6 +594,14 @@ it is mostly wrong, expensively. Split verdict, one law: **imitation
 can't beat the teacher at the teacher's own job, but it can make the
 teacher ~4x cheaper.** Beating the ordering needs off-policy signal
 (search-derived regret, not imitation) — banked.
+Adaptive gate (entropy-gated deference to the teacher, "who said the
+teacher can't participate"): 69/80 @ 86s — same solves as fixed k=4,
+so deference rescued nothing: the traced losses hold the winning
+rule INSIDE the gate and fail on beam composition, not uncertainty —
+confidence can't see them. All four gate configs sit within +-2
+solves of full at 4-6x speed; **k=6 fixed is the config.** The
+deference architecture stays banked for domains with real OOD states
+(ZX port).
 
 The autopsy paid same-day: the L5 failure clusters (root 15%,
 inverse-trig 0%) became two rules — `i_sqrt_basis` (f*sqrt(P)
