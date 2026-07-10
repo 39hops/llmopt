@@ -92,8 +92,14 @@ def _worker(job, q):
     q.put(pairs)
 
 
-def main(n_per: int, workers: int, out: Path) -> None:
-    jobs = [(lv, 980_000 + i) for lv in (3, 4, 5) for i in range(n_per)]
+def main(n_per: int, workers: int, out: Path,
+         levels: list[int] | None = None,
+         seed_base: int = 980_000) -> None:
+    # levels with repeats = sampling weights (round 3: mostly L5 —
+    # the residual failure domain after round 2's uniform mix)
+    jobs = [(lv, seed_base + 1000 * j + i)
+            for j, lv in enumerate(levels or [3, 4, 5])
+            for i in range(n_per)]
     ctx = mp.get_context("fork")
     pending = list(reversed(jobs))
     running, n = {}, 0
@@ -133,5 +139,7 @@ if __name__ == "__main__":
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--out", type=Path,
                     default=Path("data/regret_labels.jsonl"))
+    ap.add_argument("--levels", type=int, nargs="+", default=None)
+    ap.add_argument("--seed-base", type=int, default=980_000)
     a = ap.parse_args()
-    main(a.n_per, a.workers, a.out)
+    main(a.n_per, a.workers, a.out, a.levels, a.seed_base)
