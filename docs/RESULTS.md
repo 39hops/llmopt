@@ -677,6 +677,62 @@ Ops note from the same run: torch's _native eager router JITs triton
 kernels WITHOUT torch.compile; on the C-compiler-less WSL box only
 TORCH_DISABLE_NATIVE_JIT=1 stops it (now in CLAUDE.md).
 
+## Frontier rule gaps -> two rules (2026-07-10, the loop's second lap)
+
+The 36 frontier-mined failures clustered into three shapes; sub-term
+probing (full-enum solve per distinct expanded sub-term) pinned the
+blockers exactly:
+
+- `i_log_power` — closed form for x^n·log(kx)^m (27/36 gaps).
+  i_parts CAN reach these but dies chaining m by-parts plies through
+  nested Integrals: a node-budget death, not unreachability.
+- `i_transcend_div` — the rat+exp·trig family (8/36) is a trap:
+  expanded sub-terms are INDIVIDUALLY non-elementary
+  (exp·sin/(x²+1) has no elementary antiderivative), so i_sum/i_apart
+  make the state worse. The generator built these as (den·g + c)/den;
+  grouping numerator terms by transcendental monomial and dividing
+  each group's poly coefficient by the denominator recovers g + c/den
+  by exact division.
+
+Full-enum: 0/36 -> 32/36 (one leftover is an i_unprod-shaped reverse
+product pair; the rest are beam-composition, not coverage). But
+solve() itself stayed at ~0: the markov prior's median-smoothing
+(0.01·median unigram for unseen rules) loses to full bigram counts at
+every node with a table — propose_k=3 guillotines any new rule. Same
+incident class as the recorded i_unprod case; the lesson is now a
+rule: ADDING A RULE REQUIRES RE-MINING THE PRIOR
+(`scripts/mine_prior_update.py`: full-enum harvest on fresh
+train-band seeds, merge counts into checkpoints/markov_prior.json).
+
+## Entropy-adaptive speculative decoding (2026-07-10, 3080): null with a price tag
+
+The gate law's decoding crossover, run honestly. Qwen2.5 1.5B target
+/ 0.5B draft, greedy, three prompt regimes, every arm asserted
+token-identical to eager greedy. Draft stops proposing when its own
+next-token entropy exceeds a threshold (deference), k_min floor swept
+2-4, k_max 12.
+
+Two findings, one bug first: entropy must be computed in float32 —
+in fp16, clamp_min(1e-9) underflows to 0, log2(0)=-inf, 0·-inf=nan,
+and `nan > thresh` is never true (measured: 0 stops in 771 passes,
+silently degenerating to fixed k_max).
+
+- The signal is REAL: acceptance rises (prose 0.47 -> 0.69; code
+  0.79 -> 0.90 at e=1.0) and target passes nearly HALVE (26-31 vs 53
+  on grounded summary). Draft entropy locates the teacher's
+  rejections — the opposite of the derivation engine's
+  entropy-deference null.
+- The wall-clock verdict is a NULL on this pair: best adaptive never
+  beats fixed k=3 (46.6 vs 51.2 / 26.5 vs 33.0 / 43.9 vs 45.5 tok/s),
+  because a 0.5B draft is only ~3x cheaper than the target and the
+  adaptive arms burn ~40% more draft passes. Saving a target pass by
+  spending four draft passes is a wash at 1:3 economics.
+
+Falsifiable prediction banked: at draft:target cost <= ~1:10 (7B+
+targets, or MTP-style heads where drafting is ~free) the measured
+target-pass halving converts to wall-time. This is also WHY
+production systems draft with heads rather than standalone models.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
