@@ -311,24 +311,31 @@ def i_transcend_div(node: sp.Integral) -> list[sp.Expr]:
         return []
     groups: dict[sp.Expr, sp.Expr] = {}
     for t in sp.Add.make_args(sp.expand(num)):
-        poly = sp.Integer(1)
+        # rational-in-x factors (incl. x**-1) stay with the
+        # coefficient; only genuine transcendentals key the group —
+        # a 1/x in the key would double-divide by den below
+        rat = sp.Integer(1)
         trans = sp.Integer(1)
         for a in sp.Mul.make_args(t):
-            if a.is_polynomial(x):
-                poly *= a
+            if a.is_rational_function(x):
+                rat *= a
             else:
                 trans *= a
-        groups[trans] = groups.get(trans, sp.Integer(0)) + poly
+        groups[trans] = groups.get(trans, sp.Integer(0)) + rat
     if len(groups) < 2:
         return []
     out = sp.Integer(0)
     changed = False
-    for trans, p in groups.items():
-        q, r = sp.div(sp.expand(p), den, x)
+    for trans, coeff in groups.items():
+        rn, rd = sp.fraction(sp.cancel(coeff / den))
+        q, r = sp.div(rn, rd, x)
         if q != 0:
             changed = True
-        out += trans * q + trans * r / den
-    if not changed or sp.expand(out - f) == 0:
+        out += trans * q + trans * r / rd
+    # syntactic compare only: expand() auto-cancels (den*g)/den and
+    # would veto every genuine fire of this rule (measured: the 8
+    # rat+exp·trig gaps regressed 32/36 -> 24/36 under expand-guard)
+    if not changed or out == f:
         return []
     return [sp.Integral(out, x)]
 
