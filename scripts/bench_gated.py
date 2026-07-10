@@ -32,7 +32,11 @@ class _Timeout(BaseException):
     pass
 
 
-def make_gate(k: int):
+def make_gate(k: int, adaptive: bool = False):
+    """adaptive=True: Artin's 'the teacher can also participate' —
+    confidence-gated deference. Policy entropy low -> trust it
+    (k small, fast); entropy high ('I don't recognize this state')
+    -> defer to the teacher: k = full rule set. Runtime regret."""
     p = torch.load("checkpoints/rule_gate.pt", weights_only=False)
     net = torch.nn.Sequential(
         torch.nn.Linear(len(p["mu"]), 96), torch.nn.ReLU(),
@@ -53,17 +57,26 @@ def make_gate(k: int):
              - p["mu"]) / p["sd"]
         with torch.no_grad():
             logits = net(x)[0]
-        top = logits.topk(min(k, len(p["vocab"]))).indices.tolist()
+        if adaptive:
+            probs = torch.softmax(logits, 0)
+            ent = -(probs * probs.clamp_min(1e-9).log2()).sum().item()
+            if ent > 1.5:      # flat distribution: defer to teacher
+                return None    # None = successors evaluates everything
+            kk = k if ent > 0.5 else max(2, k - 2)
+        else:
+            kk = k
+        top = logits.topk(min(kk, len(p["vocab"]))).indices.tolist()
         return {p["vocab"][i] for i in top}
 
     return gate
 
 
-def main(n_per: int, budget: int, k: int) -> None:
+def main(n_per: int, budget: int, k: int,
+         adaptive: bool = False) -> None:
     signal.signal(signal.SIGALRM,
                   lambda *_: (_ for _ in ()).throw(_Timeout()))
     mk = MarkovPrior.load().proposer()
-    gate = make_gate(k)
+    gate = make_gate(k, adaptive=adaptive)
     ctx = mp.get_context("fork")
 
     def _draw(chunk, q):
@@ -124,5 +137,6 @@ if __name__ == "__main__":
     ap.add_argument("--n-per", type=int, default=40)
     ap.add_argument("--budget", type=int, default=200)
     ap.add_argument("--k", type=int, default=4)
+    ap.add_argument("--adaptive", action="store_true")
     a = ap.parse_args()
-    main(a.n_per, a.budget, a.k)
+    main(a.n_per, a.budget, a.k, a.adaptive)
