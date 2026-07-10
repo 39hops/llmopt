@@ -614,6 +614,16 @@ than the morning engine. GPU-batching sympy and async remain
 correctly out of scope (tree rewriting is pure-Python CPU-bound);
 LLM-inference batching stays banked with the v3 limiter thread.
 
+LLM wall-time gating (the budget slot's retarget, tested same
+night): zero-nn 30/40, all-llm 27/40, gated 27/40 at wall=30s —
+**null: the LLM is net-negative at tight walls, so no router can
+save it** (the 3 problems where arms differ are zero-nn solves the
+LLM arms timed out on; the estimator routed sensibly to a
+destination that doesn't pay). The 5v3 lesson at problem
+granularity: the hybrid's +15 premium lives at generous budgets.
+Dependency exposed: cheaper LLM inference (batching /
+entropy-adaptive speculation — banked) comes BEFORE routing.
+
 The autopsy paid same-day: the L5 failure clusters (root 15%,
 inverse-trig 0%) became two rules — `i_sqrt_basis` (f*sqrt(P)
 polynomial => answer in A(x)*sqrt(P), the linear-basis move with a
