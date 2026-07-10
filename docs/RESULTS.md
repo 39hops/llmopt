@@ -603,6 +603,17 @@ solves of full at 4-6x speed; **k=6 fixed is the config.** The
 deference architecture stays banked for domains with real OOD states
 (ZX port).
 
+Rule-result cache (spec follow-up — 'caching layers beyond what
+exists' was the one out-of-scope item worth revisiting): rules are
+pure functions of an immutable node, and the same subnode recurs
+across sibling states (every i_sum split preserves the others), so
+_safe memoizes per (rule, node). Paired micro-race, order biased
+AGAINST the cache: **1.7x faster at identical solves (52.7s vs
+91.2s, 26/29 both)**. Stacked with the k=6 gate: ~7x cheaper nodes
+than the morning engine. GPU-batching sympy and async remain
+correctly out of scope (tree rewriting is pure-Python CPU-bound);
+LLM-inference batching stays banked with the v3 limiter thread.
+
 The autopsy paid same-day: the L5 failure clusters (root 15%,
 inverse-trig 0%) became two rules — `i_sqrt_basis` (f*sqrt(P)
 polynomial => answer in A(x)*sqrt(P), the linear-basis move with a

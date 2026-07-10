@@ -209,6 +209,10 @@ def _timeboxed(fn, *args, default):
             signal.setitimer(signal.ITIMER_REAL, max(0.05, left))
 
 
+_RULE_CACHE: dict = {}  # (rule id, node) -> candidates; nodes are
+# immutable sympy objects (hashable), rules pure — sound to memoize
+
+
 def successors(
     state: State, *, use_macros: bool = False, verify_p: float = 1.0,
     only_rules: "set[str] | None" = None,
@@ -251,7 +255,16 @@ def successors(
         # box, never the wall (the L4 timeout economics: the blow-up
         # bill is paid generating children, so the budget must live
         # here, not at queue insertion)
-        return _timeboxed(rule, node, default=[])
+        # rules are pure functions of the node, and the same subnode
+        # recurs across sibling states (every i_sum split preserves
+        # the other integrals) — memoize per (rule, node)
+        k = (id(rule), node)
+        if k in _RULE_CACHE:
+            return _RULE_CACHE[k]
+        out = _timeboxed(rule, node, default=[])
+        if len(_RULE_CACHE) < 200_000:  # bound growth, keep it simple
+            _RULE_CACHE[k] = out
+        return out
 
     for node in sorted(state.expr.atoms(sp.Derivative), key=sp.count_ops):
         node_s = None  # sstr only when needed: labels are lazy
