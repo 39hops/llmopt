@@ -1,0 +1,2 @@
+{"level": 5, "seed": 970007, "integrand": "-24*exp(2*x)*sin(4*x) + 12*exp(2*x)*cos(4*x) + 4*log(x)**2 + 8*log(x)", "solved": false, "lognodes": 5.700439718141092}
+{"level": 5, "seed": 970004, "integrand": "1 + 9/sqrt(1 - x**2)", "solved": false, "lognodes": 6.882643049361842}
