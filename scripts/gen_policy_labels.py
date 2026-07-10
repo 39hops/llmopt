@@ -69,10 +69,16 @@ def _worker(row: dict, q: "mp.Queue") -> None:
     q.put(pairs)
 
 
-def main(labels: Path, out: Path, workers: int) -> None:
-    rows = [json.loads(l) for l in labels.read_text().splitlines()
-            if json.loads(l)["solved"]]
-    print(f"{len(rows)} solved problems to replay", flush=True)
+def main(labels: Path, out: Path, workers: int,
+         include_unsolved: bool = False) -> None:
+    # include_unsolved: stored solved-flags are stale w.r.t. the
+    # current engine (2026-07-10: three new rules + width 3) — the
+    # newly-solvable families are exactly the ones the policy must
+    # learn, and the re-solve inside _worker decides anyway.
+    rows = [json.loads(l) for l in labels.read_text().splitlines()]
+    if not include_unsolved:
+        rows = [r for r in rows if r["solved"]]
+    print(f"{len(rows)} problems to replay", flush=True)
     ctx = mp.get_context("fork")
     pending = list(reversed(rows))
     running = {}
@@ -114,5 +120,6 @@ if __name__ == "__main__":
     ap.add_argument("--out", type=Path,
                     default=Path("data/policy_labels.jsonl"))
     ap.add_argument("--workers", type=int, default=12)
+    ap.add_argument("--include-unsolved", action="store_true")
     a = ap.parse_args()
-    main(a.labels, a.out, a.workers)
+    main(a.labels, a.out, a.workers, a.include_unsolved)

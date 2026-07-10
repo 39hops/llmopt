@@ -779,6 +779,30 @@ solve() is now width 3. The day's arc: 78% -> 89.6% (rules) -> 95.6%
 chain-rule trig shape (cos(x + cos(9x)) family) — a genuine u-sub
 chain gap, next autopsy's seed.
 
+## propose_k=4: decisive null, two mechanisms (2026-07-10)
+
+Motivation: the one width-proof survivor (nested chain-rule trig) has
+its full 2-ply solution in current rules — i_unprod's exact guess at
+the root, i_linear_basis at ply 2 — but the markov proposer ranks
+both i_unprod kids 5th-6th at the root; propose_k=3 cuts them.
+
+k=4 raced: **210/249 L5 (84.3%) vs the 238 bar — NO-ADOPT.** Two
+mechanisms, both instructive: (1) k=4 spends the fixed 200-node
+budget ~33% faster, cutting depth — and unlike 2->3 width (which
+bought parallel hypotheses at the SELECTION layer), widening the
+PROPOSAL layer mostly re-covers what top-3 already had. (2) It never
+solves the target anyway: rank 5-6 needs k>=6. Knob space is
+exhausted — the target problem is reachable only by state-aware
+ranking (syndrome policy), which is the next rung.
+
+Corollary finding: the old budget-allocation null ("engine is
+bimodal, budget never binds") carried a config that no longer exists.
+Under new rules + cheap nodes + width 3, budget measurably binds
+(this race is the evidence). Nulls inherit config defects exactly
+like priors, labels, and frontier mines — fourth appearance of the
+lesson in 24h. Budget-allocation re-race is queued behind the v5
+estimator retrain.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
