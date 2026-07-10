@@ -1,2 +1,36 @@
+{"level": 5, "seed": 970159, "integrand": "8*log(2*x)**2 + 16*log(2*x) + 4 + 7/sqrt(1 - x**2)", "solved": false, "lognodes": 5.857980995127572}
+{"level": 5, "seed": 970574, "integrand": "7*log(4*x)**2 + 14*log(4*x) + 4 + 7/sqrt(1 - x**2)", "solved": false, "lognodes": 5.906890595608519}
+{"level": 5, "seed": 970560, "integrand": "8*log(5*x)**2 + 16*log(5*x) + 2 + 18/sqrt(1 - 9*x**2)", "solved": false, "lognodes": 5.727920454563199}
+{"level": 5, "seed": 970201, "integrand": "6*x*log(5*x)**2 + 6*x*log(5*x) + 2 + 1/sqrt(1 - x**2)", "solved": false, "lognodes": 6.475733430966398}
+{"level": 5, "seed": 970412, "integrand": "16*x*log(3*x)**2 + 16*x*log(3*x) + 3 + 1/sqrt(1 - x**2)", "solved": false, "lognodes": 6.845490050944375}
+{"level": 5, "seed": 970488, "integrand": "6*x*log(5*x)**2 + 6*x*log(5*x) + 5 + 8/sqrt(1 - x**2)", "solved": false, "lognodes": 6.539158811108031}
+{"level": 5, "seed": 970303, "integrand": "6*x**2*log(5*x)**2 + 4*x**2*log(5*x) + 3 + 16/sqrt(1 - 4*x**2)", "solved": false, "lognodes": 6.807354922057604}
+{"level": 5, "seed": 970136, "integrand": "3*x**2*log(4*x)**2 + 2*x**2*log(4*x) + 5 + 10/sqrt(1 - 4*x**2)", "solved": false, "lognodes": 6.807354922057604}
+{"level": 5, "seed": 970296, "integrand": "12*x*log(4*x)**2 + 12*x*log(4*x) - 28*exp(3*x)*sin(4*x) + 21*exp(3*x)*cos(4*x)", "solved": false, "lognodes": 6.882643049361842}
+{"level": 5, "seed": 970474, "integrand": "8*x*log(2*x)**2 + 8*x*log(2*x) + 28*exp(4*x)*sin(4*x) + 28*exp(4*x)*cos(4*x)", "solved": false, "lognodes": 6.930737337562887}
+{"level": 5, "seed": 970137, "integrand": "14*x*log(3*x)**2 + 14*x*log(3*x) - 36*exp(2*x)*sin(4*x) + 18*exp(2*x)*cos(4*x)", "solved": false, "lognodes": 6.794415866350106}
+{"level": 3, "seed": 970424, "integrand": "14*x - 162*log(x)/x", "solved": false, "lognodes": 6.768184324776926}
+{"level": 5, "seed": 970486, "integrand": "4*x*log(4*x)**2 + 4*x*log(4*x) + 6*exp(3*x)*sin(x) + 2*exp(3*x)*cos(x)", "solved": false, "lognodes": 6.882643049361842}
+{"level": 5, "seed": 970468, "integrand": "3*x**2*log(4*x) + x**2 - 14*exp(4*x)*sin(2*x) + 28*exp(4*x)*cos(2*x)", "solved": false, "lognodes": 5.554588851677638}
+{"level": 5, "seed": 970396, "integrand": "4*x*log(3*x) + 2*x + 4*exp(4*x)*sin(2*x) + 2*exp(4*x)*cos(2*x)", "solved": false, "lognodes": 6.768184324776926}
+{"level": 5, "seed": 970421, "integrand": "6*x**2*log(5*x)**2 + 4*x**2*log(5*x) + 1 + 4/sqrt(1 - x**2)", "solved": false, "lognodes": 6.870364719583405}
+{"level": 5, "seed": 970188, "integrand": "((9*x**2 + 1)*(-15*exp(4*x)*sin(3*x) + 20*exp(4*x)*cos(3*x) + 4) + 24)/(9*x**2 + 1)", "solved": false, "lognodes": 6.930737337562887}
+{"level": 5, "seed": 970534, "integrand": "((9*x**2 + 1)*(-6*exp(4*x)*sin(3*x) + 8*exp(4*x)*cos(3*x) + 5) + 12)/(9*x**2 + 1)", "solved": false, "lognodes": 6.977279923499917}
+{"level": 5, "seed": 970259, "integrand": "((9*x**2 + 1)*(-8*exp(4*x)*sin(2*x) + 16*exp(4*x)*cos(2*x) + 1) + 18)/(9*x**2 + 1)", "solved": false, "lognodes": 7.011227255423254}
 {"level": 5, "seed": 970007, "integrand": "-24*exp(2*x)*sin(4*x) + 12*exp(2*x)*cos(4*x) + 4*log(x)**2 + 8*log(x)", "solved": false, "lognodes": 5.700439718141092}
-{"level": 5, "seed": 970004, "integrand": "1 + 9/sqrt(1 - x**2)", "solved": false, "lognodes": 6.882643049361842}
+{"level": 5, "seed": 970454, "integrand": "-7*exp(2*x)*sin(x) + 14*exp(2*x)*cos(x) + 9*log(4*x)**2 + 18*log(4*x)", "solved": false, "lognodes": 5.906890595608519}
+{"level": 5, "seed": 970387, "integrand": "14*x*log(x)**2 + 14*x*log(x) - 8*exp(x)*sin(2*x) + 4*exp(x)*cos(2*x)", "solved": false, "lognodes": 6.845490050944375}
+{"level": 5, "seed": 970556, "integrand": "8*x*log(x)**2 + 8*x*log(x) - 8*exp(x)*sin(4*x) + 2*exp(x)*cos(4*x)", "solved": false, "lognodes": 6.78135971352466}
+{"level": 5, "seed": 970178, "integrand": "-4*exp(x)*sin(2*x) + 2*exp(x)*cos(2*x) + log(3*x)**2 + 2*log(3*x)", "solved": false, "lognodes": 5.807354922057604}
+{"level": 5, "seed": 970510, "integrand": "3*x**2*log(2*x) + x**2 - 7*exp(3*x)*sin(x) + 21*exp(3*x)*cos(x)", "solved": false, "lognodes": 5.129283016944966}
+{"level": 5, "seed": 970457, "integrand": "((4*x**2 + 1)*(-4*exp(3*x)*sin(4*x) + 3*exp(3*x)*cos(4*x) + 2) + 18)/(4*x**2 + 1)", "solved": false, "lognodes": 6.9886846867721655}
+{"level": 3, "seed": 970172, "integrand": "32*x**3 + 15*log(x)*sin(x) - 15*cos(x)/x", "solved": false, "lognodes": 6.906890595608519}
+{"level": 5, "seed": 970233, "integrand": "2*((x**2 + 1)*(6*exp(2*x)*sin(3*x) + 9*exp(2*x)*cos(3*x) + 2) + 3)/(x**2 + 1)", "solved": false, "lognodes": 6.894817763307944}
+{"level": 3, "seed": 970050, "integrand": "42*log(x)/x", "solved": false, "lognodes": 6.643856189774724}
+{"level": 3, "seed": 970219, "integrand": "30*log(x)/x", "solved": false, "lognodes": 6.643856189774724}
+{"level": 3, "seed": 970495, "integrand": "32*log(x)/x", "solved": false, "lognodes": 6.643856189774724}
+{"level": 3, "seed": 970238, "integrand": "30*log(x)/x", "solved": false, "lognodes": 6.643856189774724}
+{"level": 5, "seed": 970394, "integrand": "4*x*log(4*x) + 2*x + 1 + 18/sqrt(1 - 4*x**2)", "solved": false, "lognodes": 6.845490050944375}
+{"level": 5, "seed": 970266, "integrand": "((x**2 + 1)*(-14*exp(4*x)*sin(2*x) + 28*exp(4*x)*cos(2*x) + 3) + 8)/(x**2 + 1)", "solved": false, "lognodes": 7.03342300153745}
+{"level": 5, "seed": 970065, "integrand": "((x**2 + 1)*(6*exp(3*x)*sin(2*x) + 4*exp(3*x)*cos(2*x) + 5) + 8)/(x**2 + 1)", "solved": false, "lognodes": 6.9886846867721655}
+{"level": 5, "seed": 970557, "integrand": "((x**2 + 1)*(-32*exp(2*x)*sin(4*x) + 16*exp(2*x)*cos(4*x) + 1) + 8)/(x**2 + 1)", "solved": false, "lognodes": 7.0}
