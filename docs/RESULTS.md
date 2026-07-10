@@ -861,6 +861,29 @@ time. Markov remains as fallback and as the wall-time choice for
 deep-L5 batch work. Artin's qLDPC syndrome framing is now the
 engine's production brain.
 
+## The router: strict dominance, adopted ("verified speed is intelligence")
+
+Autopsy of the near-miss (per-problem instrumented rerun of the
+130-problem race, data/router_autopsy.jsonl): the eyeballed 4.5
+threshold misdispatched policy-wins the estimator scored "hard" —
+routing on HOW HARD when the question is WHICH BRAIN. Offline
+threshold sweep (free, from the log): thr 5.5 -> 124 solves @ 322s,
+matching the best pure arm at 27% less wall. Oracle-router ceiling:
+127/130 (+3 for a two-sided dispatcher — the dispatcher-net rung).
+
+Out-of-sample validation (150 fresh problems, threshold FIXED before
+the draw): **routed 141/150 @ 167s vs policy 139 @ 337s vs markov
+130 @ 429s** — strict dominance on both axes, stronger than
+in-sample. Adopted: solve() dispatches at the root via the
+magic-estimator cost head (<= 5.5 -> policy, else markov), with
+policy-only and markov-only fallbacks as checkpoints allow. Both
+smoke branches verified; 342 tests green.
+
+Artin's law, earned twice tonight: at fixed wall, speed IS solves —
+the fastest arm is also the most accurate one. The magic-estimator
+judge-slot list gains its biggest client: the engine's own front
+door.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

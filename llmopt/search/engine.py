@@ -174,11 +174,35 @@ def solve(expr: sp.Expr, *, budget: int = 200,
     # raced L5 238/249 (95.6%, from 223) at 3.5x LESS wall; L3 +1,
     # L4 tied on 60-problem samples. Width 2 lost composition-fragile
     # chains whose every rule existed (9-problem residue -> 8 solved).
-    # Brain: syndrome policy when its checkpoint exists (adoption
-    # ledger in the class docstring); explicit prior= or a missing
-    # checkpoint falls back to markov.
+    # Brain: estimator-routed (2026-07-10 night, "verified speed is
+    # intelligence"): magic-estimator cost head at the root dispatches
+    # policy (cost <= 5.5) vs markov (deep chains, where markov is 3x
+    # faster at tied solves). Out-of-sample, 150 fresh problems:
+    # routed 141/150 @ 167s vs policy 139 @ 337s vs markov 130 @ 429s
+    # — STRICT dominance on both axes. Threshold 5.5 was fixed before
+    # the OOS draw. Fallbacks: policy-only, then markov-only, as
+    # checkpoints allow; explicit prior= forces markov.
     if prior is None and _POLICY_PATH.exists():
-        proposer = SyndromePolicy.load().proposer()
+        pol = SyndromePolicy.load().proposer()
+        est_path = _POLICY_PATH.parent / "magic_estimator_v5.pt"
+        if est_path.exists():
+            import torch
+
+            from llmopt.search.features import featurize
+            pay = torch.load(est_path, weights_only=False)
+            f = torch.tensor([featurize(expr)], dtype=torch.float32)
+            import sys
+            sys.path.insert(0, str(_POLICY_PATH.parents[1] / "scripts"))
+            from train_magic_estimator import Estimator
+            est = Estimator(d_in=len(pay["mu"]))
+            est.load_state_dict(pay["state_dict"])
+            est.eval()
+            with torch.no_grad():
+                _, cost = est((f - pay["mu"]) / pay["sd"])
+            proposer = (MarkovPrior.load().proposer()
+                        if cost.item() > 5.5 else pol)
+        else:
+            proposer = pol
     else:
         proposer = (prior or MarkovPrior.load()).proposer()
     return beam_search(
