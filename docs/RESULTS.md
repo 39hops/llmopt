@@ -987,6 +987,30 @@ x log-basis product — a genuinely new orbital combination). History-
 asserting ceiling tests pin native chains via heurisch-excluded
 search (4 patched).
 
+## L5 CLOSED at 100%; L7 56/60; the orbital pattern generalizes (2026-07-11)
+
+Full L5 249 under the final config: **249/249 (100.0%) in 58s —
+0.23s/problem.** The level that was the 42% frontier four days ago
+is closed. L7 under the trio: 36 -> 46 (vs sympy 42); autopsy showed
+12/14 residue failures were ONE family, d/dx[log(u)*atan(v)] pairs —
+the atan orbital, one day after the log orbital. Two fixes needed:
+the generator itself, and a GATE fix (log/atan derivative debris
+makes the integrand rational; gate and size the ansatz on the
+denominator-cleared form, matched with sp.cancel, since expand
+cannot cancel auto-combined denominators). **L7: 56/60 vs sympy's
+42.** The engine now leads sympy on every level that exists.
+Remaining L7 residue (4): trig(log(x)) compositions and sqrt x log
+products — orbital COMBINATIONS, the basis-proposer's seed corpus.
+
+Wall-time note (Artin's question, measured): L7's 28s/problem
+average was 14 failures burning the 120s wall; the SOLVES averaged
+~0.3s. Speed the engine up by making problems solvable or quitting
+early — never by optimizing the happy path, which is already fast.
+Symengine swap: measured CLOSED (raw diff 9.2x, but conversion
+round-trips net 1.7x on diff and LOSE 10x on expand; only an
+end-to-end representation swap pays, which forfeits the Poly/solve
+rule machinery).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
