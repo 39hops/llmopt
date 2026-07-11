@@ -63,7 +63,11 @@ class SyndromePolicy:
         p = self.payload
         vi = {r: i for i, r in enumerate(p["vocab"])}
         pidx = {r: i for i, r in enumerate(p["prevs"])}
-        rule_names = [n for n, _ in INT_RULES]
+        # training-time syndrome vocab, PINNED in the checkpoint:
+        # reading the live INT_RULES breaks every trained net the
+        # moment a rule is added (measured 2026-07-11: i_heurisch
+        # grew the vector 36->37, tensor-shape crash in production)
+        rule_names = p.get("synd_rules", [n for n, _ in INT_RULES])
 
         def prop(state: State, kids):
             if not kids:
@@ -202,11 +206,14 @@ def solve(expr: sp.Expr, *, budget: int = 200,
             dnet.eval()
             node = max(expr.atoms(sp.Integral), key=sp.count_ops,
                        default=None)
+            # pinned training-time syndrome vocab (see SyndromePolicy)
+            by_name = dict(INT_RULES)
             synd = []
-            for _, rule in INT_RULES:
+            for rname in dp.get("synd_rules", [n for n, _ in INT_RULES]):
+                rule = by_name.get(rname)
                 try:
-                    synd.append(1.0 if node is not None and rule(node)
-                                else 0.0)
+                    synd.append(1.0 if node is not None and rule
+                                and rule(node) else 0.0)
                 except Exception:
                     synd.append(0.0)
             f = torch.tensor([featurize(expr) + synd],

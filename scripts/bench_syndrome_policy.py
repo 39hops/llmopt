@@ -51,7 +51,7 @@ def make_policy_proposer(net, p):
     vi = {r: i for i, r in enumerate(p["vocab"])}
     pidx = {r: i for i, r in enumerate(p["prevs"])}
 
-    rule_names = [n for n, _ in INT_RULES]
+    rule_names = p.get("synd_rules", [n for n, _ in INT_RULES])
 
     def proposer(state, kids):
         if not kids:
