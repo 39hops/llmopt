@@ -41,7 +41,9 @@ def load_model():
     tok = AutoTokenizer.from_pretrained(MODEL)
     model = AutoModelForCausalLM.from_pretrained(
         MODEL, torch_dtype=torch.float16, device_map="cuda")
-    payload = torch.load(LORA, weights_only=False)
+    # map_location: the LoRA was trained on the Mac (MPS tensors);
+    # loading device-tagged storages on the CUDA box crashes without it
+    payload = torch.load(LORA, weights_only=False, map_location="cpu")
     apply_lora(model, payload["targets"], r=payload["r"],
                alpha=payload["alpha"])
     model.load_state_dict(payload["state_dict"], strict=False)
