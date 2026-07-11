@@ -357,7 +357,11 @@ def i_heurisch(node: sp.Integral) -> list[sp.Expr]:
     if un is None:
         return []
     f, x = un
-    if sp.count_ops(f) > 40 or f.has(sp.Integral):
+    # cap 100 (2026-07-11 sweep): L6 39/60 @ 1191s vs cap-40's 37/60
+    # @ 1502s — the wider cap solves more AND runs faster (early
+    # leaf-closes save wandering search). Residual L6 gap (17 vs
+    # sympy-whole) is PRE-decomposition: no leaves form at any cap.
+    if sp.count_ops(f) > 100 or f.has(sp.Integral):
         return []
     try:
         F = sp.integrate(f, x)

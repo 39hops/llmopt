@@ -944,8 +944,13 @@ wall) vs sympy.integrate (fork-isolated, 60s deadline — it hangs):
 
 Consequence (Artin's cascade): the two are COMPLEMENTARY — sympy
 closes, the engine navigates. i_heurisch (sympy.integrate as an
-op-capped, timeboxed, diff-verified leaf-closer rule) is in;
-integration race pending. Side casualty with a lesson: adding the
+op-capped, timeboxed, diff-verified leaf-closer rule) raced:
+**same-seed L5 sample 50/50 (perfect, from ~48)** at unchanged wall;
+L6 36 -> 37 (cap 40) -> 39 (cap 100, AND 20% faster — early
+leaf-closes save wandering search; cap 100 adopted). The residual
+L6 gap (39 vs sympy-whole 56) is PRE-decomposition — those failures
+never form closable leaves at any cap — so it belongs to
+rule-mining (the 21-problem autopsy corpus), not closer tuning. Side casualty with a lesson: adding the
 rule grew the live syndrome vector and crashed every trained net —
 checkpoints now PIN their training-time syndrome vocab (the config-
 pinning lesson, tensor-shape edition). Banked: parallel leaf closing
