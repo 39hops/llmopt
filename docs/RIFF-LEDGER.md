@@ -23,6 +23,12 @@ See RESULTS.md for every number below.)
 | "Collapse / entangle the equation state, like quarks" | the representation axis, named; reformulation ensemble (banked) | the engine already searched this axis; ensemble queued |
 | "Stars die at iron — when fusing stops paying. What's fusion in the repo?" | the gradient-engine frame: solve-for-profit, the estimator's rho collapse as OUR iron point | named the L8/adversarial-generation decision |
 | "Black hole inside a star eats the universe?" | no — Eddington throttle: consumption is self-gating | the universe runs a dispatcher too |
+| "Complex exponentials could shortcut the trig ceiling" | the euler move (rewrite through C, solve, return) | first ceiling-mover: sin^2 solvable |
+| "ZX calculus / T-count as a search domain" | the ZX engine + phase-teleport macro | first greedy-beater; composition pass |
+| "Maximize entropy like mimicking magic states" | entropy-bonus beam | honest NULL (53 v 51) — physics poetry, search prose |
+| "We're inside a white hole inside a black hole; compression vs expansion" | matches Poplawski torsion cosmology + Rovelli BH->WH bounce (literature, not ours); compression duality = rules compress / search decompresses | frame, banked |
+| "Universe-as-survivor, like a cancer cell" | the anthropic principle, observation selection | correctly re-derived |
+| "Spacetime is a graph, universe a node" | causal set theory, re-derived freehand | the partial order IS relativity of simultaneity |
 
 Standing lesson, earned nine sympy pathologies and four adoption
 races deep: the analogies are proposals, the oracle is the judge,
