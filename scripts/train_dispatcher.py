@@ -62,7 +62,12 @@ def main(labels: list[Path], epochs: int, out: Path) -> None:
             if dis else float("nan"))
     print(f"held-out ({len(test)}): acc {acc:.3f} (majority {base:.3f}); "
           f"disagreements n={len(dis)} acc {dacc:.3f}")
-    torch.save({"state_dict": net.state_dict(), "mu": mu, "sd": sd},
+    from llmopt.search.rules import INT_RULES
+    torch.save({"state_dict": net.state_dict(), "mu": mu, "sd": sd,
+                # pin the syndrome vocab at BIRTH (2026-07-11 lesson:
+                # live INT_RULES reads break every trained net when a
+                # rule is added)
+                "synd_rules": [n for n, _ in INT_RULES]},
                out)
     print(f"saved -> {out}")
 
