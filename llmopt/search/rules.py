@@ -777,6 +777,20 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
     # LOG ORBITAL; d/dx of x^j*L*trig stays within {x^j, x^j*L}*trig
     # so the linear solve closes). d(L) = 1/x is handled by
     # multiplying the residual through by x before Poly.
+    # normalize log contents FIRST: sympy rewrites log(4x+2) ->
+    # log(2)+log(2x+1) during clearing, minting an atom outside the
+    # generator set (measured L7 residue case). expand_log can't
+    # split it (the arg is an Add) — extract the polynomial content
+    # ourselves so gens are content-free from the start.
+    if f.has(sp.log):
+        rep = {}
+        for g in f.atoms(sp.log):
+            if g.args[0].is_polynomial(x) and g.args[0].has(x):
+                c, prim = g.args[0].as_content_primitive()
+                if c != 1:
+                    rep[g] = sp.log(c) + sp.log(prim)
+        if rep:
+            f = sp.expand(f.xreplace(rep))
     logs = [g for g in f.atoms(sp.log)
             if g.args[0].is_polynomial(x) and g.args[0].has(x)]
     # atan orbital (2026-07-11 L7 autopsy: 12/14 residue failures were
