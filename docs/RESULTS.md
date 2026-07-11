@@ -1042,8 +1042,16 @@ the judged, the cleanest possible signal that L8/adversarial
 generation is next); dispatcher v3 (first router trained on L6/L7
 and the current brains; disagreement acc 0.851; syndrome-vocab
 alignment across mixed-width corpora done by inserting the
-i_heurisch bit at index 10 for pre-heurisch rows). v3 adoption race
-in flight.
+i_heurisch bit at index 10 for pre-heurisch rows). ADOPTED same
+day: L3-L7 race, v3 ties the best arm's solves (114/120, = markov)
+at 43% less wall (370s vs 644s); v2 — blind to L6/L7 — behaved as
+pure policy and paid its price (112 @ 637s). The landscape flipped
+AGAIN at depth (markov out-solves policy on L6/L7-heavy bands) and
+only the router trained on the current world knew. Fixed en route,
+sympy pathology #9: the ROUTER's syndrome probes ran un-timeboxed
+(i_heurisch on a monster root hung 73min during routing, before any
+search began) — every layer that touches sympy gets a box, judges
+included.
 
 ## Origin story, closed
 
