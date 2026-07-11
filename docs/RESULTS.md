@@ -905,6 +905,17 @@ it exactly where it matters (deep chains). Banked: dispatcher v2
 needs disagreement-oversampled data (~6% incidence makes farming
 expensive — the DAgger move applied to routing).
 
+Budget-allocation re-race (2026-07-11, v5 estimator, current
+engine): the null SURVIVES its config refresh, sharpened. Flat
+105/110 vs estimator-allocated 105/110 at equal total budget —
+identical nodes consumed (1,578 both arms) despite allocations
+spanning 138-737; the five failures don't flip at 3.7x budget.
+Resolution of the apparent contradiction with the k=4 race: budget
+binds through SPEND RATE (wider proposals waste the same 200 nodes
+faster), not through absolute node counts starving solvable
+problems. More budget doesn't buy solves; cheaper/better-spent
+budget does — the FA Law's contrapositive.
+
 The FA Law (Fable-Artin, coined and earned the same night):
 **verified speed is intelligence** — at fixed wall, speed IS solves,
 and the fastest arm can be the most accurate one because cheap nodes
