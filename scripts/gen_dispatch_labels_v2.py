@@ -97,8 +97,10 @@ def _worker(job, q):
     q.put(row)
 
 
-def main(n_per: int, seed_base: int, workers: int, out: Path) -> None:
-    jobs = [(lv, seed_base + 10_000 * lv + i) for lv in (3, 4, 5)
+def main(n_per: int, seed_base: int, workers: int, out: Path,
+         levels: list[int] | None = None) -> None:
+    jobs = [(lv, seed_base + 10_000 * lv + i)
+            for lv in (levels or [3, 4, 5])
             for i in range(n_per)]
     ctx = mp.get_context("fork")
     pending = list(reversed(jobs))
@@ -143,5 +145,6 @@ if __name__ == "__main__":
     ap.add_argument("--workers", type=int, default=5)
     ap.add_argument("--out", type=Path,
                     default=Path("data/dispatch_labels_v2.jsonl"))
+    ap.add_argument("--levels", type=int, nargs="+", default=None)
     a = ap.parse_args()
-    main(a.n_per, a.seed_base, a.workers, a.out)
+    main(a.n_per, a.seed_base, a.workers, a.out, a.levels)
