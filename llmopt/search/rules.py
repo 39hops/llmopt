@@ -779,7 +779,13 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
     # multiplying the residual through by x before Poly.
     logs = [g for g in f.atoms(sp.log)
             if g.args[0].is_polynomial(x) and g.args[0].has(x)]
-    gens = trig + exps + logs  # Poly gens must be ATOMS, not products
+    # atan orbital (2026-07-11 L7 autopsy: 12/14 residue failures were
+    # d/dx[log(u)*atan(v)] pairs — same missing-orbital shape as log,
+    # one day later). d(atan(v)) = v'/(1+v^2): cleared with the other
+    # denominators before the Poly solve.
+    atans = [g for g in f.atoms(sp.atan)
+             if g.args[0].is_polynomial(x) and g.args[0].has(x)]
+    gens = trig + exps + logs + atans  # gens must be ATOMS, no products
     if not gens or len(gens) > 8:
         return []
     # basis monomials per trig arg v: sin^a(v)*cos^b(v) with
@@ -811,6 +817,8 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
         mons += [L] + [L * t for t in trig]
         if ep is not None:
             mons.append(L * ep)
+    for A in atans:
+        mons += [A] + [A * L for L in logs]
     mons.append(sp.S.One)
     # Poly can't take gens that contain x — substitute Dummy
     # placeholders for the transcendental atoms first
@@ -822,7 +830,17 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
         except sp.PolynomialError:
             return None
 
-    pf = _poly(f)
+    # log/atan-derivative debris makes the INTEGRAND rational (e.g.
+    # atan(x)/x + log(u)/(1+x^2), the L7 pair family): gate and size
+    # the ansatz on the DENOMINATOR-CLEARED integrand instead
+    clear = sp.S.One
+    if logs or atans:
+        # keep clear FACTORED and cancel poly-aware: the integrand's
+        # denominators auto-combine (x*(x^2+1) -> x^3+x) and only
+        # sp.cancel matches them against the multiplier
+        clear = (x * sp.Mul(*(g.args[0] for g in logs))
+                 * sp.Mul(*((1 + g.args[0] ** 2) for g in atans)))
+    pf = _poly(sp.expand(sp.cancel(f * clear)))
     if pf is None:
         return []
     deg = max(int(sp.degree(pf, x)), 1)
@@ -833,12 +851,11 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
     cand = sp.Add(*(cs[i * (deg + 2) + j] * x**j * m
                     for i, m in enumerate(mons)
                     for j in range(deg + 2)))
-    resid = sp.expand(sp.diff(cand, x) - f)
-    if logs:
-        # d(log(P)) = P'/P: clear the denominators so Poly survives
-        # (equating x^k*den*resid to 0 is equivalent for x != 0)
-        resid = sp.expand(resid * x
-                          * sp.Mul(*(g.args[0] for g in logs)))
+    # d(log(P)) = P'/P and d(atan(v)) = v'/(1+v^2): the same `clear`
+    # multiplier removes every denominator (equating clear*resid to 0
+    # is equivalent away from the poles); cancel before expand so the
+    # auto-combined denominators actually divide out
+    resid = sp.expand(sp.cancel((sp.diff(cand, x) - f) * clear))
     pr = _poly(resid)
     if pr is None:
         return []
