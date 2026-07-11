@@ -22,9 +22,30 @@ from __future__ import annotations
 
 import argparse
 import json
+import signal as _signal
 from pathlib import Path
 
 import torch
+
+
+def _checked(problem, text) -> bool:
+    """Timeboxed oracle call: p.check() parses MODEL TEXT and runs
+    symbolic equivalence — a hallucinated answer can hang simplify
+    (measured: race live-locked 2h39m at 102% CPU on one check)."""
+    if not text:
+        return False
+    class _T(BaseException):
+        pass
+    old = _signal.signal(_signal.SIGALRM,
+                         lambda *_: (_ for _ in ()).throw(_T()))
+    _signal.alarm(10)
+    try:
+        return bool(problem.check(text))
+    except BaseException:
+        return False
+    finally:
+        _signal.alarm(0)
+        _signal.signal(_signal.SIGALRM, old)
 
 LAYER = 20
 CKPTS = (8, 16, 32, 64)   # token positions where the probe looks
@@ -114,7 +135,7 @@ def phase_labels(n_problems: int, k: int, seed_base: int,
             for j in range(k):
                 text, states, _, spent = sample_with_states(
                     tok, model, prompt, seed=seed_base + 7919 * j + i)
-                ok = bool(text) and p.check(text)
+                ok = _checked(p, text)
                 for ck, h in states.items():
                     f.write(json.dumps(
                         {"level": lv, "seed": seed_base + i, "k": j,
@@ -190,7 +211,7 @@ def phase_race(n_problems: int, k: int, seed_base: int,
         prompt = build_prompt(tok, p)
         # greedy floor (1 sample worth of budget, T~0 via seed 0 draw)
         text, _, _, _ = sample_with_states(tok, model, prompt, seed=1)
-        res["greedy"] += bool(text) and p.check(text)
+        res["greedy"] += _checked(p, text)
         # best-of-N, budget-exhausting: keep sampling full attempts
         # until the token budget is spent (fixed-k stopped at ~14
         # tokens/sample and never used its budget — the first race
@@ -203,7 +224,7 @@ def phase_race(n_problems: int, k: int, seed_base: int,
                 tok, model, prompt, seed=1000 + 7919 * j + i)
             j += 1
             used += max(sp_, 1)
-            ok = ok or (bool(text) and p.check(text))
+            ok = ok or _checked(p, text)
         res["best_of_n"] += ok
         spent["best_of_n"] += used
         # regret-gated: same TOKEN budget, abort when probe < thresh
@@ -221,7 +242,7 @@ def phase_race(n_problems: int, k: int, seed_base: int,
             att += 1
             used += sp_
             if not aborted and text:
-                ok = ok or p.check(text)
+                ok = ok or _checked(p, text)
         res["regret"] += ok
         spent["regret"] += used
         attempts_hist.append(att)
