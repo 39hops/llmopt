@@ -129,6 +129,10 @@ def _atom(rng: random.Random, level: int):
 def _expression(rng: random.Random, level: int):
     if level <= 2:
         return sum(_atom(rng, level) for _ in range(rng.randint(2, 4)))
+    if level >= 7:
+        return _expression_l7(rng)
+    if level >= 6:
+        return _expression_l6(rng)
     if level >= 5:
         return _expression_l5(rng)
     if level >= 4:
@@ -218,6 +222,90 @@ def _expression_l5(rng: random.Random):
         return parts[0] + parts[1]
     return {"cross": cross, "inv_trig": inv_trig,
             "log_power": log_power, "root": root}[kind]()
+
+
+def _expression_l6(rng: random.Random):
+    """Level 6 (2026-07-11, engine at 95.6% same-seed L5): coordination
+    depth. Same families as L5 but the winning derivation needs MORE
+    COORDINATED plies — triple sums (three families interleaved),
+    cross-products (log-power x trig), quotient antiderivatives
+    (integrand = quotient-rule debris that must be re-assembled), and
+    deep-argument terms (trig/exp of degree-2 arguments). Wide-space
+    discipline as always (contamination scar tissue)."""
+    def poly(dmax=3):
+        while True:
+            p = (rng.randint(1, 5) * X ** rng.randint(2, dmax)
+                 + rng.randint(-4, 4) * X + rng.randint(0, 5))
+            if p.has(X):
+                return p
+
+    def l5():
+        return _expression_l5(random.Random(f"l6-sub-{rng.random()}"))
+
+    def triple():
+        return l5() + l5() + l5()
+
+    def cross_prod():
+        a = (rng.randint(1, 6) * X ** rng.randint(1, 2)
+             * sp.log(rng.randint(1, 4) * X))
+        b = rng.choice([sp.sin, sp.cos])(rng.randint(1, 3) * X)
+        return a * b
+
+    def quotient():
+        return poly() / poly(2) + rng.randint(1, 5) * X
+
+    def deep_arg():
+        return (rng.randint(1, 6)
+                * rng.choice([sp.sin, sp.cos, sp.exp])(poly(2)))
+
+    kind = rng.choice(["triple", "cross_prod", "quotient",
+                       "deep_arg", "deep_sum"])
+    if kind == "deep_sum":
+        return deep_arg() + l5()
+    return {"triple": triple, "cross_prod": cross_prod,
+            "quotient": quotient, "deep_arg": deep_arg}[kind]()
+
+
+def _expression_l7(rng: random.Random):
+    """Level 7: nesting — compositions of compositions. F built from
+    outer(inner) chains two-deep (trig(log(poly)), exp(trig(ax)),
+    log(poly)*atan(bx), odd sqrt powers), plus sums pairing a nested
+    term with an L6 draw. The integrands are chain-rule cascades:
+    every ply of the winning line must undo one layer."""
+    def poly(dmax=2):
+        while True:
+            p = (rng.randint(1, 4) * X ** rng.randint(1, dmax)
+                 + rng.randint(-3, 3) * X + rng.randint(0, 4))
+            if p.has(X):
+                return p
+
+    def nest2():
+        inner = rng.choice([
+            sp.log(poly()),
+            rng.choice([sp.sin, sp.cos])(rng.randint(1, 3) * X),
+            poly(),
+        ])
+        outer = rng.choice([sp.sin, sp.cos, sp.exp, sp.log])
+        return rng.randint(1, 6) * outer(inner)
+
+    def nest_prod():
+        return nest2() * rng.choice(
+            [X ** rng.randint(1, 2), sp.log(rng.randint(1, 4) * X)])
+
+    def atan_log():
+        return (rng.randint(1, 6) * sp.log(poly())
+                * sp.atan(rng.randint(1, 3) * X))
+
+    def root_wrap():
+        return rng.randint(1, 6) * sp.sqrt(poly()) ** rng.choice([1, 3])
+
+    kind = rng.choice(["nest2", "nest_prod", "atan_log",
+                       "root_wrap", "nest_sum"])
+    if kind == "nest_sum":
+        return nest2() + _expression_l6(
+            random.Random(f"l7-sub-{rng.random()}"))
+    return {"nest2": nest2, "nest_prod": nest_prod,
+            "atan_log": atan_log, "root_wrap": root_wrap}[kind]()
 
 
 def _cexpr(rng: random.Random, level: int):
