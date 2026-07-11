@@ -212,16 +212,19 @@ def solve(expr: sp.Expr, *, budget: int = 200,
             dnet.eval()
             node = max(expr.atoms(sp.Integral), key=sp.count_ops,
                        default=None)
-            # pinned training-time syndrome vocab (see SyndromePolicy)
+            # pinned training-time syndrome vocab (see SyndromePolicy).
+            # TIMEBOXED rule probes: i_heurisch runs sp.integrate and
+            # a monster root can hang it OUTSIDE any search alarm
+            # (measured: routing froze 73min at 99.7% CPU before the
+            # search began)
+            from llmopt.search.derivation import _timeboxed
             by_name = dict(INT_RULES)
             synd = []
             for rname in dp.get("synd_rules", [n for n, _ in INT_RULES]):
                 rule = by_name.get(rname)
-                try:
-                    synd.append(1.0 if node is not None and rule
-                                and rule(node) else 0.0)
-                except Exception:
-                    synd.append(0.0)
+                fired = (_timeboxed(rule, node, default=[])
+                         if node is not None and rule else [])
+                synd.append(1.0 if fired else 0.0)
             f = torch.tensor([featurize(expr) + synd],
                              dtype=torch.float32)
             with torch.no_grad():
