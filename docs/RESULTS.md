@@ -1011,6 +1011,40 @@ round-trips net 1.7x on diff and LOSE 10x on expand; only an
 end-to-end representation swap pays, which forfeits the Poly/solve
 rule machinery).
 
+## The regret probe: trace fate is legible mid-flight (2026-07-11)
+
+Artin's thesis ("the best skill is knowing when to regret/
+reconsider") got its existence proof before its policy proof: a
+128-unit probe on the calculus-LoRA 0.5B's layer-20 hidden state,
+read mid-generation, predicts whether the answer being written will
+turn out sympy-correct at **AUC 0.914** (2,760 trace states, base
+rate 0.509). The trajectory's fate is largely encoded long before
+the final token — generation is mostly COMMITTED early, which is
+what makes regret cheap in principle.
+
+Getting the number cost three measured lessons: (1) checkpoint
+schemes are selection effects — recording states only at token 24+
+produced an all-negative dataset (correct answers are SHORT; base
+rate 0.000, AUC nan) until a final-state pseudo-checkpoint was
+added; (2) "equal budget" must be enforced at the SPEND — fixed-k
+best-of-N stopped at EOS and used 16k tokens vs regret's 193k,
+voiding the first race; (3) sympy pathology #8: p.check() on
+hallucinated model text can hang simplify (2h39m live-lock at 102%
+CPU) — the ORACLE needs a timebox when judging adversarial garbage,
+with hang counted as wrong (conservative for every arm). The
+policy race (does a threshold on the probe BEAT budget-matched
+best-of-N?) is in flight.
+
+Judgment-stack refresh, same day: estimator v6 (L3-L7 labels under
+the final engine; solved-AUC 0.916, cost-rho collapsed to 0.578
+BECAUSE the engine saturated the generator — the judge starved by
+the judged, the cleanest possible signal that L8/adversarial
+generation is next); dispatcher v3 (first router trained on L6/L7
+and the current brains; disagreement acc 0.851; syndrome-vocab
+alignment across mixed-width corpora done by inserting the
+i_heurisch bit at index 10 for pre-heurisch rows). v3 adoption race
+in flight.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
