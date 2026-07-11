@@ -98,10 +98,14 @@ def test_property_on_generated_integrands(level):
                 assert _equiv_mod_const(node, rw), f"{name} broke on {f}"
 
 
-def test_euler_rewrite_moves_the_ceiling():
+def test_euler_rewrite_moves_the_ceiling(monkeypatch):
     """sin^2 has NO derivation in the real-form rule set (pre-registered
-    ceiling); the euler move opens an all-existing-rules chain."""
+    ceiling); the euler move opens an all-existing-rules chain.
+    i_heurisch excluded: this test proves the NATIVE chain exists."""
+    from llmopt.search import derivation as D
     from llmopt.search.derivation import beam_search
+    monkeypatch.setattr(D, "INT_RULES",
+                        [t for t in D.INT_RULES if t[0] != "i_heurisch"])
 
     node = sp.Integral(sp.sin(x) ** 2, x)
     r = beam_search(node, max_plies=24, max_nodes=300)
@@ -205,10 +209,14 @@ def test_markov_prior_smoothing_reaches_unseen_rules():
     assert names.index("brand_new_rule@node") < names.index("expand@node")
 
 
-def test_apart_moves_the_second_ceiling():
+def test_apart_moves_the_second_ceiling(monkeypatch):
     """1/(x**2-1) had NO derivation pre-i_apart (measured); the move
-    opens i_sum -> i_const_factor -> i_usub -> i_power(log) chains."""
+    opens i_sum -> i_const_factor -> i_usub -> i_power(log) chains.
+    i_heurisch excluded: this test proves the NATIVE chain exists."""
+    from llmopt.search import derivation as D
     from llmopt.search.engine import solve
+    monkeypatch.setattr(D, "INT_RULES",
+                        [t for t in D.INT_RULES if t[0] != "i_heurisch"])
 
     node = sp.Integral(1 / (x**2 - 1), x)
     r = solve(node, budget=300)

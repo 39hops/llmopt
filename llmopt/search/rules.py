@@ -340,6 +340,34 @@ def i_transcend_div(node: sp.Integral) -> list[sp.Expr]:
     return [sp.Integral(out, x)]
 
 
+def i_heurisch(node: sp.Integral) -> list[sp.Expr]:
+    """sympy's integrator as a gated LEAF CLOSER (2026-07-11, Artin's
+    cascade: 'the engine buys speed, sympy buys the closed forms —
+    let them work at the node level'). The L6 probe measured the
+    complementarity: engine 36/60 vs sympy 56/60 on whole problems,
+    but sympy's wins are SLOW (up to 55s+) and its losses are hangs —
+    while our engine decomposes fast and loses only at leaves. So:
+    fire sympy.integrate ONLY on small single integrals (op-capped;
+    the shapes it's reliable and quick on), inside the standard rule
+    timebox, output verified by differentiation like every edge.
+    Every fire is also a label: cluster heurisch's wins and each
+    cluster is a missing native rule (heurisch as rule-synthesis
+    teacher — the self-updating half of the cascade)."""
+    un = _unpack_int(node)
+    if un is None:
+        return []
+    f, x = un
+    if sp.count_ops(f) > 40 or f.has(sp.Integral):
+        return []
+    try:
+        F = sp.integrate(f, x)
+    except Exception:
+        return []
+    if F.has(sp.Integral, sp.Piecewise) or F is None:
+        return []
+    return [F]
+
+
 def i_power(node: sp.Integral) -> list[sp.Expr]:
     u = _unpack_int(node)
     if u is None:
@@ -814,6 +842,7 @@ INT_RULES: list[tuple[str, IntRule]] = [
     ("i_sqrt_basis", i_sqrt_basis),
     ("i_log_power", i_log_power),
     ("i_transcend_div", i_transcend_div),
+    ("i_heurisch", i_heurisch),
     ("i_power", i_power),
     ("i_sum", i_sum),
     ("i_const_factor", i_const_factor),

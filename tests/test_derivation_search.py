@@ -47,7 +47,12 @@ def test_higher_order_unsolved_at_rung1():
     assert not r.solved
 
 
-def test_integral_solved_at_rung2():
+def test_integral_solved_at_rung2(monkeypatch):
+    # i_heurisch excluded: proves the rung-2 NATIVE chain composes
+    # over plies (heurisch legitimately closes this in one)
+    from llmopt.search import derivation as D
+    monkeypatch.setattr(D, "INT_RULES",
+                        [t for t in D.INT_RULES if t[0] != "i_heurisch"])
     r = beam_search(sp.Integral(3 * x**2 + 2 * x, x))
     assert r.solved
     assert sp.simplify(sp.diff(r.state.expr, x) - (3 * x**2 + 2 * x)) == 0
