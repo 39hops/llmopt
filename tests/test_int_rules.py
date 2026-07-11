@@ -117,7 +117,7 @@ def test_euler_rewrite_moves_the_ceiling(monkeypatch):
                for h in r.state.history)
 
 
-def test_cyclic_moves_the_third_ceiling():
+def test_cyclic_moves_the_third_ceiling(monkeypatch):
     """exp(x)*sin(x) had NO derivation pre-i_cyclic (2026-07-07
     autopsy top family): by-parts twice returns the original integral
     and the winning step is algebra on the equation, outside the
@@ -132,7 +132,9 @@ def test_cyclic_moves_the_third_ceiling():
     # non-matches stay silent
     assert RULES["i_cyclic"](sp.Integral(sp.exp(x**2) * sp.sin(x), x)) == []
     assert RULES["i_cyclic"](sp.Integral(sp.sin(x) * sp.cos(x), x)) == []
-
+    from llmopt.search import derivation as D
+    monkeypatch.setattr(D, "INT_RULES",
+                        [t for t in D.INT_RULES if t[0] != "i_heurisch"])
     node = sp.Integral(27 * sp.sqrt(2) * sp.exp(x) * sp.sin(x + sp.pi / 4), x)
     r = solve(node, budget=100)
     assert r.solved, "third ceiling did not move"

@@ -73,7 +73,8 @@ def make_policy_proposer(net, p):
             logits = net(x)[0]
         def score(lab):
             r = lab.split("@")[0]
-            return logits[vi[r]].item() if r in vi else -50.0
+            return (logits[vi[r]].item() if r in vi
+                    else logits.mean().item())  # trial mass, policy ed.
         return sorted(kids, key=lambda c: -score(c[0]))
 
     return proposer

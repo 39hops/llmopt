@@ -956,6 +956,37 @@ checkpoints now PIN their training-time syndrome vocab (the config-
 pinning lesson, tensor-shape edition). Banked: parallel leaf closing
 (spec-decoding's batch-verify amortization applied to i_heurisch).
 
+## The L6 evening: engine 36 -> 59/60, PASSING sympy (2026-07-11)
+
+One autopsy session, three fixes, each measured separately (same 60
+seeds throughout; sympy-whole = 56/60):
+
+- 36 -> 37 -> 39: i_heurisch leaf closer, cap 40 then 100.
+- 39 -> 51 (at HALF the wall): trial mass for the POLICY — its
+  unknown-rule fallback of -50 guillotined i_heurisch on every
+  policy-routed problem. The markov trial-mass lesson, repeated
+  verbatim one layer up: every ranking layer needs newcomer mass.
+- 51 -> 52: the log ORBITAL — 14/22 autopsied failures were
+  x^j*log(kx)*trig products whose answers i_linear_basis could not
+  express because log was missing from its basis generators
+  (Artin's quantum-chemistry basis-set framing, cashed a second
+  time). d/dx-closure holds; P'/P denominators cleared by
+  multiplying the residual through before the Poly solve.
+- 52 -> **59/60 in 182s (3s/problem)**: NEVER GUILLOTINE A TERMINAL
+  — the propose_k cut was discarding kids that were already complete
+  solutions (the policy ranked i_heurisch's SOLVED kid 5th on
+  rational integrands). Structural fix in beam_search: terminal kids
+  survive any proposal cut. No ranking scheme can reintroduce the
+  bug.
+
+**The engine now beats sympy on sympy's best level (59 vs 56), at
+~3s/problem, using sympy as a gated subcontractor and sympy's own
+differentiator as judge.** L5 sample stays perfect (50/50)
+throughout. The lone survivor is a sqrt-of-poly monster (root-basis
+x log-basis product — a genuinely new orbital combination). History-
+asserting ceiling tests pin native chains via heurisch-excluded
+search (4 patched).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

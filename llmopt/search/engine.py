@@ -87,7 +87,13 @@ class SyndromePolicy:
 
             def score(lab):
                 r = lab.split("@")[0]
-                return logits[vi[r]].item() if r in vi else -50.0
+                # unknown rule (added after training) gets a fair
+                # trial at the mean logit — the markov prior's
+                # trial-mass lesson, repeated in its successor
+                # (measured 2026-07-11: i_heurisch scored -50, cut
+                # from top-3 on every policy-routed problem)
+                return (logits[vi[r]].item() if r in vi
+                        else logits.mean().item())
 
             return sorted(kids, key=lambda c: -score(c[0]))
 

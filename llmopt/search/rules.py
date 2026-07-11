@@ -772,7 +772,14 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
     trig = [g for v in args for g in (sp.sin(v), sp.cos(v))]
     exps = [e for e in f.atoms(sp.exp) if e.args[0].is_polynomial(x)
             and e.args[0].has(x)]
-    gens = trig + exps  # Poly gens must be the ATOMS, never products
+    # log generators (2026-07-11 L6 autopsy: 14/22 failures were
+    # x^j*log(kx)*trig products — the answer basis was MISSING THE
+    # LOG ORBITAL; d/dx of x^j*L*trig stays within {x^j, x^j*L}*trig
+    # so the linear solve closes). d(L) = 1/x is handled by
+    # multiplying the residual through by x before Poly.
+    logs = [g for g in f.atoms(sp.log)
+            if g.args[0].is_polynomial(x) and g.args[0].has(x)]
+    gens = trig + exps + logs  # Poly gens must be ATOMS, not products
     if not gens or len(gens) > 8:
         return []
     # basis monomials per trig arg v: sin^a(v)*cos^b(v) with
@@ -800,6 +807,10 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
                  for b in range(mv + 1 - a) if a + b >= 1]
     if ep is not None:
         mons += [ep] + [ep * t for t in trig]
+    for L in logs:
+        mons += [L] + [L * t for t in trig]
+        if ep is not None:
+            mons.append(L * ep)
     mons.append(sp.S.One)
     # Poly can't take gens that contain x — substitute Dummy
     # placeholders for the transcendental atoms first
@@ -822,7 +833,13 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
     cand = sp.Add(*(cs[i * (deg + 2) + j] * x**j * m
                     for i, m in enumerate(mons)
                     for j in range(deg + 2)))
-    pr = _poly(sp.expand(sp.diff(cand, x) - f))
+    resid = sp.expand(sp.diff(cand, x) - f)
+    if logs:
+        # d(log(P)) = P'/P: clear the denominators so Poly survives
+        # (equating x^k*den*resid to 0 is equivalent for x != 0)
+        resid = sp.expand(resid * x
+                          * sp.Mul(*(g.args[0] for g in logs)))
+    pr = _poly(resid)
     if pr is None:
         return []
     eqs = pr.coeffs()

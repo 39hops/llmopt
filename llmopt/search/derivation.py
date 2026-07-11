@@ -433,7 +433,14 @@ def beam_search(
             if propose_k is not None:
                 k = (propose_k(s, kids, scores) if callable(propose_k)
                      else propose_k)
-                kids = kids[:max(1, int(k))]
+                kk = max(1, int(k))
+                # never guillotine a terminal: a kid that is already
+                # a complete solution must survive any proposal cut
+                # (measured 2026-07-11: the policy ranked i_heurisch's
+                # SOLVED kid 5th on rational integrands; k=3 cut a
+                # finished answer on 7/60 L6 problems)
+                kids = kids[:kk] + [kc for kc in kids[kk:]
+                                    if is_solved(kc[1])]
             for _, child in kids:
                 if child.key() in visited:
                     continue
