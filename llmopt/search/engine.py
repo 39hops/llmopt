@@ -198,7 +198,13 @@ def solve(expr: sp.Expr, *, budget: int = 200,
         pol = SyndromePolicy.load().proposer()
         proposer = pol
         import torch
-        disp_path = _POLICY_PATH.parent / "dispatcher_v2.pt"
+        # v3 preferred (2026-07-11 race: 114/120 @ 370s vs markov
+        # 114 @ 644s, policy 112 @ 594s, v2 112 @ 637s — ties best
+        # solves at 43% less wall; only router trained on L6/L7 and
+        # the current brains); v2 fallback for older checkouts
+        disp_path = _POLICY_PATH.parent / "dispatcher_v3.pt"
+        if not disp_path.exists():
+            disp_path = _POLICY_PATH.parent / "dispatcher_v2.pt"
         est_path = _POLICY_PATH.parent / "magic_estimator_v5.pt"
         if disp_path.exists():
             from llmopt.search.features import featurize
