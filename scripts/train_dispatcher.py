@@ -54,8 +54,10 @@ def main(labels: list[Path], epochs: int, out: Path) -> None:
     base = max(yte.mean().item(), 1 - yte.mean().item())
     # what matters: accuracy ON DISAGREEMENTS (where routing changes
     # the outcome) — dominance ties dilute plain accuracy
+    # v2 "policy-fast" rows never ran markov (economics): only rows
+    # with both arms measured can be disagreements
     dis = [i for i, r in enumerate(test)
-           if r["markov"] != r["policy"]]
+           if "markov" in r and r["markov"] != r["policy"]]
     dacc = ((pred[dis] == yte[dis]).float().mean().item()
             if dis else float("nan"))
     print(f"held-out ({len(test)}): acc {acc:.3f} (majority {base:.3f}); "
