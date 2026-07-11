@@ -28,7 +28,10 @@ from llmopt.mathgen.problems import make_integrate
 from llmopt.search.engine import solve
 from llmopt.search.features import featurize
 
-CKPT = Path("checkpoints/magic_estimator.pt")
+CKPT = Path("checkpoints/magic_estimator_v5.pt")  # re-race 2026-07-11:
+# the original null ("engine bimodal, budget never binds") carried a
+# dead config; the k=4 race proved budget binds under new rules +
+# cheap nodes + width 3. v5 estimator = labels from the current engine.
 
 
 class _Timeout(BaseException):
@@ -40,7 +43,7 @@ def load_estimator():
     sys.path.insert(0, "scripts")
     from train_magic_estimator import Estimator
     payload = torch.load(CKPT, weights_only=False)
-    m = Estimator()
+    m = Estimator(d_in=len(payload["mu"]))
     m.load_state_dict(payload["state_dict"])
     m.eval()
     return m, payload["mu"], payload["sd"]
