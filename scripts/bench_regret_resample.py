@@ -27,7 +27,7 @@ from pathlib import Path
 import torch
 
 LAYER = 20
-CKPTS = (24, 48, 96)      # token positions where the probe looks
+CKPTS = (8, 16, 32, 64)   # token positions where the probe looks
 MAX_NEW = 160
 MODEL = "Qwen/Qwen2.5-0.5B-Instruct"
 LORA = Path("checkpoints/calculus_lora.pt")
@@ -89,6 +89,13 @@ def sample_with_states(tok, model, prompt: str, seed: int,
             break
         out_ids.append(nxt)
         cur = torch.tensor([[nxt]], device="cuda")
+    # always record the FINAL state ("ckpt" 0 = end of trace): short
+    # correct answers never reach token-24, and a probe trained only
+    # on long traces sees an all-negative world (measured: base rate
+    # 0.000, AUC nan on the first farm)
+    o = model(input_ids=cur, past_key_values=past, use_cache=True,
+              output_hidden_states=True)
+    states[0] = o.hidden_states[LAYER][0, -1].float().cpu()
     return tok.decode(out_ids), states, False, len(out_ids)
 
 
@@ -184,13 +191,18 @@ def phase_race(n_problems: int, k: int, seed_base: int,
         # greedy floor (1 sample worth of budget, T~0 via seed 0 draw)
         text, _, _, _ = sample_with_states(tok, model, prompt, seed=1)
         res["greedy"] += bool(text) and p.check(text)
-        # best-of-N: k full samples
+        # best-of-N, budget-exhausting: keep sampling full attempts
+        # until the token budget is spent (fixed-k stopped at ~14
+        # tokens/sample and never used its budget — the first race
+        # compared 16k vs 193k tokens and was VOID)
         ok = False
         used = 0
-        for j in range(k):
+        j = 0
+        while used < budget:
             text, _, _, sp_ = sample_with_states(
                 tok, model, prompt, seed=1000 + 7919 * j + i)
-            used += sp_
+            j += 1
+            used += max(sp_, 1)
             ok = ok or (bool(text) and p.check(text))
         res["best_of_n"] += ok
         spent["best_of_n"] += used
