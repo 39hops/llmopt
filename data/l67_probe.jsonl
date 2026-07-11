@@ -1,0 +1,120 @@
+{"level": 6, "integrand": "2*x*(x*log(2*x)*cos(x) + 2*log(2*x)*sin(x) + sin(x))", "engine": false, "engine_t": 40.0, "sympy": true, "sympy_t": 0.3}
+{"level": 6, "integrand": "(7*x**4 + 14*x**3 + 85*x**2 + 40*x + 120)/(x**4 + 2*x**3 + 11*x**2 + 10*x + 25)", "engine": false, "engine_t": 4.9, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "(-20*x - 6)*sin(x*(5*x + 3))", "engine": true, "engine_t": 0.2, "sympy": true, "sympy_t": 0.3}
+{"level": 6, "integrand": "((9*x**2 + 1)*((20*x + 15)*exp(x*(2*x + 3)) + 2) + 12)/(9*x**2 + 1)", "engine": true, "engine_t": 1.2, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "40*x*exp(4*x**2 + 3)", "engine": true, "engine_t": 0.1, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "4*x*(3*x*log(4*x)*cos(3*x) + 2*log(4*x)*sin(3*x) + sin(3*x))", "engine": false, "engine_t": 47.7, "sympy": true, "sympy_t": 0.3}
+{"level": 6, "integrand": "3*(3*(5*x**2 - 1)*(x**2 + 2*x + 2) + 2*(2*(x + 1)*sqrt(5*x**3 - 3*x + 3) + (5*x + 2)*exp(5*x**2 + 4*x + 4))*sqrt(5*x**3 - 3*x + 3))/sqrt(5*x**3 - 3*x + 3)", "engine": true, "engine_t": 0.5, "sympy": true, "sympy_t": 1.2}
+{"level": 6, "integrand": "36*x*exp(3*x**2 - 4*x + 4) + 8*sqrt(2)*exp(x)*sin(x + pi/4) - 24*exp(3*x**2 - 4*x + 4) + 5*log(x)**2 + log(1024)*log(x) + 10*log(x) + 5*log(2)**2 + log(1024)", "engine": true, "engine_t": 2.6, "sympy": true, "sympy_t": 0.3}
+{"level": 6, "integrand": "6*x*(-3*x*log(3*x)*sin(3*x) + 2*log(3*x)*cos(3*x) + cos(3*x))", "engine": false, "engine_t": 19.0, "sympy": true, "sympy_t": 0.4}
+{"level": 6, "integrand": "12*x*log(x)*cos(3*x) + 4*log(x)*sin(3*x) + 4*sin(3*x)", "engine": true, "engine_t": 3.1, "sympy": true, "sympy_t": 5.7}
+{"level": 6, "integrand": "3*(3*(2*x + 1)*(2*x**3 - x + 2) + 2*(4*(x - 1)*exp(2*x**2 - 4*x + 4) + (6*x**2 - 1)*sqrt(3*x**2 + 3*x + 4))*sqrt(3*x**2 + 3*x + 4))/sqrt(3*x**2 + 3*x + 4)", "engine": true, "engine_t": 0.6, "sympy": true, "sympy_t": 1.2}
+{"level": 6, "integrand": "3*x*(-2*x*log(4*x)*sin(2*x) + 2*log(4*x)*cos(2*x) + cos(2*x))", "engine": false, "engine_t": 47.3, "sympy": true, "sympy_t": 0.4}
+{"level": 6, "integrand": "4*x*(3*x*log(4*x)*cos(3*x) + 2*log(4*x)*sin(3*x) + sin(3*x))", "engine": false, "engine_t": 42.9, "sympy": true, "sympy_t": 0.4}
+{"level": 6, "integrand": "(10*x - 4)*exp(5*x**2 - 4*x + 3)", "engine": true, "engine_t": 0.1, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "-10*x*log(4*x)*sin(2*x) + 5*log(4*x)*cos(2*x) + 5*cos(2*x)", "engine": false, "engine_t": 8.6, "sympy": false, "sympy_t": 60.0}
+{"level": 6, "integrand": "(2*sqrt(x)*(5*sqrt(6)*sqrt(x) + (40*x + 16)*cos(5*x**2 + 4*x + 2)) + 5*sqrt(6)*(x + 2))/(2*sqrt(x))", "engine": false, "engine_t": 26.1, "sympy": true, "sympy_t": 0.2}
+{"level": 6, "integrand": "(100*x**4 + 40*x**3 - 3*x**2 - 40*x - 4)/(x**2*(25*x**2 + 10*x + 1))", "engine": false, "engine_t": 30.9, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "6*x*log(x) + 3*x + (8 - 12*x)*sin(3*x**2 - 4*x + 4)", "engine": true, "engine_t": 1.2, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "2*x*(-2*x*log(3*x)*sin(2*x) + 2*log(3*x)*cos(2*x) + cos(2*x))", "engine": false, "engine_t": 120.0, "sympy": true, "sympy_t": 0.4}
+{"level": 6, "integrand": "(sqrt(x)*(4*x**2 + 1)*(63*sqrt(6)*sqrt(x) + 2*log(4*x) + 6) + 4*sqrt(x) + 9*sqrt(6)*(7*x + 2)*(4*x**2 + 1)/2)/(sqrt(x)*(4*x**2 + 1))", "engine": false, "engine_t": 120.0, "sympy": true, "sympy_t": 1.5}
+{"level": 6, "integrand": "3*(8*x - 1)*cos(4*x**2 - x + 3) + 6*log(5*x)**2 + 12*log(5*x)", "engine": true, "engine_t": 2.2, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "4*x*(-2*x*log(3*x)*sin(2*x) + 2*log(3*x)*cos(2*x) + cos(2*x))", "engine": false, "engine_t": 120.0, "sympy": true, "sympy_t": 0.6}
+{"level": 6, "integrand": "5*x*log(x)*cos(x) + 5*log(x)*sin(x) + 5*sin(x)", "engine": true, "engine_t": 1.3, "sympy": true, "sympy_t": 3.9}
+{"level": 6, "integrand": "(7*x**3 + 21*x**2 + 18*x - 8)/(x**3 + 3*x**2 + 3*x + 1)", "engine": false, "engine_t": 2.2, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "6*x*(-2*x*log(3*x)*sin(2*x) + 2*log(3*x)*cos(2*x) + cos(2*x))", "engine": false, "engine_t": 120.0, "sympy": true, "sympy_t": 0.4}
+{"level": 6, "integrand": "-9*x*log(x)*sin(3*x) + 3*log(x)*cos(3*x) + 3*cos(3*x)", "engine": true, "engine_t": 1.1, "sympy": true, "sympy_t": 5.8}
+{"level": 6, "integrand": "3*x*log(x)*cos(3*x) + log(x)*sin(3*x) + sin(3*x)", "engine": true, "engine_t": 1.6, "sympy": true, "sympy_t": 5.8}
+{"level": 6, "integrand": "9*x**2*log(2*x)**2 + 6*x**2*log(2*x) + 21*x**2*log(4*x)**2 + 14*x**2*log(4*x) + 8 + 17/sqrt(1 - x**2)", "engine": true, "engine_t": 1.2, "sympy": true, "sympy_t": 0.1}
+{"level": 6, "integrand": "27*x**2*log(3*x) + 9*x**2 + (24*x + 12)*exp(3*x**2 + 3*x + 5) + 20*exp(4*x)*sin(x) + 5*exp(4*x)*cos(x)", "engine": true, "engine_t": 2.6, "sympy": true, "sympy_t": 0.1}
+{"level": 6, "integrand": "18*x*log(3*x)*cos(3*x) + 6*log(3*x)*sin(3*x) + 6*sin(3*x)", "engine": false, "engine_t": 5.7, "sympy": true, "sympy_t": 8.6}
+{"level": 6, "integrand": "(40*x - 15)*cos(4*x**2 - 3*x + 1)", "engine": true, "engine_t": 0.2, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "(48*x + 12)*exp(4*x**2 + 2*x + 2)", "engine": true, "engine_t": 0.1, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "3*x*(2*x*log(x)*cos(2*x) + 2*log(x)*sin(2*x) + sin(2*x))", "engine": false, "engine_t": 18.0, "sympy": true, "sympy_t": 0.4}
+{"level": 6, "integrand": "10*x*log(x) + 5*x + (16*x + 2)*exp(4*x**2 + x + 4) - 12*exp(x)*sin(4*x) + 3*exp(x)*cos(4*x)", "engine": true, "engine_t": 2.0, "sympy": true, "sympy_t": 0.1}
+{"level": 6, "integrand": "x*(-2*x*log(x)*sin(2*x) + 2*log(x)*cos(2*x) + cos(2*x))", "engine": true, "engine_t": 1.9, "sympy": true, "sympy_t": 0.4}
+{"level": 6, "integrand": "(12*x + 6)*exp(x**2 + x + 5)", "engine": true, "engine_t": 0.1, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "(20*x - 2)*exp(x*(5*x - 1))", "engine": true, "engine_t": 0.1, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "(125*x**4 + 100*x**3 + 117*x**2 + 4*x + 14)/(25*x**4 + 20*x**3 + 24*x**2 + 8*x + 4)", "engine": false, "engine_t": 4.9, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "((9*x**2 + 1)*((-8*x - 2)*sin(2*x**2 + x + 1) + 4*exp(4*x)*sin(2*x) + 2*exp(4*x)*cos(2*x) + 1) + 6)/(9*x**2 + 1)", "engine": true, "engine_t": 7.1, "sympy": true, "sympy_t": 2.0}
+{"level": 6, "integrand": "10*x*log(3*x)**2 + 10*x*log(3*x) + 9*exp(3*x)*sin(4*x) + 12*exp(3*x)*cos(4*x) + 5*exp(x)*sin(x) + 5*exp(x)*cos(x) + 2 + 6/sqrt(1 - x**2)", "engine": true, "engine_t": 5.7, "sympy": true, "sympy_t": 0.1}
+{"level": 6, "integrand": "8*x*cos(x**2 + 1)", "engine": true, "engine_t": 0.1, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "4*x*log(3*x)*cos(x) + 4*log(3*x)*sin(x) + 4*sin(x)", "engine": false, "engine_t": 4.4, "sympy": true, "sympy_t": 4.6}
+{"level": 6, "integrand": "4*x*log(3*x)*cos(2*x) + 2*log(3*x)*sin(2*x) + 2*sin(2*x)", "engine": false, "engine_t": 6.9, "sympy": false, "sympy_t": 60.0}
+{"level": 6, "integrand": "(2*sqrt(1 - 9*x**2)*((24*x - 9)*cos(4*x**2 - 3*x + 5) + 2*log(x)**2 + 4*log(x) + 2) + 3)/sqrt(1 - 9*x**2)", "engine": false, "engine_t": 18.1, "sympy": true, "sympy_t": 1.3}
+{"level": 6, "integrand": "(6*x + 3)*exp(3*x**2 + 3*x + 1) + 2*log(5*x) + 2", "engine": true, "engine_t": 0.4, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "2*(2*x**4 + 8*x**3 + 26*x**2 + 43*x + 35)/(x**4 + 4*x**3 + 12*x**2 + 16*x + 16)", "engine": false, "engine_t": 8.3, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "(8*x + 12)*cos(x**2 + 3*x + 2)", "engine": true, "engine_t": 0.2, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "2*(10*x**4 + 9*x**2 + 2*x + 3)/(4*x**4 + 4*x**2 + 1)", "engine": false, "engine_t": 2.4, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "(4*(6*x - 1)*(4*x**2 + 1)*(4*x**2 - 3*x + 5) + (4*x**2 + 1)*sqrt(3*x**2 - x + 4)*(27*x**2*log(x)**2 + 18*x**2*log(x) + (64*x - 24)*sqrt(3*x**2 - x + 4) + 20*exp(4*x)*sin(4*x) + 20*exp(4*x)*cos(4*x) + 2) + 10*sqrt(3*x**2 - x + 4))/((4*x**2 + 1)*sqrt(3*x**2 - x + 4))", "engine": false, "engine_t": 120.0, "sympy": false, "sympy_t": 60.0}
+{"level": 6, "integrand": "(18*x - 9)*exp(3*x**2 - 3*x + 1)", "engine": true, "engine_t": 0.1, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "-15*x*log(2*x)*sin(3*x) + 5*log(2*x)*cos(3*x) + 5*cos(3*x)", "engine": true, "engine_t": 4.2, "sympy": true, "sympy_t": 7.6}
+{"level": 6, "integrand": "(4*x + 3)*cos(2*x**2 + 3*x + 5) + exp(x)*sin(x) + exp(x)*cos(x)", "engine": true, "engine_t": 0.6, "sympy": true, "sympy_t": 0.1}
+{"level": 6, "integrand": "9*x**2*log(x)**2 + 6*x**2*log(x) + x**2*log(262144)*log(x) + x**2*log(64) + 9*x**2*log(2)**2 + 9*exp(3*x)*sin(2*x) + 6*exp(3*x)*cos(2*x) + 6*sqrt(2)*exp(2*x)*cos(2*x + pi/4)", "engine": true, "engine_t": 5.0, "sympy": true, "sympy_t": 0.1}
+{"level": 6, "integrand": "2*(6*x*exp(x**2 + 4) + 3*exp(x**2 + 4) + sqrt(2)*sin(x + pi/4))*exp(x)", "engine": true, "engine_t": 1.0, "sympy": true, "sympy_t": 0.9}
+{"level": 6, "integrand": "4*(2*x - 2)*cos(x*(x - 2)) - 20*exp(4*x)*sin(4*x) + 20*exp(4*x)*cos(4*x)", "engine": true, "engine_t": 0.8, "sympy": true, "sympy_t": 0.3}
+{"level": 6, "integrand": "((x**2 + 1)*(-2*exp(4*x)*sin(x) + 8*exp(4*x)*cos(x) + 9*sqrt(2)*exp(x)*sin(x + pi/4) + 9*log(x) + 11 + log(262144)) + 5)/(x**2 + 1)", "engine": true, "engine_t": 4.2, "sympy": false, "sympy_t": 60.0}
+{"level": 6, "integrand": "(10*x + 5)*cos(x**2 + x + 4)", "engine": true, "engine_t": 0.2, "sympy": true, "sympy_t": 0.0}
+{"level": 6, "integrand": "9*x**2*log(2*x) + 3*x**2 - 8*exp(3*x)*sin(x) + 24*exp(3*x)*cos(x) + 5 + 21/sqrt(1 - 9*x**2)", "engine": true, "engine_t": 2.0, "sympy": true, "sympy_t": 0.1}
+{"level": 6, "integrand": "(2*sqrt(1 - 4*x**2)*((16*x + 8)*exp(4*x**2 + 4*x + 4) + 1) + 8)/sqrt(1 - 4*x**2)", "engine": true, "engine_t": 0.5, "sympy": true, "sympy_t": 2.7}
+{"level": 6, "integrand": "(3*x**4 + 6*x**3 + 7*x**2 - x + 3/2)/(x**4 + 2*x**3 + 3*x**2 + 2*x + 1)", "engine": false, "engine_t": 70.4, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "6*(x + 1)*cos(x**2 + 2*x + 4) - 2*sin(2*x)*cos(cos(2*x))", "engine": true, "engine_t": 2.0, "sympy": true, "sympy_t": 0.5}
+{"level": 7, "integrand": "(-24*x - 18)*sin(2*x**2 + 3*x + 4)", "engine": true, "engine_t": 0.2, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "5*(3*(2*x + 1)*log(4*x + 2) + 2*(9*x**2 + 1)*atan(3*x))/((2*x + 1)*(9*x**2 + 1))", "engine": false, "engine_t": 55.8, "sympy": false, "sympy_t": 37.2}
+{"level": 7, "integrand": "5*(x*log(5*x) + (x**2 + 1)*atan(x))/(x*(x**2 + 1))", "engine": false, "engine_t": 61.0, "sympy": false, "sympy_t": 26.6}
+{"level": 7, "integrand": "(24*x + 12)*cos(3*x**2 + 3*x + 1)", "engine": true, "engine_t": 0.2, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "4*sqrt(x**2)/x", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "12*((2*x - 1)*log(1 - 2*x) + (4*x**2 + 1)*atan(2*x))/((2*x - 1)*(4*x**2 + 1))", "engine": false, "engine_t": 42.1, "sympy": false, "sympy_t": 32.1}
+{"level": 7, "integrand": "-32*x*log(2*x)*sin(4*x**2 + 4) + 4*cos(4*x**2 + 4)/x", "engine": true, "engine_t": 1.9, "sympy": false, "sympy_t": 0.4}
+{"level": 7, "integrand": "-8*sin(sin(2*x))*cos(2*x)", "engine": true, "engine_t": 0.3, "sympy": true, "sympy_t": 0.1}
+{"level": 7, "integrand": "-4*sin(log(4*x + 2))/(2*x + 1)", "engine": true, "engine_t": 0.3, "sympy": true, "sympy_t": 11.9}
+{"level": 7, "integrand": "(5*x*(2*x**2 - 3*x + 3)*(3*x*log(x)*cos(3*x) + 2*log(x)*sin(3*x) + sin(3*x))*log(2*x**2 - 3*x + 3) + 24*x - 18)/((2*x**2 - 3*x + 3)*log(2*x**2 - 3*x + 3))", "engine": false, "engine_t": 120.0, "sympy": false, "sympy_t": 60.0}
+{"level": 7, "integrand": "2*(-x*(4*x - 1)*log(3*x)*sin(2*x**2 - x + 2) + cos(2*x**2 - x + 2))/x", "engine": true, "engine_t": 4.4, "sympy": true, "sympy_t": 0.2}
+{"level": 7, "integrand": "5*(3*(2*x - 1)*(4*x**2 + 1)*atan(2*x) + 2*(3*x**2 - 3*x + 2)*log(3*x**2 - 3*x + 2))/((4*x**2 + 1)*(3*x**2 - 3*x + 2))", "engine": false, "engine_t": 120.0, "sympy": false, "sympy_t": 34.5}
+{"level": 7, "integrand": "8*x - 2", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "(8*x - 3)/(2*sqrt(4*x**2 - 3*x + 2))", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "-6*x*tan(x) + 6*log(cos(x))", "engine": false, "engine_t": 19.4, "sympy": false, "sympy_t": 0.2}
+{"level": 7, "integrand": "-18*x*sin(sin(3*x))*cos(3*x) + 6*cos(sin(3*x))", "engine": true, "engine_t": 0.2, "sympy": false, "sympy_t": 42.9}
+{"level": 7, "integrand": "4/sqrt(4*x + 3)", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "2*x*(-3*x*sin(3*x + 1) + 2*cos(3*x + 1))", "engine": true, "engine_t": 0.2, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "(12*x + 6)*sqrt(x**2 + x + 2)", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "3*(2*x*(x + 3)*log(x*(x + 3)) + (2*x + 3)*(4*x**2 + 1)*atan(2*x))/(x*(x + 3)*(4*x**2 + 1))", "engine": false, "engine_t": 11.1, "sympy": false, "sympy_t": 60.0}
+{"level": 7, "integrand": "15/(2*sqrt(3*x + 1))", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "72*sqrt(x)", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "(18*x - 6)*sqrt(3*x**2 - 2*x + 4)", "engine": true, "engine_t": 0.1, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "2*(2*(3*x + 2)*log(3*x + 2) + 3*(4*x**2 + 1)*atan(2*x))/((3*x + 2)*(4*x**2 + 1))", "engine": false, "engine_t": 9.2, "sympy": false, "sympy_t": 21.9}
+{"level": 7, "integrand": "(12*x*log(4*x) + 4)*exp(3*x + 4)/x", "engine": false, "engine_t": 0.9, "sympy": true, "sympy_t": 0.1}
+{"level": 7, "integrand": "6*(2*x - 1)*cos(log(3*x**2 - 3*x + 1))/(3*x**2 - 3*x + 1)", "engine": true, "engine_t": 0.4, "sympy": true, "sympy_t": 0.5}
+{"level": 7, "integrand": "4*(2*x - 1)/sqrt(2*x**2 - 2*x + 3)", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "-40*x*sin(4*x**2 + 4) - 2*(5*x + 2)*sin(5*x**2 + 4*x + 4)", "engine": true, "engine_t": 1.3, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "-18*sin(3*x)*cos(cos(3*x))", "engine": true, "engine_t": 0.2, "sympy": true, "sympy_t": 0.7}
+{"level": 7, "integrand": "3*x*(x*cos(x) + 2)*exp(sin(x))", "engine": false, "engine_t": 24.3, "sympy": true, "sympy_t": 0.3}
+{"level": 7, "integrand": "21/(2*sqrt(7*x + 1))", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "-3*tan(3*x)", "engine": false, "engine_t": 39.6, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "3*(-4*x*sin(log(4*x + 1)) + (4*x + 1)*cos(log(4*x + 1)))/(4*x + 1)", "engine": false, "engine_t": 6.0, "sympy": true, "sympy_t": 0.3}
+{"level": 7, "integrand": "-6*sin(x)*cos(cos(x))", "engine": true, "engine_t": 0.5, "sympy": true, "sympy_t": 0.1}
+{"level": 7, "integrand": "3*((8*x - 1)*(x**2 + 1)*atan(x) + (4*x**2 - x + 4)*log(4*x**2 - x + 4))/((x**2 + 1)*(4*x**2 - x + 4))", "engine": false, "engine_t": 64.7, "sympy": false, "sympy_t": 32.2}
+{"level": 7, "integrand": "20*x*cos(5*x**2) - 3*sin(x)*cos(cos(x))", "engine": true, "engine_t": 0.4, "sympy": true, "sympy_t": 0.1}
+{"level": 7, "integrand": "x**2/(x**2 + x + 2)**2 + 7*x/(x**2 + x + 2)**2 - 6*sin(sin(3*x))*cos(3*x) + 5 + 3/(2*(x**2 + x + 2)**2)", "engine": false, "engine_t": 24.6, "sympy": true, "sympy_t": 0.9}
+{"level": 7, "integrand": "2*((4*x + 3)*(9*x**2 + 1)*atan(3*x) + 3*(2*x**2 + 3*x + 1)*log(2*x**2 + 3*x + 1))/((9*x**2 + 1)*(2*x**2 + 3*x + 1))", "engine": false, "engine_t": 63.3, "sympy": false, "sympy_t": 60.0}
+{"level": 7, "integrand": "5*(x*log(4*x)*cos(log(x + 3)) + (x + 3)*sin(log(x + 3)))/(x*(x + 3))", "engine": false, "engine_t": 120.0, "sympy": true, "sympy_t": 3.2}
+{"level": 7, "integrand": "-8*sin(log(6*x + 3))/(2*x + 1)", "engine": true, "engine_t": 0.3, "sympy": true, "sympy_t": 12.5}
+{"level": 7, "integrand": "(4*x*(4*x**2 - x + 1)*(-3*x*log(4*x)*sin(3*x) + 2*log(4*x)*cos(3*x) + cos(3*x)) + (24*x - 3)*cos(log(4*x**2 - x + 1)))/(4*x**2 - x + 1)", "engine": false, "engine_t": 120.0, "sympy": false, "sympy_t": 60.0}
+{"level": 7, "integrand": "(4*x + 3)/(2*x**2 + 3*x + 4)", "engine": true, "engine_t": 0.2, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "(4*x - 3)/sqrt(2*x**2 - 3*x + 2)", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "6*(8*x + 1)*cos(log(4*x**2 + x + 1))/(4*x**2 + x + 1)", "engine": true, "engine_t": 0.2, "sympy": true, "sympy_t": 0.4}
+{"level": 7, "integrand": "((x**2 + 1)*((4 - 20*x)*sin(5*x**2 - 2*x + 1) + (12 - 32*x)*sin(4*x**2 - 3*x + 4) + 5) + 3)/(x**2 + 1)", "engine": true, "engine_t": 12.9, "sympy": true, "sympy_t": 0.7}
+{"level": 7, "integrand": "5*(3*(2*x + 1)*log(2*x + 1) + 2*(9*x**2 + 1)*atan(3*x))/((2*x + 1)*(9*x**2 + 1))", "engine": false, "engine_t": 190.0, "sympy": false, "sympy_t": 32.6}
+{"level": 7, "integrand": "5*sqrt(6)/(2*sqrt(x))", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "sqrt(x*(x + 3))*(9*x + 27/2)", "engine": true, "engine_t": 0.1, "sympy": true, "sympy_t": 0.1}
+{"level": 7, "integrand": "4*(x*log(5*x) + (x**2 + 1)*atan(x))/(x*(x**2 + 1))", "engine": false, "engine_t": 64.7, "sympy": false, "sympy_t": 27.7}
+{"level": 7, "integrand": "sqrt(x*(x + 1))*(6*x + 3)", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.1}
+{"level": 7, "integrand": "-(2*x + 3)*(3*x**2 - x + 4)/(x**2 + 3*x + 5)**2 + 4*(6*x - 2)*cos(log(3*x**2 - 2*x + 3))/(3*x**2 - 2*x + 3) + (6*x - 1)/(x**2 + 3*x + 5) + 1", "engine": false, "engine_t": 7.0, "sympy": true, "sympy_t": 0.5}
+{"level": 7, "integrand": "4*(3*(4*x + 3)*log(4*x + 3) + 4*(9*x**2 + 1)*atan(3*x))/((4*x + 3)*(9*x**2 + 1))", "engine": false, "engine_t": 120.0, "sympy": false, "sympy_t": 34.4}
+{"level": 7, "integrand": "3/sqrt(x + 2)", "engine": true, "engine_t": 0.0, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "4*(2*x + 1)/(x*(x + 1))", "engine": true, "engine_t": 0.5, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "8*x*exp(4*x**2 + 4)", "engine": true, "engine_t": 0.1, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "2*(x*(8*x - 3)*log(x) + (4*x**2 - 3*x + 4)*log(4*x**2 - 3*x + 4)*log(log(4*x**2 - 3*x + 4)))/(x*(4*x**2 - 3*x + 4)*log(4*x**2 - 3*x + 4))", "engine": false, "engine_t": 1.2, "sympy": true, "sympy_t": 0.2}
+{"level": 7, "integrand": "(-4*x*(x**3 - 3*x + 4) + 3*(x**2 - 1)*(2*x**2 + 5) + (2*x**2 + 5)**2*(8*cos(2*x)*cos(sin(2*x)) + 5))/(2*x**2 + 5)**2", "engine": false, "engine_t": 10.4, "sympy": false, "sympy_t": 27.0}
+{"level": 7, "integrand": "8*(x - 1)/(x**2 - 2*x + 2)", "engine": true, "engine_t": 0.1, "sympy": true, "sympy_t": 0.0}
+{"level": 7, "integrand": "(x*(4*x + 3)*(x**2 + 1)*(12*x**2 - 1)*(4*x**3 + x + 5) + x*(4*x + 3)*(x**2 + 1)*sqrt(4*x**3 - x + 5)*((24*x**2 + 2)*sqrt(4*x**3 - x + 5) + 8*exp(4*x)*sin(3*x) + 6*exp(4*x)*cos(3*x) + 1) + 7*x*(4*x + 3)*sqrt(4*x**3 - x + 5) + 5*(8*x + 3)*(x**2 + 1)*sqrt(4*x**3 - x + 5)*cos(log(x*(4*x + 3))))/(x*(4*x + 3)*(x**2 + 1)*sqrt(4*x**3 - x + 5))", "engine": false, "engine_t": 120.0, "sympy": false, "sympy_t": 60.0}

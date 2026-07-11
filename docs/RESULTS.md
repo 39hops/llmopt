@@ -925,6 +925,32 @@ verify-without-heurisch (+17 points from zero new knowledge), and
 the router itself (141/150 @ 167s). The magic-estimator judge-slot
 list gains its biggest client: the engine's own front door.
 
+## L6/L7 and the engine-vs-sympy probe (2026-07-11)
+
+New generator levels after the engine hit 95.6% same-seed L5: L6 =
+coordination depth (triple-family sums, cross-products, quotient
+debris, degree-2 trig/exp arguments), L7 = nesting (compositions of
+compositions; chain-rule cascades). 60 problems each, engine (120s
+wall) vs sympy.integrate (fork-isolated, 60s deadline — it hangs):
+
+- L6: engine 36/60 (60%) vs sympy 56/60 (93%) — heurisch is strong
+  exactly on constructed-solvable shallow composition.
+- L7: engine 36/60 (60%) vs sympy 42/60 (70%) — the engine HOLDS at
+  depth while sympy drops 23 points: search degrades slower than
+  heurisch as nesting deepens.
+- 3 MONEY problems (engine solves, sympy fails; certified by sympy's
+  own differentiator): all chain/reverse-product shapes, engine
+  0.2-4.2s. -18x*sin(sin(3x))*cos(3x)+6cos(sin(3x)) in 0.2s.
+
+Consequence (Artin's cascade): the two are COMPLEMENTARY — sympy
+closes, the engine navigates. i_heurisch (sympy.integrate as an
+op-capped, timeboxed, diff-verified leaf-closer rule) is in;
+integration race pending. Side casualty with a lesson: adding the
+rule grew the live syndrome vector and crashed every trained net —
+checkpoints now PIN their training-time syndrome vocab (the config-
+pinning lesson, tensor-shape edition). Banked: parallel leaf closing
+(spec-decoding's batch-verify amortization applied to i_heurisch).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
