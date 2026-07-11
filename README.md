@@ -4,6 +4,24 @@ LLM inference + training optimization lab. Small, readable implementations of th
 
 ## Highlights
 
+**The derivation engine, current state (2026-07-11)** — oracle-verified
+integration search, every claim raced out-of-sample (`docs/RESULTS.md`
+for the measurement-by-measurement history): same-seed L5
+**42% → 95.6%** (autopsy-derived rules + node-cost work: killing a
+heurisch call in the verifier bought ~2000x cheaper edges, which
+bought beam width 3). Production `solve()` is a two-brain system
+routed per problem by a learned dispatcher (root features + rule-fire
+syndromes → syndrome policy vs markov prior;
+disagreement-oversampled labels): three consecutive out-of-sample
+router wins over both pure brains, latest **144/150 @ 344s vs 526s
+(policy) / 469s (markov)**. House law, the FA Law: *verified speed
+is intelligence* — at fixed wall, cheap nodes convert to solves.
+Nulls with mechanisms along the way: two prior re-mines regressed
+(race merged priors before adopting), a pure-L5 DAgger round
+regressed (don't skew corrections entirely to the failure domain),
+dispatcher v1 degenerated on imbalanced labels (fix the farm, not
+the net).
+
 Qwen2.5-3B-Instruct fp16, single prompt, greedy, 150 new tokens (`scripts/bench_lookup_static.py`):
 
 | Config | tok/s | Speedup |
