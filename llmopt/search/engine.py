@@ -174,20 +174,48 @@ def solve(expr: sp.Expr, *, budget: int = 200,
     # raced L5 238/249 (95.6%, from 223) at 3.5x LESS wall; L3 +1,
     # L4 tied on 60-problem samples. Width 2 lost composition-fragile
     # chains whose every rule existed (9-problem residue -> 8 solved).
-    # Brain: estimator-routed (2026-07-10 night, "verified speed is
-    # intelligence"): magic-estimator cost head at the root dispatches
-    # policy (cost <= 5.5) vs markov (deep chains, where markov is 3x
-    # faster at tied solves). Out-of-sample, 150 fresh problems:
-    # routed 141/150 @ 167s vs policy 139 @ 337s vs markov 130 @ 429s
-    # — STRICT dominance on both axes. Threshold 5.5 was fixed before
-    # the OOS draw. Fallbacks: policy-only, then markov-only, as
-    # checkpoints allow; explicit prior= forces markov.
+    # Brain: dispatcher-net routed (2026-07-10/11, "verified speed is
+    # intelligence"). Route history, three OOS bands: threshold-5.5
+    # on estimator cost beat both pures twice (141/150@167s,
+    # 126/130@164s); dispatcher v2 (features + root rule-fire
+    # syndromes -> which brain; disagreement-oversampled labels,
+    # disagreement acc 0.883) then TIED the threshold's solves at 18%
+    # less wall on band 3 (144/150 @ 344s vs 417s) — adopted by the
+    # FA-Law tiebreak. Fallback chain: dispatcher -> threshold ->
+    # policy-only -> markov, per available checkpoints; explicit
+    # prior= forces markov.
     if prior is None and _POLICY_PATH.exists():
         pol = SyndromePolicy.load().proposer()
+        proposer = pol
+        import torch
+        disp_path = _POLICY_PATH.parent / "dispatcher_v2.pt"
         est_path = _POLICY_PATH.parent / "magic_estimator_v5.pt"
-        if est_path.exists():
-            import torch
-
+        if disp_path.exists():
+            from llmopt.search.features import featurize
+            from llmopt.search.rules import INT_RULES
+            dp = torch.load(disp_path, weights_only=False)
+            dnet = torch.nn.Sequential(
+                torch.nn.Linear(len(dp["mu"]), 64), torch.nn.ReLU(),
+                torch.nn.Linear(64, 64), torch.nn.ReLU(),
+                torch.nn.Linear(64, 1))
+            dnet.load_state_dict(dp["state_dict"])
+            dnet.eval()
+            node = max(expr.atoms(sp.Integral), key=sp.count_ops,
+                       default=None)
+            synd = []
+            for _, rule in INT_RULES:
+                try:
+                    synd.append(1.0 if node is not None and rule(node)
+                                else 0.0)
+                except Exception:
+                    synd.append(0.0)
+            f = torch.tensor([featurize(expr) + synd],
+                             dtype=torch.float32)
+            with torch.no_grad():
+                logit = dnet((f - dp["mu"]) / dp["sd"]).item()
+            if logit <= 0:
+                proposer = MarkovPrior.load().proposer()
+        elif est_path.exists():
             from llmopt.search.features import featurize
             pay = torch.load(est_path, weights_only=False)
             f = torch.tensor([featurize(expr)], dtype=torch.float32)
@@ -199,10 +227,8 @@ def solve(expr: sp.Expr, *, budget: int = 200,
             est.eval()
             with torch.no_grad():
                 _, cost = est((f - pay["mu"]) / pay["sd"])
-            proposer = (MarkovPrior.load().proposer()
-                        if cost.item() > 5.5 else pol)
-        else:
-            proposer = pol
+            if cost.item() > 5.5:
+                proposer = MarkovPrior.load().proposer()
     else:
         proposer = (prior or MarkovPrior.load()).proposer()
     return beam_search(

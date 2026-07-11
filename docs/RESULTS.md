@@ -879,7 +879,20 @@ magic-estimator cost head (<= 5.5 -> policy, else markov), with
 policy-only and markov-only fallbacks as checkpoints allow. Both
 smoke branches verified; 342 tests green.
 
-Dispatcher net (the +3 ceiling chase, same night): NULL with
+Dispatcher v2 (next session): disagreement-oversampled farming fixes
+v1's economics AND its null — markov-wins only exist where the
+policy fails or is slow, so the v2 farmer runs the policy arm on
+everything and spends markov runs only there (fast ties subsampled
+10%): 410 rows with 31% markov-wins at a fraction of v1's cost.
+Disagreement accuracy 0.750 -> 0.883 (n=60). Race 3 (fourth virgin
+band): **dispatch_v2 144/150 @ 344s vs thr5.5 144 @ 417s** vs policy
+142 @ 526s vs markov 139 @ 469s — ties the champion's solves at 18%
+less wall; ADOPTED by the FA-Law tiebreak (routing overhead ~14
+timeboxed rule probes/problem, ~15-30s per 150, not counted in race
+walls for either router but does not close the 73s gap). solve()'s
+fallback chain: dispatcher -> threshold -> policy -> markov.
+
+Dispatcher v1 (the first ceiling chase, for the record): NULL with
 mechanism. 1,192 dual-arm dominance labels (winner by (solved,
 wall)); offline disagreement accuracy 0.750 (n=32). Live, 4-arm race
 on a second virgin band: thr5.5 126/130 @ 164s (the champion
