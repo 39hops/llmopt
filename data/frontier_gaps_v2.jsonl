@@ -1,0 +1,14 @@
+{"level": 5, "seed": 985157, "integrand": "2*x*log(x) + x + 4 + 21/sqrt(1 - 9*x**2)", "solved": false, "lognodes": 7.076815597050831}
+{"level": 3, "seed": 985057, "integrand": "(-x*(9*log(x) + 2)*sin(x) + 9*cos(x))/x", "solved": false, "lognodes": 6.94251450533924}
+{"level": 5, "seed": 985126, "integrand": "6*x**2*log(5*x)**2 + 4*x**2*log(5*x) + 1 + 16/sqrt(1 - 4*x**2)", "solved": false, "lognodes": 7.044394119358453}
+{"level": 5, "seed": 985474, "integrand": "27*x**2*log(2*x)**2 + 18*x**2*log(2*x) + 1 + 18/sqrt(1 - 4*x**2)", "solved": false, "lognodes": 7.098032082960526}
+{"level": 3, "seed": 985150, "integrand": "(-x*(3*log(x) + 4)*sin(x) + 3*cos(x))/x", "solved": false, "lognodes": 6.965784284662087}
+{"level": 5, "seed": 985484, "integrand": "((9*x**2 + 1)*(27*exp(3*x)*sin(2*x) + 18*exp(3*x)*cos(2*x) + 5) + 21)/(9*x**2 + 1)", "solved": false, "lognodes": 7.076815597050831}
+{"level": 4, "seed": 985261, "integrand": "16*x*(10*x - 3)*cos(5*x**2 - 3*x + 5) - 8*(9*sin(9*x) - 1)*cos(x + cos(9*x) + 4) + 16*sin(5*x**2 - 3*x + 5)", "solved": false, "lognodes": 6.554588851677638}
+{"level": 5, "seed": 985526, "integrand": "14*x*log(4*x) + 7*x + 1 + 16/sqrt(1 - 4*x**2)", "solved": false, "lognodes": 7.022367813028454}
+{"level": 5, "seed": 985461, "integrand": "4*x*log(x) + 2*x + 3 + 21/sqrt(1 - 9*x**2)", "solved": false, "lognodes": 7.108524456778169}
+{"level": 5, "seed": 985267, "integrand": "14*x*log(4*x) + 7*x + 1 + 4/sqrt(1 - x**2)", "solved": false, "lognodes": 7.129283016944966}
+{"level": 5, "seed": 985456, "integrand": "12*x*log(2*x) + 6*x + 1 + 7/sqrt(1 - x**2)", "solved": false, "lognodes": 7.044394119358453}
+{"level": 5, "seed": 985536, "integrand": "6*x**2*log(x) + 2*x**2 + 3 + 12/sqrt(1 - 9*x**2)", "solved": false, "lognodes": 7.087462841250339}
+{"level": 5, "seed": 985531, "integrand": "((18*x**2 + 2)*(exp(x)*sin(3*x) + 3*exp(x)*cos(3*x) + 1) + 15)/(9*x**2 + 1)", "solved": false, "lognodes": 7.087462841250339}
+{"level": 5, "seed": 985173, "integrand": "((x**2 + 1)*(-2*exp(3*x)*sin(2*x) + 3*exp(3*x)*cos(2*x) + 3) + 2)/(x**2 + 1)", "solved": false, "lognodes": 7.098032082960526}
