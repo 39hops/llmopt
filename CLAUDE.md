@@ -21,12 +21,17 @@ implementations. See README for the full inventory and measured numbers.
   possible bodies). Widen the generator space before trusting a split.
 - Benchmarks report honest losses too (Metal attention_decode losing to
   GEMV, first paged-attention cut losing to gather+SDPA). Keep that.
-- **Any code path calling `make_integrate` on L4/L5 seeds needs fork
-  isolation** (`gen_magic_labels.solve_isolated` pattern: fork, join
-  with deadline, SIGKILL). Its `simplify(diff(F))` hangs in loops that
-  never deliver SIGALRM (sympy pathology #7) — bit four separate call
-  sites in one day (labeling, autopsy probe, guided ordering,
-  budget bench) before this rule was written.
+- **NO sympy call is safely boxed by SIGALRM — fork is the only real
+  timebox** (fork, join with deadline, SIGKILL: the
+  `gen_magic_labels.solve_isolated` pattern). Generalized 2026-07-12
+  from pathology #7 (`make_integrate` on L4+/L8 seeds — FIVE call
+  sites bitten, including the farm loops themselves) after the
+  alarm-boxed oracle live-locked anyway (pathology #10). Applies to
+  generation, rules, routing probes, verifiers, and any
+  oracle-on-model-text. Corollary: workers killed by an outer wall
+  must STREAM their rows out incrementally, or the killed class is
+  invisible to whatever trains on the data (the checkpoint
+  selection-effect; bit three times).
 - **Never score weights by weight distance.** The same function lives at
   many weight arrangements (neuron permutations, rescalings), so
   matching numbers is the wrong target for anything that predicts,
@@ -65,15 +70,24 @@ ready) with 0.5B–3B students.
 
 ## Active research threads
 
+**`docs/BOARD.md` is the live status board** — every thread as
+LIVE/BANKED/CLOSED with pointers; check it before starting work.
+`docs/RESULTS.md` holds verdicts, `docs/RIFF-LEDGER.md` holds
+idea provenance, `docs/LOOP-LOG.md` tracks expert-iteration rounds.
+
+- **Step-level expert iteration** (the founding goal, LIVE since
+  2026-07-12): model emits one verified rewrite per call, trained on
+  oracle-approved chains (engine-replay seed + on-policy), frontier-
+  adaptive loop with tripwires — `scripts/expert_loop.py`, spec in
+  docs/superpowers/specs/. Judges beware the meta-pattern:
+  **prediction pays only where variance lives** (four judges starved
+  in one day when the engine improved under them).
 - Capability ladder (`codegen/ladder.py` + `scripts/bench_ladder.py`):
   which rung a small model climbs — encode/decode (learned mapping) train
   up; output/o2_asm (simulation) resist. Every rung toolchain-scored.
-- mathgen calculus: 0.5B LoRA 15.7% → 65.7% symbolic accuracy on
-  provably-unseen problems; limits need step traces (`make_limit_traced`).
-- Expert iteration ("chess-engine framing"): generator = self-play
-  opponent, oracle = game rules, train on verifier-approved step chains,
-  raise difficulty at the model's frontier. The step-level search version
-  (model scores candidate rewrites) is the long-term goal.
+- mathgen calculus: the engine now leads sympy.integrate at every
+  level (L5 100%, L8 37/40); the open residue is simplify-fused
+  multi-family quotients.
 
 ## Practical
 
