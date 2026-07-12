@@ -34,6 +34,7 @@ See RESULTS.md for every number below.)
 | "Break the token apart — or make them a lot bigger?" | regret at unit-cost scale: token level (1.5:1) nulls, engine level (400:1) pays — 176 v 82 solves at equal wall | 2.1x throughput; regret needs a minimum unit cost. LLM side: step-tokens (verified rewrite per call) 5/30 v one-shot 0/30 at equal budget — a 5%-valid generator ratchets to a solver |
 | "Switching between high and low entropy states — that could be the speed part" | the entropy round-trip frame: propose=up, verify=down, intelligence=cycle RATE (FA Law's thermodynamic reading; Landauer prices the down-stroke) | frame, banked; retro-explains the entropy-beam null (up-stroke alone) |
 | "Skip the text conversion — COCONUT, but we have the valid steps" | latent-between-anchors: opaque reasoning between ORACLE-VERIFIED anchors (the pincer logic applied to depth); + macro-distillation: skip-pairs (state_i -> state_{i+k}) are verified FOR FREE by transitivity — rule composition as data augmentation | skip-pairs GO (post round-1 verdict); latent frame banked |
+| "Where does variance live? code? conjectures?" | the site-selection map: oracle latency sets minimum unit size (compile -> patch-sized steps); code-perf = wall-clock oracle (kernels, tile autotuning); proofs = Lean oracle (AlphaProof IS our loop at scale); "we can engine anything with a referee" | banked — the where-next doc in embryo |
 
 Standing lesson, earned nine sympy pathologies and four adoption
 races deep: the analogies are proposals, the oracle is the judge,
