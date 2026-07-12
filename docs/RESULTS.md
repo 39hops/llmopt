@@ -1179,6 +1179,25 @@ WORKLOAD-DEPENDENT: scoreboards on fixed sets keep the pure engine;
 throughput workloads (label farming, frontier laps, expert
 iteration) want the abort. Not wired into solve() by default.
 
+## Step-tokens: the LLM's unit of generation becomes a verified rewrite (2026-07-12)
+
+Artin's bigger-tokens riff, LLM side (the engine side already paid:
+one ply = one verified macro-token -> 2.1x). bench_step_tokens.py:
+base Qwen 0.5B instruct + few-shot emits ONE derivation step per
+call (a candidate rewrite of the current integral as sympy text);
+the oracle verifies each step fork-isolated before it stands;
+invalid steps are resampled — progress is a RATCHET, hallucination
+costs budget but never corrupts the chain. At equal 768-token
+budget on L2/L3: **steps 5/30 vs one-shot best-of-N 0/30**, with
+step validity only 5% (38/709) — the verification filter converts
+a 95%-wrong generator into a solver. Honest caveats: base model
+(the calculus LoRA is answer-only trained and never saw steps),
+easy levels, and the one-shot baseline may be partly format-limited
+(same model, same verifier, but single-expression output is
+unforgiving). Sequel is the repo's long-term goal made concrete:
+train on the verified chains (step-level expert iteration) — the
+5% validity rate is the number training should move.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
