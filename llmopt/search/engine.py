@@ -160,7 +160,8 @@ class MarkovPrior:
 def solve(expr: sp.Expr, *, budget: int = 200,
           prior: MarkovPrior | None = None,
           llm_score_fn: Callable | None = None,
-          use_macros: bool = True, magic: bool = True) -> SearchResult:
+          use_macros: bool = True, magic: bool = True,
+          ply_hook: Callable | None = None) -> SearchResult:
     """Solve with the measured-best configuration.
 
     Without llm_score_fn: markov3 @ width 2 (334/360-class with the
@@ -178,7 +179,7 @@ def solve(expr: sp.Expr, *, budget: int = 200,
             proposer=make_scoring_proposer(llm_score_fn),
             propose_k=entropy_k(1, 3, temperature=0.1),
             use_macros=use_macros, verify_p=0.1,
-            state_filter=state_filter)
+            state_filter=state_filter, ply_hook=ply_hook)
     # width 3 since 2026-07-10 node-cost round 2: the verify fix
     # (doit(integrals=False)) made nodes cheap enough to widen —
     # raced L5 238/249 (95.6%, from 223) at 3.5x LESS wall; L3 +1,
@@ -257,4 +258,4 @@ def solve(expr: sp.Expr, *, budget: int = 200,
         expr, width=3, max_plies=24, max_nodes=budget,
         proposer=proposer, propose_k=3,
         use_macros=use_macros, verify_p=0.1,
-        state_filter=state_filter)
+        state_filter=state_filter, ply_hook=ply_hook)

@@ -401,6 +401,7 @@ def beam_search(
     state_filter: "Callable[[State], bool] | None" = None,
     select_fn: "Callable[[list[State], int], list[State]] | None" = None,
     expand_rules: "Callable[[State], set[str] | None] | None" = None,
+    ply_hook: "Callable[[int, list[State], int], bool] | None" = None,
 ) -> SearchResult:
     """Minimize hce over the rewrite tree. Returns the best solved
     state found, else the best-evaluated state at exhaustion."""
@@ -411,7 +412,7 @@ def beam_search(
     best_solved: State | None = None
     visited = {root.key()}
     nodes = 1
-    for _ in range(max_plies):
+    for ply in range(max_plies):
         candidates: list[State] = []
         for s in beam:
             # policy-gated expansion: evaluate only the predicted rule
@@ -472,6 +473,14 @@ def beam_search(
         # a solved state that also tops the beam won't improve: stop
         if best_solved is not None and eval_fn(best_solved) <= eval_fn(beam[0]):
             break
+        # engine-level regret (2026-07-12): the wall anatomy says
+        # solves average ~0.3s and failures burn the 120s wall — a
+        # hook that reads the live beam and predicts doom lets the
+        # caller abort and bank the wall. Observation point only;
+        # policy (probe + swept threshold) lives with the caller.
+        if ply_hook is not None and best_solved is None:
+            if ply_hook(ply, beam, nodes):
+                break
     if best_solved is not None:
         if verify_p < 1.0 and not replay_verify(expr, best_solved.history):
             # sampled mode let a corrupted path through: discard, report
