@@ -17,6 +17,8 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 | Thread | Waiting on | Pointer |
 |---|---|---|
 | Fused-quotient residue (L8's last 3) | rule synthesis design; the step-model may reach it first | RESULTS "L8 autopsy" |
+| Derivation-expanded chains | round-3 candidate: verbalize i_linear_basis's INTERNAL derivation (ansatz -> coefficient system -> answer) so one-ply solves teach the HOW, not input->output; the LLM sees how the engine derived it | expert_iter round-1 autopsy |
+| Syndrome-conditioned prompting | round-3 candidate: prepend the rule-fire syndrome as text hints to the step prompt — the LLM gets the engine's sensory organs (quantum-magic-for-the-LLM, Artin's ask) | RIFF-LEDGER |
 | LLM rule synthesis (heurisch-as-teacher) | frontier targets exist now | RIFF-LEDGER |
 | Latent-between-anchors (COCONUT-shaped) | step-model maturity | RIFF-LEDGER |
 | Temporal-pincer verification | backward-LM training run | memory + RIFF-LEDGER |
