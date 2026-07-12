@@ -834,12 +834,21 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
         # trig'*p'/p — clearing by p keeps the family d/dx-closed, so
         # log-arg trig gens are admissible; their inner poly joins the
         # clear multiplier below.
+        # admit log args WITH constant offsets: make_integrate's
+        # simplify phase-shifts trig sums (cos(log 6x) - sin(log 6x)
+        # -> sqrt(2)*cos(log(x) + pi/4 + log(6)), measured on the L8
+        # residue), so the arg arrives as const + log(poly)
+        _, vr = v.as_independent(x)
         if (v.is_polynomial(x)
-                or (isinstance(v, sp.log)
-                    and v.args[0].is_polynomial(x))):
+                or (isinstance(vr, sp.log)
+                    and vr.args[0].is_polynomial(x))):
             args.append(v)
     trig = [g for v in args for g in (sp.sin(v), sp.cos(v))]
-    trig_log_inners = [v.args[0] for v in args if isinstance(v, sp.log)]
+    trig_log_inners = []
+    for v in args:
+        _, vr = v.as_independent(x)
+        if isinstance(vr, sp.log):
+            trig_log_inners.append(vr.args[0])
     exps = [e for e in f.atoms(sp.exp) if e.args[0].is_polynomial(x)
             and e.args[0].has(x)]
     # log generators (2026-07-11 L6 autopsy: 14/22 failures were
