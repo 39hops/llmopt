@@ -234,7 +234,66 @@ def i_sqrt_basis(node: sp.Integral) -> list[sp.Expr]:
         return []
     P = max((r.base for r in roots), key=sp.count_ops)
     h = sp.cancel(sp.expand(f * sp.sqrt(P)))
-    if not h.is_polynomial(x) or h.has(sp.sin, sp.cos, sp.exp, sp.log):
+    if h.has(sp.sin, sp.cos, sp.exp):
+        return []
+    # sqrt x log combination (L8 autopsy 2026-07-11: 5/10 of the L8
+    # probe misses were F = sqrt(P)*log(q) — the dominant residue).
+    # Ansatz (A(x) + B(x)*log(q)) * sqrt(P); multiplying the
+    # d/dx-residual by 2*sqrt(P)*q clears both the radical and the
+    # log-derivative denominator, leaving a Poly in (x, u=log(q)):
+    #   2*f*sqrt(P)*q = q*(2PA'+AP') + 2PBq' + [q*(2PB'+BP')]*u
+    if h.has(sp.log):
+        # content-normalize log args first (the L7 lesson: sympy
+        # mints log(c)+log(prim) mid-clearing, an atom outside the
+        # generator set)
+        rep = {}
+        for g in f.atoms(sp.log):
+            if g.args[0].is_polynomial(x) and g.args[0].has(x):
+                c0, prim = g.args[0].as_content_primitive()
+                if c0 != 1:
+                    rep[g] = sp.log(c0) + sp.log(prim)
+        if rep:
+            f = sp.expand(f.xreplace(rep))
+        logs = [g for g in f.atoms(sp.log)
+                if g.args[0].is_polynomial(x) and g.args[0].has(x)]
+        if len(logs) != 1:
+            return []
+        Lg = logs[0]
+        qpoly = Lg.args[0]
+        u = sp.Dummy("u")
+        h2 = sp.cancel(sp.expand(f * 2 * sp.sqrt(P) * qpoly))
+        h2 = sp.expand(h2.xreplace({Lg: u}))
+        try:
+            if not h2.is_polynomial(x, u) or sp.degree(h2, u) > 1:
+                return []
+        except sp.PolynomialError:
+            return []
+        Pp = sp.Poly(P, x)
+        degA = max(int(sp.degree(h2, x)) - Pp.degree() + 1, 0) + 1
+        if degA > 8:
+            return []
+        cs = sp.symbols(f"sl0:{2 * degA + 2}", cls=sp.Dummy)
+        A = sp.Add(*(cs[j] * x**j for j in range(degA + 1)))
+        B = sp.Add(*(cs[degA + 1 + j] * x**j for j in range(degA + 1)))
+        resid = sp.expand(
+            qpoly * (2 * sp.diff(A, x) * P + A * sp.diff(P, x))
+            + 2 * B * P * sp.diff(qpoly, x)
+            + qpoly * (2 * sp.diff(B, x) * P + B * sp.diff(P, x)) * u
+            - h2)
+        try:
+            pr = sp.Poly(resid, x, u)
+        except sp.PolynomialError:
+            return []
+        eqs = pr.coeffs()
+        if any(not e.has(*cs) for e in eqs if e != 0):
+            return []
+        sol = sp.solve(eqs, cs, dict=True)
+        if not sol:
+            return []
+        a = ((A + B * Lg).subs(sol[0]).subs({c: 0 for c in cs})
+             ) * sp.sqrt(P)
+        return [a] if a != 0 else []
+    if not h.is_polynomial(x):
         return []
     h = sp.Poly(sp.expand(h), x)
     Pp = sp.Poly(P, x)
@@ -767,9 +826,20 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
     args: list[sp.Expr] = []
     for fn in f.atoms(sp.sin, sp.cos):
         v = fn.args[0]
-        if v.has(x) and v.is_polynomial(x) and v not in args:
+        if not v.has(x) or v in args:
+            continue
+        # trig(log(p)) orbital (L8 autopsy 2026-07-11: the other half
+        # of the residue was F = x^k*trig(log(poly)) with QUADRATIC
+        # inners): d/dx[x^j*trig(log p)] = j*x^(j-1)*trig +- x^j*
+        # trig'*p'/p — clearing by p keeps the family d/dx-closed, so
+        # log-arg trig gens are admissible; their inner poly joins the
+        # clear multiplier below.
+        if (v.is_polynomial(x)
+                or (isinstance(v, sp.log)
+                    and v.args[0].is_polynomial(x))):
             args.append(v)
     trig = [g for v in args for g in (sp.sin(v), sp.cos(v))]
+    trig_log_inners = [v.args[0] for v in args if isinstance(v, sp.log)]
     exps = [e for e in f.atoms(sp.exp) if e.args[0].is_polynomial(x)
             and e.args[0].has(x)]
     # log generators (2026-07-11 L6 autopsy: 14/22 failures were
@@ -840,7 +910,10 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
 
     def _poly(e: sp.Expr) -> sp.Poly | None:
         try:
-            return sp.Poly(e.subs(ph), x, *ph.values())
+            # xreplace, not subs: log(p) can be BOTH a trig arg and a
+            # log gen — subs may rewrite the inner log(p) before the
+            # sin(log(p)) key matches; xreplace matches whole nodes
+            return sp.Poly(e.xreplace(ph), x, *ph.values())
         except sp.PolynomialError:
             return None
 
@@ -848,12 +921,17 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
     # atan(x)/x + log(u)/(1+x^2), the L7 pair family): gate and size
     # the ansatz on the DENOMINATOR-CLEARED integrand instead
     clear = sp.S.One
-    if logs or atans:
+    if logs or atans or trig_log_inners:
         # keep clear FACTORED and cancel poly-aware: the integrand's
         # denominators auto-combine (x*(x^2+1) -> x^3+x) and only
-        # sp.cancel matches them against the multiplier
-        clear = (x * sp.Mul(*(g.args[0] for g in logs))
-                 * sp.Mul(*((1 + g.args[0] ** 2) for g in atans)))
+        # sp.cancel matches them against the multiplier. trig(log(p))
+        # gens contribute p (their chain-rule denominator); dedupe
+        # against logs' args — log(p) inside a trig IS in f.atoms(log)
+        log_args = [g.args[0] for g in logs]
+        extra = [p for p in trig_log_inners if p not in log_args]
+        clear = (x * sp.Mul(*log_args)
+                 * sp.Mul(*((1 + g.args[0] ** 2) for g in atans))
+                 * sp.Mul(*extra))
     pf = _poly(sp.expand(sp.cancel(f * clear)))
     if pf is None:
         return []
