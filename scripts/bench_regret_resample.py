@@ -259,10 +259,111 @@ def phase_race(n_problems: int, k: int, seed_base: int,
     print("bar: regret > best_of_n at equal token budget")
 
 
+def phase_pool(n_problems: int, seed_base: int, pool: int,
+               out: Path) -> None:
+    """Round 2, farm half: FULL traces only (no aborts), logging every
+    checkpoint's probe probability + the oracle verdict per attempt.
+    The sweep phase replays abort policies offline against this pool —
+    the router playbook (raw signal -> offline threshold sweep -> only
+    then a live race). Round 1's naive 0.15@ckpt-8 policy lost 78 vs
+    100 precisely because it skipped this step."""
+    from llmopt.mathgen.problems import make_integrate
+    tok, model = load_model()
+    p_ = torch.load(PROBE, weights_only=False)
+    net = torch.nn.Sequential(
+        torch.nn.Linear(len(p_["mu"]), 128), torch.nn.ReLU(),
+        torch.nn.Linear(128, 1))
+    net.load_state_dict(p_["state_dict"])
+    net.eval()
+
+    def prob_ok(h):
+        with torch.no_grad():
+            return torch.sigmoid(
+                net((h - p_["mu"]) / p_["sd"])).item()
+
+    with out.open("w") as f:
+        for i in range(n_problems):
+            lv = 2 + i % 3
+            p = make_integrate(lv, seed_base + i)
+            prompt = build_prompt(tok, p)
+            for j in range(pool):
+                text, states, _, sp_ = sample_with_states(
+                    tok, model, prompt, seed=9000 + 7919 * j + i)
+                probs = {str(ck): round(prob_ok(h), 4)
+                         for ck, h in states.items()}
+                f.write(json.dumps(
+                    {"i": i, "level": lv, "j": j,
+                     "tokens": max(sp_, 1), "probs": probs,
+                     "correct": bool(_checked(p, text))}) + "\n")
+            if (i + 1) % 10 == 0:
+                print(f"POOL [{i+1}/{n_problems}]", flush=True)
+    print(f"POOL done -> {out}")
+
+
+def phase_sweep(problog: Path, k: int) -> None:
+    """Round 2, judgment half: replay abort policies (threshold x
+    min-checkpoint) against the farmed pool at the same token budget
+    the live race used. Aborting at checkpoint c costs c tokens; kept
+    attempts cost their full length and contribute their verdict.
+    Purely offline — a full grid costs seconds, not a night."""
+    import collections
+    budget = k * MAX_NEW
+    by: dict = collections.defaultdict(list)
+    with problog.open() as f:
+        for line in f:
+            r = json.loads(line)
+            by[r["i"]].append(r)
+    for rs in by.values():
+        rs.sort(key=lambda r: r["j"])
+
+    def run(thresh: float, min_ck: int):
+        solved = exhausted = 0
+        for rs in by.values():
+            used = 0
+            ok = False
+            it = iter(rs)
+            while used < budget:
+                r = next(it, None)
+                if r is None:          # pool ran dry before budget —
+                    exhausted += 1     # pessimistic for that policy
+                    break
+                ab = None
+                for ck in CKPTS:
+                    if ck < min_ck:
+                        continue
+                    pr = r["probs"].get(str(ck))
+                    if pr is not None and pr < thresh:
+                        ab = ck
+                        break
+                if ab is not None:
+                    used += ab
+                else:
+                    used += max(r["tokens"], 1)
+                    ok = ok or r["correct"]
+            solved += ok
+        return solved, exhausted
+
+    base, _ = run(-1.0, 0)  # never abort == best-of-N replay
+    n = len(by)
+    print(f"best-of-N replay: {base}/{n} (budget {budget} tok)")
+    rows = []
+    for min_ck in CKPTS:
+        for thresh in (0.05, 0.10, 0.15, 0.20, 0.30, 0.40, 0.50):
+            s, ex = run(thresh, min_ck)
+            rows.append((s, -ex, min_ck, thresh))
+            print(f"  min_ck={min_ck:2d} thresh={thresh:.2f}: "
+                  f"{s}/{n} (pool-exhausted {ex})")
+    s, ex, mc, th = max(rows)[0], -max(rows)[1], max(rows)[2], max(rows)[3]
+    print(f"SWEEP BEST: min_ck={mc} thresh={th:.2f} -> {s}/{n} "
+          f"vs best-of-N {base}/{n}")
+    print("bar: sweep best > best-of-N replay; if it clears, race the "
+          "winning config LIVE on fresh problems (round 3)")
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--phase", required=True,
-                    choices=["labels", "probe", "race"])
+                    choices=["labels", "probe", "race", "pool", "sweep"])
     ap.add_argument("--n-problems", type=int, default=150)
     ap.add_argument("--k", type=int, default=8)
     ap.add_argument("--seed-base", type=int, default=3_000_000)
@@ -270,10 +371,20 @@ if __name__ == "__main__":
                     default=Path("data/regret_trace_labels.jsonl"))
     ap.add_argument("--epochs", type=int, default=300)
     ap.add_argument("--thresh", type=float, default=0.15)
+    ap.add_argument("--pool", type=int, default=48)
+    ap.add_argument("--problog", type=Path,
+                    default=Path("data/regret_pool.jsonl"))
     a = ap.parse_args()
     if a.phase == "labels":
         phase_labels(a.n_problems, a.k, a.seed_base, a.labels)
     elif a.phase == "probe":
         phase_probe(a.labels, a.epochs)
+    elif a.phase == "pool":
+        # fresh problem block: probe was TRAINED on the 3M block and
+        # round 1 raced on 3.5M — the sweep judges on unseen ground
+        phase_pool(a.n_problems, a.seed_base + 1_000_000, a.pool,
+                   a.problog)
+    elif a.phase == "sweep":
+        phase_sweep(a.problog, a.k)
     else:
         phase_race(a.n_problems, a.k, a.seed_base + 500_000, a.thresh)
