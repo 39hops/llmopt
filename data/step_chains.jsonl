@@ -1,0 +1,622 @@
+{"cur": "Integral(40*x**4, x)", "nxt": "8*x**5", "level": 2}
+{"cur": "Integral(21*x**2 + 4*exp(x) - 4/x, x)", "nxt": "7*x**3 + 4*exp(x) - 4*log(x)", "level": 2}
+{"cur": "Integral(5*sin(x) + 9/x, x)", "nxt": "9*log(x) - 5*cos(x)", "level": 2}
+{"cur": "Integral(8*cos(x) - 7, x)", "nxt": "-7*x + 8*sin(x)", "level": 2}
+{"cur": "Integral(35*x**4 - 2*cos(x), x)", "nxt": "7*x**5 - 2*sin(x)", "level": 2}
+{"cur": "Integral(10*x - 3*sin(x), x)", "nxt": "5*x**2 + 3*cos(x)", "level": 2}
+{"cur": "Integral(2*x + 9*exp(x), x)", "nxt": "x**2 + 9*exp(x)", "level": 2}
+{"cur": "Integral(-20*x**4 + 3*x**2 + 9*exp(x), x)", "nxt": "-4*x**5 + x**3 + 9*exp(x)", "level": 2}
+{"cur": "Integral(2*x - 7*sin(x) - 2 + 4/x, x)", "nxt": "x**2 - 2*x + 4*log(x) + 7*cos(x)", "level": 2}
+{"cur": "Integral(-14*x + 10*exp(x), x)", "nxt": "-7*x**2 + 10*exp(x)", "level": 2}
+{"cur": "Integral(-35*x**4 + 8*sin(x) + 8, x)", "nxt": "-7*x**5 + 8*x - 8*cos(x)", "level": 2}
+{"cur": "Integral(-24*x**2 + cos(x) + 7, x)", "nxt": "-8*x**3 + 7*x + sin(x)", "level": 2}
+{"cur": "Integral(4*exp(x) + 6*cos(x), x)", "nxt": "4*exp(x) + 6*sin(x)", "level": 2}
+{"cur": "Integral(-2, x)", "nxt": "-2*x", "level": 2}
+{"cur": "Integral(28*x**3 + 8*sin(x) - 3*cos(x) - 3, x)", "nxt": "7*x**4 - 3*x - 3*sin(x) - 8*cos(x)", "level": 2}
+{"cur": "Integral(12*x**3 + 15*cos(x), x)", "nxt": "3*x**4 + 15*sin(x)", "level": 2}
+{"cur": "Integral(40*x**4 - 8*x**3 - 9*sin(x), x)", "nxt": "8*x**5 - 2*x**4 + 9*cos(x)", "level": 2}
+{"cur": "Integral(18*x**2 + 7, x)", "nxt": "6*x**3 + 7*x", "level": 2}
+{"cur": "Integral(3*sin(x) + 4*cos(x), x)", "nxt": "4*sin(x) - 3*cos(x)", "level": 2}
+{"cur": "Integral(8*x - cos(x), x)", "nxt": "4*x**2 - sin(x)", "level": 2}
+{"cur": "Integral(5*exp(x), x)", "nxt": "5*exp(x)", "level": 2}
+{"cur": "Integral(4*(9*x**4 + 1)/x, x)", "nxt": "9*x**4 + 4*log(x)", "level": 2}
+{"cur": "Integral(-7*exp(x) + 4*cos(x) + 9/x, x)", "nxt": "-7*exp(x) + 9*log(x) + 4*sin(x)", "level": 2}
+{"cur": "Integral(20*x**3, x)", "nxt": "5*x**4", "level": 2}
+{"cur": "Integral(-7*exp(x) + 8*sin(x), x)", "nxt": "-7*exp(x) - 8*cos(x)", "level": 2}
+{"cur": "Integral(9*exp(x) - 9 + 9/x, x)", "nxt": "-9*x + 9*exp(x) + 9*log(x)", "level": 2}
+{"cur": "Integral(18*x**2 + 5, x)", "nxt": "6*x**3 + 5*x", "level": 2}
+{"cur": "Integral(9*exp(x) - sin(x) - 7/x, x)", "nxt": "9*exp(x) - 7*log(x) + cos(x)", "level": 2}
+{"cur": "Integral(8*exp(x) + 7*cos(x), x)", "nxt": "8*exp(x) + 7*sin(x)", "level": 2}
+{"cur": "Integral(5*(3*x**5 + 1)/x, x)", "nxt": "3*x**5 + 5*log(x)", "level": 2}
+{"cur": "Integral(5*sin(x) - 1, x)", "nxt": "-x - 5*cos(x)", "level": 2}
+{"cur": "Integral(4/x, x)", "nxt": "4*log(x)", "level": 2}
+{"cur": "Integral(30*x**4 + 8 - 6/x, x)", "nxt": "6*x**5 + 8*x - 6*log(x)", "level": 2}
+{"cur": "Integral(x**2*(25*x**2 + 32*x - 3), x)", "nxt": "5*x**5 + 8*x**4 - x**3", "level": 2}
+{"cur": "Integral(-4*sin(x), x)", "nxt": "4*cos(x)", "level": 2}
+{"cur": "Integral(-7*sin(x) + 3/x, x)", "nxt": "3*log(x) + 7*cos(x)", "level": 2}
+{"cur": "Integral(40*x**4 + 13, x)", "nxt": "8*x**5 + 13*x", "level": 2}
+{"cur": "Integral(2*(6*x**3 + 1)/x, x)", "nxt": "4*x**3 + 2*log(x)", "level": 2}
+{"cur": "Integral(16*x - 5*exp(x) - 2*sin(x) + 3*cos(x), x)", "nxt": "8*x**2 - 5*exp(x) + 3*sin(x) + 2*cos(x)", "level": 2}
+{"cur": "Integral(20*x**4 - 8*exp(x) + 7*sqrt(2)*cos(x + pi/4), x)", "nxt": "4*x**5 - 8*exp(x) + 7*sqrt(2)*sin(x + pi/4)", "level": 2}
+{"cur": "Integral(12*x**2 + 5*cos(x) + 1 - 3/x, x)", "nxt": "4*x**3 + x - 3*log(x) + 5*sin(x)", "level": 2}
+{"cur": "Integral(6/x, x)", "nxt": "6*log(x)", "level": 2}
+{"cur": "Integral(8, x)", "nxt": "8*x", "level": 2}
+{"cur": "Integral(3*(17*x**3 - 1)/x, x)", "nxt": "17*x**3 - 3*log(x)", "level": 2}
+{"cur": "Integral(12*x**3 + 6*x + 3*cos(x) + 4, x)", "nxt": "3*x**4 + 3*x**2 + 4*x + 3*sin(x)", "level": 2}
+{"cur": "Integral(-14, x)", "nxt": "-14*x", "level": 2}
+{"cur": "Integral(-sin(x) + 5*cos(x), x)", "nxt": "5*sin(x) + cos(x)", "level": 2}
+{"cur": "Integral(-9*exp(x), x)", "nxt": "-9*exp(x)", "level": 2}
+{"cur": "Integral(18*x**2 - 6*sin(x), x)", "nxt": "6*x**3 + 6*cos(x)", "level": 2}
+{"cur": "Integral(-8*exp(x) - 7/x, x)", "nxt": "-8*exp(x) - 7*log(x)", "level": 2}
+{"cur": "Integral(25*x**4 + 14*x - 3, x)", "nxt": "5*x**5 + 7*x**2 - 3*x", "level": 2}
+{"cur": "Integral(sin(x) - 4*cos(x) + 12/x, x)", "nxt": "12*log(x) - 4*sin(x) - cos(x)", "level": 2}
+{"cur": "Integral(6*x**2 - 2*sin(x), x)", "nxt": "2*x**3 + 2*cos(x)", "level": 2}
+{"cur": "Integral(10*x**4 + 24*x**2 - 9*exp(x) + 9*cos(x), x)", "nxt": "2*x**5 + 8*x**3 - 9*exp(x) + 9*sin(x)", "level": 2}
+{"cur": "Integral(-6*sin(x), x)", "nxt": "6*cos(x)", "level": 2}
+{"cur": "Integral(5 - 9*x**2, x)", "nxt": "-3*x**3 + 5*x", "level": 2}
+{"cur": "Integral(2*x - 9, x)", "nxt": "x**2 - 9*x", "level": 2}
+{"cur": "Integral(9*x**2 - 2*cos(x), x)", "nxt": "3*x**3 - 2*sin(x)", "level": 2}
+{"cur": "Integral(10*x + 2*exp(x) + 2*sin(x), x)", "nxt": "5*x**2 + 2*exp(x) - 2*cos(x)", "level": 2}
+{"cur": "Integral(8 - 4*x, x)", "nxt": "-2*x**2 + 8*x", "level": 2}
+{"cur": "Integral(-36*x**3 + 3*cos(x) + 2, x)", "nxt": "-9*x**4 + 2*x + 3*sin(x)", "level": 2}
+{"cur": "Integral(-4, x)", "nxt": "-4*x", "level": 2}
+{"cur": "Integral(-sin(x) + 6 + 10/x, x)", "nxt": "6*x + 10*log(x) + cos(x)", "level": 2}
+{"cur": "Integral(-5, x)", "nxt": "-5*x", "level": 2}
+{"cur": "Integral(20*x**4, x)", "nxt": "4*x**5", "level": 2}
+{"cur": "Integral(9*exp(x) + 8*sin(x) + cos(x), x)", "nxt": "9*exp(x) + sin(x) - 8*cos(x)", "level": 2}
+{"cur": "Integral(30*x**4 - 7, x)", "nxt": "6*x**5 - 7*x", "level": 2}
+{"cur": "Integral(4*x + 9*exp(x) + 4 - 9/x, x)", "nxt": "2*x**2 + 4*x + 9*exp(x) - 9*log(x)", "level": 2}
+{"cur": "Integral(-35*x**4 + 14*x + 3 + 1/x, x)", "nxt": "-7*x**5 + 7*x**2 + 3*x + log(x)", "level": 2}
+{"cur": "Integral(15*x**2 - cos(x) + 5 + 5/x, x)", "nxt": "5*x**3 + 5*x + 5*log(x) - sin(x)", "level": 2}
+{"cur": "Integral(7*exp(x), x)", "nxt": "7*exp(x)", "level": 2}
+{"cur": "Integral(8*x - 3*cos(x) + 6/x, x)", "nxt": "4*x**2 + 6*log(x) - 3*sin(x)", "level": 2}
+{"cur": "Integral(16*x - 2*exp(x) + 5*sin(x) + 7, x)", "nxt": "8*x**2 + 7*x - 2*exp(x) - 5*cos(x)", "level": 2}
+{"cur": "Integral(36*x**3 + 3*cos(x), x)", "nxt": "9*x**4 + 3*sin(x)", "level": 2}
+{"cur": "Integral(7, x)", "nxt": "7*x", "level": 2}
+{"cur": "Integral(14 - 40*x**4, x)", "nxt": "-8*x**5 + 14*x", "level": 2}
+{"cur": "Integral(6*cos(x) + 9, x)", "nxt": "9*x + 6*sin(x)", "level": 2}
+{"cur": "Integral(6*exp(x) - 7*sin(x) - 8/x, x)", "nxt": "6*exp(x) - 8*log(x) + 7*cos(x)", "level": 2}
+{"cur": "Integral(-5*exp(x) - 4, x)", "nxt": "-4*x - 5*exp(x)", "level": 2}
+{"cur": "Integral(15*x**4 + 6*exp(x), x)", "nxt": "3*x**5 + 6*exp(x)", "level": 2}
+{"cur": "Integral(40*x**4 + 15*x**2 + 6, x)", "nxt": "8*x**5 + 5*x**3 + 6*x", "level": 2}
+{"cur": "Integral(-10*x + 11*exp(x) + 3, x)", "nxt": "-5*x**2 + 3*x + 11*exp(x)", "level": 2}
+{"cur": "Integral(5/x, x)", "nxt": "5*log(x)", "level": 2}
+{"cur": "Integral(-8*sin(x), x)", "nxt": "8*cos(x)", "level": 2}
+{"cur": "Integral(5*exp(x) + 6*cos(x) - 7/x, x)", "nxt": "5*exp(x) - 7*log(x) + 6*sin(x)", "level": 2}
+{"cur": "Integral(6 - 6*sin(x), x)", "nxt": "6*x + 6*cos(x)", "level": 2}
+{"cur": "Integral(-20*x**4 + 9*exp(x) + 9 - 5/x, x)", "nxt": "-4*x**5 + 9*x + 9*exp(x) - 5*log(x)", "level": 2}
+{"cur": "Integral(20*x**3 - 5*sin(x), x)", "nxt": "5*x**4 + 5*cos(x)", "level": 2}
+{"cur": "Integral(-6*sin(x) + 6/x, x)", "nxt": "6*log(x) + 6*cos(x)", "level": 2}
+{"cur": "Integral(24*x**3 + 5*cos(x), x)", "nxt": "6*x**4 + 5*sin(x)", "level": 2}
+{"cur": "Integral(36*x**3 + 10*sin(x), x)", "nxt": "9*x**4 - 10*cos(x)", "level": 2}
+{"cur": "Integral(8*cos(x), x)", "nxt": "8*sin(x)", "level": 2}
+{"cur": "Integral(13*exp(x) + 2*cos(x) + 1, x)", "nxt": "x + 13*exp(x) + 2*sin(x)", "level": 2}
+{"cur": "Integral(16*x**3 + 15*x**2 + 7, x)", "nxt": "4*x**4 + 5*x**3 + 7*x", "level": 2}
+{"cur": "Integral(exp(x) - 6*sin(x) + 3*cos(x), x)", "nxt": "exp(x) + 3*sin(x) + 6*cos(x)", "level": 2}
+{"cur": "Integral(2*exp(x) - sin(x), x)", "nxt": "2*exp(x) + cos(x)", "level": 2}
+{"cur": "Integral(2*cos(x) + 8, x)", "nxt": "8*x + 2*sin(x)", "level": 2}
+{"cur": "Integral(4*cos(x), x)", "nxt": "4*sin(x)", "level": 2}
+{"cur": "Integral(24*x**2 - 9*exp(x) + 8, x)", "nxt": "8*x**3 + 8*x - 9*exp(x)", "level": 2}
+{"cur": "Integral(4*exp(x) + 3*cos(x) - 1, x)", "nxt": "-x + 4*exp(x) + 3*sin(x)", "level": 2}
+{"cur": "Integral(1 - 9*sin(x), x)", "nxt": "x + 9*cos(x)", "level": 2}
+{"cur": "Integral(15*x**4 - 9*sin(x), x)", "nxt": "3*x**5 + 9*cos(x)", "level": 2}
+{"cur": "Integral(-9*exp(x) - 9*sin(x), x)", "nxt": "-9*exp(x) + 9*cos(x)", "level": 2}
+{"cur": "Integral(-32*x**3 - 18*x**2 + cos(x) + 5, x)", "nxt": "-8*x**4 - 6*x**3 + 5*x + sin(x)", "level": 2}
+{"cur": "Integral(10*x + 2/x, x)", "nxt": "5*x**2 + 2*log(x)", "level": 2}
+{"cur": "Integral(4*x**3 + 9*exp(x) + 8*cos(x), x)", "nxt": "x**4 + 9*exp(x) + 8*sin(x)", "level": 2}
+{"cur": "Integral(-3*sin(x), x)", "nxt": "3*cos(x)", "level": 2}
+{"cur": "Integral(-14*x - 8*sin(x) + 8, x)", "nxt": "-7*x**2 + 8*x + 8*cos(x)", "level": 2}
+{"cur": "Integral(-12*x + cos(x), x)", "nxt": "-6*x**2 + sin(x)", "level": 2}
+{"cur": "Integral(-16*x + 2*exp(x) - 3*cos(x) + 6, x)", "nxt": "-8*x**2 + 6*x + 2*exp(x) - 3*sin(x)", "level": 2}
+{"cur": "Integral(6*x + 4*exp(x) + 4 + 6/x, x)", "nxt": "3*x**2 + 4*x + 4*exp(x) + 6*log(x)", "level": 2}
+{"cur": "Integral(7/x, x)", "nxt": "7*log(x)", "level": 2}
+{"cur": "Integral(8*exp(x) + 7*cos(x) - 5, x)", "nxt": "-5*x + 8*exp(x) + 7*sin(x)", "level": 2}
+{"cur": "Integral(36*x**3 + 7*cos(x) + 5 + 7/x, x)", "nxt": "9*x**4 + 5*x + 7*log(x) + 7*sin(x)", "level": 2}
+{"cur": "Integral(-4/x, x)", "nxt": "-4*log(x)", "level": 2}
+{"cur": "Integral(5 - 7*sin(x), x)", "nxt": "5*x + 7*cos(x)", "level": 2}
+{"cur": "Integral(28*x**3 + 8*cos(x), x)", "nxt": "7*x**4 + 8*sin(x)", "level": 2}
+{"cur": "Integral((45*x**5 + 21*x**3 + 7)/x, x)", "nxt": "9*x**5 + 7*x**3 + 7*log(x)", "level": 2}
+{"cur": "Integral(15*x**4 + 18*x, x)", "nxt": "3*x**5 + 9*x**2", "level": 2}
+{"cur": "Integral(-11*exp(x) + 9*cos(x), x)", "nxt": "-11*exp(x) + 9*sin(x)", "level": 2}
+{"cur": "Integral(7 - 3*cos(x), x)", "nxt": "7*x - 3*sin(x)", "level": 2}
+{"cur": "Integral(12*x**2 + sin(x) - 7*cos(x) + 9, x)", "nxt": "4*x**3 + 9*x - 7*sin(x) - cos(x)", "level": 2}
+{"cur": "Integral(1 - 24*x**2, x)", "nxt": "-8*x**3 + x", "level": 2}
+{"cur": "Integral(21*x**2 + 3*exp(x) + 5, x)", "nxt": "7*x**3 + 5*x + 3*exp(x)", "level": 2}
+{"cur": "Integral(5*sin(x) + cos(x) - 4, x)", "nxt": "-4*x + sin(x) - 5*cos(x)", "level": 2}
+{"cur": "Integral(-6*x**2 - 8, x)", "nxt": "-2*x**3 - 8*x", "level": 2}
+{"cur": "Integral(2*exp(x) - 3 + 5/x, x)", "nxt": "-3*x + 2*exp(x) + 5*log(x)", "level": 2}
+{"cur": "Integral(5*x**4 - 6, x)", "nxt": "x**5 - 6*x", "level": 2}
+{"cur": "Integral(5*x**4, x)", "nxt": "x**5", "level": 2}
+{"cur": "Integral(11*exp(x) + 5*sin(x) + 9*cos(x), x)", "nxt": "11*exp(x) + 9*sin(x) - 5*cos(x)", "level": 2}
+{"cur": "Integral(28*x**3 + 8*exp(x) + 8, x)", "nxt": "7*x**4 + 8*x + 8*exp(x)", "level": 2}
+{"cur": "Integral(5 - 9*exp(x), x)", "nxt": "5*x - 9*exp(x)", "level": 2}
+{"cur": "Integral(6*exp(x) - 2*sin(x), x)", "nxt": "6*exp(x) + 2*cos(x)", "level": 2}
+{"cur": "Integral(3*cos(x), x)", "nxt": "3*sin(x)", "level": 2}
+{"cur": "Integral(35*x**4 + 12*x**3 + 18*x + 5*sin(x), x)", "nxt": "7*x**5 + 3*x**4 + 9*x**2 - 5*cos(x)", "level": 2}
+{"cur": "Integral(8*cos(x) - 5, x)", "nxt": "-5*x + 8*sin(x)", "level": 2}
+{"cur": "Integral(24*x**2, x)", "nxt": "8*x**3", "level": 2}
+{"cur": "Integral(-3*sin(x) + 9*cos(x) + 7/x, x)", "nxt": "7*log(x) + 9*sin(x) + 3*cos(x)", "level": 2}
+{"cur": "Integral(18*x**2 - 4*sin(x), x)", "nxt": "6*x**3 + 4*cos(x)", "level": 2}
+{"cur": "Integral(8*exp(x), x)", "nxt": "8*exp(x)", "level": 2}
+{"cur": "Integral(-9*sin(x), x)", "nxt": "9*cos(x)", "level": 2}
+{"cur": "Integral(7 - 20*x**3, x)", "nxt": "-5*x**4 + 7*x", "level": 2}
+{"cur": "Integral(-7*sin(x), x)", "nxt": "7*cos(x)", "level": 2}
+{"cur": "Integral(27*x**2 - 3*exp(x) + 8, x)", "nxt": "9*x**3 + 8*x - 3*exp(x)", "level": 2}
+{"cur": "Integral(8*x**3 + cos(x) + 4, x)", "nxt": "2*x**4 + 4*x + sin(x)", "level": 2}
+{"cur": "Integral(16*x - 6*sin(x) + 2/x, x)", "nxt": "8*x**2 + 2*log(x) + 6*cos(x)", "level": 2}
+{"cur": "Integral(exp(x) - 7*sin(x) + 6, x)", "nxt": "6*x + exp(x) + 7*cos(x)", "level": 2}
+{"cur": "Integral(-36*x**3 + 2 + 1/x, x)", "nxt": "-9*x**4 + 2*x + log(x)", "level": 2}
+{"cur": "Integral((15*x**2 + 2)*exp(5*x**3 + 2*x + 2), x)", "nxt": "exp(5*x**3 + 2*x + 2)", "level": 3}
+{"cur": "Integral(-54*cos(2*x), x)", "nxt": "-27*sin(2*x)", "level": 3}
+{"cur": "Integral((8*x - 2)*cos(4*x**2 - 2*x + 3), x)", "nxt": "sin(4*x**2 - 2*x + 3)", "level": 3}
+{"cur": "Integral(30*x**4*(x + 5)*exp(x), x)", "nxt": "30*x**5*exp(x)", "level": 3}
+{"cur": "Integral(60*x**4, x)", "nxt": "12*x**5", "level": 3}
+{"cur": "Integral(sqrt(2)*exp(x)*cos(x + pi/4), x)", "nxt": "sqrt(2)*(exp(x)*sin(x + pi/4)/2 + exp(x)*cos(x + pi/4)/2)", "level": 3}
+{"cur": "Integral((6*x**2 - 2)*exp(2*x**3 - 2*x + 2), x)", "nxt": "exp(2*x**3 - 2*x + 2)", "level": 3}
+{"cur": "Integral(3*x**2*cos(x**3 + 1), x)", "nxt": "sin(x**3 + 1)", "level": 3}
+{"cur": "Integral(180*x**3, x)", "nxt": "45*x**4", "level": 3}
+{"cur": "Integral(2*x**3*cos(x) + 6*x**2*sin(x) + 3, x)", "nxt": "2*x**3*sin(x) + 3*x", "level": 3}
+{"cur": "Integral(-3*sin(3*x), x)", "nxt": "cos(3*x)", "level": 3}
+{"cur": "Integral(42*sin(x), x)", "nxt": "-42*cos(x)", "level": 3}
+{"cur": "Integral(6*log(x) + 6 + 3/x, x)", "nxt": "6*x*log(x) + 3*log(x)", "level": 3}
+{"cur": "Integral(x**2*(40*x + 12), x)", "nxt": "10*x**4 + 4*x**3", "level": 3}
+{"cur": "Integral(20*x**3*(x*cos(x) + 4*sin(x)), x)", "nxt": "20*x**4*sin(x)", "level": 3}
+{"cur": "Integral(2*x*cos(x**2 + 3), x)", "nxt": "sin(x**2 + 3)", "level": 3}
+{"cur": "Integral(45, x)", "nxt": "45*x", "level": 3}
+{"cur": "Integral((-9*x**2 - 3)*sin(3*x**3 + 3*x + 2), x)", "nxt": "cos(3*x**3 + 3*x + 2)", "level": 3}
+{"cur": "Integral(6*x**2*exp(2*x**3 + 3), x)", "nxt": "exp(2*x**3 + 3)", "level": 3}
+{"cur": "Integral(15*x**2 + cos(x), x)", "nxt": "5*x**3 + sin(x)", "level": 3}
+{"cur": "Integral(3*(24*x**2*(-x*sin(x) + 2*cos(x)) - 1)/x, x)", "nxt": "72*x**2*cos(x) - 3*log(x)", "level": 3}
+{"cur": "Integral(56/x, x)", "nxt": "56*log(x)", "level": 3}
+{"cur": "Integral(5*exp(x) + 7*sin(x), x)", "nxt": "5*exp(x) - 7*cos(x)", "level": 3}
+{"cur": "Integral(7 - 8*x, x)", "nxt": "-4*x**2 + 7*x", "level": 3}
+{"cur": "Integral(-9*sin(2*x) + 5/x, x)", "nxt": "5*log(x) + 9*cos(2*x)/2", "level": 3}
+{"cur": "Integral(-20*x**4, x)", "nxt": "-4*x**5", "level": 3}
+{"cur": "Integral((3*x**2 + 1)*cos(x**3 + x + 1), x)", "nxt": "sin(x**3 + x + 1)", "level": 3}
+{"cur": "Integral(-72*x*(x*cos(x) + 2*sin(x)), x)", "nxt": "-72*x**2*sin(x)", "level": 3}
+{"cur": "Integral(7*cos(x) + 40*log(x)/x, x)", "nxt": "20*log(x)**2 + 7*sin(x)", "level": 3}
+{"cur": "Integral(12*x - 81*log(x)*cos(x) - 81*sin(x)/x, x)", "nxt": "6*x**2 - 81*log(x)*sin(x)", "level": 3}
+{"cur": "Integral(144*x**5 + 9*cos(x), x)", "nxt": "24*x**6 + 9*sin(x)", "level": 3}
+{"cur": "Integral(2 + 56/x, x)", "nxt": "2*x + 56*log(x)", "level": 3}
+{"cur": "Integral(x**3*(-96*log(x) - 24), x)", "nxt": "-24*x**4*log(x)", "level": 3}
+{"cur": "Integral(-9*x*sin(x) + 9*cos(x), x)", "nxt": "9*sin(x) + Integral(-9*x*sin(x), x)", "level": 3}
+{"cur": "Integral(x**3*(84*log(x) + 21), x)", "nxt": "21*x**4*log(x)", "level": 3}
+{"cur": "Integral(4*exp(4*x + 4), x)", "nxt": "exp(4*x + 4)", "level": 3}
+{"cur": "Integral((1 - 9*x**2)*sin(3*x**3 - x + 4), x)", "nxt": "cos(3*x**3 - x + 4)", "level": 3}
+{"cur": "Integral(10*x, x)", "nxt": "5*x**2", "level": 3}
+{"cur": "Integral(20*x*sin(x) - 20*cos(x), x)", "nxt": "-20*sin(x) + Integral(20*x*sin(x), x)", "level": 3}
+{"cur": "Integral(45*(x + 1)*exp(x), x)", "nxt": "45*x*exp(x)", "level": 3}
+{"cur": "Integral(42*cos(2*x), x)", "nxt": "21*sin(2*x)", "level": 3}
+{"cur": "Integral(10*x**2*(x + 3)*exp(x), x)", "nxt": "10*x**3*exp(x)", "level": 3}
+{"cur": "Integral((4*x + 1)*exp(x*(2*x + 1)), x)", "nxt": "exp(x*(2*x + 1))", "level": 3}
+{"cur": "Integral((-10*x - 4)*sin(5*x**2 + 4*x + 3), x)", "nxt": "cos(5*x**2 + 4*x + 3)", "level": 3}
+{"cur": "Integral(24*log(x)*cos(x) + 24*sin(x)/x, x)", "nxt": "24*log(x)*sin(x)", "level": 3}
+{"cur": "Integral(-cos(x - 3), x)", "nxt": "-sin(x - 3)", "level": 3}
+{"cur": "Integral(12*sqrt(2)*exp(x)*cos(x + pi/4) + 4, x)", "nxt": "4*x + 12*sqrt(2)*(exp(x)*sin(x + pi/4)/2 + exp(x)*cos(x + pi/4)/2)", "level": 3}
+{"cur": "Integral((3 - 12*x**2)*sin(4*x**3 - 3*x + 3), x)", "nxt": "cos(4*x**3 - 3*x + 3)", "level": 3}
+{"cur": "Integral(-8*sin(8*x + 4), x)", "nxt": "cos(8*x + 4)", "level": 3}
+{"cur": "Integral(3*exp(3*x + 3), x)", "nxt": "exp(3*x + 3)", "level": 3}
+{"cur": "Integral(x**3*(-x*sin(x) + 4*cos(x)), x)", "nxt": "x**4*cos(x)", "level": 3}
+{"cur": "Integral(-49*log(x)*sin(x) + 49*cos(x)/x, x)", "nxt": "49*log(x)*cos(x)", "level": 3}
+{"cur": "Integral((3 - 3*x**2)*sin(x*(x**2 - 3)), x)", "nxt": "cos(x**3 - 3*x)", "level": 3}
+{"cur": "Integral((9*x**2 + 3)*exp(3*x**3 + 3*x + 4), x)", "nxt": "exp(3*x**3 + 3*x + 4)", "level": 3}
+{"cur": "Integral(18*exp(x)*log(x) + 6 + 18*exp(x)/x, x)", "nxt": "6*x + 18*exp(x)*log(x)", "level": 3}
+{"cur": "Integral(49*x*(x*cos(x) + 2*sin(x)), x)", "nxt": "49*x**2*sin(x)", "level": 3}
+{"cur": "Integral(-14*log(x)*sin(x) + 14*cos(x)/x, x)", "nxt": "14*log(x)*cos(x)", "level": 3}
+{"cur": "Integral(-4*sin(4*x + 5), x)", "nxt": "cos(4*x + 5)", "level": 3}
+{"cur": "Integral((16*exp(x) + 2)*exp(x), x)", "nxt": "8*exp(2*x) + 2*exp(x)", "level": 3}
+{"cur": "Integral(54*exp(x), x)", "nxt": "54*exp(x)", "level": 3}
+{"cur": "Integral(27*(x + 1)*exp(x), x)", "nxt": "27*x*exp(x)", "level": 3}
+{"cur": "Integral((4*x - 2)*exp(2*x**2 - 2*x + 5), x)", "nxt": "exp(2*x**2 - 2*x + 5)", "level": 3}
+{"cur": "Integral(4*(2 - 35*x**4)/x, x)", "nxt": "-35*x**4 + 8*log(x)", "level": 3}
+{"cur": "Integral((-6*x - 1)*sin(3*x**2 + x + 3), x)", "nxt": "cos(3*x**2 + x + 3)", "level": 3}
+{"cur": "Integral(12*x**3 - 8*sqrt(2)*exp(x)*cos(x + pi/4), x)", "nxt": "3*x**4 - 8*sqrt(2)*(exp(x)*sin(x + pi/4)/2 + exp(x)*cos(x + pi/4)/2)", "level": 3}
+{"cur": "Integral(2*exp(2*x + 4), x)", "nxt": "exp(2*x + 4)", "level": 3}
+{"cur": "Integral(10*x**3*(x*cos(x) + 4*sin(x)), x)", "nxt": "10*x**4*sin(x)", "level": 3}
+{"cur": "Integral(-2*sin(2*x + 5), x)", "nxt": "cos(2*x + 5)", "level": 3}
+{"cur": "Integral((3*x**2 + 2)*cos(x**3 + 2*x + 5), x)", "nxt": "sin(x**3 + 2*x + 5)", "level": 3}
+{"cur": "Integral(-2*sin(2*x + 4), x)", "nxt": "cos(2*x + 4)", "level": 3}
+{"cur": "Integral(-108*x**8 - 4*sin(x), x)", "nxt": "-12*x**9 + 4*cos(x)", "level": 3}
+{"cur": "Integral(2*(x*(16*log(x) + 3)*cos(x) + 16*sin(x))/x, x)", "nxt": "32*log(x)*sin(x) + 6*sin(x)", "level": 3}
+{"cur": "Integral(-6*x**2*sin(2*x**3 + 2), x)", "nxt": "cos(2*x**3 + 2)", "level": 3}
+{"cur": "Integral(-210*x**5 + 2*cos(x), x)", "nxt": "-35*x**6 + 2*sin(x)", "level": 3}
+{"cur": "Integral(100*x**3, x)", "nxt": "25*x**4", "level": 3}
+{"cur": "Integral((-2*x - 2)*sin(x**2 + 2*x + 5), x)", "nxt": "cos(x**2 + 2*x + 5)", "level": 3}
+{"cur": "Integral(24*(x + 1)*exp(x), x)", "nxt": "24*x*exp(x)", "level": 3}
+{"cur": "Integral(-128*x**3, x)", "nxt": "-32*x**4", "level": 3}
+{"cur": "Integral(18*x**4*(x*cos(x) + 5*sin(x)), x)", "nxt": "18*x**5*sin(x)", "level": 3}
+{"cur": "Integral((4 - 6*x)*sin(3*x**2 - 4*x + 5), x)", "nxt": "cos(3*x**2 - 4*x + 5)", "level": 3}
+{"cur": "Integral((2*x + 3)*exp(x**2 + 3*x + 2), x)", "nxt": "exp(x**2 + 3*x + 2)", "level": 3}
+{"cur": "Integral(-4*x, x)", "nxt": "-2*x**2", "level": 3}
+{"cur": "Integral(-25*x**3*(x*cos(x) + 4*sin(x)), x)", "nxt": "-25*x**4*sin(x)", "level": 3}
+{"cur": "Integral(-54*x**2 + 7*exp(x), x)", "nxt": "-18*x**3 + 7*exp(x)", "level": 3}
+{"cur": "Integral(-2*x*sin(x) + 2*cos(x), x)", "nxt": "2*sin(x) + Integral(-2*x*sin(x), x)", "level": 3}
+{"cur": "Integral(-40*sin(2*x) - 8, x)", "nxt": "-8*x + 20*cos(2*x)", "level": 3}
+{"cur": "Integral((-6*x**2 - 1)*sin(2*x**3 + x + 5), x)", "nxt": "cos(2*x**3 + x + 5)", "level": 3}
+{"cur": "Integral(15*x**2 + 15*exp(x), x)", "nxt": "5*x**3 + 15*exp(x)", "level": 3}
+{"cur": "Integral(-4*log(x)*sin(x) + 4*cos(x)/x, x)", "nxt": "4*log(x)*cos(x)", "level": 3}
+{"cur": "Integral(-10*x**4*cos(x) - 40*x**3*sin(x) - 6*x, x)", "nxt": "-10*x**4*sin(x) - 3*x**2", "level": 3}
+{"cur": "Integral(-36*log(x)*sin(x) + 36*cos(x)/x, x)", "nxt": "36*log(x)*cos(x)", "level": 3}
+{"cur": "Integral(18*(x + 1)*exp(x), x)", "nxt": "18*x*exp(x)", "level": 3}
+{"cur": "Integral(-5*sin(5*x + 3), x)", "nxt": "cos(5*x + 3)", "level": 3}
+{"cur": "Integral(56*x**6, x)", "nxt": "8*x**7", "level": 3}
+{"cur": "Integral(-24*x**4*(x*cos(x) + 5*sin(x)), x)", "nxt": "-24*x**5*sin(x)", "level": 3}
+{"cur": "Integral(240*x**4, x)", "nxt": "48*x**5", "level": 3}
+{"cur": "Integral(32*x + 3*exp(x), x)", "nxt": "16*x**2 + 3*exp(x)", "level": 3}
+{"cur": "Integral(4*(x - 1)*exp(2*x**2 - 4*x + 4), x)", "nxt": "exp(2*x**2 - 4*x + 4)", "level": 3}
+{"cur": "Integral(20*log(x)*cos(x) + 20*sin(x)/x, x)", "nxt": "20*log(x)*sin(x)", "level": 3}
+{"cur": "Integral(2*exp(2*x + 3), x)", "nxt": "exp(2*x + 3)", "level": 3}
+{"cur": "Integral(168*x**6, x)", "nxt": "24*x**7", "level": 3}
+{"cur": "Integral((9*x**2 - 2)*exp(3*x**3 - 2*x + 5), x)", "nxt": "exp(3*x**3 - 2*x + 5)", "level": 3}
+{"cur": "Integral((12*x**2 - 4)*exp(4*x**3 - 4*x + 4), x)", "nxt": "exp(4*x**3 - 4*x + 4)", "level": 3}
+{"cur": "Integral((-4*x - 4)*sin(2*x**2 + 4*x + 1), x)", "nxt": "cos(2*x**2 + 4*x + 1)", "level": 3}
+{"cur": "Integral(49*cos(2*x), x)", "nxt": "49*sin(2*x)/2", "level": 3}
+{"cur": "Integral((8*x - 2)*cos(4*x**2 - 2*x + 4), x)", "nxt": "sin(4*x**2 - 2*x + 4)", "level": 3}
+{"cur": "Integral(35*(x + 1)*exp(x), x)", "nxt": "35*x*exp(x)", "level": 3}
+{"cur": "Integral(96*x**5 + 2, x)", "nxt": "16*x**6 + 2*x", "level": 3}
+{"cur": "Integral(6*(x*log(x) + 1)*exp(x)/x, x)", "nxt": "6*exp(x)*log(x)", "level": 3}
+{"cur": "Integral(56*log(x) + 56, x)", "nxt": "56*x*log(x)", "level": 3}
+{"cur": "Integral((12*x**2 + 1)*cos(4*x**3 + x + 3), x)", "nxt": "sin(4*x**3 + x + 3)", "level": 3}
+{"cur": "Integral(-27*x**2, x)", "nxt": "-9*x**3", "level": 3}
+{"cur": "Integral(-48*log(x)*sin(x) + 48*cos(x)/x, x)", "nxt": "48*log(x)*cos(x)", "level": 3}
+{"cur": "Integral(15*x**2 + 24*sqrt(2)*exp(x)*cos(x + pi/4), x)", "nxt": "5*x**3 + 24*sqrt(2)*(exp(x)*sin(x + pi/4)/2 + exp(x)*cos(x + pi/4)/2)", "level": 3}
+{"cur": "Integral(24*x**3 + 8*sqrt(2)*exp(x)*cos(x + pi/4), x)", "nxt": "6*x**4 + 8*sqrt(2)*(exp(x)*sin(x + pi/4)/2 + exp(x)*cos(x + pi/4)/2)", "level": 3}
+{"cur": "Integral(-35*x**3*sin(x) + 105*x**2*cos(x) + 3, x)", "nxt": "35*x**3*cos(x) + 3*x", "level": 3}
+{"cur": "Integral((6*x + 2)*cos(3*x**2 + 2*x + 4), x)", "nxt": "sin(3*x**2 + 2*x + 4)", "level": 3}
+{"cur": "Integral(96*x**3, x)", "nxt": "24*x**4", "level": 3}
+{"cur": "Integral(-28*x*cos(x) - 28*sin(x) - 7, x)", "nxt": "-28*x*sin(x) - 7*x", "level": 3}
+{"cur": "Integral((1 - 8*x)*sin(4*x**2 - x + 1), x)", "nxt": "cos(4*x**2 - x + 1)", "level": 3}
+{"cur": "Integral(4*(x*log(x) + 1)*exp(x)/x, x)", "nxt": "4*exp(x)*log(x)", "level": 3}
+{"cur": "Integral(18*(-x - 1)*exp(x), x)", "nxt": "-18*x*exp(x)", "level": 3}
+{"cur": "Integral(8*cos(8*x + 4), x)", "nxt": "sin(8*x + 4)", "level": 3}
+{"cur": "Integral(10*x*(-x*sin(x) + 2*cos(x)), x)", "nxt": "10*x**2*cos(x)", "level": 3}
+{"cur": "Integral((-3*x**2 - 1)*sin(x**3 + x + 2), x)", "nxt": "cos(x**3 + x + 2)", "level": 3}
+{"cur": "Integral((4*x - 4)*cos(2*x*(x - 2)), x)", "nxt": "sin(2*x*(x - 2))", "level": 3}
+{"cur": "Integral(-35*exp(x), x)", "nxt": "-35*exp(x)", "level": 3}
+{"cur": "Integral(12*x**2 + 3*sin(2*x), x)", "nxt": "4*x**3 - 3*cos(2*x)/2", "level": 3}
+{"cur": "Integral(64*x**3*log(x) + 16*x**3 + 7*cos(x), x)", "nxt": "16*x**4*log(x) + 7*sin(x)", "level": 3}
+{"cur": "Integral(8*sin(x) - 54/x, x)", "nxt": "-54*log(x) - 8*cos(x)", "level": 3}
+{"cur": "Integral((9*x**2 - 3)*exp(3*x**3 - 3*x + 2), x)", "nxt": "exp(3*x**3 - 3*x + 2)", "level": 3}
+{"cur": "Integral(-24*log(x) - 24, x)", "nxt": "-24*x*log(x)", "level": 3}
+{"cur": "Integral((8*x - 4)*exp(4*x**2 - 4*x + 3), x)", "nxt": "exp(4*x**2 - 4*x + 3)", "level": 3}
+{"cur": "Integral(18*x**2 + 3*cos(x), x)", "nxt": "6*x**3 + 3*sin(x)", "level": 3}
+{"cur": "Integral(16*exp(x), x)", "nxt": "16*exp(x)", "level": 3}
+{"cur": "Integral(56*x, x)", "nxt": "28*x**2", "level": 3}
+{"cur": "Integral(-8*x*cos(x) - 3*exp(x) - 8*sin(x), x)", "nxt": "-8*x*sin(x) - 3*exp(x)", "level": 3}
+{"cur": "Integral((2*x - 3)*cos(x**2 - 3*x + 4), x)", "nxt": "sin(x**2 - 3*x + 4)", "level": 3}
+{"cur": "Integral(40*x*(x + 2)*exp(x), x)", "nxt": "40*x**2*exp(x)", "level": 3}
+{"cur": "Integral(3*(x**2 + 1)*exp(x**3 + 3*x + 2), x)", "nxt": "exp(x**3 + 3*x + 2)", "level": 3}
+{"cur": "Integral(81, x)", "nxt": "81*x", "level": 3}
+{"cur": "Integral(42*x**2*log(x) + 14*x**2 + 5*exp(x), x)", "nxt": "14*x**3*log(x) + 5*exp(x)", "level": 3}
+{"cur": "Integral(-20*x + 4*exp(x), x)", "nxt": "-10*x**2 + 4*exp(x)", "level": 3}
+{"cur": "Integral(2*x*(x + 2)*exp(x), x)", "nxt": "2*x**2*exp(x)", "level": 3}
+{"cur": "Integral(5*exp(5*x + 3), x)", "nxt": "exp(5*x + 3)", "level": 3}
+{"cur": "Integral(45*sin(6*x + 2), x)", "nxt": "-15*cos(6*x + 2)/2", "level": 4}
+{"cur": "Integral(7*(10*x + 7*cos(7*x))*cos(5*x**2 + sin(7*x) + 2), x)", "nxt": "Subs(Integral(7*cos(u_), u_), u_, 5*x**2 + sin(7*x) + 2)", "level": 4}
+{"cur": "Subs(Integral(7*cos(u_), u_), u_, 5*x**2 + sin(7*x) + 2)", "nxt": "Subs(7*sin(u_), u_, 5*x**2 + sin(7*x) + 2)", "level": 4}
+{"cur": "Integral(-56*(6*x + 1)*exp(x)*sin(3*x**2 + x + 4) + 24*(cos(3*x) + 1)*cos(3*x + sin(3*x) + 1) + 56*exp(x)*cos(3*x**2 + x + 4), x)", "nxt": "8*sin(3*x + sin(3*x) + 1) + Integral(-336*x*exp(x)*sin(3*x**2 + x + 4) - 56*exp(x)*sin(3*x**2 + x + 4) + 56*exp(x)*cos(3*x**2 + x + 4), x)", "level": 4}
+{"cur": "8*sin(3*x + sin(3*x) + 1) + Integral(-336*x*exp(x)*sin(3*x**2 + x + 4) - 56*exp(x)*sin(3*x**2 + x + 4) + 56*exp(x)*cos(3*x**2 + x + 4), x)", "nxt": "56*exp(x)*cos(3*x**2 + x + 4) + 8*sin(3*x + sin(3*x) + 1)", "level": 4}
+{"cur": "Integral(54*x*cos(6*x + 5) + 108*sin(3*x + 1)**2*cos(3*x + 1) + 9*sin(6*x + 5), x)", "nxt": "9*x*sin(6*x + 5) + 12*sin(3*x + 1)**3", "level": 4}
+{"cur": "Integral(35*(9*x**2 - 3)*sin(3*x**3 - 3*x + 4)*cos(x) + 35*sin(x)*cos(3*x**3 - 3*x + 4), x)", "nxt": "Integral(35*sin(x)*cos(3*x**3 - 3*x + 4), x) + Integral(35*(9*x**2 - 3)*sin(3*x**3 - 3*x + 4)*cos(x), x)", "level": 4}
+{"cur": "Integral(35*sin(x)*cos(3*x**3 - 3*x + 4), x) + Integral(35*(9*x**2 - 3)*sin(3*x**3 - 3*x + 4)*cos(x), x)", "nxt": "35*Integral(sin(x)*cos(3*x**3 - 3*x + 4), x) + Integral(35*(9*x**2 - 3)*sin(3*x**3 - 3*x + 4)*cos(x), x)", "level": 4}
+{"cur": "35*Integral(sin(x)*cos(3*x**3 - 3*x + 4), x) + Integral(35*(9*x**2 - 3)*sin(3*x**3 - 3*x + 4)*cos(x), x)", "nxt": "35*Integral(sin(x)*cos(3*x**3 - 3*x + 4), x) + 35*Integral((9*x**2 - 3)*sin(3*x**3 - 3*x + 4)*cos(x), x)", "level": 4}
+{"cur": "35*Integral(sin(x)*cos(3*x**3 - 3*x + 4), x) + 35*Integral((9*x**2 - 3)*sin(3*x**3 - 3*x + 4)*cos(x), x)", "nxt": "35*cos(3*x**3 - 3*x + 4)*Integral(sin(x), x) + 35*Integral((9*x**2 - 3)*sin(3*x**3 - 3*x + 4)*cos(x), x) - 35*Integral(-(9*x**2 - 3)*sin(3*x**3 - 3*x + 4)*Integral(sin(x), x), x)", "level": 4}
+{"cur": "35*cos(3*x**3 - 3*x + 4)*Integral(sin(x), x) + 35*Integral((9*x**2 - 3)*sin(3*x**3 - 3*x + 4)*cos(x), x) - 35*Integral(-(9*x**2 - 3)*sin(3*x**3 - 3*x + 4)*Integral(sin(x), x), x)", "nxt": "-35*cos(x)*cos(3*x**3 - 3*x + 4)", "level": 4}
+{"cur": "Integral((sqrt(x)*(24*x**2 + 4) + sqrt(2))*exp(sqrt(2)*sqrt(x) + 4*x**3 + 2*x + 5)/sqrt(x), x)", "nxt": "Subs(Integral(2*exp(u_), u_), u_, sqrt(2)*sqrt(x) + 4*x**3 + 2*x + 5)", "level": 4}
+{"cur": "Subs(Integral(2*exp(u_), u_), u_, sqrt(2)*sqrt(x) + 4*x**3 + 2*x + 5)", "nxt": "Subs(2*exp(u_), u_, sqrt(2)*sqrt(x) + 4*x**3 + 2*x + 5)", "level": 4}
+{"cur": "Integral((168*x**2 + 56)*sin(4*x**3 + 4*x + 1), x)", "nxt": "-14*cos(4*x**3 + 4*x + 1)", "level": 4}
+{"cur": "Integral(4*x**5*exp(x + 1) + 20*x**4*exp(x + 1) - 648*sin(9*x + 5)*cos(9*x + 5)**3, x)", "nxt": "4*E*x**5*exp(x) + 18*cos(9*x + 5)**4", "level": 4}
+{"cur": "Integral(54*x**2*(1 - 12*x**2)*exp(4*x**3 - x + 2) + 12*x*exp(3*x**3 + 9*x + 9) - 108*x*exp(4*x**3 - x + 2) + 54*(x**2 + 1)**2*exp(3*x**3 + 9*x + 9), x)", "nxt": "-54*x**2*exp(4*x**3 - x + 2) + (6*x**2 + 6)*exp(3*x**3 + 9*x + 9)", "level": 4}
+{"cur": "Integral(-9*(2*x + 5*cos(5*x) - 3)*sin(x**2 - 3*x + sin(5*x) + 5) + 1029*sin(7*x + 3)**2*cos(7*x + 3), x)", "nxt": "9*cos(x**2 - 3*x + sin(5*x) + 5) + Integral(1029*sin(7*x + 3)**2*cos(7*x + 3), x)", "level": 4}
+{"cur": "9*cos(x**2 - 3*x + sin(5*x) + 5) + Integral(1029*sin(7*x + 3)**2*cos(7*x + 3), x)", "nxt": "49*sin(7*x + 3)**3 + 9*cos(x**2 - 3*x + sin(5*x) + 5)", "level": 4}
+{"cur": "Integral((15*cos(3*x) + 5)*exp(x + sin(3*x) + 4), x)", "nxt": "5*exp(4)*exp(x)*exp(sin(3*x))", "level": 4}
+{"cur": "Integral(24*x*(2*x + 1)*cos(x**2 + x + 1) + 24*sin(x**2 + x + 1), x)", "nxt": "24*x*sin(x**2 + x + 1)", "level": 4}
+{"cur": "Integral((105*x**2 + 70)*cos(x**3 + 2*x + 5) + (6*x + 5*cos(5*x) - 1)*exp(3*x**2 - x + sin(5*x) + 5), x)", "nxt": "35*sin(x**3 + 2*x + 5) + exp(5)*exp(-x)*exp(3*x**2)*exp(sin(5*x))", "level": 4}
+{"cur": "Integral(36*(-x*log(x) + 1)*exp(1 - x)/x, x)", "nxt": "36*exp(1 - x)*log(x)", "level": 4}
+{"cur": "Integral(12*(-4*(x + 1)**2*sin(x**2 + 2*x + 1) + cos(x**2 + 2*x + 1))*cos(x**2 + 2*x + 1), x)", "nxt": "12*x*cos(x**2 + 2*x + 1)**2 + 12*cos(x**2 + 2*x + 1)**2", "level": 4}
+{"cur": "Integral(7*(8*cos(8*x) + 3)*cos(3*x + sin(8*x) + 4), x)", "nxt": "Subs(Integral(7*cos(u_), u_), u_, 3*x + sin(8*x) + 4)", "level": 4}
+{"cur": "Subs(Integral(7*cos(u_), u_), u_, 3*x + sin(8*x) + 4)", "nxt": "Subs(7*sin(u_), u_, 3*x + sin(8*x) + 4)", "level": 4}
+{"cur": "Integral(x**2*(196*x*(3*x**2 - 1) + 147)*exp(4*x*(x**2 - 1)), x)", "nxt": "49*x**3*exp(4*x*(x**2 - 1))", "level": 4}
+{"cur": "Integral(32*x**3*(-x*(9*x**2 + 4)*sin(3*x**3 + 4*x + 5) + 4*cos(3*x**3 + 4*x + 5)), x)", "nxt": "32*x**4*cos(3*x**3 + 4*x + 5)", "level": 4}
+{"cur": "Integral((45*x**2 + 9*cos(3*x) - 6)*exp(5*x**3 - 2*x + sin(3*x) + 3), x)", "nxt": "Subs(Integral(3*exp(u_), u_), u_, 5*x**3 - 2*x + sin(3*x) + 3)", "level": 4}
+{"cur": "Subs(Integral(3*exp(u_), u_), u_, 5*x**3 - 2*x + sin(3*x) + 3)", "nxt": "Subs(3*exp(u_), u_, 5*x**3 - 2*x + sin(3*x) + 3)", "level": 4}
+{"cur": "Integral(4*(-x*(42*(5*x**2 + 1)*log(x)*sin(x*(5*x**2 + 3)) + (4*sin(8*x) + 1)*cos(-2*x + cos(8*x) + 4)) + 14*cos(x*(5*x**2 + 3)))/x, x)", "nxt": "Integral((-840*x**2 - 168)*log(x)*sin(5*x**3 + 3*x) - 16*sin(8*x)*cos(-2*x + cos(8*x) + 4) - 4*cos(-2*x + cos(8*x) + 4) + 56*cos(5*x**3 + 3*x)/x, x)", "level": 4}
+{"cur": "Integral((-840*x**2 - 168)*log(x)*sin(5*x**3 + 3*x) - 16*sin(8*x)*cos(-2*x + cos(8*x) + 4) - 4*cos(-2*x + cos(8*x) + 4) + 56*cos(5*x**3 + 3*x)/x, x)", "nxt": "56*log(x)*cos(5*x**3 + 3*x) + Integral(-16*sin(8*x)*cos(-2*x + cos(8*x) + 4) - 4*cos(-2*x + cos(8*x) + 4), x)", "level": 4}
+{"cur": "56*log(x)*cos(5*x**3 + 3*x) + Integral(-16*sin(8*x)*cos(-2*x + cos(8*x) + 4) - 4*cos(-2*x + cos(8*x) + 4), x)", "nxt": "56*log(x)*cos(5*x**3 + 3*x) + Integral(4*(-4*sin(8*x) - 1)*cos(-2*x + cos(8*x) + 4), x)", "level": 4}
+{"cur": "56*log(x)*cos(5*x**3 + 3*x) + Integral(4*(-4*sin(8*x) - 1)*cos(-2*x + cos(8*x) + 4), x)", "nxt": "56*log(x)*cos(5*x**3 + 3*x) + 4*Integral((-4*sin(8*x) - 1)*cos(-2*x + cos(8*x) + 4), x)", "level": 4}
+{"cur": "56*log(x)*cos(5*x**3 + 3*x) + 4*Integral((-4*sin(8*x) - 1)*cos(-2*x + cos(8*x) + 4), x)", "nxt": "56*log(x)*cos(5*x**3 + 3*x) + 4*Subs(Integral(cos(u_)/2, u_), u_, -2*x + cos(8*x) + 4)", "level": 4}
+{"cur": "56*log(x)*cos(5*x**3 + 3*x) + 4*Subs(Integral(cos(u_)/2, u_), u_, -2*x + cos(8*x) + 4)", "nxt": "56*log(x)*cos(5*x**3 + 3*x) + 4*Subs(sin(u_)/2, u_, -2*x + cos(8*x) + 4)", "level": 4}
+{"cur": "Integral((108*(x - 2)**2 + 18)*exp(3*x**2 - 12*x + 12), x)", "nxt": "(18*x - 36)*exp(3*x**2 - 12*x + 12)", "level": 4}
+{"cur": "Integral(240*x*sin(5*x**3 - 4*x + 3) + 8*(15*x**2 - 4)**2*cos(5*x**3 - 4*x + 3), x)", "nxt": "(120*x**2 - 32)*sin(5*x**3 - 4*x + 3)", "level": 4}
+{"cur": "Integral(-98*x*(5*x - 1)*sin(5*x**2 - 2*x + 4) + 49*cos(5*x**2 - 2*x + 4), x)", "nxt": "49*x*cos(5*x**2 - 2*x + 4)", "level": 4}
+{"cur": "Integral(448*x**2*sin(8*x**2 + 6) - 28*cos(8*x**2 + 6) + 28, x)", "nxt": "-28*x*cos(8*x**2 + 6) + 28*x", "level": 4}
+{"cur": "Integral((14 - 42*sin(6*x))*exp(2*x + cos(6*x)), x)", "nxt": "7*exp(2*x)*exp(cos(6*x))", "level": 4}
+{"cur": "Integral((24*(5*x - 1)**2 + 20)*exp(15*x**2 - 6*x + 3), x)", "nxt": "(20*x - 4)*exp(15*x**2 - 6*x + 3)", "level": 4}
+{"cur": "Integral(8*(9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)) - 8*sin(x)*sin(x*(3*x**2 + 2)), x)", "nxt": "Integral(-8*sin(x)*sin(x*(3*x**2 + 2)), x) + Integral(8*(9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x)", "level": 4}
+{"cur": "Integral(-8*sin(x)*sin(x*(3*x**2 + 2)), x) + Integral(8*(9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x)", "nxt": "-8*Integral(sin(x)*sin(x*(3*x**2 + 2)), x) + Integral(8*(9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x)", "level": 4}
+{"cur": "-8*Integral(sin(x)*sin(x*(3*x**2 + 2)), x) + Integral(8*(9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x)", "nxt": "-8*Integral(sin(x)*sin(x*(3*x**2 + 2)), x) + 8*Integral((9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x)", "level": 4}
+{"cur": "-8*Integral(sin(x)*sin(x*(3*x**2 + 2)), x) + 8*Integral((9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x)", "nxt": "-8*sin(x*(3*x**2 + 2))*Integral(sin(x), x) + 8*Integral((9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x) + 8*Integral((9*x**2 + 2)*cos(x*(3*x**2 + 2))*Integral(sin(x), x), x)", "level": 4}
+{"cur": "-8*sin(x*(3*x**2 + 2))*Integral(sin(x), x) + 8*Integral((9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x) + 8*Integral((9*x**2 + 2)*cos(x*(3*x**2 + 2))*Integral(sin(x), x), x)", "nxt": "8*sin(x*(3*x**2 + 2))*cos(x) + 8*Integral(-(9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x) + 8*Integral((9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x)", "level": 4}
+{"cur": "8*sin(x*(3*x**2 + 2))*cos(x) + 8*Integral(-(9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x) + 8*Integral((9*x**2 + 2)*cos(x)*cos(x*(3*x**2 + 2)), x)", "nxt": "8*sin(x*(3*x**2 + 2))*cos(x)", "level": 4}
+{"cur": "Integral(36*(5*x + 1)**2*cos(x*(5*x + 2)) + 90*sin(x*(5*x + 2)), x)", "nxt": "(90*x + 18)*sin(x*(5*x + 2))", "level": 4}
+{"cur": "Integral(512*sin(4*x)**3*cos(4*x), x)", "nxt": "32*sin(4*x)**4", "level": 4}
+{"cur": "Integral(3*(2*sqrt(x)*(4*x + 3) + sqrt(3))*exp(sqrt(3)*sqrt(x) + 2*x**2 + 3*x + 1)/(2*sqrt(x)), x)", "nxt": "Subs(Integral(3*exp(u_), u_), u_, sqrt(3)*sqrt(x) + 2*x**2 + 3*x + 1)", "level": 4}
+{"cur": "Subs(Integral(3*exp(u_), u_), u_, sqrt(3)*sqrt(x) + 2*x**2 + 3*x + 1)", "nxt": "Subs(3*exp(u_), u_, sqrt(3)*sqrt(x) + 2*x**2 + 3*x + 1)", "level": 4}
+{"cur": "Integral(54*x*(4*x**2 + 1)*exp(4*x**3 + 3*x + 3) + 6*(6*x + cos(x) - 2)*cos(3*x**2 - 2*x + sin(x)) + 18*exp(4*x**3 + 3*x + 3), x)", "nxt": "6*sin(3*x**2 - 2*x + sin(x)) + Integral(216*x**3*exp(3)*exp(3*x)*exp(4*x**3) + 54*x*exp(3)*exp(3*x)*exp(4*x**3) + 18*exp(3)*exp(3*x)*exp(4*x**3), x)", "level": 4}
+{"cur": "6*sin(3*x**2 - 2*x + sin(x)) + Integral(216*x**3*exp(3)*exp(3*x)*exp(4*x**3) + 54*x*exp(3)*exp(3*x)*exp(4*x**3) + 18*exp(3)*exp(3*x)*exp(4*x**3), x)", "nxt": "18*x*exp(3)*exp(3*x)*exp(4*x**3) + 6*sin(3*x**2 - 2*x + sin(x))", "level": 4}
+{"cur": "Integral((72*sqrt(x) + 9)*exp(2*sqrt(x) + 8*x + 3)/sqrt(x), x)", "nxt": "9*exp(3)*exp(2*sqrt(x))*exp(8*x)", "level": 4}
+{"cur": "Integral(-48*(5*x + 2)*cos(5*x**2 + 4*x + 1) + 3*(2*x + cos(x) + 2)*exp(x**2 + 2*x + sin(x)), x)", "nxt": "3*exp(2*x)*exp(x**2)*exp(sin(x)) - 24*sin(5*x**2 + 4*x + 1)", "level": 4}
+{"cur": "Integral(24*(2*x*sin(x**3 - 2*x + 1) + (3*x**2 - 2)**2*cos(x**3 - 2*x + 1))*sin(x**3 - 2*x + 1)**2, x)", "nxt": "24*x**2*sin(x**3 - 2*x + 1)**3 - 16*sin(x**3 - 2*x + 1)**3", "level": 4}
+{"cur": "Integral(36*(x*(4*x - 3) + 1)*exp(x*(2*x - 3)), x)", "nxt": "36*x*exp(x*(2*x - 3))", "level": 4}
+{"cur": "Integral(18*(3*x*(-(4*x**2 - 1)*log(x)*sin(4*x**3 - 3*x + 3) + 4*sin(3*x + 4)**2*cos(3*x + 4)) + cos(4*x**3 - 3*x + 3))/x, x)", "nxt": "18*log(x)*cos(4*x**3 - 3*x + 3) + 24*sin(3*x + 4)**3", "level": 4}
+{"cur": "Integral((80*(3*x + 2)**2 + 30)*exp(12*x**2 + 16*x + 4), x)", "nxt": "(30*x + 20)*exp(12*x**2 + 16*x + 4)", "level": 4}
+{"cur": "Integral(48*x*(5*x**2 + 1)*cos(5*x**3 + 3*x + 3) + 16*sin(5*x**3 + 3*x + 3), x)", "nxt": "16*x*sin(5*x**3 + 3*x + 3)", "level": 4}
+{"cur": "Integral(192*x*(-18*x**3*sin(4*x**3 + 4) + cos(4*x**3 + 4))*cos(4*x**3 + 4)**2, x)", "nxt": "96*x**2*cos(4*x**3 + 4)**3", "level": 4}
+{"cur": "Integral((135*x**2 + 18*cos(2*x) - 9)*exp(5*x**3 - x + sin(2*x) + 5), x)", "nxt": "Subs(Integral(9*exp(u_), u_), u_, 5*x**3 - x + sin(2*x) + 5)", "level": 4}
+{"cur": "Subs(Integral(9*exp(u_), u_), u_, 5*x**3 - x + sin(2*x) + 5)", "nxt": "Subs(9*exp(u_), u_, 5*x**3 - x + sin(2*x) + 5)", "level": 4}
+{"cur": "Integral((2*cos(2*x) + 1)*cos(x + sin(2*x) + 1), x)", "nxt": "sin(x + sin(2*x) + 1)", "level": 4}
+{"cur": "Integral(3*(-10*x + 9*sin(9*x) - 2)*sin(5*x**2 + 2*x + cos(9*x)), x)", "nxt": "Subs(Integral(-3*sin(u_), u_), u_, 5*x**2 + 2*x + cos(9*x))", "level": 4}
+{"cur": "Subs(Integral(-3*sin(u_), u_), u_, 5*x**2 + 2*x + cos(9*x))", "nxt": "Subs(3*cos(u_), u_, 5*x**2 + 2*x + cos(9*x))", "level": 4}
+{"cur": "Integral(x**2*(315*x**2 - 63)*exp(5*x**3 - 3*x + 5) + 42*x*exp(5*x**3 - 3*x + 5) + 36*sin(x - 2)*cos(x - 2)**3, x)", "nxt": "21*x**2*exp(5)*exp(-3*x)*exp(5*x**3) - 9*cos(x - 2)**4", "level": 4}
+{"cur": "Integral(30*x*exp(2*x*(5*x**2 - 3)) + 140*x*cos(4*x) + 18*(5*x**2 - 1)**2*exp(2*x*(5*x**2 - 3)) + 35*sin(4*x), x)", "nxt": "15*x**2*exp(-6*x)*exp(10*x**3) + 35*x*sin(4*x) - 3*exp(-6*x)*exp(10*x**3)", "level": 4}
+{"cur": "Integral(8*sin(x + 1)**3*cos(x + 1), x)", "nxt": "2*sin(x + 1)**4", "level": 4}
+{"cur": "Integral((18*x**2 + 27*cos(9*x) + 12)*exp(2*x**3 + 4*x + sin(9*x) + 5), x)", "nxt": "Subs(Integral(3*exp(u_), u_), u_, 2*x**3 + 4*x + sin(9*x) + 5)", "level": 4}
+{"cur": "Subs(Integral(3*exp(u_), u_), u_, 2*x**3 + 4*x + sin(9*x) + 5)", "nxt": "Subs(3*exp(u_), u_, 2*x**3 + 4*x + sin(9*x) + 5)", "level": 4}
+{"cur": "Integral(16*exp(2*x + 5), x)", "nxt": "8*exp(2*x + 5)", "level": 4}
+{"cur": "Integral(5*(sin(x) - 4)*sin(4*x + cos(x) + 2), x)", "nxt": "5*cos(4*x + cos(x) + 2)", "level": 4}
+{"cur": "Integral(30*(-x*(4*x + 3)*log(x)*sin(2*x**2 + 3*x + 5) + cos(2*x**2 + 3*x + 5))/x, x)", "nxt": "30*log(x)*cos(2*x**2 + 3*x + 5)", "level": 4}
+{"cur": "Integral(21*(x**2 + 1)*exp(x*(x**2 + 3)), x)", "nxt": "7*exp(x*(x**2 + 3))", "level": 4}
+{"cur": "Integral((72*sqrt(x)*((4*x - 1)**2 + 2)*exp(4*x**2 - 2*x + 2) + (14*sqrt(x)*(15*x**2 - 4) + 7*sqrt(6))*cos(sqrt(6)*sqrt(x) + 5*x**3 - 4*x + 2))/(2*sqrt(x)), x)", "nxt": "(72*x - 18)*exp(2)*exp(-2*x)*exp(4*x**2) + Integral(105*x**2*cos(sqrt(6)*sqrt(x) + 5*x**3 - 4*x + 2) - 28*cos(sqrt(6)*sqrt(x) + 5*x**3 - 4*x + 2) + 7*sqrt(6)*cos(sqrt(6)*sqrt(x) + 5*x**3 - 4*x + 2)/(2*sqrt(x)), x)", "level": 4}
+{"cur": "(72*x - 18)*exp(2)*exp(-2*x)*exp(4*x**2) + Integral(105*x**2*cos(sqrt(6)*sqrt(x) + 5*x**3 - 4*x + 2) - 28*cos(sqrt(6)*sqrt(x) + 5*x**3 - 4*x + 2) + 7*sqrt(6)*cos(sqrt(6)*sqrt(x) + 5*x**3 - 4*x + 2)/(2*sqrt(x)), x)", "nxt": "(72*x - 18)*exp(2)*exp(-2*x)*exp(4*x**2) + Subs(Integral(7*cos(u_), u_), u_, sqrt(6)*sqrt(x) + 5*x**3 - 4*x + 2)", "level": 4}
+{"cur": "(72*x - 18)*exp(2)*exp(-2*x)*exp(4*x**2) + Subs(Integral(7*cos(u_), u_), u_, sqrt(6)*sqrt(x) + 5*x**3 - 4*x + 2)", "nxt": "(72*x - 18)*exp(2)*exp(-2*x)*exp(4*x**2) + Subs(7*sin(u_), u_, sqrt(6)*sqrt(x) + 5*x**3 - 4*x + 2)", "level": 4}
+{"cur": "Integral((105*x**2 + 35)*cos(x**3 + x + 1), x)", "nxt": "35*sin(x**3 + x + 1)", "level": 4}
+{"cur": "Integral(16*((10*x - 1)**2 + 5)*exp(10*x**2 - 2*x + 10), x)", "nxt": "(80*x - 8)*exp(10*x**2 - 2*x + 10)", "level": 4}
+{"cur": "Integral(-5*cos(2*x + 2) + 10*cos(4*x + 2), x)", "nxt": "-5*sin(2*x + 2)/2 + 5*sin(4*x + 2)/2", "level": 4}
+{"cur": "Integral(24*(6*x*cos(3*x**3 - x) - (9*x**2 - 1)**2*sin(3*x**3 - x))*cos(3*x**3 - x)**2, x)", "nxt": "72*x**2*cos(3*x**3 - x)**3 - 8*cos(3*x**3 - x)**3", "level": 4}
+{"cur": "Integral(63*cos(2*x) + 126*cos(4*x), x)", "nxt": "63*sin(2*x)/2 + 63*sin(4*x)/2", "level": 4}
+{"cur": "Integral((189 - 126*x)*cos(x**2 - 3*x + 5) + 4*(5*x + 2*cos(4*x) + 2)*cos(5*x**2 + 4*x + sin(4*x) + 3), x)", "nxt": "2*sin(5*x**2 + 4*x + sin(4*x) + 3) + Integral(-126*x*cos(x**2 - 3*x + 5) + 189*cos(x**2 - 3*x + 5), x)", "level": 4}
+{"cur": "2*sin(5*x**2 + 4*x + sin(4*x) + 3) + Integral(-126*x*cos(x**2 - 3*x + 5) + 189*cos(x**2 - 3*x + 5), x)", "nxt": "-63*sin(x**2 - 3*x + 5) + 2*sin(5*x**2 + 4*x + sin(4*x) + 3)", "level": 4}
+{"cur": "Integral(3*(6*sqrt(x)*(2*x**2 + 1) + sqrt(3))*exp(sqrt(3)*sqrt(x) + 2*x**3 + 3*x + 3)/(2*sqrt(x)), x)", "nxt": "Subs(Integral(3*exp(u_), u_), u_, sqrt(3)*sqrt(x) + 2*x**3 + 3*x + 3)", "level": 4}
+{"cur": "Subs(Integral(3*exp(u_), u_), u_, sqrt(3)*sqrt(x) + 2*x**3 + 3*x + 3)", "nxt": "Subs(3*exp(u_), u_, sqrt(3)*sqrt(x) + 2*x**3 + 3*x + 3)", "level": 4}
+{"cur": "Integral(6*(7 - 4*sin(4*x))*cos(7*x + cos(4*x)), x)", "nxt": "Subs(Integral(6*cos(u_), u_), u_, 7*x + cos(4*x))", "level": 4}
+{"cur": "Subs(Integral(6*cos(u_), u_), u_, 7*x + cos(4*x))", "nxt": "Subs(6*sin(u_), u_, 7*x + cos(4*x))", "level": 4}
+{"cur": "Integral((sqrt(x)*(40 - 160*x)*exp(2*x*(2*x - 1)) + (sqrt(x)*(2 - 4*x) - 3)*sin(3*sqrt(x) + x**2 - x + 3))/sqrt(x), x)", "nxt": "Integral(-4*x*sin(3*sqrt(x) + x**2 - x + 3) + 2*sin(3*sqrt(x) + x**2 - x + 3) - 3*sin(3*sqrt(x) + x**2 - x + 3)/sqrt(x), x) - 20*exp(-2*x)*exp(4*x**2)", "level": 4}
+{"cur": "Integral(-4*x*sin(3*sqrt(x) + x**2 - x + 3) + 2*sin(3*sqrt(x) + x**2 - x + 3) - 3*sin(3*sqrt(x) + x**2 - x + 3)/sqrt(x), x) - 20*exp(-2*x)*exp(4*x**2)", "nxt": "Subs(Integral(-2*sin(u_), u_), u_, 3*sqrt(x) + x**2 - x + 3) - 20*exp(-2*x)*exp(4*x**2)", "level": 4}
+{"cur": "Subs(Integral(-2*sin(u_), u_), u_, 3*sqrt(x) + x**2 - x + 3) - 20*exp(-2*x)*exp(4*x**2)", "nxt": "Subs(2*cos(u_), u_, 3*sqrt(x) + x**2 - x + 3) - 20*exp(-2*x)*exp(4*x**2)", "level": 4}
+{"cur": "Integral(45*(-9*sin(9*x + 3) + cos(9*x + 3))*exp(x), x)", "nxt": "45*exp(x)*cos(9*x + 3)", "level": 4}
+{"cur": "Integral(3*(2*sqrt(x)*(10*x + 1) + sqrt(6))*exp(sqrt(6)*sqrt(x) + 5*x**2 + x + 4)/sqrt(x), x)", "nxt": "Subs(Integral(6*exp(u_), u_), u_, sqrt(6)*sqrt(x) + 5*x**2 + x + 4)", "level": 4}
+{"cur": "Subs(Integral(6*exp(u_), u_), u_, sqrt(6)*sqrt(x) + 5*x**2 + x + 4)", "nxt": "Subs(6*exp(u_), u_, sqrt(6)*sqrt(x) + 5*x**2 + x + 4)", "level": 4}
+{"cur": "Integral(32*(-8*(2*x + 1)**2*sin(4*x**2 + 4*x + 1) + cos(4*x**2 + 4*x + 1))*cos(4*x**2 + 4*x + 1)**3, x)", "nxt": "32*x*cos(4*x**2 + 4*x + 1)**4 + 16*cos(4*x**2 + 4*x + 1)**4", "level": 4}
+{"cur": "Integral(-1176*sin(7*x + 1)*cos(7*x + 1)**3, x)", "nxt": "42*cos(7*x + 1)**4", "level": 4}
+{"cur": "Integral(2*(x*(7*(x - 3*sin(6*x))*cos(x**2 + cos(6*x) + 4) - 64*(3*x**2 + 1)*log(x)*sin(4*x**3 + 4*x + 1)) + 16*cos(4*x**3 + 4*x + 1))/x, x)", "nxt": "Integral(14*x*cos(x**2 + cos(6*x) + 4) + (-384*x**2 - 128)*log(x)*sin(4*x**3 + 4*x + 1) - 42*sin(6*x)*cos(x**2 + cos(6*x) + 4) + 32*cos(4*x**3 + 4*x + 1)/x, x)", "level": 4}
+{"cur": "Integral(14*x*cos(x**2 + cos(6*x) + 4) + (-384*x**2 - 128)*log(x)*sin(4*x**3 + 4*x + 1) - 42*sin(6*x)*cos(x**2 + cos(6*x) + 4) + 32*cos(4*x**3 + 4*x + 1)/x, x)", "nxt": "32*log(x)*cos(4*x**3 + 4*x + 1) + Integral(14*x*cos(x**2 + cos(6*x) + 4) - 42*sin(6*x)*cos(x**2 + cos(6*x) + 4), x)", "level": 4}
+{"cur": "32*log(x)*cos(4*x**3 + 4*x + 1) + Integral(14*x*cos(x**2 + cos(6*x) + 4) - 42*sin(6*x)*cos(x**2 + cos(6*x) + 4), x)", "nxt": "32*log(x)*cos(4*x**3 + 4*x + 1) + Integral(14*(x - 3*sin(6*x))*cos(x**2 + cos(6*x) + 4), x)", "level": 4}
+{"cur": "32*log(x)*cos(4*x**3 + 4*x + 1) + Integral(14*(x - 3*sin(6*x))*cos(x**2 + cos(6*x) + 4), x)", "nxt": "32*log(x)*cos(4*x**3 + 4*x + 1) + 14*Integral((x - 3*sin(6*x))*cos(x**2 + cos(6*x) + 4), x)", "level": 4}
+{"cur": "32*log(x)*cos(4*x**3 + 4*x + 1) + 14*Integral((x - 3*sin(6*x))*cos(x**2 + cos(6*x) + 4), x)", "nxt": "32*log(x)*cos(4*x**3 + 4*x + 1) + 14*Subs(Integral(cos(u_)/2, u_), u_, x**2 + cos(6*x) + 4)", "level": 4}
+{"cur": "32*log(x)*cos(4*x**3 + 4*x + 1) + 14*Subs(Integral(cos(u_)/2, u_), u_, x**2 + cos(6*x) + 4)", "nxt": "32*log(x)*cos(4*x**3 + 4*x + 1) + 14*Subs(sin(u_)/2, u_, x**2 + cos(6*x) + 4)", "level": 4}
+{"cur": "Integral((8*(6*x - 1)**2 + 12)*exp(12*x**2 - 4*x + 20), x)", "nxt": "(12*x - 2)*exp(12*x**2 - 4*x + 20)", "level": 4}
+{"cur": "Integral(-216*exp(3*x), x)", "nxt": "-72*exp(3*x)", "level": 4}
+{"cur": "Integral(-42*x**3*(5*x - 1)*sin(5*x**2 - 2*x + 3) + 63*x**2*cos(5*x**2 - 2*x + 3) + (9*x**2 - 6*sin(6*x) + 2)*cos(3*x**3 + 2*x + cos(6*x)), x)", "nxt": "sin(3*x**3 + 2*x + cos(6*x)) + Integral(-210*x**4*sin(5*x**2 - 2*x + 3) + 42*x**3*sin(5*x**2 - 2*x + 3) + 63*x**2*cos(5*x**2 - 2*x + 3), x)", "level": 4}
+{"cur": "sin(3*x**3 + 2*x + cos(6*x)) + Integral(-210*x**4*sin(5*x**2 - 2*x + 3) + 42*x**3*sin(5*x**2 - 2*x + 3) + 63*x**2*cos(5*x**2 - 2*x + 3), x)", "nxt": "21*x**3*cos(5*x**2 - 2*x + 3) + sin(3*x**3 + 2*x + cos(6*x))", "level": 4}
+{"cur": "Integral(20*(-(4*x - 3)**2*sin(2*x**2 - 3*x + 2) + cos(2*x**2 - 3*x + 2))*cos(2*x**2 - 3*x + 2)**3, x)", "nxt": "20*x*cos(2*x**2 - 3*x + 2)**4 - 15*cos(2*x**2 - 3*x + 2)**4", "level": 4}
+{"cur": "Integral((81*x**2 - 63*sin(7*x) + 9)*exp(3*x**3 + x + cos(7*x) + 2), x)", "nxt": "Subs(Integral(9*exp(u_), u_), u_, 3*x**3 + x + cos(7*x) + 2)", "level": 4}
+{"cur": "Subs(Integral(9*exp(u_), u_), u_, 3*x**3 + x + cos(7*x) + 2)", "nxt": "Subs(9*exp(u_), u_, 3*x**3 + x + cos(7*x) + 2)", "level": 4}
+{"cur": "Integral(63*(x + 1)*exp(x + 3), x)", "nxt": "63*x*exp(x + 3)", "level": 4}
+{"cur": "Integral(3*(sqrt(x)*(18*x**2 - 2) + 3)*cos(3*sqrt(x) + 3*x**3 - x)/(2*sqrt(x)), x)", "nxt": "3*sin(3*sqrt(x) + 3*x**3 - x)", "level": 4}
+{"cur": "Integral(2*(9*x*cos(3*x**3 + 4*x + 2) - (9*x**2 + 4)**2*sin(3*x**3 + 4*x + 2))*cos(3*x**3 + 4*x + 2), x)", "nxt": "9*x**2*cos(3*x**3 + 4*x + 2)**2 + 4*cos(3*x**3 + 4*x + 2)**2", "level": 4}
+{"cur": "Integral(864*sin(6*x + 4)**2*cos(6*x + 4), x)", "nxt": "48*sin(6*x + 4)**3", "level": 4}
+{"cur": "Integral(7*(x*(27*(2*x**2 + 1)*log(x)*cos(2*x**3 + 3*x + 4) + 56*exp(28*x)) + 9*sin(2*x**3 + 3*x + 4))/x, x)", "nxt": "14*exp(28*x) + 63*log(x)*sin(2*x**3 + 3*x + 4)", "level": 4}
+{"cur": "Integral((60*x**2 + 20*cos(4*x) - 15)*exp(4*x**3 - 3*x + sin(4*x) + 2) + 63*exp(3*x + 5), x)", "nxt": "5*exp(4*x**3 - 3*x + sin(4*x) + 2) + Integral(63*exp(5)*exp(3*x), x)", "level": 4}
+{"cur": "5*exp(4*x**3 - 3*x + sin(4*x) + 2) + Integral(63*exp(5)*exp(3*x), x)", "nxt": "21*exp(5)*exp(3*x) + 5*exp(4*x**3 - 3*x + sin(4*x) + 2)", "level": 4}
+{"cur": "Integral((250*x + 50)*exp(5*x**2 + 3*x + 2) + 3*(-6*x + 7*sin(7*x) + 3)*sin(3*x**2 - 3*x + cos(7*x) + 5) + 25*exp(5*x**2 + 3*x + 2), x)", "nxt": "3*cos(3*x**2 - 3*x + cos(7*x) + 5) + Integral(250*x*exp(2)*exp(3*x)*exp(5*x**2) + 75*exp(2)*exp(3*x)*exp(5*x**2), x)", "level": 4}
+{"cur": "3*cos(3*x**2 - 3*x + cos(7*x) + 5) + Integral(250*x*exp(2)*exp(3*x)*exp(5*x**2) + 75*exp(2)*exp(3*x)*exp(5*x**2), x)", "nxt": "25*exp(2)*exp(3*x)*exp(5*x**2) + 3*cos(3*x**2 - 3*x + cos(7*x) + 5)", "level": 4}
+{"cur": "Integral(40*x**4*(3*x**2 - 1)*cos(4*x**3 - 4*x + 5) + 40*x**3*sin(4*x**3 - 4*x + 5) - 12*(4*x + 3)**2*sin(2*x**2 + 3*x + 4)*cos(2*x**2 + 3*x + 4)**2 + 16*cos(2*x**2 + 3*x + 4)**3, x)", "nxt": "10*x**4*sin(4*x**3 - 4*x + 5) + 16*x*cos(2*x**2 + 3*x + 4)**3 + 12*cos(2*x**2 + 3*x + 4)**3", "level": 4}
+{"cur": "Integral(45*((2 - 3*x**2)*sin(x) - cos(x))*exp(x*(x**2 - 2)), x)", "nxt": "-45*exp(-2*x)*exp(x**3)*sin(x)", "level": 4}
+{"cur": "Integral((192*x + 192)*cos(2*x*(x + 2)), x)", "nxt": "48*sin(2*x*(x + 2))", "level": 4}
+{"cur": "Integral((-112*x*(5*x + 2) - 56)*exp(5*x**2 + 4*x + 3), x)", "nxt": "-56*x*exp(5*x**2 + 4*x + 3)", "level": 4}
+{"cur": "Integral(72*x*sin(4*x**3 + 4*x + 3) + 48*(3*x**2 + 1)**2*cos(4*x**3 + 4*x + 3), x)", "nxt": "(36*x**2 + 12)*sin(4*x**3 + 4*x + 3)", "level": 4}
+{"cur": "Integral((432*x + 72)*exp(6*x + 3), x)", "nxt": "72*x*exp(6*x + 3)", "level": 4}
+{"cur": "Integral((27*(4*x + 3)**2 + 36)*exp(6*x**2 + 9*x + 3), x)", "nxt": "(36*x + 27)*exp(6*x**2 + 9*x + 3)", "level": 4}
+{"cur": "Integral(-18*x*(x**2*cos(x**2 + 2) + sin(x**2 + 2)), x)", "nxt": "-9*x**2*sin(x**2 + 2)", "level": 4}
+{"cur": "Integral(72*(8*sin(x) + cos(x))*exp(8*x + 2), x)", "nxt": "72*exp(2)*exp(8*x)*sin(x)", "level": 4}
+{"cur": "Integral(800*sin(5*x + 4)**3*cos(5*x + 4), x)", "nxt": "40*sin(5*x + 4)**4", "level": 4}
+{"cur": "Integral(-12*x*(15*x**2 - 1)*cos(5*x**3 - x + 5) - 12*sin(5*x**3 - x + 5), x)", "nxt": "-12*x*sin(5*x**3 - x + 5)", "level": 4}
+{"cur": "Integral(8*(2*cos(2*x) + 5)*cos(5*x + sin(2*x) + 3) + 8*exp(4*x + 2), x)", "nxt": "8*sin(5*x + sin(2*x) + 3) + Integral(8*exp(2)*exp(4*x), x)", "level": 4}
+{"cur": "8*sin(5*x + sin(2*x) + 3) + Integral(8*exp(2)*exp(4*x), x)", "nxt": "2*exp(2)*exp(4*x) + 8*sin(5*x + sin(2*x) + 3)", "level": 4}
+{"cur": "Integral(-3*sin(x)*cos(4*x + 1) - 12*sin(4*x + 1)*cos(x), x)", "nxt": "3*cos(x)*cos(4*x + 1)", "level": 4}
+{"cur": "Integral(-6*(2*x - 1)**2*sin(x**2 - x + 5) + 12*cos(x**2 - x + 5), x)", "nxt": "-(6 - 12*x)*cos(x**2 - x + 5)", "level": 4}
+{"cur": "Integral((240*x*cos(5*x**3 - x + 2) - 32*(15*x**2 - 1)**2*sin(5*x**3 - x + 2))*cos(5*x**3 - x + 2)**3, x)", "nxt": "120*x**2*cos(5*x**3 - x + 2)**4 - 8*cos(5*x**3 - x + 2)**4", "level": 4}
+{"cur": "Integral(252*exp(6*x + 5), x)", "nxt": "42*exp(6*x + 5)", "level": 4}
+{"cur": "Integral(9*((8*x - 3)**2 + 8)*exp(4*x**2 - 3*x + 5), x)", "nxt": "(72*x - 27)*exp(4*x**2 - 3*x + 5)", "level": 4}
+{"cur": "Integral(100*x**5*sin(5*x + 3) - 100*x**4*cos(5*x + 3) + 48*x*sin(4*x**3 + 3*x + 1)**3 + 54*(4*x**2 + 1)**2*sin(4*x**3 + 3*x + 1)**2*cos(4*x**3 + 3*x + 1), x)", "nxt": "-20*x**5*cos(5*x + 3) + 24*x**2*sin(4*x**3 + 3*x + 1)**3 + 6*sin(4*x**3 + 3*x + 1)**3", "level": 4}
+{"cur": "Integral(-2*(sqrt(x)*(24*x**2 + 2) + sqrt(3))*sin(sqrt(3)*sqrt(x) + 4*x**3 + x + 5)/sqrt(x), x)", "nxt": "4*cos(sqrt(3)*sqrt(x) + 4*x**3 + x + 5)", "level": 4}
+{"cur": "Integral(1029*sin(7*x + 2)**2*cos(7*x + 2), x)", "nxt": "49*sin(7*x + 2)**3", "level": 4}
+{"cur": "Integral(432*sin(4*x + 2)**2*cos(4*x + 2), x)", "nxt": "36*sin(4*x + 2)**3", "level": 4}
+{"cur": "Integral(-3*(15*x**2 + cos(x) - 4)*sin(5*x**3 - 4*x + sin(x) + 4) + 125*exp(5*x + 1), x)", "nxt": "3*cos(5*x**3 - 4*x + sin(x) + 4) + Integral(125*E*exp(5*x), x)", "level": 4}
+{"cur": "3*cos(5*x**3 - 4*x + sin(x) + 4) + Integral(125*E*exp(5*x), x)", "nxt": "25*E*exp(5*x) + 3*cos(5*x**3 - 4*x + sin(x) + 4)", "level": 4}
+{"cur": "Integral((-21*x*log(x) - 3)*exp(7*x + 2)/x, x)", "nxt": "-3*exp(7*x + 2)*log(x)", "level": 4}
+{"cur": "Integral(12*x*(-7*x - 2)*exp(7*x + 4), x)", "nxt": "-12*x**2*exp(7*x + 4)", "level": 4}
+{"cur": "Integral(-7*(cos(x) + 6)*sin(6*x + sin(x) + 4), x)", "nxt": "Subs(Integral(-7*sin(u_), u_), u_, 6*x + sin(x) + 4)", "level": 4}
+{"cur": "Subs(Integral(-7*sin(u_), u_), u_, 6*x + sin(x) + 4)", "nxt": "Subs(7*cos(u_), u_, 6*x + sin(x) + 4)", "level": 4}
+{"cur": "Integral(24*x*(2*x + 1)*cos(3*x**2 + 3*x + 2) + 8*sin(3*x**2 + 3*x + 2), x)", "nxt": "8*x*sin(3*x**2 + 3*x + 2)", "level": 4}
+{"cur": "Integral(4*(4*x + 3)**2*exp(8*x**2 + 12*x + 20) + (36*x**2 + 48*cos(8*x) + 12)*exp(2*x**3 + 2*x + sin(8*x) + 5) + 4*exp(8*x**2 + 12*x + 20), x)", "nxt": "6*exp(2*x**3 + 2*x + sin(8*x) + 5) + Integral(64*x**2*exp(20)*exp(12*x)*exp(8*x**2) + 96*x*exp(20)*exp(12*x)*exp(8*x**2) + 40*exp(20)*exp(12*x)*exp(8*x**2), x)", "level": 4}
+{"cur": "6*exp(2*x**3 + 2*x + sin(8*x) + 5) + Integral(64*x**2*exp(20)*exp(12*x)*exp(8*x**2) + 96*x*exp(20)*exp(12*x)*exp(8*x**2) + 40*exp(20)*exp(12*x)*exp(8*x**2), x)", "nxt": "(4*x + 3)*exp(20)*exp(12*x)*exp(8*x**2) + 6*exp(2*x**3 + 2*x + sin(8*x) + 5)", "level": 4}
+{"cur": "Integral(-12*(3*x - 1)*exp(x)*sin(x*(3*x - 2)) + 24*(10*x - 1)**2*sin(x*(5*x - 1))**2*cos(x*(5*x - 1)) + 6*exp(x)*cos(x*(3*x - 2)) + 80*sin(x*(5*x - 1))**3, x)", "nxt": "80*x*sin(5*x**2 - x)**3 + 6*exp(x)*cos(3*x**2 - 2*x) - 8*sin(5*x**2 - x)**3", "level": 4}
+{"cur": "Integral(3*(15*x**2 + 8*cos(8*x) + 3)*cos(5*x**3 + 3*x + sin(8*x) + 4), x)", "nxt": "Subs(Integral(3*cos(u_), u_), u_, 5*x**3 + 3*x + sin(8*x) + 4)", "level": 4}
+{"cur": "Subs(Integral(3*cos(u_), u_), u_, 5*x**3 + 3*x + sin(8*x) + 4)", "nxt": "Subs(3*sin(u_), u_, 5*x**3 + 3*x + sin(8*x) + 4)", "level": 4}
+{"cur": "Integral(150*x*sin(5*x**3 + 3*x + 5) + 45*(5*x**2 + 1)**2*cos(5*x**3 + 3*x + 5) - 6*(6*x**2 + 2*cos(2*x) - 1)*sin(2*x**3 - x + sin(2*x) + 5), x)", "nxt": "6*cos(2*x**3 - x + sin(2*x) + 5) + Integral(1125*x**4*cos(5*x**3 + 3*x + 5) + 450*x**2*cos(5*x**3 + 3*x + 5) + 150*x*sin(5*x**3 + 3*x + 5) + 45*cos(5*x**3 + 3*x + 5), x)", "level": 4}
+{"cur": "6*cos(2*x**3 - x + sin(2*x) + 5) + Integral(1125*x**4*cos(5*x**3 + 3*x + 5) + 450*x**2*cos(5*x**3 + 3*x + 5) + 150*x*sin(5*x**3 + 3*x + 5) + 45*cos(5*x**3 + 3*x + 5), x)", "nxt": "75*x**2*sin(5*x**3 + 3*x + 5) + 15*sin(5*x**3 + 3*x + 5) + 6*cos(2*x**3 - x + sin(2*x) + 5)", "level": 4}
+{"cur": "Integral(-3*(3*x**2 + 2*cos(2*x))*sin(x**3 + sin(2*x) + 2), x)", "nxt": "Subs(Integral(-3*sin(u_), u_), u_, x**3 + sin(2*x) + 2)", "level": 4}
+{"cur": "Subs(Integral(-3*sin(u_), u_), u_, x**3 + sin(2*x) + 2)", "nxt": "Subs(3*cos(u_), u_, x**3 + sin(2*x) + 2)", "level": 4}
+{"cur": "Integral(150*sin(10*x + 4), x)", "nxt": "-15*cos(10*x + 4)", "level": 4}
+{"cur": "Integral(240*x*cos(5*x**3 - 4*x + 3) - 8*(15*x**2 - 4)**2*sin(5*x**3 - 4*x + 3), x)", "nxt": "-(32 - 120*x**2)*cos(5*x**3 - 4*x + 3)", "level": 4}
+{"cur": "Integral((96*x**2 - 32*sin(4*x) - 8)*exp(4*x**3 - x + cos(4*x) + 3), x)", "nxt": "Subs(Integral(8*exp(u_), u_), u_, 4*x**3 - x + cos(4*x) + 3)", "level": 4}
+{"cur": "Subs(Integral(8*exp(u_), u_), u_, 4*x**3 - x + cos(4*x) + 3)", "nxt": "Subs(8*exp(u_), u_, 4*x**3 - x + cos(4*x) + 3)", "level": 4}
+{"cur": "Integral(756*x**4*exp(6*x**3 - 6*x + 9) - 504*x**2*exp(6*x**3 - 6*x + 9) + 84*x*exp(6*x**3 - 6*x + 9) + 84*exp(6*x**3 - 6*x + 9) + 140*cos(5*x + 4) + 196*cos(7*x + 4), x)", "nxt": "42*x**2*exp(9)*exp(-6*x)*exp(6*x**3) + 28*sin(5*x + 4) + 28*sin(7*x + 4) - 14*exp(9)*exp(-6*x)*exp(6*x**3)", "level": 4}
+{"cur": "Integral(16*(6*x**2 + 3*cos(6*x) - 2)*cos(4*x**3 - 4*x + sin(6*x) + 4), x)", "nxt": "Subs(Integral(8*cos(u_), u_), u_, 4*x**3 - 4*x + sin(6*x) + 4)", "level": 4}
+{"cur": "Subs(Integral(8*cos(u_), u_), u_, 4*x**3 - 4*x + sin(6*x) + 4)", "nxt": "Subs(8*sin(u_), u_, 4*x**3 - 4*x + sin(6*x) + 4)", "level": 4}
+{"cur": "Integral(96*x*cos(2*x**3 - 2*x + 3) - 32*(3*x**2 - 1)**2*sin(2*x**3 - 2*x + 3), x)", "nxt": "-(16 - 48*x**2)*cos(2*x**3 - 2*x + 3)", "level": 4}
+{"cur": "Integral(-5*(sqrt(x)*(12*x - 4) + sqrt(3))*sin(sqrt(3)*sqrt(x) + 3*x**2 - 2*x + 5)/(2*sqrt(x)), x)", "nxt": "5*cos(sqrt(3)*sqrt(x) + 3*x**2 - 2*x + 5)", "level": 4}
+{"cur": "Integral(360*x**2*cos(5*x**2 + 3) - 6*(15*x**2 + 7*cos(7*x) - 4)*sin(5*x**3 - 4*x + sin(7*x) + 2) + 36*sin(5*x**2 + 3), x)", "nxt": "6*cos(5*x**3 - 4*x + sin(7*x) + 2) + Integral(360*x**2*cos(5*x**2 + 3) + 36*sin(5*x**2 + 3), x)", "level": 4}
+{"cur": "6*cos(5*x**3 - 4*x + sin(7*x) + 2) + Integral(360*x**2*cos(5*x**2 + 3) + 36*sin(5*x**2 + 3), x)", "nxt": "36*x*sin(5*x**2 + 3) + 6*cos(5*x**3 - 4*x + sin(7*x) + 2)", "level": 4}
+{"cur": "Integral((2*x + 3*cos(3*x) + 1)*cos(x**2 + x + sin(3*x)), x)", "nxt": "Subs(Integral(cos(u_), u_), u_, x**2 + x + sin(3*x))", "level": 4}
+{"cur": "Subs(Integral(cos(u_), u_), u_, x**2 + x + sin(3*x))", "nxt": "Subs(sin(u_), u_, x**2 + x + sin(3*x))", "level": 4}
+{"cur": "Integral((24*x + 9*(4*x**2 + 1)**2)*exp(4*x**3 + 3*x + 3), x)", "nxt": "(12*x**2 + 3)*exp(4*x**3 + 3*x + 3)", "level": 4}
+{"cur": "Integral((72*x + 54)*cos(2*x**2 + 3*x + 1), x)", "nxt": "18*sin(2*x**2 + 3*x + 1)", "level": 4}
+{"cur": "Integral((2304*x**2 + 72)*exp(16*x**2), x)", "nxt": "72*x*exp(16*x**2)", "level": 4}
+{"cur": "Integral((120*x**2 - 32*sin(4*x) + 16)*exp(5*x**3 + 2*x + cos(4*x) + 1) - 40*exp(4*x + 5), x)", "nxt": "8*exp(5*x**3 + 2*x + cos(4*x) + 1) + Integral(-40*exp(5)*exp(4*x), x)", "level": 4}
+{"cur": "8*exp(5*x**3 + 2*x + cos(4*x) + 1) + Integral(-40*exp(5)*exp(4*x), x)", "nxt": "-10*exp(5)*exp(4*x) + 8*exp(5*x**3 + 2*x + cos(4*x) + 1)", "level": 4}
+{"cur": "Integral(5*(12*x**2 - 2*sin(2*x) - 3)*cos(4*x**3 - 3*x + cos(2*x) + 1), x)", "nxt": "Subs(Integral(5*cos(u_), u_), u_, 4*x**3 - 3*x + cos(2*x) + 1)", "level": 4}
+{"cur": "Subs(Integral(5*cos(u_), u_), u_, 4*x**3 - 3*x + cos(2*x) + 1)", "nxt": "Subs(5*sin(u_), u_, 4*x**3 - 3*x + cos(2*x) + 1)", "level": 4}
+{"cur": "Integral(28*(x*(3*x**2 + 4)*log(x) + 1)*exp(x**3 + 4*x + 1)/x, x)", "nxt": "28*exp(x**3 + 4*x + 1)*log(x)", "level": 4}
+{"cur": "Integral(18*(2*x - 3*sin(9*x))*cos(3*x**2 + cos(9*x) + 2), x)", "nxt": "Subs(Integral(6*cos(u_), u_), u_, 3*x**2 + cos(9*x) + 2)", "level": 4}
+{"cur": "Subs(Integral(6*cos(u_), u_), u_, 3*x**2 + cos(9*x) + 2)", "nxt": "Subs(6*sin(u_), u_, 3*x**2 + cos(9*x) + 2)", "level": 4}
+{"cur": "Integral(-8*(5*cos(5*x) + 1)*sin(x + sin(5*x) + 1), x)", "nxt": "Subs(Integral(-8*sin(u_), u_), u_, x + sin(5*x) + 1)", "level": 4}
+{"cur": "Subs(Integral(-8*sin(u_), u_), u_, x + sin(5*x) + 1)", "nxt": "Subs(8*cos(u_), u_, x + sin(5*x) + 1)", "level": 4}
+{"cur": "Integral(-5*cos(2*x), x)", "nxt": "-5*sin(2*x)/2", "level": 4}
+{"cur": "Integral(21*(x*(3*x**2 - 2) + 1)*exp(x*(x**2 - 2)), x)", "nxt": "21*x*exp(x*(x**2 - 2))", "level": 4}
+{"cur": "Integral(48*x*sin(2*x**3 - x + 4)**3 + 42*(3*x**2 - 4)*exp(x**3 - 4*x + 1)*sin(x) + 12*(6*x**2 - 1)**2*sin(2*x**3 - x + 4)**2*cos(2*x**3 - x + 4) + 42*exp(x**3 - 4*x + 1)*cos(x), x)", "nxt": "24*x**2*sin(2*x**3 - x + 4)**3 - 4*sin(2*x**3 - x + 4)**3 + 42*E*exp(-4*x)*exp(x**3)*sin(x)", "level": 4}
+{"cur": "Integral(2*((4*x**2 + 1)*(7*x*log(2*x)**2 + 7*x*log(2*x) + 1) + 4)/(4*x**2 + 1), x)", "nxt": "7*x**2*log(2*x)**2 + 2*x + 4*atan(2*x)", "level": 5}
+{"cur": "Integral((2*x**2 + 3)/(x**2 + 1), x)", "nxt": "2*x + atan(x)", "level": 5}
+{"cur": "Integral((6*x + 5)/sqrt(x + 1), x)", "nxt": "sqrt(x + 1)*(4*x + 2)", "level": 5}
+{"cur": "Integral((5*x**2 + 11)/(x**2 + 1), x)", "nxt": "5*x + 6*atan(x)", "level": 5}
+{"cur": "Integral((12*x**2 + 5)/(4*x**2 + 1), x)", "nxt": "3*x + atan(2*x)", "level": 5}
+{"cur": "Integral(27*(3*x + 7)/(2*sqrt(x + 3)), x)", "nxt": "sqrt(x + 3)*(27*x + 27)", "level": 5}
+{"cur": "Integral(14*(-sin(2*x) + 2*cos(2*x))*exp(4*x), x)", "nxt": "7*exp(4*x)*cos(2*x)", "level": 5}
+{"cur": "Integral(7*(135*x**5 + 59*x**3 + 87*x**2 - 12*x - 4)/(2*sqrt(5*x**3 + 4*x + 4)), x)", "nxt": "sqrt(5*x**3 + 4*x + 4)*(21*x**3 - 7*x + 7)", "level": 5}
+{"cur": "Integral(6*x**2*log(x) + 2*x**2 + 3 + 27/sqrt(1 - 9*x**2), x)", "nxt": "2*x**3*log(x) + 3*x + 9*asin(3*x)", "level": 5}
+{"cur": "Integral(2*(sin(3*x) + 3*cos(3*x))*exp(x), x)", "nxt": "2*exp(x)*sin(3*x)", "level": 5}
+{"cur": "Integral((28*sin(3*x) + 21*cos(3*x))*exp(4*x), x)", "nxt": "7*exp(4*x)*sin(3*x)", "level": 5}
+{"cur": "Integral(7*(-4*sin(4*x) + cos(4*x))*exp(x), x)", "nxt": "7*exp(x)*cos(4*x)", "level": 5}
+{"cur": "Integral(27*sqrt(2)*exp(3*x)*cos(3*x + pi/4) + 5 + 3/sqrt(1 - x**2), x)", "nxt": "5*x + 27*sqrt(2)*(exp(3*x)*sin(3*x + pi/4)/6 + exp(3*x)*cos(3*x + pi/4)/6) + 3*asin(x)", "level": 5}
+{"cur": "Integral(7*(sin(2*x) + 2*cos(2*x))*exp(x), x)", "nxt": "7*exp(x)*sin(2*x)", "level": 5}
+{"cur": "Integral(4*(x**2 + 3)/(x**2 + 1), x)", "nxt": "4*x + 8*atan(x)", "level": 5}
+{"cur": "Integral(16*x*log(5*x) + 8*x + 3 + 7/sqrt(1 - x**2), x)", "nxt": "8*x**2*log(5*x) + 3*x + 7*asin(x)", "level": 5}
+{"cur": "Integral(16*exp(4*x)*sin(x) + 4*exp(4*x)*cos(x) + 9*log(5*x) + 9, x)", "nxt": "9*x*log(5*x) + 4*exp(4*x)*sin(x)", "level": 5}
+{"cur": "Integral(16*(-sin(4*x) + cos(4*x))*exp(4*x), x)", "nxt": "4*exp(4*x)*cos(4*x)", "level": 5}
+{"cur": "Integral(12*x**2*log(x)**2 + 8*x**2*log(x) + 5 + 5/sqrt(1 - x**2), x)", "nxt": "4*x**3*log(x)**2 + 5*x + 5*asin(x)", "level": 5}
+{"cur": "Integral((x**2 + 9)/(x**2 + 1), x)", "nxt": "x + 8*atan(x)", "level": 5}
+{"cur": "Integral((180*x**5 - 55*x**3 + 60*x**2 + 3*x - 5)/(2*sqrt(4*x**3 - x)), x)", "nxt": "sqrt(4*x**3 - x)*(5*x**3 - x + 5)", "level": 5}
+{"cur": "Integral((-sin(x) + 4*cos(x))*exp(4*x), x)", "nxt": "exp(4*x)*cos(x)", "level": 5}
+{"cur": "Integral(x*(180*x**4 + 5*x**2 + 78*x - 6)/sqrt(4*x**3 - x + 1), x)", "nxt": "sqrt(4*x**3 - x + 1)*(10*x**3 + 4*x + 8)", "level": 5}
+{"cur": "Integral(24*x**2*log(5*x) + 8*x**2 - 27*exp(2*x)*sin(3*x) + 18*exp(2*x)*cos(3*x), x)", "nxt": "8*x**3*log(5*x) + 9*exp(2*x)*cos(3*x)", "level": 5}
+{"cur": "Integral(8*log(2*x)**2 + 16*log(2*x) + 3 + 9/sqrt(1 - x**2), x)", "nxt": "8*x*log(2*x)**2 + 3*x + 9*asin(x)", "level": 5}
+{"cur": "Integral(7*(10*x**3 + 18*x**2 + 6*x + 9)/sqrt(4*x**3 + 4*x + 3), x)", "nxt": "(7*x + 21)*sqrt(4*x**3 + 4*x + 3)", "level": 5}
+{"cur": "Integral(6*x*(log(3*x) + 1)*log(3*x), x)", "nxt": "3*x**2*log(3*x)**2", "level": 5}
+{"cur": "Integral(x**2*(9*log(3*x) + 3), x)", "nxt": "3*x**3*log(3*x)", "level": 5}
+{"cur": "Integral(6*log(3*x) + 6, x)", "nxt": "6*x*log(3*x)", "level": 5}
+{"cur": "Integral((8*sin(3*x) + 6*cos(3*x))*exp(4*x), x)", "nxt": "2*exp(4*x)*sin(3*x)", "level": 5}
+{"cur": "Integral(3*sqrt(2)*exp(3*x)*sin(3*x + pi/4) + 4 + 9/sqrt(1 - x**2), x)", "nxt": "4*x + 3*sqrt(2)*(exp(3*x)*sin(3*x + pi/4)/6 - exp(3*x)*cos(3*x + pi/4)/6) + 9*asin(x)", "level": 5}
+{"cur": "Integral(sqrt(2)*(36*x + 10)/sqrt(x), x)", "nxt": "sqrt(2)*(24*x**(3/2) + 20*sqrt(x))", "level": 5}
+{"cur": "Integral(5*(-20*x**2 + 55*x + 22)/(2*sqrt(4 - x)), x)", "nxt": "sqrt(4 - x)*(20*x**2 + 15*x + 10)", "level": 5}
+{"cur": "Integral((-4*sin(4*x) + cos(4*x))*exp(x), x)", "nxt": "exp(x)*cos(4*x)", "level": 5}
+{"cur": "Integral(7*(2*sin(x) + cos(x))*exp(2*x), x)", "nxt": "7*exp(2*x)*sin(x)", "level": 5}
+{"cur": "Integral(2 + 5/sqrt(1 - x**2), x)", "nxt": "2*x + 5*asin(x)", "level": 5}
+{"cur": "Integral(30*(x**2 + 2*x + 1)/sqrt(3*x**2 + 2*x + 3), x)", "nxt": "(5*x + 15)*sqrt(3*x**2 + 2*x + 3)", "level": 5}
+{"cur": "Integral(12*x*log(5*x) + 6*x + 1 + 6/sqrt(1 - x**2), x)", "nxt": "6*x**2*log(5*x) + x + 6*asin(x)", "level": 5}
+{"cur": "Integral(((9*x**2 + 1)*(20*exp(4*x)*sin(3*x) + 15*exp(4*x)*cos(3*x) + 2) + 15)/(9*x**2 + 1), x)", "nxt": "2*x + 5*exp(4*x)*sin(3*x) + 5*atan(3*x)", "level": 5}
+{"cur": "Integral(3*log(3*x) + 4 + 3/sqrt(1 - 9*x**2), x)", "nxt": "3*x*log(3*x) + x + asin(3*x)", "level": 5}
+{"cur": "Integral(3*((9*x**2 + 1)*(-9*exp(2*x)*sin(3*x) + 6*exp(2*x)*cos(3*x) + 1) + 3)/(9*x**2 + 1), x)", "nxt": "3*x + 9*exp(2*x)*cos(3*x) + 3*atan(3*x)", "level": 5}
+{"cur": "Integral(4 + 9/sqrt(1 - 9*x**2), x)", "nxt": "4*x + 3*asin(3*x)", "level": 5}
+{"cur": "Integral(6*(3*sin(x) + cos(x))*exp(3*x), x)", "nxt": "6*exp(3*x)*sin(x)", "level": 5}
+{"cur": "Integral(sqrt(3)*(84*x + 7)*sqrt(x**2)/x, x)", "nxt": "(42*sqrt(3)*x + 7*sqrt(3))*sqrt(x**2)", "level": 5}
+{"cur": "Integral((120*x**4 - 21*x**3 + 54*x**2 + 50*x - 5)/sqrt(5*x**2 - x + 3), x)", "nxt": "(6*x**3 + 10)*sqrt(5*x**2 - x + 3)", "level": 5}
+{"cur": "Integral(((4*x**2 + 1)*(4*log(4*x) + 9) + 4)/(4*x**2 + 1), x)", "nxt": "4*x*log(4*x) + 5*x + 2*atan(2*x)", "level": 5}
+{"cur": "Integral((x**2 + 5)/(x**2 + 1), x)", "nxt": "x + 4*atan(x)", "level": 5}
+{"cur": "Integral(14*x*(log(x) + 1)*log(x), x)", "nxt": "7*x**2*log(x)**2", "level": 5}
+{"cur": "Integral(7*(log(5*x) + 2)*log(5*x), x)", "nxt": "7*x*log(5*x)**2", "level": 5}
+{"cur": "Integral((35*x**4 + 25*x**3 + 80*x**2 + 19*x + 13)/(2*sqrt(5*x**3 + x + 4)), x)", "nxt": "(x**2 + x + 5)*sqrt(5*x**3 + x + 4)", "level": 5}
+{"cur": "Integral(3*(180*x**5 - 185*x**3 + 90*x**2 + 36*x - 23)/sqrt(4*x**3 - 3*x + 1), x)", "nxt": "sqrt(4*x**3 - 3*x + 1)*(30*x**3 - 24*x + 30)", "level": 5}
+{"cur": "Integral(6*(log(x) + 2)*log(x), x)", "nxt": "6*x*log(x)**2", "level": 5}
+{"cur": "Integral((log(x) + 2)*log(x), x)", "nxt": "x*log(x)**2", "level": 5}
+{"cur": "Integral(8*(-4*sin(4*x) + cos(4*x))*exp(x), x)", "nxt": "8*exp(x)*cos(4*x)", "level": 5}
+{"cur": "Integral(4*(4*x**4 + 14*x**3 + 7*x**2 + 13*x + 4)/sqrt(x**2 + 4*x + 1), x)", "nxt": "sqrt(x**2 + 4*x + 1)*(4*x**3 + 8*x + 4)", "level": 5}
+{"cur": "Integral(4*sqrt(2)*exp(x)*sin(x + pi/4), x)", "nxt": "4*sqrt(2)*(exp(x)*sin(x + pi/4)/2 - exp(x)*cos(x + pi/4)/2)", "level": 5}
+{"cur": "Integral((9*sin(2*x) + 6*cos(2*x))*exp(3*x), x)", "nxt": "3*exp(3*x)*sin(2*x)", "level": 5}
+{"cur": "Integral(5*(-sin(x) + 3*cos(x))*exp(3*x), x)", "nxt": "5*exp(3*x)*cos(x)", "level": 5}
+{"cur": "Integral(8*(x**2 + 2)/(4*x**2 + 1), x)", "nxt": "2*x + 7*atan(2*x)", "level": 5}
+{"cur": "Integral(6*(5*x**3 + 6*x**2 + 4*x + 4)/sqrt(3*x**3 + 4*x + 2), x)", "nxt": "(4*x + 8)*sqrt(3*x**3 + 4*x + 2)", "level": 5}
+{"cur": "Integral(3 + 21/sqrt(1 - 9*x**2), x)", "nxt": "3*x + 7*asin(3*x)", "level": 5}
+{"cur": "Integral(2*(2*x**2 + 5)/(x**2 + 1), x)", "nxt": "4*x + 6*atan(x)", "level": 5}
+{"cur": "Integral(((4*x**2 + 1)*(-32*exp(x)*sin(4*x) + 8*exp(x)*cos(4*x) + 5) + 18)/(4*x**2 + 1), x)", "nxt": "5*x + 8*exp(x)*cos(4*x) + 9*atan(2*x)", "level": 5}
+{"cur": "Integral(8*(12*x**3 - 34*x**2 - 5*x - 7)/sqrt(x**2 - 4*x + 1), x)", "nxt": "sqrt(x**2 - 4*x + 1)*(32*x**2 + 24*x + 40)", "level": 5}
+{"cur": "Integral(9*(30*x**5 + 26*x**3 + 45*x**2 + 4*x + 10)/sqrt(5*x**3 + 2*x + 5), x)", "nxt": "sqrt(5*x**3 + 2*x + 5)*(12*x**3 + 12*x + 30)", "level": 5}
+{"cur": "Integral(-15*exp(x)*sin(3*x) + 5*exp(x)*cos(3*x) + 6*log(5*x) + 6, x)", "nxt": "6*x*log(5*x) + 5*exp(x)*cos(3*x)", "level": 5}
+{"cur": "Integral(4*x**2*(3*log(2*x) + 2)*log(2*x), x)", "nxt": "4*x**3*log(2*x)**2", "level": 5}
+{"cur": "Integral(9*(2*sin(x) + cos(x))*exp(2*x), x)", "nxt": "9*exp(2*x)*sin(x)", "level": 5}
+{"cur": "Integral(9*log(x)**2 + 18*log(x) + 1 + 5/sqrt(1 - x**2), x)", "nxt": "9*x*log(x)**2 + x + 5*asin(x)", "level": 5}
+{"cur": "Integral(4*x*(2*log(x) + 1), x)", "nxt": "4*x**2*log(x)", "level": 5}
+{"cur": "Integral(3 + 7/sqrt(1 - x**2), x)", "nxt": "3*x + 7*asin(x)", "level": 5}
+{"cur": "Integral(3*(9*x**2 + 8)/(9*x**2 + 1), x)", "nxt": "3*x + 7*atan(3*x)", "level": 5}
+{"cur": "Integral(27*x**2*log(2*x)**2 + 18*x**2*log(2*x) + 16*exp(4*x)*sin(x) + 4*exp(4*x)*cos(x), x)", "nxt": "9*x**3*log(2*x)**2 + 4*exp(4*x)*sin(x)", "level": 5}
+{"cur": "Integral(6*exp(3*x)*sin(x) + 2*exp(3*x)*cos(x) + 5*log(2*x) + 5, x)", "nxt": "5*x*log(2*x) + 2*exp(3*x)*sin(x)", "level": 5}
+{"cur": "Integral(12*sqrt(2)*exp(2*x)*cos(2*x + pi/4), x)", "nxt": "12*sqrt(2)*(exp(2*x)*sin(2*x + pi/4)/4 + exp(2*x)*cos(2*x + pi/4)/4)", "level": 5}
+{"cur": "Integral((4*sin(3*x) + 6*cos(3*x))*exp(2*x), x)", "nxt": "2*exp(2*x)*sin(3*x)", "level": 5}
+{"cur": "Integral(9*x**2*log(5*x) + 3*x**2 + 5 + 2/sqrt(1 - x**2), x)", "nxt": "3*x**3*log(5*x) + 5*x + 2*asin(x)", "level": 5}
+{"cur": "Integral(5*sqrt(2)*exp(x)*sin(x + pi/4) + 2 + 3/sqrt(1 - x**2), x)", "nxt": "2*x + 5*sqrt(2)*(exp(x)*sin(x + pi/4)/2 - exp(x)*cos(x + pi/4)/2) + 3*asin(x)", "level": 5}
+{"cur": "Integral(5*(3*sin(x) + cos(x))*exp(3*x), x)", "nxt": "5*exp(3*x)*sin(x)", "level": 5}
+{"cur": "Integral(3*x*(2*log(x) + 1), x)", "nxt": "3*x**2*log(x)", "level": 5}
+{"cur": "Integral(3*log(5*x) + 3, x)", "nxt": "3*x*log(5*x)", "level": 5}
+{"cur": "Integral(3*(25*x**3 + 9*x**2 - 45*x + 31)/sqrt(x**3 - 3*x + 4), x)", "nxt": "(30*x + 18)*sqrt(x**3 - 3*x + 4)", "level": 5}
+{"cur": "Integral(2*(-sin(2*x) + 2*cos(2*x))*exp(4*x), x)", "nxt": "exp(4*x)*cos(2*x)", "level": 5}
+{"cur": "Integral((21*x**4 - 15*x**3 - 48*x**2 + 36*x - 16)/(2*sqrt(x*(x**2 - 4))), x)", "nxt": "sqrt(x*(x**2 - 4))*(3*x**2 - 3*x + 4)", "level": 5}
+{"cur": "Integral(4*(15*x**2 + 15*x - 1)/sqrt(2*x + 3), x)", "nxt": "sqrt(2*x + 3)*(12*x**2 - 4*x + 8)", "level": 5}
+{"cur": "Integral(9*(3*x**2 + 1)/(9*x**2 + 1), x)", "nxt": "3*x + 2*atan(3*x)", "level": 5}
+{"cur": "Integral(8*(log(5*x) + 2)*log(5*x), x)", "nxt": "8*x*log(5*x)**2", "level": 5}
+{"cur": "Integral((-sin(x) + 3*cos(x))*exp(3*x), x)", "nxt": "exp(3*x)*cos(x)", "level": 5}
+{"cur": "Integral(9*(sin(4*x) + 4*cos(4*x))*exp(x), x)", "nxt": "9*exp(x)*sin(4*x)", "level": 5}
+{"cur": "Integral(3*(21*x**4 - 45*x**3 + 38*x**2 - 24*x - 10)/sqrt(3*x**3 + 4*x + 3), x)", "nxt": "(6*x**2 - 18*x + 12)*sqrt(3*x**3 + 4*x + 3)", "level": 5}
+{"cur": "Integral((20*x**2 + 13)/(4*x**2 + 1), x)", "nxt": "5*x + 4*atan(2*x)", "level": 5}
+{"cur": "Integral(7*(20*x**4 - 70*x**3 + 51*x**2 - 18*x + 9)/sqrt(x**2 - 4*x + 3), x)", "nxt": "(35*x**3 + 21*x)*sqrt(x**2 - 4*x + 3)", "level": 5}
+{"cur": "Integral(16*sqrt(2)*(1 - x)*sqrt(x**2)/x, x)", "nxt": "(-8*sqrt(2)*x + 16*sqrt(2))*sqrt(x**2)", "level": 5}
+{"cur": "Integral(3*((x**2 + 1)*(-2*exp(2*x)*sin(x) + 4*exp(2*x)*cos(x) + 1) + 3)/(x**2 + 1), x)", "nxt": "3*x + 6*exp(2*x)*cos(x) + 9*atan(x)", "level": 5}
+{"cur": "Integral(2*x*(2*log(x) + 1), x)", "nxt": "2*x**2*log(x)", "level": 5}
+{"cur": "Integral(15*exp(3*x)*sin(4*x) + 20*exp(3*x)*cos(4*x) + 5*log(x)**2 + 10*log(x), x)", "nxt": "5*x*log(x)**2 + 5*exp(3*x)*sin(4*x)", "level": 5}
+{"cur": "Integral(5*exp(x)*sin(4*x) + 20*exp(x)*cos(4*x) + 8*log(4*x)**2 + 16*log(4*x), x)", "nxt": "8*x*log(4*x)**2 + 5*exp(x)*sin(4*x)", "level": 5}
+{"cur": "Integral(2*(log(x) + 2)*log(x), x)", "nxt": "2*x*log(x)**2", "level": 5}
+{"cur": "Integral(9*x**2*(3*log(3*x) + 2)*log(3*x), x)", "nxt": "9*x**3*log(3*x)**2", "level": 5}
+{"cur": "Integral(x**2*(3*log(5*x) + 2)*log(5*x), x)", "nxt": "x**3*log(5*x)**2", "level": 5}
+{"cur": "Integral(28*(-sin(4*x) + cos(4*x))*exp(4*x), x)", "nxt": "7*exp(4*x)*cos(4*x)", "level": 5}
+{"cur": "Integral(9*(140*x**2 - 33*x + 5)/(2*sqrt(5*x**2 - 3*x + 1)), x)", "nxt": "(63*x + 27)*sqrt(5*x**2 - 3*x + 1)", "level": 5}
+{"cur": "Integral(2*sqrt(2)*exp(2*x)*cos(2*x + pi/4), x)", "nxt": "2*sqrt(2)*(exp(2*x)*sin(2*x + pi/4)/4 + exp(2*x)*cos(2*x + pi/4)/4)", "level": 5}
+{"cur": "Integral((6*sin(3*x) + 9*cos(3*x))*exp(2*x), x)", "nxt": "3*exp(2*x)*sin(3*x)", "level": 5}
+{"cur": "Integral(x**2*(18*log(2*x) + 6), x)", "nxt": "6*x**3*log(2*x)", "level": 5}
+{"cur": "Integral(16*(-2*sin(4*x) + cos(4*x))*exp(2*x), x)", "nxt": "8*exp(2*x)*cos(4*x)", "level": 5}
+{"cur": "Integral(2*(15*x**3 - 42*x**2 + 8*x + 8)/sqrt(x**2 - 4*x + 3), x)", "nxt": "sqrt(x**2 - 4*x + 3)*(10*x**2 + 8*x + 4)", "level": 5}
+{"cur": "Integral(2 + 2/sqrt(1 - x**2), x)", "nxt": "2*x + 2*asin(x)", "level": 5}
+{"cur": "Integral(((4*x**2 + 1)*(-32*exp(x)*sin(4*x) + 8*exp(x)*cos(4*x) + 1) + 6)/(4*x**2 + 1), x)", "nxt": "x + 8*exp(x)*cos(4*x) + 3*atan(2*x)", "level": 5}
+{"cur": "Integral(9*(-sin(x) + 2*cos(x))*exp(2*x), x)", "nxt": "9*exp(2*x)*cos(x)", "level": 5}
+{"cur": "Integral(2*(15*x**3 + 10*x**2 + 18*x + 5)/sqrt(5*x**2 - 2*x + 5), x)", "nxt": "(2*x**2 + 3*x + 5)*sqrt(5*x**2 - 2*x + 5)", "level": 5}
+{"cur": "Integral(8*x*log(x)**2 + 8*x*log(x) - 24*exp(x)*sin(3*x) + 8*exp(x)*cos(3*x), x)", "nxt": "4*x**2*log(x)**2 + 8*exp(x)*cos(3*x)", "level": 5}
+{"cur": "Integral(14*x*log(5*x) + 7*x - 9*exp(3*x)*sin(x) + 27*exp(3*x)*cos(x), x)", "nxt": "7*x**2*log(5*x) + 9*exp(3*x)*cos(x)", "level": 5}
+{"cur": "Integral(4*(-sin(2*x) + 2*cos(2*x))*exp(4*x), x)", "nxt": "2*exp(4*x)*cos(2*x)", "level": 5}
+{"cur": "Integral(2 + 6/sqrt(1 - x**2), x)", "nxt": "2*x + 6*asin(x)", "level": 5}
+{"cur": "Integral(((x**2 + 1)*(9*log(5*x)**2 + 18*log(5*x) + 1) + 1)/(x**2 + 1), x)", "nxt": "9*x*log(5*x)**2 + x + atan(x)", "level": 5}
+{"cur": "Integral(2*(-2*sin(2*x) + cos(2*x))*exp(x), x)", "nxt": "2*exp(x)*cos(2*x)", "level": 5}
+{"cur": "Integral(21*sqrt(2)*exp(3*x)*cos(3*x + pi/4), x)", "nxt": "21*sqrt(2)*(exp(3*x)*sin(3*x + pi/4)/6 + exp(3*x)*cos(3*x + pi/4)/6)", "level": 5}
+{"cur": "Integral(24*exp(4*x)*sin(4*x) + 24*exp(4*x)*cos(4*x) + 2*log(3*x)**2 + 4*log(3*x), x)", "nxt": "2*x*log(3*x)**2 + 6*exp(4*x)*sin(4*x)", "level": 5}
+{"cur": "Integral(12*(-sin(2*x) + 2*cos(2*x))*exp(4*x), x)", "nxt": "6*exp(4*x)*cos(2*x)", "level": 5}
+{"cur": "Integral(4 + 14/sqrt(1 - 4*x**2), x)", "nxt": "4*x + 7*asin(2*x)", "level": 5}
+{"cur": "Integral((112*x**4 - 48*x**2 + 80*x - 3)/(2*sqrt(4*x**3 - 3*x + 5)), x)", "nxt": "(4*x**2 + 1)*sqrt(4*x**3 - 3*x + 5)", "level": 5}
+{"cur": "Integral(6*exp(3*x)*sin(2*x) + 4*exp(3*x)*cos(2*x) + 1 + 2/sqrt(1 - 4*x**2), x)", "nxt": "x + 2*exp(3*x)*sin(2*x) + asin(2*x)", "level": 5}
+{"cur": "Integral(14*x*(log(4*x) + 1)*log(4*x), x)", "nxt": "7*x**2*log(4*x)**2", "level": 5}
+{"cur": "Integral(2*(-4*sin(4*x) + cos(4*x))*exp(x), x)", "nxt": "2*exp(x)*cos(4*x)", "level": 5}
+{"cur": "Integral(4*x*(log(3*x) + 1)*log(3*x), x)", "nxt": "2*x**2*log(3*x)**2", "level": 5}
+{"cur": "Integral(9*x**2*(3*log(x) + 2)*log(x), x)", "nxt": "9*x**3*log(x)**2", "level": 5}
+{"cur": "Integral(x**2*(3*log(4*x) + 1), x)", "nxt": "x**3*log(4*x)", "level": 5}
+{"cur": "Integral((4*sin(x) + cos(x))*exp(4*x), x)", "nxt": "exp(4*x)*sin(x)", "level": 5}
+{"cur": "Integral(3*(48*x**4 - 21*x**3 - 7*x**2 + 18*x - 5)/sqrt(4*x**2 - 2*x + 1), x)", "nxt": "sqrt(4*x**2 - 2*x + 1)*(9*x**3 - 6*x + 9)", "level": 5}
+{"cur": "Integral(4 + 6/sqrt(1 - 9*x**2), x)", "nxt": "4*x + 2*asin(3*x)", "level": 5}
+{"cur": "Integral(1 + 12/sqrt(1 - 9*x**2), x)", "nxt": "x + 4*asin(3*x)", "level": 5}
+{"cur": "Integral((175*x**3 + 90*x**2 + 60*x + 39)/sqrt(5*x + 3), x)", "nxt": "sqrt(5*x + 3)*(10*x**3 + 8*x + 6)", "level": 5}
+{"cur": "Integral((-21*sin(3*x) + 28*cos(3*x))*exp(4*x), x)", "nxt": "7*exp(4*x)*cos(3*x)", "level": 5}
+{"cur": "Integral(10*sqrt(2)*exp(2*x)*cos(2*x + pi/4) + 3 + 18/sqrt(1 - 9*x**2), x)", "nxt": "3*x + 10*sqrt(2)*(exp(2*x)*sin(2*x + pi/4)/4 + exp(2*x)*cos(2*x + pi/4)/4) + 6*asin(3*x)", "level": 5}
+{"cur": "Integral(27*sqrt(2)*exp(3*x)*sin(3*x + pi/4), x)", "nxt": "27*sqrt(2)*(exp(3*x)*sin(3*x + pi/4)/6 - exp(3*x)*cos(3*x + pi/4)/6)", "level": 5}
+{"cur": "Integral(4*log(4*x) + 4, x)", "nxt": "4*x*log(4*x)", "level": 5}
+{"cur": "Integral(16*(5*x**2 + 4*x + 3)/sqrt(5*x**2 + 2*x + 5), x)", "nxt": "(8*x + 8)*sqrt(5*x**2 + 2*x + 5)", "level": 5}
+{"cur": "Integral(15*x**2*log(x) + 5*x**2 + 4*exp(x)*sin(4*x) + 16*exp(x)*cos(4*x), x)", "nxt": "5*x**3*log(x) + 4*exp(x)*sin(4*x)", "level": 5}
+{"cur": "Integral(9*(-sin(x) + 4*cos(x))*exp(4*x), x)", "nxt": "9*exp(4*x)*cos(x)", "level": 5}
+{"cur": "Integral((6*sin(4*x) + 8*cos(4*x))*exp(3*x), x)", "nxt": "2*exp(3*x)*sin(4*x)", "level": 5}
+{"cur": "Integral(3 + 15/sqrt(1 - 9*x**2), x)", "nxt": "3*x + 5*asin(3*x)", "level": 5}
+{"cur": "Integral((18*x**2 + 5)/(9*x**2 + 1), x)", "nxt": "2*x + atan(3*x)", "level": 5}
+{"cur": "Integral(6*x**2*log(x) + 2*x**2 - 8*exp(4*x)*sin(4*x) + 8*exp(4*x)*cos(4*x), x)", "nxt": "2*x**3*log(x) + 2*exp(4*x)*cos(4*x)", "level": 5}
