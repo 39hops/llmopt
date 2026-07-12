@@ -67,12 +67,21 @@ def _chain_worker(level: int, seed: int, q: "mp.Queue") -> None:
     q.put(out)
 
 
-def phase_chains(n_per_level: int, seed_base: int) -> None:
+def phase_chains(n_per_level: int, seed_base: int,
+                 levels=(2, 3, 4, 5), min_pairs: int = 1,
+                 append: bool = False) -> None:
+    """min_pairs: keep only chains with >= this many steps — round 1
+    measured single-hop collapse (the one-ply-dominated corpus taught
+    answers, not chaining); round 2 mines where the engine CHAINS."""
     ctx = mp.get_context("fork")
     seen: set = set()
+    if append and CHAINS.exists():
+        for line in CHAINS.read_text().splitlines():
+            r = json.loads(line)
+            seen.add((r["cur"], r["nxt"]))
     n = 0
-    with CHAINS.open("w") as f:
-        for level in (2, 3, 4, 5):
+    with CHAINS.open("a" if append else "w") as f:
+        for level in levels:
             for i in range(n_per_level):
                 q = ctx.Queue()
                 pr = ctx.Process(target=_chain_worker,
@@ -87,12 +96,15 @@ def phase_chains(n_per_level: int, seed_base: int) -> None:
                     pairs = q.get(timeout=10)
                 except Exception:
                     continue
+                if len(pairs) < min_pairs:
+                    continue
                 for cur, nxt in pairs:
                     if (cur, nxt) in seen:
                         continue
                     seen.add((cur, nxt))
                     f.write(json.dumps({"cur": cur, "nxt": nxt,
-                                        "level": level}) + "\n")
+                                        "level": level,
+                                        "source": "engine"}) + "\n")
                     n += 1
             print(f"L{level} done: {n} pairs total", flush=True)
     print(f"CHAINS done: {n} verified step pairs -> {CHAINS}")
@@ -200,9 +212,14 @@ if __name__ == "__main__":
     ap.add_argument("--seed-base", type=int, default=8_000_000)
     ap.add_argument("--epochs", type=int, default=3)
     ap.add_argument("--lr", type=float, default=2e-4)
+    ap.add_argument("--levels", type=int, nargs="+",
+                    default=[2, 3, 4, 5])
+    ap.add_argument("--min-pairs", type=int, default=1)
+    ap.add_argument("--append", action="store_true")
     a = ap.parse_args()
     if a.phase == "chains":
-        phase_chains(a.n_per_level, a.seed_base)
+        phase_chains(a.n_per_level, a.seed_base, tuple(a.levels),
+                     a.min_pairs, a.append)
     elif a.phase == "skips":
         phase_skips()
     else:
