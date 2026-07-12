@@ -32,6 +32,20 @@ and ties mx.fast.scaled_dot_product_attention (440 vs 443 us).
 attention_decode_gqa (H=32, KVH=8) beats a per-head naive loop ~3x at
 every T (T=32768: 2322 vs 6910 us).
 
+int4_gemv (2026-07-11, the Cerebras-riff rung): fused int4
+dequant-GEMV, practice_7 packing (Artin: adjacent nibbles, group 128),
+awq_lite channel scales foldable at pack time. Three measured
+versions: v1 (256-thread tree reduction, byte loads) 0.47-0.70x vs
+mx.quantized_matmul — the reduction overhead swamped the tiny per-row
+work; v2 (one simdgroup per row, simd_sum, uint32 loads) 0.75-1.00x;
+v3 (uint2 + half4 vector loads, dot-product MACs) beats mx_q4 1.11x
+at D=4096/N=14336 and 2.80x over fp16, ties at D=2048 (0.94x), loses
+at D=896 (0.72x) — small shapes are overhead-bound (fp16 GEMV itself
+only reaches 40 GB/s there) and mx_q4's tuned dispatch wins the
+launch game. Honest split: win big, lose small, the 4x roofline still
+not saturated — group/threadgroup sweeps are the config-estimator
+rung's training data.
+
 Negative result worth keeping: restructuring the GQA kernel for
 group-shared K/V reads (grid (chunks, KVH), one threadgroup computing
 all GROUP query heads per K row read — the Triton/CUDA lesson) was
@@ -368,6 +382,93 @@ _GQA_MERGE_SRC = """
 """
 
 
+_INT4_GEMV_SRC = """
+    // Fused int4 dequant-GEMV: y[row] = sum_d x[d] * W[row, d], with W
+    // streamed as packed nibbles and dequantized IN REGISTERS — the
+    // fp16 weights never exist in memory (the Cerebras lesson at our
+    // scale: decode speed = weight bytes moved / bandwidth). Packing is
+    // the practice_7 adjacent scheme (Artin): byte j of a row holds
+    // weights d=2j (low nibble) and d=2j+1 (high), so one uint8 load
+    // feeds two MACs — 1 load + mask + shift, never straddling bytes.
+    // GS=128 (Artin's call: metadata nearly free) => a byte's two
+    // weights always share a (scale, min) pair.
+    // v2 after the first bench (v1: 256-thread tree reduction, byte
+    // loads — 0.47-0.70x vs mx.quantized_matmul): one SIMDGROUP per
+    // row (simd_sum, no shared memory, no barriers) and uint32 loads
+    // (8 weights per load; at GS=128 a uint's 8 weights never straddle
+    // a group, so one (scale, min) fetch serves all 8 MACs).
+    constexpr uint SG = 32;
+    uint row = threadgroup_position_in_grid.x;
+    uint lane = thread_position_in_threadgroup.x;
+
+    const device uint32_t* wr =
+        (const device uint32_t*)(wq + row * (uint)D2);
+    const device T* sr = sc + row * (uint)NG;
+    const device T* mr = mn + row * (uint)NG;
+    uint nu = (uint)D2 / 4;
+
+    float acc = 0.0f;
+    for (uint j = lane; j < nu; j += SG) {
+        uint32_t b = wr[j];
+        uint d0 = j * 8;                 // little-endian nibble t = d0+t
+        uint g = d0 / (uint)GS;
+        float s = (float)sr[g];
+        float m = (float)mr[g];
+        for (uint t = 0; t < 8; t++)
+            acc += (float)x[d0 + t]
+                 * ((float)((b >> (4 * t)) & 0xFu) * s + m);
+    }
+    acc = metal::simd_sum(acc);
+    if (lane == 0) out[row] = (T)acc;
+"""
+
+_INT4_GEMV_V3_SRC = """
+    // v3: uint2 weight loads (16 weights/iter) + half4 activation
+    // loads. At GS=128 a uint2's 16 weights share one (scale, min).
+    constexpr uint SG = 32;
+    uint row = threadgroup_position_in_grid.x;
+    uint lane = thread_position_in_threadgroup.x;
+
+    const device uint2* wr =
+        (const device uint2*)(wq + row * (uint)D2);
+    const device T* sr = sc + row * (uint)NG;
+    const device T* mr = mn + row * (uint)NG;
+    uint nu = (uint)D2 / 8;
+
+    float acc = 0.0f;
+    for (uint j = lane; j < nu; j += SG) {
+        uint2 b = wr[j];
+        uint d0 = j * 16;
+        uint g = d0 / (uint)GS;
+        float s = (float)sr[g];
+        float m = (float)mr[g];
+        const device half4* x4 = (const device half4*)(x + d0);
+        float4 xa = (float4)x4[0], xb = (float4)x4[1];
+        float4 xc = (float4)x4[2], xd = (float4)x4[3];
+        float4 wa = float4((float)((b.x >>  0) & 0xFu),
+                           (float)((b.x >>  4) & 0xFu),
+                           (float)((b.x >>  8) & 0xFu),
+                           (float)((b.x >> 12) & 0xFu)) * s + m;
+        float4 wb = float4((float)((b.x >> 16) & 0xFu),
+                           (float)((b.x >> 20) & 0xFu),
+                           (float)((b.x >> 24) & 0xFu),
+                           (float)((b.x >> 28) & 0xFu)) * s + m;
+        float4 wc = float4((float)((b.y >>  0) & 0xFu),
+                           (float)((b.y >>  4) & 0xFu),
+                           (float)((b.y >>  8) & 0xFu),
+                           (float)((b.y >> 12) & 0xFu)) * s + m;
+        float4 wd = float4((float)((b.y >> 16) & 0xFu),
+                           (float)((b.y >> 20) & 0xFu),
+                           (float)((b.y >> 24) & 0xFu),
+                           (float)((b.y >> 28) & 0xFu)) * s + m;
+        acc += metal::dot(xa, wa) + metal::dot(xb, wb)
+             + metal::dot(xc, wc) + metal::dot(xd, wd);
+    }
+    acc = metal::simd_sum(acc);
+    if (lane == 0) out[row] = (T)acc;
+"""
+
+
 def _kernel(name, src, inputs):
     return mx.fast.metal_kernel(
         name=name, input_names=inputs, output_names=["out"], source=src
@@ -396,6 +497,59 @@ _gqa_partial = mx.fast.metal_kernel(
 _gqa_merge = _kernel(
     "llmopt_attn_gqa_merge", _GQA_MERGE_SRC, ["m_in", "l_in", "acc_in"]
 )
+_int4_gemv = _kernel(
+    "llmopt_int4_gemv", _INT4_GEMV_SRC, ["x", "wq", "sc", "mn"]
+)
+_int4_gemv_v3 = _kernel(
+    "llmopt_int4_gemv_v3", _INT4_GEMV_V3_SRC, ["x", "wq", "sc", "mn"]
+)
+
+
+def quantize_pack_int4(w: mx.array, group_size: int = 128,
+                       channel_scale: mx.array | None = None):
+    """Quantize + pack fp weights for int4_gemv.
+
+    w: [N, D]; groups of `group_size` along D share a per-group
+    fp16 (scale, min) — uniform min/max affine, the function-space
+    race's base grid. channel_scale [D] folds awq_lite in: pass
+    mean|x_c|**0.5 from calibration and w is quantized as w*s; the
+    caller then feeds int4_gemv x/s (fold it into the previous op —
+    the function computed is identical, the ERROR moves off the
+    high-activation channels; measured 8.07% vs 10.06% on real Qwen).
+    Returns (packed [N, D//2] uint8, scales [N, D//gs] f16,
+    mins [N, D//gs] f16).
+    """
+    n, d = w.shape
+    assert d % group_size == 0 and group_size % 2 == 0
+    w = w.astype(mx.float32)
+    if channel_scale is not None:
+        w = w * channel_scale.astype(mx.float32)
+    g = w.reshape(n, d // group_size, group_size)
+    mn = g.min(axis=2)
+    sc = (g.max(axis=2) - mn) / 15.0
+    sc = mx.where(sc == 0, mx.ones_like(sc), sc)
+    q = mx.clip(mx.round((g - mn[..., None]) / sc[..., None]), 0, 15)
+    q = q.reshape(n, d).astype(mx.uint8)
+    packed = (q[:, 0::2] | (q[:, 1::2] << 4)).astype(mx.uint8)  # practice_7
+    return packed, sc.astype(mx.float16), mn.astype(mx.float16)
+
+
+def int4_gemv(x: mx.array, packed: mx.array, scales: mx.array,
+              mins: mx.array, group_size: int = 128) -> mx.array:
+    """y = x @ W.T for int4-packed W: x [D] fp16 -> y [N] fp16."""
+    n, d2 = packed.shape
+    ng = scales.shape[1]
+    kern = _int4_gemv_v3 if d2 % 8 == 0 else _int4_gemv
+    (out,) = kern(
+        inputs=[x, packed, scales, mins],
+        template=[("T", x.dtype), ("D2", d2), ("NG", ng),
+                  ("GS", group_size)],
+        grid=(n * 32, 1, 1),
+        threadgroup=(32, 1, 1),
+        output_shapes=[(n,)],
+        output_dtypes=[x.dtype],
+    )
+    return out
 
 
 def rmsnorm(x: mx.array, w: mx.array, eps: float = 1e-6) -> mx.array:

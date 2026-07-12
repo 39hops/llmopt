@@ -1103,6 +1103,24 @@ weight distance, again. The winning lane is the packing the int4
 dequant-GEMV Metal kernel carries (Artin's group-128 packing,
 practice_7).
 
+## Fused int4 dequant-GEMV Metal kernel (2026-07-11)
+
+The Cerebras riff landed as code: `int4_gemv` in kernels/metal.py —
+weights streamed as packed nibbles (Artin's practice_7 adjacent
+scheme, group 128), dequantized in registers, fp16 never
+materialized; awq_lite channel scales fold in at pack time (the
+quant-race winner rides for free — the kernel is scheme-agnostic).
+Three-version ladder, each honestly benched vs mx.quantized_matmul
+(`scripts/bench_int4_gemv.py`): v1 tree-reduction 0.47-0.70x, v2
+simdgroup+simd_sum+uint32 0.75-1.00x, v3 uint2/half4 vector loads
+**1.11x at D=4096 (2.80x over fp16), 0.94x at D=2048, 0.72x at
+D=896** — win big, lose small (small decode shapes are launch/
+overhead-bound; fp16 GEMV itself only reaches 40 GB/s at D=896).
+Correctness pinned by two tests vs the dequant reference. The
+remaining roofline gap and the group/threadgroup config space are
+the config-estimator rung's training data (Artin's "estimate the
+packing" — sweeps-as-labels, banked).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

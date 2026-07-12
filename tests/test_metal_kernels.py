@@ -149,3 +149,45 @@ def test_gqa_single_head_matches_splitk():
     a = attention_decode_gqa(q[None], k[:, None], v[:, None])[0]
     b = attention_decode_splitk(q, k, v)
     assert mx.allclose(a, b, atol=1e-5)
+
+
+def _dequant_ref(packed, scales, mins, gs=128):
+    lo, hi = packed & 0x0F, packed >> 4
+    n, d2 = packed.shape
+    q = mx.zeros((n, d2 * 2), dtype=mx.float32)
+    q[:, 0::2], q[:, 1::2] = lo, hi
+    g = q.reshape(n, -1, gs)
+    return (g * scales[..., None].astype(mx.float32)
+            + mins[..., None].astype(mx.float32)).reshape(n, d2 * 2)
+
+
+def test_int4_gemv_matches_dequant_matmul():
+    from llmopt.kernels.metal import int4_gemv, quantize_pack_int4
+    mx.random.seed(11)
+    n, d = 512, 1024
+    w = mx.random.normal((n, d))
+    x = mx.random.normal((d,)).astype(mx.float16)
+    packed, sc, mn = quantize_pack_int4(w)
+    ref = x.astype(mx.float32) @ _dequant_ref(packed, sc, mn).T
+    got = int4_gemv(x, packed, sc, mn)
+    assert mx.abs(got.astype(mx.float32) - ref).max() < 0.05 * mx.abs(ref).mean()
+
+
+def test_int4_gemv_awq_channel_scale_fold():
+    # awq_lite fold: quantize w*s, feed x/s. The kernel must compute
+    # exactly the dequant-reference of the SCALED weights — the fold's
+    # accuracy story (error moves off important channels) is measured
+    # in scripts/bench_quant_schemes.py with REAL calibration scales;
+    # a random s here would test noise, not the mechanism (a random
+    # scale uncorrelated with x makes quantization WORSE — measured).
+    from llmopt.kernels.metal import int4_gemv, quantize_pack_int4
+    mx.random.seed(12)
+    n, d = 256, 512
+    w = mx.random.normal((n, d))
+    x = mx.random.normal((d,)).astype(mx.float16)
+    s = (mx.abs(mx.random.normal((d,))) + 0.5)
+    packed, sc, mn = quantize_pack_int4(w, channel_scale=s)
+    xs = (x.astype(mx.float32) / s).astype(mx.float16)
+    got = int4_gemv(xs, packed, sc, mn)
+    ref = xs.astype(mx.float32) @ _dequant_ref(packed, sc, mn).T
+    assert mx.abs(got.astype(mx.float32) - ref).max() < 0.05 * mx.abs(ref).mean()
