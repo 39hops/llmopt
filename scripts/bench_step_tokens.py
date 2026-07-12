@@ -143,8 +143,13 @@ def sample(tok, model, prompt: str, seed: int,
         logits = o.logits[0, -1].float().cpu() / 0.7
         if constrain:
             m = _expr_mask(tok)
-            logits = logits.masked_fill(~m[: logits.shape[0]],
-                                        float("-inf"))
+            if m.shape[0] < logits.shape[0]:
+                # model logit width > tokenizer vocab (padded for
+                # tensor cores); the padding ids are never valid
+                pad = torch.zeros(logits.shape[0] - m.shape[0],
+                                  dtype=torch.bool)
+                m = torch.cat([m, pad])
+            logits = logits.masked_fill(~m, float("-inf"))
         nxt = int(torch.multinomial(torch.softmax(logits, -1), 1,
                                     generator=gen))
         if nxt == tok.eos_token_id:
