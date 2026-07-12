@@ -98,6 +98,47 @@ def phase_chains(n_per_level: int, seed_base: int) -> None:
     print(f"CHAINS done: {n} verified step pairs -> {CHAINS}")
 
 
+def phase_skips() -> None:
+    """Macro-distillation (Artin's COCONUT riff, 2026-07-12): skip
+    pairs (state_i -> state_{i+k}) are verified FOR FREE by
+    transitivity of equivalence — rule COMPOSITION as data
+    augmentation. Chains are reconstructed from corpus adjacency
+    (row.nxt == next_row.cur runs); every skip is tagged
+    source="skip" and deduped against the corpus."""
+    rows = [json.loads(l) for l in CHAINS.read_text().splitlines()]
+    seen = {(r["cur"], r["nxt"]) for r in rows}
+    # reconstruct maximal runs: consecutive rows that link up
+    runs: list[list[dict]] = []
+    cur_run: list[dict] = []
+    for r in rows:
+        if r.get("source") == "skip":
+            continue
+        if cur_run and cur_run[-1]["nxt"] == r["cur"]:
+            cur_run.append(r)
+        else:
+            if len(cur_run) >= 2:
+                runs.append(cur_run)
+            cur_run = [r]
+    if len(cur_run) >= 2:
+        runs.append(cur_run)
+    n = 0
+    with CHAINS.open("a") as f:
+        for run in runs:
+            states = [run[0]["cur"]] + [r["nxt"] for r in run]
+            lv = max(r["level"] for r in run)
+            for i in range(len(states)):
+                for k in range(i + 2, len(states)):  # skip >= 2 hops
+                    pair = (states[i], states[k])
+                    if pair in seen:
+                        continue
+                    seen.add(pair)
+                    f.write(json.dumps(
+                        {"cur": pair[0], "nxt": pair[1], "level": lv,
+                         "source": "skip", "gate": "pending"}) + "\n")
+                    n += 1
+    print(f"SKIPS done: {len(runs)} chains -> {n} skip pairs appended")
+
+
 def phase_train(epochs: int, lr: float,
                 out: Path = ADAPTER) -> None:
     import sys
@@ -154,7 +195,7 @@ def phase_train(epochs: int, lr: float,
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--phase", required=True,
-                    choices=["chains", "train"])
+                    choices=["chains", "train", "skips"])
     ap.add_argument("--n-per-level", type=int, default=150)
     ap.add_argument("--seed-base", type=int, default=8_000_000)
     ap.add_argument("--epochs", type=int, default=3)
@@ -162,5 +203,7 @@ if __name__ == "__main__":
     a = ap.parse_args()
     if a.phase == "chains":
         phase_chains(a.n_per_level, a.seed_base)
+    elif a.phase == "skips":
+        phase_skips()
     else:
         phase_train(a.epochs, a.lr)
