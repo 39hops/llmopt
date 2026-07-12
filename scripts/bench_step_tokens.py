@@ -146,6 +146,33 @@ def _gen_isolated(level: int, seed: int, wall: int = 45):
         return None
 
 
+def solve_chain(tok, model, integ: str, budget: int, seed0: int):
+    """Oracle-gated chain; returns (solved, verified_pairs,
+    valid_steps, tried_steps). verified_pairs only from SOLVED traces
+    (spec: no-op steps must not enter the corpus via stalls); chain
+    length capped at 12 (kills stall loops)."""
+    cur = f"Integral({integ}, x)"
+    pairs: list[tuple[str, str]] = []
+    used = j = valid = tried = 0
+    ok = False
+    while used < budget and not ok and len(pairs) < 12:
+        prompt = FEWSHOT + f"\nCurrent: {cur}\nStep:"
+        text, spent = sample(tok, model, prompt, seed=seed0 + 7919 * j)
+        used += max(spent, 1)
+        j += 1
+        tried += 1
+        cand = text.splitlines()[0].strip() if text else ""
+        if not cand:
+            continue
+        okp, solved = verify_step(cur, cand)
+        if okp:
+            valid += 1
+            pairs.append((cur, cand))
+            cur = cand
+            ok = solved
+    return ok, (pairs if ok else []), valid, tried
+
+
 def main(n: int, seed_base: int, budget: int,
          adapter: str | None = None) -> None:
     import sympy as sp
@@ -175,25 +202,10 @@ def main(n: int, seed_base: int, budget: int,
             ok1 = ok1 or (okp and solved)
         res["one_shot"] += ok1
         # arm 2: verified macro-token chain
-        cur = f"Integral({integ}, x)"
-        used = 0
-        ok2 = False
-        j = 0
-        while used < budget and not ok2:
-            prompt2 = FEWSHOT + f"\nCurrent: {cur}\nStep:"
-            text, spent = sample(tok, model, prompt2, seed=500 + 7919 * j + i)
-            used += max(spent, 1)
-            j += 1
-            step_tries += 1
-            cand = text.splitlines()[0].strip() if text else ""
-            if not cand:
-                continue
-            parse_ok += 1
-            okp, solved = verify_step(cur, cand)
-            if okp:
-                step_ok += 1
-                cur = cand
-                ok2 = solved
+        ok2, _, v, t = solve_chain(tok, model, integ, budget,
+                                   seed0=500 + i)
+        step_ok += v
+        step_tries += t
         res["steps"] += ok2
         if (i + 1) % 5 == 0:
             print(f"[{i+1}/{n}] one_shot={res['one_shot']} "
