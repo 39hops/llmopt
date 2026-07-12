@@ -98,7 +98,8 @@ def phase_chains(n_per_level: int, seed_base: int) -> None:
     print(f"CHAINS done: {n} verified step pairs -> {CHAINS}")
 
 
-def phase_train(epochs: int, lr: float) -> None:
+def phase_train(epochs: int, lr: float,
+                out: Path = ADAPTER) -> None:
     import sys
     import torch
     sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -136,18 +137,18 @@ def phase_train(epochs: int, lr: float) -> None:
         for ids, labels, mask in batches(examples, tok.pad_token_id
                                          or tok.eos_token_id, 8, device,
                                          epoch=ep):
-            out = model(input_ids=ids, attention_mask=mask,
-                        labels=labels)
-            out.loss.backward()
+            mo = model(input_ids=ids, attention_mask=mask,
+                       labels=labels)
+            mo.loss.backward()
             opt.step()
             opt.zero_grad()
-            tot += float(out.loss)
+            tot += float(mo.loss)
             steps += 1
         print(f"epoch {ep}: loss {tot / max(steps, 1):.4f}", flush=True)
     # the train_calculus save convention: raw {**.a, **.b} adapter dict
     torch.save({k: v.cpu() for k, v in model.state_dict().items()
-                if k.split(".")[-1] in ("a", "b")}, ADAPTER)
-    print(f"saved adapter -> {ADAPTER}")
+                if k.split(".")[-1] in ("a", "b")}, out)
+    print(f"saved adapter -> {out}")
 
 
 if __name__ == "__main__":

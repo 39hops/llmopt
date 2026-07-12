@@ -61,3 +61,121 @@ def gate_verdict(prev: dict, new: dict, frontier: int) -> tuple[bool, str]:
     if gain_frontier or gain_validity:
         return True, "frontier gain" if gain_frontier else "validity gain"
     return False, "no improvement"
+
+
+def mine_round(round_no: int, F: int, sb: dict, seed_base: int,
+               n_mine: int = 60) -> tuple[int, int]:
+    """On-policy chains from evaluation + engine chains at F (and F-1
+    at 25%), engine capped at max(model adds, 20) — the 50% rule with
+    a small bootstrap floor for rounds where the model solved little."""
+    import json
+    import multiprocessing as mp
+
+    from expert_iter_steps import _chain_worker
+    corpus = Path("data/step_chains.jsonl")
+    seen = set()
+    if corpus.exists():
+        for line in corpus.read_text().splitlines():
+            r = json.loads(line)
+            seen.add((r["cur"], r["nxt"]))
+    model_pairs = []
+    for lv in (F, F - 1):
+        for pair in sb["chains"].get(lv, []):
+            pair = tuple(pair)
+            if pair not in seen:
+                seen.add(pair)
+                model_pairs.append((lv, pair))
+    ctx = mp.get_context("fork")
+    engine_pairs = []
+    lv_plan = [F] * int(n_mine * 0.75) + [max(F - 1, 2)] * int(n_mine * 0.25)
+    for k, lv in enumerate(lv_plan):
+        if len(engine_pairs) >= max(len(model_pairs), 20):
+            break
+        q = ctx.Queue()
+        pr = ctx.Process(target=_chain_worker,
+                         args=(lv, seed_base + 500 * round_no + k, q))
+        pr.start()
+        pr.join(90)
+        if pr.is_alive():
+            pr.kill()
+            pr.join()
+            continue
+        try:
+            for pair in q.get(timeout=10):
+                pair = tuple(pair)
+                if pair not in seen:
+                    seen.add(pair)
+                    engine_pairs.append((lv, pair))
+        except Exception:
+            continue
+    with corpus.open("a") as f:
+        for src, items in (("model", model_pairs),
+                           ("engine", engine_pairs)):
+            for lv, (cur, nxt) in items:
+                f.write(json.dumps(
+                    {"cur": cur, "nxt": nxt, "level": lv,
+                     "round": round_no, "source": src,
+                     "gate": "pending"}) + "\n")
+    return len(model_pairs), len(engine_pairs)
+
+
+def run_round(round_no: int) -> str:
+    import shutil
+    import time
+
+    from bench_step_tokens import load
+    from expert_iter_steps import phase_train
+    t0 = time.monotonic()
+    promoted = Path("checkpoints/step_lora.pt")
+    tok, model = load(str(promoted) if promoted.exists() else None)
+    sb = evaluate(tok, model, levels=(2, 3, 4, 5), n_per=40,
+                  seed_base=8_200_000 + 10_000 * round_no)
+    F = frontier(sb, 40)
+    n_model, n_engine = mine_round(round_no, F, sb,
+                                   seed_base=8_000_000)
+    if sb["validity"] < 1.0:
+        return f"HALT validity {sb['validity']:.1f}%"
+    cand = Path(f"checkpoints/step_lora_r{round_no}.pt")
+    phase_train(epochs=3, lr=2e-4, out=cand)
+    del model
+    tok, model = load(str(cand))
+    gate_sb = evaluate(tok, model, levels=tuple(range(2, F + 1)),
+                       n_per=40, seed_base=8_400_000)
+    ok, reason = gate_verdict(
+        {"solves": sb["solves"], "validity": sb["validity"]},
+        {"solves": gate_sb["solves"],
+         "validity": gate_sb["validity"]}, F)
+    if ok:
+        shutil.copy(cand, promoted)
+    mins = (time.monotonic() - t0) / 60
+    line = (f"| {round_no} | F=L{F} | +{n_model}m/+{n_engine}e | "
+            f"val {sb['validity']:.1f}->{gate_sb['validity']:.1f} | "
+            f"{sb['solves']} -> {gate_sb['solves']} | "
+            f"{'PROMOTE' if ok else 'ROLLBACK'}: {reason} | "
+            f"{mins:.0f}m |")
+    with open("docs/LOOP-LOG.md", "a") as f:
+        f.write(line + "\n")
+    if mins > 180:
+        return f"HALT wall {mins:.0f}m"
+    return "PROMOTE" if ok else "ROLLBACK"
+
+
+def main(max_rounds: int) -> None:
+    fails = 0
+    for r in range(1, max_rounds + 1):
+        verdict = run_round(r)
+        print(f"round {r}: {verdict}", flush=True)
+        if verdict.startswith("HALT"):
+            break
+        fails = 0 if verdict == "PROMOTE" else fails + 1
+        if fails >= 2:
+            print("HALT: two consecutive failed gates", flush=True)
+            break
+
+
+if __name__ == "__main__":
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--rounds", type=int, default=4)
+    a = ap.parse_args()
+    main(a.rounds)
