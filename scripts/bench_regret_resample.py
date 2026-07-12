@@ -28,6 +28,32 @@ from pathlib import Path
 import torch
 
 
+def _gen_isolated(level: int, seed: int, wall: int = 45):
+    """Fork-isolated make_integrate (sympy pathology #7, FIFTH call
+    site 2026-07-12: the pool farm's parent hung 25min at 100% CPU on
+    make_integrate(4, 4_000_122) — the CLAUDE.md rule exists for a
+    reason). None = generation hung, skip the problem honestly."""
+    import multiprocessing as _mp
+    ctx = _mp.get_context("fork")
+    q = ctx.Queue()
+
+    def _w():
+        from llmopt.mathgen.problems import make_integrate
+        q.put(make_integrate(level, seed))
+
+    p = ctx.Process(target=_w)
+    p.start()
+    p.join(wall)
+    if p.is_alive():
+        p.kill()
+        p.join()
+        return None
+    try:
+        return q.get(timeout=10)
+    except Exception:
+        return None
+
+
 def _checked(problem, text) -> bool:
     """FORK-ISOLATED oracle call (sympy pathology #10, 2026-07-12):
     p.check() on hallucinated model text can wedge in sympy loops
@@ -142,7 +168,9 @@ def phase_labels(n_problems: int, k: int, seed_base: int,
     with out.open("w") as f:
         for i in range(n_problems):
             lv = 2 + i % 3
-            p = make_integrate(lv, seed_base + i)
+            p = _gen_isolated(lv, seed_base + i)
+            if p is None:
+                continue
             prompt = build_prompt(tok, p)
             for j in range(k):
                 text, states, _, spent = sample_with_states(
@@ -219,7 +247,9 @@ def phase_race(n_problems: int, k: int, seed_base: int,
     attempts_hist = []
     for i in range(n_problems):
         lv = 2 + i % 3
-        p = make_integrate(lv, seed_base + i)
+        p = _gen_isolated(lv, seed_base + i)
+        if p is None:
+            continue
         prompt = build_prompt(tok, p)
         # greedy floor (1 sample worth of budget, T~0 via seed 0 draw)
         text, _, _, _ = sample_with_states(tok, model, prompt, seed=1)
@@ -306,7 +336,10 @@ def phase_pool(n_problems: int, seed_base: int, pool: int,
             if done.get(i, 0) >= pool:
                 continue
             lv = 2 + i % 3
-            p = make_integrate(lv, seed_base + i)
+            p = _gen_isolated(lv, seed_base + i)
+            if p is None:
+                print(f"POOL [{i}] gen-hang SKIP", flush=True)
+                continue
             prompt = build_prompt(tok, p)
             for j in range(done.get(i, 0), pool):
                 text, states, _, sp_ = sample_with_states(
