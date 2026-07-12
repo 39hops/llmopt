@@ -29,6 +29,8 @@ See RESULTS.md for every number below.)
 | "We're inside a white hole inside a black hole; compression vs expansion" | matches Poplawski torsion cosmology + Rovelli BH->WH bounce (literature, not ours); compression duality = rules compress / search decompresses | frame, banked |
 | "Universe-as-survivor, like a cancer cell" | the anthropic principle, observation selection | correctly re-derived |
 | "Spacetime is a graph, universe a node" | causal set theory, re-derived freehand | the partial order IS relativity of simultaneity |
+| "Can't the kernel packing itself be estimated?" | config estimator / learned autotuner (banked; sweeps-as-labels) | queued behind the int4 GEMV kernel |
+| "Reallocate accuracy: cap the max distance, let the mean vary" | the three-lane quant race (uniform/NF4/awq_lite, real weights, function-space) | awq_lite wins 8.07% v 10.06%; toy round had misled — real outliers decide |
 
 Standing lesson, earned nine sympy pathologies and four adoption
 races deep: the analogies are proposals, the oracle is the judge,

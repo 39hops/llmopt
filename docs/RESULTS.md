@@ -1081,6 +1081,28 @@ sqrt_log family (log-times-root quotient debris). Width: 299/300
 distinct F over 300 draws. L8 label farm for estimator v7 launched
 same day — re-feeding the starved judge.
 
+## Three-lane 4-bit quantization race: allocation of accuracy (2026-07-11)
+
+From the Cerebras riff (decode = bytes/bandwidth) via Artin's
+"reallocate the accuracy" chain. Three 4-bit schemes at group 128,
+REAL Qwen2.5-0.5B weights, REAL captured activations, scored in
+function space per the house law (`scripts/bench_quant_schemes.py`):
+uniform min/max affine (minimax in weight space), NF4-style gaussian
+quantile codes (accuracy where the weight mass is), and awq_lite
+(per-input-channel rescale by mean|activation|^0.5 — accuracy where
+the OUTPUT cares). Mean GEMV output rel-err: uniform 10.06%, nf4
+8.89%, **awq_lite 8.07%** — the activation-aware lane wins, hugely
+on late layers (layer-23 down_proj: 14.7% -> 6.5%). Honest lesson
+en route: the toy round on random gaussian weights had ranked
+uniform FIRST — synthetic weight distributions lack the outlier
+channels that real transformers carry, and those outliers are
+exactly what activation-awareness protects. Weight-space and
+function-space rankings disagreed in both rounds (nf4 had the best
+mean weight distance while losing the toy): never score weights by
+weight distance, again. The winning lane is the packing the int4
+dequant-GEMV Metal kernel carries (Artin's group-128 packing,
+practice_7).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
