@@ -1031,9 +1031,22 @@ best-of-N stopped at EOS and used 16k tokens vs regret's 193k,
 voiding the first race; (3) sympy pathology #8: p.check() on
 hallucinated model text can hang simplify (2h39m live-lock at 102%
 CPU) — the ORACLE needs a timebox when judging adversarial garbage,
-with hang counted as wrong (conservative for every arm). The
-policy race (does a threshold on the probe BEAT budget-matched
-best-of-N?) is in flight.
+with hang counted as wrong (conservative for every arm).
+
+The policy race landed 2026-07-11, and the naive policy LOST,
+decisively: n=150, 1280 tok/arm — greedy 85, budget-exhausting
+best-of-N **100**, regret (abort-on-probe<0.15 at ckpt 8, resample)
+**78**, at genuinely equal spend (193,039 vs 192,465 tokens).
+Honest reading: the SIGNAL is real (AUC 0.914) but the naive spend
+policy converts it to negative value — aborting at token 8 on an
+uncalibrated threshold kills traces before their fate has formed
+(143.6 attempts/problem = churn, not judgment), while best-of-N's
+"let every trace finish, then pick" wastes nothing. Same shape as
+the router lineage: raw signal -> threshold sweep -> only then a
+net. Round 2, pre-registered: log per-checkpoint probe
+probabilities DURING the race, sweep the threshold OFFLINE (the
+router playbook), and allow aborts only at ckpt>=16 where the state
+has formed. Existence proof banked, spending policy open.
 
 Judgment-stack refresh, same day: estimator v6 (L3-L7 labels under
 the final engine; solved-AUC 0.916, cost-rho collapsed to 0.578
