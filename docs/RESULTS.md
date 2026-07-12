@@ -1081,6 +1081,23 @@ sqrt_log family (log-times-root quotient debris). Width: 299/300
 distinct F over 300 draws. L8 label farm for estimator v7 launched
 same day — re-feeding the starved judge.
 
+Same-day autopsy closed most of it (30/40 -> **37/40**): two
+missing orbitals, not deep search failures. (1) sqrt x log — 5/10
+misses were F = sqrt(P)*log(q); i_sqrt_basis had the radical
+machinery but refused logs. Ansatz upgrade (A + B*log q)*sqrt(P):
+multiplying the d/dx-residual by 2*sqrt(P)*q clears radical and
+log-denominator at once — one linear solve, one ply. (2)
+trig(log(poly)) — i_linear_basis only admitted POLYNOMIAL trig
+args; the family {x^j*trig(log p)} is d/dx-closed once cleared by
+p. Two traps en route, both measured: make_integrate's simplify
+PHASE-SHIFTS trig sums (cos(u)-sin(u) -> sqrt(2)cos(u+pi/4), so
+args arrive as const+log(poly) — admit via as_independent), and
+log(p) can now be both a trig arg and a log gen (placeholder subs
+-> xreplace, whole-node matching). Remaining residue (3/40):
+multi-family sums FUSED into single quotients by simplify — no
+decomposition move separates them, no single orbital spans them;
+rule-synthesis material, not another quick ansatz.
+
 ## Three-lane 4-bit quantization race: allocation of accuracy (2026-07-11)
 
 From the Cerebras riff (decode = bytes/bandwidth) via Artin's
