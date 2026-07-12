@@ -103,8 +103,35 @@ def load(adapter: str | None = None):
     return tok, model
 
 
+_EXPR_MASK = None
+
+
+def _expr_mask(tok):
+    """Charset-constrained decoding v1 (Artin's GO after round 1:
+    the adapter's 1742 invalid attempts were expression-space
+    near-misses — make non-expression tokens UNSAMPLEABLE). Allows
+    tokens whose text uses only sympy-expression characters; the
+    newline stays allowed (it terminates the step)."""
+    global _EXPR_MASK
+    if _EXPR_MASK is None:
+        allowed = set("0123456789+-*/(), .xIEabcdefghijklmnopqrstuvwxyz"
+                      "ABCDEFGHIJKLMNOPQRSTUVWXYZ_^ \n")
+        size = model_vocab = len(tok)
+        mask = torch.zeros(size, dtype=torch.bool)
+        for tid in range(model_vocab):
+            s = tok.decode([tid])
+            if s and all(c in allowed for c in s):
+                mask[tid] = True
+        eos = tok.eos_token_id
+        if eos is not None:
+            mask[eos] = True
+        _EXPR_MASK = mask
+    return _EXPR_MASK
+
+
 @torch.inference_mode()
-def sample(tok, model, prompt: str, seed: int) -> tuple[str, int]:
+def sample(tok, model, prompt: str, seed: int,
+           constrain: bool = False) -> tuple[str, int]:
     ids = tok(prompt, return_tensors="pt").input_ids.to(DEV)
     gen = torch.Generator(device="cpu").manual_seed(seed)
     out = []
@@ -114,6 +141,10 @@ def sample(tok, model, prompt: str, seed: int) -> tuple[str, int]:
         o = model(input_ids=cur, past_key_values=past, use_cache=True)
         past = o.past_key_values
         logits = o.logits[0, -1].float().cpu() / 0.7
+        if constrain:
+            m = _expr_mask(tok)
+            logits = logits.masked_fill(~m[: logits.shape[0]],
+                                        float("-inf"))
         nxt = int(torch.multinomial(torch.softmax(logits, -1), 1,
                                     generator=gen))
         if nxt == tok.eos_token_id:
@@ -157,7 +188,8 @@ def solve_chain(tok, model, integ: str, budget: int, seed0: int):
     ok = False
     while used < budget and not ok and len(pairs) < 12:
         prompt = FEWSHOT + f"\nCurrent: {cur}\nStep:"
-        text, spent = sample(tok, model, prompt, seed=seed0 + 7919 * j)
+        text, spent = sample(tok, model, prompt, seed=seed0 + 7919 * j,
+                             constrain=True)
         used += max(spent, 1)
         j += 1
         tried += 1

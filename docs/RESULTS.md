@@ -1213,6 +1213,22 @@ unforgiving). Sequel is the repo's long-term goal made concrete:
 train on the verified chains (step-level expert iteration) — the
 5% validity rate is the number training should move.
 
+## Expert iteration round 1: transformations learned, chaining not yet (2026-07-12)
+
+622 engine-replay chains + 95 skip-pairs, 3 epochs (loss 1.01 ->
+0.39), raced vs base on 30 fresh problems at equal 768-tok budget:
+adapter **one-shot 13/30** (base 1), **steps 8/30** (base 4),
+validity 0.5% (base 4%). Autopsy in the numbers: 8 valid steps in
+1750 tries -> 8 solves — every valid step was a COMPLETE solution
+in one hop, because the post-orbital engine one-plies the corpus
+levels and the chains were single-hop dominated. The model learned
+the TRANSFORMATIONS (13x one-shot transfer) but not CHAINING.
+Round-2 amendments (Artin's GOs): grammar-constrained decoding
+(the 1742 invalid attempts are expression-space near-misses, not
+prose — a token mask converts misses to hits), skip-pair
+macro-distillation (already in corpus), and multi-step chain
+mining at L6+ where the engine actually chains.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
