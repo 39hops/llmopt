@@ -129,6 +129,8 @@ def _atom(rng: random.Random, level: int):
 def _expression(rng: random.Random, level: int):
     if level <= 2:
         return sum(_atom(rng, level) for _ in range(rng.randint(2, 4)))
+    if level >= 8:
+        return _expression_l8(rng)
     if level >= 7:
         return _expression_l7(rng)
     if level >= 6:
@@ -306,6 +308,55 @@ def _expression_l7(rng: random.Random):
             random.Random(f"l7-sub-{rng.random()}"))
     return {"nest2": nest2, "nest_prod": nest_prod,
             "atan_log": atan_log, "root_wrap": root_wrap}[kind]()
+
+
+def _expression_l8(rng: random.Random):
+    """Level 8 (2026-07-11): built FROM the measured residue, not from
+    imagination. The engine closed L5 100% and leads sympy at L6/L7;
+    estimator v6's cost-rho collapsed to 0.578 because the generator
+    was saturated — the judge starved by the judged. L8 families are
+    the engine's actual remaining failure modes: orbital COMBINATIONS
+    (trig(log), sqrt x log — single orbitals are solved, their products
+    are not), sqrt monsters (L6's last open problem), and three-deep
+    nesting. Wide-space discipline as always (contamination scar
+    tissue). NOTE: make_integrate on L8 inherits the L4/L5 fork-
+    isolation rule — simplify(diff(F)) on these F's can hang."""
+    def poly(dmax=2, dmin=1):
+        while True:
+            p = (rng.randint(1, 4) * X ** rng.randint(dmin, dmax)
+                 + rng.randint(-3, 3) * X + rng.randint(0, 4))
+            if p.has(X):
+                return p
+
+    def trig_log():  # F = trig(log(p)) [* x^j]: the L7 residue itself
+        t = rng.choice([sp.sin, sp.cos])(sp.log(poly()))
+        return rng.randint(1, 6) * t * X ** rng.randint(0, 2)
+
+    def sqrt_log():  # F = sqrt(p) * log(q): combination orbital
+        return (rng.randint(1, 6) * sp.sqrt(poly())
+                * sp.log(poly()))
+
+    def sqrt_monster():  # deg-3 inner, odd power, poly rider
+        return (rng.randint(1, 6)
+                * sp.sqrt(poly(dmax=3, dmin=2)) ** rng.choice([1, 3])
+                * X ** rng.randint(0, 2))
+
+    def nest3():  # three-deep: every ply must undo one layer
+        inner = sp.log(poly())
+        mid = rng.choice([sp.sin, sp.cos])(inner)
+        outer = rng.choice([sp.exp, lambda e: e ** 2,
+                            lambda e: rng.randint(1, 4) * e])
+        return outer(mid)
+
+    def combo_sum():  # a combination plus an L7 draw: depth AND width
+        return trig_log() + _expression_l7(
+            random.Random(f"l8-sub-{rng.random()}"))
+
+    kind = rng.choice(["trig_log", "sqrt_log", "sqrt_monster",
+                       "nest3", "combo_sum"])
+    return {"trig_log": trig_log, "sqrt_log": sqrt_log,
+            "sqrt_monster": sqrt_monster, "nest3": nest3,
+            "combo_sum": combo_sum}[kind]()
 
 
 def _cexpr(rng: random.Random, level: int):
