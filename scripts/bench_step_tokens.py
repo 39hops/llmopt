@@ -161,6 +161,56 @@ def sample(tok, model, prompt: str, seed: int,
     return tok.decode(out).strip(), len(out)
 
 
+@torch.inference_mode()
+def sample_batch(tok, model, prompt: str, seeds: list[int],
+                 constrain: bool = False):
+    """B parallel sampled completions of the same prompt — the step
+    harness's inference rung (2026-07-12): resamples at a given state
+    are embarrassingly parallel, and a 0.5B at batch 1 leaves the GPU
+    ~98% idle. One tiled prefill + joint decode; per-stream seeds kept
+    (reproducibility). Returns (texts, spent_tokens) per stream; spent
+    counts only each stream's own generated tokens (budget semantics
+    unchanged)."""
+    B = len(seeds)
+    enc = tok(prompt, return_tensors="pt").input_ids.to(DEV)
+    cur = enc.repeat(B, 1)
+    past = None
+    gens = [torch.Generator(device="cpu").manual_seed(s) for s in seeds]
+    out: list[list[int]] = [[] for _ in range(B)]
+    done = [False] * B
+    eos = tok.eos_token_id
+    m = _expr_mask(tok) if constrain else None
+    for _ in range(MAX_NEW):
+        o = model(input_ids=cur, past_key_values=past, use_cache=True)
+        past = o.past_key_values
+        logits = o.logits[:, -1].float().cpu() / 0.7
+        if m is not None:
+            mm = m
+            if mm.shape[0] < logits.shape[1]:
+                mm = torch.cat([mm, torch.zeros(
+                    logits.shape[1] - mm.shape[0], dtype=torch.bool)])
+            logits = logits.masked_fill(~mm, float("-inf"))
+        nxts = []
+        for b in range(B):
+            if done[b]:
+                nxts.append(eos or 0)
+                continue
+            nxt = int(torch.multinomial(
+                torch.softmax(logits[b], -1), 1, generator=gens[b]))
+            if nxt == eos:
+                done[b] = True
+            else:
+                out[b].append(nxt)
+                if tok.decode(out[b]).endswith("\n"):
+                    done[b] = True
+            nxts.append(nxt)
+        if all(done):
+            break
+        cur = torch.tensor(nxts, device=DEV).unsqueeze(1)
+    return ([tok.decode(o_).strip() for o_ in out],
+            [max(len(o_), 1) for o_ in out])
+
+
 def _gen_isolated(level: int, seed: int, wall: int = 45):
     ctx = mp.get_context("fork")
     q = ctx.Queue()
@@ -191,22 +241,30 @@ def solve_chain(tok, model, integ: str, budget: int, seed0: int):
     pairs: list[tuple[str, str]] = []
     used = j = valid = tried = 0
     ok = False
+    B = 8   # batched resampling: parallel draws at the same state
     while used < budget and not ok and len(pairs) < 12:
         prompt = FEWSHOT + f"\nCurrent: {cur}\nStep:"
-        text, spent = sample(tok, model, prompt, seed=seed0 + 7919 * j,
-                             constrain=True)
-        used += max(spent, 1)
-        j += 1
-        tried += 1
-        cand = text.splitlines()[0].strip() if text else ""
-        if not cand:
-            continue
-        okp, solved = verify_step(cur, cand)
-        if okp:
-            valid += 1
-            pairs.append((cur, cand))
-            cur = cand
-            ok = solved
+        texts, spents = sample_batch(
+            tok, model, prompt,
+            seeds=[seed0 + 7919 * (j + b) for b in range(B)],
+            constrain=True)
+        j += B
+        advanced = False
+        for text, spent in zip(texts, spents):
+            used += spent
+            tried += 1
+            if advanced or used > budget:
+                continue   # spend still counted (honest budget)
+            cand = text.splitlines()[0].strip() if text else ""
+            if not cand:
+                continue
+            okp, solved = verify_step(cur, cand)
+            if okp:
+                valid += 1
+                pairs.append((cur, cand))
+                cur = cand
+                ok = solved
+                advanced = True
     return ok, (pairs if ok else []), valid, tried
 
 
@@ -232,11 +290,16 @@ def main(n: int, seed_base: int, budget: int,
         ok1 = False
         j = 0
         while used < budget:
-            text, spent = sample(tok, model, prompt1, seed=100 + 7919 * j + i)
-            used += max(spent, 1)
-            j += 1
-            okp, solved = verify_step(f"Integral({integ}, x)", text)
-            ok1 = ok1 or (okp and solved)
+            texts, spents = sample_batch(
+                tok, model, prompt1,
+                seeds=[100 + 7919 * (j + b) + i for b in range(8)])
+            j += 8
+            for text, spent in zip(texts, spents):
+                used += spent
+                if ok1 or used > budget:
+                    continue
+                okp, solved = verify_step(f"Integral({integ}, x)", text)
+                ok1 = ok1 or (okp and solved)
         res["one_shot"] += ok1
         # arm 2: verified macro-token chain
         ok2, _, v, t = solve_chain(tok, model, integ, budget,
