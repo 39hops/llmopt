@@ -140,6 +140,85 @@ def phase_chains(n_per_level: int, seed_base: int,
     print(f"CHAINS done: {n} verified step pairs -> {CHAINS}")
 
 
+def _reverse_worker(level: int, seed: int, q: "mp.Queue") -> None:
+    """The REVERSE ENGINE (Artin, 2026-07-12): make_integrate draws
+    the ANSWER F first — so mint the teaching chain from the answer
+    side, no search at all. Additive peeling: F = F1+F2+... gives
+    term-for-term integrand correspondence (fi = dFi), and the chain
+    Integral(f) -> split -> solve one term at a time -> F is verified
+    by construction at every step. Guaranteed multi-step chains at
+    ANY level, including ones the forward engine one-plies."""
+    import sympy as sp
+
+    from llmopt.mathgen.problems import make_integrate
+    p = make_integrate(level, seed)
+    x = sp.Symbol("x")
+    try:
+        F = sp.sympify(p.answer)
+    except Exception:
+        q.put([])
+        return
+    terms = list(F.args) if isinstance(F, sp.Add) else [F]
+    if len(terms) < 2:
+        q.put([])
+        return
+    fis = [sp.diff(Fi, x) for Fi in terms]
+    states = [sp.sstr(sp.Integral(p._expr, x))]
+    # step 1: split into per-term integrals
+    split = sp.Add(*(sp.Integral(fi, x) for fi in fis), evaluate=False)
+    states.append(sp.sstr(split))
+    # then peel one term at a time
+    solved: list = []
+    for k in range(len(terms)):
+        solved.append(terms[k])
+        rest = [sp.Integral(fi, x) for fi in fis[k + 1:]]
+        states.append(sp.sstr(sp.Add(*(solved + rest), evaluate=False)))
+    pairs = []
+    for a, b in zip(states, states[1:]):
+        think = ("split the integral term by term" if a == states[0]
+                 else "solve the leading unsolved term")
+        pairs.append((a, b, [], think))
+    q.put(pairs)
+
+
+def phase_reverse(n_per_level: int, seed_base: int,
+                  levels=(4, 5, 6, 7, 8)) -> None:
+    ctx = mp.get_context("fork")
+    seen: set = set()
+    if CHAINS.exists():
+        for line in CHAINS.read_text().splitlines():
+            r = json.loads(line)
+            seen.add((r["cur"], r["nxt"]))
+    n = 0
+    with CHAINS.open("a") as f:
+        for level in levels:
+            for i in range(n_per_level):
+                q = ctx.Queue()
+                pr = ctx.Process(target=_reverse_worker,
+                                 args=(level, seed_base + i, q))
+                pr.start()
+                pr.join(60)
+                if pr.is_alive():
+                    pr.kill()
+                    pr.join()
+                    continue
+                try:
+                    pairs = q.get(timeout=10)
+                except Exception:
+                    continue
+                for cur, nxt, hints, think in pairs:
+                    if (cur, nxt) in seen:
+                        continue
+                    seen.add((cur, nxt))
+                    f.write(json.dumps(
+                        {"cur": cur, "nxt": nxt, "level": level,
+                         "source": "reverse", "hints": hints,
+                         "think": think}) + "\n")
+                    n += 1
+            print(f"L{level} reverse: {n} pairs total", flush=True)
+    print(f"REVERSE done: {n} pairs -> {CHAINS}")
+
+
 def phase_skips() -> None:
     """Macro-distillation (Artin's COCONUT riff, 2026-07-12): skip
     pairs (state_i -> state_{i+k}) are verified FOR FREE by
@@ -242,7 +321,7 @@ def phase_train(epochs: int, lr: float,
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--phase", required=True,
-                    choices=["chains", "train", "skips"])
+                    choices=["chains", "train", "skips", "reverse"])
     ap.add_argument("--n-per-level", type=int, default=150)
     ap.add_argument("--seed-base", type=int, default=8_000_000)
     ap.add_argument("--epochs", type=int, default=3)
@@ -255,6 +334,8 @@ if __name__ == "__main__":
     if a.phase == "chains":
         phase_chains(a.n_per_level, a.seed_base, tuple(a.levels),
                      a.min_pairs, a.append)
+    elif a.phase == "reverse":
+        phase_reverse(a.n_per_level, a.seed_base, tuple(a.levels))
     elif a.phase == "skips":
         phase_skips()
     else:
