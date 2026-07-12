@@ -28,7 +28,8 @@ import torch
 
 MODEL = "Qwen/Qwen2.5-0.5B-Instruct"
 MAX_NEW = 96
-DEV = "mps" if torch.backends.mps.is_available() else "cpu"
+DEV = ("cuda" if torch.cuda.is_available()
+       else "mps" if torch.backends.mps.is_available() else "cpu")
 
 FEWSHOT = """You rewrite integrals one step at a time. Each reply is ONE step: a single sympy expression equal to the current expression. Use Integral(f, x) for unevaluated integrals. No prose.
 
@@ -84,11 +85,20 @@ def verify_step(prev_s: str, cand_s: str, wall: int = 15):
         return False, False
 
 
-def load():
+def load(adapter: str | None = None):
     from transformers import AutoModelForCausalLM, AutoTokenizer
     tok = AutoTokenizer.from_pretrained(MODEL)
     model = AutoModelForCausalLM.from_pretrained(
         MODEL, torch_dtype=torch.float16).to(DEV)
+    if adapter:  # step LoRA (train_calculus adapter-dict convention)
+        from llmopt.train.lora import apply_lora
+        apply_lora(model, ("q_proj", "k_proj", "v_proj", "o_proj",
+                           "gate_proj", "up_proj", "down_proj"),
+                   r=16, alpha=32)
+        model.load_state_dict(
+            torch.load(adapter, weights_only=False,
+                       map_location="cpu"), strict=False)
+        model.to(DEV)
     model.eval()
     return tok, model
 
@@ -136,9 +146,10 @@ def _gen_isolated(level: int, seed: int, wall: int = 45):
         return None
 
 
-def main(n: int, seed_base: int, budget: int) -> None:
+def main(n: int, seed_base: int, budget: int,
+         adapter: str | None = None) -> None:
     import sympy as sp
-    tok, model = load()
+    tok, model = load(adapter)
     res = {"one_shot": 0, "steps": 0}
     parse_ok = step_ok = step_tries = 0
     for i in range(n):
@@ -201,5 +212,6 @@ if __name__ == "__main__":
     ap.add_argument("--n", type=int, default=30)
     ap.add_argument("--seed-base", type=int, default=7_000_000)
     ap.add_argument("--budget", type=int, default=768)
+    ap.add_argument("--adapter", type=str, default=None)
     a = ap.parse_args()
-    main(a.n, a.seed_base, a.budget)
+    main(a.n, a.seed_base, a.budget, a.adapter)
