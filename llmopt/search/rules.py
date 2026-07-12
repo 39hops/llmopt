@@ -217,6 +217,19 @@ def i_inverse_trig(node: sp.Integral) -> list[sp.Expr]:
     return []
 
 
+# Derivation trace hook (2026-07-12, Artin's "the LLM should know how
+# the engine derived it"): when set to a list by the chain miner, the
+# ansatz rules append a one-line verbalization of their INTERNAL
+# derivation (ansatz shape -> matched coefficients) so one-ply solves
+# teach the HOW, not just input->output. None in production: zero cost.
+DERIV_TRACE: "list | None" = None
+
+
+def _trace(msg: str) -> None:
+    if DERIV_TRACE is not None:
+        DERIV_TRACE.append(msg)
+
+
 def i_sqrt_basis(node: sp.Integral) -> list[sp.Expr]:
     """sqrt-of-poly ansatz (L5 autopsy: root family 14/94 solved —
     the biggest gap). If f*sqrt(P) is a polynomial, the answer lives
@@ -292,6 +305,9 @@ def i_sqrt_basis(node: sp.Integral) -> list[sp.Expr]:
             return []
         a = ((A + B * Lg).subs(sol[0]).subs({c: 0 for c in cs})
              ) * sp.sqrt(P)
+        _trace(f"ansatz (A(x) + B(x)*log({sp.sstr(qpoly)}))*sqrt({sp.sstr(P)})"
+               f" with polynomial A, B; differentiate, clear by"
+               f" 2*sqrt(P)*q, match coefficients")
         return [a] if a != 0 else []
     if not h.is_polynomial(x):
         return []
@@ -311,6 +327,8 @@ def i_sqrt_basis(node: sp.Integral) -> list[sp.Expr]:
     if not sol:
         return []
     a = (A.subs(sol[0]).subs({c: 0 for c in cs})) * sp.sqrt(P)
+    _trace(f"ansatz A(x)*sqrt({sp.sstr(P)}) with polynomial A;"
+           f" match 2*A'*P + A*P' = 2*f*sqrt(P) in the poly ring")
     return [a] if a != 0 else []
 
 
@@ -967,6 +985,10 @@ def i_linear_basis(node: sp.Integral) -> list[sp.Expr]:
     if not sol:
         return []
     a = cand.subs(sol[0]).subs({c: 0 for c in cs}) + laurent
+    _trace("ansatz sum of c_ij * x^j * m_i over basis {"
+           + ", ".join(sp.sstr(m) for m in mons[:8])
+           + (", ..." if len(mons) > 8 else "")
+           + "}; differentiate and equate coefficients")
     return [a] if a != 0 else []
 
 

@@ -35,8 +35,10 @@ def _chain_worker(level: int, seed: int, q: "mp.Queue") -> None:
 
     from llmopt.mathgen.problems import make_integrate
     from llmopt.search import derivation as D
-    from llmopt.search.derivation import State, successors
+    from llmopt.search import rules as R
+    from llmopt.search.derivation import State, _timeboxed, successors
     from llmopt.search.engine import solve
+    from llmopt.search.rules import INT_RULES
 
     p = make_integrate(level, seed)
     root = sp.Integral(p._expr, sp.Symbol("x"))
@@ -49,17 +51,43 @@ def _chain_worker(level: int, seed: int, q: "mp.Queue") -> None:
     # not unique across siblings)
     saved, D.RULE_WALL = D.RULE_WALL, 60.0
     hist = res.state.history
-    out: list[tuple[str, str]] = []
+    out: list[tuple] = []
+    by_name = dict(INT_RULES)
+
+    def annotate(cur_expr, rule_label):
+        """Round-3 fields (Artin's GOs): hints = the rule-fire
+        syndrome as names (the engine's sensory organs, in text);
+        think = the ansatz rule's verbalized internal derivation."""
+        node = max(cur_expr.atoms(sp.Integral), key=sp.count_ops,
+                   default=None)
+        hints = []
+        if node is not None:
+            for rn, rule in INT_RULES:
+                if _timeboxed(rule, node, default=[]):
+                    hints.append(rn)
+        think = None
+        rname = rule_label.split("@")[0]
+        if rname in ("i_linear_basis", "i_sqrt_basis") and node is not None:
+            R.DERIV_TRACE = []
+            try:
+                _timeboxed(by_name[rname], node, default=[])
+                if R.DERIV_TRACE:
+                    think = R.DERIV_TRACE[-1]
+            finally:
+                R.DERIV_TRACE = None
+        return hints, think
 
     def walk(cur: State, i: int, acc: list) -> bool:
         if i == len(hist):
             out.extend(acc)
             return True
         for name, child in successors(cur, use_macros=True, verify_p=1.0):
-            if name == hist[i] and walk(
-                    child, i + 1,
-                    acc + [(sp.sstr(cur.expr), sp.sstr(child.expr))]):
-                return True
+            if name == hist[i]:
+                hints, think = annotate(cur.expr, name)
+                if walk(child, i + 1,
+                        acc + [(sp.sstr(cur.expr), sp.sstr(child.expr),
+                                hints, think)]):
+                    return True
         return False
 
     walk(State(root), 0, [])
@@ -98,13 +126,15 @@ def phase_chains(n_per_level: int, seed_base: int,
                     continue
                 if len(pairs) < min_pairs:
                     continue
-                for cur, nxt in pairs:
+                for cur, nxt, hints, think in pairs:
                     if (cur, nxt) in seen:
                         continue
                     seen.add((cur, nxt))
                     f.write(json.dumps({"cur": cur, "nxt": nxt,
                                         "level": level,
-                                        "source": "engine"}) + "\n")
+                                        "source": "engine",
+                                        "hints": hints,
+                                        "think": think}) + "\n")
                     n += 1
             print(f"L{level} done: {n} pairs total", flush=True)
     print(f"CHAINS done: {n} verified step pairs -> {CHAINS}")
@@ -171,10 +201,15 @@ def phase_train(epochs: int, lr: float,
     rows = [json.loads(l) for l in CHAINS.read_text().splitlines()]
     examples = []
     for r in rows:
-        # the bench_step_tokens plain-completion format, verbatim
-        prompt = tok(f"Current: {r['cur']}\nStep:",
+        # the bench_step_tokens plain-completion format, verbatim.
+        # Round-3 fields: Hints line (rule-fire syndrome as text) in
+        # the PROMPT; think rationale inline in the completion before
+        # "=>" (only the expression after "=>" is oracle-verified)
+        hints = ", ".join(r.get("hints") or []) or "none"
+        prompt = tok(f"Current: {r['cur']}\nHints: {hints}\nStep:",
                      add_special_tokens=False).input_ids
-        step = tok(" " + r["nxt"] + "\n",
+        target = ((r["think"] + " => ") if r.get("think") else "") + r["nxt"]
+        step = tok(" " + target + "\n",
                    add_special_tokens=False).input_ids
         ids = prompt + step
         if len(ids) > 512:

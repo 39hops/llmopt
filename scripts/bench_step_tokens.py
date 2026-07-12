@@ -31,20 +31,63 @@ MAX_NEW = 96
 DEV = ("cuda" if torch.cuda.is_available()
        else "mps" if torch.backends.mps.is_available() else "cpu")
 
-FEWSHOT = """You rewrite integrals one step at a time. Each reply is ONE step: a single sympy expression equal to the current expression. Use Integral(f, x) for unevaluated integrals. No prose.
+FEWSHOT = """You rewrite integrals one step at a time. Each reply is ONE step: optionally a short reason, then "=>", then a single sympy expression equal to the current expression. Use Integral(f, x) for unevaluated integrals. Hints list which rewrite rules fire.
 
 Current: Integral(2*x + 3, x)
-Step: Integral(2*x, x) + Integral(3, x)
+Hints: i_sum, i_table
+Step: split the sum => Integral(2*x, x) + Integral(3, x)
 
 Current: Integral(2*x, x) + Integral(3, x)
-Step: x**2 + 3*x
+Hints: i_table, i_const
+Step: term-by-term antiderivatives => x**2 + 3*x
 
 Current: Integral(x*cos(x), x)
-Step: x*sin(x) - Integral(sin(x), x)
+Hints: i_parts, i_linear_basis
+Step: integrate by parts with u = x => x*sin(x) - Integral(sin(x), x)
 
 Current: x*sin(x) - Integral(sin(x), x)
-Step: x*sin(x) + cos(x)
+Hints: i_table
+Step: table antiderivative of sin => x*sin(x) + cos(x)
 """
+
+
+def _hints_isolated(cur_s: str, wall: int = 15) -> list[str]:
+    """Rule-fire syndrome of a (possibly MODEL-written) expression —
+    fork-isolated: rules on model text obey the same pathology rules
+    as the oracle."""
+    ctx = mp.get_context("fork")
+    q = ctx.Queue()
+
+    def _w():
+        import sympy as sp
+
+        from llmopt.search.derivation import _timeboxed
+        from llmopt.search.rules import INT_RULES
+        try:
+            env = {"Integral": sp.Integral, "x": sp.Symbol("x")}
+            e = sp.sympify(cur_s, locals=env)
+            node = max(e.atoms(sp.Integral), key=sp.count_ops,
+                       default=None)
+            names = []
+            if node is not None:
+                for rn, rule in INT_RULES:
+                    if _timeboxed(rule, node, default=[]):
+                        names.append(rn)
+            q.put(names)
+        except Exception:
+            q.put([])
+
+    p = ctx.Process(target=_w)
+    p.start()
+    p.join(wall)
+    if p.is_alive():
+        p.kill()
+        p.join()
+        return []
+    try:
+        return q.get(timeout=5)
+    except Exception:
+        return []
 
 
 def _verify_step(prev_s: str, cand_s: str, q: "mp.Queue") -> None:
@@ -115,7 +158,7 @@ def _expr_mask(tok):
     global _EXPR_MASK
     if _EXPR_MASK is None:
         allowed = set("0123456789+-*/(), .xIEabcdefghijklmnopqrstuvwxyz"
-                      "ABCDEFGHIJKLMNOPQRSTUVWXYZ_^ \n")
+                      "ABCDEFGHIJKLMNOPQRSTUVWXYZ_^ \n=>'")  # => rationale
         size = model_vocab = len(tok)
         mask = torch.zeros(size, dtype=torch.bool)
         for tid in range(model_vocab):
@@ -243,7 +286,8 @@ def solve_chain(tok, model, integ: str, budget: int, seed0: int):
     ok = False
     B = 8   # batched resampling: parallel draws at the same state
     while used < budget and not ok and len(pairs) < 12:
-        prompt = FEWSHOT + f"\nCurrent: {cur}\nStep:"
+        hints = ", ".join(_hints_isolated(cur)) or "none"
+        prompt = FEWSHOT + f"\nCurrent: {cur}\nHints: {hints}\nStep:"
         texts, spents = sample_batch(
             tok, model, prompt,
             seeds=[seed0 + 7919 * (j + b) for b in range(B)],
@@ -255,7 +299,10 @@ def solve_chain(tok, model, integ: str, budget: int, seed0: int):
             tried += 1
             if advanced or used > budget:
                 continue   # spend still counted (honest budget)
-            cand = text.splitlines()[0].strip() if text else ""
+            line = text.splitlines()[0].strip() if text else ""
+            # rationale rides before "=>"; only the expression after
+            # the last "=>" is submitted to the oracle
+            cand = line.split("=>")[-1].strip()
             if not cand:
                 continue
             okp, solved = verify_step(cur, cand)
