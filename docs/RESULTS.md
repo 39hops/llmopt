@@ -1154,6 +1154,31 @@ remaining roofline gap and the group/threadgroup config space are
 the config-estimator rung's training data (Artin's "estimate the
 packing" — sweeps-as-labels, banked).
 
+## Engine-level regret: the thesis pays at 400:1 unit economics (2026-07-12)
+
+Token-level regret closed as a null (nothing to recover from ~25-tok
+traces); the same idea at the engine level — solves ~0.3s, failures
+burn 120s walls — is where it pays. ply_hook in beam_search streams
+per-ply beam features; probe (64-unit MLP) reads doom at held-out
+AUC 0.760. Two harness scars en route, both recorded: the first
+farm's wall-killed searches died with their ply rows in child
+memory, making the wall-burners INVISIBLE to the sweep (the token-24
+selection-effect lesson, third occurrence — rows now stream through
+the queue), and the farm loop needed the pathology-#7 fork pattern.
+
+Verdicts, both kept: (1) the PRE-REGISTERED bar (zero solve loss +
+>=25% wall cut on a fixed problem set) FAILED — every config loses
+the same 2 stubborn solves (deep chains that look doomed then land;
+even th=0.99 aborts them). (2) The FA-Law-native metric — solves at
+EQUAL TOTAL WALL, saved time respent on new problems — is a
+blowout: baseline 82 solves vs regret **176 solves in the same
+1888s** (2.1x, stable across budgets: 41v17 @ 450s, 88v40 @ 900s;
+offline stream simulation, cycled held-out set). Reading: regret
+trades 2.4% completeness for 2.1x throughput. Adoption is
+WORKLOAD-DEPENDENT: scoreboards on fixed sets keep the pure engine;
+throughput workloads (label farming, frontier laps, expert
+iteration) want the abort. Not wired into solve() by default.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
