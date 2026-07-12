@@ -29,23 +29,35 @@ import torch
 
 
 def _checked(problem, text) -> bool:
-    """Timeboxed oracle call: p.check() parses MODEL TEXT and runs
-    symbolic equivalence — a hallucinated answer can hang simplify
-    (measured: race live-locked 2h39m at 102% CPU on one check)."""
+    """FORK-ISOLATED oracle call (sympy pathology #10, 2026-07-12):
+    p.check() on hallucinated model text can wedge in sympy loops
+    that never deliver SIGALRM — the alarm box (pathology #8's fix)
+    live-locked the pool farm 2.5h at 103% CPU. Same lesson as
+    make_integrate (pathology #7): only fork + SIGKILL is a real
+    timebox. Hang counts as wrong (conservative for every arm)."""
     if not text:
         return False
-    class _T(BaseException):
-        pass
-    old = _signal.signal(_signal.SIGALRM,
-                         lambda *_: (_ for _ in ()).throw(_T()))
-    _signal.alarm(10)
-    try:
-        return bool(problem.check(text))
-    except BaseException:
+    import multiprocessing as _mp
+    ctx = _mp.get_context("fork")
+    q = ctx.Queue()
+
+    def _w():
+        try:
+            q.put(bool(problem.check(text)))
+        except Exception:
+            q.put(False)
+
+    p = ctx.Process(target=_w)
+    p.start()
+    p.join(10)
+    if p.is_alive():
+        p.kill()
+        p.join()
         return False
-    finally:
-        _signal.alarm(0)
-        _signal.signal(_signal.SIGALRM, old)
+    try:
+        return bool(q.get(timeout=5))
+    except Exception:
+        return False
 
 LAYER = 20
 CKPTS = (8, 16, 32, 64)   # token positions where the probe looks
@@ -281,12 +293,22 @@ def phase_pool(n_problems: int, seed_base: int, pool: int,
             return torch.sigmoid(
                 net((h - p_["mu"]) / p_["sd"])).item()
 
-    with out.open("w") as f:
+    # resume: attempts are seed-deterministic, so skip (i, j) pairs
+    # already on disk (pathology-#10 live-lock cost one 2.5h farm)
+    done: dict = {}
+    if out.exists():
+        with out.open() as f:
+            for line in f:
+                r = json.loads(line)
+                done[r["i"]] = done.get(r["i"], 0) + 1
+    with out.open("a" if done else "w") as f:
         for i in range(n_problems):
+            if done.get(i, 0) >= pool:
+                continue
             lv = 2 + i % 3
             p = make_integrate(lv, seed_base + i)
             prompt = build_prompt(tok, p)
-            for j in range(pool):
+            for j in range(done.get(i, 0), pool):
                 text, states, _, sp_ = sample_with_states(
                     tok, model, prompt, seed=9000 + 7919 * j + i)
                 probs = {str(ck): round(prob_ok(h), 4)
