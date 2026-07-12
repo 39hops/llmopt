@@ -1179,6 +1179,21 @@ WORKLOAD-DEPENDENT: scoreboards on fixed sets keep the pure engine;
 throughput workloads (label farming, frontier laps, expert
 iteration) want the abort. Not wired into solve() by default.
 
+## Dispatcher v4: NO-ADOPT (2026-07-12)
+
+Judgment-stack currency said retrain after the orbitals; the race
+said keep v3. Fresh L3-L8 band (120 problems, four arms,
+fork-isolated): v3 112 @ 1078s, markov 111 @ 1095s, policy 111 @
+1126s, **v4 110 @ 1137s** — v4 (275 post-orbital disagreement rows,
+disagreement acc 0.867) fails the bar outright. The interesting
+part is the SPREAD: 110-112 of 120, arms nearly indistinguishable —
+the orbitals one-ply so much of the space that brain choice barely
+matters anymore; the router's judgment surface is evaporating as
+the engine strengthens (the starved-judge pattern, fourth
+appearance). v3 stays production; the currency rule's lesson
+softens to: retrain when the world changes AND the arms still
+disagree enough to route.
+
 ## Step-tokens: the LLM's unit of generation becomes a verified rewrite (2026-07-12)
 
 Artin's bigger-tokens riff, LLM side (the engine side already paid:
