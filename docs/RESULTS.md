@@ -1046,7 +1046,23 @@ the router lineage: raw signal -> threshold sweep -> only then a
 net. Round 2, pre-registered: log per-checkpoint probe
 probabilities DURING the race, sweep the threshold OFFLINE (the
 router playbook), and allow aborts only at ckpt>=16 where the state
-has formed. Existence proof banked, spending policy open.
+has formed.
+
+Round 2 ran (2026-07-12: 149-problem pool, 48 full traces each,
+per-checkpoint probe probabilities, offline 28-config grid) and the
+verdict is a CLEAN NULL: no (threshold x min-checkpoint) config
+beats the best-of-N replay at equal budget — the entire grid is
+monotone WORSE with abort aggressiveness (ckpt-8 aborts: 77-85 vs
+97; ckpt>=32: ties 97 by aborting nothing). Diagnosis, and it's
+economics not signal: traces are SHORT (median ~25 tokens), so an
+abort at token 16 saves ~9 tokens — there is almost no budget to
+recover — while every false abort kills a winner outright. The
+probe reads trace fate correctly and there is still nothing to buy
+with it at this trace length. TOKEN-LEVEL regret: closed as a
+null next to the AUC-0.914 existence proof. The asymmetric-cost
+version of the same thesis lives at the ENGINE level (solves 0.3s
+vs 120s failure walls — a 400:1 save ratio vs the token level's
+~1.5:1) — bench_engine_regret.py, in flight.
 
 Judgment-stack refresh, same day: estimator v6 (L3-L7 labels under
 the final engine; solved-AUC 0.916, cost-rho collapsed to 0.578
