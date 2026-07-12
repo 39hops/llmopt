@@ -40,24 +40,25 @@ def _worker(level: int, seed: int, budget: int, q: "mp.Queue") -> None:
     p = make_integrate(level, seed)
     root = sp.Integral(p._expr, sp.Symbol("x"))
     t0 = time.monotonic()
-    rows: list[dict] = []
 
+    # STREAM each ply row immediately (first sweep's flaw, the
+    # token-24 lesson at engine level: wall-killed searches died with
+    # their rows in local memory — the wall-burners, the exact class
+    # the probe exists to abort, were INVISIBLE to the sweep)
     def hook(ply, beam, nodes):
         head = beam[0]
-        rows.append({
+        q.put(("row", {
             "ply": ply,
             "feats": featurize(head.expr),
             "nodes": nodes,
             "beam": len(beam),
             "t": round(time.monotonic() - t0, 3),
-        })
+        }))
         return False  # observe only
 
     res = solve(root, budget=budget, ply_hook=hook)
-    q.put({"level": level, "seed": seed,
-           "solved": bool(res.solved),
-           "wall": round(time.monotonic() - t0, 3),
-           "rows": rows})
+    q.put(("done", {"solved": bool(res.solved),
+                    "wall": round(time.monotonic() - t0, 3)}))
 
 
 def phase_labels(n_per_level: int, seed_base: int, out: Path) -> None:
@@ -70,25 +71,35 @@ def phase_labels(n_per_level: int, seed_base: int, out: Path) -> None:
                 pr = ctx.Process(target=_worker,
                                  args=(level, seed_base + i, 200, q))
                 pr.start()
-                pr.join(WALL)
-                if pr.is_alive():
+                deadline = time.monotonic() + WALL
+                rows: list[dict] = []
+                meta = None
+                while time.monotonic() < deadline:
+                    try:
+                        kind, payload = q.get(
+                            timeout=max(0.1, deadline - time.monotonic()))
+                    except Exception:
+                        break
+                    if kind == "row":
+                        rows.append(payload)
+                    else:
+                        meta = payload
+                        break
+                if meta is None:  # wall death: rows survive, label doomed
                     pr.kill()
                     pr.join()
-                    # wall death: no per-ply rows crossed the pipe, but
-                    # the OUTCOME is known — doomed. Emit a synthetic
-                    # terminal row so the wall-burners (the class the
-                    # probe exists to kill) are IN the training set.
-                    rec = {"level": level, "seed": seed_base + i,
-                           "solved": False, "wall": float(WALL),
-                           "rows": []}
+                    meta = {"solved": False, "wall": float(WALL)}
                 else:
-                    try:
-                        rec = q.get(timeout=10)
-                    except Exception:
-                        continue
+                    pr.join(5)
+                    if pr.is_alive():
+                        pr.kill()
+                        pr.join()
+                rec = {"level": level, "seed": seed_base + i,
+                       "solved": meta["solved"], "wall": meta["wall"],
+                       "rows": rows}
                 f.write(json.dumps(rec) + "\n")
                 n_prob += 1
-                n_rows += len(rec["rows"])
+                n_rows += len(rows)
                 if n_prob % 25 == 0:
                     print(f"[{n_prob}] rows={n_rows}", flush=True)
     print(f"LABELS done: {n_prob} searches, {n_rows} ply rows -> {out}")
