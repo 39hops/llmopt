@@ -1223,11 +1223,19 @@ validity 0.5% (base 4%). Autopsy in the numbers: 8 valid steps in
 in one hop, because the post-orbital engine one-plies the corpus
 levels and the chains were single-hop dominated. The model learned
 the TRANSFORMATIONS (13x one-shot transfer) but not CHAINING.
-Round-2 amendments (Artin's GOs): grammar-constrained decoding
-(the 1742 invalid attempts are expression-space near-misses, not
-prose — a token mask converts misses to hits), skip-pair
-macro-distillation (already in corpus), and multi-step chain
-mining at L6+ where the engine actually chains.
+Round-2 amendments (Artin's GOs): grammar-constrained decoding,
+skip-pair macro-distillation (already in corpus), and multi-step
+chain mining at L6+ where the engine actually chains.
+
+Constrained-decoding verdict, same day: **CLEAN NULL for the
+adapter** — charset-masked rerun is token-for-token IDENTICAL to
+unconstrained (13/8, 8/1750): every token the trained model wanted
+was already expression-legal. Training WAS the format fix; the
+1742 misses are well-formed expressions that are mathematically
+wrong. Grammar can gate syntax, only better math gates semantics —
+round 2's diet (multi-step chains) is the lever. (The mask stays
+in-tree: it targets BASE-model prose, the failure mode the adapter
+graduated from.)
 
 ## Origin story, closed
 
