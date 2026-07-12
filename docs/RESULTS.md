@@ -1066,6 +1066,21 @@ sympy pathology #9: the ROUTER's syndrome probes ran un-timeboxed
 search began) — every layer that touches sympy gets a box, judges
 included.
 
+## L8: the frontier reopened from the residue (2026-07-11)
+
+The estimator's cost-rho collapse said the generator was saturated,
+so L8 was built FROM the measured failure modes, not from
+imagination: orbital COMBINATIONS (trig(log), sqrt x log — single
+orbitals are solved, their products are not), sqrt monsters with
+degree-3 inners (L6's last open problem), three-deep nesting, and
+combo+L7 sums. Probe, fork-isolated at 120s wall: **30/40 (75%)**
+vs L7's 93% — and all 10 misses verified as SOLVE failures, not
+generation hangs (each hung seed's make_integrate completes in
+<30s; the wall burns in search). The visible residue skews to the
+sqrt_log family (log-times-root quotient debris). Width: 299/300
+distinct F over 300 draws. L8 label farm for estimator v7 launched
+same day — re-feeding the starved judge.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
