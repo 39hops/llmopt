@@ -152,6 +152,97 @@ def hva_optimize(H: np.ndarray, n: int, layers: int, iters: int = 300,
     return best
 
 
+# ------------------------------------------------ structure search
+# Layer vocabulary (rung 2): both families' building blocks. An
+# ansatz STRUCTURE is a token list, e.g. ["xm","zz","xm"] ~ HVA,
+# ["ry","cz","ry","cz"] ~ hardware-efficient. Params per token:
+# ry/rx: n, zz/xm: 1, cz: 0.
+_TOK_PARAMS = {"ry": None, "rx": None, "zz": 1, "xm": 1, "cz": 0}
+
+
+def struct_nparams(tokens: list[str], n: int) -> int:
+    return sum(n if _TOK_PARAMS[t] is None else _TOK_PARAMS[t]
+               for t in tokens)
+
+
+def struct_state(tokens: list[str], params: np.ndarray,
+                 n: int) -> np.ndarray:
+    """Execute a token-list ansatz from |+>^n (complex statevector)."""
+    state = np.full(2**n, 2.0 ** (-n / 2), dtype=np.complex128)
+    idx = np.arange(2**n)
+    bits = (idx[:, None] >> (n - 1 - np.arange(n))) & 1
+    z = 1.0 - 2.0 * bits
+    zz = (z[:, :-1] * z[:, 1:]).sum(axis=1)
+    k = 0
+    for t in tokens:
+        if t == "zz":
+            state = state * np.exp(1j * params[k] * zz)
+            k += 1
+        elif t == "xm":
+            b = params[k]
+            k += 1
+            c, s = np.cos(b), np.sin(b)
+            for i in range(n):
+                st = state.reshape(2**i, 2, 2 ** (n - i - 1))
+                out = np.empty_like(st)
+                out[:, 0, :] = c * st[:, 0, :] + 1j * s * st[:, 1, :]
+                out[:, 1, :] = 1j * s * st[:, 0, :] + c * st[:, 1, :]
+                state = out.reshape(-1)
+        elif t in ("ry", "rx"):
+            for i in range(n):
+                th = params[k]
+                k += 1
+                c, s = np.cos(th / 2), np.sin(th / 2)
+                st = state.reshape(2**i, 2, 2 ** (n - i - 1))
+                out = np.empty_like(st)
+                if t == "ry":
+                    out[:, 0, :] = c * st[:, 0, :] - s * st[:, 1, :]
+                    out[:, 1, :] = s * st[:, 0, :] + c * st[:, 1, :]
+                else:
+                    out[:, 0, :] = c * st[:, 0, :] - 1j * s * st[:, 1, :]
+                    out[:, 1, :] = -1j * s * st[:, 0, :] + c * st[:, 1, :]
+                state = out.reshape(-1)
+        elif t == "cz":
+            for i in range(n):
+                state = _apply_cz(state, i, (i + 1) % n, n)
+    return state
+
+
+def struct_energy(tokens: list[str], params: np.ndarray, H: np.ndarray,
+                  n: int) -> float:
+    psi = struct_state(tokens, params, n)
+    return float(np.real(np.conj(psi) @ H @ psi))
+
+
+def struct_optimize(H: np.ndarray, tokens: list[str], n: int,
+                    iters: int = 120, lr: float = 0.08,
+                    seed: int = 0) -> float:
+    """Adam on central finite differences over the token structure."""
+    npar = struct_nparams(tokens, n)
+    if npar == 0:
+        return struct_energy(tokens, np.zeros(0), H, n)
+    rng = np.random.default_rng(seed)
+    params = rng.normal(0, 0.1, npar)
+    m = np.zeros_like(params)
+    v = np.zeros_like(params)
+    best = np.inf
+    for t in range(1, iters + 1):
+        g = np.zeros_like(params)
+        for k in range(npar):
+            p = params.copy()
+            p[k] += 1e-4
+            ep = struct_energy(tokens, p, H, n)
+            p[k] -= 2e-4
+            em = struct_energy(tokens, p, H, n)
+            g[k] = (ep - em) / 2e-4
+        m = 0.9 * m + 0.1 * g
+        v = 0.999 * v + 0.001 * g * g
+        params -= lr * (m / (1 - 0.9**t)) / (
+            np.sqrt(v / (1 - 0.999**t)) + 1e-8)
+        best = min(best, struct_energy(tokens, params, H, n))
+    return best
+
+
 def optimize(H: np.ndarray, n: int, layers: int, iters: int = 300,
              lr: float = 0.1, seed: int = 0) -> tuple[float, np.ndarray]:
     """Adam on parameter-shift gradients. Returns (best E, params)."""
