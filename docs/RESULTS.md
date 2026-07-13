@@ -1237,6 +1237,23 @@ round 2's diet (multi-step chains) is the lever. (The mask stays
 in-tree: it targets BASE-model prose, the failure mode the adapter
 graduated from.)
 
+## Expert iteration rounds 2/3: the reverse-engine diet pays (2026-07-12)
+
+Corpus 2097 (3.4x round 1): +88 forward multi-step (nearly extinct
+post-orbitals — the engine ansatzes, it doesn't chain), +492
+REVERSE-ENGINE chains (answer-side additive peeling, incl. the
+fused-quotient class), +895 skip pairs, + Hints (rule-fire syndrome
+as text) and Think (verbalized ansatz derivations) fields. One
+training divergence caught and recorded (epoch-2 loss spike at
+lr 2e-4 on the longer think-annotated targets; 1e-4 converges
+0.44->0.22->0.21). Race on fresh seeds vs round-1 adapter's marks:
+**one-shot 13 -> 19/30, steps 8 -> 12/30 (+50%), validity 0.5% ->
+1.0%** (doubled). Every metric up; steps still trails one-shot (the
+single-hop habit persists — the model prefers finishing to
+chaining), so the loop's next lever stays data balance. Manual
+supervised loop round deferred pending hardware window; the
+autonomous loop remains un-armed until it runs (spec requirement).
+
 ## Variational ground-state engine, rung 1: the referee is a theorem (2026-07-12)
 
 The physics rung (methods not molecules: model Hamiltonians only).
