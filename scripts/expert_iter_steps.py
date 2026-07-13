@@ -288,6 +288,87 @@ def _magic_chunk(states: list[str]) -> dict:
 _MAGIC_SKIP = {"easy": 5, "mid": 3, "hard": 0}  # max jump per bucket
 
 
+def _coeff_worker(seed: int, q: "mp.Queue") -> None:
+    """Coefficient-discipline pairs (round 5; the Arena's finding
+    2026-07-13: the model's misses are ARITHMETIC — right functional
+    forms, wrong signs and unreduced chain-rule constants; it tried
+    9*sin(9x+1) for Integral(9cos(9x+1)) twenty times). Three
+    families, dense constant variation, every pair diff-verified in
+    this fork before emission:
+      chain-div : Integral(c*f(a*x+b)) -> c*F(a*x+b)/a  (the 9/9)
+      split     : Integral(c*f) -> c*Integral(f) -> c*F (two-step)
+      sign      : negative/odd-coefficient variants of both."""
+    import random
+
+    import sympy as sp
+    x = sp.Symbol("x")
+    rng = random.Random(f"coeff-{seed}")
+    TABLE = [(sp.sin, lambda u: -sp.cos(u)), (sp.cos, sp.sin),
+             (sp.exp, sp.exp)]
+    pairs = []
+    for _ in range(4):
+        f, F = rng.choice(TABLE)
+        a = rng.choice([2, 3, 4, 5, 6, 7, 9]) * rng.choice([1, -1])
+        b = rng.randint(-4, 4)
+        c = rng.choice([1, 2, 3, 6, 9, 12]) * rng.choice([1, 1, -1])
+        u = a * x + b
+        integ = c * f(u)
+        ans = sp.Rational(c, a) * F(u)
+        if sp.simplify(sp.diff(ans, x) - integ) != 0:
+            continue
+        cur = sp.sstr(sp.Integral(integ, x))
+        think = (f"antiderivative of {f.__name__}, then divide by "
+                 f"the inner coefficient {a}: {c}/{a} = "
+                 f"{sp.sstr(sp.Rational(c, a))}")
+        pairs.append((cur, sp.sstr(ans), think))
+        # split family: two-step through the constant factor
+        if abs(c) > 1:
+            mid = c * sp.Integral(f(u), x)
+            inner_ans = sp.Rational(1, a) * F(u)
+            if sp.simplify(sp.diff(c * inner_ans, x) - integ) == 0:
+                pairs.append((cur, sp.sstr(mid),
+                              f"pull out the constant factor {c}"))
+                pairs.append((sp.sstr(mid), sp.sstr(c * inner_ans),
+                              f"antiderivative divided by {a}, "
+                              f"keep the factor {c}"))
+    q.put(pairs)
+
+
+def phase_coeff(n: int, seed_base: int) -> None:
+    ctx = mp.get_context("fork")
+    seen: set = set()
+    if CHAINS.exists():
+        for line in CHAINS.read_text().splitlines():
+            r = json.loads(line)
+            seen.add((r["cur"], r["nxt"]))
+    added = 0
+    with CHAINS.open("a") as f:
+        for i in range(n):
+            q = ctx.Queue()
+            pr = ctx.Process(target=_coeff_worker,
+                             args=(seed_base + i, q))
+            pr.start()
+            pr.join(30)
+            if pr.is_alive():
+                pr.kill()
+                pr.join()
+                continue
+            try:
+                pairs = q.get(timeout=10)
+            except Exception:
+                continue
+            for cur, nxt, think in pairs:
+                if (cur, nxt) in seen:
+                    continue
+                seen.add((cur, nxt))
+                f.write(json.dumps(
+                    {"cur": cur, "nxt": nxt, "level": 2,
+                     "source": "coeff", "hints": [],
+                     "think": think}) + "\n")
+                added += 1
+    print(f"COEFF done: {added} coefficient-discipline pairs")
+
+
 def phase_skips() -> None:
     """Macro-distillation (Artin's COCONUT riff, 2026-07-12): skip
     pairs (state_i -> state_{i+k}) are verified FOR FREE by
@@ -416,7 +497,7 @@ def phase_train(epochs: int, lr: float,
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--phase", required=True,
-                    choices=["chains", "train", "skips", "reverse"])
+                    choices=["chains", "train", "skips", "reverse", "coeff"])
     ap.add_argument("--n-per-level", type=int, default=150)
     ap.add_argument("--seed-base", type=int, default=8_000_000)
     ap.add_argument("--epochs", type=int, default=3)
@@ -431,6 +512,8 @@ if __name__ == "__main__":
                      a.min_pairs, a.append)
     elif a.phase == "reverse":
         phase_reverse(a.n_per_level, a.seed_base, tuple(a.levels))
+    elif a.phase == "coeff":
+        phase_coeff(a.n_per_level, a.seed_base)
     elif a.phase == "skips":
         phase_skips()
     else:
