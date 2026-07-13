@@ -1471,6 +1471,20 @@ it touches the loop: A/B predicted-vs-oracle-vs-none hints in real
 solve_chain prompting, scored on step validity.
 `checkpoints/pred_syndromes_emb.pt`.
 
+**Round 4 (same day, Artin's basis-state point):** enrich the
+embedded string with the orbital sketch — the generator set
+i_linear_basis would enumerate (trig/exp/log/root args, Laurent
+tail, poly degree, denominator), atoms only, no solve. **89.0% /
+0.978**; the basis-driven rules move exactly as predicted
+(transcend_div R 0.86->0.93; sqrt_basis and apart R -> 1.00). The
+quantum-chemistry reading is engineering guidance, not poetry:
+expression = Hamiltonian, sketch = basis set, prediction = span
+membership without diagonalizing. Remaining misses are thin
+single-bit flips on 4+-rule states; next levers ranked: LoRA the
+encoder > last-token pooling > per-rule thresholds. The A/B gate
+decides shipping regardless — 0.98-precision informative bits may
+already be oracle-equivalent in the step model's eyes.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
