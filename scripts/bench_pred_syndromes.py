@@ -40,6 +40,14 @@ structural features for the 0.5B's mean-pooled embedding of the
 expression string; same labels/split/bar. Exact 87.7%, micro-F1
 0.975; i_apart 0.98/0.98; hard roots (88.4%) now BEAT chain states
 (86.8%). Rules are their own features only under a blind encoding.
+
+Round 4 (orbitals + train-emb2, Artin's basis-state point): enrich
+the embedded string with the ORBITAL SKETCH — the generator set
+i_linear_basis would enumerate (trig/exp/log args, Laurent tail,
+poly degree, denominator), extracted cheaply BEFORE any solve. The
+quantum-chemistry reading: expression = Hamiltonian, orbitals =
+basis set, rule-fire = "is the answer in the span" — predicting
+span membership without diagonalizing.
 """
 from __future__ import annotations
 
@@ -248,13 +256,101 @@ def phase_train() -> None:
           f"{'PASS' if exact >= 0.8 and micro_f1 >= 0.9 else 'FAIL'}")
 
 
-def phase_train_emb() -> None:
+ORBITALS = Path("data/pred_syndrome_orbitals.jsonl")
+
+
+def _orbital_worker(states: list[str], q) -> None:
+    """The generator sketch i_linear_basis would enumerate — atoms
+    only, NO solve: this must stay far cheaper than running the rule
+    or prediction buys nothing (FA-law honesty)."""
+    import sympy as sp
+    x = sp.Symbol("x")
+    env = {"Integral": sp.Integral, "x": x}
+    for s in states:
+        try:
+            e = sp.sympify(s, locals=env)
+            node = max(e.atoms(sp.Integral), key=sp.count_ops,
+                       default=None)
+            if node is None:
+                q.put(json.dumps({"s": s, "orb": "no integral"}))
+                continue
+            f = node.function
+            trig = sorted({sp.sstr(t) for t in f.atoms(sp.sin, sp.cos)})
+            expo = sorted({sp.sstr(t) for t in f.atoms(sp.exp)
+                           if t.args[0].has(x)})
+            logs = sorted({sp.sstr(t) for t in f.atoms(sp.log)})
+            roots = sorted({sp.sstr(t) for t in f.atoms(sp.Pow)
+                            if t.exp.is_Rational
+                            and not t.exp.is_Integer})
+            num, den = f.as_numer_denom()
+            try:
+                deg = sp.degree(num, x) if num.is_polynomial(x) else -1
+            except Exception:
+                deg = -1
+            parts = []
+            if trig:
+                parts.append("trig " + ", ".join(trig))
+            if expo:
+                parts.append("exp " + ", ".join(expo))
+            if logs:
+                parts.append("log " + ", ".join(logs))
+            if roots:
+                parts.append("root " + ", ".join(roots))
+            parts.append(f"polydeg {deg}")
+            if den != 1:
+                parts.append(f"denom {sp.sstr(den)}")
+            q.put(json.dumps({"s": s, "orb": "; ".join(parts)}))
+        except Exception:
+            continue
+    q.put(None)
+
+
+def phase_orbitals() -> None:
+    states = [json.loads(l)["s"]
+              for l in LABELS.read_text().splitlines()]
+    done = set()
+    if ORBITALS.exists():
+        done = {json.loads(l)["s"]
+                for l in ORBITALS.read_text().splitlines()}
+    todo = sorted(set(states) - done)
+    print(f"{len(todo)} states to sketch", flush=True)
+    ctx = mp.get_context("fork")
+    with ORBITALS.open("a") as fh:
+        for i in range(0, len(todo), CHUNK):
+            q = ctx.Queue()
+            pr = ctx.Process(target=_orbital_worker,
+                             args=(todo[i:i + CHUNK], q))
+            pr.start()
+            while True:
+                try:
+                    row = q.get(timeout=45)
+                except Exception:
+                    break
+                if row is None:
+                    break
+                fh.write(row + "\n")
+            fh.flush()
+            pr.kill()
+            pr.join()
+
+
+def phase_train_emb(enrich: bool = False) -> None:
     """Round 3: frozen 0.5B embeddings as features (same bar/split)."""
     import hashlib
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     rows = [json.loads(l) for l in LABELS.read_text().splitlines()]
+    orb = {}
+    if enrich:
+        orb = {json.loads(l)["s"]: json.loads(l)["orb"]
+               for l in ORBITALS.read_text().splitlines()}
+
+    def text(r):
+        if enrich:
+            return f"{r['s']} || orbitals: {orb.get(r['s'], '?')}"
+        return r["s"]
+
     dev = ("mps" if torch.backends.mps.is_available()
            else "cuda" if torch.cuda.is_available() else "cpu")
     tok = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-0.5B-Instruct")
@@ -264,9 +360,9 @@ def phase_train_emb() -> None:
     embs = []
     with torch.no_grad():
         for i in range(0, len(rows), 32):
-            b = tok([r["s"] for r in rows[i:i + 32]],
+            b = tok([text(r) for r in rows[i:i + 32]],
                     return_tensors="pt", padding=True,
-                    truncation=True, max_length=256).to(dev)
+                    truncation=True, max_length=384).to(dev)
             h = enc.model(**b).last_hidden_state
             m = b["attention_mask"].unsqueeze(-1).float()
             embs.append(((h * m).sum(1) / m.sum(1)).float().cpu())
@@ -302,14 +398,30 @@ def phase_train_emb() -> None:
     p = tp / max(pred.sum().item(), 1)
     r = tp / max(Y[te].sum().item(), 1)
     f1 = 2 * p * r / max(p + r, 1e-9)
-    print(f"EMB: exact {100 * exact:.1f}%  micro-F1 {f1:.3f}  "
+    tag = "EMB+ORB" if enrich else "EMB"
+    print(f"{tag}: exact {100 * exact:.1f}%  micro-F1 {f1:.3f}  "
           f"bar -> {'PASS' if exact >= 0.8 and f1 >= 0.9 else 'FAIL'}")
+    # per-rule detail for the basis-driven rules (round 4's targets)
+    for rn in ("i_ansatz_exp", "i_transcend_div", "i_sqrt_basis",
+               "i_apart", "i_unprod", "i_usub"):
+        if rn not in vi:
+            continue
+        i = vi[rn]
+        n = int(Y[te][:, i].sum())
+        tpr = float((pred[:, i] * Y[te][:, i]).sum())
+        pp = tpr / max(float(pred[:, i].sum()), 1e-9)
+        rr = tpr / max(n, 1e-9)
+        print(f"  {rn:>16s} n={n:3d} P {pp:.2f} R {rr:.2f}")
     torch.save({"state_dict": net.state_dict(), "mu": mu, "sd": sd,
-                "vocab": vocab,
+                "vocab": vocab, "enrich": enrich,
                 "encoder": "Qwen/Qwen2.5-0.5B-Instruct mean-pool"},
-               Path("checkpoints/pred_syndromes_emb.pt"))
+               Path("checkpoints/pred_syndromes_emb.pt" if not enrich
+                    else "checkpoints/pred_syndromes_emb_orb.pt"))
 
 
 if __name__ == "__main__":
     {"label": phase_label, "label-gen": phase_label_gen,
-     "train": phase_train, "train-emb": phase_train_emb}[sys.argv[1]]()
+     "train": phase_train, "train-emb": phase_train_emb,
+     "orbitals": phase_orbitals,
+     "train-emb2": lambda: phase_train_emb(enrich=True),
+     }[sys.argv[1]]()
