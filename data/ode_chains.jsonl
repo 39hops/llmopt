@@ -1,0 +1,317 @@
+{"cur": "SolveODE: Eq(Derivative(y(x), x), -x*y(x))", "nxt": "y = C1*exp(Integral(-x, x))", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "separable: y'/y = f, integrate both sides"}
+{"cur": "y = C1*exp(Integral(-x, x))", "nxt": "4*exp(-x**2/2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "SolveODE: Eq(Derivative(y(x), x), x*y(x))", "nxt": "y = C1*exp(Integral(x, x))", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "separable: y'/y = f, integrate both sides"}
+{"cur": "y = C1*exp(Integral(x, x))", "nxt": "4*exp(x**2/2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(x, x))", "nxt": "2*exp(x**2/2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "SolveODE: Eq(Derivative(y(x), x), -2*x*y(x))", "nxt": "y = C1*exp(Integral(-2*x, x))", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "separable: y'/y = f, integrate both sides"}
+{"cur": "y = C1*exp(Integral(-2*x, x))", "nxt": "exp(-x**2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "SolveODE: Eq(Derivative(y(x), x), 2*x*y(x))", "nxt": "y = C1*exp(Integral(2*x, x))", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "separable: y'/y = f, integrate both sides"}
+{"cur": "y = C1*exp(Integral(2*x, x))", "nxt": "5*exp(x**2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(-x, x))", "nxt": "2*exp(-x**2/2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(x, x))", "nxt": "exp(x**2/2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(2*x, x))", "nxt": "exp(x**2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(-x, x))", "nxt": "exp(-x**2/2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(-2*x, x))", "nxt": "2*exp(-x**2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(-2*x, x))", "nxt": "4*exp(-x**2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(2*x, x))", "nxt": "4*exp(x**2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(-x, x))", "nxt": "3*exp(-x**2/2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(-2*x, x))", "nxt": "3*exp(-x**2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(x, x))", "nxt": "3*exp(x**2/2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(x, x))", "nxt": "5*exp(x**2/2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(2*x, x))", "nxt": "2*exp(x**2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(-x, x))", "nxt": "5*exp(-x**2/2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(-2*x, x))", "nxt": "5*exp(-x**2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "y = C1*exp(Integral(2*x, x))", "nxt": "3*exp(x**2)", "level": 2, "source": "ode", "kind": "separable", "hints": [], "think": "solve the integral, exponentiate"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 10*x + 9)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "5*x + 2 + 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 5 - 4*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "4*x + 4*exp(x) - 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 8*x + 10)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "4*x + 3 + 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 4*x + 8)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "2*x + 3 + 4*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), 6 - 4*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "2*x + 4*exp(2*x) - 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "4*x + 3 + 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 9*x)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "3*x - 1 + 2*exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), 2 - 8*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "4*x + exp(2*x) + 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(y(x) + Derivative(y(x), x), x)", "nxt": "mu = exp(Integral(1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(1, x))", "nxt": "x - 1 + 4*exp(-x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 7 - 5*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "5*x + exp(x) - 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), -4*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "2*x + 4*exp(2*x) + 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 12*x - 2)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "4*x - 2 + 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 3 - 2*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "2*x + 2*exp(x) - 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 7 - 12*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "4*x + 4*exp(3*x) - 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 12*x + 1)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "4*x - 1 + exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(y(x) + Derivative(y(x), x), 5*x + 7)", "nxt": "mu = exp(Integral(1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(1, x))", "nxt": "5*x + 2 + exp(-x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), 6 - 8*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "4*x + 4*exp(2*x) - 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), -3*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "3*x + exp(x) + 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 2 - 4*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "4*x + 2*exp(x) + 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), -4*x - 2)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "2*x + 4*exp(2*x) + 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), -6*x - 3)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "3*x + 4*exp(2*x) + 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), 3 - 10*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "5*x + 2*exp(2*x) + 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), -6*x - 4)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "2*x + 2*exp(3*x) + 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 6*x - 1)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "2*x - 1 + 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), -x - 1)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "x + exp(x) + 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 6*x - 3)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "3*x - 3 + exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 7 - 4*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "4*x + exp(x) - 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), 9 - 10*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "5*x + 2*exp(2*x) - 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 10*x + 7)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "5*x + 1 + 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 6 - 3*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "3*x + 2*exp(x) - 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 15*x + 14)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "5*x + 3 + 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 6 - 4*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "4*x + 3*exp(x) - 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 4*x + 2)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "2*x + exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), -15*x - 1)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "5*x + 4*exp(3*x) + 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 1 - 2*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "2*x + 4*exp(x) + 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(y(x) + Derivative(y(x), x), 2*x - 1)", "nxt": "mu = exp(Integral(1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(1, x))", "nxt": "2*x - 3 + 3*exp(-x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), -6*x - 1)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "2*x + 4*exp(3*x) + 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 3*x + 10)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "x + 3 + 3*exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "5*x + 4*exp(x) - 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 15*x - 1)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "5*x - 2 + 3*exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 2*x + 3)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "x + 1 + 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 10*x + 5)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "5*x + 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(y(x) + Derivative(y(x), x), 3*x + 4)", "nxt": "mu = exp(Integral(1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(1, x))", "nxt": "3*x + 1 + 4*exp(-x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), 8 - 4*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "2*x + 4*exp(2*x) - 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 2 - 6*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "2*x + exp(3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), 3 - 6*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "3*x + 3*exp(2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 8 - 15*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "5*x + exp(3*x) - 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), -2*x - 1)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "x + 4*exp(2*x) + 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 2*x + 7)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "x + 3 + exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 9*x + 6)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "3*x + 1 + exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 4 - x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "x + 2*exp(x) - 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "5*x + 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 6*x - 1)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "3*x - 2 + 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 11 - 15*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "5*x + 2*exp(3*x) - 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 4 - 3*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "3*x + 3*exp(x) - 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), -2*x - 1)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "2*x + 2*exp(x) + 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 2 - 15*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "5*x + 4*exp(3*x) + 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 12 - 9*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "3*x + exp(3*x) - 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 2*x + 5)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "x + 2 + 4*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 10*x - 1)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "5*x - 3 + 4*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 8*x + 8)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "4*x + 2 + 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "x + 3 + 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "3*x + 4*exp(x) - 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "5*x + 1 + 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 7 - 3*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "x + 4*exp(3*x) - 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 2 - 5*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "5*x + exp(x) + 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(y(x) + Derivative(y(x), x), 2*x + 5)", "nxt": "mu = exp(Integral(1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(1, x))", "nxt": "2*x + 3 + exp(-x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 4*x + 4)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "2*x + 1 + exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "4*x + 4*exp(x) - 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 3 - x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "x + exp(x) - 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 4 - 12*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "4*x + exp(3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), -8*x - 2)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "4*x + 2*exp(2*x) + 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 15*x + 11)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "5*x + 2 + 3*exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 8*x)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "4*x - 2 + 4*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 6*x + 3)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "3*x + exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "3*x + 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), 5 - 2*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "x + 3*exp(2*x) - 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 8*x - 2)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "4*x - 3 + 4*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 4 - 3*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "x + 4*exp(3*x) - 1", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(2*y(x) + Derivative(y(x), x), 10*x + 11)", "nxt": "mu = exp(Integral(2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "5*x + 3 + 4*exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(y(x) + Derivative(y(x), x), 2*x + 4)", "nxt": "mu = exp(Integral(1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(1, x))", "nxt": "2*x + 2 + 2*exp(-x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 9*x - 6)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "3*x - 3 + 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), -12*x - 2)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "4*x + 2*exp(3*x) + 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), 9 - 6*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "3*x + 3*exp(2*x) - 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "mu = exp(Integral(2, x))", "nxt": "5*x + 1 + exp(-2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 5 - 15*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "5*x + exp(3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 3*x + 4)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "x + 1 + exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + Derivative(y(x), x), 6*x + 2)", "nxt": "mu = exp(Integral(3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(3, x))", "nxt": "2*x + exp(-3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 1 - 3*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "3*x + 2*exp(x) + 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 13 - 12*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "4*x + 2*exp(3*x) - 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), x), 8 - 5*x)", "nxt": "mu = exp(Integral(-1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "5*x + 2*exp(x) - 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(y(x) + Derivative(y(x), x), 2*x + 2)", "nxt": "mu = exp(Integral(1, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(1, x))", "nxt": "2*x + 3*exp(-x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), 10 - 8*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "4*x + 2*exp(2*x) - 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x), 5 - 10*x)", "nxt": "mu = exp(Integral(-2, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "5*x + 3*exp(2*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(-3*y(x) + Derivative(y(x), x), 3 - 9*x)", "nxt": "mu = exp(Integral(-3, x))", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "linear first order: integrating factor"}
+{"cur": "mu = exp(Integral(-3, x))", "nxt": "3*x + exp(3*x)", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "mu = exp(Integral(-1, x))", "nxt": "4*x + 3*exp(x) + 2", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "mu = exp(Integral(-2, x))", "nxt": "3*x + exp(2*x) + 3", "level": 2, "source": "ode", "kind": "linear1", "hints": [], "think": "y = (Integral(mu*q) + C1)/mu"}
+{"cur": "SolveODE: Eq(3*y(x) + 4*Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 + 4*r + 3 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 + 4*r + 3 = 0", "nxt": "exp(-x) + 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(2*y(x) + 3*Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 + 3*r + 2 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 + 3*r + 2 = 0", "nxt": "4*exp(-x) - exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(6*y(x) + 5*Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 + 5*r + 6 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 + 5*r + 6 = 0", "nxt": "3*exp(-2*x) + 2*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(-3*y(x) - 2*Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 - 2*r - 3 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 - 2*r - 3 = 0", "nxt": "2*exp(3*x) - 4*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(6*y(x) - 5*Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 - 5*r + 6 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 - 5*r + 6 = 0", "nxt": "3*exp(3*x) - 3*exp(2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(-9*y(x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 - 9 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 - 9 = 0", "nxt": "4*exp(3*x) - 2*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 5*r + 6 = 0", "nxt": "3*exp(3*x) + 2*exp(2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(-4*y(x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 - 4 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 - 4 = 0", "nxt": "exp(2*x) + exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 5*r + 6 = 0", "nxt": "-4*exp(3*x) + exp(2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(-6*y(x) - Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 - r - 6 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 - r - 6 = 0", "nxt": "3*exp(3*x) + 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(3*y(x) - 4*Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 - 4*r + 3 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 - 4*r + 3 = 0", "nxt": "-exp(3*x) + 2*exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 2*r - 3 = 0", "nxt": "2*exp(3*x) + 4*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 5*r + 6 = 0", "nxt": "3*exp(-2*x) + exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 9 = 0", "nxt": "-exp(3*x) + exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 5*r + 6 = 0", "nxt": "3*exp(3*x) - 2*exp(2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 3*r + 2 = 0", "nxt": "3*exp(-x) - 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(-2*y(x) + Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 + r - 2 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 + r - 2 = 0", "nxt": "4*exp(x) - exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 4*r + 3 = 0", "nxt": "3*exp(3*x) + exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(-3*y(x) + 2*Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 + 2*r - 3 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 + 2*r - 3 = 0", "nxt": "exp(x) + 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 5*r + 6 = 0", "nxt": "4*exp(-2*x) - 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 5*r + 6 = 0", "nxt": "4*exp(3*x) - 3*exp(2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 4*r + 3 = 0", "nxt": "-4*exp(-x) + 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 2*r - 3 = 0", "nxt": "4*exp(3*x) + 2*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 4*r + 3 = 0", "nxt": "exp(-x) - 2*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 4*r + 3 = 0", "nxt": "4*exp(-x) - 3*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 4*r + 3 = 0", "nxt": "2*exp(-x) + exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 5*r + 6 = 0", "nxt": "2*exp(-2*x) - exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 4 = 0", "nxt": "-3*exp(2*x) + 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 5*r + 6 = 0", "nxt": "-2*exp(3*x) + 4*exp(2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 3*r + 2 = 0", "nxt": "4*exp(-x) + 4*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(-6*y(x) + Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 + r - 6 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 + r - 6 = 0", "nxt": "exp(2*x) - 2*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + r - 2 = 0", "nxt": "-3*exp(x) + 4*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 2*r - 3 = 0", "nxt": "exp(x) + 2*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - r - 6 = 0", "nxt": "exp(3*x) - exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(-y(x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 - 1 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 - 1 = 0", "nxt": "exp(x) - 2*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 5*r + 6 = 0", "nxt": "4*exp(-2*x) + 3*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 4*r + 3 = 0", "nxt": "2*exp(3*x) + 3*exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 2*r - 3 = 0", "nxt": "3*exp(3*x) - 3*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 5*r + 6 = 0", "nxt": "4*exp(-2*x) - 3*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 4*r + 3 = 0", "nxt": "-3*exp(-x) + 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - r - 6 = 0", "nxt": "2*exp(3*x) + exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 5*r + 6 = 0", "nxt": "-2*exp(3*x) + exp(2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 4*r + 3 = 0", "nxt": "exp(-x) + exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 4*r + 3 = 0", "nxt": "-4*exp(3*x) + 3*exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - r - 6 = 0", "nxt": "exp(3*x) + 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 3*r + 2 = 0", "nxt": "2*exp(-x) + exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + r - 2 = 0", "nxt": "-exp(x) + 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 4*r + 3 = 0", "nxt": "3*exp(3*x) + 2*exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 5*r + 6 = 0", "nxt": "2*exp(3*x) + 4*exp(2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + r - 6 = 0", "nxt": "2*exp(2*x) - 3*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 5*r + 6 = 0", "nxt": "3*exp(-2*x) - 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(2*y(x) - 3*Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 - 3*r + 2 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 - 3*r + 2 = 0", "nxt": "2*exp(2*x) - 4*exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "SolveODE: Eq(-2*y(x) - Derivative(y(x), x) + Derivative(y(x), (x, 2)), 0)", "nxt": "CharEq: r**2 - r - 2 = 0", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "constant coefficients: substitute y = exp(r*x)"}
+{"cur": "CharEq: r**2 - r - 2 = 0", "nxt": "exp(2*x) + 4*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + r - 2 = 0", "nxt": "exp(x) - 4*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 3*r + 2 = 0", "nxt": "-exp(-x) + exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - r - 2 = 0", "nxt": "4*exp(2*x) + 3*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 5*r + 6 = 0", "nxt": "3*exp(-2*x) + 3*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 3*r + 2 = 0", "nxt": "-3*exp(-x) + 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 2*r - 3 = 0", "nxt": "4*exp(3*x) + 4*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - r - 2 = 0", "nxt": "2*exp(2*x) + 2*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + r - 2 = 0", "nxt": "exp(x) + 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 1 = 0", "nxt": "-2*exp(x) + 4*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 9 = 0", "nxt": "-4*exp(3*x) + exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 1 = 0", "nxt": "3*exp(x) + 2*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + r - 6 = 0", "nxt": "3*exp(2*x) + exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 3*r + 2 = 0", "nxt": "4*exp(2*x) + 2*exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 5*r + 6 = 0", "nxt": "-2*exp(3*x) + 3*exp(2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 2*r - 3 = 0", "nxt": "2*exp(3*x) - exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 4*r + 3 = 0", "nxt": "3*exp(3*x) + 3*exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 3*r + 2 = 0", "nxt": "-exp(-x) + 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 5*r + 6 = 0", "nxt": "4*exp(3*x) + exp(2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 5*r + 6 = 0", "nxt": "2*exp(-2*x) + 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - r - 6 = 0", "nxt": "2*exp(3*x) - 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 3*r + 2 = 0", "nxt": "exp(2*x) - 3*exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 3*r + 2 = 0", "nxt": "4*exp(-x) + exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + r - 2 = 0", "nxt": "2*exp(x) + 3*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 3*r + 2 = 0", "nxt": "2*exp(-x) - 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 1 = 0", "nxt": "4*exp(x) + 3*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 3*r + 2 = 0", "nxt": "-exp(2*x) + 3*exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - r - 2 = 0", "nxt": "-3*exp(2*x) + exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 2*r - 3 = 0", "nxt": "-4*exp(3*x) + 3*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 9 = 0", "nxt": "-3*exp(3*x) + exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 4 = 0", "nxt": "4*exp(2*x) + 4*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + r - 6 = 0", "nxt": "-2*exp(2*x) + 2*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 5*r + 6 = 0", "nxt": "2*exp(3*x) + exp(2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 4 = 0", "nxt": "-3*exp(2*x) + 4*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - r - 2 = 0", "nxt": "4*exp(2*x) - 3*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 4*r + 3 = 0", "nxt": "2*exp(3*x) + 4*exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 2*r - 3 = 0", "nxt": "2*exp(x) + 2*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + r - 2 = 0", "nxt": "-3*exp(x) + exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 1 = 0", "nxt": "-exp(x) + 4*exp(-x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - 3*r + 2 = 0", "nxt": "-2*exp(2*x) + exp(x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - r - 6 = 0", "nxt": "2*exp(3*x) - exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 - r - 6 = 0", "nxt": "-4*exp(3*x) + 2*exp(-2*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}
+{"cur": "CharEq: r**2 + 5*r + 6 = 0", "nxt": "-3*exp(-2*x) + 4*exp(-3*x)", "level": 2, "source": "ode", "kind": "cc2", "hints": [], "think": "roots give the solution basis"}

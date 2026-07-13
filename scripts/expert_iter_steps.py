@@ -369,6 +369,91 @@ def phase_coeff(n: int, seed_base: int) -> None:
     print(f"COEFF done: {added} coefficient-discipline pairs")
 
 
+def _ode_chain_worker(kind: str, seed: int, q: "mp.Queue") -> None:
+    """Second continent (2026-07-13, the closed-system thesis): ODE
+    solutions are drawn first (odes.py), so answer-side chains mint
+    free — same reverse-engine trick, new domain. Steps verbalize the
+    method (characteristic roots, integrating factor)."""
+    import sympy as sp
+
+    from llmopt.mathgen.odes import (make_linear_first_order,
+                                     make_second_order_cc,
+                                     make_separable_growth)
+    x = sp.Symbol("x")
+    mk = {"separable": make_separable_growth,
+          "linear1": make_linear_first_order,
+          "cc2": make_second_order_cc}[kind]
+    p = mk(2, seed)
+    eq = p._expr[0]
+    y = sp.Function("y")
+    lhs = (eq.lhs - eq.rhs).expand()
+    dy = sp.Derivative(y(x), x)
+    pairs = []
+    prompt0 = f"SolveODE: {sp.sstr(eq)}"
+    if kind == "cc2":
+        d2y = sp.Derivative(y(x), x, 2)
+        a = sp.simplify(lhs.coeff(dy))
+        b = sp.simplify(lhs.coeff(y(x)))
+        r = sp.Symbol("r")
+        char = sp.sstr(sp.expand(r**2 + a * r + b))
+        pairs.append((prompt0, f"CharEq: {char} = 0",
+                      "constant coefficients: substitute y = exp(r*x)"))
+        pairs.append((f"CharEq: {char} = 0",
+                      sp.sstr(sp.sympify(p.answer)),
+                      "roots give the solution basis"))
+    elif kind == "separable":
+        f = -sp.simplify(lhs.coeff(y(x)))
+        pairs.append((prompt0,
+                      f"y = C1*exp(Integral({sp.sstr(f)}, x))",
+                      "separable: y'/y = f, integrate both sides"))
+        pairs.append((f"y = C1*exp(Integral({sp.sstr(f)}, x))",
+                      sp.sstr(sp.sympify(p.answer)),
+                      "solve the integral, exponentiate"))
+    else:
+        pc = sp.simplify(lhs.coeff(y(x)))
+        pairs.append((prompt0,
+                      f"mu = exp(Integral({sp.sstr(pc)}, x))",
+                      "linear first order: integrating factor"))
+        pairs.append((f"mu = exp(Integral({sp.sstr(pc)}, x))",
+                      sp.sstr(sp.sympify(p.answer)),
+                      "y = (Integral(mu*q) + C1)/mu"))
+    q.put(pairs)
+
+
+def phase_ode_chains(n: int, seed_base: int,
+                     out_path: str = "data/ode_chains.jsonl") -> None:
+    ctx = mp.get_context("fork")
+    out = Path(out_path)
+    seen: set = set()
+    added = 0
+    with out.open("w") as f:
+        for kind in ("separable", "linear1", "cc2"):
+            for i in range(n):
+                q = ctx.Queue()
+                pr = ctx.Process(target=_ode_chain_worker,
+                                 args=(kind, seed_base + i, q))
+                pr.start()
+                pr.join(45)
+                if pr.is_alive():
+                    pr.kill()
+                    pr.join()
+                    continue
+                try:
+                    pairs = q.get(timeout=10)
+                except Exception:
+                    continue
+                for cur, nxt, think in pairs:
+                    if (cur, nxt) in seen:
+                        continue
+                    seen.add((cur, nxt))
+                    f.write(json.dumps(
+                        {"cur": cur, "nxt": nxt, "level": 2,
+                         "source": "ode", "kind": kind, "hints": [],
+                         "think": think}) + "\n")
+                    added += 1
+    print(f"ODE-CHAINS done: {added} pairs -> {out}")
+
+
 def phase_skips() -> None:
     """Macro-distillation (Artin's COCONUT riff, 2026-07-12): skip
     pairs (state_i -> state_{i+k}) are verified FOR FREE by
@@ -497,7 +582,7 @@ def phase_train(epochs: int, lr: float,
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--phase", required=True,
-                    choices=["chains", "train", "skips", "reverse", "coeff"])
+                    choices=["chains", "train", "skips", "reverse", "coeff", "ode"])
     ap.add_argument("--n-per-level", type=int, default=150)
     ap.add_argument("--seed-base", type=int, default=8_000_000)
     ap.add_argument("--epochs", type=int, default=3)
@@ -514,6 +599,8 @@ if __name__ == "__main__":
         phase_reverse(a.n_per_level, a.seed_base, tuple(a.levels))
     elif a.phase == "coeff":
         phase_coeff(a.n_per_level, a.seed_base)
+    elif a.phase == "ode":
+        phase_ode_chains(a.n_per_level, a.seed_base)
     elif a.phase == "skips":
         phase_skips()
     else:
