@@ -319,7 +319,7 @@ def main(n: int, seed_base: int, budget: int,
          adapter: str | None = None) -> None:
     import sympy as sp
     tok, model = load(adapter)
-    res = {"one_shot": 0, "steps": 0}
+    res = {"one_shot": 0, "steps": 0, "steps_chained": 0}
     parse_ok = step_ok = step_tries = 0
     for i in range(n):
         lv = 2 + i % 2                      # L2/L3: format probe first
@@ -349,17 +349,23 @@ def main(n: int, seed_base: int, budget: int,
                 ok1 = ok1 or (okp and solved)
         res["one_shot"] += ok1
         # arm 2: verified macro-token chain
-        ok2, _, v, t = solve_chain(tok, model, integ, budget,
-                                   seed0=500 + i)
+        ok2, pairs2, v, t = solve_chain(tok, model, integ, budget,
+                                        seed0=500 + i)
         step_ok += v
         step_tries += t
         res["steps"] += ok2
+        # chain-required surface: a solve counts here only if it took
+        # >= 2 verified steps — one-shot's ceiling on this metric is
+        # structurally zero (rounds 1-3 lesson: measure chaining
+        # where finishing can't masquerade as it)
+        res["steps_chained"] += ok2 and len(pairs2) >= 2
         if (i + 1) % 5 == 0:
             print(f"[{i+1}/{n}] one_shot={res['one_shot']} "
                   f"steps={res['steps']} (valid-step rate "
                   f"{step_ok}/{step_tries})", flush=True)
     print(f"STEP-TOKEN RACE n={n} budget={budget} tok/arm")
-    print(f"  one_shot: {res['one_shot']}  steps: {res['steps']}")
+    print(f"  one_shot: {res['one_shot']}  steps: {res['steps']}  "
+          f"steps_chained(>=2): {res['steps_chained']}")
     print(f"  step validity: {step_ok}/{step_tries} "
           f"({100*step_ok/max(step_tries,1):.0f}%)")
     print("kill-switch: validity ~0% = format null; "

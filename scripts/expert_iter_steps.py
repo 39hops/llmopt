@@ -355,6 +355,24 @@ def phase_train(epochs: int, lr: float,
     model.train()
 
     rows = [json.loads(l) for l in CHAINS.read_text().splitlines()]
+    # round-4 balance: naked one-hop completions (whole problem ->
+    # finished answer, no chain context) taught the single-hop habit
+    # (rounds 1-3: model prefers finishing to chaining). Cap them so
+    # chaining isn't outvoted; keep every chain-context row.
+    def _one_hop(r):
+        return (r["cur"].startswith("Integral(")
+                and "Integral" not in r["nxt"]
+                and r.get("source") != "skip")
+    hops = [r for r in rows if _one_hop(r)]
+    rest = [r for r in rows if not _one_hop(r)]
+    CAP = 150
+    if len(hops) > CAP:
+        import random as _r
+        _r.Random(0).shuffle(hops)
+        hops = hops[:CAP]
+        print(f"balance: one-hop rows capped {CAP} "
+              f"(chain rows {len(rest)})")
+    rows = rest + hops
     examples = []
     for r in rows:
         # the bench_step_tokens plain-completion format, verbatim.
