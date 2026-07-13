@@ -1303,6 +1303,26 @@ close the last ~2x to hand-tuned precision at this compute.
 STRUCTURE SEARCH CLOSED (two fails, house rule): the discovery is
 qualitative, the engineering isn't — compute-bound, not idea-bound.
 
+## ODE engine, rung 1: an engine made of engines (2026-07-12)
+
+The engine-shaped physics rung. The ODE generator
+(llmopt/mathgen/odes.py) had existed UNCONSUMED since the mathgen
+expansion; rung 1 gives it its engine: family rules reduce each ODE
+to INTEGRALS (separable -> exp of an integral; linear1 ->
+integrating factor, two integrals; cc2 -> characteristic roots,
+pure algebra), the house integral engine subcontracts the integrals
+(the i_heurisch composition pattern one level up), and
+sympy.checkodesol is the oracle (fork-isolated, hang = wrong).
+Race vs sympy.dsolve, 75 problems: **engine 75/75, dsolve 75/75**
+— solve parity; wall honest: dsolve faster overall (6s vs 28s;
+subcontracting pays fork+search overhead per integral) EXCEPT cc2
+where the algebra path wins outright (0.0s vs 1.3s). Rung-1
+families are dsolve's home turf; the engine's edge should appear at
+variable-coefficient families whose integrating factors need HARD
+integrals (L6+-grade) — that's rung 2, where the L8 subcontractor
+muscle differentiates. Then step-chains: the reverse-engine trick
+applies verbatim (solutions drawn first).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
