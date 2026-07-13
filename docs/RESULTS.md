@@ -1502,6 +1502,23 @@ peaks mid-network; the last layer is busy being a language model.
 Operating point: frozen mid-layer representations + heads; more
 labels (cheap) before more gradient. `pred_syndromes_l15.pt`.
 
+**The adoption A/B ends the arc with a twist (scripts/
+bench_hints_ab.py, 48 fresh problems x 3 arms, byte-identical
+prompting):** oracle hints 13/48 @ 1.19% validity; predicted
+(layer-15 net) 14/48 @ 1.29% — the bar says ADOPT, the net IS
+oracle-equivalent in the model's eyes at ~7x less cost. But the
+pre-registered sleeper won the race: **NO HINTS 19/48 @ 1.87% —
+beats both.** Hints anchor sampling toward the named rules' shapes;
+at ~1% validity the chain needs resample DIVERSITY more than
+direction, and the Hints line collapses exactly that exploration.
+(n=48 solve gap is suggestive; the validity gap over thousands of
+attempts is firmer; every ranking agrees.) Verdict: the Hints line
+leaves the inference path entirely — the fastest hint is no hint —
+and the syndrome-head spec re-aims at payoff 3 (representation
+shaping during training), per its own pre-registration. Five rounds
+of making hints cheap, concluded by measuring they shouldn't be
+paid for at all: the starved-judge law eating its own tail.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
