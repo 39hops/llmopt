@@ -525,20 +525,34 @@ def phase_train(epochs: int, lr: float,
     # finished answer, no chain context) taught the single-hop habit
     # (rounds 1-3: model prefers finishing to chaining). Cap them so
     # chaining isn't outvoted; keep every chain-context row.
+    # Class-aware balance (autonomous round-1 ROLLBACK 2026-07-13:
+    # 764 non-one-hop-shaped coeff drills flooded the UNCAPPED chain
+    # class (~30% of the mix) while the shaped ones diluted the
+    # one-hop cap's random 400 — finishing rows fell 522 -> ~215.
+    # L2 11->6, L3 10->1. Drills are their own class with their own
+    # cap; the finishing cap counts only non-drill rows.)
+    import random as _r
+    coeff = [r for r in rows if r.get("source") == "coeff"]
+    noncoeff = [r for r in rows if r.get("source") != "coeff"]
+
     def _one_hop(r):
         return (r["cur"].startswith("Integral(")
                 and "Integral" not in r["nxt"]
                 and r.get("source") != "skip")
-    hops = [r for r in rows if _one_hop(r)]
-    rest = [r for r in rows if not _one_hop(r)]
+    hops = [r for r in noncoeff if _one_hop(r)]
+    rest = [r for r in noncoeff if not _one_hop(r)]
     CAP = 400   # round-4 ROLLBACK: 150 unlearned finishing (one-shot 19->0)
+    COEFF_CAP = 250
     if len(hops) > CAP:
-        import random as _r
         _r.Random(0).shuffle(hops)
         hops = hops[:CAP]
-        print(f"balance: one-hop rows capped {CAP} "
-              f"(chain rows {len(rest)})")
-    rows = rest + hops
+    if len(coeff) > COEFF_CAP:
+        _r.Random(1).shuffle(coeff)
+        coeff = coeff[:COEFF_CAP]
+    print(f"balance: finishing {len(hops)}/{CAP} cap, coeff drills "
+          f"{len(coeff)}/{COEFF_CAP} cap, chain rows {len(rest)}",
+          flush=True)
+    rows = rest + hops + coeff
     examples = []
     for r in rows:
         # the bench_step_tokens plain-completion format, verbatim.
