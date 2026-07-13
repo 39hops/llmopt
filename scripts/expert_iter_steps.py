@@ -219,6 +219,64 @@ def phase_reverse(n_per_level: int, seed_base: int,
     print(f"REVERSE done: {n} pairs -> {CHAINS}")
 
 
+def _magic_buckets(states: list[str]) -> dict:
+    """Fork-isolated: estimator v7 cost head scores each state string;
+    buckets by corpus-relative terciles (easy/mid/hard). The magic-
+    adaptive granularity rung (Artin: "predict longer tokens with
+    magic"): unit size should track local predictability."""
+    ctx = mp.get_context("fork")
+    q = ctx.Queue()
+
+    def _w():
+        import sympy as sp
+        import torch
+
+        from llmopt.search.features import featurize
+        sys_path = str(Path(__file__).resolve().parent)
+        import sys as _s
+        if sys_path not in _s.path:
+            _s.path.insert(0, sys_path)
+        from train_magic_estimator import Estimator
+        pay = torch.load("checkpoints/magic_estimator_v7.pt",
+                         weights_only=False)
+        est = Estimator(d_in=len(pay["mu"]))
+        est.load_state_dict(pay["state_dict"])
+        est.eval()
+        out = {}
+        for s in states:
+            try:
+                e = sp.sympify(s, locals={"Integral": sp.Integral,
+                                          "x": sp.Symbol("x")})
+                f = torch.tensor([featurize(e)], dtype=torch.float32)
+                with torch.no_grad():
+                    _, cost = est((f - pay["mu"]) / pay["sd"])
+                out[s] = float(cost.item())
+            except Exception:
+                out[s] = None
+        q.put(out)
+
+    p = ctx.Process(target=_w)
+    p.start()
+    p.join(120)
+    if p.is_alive():
+        p.kill()
+        p.join()
+        return {}
+    try:
+        costs = q.get(timeout=10)
+    except Exception:
+        return {}
+    vals = sorted(v for v in costs.values() if v is not None)
+    if not vals:
+        return {}
+    lo, hi = vals[len(vals) // 3], vals[2 * len(vals) // 3]
+    return {s: ("easy" if c <= lo else "hard" if c >= hi else "mid")
+            for s, c in costs.items() if c is not None}
+
+
+_MAGIC_SKIP = {"easy": 5, "mid": 3, "hard": 0}  # max jump per bucket
+
+
 def phase_skips() -> None:
     """Macro-distillation (Artin's COCONUT riff, 2026-07-12): skip
     pairs (state_i -> state_{i+k}) are verified FOR FREE by
@@ -242,22 +300,30 @@ def phase_skips() -> None:
             cur_run = [r]
     if len(cur_run) >= 2:
         runs.append(cur_run)
+    all_states = sorted({s for run in runs
+                         for s in [run[0]["cur"]] + [r["nxt"] for r in run]})
+    buckets = _magic_buckets(all_states)
     n = 0
     with CHAINS.open("a") as f:
         for run in runs:
             states = [run[0]["cur"]] + [r["nxt"] for r in run]
             lv = max(r["level"] for r in run)
             for i in range(len(states)):
-                for k in range(i + 2, len(states)):  # skip >= 2 hops
+                # magic-adaptive jump cap: easy states may leap far,
+                # hard states must single-step (no skips minted)
+                cap = _MAGIC_SKIP.get(buckets.get(states[i], "mid"), 3)
+                for k in range(i + 2, min(i + 1 + cap, len(states))):
                     pair = (states[i], states[k])
                     if pair in seen:
                         continue
                     seen.add(pair)
                     f.write(json.dumps(
                         {"cur": pair[0], "nxt": pair[1], "level": lv,
-                         "source": "skip", "gate": "pending"}) + "\n")
+                         "source": "skip", "gate": "pending",
+                         "magic": buckets.get(states[i], "mid")}) + "\n")
                     n += 1
-    print(f"SKIPS done: {len(runs)} chains -> {n} skip pairs appended")
+    print(f"SKIPS done: {len(runs)} chains -> {n} magic-sized skip "
+          f"pairs appended")
 
 
 def phase_train(epochs: int, lr: float,
