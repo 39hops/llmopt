@@ -220,10 +220,27 @@ def phase_reverse(n_per_level: int, seed_base: int,
 
 
 def _magic_buckets(states: list[str]) -> dict:
-    """Fork-isolated: estimator v7 cost head scores each state string;
-    buckets by corpus-relative terciles (easy/mid/hard). The magic-
-    adaptive granularity rung (Artin: "predict longer tokens with
-    magic"): unit size should track local predictability."""
+    """Fork-isolated IN CHUNKS (one wedging state must not poison the
+    batch — pathology rules): estimator v7 cost head scores each
+    state; buckets by corpus-relative terciles. The magic-adaptive
+    granularity rung: unit size tracks local predictability."""
+    costs: dict = {}
+    CHUNK = 50
+    for c0 in range(0, len(states), CHUNK):
+        chunk = states[c0:c0 + CHUNK]
+        got = _magic_chunk(chunk)
+        costs.update(got)
+    vals = sorted(v for v in costs.values() if v is not None)
+    if not vals:
+        print("MAGIC BUCKETS: nothing scored — skips will be unsized",
+              flush=True)
+        return {}
+    lo, hi = vals[len(vals) // 3], vals[2 * len(vals) // 3]
+    return {s: ("easy" if c <= lo else "hard" if c >= hi else "mid")
+            for s, c in costs.items() if c is not None}
+
+
+def _magic_chunk(states: list[str]) -> dict:
     ctx = mp.get_context("fork")
     q = ctx.Queue()
 
@@ -257,21 +274,15 @@ def _magic_buckets(states: list[str]) -> dict:
 
     p = ctx.Process(target=_w)
     p.start()
-    p.join(120)
+    p.join(90)
     if p.is_alive():
         p.kill()
         p.join()
-        return {}
+        return {}   # this chunk unsized; others unaffected
     try:
-        costs = q.get(timeout=10)
+        return q.get(timeout=15)
     except Exception:
         return {}
-    vals = sorted(v for v in costs.values() if v is not None)
-    if not vals:
-        return {}
-    lo, hi = vals[len(vals) // 3], vals[2 * len(vals) // 3]
-    return {s: ("easy" if c <= lo else "hard" if c >= hi else "mid")
-            for s, c in costs.items() if c is not None}
 
 
 _MAGIC_SKIP = {"easy": 5, "mid": 3, "hard": 0}  # max jump per bucket
