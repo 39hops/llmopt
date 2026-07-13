@@ -47,6 +47,7 @@ ZX/T-count chapter, near the end).*
 - [ODE engine, rung 1: an engine made of engines (2026-07-12)](#ode-engine-rung-1-an-engine-made-of-engines-2026-07-12)
 - [Fused cross-entropy (MLX, Liger-style): the memory wall flips the sign (2026-07-13)](#fused-cross-entropy-mlx-liger-style-the-memory-wall-flips-the-sign-2026-07-13)
 - [Population training: batching pays only where slack lives (2026-07-13)](#population-training-batching-pays-only-where-slack-lives-2026-07-13)
+- [Predicted syndromes: the rules are their own features (2026-07-13)](#predicted-syndromes-the-rules-are-their-own-features-2026-07-13)
 - [Origin story, closed](#origin-story-closed)
 - [Future work (spec'd or banked, in priority order)](#future-work-specd-or-banked-in-priority-order)
 - [Reproduction](#reproduction)
@@ -1420,6 +1421,34 @@ weight-traffic bound that measurement says isn't there. Machinery
 banks for tiny-net populations (weightspace threads), where steps
 ARE launch-bound. Fused CE (above) stands on its own — it was the
 memory result; the tournament gate rides sequential runs.
+
+## Predicted syndromes: the rules are their own features (2026-07-13)
+
+Can a tiny MLP over featurize() structural features predict the
+Hints line (which INT_RULES fire) without running the rules — a
+~40,000x discount on the ~200ms/state first-look mini-solve?
+Pre-registered bar: exact-set >= 80%, micro-F1 >= 0.9, hash-split
+held-out. **FAIL twice, mechanism identified.** Round 1 (2018 corpus
+states): 60.6% / 0.893 — misses concentrated in RARE rules (i_apart
+R 0.25), so the data-starvation hypothesis got its widening round.
+Round 2 (+2555 fresh generator roots L2-L8): **41.9% / 0.836 — more
+data made it WORSE**, i_apart recall collapsed to 0.02 at 3.4x the
+examples. The split-by-source autopsy is the finding: exact-match
+55.4% on chain-distribution states vs **32.1% on hard roots** — the
+gradient points the wrong way for the use case (hints matter most
+exactly where prediction degrades). Mechanism: the informative bits
+are semantic (i_apart fires iff the denominator factors; ansatz
+rules fire iff their system solves) and 20 structural features
+can't carry that signal at any dataset size. The predictable bits
+(i_heurisch 0.93/0.95) are the near-universal ones — informative to
+nobody. The starved-judge law, sharpest form yet: syndromes are
+predictable exactly where they're uninformative. Prediction was
+honest-fast: 5us/state vs ~200ms oracle — speed nobody can spend.
+Revive-if: features that see semantics (small-model embeddings as
+feature vector), or domains where the oracle costs seconds
+(codegen: compile+run) so even partial-recall prediction pays.
+`scripts/bench_pred_syndromes.py`, labels in
+`data/pred_syndrome_labels.jsonl` (4573 states, streamed forks).
 
 ## Origin story, closed
 

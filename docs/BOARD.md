@@ -18,7 +18,6 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Waiting on | Pointer |
 |---|---|---|
-| Predicted syndromes (markov/learned hint approximation, zero sympy) | if hints bottleneck again despite the cache | Artin 2026-07-13 |
 | ODE chains merge (data/ode_chains.jsonl, 317 pairs) | multi-domain round AFTER round-5 attribution is clean | 91fb39d |
 | Fused-quotient residue (L8's last 3) | rule synthesis design; the step-model may reach it first | RESULTS "L8 autopsy" |
 | LLM rule synthesis (heurisch-as-teacher) | frontier targets exist now | RIFF-LEDGER |
@@ -37,6 +36,7 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Verdict |
 |---|---|
+| Predicted syndromes | NULL, 2 strikes — informative bits are semantic (i_apart R 0.02 at 3.4x data); worse on hard states (32% vs 55%); revive with embedding features or expensive-oracle domains (codegen) |
 | Population training (K LoRA, one base, batched) | NULL — MLX 0.5B saturates at one adapter's batch (1250 tok/s flat), 1.04x @ corpus shapes, 0.62x big; machinery (exact K-sequential equivalence) banks for tiny-net populations |
 | Derivation-expanded chains + syndrome prompting | SHIPPED into rounds 2/3 (Think + Hints fields) |
 | Reverse engine | SHIPPED — answer-side chains (492), the corpus factory's decompression stroke |
