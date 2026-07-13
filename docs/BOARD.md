@@ -17,6 +17,10 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Waiting on | Pointer |
 |---|---|---|
+| Fused cross-entropy (Liger-style, MLX) | next Mac session — chunked logits, softmax+loss+grad fused; bar: peak MB + tok/s vs naive on 0.5B shapes (152k-vocab logits are the biggest object in training) | 2026-07-13 brainstorm |
+| Population training (K LoRA adapters, one frozen base, batched) | fused CE first (K x logits unaffordable unfused); upgrades the loop gate from single-candidate to tournament-of-mixes | 2026-07-13 brainstorm |
+| Predicted syndromes (markov/learned hint approximation, zero sympy) | if hints bottleneck again despite the cache | Artin 2026-07-13 |
+| ODE chains merge (data/ode_chains.jsonl, 317 pairs) | multi-domain round AFTER round-5 attribution is clean | 91fb39d |
 | Fused-quotient residue (L8's last 3) | rule synthesis design; the step-model may reach it first | RESULTS "L8 autopsy" |
 | LLM rule synthesis (heurisch-as-teacher) | frontier targets exist now | RIFF-LEDGER |
 | Latent-between-anchors (COCONUT-shaped) | step-model maturity | RIFF-LEDGER |
