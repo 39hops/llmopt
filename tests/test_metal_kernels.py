@@ -191,3 +191,19 @@ def test_int4_gemv_awq_channel_scale_fold():
     got = int4_gemv(xs, packed, sc, mn)
     ref = xs.astype(mx.float32) @ _dequant_ref(packed, sc, mn).T
     assert mx.abs(got.astype(mx.float32) - ref).max() < 0.05 * mx.abs(ref).mean()
+
+
+@pytest.mark.parametrize("t,causal", [(96, True), (128, False), (200, True)])
+def test_flash_prefill_matches_sdpa(t, causal):
+    from llmopt.kernels.metal import flash_prefill
+    mx.random.seed(13)
+    h, d = 2, 64
+    q = mx.random.normal((h, t, d)).astype(mx.float16)
+    k = mx.random.normal((h, t, d)).astype(mx.float16)
+    v = mx.random.normal((h, t, d)).astype(mx.float16)
+    ref = mx.fast.scaled_dot_product_attention(
+        q[None], k[None], v[None], scale=1 / d**0.5,
+        mask="causal" if causal else None)[0]
+    got = flash_prefill(q, k, v, causal=causal)
+    assert mx.abs(got.astype(mx.float32)
+                  - ref.astype(mx.float32)).max() < 5e-3

@@ -46,6 +46,17 @@ launch game. Honest split: win big, lose small, the 4x roofline still
 not saturated — group/threadgroup sweeps are the config-estimator
 rung's training data.
 
+flash_prefill v1 (2026-07-13, the port queued since 07-05): tiled
+causal prefill, one simdgroup per query row, exp2 online softmax —
+CORRECT (max|err| 1.2e-4 vs mx sdpa) but loses 3-11x on every prefill
+shape (0/6): the per-key serial simd_sum dot is latency-bound scalar
+work vs mx's simdgroup_matrix (Metal's tensor-core path). Same lesson
+as attention_decode v1 vs GEMV: attention kernels must speak MATRIX to
+compete at prefill. v2 path: simdgroup_float8x8 MMA tiles. The tq_tile
+sweep landed as config-estimator labels (data/flash_tile_labels.jsonl)
+— though the tile axis barely matters next to the missing MMA (~5%
+spread), confirming variance lives in the ALGORITHM axis here.
+
 Negative result worth keeping: restructuring the GQA kernel for
 group-shared K/V reads (grid (chunks, KVH), one threadgroup computing
 all GROUP query heads per K row read — the Triton/CUDA lesson) was
@@ -469,6 +480,71 @@ _INT4_GEMV_V3_SRC = """
 """
 
 
+_FLASH_PREFILL_SRC = """
+    // Flash prefill v1 (2026-07-13, the port queued since 07-05):
+    // grid (query tiles, heads); threadgroup = TQ simdgroups, one per
+    // query row. Keys stream in 32-wide tiles; for each key the row's
+    // 32 lanes compute a dimension-partitioned partial dot and
+    // simd_sum replicates the full score to every lane, so the
+    // running (m, l) softmax state lives lane-replicated and the
+    // accumulator stays distributed by dimension (lane j owns dims
+    // j, j+32, ...). exp2-domain softmax (log2e folded into scale2 —
+    // the split-K convention). Causal masks only the ragged tail.
+    constexpr uint SG = 32;
+    uint qtile = threadgroup_position_in_grid.x;
+    uint head = threadgroup_position_in_grid.y;
+    uint row = thread_position_in_threadgroup.y;
+    uint lane = thread_position_in_threadgroup.x;
+    uint qi = qtile * (uint)TQ + row;
+    if (qi >= (uint)TQLEN) return;
+
+    const device T* qr = q + (head * (uint)TQLEN + qi) * (uint)DIM;
+    const device T* kb = k + head * (uint)TKLEN * (uint)DIM;
+    const device T* vb = v + head * (uint)TKLEN * (uint)DIM;
+
+    constexpr uint DPL = (uint)DIM / SG;
+    float qreg[DPL];
+    for (uint c = 0; c < DPL; c++) qreg[c] = (float)qr[lane + c * SG];
+
+    float m = -INFINITY, l = 0.0f;
+    float acc[DPL];
+    for (uint c = 0; c < DPL; c++) acc[c] = 0.0f;
+
+    int offs = (int)TKLEN - (int)TQLEN;
+    uint hi = CAUSAL ? (uint)min((int)qi + offs + 1, (int)TKLEN)
+                     : (uint)TKLEN;
+
+    for (uint kstart = 0; kstart < hi; kstart += SG) {
+        uint tile_n = min(SG, hi - kstart);
+        float sc[SG];
+        float m_new = m;
+        for (uint jj = 0; jj < tile_n; jj++) {
+            const device T* kr = kb + (kstart + jj) * (uint)DIM;
+            float part = 0.0f;
+            for (uint c = 0; c < DPL; c++)
+                part += qreg[c] * (float)kr[lane + c * SG];
+            float dot = metal::simd_sum(part) * scale2[0];
+            sc[jj] = dot;
+            m_new = metal::max(m_new, dot);
+        }
+        float corr = metal::exp2(m - m_new);
+        l *= corr;
+        for (uint c = 0; c < DPL; c++) acc[c] *= corr;
+        for (uint jj = 0; jj < tile_n; jj++) {
+            float pj = metal::exp2(sc[jj] - m_new);
+            l += pj;
+            const device T* vr = vb + (kstart + jj) * (uint)DIM;
+            for (uint c = 0; c < DPL; c++)
+                acc[c] += pj * (float)vr[lane + c * SG];
+        }
+        m = m_new;
+    }
+    device T* orow = out + (head * (uint)TQLEN + qi) * (uint)DIM;
+    for (uint c = 0; c < DPL; c++)
+        orow[lane + c * SG] = (T)(acc[c] / l);
+"""
+
+
 def _kernel(name, src, inputs):
     return mx.fast.metal_kernel(
         name=name, input_names=inputs, output_names=["out"], source=src
@@ -503,6 +579,35 @@ _int4_gemv = _kernel(
 _int4_gemv_v3 = _kernel(
     "llmopt_int4_gemv_v3", _INT4_GEMV_V3_SRC, ["x", "wq", "sc", "mn"]
 )
+_flash_prefill = _kernel(
+    "llmopt_flash_prefill", _FLASH_PREFILL_SRC,
+    ["q", "k", "v", "scale2"]
+)
+
+
+def flash_prefill(q: mx.array, k: mx.array, v: mx.array,
+                  causal: bool = True, tq_tile: int = 8) -> mx.array:
+    """Tiled prefill attention: q/k/v [H, T, DIM] -> [H, T, DIM].
+    One simdgroup per query row, keys streamed 32-wide, exp2-domain
+    online softmax; causal masks only the ragged tail. tq_tile = query
+    rows per threadgroup (the tile-sweep axis — config-estimator
+    training data)."""
+    h, tq, dim = q.shape
+    tk = k.shape[1]
+    assert dim % 32 == 0
+    scale2 = mx.array([_LOG2E / dim**0.5], dtype=mx.float32)
+    qtiles = (tq + tq_tile - 1) // tq_tile
+    (out,) = _flash_prefill(
+        inputs=[q, k, v, scale2],
+        template=[("T", q.dtype), ("DIM", dim), ("TQLEN", tq),
+                  ("TKLEN", tk), ("TQ", tq_tile),
+                  ("CAUSAL", bool(causal))],
+        grid=(qtiles * 32, h * tq_tile, 1),
+        threadgroup=(32, tq_tile, 1),
+        output_shapes=[(h, tq, dim)],
+        output_dtypes=[q.dtype],
+    )
+    return out
 
 
 def quantize_pack_int4(w: mx.array, group_size: int = 128,
