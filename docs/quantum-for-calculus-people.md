@@ -115,3 +115,26 @@ domain. The math is liquid; the hardware is still escrowed.
 | qLDPC | sparse checks, clever decoder | sparse rule-fires, NNUE decoder |
 | ZX | graph rewriting for circuits | the ZX engine (rungs 5-7) |
 | T-count | magic budget of a circuit | ZX engine's minimization target |
+
+
+## 8. Case study: the VGE rung (2026-07-12) — HVA vs the plateau
+
+TFIM = spins with two urges: align with neighbors (ZZ) vs point
+sideways (X); dial h balances them. At h=1 (criticality) the ground
+state is maximally entangled — correlations at all length scales —
+and product descriptions fail hardest. Measured: the generic
+hardware-efficient ansatz (learned rotations + entangling layers, 40-
+80 params) PLATEAUS at ~1% there — deeper didn't help, restarts all
+landed on the same floor: the shape family lacks the answer (three
+straight rulers can't draw a fractal). The Hamiltonian-variational
+ansatz builds layers from H's own two terms (a dial of ZZ, a dial of
+X, alternating) — a learnable, compressed version of the ADIABATIC
+path nature itself uses (start sideways, slowly turn on solidarity).
+Six parameters, 0.69% at criticality: the structure was inherited,
+only the pacing was learned. Structure beats scale. Twist: HVA is
+TERRIBLE in the ordered phase (7.9% at h=0.5) where the generic
+ansatz cruises — the ansatze are phase-complementary, and the
+dispatcher lesson reappears in physics uninvited. Bonus house note:
+the verifier here is a THEOREM (variational principle: no state
+scores below true E0) — the first oracle in the repo that cannot
+have bugs.
