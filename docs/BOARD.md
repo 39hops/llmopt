@@ -18,7 +18,9 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Waiting on | Pointer |
 |---|---|---|
-| Predicted-hints A/B (emb net vs oracle vs none, scored on step validity) | Mac slot; gate before the loop's prompts change; endgame = hint head on the step model | RESULTS 2026-07-13 round 3 |
+| Syndrome head on the step model (multi-task step+hints; subsumes the hints A/B) | SPEC'D — after coeff-round attribution; bars pre-registered incl. the validity-improvement bet | specs/2026-07-13-syndrome-head-design.md |
+| Syndrome dynamics (child-syndrome world model, 1-ply lookahead at embedding cost) | syndrome head rung 2 | same spec, relations |
+| Magic estimator revival on embedding features | if hardness economics return (budget alloc, skip sizing) | same spec, rung 3 |
 | ODE chains merge (data/ode_chains.jsonl, 317 pairs) | multi-domain round AFTER round-5 attribution is clean | 91fb39d |
 | Fused-quotient residue (L8's last 3) | rule synthesis design; the step-model may reach it first | RESULTS "L8 autopsy" |
 | LLM rule synthesis (heurisch-as-teacher) | frontier targets exist now | RIFF-LEDGER |

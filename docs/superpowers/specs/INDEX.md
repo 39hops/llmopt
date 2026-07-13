@@ -26,3 +26,4 @@ docs/BOARD.md.
 | 2026-07-08 tcount-engine | EXECUTED — ZX rungs 0-6 (RESULTS "T-count engine") |
 | 2026-07-12 step-expert-iteration | LIVE — the loop driver runs this spec (scripts/expert_loop.py, LOOP-LOG.md) |
 | 2026-07-12 variational-ground-engine | EXECUTED — rung 1 shipped; structure search closed (2 fails, on the books) |
+| 2026-07-13 syndrome-head | SPEC'D — multi-task step+syndrome head; queued behind coeff-round attribution |
