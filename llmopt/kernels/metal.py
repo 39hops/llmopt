@@ -52,10 +52,18 @@ CORRECT (max|err| 1.2e-4 vs mx sdpa) but loses 3-11x on every prefill
 shape (0/6): the per-key serial simd_sum dot is latency-bound scalar
 work vs mx's simdgroup_matrix (Metal's tensor-core path). Same lesson
 as attention_decode v1 vs GEMV: attention kernels must speak MATRIX to
-compete at prefill. v2 path: simdgroup_float8x8 MMA tiles. The tq_tile
-sweep landed as config-estimator labels (data/flash_tile_labels.jsonl)
-— though the tile axis barely matters next to the missing MMA (~5%
-spread), confirming variance lives in the ALGORITHM axis here.
+compete at prefill. v2 (same day,
+simdgroup_float8x8 MMA for BOTH matmuls, BLOCK_Q=8) is CORRECT
+(9.8e-4) and SLOWER than v1 (0.6-0.7x; 0.2x at D=128): five
+threadgroup barriers per K-chunk, softmax serialized on 8/32 lanes,
+four shared-memory round-trips per chunk (fragments can't be per-row
+rescaled in registers), and 26KB threadgroup arrays killing D=128
+occupancy. THE LESSON: MMA is table stakes — mx sdpa's edge is
+ORCHESTRATION (multi-simdgroup pipelining, register-resident softmax,
+barrier-free chunks). v3 would be a rewrite of the choreography, not
+the math. The tq_tile sweep landed as config-estimator labels
+(data/flash_tile_labels.jsonl) — tile axis ~5% spread: variance lived
+in the algorithm, then the orchestration, never the tuning.
 
 Negative result worth keeping: restructuring the GQA kernel for
 group-shared K/V reads (grid (chunks, KVH), one threadgroup computing
@@ -579,10 +587,175 @@ _int4_gemv = _kernel(
 _int4_gemv_v3 = _kernel(
     "llmopt_int4_gemv_v3", _INT4_GEMV_V3_SRC, ["x", "wq", "sc", "mn"]
 )
+
+_FLASH_PREFILL_V2_SRC = """
+    // Flash prefill v2 (2026-07-13): both matmuls on the MATRIX
+    // hardware — S = Q*K^T and O += P*V via simdgroup_float8x8 MMA
+    // fragments (the v1 autopsy: scalar simd_sum dots lose 3-11x to
+    // mx sdpa's simdgroup_matrix path). One simdgroup per BLOCK_Q=8
+    // query rows; K/V stream in BLOCK_K=32 chunks through threadgroup
+    // memory; softmax bookkeeping (m, l, corr) stays scalar in
+    // threadgroup between the two MMAs. exp2 domain throughout.
+    constexpr uint BQ = 8;
+    constexpr uint BK = 32;
+    uint qtile = threadgroup_position_in_grid.x;
+    uint head = threadgroup_position_in_grid.y;
+    uint lane = thread_position_in_threadgroup.x;   // 0..31
+    uint q0 = qtile * BQ;
+    if (q0 >= (uint)TQLEN) return;
+
+    const device T* qb = q + (head * (uint)TQLEN + q0) * (uint)DIM;
+    const device T* kb = k + head * (uint)TKLEN * (uint)DIM;
+    const device T* vb = v + head * (uint)TKLEN * (uint)DIM;
+
+    threadgroup half Qt[BQ * (uint)DIM];
+    threadgroup half Kt[BK * (uint)DIM];
+    threadgroup half Vt[BK * (uint)DIM];
+    threadgroup float St[BQ * BK];
+    threadgroup half Pt[BQ * BK];
+    threadgroup float accb[BQ * (uint)DIM];
+    threadgroup float pvb[BQ * (uint)DIM];
+    threadgroup float mrow[BQ], lrow[BQ], corr[BQ];
+
+    // stage Q (rows past TQLEN zero-padded) and zero acc
+    for (uint i = lane; i < BQ * (uint)DIM; i += 32) {
+        uint r = i / (uint)DIM;
+        Qt[i] = (q0 + r < (uint)TQLEN)
+                ? (half)((float)qb[i] * scale2[0]) : (half)0.0f;
+        accb[i] = 0.0f;
+    }
+    if (lane < BQ) { mrow[lane] = -INFINITY; lrow[lane] = 0.0f; }
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+
+    // Q fragments, loaded once
+    constexpr uint DF = (uint)DIM / 8;
+    simdgroup_half8x8 Qf[DF];
+    for (uint df = 0; df < DF; df++)
+        simdgroup_load(Qf[df], Qt + df * 8, (uint)DIM);
+
+    int offs = (int)TKLEN - (int)TQLEN;
+    uint qlast = min(q0 + BQ, (uint)TQLEN) - 1;
+    uint hi = CAUSAL ? (uint)min((int)qlast + offs + 1, (int)TKLEN)
+                     : (uint)TKLEN;
+
+    for (uint kstart = 0; kstart < hi; kstart += BK) {
+        uint tile_n = min(BK, hi - kstart);
+        // stage K, V chunk (ragged tail zero-padded)
+        for (uint i = lane; i < BK * (uint)DIM; i += 32) {
+            uint r = i / (uint)DIM;
+            bool inr = (r < tile_n);
+            Kt[i] = inr ? (half)kb[(kstart + r) * (uint)DIM
+                                   + (i % (uint)DIM)] : (half)0.0f;
+            Vt[i] = inr ? (half)vb[(kstart + r) * (uint)DIM
+                                   + (i % (uint)DIM)] : (half)0.0f;
+        }
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+
+        // S(8xBK) = Q(8xD) * K^T(DxBK): MMA over D fragments
+        for (uint kf = 0; kf < BK / 8; kf++) {
+            simdgroup_float8x8 Sf = simdgroup_float8x8(0.0f);
+            for (uint df = 0; df < DF; df++) {
+                simdgroup_half8x8 Kf;
+                // K rows kf*8.., transposed at load
+                simdgroup_load(Kf, Kt + (kf * 8) * (uint)DIM + df * 8,
+                               (uint)DIM, ulong2(0, 0), true);
+                simdgroup_multiply_accumulate(Sf, Qf[df], Kf, Sf);
+            }
+            simdgroup_store(Sf, St + kf * 8, BK);
+        }
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+
+        // scalar softmax bookkeeping: 8 lanes own a row each
+        if (lane < BQ) {
+            uint qi = q0 + lane;
+            float m_new = mrow[lane];
+            for (uint j = 0; j < tile_n; j++) {
+                bool vis = !CAUSAL
+                    || ((int)(kstart + j) <= (int)qi + offs);
+                float s = vis ? St[lane * BK + j] : -INFINITY;
+                St[lane * BK + j] = s;
+                m_new = metal::max(m_new, s);
+            }
+            float c = (m_new == -INFINITY)
+                      ? 1.0f : metal::exp2(mrow[lane] - m_new);
+            float lsum = lrow[lane] * c;
+            for (uint j = 0; j < BK; j++) {
+                float p = (j < tile_n && St[lane * BK + j] > -INFINITY)
+                          ? metal::exp2(St[lane * BK + j] - m_new)
+                          : 0.0f;
+                Pt[lane * BK + j] = (half)p;
+                lsum += p;
+            }
+            mrow[lane] = m_new;
+            lrow[lane] = lsum;
+            corr[lane] = c;
+        }
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+
+        // rescale acc rows by corr (all 32 lanes)
+        for (uint i = lane; i < BQ * (uint)DIM; i += 32)
+            accb[i] *= corr[i / (uint)DIM];
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+
+        // PV(8xD) = P(8xBK) * V(BKxD): MMA, then scalar add into acc
+        for (uint df = 0; df < DF; df++) {
+            simdgroup_float8x8 Of = simdgroup_float8x8(0.0f);
+            for (uint kf = 0; kf < BK / 8; kf++) {
+                simdgroup_half8x8 Pf, Vf;
+                simdgroup_load(Pf, Pt + kf * 8, BK);
+                simdgroup_load(Vf, Vt + (kf * 8) * (uint)DIM + df * 8,
+                               (uint)DIM);
+                simdgroup_multiply_accumulate(Of, Pf, Vf, Of);
+            }
+            simdgroup_store(Of, pvb + df * 8, (uint)DIM);
+        }
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+        for (uint i = lane; i < BQ * (uint)DIM; i += 32)
+            accb[i] += pvb[i];
+        threadgroup_barrier(mem_flags::mem_threadgroup);
+    }
+
+    device T* ob = out + (head * (uint)TQLEN + q0) * (uint)DIM;
+    for (uint i = lane; i < BQ * (uint)DIM; i += 32) {
+        uint r = i / (uint)DIM;
+        if (q0 + r < (uint)TQLEN)
+            ob[i] = (T)(accb[i] / lrow[r]);
+    }
+"""
+
 _flash_prefill = _kernel(
     "llmopt_flash_prefill", _FLASH_PREFILL_SRC,
     ["q", "k", "v", "scale2"]
 )
+_flash_prefill_v2 = mx.fast.metal_kernel(
+    name="llmopt_flash_prefill_v2",
+    input_names=["q", "k", "v", "scale2"],
+    output_names=["out"],
+    header="#include <metal_simdgroup_matrix>\n"
+           "#include <metal_stdlib>\nusing namespace metal;\n",
+    source=_FLASH_PREFILL_V2_SRC,
+)
+
+
+def flash_prefill_v2(q: mx.array, k: mx.array, v: mx.array,
+                     causal: bool = True) -> mx.array:
+    """MMA-tiled prefill: q/k/v [H, T, DIM] -> [H, T, DIM]. BLOCK_Q=8
+    rows per simdgroup, both matmuls on simdgroup_float8x8."""
+    h, tq, dim = q.shape
+    tk = k.shape[1]
+    assert dim % 8 == 0
+    scale2 = mx.array([_LOG2E / dim**0.5], dtype=mx.float32)
+    qtiles = (tq + 7) // 8
+    (out,) = _flash_prefill_v2(
+        inputs=[q, k, v, scale2],
+        template=[("T", q.dtype), ("DIM", dim), ("TQLEN", tq),
+                  ("TKLEN", tk), ("CAUSAL", bool(causal))],
+        grid=(qtiles * 32, h, 1),
+        threadgroup=(32, 1, 1),
+        output_shapes=[(h, tq, dim)],
+        output_dtypes=[q.dtype],
+    )
+    return out
 
 
 def flash_prefill(q: mx.array, k: mx.array, v: mx.array,
