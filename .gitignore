@@ -8,3 +8,4 @@ build/
 # local work notebooks (Artin's scratch space — never committed)
 notebooks/
 notes/
+checkpoints/pred_syndromes_5b.pt
