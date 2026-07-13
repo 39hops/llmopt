@@ -6,6 +6,51 @@ sets, sympy-oracle-verified. Written as the handoff/publication
 draft. Day five pointed the same chassis at quantum circuits (the
 ZX/T-count chapter, near the end).*
 
+## Contents
+
+- [The one-paragraph version](#the-one-paragraph-version)
+- [The racing arc (all: same held-out seeds, budgets 25/50/100/200, n=15/cell)](#the-racing-arc-all-same-held-out-seeds-budgets-2550100200-n15cell)
+- [360/360 — THE BENCHMARK IS SOLVED](#360360--the-benchmark-is-solved)
+- [THE RECORD: 356/360 (98.9%) — the full stack](#the-record-356360-989--the-full-stack)
+- [The hybrid record: 349/360 (96.9%), honestly decomposed](#the-hybrid-record-349360-969-honestly-decomposed)
+- [The autopsy ladder (failure census → operator rules, one rung each)](#the-autopsy-ladder-failure-census--operator-rules-one-rung-each)
+- [Best-first beats the beam (Dijkstra's question, finally askable)](#best-first-beats-the-beam-dijkstras-question-finally-askable)
+- [The component taxonomy (what actually carries what)](#the-component-taxonomy-what-actually-carries-what)
+- [The limit-of-self-teaching answer (two mechanisms)](#the-limit-of-self-teaching-answer-two-mechanisms)
+- [Engineering findings (each measured, each guarded in code)](#engineering-findings-each-measured-each-guarded-in-code)
+- [The experiment ledger: wins, nulls, and lessons (days 3-4, chronological)](#the-experiment-ledger-wins-nulls-and-lessons-days-3-4-chronological)
+- [T-count engine, day one (rungs 0-2, ZX/pyzx)](#t-count-engine-day-one-rungs-0-2-zxpyzx)
+- [The magic estimator (2026-07-09): continuous hardness, measured](#the-magic-estimator-2026-07-09-continuous-hardness-measured)
+- [Middle-layer value probe (2026-07-09, global-workspace paper test)](#middle-layer-value-probe-2026-07-09-global-workspace-paper-test)
+- [Frontier rule gaps -> two rules (2026-07-10, the loop's second lap)](#frontier-rule-gaps---two-rules-2026-07-10-the-loops-second-lap)
+- [Entropy-adaptive speculative decoding (2026-07-10, 3080): null with a price tag](#entropy-adaptive-speculative-decoding-2026-07-10-3080-null-with-a-price-tag)
+- [Node-cost round 2 (2026-07-10): kill heurisch, spend the savings on width](#node-cost-round-2-2026-07-10-kill-heurisch-spend-the-savings-on-width)
+- [propose_k=4: decisive null, two mechanisms (2026-07-10)](#propose_k4-decisive-null-two-mechanisms-2026-07-10)
+- [Syndrome policy v2 + DAgger round 2 (2026-07-10 night): the brain race](#syndrome-policy-v2--dagger-round-2-2026-07-10-night-the-brain-race)
+- [The brain races, concluded: policy ADOPTED (2026-07-10 night)](#the-brain-races-concluded-policy-adopted-2026-07-10-night)
+- [The router: strict dominance, adopted ("verified speed is intelligence")](#the-router-strict-dominance-adopted-verified-speed-is-intelligence)
+- [L6/L7 and the engine-vs-sympy probe (2026-07-11)](#l6l7-and-the-engine-vs-sympy-probe-2026-07-11)
+- [The L6 evening: engine 36 -> 59/60, PASSING sympy (2026-07-11)](#the-l6-evening-engine-36---5960-passing-sympy-2026-07-11)
+- [L5 CLOSED at 100%; L7 56/60; the orbital pattern generalizes (2026-07-11)](#l5-closed-at-100-l7-5660-the-orbital-pattern-generalizes-2026-07-11)
+- [The regret probe: trace fate is legible mid-flight (2026-07-11)](#the-regret-probe-trace-fate-is-legible-mid-flight-2026-07-11)
+- [L8: the frontier reopened from the residue (2026-07-11)](#l8-the-frontier-reopened-from-the-residue-2026-07-11)
+- [Three-lane 4-bit quantization race: allocation of accuracy (2026-07-11)](#three-lane-4-bit-quantization-race-allocation-of-accuracy-2026-07-11)
+- [Fused int4 dequant-GEMV Metal kernel (2026-07-11)](#fused-int4-dequant-gemv-metal-kernel-2026-07-11)
+- [Engine-level regret: the thesis pays at 400:1 unit economics (2026-07-12)](#engine-level-regret-the-thesis-pays-at-4001-unit-economics-2026-07-12)
+- [Dispatcher v4: NO-ADOPT (2026-07-12)](#dispatcher-v4-no-adopt-2026-07-12)
+- [Step-tokens: the LLM's unit of generation becomes a verified rewrite (2026-07-12)](#step-tokens-the-llms-unit-of-generation-becomes-a-verified-rewrite-2026-07-12)
+- [Expert iteration round 1: transformations learned, chaining not yet (2026-07-12)](#expert-iteration-round-1-transformations-learned-chaining-not-yet-2026-07-12)
+- [Expert iteration rounds 2/3: the reverse-engine diet pays (2026-07-12)](#expert-iteration-rounds-23-the-reverse-engine-diet-pays-2026-07-12)
+- [Expert iteration round 4: the balance overcorrected (2026-07-13)](#expert-iteration-round-4-the-balance-overcorrected-2026-07-13)
+- [Variational ground-state engine, rung 1: the referee is a theorem (2026-07-12)](#variational-ground-state-engine-rung-1-the-referee-is-a-theorem-2026-07-12)
+- [Ansatz-structure search, rung 2: greedy loses to hand design (2026-07-12)](#ansatz-structure-search-rung-2-greedy-loses-to-hand-design-2026-07-12)
+- [ODE engine, rung 1: an engine made of engines (2026-07-12)](#ode-engine-rung-1-an-engine-made-of-engines-2026-07-12)
+- [Fused cross-entropy (MLX, Liger-style): the memory wall flips the sign (2026-07-13)](#fused-cross-entropy-mlx-liger-style-the-memory-wall-flips-the-sign-2026-07-13)
+- [Population training: batching pays only where slack lives (2026-07-13)](#population-training-batching-pays-only-where-slack-lives-2026-07-13)
+- [Origin story, closed](#origin-story-closed)
+- [Future work (spec'd or banked, in priority order)](#future-work-specd-or-banked-in-priority-order)
+- [Reproduction](#reproduction)
+
 ## The one-paragraph version
 
 A search over sympy rewrite rules — beam first, best-first later —
