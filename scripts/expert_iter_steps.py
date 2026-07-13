@@ -365,7 +365,7 @@ def phase_train(epochs: int, lr: float,
                 and r.get("source") != "skip")
     hops = [r for r in rows if _one_hop(r)]
     rest = [r for r in rows if not _one_hop(r)]
-    CAP = 150
+    CAP = 400   # round-4 ROLLBACK: 150 unlearned finishing (one-shot 19->0)
     if len(hops) > CAP:
         import random as _r
         _r.Random(0).shuffle(hops)

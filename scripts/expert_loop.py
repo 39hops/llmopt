@@ -136,7 +136,7 @@ def run_round(round_no: int) -> str:
     if sb["validity"] < 1.0:
         return f"HALT validity {sb['validity']:.1f}%"
     cand = Path(f"checkpoints/step_lora_r{round_no}.pt")
-    phase_train(epochs=3, lr=2e-4, out=cand)
+    phase_train(epochs=3, lr=1e-4, out=cand)  # 2e-4 diverged on think targets (measured)
     del model
     tok, model = load(str(cand))
     gate_sb = evaluate(tok, model, levels=tuple(range(2, F + 1)),
