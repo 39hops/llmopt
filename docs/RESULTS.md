@@ -1254,6 +1254,21 @@ chaining), so the loop's next lever stays data balance. Manual
 supervised loop round deferred pending hardware window; the
 autonomous loop remains un-armed until it runs (spec requirement).
 
+## Expert iteration round 4: the balance overcorrected (2026-07-13)
+
+One-hop cap (150 vs 1423 chain rows) + magic-sized skips, healthy
+training (0.41->0.17) — and a ROLLBACK verdict: one-shot 19 -> 0
+(the capped rows were the finishing skill), steps 12 -> 7, and the
+new chain-required metric read ZERO. Lessons: (1) finishing is a
+COMPONENT of chaining, not its competitor — capping it taught
+neither; (2) train/eval shape mismatch — reverse chains teach
+sum-split choreography that cannot fire on the L2/L3 eval band's
+non-sum integrands; (3) manual runs overwrote the promoted adapter
+(rounds-2/3 best recoverable from corpus @ 38c8c46 + lr 1e-4) —
+the loop's per-round checkpoints exist for exactly this. Round 5:
+loosen cap (~400), raise eval band to L3-L5, reverse-chain the low
+levels so the choreography applies where examined.
+
 ## Variational ground-state engine, rung 1: the referee is a theorem (2026-07-12)
 
 The physics rung (methods not molecules: model Hamiltonians only).
