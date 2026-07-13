@@ -1338,6 +1338,25 @@ integrals (L6+-grade) — that's rung 2, where the L8 subcontractor
 muscle differentiates. Then step-chains: the reverse-engine trick
 applies verbatim (solutions drawn first).
 
+## Fused cross-entropy (MLX, Liger-style): the memory wall flips the sign (2026-07-13)
+
+`train/fused_ce.py`: chunked CE that never materializes the (N, 151936)
+logits — custom VJP recomputes each chunk's softmax and scatters the
+-1 with put_along_axis (no dense onehot). Bench at Qwen-0.5B head
+shapes (`scripts/bench_fused_ce.py`), tests pin loss+grad parity vs
+naive at four chunk sizes. Verdict at c=1024: **16k tokens 13.5GB vs
+38GB peak AND 3203 vs 2008 tok/s — fused wins BOTH axes** (naive
+thrashes unified memory past ~20GB, so the 2x-FLOPs recompute tax is
+repaid in avoided traffic); 32k runs at 3183 tok/s where naive cannot
+run at all; at 2k naive is properly faster (4109 vs 3116 tok/s — use
+naive below ~8k). Two scars, both measured: (1) mx.eval INSIDE an
+mx.custom_function under a grad transform forces the half-built outer
+graph per call — 41s/52GB, worse than naive on both axes, OOM-killed;
+removing it: 3.1s. (2) the v1 vjp built a dense (chunk, V) onehot —
+the very tensor the module exists to avoid — 12.4GB -> 8.5GB gone
+with the scatter + fp16 grad matmuls. Unblocks population training
+(K adapters would be K x unaffordable logits unfused).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
