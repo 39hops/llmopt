@@ -1276,6 +1276,24 @@ criticality+paramagnet, hardware-efficient owns the ordered phase)
 (best arm): PASS. Rungs 2+: ansatz-structure search, Heisenberg,
 step-chain LLM proposals.
 
+## Ansatz-structure search, rung 2: greedy loses to hand design (2026-07-12)
+
+Greedy beam (width 3, depth 6, 120-iter inner opt) over a token
+vocabulary spanning both rung-1 families. BAR FAIL: close but never
+beats the best hand arm at equal params — h=0.5: 0.053% vs 0.031%
+(33p vs 40p), h=2.0: 0.039% vs 0.030% (15p vs 6p), and at
+criticality it loses badly (1.518% vs hva3's 0.694%): greedy's
+first token locks a hardware-efficient prefix it can never back out
+of, and the inner budget (120 iters, single seed) under-serves
+HVA-like candidates that need the exact alternating pattern. The
+consolation is the pre-registered scientific bet, PARTIALLY
+confirmed: the winning structures DO read the phase — h=0.5's
+winner opens with rotation blocks (ry...), h=2.0's is
+Hamiltonian-block dominated (zz/xm) — the search re-derives the
+family boundary qualitatively even while losing quantitatively.
+Rung 2b (banked): non-greedy search (restarts/evolutionary),
+fair inner budgets, param-count penalty in the score.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
