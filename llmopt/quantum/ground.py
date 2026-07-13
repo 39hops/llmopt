@@ -96,6 +96,62 @@ def param_shift_grad(params: np.ndarray, H: np.ndarray, n: int,
     return g
 
 
+def hva_state(params: np.ndarray, n: int) -> np.ndarray:
+    """Hamiltonian-variational ansatz (the plateau-breaker measured
+    2026-07-12: hardware-efficient RY+CZ stalls ~1% at TFIM
+    criticality regardless of depth or restarts — the ansatz must
+    carry the HAMILTONIAN'S structure). Layers alternate
+    exp(-i a * H_zz) (diagonal phases) and exp(-i b * H_x) (RX on
+    every qubit), starting from |+>^n. params: (layers, 2)."""
+    th = params.reshape(-1, 2)
+    state = np.full(2**n, 2.0 ** (-n / 2), dtype=np.complex128)
+    idx = np.arange(2**n)
+    bits = (idx[:, None] >> (n - 1 - np.arange(n))) & 1
+    z = 1.0 - 2.0 * bits            # (+1/-1) per qubit
+    zz = (z[:, :-1] * z[:, 1:]).sum(axis=1)   # sum_i z_i z_{i+1}
+    for a, b in th:
+        state = state * np.exp(1j * a * zz)   # exp(-i a * (-ZZ sum))
+        c, s = np.cos(b), np.sin(b)
+        for i in range(n):
+            st = state.reshape(2**i, 2, 2 ** (n - i - 1))
+            out = np.empty_like(st)
+            out[:, 0, :] = c * st[:, 0, :] + 1j * s * st[:, 1, :]
+            out[:, 1, :] = 1j * s * st[:, 0, :] + c * st[:, 1, :]
+            state = out.reshape(-1)
+    return state
+
+
+def hva_energy(params: np.ndarray, H: np.ndarray, n: int) -> float:
+    psi = hva_state(params, n)
+    return float(np.real(np.conj(psi) @ H @ psi))
+
+
+def hva_optimize(H: np.ndarray, n: int, layers: int, iters: int = 300,
+                 lr: float = 0.05, seed: int = 0) -> float:
+    """Adam on central finite differences (generators are Pauli SUMS,
+    so the 2-point shift rule doesn't apply)."""
+    rng = np.random.default_rng(seed)
+    params = rng.normal(0, 0.1, layers * 2)
+    m = np.zeros_like(params)
+    v = np.zeros_like(params)
+    best = np.inf
+    for t in range(1, iters + 1):
+        g = np.zeros_like(params)
+        for k in range(len(params)):
+            p = params.copy()
+            p[k] += 1e-4
+            ep = hva_energy(p, H, n)
+            p[k] -= 2e-4
+            em = hva_energy(p, H, n)
+            g[k] = (ep - em) / 2e-4
+        m = 0.9 * m + 0.1 * g
+        v = 0.999 * v + 0.001 * g * g
+        params -= lr * (m / (1 - 0.9**t)) / (
+            np.sqrt(v / (1 - 0.999**t)) + 1e-8)
+        best = min(best, hva_energy(params, H, n))
+    return best
+
+
 def optimize(H: np.ndarray, n: int, layers: int, iters: int = 300,
              lr: float = 0.1, seed: int = 0) -> tuple[float, np.ndarray]:
     """Adam on parameter-shift gradients. Returns (best E, params)."""

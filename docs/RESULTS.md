@@ -1237,6 +1237,28 @@ round 2's diet (multi-step chains) is the lever. (The mask stays
 in-tree: it targets BASE-model prose, the failure mode the adapter
 graduated from.)
 
+## Variational ground-state engine, rung 1: the referee is a theorem (2026-07-12)
+
+The physics rung (methods not molecules: model Hamiltonians only).
+TFIM n=10, exact-diagonalization oracle, statevector ansatze,
+parameter-shift/finite-diff Adam. The variational principle IS the
+verifier — no state can score below the true E0, soundness by
+theorem rather than by code. Honest arc, all recorded: the
+hardware-efficient ansatz (RY+CZ ring) FAILED the pre-registered
+bar at the critical point h=1.0 (1.314% vs <1%), and the failure is
+structural — depth (8 layers, 80 params: 1.02%) and restarts (4
+seeds: 1.05-1.11%) both saturate; the ansatz family plateaus where
+entanglement peaks. The Hamiltonian-variational ansatz (layers
+built from H's own ZZ/X terms) breaks it: **0.69% at criticality
+with 3 layers and SIX parameters** — structure beats scale.
+Full table (relative error): h=0.5: product 0.24%, l4 0.03%, hva
+7.94% (!); h=1.0: 3.87% / 1.31% / **0.69%**; h=2.0: 5.39% / 0.30%
+/ 0.03%. The two ansatze are phase-complementary (hva owns
+criticality+paramagnet, hardware-efficient owns the ordered phase)
+— a routing surface with real variance, for once. Bar as amended
+(best arm): PASS. Rungs 2+: ansatz-structure search, Heisenberg,
+step-chain LLM proposals.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
