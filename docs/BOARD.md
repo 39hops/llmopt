@@ -8,17 +8,16 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Status | Pointer |
 |---|---|---|
-| Step-level expert iteration | round 1 racing on 3080; loop driver built, manual round then arm autonomy | specs/2026-07-12-step-expert-iteration-design.md, scripts/expert_loop.py, LOOP-LOG.md |
-| Grammar-constrained decoding | conditional GO (fires if round 1 confirms format damage) | RESULTS "Step-tokens"; amendment to bench_step_tokens.sample |
-| Macro-distillation skip-pairs | in corpus (95 pairs), rides next retrain | expert_iter_steps.phase_skips |
+| Step-level expert iteration | rounds 1-3 done (one-shot 19/30, steps 12/30, validity 1.0%); NEXT: magic-adaptive skip granularity + round 4 (data balance, chain-required eval) + supervised loop round to arm autonomy | specs + scripts/expert_loop.py + LOOP-LOG.md |
+| Magic-adaptive step granularity | GO (Artin: "predict longer tokens with magic") — estimator sizes skips in data, magic score joins Hints at inference; folds estimator judge-slot + skips + latent-anchors | RESULTS "rounds 2/3"; estimator v7 |
+| ODE engine | rung 1 shipped: 75/75 parity with dsolve, cc2 algebra wins wall; rung 2 = hard-integrating-factor families | scripts/bench_ode_engine.py |
+| VGE (quantum ground states) | rung 1 shipped (HVA 0.69% @ 6 params); structure search CLOSED (2 fails, phase-reading confirmed qualitatively) | llmopt/quantum/ground.py |
 
 ## BANKED (awaiting GO or a prerequisite)
 
 | Thread | Waiting on | Pointer |
 |---|---|---|
 | Fused-quotient residue (L8's last 3) | rule synthesis design; the step-model may reach it first | RESULTS "L8 autopsy" |
-| Derivation-expanded chains | round-3 candidate: verbalize i_linear_basis's INTERNAL derivation (ansatz -> coefficient system -> answer) so one-ply solves teach the HOW, not input->output; the LLM sees how the engine derived it | expert_iter round-1 autopsy |
-| Syndrome-conditioned prompting | round-3 candidate: prepend the rule-fire syndrome as text hints to the step prompt — the LLM gets the engine's sensory organs (quantum-magic-for-the-LLM, Artin's ask) | RIFF-LEDGER |
 | LLM rule synthesis (heurisch-as-teacher) | frontier targets exist now | RIFF-LEDGER |
 | Latent-between-anchors (COCONUT-shaped) | step-model maturity | RIFF-LEDGER |
 | Temporal-pincer verification | backward-LM training run | memory + RIFF-LEDGER |
@@ -35,6 +34,11 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Verdict |
 |---|---|
+| Derivation-expanded chains + syndrome prompting | SHIPPED into rounds 2/3 (Think + Hints fields) |
+| Reverse engine | SHIPPED — answer-side chains (492), the corpus factory's decompression stroke |
+| Grammar-constrained decoding | NULL for the adapter (token-identical rerun; misses are semantic); mask kept for base-model prose |
+| Ansatz-structure search (VGE rung 2/2b) | 2 fails vs hand design; evolution reinvented HVA alternation; phase-reading confirmed qualitatively |
+| Token-level expert-iter round 1 | superseded by rounds 2/3 (reverse-engine diet) |
 | Token-level regret | NULL — probe real (AUC 0.914), nothing to recover at ~25-tok traces |
 | Config estimator (int4 GEMV) | NULL — 6-config space flat; revisit at tile autotuning |
 | Dispatcher v4 | NO-ADOPT — v3 112 v 110; arm spread collapsed to 110-112/120 |
