@@ -1450,6 +1450,27 @@ feature vector), or domains where the oracle costs seconds
 `scripts/bench_pred_syndromes.py`, labels in
 `data/pred_syndrome_labels.jsonl` (4573 states, streamed forks).
 
+**Round 3 (same day): the revive clause fired immediately — PASS.**
+Artin's derivability point ("the rules are defined; firing is
+derived, not statistical") reframed the task from induction to
+reading comprehension: swap the 20 structural features for the
+0.5B's own mean-pooled embedding of the expression string (frozen
+encoder, same MLP head, same labels/split/bar). **Exact-set 87.7%,
+micro-F1 0.975** — and every structural-round pathology reversed:
+i_apart 0.50/0.02 -> **0.98/0.98** (factorability is readable in
+embedding space), hard roots now BEAT chain states (88.4% vs 86.8%
+— the wrong-way gradient vanished), and even the
+execution-dependent ansatz rules predict at 0.93/0.90 (the net
+reads whether the system will solve without solving it — technique
+intuition). Amended verdict: rules are their own features ONLY
+under a blind encoding. Cost: ~27ms/state batched on MPS vs ~200ms
+oracle forks (~7x, and GPU-side); the endgame is a hint head on the
+step model itself (it already embeds every expression it's
+prompted with — the Hints line becomes free). Adoption gate before
+it touches the loop: A/B predicted-vs-oracle-vs-none hints in real
+solve_chain prompting, scored on step validity.
+`checkpoints/pred_syndromes_emb.pt`.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

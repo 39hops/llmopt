@@ -30,6 +30,16 @@ misses are the RARE rules (i_apart R 0.25, i_sqrt_basis R 0.36, 11-16
 test rows each) — starved of examples, not structurally hard.
 label-gen widens with fresh generator roots across levels (the
 widen-the-generator-space rule, applied to labels).
+
+Round 2 (widened, 4573 states): FAIL WORSE — 41.9% / 0.836; i_apart
+recall 0.02 at 3.4x data; hard roots 32.1% vs chain states 55.4%.
+Structural features can't see semantics at any dataset size.
+
+Round 3 (train-emb, Artin's derivability re-aim): PASS — swap the 20
+structural features for the 0.5B's mean-pooled embedding of the
+expression string; same labels/split/bar. Exact 87.7%, micro-F1
+0.975; i_apart 0.98/0.98; hard roots (88.4%) now BEAT chain states
+(86.8%). Rules are their own features only under a blind encoding.
 """
 from __future__ import annotations
 
@@ -238,6 +248,68 @@ def phase_train() -> None:
           f"{'PASS' if exact >= 0.8 and micro_f1 >= 0.9 else 'FAIL'}")
 
 
+def phase_train_emb() -> None:
+    """Round 3: frozen 0.5B embeddings as features (same bar/split)."""
+    import hashlib
+    import torch
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    rows = [json.loads(l) for l in LABELS.read_text().splitlines()]
+    dev = ("mps" if torch.backends.mps.is_available()
+           else "cuda" if torch.cuda.is_available() else "cpu")
+    tok = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-0.5B-Instruct")
+    enc = AutoModelForCausalLM.from_pretrained(
+        "Qwen/Qwen2.5-0.5B-Instruct",
+        dtype=torch.float16).to(dev).eval()
+    embs = []
+    with torch.no_grad():
+        for i in range(0, len(rows), 32):
+            b = tok([r["s"] for r in rows[i:i + 32]],
+                    return_tensors="pt", padding=True,
+                    truncation=True, max_length=256).to(dev)
+            h = enc.model(**b).last_hidden_state
+            m = b["attention_mask"].unsqueeze(-1).float()
+            embs.append(((h * m).sum(1) / m.sum(1)).float().cpu())
+    X = torch.cat(embs)
+    vocab = sorted({rn for r in rows for rn in r["fires"]})
+    vi = {r: i for i, r in enumerate(vocab)}
+    Y = torch.zeros(len(rows), len(vocab))
+    for i, r in enumerate(rows):
+        for rn in r["fires"]:
+            Y[i, vi[rn]] = 1.0
+    mu, sd = X.mean(0), X.std(0).clamp(min=1e-6)
+    X = (X - mu) / sd
+    te = torch.tensor(
+        [int(hashlib.sha1(r["s"].encode()).hexdigest(), 16) % 5 == 0
+         for r in rows])
+    torch.manual_seed(0)
+    net = torch.nn.Sequential(
+        torch.nn.Linear(X.shape[1], 96), torch.nn.ReLU(),
+        torch.nn.Linear(96, 96), torch.nn.ReLU(),
+        torch.nn.Linear(96, len(vocab)))
+    opt = torch.optim.Adam(net.parameters(), lr=1e-3)
+    lossf = torch.nn.BCEWithLogitsLoss()
+    for _ in range(300):
+        opt.zero_grad()
+        loss = lossf(net(X[~te]), Y[~te])
+        loss.backward()
+        opt.step()
+    net.eval()
+    with torch.no_grad():
+        pred = (net(X[te]) > 0).float()
+    exact = (pred == Y[te]).all(1).float().mean().item()
+    tp = (pred * Y[te]).sum().item()
+    p = tp / max(pred.sum().item(), 1)
+    r = tp / max(Y[te].sum().item(), 1)
+    f1 = 2 * p * r / max(p + r, 1e-9)
+    print(f"EMB: exact {100 * exact:.1f}%  micro-F1 {f1:.3f}  "
+          f"bar -> {'PASS' if exact >= 0.8 and f1 >= 0.9 else 'FAIL'}")
+    torch.save({"state_dict": net.state_dict(), "mu": mu, "sd": sd,
+                "vocab": vocab,
+                "encoder": "Qwen/Qwen2.5-0.5B-Instruct mean-pool"},
+               Path("checkpoints/pred_syndromes_emb.pt"))
+
+
 if __name__ == "__main__":
     {"label": phase_label, "label-gen": phase_label_gen,
-     "train": phase_train}[sys.argv[1]]()
+     "train": phase_train, "train-emb": phase_train_emb}[sys.argv[1]]()
