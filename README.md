@@ -4,7 +4,30 @@ LLM inference + training optimization lab. Small, readable implementations of th
 
 ## Highlights
 
-**The derivation engine, current state (2026-07-11)** — oracle-verified
+**The lab, current state (2026-07-13)** — three threads on top of the
+engine below. (1) **Step-level expert iteration** (the founding goal,
+LIVE): the 0.5B emits one *verified rewrite* per call — its unit of
+generation is an oracle-checked derivation step — trained on
+engine-replay + on-policy chains with a promote/rollback gate
+(`scripts/expert_loop.py`, ledger in `docs/LOOP-LOG.md`; rounds 2/3
+one-shot 13→19/30, step validity 0.5→1.0%; round 4's data-balance
+overcorrection rolled back — honestly logged). THE ARENA
+(`scripts/arena.py`) streams engine-vs-model showmatches with oracle
+verdicts; its finding drove the current data round: the model's
+misses are *arithmetic* (signs, unreduced chain-rule constants), not
+structural. (2) **Physics rungs, zero chemistry**: a variational
+ground-state engine (`llmopt/quantum/ground.py`, TFIM + exact-diag
+oracle; HVA hits 0.69% error at criticality with 6 params, beating
+depth-4 hardware-efficient ansatze) and an ODE engine that
+subcontracts its integrals to the house integral engine — 75/75
+parity with `sympy.dsolve`, algebra-path wins on constant-coefficient
+2nd order. (3) **Mac/MLX training kernels**: Liger-style fused
+cross-entropy (`train/fused_ce.py`) — at 16k tokens 13.5GB vs 38GB
+peak AND 1.6× faster (the memory wall flips the sign); population
+LoRA training (`train/population.py`) recorded as an honest null at
+0.5B shapes (MLX saturates at one adapter's batch).
+
+**The derivation engine, core result (2026-07-11)** — oracle-verified
 integration search, every claim raced out-of-sample (`docs/RESULTS.md`
 for the measurement-by-measurement history): same-seed L5
 **42% → 95.6%** (autopsy-derived rules + node-cost work: killing a
@@ -99,17 +122,19 @@ Task arithmetic on LoRA task vectors (`scripts/task_arithmetic.py`, `scripts/tas
 
 | Subpackage | Implemented | Roadmap |
 |---|---|---|
+| `search/` | the derivation engine: rule moves (diff/int/limit families incl. `i_linear_basis` meet-in-the-middle, `i_cyclic`, euler rewrite), beam + best-first w/ transposition table, HCE + NNUE evals, markov bigram prior, syndrome policy (production brain), learned dispatcher router, magic dead-state pruning (Risch-certified), sampled edge verification — 356/360 record, L5 100%, L8 37/40 | L9 / adversarial generation |
+| `quantum/` | variational ground-state engine: TFIM builder, exact-diag oracle, RY+CZ and HVA ansatze, param-shift grads, token-list structure executor; T-count/ZX engine (pyzx rungs 0-6) | syndrome-policy port to ZX |
 | `decoding/` | prompt-lookup, speculative (greedy + rejection sampling), backend-agnostic lookup loop (pluggable draft source), REST-style retrieval datastore (suffix index over past generations, longest-suffix match + next-token vote), sampler pipeline (top-k/p, min-p, DRY, mirostat v2), regex-constrained FSM decoding, tree verify (multi-candidate lookup drafts, tree attention), Medusa heads (Medusa-1 training + tree-verified decode), chunked prefill + continuous batching engine, self-speculative / LayerSkip (early-exit draft, full-model verify), sampler-aware speculative verify (exact filtered-target distribution), EAGLE-2 (feature-level draft head, confidence-ranked dynamic trees), lookahead (Jacobi fixed-point), quality decoders (verify by target score: top-k / logprob margin), scheduler (priority admission, preemption w/ recompute-on-resume, prefill/decode disaggregation) | — |
 | `backends/` | `DecodeBackend` protocol, torch StaticCache + CUDA graphs, MLX (Apple silicon) | — |
 | `cache/` | radix prefix KV tree w/ LRU + mid-edge splitting, prefix reuse wired into the batching engine (prefill skips cached prefixes, token-identical output; Qwen2.5-3B, ~3.4k-token shared prefix: 13.8x faster TTFT on warm requests — `scripts/bench_prefix_reuse.py`), paged blocks (ref-counted allocator, block tables, fork + copy-on-write), KV int8/int4 quant (quantized paged store), eviction policies (sliding window, attention sinks, H2O, SnapKV) | — |
 | `quantize/` | per-layer ΔKL sensitivity (fake-quant), min-memory bit allocator, Pareto sweep, GPTQ (Hessian error compensation), AWQ (activation-aware scale search), HQQ (lp-robust zero-point, calibration-free), magnitude + 2:4 pruning, low-rank SVD | — |
-| `train/` | batched ref-logprob precompute + disk cache, LoRA + DoRA (wrap/freeze/merge), sequence packing (FFD bins, block-diag masks, position reset), preference losses (DPO/IPO/KTO/ORPO/SimPO/GRPO) | — |
+| `train/` | batched ref-logprob precompute + disk cache, LoRA + DoRA (wrap/freeze/merge), sequence packing (FFD bins, block-diag masks, position reset), preference losses (DPO/IPO/KTO/ORPO/SimPO/GRPO), fused chunked cross-entropy (MLX, never materializes the 152k-vocab logits), population LoRA (K adapters/one frozen base — honest null at 0.5B, banks for tiny nets) | — |
 | `eval/` | perplexity, tokens/sec bench, pass@k, bootstrap CIs, equivalence harness, roofline / MFU / arithmetic-intensity model + per-op attribution (analytic FLOPs/bytes per op, memory- vs compute-bound, torch.profiler complement), calibration (ECE), TTFT/TPOT split | — |
 | `context/` | RoPE scaling (PI/NTK/YaRN, in-place HF patch), LLMLingua-style prompt compression (self-information scoring, protected spans), RULER-style synthetic long-context eval (NIAH single/multi-key, variable tracking, effective-context-length), gist tokens (bottleneck attention mask, KV compression to gist slots, training step) | — (attention sinks live in `cache/`) |
 | `internals/` | logit lens (per-layer KL to final), attention entropy + mean attended distance, activation stats (rms/kurtosis/outliers), linear CKA layer-similarity | — |
-| `kernels/` | Metal (MLX): fused RMSNorm (1.7x vs unfused), fused SwiGLU (1.6x), RoPE, single-query flash-style attention (online softmax — educational; loses to full-GPU GEMV, honestly measured); Triton (CUDA): same four ops (RMSNorm 3.7x vs unfused, 1.5x vs `torch.nn.RMSNorm`; SwiGLU 2.7x; split-K decode attention w/ fused merge, 1.1x vs naive), paged attention over `cache/paged.py` block tables (GQA group shares each K/V read, split-K + merge; 2.7x vs gather-then-SDPA, attends fork/COW-shared blocks in place) + full tiled flash attention (fp16 tensor-core dot, mask-free interior tiles, exp2 softmax, autotuned — 1.4x vs torch fused SDPA, causal, cross-length) | — |
+| `kernels/` | Metal (MLX): fused RMSNorm (1.7x vs unfused), fused SwiGLU (1.6x), RoPE, split-K decode attention (single-head + GQA, exp2-domain softmax — ties mx.fast SDPA at T=32k), fused int4 dequant-GEMV (1.11x at D=4096, awq-foldable packing), flash prefill v1/v2 (honest losses, autopsied: v2's simdgroup MMA is table stakes, orchestration is the moat), single-query flash-style attention (online softmax — educational; loses to full-GPU GEMV, honestly measured); Triton (CUDA): same four ops (RMSNorm 3.7x vs unfused, 1.5x vs `torch.nn.RMSNorm`; SwiGLU 2.7x; split-K decode attention w/ fused merge, 1.1x vs naive), paged attention over `cache/paged.py` block tables (GQA group shares each K/V read, split-K + merge; 2.7x vs gather-then-SDPA, attends fork/COW-shared blocks in place) + full tiled flash attention (fp16 tensor-core dot, mask-free interior tiles, exp2 softmax, autotuned — 1.4x vs torch fused SDPA, causal, cross-length) | — |
 | `moe/` | top-k gated MoE (SwiGLU experts), Switch load-balance + router z-loss, capacity/token-drop, LRU expert offload cache | — |
-| `mathgen/` | sympy-verified generators: calculus (7 kinds incl. traced limits), linear algebra (planted eigenvalues via P·D·P⁻¹, verify-not-compare inverses), ODEs (checkodesol-scored, both ICs enforced); contamination-proof splits. LoRA'd Qwen2.5-0.5B: 15.7% → 65.7% symbolic accuracy on unseen problems (differentiation 94-100%, integration 71-97%); step traces lift limits only ~10→16% — the factor step is itself simulation, scaffolding relocates the wall, doesn't remove it | expert iteration (per-step verify) |
+| `mathgen/` | sympy-verified generators: calculus (7 kinds incl. traced limits), linear algebra (planted eigenvalues via P·D·P⁻¹, verify-not-compare inverses), ODEs (checkodesol-scored, both ICs enforced); contamination-proof splits. LoRA'd Qwen2.5-0.5B: 15.7% → 65.7% symbolic accuracy on unseen problems (differentiation 94-100%, integration 71-97%); step traces lift limits only ~10→16% — the factor step is itself simulation, scaffolding relocates the wall, doesn't remove it | expert iteration (per-step verify) — LIVE, `scripts/expert_loop.py` |
 | `codegen/` | compiler-as-oracle (MSVC + LLVM: diagnostics, optimized asm, byte encodings, mangled symbols, program output) and a 7-rung capability ladder, every rung toolchain-scored (predicted asm is assembled, mangled names demangled). 0.5B cold→tuned: encode 0→40%, decode 0→36%, diagnose 76→100%, output 0→8%, O2-asm 0→0% — small models learn *mappings*, resist *simulation* | mangle/lifetime rung benchmark |
 | `distill/` | logit-KD (temperature-scaled forward KL) + draft-model distillation (accept-rate lift verified end-to-end), sequence-KD, on-policy GKD (generalized JSD) | — |
 
