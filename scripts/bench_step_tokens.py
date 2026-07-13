@@ -51,10 +51,20 @@ Step: table antiderivative of sin => x*sin(x) + cos(x)
 """
 
 
+_HINT_CACHE: dict = {}
+
+
 def _hints_isolated(cur_s: str, wall: int = 15) -> list[str]:
     """Rule-fire syndrome of a (possibly MODEL-written) expression —
     fork-isolated: rules on model text obey the same pathology rules
-    as the oracle."""
+    as the oracle. MEMOIZED by expression string (Artin's KV-cache
+    call, 2026-07-13): ansatz rules decide firing by DOING the work
+    (i_linear_basis solves its system, i_heurisch integrates), so a
+    hint is a mini-solve — and at ~1% validity the chain state
+    repeats for dozens of resample iterations. Rules are
+    deterministic: same state, same syndrome, cache forever."""
+    if cur_s in _HINT_CACHE:
+        return _HINT_CACHE[cur_s]
     ctx = mp.get_context("fork")
     q = ctx.Queue()
 
@@ -83,11 +93,14 @@ def _hints_isolated(cur_s: str, wall: int = 15) -> list[str]:
     if p.is_alive():
         p.kill()
         p.join()
+        _HINT_CACHE[cur_s] = []
         return []
     try:
-        return q.get(timeout=5)
+        out = q.get(timeout=5)
     except Exception:
-        return []
+        out = []
+    _HINT_CACHE[cur_s] = out
+    return out
 
 
 def _verify_step(prev_s: str, cand_s: str, q: "mp.Queue") -> None:
