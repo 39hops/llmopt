@@ -1357,6 +1357,25 @@ the very tensor the module exists to avoid — 12.4GB -> 8.5GB gone
 with the scatter + fp16 grad matmuls. Unblocks population training
 (K adapters would be K x unaffordable logits unfused).
 
+## Population training: batching pays only where slack lives (2026-07-13)
+
+`train/population.py`: K LoRA adapters, one frozen base, population
+folded into the batch dim — unchanged mlx-lm model, only the wrapped
+linears are K-aware (batched einsum over stacked A_k/B_k), per-slice
+fused CE so adapter k's grads are EXACTLY its solo run's
+(tests/test_population.py pins forward + grad equivalence). Verdict:
+**NULL at our shapes.** MLX 0.5B training is ~1250 tok/s flat from
+~256 tokens/step up — one adapter's batch already saturates the GPU,
+so K x streams have nothing to amortize: corpus shape (B=8, T=160)
+1.04x @ K=4, 1.03x @ K=8; big shapes lose outright (0.62x @ K=4
+B=4 T=512: 22GB peak + ~33% einsum overhead); only launch-bound
+B=1 T=256 pays (1.22x). The training-side twin of the starved-judge
+law: batching pays only where slack lives, and the premise assumed a
+weight-traffic bound that measurement says isn't there. Machinery
+banks for tiny-net populations (weightspace threads), where steps
+ARE launch-bound. Fused CE (above) stands on its own — it was the
+memory result; the tournament gate rides sequential runs.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

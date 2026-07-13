@@ -18,7 +18,6 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Waiting on | Pointer |
 |---|---|---|
-| Population training (K LoRA adapters, one frozen base, batched) | fused CE SHIPPED — now just a GO; upgrades the loop gate from single-candidate to tournament-of-mixes | 2026-07-13 brainstorm |
 | Predicted syndromes (markov/learned hint approximation, zero sympy) | if hints bottleneck again despite the cache | Artin 2026-07-13 |
 | ODE chains merge (data/ode_chains.jsonl, 317 pairs) | multi-domain round AFTER round-5 attribution is clean | 91fb39d |
 | Fused-quotient residue (L8's last 3) | rule synthesis design; the step-model may reach it first | RESULTS "L8 autopsy" |
@@ -38,6 +37,7 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Verdict |
 |---|---|
+| Population training (K LoRA, one base, batched) | NULL — MLX 0.5B saturates at one adapter's batch (1250 tok/s flat), 1.04x @ corpus shapes, 0.62x big; machinery (exact K-sequential equivalence) banks for tiny-net populations |
 | Derivation-expanded chains + syndrome prompting | SHIPPED into rounds 2/3 (Think + Hints fields) |
 | Reverse engine | SHIPPED — answer-side chains (492), the corpus factory's decompression stroke |
 | Grammar-constrained decoding | NULL for the adapter (token-identical rerun; misses are semantic); mask kept for base-model prose |
