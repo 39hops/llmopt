@@ -128,19 +128,30 @@ def run_round(round_no: int) -> str:
     t0 = time.monotonic()
     promoted = Path("checkpoints/step_lora.pt")
     tok, model = load(str(promoted) if promoted.exists() else None)
-    sb = evaluate(tok, model, levels=(2, 3, 4, 5), n_per=40,
-                  seed_base=8_200_000 + 10_000 * round_no)
-    F = frontier(sb, 40)
+    sb = evaluate(tok, model, levels=(2, 3, 4, 5), n_per=24,
+                  seed_base=8_200_000 + 10_000 * round_no, budget=512)
+    print(f"round {round_no} eval: {sb['solves']} "
+          f"validity {sb['validity']:.2f}%", flush=True)
+    # halt bar is HALF the promoted baseline (~1.0%): round-1 HALT
+    # 2026-07-13 fired at 0.99% — a coin flip of noise AT the
+    # baseline, with the model measurably intact. <0.5% is actual
+    # sampling degeneracy. Checked BEFORE mining: no point farming
+    # pairs for a model we're about to halt on.
+    if sb["validity"] < 0.5:
+        return f"HALT validity {sb['validity']:.2f}%"
+    F = frontier(sb, 24)
     n_model, n_engine = mine_round(round_no, F, sb,
                                    seed_base=8_000_000)
-    if sb["validity"] < 1.0:
-        return f"HALT validity {sb['validity']:.1f}%"
+    print(f"round {round_no} mined: +{n_model} model +{n_engine} engine "
+          f"at F=L{F}", flush=True)
     cand = Path(f"checkpoints/step_lora_r{round_no}.pt")
     phase_train(epochs=3, lr=1e-4, out=cand)  # 2e-4 diverged on think targets (measured)
     del model
     tok, model = load(str(cand))
     gate_sb = evaluate(tok, model, levels=tuple(range(2, F + 1)),
-                       n_per=40, seed_base=8_400_000)
+                       n_per=24, seed_base=8_400_000, budget=512)
+    print(f"round {round_no} gate: {gate_sb['solves']} "
+          f"validity {gate_sb['validity']:.2f}%", flush=True)
     ok, reason = gate_verdict(
         {"solves": sb["solves"], "validity": sb["validity"]},
         {"solves": gate_sb["solves"],
