@@ -1485,6 +1485,23 @@ encoder > last-token pooling > per-rule thresholds. The A/B gate
 decides shipping regardless — 0.98-precision informative bits may
 already be oracle-equivalent in the step model's eyes.
 
+**Round 5 (encoder tuning + the layer sweep):** LoRA-tuning the
+encoder is a NULL at this data size — naive FT vandalized the
+representation from step 0 (Artin's layering law named the
+mechanism; LP-FT literature confirms), and even the corrected 5b
+(warm head from the frozen probe, LoRA banded to the measured
+formation layers, early stop) peaked val 89.8 then landed test
+**87.5/0.976 — below frozen**. The surviving win came from the
+router-router move (Artin: measure which weights to tune): the
+25-layer probe sweep found the syndrome PEAKS MID-NETWORK (L12-15
+~89.9% val) and DECAYS toward the output (L24: 87.0) — rounds 3/4
+had been reading the wrong layer. **Frozen layer-15 + the same tiny
+head: 90.5% / 0.979 test, the new best, zero encoder training.**
+Echoes the 2026-07-09 middle-layer value probe: task structure
+peaks mid-network; the last layer is busy being a language model.
+Operating point: frozen mid-layer representations + heads; more
+labels (cheap) before more gradient. `pred_syndromes_l15.pt`.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
