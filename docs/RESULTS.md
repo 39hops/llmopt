@@ -1291,8 +1291,17 @@ confirmed: the winning structures DO read the phase — h=0.5's
 winner opens with rotation blocks (ry...), h=2.0's is
 Hamiltonian-block dominated (zz/xm) — the search re-derives the
 family boundary qualitatively even while losing quantitatively.
-Rung 2b (banked): non-greedy search (restarts/evolutionary),
-fair inner budgets, param-count penalty in the score.
+Rung 2b (evolutionary, same day): rediscovery bar ALSO fails —
+quantitatively. But the qualitative result is the keeper: from
+random token soup, evolution independently INVENTED the HVA
+alternation at h=1.0 (['zz','xm','zz','xm'] — the exact pattern,
+discovered not taught) and the phase split is now clean across both
+searches (rotation tokens appear only in the ordered phase; pure
+Hamiltonian blocks at/above criticality). The search reads the
+phase diagram and re-derives the right circuit family; it cannot
+close the last ~2x to hand-tuned precision at this compute.
+STRUCTURE SEARCH CLOSED (two fails, house rule): the discovery is
+qualitative, the engineering isn't — compute-bound, not idea-bound.
 
 ## Origin story, closed
 
