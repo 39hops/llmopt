@@ -228,7 +228,8 @@ def sample(tok, model, prompt: str, seed: int,
 @torch.inference_mode()
 def sample_batch(tok, model, prompt: str, seeds: list[int],
                  constrain: bool = False,
-                 temps: list[float] | None = None):
+                 temps: list[float] | None = None,
+                 return_logps: bool = False):
     """B parallel sampled completions of the same prompt — the step
     harness's inference rung (2026-07-12): resamples at a given state
     are embarrassingly parallel, and a 0.5B at batch 1 leaves the GPU
@@ -242,6 +243,7 @@ def sample_batch(tok, model, prompt: str, seeds: list[int],
     past = None
     gens = [torch.Generator(device="cpu").manual_seed(s) for s in seeds]
     out: list[list[int]] = [[] for _ in range(B)]
+    logps = [0.0] * B  # sum log P(chosen) under the SAMPLING policy
     done = [False] * B
     eos = tok.eos_token_id
     m = _expr_mask(tok) if constrain else None
@@ -264,8 +266,10 @@ def sample_batch(tok, model, prompt: str, seeds: list[int],
             if done[b]:
                 nxts.append(eos or 0)
                 continue
-            nxt = int(torch.multinomial(
-                torch.softmax(logits[b], -1), 1, generator=gens[b]))
+            probs = torch.softmax(logits[b], -1)
+            nxt = int(torch.multinomial(probs, 1, generator=gens[b]))
+            if return_logps:
+                logps[b] += float(torch.log(probs[nxt] + 1e-20))
             if nxt == eos:
                 done[b] = True
             else:
@@ -276,8 +280,11 @@ def sample_batch(tok, model, prompt: str, seeds: list[int],
         if all(done):
             break
         cur = torch.tensor(nxts, device=DEV).unsqueeze(1)
-    return ([tok.decode(o_).strip() for o_ in out],
-            [max(len(o_), 1) for o_ in out])
+    texts = [tok.decode(o_).strip() for o_ in out]
+    spents = [max(len(o_), 1) for o_ in out]
+    if return_logps:
+        return texts, spents, [list(o_) for o_ in out], logps
+    return texts, spents
 
 
 def _gen_isolated(level: int, seed: int, wall: int = 45):
