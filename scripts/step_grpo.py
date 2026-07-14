@@ -159,7 +159,8 @@ def main(cycles: int, groups_per_cycle: int = GROUPS_PER_CYCLE,
     import bench_step_tokens as bst
 
     tok, model = load("checkpoints/step_lora.pt")
-    device = bst.DEV
+    model = model.float()  # fp16 Adam NaN'd (distilled-draft scar);
+    device = bst.DEV       # fp32 model: 2GB, fits; collection ~2x slower
     model.train()
     params = [p for p in model.parameters() if p.requires_grad]
     lr = LR0
@@ -177,6 +178,7 @@ def main(cycles: int, groups_per_cycle: int = GROUPS_PER_CYCLE,
     torch.save({k: v.cpu() for k, v in model.state_dict().items()
                 if k.split(".")[-1] in ("a", "b")}, CKPT)
     tok, model = load(str(CKPT))
+    model = model.float()
     params = [p for p in model.parameters() if p.requires_grad]
     opt = torch.optim.Adam(params, lr=lr)
     retried = False
@@ -232,6 +234,7 @@ def main(cycles: int, groups_per_cycle: int = GROUPS_PER_CYCLE,
                 print("  ROLLBACK to last checkpoint, lr halved",
                       flush=True)
                 tok, model = load(str(CKPT))
+                model = model.float()
                 params = [p for p in model.parameters()
                           if p.requires_grad]
                 lr /= 2
