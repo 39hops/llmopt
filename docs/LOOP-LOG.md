@@ -12,3 +12,4 @@ RESULTS) — evals faster (no oracle forks) and validity reads higher.
 Rows below re-baseline; not comparable to rows above.*
 | 1 (hints-off) | F=L5 | +3m/+0e | val 1.6->1.1 | {2: 12, 3: 12, 4: 5, 5: 9} -> {2: 11, 3: 8, 4: 3} | ROLLBACK: L3 regressed 12->8 | 143m |
 | 2 (hints-off) | F=L5 | +14m/+0e | val 1.4->1.5 | {2: 7, 3: 10, 4: 6, 5: 7} -> {2: 15, 3: 6, 4: 4} | ROLLBACK: L3 regressed 10->6 (but L2 7->15! — retrains REALLOCATE levels, not degrade uniformly) | 118m; HALT: two consecutive fails |
+| control (own r23 diet) | eval L2-4 (band 8.5M) | retrain on byte-identical rounds-2/3 corpus | 1.32->1.72 | {2: 12, 3: 8, 4: 2} -> {2: 14, 3: 11, 4: 3} | PASS (harness printed FAIL via frontier=5 bug — L5 never evaluated; at the real frontier: frontier gain). VERDICT: H_DIET — own-diet retrain beats promoted everywhere; the post-r3 corpus additions were the harm | ~150m |
