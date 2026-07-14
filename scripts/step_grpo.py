@@ -32,6 +32,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 B = 8
 GROUPS_PER_CYCLE = 64  # --groups overrides (smoke tests)
+FAST_VERIFY = True  # SHIPPED 2026-07-14: parity bench 29.8x, zero
+# reject-flips; 17 accept-flips ADJUDICATED 17/17 truly valid — the
+# OLD oracle was false-rejecting (exact-constant branch +
+# doit(deep=True) integrating per verify, timeout-as-reject). The
+# fast path is verify_edge's lesson ported: differentiate, never
+# integrate; numeric screen rejects; simplify confirms accepts.
+# NOTE: gate evals still use the old oracle inside solve_chain —
+# kept deliberately for run-1/run-2 gate comparability; port in v3.
 GATE_EVERY = 2          # spec said 4; v0 gates twice as often (safety)
 LR0 = 5e-6
 CLIP = 0.2
@@ -48,6 +56,8 @@ def collect_groups(tok, model, n_groups: int, seed0: int):
 
     from bench_step_tokens import (FEWSHOT, _gen_isolated, sample_batch,
                                    verify_step)
+    if FAST_VERIFY:
+        from bench_verify_fast import verify_wave
     groups, mined = [], []
     stats = {"waves": 0, "mixed": 0, "allfail": 0, "allpass": 0}
     pi = 0
@@ -70,12 +80,21 @@ def collect_groups(tok, model, n_groups: int, seed0: int):
             lines = [t.splitlines()[0].strip() if t else ""
                      for t in texts]
             verdict: dict[str, tuple[bool, bool]] = {}
-            for ln in set(lines):
-                expr = ln.split("=>")[-1].strip()
-                if not ln or not expr:
-                    verdict[ln] = (False, False)
-                else:
-                    verdict[ln] = verify_step(cur, expr)
+            if FAST_VERIFY:
+                expr_of = {ln: ln.split("=>")[-1].strip()
+                           for ln in set(lines)}
+                good = [e for e in set(expr_of.values()) if e]
+                wv = verify_wave(cur, good) if good else {}
+                for ln, e in expr_of.items():
+                    verdict[ln] = wv.get(e, (False, False)) if e \
+                        else (False, False)
+            else:
+                for ln in set(lines):
+                    expr = ln.split("=>")[-1].strip()
+                    if not ln or not expr:
+                        verdict[ln] = (False, False)
+                    else:
+                        verdict[ln] = verify_step(cur, expr)
             rewards = [1.0 if verdict[ln][0] else 0.0 for ln in lines]
             n_ok = sum(1 for r in rewards if r > 0)
             if 0 < n_ok < B:
@@ -151,14 +170,15 @@ def gate_eval(adapter: str):
 
 
 def main(cycles: int, groups_per_cycle: int = GROUPS_PER_CYCLE,
-         skip_baseline: bool = False) -> None:
+         skip_baseline: bool = False,
+         start_from: str = "checkpoints/step_lora.pt") -> None:
     import torch
 
     from llmopt.train.preference import grpo_advantages, grpo_loss
     from bench_step_tokens import load
     import bench_step_tokens as bst
 
-    tok, model = load("checkpoints/step_lora.pt")
+    tok, model = load(start_from)
     model = model.float()  # fp16 Adam NaN'd (distilled-draft scar);
     device = bst.DEV       # fp32 model: 2GB, fits; collection ~2x slower
     model.train()
@@ -171,7 +191,7 @@ def main(cycles: int, groups_per_cycle: int = GROUPS_PER_CYCLE,
     else:
         print("baseline gate eval...", flush=True)
         model.eval()
-        base = gate_eval("checkpoints/step_lora.pt")
+        base = gate_eval(start_from)
         print(f"baseline: {base['solves']} validity "
               f"{base['validity']:.2f}%", flush=True)
         best_validity = base["validity"]
@@ -252,5 +272,8 @@ if __name__ == "__main__":
     ap.add_argument("--cycles", type=int, default=8)
     ap.add_argument("--groups", type=int, default=GROUPS_PER_CYCLE)
     ap.add_argument("--smoke", action="store_true")
+    ap.add_argument("--from", dest="start_from",
+                    default="checkpoints/step_lora.pt")
     a = ap.parse_args()
-    main(a.cycles, a.groups, skip_baseline=a.smoke)
+    main(a.cycles, a.groups, skip_baseline=a.smoke,
+         start_from=a.start_from)
