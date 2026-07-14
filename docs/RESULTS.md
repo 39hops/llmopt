@@ -1518,6 +1518,11 @@ and the syndrome-head spec re-aims at payoff 3 (representation
 shaping during training), per its own pre-registration. Five rounds
 of making hints cheap, concluded by measuring they shouldn't be
 paid for at all: the starved-judge law eating its own tail.
+Confirmed on a second fresh band (9.2M): none 12/48 @ 1.39% vs
+oracle 9/48 @ 1.23% — same direction, both metrics, no reversal.
+Combined: **no-hints 31/96 vs oracle 22/96.** USE_HINTS=False is
+the shipped default in bench_step_tokens.py (also deletes the
+~200ms oracle fork per novel state from every eval).
 
 ## Origin story, closed
 

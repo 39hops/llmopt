@@ -51,6 +51,8 @@ Step: table antiderivative of sin => x*sin(x) + cos(x)
 """
 
 
+USE_HINTS = False  # A/B 2026-07-13: hints measured NEGATIVE at inference
+
 _HINT_CACHE: dict = {}
 
 
@@ -299,7 +301,15 @@ def solve_chain(tok, model, integ: str, budget: int, seed0: int):
     ok = False
     B = 8   # batched resampling: parallel draws at the same state
     while used < budget and not ok and len(pairs) < 12:
-        hints = ", ".join(_hints_isolated(cur)) or "none"
+        # Hints OFF at inference (A/B 2026-07-13, RESULTS "adoption
+        # A/B": none 19/48 @ 1.87% validity BEAT oracle hints 13 @
+        # 1.19 and predicted 14 @ 1.29 — at ~1% validity chains need
+        # resample diversity, and the Hints line collapses it; also
+        # deletes the ~200ms oracle fork per novel state). The line
+        # stays in the prompt as "none" — that exact format is what
+        # was measured to win. Flip USE_HINTS to re-race.
+        hints = (", ".join(_hints_isolated(cur)) or "none") \
+            if USE_HINTS else "none"
         prompt = FEWSHOT + f"\nCurrent: {cur}\nHints: {hints}\nStep:"
         texts, spents = sample_batch(
             tok, model, prompt,

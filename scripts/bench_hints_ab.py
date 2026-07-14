@@ -31,8 +31,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 LEVELS = (2, 3, 4, 5)
-SEED0 = 9_100_000  # fresh band: outside eval (8.2M), mining (8M),
-                   # labels (30M), estimator bands
+# 9.1M: the original race band. 9.2M+: confirmation bands.
+# All outside eval (8.2M), mining (8M), labels (30M), estimator bands.
 
 
 def _sketch_worker(s: str, q) -> None:
@@ -126,20 +126,26 @@ def make_predicted_hinter():
     return hinter
 
 
-def main(n_per: int, budget: int) -> None:
+def main(n_per: int, budget: int, seed0: int,
+         arm_names: list[str]) -> None:
     import sympy as sp
 
     import bench_step_tokens as bst
     from bench_step_tokens import _gen_isolated, load, solve_chain
 
+    SEED0 = seed0
     tok, model = load("checkpoints/step_lora.pt")
     oracle = bst._hints_isolated
-    predicted = make_predicted_hinter()
-    arms = {
+    all_arms = {
         "oracle": oracle,
-        "predicted": predicted,
+        "predicted": None,  # built lazily (loads a second model)
         "none": lambda cur_s, wall=15: [],
     }
+    arms = {}
+    for a in arm_names:
+        if a == "predicted" and all_arms[a] is None:
+            all_arms[a] = make_predicted_hinter()
+        arms[a] = all_arms[a]
     # same problems for every arm
     probs = []
     for lv in LEVELS:
@@ -151,6 +157,7 @@ def main(n_per: int, budget: int) -> None:
     results = {}
     for arm, fn in arms.items():
         bst._hints_isolated = fn
+        bst.USE_HINTS = arm != "none"  # solve_chain gates on this now
         bst._HINT_CACHE.clear()
         solved = valid = tried = 0
         t0 = time.time()
@@ -166,16 +173,19 @@ def main(n_per: int, budget: int) -> None:
               f"validity {results[arm][1]:.2f}% wall {wall:.0f}s",
               flush=True)
     bst._hints_isolated = oracle
-    o, p = results["oracle"], results["predicted"]
-    verdict = ("ADOPT" if p[1] >= o[1] - 0.2 and p[0] >= o[0] - 2
-               else "KEEP ORACLE")
-    print(f"\nbar: predicted validity >= oracle-0.2pts AND solves >= "
-          f"oracle-2 -> {verdict}")
+    if "oracle" in results and "predicted" in results:
+        o, p = results["oracle"], results["predicted"]
+        verdict = ("ADOPT" if p[1] >= o[1] - 0.2 and p[0] >= o[0] - 2
+                   else "KEEP ORACLE")
+        print(f"\nbar: predicted validity >= oracle-0.2pts AND solves"
+              f" >= oracle-2 -> {verdict}")
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--n-per", type=int, default=12)
     ap.add_argument("--budget", type=int, default=384)
+    ap.add_argument("--seed0", type=int, default=9_100_000)
+    ap.add_argument("--arms", type=str, default="oracle,predicted,none")
     a = ap.parse_args()
-    main(a.n_per, a.budget)
+    main(a.n_per, a.budget, a.seed0, a.arms.split(","))
