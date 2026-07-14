@@ -27,4 +27,5 @@ docs/BOARD.md.
 | 2026-07-12 step-expert-iteration | LIVE — the loop driver runs this spec (scripts/expert_loop.py, LOOP-LOG.md) |
 | 2026-07-12 variational-ground-engine | EXECUTED — rung 1 shipped; structure search closed (2 fails, on the books) |
 | 2026-07-13 syndrome-head | RUNNING — re-aimed at payoff 3 (representation shaping); A/B on Mac |
-| 2026-07-14 step-grpo | SPEC'D + GO — frontier-band GRPO on verified steps; after control-round verdict |
+| 2026-07-14 step-grpo | RUNNING — run 1 cycle-2 gate GREEN on every level (first uniform improvement after six reallocating SFT retrains) |
+| 2026-07-14 grpo-v2-and-unified-climb | SPEC'D — lossless verify levers (cache/batched-fork/numeric-reject), syndrome-in-RL unified climb gated on the Mac A/B |
