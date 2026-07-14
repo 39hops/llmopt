@@ -21,6 +21,7 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 | Syndrome head on the step model | RE-AIMED at payoff 3 only (representation shaping) — the A/B measured hints NEGATIVE in the prompt (none 19/48 @ 1.87% beats oracle 13 @ 1.19 and predicted 14 @ 1.29); drop Hints line at inference | specs/2026-07-13-syndrome-head-design.md + RESULTS A/B |
 | Syndrome dynamics (child-syndrome world model, 1-ply lookahead at embedding cost) | syndrome head rung 2 | same spec, relations |
 | Magic estimator revival on embedding features | if hardness economics return (budget alloc, skip sizing) | same spec, rung 3 |
+| Sustained RL (GRPO on verified steps — train/preference.py has it) + self-distillation | Artin GO 'later when we have time'; the MAI-shaped answer to retrain-lottery variance; reads: MAI-Thinking-1 tech report | 2026-07-14 |
 | ODE chains merge (data/ode_chains.jsonl, 317 pairs) | multi-domain round AFTER round-5 attribution is clean | 91fb39d |
 | Fused-quotient residue (L8's last 3) | rule synthesis design; the step-model may reach it first | RESULTS "L8 autopsy" |
 | LLM rule synthesis (heurisch-as-teacher) | frontier targets exist now | RIFF-LEDGER |
