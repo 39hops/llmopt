@@ -22,6 +22,8 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 | Syndrome dynamics (child-syndrome world model, 1-ply lookahead at embedding cost) | syndrome head rung 2 | same spec, relations |
 | Magic estimator revival on embedding features | if hardness economics return (budget alloc, skip sizing) | same spec, rung 3 |
 | GRPO at the frontier band (sustained RL over verified steps) | GO + SPEC'D — mixed-group filter = gradient where variance lives; awaits control-round verdict for queue position; 3080 | specs/2026-07-14-step-grpo-design.md |
+| Dynamic MoE via magic router (per-QUESTION expert keep-set loaded from SSD; measured basis: router stats 61%-keep holds accuracy, 50% count-quantile BEATS full, cliff below ~28%; moe/ LRU offload cache exists) + prune-then-distill skill grab (domain keep-set as small teacher) | Artin 2026-07-14 GO-to-bank; pilot on Mac w/ Qwen3-30B-A3B after current tree | RESULTS MoE pruning + this chat |
+| Representation stitching (rent a big model's geometry: learned linear bridge teacher-hidden -> student-hidden over shared text; the change-of-basis answer to cross-architecture transfer) | Artin's axis-change riff 2026-07-14; small pilot = stitch GLM/Qwen-7B layer-k to 0.5B layer-15 | RIFF-LEDGER |
 | ODE chains merge (data/ode_chains.jsonl, 317 pairs) | multi-domain round AFTER round-5 attribution is clean | 91fb39d |
 | Fused-quotient residue (L8's last 3) | rule synthesis design; the step-model may reach it first | RESULTS "L8 autopsy" |
 | LLM rule synthesis (heurisch-as-teacher) | frontier targets exist now | RIFF-LEDGER |
