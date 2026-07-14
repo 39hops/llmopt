@@ -10,3 +10,5 @@
 *Condition change 2026-07-13 evening: USE_HINTS=False (two-band A/B,
 RESULTS) — evals faster (no oracle forks) and validity reads higher.
 Rows below re-baseline; not comparable to rows above.*
+| 1 (hints-off) | F=L5 | +3m/+0e | val 1.6->1.1 | {2: 12, 3: 12, 4: 5, 5: 9} -> {2: 11, 3: 8, 4: 3} | ROLLBACK: L3 regressed 12->8 | 143m |
+| 2 (hints-off) | F=L5 | +14m/+0e | val 1.4->1.5 | {2: 7, 3: 10, 4: 6, 5: 7} -> {2: 15, 3: 6, 4: 4} | ROLLBACK: L3 regressed 10->6 (but L2 7->15! — retrains REALLOCATE levels, not degrade uniformly) | 118m; HALT: two consecutive fails |
