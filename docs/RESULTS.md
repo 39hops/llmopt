@@ -1539,10 +1539,18 @@ get NOTHING from a full wave budget. Per-stream temperature ladder
 novelty (wave-8 new: 2.9->4.7), and the currency that matters,
 **valid-distinct/state 0.33 -> 0.42 (+27%)**. Few-shot rotation:
 nothing (0.38 alone, adds zero on top of the ladder — the combo
-ties ladder exactly). Solve-level race running; ladder ships as the
-sample_batch default only if solves confirm at equal budget (hotter
-streams also mint more invalid steps — candidate-level gains must
-survive chain economics).
+ties ladder exactly). Solve-level race verdict: **NULL — the ladder loses 13/48 vs
+const 15/48** (validity tie 1.38/1.41%). Candidate-level gains did
+NOT survive chain economics, and the autopsy names the fallacy: a
+chain needs AT LEAST ONE valid step per stuck state, not many —
+extra distinct-valid candidates where one already existed are
+worthless, while hot streams bill invalid samples everywhere.
+Valid-distinct was the wrong currency; P(>=1 valid per wave) is the
+right one, and const 0.7 was already adequate on it. TEMP_LADDER
+stays None. The diversity FAMINE numbers stand (50% duplicates,
+0.33 valid/64 samples) — the constraint is real, but temperature
+isn't the lever; the model's distribution is (which is what
+training rounds are for).
 
 ## Origin story, closed
 
