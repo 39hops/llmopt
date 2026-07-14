@@ -1522,7 +1522,27 @@ Confirmed on a second fresh band (9.2M): none 12/48 @ 1.39% vs
 oracle 9/48 @ 1.23% — same direction, both metrics, no reversal.
 Combined: **no-hints 31/96 vs oracle 22/96.** USE_HINTS=False is
 the shipped default in bench_step_tokens.py (also deletes the
-~200ms oracle fork per novel state from every eval).
+~200ms oracle fork per novel state from every eval). Third-band
+confirmation for free: the loop's own hints-off re-baseline read
+{12, 12, 5, 9} @ 1.58% vs hints-on {11, 10, 5, 7} @ 1.29% — same
+model, same seeds.
+
+## Resample diversity: the famine measured, the ladder pays (2026-07-14)
+
+The A/B's mechanism claim, measured directly
+(`scripts/bench_step_diversity.py`, 24 states x 64 samples x 4
+arms, dedup-then-verify): production sampling (const T=0.7, fixed
+prompt) is **50% duplicates**, and a typical stuck state yields
+**0.33 verified-valid steps per 64 samples** — two-thirds of states
+get NOTHING from a full wave budget. Per-stream temperature ladder
+(0.4..1.45, one knob): distinct 50->64%, late waves keep producing
+novelty (wave-8 new: 2.9->4.7), and the currency that matters,
+**valid-distinct/state 0.33 -> 0.42 (+27%)**. Few-shot rotation:
+nothing (0.38 alone, adds zero on top of the ladder — the combo
+ties ladder exactly). Solve-level race running; ladder ships as the
+sample_batch default only if solves confirm at equal budget (hotter
+streams also mint more invalid steps — candidate-level gains must
+survive chain economics).
 
 ## Origin story, closed
 

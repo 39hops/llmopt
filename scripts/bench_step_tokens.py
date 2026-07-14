@@ -53,6 +53,12 @@ Step: table antiderivative of sin => x*sin(x) + cos(x)
 
 USE_HINTS = False  # A/B 2026-07-13: hints measured NEGATIVE at inference
 
+# Per-stream temperature ladder for chain resampling (diversity probe
+# 2026-07-14: valid-distinct steps/state 0.33 -> 0.42 vs const 0.7;
+# few-shot rotation added nothing on top). None = const 0.7. Flipped
+# to the ladder as default iff the solve-level race confirms.
+TEMP_LADDER: list | None = None
+
 _HINT_CACHE: dict = {}
 
 
@@ -221,7 +227,8 @@ def sample(tok, model, prompt: str, seed: int,
 
 @torch.inference_mode()
 def sample_batch(tok, model, prompt: str, seeds: list[int],
-                 constrain: bool = False):
+                 constrain: bool = False,
+                 temps: list[float] | None = None):
     """B parallel sampled completions of the same prompt — the step
     harness's inference rung (2026-07-12): resamples at a given state
     are embarrassingly parallel, and a 0.5B at batch 1 leaves the GPU
@@ -241,7 +248,11 @@ def sample_batch(tok, model, prompt: str, seeds: list[int],
     for _ in range(MAX_NEW):
         o = model(input_ids=cur, past_key_values=past, use_cache=True)
         past = o.past_key_values
-        logits = o.logits[:, -1].float().cpu() / 0.7
+        logits = o.logits[:, -1].float().cpu()
+        if temps is None:
+            logits = logits / 0.7
+        else:  # per-stream temperature (diversity-lever probe)
+            logits = logits / torch.tensor(temps).unsqueeze(1)
         if m is not None:
             mm = m
             if mm.shape[0] < logits.shape[1]:
@@ -314,7 +325,7 @@ def solve_chain(tok, model, integ: str, budget: int, seed0: int):
         texts, spents = sample_batch(
             tok, model, prompt,
             seeds=[seed0 + 7919 * (j + b) for b in range(B)],
-            constrain=True)
+            constrain=True, temps=TEMP_LADDER)
         j += B
         advanced = False
         for text, spent in zip(texts, spents):
