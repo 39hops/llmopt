@@ -14,3 +14,7 @@ Rows below re-baseline; not comparable to rows above.*
 | 2 (hints-off) | F=L5 | +14m/+0e | val 1.4->1.5 | {2: 7, 3: 10, 4: 6, 5: 7} -> {2: 15, 3: 6, 4: 4} | ROLLBACK: L3 regressed 10->6 (but L2 7->15! — retrains REALLOCATE levels, not degrade uniformly) | 118m; HALT: two consecutive fails |
 | control (own r23 diet) | eval L2-4 (band 8.5M) | retrain on byte-identical rounds-2/3 corpus | 1.32->1.72 | {2: 12, 3: 8, 4: 2} -> {2: 14, 3: 11, 4: 3} | PASS (harness printed FAIL via frontier=5 bug — L5 never evaluated; at the real frontier: frontier gain). VERDICT: H_DIET — own-diet retrain beats promoted everywhere; the post-r3 corpus additions were the harm | ~150m |
 | diet B (r23 + 1332 finishing) | band 8.5M | reverse finishing merge, coeff benched | 1.52 | {2: 10, 3: 13, 4: 1} vs control {14, 11, 3} @ 1.72 | NO-MERGE: buys L3 (+2), pays L2 (-4) L4 (-2) — every diet buys its own shape; r23 alone stays champion retrain. Finishing pairs benched with coeff | ~75m |
+
+*GRPO era begins (fast oracle scale — not comparable above):*
+| grpo run 1 (slow oracle) | gate band 8.6M | 3.5 cycles, 64 mixed groups each | 1.38 -> 1.90 @ cycle-2 gate | {13,9,5,5} -> {15,10,6,8} | EVERY LEVEL UP — first uniform improvement after six reallocating SFT retrains | ~67m/cycle |
+| grpo run 2b (fast oracle e2e, from run-1 ckpt) | gate band 8.6M | 20 cycles, 2 rollbacks (lr-halved), 8 checkpoints | **2.24 -> 5.38 (2.4x)** | {15,10,11,8} -> {18,13,10,11} | monotone-ish climb, gates green 8/10; all-pass waves 1 -> ~90/cycle; mined +6774 verified steps | ~7m/cycle |

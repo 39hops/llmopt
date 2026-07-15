@@ -1591,6 +1591,21 @@ information (the Platonic-convergence claim, measured at 0.5B/1.7B
 scale). Tiers 2 (30B keep-set teacher) and 3 (GLM offline donor +
 representation distillation / zero-inference keep-set) unlock.
 
+## GRPO run 2b: the hill-climbing machine, overnight edition (2026-07-15)
+
+20 cycles, fast oracle end-to-end, continuing run 1's checkpoint.
+**Held-out gate validity 2.24% -> 5.38% — 2.4x in one night** —
+with solves {15,10,11,8} -> {18,13,10,11} and two lr-halving
+rollbacks absorbed en route (the ladder worked: both recovered to
+new highs). Collection stats tell the mechanism: all-pass waves
+grew from 32 to ~90/cycle (states fully mastered), cycle wall fell
+67 -> ~7 min (the 30x oracle), and the collector mined **+6,774
+verified steps** as exhaust. Every number the SFT loop struggled
+for arrived as a side effect of climbing: no reallocation, no
+lottery, monotone-ish compounding under gates. Artin's sustained-RL
+call (from the MAI-Thinking-1 reading) is the strongest training
+result in the lab's history, ~36h from paper to 2.4x.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
