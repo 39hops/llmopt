@@ -75,6 +75,9 @@ def collect_groups(tok, model, n_groups: int, seed0: int):
         if p is None:
             continue
         cur = f"Integral({sp.sstr(p._expr)}, x)"
+        visited = {cur.replace(" ", "")}  # cycle guard (predicted
+        # hack #2: A=>B=>A — every step distinct from its predecessor,
+        # verified, going nowhere; revisit = 0 reward, no advance)
         for ply in range(12):
             prompt = FEWSHOT + f"\nCurrent: {cur}\nHints: none\nStep:"
             texts, _sp, tok_ids, logps = sample_batch(
@@ -112,7 +115,7 @@ def collect_groups(tok, model, n_groups: int, seed0: int):
                 if not ok:
                     return 0.0
                 expr = ln.split("=>")[-1].strip().replace(" ", "")
-                return 0.0 if expr == cur.replace(" ", "") else 1.0
+                return 0.0 if expr in visited else 1.0
             rewards = [_r(ln) for ln in lines]
             n_ok = sum(1 for r in rewards if r > 0)
             if 0 < n_ok < B:
@@ -129,8 +132,8 @@ def collect_groups(tok, model, n_groups: int, seed0: int):
                 ok, solved = verdict[ln]
                 if ok:
                     expr = ln.split("=>")[-1].strip()
-                    if expr.replace(" ", "") == cur.replace(" ", ""):
-                        continue  # identity: never mine, never advance
+                    if expr.replace(" ", "") in visited:
+                        continue  # identity/cycle: never mine or advance
                     mined.append({"cur": cur, "nxt": expr,
                                   "level": lv, "source": "grpo"})
                     if solved:
@@ -140,6 +143,7 @@ def collect_groups(tok, model, n_groups: int, seed0: int):
             if nxt_state in (None, "SOLVED"):
                 break
             cur = nxt_state
+            visited.add(cur.replace(" ", ""))
             if len(groups) >= n_groups:
                 break
     return groups, mined, stats
