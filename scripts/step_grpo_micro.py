@@ -30,11 +30,13 @@ GROUPS = 64
 GATE_EVERY = 2
 LR = 1e-5
 CLIP = 0.2
-LEVELS = (3, 4, 5, 6)
-GATE_LEVELS = (2, 3, 4, 5)
+# run 2 curriculum ascent (run 1 plateaued at {12,12,7,7}/~80%
+# for 4 straight gates — L2/L3 maxed, deeper levels needed)
+LEVELS = (4, 5, 6, 7)
+GATE_LEVELS = (3, 4, 5, 6, 7)
 GATE_N = 12
-SEED_BASE = 60_000_000
-GATE_BAND = 9_800_000
+SEED_BASE = 61_000_000
+GATE_BAND = 9_900_000
 CKPT = Path("checkpoints/mathnative_grpo.pt")
 CORPUS = Path("data/micromodel_grpo_mined.jsonl")  # untracked sidecar
 

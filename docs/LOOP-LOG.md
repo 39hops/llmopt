@@ -18,3 +18,6 @@ Rows below re-baseline; not comparable to rows above.*
 *GRPO era begins (fast oracle scale — not comparable above):*
 | grpo run 1 (slow oracle) | gate band 8.6M | 3.5 cycles, 64 mixed groups each | 1.38 -> 1.90 @ cycle-2 gate | {13,9,5,5} -> {15,10,6,8} | EVERY LEVEL UP — first uniform improvement after six reallocating SFT retrains | ~67m/cycle |
 | grpo run 2b (fast oracle e2e, from run-1 ckpt) | gate band 8.6M | 20 cycles, 2 rollbacks (lr-halved), 8 checkpoints | **2.24 -> 5.38 (2.4x)** | {15,10,11,8} -> {18,13,10,11} | monotone-ish climb, gates green 8/10; all-pass waves 1 -> ~90/cycle; mined +6774 verified steps | ~7m/cycle |
+
+*Math-native 19M (from birth, Mac):*
+| micro run 1 | gate L2-5 band 9.8M | 12 cycles, full-param GRPO from phase-1 ckpt | 76.8 -> 80.3 | baseline {12,12,5,7} -> plateau {12,12,7,7} (L2/L3 PERFECT from birth) | PLATEAU after cycle 4 — curriculum ascent next (L4-7) | ~15m/cycle incl gates |
