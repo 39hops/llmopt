@@ -1552,6 +1552,23 @@ stays None. The diversity FAMINE numbers stand (50% duplicates,
 isn't the lever; the model's distribution is (which is what
 training rounds are for).
 
+## Syndrome head payoff 3: representation shaping is free and worthless (2026-07-15)
+
+The re-aimed spec's last claim, tested clean (same corpus, same LoRA
+init seed, same data order; ONLY the aux gradient differs): lam=0.3
+multi-task trains the layer-15 syndrome head to syn-BCE 0.048 at
+ZERO step-CE cost (0.3586 vs control 0.3597 at epoch 0 — no task
+interference)... and converts to NOTHING: eval 2/32 @ 0.36% validity
+vs control 3/32 @ 0.42%. Null within noise. Paired with the hints
+null: the model can know which rules fire — told or trained — and
+it doesn't help it WRITE steps. Rule-awareness is not the binding
+constraint; policy quality is (which is what GRPO buys directly).
+The unified-climb fold (grpo-v2 spec section B) fails its gate:
+run 3 stays pure GRPO. Caveat on the books: both arms were weak
+retrain-lottery draws (3/32-class), so statistical power was low —
+but the pre-registered gate was "helps in the clean SFT setting."
+It didn't.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

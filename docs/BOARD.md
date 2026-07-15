@@ -18,7 +18,7 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Waiting on | Pointer |
 |---|---|---|
-| Syndrome head on the step model | RE-AIMED at payoff 3 only (representation shaping) — the A/B measured hints NEGATIVE in the prompt (none 19/48 @ 1.87% beats oracle 13 @ 1.19 and predicted 14 @ 1.29); drop Hints line at inference | specs/2026-07-13-syndrome-head-design.md + RESULTS A/B |
+| Syndrome head | CLOSED — payoff 3 NULL (aux learns free, converts to nothing: 0.36 vs 0.42% validity); unified climb fold fails its gate; run 3 stays pure GRPO | RESULTS 2026-07-15 |
 | Syndrome dynamics (child-syndrome world model, 1-ply lookahead at embedding cost) | syndrome head rung 2 | same spec, relations |
 | Magic estimator revival on embedding features | if hardness economics return (budget alloc, skip sizing) | same spec, rung 3 |
 | GRPO at the frontier band | RUN 1 LIVE — cycle-2 gate green on EVERY level ({15,10,6,8}@1.90 vs {13,9,5,5}@1.38); all-pass states 1->24; run 2 = lossless verify levers; run 3 = unified climb (gated on syndrome A/B) | specs/2026-07-14-grpo-v2-and-unified-climb.md |
