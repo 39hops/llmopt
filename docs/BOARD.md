@@ -41,6 +41,7 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 | Engine-regret hook in mining farms | throughput workloads only (2.1x); NOT label farms | RESULTS "Engine-level regret" |
 | ZX syndrome-policy port | judgment-stack recipe on ZX engine | zx memory |
 | L9 / adversarial generation | if L8 saturates post-orbitals (37/40 now) | RESULTS "L8" |
+| Feynman-integral engine (IBP reduction — particle physics as a rewrite system: states = loop integrals, moves = IBP identities, oracle = numeric evaluation at kinematic points; a real bottleneck in real physics and nearly move-for-move our calculus engine) | far-future continent; charter-clean physics | Artin's electrons/quarks question 2026-07-15 |
 | ODE engine (physics rung, zero chemistry) | the where-next map's first new domain: oracle = substitute-back (identically zero), ansatz rules generalize, dimensional analysis = free syndromes; precedent FermiNet (NN + Hamiltonian oracle -> atoms ab initio) | Artin's periodic-table riff, 2026-07-12 |
 
 ## CLOSED (verdict on the books)
