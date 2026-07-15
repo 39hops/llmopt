@@ -53,6 +53,14 @@ Step: table antiderivative of sin => x*sin(x) + cos(x)
 
 USE_HINTS = False  # A/B 2026-07-13: hints measured NEGATIVE at inference
 
+# Fast oracle in solve_chain (2026-07-14 late): parity-benched 29.8x,
+# 17/17 accept-flips adjudicated truly valid — the old oracle was
+# false-rejecting (RESULTS "verify oracle v2"). NOTE: validity/solves
+# read HIGHER under the corrected oracle (previously-rejected valid
+# steps now count) — evals across this boundary are not comparable;
+# every run re-baselines under its own oracle.
+FAST_ORACLE = True
+
 # Per-stream temperature ladder for chain resampling (diversity probe
 # 2026-07-14: valid-distinct steps/state 0.33 -> 0.42 vs const 0.7;
 # few-shot rotation added nothing on top). None = const 0.7. Flipped
@@ -346,7 +354,11 @@ def solve_chain(tok, model, integ: str, budget: int, seed0: int):
             cand = line.split("=>")[-1].strip()
             if not cand:
                 continue
-            okp, solved = verify_step(cur, cand)
+            if FAST_ORACLE:
+                from bench_verify_fast import verify_wave
+                okp, solved = verify_wave(cur, [cand])[cand]
+            else:
+                okp, solved = verify_step(cur, cand)
             if okp:
                 valid += 1
                 pairs.append((cur, cand))
