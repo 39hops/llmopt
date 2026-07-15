@@ -419,9 +419,122 @@ def phase_train_emb(enrich: bool = False) -> None:
                     else "checkpoints/pred_syndromes_emb_orb.pt"))
 
 
+def phase_train_lora() -> None:
+    """Round 5: LoRA-tune the encoder itself (frozen embeddings were
+    the cheap version). 0.5B + r=16 LoRA on all proj linears + BCE
+    head over mean-pooled hidden, orbital-enriched input. fp32 on MPS
+    (the fp16-Adam-NaN scar from distilled-draft). Early stop on a
+    train-side val slice (hash%5==1); test slice (hash%5==0) touched
+    ONCE at the end."""
+    import hashlib
+
+    import torch
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    from llmopt.train.lora import apply_lora
+
+    rows = [json.loads(l) for l in LABELS.read_text().splitlines()]
+    orb = {json.loads(l)["s"]: json.loads(l)["orb"]
+           for l in ORBITALS.read_text().splitlines()}
+    texts = [f"{r['s']} || orbitals: {orb.get(r['s'], '?')}"
+             for r in rows]
+    vocab = sorted({rn for r in rows for rn in r["fires"]})
+    vi = {r: i for i, r in enumerate(vocab)}
+    Y = torch.zeros(len(rows), len(vocab))
+    for i, r in enumerate(rows):
+        for rn in r["fires"]:
+            Y[i, vi[rn]] = 1.0
+    h = [int(hashlib.sha1(r["s"].encode()).hexdigest(), 16) % 5
+         for r in rows]
+    tr = [i for i, v in enumerate(h) if v >= 2]
+    va = [i for i, v in enumerate(h) if v == 1]
+    te = [i for i, v in enumerate(h) if v == 0]
+    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    tok = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-0.5B-Instruct")
+    enc = AutoModelForCausalLM.from_pretrained(
+        "Qwen/Qwen2.5-0.5B-Instruct",
+        dtype=torch.float32).to(dev)
+    n_wrapped = apply_lora(
+        enc, ("q_proj", "k_proj", "v_proj", "o_proj",
+              "gate_proj", "up_proj", "down_proj"), r=16)
+    head = torch.nn.Linear(896, len(vocab)).to(dev)
+    params = ([p for p in enc.parameters() if p.requires_grad]
+              + list(head.parameters()))
+    opt = torch.optim.Adam(params, lr=1e-4)
+    lossf = torch.nn.BCEWithLogitsLoss()
+    print(f"{n_wrapped} linears wrapped; train/va/te "
+          f"{len(tr)}/{len(va)}/{len(te)}", flush=True)
+
+    def logits_for(idx, bs=16, grad=False):
+        outs = []
+        ctx = torch.enable_grad() if grad else torch.no_grad()
+        with ctx:
+            for i in range(0, len(idx), bs):
+                b = tok([texts[j] for j in idx[i:i + bs]],
+                        return_tensors="pt", padding=True,
+                        truncation=True, max_length=384).to(dev)
+                hs = enc.model(
+                    input_ids=b["input_ids"],
+                    attention_mask=b["attention_mask"]).last_hidden_state
+                m = b["attention_mask"].unsqueeze(-1).float()
+                outs.append(head((hs * m).sum(1) / m.sum(1)))
+                if grad:
+                    return outs[0]  # one batch per call in train mode
+        return torch.cat(outs)
+
+    def f1_exact(idx):
+        lg = logits_for(idx)
+        pred = (lg > 0).float().cpu()
+        y = Y[idx]
+        exact = (pred == y).all(1).float().mean().item()
+        tp = (pred * y).sum().item()
+        p = tp / max(pred.sum().item(), 1)
+        r = tp / max(y.sum().item(), 1)
+        return exact, 2 * p * r / max(p + r, 1e-9)
+
+    import random
+    best, best_state, patience = 0.0, None, 0
+    for ep in range(8):
+        order = tr[:]
+        random.Random(ep).shuffle(order)
+        for i in range(0, len(order), 16):
+            idx = order[i:i + 16]
+            lg = logits_for(idx, grad=True)
+            loss = lossf(lg, Y[idx].to(dev))
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+        ex, f1 = f1_exact(va)
+        print(f"epoch {ep}: val exact {100 * ex:.1f}% f1 {f1:.3f}",
+              flush=True)
+        score = ex + f1
+        if score > best:
+            best, patience = score, 0
+            best_state = {
+                "lora": {k: v.detach().cpu()
+                         for k, v in enc.state_dict().items()
+                         if ".a" in k or ".b" in k},
+                "head": {k: v.detach().cpu()
+                         for k, v in head.state_dict().items()}}
+        else:
+            patience += 1
+            if patience >= 2:
+                break
+    if best_state is not None:
+        enc.load_state_dict(best_state["lora"], strict=False)
+        head.load_state_dict(best_state["head"])
+    ex, f1 = f1_exact(te)
+    print(f"\nLORA test: exact {100 * ex:.1f}%  micro-F1 {f1:.3f}  "
+          f"(round 4 frozen: 89.0 / 0.978)")
+    torch.save({"lora": best_state["lora"] if best_state else {},
+                "head": head.state_dict(), "vocab": vocab},
+               Path("checkpoints/pred_syndromes_lora.pt"))
+
+
 if __name__ == "__main__":
     {"label": phase_label, "label-gen": phase_label_gen,
      "train": phase_train, "train-emb": phase_train_emb,
      "orbitals": phase_orbitals,
      "train-emb2": lambda: phase_train_emb(enrich=True),
+     "train-lora": phase_train_lora,
      }[sys.argv[1]]()
