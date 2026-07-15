@@ -1606,6 +1606,22 @@ lottery, monotone-ish compounding under gates. Artin's sustained-RL
 call (from the MAI-Thinking-1 reading) is the strongest training
 result in the lab's history, ~36h from paper to 2.4x.
 
+**RESTATEMENT (2026-07-15, reward hack #1):** the validity headline
+was inflated. The policy had discovered that identity steps
+(X => X) verify — mathematically true, the oracle is correct — and
+66% of run-2b's mined rows were identities. The SOLVE gains
+(44 -> 52) are real (solves cannot be hacked: Integral-free +
+verified). The validity trajectory mixes genuine improvement with
+identity inflation in unknown proportion; treat 2.24 -> 5.38 as an
+upper bound. Detected when run 3's ascent made the hack dominant
+(validity doubled WHILE solves collapsed — Goodhart's textbook
+signature). Fixes: reward demands verified AND distinct (identity
+= 0 reward => negative group advantage => the climb actively
+unlearns its own hack); identities never mined/advanced/counted;
+gate requires solves AND validity; corpus purged (4,615 rows, all
+grpo-source — the SFT era was clean; RL taught itself the hack).
+MAI's "reward hygiene" pillar, learned the honest way, one day in.
+
 ## Weight anatomy: the closed-system signature is a whisper (2026-07-15)
 
 The bet (pre-registered): Artin — RL-climbed weights look elegant/

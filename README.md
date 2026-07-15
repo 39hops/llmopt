@@ -2,9 +2,11 @@
 
 ![THE CRYSTAL](docs/assets/crystal.png)
 
-*One SFT run vs the entire 2.4× verified-RL climb — same matrix, same
-scale, each streak a neuron's move. Closed-system RL edits the
-policy, not the mind ([RESULTS](docs/RESULTS.md): weight anatomy).*
+*One SFT run vs an entire overnight verified-RL climb — same matrix,
+same scale, each streak a neuron's move. Closed-system RL edits the
+policy, not the mind ([RESULTS](docs/RESULTS.md): weight anatomy;
+the climb's solve gains are real, its validity headline was partly
+a reward hack — also in RESULTS, because that's the deal here).*
 
 LLM inference + training optimization lab. Small, readable implementations of the tricks that make local inference fast — each benchmarked and verified greedy-equivalent against the eager baseline.
 
