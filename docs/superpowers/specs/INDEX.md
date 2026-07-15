@@ -31,3 +31,4 @@ docs/BOARD.md.
 | 2026-07-14 grpo-v2-and-unified-climb | SPEC'D — lossless verify levers (cache/batched-fork/numeric-reject), syndrome-in-RL unified climb gated on the Mac A/B |
 | 2026-07-15 post-climb-strategy | LIVE — the synthesis: RL engine + curriculum ascent (running) -> self-distillation -> weight anatomy -> stitching tier 2 -> domain expansion |
 | 2026-07-15 math-native-micromodel | BUILDING — from-scratch closed-system species; priors-vs-drag falsifiable; anatomy from birth |
+| 2026-07-15 mathnative-micromodel | SPEC'D + GO — from-scratch ~19M, closed-system-only diet; priors-vs-drag falsifiable; phase 0 farm starting |
