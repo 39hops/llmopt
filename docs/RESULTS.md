@@ -1623,9 +1623,20 @@ implied: the capability was already in the model — verified-reward
 RL redistributes probability mass among existing behaviors with
 tiny uniform nudges rather than building circuits (retro-explains
 the Arena one-sign miss: the model knows both signs; training moves
-the PREFERENCE). Elegant, as bet. Part 2 queued: CKA drift +
-layer-sweep probes on the climbed model (function-side; the iron
-rule demands the probes agree before the story is final).
+the PREFERENCE). Elegant, as bet. **Part 2 (function-side) CONFIRMS the whisper**:
+CKA(pre, climbed) = 0.9998 at EVERY layer except the last (L24:
+0.9877 — the only real drift; the policy lives in the final layer);
+syndrome probes flat (L9/15/21 within noise both models — knowledge
+unchanged); and yet output preferences moved hard: P(' -') as first
+step token at the heartbreaker state shifted 5.5x — the WRONG way
+(0.176 -> 0.032), which resolves the Arena rematch honestly: the
+climb's preference edit is band-average optimal and that state paid
+for the band's gains. Full mechanism: the 2.4x lives in the last
+layer's output preferences — a whisper-quiet, low-rank, depth-
+uniform nudge on an intact mind. Closed-system RL edits the policy,
+not the representation (at this scale/duration). Corollary: the
+sign-discipline reward knob is re-balancing an actual trade the
+climb made, not cosmetics.
 
 ## Origin story, closed
 
