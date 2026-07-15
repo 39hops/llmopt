@@ -1569,6 +1569,28 @@ retrain-lottery draws (3/32-class), so statistical power was low —
 but the pre-registered gate was "helps in the clean SFT setting."
 It didn't.
 
+## Representation stitching, tier 1: the change of basis is real (2026-07-15)
+
+Artin's riff, operational ("spacetime is matrices — map GLM's
+geometry onto the 0.5B"; quantum-chem reading: the overlap matrix
+between basis sets). Teacher SmolLM2-1.7B — alien architecture,
+alien tokenizer — same 4573 labeled states, same split, same bar
+family (`scripts/bench_stitch_poc.py`). Three rungs, all green:
+**RUNG 1**: the foreign model's layers probe at up to **91.6% /
+0.984 (layer 18) — BEATING our native Qwen layer-15 (90.5/0.979)**.
+Bigger model, richer geometry, exactly the tier hypothesis; and its
+layer curve replicates the mid-network plateau (peak 15-18/24,
+decay after) — task-structure-peaks-mid-network now confirmed
+across TWO architectures. **RUNG 2**: least-squares linear bridge
+into Qwen layer-15 space reconstructs at R~0.98; bridged vectors
+probe at 90.5/0.981 — the signal survives the change of basis
+essentially losslessly. **RUNG 2b (strong form)**: a probe trained
+ONLY on native Qwen vectors reads bridged foreign vectors at 86.9%
+— translation lands in the same COORDINATES, not just the same
+information (the Platonic-convergence claim, measured at 0.5B/1.7B
+scale). Tiers 2 (30B keep-set teacher) and 3 (GLM offline donor +
+representation distillation / zero-inference keep-set) unlock.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
