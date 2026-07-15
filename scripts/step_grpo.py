@@ -254,6 +254,11 @@ def main(cycles: int, groups_per_cycle: int = GROUPS_PER_CYCLE,
                   flush=True)
             if sb["validity"] >= best_validity - 0.1:
                 best_validity = max(best_validity, sb["validity"])
+                import shutil
+                # evolution series: retain per-gate snapshots (the
+                # crystal movie — Artin 2026-07-15)
+                shutil.copy(tmp, CKPT.with_name(
+                    f"{CKPT.stem}_c{cyc:03d}.pt"))
                 tmp.replace(CKPT)
                 retried = False
                 print(f"  checkpointed -> {CKPT}", flush=True)
