@@ -1606,6 +1606,27 @@ lottery, monotone-ish compounding under gates. Artin's sustained-RL
 call (from the MAI-Thinking-1 reading) is the strongest training
 result in the lab's history, ~36h from paper to 2.4x.
 
+## Weight anatomy: the closed-system signature is a whisper (2026-07-15)
+
+The bet (pre-registered): Artin — RL-climbed weights look elegant/
+simple or interwoven-complex; Claude — concentrated mid-network,
+lower rank. Instruments: composed BA deltas per (layer, module),
+depth profiles, stable rank (`scripts/bench_weight_anatomy.py`).
+**Artin wins.** The RL move (run-2b final minus its pre-GRPO init)
+has Frobenius norm **4.0 vs 61-87 for every SFT run** — the entire
+2.4x climb wrote ~6% of one SFT run's weight movement. Depth
+profile nearly UNIFORM (32/36/32 across thirds) — flatter than SFT
+(~20/39/40, mid-late piling) — falsifying the mid-network-
+concentration prediction; stable rank lower (4.27 vs 5.3-5.8),
+confirming the fewer-directions sub-claim mildly. Mechanism
+implied: the capability was already in the model — verified-reward
+RL redistributes probability mass among existing behaviors with
+tiny uniform nudges rather than building circuits (retro-explains
+the Arena one-sign miss: the model knows both signs; training moves
+the PREFERENCE). Elegant, as bet. Part 2 queued: CKA drift +
+layer-sweep probes on the climbed model (function-side; the iron
+rule demands the probes agree before the story is final).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
