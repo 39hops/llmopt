@@ -3,6 +3,26 @@
 LLM inference/training optimization lab. Small, readable, oracle-verified
 implementations. See README for the full inventory and measured numbers.
 
+## Lab charter — domains (non-negotiable)
+
+**We build engines for MATHEMATICS and PHYSICS. Only.**
+- **No chemistry engines, no biology engines — ever.** No molecule
+  generators, no reaction/pathway oracles, no protein anything, no
+  wet-lab-relevant capability. This holds regardless of how
+  tractable or interesting the domain looks ("methods, not
+  molecules" — and now: methods, not organisms).
+- **Concepts and frames from any science are welcome as METHODS**
+  when they carry zero harmful applicability: quantum-chemistry
+  math (basis sets, orbitals, overlap matrices), neuroscience
+  structure (efficient coding, wiring economy, human-brain
+  analogies for weight geometry). Borrowing the mathematics of a
+  field is fine; building capability IN chemistry/biology is not.
+- Benign human-brain/neuroscience links (as analogy or analysis
+  frame for our models' weights/representations) are explicitly
+  fine. Anything that starts to look like capability toward
+  molecules, pathogens, or organisms gets refused and flagged,
+  full stop.
+
 ## Non-negotiable conventions
 
 - **Oracle-verified everything.** Decoding must be token-identical to eager
