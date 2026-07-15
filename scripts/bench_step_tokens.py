@@ -354,6 +354,13 @@ def solve_chain(tok, model, integ: str, budget: int, seed0: int):
             cand = line.split("=>")[-1].strip()
             if not cand:
                 continue
+            # REWARD HACK #1 (2026-07-15): identity steps (X => X)
+            # verify — mathematically true — but a step that goes
+            # nowhere is not a step. Not valid, not an advance.
+            # Metric change: validity numbers before this date are
+            # inflated wherever the model emitted identities.
+            if cand.replace(" ", "") == cur.replace(" ", ""):
+                continue
             if FAST_ORACLE:
                 from bench_verify_fast import verify_wave
                 okp, solved = verify_wave(cur, [cand])[cand]

@@ -102,7 +102,18 @@ def collect_groups(tok, model, n_groups: int, seed0: int):
                         verdict[ln] = (False, False)
                     else:
                         verdict[ln] = verify_step(cur, expr)
-            rewards = [1.0 if verdict[ln][0] else 0.0 for ln in lines]
+            # REWARD HACK #1 (2026-07-15, the Goodhart run): X => X
+            # verifies (mathematically true; the oracle is right) and
+            # the ascent's famine made trivial identity steps the
+            # easiest reward — validity doubled while solves died.
+            # Reward demands PROGRESS: verified AND textually distinct.
+            def _r(ln):
+                ok, _ = verdict[ln]
+                if not ok:
+                    return 0.0
+                expr = ln.split("=>")[-1].strip().replace(" ", "")
+                return 0.0 if expr == cur.replace(" ", "") else 1.0
+            rewards = [_r(ln) for ln in lines]
             n_ok = sum(1 for r in rewards if r > 0)
             if 0 < n_ok < B:
                 stats["mixed"] += 1
@@ -118,6 +129,8 @@ def collect_groups(tok, model, n_groups: int, seed0: int):
                 ok, solved = verdict[ln]
                 if ok:
                     expr = ln.split("=>")[-1].strip()
+                    if expr.replace(" ", "") == cur.replace(" ", ""):
+                        continue  # identity: never mine, never advance
                     mined.append({"cur": cur, "nxt": expr,
                                   "level": lv, "source": "grpo"})
                     if solved:
@@ -195,6 +208,7 @@ def main(cycles: int, groups_per_cycle: int = GROUPS_PER_CYCLE,
 
     if skip_baseline:
         best_validity = 0.0  # smoke mode: no gate protection
+        best_solves = 0
     else:
         print("baseline gate eval...", flush=True)
         model.eval()
@@ -202,6 +216,7 @@ def main(cycles: int, groups_per_cycle: int = GROUPS_PER_CYCLE,
         print(f"baseline: {base['solves']} validity "
               f"{base['validity']:.2f}%", flush=True)
         best_validity = base["validity"]
+        best_solves = sum(base["solves"].values())
     torch.save({k: v.cpu() for k, v in model.state_dict().items()
                 if k.split(".")[-1] in ("a", "b")}, CKPT)
     tok, model = load(str(CKPT))
@@ -252,8 +267,11 @@ def main(cycles: int, groups_per_cycle: int = GROUPS_PER_CYCLE,
             print(f"cycle {cyc} gate: {sb['solves']} validity "
                   f"{sb['validity']:.2f}% (best {best_validity:.2f})",
                   flush=True)
-            if sb["validity"] >= best_validity - 0.1:
+            solves_now = sum(sb["solves"].values())
+            if (sb["validity"] >= best_validity - 0.1
+                    and solves_now >= best_solves - 2):
                 best_validity = max(best_validity, sb["validity"])
+                best_solves = max(best_solves, solves_now)
                 import shutil
                 # evolution series: retain per-gate snapshots (the
                 # crystal movie — Artin 2026-07-15)
