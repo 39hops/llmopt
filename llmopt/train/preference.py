@@ -67,9 +67,20 @@ def grpo_advantages(rewards, group_ids):
     return adv
 
 
-def grpo_loss(logp_new, logp_old, advantages, *, clip: float = 0.2):
-    """PPO-clip objective with group-relative advantages, per sequence."""
+def grpo_loss(logp_new, logp_old, advantages, *, clip: float = 0.2,
+              dual_clip: float = 3.0):
+    """PPO-clip objective with group-relative advantages, per sequence.
+
+    Dual-clip (Ye et al. 2020): standard PPO clipping only bounds the
+    positive-advantage side; for A<0 a runaway ratio makes the term
+    -ratio*A -> +inf. Sequence-summed logps drift fast under per-group
+    optimizer steps (the micro-GRPO cycle-5 loss-205 spike), so the
+    negative-advantage term is floored at dual_clip*A.
+    """
     ratio = (logp_new - logp_old).exp()
     unclipped = ratio * advantages
     clipped = ratio.clamp(1 - clip, 1 + clip) * advantages
-    return -torch.minimum(unclipped, clipped).mean()
+    obj = torch.minimum(unclipped, clipped)
+    obj = torch.where(advantages < 0,
+                      torch.maximum(obj, dual_clip * advantages), obj)
+    return -obj.mean()

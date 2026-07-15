@@ -1697,6 +1697,27 @@ BASELINE exceeds the 0.5B's ceiling on this task by ~an order of
 magnitude at 1/26th the size — the priors-vs-drag result, replicated
 at chain level.
 
+## Loss-spike autopsy: dual-clip hole in grpo_loss (2026-07-15)
+
+The cycle-12 spike wasn't a one-off: the run-1 log shows **cycle 5
+hit loss 205.1** (cycle 12's 1.80 was the echo), and both spike
+cycles are exactly the two whose gates rolled back. Mechanism, three
+parts: (1) `grpo_loss` ratios are whole-sequence (logps summed over
+up to 120 tokens before exp — 0.04 nats/token of drift is a ratio of
+~100); (2) the driver takes an optimizer step per group, so group
+#60 is scored against a policy 59 updates newer than its `logp_old`
+— full-param 19M drifts far faster than the 0.5B's LoRA@5e-6, which
+is why only the micro runs spiked; (3) PPO's clip only bounds the
+positive-advantage side: for A<0 the term -ratio*A is UNBOUNDED when
+the policy drifts toward a failed sample. Grad-clip capped the
+magnitude, not the direction — hence the gate regressions. Not a
+data or reward bug: the known dual-clip failure mode (Ye et al.).
+**Fix shipped:** `grpo_loss` now floors the negative-advantage term
+at dual_clip*A (c=3), regression test pins the bound and the
+zero-gradient floor. Both drivers inherit it. Run 2 curriculum
+ascent (which showed smaller echoes: 0.60 at cycle 3) restarts
+from its cycle-4 checkpoint under the fixed loss.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

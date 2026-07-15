@@ -141,3 +141,18 @@ def test_grpo_advantages_and_clip():
     huge = grpo_loss(torch.full((3,), 5.0), logp_old, adv3)
     assert float(huge) == pytest.approx(-1.2)  # clipped at 1 + 0.2
     assert float(small) > float(huge)
+
+
+def test_grpo_dual_clip_bounds_negative_advantage():
+    # the cycle-5 spike: policy drifts TOWARD a failed sample —
+    # ratio explodes, A<0, and vanilla PPO clip leaves -ratio*A
+    # unbounded. Dual-clip floors the term at dual_clip*A.
+    logp_old = torch.zeros(3)
+    adv_neg = torch.full((3,), -1.0)
+    runaway = grpo_loss(torch.full((3,), 5.0), logp_old, adv_neg)  # ratio e^5
+    assert float(runaway) == pytest.approx(3.0)  # dual_clip * |A|, not ~148
+    # gradient must be finite and bounded too
+    lp = torch.full((3,), 5.0, requires_grad=True)
+    grpo_loss(lp, logp_old, adv_neg).backward()
+    assert torch.isfinite(lp.grad).all()
+    assert float(lp.grad.abs().max()) == 0.0  # fully floored: no push
