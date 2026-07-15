@@ -43,9 +43,16 @@ FAST_VERIFY = True  # SHIPPED 2026-07-14: parity bench 29.8x, zero
 GATE_EVERY = 2          # spec said 4; v0 gates twice as often (safety)
 LR0 = 5e-6
 CLIP = 0.2
-LEVELS = (2, 3, 4, 5)
-SEED_BASE = 42_000_000  # collection band
-GATE_BAND = 8_600_000   # fixed gate band (fresh)
+# Curriculum ascent (run 3, Artin GO 2026-07-15): collection climbs
+# to L3-8 — high levels start as all-fail famine (discarded free)
+# and become mixed groups exactly when the policy earns them; the
+# mixed-group filter IS the curriculum. Gate widens to L2-6 so the
+# ascent is visible. New promoted baseline (post-run-2b) resets the
+# scale anyway.
+LEVELS = (3, 4, 5, 6, 7, 8)
+GATE_LEVELS = (2, 3, 4, 5, 6)
+SEED_BASE = 44_000_000  # run-3 collection band (fresh)
+GATE_BAND = 8_700_000   # run-3 gate band (fresh)
 CKPT = Path("checkpoints/step_lora_grpo.pt")
 CORPUS = Path("data/step_chains.jsonl")
 
@@ -163,7 +170,7 @@ def gate_eval(adapter: str):
     from expert_loop import evaluate
     from bench_step_tokens import load
     tok, model = load(adapter)
-    sb = evaluate(tok, model, levels=LEVELS, n_per=24,
+    sb = evaluate(tok, model, levels=GATE_LEVELS, n_per=24,
                   seed_base=GATE_BAND, budget=512)
     del model
     return sb
