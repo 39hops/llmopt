@@ -9,3 +9,4 @@ build/
 notebooks/
 notes/
 checkpoints/pred_syndromes_5b.pt
+data/micromodel_grpo_mined.jsonl
