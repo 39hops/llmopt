@@ -1,5 +1,11 @@
 # llmopt
 
+![THE CRYSTAL](docs/assets/crystal.png)
+
+*One SFT run vs the entire 2.4× verified-RL climb — same matrix, same
+scale, each streak a neuron's move. Closed-system RL edits the
+policy, not the mind ([RESULTS](docs/RESULTS.md): weight anatomy).*
+
 LLM inference + training optimization lab. Small, readable implementations of the tricks that make local inference fast — each benchmarked and verified greedy-equivalent against the eager baseline.
 
 ## Highlights
