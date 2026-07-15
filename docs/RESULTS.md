@@ -1654,6 +1654,31 @@ not the representation (at this scale/duration). Corollary: the
 sign-discipline reward knob is re-balancing an actual trade the
 climb made, not cosmetics.
 
+## The math-native micro-model: the internet was drag (2026-07-15)
+
+The priors-vs-drag experiment (spec 2026-07-15-mathnative), phase 1
+verdict. A from-scratch 19M decoder (45-token hand-built vocabulary
+— the charset mask made honest; RMSNorm/RoPE/SwiGLU) trained THIRTY
+MINUTES (3 x 10-min epochs, MPS, loss 0.54 -> 0.33) on 94.5k
+engine-minted pairs + the purged corpus. Phase-1 gate (bar: 1% step
+validity, the 0.5B's historical start): first run read 81.67% — and
+the one-day-old Goodhart reflex demanded the contamination check,
+which caught 11/48 eval roots present in the diet (the mathgen
+small-space scar, third appearance). UNSEEN-ONLY rerun, harder band
+(L2-4, 17 contaminated roots excluded): **65.59% validity
+(2,015/3,072) with 617 outright solving steps.** Against the
+pretrained 0.5B: ~20x its honest post-climb validity (3.34%),
+~50x its starting point, at 1/26th the parameters and ~100x the
+training/sampling speed. Verdict: for closed-system symbolic math,
+pretraining priors were overwhelmingly DRAG — the 0.5B's capacity
+went to knowing everything and fighting 152k tokens of habit; the
+19M knows one language and every word is calculus (Artin's
+bad-habits mechanism, measured). The famine does not exist on this
+substrate: GRPO-from-birth starts amid plenty. Caveat on the books:
+in-distribution generalization (same generator families) — true of
+every 0.5B number too, so the comparison stands; out-of-family
+transfer is phase 3's question.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
