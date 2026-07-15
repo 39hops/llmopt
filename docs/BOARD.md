@@ -1,6 +1,6 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-12. RESULTS.md holds verdicts, RIFF-LEDGER.md holds
+Updated 2026-07-15. Strategy: specs/2026-07-15-post-climb-strategy.md. RESULTS.md holds verdicts, RIFF-LEDGER.md holds
 provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
