@@ -1679,6 +1679,24 @@ in-distribution generalization (same generator families) — true of
 every 0.5B number too, so the comparison stands; out-of-family
 transfer is phase 3's question.
 
+## Micro-model phase 2 + 0.5B run 3d: honest climbs, both substrates (2026-07-15)
+
+**19M GRPO-from-birth (12 cycles, Mac, full-param):** baseline 36/48
+chain solves @ 76.8% validity -> best checkpoint 39/48 @ 80.3%.
+L2/L3 saturated at 12/12 FROM BASELINE — the gate band was largely
+outgrown before RL began, so headroom lived only at L4/L5. Late-run
+caveat: cycle-12 grpo loss spiked to 1.80 (vs ~0.05 typical) and the
+final gate rolled back — investigate before longer runs. Follow-ups:
+raise gate band + collection to L4-L7; loss-spike autopsy.
+**0.5B run 3d (honest reward, both guards):** baseline
+{13,17,14,13,9} @ 3.34% -> cycle-6 gate {14,17,14,15,9} @ 3.63%,
+checkpointed — slow, real, un-hacked gains (+1141 mined steps, zero
+identities by construction). Stopped clean at the cycle-6 checkpoint
+for machine handoff. The two substrates in one line: the 19M's
+BASELINE exceeds the 0.5B's ceiling on this task by ~an order of
+magnitude at 1/26th the size — the priors-vs-drag result, replicated
+at chain level.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
