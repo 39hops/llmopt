@@ -46,7 +46,7 @@ def load_rows(v2: bool = False, v21: bool = False):
 
 def main(v2: bool = False, d: int = 384, layers: int = 8,
          ffn: int = 1536, out: str | None = None,
-         heads: int = 6, v21: bool = False) -> None:
+         heads: int = 6, v21: bool = False, fast: bool = False) -> None:
     import torch
     global CKPT
     if v2:
@@ -80,12 +80,34 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     model = build_model(len(tok.vocab), d=d, layers=layers,
                         heads=heads, ffn=ffn).to(dev)
     n_params = sum(p.numel() for p in model.parameters())
-    print(f"model: {n_params/1e6:.1f}M params on {dev}", flush=True)
+    print(f"model: {n_params/1e6:.1f}M params on {dev}"
+          f"{' [fast: bf16 + token-budget]' if fast else ''}", flush=True)
     opt = torch.optim.AdamW(model.parameters(), lr=LR,
                             weight_decay=0.01)
-    steps_total = EPOCHS * (len(enc) // BS)
+    if fast:
+        # token-budget packing: enc is length-sorted and median seq
+        # ~60 tok, so fixed BS=32 wastes the budget the 512-tok
+        # worst case needs. Pack batches to a token budget instead.
+        BUDGET = 24_576
+        starts = []
+        i = 0
+        while i < len(enc):
+            n_fit = max(1, min(len(enc) - i,
+                               BUDGET // max(len(enc[min(
+                                   i + BS - 1, len(enc) - 1)]), 1)))
+            # recompute against the true max-length of the slice
+            while n_fit > 1 and n_fit * len(enc[i + n_fit - 1]) > BUDGET:
+                n_fit -= 1
+            starts.append((i, i + n_fit))
+            i += n_fit
+        steps_total = EPOCHS * len(starts)
+    else:
+        starts = [(i, i + BS) for i in range(0, len(enc) - BS, BS)]
+        steps_total = EPOCHS * (len(enc) // BS)
     sched = torch.optim.lr_scheduler.OneCycleLR(
         opt, max_lr=LR, total_steps=steps_total, pct_start=0.03)
+    amp = (torch.autocast(device_type="cuda", dtype=torch.bfloat16)
+           if fast and dev == "cuda" else None)
 
     marker = Path(str(CKPT) + ".ep")
     start_ep = 0
@@ -95,24 +117,26 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
         model.to(dev)
         print(f"resuming at epoch {start_ep}", flush=True)
 
+    import contextlib
     for ep in range(start_ep, EPOCHS):
-        idx = list(range(0, len(enc) - BS, BS))
+        idx = list(starts)
         random.Random(ep).shuffle(idx)   # per-epoch order shuffle
         tot = steps = 0
         t0 = time.time()
-        for n, i in enumerate(idx):
-            batch = enc[i:i + BS]
+        for lo, hi in idx:
+            batch = enc[lo:hi]
             L = max(len(s) for s in batch)
             ids = torch.tensor([s + [tok.pad_id] * (L - len(s))
                                 for s in batch], device=dev)
             mask = torch.tensor([[1] * len(s) + [0] * (L - len(s))
                                  for s in batch], device=dev)
-            logits = model(ids[:, :-1], mask[:, :-1])
-            labels = ids[:, 1:].clone()
-            labels[mask[:, 1:] == 0] = -100
-            loss = torch.nn.functional.cross_entropy(
-                logits.reshape(-1, logits.shape[-1]),
-                labels.reshape(-1), ignore_index=-100)
+            with (amp or contextlib.nullcontext()):
+                logits = model(ids[:, :-1], mask[:, :-1])
+                labels = ids[:, 1:].clone()
+                labels[mask[:, 1:] == 0] = -100
+                loss = torch.nn.functional.cross_entropy(
+                    logits.reshape(-1, logits.shape[-1]),
+                    labels.reshape(-1), ignore_index=-100)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             opt.step()
@@ -141,6 +165,10 @@ if __name__ == "__main__":
     ap.add_argument("--v21", action="store_true",
                     help="v2.1 diet (v2 + L4 calc chains); use with "
                          "--out")
+    ap.add_argument("--fast", action="store_true",
+                    help="bf16 autocast (cuda) + token-budget "
+                         "batching; parity-gated before cross-run "
+                         "comparisons trust it")
     ap.add_argument("--d", type=int, default=384)
     ap.add_argument("--layers", type=int, default=8)
     ap.add_argument("--ffn", type=int, default=1536)
@@ -148,4 +176,5 @@ if __name__ == "__main__":
     ap.add_argument("--out", default=None,
                     help="checkpoint path override (capacity runs)")
     a = ap.parse_args()
-    main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads, a.v21)
+    main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads, a.v21,
+         a.fast)
