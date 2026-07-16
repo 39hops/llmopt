@@ -1815,6 +1815,20 @@ oscillating within tolerance of the ceiling. L4 held 7-8 all leg.
 The next lever is diet, not more RL: v2.1 (L4 engine-chain shards,
 farming overnight) retrains the base under the ceiling.
 
+## Capacity check: params were the ceiling where structure is deep (2026-07-16)
+
+Artin's 4 AM call, made one-variable: 50.4M (d=512/L12/8h) on the
+IDENTICAL v2 diet and recipe vs the 19M. Training loss statistically
+identical (0.366 vs 0.371) — but the unseen gate moved:
+**53.62 -> 57.53%**, solving steps 445 -> 566 (+27%), and **L4
+validity 9.9 -> 18.4%** (nearly doubled; L2/L3 roughly flat).
+Verdict: the 19M was capacity-bound SELECTIVELY — on the long
+structural patterns L4 needs, not on the short families. Corollary
+worth keeping: average LM loss barely registers hard-tail
+capability; the oracle gate does. Two levers confirmed in one
+night: diet (+3.0, L3) and capacity (+3.9, L4). Production path:
+50.4M x v2.1 diet (both levers stacked) once the L4 farms land.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
