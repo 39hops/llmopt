@@ -34,8 +34,8 @@ CLIP = 0.2
 # for 4 straight gates — L2/L3 maxed, deeper levels needed)
 LEVELS = (4, 5, 6, 7)
 GATE_LEVELS = (3, 4, 5, 6, 7)
-GATE_N = 12
-SEED_BASE = 61_000_000
+GATE_N = 24  # 12/level left +-1 solve inside the gate's noise floor (run 2b)
+SEED_BASE = 62_000_000  # run 2c: 61M consumed by run 2b (fresh problems, same gate band)
 GATE_BAND = 9_900_000
 CKPT = Path("checkpoints/mathnative_grpo.pt")
 CORPUS = Path("data/micromodel_grpo_mined.jsonl")  # untracked sidecar
