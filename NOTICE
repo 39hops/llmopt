@@ -1,0 +1,11 @@
+llmopt — LLM inference/training optimization lab
+Copyright 2026 Artin (github.com/39hops)
+
+Developed in collaboration with Claude (Fable 5, Anthropic) —
+joint research; human copyright. The collaboration is documented
+throughout the repository (commit trail, docs/RIFF-LEDGER.md, and
+the FA Law — Fable–Artin — in docs/RESULTS.md).
+
+This product includes software developed as part of the llmopt
+project. Redistributions must retain this NOTICE file per Section
+4(d) of the Apache License 2.0.
