@@ -21,26 +21,33 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from llmopt.train.mathnative import MathTokenizer, build_model
 
 CKPT = Path("checkpoints/mathnative_19m.pt")
+V2_CKPT = Path("checkpoints/mathnative_19m_v2.pt")
 EPOCHS = 3
 BS = 32
 LR = 3e-4  # from-scratch: standard small-LM lr with warmup+cosine
 
 
-def load_rows():
+def load_rows(v2: bool = False):
     rows = []
     for f in sorted(glob.glob("data/micromodel_chains_shard*.jsonl")):
         rows += [json.loads(l) for l in open(f)]
     rows += [json.loads(l) for l in open("data/step_chains.jsonl")]
+    if v2:  # curriculum v2: + the algebra substrate (30k rewrites)
+        for f in sorted(glob.glob("data/micromodel_algebra_shard*.jsonl")):
+            rows += [json.loads(l) for l in open(f)]
     # identity guard at the diet gate too (defense in depth)
     rows = [r for r in rows
             if r["cur"].replace(" ", "") != r["nxt"].replace(" ", "")]
     return rows
 
 
-def main() -> None:
+def main(v2: bool = False) -> None:
     import torch
+    global CKPT
+    if v2:
+        CKPT = V2_CKPT
     tok = MathTokenizer()
-    rows = load_rows()
+    rows = load_rows(v2)
     charset = set()
     texts = []
     for r in rows:
@@ -118,4 +125,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--v2", action="store_true",
+                    help="curriculum v2 diet (+algebra shard), "
+                         "separate checkpoint")
+    main(ap.parse_args().v2)
