@@ -1781,6 +1781,28 @@ phase 2: does v2's L4 (9.9% wave validity) now form mixed groups
 where the starved v1 lineage couldn't? -> v2-GRPO run, L4 column
 vs run 2c's flat 6/24.
 
+## v2-GRPO run 1: the curriculum compounds under RL (2026-07-16)
+
+12 cycles from the raw v2 base, own lineage
+(`mathnative_v2_grpo.pt`), 63M seeds, GATE_N=24, dual-clip.
+**Headline 1 — the base:** v2 with ZERO RL opened at 57/120 @
+53.12%, EQUAL in solves to run 2c's final checkpoint after 24 GRPO
+cycles on the v1 lineage. 30 min of algebra-enriched pretraining
+bought what two RL runs bought — on this substrate, diet is ~20x
+cheaper per solve than RL.
+**Headline 2 — the climb:** 57 -> 60/120 @ 57.94% (final gate, new
+best on both axes; the highest any 19M lineage has posted). Twelve
+flat losses (0.008-0.091); one wobble-free run, zero rollbacks.
+**Headline 3 — L4 answered:** the v1 lineage froze at 6/24; the v2
+lineage holds 8/24 (7 -> 8, stable across four gates). And the
+starvation mechanism visibly eased: early cycles filled 64 mixed
+groups in ~270-285 waves vs 2c's 415+ (~1.5x easier), and the
+all-runs L4 mining total went 1.8k -> 3.6k. Partial unstick: the
+substrate feeds RL now, but L4's ceiling still lags its neighbors —
+the residue is the integration-pattern-across-structure gap, not
+algebra. Checkpoints: `mathnative_v2_grpo.pt` = cycle-12 best
+(60 @ 57.94); sidecar at 43.2k mined steps.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
