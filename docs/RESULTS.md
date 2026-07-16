@@ -1718,6 +1718,27 @@ zero-gradient floor. Both drivers inherit it. Run 2 curriculum
 ascent (which showed smaller echoes: 0.60 at cycle 3) restarts
 from its cycle-4 checkpoint under the fixed loss.
 
+## Micro run 2b: curriculum ascent under dual-clip (2026-07-15)
+
+12 cycles from the run-2 cycle-4 checkpoint (L4-7 collection, L3-7
+gate), first run under the fixed loss. **Dual-clip confirmed
+on-policy**: all 12 cycle losses in 0.0005-0.057 — including cycle 3
+(0.60 under the old loss) and cycle 12 (the original 1.80/205
+spikes). Zero spike-coincident rollbacks; the one rollback (cycle 2,
+gate noise, LR halved to 5e-6) recovered by cycle 4.
+**Climb:** baseline 26 solves @ 54.74% -> best 28 @ 57.26% (cycle-10
+gate). The signal is L6: 1 -> 2 -> 3 monotone across gates 8/10/12-
+adjacent — frontier movement where the ascent was aimed, after
+mid-run gates looked like plateau (quiet accumulation, then
+conversion). L3 11/12; L7 wobbled 2 -> 1 at the final gate.
++~10k mined steps to the sidecar (25.3k total).
+**Checkpoint note:** the snapshot naming is off-by-one by
+construction — `mathnative_grpo_c012.pt` holds the cycle-10 BEST
+(28 @ 57.26); `mathnative_grpo.pt` is the final cycle-12 state
+(27 @ 56.87, within gate tolerance, checkpointed). Next: another
+12-cycle leg from here (L6 is moving; ride it), and consider
+GATE_N=24 — 12/level leaves +-1 solve inside the noise floor.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
