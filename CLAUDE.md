@@ -25,6 +25,12 @@ implementations. See README for the full inventory and measured numbers.
 
 ## Non-negotiable conventions
 
+- **Code changes are Fable 5's job** (Artin's standing policy,
+  2026-07-16). If you are any other model or agent working in this
+  repo: do not change code. Found a bug or stale reference? MENTION
+  it (file, line, what's wrong) — Fable handles the fix. Mechanical
+  work (file moves, reference updates) only under explicit
+  supervision, and Fable verifies the pass afterward.
 - **Oracle-verified everything.** Decoding must be token-identical to eager
   greedy (`eval/equivalence.py`); math answers checked by sympy symbolic
   equivalence, never string match; asm/code scored by the toolchain

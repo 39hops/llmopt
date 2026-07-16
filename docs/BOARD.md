@@ -18,6 +18,7 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Waiting on | Pointer |
 |---|---|---|
+| Repo housekeeping (Artin 2026-07-16): organize scripts/ and data/ into typed subdirectories, update all stale references, verify every script still runs. NOT tidying — SURGERY: scripts cross-import via sys.path (`from bench_step_tokens import ...`), data paths are hardcoded globs in trainer/eval-guard/GRPO drivers, and the 3080 checkout must move in lockstep (hash-verified). Gate: pytest green + smoke-launch every entry-point script + both machines synced. POLICY (Artin): only Fable 5 changes code in this repo — helper agents (GPT sub-agents etc.) may move files/update references under supervision, but any bug found gets MENTIONED, not fixed; Fable verifies the whole pass regardless | a natural freeze point (not mid-sprint) | 2026-07-16 chat |
 | Syndrome head | CLOSED — payoff 3 NULL (aux learns free, converts to nothing: 0.36 vs 0.42% validity); unified climb fold fails its gate; run 3 stays pure GRPO | RESULTS 2026-07-15 |
 | Syndrome dynamics (child-syndrome world model, 1-ply lookahead at embedding cost) | syndrome head rung 2 | same spec, relations |
 | Magic estimator revival on embedding features | if hardness economics return (budget alloc, skip sizing) | same spec, rung 3 |
