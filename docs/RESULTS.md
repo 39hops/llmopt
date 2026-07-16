@@ -1829,6 +1829,22 @@ capability; the oracle gate does. Two levers confirmed in one
 night: diet (+3.0, L3) and capacity (+3.9, L4). Production path:
 50.4M x v2.1 diet (both levers stacked) once the L4 farms land.
 
+## 0.5B run 4 + program retirement: the control arm, characterized (2026-07-16)
+
+12 cycles overnight from the cycle-6 checkpoint (dual-clip loss,
+first 0.5B run under it — 12 normal losses, zero spikes; the
+recurring CUDA OOM lines were the allocator's recoverable path at
+the 10GB phase boundary, process-verified twice). Gates:
+69 -> 72 -> 73 (best, cycle 6 @ 3.66%) -> 72 -> 71 -> 69(final,
+rolled back). Banked: cycle-10 state in step_lora_grpo.pt
+(71 @ 3.57); +2,322 mined rows rescued to the corpus (9,017 total).
+**Program decision (Artin's call, 2026-07-16 morning):** the 0.5B
+climb is RETIRED as characterized — it climbs real and slow
+(3.34 -> 3.66% over 2 runs), and its standing value is as the
+control arm of priors-vs-drag: the measured cost of internet
+habits. The 3080 is repurposed to the micro-model program, where
+CUDA buys capacity sweeps and GRPO legs far cheaper.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
