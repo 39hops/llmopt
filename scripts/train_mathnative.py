@@ -27,13 +27,16 @@ BS = 32
 LR = 3e-4  # from-scratch: standard small-LM lr with warmup+cosine
 
 
-def load_rows(v2: bool = False):
+def load_rows(v2: bool = False, v21: bool = False):
     rows = []
     for f in sorted(glob.glob("data/micromodel_chains_shard*.jsonl")):
         rows += [json.loads(l) for l in open(f)]
     rows += [json.loads(l) for l in open("data/step_chains.jsonl")]
     if v2:  # curriculum v2: + the algebra substrate (30k rewrites)
         for f in sorted(glob.glob("data/micromodel_algebra_shard*.jsonl")):
+            rows += [json.loads(l) for l in open(f)]
+    if v21:  # v2.1: + the L4 engine-chain shard (3.2k, chains-only)
+        for f in sorted(glob.glob("data/micromodel_calc_l4_shard*.jsonl")):
             rows += [json.loads(l) for l in open(f)]
     # identity guard at the diet gate too (defense in depth)
     rows = [r for r in rows
@@ -43,7 +46,7 @@ def load_rows(v2: bool = False):
 
 def main(v2: bool = False, d: int = 384, layers: int = 8,
          ffn: int = 1536, out: str | None = None,
-         heads: int = 6) -> None:
+         heads: int = 6, v21: bool = False) -> None:
     import torch
     global CKPT
     if v2:
@@ -51,7 +54,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     if out:
         CKPT = Path(out)
     tok = MathTokenizer()
-    rows = load_rows(v2)
+    rows = load_rows(v2 or v21, v21)
     charset = set()
     texts = []
     for r in rows:
@@ -135,6 +138,9 @@ if __name__ == "__main__":
     ap.add_argument("--v2", action="store_true",
                     help="curriculum v2 diet (+algebra shard), "
                          "separate checkpoint")
+    ap.add_argument("--v21", action="store_true",
+                    help="v2.1 diet (v2 + L4 calc chains); use with "
+                         "--out")
     ap.add_argument("--d", type=int, default=384)
     ap.add_argument("--layers", type=int, default=8)
     ap.add_argument("--ffn", type=int, default=1536)
@@ -142,4 +148,4 @@ if __name__ == "__main__":
     ap.add_argument("--out", default=None,
                     help="checkpoint path override (capacity runs)")
     a = ap.parse_args()
-    main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads)
+    main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads, a.v21)
