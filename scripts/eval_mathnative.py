@@ -64,7 +64,9 @@ def _diet_roots() -> set[str]:
     return roots
 
 
-def main(ckpt: str, levels: tuple[int, ...], unseen: bool) -> None:
+def main(ckpt: str, levels: tuple[int, ...], unseen: bool,
+         d: int = 384, layers: int = 8, ffn: int = 1536,
+         heads: int = 6) -> None:
     import sympy as sp
     import torch
 
@@ -73,7 +75,8 @@ def main(ckpt: str, levels: tuple[int, ...], unseen: bool) -> None:
 
     tok = MathTokenizer()
     dev = "mps" if torch.backends.mps.is_available() else "cpu"
-    model = build_model(len(tok.vocab)).to(dev)
+    model = build_model(len(tok.vocab), d=d, layers=layers,
+                        heads=heads, ffn=ffn).to(dev)
     model.load_state_dict(torch.load(ckpt, map_location="cpu"))
     model.to(dev).eval()
     roots = _diet_roots() if unseen else set()
@@ -130,5 +133,10 @@ if __name__ == "__main__":
     ap.add_argument("--ckpt", default="checkpoints/mathnative_19m.pt")
     ap.add_argument("--levels", default="2,3")
     ap.add_argument("--unseen", action="store_true")
+    ap.add_argument("--d", type=int, default=384)
+    ap.add_argument("--layers", type=int, default=8)
+    ap.add_argument("--ffn", type=int, default=1536)
+    ap.add_argument("--heads", type=int, default=6)
     a = ap.parse_args()
-    main(a.ckpt, tuple(int(s) for s in a.levels.split(",")), a.unseen)
+    main(a.ckpt, tuple(int(s) for s in a.levels.split(",")), a.unseen,
+         a.d, a.layers, a.ffn, a.heads)
