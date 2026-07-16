@@ -46,7 +46,8 @@ def load_rows(v2: bool = False, v21: bool = False):
 
 def main(v2: bool = False, d: int = 384, layers: int = 8,
          ffn: int = 1536, out: str | None = None,
-         heads: int = 6, v21: bool = False, fast: bool = False) -> None:
+         heads: int = 6, v21: bool = False, fast: bool = False,
+         budget: int = 24_576) -> None:
     import torch
     global CKPT
     if v2:
@@ -88,7 +89,10 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
         # token-budget packing: enc is length-sorted and median seq
         # ~60 tok, so fixed BS=32 wastes the budget the 512-tok
         # worst case needs. Pack batches to a token budget instead.
-        BUDGET = 24_576
+        # 24.5k fit the 50.4M; at 113M it left zero VRAM headroom on
+        # the 3080 (allocator retry-thrash, ~5% efficiency) — size
+        # the budget to the model.
+        BUDGET = budget
         starts = []
         i = 0
         while i < len(enc):
@@ -175,6 +179,10 @@ if __name__ == "__main__":
     ap.add_argument("--heads", type=int, default=6)
     ap.add_argument("--out", default=None,
                     help="checkpoint path override (capacity runs)")
+    ap.add_argument("--budget", type=int, default=24_576,
+                    help="token budget per packed batch (--fast); "
+                         "shrink when the model leaves no VRAM "
+                         "headroom")
     a = ap.parse_args()
     main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads, a.v21,
-         a.fast)
+         a.fast, a.budget)
