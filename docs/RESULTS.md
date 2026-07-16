@@ -1859,6 +1859,22 @@ and **solving steps 445 -> 579 (+30%)** — chain-shaped rows teach
 finishing moves. Good per-row efficiency; scale the diet in v2.2.
 Production train launched: 50.4M x v2.1 (both confirmed levers).
 
+## The four-way: diet and capacity don't stack (2026-07-16)
+
+| unseen gate | v2 diet | v2.1 diet |
+|---|---|---|
+| 19M | 53.62% / 445 solving | 54.56% / 579 |
+| 50.4M | **57.53%** / 566 | 56.67% / **628** |
+
+At 19M the L4 chain shard helps everything; at 50.4M it costs ~0.9
+validity (borderline noise) while solving steps still rise +11% to
+the best of all four. The levers INTERACT: the bigger model already
+extracts most of what 1.2k chain rows teach, and the diet's
+remaining value concentrates in finishing skill. Training loss was
+blind to all of it (0.3658 vs 0.3659). Production tiebreak: chain
+solves are the currency (P(>=1 valid/wave) lesson) — GATE_N=24
+chain gate on both 50.4M variants decides the GRPO base.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
