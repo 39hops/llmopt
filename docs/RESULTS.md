@@ -1739,6 +1739,29 @@ construction — `mathnative_grpo_c012.pt` holds the cycle-10 BEST
 12-cycle leg from here (L6 is moving; ride it), and consider
 GATE_N=24 — 12/level leaves +-1 solve inside the noise floor.
 
+## Micro run 2c: honest gate, real ascent, and the L4 diagnosis (2026-07-15)
+
+12 cycles from the run-2b endpoint, GATE_N 12->24 (noise floor
+halved) and fresh 62M collection seeds. **The climb, above the noise
+floor:** baseline 52/120 @ 54.97% -> peak 59/120 @ 58.61% (cycle-6
+gate), monotone 52->53->56->59; ended 57 @ 58.26 (cycle-10
+checkpoint) after the final gate's validity dipped past tolerance.
+L7 tripled (2->6 at peak); L3 near-saturated 23/24. Twelve flat
+losses (0.027-0.103) — dual-clip holds under fresh problems too.
+Checkpoints: `mathnative_grpo.pt` = cycle-10 (57 @ 58.26);
+`mathnative_grpo_c010.pt` = the cycle-6 PEAK (59 @ 58.61, off-by-one
+naming). Sidecar at 37k mined steps.
+**The L4 diagnosis (mid-run, static analysis):** the doubled gate
+exposed L4 at 6/24 (25%) — below L5 (16-17/24). Token cap ruled out
+(all L4 answers encode <=64/120 — honest null). Cause: diet
+starvation compounding — phase-1 diet is thinnest at L4 (7.6k of
+94.5k) and GRPO mining then AMPLIFIES the gap (1.8k L4 mined vs
+16.5k L5, equal prompt allocation): weak band -> all-fail waves ->
+no mixed groups -> no gradient. RL cannot self-feed a starved band;
+the fix is food. -> Staged curriculum pretraining (riff ledger, GO):
+algebra-first diet, retrain phase 1, bar = beat 65.6% unseen AND
+unstick L4.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
