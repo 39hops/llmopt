@@ -58,6 +58,7 @@ def _diet_roots() -> set[str]:
     roots = set()
     for f in (glob.glob("data/micromodel_chains_shard*.jsonl")
               + glob.glob("data/micromodel_algebra_shard*.jsonl")
+              + glob.glob("data/micromodel_calc_l4_shard*.jsonl")
               + ["data/step_chains.jsonl"]):
         for line in open(f):
             roots.add(json.loads(line)["cur"].replace(" ", ""))
