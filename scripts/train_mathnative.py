@@ -42,7 +42,8 @@ def load_rows(v2: bool = False):
 
 
 def main(v2: bool = False, d: int = 384, layers: int = 8,
-         ffn: int = 1536, out: str | None = None) -> None:
+         ffn: int = 1536, out: str | None = None,
+         heads: int = 6) -> None:
     import torch
     global CKPT
     if v2:
@@ -74,7 +75,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
            "cuda" if torch.cuda.is_available() else "cpu")
     torch.manual_seed(0)
     model = build_model(len(tok.vocab), d=d, layers=layers,
-                        ffn=ffn).to(dev)
+                        heads=heads, ffn=ffn).to(dev)
     n_params = sum(p.numel() for p in model.parameters())
     print(f"model: {n_params/1e6:.1f}M params on {dev}", flush=True)
     opt = torch.optim.AdamW(model.parameters(), lr=LR,
@@ -137,7 +138,8 @@ if __name__ == "__main__":
     ap.add_argument("--d", type=int, default=384)
     ap.add_argument("--layers", type=int, default=8)
     ap.add_argument("--ffn", type=int, default=1536)
+    ap.add_argument("--heads", type=int, default=6)
     ap.add_argument("--out", default=None,
                     help="checkpoint path override (capacity runs)")
     a = ap.parse_args()
-    main(a.v2, a.d, a.layers, a.ffn, a.out)
+    main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads)
