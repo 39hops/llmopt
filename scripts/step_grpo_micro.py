@@ -35,7 +35,7 @@ CLIP = 0.2
 LEVELS = (4, 5, 6, 7)
 GATE_LEVELS = (3, 4, 5, 6, 7)
 GATE_N = 24  # 12/level left +-1 solve inside the gate's noise floor (run 2b)
-SEED_BASE = 62_000_000  # run 2c: 61M consumed by run 2b (fresh problems, same gate band)
+SEED_BASE = 63_000_000  # v2-GRPO run: 61M/62M consumed by runs 2b/2c
 GATE_BAND = 9_900_000
 CKPT = Path("checkpoints/mathnative_grpo.pt")
 CORPUS = Path("data/micromodel_grpo_mined.jsonl")  # untracked sidecar
@@ -204,16 +204,22 @@ def gate_eval(model, tok, dev):
     return solves, 100 * valid / max(tried, 1)
 
 
-def main(cycles: int) -> None:
+def main(cycles: int, src_path: str | None = None,
+         out_path: str | None = None) -> None:
     import shutil
 
     import torch
 
     from llmopt.train.preference import grpo_advantages, grpo_loss
+    global CKPT
+    if out_path:
+        CKPT = Path(out_path)
     tok = MathTokenizer()
     dev = "mps" if torch.backends.mps.is_available() else "cpu"
     model = build_model(len(tok.vocab)).to(dev)
-    src = CKPT if CKPT.exists() else Path("checkpoints/mathnative_19m.pt")
+    src = (Path(src_path) if src_path
+           else CKPT if CKPT.exists()
+           else Path("checkpoints/mathnative_19m.pt"))
     model.load_state_dict(torch.load(src, map_location="cpu"))
     model.to(dev)
     print(f"starting from {src}", flush=True)
@@ -285,5 +291,11 @@ def main(cycles: int) -> None:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--cycles", type=int, default=12)
+    ap.add_argument("--from", dest="src", default=None,
+                    help="starting checkpoint (default: OUT if it "
+                         "exists, else the phase-1 base)")
+    ap.add_argument("--out", default=None,
+                    help="gate-checkpoint path (default: "
+                         "mathnative_grpo.pt)")
     a = ap.parse_args()
-    main(a.cycles)
+    main(a.cycles, a.src, a.out)

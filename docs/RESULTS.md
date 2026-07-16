@@ -1762,6 +1762,25 @@ the fix is food. -> Staged curriculum pretraining (riff ledger, GO):
 algebra-first diet, retrain phase 1, bar = beat 65.6% unseen AND
 unstick L4.
 
+## Curriculum v2 A/B: algebra substrate transfers — to L3, not L4 (2026-07-16)
+
+30k verified algebraic rewrites (expand/factor/collect/cancel/
+prodpoly x L1-3, `farm_algebra.py` — constructed-by-expand, zero
+simplify calls) added to the phase-1 diet; retrained from scratch
+(`--v2`, separate checkpoint, final loss 0.371). Same-protocol
+unseen A/B (L2-4, identical seeds/oracle/skip-set; v1 RERUN under
+the new protocol — the historical 65.59 is not comparable):
+**v1 50.62% -> v2 53.62%** overall, solving steps 394 -> 445 (+13%).
+Per level: L2 flat (93.9/93.7, saturated), **L3 60.0 -> 68.7**
+(+8.7 — the transfer), L4 9.0 -> 9.9 (+0.9 — NOT unstuck).
+Verdict: curriculum direction confirmed (algebra-first helps a
+calculus model, measured); the L4 hole is deeper than the algebra
+substrate — expanding (3x^2+2)^2 doesn't teach running the
+integration pattern ACROSS that structure. Decisive test moved to
+phase 2: does v2's L4 (9.9% wave validity) now form mixed groups
+where the starved v1 lineage couldn't? -> v2-GRPO run, L4 column
+vs run 2c's flat 6/24.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

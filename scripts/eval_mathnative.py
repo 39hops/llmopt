@@ -50,7 +50,21 @@ def sample_wave(model, tok, prompt_ids, seeds, dev, max_new=120):
     return [tok.decode(o).strip() for o in out]
 
 
-def main() -> None:
+def _diet_roots() -> set[str]:
+    """Every cur string in the training diet (whitespace-stripped) —
+    the contamination guard (mathgen small-space scar)."""
+    import glob
+    import json
+    roots = set()
+    for f in (glob.glob("data/micromodel_chains_shard*.jsonl")
+              + glob.glob("data/micromodel_algebra_shard*.jsonl")
+              + ["data/step_chains.jsonl"]):
+        for line in open(f):
+            roots.add(json.loads(line)["cur"].replace(" ", ""))
+    return roots
+
+
+def main(ckpt: str, levels: tuple[int, ...], unseen: bool) -> None:
     import sympy as sp
     import torch
 
@@ -60,18 +74,24 @@ def main() -> None:
     tok = MathTokenizer()
     dev = "mps" if torch.backends.mps.is_available() else "cpu"
     model = build_model(len(tok.vocab)).to(dev)
-    model.load_state_dict(torch.load("checkpoints/mathnative_19m.pt",
-                                     map_location="cpu"))
+    model.load_state_dict(torch.load(ckpt, map_location="cpu"))
     model.to(dev).eval()
+    roots = _diet_roots() if unseen else set()
+    skipped = 0
 
     valid = tried = solved_any = 0
+    per_lv: dict[int, list[int]] = {}
     with torch.no_grad():
-        for lv in (2, 3):
+        for lv in levels:
+            per_lv[lv] = [0, 0]  # valid, tried
             for i in range(N_PER):
                 p = _gen_isolated(lv, SEED0 + 1000 * lv + i)
                 if p is None:
                     continue
                 cur = f"Integral({sp.sstr(p._expr)}, x)"
+                if cur.replace(" ", "") in roots:
+                    skipped += 1
+                    continue
                 prompt = tok.encode(
                     f"Current: {cur}\nHints: none\nStep: ")
                 cands = []
@@ -92,13 +112,23 @@ def main() -> None:
                     ok, so = per.get(c, (False, False))
                     if ok and c.replace(" ", "") != cur.replace(" ", ""):
                         valid += 1
+                        per_lv[lv][0] += 1
                         if so:
                             solved_any += 1
+                per_lv[lv][1] += len(cands)
         v = 100 * valid / max(tried, 1)
-    print(f"phase-1 gate: validity {v:.2f}% ({valid}/{tried}), "
-          f"solving steps {solved_any}")
-    print(f"bar: >= 1.0% -> {'PASS — GRPO from birth unlocks' if v >= 1.0 else 'FAIL — priors were load-bearing; book the price'}")
+    lv_s = " ".join(f"L{lv}:{100*a/max(b,1):.1f}%"
+                    for lv, (a, b) in per_lv.items())
+    print(f"gate [{ckpt}{' unseen' if unseen else ''}, "
+          f"skipped {skipped}]: validity {v:.2f}% ({valid}/{tried}), "
+          f"solving {solved_any} | {lv_s}", flush=True)
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--ckpt", default="checkpoints/mathnative_19m.pt")
+    ap.add_argument("--levels", default="2,3")
+    ap.add_argument("--unseen", action="store_true")
+    a = ap.parse_args()
+    main(a.ckpt, tuple(int(s) for s in a.levels.split(",")), a.unseen)
