@@ -41,11 +41,14 @@ def load_rows(v2: bool = False):
     return rows
 
 
-def main(v2: bool = False) -> None:
+def main(v2: bool = False, d: int = 384, layers: int = 8,
+         ffn: int = 1536, out: str | None = None) -> None:
     import torch
     global CKPT
     if v2:
         CKPT = V2_CKPT
+    if out:
+        CKPT = Path(out)
     tok = MathTokenizer()
     rows = load_rows(v2)
     charset = set()
@@ -70,7 +73,8 @@ def main(v2: bool = False) -> None:
     dev = ("mps" if torch.backends.mps.is_available() else
            "cuda" if torch.cuda.is_available() else "cpu")
     torch.manual_seed(0)
-    model = build_model(len(tok.vocab)).to(dev)
+    model = build_model(len(tok.vocab), d=d, layers=layers,
+                        ffn=ffn).to(dev)
     n_params = sum(p.numel() for p in model.parameters())
     print(f"model: {n_params/1e6:.1f}M params on {dev}", flush=True)
     opt = torch.optim.AdamW(model.parameters(), lr=LR,
@@ -130,4 +134,10 @@ if __name__ == "__main__":
     ap.add_argument("--v2", action="store_true",
                     help="curriculum v2 diet (+algebra shard), "
                          "separate checkpoint")
-    main(ap.parse_args().v2)
+    ap.add_argument("--d", type=int, default=384)
+    ap.add_argument("--layers", type=int, default=8)
+    ap.add_argument("--ffn", type=int, default=1536)
+    ap.add_argument("--out", default=None,
+                    help="checkpoint path override (capacity runs)")
+    a = ap.parse_args()
+    main(a.v2, a.d, a.layers, a.ffn, a.out)
