@@ -1875,6 +1875,17 @@ blind to all of it (0.3658 vs 0.3659). Production tiebreak: chain
 solves are the currency (P(>=1 valid/wave) lesson) — GATE_N=24
 chain gate on both 50.4M variants decides the GRPO base.
 
+## Chain-gate tiebreak: v2.1 takes production (2026-07-16)
+
+The dissociation result: 50.4M v2 has the best STEP validity of all
+four models (57.53%) but chains worse than the 19M (52 vs 57/120) —
+good steps, no finishing. 50.4M v2.1 converts its +11% solving
+steps into **58/120 chain solves @ 54.24%**, with **L7 8/24 — the
+best any model has posted on the hardest band, pre-RL** (the entire
+v2-GRPO lineage peaked at 6 after 18 cycles). 1,169 chain rows
+bought deep-chain skill. Production base: mathnative_45m_v21.pt;
+GRPO on it launched (record to beat: 60/120).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The

@@ -205,7 +205,8 @@ def gate_eval(model, tok, dev):
 
 
 def main(cycles: int, src_path: str | None = None,
-         out_path: str | None = None) -> None:
+         out_path: str | None = None, d: int = 384,
+         layers: int = 8, ffn: int = 1536, heads: int = 6) -> None:
     import shutil
 
     import torch
@@ -216,7 +217,8 @@ def main(cycles: int, src_path: str | None = None,
         CKPT = Path(out_path)
     tok = MathTokenizer()
     dev = "mps" if torch.backends.mps.is_available() else "cpu"
-    model = build_model(len(tok.vocab)).to(dev)
+    model = build_model(len(tok.vocab), d=d, layers=layers,
+                        heads=heads, ffn=ffn).to(dev)
     src = (Path(src_path) if src_path
            else CKPT if CKPT.exists()
            else Path("checkpoints/mathnative_19m.pt"))
@@ -297,5 +299,9 @@ if __name__ == "__main__":
     ap.add_argument("--out", default=None,
                     help="gate-checkpoint path (default: "
                          "mathnative_grpo.pt)")
+    ap.add_argument("--d", type=int, default=384)
+    ap.add_argument("--layers", type=int, default=8)
+    ap.add_argument("--ffn", type=int, default=1536)
+    ap.add_argument("--heads", type=int, default=6)
     a = ap.parse_args()
-    main(a.cycles, a.src, a.out)
+    main(a.cycles, a.src, a.out, a.d, a.layers, a.ffn, a.heads)
