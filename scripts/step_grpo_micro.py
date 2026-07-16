@@ -35,7 +35,7 @@ CLIP = 0.2
 LEVELS = (4, 5, 6, 7)
 GATE_LEVELS = (3, 4, 5, 6, 7)
 GATE_N = 24  # 12/level left +-1 solve inside the gate's noise floor (run 2b)
-SEED_BASE = 64_000_000  # v2 leg 2: 61-63M consumed by 2b/2c/v2-run-1
+SEED_BASE = 66_000_000  # 50.4M v2.1 GRPO run 1 (65M = L4 farm band)
 GATE_BAND = 9_900_000
 CKPT = Path("checkpoints/mathnative_grpo.pt")
 CORPUS = Path("data/micromodel_grpo_mined.jsonl")  # untracked sidecar
