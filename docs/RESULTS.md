@@ -1845,6 +1845,20 @@ control arm of priors-vs-drag: the measured cost of internet
 habits. The 3080 is repurposed to the micro-model program, where
 CUDA buys capacity sweeps and GRPO legs far cheaper.
 
+## v2.1: the L4 chain shard — thin but efficient (2026-07-16)
+
+The farm cut at 60% (Artin's call — the v2.2 forced-steps farm
+obsoletes waiting), then the language filter cut deeper: **64% of
+the engine's multi-step L4 chains route through Subs/erf, outside
+the model's 45-token language** (finding: engine and model step
+languages diverge exactly where L4 is hard; v2.2 farm must restrict
+to in-vocabulary rules). 1,169 in-language rows survived (+13% L4
+diet). 19M A/B (same protocol; diet also inherits +2,322 run-4
+corpus rows — 1.7%, noted): **53.62 -> 54.56%**, L4 9.9 -> 11.8,
+and **solving steps 445 -> 579 (+30%)** — chain-shaped rows teach
+finishing moves. Good per-row efficiency; scale the diet in v2.2.
+Production train launched: 50.4M x v2.1 (both confirmed levers).
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
