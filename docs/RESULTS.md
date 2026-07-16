@@ -1803,6 +1803,18 @@ the residue is the integration-pattern-across-structure gap, not
 algebra. Checkpoints: `mathnative_v2_grpo.pt` = cycle-12 best
 (60 @ 57.94); sidecar at 43.2k mined steps.
 
+## v2-GRPO leg 2: the RL ceiling on the v2 base (2026-07-16)
+
+12 planned cycles from leg 1's best (64M seeds); HALTed at cycle 6
+by two consecutive rollbacks — the second by 0.05 validity points
+(the gate discipline working as designed). Best banked: cycle-2
+gate **60/120 @ 59.65%** (validity record for any 19M lineage;
+`mathnative_v2_grpo.pt`). Verdict: RL has extracted what this base
+offers — 57 -> 60 solves and +6.5 validity across two legs, now
+oscillating within tolerance of the ceiling. L4 held 7-8 all leg.
+The next lever is diet, not more RL: v2.1 (L4 engine-chain shards,
+farming overnight) retrains the base under the ceiling.
+
 ## Origin story, closed
 
 Limits resisted LoRA training (<=21%), motivating the engine. The
