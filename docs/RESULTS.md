@@ -1943,6 +1943,21 @@ standard batching; packing survives only as flags for future
 study. Third instance this week of the week's lesson: THE GATE,
 NOT THE LOSS.
 
+## Packing post-mortem: it's the step count, and loss can't see it (2026-07-17)
+
+Proper packing (shuffle-then-pack, iid mixed-length batches, honest
+padded cost) re-ran the parity cell: **46.93 / 457 — the identical
+~10-pt hole as sorted packing (46.95)**, while train loss came back
+to the standard band (0.3678 vs 0.3659). Composition exonerated;
+the harm is the ~6x fewer/bigger optimizer steps themselves, and
+lr-scaling (sqrt rule) made it worse, not better. Packing is DEAD
+for gate-bearing runs in any form; `--fast` = bf16-only. Sharpest
+instance yet of the week's lesson: a 10-pt capability hole with a
+MATCHED training loss. Soup note, same night: 50/50 average of
+consol + run-2-best gated 64 @ 62.16 — a clean NULL (same-basin
+parents too close to buy anything); retry only across distant
+ingredients.
+
 ## 113M capacity rung: NULL above 50M on this diet (2026-07-16 night)
 
 113.3M (d=768/L12/12h), identical v2.1 diet, honest bf16-nopack
