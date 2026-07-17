@@ -47,7 +47,8 @@ def load_rows(v2: bool = False, v21: bool = False):
 def main(v2: bool = False, d: int = 384, layers: int = 8,
          ffn: int = 1536, out: str | None = None,
          heads: int = 6, v21: bool = False, fast: bool = False,
-         budget: int = 24_576, lr: float = LR) -> None:
+         budget: int = 24_576, lr: float = LR,
+         fp32: bool = False) -> None:
     import torch
     global CKPT
     if v2:
@@ -111,7 +112,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     sched = torch.optim.lr_scheduler.OneCycleLR(
         opt, max_lr=lr, total_steps=steps_total, pct_start=0.03)
     amp = (torch.autocast(device_type="cuda", dtype=torch.bfloat16)
-           if fast and dev == "cuda" else None)
+           if fast and dev == "cuda" and not fp32 else None)
 
     marker = Path(str(CKPT) + ".ep")
     start_ep = 0
@@ -187,6 +188,10 @@ if __name__ == "__main__":
                     help="max lr (OneCycle); token-budget batching "
                          "cuts optimizer steps ~6x vs BS=32 — scale "
                          "lr when packing (sqrt rule ~2.5x @ 12k)")
+    ap.add_argument("--fp32", action="store_true",
+                    help="with --fast: keep token-budget packing but "
+                         "disable bf16 autocast (parity-fail lever "
+                         "isolation)")
     a = ap.parse_args()
     main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads, a.v21,
-         a.fast, a.budget, a.lr)
+         a.fast, a.budget, a.lr, a.fp32)
