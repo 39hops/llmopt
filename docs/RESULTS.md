@@ -2106,6 +2106,22 @@ first curriculum). REWRITE: curriculum by clade, not by level —
 the ansatz branch needs its own worked-example progression.
 Mathematics just voted on its own pedagogy.
 
+## Compression phylogeny: two lenses, one crater (2026-07-17)
+
+The gzip-language-tree method (Benedetto et al. 2002, PRL), math
+edition: zlib NCD between per-level corpora. L1-L2-L3 tight kin
+(0.98-0.99); **L4 the most distant integration level from
+everything** (>=1.003) — the bigram tree isolated L4's TECHNIQUE
+(ansatz clade), compression isolates its DIALECT; two independent
+instruments agree the crater speaks its own language. Algebra =
+outgroup by text (1.02+) though ancestral by technique — the
+lenses disagree exactly where they measure different things.
+Theory bonus from the same session: cross-entropy weights by p_i,
+so rare-but-load-bearing capability contributes ~nothing to loss
+BY CONSTRUCTION — "the gate, not the loss" is Shannon-inevitable,
+and the specialist-shelf finding (frequency != importance) is the
+same theorem read off weights instead of bits.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
