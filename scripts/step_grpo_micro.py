@@ -157,7 +157,9 @@ def logp_new(model, tok, g, dev):
     return torch.stack(out)
 
 
-def gate_eval(model, tok, dev):
+def gate_eval(model, tok, dev, n=None):
+    """Honest chain gate. n<GATE_N = cheap proxy tier (same seeds,
+    prefix subset — noisier per reading, never used for promotion)."""
     import sympy as sp
     import torch
 
@@ -168,7 +170,7 @@ def gate_eval(model, tok, dev):
     with torch.no_grad():
         for lv in GATE_LEVELS:
             s = 0
-            for i in range(GATE_N):
+            for i in range(n or GATE_N):
                 p = _gen_isolated(lv, GATE_BAND + 1000 * lv + i)
                 if p is None:
                     continue
@@ -274,6 +276,14 @@ def main(cycles: int, src_path: str | None = None,
             tot += float(loss.detach())
         print(f"cycle {cyc}: grpo loss {tot / max(len(groups), 1):.4f}",
               flush=True)
+        if cyc % GATE_EVERY != 0:
+            # two-tier: cheap proxy every off-cycle — visibility only,
+            # never a verdict (GATE_N=8 is +-2 solves of noise)
+            model.eval()
+            psolves, pval = gate_eval(model, tok, dev, n=8)
+            print(f"cycle {cyc} proxy: {psolves} "
+                  f"= {sum(psolves.values())}/{8*len(GATE_LEVELS)} "
+                  f"@ {pval:.2f}%", flush=True)
         if cyc % GATE_EVERY == 0:
             model.eval()
             solves, validity = gate_eval(model, tok, dev)
