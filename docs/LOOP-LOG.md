@@ -24,4 +24,4 @@ Rows below re-baseline; not comparable to rows above.*
 
 *45M production lineage (mathnative_45m_v21 base, Mac):*
 | 45m run 1 | gate L3-7 GATE_N=24 | 12 cycles, full-param, dual-clip | 54.24 -> 56.79 @ c10 | 57/120 -> **61/120** (past the 19M record 60) | host outage killed cycle 12 pre-gate; c10 best banked, +6.9k mined streamed | ~16m/cycle |
-| 45m run 1b (continuation) | same | from c10 best; 12 cycles | 56.79 -> 59.21 @ c6 (45M validity record) | 61/120 held | IN FLIGHT — one rollback (c4 by 0.07); final row on completion | ~16m/cycle |
+| 45m run 1b (continuation) | same | from run-1 c10 best; 12 cycles, 2 rollbacks (c4 by 0.07, c8 — the 62-solve candidate lost to the validity veto, the snapshot-before-verdict case in the flesh), mined +9,279 | 56.79 -> **59.36** @ c10 (45M lineage record) | 61/120 held all run | COMPLETE — validity ratchets, solves plateau at 61; next lever is diet (self-distillation consolidation) not more RL, echoing the 19M arc | ~17m/cycle |

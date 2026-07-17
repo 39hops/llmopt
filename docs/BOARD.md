@@ -8,7 +8,8 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Status | Pointer |
 |---|---|---|
-| 45M GRPO run 1b (Mac) | LIVE — continuation from run-1's cycle-10 best (61/120 @ 56.79); cycle-6 gate 61 @ 59.21 (45M validity record); completes tonight, then book LOOP-LOG | micro_grpo_45m_run1b.log |
+| 45M GRPO run 1b (Mac) | COMPLETE — 61/120 @ 59.36 (c10, lineage record); 24 total cycles across runs 1+1b: 57->61 solves, 54.24->59.36 validity, +16k mined; RL ceiling reached, diet next | LOOP-LOG + micro_grpo_45m_run1b.log |
+| Self-distillation consolidation (strategy item B, Artin GO) | NEXT on Mac — low-LR SFT on grpo-mined rows from the promoted 45M; gated vs 61/120 @ 59.36 | post-climb strategy |
 | 113M capacity rung | CLOSED — NULL above 50M on this diet (54.58/588, L4 11.5 vs 50.4M's 625/18.9 same-path; reallocation not a rung); re-ask once if v2.2's thicker diet lands | RESULTS "NULL above 50M" |
 | Fast trainer path | VERDICT: packing convicted (~10 pts, no speed win once thrash fixed), bf16 exonerated (~2-pt debit, 11-min 50.4M trains); --fast now = bf16 + --nopack | RESULTS "parity 2x2" |
 | Next after current runs (Artin GO): self-distillation consolidation on 45M lineage (low-LR SFT on grpo-mined rows), then weight anatomy on the adapter drawer | queued | post-climb strategy B + C |
