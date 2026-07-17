@@ -2040,6 +2040,21 @@ self-perpetuate (no forward signal -> no backward gradient), so
 low-rank deltas invest where gradients live; resurrection requires
 re-init, but THESE neurons don't want it — they want protection.
 
+## Four diets, one lens: uniformity tracks diet focus (2026-07-17)
+
+The specialist-shelf hypothesis, tested out-of-sample on models we
+did not train (mid-layer gate, polar view; asset
+neurons-polar-four-diets.png): shelf fraction (<0.6x median norm)
+falls MONOTONICALLY with diet focus — 0.5B generalist 0.80% /
+spread 2.11 -> Coder-1.5B 0.39% / 1.74 -> **Math-1.5B 0.00% /
+1.37 -> 19M closed-system 0.00% / 1.16**. The math-heavy internet
+model has no shelf, exactly as the frequency-not-importance story
+predicts (nothing math is rare in its diet); the closed system is
+more uniform still. Neuron-magnitude geometry reads the TRAINING
+DISTRIBUTION off the weights — the birth-instrument family (CV =
+organization, floor = fullness, shelf = diet skew) now has three
+gauges and one external validation.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
