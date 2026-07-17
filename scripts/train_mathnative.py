@@ -48,7 +48,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
          ffn: int = 1536, out: str | None = None,
          heads: int = 6, v21: bool = False, fast: bool = False,
          budget: int = 24_576, lr: float = LR,
-         fp32: bool = False) -> None:
+         fp32: bool = False, nopack: bool = False) -> None:
     import torch
     global CKPT
     if v2:
@@ -86,7 +86,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
           f"{' [fast: bf16 + token-budget]' if fast else ''}", flush=True)
     opt = torch.optim.AdamW(model.parameters(), lr=lr,
                             weight_decay=0.01)
-    if fast:
+    if fast and not nopack:
         # token-budget packing: enc is length-sorted and median seq
         # ~60 tok, so fixed BS=32 wastes the budget the 512-tok
         # worst case needs. Pack batches to a token budget instead.
@@ -192,6 +192,10 @@ if __name__ == "__main__":
                     help="with --fast: keep token-budget packing but "
                          "disable bf16 autocast (parity-fail lever "
                          "isolation)")
+    ap.add_argument("--nopack", action="store_true",
+                    help="with --fast: bf16 autocast only, standard "
+                         "BS=32 batching (packing failed parity: "
+                         "45.65/46.95 vs 56.67 standard)")
     a = ap.parse_args()
     main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads, a.v21,
-         a.fast, a.budget, a.lr, a.fp32)
+         a.fast, a.budget, a.lr, a.fp32, a.nopack)
