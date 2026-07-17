@@ -2160,6 +2160,23 @@ format; the fused int4 GEMV kernel (practice_7 packing, promoted)
 is greenlit with measured basis — 8x sampling bandwidth at zero
 capability cost, mining/gates are sampling-bound.
 
+## DeepSeek-V3 from one shard: the experts are crystals (2026-07-17)
+
+98 layer-30 routed experts of the 671B MoE, gauged from a single
+4GB shard (fp8 dequant via block scales; never inferenced): CV
+median 0.021, **floor median 0.890, shelf ~0%**, R median 0.078 —
+V3's experts individually carry the CLOSED-SYSTEM geometry (fuller
+even than our 19M), not the internet-monolith cloud. Mechanism:
+the router is a diet-focuser — each expert trains in its own
+quasi-closed slice of the distribution and grows the matching
+lattice. The crystal law (focused diet -> uniform geometry) now
+spans 19M -> 671B, four orders of magnitude, our models and
+theirs. Instrument-as-tool: the gauge range flags expert 71 (only
+real shelf, 1.1%), one near-dead neuron (floor 0.013), and a few
+coder-grade clumps (R 0.23) — inspect/prune candidates from disk,
+the keep-set chain's cheapest rung made real. Cost: one shard +
+30s of SVD.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
