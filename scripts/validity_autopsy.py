@@ -45,12 +45,24 @@ def classify(cand: str, cur: str, visited: set, valids: list,
         ce = sp.sympify(cand)
     except Exception:
         return "unparseable"
+    # scaled-sibling probe, NUMERIC ONLY — simplify() on model text
+    # is the live-lock pathology (CLAUDE.md: no sympy call is safely
+    # SIGALRM-boxed). 3-point ratio constancy, like _is_zero's screen.
+    x = sp.Symbol("x")
     for v in valids:
         try:
-            ratio = sp.simplify(ce / sp.sympify(v))
-            if ratio.is_constant() and ratio.is_number:
-                return "scaled_neg" if ratio.is_negative else \
-                    "scaled_pos"
+            ve = sp.sympify(v)
+            vals = []
+            for pt in (0.37, 1.19, 2.71):
+                num = complex(ce.subs(x, pt))
+                den = complex(ve.subs(x, pt))
+                if abs(den) < 1e-9:
+                    raise ZeroDivisionError
+                vals.append(num / den)
+            if all(abs(r - vals[0]) < 1e-6 for r in vals[1:]) and \
+                    abs(vals[0].imag) < 1e-9:
+                return ("scaled_neg" if vals[0].real < 0
+                        else "scaled_pos")
         except Exception:
             continue
     return "structural"
