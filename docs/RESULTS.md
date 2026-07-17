@@ -2144,6 +2144,22 @@ lever again (69 vs the mined 68). Open lever: stochastic-rounding
 bf16 might recover speed without the debit (pre-registered).
 Generational curve: 57 -> 61 -> 64 -> 65 -> 66 -> **69**.
 
+## The compression floor: 3 < knowledge-at-rest < 4 bits/weight (2026-07-17)
+
+MX-style blockwise quantization (block 32, shared scale, int
+mantissas — Artin's store-small/convert-dynamic scheme; OCP MX
+lineage) on the production fp32 model (69/120 @ 67.13):
+**MX-int4 = 69/120 @ 66.76 — full solve parity at 8x compression**
+(~25MB checkpoints); MX-int3 = 67/120 — the floor cracks, losing
+exactly one L4 and one L7: the deepest, rarest capability dies
+FIRST under over-compression. Same theorem a fourth way (loss-
+blindness, specialist shelf, CE tail-weighting): importance
+concentrates where frequency doesn't, and the tail is the finest
+structure in the code. Consequences: int4-MX is the shipping
+format; the fused int4 GEMV kernel (practice_7 packing, promoted)
+is greenlit with measured basis — 8x sampling bandwidth at zero
+capability cost, mining/gates are sampling-bound.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
