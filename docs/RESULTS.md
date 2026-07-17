@@ -2247,6 +2247,22 @@ rare). Final storage ladder, bracketed both ways: fp32 69 / int4
 69 (8x, lossless) / GPTQ-row-int3 68 (10.7x, 3-bit champion) /
 naive-int3 67. The 69th solve is genuine 4th-bit content.
 
+## The bottom rungs: the wiring diagram walks (2026-07-17 night)
+
+Sub-3 ladder on the production model: **GPTQ-int2 = 48/120 @ 36.83
+(70% of solves at 2 bits); ternary absmean 1.58-bit = 24/120 @
+14.66 — including TWO L7 deep chains on sign + mean loudness
+alone.** Artin's bet ("if it's a tree you just need 2 bits") beats
+Fable's carnage call on points. The decisive contrast: rank-32
+(cut dimensions) = 2/120 dead; ternary (cut precision to 3 levels)
+= 24/120 walking. AXES ARE THE ORGANISM, MAGNITUDES ARE MUSCLE
+TONE — the signed graph carries the load; precision buys the rest.
+Complete information curve, one night: fp32 69 / int4 69 / int3
+68 / int2 48 / 1.58-bit 24 / rank-32 2. Follow-on lit note:
+BitNet-class results train the constraint from birth — a ternary-
+FROM-BIRTH crystal is the natural re-ask on our substrate (40-min
+experiment) if the wiring thesis wants pushing.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
