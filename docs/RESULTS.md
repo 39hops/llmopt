@@ -2207,6 +2207,21 @@ continent) and the ansatz-clade curriculum, not another turn of
 the crank. Curve: 57->61->64->65->66->69-> plateau pending new
 land.
 
+## Calibration table: CV is an imprint dial, not a goodness dial (2026-07-17 night)
+
+Four gauges over 7 births with known chain gates: **r(validity,
+CV) = +0.966, r(validity, floor) = -0.838** — capability tracks
+ROUGHER lattices and LOWER floors within the family, the opposite
+sign of the 113M story. Reconciliation: CV measures diet IMPRINT —
+texture (rich experience differentiating neurons: the gen-4s ate
+the mined sidecar) vs rubble (underfed width, the 113M), same
+number, opposite causes, disambiguated by data-per-width. The
+perfect ring is the portrait of a clean diet; the textured ring is
+a clean diet THAT LIVED — the fingerprints are the capability.
+Within-family, CV ~= a 30-second gate proxy (r .966, n=7; lineage
+points confirm frozen-lattice: all identical CV 0.0183 across 61->
+65). Shelf is dead within our zoo (all 0 — internet-only gauge).
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
