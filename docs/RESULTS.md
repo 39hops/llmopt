@@ -2088,6 +2088,24 @@ Caveat: bf16-path birth (dynamical debit applies) — standard-path
 gen-4 has untested headroom. Next loop: GRPO/mine from gen-4 ->
 gen-5 rebirth.
 
+## The math phylogeny: technique lineages, not levels (2026-07-17)
+
+Artin's language-descent riff, run: agglomerative clustering of
+MarkovPrior's verified rule-bigram profiles (24 rules, in+out
+transition vectors, cosine). Three clades: (1) STEPWISE INTEGRATION
+(i_power/sum/table/usub/parts/apart + cancel); (2) DIFFERENTIATION
++ ALGEBRA AS ONE LINE (all d_* WITH expand/factor/together/
+trigsimp); (3) THE ANSATZ SOLVERS ALONE (i_linear_basis,
+i_ansatz_exp, i_unprod — an isolated lineage). The tree ignores
+our level numbers and explains two measured facts at once: algebra
+transferred to L3-not-L4 (v2 A/B) because L4's key technique lives
+in the isolated ansatz clade — no descent path; and the autopsy's
+L4/L5 failures are ansatz-shaped because that clade was never
+taught as a lineage (v2.2's one-ply drills were unknowingly its
+first curriculum). REWRITE: curriculum by clade, not by level —
+the ansatz branch needs its own worked-example progression.
+Mathematics just voted on its own pedagogy.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
