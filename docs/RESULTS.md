@@ -2263,6 +2263,21 @@ BitNet-class results train the constraint from birth — a ternary-
 FROM-BIRTH crystal is the natural re-ask on our substrate (40-min
 experiment) if the wiring thesis wants pushing.
 
+## Definition neurons: locatable preferences, no dependencies (2026-07-17 night)
+
+Family-selectivity probe on the champion (layer 6, the decision
+cliff): a sparse committee exists — 6 of 2048 FFN neurons strongly
+family-selective (neuron 493 fires 4x on power-rule integrals;
+939 on trig). CAUSAL TEST: ablating the entire power committee
+changes NOTHING — family validities identical to the decimal
+(94.4/61.9 both arms), scalpel verified real (max logit delta
+0.25, zero argmax flips — the perturbation is absorbed).
+Verdict: definitions are locatable as PREFERENCES, not
+DEPENDENCIES — the population re-expresses the computation
+without them. Robustness at a third granularity (bits: int8/
+ternary; units: this; correlations carry everything). The
+definition of the power rule is not a place; it is a chord.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
