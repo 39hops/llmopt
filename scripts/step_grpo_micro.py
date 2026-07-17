@@ -216,7 +216,8 @@ def main(cycles: int, src_path: str | None = None,
     if out_path:
         CKPT = Path(out_path)
     tok = MathTokenizer()
-    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    dev = ("mps" if torch.backends.mps.is_available() else
+           "cuda" if torch.cuda.is_available() else "cpu")
     model = build_model(len(tok.vocab), d=d, layers=layers,
                         heads=heads, ffn=ffn).to(dev)
     src = (Path(src_path) if src_path
