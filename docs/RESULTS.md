@@ -2177,6 +2177,21 @@ coder-grade clumps (R 0.23) — inspect/prune candidates from disk,
 the keep-set chain's cheapest rung made real. Cost: one shard +
 30s of SVD.
 
+## The rank floor: bits are redundant, dimensions are sacred (2026-07-17)
+
+SVD-truncation sweep on the production fp32 model (69/120 ref):
+rank-128 = 66 @ 61.22 (already bleeding), rank-64 = 42 (collapse),
+rank-32 = 2 (dead). **The crystal is FULL-RANK** — the isotropy
+gauge predicted it (a perfect ring spreads neurons over every
+direction; an isotropic code is full-dimensional by construction),
+and the whisper's rank-4 was always the RL DELTA, never the base.
+Compression's two axes separate cleanly: bits per direction are
+over-provisioned (int4 lossless, 8x) but directions are load-
+bearing (rank-128 costs 3 solves at only 4x). Storage doctrine:
+QUANTIZE THE NOTCHES, NEVER THE AXES. Also answers the 2-numbers-
+per-neuron question at the extreme: the polar charts are
+portraits, not the person.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
