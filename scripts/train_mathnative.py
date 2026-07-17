@@ -47,7 +47,7 @@ def load_rows(v2: bool = False, v21: bool = False):
 def main(v2: bool = False, d: int = 384, layers: int = 8,
          ffn: int = 1536, out: str | None = None,
          heads: int = 6, v21: bool = False, fast: bool = False,
-         budget: int = 24_576) -> None:
+         budget: int = 24_576, lr: float = LR) -> None:
     import torch
     global CKPT
     if v2:
@@ -83,7 +83,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     n_params = sum(p.numel() for p in model.parameters())
     print(f"model: {n_params/1e6:.1f}M params on {dev}"
           f"{' [fast: bf16 + token-budget]' if fast else ''}", flush=True)
-    opt = torch.optim.AdamW(model.parameters(), lr=LR,
+    opt = torch.optim.AdamW(model.parameters(), lr=lr,
                             weight_decay=0.01)
     if fast:
         # token-budget packing: enc is length-sorted and median seq
@@ -109,7 +109,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
         starts = [(i, i + BS) for i in range(0, len(enc) - BS, BS)]
         steps_total = EPOCHS * (len(enc) // BS)
     sched = torch.optim.lr_scheduler.OneCycleLR(
-        opt, max_lr=LR, total_steps=steps_total, pct_start=0.03)
+        opt, max_lr=lr, total_steps=steps_total, pct_start=0.03)
     amp = (torch.autocast(device_type="cuda", dtype=torch.bfloat16)
            if fast and dev == "cuda" else None)
 
@@ -183,6 +183,10 @@ if __name__ == "__main__":
                     help="token budget per packed batch (--fast); "
                          "shrink when the model leaves no VRAM "
                          "headroom")
+    ap.add_argument("--lr", type=float, default=LR,
+                    help="max lr (OneCycle); token-budget batching "
+                         "cuts optimizer steps ~6x vs BS=32 — scale "
+                         "lr when packing (sqrt rule ~2.5x @ 12k)")
     a = ap.parse_args()
     main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads, a.v21,
-         a.fast, a.budget)
+         a.fast, a.budget, a.lr)
