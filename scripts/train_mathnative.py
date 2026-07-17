@@ -87,25 +87,31 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     opt = torch.optim.AdamW(model.parameters(), lr=lr,
                             weight_decay=0.01)
     if fast and not nopack:
-        # token-budget packing: enc is length-sorted and median seq
-        # ~60 tok, so fixed BS=32 wastes the budget the 512-tok
-        # worst case needs. Pack batches to a token budget instead.
-        # 24.5k fit the 50.4M; at 113M it left zero VRAM headroom on
-        # the 3080 (allocator retry-thrash, ~5% efficiency) — size
-        # the budget to the model.
-        BUDGET = budget
-        starts = []
-        i = 0
-        while i < len(enc):
-            n_fit = max(1, min(len(enc) - i,
-                               BUDGET // max(len(enc[min(
-                                   i + BS - 1, len(enc) - 1)]), 1)))
-            # recompute against the true max-length of the slice
-            while n_fit > 1 and n_fit * len(enc[i + n_fit - 1]) > BUDGET:
-                n_fit -= 1
-            starts.append((i, i + n_fit))
-            i += n_fit
-        steps_total = EPOCHS * len(starts)
+        # token-budget packing, PROPER: the first cut packed the
+        # length-SORTED list — length-homogeneous batches cost ~10
+        # unseen-validity points (parity 2x2, 2026-07-16). Pack a
+        # SHUFFLED order instead: iid mixed-length batches, padded
+        # cost (n * batch-max-len) counted honestly against the
+        # budget. Budget must be sized to the model (24.5k thrashed
+        # the 113M on 10GB; 12k ran 100x faster).
+        def pack_epoch(perm: list[int]) -> list[list[int]]:
+            batches, cur, mx = [], [], 0
+            for j in perm:
+                m = max(mx, len(enc[j]))
+                if cur and (len(cur) + 1) * m > budget:
+                    batches.append(cur)
+                    cur, mx = [j], len(enc[j])
+                else:
+                    cur.append(j)
+                    mx = m
+            if cur:
+                batches.append(cur)
+            return batches
+        # shuffled epochs pack to slightly different counts; 5%
+        # headroom keeps OneCycle from stepping past total_steps
+        steps_total = int(
+            EPOCHS * len(pack_epoch(list(range(len(enc))))) * 1.05)
+        starts = None  # built per-epoch from a shuffled permutation
     else:
         starts = [(i, i + BS) for i in range(0, len(enc) - BS, BS)]
         steps_total = EPOCHS * (len(enc) // BS)
@@ -124,12 +130,18 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
 
     import contextlib
     for ep in range(start_ep, EPOCHS):
-        idx = list(starts)
-        random.Random(ep).shuffle(idx)   # per-epoch order shuffle
+        if starts is None:  # proper packing: shuffle THEN pack
+            perm = list(range(len(enc)))
+            random.Random(ep).shuffle(perm)
+            idx = pack_epoch(perm)
+        else:
+            idx = list(starts)
+            random.Random(ep).shuffle(idx)   # per-epoch order shuffle
         tot = steps = 0
         t0 = time.time()
-        for lo, hi in idx:
-            batch = enc[lo:hi]
+        for b in idx:
+            batch = enc[b[0]:b[1]] if starts is not None else \
+                [enc[j] for j in b]
             L = max(len(s) for s in batch)
             ids = torch.tensor([s + [tok.pad_id] * (L - len(s))
                                 for s in batch], device=dev)

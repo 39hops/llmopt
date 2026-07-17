@@ -270,7 +270,13 @@ def main(cycles: int, src_path: str | None = None,
             s_now = sum(solves.values())
             print(f"cycle {cyc} gate: {solves} validity {validity:.2f}%"
                   f" (best {best_v:.2f}/{best_s})", flush=True)
-            if validity >= best_v - 0.5 and s_now >= best_s - 2:
+            # snapshot-before-verdict: rollbacks used to DISCARD the
+            # candidate (the 62-solve record lost at run-1b cycle 8)
+            torch.save(model.state_dict(), CKPT.with_name(
+                f"{CKPT.stem}_cand{cyc:03d}.pt"))
+            # solves-primary: solves are the currency; validity is a
+            # drift alarm (2.0-pt band), not a veto
+            if s_now >= best_s and validity >= best_v - 2.0:
                 best_v = max(best_v, validity)
                 best_s = max(best_s, s_now)
                 shutil.copy(CKPT, CKPT.with_name(
