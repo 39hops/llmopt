@@ -2235,6 +2235,18 @@ scales — plausibly full parity at 3 bits (~19MB crystal). The
 compression floor is a property of the QUANTIZER, not just the
 weights.
 
+## GPTQ x block scales: compensation needs headroom (2026-07-17 night)
+
+The composition NULLED with a mechanism: GPTQ + block-32 at int3 =
+67/120 @ 66.36 — WORSE on solves than GPTQ per-row (68), the L7
+tail dying again. Compensation parks each column's error in later
+columns; tight block scales CLIP the parked errors — fine scales
+and error-routing compete for the same slack (visible in the
+validity/solves split: block polishes the bulk, per-row saves the
+rare). Final storage ladder, bracketed both ways: fp32 69 / int4
+69 (8x, lossless) / GPTQ-row-int3 68 (10.7x, 3-bit champion) /
+naive-int3 67. The 69th solve is genuine 4th-bit content.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
