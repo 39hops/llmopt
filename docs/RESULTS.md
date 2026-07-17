@@ -2053,7 +2053,14 @@ predicts (nothing math is rare in its diet); the closed system is
 more uniform still. Neuron-magnitude geometry reads the TRAINING
 DISTRIBUTION off the weights — the birth-instrument family (CV =
 organization, floor = fullness, shelf = diet skew) now has three
-gauges and one external validation.
+gauges and one external validation. FOURTH GAUGE (same day, Artin
+eyeballed the coder's phase asymmetry): circular concentration R
+of neuron phases — coder 0.215 (most clumped: code's sub-languages
+grow aligned families, proto-modules), generalist 0.139, math-1.5B
+0.160, **19M closed-system 0.034 (a near-perfect ring, 4x more
+isotropic than any internet model)**. Dissociation: magnitude
+evenness = diet FOCUS, phase isotropy = diet HOMOGENEITY — math-1.5B
+has the first, only the closed system has both.
 
 ## Precision ladder: the whisper is an error-correcting code (2026-07-17)
 
