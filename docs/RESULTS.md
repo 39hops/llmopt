@@ -1988,6 +1988,25 @@ one seed. Adopted: `mathnative_45m_consol.pt` is the production
 climb re-opens above the old RL ceiling, the loop is
 RL -> consolidate -> RL (expert iteration's two strokes, at last).
 
+## Validity autopsy: the model isn't sloppy, it's ignorant (2026-07-17)
+
+Every rejected gate candidate from the 62% consol model classified
+(`validity_autopsy.py`, 1,456 candidates): **structural 32.7%**
+(87% of all failures), unparseable 2.9%, scaled sign/coeff 2.2%,
+identity/repeat ~0. The one-sign hypothesis is DEAD; syntax is a
+non-issue; the failures are well-formed wrong-pattern rewrites.
+Per level: L3 89.1% valid / L5 79.8% vs **L4 22.7%** (64.4%
+structural) and **L6 30.2%** (63.0%) — the craters sit exactly on
+the diet-thin, out-of-language bands. Sample reading: L4/L6 =
+missing move vocabulary; L5 = RIGHT ansatz family, wrong
+coefficients (drillable); L3 = illegal split-composition.
+ANSWER to the why-so-slow question: GRPO reweights patterns that
+exist — at L4/L6 they largely don't, so RL grinds on lucky hits
+(the all-fail concentration). The lever is v2.2's diet
+(in-language chains + one-ply worked examples + an L5
+coefficient-determination drill), NOT reward shaping; shaping
+stays banked for calibration-shaped wrongness, which this isn't.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
