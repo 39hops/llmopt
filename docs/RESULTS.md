@@ -2007,6 +2007,20 @@ exist — at L4/L6 they largely don't, so RL grinds on lucky hits
 coefficient-determination drill), NOT reward shaping; shaping
 stays banked for calibration-shaped wrongness, which this isn't.
 
+## Depth anatomy: the layer-6 cliff, and no free early exit (2026-07-17)
+
+Logit-lens over the production 45M (`probe_depth.py`, gate-band
+answer positions): agreement with final output climbs 33->56% through
+L0-5, JUMPS +15.6 to 71.5% at L6 (the biggest step in the stack),
+then refines to 91% by L10 — 100% only at L11. Verdicts: (1) NO
+cheap early exit — 9% token disagreement at L10 breaks nearly every
+expression in a 45-token grammar; the small crystal uses its full
+depth (no redundant spelling layers, unlike large LLMs);
+self-speculative drafting bounded at ~1.1-1.2x, not the lever.
+(2) The DECISION visibly concentrates mid-stack: the L6 cliff is
+the functional twin of the pre-registered CONCENTRATED weight-
+anatomy prediction — point the CKA/probe instruments there first.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
