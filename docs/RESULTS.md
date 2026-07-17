@@ -1956,6 +1956,23 @@ the same token count, but data-starvation grows with width) —
 re-ask ONCE if/when v2.2's thicker diet lands. The earlier
 "capacity reversal" reading was the packing bug, now void.
 
+## Self-distillation consolidation: RL explores, SFT consolidates — measured (2026-07-16 night)
+
+Strategy item B, first run: ONE low-LR (1e-5) epoch on the
+level-capped GRPO sidecar (24.2k of 63.6k rows; L5 capped 45k ->
+5.5k per the coeff-flood scar), from the promoted 45M
+(`consolidate_mathnative.py`, 5.5 min on MPS). Chain gate:
+**64/120 @ 62.23%** vs the promoted 61 @ 59.36 — program record on
+both axes, and EVERY level >= promoted (L3 23, L4 7, L5 16, L6 8,
+L7 10 — new high on the hardest band). No reallocation. The six
+post-record RL cycles of run 1b bought +0.15 validity; one
+consolidation epoch bought +2.9 and +3 solves. Caveats: sidecar
+mixes all micro-lineage mining (not strictly own-policy); one run,
+one seed. Adopted: `mathnative_45m_consol.pt` is the production
+45M. Next lever: GRPO leg FROM the consolidated base — if the
+climb re-opens above the old RL ceiling, the loop is
+RL -> consolidate -> RL (expert iteration's two strokes, at last).
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
