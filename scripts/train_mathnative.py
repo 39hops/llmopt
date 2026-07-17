@@ -28,7 +28,7 @@ LR = 3e-4  # from-scratch: standard small-LM lr with warmup+cosine
 
 
 def load_rows(v2: bool = False, v21: bool = False,
-              v22: bool = False):
+              v22: bool = False, gen4: bool = False):
     rows = []
     for f in sorted(glob.glob("data/micromodel_chains_shard*.jsonl")):
         rows += [json.loads(l) for l in open(f)]
@@ -43,6 +43,10 @@ def load_rows(v2: bool = False, v21: bool = False,
         # chains + capped one-ply worked examples, farm_v22.py)
         for f in sorted(glob.glob("data/micromodel_v22_shard*.jsonl")):
             rows += [json.loads(l) for l in open(f)]
+    if gen4:  # generational rebirth: + the level-capped cumulative
+        # GRPO-mined sidecar (the lineage's whole verified experience)
+        rows += [json.loads(l)
+                 for l in open("data/micromodel_gen4_sidecar.jsonl")]
     # identity guard at the diet gate too (defense in depth)
     rows = [r for r in rows
             if r["cur"].replace(" ", "") != r["nxt"].replace(" ", "")]
@@ -54,7 +58,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
          heads: int = 6, v21: bool = False, fast: bool = False,
          budget: int = 24_576, lr: float = LR,
          fp32: bool = False, nopack: bool = False,
-         v22: bool = False) -> None:
+         v22: bool = False, gen4: bool = False) -> None:
     import torch
     global CKPT
     if v2:
@@ -62,7 +66,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     if out:
         CKPT = Path(out)
     tok = MathTokenizer()
-    rows = load_rows(v2 or v21 or v22, v21 or v22, v22)
+    rows = load_rows(v2 or v21 or v22, v21 or v22, v22, gen4)
     charset = set()
     texts = []
     for r in rows:
@@ -215,10 +219,13 @@ if __name__ == "__main__":
     ap.add_argument("--v22", action="store_true",
                     help="v2.2 diet (v2.1 + autopsy-aimed shard); "
                          "use with --out")
+    ap.add_argument("--gen4", action="store_true",
+                    help="with --v22: + level-capped cumulative "
+                         "grpo-mined sidecar (generational rebirth)")
     ap.add_argument("--nopack", action="store_true",
                     help="with --fast: bf16 autocast only, standard "
                          "BS=32 batching (packing failed parity: "
                          "45.65/46.95 vs 56.67 standard)")
     a = ap.parse_args()
     main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads, a.v21,
-         a.fast, a.budget, a.lr, a.fp32, a.nopack, a.v22)
+         a.fast, a.budget, a.lr, a.fp32, a.nopack, a.v22, a.gen4)
