@@ -1918,19 +1918,43 @@ batching needs the budget sized to the model's activation
 footprint; over the VRAM cliff the cost is not OOM but silent
 100x throughput loss. Flag added (`--budget`).
 
-## 113M capacity rung: the fast-path asterisk (2026-07-16, PROVISIONAL)
+## Parity 2x2: packing convicted, bf16 exonerated (2026-07-16 night)
 
-113.3M (d=768/L12/12h) on the identical v2.1 diet, trained via
-`--fast` @ 12k budget (loss 0.3723 — again indistinguishable from
-19M/50.4M). Unseen gate: **48.83% / 410 solving, L4 6.5%** — below
-the 19M on every axis; the capacity ladder REVERSED at face value.
-NOT bookable yet: this is the first gate-bearing checkpoint through
-the fast path, and the owed parity gate (50.4M fast-vs-standard,
-same protocol) is running now. Parity clean -> capacity peaked
-near 50M on this diet (a real ceiling worth understanding). Parity
-dirty -> fast path void for gate-bearing runs; 113M retrains
-standard. A GRPO leg on the 113M runs meanwhile — floor data
-either way (Artin's call). Verdict lands tonight.
+The 113M's first fast-path gate read 48.83/410 (below the 19M!) —
+the owed parity gate then ran as a full 2x2 at 50.4M, one lever
+per cell, all same-protocol unseen L2-4:
+
+| 50.4M v2.1 | standard BS=32 | token-budget packing |
+|---|---|---|
+| fp32 | **56.67 / 628** | 45.65 / 419 |
+| bf16 | 54.43 / 625, L4 18.9 | 46.95 / 439 |
+
+**Token-budget packing alone costs ~10 validity points** (the
+length-sorted scar writ large: length-homogeneous batches + ~6x
+fewer optimizer steps); the lr-scaling rescue (2.5x, sqrt rule)
+made train loss WORSE — it was never average-loss undertraining.
+**bf16 autocast is near-parity**: solving 625 vs 628 and L4 18.9
+vs 18.4 dead even, ~2-pt validity debit. And packing bought no
+speed anyway once the VRAM thrash was fixed: bf16-nopack matches
+packed wall-clock (230s/epoch, 11-min 50.4M trains on the 3080).
+Train loss was blind to the entire 10-point hole (0.3654-0.3858
+band across all four cells). `--fast` now means bf16 + `--nopack`
+standard batching; packing survives only as flags for future
+study. Third instance this week of the week's lesson: THE GATE,
+NOT THE LOSS.
+
+## 113M capacity rung: NULL above 50M on this diet (2026-07-16 night)
+
+113.3M (d=768/L12/12h), identical v2.1 diet, honest bf16-nopack
+path (loss 0.3717). Unseen gate: **54.58 / 588, L4 11.5, L3 68.2**
+vs the same-path 50.4M's 54.43 / 625 / L4 18.9. Validity flat,
+solving steps LOWER, L4 gives back half the capacity gain while
+L3 jumps — the reallocation signature, not a third rung.
+**Params stopped paying at ~50M on this diet.** Caveat held open:
+26M tokens is a light meal for 113M (the 19M->50M jump paid at
+the same token count, but data-starvation grows with width) —
+re-ask ONCE if/when v2.2's thicker diet lands. The earlier
+"capacity reversal" reading was the packing bug, now void.
 
 ## Future work (spec'd or banked, in priority order)
 

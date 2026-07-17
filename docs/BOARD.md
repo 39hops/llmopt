@@ -9,8 +9,8 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 | Thread | Status | Pointer |
 |---|---|---|
 | 45M GRPO run 1b (Mac) | LIVE — continuation from run-1's cycle-10 best (61/120 @ 56.79); cycle-6 gate 61 @ 59.21 (45M validity record); completes tonight, then book LOOP-LOG | micro_grpo_45m_run1b.log |
-| 113M capacity rung (3080) | PROVISIONAL — fast-path unseen gate 48.83/410 (below 19M!); parity gate (50.4M fast-vs-standard) running NOW and decides if it's real; 113M GRPO leg queued behind it for floor data | RESULTS "fast-path asterisk" |
-| Fast trainer path | budget must be sized to the model: 24.5k @ 113M = allocator thrash, 12k = 100x faster (14-min train); --budget flag landed; parity gate in flight | RESULTS "size the token budget" |
+| 113M capacity rung | CLOSED — NULL above 50M on this diet (54.58/588, L4 11.5 vs 50.4M's 625/18.9 same-path; reallocation not a rung); re-ask once if v2.2's thicker diet lands | RESULTS "NULL above 50M" |
+| Fast trainer path | VERDICT: packing convicted (~10 pts, no speed win once thrash fixed), bf16 exonerated (~2-pt debit, 11-min 50.4M trains); --fast now = bf16 + --nopack | RESULTS "parity 2x2" |
 | Next after current runs (Artin GO): self-distillation consolidation on 45M lineage (low-LR SFT on grpo-mined rows), then weight anatomy on the adapter drawer | queued | post-climb strategy B + C |
 | Step-level expert iteration | rounds 1-3 done (one-shot 19/30, steps 12/30, validity 1.0%); NEXT: magic-adaptive skip granularity + round 4 (data balance, chain-required eval) + supervised loop round to arm autonomy | specs + scripts/expert_loop.py + LOOP-LOG.md |
 | Magic-adaptive step granularity | GO (Artin: "predict longer tokens with magic") — estimator sizes skips in data, magic score joins Hints at inference; folds estimator judge-slot + skips + latent-anchors | RESULTS "rounds 2/3"; estimator v7 |
