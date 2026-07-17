@@ -8,7 +8,8 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Status | Pointer |
 |---|---|---|
-| 45M GRPO run 1b (Mac) | COMPLETE — 61/120 @ 59.36 (c10, lineage record); 24 total cycles across runs 1+1b: 57->61 solves, 54.24->59.36 validity, +16k mined; RL ceiling reached, diet next | LOOP-LOG + micro_grpo_45m_run1b.log |
+| 45M expert-iteration arc (runs 1-3 + consol 1-3) | COMPLETE 2026-07-17 — 57 -> **65/120 @ 63.97** (production: mathnative_45m_consol3.pt); the RL->consolidate loop measured to exhaustion (+3/+1/+0); autopsy says the residue is missing L4/L6 vocabulary, NOT calibration | LOOP-LOG + RESULTS autopsy |
+| v2.2 diet (THE next lever, autopsy-aimed): in-language L4-L7 chain farm (vocab-restricted rules), one-ply L4 worked examples (measured ration), L5 coefficient-determination drill (new class from autopsy) | farm design; Mac free after arc | RESULTS "validity autopsy" + riff rows 47-48 |
 | Self-distillation consolidation | PASSED — **64/120 @ 62.23** (program record, every level >= promoted; one 5.5-min epoch beat six RL cycles); mathnative_45m_consol.pt = production 45M; next: GRPO leg from the consolidated base (RL -> consolidate -> RL) | RESULTS 2026-07-16 night |
 | 113M capacity rung | CLOSED — NULL above 50M on this diet (54.58/588, L4 11.5 vs 50.4M's 625/18.9 same-path; reallocation not a rung); re-ask once if v2.2's thicker diet lands | RESULTS "NULL above 50M" |
 | Fast trainer path | CLOSED: packing dead in ANY form (proper shuffled pack = same 10-pt hole at MATCHED train loss — it's the 6x-fewer-steps, not composition; lr-scaling anti-helps); --fast = bf16-only. Soup: NULL (same-basin parents) | RESULTS "packing post-mortem" |
