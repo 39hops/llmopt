@@ -2055,6 +2055,21 @@ DISTRIBUTION off the weights — the birth-instrument family (CV =
 organization, floor = fullness, shelf = diet skew) now has three
 gauges and one external validation.
 
+## Precision ladder: the whisper is an error-correcting code (2026-07-17)
+
+Artin's exactness riff, tested: production consol3 gated at fp32
+(65/120 @ 63.97) vs bf16-roundtripped weights (65 @ 63.83) vs
+**int8-RTN weights (65 @ 64.04)** — IDENTICAL, to noise. Weight
+precision does not carry the capability: the RL/consol fine
+structure is a rank-4 pattern across millions of weights, and
+dot-products average independent rounding errors away — the signal
+lives in correlations, not digits. Corollaries: (1) the bf16
+TRAINING debit is dynamical (gradient-trajectory perturbation),
+not representational — store cheap, train careful; (2) checkpoints
+ship int8, 4x smaller, gate-identical (model zoo / expert drawer
+economics); (3) exactness in a closed system is a property of the
+ORACLE, and the network provides its own redundancy.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
