@@ -67,6 +67,8 @@ See RESULTS.md for every number below.)
 
 | "We need HIGHER precision in training but fit in memory — at what point is precision negligible? store small, convert precise dynamically (b-tree weights)" | the PRECISION CURVE, made empirical: capability-vs-training-precision has two measured points (bf16 < fp32 by 3 solves at IDENTICAL loss) and the anti-fp64 noise-floor argument is the same shape that wrongly blessed bf16 — so pre-registered: 19M fp64-vs-fp32 birth A/B (CPU overnight; MPS lacks fp64). Data is already exact (sympy symbols) — imprecision enters ONLY in optimizer arithmetic. Storage scheme = double/blockwise quantization (Dettmers), Artin's b-tree = hierarchical scale factors; composed doctrine: int8 at rest (proven), fp32+ in motion (proven), hierarchy between — keep-set drawer as first user | banked 2026-07-17; fp64 A/B queued for an idle night |
 
+| "Is there a double-double on fp16?" | compensated-pair formats: fp16x2 stacks mantissa but not range (dead for gradients); **bf16x2/x3 = fp32 range + stacked mantissa on TENSOR CORES** (3xTF32 / Ootomo-Yokota fp32-emulation: fp32-grade matmuls at ~2x tensor-core speed) — the candidate that reclaims the 3080 for births (fp32-quality trajectory without the cuda fp32 flash-attention cliff); parity gate mandatory before trust (fast-path law). Cost anatomy: dd arithmetic is 10-20x flops but ~2x where bandwidth-bound; on gaming cards dd-on-fp32 BEATS native fp64 (1/64 segmentation) | banked 2026-07-17; precision program leg 3 (after GPTQ-int3 and the rank floor) |
+
 Standing lesson, earned nine sympy pathologies and four adoption
 races deep: the analogies are proposals, the oracle is the judge,
 and the honest nulls (entropy beams, budget allocation, symengine,
