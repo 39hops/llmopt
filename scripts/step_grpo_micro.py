@@ -333,6 +333,12 @@ if __name__ == "__main__":
     ap.add_argument("--groups", type=int, default=GROUPS,
                     help="mixed groups per cycle (speed-first: "
                          "smaller cycles, quicker gate feedback)")
+    ap.add_argument("--seed-base", type=int, default=SEED_BASE,
+                    help="problem-stream base seed — ADVANCE per "
+                         "run: a constant base re-mines the same "
+                         "stream (gen-5 novelty audit: 514/4451 new)")
     a = ap.parse_args()
+    import step_grpo_micro as _m
+    _m.SEED_BASE = a.seed_base
     main(a.cycles, a.src, a.out, a.d, a.layers, a.ffn, a.heads,
          a.groups)
