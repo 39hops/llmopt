@@ -2070,6 +2070,24 @@ ship int8, 4x smaller, gate-identical (model zoo / expert drawer
 economics); (3) exactness in a closed system is a property of the
 ORACLE, and the network provides its own redundancy.
 
+## Generational training: rebirth beats the lineage (2026-07-17)
+
+Gen-4: from-scratch 50.4M on v2.2 + the level-capped CUMULATIVE
+grpo-mined sidecar (27.7k rows — the lineage's entire verified
+experience; 6k L4 / 4.4k L6 / 6k L7). Chain gate: **66/120 @
+64.66% — program record on both axes**, beating the consol3
+lineage (65 @ 63.97 = 3 GRPO runs + 3 consolidations, ~12h) with
+a 13-MINUTE birth. L4 7->8 (the crater moves at last), L7 11->13.
+The v2.2-only control (59 @ 53.49, L7 12) attributes the win: the
+new shard buys deep chains, the cumulative sidecar buys everything
+else back and more. PARADIGM VERDICT: lineages are not patched,
+they are REBORN on accumulated verified experience — RL's product
+is the mining, not the weights (the weights are disposable; the
+corpus is the organism). Production: mathnative_45m_gen4.pt.
+Caveat: bf16-path birth (dynamical debit applies) — standard-path
+gen-4 has untested headroom. Next loop: GRPO/mine from gen-4 ->
+gen-5 rebirth.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
