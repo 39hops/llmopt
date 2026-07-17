@@ -2222,6 +2222,19 @@ Within-family, CV ~= a 30-second gate proxy (r .966, n=7; lineage
 points confirm frozen-lattice: all identical CV 0.0183 across 61->
 65). Shelf is dead within our zoo (all 0 — internet-only gauge).
 
+## GPTQ-int3: the floor was rounding, not bits (2026-07-17 night)
+
+House GPTQ (column-serial inverse-Hessian error compensation,
+methods.py; Hessians from 199 gate-band prompts, 61 linears) at 3
+bits with PER-ROW scales — a handicap vs MX's block-32 — gates
+**68/120 @ 66.01 vs naive int3's 67**: the lost L7 solve recovered,
+L3 stays perfect, only one L4 short of fp32's 69. Verdict: smart
+rounding beats fine scales; the tail dies to DUMB rounding before
+it dies to bit-scarcity. Next refinement (queued): GPTQ + block-32
+scales — plausibly full parity at 3 bits (~19MB crystal). The
+compression floor is a property of the QUANTIZER, not just the
+weights.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
