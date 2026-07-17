@@ -2021,6 +2021,25 @@ self-speculative drafting bounded at ~1.1-1.2x, not the lever.
 the functional twin of the pre-registered CONCENTRATED weight-
 anatomy prediction — point the CKA/probe instruments there first.
 
+## The specialist shelf: low-norm neurons are rare-domain, not dead (2026-07-17)
+
+Artin's slice-the-clump ask, run on Qwen2.5-0.5B L14 gate (62
+low-norm neurons, <0.35 vs bulk median 0.56; pairwise cosine 0.12 —
+diverse, NOT collapsed copies). Zero-ablation vs random-62 control:
+clump costs **math +0.0278 / english +0.0144**; random bulk costs
+math +0.0088 / english +0.0247. The "dead" neurons are ~3x more
+MATH-loaded than bulk. Verdict: magnitude tracks firing FREQUENCY,
+not importance — rare-domain specialists stay small (math is rare
+in internet text). Corollaries: magnitude pruning is anti-math
+(harvests specialists first; keep-set importance must be measured
+domain-conditionally — the weight-distance law's sibling); the
+19M's missing low band = no rare domains in a closed world, not
+higher efficiency alone. Caveat: one layer, one seed, two small
+probes — directional. LoRA note (mechanistic): truly dead channels
+self-perpetuate (no forward signal -> no backward gradient), so
+low-rank deltas invest where gradients live; resurrection requires
+re-init, but THESE neurons don't want it — they want protection.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
