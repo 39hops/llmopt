@@ -1892,6 +1892,46 @@ Limits resisted LoRA training (<=21%), motivating the engine. The
 engine now solves them: l_hopital emits UNEVALUATED derivatives that
 the rung-1 diff rules finish — the rungs composing in one derivation.
 
+## 45M-GRPO run 1: the production base climbs past the record (2026-07-16)
+
+12 cycles on `mathnative_45m_v21.pt` (the chain-gate production
+winner), Mac, GATE_N=24 L3-7. Baseline 57/120 @ 54.24% ->
+cycle-10 best **61/120 @ 56.79%** — past the 19M lineage's 60-solve
+record on solves. One rollback (cycle 8, lr halved); mining
+streamed +6.9k steps. The process died mid-cycle-12 (host outage,
+not the run) — cycles 11-12's weights lost past the last gate, but
+their +1,214 mined rows were already streamed (the checkpoint
+selection-effect discipline paying off). Continuation (run 1b)
+relaunched from the cycle-10 best: cycle-2 gate 61 @ 58.62,
+cycle-6 gate **61 @ 59.21** (validity record for the 45M lineage;
+one mid-run rollback at cycle 4 by 0.07 points). In flight.
+
+## Fast-path throughput: size the token budget to the model (2026-07-16)
+
+The 113M `--fast` run at the 50.4M-tuned 24.5k budget ran at ~30s
+per batch (~5% of the 3080's FLOPs) — VRAM at 10.0/10.2GB, the
+allocator retry-thrashing every step ("free: 0" OOM warnings, GPU
+busy but cores starved). At `--budget 12288` +
+`expandable_segments:True`: **3.1 it/s — the same run went from
+~9h projected to 14 minutes total** (~100x). Lesson: token-budget
+batching needs the budget sized to the model's activation
+footprint; over the VRAM cliff the cost is not OOM but silent
+100x throughput loss. Flag added (`--budget`).
+
+## 113M capacity rung: the fast-path asterisk (2026-07-16, PROVISIONAL)
+
+113.3M (d=768/L12/12h) on the identical v2.1 diet, trained via
+`--fast` @ 12k budget (loss 0.3723 — again indistinguishable from
+19M/50.4M). Unseen gate: **48.83% / 410 solving, L4 6.5%** — below
+the 19M on every axis; the capacity ladder REVERSED at face value.
+NOT bookable yet: this is the first gate-bearing checkpoint through
+the fast path, and the owed parity gate (50.4M fast-vs-standard,
+same protocol) is running now. Parity clean -> capacity peaked
+near 50M on this diet (a real ceiling worth understanding). Parity
+dirty -> fast path void for gate-bearing runs; 113M retrains
+standard. A GRPO leg on the 113M runs meanwhile — floor data
+either way (Artin's call). Verdict lands tonight.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
