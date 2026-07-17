@@ -2192,6 +2192,21 @@ QUANTIZE THE NOTCHES, NEVER THE AXES. Also answers the 2-numbers-
 per-neuron question at the extreme: the polar charts are
 portraits, not the person.
 
+## Gen-5: the rebirth ceiling, confirmed by failing correctly (2026-07-17)
+
+Gen-5 fp32 rebirth (v2.2 + refreshed 29.3k sidecar): **68/120 @
+64.78 — below gen-4's 69 @ 67.13**. Reallocation signature: L5
+18/24 (new per-level high) bought by L3 -2 and L6 -1 — a reshuffled
+diet, not a richer one, exactly as the novelty audit predicted
+(only ~600 genuinely new rows since gen-4; the band's step-space
+is enumerated). VERDICT: generational training's fuel is NEW
+verified experience — rebirth without novelty shuffles facets of
+the same ceiling. Production stays gen4_std (69). The equation
+reads clean: S_max binds; next levers are territory (L8 band, ODE
+continent) and the ansatz-clade curriculum, not another turn of
+the crank. Curve: 57->61->64->65->66->69-> plateau pending new
+land.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
