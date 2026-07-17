@@ -157,7 +157,9 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             opt.step()
-            sched.step()
+            if sched.last_epoch < steps_total - 1:
+                sched.step()  # shuffled packs vary per epoch; never
+                # step OneCycle past its declared total
             opt.zero_grad()
             tot += float(loss.detach())
             steps += 1
