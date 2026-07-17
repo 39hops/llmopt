@@ -8,19 +8,12 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Status | Pointer |
 |---|---|---|
-| GENERATIONAL TRAINING (the new paradigm, 2026-07-17) | gen-4 rebirth **66/120 @ 64.66** (record; L4 8, L7 13) — 13-min from-scratch birth on v2.2 + cumulative mined sidecar BEATS the whole patched lineage (65 @ 63.97, ~12h); production = mathnative_45m_gen4.pt; next: GRPO/mine from gen-4 -> gen-5 rebirth; standard-path birth headroom untested | RESULTS "generational training" |
-| 45M expert-iteration arc (runs 1-3 + consol 1-3) | COMPLETE — 57 -> 65/120 @ 63.97; loop exhausted (+3/+1/+0); superseded as production by gen-4 | LOOP-LOG + RESULTS autopsy |
-| v2.2 diet (THE next lever, autopsy-aimed): in-language L4-L7 chain farm (vocab-restricted rules), one-ply L4 worked examples (measured ration), L5 coefficient-determination drill (new class from autopsy) | ROUND 1 FARMING (8 parts, both machines); L6 in-language chains flowing (previously zero) | RESULTS "validity autopsy" + riff rows 47-48 |
-| Farm speed round 2 (if v2.2 pays & scales): (1) hints-off farming — annotate() probes 37 rules/step for fields the trainer discards ("Hints: none" since 07-13), likely 2-3x; (2) 8 workers/machine (parts are serial, 2x); (3) wall 90->45s after measuring solve-time distribution; (4) banked engine-regret hook (2.1x, throughput workloads — this qualifies). Combined ~5-8x | v2.2 A/B verdict | 2026-07-17 chat |
-| Self-distillation consolidation | PASSED — **64/120 @ 62.23** (program record, every level >= promoted; one 5.5-min epoch beat six RL cycles); mathnative_45m_consol.pt = production 45M; next: GRPO leg from the consolidated base (RL -> consolidate -> RL) | RESULTS 2026-07-16 night |
-| 113M capacity rung | CLOSED — NULL above 50M on this diet (54.58/588, L4 11.5 vs 50.4M's 625/18.9 same-path; reallocation not a rung); re-ask once if v2.2's thicker diet lands | RESULTS "NULL above 50M" |
-| Fast trainer path | CLOSED: packing dead in ANY form (proper shuffled pack = same 10-pt hole at MATCHED train loss — it's the 6x-fewer-steps, not composition; lr-scaling anti-helps); --fast = bf16-only. Soup: NULL (same-basin parents) | RESULTS "packing post-mortem" |
-| Next after current runs (Artin GO): self-distillation consolidation on 45M lineage (low-LR SFT on grpo-mined rows), then weight anatomy on the adapter drawer | queued | post-climb strategy B + C |
-| Step-level expert iteration | rounds 1-3 done (one-shot 19/30, steps 12/30, validity 1.0%); NEXT: magic-adaptive skip granularity + round 4 (data balance, chain-required eval) + supervised loop round to arm autonomy | specs + scripts/expert_loop.py + LOOP-LOG.md |
-| Magic-adaptive step granularity | GO (Artin: "predict longer tokens with magic") — estimator sizes skips in data, magic score joins Hints at inference; folds estimator judge-slot + skips + latent-anchors | RESULTS "rounds 2/3"; estimator v7 |
-| ODE engine | rung 1 shipped: 75/75 parity with dsolve, cc2 algebra wins wall; rung 2 = hard-integrating-factor families | scripts/bench_ode_engine.py |
-| VGE (quantum ground states) | rung 1 shipped (HVA 0.69% @ 6 params); structure search CLOSED (2 fails, phase-reading confirmed qualitatively) | llmopt/quantum/ground.py |
-| Fused cross-entropy (Liger-style, MLX) | SHIPPED 2026-07-13: 16k tokens 13.5GB vs 38GB AND faster (3203 vs 2008 tok/s — memory wall flips the sign); 32k infeasible->3183 tok/s; use naive below ~8k | train/fused_ce.py + RESULTS |
+| PRODUCTION | **mathnative_45m_gen4_std.pt = 69/120 @ 67.13** (fp32 birth, L3 perfect); curve 57->61->64->65->66->69, plateau pending new territory (gen-5 confirmed: rebirth w/o novelty reallocates) | RESULTS 2026-07-17 |
+| Training doctrine (one day, all measured) | births fp32-ONLY on Mac (bf16 dynamical debit = 3 solves at identical loss; cuda fp32 lacks flash attn); packing dead any precision; mining with --seed-base advanced per run; small cycles + two-tier gates + solves-primary + snapshots | RESULTS parity 2x2 / dynamical debit |
+| Storage doctrine | quantize notches never axes: MX-int4 lossless (8x, ships), int3 cracks tail-first, full-rank confirmed (rank-128 bleeds); int4 GEMV kernel greenlit (practice_7 promoted) | RESULTS compression floor / rank floor |
+| Birth panel (4 gauges, external validation incl. DeepSeek-V3 from one shard) | CV=organization, floor=fullness, shelf=diet skew, R=homogeneity; V3 experts are crystals (router = diet-focuser; 19M->671B law) | RESULTS four diets / V3 |
+| Territory levers (the S_max queue, in order) | (1) ansatz-clade curriculum v2.3 (phylogeny: teach the isolated clade as its own branch), (2) L8 band ascent + fresh seeds, (3) ODE continent merge (317 chains quarantined) — corpus is step-space-saturated at current band (novelty 2%) | RESULTS autopsy/phylogeny/gen-5 |
+| Rabbit hole (tonight) | gauge-calibration table RUNNING; then GPTQ-int3, graph modularity, relational storage, principal curricula | specs/2026-07-17-rabbit-hole.md |
 
 ## BANKED (awaiting GO or a prerequisite)
 
