@@ -26,8 +26,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from llmopt.train.mathnative import MathTokenizer, build_model
 
 B = 8
-GROUPS = 64
-GATE_EVERY = 2
+GROUPS = 64   # override with --groups (speed-first: small cycles,
+GATE_EVERY = 2  # quick feedback — Artin 2026-07-17)
 LR = 1e-5
 CLIP = 0.2
 # run 2 curriculum ascent (run 1 plateaued at {12,12,7,7}/~80%
@@ -110,7 +110,8 @@ def collect(model, tok, dev, n_groups, seed0):
                 if 0 < n_ok < B:
                     stats["mixed"] += 1
                     groups.append({"prompt": prompt, "tok_ids": tok_ids,
-                                   "logps": lps, "rewards": rewards})
+                                   "logps": lps, "rewards": rewards,
+                                   "level": lv})
                 elif n_ok == 0:
                     stats["allfail"] += 1
                 else:
@@ -206,7 +207,8 @@ def gate_eval(model, tok, dev):
 
 def main(cycles: int, src_path: str | None = None,
          out_path: str | None = None, d: int = 384,
-         layers: int = 8, ffn: int = 1536, heads: int = 6) -> None:
+         layers: int = 8, ffn: int = 1536, heads: int = 6,
+         groups_n: int = GROUPS) -> None:
     import shutil
 
     import torch
@@ -238,13 +240,21 @@ def main(cycles: int, src_path: str | None = None,
     for cyc in range(1, cycles + 1):
         t0 = time.time()
         model.eval()
-        groups, mined, stats = collect(model, tok, dev, GROUPS,
+        groups, mined, stats = collect(model, tok, dev, groups_n,
                                        SEED_BASE + 100_000 * cyc)
         with CORPUS.open("a") as f:
             for r in mined:
                 f.write(json.dumps(r) + "\n")
+        lv_mined = {}
+        for r in mined:
+            lv_mined[r["level"]] = lv_mined.get(r["level"], 0) + 1
+        lv_grp = {}
+        for g in groups:
+            lv_grp[g["level"]] = lv_grp.get(g["level"], 0) + 1
         print(f"cycle {cyc}: {stats} mined +{len(mined)} "
-              f"({time.time() - t0:.0f}s)", flush=True)
+              f"({time.time() - t0:.0f}s) | mined/lv "
+              f"{dict(sorted(lv_mined.items()))} | groups/lv "
+              f"{dict(sorted(lv_grp.items()))}", flush=True)
         model.train()
         order = list(range(len(groups)))
         random.Random(cyc).shuffle(order)
@@ -310,5 +320,9 @@ if __name__ == "__main__":
     ap.add_argument("--layers", type=int, default=8)
     ap.add_argument("--ffn", type=int, default=1536)
     ap.add_argument("--heads", type=int, default=6)
+    ap.add_argument("--groups", type=int, default=GROUPS,
+                    help="mixed groups per cycle (speed-first: "
+                         "smaller cycles, quicker gate feedback)")
     a = ap.parse_args()
-    main(a.cycles, a.src, a.out, a.d, a.layers, a.ffn, a.heads)
+    main(a.cycles, a.src, a.out, a.d, a.layers, a.ffn, a.heads,
+         a.groups)
