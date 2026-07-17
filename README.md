@@ -1,6 +1,6 @@
 # llmopt
 
-![THE CRYSTAL](docs/assets/crystal.png)
+![math-native neurons, weight-space PCA](docs/assets/neurons-19m.png)
 
 *One SFT run vs an entire overnight verified-RL climb — same matrix,
 same scale, each streak a neuron's move. Closed-system RL edits the
