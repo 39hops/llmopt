@@ -2122,6 +2122,21 @@ BY CONSTRUCTION — "the gate, not the loss" is Shannon-inevitable,
 and the specialist-shelf finding (frequency != importance) is the
 same theorem read off weights instead of bits.
 
+## The dynamical debit, quantified: fp32 birth 69/120 (2026-07-17)
+
+One-variable rerun of the gen-4 birth on the standard fp32 path:
+train loss IDENTICAL to the bf16 birth (0.3526 vs 0.3525) — chain
+gate **69/120 @ 67.13 vs 66 @ 64.66**, +3 solves / +2.5 validity,
+new program record, L3 PERFECT (24/24). bf16's forward rounding
+during TRAINING costs real capability at invisible loss (the
+precision ladder showed finished weights are rounding-robust — the
+damage is trajectory-only). Verdicts: births are fp32-ONLY from
+now on (cuda fp32 ~30 min, acceptable); production =
+mathnative_45m_gen4_std.pt; the birth-quality lever beat the RL
+lever again (69 vs the mined 68). Open lever: stochastic-rounding
+bf16 might recover speed without the debit (pre-registered).
+Generational curve: 57 -> 61 -> 64 -> 65 -> 66 -> **69**.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
