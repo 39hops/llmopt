@@ -69,6 +69,8 @@ See RESULTS.md for every number below.)
 
 | "Is there a double-double on fp16?" | compensated-pair formats: fp16x2 stacks mantissa but not range (dead for gradients); **bf16x2/x3 = fp32 range + stacked mantissa on TENSOR CORES** (3xTF32 / Ootomo-Yokota fp32-emulation: fp32-grade matmuls at ~2x tensor-core speed) — the candidate that reclaims the 3080 for births (fp32-quality trajectory without the cuda fp32 flash-attention cliff); parity gate mandatory before trust (fast-path law). Cost anatomy: dd arithmetic is 10-20x flops but ~2x where bandwidth-bound; on gaming cards dd-on-fp32 BEATS native fp64 (1/64 segmentation) | banked 2026-07-17; precision program leg 3 (after GPTQ-int3 and the rank floor) |
 
+| "Qubit with our bit? Is magic prediction good at compressing numbers?" | the re-reading: qubits store nothing extra (Holevo bound) — but MAGIC IS INCOMPRESSIBILITY (stabilizer = short classical description via Gottesman-Knill; magic = distance from one), so the magic estimator was a learned Kolmogorov-complexity proxy all along: predicting which expressions lack a short path to closed form. FA v2 closes the loop — solvable = compressible, hardness = incompressibility, and the estimator's rho=0.9 approximated an uncomputable quantity (why it HAD to be learned). The quantum riff and the compression riff were one idea | banked 2026-07-17; frame — unifies the magic thread with FA v2 |
+
 Standing lesson, earned nine sympy pathologies and four adoption
 races deep: the analogies are proposals, the oracle is the judge,
 and the honest nulls (entropy beams, budget allocation, symengine,
