@@ -58,9 +58,11 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
          heads: int = 6, v21: bool = False, fast: bool = False,
          budget: int = 24_576, lr: float = LR,
          fp32: bool = False, nopack: bool = False,
-         v22: bool = False, gen4: bool = False) -> None:
+         v22: bool = False, gen4: bool = False,
+         epochs: int = 3) -> None:
     import torch
-    global CKPT
+    global CKPT, EPOCHS
+    EPOCHS = epochs
     if v2:
         CKPT = V2_CKPT
     if out:
@@ -96,6 +98,17 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
           f"{' [fast: bf16 + token-budget]' if fast else ''}", flush=True)
     opt = torch.optim.AdamW(model.parameters(), lr=lr,
                             weight_decay=0.01)
+
+    # resume BEFORE the schedule so OneCycle spans only the epochs
+    # actually run (full-horizon sched on resume ends at peak LR)
+    marker = Path(str(CKPT) + ".ep")
+    start_ep = 0
+    if marker.exists() and CKPT.exists():
+        start_ep = int(marker.read_text()) + 1
+        model.load_state_dict(torch.load(CKPT, map_location="cpu"))
+        model.to(dev)
+        print(f"resuming at epoch {start_ep}", flush=True)
+
     if fast and not nopack:
         # token-budget packing, PROPER: the first cut packed the
         # length-SORTED list — length-homogeneous batches cost ~10
@@ -120,23 +133,16 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
         # shuffled epochs pack to slightly different counts; 5%
         # headroom keeps OneCycle from stepping past total_steps
         steps_total = int(
-            EPOCHS * len(pack_epoch(list(range(len(enc))))) * 1.05)
+            (EPOCHS - start_ep) *
+            len(pack_epoch(list(range(len(enc))))) * 1.05)
         starts = None  # built per-epoch from a shuffled permutation
     else:
         starts = [(i, i + BS) for i in range(0, len(enc) - BS, BS)]
-        steps_total = EPOCHS * (len(enc) // BS)
+        steps_total = (EPOCHS - start_ep) * (len(enc) // BS)
     sched = torch.optim.lr_scheduler.OneCycleLR(
         opt, max_lr=lr, total_steps=steps_total, pct_start=0.03)
     amp = (torch.autocast(device_type="cuda", dtype=torch.bfloat16)
            if fast and dev == "cuda" and not fp32 else None)
-
-    marker = Path(str(CKPT) + ".ep")
-    start_ep = 0
-    if marker.exists() and CKPT.exists():
-        start_ep = int(marker.read_text()) + 1
-        model.load_state_dict(torch.load(CKPT, map_location="cpu"))
-        model.to(dev)
-        print(f"resuming at epoch {start_ep}", flush=True)
 
     import contextlib
     for ep in range(start_ep, EPOCHS):
@@ -226,6 +232,11 @@ if __name__ == "__main__":
                     help="with --fast: bf16 autocast only, standard "
                          "BS=32 batching (packing failed parity: "
                          "45.65/46.95 vs 56.67 standard)")
+    ap.add_argument("--epochs", type=int, default=3,
+                    help="total epochs; with an existing .ep marker "
+                         "the run resumes and OneCycle spans only "
+                         "the remaining epochs")
     a = ap.parse_args()
     main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads, a.v21,
-         a.fast, a.budget, a.lr, a.fp32, a.nopack, a.v22, a.gen4)
+         a.fast, a.budget, a.lr, a.fp32, a.nopack, a.v22, a.gen4,
+         a.epochs)
