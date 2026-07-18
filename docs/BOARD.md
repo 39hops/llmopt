@@ -17,6 +17,8 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 | **Calculated-model thesis (the consolidation spine, Artin 2026-07-18)** | weights computable up to gauge; rung 1 = birth calculator (gate/committee/CV from corpus stats, no training) queued at head after overnight verdicts; rungs: statistical synthesis (sample weights from conserved statistics — Tracr dropped: circuit compilation targets the wrong invariant, see neuron biography) -> warm birth (VERDICT: time machine, not better basin — CALC 57 vs COLD 49 at ep1, both 64 at ep3; template saves ~1 epoch of birth compute; next: template qkv/emb, zero-epoch gate) -> closed form | RIFF-LEDGER 2026-07-18 |
 | 113M capacity re-ask | **CLOSED 2026-07-18: 65/120 @ 61.33 (fp32, honest) — capacity is NOT the binder**; loses at L3/L4 (underfit easy levels), CV says rubble, texture froze after ep1; territory stays the Liebig factor | RESULTS 2026-07-18 |
 
+| **AXIOM BACKEND (Artin GO 2026-07-18)** | Phase A live: axiom = verify backend (bridge + shadow mode + parity gates), 3080 = axiom dev machine (farm stopped @2,929 L8 rows, no training); then B (generation) -> C (solver kernel, 10-50x farm); L9+ ladder designed on top | specs/2026-07-18-axiom-backend.md |
+
 ## BANKED (awaiting GO or a prerequisite)
 
 | Thread | Waiting on | Pointer |
