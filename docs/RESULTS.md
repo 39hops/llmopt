@@ -2542,6 +2542,22 @@ for alphabet-poor training — one-knob sweep (ternary births at
 width 64/256/1024/2048) banked; would hand the birth calculator a
 bits-required(width) curve.
 
+## TF32 parity: the 3080 is reinstated for births (2026-07-18)
+
+The precision-cliff bracket, closed in 21 minutes: a 19M birth on
+the 3080 with TF32 matmuls (10-bit mantissa, tensor cores, zero
+custom code — two allow_tf32 flags), identical recipe/seeds/diet
+to the warm-birth COLD reference (Mac fp32: 49 @ ep1, 64 @ ep3).
+TF32 ep3 gate: **65/120 @ 64.16 — full parity, +1 solve** (noise),
+at **12.5 it/s vs the Mac's ~5** — 2.5x faster, while 10 farm
+workers hammered the same box's CPU. With bf16's measured -3
+debit: **the dynamical-precision cliff sits between 8 and 10
+mantissa bits.** TF32 clears it; bf16 doesn't. Doctrine update:
+births = fp32-on-Mac OR TF32-on-cuda (both sides of the cliff now
+measured); the compensated-bf16/3xTF32 build is unnecessary —
+the cheap rung won. The 400M-class scaling points and gen-6 can
+now birth on the 3080 at speed.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
