@@ -2488,6 +2488,27 @@ Open next: does the advantage persist at 3 epochs (or does COLD
 catch up — i.e. is the template a head start or a better basin);
 scale to 45M; template MORE of the model (qkv/up/down, embedding).
 
+## The alphabet is a lens, not an attractor (2026-07-18)
+
+Do existing weights carry an alphabet fingerprint? Two probes on
+layer-6 gate matrices. (1) The fp32 champion snaps to discrete
+alphabets with smoothly falling cost (binary 0.315 / ternary 0.161
+/ M5 0.067 / P2 0.040 normalized MSE at optimal scale) and
+kurtosis 2.45 — a smooth, modeless, slightly sub-Gaussian
+distribution. No hidden discreteness. (2) The SURPRISE: the
+ternary model's fp32 LATENTS are equally smooth (kurtosis 2.84,
+~Gaussian) and snap to ternary WORSE than the champion does
+(0.183 vs 0.161) — STE training never polarized the continuous
+weights toward the deployed values. Verdict: the alphabet is the
+PROJECTION the crystal is viewed through at inference, not a shape
+the crystal takes; underneath every alphabet lives the same smooth
+statistical object (quantize-notches-never-axes, one level deeper;
+the gauge story extended to precision). Consequences: (a) the
+warm-birth template serves every tournament contestant unchanged;
+(b) tournament prediction 3 sharpened — sufficient alphabets
+should cluster, losers should fail on EXPRESSIVITY (binary's
+missing zero), not fit.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
