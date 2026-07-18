@@ -2278,6 +2278,24 @@ without them. Robustness at a third granularity (bits: int8/
 ternary; units: this; correlations carry everything). The
 definition of the power rule is not a place; it is a chord.
 
+## Ternary-from-birth: 63/120 at 1.58 bits (2026-07-17, the closer)
+
+The wiring-thesis showdown, final: BitNet-style STE birth on the
+full gen-4 recipe -> **63/120 @ 60.84, final loss 0.3594 vs the
+fp32 twin's 0.3526**. Six solves behind the champion at 1/20th the
+bits (~8MB, bitwise-inference-ready); **L5 17/24 BEATS the
+champion's 16**; beats every pre-gen4 fp32 birth (v2.1 58, v2.2
+59). Post-hoc ternarization got 24 — growing up ternary got 63:
+the constraint shapes a lattice that carries in topology what
+amplitudes carried before (geometry constraint-invariant, portraits
+identical; 27% exact zeros at ep0). Arc: ep0 preview 53 -> final
+63. Cross-birth anatomy: the ternary grew its OWN definition
+committee (power-dominant, zero index overlap — lottery redrawn,
+statistic conserved) with SOFTER selectivity (1 vs 6 neurons
+>1.8x): discrete weights force a more distributed code. Queued:
+the discrete-plasticity fork (GRPO on this model), progressive-
+precision curriculum, int kernels to cash the 8MB in.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
