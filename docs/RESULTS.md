@@ -2383,6 +2383,17 @@ learns it — the diet writes the same signature into every brain
 that eats it (the corpus-is-the-organism thesis, at neuron
 granularity).
 
+Family tilt, not family clump (same night, Artin's locality
+hypothesis): top-20 family-selective layer-6 gate rows are MORE
+mutually aligned than random in 10/10 family x model cells (45M
+power +31% over baseline, 113M power +46%) — but at cosines of
+0.02-0.05, i.e. near-orthogonal. The expander refuses clumps;
+families share a faint common DIRECTION while staying spread —
+relatedness lives in correlations (holography), proximity is a
+3% tilt. Computable prior for the calculated init: one anchor
+per rule, near-orthogonal spray with corpus-statistic-weighted
+tilt toward the anchor.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
