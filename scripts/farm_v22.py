@@ -128,7 +128,12 @@ if __name__ == "__main__":
     ap.add_argument("--part", type=int, default=0)
     ap.add_argument("--parts", type=int, default=1)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--seed-base", type=int, default=None,
+                    help="override SEED_BASE (fresh band per farm "
+                         "run — the seed-collision scar)")
     a = ap.parse_args()
+    if a.seed_base is not None:
+        SEED_BASE = a.seed_base
     levels = tuple(int(x) for x in a.levels.split(","))
     out = a.out or f"data/micromodel_v22_shard{a.part}.jsonl"
     main(levels, a.n, a.part, a.parts, out)
