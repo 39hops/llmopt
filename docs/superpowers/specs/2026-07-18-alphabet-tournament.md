@@ -25,6 +25,11 @@ buy — magnitude (resolution), rotation (a new verb), or nothing?
 | E7 | {0, ±1, ±ω, ±ω²}, ω=e^{iπ/3} | 2.81 | rotation | hexagonal/Eisenstein lattice — does finer phase pay more? |
 | P2 | {0, ±½, ±1, ±2, ±4} | 3.17 | magnitude | shift-only multiplies (hardware-blessed, ~fp4) |
 | Q9 | {0, ±1, ±i, ±j, ±k} | 3.17 | rotation | quaternion units; honest re-ask of the provenance-less "quaternion" null, at alphabet level |
+| L* | 5 learnable levels/family | ~2.32 | self-tuned | LSQ-style: levels get gradients through STE — the model designs its own alphabet at birth (Artin's AlphaZero riff). Read what it chose: reconverges to ternary = validation; asymmetric = discovery; per-family divergence = alphabet-follows-role, measured |
+
+Outer-loop fallback if L* misbehaves: SPSA over discrete alphabet
+choices with the gate as fitness (Stockfish-HCE-style tuning) —
+expensive, only if the differentiable version fails.
 
 Composable with all rows: the ESCAPE code (one spare state =
 "fetch fp from side table") — per-weight mixed precision priced at
