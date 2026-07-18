@@ -14,6 +14,7 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 | Birth panel (4 gauges, external validation incl. DeepSeek-V3 from one shard) | CV=organization, floor=fullness, shelf=diet skew, R=homogeneity; V3 experts are crystals (router = diet-focuser; 19M->671B law) | RESULTS four diets / V3 |
 | Territory levers (the S_max queue, in order) | (1) ansatz-clade curriculum v2.3 (phylogeny: teach the isolated clade as its own branch), (2) L8 band ascent + fresh seeds, (3) ODE continent merge (317 chains quarantined) — corpus is step-space-saturated at current band (novelty 2%) | RESULTS autopsy/phylogeny/gen-5 |
 | Rabbit hole (tonight) | gauge-calibration table RUNNING; then GPTQ-int3, graph modularity, relational storage, principal curricula | specs/2026-07-17-rabbit-hole.md |
+| 113M capacity re-ask | **CLOSED 2026-07-18: 65/120 @ 61.33 (fp32, honest) — capacity is NOT the binder**; loses at L3/L4 (underfit easy levels), CV says rubble, texture froze after ep1; territory stays the Liebig factor | RESULTS 2026-07-18 |
 
 ## BANKED (awaiting GO or a prerequisite)
 

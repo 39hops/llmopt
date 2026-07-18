@@ -2342,6 +2342,34 @@ can key off a handful of activations at negligible cost. Tunnel 5
 transfer edges are too few to eigen-decompose honestly; revisit
 when the clade-curriculum A/Bs add rows to the transfer matrix.
 
+## 113M fp32 capacity re-ask: tokens-per-width is the ceiling (2026-07-18)
+
+The honest re-run of the capacity question (every prior 113M was
+bf16-tainted): d=768/L12/h12/ffn3072 (113M), fp32 on Mac, identical
+gen-4 corpus + recipe as the 45M champion. **65/120 @ 61.33** —
+per-level {3:21, 4:6, 5:16, 6:9, 7:13} vs the champion's
+{3:24, 4:8, 5:16, 6:8, 7:13}. Verdict: **capacity is NOT the
+binder at this corpus size.** The 113M loses where the 45M is
+saturated (L3 −3, L4 −2) and buys only +1 at L6 — 2.4x the
+parameters spread the same tokens thinner and underfit the EASY
+levels, exactly the ep1-trail prediction (train loss 0.362 final,
+vs the 45M's lower plateau on the same data). The Liebig binding
+factor stays where the novelty audit put it: **territory (L8/ODE),
+not width.** Corollary for the scaling ladder: don't buy params
+until tokens/param recovers to at least the 45M's ratio (~2.4x
+current corpus for this width).
+
+Birth panel (gate matrices, mid-layer): 113M CV 0.0210 vs champion
+0.0144 — HIGHER, and data-per-width says rubble, not texture (the
+calibration table's disambiguation holding on a fresh birth). Floor
+0.862 vs 0.941 (emptier lattice). CV froze ep1→final (0.0210 →
+0.0210): the lattice's texture is set by end of epoch 1; epoch 2
+only polishes in place. Color-fade test (Artin's hypothesis: the
+magnitude gradient rises with epochs): mean neuron norm 0.671 →
+0.722 → 0.726 across ep0/ep1/final — CONFIRMED with saturation;
+the fade-up happens in epoch 1 and freezes with the texture.
+Growth movie frames: `docs/assets/neurons-113m-growth-*.png`.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
