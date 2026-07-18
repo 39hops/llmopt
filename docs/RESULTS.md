@@ -2509,6 +2509,25 @@ warm-birth template serves every tournament contestant unchanged;
 should cluster, losers should fail on EXPRESSIVITY (binary's
 missing zero), not fit.
 
+## The NNUE is an oligarchy; the crystal laws are laws of width (2026-07-18)
+
+Ran the crystal gauges on the founding artifact (nnue_eval.pt,
+20->64->64->1 MLP, same closed system + oracle): lattice CV 0.165
+(~8x rougher than any transformer crystal), kurtosis 4.78 vs the
+crystals' ~2.5 — HEAVY-tailed where every crystal is flatter-than-
+Gaussian, snap costs uniformly worse. Two regimes of learned
+closed-system intelligence: OLIGARCHY (few big load-bearing
+weights — the NNUE, and why chess NNUEs need int8's 256 levels)
+vs DEMOCRACY (wide redundant populations — smoothness, holography,
+the lens property, ternary parity). The crystal laws are laws of
+POPULATION CODING, not of learning per se; ternary tied the
+champion only because 2048-wide layers convert per-weight
+precision into neuron count (the dimension dividend, with its
+counterexample now measured in-house). Predicts a MINIMUM WIDTH
+for alphabet-poor training — one-knob sweep (ternary births at
+width 64/256/1024/2048) banked; would hand the birth calculator a
+bits-required(width) curve.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
