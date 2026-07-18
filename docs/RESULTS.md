@@ -2494,7 +2494,13 @@ therefore compute, and it scales with birth cost — at 19M it saves
 minutes, at 113M it would save the ~75-min epoch that carries most
 of the texture. Still open: template MORE of the model (qkv/
 embedding) to push the head start toward "calibrate immediately";
-zero-epoch gate of the raw template as the north-star metric.
+zero-epoch gate of the raw template as the north-star metric —
+MEASURED same day (3080 cuda): **0/120 @ 0.00% valid** as
+pre-registered (v0 templates only gate-matrix statistics; random
+attention/embeddings can't emit grammar). The program's scoreboard:
+calculation 0 -> calculation+1ep 57 -> ceiling 64 (19M). Every
+template rung (embeddings, attention stats) is now graded by how
+far it drags the zero.
 
 ## The alphabet is a lens, not an attractor (2026-07-18)
 
