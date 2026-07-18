@@ -25,6 +25,12 @@ BG = "#0d1117"
 FG = "#c9d1d9"
 
 
+def torch_svd_top2(X):
+    import torch
+    _, S, V = torch.linalg.svd(X, full_matrices=False)
+    return None, S, V[:2]
+
+
 def neuron_matrix(ckpt: str, key_sub: str):
     import torch
     sd = torch.load(ckpt, map_location="cpu")
@@ -88,7 +94,48 @@ def main() -> None:
     ap.add_argument("--title2", default=None)
     ap.add_argument("--cmap", default="cool")
     ap.add_argument("--out", required=True)
+    ap.add_argument("--displace", default=None,
+                    help="second checkpoint: draw the central lattice "
+                         "with neuron displacement lines FROM --ckpt "
+                         "TO this (the whisper-zoom view)")
+    ap.add_argument("--mult", type=float, default=60,
+                    help="displacement magnification")
+    ap.add_argument("--zoom", type=float, default=0.2,
+                    help="central quantile box (0.2 = middle 60%)")
     a = ap.parse_args()
+    if a.displace:
+        import numpy as np
+        from matplotlib.collections import LineCollection
+        W0 = neuron_matrix(a.ckpt, a.key)
+        W1 = neuron_matrix(a.displace, a.key)
+        X = W0 - W0.mean(0)
+        _, _, V = torch_svd_top2(X)
+        P0 = (X @ V.T).numpy()
+        P1 = ((W1 - W0.mean(0)) @ V.T).numpy()
+        disp = P1 - P0
+        end = P0 + disp * a.mult
+        lo = np.quantile(P0, a.zoom, axis=0)
+        hi = np.quantile(P0, 1 - a.zoom, axis=0)
+        m = ((P0[:, 0] > lo[0]) & (P0[:, 0] < hi[0]) &
+             (P0[:, 1] > lo[1]) & (P0[:, 1] < hi[1]))
+        fig, ax = plt.subplots(figsize=(12, 12))
+        fig.patch.set_facecolor(BG)
+        segs = np.stack([P0[m], end[m]], axis=1)
+        lc = LineCollection(segs, cmap="cool", linewidths=0.7,
+                            alpha=0.8)
+        lc.set_array(np.linalg.norm(disp[m], axis=1))
+        ax.add_collection(lc)
+        ax.scatter(P0[m, 0], P0[m, 1], s=2, c="#30363d")
+        ax.set_xlim(lo[0], hi[0]); ax.set_ylim(lo[1], hi[1])
+        ax.set_facecolor(BG)
+        ax.set_xticks([]); ax.set_yticks([])
+        t = a.title or f"{a.ckpt} -> {a.displace}"
+        ax.set_title(f"central lattice, displacements x{a.mult:g} — {t}",
+                     color=FG, fontsize=11, family="monospace")
+        fig.tight_layout()
+        fig.savefig(a.out, dpi=150, facecolor=BG)
+        print(f"saved {a.out}")
+        raise SystemExit
 
     ckpts = [(a.ckpt, a.title or a.ckpt)]
     if a.compare:
