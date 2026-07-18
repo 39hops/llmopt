@@ -2310,6 +2310,22 @@ clustering small-world because axons cost space; the crystal has
 no geometry to pay for and converges to what the brain would build
 if wires were free. The pure expander.
 
+## Anchor storage: the democracy is indescribable (2026-07-17 night)
+
+Relational storage (neurons stored as inner products to k of their
+own, least-squares reconstruction): anchor-256 = 52/120, 192 = 38,
+**128 = 11 — versus SVD rank-128's 66 at identical rank**. Random
+citizens are a 6x-worse basis than the optimal one BECAUSE the
+crystal is isotropic: no neuron is representative in a maximally
+democratic code (clumped models would anchor well; ours can't).
+The isotropy that buys robustness and expander topology costs
+relational compressibility. Tail died first as predicted (L4 = 0
+at k=128). Spectral companion result: effective rank FALLS with
+capability (v2 317 -> champion 284/512; knowledge organizes
+directions rather than opening them) while the thin tail stays
+load-bearing — concentrated body, indispensable whisper. Storage
+doctrine survives the night intact.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
