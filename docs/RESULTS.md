@@ -2394,6 +2394,32 @@ relatedness lives in correlations (holography), proximity is a
 per rule, near-orthogonal spray with corpus-statistic-weighted
 tilt toward the anchor.
 
+## Extended-training night: ternary reaches parity (2026-07-18)
+
+Both continuations resumed at ep3 with a fresh OneCycle over the
+remaining epochs (resume-schedule bug fixed en route: the old code
+spanned the FULL horizon on resume and would have ended at peak LR).
+
+**113M epochs 3-5: 66/120 @ 65.57** ({3:23,4:8,5:16,6:7,7:12}) —
+the underfit diagnosis verified (L3 +2, L4 +2, exactly the starved
+levels) but net +1 with small L6/L7 giveback: tokens-per-width
+confirmed a second way. **Ternary epochs 3-5: 69/120 @ 67.13**
+({3:24,4:8,5:17,6:8,7:12}) — **FULL PARITY with the fp32 champion
+at 1.58 bits**, L3 perfect, L5 17/24 BEATS the champion's 16,
+final latent loss 0.3396 vs the fp32 twin's 0.3526. The wiring
+thesis completes: discrete lattices learn slower, not worse —
+three extra epochs closed the whole six-solve gap. The lab's best
+model is now storable in ~10MB. Promotion decision (co-champion
+vs replace) deferred to Artin.
+
+Ceiling probes (24 fresh L7 + 24 fresh L8 each, never gated
+before): 45M champion L7 13/24, L8 2/24; 113M-6ep L7 12/24,
+**L8 5/24**; ternary-6ep L7 12/24, L8 4/24. The capacity story
+gains a nuance: the 113M loses in-corpus but LEADS at the
+never-trained frontier (sqrt-composite quotients the 45M can't
+touch) — width buys extrapolation past the corpus edge, not
+mastery inside it. Solved-integral lists: `ceiling_probe.log`.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN

@@ -8,7 +8,7 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Status | Pointer |
 |---|---|---|
-| PRODUCTION | **mathnative_45m_gen4_std.pt = 69/120 @ 67.13** (fp32 birth, L3 perfect); curve 57->61->64->65->66->69, plateau pending new territory (gen-5 confirmed: rebirth w/o novelty reallocates) | RESULTS 2026-07-17 |
+| PRODUCTION | **mathnative_45m_gen4_std.pt = 69/120 @ 67.13** (fp32) — now TIED by **mathnative_45m_ternary.pt 69/120 @ 67.13 at 1.58 bits** (6 epochs; L5 17 beats fp32's 16; ~10MB); promotion decision open (Artin); curve 57->69, plateau pending new territory | RESULTS 2026-07-18 |
 | Training doctrine (one day, all measured) | births fp32-ONLY on Mac (bf16 dynamical debit = 3 solves at identical loss; cuda fp32 lacks flash attn); packing dead any precision; mining with --seed-base advanced per run; small cycles + two-tier gates + solves-primary + snapshots | RESULTS parity 2x2 / dynamical debit |
 | Storage doctrine | quantize notches never axes: MX-int4 lossless (8x, ships), int3 cracks tail-first, full-rank confirmed (rank-128 bleeds); int4 GEMV kernel greenlit (practice_7 promoted) | RESULTS compression floor / rank floor |
 | Birth panel (4 gauges, external validation incl. DeepSeek-V3 from one shard) | CV=organization, floor=fullness, shelf=diet skew, R=homogeneity; V3 experts are crystals (router = diet-focuser; 19M->671B law) | RESULTS four diets / V3 |
