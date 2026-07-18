@@ -2326,6 +2326,22 @@ directions rather than opening them) while the thin tail stays
 load-bearing — concentrated body, indispensable whisper. Storage
 doctrine survives the night intact.
 
+## The free router works, and the code is holographic (2026-07-17 night)
+
+Family classification from layer-6 activations (nearest-centroid,
+5 families incl. two never used for selection): all-2048 = 100%,
+**the 8-neuron committee = 94%, and 8 RANDOM neurons = 87%**.
+Routing is essentially free at any readout width — but the sleeper
+is the random row: every small fragment of the population carries
+a blurry copy of the family signal. The code is HOLOGRAPHIC —
+the ablation result's mirror (remove the committee: nothing lost;
+read only it: almost everything present). Rule-neuron router
+feasibility: CONFIRMED — dispatch (per-family experts/precision)
+can key off a handful of activations at negligible cost. Tunnel 5
+(principal curricula) closed as a frame-awaiting-data: 3 measured
+transfer edges are too few to eigen-decompose honestly; revisit
+when the clade-curriculum A/Bs add rows to the transfer matrix.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
