@@ -2466,6 +2466,28 @@ configuration from them), not circuit compilation. Training's job
 reduces to error-correcting the sample; the warm-birth pilot is
 measuring the first rung of exactly that.
 
+## Warm birth: the calculated init PAYS (2026-07-18)
+
+Rung 3 of the calculated-model thesis, first pilot. Two 19M births
+on the gen-4 diet, ONE epoch each, identical in every respect
+except initialization: COLD = standard init; CALC = the template —
+gate-neuron rows written from measured statistics before any
+gradient step (near-orthogonal directions + 3% family tilt toward
+5 anchors, family counts by corpus frequency, norms at the trained
+crystal's distribution). Train losses statistically identical
+(0.5369 vs 0.5363). Honest chain gates: **COLD 49/120 @ 46.31 vs
+CALC 57/120 @ 48.70 — +8 solves and +2.4 validity from
+calculation alone**, gains spread across levels ({3:+3, 4:+2,
+5:+1, 7:+2}). Third confirmed case of capability invisible in
+train loss (bf16 debit, ternary parity, now this). Verdict:
+statistically-placed neurons calibrate faster — Artin's template
+hypothesis ("put an arbitrary neuron where we think it's going to
+be, pass the data, slight calibration") measured TRUE on first
+contact. One template per closed system serves every birth.
+Open next: does the advantage persist at 3 epochs (or does COLD
+catch up — i.e. is the template a head start or a better basin);
+scale to 45M; template MORE of the model (qkv/up/down, embedding).
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
