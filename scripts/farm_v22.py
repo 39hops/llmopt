@@ -54,7 +54,8 @@ def in_language(text: str) -> bool:
     return _tok.decode(_tok.encode(text)) == text
 
 
-def main(levels, n_per, part, parts, out) -> None:
+def main(levels, n_per, part, parts, out,
+         oneply_levels=(4, 5), oneply_cap=ONEPLY_CAP_FRAC) -> None:
     ctx = mp.get_context("fork")
     path = Path(out)
     seen: set = set()
@@ -89,10 +90,10 @@ def main(levels, n_per, part, parts, out) -> None:
                 is_oneply = len(kept) == 1
                 if is_oneply:
                     # components 2+3: capped worked-example ration
-                    if lv not in (4, 5):
+                    if lv not in oneply_levels:
                         continue
-                    if oneply_rows[lv] >= ONEPLY_CAP_FRAC * max(
-                            chain_rows[lv], 100):
+                    if oneply_cap >= 0 and oneply_rows[lv] >= \
+                            oneply_cap * max(chain_rows[lv], 100):
                         continue
                 elif len(kept) < 2:
                     continue
@@ -128,6 +129,13 @@ if __name__ == "__main__":
     ap.add_argument("--part", type=int, default=0)
     ap.add_argument("--parts", type=int, default=1)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--oneply-levels", default="4,5",
+                    help="levels where one-ply worked examples are "
+                         "kept (L8: the engine one-plies the ansatz "
+                         "— one-ply IS the harvest)")
+    ap.add_argument("--oneply-cap", type=float, default=ONEPLY_CAP_FRAC,
+                    help="one-ply ration cap fraction; negative = "
+                         "uncapped")
     ap.add_argument("--seed-base", type=int, default=None,
                     help="override SEED_BASE (fresh band per farm "
                          "run — the seed-collision scar)")
@@ -136,4 +144,6 @@ if __name__ == "__main__":
         SEED_BASE = a.seed_base
     levels = tuple(int(x) for x in a.levels.split(","))
     out = a.out or f"data/micromodel_v22_shard{a.part}.jsonl"
-    main(levels, a.n, a.part, a.parts, out)
+    main(levels, a.n, a.part, a.parts, out,
+         tuple(int(x) for x in a.oneply_levels.split(",")),
+         a.oneply_cap)
