@@ -2558,6 +2558,29 @@ measured); the compensated-bf16/3xTF32 build is unnecessary —
 the cheap rung won. The 400M-class scaling points and gen-6 can
 now birth on the 3080 at speed.
 
+## Axiom parity run 1: the native oracle arrives (2026-07-18)
+
+The C++23 CAS (Artin's axiom, github.com/39hops/axiom — built
+pre-llmopt, now Phase 8: llmopt-oracle) ran its first parity audit
+against 72,988 tasks dumped from oracle-signed farm rows.
+**1.04 ms/row — the full audit costs 80 seconds** (sympy-side
+equivalence checking runs ~10-100 ms/row). Results: diff tasks
+0 disagreements (10,823 byte-identical + 10,998 proved-equivalent
+forms); equiv 45,712 agree; UNDECIDED tax 4.85% (under the 5%
+gate; 55% of it sqrt-composite shapes — next canonical()
+increment already identified). The audit caught one real bug on
+EACH side: axiom's pow canonicalization collapsed (x^2)^(1/2)->x
+(fixed, regression-tested), and llmopt's dump generator dropped
+scalar coefficients on integral atoms (4*Integral(f) -> density f)
+— axiom flagged all 64 poisoned reference rows as NOT_EQUIVALENT
+and independent adjudication scored it **axiom 64, reference 0**.
+Two oracles auditing each other found what neither would have
+found alone. Gate: axiom PASSES run 1; oracle-of-record status
+pending the sqrt increment + a clean re-audit (80s, now routine).
+Projected farm impact: the diff/simplify half of L8 mining at
+~10-50x, and eventual retirement of the 90s fork walls (sympy
+pathology armor) on axiom-decided rows.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
