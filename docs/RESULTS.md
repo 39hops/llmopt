@@ -2370,6 +2370,19 @@ magnitude gradient rises with epochs): mean neuron norm 0.671 →
 the fade-up happens in epoch 1 and freezes with the texture.
 Growth movie frames: `docs/assets/neurons-113m-growth-*.png`.
 
+Committee confluence (45M champion vs 113M, layer 6, 5 family-pure
+prompt sets): the 113M grew its OWN full committee — 15 slots >1.8x
+selectivity in BOTH models, zero index overlap (third birth
+confirming lottery-redrawn / statistic-conserved). The sharper
+pattern: **per-family selectivity strength is conserved across
+substrates** — power is the most crystallized definition in both
+(16.3x vs 16.5x top neuron), exp the softest in both (6.5x vs
+6.3x), recip/mixed strong in both. Selectivity is a property of
+the FAMILY's statistics in the corpus, not of the network that
+learns it — the diet writes the same signature into every brain
+that eats it (the corpus-is-the-organism thesis, at neuron
+granularity).
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
