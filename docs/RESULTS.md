@@ -2296,6 +2296,20 @@ statistic conserved) with SOFTER selectivity (1 vs 6 neurons
 the discrete-plasticity fork (GRPO on this model), progressive-
 precision curriculum, int kernels to cash the 8MB in.
 
+## Graph anatomy: the crystal is an expander (2026-07-17 night)
+
+kNN weight-graphs + Newman modularity, six minds. The coder-
+modules prediction FAILED (coder is the LEAST modular, Q 0.142 —
+phase clumps are not graph communities; projection over-read,
+lesson banked). The real signal: **clustering coefficient —
+crystals 0.021-0.026 vs internet models 0.063-0.095**. Low
+clustering + connectivity = EXPANDER graph: no cliques, neighbors'
+neighbors are strangers, maximal mixing per edge — full-rank as
+topology, no redundant edges. Brain inversion: cortex is high-
+clustering small-world because axons cost space; the crystal has
+no geometry to pay for and converges to what the brain would build
+if wires were free. The pure expander.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
