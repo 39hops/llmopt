@@ -2420,6 +2420,26 @@ never-trained frontier (sqrt-composite quotients the 45M can't
 touch) — width buys extrapolation past the corpus edge, not
 mastery inside it. Solved-integral lists: `ceiling_probe.log`.
 
+## Birth calculator v1: the gate is computable from the corpus (2026-07-18)
+
+Rung 1 of the calculated-model thesis, first pass. A saturating
+exposure curve (solves_L = 24*(1-exp(-eff_L/k))) on the gen-4
+diet's per-level row counts alone gets RMSE 5.2 — and its misses
+are SIGNED BY THE PHYLOGENY: L3 under-predicted by 7 (the clade
+fed by 66k L1/L2 transfer rows), L4 over-predicted by 8 (the
+isolated ansatz dialect). Adding the two clade terms the phylogeny
+demands (transfer weight a=0.3 into/within clades; L4 usable
+fraction b=0.55) drops RMSE to 2.5 with L4 exact (8.2 vs 8) —
+3 params on 5 points, so the LOO caveat stands, but the BLIND
+test passed: the model predicts L8 ~= 0.4 solves from its 319
+rows, and the overnight probe measured 2/24. The gate profile is
+a computable function of (row counts x phylogeny). First rent
+paid — territory sizing BEFORE farming: L8=8/24 needs ~8.5k
+effective rows, 12/24 ~14.6k, 16/24 ~23k (at 45M-fp32's k; the
+sidecar shows mined rows count extra via depth quality). Next
+rungs: validate across diets when v2-era births get re-gated on
+the chain metric; then the compiled skeleton.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
