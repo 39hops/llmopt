@@ -2440,6 +2440,32 @@ sidecar shows mined rows count extra via depth quality). Next
 rungs: validate across diets when v2-era births get re-gated on
 the chain metric; then the compiled skeleton.
 
+## Neuron biography: the lottery is redrawn WITHIN a lineage (2026-07-18)
+
+Tracked the 113M's final-committee neurons (power #642, trig #768,
+mixed #2098, layer 6) across ep0 -> ep1 -> ep3 -> ep6. Three laws:
+(1) **committees crystallize late** — texture/CV freezes after ep1
+but role selectivity sharpens ep1->ep3 (power 2.4x -> 16.5x):
+structure first, specialization within it. (2) **extended training
+REDREW the lottery mid-lineage**: the fresh LR cycle (ep3-5) moved
+weights as much as all of epoch 1 (drift 0.23 vs 0.22) and
+REASSIGNED the committee — #642 lost the power job (16.5x -> 2.9x),
+the trig neuron collapsed to 0.4x — while the gate barely moved
+(65->66). Function invariant, roles disposable, now demonstrated
+INSIDE one model's lifetime (previously only across births).
+(3) **committee neurons are weight-space average citizens** — drift
+and norms indistinguishable from population; the "power neuron" is
+special only in activation space (the tilt-not-clump law from the
+other side). Consequence for the calculated-model thesis, called by
+Artin: the microstate (which neuron does what) is the one thing the
+system does NOT preserve — so Tracr-style circuit compilation
+targets the WRONG invariant. Rung 2 re-aimed: **statistical
+synthesis** (write down the conserved statistics — committee
+strengths, tilt, norms, phylogeny — and sample a weight
+configuration from them), not circuit compilation. Training's job
+reduces to error-correcting the sample; the warm-birth pilot is
+measuring the first rung of exactly that.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
