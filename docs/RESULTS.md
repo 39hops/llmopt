@@ -2484,9 +2484,17 @@ statistically-placed neurons calibrate faster — Artin's template
 hypothesis ("put an arbitrary neuron where we think it's going to
 be, pass the data, slight calibration") measured TRUE on first
 contact. One template per closed system serves every birth.
-Open next: does the advantage persist at 3 epochs (or does COLD
-catch up — i.e. is the template a head start or a better basin);
-scale to 45M; template MORE of the model (qkv/up/down, embedding).
+Persistence verdict (same day): at 3 epochs COLD 64/120 @ 60.50
+vs CALC 64/120 @ 60.79 — COLD caught up. **The template is a TIME
+MACHINE, not a better basin**: same destination, reached ~1 epoch
+sooner (CALC's ep1 gate of 57 sits between COLD's ep1 49 and ep3
+64). Consistent with the FA Law: the corpus fixes S_max; the
+template only accelerates the approach. Value proposition is
+therefore compute, and it scales with birth cost — at 19M it saves
+minutes, at 113M it would save the ~75-min epoch that carries most
+of the texture. Still open: template MORE of the model (qkv/
+embedding) to push the head start toward "calibrate immediately";
+zero-epoch gate of the raw template as the north-star metric.
 
 ## The alphabet is a lens, not an attractor (2026-07-18)
 
