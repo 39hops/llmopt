@@ -2752,6 +2752,29 @@ Push v0 to extremes (Artin: "set things to infinity, 0, negative
    widths) RETRO-EXPLAINS the storage doctrine — int4-lossless
    because there is no tail to clip.
 
+## The fair fight: two engines, one map (2026-07-19)
+
+First complete like-for-like comparison — same 480 roots, budget
+200, markov3/width-3/no-NN/no-magic/no-heurisch both sides, both
+soundness-spotless. **sympy-arm 420/480 (60/60/60/47/55/37/48/53)
+vs axiom pure-native 316/480 (60/60/60/32/37/30/28/9), with 6
+axiom upsets** (roots the sympy arm misses). Decompositions, all
+measured: (1) axiom's markov3-vs-unpruned was a WASH (316 vs 317)
+— at cheap-node economics the prior buys nothing; the starved-
+judge law at engine scale, now measured from BOTH sides of the
+node-cost divide (sympy's precious nodes made the same prior
+worth +28). (2) L6 is THE heurisch level: +21 from the slot
+(37->58), <=8 everywhere else — bridge-slot priority. (3) L8's
+-44 with heurisch OFF = sympy's native sqrt/log-orbital reach
+(axiom's unported i_sqrt_basis log-combo branch, pre-registered
+suspect, confirmed). (4) Expiry pricing: 1 recovered solve in 38
+at 60s — axiom's tail is rocks where sympy's was treasure
+(engine-dependent tail economics; its 20s deadline stays).
+Tranche-4 worklist shipped: the exact 110 arm-solved/axiom-missed
+roots (L4:16 L5:21 L6:7 L7:21 L8:45), rule-attribution run in
+flight — ports ordered by histogram, each with predicted yield
+before it's written. Pure-native ceiling 420, hybrid target 460.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
