@@ -57,7 +57,8 @@ class AxiomOracle:
         if not HAVE_AXIOM:
             return None
         try:
-            return axiom_sym.equivalent(lhs, rhs, "x")
+            return axiom_sym.equivalent(axiom_sym.parse_sstr(lhs),
+                                        axiom_sym.parse_sstr(rhs), "x")
         except Exception:
             return None
 
