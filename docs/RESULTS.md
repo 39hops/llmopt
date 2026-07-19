@@ -2625,6 +2625,41 @@ C2 (chassis: hash-cons state keys, three-valued verify_edge,
 beam + full hook surface, adversarial-proposer and lying-rule
 soundness tests) both landed same-night.
 
+## The five-point scaling table (2026-07-19, ~1 AM)
+
+Same gen-4 diet at 19M/45M/113M/200M/400M (fp32/TF32-clean births;
+200M+400M are 1-epoch statistic points per the frozen-texture
+license). One-epoch capability ladder: 19M 49 -> 200M 49 -> **400M
+30/120 @ 29.22** ({3:11, 4:0, 5:9, 6:6, 7:4} — L4 ZERO) with the
+1-epoch loss ladder inverting too (0.537/0.569/0.555/0.598):
+width has crossed from not-helping into ACTIVELY HURTING at fixed
+corpus — the 400M is too thin-fed to move its own mass in one
+pass. Template statistics across scales (mid-stack gate matrices):
+
+| model | d | CV | floor | R | norm | kurt |
+|---|---|---|---|---|---|---|
+| 19M | 384 | .0156 | .899 | .746 | .689 | 2.41 |
+| 45M | 512 | .0144 | .941 | .831 | .684 | 2.45 |
+| 113M | 768 | .0210 | .862 | .858 | .726 | 2.61 |
+| 200M | 1024 | .0162 | .828 | .807 | .629 | 2.19 |
+| 400M | 1280 | .0242 | .779 | .818 | .634 | 2.25 |
+
+Honest reads: (1) **two scale-INVARIANTS** — kurtosis 2.4±0.2
+(sub-Gaussian democracy at every width; the superposition phase
+never breaks) and phase-R ~0.75-0.86 (no width trend). Invariants
+extrapolate to any scale for free — template parameters #1 and #2
+are width-independent constants. (2) **floor falls monotonically
+with width from 45M on** (0.941 -> 0.779) — lattice emptiness
+tracks data-per-width smoothly; fittable, hence writable into a
+template at unseen scale. (3) CV and norm carry an EPOCH CONFOUND
+(1-epoch points sit low on norm ~0.63 vs 3-epoch ~0.69-0.73 —
+the color-fade rise; CV mixes texture/rubble regimes), so their
+scaling fits need epoch-matched points: cheap to add (113M has an
+ep1 snapshot; 19M/45M ep1 re-births are 17/35 min) — queued, not
+assumed. Template-at-10B status: two parameters free, one fitted,
+two pending epoch-matched data. The calculator grows teeth one
+parameter at a time.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
