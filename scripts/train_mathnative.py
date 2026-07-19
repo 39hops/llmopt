@@ -28,7 +28,8 @@ LR = 3e-4  # from-scratch: standard small-LM lr with warmup+cosine
 
 
 def load_rows(v2: bool = False, v21: bool = False,
-              v22: bool = False, gen4: bool = False):
+              v22: bool = False, gen4: bool = False,
+              l8: bool = False):
     rows = []
     for f in sorted(glob.glob("data/micromodel_chains_shard*.jsonl")):
         rows += [json.loads(l) for l in open(f)]
@@ -42,6 +43,11 @@ def load_rows(v2: bool = False, v21: bool = False,
     if v22:  # v2.2: + the autopsy-aimed shard (in-language L4-L7
         # chains + capped one-ply worked examples, farm_v22.py)
         for f in sorted(glob.glob("data/micromodel_v22_shard*.jsonl")):
+            rows += [json.loads(l) for l in open(f)]
+    if l8:  # gen-6: the L8 territory shard (calculator-priced,
+        # ~85% one-ply worked examples by design — the engine
+        # one-plies L8; shard6 = deduped 3080 contribution)
+        for f in sorted(glob.glob("data/micromodel_l8_shard*.jsonl")):
             rows += [json.loads(l) for l in open(f)]
     if gen4:  # generational rebirth: + the level-capped cumulative
         # GRPO-mined sidecar (the lineage's whole verified experience)
@@ -59,7 +65,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
          budget: int = 24_576, lr: float = LR,
          fp32: bool = False, nopack: bool = False,
          v22: bool = False, gen4: bool = False,
-         epochs: int = 3) -> None:
+         epochs: int = 3, l8: bool = False) -> None:
     import torch
     global CKPT, EPOCHS
     EPOCHS = epochs
@@ -68,7 +74,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     if out:
         CKPT = Path(out)
     tok = MathTokenizer()
-    rows = load_rows(v2 or v21 or v22, v21 or v22, v22, gen4)
+    rows = load_rows(v2 or v21 or v22, v21 or v22, v22, gen4, l8)
     charset = set()
     texts = []
     for r in rows:
@@ -232,6 +238,8 @@ if __name__ == "__main__":
                     help="with --fast: bf16 autocast only, standard "
                          "BS=32 batching (packing failed parity: "
                          "45.65/46.95 vs 56.67 standard)")
+    ap.add_argument("--l8", action="store_true",
+                    help="gen-6: include the L8 territory shard")
     ap.add_argument("--epochs", type=int, default=3,
                     help="total epochs; with an existing .ep marker "
                          "the run resumes and OneCycle spans only "
@@ -239,4 +247,4 @@ if __name__ == "__main__":
     a = ap.parse_args()
     main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads, a.v21,
          a.fast, a.budget, a.lr, a.fp32, a.nopack, a.v22, a.gen4,
-         a.epochs)
+         a.epochs, a.l8)
