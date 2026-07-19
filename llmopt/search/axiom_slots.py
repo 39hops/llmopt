@@ -39,8 +39,10 @@ def _heurisch_worker(node_s: str, q) -> None:
     # language is elementary-only; results outside it are REJECTED
     # here, not verified downstream (Liouville-boundary doctrine:
     # vocabulary changes are design decisions, never side effects).
+    # (sqrt lives as Pow, never in atoms(Function) — omit; every
+    # entry here must be a CLASS or isinstance breaks)
     _ELEMENTARY = (sp.sin, sp.cos, sp.tan, sp.exp, sp.log, sp.atan,
-                   sp.asin, sp.acos, sp.sqrt, sp.Abs)
+                   sp.asin, sp.acos, sp.Abs)
     out = []
     for r in i_heurisch(node):
         bad = [f for f in r.atoms(sp.Function)
