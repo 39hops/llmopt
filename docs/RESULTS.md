@@ -2605,6 +2605,26 @@ locked incl. a C++ evaluation-order catch (MSVC right-to-left
 silently flipped 35/100 L3 rows) — the byte-exact gate discipline
 paying for itself per level.
 
+## Axiom Phase B adjudicated: the generator is ported (2026-07-18 night)
+
+Independent llmopt-side adjudication of axiom's Phase B gate:
+regenerated all 10,000 (level, seed) fixture rows directly from
+problems.py's _expression with the fixture's seed protocol
+(diff-{level}-{seed}) — **10,000/10,000 byte-exact, zero
+mismatches**. The C++ generator produces the L1-L8 ladder
+identically to sympy, including L6-L8 sub-generator float-repr
+seeding. Adjudication footnote for the honesty file: the FIRST
+adjudication run compared against make_integrate (the wrapper)
+instead of _expression (the ported core) and printed 5 phantom
+mismatches — wrong-entry-point audits look exactly like real
+failures until provenance is checked. make_integrate-level parity
+(seed strings, retries, exclude= guards) remains open scope for
+when C++ generation wires into the farm. Phase C (solver kernel)
+in flight on the axiom side: C1 (carriers/count_ops 427/427) and
+C2 (chassis: hash-cons state keys, three-valued verify_edge,
+beam + full hook surface, adversarial-proposer and lying-rule
+soundness tests) both landed same-night.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
