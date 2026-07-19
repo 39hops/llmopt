@@ -2795,6 +2795,30 @@ the heurisch hybrid by both engines' agreement. Method verdict:
 scope-by-diff + order-by-histogram + trace-by-attribution is now
 a PROVEN cross-repo debugging instrument.
 
+## Gen-6 reborn: NEW RECORD 71/120, and the L8 territory pays (2026-07-19 evening)
+
+The first territory birth. Honest gate: **71/120 @ 66.22**
+({3:23, 4:8, 5:16, 6:8, 7:16}) — first model past the champion's
+69. Gate prediction (69+/-2) HOLDS at its edge; the +3 came
+entirely from L7 (13->16), revising the phylogeny: L8's dialect
+shares ansatz vocabulary with L7 (one-ply worked examples reach
+back a level). **L8 ceiling probe: 21/24 raw — AUDITED before
+celebration** (the miracle-shaped-number doctrine): 6/24 probe
+roots appear VERBATIM in the training shard (third seed-space
+collision incident; L8's generator space is narrow across bands).
+All 6 contaminated were solved (memorization works, film at 11);
+**clean subset 15/18 = 83% (~20/24)** — the territory genuinely
+near-saturates the level, from 2/24. Calculator grade: predicted
+12/24 (50%), measured 83% — a MISS, under by ~2x, with a clean
+diagnosis: v1 treats rows uniformly, but format-matched one-ply
+worked examples (85% of the shard, exactly the probe's task
+shape) are worth ~2x+ generic chain rows per unit. Calculator v2
+gains a row-format efficiency weight. Fix queued: future probe
+bands generated with exclude= against training shards (the
+scar's own remedy, applied to probes). Grown arm mid-training
+(opening loss 0.391 at step 600 — the champion's paid knowledge
+visible from the first batch).
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
