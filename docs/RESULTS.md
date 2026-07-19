@@ -2819,6 +2819,19 @@ scar's own remedy, applied to probes). Grown arm mid-training
 (opening loss 0.391 at step 600 — the champion's paid knowledge
 visible from the first batch).
 
+## The hybrid runs: L6 56/60 in 4.7 minutes (2026-07-19 night)
+
+First hybrid computation of the two-engine era: axiom's C++ solver
+calling llmopt's fork-walled sympy slots (heurisch + equivalence)
+through the pybind bridge, every slot proposal gated by axiom's
+own verify_edge. **L6: 56/60 in 4.7 min** — native 30, sympy-full
+bar 58. The heurisch slot delivers +26; the level is effectively
+closed at a twelfth of the sympy engine's wall. Slot doctrine
+proven end-to-end: lying-slot cannot corrupt (tested axiom-side),
+crashing slot degrades to no-fire, language boundary enforced
+llmopt-side (the erf smuggling catch). The hybrid-460
+qualification arm is now just "run all 480."
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
