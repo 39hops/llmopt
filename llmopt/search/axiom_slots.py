@@ -32,7 +32,22 @@ def _heurisch_worker(node_s: str, q) -> None:
     if not isinstance(node, sp.Integral):
         q.put([])
         return
-    q.put([sp.sstr(r) for r in i_heurisch(node)])
+    # LANGUAGE BOUNDARY: sympy's heurisch knows special functions
+    # (measured: the desert integral returns sqrt(pi)*erf(x)/2 —
+    # mathematically valid, and it would smuggle erf into the
+    # closed system's vocabulary through a side door). The closed
+    # language is elementary-only; results outside it are REJECTED
+    # here, not verified downstream (Liouville-boundary doctrine:
+    # vocabulary changes are design decisions, never side effects).
+    _ELEMENTARY = (sp.sin, sp.cos, sp.tan, sp.exp, sp.log, sp.atan,
+                   sp.asin, sp.acos, sp.sqrt, sp.Abs)
+    out = []
+    for r in i_heurisch(node):
+        bad = [f for f in r.atoms(sp.Function)
+               if not isinstance(f, _ELEMENTARY)]
+        if not bad:
+            out.append(sp.sstr(r))
+    q.put(out)
 
 
 def heurisch(node_sstr: str) -> list[str]:
