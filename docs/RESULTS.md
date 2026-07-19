@@ -2775,6 +2775,26 @@ roots (L4:16 L5:21 L6:7 L7:21 L8:45), rule-attribution run in
 flight — ports ordered by histogram, each with predicted yield
 before it's written. Pure-native ceiling 420, hybrid target 460.
 
+## Tranche-4 day: the attribution method works (2026-07-19)
+
+Sister-repo scoreboard, one day: axiom pure-native 325 -> **382/480
+by-either** (L7 28->47, L8 9->34+14 edge-certified; 62/110
+worklist roots closed; zero NOT_EQUIVALENT ever, 74k audit clean
+through three canonical() changes). The llmopt-side attribution
+pipeline (miss list -> solved answers -> term decomposition ->
+admission-path diff) called every shot: the size pre-gates
+(scar-tissue-outliving-its-wound), then the atan-log orbital
+histogram (17/26 terms), and the day's breakthrough sat one layer
+under it — canonical() silently failing to cancel poly
+denominators across mixed-opaque sums, feeding i_linear_basis
+phantom 1/q monomials (wrong-without-erroring; found by tracing
+one attributed node through three measurement-killed hypotheses).
+Remaining to the 420 pure-native bar: 38 solves (L4 i_usub/
+inverse-trig territory, L5 residue, L8's last 21); L6 parked for
+the heurisch hybrid by both engines' agreement. Method verdict:
+scope-by-diff + order-by-histogram + trace-by-attribution is now
+a PROVEN cross-repo debugging instrument.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
