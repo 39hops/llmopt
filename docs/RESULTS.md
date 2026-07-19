@@ -2418,7 +2418,7 @@ before): 45M champion L7 13/24, L8 2/24; 113M-6ep L7 12/24,
 gains a nuance: the 113M loses in-corpus but LEADS at the
 never-trained frontier (sqrt-composite quotients the 45M can't
 touch) — width buys extrapolation past the corpus edge, not
-mastery inside it. Solved-integral lists: `ceiling_probe.log`.
+mastery inside it. Solved-integral lists: `logs/archive/logs/archive/ceiling_probe.log`.
 
 ## Birth calculator v1: the gate is computable from the corpus (2026-07-18)
 
