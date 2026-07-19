@@ -2719,6 +2719,39 @@ family before any model eats it; (5) growth: model(Sigma, W->W')
 by template-spray = model(Sigma, W') up to gauge (the grow-vs-
 rebirth A/B).
 
+## The equation at its limits (2026-07-19, ~2 AM)
+
+Push v0 to extremes (Artin: "set things to infinity, 0, negative
+— what happens"):
+1. **Perfection is purchasable**: solves->24 exponentially, so
+   the perfect model costs FINITE corpus: ~81k eff rows/level
+   (<0.5 expected misses), ~650k total = ~5x today's corpus —
+   weeks at the C++ farm's projected rate. The founding sentence
+   ("mathematically perfect model for a closed system") now has a
+   price tag.
+2. **Geometric width ceiling**: floor(d)=0 at d~126k (~3T params)
+   — the lattice runs out of orthogonal room; width has an
+   absolute ceiling per closed system. (4-point log fit, 1000x
+   extrapolation — a falsifiable flag, not a law.)
+3. **The W* duality**: W->inf = NTK limit — training exactly
+   calculable AND unlearnable (k->inf, lazy). Calculability and
+   learnability trade off along width; natural width W* is their
+   balance point. The 45M is not just right-sized — it is
+   maximally alive.
+4. **Transfer is a corpus multiplier**: a: 0.3->0.6 hands L3
+   ~20k free effective rows. Curriculum design (ansatz-clade
+   v2.3) is priced in row-equivalents: teaching structure beats
+   mining data.
+5. **Negative eff exists**: mislabeled rows — the equation's term
+   for contamination (both historical incidents + reward-hack era
+   are its measured cases). Verification is the SIGN of the
+   corpus.
+6. **sigma-variance->0 predicts the oligarchy phase** (NNUE): the
+   democracy/holography/ternary-tolerance stack requires a rich
+   signature. And kurtosis 2.4 (sub-Gaussian, no outliers, all
+   widths) RETRO-EXPLAINS the storage doctrine — int4-lossless
+   because there is no tail to clip.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
