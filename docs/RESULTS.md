@@ -2660,6 +2660,20 @@ assumed. Template-at-10B status: two parameters free, one fitted,
 two pending epoch-matched data. The calculator grows teeth one
 parameter at a time.
 
+## The official qualification reference: sympy prices the ladder (2026-07-19)
+
+The sympy engine (budget=200, fork-walled) on the 480 axiom
+qualification roots: **L1 60, L2 60, L3 60, L4 51, L5 60, L6 58,
+L7 56, L8 55 = 460/480**. Shipped to the axiom repo as the
+oracle-of-record bar for Phase C qualification. Immediate
+pricings of axiom's tranche-2/3 informal counts: L3's 49 = 11
+REAL gaps (sympy is perfect there); L6 (axiom 2-6 unpruned) is
+fully winnable — 58/60 — making C6's Markov-prior acceptance
+target a ~52-solve gap, the largest single-component payoff in
+the port; L4's bar is 51 (the ansatz tranche's true target), L8's
+is 55. Reference stored per-root (data/axiom_qual_reference.jsonl)
+so solve-by-both/either comparisons are row-exact.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
