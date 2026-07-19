@@ -2581,6 +2581,30 @@ Projected farm impact: the diff/simplify half of L8 mining at
 ~10-50x, and eventual retirement of the 90s fork walls (sympy
 pathology armor) on axiom-decided rows.
 
+## Axiom bridge: both platforms live, replay-shadow clean (2026-07-18 night)
+
+Phase A infrastructure complete in one evening. pybind bridge
+(axiom_sym) built and smoke-passed on BOTH farm platforms: WSL
+(axiom Fable, g++ 15) and macOS (this side, clang, first try).
+llmopt adapter (llmopt/search/axiom_oracle.py): shadow/primary
+modes, sympy oracle-of-record, JSONL disagreement audit,
+UNDECIDED-never-valid; one adapter bug caught same-night (raw
+strings passed where parsed Exprs expected -> silent 100%
+fallback — the decided_rate stat exposed it). In-process replay-
+shadow on WSL, all 48,081 real equiv rows through the .so:
+**45,980 decided (95.6%), 2,101 UNDECIDED (4.4%), ZERO
+crossings** vs reference labels. Replay v1 note for the scar
+file: it hung on an unwalled in-loop sympy simplify — pathology
+#10 reproduced while auditing sympy's replacement, which is
+about as clear as the case for the replacement gets. Remaining
+for oracle-of-record: live in-farm shadow accumulation (wires in
+at the next campaign boundary; this shard stays pure sympy).
+Sister repo progress (axiom Fable): generator parity L1-L4
+450/450 byte-exact vs problems.py fixtures; four parity rules
+locked incl. a C++ evaluation-order catch (MSVC right-to-left
+silently flipped 35/100 L3 rows) — the byte-exact gate discipline
+paying for itself per level.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
