@@ -2674,6 +2674,51 @@ the port; L4's bar is 51 (the ansatz tranche's true target), L8's
 is 55. Reference stored per-root (data/axiom_qual_reference.jsonl)
 so solve-by-both/either comparisons are row-exact.
 
+## The closed-system equation, v0 (2026-07-19 — the working blackboard)
+
+Assembled from the week's measurements; open slots marked. A
+closed system Sigma = (rules, generator) acts on models ONLY
+through its signature sigma(C) — the corpus statistics (per-level
+row counts, clade/transfer graph, family frequencies) — plus the
+model's width W.
+
+CAPABILITY (measured, calculator v1, RMSE 2.5, blind-L8 pass):
+  solves_L = 24 * (1 - exp(-eff_L(sigma) / k(W)))
+  eff_L = rows_L + a * (clade-transfer rows), a=0.3, L4-isolation
+  b=0.55; k minimized at the corpus's NATURAL WIDTH W* (~45M for
+  gen-4: tokens/param at the champion's ratio) — above W*, k
+  inflates (400M one-epoch gate 30/120, L4=0); below, S_max clips
+  (19M ceiling 64). [OPEN: functional form of k(W) — 3 points.]
+
+NEURON PLACEMENT (the template, measured):
+  - Width-INVARIANTS (properties of Sigma, not the model):
+    kurtosis 2.4 +/- 0.2, phase-isotropy R ~0.8 — hold 19M->400M.
+  - Width LAW (fitted, rmse 0.006): floor(d) = 2.008 - 0.171 ln d
+    (extrapolates: d=2048 -> 0.70, d=4096 -> 0.58).
+  - Signature-driven: committee selectivity table (power ~16x,
+    exp ~6x — diet-invariant across substrates), family tilt ~3%,
+    tilt populations proportional to family frequencies.
+  - Dynamics: texture+norms lock by end of ep1; ROLES are gauge —
+    permanently fluid (biography: redrawn mid-lineage), never part
+    of the equation. [OPEN: CV and norm width-laws — epoch-
+    confounded, needs three ep1 births.]
+
+THE CLAIM: model(Sigma, W) is determined UP TO GAUGE by
+(sigma(C), W) — capability by the exposure curve, geometry by two
+constants + one width law + the signature table; SGD contributes
+the gauge choice plus an error-correction residual worth ~1 epoch
+(warm-birth measured).
+
+PRE-REGISTERED TESTS (the v1 agenda): (1) k(W) form from ep1
+births at 3 widths; (2) CV/norm laws, epoch-matched; (3) the
+PORTABILITY test — train on a DIFFERENT closed system (ODE-only):
+if kurtosis/R shift, the invariants encode Sigma (huge); if not,
+they are constants of training itself; (4) the far conjecture —
+sigma alone predicts the committee table for a never-seen rule
+family before any model eats it; (5) growth: model(Sigma, W->W')
+by template-spray = model(Sigma, W') up to gauge (the grow-vs-
+rebirth A/B).
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
