@@ -2896,6 +2896,23 @@ scale: an 85-year question settled by a finitely-checkable
 artifact — verification-first, trust-free, the FA Law's
 down-stroke doing in seconds what authority never could.
 
+## Gen-6 ternary: 73/120 @ 71.81 — the 1.58-bit model beats the fp32 cold birth (2026-07-20 dawn)
+
+The territory test of the alphabet-lens law, verdict: **ternary-
+born-cold on the gen-6 corpus gates 73/120 @ 71.81%**
+({3:22, 4:9, 5:17, 6:9, 7:16}) — BEATING the fp32 reborn arm (71)
+like-for-like (both cold births, same corpus; ternary had 6
+epochs per the discrete-learning law, fp32 had its converged 3)
+and posting the HIGHEST VALIDITY EVER RECORDED (71.81 > the grown
+champion's 70.42), plus an all-time L6 high (9). Standings:
+grown-fp32 76 (inheritance) > ternary-cold 73 > fp32-cold 71 >
+old champion 69. The lens law didn't just survive new territory —
+at equal-cold conditions the discrete alphabet now WINS, and the
+1.58-bit crystal is the second-best model the lab has ever made.
+Queued consequence: the growth+ternary composition (grow the
+ternary 73 the way the champion grew to 76) — if growth stacks on
+the discrete lattice, the ~10MB model may take the crown.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
