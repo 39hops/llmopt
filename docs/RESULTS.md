@@ -2976,6 +2976,21 @@ ternary-cold 73 > fp32-cold 71 > gen-4 champion 69.** The
 of them requires territory (L9), not epochs, params, or bits —
 every other dial is measured at its stop.
 
+## The mass spectrum is a dial: diet moved, spectrum followed (2026-07-20)
+
+Committee probe on the gen-6 ternary (layer 6): **exp — the
+softest definition in every gen-4-era brain (~6.5x, both
+substrates) — is now the crystallized one (22.1x); power fell
+16x -> 9.7x.** The L8 shard is exp/log/sqrt territory, and the
+selectivity table tracked the new corpus frequencies — the
+mass-manipulability prediction (banked 2026-07-19) confirmed
+without running its experiment: the spectrum is not a constant of
+mathematics, it is a READOUT OF THE DIET, and we moved it by
+farming. Consequences: the birth calculator's signature inputs
+are per-corpus (as designed); precision/alphabet allocators can
+now TARGET a family's robustness by feeding it; and the committee
+table joins CV as a diet-imprint gauge.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
