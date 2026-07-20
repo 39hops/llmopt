@@ -3006,6 +3006,23 @@ hour.** For FARMING (the actual job), throughput times solve-rate
 is the metric, and the hybrid wins it by ~5.8x today, before the
 L7 gap closes. Decision memo updated; the swap call is Artin's.
 
+## GEN-7 pre-registration (published before the run, 2026-07-20 night)
+
+The most efficient birth the lab knows how to make — every
+measured doctrine composed: START from the grown champion (76,
+growth>rebirth), GROW +64/layer (calculator-sized to the L9a
+increment), TEMPLATE-SPRAY the new neurons, identity-gate must
+print exactly 76, then 3 epochs on the MASS-TARGETED diet
+(L1/L2 at 15%, L3 at 30%, everything else full + the L9a shard —
+Rung A's first live run), fp32/Mac. Predictions, calculator v2
+(worked-example weight ~2x on the L9a rows, expected shard ~3-5k):
+**L9 probe ~6-8/24 from zero; honest gate 76 +/- 2** (phylogeny:
+L9a shares ansatz vocabulary with L7/L8, so small positive
+transfer possible); epoch wall ~35% shorter than gen-6's (diet
+~110-115k rows vs 178k). Failure modes pre-named: ration drift
+on L1-L3 (the maintenance knob), audit-block if the native shard
+fails dual-oracle (chain halts by design).
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
