@@ -2832,6 +2832,16 @@ crashing slot degrades to no-fire, language boundary enforced
 llmopt-side (the erf smuggling catch). The hybrid-460
 qualification arm is now just "run all 480."
 
+Full arm, same night: **436/480 in 71.8 minutes**
+(60/60/60/35/60/56/55/50) vs the reference 460. L5 CLOSED (slot
+recovered all 23 native misses); L6 within 2, L7 within 1, L8
+within 5; **L4's -16 is two-thirds of the remaining gap** and is
+precisely axiom's queued tranche-4 worklist (i_usub-chain +
+inverse-trig). Wall context: the sympy reference needed hours
+with fork-walls; the hybrid runs the ladder in 72 min INCLUDING
+its sympy slot calls. Qualification: 24 solves from the bar, all
+mapped to named work.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
