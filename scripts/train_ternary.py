@@ -47,6 +47,7 @@ if __name__ == "__main__":
     ap.add_argument("--ffn", type=int, default=2048)
     ap.add_argument("--heads", type=int, default=8)
     ap.add_argument("--epochs", type=int, default=3)
+    ap.add_argument("--l8", action="store_true")
     a = ap.parse_args()
 
     nn.Linear = TernaryLinear  # build_model picks this up
@@ -54,7 +55,7 @@ if __name__ == "__main__":
     latent = a.out.replace(".pt", "_latent.pt")
     T.main(v2=False, d=a.d, layers=a.layers, ffn=a.ffn,
            out=latent, heads=a.heads, v21=False, fast=False,
-           v22=True, gen4=True, epochs=a.epochs)
+           v22=True, gen4=True, epochs=a.epochs, l8=a.l8)
     # deploy: ternarize the latents (head untouched)
     sd = torch.load(latent, map_location="cpu")
     dep = {}
