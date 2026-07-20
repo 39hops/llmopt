@@ -2913,6 +2913,25 @@ Queued consequence: the growth+ternary composition (grow the
 ternary 73 the way the champion grew to 76) — if growth stacks on
 the discrete lattice, the ~10MB model may take the crown.
 
+## The authoritative hybrid number: 435, with both causes named (2026-07-20)
+
+Hash-verified next.so (the stale-.so saga's lesson: cp onto a
+mapped .so fails SILENTLY-BUSY on Linux — rm-then-cp, then
+hash-verify the deployed artifact; two runs were burned by it).
+Authoritative arm: **435/480 (60/60/60/41/60/56/48/50)**. The
+delta anatomy vs the first arm (436): L4 +6 (the u-sub cascade
+fixes) but **L7 -7 — the pre-expand cancellation's wall pressure**
+(axiom flagged it natively same day; it reproduces through the
+bridge), plus a NEW measured effect: **the slot tax** — hybrid L4
+(41) < native L4 (49) because fork+sympy heurisch calls eat the
+20s deadline on a level that never needed the slot. Qualification
+memo consequences: (1) axiom's named perf follow-up (short-
+circuit the cancellation trial) should reclaim L7 both native and
+hybrid; (2) the qualification config should gate the slot by
+level (or by native-first-then-slot retry) — heurisch pays at
+L6/L8, taxes L4/L7. Projected post-both: ~455 vs the 431-adjusted
+achievable math. Close, and every miss named.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
