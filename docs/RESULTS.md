@@ -2991,6 +2991,21 @@ are per-corpus (as designed); precision/alphabet allocators can
 now TARGET a family's robustness by feeding it; and the committee
 table joins CV as a diet-imprint gauge.
 
+## Qualification: 443/480 at 5x sympy's speed (2026-07-20 night)
+
+Slot-config sweep complete (three arms, every cell measured):
+heurisch-everywhere 435, L6/L8-only 431, **L5-L8 (optimal): 443
+in 49.7 min** — 60/60/60/49/60/56/48/50. Vs sympy's 460
+reference: -17, all named — L4 -2 (11 of its misses are shared-
+with-sympy: at the achievable ceiling), L6 -2, L7 -8 (the one
+real remaining gap; heurisch-heavy level), L8 -5. The
+farm-swap arithmetic, stated plainly: **the hybrid solves 9
+roots/min where the walled sympy engine solves ~1.5 — even at
+96.3% of sympy's solve rate, it mints ~6x more verified rows per
+hour.** For FARMING (the actual job), throughput times solve-rate
+is the metric, and the hybrid wins it by ~5.8x today, before the
+L7 gap closes. Decision memo updated; the swap call is Artin's.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
