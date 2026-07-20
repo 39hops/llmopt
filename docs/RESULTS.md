@@ -2863,6 +2863,26 @@ champion; (3) the generational doctrine gains its missing verb —
 the corpus is the organism, and now the body GROWS with the
 territory instead of being reborn into it.
 
+## Phase D adjudicated: the C++ engine is a certified row factory (2026-07-20)
+
+Axiom's chain emission (spec + replay_chain + annotate + emit,
+one overnight arc) produced 167 rows from 95 stratified roots in
+farm_v22 schema. llmopt adjudication: schema exact (0 diffs), and
+**167/167 pairs pass the production oracle** (verify_wave). The
+first-pass adjudicator printed 8 false INVALIDs — its naive
+density check cannot represent by-parts steps (integrals with
+function coefficients / nesting); traced, not believed, second
+auditor-was-the-bug incident of the weekend, lesson booked:
+auditors must match the verifier's semantics. Meanwhile the
+overnight axiom arcs also landed: native 391 by-either (L4 49 =
+ABOVE the no-heurisch reference), shared-miss analysis (50 roots
+missed by both engines -> honest pure-native ceiling 430; real
+gaps 39, all named), expiries re-confirmed doomed (0/17 at 60s),
+and magic boards rung 1 MEASURED: 2.28x warm-start (cold 94.4s ->
+warm 41.4s, ledger identical) — riff to shipped feature in ~30h.
+Remaining before the farm swap: hybrid arm on the next.so
+(running), L5 rule-reach mass (14), live shadow accumulation.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
