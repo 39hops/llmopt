@@ -129,6 +129,8 @@ def _atom(rng: random.Random, level: int):
 def _expression(rng: random.Random, level: int):
     if level <= 2:
         return sum(_atom(rng, level) for _ in range(rng.randint(2, 4)))
+    if level >= 9:
+        return _expression_l9(rng)
     if level >= 8:
         return _expression_l8(rng)
     if level >= 7:
@@ -357,6 +359,55 @@ def _expression_l8(rng: random.Random):
     return {"trig_log": trig_log, "sqrt_log": sqrt_log,
             "sqrt_monster": sqrt_monster, "nest3": nest3,
             "combo_sum": combo_sum}[kind]()
+
+
+def _expression_l9(rng: random.Random):
+    """Level 9a (2026-07-20): the continent's coastline — built from
+    the gen-6 residue and the spectrum-dial finding (family mix is a
+    DESIGN CHOICE: exp/log/sqrt-adjacent fusions weighted up, since
+    the diet sets the committee). Families: sqrt-of-quadratic (the
+    one NEW rule family — trig-sub territory), exp*trig cyclic
+    products, fused quotients (multi-family numerator over shared
+    poly), and double-nested combos of L8 draws. Same wide-space
+    discipline; same fork-isolation caveat as L8."""
+    def poly(dmax=2, dmin=1):
+        while True:
+            p = (rng.randint(1, 4) * X ** rng.randint(dmin, dmax)
+                 + rng.randint(-3, 3) * X + rng.randint(0, 4))
+            if p.has(X):
+                return p
+
+    def sqrt_quad():  # NEW rule family: sqrt(quadratic), +- powers
+        q = (rng.randint(1, 3) * X ** 2 + rng.randint(-2, 2) * X
+             + rng.randint(1, 5))
+        return (rng.randint(1, 6) * X ** rng.randint(0, 1)
+                * sp.sqrt(q) ** rng.choice([1, -1]))
+
+    def exp_trig_cyclic():  # e^{ax} * trig(bx): cyclic by-parts
+        return (rng.randint(1, 5)
+                * sp.exp(rng.randint(1, 3) * X)
+                * rng.choice([sp.sin, sp.cos])(rng.randint(1, 4) * X))
+
+    def fused_quotient():  # multi-family numerator / shared poly
+        q = poly()
+        num = (rng.randint(1, 4) * rng.choice([sp.sin, sp.cos])(sp.log(q))
+               + rng.randint(1, 4) * X * sp.exp(rng.randint(1, 2) * X)
+               * 0 ** rng.randint(0, 1)  # exp rider on half the draws
+               + rng.randint(1, 4) * sp.log(q))
+        return num / q
+
+    def deep_combo():  # two L8 draws fused as a quotient
+        a = _expression_l8(random.Random(f"l9-sub-{rng.random()}"))
+        b = poly()
+        return a / b + rng.randint(1, 4) * sp.log(b)
+
+    kind = rng.choice(["sqrt_quad", "exp_trig_cyclic",
+                       "fused_quotient", "deep_combo",
+                       "exp_trig_cyclic", "fused_quotient"])
+    return {"sqrt_quad": sqrt_quad,
+            "exp_trig_cyclic": exp_trig_cyclic,
+            "fused_quotient": fused_quotient,
+            "deep_combo": deep_combo}[kind]()
 
 
 def _cexpr(rng: random.Random, level: int):
