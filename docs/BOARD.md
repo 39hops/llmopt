@@ -8,7 +8,7 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Status | Pointer |
 |---|---|---|
-| PRODUCTION | **mathnative_45m_gen4_std.pt = 69/120 @ 67.13** (fp32) — now TIED by **mathnative_45m_ternary.pt 69/120 @ 67.13 at 1.58 bits** (6 epochs; L5 17 beats fp32's 16; ~10MB); promotion decision open (Artin); curve 57->69, plateau pending new territory | RESULTS 2026-07-18 |
+| PRODUCTION | **mathnative_gen6_grown.pt = 76/120 @ 70.42** (55.1M, grown 45M->55M from the gen-4 champion, L8 territory; growth beat rebirth 76 v 71; L8 probe ~83% clean) — lineage: 57->69 (gen-4) -> 71 (gen-6 reborn) -> 76; ternary/int4 twins of the grown champion queued | RESULTS 2026-07-19 |
 | Training doctrine (one day, all measured) | births fp32-on-Mac OR TF32-on-cuda (parity 65 vs 64, 2.5x faster; cliff = mantissa bits 8-10; bf16 still banned); packing dead any precision; mining with --seed-base advanced per run; small cycles + two-tier gates + solves-primary + snapshots | RESULTS parity 2x2 / dynamical debit |
 | Storage doctrine | quantize notches never axes: MX-int4 lossless (8x, ships), int3 cracks tail-first, full-rank confirmed (rank-128 bleeds); int4 GEMV kernel greenlit (practice_7 promoted) | RESULTS compression floor / rank floor |
 | Birth panel (4 gauges, external validation incl. DeepSeek-V3 from one shard) | CV=organization, floor=fullness, shelf=diet skew, R=homogeneity; V3 experts are crystals (router = diet-focuser; 19M->671B law) | RESULTS four diets / V3 |

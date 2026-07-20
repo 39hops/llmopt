@@ -2842,6 +2842,27 @@ with fork-walls; the hybrid runs the ladder in 72 min INCLUDING
 its sympy slot calls. Qualification: 24 solves from the bar, all
 mapped to named work.
 
+## GEN-6 GROWN: 76/120 — growth beats rebirth, new champion (2026-07-19 night)
+
+The grow-vs-rebirth A/B, final: **GROWN 76/120 @ 70.42**
+({3:23, 4:10, 5:19, 6:8, 7:16}) vs reborn 71 vs champion 69 —
+**+5 for growth at equal epochs**, first model past 70% validity,
+all-time highs at L4 (10) and L5 (19). L8 probe: 21/24 raw, ~83%
+contamination-clean — matches the reborn (the territory pays
+identically; the growth surplus landed in the GATE band). The
+mechanism, visible in the loss curves: the grown arm opened at
+0.39 (the champion's inheritance) and closed at 0.3296 — the
+lowest loss ever posted — spending all three epochs on new
+material while the reborn re-learned the basics. The gen-5
+rubble risk never materialized: template-sprayed neurons
+integrated. Verdicts: (1) GROWTH ADOPTED as the standard capacity
+move (calculator sizes it, template sprays it, identity-gate
+proves function preservation, the gate adjudicates); (2)
+PRODUCTION PROMOTED: mathnative_gen6_grown.pt (55.1M) is the new
+champion; (3) the generational doctrine gains its missing verb —
+the corpus is the organism, and now the body GROWS with the
+territory instead of being reborn into it.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
