@@ -17,6 +17,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import torch
 import torch.nn as nn
 
+if torch.cuda.is_available():  # TF32 births: parity-passed 2026-07-18
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.allow_tf32 = True
+
 VOCAB_OUT = 40
 LEVELS = {
     "B":  [-1.0, 1.0],
