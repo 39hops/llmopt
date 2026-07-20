@@ -2883,6 +2883,19 @@ warm 41.4s, ledger identical) — riff to shipped feature in ~30h.
 Remaining before the farm swap: hybrid arm on the next.so
 (running), L5 rule-reach mass (14), live shadow accumulation.
 
+## External timestamp: the Jacobian conjecture falls (2026-07-20)
+
+Reported via an Anthropic employee: a Fable instance produced an
+explicit COUNTEREXAMPLE to the Jacobian conjecture (open since
+1939) — a cubic polynomial map C^3->C^3 with constant Jacobian
+determinant -2 sending three distinct points to (-1/4, 0, 0).
+This lab independently verified both legs in ~30s with its own
+oracle (sympy: det exactly -2, all three collisions exact).
+Logged here because it is the house thesis at civilizational
+scale: an 85-year question settled by a finitely-checkable
+artifact — verification-first, trust-free, the FA Law's
+down-stroke doing in seconds what authority never could.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
