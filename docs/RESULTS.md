@@ -2960,6 +2960,22 @@ Alphabet choice is width-dependent: small models want P2-class
 ladders, wide models can afford ternary. Rotation bracket
 (G5/E7/Q9) and L* still pending complex support.
 
+## Grow-the-ternary: 74/120 — growth stacks, but thinner on the discrete lattice (2026-07-20)
+
+The composition verdict: ternary 73 grown +256/layer and given 3
+more epochs gates **74/120 @ 70.10** ({3:22, 4:10, 5:17, 6:9,
+7:16} — ties the all-time L4 high). Growth pays on the discrete
+lattice but at +1 vs fp32's +5. Honest read: not a growth failure
+but a CEILING effect — ternary-cold's 73 (6 epochs) was already
+deep into this corpus's yield for the config, while fp32-cold at
+71 (3 epochs) had headroom for growth to harvest; the loss floor
+agrees (0.3208 grown vs 0.3212 cold — nothing left to squeeze).
+Final gen-6 standings: **grown-fp32 76 > ternary-grown 74 >
+ternary-cold 73 > fp32-cold 71 > gen-4 champion 69.** The
+1.58-bit lineage holds 2nd and 3rd. Next capability jump for ANY
+of them requires territory (L9), not epochs, params, or bits —
+every other dial is measured at its stop.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
