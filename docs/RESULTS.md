@@ -3023,6 +3023,23 @@ transfer possible); epoch wall ~35% shorter than gen-6's (diet
 on L1-L3 (the maintenance knob), audit-block if the native shard
 fails dual-oracle (chain halts by design).
 
+## L9b/ODE oracle adjudicated: 180/180 (2026-07-20 evening)
+
+Axiom's five-rung ODE build (opaque y(x) + tuple-limit carriers,
+check_odesol/check_ic on the substitute-first keystone, native
+makers 90/90 byte-exact + self-verifying, slot telemetry, sample
+emitter) formally adjudicated llmopt-side: **all 180 sample rows
+agree with sympy's checkodesol + IC verification, zero
+disagreements, zero walls.** The ODE continent's oracle is
+CERTIFIED. Fixture gems from the build: the constant-binding
+sentinels (C1*e^x passes y'=y, e^x+C1 correctly NOT_EQUIVALENT)
+and the sentinel that taught its author (sin^2+cos^2 IS a genuine
+solution of y'=0 — diff kills it exactly; honest-UNDECIDED needs
+the identity in the residual). Slot telemetry already earning:
+decisive=0 on slot-fires-but-loses-race is the HEAVY signal
+working as designed. L9b farming is now an engineering decision,
+not a research one.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
