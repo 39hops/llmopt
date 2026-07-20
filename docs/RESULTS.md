@@ -2932,6 +2932,34 @@ level (or by native-first-then-slot retry) — heurisch pays at
 L6/L8, taxes L4/L7. Projected post-both: ~455 vs the 431-adjusted
 achievable math. Close, and every miss named.
 
+## The alphabet tournament, real-valued bracket (2026-07-20)
+
+Five discrete births at 19M/gen-4/3ep on the 3080 (TF32), vs the
+fp32 reference (warm-birth COLD, 64/120 @ 60.50):
+
+| alphabet | bits | gate | validity |
+|---|---|---|---|
+| B {+-1} | 1.00 | 54 | 36.73 |
+| T {0,+-1} | 1.58 | 60 | 54.66 |
+| M4 {-1,0,1,2} | 2.00 | 61 | 57.75 |
+| M5 {0,+-1,+-2} | 2.32 | 62 | 62.07 |
+| P2 {0,+-.5..+-4} | 3.17 | **66** | 65.10 |
+| fp32 | 32 | 64 | 60.50 |
+
+Verdicts: (1) prediction 1 CONFIRMED — the zero is load-bearing
+(B's -6 solves and catastrophic -18 validity vs T: silence is
+structure). (2) A clean monotone bits->capability ladder at THIS
+width — and the punchline: **P2 (3.17 bits, shift-only
+multiplies) BEATS fp32** (66 v 64, within gate noise but ahead;
+hardware's favorite format wins on capability too). (3) The
+width-bits EXCHANGE measured: at 19M ternary trails fp32 by 4,
+at 45M it TIED (69) then WON cold (73 v 71) — per-weight
+precision matters more at smaller width, exactly the
+bits-per-dimension law (the dimension dividend needs dimensions).
+Alphabet choice is width-dependent: small models want P2-class
+ladders, wide models can afford ternary. Rotation bracket
+(G5/E7/Q9) and L* still pending complex support.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
