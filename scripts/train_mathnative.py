@@ -29,7 +29,7 @@ LR = 3e-4  # from-scratch: standard small-LM lr with warmup+cosine
 
 def load_rows(v2: bool = False, v21: bool = False,
               v22: bool = False, gen4: bool = False,
-              l8: bool = False):
+              l8: bool = False, gen7: bool = False):
     rows = []
     for f in sorted(glob.glob("data/micromodel_chains_shard*.jsonl")):
         rows += [json.loads(l) for l in open(f)]
@@ -49,6 +49,8 @@ def load_rows(v2: bool = False, v21: bool = False,
         # one-plies L8; shard6 = deduped 3080 contribution)
         for f in sorted(glob.glob("data/micromodel_l8_shard*.jsonl")):
             rows += [json.loads(l) for l in open(f)]
+    if gen7:  # gen-7: the mass-targeted diet REPLACES everything
+        return [json.loads(l) for l in open("data/gen7_diet.jsonl")]
     if gen4:  # generational rebirth: + the level-capped cumulative
         # GRPO-mined sidecar (the lineage's whole verified experience)
         rows += [json.loads(l)
@@ -65,7 +67,8 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
          budget: int = 24_576, lr: float = LR,
          fp32: bool = False, nopack: bool = False,
          v22: bool = False, gen4: bool = False,
-         epochs: int = 3, l8: bool = False) -> None:
+         epochs: int = 3, l8: bool = False,
+         gen7: bool = False) -> None:
     import torch
     global CKPT, EPOCHS
     EPOCHS = epochs
@@ -74,7 +77,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     if out:
         CKPT = Path(out)
     tok = MathTokenizer()
-    rows = load_rows(v2 or v21 or v22, v21 or v22, v22, gen4, l8)
+    rows = load_rows(v2 or v21 or v22, v21 or v22, v22, gen4, l8, gen7)
     charset = set()
     texts = []
     for r in rows:
@@ -240,6 +243,8 @@ if __name__ == "__main__":
                          "45.65/46.95 vs 56.67 standard)")
     ap.add_argument("--l8", action="store_true",
                     help="gen-6: include the L8 territory shard")
+    ap.add_argument("--gen7", action="store_true",
+                    help="mass-targeted diet (data/gen7_diet.jsonl)")
     ap.add_argument("--epochs", type=int, default=3,
                     help="total epochs; with an existing .ep marker "
                          "the run resumes and OneCycle spans only "
@@ -247,4 +252,4 @@ if __name__ == "__main__":
     a = ap.parse_args()
     main(a.v2, a.d, a.layers, a.ffn, a.out, a.heads, a.v21,
          a.fast, a.budget, a.lr, a.fp32, a.nopack, a.v22, a.gen4,
-         a.epochs, a.l8)
+         a.epochs, a.l8, a.gen7)
