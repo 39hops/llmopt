@@ -3040,6 +3040,25 @@ decisive=0 on slot-fires-but-loses-race is the HEAVY signal
 working as designed. L9b farming is now an engineering decision,
 not a research one.
 
+## Bits-dimension exchange test: MISS, with a named confound (2026-07-20 night)
+
+Pre-registered: B@768 (binary, one width doubling) should gate
+~60 (=T@384), repaying the 0.58-bit alphabet debt. Measured:
+**45/120 @ 26.86 — WORSE than B@384's 54/36.73.** The law's
+prediction failed, but the experiment is confounded: doubling d
+quadrupled params (19M -> 75.6M) on the SAME corpus and epochs —
+the tokens-per-width ceiling (the 400M lesson) pushes DOWN exactly
+when the exchange term pushes up, and at 3 epochs the starvation
+won (loss 0.363 vs B@384's floor shows the capacity was there;
+the gate shows it was unfed). Two live interpretations: (1) the
+law holds but the test needs data-matched conditions (B@768 at
+~4x epochs, or on the gen-6 corpus); (2) binary is special — the
+zero's absence is a STRUCTURAL deficit (no silence) that no
+interference budget repays. Status: law WOUNDED, not dead;
+clean re-test queued for a free GPU day. The honest-miss file
+grows — and the confound itself re-confirms tokens-per-width as
+the strongest force on the board.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
