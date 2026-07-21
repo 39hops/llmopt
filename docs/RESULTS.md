@@ -3059,6 +3059,26 @@ clean re-test queued for a free GPU day. The honest-miss file
 grows — and the confound itself re-confirms tokens-per-width as
 the strongest force on the board.
 
+## The flip census: discrete plasticity is REAL and it pays (2026-07-20 night)
+
+Artin's oldest standing bet ("RL will move the ternary — flips
+chain, silent until the neuron fires"), adjudicated by a 20-minute
+LLMUE burst on the 3080: the gen-6 ternary's fp32 latents
+metabolized 773 oracle-signed L9a rows (933 cycles), and the
+DEPLOYED 1.58-bit lattice moved — **100,884 whole-weight flips
+(0.2004% of 50.3M)** — while the proxy gate rose **19 -> 21 and
+validity 58.2 -> 60.3**. Prong A wins outright: discrete learning
+speaks in visible, countable flips, the latents integrate
+sub-threshold and commit in units, and the committed flips CARRIED
+CAPABILITY. Learning on a discrete substrate is photographable —
+0.2% of weights moved, each one a discrete event with a
+before/after, and the population of 100k flips bought +2 proxy
+solves on fresh territory in twenty minutes. The LLMUE mechanism
+works on the alphabet where it matters most (the ~10MB deployment
+class), and the discrete-plasticity fork closes as a WIN for the
+wiring thesis' final claim: the topology doesn't just carry
+capability — it UPDATES in quanta.
+
 ## Future work (spec'd or banked, in priority order)
 
 [2026-07-07 status: bandit RUN (null — see above); bidirectional RUN
