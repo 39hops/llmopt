@@ -26,7 +26,6 @@ are the publishable deltas.
 | Symbolic-integration ML | Lample & Charton 2019 (notation A/B lineage) | anchor for banked work |
 | Learned quantization levels (L* contestant) | LSQ (Esser et al., ICLR 2020) | direct plan |
 | Prediction pays only where variance lives (starved judges; prior-wash both sides of node cost) | Value-of-information (decision theory); no published twin known for the two-sided engine measurement | [ORIGINAL — candidate paper on its own] |
-
 | LLMUE: continuous full-weight learning on oracle-signed self-generated experience; flip-quantized plasticity | Test-time training w/ verifier selection (VDS-TTT, arXiv 2505.19475); TTT/continual-learning lineage | category exists + [ORIGINAL: exact-oracle (sound, not learned) data purity; full-weight + immune-system stability (vs frozen+LoRA); THE FLIP CENSUS — learning counted in discrete quanta (100,884 flips -> +2 proxy), no precedent found] |
 
 ## Paper candidates (need: replication runs, related-work rigor)
@@ -37,9 +36,9 @@ are the publishable deltas.
 2. **"Alphabet as Lens"** — ternary-from-birth parity, no latent
    polarization, tail economics, the tournament (once run).
 3. **"Two Engines, One Oracle"** — the axiom/sympy fair fight
-4. **"LLMUE"** — sound-verifier test-time learning + the flip census (anchor: VDS-TTT; the discrete-plasticity result is the novel core) — the axiom/sympy fair fight:
-   mutual-audit methodology, prior-wash as value-of-search-
-   guidance measured on both sides of node cost.
+4. **"LLMUE"** — sound-verifier test-time learning + the flip
+   census (anchor: VDS-TTT; the discrete-plasticity result is the
+   novel core).
 
 Rule for this file: no row without a measured house result AND a
 real citation. Rows are removed if either leg fails scrutiny.
