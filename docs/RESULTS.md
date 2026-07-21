@@ -3136,3 +3136,26 @@ Every table: `scripts/bench_*.py` with string seeds; every training
 run: `scripts/train_*.py`; data generation: `scripts/gen_*.py`,
 `scripts/harvest_*.py`. See README Highlights for the per-result
 commands and the git log for the measurement-by-measurement history.
+
+## English labels attach as pure readout: 95% naming, zero rewiring (2026-07-21)
+
+The grounded-then-labeled riff's first live test, run to Artin's
+constraint ("those neurons should not AFFECT how the model
+thinks") — enforced by construction: vocab grown 40->48 (<name> +
+7 family words), ONLY the 8 new embedding/head rows trainable,
+base frozen with old-row grads zeroed, and the identity PROVED
+after training (sha256 on every frozen tensor + bitwise old-row
+equality — both passed). Task: problem -> family name at the
+<name> position; 2000 train / 200 eval, string-seeded bands,
+eval excluded by expression string. Verdict: **trained-base 95.0%
+vs random-base control 90.0%** (majority floor 38%). Honest
+anatomy: family names are ~90% surface-readable (the log( token
+gives away "logarithm"), so the control was essential — the math
+brain's contribution is thin in accuracy (+5) but large in
+learnability (loss 0.16 vs the random base's 0.73 stall). The
+pre-registered guess that the delta would concentrate on `mixed`
+MISSED — it spreads evenly. Deliverable:
+checkpoints/mathnative_19m_labeled.pt — the lab's first model
+with English attached, 8 tokens, provably quarantined from the
+thinking substrate. Wall: 424 s end to end (8-way parallel
+root generation, 216 s of it). English as readout: measured.
