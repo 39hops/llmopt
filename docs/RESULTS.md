@@ -3209,3 +3209,24 @@ UNDER-called it (expected parity at 40% wall; got dominance).
 Composed doctrine for metabolic v3: late-only + absolute-anchor
 tripwire + LR <= 1e-4 + surprise gating. Ceiling note: nothing
 survives 1.8e-3 (both arms erode) — the frontier is real.
+
+## L9 probes are device-dependent at 2x — the day of controls (2026-07-21)
+
+Ternary-NNUE probed 19/24 on cuda against the morning's universal
+9/24 (MPS) — a +10 headline that died by TWO controls in
+sequence: (1) pre-metabolism ternary control: 17/24 (so NNUE
+gain = +2, matching its +2 proxy, gate held 72 v 73); (2)
+device control: **the fp32 champion itself scores 18/24 on cuda
+vs 9/24 on MPS — same checkpoint, same band, same seeds.** The
+substrate-generalization story evaporates; what remains is a
+measurement law: at the L9 frontier the model's choices are
+near-tie-close and MPS-vs-TF32 rounding resolves the flips
+differently (the fp16-near-tie doctrine at probe scale — the
+model knows more L9 than MPS sampling expresses). IRON RULE
+ADOPTED: never compare probes/gates across devices; every number
+lineage lives on one machine (morning MPS deltas — gen-7 +0,
+metabolic +0 — remain valid same-device comparisons). Surviving
+result: ternary NNUE metabolism +2 L9 / +2 proxy / gate held,
+third consistent discrete-substrate gain. Day's tally: two
+would-be headlines killed by two controls within six hours —
+the control reflex is now the lab's most productive instrument.
