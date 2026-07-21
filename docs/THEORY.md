@@ -28,6 +28,33 @@ are the publishable deltas.
 | Prediction pays only where variance lives (starved judges; prior-wash both sides of node cost) | Value-of-information (decision theory); no published twin known for the two-sided engine measurement | [ORIGINAL — candidate paper on its own] |
 | LLMUE: continuous full-weight learning on oracle-signed self-generated experience; flip-quantized plasticity | Test-time training w/ verifier selection (VDS-TTT, arXiv 2505.19475); TTT/continual-learning lineage | category exists + [ORIGINAL: exact-oracle (sound, not learned) data purity; full-weight + immune-system stability (vs frozen+LoRA); THE FLIP CENSUS — learning counted in discrete quanta (100,884 flips -> +2 proxy), no precedent found] |
 
+## Anchor-paper notes: VDS-TTT (arXiv:2505.19475, Moradi et al., May 2025)
+
+The closest published system to LLMUE; differences banked
+factually for paper #4's related work.
+
+Their method: per test query, sample N in {2,4,8,16} candidates
+(temperature sampling) -> a LEARNED verifier (math-trained reward
+model) scores them -> keep the top candidate only above threshold
+tau (0.99 easy benchmarks / 0.9 AIME) as a pseudo-label -> SFT on
+it, updating LoRA ADAPTERS ONLY (rank 128; rank 8 low-resource;
+q/k/v/o + MLP), base frozen; iterate across test batches.
+Results: up to +32% relative (GSM8K/MATH-500/AIME/AMC; Llama-3.2
+1B/3B, R1-Distill-Qwen-1.5B, Llama-3.1-8B); AIME 0.54% -> 4.22%
+on the 1.5B. Own stated limits: verifier is math-trained and
+fails off-domain (code/QA); no verifier calibration or soundness
+analysis given.
+
+| Axis | VDS-TTT | LLMUE (here) |
+|---|---|---|
+| Verifier | learned scorer, threshold tau | exact symbolic oracle (sound by construction) |
+| Label status | pseudo-labels (their term) | signed rows (wrong label impossible) |
+| What updates | LoRA adapters, base frozen | full weights |
+| Stability mechanism | touch-almost-nothing | two-tier gates + snapshots + rollback |
+| Substrate | continuous fp | fp AND discrete (flip-quantized; census: 100,884 flips -> +2 proxy) |
+| Data regime | general pretrained model, mixed diet | closed-system-native, single grammar, vocab 40 |
+| Domain reach | general (verifier fragile off-domain) | domain-locked, domain-perfect |
+
 ## Paper candidates (need: replication runs, related-work rigor)
 
 1. **"The Closed-System Equation"** — signature + width determine
