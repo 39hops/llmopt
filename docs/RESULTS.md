@@ -3250,3 +3250,20 @@ short-circuit nulled twice; the real L7 recovery 40->47 was
 best-of-both canonical, already shipped). The qual L7 gap (48 v
 sympy 56, hash-verified bridge) is real but UNNAMED — per-root
 diff of the 8 misses queued before any further code ask.
+
+## Shaped GRPO (b-lever rung 2): NULL — and the potential was aimed backwards (2026-07-21)
+
+Pre-registered: shaped reward (r = verified * (1 + 0.5*tanh(dPhi/20)),
+Phi = -(count_ops + 40*n_Integral)) on the champion must beat the
++2-solve plateau over 12 cycles. Measured: HALT at cycle 12, gate
+pinned 75-76 (baseline 76) throughout, 4 rollbacks, validity peak
+71.08. NULL — scoped honestly: **size-based potential nulls and
+mildly harms**, because integration by parts (and every cyclic
+trick that carries L5-L7) makes expressions BIGGER before they
+collapse — the shaping penalized the legitimate uphill step; the
+rollbacks were the reward fighting correct instincts, not noise.
+The untested lever remains Phi = engine distance-to-solved (plies
+remaining — prices uphill steps as progress); that is rung 2b
+with its own pre-registration. Rung 3 (wave-contrast) needs no
+progress metric at all and may leapfrog it. Side profit: ~14k
+verified mined rows streamed to the corpus during the run.
