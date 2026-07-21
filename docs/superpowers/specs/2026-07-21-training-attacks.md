@@ -82,3 +82,36 @@ compute (and mostly discard). Each rung raises b in dS/dt:
 | 4 | why was I wrong? | the diff-RESIDUAL (mechanism of failure), currently collapsed to False | frontier; must arrive as gradient not prompt (hints twice-nulled); needs a vocab-40-expressible encoding |
 
 Run order = ladder order; each rung one-variable against the last.
+
+## Addendum (2026-07-21 evening): the delta doctrine + rung revisions
+
+**THE DELTA DOCTRINE** (from the day of controls — two headlines
+killed in six hours): every absolute number today was fragile
+(baselines inherit transfer; frontier probes inherit hardware);
+every same-checkpoint/same-device/same-seed PAIRED DELTA held.
+Measurement rules adopted: (1) paired deltas only — a number
+without its control is not a result; (2) one device per number
+lineage, never compare across; (3) frontier probes run at B=16 —
+near-tie branches get covered by sampling WIDTH, not precision
+(margins ~0 = the model's genuine uncertainty; fp64 sampling
+would re-resolve the same coin flips, not add knowledge); (4)
+minimum-effective-dose is real (320-471 rows bought a 55M model
+exactly nothing) — the exposure curve has a floor term.
+
+**Rung revisions, everything composed:**
+- Metabolic v3 (the composed organism): TERNARY substrate (three
+  consistent +2 sessions — the only substrate with repeated
+  measured online gain) + late-layer-only (control-rod result:
+  71 v 57 under identical abuse, 60% cheaper) + LR <= 1e-4 +
+  absolute-anchor tripwire + surprise-gated rows. Every clause
+  measured within 48h.
+- Calculator v3: clade-transfer term (three directional misses)
+  + dose floor.
+- Gen-7b REVISED: champion transfer already reaches 18/24-class
+  L9 under favorable sampling — the play is no longer a giant
+  shard but TARGETED consolidation (rows for the unsolved probe
+  residue) + rations raised to 40-50%; farm shard sizes it.
+- Precision program unchanged: fp64-vs-fp32 birth A/B and
+  bf16x2/3xTF32 double-double (Ootomo-Yokota) stay queued — they
+  address TRAINING arithmetic (the bf16-cliff class), which the
+  device finding does not touch.
