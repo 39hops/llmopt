@@ -68,3 +68,17 @@ share a design principle (small delta as the primitive), NOT
 results — no NNUE efficiency number transfers. The EU-evaluation
 riff (delta-scoring candidate rewrites) is the thread that DOES
 inherit NNUE's math; keep the two named apart.
+
+## The feedback ladder (Artin, 2026-07-21 — "feedback on top of verification")
+
+Human error-recovery taxonomy mapped to oracle signals we already
+compute (and mostly discard). Each rung raises b in dS/dt:
+
+| Rung | Human question | Signal | Status |
+|---|---|---|---|
+| 1 | was I wrong? | verified bit | production since day 1 |
+| 2 | how wrong? | Phi-distance / residual magnitude | shaped GRPO, RUNNING |
+| 3 | what was right instead? | verified-vs-rejected sibling, same state | wave-contrast, banked |
+| 4 | why was I wrong? | the diff-RESIDUAL (mechanism of failure), currently collapsed to False | frontier; must arrive as gradient not prompt (hints twice-nulled); needs a vocab-40-expressible encoding |
+
+Run order = ladder order; each rung one-variable against the last.
