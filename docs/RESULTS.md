@@ -3159,3 +3159,35 @@ checkpoints/mathnative_19m_labeled.pt — the lab's first model
 with English attached, 8 tokens, provably quarantined from the
 thinking substrate. Wall: 424 s end to end (8-way parallel
 root generation, 216 s of it). English as readout: measured.
+
+## Gen-7 / metabolic / VRM: the preservation-without-gain morning (2026-07-21)
+
+Overnight verdicts, all against pre-registration, with the control
+that kept us honest. **CHAMPION-CONTROL L9 probe: 9/24** — the
+untouched gen-6 champion already solves 9 L9a problems by pure
+L7/L8 ansatz transfer, so every L9 number below is a DELTA of zero:
+(1) **GEN-7 (birth, 320-row shard): gate 71 (-5, MISS below 76+/-2)
+ / L9 9/24 (+0)** — the losses sit exactly on the rationed levels
+(L3 -3, L5 -2), the pre-named failure mode (maintenance ration too
+thin); wall -38% HIT (predicted -35%). Rung A: wall claim proven,
+ration knob failed, shard sub-threshold. NO-PROMOTE; champion
+remains gen6_grown 76. (2) **METABOLIC (LLMUE pilot, 471 signed
+rows, ~215 cycles, kernel-panic-terminated): gate 75 (-1,
+noise-range) / L9 9/24 (+0)** — the immune system validated at
+probe level (3.5 h of self-feeding, zero rollbacks, function
+preserved), but at LR 1e-5 on a sub-threshold diet LLMUE
+preserved without growing; the only measured LLMUE GAIN remains
+the ternary flip burst (+2 proxy). (3) **VRM v0: NULL, confounded
+— routed 54 = uniform 54, both -10 vs baseline 64**: the burst
+harness itself (fresh AdamW, lr 3e-5, 1ep old-corpus) damaged
+both arms, drowning the routing variable. Informative residue:
+frozen committees protected NOTHING (identical damage) —
+forgetting lives in the distributed bulk, not the committees,
+independently consistent with the MP-spectrum bulk-load-bearing
+finding. Re-run gentle. (4) Calculator: third directional miss —
+clade transfer underweighted (predicted ~4 from zero; transfer
+alone = 9/24). v3 needs an explicit transfer term. Day's law:
+every mechanism built so far PROTECTS capability (identity gates,
+immune system, rations); none of last night's added any — gain
+still comes only from real territory at real exposure (the
+farm's job, ~1k/4.8k roots).
