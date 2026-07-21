@@ -3230,3 +3230,23 @@ result: ternary NNUE metabolism +2 L9 / +2 proxy / gate held,
 third consistent discrete-substrate gain. Day's tally: two
 would-be headlines killed by two controls within six hours —
 the control reflex is now the lab's most productive instrument.
+
+## Series continent: axiom module CERTIFIED 180/180 (2026-07-21 evening)
+
+Same-day turnaround on the series-arithmetic tranche: axiom's
+ax::sym::series (dense truncated series over exact Q, no floats) +
+check_odesol_series (residual oracle, EQUIVALENT_TO_ORDER /
+NOT / UNDECIDED_BEYOND_ORDER) + series_solve chain emitter (one
+row per coefficient, one exact rational division per step).
+llmopt adjudication of the 180-problem/1200-row sample batch:
+**180/180 byte-exact** (every a_n chain equals sympy's Maclaurin
+coefficients of the drawn solution as exact rationals) AND
+**180/180 residual-clean** (final partial sums vanish in the ODE
+to order). The Liouville-jailbreak substrate is live: series
+chains farm at polynomial-op throughput with no heurisch walls.
+Correction booked alongside: the L7 "pre-expand short-circuit"
+ask in the outbound relay was a MISATTRIBUTION (axiom's record:
+short-circuit nulled twice; the real L7 recovery 40->47 was
+best-of-both canonical, already shipped). The qual L7 gap (48 v
+sympy 56, hash-verified bridge) is real but UNNAMED — per-root
+diff of the 8 misses queued before any further code ask.
