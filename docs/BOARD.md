@@ -1,6 +1,6 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-16 evening. Strategy: specs/2026-07-15-post-climb-strategy.md. RESULTS.md holds verdicts, RIFF-LEDGER.md holds
+Updated 2026-07-21 midday. Strategy: specs/2026-07-15-post-climb-strategy.md. RESULTS.md holds verdicts, RIFF-LEDGER.md holds
 provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
@@ -8,6 +8,9 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Status | Pointer |
 |---|---|---|
+| **TRAINING ATTACKS (lossless-speed program)** | prefix A/B + token-budget batching NEXT (parity-gated); scorecard + endgame composition in spec | specs/2026-07-21-training-attacks.md |
+| **CALIBRATION NIGHT (the gaps audit)** | armed: frozen holdout battery (88M, audited) + 3x seed-variance births -> first measured gate noise-bar; chain-carry ablation spec'd | specs/2026-07-21-training-attacks.md |
+| **LLMUE frontier day (2026-07-21)** | LR ceiling ~1e-4 (erosion above, collapse 1e-3+; tripwire blind to slow leaks -> absolute-anchor patch); ternary NNUE 90-min: 3047 rows, flips 0.45% (constant BROKE — saturating curve), proxy +2 again; late-layer arm + shaped GRPO (b-lever) running | RESULTS 2026-07-21 |
 | **LLMUE (the metabolic model, LIVE 2026-07-20)** | pilot running: grown-76 metabolizing L9a on the Mac (proxy flat @ champion level through 35+ cycles, sidecar growing); ternary flip-census burst on the 3080; overnight = L9 probe vs calculator's ~4/24 | RIFF-LEDGER (metabolic model, LLMUE) |
 | PRODUCTION | **mathnative_gen6_grown.pt = 76/120 @ 70.42** (55.1M, grown 45M->55M from the gen-4 champion, L8 territory; growth beat rebirth 76 v 71; L8 probe ~83% clean) — lineage: 57->69 (gen-4) -> 71 (gen-6 reborn) -> 76; gen-6 ternary = **73 @ 71.81 (beats fp32 cold birth; highest validity ever)**; grow-the-ternary queued | RESULTS 2026-07-20 |
 | Training doctrine (one day, all measured) | births fp32-on-Mac OR TF32-on-cuda (parity 65 vs 64, 2.5x faster; cliff = mantissa bits 8-10; bf16 still banned); packing dead any precision; mining with --seed-base advanced per run; small cycles + two-tier gates + solves-primary + snapshots | RESULTS parity 2x2 / dynamical debit |
