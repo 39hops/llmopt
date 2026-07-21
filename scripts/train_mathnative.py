@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import glob
 import json
+import os
 import random
 import sys
 import time
@@ -99,7 +100,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
 
     dev = ("mps" if torch.backends.mps.is_available() else
            "cuda" if torch.cuda.is_available() else "cpu")
-    torch.manual_seed(0)
+    torch.manual_seed(int(os.environ.get("BIRTH_SEED", "0")))
     model = build_model(len(tok.vocab), d=d, layers=layers,
                         heads=heads, ffn=ffn).to(dev)
     n_params = sum(p.numel() for p in model.parameters())
