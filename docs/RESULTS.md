@@ -3191,3 +3191,21 @@ every mechanism built so far PROTECTS capability (identity gates,
 immune system, rations); none of last night's added any — gain
 still comes only from real territory at real exposure (the
 farm's job, ~1k/4.8k roots).
+
+## Late-layer metabolism: cheaper AND safer — the control-rod result (2026-07-21)
+
+The confluence shortcut's A/B, identical LR ladders (3e-5 ladder
+x1.8 to a deliberately abusive 1.8e-3), identical band/cycles:
+**hot (full backprop) gate 57/120 @ 57.4, L9 7/24; late (layers
+8-11 FFN only, ~60% of backward skipped) gate 71/120 @ 68.5, L9
+9/24 intact.** Same abuse, +14 gate points of erosion resistance —
+the hot arm's damage came overwhelmingly from churning early
+layers that texture-froze at birth and had nothing left to learn.
+At sane LRs (<=3.1e-4) the late arm held the champion's proxy
+pristine where hot was already bleeding. Verdict: late-layer
+metabolism is doctrine — the depth profile (delta mass
+monotonically increasing 0->11) predicted it, and prediction (4)
+UNDER-called it (expected parity at 40% wall; got dominance).
+Composed doctrine for metabolic v3: late-only + absolute-anchor
+tripwire + LR <= 1e-4 + surprise gating. Ceiling note: nothing
+survives 1.8e-3 (both arms erode) — the frontier is real.
