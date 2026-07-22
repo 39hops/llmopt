@@ -3418,3 +3418,25 @@ doctrine now. RUNG 1b launched: ODE parameters injected into the
 prompt as a vocab-40-tokenizable tuple prefix "(family, params...)"
 — linear1 (1, a), cc2 (2, p, q), separable (3, c) — same seed, same
 base, one variable.
+
+## Duo-substrate wave: complementarity is real AND free (2026-07-22 eve)
+
+Budget-matched mixed wave (8 ternary + 8 fp32 per ply = same total
+as one model's 16), same 200-probe rarity battery: **133/200**
+(65/69 common, 37/48 mid, 13/18 rare, 18/65 unseen) vs singles 128
+(champion) / 127 (ternary); oracle union at 2x budget = 137.
+Pre-reg (a) PASS: +5 over best single at EQUAL budget. Pre-reg (b)
+PASS: rare 13 >= 11 (the mix beats the champion on the champion's
+OWN tail) and unseen 18 >= 17. The two substrates propose from
+different distributions and the oracle keeps whichever fires —
+diversity beats depth at fixed budget. Adoption: duo wave becomes
+the SEARCH/FARM sampler (mining, expert iteration — solves are
+data); promotion gates STAY single-model for lineage comparability
+(a gate number that mixes substrates measures the pair, not the
+candidate). Rider result — paired L9 probe, same device (MPS):
+champion 9/24, ternary 8/24 — near-tied as questions get harder;
+the lean substrate does not fall off a cliff at the frontier.
+Rider 2 — ternary weight census: 30.5% zero / +34.8% / -34.7%,
+near-uniform across all 12 layers; distribution entropy = 1.58
+bits = the THEORETICAL MAX for 3 states — the crystal encodes at
+full information density (matches no-latent-polarization).

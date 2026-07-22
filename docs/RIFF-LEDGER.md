@@ -165,3 +165,15 @@ to the collaboration itself.
   rarity-routed precision (the training-time version of the same
   split); duo architecture (NO-TEST, but this is the WITHIN-model
   version, testable).
+- **Step-dropout curriculum / shortcuts-vs-longcuts** (Artin,
+  2026-07-22): train on BOTH the full derivation and the compressed
+  hop of the same problem — force the model to internalize steps it
+  is allowed to skip; going backwards from the solution mints the
+  pairs free (engine replays any chain at any granularity). Related:
+  chain-carry redo, underdetermined-rows-train-hallucination.
+- **Underdetermined rows train hallucination** (house, from series
+  rung 1, 2026-07-22): a diet row whose target is not determinable
+  from its prompt TEACHES confident guessing (rung 1: coefficients
+  without the ODE -> memorized-factorial fill-ins). Perfect data in
+  a closed system = oracle-verified AND prompt-determinable. Audit
+  rows for determinability, not just correctness.
