@@ -68,12 +68,12 @@ def build_model(vocab_size: int, d: int = 384, layers: int = 8,
             return self.g * x * torch.rsqrt(
                 x.pow(2).mean(-1, keepdim=True) + 1e-6)
 
-    def rope(q, k):
+    def rope(q, k, pos0=0):
         B, H, T, D = q.shape
         half = D // 2
         freq = torch.exp(-math.log(10000.0) *
                          torch.arange(half, device=q.device) / half)
-        t = torch.arange(T, device=q.device)
+        t = torch.arange(pos0, pos0 + T, device=q.device)
         ang = t[:, None] * freq[None, :]
         cos, sin = ang.cos(), ang.sin()
 
@@ -93,22 +93,28 @@ def build_model(vocab_size: int, d: int = 384, layers: int = 8,
             self.up = nn.Linear(d, ffn, bias=False)
             self.down = nn.Linear(ffn, d, bias=False)
 
-        def forward(self, x, mask):
+        def forward(self, x, mask, past=None):
             B, T, _ = x.shape
             h = self.n1(x)
             q, k, v = self.qkv(h).chunk(3, -1)
             q = q.view(B, T, heads, -1).transpose(1, 2)
             k = k.view(B, T, heads, -1).transpose(1, 2)
             v = v.view(B, T, heads, -1).transpose(1, 2)
-            q, k = rope(q, k)
+            pos0 = past[0].shape[2] if past is not None else 0
+            q, k = rope(q, k, pos0)
+            if past is not None:
+                k = torch.cat([past[0], k], 2)
+                v = torch.cat([past[1], v], 2)
+            new_past = (k, v)
             a = torch.nn.functional.scaled_dot_product_attention(
-                q, k, v, attn_mask=mask, is_causal=mask is None)
+                q, k, v, attn_mask=mask,
+                is_causal=(mask is None and past is None))
             a = a.transpose(1, 2).reshape(B, T, d)
             x = x + self.o(a)
             h = self.n2(x)
             x = x + self.down(torch.nn.functional.silu(self.gate(h))
                               * self.up(h))
-            return x
+            return x, new_past
 
     class MicroLM(nn.Module):
         def __init__(self):
@@ -119,7 +125,8 @@ def build_model(vocab_size: int, d: int = 384, layers: int = 8,
             self.head = nn.Linear(d, vocab_size, bias=False)
             self.ctx = ctx
 
-        def forward(self, ids, attn_mask=None):
+        def forward(self, ids, attn_mask=None, past=None,
+                    use_cache=False):
             x = self.emb(ids)
             m = None
             if attn_mask is not None:
@@ -128,8 +135,13 @@ def build_model(vocab_size: int, d: int = 384, layers: int = 8,
                 causal = torch.ones(T, T, dtype=torch.bool,
                                     device=ids.device).tril()
                 m = causal[None, None] & attn_mask[:, None, None, :].bool()
-            for b in self.blocks:
-                x = b(x, m)
-            return self.head(self.norm(x))
+            new_past = []
+            for li, b in enumerate(self.blocks):
+                x, kv = b(x, m, past[li] if past is not None else None)
+                new_past.append(kv)
+            logits = self.head(self.norm(x))
+            if use_cache or past is not None:
+                return logits, new_past
+            return logits
 
     return MicroLM()
