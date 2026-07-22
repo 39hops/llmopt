@@ -143,3 +143,13 @@ and the honest nulls (entropy beams, budget allocation, symengine,
 quaternion embeddings) are recorded next to the wins. Divergent
 proposal + cheap sound verification is the whole method — applied
 to the collaboration itself.
+- **Rarity-routed precision** (Artin, 2026-07-22, on the rarity-curve
+  result): fp32 wins mid/rare (seen-but-infrequent = episodic memory
+  needs resolution; ternary's absmean threshold deletes faint traces),
+  ternary wins unseen (forced compression stores rules, rules
+  transfer). Combination = schedule law applied to precision: ternary
+  bulk crystal + high-precision channel (fp64 masters, proven 5x flip
+  recovery) ROUTED BY RARITY — rare/unseen-skeleton rows train through
+  the precise path, common rows through the cheap path. Marries
+  valuation-routed metabolism (the router) to the absorption law (the
+  mechanism). Pre-reg when run: rare-bin delta > common-bin delta.
