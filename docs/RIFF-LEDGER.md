@@ -210,3 +210,18 @@ to the collaboration itself.
   router (exact, free) vs magic-estimator-style learned router
   (dispatcher-v3 lineage) vs plain 8+8 mix (133 baseline). Judge
   doesn't starve: variance lives at the 133-vs-137 gap.
+- **The blackboard protocol (two-expert interaction)** (Artin's
+  question + house design, 2026-07-22 night): optimal closed-system
+  interaction = (1) route per-STEP by grammar membership (decidable
+  because each expert's world is closed); (2) the cur-string IS the
+  interface — chains are Markovian, so a physics step that reduces
+  to Integral(...) is verbatim a math-model prompt, no translation
+  layer; (3) every handoff oracle-gated — models cannot pass each
+  other unverified state (the categorical difference vs multi-agent
+  LLM prose); (4) asymmetric call graph: physics calls math, never
+  the reverse (epistemic structure = DAG, no loops). Requires ZERO
+  interaction training if physics chains are farmed to end reduce
+  steps at bare math grammar. Pre-registerable: end-to-end physics
+  solve rate, blackboard pair vs matched-params monolithic
+  both-diets model. Related: math+physics MoE, always-on frame,
+  scratch-workspace (banked).
