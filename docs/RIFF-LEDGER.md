@@ -191,3 +191,22 @@ to the collaboration itself.
   on cuda, paired gates. Absorption-law framing: does a 10-bit
   training mantissa dent the gate? Either answer banks; a pass buys
   2-4x on every future birth.
+- **Attention-shaped arithmetic / pairwise sum trees** (Artin,
+  2026-07-22 night, on the sum-step residue): attention IS a weighted
+  sum of products — the op the model fails explicitly is the one it
+  computes implicitly. Fix the data shape, not the architecture:
+  decompose sums to one-primitive emissions (binary reduction tree).
+  If pairwise trains like solve steps did, the ladder law's cleanest
+  form: ANY computation trains if each emission is one primitive.
+- **Math+physics MoE, grammar-routed** (Artin, 2026-07-22 night, off
+  the Kimi K3 16/896 sparsity): two domain-native micro-models
+  (math = current lineage; physics = classical mechanics chains,
+  which are ODE grammar wearing units) + a router that is a grammar
+  check — EXACT routing at the domain boundary, no learned router.
+  The micro-answer to frontier MoE: fewer experts, provable routing.
+  Classical first (rides tonight's 4.3x series machinery); quantum
+  second (ZX rungs already banked). Relay drafted (asks 1-3).
+- **Duo router bake-off** (house+Artin, 2026-07-22): skeleton-bin
+  router (exact, free) vs magic-estimator-style learned router
+  (dispatcher-v3 lineage) vs plain 8+8 mix (133 baseline). Judge
+  doesn't starve: variance lives at the 133-vs-137 gap.
