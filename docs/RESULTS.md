@@ -3397,3 +3397,24 @@ rarity_curves.html (sent 2026-07-22).
 four points (1e-4: 0.0007% / 1e-5: 0.030% / 1e-6: 0.278% / 1e-7:
 2.79%). Absorption fraction ~= c/LR with c ~= 2.8e-9; the law is now
 predictive, not descriptive. Merged run auto-fired behind it.
+
+## Series rung 1: form learned instantly, task was ill-posed (2026-07-22)
+
+19M birth (BIRTH_SEED=1, gen4 base + 793 stripped series rows, 36
+min): held-out probe 23/142 (16.2%) exact-coefficient steps
+(separable 13/25, linear1 7/63, cc2 3/54); paired gate 63/120 vs
+seedvar-1's 65 (-2 vs a sigma<1 baseline — small real dent, watch).
+The misses are the finding: EVERY miss appends exactly one new
+leading term, correct power, prefix verbatim — the model learned the
+expand-by-one-term move from 793 rows; only the coefficient is wrong,
+and it defaults to memorized constants (x**5/120, x**7/120 — e^x
+factorials). Root cause is diet design, mine: the rows never showed
+the ODE, so the next coefficient is UNDERDETERMINED from the partial
+sum alone — the model was asked to guess hidden state. (The 23 hits
+are recurrence-guessable prefixes: separable leads.) Scorer note:
+first probe run printed 0/142 from a broken scorer (macOS spawn
+multiprocessing) — fork start method is part of the solve_isolated
+doctrine now. RUNG 1b launched: ODE parameters injected into the
+prompt as a vocab-40-tokenizable tuple prefix "(family, params...)"
+— linear1 (1, a), cc2 (2, p, q), separable (3, c) — same seed, same
+base, one variable.

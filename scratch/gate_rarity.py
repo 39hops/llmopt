@@ -62,6 +62,7 @@ model = build_model(len(tok.vocab), d=d, layers=layers, heads=heads,
 model.load_state_dict(torch.load(ckpt, map_location="cpu"))
 model.eval()
 from bench_verify_fast import verify_wave
+dump = open(f"rarity_probes_{label}.jsonl", "w")
 solved = Counter(); total = Counter()
 by_level = {lv: Counter() for lv in G.GATE_LEVELS}
 valid = tried = 0
@@ -94,6 +95,9 @@ with torch.no_grad():
             cur = nxt; visited.add(cur.replace(" ", ""))
         if done:
             solved[bn] += 1
+        dump.write(json.dumps({"level": lv, "i": i, "expr": e,
+                               "bin": bn, "solved": done}) + "\n")
+        dump.flush()
         by_level[lv][bn, done] += 1
 curve = {b: f"{solved[b]}/{total[b]}"
          for b in ("common", "mid", "rare", "unseen")}
