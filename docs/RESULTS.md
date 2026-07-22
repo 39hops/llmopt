@@ -3458,3 +3458,22 @@ placement lags; linear1/separable appends 36/63, 17/25). Gate 63/120
 integral solves at 19M regardless of volume; capacity, not
 interference-by-format). Next tranche ask for axiom: decompose the
 SUM rows further (one product per emission) and more cc2 seeds.
+
+## The 43x: allocator thrashing, not model cost (2026-07-22 night)
+
+The merged d768 run "ran slow" (0.2-0.3 it/s, ~4h/epoch) for three
+epochs. Diagnosis chain: axiom-contention theory (partly true,
+box was shared) -> quiet-box measurement still 0.2 -> restart at
+epoch boundary with PYTORCH_CUDA_ALLOC_CONF=expandable_segments:
+**8.6 it/s (43x)**. Root cause: the ep0 allocator OOM-retry event
+(logged warning, "free: 0") left the caching allocator permanently
+fragmented — every step paid retry+flush. Loss continuous across
+the restart (0.337 -> 0.335); allocator is wall-clock only, zero
+numerics — the twin comparison is untouched. DOCTRINE: a CUDA
+allocator OOM warning in a training log is a TRIPWIRE, not noise —
+restart at the next epoch boundary with expandable_segments
+immediately; do not average the slowdown into "the model is slow."
+Credit: Artin refused the slow-run story three times until it broke.
+Epoch now ~7 min; the entire overnight schedule collapsed into the
+evening. (Restart discipline: wrapper killed BEFORE trainer so the
+completion marker could not false-fire the readout chain.)
