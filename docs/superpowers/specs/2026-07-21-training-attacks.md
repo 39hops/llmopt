@@ -134,3 +134,22 @@ exactly nothing) — the exposure curve has a floor term.
   operands narrow, accumulators wide, scale shared per block
   (MX at rest already ships), exact arithmetic at the oracle.
   Adaptive precision = the lab's stratification named.
+
+## Overnight queue 2026-07-22 (Artin's GO, armed ~00:40)
+
+**3080 (full compute granted):** absorption curve completes
+(1e-6 -> 1e-7 arms, auto-chained) -> THE ROUNDING-LOSS DECIDER
+(fp64_paired.py): fp32 vs fp64-master arms, LR 2.5e-6 (GRPO's
+regime), 40 min each, late-layer STE. PRIMARY metric: committed
+ternary flips vs own start (pre-registered: fp64 arm commits
+MORE flips at equal food if absorption is stealing learning);
+secondary: paired proxy. Lone farm worker w1 finishes the shard.
+**Mac:** ternary compounding session -> MPS KV equivalence
+(promote sample_wave_lp in the morning if 20/20) -> idle.
+**Morning verdicts due:** compounding (+2 stacks?), MPS KV
+speedup, absorption-vs-LR law (4 points), rounding-loss decider,
+full L9a shard count. **Deferred deliberately:** series-diet
+birth (Liouville rung 1) — designed fresh tomorrow, not at 1 AM.
+The rounding-veil hypothesis (ledger 2026-07-22) rides on the
+decider: if fp64 recovers flips/capability, higher-precision
+accumulation joins the perfect-model program as a standing rung.
