@@ -3440,3 +3440,21 @@ Rider 2 — ternary weight census: 30.5% zero / +34.8% / -34.7%,
 near-uniform across all 12 layers; distribution entropy = 1.58
 bits = the THEORETICAL MAX for 3 states — the crystal encodes at
 full information density (matches no-latent-polarization).
+
+## Series rung 1c: decomposed arithmetic TRAINS UP (2026-07-22 night)
+
+Axiom's chain batch (26,844 rows, independently re-verified: 0/14,844
+arithmetic mismatches) -> 19M birth, same seed/base as rungs 1/1b,
+one variable (23,855 chain rows replace 793 hops). Held-out probe
+(seeds 17-19, 358 steps, per kind): **67.0% overall vs 15-16% for
+both single-hop rungs (~4.3x)**. The ladder law confirmed in a
+brand-new grammar: solve steps (operands spelled out) train UP —
+separable 63/63 PERFECT, linear1 56/63, cc2 45/54 — while the same
+model asked to do the arithmetic implicitly (rungs 1/1b) sat at 15%.
+Residue map: sum steps 10/36 (multi-term products resist — the next
+decomposition target), cc2 appends 13/54 (two-back recurrence
+placement lags; linear1/separable appends 36/63, 17/25). Gate 63/120
+(-2 vs seedvar-1, same dent as rungs 1a/1b — series rows cost ~2
+integral solves at 19M regardless of volume; capacity, not
+interference-by-format). Next tranche ask for axiom: decompose the
+SUM rows further (one product per emission) and more cc2 seeds.
