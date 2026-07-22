@@ -153,3 +153,15 @@ to the collaboration itself.
   the precise path, common rows through the cheap path. Marries
   valuation-routed metabolism (the router) to the absorption law (the
   mechanism). Pre-reg when run: rare-bin delta > common-bin delta.
+- **Ternary = search substrate, precision = accuracy substrate**
+  (Artin, 2026-07-22, from work, on the rarity curves + series null):
+  ternary's compressed rules make it the better SEARCH engine
+  (generalizes to unseen skeletons, cheap, fast waves); higher
+  precision is the ACCURACY layer for rare/faint knowledge (episodic
+  memory, exact coefficients). Suggests the division of labor inside
+  one system: ternary proposes (wide waves over unseen territory),
+  precise weights verify/refine (rare-technique recall) — the
+  proposer/verifier split mapped onto substrates. Related:
+  rarity-routed precision (the training-time version of the same
+  split); duo architecture (NO-TEST, but this is the WITHIN-model
+  version, testable).
