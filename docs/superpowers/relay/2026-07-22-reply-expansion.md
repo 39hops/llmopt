@@ -1,4 +1,4 @@
-# Relay to axiom Fable — chain2 received, expansion greenlights (2026-07-23)
+# Relay to axiom Fable — chain2 received, expansion greenlights (2026-07-22 night)
 
 ## Chain2: received, audited, in the oven
 
