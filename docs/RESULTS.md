@@ -3340,3 +3340,37 @@ budget. (5) Ternary compounding: sessions do NOT stack at
 1e-4/late-layer on the same organism (s2: 22->21); the repeated
 +2s were fresh-pair effects. (6) fp64 decider arm A: 0.078%
 flips, proxy flat; arm B verdict pending this morning.
+
+## Rarity curves + fp64 verdict + merged run launched (2026-07-22 morning)
+
+(1) **fp64 decider arm B: fp64 masters RECOVER the flips** —
+0.3835% vs arm A's 0.078% (~5x) at equal food, LR 2.5e-6; proxy
+flat (22 @ 65.7 -> 65.9%). Flip mass concentrates late
+(blocks.9-11 down/up/gate dominate), matching the control-rod
+picture. Verdict: absorption is REAL and fp64 masters fix it —
+but the regime is low-LR (metabolism/GRPO), where absorption
+bites (0.278% @ 1e-6), NOT from-birth 3e-4 (0.0007% @ 1e-4 by
+the law). **Fold-in decision: fp64 masters go into the ONLINE
+trainer, not the merged birth** — keeps the merged run's
+pre-registered one-variable purity (diet only) AND aims the fix
+where the mechanism lives. Deviation from spec item 3 noted.
+(2) **Rarity-stratified gate BUILT + baselines measured**
+(scratch/gate_rarity.py; skeleton = digits->#, counted in corpus
+cur-set; 200 probes, bins common/mid/rare/unseen): CHAMPION
+common 73/78 (94%) / mid 32/43 (74%) / rare 8/14 / unseen 15/65
+(23%), overall 128/200; TERNARY-73 78/85 / 28/40 / 4/10 / 17/65,
+overall 127/200. The scalar gap champion-vs-ternary (76 v 73
+prod, 64 v 60 holdout) FLATTENS to 128 v 127 on the stratified
+battery, and ternary EDGES the champion on unseen skeletons
+(17 v 15) — third strike against "ternary can't generalize."
+The curve itself is the headline: ~94% -> ~23% from common to
+unseen-skeleton is the quantified battery truth; every future
+promotion reads this curve, territory births judged at the rare
+end. (Census note: diet recomposition files excluded from the
+skeleton count after run 1 — 99-skeleton drift caught, bins
+re-freeze next run.) (3) **THE MERGED RUN launched**: diet built
+(116,738 rows = gen-6 cumulative with L1-L3 rationed to 45%
+[16.4k/22.1k/12.4k survive] + 782 deduped L9a rows), d768/8L/
+ffn3072/h12 ternary-from-birth 6ep, chained on the 3080 behind
+the 1e-7 absorption arm. Pre-registrations stand: beat twin-65,
+contend with champion-76 same-battery, move the RARE end.
