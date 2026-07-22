@@ -1,0 +1,200 @@
+{"level": 3, "i": 0, "expr": "-20*x*cos(x) - 20*sin(x)", "bin": "common", "solved": true}
+{"level": 3, "i": 1, "expr": "-18*cos(2*x)", "bin": "mid", "solved": true}
+{"level": 3, "i": 2, "expr": "6*x*(x + 2)*exp(x)", "bin": "mid", "solved": true}
+{"level": 3, "i": 3, "expr": "9*x**2 - 54*x*sin(x) + 54*cos(x)", "bin": "common", "solved": true}
+{"level": 3, "i": 4, "expr": "(6*x**2 - 2)*cos(2*x**3 - 2*x + 5)", "bin": "mid", "solved": true}
+{"level": 3, "i": 5, "expr": "-18/x", "bin": "common", "solved": true}
+{"level": 3, "i": 6, "expr": "35*log(x) + 35", "bin": "common", "solved": true}
+{"level": 3, "i": 7, "expr": "5*cos(5*x + 1)", "bin": "common", "solved": true}
+{"level": 3, "i": 8, "expr": "-56*sqrt(2)*exp(x)*sin(x + pi/4) - 6*sin(x)", "bin": "rare", "solved": true}
+{"level": 3, "i": 9, "expr": "24*exp(x)", "bin": "common", "solved": true}
+{"level": 3, "i": 10, "expr": "(4*cos(x) - 1)*sin(x)", "bin": "mid", "solved": true}
+{"level": 3, "i": 11, "expr": "96*x", "bin": "common", "solved": true}
+{"level": 3, "i": 12, "expr": "54*x*(2*log(x) + 1)", "bin": "common", "solved": true}
+{"level": 3, "i": 13, "expr": "14*cos(2*x) + 7/x", "bin": "mid", "solved": true}
+{"level": 3, "i": 14, "expr": "(3*x**2 - 1)*cos(x**3 - x + 3)", "bin": "rare", "solved": true}
+{"level": 3, "i": 15, "expr": "-45*x*cos(x) - 45*sin(x)", "bin": "common", "solved": true}
+{"level": 3, "i": 16, "expr": "-24*sqrt(2)*exp(x)*cos(x + pi/4)", "bin": "mid", "solved": true}
+{"level": 3, "i": 17, "expr": "14*x**3*(x*cos(x) + 4*sin(x))", "bin": "mid", "solved": true}
+{"level": 3, "i": 18, "expr": "12*(x**4 + 4)/x", "bin": "mid", "solved": true}
+{"level": 3, "i": 19, "expr": "-24*x**2*exp(x) - 48*x*exp(x) + 4", "bin": "rare", "solved": true}
+{"level": 3, "i": 20, "expr": "18*log(x) + 14", "bin": "common", "solved": false}
+{"level": 3, "i": 21, "expr": "48*x*(x + 2)*exp(x)", "bin": "mid", "solved": true}
+{"level": 3, "i": 22, "expr": "5 - 162*x", "bin": "common", "solved": false}
+{"level": 3, "i": 23, "expr": "18*x*exp(x) + 18*exp(x) + 6*cos(x)", "bin": "mid", "solved": true}
+{"level": 3, "i": 24, "expr": "-40*x**4", "bin": "common", "solved": true}
+{"level": 3, "i": 25, "expr": "-75*x**2", "bin": "common", "solved": true}
+{"level": 3, "i": 26, "expr": "-4*sin(x) - 36/x", "bin": "common", "solved": true}
+{"level": 3, "i": 27, "expr": "-15*x**2*sin(5*x**3 + 2)", "bin": "mid", "solved": true}
+{"level": 3, "i": 28, "expr": "(8*x - 3)*exp(4*x**2 - 3*x + 2)", "bin": "common", "solved": true}
+{"level": 3, "i": 29, "expr": "(4*x - 3)*cos(x*(2*x - 3))", "bin": "common", "solved": true}
+{"level": 3, "i": 30, "expr": "32*x**3", "bin": "common", "solved": true}
+{"level": 3, "i": 31, "expr": "-42/x", "bin": "common", "solved": true}
+{"level": 3, "i": 32, "expr": "12*x**3 + 8*sqrt(2)*exp(x)*cos(x + pi/4)", "bin": "mid", "solved": true}
+{"level": 3, "i": 33, "expr": "-sin(x + 1)", "bin": "mid", "solved": true}
+{"level": 3, "i": 34, "expr": "(8*x + 2)*exp(4*x**2 + 2*x + 1)", "bin": "common", "solved": true}
+{"level": 3, "i": 35, "expr": "16*(x + 1)*exp(x)", "bin": "mid", "solved": true}
+{"level": 3, "i": 36, "expr": "240*x**4", "bin": "common", "solved": true}
+{"level": 3, "i": 37, "expr": "56*(x + 1)*exp(x)", "bin": "mid", "solved": true}
+{"level": 3, "i": 38, "expr": "16*sqrt(2)*exp(x)*sin(x + pi/4)", "bin": "common", "solved": true}
+{"level": 3, "i": 39, "expr": "7*x*(x + 2)*exp(x)", "bin": "mid", "solved": true}
+{"level": 4, "i": 0, "expr": "9*(sqrt(x)*(18*x**2 - 6) + sqrt(6))*cos(sqrt(6)*sqrt(x) + 3*x**3 - 3*x + 3)/(2*sqrt(x))", "bin": "mid", "solved": true}
+{"level": 4, "i": 1, "expr": "(48*(x - 1)**2 + 8)*exp(3*x**2 - 6*x + 6)", "bin": "rare", "solved": false}
+{"level": 4, "i": 2, "expr": "6*(1 - sin(6*x))*exp(6*x + cos(6*x) + 2)", "bin": "mid", "solved": true}
+{"level": 4, "i": 3, "expr": "27*(3*x*(2*x - 1)*log(x)*cos(3*x**2 - 3*x + 5) + sin(3*x**2 - 3*x + 5))/x", "bin": "mid", "solved": true}
+{"level": 4, "i": 4, "expr": "27*(10*x*sin(5*x**3 - x + 3) + (15*x**2 - 1)**2*cos(5*x**3 - x + 3))*sin(5*x**3 - x + 3)**2", "bin": "unseen", "solved": false}
+{"level": 4, "i": 5, "expr": "2*(-(10*x - 3)**2*sin(5*x**2 - 3*x + 1) + 5*cos(5*x**2 - 3*x + 1))*cos(5*x**2 - 3*x + 1)", "bin": "unseen", "solved": true}
+{"level": 4, "i": 6, "expr": "-16*x**4*sin(x + 1) + 64*x**3*cos(x + 1) + 7*(3*x**2 + 7*cos(7*x) + 4)*cos(x**3 + 4*x + sin(7*x))", "bin": "unseen", "solved": true}
+{"level": 4, "i": 7, "expr": "14*(6*(x - 1)**2*cos(x**2 - 2*x + 4) + sin(x**2 - 2*x + 4))*sin(x**2 - 2*x + 4)**2", "bin": "unseen", "solved": true}
+{"level": 4, "i": 8, "expr": "(9*sqrt(x) + 9/2)*exp(sqrt(x) + x)/sqrt(x)", "bin": "unseen", "solved": true}
+{"level": 4, "i": 9, "expr": "48*(-24*x**2*sin(4*x**2 + 1) + cos(4*x**2 + 1))*cos(4*x**2 + 1)**2", "bin": "mid", "solved": true}
+{"level": 4, "i": 10, "expr": "32*(-(4*x - 1)**2*sin(2*x**2 - x + 2) + cos(2*x**2 - x + 2))*cos(2*x**2 - x + 2)**3", "bin": "unseen", "solved": false}
+{"level": 4, "i": 11, "expr": "2*(20*x**(3/2) + sqrt(3))*exp(sqrt(3)*sqrt(x) + 5*x**2 + 3)/sqrt(x)", "bin": "unseen", "solved": true}
+{"level": 4, "i": 12, "expr": "-14*(3*sin(6*x) - 4)*cos(8*x + cos(6*x) + 1) + 350*exp(10*x + 6)", "bin": "rare", "solved": true}
+{"level": 4, "i": 13, "expr": "2*(2*x*cos(x**2) + sin(x**2))*exp(x)", "bin": "unseen", "solved": true}
+{"level": 4, "i": 14, "expr": "(192*x + 216*(4*x**2 - 1)**2)*exp(12*x**3 - 9*x + 6)", "bin": "rare", "solved": false}
+{"level": 4, "i": 15, "expr": "70*x*(x + 2)*sin(x**2 + 4*x + 2) - 35*cos(x**2 + 4*x + 2)", "bin": "rare", "solved": true}
+{"level": 4, "i": 16, "expr": "(216*(2*x - 1)**2 + 48)*exp(9*x**2 - 9*x + 3)", "bin": "mid", "solved": false}
+{"level": 4, "i": 17, "expr": "2*(-3*x**2 + sin(x) - 2)*sin(x**3 + 2*x + cos(x))", "bin": "unseen", "solved": true}
+{"level": 4, "i": 18, "expr": "30*x**5*cos(3*x + 2) + 50*x**4*sin(3*x + 2) - 2*(3*cos(6*x) + 2)*sin(4*x + sin(6*x) + 5)", "bin": "unseen", "solved": false}
+{"level": 4, "i": 19, "expr": "24*(3*x + (6*x**2 - 1)**2)*exp(8*x**3 - 4*x + 8)", "bin": "rare", "solved": false}
+{"level": 4, "i": 20, "expr": "x**2*(42*x*cos(7*x) + 18*sin(7*x))", "bin": "unseen", "solved": true}
+{"level": 4, "i": 21, "expr": "(12*x + 6*cos(3*x) + 2)*exp(3*x**2 + x + sin(3*x))", "bin": "unseen", "solved": true}
+{"level": 4, "i": 22, "expr": "5*(3 - 7*cos(7*x))*sin(-3*x + sin(7*x) + 5)", "bin": "mid", "solved": true}
+{"level": 4, "i": 23, "expr": "(9*sqrt(x)*exp(3*x + 15) + 2*(8*sqrt(x) + sqrt(5))*exp(sqrt(5)*sqrt(x) + 4*x + 1))/sqrt(x)", "bin": "unseen", "solved": false}
+{"level": 4, "i": 24, "expr": "(540*x**2 - 108)*exp(5*x**3 - 3*x + 2)", "bin": "mid", "solved": false}
+{"level": 4, "i": 25, "expr": "-7*(sqrt(x)*(12*x + 4) + sqrt(3))*sin(sqrt(3)*sqrt(x) + 3*x**2 + 2*x + 4)/(2*sqrt(x))", "bin": "mid", "solved": true}
+{"level": 4, "i": 26, "expr": "-12*x*cos(2*x) - 6*sin(2*x)", "bin": "unseen", "solved": true}
+{"level": 4, "i": 27, "expr": "7*((8*x - 4)*cos(4*x**2 - 4*x + 2) + sin(4*x**2 - 4*x + 2))*exp(x)", "bin": "rare", "solved": true}
+{"level": 4, "i": 28, "expr": "(x**(9/2)*(30*x*(2*x + 1) + 75)*exp(2*x**2 + 2*x + 3) + (sqrt(x)*(8*x + 6) + sqrt(2))*cos(sqrt(2)*sqrt(x) + 2*x**2 + 3*x + 3))/sqrt(x)", "bin": "unseen", "solved": false}
+{"level": 4, "i": 29, "expr": "4*(x*(3*x*sin(2*x**3 - 2*x + 1)**2 + (3*x**2 - 1)**2*sin(4*x**3 - 4*x + 2) - 6*(6*x**2 - 1)*log(x)*cos(4*x**3 - 2*x + 5)) - 3*sin(4*x**3 - 2*x + 5))/x", "bin": "unseen", "solved": false}
+{"level": 4, "i": 30, "expr": "32*((4*x - 1)**2 + 1)*exp(8*x**2 - 4*x + 12)", "bin": "mid", "solved": false}
+{"level": 4, "i": 31, "expr": "-(sqrt(x)*(4*x - 2) + sqrt(5))*sin(sqrt(5)*sqrt(x) + x**2 - x + 4)/sqrt(x)", "bin": "unseen", "solved": true}
+{"level": 4, "i": 32, "expr": "14*(4*(3*x - 2)**2*cos(3*x**2 - 4*x + 4) + 3*sin(3*x**2 - 4*x + 4))*sin(3*x**2 - 4*x + 4)", "bin": "unseen", "solved": false}
+{"level": 4, "i": 33, "expr": "-3*(7*sin(7*x) - 4)*cos(4*x + cos(7*x) + 4) - 243*sin(3*x)*cos(3*x)**2", "bin": "unseen", "solved": false}
+{"level": 4, "i": 34, "expr": "8*(3 - sin(x))*exp(3*x + cos(x)) - 72*exp(4*x + 5)*sin(x) + 288*exp(4*x + 5)*cos(x)", "bin": "unseen", "solved": true}
+{"level": 4, "i": 35, "expr": "864*exp(18*x + 3)", "bin": "common", "solved": true}
+{"level": 4, "i": 36, "expr": "128*x**3*(x*(2*x + 1) + 1)*exp(4*x**2 + 4*x + 1)", "bin": "mid", "solved": false}
+{"level": 4, "i": 37, "expr": "9*(8*x - 1)**2*exp(3*x*(4*x - 1)) + (60*x**2 - 36*sin(9*x) - 4)*exp(5*x**3 - x + cos(9*x) + 1) + 24*exp(3*x*(4*x - 1))", "bin": "unseen", "solved": false}
+{"level": 4, "i": 38, "expr": "800*exp(20*x + 20)", "bin": "common", "solved": true}
+{"level": 4, "i": 39, "expr": "(-288*x**2 - 72)*exp(4*x**3 + 3*x + 2)", "bin": "unseen", "solved": false}
+{"level": 5, "i": 0, "expr": "3*sqrt(3)*(21*x**4 + 10*x**3 + 15*x**2 + 12*x + 4)/(2*sqrt(x**3 + 1))", "bin": "unseen", "solved": false}
+{"level": 5, "i": 1, "expr": "((9*x**2 + 1)*(7*log(2*x)**2 + 14*log(2*x) + 2) + 12)/(9*x**2 + 1)", "bin": "common", "solved": true}
+{"level": 5, "i": 2, "expr": "((9*x**2 + 1)*(3*x**2*log(5*x) + x**2 + 1) + 3)/(9*x**2 + 1)", "bin": "mid", "solved": false}
+{"level": 5, "i": 3, "expr": "8*x*log(x)**2 + 8*x*log(x) + 9*exp(3*x)*sin(x) + 3*exp(3*x)*cos(x)", "bin": "rare", "solved": true}
+{"level": 5, "i": 4, "expr": "8*(4*x**2 - 5*x + 4)/sqrt(2*x**2 - 4*x + 5)", "bin": "common", "solved": false}
+{"level": 5, "i": 5, "expr": "-12*exp(4*x)*sin(2*x) + 24*exp(4*x)*cos(2*x) + 6*log(3*x) + 6", "bin": "common", "solved": true}
+{"level": 5, "i": 6, "expr": "9*(-3*sin(3*x) + cos(3*x))*exp(x)", "bin": "common", "solved": true}
+{"level": 5, "i": 7, "expr": "6*x*log(x)**2 + 6*x*log(x) - 24*exp(2*x)*sin(3*x) + 16*exp(2*x)*cos(3*x)", "bin": "common", "solved": true}
+{"level": 5, "i": 8, "expr": "27*(8*x**2 + 4*x + 7)/(2*sqrt(3*x**2 + x + 5))", "bin": "mid", "solved": false}
+{"level": 5, "i": 9, "expr": "6*(sin(2*x) + 2*cos(2*x))*exp(x)", "bin": "common", "solved": true}
+{"level": 5, "i": 10, "expr": "((x**2 + 1)*(24*x**2*log(3*x) + 8*x**2 + 5) + 7)/(x**2 + 1)", "bin": "common", "solved": true}
+{"level": 5, "i": 11, "expr": "4*(-sin(x) + 4*cos(x))*exp(4*x)", "bin": "common", "solved": true}
+{"level": 5, "i": 12, "expr": "5 + 14/sqrt(1 - 4*x**2)", "bin": "common", "solved": true}
+{"level": 5, "i": 13, "expr": "9*x**2*(3*log(3*x) + 2)*log(3*x)", "bin": "common", "solved": true}
+{"level": 5, "i": 14, "expr": "x*(2*log(3*x) + 1)", "bin": "common", "solved": true}
+{"level": 5, "i": 15, "expr": "(9*x**2 + 19)/(9*x**2 + 1)", "bin": "common", "solved": true}
+{"level": 5, "i": 16, "expr": "6*x*(2*log(3*x) + 1)", "bin": "common", "solved": true}
+{"level": 5, "i": 17, "expr": "(50*x**2 + 45*x + 16)/sqrt(5*x**2 + 4*x + 2)", "bin": "mid", "solved": false}
+{"level": 5, "i": 18, "expr": "32*(sin(4*x) + cos(4*x))*exp(4*x)", "bin": "common", "solved": true}
+{"level": 5, "i": 19, "expr": "15*x**2*log(4*x)**2 + 10*x**2*log(4*x) + 8*exp(4*x)*sin(3*x) + 6*exp(4*x)*cos(3*x)", "bin": "common", "solved": true}
+{"level": 5, "i": 20, "expr": "(-6*sin(3*x) + 8*cos(3*x))*exp(4*x)", "bin": "common", "solved": true}
+{"level": 5, "i": 21, "expr": "2*(2*sin(x) + cos(x))*exp(2*x)", "bin": "common", "solved": true}
+{"level": 5, "i": 22, "expr": "4*(15*x**3 - 6*x + 10)/sqrt(3*x**3 - 2*x + 5)", "bin": "common", "solved": true}
+{"level": 5, "i": 23, "expr": "24*x**2*log(x) + 8*x**2 + 2 + 8/sqrt(1 - x**2)", "bin": "mid", "solved": true}
+{"level": 5, "i": 24, "expr": "2*(x**2 + 2)/(x**2 + 1)", "bin": "common", "solved": true}
+{"level": 5, "i": 25, "expr": "(14*x**4 + 15*x**3 + 55*x**2 + 52*x + 32)/(2*sqrt(x**3 + 4*x + 2))", "bin": "unseen", "solved": false}
+{"level": 5, "i": 26, "expr": "(180*x**3 + 36*x)/sqrt(3*x**3 + x)", "bin": "rare", "solved": false}
+{"level": 5, "i": 27, "expr": "12*x**2*log(x)**2 + 8*x**2*log(x) + x**2*log(16777216)*log(x) + x**2*log(256) + 12*x**2*log(2)**2 + 6*sqrt(2)*exp(x)*cos(x + pi/4)", "bin": "rare", "solved": true}
+{"level": 5, "i": 28, "expr": "6*(18*x**5 + 4*x**3 + 27*x**2 - 6*x - 1)/sqrt(4*x**3 + 4*x + 5)", "bin": "unseen", "solved": false}
+{"level": 5, "i": 29, "expr": "24*(sin(4*x) + cos(4*x))*exp(4*x)", "bin": "common", "solved": true}
+{"level": 5, "i": 30, "expr": "5*(2*sin(x) + cos(x))*exp(2*x)", "bin": "common", "solved": true}
+{"level": 5, "i": 31, "expr": "8*(14*x**4 - 20*x**3 + 19*x**2 - 9)/sqrt(2*x**3 + 2*x + 3)", "bin": "unseen", "solved": false}
+{"level": 5, "i": 32, "expr": "(log(4*x) + 2)*log(4*x)", "bin": "common", "solved": true}
+{"level": 5, "i": 33, "expr": "4*(sin(2*x) + 2*cos(2*x))*exp(x)", "bin": "common", "solved": true}
+{"level": 5, "i": 34, "expr": "18*sqrt(2)*exp(3*x)*sin(3*x + pi/4)", "bin": "common", "solved": true}
+{"level": 5, "i": 35, "expr": "7*(sin(2*x) + 2*cos(2*x))*exp(x)", "bin": "common", "solved": true}
+{"level": 5, "i": 36, "expr": "12*x*log(3*x) + 6*x + 24*exp(4*x)*sin(x) + 6*exp(4*x)*cos(x)", "bin": "common", "solved": true}
+{"level": 5, "i": 37, "expr": "16*(x**2 + 1)/(4*x**2 + 1)", "bin": "common", "solved": true}
+{"level": 5, "i": 38, "expr": "3*(log(5*x) + 2)*log(5*x)", "bin": "common", "solved": true}
+{"level": 5, "i": 39, "expr": "32*(-sin(4*x) + cos(4*x))*exp(4*x)", "bin": "common", "solved": true}
+{"level": 6, "i": 0, "expr": "(75*x**4 + 30*x**3 + 152*x**2 + 70*x + 80)/(25*x**4 + 10*x**3 + 51*x**2 + 10*x + 25)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 1, "expr": "(6*x - 1)*exp(x*(3*x - 1)) - 7*exp(3*x)*sin(x) + 21*exp(3*x)*cos(x)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 2, "expr": "5*x*log(2*x)*cos(x) + 5*log(2*x)*sin(x) + 5*sin(x)", "bin": "common", "solved": true}
+{"level": 6, "i": 3, "expr": "(8*x + 2)*exp(2*x**2 + x + 4) + 9*log(x)**2 + 18*log(x)", "bin": "unseen", "solved": true}
+{"level": 6, "i": 4, "expr": "(5*x**4 + 40*x**3 + 91*x**2 + 42*x + 8)/(x**4 + 8*x**3 + 18*x**2 + 8*x + 1)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 5, "expr": "(1 - 10*x)*sin(5*x**2 - x + 4)", "bin": "common", "solved": true}
+{"level": 6, "i": 6, "expr": "((9*x**2 - 2)*(2*x**2 + 2*x + 1) + sqrt(3*x**3 - 2*x + 4)*((8*x + 4)*sqrt(3*x**3 - 2*x + 4) - 14*exp(2*x)*sin(2*x) + 14*exp(2*x)*cos(2*x) + 6*exp(x)*sin(4*x) + 24*exp(x)*cos(4*x)))/sqrt(3*x**3 - 2*x + 4)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 7, "expr": "(171*x**2 + (x**2 + 1)*(9*x**2 + 1)*(6*x*log(2*x) + 3*x + 27*exp(3*x)*sin(x) + 9*exp(3*x)*cos(x) + 7) + 43)/((x**2 + 1)*(9*x**2 + 1))", "bin": "unseen", "solved": false}
+{"level": 6, "i": 8, "expr": "6*x*(2*x*log(x)*cos(2*x) + 2*log(x)*sin(2*x) + sin(2*x))", "bin": "common", "solved": true}
+{"level": 6, "i": 9, "expr": "(-6*x - 2)*sin(x*(3*x + 2))", "bin": "common", "solved": true}
+{"level": 6, "i": 10, "expr": "15*x**2*log(3*x)**2 + 10*x**2*log(3*x) + (36*x - 12)*cos(3*x**2 - 2*x + 4)", "bin": "rare", "solved": true}
+{"level": 6, "i": 11, "expr": "12*x**2*log(4*x)**2 + 8*x**2*log(4*x) + (3 - 4*x)*sin(2*x**2 - 3*x + 4) - 7*exp(2*x)*sin(x) + 14*exp(2*x)*cos(x)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 12, "expr": "12*x*log(3*x)**2 + 12*x*log(3*x) - 6*exp(3*x)*sin(x) + 18*exp(3*x)*cos(x) + 9 + 15/sqrt(1 - 9*x**2)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 13, "expr": "(-24*x - 18)*sin(2*x**2 + 3*x + 1)", "bin": "common", "solved": true}
+{"level": 6, "i": 14, "expr": "6*x*log(x)*cos(x) + 6*log(x)*sin(x) + 6*sin(x)", "bin": "mid", "solved": true}
+{"level": 6, "i": 15, "expr": "(-8*x - 16)*sin(x**2 + 4*x + 5)", "bin": "common", "solved": true}
+{"level": 6, "i": 16, "expr": "6*x*(-2*x*log(3*x)*sin(2*x) + 2*log(3*x)*cos(2*x) + cos(2*x))", "bin": "common", "solved": true}
+{"level": 6, "i": 17, "expr": "2*(2*(2*x - 1)*sqrt(9*x + 5)*(5*x**3 - 4*x + 4) + sqrt(9*x + 5)*sqrt(4*x**2 - 4*x + 3)*(2*sqrt(9*x + 5)*(3*x**2 + 1) + (15*x**2 - 4)*sqrt(4*x**2 - 4*x + 3) + 2*log(4*x) + 2) + 9*sqrt(4*x**2 - 4*x + 3)*(x**3 + x + 5))/(sqrt(9*x + 5)*sqrt(4*x**2 - 4*x + 3))", "bin": "unseen", "solved": false}
+{"level": 6, "i": 18, "expr": "4*((x**2 + 1)*(-(2*x + 1)*sin(2*x**2 + 2*x + 2) + 1) + 2)/(x**2 + 1)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 19, "expr": "15*x**2*log(2*x) + 5*x**2 - 27*exp(4*x)*sin(3*x) + 36*exp(4*x)*cos(3*x) + 1 + 18/sqrt(1 - 4*x**2)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 20, "expr": "2*(18*x**4 + 24*x**3 + 58*x**2 + 37*x + 31)/(9*x**4 + 12*x**3 + 28*x**2 + 16*x + 16)", "bin": "mid", "solved": false}
+{"level": 6, "i": 21, "expr": "((4*x**2 + 1)*(27*x**2*log(5*x)**2 + 18*x**2*log(5*x) + 32*exp(4*x)*sin(4*x) + 32*exp(4*x)*cos(4*x) + 21*exp(3*x)*sin(4*x) + 28*exp(3*x)*cos(4*x) - 16*exp(2*x)*sin(2*x) + 16*exp(2*x)*cos(2*x) + 5) + 18)/(4*x**2 + 1)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 22, "expr": "4*(x - 2)*exp(x*(x - 4)) + 14*exp(2*x)*sin(x) + 7*exp(2*x)*cos(x)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 23, "expr": "(8*x - 12)*exp(x**2 - 3*x + 3)", "bin": "mid", "solved": true}
+{"level": 6, "i": 24, "expr": "18*exp(2*x)*sin(4*x) + 36*exp(2*x)*cos(4*x) + 12 + 8/(4*x**2 + 1) + 11/sqrt(1 - x**2)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 25, "expr": "2*(20*x**4 - 10*x**3 + 64*x**2 - 10*x + 15)/(16*x**4 - 8*x**3 + 41*x**2 - 10*x + 25)", "bin": "mid", "solved": false}
+{"level": 6, "i": 26, "expr": "12*x*log(x) + 6*x + 4*(3*x + 2)*exp(3*x**2 + 4*x + 3)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 27, "expr": "(10*x + 4)*exp(5*x**2 + 4*x + 3)", "bin": "common", "solved": true}
+{"level": 6, "i": 28, "expr": "(60*x - 6)*exp(5*x**2 - x + 4)", "bin": "common", "solved": true}
+{"level": 6, "i": 29, "expr": "((3*x**2 - 1)*(5*x**2 + 3*x + 3) + ((-6*x - 3)*sin(3*x**2 + 3*x + 3) + (20*x + 6)*sqrt(x**3 - x + 4))*sqrt(x**3 - x + 4))/sqrt(x**3 - x + 4)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 30, "expr": "2*x*log(x)*cos(x) + 2*log(x)*sin(x) + 2*sin(x)", "bin": "mid", "solved": true}
+{"level": 6, "i": 31, "expr": "6*x*log(4*x)*cos(3*x) + 2*log(4*x)*sin(3*x) + 2*sin(3*x)", "bin": "common", "solved": true}
+{"level": 6, "i": 32, "expr": "(4*sqrt(1 - 2*x)*(3*x + 2)*(5*x + 3) + 4*sqrt(1 - 2*x)*sqrt(3*x**2 + 4*x + 1)*(x*log(4*x)**2 + x*log(4*x) + sqrt(1 - 2*x)*(24*x**2 + 6) + 5*sqrt(3*x**2 + 4*x + 1)) + 4*sqrt(3*x**2 + 4*x + 1)*(-8*x**3 - 6*x - 4))/(sqrt(1 - 2*x)*sqrt(3*x**2 + 4*x + 1))", "bin": "unseen", "solved": false}
+{"level": 6, "i": 33, "expr": "2*x*log(4*x)*cos(x) + 2*log(4*x)*sin(x) + 2*sin(x)", "bin": "common", "solved": true}
+{"level": 6, "i": 34, "expr": "4*x*(2*x*log(3*x)*cos(2*x) + 2*log(3*x)*sin(2*x) + sin(2*x))", "bin": "common", "solved": true}
+{"level": 6, "i": 35, "expr": "12*x**2*log(4*x)**2 + 8*x**2*log(4*x) + 36*exp(4*x)*sin(4*x) + 36*exp(4*x)*cos(4*x) + 3 + 9/sqrt(1 - x**2)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 36, "expr": "4*x*(2*x*log(2*x)*cos(2*x) + 2*log(2*x)*sin(2*x) + sin(2*x))", "bin": "common", "solved": true}
+{"level": 6, "i": 37, "expr": "(5*x**4 + 30*x**3 + 88*x**2 + 136*x + 92)/(x**4 + 6*x**3 + 17*x**2 + 24*x + 16)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 38, "expr": "((4*x**2 + 1)*(6*x**2*log(x) + 2*x**2 + 10*exp(2*x)*sin(2*x) + 26*exp(2*x)*cos(2*x) + 5*log(3*x) + 2*log(4*x) + 11) + 4)/(4*x**2 + 1)", "bin": "unseen", "solved": false}
+{"level": 6, "i": 39, "expr": "15*x**2*log(x) + 5*x**2 + (4*x - 2)*cos(2*x**2 - 2*x + 1)", "bin": "unseen", "solved": false}
+{"level": 7, "i": 0, "expr": "-2*x*sin(2*x)*cos(cos(2*x)) + sin(cos(2*x))", "bin": "unseen", "solved": true}
+{"level": 7, "i": 1, "expr": "(-2*(3*x + 1)*(4*x**3 + 3*x + 2) + 3*(4*x**2 + 1)*(3*x**2 + 2*x + 5) + (6*cos(3*x + 1) + 1)*(3*x**2 + 2*x + 5)**2)/(3*x**2 + 2*x + 5)**2", "bin": "unseen", "solved": false}
+{"level": 7, "i": 2, "expr": "12*x**2", "bin": "common", "solved": true}
+{"level": 7, "i": 3, "expr": "3*(3*(5*x + 2)*log(5*x + 2) + 5*(9*x**2 + 1)*atan(3*x))/((5*x + 2)*(9*x**2 + 1))", "bin": "common", "solved": true}
+{"level": 7, "i": 4, "expr": "(72*x - 18)*sqrt(4*x**2 - 2*x + 2)", "bin": "mid", "solved": true}
+{"level": 7, "i": 5, "expr": "2*sqrt(3)/sqrt(x + 1)", "bin": "rare", "solved": true}
+{"level": 7, "i": 6, "expr": "12*x*log(4*x)*cos(2*x) + 6*log(4*x)*sin(2*x) + 6*sin(2*x) + 9*sin(3*x)*sin(cos(3*x))", "bin": "unseen", "solved": false}
+{"level": 7, "i": 7, "expr": "(x**3*(9 - 6*x) + x**2*(9*x**2 - 27*x + 9) + (-18*x*sin(3*x**2) + 1)*(x**2 - 3*x + 1)**2)/(x**2 - 3*x + 1)**2", "bin": "unseen", "solved": false}
+{"level": 7, "i": 8, "expr": "6*(2*x*log(4*x) + (2*x + 1)*log(6*x + 3)*log(log(6*x + 3)))/(x*(2*x + 1)*log(6*x + 3))", "bin": "unseen", "solved": false}
+{"level": 7, "i": 9, "expr": "6*x**2*log(4*x)*cos(x) + 12*x*log(4*x)*sin(x) + 6*x*sin(x) - 4*exp(cos(2*x))*sin(2*x)", "bin": "unseen", "solved": false}
+{"level": 7, "i": 10, "expr": "2*(x*(4*x**2 + 1)*atan(2*x) + (x**2 + 1)*log(3*x**2 + 3))/((x**2 + 1)*(4*x**2 + 1))", "bin": "rare", "solved": false}
+{"level": 7, "i": 11, "expr": "3*(4*x + 3)/(2*sqrt(2*x**2 + 3*x + 1))", "bin": "mid", "solved": true}
+{"level": 7, "i": 12, "expr": "45*x**3/sqrt(5*x + 3) + 54*x**2*sqrt(5*x + 3) + 12*x**2*log(3*x) + 4*x**2 + 8*x*cos(x**2 + 1) - 90*x/sqrt(5*x + 3) - 36*sqrt(5*x + 3) - 8*exp(3*x)*sin(2*x) + 12*exp(3*x)*cos(2*x) + 1 + 45/sqrt(5*x + 3) + 12/sqrt(1 - 4*x**2)", "bin": "unseen", "solved": false}
+{"level": 7, "i": 13, "expr": "6*(3*(x + 1)*log(x + 1) + (9*x**2 + 1)*atan(3*x))/((x + 1)*(9*x**2 + 1))", "bin": "common", "solved": true}
+{"level": 7, "i": 14, "expr": "5*sqrt(5)/(2*sqrt(x))", "bin": "mid", "solved": true}
+{"level": 7, "i": 15, "expr": "log(5*x)**2 + 2*log(5*x) + 6 + 2/(x**2 + 1) + 15*cos(log(5*x + 3))/(5*x + 3) + 8/sqrt(1 - 4*x**2)", "bin": "unseen", "solved": false}
+{"level": 7, "i": 16, "expr": "(3*x**2 + 6*x - 4*sqrt(1 - x**2)*(x + 1)*sin(log(x**2 + 2*x + 4)) + sqrt(1 - x**2)*(x**2 + 2*x + 4)*(16*x*log(x) + 8*x + (-50*x - 5)*sin(5*x**2 + x + 1) + 1) + 12)/(sqrt(1 - x**2)*(x**2 + 2*x + 4))", "bin": "unseen", "solved": false}
+{"level": 7, "i": 17, "expr": "2*((x + 1)*log(3*x + 3) + (x**2 + 1)*atan(x))/((x + 1)*(x**2 + 1))", "bin": "mid", "solved": true}
+{"level": 7, "i": 18, "expr": "4*(x*(4*x**2 + 1)*atan(2*x) + (x**2 + 1)*log(x**2 + 1))/((x**2 + 1)*(4*x**2 + 1))", "bin": "rare", "solved": false}
+{"level": 7, "i": 19, "expr": "6*(x + 1)/sqrt(x**2 + 2*x + 4)", "bin": "mid", "solved": true}
+{"level": 7, "i": 20, "expr": "-3*(8*x - 1)*sin(4*x**2 - x + 3) - 3*(16*x + 2)*sin(4*x**2 + x + 4)", "bin": "unseen", "solved": false}
+{"level": 7, "i": 21, "expr": "5*(6*x*(x**2 + 1)*atan(x) + (3*x**2 + 4)*log(3*x**2 + 4))/((x**2 + 1)*(3*x**2 + 4))", "bin": "mid", "solved": true}
+{"level": 7, "i": 22, "expr": "5*(3*x*(2*x - 1)*log(2*x*(2*x - 1)) + (4*x - 1)*(9*x**2 + 1)*atan(3*x))/(x*(2*x - 1)*(9*x**2 + 1))", "bin": "rare", "solved": true}
+{"level": 7, "i": 23, "expr": "5*x + 5*(2*x - 3)*log(2*x) - 15", "bin": "unseen", "solved": false}
+{"level": 7, "i": 24, "expr": "5*(-x*(2*x + 1)*log(4*x)*sin(log(x**2 + x + 1)) + (x**2 + x + 1)*cos(log(x**2 + x + 1)))/(x*(x**2 + x + 1))", "bin": "unseen", "solved": true}
+{"level": 7, "i": 25, "expr": "2*((4*x + 1)*(4*x**2 + 1)*atan(2*x) + (4*x**2 + 2*x + 3)*log(4*x**2 + 2*x + 3))/((4*x**2 + 1)*(4*x**2 + 2*x + 3))", "bin": "mid", "solved": false}
+{"level": 7, "i": 26, "expr": "24*sqrt(x)", "bin": "mid", "solved": false}
+{"level": 7, "i": 27, "expr": "-15*x*log(4*x)*sin(3*x) + 5*log(4*x)*cos(3*x) - 9*sin(sin(3*x))*cos(3*x) + 5*cos(3*x)", "bin": "unseen", "solved": false}
+{"level": 7, "i": 28, "expr": "(6*x + 9/2)*sqrt(2*x**2 + 3*x + 2)", "bin": "mid", "solved": true}
+{"level": 7, "i": 29, "expr": "18*x*log(x)*cos(3*x) + (3 - 8*x)*sin(x*(4*x - 3)) + 6*log(x)*sin(3*x) + 6*sin(3*x)", "bin": "unseen", "solved": false}
+{"level": 7, "i": 30, "expr": "2*x*log(x)**2 + 2*x*log(x) + 2*(2*x + 2)/(x**2 + 2*x + 1) + 3*sqrt(3*x + 5)*(4*x - 1) + exp(x)*sin(2*x) + 2*exp(x)*cos(2*x) + 2*log(3*x) + 4 + 9*(2*x**2 - x + 4)/(2*sqrt(3*x + 5)) + 14/sqrt(1 - 4*x**2)", "bin": "unseen", "solved": false}
+{"level": 7, "i": 31, "expr": "(12*x - 6)*sqrt(2*x**2 - 2*x + 3)", "bin": "mid", "solved": true}
+{"level": 7, "i": 32, "expr": "(4 - 4*x)*sin(2*x**2 - 4*x + 1) - 3*exp(2*x)*sin(3*x) + 2*exp(2*x)*cos(3*x) - 18*sin(sin(3*x))*cos(3*x)", "bin": "unseen", "solved": false}
+{"level": 7, "i": 33, "expr": "5*sin(x)*sin(cos(x))", "bin": "common", "solved": false}
+{"level": 7, "i": 34, "expr": "-5*sin(x)*cos(cos(x))", "bin": "mid", "solved": true}
+{"level": 7, "i": 35, "expr": "5*(2*(3*x - 1)*(x**2 + 1)*atan(x) + (3*x**2 - 2*x + 4)*log(3*x**2 - 2*x + 4))/((x**2 + 1)*(3*x**2 - 2*x + 4))", "bin": "mid", "solved": true}
+{"level": 7, "i": 36, "expr": "(30*x**3 + sqrt(3*x + 2)*(60*x**2*sqrt(3*x + 2) + 18*x**2*log(4*x)**2 + 12*x**2*log(4*x) + 24*exp(4*x)*sin(2*x) + 12*exp(4*x)*cos(2*x) - 9*exp(2*x)*sin(3*x) + 6*exp(2*x)*cos(3*x) - 4*sin(2*x)*cos(cos(2*x))) + 30)/sqrt(3*x + 2)", "bin": "unseen", "solved": false}
+{"level": 7, "i": 37, "expr": "(10*x**2 + 5)*exp(x**2)", "bin": "rare", "solved": false}
+{"level": 7, "i": 38, "expr": "(2*x - 1)/sqrt(2*x**2 - 2*x + 3)", "bin": "mid", "solved": true}
+{"level": 7, "i": 39, "expr": "6*(1 - 6*x)*sin(3*x**2 - x + 4) + 30*exp(5*x)", "bin": "unseen", "solved": false}

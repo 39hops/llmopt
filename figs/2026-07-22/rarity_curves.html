@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rarity-stratified gate — CHAMPION vs TERNARY-73</title>
+<style>
+  :root { --fp32:#4269d0; --tern:#efb118; --ink:#1a1a1a; --muted:#666;
+          --grid:#e5e5e5; --surface:#fff; }
+  body { font: 14px/1.45 -apple-system, "Segoe UI", sans-serif;
+         color: var(--ink); background: var(--surface);
+         max-width: 880px; margin: 24px auto; padding: 0 16px; }
+  h1 { font-size: 18px; margin-bottom: 2px; }
+  .sub { color: var(--muted); margin: 0 0 18px; }
+  .legend { display:flex; gap:18px; margin: 8px 0 4px; font-size:13px; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .sw { width:12px; height:12px; border-radius:3px; display:inline-block; }
+  svg { width:100%; height:auto; }
+  .bar { rx:0; }
+  .val { font-size:12px; fill:var(--ink); }
+  .n { font-size:11px; fill:var(--muted); }
+  .axis { font-size:12px; fill:var(--muted); }
+  .bin { font-size:13px; fill:var(--ink); font-weight:600; }
+  table { border-collapse: collapse; margin-top: 18px; font-size:13px; }
+  th, td { padding: 4px 12px; border-bottom: 1px solid var(--grid);
+           text-align: right; }
+  th:first-child, td:first-child { text-align:left; }
+  caption { text-align:left; font-weight:600; padding-bottom:6px; }
+  .bar:hover { opacity:.8; }
+</style>
+</head>
+<body>
+<h1>Capability is a curve over rarity, not a scalar</h1>
+<p class="sub">Solve rate per skeleton-frequency bin (integer constants
+normalized, skeleton counted in the corpus cur-set). 200 probes each,
+identical probe set, frozen census. 2026-07-22.</p>
+<div class="legend">
+  <span><i class="sw" style="background:var(--fp32)"></i>CHAMPION (fp32, 55.1M) — 128/200</span>
+  <span><i class="sw" style="background:var(--tern)"></i>TERNARY-73 (1.58-bit, 45M) — 127/200</span>
+</div>
+<svg viewBox="0 0 860 340" role="img"
+     aria-label="Grouped bar chart of solve rate by rarity bin">
+  <!-- y gridlines at 0/25/50/75/100% ; plot area x 60..840, y 20..280 -->
+  <g class="axis">
+    <line x1="60" y1="280" x2="840" y2="280" stroke="#ccc"/>
+    <line x1="60" y1="215" x2="840" y2="215" stroke="#eee"/>
+    <line x1="60" y1="150" x2="840" y2="150" stroke="#eee"/>
+    <line x1="60" y1="85"  x2="840" y2="85"  stroke="#eee"/>
+    <line x1="60" y1="20"  x2="840" y2="20"  stroke="#eee"/>
+    <text x="52" y="284" text-anchor="end">0%</text>
+    <text x="52" y="219" text-anchor="end">25%</text>
+    <text x="52" y="154" text-anchor="end">50%</text>
+    <text x="52" y="89"  text-anchor="end">75%</text>
+    <text x="52" y="24"  text-anchor="end">100%</text>
+  </g>
+  <!-- bars: 4 bins, group width 195, bars 70 wide, 2px gap via spacing -->
+  <!-- common: 65/69=94.2%, 64/69=92.8% -->
+  <g>
+    <rect class="bar" x="90"  y="35.1" width="70" height="244.9" fill="#4269d0" rx="4"><title>CHAMPION common: 65/69 (94.2%)</title></rect>
+    <rect class="bar" x="162" y="38.7" width="70" height="241.3" fill="#efb118" rx="4"><title>TERNARY common: 64/69 (92.8%)</title></rect>
+    <text class="val" x="125" y="30" text-anchor="middle">94%</text>
+    <text class="val" x="197" y="34" text-anchor="middle">93%</text>
+    <text class="bin" x="161" y="300" text-anchor="middle">common (&ge;50)</text>
+    <text class="n" x="161" y="316" text-anchor="middle">n=69</text>
+  </g>
+  <!-- mid: 37/48=77.1% both -->
+  <g>
+    <rect class="bar" x="285" y="79.6" width="70" height="200.4" fill="#4269d0" rx="4"><title>CHAMPION mid: 37/48 (77.1%)</title></rect>
+    <rect class="bar" x="357" y="79.6" width="70" height="200.4" fill="#efb118" rx="4"><title>TERNARY mid: 37/48 (77.1%)</title></rect>
+    <text class="val" x="320" y="74" text-anchor="middle">77%</text>
+    <text class="val" x="392" y="74" text-anchor="middle">77%</text>
+    <text class="bin" x="356" y="300" text-anchor="middle">mid (5&ndash;49)</text>
+    <text class="n" x="356" y="316" text-anchor="middle">n=48</text>
+  </g>
+  <!-- rare: 11/18=61.1%, 9/18=50% -->
+  <g>
+    <rect class="bar" x="480" y="121.1" width="70" height="158.9" fill="#4269d0" rx="4"><title>CHAMPION rare: 11/18 (61.1%)</title></rect>
+    <rect class="bar" x="552" y="150"   width="70" height="130"   fill="#efb118" rx="4"><title>TERNARY rare: 9/18 (50.0%)</title></rect>
+    <text class="val" x="515" y="115" text-anchor="middle">61%</text>
+    <text class="val" x="587" y="144" text-anchor="middle">50%</text>
+    <text class="bin" x="551" y="300" text-anchor="middle">rare (1&ndash;4)</text>
+    <text class="n" x="551" y="316" text-anchor="middle">n=18</text>
+  </g>
+  <!-- unseen: 15/65=23.1%, 17/65=26.2% -->
+  <g>
+    <rect class="bar" x="675" y="220" width="70" height="60"   fill="#4269d0" rx="4"><title>CHAMPION unseen: 15/65 (23.1%)</title></rect>
+    <rect class="bar" x="747" y="212" width="70" height="68" fill="#efb118" rx="4"><title>TERNARY unseen: 17/65 (26.2%)</title></rect>
+    <text class="val" x="710" y="214" text-anchor="middle">23%</text>
+    <text class="val" x="782" y="206" text-anchor="middle">26%</text>
+    <text class="bin" x="746" y="300" text-anchor="middle">unseen skeleton</text>
+    <text class="n" x="746" y="316" text-anchor="middle">n=65</text>
+  </g>
+</svg>
+<table>
+  <caption>Solves per bin (identical 200-probe battery)</caption>
+  <tr><th>bin</th><th>CHAMPION (fp32)</th><th>TERNARY-73</th><th>&Delta; (T&minus;fp32)</th></tr>
+  <tr><td>common (&ge;50 in corpus)</td><td>65/69</td><td>64/69</td><td>&minus;1</td></tr>
+  <tr><td>mid (5&ndash;49)</td><td>37/48</td><td>37/48</td><td>0</td></tr>
+  <tr><td>rare (1&ndash;4)</td><td>11/18</td><td>9/18</td><td>&minus;2</td></tr>
+  <tr><td>unseen skeleton (0)</td><td>15/65</td><td>17/65</td><td>+2</td></tr>
+  <tr><td><b>overall</b></td><td><b>128/200</b></td><td><b>127/200</b></td><td><b>&minus;1</b></td></tr>
+</table>
+<p class="sub" style="margin-top:14px">Reading: fp32's whole scalar lead
+lives in the rare/seen bins (episodic memory needs resolution); ternary
+wins the unseen bin (compression stores rules; rules transfer). Both
+substrates fall from ~94% on common shapes to ~25% on unseen skeletons —
+the quantified battery truth.</p>
+</body>
+</html>
