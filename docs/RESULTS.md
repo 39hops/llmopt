@@ -3293,3 +3293,21 @@ cold, 6ep) is a cross-class comparison — the like-for-like pair
 was always ternary-cold 73 v fp32-cold 71 (identical config/
 corpus); the champion comparison flatters fp32 by +10M params and
 one inheritance.
+
+## L7 closed at gap=0 + gate-v2 MPS null (2026-07-21 midnight)
+
+(1) q-l7-58: sympy WALLS (>2 min) — shared ceiling. Final L7
+decomposition vs the 56/60 reference: 7 contention artifacts, 2
+special-function over-credits (Fresnel = outside the elementary
+language), 3 joint-ceiling, **0 real reach gap**. Qualification
+doctrine: solo or contention-matched arms only; references
+scored on the same language as the contestant. (2) Gate-v2
+(cross-problem batching): honest NULL on MPS — idle unbatched
+6.2 min vs batched K=12 20.0 min (3x SLOWER; no KV cache means
+batching multiplies O(T^2) full-sequence recompute). Two
+corrections ride along: historical "15-min gates" were
+contention-inflated (idle truth: 6 min), and the real sampler
+speedup is a KV CACHE (O(T^2)->O(T) per token) — promoted to
+head of the speed queue. Exact-match property of gate-v2 stands
+(token-identical at K=1/12/24) — the machinery banks for
+KV-cached batched sampling later.
