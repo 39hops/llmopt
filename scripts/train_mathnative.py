@@ -85,7 +85,11 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
         CKPT = V2_CKPT
     if out:
         CKPT = Path(out)
-    tok = MathTokenizer()
+    extra = os.environ.get("VOCAB_EXTRA", "")
+    tok = MathTokenizer(extra=list(extra) if extra else None)
+    if extra:
+        print(f"[vocab] extra atoms {list(extra)} -> {len(tok.vocab)}",
+              flush=True)
     rows = load_rows(v2 or v21 or v22, v21 or v22, v22, gen4, l8, gen7,
                      diet)
     charset = set()

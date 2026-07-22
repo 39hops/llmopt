@@ -25,10 +25,14 @@ ATOMS = [
 
 class MathTokenizer:
     """Greedy longest-match over ATOMS; every corpus char is covered
-    (charset-verified at build). Deterministic, order-stable."""
+    (charset-verified at build). Deterministic, order-stable.
 
-    def __init__(self):
-        self.vocab = list(ATOMS)
+    extra: additional atoms APPENDED after ATOMS (order-stable, so
+    vocab-40 ids are unchanged); physics uses extra=["t"] -> vocab-41.
+    Checkpoints are tied to their vocab size — never load across."""
+
+    def __init__(self, extra: list[str] | None = None):
+        self.vocab = list(ATOMS) + list(extra or [])
         self.id = {t: i for i, t in enumerate(self.vocab)}
         self.pad_id = self.id["<pad>"]
         self.eos_id = self.id["<eos>"]
