@@ -3390,3 +3390,10 @@ rule-recognition shapes (spot-the-derivative-of-composite:
 — pure chain-rule inversions). Episodic-memory-vs-rule-compression
 split confirmed at the level of individual expressions. Chart:
 rarity_curves.html (sent 2026-07-22).
+
+### Absorption law, fourth point (2026-07-22)
+
+1e-7 arm: 2.7901% absorbed — the x10-per-LR-decade law holds across
+four points (1e-4: 0.0007% / 1e-5: 0.030% / 1e-6: 0.278% / 1e-7:
+2.79%). Absorption fraction ~= c/LR with c ~= 2.8e-9; the law is now
+predictive, not descriptive. Merged run auto-fired behind it.
