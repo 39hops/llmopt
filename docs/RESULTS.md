@@ -3374,3 +3374,19 @@ re-freeze next run.) (3) **THE MERGED RUN launched**: diet built
 ffn3072/h12 ternary-from-birth 6ep, chained on the 3080 behind
 the 1e-7 absorption arm. Pre-registrations stand: beat twin-65,
 contend with champion-76 same-battery, move the RARE end.
+
+### Rarity curves, frozen census + per-probe diff (2026-07-22 addendum)
+
+Census fix (diet recompositions excluded) + per-probe dump, identical
+200-probe battery: CHAMPION common 65/69 / mid 37/48 / rare 11/18 /
+unseen 15/65 (128 total); TERNARY 64/69 / 37/48 / 9/18 / 17/65 (127).
+Mid bin DEAD-TIED 37/37; fp32's entire scalar lead is rare-seen (+2)
++ common (+1); ternary leads unseen (+2). Per-probe diff shows the
+mechanism in the problems themselves: fp32-only solves are memorized-
+technique shapes (log(x)^2 by-parts families, folded constants like
+log(16777216), mixed exp*trig recombinations); ternary-only solves are
+rule-recognition shapes (spot-the-derivative-of-composite: 
+(48(x-1)^2+8)exp(3x^2-6x+6), (4x-2)cos(2x^2-2x+1), (10x^2+5)exp(x^2)
+— pure chain-rule inversions). Episodic-memory-vs-rule-compression
+split confirmed at the level of individual expressions. Chart:
+rarity_curves.html (sent 2026-07-22).
