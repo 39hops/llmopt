@@ -115,3 +115,22 @@ exactly nothing) — the exposure curve has a floor term.
   bf16x2/3xTF32 double-double (Ootomo-Yokota) stay queued — they
   address TRAINING arithmetic (the bf16-cliff class), which the
   device finding does not touch.
+
+## Addendum 2 (2026-07-22 midnight): precision program notes
+
+- KV CACHE SHIPPED to model (mathnative.py: rope pos0, Block past,
+  MicroLM use_cache — backward compatible): equivalence 20/20
+  token-identical CPU AND cuda; CPU 4.49x, cuda 1.13x; MPS verdict
+  auto-runs post-session -> promote into sample_wave_lp if clean.
+  Gate-v2 cross-problem batching: NULL (3x slower, no-KV O(T^2));
+  exact-match machinery banks for KV+batch composition later.
+- Absorption instrument, first reading: LR 1e-4 late-layer STE
+  session = 0.0007% absorbed (fp32 loses ~nothing at hot LR).
+  Decider queued: LR 1e-5 burst (deltas 10x smaller, the pilot's
+  regime) — if absorption stays ~0, fp64-masters rung NULLS and
+  we bank the memory savings; if it jumps, fp64 masters = free
+  recovered learning.
+- Register-fit doctrine (the precision stack, ledger 2026-07-22):
+  operands narrow, accumulators wide, scale shared per block
+  (MX at rest already ships), exact arithmetic at the oracle.
+  Adaptive precision = the lab's stratification named.
