@@ -60,6 +60,57 @@ analysis given.
 | Data regime | general pretrained model, mixed diet | closed-system-native, single grammar, vocab 40 |
 | Domain reach | general (verifier fragile off-domain) | domain-locked, domain-perfect |
 
+
+## THE ABSORPTION LAW: absorbed fraction ~= c / LR (c ~= 2.8e-9)
+
+Measured leg (house, 2026-07-21/22, four decades, same model/food):
+fraction of fp32 updates where w + delta == w exactly — LR 1e-4:
+0.0007% / 1e-5: 0.030% / 1e-6: 0.278% / 1e-7: 2.790%. x10 per
+decade to within read noise; the constant c ~= 2.8e-9 makes the
+law predictive (e.g. 1e-8 -> ~28% of updates silently discarded).
+
+Derivation (why 1/LR exactly): an update is absorbed when
+|delta| < ulp(w)/2. With delta = LR * g and the gradient/weight
+magnitude distributions fixed by the model+food (they don't move
+with LR over a burst), the absorbed mass is P(|g| < ulp(w)/(2*LR))
+— the CDF of |g| evaluated at a threshold ∝ 1/LR. The x10/decade
+observation says |g| has a ~flat density over these four decades
+(log-uniform tail), so the CDF is linear in the threshold: fraction
+∝ 1/LR. Citation leg: this is loss-of-significance / swamping in
+floating-point summation (Higham, *Accuracy and Stability of
+Numerical Algorithms*, ch. 4; Kahan 1965 compensated summation is
+the classical fix; mixed-precision master weights — Micikevicius
+et al. 2018 — is the modern one, our fp64-masters arm B measured
+it recovering ~5x flips at 2.5e-6).
+
+Consolidation — what this law now explains/connects:
+- **LR and precision are ONE knob** (schedule law corollary): what
+  matters is the update-to-ULP ratio LR*|g|/ulp(w). Halving LR and
+  adding one mantissa bit are the same move. "Higher precision"
+  and "lower LR" are not two design axes; bits(needed) ~
+  log2(w/(LR*g)).
+- **Why low-LR regimes (metabolism/GRPO at 1e-6..2.5e-6) are the
+  fp64-master regime** and birth (3e-4) is not: absorption at 3e-4
+  is ~1e-5 of updates — noise; at 1e-6 it's 0.278% concentrated in
+  exactly the small-gradient (= converged, = subtle) directions.
+  Absorption is a low-pass filter on learning: it deletes the
+  FAINT signals first.
+- **Rarity link**: rare-shape rows produce small, infrequent
+  gradients — the first mass to fall under the threshold. The
+  fp32-vs-ternary rarity split (episodic memory needs resolution)
+  is the same mechanism one level up: quantization is absorption
+  with a coarser ULP. Ternary's absmean threshold IS an absorption
+  threshold; the rarity-routed-precision riff is "route the faint
+  signals around the filter."
+- **Slow-leak kinship**: absorbed updates are invisible per-step
+  and cumulative in effect (the missing mass never arrives) — same
+  threshold-blindness class as tripwire slow leaks and the
+  ration-drift failure; absolute anchors / master accumulators are
+  the shared fix.
+
+Rule check: measured leg = four-decade house scan + arm B recovery;
+citation leg = Higham/Kahan/Micikevicius. Row stands.
+
 ## Paper candidates (need: replication runs, related-work rigor)
 
 1. **"The Closed-System Equation"** — signature + width determine
