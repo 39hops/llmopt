@@ -3311,3 +3311,32 @@ speedup is a KV CACHE (O(T^2)->O(T) per token) — promoted to
 head of the speed queue. Exact-match property of gate-v2 stands
 (token-identical at K=1/12/24) — the machinery banks for
 KV-cached batched sampling later.
+
+## Overnight 2026-07-22: the crossover, the battery truth, and friends
+
+(1) **BOUNDARY GRID — the width-bits crossover measured**: fixed
+gen4 corpus, 3ep, from-birth: fp32 61 (d256) / 64-65 (d384,
+historical) / **58 (d768)**; ternary 60 / 60 / **65 (d768)** —
+at d768 the 1.58-bit model beats fp32 by 7. fp32 peaks at its
+natural width then starves (tokens-per-width); ternary keeps
+climbing because W* scales INVERSELY with bits (smaller effective
+capacity = larger natural width at fixed corpus). Boundary-or-bulk
+raw verdict: capability tracks effective-bits-vs-corpus balance,
+decisively NOT volume (params x bits predicts fp32@768 first; it
+came last). (2) **The selection-overfitting story RETRACTED**:
+seedvar births (never promotion-selected) drop -13 on holdout-v2,
+identical to the champion's -12 — the gap is the BATTERY
+(exclude-guarding biases toward rarer/harder shapes), not
+selection. Cross-battery absolutes invalid both directions;
+within-battery deltas remain gold; "too well" resolves as
+measurement, not rot. (3) **Synonym gauge: 94.5%** family
+accuracy (= single-label 95) — two words per concept attach
+equally well; usage splits unevenly per family (mixed 47/36,
+root 13/2) = PARTIAL gauge symmetry breaking in naming. (4)
+**Chain-carry ablation: VOID, design error mine** — 8k-row
+budget (vs 132k production) + repetition asymmetry in the
+oneshot arm; both arms scored noise (4-20/120). Redesign at full
+budget. (5) Ternary compounding: sessions do NOT stack at
+1e-4/late-layer on the same organism (s2: 22->21); the repeated
++2s were fresh-pair effects. (6) fp64 decider arm A: 0.078%
+flips, proxy flat; arm B verdict pending this morning.
