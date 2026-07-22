@@ -74,6 +74,11 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
          epochs: int = 3, l8: bool = False,
          gen7: bool = False, diet: str | None = None) -> None:
     import torch
+    import os
+    if os.environ.get("TF32") == "1":
+        torch.backends.cuda.matmul.allow_tf32 = True
+        torch.backends.cudnn.allow_tf32 = True
+        print("[tf32] tensor-core matmul enabled", flush=True)
     global CKPT, EPOCHS
     EPOCHS = epochs
     if v2:

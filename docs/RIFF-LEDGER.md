@@ -177,3 +177,17 @@ to the collaboration itself.
   without the ODE -> memorized-factorial fill-ins). Perfect data in
   a closed system = oracle-verified AND prompt-determinable. Audit
   rows for determinability, not just correctness.
+- **Duo-teacher KD ("stream the neurons, not the weights")** (Artin,
+  2026-07-22): raw weight merging is gauge-broken (and shape-broken
+  here), but a neuron's contribution IS streamable in the invariant
+  currency — logits. Distill one student against the combined
+  champion+ternary teacher signal (distill/ logit-KD + GKD ready);
+  grade on whether the student holds BOTH rarity tails single-handed.
+  The corpus-side twin (duo-mined chains -> next gen) is already
+  adopted; this is the direct-logit version.
+- **Speed-birth parity triplet** (house, from Artin's lossless-speed
+  push, 2026-07-22): fp32 control vs bf16-autocast (--fast --nopack,
+  in-tree untested) vs TF32 (new flag) — same seed/diet d384 births
+  on cuda, paired gates. Absorption-law framing: does a 10-bit
+  training mantissa dent the gate? Either answer banks; a pass buys
+  2-4x on every future birth.
