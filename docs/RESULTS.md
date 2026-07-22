@@ -3267,3 +3267,29 @@ remaining — prices uphill steps as progress); that is rung 2b
 with its own pre-registration. Rung 3 (wave-contrast) needs no
 progress metric at all and may leapfrog it. Side profit: ~14k
 verified mined rows streamed to the corpus during the run.
+
+## Calibration night: the exam was flattering everyone (2026-07-21 night)
+
+Three instruments, one story. (1) **Seed variance: gate sigma < 1
+solve** (three identical 19M births: 65/65/64) — the production
+gate is a precision instrument; historical +-2 margins were
+conservative; differences >=3 are real. (2) **Holdout v1 VOIDED
+by its own audit** (281 corpus collisions on the 88M band — the
+exclude= doctrine violated by its author, caught by the audit he
+built). (3) **Holdout v2 (exclude-guarded, provably unseen):
+champion 64/120 @ 62.43 (production 76); ternary 60/120 @ 57.16
+(production 73).** The ~12-point gap = selection overfitting
+(weeks of promotions against one fixed battery breed
+battery-shaped champions — survival, not leakage) + small
+generator overlap. Deltas measured on a shared battery remain
+valid (both sides equally flattered); ABSOLUTE capability
+restated: champion is a 64-class model on truly unseen work.
+**Ternary generalization hypothesis REJECTED: -13 vs fp32's -12 —
+the lean substrate generalizes identically.** Doctrine: promotions
+gate on exclude-guarded batteries, regenerated periodically so no
+exam lives long enough to be learned. Fairness note for the
+record: champion (55.1M grown, warm lineage) vs ternary (45M
+cold, 6ep) is a cross-class comparison — the like-for-like pair
+was always ternary-cold 73 v fp32-cold 71 (identical config/
+corpus); the champion comparison flatters fp32 by +10M params and
+one inheritance.
