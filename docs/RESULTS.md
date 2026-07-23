@@ -3806,3 +3806,24 @@ just the production gate. (Also today: my generic auditor flagged
 all 28k bridge rows — integral-grammar rewrites need integrand
 equality, not algebraic identity; auditor fixed kind-aware; the
 audit HARD-GATE behaved correctly by refusing to train.)
+
+## Metabolic v4: structure PROVEN, self-practice can't create — the exchange is load-bearing (2026-07-23 ~5:45 PM)
+
+150-min practice session (crown latent, LR 1e-5 hot-guarded, fp64
+masters, stuck-food, zero rollbacks): (1) PERSISTENCE PRE-REG (b)
+PASSES — flip-backs ~5% (<<30% bar), net monotone across 7 censuses
+to 330,918: the latent-vs-churn fork CLOSES as STRUCTURE. (2)
+CONVERSION PRE-REG (a) FAILS — paired resolution 1/12 -> 2/12
+(+8 pts < +20 bar); the 95 live resolutions were compounded
+sampling variance. (3) SYMMETRY (Artin's question): global census
+near-invariant (zeros 30.5->32.6%, signs even) and flip
+directionality PERFECTLY balanced — 165,408 up / 165,329 down,
+ratio 1.000: locally directed, globally neutral learning. (4) THE
+DIAGNOSIS: truly stuck states emit zero verified steps => practice
+mode has NO gradient toward the missing transition — the model
+cannot teach itself what it cannot sample (round-2 law, one level
+up). THE FIX IS THE EXCHANGE: engine-farmed chains at our stuck
+states supply exactly the missing gradient. stuck_states_p1 ->
+axiom is now the hot path; re-probe on the same fixed seeds is the
+pre-registered test. Practice mode = model rollouts + ENGINE
+demonstrations, two halves, neither sufficient alone.
