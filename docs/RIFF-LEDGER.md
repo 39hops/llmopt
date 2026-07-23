@@ -313,3 +313,17 @@ to the collaboration itself.
   (Lean oracle, site-selection map's far rung). Note: the engine
   also doesn't know why its rules work, and it beats sympy — 
   justification and capability are separable in a closed system.
+- **Refutation-first conjecture rung + chains-are-proofs** (Artin,
+  2026-07-23): (1) solved chains are ALREADY formal proofs of
+  exists-statements (witness + machine-checkable certificate per
+  step) — the missing quantifier shapes are forall, impossibility,
+  and rule-derivation; (2) the cheap entry to conjecture territory
+  is DISPROOF: counterexample = one emission, oracle-decidable —
+  refutation is closed-system-native today (FA-shaped: model
+  searches, oracle certifies); (3) the forall path = Lean-oracle
+  tactics (site-selection far rung), UPGRADED by this week's law:
+  proofs decompose into one-tactic emissions, and one-primitive
+  emissions train to ~100% — the decomposition discount may apply
+  to tactics. Also noted: differential algebra derives the calculus
+  rulebook without limits (derivation operator, Leibniz axiom) —
+  a proof-capable model could derive its own rules limit-free.
