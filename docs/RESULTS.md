@@ -3795,3 +3795,14 @@ sufficient either, and the transfer mechanism hunt reopens. Termwise
 p-kind supplement rides the same batch (operand-complexity axis):
 prediction pmul/psub/padd/assemble all move toward saturation per
 the exposure economics.
+
+## Grown rarity: 133/200 — a single model ties the duo (2026-07-23 eve)
+
+merged_grown on the Mac-lineage stratified battery: **133/200**
+(common 64/69, mid 38/50, rare **14/18 — best single-model rare bin
+recorded**, unseen 17/63). Ladder: champion 128 -> merged 130 ->
+grown 133 = duo-8+8's 133. The growth round deepened the tails, not
+just the production gate. (Also today: my generic auditor flagged
+all 28k bridge rows — integral-grammar rewrites need integrand
+equality, not algebraic identity; auditor fixed kind-aware; the
+audit HARD-GATE behaved correctly by refusing to train.)
