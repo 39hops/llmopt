@@ -3707,3 +3707,22 @@ padd 1/15 = the volume-starved kinds, supplement requested). GATE
 partial-fractions->integration transfer is a NULL; the probe result
 stands, the transfer claim dies. Full audit 0/145,011 (axiom
 5-for-5).
+
+## Metabolic v3 paired arms: the ceiling verdict, split (2026-07-23 PM)
+
+Equal-food paired arms on the crown-tier ternary latent (cuda,
+frontier L4-9 food, surprise+contrast on, control rod, absolute
+anchor — no rollbacks tripped either arm): fp32 arm FLIPS 12,219
+(0.0272%) / fp64-masters arm **32,439 (0.0723%) — 2.7x committed
+learning at equal food**. MECHANISM LEG of the ceiling-on-slow-
+learning theory: CONFIRMED (second independent replication of
+sub-ULP recovery at online LR). CAPABILITY LEG: unconverted at 75
+min — proxy 24 v 24, live solves 1542 v 1346 (divergent sampling
+paths post-divergence). Reading: fp64 stores 2.7x more structure;
+converting committed flips to capability needs (a) longer horizons
+and (b) FOOD AIMED AT THE MISSING TRANSITIONS — which is practice
+mode, designed this afternoon. Metabolic v4 = v3 stack + stuck-
+state food + longer session. Also: arm A's raw-gradient absorption
+census read 95.3% at 2.5e-6 (instrument note: raw LR*grad proxy,
+NOT AdamW-normalized steps — not comparable to the law's 0.278%@
+1e-6; says most gradient ELEMENTS are sub-ULP faint at online LR).
