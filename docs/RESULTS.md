@@ -3517,3 +3517,17 @@ given-feeding; corpus SIZE (not content) sets kurtosis. (Panel
 definitions reimplemented post-/tmp-wipe: pooled 4th-moment kurt,
 NN-cosine CV on unit neurons, mid-stack gates — same code both
 sides, paired doctrine.)
+
+## Poly pilot: the ladder law at grammar #3 + a gate LIFT (2026-07-22 night)
+
+Poly birth (gen4 base + 10,944 poly rows): probe 56/110 (50.9%) with
+the ladder-law split a third time — one-primitive constant rows
+train (den 19/24, res 20/24), multi-fact rows lag (num 7/24:
+substitute+arith one hop; divstep 9/21: expand-subtract one hop;
+monic 1/8; assemble 0/9: whole identity one hop). Tree-decompose
+and it should follow the 15->88 series arc; next axiom tranche.
+GATE: **67/120 — first diet addition to RAISE the integral gate**
+(+2 vs seedvar-1's 65; below the >=3 significance bar, suggestive
+only — but mechanism-plausible: partial fractions feed integration,
+axiom's own ranking rationale). Rerun at tree-decomposed volume
+decides.
