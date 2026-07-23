@@ -1063,6 +1063,14 @@ Ternary-from-birth (BitNet-style QAT) — the wiring-thesis re-ask.
 - `ternary(w: torch.Tensor) -> torch.Tensor`
 - `class TernaryLinear` (forward)
 
+### scripts/train_tf32x3.py
+Error-compensated TF32 birth (Markidis 2018 / Ootomo-Yokota 2022 style): every Linear matmul runs as 3 TF32 tensor-core products (hi*hi + hi*lo + lo*hi) instead of 1 fp32 CUDA-core product — ~fp32 accuracy (CPU-verified: 1.15e-4 vs fp32's 1.01e-4 max err, raw TF32 7.8e-2) at tensor-core throughput. Both forward and backward compensated. Parity arm 4: gate + wall decide adoption; pre-registered honestly — 3 TF32 matmuls may net SLOWER than 1 fp32 on GA102, the arm measures it.
+
+- `_split(x: torch.Tensor)`
+- `_mm3(a, b)`
+- `class _CompLinear` (forward, backward)
+- `class TF32x3Linear` (forward)
+
 ### scripts/train_value_head.py
 Fused value head (Artin's architecture, 2026-07-08): one trunk, two heads, one forward pass. The transformer body replaces NNUE's 20 hand-crafted features — the value head is a tiny MLP (d_model->64->1) on the last hidden state of the state string, trained on the same probe labels (log2 nodes-to-solve) the NNUE used. The LM head keeps ranking moves; value now comes ~free from the hidden state the ranker already computed. AlphaZero's policy+value fusion on a language trunk.
 
@@ -1098,6 +1106,18 @@ CHAIN-CARRY ABLATION (Artin's carry hypothesis, spec'd 2026-07-21): same content
 Metabolic-vs-champion confluence: where did 471 signed rows land? Per-matrix ||dW||, effective rank of delta, top-layer localization, ternary flip census (would the 1.58-bit deployment even change?).
 
 - `ternary(w)`
+
+### scratch/dual_probe.py
+Dual-crystal probe: math gate + physics probe on ONE vocab-41 model (the blackboard monolith control). Usage: dual_probe.py <ckpt>
+
+- `_equiv(q, pred, gold)`
+- `equiv(pred, gold, deadline=10)`
+
+### scratch/duo_mine.py
+Duo miner (overnight flywheel): duo wave over a fresh band (spec 2026-07-22-duo-substrate, exp 1): per ply, B/2 samples from TERNARY + B/2 from CHAMPION (budget-matched vs a single model's B), merged and oracle-verified. Same 200-probe rarity battery as gate_rarity.py (same seeds, same census).
+
+- `skeleton(e: str) -> str`
+- `binof(n)`
 
 ### scratch/duo_wave.py
 Duo-substrate mixed wave (spec 2026-07-22-duo-substrate, exp 1): per ply, B/2 samples from TERNARY + B/2 from CHAMPION (budget-matched vs a single model's B), merged and oracle-verified. Same 200-probe rarity battery as gate_rarity.py (same seeds, same census).
@@ -1148,6 +1168,24 @@ L9 probe: 24 fresh L9a problems (band 90M — disjoint from the farm's 72/73M an
 HOT METABOLISM (2026-07-21, Artin GO): map the safe-plasticity frontier. Pilot harness + LR ladder: start 3e-5, x1.8 every 20 stable cycles; immune system: proxy gate n=8 every 5 cycles, 2 consecutive drops >5 -> ROLLBACK + halve LR (frontier found). Optional --late: freeze layers 0-7 (confluence shortcut: delta mass is 8-11-heavy; backward stops at layer 8). Band 95M (fresh). ~150 cycles.
 
 
+### scratch/metabolic_v3.py
+METABOLIC V3 — the stacked LLMUE session (spec: four banked upgrades, one run, separately toggleable via env):
+
+- `ternary(w)`
+- `class TLin` (forward)
+
+### scratch/phys_probe.py
+Physics rung 1 probe: greedy emission on held-out phys steps (seeds 17-19), sympy-equivalence in t, fork-isolated. No math gate — the physics expert is vocab-41, a separate model class by design. Usage: phys_probe.py <ckpt>
+
+- `_equiv(q, pred, gold)`
+- `equiv(pred, gold, deadline=10)`
+
+### scratch/practice_mine.py
+PRACTICE MODE, model-side (the mirror of axiom's arg-10): duo-wave rollouts that (1) BANK verified steps from ALL attempts — solved or not (the solved-only leak fix, Artin) — tagging rows by outcome so the gen-8 A/B can split them; (2) LOG stuck states — the exact cur where every unsolved attempt died — to a worklist in axiom's format ({id, level, root, from, why, plies}), ready for the stuck-state exchange AND as maximum-surprise metabolic v4 food.
+
+- `skeleton(e)`
+- `binof(n)`
+
 ### scratch/series_probe.py
 Series rung 1 probe: greedy next-partial-sum emission on the 142 held-out steps (seeds 17-19), scored by sympy polynomial equivalence in fork-isolated workers (the solve_isolated doctrine). Also runs the standard 120 gate for the paired regression read vs seedvar-1 (65). Usage: series_probe.py <ckpt>
 
@@ -1167,6 +1205,24 @@ Ternary compounding session #2 (Mac, MPS lineage, paired gates): the doctrine-co
 
 - `ternary(w)`
 - `class TLin` (forward)
+
+### scratch/train_fp64.py
+fp64 end-to-end birth (the rounding-loss-veil A/B, banked 2026-07-17): all weights/activations/optimizer double precision on CPU. One variable vs seedvar-1 (fp32, same seed/diet). If the gate moves >=3, matmul/update rounding at fp32 costs capability at birth — the veil is real. If flat, fp32 birth arithmetic is above the noise floor and precision stays an ONLINE-only knob.
+
+
+### scratch/vmasm.py
+vm-asm closed system (code continent rung 1): straight-line mini-ISA over r0-r3, one-rule rewrite chains, EXACT symbolic oracle (programs are polynomial register maps; sympy decides equivalence). Emits diet + probe with standing doctrine: stable string seeds, determinable one-rule rows, every row oracle-verified before write. Usage: vmasm.py <n_train_rows> <out_prefix>
+
+- `run(prog)` — Symbolic execution -> tuple of 4 polynomial maps.
+- `show(prog)`
+- `gen(rng, n)`
+- `step(prog)` — One rule application, first match. Returns (nxt, rule) or None.
+- `farm(n_rows, seed_base, exclude=None)`
+- `parse(s)`
+
+### scratch/vmasm_probe.py
+vm-asm rung 1 probe: greedy emission on 401 held-out steps. Score: pred parses AND is symbolically equivalent to cur AND differs from cur (a valid productive rewrite — any equivalent answer accepted, string match never used). Exact-gold reported separately. Usage: vmasm_probe.py <ckpt>
+
 
 ### scratch/vrm_ab.py
 Valuation-routed metabolism v0: committee-gated per-neuron plasticity, one-variable A/B (see RIFF-LEDGER 2026-07-21). Mask: per-layer FFN committee probe; per-family top-5% neurons = heavy -> LR x0.2, rest x1.5, field normalized to mean 1.0 (equal average LR vs uniform arm). Arms: uniform vs routed, same 8k rows, 1 epoch, honest 120-gate each. Baseline 19m_v21 = 64.
