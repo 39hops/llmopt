@@ -3477,3 +3477,20 @@ Credit: Artin refused the slow-run story three times until it broke.
 Epoch now ~7 min; the entire overnight schedule collapsed into the
 evening. (Restart discipline: wrapper killed BEFORE trainer so the
 completion marker could not false-fire the readout chain.)
+
+## Series rung 1d: one-primitive emissions train to ~100% (2026-07-22 night)
+
+Chain2 (69,424 rows: pairwise mul/add trees + cc2 3x): probe 395/451
+(87.6%) vs 67% (1c) vs 15-16% (1/1b). PRE-REG PASS: mul 93/93
+PERFECT, add 35/36 (97%) — one-primitive emissions train to ~100%,
+the ladder law's cleanest form. solve: cc2 54/54 (was 45/54),
+separable 63/63, linear1 56/63. cc2 appends 13/54 -> 33/54 at 3x
+volume + tree context — NOT flat, so my format-only prediction was
+partly wrong: appends are volume-responsive, though still the
+lagging kind (the underdetermined-append theory survives as
+"lagging", not "frozen"; shift/attach split still worth testing).
+BONUS: **gate 65/120 — the -2 series dent is GONE** (1a/1b/1c: 63/
+64/63) with 66k series rows in the diet. Decomposed one-primitive
+rows cost the integral gate NOTHING; the dent was interference from
+underdetermined/multi-fact rows, not capacity. Determinable data
+does not fight the resident crystal.
