@@ -3608,3 +3608,19 @@ mix; the wide ternary generalizes better per rarity weighting. The
 honest path to a ternary crown per the spec's own terms: GROW the
 merged line (warm inheritance was the champion's real edge — gen-6
 grown beat gen-6 reborn before; substrate was never the deficit).
+
+## Ternary growth is not function-preserving — the mechanism (2026-07-23 ~12 AM)
+
+Grew merged-T768 latent +768 FFN/layer (89.7M, function-preserving
+in fp32: spray rows + zero down-cols). Identity pre-check through
+DEPLOYMENT: 67/120, not the required 70 — because absmean
+ternarization is NOT growth-invariant: zero columns shift each down
+row's mean |w|, moving the 0.5s threshold, flipping borderline
+weights. Growth and quantization COUPLE through the scale statistic.
+This is the mechanism behind 2026-07-20's "growth stacks but
+thinner on the discrete lattice" (grow-the-ternary 74). Options
+priced: per-row scale freezing at growth (quantizer change =
+substrate variable, not taken tonight); accepted the -3 and warm-
+trained (quantizer re-centers under STE). GROWN RUN: 89.7M, bf16 +
+grad-ckpt, 9.3 it/s (bf16 outrunning fp32 on a bigger model —
+tonight's parity verdict paying immediately), 3 warm epochs.
