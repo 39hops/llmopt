@@ -396,3 +396,14 @@ to the collaboration itself.
   if small/sparse/laggy (absorption law says the faint mass is
   0.3-3% — small); drift bounded by sync barriers + existing
   gate/rollback. The implementation home of the precision program.
+- **The bridge law (transfer needs shared steps in context)** (Artin,
+  2026-07-23, on the poly gate null): the day measured both arms —
+  physics+math transferred (+6.8; phys chains CONTAIN integration
+  steps) while poly+math did not (gate 64; pf rows are standalone
+  identities co-resident with integrals, never touching them).
+  Candidate law: skills link only through rows where one skill does
+  work INSIDE the other — adjacency teaches nothing. Fix = BRIDGE
+  CHAINS: integrals whose certified path surfaces the pf step as an
+  explicit rewrite (engine already solves these internally). Pre-reg:
+  bridge diet lifts the integral gate where the co-resident diet
+  (poly2, 64) did not.
