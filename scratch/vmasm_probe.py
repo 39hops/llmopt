@@ -9,8 +9,8 @@ import torch
 from vmasm import parse, run
 from llmopt.train.mathnative import MathTokenizer, build_model
 
-EXTRA = list("movadsublhngre;")  # unique chars for the ISA
-tok = MathTokenizer(extra=sorted(set(EXTRA)))
+# MUST match the birth env VOCAB_EXTRA order exactly (token ids)
+tok = MathTokenizer(extra="m,o,v,a,d,s,u,b,l,h,n,g,r,e,;".split(","))
 dev = "mps" if torch.backends.mps.is_available() else "cpu"
 model = build_model(len(tok.vocab)).to(dev)
 model.load_state_dict(torch.load(sys.argv[1], map_location="cpu"))
