@@ -3639,3 +3639,19 @@ accumulation is EXACT, rounding exists only at recombination.
 Implementation rung banked: block-aligned int-sliced matmul
 (int8-TC on cuda / int32 on CPU) for the online precise channel.
 Slicing without alignment = compensation trick, not exactness.
+
+## GROWN-MERGED: 75/120 — statistical crown TIE at 1.58 bits (2026-07-23 ~2:30 AM)
+
+One warm-growth round on the merged line (89.7M latent, +768 FFN/
+layer, 3 warm epochs, bf16+grad-ckpt at 9.3 it/s): **75/120 vs
+champion 76 same-device — inside the <3 noise bar: a statistical
+TIE for the production crown at 1.58 bits deployed.** L4 12/24
+(best-ever L4), L7 16/24 (ties champion). The night's ternary arc:
+65 (twin) -> 70 (+diet) -> 75 (+growth) — the champion's two edges
+(diet freshness, warm lineage) replicated on the discrete substrate
+in ~6 hours of 3080 time, including surviving the growth-quantizer
+coupling (-3 identity dent, fully recovered by warm training).
+Crown formally UNDECIDED between substrates; the duo-mined rare
+shard (streaming overnight) + one more growth round are each
+plausible finishers. bf16 birth speed note: 9.3 it/s on 89.7M —
+the parity verdict's first production dividend, same night.
