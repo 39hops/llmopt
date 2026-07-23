@@ -3780,3 +3780,18 @@ law is decidable arithmetic. All kinds are one-primitive constants
 (the saturating class) — the exposure economics, determinability
 doctrine, and decomposition arc predicted this number, and it
 landed. The day's arc closes: 4 + (-4) -> 0, at scale, perfect.
+
+## PRE-REGISTRATION: the bridge experiment (2026-07-23 evening, before data)
+
+Booked before poly_chain3 arrives. Arms: (A) poly2 baseline —
+co-resident pf identities, gate 64 (measured, null); (B) bridge
+diet — same base + poly_ibridge family (pf derivation rows + the
+pf step spelled IN INTEGRAL GRAMMAR + per-piece closes). BRIDGE LAW
+prediction: arm B moves the integral gate (>=3 over the 65-band
+baselines) where co-residency did not, because transfer requires
+shared steps in context (dual-crystal mechanism). If arm B is also
+flat: the bridge law needs revision — in-context steps are not
+sufficient either, and the transfer mechanism hunt reopens. Termwise
+p-kind supplement rides the same batch (operand-complexity axis):
+prediction pmul/psub/padd/assemble all move toward saturation per
+the exposure economics.
