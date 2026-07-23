@@ -360,3 +360,18 @@ to the collaboration itself.
   to "distance between models up to gauge" — the tool weight-space
   comparison has been missing. Music enters as mathematics, charter
   intact.
+- **PRACTICE MODE** (Artin, 2026-07-23 — "how would the piano model
+  practice La Campanella? start near where it fucked up"): restart
+  rollouts from FAILURE STATES, not roots — independently re-derived
+  Go-Explore / reverse-curriculum (Ecoffet 2019, Florensa 2017), and
+  strictly better here: chains are resumable at every state by the
+  determinability property (a mid-chain cur IS a complete prompt),
+  and failure states are already computed free in every dead wave.
+  Design: (1) miners/gates log stuck-states; (2) practice rollouts
+  launch FROM them (budget concentrated on the failing transition,
+  none on the mastered prefix); (3) verified steps out of stuck
+  states = the highest-value mintable rows; (4) practice shard joins
+  the diet. THE COMPOSITION: stuck states are vfrac~0 by definition
+  = maximum-surprise food — this IS the metabolic food policy the
+  morning's starvation null demanded. One machine: practice-mode
+  miner feeds both the diet and the organism.
