@@ -3695,3 +3695,15 @@ needed for primitive rows) and shorter sequences, the wall-clock
 price of "the mathematically perfect model" collapses ~10-100x.
 The corpus should be COUNTED, FARMED, and BUDGETED in primitives.
 Equation upgrade queued: eff_L in primitive units.
+
+## poly2: probe 83.2% (tree treatment's 4th win), gate lift NULLED (2026-07-23)
+
+Tree-decomposed poly at 13x volume: probe 51->83% (constants
+saturate: mul 69/69, add 36/36, sub 42/42, res 24/24; polynomial-
+operand primitives partial: pmul 58/72, psub 16/30 — "one primitive"
+needs an operand-complexity term; assembly residue: assemble 0/9,
+padd 1/15 = the volume-starved kinds, supplement requested). GATE
+64/120: rung 1's suggestive +2 lift did NOT survive 13x volume —
+partial-fractions->integration transfer is a NULL; the probe result
+stands, the transfer claim dies. Full audit 0/145,011 (axiom
+5-for-5).
