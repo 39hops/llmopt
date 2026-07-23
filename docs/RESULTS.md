@@ -3624,3 +3624,18 @@ substrate variable, not taken tonight); accepted the -3 and warm-
 trained (quantizer re-centers under STE). GROWN RUN: 89.7M, bf16 +
 grad-ckpt, 9.3 it/s (bf16 outrunning fp32 on a bigger model —
 tonight's parity verdict paying immediately), 3 warm epochs.
+
+## House-Ozaki midnight prototype: honest 2x, mechanism located (2026-07-23)
+
+Naive slice-and-recombine (exact bitmask slicing, fp32 partials,
+k=3): only 2x error reduction vs plain fp32; ternary fast path
+(k not k^2 partials — the crystal IS Ozaki-native structurally)
+inherits the same floor. Cause located: input slicing was exact but
+partials still ACCUMULATE in fp32 over K terms — accumulation
+rounding dominates. The real scheme's mandatory leg is block
+exponent alignment ("chunking similar weights" — Artin's own
+piece): aligned slices are true small integers, integer
+accumulation is EXACT, rounding exists only at recombination.
+Implementation rung banked: block-aligned int-sliced matmul
+(int8-TC on cuda / int32 on CPU) for the online precise channel.
+Slicing without alignment = compensation trick, not exactness.
