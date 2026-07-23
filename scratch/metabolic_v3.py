@@ -37,8 +37,8 @@ SURPRISE = os.environ.get("SURPRISE") == "1"
 CONTRAST = os.environ.get("CONTRAST") == "1"
 D, LAYERS, FFN, HEADS = 768, 8, 3840, 12
 LR = 2.5e-6
-FOOD_BAND = 93_000_000
-FOOD_LEVEL = 9
+FOOD_BAND = 94_000_000
+FOOD_LEVELS = [4, 5, 6, 7, 8, 9]
 
 def ternary(w):
     s = w.abs().mean(dim=1, keepdim=True).clamp(min=1e-8)
@@ -54,7 +54,8 @@ class TLin(nn.Linear):
 
 nn.Linear = TLin
 tok = MathTokenizer()
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = ("cuda" if torch.cuda.is_available() else
+       "mps" if torch.backends.mps.is_available() else "cpu")
 model = build_model(len(tok.vocab), d=D, layers=LAYERS, heads=HEADS,
                     ffn=FFN).to(dev)
 model.load_state_dict(torch.load(CKPT, map_location="cpu"))
@@ -68,8 +69,10 @@ params = [p for p in model.parameters() if p.requires_grad]
 start_sign = {id(p): torch.sign(ternary(p.detach().float().cpu()))
               for p in params if p.dim() == 2}
 
+MASTER_DEV = "cpu" if dev == "mps" else dev  # MPS has no fp64
 if FP64:
-    masters = [p.detach().double().clone() for p in params]
+    masters = [p.detach().to(MASTER_DEV).double().clone()
+               for p in params]
     for m in masters:
         m.requires_grad_(True)
     opt = torch.optim.AdamW(masters, lr=LR, weight_decay=0.0)
@@ -92,7 +95,8 @@ frontier_solved = 0
 while time.time() - t0 < MINUTES * 60:
     cycle += 1
     for k in range(4):
-        p = _gen_isolated(FOOD_LEVEL, FOOD_BAND + cycle * 17 + k)
+        lv = FOOD_LEVELS[(cycle * 4 + k) % len(FOOD_LEVELS)]
+        p = _gen_isolated(lv, FOOD_BAND + cycle * 17 + k)
         if p is None:
             continue
         cur = f"Integral({sp.sstr(p._expr)}, x)"
@@ -136,11 +140,11 @@ while time.time() - t0 < MINUTES * 60:
         opt.zero_grad(); loss.backward()
         if FP64:
             for m, p in zip(masters, params):
-                m.grad = p.grad.double()
+                m.grad = p.grad.to(MASTER_DEV).double()
             opt.step()
             with torch.no_grad():
                 for m, p in zip(masters, params):
-                    p.copy_(m.float())
+                    p.copy_(m.float().to(p.device))
         else:
             with torch.no_grad():  # absorption census (fp32 arm)
                 for p in params:
