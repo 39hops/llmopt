@@ -50,3 +50,33 @@ flip locations vs the committee table if net accumulates.
 
 3080 (cuda fp64 native) if free post-axiom-emission; Mac viable
 (CPU masters ~free on unified memory — Artin's catch, 2026-07-23).
+
+## v4.1 revisions (Artin GO 2026-07-23 2:45 PM — fast, lossless, ledger-harvested)
+
+Wall-clock target: verdict TODAY (~2.5h session + probes), not
+overnight. Ledger scan folded three banked upgrades in:
+
+1. **HOT-BUT-GUARDED LR = 1e-5** (was 2.5e-6). Basis: the measured
+   LR frontier (late-layer control rod survived 1e-4 abuse at
+   71/120; 1e-5 is 10x under that ceiling) + the banked discrete-
+   plasticity prong B ("flips may need hot LR / nudge
+   accumulation") + absorption is moot under fp64 masters. 4x more
+   conversion per wall-hour, safety = anchor + snapshot + rod
+   (all live in v3, zero rollbacks tripped in 4 arm-hours).
+2. **SKIP-PAIR BANKING** (macro-distillation riff, GO'd previously;
+   + step-dropout riff, first live use): every practice chain that
+   RESOLVES a stuck state banks both granularities — the per-step
+   rows AND the (stuck_state -> final) skip pair, verified free by
+   transitivity. Practice yields shortcuts and longcuts in one pass.
+3. **PRE-PROBE CONTROL**: the stuck worklist is probed BEFORE the
+   session (same seeds/budget as the post-probe) so resolution
+   delta is paired, not absolute — a stuck state that resolves on
+   re-roll variance alone must not count.
+
+Also: rollouts START at the stuck cur (not the root — the whole
+point); fresh stuck states logged live and eaten in-session
+(self-feeding practice); verify cache pays compounding rent on
+revisited states; persistence census every 20 min.
+
+Pre-reg amendments: (a) resolution-rate delta (post - pre) >= +20
+points on the worklist; (b/c) unchanged.
