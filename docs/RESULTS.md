@@ -3588,3 +3588,23 @@ activation memory, faster). Wide births get bf16 by default going
 forward pending tf32/tf32x3 arms; the d768 OOM class dies a second
 way. (cuda-lineage note: control 60, all arm comparisons within-
 device per the delta doctrine.)
+
+## Night close: parity sweep + the championship verdict (2026-07-23 ~1:30 AM)
+
+(1) **Parity four-way: ALL PASS** — fp32 60 / bf16 62 / TF32 61 /
+tf32x3 60, same seed/diet/device. Matmul rounding at birth is a
+non-factor across the tested range (absorption law's prediction:
+birth gradients dwarf ULPs). ADOPTED: bf16 default for births
+(speed + half activation memory), TF32 reinstated, tf32x3 shelved
+for the online regime (machinery proven, not needed at 3e-4).
+(2) **Pre-reg (b) FAILS — the crown holds: CHAMPION 76/120 on cuda
+(same-device) vs merged 70.** The 55.1M fp32 warm-grown lineage
+still beats the 75.6M ternary cold birth on the production battery
+by 6. SPLIT INSTRUMENTS, stated plainly: champion wins production
+(76>70), merged wins stratified rarity (130>128) and the
+like-for-like diet delta (+5 over its twin). Reading: the warm
+lineage's accumulated texture still pays on the legacy battery's
+mix; the wide ternary generalizes better per rarity weighting. The
+honest path to a ternary crown per the spec's own terms: GROW the
+merged line (warm inheritance was the champion's real edge — gen-6
+grown beat gen-6 reborn before; substrate was never the deficit).
