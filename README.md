@@ -12,28 +12,49 @@ LLM inference + training optimization lab. Small, readable implementations of th
 
 ## Highlights
 
-**The lab, current state (2026-07-13)** — three threads on top of the
-engine below. (1) **Step-level expert iteration** (the founding goal,
-LIVE): the 0.5B emits one *verified rewrite* per call — its unit of
-generation is an oracle-checked derivation step — trained on
-engine-replay + on-policy chains with a promote/rollback gate
-(`scripts/expert_loop.py`, ledger in `docs/LOOP-LOG.md`; rounds 2/3
-one-shot 13→19/30, step validity 0.5→1.0%; round 4's data-balance
-overcorrection rolled back — honestly logged). THE ARENA
-(`scripts/arena.py`) streams engine-vs-model showmatches with oracle
-verdicts; its finding drove the current data round: the model's
-misses are *arithmetic* (signs, unreduced chain-rule constants), not
-structural. (2) **Physics rungs, zero chemistry**: a variational
-ground-state engine (`llmopt/quantum/ground.py`, TFIM + exact-diag
-oracle; HVA hits 0.69% error at criticality with 6 params, beating
-depth-4 hardware-efficient ansatze) and an ODE engine that
-subcontracts its integrals to the house integral engine — 75/75
-parity with `sympy.dsolve`, algebra-path wins on constant-coefficient
-2nd order. (3) **Mac/MLX training kernels**: Liger-style fused
-cross-entropy (`train/fused_ce.py`) — at 16k tokens 13.5GB vs 38GB
-peak AND 1.6× faster (the memory wall flips the sign); population
-LoRA training (`train/population.py`) recorded as an honest null at
-0.5B shapes (MLX saturates at one adapter's batch).
+**The lab, current state (2026-07-23)** — the lab moved from tuning
+pretrained LLMs to growing **closed-system-native micro-models from
+birth** (vocab-40 math tokenizer, zero pretraining, engine-minted
+oracle-verified diets) and measuring the laws they obey. Where it
+stands:
+
+- **The crown is a statistical tie between substrates**: a 1.58-bit
+  ternary-from-birth model (89.7M, grown) gates 75/120 vs the fp32
+  champion's 76 on the same battery/device — the discrete lineage
+  went 65→70→75 in one night via diet rations + warm growth
+  (`docs/RESULTS.md` 2026-07-23).
+- **Four grammars live**: calculus (the founding continent), Taylor
+  series (held-out step accuracy 15%→88% purely by decomposing rows
+  into one-primitive emissions — the ladder law's cleanest form),
+  classical mechanics (85.5% first contact; a dual-diet crystal holds
+  math intact AND beats the physics specialist at 92.3% — positive
+  cross-domain transfer), and a mini-ISA code system (89.2% verified
+  program rewrites, exact symbolic oracle).
+- **Measured laws** (`docs/THEORY.md`, each with a citation leg): the
+  absorption law (fraction of updates silently lost to fp rounding
+  ≈ 2.8e-9/LR across four decades — LR and precision are one knob);
+  birth precision bracketed closed (bf16↔fp64 births
+  indistinguishable, pre-registered showdown) while online/low-LR
+  learning provably needs precision (fp64 masters recover 5x weight
+  flips); crystal geometry is a universal function of data-per-width
+  across all grammars tested (kurtosis 1.9 at matched feeding for
+  calculus/mechanics/programs); capability is a curve over expression
+  rarity, not a scalar; underdetermined training rows measurably
+  teach hallucination (96% vs 47% within one model); the
+  decomposition discount (~10x cheaper learning per row when corpus
+  is counted in primitives).
+- **LLMUE** (the lab's product category): continuous online learning
+  on oracle-signed self-generated experience, with flip-quantized
+  plasticity on the ternary substrate — the metabolic v3 stacked
+  session (fp64 masters + surprise-gated LR + wave-contrast) is the
+  current live experiment.
+- **Sister engine**: `axiom`, a C++23 CAS built in a parallel Fable
+  session, farms certified derivation chains (byte-exact
+  certification, 4-for-4 clean on independent audit) — series, poly,
+  physics batches all landed within hours of being asked.
+
+Everything below this line is the measured history that got here —
+kept because the honest-negatives doctrine applies to the README too.
 
 **The derivation engine, core result (2026-07-11)** — oracle-verified
 integration search, every claim raced out-of-sample (`docs/RESULTS.md`
