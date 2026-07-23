@@ -375,3 +375,11 @@ to the collaboration itself.
   = maximum-surprise food — this IS the metabolic food policy the
   morning's starvation null demanded. One machine: practice-mode
   miner feeds both the diet and the organism.
+- **Practice mode, engine-side + the stuck-state exchange** (Artin,
+  2026-07-23): the engine's walled searches hold partial derivations
+  — bank the last state to a stuck-state worklist (state-level
+  generalization of the tranche-4 root worklist); band exhaustion
+  redefined as "stuck queue empty," farm DEEPER before WIDER. The
+  exchange: engine stuck-states = hard probes for models; model
+  stuck-states = hard roots for the engine — two practice loops
+  trading their hardest bars, all in the same cur-string format.
