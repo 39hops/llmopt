@@ -3546,3 +3546,30 @@ grad checkpointing (bit-identical, verified 0.0 diff) deleted the
 class at ~30% recompute, netting 6+ it/s stable. Pre-reg (b)
 championship read pending (champion needs a same-device cuda gate —
 queued behind parity arms); (c) rarity curve queued on MPS lineage.
+
+## The midnight burst: dual transfer, code opens, universality x3 (2026-07-22)
+
+(1) **DUAL (one vocab-41 crystal, math+physics diets): math gate 65
+(ZERO dent) + physics probe 92.3% — BEATING the pure physics
+expert's 85.5%.** Transfer is positive and one-directional in the
+data: shm appends 36/51 v specialist 24/51, kin appends 51/51. The
+blackboard pre-reg's monolith arm WINS at this scale: shared
+substrate feeds physics (+6.8) and costs math nothing. Two-expert
+blackboard's remaining domain: vocab-incompatible grammars or
+capacity-tight regimes (now a measured boundary, not a guess).
+(2) **CODE CONTINENT rung 1 (vm-asm): 61.6% valid-rewrite first
+contact** (oracle accepts any equivalent rewrite; exact-gold 216/
+401). Deletion rules train (selfmov 75%, dead_store 61%);
+transformation rules starve (strength_reduce 13%, mul_zero 18%) —
+CONFOUNDED with diet imbalance (63% selfmov rows, generator bug,
+mine). Balanced refarm = rung 1b.
+(3) **UNIVERSALITY AT THREE GRAMMARS**: matched-feeding panel —
+calculus 1.91/.0232/.593, mechanics 1.88/.0219/.584, vm-asm
+1.85/.0230/.582 (kurt/nnCV/norm, same code, same seed). Geometry
+is a universal function of FEEDING across maximally different
+closed systems: symbolic calculus, physical mechanics, machine
+programs. The equation's geometry sector is grammar-free at 3
+points.
+(4) Parity note: cuda fp32 control gates 60 (same-seed different-
+device init = different model; the 4-arm comparison is strictly
+within-cuda per the delta doctrine).
