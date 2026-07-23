@@ -3655,3 +3655,26 @@ Crown formally UNDECIDED between substrates; the duo-mined rare
 shard (streaming overnight) + one more growth round are each
 plausible finishers. bf16 birth speed note: 9.3 it/s on 89.7M —
 the parity verdict's first production dividend, same night.
+
+## Morning verdicts: the disagreement resolves + vm-asm passes (2026-07-23)
+
+(1) **The pre-registered disagreement: the absorption law wins.**
+fp64 end-to-end birth: gate 65 (= fp32 control exactly); rarity
+showdown fp64 114/200 (rare 9/18, unseen 8/65) vs seedvar-1 control
+115/200 (rare 9/18, unseen 10/65) — RARE BINS IDENTICAL, all deltas
+inside noise. Artin's rare-lift prediction fails; flat-at-birth
+confirmed. With the parity sweep this BRACKETS birth precision from
+both ends: bf16 through fp64 indistinguishable. Doctrine final:
+precision is an ONLINE-only lever (where learning is slow/faint);
+at birth spend nothing extra. The ceiling-on-slow-learning theory
+stands as the surviving form.
+(2) **vm-asm rung 1b: 89.2% valid-rewrite** (61.6% -> 89.2%;
+exact-gold 349/400). Balanced diet fixed everything —
+strength_reduce 13% -> 95% (134/141). The 1a "transformation rules
+resist" read was pure diet starvation. Code continent rung 1 PASSED.
+(3) Miner postmortem: overnight run crashed on a missing checkpoint
+(gen6_ternary never shipped to WSL — unverified dependency, mine) +
+unconditional MINE_DONE marker (the false-fire lesson AGAIN).
+Relaunched clean ~8:30 AM: 2,000 probes, 851 rare/unseen targets.
+Queue-arming doctrine: verify every file dependency at arm time,
+markers fire on success only.
