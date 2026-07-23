@@ -225,3 +225,22 @@ to the collaboration itself.
   solve rate, blackboard pair vs matched-params monolithic
   both-diets model. Related: math+physics MoE, always-on frame,
   scratch-workspace (banked).
+- **The decomposition discount (re-price perfection)** (house
+  synthesis, 2026-07-22 night, from the full-docs read): the
+  equation's perfection price (~650k eff rows) was computed with the
+  CHAIN-row exposure constant k — but the series arc measured
+  one-primitive rows training to ~100% at 26k rows (15->67->88%
+  tracking decomposition depth). Fit k_primitive vs k_chain from
+  1c/1d data in hand; if primitive rows are 10-50x cheaper per
+  saturation, the perfect-model price collapses from weeks to days,
+  and "enumerate the primitive basis of calculus" becomes an axiom
+  tranche. The ladder law and the exposure curve were always one
+  law: eff-rows should be counted in PRIMITIVES, not rows.
+- **Portability test rides the physics birth** (house, 2026-07-22
+  night): the closed-system equation's pre-registered test #3 (do
+  kurtosis/R/CV/floor shift on a DIFFERENT closed system?) has
+  waited since 07-19 for a second grammar — the vocab-41 physics
+  birth IS it. Read the template panel off phys_19m.pt at zero
+  extra compute; invariants-shift => the constants encode Sigma
+  (flagship result); invariants-hold => they are constants of
+  training itself (also a result).
