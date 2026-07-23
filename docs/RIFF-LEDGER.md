@@ -275,3 +275,16 @@ to the collaboration itself.
   LR 3e-4: absorption 0.0007%, nothing faint enough to save).
   Grading: rarity gate on fp64_birth vs seedvar-1, rare-bin delta
   primary. Either verdict banks a law leg.
+- **"Dynamic precision = absorb more without adding terms"** (Artin,
+  2026-07-23 ~1AM — the capstone phrasing): offline, storage has two
+  levers — add terms (farm rows, raise signal) or add bits (lower
+  the ULP floor); both measured this week. ONLINE there are no more
+  terms — experience streams once, and absorbed updates are lived
+  experience permanently lost. So for the LLMUE the precision
+  channel is the only lever, and it should be DYNAMIC (only ~0.3-3%
+  of online updates are faint enough to need it — absorption law).
+  One sentence: precision is how a finite stream of experience
+  becomes fully absorbed structure. Unifies: absorption law,
+  LR=precision knob, rarity-routed precision, surprise-gating,
+  fp64 masters, the ceiling-on-slow-learning theory. Test = the
+  metabolic v3 headline hypothesis.
