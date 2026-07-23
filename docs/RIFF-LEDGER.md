@@ -383,3 +383,16 @@ to the collaboration itself.
   exchange: engine stuck-states = hard probes for models; model
   stuck-states = hard roots for the engine — two practice loops
   trading their hardest bars, all in the same cur-string format.
+- **The asynchronous precision co-processor** (Artin, 2026-07-23 —
+  "offload fp64 pressure to CPU, like tf32x3"): split by
+  SIGNIFICANCE across heterogeneous units — GPU runs the hi channel
+  (bulk fp32, synchronous), CPU runs the lo channel (fp64 masters /
+  Kahan carries / faint-signal corrections) ASYNCHRONOUSLY behind
+  it, out of shared DRAM on unified memory (no bus tax — Artin's
+  catch). License: the precision channel's content is sub-threshold
+  by definition ("silent until the neuron fires") — a latent channel
+  needs no synchrony; GPU never waits, precision costs ~zero wall.
+  Scope: elementwise masters = perfect fit; correction matmuls only
+  if small/sparse/laggy (absorption law says the faint mass is
+  0.3-3% — small); drift bounded by sync barriers + existing
+  gate/rollback. The implementation home of the precision program.
