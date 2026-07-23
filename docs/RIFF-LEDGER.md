@@ -300,3 +300,16 @@ to the collaboration itself.
   the online precise channel's endgame implementation — dynamic
   precision at ~zero marginal cost. Literature: Ozaki et al.;
   Ootomo/Ozaki int8-TC DGEMM line.
+- **Limits continent + the limit-free observation** (Artin, 2026-07-23,
+  "does it know how to derive the rules of calculus?"): limits were
+  never fed — deliberately; the lab's calculus is rule-application
+  over a limit-free formalization, and the series continent IS that
+  formalization made explicit (formal power series: derivative =
+  coefficient shift, no epsilon anywhere — differential algebra, the
+  Liouville tradition; O-marker discipline = its honesty mechanism).
+  Two rungs if wanted: (1) LIMITS CONTINENT — lim chains w/ sympy
+  limit oracle, factoring/l'Hopital as moves, determinable,
+  medium-cost, real candidate; (2) rule DERIVATION = proof territory
+  (Lean oracle, site-selection map's far rung). Note: the engine
+  also doesn't know why its rules work, and it beats sympy — 
+  justification and capability are separable in a closed system.
