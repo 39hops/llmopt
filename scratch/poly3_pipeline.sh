@@ -7,6 +7,35 @@ wc -l data/poly_chain3.jsonl
 timeout 7200 .venv/bin/python - << 'PYEOF'
 import json
 import sympy as sp
+x = sp.Symbol("x")
+def integrand(s):
+    e = sp.sympify(s)
+    if isinstance(e, sp.Integral):
+        return e.function
+    # sums/scaled Integrals: differentiate to recover integrand
+    return sp.diff(e, x)
+bad = n = 0
+for line in open("data/poly_chain3.jsonl"):
+    r = json.loads(line); n += 1
+    k = r["kind"]
+    try:
+        if k in ("ibridge", "iclose", "close"):
+            # integral-grammar rewrite: equal integrands (differentiate
+            # any closed parts; Integral wrappers contribute functions)
+            d = sp.cancel(integrand(r["cur"]) - integrand(r["nxt"]))
+            ok = (d == 0)
+        else:
+            ok = (sp.cancel(sp.sympify(r["cur"]) - sp.sympify(r["nxt"])) == 0)
+    except Exception:
+        ok = False
+    if not ok:
+        bad += 1
+        if bad < 4: print("BAD:", k, r["cur"][:70])
+print(f"FULL AUDIT {bad}/{n}")
+assert bad == 0, "audit failed - do not train"
+PYEOF'
+import json
+import sympy as sp
 bad = n = 0
 for line in open("data/poly_chain3.jsonl"):
     r = json.loads(line); n += 1
