@@ -3726,3 +3726,18 @@ state food + longer session. Also: arm A's raw-gradient absorption
 census read 95.3% at 2.5e-6 (instrument note: raw LR*grad proxy,
 NOT AdamW-normalized steps — not comparable to the law's 0.278%@
 1e-6; says most gradient ELEMENTS are sub-ULP faint at online LR).
+
+### Arm rarity curves: FLAT — the conversion question sharpens (2026-07-23)
+
+Paired cuda rarity gates on both v3 arms: fp32 133/200, fp64
+132/200 — bins identical to one noise solve (rare 17 v 16, unseen
+17 v 17). The 2.7x flips did NOT convert to capability anywhere on
+the rarity spectrum at 75 min. Two readings held open,
+distinguisher queued: (1) LATENT — flips are real structure below
+wave-solve threshold; conversion needs practice-mode food + longer
+horizons (LLMUE precedent: 100k flips -> +2, slow). (2) CHURN —
+near-threshold weights flip from any nudge; fp64 commits more
+near-threshold NOISE (2.7x flips + 0.0 delta is exactly churn's
+signature). Distinguisher: flip-location analysis — extra flips
+concentrated in low-|latent| threshold-hugging weights = churn;
+distributed like arm A's / committee-concentrated = structure.
