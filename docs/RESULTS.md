@@ -3494,3 +3494,26 @@ BONUS: **gate 65/120 — the -2 series dent is GONE** (1a/1b/1c: 63/
 rows cost the integral gate NOTHING; the dent was interference from
 underdetermined/multi-fact rows, not capacity. Determinable data
 does not fight the resident crystal.
+
+## PHYSICS CONTINENT OPENS: 85.5% first contact + equation test #3 (2026-07-22 night)
+
+(1) **Physics rung 1** (vocab-41 birth, 20,253 rows, ~4 min train):
+held-out probe 177/207 (85.5%) — kin/int 51/51 PERFECT, kin/append
+49/51 (96%), shm/solve 53/54, shm/append 24/51 (47%). The split IS
+the determinability law measured within one model: kin appends were
+rebuilt as determinable folds after the audit (5,106 joins), shm
+appends kept the underdetermined series format — 96% vs 47%, same
+model, same birth, format the only variable. Physics is the ODE
+grammar wearing t; the machinery transferred whole.
+(2) **Equation pre-registered test #3 (portability), answered with
+a control**: physics crystal kurt 1.88 initially read as an
+invariant SHIFT (math band 2.31-2.50) — but a size-matched math
+control (20,253-row subsample, same width/seed/epochs) reads kurt
+1.91 / nnCV 0.0232 / norm 0.593 vs physics 1.88 / 0.0219 / 0.584:
+NEAR-IDENTICAL. Verdict: the geometry constants do NOT encode the
+grammar — they encode data-per-width (feeding). Grammar changed,
+geometry didn't. The "invariant" is a constant of training-at-a-
+given-feeding; corpus SIZE (not content) sets kurtosis. (Panel
+definitions reimplemented post-/tmp-wipe: pooled 4th-moment kurt,
+NN-cosine CV on unit neurons, mid-stack gates — same code both
+sides, paired doctrine.)
