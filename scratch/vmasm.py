@@ -38,7 +38,7 @@ def gen(rng, n):
     prog = []
     for _ in range(n):
         op = rng.choice(["mov", "add", "sub", "mul", "shl", "neg",
-                         "add", "mul", "mov"])
+                         "add", "mul"])
         x = rng.choice(REGS)
         if op == "neg":
             prog.append((op, x, None))
@@ -46,6 +46,8 @@ def gen(rng, n):
             prog.append((op, x, rng.randint(1, 3)))
         else:
             y = rng.choice(REGS + [rng.randint(-9, 9)])
+            if op == "mov" and y == x:      # selfmov flooded diet 1a
+                y = rng.randint(-9, 9)
             prog.append((op, x, y))
     return prog
 
