@@ -27,9 +27,16 @@
 
 Same treatment as chain2: num -> substitution row + mul/add tree;
 divstep -> per-term expand/subtract rows; monic -> one divide row
-per coefficient; assemble -> per-root recombination rows. Volume:
-match the pilot (300 seeds/cell fine). This is the proven recipe's
-third deployment — high confidence.
+per coefficient; assemble -> per-root recombination rows.
+
+**Volume targets, now MEASURED (this morning's exposure-constant
+fit)**: primitive kinds train at k ~ 1,900-2,400 rows per e-fold
+and SATURATE (~99-100%) at ~10k rows per family-kind; multi-fact
+kinds cost ~4x more and asymptote below 1. So: **~10k rows per
+primitive kind is the saturation budget** — no need to overshoot,
+and anything emitted as multi-fact is worth re-emitting as a tree
+(the decomposition discount is ~10x per row). Farm and count in
+primitives; this is the new corpus economics for everything.
 
 ## Ask 2: physics tranche 2 — energy conservation (rung 2 unlocked)
 
