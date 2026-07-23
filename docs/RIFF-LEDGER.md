@@ -288,3 +288,15 @@ to the collaboration itself.
   LR=precision knob, rarity-routed precision, surprise-gating,
   fp64 masters, the ceiling-on-slow-learning theory. Test = the
   metabolic v3 headline hypothesis.
+- **The Ozaki composition** (Artin, 2026-07-23 ~1:30AM — "mix and
+  match bitwise + double-double + chunking"): independently
+  re-derived the Ozaki scheme (error-free matmul transformation):
+  bit-slice via power-of-2 shifts (EXACT — exponent moves only),
+  partial products between slices on fast low-precision units
+  (TF32/int8 tensor cores) are rounding-free, recombine with
+  compensated sums. fp64+ matmuls at tensor-core speed; on gaming
+  cards BEATS native fp64 (1/64 rationing). tf32x3 = the k=2
+  special case (built+parity-proven tonight). House application:
+  the online precise channel's endgame implementation — dynamic
+  precision at ~zero marginal cost. Literature: Ozaki et al.;
+  Ootomo/Ozaki int8-TC DGEMM line.
