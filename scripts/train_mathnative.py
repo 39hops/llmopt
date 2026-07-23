@@ -75,6 +75,11 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
          gen7: bool = False, diet: str | None = None) -> None:
     import torch
     import os
+    # lossless-by-default (2026-07-22 doctrine): anti-fragmentation
+    # alloc conf unless the caller set their own. NOT
+    # expandable_segments — that crashed the WSL driver.
+    os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF",
+                          "max_split_size_mb:128")
     if os.environ.get("TF32") == "1":
         torch.backends.cuda.matmul.allow_tf32 = True
         torch.backends.cudnn.allow_tf32 = True
