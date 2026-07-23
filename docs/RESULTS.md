@@ -3678,3 +3678,20 @@ unconditional MINE_DONE marker (the false-fire lesson AGAIN).
 Relaunched clean ~8:30 AM: 2,000 probes, 851 rare/unseen targets.
 Queue-arming doctrine: verify every file dependency at arm time,
 markers fire on success only.
+
+## The decomposition discount: ~10x, measured (2026-07-23 morning)
+
+Exposure-constant fit from the series arc (per family-kind rows ->
+held-out accuracy): PRIMITIVE kinds k_efold ~ 1,900-2,400 rows
+(linear1/cc2 solve 1911/2009, add 2380; mul & 3x-cc2-solve fully
+saturated); multi-fact sum kind 8,739 (intermediate decomposition =
+intermediate constant, as the ladder law demands); CHAIN-era k from
+the equation's perfection price ~ 20,800. **The decomposition
+discount is ~10x per row — and primitives saturate at S_max=1
+(measured 100%) where chains asymptote below it.** Re-priced
+perfection: a primitive kind completes at ~10k rows (vs ~96k
+chain-equivalent); with axiom's emission throughput (no search
+needed for primitive rows) and shorter sequences, the wall-clock
+price of "the mathematically perfect model" collapses ~10-100x.
+The corpus should be COUNTED, FARMED, and BUDGETED in primitives.
+Equation upgrade queued: eff_L in primitive units.
