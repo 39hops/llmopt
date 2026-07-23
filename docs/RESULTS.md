@@ -3766,3 +3766,17 @@ solve-steps -> trees -> determinable-everything). At 19M the series
 grammar is effectively solved; remaining 10 misses are linear1
 solve (7) + scattered. Gate 63 (-2, sub-bar, watched). Axiom's
 per-row append certification (new in chain3) audited clean.
+
+## PHYS_ENERGY: 100.0% — a conservation law, learned perfectly (2026-07-23 evening)
+
+Energy rung 2 (axiom's design: E0 as mul/add tree, per-order
+E-coefficients as trees ending in zero rows — "conservation IS the
+vanishing of every non-constant coefficient, each a certified
+arithmetic fact"): held-out probe **1350/1350 (100.0%)** — mul
+945/945, add 354/354, zero 51/51. Every unseen oscillator's
+conservation coefficients emitted exactly. The first PHYSICAL LAW
+in the lab, learned to saturation, in a representation where the
+law is decidable arithmetic. All kinds are one-primitive constants
+(the saturating class) — the exposure economics, determinability
+doctrine, and decomposition arc predicted this number, and it
+landed. The day's arc closes: 4 + (-4) -> 0, at scale, perfect.
