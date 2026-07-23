@@ -91,7 +91,8 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     if out:
         CKPT = Path(out)
     extra = os.environ.get("VOCAB_EXTRA", "")
-    tok = MathTokenizer(extra=list(extra) if extra else None)
+    tok = MathTokenizer(extra=(extra.split(",") if "," in extra
+                           else list(extra)) if extra else None)
     if extra:
         print(f"[vocab] extra atoms {list(extra)} -> {len(tok.vocab)}",
               flush=True)
