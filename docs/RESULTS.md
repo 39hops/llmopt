@@ -3741,3 +3741,16 @@ near-threshold NOISE (2.7x flips + 0.0 delta is exactly churn's
 signature). Distinguisher: flip-location analysis — extra flips
 concentrated in low-|latent| threshold-hugging weights = churn;
 distributed like arm A's / committee-concentrated = structure.
+
+### Flip-location distinguisher: inconclusive by design — persistence is the test (2026-07-23)
+
+Both arms' flips sit at the ternary threshold (median margin 0.0008
+/ 0.0002 scale-units vs 0.427 for all weights; concentrated in
+layers 4-7 down/up — the unfrozen region, uniformly). Necessary-
+condition signature: BOTH structure and churn predict near-threshold
+flips at 2.5e-6 (nothing else can cross). Distinguisher as designed
+cannot separate. The decisive instrument is FLIP PERSISTENCE:
+churn oscillates (high flip-back rate, stagnant net), structure
+accumulates monotonically. Free to instrument in metabolic v4
+(snapshot flip-set every N cycles, count flip-backs). The
+latent-vs-churn fork stays open pending v4.
