@@ -3754,3 +3754,15 @@ churn oscillates (high flip-back rate, stagnant net), structure
 accumulates monotonically. Free to instrument in metabolic v4
 (snapshot flip-set every N cycles, count flip-backs). The
 latent-vs-churn fork stays open pending v4.
+
+## SERIES RUNG 1E: 98.0% — the continent closes (2026-07-23 evening)
+
+Fold-append arm (chain3, one variable vs 1d): **479/489 (98.0%)**.
+The append residue VANISHED: linear1 44/63 -> 63/63, separable ->
+63/63, cc2 33/54 -> 53/54. Third and cleanest determinability
+confirmation — re-spelling the underdetermined kind as folds was
+the entire change. THE ARC: 15 -> 67 -> 88 -> 98 (hop-only ->
+solve-steps -> trees -> determinable-everything). At 19M the series
+grammar is effectively solved; remaining 10 misses are linear1
+solve (7) + scattered. Gate 63 (-2, sub-bar, watched). Axiom's
+per-row append certification (new in chain3) audited clean.
