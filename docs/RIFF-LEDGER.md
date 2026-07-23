@@ -244,3 +244,18 @@ to the collaboration itself.
   extra compute; invariants-shift => the constants encode Sigma
   (flagship result); invariants-hold => they are constants of
   training itself (also a result).
+- **Lazy precision routed by near-ties + EU-arithmetic + entropy-
+  coded weights** (Artin riff barrage, 2026-07-22 midnight): three
+  compositions of banked results onto expansion arithmetic — (1)
+  THE PRECISION ROUTER: Shewchuk adaptive precision (compute cheap,
+  refine only when the decision demands) x the fp16 near-tie
+  doctrine = fire correction matmuls ONLY when the top-2 logit gap
+  sits under the error bound; margins are free every decode step;
+  starved-judge satisfied by construction (corrections run only
+  where variance lives). (2) EU-ARITHMETIC: online updates touch
+  rank-~4 slivers, so cache the heavy hi@hi structure and delta-
+  update only moved weights — the NNUE namesake applied at the
+  arithmetic layer (KV-cache logic for weights). (3) entropy-coded
+  checkpoints: kurtosis-2.4 sub-Gaussian = low-surprise bits
+  (int4-lossless's cause) => Markov/arithmetic-code weights at
+  rest; ternary at 30.5% zeros compresses hardest. Storage only.
