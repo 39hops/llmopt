@@ -1,30 +1,31 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-21 midday. Strategy: specs/2026-07-15-post-climb-strategy.md. RESULTS.md holds verdicts, RIFF-LEDGER.md holds
-provenance; this is the queue. States: LIVE (running/next-action),
+Updated 2026-07-23 morning. RESULTS.md holds verdicts, RIFF-LEDGER.md
+holds provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 ## LIVE
 
 | Thread | Status | Pointer |
 |---|---|---|
-| **TRAINING ATTACKS (lossless-speed program)** | prefix A/B + token-budget batching NEXT (parity-gated); scorecard + endgame composition in spec | specs/2026-07-21-training-attacks.md |
-| **CALIBRATION NIGHT (the gaps audit)** | armed: frozen holdout battery (88M, audited) + 3x seed-variance births -> first measured gate noise-bar; chain-carry ablation spec'd | specs/2026-07-21-training-attacks.md |
-| **LLMUE frontier day (2026-07-21)** | LR ceiling ~1e-4 (erosion above, collapse 1e-3+; tripwire blind to slow leaks -> absolute-anchor patch); ternary NNUE 90-min: 3047 rows, flips 0.45% (constant BROKE — saturating curve), proxy +2 again; late-layer arm + shaped GRPO (b-lever) running | RESULTS 2026-07-21 |
-| **LLMUE (the metabolic model, LIVE 2026-07-20)** | pilot running: grown-76 metabolizing L9a on the Mac (proxy flat @ champion level through 35+ cycles, sidecar growing); ternary flip-census burst on the 3080; overnight = L9 probe vs calculator's ~4/24 | RIFF-LEDGER (metabolic model, LLMUE) |
-| PRODUCTION | **mathnative_gen6_grown.pt = 76/120 @ 70.42** (55.1M, grown 45M->55M from the gen-4 champion, L8 territory; growth beat rebirth 76 v 71; L8 probe ~83% clean) — lineage: 57->69 (gen-4) -> 71 (gen-6 reborn) -> 76; gen-6 ternary = **73 @ 71.81 (beats fp32 cold birth; highest validity ever)**; grow-the-ternary queued | RESULTS 2026-07-20 |
-| Training doctrine (one day, all measured) | births fp32-on-Mac OR TF32-on-cuda (parity 65 vs 64, 2.5x faster; cliff = mantissa bits 8-10; bf16 still banned); packing dead any precision; mining with --seed-base advanced per run; small cycles + two-tier gates + solves-primary + snapshots | RESULTS parity 2x2 / dynamical debit |
-| Storage doctrine | quantize notches never axes: MX-int4 lossless (8x, ships), int3 cracks tail-first, full-rank confirmed (rank-128 bleeds); int4 GEMV kernel greenlit (practice_7 promoted) | RESULTS compression floor / rank floor |
-| Birth panel (4 gauges, external validation incl. DeepSeek-V3 from one shard) | CV=organization, floor=fullness, shelf=diet skew, R=homogeneity; V3 experts are crystals (router = diet-focuser; 19M->671B law) | RESULTS four diets / V3 |
-| Territory levers (the S_max queue, in order) | (1) ansatz-clade curriculum v2.3 (phylogeny: teach the isolated clade as its own branch), (2) L8 band ascent + fresh seeds, (3) ODE continent merge (317 chains quarantined) — corpus is step-space-saturated at current band (novelty 2%) | RESULTS autopsy/phylogeny/gen-5 |
-| Rabbit hole (tonight) | gauge-calibration table RUNNING; then GPTQ-int3, graph modularity, relational storage, principal curricula | specs/2026-07-17-rabbit-hole.md |
-| **MASS-TARGETED TRAINING (the epoch killer, Artin 2026-07-20)** | Rung A: mass-targeted diet (maintenance rations for mastered families; A/B at equal wall-clock) -> Rung B: committee-gated per-neuron LR; feeds gen-7 = grown champion + targeted L9 diet + calculator-v2 predicted gate | specs/2026-07-20-mass-targeted-training.md |
-| **Heurisch slot (llmopt deliverable, next)** | wire i_heurisch (fork-walled) + sympy-equivalence callbacks into axiom's external_slots over the pybind bridge; unlocks L6's +21 and the hybrid-460 qualification arm | axiom C plan / fair-fight L6 finding |
-| **GEN-6 (spec'd 2026-07-19, awaiting GO)** | territory birth + predicted gate + grow-vs-rebirth, one overnight: corpus = gen-4 + 14.2k L8 shard; PRE-REGISTERED: L8 probe ~12/24, gate 69+/-2; arms = reborn-45M vs grown-45M->55M (template spray, function-preserving) | specs/2026-07-19-gen6.md |
-| **Calculated-model thesis (the consolidation spine, Artin 2026-07-18)** | weights computable up to gauge; rung 1 = birth calculator (gate/committee/CV from corpus stats, no training) queued at head after overnight verdicts; rungs: statistical synthesis (sample weights from conserved statistics — Tracr dropped: circuit compilation targets the wrong invariant, see neuron biography) -> warm birth (VERDICT: time machine, not better basin — CALC 57 vs COLD 49 at ep1, both 64 at ep3; template saves ~1 epoch of birth compute; next: template qkv/emb, zero-epoch gate) -> closed form | RIFF-LEDGER 2026-07-18 |
-| 113M capacity re-ask | **CLOSED 2026-07-18: 65/120 @ 61.33 (fp32, honest) — capacity is NOT the binder**; loses at L3/L4 (underfit easy levels), CV says rubble, texture froze after ep1; territory stays the Liebig factor | RESULTS 2026-07-18 |
+| **PRODUCTION / THE CROWN** | **STATISTICAL TIE**: champion mathnative_gen6_grown 76/120 (fp32, 55.1M, cuda-verified) vs **merged_grown 75/120 (1.58-bit ternary, 89.7M)** — ternary arc 65->70->75 in one night (diet + warm growth); tie-breakers queued: duo-mined rare shard (mining NOW) or growth round 2 | RESULTS 2026-07-23 |
+| **DUO MINER (gen-8 flywheel)** | LIVE on 3080: champion+ternary mixed waves over fresh band, banking verified chains from rare/unseen skeletons (851 targets); shard -> gen-8 diet | scratch/duo_mine.py |
+| **METABOLIC V3 (the stacked run — next big slot)** | four banked upgrades, one session: fp64 masters (5x flip recovery proven) + surprise-gated LR + wave-contrast pairs + late-layer rod; HEADLINE HYPOTHESIS = Artin's ceiling-on-slow-learning theory (precision lifts slow learning only — birth end proven flat) | RIFF-LEDGER capstone |
+| **SERIES/PHYSICS/POLY/CODE (the continents)** | series 88% (decomposition arc 15->67->88); physics 85.5% first contact (+dual crystal 92.3% WITH math intact — monolith wins, positive transfer); poly 50.9% (needs tree decomposition) + suggestive gate lift 67; vm-asm 89.2% (rung 1b) — FOUR grammars live | RESULTS 2026-07-22/23 |
+| **THE EQUATION (flagship)** | geometry sector now UNIVERSAL at 3 grammars (kurt 1.9 matched-feeding: calculus/mechanics/programs — encodes FEEDING not content); capability counted in PRIMITIVES (decomposition discount — re-price perfection, analysis pending); determinability law measured (96 v 47 within one model) | RESULTS 2026-07-22 |
+| **PRECISION PROGRAM (closed at birth, open online)** | birth: BRACKETED bf16..fp64 indistinguishable (parity sweep + fp64 showdown — pre-registered disagreement resolved for the absorption law); online: fp64 masters proven; endgame impl = Ozaki block-aligned int-sliced matmul (prototype: alignment is the mandatory leg) | RESULTS 2026-07-23 + THEORY absorption law |
+| **RARITY INSTRUMENT (adopted)** | every promotion reads the curve; duo wave = adopted farm sampler (133/200 equal-budget); gates stay single-model | specs/2026-07-22-duo-substrate.md |
+| **AXIOM RELAY (pending send)** | poly tree-decomposition ask + physics tranche 2 (energy conservation after kin/shm passed) + dual-transfer news + vm-asm existence FYI | docs/superpowers/relay/ |
+| Speed doctrine (all shipped this week) | KV cache 3.4x; bf16 births default; grad-ckpt kills 10GB OOM class; allocator tripwire doctrine (the 43x); gates ~2 min | RESULTS 2026-07-22/23 |
 
-| **AXIOM BACKEND (Artin GO 2026-07-18)** | Phase A live: axiom = verify backend (bridge + shadow mode + parity gates), 3080 = axiom dev machine (farm stopped @2,929 L8 rows, no training); then B (generation) -> C (solver kernel, 10-50x farm); L9+ ladder designed on top | specs/2026-07-18-axiom-backend.md |
+## CLOSED this week (see RESULTS for verdicts)
+
+Gen-7 (no-promote, ration lesson -> merged run applied it and won);
+L7 gap (0 real); gate-v2 batching (null; KV was the fix); shaped
+GRPO size-Phi (null); chain-carry v1 (void, redo at full budget);
+selection-overfitting story (retracted -> battery truth -> rarity
+instrument); birth precision (bracketed, closed); 113M capacity
+(closed earlier: territory is the Liebig factor).
 
 ## BANKED (awaiting GO or a prerequisite)
 
