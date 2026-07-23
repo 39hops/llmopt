@@ -122,6 +122,9 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     torch.manual_seed(int(os.environ.get("BIRTH_SEED", "0")))
     model = build_model(len(tok.vocab), d=d, layers=layers,
                         heads=heads, ffn=ffn).to(dev)
+    if os.environ.get("GRAD_CKPT") == "1":
+        model.grad_ckpt = True
+        print("[grad-ckpt] activation recompute ON", flush=True)
     n_params = sum(p.numel() for p in model.parameters())
     print(f"model: {n_params/1e6:.1f}M params on {dev}"
           f"{' [fast: bf16 + token-budget]' if fast else ''}", flush=True)

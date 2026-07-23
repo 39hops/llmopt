@@ -140,8 +140,18 @@ def build_model(vocab_size: int, d: int = 384, layers: int = 8,
                                     device=ids.device).tril()
                 m = causal[None, None] & attn_mask[:, None, None, :].bool()
             new_past = []
+            use_ckpt = (getattr(self, "grad_ckpt", False)
+                        and self.training and past is None)
             for li, b in enumerate(self.blocks):
-                x, kv = b(x, m, past[li] if past is not None else None)
+                if use_ckpt:
+                    # activation recompute: bit-identical (no dropout,
+                    # deterministic kernels), trades ~30% compute for
+                    # the activation memory that OOMs 10GB cards
+                    x, kv = torch.utils.checkpoint.checkpoint(
+                        b, x, m, None, use_reentrant=False)
+                else:
+                    x, kv = b(x, m,
+                              past[li] if past is not None else None)
                 new_past.append(kv)
             logits = self.head(self.norm(x))
             if use_cache or past is not None:
