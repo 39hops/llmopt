@@ -327,3 +327,20 @@ to the collaboration itself.
   to tactics. Also noted: differential algebra derives the calculus
   rulebook without limits (derivation operator, Leibniz axiom) —
   a proof-capable model could derive its own rules limit-free.
+- **The solved-only mining leak** (Artin, 2026-07-23, "steps should
+  outweigh the solution"): training is already all-steps (no solution
+  bonus exists in any loss) — but MINING banks chains only on SOLVED,
+  discarding every verified step of failed attempts: on the frontier
+  (where most attempts fail) that is the majority of paid-for
+  verified experience, at exactly the rarest skeletons. Counterweight:
+  dead-end steps may teach wandering (chain-carry hypothesis). One-
+  variable test: miner v2 banks verified steps from unsolved
+  rare/unseen attempts; gen-8 A/B solved-only vs +failed-steps.
+- **The open-problems probe ("does it try anything untried?")**
+  (Artin, 2026-07-23): our universe's own million-dollar questions =
+  the fused-quotient L8 residue + joint-ceiling L7 roots (unsolved by
+  engine, sympy, and every model). Give crown models + duo sampler a
+  huge budget on exactly those, log EVERY attempted move, diff
+  against the engine's rule table. Success metric is not solving —
+  it is novelty: a rewrite outside the engine's move vocabulary.
+  Desert-test precedent says the attempts will be honest either way.
