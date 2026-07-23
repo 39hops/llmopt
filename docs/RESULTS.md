@@ -3573,3 +3573,18 @@ points.
 (4) Parity note: cuda fp32 control gates 60 (same-seed different-
 device init = different model; the 4-arm comparison is strictly
 within-cuda per the delta doctrine).
+
+## Merged rarity curve + bf16 parity (2026-07-22, ~1 AM close)
+
+(1) MERGED-T768 on the stratified battery (MPS lineage, same
+instrument as 128/127/133): **130/200 — best single model measured**
+(common 65/69, mid 38/48 best-ever, rare 11/18 TYING the fp32
+champion, unseen 16/65). Pre-reg (c) PASS: the L9a diet moved the
+rare bin (9->11 vs ternary predecessor) — repetition substituting
+for resolution on the lean substrate, the rarity law's diet route
+confirmed. A 1.58-bit model now leads both batteries among singles.
+(2) PARITY bf16: 62 v control 60 — PASSES (no dent, half the
+activation memory, faster). Wide births get bf16 by default going
+forward pending tf32/tf32x3 arms; the d768 OOM class dies a second
+way. (cuda-lineage note: control 60, all arm comparisons within-
+device per the delta doctrine.)
