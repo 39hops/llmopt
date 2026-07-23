@@ -259,3 +259,19 @@ to the collaboration itself.
   checkpoints: kurtosis-2.4 sub-Gaussian = low-surprise bits
   (int4-lossless's cause) => Markov/arithmetic-code weights at
   rest; ternary at 30.5% zeros compresses hardest. Storage only.
+- **Precision-patch LoRA ("repair neurons, add skills")** (Artin,
+  2026-07-23 ~2AM): ternary bulk crystal + a tiny fp32/fp64 LoRA
+  channel (rank ~4 per the whisper) trained ONLY on rare-bin misses
+  — episodic-memory prosthetic on the rule crystal: gauge-safe,
+  removable, auditable, and "new skills" arrive as adapters without
+  touching the resident function. Composes: rarity-routed precision
+  (this is its weight-space form), duo-teacher KD (adapter distills
+  the fp32 champion's rare wins), dynamic capacity (adapters ARE
+  model-determined size growth, rank chosen by demand).
+- **PRE-REGISTERED DISAGREEMENT — fp64 birth rarity curve** (booked
+  2026-07-23 2AM, before the verdict): ARTIN predicts the fp64
+  birth lifts the RARE bin (resolution preserves faint traces at
+  birth). HOUSE/absorption-law predicts FLAT everywhere (birth
+  LR 3e-4: absorption 0.0007%, nothing faint enough to save).
+  Grading: rarity gate on fp64_birth vs seedvar-1, rare-bin delta
+  primary. Either verdict banks a law leg.
