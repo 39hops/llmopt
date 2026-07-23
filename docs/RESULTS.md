@@ -3531,3 +3531,18 @@ GATE: **67/120 — first diet addition to RAISE the integral gate**
 only — but mechanism-plausible: partial fractions feed integration,
 axiom's own ranking rationale). Rerun at tree-decomposed volume
 decides.
+
+## THE MERGED RUN: 70/120 — diet alone buys +5 at d768 ternary (2026-07-22 night)
+
+Wide-ternary d768/8L/ffn3072/h12, 6ep, one variable from the twin
+(diet: gen-6 cumulative, L1-L3 rationed 45%, +782 L9a rows).
+**Deployed gate 70/120 @ 65.66 vs twin 65 (same-day recheck, same
+device) = +5, above the >=3 bar. PRE-REG (a) PASS.** Shape as
+pre-registered: L7 16/24 v 12 (L9a moved the top end), L4 9 v 4
+(rations repaired the gen-7 wound). Loss 0.30 final. Run archaeology
+banked separately (the 43x + grad-ckpt saga): d768/BS32/fp32
+activations never fit 10GB — every slow era was OOM-retry thrash;
+grad checkpointing (bit-identical, verified 0.0 diff) deleted the
+class at ~30% recompute, netting 6+ it/s stable. Pre-reg (b)
+championship read pending (champion needs a same-device cuda gate —
+queued behind parity arms); (c) rarity curve queued on MPS lineage.
