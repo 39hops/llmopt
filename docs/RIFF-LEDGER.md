@@ -344,3 +344,19 @@ to the collaboration itself.
   against the engine's rule table. Success metric is not solving —
   it is novelty: a rewrite outside the engine's move vocabulary.
   Desert-test precedent says the attempts will be honest either way.
+- **Fourier continent + the chord-space/gauge-space identity**
+  (Artin, 2026-07-23, off Liszt-as-waveforms + 3B1B's two-note-chord
+  Mobius strip): (1) FOURIER SERIES CONTINENT — the Taylor sibling:
+  "which note is in the wave" = Fourier coefficients = integrals of
+  f*cos(nwt), which the engine already solves; partial-sum chains,
+  coefficient trees, O-marker discipline all port; in-charter (pure
+  math + the spectral toolkit of physics). Audio replay excluded
+  (no oracle for beauty). (2) THE ORBIFOLD IDENTITY: chord space
+  (Tymoczko: n-note chords = T^n/S_n, the 3B1B Mobius strip at n=2)
+  and our weight-gauge space (R^n/S_n, neuron permutations) are the
+  SAME construction — "a chord is not an ordered list of notes" IS
+  "never score weights by distance." Possible payoff: orbifold
+  quotient metrics / geodesics (voice leadings) as the formal answer
+  to "distance between models up to gauge" — the tool weight-space
+  comparison has been missing. Music enters as mathematics, charter
+  intact.
