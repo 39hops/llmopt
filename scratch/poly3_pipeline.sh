@@ -2,7 +2,7 @@
 # one-command pipeline for poly_chain3 arrival: pull, audit, diet, birth, probe
 set -e
 cd ~/code/llmopt
-scp -i ~/.ssh/winwsl -o BatchMode=yes a@10.0.0.184:/mnt/c/Users/a/Documents/code/axiom/data/qual/poly_chain3.jsonl data/
+[ -f data/poly_chain3.jsonl ] || scp -i ~/.ssh/winwsl -o BatchMode=yes a@10.0.0.184:/mnt/c/Users/a/Documents/code/axiom/data/qual/poly_chain3.jsonl data/
 wc -l data/poly_chain3.jsonl
 timeout 7200 .venv/bin/python - << 'PYEOF'
 import json
@@ -31,17 +31,6 @@ for line in open("data/poly_chain3.jsonl"):
     if not ok:
         bad += 1
         if bad < 4: print("BAD:", k, r["cur"][:70])
-print(f"FULL AUDIT {bad}/{n}")
-assert bad == 0, "audit failed - do not train"
-PYEOF'
-import json
-import sympy as sp
-bad = n = 0
-for line in open("data/poly_chain3.jsonl"):
-    r = json.loads(line); n += 1
-    if sp.cancel(sp.sympify(r["cur"]) - sp.sympify(r["nxt"])) != 0:
-        bad += 1
-        if bad < 4: print("BAD:", r["kind"], r["cur"][:70])
 print(f"FULL AUDIT {bad}/{n}")
 assert bad == 0, "audit failed - do not train"
 PYEOF
