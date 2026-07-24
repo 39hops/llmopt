@@ -12,6 +12,7 @@ import time
 import torch
 
 torch.backends.cuda.matmul.allow_tf32 = True
+torch.backends.cuda.matmul.allow_fp16_reduced_precision_reduction = False
 dev = "cuda"
 N = 2048
 g = torch.Generator().manual_seed(1)
@@ -57,20 +58,22 @@ def run(Bmat, Aprep, s, block, tri=None, mm="fp32", dd=False):
                     p = (Ax @ Bj.half()).float()   # fp32 accumulate?
                 else:
                     p = Ax @ Bj.float()
+                if dd:              # exact: two-sum each scaled pair
+                    t = p.double() * 2.0**(-s*(i+j+2)) * 2.0**ea * 2.0**eb
+                    snew = C + t
+                    bb = snew - C
+                    r = (C - (snew - bb)) + (t - bb)
+                    C, Cl = snew, Cl + r
+                    continue
                 d = i + j
                 diag[d] = p if diag[d] is None else diag[d] + p
+        if dd:
+            continue
         part = torch.zeros(N, N, dtype=torch.float64, device=dev)
         for d, P in enumerate(diag):
             if P is not None:
                 part += P.double() * 2.0**(-s * (d + 2))
-        part = part * 2.0**ea * 2.0**eb
-        if dd:                          # two-sum: exact C+Cl invariant
-            snew = C + part
-            bb = snew - C
-            r = (C - (snew - bb)) + (part - bb)
-            C, Cl = snew, Cl + r
-        else:
-            C = C + part
+        C = C + part * 2.0**ea * 2.0**eb
     return (C, Cl) if dd else C
 
 def bench(name, fn, n=3):
