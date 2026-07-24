@@ -4222,3 +4222,17 @@ resolution, never structure; no dimension budget buys back silence.
 "Silence is structure" gets its third and strongest confirmation
 (B-vs-T crater 54/60 -> the one-dot portrait -> width-irreparable +
 dose-degrading). The wounded-law file closes. checkpoints/tourn_B*.
+
+## PRE-REGISTRATION: gen-9 solved-only-leak A/B (2026-07-24, before launch)
+
+Two paired 19M vocab-41 births, gen-8 recipe + the rations fix
+(L1-L3 base rows x2 — targeted at gen-8's L3 23->19 dilution), one
+variable: arm A adds practice rows SOLVED-ONLY (7,431 + 80 skips);
+arm B adds ALL 10,344 (+2,833 unsolved-tagged failed-attempt
+steps). Booked: (a) LEAK THEORY (Artin's "steps should outweigh
+the solution"): arm B > arm A on rare+unseen combined (failed
+steps were mined at the hardest skeletons); (b) COUNTERWEIGHT
+(chain-carry): if arm B < arm A on gate/validity, dead-end steps
+teach wandering; (c) rations: L3 back to >=21/24 both arms;
+(d) continent probes hold (series >=97, energy >=99.5, poly >=88).
+45M union re-ask rides the winning arm tonight.
