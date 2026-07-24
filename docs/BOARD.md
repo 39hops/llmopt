@@ -1,6 +1,6 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-23 evening (see docs/handoffs/2026-07-23-0.md for the full session handoff). RESULTS.md holds verdicts, RIFF-LEDGER.md
+Updated 2026-07-24 morning (handoffs: -23-0 five-grammars day, -23-1 exchange+precision night, -24-0 the verdict wave). RESULTS.md holds verdicts, RIFF-LEDGER.md
 holds provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
@@ -10,8 +10,8 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 |---|---|---|
 | **PRODUCTION / THE CROWN** | **STATISTICAL TIE**: champion mathnative_gen6_grown 76/120 (fp32, 55.1M, cuda-verified) vs **merged_grown 75/120 (1.58-bit ternary, 89.7M)** — ternary arc 65->70->75 in one night (diet + warm growth); tie-breakers queued: duo-mined rare shard (mining NOW) or growth round 2 | RESULTS 2026-07-23 |
 | **DUO MINER (gen-8 flywheel)** | LIVE on 3080: champion+ternary mixed waves over fresh band, banking verified chains from rare/unseen skeletons (851 targets); shard -> gen-8 diet | scratch/duo_mine.py |
-| **METABOLIC v3+v4 (VERDICTS IN)** | mechanism 2.7x flips CONFIRMED; persistence = STRUCTURE (5% flip-backs, monotone 330k, sign-symmetric ratio 1.000); conversion FAILS without a teacher (+1/12 — no gradient at true walls) => THE STUCK-STATE EXCHANGE IS LOAD-BEARING; v5 = v4 + engine demonstration rows | RESULTS 2026-07-23 |
-| **SERIES/PHYSICS/POLY/CODE (the continents)** | series 88% (decomposition arc 15->67->88); physics 85.5% first contact (+dual crystal 92.3% WITH math intact — monolith wins, positive transfer); poly 50.9% (needs tree decomposition) + suggestive gate lift 67; vm-asm 89.2% (rung 1b) — FOUR grammars live | RESULTS 2026-07-22/23 |
+| **METABOLIC v5 / THE EXCHANGE (PRODUCTION)** | exchange CONVERTS (2->6/12 in 10 min on 23 engine rows; self-practice was +1/150min); v5 s1: 6->9/14 incl BOTH p2 deep states; failed-step famine over (2,833 tagged rows); 100-wall head delivered to axiom; d2: exact-vs-fp64 BIT-IDENTICAL (tail 1.06e-14) — precision-capability CLOSED | RESULTS 2026-07-24 |
+| **GEN-8: THE EVERYTHING-CRYSTAL** | one 19M vocab-41 crystal carries five grammars AT SPEC (series 99.2 BEATS specialist / energy 100.0 / poly 89.1 / math 64); UNION EQUATION v1: coefficient (i)~0 (union nearly free), a_bridge small+level-local (L4 fingerprint, door 27%, pre-reg bar FAIL); gen-9 = +rations +failed-step A/B +45M re-ask | RESULTS 2026-07-24 |
 | **THE EQUATION (flagship)** | geometry sector now UNIVERSAL at 3 grammars (kurt 1.9 matched-feeding: calculus/mechanics/programs — encodes FEEDING not content); capability counted in PRIMITIVES (decomposition discount — re-price perfection, analysis pending); determinability law measured (96 v 47 within one model) | RESULTS 2026-07-22 |
 | **PRECISION PROGRAM (closed at birth, open online)** | birth: BRACKETED bf16..fp64 indistinguishable; online: fp64 masters proven; **Ozaki arc RUN 2026-07-23**: error-free transform proven (CPU + cuda), int8-TC crossover (55ms exact beats fp64 accuracy; 21ms tri beats fp64 wall 2x), ZERO-rounding GPU matmul verified vs big-int, fp64-input GEMM at the dd floor (2^-107), **stay-in-RNS lazy pipeline: exact chains beat inexact fp64 past ~6 layers**; next = SR-vs-masters race in metabolic v5 + speculative-arithmetic router | RESULTS 2026-07-23 (six entries) |
 | **RARITY INSTRUMENT (adopted)** | every promotion reads the curve; duo wave = adopted farm sampler (133/200 equal-budget); gates stay single-model | specs/2026-07-22-duo-substrate.md |
