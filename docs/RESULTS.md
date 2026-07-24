@@ -3989,3 +3989,29 @@ kills MATMUL rounding, masters kill STORAGE absorption — together
 the online loop's arithmetic path is rounding-free everywhere
 except deliberate storage quantization; the speculative-arithmetic
 verifier gains an exact referee at ~fp64 wall. scratch/ozaki_cuda3.py.
+
+## Ozaki v4: RNS + fp64-inputs — two honest verdicts, two design laws (2026-07-23 late)
+
+(A) **RNS-GEMM (CRT channels): correct idea, MY sizing bug, and the
+real lesson is deeper.** 10 primes (M~2^66) overflowed: global
+fixed-point on fp32 inputs needs 24 + exponent-SPREAD bits (~2^115+
+for randn tails) — RNS range must be sized to the spread, not the
+mantissa (~20 primes). But the measured bottleneck reframes the
+whole design: 405 ms was ~90% RECONSTRUCTION (Garner digits are k^2
+elementwise passes) — channels are cheap, leaving RNS is expensive.
+THE COMPOSITION INSIGHT THAT FALLS OUT: real RNS systems never
+leave — chain entire pipelines carry-free IN residue space and
+reconstruct ONCE at the end. For us: a whole forward pass (or a
+whole optimizer step) in RNS, one exit. Banked as the v5-era
+exactness endgame; pairs with slicing's stay-in-sliced-domain law.
+(B) **fp64-input exact product: 541 ms, 182 int8 matmuls, deviation
+5.9e-33 = 2^-107 — EXACTLY the double-double capacity floor.** The
+pipeline is perfect up to output format (third confirmation of the
+law); a fp64xfp64 product carries ~117 true bits, dd holds 106 —
+triple-double (one more carry channel) makes it fully exact. As
+delivered: ~106-bit-accurate GEMM of real fp64 matrices on a $700
+gaming card (fp128 hardware: does not exist on any GPU); the
+hi-vs-native-fp64 delta 2.2e-15 IS the detail fp64 hardware loses.
+Slicing scales k^2 with input precision (6->14 slices = 36->182
+products); RNS scales k — the crossover argument for (A)'s revival
+at fp64+ precision. scratch/ozaki_cuda4.py.
