@@ -3947,3 +3947,21 @@ fp64 pass (36 -> ~8); (3) torch._int_mm int8 tensor cores with
 int32 accumulation (the true Ootomo path, 2-4x fp32 rate). The
 tensor-cores-as-exact-integer-units leg is PROVEN (9.0e-16 through
 TF32 hardware); the speed leg is an engineering rung, not physics.
+
+## Ozaki 2a-v2: int8 tensor cores CROSS native fp64 (2026-07-23 night)
+
+The three named fixes, measured (3080, N=2048, weight slices
+amortized = the EU pattern, activation slicing honestly inside the
+timer): v2 fp32-acc full 247 -> 104.6 ms (2.4x, err 8.1e-16);
+**INT8 full-exact 55.1 ms @ 8.5e-16 — 4.5x MORE ACCURATE than
+native fp64 (3.9e-15) at 1.35x its wall**; **INT8 triangular<5:
+20.8 ms @ 5.7e-9 — TWICE AS FAST as native fp64 with error six
+orders below fp32.** The gaming-card thesis is now measured
+in-house: on 1/64-rationed silicon, sliced int8 tensor cores beat
+the fp64 units at their own game on the accuracy axis and pass
+them on wall at the 1e-9 grade. Remaining gap to full-exact-
+faster-than-fp64: the fp64 diagonal recombination (~30 ms) — next
+lift is fp32-pair (two-float) diagonal carry, one fp64 pass.
+Doctrine candidate: the online precise channel's matmuls run
+INT8-sliced (exact) instead of fp64 — faster than fp64 AND exacter.
+scratch/ozaki_cuda2.py.
