@@ -4082,3 +4082,31 @@ secondary. If exact BEATS fp64-masters on capability, the
 absorption law needs an amendment clause (signal below fp64's ULP
 exists and matters). Either verdict banks a law leg — same
 structure as disagreement #1 (birth rarity), which the law won.
+
+## DISAGREEMENT #2 VERDICT: perfect null — the law wins again (2026-07-24 ~1:30AM)
+
+Paired streaming arms (identical food/seeds, one variable: AdamW
+steps accumulated into fp64 masters vs exact double-double):
+**BIT-IDENTICAL OUTCOMES — flips 132,566 = 132,566 (the same
+number), same wall resolved (6->7, m-l3-2#s2), proxy 23->23 both.**
+The dd-tail printout is the whole story in one number: **1.06e-14**
+— the total magnitude fp64 accumulation discards over 29 steps.
+Real, measured for the first time — and TWELVE orders below the
+fp32 deployment cast (2^-24 rel) and ~10 orders below the ternary
+flip threshold. The precision hierarchy, now fully measured:
+ternary threshold >> fp32 deployment >> fp64 ULP >> the exact tail.
+Nothing below fp64's floor can reach the deployed function at these
+LRs; the tail cannot even flip ONE bit of the fp32 copy. Artin's
+capability prediction loses cleanly (structure = disagreement #1);
+exactness-beyond-fp64-masters is a SPEED lever only. v5's race
+drops the dd arm (proven redundant) — int8-exact stays for wall.
+
+## Fused recombination kernel: 2.3x, bitwise-exact (2026-07-24)
+
+Triton one-pass recombination (per-element register loop over all
+slice-pairs, local two-sum, single hi/lo write): **DD-exact 158.8
+-> 70.2 ms, bitwise EQUAL to the looped reference** (the fusion
+gate: not one digit moved). Same-session native fp64: 65.4 ms —
+the zero-rounding pipeline now runs at 1.07x native fp64's wall
+with EXACT output. Third house kernel (Metal split-K, int4 GEMV,
+now triton fused-recombine). scratch/ozaki_fused.py.
