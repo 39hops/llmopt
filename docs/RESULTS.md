@@ -3965,3 +3965,27 @@ lift is fp32-pair (two-float) diagonal carry, one fp64 pass.
 Doctrine candidate: the online precise channel's matmuls run
 INT8-sliced (exact) instead of fp64 — faster than fp64 AND exacter.
 scratch/ozaki_cuda2.py.
+
+## Ozaki 2a-v3: ZERO-rounding GPU matmul, verified (2026-07-23 night)
+
+(1) **THE HEADLINE: max deviation from exact big-integer arithmetic
+= 0.** int8-TC slicing + double-double output (elementwise two-sum
+per scaled pair) on the 3080: the product of two real fp32 matrices,
+computed through tensor cores, is EXACTLY the true mathematical
+product — not fp64-close, bit-perfect (spot grid vs big-int
+Fractions). 154 ms = the correctness arm; the speed arm stays v2's
+55 ms @ 8.5e-16 / 21 ms @ 5.7e-9. Two exactness-chain lessons paid
+en route (booked because the failures teach the design rule): fp32
+diagonal sums crossed 2^24 and the fp64 part-build rounded BEFORE
+the two-sum could protect it — the chain is only as exact as its
+sloppiest link; every carry on the path must be widened or
+two-summed. (2) **fp16-TC arm CLOSED, mechanism named**: cublas on
+this stack accumulates HGEMM in fp16 regardless of
+allow_fp16_reduced_precision_reduction=False (integer matmul at
+s=6-scale magnitudes reads err 8.0; s=8-scale infs) — fp16's
+accumulator cannot hold block sums at any useful s. int8/int32 wins
+unconditionally. (3) Composition doctrine now measurable: Ozaki
+kills MATMUL rounding, masters kill STORAGE absorption — together
+the online loop's arithmetic path is rounding-free everywhere
+except deliberate storage quantization; the speculative-arithmetic
+verifier gains an exact referee at ~fp64 wall. scratch/ozaki_cuda3.py.
