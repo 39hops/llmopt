@@ -31,6 +31,11 @@ implementations. See README for the full inventory and measured numbers.
   it (file, line, what's wrong) — Fable handles the fix. Mechanical
   work (file moves, reference updates) only under explicit
   supervision, and Fable verifies the pass afterward.
+- **The reviewer agent (sanctioned 2026-07-24)**: ONE persistent
+  read-only Opus reviewer for ledger-keeping, verdict cross-checks
+  (pre-reg vs measured, BEFORE booking), and red-teaming. It
+  mentions, never edits/launches; its findings are proposals, not
+  truth. Everything else stays direct-Fable — no other agents.
 - **Oracle-verified everything.** Decoding must be token-identical to eager
   greedy (`eval/equivalence.py`); math answers checked by sympy symbolic
   equivalence, never string match; asm/code scored by the toolchain
