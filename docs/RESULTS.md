@@ -4180,3 +4180,27 @@ lift the law predicted. Options priced: third re-spell of the peel
 or accept a_bridge ~= level-local and test at 45M where capacity
 isn't diluting. The law survives WOUNDED: transfer through shared
 steps exists but is narrower than pre-registered.
+
+## THE UNION EQUATION v1 — coefficients measured (2026-07-24 morning)
+
+Composition law for closed systems, its three couplings now priced:
+  solves^A_L = 24 * (1 - exp(-eff^A_L / k(W)))   [per-grammar, unchanged]
+  (i) SHARED CAPACITY: ~ZERO at 19M x 1.1M rows — gen-8's common
+      bin (63v64) and math gate (64, in-band) undented by tripling
+      the corpus. The union is nearly free until W* binds; where it
+      binds first is EXPOSURE SHARE, not interference (L3 23->19 =
+      dilution of the maintenance ration, fixable by rations).
+  (ii) BRIDGE: a_bridge is SMALL AND LEVEL-LOCAL — L4 +2-4 exactly
+      where pf steps apply, no global gate lift (66 v bar 67+),
+      door-limited at 27%. Transfer flows through shared steps but
+      lands on the LEVELS that use them, not the whole gate.
+  (iii) NOTHING ELSE: probes at-or-above specialists (series 99.2
+      BEATS its specialist — cross-grammar substrate may even help),
+      geometry grammar-free (universality x3).
+Practical calculator, v1 form: to add a grammar to a federation,
+budget its primitives (10k/kind), add maintenance rations for the
+resident grammars' exposure SHARE, expect bridge gains only on the
+specific levels whose derivations contain the new grammar's steps.
+"What a model needs" is now computable per union, with the caveat
+that all three coefficients are 19M-measured — the 45M re-ask rides
+gen-9.
