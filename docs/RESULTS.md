@@ -4247,3 +4247,18 @@ the A/B is clean but the REAL failed-step dose is ~1,558. FIX
 QUEUED: miner v2 gains the identity check at bank time (verified
 AND distinct — the same guard GRPO's reward got in July 15's
 hygiene pass). Arms: A 1,198,397 rows / B 1,199,955.
+
+## PRE-REGISTRATION: poly5 — the bridge law's third knock (2026-07-24, before data)
+
+poly_chain5 (axiom 9e78a9f): ibridge family ONLY re-spelled — the
+peel is now two one-fact rows (ibridge = split one residue integral
+leaving literal subtraction; NEW icancel kind = cancel the (x-a)
+factor, one integral -> one integral) + pmul/psub precursors. Diet
+= chain4's other families + chain5's ibridge family (one variable
+vs chain4). Booked: (a) THE DOOR: ibridge >= 12/15 and icancel >=
+80% — one-fact rows train (ladder law's sixth application); (b)
+THE BRIDGE BAR, unchanged through three generations of data: gate
+>= 3 over the 64/65 band (>= 67-68). Door open + bar hit = the
+bridge law finally CONFIRMED; door open + gate flat = the law is
+WRONG as stated (shared steps in context are insufficient) and
+a_bridge stays level-local; (c) L4 fingerprint holds (>= 8/24).
