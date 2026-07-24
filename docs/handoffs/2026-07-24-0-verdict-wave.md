@@ -37,7 +37,7 @@ Reads: -23-0 (five grammars day), -23-1 (exchange+precision night).
   bit-identity) — the C-class exactness purchase.
 - poly_chain5 (recipe #6) — Artin decides after reading the
   bridge verdict.
-- Relay: 2026-07-23-reply-exchange.md is COMPLETE with morning
+- Relay: 2026-07-24-0-exchange-converts.md is COMPLETE with morning
   addendum — send whenever.
 
 ## Machines
