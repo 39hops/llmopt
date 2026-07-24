@@ -4054,3 +4054,15 @@ that exists: exact beats fp32 (accuracy), fp64 (both axes past
 6-layer chains / 21ms tri), fp128 (dd-floor result), and fp256
 (this entry). There is no finite-precision format left to race.
 scratch/ozaki_cuda6.py.
+
+## Ozaki v6 addendum: the fp1024 footnote (2026-07-23, closing joke)
+
+mpmath at fp1024 (1013-bit): 2,268 ms, deviation 0 — at that width
+the ~180-bit-true answers are exactly representable, so software
+finally ties us on accuracy... by brute-forcing width 5x past the
+answer, at 5.7x our wall, on CPU. The general statement this pins:
+ANY finite format either rounds (narrower than the answer) or
+wastes (wider than it); the exact pipeline is always precisely the
+answer's width, and its cost does not grow with demanded precision.
+The precision race is over — the only opponent that ties is one
+that stops being a format and becomes the answer.
