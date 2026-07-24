@@ -437,3 +437,23 @@ to the collaboration itself.
   and the exact exit is a pure function of the residues, so it
   delta-updates under the EU pattern when few outputs change
   (rank-~4 online updates = few dirty outputs = incremental Garner).
+- **The union equation ("is there a formula for combining closed
+  systems — can it pinpoint what a model needs?")** (Artin,
+  2026-07-24 ~1AM): proposed form, every term already measured or
+  pre-registered tonight — capability stays PER-GRAMMAR
+  (solves^A_L = 24(1-exp(-eff^A_L/k(W)))) and grammars couple
+  through EXACTLY THREE channels: (i) SHARED CAPACITY — one W
+  serves the union, so W* rises with the union corpus
+  (tokens-per-width; gen-8's pre-registered common-bin-dent test IS
+  this coefficient); (ii) THE BRIDGE TERM — eff^A gains
+  a_bridge x (rows where B's grammar does work INSIDE A's contexts);
+  co-residency contributes ZERO (poly2 measured; dual-physics +6.8
+  measured; poly4 tonight measures a_bridge with the door open);
+  (iii) NOTHING ELSE — geometry is grammar-free (universality x3),
+  determinable rows don't interfere (1d: 66k series rows, zero
+  dent). Payoff if it holds: "what a model needs" becomes
+  computable per union — count primitives per grammar (10k/kind,
+  ~2k rows/e-fold), add bridge rows only where transfer is wanted,
+  size W to the union's W*. The calculator generalizes from one
+  closed system to any federation of them. Equation-v1 row queued
+  on tonight's gen-8 + poly4 verdicts.
