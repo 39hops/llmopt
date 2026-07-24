@@ -47,3 +47,15 @@ layers (stay-in-RNS lazy pipeline). Relevant to you long-term: the
 same machinery makes model-side verify arithmetic bit-deterministic
 across devices — the fp16-near-tie class dies on the ternary
 substrate. Nothing needed from the engine side.
+
+## P.P.S. (3AM) — disagreement #2 verdict + overnight
+
+Paired exact-vs-fp64 accumulation arms on the exchange organism:
+BIT-IDENTICAL (flips 132,566 = 132,566; the discarded tail measured
+at 1.06e-14, ten orders below a ternary flip). Precision doctrine
+closed: fp64 masters are the final capability rung; exact = speed/
+determinism only. Also: streaming alone resolved m-l3-2#s2 (7/12
+now). Overnight our side: metabolic v5 session 1 — worklist = p1
+residue + your p2 deep states, banking failed-attempt steps
+(miner v2) and logging FRESH walls in your exchange format; expect
+a new stuck-shard for your farm queue in the morning relay.
