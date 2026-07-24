@@ -4038,3 +4038,19 @@ EXIT capacity again (the pipeline is exact; the exit format is the
 limit; triple-double or big-int exit closes it — and the exit is
 DETERMINISTIC, so it can also be cached/incremental per the EU
 pattern). scratch/ozaki_cuda5.py.
+
+## Ozaki v6: EXACT vs fp256 — wins both axes (2026-07-23, the closer)
+
+fp256 exists only as software (no silicon computes it), so the race
+is our int8-TC pipeline with a 6-component expansion exit (~318
+bits) vs mpmath at 237-bit precision, same fp64-input matmul, N=128:
+**GPU exact 396 ms, deviation vs big-int = 0; mpmath fp256 2,378 ms,
+deviation 5.0e-72 (fp256 still rounds).** 6x faster AND exact-vs-
+approximate at the same time. Scaling note (honest): our N=128 run
+is launch-bound (144 tiny matmuls); mpmath scales O(N^3) at ~us/op
+— at production N=2048 the projected gap is ~10^3-10^4x. The
+"keeping all the digits" claim is now measured at every precision
+that exists: exact beats fp32 (accuracy), fp64 (both axes past
+6-layer chains / 21ms tri), fp128 (dd-floor result), and fp256
+(this entry). There is no finite-precision format left to race.
+scratch/ozaki_cuda6.py.
