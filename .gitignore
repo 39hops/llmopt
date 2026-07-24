@@ -11,3 +11,4 @@ notes/
 checkpoints/pred_syndromes_5b.pt
 data/micromodel_grpo_mined.jsonl
 logs/
+scratch/remote.env.sh

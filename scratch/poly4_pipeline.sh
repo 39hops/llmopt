@@ -1,8 +1,9 @@
 #!/bin/bash
+source "$(dirname "$0")/remote.env.sh"
 # one-command pipeline for poly_chain4 arrival: pull, audit, diet, birth, probe
 set -e
 cd ~/code/llmopt
-[ -f data/poly_chain4.jsonl ] || scp -i ~/.ssh/winwsl -o BatchMode=yes a@10.0.0.184:/mnt/c/Users/a/Documents/code/axiom/data/qual/poly_chain4.jsonl data/
+[ -f data/poly_chain4.jsonl ] || scp -i "$WSL_KEY" -o BatchMode=yes "$WSL_REMOTE":/mnt/c/Users/a/Documents/code/axiom/data/qual/poly_chain4.jsonl data/
 wc -l data/poly_chain4.jsonl
 timeout 7200 .venv/bin/python - << 'PYEOF'
 import json
