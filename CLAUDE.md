@@ -94,33 +94,75 @@ mx.eval every timed iteration. Still queued: flash prefill port
 backend. 36GB fits larger teachers for `distill/` (logit-KD + GKD
 ready) with 0.5B–3B students.
 
-## Active research threads
+## Navigation — READ THESE BEFORE WORKING (in this order)
 
-**`docs/BOARD.md` is the live status board** — every thread as
-LIVE/BANKED/CLOSED with pointers; check it before starting work.
-`docs/RESULTS.md` holds verdicts, `docs/RIFF-LEDGER.md` holds
-idea provenance, `docs/LOOP-LOG.md` tracks expert-iteration rounds.
+1. **`docs/BOARD.md`** — the live status board: every thread
+   LIVE/BANKED/CLOSED, one line each. Never start work without it.
+2. **`docs/handoffs/`** — dated, 0-indexed session handoffs (the
+   repo-side resume artifacts; multiple per day = -0, -1, ...).
+   Read the newest first after any compaction/clear.
+3. **`docs/RESULTS.md`** — every verdict, win/null/retraction alike,
+   newest at the bottom. Before proposing ANY experiment, grep it:
+   the idea has often been run, nulled, or pre-registered already.
+4. **`docs/RIFF-LEDGER.md`** — idea provenance. EVERY riff Artin or
+   the house proposes gets banked here with attribution, even
+   half-retracted ones ("bank everything" is standing policy).
+5. **`docs/THEORY.md`** — the grounding map: house laws x published
+   lineage. No row without a measured result AND a real citation.
+6. **`scripts/INDEX.md`** — signature/docstring index of scripts/.
+   Grep it before writing anything (don't rewrite existing code).
+   **Regenerate after adding/changing scripts:**
+   `.venv/bin/python scripts/gen_index.py`.
+7. `docs/superpowers/relay/` — the axiom-Fable exchange (Artin
+   relays manually); `docs/superpowers/specs/` — pre-run specs;
+   `docs/LOOP-LOG.md` — expert-iteration rounds.
 
-- **Step-level expert iteration** (the founding goal, LIVE since
-  2026-07-12): model emits one verified rewrite per call, trained on
-  oracle-approved chains (engine-replay seed + on-policy), frontier-
-  adaptive loop with tripwires — `scripts/expert_loop.py`, spec in
-  docs/superpowers/specs/. Judges beware the meta-pattern:
-  **prediction pays only where variance lives** (four judges starved
-  in one day when the engine improved under them).
-- Capability ladder (`codegen/ladder.py` + `scripts/bench_ladder.py`):
-  which rung a small model climbs — encode/decode (learned mapping) train
-  up; output/o2_asm (simulation) resist. Every rung toolchain-scored.
-- mathgen calculus: the engine now leads sympy.integrate at every
-  level (L5 100%, L8 37/40); the open residue is simplify-fused
-  multi-family quotients.
+**Habits that keep these useful**: pre-register predictions in
+RESULTS before a run fires; book verdicts (including honest
+failures) the moment they land; consolidate BOARD + a new handoff
+at natural stopping points, not mid-sprint.
+
+## Doctrine (distilled; full text in RESULTS/handoffs)
+
+- **Pre-registration + paired arms, always**: same device, same
+  seeds, one variable. Never compare probes/gates across devices
+  (measured 2x device dependence at the frontier).
+- **Verified AND distinct, at every learning layer**: the oracle
+  accepts X=>X as true; reward, gate candidates, AND miners must
+  all reject identity rewrites (bit three times: GRPO reward hack,
+  gate candidates, miner v5's bank).
+- **Precision doctrine (CLOSED 2026-07-24)**: birth precision is a
+  non-factor above TF32; fp64 masters are the FINAL capability rung
+  for online learning (exact-vs-fp64 measured bit-identical);
+  exact arithmetic is a SPEED/DETERMINISM lever (int8-sliced beats
+  native fp64 — scratch/ozaki_*). Don't spend runs on
+  precision-capability questions.
+- **Speed defaults (lossless, always on)**: KV-cached sampling;
+  bf16 births (--fast) on cuda / fp32 on Mac; GRAD_CKPT=1 for
+  d768+ on 10GB; PYTORCH_CUDA_ALLOC_CONF set in-tree. A CUDA
+  allocator OOM warning in a log is a TRIPWIRE (the 43x), not noise.
+- **Remote ops (friendly-fire, 6 variants deep)**: kill/write/
+  launch = separate ssh calls; a watcher's pgrep must never match
+  a string its own launcher carries; verify file deps at arm time;
+  completion markers fire on SUCCESS only; remote host/key live in
+  gitignored `scratch/remote.env.sh` (never commit them); sync =
+  stash -> pull -> VERIFY -> drop (never drop-on-abort). Both
+  machine checkouts stay at origin/main (`git pull --ff-only`).
+- **Data hygiene**: exclude=-guarded splits; underdetermined rows
+  train hallucination (audit for determinability, not just
+  correctness); diet exposure SHARE matters (rations for resident
+  grammars when the corpus grows).
 
 ## Practical
 
-- `pytest` — pure-Python parts run anywhere; GPU/toolchain tests skip
-  cleanly when hardware/tools are missing.
-- Training scripts (`scripts/train_calculus.py`, `scripts/bench_ladder.py`)
-  follow one recipe: LoRA r=16 on all proj linears via `train/lora.py`,
-  loss on answer tokens only, length-bucketed batches with per-epoch order
-  shuffling (pure length-sorted order regressed accuracy once — keep the
-  shuffle).
+- `pytest` (scoped to tests/ via pyproject; scratch/*_test.py are
+  scripts, not tests). Pure-Python runs anywhere; GPU/toolchain
+  tests skip cleanly.
+- Math-native training: `scripts/train_mathnative.py` (--diet,
+  --fast, VOCAB_EXTRA/BIRTH_SEED/GRAD_CKPT envs; probe scripts
+  take VOCAB_EXTRA too — atom ORDER must match the birth env).
+  Legacy LoRA recipe (`train/lora.py`, r=16, answer-only loss,
+  length-bucketed + shuffled) still serves the 0.5B-era scripts.
+- Scratch experiments live in `scratch/` (committed — they are the
+  lab notebook); stray root artifacts go to `logs/archive/`; big
+  jsonl/checkpoints stay untracked (file-handoff convention).
