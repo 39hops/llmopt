@@ -4262,3 +4262,20 @@ THE BRIDGE BAR, unchanged through three generations of data: gate
 bridge law finally CONFIRMED; door open + gate flat = the law is
 WRONG as stated (shared steps in context are insufficient) and
 a_bridge stays level-local; (c) L4 fingerprint holds (>= 8/24).
+
+## PRE-REGISTRATION: ODE zero-diet baseline probe (2026-07-24, before the run)
+
+Artin's question ("after the model picked up Taylor series, did ODE
+validity go up?") has no measured answer — closed-form ODE solving
+has never been in any diet or probe battery. Queued behind tonight's
+gen-9/poly5 verdicts: an ODE probe band (mathgen/odes.py families,
+string-seeded, checkodesol oracle fork-walled) run against gen-8
+(and the gen-9 winner), scoring closed-form step validity + solves.
+BRIDGE LAW prediction (house): ~ZERO transfer from the 99%-series
+skill — series chains never surface a closed-form ODE step in
+context; coefficient recurrences are not dsolve moves. A nonzero
+baseline = transfer through a channel the bridge law doesn't name
+(shared ansatz vocabulary, the gen-6 champion-does-9/24-L9
+precedent) — bank it and re-examine the law. Either way the number
+becomes the L9b/ODE continent's champion-control, measured BEFORE
+farming instead of after (the 9/24 lesson, applied proactively).

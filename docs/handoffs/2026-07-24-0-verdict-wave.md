@@ -72,3 +72,9 @@ then free. Both trees synced at origin/main.
   union re-ask on the winning arm (tonight, 3080) grades whether
   the union equation's three coefficients are width-stable.
   Book all three verdicts in RESULTS separately.
+- QUEUED (Artin GO, afternoon): ODE zero-diet baseline probe —
+  closed-form ODE validity has NEVER been measured on any model;
+  pre-registered in RESULTS (bridge law predicts ~0 transfer from
+  the 99% series skill; nonzero = unnamed channel, re-examine the
+  law). Runs behind gen-9/poly5, ~30 min on Mac; the number is the
+  L9b continent's champion-control taken BEFORE farming.
