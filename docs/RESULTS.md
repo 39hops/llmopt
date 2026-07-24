@@ -4110,3 +4110,16 @@ gate: not one digit moved). Same-session native fp64: 65.4 ms —
 the zero-rounding pipeline now runs at 1.07x native fp64's wall
 with EXACT output. Third house kernel (Metal split-K, int4 GEMV,
 now triton fused-recombine). scratch/ozaki_fused.py.
+
+## PRE-REGISTRATION: B@768 re-test, data-matched (2026-07-24, before the run)
+
+The bits-dimension exchange law's wounded test, re-run clean: binary
+{+-1} at d768 (75.6M), SAME gen4 corpus, but 6 epochs (the discrete-
+learning law's dose — how ternary earned parity) + grad-ckpt/alloc
+doctrine (the original ran allocator-thrashed at 0.1 it/s, wall-only).
+LAW's prediction: gate ~= T@384's 60 (one width doubling repays the
+0.58-bit alphabet debt) — the 45/120 was starvation. STRUCTURAL
+reading's prediction: stays low (~45-55) — binary's missing zero is
+a deficit no width repays (silence is structure). Either verdict
+closes the law's wound: healed, or amended to "exchange holds only
+for COMPLETE alphabets (zero included)."
