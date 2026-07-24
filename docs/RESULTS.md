@@ -3858,3 +3858,24 @@ signal -> 45M re-ask is one command. Note: the solved-only-leak A/B
 is DEFERRED — practice_rows_p1 carries only 18 unsolved-tagged rows
 (the miner resolved almost everything); the A/B needs a
 failed-step-rich mine first.
+
+## Ozaki rung 1: the error-free transform, proven on CPU (2026-07-23 eve)
+
+Adaptive block-aligned int-slicing (slice until the residual is
+EXACTLY zero — finite mantissas terminate; alignment first, so every
+slice is a true integer; exact accumulation; fp64 recombination):
+**normwise error 8.8e-16 = fp64 machine epsilon** vs plain fp32's
+6.8e-7 — the transform is error-free by construction, rounding
+survives only at recombination. Three riders, each a design lever:
+(1) **THE MPS KEY: fp32 units as exact fixed-point accumulators** —
+s=7 slices, block 32 (2s + log2(b) <= 24) reads 1.0e-15 with ZERO
+integer hardware: the scheme runs exactly on Metal/MPS as-is.
+(2) **Triangular truncation = the precision dial, measured**: 6 of
+36 slice-products ~= fp32 quality (1.4e-7); 10/36 = 5e-10; 36/36 =
+exact. Cost scales with the precision you actually need — Shewchuk
+adaptive refinement gets its ladder. (3) fp32 inputs need k=6 slices
+at s=8 (mantissa + block spread); ternary weights need k=0 on the
+weight side (already integers x scale) — the deployed forward can be
+BIT-EXACT at k products, killing the fp16-near-tie class on the
+ternary substrate. scratch/ozaki_rung1b.py. Rung 2 (MPS wall-clock
+race vs CPU fp64) queued behind gen-8.
