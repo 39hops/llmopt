@@ -4204,3 +4204,21 @@ specific levels whose derivations contain the new grammar's steps.
 "What a model needs" is now computable per union, with the caveat
 that all three coefficients are 19M-measured — the 45M re-ask rides
 gen-9.
+
+## B@768 re-test: the exchange law takes its amendment (2026-07-24 morning)
+
+Data-matched re-run (6 epochs, clean 6.8 it/s — the original ran
+allocator-thrashed at 0.1): **28/120 @ 15.78 — WORSE than the
+3-epoch run's 45/120.** Both pre-registered readings overshot: the
+law's healing prediction (~60) fails outright, and even the
+structural range (45-55) was too kind — extended training actively
+DEGRADED binary at width (45 -> 28, validity 36.73 -> 15.78 vs
+B@384's own 36.73). New fact beyond the registration: binary-at-
+width is a TRAINING-DYNAMICS pathology, not just a capacity
+deficit — the dose that carried ternary to parity (6ep) carries
+binary downhill. AMENDMENT ADOPTED: **the bits-dimension exchange
+holds only for COMPLETE alphabets (zero included)** — width repays
+resolution, never structure; no dimension budget buys back silence.
+"Silence is structure" gets its third and strongest confirmation
+(B-vs-T crater 54/60 -> the one-dot portrait -> width-irreparable +
+dose-degrading). The wounded-law file closes. checkpoints/tourn_B*.
