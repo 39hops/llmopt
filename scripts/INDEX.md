@@ -1201,6 +1201,16 @@ METABOLIC V4 — practice food + persistence census (spec 2026-07-23-metabolic-v
 - `try_state(cur0, seed0, plies=10)` — One duo... single-model rollout from a state. Returns
 - `probe_worklist(tag, seed_base)`
 
+### scratch/metabolic_v5.py
+METABOLIC V5 session 1 (spec 2026-07-23-metabolic-v5; dd arm retired per disagreement-2 verdict). fp64 masters, streaming, long horizon. Three jobs in one session:   (1) practice: worklist = p1 residue + p2 deep states (14), stuck       food + fresh L6-9, paired PRE/POST fixed-seed probes;   (2) MINER V2: bank ALL verified steps outcome-tagged (solved /       unsolved) -> data/practice_rows_v5.jsonl — the failed-step       shard the gen-9 solved-only-leak A/B needs;   (3) fresh-wall logging: zero-verified fresh roots -> axiom       exchange format, data/stuck_states_v5.jsonl (morning relay). Usage: metabolic_v5.py <ckpt> <worklist> <minutes>
+
+- `ternary(w)`
+- `class TLin` (forward)
+- `opt_step()`
+- `sign_state()`
+- `try_state(cur0, seed0, plies=8)`
+- `probe(tag)`
+
 ### scratch/ozaki_2b_bisect.py
 *(no docstring)*
 
