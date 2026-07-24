@@ -3827,3 +3827,17 @@ states supply exactly the missing gradient. stuck_states_p1 ->
 axiom is now the hot path; re-probe on the same fixed seeds is the
 pre-registered test. Practice mode = model rollouts + ENGINE
 demonstrations, two halves, neither sufficient alone.
+
+## poly3/bridge: 91.4% probe, gate 65 — the bridge law is UNTESTED, not dead (2026-07-23 eve)
+
+Termwise treatment: probe 83.2 -> 91.4% (div 22/22, all constant
+kinds saturated). THE BRIDGE READ: iclose 24/24 PERFECT (the atomic
+close trained) but ibridge 1/9 — the entry decomposition is itself
+a multi-fact long-emission and FAILED, so gate rollouts cannot take
+the pf path at all: gate 65 (=baseline) is UNINFORMATIVE about the
+bridge law; the pre-registration stands untested pending a
+per-piece re-spell of ibridge (the 1e fold-append pattern, recipe
+application #5). Also measured: padd at its full 10k budget reads
+only ~50% — operand complexity is confirmed as a second axis of
+the primitive unit (volume cannot buy what emission size costs).
+Handoff: docs/handoffs/2026-07-23-0.md (new convention).
