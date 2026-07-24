@@ -1,6 +1,6 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-23 morning. RESULTS.md holds verdicts, RIFF-LEDGER.md
+Updated 2026-07-23 evening (see docs/handoffs/2026-07-23-0.md for the full session handoff). RESULTS.md holds verdicts, RIFF-LEDGER.md
 holds provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
@@ -10,12 +10,12 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 |---|---|---|
 | **PRODUCTION / THE CROWN** | **STATISTICAL TIE**: champion mathnative_gen6_grown 76/120 (fp32, 55.1M, cuda-verified) vs **merged_grown 75/120 (1.58-bit ternary, 89.7M)** — ternary arc 65->70->75 in one night (diet + warm growth); tie-breakers queued: duo-mined rare shard (mining NOW) or growth round 2 | RESULTS 2026-07-23 |
 | **DUO MINER (gen-8 flywheel)** | LIVE on 3080: champion+ternary mixed waves over fresh band, banking verified chains from rare/unseen skeletons (851 targets); shard -> gen-8 diet | scratch/duo_mine.py |
-| **METABOLIC V3 (the stacked run — next big slot)** | four banked upgrades, one session: fp64 masters (5x flip recovery proven) + surprise-gated LR + wave-contrast pairs + late-layer rod; HEADLINE HYPOTHESIS = Artin's ceiling-on-slow-learning theory (precision lifts slow learning only — birth end proven flat) | RIFF-LEDGER capstone |
+| **METABOLIC v3+v4 (VERDICTS IN)** | mechanism 2.7x flips CONFIRMED; persistence = STRUCTURE (5% flip-backs, monotone 330k, sign-symmetric ratio 1.000); conversion FAILS without a teacher (+1/12 — no gradient at true walls) => THE STUCK-STATE EXCHANGE IS LOAD-BEARING; v5 = v4 + engine demonstration rows | RESULTS 2026-07-23 |
 | **SERIES/PHYSICS/POLY/CODE (the continents)** | series 88% (decomposition arc 15->67->88); physics 85.5% first contact (+dual crystal 92.3% WITH math intact — monolith wins, positive transfer); poly 50.9% (needs tree decomposition) + suggestive gate lift 67; vm-asm 89.2% (rung 1b) — FOUR grammars live | RESULTS 2026-07-22/23 |
 | **THE EQUATION (flagship)** | geometry sector now UNIVERSAL at 3 grammars (kurt 1.9 matched-feeding: calculus/mechanics/programs — encodes FEEDING not content); capability counted in PRIMITIVES (decomposition discount — re-price perfection, analysis pending); determinability law measured (96 v 47 within one model) | RESULTS 2026-07-22 |
 | **PRECISION PROGRAM (closed at birth, open online)** | birth: BRACKETED bf16..fp64 indistinguishable (parity sweep + fp64 showdown — pre-registered disagreement resolved for the absorption law); online: fp64 masters proven; endgame impl = Ozaki block-aligned int-sliced matmul (prototype: alignment is the mandatory leg) | RESULTS 2026-07-23 + THEORY absorption law |
 | **RARITY INSTRUMENT (adopted)** | every promotion reads the curve; duo wave = adopted farm sampler (133/200 equal-budget); gates stay single-model | specs/2026-07-22-duo-substrate.md |
-| **AXIOM RELAY (pending send)** | poly tree-decomposition ask + physics tranche 2 (energy conservation after kin/shm passed) + dual-transfer news + vm-asm existence FYI | docs/superpowers/relay/ |
+| **AXIOM LOOP (6 clean batches)** | delivered: chain3 folds (->98%), phys_energy (->100%), poly3 termwise+bridge (634k, in training); HOT: stuck_states_p1 farm (the exchange test); practice mode adopted engine-side | docs/superpowers/relay/ |
 | Speed doctrine (all shipped this week) | KV cache 3.4x; bf16 births default; grad-ckpt kills 10GB OOM class; allocator tripwire doctrine (the 43x); gates ~2 min | RESULTS 2026-07-22/23 |
 
 ## CLOSED this week (see RESULTS for verdicts)
