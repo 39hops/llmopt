@@ -3912,3 +3912,38 @@ design fell out of debugging it: NEVER LEAVE THE SLICED DOMAIN —
 carry activations as slices end to end and every layer is exact
 (the fixed-point pipeline, what integer DSPs always did); redo
 queued as 2c-proper. scratch/ozaki_rung1b.py, ozaki_2b_check.py.
+
+## THE EXCHANGE CONVERTS: 2/12 -> 6/12 (2026-07-23 night, pre-registered PASS)
+
+The v4 organism (metab_v4.pt, cuda) trained ~10 min on axiom's 23
+certified stuck-chain rows, re-probed on the SAME fixed seeds:
+**PRE 2/12 (reproducing v4's endpoint exactly — the paired
+instrument is clean) -> POST 6/12. Bar was beat-2: SMASHED.** All
+four flips (m-l4-27#s1, m-l6-60#s2, m-l7-48#s3, m-l7-54#s2) are
+TAUGHT walls; the two prior wins retained; proxy 24 -> 23 (noise;
+function preserved). The ledger stands: 150 min of self-practice =
++1/12; 23 demonstration rows = +4/12 in ten minutes. The
+teacher-requirement theory now has both halves measured — the model
+cannot sample what it cannot do, and the smallest demonstration
+diet convertsimmediately. With the 12/12 complementarity (model's
+2 = engine's 2 holdouts), the practice loop is PROVEN end to end:
+model logs walls -> engine farms them -> model eats chains ->
+resolution moves. Metabolic v5 inherits a validated food channel.
+checkpoints/exchange_p1.pt on WSL.
+
+## Ozaki cuda race: exactness wins, wall loses (honest split, 2026-07-23)
+
+3080, N=2048: TF32 1.0ms/2.7e-4, strict fp32 0.8ms/2.0e-6, native
+fp64 40.8ms/3.9e-15, **sliced-exact 247ms/9.0e-16 — MORE ACCURATE
+than native fp64** (fp64 matmul accumulates ~sqrt(N) rounding; the
+sliced scheme rounds only at recombination) but 6x slower; tri<4
+93ms/8.4e-10, tri<3 70ms/2.2e-7. Diagnosis, named: the 36 matmuls
+cost ~36ms of fp32 work — the loss is the fp64 ELEMENTWISE
+recombination (36 x N^2 fp64 ops on 1/64-rationed units) + per-call
+re-slicing. Headroom banked, in order: (1) amortize weight slicing
+(weights are static in inference/metabolism — slice once, the EU
+pattern); (2) group recombination per (i+j) diagonal in fp32, one
+fp64 pass (36 -> ~8); (3) torch._int_mm int8 tensor cores with
+int32 accumulation (the true Ootomo path, 2-4x fp32 rate). The
+tensor-cores-as-exact-integer-units leg is PROVEN (9.0e-16 through
+TF32 hardware); the speed leg is an engineering rung, not physics.
