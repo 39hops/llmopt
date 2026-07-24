@@ -13,6 +13,9 @@ conversion needs a teacher (self-practice +1/12). v5 = v4 machinery
   (stuck_chains_p1 now; new walls logged in axiom's exchange format
   and relayed each session — the loop closes); (3) fresh L6-9.
 - PRECISION RACE (paired, equal food): fp32 / fp64-masters / SR-fp32
+  / INT8-EXACT (Ozaki sliced optimizer arithmetic — carries
+  pre-registered disagreement #2: Artin predicts capability delta
+  over fp64-masters, house predicts tie-on-capability/win-on-wall)
   (stochastic rounding on the update commit) / [async-CPU masters on
   Mac = co-processor rung 3 pilot]. Primary: committed flips +
   paired resolution; secondary: proxy, census symmetry.

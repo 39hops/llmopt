@@ -4066,3 +4066,19 @@ wastes (wider than it); the exact pipeline is always precisely the
 answer's width, and its cost does not grow with demanded precision.
 The precision race is over — the only opponent that ties is one
 that stops being a format and becomes the answer.
+
+## PRE-REGISTERED DISAGREEMENT #2: exact-vs-fp64 at the validity level (2026-07-23, before v5)
+
+ARTIN: the exact arm's infinite precision difference SHOWS UP in
+model capability (flips/resolution/gate) — finite-format brackets
+were never the real comparison. HOUSE/absorption law: capability is
+flat above the ULP floor — at LR 1e-5, fp64 masters' residual
+rounding is already below gradient noise, so exact TIES fp64-masters
+on every model metric and wins only on WALL (int8-exact is faster
+than fp64); adopting exact is a speed move, not a capability move.
+Grading: metabolic v5's race arms (fp64-masters vs int8-exact,
+equal food, paired) — flips primary, paired resolution + gate
+secondary. If exact BEATS fp64-masters on capability, the
+absorption law needs an amendment clause (signal below fp64's ULP
+exists and matters). Either verdict banks a law leg — same
+structure as disagreement #1 (birth rarity), which the law won.
