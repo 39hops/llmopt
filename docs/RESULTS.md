@@ -4279,3 +4279,47 @@ baseline = transfer through a channel the bridge law doesn't name
 precedent) — bank it and re-examine the law. Either way the number
 becomes the L9b/ODE continent's champion-control, measured BEFORE
 farming instead of after (the 9/24 lesson, applied proactively).
+
+## GEN-9 A/B VERDICT: redistribution, not a winner — three ledger reads (2026-07-24 evening)
+
+First verdict independently cross-checked by the reviewer agent
+BEFORE booking (its stricter language adopted over my provisional
+"marginal pass"). Paired arms, same device/battery (NOTE: third
+census freeze {71,48,20,61} — practice/stuck/duo files entered the
+glob; these 119-120/200 numbers must NEVER be cross-read against
+the champion-era 128-133).
+
+ARM A (solved-only): gate 68/120 @ 65.69 {3:22,4:9,5:18,6:7,7:12};
+series 98.4 / energy 100.0 / poly 88.9; rarity 120/200
+(66/37/11/6). ARM B (+~1,558 real failed steps): gate 70/120 @
+65.37 {3:22,4:9,5:18,6:7,7:14}; series 99.2 / energy 100.0 / poly
+88.5; rarity 119/200 (64/35/13/7).
+
+(a) SOLVED-ONLY LEAK: **directional support, SUB-NOISE — not
+confirmed.** B leads rare+unseen 20 v 17 (+3/81 probes); each bin
+individually (+2, +1) sits inside the noise band. The convincing
+part is the SHAPE: B redistributes ~4 solves out of common/mid
+into rare/unseen — exactly what failed-steps-mined-at-hard-
+skeletons predicts. CAVEAT BOOKED: the test ran at ~HALF dose
+(1,275 of 2,833 "unsolved" rows were miner identities, dropped at
+build). Re-run at full dose with miner v2 (verified-AND-distinct
+at bank) before treating +3 as the effect's ceiling.
+(b) CHAIN-CARRY COUNTERWEIGHT: **not observed** — B is nominally
+UP on the gate (70 v 68, sub-bar; all of it L7 12->14, replicate
+before trusting) with validity dead even. Dead-end steps did not
+teach wandering at this dose. First honest leg of the carry
+ablation, free.
+(c) RATIONS: **clean PASS both arms** — L3 = 22/24 twice (gen-8's
+19 repaired; the doctrine validated independent of the winner).
+Most of the 64 -> 68/70 gate gain is L3 +3 and L5 +2, mechanism-
+clean.
+(d) CONTINENTS: **PASS both arms**; B's series 99.2 TIES gen-8's
+specialist-beating record; poly thin over the bar both arms.
+
+WINNER DECLARATIONS (reviewer's, adopted): 45M union re-ask diet =
+**arm B** (richer/harder diet, defensible forward pick; A remains
+the cleaner control substrate). Production lineage = **statistical
+tie** (B +2 nominal, below the >=3 bar — NOT booked as a real
+gain; champion gen6_grown 76 untouched). Split-instrument note:
+gate says B, overall rarity says A, both sub-noise — the fp16-
+near-tie signature at the A/B level; booked as REDISTRIBUTION.
