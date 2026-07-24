@@ -457,6 +457,30 @@ to the collaboration itself.
   size W to the union's W*. The calculator generalizes from one
   closed system to any federation of them. Equation-v1 row queued
   on tonight's gen-8 + poly4 verdicts.
+- **Extrapolation-past-ability / the composition coefficient**
+  (Artin, 2026-07-24 afternoon, from the MoE-dark-experts riff,
+  self-pivoted: "routing isn't our issue — it's the ability to
+  extrapolate past your ability"): can the everything-crystal
+  COMPOSE grammars at inference — grammar A's moves firing inside
+  grammar B's states — to reach answers neither grammar's diet
+  permits alone? Measured ground: extrapolation exists (champion
+  9/24 on never-fed L9; 113M leads past the corpus edge; ternary
+  wins unseen) but composition has never been probed. The
+  instrument already exists: DESERT TEST v2 — feed gen-8 the
+  Liouville-dead integrals (int e^(-x^2)); series-space makes them
+  trivial (the Liouville-jailbreak bank) and gen-8 holds both
+  grammars. Outcomes: (a) honest stall = co-resident, never
+  composing (bridge-law prediction, house bet); (b) spontaneous
+  reach for series expansion = first measured act of cross-grammar
+  discovery; (c) bluff = diagnostic regression. If (a): farm
+  bridge rows demonstrating "when stuck, expand" — discovery as a
+  learned MOVE. Names the union equation's candidate fourth
+  coefficient: (iv) COMPOSITION (inference-time coupling, distinct
+  from training-time bridge rows). MoE-scale note: no dark experts
+  at 19M — holography (8 random neurons read 87%) means every
+  fragment fires; the dark-expert problem is frontier-scale only.
+  Related: open-problems probe (novelty metric), blackboard
+  protocol (the two-model version of the same question).
 - **Streaming birth** (Artin, 2026-07-24 ~2:45AM, half-retracted
   same breath — banked anyway): template init + stream the corpus
   ONCE, no epochs, surprise-gated LR — birth as metabolism from
