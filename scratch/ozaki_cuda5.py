@@ -89,7 +89,7 @@ def frac_crt(rX):
         w = pow(M // p, -1, p) / p          # (M/p)^-1 mod p, over p
         est = torch.remainder(est + r.double() * w, 1.0)
     est = torch.where(est > 0.5, est - 1.0, est)     # signed
-    return est * M                                    # ~fp64-grade value
+    return est * float(M)                             # ~fp64-grade value
 
 # ---------- correctness at N=128 vs big-int truth ----------
 N = 128
