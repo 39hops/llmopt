@@ -4159,3 +4159,24 @@ stuck_states_v5 = 1,556 fresh walls (L9 572 / L6 498 / L7 283 /
 L8 203) — needs binning/priority before the axiom relay (their
 escalated farm can't eat 1,556; send the rare-bin head). NET flips
 264,794 over 126 steps; live resolutions 812.
+
+## poly4/bridge: pre-reg FAILS at the bar; the fingerprint is level-local (2026-07-24)
+
+The re-spelled batch (677,458 rows, audit clean, watcher-pulled):
+probe 90.9% (flat vs poly3's 91.4). THE DOOR: ibridge 1/9 -> 4/15
+(27%) — better, still the bottleneck (the peel emission is still a
+two-integral row: operand-complexity axis, third confirmation);
+close 2/9 -> 17/24 (71%); padd -> 71%. GATE: **66/120 — +1/+2 over
+the 64/65 band, BELOW the pre-registered >=3 bar: the bridge
+experiment as registered FAILS.** But the honest mechanism read
+sits one level down: **L4 8/24 vs the band's 4-6** — the gains
+concentrate exactly where partial-fractions work applies (rational
+integrands), while the door passes only ~19% of rollouts
+(0.27 entry x 0.71 close). Verdict language: a_bridge (union
+equation coefficient ii) is SMALL AND LEVEL-LOCAL at 19M with a
+partially-open door — not zero (L4 fingerprint), not the +3 global
+lift the law predicted. Options priced: third re-spell of the peel
+(one integral per row — recipe application #6, axiom cost small);
+or accept a_bridge ~= level-local and test at 45M where capacity
+isn't diluting. The law survives WOUNDED: transfer through shared
+steps exists but is narrower than pre-registered.
