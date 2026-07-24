@@ -4123,3 +4123,39 @@ reading's prediction: stays low (~45-55) — binary's missing zero is
 a deficit no width repays (silence is structure). Either verdict
 closes the law's wound: healed, or amended to "exchange holds only
 for COMPLETE alphabets (zero included)."
+
+## GEN-8: the everything-crystal — all three pre-regs PASS (2026-07-24 morning)
+
+One 19M vocab-41 crystal, 1.1M rows, five row-grammars at once.
+(a) Math gate 64/120 (band 65+/-2: PASS). (b) Continent probes vs
+their specialists: **series 99.2% — BEATS the specialist's 98.0**;
+energy 100.0% (ties perfect); poly 89.1% (bar 88: pass, -2.3 tax).
+(c) Rarity 115/200 vs poly3-comparator 114 — rare+unseen 18 v 17
+(pass, inside noise; 800 duo/practice rows too few to move a curve).
+**THE UNION EQUATION'S COEFFICIENT (i) READS ~ZERO**: common bin
+63/69 v 64/69, math gate -1 — no capacity dent from tripling the
+corpus at FIXED 19M width. Grammars don't fight; the union is
+nearly free even at small width. One redistribution noted: L3 23->19
+inside the gate (L5/6/7 each +1) — continent rows diluted L1-L3
+exposure share; gen-9 applies the rations doctrine. The
+one-crystal-N-grammars claim is now MEASURED: a single 19M model
+carries calculus + series (99.2) + mechanics + a conservation law
+(100.0) + polynomial algebra (89.1) simultaneously, at spec-level
+capability in each.
+
+## Metabolic v5 s1: 6 -> 9/14 — the p2 DEEP STATES fall (2026-07-24)
+
+200-min streaming session (fp64 masters, 14-wall worklist, zero
+rollbacks, proxy held 23): resolution **6 -> 9/14** — and the three
+gains include **BOTH of axiom's p2 deep mid-derivation states**
+(m-l4-47#s1#s6, m-l4-60#s1#s4) plus m-l7-58#s1. The engine's
+"hard probes" shape works exactly as designed: rich certified
+prefixes = resumable practice states, and the organism cracked them
+from streaming alone. (m-l4-27#s1 flickered out — near-tie wall.)
+Deliverables: **practice_rows_v5 = 10,344 rows (7,431 solved /
+2,833 UNSOLVED-tagged / 80 skips) — the failed-step famine is over
+(was 18 rows)**; gen-9's solved-only-leak A/B fully powered.
+stuck_states_v5 = 1,556 fresh walls (L9 572 / L6 498 / L7 283 /
+L8 203) — needs binning/priority before the axiom relay (their
+escalated farm can't eat 1,556; send the rare-bin head). NET flips
+264,794 over 126 steps; live resolutions 812.
