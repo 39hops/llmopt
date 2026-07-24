@@ -457,3 +457,11 @@ to the collaboration itself.
   size W to the union's W*. The calculator generalizes from one
   closed system to any federation of them. Equation-v1 row queued
   on tonight's gen-8 + poly4 verdicts.
+- **Streaming birth** (Artin, 2026-07-24 ~2:45AM, half-retracted
+  same breath — banked anyway): template init + stream the corpus
+  ONCE, no epochs, surprise-gated LR — birth as metabolism from
+  minute zero (the organism never sees a "dataset", only
+  experience). A/B vs the standard 3-epoch birth at equal rows.
+  Composes: warm-birth template (time-machine result), surprise
+  gating, the d2 streaming harness. Open question it answers:
+  is the epoch an artifact of the batch era?
