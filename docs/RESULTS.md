@@ -4236,3 +4236,14 @@ steps were mined at the hardest skeletons); (b) COUNTERWEIGHT
 teach wandering; (c) rations: L3 back to >=21/24 both arms;
 (d) continent probes hold (series >=97, energy >=99.5, poly >=88).
 45M union re-ask rides the winning arm tonight.
+
+### Gen-9 launch note: the miner's identity leak (2026-07-24)
+
+Diet build revealed ~1,275 of the 2,833 "unsolved" practice rows
+are identity rewrites (model echoes cur; oracle correctly verifies
+X=>X; the v5 miner banked them — the reward-hack scar's cousin at
+the mining layer). The no-op filter drops them at diet build, so
+the A/B is clean but the REAL failed-step dose is ~1,558. FIX
+QUEUED: miner v2 gains the identity check at bank time (verified
+AND distinct — the same guard GRPO's reward got in July 15's
+hygiene pass). Arms: A 1,198,397 rows / B 1,199,955.
