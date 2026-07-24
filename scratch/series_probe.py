@@ -3,6 +3,7 @@ held-out steps (seeds 17-19), scored by sympy polynomial equivalence
 in fork-isolated workers (the solve_isolated doctrine). Also runs the
 standard 120 gate for the paired regression read vs seedvar-1 (65).
 Usage: series_probe.py <ckpt>"""
+import os
 import sys, json
 import multiprocessing as mp
 mp.set_start_method("fork", force=True)
@@ -31,7 +32,8 @@ def equiv(pred, gold, deadline=10):
     return q.get() if not q.empty() else False
 
 ckpt = sys.argv[1]
-tok = MathTokenizer()
+tok = (MathTokenizer(extra=os.environ["VOCAB_EXTRA"].split(","))
+       if os.environ.get("VOCAB_EXTRA") else MathTokenizer())
 dev = "mps" if torch.backends.mps.is_available() else "cpu"
 model = build_model(len(tok.vocab)).to(dev)
 model.load_state_dict(torch.load(ckpt, map_location="cpu"))

@@ -4,6 +4,7 @@ frequency — integer constants normalized to '#', skeleton counted in
 the corpus cur-set. Probes drawn WITHOUT exclude-filtering (the full
 spectrum is the point); bins: common / mid / rare / unseen-skeleton.
 Usage: gate_rarity.py <ckpt> <d> <layers> <ffn> <heads> <label>"""
+import os
 import sys, glob, json, re
 from collections import Counter
 sys.path.insert(0, "."); sys.path.insert(0, "scripts")
@@ -55,7 +56,8 @@ for lv in G.GATE_LEVELS:
 dist = Counter(b for _, _, _, b in probes)
 print(f"[probes] {len(probes)} total; bins {dict(dist)}", flush=True)
 
-tok = MathTokenizer()
+tok = (MathTokenizer(extra=os.environ["VOCAB_EXTRA"].split(","))
+       if os.environ.get("VOCAB_EXTRA") else MathTokenizer())
 dev = "mps" if torch.backends.mps.is_available() else "cpu"
 model = build_model(len(tok.vocab), d=d, layers=layers, heads=heads,
                     ffn=ffn).to(dev)

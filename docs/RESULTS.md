@@ -3841,3 +3841,20 @@ application #5). Also measured: padd at its full 10k budget reads
 only ~50% — operand complexity is confirmed as a second axis of
 the primitive unit (volume cannot buy what emission size costs).
 Handoff: docs/handoffs/2026-07-23-0.md (new convention).
+
+## PRE-REGISTRATION: gen-8 everything-diet (2026-07-23 evening, before launch)
+
+One 19M vocab-41 crystal fed all five grammars at once (math base +
+poly3 + series chain3 + physics/energy + duo-mined 433 + practice
+378; ~1.1M rows, Mac). Booked before the run: (a) math production
+gate 65 +/- 2 (determinable rows don't fight the resident crystal —
+1d/poly3 precedent); (b) continent probes within a few points of
+their specialists: series >=94 (spec 98.0), energy >=99 (spec 100),
+poly >=88 (spec 91.4) — the one-crystal-five-grammars claim at 19M;
+(c) rarity battery: gen-8 >= the poly3 birth (same battery, same
+device, paired) on rare+unseen combined — duo/practice rows were
+mined at exactly those skeletons. A common-bin dent = capacity
+signal -> 45M re-ask is one command. Note: the solved-only-leak A/B
+is DEFERRED — practice_rows_p1 carries only 18 unsolved-tagged rows
+(the miner resolved almost everything); the A/B needs a
+failed-step-rich mine first.
