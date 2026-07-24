@@ -4015,3 +4015,26 @@ hi-vs-native-fp64 delta 2.2e-15 IS the detail fp64 hardware loses.
 Slicing scales k^2 with input precision (6->14 slices = 36->182
 products); RNS scales k — the crossover argument for (A)'s revival
 at fp64+ precision. scratch/ozaki_cuda4.py.
+
+## Ozaki v5 — THE STAY-IN-RNS PIPELINE: lazy exactness measured (2026-07-23 late)
+
+Four matmul layers computed entirely in residue space (20 primes,
+int8 channels), one exit. (1) **Growth-free storage confirmed**: the
+positional value grew to 88 bits while every intermediate stayed
+int8 residues — RNS defers ALL carries, storage constant with depth.
+(2) **THE WALL LAW (N=2048)**: RNS channels 53 ms for FOUR exact
+layers (~13 ms/layer) vs native fp64 chain 173 ms (~43 ms/layer) AND
+WRONG (4.7e-8 accumulated). One-time exit 170 ms; per-layer exits
+would add 509 ms — the exit amortizes over depth. **Break-even ~6
+layers: any chain deeper than ~6 is FASTER computed exactly in RNS
+than approximately in fp64.** (3) Fractional-CRT cheap exit: 10 ms
+(vs 170) — decision-grade magnitude estimate; caveat measured:
+relative error explodes on cancellation-small entries (metric
+artifact of tiny denominators) — use for magnitude/argmax decisions,
+fire Garner only on ambiguity (speculative-arithmetic pattern).
+(4) Exactness: deviation 1.2e5 on 88-bit values = 4e-22 relative —
+an order beyond fp128 grade, floor localized to the double-double
+EXIT capacity again (the pipeline is exact; the exit format is the
+limit; triple-double or big-int exit closes it — and the exit is
+DETERMINISTIC, so it can also be cached/incremental per the EU
+pattern). scratch/ozaki_cuda5.py.

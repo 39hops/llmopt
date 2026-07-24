@@ -420,3 +420,20 @@ to the collaboration itself.
   delta-update cheaply). Composes: near-tie logit router (inference
   twin), triangular truncation (the dial the verifier turns). Slots
   into metabolic v5 as the SR-vs-masters race's synthesis arm.
+- **The carry-free lazy pipeline ("we can the pipeline carry-free?
+  literally lazy-computing")** (Artin, 2026-07-23 late): stay in RNS
+  for entire computation chains, exit once — measured same night:
+  exact 4-layer chain at 53 ms channels vs 173 ms inexact fp64;
+  break-even ~6 layers, deeper = exact AND faster. Composes with
+  fractional-CRT decision exits (10 ms) and the speculative-
+  arithmetic verifier. The deferred-carry frame: RNS is lazy
+  evaluation applied to ARITHMETIC — carries are thunks, forced only
+  at observation. Candidate consumers: optimizer step chains
+  (+/x-pure), attention score pipelines, the online precise channel.
+- **The deterministic exit ("anything deterministic about leaving
+  RNS we can compute/cache?")** (Artin, 2026-07-23): yes, three legs
+  — CRT/Garner constants precompute once (done); fractional-CRT
+  gives a cheap ESTIMATE exit for decisions (measured 17x cheaper);
+  and the exact exit is a pure function of the residues, so it
+  delta-updates under the EU pattern when few outputs change
+  (rank-~4 online updates = few dirty outputs = incremental Garner).
