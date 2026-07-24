@@ -11,7 +11,7 @@ B = (rng.standard_normal((N, N)) * 0.05).astype(np.float32)
 def to_int(M):
     e = np.frexp(M.astype(np.float64))[1]
     sh = int(24 - e.min())
-    I = np.round(M.astype(np.float64) * 2.0**sh).astype(object)
+    I = np.round(M.astype(np.float64) * 2.0**sh).astype(np.int64).astype(object)
     return I, sh
 IA, sa = to_int(A); IB, sb = to_int(B)
 P = IA @ IB; SH = sa + sb

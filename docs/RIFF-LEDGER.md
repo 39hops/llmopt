@@ -407,3 +407,16 @@ to the collaboration itself.
   explicit rewrite (engine already solves these internally). Pre-reg:
   bridge diet lifts the integral gate where the co-resident diet
   (poly2, 64) did not.
+- **Speculative arithmetic ("KV-cache the masters; SR drafts, Ozaki
+  verifies")** (Artin, 2026-07-23 night): the NNUE/EU pattern applied
+  to the precision channel — cheap arm (SR/fp32) DRAFTS every result;
+  a free error BOUND (or a cached exact value) verifies; only
+  disagreements fire the exact Ozaki path. Spec-decoding economics
+  transplanted to arithmetic: acceptance rate is the whole game, and
+  the absorption law says ~97-99.7% of updates are coarse enough for
+  the cheap path — the exact path fires exactly where variance lives
+  (starved-judge satisfied by construction). The cache leg is
+  EU-arithmetic (online updates are rank-~4, so cached exact products
+  delta-update cheaply). Composes: near-tie logit router (inference
+  twin), triangular truncation (the dial the verifier turns). Slots
+  into metabolic v5 as the SR-vs-masters race's synthesis arm.

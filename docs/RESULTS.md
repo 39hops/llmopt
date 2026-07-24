@@ -3893,3 +3893,22 @@ two-sided in the data. Deeper residue received: stuck_states_p2 (2
 mid-derivation states, 4-6 plies of certified prefix, Subs-bearing).
 Exchange test ARMED (scratch/exchange_test.py, cuda-paired seeds,
 bar >2/12) — awaiting a 3080 window behind axiom's poly_chain4 emit.
+
+## Ozaki rung 2b: EXACTLY ZERO — and the auditor was the bug again (2026-07-23 night)
+
+Expansion recombination (Shewchuk two-sum chain over the aligned
+integer partials): **max deviation from the exact big-integer
+reference = 0. Not small — zero.** The complete matmul pipeline is
+now rounding-FREE end to end; the output format is the only
+remaining choice. Incident booked (third auditor-was-the-bug this
+week): the first "exact reference" used np.round(...).astype(object)
+— which boxes FLOATS, so the ground truth itself was rounding at
+2^74; Fraction re-check exposed it, int64->object (true big-ints)
+fixed it. Re-graded rung-1 table: full arms ~4e-16 (= fp64 output
+floor; row-aligned entrywise 4.4e-16), triangular 10/36 5e-10, 6/36
+= fp32-grade, expansion = 0. Rung 2c note: the v1 dd-carrier chain
+prototype was sloppy (dropped a residue term, only 10x) — the clean
+design fell out of debugging it: NEVER LEAVE THE SLICED DOMAIN —
+carry activations as slices end to end and every layer is exact
+(the fixed-point pipeline, what integer DSPs always did); redo
+queued as 2c-proper. scratch/ozaki_rung1b.py, ozaki_2b_check.py.
