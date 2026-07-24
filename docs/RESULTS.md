@@ -3879,3 +3879,17 @@ weight side (already integers x scale) — the deployed forward can be
 BIT-EXACT at k products, killing the fp16-near-tie class on the
 ternary substrate. scratch/ozaki_rung1b.py. Rung 2 (MPS wall-clock
 race vs CPU fp64) queued behind gen-8.
+
+## The exchange is bidirectional IN FACT: union 12/12 (2026-07-23 night)
+
+Axiom's stuck-farm delivered 10/12 walls as certified chains (23
+rows, independent audit 0/23 bad, seventh consecutive clean batch) —
+and the two engine holdouts (m-l4-47#s1, m-l4-60#s1, expired at 4x
+budget) are EXACTLY the two states v4's model practice resolved.
+Neither side planned the split; measured complementarity: the model's
+only two wins are the engine's only two losses, union = 12/12. The
+worklist trade is not just load-bearing (v4's conversion fail), it is
+two-sided in the data. Deeper residue received: stuck_states_p2 (2
+mid-derivation states, 4-6 plies of certified prefix, Subs-bearing).
+Exchange test ARMED (scratch/exchange_test.py, cuda-paired seeds,
+bar >2/12) — awaiting a 3080 window behind axiom's poly_chain4 emit.
