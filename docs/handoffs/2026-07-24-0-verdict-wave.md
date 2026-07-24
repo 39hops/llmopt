@@ -63,3 +63,12 @@ then free. Both trees synced at origin/main.
   row; NEW risk named: gate_rarity's census globs data/*.jsonl
   non-recursively — moving data files changes rarity bins; the
   move must update the glob and re-freeze bins in the same pass).
+- QUEUED (Artin GO, midday): the gen-9 verdict is read against
+  THREE open ledger items in one pass, not just the headline —
+  (1) solved-only mining leak (arm B > A on rare+unseen = leak
+  theory confirmed); (2) chain-carry counterweight (arm B < A on
+  gate/validity = dead-end steps teach wandering — the first
+  measured leg of the carry hypothesis's ablation); (3) the 45M
+  union re-ask on the winning arm (tonight, 3080) grades whether
+  the union equation's three coefficients are width-stable.
+  Book all three verdicts in RESULTS separately.
