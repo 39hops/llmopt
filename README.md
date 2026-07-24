@@ -245,4 +245,4 @@ On Windows, `torch.compile` needs MSVC — run benchmark scripts inside a vcvars
 
 ## License
 
-MIT
+Apache-2.0

@@ -7,7 +7,7 @@ name = "llmopt"
 version = "0.1.0"
 description = "Inference optimization lab: speculative decoding, prompt-lookup, radix KV cache, per-layer quant sensitivity + bit allocator"
 readme = "README.md"
-license = { text = "MIT" }
+license = { text = "Apache-2.0" }
 authors = [{ name = "Artin Azizi" }]
 requires-python = ">=3.11"
 dependencies = [
