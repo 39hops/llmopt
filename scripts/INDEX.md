@@ -1125,6 +1125,14 @@ Duo-substrate mixed wave (spec 2026-07-22-duo-substrate, exp 1): per ply, B/2 sa
 - `skeleton(e: str) -> str`
 - `binof(n)`
 
+### scratch/exchange_test.py
+THE EXCHANGE TEST (pre-registered 2026-07-23): train the v4 organism on axiom's engine-farmed chains at OUR stuck states, re-probe the SAME fixed seeds (55_000_000, cuda — device law), must beat 2/12. v4 measured self-practice at +1/12 (no gradient at true walls); the exchange supplies exactly the missing gradient. 10/12 walls have chains; ceiling = 12/12, bar = >=3/12, headline read = how many of the 10 taught walls flip.
+
+- `ternary(w)`
+- `class TLin` (forward)
+- `try_state(cur0, seed0, plies=8)`
+- `probe(tag)`
+
 ### scratch/gate_batched.py
 Batched gate v2 (2026-07-21): batch ACROSS problems, 8 seeds each — one forward serves K*8 rows instead of 8. Right-padded buffer + attn_mask (model supports it); per-row write positions keep RoPE phases identical to the unbatched path. NOTE: float reduction order changes => near-ties may resolve differently => this is a NEW GATE LINEAGE (re-baseline models of record once). Usage: gate_batched.py <ckpt> <d> <layers> <ffn> <heads> <label> [K]
 
@@ -1164,6 +1172,16 @@ KV-cache sampler + equivalence oracle (house rule: token- identical to eager ful
 L9 probe: 24 fresh L9a problems (band 90M — disjoint from the farm's 72/73M and roots_c1), gate_eval-style rollout, 12 plies. Usage: l9_probe.py <ckpt> <d> <layers> <ffn> <heads> <label>
 
 
+### scratch/metabolic_d2.py
+DISAGREEMENT #2 test — exact vs fp64 accumulation at the validity level (v5-mini, 2 of the 4 race arms). ONE variable: arm fp64 accumulates AdamW steps into fp64 masters (rounds 2^-53/step); arm dd accumulates via two-sum double-double (EXACT — absorption structurally impossible). Identical manual AdamW, food stream, seeds. Streaming: every row eaten once, no epochs. Usage: metabolic_d2.py <ckpt> <worklist> <minutes> <fp64|dd>
+
+- `ternary(w)`
+- `class TLin` (forward)
+- `opt_step()` — manual AdamW, identical both arms except accumulation
+- `sign_state()`
+- `try_state(cur0, seed0, plies=8)`
+- `probe(tag)`
+
 ### scratch/metabolic_hot.py
 HOT METABOLISM (2026-07-21, Artin GO): map the safe-plasticity frontier. Pilot harness + LR ladder: start 3e-5, x1.8 every 20 stable cycles; immune system: proxy gate n=8 every 5 cycles, 2 consecutive drops >5 -> ROLLBACK + halve LR (frontier found). Optional --late: freeze layers 0-7 (confluence shortcut: delta mass is 8-11-heavy; backward stops at layer 8). Band 95M (fresh). ~150 cycles.
 
@@ -1173,6 +1191,119 @@ METABOLIC V3 — the stacked LLMUE session (spec: four banked upgrades, one run,
 
 - `ternary(w)`
 - `class TLin` (forward)
+
+### scratch/metabolic_v4.py
+METABOLIC V4 — practice food + persistence census (spec 2026-07-23-metabolic-v4, v4.1 revisions). Single arm, fp64 masters ON, LR 1e-5 (hot-but-guarded), food = stuck-state worklist cycled + fresh unseen-biased problems; rollouts START at the stuck cur; new stuck states eaten in-session; skip-pair banking on resolutions; pre/post resolution probes (paired); flip census every 20 min.
+
+- `ternary(w)`
+- `class TLin` (forward)
+- `sign_state()`
+- `try_state(cur0, seed0, plies=10)` — One duo... single-model rollout from a state. Returns
+- `probe_worklist(tag, seed_base)`
+
+### scratch/ozaki_2b_bisect.py
+*(no docstring)*
+
+
+### scratch/ozaki_2b_check.py
+2b re-check with an EXACT verifier (Fraction arithmetic — the first checker itself rounded: c*2^74 > 2^53).
+
+
+### scratch/ozaki_2b_debug.py
+*(no docstring)*
+
+
+### scratch/ozaki_2b_ident.py
+*(no docstring)*
+
+
+### scratch/ozaki_cuda.py
+Ozaki rung 2a (cuda, 3080): the wall-clock race. Slices of s=8 bits are exactly representable in TF32's 11 significant bits and the tensor-core accumulator is full fp32 — with block<=256 along K, partial sums stay <= 2^24 = exactly representable: TENSOR CORES AS EXACT INTEGER UNITS. Race: sliced-exact (full + triangular) vs native fp64 (rationed 1/64 on gaming cards) vs fp32/TF32. Error scored against a CPU fp64 reference (itself ~1e-16).
+
+- `slices_of(F, s)`
+- `sliced_matmul(A, B, s=S, block=BLOCK, tri=None)`
+- `bench(name, fn, n=3)`
+
+### scratch/ozaki_cuda2.py
+Ozaki rung 2a-v2 (3080): lift the wall floor with the three named fixes. (1) WEIGHT slices amortized (static in inference/metabolism — timed loop slices only the activation side); (2) recombination grouped per (i+j) diagonal — fp64 elementwise falls 36 -> ~13 ops per block; (3) int8 tensor cores (torch._int_mm, int32 accumulate: exact at s=6 with row-wide blocks, products*N <= 2^25 << 2^31). Same error scoring vs CPU fp64 reference as v1.
+
+- `slices_of(F, s)`
+- `prep(M, s, block, side)` — block-align + slice; returns per-block (exp, [slices])
+- `sliced_v2(Bmat, Aprep, s, block, tri=None, int8=False)`
+- `bench(name, fn, n=3)`
+
+### scratch/ozaki_cuda3.py
+Ozaki rung 2a-v3 (3080): three lifts on the v2 crossover. (A) fp16 TENSOR CORES as exact integer units (s=8 slices exact in     fp16's 11-bit mantissa; fp32 accumulate; 2x TF32 rate on Ampere). (B) recombination bottleneck fix: per-diagonal partial sums carried     as fp32 (exact: diagonal sums of s=6 int products stay < 2^24     within a block-diagonal), converted to fp64 ONCE per block. (C) ZERO-ROUNDING OUTPUT: double-double (two-float64) accumulation     via elementwise two-sum on GPU, spot-verified against exact     big-integer arithmetic — deviation must be 0, not small.
+
+- `slices_of(F, s)`
+- `prep(M, s, block, side)`
+- `run(Bmat, Aprep, s, block, tri=None, mm='fp32', dd=False)`
+- `bench(name, fn, n=3)`
+- `to_int(M)`
+
+### scratch/ozaki_cuda4.py
+Ozaki rung v4 (3080): two escalations past the v3 crossover. (A) RNS-GEMM (Chinese Remainder Theorem): integers represented by     residues mod k small primes — multiplication is CHANNEL-LOCAL     (k matmuls, NO cross products, no carries) vs slicing's k^2.     Reconstruction: Garner mixed-radix digits (all mod-p arithmetic     exact in fp64), assembled into double-double with 26-bit-split     radix constants (every elementwise product exact by construction). (B) fp64-INPUT exact matmul via int8 slicing — the product of two     fp64 matrices carries ~106+ bits of true detail: fp128-grade     linear algebra on a gaming card, spot-verified vs big integers.
+
+- `to_fixed(M)`
+- `rns_gemm(IA, IB)` — returns dd (hi, lo) of the EXACT integer product matrix
+- `_split26(x)` — split python int into exact <=26-bit*2^shift fp64 chunks
+- `slices_of(F, s)`
+- `exact64(A, B, s=6)`
+- `to_int64(M)`
+- `big(M)`
+
+### scratch/ozaki_cuda5.py
+Ozaki v5 — THE STAY-IN-RNS PIPELINE (the exactness endgame test). A 4-layer linear chain computed ENTIRELY in residue space: residues stay < p (int8) at every depth while the positional value grows 16 -> ~124 bits; one Garner exit at the end. Sized correctly this time: 16-bit fixed-point inputs/weights (known growth: b_{i+1} = b_i + 16 + 11), 20 primes (M ~ 2^133 > 2^125 needed). Arms: (a) native fp64 chain (fast, WRONG — rounds every layer); (b) RNS single-exit (the lazy pipeline); (c) RNS exit-every-layer (what naive use would do); (d) fractional-CRT cheap estimate (the lazy exit for decisions). Truth: full big-int chain at N=128; walls at N=2048.
+
+- `make(N, seed)`
+- `to_rns(I)`
+- `rns_matmul(rW, rX)` — one layer, all channels; residues in -> residues out (int8)
+- `garner(rX)`
+- `frac_crt(rX)` — fractional CRT: value/M mod 1 ~= sum r_i*w_i mod 1 — one fp64
+- `fp64_chain()`
+
+### scratch/ozaki_cuda6.py
+Ozaki v6 — EXACT vs fp256 (which exists only as software). fp64-input matmul, N=128. Arms:   (a) our pipeline: int8-TC slices + 6-COMPONENT expansion exit       (~318 bits >> fp256's 237) — spot-verified vs big integers       (deviation must be 0);   (b) mpmath at 256-bit (dps=77) on CPU — the only way fp256 exists;       its rounding error vs the same big-int truth is measured too. Scored on both axes: exactness and wall.
+
+- `slices_of(F, s)`
+- `exact_expansion(A, B, s=6)`
+
+### scratch/ozaki_fused.py
+Fused Ozaki recombination kernel (Triton, cuda). The measured bottleneck: 36-64 separate elementwise passes (scale + two-sum per slice-pair), each a full N^2 fp64 round-trip. This kernel does the whole recombination in ONE pass: per element, loop pairs in registers, two-sum locally, write hi/lo once. Exactness preserved (every op identical, just fused). Race: v2 int8 full-exact with looped recombination vs fused; bar = beat native fp64's ~41 ms.
+
+- `recombine_kernel(P, SC, EA, EB, HI, LO, n_pairs, NN, NCOL, BLOCK: tl.constexpr)`
+- `slices_of(F, s)`
+- `prep(M, s, dim)`
+- `exact_fused(A, B, s=6)`
+- `exact_looped(A, B, s=6)`
+- `bench(name, fn, n=3)`
+
+### scratch/ozaki_rung1.py
+Ozaki rung 1: block-aligned int-sliced matmul, CPU reference. Proves EXACTNESS (not 'better'): ground truth = exact integer arithmetic on the fp32 inputs (every fp32 is a dyadic rational, so the true product is computable exactly in Python ints). Arms:   (a) plain fp32 matmul   (b) naive bitmask slicing, fp32 partials (the midnight 2x floor)   (c) aligned int-slice, int64 accumulation (the real scheme)   (d) aligned slice, s=7, fp32 accumulation (the MPS-ready variant:       fp32 units as exact fixed-point accumulators, 2s+log2(b)<=24) Alignment granularity swept: whole-row vs block-32.
+
+- `exact_ref(A, B)`
+- `relerr(C, P, sh)`
+- `report(name, C)`
+- `naive_slice(M, k=3, s=8)`
+- `aligned_matmul(A, B, s, k, block, acc)` — A row-blocks share an exponent; B col-blocks share an exponent.
+
+### scratch/ozaki_rung1b.py
+Ozaki rung 1b: ADAPTIVE aligned int-slicing — slice until residual is exactly zero (finite mantissas terminate), so the transform is error-FREE by construction; only the fp64 recombination rounds. Metric: normwise (max abs err / max abs true) + worst entrywise.
+
+- `to_int(M)`
+- `err(C)`
+- `slices(F, s)`
+- `aligned(A, B, s, block, acc, adaptive=True, k=None)`
+
+### scratch/ozaki_rung2bc.py
+Ozaki rungs 2b+2c (CPU). 2b: recombine partials into a Shewchuk EXPANSION (exact two-sum chain) instead of one fp64 — the last rounding site removed; verify vs exact integer reference. 2c: chain matmuls L layers deep (linear net, no nonlinearity so the exact reference stays computable): fp32 error compounds per layer; exact pipeline carries the expansion between layers — error should stay at the OUTPUT-format floor regardless of depth.
+
+- `two_sum(a, b)`
+- `exp_add(e, x)`
+- `to_int(M)`
+- `slices(F, s)`
+- `aligned_partials(A, B, s=8, block=32)` — yield (scaled partial matrices) — each exactly representable
+- `dd_chain(mats)`
 
 ### scratch/phys_probe.py
 Physics rung 1 probe: greedy emission on held-out phys steps (seeds 17-19), sympy-equivalence in t, fork-isolated. No math gate — the physics expert is vocab-41, a separate model class by design. Usage: phys_probe.py <ckpt>

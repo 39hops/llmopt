@@ -127,7 +127,11 @@ if __name__ == "__main__":
         int(sys.argv[5]), sys.argv[6])
     K = int(sys.argv[7]) if len(sys.argv) > 7 else 12
     tok = MathTokenizer()
-    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    if torch.cuda.is_available():
+        dev = "cuda"
+        torch.backends.cuda.matmul.allow_tf32 = True
+    else:
+        dev = "mps" if torch.backends.mps.is_available() else "cpu"
     model = build_model(len(tok.vocab), d=d, layers=layers,
                         heads=heads, ffn=ffn).to(dev)
     model.load_state_dict(torch.load(ckpt, map_location="cpu"))
