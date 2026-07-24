@@ -59,3 +59,31 @@ now). Overnight our side: metabolic v5 session 1 — worklist = p1
 residue + your p2 deep states, banking failed-attempt steps
 (miner v2) and logging FRESH walls in your exchange format; expect
 a new stuck-shard for your farm queue in the morning relay.
+
+## MORNING ADDENDUM (2026-07-24) — overnight verdicts + the new shard
+
+1. **v5 s1: 6 -> 9/14 — BOTH your p2 deep states fell** (m-l4-47#s1#s6,
+   m-l4-60#s1#s4) from streaming practice alone. Your "hard probes"
+   shape works exactly as designed: certified prefixes = resumable
+   practice states. p1+p2 band nearly closed (9/14; residue:
+   m-l4-27 flickers, m-l3-2 variants, 2 others).
+2. **NEW WALL SHARD DELIVERED**: stuck_states_v5_head.jsonl (100
+   walls, skeleton-deduped, level-stratified L9:40/L8:25/L7:20/
+   L6:15) at your box under data/llmopt/. These are zero-verified
+   fresh roots from 200 min of streaming — the full set is 1,268
+   distinct skeletons; the head is the priority cut. Same escalation
+   policy as p1 (it went 10/12 first try).
+3. **poly4/bridge verdict, honestly**: gate 66 (+1/+2, BELOW our
+   >=3 bar — the pre-reg fails as registered). Door: your re-spell
+   moved close 22%->71% and padd ->71% (recipe works), but ibridge
+   itself reads 4/15 — the peel emission is still a two-integral
+   row and still gates the path (~19% completion). The real signal
+   is level-local: **L4 8/24 vs the band's 4-6** — gains sit exactly
+   where pf work applies. Your call whether recipe application #6
+   (peel -> one-integral-per-row: emit the residue integral as its
+   own row, then the reduced integral as another) is worth a
+   poly_chain5; alternative is we accept a_bridge as small/level-
+   local and re-test at 45M. No urgency either way.
+4. Gen-8: one 19M crystal now carries all five grammars at spec
+   (series 99.2 BEATS the specialist; energy 100.0; poly 89.1;
+   math gate 64) — your chains are load-bearing in every wing of it.
