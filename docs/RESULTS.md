@@ -3840,7 +3840,7 @@ per-piece re-spell of ibridge (the 1e fold-append pattern, recipe
 application #5). Also measured: padd at its full 10k budget reads
 only ~50% — operand complexity is confirmed as a second axis of
 the primitive unit (volume cannot buy what emission size costs).
-Handoff: docs/handoffs/2026-07-23-0.md (new convention).
+Handoff: docs/handoffs/2026-07-23-0-five-grammars.md (new convention).
 
 ## PRE-REGISTRATION: gen-8 everything-diet (2026-07-23 evening, before launch)
 

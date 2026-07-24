@@ -43,3 +43,23 @@ Reads: -23-0 (five grammars day), -23-1 (exchange+precision night).
 ## Machines
 Mac free (gen-8 + poly4 pipelines done). 3080: b768 finishing,
 then free. Both trees synced at origin/main.
+
+## Midday addendum (compact-readiness refresh, ~12:30 PM EST)
+
+- NAMING CONVENTION EXTENDED (Artin): handoffs AND relays are now
+  date-index-NAME (e.g. this file; relay/2026-07-24-0-exchange-
+  converts.md). All references updated.
+- IN FLIGHT: gen-9 A/B arm A mid-ep1 (Mac; verdict chain ~7:30 PM
+  -> poly5 fires itself; chain5 PRE-PULLED: ibridge 10k + icancel
+  10k one-fact rows, on-spec). Axiom: wall farm relaunched on the
+  delivered 100-head (partial preserved); chains land ~2 PM ->
+  v5 s2 food.
+- Plugins: marketplace registered; superpowers installed —
+  subagent-flavored skills DORMANT here (no-subagents policy wins
+  in llmopt); brainstorming/writing-plans available for design
+  sessions.
+- BANKED, awaiting tonight's freeze + Artin's taxonomy approval:
+  the data/ + checkpoints/ reorganization (see BOARD housekeeping
+  row; NEW risk named: gate_rarity's census globs data/*.jsonl
+  non-recursively — moving data files changes rarity bins; the
+  move must update the glob and re-freeze bins in the same pass).

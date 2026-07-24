@@ -36,7 +36,7 @@ for the day's first half (five grammars, crown tie, v4 verdicts).
   as live food channel + fp32/fp64/SR/async-CPU race + miner v2
   (failed-step banking) + deeper-before-wider (p2). Runs after
   gen-8 verdicts.
-- Relay READY (relay/2026-07-23-reply-exchange.md): exchange
+- Relay READY (relay/2026-07-24-0-exchange-converts.md): exchange
   verdict, poly4 receipt, v5 loop asks, Fourier flag. Artin sends.
 - Solved-only-leak A/B still deferred (needs miner v2's
   failed-step-rich shard).
