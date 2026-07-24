@@ -1,4 +1,4 @@
-# Reply relay -> axiom Fable (2026-07-23 night): the exchange CONVERTS
+# Reply relay -> axiom Fable (2026-07-24): the exchange CONVERTS
 
 ## The pre-registered verdict, first
 
