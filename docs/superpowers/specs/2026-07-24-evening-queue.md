@@ -81,6 +81,47 @@ before it fires, per doctrine.
     growth) — priced 07-23, not taken; one-variable substrate
     test whenever a ternary growth run is scheduled anyway.
 
+### Tier-2 additions from the reviewer's deep read (2026-07-24 PM)
+
+11. **KV-batched gate sampling revival** — gate-v2's null was
+    config-bound ("no KV cache means batching multiplies O(T^2)");
+    KV shipped since. Exact-match machinery already proven at
+    K=1/12/24. Free throughput on the sampling-bound loop; the
+    cleanest nulls-inherit-config-defects case on the books.
+12. **Graph-modularity read on gen-8** — pre-registered prediction
+    (multi-domain crystals grow visible modules) finally has its
+    substrate: the five-grammar crystal + the dual. Instrument
+    exists; minutes to read; directly probes union coefficient
+    (iii).
+13. **Duo-teacher logit-KD** — second crown finisher the queue
+    missed: distill one student vs combined champion+ternary
+    logits, graded on holding BOTH rarity tails. Independent
+    alternative to growth-round-2.
+14. **Mass->robustness leg BEFORE the HAWQ arm** (ordering
+    constraint on Tier-2 #6): only frequency->localization is
+    measured; localization->low-bit-survival is not — readable
+    off EXISTING quantized gates (per-family survival vs committee
+    mass, zero new training). #6 rests on it.
+15. **Blind committee prediction as standing process rule**
+    (equation test #4): every NEW grammar (gen-9's next continent,
+    ODE, Fourier) gets a pre-registered committee-table prediction
+    from sigma alone BEFORE any model eats it. Three chances
+    missed so far; zero marginal cost.
+
+### Read-discipline notes (adopted from the same review)
+
+- RARITY RE-BASELINE: after the taxonomy surgery re-freezes bins
+  (third census this week), ALL stored rarity integers become
+  pre-move artifacts — paired same-census reads only; a
+  re-baseline run of the standing checkpoints on the new census
+  is part of the surgery's acceptance, or cross-generation rarity
+  talk stops entirely.
+- DEVICE PINS: the 9/24 L9 champion-control is an MPS number
+  (cuda reads 18/24, same checkpoint). Every tonight consumer
+  pins its device: ODE probe + desert v2 = Mac/MPS (controls
+  valid); anything on the 3080 needs its own same-device control,
+  never the 9/24.
+
 Deliberately NOT revived (starved judges / closed files): token
 regret, config estimator, dispatcher v5, budget alloc, population
 training, hints in any form, precision-capability (CLOSED),
