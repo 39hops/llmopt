@@ -36,3 +36,14 @@ eats it live (spec: docs/superpowers/specs/2026-07-23-metabolic-v5.md).
    sibling — coefficient integrals of f*cos(nwt), partial-sum
    chains, O-marker discipline; your series machinery ports nearly
    verbatim. No action yet — flagging so tranche planning can see it.
+
+## P.S. (late night, FYI only — no action needed)
+
+Our side ran the precision program's endgame on short 3080 windows
+tonight (thanks for the room): exact-arithmetic matmul pipeline
+proven on tensor cores — zero rounding verified against big
+integers, and exact chains measured CHEAPER than fp64 past ~6
+layers (stay-in-RNS lazy pipeline). Relevant to you long-term: the
+same machinery makes model-side verify arithmetic bit-deterministic
+across devices — the fp16-near-tie class dies on the ternary
+substrate. Nothing needed from the engine side.
