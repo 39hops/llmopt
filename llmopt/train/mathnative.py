@@ -40,7 +40,11 @@ class MathTokenizer:
                                if t not in ("<pad>", "<eos>")),
                               key=len, reverse=True)
 
-    def encode(self, s: str) -> list[int]:
+    def encode(self, s: str, strict: bool = True) -> list[int]:
+        """strict=True (default) raises on any character no atom
+        covers — silent drops mangled a 43-char ODE string to 19
+        tokens without a whisper (2026-07-24). strict=False keeps
+        the legacy skip behavior for measured legacy cases only."""
         out, i = [], 0
         while i < len(s):
             for t in self._by_len:
@@ -49,7 +53,11 @@ class MathTokenizer:
                     i += len(t)
                     break
             else:
-                i += 1   # unknown char: skip (charset-verified rare)
+                if strict:
+                    raise ValueError(
+                        f"unencodable char {s[i]!r} at {i} in {s[:60]!r}"
+                        f" — vocab({len(self.vocab)}) has no covering atom")
+                i += 1   # legacy: skip unknown char
         return out
 
     def decode(self, ids: list[int]) -> str:

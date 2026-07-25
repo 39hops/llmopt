@@ -153,7 +153,11 @@ while time.time() - t0 < MINUTES * 60:
             texts, _, _ = G.sample_wave_lp(
                 model, tok, prompt,
                 [seed0 + b for b in range(8)], dev)
-        distinct = [t for t in dict.fromkeys(texts) if t]
+        # verified AND distinct (the GRPO-reward guard at the mining
+        # layer): identity rewrites verify as true (X=>X) but bank
+        # hallucinated "experience" — v5 s1 banked ~1,275 of them.
+        distinct = [t for t in dict.fromkeys(texts)
+                    if t and t.replace(" ", "") != cur0.replace(" ", "")]
         wv = verify_wave(cur0, distinct) if distinct else {}
         ver = [t for t in distinct if wv.get(t, (False, False))[0]]
         rej = [t for t in distinct if not wv.get(t, (False, False))[0]]
