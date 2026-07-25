@@ -28,6 +28,9 @@ LEVELS = {
     "M4": [-1.0, 0.0, 1.0, 2.0],
     "M5": [-2.0, -1.0, 0.0, 1.0, 2.0],
     "P2": [-4.0, -2.0, -1.0, -0.5, 0.0, 0.5, 1.0, 2.0, 4.0],
+    # the deletion square's fourth corner (Artin 2026-07-25):
+    # silence without sign — 1 bit, excitation-only
+    "Z1": [0.0, 1.0],
 }
 _ALPHA = "T"
 
