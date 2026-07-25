@@ -110,10 +110,18 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
           f"uncovered chars: {sorted(uncovered)[:10]}", flush=True)
 
     enc = []
+    skipped_lang = 0
     for t in texts:
-        ids = tok.encode(t) + [tok.eos_id]
+        try:
+            ids = tok.encode(t) + [tok.eos_id]
+        except ValueError:
+            skipped_lang += 1   # out-of-language row (Subs/erf/u_):
+            continue            # skip whole row, never mangle
         if len(ids) <= 512:
             enc.append(ids)
+    if skipped_lang:
+        print(f"skipped {skipped_lang} out-of-language rows "
+              f"(strict encode; historically silently mangled)", flush=True)
     enc.sort(key=len)
     print(f"{len(enc)} sequences, vocab {len(tok.vocab)}", flush=True)
 
