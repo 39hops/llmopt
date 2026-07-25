@@ -4826,3 +4826,24 @@ corpus; its fresh-eyes pass on today's entries, all adopted:
    pre-fix point in every table. No gen-9 cross-fix control
    exists (unlike gen-4's <= 1 solve bound) — the 1,017-row
    delta rides as an explicit fence.
+
+## PRE-REG: the prologue arms (Opus-5 design, 2026-07-25, before gates)
+
+Zero births, PTQ/gauge on the 19M infix twin, MPS gates chained
+behind the 4-bit arms. Cells + predictions:
+- S4 {±1/3,±1} (symmetric, 2 bits, NO zero): the cheap zero-test.
+  Zero-law predicts a crater (B-class failure) DESPITE having two
+  magnitudes — if S4 holds near M4's 61, binary died of
+  resolution, not zero-absence, and the law revises.
+- sparse (fp32 magnitudes pruned to ternary's zero-fraction): if
+  sparse ~ ternary-PTQ, "zero pays" = sparsity, alphabet story
+  shrinks; if sparse >> tern, the discrete levels also matter.
+- Gauge-commutation (the law candidate's direct test): gate
+  (m4) vs gate(gflip_m4) — the gauge transform is verified
+  function-identical in fp32 (max logit delta 0.0). Symmetric
+  quantizers commute by algebra (tern/gflip_tern = exact control
+  pair); PREDICTION: the ASYMMETRIC M4 pair's gates DIVERGE
+  (quantization fails to commute with the network's own gauge
+  group) — if they match anyway, the gauge-subgroup story loses
+  its teeth.
+Arms built: s4, sparse, tern, m4, gflip_m4, gflip_tern, gflip_s4.
