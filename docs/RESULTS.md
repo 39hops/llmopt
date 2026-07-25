@@ -4323,3 +4323,40 @@ tie** (B +2 nominal, below the >=3 bar — NOT booked as a real
 gain; champion gen6_grown 76 untouched). Split-instrument note:
 gate says B, overall rarity says A, both sub-noise — the fp16-
 near-tie signature at the A/B level; booked as REDISTRIBUTION.
+
+## poly5 knock-3: ALL THREE LEGS FAIL — and the wall is named to the coefficient (2026-07-24 night)
+
+Reviewer-cross-checked before booking. (a) DOOR FAIL, hard:
+icancel **15/15 (100%)** — the new one-fact kind saturates at
+birth, ladder law's sixth confirmation — but ibridge **1/15**, a
+REGRESSION through three spellings (1/9 -> 4/15 -> 1/15). (b) BAR:
+gate 62/120 @ 62.85 — no lift, a -2/-3 dent that LOCALIZES to L3
+(20 v band 22-23): poly5 ran the OLD un-rationed recipe, so the
+dent is maintenance-ration dilution (gen-8's exact wound), NOT
+bridge interference — gate confound, do not cite against the
+determinable-rows law. (c) L4 fingerprint 7/24 < 8: poly4's one
+positive did not replicate. Bridge law at the gate level: still
+UNTESTED (door never opened), not refuted.
+
+THE MECHANISM, settled by miss-classification (series_preds dump,
+oracle-checked): the 14 ibridge misses = **12 INVALID / 2
+valid-alternative peels / 1 exact.** The model emits the right
+STRUCTURE every time (peel + remainder) and botches the residue
+COEFFICIENTS (gold x/3+1/3, pred x/3-2/3) — A = N(a)/(a-b) is
+computed SILENTLY inside the emission. Not choice-ambiguity
+(valid-alt scoring would read 3/15 — door still shut); it is the
+determinability law at the coefficient level: latent arithmetic
+never trains. "One-fact" != "one-primitive-determinable" — the
+re-spells shrank step count while the binding axis was OUTPUT
+emission (psub 7/15 and padd 24/34 sit on the same gradient).
+
+KNOCK 4, pre-registered conditional (the LAST knock, hard-stop):
+re-spell ibridge as pure COPY — residue coefficients pre-computed
+in explicit pmul/psub precursor rows, the ibridge emission only
+places them; run on the gen-9 RATIONED recipe (kills the L3
+confound); precondition = door only (ibridge >= 12/15). Door opens
+-> the bridge bar finally becomes testable; door stays shut ->
+CLOSE the bridge-at-the-gate file with the verdict "transfer
+exists but is emission-size-gated; the gate-level test is
+structurally unreachable." No fifth knock; no scoring changes to
+force a pass (the door metric is the honest instrument).
