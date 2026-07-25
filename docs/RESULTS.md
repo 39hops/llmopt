@@ -4410,3 +4410,42 @@ crystal is brittle on inputs simpler than its diet ever showed
 (exposure, not difficulty; the rarity law's floor: "common" means
 common-IN-CORPUS, and bare forms are rare). Cheap fix candidate:
 a thin naked-forms shard in gen-10.
+
+## 45M UNION RE-ASK: width does not pay for primitive federations (2026-07-24, closing the wave)
+
+Same-device pair (both probed WSL/3080, SAME 4th census {50,62,25,
+63}): 19M arm B — series 99.2 / energy 100.0 / poly 88.5 / rarity
+**119/200** (46/50, 50/62, 16/25, 7/63); 45M on the IDENTICAL diet
+— 98.8 / 100.0 / 89.0 / **108/200** (45/50, 47/62, 11/25, 5/63).
+Reviewer-cross-checked verdicts:
+- **(iii) NOTHING-ELSE: WIDTH-STABLE** — continents pinned at both
+  widths; the -11 is uniform capacity loss (rare -5, mid -3), not
+  grammar interference appearing at width. (Weak-instrument note:
+  continents are saturated, so (iii) is confirmed where headroom
+  exists — the rarity bins — not where it can't show.)
+- **(i) splits into two claims**: grammars-don't-fight = width-
+  stable ✓; but the union does NOT raise W* — the WIDER model is
+  WORSE by 11, rare bin 64%->44%: the tokens-per-width envelope on
+  the union corpus. MECHANISM: primitive rows are TOKEN-LIGHT
+  (decomposition-discount corollary) — 1.2M rows is a thin token
+  meal; W* stays ~19M-class; 45M starves with the classic
+  tail-dies-first signature. The elegant tension, booked: the same
+  discount that makes federations cheap to FARM makes them cheap
+  to FEED — primitives saturate a narrow model fast and never
+  justify a wide one. EQUATION REFINEMENT: k(W)'s feeding argument
+  re-prices in TOKEN mass, not row count.
+- CONFOUND, unexcluded: births cross precision/device (19M
+  fp32/MPS vs 45M bf16/cuda; parity sweep covered d384, not this
+  cell). Attribution: tokens-per-width PRIMARY; bf16 birth debit
+  possible minority. ONE-VARIABLE CONTROL QUEUED (cheap, next 3080
+  window): re-birth the 45M fp32 — -11 survives => "19M is natural
+  width for token-light federations" becomes law; shrinks => W*
+  sits between.
+- HAZARD, hard-flagged (reviewer F7 live): this 19M's 119/200 and
+  the gen-9 report's 119/200 are DIFFERENT batteries (4th vs 3rd
+  census) — same total by coincidence, a false friend. Only
+  within-census pairs are valid. FOUR incompatible rarity censuses
+  now exist; the taxonomy surgery's re-baseline is urgent.
+- GEN-10 SIZING: 19M, pending the precision control. To ever
+  justify width, raise the union's TOKEN mass (chains, more
+  grammars), not its primitive-row count.
