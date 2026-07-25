@@ -695,6 +695,11 @@ Control round: retrain on the EXACT rounds-2/3 diet, gate it.
 
 - `main() -> None`
 
+### scripts/convert_diet_prefix.py
+Materialize the gen-4 diet as paired prefix/infix jsonl files — native-transformer rung 1 (spec 2026-07-25-native-transformer).
+
+- `main() -> None`
+
 ### scripts/eval_mathnative.py
 Phase-1 gate: does the from-scratch 19M reach 1% step validity at L2-3 (the 0.5B's historical starting point)?
 
@@ -1094,6 +1099,14 @@ Validity autopsy: WHERE do the ~38% invalid steps go wrong?
 
 ## scratch/
 
+### scratch/boundary_or_bulk.py
+Boundary-or-bulk regression on the completed 0.5M->400M grid.
+
+- `n_params(path)`
+- `spearman(xs, ys)`
+- `affine_r2(xs, ys)`
+- `main()`
+
 ### scratch/build_merged_diet.py
 Build data/merged_diet.jsonl (schedule-law queue item 1): gen-6 cumulative corpus (v22 + l8 + gen4 sidecar) + the L9a shard, with L1-L3 rationed to 45% (the gen-7 lesson). Stable string seed.
 
@@ -1106,6 +1119,12 @@ CHAIN-CARRY ABLATION (Artin's carry hypothesis, spec'd 2026-07-21): same content
 Metabolic-vs-champion confluence: where did 471 signed rows land? Per-matrix ||dW||, effective rank of delta, top-layer localization, ternary flip census (would the 1.58-bit deployment even change?).
 
 - `ternary(w)`
+
+### scratch/desert_v2.py
+Desert test v2 — cross-grammar composition probe (union eq coefficient iv).
+
+- `sample_step(cur, temp=0.7)`
+- `verify(cur, pred, q)`
 
 ### scratch/dual_probe.py
 Dual-crystal probe: math gate + physics probe on ONE vocab-41 model (the blackboard monolith control). Usage: dual_probe.py <ckpt>
@@ -1141,6 +1160,10 @@ Batched gate v2 (2026-07-21): batch ACROSS problems, 8 seeds each — one forwar
 
 ### scratch/gate_ckpt.py
 *(no docstring)*
+
+
+### scratch/gate_prefix.py
+Chain gate for PREFIX-substrate models (rung 1, spec 2026-07-25-native-transformer). Mirrors gate_eval exactly — same seeds, same _gen_isolated problems, same verify_wave oracle — with prefix<->infix conversion at the two boundaries: prompts serialize cur to prefix; model emissions parse prefix->sympy and re-render infix (sp.sstr) before the oracle. Emissions that fail the prefix parser are invalid candidates (counted tried, never valid).
 
 
 ### scratch/gate_rarity.py

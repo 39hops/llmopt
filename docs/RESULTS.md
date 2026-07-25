@@ -4509,3 +4509,68 @@ Chart: docs/assets/width-curve-gen4.png.
   d64 crack is dimensional, not geometric: the organism stays
   healthy and simply runs out of directions (assets:
   neurons-wfloor-*.png).
+
+## PRE-REG: boundary-or-bulk regression (2026-07-25, pre-dawn — analysis of measured grid, no new runs)
+
+Reviewer-shaped design (its red-team, adopted): the width-only
+points are COLLINEAR (d, sqrt(N), N*b all monotone in width), so
+the regression is an ORDERING test on the independent bits axis,
+not a curve fit. Three sectors, never pooled (device fences:
+wfloor+five-point = Mac lineage; alphabet tournament + crossover
+grid = 3080/TF32):
+- (a) rising arm <= W* (d64/128/256/384/512, gen-4 3ep, n=1 each):
+  affine fits, <= 2 free params, capability vs N*b / N / sqrt(N) /
+  d / d*L. PREDICTION: all fit, dR^2 < 0.05 — sector CANNOT
+  discriminate; reported as the collinearity exhibit only.
+- (b) bits axis at fixed 19M (B/T/M4/M5/P2/fp32): volume N*b says
+  fp32 (32 bits) must top P2 (3.17); measured 64 < 66. PREDICTION:
+  >= 1 named ordering violation for volume; zero for a saturating
+  effective-bits reading.
+- (c) crossover grid (d256/384/768 x {fp32, ternary}): volume ranks
+  fp32@768 FIRST; measured it came LAST of the fp32 arm (58, beaten
+  by ternary@768's 65). PREDICTION: volume mis-ranks >= 2 cells;
+  Spearman rho(volume) < rho(boundary-class measures).
+VERDICT RULE: if volume accumulates named ordering violations in
+(b)+(c) while boundary-class measures (d; b+0.5*log2(d)) keep
+order, book BOUNDARY — confirming the 07-22 raw verdict on the
+full grid. Underfed points (113M/200M/400M; 200M+400M 1-epoch)
+EXCLUDED from all fits, shown as the feeding fence. n=1 per cell;
+seed sigma measured (<1) at 19M only.
+
+## Boundary-or-bulk VERDICT: volume is FEEDING-BLIND; exchange law gains its b_eff caveat (2026-07-25 pre-dawn)
+
+scratch/boundary_or_bulk.py on the completed grid (param counts
+read from checkpoints, never labels). Reviewer-cross-checked
+BEFORE booking; its three tightenings adopted verbatim.
+1. **NOT-VOLUME books, on sector (c) ALONE**: N*b as a monotone
+   capability predictor is refuted by the crossover grid — it
+   ranks fp32@768 FIRST; measured 58, beaten by ternary@768's 65
+   (the ONE real-magnitude violation, 7 solves >= the 3-real bar).
+   Sector (b) is a near-PASS for volume (rho +.943; its only
+   violation P2 66 v fp32 64 = +2, sub-noise) — volume survives
+   the bits axis within noise. rho -.058 / 7 pair-violations in
+   (c) are inflated by sub-noise flips; the verdict rests on the
+   single d768 crossover.
+2. **Mechanism = FEEDING, not boundary geometry**: fp32@768 is
+   past fp32's W* (tokens-per-width starvation) while ternary@768
+   rides ternary's larger W* (W* ~ 1/b, booked 07-22). Volume
+   fails because it ignores the bit-dependent W* — do NOT cite
+   this as "boundary won." No boundary measure kept order where
+   volume failed (width-only measures silent-not-correct; honest
+   null).
+3. **The exchange law is LOW-BIT-ONLY**: b+0.5*log2(d) fails (c)
+   identically to volume — the raw b-term dominates at b=32. The
+   law HOLDS in its measured regime (<=3.17 bits); the fix is a
+   saturating b_eff, and raw-bit extrapolation to fp32 is the
+   misuse. Propagated to THEORY (B@768 row caveat).
+4. Exploratory rider DOWNGRADED per review: quadratic in
+   log10(N*b) on 6 cells (3 params, R^2=.647 — LOW for that
+   flexibility; peak ~193M bit-params hugs the best cell,
+   near-tautological) = consistent with the KNOWN inverted-U
+   (W*/tokens-per-width) in bit-volume coordinates; not a new law,
+   no peak location booked.
+5. Rising arm cannot discriminate (R^2 spread .052 = exactly the
+   noise bar; collinearity confirmed as pre-registered; d's
+   nominal .883 is not a winner).
+Fences: sectors never pooled (Mac lineage vs 3080/TF32); n=1 per
+cell; underfed 113M/200M/400M excluded from every fit.
