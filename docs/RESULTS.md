@@ -4785,3 +4785,16 @@ Portrait-audit verdicts also banked: binary = uniform-color blob
 graded (sparsity dimmer switch); PR-across-alphabets is an
 alphabet artifact (never compare PR levels cross-alphabet);
 cross-model PHASE comparisons remain gauge-void until Procrustes.
+
+## PRE-REG ADDENDUM: scalar 4-bit PTQ arms (2026-07-25, before gates)
+
+Appended to the Lloyd-Max race (same twin, same MPS gates): P4
+(powers-of-two ladder, 15 levels + spare — the zero+symmetry
+corner of the two-of-three law), LM-16-zero (k=16 k-means,
+zero-pinned), NF4-quantile (equal-mass, zero not guaranteed).
+PREDICTION: all three within noise of fp32 64 and int3 65 — 4
+bits is above the crystal's knee (democracy/no-outliers); any
+SEPARATION here would mean level placement still matters at 16
+levels and the knee sits higher than the democracy story
+predicts. The complex bracket (M4^2 / G16 / G5 / D9 / Q9) is
+BORN-only — spec'd separately, builds after today's cells.
