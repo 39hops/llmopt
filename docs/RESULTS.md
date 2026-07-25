@@ -4897,3 +4897,26 @@ packed cell showed lower-loss-worse-gate). VERDICTS:
 Speed rider: bf16np epochs ~= fp32 epochs on the 3080 at 19M
 (memory-bound regime) — bf16's win here is capability-neutrality
 + the 45M--3080 fit, not wall-clock.
+
+## SIGMA RULE AMENDED: compare margins to sqrt(2)*sigma (reviewer catch, 2026-07-25 night)
+
+Every gate verdict this week is a DIFFERENCE of two single-seed
+cells, so the honest dispersion is sigma_diff = sqrt(2)*sigma_cell
+~ 3.5 solves at 19M/cuda (per-cell sigma 2.5 from {69,66,71}).
+Amendments, all adopted:
+1. bf16 isolation restated: "no detectable debit, bounded ~±3.5
+   at 1 sigma" — enough to retire the −14 width-debit hypothesis,
+   NOT enough to claim exactly-zero. Doctrine unaffected.
+2. **gen-10 = 19M: the +3 is SUB-NOISE (0.85 sigma_diff)** — the
+   pick stands on MECHANISM + EFFICIENCY (token-light federation,
+   2.4x cheaper), not on the number. Label corrected from
+   "marginal-real."
+3. prefix −3: sub-noise on the gate; NO-ADOPT unaffected (it
+   rests on parse-fail 8.1% + int3 −8 + length null) — fence
+   added so the −3 is never cited as the finding.
+4. poly5 −2 / gen-9 +3: unaffected (door-based / already booked
+   as redistribution).
+5. NEW BAR: single-seed pairs at 19M need >= 5 solves to book a
+   number; sigma is MEASURED only at 19M/cuda/fp32 — 45M and MPS
+   sigma are assumptions and labeled as such. n=3 both sides
+   drops the bar back.
