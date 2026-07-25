@@ -4687,3 +4687,26 @@ Reviewer-cross-checked; CLOSE endorsed with fences, all adopted.
   law as hints-x2, now at the representation layer.
 - Speed track re-rank: prefix off (−4.5%, quant-fragile);
   **streaming-birth and batched-KV are the speed headline.**
+
+## HOLD: gen-10 = 19M booking SUSPENDED pending same-device cells (2026-07-25 morning)
+
+The 19M-cuda control (bf16 --fast) gated 56/120, rarity 105/200 —
+same cuda harness that read the MPS-born arm B at 70/119. The
+width verdict is device/precision-dependent and INVERTS on
+all-cuda births (45M 66 > 19M 56); the original 19M>45M rested on
+a cross-birth-device pair where the birth-machine delta (14)
+dwarfs the width gap (4). Reviewer-directed HOLD, not a
+rebooking: do not build gen-10 on the 19M pick until the
+decomposition cells read. Leading hypothesis (reviewer):
+WIDTH-DEPENDENT bf16 DEBIT — bf16 (8 mantissa bits) sits below
+the 8-10-bit dynamical cliff and narrow models lack the dimension
+dividend to absorb rounding (debit 0 at d768, −3 at 45M-MPS-era,
+candidate −14 at 19M); the cuda cell also carried the --fast
+token-budget packing bundle (8,426 vs 37,498 steps/ep). Cells in
+flight: 19M-cuda-fp32 (decider), 19M-MPS-seed-2 (sigma_MPS).
+Data-order and init alternatives RULED OUT by code inspection:
+init is CPU-RNG before .to(dev) (bit-identical across machines)
+and epoch order is random.Random(ep) (device-independent) — the
+only live variables are kernel numerics and the --fast bundle.
+Loss-capability divergence noted (cuda-19M loss 0.4124 < 45M
+0.4539 while gating −10): gate-not-the-loss, 6th instance.
