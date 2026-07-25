@@ -74,3 +74,20 @@ ceiling-lifting — rung 1 buys wall on every future birth, rung 2
 aims at the emission wall + the zero-epoch north star, rung 3 buys
 birth compute. If all three adopt, the vanilla transformer is gone
 from the lab and every component earns its place by measurement.
+
+## POST-MORTEM (2026-07-25 dawn — program CLOSED, verdicts in RESULTS)
+
+Rung 1 ran as specced (paired 19M births, row-identical diets):
+NO-ADOPT — (i) −3 (bar −2), (ii) −4.5% (bar −20%; the
+Lample-Charton 20-30% does NOT hold on closed-system rows —
+frame+coefficient dominated), (iii) emission wall
+NOTATION-INVARIANT (length-proxy, in-language; forecloses rung 2's
+variance rationale), (iv) INVERTED (int3: prefix −7 vs infix +1).
+Mechanism: parens are error-correcting scaffolding (arity-scope
+closure); prefix forces internal arity tracking that fails on long
+emissions (Q4 parse-fail 30%). Rung 2 NOT SPENT. Rung 3
+(attention-init) is independent of serialization and stays BANKED.
+Survivor law: GCD-pays-iff-syntactic (RIFF-LEDGER). The program's
+composite lesson: teach-don't-impose holds at the representation
+layer — the litmus in the header priced this correctly and we paid
+one birth-pair to learn which side of it serialization sits on.

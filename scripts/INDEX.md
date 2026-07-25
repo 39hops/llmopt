@@ -1144,6 +1144,13 @@ Duo-substrate mixed wave (spec 2026-07-22-duo-substrate, exp 1): per ply, B/2 sa
 - `skeleton(e: str) -> str`
 - `binof(n)`
 
+### scratch/emission_wall_pair.py
+Rung-1 bar (iii), in-diet form: does prefix move the operand-complexity emission wall? (spec 2026-07-25-native-transformer; poly_chain5 psub/padd rows are OUT-OF-DIET for gen-4 twins — bridge law + naked-forms lesson — so the wall is read on generator-drawn in-language states instead.)
+
+- `load(ckpt)`
+- `greedy(model, ids, max_new=160)`
+- `main()`
+
 ### scratch/exchange_test.py
 THE EXCHANGE TEST (pre-registered 2026-07-23): train the v4 organism on axiom's engine-farmed chains at OUR stuck states, re-probe the SAME fixed seeds (55_000_000, cuda — device law), must beat 2/12. v4 measured self-practice at +1/12 (no gradient at true walls); the exchange supplies exactly the missing gradient. 10/12 walls have chains; ceiling = 12/12, bar = >=3/12, headline read = how many of the 10 taught walls flip.
 
@@ -1184,6 +1191,10 @@ FROZEN HOLDOUT battery (2026-07-21): virgin band 88M, same L3-L7 x 24 structure 
 
 ### scratch/holdout_v2.py
 Holdout v2: exclude-guarded (the doctrine I broke in v1 — 281 collisions caught by the audit). Probes drawn from band 88M but each slot advances its seed until the expr is NOT in the corpus cur-set. Usage: holdout_v2.py <ckpt> <d> <layers> <ffn> <heads> <label>
+
+
+### scratch/int3_rider.py
+Rung-1 rider (iv): int3 PTQ gate delta, prefix vs infix twin (spec 2026-07-25-native-transformer — prediction: prefix MORE robust under quantization via delimiter-outlier removal).
 
 
 ### scratch/kv_equiv.py

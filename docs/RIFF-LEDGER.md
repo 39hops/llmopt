@@ -550,3 +550,17 @@ to the collaboration itself.
   Composes: warm-birth template (time-machine result), surprise
   gating, the d2 streaming harness. Open question it answers:
   is the epoch an artifact of the batch era?
+
+- **2026-07-25 (reviewer): rung-1b — prefix + arity-mask decoding.**
+  Grammar-constrained decoding nulled twice on infix (misses were
+  SEMANTIC); prefix's measured 8.1% parse-fail is SYNTACTIC, the
+  one regime where a well-formedness mask (arity counting) could
+  recover the −3 gate tax. Cheap test, banked behind the emission
+  probe read. Attribution: reviewer agent, rung-1 cross-check.
+
+- **2026-07-25 (house, via rung-1 close): GCD-pays-iff-syntactic.**
+  Grammar-constrained decoding pays iff the miss distribution is
+  syntactic; infix GCD nulled because misses were semantic; prefix
+  Q4 (30% parse-fail) is the regime where it would have paid.
+  Supersedes rung-1b arity-mask (moot — prefix closed; conditional
+  note only). Attribution: reviewer refinement on Fable's probe.

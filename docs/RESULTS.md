@@ -4610,3 +4610,80 @@ adopted.
    throughput claim books at this width on this box.
 Fences: n=1 per precision arm; rarity numbers are WSL-4th-census
 (within-census pairs only).
+
+## Rung-1 prefix pair: NO-ADOPT — the literature shortening did not transfer (2026-07-25 dawn)
+
+Paired births (Mac MPS, row-identical diets 132,449 rows, seed 1,
+3ep, one variable = serialization). Reviewer-cross-checked; its
+reframe adopted as the headline.
+- **THE HEADLINE: the banked 20-30% prefix shortening
+  (Lample-Charton) measured −4.5% median (−9.8% mean) on
+  closed-system rows** — our rows are frame+coefficient+number
+  dominated; parens are a small share. Prefix's speed case is
+  DEAD independent of adoption, and the speed track re-ranks:
+  streaming-birth and batched-KV are now the speed headline.
+- Gate: infix twin 64/120 @ 62.84 (replicates the 64-65
+  historical band through the --diet path) vs prefix 61/120 @
+  63.24 — **NO-ADOPT as pre-registered** (bar (i) missed by one
+  solve beyond −2; bar (ii) failed on the serialization itself).
+- **The −3 is a WELL-FORMEDNESS tax, not a reasoning loss**
+  (reviewer reframe): validity +0.4 (per-step reasoning intact)
+  while 8.1% of emissions (120/1480) fail the prefix parser —
+  infix's redundant parens act as error-correcting scaffolding;
+  per-level the tax lands where rollouts are densest (L3 −2,
+  L4/L5 −1, L6 +1).
+- **The 388-row hazard CLOSES**: the converter's 388 skips are
+  exactly the known Subs() out-of-language class, dropped
+  symmetrically from both arms; infix twin still replicates 64 —
+  zero measurable cost at 19M.
+- NOT RUN: (iii) the prefix-variant emission probe (psub/padd/
+  ibridge) — the pivot for rung-2: tree-PE's only surviving
+  rationale is the emission wall. Ported and queued next. (iv)
+  int3 rider in flight, appended when it lands.
+- Banked (reviewer riff, RIFF-LEDGER): rung-1b prefix+arity-mask
+  decoding — constrained decoding nulled twice on infix because
+  misses were semantic; prefix's 8.1% syntactic misses are the
+  one regime where the mask might pay.
+Fences: n=1 per arm; MPS lineage; prefix gate uses gate_prefix.py
+(same seeds/oracle, conversion at the two boundaries).
+
+## Rung-1 secondaries close the native-transformer program: the emission wall is NOTATION-INVARIANT (2026-07-25 dawn)
+
+Reviewer-cross-checked; CLOSE endorsed with fences, all adopted.
+- **(iii) THE LOAD-BEARING FINDING: the long-emission wall does
+  not move with notation** (length-proxy on 240 in-language
+  generator states, band 12.345M; poly psub/padd/ibridge are
+  OUT-OF-DIET for gen-4 twins, so the wall was NOT tested on
+  those kinds directly — proxy named, honest). Quartile validity
+  infix 81.7/73.3/50.0/21.7 vs prefix 80.0/76.7/46.7/20.0 (all
+  deltas <= 3.3pp, n=60/quartile). The wall is CAPACITY/SEMANTIC
+  — which forecloses tree-PE too, not just prefix: a
+  capacity-bound wall doesn't move for any positional/notational
+  intervention; the most tree-PE could do is recover prefix's
+  self-inflicted arity tax back to a TIE. **Rung 2 not spent;
+  the native-transformer program CLOSES** (pending Artin, but
+  the program dies with a mechanism, not a shrug). Levers for
+  the emission wall are territory/exposure and decomposition,
+  NOT representation.
+- **(iv) inverted, differential −8**: under identical int3 PTQ,
+  prefix 61->54 (−7, parse-fail 8.1->10.0%) vs infix 64->65
+  (+1); prefix-int3 vs infix-int3 = −11. Standalone line:
+  per-channel-absmax int3 near-lossless at 19M/infix (65 v 64) —
+  EXTENDS the int4-MX/GPTQ-int3 45M results to 19M, not new.
+- **ONE MECHANISM, THREE OBSERVATIONS**: parens explicitly close
+  each operator's scope so the model cannot lose arity count;
+  prefix forces internal tracking, which fails on long emissions
+  (parse-fail 1.7/0.0/1.7/30.0 by quartile). Observations: gate
+  −3, quant −7, Q4 collapse.
+- **General law banked (replaces the arity-mask as descendant):
+  grammar-constrained decoding pays iff the misses are
+  SYNTACTIC** — explains the infix-GCD null (misses were
+  semantic) and predicts where GCD would pay. Arity-mask survives
+  only as a conditional note if prefix is ever revived.
+- **Retro-validation of teach-don't-impose at the architecture
+  layer**: seed-from-measured-statistics (warm-birth FFN, +8 ep1)
+  PAYS; impose-a-new-representation (prefix/tree-PE) does NOT —
+  the parens the model learned to lean on are load-bearing. Same
+  law as hints-x2, now at the representation layer.
+- Speed track re-rank: prefix off (−4.5%, quant-fragile);
+  **streaming-birth and batched-KV are the speed headline.**
