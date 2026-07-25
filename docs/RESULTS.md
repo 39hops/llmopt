@@ -4710,3 +4710,20 @@ and epoch order is random.Random(ep) (device-independent) — the
 only live variables are kernel numerics and the --fast bundle.
 Loss-capability divergence noted (cuda-19M loss 0.4124 < 45M
 0.4539 while gating −10): gate-not-the-loss, 6th instance.
+
+## PRE-REG: the Lloyd-Max codebook race (2026-07-25, before gates)
+
+PTQ-only on the 19M infix twin (born MPS, gates MPS to match the
+int3=65 / fp32=64 baselines; no births). Per-output-channel exact
+1-D k-means codebooks (free vs zero-pinned), gate-scored ONLY
+(house law: never weight distance). Arms: LM-2bit, LM-2bit-zero,
+LM-3bit, LM-3bit-zero, ternary-LM (k=3, zero-pinned — the
+born-vs-rounded read vs born-ternary 60), int2-uniform (ladder
+point). PREDICTIONS: (1) zero-forced >= free Lloyd-Max at 2 bits
+despite worse MSE (zero-is-load-bearing); LM-3bit within noise of
+uniform int3 65 (distribution near-Gaussian, kurt 2.4 — uniform
+is already close); (3) ternary-LM (rounded) vs born-ternary 60
+prices train-into-lattice vs round-onto-lattice; house has no
+strong prior — banks either way. Fences: n=1, PTQ-only, MPS
+gates, per-channel codebooks (finer than the born alphabets'
+global levels — noted, not hidden).

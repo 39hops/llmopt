@@ -564,3 +564,19 @@ to the collaboration itself.
   Q4 (30% parse-fail) is the regime where it would have paid.
   Supersedes rung-1b arity-mask (moot — prefix closed; conditional
   note only). Attribution: reviewer refinement on Fable's probe.
+
+- **2026-07-25 (Artin): the TurboQuant/Lloyd-Max riff.** Artin
+  surfaced TurboVec/TurboQuant (codebook-oblivious scalar
+  quantization: rotate -> predictable distribution -> fixed
+  Lloyd-Max codebook, no calibration) + faiss/qdrant. House
+  connections: (1) the alphabet tournament IS hand-made codebook
+  design; Lloyd-Max is its principled rival, and our kurtosis
+  invariance (2.4 at every width) means births are ALREADY
+  codebook-oblivious-ready without the rotation trick — plausibly
+  why naive int3 absmax was near-lossless at 19M; (2) THE CLASH:
+  Gaussian Lloyd-Max 2-bit has NO zero level; the house
+  zero-is-load-bearing law predicts zero-forced beats MSE-optimal
+  at matched bits — falsifiable for minutes of PTQ; (3) rotation
+  leg = the pending rotation bracket (banked rider);
+  (4) PQ-for-KV-cache = banked line on bench_kv_quant_decode.
+  Vector search itself (RAG/tenancy) = tangent, no build.
