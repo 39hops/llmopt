@@ -4874,3 +4874,26 @@ by LN; z1c >> z1 iff the crater was DC not inhibition. THE REAL
 TEST = z1-BORN, queued for the next 3080 window (one tournament-
 arm birth); z1-PTQ books only as the square's cheap corner,
 labeled foregone-conclusion-candidate.
+
+## BF16 ISOLATION: bf16 is INNOCENT — the whole −13 was packing (2026-07-25 night)
+
+The decisive cell: 19M cuda --fast --nopack (bf16, standard
+batching, seed 1, diet B) gates **69/120 @ 63.19** — IDENTICAL to
+the fp32 cell's 69. The bundle decomposes completely: packing
+−13, bf16 0, device −1 (fp32 MPS 70 v cuda 69). Loss fingerprint
+matches (bf16np ep2 0.450 in the fp32 band 0.454-0.455; only the
+packed cell showed lower-loss-worse-gate). VERDICTS:
+1. **bf16 births are capability-lossless at BOTH measured widths
+   on cuda** (19M 69=69; 45M 66=66) — the "no --fast below d512"
+   candidate law DIES before booking; the width-dependent-debit
+   hypothesis is retired (it was packing all along).
+2. **Packing is re-confirmed as the −10-class hole at a second
+   width** (07-17's 50M finding reproduced at 19M as −13) — the
+   flag pair --fast --nopack is DOCTRINE at every width; the
+   trainer keeps packing only as an explicit research flag.
+3. The gen-9 A/B, sigma cells, and every arm of this week ran
+   unpacked or fp32 — no retro-contamination beyond the one
+   off-doctrine cell (mine, already booked).
+Speed rider: bf16np epochs ~= fp32 epochs on the 3080 at 19M
+(memory-bound regime) — bf16's win here is capability-neutrality
++ the 45M--3080 fit, not wall-clock.
