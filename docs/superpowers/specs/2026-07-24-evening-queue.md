@@ -165,6 +165,35 @@ EXECUTABLE TRACKS:
 - Next axiom relay (Artin's timing): knock-4 ask + round-3 GO +
   stuck_states_v5 binned head.
 
+### v2.1 additions (2026-07-25 ~3AM, post-width-floor — speed compounding)
+
+- **d256 = the EXPERIMENT SUBSTRATE (doctrine candidate)**: pilot
+  A/Bs run at d256 (2.5x cheaper, 20+ it/s, plateau-equivalent on
+  gen-4); promotion-grade runs stay at W*. Gate before doctrine:
+  ONE replication seed at d256 (n=1 currently) + one known-result
+  reproduction (does a d256 A/B reproduce a 19M A/B's verdict?).
+- **DEPTH LADDER at fixed d256** (L 4/8/12/16, ~10-min births):
+  the width curve MIXES depth (19M=8L, 45M=12L) — depth is the
+  named unconsidered variable in "why is 45M the peak."
+- **LR-SCALING MINI-SWEEP at d256** (3-4 LRs, one evening): fixed
+  LR across all widths is the second unconsidered variable (muP
+  literature: optimal LR shifts with width — the 200M/400M
+  collapse and the peak's position are partly hyperparameter
+  transfer, not pure data-starvation; k(W) may conflate them).
+- **MODEL-VS-ENGINE SYMMETRY PROBE** (cheap, CPU+sampling): KL /
+  rank-correlation between the model's per-state rule-choice
+  distribution (wave statistics) and the engine's markov prior +
+  syndrome policy on shared states. The mass-spectrum result says
+  committees track corpus frequency; this measures whether the
+  model's POLICY tracks the engine's policy — the direct symmetry
+  Artin asked for.
+- **THE COMPOSED BIRTH pilot**: stack every measured speed lever
+  in one run — W_min-sized (d256) + template init + streaming
+  single pass + (post-rung-1) prefix + bf16/TF32: target = a
+  plateau-capability birth in <15 min end to end. Each lever is
+  individually measured; the composition is not. The experiment
+  unit becomes a coffee break.
+
 Deliberately NOT revived (starved judges / closed files): token
 regret, config estimator, dispatcher v5, budget alloc, population
 training, hints in any form, precision-capability (CLOSED),
