@@ -105,7 +105,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
         texts.append(t)
         charset |= set(t)
     uncovered = {c for c in charset
-                 if not tok.encode(c) and c not in (" ",)}
+                 if not tok.encode(c, strict=False) and c not in (" ",)}
     print(f"{len(rows)} rows; charset {len(charset)}; "
           f"uncovered chars: {sorted(uncovered)[:10]}", flush=True)
 
