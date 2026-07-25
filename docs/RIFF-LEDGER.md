@@ -592,3 +592,25 @@ to the collaboration itself.
   multiples; growth animation ep0->ep1->final (motion honest,
   static 3D rejected — occlusion is rotation-dependent).
   Attribution: reviewer agent; Artin commissioned the audit.
+
+- **2026-07-25 (Artin, w/ a Gemini assist): the constants-alphabet
+  riff -> the complex bracket.** Raw ask: {−∞,−1,−i,0,i,1,+∞} +
+  pi/e + diagonal units + quaternions as weight alphabets; plus
+  "does anything fit EXACTLY in 4 bits?" and the {−1,0,1}-symmetry
+  hypothesis. House distillation: (1) TWO-OF-THREE LAW —
+  {zero, negation-symmetry, integer bits}: pick two (symmetric
+  zero-ful sets are odd -> fractional bits always; names why every
+  tournament winner has weird bit-counts). (2) Exact-4-bit
+  designs: M4^2 complex (a+bi, a,b in {−1,0,1,2} — 16 states,
+  keeps zero, inherits M4's asymmetric +2) vs G16 polar grid
+  (4 phases x 4 magnitudes, symmetric, NO zero — the deliberate
+  zero-law falsification arm) vs scalar int4. Prior: M4^2 >= int4
+  > G16. (3) Rotation bracket made concrete: G5 {0,±1,±i} 2.32b;
+  D9 = T (x) T (ternary-squared!) 3.17b; Q9 quaternion units
+  3.17b; headline = rotation-vs-magnitude at matched 3.17 bits
+  (Q9/D9 vs P2). (4) ±∞ -> saturation rung; pi/e -> PHASE not
+  magnitude (weight scale is gauge; roots of unity are where pi
+  lives). Complex weights = 2x2 real blocks; born-only (no honest
+  PTQ path). Attribution: Artin (set + symmetry hypothesis +
+  exact-4-bit ask); Fable (two-of-three, M4^2/G16, T-squared
+  identity); reviewer red-team pending.
