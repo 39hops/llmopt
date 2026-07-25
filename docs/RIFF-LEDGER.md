@@ -499,6 +499,35 @@ to the collaboration itself.
   (chain depth/context), not vocab count (41 tokens is
   information-trivial; the derivation is not) | banked 2026-07-24;
   weekend Mac candidate |
+- **THE CLOSED-SYSTEM-NATIVE TRANSFORMER** (Artin, 2026-07-25
+  ~12:30AM — "we can optimize SO MANY parts: NNUE/engine weighting
+  directly for self-attention tuning; positional encoding
+  deterministic/cacheable; every other single part, you name it"):
+  the architecture itself becomes a closed-system design surface —
+  every generic transformer component replaced or seeded by
+  MEASURED engine/oracle structure. The component map, each leg
+  composing an already-banked thread: (1) ATTENTION PRIORS FROM
+  THE ENGINE — markov bigrams / syndrome-policy stats / NNUE
+  valuations as attention-bias or head-init (valuation-routed
+  metabolism's inference-time sibling; the engine's verified
+  attention-over-rules becomes the model's attention-over-tokens);
+  (2) STRUCTURAL POSITIONAL ENCODING — expressions are TREES, so
+  positions can encode tree-paths (deterministic, cacheable,
+  rewrite-invariant for untouched subtrees) instead of flat RoPE;
+  composes with EU-arithmetic: candidate rewrites share ~95% of
+  the tree -> cached subtree encodings + KV = score a wave for
+  ~one forward (the NNUE namesake at the representation layer);
+  (3) grammar-masked heads, ternary-native FFN (alphabet program),
+  hint-head territory already nulled (twice) — the map inherits
+  every measured null as a DON'T list. Guardrails from the ledger
+  itself: teach-don't-impose (permutation-augmentation beat
+  canonical sorting; hints twice-nulled; the model prefers trained
+  to told) — so every component swap is a one-variable A/B against
+  the vanilla birth at equal cost, pre-registered, starting with
+  the cheapest-highest-variance leg. Speed thesis (Artin): quicker
+  AND ceiling-lifting — the sooner adopted the more every future
+  birth pays back | banked 2026-07-25; reviewer survey
+  commissioned same night for ordering + first rung |
 - **Streaming birth** (Artin, 2026-07-24 ~2:45AM, half-retracted
   same breath — banked anyway): template init + stream the corpus
   ONCE, no epochs, surprise-gated LR — birth as metabolism from
