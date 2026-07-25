@@ -197,19 +197,21 @@ EXECUTABLE TRACKS:
 ### POST-SPEED TIER (fires as speed items land — each repriced by
 10-min experiment units; ordered)
 
-1. **Open-problems probe** — big budget on the genuinely-unsolved,
-   scored on NOVELTY (a move outside the engine's vocabulary); the
-   discovery thread's measurable form (pairs with desert-v2's
-   composition zero).
-2. **Duo-teacher logit-KD** — one student vs combined
-   champion+ternary logits; crown tiebreak + "stream the neurons."
-3. **Template v2 (embeddings + attention statistics)** — the rung
-   between us and calculation-replaces-ep1; north star =
-   zero-epoch gate > 0.
+1. **Gen-9 full-dose rerun** (keeper reorder: FIRST — converts
+   tonight's sub-noise directional leak result into a bookable
+   law cheaply, and validates the diet later items build on;
+   needs s2's fresh mine, so it fires right behind s2).
+2. **Duo-teacher logit-KD** — cheaper than open-problems and
+   resolves the STANDING crown tie; "stream the neurons."
+3. **Template v2 (embeddings + attention statistics)** — pair
+   with prefix rung-1 (they compose); north star = zero-epoch
+   gate > 0.
 4. **Chain-carry redo at full budget** — the voided format
    ablation, now cheap at d256-class.
-5. **Gen-9 full-dose rerun** — needs s2's fresh mine first (real
-   failed-step mass ~2x under the landed guard).
+5. **Open-problems probe** — most expensive, least capability-
+   moving (novelty metric), demoted per speed theme — but Artin
+   has named discovery as a personal-interest thread: runs
+   whenever he calls it, independent of ordering.
 6. **Gauge-fixed phase comparison** (instrument): align PC bases
    via family-tilt anchors so cross-model phase density is real,
    not SVD convention (the density plot's caveat).
