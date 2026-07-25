@@ -4449,3 +4449,20 @@ Reviewer-cross-checked verdicts:
 - GEN-10 SIZING: 19M, pending the precision control. To ever
   justify width, raise the union's TOKEN mass (chains, more
   grammars), not its primitive-row count.
+
+## The 388 mangled rows: strict encode's first live catch (2026-07-25 ~1AM)
+
+The new strict tokenizer crashed the width-ladder launch — on a
+REAL defect: **388/132,837 gen-4 rows (0.29%) contain out-of-
+language atoms (Subs(, u_, erf-class) and have been silently
+LETTER-STRIPPED into every gen-4-lineage birth to date**
+(Subs(expr, u_, g) trained as (expr, _, g)-style fragments — the
+v2.1 language filter was policy, but these rows slipped the farm
+filters and the tokenizer's silent-skip hid them). Fix shipped:
+trainer skips out-of-language rows WHOLE and prints the count;
+tests green. Impact honestly bounded: 0.29% of rows, and every
+historical comparison shared the same 388 (paired deltas
+untouched); absolute gates carry a ~0.3%-of-diet noise floor
+nobody knew about. The strict-encode fix paid for itself within
+three hours of landing — the silent-drop class is now extinct at
+the trainer.

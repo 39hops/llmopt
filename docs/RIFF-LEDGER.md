@@ -526,8 +526,22 @@ to the collaboration itself.
   the vanilla birth at equal cost, pre-registered, starting with
   the cheapest-highest-variance leg. Speed thesis (Artin): quicker
   AND ceiling-lifting — the sooner adopted the more every future
-  birth pays back | banked 2026-07-25; reviewer survey
-  commissioned same night for ordering + first rung |
+  birth pays back | banked 2026-07-25; reviewer survey DELIVERED
+  same night — ORDERING (variance x cheapness): rung 1 = PREFIX
+  NOTATION (enabling substrate for tree-anything; aimed at the
+  live emission wall psub/padd/ibridge; certain 20-30% sequence
+  shortening; bar = gate within noise + >=20% shorter, secondary =
+  operand-complexity kinds + int3 delta); rung 2 = SUBTREE-HASH-
+  keyed tree-PE on prefix (HASH not path — tree-paths are NOT
+  rewrite-invariant, the EU 95% claim is hash-identity; hybrid PE
+  needed for the Current:/Step: frame; graded by the zero-epoch
+  gate); rung 3 = attention-init from tree-adjacency, INIT-ONLY +
+  unseen-mass smoothing, graded on ep1 speed (warm-birth says
+  time-machine-not-ceiling). FORBIDDEN as-stated: valuations as
+  prompt features (hints x2 null), syndrome aux head (payoff-3
+  null), frozen markov bias (prior-wash), canonical sorts (gauge).
+  Unifying litmus: seed STATISTICS that training error-corrects =
+  pays; impose microstructure / freeze / tell = null |
 - **Streaming birth** (Artin, 2026-07-24 ~2:45AM, half-retracted
   same breath — banked anyway): template init + stream the corpus
   ONCE, no epochs, surprise-gated LR — birth as metabolism from
