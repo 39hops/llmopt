@@ -631,3 +631,27 @@ to the collaboration itself.
   read. (4) Falsifiable rider: asymmetric alphabets degrade with
   DEPTH not width. Births demoted below d256 gate, hang on
   prologue + modReLU decision + gate-zero identity test.
+
+- **2026-07-25 (Artin, the quantum riff — settled after back-and-forth).**
+  Raw: Grover/quantum to speed training; quantum distributions to
+  find which neurons a family activates; a "quantum model" with
+  complex weights and negative classification. Settlement:
+  (1) GROVER-NO booked with reasons (N = configs not params so
+  sqrt(exponential) stays exponential; the oracle call IS the
+  expensive eval — no cheap-verify asymmetry exists in training;
+  measurement collapse blocks distribution readout). Never chase.
+  (2) The "quantum model" = the COMPLEX BRACKET verbatim
+  (unitary=rotation alphabets, interference=the zero/cancellation
+  laws, Born rule=modReLU readout) — motivation note added there.
+  (3) NEW BANK — AMPLITUDE RATIONING: measure per-family neuron
+  activation footprints on the crystal, find cold regions, weight
+  the diet toward families touching them (connects
+  isolated-clades-die-first; classical, cheap, house instrument
+  exists). (4) NEW BANK — ZX GRAMMAR CONTINENT: teach the crystal
+  ZX-calculus rewrites as a closed system (engine exists as
+  oracle; charter-legal physics); natural test bed for
+  alphabet-follows-domain (does a rotation-alphabet model learn
+  the rotation grammar faster?). (5) The surviving classical
+  amplitude-amplification analogy = surprise-gated streaming
+  (already queued). Attribution: Artin (riff, via 3b1b), Fable
+  (settlement).
