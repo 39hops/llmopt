@@ -59,17 +59,23 @@ def project(W, method: str):
         denom = 1 + p3[:, 2].clamp(min=-0.99)
         return p3[:, 0] / denom, p3[:, 1] / denom, mag
     if method == "polar":
+        # WHITENED (2026-07-25 instrument fix, reviewer catch): SVD
+        # orders axes by variance, so the raw PC1+i*PC2 angle is
+        # non-uniform even for a perfectly isotropic cloud. Equalize
+        # the two variances before taking the angle — only then does
+        # "uniform ring" mean isotropy.
         X = W - W.mean(0)
-        _, _, V = torch.linalg.svd(X, full_matrices=False)
+        _, S, V = torch.linalg.svd(X, full_matrices=False)
         P = X @ V[:2].T
+        P = P / S[:2].clamp(min=1e-12)
         z = torch.complex(P[:, 0], P[:, 1])
         return z.angle(), mag, mag
     raise SystemExit(f"unknown method {method}")
 
 
-def scatter(ax, xs, ys, mag, title, cmap):
+def scatter(ax, xs, ys, mag, title, cmap, vmin=None, vmax=None):
     ax.scatter(xs, ys, c=mag, cmap=cmap, s=6, alpha=0.85,
-               linewidths=0)
+               linewidths=0, vmin=vmin, vmax=vmax)
     ax.set_title(title, color=FG, fontsize=11, family="monospace")
     ax.set_facecolor(BG)
     for s in ax.spines.values():
@@ -144,10 +150,17 @@ def main() -> None:
                              figsize=(9 * len(ckpts), 8.5))
     fig.patch.set_facecolor(BG)
     axes = axes if len(ckpts) > 1 else [axes]
-    for ax, (ck, title) in zip(axes, ckpts):
+    # shared color scale across compare panels (2026-07-25 fix:
+    # per-panel norms made the same color mean different magnitudes)
+    panels = []
+    for ck, title in ckpts:
         W = neuron_matrix(ck, a.key)
         xs, ys, mag = project(W, a.method)
-        scatter(ax, xs, ys, mag, title, a.cmap)
+        panels.append((xs, ys, mag, title))
+    vmin = min(float(p[2].min()) for p in panels)
+    vmax = max(float(p[2].max()) for p in panels)
+    for ax, (xs, ys, mag, title) in zip(axes, panels):
+        scatter(ax, xs, ys, mag, title, a.cmap, vmin=vmin, vmax=vmax)
         if a.method == "polar":
             ax.set_xlabel("phase (rad) of PC1 + i*PC2", color=FG,
                           fontsize=8, family="monospace")

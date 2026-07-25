@@ -580,3 +580,15 @@ to the collaboration itself.
   leg = the pending rotation bracket (banked rider);
   (4) PQ-for-KV-cache = banked line on bench_kv_quant_decode.
   Vector search itself (RAG/tenancy) = tangent, no build.
+
+- **2026-07-25 (reviewer, portrait audit): visualization upgrades.**
+  Ranked: (1) Procrustes gauge-fix before cross-model portraits —
+  unlocks "same lattice up to gauge?" (calculated-model thesis
+  test; supersedes the banked gauge-fixed-phase item with a
+  concrete method); (2) whitened null + shared color (SHIPPED
+  same-day); (3) clade/family neuron coloring — visual holography
+  test (mixed = holographic, clumped = theory breaks); reclaims
+  the redundant color channel; (4) shared-scale width-ladder small
+  multiples; growth animation ep0->ep1->final (motion honest,
+  static 3D rejected — occlusion is rotation-dependent).
+  Attribution: reviewer agent; Artin commissioned the audit.

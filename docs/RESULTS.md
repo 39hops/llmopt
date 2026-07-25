@@ -4765,3 +4765,23 @@ landed and CHANGED the booking — command diff written in.
 5. Loss-capability divergence (bf16+packing cell: LOWER loss
    0.4124, gate −13): gate-not-the-loss, 6th instance — packing's
    signature from 07-17 (loss blind to the hole) reproduced.
+
+## Instrument fix: the phase-density null was wrong (2026-07-25, reviewer catch)
+
+The reviewer's portrait audit caught neuron-density-vs-phase using
+raw PC1+i*PC2 angles: SVD orders axes by variance, so even a
+perfectly isotropic cloud reads non-uniform — the bimodal wiggle in
+the original chart was largely PROJECTION ARTIFACT and its "0.16 =
+isotropy" line the wrong null. FIX SHIPPED: polar projection now
+whitens (equalizes PC1/PC2 variance) before taking angles;
+compare-panels now share one color scale (same color = same
+magnitude). Chart regenerated: the REAL read survives — all four
+widths (d64/d128/d256/19M) overlap in whitened phase density:
+lattice geometry is width-robust even where the capability floor
+cracks (d64), consistent with R=0.034 and texture-frozen-at-birth.
+The earlier bimodality read is retracted as instrument artifact.
+Portrait-audit verdicts also banked: binary = uniform-color blob
+(constant row norm, the no-zero law made visible), ternary =
+graded (sparsity dimmer switch); PR-across-alphabets is an
+alphabet artifact (never compare PR levels cross-alphabet);
+cross-model PHASE comparisons remain gauge-void until Procrustes.
