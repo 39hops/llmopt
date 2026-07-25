@@ -614,3 +614,20 @@ to the collaboration itself.
   PTQ path). Attribution: Artin (set + symmetry hypothesis +
   exact-4-bit ask); Fable (two-of-three, M4^2/G16, T-squared
   identity); reviewer red-team pending.
+
+- **2026-07-25 (Opus-5 reviewer, first riff): THE GAUGE-SUBGROUP
+  LAW candidate + the zero-birth prologue.** Independent re-review
+  of the complex bracket (did NOT endorse as specced): (1) an
+  alphabet pays when its symmetry group is a SUBGROUP of the
+  network's gauge group — zero = the group identity/fixed point
+  (Artin's midpoint intuition formalized); symmetric alphabets
+  make quantization gauge-equivariant; rotation alphabets need
+  phase-equivariant activations (modReLU) or the prior dies at
+  every nonlinearity. (2) All named cells still resolution-
+  confounded at real-DOF (M4^2 = M4-twice; G5/M5 and Q9/D9 carry
+  2x gaps). (3) PROLOGUE (zero births, rides the race chain):
+  gauge-commutation test, S4 {±1/3,±1} symmetry-without-zero,
+  sparsity control at ternary's zero-fraction, weight-FFT euler
+  read. (4) Falsifiable rider: asymmetric alphabets degrade with
+  DEPTH not width. Births demoted below d256 gate, hang on
+  prologue + modReLU decision + gate-zero identity test.
