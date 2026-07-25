@@ -4857,3 +4857,20 @@ BELOW binary's 54 — no negative weights = no inhibition, the net
 can only add; binary at least cancels. If z1 >= binary, sign is
 cheaper to emulate than silence and the zero-law sharpens to
 "zero > sign > neither." Chained behind PROLOGUE_DONE.
+
+## PRE-REG AMENDMENT: z1 square, in-regime (reviewer blocking objection adopted)
+
+Census: {0,1} NEVER run (reviewer sweep; near-misses = unsigned
+STORAGE grids (HQQ affine — represented weights still straddle
+zero), sparsity, output-zeroed growth init — none excitation-only).
+Blocking fix adopted: z1-PTQ may NOT be read against born-B's 54
+(born != rounded). In-regime square, all PTQ on the same twin:
+b1 (sign-no-silence) vs tern (both) vs z1 (silence-no-sign) vs
+z1c (centered control — separates inhibition-loss from DC shift).
+BETS on record: Fable z1-PTQ craters (mass deletion); reviewer
+z1-PTQ ~20, AND z1-BORN 49 (40% on >= born-B 54: LN mean-sub +
+softmax = implicit inhibition). Rider: z1c ~ z1 iff DC absorbed
+by LN; z1c >> z1 iff the crater was DC not inhibition. THE REAL
+TEST = z1-BORN, queued for the next 3080 window (one tournament-
+arm birth); z1-PTQ books only as the square's cheap corner,
+labeled foregone-conclusion-candidate.
