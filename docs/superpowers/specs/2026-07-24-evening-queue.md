@@ -194,6 +194,38 @@ EXECUTABLE TRACKS:
   individually measured; the composition is not. The experiment
   unit becomes a coffee break.
 
+### POST-SPEED TIER (fires as speed items land — each repriced by
+10-min experiment units; ordered)
+
+1. **Open-problems probe** — big budget on the genuinely-unsolved,
+   scored on NOVELTY (a move outside the engine's vocabulary); the
+   discovery thread's measurable form (pairs with desert-v2's
+   composition zero).
+2. **Duo-teacher logit-KD** — one student vs combined
+   champion+ternary logits; crown tiebreak + "stream the neurons."
+3. **Template v2 (embeddings + attention statistics)** — the rung
+   between us and calculation-replaces-ep1; north star =
+   zero-epoch gate > 0.
+4. **Chain-carry redo at full budget** — the voided format
+   ablation, now cheap at d256-class.
+5. **Gen-9 full-dose rerun** — needs s2's fresh mine first (real
+   failed-step mass ~2x under the landed guard).
+6. **Gauge-fixed phase comparison** (instrument): align PC bases
+   via family-tilt anchors so cross-model phase density is real,
+   not SVD convention (the density plot's caveat).
+7. **Naked-forms shard** (gen-10 rider) — textbook-bare
+   brittleness fix.
+
+AXIOM-GATED (waits on Artin's relay, blocks nothing): knock-4
+re-spell; round-3 (78 walls); Fourier + limits tranches; magic
+boards r2; fuzz-the-oracle CI; NNUE homecoming.
+
+REVIEWER ROLE v2 (2026-07-25): third job added — POST-COMPACT
+RE-BRIEFER. The reviewer's context survives Fable's compaction;
+after any compact, Fable pings it for the big-picture diff before
+resuming. Fable = working memory (tails + in-flight), reviewer =
+long-term memory (full corpus), docs = the genome.
+
 Deliberately NOT revived (starved judges / closed files): token
 regret, config estimator, dispatcher v5, budget alloc, population
 training, hints in any form, precision-capability (CLOSED),
