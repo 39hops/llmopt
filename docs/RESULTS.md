@@ -4847,3 +4847,13 @@ behind the 4-bit arms. Cells + predictions:
   group) — if they match anyway, the gauge-subgroup story loses
   its teeth.
 Arms built: s4, sparse, tern, m4, gflip_m4, gflip_tern, gflip_s4.
+
+## PRE-REG RIDER: the {0,1} arm (Artin, 2026-07-25 evening)
+
+z1 = zero-or-positive-scale (1 bit, per-channel): SILENCE WITHOUT
+SIGN — the missing corner of the deletion square (binary = sign
+without silence, same 1 bit). PREDICTION (Fable): z1 craters
+BELOW binary's 54 — no negative weights = no inhibition, the net
+can only add; binary at least cancels. If z1 >= binary, sign is
+cheaper to emulate than silence and the zero-law sharpens to
+"zero > sign > neither." Chained behind PROLOGUE_DONE.
