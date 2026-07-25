@@ -19,6 +19,10 @@ mp.set_start_method("fork", force=True)
 from llmopt.train.mathnative import MathTokenizer, build_model
 
 x = sp.Symbol("x")
+CONTROL = [  # solvable states: the instrument gate (must show valid steps)
+    "Integral(x**2, x)",
+    "Integral(sin(x)*cos(x), x)",
+]
 DEAD = [  # Liouville-certified non-elementary integrands
     "Integral(exp(-x**2), x)",
     "Integral(exp(x**2), x)",
@@ -49,11 +53,11 @@ def sample_step(cur, temp=0.7):
         for _ in range(160):
             p = torch.softmax(logits[0, -1] / temp, -1)
             nxt = torch.multinomial(p, 1).item()
-            if nxt == eos:
+            if nxt == eos or tok.vocab[nxt] == "\n":
                 break
             out.append(nxt)
             logits, past = model(torch.tensor([[nxt]], device=dev),
-                                 use_cache=True, past=past)
+                                 past=past)
     return tok.decode(out).strip()
 
 
@@ -66,7 +70,7 @@ def verify(cur, pred, q):
 
 
 results = []
-for cur in DEAD:
+for cur in CONTROL + DEAD:
     votes = {"valid": 0, "invalid": 0, "series_marks": 0, "identity": 0}
     valid_preds = []
     for k in range(K):

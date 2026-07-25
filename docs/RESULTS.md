@@ -4379,3 +4379,34 @@ CLOSE the bridge-at-the-gate file with the verdict "transfer
 exists but is emission-size-gated; the gate-level test is
 structurally unreachable." No fifth knock; no scoring changes to
 force a pass (the door metric is the honest instrument).
+
+## Desert test v2: NO SPONTANEOUS COMPOSITION — coefficient (iv) reads zero (2026-07-24 night)
+
+The cross-grammar composition probe (union equation candidate
+coefficient iv), on gen-9 arm B (series skill 99.2 resident): 8
+Liouville-dead integrals x 16 samples = 128 proposals — **0
+oracle-valid, 0 series-representation reaches.** The model attacks
+with familiar integral-grammar patterns (i_sum-split shapes), every
+one oracle-rejected, and NEVER reaches for the expansion move that
+its own series grammar makes trivial. HONEST STALL at scale (the
+original desert test's 3-proposal stall, replicated at 128) — the
+architecture cannot bluff a closed form, and it also cannot
+DISCOVER the jailbreak it already contains. House pre-reg (a)
+CONFIRMED; with poly2 (co-residency zero) and the ODE vocab-void,
+the bridge law graduates to its strong form: **NOTHING transfers
+without demonstrated shared steps — not co-residency, not
+inference-time composition, not cross-vocabulary reach.** The
+discovery-as-a-move diet (bridge rows demonstrating "when stuck,
+expand") is now the named, farmable fix.
+INSTRUMENT SAGA, booked per honesty norms: run 1 was VOID — my
+probe sampler didn't break decode at the newline step-boundary
+(auditor-was-the-bug #4-adjacent); caught by the solvable-state
+CONTROL reading 0/8 from a 70/120 model. Fixed to mirror the
+production sampler; control then read 4/8 valid. Controls ride
+every instrument, no exceptions — one run's delay, a void verdict
+prevented. RIDER OBSERVATION: naked textbook states (Integral(
+x**2, x)) FAIL where textured generator states succeed — the
+crystal is brittle on inputs simpler than its diet ever showed
+(exposure, not difficulty; the rarity law's floor: "common" means
+common-IN-CORPUS, and bare forms are rare). Cheap fix candidate:
+a thin naked-forms shard in gen-10.
