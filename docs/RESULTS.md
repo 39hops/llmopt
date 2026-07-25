@@ -4727,3 +4727,41 @@ prices train-into-lattice vs round-onto-lattice; house has no
 strong prior — banks either way. Fences: n=1, PTQ-only, MPS
 gates, per-channel codebooks (finer than the born alphabets'
 global levels — noted, not hidden).
+
+## The decider reads: device innocent, the −14 decomposes, HOLD lifts on direction (2026-07-25 midday)
+
+19M-cuda-fp32: gate {3:21,4:8,5:18,6:7,7:15} = **69/120 @ 63.32**,
+rarity 114/200. Reviewer-cross-checked; its packing objection
+landed and CHANGED the booking — command diff written in.
+1. **Device effect ~vanishes at fp32**: 19M MPS-fp32 70 vs
+   cuda-fp32 69 (−1 gate, sub-noise). Rarity residual −5 (119 v
+   114) flagged, sigma-pending; rarity-based cross-device reads
+   carry it, gate-based reads are device-clean.
+2. **The −14 was NOT a device law — and NOT yet a bf16 law
+   either.** Command diff (the reviewer's demanded grep): the 19M
+   bf16 cell ran BARE --fast → `if fast and not nopack` re-enables
+   token-budget packing (8,426 vs 37,498 steps/ep) — MY LAUNCH WAS
+   OFF-DOCTRINE (the packing hole was booked at ~−10 on
+   2026-07-17 and --fast was supposed to ride with --nopack). The
+   45M bf16 twin DID run --nopack (37,498 steps both arms), so
+   66=66 isolates bf16-alone = FREE at 45M. Decomposition at 19M:
+   −13 = packing (known ~−10) + bf16 (UNMEASURED alone at this
+   width). **Isolation cell queued: 19M cuda bf16+--nopack**,
+   fires behind the sigma_cuda cells. Doctrine NOW: --fast never
+   ships without --nopack (flag pair enforced in scripts), any
+   width; the "no --fast below d512" law WAITS for the isolation
+   cell rather than booking on a bundle.
+3. **HOLD LIFTS on DIRECTION: gen-10 = 19M re-books** on the clean
+   same-device same-precision pair (19M-cuda-fp32 69 > 45M-cuda-
+   fp32 66; rarity 114 > 111). Magnitude +3 = exactly the >=3 bar
+   with cuda sigma unmeasured — booked MARGINAL-REAL pending the
+   sigma cells; direction is mechanism-backed (token-light
+   federation, W* <= 19M).
+4. **De-escalation (reviewer, correcting its own alarm)**: the
+   five-point scaling table is CLEAN — all ladder points born MPS
+   (log audit), the table is gate-based (device-clean at fp32),
+   and any hypothetical wide bf16 birth would be bf16-immune via
+   the dimension dividend. No W* revision.
+5. Loss-capability divergence (bf16+packing cell: LOWER loss
+   0.4124, gate −13): gate-not-the-loss, 6th instance — packing's
+   signature from 07-17 (loss blind to the hole) reproduced.
