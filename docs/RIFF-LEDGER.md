@@ -481,6 +481,24 @@ to the collaboration itself.
   fragment fires; the dark-expert problem is frontier-scale only.
   Related: open-problems probe (novelty metric), blackboard
   protocol (the two-model version of the same question).
+- **The vocab-width floor / grow-with-the-map** (Artin, 2026-07-24
+  night, off the 19M-beats-45M verdict + "territory is
+  vocabulary"): is there a MINIMUM width relative to vocabulary/
+  grammar count — and if W_min(vocab) is found, birth AT the floor
+  and grow as territory (vocab) grows: dynamic capacity triggered
+  by vocabulary instead of schedule, births faster at fewer
+  params. Measured ground: W* only ever probed from ABOVE (45M/
+  113M/400M all starve); nothing below 19M ever birthed; the NNUE
+  (20->64->64->1) is the oligarchy-phase floor datapoint; the
+  banked min-width-for-alphabet-poor sweep is the alphabet-axis
+  sibling. EXPERIMENT (cheap): downward width ladder d64/128/256
+  on the gen-9 diet, minutes/birth on Mac — maps k(W)'s other end;
+  composes with template-spray growth (the grown-champion lineage)
+  and tonight's k(W)-in-tokens refinement. Prediction to
+  pre-register at run time: the floor is set by GRAMMAR structure
+  (chain depth/context), not vocab count (41 tokens is
+  information-trivial; the derivation is not) | banked 2026-07-24;
+  weekend Mac candidate |
 - **Streaming birth** (Artin, 2026-07-24 ~2:45AM, half-retracted
   same breath — banked anyway): template init + stream the corpus
   ONCE, no epochs, surprise-gated LR — birth as metabolism from
