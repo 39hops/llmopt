@@ -4574,3 +4574,39 @@ BEFORE booking; its three tightenings adopted verbatim.
    nominal .883 is not a winner).
 Fences: sectors never pooled (Mac lineage vs 3080/TF32); n=1 per
 cell; underfed 113M/200M/400M excluded from every fit.
+
+## fp32 control at 45M: no detectable bf16-birth debit on cuda; gen-10 = 19M books (2026-07-25 pre-dawn)
+
+Paired arms, WSL cuda, gen-9 diet B, BIRTH_SEED=1, 3ep, one
+variable (--fast/--nopack): **bf16 66/120 @ 61.95 (rarity
+108/200) vs fp32 66/120 @ 61.46 (rarity 111/200).**
+Reviewer-cross-checked BEFORE booking; both its objections
+adopted.
+1. **Precision confound DEAD**: no detectable bf16-birth debit at
+   45M on cuda (gate 66=66; rarity +3 sub-noise, sign-consistent
+   with a residual whisper — "no detectable," not "exactly
+   zero"). CONFIRMS AND EXTENDS the cuda parity sweep to 45M; the
+   historical MPS/d384 +3-fp32 debit is a SEPARATE regime, not
+   overturned. Level-mix shuffle (L4 4 v 6) = within-tie, unread.
+2. **Width-doesn't-pay books as MECHANISM, not magnitude**
+   (reviewer catch, adopted): the 19M arm B was born MPS
+   (logs/gen9B_birth.log, Mac), the 45M born cuda — birth-device
+   crossed, and the parity sweep prices an MPS-birth offset at
+   ~+3-4 solves at d384, ~the size of the −4 being attributed to
+   width. Bookable: 45M shows NO width dividend on the token-light
+   union (both precisions gate 66); the pure-math sign-flip (45M
+   69 > 19M 65 on chains; 19M > 45M on primitives) attributes the
+   flip to token density/W*, not precision or device. The width
+   PENALTY magnitude is NOT booked — 19M-cuda control launched to
+   close it (same diet B/seed, bf16).
+3. **GEN-10 = 19M BOOKS** as the efficient choice: at-least-as-
+   good and 2.4x cheaper on this diet; robust to the birth-device
+   confound even though the −4 is not.
+4. **Speed rider, capability leg only**: bf16 births
+   capability-lossless now measured at TWO widths on cuda (d384
+   parity sweep + 45M 66=66). Honest wall-clock: EPOCH PARITY at
+   45M on the 3080 (bf16 1939/1920s vs fp32 1872/1883s
+   uncontended epochs; fp32 ep0 3651s was GPU contention) — no
+   throughput claim books at this width on this box.
+Fences: n=1 per precision arm; rarity numbers are WSL-4th-census
+(within-census pairs only).
