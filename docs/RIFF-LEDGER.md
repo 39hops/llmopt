@@ -655,3 +655,37 @@ to the collaboration itself.
   amplitude-amplification analogy = surprise-gated streaming
   (already queued). Attribution: Artin (riff, via 3b1b), Fable
   (settlement).
+
+- **2026-07-25 (Opus-5 cross-check on the quantum riff) — corrections adopted.**
+  (1) GROVER-NO reason 2 re-spelled: the ENGINE does have the
+  cheap-verify asymmetry (substitute-back is cheap — the lab's
+  founding fact); the correct fence = (i) the engine's search
+  space is a DYNAMIC tree (Grover needs static indexed space +
+  QRAM), (ii) Grover's sqrt-N is a STRUCTURELESS bound — our
+  syndrome/valuation pruning exploits structure and beats it;
+  you can't compose them. Readout: expectation values legal but
+  O(1/eps^2) shots eat the speedup (not "collapse").
+  (2) G16 RE-LABELED: phase pairs at pi can SYNTHESIZE an
+  effective zero across a 2x2 block — G16 is not a clean
+  zero-test; its question becomes "can phase cancellation
+  substitute for a zero level?" (prediction flips to
+  may-survive). S4 remains the real zero-test.
+  (3) Unitary leg: uRNN/EUNN precedent (gradient stability, not
+  capability) — cite, don't run.
+  (4) Underweighted quantum-adjacent banks: TENSOR-TRAIN/MPS rank
+  axis (bits x dimension x RANK — third axis of the exchange law,
+  house-native via llmopt/quantum) and ANNEALING over discrete
+  weight lattices (the only untried route to born-quality
+  lattices without gradients).
+  (5) AMPLITUDE RATIONING: legal (teach — arrives as gradient),
+  but high null prior (rations-with-extra-steps); mandatory
+  control = rarity-matched vs footprint-guided at matched dose;
+  GATED ON the free clade-coloring read (holographic mixing =>
+  no mechanism, close cheap). Ranked ~7th.
+  (6) ZX CONTINENT promoted to NEXT-CONTINENT CANDIDATE #1
+  (ahead of complex births): first GRAPH grammar — the only
+  available test of whether the federation floor scales with
+  grammar COUNT or CLASS. Two desk blockers before any farm:
+  graph serialization must avoid canonical sorts (gauge, and the
+  native-transformer sequel risk) and ZX atom set vs vocab-41
+  (the ODE void-by-vocab lesson).
