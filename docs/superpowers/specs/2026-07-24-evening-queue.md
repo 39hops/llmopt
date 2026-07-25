@@ -122,6 +122,49 @@ before it fires, per doctrine.
   valid); anything on the 3080 needs its own same-device control,
   never the 9/24.
 
+## WEEKEND QUEUE v2 (2026-07-25, SPEED-FIRST — supersedes ordering above)
+
+Artin's directive: speed is the theme; no axiom-dependent items in
+the near queue; no overscope. Reviewer-curated, adopted.
+
+THE SPEED TRACK (ranked, wall-saved x breadth / cost):
+1. PREFIX NOTATION — 20-30% fewer decode steps on EVERY sample
+   forever; = native-transformer rung 1 (double duty).
+2. STREAMING BIRTH A/B — up to 3x off the birth wall (3ep -> one
+   pass); d2 harness exists; PROMOTED from dormant (misslot).
+3. BATCHED-KV SAMPLING — gate-v2 exact-match machinery + shipped
+   KV recomposed; gates 2min->seconds, extend to wave sampling.
+4. int4/TERNARY GEMV IN THE SAMPLING PATH — 8x bandwidth measured;
+   VERIFY deployed in the loop, not just greenlit.
+5. ENGINE-REGRET HOOK in our mining farms — 2.1x, throughput-
+   mining only (never label farms).
+6. DETERMINISTIC TERNARY GATE — bit-exact forward kills the
+   cross-device re-run class (speed = re-runs eliminated).
+Future prize (banked, heavy): EU delta-scoring (~Kx wave scoring)
+— unblocked after prefix + tree-hash.
+
+DEMOTED/kept banked by the same review: parallel leaf closing
+(axiom-hybrid), flash prefill + autotuning (overscope + starved
+judge), speculative arithmetic (int8-exact already beats fp64 2x —
+marginal), HAWQ (still blocked on mass->robustness leg).
+
+UN-BANKED (cheap, prereqs met): graph-modularity on gen-8 (F3);
+blind committee prediction as standing rule (F4); streaming birth;
+batched-KV recompose; deterministic-gate pilot.
+
+EXECUTABLE TRACKS:
+- Fable code, in order: prefix tokenizer (1-2h) -> batched-KV
+  recompose (fast-follow). [Miner-v2 guard: ALREADY LANDED
+  2026-07-24 night, 1,275/1,275 caught — reviewer's note predates.]
+- MAC: width ladder (running) -> prefix rung-1 birth pair ->
+  CPU riders while births run (graph-modularity, blind-committee
+  rule) -> streaming-birth A/B.
+- 3080: fp32 control (running) -> v5 s2 with WAVE-CONTRAST riding
+  the stream as a free-DPO paired arm -> ep1 snapshots for
+  k(W)/CV-norm (share ladder seeds) -> deterministic-gate pilot.
+- Next axiom relay (Artin's timing): knock-4 ask + round-3 GO +
+  stuck_states_v5 binned head.
+
 Deliberately NOT revived (starved judges / closed files): token
 regret, config estimator, dispatcher v5, budget alloc, population
 training, hints in any form, precision-capability (CLOSED),
