@@ -4466,3 +4466,46 @@ untouched); absolute gates carry a ~0.3%-of-diet noise floor
 nobody knew about. The strict-encode fix paid for itself within
 three hours of landing — the silent-drop class is now extinct at
 the trainer.
+
+## THE WIDTH FLOOR: W_min ~ 8.4M — the full curve closes 0.5M -> 400M (2026-07-25 ~2AM)
+
+Downward ladder (Artin's vocab-floor riff), gen-4 corpus, 3ep,
+standard width recipe (head_dim=64, ffn=4d — reviewer verified
+this is a CLEAN width isolation, not a config bundle), Mac
+lineage, reviewer-cross-checked: **d256 (8.4M) 65/120 @ 59.91
+{3:22,4:7,5:16,6:8,7:12} — ON the 19M plateau; d128 (2.1M) 57;
+d64 (0.5M) 38 with L4 = ZERO.** The complete curve on one corpus:
+38 -> 57 -> 65 -> 64-65 -> **69 (45M = W*)** -> 65 -> 49 -> 30.
+Chart: docs/assets/width-curve-gen4.png.
+- **W_min ~ 8.4M** (plateau floor): the 19M was ~2.3x
+  over-provisioned; 45M remains the peak (-4 from d256 clears the
+  bar — do NOT read "full band" as the peak). Floor < peak <
+  over-provision < collapse, all measured.
+- **PRE-REG REFINED AND CONFIRMED: isolated-clade techniques die
+  first under width compression** — L4 (ansatz clade, no descent
+  path) 7->4->0 and L6 (heurisch level) 8->7->3 collapse while
+  clade-connected L3/L5/L7 lose only ~30%. Sharper than the
+  registered "long dependencies": the phylogeny's isolated
+  branches need DEDICATED width. Symmetry booked: **L4 = 0 at
+  BOTH extremes** (d64 under-width AND 400M underfed) — the
+  isolated clade is the first casualty of every starvation mode.
+- "Not vocab count" leg UNTESTED (vocab fixed at 40 throughout) —
+  needs a vocab-varied arm before that clause books.
+- n=1 per width; seed sigma<1 measured at 19M only — ORDERING and
+  collapse booked, exact knee values not.
+- **Federation floor reading**: pure-math floor 8.4M vs the
+  everything-diet's W* ~19M (union re-ask) — adding grammars
+  RAISES the floor; minimum width scales with grammar count. The
+  union equation gains its floor-side law next to k(W)-in-tokens.
+- Over-claims fenced: production does NOT move (gen6_grown 76 is
+  a different lineage+territory; W_min is a deployment-efficiency
+  point — an 8.4M pure-math tool artifact); 8.4M is not the
+  federation floor.
+- RIDER: the ladder supplies boundary-or-bulk's missing low-width
+  cells — the 0.5M->400M grid is COMPLETE; the regression
+  (capability vs N*b / d / d*L / sqrt(N)) is now one script.
+- Lattice note: portraits + gauges show the democracy SURVIVES at
+  every width (phases isotropic, no shelf, kurt 2.5-3.1) — the
+  d64 crack is dimensional, not geometric: the organism stays
+  healthy and simply runs out of directions (assets:
+  neurons-wfloor-*.png).
