@@ -4691,7 +4691,8 @@ Reviewer-cross-checked; CLOSE endorsed with fences, all adopted.
 ## HOLD: gen-10 = 19M booking SUSPENDED pending same-device cells (2026-07-25 morning)
 
 The 19M-cuda control (bf16 --fast) gated 56/120, rarity 105/200 —
-same cuda harness that read the MPS-born arm B at 70/119. The
+same cuda harness that read the MPS-born arm B at gate 70/120,
+rarity 119/200. The
 width verdict is device/precision-dependent and INVERTS on
 all-cuda births (45M 66 > 19M 56); the original 19M>45M rested on
 a cross-birth-device pair where the birth-machine delta (14)
@@ -4798,3 +4799,30 @@ SEPARATION here would mean level placement still matters at 16
 levels and the knee sits higher than the democracy story
 predicts. The complex bracket (M4^2 / G16 / G5 / D9 / Q9) is
 BORN-only — spec'd separately, builds after today's cells.
+
+## Opus-5 reviewer onboarding: four catches booked (2026-07-25 afternoon)
+
+New reviewer (claude-opus-5[1m], self-report) onboarded on the full
+corpus; its fresh-eyes pass on today's entries, all adopted:
+1. 70/119 denominator conflation in the HOLD entry — FIXED (gate
+   70/120, rarity 119/200).
+2. **Cross-fix fence on the width floor**: the strict-encode fix
+   landed mid-ladder — wfloor d256 trained 132,449 rows (388
+   skipped) vs the historical 19M's 132,837. "d256 ON the 19M
+   plateau" is a cross-fix pair; bounded by the accidental
+   control (post-fix infix twin 64 vs pre-fix band 64-65 =>
+   drift <= 1 solve on gen-4), but the fence is now LABELED.
+3. MPS `--fast` is a packing-only flag (autocast gated on
+   dev=="cuda") — same silent-per-device-meaning trap as the
+   `if fast and not nopack` hole. Doctrine: name flags by what
+   they do per device.
+4. **SIGMA GRID PROTOCOL AMENDED (the big one)**: s1 (arm B, 70)
+   pre-dates the strict-encode fix; s2/s3 skip 1,017
+   out-of-language gen-9 rows s1 trained on mangled — so
+   {s1,s2,s3} varies seed AND diet. PRE-REGISTERED RULE (before
+   any sigma reads): sigma is computed over s2/s3 pairs first; if
+   sigma > 3 (the re-fencing tripwire), the read is repeated with
+   s1 DROPPED before any verdict is re-fenced; s1 is labeled a
+   pre-fix point in every table. No gen-9 cross-fix control
+   exists (unlike gen-4's <= 1 solve bound) — the 1,017-row
+   delta rides as an explicit fence.
