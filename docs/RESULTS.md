@@ -4350,6 +4350,25 @@ never trains. "One-fact" != "one-primitive-determinable" — the
 re-spells shrank step count while the binding axis was OUTPUT
 emission (psub 7/15 and padd 24/34 sit on the same gradient).
 
+## ODE zero-diet probe: VOID BY VOCABULARY — and a tokenizer footgun (2026-07-24 night)
+
+The pre-registered probe died at the tokenizer, which IS the
+verdict: the vocab-41 crystal cannot SPELL closed-form ODE grammar
+(no y, Eq(, Derivative(, C1 atoms) — the zero-diet baseline is
+structurally zero at the language level, before capability enters.
+The bridge-law prediction (~0) is confirmed in its strongest form:
+no transfer is possible into a grammar the vocabulary cannot
+express; territory = vocabulary expansion (the Liouville-boundary
+note, measured again). Re-registration: the L9b champion-control
+becomes the FIRST ODE-vocab birth's pre-diet probe (VOCAB_EXTRA
+gains the ODE atoms exactly as series gained 't').
+FOOTGUN CAUGHT EN ROUTE: MathTokenizer.encode SILENTLY DROPS
+unknown substrings (43-char ODE string -> 19 tokens, no exception,
+roundtrip false). Known-clean diets have masked this; the first
+continent with a stray atom would train on silently-mangled rows.
+FIX QUEUED (Fable): strict encode that raises on unencodable
+input, legacy escape hatch for measured cases.
+
 KNOCK 4, pre-registered conditional (the LAST knock, hard-stop):
 re-spell ibridge as pure COPY — residue coefficients pre-computed
 in explicit pmul/psub precursor rows, the ibridge emission only
