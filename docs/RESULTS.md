@@ -5020,3 +5020,23 @@ PTQ-only (the born side of this question = born-S4 vs born-M4,
 still the named law-converting cell); MPS sigma unmeasured (the
 5 = the cuda bar exactly); the earlier VOID int2 stays booked as
 instrument error.
+
+## AMENDMENT to the 2-bit zero claim: the sign FLIPS with codebook type (reviewer objection, adopted)
+
+The booked one-liner was drawn from the fitted pair alone and is
+contradicted by the fixed triple in the same table. Full 2-bit
+card by codebook type: FITTED (k-means): LM2-free 59 > LM2-zero
+54 (zero costs −5). FIXED (hand levels): int2fix 54 ~ m4 51 >
+S4 44 (zero PAYS +7..10). CONDITIONAL LAW (replaces the
+narrow claim): **at 2-bit PTQ, a pinned zero PAYS in fixed
+codebooks (it captures the mode of the kurt-2.4 distribution
+that fixed levels otherwise miss) and COSTS in fitted ones
+(k-means already places a level near the mode; pinning re-derives
+what fitting gives free).** Re-reads the 3-bit null coherently:
+uniform is near-optimal at 3 bits, fitting has nothing to buy;
+at 2 bits fitting still buys, and the zero is how a FIXED
+codebook buys it. The 54=54 tie is worded "consistent with
+placement-invariance" (validities 49.50 v 47.02, same animal),
+never leaned on as exact. The asymmetry axis remains
+unseparated in every 2-bit arm — born-S4 vs born-M4 stays the
+axis-separating cell.
