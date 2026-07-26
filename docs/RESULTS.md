@@ -5947,3 +5947,38 @@ The ZX continent now has: certified oracle path, qualified row
 factory, balanced diet, ~20k adjudicated rows. The vocab-51 ZX
 birth (federation-floor pre-reg + the G5/M5 factorial's ZX
 column) is an engineering decision, not a research one.
+
+## PRE-REG: complex-weight NNUE on magic labels (2026-07-26, before the run)
+
+The first alphabet cell in the OLIGARCHY phase (NNUE kurt 4.78 —
+every alphabet law so far is democracy-phase). Paired same-run
+arms on magic_labels_v7, same split/loss/metrics as the founding
+estimator: real64 (20-64-64 ReLU) vs cplx42 (20-42C-42C, genuine
+complex multiply, modReLU), real params matched within ~3% (both
+counts printed; per the fairness rule both framings reported).
+PREDICTION (skeptical, pre-registered): NULL-to-loss for complex —
+the 20 structural features carry no phase-like signal, and
+rotation should pay only where data carries phase (Trabelsi
+lineage). If cplx42 WINS on rho: rotation pays in the oligarchy
+phase without phase-carrying input — a genuine surprise that
+would re-rank the complex bracket. Either verdict = the oligarchy
+phase's first alphabet datapoint.
+
+## Complex NNUE: NULL as pre-registered — rotation does not pay in the oligarchy phase either (2026-07-26)
+
+real64 (5,634 params): rho 0.541 / AUC 0.928. cplx42 (5,504):
+rho 0.493 / AUC 0.922. The skeptical prediction lands: complex
+LOSES rho by 0.048 and ties AUC at matched real params, on
+features that carry no phase. The oligarchy phase's first
+alphabet datapoint: rotation buys nothing here, consistent with
+the Trabelsi lineage (complex pays where data carries phase) and
+with every democracy-phase alphabet result. FENCE: both rhos sit
+at the v7-label-era signal ceiling (~0.55 — the starved-judge
+collapse: those labels postdate the engine saturating the
+generator), so absolute rho is era-bound; the PAIRED delta is the
+result. Consequence for the bracket: the complex program's
+surviving justifications are now exactly two — per-family euler
+reads on phase-carrying DATA (math trig/exp, ZX rotation grammar)
+and the interference-substitutes-for-SIGN question (G16, re-priced
+by the Z1 arc). Everything phase-free is measured null at both
+phases of the crystal taxonomy.
