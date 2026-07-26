@@ -5396,3 +5396,56 @@ FAIL. Booked on house judgment; reviewer check is post-booking.
    little leverage; no claim either way.
 5. The Z1-degeneracy red-team rider discharges trivially: no
    degeneracy involved; the arm under-trained, honestly.
+
+## AMENDMENTS: the matched-steps accident separates the packing bundle (2026-07-26)
+
+Post-booking cross-check (reviewer) + house read on top of it; both
+the packing and streaming entries take amendments.
+1. **THE MATCHED-STEPS READ (house catch, the day's sharpest)**: the
+   two arms did nearly IDENTICAL total optimizer steps — packed
+   1,324 x 3ep = 3,972; streaming 4,140 (control 12,417) — same
+   device, corpus, seed, ~same step budget. Results: packing 38
+   (L4 = 1), streaming 53 (L4 = 6). **Step count alone cannot be
+   the packing hole's mechanism**: at matched step starvation,
+   packing does twice the damage and kills the clade where
+   streaming leaves it untouched. Mechanism candidates narrow to
+   packing-specific factors: batch composition (token-budget
+   mega-batches), row repetition pattern (3 passes packed v 1 pass
+   even), or the OneCycle-on-fewer-steps schedule. Fences: LR
+   schedule and repetition DO differ between the arms (not a
+   designed pair — an accidental one), so this SEPARATES the
+   bundle partially, not fully; the designed cell stays
+   packed-vs-unpacked at matched schedule.
+2. **PER-LEVEL SIGMA MEASURED (free, from the three seed births)**:
+   seeds {1,2,3} per-level: L3 {22,20,23}, L4 {7,7,6}, L5
+   {16,17,17}, L6 {8,7,7}, L7 {12,12,11} — sigma ~0.6-1.5. So:
+   streaming L4=6 is INSIDE the seed band (clade undamaged, not
+   merely "even retention"); packing L4=1 is ~9 sigma below it
+   (clade death, now statistical, not eyeballed). The instrument
+   gap (gate sigma everywhere, per-level sigma nowhere) is closed
+   for d256.
+3. Streaming entry item 3 SUPERSEDED accordingly: the
+   schedule-vs-structural wording is dead on its own examples
+   (packing also cuts steps and DID kill L4). What books instead:
+   two readings were open — (a) dose-response (clade dies at deep
+   damage only), (b) packing-specific mechanism — and the
+   matched-steps read decides FOR (b)-leaning: damage is not a
+   function of step count alone. Dose-response survives only as
+   "whatever packing does, more of it kills the clade."
+4. Streaming capability fail: fence added — the claim is "one pass
+   at equal rows loses -12" (the epoch is load-bearing), NOT
+   "streaming fails" as mechanism; surprise-gating is UNTESTED
+   (multiplier 0.86-0.95, barely engaged), not nulled — its real
+   cell is the metabolic loop where waves vary.
+5. Speed leg standing bar REGISTERED (no goalpost-moving later): a
+   length-bucketed streaming rerun must hit the SAME 480s + gate
+   >= 61 bars or streaming books dead on both legs. Composed-birth
+   re-priced NOW: its largest lever (3ep -> 1 pass) is gone;
+   the <15-min target loses its main multiplier — batched-KV is
+   the speed track's remaining headline.
+6. PROTOCOL NOTE (booked): paired arms must match BATCH
+   CONSTRUCTION, not just diet/seed/device — the streaming arm's
+   shuffled-padded batches cost the speed leg. Reviewer
+   over-prediction #3 recorded (its own ask): it endorsed the
+   streaming GO without catching the batch-construction
+   one-variable violation at design stage.
