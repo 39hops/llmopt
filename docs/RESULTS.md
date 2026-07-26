@@ -6360,3 +6360,93 @@ licensed comparison is within-column (M5-ZX vs G5-ZX vs
 none-ZX, all identical recipe), which is exactly the factorial's
 interaction question. Chain healthy at relaunch: 0 OOM, 5.6
 it/s, ~5.5h + gates, self-marking (zx_cuda_done.marker).
+
+## NNUE symmetry read: sign symmetry is a DEMOCRACY-phase property (2026-07-26, free read)
+
+Artin's ask ("is the NNUE symmetrical?") — never measured
+directly; measured now on nnue_eval.pt + magic_estimator_v7.pt
+vs the ternary-LM crystal. THE LM (democracy): pos/neg fraction
+0.499-0.502 on EVERY weight matrix, |skew| < 0.01 — perfect sign
+balance, no exceptions across 12 layers. THE NNUE (oligarchy,
+kurt 4.78): input layer balanced (0.502/0.498, skew -0.08),
+hidden layer skewed positive (0.595/0.405), output heads
+strongly asymmetric (skew -1.68 eval / +1.49 solved / -1.36
+cost; kurt 5-7). VERDICT: **sign symmetry is a phase property —
+democracies are sign-symmetric everywhere, oligarchies break
+symmetry progressively toward the readout.** Two retro-lights:
+(1) the opposition ladder (S4 54 / Z1S 0 / Z1 0) is a
+DEMOCRACY-phase law — its extrapolation to oligarchy regimes is
+unmeasured (the NNUE keeps 40% negative mass even while skewed:
+opposition never disappears, it just unbalances); (2) the
+complex-NNUE null lived in a sign-skewed regime — one more
+reason it doesn't transfer to crystal predictions. Scalar
+regression heads plausibly force the readout skew (a signed
+scalar output has a preferred direction; a softmax over 40
+tokens does not) — mechanism note, not measured.
+
+## PRE-REG: the CE-gate study — what does the gate see that loss cannot? (2026-07-26, before the read)
+
+Promoted per Artin ("that's entirely the whole point"). HYPOTHESIS
+(the branching-entropy floor): in a closed system the diet is
+one-of-many-valid — the same cur admits many oracle-valid nxt and
+the farm banked ONE arbitrary pick, so Bayes-optimal CE is
+bounded below by the true branching entropy of valid steps.
+Pushing CE below the floor = reallocating mass FROM valid
+alternatives TO farm picks (memorization); the GATE samples from
+the distribution-over-valid-moves, so it measures BRANCHING
+COVERAGE — the quantity CE trades away.
+SPECIMENS (d256, on disk, gates known): muon 34 / stream3
+(sorted-AdamW) 45 / stream4 57 / wfloor control 65.
+INSTRUMENT: leg A = teacher-forced mean CE on 400 fixed diet rows
+(seed 7); leg B = 40 fresh states (L3-L7, 8/level, never-trained
+seed space), 8-sample waves at T=0.7, oracle-verified; metrics =
+valid fraction, DISTINCT-valid steps per state (coverage),
+identity fraction.
+PREDICTIONS: (1) CE ordering INVERTS gate ordering at the muon
+end (muon lowest CE, lowest gate); (2) distinct-valid coverage
+follows gate ordering exactly (4/4 rank agreement); (3) the
+control's CE is NOT the lowest (it pays the branching tax).
+n=4 models — orderings and margins, no p-values; any prediction
+failing books as-is. If (2) holds, "loss to 0 is the target"
+books as FORMALLY WRONG for closed-system training and the gate
+gains its mechanism (coverage, not correctness-on-picks).
+
+## CE-GATE STUDY: my hypothesis FAILS — CE on a fixed instrument TRACKS the gate, and the Muon "dissociation" takes a retraction (2026-07-26)
+
+| model | gate | trainCE | valid% | distinct-valid/state | ident% |
+|---|---|---|---|---|---|
+| muon | 34 | 0.3933 | 27.8 | 0.55 | 0.0 |
+| stream3 | 45 | 0.3582 | 43.4 | 0.62 | 0.0 |
+| stream4 | 57 | 0.3306 | 48.1 | 0.62 | 0.6 |
+| control | 65 | 0.3149 | 47.8 | 0.62 | 0.0 |
+
+VERDICTS, against the pre-reg:
+1. **Prediction 1 FAILS, decisively**: CE on a FIXED row sample
+   does not invert the gate — it tracks it PERFECTLY (4/4 rank
+   agreement, lower CE = higher gate; muon is the WORST at
+   0.393, control the best at 0.315). Prediction 3 fails with it.
+2. **RETRACTION (booking amendment to the Muon close)**: the
+   "loss-gate dissociation" was a cross-instrument artifact —
+   Muon's "best losses ever recorded" were measured on ITS OWN
+   batch stream (different composition per arm); on one fixed
+   instrument its CE is the worst of the four. The doctrine
+   crystallizes: **losses are only comparable on a fixed shared
+   sample — training-stream losses are not an instrument.** (The
+   Z1 confidently-wrong dissociation SURVIVES — that was
+   loss-27-vs-floor within one stream, a different class.)
+3. The branching-entropy floor stays a THEORY without a
+   measured leg (CE differences here are dominated by validity
+   loss, not coverage reallocation); do not cite it as measured.
+4. The REAL dissociation found is elsewhere: stream4 57 vs
+   control 65 tie on 1-ply validity (48.1 v 47.8) and distinct-
+   valid coverage (0.62 = 0.62) — the -8 epoch gap is INVISIBLE
+   at one ply. **The gate measures CHAINING (multi-step
+   composition), and single-pass training's wound is
+   specifically the chain, not the step.** Composes with the
+   chain-carry hypothesis and Artin's format x schedule cell —
+   which this result PROMOTES: if revisits are what teach
+   multi-step composition, the format ablation on streamed
+   models is now the sharpest open streaming question.
+5. Muon's mechanism, finally visible: validity collapse (27.8%)
+   at ~zero identity — it emits confident well-formed garbage;
+   orthogonalized updates damaged the grammar itself.
