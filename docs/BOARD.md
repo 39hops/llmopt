@@ -23,6 +23,10 @@ Gen-7 (no-promote, ration lesson -> merged run applied it and won);
 duo miner (shard delivered into gen-9 diet); fast trainer (shipped:
 bf16 births default); GRPO frontier band (era closed — superseded
 by metabolic/exchange loop);
+ODE zero-diet probe (VOID BY VOCABULARY — vocab-41 can't spell the
+grammar; strongest form of the bridge-law ~0); desert test v2
+(honest stall, 128 proposals 0 valid, coefficient (iv) = 0, bridge
+law graduated to strong form);
 L7 gap (0 real); gate-v2 batching (null; KV was the fix); shaped
 GRPO size-Phi (null); chain-carry v1 (void, redo at full budget);
 selection-overfitting story (retracted -> battery truth -> rarity
@@ -42,8 +46,7 @@ instrument); birth precision (bracketed, closed); 113M capacity
 | Dynamic MoE via magic router (per-QUESTION expert keep-set loaded from SSD; measured basis: router stats 61%-keep holds accuracy, 50% count-quantile BEATS full, cliff below ~28%; moe/ LRU offload cache exists) + prune-then-distill skill grab (domain keep-set as small teacher) | Artin 2026-07-14 GO-to-bank; pilot on Mac w/ Qwen3-30B-A3B after current tree | RESULTS MoE pruning + this chat |
 | Representation stitching: TIER 1 PASSED all rungs (SmolLM2 beats native 91.6>90.5; bridge R~0.98; native probe reads bridged at 86.9% — same coordinates) -> next: (2) 30B-A3B keep-set runtime teacher, (3) GLM-class as OFFLINE geometry donor, HOUSE-TOOLS EDITION (Artin: use our recorded facts): zero-inference keep-set — train the weight-space reader (80.8/88.4 recipe, permutation-augmented) on router-stat-labeled experts from runnable MoEs, then READ GLM's experts off SSD to predict its math keep-set without ever running it; harvest prefill through kept experts only, or skip to weight2vec (reader embedding space as the shared geometry — change-of-basis from weights alone, no text/inference; moonshot, cheap falsification: hold-out-family transfer test) | tier 1 free/this week; tier 3 needs ~200GB SSD | RIFF-LEDGER + 2026-07-14 chat |
 | ODE chains merge (data/ode_chains.jsonl, 317 pairs) | multi-domain round AFTER round-5 attribution is clean | 91fb39d |
-| ODE zero-diet baseline probe (Artin's series->ODE transfer question; bridge law predicts ~0; the number = L9b continent's champion-control BEFORE farming) | QUEUED behind tonight's gen-9/poly5 verdicts (~30 min, Mac) | RESULTS pre-reg 2026-07-24 |
-| Desert test v2 (cross-grammar composition: Liouville-dead integrals into gen-8; union eq's candidate coefficient (iv)) | QUEUED after ODE probe (~minutes, Mac); sibling read with it | RIFF-LEDGER 2026-07-24 |
+| ODE atom-set decision (desk, free) + re-registered zero-diet probe: rides the FIRST ODE-vocab birth (VOCAB_EXTRA gains ODE atoms as series gained t) | ODE continent GO | RESULTS 2026-07-24 (probe VOID BY VOCABULARY) |
 | **NATIVE TRANSFORMER — CLOSED 2026-07-25 (dies with a mechanism)** | rung 1 prefix NO-ADOPT (gate −3; literature 20-30% shortening measured −4.5%; int3 differential −8); emission wall NOTATION-INVARIANT (length-proxy, in-language) → forecloses rung-2 tree-PE too; parens = error-correcting scaffolding (gate −3 / quant −7 / Q4 30% parse-fail, one mechanism); teach-don't-impose confirmed at the representation layer; survivors: GCD-pays-iff-syntactic law, rung-3 attention-init (independent, still BANKED) | RESULTS 2026-07-25 dawn |
 | **THE EVENING QUEUE (spec'd)** | Tier 1 fixed chain + Tier 2 ranked revivals (boundary-or-bulk FIRST per Artin's standing 07-22 call; chain-carry redo; wave-contrast; template v2; k(W) slots; HAWQ-rarity; notation A/B; deterministic gate; crown tiebreak) + Tier 3 axiom asks (fuzz-the-oracle, magic boards r2, Fourier) | specs/2026-07-24-evening-queue.md |
 | Closed-system weight anatomy (post-GRPO-runs): layerwise dW mass RL-vs-SFT, CKA before/after, layer-sweep probes on climbed model, weight-reader SFT-vs-RL classifier (Artin: do closed-system weights LOOK different? are thinking layers forming?) | GRPO runs complete + adapter drawer as dataset | 2026-07-14 evening |

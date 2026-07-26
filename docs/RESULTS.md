@@ -4929,7 +4929,9 @@ int3-uniform 65): LM3-free 64, LM3-zero 63, LM2-free 59, LM2-zero
 bits=2 — collapses weights to zero; instrument error, fix + rerun
 queued). d256 sigma rider: {65,63,64} => sigma ~1.0 (down-width
 noise is tight; sigma does NOT transport across cells — 2.5 at
-19M/cuda vs 1.0 at d256/MPS).
+19M/cuda vs 1.0 at d256/MPS). [Provenance verified 2026-07-26:
+three SEED BIRTHS — mathnative_wfloor_d256{,_s2,_s3}.pt — so this
+is genuine birth-seed dispersion, n=3, not PTQ-arm spread.]
 BOOKED NOW:
 1. **MSE-optimality buys nothing: the never-score-by-distance
    doctrine gets its direct experimental confirmation** — the
@@ -5059,8 +5061,10 @@ anticipated. VERDICTS:
 3. Production note: crown/production lineages are NOT affected
    (different diet/lineage); gen-10 = 19M stands on mechanism +
    efficiency as amended.
-4. sigma_MPS(19M, post-fix) ~ 1.4 (n=2, provisional); sigma does
-   not transport (2.5 cuda / ~1.4 MPS / 1.0 d256).
+4. [SUPERSEDED by the amendments below: the 1.4 is RETRACTED as
+   underdetermined — booking s1=70 as luck requires sigma_MPS >= 3.]
+   sigma_MPS(19M, post-fix) ~ 1.4 (n=2, provisional); sigma does
+   not transport (2.5 cuda / >=3 MPS / 1.0 d256).
 
 ## AMENDMENTS to the sigma-grid close (reviewer, all adopted; 2026-07-25 late)
 
@@ -5138,3 +5142,178 @@ Artin from here).
    were killed or halved by single confirmation seeds within
    hours; n=1 numbers were already fenced. Confirmation seeds on
    mechanisms join the doctrine.
+
+## PRE-REG: d256 substrate gate — reproduction leg (2026-07-26, before the run)
+
+Purpose: promote d256 to the pilot-A/B substrate (evening-queue
+v2.1). Replication leg ALREADY PAID (provenance verified this
+morning: wfloor_d256{,_s2,_s3}.pt are three seed births, {65,63,64},
+sigma ~1.0). Remaining leg = known-result reproduction, and per
+reviewer the target must be LARGE-MARGIN (sub-noise verdicts can't
+gate a substrate). Target chosen: **the packing hole (−13 at 19M)**.
+Arm: identical wfloor d256 recipe (gen-4, 3ep, BIRTH_SEED=1,
+d256/L8/ffn1024/h4, MPS) + bare `--fast` (packing ON — on MPS,
+--fast is packing-only; autocast is cuda-gated). Control: existing
+wfloor_d256.pt (65) — same seed, same device, post-strict-encode,
+one variable.
+PRE-REGISTERED: packing arm gates BELOW control by >= 3 solves
+(sigma_diff = sqrt(2)*1.0 ~ 1.4 at d256; direction + >=3 = pass).
+PASS REGION PRE-SPLIT (reviewer refinement, registered while the
+run is in flight, before any read): delta <= -8 = "reproduces with
+comparable magnitude"; -8 < delta <= -3 = "reproduces
+DIRECTIONALLY, magnitude attenuated at d256" — both clear the
+substrate gate but license different uses (pilots size effects
+only under the first). DUAL READ: primary = vs seed-1 control 65
+(the strict one-variable pair); secondary = vs 3-seed mean 64
+(seed 1 is the band's high draw — a 62 reads -3 primary / -2
+secondary; registered in advance). PASS => substrate gate CLEARS,
+d256 becomes the pilot substrate (promotion-grade runs stay at
+W*). FAIL (delta > -3 or sign flip) => either the packing hole is
+width-dependent (a result in itself) or d256 doesn't carry 19M
+verdicts — substrate NOT promoted, book which.
+BUNDLE LABEL (adopted): bare --fast changes packing AND steps_total
+AND the OneCycle schedule AND batch composition — this arm
+reproduces the FLAG-level effect exactly as measured at 19M; the
+-13's mechanism (packing vs step-count vs LR schedule) remains
+unseparated at both widths. Control provenance: wfloor_ladder.sh
+ran with NO --fast at all (ladder default, fp32, unpacked) — the
+pair's one variable is the flag bundle, checkable from this entry.
+
+## PRE-REG: graph-modularity on gen-8 (2026-07-26, before the read)
+
+The 07-17 prediction (multi-domain crystals grow visible modules)
+finally meets its substrate; probes union coefficient (iii).
+INSTRUMENT NOTE (honest): the 07-17 six-mind script was never
+committed and its kNN k is unrecorded — absolute comparison to the
+07-17 numbers (Q 0.142, clustering 0.021-0.026) is FORBIDDEN; this
+is a NEW instrument, internally paired only. Construction, fixed
+before looking: per-layer kNN graph (k=10, cosine) over FFN neurons
+(feature = concat gate-row + up-row), Newman greedy modularity Q +
+average clustering, mean over 8 layers. Arms, same instrument same
+run: (A) gen-8 everything-crystal (five grammars, vocab-41);
+(B) matched-width single-grammar control mathnative_19m.pt
+(vocab-40; row-count not exactly matched — noted). Control arm
+mandatory per reviewer (Q alone uninterpretable).
+PRE-REGISTERED BAR: "modules appear" = Q_A > Q_B + 0.05; within
+±0.05 = null (reviewer bet ON RECORD: within-noise — expander +
+phase-clumps-arent-communities + coefficient (i)~0 all point null).
+Rider read, free: clustering coefficient both arms (expander check).
+
+## Graph-modularity on gen-8: NULL at the bar — modules do NOT appear (2026-07-26)
+
+Read per pre-reg (new instrument, k=10 cosine kNN on FFN
+gate+up rows, Newman Q, 8 layers, paired arms). **delta Q = +0.030
+(A 0.2928 v B 0.2633) — below the +0.05 bar: NULL.** The
+multi-domain-modules prediction (07-17 lineage) fails at its second
+substrate; union coefficient (iii) "nothing else" survives another
+probe; reviewer's on-record bet (within-noise) WINS as booked.
+RIDER (observation, internally paired only): mean clustering 0.0545
+(gen-8) v 0.0222 (single-grammar) — ~2.5x, the only quantity that
+moved with grammar count. The 07-17 instrument is LOST; no
+comparison to its crystal (0.021-0.026) or internet (0.063-0.095)
+numbers is licensed, INCLUDING the incidental agreement of arm B
+with the old crystal band — that agreement is uninterpretable, not
+corroboration. Density fence: both arms are d384/ffn1536 (identical
+n=1536 per layer, same k=10), so the 2.5x is a real internal
+contrast, not a graph-density artifact. Other fences: vocab 41 v
+40, diets differ in rows AND eras — arms are paired on the
+instrument, not the corpus. U-shape note: both arms show
+depth-symmetric Q/clustering (layers 0/7 high, middle low), same
+shape both arms — instrument- or architecture-driven, not
+diet-driven.
+CAVEAT (reviewer, against its own winning bet — adopted): delta Q
++0.030 is positive and directionally consistent with the modules
+prediction, and Q has NO measured seed dispersion — this is a
+BAR-BASED null, not a statistical null. Never cite as "no
+difference"; only "below the pre-registered bar, dispersion
+unmeasured." Free sigma if ever needed: run the same instrument on
+wfloor_d256{,_s2,_s3} (three same-diet seed births on disk) before
+Q decides anything.
+
+## ODE desk decisions: atom set, a determinability catch, and the sealed committee prediction (2026-07-26)
+
+Desk work only (no birth today); the zero-diet probe re-registers
+onto the FIRST ODE-vocab birth (VOID-BY-VOCAB lesson applied).
+1. **ODE atom set (proposal, order-sensitive per VOCAB_EXTRA
+   doctrine)**: `SolveODE: `, `CharEq: `, `Eq(`, `Derivative(`,
+   `y`, `C1`, `C2`, `mu`, `r`, `=` — vocab 40 -> 51. Notes: bare
+   `=` is NEW and greedy-longest-match-safe against ' => '
+   (reviewer-verified: _by_len sorts descending); `y(x)` spells as
+   y + ( + x + ). ORDER FROZEN (reviewer amendment, adopted):
+   extra = ["t"] + ODE_ATOMS UNCONDITIONALLY — t first always,
+   even on diets with no series rows (one dead atom is free), so
+   every vocab-41 checkpoint's id map is a strict prefix of the
+   ODE vocab; the alternative is three incompatible id maps and a
+   probe silently reading the wrong atom (the class of bug that
+   just bit at the ODE void).
+2. **DETERMINABILITY CATCH (blocks any ODE birth as-is)**:
+   data/ode_chains.jsonl (317 pairs: linear1 183 / cc2 110 /
+   separable 24, all L2) contains rows whose targets carry
+   CONCRETE coefficients not derivable from the prompt — cc2
+   `CharEq: r**2+4*r+3 = 0 -> exp(-x) + 4*exp(-3*x)` (the 4 comes
+   from unstated ICs) and separable `y = C1*exp(...) ->
+   4*exp(-x**2/2)` (C1 silently becomes 4). Same pathology as
+   series rung 1 (memorized-factorial fill-ins); the
+   determinability law says these rows TRAIN HALLUCINATION.
+   Required before farming/birth: either carry ICs in the prompt
+   or emit general solutions with C1/C2 kept symbolic. The 317
+   file is 2026-07-12-era; audit/refarm belongs to the ODE
+   continent GO, not today.
+3. **SEALED BLIND COMMITTEE PREDICTION (standing rule #15, first
+   application; scored at: first ODE-vocab birth, same instrument
+   as the mass-spectrum table)**: from corpus frequency alone
+   (linear1 183 > cc2 110 > separable 24), the mass-spectrum law
+   predicts committee selectivity ordering linear1 > cc2 >
+   separable, with linear1 power-class sharp (localized) and
+   separable exp-class diffuse; the Integral-reduction step
+   inherits the EXISTING integral committees (shared-step bridge,
+   not new mass). No numbers claimed beyond ordering + class.
+
+## ZX desk gates: both PASS with named constraints (2026-07-26, desk only)
+
+The two blockers named at ZX's promotion to next-continent
+candidate #1 (RIFF-LEDGER 07-25), resolved at the desk — this is
+NOT a farm GO, it clears the desk prerequisites.
+1. **Serialization without canonical sorts: a design exists.** The
+   engine's own ZXState.key() canonically sorts vertices — fine
+   for DEDUP (hash identity, internal), FORBIDDEN as the
+   model-facing serialization (gauge law: permutation-augmentation
+   88.4 beat canonical sorting 82.4 — teach invariance, don't
+   impose it). Design: anchor on the BOUNDARY ORDER (ZX
+   inputs/outputs are physically ordered — that ordering is real
+   structure, not gauge), traverse BFS from inputs, and RANDOMIZE
+   internal vertex labels per training sample (permutation
+   augmentation over the true gauge freedom). Reviewer rider
+   honored: no leg of this choice is justified by sequence-length
+   gains (notation-invariance of the emission wall, booked 07-25).
+2. **Atom set vs vocab: PASS, no explosion.** ZX needs ~10-14 new
+   atoms on top of base-40: spider constructors `Z(`, `X(`,
+   hadamard-edge marker, plain-edge marker, boundary markers
+   In/Out, and move labels (fuse/lc/pivot/id) if moves are spelled;
+   phases are Clifford+T fractions of pi — `pi`, `/`, digits ALL
+   in-language already; vertex ids spell in digits. Comparable to
+   the series (t) and ODE (+10) expansions; strict encode enforces
+   it at birth (the ODE void's lesson, now machinery).
+Remaining before any farm: serialization spec written down as a
+spec file + the federation-floor pre-registration (count vs class)
+— those belong to the ZX GO, not today.
+
+## PRE-REG: streaming-birth A/B at d256 (2026-07-26, before the run)
+
+Bank: RIFF-LEDGER 2026-07-24 (streaming birth; Artin, half-retracted
+same breath — banked anyway) + the Z1 red-team rider (Z1-s2's fast
+convergence was DEGENERACY; motivation stands on surprise-gating +
+the zero-epoch 0/120 floor only). Arm S: scratch/
+streaming_birth_d256.py — gen-4 corpus streamed ONCE, no epochs,
+surprise-gated LR (per-batch mult = loss/EMA(0.99) clamped
+[0.25,4], warmup 200, base 3e-4), BIRTH_SEED=1, BS=32, d256/L8/
+ffn1024/h4, MPS. Control: wfloor_d256.pt (65; band {65,63,64},
+sigma ~1.0). One variable: schedule (1-pass surprise vs 3ep
+OneCycle); init is standard (NOT template — the composed-birth
+stack stays a separate banked pilot).
+PRE-REGISTERED: this is a SPEED claim. PASS = gate >= 61
+(capability-neutral: within 3 = ~2*sigma_diff of the band mean 64)
+AND wall <= 40% of the 3ep birth wall. Gate < 61 => streaming
+FAILS at equal rows (the epoch is load-bearing; books as a result).
+Gate > 66 would be a WIN, not just neutrality — flagged separately
+if seen (sub-noise unless >= +3 vs band mean per the sigma rule).
