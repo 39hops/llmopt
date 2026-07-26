@@ -907,3 +907,27 @@ to the collaboration itself.
   ~20-min birth) — the dual-direction crystal, entry ticket to
   the pincer. Attribution: Artin (riff, and the original pincer);
   house (lineage + fences + cell).
+
+- **"Efficient activation — maybe inference is wrong; break the
+  superposition with something like the magic predictor"**
+  (Artin, 2026-07-26): house translation = JUDGE-COLLAPSED
+  DECODING, and the measured motivation already exists: the L9
+  device-dependence result (same checkpoint 18/24 cuda v 9/24
+  MPS) proves frontier decisions are near-tie-superposed and
+  currently COLLAPSED BY HARDWARE ROUNDING — an uncontrolled
+  apparatus deciding the hardest problems. Design: at decode
+  steps with top-2 margin under the near-tie threshold (~0.02,
+  the measured class), branch both continuations a few tokens
+  and let a cheap judge pick (value head / magic estimator /
+  oracle at step boundaries); greedy elsewhere. Starved-judge
+  satisfied by construction (fires only at ties = where variance
+  lives); the engine-era +15 confidence premium (entropy-gated k)
+  is the same pattern one level up; precision-router = the
+  arithmetic twin. Fences: hints-nulled doesn't apply (arrives
+  as search, not prompt); must be scored at equal token budget
+  vs plain greedy AND vs best-of-N (the regret-round-2 lesson:
+  branching must beat let-everything-finish economics); primary
+  battery = the L9/frontier band where ties concentrate. BANKED
+  for slotting; cheapest pilot = the ladder's own d256 cells
+  (margins are free at every step). Attribution: Artin (riff);
+  house (near-tie identification + design).
