@@ -127,6 +127,28 @@ RESULTS before a run fires; book verdicts (including honest
 failures) the moment they land; consolidate BOARD + a new handoff
 at natural stopping points, not mid-sprint.
 
+## Doc lifecycle + machines (living-docs discipline)
+
+- RESULTS.md is append-only; corrections are AMENDMENT entries
+  naming their target. Once results-index.jsonl exists, every
+  booking adds its index line in the same commit.
+- THEORY.md and RIFF-LEDGER.md are LIVING documents: at every
+  session close, check the day's verdicts against existing
+  rows/banks — update, amend, or mark-dead whatever a finding
+  touches. A disproven row gets its refutation named in place;
+  never silently delete.
+- BOARD refresh + handoff at natural stopping points; a
+  next-session spec BEFORE any compact (state lives in the repo,
+  never in memory).
+- MACHINES: the Mac is Fable's, always. The 3080/WSL runs on
+  Artin's schedule (nightly GO for long jobs; short tests only
+  while he's home; ~5PM EST checkpoint) — details in project
+  memory, not here (repo is public). Remote ops go through
+  scratch/wsl.sh; cross-device comparisons stay forbidden.
+- A long test is not justified by being long: before queueing,
+  diagnose the wall and try to move it (BS/grad-ckpt/allocator/
+  batching class fixes first).
+
 ## Doctrine (distilled; full text in RESULTS/handoffs)
 
 - **Pre-registration + paired arms, always**: same device, same

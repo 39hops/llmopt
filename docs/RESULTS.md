@@ -6450,3 +6450,23 @@ VERDICTS, against the pre-reg:
 5. Muon's mechanism, finally visible: validity collapse (27.8%)
    at ~zero identity — it emits confident well-formed garbage;
    orthogonalized updates damaged the grammar itself.
+
+## PRE-REG: THE FORMAT LADDER — format x schedule at d256 (2026-07-26, before any run)
+
+Full design + all readings: specs/2026-07-26-format-ladder.md
+(the binding document; this entry is the booking pointer).
+Seven formats {pairs, traces, skip-pairs, de-chained, one-shot,
+delta-chained, random-packed} x {1-pass v4 recipe, 3ep}; pairs
+cells already measured (57/65). Primary readings, restated for
+the record: (1) traces@1P >= 61 => the epoch's -8 was FORMAT
+(composition-in-context substitutes for revisits); ~57 =>
+format-neutral, the epoch survives. (2) THE DELTA TEST: E
+(similarity-walked 4-pair contexts) vs E0 (random-packed
+control): E > E0+3 => in-context similarity pays where in-batch
+similarity costs -12 — the interaction law splits into two
+opposite-signed laws; E ~ E0 => analogy-by-juxtaposition inert.
+(3) one-shot predicted <= 40 (step-tokens from birth). CE-400
+rides every arm (does the CE-gate 4/4 tracking survive format
+variation?). Attribution: Artin (format x schedule + the
+delta-chaining riff, incl. the similarity-as-superposition
+frame); house (E0 control, trace stitching, fences).
