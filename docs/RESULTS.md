@@ -5584,3 +5584,50 @@ VERDICTS:
    the metabolic loop.
 Per-level note: v4 L4=5 sits just under the {6,7} seed band —
 mild, consistent with dose; no clade claim.
+
+## PRE-REG: margin census on the crown-tie ternary (2026-07-26, before the read)
+
+Artin's high-entropy-neurons riff, distilled to its runnable form:
+on a democratic crystal, per-neuron ENTROPY is flat (holography,
+1.58-bit max-entropy census) — but DECISION entropy concentrates
+at the ternary threshold (flip-location census: flips at median
+margin 0.0008 v bulk 0.427). Question: does undecided
+(near-threshold) mass CLUSTER (by neuron / layer / family-
+selective neurons) or is it uniform? Instrument: per-weight margin
+|w_latent| vs 0.5*absmean-scale on merged_grown_latent.pt (89.7M
+crown-tie ternary latents), per-neuron near-threshold fraction
+(|margin| < 0.05*scale), distribution across neurons/layers;
+family leg = correlation of per-neuron near-threshold fraction
+with layer-6 family selectivity (existing committee-probe
+pattern) IF the neuron-level spread warrants it.
+READINGS: (a) uniform across neurons (CV of per-neuron
+near-threshold fraction < ~0.3) => democracy all the way down —
+the margin-aimed-diet idea CLOSES cheap with a mechanism;
+(b) clustered => the diet-weighting A/B (vs rarity-matched
+control, matched dose) becomes the named next cell at d256.
+Fences: one checkpoint, PTQ-threshold definition tied to absmean
+quantizer; no capability claim either way — this is an
+instrument read.
+
+## Margin census: undecided mass is UNIFORM — the high-entropy-elite idea closes with a mechanism (2026-07-26)
+
+merged_grown_latent.pt (89.7M crown-tie ternary), absmean-scale
+margins, near = <0.05 scale-units. **Per-neuron near-threshold
+fraction: mean 6.37%, CV 0.140 — reading (a) at less than half the
+0.3 bar.** Quantiles 4.4-8.6% (99th percentile barely 2x the 1st);
+layers flat (6.29 -> 6.53% across depth); matrix spread 5.5-6.7%.
+VERDICT: the crystal's DECISION entropy is as democratically
+spread as its information entropy — there is no high-entropy
+neuron elite to stream from or aim at, at neuron, layer, or matrix
+granularity. The margin-aimed-diet A/B is NOT run (pre-reg (a):
+close cheap); Artin's riff banks as answered-by-instrument: on a
+democratic crystal, "where should data go" has no spatial answer —
+temporal/self-read signals (surprise, wave agreement, frequency)
+remain the only validated scheduling channels, now confirmed at
+the finest spatial grain we can read. Rider (observation only):
+undecided fraction rises ~4% relative from layer 0 -> 7 —
+direction consistent with late-layer plasticity, magnitude far
+below any bar. Family leg not run (pre-reg: only if neuron spread
+warranted it; it did not). Fences: one checkpoint, one quantizer
+(absmean), NEAR=0.05 pre-registered but arbitrary — a different
+window rescales the mean, not the CV story.
