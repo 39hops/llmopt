@@ -5061,3 +5061,22 @@ anticipated. VERDICTS:
    efficiency as amended.
 4. sigma_MPS(19M, post-fix) ~ 1.4 (n=2, provisional); sigma does
    not transport (2.5 cuda / ~1.4 MPS / 1.0 d256).
+
+## AMENDMENTS to the sigma-grid close (reviewer, all adopted; 2026-07-25 late)
+
+1. "Device ~0" RETRACTED: the point estimate has FLIPPED SIGN
+   (MPS mean 65 v cuda 68.7 = −3.7, MPS LOWER; not significant at
+   n=2/3 but "~0" licenses cross-device comparisons, which stays
+   FORBIDDEN). Book: MPS-birth BONUS refuted, sign reversed;
+   residual device term UNRESOLVED. Packing −13 unaffected
+   (same-device measurement).
+2. Consistency fix: booking s1=70 as luck REQUIRES sigma_MPS >= 3
+   (n=2 pair is then lucky-tight; 1.4 retracted as
+   underdetermined). The alternative — s1's 1,017 pre-fix rows
+   worth +4-6 — is rejected as unparsimonious (0.085% of rows).
+   Corollary: cuda's 2.5 is itself n=3-fragile (dominated by one
+   internal draw); all sigma estimates carry their n.
+3. Pooled "band 64-71" retracted for per-cell reporting: MPS
+   post-fix 64-66; cuda 69/66/71; s1 pre-fix-MPS 70 (labeled).
+   The instruction survives: never cite any ONE number as the
+   19M level.
