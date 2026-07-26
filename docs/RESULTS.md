@@ -6529,3 +6529,36 @@ drop must beat the dechain-style dose read before booking as
 direction-caused; contamination fence n/a at this cell (no new
 corpus; the bidirectional-cheat fence applies to reverse-TRAINED
 MINERS, not this diet remix).
+
+## FORMAT LADDER 1P COMPLETE: the delta test reads E 30 v E0 47 — similarity-MAXIMIZING packing hurts; the banded form stays open (2026-07-26)
+
+Final 1P card (d256, v4 recipe, seed 1; comparator pairs 57):
+pairs 57 > oneshot 54 = skip 54 > dechain 49 > randpack 47 >
+traces 37 > **delta 30** @ 27.9 (CE-400 0.686, worst everywhere).
+VERDICTS:
+1. **THE DELTA TEST: E < E0 by -17** — the pre-registered third
+   reading fires: similarity-adjacency hurts IN-CONTEXT too, and
+   worse than at-random packing. The interaction law GENERALIZES
+   across dimensions in its measured form... with a named KNOB
+   CONFOUND, booked before anyone runs with it: the greedy walk's
+   realized intra-group similarity was 0.974 (argmax always took
+   the nearest row) — the cell tested NEAR-DUPLICATE packing, not
+   Artin's banded delta. At sim ~0.97 a 4-row context is
+   repetition wearing analogy's clothes: 3 of 4 slots re-spend
+   the same gradient AND the same context. What books: 
+   **similarity-maximizing context packing costs -17 vs random**
+   (consistent with, and stronger than, the in-batch -12).
+   UNTESTED and banked: the BANDED walk (target sim in [0.5,
+   0.8], near-dupes excluded) — the honest form of the riff; one
+   cell if the format thread ever reopens.
+2. Ladder ordering, one line each: every departure from plain
+   pairs LOSES at one pass — pairs is the measured optimum of
+   seven formats at this dose/width. The pair format is not an
+   artifact of the mining pipeline; it is the best-measured way
+   to spend a single pass. (The oneshot 54 surprise + traces 37
+   crater booked in the partial card stand.)
+3. CE-400 tracks within-format-family only (booked fence
+   confirmed: oneshot/packed cells' CE inflated by frame
+   mismatch).
+4. 3E interaction cells (traces/delta/randpack) firing now;
+   revpairs behind them (pre-reg above).
