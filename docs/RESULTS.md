@@ -5982,3 +5982,30 @@ reads on phase-carrying DATA (math trig/exp, ZX rotation grammar)
 and the interference-substitutes-for-SIGN question (G16, re-priced
 by the Z1 arc). Everything phase-free is measured null at both
 phases of the crystal taxonomy.
+
+## BORN-Z1: 0/120 — the deletion square closes at birth, maximally asymmetric (2026-07-26)
+
+{3:0,4:0,5:0,6:0,7:0} @ 0.00% validity. The loss biography IS the
+mechanism: ep0 opens 27.7 (confidently-wrong saturation — no
+opposition channel, cone collapse), claws to ~3.4 ~ ln(40) (the
+uniform-ignorance floor: LN mean-sub + softmax recover CONTRAST
+enough to undo saturation but never enough to CONDITION), and
+never leaves the floor. VERDICTS:
+1. **The deletion square's born corners, final: born-B 54 (sign
+   without silence) v born-Z1 0 (silence without sign).** Sign
+   emulates silence at the cost of 7 solves-class; silence
+   emulates sign at the cost of EVERYTHING. Opposition is the
+   computational primitive (Artin's thesis, now measured at
+   birth at the extreme).
+2. BETS SETTLED: Fable's crater bet WINS outright; the reviewer's
+   49 (40% on >= born-B) loses maximally — implicit inhibition
+   (its named mechanism) is real but bounded at "undoes
+   saturation," ~50 solves short of its prediction. Fourth
+   reviewer over-prediction on the books (booked in absentia;
+   it set the bet before retirement).
+3. Mechanism fence, honest: capability-death and optimization-
+   instability are CONFOUNDED at n=1/standard-recipe — a tuned
+   LR/init might train further into the excitation-only regime.
+   The claim books at MATCHED RECIPE (the tournament bracket's
+   own terms, like every alphabet row). Z1S (Dale's-law
+   channel signs) is the live rescue arm, next in chain.
