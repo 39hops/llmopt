@@ -980,3 +980,12 @@ to the collaboration itself.
   ~free); RoPE x G5 (architecture-meets-weights, billiard-Grover
   motivated); G16/Eisenstein/Q9 brackets (gated on tonight).
   Attribution: Artin (ask); house (map + inventory).
+
+- **CLI wrapper v1: BANKED with its shape decided** (2026-07-26
+  close): one file (scripts/run.py, ~80 lines), not a framework —
+  uniform log naming, live progress, success-only marker,
+  --host 3080 via wsl.sh, auto pp-sidecar for gate-family.
+  Subcommands graduate from usage (third-time-typed rule), same
+  as scratch->scripts. Most of the original pain already solved
+  (wsl.sh, gitignore guards, gate_pp); build at the next
+  plumbing window, not before.
