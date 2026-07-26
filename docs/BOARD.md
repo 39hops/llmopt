@@ -26,7 +26,14 @@ by metabolic/exchange loop);
 ODE zero-diet probe (VOID BY VOCABULARY — vocab-41 can't spell the
 grammar; strongest form of the bridge-law ~0); desert test v2
 (honest stall, 128 proposals 0 valid, coefficient (iv) = 0, bridge
-law graduated to strong form);
+law graduated to strong form); graph-modularity on gen-8 (NULL at
+bar, dQ +0.030; bar-based null, Q dispersion unmeasured);
+streaming birth (FAILS both legs — the epoch is load-bearing,
+-12 at equal rows; speed leg confounded); d256 substrate gate
+(CLEARS -27 v -3: d256 = PILOT SUBSTRATE, promotion stays at W*;
+packing = third starvation mode w/ L4 clade signature, packed
+d256 lands on the d64 curve point); ZX desk gates (both PASS —
+boundary-anchor serialization, atom set ~10-14);
 L7 gap (0 real); gate-v2 batching (null; KV was the fix); shaped
 GRPO size-Phi (null); chain-carry v1 (void, redo at full budget);
 selection-overfitting story (retracted -> battery truth -> rarity
