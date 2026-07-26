@@ -4920,3 +4920,37 @@ Amendments, all adopted:
    number; sigma is MEASURED only at 19M/cuda/fp32 — 45M and MPS
    sigma are assumptions and labeled as such. n=3 both sides
    drops the bar back.
+
+## LLOYD-MAX RACE VERDICTS (partial booking per reviewer; 2026-07-25 night)
+
+Raw card (PTQ, 19M infix twin, MPS gates; baselines fp32 64 /
+int3-uniform 65): LM3-free 64, LM3-zero 63, LM2-free 59, LM2-zero
+54, ternary-LM 42, int2-uniform VOID (absmax/lv scale bug at
+bits=2 — collapses weights to zero; instrument error, fix + rerun
+queued). d256 sigma rider: {65,63,64} => sigma ~1.0 (down-width
+noise is tight; sigma does NOT transport across cells — 2.5 at
+19M/cuda vs 1.0 at d256/MPS).
+BOOKED NOW:
+1. **MSE-optimality buys nothing: the never-score-by-distance
+   doctrine gets its direct experimental confirmation** — the
+   explicitly distance-optimal codebook (per-channel exact
+   k-means) ties naive uniform at 3 bits (64/63 v 65) and shows
+   no advantage anywhere. TurboQuant-class codebook optimization
+   is a storage lever, not a capability lever, on democratic
+   (kurt 2.4, outlier-free) crystals.
+2. **Born-vs-rounded at matched alphabet: +18 LOWER BOUND**
+   (born-ternary 60 v ternary-LM 42; the PTQ arm had FINER
+   per-channel codebooks and still lost). Fences: cross-device
+   (3080-born v MPS-gate), cross-recipe (global v per-channel).
+   Trend note (n=2): premium 45 at d768, 18 at 19M — shrinks
+   with width; not a law.
+HELD: (a) "zero loses at 2-bit PTQ" — unmatched pair (LM2-zero
+paid a code for its zero: 3 magnitudes v 4); narrower claim "a
+zero level does not pay for its code at 2 bits" awaits the fixed
+int2-uniform (symmetric WITH zero = the deciding third point).
+(b) "zero is a born law not a PTQ law" — HYPOTHESIS only; both
+legs confounded (M4>B is +1.00 bit); the named clean cell =
+born-S4 vs born-M4 at matched 2 bits; born-z1 moves it tonight.
+Meta-line (reviewer): three instrument bugs in 24h (phase-density
+null, 388 rows, int2 scale) — ALL caught by control arms, none by
+headlines. Controls ride every instrument.
