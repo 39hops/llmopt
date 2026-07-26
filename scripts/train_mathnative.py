@@ -24,7 +24,7 @@ from llmopt.train.mathnative import MathTokenizer, build_model
 CKPT = Path("checkpoints/mathnative_19m.pt")
 V2_CKPT = Path("checkpoints/mathnative_19m_v2.pt")
 EPOCHS = 3
-BS = 32
+BS = int(os.environ.get("BIRTH_BS", "32"))
 LR = 3e-4  # from-scratch: standard small-LM lr with warmup+cosine
 
 

@@ -759,3 +759,35 @@ to the collaboration itself.
   decomposition, notation — least closed) / conditioning layer
   (magic, hints, syndromes — mostly nulled). Attribution: Artin
   (riff); house (layer split + interaction cell).
+
+- **"We probably want loss going into the 0's with a closed
+  system, or am I misunderstanding? + distance-weighted /
+  symmetric Muons?"** (Artin, 2026-07-26, post-Muon-close): two
+  banks — (1) THE CE-GATE STUDY (promoted to a want-to-run: "what
+  the gate measures that loss can't see is entirely the whole
+  point"). House hypothesis to pre-register: in this closed
+  system CE CANNOT honestly reach 0 because the diet is
+  one-of-many-valid — the same cur admits many oracle-valid nxt
+  and the farm banked ONE arbitrary choice, so Bayes-optimal CE
+  is bounded below by the true branching entropy of valid steps.
+  Pushing CE under that floor (Muon 0.41) means reallocating
+  probability mass FROM valid alternatives TO the farm's
+  arbitrary pick — loss improves exactly by deleting the
+  distribution-over-valid-moves that generative solving samples
+  from. Instrument (cheap, checkpoints in hand): on held-out cur
+  states with multiple known-valid nxt, compare mass-on-valid-set
+  vs mass-on-farm-pick for Muon 10/34 vs AdamW 45 vs control 65
+  — if mass-on-valid-set tracks gate while CE anti-tracks, the
+  gate is measured to be BRANCHING COVERAGE and "loss to 0" is
+  formally the wrong target (memorization of arbitrary picks).
+  Muon checkpoints = the specimens (widest split ever measured).
+  (2) MUON VARIANTS bank (untried, low priority, conditional on
+  the study): real LR sweep (2 points isn't a curve), decoupled
+  weight decay, Muon-native schedule (not AdamW's multipliers),
+  soft/symmetric blend (interpolate orthogonalized and raw
+  momentum), trust-region/spectral-cap step control ("distance-
+  weighted" made legal: distance as step-size governor is fine —
+  the closed law only forbids distance as a FUNCTION score), and
+  scale (published Muon wins live far above d256). Attribution:
+  Artin (loss-floor question + variants riff); house (branching-
+  entropy floor hypothesis + instrument design).
