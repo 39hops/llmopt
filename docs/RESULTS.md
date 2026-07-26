@@ -6595,3 +6595,24 @@ VERDICTS:
    3x weaker and the deficit barely moved (-20 -> -21).
 Cells remaining: revpairs@1P (in flight), then the per-problem
 sidecars sweep (solve-set overlap + wandering rates).
+
+## REVPAIRS: 39/120 — reverse rows are ACTIVELY toxic to the forward crystal, beyond any dose read (2026-07-26)
+
+{3:11,4:2,5:11,6:7,7:8} @ 33.57. Pre-registered <= 53 reading
+FIRES with margin. The dose fence resolves AGAINST dose: dechain
+at 87k forward rows scored 49; revpairs at 66k forward + 66k
+reverse scored 39 — ten solves BELOW a smaller all-forward diet.
+Reverse rows don't dilute, they TEACH THE WRONG MOVE: a reversed
+pair presents de-solving (Integral-count-increasing rewrites) as
+a legal Step, and the gate economics punish wandering directly.
+BOOKS: **the direction tax is real at 50/50 mixing — the
+dual-direction crystal FAILS in naive form.** The chain-carry
+counterweight (dead-end/backward steps teach wandering), unseen
+at gen-9's failed-step dose, is now measured at full reverse
+dose. Fences + what stays open: 50/50 is the maximal mix (a
+10-20% reverse ration is untested); reverse-as-SEPARATE-MODEL
+(the temporal pincer's actual design — backward model never
+contaminates the forward one) is UNTOUCHED by this verdict and
+remains the banked path; the wandering signature lands in the pp
+sidecar sweep for direct confirmation. The reverse-distribution
+TEACHER idea (engine-side, never in-diet) also unaffected.
