@@ -6562,3 +6562,36 @@ VERDICTS:
    mismatch).
 4. 3E interaction cells (traces/delta/randpack) firing now;
    revpairs behind them (pre-reg above).
+
+## FORMAT LADDER 3E COLUMN: epochs do NOT buy back context damage — batch and context are different dimensions (2026-07-26)
+
+| format | 1P | 3E | 3E deficit vs pairs@3E 65 |
+|---|---|---|---|
+| traces | 37 | 44 | -21 |
+| delta (sim-max packed) | 30 | 49 | -16 |
+| randpack | 47 | 60 | -5 |
+VERDICTS:
+1. **THE ASYMMETRY (the day's law-grade find)**: in-BATCH
+   homogeneity costs -12 at one pass and ~0 with revisits (the
+   2x2, control 65 is itself length-sorted); in-CONTEXT packing
+   costs at one pass AND STILL COSTS AT 3EP (randpack -5, delta
+   -16, traces -21). Epochs buy back batch-composition damage but
+   NOT context-composition damage. The interaction law splits as
+   pre-registered — just along a different axis than predicted:
+   not sign (similar-vs-random) but DIMENSION (batch recoverable,
+   context not). Mechanism candidate: batch composition only
+   shapes gradient correlation (which averaging over epochs
+   washes out); context composition changes the TASK the model
+   learns (predict-given-neighbors), and no amount of revisiting
+   un-teaches a task.
+2. Format main effects at 3E confirm the 1P ordering: pairs 65 >
+   randpack 60 > delta 49 > traces 44 — no rank flips; the
+   ladder's verdict is schedule-robust.
+3. delta-vs-randpack at 3E: -11 (was -17 at 1P) — similarity-max
+   packing hurts at both schedules; the knob confound (realized
+   sim 0.974) rides both cells; banded walk stays the open form.
+4. traces@3E 44 is the strongest single argument yet that the
+   trace FORMAT (not dose) is hostile: at 3ep the dose excuse is
+   3x weaker and the deficit barely moved (-20 -> -21).
+Cells remaining: revpairs@1P (in flight), then the per-problem
+sidecars sweep (solve-set overlap + wandering rates).
