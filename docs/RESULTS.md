@@ -5854,3 +5854,24 @@ asymmetry is structurally closed: any alphabet asymmetric enough
 to test the law hard also kills the signed net that must survive
 to be measured — the instrument and the intervention fight for the
 same weights (kin to the floor-censoring class).
+
+## PRE-REG: v5 s2 = the retention-curve session (2026-07-26, chained behind the closers)
+
+Metabolic v5 session 2 (long-queued; miner-v2 identity guard landed
+07-24) doubles as the retention instrument: CENSUS_SEC=300 (dense),
+census now logs the PER-LEVEL proxy vector as [retention] columns.
+Config: metab_v5_s1.pt continuation, worklist =
+stuck_states_v5_head.jsonl, exchange food = stuck_chains_v5_head
+chains, 120 min, cuda, fp64 masters, zero-rollback stack as s1.
+READS, pre-registered: (a) s2's own practice/resolution verdicts
+(the standing v5 asks — resolution vs the s1 endpoint's fixed
+seeds); (b) RETENTION: per-level columns over 24 censuses — fit
+per-level decay/hold constants; prediction (phylogeny): L4-class
+isolated-clade columns decay first under frontier-aimed food,
+clade-connected levels hold (the streaming forgetting fingerprint,
+now measured in the metabolic regime at n=24 timepoints instead of
+2); (c) surprise-gating engagement check rides free (the streaming
+arms showed it never engages at birth — the metabolic loop is its
+claimed home; if the multiplier still tracks EMA ~1.0 here, the
+mechanism books UNTESTED-NOWHERE and gets redesigned or dropped).
+Wired: WSL watcher fires on closers_done.marker (success-only).

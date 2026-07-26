@@ -27,7 +27,7 @@ LR = 1e-5
 B1, B2, EPS = 0.9, 0.999, 1e-8
 FRESH_BAND = 111_000_000
 FRESH_LEVELS = [6, 7, 8, 9]
-CENSUS_SEC = 1200
+CENSUS_SEC = int(os.environ.get("CENSUS_SEC", "1200"))
 
 def ternary(w):
     s = w.abs().mean(dim=1, keepdim=True).clamp(min=1e-8)
@@ -229,6 +229,10 @@ while time.time() - t0 < MINUTES * 60:
         print(f"[v5] cyc {cycle} steps {step_t} NET {net} (+{net-prev_net}) "
               f"proxy {cur_p} live {resolved_live} walls {len(walls_seen)} "
               f"| {(time.time()-t0)/60:.0f}m", flush=True)
+        # retention columns (2026-07-26): per-level proxy over time —
+        # the decay-constant instrument reads these
+        print(f"[retention] t={(time.time()-t0)/60:.1f}m {s1} "
+              f"@ {v1:.1f}%", flush=True)
         prev_net = net
         if cur_p < ANCHOR - 3:
             model.load_state_dict(snap); model.to(dev)
