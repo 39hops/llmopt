@@ -5004,3 +5004,19 @@ emitted). Reviewer-cross-checked; its framings adopted.
    phase-density null, int2 scale) ALL caught by control arms,
    none by headlines — controls ride every instrument, and the
    control arms are outperforming the experiments.
+
+## int2fix resolves the held 2-bit claim (2026-07-25 late night)
+
+The reviewer's demanded third point: int2-uniform (fixed grid
+{-2,-1,0,1}, range-scaled, WITH zero) gates **54/120** — landing
+exactly on LM2-zero's 54 despite entirely different level
+placement (fixed uniform vs fitted k-means). Two independent
+zero-ful 2-bit codebooks at 54 vs zero-free fitted at 59: the −5
+tracks ZERO-PRESENCE, not placement. BOOKS (narrow form, as
+pre-agreed): **at 2-bit PTQ, a zero level does not pay for its
+code** — spending 1 of 4 codes on silence costs ~5 solves of
+magnitude resolution on an already-trained signed net. Fences:
+PTQ-only (the born side of this question = born-S4 vs born-M4,
+still the named law-converting cell); MPS sigma unmeasured (the
+5 = the cuda bar exactly); the earlier VOID int2 stays booked as
+instrument error.
