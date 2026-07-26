@@ -832,6 +832,12 @@ Regret/corrective labels (DAgger-style, Artin's 'make it regret the wrong node' 
 - `_worker(job, q)` — Policy-guided search over one problem; every VISITED state gets
 - `main(n_per: int, workers: int, out: Path, levels: list[int] | None=None, seed_base: int=980000) -> None`
 
+### scripts/gen_results_index.py
+Generate/refresh docs/results-index.jsonl from RESULTS.md.
+
+- `slug(title, date)`
+- `infer_type(title)`
+
 ### scripts/gen_syndrome_labels.py
 Syndrome-decoder labels (Artin's qLDPC riff, 2026-07-09): the rule-fire bits are syndrome extraction (cheap local checks that localize how a state deviates from the solvable subspace); a CODE also decodes — syndrome pattern -> which correction to apply. Here: re-solve known-solved problems recording the FIRST RULE of the winning derivation, so a tiny net can learn syndrome -> opening move.
 
@@ -912,6 +918,11 @@ Neuron-geometry plots for the micro-model program (docs/assets).
 Depth anatomy: WHERE in the stack does the rewrite decision form?
 
 - `main(ckpt: str, d: int, layers: int, ffn: int, heads: int, n: int) -> None`
+
+### scripts/results_query.py
+Query docs/results-index.jsonl (the RESULTS.md index).
+
+- `show(e, mark='')`
 
 ### scripts/step_grpo.py
 GRPO at the frontier band — sustained RL over verified steps.
@@ -1099,6 +1110,12 @@ Validity autopsy: WHERE do the ~38% invalid steps go wrong?
 
 ## scratch/
 
+### scratch/absorb_1e5.py
+Absorption decider: LR 1e-5 (the pilot's regime), 25-min STE burst on cuda, late layers, band 98M. Counts fp32 updates where w+delta == w (learning lost to rounding). Paired proxy pre/post.
+
+- `ternary(w)`
+- `class TLin` (forward)
+
 ### scratch/adjudicate_zx.py
 Adjudicate axiom's ZX sample batch (relay 2026-07-26-0 protocol).
 
@@ -1124,8 +1141,26 @@ Boundary-or-bulk regression on the completed 0.5M->400M grid.
 Build data/merged_diet.jsonl (schedule-law queue item 1): gen-6 cumulative corpus (v22 + l8 + gen4 sidecar) + the L9a shard, with L1-L3 rationed to 45% (the gen-7 lesson). Stable string seed.
 
 
+### scratch/ce400.py
+CE-400: fixed-sample CE proxy (the standing instrument from the CE-gate study). Usage: ce400.py <ckpt> <label>
+
+
+### scratch/ce_gate_study.py
+The CE-gate study (pre-reg 2026-07-26, RESULTS.md).
+
+- `mean_ce(model)`
+- `coverage(model)`
+
+### scratch/ceiling_probe_cuda.py
+Ceiling probe: which L7/L8 integrals can a checkpoint actually solve? Same machinery as gate_eval but per-problem printout.
+
+
 ### scratch/chain_carry.py
 CHAIN-CARRY ABLATION (Artin's carry hypothesis, spec'd 2026-07-21): same content, format ablated, equal TOKEN budget, both arms from scratch (d384/8L/3ep). Arm 'chains' = cur->nxt pairs as-is. Arm 'oneshot' = reconstructed root->final-answer rows (chains followed by nxt->cur linkage), upsampled to equal tokens. Gate both. If chains >> oneshot, capability numbers carry a format dividend. Usage: chain_carry.py <chains|oneshot>
+
+
+### scratch/champ_cuda_probe.py
+*(no docstring)*
 
 
 ### scratch/clade_stream_d256.py
@@ -1197,6 +1232,23 @@ THE EXCHANGE TEST (pre-registered 2026-07-23): train the v4 organism on axiom's 
 - `try_state(cur0, seed0, plies=8)`
 - `probe(tag)`
 
+### scratch/format_delta_prep.py
+Build row embeddings for the delta-chained format (spec 2026-07-26-format-ladder): mean-pooled final-norm hidden states of the pairs-trained control crystal (wfloor_d256) over each pair text. Output: scratch/fmt_row_emb.pt (N, d) unit vectors, row-aligned with the filtered gen-4 row list.
+
+
+### scratch/format_ladder.py
+The format ladder (spec 2026-07-26-format-ladder, pre-reg in RESULTS). One birth per invocation:
+
+- `pair_text(r)`
+- `build_chains()` — State-linked greedy chains from roots; consumes every row
+- `run_batches(batches, lr_fn, epochs_label='')`
+
+### scratch/fp64_paired.py
+THE ROUNDING-LOSS DECIDER (overnight GO): fp32 vs fp64-master paired burst at LR 2.5e-6 (GRPO's real regime). Same food stream, late-layer STE, 40 min/arm. PRIMARY metric: committed ternary flips vs own start (sub-ULP nudges absorbed by fp32 should COMMIT under fp64 masters -> more flips at equal food). Secondary: proxy. Usage: fp64_paired.py <fp32|fp64>
+
+- `ternary(w)`
+- `class TLin` (forward)
+
 ### scratch/gate_batched.py
 Batched gate v2 (2026-07-21): batch ACROSS problems, 8 seeds each — one forward serves K*8 rows instead of 8. Right-padded buffer + attn_mask (model supports it); per-row write positions keep RoPE phases identical to the unbatched path. NOTE: float reduction order changes => near-ties may resolve differently => this is a NEW GATE LINEAGE (re-baseline models of record once). Usage: gate_batched.py <ckpt> <d> <layers> <ffn> <heads> <label> [K]
 
@@ -1207,8 +1259,16 @@ Batched gate v2 (2026-07-21): batch ACROSS problems, 8 seeds each — one forwar
 *(no docstring)*
 
 
+### scratch/gate_ckpt_cuda.py
+*(no docstring)*
+
+
 ### scratch/gate_cplx.py
 Gate a complex-FFN checkpoint (mirror of gate_ckpt.py).
+
+
+### scratch/gate_pp.py
+Per-problem gate (step-3 item (d), first cut): the standard chain gate with a jsonl sidecar — per-problem outcome + the full greedy chain + wandering/identity signatures. Same seeds/oracle as gate_eval (results comparable to gate_ckpt numbers).
 
 
 ### scratch/gate_prefix.py
@@ -1484,6 +1544,16 @@ Synonym gauge test: TWO label tokens per family on the frozen 19M readout (vocab
 - `_one(args)`
 - `gen(n, band, exclude=None)`
 - `encode(e)`
+
+### scratch/ternary_control.py
+Deploy-ternarize the NNUE-metabolized latents, honest gate + L9 probe on cuda. Doctrine: gate the DEPLOYED 1.58-bit snapshot.
+
+- `ternary(w)`
+
+### scratch/ternary_gate.py
+Deploy-ternarize the NNUE-metabolized latents, honest gate + L9 probe on cuda. Doctrine: gate the DEPLOYED 1.58-bit snapshot.
+
+- `ternary(w)`
 
 ### scratch/ternary_session2.py
 Ternary compounding session #2 (Mac, MPS lineage, paired gates): the doctrine-composed organism — STE ternary latents, LATE layers only (8-11), LR 1e-4 cap, ABSOLUTE-anchor tripwire, fp32-vs-fp64 update-absorption instrument riding along. Pre/post MPS gates make it a clean paired delta.
