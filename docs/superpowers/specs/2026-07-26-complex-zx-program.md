@@ -78,3 +78,26 @@ STE quantizers in the tournament_birth pattern; the unconstrained
 Every cell lands in RESULTS with pre-reg before fire; closers'
 verdicts amend Leg A's priors before any birth; per-family euler
 reads ride every gate.
+
+## Rung ladder (added 2026-07-26, Artin GO — ranked)
+
+1. **The euler-move diet** (most house-native quantum data): farm
+   engine chains where the euler move fires — i appears as a
+   WORKING symbol mid-derivation and dies before the answer
+   ("meet i where it comes from", continents note, never run).
+   Composes with G5: rotation alphabet x the one diet where
+   rotation does real work. Candidate cell 4b of the factorial.
+2. **Weight-FFT euler read** (free instrument, minutes): do
+   trained crystals already carry phase-pair structure in weight
+   rows? Sets the bracket's prior honestly BEFORE births.
+3. **Annealing over discrete weight lattices**: the untried
+   gradient-free route to born-quality lattices; composes with
+   the calculated-model thesis (sample init from template
+   statistics, anneal in alphabet space). Pre-reg vs a born twin
+   at matched alphabet.
+4. **Tensor-train RANK as the exchange law's third axis**
+   (bits x dimension x rank; llmopt/quantum machinery exists).
+5. **RoPE x G5 interaction**: RoPE is the one mainstream complex
+   win (exact rotational symmetry in attention); does a
+   rotation-alphabet FFN under RoPE'd attention compose or
+   double-pay? One-variable rider on the G5 birth.
