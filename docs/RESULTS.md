@@ -5080,3 +5080,32 @@ anticipated. VERDICTS:
    post-fix 64-66; cuda 69/66/71; s1 pre-fix-MPS 70 (labeled).
    The instruction survives: never cite any ONE number as the
    19M level.
+
+## Z1 seed-2: NOT input-blind — the collapse was seed-luck, the square still closes (2026-07-25 close)
+
+Seed-2 confirmation (blindness probe only, per protocol): emissions
+are INPUT-DEPENDENT ('Integral(18*x, x)' for the 16x prompt —
+wrong coefficient, right neighborhood; a different malformed
+attempt for x**2) at 94% zero-fraction. VERDICTS:
+1. The strong cone claim ("excitation-only nets CANNOT condition
+   on input") is REFUTED by the confirmation seed — s1's total
+   input-blindness (cross-input cos .9934) was one basin, not a
+   law. The mechanism downgrades to: excitation-only training is
+   COLLAPSE-PRONE and arithmetic-crippled (severe, seed-unstable
+   degradation), with deletion as the only inhibition (83-94%
+   zero fractions both seeds).
+2. **The deletion square still closes asymmetric on capability**:
+   sign-without-silence chains (born-B 54); silence-without-sign
+   is capability-dead at every observation (s1 blind, s2 fluent-
+   wrong) — but the WHY is now "unstable + contrast-starved,"
+   not "structurally blind."
+3. Both-seed observation: zeros do double duty (silence +
+   opposition-proxy) — the extreme sparsity is forced, not
+   chosen.
+Artin's original framing gets its honest answer: the 1-bit weight
+as stored is really "1 bit + a positive per-matrix scale," and
+one bit per weight IS enough for language but not for arithmetic
+contrast without signs at some granularity. The named next cell
+(reviewer): z1 + SIGNED PER-CHANNEL scales — is sign sufficient
+at channel granularity? Queued for a future window (3080 held for
+Artin from here).
