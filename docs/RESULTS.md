@@ -5719,3 +5719,64 @@ wall 1,090s (probes included). VERDICTS:
 Fences: n=1 per cell; d256/MPS lineage; probe threshold/ration
 untuned; wall 2x v4's (probe cost ~40s/recycle — telemetry, not
 optimized).
+
+## PRE-REG: gauge-aligned model distance on the d256 zoo (2026-07-26, before the read)
+
+Artin's models-by-distance/rotational ask, made lawful: raw weight
+distance is FORBIDDEN as a score (gauge law) — but the orbifold/
+Procrustes program (banked 07-23/07-25) asks whether distance UP TO
+GAUGE is meaningful. Today's d256 zoo is the ideal testbed: same
+arch/corpus/seed-lineage, known gates. Models (gate): wfloor 65 /
+s2 63 / s3 64 / pack 38 / stream4 57 / clade2 60. Instrument:
+per-layer FFN gate-matrix distance across all 15 pairs, three
+lenses — (a) RAW normalized Frobenius; (b) PERMUTATION-aligned
+(Hungarian on neuron cosine, the exact gauge group); (c)
+ORTHOGONAL-aligned (Procrustes rotation, the relaxation).
+PRE-REGISTERED PREDICTIONS: (1) raw distance carries ~no gate
+signal (gauge noise dominates: same-function seed pairs {65,63,64}
+read as far as cross-schedule pairs); (2) aligned distance
+CORRELATES with |gate delta| (Spearman > 0.5) IF the calculated-
+model thesis is right (function determines weights up to gauge =>
+residual aligned distance is capability-relevant); (3) seed pairs
+read CLOSEST after alignment (same function, different gauge).
+Scored against gates only — the instrument is judged by the
+oracle, never the reverse. Fences: one width, one corpus family,
+FFN gate matrices only, n=15 pairs.
+
+## Gauge-aligned distance: ALL THREE PREDICTIONS RESOLVED AGAINST the instrument — distance measures ANCESTRY, not function (2026-07-26)
+
+15 pairs, 3 lenses (raw / Hungarian-permutation / per-matrix
+orthogonal Procrustes), FFN gate matrices, d256 zoo. THE TABLE'S
+HEADLINE: the three seed births (gates 65/63/64 — functionally
+near-identical) sit at raw 1.414 = sqrt(2) = ORTHOGONAL, while
+wfloor(65) v pack(38) — 27 solves apart — sits at 0.41. Every
+close pair is a SAME-INIT pair (BIRTH_SEED=1 cluster: wfloor/
+pack/stream4/clade2 at 0.31-0.47); every far pair is cross-seed.
+1. Pre-reg (1) confirmed in the strongest form: raw distance
+   carries not just no gate signal but ANTI-signal — it reads
+   init lineage, full stop.
+2. Pre-reg (2) FAILS: rot's rho -0.635 (p=.011) is pure ancestry
+   confound (the large-gap pairs are same-init); WITHIN the
+   same-init cluster aligned distance is flat vs capability
+   (0.147-0.199 across gate gaps 3-27). Aligned distance does not
+   recover function distance at this granularity.
+3. Pre-reg (3) FAILS spectacularly: seed pairs are FARTHEST even
+   after permutation (1.27) AND orthogonal (0.41) alignment —
+   2x the same-init cluster despite Procrustes being MORE
+   generous than the true gauge group. Per-matrix alignment
+   cannot bring two basins of the same function together.
+VERDICT: the never-score-weights-by-distance law gains its
+seventh and sharpest leg — same function at sqrt(2), 27-solve-
+different functions at 0.3; the rotational rescue (orbifold/
+Procrustes hope) FAILS at per-matrix granularity. The measured
+positive nugget: same-init fine-lineages stay in a tiny ball
+(0.31-0.47) regardless of capability divergence — the whisper
+(small ||dW||) at birth-schedule scale; distance IS a cheap
+ancestry/lineage detector, nothing more.
+NEXT RUNG (named, not run): consistent whole-network alignment
+(git-re-basin style — one hidden-basis permutation applied
+jointly to gate/up/down/attention per layer) is the honest
+remaining hope for the orbifold metric; per-matrix free rotation
+already failing to close the seed gap is evidence against, but
+the joint constraint is the actually-correct group. Fences: gate
+matrices only, one width, n=15 pairs, per-matrix alignment.
