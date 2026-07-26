@@ -5449,3 +5449,138 @@ the packing and streaming entries take amendments.
    over-prediction #3 recorded (its own ask): it endorsed the
    streaming GO without catching the batch-construction
    one-variable violation at design stage.
+
+## AMENDMENT (house self-review): the streaming -12 is CONFOUNDED with cooldown (2026-07-26)
+
+Caught without the reviewer (retired for now; house self-checks).
+The streaming arm differs from control in TWO ways, and the entry
+attributed the -12 wholly to the first: (a) revisits (1 pass v 3);
+(b) THE LR ENDGAME — control's OneCycle anneals to ~0 by the end,
+the streaming arm ended still hot (~0.9 x 3e-4, no cooldown).
+Final-LR annealing is independently known to carry capability;
+"the epoch is load-bearing" is therefore OVER-ATTRIBUTED as
+booked. PRE-REG for the deciding arm (fires now): one pass,
+OneCycle COMPRESSED into the single pass (anneals to zero),
+length-sorted batches (also the registered speed-leg rerun — the
+480s + gate >= 61 bars stand as registered, no goalposts moved).
+Readings: gate ~61+ => cooldown was the load-bearing part, epoch
+claim RETRACTS to "one hot pass loses"; gate ~53 => revisits
+confirmed as mechanism at this width; between => both contribute,
+split booked as measured. Surprise gating stays in (it barely
+engages; not the variable).
+
+## Streaming v2 (compressed OneCycle): 45/120 — my schedule shape, not a cooldown verdict (2026-07-26)
+
+Arm: 1 pass, OneCycle compressed into 4,140 steps, length-sorted
+batches. Gate 45/120 @ 40.23 {3:17,4:3,5:10,6:6,7:9}; wall 405s.
+1. **Speed bar PASSES** (405 <= 480; length-sorted batching alone
+   took 3.8 -> 8-10 it/s — the v1 speed fail confirmed as batch
+   construction, as suspected).
+2. **Capability WORSE than v1's hot pass (45 < 53) — but this is
+   NOT a cooldown verdict**: house design error, caught on
+   self-review. OneCycle's default pct_start=0.3 spent ~30% of the
+   single pass in warmup — the arm cut total effective LR mass,
+   not just the tail. v2 tests "compressed OneCycle at 1 pass,"
+   which is its own (negative) result: the control's 3-epoch
+   schedule does NOT compress into one pass by squeezing.
+3. L4 = 3 (below the {6,7} seed band) — deep-warmup starvation
+   shows the clade signature where v1's even profile did not;
+   consistent with dose, not booked beyond observation.
+4. **v3 pre-registered (the clean cooldown isolation)**: v1's
+   exact profile (warmup 200, constant 3e-4) + final-10% linear
+   decay to zero; length-sorted batches. Integral-LR ~0.90 vs
+   v1's ~0.95 — near-matched; single variable = ends-hot vs
+   ends-cold. Readings: >= 61 => cooldown rescues the single
+   pass (epoch claim retracts); ~53 => cooldown is minor, revisits
+   confirmed; < 50 => decay tail hurts at 1 pass (books as
+   schedule law leg).
+
+## Streaming v3: 45 again — the schedule was never the variable; batch DIVERSITY is (2026-07-26)
+
+v3 (v1's constant profile + final-10% cooldown, length-sorted
+batches): gate 45/120 @ 43.79 {3:15,4:3,5:13,6:5,7:9}, wall 403s.
+House self-review, the read that books:
+1. v2 (compressed OneCycle) and v3 (constant+tail) — maximally
+   different SCHEDULES — score IDENTICALLY (45, 45). v1, schedule-
+   matched to v3 except the tail, scored 53. The moving variable
+   across {53, 45, 45} is BATCH CONSTRUCTION: v1 = shuffled
+   mixed-length (iid) batches; v2/v3 = length-sorted homogeneous
+   batches (the "speed fix"). Cooldown reads ~0 where it was
+   isolated on sorted batches (45 = 45).
+2. MECHANISM CANDIDATE: length-sorted batches group same-length =
+   same-family/kind rows (generated corpus), so each step's
+   gradient is intra-batch correlated — fewer effectively-diverse
+   updates per pass. With revisits (control, ALSO length-sorted,
+   65) the damage washes out; at ONE pass it costs ~-8. Candidate
+   interaction law: batch homogeneity is FREE with epochs,
+   EXPENSIVE without them (diversity-per-step is the binding
+   resource of single-pass training).
+3. PRE-REG v4 (the missing 2x2 cell, fires now): v1's mixed
+   shuffled batches + final-10% cooldown. Readings: ~61+ =>
+   cooldown DOES help and sorting cost -16 (both claims book);
+   ~53 => cooldown ~0, sorting -8 books alone, "one pass loses
+   -12 and the epoch is load-bearing" STANDS as v1 measured it;
+   ~45 => construction story wrong, rethink. Wall ~1,100s
+   (padded) — this is the mechanism cell, speed bar not at issue.
+4. Speed note: 403s twice confirms the sorted-batch wall (~34% of
+   control) — IF capability were ever recovered, the speed bar is
+   comfortably passable; the two bars currently anti-correlate
+   through the same construction choice (the honest tension,
+   named).
+
+### v3 rider: verification + the 07-16 precedent (2026-07-26)
+
+Code-verified: control batching IS length-homogeneous (BS=32
+slices over sorted enc, batch ORDER shuffled) — the interaction
+claim's control leg stands. Two extras from the same read:
+(a) trainer OneCycle runs pct_start=0.03 — v2's default-0.3 arm
+was doubly non-matched (booked error confirmed sharper);
+(b) PRIOR ART, in the trainer's own 07-16 comment: the parity 2x2
+measured length-homogeneous PACKED batches at ~-10 unseen-validity
+— homogeneity cost is a measured phenomenon in the packed regime,
+fixed then by shuffling. Today's v2/v3 (-8 at 1 pass, BS=32) is
+its small-batch single-pass sibling: homogeneity cost appears
+where diversity-per-step binds (packed mega-batches then, no-
+revisit passes now) and washes out otherwise (control 65 at 3ep).
+Also narrows today's packing-mechanism candidates: post-07-16
+packing is mixed-length by construction, so the packed d256 arm's
+L4 death is NOT homogeneity — mega-batch size and schedule remain.
+
+## STREAMING CLOSES: the 2x2 completes — epoch load-bearing at -8, cooldown +4, homogeneity -12 (2026-07-26)
+
+v4 (mixed shuffled batches + final-10% cooldown): 57/120 @ 54.24
+{3:20,4:5,5:15,6:7,7:10}, wall 1,095s. The full 2x2 (all 1-pass,
+d256, seed 1, vs control 65 @ 1,199s):
+  mixed+hot 53 | mixed+cool 57 | sorted+OneCycle 45 | sorted+cool 45
+VERDICTS:
+1. **COOLDOWN IS REAL: +4** (53 -> 57 on matched mixed batches;
+   ~2.9 sigma_diff at d256's measured sigma 1.0 — above the
+   3-solve directional bar). The v1 amendment's suspicion
+   confirmed: part of the original -12 was the missing anneal.
+2. **BATCH HOMOGENEITY COSTS -12 AT ONE PASS** (57 v 45 cooled
+   pair) — dominant factor, dwarfing schedule. With revisits it
+   costs ~0 (control 65 IS homogeneous). INTERACTION LAW BOOKS:
+   diversity-per-step is the binding resource of single-pass
+   training; epochs buy back what correlated batches spend
+   (07-16 packed-homogeneity precedent, small-batch sibling).
+3. **THE EPOCH STAYS LOAD-BEARING: -8 at best-case single pass**
+   (57 v 65, ~5.7 sigma_diff). Amended from v1's -12 (which
+   bundled the missing cooldown) — but the pre-registered
+   neutrality bar (>= 61) is unreachable in every measured cell:
+   **STREAMING BIRTH CLOSES as a capability loser at this
+   width/corpus.** Composed-birth re-pricing stands; batched-KV
+   remains the speed headline.
+4. Speed-capability tension, final form: the batch construction
+   that wins capability (mixed) costs the wall (1,095s padded);
+   the one that wins the wall (sorted, 403s) costs -12. The
+   untested escape (length-BUCKETED shuffled — the legacy LoRA
+   recipe's trick) could plausibly hold 57 at ~450s, but 57
+   fails the bar regardless — NOT RUN, banked as the first cell
+   if streaming is ever revived for non-birth uses (metabolic
+   feeding is already single-pass-by-nature and is where these
+   laws actually live).
+5. Surprise-gating: rode every arm, engaged nowhere (EMA-tracking
+   throughout) — UNTESTED at birth, unchanged; its cell remains
+   the metabolic loop.
+Per-level note: v4 L4=5 sits just under the {6,7} seed band —
+mild, consistent with dose; no clade claim.

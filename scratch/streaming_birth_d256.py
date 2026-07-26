@@ -61,6 +61,36 @@ perm = list(range(len(enc)))
 random.Random(1).shuffle(perm)
 batches = [perm[i:i + BS] for i in range(0, len(perm), BS)]
 
+V2 = os.environ.get("STREAM_V2") == "1"
+V3 = os.environ.get("STREAM_V3") == "1"
+V4 = os.environ.get("STREAM_V4") == "1"
+if V4:
+    # v4 (the missing 2x2 cell, pre-reg 2026-07-26): v1's MIXED
+    # shuffled batches (iid, padded) + v3's final-10% cooldown.
+    # Decides cooldown-vs-batch-construction for the 53 -> 45 drop.
+    OUT = "checkpoints/mathnative_wfloor_d256_stream4.pt"
+if V3:
+    # v3 (clean cooldown isolation, pre-reg 2026-07-26): v1's exact
+    # constant-LR profile + final-10% linear decay to zero.
+    # Length-sorted batches (speed fix, shared with v2). Single
+    # variable vs v1: ends-hot vs ends-cold (integral-LR ~0.90 v 0.95).
+    order = sorted(range(len(enc)), key=lambda j: len(enc[j]))
+    batches = [order[i:i + BS] for i in range(0, len(order), BS)]
+    random.Random(1).shuffle(batches)
+    OUT = "checkpoints/mathnative_wfloor_d256_stream3.pt"
+if V2:
+    # v2 (cooldown arm, pre-reg 2026-07-26): length-sorted batches
+    # (control's construction — fixes the speed leg) + OneCycle
+    # compressed into the single pass (anneals to zero — isolates
+    # revisits from cooldown). Surprise multiplier stays.
+    order = sorted(range(len(enc)), key=lambda j: len(enc[j]))
+    batches = [order[i:i + BS] for i in range(0, len(order), BS)]
+    random.Random(1).shuffle(batches)  # shuffle BATCHES, keep
+    # length-homogeneous composition
+    sched = torch.optim.lr_scheduler.OneCycleLR(
+        opt, max_lr=BASE_LR, total_steps=len(batches))
+    OUT = "checkpoints/mathnative_wfloor_d256_stream2.pt"
+
 ema = None
 t0 = time.time()
 for step, b in enumerate(batches):
@@ -78,13 +108,29 @@ for step, b in enumerate(batches):
     lv = float(loss.detach())
     ema = lv if ema is None else EMA_DECAY * ema + (1 - EMA_DECAY) * lv
     surprise = max(CLAMP[0], min(CLAMP[1], lv / max(ema, 1e-8)))
-    warm = min(1.0, (step + 1) / WARMUP)
-    for g in opt.param_groups:
-        g["lr"] = BASE_LR * warm * surprise
+    if V2:
+        base = sched.get_last_lr()[0]
+        for g in opt.param_groups:
+            g["lr"] = base * surprise
+    else:
+        warm = min(1.0, (step + 1) / WARMUP)
+        cool = 1.0
+        if V3 or V4:
+            tail = len(batches) // 10
+            left = len(batches) - step
+            if left <= tail:
+                cool = left / tail
+        for g in opt.param_groups:
+            g["lr"] = BASE_LR * warm * cool * surprise
     loss.backward()
     torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
     opt.step()
     opt.zero_grad()
+    if V2:
+        for g in opt.param_groups:
+            g["lr"] = base  # restore before sched.step (OneCycle
+            # multiplies its own trajectory; surprise is per-step)
+        sched.step()
     if (step + 1) % 200 == 0:
         r = (step + 1) / (time.time() - t0)
         print(f"  {step+1}/{len(batches)} loss {lv:.3f} ema {ema:.3f} "
