@@ -203,3 +203,15 @@ NNUE will NOT look like the crystals, and shouldn't.
   would mask exactly the calibration ternary is predicted to
   lose). If ternary ties anyway, the output-type law dies and
   the lens law extends to distributions — either verdict banks.
+
+## 8. R7 (from the mixture bank): the conjecturer lives in the main crystal
+
+pairs+oneshot mixture at d256 (50/50 and 80/20 vs pairs 57):
+oneshot rows are same-direction maximal skips (licensed by skip
+54; NOT the revpairs class). If the mixture holds the pair gate
+while gaining one-hop conjecture, the pincer needs only TWO
+models (mixture crystal + backward scorer) instead of three, and
+the conjecture leg inherits the crystal's full validity. pp
+sidecars mandatory (watch: does the mixture's oneshot skill
+retain the 0.5-ply/no-wander signature inside a chain-capable
+model, or do the skills interfere?).

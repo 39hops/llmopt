@@ -931,3 +931,36 @@ to the collaboration itself.
   for slotting; cheapest pilot = the ladder's own d256 cells
   (margins are free at every step). Attribution: Artin (riff);
   house (near-tie identification + design).
+
+- **"Oneshot is quick and doesn't wander but it's cheating — what
+  if we combined the different data and let the model choose how
+  to accept it, like tuning an HCE/NNUE?"** (Artin, 2026-07-26,
+  off the pp sweep): two banks — (1) THE MIXTURE DIET: pairs +
+  oneshot rows in one crystal. Key licensing fact from today:
+  oneshot rows are SAME-DIRECTION (root->answer is a legal
+  forward hop — a maximal skip-pair, and skip 54 measured skips
+  ~free), so this is NOT the toxic revpairs class; candidate
+  outcome = chain robustness AND one-hop conjecture in one
+  model, which would let the pincer's conjecture leg live in the
+  main crystal instead of a separate oneshot model. Cheap cell:
+  pairs+oneshot 50/50 and 80/20 at d256/1P vs pairs 57. (2)
+  LEARNED ACCEPTANCE: the model weights its own data channels
+  (per-row/per-format gain, HCE-tuning style) — the
+  surprise-gating + valuation-routed-metabolism lineage with the
+  format ladder as the new evidence base; needs a mechanism that
+  arrives as gradient (per-format loss weights learned via
+  held-out meta-signal), banked behind the mixture cell's
+  verdict. Attribution: Artin (both); house (same-direction
+  licensing + the pincer tie-in).
+
+- **THE TOURNAMENT-SIDECAR DOCTRINE (Artin, 2026-07-26, adopted
+  as method)**: "more sidecars/tournaments — they force quick
+  efficient tests and give our nulls/findings context/proof."
+  Booked as standing method: prefer LADDERS of small paired
+  cells (the alphabet tournament, the format ladder) over
+  isolated experiments, and EVERY tournament ships per-problem
+  sidecars by default (pp instrument; step-3 item (d)) — the
+  overlap/wandering/mechanism reads cost nothing extra and have
+  now corrected two mechanism claims in one day (Muon
+  dissociation, revpairs wandering). Nulls with sidecars are
+  publishable nulls.
