@@ -97,6 +97,14 @@ elif FORMAT == "oneshot":
     for ch in build_chains():
         texts.append(f"Current: {rows[ch[0]]['cur']}\nHints: none\n"
                      f"Step: {rows[ch[-1]]['nxt']}\n")
+elif FORMAT == "backpairs":
+    # pincer R1a (spec 2026-07-26-reverse-llmue-pincer): the
+    # backward crystal's diet — EVERY row reversed, zero forward
+    # mixing (its whole world is backward; separate-crystals
+    # doctrine, no direction marker needed). Same pair frame,
+    # roles flipped: later state as Current, predecessor as Step.
+    texts = [f"Current: {r['nxt']}\nHints: none\nStep: {r['cur']}\n"
+             for r in rows]
 elif FORMAT == "revpairs":
     # dual-direction crystal (reverse-LLMUE bank): 50/50 forward +
     # reversed pairs at matched total dose; reverse rows spell the

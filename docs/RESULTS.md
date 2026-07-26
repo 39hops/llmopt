@@ -6745,3 +6745,26 @@ READS:
    peeling worklist exists.
 Sidecar logs/pp_r0_conjecture.jsonl. NEXT (per spec): R1a
 backward crystal birth (d256, reversed-pairs-only diet).
+
+## PRE-REG: pincer R1a — the backward crystal (2026-07-26 night)
+
+Cell R1 of specs/2026-07-26-reverse-llmue-pincer.md, arm B-a
+(mirrored transformer baseline — exists to be beaten by B-b).
+BIRTHS: FORMAT=backpairs (every gen-4 row reversed, zero forward
+mixing; separate-crystals doctrine, no direction atom) at d256,
+BOTH schedules (1P + 3E), seed 1 — checkpoints
+fmt_backpairs_{1p,3e}.pt. PROBE: scratch/pincer_r1_probe.py —
+105 distinct fresh gate-band mid-chain states (pooled from the
+nine pp sidecars; L4/L6 thin, skew named), k=8 sampled
+predecessors each, VALID iff forward step p->t verifies and
+p != t (bidirectional-cheat fence: forward-verify only, never
+corpus match). QUESTION: does backward train UP like forward
+(85%-class per-candidate validity) or is peeling intrinsically
+harder? PREDICTIONS (house): (1) backward trains DOWN in loss
+like forward (same substrate, same pair frame); (2) per-candidate
+validity lands BELOW forward's class — predecessor-emission must
+invent structure (un-apply a rule = grow the expression), and
+generation-toward-complexity is the harder direction; band guess
+40-70%; (3) 3E >= 1P (pairs-shaped diet; the ladder's 3E column
+recovered batch damage). The read arms R2 (pincer v1) and sets
+B-a's bar for B-b.
