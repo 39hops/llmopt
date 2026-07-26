@@ -6648,3 +6648,51 @@ reproduce). READS:
    one-hop mechanism directly.
 Sidecars: logs/pp_*.jsonl (9 cells, full chains) — the standing
 per-problem instrument's first full sweep.
+
+## THE ZX COLUMN COMPLETES: alphabet-follows-domain DIES CLEAN — rotation ties magnitude on phase-carrying data too (2026-07-26 evening)
+
+Full column (vocab-47 births, zx_farm1_train, 19M-class, cuda
+BS=8/grad-ckpt per amendment; gate = 120 held-out diagrams,
+pyzx tensor oracle, walls 0 across ALL FOUR gates):
+| arm | gate | anatomy |
+|---|---|---|
+| cplx_none (unquantized complex) | **36/120** | parsefail 0 |
+| G5-latent (STE forward; 95-parsefail run was my gate bug, fixed) | 32/120 | parsefail 0 |
+| G5-deployed | 32/120 | parsefail 0 |
+| M5 (scalar 2.32b) | 31/120 | parsefail 0 |
+VERDICTS:
+1. **THE HEADLINE THE PROGRAM WAS BUILT TO DECIDE: G5-dep 32 v
+   M5 31 (+1, bar was >=5) — ALPHABET-FOLLOWS-DOMAIN IS DEAD.**
+   Rotation ties magnitude on math (62=62) AND on the maximally
+   phase-carrying grammar (32~31). The factorial's interaction
+   term reads ZERO at both columns. Consequences, all booked:
+   the rotation wing CLOSES (D9/Q9/E7 die unrun; RoPE x G5
+   demotes to curiosity); the complex bracket reduces to the
+   G16-as-sign question (itself now weakly motivated); the
+   pincer spec's complex-conditional resolves REAL everywhere;
+   Fourier-as-confirmation-continent demotes (no law left to
+   confirm — Fourier stays a TERRITORY candidate on its own
+   merits, not a physics test).
+2. **First graph-grammar crystals WORK**: ~26-30% sound held-out
+   rewrites at first contact, parsefail 0/480 across all four
+   arms (7-atom vocab + boundary-anchored serialization fully
+   validated), zero identity, zero walls. The federation
+   machinery (VOCAB_EXTRA, strict encode, SEQ_CAP) carried a
+   graph language on the first try.
+3. **ZX quantization tax: -4 (36 -> 32), G5 latent = deployed
+   EXACTLY (32 = 32)** — the deploy tax lands entirely at the
+   alphabet snap, mirroring math's -4; STE converged the latents
+   onto the lattice.
+4. **Kind anatomy is model-invariant**: color 19-22 / fuse 5-7 /
+   lcomp 3 / id 2 / pivot 1-2 in every arm — tracks corpus mass
+   (color 36%) x move locality (color is edge-local
+   self-inverse; pivot restructures). The mass-spectrum law's
+   first ZX reading; the misses are 100% SEMANTIC (well-formed
+   wrong rewrites) = the validity-autopsy law reproducing in a
+   new continent.
+5. Un-run rider named honestly: no SCALAR-REAL control at
+   vocab-47 (fp32/M5 are real but M5 is quantized; cplx_none is
+   complex-interior) — "complex interior costs ~nothing on ZX"
+   (36 v M5-class) is suggestive, not a booked pair; the clean
+   pair would be fp32-real-ZX vs cplx_none-ZX, banked if the
+   complex question ever reopens.
