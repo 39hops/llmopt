@@ -6048,3 +6048,208 @@ ceiling rises, and the 6ep cell fires next; loss ~1.7 or diverges
 => the Z1S floor is real at any recipe in this family — books as
 the excitation regime's capability wall. Chained on
 v5s2_done.marker (success-only).
+
+## PRE-REG: the Muon streaming-optimizer cell (2026-07-26, before the run)
+
+Tier-1 #1 (spec 2026-07-26-next-session). Claim under test: the
+homogeneity -12 is a GRADIENT-COVARIANCE wound — correlated
+batches feed correlated gradients, and SGD/AdamW spends the pass
+re-learning the same directions. Muon-style orthogonalized
+momentum (Newton-Schulz 5, 2D interior weights only; AdamW stays
+on embeddings/head/norms) whitens the update per step =
+diversity-per-step moved INTO the optimizer.
+ARMS (both d256, seed 1, 1 pass, final-10% cooldown, surprise
+rider unchanged): (a) MUON+sorted — the wounded cell, comparator
+45; (b) MUON+mixed — the best-case cell, comparator 57. Control
+3ep = 65. Muon LR 0.02 (default from the literature), warm/cool/
+surprise multipliers identical to v4.
+READINGS (sigma_d256 ~1.0, directional bar 3): (a) sorted >= 51
+(+6) => covariance mechanism CONFIRMED — the interaction law gains
+its optimizer leg; sorted ~45 => the wound is not covariance
+(composition/curriculum effect), Muon leg dies. (b) mixed >= 61 =>
+"the epoch is load-bearing" RETRACTS to "SGD wastes single passes"
+(the publishable revision); 57 < mixed < 61 => partial, epoch keeps
+a smaller residual; <= 57 => optimizer not the channel at either
+composition. Divergence at LR 0.02 => one retry at 0.01, booked as
+a tuning note, not an arm.
+
+## PRE-REG: weight-FFT euler read (2026-07-26, before the read; free)
+
+Prologue leg inherited from the Opus-5 complex-bracket review;
+sets the complex bracket's PRIOR. Question: do real-born crystals
+already carry phase-pair / rotational structure in their FFN rows
+(i.e., does SGD spontaneously pair channels as re/im), or is
+rotation an alphabet you must IMPOSE at birth?
+INSTRUMENT (merged_grown_latent.pt FFN matrices, minutes, no
+training): (a) adjacent-channel pairs (2k,2k+1) as (re,im) —
+phase-angle distribution vs a magnitude-matched paired-shuffle
+control; (b) per-row rFFT top-8 energy fraction vs within-row
+permutation control (positional/rotational order would concentrate
+the spectrum). PREDICTION (house): NULL on both — the gauge law
+says channel ORDER is meaningless, so any pairing structure would
+have to survive a symmetry SGD has no reason to break; a null
+keeps the complex bracket honest (rotation must earn its way at
+birth, no free lunch already in the weights). Structure bar: crystal
+exceeds its own shuffle control by >3 sigma of the control spread
+(20 shuffle seeds). Either verdict banks: null => bracket prior
+stays skeptical; structure => the euler read gets aimed at WHERE
+it concentrates (family-resolved follow-up).
+
+## Weight-FFT euler read: NULL for rotation — the flag was ANCESTRY again (2026-07-26)
+
+Instrument fired the 3-sigma bar (phase-pair z to -19 on every
+down matrix) and the autopsy retracts it in one read: the signal
+is NEGATIVE z (real pairs MORE uniform than shuffled), down-only,
+and the mechanism is the GROWN BLOCK — merged_grown's appended
+neurons sit at column norm 0.30 vs 0.90 for the originals, so
+adjacent pairs are variance-matched (|log norm ratio| 0.124 v
+0.446 random) while shuffled pairs mix the blocks and skew phases
+toward the heavy axis. Channel index encodes ANCESTRY, not phase
+— the distance verdict's lesson appearing inside a single
+checkpoint (growth is visible in the index layout; function
+isn't). FFT-order lens: clean null everywhere (max |z| 1.75).
+The one positive phase cell (blocks.1.up +4.5) is isolated,
+uncorrected for 48 reads, and carries no fft partner — noise.
+VERDICT: **no euler/rotational structure in real-born crystals —
+the pre-registered house null stands.** Complex-bracket prior
+stays skeptical: rotation must be imposed at birth (the G5 arms)
+to exist at all. Instrument note for reuse: on grown checkpoints,
+shuffle controls must shuffle WITHIN ancestry blocks or the
+block-norm step masquerades as structure.
+
+## Muon sorted arm @ LR 0.02: 10/120 @ 8.70% — loss-gate DIVERGENCE (2026-07-26)
+
+{3:3,4:0,5:5,6:2,7:0}, wall 608s (6.8 it/s — Muon's ns5 costs
+~zero on these shapes). The trap worth naming: the loss biography
+looked like the best streaming arm ever recorded (0.71 at step
+200 where AdamW arms sat ~1.4; ended ~0.55) and the gate is the
+WORST non-Z1 cell in the ladder. Teacher-forced loss and
+generative capability decoupled completely — the orthogonalized
+update at LR 0.02 optimizes next-token prediction while
+destroying whatever the gate actually measures (validity 8.7% =
+the model emits garbage steps confidently). Per the pre-reg's
+tuning clause: ONE retry at MUON_LR 0.01 fires before any
+mechanism claim; the mixed arm waits for its verdict. If 0.01
+also craters, the cell books as "Muon-class updates are
+gate-toxic at this scale/recipe" and the covariance hypothesis
+stays untested-by-this-instrument (not refuted).
+
+## MUON CELL CLOSES: 34/120 @ 0.01 — orthogonalized updates LOSE at one pass; the covariance hypothesis is unsupported here (2026-07-26)
+
+Retry gate: {3:10,4:2,5:11,6:6,7:5} = 34/120 @ 32.79%, wall 604s.
+The ladder reads 10 (LR .02) -> 34 (.01) vs AdamW-sorted 45 —
+Muon trails the comparator at every tested LR, in exactly the
+cell (homogeneous batches) where the covariance hypothesis
+predicted its biggest win (bar was >= 51). VERDICTS:
+1. The streaming-optimizer cell CLOSES NEGATIVE: Muon-class
+   orthogonalized momentum does not buy diversity-per-step at
+   this scale/recipe; "the epoch is load-bearing" KEEPS its -8.
+   Mixed arm not run (pre-reg: it waited on the mechanism test,
+   which failed at its most favorable composition).
+2. Honest scope fence: this instrument tests the NAIVE transplant
+   (ns5 momentum, two LRs, d256/MPS, LR-coupled to the surprise
+   rider). The covariance hypothesis is UNSUPPORTED, not refuted
+   — a tuned Muon (separate schedule, decoupled weight decay,
+   more LR points) could reopen it, but not on house priority.
+3. The diagnostic worth keeping: BOTH Muon arms show loss-gate
+   DECOUPLING (0.55/0.41 final CE — the best streaming losses
+   ever recorded — at gates 10/34). Orthogonalized updates
+   optimize teacher-forced CE while damaging generative validity;
+   the gate is measuring something CE does not see, and Muon
+   widens that split enough to make it visible. Composes with the
+   confidently-wrong Z1 biography as the second loss-metric
+   dissociation of the week.
+
+## JOINT-PERM CLOSURE: kill condition FIRES — weight-space distance closes PERMANENTLY (2026-07-26)
+
+git-re-basin joint alignment (one hidden-unit permutation per FFN
+layer over [gate row | up row | down col], residual basis fixed —
+the correct gauge subgroup): cross-seed pairs move 1.414 -> 1.327
+(6% recovered), a factor ~2.7x ABOVE the same-init ball
+(wfloor-stream4 0.497 / wfloor-clade2 0.537, unchanged by the
+perm — schedule divergence carries no permutation component
+either). Script label nit: pairs of s2/s3 vs stream4/clade2
+printed "same-init" but those arms share wfloor's seed, so they
+are CROSS-seed — and they read 1.327 exactly like the seed pairs,
+an unplanned replication. Per the pre-registered kill condition:
+**weight-space distance is CLOSED as a function instrument at
+every gauge group tried (raw, Hungarian, Procrustes, joint-perm)**
+— the 8th and final leg of never-score-by-distance; function
+space (stitching/CKA, oracle gates) is the only distance that
+exists. The orbifold-metric revival does NOT fire. Residue that
+stays open: the U(n) variant rides the complex births (different
+group, not a re-ask of this one) per the quantum-LLMUE walk.
+
+## RETENTION SESSION (v5 s2): 6 -> 10/100, and the crystal FORGETS NOTHING for 120 minutes (2026-07-27, booked from overnight)
+
+FINAL: resolution 6 -> 10/100 (new: 4x L8 + 1x L6 walls fell;
+m-l8-v5s1-{122,150,194} and m-l6-v5s1-108 join s1's residue),
+proxy 23 -> 23 @ 61.9%, NET 68,322 tokens over 17 update steps,
+31 live, 443 new walls banked to the stuck-state exchange.
+THE HEADLINE IS THE FLAT LINE: dense per-level [retention]
+columns every ~5 min for two hours read {3:5-6, 4:6, 5:4, 6:2,
+7:5} @ 60.8-61.9% THROUGHOUT — zero decay in ANY column,
+including the isolated-clade levels the pre-reg predicted would
+decay first. PREDICTION FAILS in the good direction: at v5's
+dose (17 micro-steps/120min, LR 1e-5) metabolic feeding is
+purely ADDITIVE — resolution +4 with retention cost
+UNMEASURABLE at this instrument's resolution. Decay constants:
+un-fittable (no decay to fit); the retention-curve question
+needs a HOTTER session (more steps or LR) before any tau exists
+to measure. Surprise-gating leg: NOT INSTRUMENTED — v5 carries
+no surprise multiplier at all, so its untested-nowhere status
+stands; the home-regime cell still has to be BUILT, not just
+logged (flag for the next metabolic design pass).
+Riders: proxy flat at 23 while resolution rose (the two
+instruments measure different things — walls falling != proxy
+composition); Z1S-hot fired on the marker as armed (chain
+verified end-to-end).
+
+## FACTORIAL math column, arm 1 — cplx_none control: 63/120 (2026-07-27)
+
+{3:21,4:6,5:17,6:8,7:11} @ 61.35% validity, 19M/gen-4/3ep/seed 1
+(complex-FFN: paired re/im channels, modReLU, genuine complex
+multiply — NO quantizer). Lands between M5 62 and fp32 64: the
+complex INTERIOR is capability-neutral on math — pairing channels
+and rotating through the multiply neither costs nor pays by
+itself, so the factorial's G5 cell (in flight) will read the
+QUANTIZED rotation alphabet against a fair same-architecture
+control (63), not against fp32's architecture. Exactly what the
+control was for.
+
+## Z1S HOT-LR: 0/120 at loss 1.10 — the excitation capability wall books AT ANY RECIPE (2026-07-27)
+
+3.3x LR (1e-3) moved the loss biography exactly as the discrete-
+plasticity prior predicted (1.70 -> 1.10 — hot LR crosses
+thresholds standard LR integrates under) and bought ZERO gate:
+{3:0,4:0,5:0,6:0,7:0} @ 0.00% validity. Pre-reg reading: loss
+not < ~1.0 AND gate 0 => the 6ep cell does NOT fire; **the
+excitation-only regime (no negative weights, channel-sign or
+none) is a CAPABILITY WALL, not a dose/LR artifact.** The
+opposition ladder's final rung: per-weight sign 54 (S4) /
+channel sign 0 at ANY LR (Z1S, Z1S-hot) / no sign 0 (Z1).
+Opposition must live at per-weight granularity; Dale's law
+remains stability-only. Third loss-capability dissociation of
+the arc (Z1 confidently-wrong, Muon CE-vs-gate, now Z1S-hot's
+smooth 1.10-that-solves-nothing).
+
+## FACTORIAL math column COMPLETE: G5 latent 66 / deployed 62 — rotation is FREE on math, not PROFITABLE; the ZX column becomes the decider (2026-07-27)
+
+cplx_G5 (G5 STE {0,±s,±is} on complex-FFN, 19M/gen-4/3ep/seed 1):
+latent 66/120 @ 62.29 {3:22,4:6,5:17,6:8,7:13}, deployed 62/120
+@ 59.32 {3:20,4:6,5:16,6:8,7:12}. The math column, all
+same-recipe: fp32 64 | cplx_none 63 | G5-latent 66 | G5-dep 62 |
+M5 62 (the bit-matched magnitude twin at 2.32b).
+VERDICTS: (1) G5-dep TIES M5 exactly at matched bits — rotation
+neither pays nor costs on the phase-free math grammar (all
+margins under the >=5 single-seed bar; ties, not wins). (2) The
+quantization tax is ~4 (66 latent -> 62 deployed), in the normal
+STE-deploy band. (3) This is precisely the alphabet-follows-
+domain setup the program wanted: math shows NO rotation
+dividend, so if the ZX column (phase-carrying grammar, vocab-51
+birth pending the axiom farm batch) shows G5 > M5 there, the
+interaction books as the headline; if ZX also ties, the
+alphabet-follows-domain hypothesis dies clean. Euler-read
+consistency note: the null prior held — rotation imposed at
+birth is SURVIVABLE (66/62) but spontaneous structure never
+appears in real-born crystals.

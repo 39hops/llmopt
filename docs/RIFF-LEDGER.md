@@ -739,3 +739,23 @@ to the collaboration itself.
   residual (calculated-model thesis applied DURING training;
   never run). Attribution: Artin (all four riffs + the
   something-missing instinct); house (translations).
+
+- **"Put the magic in the LLM / is cur-next even optimal? maybe
+  the schema confuses streamed template models"** (Artin,
+  2026-07-26, post-Muon-crater): distilled into three legs by
+  schema layer — (1) MAGIC-AS-HOP: magic-as-input is twice-nulled
+  (hints) and magic-as-aux-head has the syndrome payoff-3 null as
+  sibling; the LIVE form is the regret probe (AUC 0.914) promoted
+  from instrument to POLICY — a learned branch-abandon/hop bit at
+  inference, acting on the wrongness signal the model already
+  carries; FA-shaped (model hops, oracle still judges). (2) THE
+  FORMAT x SCHEDULE INTERACTION (new, his): all chain-carry
+  format evidence is 3-epoch evidence; a single-pass streamed
+  model never gets the revisit that makes a Markovian cur/next
+  pair cheap — the banked chain-carry ablation gains a streaming
+  column (format x {3ep, 1-pass}) and could explain the epoch's
+  -8 residual as a FORMAT dividend of revisits. (3) Schema layers
+  named: oracle layer (non-negotiable) / format layer (cur-next,
+  decomposition, notation — least closed) / conditioning layer
+  (magic, hints, syndromes — mostly nulled). Attribution: Artin
+  (riff); house (layer split + interaction cell).

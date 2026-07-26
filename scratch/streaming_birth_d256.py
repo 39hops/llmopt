@@ -64,6 +64,45 @@ batches = [perm[i:i + BS] for i in range(0, len(perm), BS)]
 V2 = os.environ.get("STREAM_V2") == "1"
 V3 = os.environ.get("STREAM_V3") == "1"
 V4 = os.environ.get("STREAM_V4") == "1"
+# Muon cell (pre-reg 2026-07-26): orthogonalized momentum on 2D
+# interior weights = diversity-per-step moved into the optimizer.
+# MUON=sorted arm (v3 construction, comparator 45),
+# MUON_MIXED=mixed arm (v4 construction, comparator 57).
+MUON = os.environ.get("STREAM_MUON") == "1"
+MUON_MIXED = os.environ.get("STREAM_MUON_MIXED") == "1"
+MUON_LR = float(os.environ.get("MUON_LR", "0.02"))
+
+
+def ns5(G, steps=5):
+    # Newton-Schulz orthogonalization (Muon; Jordan et al. coeffs)
+    a, b, c = 3.4445, -4.7750, 2.0315
+    X = G.float()
+    tp = X.shape[0] > X.shape[1]
+    if tp:
+        X = X.T
+    X = X / (X.norm() + 1e-7)
+    for _ in range(steps):
+        A = X @ X.T
+        X = a * X + (b * A + c * A @ A) @ X
+    return X.T if tp else X
+
+
+if MUON or MUON_MIXED:
+    interior = [p for n, p in model.named_parameters()
+                if p.dim() == 2 and "emb" not in n
+                and p.shape[0] != len(tok.vocab)]
+    others = [p for n, p in model.named_parameters()
+              if not (p.dim() == 2 and "emb" not in n
+                      and p.shape[0] != len(tok.vocab))]
+    opt = torch.optim.AdamW(others, lr=BASE_LR, weight_decay=0.01)
+    mom = [torch.zeros_like(p) for p in interior]
+    if MUON_MIXED:
+        OUT = "checkpoints/mathnative_wfloor_d256_muon_mx.pt"
+    else:
+        order = sorted(range(len(enc)), key=lambda j: len(enc[j]))
+        batches = [order[i:i + BS] for i in range(0, len(order), BS)]
+        random.Random(1).shuffle(batches)
+        OUT = "checkpoints/mathnative_wfloor_d256_muon.pt"
 if V4:
     # v4 (the missing 2x2 cell, pre-reg 2026-07-26): v1's MIXED
     # shuffled batches (iid, padded) + v3's final-10% cooldown.
@@ -115,7 +154,7 @@ for step, b in enumerate(batches):
     else:
         warm = min(1.0, (step + 1) / WARMUP)
         cool = 1.0
-        if V3 or V4:
+        if V3 or V4 or MUON or MUON_MIXED:
             tail = len(batches) // 10
             left = len(batches) - step
             if left <= tail:
@@ -126,6 +165,17 @@ for step, b in enumerate(batches):
     torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
     opt.step()
     opt.zero_grad()
+    if MUON or MUON_MIXED:
+        mult = warm * cool * surprise
+        with torch.no_grad():
+            for p, m in zip(interior, mom):
+                if p.grad is None:
+                    continue
+                m.mul_(0.95).add_(p.grad)
+                u = ns5(m + 0.95 * p.grad)  # nesterov
+                p.add_(u, alpha=-MUON_LR * mult
+                       * max(1, p.shape[0] / p.shape[1]) ** 0.5)
+                p.grad = None
     if V2:
         for g in opt.param_groups:
             g["lr"] = base  # restore before sched.step (OneCycle
