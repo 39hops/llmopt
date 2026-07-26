@@ -5821,3 +5821,36 @@ TF32 tournament recipe, gates on cuda (same lineage as born-M4=61
 Fences: n=1 per arm; 3ep (matched to the bracket table, NOT the
 6ep parity dose — parity questions need the 6ep rerun); sigma at
 19M/cuda = 2.5 (n=3-fragile), single-seed bar >= 5.
+
+## PRE-REG: max-asymmetric {0,1,2,3} gauge arm (2026-07-26, Mac/MPS, before gates)
+
+The gauge-commutation law's decisive instance (M4's asymmetry was
+1-of-4 levels, divergence +2 sub-noise by design; {0,1,2,3} is
+asymmetric in ALL levels). Arms: m4x = per-row amax/3 scale x
+{0,1,2,3} PTQ on the 19M infix twin; gflip_m4x = same quantizer
+AFTER the sign-flip gauge (up-rows/down-cols, gate untouched).
+PREDICTION (gauge-subgroup law): divergence GROWS with asymmetry —
+|gate(m4x) - gate(gflip_m4x)| > the symmetric pair's 0 and M4's 2.
+FLOOR FENCE, registered in advance: {0,1,2,3} deletes all negative
+weights on a signed net (the z1-PTQ foregone-conclusion class) —
+if BOTH arms gate <= 5, the cell is VOID BY FLOOR (divergence
+unreadable at the measurement floor); validity is the secondary
+differentiator if solves floor out. MPS gates, twin baselines
+(fp32 64 / int3 65 / m4 51 / gflip_m4 49).
+
+## Max-asymmetric gauge arm: VOID BY FLOOR — the fence fired (2026-07-26)
+
+m4x 0/120 @ 0.00; gflip_m4x 0/120 @ 0.00. The pre-registered floor
+fence fires exactly as written: deleting every negative weight on
+a signed-trained net is the z1-PTQ foregone conclusion, and at the
+measurement floor the commutation divergence is unreadable on both
+the primary (solves) and secondary (validity) axes. NOT evidence
+for or against the gauge-subgroup law. The max-asymmetry
+commutation question survives only as a BORN pair (born-m4x vs
+born-gflip-init-m4x) — priced at two 19M births, BANKED behind the
+complex program (asymmetry axis already has the cheaper born-S4 v
+born-M4 cell in flight). PTQ-side gauge testing at extreme
+asymmetry is structurally closed: any alphabet asymmetric enough
+to test the law hard also kills the signed net that must survive
+to be measured — the instrument and the intervention fight for the
+same weights (kin to the floor-censoring class).
