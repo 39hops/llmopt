@@ -801,3 +801,37 @@ to the collaboration itself.
   base64-safe commands, setsid detach kills the hang class,
   success-only markers, self-excluding pgrep). BANKED: build/vet
   the MCP server at a quiet moment, not mid-experiment.
+
+- **"One-shot the DISTRIBUTION a quantum computer would give over
+  all first steps" + "delta gives the model the rest of the chain
+  by reference"** (Artin, 2026-07-26): distilled — (1)
+  DISTRIBUTION ROWS: the branching-entropy-floor repair made
+  concrete: per cur, the training target = mass over EVERY
+  applicable move (engine rule-fire enumerates ~ms, wave oracle
+  verifies, MarkovPrior weights) — soft-label distillation from
+  the engine's move table; the from-birth sibling of wave-contrast;
+  fixes CE-trains-the-arbitrary-pick at the source. Fence: must
+  arrive as GRADIENT (soft labels) — hints-as-text nulled twice.
+  Never run. (2) WIDTH x DEPTH composition: distribution rows
+  teach first-move WIDTH; delta-chained context teaches chain
+  DEPTH by analogy — the two compose into one diet design.
+  Attribution: Artin (both); house (engine-table mechanization).
+
+- **The billiard-Grover resonance (arXiv:1912.02207, Brown,
+  "Playing Pool with |psi>")** (Artin, 2026-07-26): the
+  colliding-blocks-compute-pi phenomenon IS Grover's search —
+  energy ellipse -> circle, each collision = reflection, two
+  reflections = fixed-angle rotation theta = arctan(sqrt(m/M)),
+  halt at ORTHOGONALITY, count = pi/theta (Grover's pi/4 sqrt(N),
+  same circle). House connections: (1) opposition-is-the-primitive
+  gains its geometric reading — both systems TERMINATE at maximal
+  opposition (orthogonality); computing-by-rotation halts at the
+  anti-aligned state. (2) "repeat the pattern every 2pi" is
+  literal in-house: RoPE already rotates continuously; the banked
+  RoPE x G5 rung (quarter-turn weights composing with continuous
+  rotation) is the experiment and moves UP the queue behind the
+  ZX column verdict. (3) Grover-NO fence untouched (no QRAM, no
+  static space) — the paper legitimizes rotation-until-
+  cancellation as a classical-hostable primitive, exactly the G5
+  question. Attribution: Artin (paper + the 2pi instinct); house
+  (Grover identification from the paper, RoPE link).
