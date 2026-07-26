@@ -5362,3 +5362,37 @@ Reviewer-cross-checked before booking; its framing adopted in full.
 7. Reviewer over-prediction RECORDED (its own ask, second on the
    books): the pass-region pre-split imagined attenuation at thin
    width; the effect went the other way.
+
+## Streaming birth FAILS both legs — the epoch is load-bearing (2026-07-26)
+
+Arm S (scratch/streaming_birth_d256.py): gate 53/120 @ 47.85
+{3:17, 4:6, 5:13, 6:7, 7:10}, wall 1,096s. Control: 65 @ 59.91,
+3ep = 1,199s. Pre-reg bars (gate >= 61 AND wall <= 480s): BOTH
+FAIL. Booked on house judgment; reviewer check is post-booking.
+1. **Capability leg: clean FAIL.** One pass at equal rows loses
+   -12 vs seed-1 (-11 vs band mean; ~8 sigma_diff) — the epoch is
+   NOT an artifact of the batch era; revisiting rows is
+   load-bearing at birth. The banked question ("is the epoch an
+   artifact?") gets its answer: NO, at this width/corpus.
+2. **Speed leg: fail is CONFOUNDED, not fundamental.** The arm ran
+   3.8 it/s vs control's ~10.4 because it shuffles-then-batches
+   (mixed-length, padded) where the trainer length-sorts. The
+   honest speed statement is "1 pass = 1/3 the optimizer steps";
+   realized wall depends on batch construction and was not
+   cleanly measured here. A length-sorted streaming arm would
+   settle it, priced ~20 min — queued only if streaming ever
+   matters again given leg 1.
+3. **Fingerprint, OBSERVATION ONLY (house fence): retention is
+   even across levels** (L3 77 / L4 86 / L5 81 / L6 88 / L7 83%)
+   — no L4 clade death, unlike packing/under-width/under-feeding.
+   NOT booked as "schedule starvation is graceful": the debit here
+   is -12 where the clade-killers are -27-class, and even
+   retention may simply be what a MILD debit looks like (the
+   clade may die last, not never). Deciding cell if ever wanted:
+   a HARSHER schedule starvation (e.g. half-pass) — clade death
+   at matched -27 damage would kill the "graceful" reading.
+4. Surprise-gating telemetry: multiplier ~0.86-0.95 by late
+   stream (EMA-tracking, barely gating) — the mechanism had
+   little leverage; no claim either way.
+5. The Z1-degeneracy red-team rider discharges trivially: no
+   degeneracy involved; the arm under-trained, honestly.
