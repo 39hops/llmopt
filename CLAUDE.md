@@ -130,8 +130,12 @@ at natural stopping points, not mid-sprint.
 ## Doc lifecycle + machines (living-docs discipline)
 
 - RESULTS.md is append-only; corrections are AMENDMENT entries
-  naming their target. Once results-index.jsonl exists, every
-  booking adds its index line in the same commit.
+  naming their target. LIVE since 2026-07-26: every booking runs
+  `scripts/gen_results_index.py` (auto-extracts the new entry;
+  preserves curation) and ideally adds threads/verdict/links to
+  its line in docs/results-index.jsonl, same commit. Query with
+  `scripts/results_query.py` (--live / --chain / --thread) BEFORE
+  proposing experiments — faster than grepping 6,600 lines.
 - THEORY.md and RIFF-LEDGER.md are LIVING documents: at every
   session close, check the day's verdicts against existing
   rows/banks — update, amend, or mark-dead whatever a finding
