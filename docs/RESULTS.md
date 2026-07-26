@@ -5040,3 +5040,24 @@ placement-invariance" (validities 49.50 v 47.02, same animal),
 never leaned on as exact. The asymmetry axis remains
 unseparated in every 2-bit arm — born-S4 vs born-M4 stays the
 axis-separating cell.
+
+## THE SIGMA GRID COMPLETES: the birth-device saga ends with every term measured (2026-07-25 late)
+
+All cells cuda-gated, gen-9 diet B. cuda-fp32 seeds {69,66,71}
+(sigma 2.5); MPS-fp32 post-fix seeds {64,66}; MPS s1 (PRE-FIX
+diet) 70 = the outlier, exactly as the pre-registered s1 fence
+anticipated. VERDICTS:
+1. **The MPS-birth bonus is DEAD**: post-fix MPS-born reads at or
+   below cuda-born on the same gate (65 v 68.7 means, inside
+   sqrt(2)-sigma). The full decomposition of the original −14:
+   **packing −13, bf16 ~0, device ~0, s1-luck/diet the rest.**
+   Every term measured; the saga closes.
+2. Arm B's 70 was a pre-fix + fortunate point. Its BOOKED verdicts
+   survive unchanged (redistribution was already sub-noise; rations
+   pass was band-based), but 70 must never be cited as the 19M
+   level — the honest 19M-on-diet-B band is 64-71 across 6 births.
+3. Production note: crown/production lineages are NOT affected
+   (different diet/lineage); gen-10 = 19M stands on mechanism +
+   efficiency as amended.
+4. sigma_MPS(19M, post-fix) ~ 1.4 (n=2, provisional); sigma does
+   not transport (2.5 cuda / ~1.4 MPS / 1.0 d256).
