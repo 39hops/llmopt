@@ -6036,3 +6036,15 @@ two, and both halves book:
    (deletion square closed at birth), Z1S 0-but-trainable (sign
    granularity floor found). The complex bracket's priors are set;
    the marker fired; the retention session is live.
+
+## PRE-REG: Z1S hot-LR arm (2026-07-26, chained behind the retention session)
+
+Artin's LR offer + the discrete-plasticity prior (STE latents
+integrate sub-threshold — hot LR crosses thresholds; "silent
+until it fires"). Arm: Z1S at LR 1e-3 (3.3x standard), 3ep, one
+variable vs Z1S-standard (loss 1.70, gate 0). READINGS: loss
+< ~1.0 or gate > 0 => dose/LR was the binder, the excitation-only
+ceiling rises, and the 6ep cell fires next; loss ~1.7 or diverges
+=> the Z1S floor is real at any recipe in this family — books as
+the excitation regime's capability wall. Chained on
+v5s2_done.marker (success-only).
