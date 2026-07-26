@@ -1,6 +1,6 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-25 afternoon (handoffs: -23-0 five-grammars day, -23-1 exchange+precision night, -24-0 the verdict wave). RESULTS.md holds verdicts, RIFF-LEDGER.md
+Updated 2026-07-25 close (newest handoff: -25-2 the sigma-and-alphabet day; read it first). RESULTS.md holds verdicts, RIFF-LEDGER.md
 holds provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
@@ -15,7 +15,7 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 | **PRECISION PROGRAM (closed at birth, open online)** | birth: BRACKETED bf16..fp64 indistinguishable; online: fp64 masters proven; **Ozaki arc RUN 2026-07-23**: error-free transform proven (CPU + cuda), int8-TC crossover (55ms exact beats fp64 accuracy; 21ms tri beats fp64 wall 2x), ZERO-rounding GPU matmul verified vs big-int, fp64-input GEMM at the dd floor (2^-107), **stay-in-RNS lazy pipeline: exact chains beat inexact fp64 past ~6 layers**; CAPABILITY LEG CLOSED (d2 bit-identity — exact ties fp64-masters; dd arm dropped); remaining = SPEED only (int8-exact wall, speculative-arithmetic router, fused kernel shipped) | RESULTS 2026-07-24 |
 | **RARITY INSTRUMENT (adopted)** | every promotion reads the curve; duo wave = adopted farm sampler (133/200 equal-budget); gates stay single-model | specs/2026-07-22-duo-substrate.md |
 | **AXIOM LOOP (7 clean batches)** | delivered: chain5 (poly5 armed), 100-wall round-1 chains (v5 s2 food); wedge bug fixed+committed (pow-base cancel loop, wild specimen in suite); 83-wall round-2 re-farm RUNNING (150s hard-kill, bounded ~3.5h); next asks = fuzz-the-oracle, magic boards r2, Fourier | docs/superpowers/relay/ |
-| Speed doctrine (all shipped this week) | KV cache 3.4x; bf16 births default; grad-ckpt kills 10GB OOM class; allocator tripwire doctrine (the 43x); gates ~2 min | RESULTS 2026-07-22/23 |
+| Speed doctrine (all shipped this week) | KV cache 3.4x; bf16 births default (--fast NEVER without --nopack — packing hole re-measured −13 at 19M); sigma_diff=sqrt(2)*sigma decision rule + >=5 single-seed bar; grad-ckpt kills 10GB OOM class; allocator tripwire doctrine (the 43x); gates ~2 min | RESULTS 2026-07-22/23 |
 
 ## CLOSED this week (see RESULTS for verdicts)
 
