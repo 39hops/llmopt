@@ -712,3 +712,30 @@ to the collaboration itself.
   yield) as the ZX engine's eval brain — the NNUE homage on
   quantum data. Attribution: Artin (riff + the opposition
   thesis); house (Dale's-law identification, G16 re-pricing).
+
+- **The quantum-LLMUE walk (Artin, 2026-07-26 close)**: four riffs,
+  each with a house translation banked for the next-session spec:
+  (1) QUANTUM LLMUE = composition of three qualified pieces (ZX
+  farm -> vocab-51 ZX birth -> G5xZX factorial cell -> metabolic
+  sessions on the ZX stream w/ flip census) — the program north
+  star, every component measured except the composition. (2)
+  COMPLEX-PLANE DISTANCE: complex weights upgrade the gauge group
+  to U(n); unitary Procrustes rides the banked joint-perm closure
+  (seed-pair kill condition inherited — ancestry verdict fences
+  all groups). (3) **THE STREAMING-OPTIMIZER CELL (best of the
+  batch)**: the homogeneity -12 is a gradient-COVARIANCE wound;
+  Muon/Shampoo-class orthogonalized updates = diversity-per-step
+  bought in the optimizer; streaming v5 at d256 vs v4's 57 — if
+  it closes the -5 epoch gap, "the epoch is load-bearing"
+  retracts to "SGD's update algebra wastes single passes."
+  (4) Quantum-parallel step elimination = the wave + EU
+  delta-scoring/batched-KV (shared-prefix amortization is
+  superposition's mechanizable content; Grover fences intact);
+  the residual quantum idea = INTERFERENCE between candidates
+  (G16's question at inference; far-future line). Plus the
+  "something missing" candidate: TEMPLATE-REFRESH MID-STREAM —
+  recompute corpus statistics from eaten rows, correct the
+  crystal toward them directly, gradients handle only the
+  residual (calculated-model thesis applied DURING training;
+  never run). Attribution: Artin (all four riffs + the
+  something-missing instinct); house (translations).
