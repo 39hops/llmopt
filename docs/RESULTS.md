@@ -6343,3 +6343,20 @@ phase-carrying data; if G5 <= M5 here too, alphabet-follows-
 domain DIES CLEAN and the complex bracket closes to the G16-
 as-sign question. Federation-floor pre-reg rides the NEXT birth
 (math+ZX union), not these.
+
+## PRE-REG AMENDMENT: ZX column moves Mac -> 3080, BS 32 -> 8 (2026-07-26, before any arm completes)
+
+Booked before results exist. (1) DEVICE: Mac/MPS measured <0.15
+it/s on the long-row diet (quadratic attention at 4x math row
+length) = ~33h for the chain; moved to cuda/TF32 (parity-passed
+recipe). License: the sigma-grid decomposed the birth device
+term to ~0. (2) The 10GB card OOM-thrashed at BS=32 x 1536
+tokens (allocator tripwire fired twice — killed per the 43x
+doctrine, never trained through it); fixed with GRAD_CKPT=1 +
+new BIRTH_BS env at 8. CONSEQUENCE, stated now: BS=8 = 4x more
+optimizer steps/epoch than the math column's BS=32 — ZX gate
+numbers are NOT comparable to math-column absolutes; the ONLY
+licensed comparison is within-column (M5-ZX vs G5-ZX vs
+none-ZX, all identical recipe), which is exactly the factorial's
+interaction question. Chain healthy at relaunch: 0 OOM, 5.6
+it/s, ~5.5h + gates, self-marking (zx_cuda_done.marker).
