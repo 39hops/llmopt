@@ -5631,3 +5631,91 @@ below any bar. Family leg not run (pre-reg: only if neuron spread
 warranted it; it did not). Fences: one checkpoint, one quantizer
 (absmean), NEAR=0.05 pre-registered but arbitrary — a different
 window rescales the mean, not the CV story.
+
+## PRE-REG: clade-gated streaming pilot at d256 (2026-07-26, before the run)
+
+Artin's layered-streaming question made one-variable. Streaming-vs-
+epochs is CLOSED (-8 best case); this asks: WITHIN the single-pass
+regime, does clade-ordered self-paced advancement beat the shuffled
+stream? Control = v4 (mixed shuffled + cooldown, 57/120, measured).
+Arm G (scratch/clade_stream_d256.py): same recipe/seed/cooldown/
+surprise/mixed batches, ONE variable = stream order+gating: bands
+(L1,L2) -> (L3) -> (L4,L5) -> (L6,L7) [levels proxy the phylogeny
+clades — noted, not identical]; advancement when a VERIFIED wave
+probe on the current band (8 states x 8 samples, 1 ply,
+verify_wave — gate-not-the-loss honored) reads >= 0.55 valid
+fraction, or band rows exhaust; after advance, 30% of each batch
+is rationed from previous bands (maintenance doctrine). The gated
+arm may consume FEWER rows (skipping mastered food) — that
+self-paced allocation IS the intervention; total steps capped at
+v4's 4,140.
+READINGS: gate > 60 => clade-gating PAYS (+3 ~ 2.1 sigma_diff),
+the layered-streaming thesis gets its first leg; 54-60 =>
+directional/sub-noise, ordering neither helps nor hurts at one
+pass; < 54 => ordering HURTS (interference/forgetting beats
+structure — also a result; the rations knob becomes the suspect).
+FREE RIDER: band-advance step indices + per-band probe curves =
+the retention/mastery telemetry (task-2's mini form) logged for
+free. Fences: d256/MPS lineage; n=1; probe threshold 0.55 and
+ration 30% are pre-registered but untuned.
+
+## Clade-gated streaming v1: 47/120 — the specced policy LOSES, and tells us how (2026-07-26)
+
+Arm G: 47/120 @ 44.08 {3:16,4:2,5:11,6:8,7:10}, wall 543s, steps
+2,552/4,140. Pre-reg reading "< 54: ordering hurts" FIRES, with
+the mechanism decomposed by the arm's own telemetry:
+1. **Self-paced skipping under-trains**: advancement skipped ~47k
+   mastered L1/L2 rows + ~22k L4/L5, the last band exhausted at
+   step 2,552, and the policy STOPPED — 38% of the step budget
+   unspent. The specced form conflates ordering with dose.
+2. **The forgetting fingerprint, measured live**: in-run mastery
+   probes read 0.64 (L1/2) and 0.70 (L4/5) at advance, but the
+   final gate is weakest on the EARLIEST bands (L3 16 v control
+   22; L4 2) while the last-trained bands held (L6 8 = the seed
+   band level; L7 10 = v4). 30% rations lost to recency at one
+   pass. First direct measurement of in-run mastery decaying to
+   gate-time — the retention question is now instrumented.
+3. FREE TELEMETRY (task-2 mini-form, first data): band mastery
+   curves — L1/2 0.03->0.64 in 600 steps; L3 slower (0.125->0.516,
+   exhausted before threshold); L4/5 0.156->0.703 FASTER than L3
+   (transfer from below, visible live in a probe curve).
+4. v2 PRE-REG (fires now, one change): BUDGET RECYCLING — when the
+   last band exhausts, probe ALL bands and spend remaining steps
+   on the weakest band's rows (revisits allowed = rations aimed by
+   measured weakness). Same everything else. Readings: > 57 =>
+   self-pacing pays once budget is spent (v1's loss was dose);
+   47-57 => partial; <= 47 => ordering itself is the harm at one
+   pass, clade-gating closes for births.
+
+## Clade v2 (budget recycling): 60/120 — self-pacing PAYS at one pass; the streaming ladder closes (2026-07-26)
+
+Arm G2: 60/120 @ 55.83 {3:20,4:3,5:16,6:8,7:13}, full 4,140 steps,
+wall 1,090s (probes included). VERDICTS:
+1. **Pre-reg "> 57" FIRES: +3 over v4 (~2.1 sigma_diff at d256's
+   measured sigma) — clade-ordered + probe-gated + budget-recycled
+   self-pacing beats the shuffled stream at matched steps.** The
+   v1 loss was DOSE (stopping early), not ordering: same ordering
+   + spent budget = the best single-pass cell measured.
+2. THE COMPLETE STREAMING LADDER (all d256/seed-1/single-pass):
+   shuffled-hot 53 / sorted 45,45 / shuffled+cool 57 / clade-v1 47
+   / **clade-v2 60** — vs 3ep control 65. The epoch claim SURVIVES
+   (-5 at the best schedule) but the gap has halved from v1's -12:
+   schedule + order + aimed revisits recover ~60% of what epochs
+   buy. Remaining -5 = the revisit mass epochs provide that one
+   pass + rations cannot.
+3. **Aimed rations WORK**: recycling directed leftover budget to
+   the weakest probe bands (L6/7 took it); final gate holds L5 16
+   (= seed-band level) and L7 13 (one above the 3-epoch band,
+   sub-noise); the v1 forgetting wound (L3 16) repaired to 20.
+4. **L4 = 3 in EVERY streaming schedule** (v1 2, v2 3, v4 5, band
+   {6,7} at 3ep) — the isolated ansatz clade starves at one pass
+   regardless of ordering: phylogeny-consistent (no descent path =
+   revisits are its only channel). The clade that needs epochs
+   most is the one the tree says has no parents.
+5. Retention instrumented end to end (task-2 mini-form delivered):
+   mastery curves, decay-to-gate, and probe-aimed repair all
+   measured live in one run. The metabolic-loop version (real
+   session, per-kind columns) remains the full instrument.
+Fences: n=1 per cell; d256/MPS lineage; probe threshold/ration
+untuned; wall 2x v4's (probe cost ~40s/recycle — telemetry, not
+optimized).
