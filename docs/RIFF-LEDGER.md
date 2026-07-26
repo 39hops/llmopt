@@ -689,3 +689,26 @@ to the collaboration itself.
   graph serialization must avoid canonical sorts (gauge, and the
   native-transformer sequel risk) and ZX atom set vs vocab-41
   (the ODE void-by-vocab lesson).
+
+- **"Can we optimize excitation / get around the no-negatives
+  collapse? Isn't opposition the entire point?"** (Artin,
+  2026-07-26, watching born-Z1's loss-27 birth): distilled — (1)
+  OPPOSITION IS THE COMPUTATIONAL PRIMITIVE (his phrasing,
+  adopted): the zero-law's deepest form; Z1's confidently-wrong
+  divergence (27 >> ln(40)=3.7) is the measured demonstration.
+  (2) Three opposition channels that don't need per-weight sign:
+  per-CHANNEL sign = DALE'S LAW made literal (Z1S, in flight —
+  biology's own answer: neurons are wholly excitatory or
+  inhibitory); PHASE = opposition via destructive interference —
+  re-prices G16 from "interference substitutes for ZERO" (cheap
+  post-S4) to "interference substitutes for SIGN" (the sharp
+  question, since Z1 proves sign is the load-bearing half);
+  architectural subtraction (LN mean-sub/softmax — the reviewer's
+  bet-49 mechanism, priced by Z1's gate). (3) THE QUANTUM NNUE
+  pair, banked: complex-weight NNUE vs real at matched real-DOF
+  on the 3,689 magic labels — the first alphabet cell in the
+  OLIGARCHY phase (kurt 4.78; every alphabet law so far is a
+  democracy-phase law); and ZX-NNUE (graph features -> descent
+  yield) as the ZX engine's eval brain — the NNUE homage on
+  quantum data. Attribution: Artin (riff + the opposition
+  thesis); house (Dale's-law identification, G16 re-pricing).
