@@ -6713,3 +6713,35 @@ low-depth skill); (3) a nonzero valid-but-unsolved band (partial
 skips) — the raw material the backward peeler (R1) exists to
 finish. Read books conjecture yield per level = the pincer's
 ply-0 economics.
+
+## PINCER R0: conjecture yield 55/120 — the oneshot gate WAS the conjecture leg, and L4 is the conjecture's hole (2026-07-26 night)
+
+Ran as pre-registered (scratch/pincer_r0.py, k=8, zero births).
+YIELD: {L3:17, L4:4, L5:16, L6:8, L7:10} = **55/120**; 18
+valid-but-unsolved candidates (partial skips) across the battery.
+READS:
+1. **Prediction (1) CONFIRMED** (45-60 band): ply-0 conjecture
+   alone reaches 55 — the pincer's goal-supply leg is real and
+   costs ms per problem.
+2. **The oneshot chain gate reduces to the conjecture leg**:
+   per-problem overlap vs pp_fmt_oneshot_1p — both 54, r0-only 1,
+   gate-only 0. Every problem the oneshot model solved in the
+   12-ply chain gate it solves at ply 0 with k=8 sampling; its
+   per-level profile is IDENTICAL (L5 15->16 is the +1). The
+   mean-plies-0.52 signature graduates to strict: chaining
+   contributes ZERO problems to this crystal. Sampling breadth
+   (k=8 vs greedy) buys +1 — conjecture diversity is nearly
+   exhausted at greedy, consistent with the subset law from the
+   pp sweep.
+3. **Prediction (2) WRONG in an interesting way**: no monotone
+   depth decay — L4 CRATERS (4/24) while L5 (16) ~ L3 (17) and
+   L6-7 hold 8-10. The L4 clade signature (a_bridge's L4
+   fingerprint, packed-d256's L4 clade) reappears in the
+   conjecture skill: L4's answer forms are the hardest to guess
+   at one hop, harder than L7's. The backward peeler's
+   highest-value territory is L4 + the 18 near-misses, NOT the
+   deep levels.
+4. Prediction (3) confirmed: 18 valid-but-unsolved = the R1
+   peeling worklist exists.
+Sidecar logs/pp_r0_conjecture.jsonl. NEXT (per spec): R1a
+backward crystal birth (d256, reversed-pairs-only diet).
