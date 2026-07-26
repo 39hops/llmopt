@@ -162,3 +162,44 @@ peeler's implementation varies. R1 becomes R1a/R1b paired.
 NNUE-symmetry note (measured 2026-07-26): pointer nets are
 oligarchy-phase, sign-skewed toward the readout — the backward
 NNUE will NOT look like the crystals, and shouldn't.
+
+## 7. AMENDMENT 2 (Artin, same day): B-b refined to
+## SCORE-OVER-ENUMERATED-MOVES + the alphabet-follows-output-type bet
+
+- **B-b final form**: the ENGINE enumerates the complete legal
+  inverse-move set for state t (cheap, complete by construction);
+  the model only CALIBRATES — state + legal set -> distribution,
+  one forward pass, zero generation. The pointer form's coverage
+  question VANISHES (completeness is the engine's job; ranking is
+  the model's). This is the honest classical form of "the quantum
+  computer returns the distribution": full legal superposition
+  enumerated exactly, amplitudes learned.
+- **Training-objective bracket** (different ways to train, per
+  Artin): (i) imitation soft-labels (mass on the replayed true
+  move, smoothed over legal set); (ii) VALUE labels — P(move
+  leads to root within budget), computable by engine replay
+  (regret-probe lineage, AUC .914 says fate is learnable);
+  (iii) contrastive/ranking loss over the legal set (wave-
+  contrast lineage: verified-vs-rejected siblings free per
+  state). Race (i) vs (ii) at matched labels; (iii) rides if
+  either plateaus.
+- **Inference**: NO autoregressive decode anywhere in the
+  backward half — one forward pass per state returns the whole
+  distribution; the pincer's peel keeps top-k mass; the meet
+  uses the distribution directly (highest-mass path toward the
+  root preferred, exactly Artin's phrasing). Domains: math/
+  physics/q-circuits only (charter re-affirmed in the riff).
+- **PRE-REGISTERED BET (Artin, on record): the ternary reverse
+  model FACEPLANTS — "too deterministic."** Support already
+  banked by his own 07-22 riff (ternary = search substrate,
+  precision = accuracy substrate) + the NNUE oligarchy evidence
+  (chess NNUEs need int8's 256 levels; our NNUE heavy-tailed,
+  sign-skewed). House co-signs directionally with the sharper
+  form: **the alphabet follows the task's OUTPUT TYPE — decisions
+  tolerate compression, calibrated distributions need
+  resolution.** Cell R6: backward scorer at {ternary, M5, fp32}
+  matched arch/labels, scored on ranking quality (Spearman vs
+  value labels + peel success), NOT on argmax accuracy (argmax
+  would mask exactly the calibration ternary is predicted to
+  lose). If ternary ties anyway, the output-type law dies and
+  the lens law extends to distributions — either verdict banks.
