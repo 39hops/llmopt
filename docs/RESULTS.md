@@ -6508,3 +6508,24 @@ EARLY READS (final card after E/E0):
    CE is pair-formatted, and the oneshot model was never taught
    the pair frame): the proxy is format-BOUND — valid only
    within matched-format comparisons. Instrument fence booked.
+
+## PRE-REG: reverse-pairs cell (dual-direction crystal) (2026-07-26, before the run)
+
+The reverse-LLMUE bank's cheapest cell, slotted behind the 3E
+format cells (Artin GO). Arm: d256/1P (v4 recipe), 50/50 forward
+pairs + REVERSED pairs (later state as Current, predecessor as
+Step — vocab-40 native), matched 132k total dose, seed 1.
+Comparator pairs@1P 57. READINGS (sigma 1.0, bar 3):
+>= 60 => backward mapping strengthens the forward crystal — the
+temporal-pincer program gains its first measured leg and the
+reverse-distribution teacher gets priority; 54-60 => neutral
+(direction is free — still pincer-relevant: a single crystal can
+host both directions at no forward cost); <= 53 => reverse rows
+teach WANDERING (reverse steps are equivalence-valid, so
+pollution shows as Integral-count increase / chain-carry
+counterweight finally observed) — books as the direction tax.
+Fences: reverse rows halve forward dose (76k fwd vs 132k) — a
+drop must beat the dechain-style dose read before booking as
+direction-caused; contamination fence n/a at this cell (no new
+corpus; the bidirectional-cheat fence applies to reverse-TRAINED
+MINERS, not this diet remix).
