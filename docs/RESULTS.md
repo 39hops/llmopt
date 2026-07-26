@@ -6616,3 +6616,35 @@ contaminates the forward one) is UNTOUCHED by this verdict and
 remains the banked path; the wandering signature lands in the pp
 sidecar sweep for direct confirmation. The reverse-distribution
 TEACHER idea (engine-side, never in-diet) also unaffected.
+
+## PER-PROBLEM SWEEP: formats are SUBSETS, not alternatives — and the revpairs wandering mechanism is NOT confirmed (2026-07-26)
+
+Nine cells re-gated with pp sidecars (same seeds; scores
+reproduce). READS:
+1. **NO format complementarity**: against pairs@3E (65), every
+   other cell's solve set is a near-strict SUBSET — uniques of
+   0-2 problems per format (traces 0, revpairs 1, oneshot 2);
+   union of ALL nine cells ~67 vs best single 65. Format
+   variation buys back almost NOTHING in union — completely
+   unlike the substrate axis (duo-wave fp32+ternary union was
+   +5 at equal budget). BOOKS: **complementarity lives in the
+   SUBSTRATE dimension, not the format dimension** — weaker
+   formats solve fewer of the SAME problems, not different ones.
+   The oneshot-54/skip-54 "tie" is a real near-identity (jacc
+   .83), not hidden diversity.
+2. **REVPAIRS MECHANISM AMENDED (my claim, corrected by my own
+   instrument)**: wander rates are FLAT across formats (17.5-
+   21.7%; revpairs 21.7 vs pairs 20.8) — the "reverse rows teach
+   wandering" mechanism is NOT supported by the Integral-count
+   signature. The -18 direction tax STANDS (the score is the
+   score) but its mechanism is OPEN — candidates: step-precision
+   damage (reverse rows halve forward dose AND corrupt the
+   emission head's coefficient statistics), not chain-navigation
+   damage. Instrument note booked: the wander metric counts
+   legitimate i_sum splits (Integral count rises on a valid
+   split), hence the ~20% baseline — a cleaner metric would
+   whitelist split-shaped rises.
+3. oneshot mean plies 0.52 (all others 0.78-0.99) — confirms the
+   one-hop mechanism directly.
+Sidecars: logs/pp_*.jsonl (9 cells, full chains) — the standing
+per-problem instrument's first full sweep.
