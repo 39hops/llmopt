@@ -8,10 +8,11 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Status | Pointer |
 |---|---|---|
-| **THE COMPLEX/ZX PROGRAM** | ZX continent QUALIFIED (row factory 5 moves, 2 batches/~20k rows adjudicated, 9th clean batch); complex trainer BUILT+SMOKED; bracket narrowed to phase-carrying cells (euler reads + G16-as-interference-for-SIGN); headline = G5xM5 x math/ZX factorial; north star = quantum LLMUE | specs/2026-07-26-complex-zx-program.md |
-| **THE OPPOSITION LADDER (closers, landed)** | S4 58 (zero law BOUNDED out of born-2-bit — binary died of resolution); Z1 0/120 (deletion square closes at birth 54 v 0); Z1S 0 but TRAINS (Dale's law = stability not capability; sign not channel-compressible); Z1S hot-LR armed | RESULTS 2026-07-26 |
-| **d256 PILOT SUBSTRATE (adopted)** | gate CLEARED -27 v -3; per-level sigma measured; streaming CLOSED via 2x2 (epoch -8 best-case; cooldown +4; homogeneity -12 = the interaction law; clade-v2 60 self-pacing pays); packing = 3rd starvation mode, step-count mechanism REFUTED by matched-steps accident | RESULTS 2026-07-26 |
-| **RETENTION SESSION (v5 s2)** | LIVE on 3080 (120 min, dense per-level columns, PRE 6/100) -> Z1S-hot chained behind | books next session (Tier 0) |
+| **THE COMPLEX/ZX PROGRAM — ZX COLUMN IN FLIGHT** | math column COMPLETE (fp32 64 / cplx_none 63 / G5-latent 66 / G5-dep 62 / M5 62 — rotation FREE not profitable on math); zx_farm1 ADJUDICATED PASS (99,022 rows, 10th clean batch); vocab-47 ZX births RUNNING on Mac (M5-ZX -> G5-ZX -> none-ZX, gates chained via new gate_zx instrument) — the alphabet-follows-domain DECIDER | RESULTS 2026-07-26 pre-reg; specs/2026-07-26-complex-zx-program.md |
+| **THE OPPOSITION LADDER (CLOSED)** | S4 58 (binary died of resolution); Z1 0/120; Z1S 0 at ANY LR (hot-LR 1e-3 moved loss 1.70->1.10, gate still 0) — excitation-only = CAPABILITY WALL; per-weight sign is where opposition lives; 6ep cell does NOT fire | RESULTS 2026-07-27 entries |
+| **d256 PILOT SUBSTRATE (adopted)** | streaming decomposition FINAL: cooldown +4 / self-pacing +3 / template-refresh +2 (59, directional) / Muon NEGATIVE (10/34 v 45, loss-gate dissociation x3 of the arc) — epoch keeps -8; next candidate for the residual = format x schedule (Artin's riff, banked) | RESULTS 2026-07-26/27 |
+| **RETENTION (v5 s2) BOOKED** | 6->10/100 resolution, ZERO decay in any column for 120 min — metabolic feeding purely additive at v5 dose; no tau to fit (hotter session needed); surprise-gating still untested (not instrumented in v5) | RESULTS 2026-07-27 |
+| **DISTANCE: CLOSED PERMANENTLY** | joint-perm (correct gauge subgroup) recovers 6% — 8th never-score-by-distance leg; function space is the only distance; U(n) variant awaits complex births (different group) | RESULTS 2026-07-26 |
 
 | Thread | Status | Pointer |
 |---|---|---|

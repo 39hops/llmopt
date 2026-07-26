@@ -1221,6 +1221,13 @@ Rarity-stratified gate (schedule-law queue item 2): capability as a curve over e
 - `skeleton(e: str) -> str`
 - `binof(n: int) -> str`
 
+### scratch/gate_zx.py
+ZX gate (pre-reg 2026-07-26, the factorial's ZX column).
+
+- `n_spiders(s)`
+- `greedy(cur, max_new=700)`
+- `invariants(s)`
+
 ### scratch/gauge_distance_d256.py
 Gauge-aligned model distance on the d256 zoo (pre-reg 2026-07-26).
 
@@ -1258,6 +1265,13 @@ Holdout v2: exclude-guarded (the doctrine I broke in v1 — 281 collisions caugh
 ### scratch/int3_rider.py
 Rung-1 rider (iv): int3 PTQ gate delta, prefix vs infix twin (spec 2026-07-25-native-transformer — prediction: prefix MORE robust under quantization via delimiter-outlier removal).
 
+
+### scratch/jointperm_distance.py
+Joint-permutation distance closure cell (banked 2026-07-26).
+
+- `load(path)`
+- `joint_dist(A, B)` — Per-layer joint perm over [gate row | up row | down col].
+- `raw_dist(A, B)`
 
 ### scratch/kv_equiv.py
 KV-cache sampler + equivalence oracle (house rule: token- identical to eager full-recompute, or it doesn't ship).
@@ -1460,6 +1474,8 @@ Series rung 1 probe: greedy next-partial-sum emission on the 142 held-out steps 
 ### scratch/streaming_birth_d256.py
 Streaming-birth A/B, arm S (RIFF-LEDGER 2026-07-24 "Streaming birth").
 
+- `template_refresh(model)`
+- `ns5(G, steps=5)`
 
 ### scratch/synonym_test.py
 Synonym gauge test: TWO label tokens per family on the frozen 19M readout (vocab 40 -> 55: <name> + 7x2 synonyms). Train rows pick either synonym 50/50. Gauge-law prediction: both fire near-equal off the same concept. Reports family-accuracy + per-synonym share.
@@ -1499,6 +1515,13 @@ Valuation-routed metabolism v0: committee-gated per-neuron plasticity, one-varia
 - `committee_masks()`
 - `load_rows(n=8000)`
 - `run_arm(name, masks, rows)`
+
+### scratch/weight_fft_euler.py
+Weight-FFT euler read (pre-reg 2026-07-26, RESULTS.md).
+
+- `ks_uniform(theta)`
+- `phase_stat(W)`
+- `fft_stat(W)`
 
 ## llmopt/
 

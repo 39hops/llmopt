@@ -81,6 +81,8 @@ def main() -> None:
                     help="override birth LR (hot-LR discrete arms)")
     ap.add_argument("--tag", default="",
                     help="checkpoint suffix for variant arms")
+    ap.add_argument("--diet", default=None,
+                    help="explicit diet jsonl (replaces gen4 corpus)")
     a = ap.parse_args()
     _ALPHA = a.alpha
     out = f"checkpoints/tourn_{a.alpha}{a.tag}.pt"
@@ -92,9 +94,11 @@ def main() -> None:
     import train_mathnative as T
     latent = out.replace(".pt", "_latent.pt")
     kw = {"lr": a.lr} if a.lr else {}
+    if a.diet:
+        kw["diet"] = a.diet
     T.main(v2=False, d=a.d, layers=a.layers, ffn=a.ffn, out=latent,
-           heads=a.heads, v21=False, fast=False, v22=True,
-           gen4=True, epochs=a.epochs, **kw)
+           heads=a.heads, v21=False, fast=False,
+           v22=not a.diet, gen4=not a.diet, epochs=a.epochs, **kw)
     nn.Linear = real_linear
     sd = torch.load(latent, map_location="cpu")
     dep = {}

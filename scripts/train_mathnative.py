@@ -91,10 +91,11 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     if out:
         CKPT = Path(out)
     extra = os.environ.get("VOCAB_EXTRA", "")
-    tok = MathTokenizer(extra=(extra.split(",") if "," in extra
-                           else list(extra)) if extra else None)
+    atoms = ((extra.split(",") if "," in extra else list(extra))
+             if extra else None)
+    tok = MathTokenizer(extra=atoms)
     if extra:
-        print(f"[vocab] extra atoms {list(extra)} -> {len(tok.vocab)}",
+        print(f"[vocab] extra atoms {atoms} -> {len(tok.vocab)}",
               flush=True)
     rows = load_rows(v2 or v21 or v22, v21 or v22, v22, gen4, l8, gen7,
                      diet)
@@ -117,7 +118,7 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
         except ValueError:
             skipped_lang += 1   # out-of-language row (Subs/erf/u_):
             continue            # skip whole row, never mangle
-        if len(ids) <= 512:
+        if len(ids) <= int(os.environ.get("SEQ_CAP", "512")):
             enc.append(ids)
     if skipped_lang:
         print(f"skipped {skipped_lang} out-of-language rows "

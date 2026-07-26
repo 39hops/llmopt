@@ -25,15 +25,19 @@ ap.add_argument("--d", type=int, default=384)
 ap.add_argument("--layers", type=int, default=8)
 ap.add_argument("--ffn", type=int, default=1536)
 ap.add_argument("--heads", type=int, default=6)
+ap.add_argument("--diet", default=None,
+                help="explicit diet jsonl (replaces gen4 corpus)")
+ap.add_argument("--tag", default="")
 a = ap.parse_args()
 
 alpha = os.environ.get("CPLX_ALPHA", "none")
 C.set_alpha(alpha)
 T.build_model = C.build_complex_model
-out = f"checkpoints/cplx_{alpha}.pt"
+out = f"checkpoints/cplx_{alpha}{a.tag}.pt"
+kw = {"diet": a.diet} if a.diet else {}
 T.main(v2=False, d=a.d, layers=a.layers, ffn=a.ffn, out=out,
-       heads=a.heads, v21=False, fast=False, v22=True, gen4=True,
-       epochs=a.epochs)
+       heads=a.heads, v21=False, fast=False, v22=not a.diet,
+       gen4=not a.diet, epochs=a.epochs, **kw)
 
 if alpha != "none":
     sd = torch.load(out, map_location="cpu")

@@ -6296,3 +6296,50 @@ none alone reaches the bar; the format x schedule cell (Artin's
 riff) is next in line as the remaining unexplained mass.
 L4 note: 6/24 — ON the seed band's edge; the isolated-clade
 starvation signature does not worsen under norm correction.
+
+## ZX FARM BATCH 1 ADJUDICATED: PASS — 99,022 rows qualified for the vocab-51 birth (2026-07-26 morning)
+
+zx_farm1.jsonl (axiom, 9,300 problems, ration caps): fuse 49,511
+(50.0%) / color 35,505 / lcomp 6,009 / pivot 5,592 / id 2,405 —
+kind mix reproduced the sample batches (ration seed behaved, no
+drift at 10x scale). ADJUDICATION: structural leg 87,421/87,421
+replayable rows TRUE, zero false (11,601 SKIP = lcomp/pivot
+above independent-replay capability — the standing adjudicator-v3
+gap, now 11.7% of the diet and rising in priority); semantic leg
+5,351 rows (400 small + all rare-kind <=14 spiders) 5,346 TRUE /
+0 FALSE / 5 treewidth walls (taxed unverified per doctrine).
+Tenth consecutive clean batch; the factory holds at farm scale.
+Axiom's dial note banked: rare-kind absolute mass rises via
+seeds + fuse-cap tightening at the FARM ration, never the
+generator. NEXT: vocab-51 ZX birth on this diet (federation-
+floor pre-reg: count vs class), then the factorial's ZX column
+(G5 vs M5 on phase-carrying data — the program's decider).
+
+## PRE-REG: the factorial's ZX column — first ZX births (2026-07-26, before launch)
+
+The program's decider (spec 2026-07-26-complex-zx-program leg C).
+Diet: zx_farm1_train.jsonl (97,036 adjudicated rows; 1,986 rows /
+186 whole problems held out by seed%50==0, zero overlap).
+Vocab-47 (7 atoms: in(/out(/Z(/X(/P(/H(/':' — order frozen,
+probes must match), SEQ_CAP=1536 (26% of rows exceed 512; big
+class stays in per no-size-cap), 19M d384/L8/ffn1536/h6, seed 1,
+3ep, Mac/MPS serial — same recipe as the math column.
+ARMS (in order): (1) M5-ZX (scalar 2.32b magnitude twin);
+(2) G5-ZX (complex-FFN + G5 STE rotation, 2.32b); (3) cplx_none-
+ZX (unquantized complex control, prices the tax on ZX).
+GATE (new instrument, built behind the births): 120 held-out cur
+states stratified by size class; greedy generation; a solve =
+parses in-grammar AND is verified as a sound rewrite of cur
+(structural replay where replayable, pyzx compare_tensors <=14
+spiders, else honest WALL — walls excluded from the denominator,
+count reported). Non-identity enforced.
+PREDICTIONS (pre-registered): the headline is the INTERACTION —
+alphabet-follows-domain says G5-dep > M5 on ZX where they tied
+62=62 on math; bar = the >=5 single-seed rule at 19M (unknown
+sigma on a NEW grammar+instrument — treat 3-4 as directional
+only, and say so). House prior honestly split: the euler-read
+null + phase-free-math tie leave rotation's value entirely to
+phase-carrying data; if G5 <= M5 here too, alphabet-follows-
+domain DIES CLEAN and the complex bracket closes to the G16-
+as-sign question. Federation-floor pre-reg rides the NEXT birth
+(math+ZX union), not these.
