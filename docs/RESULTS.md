@@ -5875,3 +5875,53 @@ arms showed it never engages at birth — the metabolic loop is its
 claimed home; if the multiplier still tracks EMA ~1.0 here, the
 mechanism books UNTESTED-NOWHERE and gets redesigned or dropped).
 Wired: WSL watcher fires on closers_done.marker (success-only).
+
+## ZX batch 1 ADJUDICATED: PASS — the row factory qualifies (2026-07-26)
+
+axiom f4e46c6, 10,107 rows. STRUCTURAL: independent llmopt-side
+fuse replay (own implementation, both site orientations, same
+multigraph refusals) — **9,899/9,899 exact, zero mismatches**;
+208 rare-kind rows (id 140 / lcomp 62 / pivot 6) skip structural
+v1 by design. SEMANTIC (pyzx compare_tensors, fork-walled 10s):
+**384/384 PASS, 0 fail**, 15 WALL (3.8% treewidth tax — the
+chapter's densification scar; taxed as UNVERIFIED, never valid,
+all in the large-diagram tail). Verdict: batch 1 qualifies; the
+serialization contract holds end to end at first contact (eighth
+consecutive clean axiom batch). Riders: fuse-skew flagged by the
+factory itself (9,899/140/62/6) — color-change move-five GO'd in
+the relay addendum, batch 2 = balanced kinds (vm-asm 1a scar);
+structural replay of id/lcomp/pivot = adjudicator v2, before any
+farm-scale batch.
+
+## BORN-S4: 58/120 @ 57.17 — binary's crater was mostly RESOLUTION; the zero law takes its bounded revision (2026-07-26)
+
+The axis-separating cell, landed (19M/gen-4/3ep/TF32, global-
+absmean recipe matched to born-M4). {3:20, 4:4, 5:16, 6:7, 7:11}.
+The 2-bit born ladder: B 54 @ 36.73 / **S4 58 @ 57.17** / M4 61 @
+57.75. Pre-reg "between" reading fires, proportions as measured:
+1. **Adding a second magnitude WITHOUT any zero recovers +4 of
+   binary's 7-solve deficit and ~ALL of its 18-point validity
+   crater** (57.17 ~ M4's 57.75). Binary died mostly of
+   RESOLUTION (one loudness), not of silence.
+2. **Zero's unique born contribution at 2 bits: <= 3 solves,
+   sub-noise** (M4 - S4 = 3 < the 5-solve single-seed bar;
+   sign-consistent with zero paying, never bookable as a number).
+3. AMENDMENT to the two-of-three law's ordering: "zero-absence
+   fatal born" was measured on B alone — CONFOUNDED with
+   resolution, now separated: at born-2-bit, zero-absence is
+   TOLERABLE (58-class), resolution-absence is the fatal axis.
+   The zero-is-load-bearing law SURVIVES in its measured regimes
+   — 1-bit (sign-only b1 arithmetic death; z1 language death) and
+   PTQ-fixed-codebooks (the conditional zero law's +7-10) — and
+   is BOUNDED out of the born-2-bit regime.
+4. G16's prior updates: with zero cheap at born-2-bit+, the
+   "interference substitutes for zero" cell loses urgency;
+   the complex bracket's zero-related predictions inherit this
+   ladder as their baseline.
+Fences: n=1; 3ep (the bracket dose, NOT the 6ep discrete-parity
+dose — S4 at 6ep could close the M4 gap or widen it; queued only
+if a decision ever needs it); cuda lineage.
+LIVE NOTE, same chain: born-Z1's ep0 loss is EXPLODING (27.7 v
+~0.5 normal) — excitation-only birth diverging at standard
+recipe, consistent with the Z1-arc collapse-prone mechanism;
+gates when the chain gates it, booked with mechanism then.
