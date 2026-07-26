@@ -148,6 +148,21 @@ at natural stopping points, not mid-sprint.
 - A long test is not justified by being long: before queueing,
   diagnose the wall and try to move it (BS/grad-ckpt/allocator/
   batching class fixes first).
+- Session hygiene (learned 2026-07-26, the week-long-chat lesson):
+  short sessions, compact early, hand off through the repo — a
+  session's working state must never be the single point of
+  failure. Post-compact resume = resume-protocol memory + BOARD +
+  newest handoff/spec + RESULTS tail.
+- Task holds are explicit: queued work marked [HOLD] runs only on
+  Artin's GO, never on inference from context.
+- Instrument fences travel with instruments: CE-400 is
+  format-BOUND (valid within matched-format comparisons only);
+  sigma never transports across devices/widths; probe scripts pin
+  their VOCAB_EXTRA atom order.
+- WSL side is a THIN EXECUTION TARGET, not a second lab: no
+  WSL-side scratch authorship; scripts live in git, ship via
+  push/pull or wsl.sh; logs land in logs/; artifacts pull back to
+  the Mac. (Full structure cleanup = the post-index project.)
 
 ## Doctrine (distilled; full text in RESULTS/handoffs)
 

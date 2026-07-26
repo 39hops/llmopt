@@ -6470,3 +6470,41 @@ rides every arm (does the CE-gate 4/4 tracking survive format
 variation?). Attribution: Artin (format x schedule + the
 delta-chaining riff, incl. the similarity-as-superposition
 frame); house (E0 control, trace stitching, fences).
+
+## FORMAT LADDER, partial card (4 of 6 cells; E/E0 pending) (2026-07-26 evening)
+
+All 1P (v4 recipe), d256, seed 1; comparators pairs@1P 57 /
+pairs@3E 65. Token mass + steps reported per the fence:
+| format | seqs | tokens | gate | validity | CE-400 |
+|---|---|---|---|---|---|
+| pairs (comp) | 132k | ~8M | 57 | 54.24 | 0.331 |
+| traces | 58k | 5.6M | 37 | 41.53 | 0.518 |
+| skip | 132k | 8.0M | 54 | 48.93 | 0.341 |
+| dechain | 87k | 5.4M | 49 | 47.62 | 0.367 |
+| oneshot | 58k | 3.4M | 54 | 33.50 | 0.589 |
+EARLY READS (final card after E/E0):
+1. **PRIMARY FAILS INVERTED: traces@1P = 37 (-20)** — composition-
+   in-context does NOT substitute for revisits; it COSTS, hugely.
+   Dose fence rides (1,810 steps vs pairs' 4,140) — but oneshot
+   at the SAME 1,810 steps scored 54, so step-dose alone cannot
+   explain traces' crater: the multi-step-target format itself is
+   hostile at one pass (candidate mechanism: most of each trace's
+   loss mass is mid-chain continuation prediction, a task the
+   per-ply gate never asks; the format trains a different job).
+2. **THE ONESHOT SURPRISE: 54/120 — the pre-registered <= 40
+   prediction FAILS.** Root->answer-only, from birth, one pass,
+   3.4M tokens: 54 solves incl. L6 8 / L7 10 (deep levels).
+   Mechanism note: the engine one-plies much of gen-4
+   (i_linear_basis era), so answer-emission IS the dominant move
+   of this corpus; the step-tokens 5/30-v-0/30 precedent was a
+   BASE-MODEL PROMPTING result, not a from-birth law. Validity
+   33.5% (worst) = no mid-path correction; the chain format buys
+   VALIDITY (error recovery), not raw solves, at this dose.
+3. skip 54 (-3, directional edge) at matched dose: hop
+   compression neither pays nor craters. dechain 49 (-8,
+   adjacency-OR-dose per pre-reg, 66% dose).
+4. CE-400 tracks the gate across formats so far (0.34 skip / 0.37
+   dechain / 0.52 traces) EXCEPT oneshot (CE 0.59 with gate 54 —
+   CE is pair-formatted, and the oneshot model was never taught
+   the pair frame): the proxy is format-BOUND — valid only
+   within matched-format comparisons. Instrument fence booked.

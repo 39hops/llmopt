@@ -855,3 +855,29 @@ to the collaboration itself.
   channel (stuck-state distribution rows vs stuck-state chains vs
   both, paired). Attribution: Artin (confluence instinct); house
   (the transport identification).
+
+- **The native backend riff** (Artin, 2026-07-26: "writing our own
+  backend for certain gradients/optimizers/precision in C++ — or
+  just building on top of axiom; bank this"): recorded with the
+  house lean — the NNUE-homecoming verdict already split it
+  (native inference/verification YES; native training autograd NO
+  — the bf16-cliff class is what hand-rolled autograd trips on
+  invisibly). The NEW leg worth building when its time comes:
+  **axiom as the EXACTNESS backend** — the Ozaki int8-exact
+  pipeline + stay-in-RNS machinery as an axiom module the trainer
+  calls for the online precise channel (C++ where exactness
+  lives, torch where autograd lives). Attribution: Artin (riff);
+  house (split + axiom-module framing).
+
+- **The llmopt CLI** (Artin, 2026-07-26): one wrapper runner —
+  `llmopt run <script> [args] --host mac|3080` — uniform log
+  naming, constant progress feedback, success-only markers,
+  local-vs-wsl.sh transport picked by flag; the scripts/ glob
+  (100+) migrates gradually into registered subcommands
+  (train/gate/bench/adjudicate families first). Corollary
+  adopted: the WSL side needs NO scratch dir — wsl.sh gains a
+  pyrun verb (ship script, run, stream log back); everything the
+  3080 executes is committed or shipped at call time (kills
+  untracked WSL drift by construction). Extendability is the
+  point (Artin). Slotted: post-index, walked through step by step
+  with Artin. MCP-SSH reconsidered after the wrapper exists.
