@@ -6696,3 +6696,20 @@ VERDICTS:
    (36 v M5-class) is suggestive, not a booked pair; the clean
    pair would be fp32-real-ZX vs cplx_none-ZX, banked if the
    complex question ever reopens.
+
+## PRE-REG: pincer R0 — the conjecture leg read alone (2026-07-26 night)
+
+Cell R0 of specs/2026-07-26-reverse-llmue-pincer.md. Instrument:
+scratch/pincer_r0.py — fmt_oneshot_1p.pt (d256, oneshot 1P, gate
+54/120 greedy-chain) proposes k=8 T-sampled answers per gate
+problem (same 120 problems/seeds as gate_ckpt); HIT = candidate
+forward-verifies from the ROOT as valid AND integral-free (whole
+problem falls at ply 0). Zero births; pp sidecar rides.
+PREDICTIONS (house): (1) ply-0 yield 45-60/120 — k=8 sampling
+should recover >= the greedy-gate 54-class since oneshot chains
+averaged 0.52 plies (most of its 54 were already one-hop); (2)
+yield concentrates L3-L4, decays by L6-7 (conjecture is a
+low-depth skill); (3) a nonzero valid-but-unsolved band (partial
+skips) — the raw material the backward peeler (R1) exists to
+finish. Read books conjecture yield per level = the pincer's
+ply-0 economics.
