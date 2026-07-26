@@ -6009,3 +6009,30 @@ never leaves the floor. VERDICTS:
    The claim books at MATCHED RECIPE (the tournament bracket's
    own terms, like every alphabet row). Z1S (Dale's-law
    channel signs) is the live rescue arm, next in chain.
+
+## BORN-Z1S: 0/120 — Dale's law buys STABILITY, not capability; the sign-granularity ladder completes (2026-07-26)
+
+{3:0,...} @ 0.00%. But the loss biography splits the mechanism in
+two, and both halves book:
+1. **Channel-level sign FIXES the optimization pathology**: Z1S
+   opens at 3.69 (= the uniform floor — NO confidently-wrong
+   explosion; compare Z1's 27.7) and descends smoothly 2.21 ->
+   1.87 -> 1.70. Tier-2 (cone collapse -> saturation) is ESCAPED
+   by per-channel opposition alone — Dale's architecture is
+   sufficient for trainability.
+2. **But not for capability at the bracket dose**: final loss 1.70
+   is ~4x the healthy band (0.34-0.50) and the gate reads zero
+   with zero validity. The sign-granularity ladder at matched
+   recipe/3ep: per-weight sign (B) 54 / per-channel sign (Z1S) 0 /
+   no sign (Z1) 0 — **the sign budget is NOT channel-compressible;
+   inhibition needs per-weight resolution** (or an untested
+   granularity between: per-block/per-group sign, banked as the
+   ladder's missing middle rung if it ever matters).
+3. Fences: n=1; 3ep (the 6ep discrete-parity dose is the one live
+   rescue — Z1S's smooth descent means MORE DOSE COULD PAY where
+   Z1's divergence means it cannot; queued as a conditional cell,
+   fires only if a decision ever needs it); cuda lineage.
+4. THE CHEAP CLOSERS COMPLETE: S4 58 (zero law bounded), Z1 0
+   (deletion square closed at birth), Z1S 0-but-trainable (sign
+   granularity floor found). The complex bracket's priors are set;
+   the marker fired; the retention session is live.
