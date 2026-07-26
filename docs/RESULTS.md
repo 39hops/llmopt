@@ -5780,3 +5780,44 @@ remaining hope for the orbifold metric; per-matrix free rotation
 already failing to close the seed gap is evidence against, but
 the joint constraint is the actually-correct group. Fences: gate
 matrices only, one width, n=15 pairs, per-matrix alignment.
+
+## BANKED: joint-permutation distance closure cell (2026-07-26, Mac, awaiting slot)
+
+The proper-gauge completion of the ancestry verdict: git-re-basin-
+style JOINT alignment (one hidden-unit permutation per layer,
+applied consistently to gate+up rows AND down columns; embedding/
+residual basis fixed) on the d256 seed pair (wfloor v s2/s3).
+KILL CONDITION, pre-registered: if seed pairs still read >> the
+same-init ball (0.31-0.47) under the CORRECT group, weight-space
+distance closes PERMANENTLY (function-space — stitching/CKA —
+already validated as the real distance space). If they close to
+~same-init range, the orbifold metric revives with the joint
+constraint as its group. ~1h Mac cell; banked behind the complex/
+ZX program per Artin 2026-07-26.
+
+## PRE-REG: the three cheap closers — born-S4, born-Z1, born-Z1S (2026-07-26, before launch, 3080)
+
+The law-converting cells, fired at the 3080 GO. All 19M/gen-4/3ep/
+TF32 tournament recipe, gates on cuda (same lineage as born-M4=61
+— the matched comparator; cross-device forbidden as always).
+1. **born-S4** {±1/3, ±1} (symmetric, two magnitudes, NO zero,
+   2.00 bits; global-absmean recipe EXACTLY matching M4's):
+   the axis-separating cell three arms have waited for. ZERO-LAW
+   prediction: S4 craters toward B-class (~54) despite matched
+   bits/resolution — zero-absence is the wound. If S4 ~ M4's 61:
+   binary died of RESOLUTION, and the zero-is-load-bearing law
+   takes a major revision. Between (55-59): both contribute,
+   proportions booked as measured.
+2. **born-Z1** (per-row positive scale x {0,1} — silence without
+   sign, born, in-regime): BETS ON RECORD stand — reviewer 49
+   (LN mean-sub + softmax = implicit inhibition), Fable: crater
+   below B's 54. This settles the deletion square's born corner.
+3. **born-Z1S** (per-row SIGNED scale x {0,1} — sign at channel
+   granularity): the reviewer's named follow-up. If Z1S >> Z1,
+   channel-level sign rescues (sign is cheap to grant); if
+   Z1S ~ Z1, inhibition needs per-WEIGHT sign; if Z1S ~ T-class
+   (60), the whole sign budget was always per-channel-compressible
+   — an encoding result for the alphabet program.
+Fences: n=1 per arm; 3ep (matched to the bracket table, NOT the
+6ep parity dose — parity questions need the 6ep rerun); sigma at
+19M/cuda = 2.5 (n=3-fragile), single-seed bar >= 5.

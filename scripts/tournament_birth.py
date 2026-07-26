@@ -31,11 +31,30 @@ LEVELS = {
     # the deletion square's fourth corner (Artin 2026-07-25):
     # silence without sign — 1 bit, excitation-only
     "Z1": [0.0, 1.0],
+    # symmetry-without-zero at matched 2 bits (the born-S4 v
+    # born-M4 law-converting cell; same global-absmean recipe)
+    "S4": [-1.0, -1.0 / 3, 1.0 / 3, 1.0],
+    # Z1 + SIGNED per-channel scale (is sign sufficient at channel
+    # granularity? — the named z1 follow-up cell)
+    "Z1S": [0.0, 1.0],
 }
 _ALPHA = "T"
 
 
 def quantize(w: torch.Tensor) -> torch.Tensor:
+    if _ALPHA == "Z1":
+        # per-row POSITIVE scale x {0,1} (pre-reg: zero-or-positive-
+        # scale, per-channel)
+        s = w.abs().mean(dim=1, keepdim=True).clamp(min=1e-8)
+        return s * (w.abs() >= 0.5 * s).float()
+    if _ALPHA == "Z1S":
+        # per-row SIGNED scale x {0,1}: a whole channel shares one
+        # sign — sign at channel granularity
+        sa = w.abs().mean(dim=1, keepdim=True).clamp(min=1e-8)
+        m = w.abs() >= 0.5 * sa
+        s = (w * m).sum(dim=1, keepdim=True) / m.sum(
+            dim=1, keepdim=True).clamp(min=1)
+        return s * m.float()
     lv = torch.tensor(LEVELS[_ALPHA], device=w.device)
     s = w.abs().mean()
     d = (w.unsqueeze(-1) - s * lv).abs()
