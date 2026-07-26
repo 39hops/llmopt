@@ -905,7 +905,7 @@ Neuron-geometry plots for the micro-model program (docs/assets).
 - `torch_svd_top2(X)`
 - `neuron_matrix(ckpt: str, key_sub: str)`
 - `project(W, method: str)`
-- `scatter(ax, xs, ys, mag, title, cmap)`
+- `scatter(ax, xs, ys, mag, title, cmap, vmin=None, vmax=None)`
 - `main() -> None`
 
 ### scripts/probe_depth.py
@@ -1099,6 +1099,19 @@ Validity autopsy: WHERE do the ~38% invalid steps go wrong?
 
 ## scratch/
 
+### scratch/adjudicate_zx.py
+Adjudicate axiom's ZX sample batch (relay 2026-07-26-0 protocol).
+
+- `parse(s: str)` — -> (ins, outs, spiders {label: (color, phase8)}, edges
+- `to_pyzx(ins, outs, spiders, edges)`
+- `_sem_worker(cur, nxt, q)`
+- `semantic(cur, nxt, wall=30)`
+- `replay_fuse(ins, outs, spiders, edges, site)`
+- `replay_id(ins, outs, spiders, edges, site)`
+- `replay_color(ins, outs, spiders, edges, site)`
+- `structural(row)`
+- `main()`
+
 ### scratch/boundary_or_bulk.py
 Boundary-or-bulk regression on the completed 0.5M->400M grid.
 
@@ -1114,6 +1127,31 @@ Build data/merged_diet.jsonl (schedule-law queue item 1): gen-6 cumulative corpu
 ### scratch/chain_carry.py
 CHAIN-CARRY ABLATION (Artin's carry hypothesis, spec'd 2026-07-21): same content, format ablated, equal TOKEN budget, both arms from scratch (d384/8L/3ep). Arm 'chains' = cur->nxt pairs as-is. Arm 'oneshot' = reconstructed root->final-answer rows (chains followed by nxt->cur linkage), upsampled to equal tokens. Gate both. If chains >> oneshot, capability numbers carry a format dividend. Usage: chain_carry.py <chains|oneshot>
 
+
+### scratch/clade_stream_d256.py
+Clade-gated streaming pilot, arm G (pre-reg 2026-07-26).
+
+- `probe_band(band: tuple[int, ...]) -> float` — Verified 1-ply valid fraction on fresh band states.
+
+### scratch/complex_birth.py
+Complex-FFN birth driver (spec 2026-07-26-complex-zx-program).
+
+
+### scratch/complex_model.py
+Complex-FFN model builder (spec 2026-07-26-complex-zx-program, Leg A).
+
+- `set_alpha(a: str) -> None`
+- `g5_quantize(wr: torch.Tensor, wi: torch.Tensor)` — Nearest of {0, ±s, ±is} on each complex weight; STE outside.
+- `_q(w: torch.Tensor, pair_dim: int) -> torch.Tensor` — STE-quantize a real matrix whose pair_dim halves are (re, im).
+- `build_complex_model(vocab_size: int, d: int=384, layers: int=8, heads: int=6, ffn: int=1536, ctx: int=512)`
+
+### scratch/complex_nnue.py
+Complex-weight NNUE vs real twin on magic labels (pre-reg below).
+
+- `class ComplexEstimator` (modrelu, forward)
+- `class RealEstimator` (forward)
+- `run(model, name, xtr, ystr, yctr, xte, yste, ycte, test, epochs=200)`
+- `tensors(rs)`
 
 ### scratch/confluence.py
 Metabolic-vs-champion confluence: where did 471 signed rows land? Per-matrix ||dW||, effective rank of delta, top-layer localization, ternary flip census (would the 1.58-bit deployment even change?).
@@ -1169,6 +1207,10 @@ Batched gate v2 (2026-07-21): batch ACROSS problems, 8 seeds each — one forwar
 *(no docstring)*
 
 
+### scratch/gate_cplx.py
+Gate a complex-FFN checkpoint (mirror of gate_ckpt.py).
+
+
 ### scratch/gate_prefix.py
 Chain gate for PREFIX-substrate models (rung 1, spec 2026-07-25-native-transformer). Mirrors gate_eval exactly — same seeds, same _gen_isolated problems, same verify_wave oracle — with prefix<->infix conversion at the two boundaries: prompts serialize cur to prefix; model emissions parse prefix->sympy and re-render infix (sp.sstr) before the oracle. Emissions that fail the prefix parser are invalid candidates (counted tried, never valid).
 
@@ -1178,6 +1220,26 @@ Rarity-stratified gate (schedule-law queue item 2): capability as a curve over e
 
 - `skeleton(e: str) -> str`
 - `binof(n: int) -> str`
+
+### scratch/gauge_distance_d256.py
+Gauge-aligned model distance on the d256 zoo (pre-reg 2026-07-26).
+
+- `load(path)`
+- `nfro(a, b)`
+- `perm_align2(a, b)`
+- `rot_align(a, b)`
+
+### scratch/gauge_m4x.py
+Max-asymmetric {0,1,2,3} gauge-commutation arm (pre-reg 2026-07-26).
+
+- `m4x_rows(w)` — {0,1,2,3} x per-row amax/3 scale — maximally asymmetric.
+
+### scratch/graph_modularity_gen8.py
+Graph-modularity read: gen-8 five-grammar crystal vs single-grammar 19M.
+
+- `load(path: str) -> dict`
+- `layer_graph(feat: torch.Tensor) -> nx.Graph`
+- `read(path: str) -> tuple[float, float]`
 
 ### scratch/grpo_shaped.py
 Potential-shaped GRPO on the gen-6 champion (2026-07-21, Artin GO — 'ahead of metabolic v3'). The b-lever: reward bandwidth. r = verified * (1 + LAM * tanh((Phi(cur)-Phi(next))/SCALE)), Phi = -(count_ops + 40*n_Integral). Unverified stays 0 (oracle floor intact; Ng-shaping preserves optimal policy). Monkeypatches G.collect's r_of via a wrapped collect; everything else (driver, gates, rollback) is the production harness. Pre-registered against the plateau: solves flat by cycle 4 in every unshaped run — shaped must beat +2 solves over 12 cycles or the b-lever nulls.
@@ -1204,6 +1266,17 @@ KV-cache sampler + equivalence oracle (house rule: token- identical to eager ful
 
 ### scratch/l9_probe.py
 L9 probe: 24 fresh L9a problems (band 90M — disjoint from the farm's 72/73M and roots_c1), gate_eval-style rollout, 12 plies. Usage: l9_probe.py <ckpt> <d> <layers> <ffn> <heads> <label>
+
+
+### scratch/lloydmax_race.py
+The Lloyd-Max codebook race (pre-reg RESULTS 2026-07-25): per-output-channel exact 1-D k-means quantizers on the 19M infix twin, free vs zero-pinned centroids, PTQ-only. Writes one _lm*.pt checkpoint per arm; gates run separately (MPS, to match baselines).
+
+- `kmeans_rows(w: torch.Tensor, k: int, pin_zero: bool, iters: int=25) -> torch.Tensor` — Exact-enough 1-D k-means per row. w: (rows, cols). Returns
+- `uniform_rows(w: torch.Tensor, bits: int) -> torch.Tensor` — Symmetric-range int grid {-2^(b-1) .. 2^(b-1)-1} x s.
+- `main() -> None`
+
+### scratch/margin_census.py
+Margin census on the crown-tie ternary latents (pre-reg 2026-07-26).
 
 
 ### scratch/metabolic_d2.py
@@ -1361,11 +1434,32 @@ PRACTICE MODE, model-side (the mirror of axiom's arg-10): duo-wave rollouts that
 - `skeleton(e)`
 - `binof(n)`
 
+### scratch/prologue_arms.py
+Zero-birth prologue arms (Opus-5 reviewer, 2026-07-25): S4 symmetry-without-zero PTQ, sparsity control at ternary's zero-fraction, and the gauge-commutation checkpoint pair.
+
+- `s4_rows(w)` — {±1/3, ±1} x per-channel absmax: symmetric, 2 bits, NO zero.
+- `ternary_rows(w)` — Absmean ternary (reference zero-fraction source).
+- `sparse_rows(w)` — fp32 magnitudes, pruned to the SAME zero-fraction ternary
+- `gauge_flip(sd)` — Sign-flip gauge on half the FFN hidden units: flip rows of
+- `main()`
+- `m4_rows(w)` — Asymmetric M4-style PTQ {-1,0,1,2} x per-channel scale — the
+
+### scratch/ptq4_arms.py
+Scalar 4-bit PTQ arms (the tournament's missing bracket point): P4 powers-of-two ladder, LM-16-zero (k-means), NF4-style quantile codebook — all per-output-channel, on the 19M infix twin. Rides the Lloyd-Max race harness; gates run separately on MPS.
+
+- `p4_rows(w: torch.Tensor) -> torch.Tensor` — {0, ±1/4, ±1/2, ±1, ±2, ±4, ±8} x per-channel unit (absmax/8):
+- `nf4_rows(w: torch.Tensor, k: int=16) -> torch.Tensor` — Equal-mass quantile codebook per channel (NF4-style, but on
+- `main() -> None`
+
 ### scratch/series_probe.py
 Series rung 1 probe: greedy next-partial-sum emission on the 142 held-out steps (seeds 17-19), scored by sympy polynomial equivalence in fork-isolated workers (the solve_isolated doctrine). Also runs the standard 120 gate for the paired regression read vs seedvar-1 (65). Usage: series_probe.py <ckpt>
 
 - `_equiv(q, pred, gold)`
 - `equiv(pred, gold, deadline=10)`
+
+### scratch/streaming_birth_d256.py
+Streaming-birth A/B, arm S (RIFF-LEDGER 2026-07-24 "Streaming birth").
+
 
 ### scratch/synonym_test.py
 Synonym gauge test: TWO label tokens per family on the frozen 19M readout (vocab 40 -> 55: <name> + 7x2 synonyms). Train rows pick either synonym 50/50. Gauge-law prediction: both fire near-equal off the same concept. Reports family-accuracy + per-synonym share.
