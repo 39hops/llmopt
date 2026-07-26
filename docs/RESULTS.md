@@ -5925,3 +5925,25 @@ LIVE NOTE, same chain: born-Z1's ep0 loss is EXPLODING (27.7 v
 ~0.5 normal) — excitation-only birth diverging at standard
 recipe, consistent with the Z1-arc collapse-prone mechanism;
 gates when the chain gates it, booked with mechanism then.
+
+## ZX batch 2 ADJUDICATED: PASS — balanced diet, color-change exact at first contact (2026-07-26)
+
+axiom a3480fd, 10,152 rows, kinds fuse 5,076 / color 3,576 /
+lcomp 629 / pivot 596 / id 275 (the ration doctrine applied at the
+farm; ~100x lcomp/pivot mass over batch 1). Adjudicator v2:
+STRUCTURAL 8,927/8,927 exact (fuse + id + COLOR-CHANGE — the
+five-line move replays perfectly at first contact), zero
+mismatches; SEMANTIC 727/727 PASS, ZERO walls (spider<=14 cap:
+548/1,225 lcomp+pivot rows in-cap, all verified; 200-row small
+subsample of the rest). NINTH consecutive clean axiom batch.
+Honest residue: 677 above-cap lcomp/pivot rows are neither
+structurally replayed (no v2 replay for those kinds) nor
+semantically verified (treewidth) — taxed UNVERIFIED; adjudicator
+v3 (structural lcomp/pivot replay) retires the class if the farm
+scales. Size-cap question ANSWERED in the relay: NO farm cap —
+big diagrams are the rare class (tail-dies-first applied to diet
+design); verification slices, never farm filters.
+The ZX continent now has: certified oracle path, qualified row
+factory, balanced diet, ~20k adjudicated rows. The vocab-51 ZX
+birth (federation-floor pre-reg + the G5/M5 factorial's ZX
+column) is an engineering decision, not a research one.

@@ -98,14 +98,53 @@ def replay_fuse(ins, outs, spiders, edges, site):
     return out_sp, out_e
 
 
+def replay_id(ins, outs, spiders, edges, site):
+    v = int(site.split()[0])
+    if spiders.get(v, (None, 1))[1] != 0:
+        return None
+    inc = [(k, t) for k, t in edges.items() if v in k]
+    if len(inc) != 2:
+        return None
+    (e1, t1), (e2, t2) = inc
+    a = e1[0] if e1[1] == v else e1[1]
+    b = e2[0] if e2[1] == v else e2[1]
+    if a == b:
+        return None  # self-loop refusal
+    new_t = "P" if t1 == t2 else "H"  # H-count mod 2
+    k = tuple(sorted((a, b)))
+    out_e = {kk: tt for kk, tt in edges.items() if v not in kk}
+    if k in out_e:
+        return None  # parallel-edge refusal
+    out_e[k] = new_t
+    out_sp = {kk: vv for kk, vv in spiders.items() if kk != v}
+    return out_sp, out_e
+
+
+def replay_color(ins, outs, spiders, edges, site):
+    v = int(site.split()[0])
+    if spiders.get(v, ("Z",))[0] != "X":
+        return None
+    out_sp = dict(spiders)
+    out_sp[v] = ("Z", spiders[v][1])
+    out_e = {k: (("H" if t == "P" else "P") if v in k else t)
+             for k, t in edges.items()}
+    return out_sp, out_e
+
+
+REPLAYS = {"fuse": replay_fuse, "id": replay_id, "color": replay_color}
+
+
 def structural(row):
     ins, outs, spiders, edges = parse(row["cur"])
     n_ins, n_outs, n_spiders, n_edges = parse(row["nxt"])
-    if row["kind"] != "fuse":
-        return "SKIP"  # v1 replays the dominant kind; rare kinds
-        # ride the semantic leg + eyeball audit
-    for site in (row["site"], " ".join(row["site"].split()[::-1])):
-        r = replay_fuse(ins, outs, spiders, edges, site)
+    fn = REPLAYS.get(row["kind"])
+    if fn is None:
+        return "SKIP"  # lcomp/pivot: semantic leg mandatory
+    sites = [row["site"]]
+    if row["kind"] == "fuse":
+        sites.append(" ".join(row["site"].split()[::-1]))
+    for site in sites:
+        r = fn(ins, outs, spiders, edges, site)
         if r and r[0] == n_spiders and r[1] == n_edges:
             return True
     return False
@@ -130,8 +169,10 @@ def main():
     small = [r for r in rows if r.get("spiders", 99) <= 10]
     random.Random("zx-adj-0").shuffle(small)
     small = small[:n_sem]
-    # rare kinds ALWAYS ride the semantic leg (all of them)
-    rare = [r for r in rows if r["kind"] != "fuse"]
+    # kinds without a structural replay ALWAYS ride the semantic
+    # leg (up to the treewidth cap; beyond it = taxed unverified)
+    rare = [r for r in rows if r["kind"] not in REPLAYS
+            and r.get("spiders", 99) <= 14]
     pool = {id(r): r for r in (small + rare)}.values()
     sem = {"True": 0, "False": 0, "WALL": 0, "ERR": 0, "DIED": 0}
     for i, r in enumerate(pool):
