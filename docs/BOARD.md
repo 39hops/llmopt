@@ -1,10 +1,17 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-25 close (newest handoff: -25-2 the sigma-and-alphabet day; read it first). RESULTS.md holds verdicts, RIFF-LEDGER.md
+Updated 2026-07-26 close (newest handoff: -26-0 the opposition day; next-session plan: specs/2026-07-26-next-session.md — read BOTH first). RESULTS.md holds verdicts, RIFF-LEDGER.md
 holds provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 ## LIVE
+
+| Thread | Status | Pointer |
+|---|---|---|
+| **THE COMPLEX/ZX PROGRAM** | ZX continent QUALIFIED (row factory 5 moves, 2 batches/~20k rows adjudicated, 9th clean batch); complex trainer BUILT+SMOKED; bracket narrowed to phase-carrying cells (euler reads + G16-as-interference-for-SIGN); headline = G5xM5 x math/ZX factorial; north star = quantum LLMUE | specs/2026-07-26-complex-zx-program.md |
+| **THE OPPOSITION LADDER (closers, landed)** | S4 58 (zero law BOUNDED out of born-2-bit — binary died of resolution); Z1 0/120 (deletion square closes at birth 54 v 0); Z1S 0 but TRAINS (Dale's law = stability not capability; sign not channel-compressible); Z1S hot-LR armed | RESULTS 2026-07-26 |
+| **d256 PILOT SUBSTRATE (adopted)** | gate CLEARED -27 v -3; per-level sigma measured; streaming CLOSED via 2x2 (epoch -8 best-case; cooldown +4; homogeneity -12 = the interaction law; clade-v2 60 self-pacing pays); packing = 3rd starvation mode, step-count mechanism REFUTED by matched-steps accident | RESULTS 2026-07-26 |
+| **RETENTION SESSION (v5 s2)** | LIVE on 3080 (120 min, dense per-level columns, PRE 6/100) -> Z1S-hot chained behind | books next session (Tier 0) |
 
 | Thread | Status | Pointer |
 |---|---|---|
