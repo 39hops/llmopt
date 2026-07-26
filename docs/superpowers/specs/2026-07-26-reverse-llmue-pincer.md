@@ -215,3 +215,20 @@ the conjecture leg inherits the crystal's full validity. pp
 sidecars mandatory (watch: does the mixture's oneshot skill
 retain the 0.5-ply/no-wander signature inside a chain-capable
 model, or do the skills interfere?).
+
+## 9. Comparison arms (Artin, 2026-07-26): pretrained-LLM baselines
+
+Every headline cell gains a PRETRAINED-LLM comparison arm run on
+the SAME battery (the priors-vs-drag control, resurrected for
+this program): a small general LLM (Qwen-class 0.5B, few-shot,
+charset-masked as in the step-tokens era) scored on (a) the R0
+conjecture leg (propose answers, oracle-checked), (b) forward
+chain gate, (c) backward peel validity. Measured prior: the
+0.5B's historical 3.3% validity vs math-native 65% — the arm
+exists to keep that context number CURRENT per battery, not to
+win. Fences: equal token budgets; prompting per step-tokens
+conventions; numbers labeled cross-substrate (context, never a
+promotion comparator). Also from the same exchange: the
+rotational-domain map (RIFF entry) — Fourier continent = the
+pincer's second phase-carrying territory if ZX books the
+interaction.

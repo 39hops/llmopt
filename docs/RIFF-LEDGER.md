@@ -964,3 +964,19 @@ to the collaboration itself.
   now corrected two mechanism claims in one day (Muon
   dissociation, revpairs wandering). Nulls with sidecars are
   publishable nulls.
+
+- **"Can every equation be a quantum circuit? What rotational
+  aspects are we missing?"** (Artin, 2026-07-26): the honest
+  three-zone map banked — (1) naturally-rotational math maps
+  (linear algebra, Fourier/QFT, trig-as-Euler, roots of unity,
+  oscillators); (2) symbolic term-rewriting does NOT map
+  naturally (branching vs collapse); (3) ZX = the maximal honest
+  intersection (circuit language AND rewrite grammar — why the
+  continent choice was right). THE ROTATIONAL INVENTORY, by
+  readiness: Fourier continent (banked 07-23, the math-side
+  phase grammar — the CONFIRMATION continent if
+  alphabet-follows-domain books on ZX); SHM/mechanics as hidden
+  rotation (existing vocab-41 grammar; per-family alphabet read
+  ~free); RoPE x G5 (architecture-meets-weights, billiard-Grover
+  motivated); G16/Eisenstein/Q9 brackets (gated on tonight).
+  Attribution: Artin (ask); house (map + inventory).
