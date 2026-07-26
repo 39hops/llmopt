@@ -71,6 +71,32 @@ V4 = os.environ.get("STREAM_V4") == "1"
 MUON = os.environ.get("STREAM_MUON") == "1"
 MUON_MIXED = os.environ.get("STREAM_MUON_MIXED") == "1"
 MUON_LR = float(os.environ.get("MUON_LR", "0.02"))
+# Template-refresh cell (pre-reg 2026-07-27): v4 construction +
+# every 250 steps softly re-map interior row norms onto the
+# control checkpoint's quantile distribution (statistics are
+# seed-invariant constants; directions stay SGD's).
+TREF = os.environ.get("STREAM_TREF") == "1"
+if TREF:
+    tmpl_sd = torch.load("checkpoints/mathnative_wfloor_d256.pt",
+                         map_location="cpu")
+    tmpl_q = {k: W.float().norm(dim=1).sort().values
+              for k, W in tmpl_sd.items()
+              if W.dim() == 2 and "emb" not in k
+              and W.shape[0] != len(tok.vocab)}
+    del tmpl_sd
+    OUT = "checkpoints/mathnative_wfloor_d256_tref.pt"
+
+
+def template_refresh(model):
+    with torch.no_grad():
+        for k, p in model.named_parameters():
+            if k not in tmpl_q:
+                continue
+            norms = p.norm(dim=1)
+            rank = norms.argsort().argsort()
+            target = tmpl_q[k].to(p.device)[rank]
+            scale = (target / norms.clamp(min=1e-8)).sqrt()  # half-way
+            p.mul_(scale.unsqueeze(1))
 
 
 def ns5(G, steps=5):
@@ -154,7 +180,7 @@ for step, b in enumerate(batches):
     else:
         warm = min(1.0, (step + 1) / WARMUP)
         cool = 1.0
-        if V3 or V4 or MUON or MUON_MIXED:
+        if V3 or V4 or MUON or MUON_MIXED or TREF:
             tail = len(batches) // 10
             left = len(batches) - step
             if left <= tail:
@@ -181,6 +207,8 @@ for step, b in enumerate(batches):
             g["lr"] = base  # restore before sched.step (OneCycle
             # multiplies its own trajectory; surprise is per-step)
         sched.step()
+    if TREF and (step + 1) % 250 == 0:
+        template_refresh(model)
     if (step + 1) % 200 == 0:
         r = (step + 1) / (time.time() - t0)
         print(f"  {step+1}/{len(batches)} loss {lv:.3f} ema {ema:.3f} "

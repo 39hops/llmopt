@@ -6253,3 +6253,46 @@ alphabet-follows-domain hypothesis dies clean. Euler-read
 consistency note: the null prior held — rotation imposed at
 birth is SURVIVABLE (66/62) but spontaneous structure never
 appears in real-born crystals.
+
+## PRE-REG: template-refresh mid-stream (2026-07-27, before the run)
+
+Tier-1 #6 (the "something missing in streaming" candidate; never
+run anywhere). Claim: single-pass SGD underperforms partly
+because macro-STATISTICS (row-norm distributions — the same
+quantity template-spray growth and warm birth manipulate, +8
+measured at init) converge slower than one pass allows; correct
+them DIRECTLY mid-stream and let gradients handle only the
+residual (calculated-model thesis applied during training).
+ARM (d256, seed 1, v4 construction: mixed shuffled + final-10%
+cooldown + surprise rider): every 250 steps, softly (half-way)
+re-map each interior matrix's row norms onto the target quantile
+distribution measured from the wfloor_d256 control checkpoint
+(statistics are seed-invariant training constants — using the
+control's PANEL is calculation, not copying; directions/gauge
+untouched, so function content stays SGD's).
+READINGS (comparator v4 57, control 65, sigma ~1.0/bar 3):
+>= 61 => statistics were the missing mass — streaming reopens;
+58-60 => directional, refresh-rate/strength sweep banked;
+~57 => statistics converge fine on their own, the "something
+missing" lives elsewhere (format x schedule cell next in line);
+< 54 => correction fights Adam state, books as interference.
+
+## Template-refresh: 59/120 — DIRECTIONAL, not decisive; the sweep banks (gated morning after the run; run finished 07:44)
+
+{3:21,4:6,5:16,6:7,7:9} @ 53.42%, wall 1,098s. (Session note: the
+run completed in the rolled-back chat and was gated after
+reconciling the tree — pre-reg and code were the uncommitted
+diff, verified intact before gating.) Against the pre-registered
+readings (comparator v4 57, control 65): 59 falls in the 58-60
+DIRECTIONAL band — +2 over v4 (under the 3-solve bar), the
+second-best single-pass cell measured (clade-v2 60 remains #1),
+and no interference (the < 54 fence stayed quiet; Adam tolerated
+direct norm surgery every 250 steps). Per pre-reg: the
+refresh-rate/strength sweep BANKS (stronger/more frequent
+correction, full re-map instead of half-way) but does not fire
+now — three streaming interventions (cooldown +4, self-pacing
++3, statistics +2) each recover a slice of the epoch's -8 and
+none alone reaches the bar; the format x schedule cell (Artin's
+riff) is next in line as the remaining unexplained mass.
+L4 note: 6/24 — ON the seed band's edge; the isolated-clade
+starvation signature does not worsen under norm correction.
