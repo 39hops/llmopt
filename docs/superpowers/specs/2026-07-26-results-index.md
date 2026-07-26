@@ -50,3 +50,21 @@ machine-readable INDEX layered on top.
 
 ## Status: BANKED. Implement on Artin's GO at a natural freeze
 point (post-ZX-column booking is a good one).
+
+## Step-3 additions (Artin GO 2026-07-26)
+
+- (a) `git tag results-pre-index` at the freeze point — the
+  permanent snapshot of claims-as-written; no file copy.
+- (b) bidirectional amendment links in the index (amends /
+  superseded_by both directions; --chain walks either way).
+- (c) generated SCOREBOARD.md from the index (--live view
+  materialized; regenerated like scripts/INDEX.md, never
+  hand-edited) — the curated "good RESULTS" layer; RESULTS.md
+  keeps its name and its append-only log role. Rename revisited
+  only after living with the scoreboard.
+- (d) PER-PROBLEM INSTRUMENTATION AS DEFAULT (Artin 2026-07-26):
+  every gate/probe in the CLI wrapper dumps per-problem outcomes
+  + full greedy chains (jsonl sidecar), so any two cells can be
+  diffed problem-by-problem after the fact — scores hide
+  complementarity (the duo-wave +5 precedent) and wandering/
+  identity/length signatures cost nothing to keep.
