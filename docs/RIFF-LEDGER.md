@@ -835,3 +835,23 @@ to the collaboration itself.
   cancellation as a classical-hostable primitive, exactly the G5
   question. Attribution: Artin (paper + the 2pi instinct); house
   (Grover identification from the paper, RoPE link).
+
+- **AMENDMENT to distribution rows (Artin, 2026-07-26, same day):
+  "it's related to streaming/LLMUE — the NNUE-closed-system
+  confluence we haven't measured; maybe how harder tasks get
+  reinforced."** House mechanization: the engine's brains ARE
+  NNUEs emitting move DISTRIBUTIONS (syndrome policy 98.8 top-3,
+  magic estimator rho .9) and the crystal has only ever eaten
+  PICKS. The unmeasured plane = MOVE-DISTRIBUTION SPACE as the
+  teacher-student channel: NNUE = source, crystal = consumer,
+  LLMUE streaming = transport. Where it bites: stuck states emit
+  zero verified steps => zero gradient (round-2 law, v4
+  conversion fail); full engine chains fix it at farm latency;
+  distribution rows fix it at MILLISECOND latency (rule-fire +
+  policy net on the stuck state = dense soft gradient toward the
+  right door, before any demonstration exists). Hard tasks get
+  reinforced exactly where the model's distribution is flattest
+  and the engine's sharpest. Slot: metabolic v6 candidate food
+  channel (stuck-state distribution rows vs stuck-state chains vs
+  both, paired). Attribution: Artin (confluence instinct); house
+  (the transport identification).
