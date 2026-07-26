@@ -47,9 +47,13 @@ ARMS = {
 
 
 def uniform_rows(w: torch.Tensor, bits: int) -> torch.Tensor:
-    lv = 2 ** (bits - 1) - 1   # symmetric int range
-    s = w.abs().amax(dim=1, keepdim=True).clamp(min=1e-12) / lv
-    return torch.round(w / s).clamp(-lv - 1, lv) * s
+    """Symmetric-range int grid {-2^(b-1) .. 2^(b-1)-1} x s.
+    2026-07-25 fix: scale by the RANGE (absmax/2^(b-1)), not by
+    2^(b-1)-1 — at bits=2 the old lv=1 scale collapsed nearly all
+    weights to zero (the VOID int2 arm)."""
+    half = 2 ** (bits - 1)
+    s = w.abs().amax(dim=1, keepdim=True).clamp(min=1e-12) / half
+    return torch.round(w / s).clamp(-half, half - 1) * s
 
 
 def main() -> None:
