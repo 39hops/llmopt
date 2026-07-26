@@ -5317,3 +5317,48 @@ AND wall <= 40% of the 3ep birth wall. Gate < 61 => streaming
 FAILS at equal rows (the epoch is load-bearing; books as a result).
 Gate > 66 would be a WIN, not just neutrality — flagged separately
 if seen (sub-noise unless >= +3 vs band mean per the sigma rule).
+
+## d256 SUBSTRATE GATE CLEARS — and packing is the third starvation mode (2026-07-26)
+
+Arm: wfloor recipe + bare --fast (flag bundle), MPS, seed 1. Gate
+38/120 @ 35.75 {3:15, 4:1, 5:10, 6:5, 7:7}; control 65/120 @ 59.91.
+Reviewer-cross-checked before booking; its framing adopted in full.
+1. **Substrate gate CLEARS decisively**: delta -27 v the
+   pre-registered -3 bar (~19 sigma_diff); dual read -27 primary /
+   -26 vs 3-seed mean — the seed-1-high-draw worry is dead. **d256
+   is PROMOTED to pilot substrate**; promotion-grade runs stay at
+   W*.
+2. **The internally-valid headline**: the packed d256 lands at 38 —
+   EXACTLY the d64 (0.5M) point of the same-corpus, same-device
+   width curve (38 -> 57 -> 65). Packing at d256 costs the
+   equivalent of a ~16x parameter reduction, priced on the lab's
+   own curve, zero cross-device inference. (-27 solves / -24
+   validity points.)
+3. **Per-level: broad with an L4-DISPROPORTIONATE component** —
+   clade-connected levels retain 58-68% (L3 68, L5 63, L6 63,
+   L7 58); L4 retains 14% (7 -> 1). The isolated-clade signature
+   rides on top of broad damage: packing joins under-width (d64:
+   L4=0) and under-feeding (400M: L4=0) as the THIRD measured
+   starvation mode with the clade-dies-first fingerprint.
+4. **Magnitude-vs-19M does NOT book** (reviewer objection,
+   adopted): the 19M -13 cell is cuda/gen-9-dietB/solves; today is
+   MPS/gen-4 — device+diet+era+metric all differ, and cross-device
+   is doctrine-forbidden as of yesterday's amendment. "Packing
+   amplifies at thin width" = HYPOTHESIS, one observation per
+   width. Partial separation, reported free: packed 1,324 steps/ep
+   v control 4,139 = 3.13x fewer — SMALLER than 19M's 4.45x ratio
+   yet a larger wound, a point AGAINST pure step-starvation
+   (confounded; report-only). Clean test if ever wanted:
+   packed-vs-unpacked at two widths, same device/diet/day.
+5. **Flag-bundle label rides**: reproduces the FLAG effect;
+   mechanism (sequence packing v step count v LR schedule)
+   unseparated at both widths. Gate-not-the-loss fired on this
+   bundle twice now (19M packed cell had LOWER loss and -13 gate;
+   today ep1=ep2 loss 0.3594 stagnation at gate 38).
+6. **The flag is lose-lose at d256/MPS**: -27 solves AND 3.3x
+   SLOWER (1,330 s/ep packed v 400 s/ep unpacked — token-budget
+   batch shapes mismatch MPS at this width). Doctrine reinforced:
+   --fast NEVER without --nopack, every width, every device.
+7. Reviewer over-prediction RECORDED (its own ask, second on the
+   books): the pass-region pre-split imagined attenuation at thin
+   width; the effect went the other way.
