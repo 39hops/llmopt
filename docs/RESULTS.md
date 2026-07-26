@@ -4954,3 +4954,53 @@ born-S4 vs born-M4 at matched 2 bits; born-z1 moves it tonight.
 Meta-line (reviewer): three instrument bugs in 24h (phase-density
 null, 388 rows, int2 scale) — ALL caught by control arms, none by
 headlines. Controls ride every instrument.
+
+## PROLOGUE CARD BOOKED: three deaths, one sleeper, a directional gauge (2026-07-25 night)
+
+PTQ on the 19M infix twin, MPS gates; diagnostic confirmed
+non-degenerate quantizers + clean tern control (correct step
+emitted). Reviewer-cross-checked; its framings adopted.
+1. **THE DEATH TAXONOMY (the card's best result)**: at 1 bit,
+   PTQ lands at the measurement floor in three mechanistically
+   distinct ways — **b1 (sign-only): arithmetic death** — fluent,
+   well-formed math with wrong coefficients at validity 0.00 =
+   CONFIDENTLY-WRONG generation: the determinability law's
+   failure mode (calibrated hallucination) produced by
+   QUANTIZATION instead of underdetermined data — a new route to
+   the same pathology, and 7th gate-not-the-loss-family
+   observation (syntax intact, semantics gone; independently
+   corroborates the prefix close: syntax and semantics are
+   separably damageable, scaffolding is the robust layer).
+   **z1 ({0,1}): language death** — degenerates to Step: loops.
+   **born-B: alive at 54** (cross-device fence: 3080/TF32
+   born vs MPS PTQ; acceptable at this delta).
+2. **Born-vs-rounded at 1 bit: >= 54 solves and FLOOR-CENSORED**
+   (PTQ at the instrument floor; true gap unmeasurable from
+   above).
+3. **HARD FENCE: z1-PTQ does not bear on born-z1** — deleting
+   negatives from a signed-trained net is a foregone conclusion;
+   the {0,1} corner remains OPEN until the birth gates (reviewer
+   bet 49 stands; Fable bet crater).
+4. **The sleeper: sparse 62 vs tern 43** — imposing ternary's
+   zero-PATTERN on fp32 magnitudes costs −2; adding magnitude
+   flattening costs −21. Split-wording (reviewer): zeros here
+   are magnitude-chosen, so this is the pruning/tail-dies-first
+   result, NOT evidence about the zero LEVEL; what
+   training-into-lattice buys is COEXISTENCE WITH DISCRETENESS,
+   not the zeros.
+5. **Gauge-commutation: DIRECTIONAL only** — symmetric pair
+   commutes EXACTLY (tern=gflip_tern 43=43, per algebra);
+   asymmetric M4 pair diverges 51 v 49 (right direction,
+   sub-noise; M4 is asymmetric in 1 of 4 levels = deliberately
+   weak instance). Decisive follow-up = max-asymmetric alphabet
+   ({0,1,2,3}) arm, queued.
+6. 2-bit fence: LM2free/LM2z are FITTED per-channel; m4/S4 are
+   FIXED — "placement dominates" is partly fitted-beats-fixed.
+   Clean fixed-vs-fixed pair: m4 51 > S4 44 (zero+asym beats
+   sym-no-zero at matched fixed 2 bits). The clean S4 test stays
+   BORN (with born-M4 at matched bits — the named law-converting
+   cell).
+7. Method line: three instrument bugs in 24h (388 rows,
+   phase-density null, int2 scale) ALL caught by control arms,
+   none by headlines — controls ride every instrument, and the
+   control arms are outperforming the experiments.
