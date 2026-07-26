@@ -791,3 +791,13 @@ to the collaboration itself.
   scale (published Muon wins live far above d256). Attribution:
   Artin (loss-floor question + variants riff); house (branching-
   entropy floor hypothesis + instrument design).
+
+- **MCP SSH server for the 3080** (Artin, 2026-07-26, off the
+  ssh-tooling pain): wrap `ssh -i $WSL_KEY` in a small MCP server
+  (the markitdown precedent — user-scoped, `claude mcp add`) so
+  remote ops become first-class tool calls with real timeouts,
+  instead of Bash incantations that hang the client on nohup.
+  Interim shipped same day: scratch/wsl.sh (run/launch/check/tail;
+  base64-safe commands, setsid detach kills the hang class,
+  success-only markers, self-excluding pgrep). BANKED: build/vet
+  the MCP server at a quiet moment, not mid-experiment.

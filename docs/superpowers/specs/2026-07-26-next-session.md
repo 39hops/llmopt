@@ -76,3 +76,19 @@ sqrt(2)-sigma rule (>=5 single-seed at 19M/cuda; >=3 at d256);
 cross-device forbidden; --fast never without --nopack; pre-reg
 before fire; controls ride every instrument; verified AND
 distinct at every layer; strict encode everywhere.
+
+## Flags from the 2026-07-26 full-corpus review (banked, named)
+
+- **Miner v2** (verified-AND-distinct at bank time) — still the
+  blocker on the gen-9 full-dose leak rerun; oldest queued debt.
+- **Knock-4** (ibridge as pure COPY, rationed recipe) — the
+  pre-registered LAST knock on the bridge door; never fired.
+- **1e-8 absorption point** (~28% predicted discarded) — free
+  instrument leg if any metabolic session runs at that LR.
+- **Length-bucketed streaming + format x schedule** — run as ONE
+  session (same harness): bucketed-shuffled batches (57-at-450s
+  candidate) + the cur/next format ablation at {1-pass, 3ep}.
+- **RESULTS index**: specs/2026-07-26-results-index.md — banked;
+  implement at the post-ZX-column freeze point.
+- **Adjudicator v3** (lcomp/pivot structural replay) — 11.7% of
+  the ZX diet unverified; before farm batch 2.
