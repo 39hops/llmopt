@@ -120,3 +120,45 @@ batch-then-audit); KV-cached sampling everywhere; per-problem pp
 sidecars on every cell (step-3 item (d)) so overlap/wandering
 reads are free afterward. No cell in this spec exceeds ~40 min
 of Mac wall; 3080 never required for the pilot tier.
+
+## 6. AMENDMENT (Artin's push, same day): the backward model is an
+## architecture BRACKET, not a mirrored transformer
+
+The conservative form (section 1) is demoted to baseline. The
+backward task is structurally different from forward generation:
+a predecessor differs from t by UN-APPLYING one rule at one site
+— so the natural output is an EDIT POINTER, not text. Three arms:
+
+- **B-a (baseline)**: mirrored transformer, text emission — R1
+  as originally specced. Exists to be beaten.
+- **B-b (the different machine)**: POINTER/EDIT model —
+  state -> distribution over (inverse-rule, site), NNUE-class
+  (the syndrome-policy machinery reused verbatim: 94-98% top-3
+  at ~us was already measured for state->rule); the ENGINE
+  applies the chosen inverse-rewrite exactly. Convergence of
+  three banked riffs: step-tokens (the unit of generation IS the
+  verified rewrite), bitboards (representation makes moves
+  machine-ops), EU-eval (all sites scored in one pass; peels
+  share ~95% of the tree). Dissolves the long-emission wall
+  (nothing long is emitted — classification over ~24 rules x
+  sites) and verification cost (validity BY CONSTRUCTION:
+  forward-apply the pointed rule to the produced predecessor;
+  must reproduce t bit-exact — deterministic, not oracle
+  search). Speed class: us-ms per peel vs the transformer's
+  full decode. Training data: (t, rule, site) triples — free
+  from every farmed chain (the emitter knows the move it made;
+  axiom logs kind+site ALREADY in the ZX schema — math chains
+  need the annotation added, an axiom ask).
+- **B-c (banked, research tier)**: parallel/set-valued emission
+  (one pass -> the whole predecessor cloud as edits; NAT/masked
+  style). Only if B-b's coverage disappoints.
+
+PRE-REG PRIORS: B-b >> B-a on speed (structural); capability
+question = COVERAGE (can a pointer net rank inverse-moves it
+never saw applied? — the trial-mass lesson says give unseen
+rules newcomer mass). The pincer protocol (section 3) is
+arm-agnostic: conjecture + peel + meet unchanged; only the
+peeler's implementation varies. R1 becomes R1a/R1b paired.
+NNUE-symmetry note (measured 2026-07-26): pointer nets are
+oligarchy-phase, sign-skewed toward the readout — the backward
+NNUE will NOT look like the crystals, and shouldn't.
