@@ -9015,3 +9015,36 @@
 {"cur": "Integral(2 + 8/sqrt(1 - 4*x**2), x)", "nxt": "2*x + 4*asin(2*x)", "level": 5, "source": "grpo"}
 {"cur": "Integral(3*((2*x + 1)*(9*x**2 + 1)*atan(3*x) + 3*(x**2 + x + 1)*log(x**2 + x + 1))/((9*x**2 + 1)*(x**2 + x + 1)), x)", "nxt": "3*log(x**2 + x + 1)*atan(3*x)", "level": 7, "source": "grpo"}
 {"cur": "Integral(-20*x**3, x)", "nxt": "-5*x**4", "level": 3, "source": "grpo"}
+{"cur": "Integral(21*(-x - 1)*exp(x), x)", "nxt": "-21*x*exp(x)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(-sin(x - 2), x)", "nxt": "cos(x - 2)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(56, x)", "nxt": "56*x", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(-36*exp(x), x)", "nxt": "-36*exp(x)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral((4 - 8*x)*sin(4*x**2 - 4*x + 3), x)", "nxt": "cos(4*x**2 - 4*x + 3)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(-8*sqrt(2)*exp(x)*cos(x + pi/4), x)", "nxt": "-8*sqrt(2)*(exp(x)*sin(x + pi/4)/2 + exp(x)*cos(x + pi/4)/2)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(175*x**4 + 5, x)", "nxt": "35*x**5 + 5*x", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral((-8*x - 2)*sin(4*x**2 + 2*x + 1), x)", "nxt": "cos(4*x**2 + 2*x + 1)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral((2 - 15*x**2)*sin(5*x**3 - 2*x + 1), x)", "nxt": "cos(5*x**3 - 2*x + 1)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(-sin(x + 4), x)", "nxt": "cos(x + 4)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(12*exp(x), x)", "nxt": "12*exp(x)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(54*x*log(x) + 27*x + 3, x)", "nxt": "27*x**2*log(x) + 3*x", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(20*(-x - 1)*exp(x), x)", "nxt": "-20*x*exp(x)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(7*log(x) + 7, x)", "nxt": "7*x*log(x)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(36*(-x - 1)*exp(x), x)", "nxt": "-36*x*exp(x)", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(-30, x)", "nxt": "-30*x", "level": 3, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(8*cos(x) + 8 - 3/x, x)", "nxt": "8*x + 8*sin(x) - 3*log(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(3*x**2 + 9 + 5/x, x)", "nxt": "x**3 + 9*x + 5*log(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(8*x**3 + 8, x)", "nxt": "2*x**4 + 8*x", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(3*exp(x) + 6, x)", "nxt": "6*x + 3*exp(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(10*x + 9/x, x)", "nxt": "5*x**2 + 9*log(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(2*exp(x) + 7*sqrt(2)*cos(x + pi/4), x)", "nxt": "2*exp(x) + 7*sqrt(2)*(sin(x + pi/4)/2 + sin(x + pi/4)/2)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(2*x + 3*exp(x), x)", "nxt": "x**2 + 3*exp(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(5 + 2/x, x)", "nxt": "5*x + 2*log(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(6*exp(x), x)", "nxt": "6*exp(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(6*x**2 + 9*cos(x) - 8, x)", "nxt": "2*x**3 + 9*sin(x) - 8*x", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(12*x**3 - 7*exp(x) - 7*sin(x) + 5, x)", "nxt": "3*x**4 - 7*exp(x) + 5*x + 7*cos(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(9 - 6/x, x)", "nxt": "9*x - 6*log(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(2 + 4/x, x)", "nxt": "2*x + 4*log(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(15 - 6*exp(x), x)", "nxt": "15*x - 6*exp(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(32*x**3 - 3*cos(x), x)", "nxt": "8*x**4 - 3*sin(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(6*cos(x) - 5/x, x)", "nxt": "6*sin(x) - 5*log(x)", "level": 2, "round": 1, "source": "model", "gate": "pending"}
+{"cur": "Integral(20*x**4 + 9, x)", "nxt": "4*x**5 + 9*x", "level": 2, "round": 1, "source": "model", "gate": "pending"}
