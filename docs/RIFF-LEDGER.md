@@ -881,3 +881,29 @@ to the collaboration itself.
   untracked WSL drift by construction). Extendability is the
   point (Artin). Slotted: post-index, walked through step by step
   with Artin. MCP-SSH reconsidered after the wrapper exists.
+
+- **"Reverse LLMUE: answer -> all possible steps; a reverse
+  quantum LLM"** (Artin, 2026-07-26): lineage assembled — (1) the
+  farm IS answer-first (make_integrate draws F, differentiates);
+  (2) reverse-engine chains MEASURED to pay (+50% steps, 07-12);
+  (3) closest ancestor = his own banked TEMPORAL PINCER (fwd +
+  bwd models, oracle at the junction; never run) — reverse-LLMUE
+  = the pincer's backward half + distribution rows (emit the
+  distribution over VERIFIED predecessors; each checkable in ms
+  by forward rule application); (4) the bidirectional-cheat
+  fence rides from Future-Work: reverse models on reverse-sampled
+  corpora can memorize the GENERATOR — exclude-guarded
+  skeleton-split controls mandatory from birth. LLMUE status
+  corrected in-bank: half-proven (flips carry capability,
+  exchange converts, retention free); the dead half is
+  teacherless self-practice — which the reverse model would
+  supply at inference speed (a learned millisecond peeler =
+  teacher-signal without farm latency). Superposition read:
+  in-SEQUENCE step-clouds just measured hostile (traces 37); the
+  surviving representations are soft-label distributions and the
+  two-model pincer (superposition across models, oracle-collapsed
+  at the junction). CHEAPEST CELL banked: reverse-pairs at d256
+  (50/50 nxt->cur + forward vs forward-only, matched dose, one
+  ~20-min birth) — the dual-direction crystal, entry ticket to
+  the pincer. Attribution: Artin (riff, and the original pincer);
+  house (lineage + fences + cell).
