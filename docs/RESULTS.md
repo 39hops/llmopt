@@ -6768,3 +6768,23 @@ generation-toward-complexity is the harder direction; band guess
 40-70%; (3) 3E >= 1P (pairs-shaped diet; the ladder's 3E column
 recovered batch damage). The read arms R2 (pincer v1) and sets
 B-a's bar for B-b.
+
+## PINCER R1b PREP: (t, rule, site) labels are 68% recoverable by engine replay — no axiom ask needed for the pilot (2026-07-26 night)
+
+scratch/pincer_r1b_labels.py, 300 gen-4 rows: replay
+successors(cur, use_macros) and skeleton-match nxt. READ: unique
+204 / ambiguous 0 / miss 96 -> **68% of farmed rows yield an
+exact (rule@site, child) label with ZERO ambiguity** (move names
+already carry the site: `i_const@Integral(3, x)` — B-b's
+score-over-enumerated-moves frame gets real (rule, site) labels
+free). MISS ANATOMY (named, all levels; L1-L2 heavy): farmed
+rows that are ORACLE-valid but not single engine moves — (a)
+constant-of-integration offsets (`Integral(9,x) -> Integral(9,x)
++ 5` is equivalence-valid under the d/dx oracle; no engine rule
+mints it), (b) multi-rule skips (whole antiderivative in one
+hop, LLM-farmed compression). CONSEQUENCE for B-b's objective
+bracket: imitation labels (i) cover 68% of the corpus; value
+labels (ii) and contrastive (iii) sidestep replay entirely
+(engine enumerates, oracle scores — no true-move needed) and
+cover everything. The axiom ask (annotate math chains at mint)
+stays BANKED for the promotion tier, not blocking the pilot.
