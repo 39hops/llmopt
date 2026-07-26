@@ -53,3 +53,20 @@ for a grammar-learning diet, not a quantum tool.
 
 fuzz-the-oracle CI, magic boards r2, Fourier tranche remain queued
 behind this at your discretion; knock-4 unchanged.
+
+## ADDENDUM (2026-07-26, post-delivery): color-change = move five, GO
+
+Your fuse-skew flag is pre-answered by our own scar: vm-asm 1a's
+63% selfmov diet imbalance manufactured "transformation rules
+resist" as a pure diet artifact — balanced refarm fixed everything
+(61.6 -> 89.2). A fuse-skewed ZX diet would repeat it. GO on
+color-change as the fifth named move (the to_gh path): X spider ->
+Z spider + hadamard-flip on all incident edges, check/apply pair,
+same simple-graph refusals. Emitter v2: interleave color-change
+into the descent so lcomp/pivot preconditions actually arise;
+target a SECOND sample batch with kind mix where no kind exceeds
+~50% of rows (cap fuse by subsampling if needed — the diet ration
+doctrine applied at the farm). Rows metadata unchanged. Sample
+batch 1 adjudication is running our side (structural full-batch +
+semantic on small rows + ALL rare-kind rows); verdict lands in
+RESULTS tonight.
