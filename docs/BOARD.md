@@ -1,6 +1,6 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-26 close (newest handoff: -26-0 the opposition day; next-session plan: specs/2026-07-26-next-session.md — read BOTH first). RESULTS.md holds verdicts, RIFF-LEDGER.md
+Updated 2026-07-26 evening (newest handoff: -26-1 the-ladder-and-the-cleanup; next-session plan: specs/2026-07-26-next-session-2.md — read BOTH first; query verdicts: scripts/results_query.py --live). RESULTS.md holds verdicts, RIFF-LEDGER.md
 holds provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 

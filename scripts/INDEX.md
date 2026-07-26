@@ -839,6 +839,10 @@ Generate/refresh docs/results-index.jsonl from RESULTS.md.
 - `infer_type(title)`
 - `infer_threads(title)`
 
+### scripts/gen_scoreboard.py
+Generate docs/SCOREBOARD.md from results-index.jsonl — the curated current-truth view (live, verdict-bearing entries grouped by thread, newest first). NEVER hand-edit SCOREBOARD.md; deepen the index instead and regenerate.
+
+
 ### scripts/gen_syndrome_labels.py
 Syndrome-decoder labels (Artin's qLDPC riff, 2026-07-09): the rule-fire bits are syndrome extraction (cheap local checks that localize how a state deviates from the solvable subspace); a CODE also decodes — syndrome pattern -> which correction to apply. Here: re-solve known-solved problems recording the FIRST RULE of the winning derivation, so a tiny net can learn syndrome -> opening move.
 
