@@ -8,11 +8,10 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Status | Pointer |
 |---|---|---|
-| **THE COMPLEX/ZX PROGRAM — ZX COLUMN IN FLIGHT** | math column COMPLETE (fp32 64 / cplx_none 63 / G5-latent 66 / G5-dep 62 / M5 62 — rotation FREE not profitable on math); zx_farm1 ADJUDICATED PASS (99,022 rows, 10th clean batch); vocab-47 ZX births RUNNING on Mac (M5-ZX -> G5-ZX -> none-ZX, gates chained via new gate_zx instrument) — the alphabet-follows-domain DECIDER | RESULTS 2026-07-26 pre-reg; specs/2026-07-26-complex-zx-program.md |
-| **THE OPPOSITION LADDER (CLOSED)** | S4 58 (binary died of resolution); Z1 0/120; Z1S 0 at ANY LR (hot-LR 1e-3 moved loss 1.70->1.10, gate still 0) — excitation-only = CAPABILITY WALL; per-weight sign is where opposition lives; 6ep cell does NOT fire | RESULTS 2026-07-27 entries |
-| **d256 PILOT SUBSTRATE (adopted)** | streaming decomposition FINAL: cooldown +4 / self-pacing +3 / template-refresh +2 (59, directional) / Muon NEGATIVE (10/34 v 45, loss-gate dissociation x3 of the arc) — epoch keeps -8; next candidate for the residual = format x schedule (Artin's riff, banked) | RESULTS 2026-07-26/27 |
-| **RETENTION (v5 s2) BOOKED** | 6->10/100 resolution, ZERO decay in any column for 120 min — metabolic feeding purely additive at v5 dose; no tau to fit (hotter session needed); surprise-gating still untested (not instrumented in v5) | RESULTS 2026-07-27 |
-| **DISTANCE: CLOSED PERMANENTLY** | joint-perm (correct gauge subgroup) recovers 6% — 8th never-score-by-distance leg; function space is the only distance; U(n) variant awaits complex births (different group) | RESULTS 2026-07-26 |
+| **THE PINCER PROGRAM (next up, Mac)** | living spec w/ 2 amendments: two crystals, conjecture(oneshot-54)+peel+meet, B-b = score-over-enumerated-moves (NNUE-class), Artin's ternary-faceplant bet pre-registered; R0 free, R1 tonight | specs/2026-07-26-reverse-llmue-pincer.md |
+| **ZX CONTINENT (column booked)** | alphabet-follows-domain DEAD (G5 32 ~ M5 31; none 36); first graph crystals WORK (parsefail 0/480); NEXT: math+ZX union (federation floor: count v CLASS) + seed-2, armed on 3080 GO | RESULTS 2026-07-26; next-session-2 |
+| **THE FORMAT LADDER (booked)** | pairs wins all 7; interaction law SPLITS BY DIMENSION (epochs recover batch not context damage); oneshot-54 surprise feeds the pincer; formats are SUBSETS (complementarity = substrate axis) | RESULTS 2026-07-26 + THEORY row |
+| **ORG/INDEX (live)** | results-index.jsonl 269 entries + results_query (--live/--chain); tag results-pre-index; WSL clean (attic'd, manifested, archived); wsl.sh; SCOREBOARD + CLI wrapper next | specs/2026-07-26-results-index.md |
 
 | Thread | Status | Pointer |
 |---|---|---|

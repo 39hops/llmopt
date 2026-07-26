@@ -36,6 +36,36 @@ def infer_type(title):
     return "verdict"
 
 
+THREAD_RULES = [
+    (r"stream|epoch|cooldown|clade-gated", "streaming"),
+    (r"format ladder|revpairs|traces|oneshot|delta|randpack", "format-ladder"),
+    (r"ternary|alphabet|binary|bits|int[0-9]|GPTQ|Lloyd|quant|codebook|M4|M5|S4|G5|P2", "alphabet"),
+    (r"\bZX\b|zx_farm|T-count", "zx"),
+    (r"Z1|opposition|Dale|sign", "opposition"),
+    (r"complex|NNUE|euler|rotation|G16", "complex"),
+    (r"metabolic|LLMUE|retention|flip|exchange|absorption|practice", "metabolic"),
+    (r"GRPO|reward|RL\b|shaped", "rl"),
+    (r"gauge|distance|perm|Procrustes", "gauge"),
+    (r"width|capacity|113M|400M|45M|W\*|W_min|d256|scaling", "width"),
+    (r"axiom|adjudicat|hybrid|qualification|tranche|Phase [A-D]", "axiom"),
+    (r"series|poly|physics|energy|bridge|union|federation|gen-[0-9]|vm-asm|continent|ODE", "continents"),
+    (r"template|warm birth|calculator|equation|birth", "birth"),
+    (r"precision|fp64|fp32|bf16|TF32|Ozaki|RNS|exact", "precision"),
+    (r"estimator|magic|syndrome|dispatcher|router|policy|regret|probe|instrument|census|sidecar|sigma", "instruments"),
+    (r"packing|--fast|nopack", "packing"),
+    (r"kernel|Metal|GEMV|KV|speed|wall|43x", "speed"),
+    (r"engine|beam|best-first|L[0-9]\b|autopsy|rule", "engine"),
+]
+
+
+def infer_threads(title):
+    out = []
+    for pat, t in THREAD_RULES:
+        if re.search(pat, title, re.I) and t not in out:
+            out.append(t)
+    return out[:3]
+
+
 old = {}
 if DST.exists():
     for line in DST.read_text().splitlines():
@@ -59,6 +89,7 @@ for ln, line in enumerate(SRC.read_text().splitlines(), 1):
          "type": t}
     if t == "amendment":
         e["needs_link"] = True
+    e["threads"] = infer_threads(title)
     prev = old.get(eid, {})
     for k in ("threads", "verdict", "amends", "superseded_by"):
         if k in prev:
