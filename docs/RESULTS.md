@@ -5109,3 +5109,32 @@ contrast without signs at some granularity. The named next cell
 (reviewer): z1 + SIGNED PER-CHANNEL scales — is sign sufficient
 at channel granularity? Queued for a future window (3080 held for
 Artin from here).
+
+## Closing riders on the Z1 arc (2026-07-25 close)
+
+1. Reviewer over-prediction RECORDED (its own ask): the strong
+   cone claim predicted deterministic blindness; seed-2 refuted
+   it. Weak form survives (cone-confined rows => degraded
+   diversity => capability death, both seeds 0-class). Its bets
+   (z1-born 49; strong cone) both booked against it — as were
+   Fable's (bf16-width-debit; the "+3 real" width read). The
+   protocol, not any predictor, is the asset.
+2. FREE DATAPOINT: collapse is NON-MONOTONE in sparsity (83%
+   zeros = blind seed; 94% = input-dependent seed) — direct
+   evidence against the sparsity-driven hypothesis; the
+   matched-sparsity-ternary control arm is DROPPED as demoted.
+3. STREAMING RED-TEAM (recorded before it seeds a prior): Z1-s2's
+   fast convergence is DEGENERACY, not efficiency — a 94%-zero
+   net has less to learn; the streaming-birth motivation stands
+   on surprise-gating + the zero-epoch 0/120 floor only.
+4. Queued free diagnostics for the next 3080 window (held for
+   Artin now): attention-entropy + hidden-state cos on BOTH Z1
+   seeds (rescues or kills the weak cone mechanism); the three
+   law-converting cells in priority order: born-S4 v born-M4
+   (matched 2 bits), z1+signed-per-channel-scale, max-asymmetric
+   {0,1,2,3} gauge arm.
+5. Method line (the day's meta-result): n=1 MECHANISMS are the
+   fragile class — two mechanisms (strong cone, LN-inhibition)
+   were killed or halved by single confirmation seeds within
+   hours; n=1 numbers were already fenced. Confirmation seeds on
+   mechanisms join the doctrine.
