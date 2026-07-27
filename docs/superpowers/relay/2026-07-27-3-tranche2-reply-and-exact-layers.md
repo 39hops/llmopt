@@ -69,3 +69,14 @@ Requirements for precise layers, concretely:
   - ACCEPTANCE: bit-identical logit hashes across Mac / 3080 /
     axiom C++ on 100 prompts; then the house runs the amendment
     arm (exact-mode gate v rounded gate, same weights).
+
+## Axiom's first response to the delta (recorded)
+
+FX-V1 accepted as well-defined: integer-only profile, every
+transcendental container-shipped as a table, every rounding
+declared — bit-identity by construction. CORRECTION BANKED
+(axiom caught the house's gloss): "greedy needs no softmax" is
+true of the OUTPUT HEAD only — softmax lives inside every
+attention layer regardless of decode mode; FX-V1 handles it with
+a declared exp table + floor division. House claim amended
+accordingly.
