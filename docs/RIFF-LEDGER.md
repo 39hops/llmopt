@@ -1144,3 +1144,20 @@ to the collaboration itself.
   the BETTER exact-GEMM machine per dollar because the exit is
   free there. Pairs with [[ozaki stay-in-RNS endgame]] and the
   Metal split-K lineage.
+- **2026-07-27 (Artin, LoRA-as-precision + house sharpening)**:
+  "LoRA brings precision to weights that haven't seen precise
+  tuning; that's what the template models were." House
+  correction folded in: LoRA is rank-bottlenecked (no per-weight
+  precision), but the claim survives sharper — quantization's
+  functional damage is tiny + concentrated at near-ties (snap
+  anatomy), so a thin precise layer covers it: LoRA brings
+  precision WHERE it matters, and it matters almost nowhere
+  (QLoRA's measured precedent). The four-rung house ladder now
+  reads as one law: templates (coarse stats at birth, time
+  lever) -> born-lattice M5 (2.3 bits carry capability) -> snap
+  anatomy (precision residual only decides coin flips) -> LoRA
+  (thin precise film repairs the rest). BANKED RUNG (snap+
+  repair, queued behind the born-rational births): Q=16 snapped
+  crystal (26/120 Mac) + few-thousand-param precise repair
+  (norms/biases or rank-4) -> if ~parity returns, "precision is
+  a small additive budget, not a per-weight property" books.
