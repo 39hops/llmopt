@@ -184,6 +184,35 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
         opt, max_lr=lr, total_steps=steps_total, pct_start=0.03)
     amp = (torch.autocast(device_type="cuda", dtype=torch.bfloat16)
            if fast and dev == "cuda" and not fp32 else None)
+    if os.environ.get("SR_BF16") == "1" and amp is not None:
+        # Stochastic-rounding bf16 weight cast (the open lever from
+        # the fp32-birth verdict, RESULTS 2026-07-17): fp32 master ->
+        # bf16 by adding uniform noise in the 16 dropped bits, then
+        # truncating; straight-through gradient to the fp32 master.
+        # Scope: nn.Linear weight/input cast sites only — attention
+        # matmuls and everything else keep autocast RNE.
+        class _SRCast(torch.autograd.Function):
+            @staticmethod
+            def forward(ctx, w):
+                i = w.detach().contiguous().view(torch.int32)
+                r = torch.randint(0, 1 << 16, i.shape, device=w.device,
+                                  dtype=torch.int32)
+                return ((i + r) & -65536).view(torch.float32) \
+                    .to(torch.bfloat16)
+            @staticmethod
+            def backward(ctx, g):
+                return g.to(torch.float32)
+        import torch.nn.functional as _F
+        _linear = _F.linear
+        def _sr_linear(x, w, b=None):
+            if w.dtype == torch.float32 and torch.is_autocast_enabled():
+                return _linear(x.to(torch.bfloat16), _SRCast.apply(w),
+                               b.to(torch.bfloat16) if b is not None
+                               else None)
+            return _linear(x, w, b)
+        _F.linear = _sr_linear
+        print("SR_BF16 ACTIVE: stochastic-rounding bf16 weight cast "
+              "(linears; straight-through grad)", flush=True)
 
     import contextlib
     for ep in range(start_ep, EPOCHS):

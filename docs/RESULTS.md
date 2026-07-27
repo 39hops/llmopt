@@ -7271,3 +7271,26 @@ honestly died. wsl.sh launch now mktemps a unique job file per
 launch. Seed-2 artifacts verified by hand (ckpt 00:31, gate log
 00:35); marker set manually on that evidence; job 3 relaunched
 and confirmed running (birth in flight).
+
+## PRE-REG: SR-bf16 birth (JOB 4, 3080; hold released by Artin GO 2026-07-27)
+
+The open lever from the fp32-birth verdict (2026-07-17: fp32 69/
+120 v bf16-RNE 66/120, identical loss — the debit is trajectory-
+only). ARM: gen-4 std --fast recipe, one variable = SR_BF16=1
+(new in train_mathnative.py): fp32 master -> bf16 weight cast by
+uniform noise in the 16 dropped bits + truncate, straight-through
+grad. SCOPE DECLARED: SR at nn.Linear weight/input cast sites
+only; attention matmuls + everything else keep autocast RNE.
+Local check: SR mean unbiased to ~4e-5 rel (RNE bias ~1e-3 rel);
+outputs exactly representable bf16. Same seed (default 0), data,
+gate (gate_ckpt_cuda 120) as the booked pair. Chained behind JOB
+3 (scratch/night_sr.sh, honest-death waiter, success-only marker).
+PREDICTIONS: (1) SR lands ABOVE bf16-RNE 66 — unbiased rounding
+removes the trajectory drift; 68-69-class = lever CONFIRMED
+(bf16 speed, fp32 capability; births switch to SR). (2) 66-67 =
+partial/null — weight-cast-only scope insufficient (activation/
+grad rounding carries the rest of the debit); book honestly,
+extend only with a named next site. (3) below 65 = SR noise
+itself taxes this scale. FENCE: math-gate seed sigma at 45M is
+tighter than ZX's (~5.7-class) but nonzero — a 1-solve edge
+books as a tie.
