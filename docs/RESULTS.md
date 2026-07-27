@@ -7780,3 +7780,27 @@ law). (5) rat16+repair: freeze the exact lattice, train ONLY
 thin-film's decisive read: recovering >= half the rat16 deficit
 books "precision is a small additive budget"; no recovery kills
 the film claim at 45M. scratch/quick_exact_3080.sh.
+
+## BORN-RATIONAL VERDICT: the exact-lattice birth BEATS its fp32 control at the single-seed bar (2026-07-27 night)
+
+Paired Mac arms, one variable (RAT_Q=6 STE), same recipe/diet/
+seed/instrument: fp32 control 60/120 @ 60.63 {3:21,4:4,5:16,
+6:7,7:12}; RAT_Q=6 LATENT 66/120; **RAT_Q=6 DEPLOYED (every 2-D
+weight exactly s*p/q, q<=6, ~5-6 bits/wt) 65/120 @ 63.05
+{3:21,4:8,5:16,6:7,7:13} — +5 OVER CONTROL, exactly the >=5
+single-seed bar.** VERDICTS: (1) Artin's born-exact thesis
+("train with no error from step 0") lands ABOVE its pre-reg —
+the bars asked for parity-within-2; the arm cleared the control
+by the win bar instead. Single seed: books as a bar-level win,
+seed-2 replication queued to confirm. (2) Deploy tax ~1 (66->
+65): STE converged the latents onto the lattice, mirroring
+G5-ZX's latent=deployed. (3) The +5 concentrates at L4 (4->8,
+doubled) — the lattice constraint helps exactly where the
+control is weakest, consistent with discrete-alphabet
+regularization (M5/ternary lineage), now with EXACTNESS free on
+top. (4) Composition with the day's ladder: born-on-lattice at
+~5.5 bits BEATS what post-hoc snapping achieves at 10.5 bits —
+the snap-vs-born gap is now measured IN THE SAME DAY, both
+directions. Instrument fence: Mac gate numbers, Mac-born pair;
+transports nowhere. NEXT: seed-2 replication; RAT_Q on cuda at
+45M-class if the quick battery's rat arms read clean.
