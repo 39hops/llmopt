@@ -989,3 +989,42 @@ to the collaboration itself.
   as scratch->scripts. Most of the original pain already solved
   (wsl.sh, gitignore guards, gate_pp); build at the next
   plumbing window, not before.
+
+- **The COMPOSITE MACHINE (Artin, 2026-07-26 night): "maybe we're
+  trying too hard to stick everything into an LLM"** — the target
+  is a federation of learned components, each optimized for where
+  ITS variance lives (small models, math/physics/q-circuits only):
+  forward crystal (policy/emission), reverse scorer (B-b,
+  score-over-enumerated-moves), MAGIC predictor (quantum-chem
+  certification methods, deployed variance-gated — the measured
+  law: magic's +1 lives exactly at int L4 where variance lives;
+  Liouville-as-Gottesman-Knill), REGRET head (trace-fate AUC .914
+  — abandonment gating), LLMUE/exchange as the metabolism.
+  Standing rider: EVERY such tool applies at ANY stage —
+  inference, training, repair/practice — try spins per stage, not
+  once. Attribution: Artin (composite frame + any-stage rider +
+  Dijkstra/maps spin + LLMUE-for-pincer); house (mapping onto
+  measured components; the meet-is-bidirectional-search
+  observation). Measured support already on the books: engine =
+  bf + NNUE-h + magic + markov (the composite ALREADY beat every
+  monolith at 113-114/120); syndrome-policy DAgger arc (state-
+  aware ranking reaches what no global knob can); the balance
+  lesson (round-4 pure-L5 regression: composite parts need
+  balanced diets, not domain-skewed ones).
+
+- **Pincer MEET = BIDIRECTIONAL BEST-FIRST (the maps spin, made
+  precise)** (Artin + house, same exchange): the pincer's meet
+  phase is literally bidirectional shortest-path search — and the
+  house already measured the frontier discipline (bf beats beam
+  113 v 91; asynchrony +12, dedup +21, NNUE-h +10; greedy g=0
+  wins because any solution is a proof — path length is not a
+  cost). Concrete cells banked: (R8) meet v1 = forward bf
+  frontier + backward peel SET as goal states, contact by
+  skeleton hash (the transposition table IS the meet detector,
+  already built); (R9) MAGIC-gated peeling — a peeled predecessor
+  carrying a certified non-elementary integral node is a DEAD
+  backward branch (theorem-safe prune, backward edition — new
+  deployment of the only zero-false-positive instrument); (R10)
+  regret-gated peel abandonment (the AUC-.914 probe as the
+  backward model's give-up signal). Fences: equal-total-budget
+  economics (regret-round-2 lesson) binds every meet cell.
