@@ -7085,3 +7085,21 @@ B-b peel readout) should be mass-descending when logp is
 already in hand — sample_wave_lp RETURNS lps; the reorder is
 one sort, zero cost. Adopted for new instruments; retrofits
 opportunistic.
+
+## PRE-REG: S1 — the frontier battery + persistent value cache (calibrated-scorer spec, cell 1; 2026-07-27 pre-dawn, Artin's confirm)
+
+Instrument scratch/scorer_s1_battery.py (spec
+2026-07-27-calibrated-scorer.md). Candidates: L6/L7 gate roots +
+stall-endpoint states from pp sidecars; enumerate legal sets;
+fork-isolated engine solves (budget 150, 25s wall, 6 workers)
+into the persistent skeleton-hash cache (data/value_cache.jsonl
+— deterministic labels, computed once, forever). KEEP: states
+with VALUE VARIANCE (mixed solve/no-solve, or graded plies
+spread >=3). PREDICTIONS (house): (1) the frontier de-saturates
+— kept battery's mean solve fraction lands 0.3-0.7 (v the
+saturated pool's 0.95); (2) >=40 states survive (enough for S2
+training-signal reads at >=5-per-level honesty); (3) THE
+DECIDING READ: the length-only ranker DEGRADES on mixed states
+(spearman < 0.4, top1 well under 100%) — if length still wins
+at the frontier, S2's bar is length-not-chance and the scorer
+must beat IT.
