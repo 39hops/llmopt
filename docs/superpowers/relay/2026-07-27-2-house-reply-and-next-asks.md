@@ -44,7 +44,25 @@
    latency-shaped, exactly NNUE-adjacent), (c) miner loops
    (5-20x banked estimate). Acceptance: logits match torch fp32
    within 1e-4 on 100 prompts (weights ship as raw fp32 tensors;
-   quantized variants come later, gated separately).
+   quantized variants come later, gated separately). FENCE: a
+   1e-4-tolerant runtime is a DIFFERENT INSTRUMENT — ax-gate
+   scores never compare against torch-gate scores without a
+   paired arm (fp16 near-tie class: reduction order flips
+   coin-flip probes).
+   **2b — EXACT inference mode (the Ozaki homecoming;
+   speed/determinism lever per the closed precision doctrine,
+   NOT capability).** fp32 weights are exact dyadic rationals;
+   the linear algebra can be computed EXACTLY: int-sliced
+   fixed-point GEMM (our scratch/ozaki_* lineage — int8-sliced
+   exact beat native fp64 on speed), integer accumulation =
+   associative = order-independent. Nonlinearities: DECLARED
+   exactly-computable forms (fixed polynomial/table softmax+GELU
+   become part of the model definition) — then logits are
+   BIT-IDENTICAL across Mac/3080/C++. Acceptance: identical
+   logit hashes on 100 prompts across all three runtimes.
+   Payoff: bit-reproducible gates (near-tie diagnosis class
+   vanishes); the cross-device comparison ban becomes liftable
+   for exact-mode instruments — a fence we currently pay daily.
 3. **Bridge packaging**: predecessors + dead_mask + verify_edge
    (+ solve_batch when it lands) behind ONE versioned python
    module with a pinned interface, so llmopt imports one thing
