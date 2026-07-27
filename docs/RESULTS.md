@@ -7038,3 +7038,22 @@ validity, 9x verify overhead, zero meets at 5.7x budget) and is
 DEMOTED from the protocol; B-a exists only as B-b's baseline.
 R6/R-next: build the B-b scorer + frontier battery; re-run R8
 with engine-enumerated inverse peels before any promotion talk.
+
+## PRE-REG: R0b — collapse-ordered readout (the honest Grover residue; Artin's push, 2026-07-26 late)
+
+CLAIM UNDER TEST: amplitudes pay at the READOUT layer as an
+oracle-call budget — checking candidates in descending model-mass
+order reaches the first verified solution in fewer oracle calls
+than random order (Grover's economic content, classical form; no
+register, no unitary, no sqrt claim). Instrument
+scratch/pincer_r0b.py: 120 gate problems, oneshot k=16 sampled
+candidates (2 waves), all oracle-checked once (instrument cost),
+seq-logp wave read; metric = oracle calls to first solving
+candidate under (a) mass order, (b) sampling order, (c) random
+expectation ((n+1)/(h+1) closed form). PREDICTIONS (house):
+(1) mass order beats random by >=1.5x mean calls-to-hit (R0
+showed argmax carries most information — the wave is
+informative); (2) mass order ~ sampling order (T-sampling
+already reads the same distribution — if so, the "amplification"
+is free and already deployed); (3) the saving concentrates where
+h/n is small (few needles — exactly Grover's regime).
