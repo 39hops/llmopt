@@ -7130,3 +7130,22 @@ the calibration territory, exactly where B-b's distribution
 output is the differentiating skill. Deliverables live:
 data/scorer_battery_v1.jsonl + data/value_cache.jsonl (647
 labels, permanent).
+
+## PRE-REG: S2 data leg — the listwise scorer's training table (2026-07-27 pre-dawn)
+
+scratch/scorer_s2_data.py: stratified sample (400 unique
+states/level) of corpus states -> full legal enumeration ->
+per-child value labels (cache-aware fork solves, budget 150, 8s
+walls; every solve extends data/value_cache.jsonl permanently) +
+replayed true-move label (the R1b mechanism). S2 arms train
+LISTWISE on the same MicroLM substrate (forward all children,
+softmax over set, CE against target): arm (i) target = smoothed
+one-hot on true move; arm (ii) target = softmax(-plies) — the
+Dijkstra head. Same states, matched labels; eval on the S1
+battery (Spearman v value, needle oracle calls, mixed-tail
+ordering) v the length-only + pairs_3e-implicit controls.
+PREDICTIONS (house): (1) true-move coverage lands ~68% (R1b
+replicates at scale); (2) value-label yield >85% of children
+labeled within the 8s wall at L1-5, degrading at L6-7 (honest
+unlabeled mass reported); (3) no interference verdict yet — the
+training race itself pre-registers at birth time.
