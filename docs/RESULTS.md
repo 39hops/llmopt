@@ -7804,3 +7804,14 @@ the snap-vs-born gap is now measured IN THE SAME DAY, both
 directions. Instrument fence: Mac gate numbers, Mac-born pair;
 transports nowhere. NEXT: seed-2 replication; RAT_Q on cuda at
 45M-class if the quick battery's rat arms read clean.
+
+## PRE-REG: born-rational seed-2 replication (2026-07-27 late night, before the run)
+
+The +5 win replicates or it doesn't: same paired arms
+(fp32 control v RAT_Q=6 STE), same recipe/diet/instrument,
+BIRTH_SEED=2 both arms. READINGS: rat-dep beats control again
+by >=3 = the win CONFIRMS (two seeds, same direction, mean +4);
+delta in [-2, +2] = demotes to parity (thesis still books —
+exactness free); control wins by >=3 = seed-1 was a fluctuation,
+verdict amended to parity-at-best. L4 anatomy read again (the
+doubling was the seed-1 signature).

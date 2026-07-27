@@ -1161,3 +1161,32 @@ to the collaboration itself.
   crystal (26/120 Mac) + few-thousand-param precise repair
   (norms/biases or rank-4) -> if ~parity returns, "precision is
   a small additive budget, not a per-weight property" books.
+- **2026-07-27 late (Artin, four riffs off the born-rational
+  win)**: (1) **Gaussian-integer weights** — born-rational on
+  the complex-FFN: (re, im) each on the exact lattice = weights
+  in Z[i]*s/q, "completely whole" complex numbers. Distinct
+  from the dead rotation question: the live mechanism is now
+  LATTICE REGULARIZATION (+5 measured), and whether it composes
+  with complex pairing is unmeasured. Queued behind seed-2
+  replication. Reverse-LLMUE tie: an exact scorer crystal slots
+  into the pincer's B-b leg via FX-V1 (E2 path already carries
+  it). (2) **Exactness ladder honesty**: tonight's win makes
+  WEIGHTS exact; gradients/optimizer/activations still round.
+  Full "never round anywhere" = weights (done) -> inference
+  (integer twin + FX-V1, in flight) -> training step (RNS rung,
+  spec'd; d2 says bit-identical outcome, wall lever) ->
+  activations (certified tables). Capability-precision stays
+  exhausted per doctrine; exactness continues as determinism/
+  speed/auditability. (3) **Annealed snap** — multiple snapback
+  ops: progressive lattice descent (Q=64 -> repair film -> Q=32
+  -> repair -> ...) instead of one-shot; repair budget aimed at
+  near-ties (the only failure site the anatomy found). (4)
+  **Near-tie repair at DECODE time** — "coinflip at the end of
+  the search": the engine already meters this (entropy-gated k,
+  +15 premium); the weight-space twin is film-repair trained on
+  near-tie-margin loss. Both banked.
+- **2026-07-27 late (Artin, diet direction)**: MORE L4/L7
+  multi-step rows — the born-rational +5 concentrated at L4 and
+  the union tail is thin there; axiom-on-3080-CPU farming
+  candidate (GPU busy, CPU idle) — L4-L7 chain farming is the
+  named task if Artin boots axiom there.
