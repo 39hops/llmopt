@@ -53,15 +53,17 @@ before any judge is built (meta-pattern, 5 occurrences).
   its +1 was measured to live).
 - **S6 — regret rider, GATED**: fires only if S4 shows readout
   budget binds. No judge before its variance is measured.
-- **S7 — inverse-move enumeration: RELAYED to axiom Fable**
-  (2026-07-27-0 relay; acceptance = >=95% true-predecessor
-  recovery on 200 replay-labeled edges, <=100ms median). R8's
-  re-run waits on it; S2-S4 do not.
-- **S8 — axiom tranche riding this spec** (Artin, 2026-07-27):
-  fuzz-the-oracle CI (urgency raised by the persistent value
-  cache — verifier bugs would fossilize into labels); magic
-  boards r2 (batch-mask API for S5); Fourier grammar probe
-  (20-row slice, ZX playbook, gate-before-volume). knock-4
+- **S7 — inverse-move enumeration: DELIVERED by axiom
+  (2026-07-27, ACCEPTANCE PASS 98% / 12.3ms median v 95%/100ms
+  bars; relay -1 reply)**. R8 honest re-run UNBLOCKED; house
+  spot-checks 20 edges through the bridge before wiring.
+- **S8 — axiom tranche: DELIVERED except the hold** (relay -1):
+  fuzz-CI green (pytest bridge fuzzes production verify_edge —
+  adopt into our CI); magic r2 dead_mask batch API ~0.4ms/state
+  (S5 consumer waits on S2 readout; finding banked: stuck !=
+  Liouville-dead, zero deads on both stuck dumps); Fourier probe
+  PASS 20/20 — house answer: stay in Q, amplitude-phase is
+  READOUT not state; first volume batch approved. knock-4
   stays house-run and [HOLD] until Artin's explicit fire.
 
 ## Fences
