@@ -78,7 +78,8 @@ print(f"{len(enum)} states enumerable; {len(todo)} distinct children",
 cache = {}
 if os.path.exists(CACHE):
     for r in map(json.loads, open(CACHE)):
-        if r["budget"] == BUDGET:
+        # censored != fact: solved None (wall-kill) never a hit
+        if r["budget"] == BUDGET and r.get("solved") is not None:
             cache[r["key"]] = r
 work = [c for k, c in todo.items() if k not in cache]
 print(f"{len(cache)} cached; {len(work)} to solve", flush=True)
@@ -110,7 +111,7 @@ def _worker(idx, exprs):
                 v = q.get(timeout=10)
             except Exception:
                 v = None
-        row = {"key": norm(es), "budget": BUDGET}
+        row = {"key": norm(es), "budget": BUDGET, "wall": WALL}
         row.update(v or {"solved": None})
         out.write(json.dumps(row) + "\n")
         out.flush()
@@ -127,8 +128,10 @@ with open(CACHE, "a") as cf:
         f = f"data/vcache_shard{i}.jsonl"
         if os.path.exists(f):
             for line in open(f):
-                cf.write(line)
-                cache[json.loads(line)["key"]] = json.loads(line)
+                r = json.loads(line)
+                if r.get("solved") is not None:  # Nones stay
+                    cf.write(line)               # out of the
+                cache[r["key"]] = r              # permanent cache
             os.remove(f)
 print(f"cache now {len(cache)}", flush=True)
 

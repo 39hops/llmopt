@@ -7203,3 +7203,22 @@ goes LIVE (first cross-domain positive at 19M) and gets its own
 pre-registered replication before any law is written; (3) seed-2
 sigma (in flight) fences both reads — a gap smaller than
 sqrt(2)*sigma-class books as a tie.
+
+## AMENDMENT (targets: S1 frontier battery booking + S2 data-leg pre-reg): wall-censored cache rows are not facts (2026-07-27)
+
+Artin's audit question ("is there any rounding anywhere?") found
+a real defect: solve wall-kills were written to the PERMANENT
+value cache as {solved: null} in the same budget-150 namespace as
+real verdicts — 88/647 rows at audit time. Since S1 used 25s
+walls and S2 uses 8s, a cache hit on a censored row silently
+prevents any future farm from retrying at a longer wall:
+"didn't wait long enough" fossilized as "unknown forever" (the
+checkpoint selection-effect's cache-shaped cousin). FIXES (both
+scripts): (1) censored rows never enter the permanent cache
+(kept in-process for table assembly only); (2) cache load treats
+solved=null as not-cached (retryable); (3) rows now record their
+wall. The RUNNING S2 farm predates the patch, so its merge still
+appends Nones — a one-shot strip of all solved=null rows runs on
+farm completion, before the trainer fires. DOCTRINE LINE:
+censored != fact — any permanent store must either exclude
+censored measurements or key them by their censoring parameter.

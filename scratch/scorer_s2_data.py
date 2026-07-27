@@ -26,7 +26,8 @@ from llmopt.train.mathnative import MathTokenizer
 from llmopt.search.derivation import State, successors
 
 PER_LV = int(sys.argv[1]) if len(sys.argv) > 1 else 400
-BUDGET, WALL, WORKERS = 150, 8, 6
+BUDGET, WALL, WORKERS = 150, 8, 8
+ENUM_WORKERS, ENUM_WALL = 8, 10
 CACHE = "data/value_cache.jsonl"
 norm = lambda s: s.replace(" ", "")  # noqa: E731
 tok = MathTokenizer()
@@ -49,22 +50,61 @@ for lv in sorted(by_lv):
     keys += ks[:PER_LV]
 print(f"{len(keys)} states sampled", flush=True)
 
+def _enum_worker(idx, items):
+    # every successors() call is sympy -> fork-walled per state
+    # (SIGALRM doctrine); rows stream so a killed worker's done
+    # states survive
+    out = open(f"data/enum_s2_shard{idx}.jsonl", "w")
+
+    def one(cur, q):
+        try:
+            q.put([(n, sp.sstr(c.expr)) for n, c in
+                   successors(State(sp.sympify(cur)), use_macros=True)])
+        except Exception:
+            q.put(None)
+    for k, cur in items:
+        ctx = mp.get_context("fork")
+        q = ctx.Queue()
+        p = ctx.Process(target=one, args=(cur, q))
+        p.start()
+        try:
+            legal = q.get(timeout=ENUM_WALL)
+        except Exception:
+            legal = None
+        p.join(1)
+        if p.is_alive():
+            p.kill()
+            p.join()
+        out.write(json.dumps({"key": k, "legal": legal}) + "\n")
+        out.flush()
+    out.close()
+
+
+items = [(k, by_cur[k][1]) for k in keys]
+eprocs = [mp.get_context("fork").Process(
+    target=_enum_worker, args=(i, items[i::ENUM_WORKERS]))
+    for i in range(ENUM_WORKERS)]
+[p.start() for p in eprocs]
+[p.join() for p in eprocs]
 enum = {}
-for k in keys:
-    lv, cur, nxts = by_cur[k]
-    try:
-        legal = [(n, sp.sstr(c.expr)) for n, c in
-                 successors(State(sp.sympify(cur)), use_macros=True)]
-    except Exception:
-        continue
-    if len(legal) >= 2:
-        enum[k] = (lv, cur, nxts, legal)
+for i in range(ENUM_WORKERS):
+    f = f"data/enum_s2_shard{i}.jsonl"
+    if os.path.exists(f):
+        for line in open(f):
+            r = json.loads(line)
+            if r["legal"] and len(r["legal"]) >= 2:
+                lv, cur, nxts = by_cur[r["key"]]
+                enum[r["key"]] = (lv, cur, nxts,
+                                  [tuple(x) for x in r["legal"]])
+        os.remove(f)
 todo = {norm(c): c for _, (_, _, _, legal) in enum.items()
         for _, c in legal}
 cache = {}
 if os.path.exists(CACHE):
     for r in map(json.loads, open(CACHE)):
-        if r["budget"] == BUDGET:
+        # censored != fact: solved None (wall-kill) is retryable,
+        # never a cache hit
+        if r["budget"] == BUDGET and r.get("solved") is not None:
             cache[r["key"]] = r
 work = [c for k, c in todo.items() if k not in cache]
 print(f"{len(enum)} states enumerable; {len(todo)} distinct children; "
@@ -97,7 +137,7 @@ def _worker(idx, exprs):
                 v = q.get(timeout=10)
             except Exception:
                 v = None
-        row = {"key": norm(es), "budget": BUDGET}
+        row = {"key": norm(es), "budget": BUDGET, "wall": WALL}
         row.update(v or {"solved": None})
         out.write(json.dumps(row) + "\n")
         out.flush()
@@ -114,8 +154,10 @@ with open(CACHE, "a") as cf:
         f = f"data/vcache_s2_shard{i}.jsonl"
         if os.path.exists(f):
             for line in open(f):
-                cf.write(line)
-                cache[json.loads(line)["key"]] = json.loads(line)
+                r = json.loads(line)
+                if r.get("solved") is not None:  # Nones stay
+                    cf.write(line)               # out of the
+                cache[r["key"]] = r              # permanent cache
             os.remove(f)
 print(f"cache now {len(cache)}", flush=True)
 
