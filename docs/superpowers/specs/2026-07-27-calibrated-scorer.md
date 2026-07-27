@@ -53,9 +53,16 @@ before any judge is built (meta-pattern, 5 occurrences).
   its +1 was measured to live).
 - **S6 — regret rider, GATED**: fires only if S4 shows readout
   budget binds. No judge before its variance is measured.
-- **S7 — engineering item (named, not scheduled)**: true
-  backward peeling needs INVERSE-move enumeration in the engine
-  (un-apply rules). R8's re-run waits on it; S2-S4 do not.
+- **S7 — inverse-move enumeration: RELAYED to axiom Fable**
+  (2026-07-27-0 relay; acceptance = >=95% true-predecessor
+  recovery on 200 replay-labeled edges, <=100ms median). R8's
+  re-run waits on it; S2-S4 do not.
+- **S8 — axiom tranche riding this spec** (Artin, 2026-07-27):
+  fuzz-the-oracle CI (urgency raised by the persistent value
+  cache — verifier bugs would fossilize into labels); magic
+  boards r2 (batch-mask API for S5); Fourier grammar probe
+  (20-row slice, ZX playbook, gate-before-volume). knock-4
+  stays house-run and [HOLD] until Artin's explicit fire.
 
 ## Fences
 
