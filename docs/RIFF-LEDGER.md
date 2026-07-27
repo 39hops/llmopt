@@ -1091,3 +1091,10 @@ to the collaboration itself.
   solve_batch deadline expiries fossilize as solved=False the
   same way our value cache did. The doctrine is about label
   STORES, not about our code.
+- **2026-07-27 (axiom, prior-cell ack)**: the exported bigram
+  prior's mass GENERALIZES over rules it has no history on (the
+  tan/pair-u tranche: decided-misses 3->0 under prior-on with
+  zero prior rows naming those rules). Consequence banked: prior
+  re-export after a rule tranche is not automatically owed —
+  test the stale prior first; re-export only if the new-rule
+  cells actually degrade.
