@@ -1066,3 +1066,17 @@ to the collaboration itself.
   closed-system-learning as a first-class thread (sign symmetry/
   oligarchy, flip census, permutation-augmentation — the
   equivariance rungs, NOT the dead distance rungs).
+
+- **"How can we say precision doesn't pay when our layers were
+  never precise?"** (Artin, 2026-07-27 night, during the rounding
+  audit). The challenge that scopes the closed precision
+  doctrine honestly: its strongest leg (d2 exact-vs-fp64
+  bit-identical) had one truly exact arm, but the birth-precision
+  leg compared rounded modes against each other, and ALL
+  capability gates carry an arithmetic noise floor (near-tie
+  flips, device reduction order) — so the doctrine's real claim
+  is "no effect above instrument sigma." Banked consequence: if
+  relay rung 2b (exact inference mode) lands, the precision
+  question becomes re-testable at sub-sigma resolution for the
+  cost of ONE paired arm — doctrine stays CLOSED, with that
+  named as the sole cheap reopening condition.
