@@ -7736,3 +7736,26 @@ Live candidate remaining: function-aware (GPTQ-class) snap
 minimizing ||xW - xWq|| on calibration activations — banked, not
 built (needs per-layer activation capture; aims the error budget
 at near-ties, the only place the anatomy says error matters).
+
+## 45M UNION VERDICT: math 65 (union ~free at scale, boundary); ZX 36 — INSIDE the seed fence, the scale lever NULLS on the graph grammar; G9 conditional resolves NO-FIRE (2026-07-27 night)
+
+union_45m.pt (fp32, d512/12L/ffn2048/h8, union diet math gen-4 +
+zx_farm1, vocab-47, seed 1, 3080). MATH: 65/120 @ 63.88
+{3:21,4:6,5:17,6:8,7:13} — pre-reg band was 66-69 (free) / <=64
+(tax): 65 lands ONE under the band = boundary; no union-tax
+signal above gate sigma, but the free claim doesn't book clean
+either. Read: union ~free at scale, unclaimed. ZX: 36/120,
+parsefail 0, walls 0, unsound 84 (misses stay 100% semantic;
+kind spectrum color 20 / fuse 10 / lcomp 4 / pivot 1 / id 1 —
+same shape as 19M). Pre-reg bar was 37+ (clear of the 19M seed
+fence mean 32.7 sd ~4.2): 36 = +0.8 sigma, INSIDE the fence —
+identical to the 19M cplx_none seed-1 number. **2.4x capacity
+bought ZERO on the graph grammar: capacity was never the ZX
+constraint** (the pre-reg's named fail reading books). Fence
+note: 45M ZX has n=1 seed — the number is read against the 19M
+fence per the pre-reg's own framing, not cross-width sigma.
+CONSEQUENCE: the G9 conditional (this entry's decider) resolves
+NO-FIRE — rung (c) banks UNFIRED as pre-registered; the
+rotation reopening waits for a different lever (diet quality /
+serialization / curriculum, not width). ZX next lever candidates
+go to the morning consolidation.
