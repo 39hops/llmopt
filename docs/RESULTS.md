@@ -7815,3 +7815,31 @@ delta in [-2, +2] = demotes to parity (thesis still books —
 exactness free); control wins by >=3 = seed-1 was a fluctuation,
 verdict amended to parity-at-best. L4 anatomy read again (the
 doubling was the seed-1 signature).
+
+## QUICK EXACT BATTERY VERDICT: INTEGER TWIN AT PARITY; the sensitivity wall does NOT transport — snap robustness is a per-crystal property (2026-07-27 night)
+
+union_45m on the 3080, comparator = tonight's booked 65/120:
+rat64 65 | **fq512 65 (W = P/512, integer P, int16-range —
+THE INTEGER TWIN AT FULL PARITY)** | fq128 64 | rat16 64 |
+rat16+repair 63. VERDICTS: (1) Rational-twin parity TRANSPORTS
+(65=65 at Q=64) — now measured on two crystals, two devices,
+two widths. (2) **The integer twin is real: every weight an
+integer over one shared denominator, zero capability loss** —
+the forward pass is an integer GEMM / 512; the exact-integer-
+inference road (ozaki/FX-V1) has its substrate. (3) TWO PRE-REG
+PREDICTIONS WRONG, booked: rat16 did NOT crack (64 v the Mac
+19M's 49->26 collapse at the SAME error 3.7e-3) and fq128 held
+64. **The sensitivity wall is not a constant — it is a
+per-crystal property.** This CONFIRMS the anatomy mechanism at
+depth: damage = near-tie density x horizon, and near-tie
+density is a property of the individual model; the union 45M
+sits far from its ties where the Mac 19M sat close. The
+"wall bracket" [1.7e-3, 3.7e-3] is hereby scoped to the crystal
+that measured it. (4) Thin-film repair reads VOID here — there
+was no deficit to repair (64->63 = noise); the film question
+needs a substrate with a real crack (the Mac 19M rat16 at 26 is
+the candidate). Consequence: snap-robustness (distance-to-
+near-ties) is now a measurable model QUALITY — a crystal that
+tolerates coarse exact lattices is better calibrated at its
+decision points. Candidate instrument: flips-per-token under
+Q=16 as a cheap calibration probe.
