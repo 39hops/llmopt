@@ -27,16 +27,19 @@ extra = os.environ["VOCAB_EXTRA"]
 tok = MathTokenizer(extra=extra.split(","))
 dev = ("mps" if torch.backends.mps.is_available() else
        "cuda" if torch.cuda.is_available() else "cpu")
+# shape rides env (defaults = the 19M ZX standard) so 45M+ unions gate too
+_d = int(os.environ.get("ZX_D", "384")); _L = int(os.environ.get("ZX_LAYERS", "8"))
+_h = int(os.environ.get("ZX_HEADS", "6")); _f = int(os.environ.get("ZX_FFN", "1536"))
 if arch == "cplx":
     import complex_model as C
     # latent checkpoints need the training-time STE forward
     # (raw latents without quantize = a never-used function)
     C.set_alpha(os.environ.get("CPLX_ALPHA", "none"))
-    model = C.build_complex_model(len(tok.vocab), d=384, layers=8,
-                                  heads=6, ffn=1536).to(dev)
+    model = C.build_complex_model(len(tok.vocab), d=_d, layers=_L,
+                                  heads=_h, ffn=_f).to(dev)
 else:
-    model = build_model(len(tok.vocab), d=384, layers=8, heads=6,
-                        ffn=1536).to(dev)
+    model = build_model(len(tok.vocab), d=_d, layers=_L, heads=_h,
+                        ffn=_f).to(dev)
 model.load_state_dict(torch.load(ckpt, map_location="cpu"))
 model.eval()
 

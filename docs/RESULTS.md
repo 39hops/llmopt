@@ -7521,3 +7521,51 @@ must compare like search arms); the prior's effect on these
 signatures is a real, separate result — worth one named cell
 (prior-on v prior-off over the same 184) if axiom ships the
 prior file with a sha256. Namespace split unchanged.
+
+## PRE-REG: E4 prior cell — prior-on v prior-off, same 184 sample (2026-07-27, axiom's prediction on record)
+
+Prior = data/priors/markov_prior.tsv @ axiom db95c6c, sha256
+cd60b1d1...e46dea5 (4494 bytes, byte-pinned; provenance: TSV
+export of the llmopt rule-bigram brain, 316/360 zero-NN — the
+prior-on cell is "our old brain guiding their engine"). AXIOM
+PREDICTS (pre-reg'd their side): 3 decided misses convert;
+some fraction of the 11 walls move; INTERESTING READING = new
+misses appear (stale bigram mass down-ranking the new i_table
+tan / pair-u rules, which have no bigram history). Instrument:
+solve_batch 150/24/3, prior on v off, house Mac build of
+277bc19-rules. E4's own verdict stays prior-free by doctrine.
+
+## E4 PRIOR CELL VERDICT: prior-on converts ALL 3 decided misses, no new misses, walls unmoved, +1 more house-miss found (2026-07-27)
+
+Same 184-sample, solve_batch 150/24/3, prior
+cd60b1d1...e46dea5 (sha verified post-pull, byte-pinned):
+prior-on agree 170/184 (v 168 off), decided 3 -> 0 (axiom's
+core prediction CONFIRMED), censored 11 -> 11 (the
+walls-move sub-prediction MISSED — the prior reorders
+children but does not rescue deadline states here), axExtra
+2 -> 3 (one MORE state where house budget-150 was the weaker
+search). The interesting reading did NOT fire: no new misses
+— the stale bigram mass does not down-rank the new rules on
+this sample. NOTE the provenance loop: the prior is the
+llmopt rule-bigram brain (316/360, zero-NN) — our old brain
+guiding their engine closes states neither search closes
+alone. E4's parity verdict stays prior-free by doctrine;
+namespace split stands (coverage now: censored 11, ply
+semantics, I-fence).
+
+## PRE-REG: 45M FEDERATION UNION (3080 night, Artin GO 2026-07-27)
+
+The scale rung on the federation result: same union diet
+(math gen-4 + zx_farm1, vocab-47), fp32 birth per doctrine,
+d512/12L/ffn2048/h8 (the 45M gen9B shape), seed 1, both
+gates (math gate_ckpt_cuda + gate_zx with new shape envs).
+COMPARATORS: 19M union (math 66 / ZX 40); 45M gen-4 math-only
+69/120; ZX seed arm 36/28/34 (19M). PREDICTIONS: (1) math
+column 66-69-class — union stays nearly free at scale; (2)
+ZX column ABOVE the 19M arm mean 32.7 (scale helps the graph
+grammar at least as much as trees) — 37+ would be the first
+ZX number clear of the seed fence; (3) no wall, parsefail
+0-class both columns. FAIL reads: math <=64 = union tax
+emerges at scale; ZX <=32-class = graph grammar does NOT
+scale-benefit (capacity was never the binding constraint).
+Queue: scratch/night_45m_union.sh via wsl.sh launch.
