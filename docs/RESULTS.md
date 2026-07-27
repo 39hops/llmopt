@@ -7391,3 +7391,39 @@ union's ZX column (40) paid no visible union tax v ZX-only (35)
 — "union nearly free" holds on the graph grammar as it did on
 trees. JOB 5 (seed-3) firms sigma; a transfer re-read waits on
 that spread. Union math column remains the load-bearing result.
+
+## SR-BF16 VERDICT: 53/120 — the lever is DEAD AS IMPLEMENTED (band-3 fire with two named confounds) (2026-07-27)
+
+JOB 4 landed: gen-4 --fast + SR_BF16=1 gate **53/120 @ 47.13%**
+(losses 0.4628/0.3298/0.3297; flag confirmed armed; ~215s/ep =
+the bf16 speed held). Pre-reg band 3 ("below 65 = SR noise
+taxes") FIRES — but the magnitude (-13 v bf16-RNE 66, -16 v
+fp32 69) exceeds any seed-sigma class and books with TWO
+confounds named: (1) MECHANISM: per-forward RESAMPLED weight-SR
+is a persistent untuned jitter regularizer (~2^-9 relative,
+fresh noise every step) — not the "unbiased rounding" of the
+lever's original riff; a variant that freezes noise per-step or
+applies SR only at the optimizer cast site is a DIFFERENT
+experiment. (2) PAIR AGE: the 69/66 comparison is 10 days old;
+SR's train loss landed 0.3297 v the pair's 0.3525 — the gen-4
+tree has drifted, so one-variable v the HISTORICAL bf16 arm is
+not guaranteed. VERDICT: SR-as-implemented is strongly
+negative; per the closed precision doctrine ("don't spend runs
+on precision-capability questions") NO follow-up is queued —
+any revival needs a new mechanism argument AND a same-day
+bf16-RNE control. fp32-only births remain doctrine.
+
+## ZX SEED-3: 34/120 — the n=3 sigma lands ~4-class; fences tighten, verdicts stand (2026-07-27)
+
+JOB 5 landed: **34/120** (parsefail 0, walls 0; color 20 / fuse
+7 / lcomp 4 / id 2 / pivot 1). Arm now 36 / 28 / 34: mean 32.7,
+sd ~4.2 — the pre-reg 25-40 band HOLDS (no probe-set audit
+triggered); the n=3 ~4-class sigma REPLACES the crude two-point
+5.7 as the standing ZX seed fence. RE-READS UNDER THE NEW
+FENCE: union ZX 40 = +7.3 v arm mean (~1.8 sigma) — suggestive,
+still not clean; ZX-only control 35 sits inside the arm spread
+(non-discriminating verdict STANDS); seed-2's 28 was the arm's
+low draw, not an anomaly. The graph-grammar column's honest
+summary: ZX-class ~29-37 at 19M regardless of recipe, union
+possibly +1-2-sigma above it — a transfer/union claim needs
+either more union seeds or a bigger effect.
