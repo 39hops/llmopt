@@ -6788,3 +6788,30 @@ labels (ii) and contrastive (iii) sidestep replay entirely
 (engine enumerates, oracle scores — no true-move needed) and
 cover everything. The axiom ask (annotate math chains at mint)
 stays BANKED for the promotion tier, not blocking the pilot.
+
+## PRE-REG: math+ZX union birth + ZX seed-2 (3080 night queue, armed on GO 2026-07-26 night)
+
+Per specs/2026-07-26-next-session-2.md, fired on Artin's GO.
+JOB 1 — the federation floor's first GRAPH datapoint: one real
+19M-class birth (d384/8L, fp32, seed 1, vocab-47 = 40 +
+"in(,out(,Z(,X(,P(,H(,:") on gen-4 math (132,870 rows) +
+zx_farm1_train (97,036 rows; organic 58/42 share), SEQ_CAP 1536,
+BS=8/grad-ckpt/TF32. Gated on BOTH columns: math gate_ckpt_cuda
+(VOCAB_EXTRA now rides probe-side, same atom order) + gate_zx
+(120 held-out diagrams, pyzx oracle). QUESTION: does the union
+hold math ~63-65-class AND ZX ~30-class at 19M, or does grammar
+CLASS (graph v tree) bind where COUNT (five grammars, gen-8) did
+not? PREDICTIONS (house): (1) math column HOLDS at-class (gen-8
+precedent: union nearly free, coefficient (i)~0); (2) ZX column
+lands at-or-near its 30-class (real-scalar comparators M5 31 /
+G5 32; the un-run scalar-real-ZX control means a modest debit v
+cplx_none 36 is NOT interpretable as a union tax — fence named);
+(3) no wall, parsefail 0 (strict encode held 0/480 on ZX).
+FAIL reads: math -5+ = graph grammar taxes the tree federation;
+ZX <25-class = CLASS binds where COUNT did not.
+JOB 2 — ZX seed-2 (cplx_none recipe, BIRTH_SEED=2, same diet/
+gate): first ZX seed-sigma point; n=2 on the 36 arm. PREDICTION:
+within sqrt(2)*sigma-class of 36 (sigma unknown — that is the
+point); a 5+ swing flags gate noise floor before any future ZX
+pair is read. Queue: scratch/night_zx.sh via wsl.sh launch
+(success-only marker).

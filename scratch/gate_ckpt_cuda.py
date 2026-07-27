@@ -5,7 +5,11 @@ ckpt, d, layers, ffn, heads, label = (sys.argv[1], int(sys.argv[2]),
     int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5]), sys.argv[6])
 from llmopt.train.mathnative import MathTokenizer, build_model
 import step_grpo_micro as G
-tok = MathTokenizer()
+import os
+# VOCAB_EXTRA rides (atom ORDER must match the birth env) so
+# federation checkpoints (vocab-47 union etc.) gate too
+_extra = os.environ.get("VOCAB_EXTRA", "")
+tok = MathTokenizer(extra=_extra.split(",") if _extra else None)
 dev = "cuda"; torch.backends.cuda.matmul.allow_tf32 = True
 model = build_model(len(tok.vocab), d=d, layers=layers, heads=heads,
                     ffn=ffn).to(dev)
