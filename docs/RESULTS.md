@@ -6815,3 +6815,34 @@ within sqrt(2)*sigma-class of 36 (sigma unknown — that is the
 point); a 5+ swing flags gate noise floor before any future ZX
 pair is read. Queue: scratch/night_zx.sh via wsl.sh launch
 (success-only marker).
+
+## PINCER R1a: backward trains DOWN but peels WEAK — 11% per-candidate validity v forward's 85%-class; coverage saves B-a, barely (2026-07-26 night)
+
+Ran as pre-registered (backpairs births 1P + 3E at d256, probe =
+105 fresh gate-band mid-chain states, k=8, forward-verify fence).
+| arm | per-cand validity | state coverage (>=1 valid) |
+|---|---|---|
+| backpairs_1p | 11.1% (93/840) | 92/105 |
+| backpairs_3e | 11.5% (97/840) | 96/105 |
+READS:
+1. Prediction (1) CONFIRMED: loss trains down like forward
+   (final ~0.31, pairs-class) — the substrate accepts the
+   backward grammar.
+2. Prediction (2) CONFIRMED in direction, WRONG in magnitude:
+   11% lands far BELOW the 40-70% band — predecessor-emission
+   (grow the expression) is much harder than the forward
+   direction-tax (-18 at 50/50 mixing) suggested. Loss-down +
+   validity-low = the model learned the FORM of backward rows,
+   not the act of un-applying rules.
+3. Prediction (3) NULL: 3E ~ 1P (11.5 v 11.1, coverage 96 v 92)
+   — no schedule rescue; the deficit is not batch damage.
+4. The saving read: per-STATE coverage 88-91% at k=8 — B-a can
+   peel (some valid predecessor almost always lands) but pays
+   ~9x oracle calls per valid peel. CONSEQUENCE: B-a's bar for
+   B-b is set LOW exactly where amendment-2 predicted — the
+   text-emission peeler is the weak link; score-over-enumerated-
+   moves dissolves both the validity rate (validity by
+   construction) and the 9x verify overhead.
+Sidecars logs/pp_backpairs_{1p,3e}.jsonl. L4/L6 skew honest
+(n=5/n=1). NEXT: distribution-quality readout (the quantum-
+readout frame) before any R6 alphabet race.
