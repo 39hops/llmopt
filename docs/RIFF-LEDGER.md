@@ -1098,3 +1098,22 @@ to the collaboration itself.
   re-export after a rule tranche is not automatically owed —
   test the stale prior first; re-export only if the new-rule
   cells actually degrade.
+- **2026-07-27 (Artin, the infinite-precision push)**: three
+  rungs banked from "represent 1/3 exactly, not 64-bit-exactly".
+  (a) **Rational-snap distillation**: snap a gated winner's
+  weights to nearest low-denominator fractions, gate the snap —
+  asks "do trained weights want simple exact numbers?" as a
+  COMPRESSION question (precision doctrine stays closed; E3 is
+  its sole reopening). (b) **RNS optimizer step**: the banked
+  stay-in-residue endgame, now named as a training rung — whole
+  AdamW step carry-free in residue space, one exit (disagreement
+  #2 says the outcome is bit-identical to fp64 masters; the rung
+  is a WALL rung, per the exactness-is-speed law). (c) **Root-of-
+  unity rotational weights** (from Artin's complex/rotational
+  framing): phases constrained to N-th roots of unity are EXACT
+  complex numbers, multiplicatively closed, no transcendentals —
+  exact rotations without infinite digits; ZX/phase lineage,
+  pairs with the cplx thread. House note held: true rationals
+  under SGD blow up (bit-length ~exponential in steps) and
+  nonlinearities leave every exact number system — (b) and (c)
+  are the versions that dodge both walls.
