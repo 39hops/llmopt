@@ -19,8 +19,11 @@ case "${1:?run|launch|check|tail}" in
     # base64 the command so quoting never mangles it; setsid+redirects
     # fully detach (the ssh client returns immediately — no hang);
     # marker fires on success ONLY (queue-arming doctrine).
+    # UNIQUE job file per launch (friendly-fire #7, 2026-07-27): bash
+    # reads scripts lazily, so a second launch overwriting a shared
+    # /tmp/wsl_job.sh corrupts the still-running first job mid-stream.
     b64=$(printf '%s' "$cmd" | base64)
-    "${SSH[@]}" "cd ~/code/llmopt && echo '$b64' | base64 -d > /tmp/wsl_job.sh && setsid bash -c 'bash /tmp/wsl_job.sh > $log 2>&1 && echo DONE > $marker' < /dev/null > /dev/null 2>&1 & echo launched"
+    "${SSH[@]}" "cd ~/code/llmopt && f=\$(mktemp /tmp/wsl_job.XXXXXX.sh) && echo '$b64' | base64 -d > \"\$f\" && setsid bash -c \"bash \$f > $log 2>&1 && echo DONE > $marker\" < /dev/null > /dev/null 2>&1 & echo launched"
     ;;
   check)
     # grep -v the pgrep itself AND this wrapper's own argv string
