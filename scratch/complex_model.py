@@ -39,6 +39,34 @@ def g5_quantize(wr: torch.Tensor, wi: torch.Tensor):
     return qr, qi
 
 
+def gn_quantize(wr: torch.Tensor, wi: torch.Tensor, phases: int):
+    """Nearest of {0} u {s*e^(2*pi*i*k/phases)}: exact roots of unity.
+
+    G5's generalization (phases=4 reproduces its alphabet up to the
+    axis-snap tie rule). The alphabet is exact at the PHASE level
+    (angles are exactly 2*pi*k/N); fp32 storage rounds the coords,
+    same claim structure as G5.
+    """
+    mag = torch.sqrt(wr * wr + wi * wi)
+    s = mag.mean().clamp(min=1e-8)
+    dead = mag < s / 2
+    ang = torch.atan2(wi, wr)
+    step = 2 * math.pi / phases
+    snapped = torch.round(ang / step) * step
+    qr = torch.where(dead, torch.zeros_like(wr), s * torch.cos(snapped))
+    qi = torch.where(dead, torch.zeros_like(wi), s * torch.sin(snapped))
+    return qr, qi
+
+
+def quantize_pair(wr: torch.Tensor, wi: torch.Tensor):
+    """Route (re, im) through the alphabet named by _ALPHA."""
+    if _ALPHA == "G5":
+        return g5_quantize(wr, wi)
+    if _ALPHA.startswith("G"):
+        return gn_quantize(wr, wi, int(_ALPHA[1:]) - 1)
+    return wr, wi
+
+
 def _q(w: torch.Tensor, pair_dim: int) -> torch.Tensor:
     """STE-quantize a real matrix whose pair_dim halves are (re, im)."""
     if _ALPHA == "none":
@@ -46,7 +74,7 @@ def _q(w: torch.Tensor, pair_dim: int) -> torch.Tensor:
     n = w.shape[pair_dim] // 2
     re = w.narrow(pair_dim, 0, n)
     im = w.narrow(pair_dim, n, n)
-    qr, qi = g5_quantize(re, im)
+    qr, qi = quantize_pair(re, im)
     q = torch.cat([qr, qi], dim=pair_dim)
     return w + (q - w).detach()
 

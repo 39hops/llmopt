@@ -1117,3 +1117,17 @@ to the collaboration itself.
   under SGD blow up (bit-length ~exponential in steps) and
   nonlinearities leave every exact number system — (b) and (c)
   are the versions that dodge both walls.
+- **2026-07-27 (Artin, the black-hole frame)**: "how can physics
+  compress so much matter it becomes a black hole — our stuff ->
+  compress (bits/precision)/entropy; black holes are the limit of
+  physics." Banked as the program's motivating physics analogy:
+  the Bekenstein bound says maximal information in a region
+  scales with AREA, not volume — physics' own statement that
+  compression has a geometric limit and saturating it changes
+  the object's nature. House link: FA Law v2 (intelligence =
+  rate verified variance becomes compressed structure) is the
+  same quantity as a RATE; the exact-representation rungs
+  (rational-snap, roots-of-unity, RNS) ask how densely verified
+  structure packs into finite weights. METHODS note: this is
+  physics-as-frame (on-charter); no claim until a rung measures
+  something.

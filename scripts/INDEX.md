@@ -1182,6 +1182,8 @@ Complex-FFN model builder (spec 2026-07-26-complex-zx-program, Leg A).
 
 - `set_alpha(a: str) -> None`
 - `g5_quantize(wr: torch.Tensor, wi: torch.Tensor)` — Nearest of {0, ±s, ±is} on each complex weight; STE outside.
+- `gn_quantize(wr: torch.Tensor, wi: torch.Tensor, phases: int)` — Nearest of {0} u {s*e^(2*pi*i*k/phases)}: exact roots of unity.
+- `quantize_pair(wr: torch.Tensor, wi: torch.Tensor)` — Route (re, im) through the alphabet named by _ALPHA.
 - `_q(w: torch.Tensor, pair_dim: int) -> torch.Tensor` — STE-quantize a real matrix whose pair_dim halves are (re, im).
 - `build_complex_model(vocab_size: int, d: int=384, layers: int=8, heads: int=6, ffn: int=1536, ctx: int=512)`
 
@@ -1238,7 +1240,7 @@ THE EXCHANGE TEST (pre-registered 2026-07-23): train the v4 organism on axiom's 
 - `probe(tag)`
 
 ### scratch/format_delta_prep.py
-Build row embeddings for the delta-chained format (spec 2026-07-26-format-ladder): mean-pooled final-norm hidden states of the pairs-trained control crystal (wfloor_d256) over each pair text. Output: scratch/fmt_row_emb.pt (N, d) unit vectors, row-aligned with the filtered gen-4 row list.
+Build row embeddings for the delta-chained format (spec 2026-07-26-format-ladder): mean-pooled final-norm hidden states of the pairs-trained control crystal (wfloor_d256) over each pair text. Output: checkpoints/fmt_row_emb.pt (N, d) unit vectors, row-aligned with the filtered gen-4 row list.
 
 
 ### scratch/format_ladder.py
@@ -1353,6 +1355,15 @@ The Lloyd-Max codebook race (pre-reg RESULTS 2026-07-25): per-output-channel exa
 - `kmeans_rows(w: torch.Tensor, k: int, pin_zero: bool, iters: int=25) -> torch.Tensor` — Exact-enough 1-D k-means per row. w: (rows, cols). Returns
 - `uniform_rows(w: torch.Tensor, bits: int) -> torch.Tensor` — Symmetric-range int grid {-2^(b-1) .. 2^(b-1)-1} x s.
 - `main() -> None`
+
+### scratch/make_altpairs.py
+Farm verified ALTERNATIVE successors for a sample of corpus states (the distribution-rows bank, forward edition; motivated by the 2026-07-26 distribution readout: crystals put ZERO mass on equally-valid non-canonical moves). For each sampled unique cur, enumerate successors() (verified, non-identity) and keep children NOT already in the corpus as a nxt for that cur. Fork workers stream rows to shard files (killed-worker doctrine: partial shards survive the wall).
+
+- `worker(idx, my_keys)`
+
+### scratch/make_union_diet.py
+Build the math+ZX union diet (next-session-2 item 1): gen-4 math rows + zx_farm1_train, one jsonl. Shares are organic (~133k math / ~97k ZX = 58/42); ZX provenance keys (kind, site) kept. Output: data/union_math_zx.jsonl
+
 
 ### scratch/margin_census.py
 Margin census on the crown-tie ternary latents (pre-reg 2026-07-26).
@@ -1507,6 +1518,43 @@ Physics rung 1 probe: greedy emission on held-out phys steps (seeds 17-19), symp
 - `_equiv(q, pred, gold)`
 - `equiv(pred, gold, deadline=10)`
 
+### scratch/pincer_dist_probe.py
+Pincer distribution readout (Artin's quantum-frame ask, 2026-07-26 night; pre-reg in RESULTS): the engine enumerates the COMPLETE legal move set for a state (the classical superposition, exact by construction); each crystal supplies a distribution over it (teacher-forced sequence log-probs, no generation). Question: are the amplitudes CALIBRATED — does model mass track which moves actually lead to the root (fork-isolated engine solves as value labels)?
+
+- `_solve_worker(expr_s, q)`
+- `solve_isolated(expr_s)`
+- `load(ckpt)`
+- `seq_logp(model, prefix, targets)` — Raw (T=1) summed log-prob of each target continuation after
+- `spearman(xs, ys)`
+
+### scratch/pincer_dist_report.py
+Aggregate logs/pp_dist_probe.jsonl (pincer distribution readout). Every dimension the sidecar carries, reported against chance: per-model calibration (mass-on-solving v uniform baseline, top-1 v chance, Spearman, entropy), per-level split, per-rule-family solve rates + model mass, calibration deciles (pooled children: predicted mass v realized solve freq), length bias. Pure read — no model, no oracle.
+
+
+### scratch/pincer_r0.py
+Pincer R0: conjecture-leg readout (spec 2026-07-26-reverse-llmue-pincer.md, cell R0; pre-reg in RESULTS).
+
+
+### scratch/pincer_r0b.py
+R0b: collapse-ordered readout (pre-reg in RESULTS 2026-07-26 late). The honest Grover residue: does checking candidates in descending model-mass order reach the first verified solution in fewer ORACLE CALLS than random/sampling order? All candidates are oracle-checked once (instrument cost, not protocol cost); orders are then evaluated on the recorded truth.
+
+- `seq_logp(prefix, targets)`
+
+### scratch/pincer_r1_probe.py
+Pincer R1 backward-validity probe (spec 2026-07-26-reverse-llmue-pincer.md, cell R1; pre-reg in RESULTS).
+
+
+### scratch/pincer_r1b_labels.py
+Pincer R1b prep: (t, rule, child)-label recovery by engine replay (spec 2026-07-26-reverse-llmue-pincer.md amendment 1/2).
+
+
+### scratch/pincer_r8.py
+Pincer R8: meet v1 — full protocol (conjecture + peel + meet) vs let-it-finish forward re-roll at equal sampled-token budget (spec amendment 3; pre-reg in RESULTS 2026-07-26 night).
+
+- `load(p)`
+- `wave(model, cur, seeds, arm)`
+- `chain_search(model, root, seed0, arm, goal=None, plies=12)` — Greedy verified chain (gate discipline); if goal set given,
+
 ### scratch/practice_mine.py
 PRACTICE MODE, model-side (the mirror of axiom's arg-10): duo-wave rollouts that (1) BANK verified steps from ALL attempts — solved or not (the solved-only leak fix, Artin) — tagging rows by outcome so the gen-8 A/B can split them; (2) LOG stuck states — the exact cur where every unsolved attempt died — to a worklist in axiom's format ({id, level, root, from, why, plies}), ready for the stuck-state exchange AND as maximum-surprise metabolic v4 food.
 
@@ -1529,6 +1577,31 @@ Scalar 4-bit PTQ arms (the tournament's missing bracket point): P4 powers-of-two
 - `p4_rows(w: torch.Tensor) -> torch.Tensor` — {0, ±1/4, ±1/2, ±1, ±2, ±4, ±8} x per-channel unit (absmax/8):
 - `nf4_rows(w: torch.Tensor, k: int=16) -> torch.Tensor` — Equal-mass quantile codebook per channel (NF4-style, but on
 - `main() -> None`
+
+### scratch/rational_snap.py
+Rational-snap distillation (RIFF 2026-07-27, Artin's infinite-precision push, rung a): snap every 2-D weight of a gated crystal to the nearest fraction p/q with denominator q <= Q, then gate the snap. Asks "do trained weights want simple exact numbers?" as a COMPRESSION question (precision doctrine stays closed; E3 is its sole reopening).
+
+
+### scratch/scorer_s1_battery.py
+S1: the frontier battery + persistent value cache (spec 2026-07-27-calibrated-scorer; pre-reg in RESULTS).
+
+- `add(lv, s)`
+- `_worker(idx, exprs)`
+
+### scratch/scorer_s2_data.py
+S2 data farm (calibrated-scorer spec): training rows for the listwise scorer. Stratified sample of unique corpus states -> full legal enumeration -> per-child value labels (cache-aware fork solves, budget 150, 8s walls, 6 workers, streamed shards) + the replayed true-move label where the corpus row matches a legal child (the R1b 68%). Every solve extends the permanent value cache.
+
+- `_enum_worker(idx, items)`
+- `_worker(idx, exprs)`
+
+### scratch/scorer_s2_train.py
+S2 trainer (calibrated-scorer spec): the listwise objective race. State + enumerated legal set -> distribution in ONE forward pass (teacher-forced seq log-probs, softmax over the set, zero generation). Two arms, one variable (the target distribution):
+
+- `targets(ch, true_idx, arm)`
+- `batch_logps(model, state, ch, grad=False)` — Summed seq logp of each child continuation (padded batch).
+- `run_arm(arm)`
+- `spearman(xs, ys)`
+- `eval_battery(name, score_fn)`
 
 ### scratch/series_probe.py
 Series rung 1 probe: greedy next-partial-sum emission on the 142 held-out steps (seeds 17-19), scored by sympy polynomial equivalence in fork-isolated workers (the solve_isolated doctrine). Also runs the standard 120 gate for the paired regression read vs seedvar-1 (65). Usage: series_probe.py <ckpt>

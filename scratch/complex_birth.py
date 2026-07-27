@@ -45,11 +45,11 @@ if alpha != "none":
     for k, w in sd.items():
         if w.ndim == 2 and ("gate.weight" in k or "up.weight" in k):
             n = w.shape[0] // 2
-            qr, qi = C.g5_quantize(w[:n].float(), w[n:].float())
+            qr, qi = C.quantize_pair(w[:n].float(), w[n:].float())
             dep[k] = torch.cat([qr, qi], 0).to(w.dtype)
         elif w.ndim == 2 and "down.weight" in k:
             n = w.shape[1] // 2
-            qr, qi = C.g5_quantize(w[:, :n].float(), w[:, n:].float())
+            qr, qi = C.quantize_pair(w[:, :n].float(), w[:, n:].float())
             dep[k] = torch.cat([qr, qi], 1).to(w.dtype)
         else:
             dep[k] = w

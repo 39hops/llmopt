@@ -7569,3 +7569,43 @@ ZX number clear of the seed fence; (3) no wall, parsefail
 emerges at scale; ZX <=32-class = graph grammar does NOT
 scale-benefit (capacity was never the binding constraint).
 Queue: scratch/night_45m_union.sh via wsl.sh launch.
+
+## PRE-REG: rational-snap distillation, Q-sweep on the 19M crystal (2026-07-27, before the run)
+
+RIFF rung (a) (Artin's infinite-precision push). Snap every 2-D
+weight of mathnative_19m.pt to the best fraction p/q, q <= Q
+(exact-best over the range, so 1/3 is reachable at Q>=3 — the
+point vs dyadic quant); gate control + Q in {4, 16, 64}, ALL FOUR
+ARMS ON THE MAC MPS GATE (instrument fence: the control re-gates
+here; no comparison to its cuda-era numbers). Framed as
+COMPRESSION (precision doctrine stays closed; E3 sole reopening).
+Approximation math: best-over-q error ~1/Q^2 (Dirichlet), so
+Q=64 ~2e-4 (well under weight scale), Q=16 ~4e-3 (marginal),
+Q=4 ~0.05 (weight-scale — brutal). PREDICTIONS: Q=64 ties control
+within gate sigma; Q=4 cracks badly; the readout is the KNEE —
+if Q=16 is free, trained weights tolerate simple-fraction
+structure and the exact-representation program gains a cheap
+deployment format. scratch/rational_snap.py.
+
+## PRE-REG (CONDITIONAL): G9 roots-of-unity alphabet — a declared REOPENING of the closed rotation wing, gated on the 45M union verdict (2026-07-27, before any run)
+
+RIFF rung (c), CAUGHT BY THE RESULTS SWEEP BEFORE ARMING: the
+2026-07-26 ZX column CLOSED alphabet-follows-domain (G5-dep 32 v
+M5 31, bar >=5; rotation wing closed, D9/Q9/E7 dead unrun), and
+the 19M ZX seed fence (sd ~4.2, n=3) drowns EVERY 19M ZX cell —
+a 19M G9 arm would be uninterpretable at any score. So this rung
+does NOT fire at 19M, and it fires at all only as a DECLARED
+REOPENING (Artin's, 2026-07-27 evening: the exact-representation
+push) against that named closure, with scale as the new
+variable. CONDITION: the 45M union's ZX gate (in flight) must
+clear ITS pre-reg bar (37+/decisively above 32-class). If it
+does: G9 = 8 exact phases + dead zone (angles exactly 2*pi*k/8,
+the Z[zeta_8] frame — Clifford+T's number ring), complex-FFN
+STE (complex_model.gn_quantize, G5 route byte-preserved,
+sanity-tested), 45M-CLASS shape matched to the union arm, union
+or ZX diet per the landing read, seed 1, 3080. Bars set at
+condition-time against the 45M comparator, before launch. If
+the 45M ZX gate stays 32-class: rung (c) banks UNFIRED (no
+width rescues a fence-drowned column; the reopening waits for a
+different lever). scratch/night_g9.sh holds the 19M recipe as a
+template only — DO NOT LAUNCH as-is.
