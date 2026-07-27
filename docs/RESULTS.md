@@ -7373,3 +7373,21 @@ n=37 is modest, books as a WIN with a width caveat, replication
 checkpoints/scorer_s2_dist.pt = the S2 crystal; next artifact
 across the bridge = its AXNN + prompt spec (feeds frontier_eval
 scorer slot, gate_battery detokenizer, E2).
+
+## JOB 3 VERDICT: fp32-real ZX-only control = 35/120 — lands in the transfer band but INSIDE THE FENCE; control is NON-DISCRIMINATING at current sigma (2026-07-27)
+
+The pre-reg'd recipe-v-transfer discriminator (real fp32 birth,
+zx_farm1 diet only, union recipe/env): **35/120** (parsefail 0,
+walls 0, unsound 85; kinds: color 18 / fuse 10 / lcomp 3 / id 2
+/ pivot 2). Nominal read: 31-36 band = "math->ZX transfer LIVE"
+(union's ZX 40 would carry a +5 transfer credit). FENCED READ
+(the seed-2 amendment applies): with seed sigma-class ~5.7 and
+the arm spread 28-36 on n=2, 35 sits within one sigma-class of
+EVERY comparator (union 40, seed-1 36, seed-2 28, M5 31, G5 32)
+— the bands overlap and the control CANNOT separate recipe
+credit from transfer at n=1. BOOKS AS: non-discriminating;
+no transfer claim, no recipe claim. What it DOES pin: the
+union's ZX column (40) paid no visible union tax v ZX-only (35)
+— "union nearly free" holds on the graph grammar as it did on
+trees. JOB 5 (seed-3) firms sigma; a transfer re-read waits on
+that spread. Union math column remains the load-bearing result.
