@@ -7651,3 +7651,24 @@ analogy puts the wall near int4's ~6e-3-class step but the
 Q=16 crack argues the true wall is tighter). Readout: minimal-Q
 becomes the packing-density number the black-hole frame asked
 for (bits/weight of the smallest exact twin at parity).
+
+## KNEE VERDICT: the cliff sits between Q=16 and Q=24; minimal parity twin = Q=48 (~10.5 bits/weight) (2026-07-27 night)
+
+Same instrument, full curve (control 49): Q=16 26 | Q=24 45 |
+Q=32 43 | Q=48 47 | Q=64 48. VERDICTS: (1) **The crack is a
+CLIFF, not a slope: between Q=16 (err ~3.7e-3, 26/120) and Q=24
+(err ~1.7e-3, 45/120) the crystal recovers almost fully.**
+House prediction half-wrong, booked honestly: Q=48-at-parity
+landed, but "Q=24 still cracked" missed — Q=24 sits in a
+shallow -4/-6 shelf (Q=24 45 / Q=32 43, non-monotone by 2 =
+gate sigma, a tie-class wiggle), not a crack. Functional
+sensitivity wall now bracketed [1.7e-3, 3.7e-3]. (2) **Minimal
+exactly-rational twin at parity (within 2 of control): Q=48 =
+47/120 — ~10.5 bits/weight** (log2 of reduced fractions |p|,q
+<= 48); the near-parity shelf at Q=24 is ~8.4 bits/weight. The
+black-hole frame's first packing-density number: the 19M
+crystal's verified structure fits in ~10.5 exact-rational bits
+per weight at zero capability loss (consistent with MX-int4
+full parity at rest — the ladder said ~4-5 mantissa bits; the
+rational lattice pays ~2x bits for its denominator freedom but
+buys EXACTNESS). Curve booked complete; no further Q arms owed.
