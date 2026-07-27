@@ -1,6 +1,6 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-26 evening (newest handoff: -26-1 the-ladder-and-the-cleanup; next-session plan: specs/2026-07-26-next-session-2.md — read BOTH first; query verdicts: scripts/results_query.py --live). RESULTS.md holds verdicts, RIFF-LEDGER.md
+Updated 2026-07-27 pre-dawn (newest handoff: -26-2 the-pincer-night; next-session plan: B-b scorer spec pending Artin's confirm; query verdicts: scripts/results_query.py --live). RESULTS.md holds verdicts, RIFF-LEDGER.md
 holds provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
@@ -8,8 +8,8 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
 | Thread | Status | Pointer |
 |---|---|---|
-| **THE PINCER PROGRAM (next up, Mac)** | living spec w/ 2 amendments: two crystals, conjecture(oneshot-54)+peel+meet, B-b = score-over-enumerated-moves (NNUE-class), Artin's ternary-faceplant bet pre-registered; R0 free, R1 tonight | specs/2026-07-26-reverse-llmue-pincer.md |
-| **ZX CONTINENT (column booked)** | alphabet-follows-domain DEAD (G5 32 ~ M5 31; none 36); first graph crystals WORK (parsefail 0/480); NEXT: math+ZX union (federation floor: count v CLASS) + seed-2, armed on 3080 GO | RESULTS 2026-07-26; next-session-2 |
+| **THE PINCER PROGRAM (7 cells booked in one night)** | R0: conjecture 55/120, chain gate = strict SUBSET (chaining adds 0), L4 craters 4/24; R1a: backward trains down but peels at 11% validity (coverage 88-91% saves B-a barely); R1b: 68% exact (rule@site) labels by replay, 0 ambiguity; DIST READOUT: amplitudes = corpus POLICY not landscape (ent 0.016), backward scorer 10x flatter + best graded rank; ALTPAIRS: 12x entropy toward landscape at -6 gate (policy/calibration = measured DIAL; calibration belongs to the SCORER); R8 meet v1 FAILS (A 4 v B 5, ZERO meets, 5.7x tokens — B-a DEMOTED, program rests on B-b); R0b ADOPTED: mass-order readout 1.70x fewer oracle calls (2.06x needle regime) | specs/2026-07-26-reverse-llmue-pincer.md (3 amendments) |
+| **ZX CONTINENT (union in flight)** | alphabet-follows-domain DEAD (G5 32 ~ M5 31; none 36); union birth (vocab-47, 230k rows) SAVED on 3080, both gates running, seed-2 chained (marker: night_zx_done) — federation floor verdict books next session | RESULTS pre-reg 2026-07-26 night |
 | **THE FORMAT LADDER (booked)** | pairs wins all 7; interaction law SPLITS BY DIMENSION (epochs recover batch not context damage); oneshot-54 surprise feeds the pincer; formats are SUBSETS (complementarity = substrate axis) | RESULTS 2026-07-26 + THEORY row |
 | **ORG/INDEX (live)** | results-index.jsonl 269 entries + results_query (--live/--chain); tag results-pre-index; WSL clean (attic'd, manifested, archived); wsl.sh; SCOREBOARD + CLI wrapper next | specs/2026-07-26-results-index.md |
 
