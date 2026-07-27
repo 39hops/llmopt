@@ -7006,3 +7006,35 @@ thin — if peel yield ~0, arm B reduces to conjecture-only and
 the verdict honestly reads "the pincer is R0 + noise at current
 peeler quality" (that too banks — it prices B-a for B-b).
 Instrument: scratch/pincer_r8.py, pp sidecar both arms.
+
+## PINCER R8 VERDICT: meet v1 FAILS its bar — zero meets, and the honest token ledger reads 5.7x AGAINST the pincer (2026-07-26 night)
+
+Ran as pre-registered on the 55 pairs_3e misses. **Arm A 4/55 v
+arm B 5/55 — B+1, bar was >=3: FAIL (seed-noise class).**
+ANATOMY (the run's real payload):
+1. **ZERO meet-mechanism solves.** B's 5 = 3 conjecture + 2
+   plain-chain (the chain solves are re-roll luck, arm-A class).
+   The meet NEVER fired: 76 peels kept across 55 problems, only
+   22/55 got ANY goal state, and no forward chain ever contacted
+   one. Named risk (3) fires in full — at 11% peeler validity
+   the goal sets are too thin and too shallow (j<=2 plies off
+   conjectures that are themselves wrong) to intersect a
+   12-ply forward cone.
+2. **The token ledger is the sharper kill**: B spent 154,641
+   sampled tokens v A's 27,053 — 5.7x — for +1 solve. My
+   equal-budget fence was violated by my own design (peel cost
+   rode on top instead of being traded); booked as an
+   instrument defect AND as the honest economics: at B-a
+   quality, peeling is ~pure waste (regret-round-2 lesson,
+   third occurrence).
+3. What survives: conjecture converts 3 fresh problems at L3/L4
+   (2 of B's L4 solves are conjecture — the crater territory
+   confirmed as conjecture-reachable on re-sample); conj-valid
+   candidates near-zero elsewhere (5 total across 55).
+CONSEQUENCE, pre-stated for the program: the pincer's viability
+now rests ENTIRELY on B-b (score-over-enumerated-moves) — the
+text-emission peeler is measured three ways tonight (11%
+validity, 9x verify overhead, zero meets at 5.7x budget) and is
+DEMOTED from the protocol; B-a exists only as B-b's baseline.
+R6/R-next: build the B-b scorer + frontier battery; re-run R8
+with engine-enumerated inverse peels before any promotion talk.
