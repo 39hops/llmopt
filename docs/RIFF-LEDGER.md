@@ -1049,3 +1049,20 @@ to the collaboration itself.
   07-26); wave frame pays at the READOUT layer, not the
   representation layer. Attribution: Artin (frame); house
   (mapping + fence).
+
+- **Grover-fence v2 (Artin, 2026-07-26 late): qubit-mapped
+  equations + Grover inference for the reverse LLM?** Honest
+  resolution: Grover = sqrt(N) on UNSTRUCTURED search + oracle-
+  as-unitary; breaks twice here (unbounded symbolic states have
+  no natural register; our search is STRUCTURED — bf+NNUE+magic
+  beat sqrt-class bounds by exploiting structure Grover ignores).
+  SURVIVES: the parallel-computer intuition is the B-b one-pass
+  distribution (all legal moves scored in one matmul — the
+  classical residue of query-all-branches, already the
+  program's design); magic = our Gottesman-Knill (classically-
+  simulable subtheory as certificates). Attribution: Artin
+  (riff + the who-cares-if-approximate-if-fast frame); house
+  (fence). Companion instinct BANKED AS LIVE: symmetry-in-
+  closed-system-learning as a first-class thread (sign symmetry/
+  oligarchy, flip census, permutation-augmentation — the
+  equivariance rungs, NOT the dead distance rungs).

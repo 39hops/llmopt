@@ -6980,3 +6980,29 @@ whose training set (enumerated legal sets + labels) is
 altpairs-shaped BY CONSTRUCTION with no emission role to tax.
 Chains: distribution-readout v1 (the motivating zero), R5
 (backward soft labels inherit this recipe), amendment-2 B-b.
+
+## PRE-REG: pincer R8 — meet v1, the full protocol vs let-it-finish at equal budget (2026-07-26 night, Artin's GO)
+
+Cell R8 (spec amendment 3). BATTERY: the 55 problems pairs_3e
+FAILS at its greedy gate (pp_pairs_3e sidecar; the misses are
+the only place variance lives — distribution-readout lesson
+applied). ARMS, equal sampled-token budget, both logged
+per-problem:
+- A (let-it-finish): pairs_3e chain search, second full attempt
+  with fresh seeds (12 plies, B=8 waves).
+- B (pincer v1): (1) conjecture — oneshot k=8, oracle-checked
+  (hit = solved at ply 0); (2) peel — backpairs_1p peels j<=2
+  plies from every distinct candidate (k=8/peel,
+  forward-verified at mint; goal set B skeleton-normalized;
+  soundness by edge-verification: a spliced chain is equivalent
+  by transitivity, solved iff the endpoint is integral-free);
+  (3) meet — pairs_3e forward chain, each reached state tested
+  against B, contact = splice.
+PREDICTIONS (house): (1) arm B converts MORE of the 55 than arm
+A's re-roll (bar: B > A by >=3 problems — else the pincer is
+seed-noise); (2) conversions concentrate at L4 + near-miss
+territory (R0's map); (3) named risk: 11% peel validity makes B
+thin — if peel yield ~0, arm B reduces to conjecture-only and
+the verdict honestly reads "the pincer is R0 + noise at current
+peeler quality" (that too banks — it prices B-a for B-b).
+Instrument: scratch/pincer_r8.py, pp sidecar both arms.
