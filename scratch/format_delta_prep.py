@@ -1,7 +1,7 @@
 """Build row embeddings for the delta-chained format (spec
 2026-07-26-format-ladder): mean-pooled final-norm hidden states of
 the pairs-trained control crystal (wfloor_d256) over each pair
-text. Output: scratch/fmt_row_emb.pt (N, d) unit vectors,
+text. Output: checkpoints/fmt_row_emb.pt (N, d) unit vectors,
 row-aligned with the filtered gen-4 row list."""
 import sys
 
@@ -61,5 +61,5 @@ with torch.no_grad():
             print(f"  {a}/{len(good)}", flush=True)
 out[torch.tensor(good)] = torch.nn.functional.normalize(
     out[torch.tensor(good)], dim=1)
-torch.save(out, "scratch/fmt_row_emb.pt")
-print(f"saved scratch/fmt_row_emb.pt {tuple(out.shape)}", flush=True)
+torch.save(out, "checkpoints/fmt_row_emb.pt")
+print(f"saved checkpoints/fmt_row_emb.pt {tuple(out.shape)}", flush=True)
