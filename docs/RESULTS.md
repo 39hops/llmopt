@@ -6947,3 +6947,36 @@ impose, diet edition); (3) risk named: if alternatives DILUTE
 step-precision, gate drops like revpairs' direction tax — that
 verdict would bound how much landscape a policy crystal can
 carry. Either way banks.
+
+## ALTPAIRS VERDICT: the diet teaches the landscape (12x entropy, every zeroed family wakes) — and it costs -6 gate; the policy-calibration TRADE is now a measured dial (2026-07-26 night)
+
+Ran as pre-registered. Gate: {3:15, 4:4, 5:15, 6:8, 7:9} =
+**51/120 @ 47.2%** v pairs@1P 57 @ 54.2% — BELOW the >=52 bar:
+prediction (1) FAILS, the named risk in (3) fires (a step-
+precision dilution tax, -6 at 14% alt share — same family as
+revpairs' -18 at 50%, roughly dose-proportional).
+Distribution read on the same 43-state battery (labels reused,
+logs/pp_dist_altpairs.jsonl): prediction (2) CONFIRMED
+decisively —
+| family | pairs_3e mass | altpairs mass |
+|---|---|---|
+| entropy_norm | 0.016 | **0.188 (12x)** |
+| i_const_factor | 0.000 | 0.048 |
+| i_parts | 0.000 | 0.035 |
+| cancel | 0.000 | 0.022 |
+| i_sum / together | 0.000 | 0.011 / 0.006 |
+| expand | 0.000 | 0.000 (only holdout) |
+Canonical families keep their lead (i_const 0.78, i_heurisch
+0.60) — the crystal ADDED the landscape without losing the
+policy ordering. READS: (1) teach-don't-impose, diet edition,
+directly confirmed — the distribution is exactly the exposure;
+(2) the policy-vs-calibration trade is now a DIAL (alt share),
+not a mystery: 0% = delta-sharp/gate 57, 14% = 12x flatter/gate
+51; a share sweep (3-7%) would locate the knee if a calibrated
+FORWARD crystal is ever needed; (3) for the PINCER the lesson
+cuts the other way — don't spend the forward crystal's gate on
+calibration; calibration belongs to the backward SCORER (B-b),
+whose training set (enumerated legal sets + labels) is
+altpairs-shaped BY CONSTRUCTION with no emission role to tax.
+Chains: distribution-readout v1 (the motivating zero), R5
+(backward soft labels inherit this recipe), amendment-2 B-b.
