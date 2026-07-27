@@ -7346,3 +7346,30 @@ predated the patch as predicted). True-move by level: 85/89/73/
 39/70/73/68/57%. VERDICT: data-leg PASSES for the race (both
 arms train on the same table; L4 weakness is arm-symmetric).
 Trainer fires now (pre-reg at birth: see spec S2 cell).
+
+## S2 RACE VERDICT: DISTANCE arm WINS on ranking — imitation ranks NO BETTER THAN NOISE (2026-07-27)
+
+Both arms trained (3 ep, warm from pairs_3e, same table/holdout;
+battery 71 fenced from train). Holdout: imit top1-true 87.6% v
+dist 53.1% — imitation is the better MOVE-GUESSER. Battery
+(n=37 ranking-measurable states, pre-reg'd bar = ranking/needle
+economics v controls, NOT argmax):
+| scorer | spearman | top1_solves | calls_to_hit |
+|---|---|---|---|
+| s2_dist | **0.497** | 37/37 | 1.0 |
+| length_only | 0.399 | 37/37 | 1.0 |
+| pairs_3e_raw | 0.309 | 37/37 | 1.0 |
+| s2_imit | 0.092 | 36/37 | 1.05 |
+READS: (1) dist BEATS both controls on rank; imit lands BELOW
+RAW — supervising on the true move alone teaches argmax and
+DESTROYS calibration (S1's length finding confirmed a second
+way: argmax-good != rank-good). (2) The distance target
+(softmax over -plies) is what buys ordered mass — calibration
+comes from VALUE labels, not move labels. (3) Needle metric
+saturated (~1.0 all arms, battery too easy on that axis) — the
+economics read rides on spearman alone; edge 0.497 v 0.399 at
+n=37 is modest, books as a WIN with a width caveat, replication
+= S3's ternary cell on a harder needle battery. WINNER:
+checkpoints/scorer_s2_dist.pt = the S2 crystal; next artifact
+across the bridge = its AXNN + prompt spec (feeds frontier_eval
+scorer slot, gate_battery detokenizer, E2).
