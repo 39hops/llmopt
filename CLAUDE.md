@@ -187,7 +187,7 @@ at natural stopping points, not mid-sprint.
   bf16 births (--fast) on cuda / fp32 on Mac; GRAD_CKPT=1 for
   d768+ on 10GB; PYTORCH_CUDA_ALLOC_CONF set in-tree. A CUDA
   allocator OOM warning in a log is a TRIPWIRE (the 43x), not noise.
-- **Remote ops (friendly-fire, 6 variants deep)**: kill/write/
+- **Remote ops (friendly-fire, 7 variants deep)**: kill/write/
   launch = separate ssh calls; a watcher's pgrep must never match
   a string its own launcher carries; verify file deps at arm time;
   completion markers fire on SUCCESS only; remote host/key live in

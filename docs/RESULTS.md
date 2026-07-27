@@ -7241,3 +7241,33 @@ nonlinearities, bit-identical logits), run ONE paired arm
 (exact-mode gate vs rounded gate, same weights) at sub-sigma
 resolution. Doctrine stays CLOSED until that arm says otherwise;
 no other precision runs are justified by this amendment.
+
+## ZX SEED-2: 28/120 — an 8-POINT seed swing; the ZX gate noise floor is FLAGGED (2026-07-27)
+
+JOB 2 landed (cplx_none recipe, BIRTH_SEED=2, same diet/gate/
+device): **28/120** (parsefail 0, identity 0, unsound 92, walls
+0; by kind color 17 / fuse 5 / lcomp 3 / id 2 / pivot 1) v
+seed-1's 36/120. READS:
+1. The pre-reg tripwire FIRED: a 5+ swing was named as flagging
+   the gate noise floor — we got 8. Two-point sigma-class
+   ~8/sqrt(2) ~ 5.7 solves/120 (n=2, crude by construction; the
+   POINT of the run).
+2. The federation verdict's refusal to book union-ZX 40 v
+   cplx_none 36 as a union benefit is VINDICATED: +4 sits well
+   inside one seed-sigma-class. The 40 itself now reads
+   "at-class with everything," not "above all comparators."
+3. FENCE (standing): every single-seed ZX gate number (M5 31,
+   G5 32, none 36, union 40, seed-2 28) carries a ~+-5-class
+   seed fence until an n>2 sigma exists. JOB 3's recipe-v-
+   transfer bands (37-42 / 31-36) OVERLAP under this sigma —
+   its verdict books WITH the fence, discriminating only if it
+   lands outside the union band by more than a sigma-class.
+INCIDENT (friendly-fire variant #7, fixed dd6f7f3): both night
+launches shared /tmp/wsl_job.sh; bash reads scripts LAZILY, so
+the second launch's overwrite corrupted the still-running seed-2
+queue mid-stream ("h: command not found") AFTER its gate step —
+birth + gate completed, marker never fired, the zx2 waiter
+honestly died. wsl.sh launch now mktemps a unique job file per
+launch. Seed-2 artifacts verified by hand (ckpt 00:31, gate log
+00:35); marker set manually on that evidence; job 3 relaunched
+and confirmed running (birth in flight).
