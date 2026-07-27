@@ -232,3 +232,33 @@ promotion comparator). Also from the same exchange: the
 rotational-domain map (RIFF entry) — Fourier continent = the
 pincer's second phase-carrying territory if ZX books the
 interaction.
+
+## 10. AMENDMENT 3 (Artin, 2026-07-26 night): the composite machine
+## + the maps spin (cells R8-R10; provenance in RIFF-LEDGER)
+
+The program's honest frame: not one LLM but a federation of
+learned components, each deployed where its variance lives —
+forward crystal (policy), backward scorer (calibration), magic
+certifier (theorem-safe pruning), regret head (abandonment),
+LLMUE/exchange (metabolism). Every tool is a candidate at every
+stage (inference / training / repair-practice) — spins are
+separate cells, not one verdict.
+
+- **R8 — meet v1 as bidirectional best-first**: forward frontier
+  = bf + NNUE-h (the measured 113/120 discipline, greedy g=0);
+  backward peel set B = goal states; contact by skeleton hash
+  (the existing transposition table is the meet detector). Arm
+  vs let-it-finish forward-only at EQUAL total node+token budget
+  (regret-round-2 economics). Battery: R0's 18 valid-but-
+  unsolved near-misses + L4 (the conjecture crater) first.
+- **R9 — magic-gated peeling**: certified non-elementary
+  integral node in a peeled predecessor = dead backward branch;
+  prune at mint (zero false positives by the Liouville
+  certificate; new deployment direction for bench_magic
+  machinery). Read: peel-set purity + meet wall-time at matched
+  peel budgets.
+- **R10 — regret-gated abandonment**: the trace-fate probe
+  (AUC .914) re-aimed at backward half-chains — stop peeling a
+  candidate whose peel trace reads doomed. Only fires if R8
+  shows peel budget is a binding cost (variance check BEFORE
+  building the judge — the meta-pattern law).
