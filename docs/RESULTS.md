@@ -7057,3 +7057,31 @@ informative); (2) mass order ~ sampling order (T-sampling
 already reads the same distribution — if so, the "amplification"
 is free and already deployed); (3) the saving concentrates where
 h/n is small (few needles — exactly Grover's regime).
+
+## R0b VERDICT: amplitude ordering pays 1.7x at readout — and it concentrates exactly in the needle regime (2026-07-26 late)
+
+Ran as pre-registered (56/120 problems had >=1 verified hit at
+k=16). Mean oracle calls to first solution: **mass-order 1.43 |
+sampling-order 1.52 | random 2.43.**
+1. Prediction (1) CONFIRMED: 1.70x saving v random (bar 1.5x) —
+   the wave is informative at readout; reading amplitudes before
+   measuring is worth ~1 oracle call per problem at k=16.
+2. Prediction (2) CONFIRMED: sampling order ~ mass order (1.52 v
+   1.43) — T-sampling already IS an amplitude-ordered readout
+   (first samples come from high-mass regions), so the
+   amplification is deployed for free wherever we sample. The
+   marginal value of the explicit wave read is the 1.52->1.43
+   sliver PLUS determinism (no sampling variance, cacheable).
+3. Prediction (3) CONFIRMED: the saving splits 2.06x in the
+   needle regime (h/n<=0.25, n=23) v 1.28x abundant — exactly
+   Grover's regime dependence, reproduced classically. Where
+   solutions are rare, amplitude ordering pays double.
+SCOPE (the fence holds): this is the READOUT-layer wave frame
+paying again (R0's +1-over-argmax was its lower bound; this is
+its price sheet). No sqrt(N), no register, no interference —
+the classical residue, measured. PRACTICAL RIDER: verify-order
+in every k-candidate loop (gates, exchange resamples, future
+B-b peel readout) should be mass-descending when logp is
+already in hand — sample_wave_lp RETURNS lps; the reorder is
+one sort, zero cost. Adopted for new instruments; retrofits
+opportunistic.
