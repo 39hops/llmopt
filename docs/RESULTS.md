@@ -7149,3 +7149,35 @@ replicates at scale); (2) value-label yield >85% of children
 labeled within the 8s wall at L1-5, degrading at L6-7 (honest
 unlabeled mass reported); (3) no interference verdict yet — the
 training race itself pre-registers at birth time.
+
+## FEDERATION: math+ZX union birth — BOTH columns hold; grammar CLASS does not bind (2026-07-27)
+
+Ran as pre-registered (union_math_zx: d384/8L fp32 seed 1,
+vocab-47, 132,870 math + 97,036 ZX rows, SEQ_CAP 1536, 3080).
+| column | union gate | comparators (standalone) |
+|---|---|---|
+| math | 66/120 (65.78%) | fp32 64 / G5-lat 66 / cplx_none 63 |
+| ZX | 40/120 | cplx_none 36; real-scalar M5 31 / G5 32 |
+READS:
+1. Prediction (1) CONFIRMED: math HOLDS at-class — 66 ties the
+   column BEST (G5-latent 66). The union is not merely cheap; the
+   math column paid zero measurable tax for carrying a graph
+   grammar. Gen-8 coefficient-(i)~0 law extends to grammar CLASS.
+2. Prediction (2) CONFIRMED and exceeded: ZX 40 lands ABOVE every
+   comparator — +4 over cplx_none 36 (complex-FFN, the previous
+   best) and +8/+9 over the real-scalar pair (M5 31 / G5 32),
+   which is the honest same-alphabet comparison (union is fp32
+   real). Noise class unknown until seed-2 lands (JOB 2, in
+   flight) — the +4 is NOT booked as a union BENEFIT yet; the
+   at-or-above-class read is what's banked.
+3. Prediction (3) CONFIRMED: parsefail 0/120, identity 0,
+   unsound 80, walls 0 — strict encode holds in union.
+4. Verdict: graph-vs-tree grammar CLASS binds nowhere at 19M-
+   class, where grammar COUNT (gen-8, five grammars) also did
+   not. The federation floor's first graph datapoint is a clean
+   PASS on both fail-read thresholds (math -5+: not hit; ZX
+   <25-class: not hit).
+Fences: union d384 v standalone d384 same-recipe; ZX kind mix
+shifted (color 23/fuse 10 v standalone's mix) — kind-level read
+waits for seed-2 sigma. Seed-2 verdict books separately on
+marker.
