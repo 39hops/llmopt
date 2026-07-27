@@ -6846,3 +6846,32 @@ READS:
 Sidecars logs/pp_backpairs_{1p,3e}.jsonl. L4/L6 skew honest
 (n=5/n=1). NEXT: distribution-quality readout (the quantum-
 readout frame) before any R6 alphabet race.
+
+## PRE-REG: the distribution readout — are the crystal's amplitudes over the enumerated legal set CALIBRATED? (Artin's quantum-frame ask, 2026-07-26 night)
+
+The amendment-2 frame made measurable (the honest classical form
+of "the quantum computer returns the distribution": engine
+enumerates the COMPLETE legal move set exactly, model supplies
+amplitudes). Instrument scratch/pincer_dist_probe.py: 105 fresh
+gate-band states -> successors() full legal enumeration ->
+teacher-forced sequence log-probs (no generation) from FOUR
+checkpoints (pairs_3e wfloor / pairs_1p stream4 / oneshot_1p /
+backpairs_1p as reverse-scorer logp_b(s|child), per-edge, own
+normalization noted) -> value labels per child by FORK-ISOLATED
+engine.solve (budget 150, wall 20s; streamed rows per the
+killed-worker doctrine). Logged per child: rule@site, token len,
+solved/nodes/plies; per state x model: entropy, mass-on-solving,
+top-1-solves, Spearman(logp v solved), length-bias corr.
+PREDICTIONS (house): (1) forward crystals are BETTER than
+uniform but imperfectly calibrated — mass-on-solving beats the
+n_solving/n_legal baseline and top-1-solves lands 70-85% (greedy
+chains gate at 57-65, so the argmax is known-good; the open
+question is the TAIL mass); (2) oneshot is MISCALIBRATED on
+1-ply moves (trained to skip — its mass should wander off the
+legal set's solving subset; entropy higher); (3) the backward
+reverse-score carries signal (positive mean Spearman) but weaker
+than forward — 11% emission validity caps how sharp
+logp_b(s|child) can be; (4) length bias EXISTS (longer children
+get less raw mass) — named confound, length-normalized column
+logged. Uniform baseline and n_solving reported per state so
+every read is against chance.
