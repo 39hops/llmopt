@@ -81,29 +81,9 @@ attention layer regardless of decode mode; FX-V1 handles it with
 a declared exp table + floor division. House claim amended
 accordingly.
 
-## Next tools tranche (asks 4-6; Artin, 2026-07-27 late night)
+## Next tools tranche — MOVED to specs/2026-07-27-exact-stack.md
 
-4. **frontier_eval — the fused NNUE-template inner loop**: one
-   native call: successors(state) -> dead_mask prune -> FX-V1
-   scorer forward over the enumerated set -> MASS-DESCENDING
-   candidate order (R0b, adopted) -> optional verify_edge on
-   top-k. Mirror call with predecessors() = the exact backward
-   layer. This is the B-b pincer's whole inner loop as one
-   ms-class primitive (scorer weights ship as AXNN once the S2
-   race picks a winner).
-5. **Native gate-battery runner**: 120-probe greedy gate in one
-   FX-V1 call (decode loop + oracle verify native). Payoffs:
-   the nightly gate wall dies, and the precision amendment's
-   paired arm (exact v rounded gate, same weights) becomes a
-   trivial run.
-6. **FX-V1 table certification fuzz**: declared exp/gelu/rsqrt
-   tables get bounded-error certificates v a float reference
-   (+ monotonicity where argmax correctness depends on it) as a
-   standing CI node — a bad table IS the model definition, same
-   fossilization class as the value cache.
-NOT asked (gated): graded magic scoring waits on S5's variance
-read (binary dead_mask may already saturate); exact TRAINING is
-out of scope (training stays torch; the one declared-rounding
-update-site design is banked as a research rung, not an ask).
-House-side note: the stochastic-rounding bf16 birth (L2143,
-open since 07-17) is OURS to run on the 3080, not axiom's.
+Asks 4-6 (frontier_eval / native gate runner / FX-V1 table
+fuzz), the gated non-asks, and the house verification queue
+(E1-E5 + SR birth [HOLD]) now live in the exact-stack spec;
+relay -4 is the send.
