@@ -6920,3 +6920,30 @@ right (reverse-score carries signal) but comparator vacuous;
 (4) CONFIRMED. NEXT: frontier-battery re-ask rides the R6
 alphabet race (same instrument, stuck states, length control
 standing).
+
+## PRE-REG: altpairs — the distribution-rows bank, forward edition (winners combined; 2026-07-26 night)
+
+Motivated by tonight's distribution readout (crystals put ZERO
+mass on equally-valid non-canonical moves) + Artin's standing
+push (nulled/banked ideas decay — retest when the config
+changes; the config JUST changed: we can now read distributions).
+Combination of winners: pairs format (ladder winner, 57@1P) +
+engine enumeration (successors(), verified) + the R5
+distribution-target bank (never run forward). DIET: full gen-4
+pairs + ~22k farmed verified-alternative successor rows (~14%
+share; make_altpairs.py, 4000 unique states, fork workers,
+streamed shards). BIRTH: FORMAT=altpairs SCHED=1p d256 seed 1.
+READS: (a) gate_pp (does the gate hold pairs-class 57? bar:
+>= 52 = within the known seed-noise band); (b) the distribution
+instrument re-run on fmt_altpairs_1p — entropy_norm (does the
+near-delta 0.017 rise?), pooled mass on non-canonical solving
+families (i_sum/together/cancel/i_const_factor: from 0.000 to
+>0.05 = the diet taught the landscape). PREDICTIONS (house):
+(1) gate HOLDS (alternative rows are verified-true steps, not
+noise; +14% dose of valid physics shouldn't damage chaining);
+(2) entropy rises toward the landscape and non-canonical mass
+goes nonzero (the crystal learns what it is fed — teach-don't-
+impose, diet edition); (3) risk named: if alternatives DILUTE
+step-precision, gate drops like revpairs' direction tax — that
+verdict would bound how much landscape a policy crystal can
+carry. Either way banks.

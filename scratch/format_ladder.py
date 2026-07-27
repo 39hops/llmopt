@@ -9,6 +9,7 @@ cooldown, surprise rider); 3e = standard 3ep OneCycle (control
 construction: length-sorted BS=32, shuffled batch order).
 Checkpoint: checkpoints/fmt_{FORMAT}_{SCHED}.pt
 """
+import json
 import os
 import random
 import sys
@@ -97,6 +98,17 @@ elif FORMAT == "oneshot":
     for ch in build_chains():
         texts.append(f"Current: {rows[ch[0]]['cur']}\nHints: none\n"
                      f"Step: {rows[ch[-1]]['nxt']}\n")
+elif FORMAT == "altpairs":
+    # distribution-rows forward edition (pre-reg 2026-07-26 night):
+    # full pairs diet + farmed verified-alternative successors
+    # (make_altpairs.py) — teaches that the legal set has more than
+    # one valid branch. Share is whatever the farm minted (~14%).
+    texts = [pair_text(r) for r in rows]
+    alts = [json.loads(l) for l in open("data/altpairs_rows.jsonl")]
+    alts = [r for r in alts if norm(r["cur"]) != norm(r["nxt"])]
+    texts += [pair_text(r) for r in alts]
+    print(f"[altpairs] {len(rows)} base + {len(alts)} alt rows",
+          flush=True)
 elif FORMAT == "backpairs":
     # pincer R1a (spec 2026-07-26-reverse-llmue-pincer): the
     # backward crystal's diet — EVERY row reversed, zero forward
