@@ -7672,3 +7672,26 @@ per weight at zero capability loss (consistent with MX-int4
 full parity at rest — the ladder said ~4-5 mantissa bits; the
 rational lattice pays ~2x bits for its denominator freedom but
 buys EXACTNESS). Curve booked complete; no further Q arms owed.
+
+## PRE-REG: born-rational birth, RAT_Q=6 v fp32, paired Mac arms (2026-07-27 night, before the run)
+
+Artin's critique of the snap sweep, taken as the design ("the
+weights were rounded to begin with — snapping back can just be
+wrong; try NO error"): post-hoc snapping approximates an
+fp32-born artifact and inherits its rounding history; the born
+arm puts weights ON the exact lattice from step 0. Measured
+motivation: M5 held parity BORN on a 2.32-bit lattice while
+post-hoc rational parity cost ~10.5 bits — born-exact already
+beats snapped-after by ~4-5x in bits, in-house. ARMS (both Mac
+MPS, same recipe/diet/seed — birth device is a confound, so the
+control is Mac-born too, NOT the cuda-born 19M): (A) fp32
+control, 19M/gen-4/3ep/seed 1; (B) RAT_Q=6 STE (per-tensor s *
+best p/q, q<=6 — ~5-6 bits/weight class; train_mathnative.py
+RAT_Q env, STE smoke-tested), deployed via scratch/rat_deploy.py
+(deploy IS the trained function — the point of the arm). BARS:
+B-deployed within ~2 of A = born-rational parity at ~half the
+snapped twin's bits — Artin's born-exact thesis BOOKS; B down
+>=5 = the rational lattice trains worse than the magnitude
+alphabet (M5's lineage does not transport to fractions). House
+prediction: parity-class (M5 precedent). Mac gate numbers stay
+Mac-only. scratch/night_rat.sh.

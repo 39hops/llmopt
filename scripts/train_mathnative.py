@@ -214,6 +214,36 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
         print("SR_BF16 ACTIVE: stochastic-rounding bf16 weight cast "
               "(linears; straight-through grad)", flush=True)
 
+    if int(os.environ.get("RAT_Q", "0")):
+        # Born-rational STE (RIFF 2026-07-27, Artin's "try no error"):
+        # every linear forward snaps w to s * (best p/q, q <= RAT_Q),
+        # s = per-tensor absmean — weights live ON the exact rational
+        # lattice from step 0; straight-through grad to fp32 latents.
+        # Deploy (scratch/rat_deploy.py, same snap) IS the trained
+        # function, unlike post-hoc snapping of an fp32-born crystal.
+        _RQ = int(os.environ["RAT_Q"])
+        def _rat_snap(w, Q):
+            s = w.abs().mean().clamp(min=1e-8)
+            v = w / s
+            best = torch.round(v)
+            err = (v - best).abs()
+            for q in range(2, Q + 1):
+                c = torch.round(v * q) / q
+                e = (v - c).abs()
+                m = e < err
+                best = torch.where(m, c, best)
+                err = torch.where(m, e, err)
+            return s * best
+        import torch.nn.functional as _F2
+        _lin2 = _F2.linear
+        def _rat_linear(x, w, b=None):
+            if w.dtype == torch.float32 and w.ndim == 2:
+                return _lin2(x, w + (_rat_snap(w, _RQ) - w).detach(), b)
+            return _lin2(x, w, b)
+        _F2.linear = _rat_linear
+        print(f"RAT_Q ACTIVE: born-rational STE lattice q<={_RQ} "
+              "(linears; straight-through grad)", flush=True)
+
     import contextlib
     for ep in range(start_ep, EPOCHS):
         if starts is None:  # proper packing: shuffle THEN pack
