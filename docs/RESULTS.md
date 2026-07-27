@@ -7461,3 +7461,30 @@ INDISTINGUISHABLE from proven-unreachable — axiom's False
 labels carry exactly the censoring our value cache just purged
 (censored != fact). Ask: surface an `expired` flag so censored
 rows are cacheable-by-censoring-parameter, not fossilized.
+
+## E4 RE-RUN ON IV4: agreement 168/184, the expired flag decomposes the misses — and TWO house corrections (2026-07-27)
+
+Same seeded 200-state sample, axiom c69614e (IV==4, Mac build
+3d73e1e3). MOVEMENT: agree 161 -> 168/184; axFalse/houseTrue
+21 -> 14, now DECOMPOSED by the new expired flag: 11 censored
+(deadline) v 3 decided — the audit's asin/sqrt-content fixes
+landed as claimed (probe battery 3/9 -> 9/9 axiom-side).
+HOUSE CORRECTION 1 (axiom was right): parsefail 16 is NOT
+Subs(...) — the IV4 error strings show every reject is the
+imaginary unit I (complex-carrier states from the cplx lineage
+in our cache). That is a DOMAIN FENCE (axiom's carrier is
+real-rational by design), not a parser gap; booked as amendment
+to yesterday's E4 verdict wording. Remaining 3 decided misses:
+log-constant coefficients (log(5), log(3) as opaque atoms) —
+the named next audit tranche.
+HOUSE CORRECTION 2 (reinterpretation of the "dangerous
+direction"): axTrue/houseFalse (still the same 2 states) is
+NOT a reachability contradiction — house False at budget-150
+is BOUNDED-SEARCH failure (budget-parameterized censoring of
+its own kind), and axiom reports plies 5-6 paths there. The
+namespace split STANDS (the label distributions differ
+regardless of blame), but the audit item is now symmetric:
+verify axiom's 2 chains with OUR oracle; if they verify, house
+labels are the weaker search, not the truth. Ply-recovery
+formula (plies - |{cancel,expand,subs_eval}|) recorded; not
+yet re-scored (queued with the chain-verify audit).
