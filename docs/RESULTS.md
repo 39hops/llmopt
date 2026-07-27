@@ -7759,3 +7759,24 @@ NO-FIRE — rung (c) banks UNFIRED as pre-registered; the
 rotation reopening waits for a different lever (diet quality /
 serialization / curriculum, not width). ZX next lever candidates
 go to the morning consolidation.
+
+## PRE-REG: quick exact battery on union_45m (2026-07-27 late, before the runs)
+
+Five arms on the 3080, comparator = tonight's booked union_45m
+math gate 65/120 (same device, same VOCAB_EXTRA env, same gate
+command; machine state unchanged since). Arms: (1) rat64 =
+best-rational Q<=64 (err ~2e-4) — does the Mac's rational-twin
+parity TRANSPORT to a 45M cuda crystal? predict 65+-2. (2)
+fq512 = fixed shared denominator q=512 (err ~1e-3, W=P/512
+integer P — the INTEGER TWIN, exact int-GEMM road): predict
+parity-class. (3) fq128 (err ~3.9e-3, above the Mac-bracketed
+wall [1.7e-3, 3.7e-3]; int8-range P if |p|<128): predict
+cracked-or-marginal — this arm READS whether the wall bracket
+transports across width/device (fence note: the bracket is a
+Mac-19M number; this is a coarse transport probe, not a sigma
+comparison). (4) rat16 (err ~3.7e-3): predict crack (horizon
+law). (5) rat16+repair: freeze the exact lattice, train ONLY
+1-D norms/biases 400 steps on the birth diet — precision-as-
+thin-film's decisive read: recovering >= half the rat16 deficit
+books "precision is a small additive budget"; no recovery kills
+the film claim at 45M. scratch/quick_exact_3080.sh.
