@@ -7488,3 +7488,19 @@ verify axiom's 2 chains with OUR oracle; if they verify, house
 labels are the weaker search, not the truth. Ply-recovery
 formula (plies - |{cancel,expand,subs_eval}|) recorded; not
 yet re-scored (queued with the chain-verify audit).
+
+## E4 AUDIT CLOSE-OUT: axiom's 2 extra solves VERIFY on the house oracle (2026-07-27)
+
+The symmetric audit ran: both axTrue/houseFalse states solved
+via ax.solve (plies 6 and 5, expired=False) and their answers
+verified by sympy (d/dx(answer) - d/dx(state).doit() simplifies
+to 0, both). READ: on these states the HOUSE label was the
+weaker bounded search — axiom overclaimed nothing; there is no
+reachability contradiction anywhere in the E4 sample. The
+namespace split now rests solely on (a) coverage asymmetry
+(3 decided log-constant misses, audit tranche named), (b) ply
+semantics (recovery formula recorded, re-score queued), (c) the
+domain fence (I-atom states). Bridge deliveries this cycle:
+solve() dict surface confirmed {solved, answer, history, nodes,
+expired, slot_fires, slot_decisive} — history carries the rule
+names the ply formula needs.
