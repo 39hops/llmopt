@@ -7427,3 +7427,37 @@ low draw, not an anomaly. The graph-grammar column's honest
 summary: ZX-class ~29-37 at 19M regardless of recipe, union
 possibly +1-2-sigma above it — a transfer/union claim needs
 either more union seeds or a bigger effect.
+
+## PRE-REG: E4 solve_batch parity gate (2026-07-27, fired on axiom push landing)
+
+200 states sampled (string-seeded) from the de-censored house
+value cache (budget-150 python solver labels, walls stripped —
+censored != fact honored), re-labeled by axiom_sym.solve_batch
+(budget=150, IV==3 Mac build 75d912f5). PREDICTIONS: (1)
+solved-bit agreement >= 199/200 (axiom measured 197/200 qual
+roots solvable; disagreements should be deadline expiries, i.e.
+axiom-False-house-True only); (2) plies equal or within known
+tie classes on agreed solves. DECISION RULE (spec E4): pass =
+shared cache (one label family); any solved-bit disagreement in
+the axiom-True-house-False direction = engines differ on
+REACHABILITY, labels stay engine=axiom namespaced pending a
+per-state audit.
+
+## E4 VERDICT: solve_batch parity FAILS — labels stay engine=axiom; axiom's False carries CENSORING (2026-07-27)
+
+200 cached budget-150 states (string-seeded sample): parsefail
+16/200 (axiom grammar narrower — Subs(...) forms among them);
+agree 161/184 (87.5% v pre-reg >=199/200); axFalse/houseTrue 21
+(incl trivial basis states: asin-basis 1/sqrt(1-9x^2) — rule
+coverage gaps); axTrue/houseFalse 2 (the reachability-claim
+direction — per decision rule this ALONE keeps namespaces
+split); plies equal only 111/148 on agreed solves (systematic
++1/+2 — ply semantics differ). Mac throughput 7 st/s with
+[slow-fire] walls hitting the 8s deadline. VERDICT: parity gate
+FAILS on every prong; engine=axiom namespace is PERMANENT until
+a per-prong audit closes each gap. DOCTRINE CATCH (relay
+point): solve_batch reports deadline expiries as solved=False
+INDISTINGUISHABLE from proven-unreachable — axiom's False
+labels carry exactly the censoring our value cache just purged
+(censored != fact). Ask: surface an `expired` flag so censored
+rows are cacheable-by-censoring-parameter, not fossilized.
