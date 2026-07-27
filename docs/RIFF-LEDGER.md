@@ -1080,3 +1080,14 @@ to the collaboration itself.
   question becomes re-testable at sub-sigma resolution for the
   cost of ONE paired arm — doctrine stays CLOSED, with that
   named as the sole cheap reopening condition.
+
+- **2026-07-27 (house, from the SR null)**: paired arms need
+  SAME-DAY controls — a 10-day-old "booked pair" is not a
+  control arm once the tree drifts (SR loss 0.330 v pair 0.3525
+  exposed it). Candidate doctrine line if a second incident
+  lands.
+- **2026-07-27 (house, E4 catch; lineage = Artin's censoring
+  audit)**: censored != fact TRANSPORTS across engines — axiom's
+  solve_batch deadline expiries fossilize as solved=False the
+  same way our value cache did. The doctrine is about label
+  STORES, not about our code.
