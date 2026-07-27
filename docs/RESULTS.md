@@ -7294,3 +7294,38 @@ extend only with a named next site. (3) below 65 = SR noise
 itself taxes this scale. FENCE: math-gate seed sigma at 45M is
 tighter than ZX's (~5.7-class) but nonzero — a 1-solve edge
 books as a tie.
+
+## AXIOM TRANCHE 3: frontier_eval + gate_battery + certify_tables ALL DELIVERED (2026-07-27)
+
+Asks 4-6 shipped same-night (bridge INTERFACE_VERSION == 3, 14
+pinned names; full record: relay/2026-07-27-5). Headlines: (1)
+frontier_eval = the B-b pincer inner loop as ONE bridge call,
+both directions, 18 ms forward WITH full verification (R0b
+honored: successors unverified, oracle deferred to verify_edge
+top-k); scorer slot listwise-shaped, awaiting the S2 winner's
+AXNN + prompt spec. (2) gate_battery = 120-probe greedy gate in
+one call at ~78 ms/probe — the nightly gate wall is DEAD
+(sub-minute); FX-V1 refactored to a per-position KV stepper
+where the stepper IS the forward, so generate() is bit-exact by
+construction and the acceptance hashes reproduce unchanged
+(refactor changed cost, not values — the regression pattern to
+copy). (3) certify_tables = standing certificate wired as a LOAD
+GATE (uncertified artifact throws), +-1 LSB + argmax-relevant
+monotonicity + rope-circle + midpoint fuzz. TRAP BANKED: exp
+table underflow region has equal adjacent entries — corrupting
+there is a silent no-op for monotonicity tests; fuzz where the
+gradient is ~1 LSB (idx ~1300 on [-16,0]). CONSEQUENCE: E3
+shrinks to one call per side; the S2 race now feeds three
+consumers (scorer slot, gate detokenizer, E2 export).
+
+## PRE-REG: ZX seed-3 (JOB 5, 3080; queued under Artin's open-queue GO 2026-07-27)
+
+Third sigma point on the cplx_none/zx_farm1 arm (seed-1 36,
+seed-2 28): BIRTH_SEED=3, same diet/recipe/gate/device
+(scratch/night_zx3.sh, chained behind JOB 4). PREDICTION: lands
+in the 25-40 band implied by the two-point sigma-class ~5.7;
+the n=3 spread REPLACES the crude two-point sigma as the
+standing ZX seed fence. If it lands OUTSIDE 22-42 (beyond
+~2.5x the current class), the gate itself is suspect (probe-set
+composition, not seed noise) — that read triggers a probe-set
+audit, not another seed.

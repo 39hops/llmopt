@@ -38,7 +38,18 @@ exact is ALREADY the faster path at rung-1 (ozaki lineage holds).
   stochastic-rounding bf16 birth (RESULTS L2143, open since
   07-17) — cheapest live precision experiment; house-run.
 
-## Axiom tools tranche (asks 4-6, moved from relay -3)
+## Axiom tools tranche (asks 4-6) — DELIVERED 2026-07-27 (relay -5)
+
+All three shipped; bridge INTERFACE_VERSION == 3, 14 pinned
+names. frontier_eval 18ms forward full-verify; gate_battery
+~78ms/probe (certification enforced at load; FX-V1 stepper
+refactor bit-identical, hashes reproduce); certify_tables
+standing (+-1 LSB, argmax-relevant monotonicity, rope circle,
+midpoint fuzz; exp-underflow equal-entry fuzz trap banked).
+E2's export now ships AXNN + PROMPT SPEC (format + token map) —
+three consumers. Original asks kept below for the record.
+
+## Original ask statements (asks 4-6, moved from relay -3)
 
 4. **frontier_eval — the fused NNUE-template inner loop**:
    successors(state) -> dead_mask prune -> FX-V1 scorer forward
