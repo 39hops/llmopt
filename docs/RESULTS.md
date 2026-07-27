@@ -6875,3 +6875,48 @@ logp_b(s|child) can be; (4) length bias EXISTS (longer children
 get less raw mass) — named confound, length-normalized column
 logged. Uniform baseline and n_solving reported per state so
 every read is against chance.
+
+## DISTRIBUTION READOUT v1: the amplitudes are POLICY, not landscape — and the battery saturated in BOTH value dimensions (2026-07-26 night)
+
+Ran as pre-registered (43/105 states survived enumeration —
+62 skipped at n_legal<2 or unencodable; L4/L6 absent; battery
+skew named). Sidecar logs/pp_dist_probe.jsonl (full per-child
+logp x 4 models, rule@site, plies/nodes-to-root).
+THE INSTRUMENT LESSON FIRST (the meta-pattern, 5th occurrence:
+prediction pays only where variance lives): at budget 150 the
+value oracle solves 95.3% of ALL legal children (chance
+mass-on-solving 0.953) — the binary read is vacuous
+(mass_solv=top1=1.000 for every model). The graded read
+(Spearman v -plies_to_root: models 0.71-0.77, top1-minplies
+97-100% v chance 38%) LOOKS strong but the control kills it:
+**a length-only ranker scores 0.826 / top1 1.000 — on this
+battery "shortest child" is a perfect policy**, so no model
+skill beyond length is demonstrated. Calibration on gate-band
+mid-chain states is UNMEASURABLE; the re-ask needs a frontier
+battery (L6/L7 stuck states, walls, tighter budget) where
+shortest-move fails.
+WHAT SURVIVES (distribution geometry, real and new):
+1. **The crystals' amplitudes encode the CORPUS POLICY, not the
+   solvability landscape**: entropy_norm 0.016-0.022 (near
+   delta); mass concentrates on canonical families (i_const .93,
+   i_heurisch .60, i_inverse_trig .51) and is ZERO on
+   equally-solving alternatives (i_sum, together, cancel,
+   i_const_factor, expand all 0.000 pooled mass at solve rate
+   1.00). The superposition is enumerated; the crystal collapses
+   it to the farm's habits.
+2. **The backward reverse-scorer has a DIFFERENT geometry**:
+   10x flatter (entropy_norm 0.245), spreads real mass onto
+   families the forward crystals zero (i_const_factor .131,
+   cancel .084), and its graded Spearman (0.769) is the best of
+   the four DESPITE 11% emission validity — scoring and emitting
+   are different skills (B-b's premise, directly observed).
+3. Length bias confirmed strong everywhere (len_corr 0.62-0.80)
+   — any future distribution instrument must carry the
+   length-only control as a mandatory arm (adopted).
+Predictions: (1) unresolvable (saturation); (2) WRONG — oneshot
+is NOT flatter on 1-ply moves (ent 0.022, same as pairs; its
+skip training did not blur its step distribution); (3) direction
+right (reverse-score carries signal) but comparator vacuous;
+(4) CONFIRMED. NEXT: frontier-battery re-ask rides the R6
+alphabet race (same instrument, stuck states, length control
+standing).
