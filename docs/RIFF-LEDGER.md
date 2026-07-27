@@ -1131,3 +1131,16 @@ to the collaboration itself.
   structure packs into finite weights. METHODS note: this is
   physics-as-frame (on-charter); no claim until a rung measures
   something.
+- **2026-07-27 (Artin, unified-memory ozaki)**: the Mac's unified
+  memory as the ozaki pipeline's missing lever — CPU and GPU
+  share physical pages zero-copy, so the EXIT (recombination /
+  big-int reconstruction, the pipeline's expensive step) can run
+  CPU-side on the same pages the GPU's int8 slice products land
+  in, no transfer wall. Analogy Artin names: like fp64 masters
+  holding information about the fp32 deploy — the wide/exact
+  representation lives resident beside the narrow compute copy,
+  same pool. Banked rung: ozaki-on-Metal port (simdgroup int8
+  slices + CPU big-int recombine, shared pages) — the Mac may be
+  the BETTER exact-GEMM machine per dollar because the exit is
+  free there. Pairs with [[ozaki stay-in-RNS endgame]] and the
+  Metal split-K lineage.

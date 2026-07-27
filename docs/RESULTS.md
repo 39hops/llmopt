@@ -7637,3 +7637,17 @@ and L7 ENTIRELY while keeping L3 13/L5 11 — long-horizon levels
 die first under weight noise (tail-dies-first, weight-space
 edition). Both pre-reg predictions (Q=64 ties, Q=4 cracks) land;
 the knee lands one octave lower than hoped.
+
+## PRE-REG: rational-snap knee localization, Q in {24, 32, 48} (2026-07-27, before the run)
+
+Follow-up to the Q-sweep verdict (Artin GO "run follow up
+honestly"): the knee sits between Q=16 (26/120) and Q=64 (48 =
+parity). Three more arms, same instrument (Mac MPS gate, same
+control 49), same snap procedure. PREDICTIONS: recovery is
+monotone in Q; the smallest parity-Q (within 2 of control)
+defines the MINIMAL exactly-rational format — house guess Q=48
+at parity, Q=24 still cracked (err ~8e-4 v 4e-4; the ladder
+analogy puts the wall near int4's ~6e-3-class step but the
+Q=16 crack argues the true wall is tighter). Readout: minimal-Q
+becomes the packing-density number the black-hole frame asked
+for (bits/weight of the smallest exact twin at parity).
