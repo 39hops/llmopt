@@ -7609,3 +7609,31 @@ the 45M ZX gate stays 32-class: rung (c) banks UNFIRED (no
 width rescues a fence-drowned column; the reopening waits for a
 different lever). scratch/night_g9.sh holds the 19M recipe as a
 template only — DO NOT LAUNCH as-is.
+
+## RATIONAL-SNAP VERDICT: the crystal has an EXACTLY-RATIONAL TWIN at Q=64 (parity); the knee is between 4e-3 and 2e-4 (2026-07-27 evening)
+
+All four arms on the Mac MPS gate, paired (control re-gated on
+this instrument: 49/120 @ 48.94% — Mac numbers, never comparable
+to the cuda-era column). Every 2-D weight moved (moved-frac 1.0,
+as expected — fp32 values are never small fractions):
+| arm | gate | validity |
+|---|---|---|
+| control (fp32) | 49/120 | 48.94% |
+| Q=64 (err ~2e-4) | **48/120** | 49.29% |
+| Q=16 (err ~4e-3) | 26/120 | 32.13% |
+| Q=4 (err ~5e-2) | 0/120 | 0.00% |
+VERDICTS: (1) **Q=64 GATES AT PARITY (-1, inside sigma): every
+weight replaced by a fraction p/q with |p|,q <= 64 and nothing
+functional is lost — the 19M crystal admits an exactly-rational
+twin.** The exact-representation program's first measured
+positive: "the weights as simple fractions" is a real deployment
+format, not a metaphor. (2) Q=16 is NOT free (-23, validity
+halves): trained weights do NOT prefer simple-fraction structure
+— the pre-reg's knee question answers NO; functional sensitivity
+sits between 4e-3 and 2e-4 perturbation, consistent with the
+MX-int4-parity / int3-cracks precision ladder reading at rest.
+(3) Q=4 dead (0/120) as predicted. Anatomy note: Q=16 loses L4
+and L7 ENTIRELY while keeping L3 13/L5 11 — long-horizon levels
+die first under weight noise (tail-dies-first, weight-space
+edition). Both pre-reg predictions (Q=64 ties, Q=4 cracks) land;
+the knee lands one octave lower than hoped.
