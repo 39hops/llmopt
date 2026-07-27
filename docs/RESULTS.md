@@ -7504,3 +7504,20 @@ domain fence (I-atom states). Bridge deliveries this cycle:
 solve() dict surface confirmed {solved, answer, history, nodes,
 expired, slot_fires, slot_decisive} — history carries the rule
 names the ply formula needs.
+
+## E4 RE-DRAW ON 277bc19: numbers UNCHANGED (168/184, same 3 decided) — the delta is the PRIOR, the fence catches its second case (2026-07-27)
+
+Re-drew the seeded E4 sample on a house build of 277bc19 (IV4):
+agree 168/184, axExtra 2, censored 11, decided 3 — IDENTICAL to
+the c69614e run, same three states. Axiom's report that all
+three solve at "150/24/3 + prior" is not contradicted: their
+replay ran PRIOR-ON (markov prior_tsv, a data artifact on their
+box, not in-repo); the E4 instrument is solve_batch DEFAULTS
+(prior_tsv='') — matching the prior-free house python solver it
+is being compared against. SECOND substrate-fence catch in one
+day: arm config is part of the instrument; "+ prior" changes
+the number. HOUSE POSITION: E4 stays prior-free (label parity
+must compare like search arms); the prior's effect on these
+signatures is a real, separate result — worth one named cell
+(prior-on v prior-off over the same 184) if axiom ships the
+prior file with a sha256. Namespace split unchanged.
