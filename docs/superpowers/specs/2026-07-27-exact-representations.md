@@ -56,3 +56,23 @@ inference (integer coords per weight, zero rounding in the
 rotation algebra) — FX-V1's exact-GEMM machinery is the
 substrate. The black-hole/Bekenstein frame stays a frame until
 a rung produces a measured packing-density number.
+
+## Addendum (late 2026-07-27, Artin's three upgrades)
+
+- **Function-aware snap = COMPUTE the actual number**: per-layer
+  least squares ||X W_lat - X W|| on calibration activations,
+  GPTQ-greedy over the exact-rational lattice — the minimizer is
+  computed, not approximated. Predicted: parity Q drops 48 ->
+  16-24 shelf. (Dual of the born arm: training computes the
+  number forward; this computes it backward from the function.)
+- **Only the bits needed = water-filling**: per-tensor Q against
+  the anatomy's sensitivity map (head/emb = 73% of divergence
+  share at 0.16% of params -> high Q free; FFN interiors Q=6).
+  Target: mean bits/weight toward M5's ~2.3 class, exact.
+- **The factory**: template (coarse stats, time lever) -> short
+  train -> function-aware snap (seconds) -> thin precise film
+  (snap+repair rung). All legs measured or pre-reg'd; if the
+  born-rational read says lattice-from-step-0 wins, the factory
+  simplifies to template + born-lattice + free exact deploy.
+- Order: morning reads -> snap+repair -> GPTQ-rational build ->
+  mixed-Q water-filling.
