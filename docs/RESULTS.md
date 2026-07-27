@@ -7695,3 +7695,30 @@ snapped twin's bits — Artin's born-exact thesis BOOKS; B down
 alphabet (M5's lineage does not transport to fractions). House
 prediction: parity-class (M5 precedent). Mac gate numbers stay
 Mac-only. scratch/night_rat.sh.
+
+## SNAP-ANATOMY VERDICT: the sensitivity wall is a HORIZON property, not a weight property (2026-07-27 night)
+
+Artin's localization ask ("pull one bit out, trace which weight
+carries the wall") run as single-tensor Q=16 ablation + joint
+probes, teacher-forced on 48 gen-4 rows (2,512 tokens, CPU;
+scratch/snap_anatomy.py — first run hit the load_state_dict-
+copies silent-failure class, all-zero KL exposed it). FINDINGS:
+(1) **No localization**: top tensor (head.weight) carries 73% of
+single-tensor KL but the ABSOLUTE numbers are microscopic (2e-6
+kl); every tensor alone is invisible. Artin's guessed
+weight-provenance relationship NULLS. (2) **The joint snap is
+also invisible one-step**: full Q=16 — the model that gates
+26/120 — has kl 4e-6, argmax flips 2/2512 (0.08%); joint ~=
+additive (linear regime). (3) **Both flips sit at margin
+0.00016 v median margin 8.9** — snap noise decides ONLY
+pre-existing coin-toss tokens; the near-tie doctrine (fp16
+verify-block ties) reproduces for weight perturbation. (4) The
+horizon arithmetic closes the cliff: ~8e-4 flips/token x
+~1k-token greedy solves ~= 0.8 lethal near-tie flips per solve
+-> 49->26 gate, and explains tail-dies-first (L4/L7 vanish:
+longest chains). CONSEQUENCE for the exact program: the
+[1.7e-3, 3.7e-3] "sensitivity wall" is not about representing
+weights more precisely — it is near-tie DENSITY x chain LENGTH;
+precision below the near-tie margin scale buys nothing a
+coin-flip didn't already own (the precision doctrine's
+mechanism, now seen from weight space).
