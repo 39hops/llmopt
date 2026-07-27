@@ -140,11 +140,15 @@ for s, (lv, legal) in enum.items():
     ch = []
     for rule, c in legal:
         v = cache.get(norm(c), {})
+        try:  # engine moves can leave vocab-40 (e.g. fresnelc);
+            # kept with n_tok None — excluded at crystal-scoring time
+            ntok = len(tok.encode(c))
+        except ValueError:
+            ntok = None
         ch.append({"rule": rule, "child": c,
                    "solved": v.get("solved"),
                    "plies": v.get("plies"), "nodes": v.get("nodes"),
-                   "n_tok": len(tok.encode(c))
-                   if all(x in tok.id or True for x in c) else None})
+                   "n_tok": ntok})
     known = [c for c in ch if c["solved"] is not None]
     ns = sum(1 for c in known if c["solved"])
     all_rows += 1
@@ -158,6 +162,7 @@ for s, (lv, legal) in enum.items():
                           "mixed" if mixed else "graded",
                           "children": ch}) + "\n")
     # length-only control on this state
+    known = [c for c in known if c["n_tok"] is not None]
     if mixed and len(known) >= 3:
         xs = [-c["n_tok"] for c in known]
         ys = [1.0 if c["solved"] else 0.0 for c in known]

@@ -7103,3 +7103,30 @@ DECIDING READ: the length-only ranker DEGRADES on mixed states
 (spearman < 0.4, top1 well under 100%) — if length still wins
 at the frontier, S2's bar is length-not-chance and the scorer
 must beat IT.
+
+## S1 VERDICT: the frontier battery exists (71 states, 45 mixed) — length degrades in RANK but keeps top-1; S2's bar is set (2026-07-27 pre-dawn)
+
+Ran as pre-registered (one instrument fix mid-run: engine moves
+can leave vocab-40 — fresnelc child; such children kept with
+n_tok=None, excluded at crystal-scoring time; solve pass was
+already cached so the re-run cost nothing — the persistent cache
+paid on its FIRST day: 647/647 labels served, 0 recomputed).
+BATTERY: 71/105 states kept (45 mixed solve/no-solve + 26
+graded), levels {3:17, 4:2, 5:9, 6:21, 7:22} — L6/L7 carry 43;
+49/499 child labels are walls/unknown (honest mass). Mean solve
+fraction 0.80.
+PREDICTIONS: (1) PARTIAL — 0.80 v the 0.3-0.7 band (the mixed
+subset is the real de-saturation; the graded tail keeps the mean
+high); (2) PASS — 71 >= 40; (3) SPLIT, and the split IS the
+finding: **length-only rank collapses (spearman 0.294 v 0.826 on
+the saturated pool) BUT length top-1 stays 44/44** — at the
+frontier, the shortest child still always solves, while the
+REST of the length ordering turns to noise. CONSEQUENCE FOR S2
+(booked as the bar): the scorer cannot win at top-1 (length is
+free and perfect there so far); it must win on (a) full-ranking
+quality (Spearman v value), (b) needle-regime oracle economics
+(R0b metric), (c) the 45 mixed states' tail ordering — exactly
+the calibration territory, exactly where B-b's distribution
+output is the differentiating skill. Deliverables live:
+data/scorer_battery_v1.jsonl + data/value_cache.jsonl (647
+labels, permanent).
