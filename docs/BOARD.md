@@ -1,6 +1,6 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-27 pre-dawn (newest handoff: -26-2 the-pincer-night; next-session plan: B-b scorer spec pending Artin's confirm; query verdicts: scripts/results_query.py --live). RESULTS.md holds verdicts, RIFF-LEDGER.md
+Updated 2026-07-27 ~1AM (newest handoff: -27-0 the-exact-night; live specs: 2026-07-27-calibrated-scorer + 2026-07-27-exact-stack; query verdicts: scripts/results_query.py --live). RESULTS.md holds verdicts, RIFF-LEDGER.md
 holds provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
@@ -9,7 +9,9 @@ BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 | Thread | Status | Pointer |
 |---|---|---|
 | **THE PINCER PROGRAM (7 cells booked in one night)** | R0: conjecture 55/120, chain gate = strict SUBSET (chaining adds 0), L4 craters 4/24; R1a: backward trains down but peels at 11% validity (coverage 88-91% saves B-a barely); R1b: 68% exact (rule@site) labels by replay, 0 ambiguity; DIST READOUT: amplitudes = corpus POLICY not landscape (ent 0.016), backward scorer 10x flatter + best graded rank; ALTPAIRS: 12x entropy toward landscape at -6 gate (policy/calibration = measured DIAL; calibration belongs to the SCORER); R8 meet v1 FAILS (A 4 v B 5, ZERO meets, 5.7x tokens — B-a DEMOTED, program rests on B-b); R0b ADOPTED: mass-order readout 1.70x fewer oracle calls (2.06x needle regime) | specs/2026-07-26-reverse-llmue-pincer.md (3 amendments) |
-| **ZX CONTINENT (union BOOKED, seed-2 in flight)** | union verdict IN: math 66/120 ties column best, ZX 40/120 above all comparators — grammar CLASS does not bind at 19M (RESULTS 2026-07-27); seed-2 (cplx_none recipe) mid-birth on 3080 (marker: night_zx_done), sigma point books on landing | RESULTS 2026-07-27 federation verdict |
+| **ZX CONTINENT (union BOOKED, seed-2 + control in flight)** | union verdict IN: math 66/120 ties column best, ZX 40/120 above all comparators — grammar CLASS does not bind at 19M (RESULTS 2026-07-27); seed-2 mid-birth on 3080 (marker: night_zx_done); JOB 3 ARMED behind it: fp32-real ZX-only control (recipe-v-transfer discriminator, pre-reg'd; marker: night_zx2_done) | RESULTS 2026-07-27 federation verdict + control pre-reg |
+| **S-TIER / CALIBRATED SCORER (S1 done, S2 firing)** | S1: 71-state frontier battery + persistent value cache (censorship defect FOUND by Artin audit + FIXED: wall-kills never cache); S2 label farm ~70% (20,537 children, 8 workers, parallel fork-walled enum after lossless restart), trainer written (imit v dist arms, matched init/labels, battery exclude-guarded); precision AMENDMENT booked (holds above sigma; retest = E3 exact paired arm) | specs/2026-07-27-calibrated-scorer.md |
+| **EXACT STACK (FX-V1 delivered)** | axiom shipped: solve_batch (23 st/s, parity gate ours=E4), ax::nn rung 1 (1e-07 v bar 1e-4), bridge v2 pinned, Fourier batch 1 (10k rows, stay-in-Q), FX-V1 exact inference (dual-impl bit-identical hashes; exact FASTER than fp32: 148 v 162ms; endpoint-trap flagged); house queue E1-E5 + SR birth [HOLD]; asks 4-6 sent (relay -4) | specs/2026-07-27-exact-stack.md |
 | **THE FORMAT LADDER (booked)** | pairs wins all 7; interaction law SPLITS BY DIMENSION (epochs recover batch not context damage); oneshot-54 surprise feeds the pincer; formats are SUBSETS (complementarity = substrate axis) | RESULTS 2026-07-26 + THEORY row |
 | **ORG/INDEX (live)** | results-index.jsonl 269 entries + results_query (--live/--chain); tag results-pre-index; WSL clean (attic'd, manifested, archived); wsl.sh; SCOREBOARD + CLI wrapper next | specs/2026-07-26-results-index.md |
 
