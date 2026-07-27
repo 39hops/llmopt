@@ -7329,3 +7329,20 @@ standing ZX seed fence. If it lands OUTSIDE 22-42 (beyond
 ~2.5x the current class), the gate itself is suspect (probe-set
 composition, not seed noise) — that read triggers a probe-set
 audit, not another seed.
+
+## S2 DATA-LEG: 2,995 states / 70% true-move / L4 yield-miss booked; cache de-censored (2026-07-27)
+
+Farm complete (8 workers, ~2.5h): 2,995/3,003 states enumerable,
+20,552 distinct children, 2,110 states with true-move label
+(70%; pre-reg ~68% CONFIRMED). Value-label yield by level: L1
+100 / L2 100 / L3 98 / L4 47 / L5 95 / L6 80 / L7 67 / L8 48%.
+PRE-REG READ: ">85% L1-5" holds at four of five — L4 MISSES at
+47%, the integration crater's known signature (walled sympy
+solves), now CENSORED-NOT-FOSSILIZED: post-amendment those rows
+never entered the cache, so a longer-wall backfill stays
+possible. One-shot cache strip EXECUTED: 21,184 -> 16,737 rows
+(4,447 censored Nones removed; the running farm's module
+predated the patch as predicted). True-move by level: 85/89/73/
+39/70/73/68/57%. VERDICT: data-leg PASSES for the race (both
+arms train on the same table; L4 weakness is arm-symmetric).
+Trainer fires now (pre-reg at birth: see spec S2 cell).
