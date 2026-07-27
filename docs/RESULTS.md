@@ -7181,3 +7181,25 @@ Fences: union d384 v standalone d384 same-recipe; ZX kind mix
 shifted (color 23/fuse 10 v standalone's mix) — kind-level read
 waits for seed-2 sigma. Seed-2 verdict books separately on
 marker.
+
+## PRE-REG: fp32-real ZX-only control (3080 job 3, armed on Artin GO 2026-07-26 ~11:12PM)
+
+The missing comparator behind the union ZX read: the union arm's
+40/120 sits above cplx_none 36 (different arch: complex-FFN) and
+M5 31 / G5 32 (quantized/rotated) — but the plain fp32-real
+ZX-only birth was never run, so "union credit" and "recipe
+credit" are confounded. CONTROL: identical recipe to the union
+arm (train_mathnative d384/8L fp32, vocab-47, BIRTH_SEED=1,
+3 epochs, SEQ_CAP 1536) with diet = zx_farm1_train ONLY (97,036
+rows — same ZX exposure as the union, minus math). Gate: gate_zx,
+same 120 held-out diagrams. Queue: scratch/night_zx2.sh, chains
+on the night queue's success marker (dies honestly if the queue
+died); marker logs/night_zx2_done.marker.
+PREDICTIONS (house): (1) control lands 37-42-class — the union
+credit is RECIPE (unquantized fp32-real beats the modified
+alphabets and the complex arch), transfer stays unproven; (2) if
+instead the control holds the old 31-36-class, math->ZX TRANSFER
+goes LIVE (first cross-domain positive at 19M) and gets its own
+pre-registered replication before any law is written; (3) seed-2
+sigma (in flight) fences both reads — a gap smaller than
+sqrt(2)*sigma-class books as a tie.
