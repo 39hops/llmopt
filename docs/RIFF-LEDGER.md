@@ -1028,3 +1028,24 @@ to the collaboration itself.
   regret-gated peel abandonment (the AUC-.914 probe as the
   backward model's give-up signal). Fences: equal-total-budget
   economics (regret-round-2 lesson) binds every meet cell.
+
+- **Light/photonics riff (Artin, 2026-07-26 late): "small dense
+  input broken into waves" — the wave/click two-layer frame.**
+  Honest mapping (plain-language discipline): the field-evolves-
+  as-wave / detections-are-discrete structure of light maps onto
+  distribution-vs-sampling in our machines — B-b's one-pass
+  distribution over the legal set = the wave; k-sampled
+  candidates = photon clicks; oracle = detector. MEASURED
+  support same-night: R0's k=8 clicks recovered +1 over the
+  distribution argmax (the information was in the wave, not the
+  clicks) — the amendment-2 no-autoregression decision restated
+  as physics. Literal (non-analogical) landing zone = the Fourier
+  continent (dense signal -> wave components as an actual
+  grammar). InP-photonics angle: linear media do matmuls free —
+  the intuition for why one-pass distributions are cheap and
+  sequential emission is the expensive particle-like path.
+  SCOPE FENCE (house): the analogy stops at interference — phase
+  is twice-nulled here (path-integral 07-12, ZX rotation tie
+  07-26); wave frame pays at the READOUT layer, not the
+  representation layer. Attribution: Artin (frame); house
+  (mapping + fence).
