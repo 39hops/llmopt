@@ -7722,3 +7722,17 @@ weights more precisely — it is near-tie DENSITY x chain LENGTH;
 precision below the near-tie margin scale buys nothing a
 coin-flip didn't already own (the precision doctrine's
 mechanism, now seen from weight space).
+
+## Dithered snap: NULL — error feedback does not beat plain best-rational (2026-07-27 night)
+
+Trick-2 probe (row-wise Floyd-Steinberg error feedback on the
+snap lattice, same teacher-forced instrument as the anatomy):
+plain Q=16 kl 4.2e-6 / 2 flips; dither Q=16 kl 9.2e-6 / 3 flips
+(Q=24 same ordering). Dithering trades per-element accuracy for
+ordered-column-sum cancellation and the trade LOSES — activations
+are not smooth in column index and plain best-rational errors
+are already zero-mean independent. Plain snap stays champion.
+Live candidate remaining: function-aware (GPTQ-class) snap
+minimizing ||xW - xWq|| on calibration activations — banked, not
+built (needs per-layer activation capture; aims the error budget
+at near-ties, the only place the anatomy says error matters).
