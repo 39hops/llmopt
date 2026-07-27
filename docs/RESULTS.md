@@ -7222,3 +7222,22 @@ appends Nones — a one-shot strip of all solved=null rows runs on
 farm completion, before the trainer fires. DOCTRINE LINE:
 censored != fact — any permanent store must either exclude
 censored measurements or key them by their censoring parameter.
+
+## AMENDMENT (targets: precision doctrine closure 2026-07-24 + fp64 disagreement resolution 2026-07-23): scope fence + named retest condition (2026-07-27)
+
+Artin's audit ("our layers were never precise") scopes the closed
+doctrine honestly. What stands as measured: the dynamical cliff
+is bracketed 8-10 mantissa bits and the curve is FLAT from TF32
+(10) through fp64 (53) — bf16 66 / TF32 65-parity / fp32 64-65 /
+fp64 65 exactly, rare bins identical; at rest, MX-int4 full
+parity, int3 cracks. What the ladder CANNOT see: effects below
+gate sigma (~+-1-2 solves/120), because every arm ran on rounded
+layer algebra and the gates themselves carry an arithmetic noise
+floor (near-tie flips, device reduction order). AMENDED CLAIM:
+"precision doesn't pay above TF32" holds ABOVE INSTRUMENT SIGMA.
+RETEST CONDITION (named, single, cheap): when exact-mode
+inference lands (relay rung 2b — exact GEMM + declared
+nonlinearities, bit-identical logits), run ONE paired arm
+(exact-mode gate vs rounded gate, same weights) at sub-sigma
+resolution. Doctrine stays CLOSED until that arm says otherwise;
+no other precision runs are justified by this amendment.
