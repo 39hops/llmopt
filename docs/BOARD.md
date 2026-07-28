@@ -1,6 +1,6 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-28 night (SYMMETRY LADDER COMPLETE S1-S4; newest handoff: 2026-07-28-3; in flight: stability atlas on 3080; query verdicts: scripts/results_query.py --live). RESULTS.md holds verdicts, RIFF-LEDGER.md
+Updated 2026-07-28 night (SYMMETRY LADDER COMPLETE S1-S4; newest handoff: 2026-07-28-3; ATLAS BOOKED: smooth plateau + one cliffed corner, NO chaos in parameter space; in flight: atlas-2 LYAPUNOV leg on 3080 — twin births, eps + energy arms; query verdicts: scripts/results_query.py --live). RESULTS.md holds verdicts, RIFF-LEDGER.md
 holds provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
