@@ -131,6 +131,23 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
     torch.manual_seed(int(os.environ.get("BIRTH_SEED", "0")))
     model = build_model(len(tok.vocab), d=d, layers=layers,
                         heads=heads, ffn=ffn).to(dev)
+    # Lyapunov-leg knobs (atlas-2, 2026-07-28): INIT_SCALE multiplies
+    # the birth init ("energy"); INIT_PERTURB adds eps*randn from
+    # PERTURB_SEED ("release the twin pendulum a hair away").
+    scale = float(os.environ.get("INIT_SCALE", "1"))
+    eps = float(os.environ.get("INIT_PERTURB", "0"))
+    if scale != 1.0 or eps > 0:
+        g = torch.Generator(device="cpu").manual_seed(
+            int(os.environ.get("PERTURB_SEED", "1")))
+        with torch.no_grad():
+            for p in model.parameters():
+                if scale != 1.0:
+                    p.mul_(scale)
+                if eps > 0:
+                    p.add_(eps * torch.randn(
+                        p.shape, generator=g).to(p.device))
+        print(f"[lyapunov] INIT_SCALE={scale} INIT_PERTURB={eps}",
+              flush=True)
     if os.environ.get("GRAD_CKPT") == "1":
         model.grad_ckpt = True
         print("[grad-ckpt] activation recompute ON", flush=True)

@@ -8806,3 +8806,31 @@ rot_commutant.py lacked a __main__ guard (import re-ran the
 R1 sweep) — guarded. Banked: C16, packed conv forward,
 symmetry-at-birth (train IN the commutant from scratch vs
 retrofit — the R1-null flip test).
+
+## PRE-REG: ATLAS-2, THE LYAPUNOV LEG (2026-07-28, before the runs; Artin: "momentum space/diff starting speeds")
+
+The atlas swept PARAMETERS (LR x BS = arm lengths); the double-
+pendulum result is about INITIAL CONDITIONS at fixed parameters.
+Dictionary: init weights = release angles; init scale = ENERGY
+(2swap: chaos is energy-dependent — the stable islands live at
+low energy); observable = FUNCTION-SPACE divergence (weight
+distance forbidden): teacher-forced argmax disagreement on 200
+fixed gen-4 rows (scratch/lyap_compare.py) + gate. Cells (3080,
+d64/3ep at the atlas peak lr1.5e-3/bs8, seed 1, ckpts KEPT):
+twin births at eps in {1e-6, 1e-4, 1e-2}; energy arms
+INIT_SCALE 4 and 0.25 (base + eps 1e-4 twin each); independent
+seed-7 reference = the saturation distance. READS: (1) CHAOTIC
+= disagreement ~flat in eps at approx the seed-reference level
+(exponential mixing erases eps; the attractor-spread is reached
+even from 1e-6). (2) CONTRACTIVE/SMOOTH = disagreement graded
+~monotone in eps, with e6 twins near-identical (solve sets
+equal or within a solve). (3) ENERGY LAW = hi-scale twins
+decorrelate more than base-scale twins at matched eps (the
+2swap energy-dependence transplants); lo-scale less. Gate
+column read alongside (does divergence COST capability, or do
+twins land equally-good-but-different — the degeneracy split).
+Momentum leg (Adam beta1 / warmup as "starting speeds") BANKED
+as follow-up, kept out to hold this single-variable. Fences:
+same device/diet/steps all cells; disagreement is format-bound
+to gen-4 teacher forcing; n=1 per cell (this is a map, sigma
+priced by the seed-7 column).
