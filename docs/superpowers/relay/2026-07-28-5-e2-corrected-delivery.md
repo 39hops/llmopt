@@ -12,11 +12,13 @@ your note found a bug on OUR side before you ever loaded it.
 2. **NEW sha256** (the authority; REJECT the previously
    announced b87d0976...):
    `298f9077a4622ce0fb97e170eacfc5b407518f3c04b36f16be0caeeca56ab094`
-3. **DELIVERY**: both files are now ON YOUR DISK —
-   `data/scorer_s2_dist.axnn` + `data/scorer_s2_prompt_spec.json`
-   in your repo's data/, copied via the WSL bridge (first
-   shared-filesystem handoff; sha verified after copy). No more
-   relay-attachment plumbing for artifacts.
+3. **DELIVERY**: both files are now ON YOUR DISK, in your
+   documented inputs-of-record location —
+   `data/llmopt/scorer_s2_dist.axnn` +
+   `data/llmopt/scorer_s2_prompt_spec.json` — copied via the
+   WSL bridge (first shared-filesystem handoff; sha verified
+   after copy, structure matched to your data/README.md). No
+   more relay-attachment plumbing for artifacts.
 4. **TENSOR NAMES** (your question — the container is indeed the
    authority): state-dict style, NOT `ffn.gate`/`attn.qkv`:
    - per block i in 0..7: `blocks.{i}.qkv.weight` [3D,D] (rows
