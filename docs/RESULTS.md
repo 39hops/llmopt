@@ -8551,3 +8551,21 @@ wave's spend concentrates exactly where no cheap rung reaches
 (the tie-scarcity anatomy from the other side: hard plies are
 hard by SEMANTICS, not by sampling breadth). Decode-economics
 cells stop here; no further rungs owed.
+
+## PRE-REG: THE STABILITY ATLAS (2026-07-28, before the grid; double-pendulum riff)
+
+8x4 grid (LR log-spaced 1e-4..1.2e-2 x BIRTH_BS {8,16,32,64}),
+d64/gen-4/3ep births, cuda gates; + 4 seed-2 cells (the noise
+floor). The pendulum question drawn on training space: is
+gate(LR, BS) SMOOTH or does it hold chaotic regions and islands?
+READS, pre-registered: (1) SMOOTH = adjacent-cell |delta| ~
+seed-sigma across the map (a boring, bookable null: training is
+non-chaotic in this window); (2) CHAOTIC BAND = a region where
+adjacent deltas >> seed-sigma while other regions are smooth
+(the pendulum structure — islands would be high-gate cells
+inside it); (3) the known cliff (high-LR divergence) should
+appear as a smooth boundary, not chaos, if (1). Also read: does
+BS interact with LR as the sqrt-scaling rule predicts (ridge
+along LR ~ sqrt(BS)) or independently? Fences: d64 (the
+substrate's own gate band is 38-class; sigma unmeasured at d64
+— the 4 s2 cells price it), n=1 per cell, one device.
