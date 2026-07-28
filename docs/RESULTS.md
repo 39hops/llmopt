@@ -8445,3 +8445,14 @@ Doctrine line: an STE forward IS the deployed function — "latent
 gate" only means something at alpha=none. Applies retroactively
 to G5's 66/62 (correctly measured: its latent gate WAS alpha-
 appropriate) — verified, not assumed, by this review.
+
+## AMENDMENT CLOSE-OUT (target: same-morning STE-latent amendment): P2 true-latent 72 = deployed 72 — the zero-deploy-tax law leg stands corrected AND confirmed (2026-07-28 morning)
+
+P2-45m TRUE latent (alpha-none weights, cuda): 72/120 @ 69.17,
+per-level map identical to the deployed 72 @ 69.11. Both named
+legs (Z[i] 65=65, P2 72=72) now measured on the honest
+instrument. The lattice-geometry deploy-tax candidate law stands
+at n=2 (magnitude/rational: tax 0) v n=1 (phase/G5: tax -4);
+the STE-latent doctrine line (latent gates mean alpha=none)
+is now scar-filed. Morning review complete: night-28's ledger
+is clean end to end.
