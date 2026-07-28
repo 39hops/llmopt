@@ -7972,3 +7972,35 @@ real decisions, not just coin flips; the near-tie *density
 curve* (flips vs Q) is the natural next instrument refinement.
 CONSEQUENCE: rung 4 (judge-collapsed decoding) is UNGATED —
 ties are measurable and concentrated; the program proceeds.
+
+## MASS-ON-VALID VERDICT: valid mass tracks the gate 4/4, but the models are near-DETERMINISTIC over the valid set — the branching-floor theory stays unmeasurable, by measurement (2026-07-28)
+
+40 fresh states (99.1M seed space, L3-L7), mean 7.2 verified-valid
+moves/state (engine enumeration); teacher-forced sequence mass:
+| model | gate | mass_valid | mass_modal | delta | H_valid (bits) |
+|---|---|---|---|---|---|
+| muon | 34 | 0.0878 | 0.0859 | 0.0019 | 0.078 |
+| stream3 | 45 | 0.1165 | 0.1148 | 0.0017 | 0.070 |
+| stream4 | 57 | 0.1954 | 0.1895 | 0.0059 | 0.065 |
+| control | 65 | 0.2134 | 0.2097 | 0.0037 | 0.057 |
+VERDICTS, against the pre-reg: (1) mass-on-valid-set tracks the
+gate 4/4 — a teacher-forced valid-mass read is a capability
+correlate at zero sampling cost (consistent with the 07-26
+CE-tracks-gate verdict, now on the engine-enumerated set). (2)
+**The pre-declared (a)~(b) reading FIRES: the delta is ~zero
+everywhere** — of ~7 valid moves per state, the models put
+>97% of their valid mass on ONE. H_valid 0.057-0.078 bits vs
+log2(7.2) = 2.85 available: **the crystals are near-deterministic
+over the valid set. The farm's arbitrary pick has been absorbed
+as THE move** — the branching-entropy floor is unmeasurable here
+not because the instrument is weak but because the models never
+spread mass in the first place (picks-trained models are
+pick-shaped; the 07-26 floor theory described a distribution the
+training regime never builds). (3) Sharper rung-3 framing, free:
+H_valid also DESCENDS with the gate (control 0.057 = most
+deterministic) — determinism over valid moves correlates with
+capability under pick-training. Distribution rows (rung 3) now
+test a genuine unknown: does explicitly TRAINING the spread
+(raising H_valid toward the engine's distribution) pay at the
+gate, or was one-true-move concentration load-bearing? Baseline
+numbers for that arm: delta 0.0037 / H 0.057 (control).
