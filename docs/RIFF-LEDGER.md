@@ -1310,3 +1310,36 @@ to the collaboration itself.
   (2) the fingerprint's Q8 column as the robustness dial for
   deployment-format choice (which crystal tolerates int2-class
   storage). Attribution: house, overnight autonomy.
+- **2026-07-28 morning (Artin, two video riffs)**: (1) **DOUBLE
+  PENDULUMS (2swap, islands of stability)** -> THE STABILITY
+  ATLAS: their fractal map of initial-condition space (chaotic
+  white / stable black, islands of coherence inside chaos) is
+  the lab's training-dynamics question drawn as a picture — our
+  "initial conditions" = (seed, LR, schedule) and the lab has
+  already met the islands piecewise (Z1 seed-1 blind v seed-2
+  fluent-wrong = two basins; Muon 10-at-.02 v 34-at-.01; Z1S
+  divergence v smooth descent). Instrument: a 2-D birth grid
+  (LR x momentum or LR x batch, d64/d256 minutes-class births),
+  colored by gate — is capability-over-hyperparams SMOOTH or
+  FRACTAL? Neighbor-divergence read rides free (their
+  white/black map = our seed-pair gate delta). Also
+  retro-frames R4's tie-scarcity verdict: decode chains are
+  weakly chaotic (rare forks x long horizons), and the energy
+  ladder (low stable / mid chaotic / high patterned) rhymes
+  with the LR ladder. Banked as an instrument program.
+  (2) **LAPLACE TRANSFORMS (3b1b, poles as detectors)** -> THE
+  LAPLACE BRIDGE GRAMMAR: the transform UNIFIES three resident
+  grammars — partial fractions (poly continent) <-> poles <->
+  exponential components (exp/trig families) <-> cc2
+  characteristic roots (the ODE engine's roots ARE pole
+  locations). A Laplace grammar (L-table rules, rational-
+  function algebra in s, inverse via pf) makes the ODE->algebra
+  reduction an explicit, decidable, exact-rational chain — the
+  meet-it-where-it-comes-from principle for poles, and every
+  verification leg exists (pf oracle, checkodesol, exact Q
+  arithmetic). TIMELY: axiom's ODE solving-chain tranche is
+  their next session — the Laplace path belongs in their L9
+  design NOW (relay draft below). s-plane-detector frame
+  (components found where integrals blow up) banked as kin to
+  the magic-estimator resonance frame. Attribution: Artin
+  (both videos + the instinct); house (mappings).
