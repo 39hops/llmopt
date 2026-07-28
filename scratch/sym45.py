@@ -5,6 +5,7 @@ projected-init math gate, then trains and saves; math+ZX final
 gates run via gate scripts after. cuda/bf16 autocast.
 """
 import json
+import os
 import random
 import sys
 
@@ -44,7 +45,8 @@ def anti_mass(W):
 
 torch.manual_seed(1)
 torch.backends.cuda.matmul.allow_tf32 = True
-tok = MathTokenizer()
+_extra = os.environ.get("VOCAB_EXTRA", "")  # atom ORDER must
+tok = MathTokenizer(extra=_extra.split(",") if _extra else None)
 dev = "cuda"
 base = torch.load(CKPT, map_location="cpu", weights_only=True)
 for li in range(LAYERS):
