@@ -8935,3 +8935,23 @@ E2's two caught bugs (our head declaration, their fused-flag
 type) were BOTH caught by declared-contract validation before
 any wrong number shipped — the guard architecture is the
 result as much as the number.
+
+## PRE-REG: C8-RETROFIT AT 45M — does the sharing toll transfer across scale? (2026-07-28 ~5PM, before the run; 3080 tail window)
+
+Substrate: union_45m.pt (d512/12L/ffn2048/h8; math 65/120, ZX
+36; the capacity-null crystal). C8 commutant projection on all
+12 gate matrices (params/8), then ONE warm epoch on the union
+diet (bf16 autocast, ramped permutation penalty — cyclic
+generators are permutations, so the penalty is index-shuffle
+cheap). GATES: projected-init math gate; final math AND ZX
+gates + final anti-mass. READS: (1) final math >= 59-class
+(the d256 toll -6 transfers) => sharing toll is SCALE-STABLE —
+capability occupies a small structured subspace at 45M too,
+and the ZX capacity null gets its inside explanation measured
+at scale. (2) math craters and stays cratered => the 8x
+commutant is capacity-limited at richer diets (the toll curve
+bends with scale — also clean). (3) ZX column read alongside:
+does the graph grammar pay MORE than the tree grammar for
+sharing (grammar-dependent toll — new axis interaction), or
+ride at ~36-class? n=1, cuda, comparators are the same-device
+bookings (65/36). Fences: gates-only, union diet, 1 warm epoch.
