@@ -7939,3 +7939,36 @@ against). v2 re-arms with rational_snap Q=16 (the ground-truth
 instrument) on the same five d256 crystals + mathnative_19m.pt
 as the cracker probe point. Prediction unchanged. Snap operators
 are instruments; fences travel with them.
+
+## CALIBRATION PROBE R1 VERDICT: PASS — flips/token predicts snap robustness, Spearman rho 0.883 (p=.020) across 6 crystals (2026-07-28)
+
+Battery v2 (rational_snap Q=16, the ground-truth operator; all
+reads one MPS session):
+| crystal | probe flips/tok | gate pre | gate post | drop |
+|---|---|---|---|---|
+| muon d256 | 0.0476 | 34 | 38 | -4 |
+| s3 d256 | 0.0486 | 64 | 52 | 12 |
+| wfloor d256 | 0.0535 | 65 | 53 | 12 |
+| stream4 d256 | 0.0570 | 57 | 41 | 16 |
+| 19m (cracker) | 0.0659 | 49 | 26 | 23 |
+| s2 d256 | 0.0703 | 63 | 47 | 16 |
+VERDICTS: (1) **Pre-reg primary leg PASSES: Spearman(probe,
+drop) = 0.883, p = 0.020** — a 400-row teacher-forced probe
+(~1 min/crystal, no gate) rank-predicts what a full snapped gate
+measures. Near-tie density is hereby a MEASURED per-crystal
+quality, read for ~1% of a gate's cost. (2) Secondary leg
+MISSES honestly: the 19M cracker reads 2nd-highest (0.0659),
+not highest (s2 0.0703, drop only 16) — the probe orders the
+class, not the extremum; note the 19M is also the only d384
+crystal in the set (probe transports across widths as a
+fraction, but the single cross-width point carries that
+caveat). (3) Curiosity booked, not claimed: muon's gate ROSE
+under the snap (34 -> 38, +4 = sigma-class on this instrument);
+its flip margins are the lowest of the set (0.233) —
+consistent with a poorly-calibrated crystal whose coin flips
+re-land favorably. (4) v2 flip margins (~0.3) sit 100x above
+v1's scaled-snap margins (e-3) — coarser lattices flip
+real decisions, not just coin flips; the near-tie *density
+curve* (flips vs Q) is the natural next instrument refinement.
+CONSEQUENCE: rung 4 (judge-collapsed decoding) is UNGATED —
+ties are measurable and concentrated; the program proceeds.
