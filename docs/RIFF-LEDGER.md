@@ -1190,3 +1190,17 @@ to the collaboration itself.
   the union tail is thin there; axiom-on-3080-CPU farming
   candidate (GPU busy, CPU idle) — L4-L7 chain farming is the
   named task if Artin boots axiom there.
+- **2026-07-27 latest (Artin, arrangement/distance + dimensions)**:
+  (1) "If it's the arrangement, it's really distance" — house
+  grounding: weight distance = gauge part (permutation/rescale/
+  sign, meaningless) + functional part (real); the rotational
+  instinct's correct target is the network's SYMMETRY GROUP
+  (equivariance thread, perm-augmentation 88.4 > canonical 82.4).
+  TESTABLE RUNG: functional distance between seed-1/seed-2
+  born-rational twins v their fp32 twins — does lattice training
+  shrink gauge slack? (pair exists once s2 lands). (2) Universe-
+  dimension riff: model dim != universe dim; the lab analog is
+  TERRITORY (W* follows the closed system's rule complexity and
+  saturates — 19M twice-confirmed against 45M); "a model reasons
+  EXACTLY about a universe iff the universe is closed and the
+  arithmetic is exact" = the program in one sentence.
