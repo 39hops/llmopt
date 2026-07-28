@@ -9109,3 +9109,25 @@ with no extra training. Next rungs banked: 3-tier nest
 (complex between), packed circulant forward for real
 wall-clock, Snell tier-selection policy. Fences: d256/MPS,
 gates-only symmetry, n=1, 1 warm epoch.
+
+## C8-RETROFIT AT 45M VERDICT: the math toll is SCALE-STABLE (-5) — but the GRAPH GRAMMAR pays 2x (ZX 36 -> 17); and the symmetry is only PARTIAL (2026-07-28 night)
+
+union_45m (math 65 / ZX 36), projection + 1 warm union epoch:
+projected init 0/120 (total, consistent with 87.5% deletion);
+healed math **60/120 (-5; the d256 toll was -6 — read (1)
+fires: the sharing toll transfers across 2.4x scale and a
+richer diet)**; healed ZX **17/120 (-19, >half the column,
+unsound 101)** — read (3) lands on the sharp side: **the toll
+is GRAMMAR-DEPENDENT — the tree grammar rides sharing at -5
+while the graph grammar loses half its capability to the same
+projection.** The ZX capacity story inverts at the commutant:
+capacity was never the constraint for ADDING capability (45M
+null), but the graph grammar's EXISTING capability is far less
+sharing-compressible than the tree grammar's. HONEST FENCE:
+final anti-mass 0.1258 (not the d256-class 0.0007) — one union
+epoch under the ramp did NOT fully converge the symmetry at
+45M; the 60 is a PARTIALLY-symmetric crystal, and the full-
+symmetry toll is plausibly worse. Booked as measured; a longer
+heal or stronger ramp is the confirmation rung (banked).
+Fences: cuda, union diet, n=1, VOCAB_EXTRA pinned (the vocab-47
+scar), comparators same-device (65/36).
