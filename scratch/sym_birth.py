@@ -19,8 +19,11 @@ from train_mathnative import load_rows  # noqa: E402
 from llmopt.train.mathnative import MathTokenizer, build_model  # noqa: E402
 
 ARM = os.environ["ARM"]
+TAG = os.environ.get("TAG", "")
+EPS = float(os.environ.get("EPS", "0"))  # twin perturbation
+EMA_D = float(os.environ.get("EMA", "0"))  # Polyak decay, 0=off
 D, LAYERS, FFN, HEADS, BS, EPOCHS, LR = 64, 8, 256, 4, 8, 3, 1.5e-3
-OUT = f"checkpoints/sym_birth_{ARM}.pt"
+OUT = f"checkpoints/sym_birth_{ARM}{TAG}.pt"
 NB = 8  # C8 blocks
 
 
@@ -46,9 +49,16 @@ def anti_mass(W, Ro, Ri):
 
 torch.manual_seed(1)
 tok = MathTokenizer()
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = ("cuda" if torch.cuda.is_available() else
+       "mps" if torch.backends.mps.is_available() else "cpu")
 model = build_model(len(tok.vocab), d=D, layers=LAYERS, heads=HEADS,
                     ffn=FFN).to(dev)
+if EPS > 0:  # release the twin a hair away (lyapunov protocol)
+    g = torch.Generator().manual_seed(
+        int(os.environ.get("PERTURB_SEED", "2")))
+    with torch.no_grad():
+        for p in model.parameters():
+            p.add_(EPS * torch.randn(p.shape, generator=g).to(dev))
 Ro, Ri = shift_reps(FFN), shift_reps(D)
 if ARM == "c8":
     with torch.no_grad():
@@ -73,6 +83,8 @@ for r in rows:
         enc.append(ids)
 enc.sort(key=len)
 opt = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=0.01)
+ema = ({k: v.detach().clone() for k, v in model.state_dict().items()}
+       if EMA_D > 0 else None)
 order = list(range(0, len(enc) - BS + 1, BS))
 steps_total = len(order) * EPOCHS
 step = 0
@@ -100,6 +112,11 @@ for ep in range(EPOCHS):
         opt.zero_grad(set_to_none=True)
         loss.backward()
         opt.step()
+        if ema is not None:
+            with torch.no_grad():
+                for k, v in model.state_dict().items():
+                    if v.is_floating_point():
+                        ema[k].mul_(EMA_D).add_(v, alpha=1 - EMA_D)
         if step % 2000 == 0:
             print(f"[{ARM}] {step}/{steps_total} "
                   f"loss {float(loss):.4f}", flush=True)
@@ -107,6 +124,16 @@ for ep in range(EPOCHS):
 
 sd = {k: v.detach().cpu() for k, v in model.state_dict().items()}
 torch.save(sd, OUT)
+if ema is not None:
+    torch.save({k: v.cpu() for k, v in ema.items()},
+               OUT.replace(".pt", "_ema.pt"))
+    model.load_state_dict(ema)  # gate the EMA weights below too
+    model.eval()
+    with torch.no_grad():
+        solves, valid = G.gate_eval(model, tok, dev)
+    print(f"[{ARM}{TAG}] EMA gate {solves} = "
+          f"{sum(solves.values())}/120 @ {valid:.2f}%", flush=True)
+    model.load_state_dict(sd)
 am = sum(anti_mass(sd[f"blocks.{li}.gate.weight"].float(), Ro, Ri)
          for li in range(LAYERS)) / LAYERS
 model.eval()

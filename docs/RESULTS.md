@@ -9040,3 +9040,46 @@ budget-confounded (smooth monotone loss descent from a distant
 start — basin distance, not measured instability; refinement
 arms banked in RIFF-LEDGER). Fences: d64/cuda, one cell,
 disagreement format-bound to gen-4 teacher forcing, n=1/pair.
+
+## PRE-REG: NIGHT-28b — TAMING THE CHAOS + the matryoshka joint loss (2026-07-28 late, before the runs; Artin GO "make training not chaotic / Ozaki frankenstein")
+
+The Lyapunov instrument (twin disagreement, format-bound
+teacher-forced argmax on 200 rows) becomes the DIAL-TESTER for
+training-taming interventions. All d64/3ep at the atlas peak
+cell unless noted; cuda; baselines from tonight: twin
+disagreement ~0.0164-0.0175, seed-saturation 0.0210, base gate
+64, sigma 3.5.
+CELLS (3080, chained after the 45M retrofit):
+(A) TWIN SOUP, desk: average the KEPT lyap checkpoints
+  pairwise (base+e6, base+e4, base+e2) and all-4; gate each.
+  READS: soup >= base + sigma => the quality shell is
+  weight-space CONVEX between twins (variance is harvestable
+  for free — the soup literature transplants); soup craters =>
+  even 1e-6 twins cross basin boundaries (chaos extends to
+  weight-space topology).
+(B) EMA TWINS: two perturbed births (eps 1e-6) with Polyak EMA
+  (decay 0.999) tracked through training; gate EMA + final;
+  disagreement EMA-vs-EMA against the 0.0164 raw baseline.
+  READ: EMA disagreement << raw => EMA CONTRACTS the shell —
+  "training tamed" lever 1, measured.
+(C) SYMMETRY TWINS: two C8-commutant births (eps 1e-6, the
+  sym_birth recipe on cuda); disagreement vs the dense 0.0164.
+  READ: commutant constraint shrinks the wander-space =>
+  symmetry doubles as a chaos damper (the ladder and the
+  Lyapunov program fuse); no shrink also clean (the shell
+  lives in the commutant too).
+(D) HYPERPARAM SOUP (the score-raiser): rebirth 4 plateau
+  cells (lr 8e-4/1.5e-3/3e-3/6e-3, bs8, seed 1), soup, gate.
+  READ: soup > 65 (the map peak) => diverse-hyperparam
+  averaging harvests the plateau's degeneracy (greedy-soup
+  transplants; a new score lever at zero inference cost).
+(MAC, tonight) MATRYOSHKA RUNG 1: joint loss CE(W) +
+  CE(STE P_C8(W)) via weight parametrization, 1 warm epoch
+  from wfloor d256. Gate BOTH tiers. READS vs the corner
+  verdict's slack-budget prediction: dense tier >= 62 AND
+  cheap tier >= 50 => nesting price is small (dynamic-budget
+  inference is real); dense tier craters => tier competition
+  confirmed at the training level (the budget law binds).
+Fences: per-cell n=1, device-paired comparators only, EMA
+decay pinned 0.999, soup = plain parameter mean (no Fisher
+weighting this rung).
