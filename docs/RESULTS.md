@@ -8325,3 +8325,37 @@ LR schedule multipliers via warmup only, one momentum, d256/MPS);
 published-Muon-scale tuning stays possible and stays off-priority.
 
 ## AMENDMENT (target: Muon-3ep verdict, same night): the loss-gate dissociation reproduces at 3ep — final CE ~0.22-0.35 (best-class band) at gate 43. Third Muon instance (0.55/gate-10, 0.41/gate-34, now 0.22-class/gate-43): orthogonalized updates optimize teacher-forced CE while damaging generative validity at EVERY schedule tested. The instrument value of Muon (widest CE-gate split available on demand) is banked even as the optimizer closes.
+
+## REVPAIRS-10%: 55/120 — neutral; the direction tax has a SAFE DOSE (2026-07-28 night)
+
+{3:16,4:5,5:16,6:8,7:10} @ 49.23 v pairs@1P 57. Pre-reg band
+54-59 (neutral) FIRES: at a 10% backward ration the -18 tax of
+50/50 vanishes (delta -2, sub-noise) — but nothing is gained
+either. BOOKS: backward rows are a TOLERABLE spice, not a
+poison, at low dose; a single crystal can host a direction
+ration for free. Pincer relevance: if the backward SCORER ever
+wants co-residency with the forward crystal, 10%-class dose is
+the measured safe region. Validity -5 (49.2 v 54.2) noted —
+the tax shows in validity before solves, consistent with
+step-precision (not wandering) as the 50/50 mechanism.
+
+## Z[i] BORN-RATIONAL: 65 latent = 65 DEPLOYED — zero deploy tax on the exact complex lattice; parity-class with every comparator (2026-07-28 night)
+
+cplx_ZI_zi: latent 65/120 @ 63.13, deployed 65/120 @ 63.13 —
+IDENTICAL per-level maps. Comparators (same recipe/device
+lineage): fp32 64 / cplx_none 63 / G5-latent 66 / G5-dep 62.
+VERDICTS: (1) The composed-lever WIN does not book (+1/+2/+3,
+bar 5) — two capability-neutral parents compose to
+capability-neutral, as the house predicted. (2) **The finding
+that DOES book: ZERO deploy tax** — the STE converged the
+latents exactly onto the Z[i] rational lattice (deployed =
+latent to the solve map), where G5's phase lattice paid -4 on
+the same substrate and math grammar. The born-rational law
+(exactness rides free) extends to the complex plane: every
+weight is exactly (s/q')*(a+bi), Gaussian-integer-rational,
+with no snap cost at all. Exact-representations program gains
+its 2-D lattice point; combined with fq512's integer twin, the
+exact-format family now spans R and C. (3) G5-latent 66 v
+ZI-latent 65: the phase alphabet's latent edge is sub-noise —
+lattice GEOMETRY (rotational v rational) is a non-factor at
+matched dose; only the deploy tax separates them.
