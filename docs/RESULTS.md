@@ -8977,3 +8977,31 @@ Corollary worth keeping: the zero-deploy-tax lattice law
 now has a mechanism (tax-free requires slack; substrates
 without slack pay). Fences: gates-only substrate difference,
 d256/MPS, direct snap operator, n=1/cell.
+
+## SYMMETRY-AT-BIRTH VERDICT: FREE AT BIRTH — C8-from-scratch gates 50 vs dense control 53 at d64 (2026-07-28 night)
+
+Paired MPS arms, from scratch, 3ep gen-4, seed 1: dense 53/120
+(anti-mass 0.872 ~ generic); C8-commutant birth (projected init
++ penalty from step 0) **50/120 at anti-mass 0.0025**. Delta -3
+~ sigma(3.5): **the pre-registered FREE-AT-BIRTH read fires.**
+The R1 null flips completely: SGD never CHOOSES symmetry, but
+will happily grow a full crystal INSIDE the commutant from step
+zero at ~zero cost — params/8 from birth, no dense scaffold
+needed (the retrofit heal was not riding pre-trained
+structure). With the ladder + this: symmetry is free at birth,
+cheap at retrofit (-6 at d256), and never spontaneous. Note
+d64 substrate fence: the d256 birth replication is the
+confirmation rung if this ever carries weight-bearing load.
+
+## MATRYOSHKA RUNG 0: free nesting FAILS — raw C8 projections crater (2026-07-28 night)
+
+P_C8(dense65) gates 2/120; P_C8(rot_convert_b, the complex-
+commutant crystal) gates 6/120. No crystal's projection is
+usable without training toward it (consistent with S3: the
+healed circulant needed its warm epoch). Crumb kept: the
+complex-commutant crystal's projection is marginally less dead
+(6 v 2) — nested symmetries may compose. VERDICT: the
+matryoshka needs the JOINT LOSS (CE(W) + CE(P(W)), STE through
+projection) — rung 1 is the real experiment, and the corner
+verdict's slack-budget law predicts its price. Banked for a
+session with a training window.
