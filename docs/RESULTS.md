@@ -8678,3 +8678,29 @@ quaternionic structure spontaneously, mirroring the complex
 R1 null.** Symmetries must be imposed; cells 2-3 (75%-mass
 projection + heal arms) now test whether they can be, at 4x
 sharing. Fences: gates-only, d256/MPS lineage, cpu-side reads.
+
+## SYMMETRY LADDER S1 VERDICT: QUATERNIONIC CONVERSION AT THE BAR — 61/120 at anti-mass 0.0007, 4x sharing (2026-07-28)
+
+Cells 2-3 (scratch/quat_convert.py, R3 recipe verbatim,
+penalty over all three generators):
+| stage | gate | anti-mass |
+|---|---|---|
+| projected init (75% mass deleted) | 22/120 @ 13.10 | 0 |
+| arm (a) lambda=0, 1 epoch | 60/120 @ 55.10 | 0.0558 |
+| arm (b) ramped penalty, 1 epoch | **61/120 @ 56.03** | **0.0007** |
+VERDICTS: (1) **The pre-registered bar (gate >= 61 at
+anti-mass < 0.05) is met exactly: 61 at 7 parts in 10,000 —
+CONVERSION AT 4x SHARING.** Arc 65 -> 22 -> 61: net cost 4
+solves for a gate parameterization with 1/4 the free params.
+The symmetry compression axis has its second point: complex
+(2x) costs ~1, quaternion (4x) costs ~4 — the ladder pays a
+rising but sublinear toll. (2) **Holography BREAKS at 75%
+deletion**: projected init 22/120 (R2's 50% cut cost only 8).
+The democracy's absorption has a measured edge between 50% and
+75% structured mass removal — the first quantitative bound on
+the holography doctrine. (3) Arm (a) repeats the R3 surprise
+at the harder group: lambda=0 drifts only to 0.056 anti-mass —
+the quaternionic commutant is ALSO locally stable under
+unconstrained SGD; the penalty is worth +1 solve and 80x
+tighter symmetry, not a fight. Fences: gates-only, d256/MPS,
+n=1/arm, comparator 65, artifacts quat_convert_{a,b}.pt.
