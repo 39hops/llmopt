@@ -8515,3 +8515,21 @@ model" is a genuine construction, not a recovery.
    whether damage-vs-t is graceful (near-tie-mediated, flips
    probe) or cliff (structural). Sets the R3 starting-point
    damage baseline (projected init = t=1).
+
+## PRE-REG: ladder-retry decode + rotational snap R2 (2026-07-28, before the runs)
+
+LADDER-RETRY (3080, champion, full battery): arms ladder
+(greedy -> k=2 -> k=8) v the night-28 measured wave 75 @ 42,113
+/ gfirst 74 @ 29,724. ADOPTION BAR unchanged: >= wave-3 solves
+at <= 40% of wave tokens. Prediction: the k=2 rung absorbs most
+greedy misses at 1/4 the retry cost — tokens land 35-50%; the
+bar is genuinely in reach and may still miss (books either way).
+ROTATIONAL SNAP R2 (Mac, wfloor comparator 65): gate at
+W_gate - t*W_a (adjacent pairing, gate matrices only — fence:
+attention/up/down untouched), t in {0.25, 0.5, 1.0}. REVISED
+prediction post-R1: with anti-mass 0.500 and no structure,
+t=1.0 deletes half the gate mass into a symmetry subspace —
+expect heavy damage (int2-class or worse); the payload is the
+CURVE (knee location) + flips-probe at each t, the rotation-axis
+sibling of the rational Q-sweep, and the R3 starting-point
+damage baseline (projected init = the t=1 point).
