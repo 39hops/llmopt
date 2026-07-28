@@ -8323,3 +8323,5 @@ the ORIGINAL verdict was under-scoped, not over-scoped (it
 generalizes ACROSS schedules). Fences: naive transplant (shared
 LR schedule multipliers via warmup only, one momentum, d256/MPS);
 published-Muon-scale tuning stays possible and stays off-priority.
+
+## AMENDMENT (target: Muon-3ep verdict, same night): the loss-gate dissociation reproduces at 3ep — final CE ~0.22-0.35 (best-class band) at gate 43. Third Muon instance (0.55/gate-10, 0.41/gate-34, now 0.22-class/gate-43): orthogonalized updates optimize teacher-forced CE while damaging generative validity at EVERY schedule tested. The instrument value of Muon (widest CE-gate split available on demand) is banked even as the optimizer closes.
