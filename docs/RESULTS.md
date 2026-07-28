@@ -8224,3 +8224,22 @@ jobs independent, markers success-only.
    HOUSE PREDICTION: parity-class (both parents capability-
    neutral); latent-vs-dep tax ~4-class expected; >= 68 latent
    would be the first composed-lever WIN of two neutral parents.
+
+## PRE-REG: successors-bridge acceptance, house side (2026-07-28 night, before the run)
+
+Axiom shipped IV5 (fcf4a52, pushed tonight; Mac rebuild verified
+IV==5, smoke i_power exact). Instrument
+scratch/successors_acceptance.py: 500 string-seeded roots (L1-L8,
+band 99.4M), house derivation.successors vs ax.successors
+(deadline 15s), child sets srepr-normalized, E4 taxonomy.
+PREDICTIONS: (1) MATCH on the large majority of read states;
+disagreements decompose to NAMED classes (axiom rule-coverage
+gaps house-only; macro/table differences); (2) SOUNDNESS: zero
+axiom-only children fail house verify_edge (their in-engine
+verification holds on our oracle) — any failure BLOCKS adoption;
+(3) throughput: axiom >= 5x house on the read set (their p50
+claim, our sample). ADOPTION RULE: soundness clean + taxonomy
+named => farmers/enumeration move to the axiom bridge (Artin's
+axiom-only directive), sympy stays oracle-of-record at final
+verification; soundness failure => bridge stays shadow, per-state
+audit relay.
