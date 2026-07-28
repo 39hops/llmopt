@@ -7904,3 +7904,20 @@ device). PREDICTION: probe rank-correlates with gate drop
 (higher flips/token = larger drop), Spearman rho > 0, and the
 Mac-19M (known cracker) reads highest. FAILURE = probe is noise;
 the calibration program closes at the cost of one script.
+
+## PRE-REG: mass-on-valid — the branching-floor MASS leg (2026-07-28, before the run)
+
+Spec rung 2 (amended: the sampled-coverage form already failed
+2026-07-26; no CE-anti-track claim re-registered). ~40 held-out
+cur states (seed space 99.1M, L3-L7); per state the engine
+enumerates successors (already sympy-verified, non-identity by
+construction), and each specimen model's teacher-forced sequence
+probability is computed for every valid nxt. Readouts per model:
+(a) mean total mass on the valid set, (b) mean mass on the modal
+valid move (farm-pick proxy — fresh states have no banked row),
+(c) mean entropy over the valid set. Specimens: muon 34 /
+stream3 45 / stream4 57 / control 65. PREDICTION: (a) tracks the
+gate at least as well as (b); the (a)-(b) delta — mass on
+valid-but-non-modal moves — is the novel number and rung 3's
+baseline. (a)~(b) everywhere = the floor theory stays
+unmeasurable at this scale (books as such).
