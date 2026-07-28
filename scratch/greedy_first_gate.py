@@ -62,14 +62,29 @@ def run(arm):
                     f"Current: {cur}\nHints: none\nStep: ")
                 cands = []
                 wv = {}
-                if arm == "gfirst":
+                if arm in ("gfirst", "ladder"):
                     g = greedy(prompt, spend)
                     if g and g.replace(" ", "") not in visited:
                         cands = [g]
                     wv = verify_wave(cur, cands) if cands else {}
                     if not any(wv.get(t, (False, False))[0]
                                for t in cands):
-                        cands = []  # greedy failed -> wave retry
+                        cands = []  # greedy failed -> retry
+                if arm == "ladder" and not cands:
+                    # mid rung: k=2 sampled before the full wave
+                    texts, _, _ = G.sample_wave_lp(
+                        model, tok, prompt,
+                        [G.GATE_BAND + i * 31 + ply * 7 + b
+                         for b in range(2)], dev)
+                    spend[0] += sum(len(tok.encode(t)) + 1
+                                    for t in texts)
+                    cands = [t for t in dict.fromkeys(texts)
+                             if t and t.replace(" ", "")
+                             not in visited]
+                    wv = verify_wave(cur, cands) if cands else {}
+                    if not any(wv.get(t, (False, False))[0]
+                               for t in cands):
+                        cands = []
                 if not cands:
                     texts, _, _ = G.sample_wave_lp(
                         model, tok, prompt,
@@ -99,7 +114,8 @@ def run(arm):
     return solves, spend[0]
 
 
-for arm in ("wave", "gfirst"):
+import os
+for arm in os.environ.get("ARMS", "wave,gfirst").split(","):
     sv, sp_ = run(arm)
     print(f"{label} {arm}: {sv} = {sum(sv.values())}/120 "
           f"tokens {sp_}", flush=True)

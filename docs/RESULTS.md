@@ -8497,3 +8497,21 @@ CONSEQUENCE, reframing R3: teaching WJ=JW would create a
 weight-level symmetry NO house model possesses — including the
 born-complex arms. "Turn a linear model into a rotational
 model" is a genuine construction, not a recovery.
+
+## PRE-REG: ladder-retry decode + rotational snap R2 (2026-07-28, before the runs)
+
+1. LADDER-RETRY (3080, champion, full battery): arms greedy->k8
+   (gfirst, measured 74 @ 29.7k) vs greedy->k2->k8 (ladder).
+   BAR unchanged: >= wave-3 solves (>=72) at <= 40% of wave
+   tokens (<=16.8k). The k=2 rung should catch most greedy
+   misses at 1/4 the retry cost; if tokens still >40%, the
+   adoption file closes (retry economics are structural).
+2. ROTATIONAL SNAP R2 (Mac, wfloor d256): gate at
+   W - t*W_a (adjacent pairing, all interior 2-D weights) for
+   t in {0.25, 0.5, 1.0}. REVISED prediction post-R1: with
+   anti-mass 0.5 and no structure, t=1.0 deletes half the
+   weight content coherently -> expect severe damage (int2/
+   rank-collapse class); the PAYLOAD is the knee location and
+   whether damage-vs-t is graceful (near-tie-mediated, flips
+   probe) or cliff (structural). Sets the R3 starting-point
+   damage baseline (projected init = t=1).
