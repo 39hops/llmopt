@@ -8955,3 +8955,25 @@ does the graph grammar pay MORE than the tree grammar for
 sharing (grammar-dependent toll — new axis interaction), or
 ride at ~36-class? n=1, cuda, comparators are the same-device
 bookings (65/36). Fences: gates-only, union diet, 1 warm epoch.
+
+## COMPRESSION CORNER VERDICT: THE AXES ARE NOT ORTHOGONAL — sharing consumes the slack that quantization lives on (2026-07-28 night)
+
+Paired MPS gates, snap-preserves-circulant confirmed by
+construction:
+| substrate | control | Q16 snap | Q8 snap |
+|---|---|---|---|
+| dense | 65 | 53 (-12) | 1 |
+| circulant-8x | 59 | 34 (-25) | 0 |
+VERDICT: delta-of-deltas = -13 (>> sigma 3): the circulant
+substrate pays DOUBLE the quantization toll of the dense one at
+Q16, and Q8 destroys both. **The pre-registered
+competition-for-slack read fires: compression axes draw on a
+SHARED redundancy budget** — 8x parameter sharing spent most of
+the slack, leaving quantization little to live on. The
+bits-dimension exchange law does NOT gain a free product form;
+it gains a BUDGET form (compression composes sub-additively).
+Corollary worth keeping: the zero-deploy-tax lattice law
+(P2/Z[i]) was measured on DENSE substrates — its scope fence
+now has a mechanism (tax-free requires slack; substrates
+without slack pay). Fences: gates-only substrate difference,
+d256/MPS, direct snap operator, n=1/cell.
