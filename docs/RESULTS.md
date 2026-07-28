@@ -8606,3 +8606,35 @@ impose extends to symmetries — also a clean verdict); gate
 stuck 57-class with anti-mass low => the symmetry subspace
 cannot host the missing 8 solves (capacity-of-the-commutant
 result). Arm (a) prices the restoration force either way.
+
+## ROTATIONAL SNAP R3 VERDICT: THE CONVERSION WORKS — 64/120 at anti-mass 0.0002; and SGD does not even fight the symmetry (2026-07-28)
+
+From the projected (57-class) init, 1 warm epoch each:
+| arm | gate | anti-mass (0.5 = none, 0 = exact) |
+|---|---|---|
+| (a) lambda=0 | 62/120 @ 55.60 | 0.0145 |
+| (b) penalty ramp | **64/120 @ 57.30** | **0.0002** |
+VERDICTS: (1) **The pre-registered conversion bar is SMASHED:
+arm (b) recovers to 64 (control 65, within 1 = seed-sigma) while
+the gates are complex-linear to 2 parts in 10,000.** The session
+question answers constructively: a linear model CAN be turned
+into a rotational model — project onto the commutant (-8), one
+warm epoch under a ramped commutation penalty (+7), net cost ~1
+solve. Arc: 65 -> 57 -> 64, anti-mass 0.5 -> 0 -> 0.0002.
+(2) **THE SURPRISE (arm a): plain SGD does not restore the
+anti-commutant** — lambda=0 recovers to 62 at anti-mass 0.0145,
+i.e. the commutant is a (locally) STABLE manifold under
+unconstrained training: once the symmetry is imposed, the
+gradient barely pulls away from it. The "training rejects
+imposed symmetry" reading is FALSE here — nuancing
+teach-don't-impose: imposing a REPRESENTATION on inputs nulls
+(prefix, hints), but imposing a WEIGHT-SPACE SYMMETRY + brief
+re-training holds at ~zero cost. Symmetries are cheap to grant;
+they were just never chosen spontaneously (R1's null).
+(3) What a rotational model buys is now an open, concrete
+question with an artifact in hand (rot_convert_b.pt): candidate
+follow-ups — parameter halving (complex-linear = half the free
+parameters per gate matrix), the U(n) gauge leg (quantum-LLMUE
+walk), rotational-native quantization (G5-class alphabets on a
+genuinely rotational substrate). Banked, not fired. Fences:
+gates-only symmetry, d256/MPS, n=1/arm, 1 warm epoch.
