@@ -7892,3 +7892,15 @@ Perm alignment recovers almost nothing on cross-seed pairs
 neuron permutation. Cell CLOSED; exact-representations program
 continues on the format/instrument legs (GPTQ-rational,
 int8+outliers, calibration probe).
+
+## PRE-REG: calibration probe R1 — flips/token vs snap robustness (2026-07-28, before the runs)
+
+Spec: specs/2026-07-28-calibration-program.md rung 1. Crystals:
+d256 zoo {wfloor 65, s2 63, s3 64, stream4 57, muon 34} + Mac-19M
+fp32 (rat16 crack 49->26 already measured). Instrument: probe =
+flips/token under Q=16 rat snap (calib_probe.py, 400 rows, MPS);
+robustness = gate drop under the SAME Q=16 snap (gate_ckpt, same
+device). PREDICTION: probe rank-correlates with gate drop
+(higher flips/token = larger drop), Spearman rho > 0, and the
+Mac-19M (known cracker) reads highest. FAILURE = probe is noise;
+the calibration program closes at the cost of one script.
