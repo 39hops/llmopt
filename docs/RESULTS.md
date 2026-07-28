@@ -8475,3 +8475,25 @@ rotational structure at any tested pairing (the euler-read null,
 upgraded); (3) any crystal below its null band by >3 sigma of
 the null spread = hidden rotational subspace found (would be
 new). Hungarian-optimized pairing banked as v2 if (3) fires.
+
+## ROTATIONAL SNAP R1 VERDICT: no rotational structure anywhere — and the control's failure is the sharpest finding (2026-07-28)
+
+Real crystals (adjacent pairing v 20-random-pairing null, per-
+layer gates): wfloor 0.49983 (z +0.15) / s2 0.50022 (+0.66) /
+muon 0.50045 (+1.08) / 19m 0.50021 (+0.94) — ALL inside the
+null band at ~0.500 anti-commutant mass. Prediction (2)
+CONFIRMED: no spontaneous rotational subspace at any tested
+pairing (euler-read null, upgraded to pairing-swept form).
+Prediction (3) does not fire; Hungarian v2 stays banked.
+THE CONTROL SURPRISE (prediction 1 failed archITECTURALLY, and
+it books): cplx_none/G5 read 0.4994-0.4998 — NOT ~0 — because
+the house complex-FFN carries its rotation ENTIRELY in the
+activation algebra (modReLU + the elementwise complex multiply);
+its weight matrices are plain real maps (input h is unpaired
+real, so weight-level complex-linearity cannot even be defined
+there). The instrument itself is EXACT (synthetic complex-linear
+rep [[Wr,-Wi],[Wi,Wr]]: anti-mass 0.0; random: 0.495).
+CONSEQUENCE, reframing R3: teaching WJ=JW would create a
+weight-level symmetry NO house model possesses — including the
+born-complex arms. "Turn a linear model into a rotational
+model" is a genuine construction, not a recovery.
