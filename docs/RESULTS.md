@@ -8638,3 +8638,43 @@ parameters per gate matrix), the U(n) gauge leg (quantum-LLMUE
 walk), rotational-native quantization (G5-class alphabets on a
 genuinely rotational substrate). Banked, not fired. Fences:
 gates-only symmetry, d256/MPS, n=1/arm, 1 warm epoch.
+
+## PRE-REG: SYMMETRY LADDER S1 — quaternionic conversion (2026-07-28, before the runs)
+
+Spec docs/superpowers/specs/2026-07-28-symmetry-ladder.md. Three
+anticommuting structures I,J,K (left quaternion-unit action on
+4-channel groups; I^2=J^2=K^2=-1, IJ=K), commutant projection
+P(W) = (W - IWI - JWJ - KWK)/4 — params/4 per gate matrix.
+d256/MPS wfloor lineage, gates only, comparator 65, seed 1.
+CELLS + READS: (1) anti-mass read on wfloor/s2/19m + 20
+random-grouping nulls — prediction: ~0.75 everywhere, z < 3 vs
+nulls (the R1 null repeats at the quaternion group). Instrument
+validated FIRST on a synthetic quaternionic-linear matrix
+(anti-mass must read 0.0) and a random matrix (~0.75) — the R1
+synthetic-control pattern. (2) projection gate at t=1.0
+(deleting 75% of gate mass — holography's harshest test yet;
+R2 lost only 8 at 50%). (3) heal arms lambda=0 and ramped
+penalty (R3 recipe verbatim, penalty summed over all three
+generators). BAR: **gate >= 61 at anti-mass < 0.05 =
+CONVERSION AT 4x SHARING** — the symmetry axis of the
+bits-dimension exchange law gets its second point. Gate stuck
+low at low anti-mass => commutant capacity limit found at 4x
+(also a clean verdict: the ladder has a measured rung where it
+stops). Arm (a) again prices SGD's restoration force.
+
+## SYMMETRY LADDER S1 CELL 1 VERDICT: no spontaneous quaternionic structure — the R1 null repeats at the quaternion group (2026-07-28)
+
+Instrument (scratch/quat_commutant.py) validated first, per
+fence: synthetic commutant member anti-mass 0.000000; random
+matrix 0.737 (~0.75 as predicted). One real scar fixed at the
+algebra asserts before any read: the first block tables dropped
+quaternion signs (i*k = -j etc.) — the in-code checks
+I^2 = -1, IJ = K, IJ = -JI caught it. REAL CRYSTALS (adjacent
+4-grouping vs 20 random-grouping nulls, avg over 8 gate
+layers): wfloor 0.74993 (z -0.38), s2 0.75020 (z +0.59), 19m
+0.74968 (z -1.39). All within a sigma or so of the null band —
+**exactly the pre-registered prediction: SGD chooses no
+quaternionic structure spontaneously, mirroring the complex
+R1 null.** Symmetries must be imposed; cells 2-3 (75%-mass
+projection + heal arms) now test whether they can be, at 4x
+sharing. Fences: gates-only, d256/MPS lineage, cpu-side reads.
