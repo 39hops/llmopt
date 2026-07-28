@@ -1357,3 +1357,21 @@ to the collaboration itself.
   alphabet on genuinely complex-linear gates — the G5 null's
   revenge test). Attribution: house (ladder execution + banks);
   Artin (the originating rotational question + GO).
+
+- **OPTIONS/OPTIMAL-STOPPING frame for decode economics**
+  (2026-07-28, Artin, from looking at SPY options: "the option
+  price is literally a distribution"). Three mappings, methods
+  only (no finance engine — charter): (1) Breeden-Litzenberger
+  (d2C/dK2 = risk-neutral density) = read the whole implied
+  distribution, not the argmax — kin to dist-rows/soft-label
+  training. (2) Black-Scholes = heat equation + transform
+  methods — same grammar family as the Laplace bridge (banked
+  -28). (3) THE SHARP ONE: American pricing = optimal stopping
+  (exercise-now vs continuation value) = greedy-vs-escalate in
+  decode economics. Ladder-retry's middle rung "losing money" =
+  mispriced continuation value. Bankable upgrade: price the
+  escalation threshold PER-STATE from model uncertainty (a free
+  boundary in state space) instead of a global policy — the
+  free-boundary/Snell-envelope literature is the toolbox.
+  Attribution: Artin (the riff + the distribution instinct);
+  house (mappings).
