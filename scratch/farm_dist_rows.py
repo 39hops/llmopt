@@ -7,6 +7,7 @@ Rows STREAM out incrementally (the killed-worker doctrine).
 sympify here runs on farm-certified diet strings, not model text.
 """
 import json
+import os
 import random
 import sys
 
@@ -17,6 +18,22 @@ import sympy as sp  # noqa: E402
 from llmopt.search.derivation import State, successors  # noqa: E402
 from llmopt.search.engine import MarkovPrior  # noqa: E402
 from train_mathnative import load_rows  # noqa: E402
+
+USE_AXIOM = os.environ.get("USE_AXIOM", "1") == "1"
+if USE_AXIOM:  # scoped adoption 2026-07-28: axiom = default
+    import axiom_sym as ax  # enumerator for soundness-consumers
+
+def enumerate_moves(cur, expr):
+    """-> [(rule_name, child_sstr)]; axiom bridge (deadline-walled,
+    expired taxed) with house fallback on parse rejects."""
+    if USE_AXIOM:
+        try:
+            r = ax.successors(ax.parse_sstr(cur), True, 10000)
+            if not r["expired"]:
+                return [(n, str(c)) for n, c in r["rows"]]
+        except Exception:
+            pass  # I-fence / parse reject -> house path
+    return [(n, sp.sstr(s_.expr)) for n, s_ in successors(State(expr))]
 
 N_STATES = 4000
 OUT = "data/dist_rows_d256.jsonl"
@@ -44,14 +61,13 @@ for cur in pool[:N_STATES]:
         failed += 1
         continue
     try:
-        kids = list(successors(State(expr)))
+        kids = enumerate_moves(cur, expr)
     except Exception:
         failed += 1
         continue
     valid = []
     seen = set()
-    for name, s in kids:
-        nxt = sp.sstr(s.expr)
+    for name, nxt in kids:
         if nxt.replace(" ", "") in seen:
             continue
         seen.add(nxt.replace(" ", ""))
