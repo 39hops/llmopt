@@ -8588,3 +8588,21 @@ under the commutation penalty recover the -8 while KEEPING
 anti-mass ~0? Fences: gates-only projection (attention/up/down
 untouched); flips-probe leg NOT run (gates only — booked
 honestly against the pre-reg's rider); n=1, MPS.
+
+## PRE-REG: rotational snap R3 — the conversion (2026-07-28, before the runs)
+
+From the t=1.0 projected init (57-class), TWO warm arms (d256,
+1 epoch gen-4, AdamW 1e-4, MPS, seed 1): (a) lambda=0 — does
+plain SGD RESTORE the anti-commutant (symmetry unstable, gate
+recovers toward 65 by re-breaking it)? (b) commutation penalty
+lambda * sum_l ||W_l J_in - J_out W_l||^2 / ||W_l||^2 (lambda
+ramped 0.1 -> 1.0 over the epoch, gate matrices only). READS:
+arm (b) recovers gate >= 62 (within 3 of control) with final
+anti-mass < 0.05 => **CONVERSION ACHIEVED — a linear model
+turned rotational at ~zero capability cost** (the session
+question answered constructively); gate recovers but anti-mass
+drifts > 0.2 => training rejects the symmetry (teach-don't-
+impose extends to symmetries — also a clean verdict); gate
+stuck 57-class with anti-mass low => the symmetry subspace
+cannot host the missing 8 solves (capacity-of-the-commutant
+result). Arm (a) prices the restoration force either way.
