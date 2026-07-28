@@ -8359,3 +8359,17 @@ exact-format family now spans R and C. (3) G5-latent 66 v
 ZI-latent 65: the phase alphabet's latent edge is sub-noise —
 lattice GEOMETRY (rotational v rational) is a non-factor at
 matched dose; only the deploy tax separates them.
+
+## PRE-REG: flips-vs-Q calibration fingerprint (2026-07-28 night, before the sweep; pre-approved follow-up class)
+
+The R1 probe read one lattice (Q=16); the banked refinement reads
+the CURVE: flips/token at Q in {4,8,16,32,64} (direct rational
+snap) for 5 crystals {wfloor, s2, stream4, muon d256; the 19m
+cracker}. PREDICTIONS: (1) flips fall monotonically with Q for
+every crystal (finer lattice = smaller perturbation); (2) the
+crystal ORDERING is Q-stable (the single-Q rank generalizes —
+fingerprints don't cross); (3) the 19m cracker sits above the
+d256 zoo at Q<=16 (its knee), converging by Q=64 (its measured
+parity point). A crossing = the fingerprint carries MORE
+information than any single-Q read (banked as the instrument's
+justification); no crossing = one Q suffices, curve retired.
