@@ -8277,3 +8277,33 @@ audit relay.
    refinement (one cell, if wanted): ladder retry (greedy ->
    k=2 -> k=8) instead of greedy -> k=8 — the retry cost is
    the whole gap.
+
+## SUCCESSORS-BRIDGE ACCEPTANCE: SOUNDNESS PASS (200/200), exact-set parity FAILS with every class named — SCOPED ADOPTION (2026-07-28 night)
+
+500 roots read (0 expired, 0 fence-skips): exact child-set MATCH
+12/500; house-only 201 / both-diff 284 / axiom-only 3 states.
+**SOUNDNESS: 200/200 axiom-only children VERIFY on the house
+oracle — zero failures. The adoption-blocking leg is clean.**
+Throughput: axiom 4.9 st/s v house 1.3 (3.8x on this band, tail
+included; their p50 claim held on gen-4-typical states).
+THE DECOMPOSITION (rule histogram over 60 states): house-only
+mass = cancel 38 / expand 30 / i_parts 30 / i_heurisch 26 /
+factor 25 / euler 21 / together 15; axiom-only = the SAME
+families from the other side (cancel 23, i_parts 12, expand 5).
+READING: this is the E4 ply-semantics split at the enumeration
+layer — the two engines emit the same MOVE FAMILIES but
+different algebra NORMAL FORMS (each CAS's cancel/expand/factor
+lands on its own canonical string), plus two named coverage
+edges (i_heurisch = house slot, absent axiom-side by design;
+euler = house macro). Exact-set parity between two CAS algebra
+systems is structurally unreachable without canonical-form
+agreement — and it is NOT REQUIRED: every emission is
+independently sound.
+ADOPTION (per the pre-registered rule, SCOPED): the axiom bridge
+becomes the DEFAULT ENUMERATOR for soundness-consumers —
+distribution/altpairs-class farming, stuck-state food, the
+pincer's forward leg (frontier_eval) — at 3.8x with deadline_ms
+walls. House derivation.successors remains the SEMANTIC
+REFERENCE for house-set replication consumers (R1b true-move
+replay, gate semantics) and sympy remains oracle-of-record at
+final verification. Farmers migrate at their next touch.
