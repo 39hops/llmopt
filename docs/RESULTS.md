@@ -8142,3 +8142,44 @@ the battery has no tie-variance and the cell books
 VOID-BY-BATTERY (needs harder states, not more arms). Tokens
 and per-state sidecars logged; S2-dist as a learned judge is
 the banked follow-up iff the oracle-judge form pays.
+
+## JUDGE-COLLAPSED DECODING VERDICT: NULL BY TIE-SCARCITY — generation-time near-ties are too rare to buy anything; greedy captures 90% of the wave at 12% of the tokens (2026-07-28)
+
+30 fresh L5-L7 states, 12 plies, calib_d256_ctl (62-gate):
+| arm | solves | tokens |
+|---|---|---|
+| wave-8 (production) | 20/30 | 9,072 |
+| greedy-1 | 18/30 | 1,130 |
+| judge-collapsed | 18/30 | 1,161 |
+VERDICTS, against the pre-reg:
+1. **Prediction (1) FAILS flat: judge = greedy (18 = 18)** — and
+   the token ledger names the mechanism: +31 tokens over greedy
+   ACROSS ALL 30 STATES means the near-tie branch fired ~once or
+   twice total. At generation time, top-2 margins < 0.02 are
+   VANISHINGLY RARE (median margin 8.6; the snap anatomy's
+   2-in-2,512 flip density, now measured at the decode layer).
+   The lever has nothing to grip: decisions are near-tie-decided
+   only under WEIGHT perturbation (device rounding, snaps), not
+   under the model's own argmax stream. Judge-collapsed decoding
+   CLOSES as null-by-tie-scarcity; the S2-dist learned-judge
+   follow-up dies with it (no ties to judge).
+2. **The economics finding that books instead (prediction 2
+   inverted into something better): greedy captures 90% of the
+   wave's solves at 12% of its tokens** (18 v 20 at 1,130 v
+   9,072). The 8-sample wave buys +2/30 solves for 8x spend —
+   composing with R0b (sampling order ~ mass order; the argmax
+   carries most of the wave's information), the efficient decode
+   for farms/probes is GREEDY-FIRST with wave-retry only on
+   failure. Candidate lossless-speed lever for every
+   sampling-bound loop (gates stay wave-8 for lineage
+   comparability; the fence is instrument continuity, not
+   economics).
+3. The device-dependence paradox RESOLVES cleanly: hardware
+   rounding decides frontier probes (18/24 v 9/24) not because
+   generation is tie-dense but because a tie ANYWHERE in a
+   12-ply chain forks the whole trajectory — rare ties x long
+   horizons x butterfly amplification, exactly the snap
+   anatomy's damage law (flips/token x chain length), now
+   confirmed from the decode side.
+Fences: n=30 states, one crystal (same-day 62-class), one
+margin threshold (0.02); sidecar logs/pp_judge_decode.jsonl.
