@@ -9083,3 +9083,29 @@ CELLS (3080, chained after the 45M retrofit):
 Fences: per-cell n=1, device-paired comparators only, EMA
 decay pinned 0.999, soup = plain parameter mean (no Fisher
 weighting this rung).
+
+## MATRYOSHKA RUNG 1 VERDICT: THE NESTED CRYSTAL WORKS AT ZERO PRICE — one tensor, two tiers, 65/60 (2026-07-28 night)
+
+One warm epoch of the joint loss CE(W) + CE(STE P_C8(W)) from
+wfloor d256 (scratch/matryoshka_r1.py, toggleable STE
+parametrization):
+| tier | gate | comparator |
+|---|---|---|
+| DENSE (raw W) | **65/120** | 65 (the full crystal) |
+| CHEAP (P_C8(W), params/8) | **60/120** | 59 (separately-trained circulant) |
+VERDICT: both pre-reg bars smashed — the dense tier pays ZERO
+(65 = 65) while its own circulant projection gates 60, at or
+above the separately-healed circulant (59). **A single weight
+tensor now carries a dynamic inference budget: project for the
+cheap task, run raw for the hard one — Artin's
+shift-complexes-per-task model exists as an artifact
+(matryoshka_d256.pt).** The slack-budget law is NUANCED, not
+refuted: quantization-on-sharing pays double (corner, cross-
+family), but nesting tiers of the SAME symmetry family is
+free — slack competition is between UNLIKE compression axes;
+like-axes nest. Free rung unlocked: the tier is a runtime
+choice, so per-level routing (R2's L6-immune profile) applies
+with no extra training. Next rungs banked: 3-tier nest
+(complex between), packed circulant forward for real
+wall-clock, Snell tier-selection policy. Fences: d256/MPS,
+gates-only symmetry, n=1, 1 warm epoch.
