@@ -8401,3 +8401,30 @@ decisions sit far from ternary-class boundaries while being
 WRONG more often. Robustness and capability are separable axes,
 measured. Fences: 400-row probe, one device, direct-snap
 operator; gates not re-run at new Q values (fingerprint-only).
+
+## NIGHT-28 FINAL BATCH: S4/M4 at 6ep (zero premium 4, sub-bar); P2@45M lands 72 — at-or-above class, bracket stays closed (2026-07-28 overnight)
+
+1. **S4-6ep 67 v M4-6ep 71** (matched recipe/dose): both 2-bit
+   alphabets gain ~+10 from the discrete-learning dose (58->67,
+   61->71 — the ternary 6ep law reproduces at 2 bits), and the
+   zero's premium reads 4 — GREW from 3ep's 3, still under the
+   5-solve bar. The zero-is-load-bearing law stays BOUNDED at
+   born-2-bit: directionally paying at both doses, never
+   bookable. No further dose cells owed (two doses, same
+   answer-class). Dose-confound fence: M4-6ep 71 v fp32-3ep 64
+   is schedule-unmatched — do NOT read "2-bit beats fp32" from
+   it; the matched fp32-6ep@19M cell does not exist.
+2. **P2 @ 45M-class, 6ep: 72/120 @ 69.11** v comparators
+   ternary-45M-6ep 69 / fp32-45M-3ep 69. House "ties 69-class"
+   prediction lands at its directional edge: +3, under the
+   5-solve single-seed bar — P2 is AT-OR-ABOVE class at width
+   (the 3.17-bit ladder does not decay at W* the way the
+   W*~1/bits mechanism might have predicted for a mid-bit
+   alphabet), but the bracket does NOT reopen. Alphabet standings
+   at 45M-class: P2 72* / tern 69 / fp32 69 (* sub-noise lead).
+3. **P2 deploy tax: ZERO** (latent gate = deployed gate, 72=72)
+   — the second zero-tax reading tonight (Z[i] 65=65). Pattern
+   forming across P2/ZI vs G5's -4: STE onto MAGNITUDE/RATIONAL
+   lattices converges the latents fully; the PHASE lattice does
+   not — banked as a candidate law (lattice-geometry-dependent
+   deploy tax) with n=2 v n=1.
