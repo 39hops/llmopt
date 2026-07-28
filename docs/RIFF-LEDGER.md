@@ -1214,3 +1214,22 @@ to the collaboration itself.
   variance lives." DOCTRINE CANDIDATE: read every intervention
   at L4 first (the canary level); L4->L5 frontier migration =
   the cleanest progress metric.
+- **2026-07-27 night (house, from the full-RESULTS reread)**: two
+  reframes for the exact program. (1) **Born-rational has a named
+  ancestor: P2.** The alphabet tournament (07-20) already showed a
+  discrete ladder alphabet BEATING fp32 at 19M (P2 3.17-bit: 66 v
+  64), and born-vs-rounded premiums are measured lineage (born-T
+  60 v ternary-PTQ 42 = +18). RAT_Q=6 (~4-6 bit rational ladder)
+  winning +5 is IN-FAMILY, not an anomaly — the new content is
+  EXACTNESS riding free on a known regularization effect.
+  Seed-2 prior updated: replication plausible per the tournament's
+  ladder-beats-fp32-at-19M row. (2) **The gauge-slack cell must be
+  designed against the ancestry verdict** (07-26: distance
+  measures ANCESTRY — seed pairs read sqrt(2) even after
+  Procrustes). The lawful form: fp32 seed-pair distance vs
+  rat-Q6 seed-pair distance, same lens (raw + Hungarian), paired;
+  signal = rat pair reading BELOW fp32 pair (lattice
+  canonicalization above the ancestry floor). Prediction
+  (skeptical, on record): both ~sqrt(2), no closure — the lattice
+  kills continuous gauge but seed-lottery basin assignment
+  dominates distance. Books either way.
