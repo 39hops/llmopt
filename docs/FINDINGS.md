@@ -339,3 +339,23 @@ honest negatives booked with the same care as wins.
   captures 90% of the 8-wave's solves at 12% of its tokens —
   greedy-first, wave-on-retry is the farm/probe speed candidate.
   (07-28)
+
+## Night-28 (07-28, overnight, both machines)
+
+- **The exact tail's causal footprint, measured element-wise**:
+  exact-dd vs fp64-masters training endpoints differ by 321 fp32
+  last-bit latent casts (max 3.7e-9) and ZERO of 50.3M deployed
+  sign cells, with identical calibration fingerprints —
+  "deployed-function-identical" proven at the weight level. The
+  precision hierarchy is now closed end to end. (07-28)
+- **Axiom is the default enumerator** (scoped adoption): forward
+  successors bridge sound 200/200 on the house oracle at 3.8x;
+  exact set-parity between two CAS's algebra moves is
+  structurally unreachable (normal forms) and unnecessary. (07-28)
+- **Null revivals priced**: Muon is gate-toxic at every schedule
+  (its CE-gate dissociation is a standing instrument); backward
+  rows have a safe dose (10% neutral, 50% toxic); the born-2-bit
+  zero premium stays sub-bar at double dose. Magnitude/rational
+  STE lattices deploy at ZERO tax (P2 72=72 at 45M-class, Z[i]
+  65=65) where the phase lattice paid -4 — lattice-geometry-
+  dependent deploy tax, candidate law. (07-28)
