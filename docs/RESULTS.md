@@ -8004,3 +8004,26 @@ test a genuine unknown: does explicitly TRAINING the spread
 (raising H_valid toward the engine's distribution) pay at the
 gate, or was one-true-move concentration load-bearing? Baseline
 numbers for that arm: delta 0.0037 / H 0.057 (control).
+
+## PRE-REG: distribution rows at d256, THREE-ARM design (2026-07-28, before the births)
+
+Spec rung 3, upgraded at plan-execution time with a dose control
+(exposure-rations law: replication changes exposure share, so a
+naive dist-vs-control pair confounds label distribution with
+dose). Arms, all fresh births (same-day-control doctrine: trainer
+drifted since wfloor — RAT_Q/SR_BF16/BIRTH_BS commits), same
+recipe (BIRTH_SEED=1, d256/L8/ffn1024/h4, 3ep, MPS, no --fast):
+(1) CONTROL: gen4 diet as-is; (2) DOSE-CONTROL: each treated
+state's pick row replicated 4x; (3) DIST: each treated state's
+4 rows = largest-remainder apportionment of its verified-valid
+move distribution (engine-enumerated, MarkovPrior-weighted,
+farm_dist_rows.py). Treated states = the ~4,000 farmed curs;
+dosectl and dist row counts match exactly by construction.
+PRIMARY: dist vs dose-control at the gate, L4 read first (canary).
+SECONDARY: calib_probe (Q=16 direct) on all three arms —
+prediction: dist reads FEWER flips/token than dose-control (soft
+labels sharpen decision margins). Baselines from rung 2: control-
+class H_valid 0.057 bits, delta 0.0037. Dose reading free:
+dose-control vs control isolates pure 4x-replication exposure.
+Null reading pre-declared: calibration is a diagnostic, not a
+lever; rung 4 unaffected.
