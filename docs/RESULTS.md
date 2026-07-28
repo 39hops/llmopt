@@ -8116,3 +8116,29 @@ VERDICTS, against the amended pre-reg:
    manufactured a phantom tax in every arm.
 Rung 4 (judge-collapsed decoding) proceeds — independent leg,
 now with scorer_s2_dist banked as its designated judge.
+
+## PRE-REG: judge-collapsed decoding at d256 (2026-07-28, before the run)
+
+Spec rung 4, ungated by R1's PASS (ties measurable, concentrated
+at low margins). Design corrected at implementation time: the
+production decode is ALREADY a wave (B=8/ply, oracle picks), so
+the fair three-arm cell at 30 fresh L5-L7 states (seed space
+99.3M, 12 plies, calib_d256_ctl.pt = tonight's same-day 62-gate
+control) is:
+(a) WAVE-8 (production semantics) — the token-rich comparator;
+(b) GREEDY-1 (argmax/ply, verify, fail on invalid) — the floor;
+(c) JUDGE-COLLAPSED greedy — greedy except at top-2 margin
+    < 0.02 (the measured near-tie class): branch BOTH
+    continuations to the step boundary, oracle (verify_wave)
+    judges, BOTH branches' tokens charged.
+PREDICTIONS (house): (1) (c) > (b) by >= 3 states — near-tie
+branching recovers real solves over pure greedy (the flips-
+decide-coinflips anatomy); (2) ECONOMICS headline: (c) lands
+within ~3 solves of (a) at <= 40% of (a)'s tokens — the wave's
+value concentrates at ties, so collapsing only ties buys most
+of the wave at a fraction of the spend (FA-law form); (3) fence:
+if (b) ~ (a) already (greedy ties the wave on this battery),
+the battery has no tie-variance and the cell books
+VOID-BY-BATTERY (needs harder states, not more arms). Tokens
+and per-state sidecars logged; S2-dist as a learned judge is
+the banked follow-up iff the oracle-judge form pays.
