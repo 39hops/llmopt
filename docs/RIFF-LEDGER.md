@@ -1389,3 +1389,36 @@ to the collaboration itself.
   toll transfer across scale? Ties the ladder to the ZX capacity
   null (capability occupies a small structured subspace at 45M
   too, or not). Banked pending a 3080 window.
+
+- **THE MATRYOSHKA CRYSTAL (dynamic inference budget)**
+  (2026-07-28 night, Artin: "a model whose weights can shift
+  complexes and provide different capabilities for different
+  tasks"). One weight tensor, nested commutant tiers: train
+  with joint loss CE(W) + CE(P_G(W)) (STE through the
+  projection) so W's OWN circulant/complex projection is
+  simultaneously a working cheap model — then inference picks
+  the tier per query (projection = the budget dial; circulant
+  tier = real conv-speed matvec once the packed forward
+  exists). Already-measured parts: the tier family
+  65/64/61/59 at 1x..1/8 params (separate ckpts today); R2's
+  per-level damage profile (L6 immune, L5/L7/L3 fragile) =
+  the router's feature; Snell/options escalation = the
+  tier-selection policy; oracle verify = the safety net. The
+  SHARP question (set by tonight's corner verdict): the
+  slack-budget law predicts nested tiers COMPETE for
+  redundancy — the joint-loss price vs the separate-ckpt
+  family is the measurement. Kin: matryoshka representation
+  learning / slimmable nets (literature leg for THEORY if it
+  lands). Rung 0 (desk, cheap): gate P_C8(rot_convert_b) and
+  P_C8(dense wfloor) as-is — how bad is the free nesting
+  before any joint training? Attribution: Artin (the riff);
+  house (mapping + rungs).
+- **ENERGY-KNOB REFINEMENT (lyapunov)** (2026-07-28 night,
+  house, from Artin's "anything incorrect?" review): INIT_SCALE
+  multiplies ALL params (norm gains + emb included) —
+  compounding ~scale^depth; the x4 "cliff" is smooth monotone
+  loss descent from a distant start, i.e. BASIN DISTANCE under
+  fixed budget, not measured chaos. Refinement arms banked:
+  scale 2-D weights only; equal-effective-budget (train until
+  loss parity, then gate); x2 midpoint. Until run, the energy
+  read is fenced as budget-confounded.
