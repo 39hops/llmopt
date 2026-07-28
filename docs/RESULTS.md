@@ -8074,3 +8074,45 @@ didn't have). Any element-wise difference found would NOT
 overturn the capability verdict (outcomes measured equal) but
 would re-scope the "nothing below fp64's floor reaches the
 deployed function" wording to its outcome form.
+
+## DISTRIBUTION ROWS 3-ARM VERDICT: PARITY — the altpairs dilution tax VANISHES under matched-dose replacement; the training lever demotes to diagnostic (2026-07-28)
+
+Three fresh births, one chain, same device/seed/recipe
+(d256/L8/ffn1024/h4, BIRTH_SEED=1, 3ep, MPS):
+| arm | gate | validity | L4 | probe flips/tok (Q=16) |
+|---|---|---|---|---|
+| control (gen4) | 62 | 57.79 | 7 | 0.0513 |
+| dose-control (pick x4) | 62 | 59.39 | 6 | 0.0542 |
+| dist (distribution x4) | 60 | 57.12 | 6 | **0.0498** |
+VERDICTS, against the amended pre-reg:
+1. **PRIMARY: dist v dose-control = -2 — parity class** (sigma
+   ~1.0, bar 3). The altpairs precedent (-6 at 14% ADDED share)
+   does NOT reproduce under matched-dose REPLACEMENT with
+   prior-weighted labels: the updated house prediction
+   (dist <= dosectl) lands at its parity edge, and the dilution
+   tax reads as a SHARE/DOSE effect, not a cost of the label
+   distribution itself. Real difference from precedent, booked —
+   but no GAIN either: per the original pre-reg's null reading,
+   **calibration training on the forward crystal demotes to
+   DIAGNOSTIC** (second design point for scorer-owns-calibration;
+   the policy-sharpness observation survives untouched).
+2. L4 (canary): 7/6/6 — all inside the {6,7} seed band; no
+   clade effect in any arm.
+3. **SECONDARY (the novel readout): direction CONFIRMED,
+   sub-noise** — dist reads the FEWEST flips/token (0.0498 v
+   dosectl 0.0542, -8% rel; control between at 0.0513). Soft
+   labels sharpen decision margins in the predicted direction;
+   probe sigma is unmeasured, so this books as directional only.
+   (First use of the rung-1 probe as a secondary instrument on
+   paired arms.)
+4. Dose reading free: dose-control = control exactly (62=62,
+   +1.6 validity) — 4x replication of 4,000 states is
+   capability-neutral; exposure-share effects need bigger doses
+   than this.
+5. Same-day-control doctrine vindicated AGAIN: fresh control 62
+   v wfloor's historical 65 on the same recipe — the drifted
+   tree (RAT_Q/SR/BIRTH_BS commits + diet-loader path) is worth
+   ~-3; any comparison against the old 65 would have
+   manufactured a phantom tax in every arm.
+Rung 4 (judge-collapsed decoding) proceeds — independent leg,
+now with scorer_s2_dist banked as its designated judge.
