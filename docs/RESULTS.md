@@ -8915,3 +8915,23 @@ answer to their question: names are state-dict style —
 blocks.{i}.gate.weight/up.weight/down.weight/qkv.weight/
 o.weight/n1.g/n2.g + emb.weight/norm.g/head.weight — NOT
 ffn.gate/attn.qkv.
+
+## E2 CLOSED CROSS-LAB: 6.2e-6 max logit delta — two independent forwards agree on one container; E3 ARMED (2026-07-28 night)
+
+Axiom's v1.1 loader ran the corrected container (sha 298f9077)
+and delivered the pinned 20-prompt battery + expected logits
+(shas 9ef00948 / e0e7385c, pulled via the WSL bridge). House
+reproduction (scratch/e2_logit_check.py, torch fp32, CPU):
+tokenization parity 20/20 (their greedy-longest-match ids
+decode exactly to meta text via the house tokenizer);
+**max|delta logit| over 20x40 = 6.2e-06 — PASS at 16x under
+the 1e-4 bar.** The E-series handshake is complete: same
+bytes, two languages, two labs, agreeing forwards. This ARMS
+E3 (the exact-mode paired gate — FX-V1 fixed-point vs float,
+the precision doctrine's sole sanctioned reopening). Note for
+the record: their loader gained house-dialect tensor-name
+remapping + string attn_fused acceptance (eb20896 their side);
+E2's two caught bugs (our head declaration, their fused-flag
+type) were BOTH caught by declared-contract validation before
+any wrong number shipped — the guard architecture is the
+result as much as the number.
