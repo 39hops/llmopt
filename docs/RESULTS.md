@@ -8428,3 +8428,20 @@ operator; gates not re-run at new Q values (fingerprint-only).
    lattices converges the latents fully; the PHASE lattice does
    not — banked as a candidate law (lattice-geometry-dependent
    deploy tax) with n=2 v n=1.
+
+## AMENDMENT (target: Z[i] + P2 zero-deploy-tax bookings, night-28): the "latent" gates were STE-forward — instrument corrected, ZI leg CONFIRMED on the true latent (2026-07-28 morning review)
+
+Morning self-review caught the artifact: gate_cplx with alpha=ZI
+snaps in the forward (STE), so night-28's "ZI-latent 65" and
+"ZI-dep 65" measured the SAME function — 65=65 was guaranteed;
+likewise P2's first 72 was tournament_birth's internal STE gate.
+The TRUE-latent gates (alpha=none on the unsnapped weights) ran
+this morning: **ZI true-latent 65/120 @ 63.27, per-level map
+IDENTICAL to deployed** — the zero-deploy-tax claim for Z[i]
+SURVIVES the corrected instrument (right number, wrong reasoning;
+now both right). P2's true-latent gate in flight on the 3080;
+the lattice-geometry deploy-tax candidate law rides its result.
+Doctrine line: an STE forward IS the deployed function — "latent
+gate" only means something at alpha=none. Applies retroactively
+to G5's 66/62 (correctly measured: its latent gate WAS alpha-
+appropriate) — verified, not assumed, by this review.
