@@ -1,5 +1,10 @@
 # Spec: THE SYMMETRY LADDER (2026-07-28, Artin GO "let's start choosing symmetries")
 
+**STATUS: COMPLETE same day (S1-S4 all booked, RESULTS 07-28).
+Toll 2x:-1, 4x:-4, 8x:-6; S2 exact at 65. Banked follow-ups
+live in RIFF-LEDGER (C16, packed conv forward,
+symmetry-at-birth).**
+
 Sequel to the rotational snap program (R1-R3 COMPLETE, RESULTS
 2026-07-28: no spontaneous structure; projection -8; conversion
 ACHIEVED 64/120 @ anti-mass 2e-4; SGD accepts the imposed

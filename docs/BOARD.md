@@ -1,6 +1,6 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-28 evening (GO-day complete — handoff 2026-07-28-2; NEXT: symmetry ladder spec 2026-07-28-symmetry-ladder) (newest handoff: -27-3 pre-compact; live specs: 2026-07-27-calibrated-scorer + 2026-07-27-exact-stack; query verdicts: scripts/results_query.py --live). RESULTS.md holds verdicts, RIFF-LEDGER.md
+Updated 2026-07-28 night (SYMMETRY LADDER COMPLETE S1-S4; newest handoff: 2026-07-28-3; in flight: stability atlas on 3080; query verdicts: scripts/results_query.py --live). RESULTS.md holds verdicts, RIFF-LEDGER.md
 holds provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 

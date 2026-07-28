@@ -359,3 +359,25 @@ honest negatives booked with the same care as wins.
   STE lattices deploy at ZERO tax (P2 72=72 at 45M-class, Z[i]
   65=65) where the phase lattice paid -4 — lattice-geometry-
   dependent deploy tax, candidate law. (07-28)
+
+## The symmetry ladder (07-28, one session, all pre-registered)
+
+- **Symmetry is a third compression axis** (weight sharing),
+  next to bits and dimensions: trained dense gate matrices
+  retrofit into group-commutant structure at sublinear toll —
+  complex 2x: -1, quaternion 4x: -4, circulant 8x: -6 of 65.
+  The 8x rung means dense layers of a trained crystal can be
+  RETROFITTED into convolution structure. (07-28)
+- **SGD never chooses symmetry, but accepts it**: anti-mass
+  reads at the generic null for every group tested; yet after
+  projection + one warm epoch the commutant is locally stable
+  even at lambda=0 — with stability WEAKENING as the group
+  grows (drift 0.014 complex -> 0.136 at C8). (07-28)
+- **The holography edge is structure-dependent**: Z2's 50%-mass
+  cut cost double the complex 50% cut (49 vs 57); C8's 87.5%
+  cut destroys (2/120). What matters is which functional
+  directions are deleted, not the mass fraction. (07-28)
+- **Exactness endpoint measured**: the W(+)W doubled model
+  gates EXACTLY 65 (anti-mass < 1e-12 by theorem) — exact
+  rotational conversion exists at 2x width; at-width
+  conversion pays the measured toll instead. (07-28)
