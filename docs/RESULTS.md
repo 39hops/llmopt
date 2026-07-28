@@ -8569,3 +8569,22 @@ BS interact with LR as the sqrt-scaling rule predicts (ridge
 along LR ~ sqrt(BS)) or independently? Fences: d64 (the
 substrate's own gate band is 38-class; sigma unmeasured at d64
 — the 4 s2 cells price it), n=1 per cell, one device.
+
+## ROTATIONAL SNAP R2 VERDICT: a fully rotational-gated crystal keeps 88% of its solves — the knee is at the far end (2026-07-28)
+
+wfloor, gate matrices projected W - t*W_a (adjacent pairing):
+t=0: 65 | t=0.25: 65 (per-level map IDENTICAL; ~3% mass) |
+t=0.5: 64 (-1; 12.5% mass) | t=1.0: **57 (-8; 50% of gate mass
+deleted into the commutant)**. READS: (1) the damage curve is
+shockingly gentle — forcing every gate matrix to be EXACTLY
+complex-linear (a symmetry no house model has ever had) costs 8
+solves of 65; the democracy absorbs a 50%-mass structured
+deletion the way it absorbed rank-128 (-3 at 4x less mass
+removed) — holography's strongest showing yet. (2) L6 held 8/8
+at every t; damage concentrates L5/L7/L3 — no clade signature.
+(3) The R3 starting point is measured: projected-init = 57-class,
+and the conversion question is now concrete — can warm training
+under the commutation penalty recover the -8 while KEEPING
+anti-mass ~0? Fences: gates-only projection (attention/up/down
+untouched); flips-probe leg NOT run (gates only — booked
+honestly against the pre-reg's rider); n=1, MPS.
