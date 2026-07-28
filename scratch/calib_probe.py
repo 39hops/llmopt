@@ -20,25 +20,26 @@ PROBE_SEED = 99_000_001
 
 
 def rat_snap(sd, Q):
-    # same snap rat_deploy.py applies: s * best p/q, q <= Q,
-    # s = per-tensor absmean, 2-D float tensors only
+    # EXACTLY rational_snap.py's operator (direct w -> best p/q,
+    # q <= Q, NO absmean scale) — the instrument that measured the
+    # 49->26 ground-truth crack. rat_deploy's scaled snap is a
+    # DIFFERENT (finer) instrument; snap operators are instruments
+    # and fences travel with them.
     out = {}
     for k, w in sd.items():
         if w.ndim != 2 or not w.is_floating_point():
             out[k] = w
             continue
         wf = w.float()
-        s = wf.abs().mean().clamp(min=1e-8)
-        v = wf / s
-        best = torch.round(v)
-        err = (v - best).abs()
+        best = torch.round(wf)  # q = 1
+        err = (wf - best).abs()
         for q in range(2, Q + 1):
-            cand = torch.round(v * q) / q
-            e = (v - cand).abs()
+            cand = torch.round(wf * q) / q
+            e = (wf - cand).abs()
             m = e < err
             best = torch.where(m, cand, best)
             err = torch.where(m, e, err)
-        out[k] = (best * s).to(w.dtype)
+        out[k] = best.to(w.dtype)
     return out
 
 

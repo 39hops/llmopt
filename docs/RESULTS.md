@@ -7921,3 +7921,21 @@ gate at least as well as (b); the (a)-(b) delta — mass on
 valid-but-non-modal moves — is the novel number and rung 3's
 baseline. (a)~(b) everywhere = the floor theory stays
 unmeasurable at this scale (books as such).
+
+## AMENDMENT to PRE-REG calibration probe R1: instrument mismatch in battery v1; probe re-armed on the ground-truth snap operator (2026-07-28)
+
+Battery v1 inlined rat_deploy's SCALED snap (w/s -> p/q -> *s,
+s = absmean) but the 49->26 ground-truth crack was measured with
+rational_snap's DIRECT snap (w -> p/q, no scale) on
+checkpoints/mathnative_19m.pt (control 49) — a finer effective
+lattice and the wrong crystal (mathnative_19m_mac_fp32 is
+tonight's born-rational control, gate 60, never crack-measured).
+Incidental result, booked: **the scaled Q=16 lattice is
+capability-free across the entire d256 zoo** (65=65, 63=63,
+64=64, 57=57, 34=34 — zero drop at every gate, flips/token
+0.00065-0.00256, flip margins e-3-class). The pre-reg itself is
+UNTESTED by v1 (no robustness variance existed to correlate
+against). v2 re-arms with rational_snap Q=16 (the ground-truth
+instrument) on the same five d256 crystals + mathnative_19m.pt
+as the cracker probe point. Prediction unchanged. Snap operators
+are instruments; fences travel with them.
