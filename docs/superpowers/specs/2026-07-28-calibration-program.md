@@ -40,20 +40,29 @@ on a fixed probe set (held-out cur states, greedy, one device).
 
 ## Rung 2 — the mechanism study (Mac, zero training)
 
-**CE-floor / branching-coverage** on the Muon specimens (the
-widest gate-vs-loss split ever measured: Muon 10/34 v AdamW 45 v
-control 65, with Muon's CE 0.41 the LOWEST). On held-out cur
-states where the engine enumerates multiple known-valid nxt,
-measure per-model: (a) mass-on-valid-set, (b) mass-on-farm-pick.
+**The MASS leg of the branching-entropy floor** — AMENDED at plan
+time: the CE-gate study's sampled-coverage form ALREADY RAN
+(RESULTS 2026-07-26) and the CE-anti-tracks hypothesis FAILED
+(CE on a fixed instrument tracks the gate 4/4; Muon dissociation
+retracted as a cross-instrument artifact). What that verdict
+explicitly left unmeasured (its #3): "the branching-entropy floor
+stays a THEORY without a measured leg." This rung measures it in
+MASS form, teacher-forced (no sampling): per held-out cur state,
+enumerate the engine's verified-valid nxt set (successors +
+verify), compute each model's sequence-probability mass on (a)
+the full valid set, (b) the farm's banked pick alone, and (c) the
+distribution entropy over the valid set. Specimens: the same four
+d256 crystals (muon 34 / stream3 45 / stream4 57 / control 65).
 
-- Pre-reg (house, on record since the 07-26 riff): (a) tracks the
-  gate while CE anti-tracks — i.e. the gate measures BRANCHING
-  COVERAGE, and pushing CE under the branching-entropy floor
-  deletes the distribution generative solving samples from.
-  "Loss to 0" would then be formally the wrong target in a
-  one-of-many-valid diet.
-- Books either way: if (b) tracks the gate instead, CE is
-  vindicated and the Muon crater needs a different mechanism.
+- Pre-reg (weakened honestly per the 07-26 verdict): mass-on-
+  valid-set tracks the gate at least as well as mass-on-farm-pick;
+  the DELTA (a)-(b) — mass on valid-but-unpicked moves — is the
+  novel readout, and rung 3's baseline. No CE-anti-tracking claim
+  is re-registered.
+- Books either way: (a)~(b) everywhere = the floor theory stays
+  unmeasurable at this scale and rung 3 loses its mechanism
+  motivation (rung 3 still runs — its gate readout is
+  self-sufficient).
 
 ## Rung 3 — the training lever (one d256 birth first)
 
@@ -108,7 +117,9 @@ unaffected.
 ## Pre-registrations to book in RESULTS before each run fires
 
 - R1: probe-vs-robustness Spearman direction.
-- R2: mass-on-valid tracks gate, CE anti-tracks (house bet).
+- R2: mass-on-valid-set tracks the gate >= mass-on-farm-pick;
+  the (a)-(b) delta is the novel readout (no CE-anti-track claim
+  — that form already failed 2026-07-26).
 - R3: distribution arm >= pick arm at L4; probe delta negative
   (fewer near-ties).
 - R4: judge-collapsed >= greedy at equal tokens on the frontier
