@@ -1301,3 +1301,12 @@ to the collaboration itself.
   metabolic session (FX-V1 forward + RNS step) — LLMUE's
   deterministic form. Attribution: Artin (the composition ask);
   house (mechanization + the lawful-apparatus reading).
+- **2026-07-28 night (house, from the muon fingerprint anomaly)**:
+  robustness and capability measured SEPARABLE (muon: gate 34,
+  most snap-robust at Q8 by 3-4x, gate RISES under snap). Bank:
+  (1) Muon as a robustness REGULARIZER — a Muon->AdamW anneal or
+  Muon-on-late-layers-only arm might buy boundary-distance
+  without the validity crater (one d256 cell, low priority);
+  (2) the fingerprint's Q8 column as the robustness dial for
+  deployment-format choice (which crystal tolerates int2-class
+  storage). Attribution: house, overnight autonomy.
