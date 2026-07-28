@@ -8704,3 +8704,28 @@ the quaternionic commutant is ALSO locally stable under
 unconstrained SGD; the penalty is worth +1 solve and 80x
 tighter symmetry, not a fight. Fences: gates-only, d256/MPS,
 n=1/arm, comparator 65, artifacts quat_convert_{a,b}.pt.
+
+## PRE-REG: SYMMETRY LADDER S4 (Z2) + S3 (circulant C8) — before the runs (2026-07-28)
+
+Generic instrument scratch/sym_convert.py: P(W) = group average
+of orthogonal conjugations; synthetic member/random controls
+per group; anti-mass read + 10 nulls; then projected-init gate
++ heal arms a (lambda=0) / b (ramped generator penalty), R3
+recipe verbatim. d256/MPS wfloor, gates only, comparator 65.
+S4 Z2 (sign involution, params/2, generic anti-mass 0.5):
+prediction — no spontaneous structure (z < 3); projected init
+~57-class (same mass fraction as R2's complex cut); arm b
+recovers >= 62 at anti-mass < 0.05 (the Z2 commutant is a
+LOOSER constraint than complex — block-checkerboard, no
+rotation coupling — so healing should be at least as cheap).
+S3 CIRCULANT C8 (shifts within 8-blocks, params/8, generic
+anti-mass 0.875): the audacious rung — 87.5% mass deletion is
+past the measured holography edge (S1: breaks between 50% and
+75%), so projected init should CRATER (< 22/120). READ: arm b
+gate at anti-mass < 0.05 is the result either way — >= 58
+(within seed-noise territory of the ladder trend 65/64/61)
+means dense gates of a trained crystal RETROFIT into
+conv-structured form at 8x sharing; far below extends the
+ladder toll curve (2x:-1, 4x:-4, 8x:-?) and locates the
+symmetry axis's capacity wall. Arm a prices restoration force
+per group. n=1/arm.
