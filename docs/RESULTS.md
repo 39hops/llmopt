@@ -8456,3 +8456,22 @@ at n=2 (magnitude/rational: tax 0) v n=1 (phase/G5: tax -4);
 the STE-latent doctrine line (latent gates mean alpha=none)
 is now scar-filed. Morning review complete: night-28's ledger
 is clean end to end.
+
+## PRE-REG: rotational snap R1 — the commutant instrument (2026-07-28, before the read)
+
+Spec 2026-07-28-next-session A. For weight W (out x in), complex
+structures J_out/J_in (block rotations under a channel pairing)
+split W = W_c + W_a exactly: W_c = (W - J_out W J_in)/2 commutes
+(W_c J_in = J_out W_c, the rotational part), W_a anti-commutes.
+INSTRUMENT: anti-commutant mass fraction ||W_a||^2/||W||^2,
+per-layer FFN gate matrices. Arms: adjacent pairing + 20
+random-pairing null seeds on real crystals {wfloor, s2, muon
+d256; 19m}; POSITIVE CONTROL: cplx_none + cplx_G5 under their
+NATIVE half-split pairing (complex-FFN is complex-linear by
+construction — must read ~0). PREDICTIONS: (1) control ~0
+(instrument validation); (2) real-born crystals sit INSIDE the
+random-pairing null band at ~0.5 mass — no spontaneous
+rotational structure at any tested pairing (the euler-read null,
+upgraded); (3) any crystal below its null band by >3 sigma of
+the null spread = hidden rotational subspace found (would be
+new). Hungarian-optimized pairing banked as v2 if (3) fires.
