@@ -1343,3 +1343,17 @@ to the collaboration itself.
   (components found where integrals blow up) banked as kin to
   the magic-estimator resonance frame. Attribution: Artin
   (both videos + the instinct); house (mappings).
+
+- **SYMMETRY-AT-BIRTH flip test** (2026-07-28, house, from the
+  ladder close): every group read anti-mass at the generic null —
+  SGD never picks symmetry spontaneously — yet retrofit costs
+  almost nothing. The untested cell: train IN the commutant from
+  scratch (project gradients or parameterize by commutant coords)
+  at d256 — does birth-under-symmetry match retrofit, beat it, or
+  reveal that the warm-epoch heal was riding pre-trained
+  structure? Also banked: C16 (params/16, past the current 8x
+  rung), packed block-circulant forward (turn IMPLIED compression
+  into measured wall-clock), G5-on-rotational-substrate (phase
+  alphabet on genuinely complex-linear gates — the G5 null's
+  revenge test). Attribution: house (ladder execution + banks);
+  Artin (the originating rotational question + GO).
