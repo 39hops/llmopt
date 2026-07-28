@@ -312,3 +312,30 @@ honest negatives booked with the same care as wins.
   neighbors) — every intervention expresses there first; read it
   first. Companion law: prediction pays only where variance
   lives. (07-27)
+
+## The calibration program (07-28, one night)
+
+- **Near-tie density is a measurable model quality**: flips-per-
+  token under a Q=16 rational snap (400 rows, ~1 min) rank-
+  predicts full snapped-gate damage at rho 0.883 across 6
+  crystals — a 100x-cheaper robustness instrument. Snap operators
+  are instruments: a scaled vs direct snap is a different lattice
+  (the v1/v2 lesson). (07-28)
+- **Pick-trained crystals are near-deterministic over the valid
+  set**: >97% of valid mass on ONE of ~7 engine-enumerated moves
+  (0.06 bits vs 2.85 available), and determinism RISES with
+  capability. The branching-entropy floor is unmeasurable because
+  the training regime never builds the distribution; calibration
+  training on the forward crystal is a diagnostic, not a lever
+  (parity at matched-dose replacement — the altpairs dilution tax
+  was share, not labels). Calibration belongs to the scorer.
+  (07-28)
+- **Generation is tie-scarce; damage is tie-amplification**:
+  near-tie decode steps (<0.02 margin) fire ~once per 30 chains
+  — branching has nothing to grip. Hardware decides frontier
+  probes not through tie-dense generation but through rare ties x
+  long horizons (the snap-anatomy damage law, confirmed from the
+  decode side). The economics finding underneath: greedy decode
+  captures 90% of the 8-wave's solves at 12% of its tokens —
+  greedy-first, wave-on-retry is the farm/probe speed candidate.
+  (07-28)

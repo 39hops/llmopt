@@ -930,7 +930,14 @@ to the collaboration itself.
   battery = the L9/frontier band where ties concentrate. BANKED
   for slotting; cheapest pilot = the ladder's own d256 cells
   (margins are free at every step). Attribution: Artin (riff);
-  house (near-tie identification + design).
+  house (near-tie identification + design). **RUN 2026-07-28
+  (calibration rung 4): NULL BY TIE-SCARCITY — generation-time
+  margins <0.02 fire ~once in 30 chains (median margin 8.6);
+  judge = greedy 18=18. The economics finding that replaced it:
+  greedy captures 90% of wave-8's solves at 12% of tokens
+  (greedy-first, wave-on-retry = the adoption candidate). The
+  device-dependence paradox resolves as rare ties x 12-ply
+  butterfly amplification, not tie-dense generation.**
 
 - **"Oneshot is quick and doesn't wander but it's cheating — what
   if we combined the different data and let the model choose how
