@@ -9005,3 +9005,38 @@ matryoshka needs the JOINT LOSS (CE(W) + CE(P(W)), STE through
 projection) — rung 1 is the real experiment, and the corner
 verdict's slack-budget law predicts its price. Banked for a
 session with a training window.
+
+## ATLAS-2 LYAPUNOV VERDICT: CHAOTIC MIXING WITH CAPABILITY DEGENERACY — and the energy law transplants (2026-07-28 night)
+
+Nine births + six twin comparisons (d64/3ep, atlas peak cell):
+| pair | disagree (fine obs) | gates |
+|---|---|---|
+| base vs e6 (eps 1e-6) | 0.0164 | 64 v 64 |
+| base vs e4 (1e-4) | 0.0175 | 64 v 60 |
+| base vs e2 (1e-2) | 0.0169 | 64 v 62 |
+| base vs seed7 (independent) | **0.0210** | 64 v 55 |
+| hi(x4) twins @1e-4 | **0.0636** | 3 v 4 |
+| lo(x0.25) twins @1e-4 | 0.0155 | 57 v 55 |
+VERDICTS: (1) **Pre-reg read (1) CHAOTIC fires: disagreement is
+FLAT across FOUR orders of magnitude of eps (1.64/1.75/1.69%)
+at ~78% of the independent-seed saturation (2.10%)** — a 1e-6
+perturbation and a 1e-2 perturbation land equally far apart:
+training mixes exponentially and erases the perturbation
+scale. The double-pendulum geometry DOES transplant — to
+initial conditions, exactly where Artin pointed, and exactly
+where the parameter atlas nulled. (2) **With capability
+DEGENERACY: every base-energy twin gates plateau-level
+(64/64/60/62)** — trajectories diverge to DIFFERENT functions
+of EQUAL quality. The attractor is a quality shell, not a
+point: chaos in function space, order in capability space
+(kin: the weight-reader doctrine's many-arrangements-one-
+function, now measured dynamically). (3) **The ENERGY LAW
+fires on the fine observable, monotone: 0.0155 (x0.25) < ~0.017
+(x1) < 0.0636 (x4)** — divergence RATE rises with init energy,
+the 2swap energy-dependence measured in a training system;
+this leg is NOT budget-confounded (it is a rate, not a
+capability). The x4 arms' 3-4/120 gates stay FENCED as
+budget-confounded (smooth monotone loss descent from a distant
+start — basin distance, not measured instability; refinement
+arms banked in RIFF-LEDGER). Fences: d64/cuda, one cell,
+disagreement format-bound to gen-4 teacher forcing, n=1/pair.
