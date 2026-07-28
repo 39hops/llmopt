@@ -1260,3 +1260,37 @@ to the collaboration itself.
   matches the ground truth's operator before any battery"
   belongs next to the substrate fence. Attribution: house;
   Artin commissioned the reread.
+- **2026-07-28 (Artin): THE EXACT WAVE-MODEL — exact layer
+  algebra x the pincer's quantum-distribution frame x LLMUE, one
+  program.** Raw ask: "fully-exact layer algebra, slot it in;
+  bring in the pincer/quantum wave model — the quantum
+  distribution over a math equation; LLMUE included with the
+  exact precision." House composition, and it is sharper than
+  its parts: (1) the snap anatomy + device-dependence results
+  say frontier decisions are near-tie superpositions currently
+  COLLAPSED BY HARDWARE ROUNDING (18/24 cuda v 9/24 MPS, same
+  checkpoint) — an uncontrolled measurement apparatus; (2)
+  FX-V1 exact inference (bit-identical logits by construction)
+  makes the collapse DETERMINISTIC — the apparatus becomes
+  lawful, near-tie flips stop being device coin-flips and
+  become reproducible facts; (3) the pincer's distribution
+  readout (engine enumerates the legal set = the superposition;
+  crystal supplies amplitudes; oracle collapses) then runs on
+  an EXACT wave: amplitudes computed in exact arithmetic,
+  readout mass-ordered (R0b's 1.7x), scored by the S2-dist
+  scorer; (4) LLMUE is the transport — metabolic sessions
+  streaming on the exact substrate, where the RNS optimizer
+  rung (d2: outcome-identical to fp64 masters) makes the
+  training step deterministic too. END STATE NAMED: a
+  closed-system model whose forward, decision collapse, and
+  weight update are all exact/deterministic — "the quantum
+  distribution over a math equation," measured, replayable,
+  device-free. RUNGS (cheap-first): (i) E3 paired arm when
+  FX-V1 exact mode lands (the precision doctrine's sole
+  reopening — sub-sigma instrument); (ii) d2 endpoint
+  verification (queued, 3080 window); (iii) exact-mode
+  distribution readout on the S1 frontier battery (does
+  exactness change ANY near-tie amplitude read?); (iv) exact
+  metabolic session (FX-V1 forward + RNS step) — LLMUE's
+  deterministic form. Attribution: Artin (the composition ask);
+  house (mechanization + the lawful-apparatus reading).

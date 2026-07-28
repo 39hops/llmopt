@@ -8051,3 +8051,26 @@ point. Rung-2's free finding sharpens the stakes: H_valid
 DESCENDS with capability under pick-training (control 0.057
 bits = most deterministic) — policy sharpness correlates with
 the gate, so flattening has measured priors against it.
+
+## AMENDMENT (target: DISAGREEMENT #2 VERDICT 2026-07-24): "bit-identical" scoped to what the instrument measured; endpoint verification queued (2026-07-28)
+
+Artin's audit ask ("what came back bit identical?") re-read the
+d2 instrument (scratch/metabolic_d2.py): the arms were compared
+on (a) NET FLIP COUNT vs birth signs (132,566 = 132,566), (b)
+the resolved-wall set, (c) the proxy gate — aggregate
+deployed-function readouts. The instrument did NOT compare the
+two endpoint state_dicts element-wise, nor the flip SETS
+(locations). Count-equality at identical seeds/food/optimizer
+with a sub-1e-14 accumulation delta makes set-equality the
+overwhelmingly likely reading, but as booked, "bit-identical
+outcomes" means COUNT+OUTCOME-identical, not proven
+weight-identical. VERIFICATION QUEUED (next 3080 window, CPU,
+minutes): metab_d2_fp64.pt vs metab_d2_dd.pt — (1) element-wise
+state_dict equality; (2) deployed-lattice flip-SET equality
+(ternary sign maps); (3) the NEW rung-1 calibration probe on
+both (flips/token + margin fingerprint — identical near-tie
+geometry = the strongest cheap corroboration the 07-24 era
+didn't have). Any element-wise difference found would NOT
+overturn the capability verdict (outcomes measured equal) but
+would re-scope the "nothing below fp64's floor reaches the
+deployed function" wording to its outcome form.
