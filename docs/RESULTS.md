@@ -8834,3 +8834,32 @@ as follow-up, kept out to hold this single-variable. Fences:
 same device/diet/steps all cells; disagreement is format-bound
 to gen-4 teacher forcing; n=1 per cell (this is a map, sigma
 priced by the seed-7 column).
+
+## STABILITY ATLAS VERDICT: A SMOOTH PLATEAU WITH ONE CLIFFED CORNER — no chaos, no islands; the double-pendulum instinct fails for parameters (2026-07-28)
+
+Full 8x4 LR x BS map (d64/gen-4/3ep, seed 1) + 4 seed-2 cells.
+The map: gate rises smoothly from the starved corner (lr1e-4 x
+bs64 = 1/120) to a BROAD plateau — everything lr 8e-4..1.2e-2
+at bs8/16 sits in the 56-65 band (peak lr1.5e-3/bs8 = 65 —
+matching the d256 comparator at d64!). Seed-2 deltas: 3, 5, 4,
+0 => sigma ~3.5, and every adjacent-cell step off the plateau
+is within ~sigma EXCEPT the far corner: lr1.2e-2 crosses
+bs16 -> bs32 as 56 -> 26 (~8 sigma) — a genuine CLIFF, entering
+the map exactly at the (highest LR x largest batch) corner.
+PRE-REG READINGS: (1) SMOOTH — confirmed nearly everywhere.
+(2) CHAOTIC BAND — ABSENT: no interleaved good/bad cells, no
+islands anywhere. (3) The known cliff appears as a BOUNDARY —
+confirmed, at the far corner only, sharp (one cell) but with no
+evidence of fractal structure at this resolution. VERDICT: at
+this scale, capability-over-hyperparameters is a smooth
+landscape with one instability boundary, NOT a chaotic map —
+the double-pendulum geometry does NOT transplant to PARAMETER
+space. (Artin's follow-up standing: chaos lives in INITIAL
+CONDITIONS, not parameters — atlas-2 Lyapunov leg pre-reg'd
+and now running on the same substrate.) Curiosities kept
+honest: small batch TOLERATES high LR better than large batch
+here (bs8 gates 58 at lr1.2e-2 where bs32 craters) — with the
+fixed-epoch confound noted (larger BS = fewer updates);
+lr0.006/bs16 62 > bs8 60 is within sigma, not texture. Fences:
+d64/cuda lineage, gate-only coloring, n=1 map + 4-cell sigma
+column; checkpoints deleted (map cells) per script.
