@@ -8307,3 +8307,19 @@ walls. House derivation.successors remains the SEMANTIC
 REFERENCE for house-set replication consumers (R1b true-move
 replay, gate semantics) and sympy remains oracle-of-record at
 final verification. Farmers migrate at their next touch.
+
+## MUON @ 3EP STANDARD SCHEDULE: 43/120 — the crater was NEVER the streaming regime; Muon-class updates are gate-toxic here at any tested schedule (2026-07-28 night)
+
+{3:13,4:3,5:15,6:5,7:7} @ 39.91% v wfloor comparator 65 (same
+construction, all-AdamW). Pre-reg reading "<= 55 = gate-toxic"
+FIRES with 12 solves to spare. The regime-exoneration hypothesis
+is DEAD: standard 3-epoch OneCycle-AdamW-head + Muon-interior
+(ns5, LR 0.01, momentum 0.95) loses -22 where single-pass lost
+-11-to--35. Muon's ledger at this scale: 10 (.02/1P) / 34
+(.01/1P) / 43 (.01/3ep) — monotone in dose/schedule gentleness,
+never within 20 of comparator. The null-revival meta-lesson
+books honestly: this mix was worth one cell and the answer is
+the ORIGINAL verdict was under-scoped, not over-scoped (it
+generalizes ACROSS schedules). Fences: naive transplant (shared
+LR schedule multipliers via warmup only, one momentum, d256/MPS);
+published-Muon-scale tuning stays possible and stays off-priority.
