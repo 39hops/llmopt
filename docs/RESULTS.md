@@ -8243,3 +8243,37 @@ named => farmers/enumeration move to the axiom bridge (Artin's
 axiom-only directive), sympy stays oracle-of-record at final
 verification; soundness failure => bridge stays shadow, per-state
 audit relay.
+
+## NIGHT-28 STAGE 1: d2 endpoints verified (the tail's footprint = 321 fp32 last-bits, ZERO decisions); crown re-baseline EXACT; greedy-first fails its token bar (2026-07-28 night)
+
+1. **d2 ENDPOINT VERIFICATION — the amendment resolves with the
+   most precise wording yet**: metab_d2_fp64 v metab_d2_dd are
+   NOT strictly weight-identical — 9 tensors / 321 elements
+   differ at max |delta| 3.7e-9 (the dd tail's 1.06e-14-class
+   accumulation surfacing as last-bit fp32 cast flips) — and
+   NOTHING ELSE differs: deployed ternary flip-set IDENTICAL
+   (0 of 50.3M sign cells), calibration-probe fingerprints
+   IDENTICAL to all printed digits (flips/tok 0.36556 both,
+   margins equal). The precision hierarchy is now measured
+   element-wise end-to-end: the exact tail's entire causal
+   footprint on a 90M-param crystal is 321 sub-ULP latent cast
+   flips and zero deployed decisions. The 07-24 verdict upgrades
+   from count+outcome-identical to DEPLOYED-FUNCTION-IDENTICAL,
+   proven at the weight level; capability claim unchanged and
+   now unassailable at this instrument.
+2. **CROWN RE-BASELINE: 76/120 @ 70.42 — EXACTLY the booked
+   number, zero drift.** The d256 tree-drift (-3) does NOT
+   transport to the production lineage (45M-class, cuda,
+   gen6_grown): the crown's standing comparisons remain valid
+   as-is. Audit closes clean.
+3. **GREEDY-FIRST ADOPTION: FAILS its token bar, honestly** —
+   gfirst 74/120 @ 29,724 tokens v wave-8 75/120 @ 42,113
+   (solves leg PASSES at -1; tokens = 71% of wave, bar was
+   <= 40%). Mechanism: with per-ply wave-retry, every mid-chain
+   greedy miss re-buys the full wave — on 12-ply champion
+   chains most chains miss somewhere, so the retry eats the
+   saving (last night's 12% figure was PURE greedy on 30 short
+   probes, no retry). NO-ADOPT as pre-registered. BANKED
+   refinement (one cell, if wanted): ladder retry (greedy ->
+   k=2 -> k=8) instead of greedy -> k=8 — the retry cost is
+   the whole gap.
