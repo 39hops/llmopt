@@ -182,12 +182,15 @@ honest negatives booked with the same care as wins.
   the capability lever is near-tie density (calibration) and
   verification, not digits. (07-27)
 - **Born-rational**: training *on* the exact lattice from step 0
-  (STE, weights = s·p/q, q≤6) beat its fp32 control +5 at the
-  single-seed bar, deploy tax ~1 — exactness rides free on
-  discrete-ladder regularization (the P2 lineage), and snap-back
-  is lossless by construction. Born-on-lattice beats post-hoc
-  snapping ~2x in bits (5.5 vs 10.5). Single seed; replication
-  in flight at booking time. (07-27)
+  (STE, weights = s·p/q, q≤6) is **capability-free across two
+  seeds** (+5, then −2: parity; the seed-1 win demoted by its
+  own replication) — every weight an exact small fraction from
+  birth at zero measured cost vs fp32, deploy tax ~1, snap-back
+  lossless by construction. Born-on-lattice still beats post-hoc
+  snapping ~2x in bits (5.5 vs 10.5). Completes the set:
+  exactness is free at birth, inference (integer twin), and the
+  training step (disagreement #2) — a determinism/format lever,
+  never a capability lever. (07-27/28)
 
 ## Data and diet laws (07-22 → 07-24)
 

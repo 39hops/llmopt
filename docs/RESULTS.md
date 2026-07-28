@@ -7843,3 +7843,28 @@ near-ties) is now a measurable model QUALITY — a crystal that
 tolerates coarse exact lattices is better calibrated at its
 decision points. Candidate instrument: flips-per-token under
 Q=16 as a cheap calibration probe.
+
+## BORN-RATIONAL SEED-2: −2 — the +5 DEMOTES TO PARITY; exactness is free, not profitable (2026-07-28 ~1AM)
+
+Seed-2 paired arms (same recipe/diet/instrument, BIRTH_SEED=2):
+control 62/120 @ 63.78 {3:21,4:6,5:17,6:7,7:11}; RAT_Q=6 deployed
+60/120 @ 61.00 {3:20,4:5,5:16,6:7,7:12}. Pre-reg band [−2,+2]
+FIRES: **the verdict demotes to PARITY.** Two seeds: +5, −2 —
+mean +1.5, noise-class; the seed-1 +5 was a fluctuation-grade
+draw (the sigma doctrine working exactly as designed — the >=5
+single-seed bar admitted it provisionally, the replication
+demoted it). The L4-doubling signature also fails to replicate
+(s2 L4: 5 v 6). WHAT STILL BOOKS, and it is not nothing: **the
+exact-lattice birth is CAPABILITY-FREE across two seeds** —
+every weight exactly s*p/q (q<=6, ~5.5 bits/wt) from step 0,
+deploy tax ~1, at zero measured cost vs fp32. Exactness rides
+free; it does not pay. This matches the P2/M5 lineage read
+(discrete ladders sit at-or-near fp32, wins inside noise) and
+the whole program's shape: exactness is a determinism/
+auditability/format lever, never a capability lever — now
+measured at the BIRTH layer too, completing the set (inference:
+integer twin parity; training-step: disagreement #2 bit-identity;
+birth: this). FINDINGS.md entry updated same booking. Follow-ups
+unchanged in priority: GPTQ-rational, mixed-Q, RNS wall rung;
+no seed-3 owed (parity at n=2 with both signs is settled-class
+for a free lever).
