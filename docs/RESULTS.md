@@ -8763,3 +8763,46 @@ penalty starts earning its keep at C8. Fences: gates-only,
 d256/MPS, n=1/arm, comparator 65, artifacts
 sym_{z2,circ8}_{a,b}.pt. Banked: C16 (params/16) extension;
 actual packed conv forward (param-compression stays IMPLIED).
+
+## PRE-REG: SYMMETRY LADDER S2 — complexification control (2026-07-28, before the run)
+
+Construction: double every linear of wfloor d256 -> d512
+(heads 4->8, head_dim fixed 64 so RoPE is per-head identical;
+emb columns [W|W]; qkv/o/gate/up/down block-diag W(+)W; head
+[W/2|W/2] so logits match exactly in real arithmetic; norm
+gains duplicated). The doubled gates commute with J_half BY
+THEOREM — script asserts anti-mass = 0 before gating. READS:
+gate = 65 => the exactness answer lands empirically (exact
+rotational conversion EXISTS at 2x width; the -8/-1 tolls of
+the 1x rungs are the price of staying at-width). AMENDED BAR
+vs spec (booked before the run): fp32 reductions over 2d
+reorder sums (rmsnorm mean, matmul accums), so last-bit logit
+deviations can flip coin-flip ties — house fp-near-tie
+doctrine. A small delta with eager logit margins <= ~0.02 at
+divergence = tie, not bug; anti-mass != 0 or margin-large
+deltas = instrument bug, fix before booking. d256->512/MPS,
+gates-only claim, comparator 65, no training (pure control).
+
+## SYMMETRY LADDER S2 VERDICT: EXACTLY 65 — exact rotational conversion exists at 2x width; the ladder closes (2026-07-28)
+
+scratch/complexify_control.py: wfloor doubled d256->d512
+(W(+)W everywhere, head [W/2|W/2], heads 4->8 at fixed
+head_dim 64). Theorem assert passed: all 8 doubled gates
+anti-mass < 1e-12 vs J_half. Gate: **65/120 @ 59.91 —
+EXACTLY the comparator, no fp tie flipped.** VERDICTS:
+(1) Artin's exactness question is answered empirically: the
+-8 projection cost at 1x was GENUINE non-rotationality, not
+instrument error — an EXACT rotational form of the same
+function exists, at 2x width, gate-identical. (2) The trade
+table is complete: exact-at-2x-width (cost: 4x params) vs
+healed-at-1x (cost: ~1 solve, params/2). Compression and
+exactness pull opposite ways on the symmetry axis, and both
+endpoints are now measured. (3) THE SYMMETRY LADDER IS
+COMPLETE in one session: anti-mass null at every group;
+conversion toll 2x:-1, 4x:-4, 8x:-6; holography edge
+structure-dependent; commutant stability weakens with group
+size; exact embedding verified. Incidental scar fixed:
+rot_commutant.py lacked a __main__ guard (import re-ran the
+R1 sweep) — guarded. Banked: C16, packed conv forward,
+symmetry-at-birth (train IN the commutant from scratch vs
+retrofit — the R1-null flip test).

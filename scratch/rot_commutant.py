@@ -51,6 +51,9 @@ def gates(sd, layers):
             for li in range(layers)]
 
 
+if __name__ != "__main__":
+    REAL, CPLX = {}, {}  # imported for helpers: skip the R1 sweep
+
 for name, (path, L) in REAL.items():
     sd = torch.load(path, map_location="cpu", weights_only=True)
     ws = gates(sd, L)
