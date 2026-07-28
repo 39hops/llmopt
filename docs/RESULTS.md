@@ -8373,3 +8373,31 @@ d256 zoo at Q<=16 (its knee), converging by Q=64 (its measured
 parity point). A crossing = the fingerprint carries MORE
 information than any single-Q read (banked as the instrument's
 justification); no crossing = one Q suffices, curve retired.
+
+## FLIPS-VS-Q FINGERPRINT: crossings EXIST — the curve carries more than any single Q; muon's anomaly is structural (2026-07-28 night)
+
+| crystal | Q4 | Q8 | Q16 | Q32 | Q64 |
+|---|---|---|---|---|---|
+| wfloor | 1.000 | 0.416 | 0.054 | 0.018 | 0.0075 |
+| s2 | 0.999 | 0.441 | 0.070 | 0.017 | 0.0059 |
+| stream4 | 0.984 | 0.622 | 0.057 | 0.021 | 0.0075 |
+| muon | 0.924 | **0.139** | 0.048 | 0.016 | 0.0057 |
+| 19m | 1.000 | 0.777 | 0.066 | 0.026 | 0.0102 |
+VERDICTS: (1) monotone-in-Q CONFIRMED everywhere (Q4 ~1.0 =
+saturation floor, probe ceiling noted). (2) **Ordering is NOT
+Q-stable — prediction 2 FAILS, which is the instrument's
+justification firing**: s2/stream4/19m cross between Q8 and Q16
+(s2 0.441 < stream4 0.622 at Q8; s2 0.070 > stream4 0.057 at
+Q16), so the CURVE is a real fingerprint, not a rescaled scalar;
+the flips-vs-Q profile joins the rarity curve as a standing
+per-crystal instrument. (3) The 19m cracker leads at Q8/Q32/Q64
+but is pipped by s2 at exactly Q16 — single-Q reads can misrank
+neighbors (R1's rho .883 was rank-robust in aggregate, lucky at
+pairs). (4) THE MUON ANOMALY IS STRUCTURAL: the weakest crystal
+(gate 34) is by far the most snap-robust at coarse Q (0.139 v
+0.42-0.78 at Q8) — consistent with R1's muon gate RISING under
+snap (+4): Muon's orthogonalized updates build a lattice whose
+decisions sit far from ternary-class boundaries while being
+WRONG more often. Robustness and capability are separable axes,
+measured. Fences: 400-row probe, one device, direct-snap
+operator; gates not re-run at new Q values (fingerprint-only).
