@@ -117,6 +117,17 @@ elif FORMAT == "backpairs":
     # roles flipped: later state as Current, predecessor as Step.
     texts = [f"Current: {r['nxt']}\nHints: none\nStep: {r['cur']}\n"
              for r in rows]
+elif FORMAT == "revpairs10":
+    # low-dose backward ration (pre-reg 2026-07-28 night): 90/10
+    # forward/reversed at matched total dose — the 50/50 cell's
+    # -18 direction tax at its untested low dose ("stupid corner").
+    rnd = random.Random(9)
+    idx = list(range(len(rows)))
+    rnd.shuffle(idx)
+    cut = len(idx) // 10
+    texts = [pair_text(rows[i]) for i in idx[cut:]]
+    texts += [f"Current: {rows[i]['nxt']}\nHints: none\n"
+              f"Step: {rows[i]['cur']}\n" for i in idx[:cut]]
 elif FORMAT == "revpairs":
     # dual-direction crystal (reverse-LLMUE bank): 50/50 forward +
     # reversed pairs at matched total dose; reverse rows spell the

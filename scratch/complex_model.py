@@ -58,10 +58,35 @@ def gn_quantize(wr: torch.Tensor, wi: torch.Tensor, phases: int):
     return qr, qi
 
 
+def zi_quantize(wr: torch.Tensor, wi: torch.Tensor, Q: int = 6):
+    """Gaussian-integer rational lattice (RIFF 2026-07-27, Artin):
+    re and im EACH snap to s*(best p/q, q<=Q) — weights in
+    (s/q')*Z[i], "completely whole" complex numbers. Shared
+    per-tensor scale s = component absmean (matches RAT_Q's
+    convention on the real substrate)."""
+    s = (wr.abs().mean() + wi.abs().mean()).div(2).clamp(min=1e-8)
+
+    def snap(w):
+        v = w / s
+        best = torch.round(v)
+        err = (v - best).abs()
+        for q in range(2, Q + 1):
+            cand = torch.round(v * q) / q
+            e = (v - cand).abs()
+            m = e < err
+            best = torch.where(m, cand, best)
+            err = torch.where(m, e, err)
+        return best * s
+
+    return snap(wr), snap(wi)
+
+
 def quantize_pair(wr: torch.Tensor, wi: torch.Tensor):
     """Route (re, im) through the alphabet named by _ALPHA."""
     if _ALPHA == "G5":
         return g5_quantize(wr, wi)
+    if _ALPHA == "ZI":
+        return zi_quantize(wr, wi)
     if _ALPHA.startswith("G"):
         return gn_quantize(wr, wi, int(_ALPHA[1:]) - 1)
     return wr, wi

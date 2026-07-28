@@ -45,7 +45,8 @@ def rat_snap(sd, Q):
 
 @torch.no_grad()
 def flips_per_token(ckpt, d, layers, ffn, heads, Q=16, dev=None):
-    dev = dev or ("mps" if torch.backends.mps.is_available() else "cpu")
+    dev = dev or ("mps" if torch.backends.mps.is_available() else
+                  "cuda" if torch.cuda.is_available() else "cpu")
     tok = MathTokenizer()
     rows = load_rows(gen4=True)
     random.Random(PROBE_SEED).shuffle(rows)

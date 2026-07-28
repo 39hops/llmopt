@@ -8183,3 +8183,44 @@ VERDICTS, against the pre-reg:
    confirmed from the decode side.
 Fences: n=30 states, one crystal (same-day 62-class), one
 margin threshold (0.02); sidecar logs/pp_judge_decode.jsonl.
+
+## PRE-REG: NIGHT-28 QUEUE — audits + four null-revival mixes + adoption cell (2026-07-28, before any run; Artin GO, 3080 open to ~5PM EST 07-29)
+
+3080 chain (scratch/night_28.sh) + Mac chain (night_28_mac.sh);
+jobs independent, markers success-only.
+1. **d2 endpoint verification** (audit): state_dict + flip-set +
+   probe fingerprints on metab_d2_{fp64,dd}.pt. PREDICTION
+   (house): identical on all three (the count+outcome equality
+   was set-equality all along). Any difference re-scopes the
+   07-24 wording per the standing amendment, capability verdict
+   untouched.
+2. **Production crown re-baseline** (audit): gen6_grown re-gated
+   on today's tree, cuda. PREDICTION: 76 +/- sigma 2.5; drift
+   >= 5 = the d256 tree-drift (-3) has a production sibling and
+   every standing crown comparison gains a same-day-anchor rule.
+3. **Greedy-first adoption cell**: full battery, gen6_grown,
+   wave-8 vs greedy-first-wave-retry. BAR (adoption): gfirst
+   >= wave-3 solves at <= 40% tokens => adopt for farm/probe
+   loops (gates keep wave-8 for lineage continuity).
+4. **S4 vs M4 at 6ep** (dose revival): does the discrete-parity
+   dose close or widen the 2-bit zero gap (3ep: M4 61 v S4 58)?
+   S4-6ep >= M4-6ep => zero worthless at dose (law revision);
+   gap >= 5 => zero PAYS at dose (first bookable zero premium).
+5. **P2 @ 45M-class, 6ep** (winner x width): comparators
+   45M-gen4 ternary-6ep 69 / fp32-3ep 69. HOUSE PREDICTION:
+   ties 69-class (W* ~ 1/bits shrinks P2's edge at width);
+   P2 >= 74 (bar 5, single-seed cuda) => alphabet choice pays
+   at W* too and the bracket reopens at width.
+6. **Muon @ 3ep standard schedule** (regime revival, Mac d256):
+   comparator wfloor 65. >= 62 => the streaming crater was the
+   REGIME, Muon exonerated at standard schedules; <= 55 =>
+   Muon-class updates are gate-toxic here at any schedule.
+7. **revpairs at 10% ration** (stupid corner, Mac d256/1P):
+   comparator pairs@1P 57. >= 60 => low-dose backward pays
+   (direction is a spice, not a diet); 54-59 neutral; <= 53 =>
+   the direction tax has no safe dose.
+8. **Z[i] born-rational** (mix: exact lattice x complex interior,
+   Mac 19M/3ep): comparators cplx_none 63 / G5-dep 62 / fp32 64.
+   HOUSE PREDICTION: parity-class (both parents capability-
+   neutral); latent-vs-dep tax ~4-class expected; >= 68 latent
+   would be the first composed-lever WIN of two neutral parents.
