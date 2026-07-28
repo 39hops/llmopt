@@ -1237,3 +1237,26 @@ to the collaboration itself.
   1.4136 (perm 1.2947=1.2947, rot 0.434=0.434); same-seed
   cross-arm 0.388 = STE stays in its fp32 twin's basin. Cell
   CLOSED (RESULTS 2026-07-28).
+- **2026-07-28 (house, from the full-corpus reread during the
+  calibration program)**: four banks. (1) **S2-dist as the
+  judge**: rung-4 judge-collapsed decoding's "cheap judge" slot
+  has a measured winner already on disk — scorer_s2_dist.pt
+  (best graded Spearman .497, beat length-only) can arbitrate
+  near-tie branches at ms cost where the oracle costs more;
+  compose before inventing a new judge. (2) **The flips-vs-Q
+  curve**: R1's probe at one Q rank-predicts robustness (rho
+  .883); the full curve (flips/token vs Q in {4,16,64,256}) is
+  a per-crystal calibration FINGERPRINT — candidate standing
+  instrument next to the rarity curve. (3) **The policy-
+  sharpness law (candidate)**: H_valid over the enumerated valid
+  set DESCENDS with capability under pick-training (0.078 muon
+  -> 0.057 control, rung-2) and altpairs' flattening cost -6 —
+  sharpness may BE part of capability on the forward crystal;
+  calibration lives in the scorer (pincer doctrine, third leg).
+  (4) **Probe-before-instrument doctrine candidate**: tonight's
+  R1 v1/v2 (scaled vs direct snap) is the second
+  instrument-mismatch catch in two days (E4 prior-arm was the
+  first) — "snap operators are instruments; verify the operator
+  matches the ground truth's operator before any battery"
+  belongs next to the substrate fence. Attribution: house;
+  Artin commissioned the reread.

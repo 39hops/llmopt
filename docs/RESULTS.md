@@ -8027,3 +8027,27 @@ class H_valid 0.057 bits, delta 0.0037. Dose reading free:
 dose-control vs control isolates pure 4x-replication exposure.
 Null reading pre-declared: calibration is a diagnostic, not a
 lever; rung 4 unaffected.
+
+## AMENDMENT to PRE-REG distribution rows 3-arm: the altpairs precedent applies — house prediction updated before any birth fires (2026-07-28)
+
+The full-RESULTS reread surfaced what the spec's design pass
+missed: ALTPAIRS (2026-07-26) already measured the nearest
+neighbor of rung 3 — verified-alternative successor rows ADDED at
+14% share cost -6 gate while teaching the landscape (12x entropy),
+and the pincer program booked its consequence ("calibration
+belongs to the backward SCORER, not the forward crystal").
+Rung 3's design differs in three named ways: (a) REPLACEMENT at
+matched total rows, not added share; (b) the dose-control arm
+isolates the label distribution exactly; (c) MarkovPrior
+weighting preserves the policy ORDERING where altpairs spread
+uniformly. UPDATED HOUSE PREDICTION (replacing the pre-reg's
+neutral stance): dist <= dose-control at the gate (the altpairs
+dilution class), with the pre-registered probe delta (fewer
+near-ties) as the novel readout that altpairs never measured.
+A gate WIN would book as "replacement + prior-weighting fixes
+the dilution tax" — a real result against precedent. A loss
+confirms the scorer-owns-calibration doctrine at a second design
+point. Rung-2's free finding sharpens the stakes: H_valid
+DESCENDS with capability under pick-training (control 0.057
+bits = most deterministic) — policy sharpness correlates with
+the gate, so flattening has measured priors against it.
