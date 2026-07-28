@@ -1232,4 +1232,8 @@ to the collaboration itself.
   canonicalization above the ancestry floor). Prediction
   (skeptical, on record): both ~sqrt(2), no closure — the lattice
   kills continuous gauge but seed-lottery basin assignment
-  dominates distance. Books either way.
+  dominates distance. Books either way. **MEASURED 2026-07-28:
+  NULL exactly as predicted** — fp32 pair 1.4136 v rat pair
+  1.4136 (perm 1.2947=1.2947, rot 0.434=0.434); same-seed
+  cross-arm 0.388 = STE stays in its fp32 twin's basin. Cell
+  CLOSED (RESULTS 2026-07-28).

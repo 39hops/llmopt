@@ -7868,3 +7868,27 @@ birth: this). FINDINGS.md entry updated same booking. Follow-ups
 unchanged in priority: GPTQ-rational, mixed-Q, RNS wall rung;
 no seed-3 owed (parity at n=2 with both signs is settled-class
 for a free lever).
+
+## GAUGE-SLACK 4-CRYSTAL CELL: NULL exactly as pre-registered — the lattice does NOT shrink gauge slack; ancestry dominates every lens (2026-07-28 ~2AM)
+
+The cell armed on s2 landing (RIFF-LEDGER 07-27 night, skeptical
+prediction on record: "both ~sqrt(2), no closure"). Instrument =
+the 07-26 ancestry lens verbatim (per-layer FFN gate matrices,
+raw / Hungarian-perm / neuron-space Procrustes normalized-Fro;
+scratch/gauge_slack_rat.py). READING: fp32 seed-pair raw 1.4136 /
+perm 1.2947 / rot 0.4341 vs rat-Q6 seed-pair raw 1.4136 / perm
+1.2947 / rot 0.4339 — IDENTICAL to 3-4 decimals at every lens.
+**The prediction fires exactly: lattice training kills continuous
+gauge in principle, but seed-lottery basin assignment dominates
+functional+gauge distance so completely that the canonicalization
+is invisible.** No closure; distance remains an ancestry
+instrument (the 07-26 verdict extends to lattice-born crystals).
+Bonus control: same-seed cross-arm pairs (fp32_sN vs rat_sN) read
+0.388 raw / 0.142 rot — the STE-trained rat twin stays in its
+fp32 twin's basin (~3.6x closer than any cross-seed pair), i.e.
+the lattice constraint bends the trajectory, not the basin.
+Perm alignment recovers almost nothing on cross-seed pairs
+(1.41 -> 1.29): whatever aligns these crystals, it is not a
+neuron permutation. Cell CLOSED; exact-representations program
+continues on the format/instrument legs (GPTQ-rational,
+int8+outliers, calibration probe).
