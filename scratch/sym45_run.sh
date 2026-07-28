@@ -2,6 +2,8 @@
 # C8-retrofit at 45M (pre-reg 2026-07-28): waits for the lyapunov
 # marker, gates the projected init (math), warm-trains, gates
 # math + ZX. 3080 tail window ~2-3h.
+set -e  # marker fires on success ONLY (v1 scar: unconditional
+        # touch fired the waiter on the vocab-47 crash)
 cd ~/code/llmopt
 PY=.venv/bin/python
 export PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
