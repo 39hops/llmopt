@@ -8863,3 +8863,55 @@ fixed-epoch confound noted (larger BS = fewer updates);
 lr0.006/bs16 62 > bs8 60 is within sigma, not texture. Fences:
 d64/cuda lineage, gate-only coloring, n=1 map + 4-cell sigma
 column; checkpoints deleted (map cells) per script.
+
+## PRE-REG: THE COMPRESSION CORNER — bits x sharing orthogonality (2026-07-28 night, before the runs)
+
+Paired arms, MPS, one device: rational_snap (DIRECT operator,
+exact-best p/q, Q in {8, 16}) applied to (a) dense wfloor d256
+(baseline 65) and (b) sym_circ8_b (baseline 59, anti-mass
+0.0028). Snap preserves circulant structure by construction
+(elementwise determinism), so any extra damage is functional.
+READS: delta-of-deltas |(circ8_snap - 59) - (dense_snap - 65)|
+<= sigma(3) at both Q => AXES ORTHOGONAL — the bits-dimension
+exchange law gains a symmetry factor (compression composes
+multiplicatively: 8x sharing x lattice bits at additive toll).
+Circ8 pays MORE => sharing consumed the redundancy that
+quantization was living on (competition-for-slack model —
+also a clean law). Circ8 pays LESS => the commutant regularizes
+toward snap-friendly weights (would rhyme with the lattice
+zero-tax law). n=1/cell, gates-only substrate difference.
+
+## PRE-REG: SYMMETRY-AT-BIRTH, C8 at d64 (2026-07-28 night, before the runs)
+
+The R1-null flip test on the atlas-certified cheap substrate.
+TWO arms from SCRATCH, paired on MPS (device fence: the atlas's
+cuda 65 is NOT the comparator; the paired dense arm is), seed 1,
+lr 1.5e-3, bs 8, gen-4, 3 epochs, d64/ffn256: (a) DENSE control;
+(b) COMMUTANT BIRTH — C8-projected init + ramped generator
+penalty from step 0 (R3 recipe transplanted to birth).
+READS: b >= a - sigma(3.5) => symmetry is FREE AT BIRTH (the
+retrofit heal was not riding dense scaffolding; params/8 from
+step zero). b ~ a - 6 (the retrofit toll) => toll is
+PATH-INDEPENDENT (retrofit = birth — a conservation statement).
+b << a - 6 => the SCAFFOLD hypothesis: dense pre-training builds
+structure the commutant can inherit but not grow — teach-don't-
+impose returns at birth. Also read: final anti-mass (does the
+penalty hold symmetry through 3 epochs of from-scratch SGD).
+
+## AMENDMENT (target: E2 AXNN export, relay -28-4): head was declared "tied" but the scorer's head is UNTIED — corrected container delivered (2026-07-28 night)
+
+Axiom's v1.1 loader validates head declaration against tensor
+presence; inspecting our own container against their note found
+the bug on OUR side: cfg said head:"tied" while the file carries
+a separate head.weight NOT byte-equal to emb.weight (the S2
+scorer is untied, per build_model). Their guard would have
+rejected the file — the guard WORKED, cross-lab, before any
+wrong logits shipped. Fixed export_axnn.py (head:"separate"),
+re-exported; NEW sha256 298f9077a4622ce0...ab094 (the announced
+b87d0976... is RETIRED — reject it). Artifacts delivered
+directly to axiom's data/ via the WSL bridge (first shared-
+filesystem handoff; sha verified on their disk). Tensor-name
+answer to their question: names are state-dict style —
+blocks.{i}.gate.weight/up.weight/down.weight/qkv.weight/
+o.weight/n1.g/n2.g + emb.weight/norm.g/head.weight — NOT
+ffn.gate/attn.qkv.

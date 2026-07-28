@@ -1375,3 +1375,17 @@ to the collaboration itself.
   free-boundary/Snell-envelope literature is the toolbox.
   Attribution: Artin (the riff + the distribution instinct);
   house (mappings).
+
+- **THE COMPRESSION CORNER (bits x sharing)** (2026-07-28, house,
+  Artin GO "add the new mixes"): three compression axes measured
+  separately (bits: 2-bit sub-bar; dimensions: d256 -5; sharing:
+  8x at -6) — are they ORTHOGONAL? Test: rational-snap the
+  circulant-8x substrate and the dense substrate at matched Q,
+  paired on one device; additive deltas = the exchange law gains
+  a product form. Note: elementwise snap PRESERVES circulant
+  structure (equal entries snap equally) — the axes cannot
+  interfere representationally, only functionally.
+- **C8-RETROFIT AT 45M** (2026-07-28, house): does the sharing
+  toll transfer across scale? Ties the ladder to the ZX capacity
+  null (capability occupies a small structured subspace at 45M
+  too, or not). Banked pending a 3080 window.

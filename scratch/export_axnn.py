@@ -1,5 +1,5 @@
 """E2: export a MicroLM crystal to AXNN v1.1 (proposed extension:
-cfg ffn="swiglu" + fused-qkv + rmsnorm-no-bias + rope + tied head
+cfg ffn="swiglu" + fused-qkv + rmsnorm-no-bias + rope + SEPARATE (untied) head
 — every convention DECLARED per the AXNN doctrine).
 
 Container (little-endian, per include/ax/nn/model.hpp v1):
@@ -7,7 +7,7 @@ Container (little-endian, per include/ax/nn/model.hpp v1):
   tensor: u32 name_len | name | u32 ndim | u64 dims[] | f32 data
 v1.1 delta (the relay ask): cfg gains ffn:"swiglu",
 attn_fused:"qkv"; tensor names ship in HOUSE layout:
-  emb.weight [V,D] (tied head), blocks.{i}.n1.g/.n2.g [D],
+  emb.weight [V,D] + head.weight [V,D] (untied), blocks.{i}.n1.g/.n2.g [D],
   blocks.{i}.qkv.weight [3D,D], blocks.{i}.o.weight [D,D],
   blocks.{i}.gate/.up.weight [F,D], blocks.{i}.down.weight [D,F],
   nf.g [D]
@@ -31,7 +31,7 @@ cfg = {"d_model": D, "n_layers": L, "n_heads": 4, "d_ff": F,
        "vocab": V, "max_seq": 512, "norm": "rmsnorm",
        "act": "silu", "pos": "rope", "rope_style": "half",
        "eps": 1e-6, "rope_theta": 10000.0,
-       "ffn": "swiglu", "attn_fused": "qkv", "head": "tied",
+       "ffn": "swiglu", "attn_fused": "qkv", "head": "separate",
        "axnn_minor": 1}
 cfg_b = json.dumps(cfg).encode()
 
