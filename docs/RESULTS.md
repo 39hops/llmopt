@@ -8729,3 +8729,37 @@ conv-structured form at 8x sharing; far below extends the
 ladder toll curve (2x:-1, 4x:-4, 8x:-?) and locates the
 symmetry axis's capacity wall. Arm a prices restoration force
 per group. n=1/arm.
+
+## SYMMETRY LADDER S4 + S3 VERDICT: Z2 converts at 64; DENSE GATES RETROFIT INTO CONV STRUCTURE AT 8x — the ladder holds to params/8 (2026-07-28)
+
+Generic instrument controls clean per group (member 0.000000;
+random 0.5003 / 0.8754 vs predicted 0.500 / 0.875). Anti-mass
+reads: both nulls (z +0.07 / -0.22) — the no-spontaneous-
+structure result now stands at THREE groups (complex,
+quaternion, Z2/C8).
+| rung | proj-init | arm a (lambda=0) | arm b (penalty) |
+|---|---|---|---|
+| S4 Z2 (params/2) | 49/120 | 63 @ am 0.0144 | **64 @ am 0.0002** |
+| S3 C8 (params/8) | **2/120** | 60 @ am 0.1356 | **59 @ am 0.0028** |
+VERDICTS: (1) **S3, the audacious rung, HOLDS: 59/120 at
+anti-mass 0.0028 — dense gate matrices of a trained crystal
+RETROFIT into block-circulant (convolution) structure at 8x
+parameter sharing**, healing from a projected init of 2/120
+(total destruction, as pre-registered: 87.5% deletion is past
+the holography edge). The heal is a near-total reconstruction
+inside a params/8 subspace in ONE warm epoch. (2) The ladder
+toll curve completes: 2x:-1, 4x:-4, 8x:-6 of 65 — rising,
+sublinear, no wall through 8x. Symmetry is a REAL third
+compression axis. (3) PRE-REG MISS worth keeping: Z2 projected
+init read 49, not the predicted ~57-class — same 50% mass
+fraction as the complex cut, DOUBLE the damage. Projection
+damage depends on WHICH structure is deleted, not just the mass
+fraction (checkerboard cuts different functional directions
+than rotation); holography's edge is structure-dependent.
+(4) First sign of SGD resistance: circ8 arm (a) drifts to
+anti-mass 0.136 (complex 0.015, quat 0.056, Z2 0.014) — local
+stability of the commutant WEAKENS as the group grows; the
+penalty starts earning its keep at C8. Fences: gates-only,
+d256/MPS, n=1/arm, comparator 65, artifacts
+sym_{z2,circ8}_{a,b}.pt. Banked: C16 (params/16) extension;
+actual packed conv forward (param-compression stays IMPLIED).
