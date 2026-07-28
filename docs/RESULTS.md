@@ -8533,3 +8533,21 @@ expect heavy damage (int2-class or worse); the payload is the
 CURVE (knee location) + flips-probe at each t, the rotation-axis
 sibling of the rational Q-sweep, and the R3 starting-point
 damage baseline (projected init = the t=1 point).
+
+## LADDER-RETRY VERDICT: 74 @ 34,895 tokens — the middle rung LOSES money; the decode-economics family closes (2026-07-28)
+
+Champion battery, ladder (greedy -> k=2 -> k=8): 74/120 @ 34,895
+tokens v wave 75 @ 42,113 / gfirst 74 @ 29,724 (both same-battery,
+same-model, night-28). The k=2 rung ADDED cost over plain
+greedy->k8 (+5,171 tokens, +0 solves): when greedy misses, k=2
+usually misses too (the hard plies are hard for 1-2 samples
+alike), so the ladder pays three rungs where gfirst pays two.
+Adoption bar (>= wave-3 at <= 40% tokens): FAILS at 83%. The
+family's honest close: (1) wave-8 stays production; (2) the only
+measured cheap regime is PURE greedy on short probe batteries
+(-10% solves at 12% tokens, R4) — a probe-tier option, not a
+gate option; (3) retry laddering does not bridge them — the
+wave's spend concentrates exactly where no cheap rung reaches
+(the tie-scarcity anatomy from the other side: hard plies are
+hard by SEMANTICS, not by sampling breadth). Decode-economics
+cells stop here; no further rungs owed.
