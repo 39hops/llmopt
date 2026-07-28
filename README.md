@@ -1,57 +1,52 @@
 # llmopt
 
-![math-native neurons, weight-space PCA](docs/assets/neurons-19m.png)
-
-*One SFT run vs an entire overnight verified-RL climb — same matrix,
-same scale, each streak a neuron's move. Closed-system RL edits the
-policy, not the mind ([RESULTS](docs/RESULTS.md): weight anatomy;
-the climb's solve gains are real, its validity headline was partly
-a reward hack — also in RESULTS, because that's the deal here).*
-
 LLM inference + training optimization lab. Small, readable implementations of the tricks that make local inference fast — each benchmarked and verified greedy-equivalent against the eager baseline.
+
+**The curated findings live in [`docs/FINDINGS.md`](docs/FINDINGS.md)** —
+every major measured result of the program, one place. The full
+verdict-by-verdict history (wins, nulls, and retractions alike) is
+[`docs/RESULTS.md`](docs/RESULTS.md); the live status board is
+[`docs/BOARD.md`](docs/BOARD.md); the laws-with-citations map is
+[`docs/THEORY.md`](docs/THEORY.md).
 
 ## Highlights
 
-**The lab, current state (2026-07-23)** — the lab moved from tuning
+**The lab, current state (2026-07-27)** — the lab moved from tuning
 pretrained LLMs to growing **closed-system-native micro-models from
-birth** (vocab-40 math tokenizer, zero pretraining, engine-minted
-oracle-verified diets) and measuring the laws they obey. Where it
-stands:
+birth** (hand-built ~40-token math vocabulary, zero pretraining,
+engine-minted oracle-verified diets) and measuring the laws they
+obey. Three weeks of pre-registered, oracle-verified bookings.
+Where it stands:
 
-- **The crown is a statistical tie between substrates**: a 1.58-bit
-  ternary-from-birth model (89.7M, grown) gates 75/120 vs the fp32
-  champion's 76 on the same battery/device — the discrete lineage
-  went 65→70→75 in one night via diet rations + warm growth
-  (`docs/RESULTS.md` 2026-07-23).
-- **Four grammars live**: calculus (the founding continent), Taylor
-  series (held-out step accuracy 15%→88% purely by decomposing rows
-  into one-primitive emissions — the ladder law's cleanest form),
-  classical mechanics (85.5% first contact; a dual-diet crystal holds
-  math intact AND beats the physics specialist at 92.3% — positive
-  cross-domain transfer), and a mini-ISA code system (89.2% verified
-  program rewrites, exact symbolic oracle).
-- **Measured laws** (`docs/THEORY.md`, each with a citation leg): the
-  absorption law (fraction of updates silently lost to fp rounding
-  ≈ 2.8e-9/LR across four decades — LR and precision are one knob);
-  birth precision bracketed closed (bf16↔fp64 births
-  indistinguishable, pre-registered showdown) while online/low-LR
-  learning provably needs precision (fp64 masters recover 5x weight
-  flips); crystal geometry is a universal function of data-per-width
-  across all grammars tested (kurtosis 1.9 at matched feeding for
-  calculus/mechanics/programs); capability is a curve over expression
-  rarity, not a scalar; underdetermined training rows measurably
-  teach hallucination (96% vs 47% within one model); the
-  decomposition discount (~10x cheaper learning per row when corpus
-  is counted in primitives).
-- **LLMUE** (the lab's product category): continuous online learning
-  on oracle-signed self-generated experience, with flip-quantized
-  plasticity on the ternary substrate — the metabolic v3 stacked
-  session (fp64 masters + surprise-gated LR + wave-contrast) is the
-  current live experiment.
-- **Sister engine**: `axiom`, a C++23 CAS built in a parallel Fable
-  session, farms certified derivation chains (byte-exact
-  certification, 4-for-4 clean on independent audit) — series, poly,
-  physics batches all landed within hours of being asked.
+- **The derivation engine solved its benchmark**: held-out calculus
+  went 73.6% → **360/360 (100%)** in four days; the engine now beats
+  sympy on every level that exists. House law earned on the way, the
+  FA Law: *verified speed is intelligence* — at fixed wall, cheap
+  nodes convert to solves.
+- **The crown is a statistical tie between substrates**: the fp32
+  warm-grown champion (55.1M) gates 76/120 vs a **1.58-bit
+  ternary-from-birth model at 75** on the same battery/device.
+  Discrete alphabets reach parity when trained into from birth;
+  post-hoc rounding onto the same lattice loses by 18+.
+- **Five grammars, one 19M crystal**: calculus + Taylor series
+  (99.2%, beats its own specialist) + mechanics + a conservation law
+  learned to 100.0% + polynomial algebra (89%) — simultaneously, at
+  spec, with ~zero interference. Federations of closed systems are
+  nearly free below the natural width W*.
+- **The exact stack**: zero-rounding GPU matmul verified against
+  big-integer arithmetic (int8 tensor cores, more accurate than
+  native fp64 at comparable wall); exact chains beat approximate
+  fp64 past ~6 layers (stay-in-RNS); a 45M model's weights replaced
+  by integers over one shared denominator at **full capability
+  parity** (the integer twin, ~6.7 bits/weight = the measured
+  max-entropy Gaussian capacity); and an exact-lattice birth
+  (every weight a small fraction from step 0) that beat its fp32
+  control (+5, single seed, replication in flight).
+- **Sister engine**: `axiom`, a C++23 exact CAS built in a parallel
+  Fable session — certified row factory (ten+ consecutive clean
+  independently-adjudicated batches), hybrid solver at ~6x sympy's
+  verified-rows-per-hour, exact fixed-point NN inference (FX-V1)
+  with bit-identical cross-implementation acceptance.
 
 Everything below this line is the measured history that got here —
 kept because the honest-negatives doctrine applies to the README too.
