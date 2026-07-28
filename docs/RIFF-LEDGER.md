@@ -1204,3 +1204,13 @@ to the collaboration itself.
   saturates — 19M twice-confirmed against 45M); "a model reasons
   EXACTLY about a universe iff the universe is closed and the
   arithmetic is exact" = the program in one sentence.
+- **2026-07-27 latest (Artin's "the 4s" -> house mechanism)**:
+  L4 recurs across the whole record (158 mentions v ~70 for
+  neighbors; pincer crater, packing clade, bridge fingerprint,
+  wall-timeouts, snap kill, born-rational +5 — all L4) because
+  **L4 is where the variance lives**: the first compositional
+  level, the susceptibility knee — L3 saturated, L7 out of
+  reach, only L4 can swing. Companion to "prediction pays where
+  variance lives." DOCTRINE CANDIDATE: read every intervention
+  at L4 first (the canary level); L4->L5 frontier migration =
+  the cleanest progress metric.
