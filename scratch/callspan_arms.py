@@ -14,8 +14,8 @@ import torch.nn.functional as F  # noqa: E402
 
 from llmopt.train.mathnative import MathTokenizer, build_model  # noqa: E402
 
-PILOT = os.path.expanduser(
-    "~/code/axiom/data/llmopt/nt_callspan_pilot500.jsonl")
+PILOT = os.path.expanduser(os.environ.get(
+    "PILOT", "~/code/axiom/data/llmopt/nt_callspan_pilot500.jsonl"))
 ATOMS = ["gcd", "Mod", "**", "call:", "->",  # sidecar order (fence)
          "Hints: ", ";"]  # format atoms appended AFTER the diet
 # atoms (amendment booked: base tokenizer covers "Hints: none"

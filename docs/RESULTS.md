@@ -9980,3 +9980,17 @@ hint — use-v-ignore dissociates cleanly there. Also honest:
 tiny-corpus regime (400 rows), single seed; a real Leg B
 verdict wants the full-size tranche. Fences: n=1, MPS,
 exact-match scoring, end-value spans only.
+
+## PRE-REG: STEP-LOCAL CALL-SPAN ARMS (2026-07-29 night; axiom tranche dd5fbb09, row-paired to de6c9f15)
+
+Same instrument, same 47-atom vocab, same Random(7) 400/100
+split (row-pairing is structural: identical rows, only calls
+differ; contrast carried by 309 gcdstep rows whose span now
+hands the model the exact remainder token it must emit).
+READS: SPAN >> PLAIN (multi-sigma, v the end-value +4) => the
+model READS its prosthetic — delegation works when the span is
+step-local; capability-per-param headline lands and the LLMUE
+decode-side resolver is next; SPAN ~ PLAIN again => the model
+ignores hints ENTIRELY at this scale (hint-blindness — a
+format/attention question, book hard); PLAIN drifts from 48 =>
+seed/vocab sensitivity fence. n=1, MPS, exact-match, paired.
