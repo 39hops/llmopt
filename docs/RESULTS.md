@@ -10087,3 +10087,29 @@ doses (easy mass saturated); L3/L5 cuts bite at 25% (the
 gate lives at L3-L7). Fences: n=1 per cell, cuda line only
 (sigma ~3.5, so single-cell deltas < 4 are noise — read the
 LADDER shape, not cells).
+
+## FARMER PROBE VERDICT: the reverse model INVERTS but does not FARM — 2/1000 novel off-distribution, 11/1000 in-distribution (2026-07-29 day)
+
+Probe A (pre-reg seeds, novel band starts): 2/992 verified-
+distinct-novel, verified 3. Sample autopsy: candidates are
+LOCAL MUTATIONS of the seed (expansions, coefficient edits),
+not grammar inversions — and the seeds were off-distribution
+by construction: in the flipped corpus, chain STARTS appear
+only as targets, never prompts (the corpus was itself farmed
+backward from answers — a predecessor of a start barely
+exists in the grammar). Probe B (SEEDMODE=corpus control,
+in-distribution later-states, same novelty fence): verified
+3 -> 107/1000 (the model DOES invert the step grammar when
+asked the question it was trained on — the step-local
+delegation lesson again, now on the farmer side), but novel
+stays at 11/1000: inversion is MEMORIZATION-DOMINANT at
+d64/3ep; 90% of verified predecessors are corpus rows
+reproduced. VERDICT: the self-farming loop is NOT live at
+this scale — 0.25 novel/s v the sympy farm's orders-more;
+prediction (100-300/1000) WRONG, booked. The failure axis is
+generalization-into-novelty, not verification or inversion.
+Revive conditions banked: (1) sampling temperature/diversity
+sweep (the wave is 8 near-greedy samples), (2) seed with
+SOLVED states (the true farmer seeding — needs cheap answer
+generation), (3) scale (d64 is memorization-prone at 120k
+expressions). Fences: n=1, MPS, EMA weights, gen-4 corpus.

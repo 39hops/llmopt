@@ -40,11 +40,22 @@ model.load_state_dict(torch.load(CKPT, map_location="cpu",
                                  weights_only=True))
 model.eval()
 
+SEEDMODE = os.environ.get("SEEDMODE", "band")  # band | corpus
 known = set()
-for r in load_rows(gen4=True):
+corpus = load_rows(gen4=True)
+for r in corpus:
     known.add(r["cur"].replace(" ", ""))
     known.add(r["nxt"].replace(" ", ""))
 print(f"corpus expressions (novelty fence): {len(known)}", flush=True)
+
+if SEEDMODE == "corpus":  # control: in-distribution prompts —
+    import random  # seeds are corpus LATER-states (the flipped
+    by_lv = {lv: [] for lv in G.GATE_LEVELS}  # training prompt
+    for r in corpus:  # distribution); novelty fence unchanged
+        if r.get("level") in by_lv:
+            by_lv[r["level"]].append(r["nxt"])
+    for lv in by_lv:
+        random.Random(13).shuffle(by_lv[lv])
 
 stats = {lv: dict(samp=0, ver=0, vdn=0) for lv in G.GATE_LEVELS}
 seen_preds = set()  # distinct fence, global
@@ -52,11 +63,16 @@ t0 = time.time()
 with torch.no_grad():
     for lv in G.GATE_LEVELS:
         for i in range(N_PER_LV):
-            p = _gen_isolated(lv, G.GATE_BAND + SEED_OFF
-                              + 1000 * lv + i)
-            if p is None:
-                continue
-            s = f"Integral({sp.sstr(p._expr)}, x)"
+            if SEEDMODE == "corpus":
+                if i >= len(by_lv[lv]):
+                    continue
+                s = by_lv[lv][i]
+            else:
+                p = _gen_isolated(lv, G.GATE_BAND + SEED_OFF
+                                  + 1000 * lv + i)
+                if p is None:
+                    continue
+                s = f"Integral({sp.sstr(p._expr)}, x)"
             prompt = tok.encode(f"Current: {s}\nHints: none\nStep: ")
             texts, _, _ = G.sample_wave_lp(
                 model, tok, prompt,
