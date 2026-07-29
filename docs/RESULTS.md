@@ -9242,3 +9242,40 @@ already averages implicitly (small terminal LR = its own
 Polyak), EMA stays a constant-LR rescue tool, NOT a default;
 EMA < raw => the cosine tail + EMA double-average overshoots —
 book and fence. n=1, MPS, in-run paired, gates-only.
+
+## A0 VERDICT: EMA IS REDUNDANT UNDER THE PRODUCTION SCHEDULE — NOT ADOPTED as a default (2026-07-29)
+
+d256/gen-4/3ep, bs 32, seed 1, OneCycleLR(3e-4, pct 0.03), MPS,
+in-run paired: raw 59/120 @ 57.33%, EMA(0.999) 59/120 @ 57.14%
+— IDENTICAL solve profile per level ({3:20, 4:5, 5:16, 6:7,
+7:11} both). The pre-reg's middle read lands exactly: the
+cosine tail (terminal LR ~ 0, vanishing final steps) is its own
+implicit Polyak average, so EMA has nothing left to add.
+Resolution of the EMA story: the +12/+6 (d64) and +6 (d256)
+wins were all CONSTANT-LR variants — EMA was substituting for
+decay, not adding to it. LAW: averaging and annealing are the
+same lever; you pay for it once (schedule OR EMA), and paying
+twice is free but idle. EMA stays in the kit as (a) the
+constant-LR rescue (e.g. mid-run gates on unfinished births)
+and (b) the chaos-damper (-58% shell contraction, still real).
+NOT joining lossless-speed defaults; Legs A-C ride the
+production schedule alone. Side note: production-schedule raw
+59 v constant-LR raw 58 / EMA 64 — the constant-LR+EMA combo
+gated HIGHER than the production schedule here (64 v 59, n=1,
+cross-run unpaired, sigma 3.5 — flag, not verdict; a paired
+schedule-vs-schedule arm is banked if Leg A width work makes
+the 5-gate gap look real). Fences: n=1, MPS, gates-only.
+
+## PRE-REG: LEG A WIDTH FLOOR — d48 (2026-07-29, before the run; minimal-crystal spec)
+
+Binary-search the width cliff at the fixed recipe: gen-4, 3ep,
+atlas peak cell (constant lr 1.5e-3, bs 8, seed 1, sigma 3.5),
+MPS. d48, ffn 192 (4x), heads 4 (head_dim 12). EMA 0.999
+tracked and gated ALONGSIDE raw — per A0's law this recipe is
+CONSTANT-LR, exactly where EMA is the averaging lever (the d64
+comparators: dense raw 53, night-28b EMA +12/+6 class). READS:
+d48 within sigma of the d64 line => floor is lower, descend to
+d32; d48 drops > sigma => the cliff is between 48 and 64 —
+probe d56 or stop and stack compressions on the smallest
+survivor. Scoreboard: params-per-solve. n=1 per width, paired
+device/recipe.
