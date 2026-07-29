@@ -9688,3 +9688,22 @@ axis damage is diffuse at every price; still free => the d56
 crystal has an exactly-rational twin at Q<=8 (echoes the 19M
 integer-twin result — book toward the exact-representation
 thread). Fences: n=1 per arm, MPS, gates-only.
+
+## SNAP-ALLOC Q=8 VERDICT: bits bite uniformly — location-blind and ~additive (2026-07-29)
+
+attn-only 59, mlp-only 59, both 56 (v 63): -4 / -4 / -7. Read
+2 lands: below the free zone the bits axis is DIFFUSE — equal
+damage per location (despite attention being structurally
+precious and the MLP structurally slack) and near-additive
+composition (-7 ~ -4 + -4). The full bits picture at d56:
+free at Q=16 everywhere, uniform gentle toll at Q=8 — the
+precision currency has no location structure at all,
+completing the dissociation from the structural currency
+(which is ALL location: heads/rank/width precious, ffn/bands
+slack). Allocation answer for the bits-portfolio riff: at
+matched total bits there is nothing to allocate ACROSS
+locations; allocation only pays across the STRUCTURAL axes.
+ANATOMY DAY CLOSES: the d56 attention-machine anatomy is
+heads=all-essential, rank>=32-with-geometry-56, ffn=slack,
+bits=uniform-and-cheap-to-Q16. Fences: n=1 per arm, MPS,
+gates-only.
