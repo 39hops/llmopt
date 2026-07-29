@@ -10131,3 +10131,28 @@ architecture-bound); (3) the params-matched shallow-wide
 (4x d80) lands BELOW deep-narrow (8x d56) — depth is not
 purchasable with width (the attention-machine law extended
 to the third axis). Read against sigma ~3.5. 5 births.
+
+## DEPTH LADDER VERDICT: DEPTH IS SLACK TOO — the ladder is FLAT and both directional predictions FALSIFIED (2026-07-29 day)
+
+EMA gates, one battery, MPS, d56/f224 unless noted: layers-4
+56, layers-8 59 (in-battery control), layers-12 61, layers-16
+59, params-matched 4x d80/f320 59. Every cell within ~1 sigma
+(~3.5) of every other. Prediction 1 (layers-4 drops hard)
+WRONG: -3, sub-sigma, at HALF the parameters. Prediction 3
+(params-matched shallow-wide < deep-narrow) WRONG: 59 = 59
+exactly. Prediction 2 (12/16 ~= 8, diet-bound) lands. THE
+READ: the never-varied axis, varied at last, is ANOTHER SLACK
+POOL — the 12-ply horizon wall is NOT a depth deficit; a
+4-layer crystal walks chains as well as a 16-layer one. The
+capability bound stays where the week put it: attention
+width/heads x diet hardness. Consequences: (1) the black-hole
+arc's "depth is the missing axis" hypothesis is DEAD on the
+gate diet — what's missing is not architecture at all (three
+axes now measured slack: ffn, bits, depth; one precious:
+attention geometry); (2) NEW EFFICIENCY POINT: layers-4 d56 =
+56/120 at ~HALF the layers-8 crystal — the minimal crystal
+shrinks again; (3) valid% rises monotonically with depth
+(51.5 -> 57.0) while solves stay flat — depth buys FLUENCY,
+not capability (echoes the calibration arc's fluency/
+capability split). Fences: n=1 per cell, MPS line, gen-4
+diet, gates-only; deeper ladders untested past 16.
