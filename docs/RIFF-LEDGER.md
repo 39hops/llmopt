@@ -1610,3 +1610,38 @@ to the collaboration itself.
   of the untouched axis. Attribution: Artin (riff, x3 now —
   the persistence was warranted); house (bound check + area-law
   mapping + the depth gap flag).
+
+- **2026-07-29 (Artin, evening — four riffs on returning home)**:
+  (1) ALPHAEVOLVE-STYLE EVOLUTION LOOP: "the model evolves/
+  adapts... try something like that — smaller, more efficient,
+  math/physics/q-circuits only." House mapping: we already own
+  the two hard parts (merciless oracle+gate evaluator, cheap
+  birth cycles); the missing piece is the proposer-mutator loop
+  with an elites archive (MAP-elites-style niches). Best first
+  target after the Leg C flat: DIET EVOLUTION — mutate diet
+  compositions/formats, fitness = gate at fixed budget, niches
+  by level-profile; revives the nulled config-estimator at its
+  banked revive point. Spec next session. Attribution: Artin
+  (riff), house (target selection).
+  (2) MULTI-PLY FARMER TREE: "prediction happen for multiple
+  steps — every step gives you another tree." House read: k
+  reverse plies of B samples = a B^k tree of candidates, each
+  forward-verified stepwise; fixes the farmer's memorization
+  null because ply-2 starts from expressions the model never
+  saw — novelty should COMPOUND with depth. THE farmer revive
+  path (with solved-state seeding). Attribution: Artin.
+  (3) WHY 56: house answer — instrument quantization (widths
+  step by 8 at heads=4/RoPE-even), so the true cliff lives
+  anywhere in (48,56]; diet-dependent geometry, not a constant.
+  Numerology noted for fun, fenced as non-mechanism: 56 = dim
+  of E7's fundamental rep = C(8,3) = 2x28. Falsifier: the
+  cliff should MOVE under a diet change. Attribution: Artin
+  (question), house (fence).
+  (4) HARDNESS DEFINED: "less rows, better quality — but how
+  do we define hardness/quality?" House answer, operational:
+  hardness(row) = first ladder rung that solves it (escalation
+  census = free per-row difficulty meter); quality(row) =
+  verified AND distinct AND novel AND determinable. Mining
+  rule: keep rows where the cheap tier FAILS but the oracle
+  verifies. Doubles as the fitness for riff (1). Attribution:
+  Artin (question), house (operationalization).
