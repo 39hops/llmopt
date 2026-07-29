@@ -1134,6 +1134,13 @@ Adjudicate axiom's ZX sample batch (relay 2026-07-26-0 protocol).
 - `structural(row)`
 - `main()`
 
+### scratch/anatomy.py
+Unified crystal anatomy (2026-07-29 spec: slack-restoration). One env-parameterized census: CELLS=heads,rank,snap on any MicroLM checkpoint. Frozen originals: head_census.py, rank_read.py, snap_alloc.py (07-29, d56).
+
+- `gate(sd, label)`
+- `snap(w, q_max)`
+- `truncate(W, r)`
+
 ### scratch/boundary_or_bulk.py
 Boundary-or-bulk regression on the completed 0.5M->400M grid.
 
@@ -1155,6 +1162,12 @@ Calibration probe (spec 2026-07-28 rung 1): flips-per-token under a Q-lattice sn
 
 - `rat_snap(sd, Q)`
 - `flips_per_token(ckpt, d, layers, ffn, heads, Q=16, dev=None)`
+
+### scratch/callspan_arms.py
+Call-span paired arms (pre-reg 2026-07-29 night: Leg B first read). Pilot 500 (axiom, sha de6c9f15): plain v span hints, same rows, d64, 20 ep; held-out greedy next-step exact match. Atoms pinned in sidecar order. MPS.
+
+- `text(r, span)`
+- `run_arm(span)`
 
 ### scratch/ce400.py
 CE-400: fixed-sample CE proxy (the standing instrument from the CE-gate study). Usage: ce400.py <ckpt> <label>
@@ -1254,12 +1267,21 @@ Duo-substrate mixed wave (spec 2026-07-22-duo-substrate, exp 1): per ply, B/2 sa
 E2 closure (relay -28-5 loop): reproduce axiom's pinned 20-prompt battery logits with torch fp32 on the house scorer. Asserts (1) their token ids decode to their meta text via the house tokenizer (tokenization parity), (2) final-position logits agree within 1e-4 elementwise. PASS arms E3.
 
 
+### scratch/e3_battery.py
+E3 battery (axiom GO 2026-07-29, 50 rows): exact-mode paired GREEDY gate. House side: 50 fresh gate-style prompts (seed band disjoint from battery20 and the GATE band), fp32 eager greedy continuations (<=64 tokens, stop at eos) from the S2 scorer. Axiom decodes the same prompts in exact mode and diffs token- identically. Emits data/e3_battery50{,_meta.jsonl,_greedy.txt} + sha256 pins.
+
+
 ### scratch/emission_wall_pair.py
 Rung-1 bar (iii), in-diet form: does prefix move the operand-complexity emission wall? (spec 2026-07-25-native-transformer; poly_chain5 psub/padd rows are OUT-OF-DIET for gen-4 twins — bridge law + naked-forms lesson — so the wall is read on generator-drawn in-language states instead.)
 
 - `load(ckpt)`
 - `greedy(model, ids, max_new=160)`
 - `main()`
+
+### scratch/exact_twin_d56.py
+d56 exact twin (pre-reg 2026-07-29 night): snap EVERY floating tensor (incl. emb, head, 1D norm gains) to best-rational Q<=16, gate, and report per-tensor-class snap error in sigma units (blockwise-rule diagnostic). Desk, MPS.
+
+- `snap(w, q_max)`
 
 ### scratch/exchange_test.py
 THE EXCHANGE TEST (pre-registered 2026-07-23): train the v4 organism on axiom's engine-farmed chains at OUR stuck states, re-probe the SAME fixed seeds (55_000_000, cuda — device law), must beat 2/12. v4 measured self-practice at +1/12 (no gradient at true walls); the exchange supplies exactly the missing gradient. 10/12 walls have chains; ceiling = 12/12, bar = >=3/12, headline read = how many of the 10 taught walls flip.
@@ -1378,6 +1400,10 @@ Potential-shaped GRPO on the gen-6 champion (2026-07-21, Artin GO — 'ahead of 
 - `phi(s)`
 - `shaped_collect(model, tok, dev, n_groups, seed0)`
 
+### scratch/head_census.py
+Head census (pre-reg 2026-07-29: attention anatomy 1a). Zero head h of 4 across all layers of the d56 EMA crystal (q,k,v row blocks in the fused qkv [3D,D] + the o column block), gate each arm. Desk only, MPS.
+
+
 ### scratch/holdout_gate.py
 FROZEN HOLDOUT battery (2026-07-21): virgin band 88M, same L3-L7 x 24 structure as the production gate, run ONLY at promotions. Includes a corpus-overlap audit (contamination doctrine: verify the band is virgin, don't assume). Usage: holdout_gate.py <ckpt> <d> <layers> <ffn> <heads> <label>
 
@@ -1445,6 +1471,12 @@ Mass-on-valid (spec 2026-07-28 rung 2): teacher-forced sequence probability mass
 Matryoshka rung 1 (pre-reg 2026-07-28 night): joint loss CE(W) + CE(STE P_C8(W)) — one crystal whose OWN circulant projection must also work. 1 warm epoch from wfloor d256 on MPS. Implementation: parametrize gate weights with a toggleable STE projection (flag off -> raw W; flag on -> W + (P(W)-W) .detach(), i.e. forward uses P(W), gradient flows to W). Gates BOTH tiers at the end; saves the single weight tensor.
 
 - `shift_perm(n, sh, dev)`
+- `class TierP` (project, forward)
+
+### scratch/matryoshka_r2.py
+Matryoshka rung 2 (pre-reg 2026-07-29 night): 3-tier ladder in one tensor. Joint loss CE(W) + CE(STE P_C2(W)) + CE(STE P_C8(W)) on gate weights, 1 warm epoch from the d56 EMA crystal. Gates all three tiers. MPS.
+
+- `shift_perm(n, nb, sh, dev)`
 - `class TierP` (project, forward)
 
 ### scratch/metabolic_d2.py
@@ -1673,6 +1705,11 @@ Symmetry ladder S1 cell 1 (pre-reg 2026-07-28): quaternionic anti-commutant mass
 Symmetry ladder S1 cells 2-3 (pre-reg 2026-07-28): project the wfloor d256 gates onto the quaternionic commutant (deletes 75% of gate mass), gate the projected init, then warm-train 1 epoch. Arm a: lambda=0; arm b: commutation penalty summed over I,J,K, ramped 0.1->1.0. R3 recipe verbatim otherwise. Usage: ARM=a|b python scratch/quat_convert.py
 
 
+### scratch/rank_read.py
+Rank read (pre-reg 2026-07-29: attention anatomy 1b). SVD of all qkv/o weights of the d56 EMA crystal: singular-value decay, then truncation gates at rank r in {48,32,24,16}. Desk only, MPS.
+
+- `truncate(W, r)`
+
 ### scratch/rat_deploy.py
 Deploy a born-rational (RAT_Q) crystal: apply the SAME snap the STE trained through (s * best p/q, q <= Q, s = per-tensor absmean) to every 2-D weight — the output IS the trained function, exactly on-lattice. Usage: rat_deploy.py <ckpt_in> <Q> <ckpt_out>
 
@@ -1729,6 +1766,11 @@ Series rung 1 probe: greedy next-partial-sum emission on the 142 held-out steps 
 
 - `_equiv(q, pred, gold)`
 - `equiv(pred, gold, deadline=10)`
+
+### scratch/snap_alloc.py
+Snap allocation (pre-reg 2026-07-29: attention anatomy 1c). Rational snap at Q=16 (below the (16,24] knee) applied to attention-only v gate-only v both, on the d56 EMA crystal. Allocation-of-accuracy read for the bits-portfolio riff. Desk only, MPS.
+
+- `snap(w, q_max)`
 
 ### scratch/snap_anatomy.py
 Sensitivity-wall anatomy (Artin 2026-07-27: "find WHERE the wall lives"): single-tensor Q=16 snap ablation on the 19M crystal. For each 2-D tensor alone-snapped (rest fp32), measure teacher-forced divergence vs control on gen-4 rows: mean KL + argmax-flip rate. Localization instrument (CPU, no gate contention with the births); top culprits earn real gates later. House pre-reg guess: head/attn out-projections carry the wall, ffn interiors tolerant.
@@ -1802,6 +1844,13 @@ Ternary compounding session #2 (Mac, MPS lineage, paired gates): the doctrine-co
 
 - `ternary(w)`
 - `class TLin` (forward)
+
+### scratch/tier_retry.py
+Tier-retry controller (pre-reg 2026-07-29: attention-core Leg 0). d56 matryoshka pair: attempt each gate row on the CHEAP tier (commutant projection, 1/8 gate params); on failure retry the same row on the DENSE tier. Oracle-fail = the free difficulty signal. Reports retry solves, the overlap census, and effective gate-params per row. Desk only, MPS.
+
+- `shift_perm(n, sh, dev)`
+- `class TierP` (project, forward)
+- `try_row(lv, i, tier_on)` — One gate row under the given tier; same seeds as gate_eval.
 
 ### scratch/train_fp64.py
 fp64 end-to-end birth (the rounding-loss-veil A/B, banked 2026-07-17): all weights/activations/optimizer double precision on CPU. One variable vs seedvar-1 (fp32, same seed/diet). If the gate moves >=3, matmul/update rounding at fp32 costs capability at birth — the veil is real. If flat, fp32 birth arithmetic is above the noise floor and precision stays an ONLINE-only knob.
