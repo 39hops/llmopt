@@ -9707,3 +9707,18 @@ ANATOMY DAY CLOSES: the d56 attention-machine anatomy is
 heads=all-essential, rank>=32-with-geometry-56, ffn=slack,
 bits=uniform-and-cheap-to-Q16. Fences: n=1 per arm, MPS,
 gates-only.
+
+## PRE-REG: REVERSE-PAIRS — the pincer entry ticket (2026-07-29, before the run; banked 07-26, pulled into today)
+
+d64 (production sym_birth recipe, Mac, seed 1, EMA): arm A =
+gen-4 forward rows only (comparator class known); arm B =
+matched TOTAL dose, 50/50 forward + REVERSED pairs (nxt->cur:
+"Current: <nxt> ... Step: <cur>" — the model learns the
+backward step). Gate both FORWARD (the standard gate). READS:
+B ~ A on the forward gate => reverse capability rides free at
+half forward dose (dual-direction crystal exists — pincer
+next); B < A > sigma => backward rows TAX forward capability
+(direction competes for capacity); B > A => backward training
+HELPS forward (bidirectional consistency regularizes — book
+hard). Bidirectional-cheat fence: eval rows are the standard
+gate (never reverse-sampled). n=1, MPS, gates-only.
