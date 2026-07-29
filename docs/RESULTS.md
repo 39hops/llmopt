@@ -9448,3 +9448,20 @@ the ffn cliff, symmetric evidence to the d-cliff in (48,56];
 graded decline => ffn is a smooth capacity dial below 128
 (unlike d). 3 births, marker on success only. Fences: n=1 per
 point, cuda line, gates-only.
+
+## NIGHT-29b VERDICT: THERE IS NO FFN CLIFF — flat to ffn 48; the crystal is an ATTENTION machine (2026-07-29 overnight)
+
+d56, ffn {96,64,48}, cuda, seed 1: EMA 56/55/54 (raw 49/54/49).
+Full descent now reads ffn 224->48: EMA 58/58/58/55/56/55/54 —
+a -4 drift over a 4.7x ffn reduction, no knee anywhere (read 3,
+in its shallowest possible form). Contrast the d axis: 8 dims
+(56->48) cost -13. VERDICT: at this diet the MLP is almost
+pure slack — the function lives in attention width; ffn 48
+(SMALLER than d=56, inverted SwiGLU) still gates 54-class.
+Params-per-solve leader: d56/ffn48 EMA (54 at roughly 1/3 the
+d64/f256 params — v its 58.7 mean, one sigma down for 3x
+fewer params). Program consequence: Leg A stacking should
+target d56/f48-class substrates, and the attention block is
+where the irreducible computation sits — the next compression
+frontier is qkv/o, not gate. Fences: n=1 per point, cuda,
+gates-only, sigma 3.5.
