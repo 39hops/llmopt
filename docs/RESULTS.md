@@ -10180,3 +10180,20 @@ is attention geometry x diet hardness x decode policy
 (escalation 62, delegation +15: both decode/format levers,
 both worked; every capacity lever this week nulled). Fences:
 n=1 per cell, cuda line, EMA gates, gen-4 diet.
+
+## PRE-REG: THE HEAD-TENSION CELL — born-8-heads (2026-07-29 day; escalation-engine cell 3)
+
+Michel/Voita prune heads freely; we measure all-essential at
+4 heads, two widths. Frame under test: theirs are OVER-
+provisioned, ours at floor — head slack = head count above
+the task's relation count (~4). One birth: d64/f256 HEADS=8
+(head_dim 8, even — RoPE-safe), gen-4, EMA 0.999, seed 1,
+MPS. Then anatomy.py head-deletion census on the EMA weights.
+READS: some heads prunable (gate drop < 1 sigma for >=1
+single-head deletion) => provisioning frame CONFIRMED — head
+essentiality is a floor phenomenon, not an attention law;
+ALL 8 essential => the diet recruits every channel offered
+(relations scale with provision — would need booking as its
+own law and the Michel/Voita tension row hardens). Also read
+the 8-head gate v the 4-head line (58.7-class): heads x2 at
+fixed d = free, tax, or gain? n=1, MPS, gates-only.
