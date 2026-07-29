@@ -1,6 +1,6 @@
 # The Board — every thread, one line, current status
 
-Updated 2026-07-29 pre-dawn (newest handoff: 2026-07-29-0; NEXT: minimal-crystal spec 2026-07-29. MEGA-NIGHT booked: ladder S1-S4 + atlas + lyapunov chaos-with-degeneracy + corner + birth + MATRYOSHKA (65/60 one tensor) + 45M retrofit (grammar-dependent toll) + EMA adopt-candidate (+6/+12) + spectrum (capability ~ spectral mass) + E2 closed cross-lab 6.2e-6; nothing in flight; query verdicts: scripts/results_query.py --live). RESULTS.md holds verdicts, RIFF-LEDGER.md
+Updated 2026-07-29 (newest handoff: 2026-07-29-0; MINIMAL-CRYSTAL Leg A booked: A0 EMA redundant under production schedule (59=59; averaging=annealing, one lever) + WIDTH FLOOR d56 (raw 54/EMA 63 at 0.77x params; cliff sharp in (48,56]) + spectrum-on-floor (free-compression point vanishes; slack-budget law spans bits x sharing x width) + matryoshka-at-floor (tier competes: 63->57 buys a 52/120 eighth-tier; cheap tier BEATS native d48) — scoreboard leader: d56 matryoshka pair. NEXT: snap-at-knee on d56, then Leg B call-spans, Leg C diet descent. Nothing in flight; query verdicts: scripts/results_query.py --live). RESULTS.md holds verdicts, RIFF-LEDGER.md
 holds provenance; this is the queue. States: LIVE (running/next-action),
 BANKED (specced or named, awaiting GO), CLOSED (verdict recorded).
 
