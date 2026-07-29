@@ -52,3 +52,17 @@ Escalation-engine cells 1-4 + 6 all booked; cell 5 (axiom
 tranche) event-driven. Queue for next session: new-hardness
 diet design (Leg C's allocation answer), LLMUE decode-side
 resolver when tranche lands, greedy-first adoption cell.
+
+## Addendum 2 (evening, Artin home — Mac only)
+6. DISTORTION COLLAPSE booked: two-parameter equation kept ~
+   f(k_c * D/sigma^2); k_c meter = calibration R1 flips probe.
+7. G5 POLAR booked: geometry-blindness survives star weights
+   (45-deg grid rotation ~free) — third strike, law unqualified.
+8. HEAD AUTOPSY booked: cell-sparse critical circuit (13/64;
+   L1h7 -34 alone, L1h4 free); THEORY row refined.
+9. FINDINGS.md un-staled (07-29 section added). Riffs banked:
+   AlphaEvolve diet-evolution, multi-ply farmer, why-56 fence,
+   hardness operationalized, PACKED CRYSTAL, number
+   representations. SPEC WRITTEN: 2026-07-30-packed-crystal
+   (FRONT OF QUEUE; C6 transfer cell is [HOLD]).
+Next session opener: packed crystal C0+C1 (desk).
