@@ -10599,3 +10599,57 @@ sigma-law artifact needs NO byte-aligned runtime twin — the
 5-bit disk format IS the runtime format, 3x footprint v fp16
 live. Fences: M3 Pro, MLX, n=1 per shape, synthetic Gaussian
 weights at crystal sigma (0.19).
+
+## PRE-REG: PACKED CRYSTAL C4 — cross-device determinism of the integer forward (2026-07-29 night)
+
+Instrument: scratch/pack_determinism.py. Two hashes per
+device on d64h8's sigma-law codes: (A) INTEGER-GEMM hash —
+every block Linear's codes [int, span<=2^6] times a fixed
+deterministic integer activation battery (seeded ints,
+|x|<2^12), accumulated via fp64 matmul: every partial is an
+integer < 2^53, so fp64 addition is EXACT and the result is
+REDUCTION-ORDER-INVARIANT by construction (the Ozaki
+principle) — sha256 over the output bytes MUST match MPS v
+cuda; (B) FULL-FORWARD hash — fp32 model, fixed prompt
+battery, sha256 over logits bytes — EXPECTED to differ
+(libm/reduction/FMA divergence, the device-fence pain
+class); greedy token streams reported alongside (may or may
+not match depending on margins). CLAIM 3 of the spec lands
+on hash-A equality alone. PREDICTIONS: (1) hash A identical
+Mac/3080; (2) hash B differs; (3) greedy token streams
+nevertheless identical on most prompts (margins >> device
+epsilon per the fp16 near-tie doctrine — only coin-flip
+margins diverge). Fences: same commit both machines, same
+battery seeds, int64 codes cast to fp64 for the matmul on
+both devices (no TF32 path — fp64 GEMM only).
+
+AMENDMENT (pre-run, same session, targets the C4 pre-reg
+above): MPS has no fp64 — hash A's exact carrier is fp32
+with |x| < 2^6 (|codes| < 2^6, sum length <= 256, so every
+partial is an integer < 2^24: exact in fp32, order-
+invariant). cuda TF32 explicitly disabled in the instrument.
+Claim unchanged.
+
+## PRE-REG: PACKED CRYSTAL C6 — external validity: sigma-law v HQQ on Qwen2.5-0.5B (2026-07-29 night; Artin's GO given, 3080)
+
+Instrument: scratch/pack_c6.py (3080). All transformer Linear
+weights (embed/lm_head/norms untouched) fake-quantized per
+arm: (a) SIGMA-PACK q_t=ceil(2/sigma_t), avg raw bits
+MEASURED (Qwen tails may push past the crystal's ~5); (b)
+HQQ at round(measured avg) bits, group 64; (c) RTN same
+bits. Score: mean DeltaKL/token v fp on 16 fixed prompts +
+perplexity on a fixed local text slice (README.md, byte-
+deterministic) + per-arm quantization WALL-TIME. This is the
+cell where calibration cost becomes real (0.5B, ~290
+linears). PREDICTIONS: (1) sigma-pack DeltaKL within 2x of
+HQQ at matched bits (honest risk: real-LLM outlier channels
+are exactly what HQQ's robust zero-points buy — Gaussian-
+capacity logic may NOT transport from born crystals to web-
+trained weights); (2) sigma-alloc wall-time >=100x faster
+than HQQ full-model; (3) PPL ordering matches DeltaKL
+ordering. FALSIFIER (claim-1 external fence): sigma-pack
+DeltaKL > 5x HQQ's — then calibration-free allocation is a
+CRYSTAL-CLASS result, fenced off web-scale LLMs, and the
+paper's claim narrows honestly. Fences: 3080 cuda, fp16
+eval, fake-quant only (bytes claim already landed at C0/C2b),
+one model, n=1.

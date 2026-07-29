@@ -1245,6 +1245,16 @@ Desert test v2 — cross-grammar composition probe (union eq coefficient iv).
 - `sample_step(cur, temp=0.7)`
 - `verify(cur, pred, q)`
 
+### scratch/distortion_collapse.py
+THE DISTORTION COLLAPSE (pre-reg 2026-07-29 eve): one curve for the quantization axis. For every logged snap cell, recompute the induced normalized distortion x = param-weighted mean of (W - Wq)^2 / sigma_t^2 over ALL params (unsnapped tensors contribute 0), and pair with the BOOKED solves (y = solves / control). Claim: y = f(x), geometry/location/width-blind, knee at x ~ (0.5-1.0 sigma)^2 / 12 = 0.02-0.08. Desk only, no gates. Solves below are transcribed from logs/ (snap_alloc*.log, polar_snap*.log, snap_q*_gate.log). __main__-guarded.
+
+- `load(p)`
+- `rat_snap(w, qm)`
+- `x_of(sd, snapped)`
+- `polar_q(W, mstep, na)`
+- `uni_q(W, u)`
+- `main()`
+
 ### scratch/dual_probe.py
 Dual-crystal probe: math gate + physics probe on ONE vocab-41 model (the blackboard monolith control). Usage: dual_probe.py <ckpt>
 
@@ -1325,6 +1335,13 @@ THE ROUNDING-LOSS DECIDER (overnight GO): fp32 vs fp64-master paired burst at LR
 - `ternary(w)`
 - `class TLin` (forward)
 
+### scratch/g5_polar.py
+G5 POLAR (pre-reg 2026-07-29 eve): the predicted BREAK of geometry-blindness. cplx_G5_dep.pt carries DEPLOYED star weights ({0, +-s, +-is} per complex — anisotropic by construction); cplx_none.pt is the isotropic control crystal. Cells per crystal: control; polar 4 angles ALIGNED (1s mag); polar 4 angles ROTATED 45 deg (same bits); uniform u=1s. Prediction: rotation hurts ONLY the star crystal. alpha=none for both (dep weights are already hard). __main__-guarded.
+
+- `polar_q(W, mstep, na, rot=0.0)`
+- `uni_q(W, u)`
+- `main()`
+
 ### scratch/gate_batched.py
 Batched gate v2 (2026-07-21): batch ACROSS problems, 8 seeds each — one forward serves K*8 rows instead of 8. Right-padded buffer + attn_mask (model supports it); per-row write positions keep RoPE phases identical to the unbatched path. NOTE: float reduction order changes => near-ties may resolve differently => this is a NEW GATE LINEAGE (re-baseline models of record once). Usage: gate_batched.py <ckpt> <d> <layers> <ffn> <heads> <label> [K]
 
@@ -1403,6 +1420,11 @@ Potential-shaped GRPO on the gen-6 champion (2026-07-21, Artin GO — 'ahead of 
 
 - `phi(s)`
 - `shaped_collect(model, tok, dev, n_groups, seed0)`
+
+### scratch/head_autopsy.py
+THE HEAD AUTOPSY (pre-reg 2026-07-29 eve): per-(layer, head) single-cell deletion map on the h8 EMA crystal. The day census deleted a head INDEX across all layers (a column); this deletes one (layer, head) cell at a time — 64 cells on the proxy gate (n=8/level, +-2 noise, read the map shape), then FULL gates on control + min/max cells. __main__-guarded.
+
+- `main()`
 
 ### scratch/head_census.py
 Head census (pre-reg 2026-07-29: attention anatomy 1a). Zero head h of 4 across all layers of the d56 EMA crystal (q,k,v row blocks in the fused qkv [3D,D] + the o column block), gate each arm. Desk only, MPS.
@@ -1631,6 +1653,53 @@ Ozaki rungs 2b+2c (CPU). 2b: recombine partials into a Shewchuk EXPANSION (exact
 - `aligned_partials(A, B, s=8, block=32)` — yield (scaled partial matrices) — each exactly representable
 - `dd_chain(mats)`
 
+### scratch/pack_baselines.py
+PACKED CRYSTAL C3 (pre-reg 2026-07-29 eve): GPTQ/AWQ/HQQ honest table on d64h8 EMA. Baselines from llmopt/quantize/methods.py on every block Linear; calibration activations hooked from 24 prompts at GATE_BAND+500_000 seed offsets (never the gate band). Arms: {rtn,gptq,awq,hqq} x {5,3} bits -> full gate + mean DeltaKL v fp logits + calibration wall-time. C1 controls reused (fp 58, packed 58). __main__-guarded.
+
+- `calib_prompts(tok)`
+- `capture(model, prompts, dev)` — -> {key: X [n, in]} inputs of every block Linear + fp logits.
+- `main()`
+
+### scratch/pack_c6.py
+PACKED CRYSTAL C6 (pre-reg 2026-07-29 night, Artin's GO): external validity on Qwen2.5-0.5B (3080). Arms: sigma-pack (q=ceil(2/sigma) per tensor, closed form) v HQQ (matched bits, group 64) v RTN. Score: mean DeltaKL/token v fp16 on 16 fixed prompts + perplexity on a fixed README slice + per-arm quantization wall-time. Fake-quant only. __main__-guarded.
+
+- `sigma_pack(w)`
+- `main()`
+
+### scratch/pack_crystal.py
+THE PACKED CRYSTAL C0+C1 (pre-reg 2026-07-29 eve): real bytes for the sigma-law. C0: per-tensor denominator q_t = ceil(2/sigma_t) (grid step <= sigma/2, below the knee), codes = round(W*q_t) packed to ceil(log2(span)) bits, one (q_t, offset) per tensor -> .npz + reader. Norms/emb/head stay fp32 (tiny, never snapped). C1: full gates on packed v fresh fp control, same device — bar: within sigma (~3.5). Reports bits/wt, Shannon entropy of the code stream (Gaussian-capacity check), artifact bytes v fp32/fp16. __main__-guarded.
+
+- `pack_tensor(w)` — -> (packed bytes, q, minc, bits, shape, entropy_bits_total)
+- `unpack_tensor(packed, q, minc, bits, shape)`
+- `pack_crystal(sd, path)` — Pack all 2-D block weights; passthrough the rest. Returns stats.
+- `load_crystal(path)`
+- `main()`
+
+### scratch/pack_determinism.py
+PACKED CRYSTAL C4 (pre-reg 2026-07-29 night): cross-device determinism. Hash A: integer-GEMM outputs of every block Linear's sigma-law codes x a fixed integer activation battery, accumulated via fp64 matmul (all partials integers < 2^53 -> EXACT, reduction- order-invariant) — must match across devices. Hash B: fp32 full forward logits on a fixed prompt battery — expected to differ. Greedy token streams reported alongside. Run on each machine at the same commit; compare printed hashes. __main__-guarded.
+
+- `main()`
+
+### scratch/pack_gemv.py
+PACKED CRYSTAL C2 (pre-reg 2026-07-29 night): dequant-fused sigma-pack GEMV. Runtime format: int8 codes (byte-aligned twin of the 5-bit disk pack) + ONE fp scale per tensor (1/q_t). Kernel in int4_gemv v3 style: one simdgroup per row, char4 weight + half4 activation loads, simd_sum, scale once per row. Correctness v fp reference, then bench v fp16 GEMV at crystal AND large shapes; bandwidth-model prediction printed next to measured. mx.eval every timed iteration (lazy-graph scar). __main__-guarded.
+
+- `pack8(w)` — fp [N, D] -> (codes int8, scale). sigma-law: q = ceil(2/std),
+- `crystal8_gemv(x, codes, scale)`
+- `bench(fn, iters=200)`
+- `main()`
+- `pack5(w)` — fp [N, D] (D % 6 == 0) -> (words uint32 [N, D/6], scale,
+- `crystal5_gemv(x, words, scale, d)`
+- `main5()`
+
+### scratch/pack_tiered.py
+PACKED CRYSTAL C5 (pre-reg 2026-07-29 night): the tiered pack. matryoshka_d56_3tier.pt -> nested artifact: non-gate tensors packed once (C0 rule); gate.weight payloads nested — tier-8 base = numel/8 orbit representatives of P_C8, tier-2 payload = numel/2 delta v the QUANTIZED tier-8 prediction, dense payload = full delta v reconstructed tier-2. Each payload sigma-law-quantized on its own sigma. Desk identity check, then full gates on all three packed tiers (booked fp tiers: 57/57/48). __main__-guarded.
+
+- `perm(n, nb, s)`
+- `project(W, nb)`
+- `recon(rep, nb, n_out)` — rep [n_out/nb, n_in] (rows i%nb==0 of a C_nb-invariant W).
+- `squant(x)` — sigma-law quantize; -> (xq, q, bits, nbits_total)
+- `main()`
+
 ### scratch/phys_probe.py
 Physics rung 1 probe: greedy emission on held-out phys steps (seeds 17-19), sympy-equivalence in t, fork-isolated. No math gate — the physics expert is vocab-41, a separate model class by design. Usage: phys_probe.py <ckpt>
 
@@ -1673,6 +1742,14 @@ Pincer R8: meet v1 — full protocol (conjecture + peel + meet) vs let-it-finish
 - `load(p)`
 - `wave(model, cur, seeds, arm)`
 - `chain_search(model, root, seed0, arm, goal=None, plies=12)` — Greedy verified chain (gate discipline); if goal set given,
+
+### scratch/polar_snap.py
+POLAR-SPLIT SNAP (pre-reg 2026-07-29 day: escalation-engine cell 4). cplx_none.pt (unconstrained complex FFN, d384/f1536/h6): quantize the complex gate/up weights |c| COARSE x arg(c) FINE v uniform re/im grids, both expressed in sigma units (sigma law rider), bits/complex MEASURED as log2(#distinct values used). Fence: gate+up only (the complex-paired tensors); qkv/o/down untouched. Desk, MPS.
+
+- `split(W)`
+- `snap_uniform(sd, u)`
+- `snap_polar(sd, mstep, na)`
+- `gate(sd, tag, bits=None)`
 
 ### scratch/practice_mine.py
 PRACTICE MODE, model-side (the mirror of axiom's arg-10): duo-wave rollouts that (1) BANK verified steps from ALL attempts — solved or not (the solved-only leak fix, Artin) — tagging rows by outcome so the gen-8 A/B can split them; (2) LOG stuck states — the exact cur where every unsolved attempt died — to a worklist in axiom's format ({id, level, root, from, why, plies}), ready for the stuck-state exchange AND as maximum-surprise metabolic v4 food.
