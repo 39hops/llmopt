@@ -49,7 +49,28 @@ their data/llmopt/). Delivery via Fable-5 subagent to
 ~/code/axiom (Artin-sanctioned, iff Fable 5); design changes
 requested via relay tomorrow.
 
+## Banked ideas PULLED INTO today (Artin GO, 2026-07-29 morning)
+- E3 exact-mode paired gate -> merged into Leg 3 (armed; the
+  axiom loop is closed, first Mac co-location deliverable).
+- MATRYOSHKA RUNG 2 (3-tier nest) -> Leg 2 candidate arm on the
+  floor substrate: tiers full/half/eighth in ONE tensor gives
+  the tier-retry controller a 3-rung ladder (escalate on fail
+  twice) — the Snell/difficulty policy needs >=3 settings to be
+  a policy at all.
+- REVERSE-PAIRS cheapest cell (banked 07-26, the pincer entry
+  ticket): 50/50 nxt->cur + forward v forward-only, matched
+  dose, one ~20-min d64 birth — fill-in cell while desk legs
+  run; also carries the reverse-ternary arm question (banked
+  07-29) if the base cell pays.
+- POLAR-SPLIT SNAP on the cplx crystal (banked 07-29): coarse
+  |w| x fine arg(w) v uniform at matched bits — desk + short
+  heal; runs as Leg 1c's sibling (same allocation-of-accuracy
+  frame, complex plane instead of block split).
+
 ## Queue behind (unchanged)
-Snap-at-knee on d56/f48; Leg B call-spans; Leg C diet descent;
-polar-split snap on cplx crystal; difficulty-gated tier policy
-(predictive version, must beat Leg 0's retry baseline).
+Snap-at-knee on d56/f48 (ckpts pull back from WSL first);
+Leg B call-spans; Leg C diet descent; difficulty-gated tier
+policy (predictive version, must beat Leg 0's retry baseline);
+energy-knob refinement; 45M full-heal + ZX toll anatomy;
+workspace-experiments bank (scratch-workspace, basis proposer,
+temporal pincer full protocol).
