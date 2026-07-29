@@ -10156,3 +10156,27 @@ shrinks again; (3) valid% rises monotonically with depth
 not capability (echoes the calibration arc's fluency/
 capability split). Fences: n=1 per cell, MPS line, gen-4
 diet, gates-only; deeper ladders untested past 16.
+
+## LEG C VERDICT: THE MARGINAL-VALUE LADDER IS FLAT — no level's dose bites at quarter-cut (2026-07-29 day; night31 cuda)
+
+8 cells v comparator cuda d64 EMA 58.7 (n=3, sigma ~3.5):
+L1c25 58, L1c50 58, L2c25 62, L2c50 57, L3c25 55, L3c50 60,
+L5c25 59, L5c50 59. Every cell within ~1 sigma of the
+comparator; the two doses per level do not even order
+consistently (L3: 55 at 25% keep but 60 at 50%) — pure noise
+shape. Prediction (L3/L5 cuts bite at 25%) WRONG, booked —
+the day's second falsification. THE READ: saturation is
+TOTAL, level by level — even a QUARTER dose of any single
+level (including the gate's own L3/L5 mass) is free at
+d64/gen-4. d(gate)/d(log rows) ~ 0 at every measured level.
+THE ALLOCATION ANSWER (what cell 2 was for): the next farm
+tranche should buy NOTHING at existing levels — more rows of
+L1-L5 are worthless; only new HARDNESS (levels, families,
+prosthetic formats) can move the gate. THE DAY'S TRIPLE
+CLOSES: depth flat + dose flat + storage at 99% of the
+rate-distortion bound => the crystal is bound by NEITHER
+architecture depth, NOR data volume, NOR bits — the frontier
+is attention geometry x diet hardness x decode policy
+(escalation 62, delegation +15: both decode/format levers,
+both worked; every capacity lever this week nulled). Fences:
+n=1 per cell, cuda line, EMA gates, gen-4 diet.
