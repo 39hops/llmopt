@@ -10218,3 +10218,19 @@ transformer-LM scale/diet, not an attention universal; at
 oracle-verified micro-scale, deletion is always catastrophic.
 Fences: n=1, MPS, gates-only, single-head deletions (no
 pair/subset scan).
+
+## PRE-REG: POLAR-SPLIT SNAP — |c| coarse x arg fine (2026-07-29 day; escalation-engine cell 4)
+
+cplx_none.pt (unconstrained complex FFN d384/f1536/h6): snap
+the complex gate/up weights on a POLAR grid (|c| step in
+sigma units x N angle bins) v UNIFORM re/im grids (step in
+sigma units), bits/complex MEASURED as mean log2(#distinct
+values). Cells: uniform u {0.5, 1, 2} sigma; polar (1s x 64),
+(1s x 16), (2s x 64), (0.5s x 8). Fence: gate+up only; in-
+battery t=0 control. PREDICTIONS (sigma law + R2's angular
+knee): (1) uniform obeys the sigma-priced knee — 0.5s free,
+2s bites; (2) at MATCHED measured bits, polar with fine
+angles BEATS uniform (the rotational crystal spends its
+information angularly); (3) angle-starved polar (8-16 bins)
+bites even with fine magnitude — the angular axis is the
+priced one. Desk, MPS, n=1, gates-only. polar_snap.py.
