@@ -10330,3 +10330,47 @@ predict a NEW crystal's knee from its flips/token probe alone
 (1% of a gate's cost) — the prediction that would ship the
 equation. Fences: booked solves transcribed (no re-gates);
 best-rational vs sigma-step grids mix in x; n=1 per cell.
+
+## G5 POLAR VERDICT: geometry-blindness does NOT break — even star weights shrug off a 45-degree grid rotation (2026-07-29 eve)
+
+STAR (cplx_G5_dep, control 66): polar4 aligned 63, polar4
+ROTATED-45 62, uniform 1s 63 — all three snaps cost the same
+~3-4, and rotation (which moves EVERY nonzero star weight by
+45 degrees, |dc| ~ 0.77|c| — massive distortion) costs -1 v
+aligned. ISO control battery flat as predicted (61-63).
+PREDICTION (aligned free / misaligned craters) FALSIFIED —
+the third strike on axis-priced quantization. Reads: (1) the
+aligned cell was NOT free because the sigma-step MAGNITUDE
+grid moved the star radius (angle preservation bought
+nothing); (2) the rotated cell's huge distortion still lands
+on the cplx robustness curve — consistent with the two-
+parameter law (k_c small for the cplx class) rather than any
+coordinate pricing; (3) anisotropic WEIGHTS do not imply
+anisotropic FRAGILITY: what the function needs is preserved
+under global rotation of the star (the modReLU/rotation
+mechanism lives in activations — R1's lesson landing again).
+The distortion-collapse equation stands unqualified: bits ->
+distortion -> flips -> solves, coordinates nowhere in the
+chain. Fences: n=1, MPS, gate+up fence, one star crystal.
+
+## HEAD AUTOPSY VERDICT: essentiality is CELL-SPARSE, not uniform — one (layer,head) deletion craters, another is free (2026-07-29 eve; amends the intrinsic-heads law)
+
+64-cell per-(layer,head) map on h8 EMA (proxy ctrl 19/40):
+range 7..20; only 13/64 cells drop >2 below control. FULL
+gates on the extremes: control 58; MIN cell L1h7 = 24/120
+(-34: ONE of 64 heads deleted, catastrophic); MAX cell L1h4 =
+61 (free, +3). AMENDMENT to the intrinsic-heads law: the day
+census (all COLUMN deletions catastrophic) was correct but
+coarse — per-cell structure is a SPARSE CRITICAL CIRCUIT
+(~13/64 load-bearing cells, concentrated in early-mid layers:
+L1, L3) embedded in substantial per-cell slack (~51/64 within
+proxy noise). Every column contains at least one critical
+cell, which is why column deletion always cratered. Refines
+"attention geometry precious": PRECIOUS = the sparse circuit;
+the rest of the head grid is slack like ffn/depth/bits.
+Consequences: (1) head-level pruning IS available if done
+per-cell (structured sparsity with a census, not by index);
+(2) the critical cells are a MAP of where the capability
+lives — candidate probe targets for the delegation/routing
+work. Fences: proxy n=8 (+-2) for the map, full gates on
+extremes only, n=1, MPS, one crystal.
