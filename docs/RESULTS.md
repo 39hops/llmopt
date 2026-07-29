@@ -9789,3 +9789,13 @@ constant relative resolution (the sigma-never-transports fence
 reappearing on the bits axis). Falsifiable: Q=64 at d256
 should be free (grid/sigma ratio matches d56's Q=16).
 Fences: n=1 per arm, MPS, gates-only.
+
+## PRE-REG: SIGMA-PRICED SNAP CHECK — Q=64 at d256 (2026-07-29 evening, immediately following)
+
+If the precision grid is sigma-priced, Q=64 at d256 (grid
+1/64 = 0.016 ~ sigma/4, matching d56's Q=16 ratio) should be
+FREE in all three locations. Free => the law books (snap
+denominators scale ~sqrt(d); "Q" fences must state width);
+still bites => the d256 crystal is genuinely more precision-
+sensitive (a capability-density story instead). n=1, MPS,
+gates-only.
