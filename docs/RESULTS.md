@@ -9483,3 +9483,25 @@ the tiers are partially COMPLEMENTARY (union > either) — a
 diversity bonus, book hard (would echo verify-block near-tie
 composition). Fences: n=1, MPS, gates-only, same seeds as all
 d56 gates.
+
+## TIER-RETRY VERDICT: the dial's first measured win — 59 solves at 69% effective params, and the tiers are PARTIALLY COMPLEMENTARY (2026-07-29)
+
+d56 matryoshka pair, desk: retry policy 59/120 v always-dense
+57 v always-cheap 52. Census: both 50, cheap-only 2, dense-only
+7, neither 61; cheap-fail rate 0.567; effective gate params/row
+69.4k v dense 100.4k (69%). BOTH pre-reg wins land together:
+(read 1) the controller beats always-dense on COST (-31% gate
+params) — oracle-fail is a sufficient difficulty signal, no
+predictor model needed; (read 3) retry EXCEEDS dense (+2,
+sub-sigma but directionally the cheap-only rows exist: 2 rows
+the projection solves that the full tensor misses) — the tiers
+are partially complementary, echoing the verify-block
+composition near-tie mechanism (different roundings, different
+coin-flips). The adaptive crystal is REAL at its smallest
+scale: one tensor, a free difficulty signal, strictly better
+params-per-solve than either fixed tier. NEXT: 3-tier ladder
+(matryoshka rung 2) turns retry into escalation; predictive
+routing must now beat THIS baseline (the fence from the
+entropy-adaptive null: adaptivity pays only where variance
+lives — here it measurably does). Fences: n=1, MPS, gates-only,
+retry +2 within sigma.
