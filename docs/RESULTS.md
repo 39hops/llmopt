@@ -10197,3 +10197,24 @@ ALL 8 essential => the diet recruits every channel offered
 own law and the Michel/Voita tension row hardens). Also read
 the 8-head gate v the 4-head line (58.7-class): heads x2 at
 fixed d = free, tax, or gain? n=1, MPS, gates-only.
+
+## HEAD-TENSION VERDICT: ALL EIGHT ESSENTIAL — the diet recruits every channel offered (2026-07-29 day; cell 3)
+
+Born-8-heads d64/f256 (head_dim 8): EMA gate 58/120 — dead
+level with the 4-head cuda line (58.7, n=3): heads x2 at
+fixed d is FREE, neither tax nor gain. Census on the EMA
+weights: single-head deletions land 39/47/30/34/40/43/41/21
+v 58 — best case -11 (~3 sigma), worst -37. NOT ONE prunable
+head at DOUBLE the provision. The provisioning frame
+(Michel/Voita heads-are-slack because over-provisioned; ours
+essential because at-floor ~relation count 4) is FALSIFIED:
+given 8 channels, training distributes load across all 8 and
+every one becomes essential. BOOKS AS ITS OWN LAW: head
+essentiality here is a TRAINING outcome (load spreads to fill
+provision), not a task constant — relations scale with
+provision. The Michel/Voita tension row HARDENS: their
+prunability likely reflects redundancy induced at
+transformer-LM scale/diet, not an attention universal; at
+oracle-verified micro-scale, deletion is always catastrophic.
+Fences: n=1, MPS, gates-only, single-head deletions (no
+pair/subset scan).
