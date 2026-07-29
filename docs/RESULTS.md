@@ -10427,3 +10427,57 @@ now measured; next: C3 baselines (GPTQ/AWQ/HQQ honest table),
 C2 kernel, C5 tiered pack; C4 needs a 3080 window; C6 HOLD.
 Fences: n=1 per crystal, MPS, full gates n=24, sigma
 per-tensor never transported.
+
+## PRE-REG: PACKED CRYSTAL C3 — GPTQ/AWQ/HQQ honest table on the d64h8 crystal (2026-07-29 eve)
+
+In-tree baselines (llmopt/quantize/methods.py: rtn, gptq, awq,
+hqq) applied to every block Linear of d64h8 EMA, v the C1
+sigma-law pack. Calibration for gptq/awq: activations hooked
+from a forward pass over 24 prompts at GATE_BAND+500_000
+seed offsets (never the gate band). Arms: {rtn, gptq, awq,
+hqq} x {5 bits (matched to our 5.06), 3 bits (stress, below
+the knee)} -> full gates + mean DeltaKL v fp logits on the
+calibration battery + calibration wall-time per method (ours
+= per-tensor std() in closed form). C1 controls reused (fp 58,
+packed 58 — same device, same session, same instrument).
+PREDICTIONS: (1) at 5 bits ALL methods gate within sigma of
+control — the free zone is free for everyone; the honest
+differentiator is wall-time (ours ~0) and calibration DATA
+(ours none), not quality; (2) at 3 bits (step ~2 sigma,
+above the knee) all methods drop by >sigma, and per the
+distortion-collapse law calibrated compensation (gptq) buys
+back SOME gate v rtn3 but does not restore control (D
+dominates, k_c is crystal-priced, no allocator can hide 2
+sigma of distortion); (3) DeltaKL orders with gate damage
+across arms (the flips chain). Falsifier for claim 1 of the
+spec: a calibrated method beating our pack by >sigma at
+matched 5 bits — then calibration buys real quality here and
+"calibration-free at parity" collapses. Fences: n=1 per arm,
+MPS, full gates n=24, one crystal.
+
+## PACKED CRYSTAL C3 VERDICT: nothing beats the calibration-free pack at matched bits — and the 3-bit stress arm FLAT on solves (prediction 2 falsified) (2026-07-29 eve)
+
+d64h8, C1 controls (fp 58, sigma-pack 58). 5-bit arms: rtn 59,
+gptq 58, awq 58, hqq 57 — ALL within sigma of control and of
+our pack; DeltaKL 0.0011-0.0018/tok. PREDICTION 1 CONFIRMED
+and the spec's claim-1 falsifier did NOT fire: with a real
+Hessian and real activation scales, no calibrated method
+beats the closed-form sigma-law pack at matched bits.
+3-bit stress arms: rtn 57, gptq 55, awq 56, hqq 60 — solves
+STILL flat (PREDICTION 2 FALSIFIED: no >sigma drop), but the
+damage is visible elsewhere: valid% falls 57 -> 46-54 and
+DeltaKL jumps 20-40x (0.022-0.059/tok). Reads: (1) this
+crystal's k_c is small enough that even step ~1.5 sigma
+distortion stays under the solve knee — fragility is
+crystal-priced (d56 paid -4/-7 at comparable x; d64h8
+shrugs), another two-parameter-law data point, not a
+contradiction; (2) fluency (valid%) and DeltaKL are the
+early-warning channel, solves the last to fall — same
+ordering as the flips chain. PREDICTION 3 weakly held: hqq3
+had lowest DeltaKL and highest gate, but 3-bit gate spread is
+sub-sigma. HONEST CAVEAT for the paper: at 200k-500k params
+calibration is sub-second (0.9s pass + <0.2s optimize), so
+the wall-time differentiator is trivial HERE — it becomes
+real at 0.5B+ (C6, HOLD). The quality claim stands: zero
+data, zero search, parity with Hessian-armed baselines.
+Fences: n=1 per arm, MPS, one crystal, C1 controls reused.
