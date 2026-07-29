@@ -9226,3 +9226,19 @@ lossless-speed-defaults family pending one confirmation at the
 true production schedule (warmup+cosine, the recipe fence) —
 banked as the adoption gate. Fences: constant-LR variant,
 in-run paired, n=1.
+
+## PRE-REG: A0 — EMA ADOPTION GATE AT THE TRUE PRODUCTION SCHEDULE (2026-07-29, before the run; minimal-crystal spec Leg A cell 0)
+
+The d256 +6 EMA verdict carried one fence: constant-LR variant.
+A0 closes it: one dense d256/gen-4/3ep birth on MPS, seed 1,
+bs 32, PRODUCTION schedule (OneCycleLR max_lr 3e-4, pct_start
+0.03 — the train_mathnative recipe, replicated knob-for-knob in
+sym_birth.py SCHED=onecycle incl. the last-step guard), Polyak
+EMA 0.999 tracked; gate BOTH endpoints in-run paired. READS:
+EMA >= raw + sigma(3.5) => ADOPT — EMA joins the lossless-speed
+-defaults family (every subsequent birth in Legs A-C rides it);
+EMA ~ raw (within sigma) => schedule-sensitive: cosine decay
+already averages implicitly (small terminal LR = its own
+Polyak), EMA stays a constant-LR rescue tool, NOT a default;
+EMA < raw => the cosine tail + EMA double-average overshoots —
+book and fence. n=1, MPS, in-run paired, gates-only.

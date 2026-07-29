@@ -90,10 +90,14 @@ for r in rows:
         enc.append(ids)
 enc.sort(key=len)
 opt = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=0.01)
+SCHED = os.environ.get("SCHED", "")  # "onecycle" = production recipe
 ema = ({k: v.detach().clone() for k, v in model.state_dict().items()}
        if EMA_D > 0 else None)
 order = list(range(0, len(enc) - BS + 1, BS))
 steps_total = len(order) * EPOCHS
+sched = (torch.optim.lr_scheduler.OneCycleLR(
+    opt, max_lr=LR, total_steps=steps_total, pct_start=0.03)
+    if SCHED == "onecycle" else None)
 step = 0
 for ep in range(EPOCHS):
     random.Random(ep).shuffle(order)
@@ -119,6 +123,8 @@ for ep in range(EPOCHS):
         opt.zero_grad(set_to_none=True)
         loss.backward()
         opt.step()
+        if sched is not None and sched.last_epoch < steps_total - 1:
+            sched.step()
         if ema is not None:
             with torch.no_grad():
                 for k, v in model.state_dict().items():
