@@ -1507,3 +1507,44 @@ to the collaboration itself.
   mixed precision on d56 (snap the low-curvature layers, keep
   attention fp16) v uniform snap at matched total bits.
   Attribution: Artin (riff); house (mappings + fence).
+
+- **"Quantize in different dimensions — width, length, different
+  complexes, quantum-state-esque quantization" (Artin,
+  2026-07-29 night)**: the axis inventory, mapped to measured
+  ground. WIDTH: matryoshka tiers (65/60 free at d256; -6 trade
+  at the floor). LENGTH: already measured TWICE — ladder-retry
+  decode (retry failures at bigger budget) and clade budget
+  recycling (self-pacing PAYS at one pass) — the sequence axis
+  is the one place adaptivity has a booked WIN. COMPLEXES: the
+  ladder toll curve (2x:-1, 4x:-4, 8x:-6) is the price list for
+  sharing-axis quantization; spectrum bands are its frequency
+  form. QUANTUM-STATE-ESQUE: honest fence — our nets aren't
+  unitary, amplitude-encoding breaks (path-integral + ZX
+  rotation nulls); the SURVIVING form is POLAR quantization of
+  complex weights (magnitude bits v phase bits split) — and
+  rotational snap R2 measured the knee as ANGULAR, so phase
+  deserves finer bits than magnitude. CELL banked: polar-split
+  snap on the cplx crystal (coarse |w| x fine arg(w) v uniform,
+  matched total bits). Attribution: Artin (riff); house
+  (mapping + fences + cell).
+
+- **THE ADAPTIVE CRYSTAL (synthesis, Artin x house, 2026-07-29
+  night; from the full-RESULTS sweep)**: every component of the
+  runtime compression dial already has a measured verdict —
+  (1) PRICE CURVES per axis: snap knee Q in (16,24]; ladder
+  toll 2/4/8x; tier price = slack; spectrum convexity at floor.
+  (2) FREE DIFFICULTY SIGNALS: flips/token predicts snap
+  robustness (rho .883); magic estimator = continuous hardness;
+  the free router (holographic code) routes without a probe
+  model; margin census says undecided mass is uniform.
+  (3) RETRY DOCTRINE: ladder-retry + clade recycling = the
+  "if difficult, increase budget" policy, measured to pay on
+  the length axis. (4) FENCE: entropy-adaptive draft length
+  NULLED — adaptivity pays only where variance lives (the
+  magic-estimator law); a dial on a flat landscape is pure
+  overhead. MISSING PIECE: the CONTROLLER tying (2) to (1) —
+  cheapest cell: TIER-RETRY on the d56 matryoshka pair (decode
+  cheap tier; on oracle-fail retry dense; desk-only, zero
+  training, both tiers already in one tensor). That cell is
+  Artin's "predict/snapback/increase precision" verbatim.
+  Attribution: Artin (program riff); house (synthesis + cell).
