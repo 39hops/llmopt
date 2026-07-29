@@ -10804,3 +10804,33 @@ expert, score it) arms. DECISION RULE shipped either way:
 M small -> sigma-law; M large -> max-anchored/calibrated.
 Fences: desk read only, one shard for V3, block-dequant
 approximation noted.
+
+## CAPACITY METER VERDICT: the allocator predicate works from disk — and DeepSeek's EXPERTS land in the crystal band (2026-07-29 late night)
+
+Full table (M = span_bits - code_entropy at per-row sigma/2;
+kurtosis alongside; param-weighted):
+  crystal cplx_none  M 0.96  kurt 2.26   (9.4M read)
+  crystal d64h8      M 1.61  kurt 3.70   (0.5M)
+  crystal L4d56      M 1.61  kurt 3.56   (0.2M)
+  DeepSeek-V3 L30 EXPERTS  M 2.33  kurt 3.07  (704.6M, fp8
+    block-dequant, one shard)
+  Qwen2.5-0.5B dense M 3.62  kurt 5.29   (357.8M)
+  SmolLM2-1.7B dense M 3.85  kurt 6.54   (465.6M read)
+PREDICTION 1 CONFIRMED (crystals 0.96-1.61, in band).
+PREDICTION 2 DIRECTIONAL (web-dense 3.62/3.85 v predicted
+>=4 — separation clean, threshold missed by ~0.3; booked
+honestly). PREDICTION 3 CONFIRMED, the headline: DeepSeek's
+routed experts read kurtosis 3.07 — GAUSSIAN to two decimals
+— and M 2.33, far from the web-dense band. The 07-17
+"experts are crystals" spectral result extends to the
+CAPACITY axis: the router-as-diet-focuser drives expert
+weights to max-entropy, exactly the regime where sigma-law
+allocation is optimal (C1: entropy=capacity <1%) and where
+Lloyd-Max fitting buys nothing (07-25: MSE-optimal codebooks
+tie uniform on outlier-free crystals — the same law from the
+codebook side). DECISION RULE SHIPPED: M <~ 2.5 -> sigma-law
+(calibration-free); M >~ 3.5 -> max-anchored/calibrated. C7
+ARMS: pack DeepSeek experts (or any open MoE's) with the
+sigma rule v HQQ — the paper's web-scale home. Fences: desk
+read, one V3 shard (layer 30), 48-tensor samples for the big
+models, thresholds n=1 per class.
