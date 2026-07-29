@@ -1548,3 +1548,36 @@ to the collaboration itself.
   training, both tiers already in one tensor). That cell is
   Artin's "predict/snapback/increase precision" verbatim.
   Attribution: Artin (program riff); house (synthesis + cell).
+
+- **"The reverse LLM as the self-learner: it learns/grows and
+  feeds/tunes the forward LLM" (Artin, 2026-07-29 night)**: this
+  closes a loop the ledger has been circling for three days. The
+  lineage, assembled: (1) LLMUE's dead half is TEACHERLESS
+  self-practice; the 07-26 bank already named the fix — "a
+  learned millisecond peeler = teacher-signal without farm
+  latency" — Artin's riff is that idea PROMOTED from tool to
+  protagonist: the reverse model is the one that learns, and the
+  forward model consumes its output as diet. (2) The 07-29
+  backward-TAX verdict (dose-controlled) says direction must
+  live in a SEPARATE model — which is exactly the riff's shape:
+  two models, asymmetric roles (reverse = farmer/teacher,
+  forward = solver), not one dual crystal. (3) The verify
+  asymmetry makes it economical: generating a predecessor is
+  hard, CHECKING one is a millisecond forward rule application —
+  the reverse direction is where generation is cheapest to
+  verify (the whole verified-and-distinct doctrine rides free).
+  (4) Diet saturation (07-29) says the forward model needs
+  HARDER rows, not more — and a reverse model walking backward
+  from hard answers is a hardness-targeted farm by construction.
+  CHEAPEST CELL — THE FARMER PROBE (banked): train a small
+  reverse model (nxt->cur, gen-4), sample predecessors from
+  gate-band answers, verify each by forward application, score
+  verified-DISTINCT-novel yield per 1000 samples v the sympy
+  farm's yield-per-second. High yield => the self-farming loop
+  is live (expert iteration with the reverse model as the
+  improving teacher); low => the peeler needs its own diet
+  first. Quantum framing fence (honest): nothing quantum is
+  load-bearing here — the surviving content is the pincer's
+  oracle-collapsed two-model superposition, as banked 07-26.
+  Attribution: Artin (the promotion + self-learning frame);
+  house (lineage + economics + cell).

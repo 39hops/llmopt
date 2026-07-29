@@ -45,3 +45,13 @@ a full tranche and the d64-class LLMUE decode-side resolver.
 ## Order + budget
 1 (desk) -> 3 birth queued behind 4 (desk) on Mac; 2 = next
 3080 night battery; 5 event-driven. All pre-reg per cell.
+
+## Cell 6 — THE FARMER PROBE (folded in 07-29 night; Artin's
+## reverse-self-learner riff)
+Small reverse model (nxt->cur, gen-4, d64-class) -> sample
+predecessors from gate-band answers -> verify by forward rule
+application (ms) -> score verified-distinct-NOVEL yield/1000 v
+sympy-farm yield/sec. High yield = the self-farming loop is
+live: reverse learns, forward eats (two models per the
+backward-tax law; hardness-targeted per the saturation law).
+Runs after cells 1/4 on Mac or as 3080 night second half.
