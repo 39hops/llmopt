@@ -1142,9 +1142,19 @@ Boundary-or-bulk regression on the completed 0.5M->400M grid.
 - `affine_r2(xs, ys)`
 - `main()`
 
+### scratch/build_dist_diets.py
+Build the rung-3 paired diets (spec 2026-07-28, 3-arm design).
+
+
 ### scratch/build_merged_diet.py
 Build data/merged_diet.jsonl (schedule-law queue item 1): gen-6 cumulative corpus (v22 + l8 + gen4 sidecar) + the L9a shard, with L1-L3 rationed to 45% (the gen-7 lesson). Stable string seed.
 
+
+### scratch/calib_probe.py
+Calibration probe (spec 2026-07-28 rung 1): flips-per-token under a Q-lattice snap. Teacher-forced greedy argmax on a fixed 400-row probe set; count positions where the snapped twin's argmax differs from the unsnapped model's. Control arm: Q=0 (no snap) must read exactly 0 flips. Also reports the logit-margin distribution at flip sites (the snap-anatomy read: flips should sit at tiny margins). Usage: calib_probe.py <ckpt> <d> <layers> <ffn> <heads> [Q=16]
+
+- `rat_snap(sd, Q)`
+- `flips_per_token(ckpt, d, layers, ffn, heads, Q=16, dev=None)`
 
 ### scratch/ce400.py
 CE-400: fixed-sample CE proxy (the standing instrument from the CE-gate study). Usage: ce400.py <ckpt> <label>
@@ -1183,6 +1193,7 @@ Complex-FFN model builder (spec 2026-07-26-complex-zx-program, Leg A).
 - `set_alpha(a: str) -> None`
 - `g5_quantize(wr: torch.Tensor, wi: torch.Tensor)` — Nearest of {0, ±s, ±is} on each complex weight; STE outside.
 - `gn_quantize(wr: torch.Tensor, wi: torch.Tensor, phases: int)` — Nearest of {0} u {s*e^(2*pi*i*k/phases)}: exact roots of unity.
+- `zi_quantize(wr: torch.Tensor, wi: torch.Tensor, Q: int=6)` — Gaussian-integer rational lattice (RIFF 2026-07-27, Artin):
 - `quantize_pair(wr: torch.Tensor, wi: torch.Tensor)` — Route (re, im) through the alphabet named by _ALPHA.
 - `_q(w: torch.Tensor, pair_dim: int) -> torch.Tensor` — STE-quantize a real matrix whose pair_dim halves are (re, im).
 - `build_complex_model(vocab_size: int, d: int=384, layers: int=8, heads: int=6, ffn: int=1536, ctx: int=512)`
@@ -1195,10 +1206,25 @@ Complex-weight NNUE vs real twin on magic labels (pre-reg below).
 - `run(model, name, xtr, ystr, yctr, xte, yste, ycte, test, epochs=200)`
 - `tensors(rs)`
 
+### scratch/complexify_control.py
+Symmetry ladder S2 (pre-reg 2026-07-28): complexification control. Double wfloor d256 -> d512 by W(+)W on every linear (block layout); the doubled gates commute with J_half by theorem (asserted). Same function in real arithmetic; fp last-bit ties permitted per amended bar. No training — pure control gate.
+
+- `blockdiag(W)`
+
 ### scratch/confluence.py
 Metabolic-vs-champion confluence: where did 471 signed rows land? Per-matrix ||dW||, effective rank of delta, top-layer localization, ternary flip census (would the 1.58-bit deployment even change?).
 
 - `ternary(w)`
+
+### scratch/corner_snap.py
+The compression corner (pre-reg 2026-07-28 night): rational- snap (direct, exact-best p/q, q <= Q) x {dense wfloor d256, circulant-8x substrate}, Q in {8, 16}. Paired gates on one device. Delta-of-deltas reads orthogonality of the bits and sharing compression axes. Snap code inlined from scratch/rational_snap.py (same operator, no subprocess).
+
+- `snap_sd(sd, Q)`
+
+### scratch/d2_verify.py
+d2 endpoint verification (amendment 2026-07-28): are the fp64- masters and exact-dd arms' endpoints WEIGHT-identical, or only count/outcome-identical as booked? Three reads: (1) element-wise state_dict equality; (2) deployed ternary sign-map (flip-SET) equality; (3) calib_probe fingerprints on both. Runs on the 3080 (checkpoints live there); CPU-safe.
+
+- `tern_sign(w)`
 
 ### scratch/desert_v2.py
 Desert test v2 — cross-grammar composition probe (union eq coefficient iv).
@@ -1224,6 +1250,10 @@ Duo-substrate mixed wave (spec 2026-07-22-duo-substrate, exp 1): per ply, B/2 sa
 - `skeleton(e: str) -> str`
 - `binof(n)`
 
+### scratch/e2_logit_check.py
+E2 closure (relay -28-5 loop): reproduce axiom's pinned 20-prompt battery logits with torch fp32 on the house scorer. Asserts (1) their token ids decode to their meta text via the house tokenizer (tokenization parity), (2) final-position logits agree within 1e-4 elementwise. PASS arms E3.
+
+
 ### scratch/emission_wall_pair.py
 Rung-1 bar (iii), in-diet form: does prefix move the operand-complexity emission wall? (spec 2026-07-25-native-transformer; poly_chain5 psub/padd rows are OUT-OF-DIET for gen-4 twins — bridge law + naked-forms lesson — so the wall is read on generator-drawn in-language states instead.)
 
@@ -1238,6 +1268,19 @@ THE EXCHANGE TEST (pre-registered 2026-07-23): train the v4 organism on axiom's 
 - `class TLin` (forward)
 - `try_state(cur0, seed0, plies=8)`
 - `probe(tag)`
+
+### scratch/export_axnn.py
+E2: export a MicroLM crystal to AXNN v1.1 (proposed extension: cfg ffn="swiglu" + fused-qkv + rmsnorm-no-bias + rope + SEPARATE (untied) head — every convention DECLARED per the AXNN doctrine).
+
+
+### scratch/farm_dist_rows.py
+Distribution rows (spec 2026-07-28 rung 3): for each diet cur, enumerate the engine's verified-valid moves (successors: sympy- verified, non-identity by construction), weight by MarkovPrior (rule-name unigram, @site stripped, unseen = 0.5*median — the proposer's own convention), emit ALL of them as weighted rows. Rows STREAM out incrementally (the killed-worker doctrine). sympify here runs on farm-certified diet strings, not model text.
+
+- `enumerate_moves(cur, expr)` — -> [(rule_name, child_sstr)]; axiom bridge (deadline-walled,
+
+### scratch/fixed_q_snap.py
+Fixed-denominator snap (spec addendum 2026-07-27, 'integer twin'): every 2-D weight -> round(w*q)/q for ONE shared q. Unlike best-rational (free denominators), this makes W = P/q with integer P — the forward pass becomes an integer GEMM / q, the road to exact integer inference (ozaki/FX-V1 substrate). Error bound 1/(2q), vs ~1/Q^2 for best-rational. Usage: fixed_q_snap.py <ckpt_in> <q> <ckpt_out>
+
 
 ### scratch/format_delta_prep.py
 Build row embeddings for the delta-chained format (spec 2026-07-26-format-ladder): mean-pooled final-norm hidden states of the pairs-trained control crystal (wfloor_d256) over each pair text. Output: checkpoints/fmt_row_emb.pt (N, d) unit vectors, row-aligned with the filtered gen-4 row list.
@@ -1308,12 +1351,26 @@ Max-asymmetric {0,1,2,3} gauge-commutation arm (pre-reg 2026-07-26).
 
 - `m4x_rows(w)` — {0,1,2,3} x per-row amax/3 scale — maximally asymmetric.
 
+### scratch/gauge_slack_rat.py
+Gauge-slack 4-crystal cell (pre-reg 2026-07-27 night, RIFF-LEDGER).
+
+- `load(path)`
+- `nfro(a, b)`
+- `perm_align2(a, b)`
+- `rot_align(a, b)`
+
 ### scratch/graph_modularity_gen8.py
 Graph-modularity read: gen-8 five-grammar crystal vs single-grammar 19M.
 
 - `load(path: str) -> dict`
 - `layer_graph(feat: torch.Tensor) -> nx.Graph`
 - `read(path: str) -> tuple[float, float]`
+
+### scratch/greedy_first_gate.py
+Greedy-first adoption cell (pre-reg 2026-07-28 night): on the FULL production gate battery (same seeds/levels as gate_eval), race (a) wave-8 (production) vs (b) greedy-first with wave-8 retry only at plies where greedy's candidate fails verification. Same chain semantics as gate_eval (12 plies, oracle-picked). Usage: greedy_first_gate.py <ckpt> <d> <layers> <ffn> <heads> <label>
+
+- `greedy(prompt, spend)`
+- `run(arm)`
 
 ### scratch/grpo_shaped.py
 Potential-shaped GRPO on the gen-6 champion (2026-07-21, Artin GO — 'ahead of metabolic v3'). The b-lever: reward bandwidth. r = verified * (1 + LAM * tanh((Phi(cur)-Phi(next))/SCALE)), Phi = -(count_ops + 40*n_Integral). Unverified stays 0 (oracle floor intact; Ng-shaping preserves optimal policy). Monkeypatches G.collect's r_of via a wrapped collect; everything else (driver, gates, rollback) is the production harness. Pre-registered against the plateau: solves flat by cycle 4 in every unshaped run — shaped must beat +2 solves over 12 cycles or the b-lever nulls.
@@ -1340,6 +1397,12 @@ Joint-permutation distance closure cell (banked 2026-07-26).
 - `joint_dist(A, B)` — Per-layer joint perm over [gate row | up row | down col].
 - `raw_dist(A, B)`
 
+### scratch/judge_decode.py
+Judge-collapsed decoding (spec 2026-07-28 rung 4, pre-reg 2026-07-28). Three arms on 30 fresh L5-L7 states, 12 plies: (a) wave-8 (production semantics), (b) greedy-1, (c) greedy with top-2 branching at near-tie steps (margin < 0.02), oracle judge, both branches' tokens charged. Tokens + per-state sidecar logged.
+
+- `greedy_step(prefix, spend, branch=False)` — Greedy decode one Step line. branch=True: at the FIRST
+- `run_chain(cur0, arm, seed0)`
+
 ### scratch/kv_equiv.py
 KV-cache sampler + equivalence oracle (house rule: token- identical to eager full-recompute, or it doesn't ship).
 
@@ -1356,6 +1419,10 @@ The Lloyd-Max codebook race (pre-reg RESULTS 2026-07-25): per-output-channel exa
 - `uniform_rows(w: torch.Tensor, bits: int) -> torch.Tensor` — Symmetric-range int grid {-2^(b-1) .. 2^(b-1)-1} x s.
 - `main() -> None`
 
+### scratch/lyap_compare.py
+Atlas-2 Lyapunov leg: function-space divergence between twin births. Observable (weight distance forbidden by doctrine): teacher-forced argmax disagreement on 200 fixed gen-4 rows — fraction of non-pad positions where the two models' greedy next- token predictions differ. Usage:   lyap_compare.py ckptA ckptB TAG   (d64/ffn256/heads4 assumed)
+
+
 ### scratch/make_altpairs.py
 Farm verified ALTERNATIVE successors for a sample of corpus states (the distribution-rows bank, forward edition; motivated by the 2026-07-26 distribution readout: crystals put ZERO mass on equally-valid non-canonical moves). For each sampled unique cur, enumerate successors() (verified, non-identity) and keep children NOT already in the corpus as a nxt for that cur. Fork workers stream rows to shard files (killed-worker doctrine: partial shards survive the wall).
 
@@ -1368,6 +1435,17 @@ Build the math+ZX union diet (next-session-2 item 1): gen-4 math rows + zx_farm1
 ### scratch/margin_census.py
 Margin census on the crown-tie ternary latents (pre-reg 2026-07-26).
 
+
+### scratch/mass_on_valid.py
+Mass-on-valid (spec 2026-07-28 rung 2): teacher-forced sequence probability mass over the engine-enumerated verified-valid next-step set, vs the modal valid move (farm-pick proxy: fresh states have no banked row). No sampling anywhere. successors() output is already sympy-verified and non-identity (derivation.py docstring), so the valid set is the enumeration itself.
+
+- `seq_logprob(model, cur, nxt)`
+
+### scratch/matryoshka_r1.py
+Matryoshka rung 1 (pre-reg 2026-07-28 night): joint loss CE(W) + CE(STE P_C8(W)) — one crystal whose OWN circulant projection must also work. 1 warm epoch from wfloor d256 on MPS. Implementation: parametrize gate weights with a toggleable STE projection (flag off -> raw W; flag on -> W + (P(W)-W) .detach(), i.e. forward uses P(W), gradient flows to W). Gates BOTH tiers at the end; saves the single weight tensor.
+
+- `shift_perm(n, sh, dev)`
+- `class TierP` (project, forward)
 
 ### scratch/metabolic_d2.py
 DISAGREEMENT #2 test — exact vs fp64 accumulation at the validity level (v5-mini, 2 of the 4 race arms). ONE variable: arm fp64 accumulates AdamW steps into fp64 masters (rounds 2^-53/step); arm dd accumulates via two-sum double-double (EXACT — absorption structurally impossible). Identical manual AdamW, food stream, seeds. Streaming: every row eaten once, no epochs. Usage: metabolic_d2.py <ckpt> <worklist> <minutes> <fp64|dd>
@@ -1407,6 +1485,11 @@ METABOLIC V5 session 1 (spec 2026-07-23-metabolic-v5; dd arm retired per disagre
 - `sign_state()`
 - `try_state(cur0, seed0, plies=8)`
 - `probe(tag)`
+
+### scratch/muon_3ep_d256.py
+Muon at the STANDARD 3-epoch schedule (null-revival mix, pre-reg 2026-07-28 night): the Muon crater (10/34) was measured only in single-pass streaming with LR coupled to the surprise rider; the banked variants row says published Muon wins live at standard schedules. One cell: control construction (length-sorted BS=32, shuffled batch order, 3ep) with Muon (ns5 orthogonalized momentum) on 2-D interior weights, AdamW (OneCycle 3e-4) on embeddings/head/ norms. Comparator wfloor_d256 65 (same construction, all-AdamW).
+
+- `ns5(g, steps=5)`
 
 ### scratch/ozaki_2b_bisect.py
 *(no docstring)*
@@ -1578,9 +1661,47 @@ Scalar 4-bit PTQ arms (the tournament's missing bracket point): P4 powers-of-two
 - `nf4_rows(w: torch.Tensor, k: int=16) -> torch.Tensor` — Equal-mass quantile codebook per channel (NF4-style, but on
 - `main() -> None`
 
+### scratch/quat_commutant.py
+Symmetry ladder S1 cell 1 (pre-reg 2026-07-28): quaternionic anti-commutant mass of FFN gate matrices. Structures I,J,K = left quaternion-unit action on 4-channel groups (I^2=J^2=K^2=-1, IJ=K); P(W) = (W - IWI - JWJ - KWK)/4; anti-mass = 1 - ||P(W)||^2/||W||^2 (0.75 = fully generic, 0 = exactly quaternionic-linear). Synthetic controls run FIRST (must read 0.0 / ~0.75) — instrument fence. Real crystals: adjacent 4-grouping + 20 random-grouping nulls.
+
+- `quat_structs(n, perm)` — Three anticommuting structures on 4-tuples
+- `project(W, So, Si)` — Commutant projection: group-average over {1,-I..,-J..,-K..}.
+- `anti_mass(W, So, Si)`
+- `gates(sd, layers)`
+
+### scratch/quat_convert.py
+Symmetry ladder S1 cells 2-3 (pre-reg 2026-07-28): project the wfloor d256 gates onto the quaternionic commutant (deletes 75% of gate mass), gate the projected init, then warm-train 1 epoch. Arm a: lambda=0; arm b: commutation penalty summed over I,J,K, ramped 0.1->1.0. R3 recipe verbatim otherwise. Usage: ARM=a|b python scratch/quat_convert.py
+
+
+### scratch/rat_deploy.py
+Deploy a born-rational (RAT_Q) crystal: apply the SAME snap the STE trained through (s * best p/q, q <= Q, s = per-tensor absmean) to every 2-D weight — the output IS the trained function, exactly on-lattice. Usage: rat_deploy.py <ckpt_in> <Q> <ckpt_out>
+
+
+### scratch/rat_repair.py
+Snap+repair (RIFF 2026-07-27, precision-as-thin-film): take a snapped crystal, FREEZE every 2-D tensor (the exact lattice stays exact), train only the 1-D parameters (norms/biases — the 'thin precise film') briefly on the birth diet, save. If a few thousand precise params recover the snap deficit, precision is a small additive budget, not a per-weight property. Usage: rat_repair.py <ckpt_in> <diet_jsonl> <steps> <ckpt_out> Env: VOCAB_EXTRA (must match birth), shape via D/LAYERS/FFN/HEADS.
+
+
 ### scratch/rational_snap.py
 Rational-snap distillation (RIFF 2026-07-27, Artin's infinite-precision push, rung a): snap every 2-D weight of a gated crystal to the nearest fraction p/q with denominator q <= Q, then gate the snap. Asks "do trained weights want simple exact numbers?" as a COMPRESSION question (precision doctrine stays closed; E3 is its sole reopening).
 
+
+### scratch/rot_commutant.py
+Rotational snap R1 (pre-reg 2026-07-28): anti-commutant mass of FFN gate matrices under channel-pairing complex structures. W_a = (W + J_out W J_in)/2; mass = ||W_a||^2/||W||^2 (0.5 = no rotational structure; 0 = fully complex-linear). Real crystals: adjacent pairing + 20 random-pairing nulls. Complex-FFN arms: native half-split pairing (positive control, expect ~0).
+
+- `J_perm(n, perm)` — Block rotation: pairs (perm[2k], perm[2k+1]); J e_a = e_b,
+- `J_half(n)`
+- `anti_mass(W, Jo, Ji)`
+- `gates(sd, layers)`
+
+### scratch/rot_convert.py
+Rotational snap R3 (pre-reg 2026-07-28): warm-train the t=1.0 projected wfloor for 1 epoch; arm a: lambda=0 (does SGD restore the anti-commutant?); arm b: commutation penalty ramped 0.1->1.0. Reports gate + final anti-mass. Usage: ARM=a|b rot_convert.py
+
+
+### scratch/rot_snap_anatomy.py
+Rotational snap R2 (pre-reg 2026-07-28): gate wfloor_d256 with gate matrices projected toward the commutant — W - t*W_a under adjacent pairing, t in {0.25, 0.5, 1.0}. Fence: gate matrices only (attention/up/down untouched). Flips-probe fingerprint per t rides (vs the unmodified model, teacher-forced argmax diff).
+
+- `project(sd, t)`
+- `gate(sd, tag)`
 
 ### scratch/scorer_s1_battery.py
 S1: the frontier battery + persistent value cache (spec 2026-07-27-calibrated-scorer; pre-reg in RESULTS).
@@ -1609,11 +1730,54 @@ Series rung 1 probe: greedy next-partial-sum emission on the 142 held-out steps 
 - `_equiv(q, pred, gold)`
 - `equiv(pred, gold, deadline=10)`
 
+### scratch/snap_anatomy.py
+Sensitivity-wall anatomy (Artin 2026-07-27: "find WHERE the wall lives"): single-tensor Q=16 snap ablation on the 19M crystal. For each 2-D tensor alone-snapped (rest fp32), measure teacher-forced divergence vs control on gen-4 rows: mean KL + argmax-flip rate. Localization instrument (CPU, no gate contention with the births); top culprits earn real gates later. House pre-reg guess: head/attn out-projections carry the wall, ffn interiors tolerant.
+
+- `snap(w)`
+
+### scratch/soup_gate.py
+Night-28b soup instrument: plain parameter mean of N checkpoints (same shape), then gate. Usage:   soup_gate.py TAG d layers ffn heads ckpt1 ckpt2 [ckpt3 ...] VOCAB_EXTRA rides (atom order must match the births).
+
+
 ### scratch/streaming_birth_d256.py
 Streaming-birth A/B, arm S (RIFF-LEDGER 2026-07-24 "Streaming birth").
 
 - `template_refresh(model)`
 - `ns5(G, steps=5)`
+
+### scratch/successors_acceptance.py
+Successors-bridge acceptance (house side; axiom spec 2026-07-27-successors-bridge, relay -28-2). 500 string-seeded gen-4-band roots (L1-L8), house derivation.successors vs axiom_sym.successors, E4-taxonomy decomposition: - MATCH: child sets equal (sympy-srepr normalized) - HOUSE_ONLY / AXIOM_ONLY children (named, sampled) - I-FENCE: complex-carrier states skipped (axiom domain fence) - EXPIRED: axiom deadline states (censored, never counted false) Soundness leg: every axiom-only child re-verified on the HOUSE oracle (verify_edge) — axiom emissions must never fail it. Throughput logged both sides.
+
+- `norm(e)`
+
+### scratch/sym45.py
+C8-retrofit at 45M (pre-reg 2026-07-28 ~5PM): project union_45m gates onto the C8 commutant (params/8), one warm epoch on the union diet, ramped permutation penalty. Prints projected-init math gate, then trains and saves; math+ZX final gates run via gate scripts after. cuda/bf16 autocast.
+
+- `shift_perm(n, sh)` — index map: row r <- r shifted by sh within its 8-block.
+- `project(W)` — C8 group average via double permutations (cheap, exact).
+- `anti_mass(W)`
+
+### scratch/sym_birth.py
+Symmetry-at-birth (pre-reg 2026-07-28 night): C8 at d64, from SCRATCH. Arm dense = plain birth control; arm c8 = commutant- projected init + ramped generator penalty from step 0. Paired on one device, seed 1, lr 1.5e-3, bs 8, gen-4, 3 epochs. Usage: ARM=dense|c8 python scratch/sym_birth.py
+
+- `_env(k, d)`
+- `shift_reps(n)`
+- `project(W, Ro, Ri)`
+- `anti_mass(W, Ro, Ri)`
+
+### scratch/sym_convert.py
+Symmetry ladder S3/S4 (pre-reg 2026-07-28): generic group- average conversion. GROUP=z2 (sign involution, params/2) or circ8|circ16 (cyclic shifts within n-blocks, params/n). P(W) = avg_g R_o(g) W R_i(g)^T (orthogonal reps). Prints anti-mass read + nulls, projected-init gate, then warm-trains 1 epoch (ARM=a lambda=0 | ARM=b ramped generator penalty). Usage: GROUP=z2 ARM=b python scratch/sym_convert.py
+
+- `reps(n, perm)` — Group elements as (n,n) orthogonal matrices on perm order.
+- `project(W, Ro, Ri)`
+- `anti_mass(W, Ro, Ri)`
+
+### scratch/sym_spectrum.py
+Symmetry spectrum (pre-reg 2026-07-29: Artin's superposition riff): isotypic decomposition of wfloor d256 gate weights under C8 conjugation into 5 real frequency bands; report band masses; gate CUMULATIVE reconstructions in descending-mass order. comp_k(W) = (1/8) sum_s w^{-ks} R^s W R^{-s}; real bands pair k with 8-k. Desk only (no training), MPS.
+
+- `shift_perm(n, sh)`
+- `conj_s(W, s)`
+- `band(W, ks)` — Real isotypic component for the frequency set ks.
 
 ### scratch/synonym_test.py
 Synonym gauge test: TWO label tokens per family on the frozen 19M readout (vocab 40 -> 55: <name> + 7x2 synonyms). Train rows pick either synonym 50/50. Gauge-law prediction: both fire near-equal off the same concept. Reports family-accuracy + per-synonym share.
