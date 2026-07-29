@@ -9465,3 +9465,21 @@ target d56/f48-class substrates, and the attention block is
 where the irreducible computation sits — the next compression
 frontier is qkv/o, not gate. Fences: n=1 per point, cuda,
 gates-only, sigma 3.5.
+
+## PRE-REG: TIER-RETRY — the first adaptive-crystal controller (2026-07-29 morning, before the run; attention-core Leg 0)
+
+d56 matryoshka pair (matryoshka_d56.pt: dense 57 / cheap 52 on
+MPS), desk, zero training. Per gate row: attempt with the CHEAP
+tier (commutant projection, 1/8 gate params); on failure retry
+the SAME row with the DENSE tier. Report: retry-policy solves,
+overlap census (cheap-only / dense-only / both / neither), and
+effective-gate-params-per-row = cheap + P(cheap-fail) * dense.
+READS: retry ~= dense solves (~57) at effective params well
+under dense => the dial's first measured win (oracle-fail = a
+free difficulty signal; no predictor needed); retry ~= cheap
+(~52) => failures are tier-blind (fail both) — the tiers are
+NESTED in capability, not complementary; retry > dense =>
+the tiers are partially COMPLEMENTARY (union > either) — a
+diversity bonus, book hard (would echo verify-block near-tie
+composition). Fences: n=1, MPS, gates-only, same seeds as all
+d56 gates.
