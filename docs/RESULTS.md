@@ -10653,3 +10653,22 @@ CRYSTAL-CLASS result, fenced off web-scale LLMs, and the
 paper's claim narrows honestly. Fences: 3080 cuda, fp16
 eval, fake-quant only (bytes claim already landed at C0/C2b),
 one model, n=1.
+
+## PACKED CRYSTAL C4 VERDICT: CLAIM 3 LANDS — the integer forward is bit-identical across devices; fp logits differ but greedy streams match anyway (2026-07-29 night; Mac + 3080)
+
+Hash A (integer GEMM over all sigma-law code tensors, exact
+fp32 carrier, TF32 off): fda95457...cb07ca IDENTICAL on MPS
+and cuda — the packed path has NO device ambiguity, by
+construction and now by measurement. Hash B (fp32 full
+forward logits): differs (1d87338f v 59adca91) — the familiar
+device-fence class, present exactly where predicted. Greedy
+streams: 8f93028c IDENTICAL on both devices (5 prompts x 40
+toks) — argmax margins swamp device epsilon on this battery,
+per the fp16 near-tie doctrine (ties, not bugs). ALL THREE
+PREDICTIONS CONFIRMED. Consequence: a full integer-GEMM
+decode path (norms/softmax in fp between exact GEMMs) would
+make the cross-device fence VANISH for the packed crystal —
+the determinism differentiator v GPTQ/AWQ/HQQ artifacts is
+real. Fences: one crystal (d64h8), 5-prompt battery, greedy
+only; full integer end-to-end decode not yet built (the
+GEMM-path hash is the claim, as pre-registered).
