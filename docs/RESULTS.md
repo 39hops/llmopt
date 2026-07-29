@@ -9162,3 +9162,37 @@ so equal weight-noise moves the function further. Symmetry
 compresses params, not variance.
 Fences: all d64/cuda in-battery paired; disagreement
 format-bound; EMA decay 0.999 single value; n=1/cell.
+
+## PRE-REG: EMA AT PRODUCTION SCALE — d256 (2026-07-29 pre-dawn, before the run)
+
+Night-28b's EMA win (+12/+6 gate at d64, -58% shell
+contraction) rides or dies at the production substrate: one
+dense d256/gen-4/3ep birth (seed 1, lr 1.5e-3->? no — the
+d256 production recipe: lr per train_mathnative default
+schedule, bs 32) with Polyak EMA 0.999 tracked; gate BOTH
+endpoints (raw + EMA) on cuda. READ: EMA >= raw + sigma(3) =>
+the lever transfers — adopt EMA as a lossless-class speed
+default candidate (zero extra compute, one extra weight
+copy); EMA ~ raw => d64-only artifact (decay/steps mismatch —
+0.999 over 50k steps v 6k; the horizon fence); EMA < raw =>
+averaging fights the larger crystal's sharper minima. n=1,
+cuda, in-run paired.
+
+## AMENDMENT (target: EMA-at-production pre-reg, same night): device moved cuda -> MPS before the run (3080 released to Artin); raw-vs-EMA stays in-run paired, so the read is device-internal and unaffected. Comparator is the run's own raw endpoint, not any cuda number.
+
+## PRE-REG: THE SYMMETRY SPECTRUM — capability vs frequency band (2026-07-29 pre-dawn, before the run; Artin's superposition riff)
+
+Isotypic decomposition under C8 conjugation: W splits into 5
+real frequency bands (k=0 the commutant, {1,7}, {2,6}, {3,5},
+4). Instrument: band masses per gate layer, then CUMULATIVE
+gates on wfloor d256 — bands added in descending total-mass
+order. READS: (1) capability turns on only near full
+reconstruction => the function uses the whole spectrum
+(consistent with S3's proj-init 2/120 = band-0 alone). (2) a
+PARTIAL sum restores 60-class => the crystal's capability
+lives in FEW bands — a new compression axis (keep top-m bands
+= params*(m/8)-class) and the measured form of Artin's
+superposition-of-rotational-models frame. (3) band masses ~
+uniform 1/8 predicted (R1-class null); deviation = spontaneous
+frequency structure (would contradict the no-spontaneous-
+symmetry law — flag hard). Desk only, MPS, no training.

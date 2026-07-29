@@ -22,7 +22,14 @@ ARM = os.environ["ARM"]
 TAG = os.environ.get("TAG", "")
 EPS = float(os.environ.get("EPS", "0"))  # twin perturbation
 EMA_D = float(os.environ.get("EMA", "0"))  # Polyak decay, 0=off
-D, LAYERS, FFN, HEADS, BS, EPOCHS, LR = 64, 8, 256, 4, 8, 3, 1.5e-3
+def _env(k, d):
+    return int(os.environ.get(k, d))
+
+
+D, LAYERS = _env("D", 64), _env("LAYERS", 8)
+FFN, HEADS = _env("FFN", 256), _env("HEADS", 4)
+BS, EPOCHS = _env("BS", 8), _env("EPOCHS", 3)
+LR = float(os.environ.get("LR", "1.5e-3"))
 OUT = f"checkpoints/sym_birth_{ARM}{TAG}.pt"
 NB = 8  # C8 blocks
 
