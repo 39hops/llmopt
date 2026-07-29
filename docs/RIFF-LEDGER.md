@@ -1645,3 +1645,21 @@ to the collaboration itself.
   rule: keep rows where the cheap tier FAILS but the oracle
   verifies. Doubles as the fitness for riff (1). Attribution:
   Artin (question), house (operationalization).
+
+- **2026-07-29 (Artin, evening — README fake-quant caveat)**:
+  "is it stale, or something we tie in?" Not stale — the whole
+  snap program is fake-quant by design (grid values, fp
+  storage; right instrument for capability pricing, zero bytes
+  saved; sole exception: the int16 integer twin). THE TIE-IN
+  BANKED: **THE PACKED CRYSTAL** — deploy the minimal crystal
+  (layers-4 d56) in a REAL bitpacked format at the sigma-law
+  grid (Q~2/sigma per tensor, global budget set by k_c from
+  the flips probe — no calibration search needed, unlike
+  HQQ/GPTQ), with an MLX/Metal dequant-matmul kernel
+  (kernels/metal.py). Honest triple demanded: oracle-gate
+  parity, measured bytes (target ~6.65 bits/wt = the measured
+  RD bound), measured decode speed (bandwidth-bound regime
+  should WIN). Closes theory-to-charter: the month's snap laws
+  become an actual inference artifact. Pairs with the
+  bitpacked matryoshka (tiers = real memory at decode).
+  Attribution: Artin (the catch), house (design).
