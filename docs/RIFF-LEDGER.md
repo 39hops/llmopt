@@ -1422,3 +1422,19 @@ to the collaboration itself.
   scale 2-D weights only; equal-effective-budget (train until
   loss parity, then gate); x2 midpoint. Until run, the energy
   read is fenced as budget-confounded.
+
+- **THE MINIMAL CRYSTAL program** (2026-07-29, Artin x house;
+  spec docs/superpowers/specs/2026-07-29-minimal-crystal.md).
+  Three Artin riffs unified on one scoreboard (params-per-
+  solve): (1) WIDTH FLOOR — d64=d256 measured; nobody looked
+  below; binary-search the cliff then stack matryoshka/spectral
+  /snap compressions on the floor model. (2) PROSTHETIC DIET —
+  "can the weights call an external function?": call-spans in
+  rows (engine computes at farm time, resolves at decode via
+  LLMUE machinery); weights stop storing what the oracle
+  computes; the knows-math-stores-no-trivia model. (3) DIET
+  DESCENT — "calculate, don't guess": marginal-value curves
+  gate-vs-log(rows) per bucket from cheap d64 births; allocate
+  farm tranches by derivative; probes (flips/token rho .883,
+  mass-on-valid) ride free. Attribution: Artin (all three
+  riffs); house (instruments + unification).
