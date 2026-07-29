@@ -9196,3 +9196,33 @@ superposition-of-rotational-models frame. (3) band masses ~
 uniform 1/8 predicted (R1-class null); deviation = spontaneous
 frequency structure (would contradict the no-spontaneous-
 symmetry law — flag hard). Desk only, MPS, no training.
+
+## SYMMETRY SPECTRUM VERDICT: capability accumulates ~linearly with spectral mass — holography along the frequency axis (2026-07-29 pre-dawn)
+
+Band masses read EXACTLY dimension-proportional (0.125 / 0.250
+/ 0.2504 / 0.2495 / 0.125) — read (3)'s null holds: no
+spontaneous frequency structure (the no-spontaneous-symmetry
+law extends to the full spectrum). Cumulative gates
+(descending mass): 19 -> 49 -> 63 -> 64 -> 65. VERDICT:
+capability turns on GRADUALLY, ~proportional to reconstructed
+mass — no single load-bearing band, no threshold: holography
+generalizes from random/structured deletion to the symmetry-
+frequency axis. Top-3 bands (75% of params) gate 63 (-2) —
+a free compression point ON THE DESK, no training (contrast
+S3: band-0 alone = 2/120 after deletion needed a heal; keeping
+the top-6-of-8 frequencies loses ~sigma). Artin's
+superposition frame is measured: the crystal IS a superposition
+of symmetry-frequency components, each carrying capability
+~proportional to its mass. Fences: d256/MPS, gates-only, n=1.
+
+## EMA AT PRODUCTION SCALE VERDICT: +6 at d256 — the lever transfers; ADOPT-CANDIDATE (2026-07-29 pre-dawn)
+
+One d256/gen-4/3ep birth (constant-lr 3e-4 variant, bs32, MPS),
+raw vs EMA(0.999) from the same run: raw 58, **EMA 64 (+6,
+2 sigma)**. With night-28b's d64 result (+12/+6, -58% shell
+contraction): EMA improves gates at BOTH scales for one weight
+copy of memory and zero extra compute. ADOPT-CANDIDATE for the
+lossless-speed-defaults family pending one confirmation at the
+true production schedule (warmup+cosine, the recipe fence) —
+banked as the adoption gate. Fences: constant-LR variant,
+in-run paired, n=1.
