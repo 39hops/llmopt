@@ -412,3 +412,4 @@
 {"id": "2026-07-29-pre-reg-snap-alloc-q-8", "date": "2026-07-29", "line": 9682, "title": "PRE-REG: SNAP-ALLOC Q=8 (2026-07-29, immediately following)", "type": "prereg", "threads": []}
 {"id": "2026-07-29-snap-alloc-q-8-verdict-bits", "date": "2026-07-29", "line": 9692, "title": "SNAP-ALLOC Q=8 VERDICT: bits bite uniformly \u2014 location-blind and ~additive (2026-07-29)", "type": "verdict", "threads": ["alphabet"]}
 {"id": "2026-07-29-pre-reg-reverse-pairs-the-pincer", "date": "2026-07-29", "line": 9711, "title": "PRE-REG: REVERSE-PAIRS \u2014 the pincer entry ticket (2026-07-29, before the run; banked 07-26, pulled into today)", "type": "prereg", "threads": []}
+{"id": "2026-07-29-reverse-pairs-verdict-no-free-dual", "date": "2026-07-29", "line": 9726, "title": "REVERSE-PAIRS VERDICT: no free dual-direction crystal \u2014 forward capability drops at matched total dose (2026-07-29 evening)", "type": "verdict", "threads": []}

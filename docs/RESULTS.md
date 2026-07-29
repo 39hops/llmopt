@@ -9722,3 +9722,22 @@ next); B < A > sigma => backward rows TAX forward capability
 HELPS forward (bidirectional consistency regularizes — book
 hard). Bidirectional-cheat fence: eval rows are the standard
 gate (never reverse-sampled). n=1, MPS, gates-only.
+
+## REVERSE-PAIRS VERDICT: no free dual-direction crystal — forward capability drops at matched total dose (2026-07-29 evening)
+
+d64, 50/50 forward + reversed rows, matched TOTAL dose, Mac:
+forward gate raw 36 / EMA 50 v the forward-only comparator
+class (Mac raw 53; EMA class 59+). EMA -9-class, raw -17. Read
+2's surface lands (backward rows cost forward capability), BUT
+the pre-reg carried an unnamed CONFOUND, stated here honestly:
+arm B has only HALF the forward rows, so "tax" and "half-dose"
+are not separated — the clean claim is the NEGATIVE one: the
+dual-direction crystal is NOT free at matched compute (the
+cheapest pincer entry fails; direction must be paid for
+somehow). Also unmeasured: whether the backward direction was
+actually LEARNED (no reverse gate exists yet). CONTROLS BANKED
+before any sequel: (a) forward-only at HALF dose (separates
+dose from tax); (b) a reverse-gate instrument (backward
+capability read); both cheap. The temporal-pincer bank stays
+banked — its entry price just went up. Fences: n=1, MPS,
+gates-only, dose-confounded as stated.
