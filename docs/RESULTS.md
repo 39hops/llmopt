@@ -9437,3 +9437,14 @@ EMA (55-58 class at ~0.55x the d64/f256 params). NEXT
 candidates: ffn 96/64 to find the ffn cliff; d56/f128 as the
 new floor substrate for matryoshka + snap stacking. Fences:
 n=1 per ffn point, cuda, gates-only, sigma 3.5.
+
+## PRE-REG: NIGHT-29b — the ffn cliff (2026-07-29 overnight, before launch)
+
+Extension of verdict 2: d56 with ffn {96, 64, 48}, cuda, seed
+1, EMA tracked, same recipe. READS: EMA holds ~58-class into
+the 90s => the ffn floor is far below 4x convention — book the
+knee and crown the smallest survivor; sharp drop at a point =>
+the ffn cliff, symmetric evidence to the d-cliff in (48,56];
+graded decline => ffn is a smooth capacity dial below 128
+(unlike d). 3 births, marker on success only. Fences: n=1 per
+point, cuda line, gates-only.
