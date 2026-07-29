@@ -9940,3 +9940,24 @@ shortcuts — the capability read stays valid, the mechanism
 read (use v ignore) sharpens: a model that USES the span
 should get END-of-chain rows right earlier. Fences: receipt
 only; arms pre-reg separately.
+
+## PRE-REG: CALL-SPAN PAIRED ARMS — Leg B first read (2026-07-29 night, before the run)
+
+Pilot 500 (sha de6c9f15), split Random(7) 400 train / 100
+held-out eval, SAME rows both arms. Arm PLAIN: "Hints: none".
+Arm SPAN: "Hints: <calls joined by '; '>" (engine-computed —
+the delegation format; at eval the span arm also receives its
+hints, as the LLMUE engine would supply them at decode).
+Tokenizer atoms pinned in sidecar order: gcd,Mod,**,call:,->.
+d64/ffn256/heads4, 20 epochs (tiny corpus), lr 1.5e-3, bs 8,
+seed 1, Mac, both arms one script. SCORE: held-out greedy
+next-step EXACT MATCH (the rows are axiom-certified; string
+match is sound here because nt-chain steps are canonical
+integers/forms, unlike sympy expressions). READS: SPAN >
+PLAIN > sigma-ish => delegation pays — the model uses engine
+values it did not compute (Leg B capability-per-param
+headline); SPAN ~ PLAIN => spans ignored at this scale/mix
+(mechanism read: end-value spans may be too indirect —
+step-local span option already banked with axiom); SPAN <
+PLAIN => hint tokens tax context (format cost). Fences: n=1,
+MPS, tiny-corpus regime, exact-match (not sympy) scoring.
