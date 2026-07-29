@@ -1664,6 +1664,7 @@ PACKED CRYSTAL C3 (pre-reg 2026-07-29 eve): GPTQ/AWQ/HQQ honest table on d64h8 E
 PACKED CRYSTAL C6 (pre-reg 2026-07-29 night, Artin's GO): external validity on Qwen2.5-0.5B (3080). Arms: sigma-pack (q=ceil(2/sigma) per tensor, closed form) v HQQ (matched bits, group 64) v RTN. Score: mean DeltaKL/token v fp16 on 16 fixed prompts + perplexity on a fixed README slice + per-arm quantization wall-time. Fake-quant only. __main__-guarded.
 
 - `sigma_pack(w)`
+- `sigma_pack_row(w)` — C6b/C6c: per-output-row sigma — still closed-form, zero
 - `main()`
 
 ### scratch/pack_crystal.py

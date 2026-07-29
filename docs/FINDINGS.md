@@ -454,3 +454,28 @@ honest negatives booked with the same care as wins.
   byte-identical by axiom's exact mode — 50/50, sha-pinned,
   zero adjudication needed. Instrument design replaced
   arbitration. (07-29)
+
+## The packed crystal (07-29 eve/night)
+
+- The month's snap laws became a real artifact: sigma-law
+  packed crystals gate at parity (d64h8 EXACT) at ~5 bits/wt,
+  6.15-6.65x smaller than fp32, with code-stream entropy
+  within 1% of Gaussian capacity — born weights are
+  max-entropy at their scale.
+- Nothing calibrated beats the closed form on crystals: GPTQ
+  (real Hessian), AWQ, HQQ all tie at matched bits.
+- The bit-packed 5-bit GEMV (2.39x v fp16) BEATS the
+  byte-aligned kernel: below ~8 bits, unpack ALU is free next
+  to bandwidth — the disk format is the runtime format.
+- Cross-device determinism measured: integer-GEMM hash
+  bit-identical MPS/cuda (exact-in-fp32 integer carrier);
+  fp logits differ; greedy streams match anyway.
+- External fence, mechanistic: on Qwen-0.5B per-tensor sigma
+  loses 33x to HQQ; per-row rescue null; step sigma/8
+  recovers 11.6x. Sigma-grids are optimal exactly where
+  weights are at capacity (crystals); web-LLM outlier tails
+  are exploitable structure that max-anchored grids harvest.
+- Tiered pack: nested bytes real (escalation -15% bytes per
+  solved row) but the joint-STE matryoshka crystal pays where
+  EMA parents packed free — fragility is crystal-priced,
+  again; the flips meter should gate what we pack.

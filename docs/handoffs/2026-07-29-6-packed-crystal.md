@@ -1,0 +1,54 @@
+# Handoff 2026-07-29-6 — THE PACKED CRYSTAL: C-series complete in one evening
+
+Spec 2026-07-30-packed-crystal ran END TO END (C0-C6 + two
+rescue arms), Mac + 3080 (Artin's GO; box revived after
+restart — WSL mirrored-mode Hyper-V firewall was the block;
+`Set-NetFirewallHyperVVMSetting ... -DefaultInboundAction
+Allow` + profile Private is the recipe, memory-worthy).
+
+## Verdicts (all in RESULTS, newest ~8 entries)
+- C0+C1: zero-tax pack (L4d56 -1, d64h8 EXACT parity);
+  entropy within 1% of Gaussian capacity; 6.15-6.65x v fp32.
+- C3: honest table — GPTQ/AWQ/HQQ with real Hessian gain
+  NOTHING over closed form at matched 5 bits; 3-bit solves
+  flat (falsified — d64h8 k_c small), damage in valid%/KL.
+- C5: nested tiered artifact real (5.7x; escalation -15%
+  bytes/solve) BUT zero-tax fails on the joint-STE matryoshka
+  crystal (~1-2 sigma per tier) — pack EMA parents.
+- C2/C2b: fused GEMV 1.76x; bit-packed 5-bit GEMV 2.39x,
+  BEATS byte-aligned — the disk format IS the runtime format.
+- C4: integer-GEMM hash IDENTICAL Mac/cuda (fda95457); fp
+  logits differ; greedy streams match anyway. Claim 3 lands.
+- C6/C6b/C6c: per-tensor sigma 33x worse than HQQ on Qwen
+  (falsifier fired) -> per-row null -> step sigma/8 recovers
+  11.6x. Fence is MECHANISTIC: sigma-grids optimal for
+  at-capacity weights (crystals); web tails reward
+  max-anchored grids (fixed-width bits priced by worst
+  outlier).
+
+## Paper shape (publication candidate, honest)
+1. Calibration-free sigma-allocation optimal for at-capacity
+   weights; born crystals measured AT capacity (<1% gap).
+2. Web LLMs are not at capacity -> use rtn/hqq there (our own
+   honest table says so). 3. Universal: entropy-bound pack,
+   bit-packed kernel wins, cross-device integer determinism,
+   tiered bytes. 4. Wall-time: 0.9s v 61.7s HQQ at 0.5B.
+
+## Banked follow-ups
+- Entropy-coded sigma-grids on heavy tails (the fixed-width
+  penalty was the C6c killer; C1 showed deflate recovers it).
+- k_c flips-meter as pre-pack check (C5's miss was
+  predictable); fit f + k_c jointly across all snap cells.
+- Full integer end-to-end decode (norms/softmax fp between
+  exact GEMMs) -> device-fence-free packed inference.
+- Training lens rider still unfired (optional on any birth).
+
+## State
+- Instruments: scratch/pack_crystal.py, pack_baselines.py,
+  pack_tiered.py, pack_gemv.py (+crystal5), pack_determinism.py,
+  pack_c6.py (ARM/K knobs). All __main__-guarded.
+- Artifacts: checkpoints/packed_{L4d56,d64h8}.npz (untracked).
+- 3080: has h8_ema ckpt (scp'd); stash@{0} preserved
+  (pre-existing WIP, NOT dropped — inspect before next sync).
+- Queue next: diet-evolution spec; multi-ply farmer tree;
+  axiom step tranche -> LLMUE resolver.
