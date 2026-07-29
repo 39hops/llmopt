@@ -9355,3 +9355,20 @@ Consequence for Leg A stacking: desk-side band cuts are NOT
 free on the floor model — compression must be trained-in
 (matryoshka joint loss), not sliced-off. Fences: n=1, desk,
 MPS, gates-only.
+
+## PRE-REG: MATRYOSHKA AT THE FLOOR — d56 joint-loss tier (2026-07-29, before the run)
+
+The spectrum-on-floor verdict says floor compression must be
+TRAINED-IN. Cell: matryoshka_r1 (env-parameterized CKPT/D/FFN/
+BS/OUT) warm-started from the d56 EMA crystal (63/120), 1 joint
+epoch (CE(W)+CE(STE P_C8(W))), lr 1e-4, bs 8, MPS. Gates both
+tiers. READS: dense-tier holds ~63 AND cheap-tier lands well
+above the desk band-0-class floor (band-0 alone gated 2 on
+desk; commutant projection = 1/8 params) => nesting-under-
+joint-loss survives at the floor — the crystal can carry a
+sub-tier even below its own width cliff; dense-tier drops
+> sigma => at the floor the tier COMPETES (slack-budget law
+wins over like-family nesting — the two laws finally collide);
+cheap-tier stays dead (~single digits) => even training can't
+fit a d56/8-class function — the cliff is representational,
+not organizational. n=1, MPS, gates-only, sigma 3.5.

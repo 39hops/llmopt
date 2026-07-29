@@ -20,8 +20,14 @@ import step_grpo_micro as G  # noqa: E402
 from train_mathnative import load_rows  # noqa: E402
 from llmopt.train.mathnative import MathTokenizer, build_model  # noqa: E402
 
-D, LAYERS, FFN, HEADS, BS, NB = 256, 8, 1024, 4, 32, 8
-OUT = "checkpoints/matryoshka_d256.pt"
+import os  # noqa: E402
+
+D = int(os.environ.get("D", "256"))
+FFN = int(os.environ.get("FFN", "1024"))
+BS = int(os.environ.get("BS", "32"))
+LAYERS, HEADS, NB = 8, 4, 8
+CKPT = os.environ.get("CKPT", "checkpoints/mathnative_wfloor_d256.pt")
+OUT = os.environ.get("OUT", "checkpoints/matryoshka_d256.pt")
 TIER = {"on": False}  # global toggle read by the parametrization
 
 
@@ -54,8 +60,7 @@ dev = "mps" if torch.backends.mps.is_available() else "cpu"
 model = build_model(len(tok.vocab), d=D, layers=LAYERS, heads=HEADS,
                     ffn=FFN).to(dev)
 model.load_state_dict(torch.load(
-    "checkpoints/mathnative_wfloor_d256.pt", map_location="cpu",
-    weights_only=True))
+    CKPT, map_location="cpu", weights_only=True))
 for blk in model.blocks:
     P.register_parametrization(blk.gate, "weight",
                                TierP(FFN, D, dev))
