@@ -10030,3 +10030,23 @@ ladder is a CAPABILITY lever, not just cost; policy ~ 57 =>
 cost lever confirmed; policy < 57 => escalation loses rows
 the dense tier alone would catch (ordering effect — book).
 Desk, MPS, n=1, gates-only.
+
+## ESCALATION POLICY VERDICT: the ladder BEATS its own dense tier — 62/120, recovering the pre-matryoshka crystal (2026-07-29 night)
+
+3-rung policy on matryoshka_d56_3tier.pt: 62/120 v dense-tier
+57, half 57, eighth 48. Census: eighth solves 48 outright,
+half rescues +10, dense rescues +4, 58 fail all. Read 1
+lands (union effects, echoing rung-1's +2 at larger scale):
+each rung's projection rounds coin-flip rows differently, so
+the ladder harvests the union — +5 over always-dense, and
+within noise of the ORIGINAL 63-crystal the matryoshka
+training taxed (the -6 tier price is bought back by the
+ladder at decode time). Cost read is honest: effective gate
+params 94% of dense (the gate is fail-heavy, so half the rows
+escalate fully; on easier traffic the eighth's 48-outright
+share dominates and the policy gets cheap). THE ADAPTIVE
+CRYSTAL ARC CLOSES ITS FIRST LOOP: one tensor, three budgets,
+a free difficulty signal, and a decode policy that converts
+tier diversity into capability. Predictive routing's bar is
+now 62 @ 94%. Fences: n=1, MPS, gates-only, fail-heavy
+traffic profile.
