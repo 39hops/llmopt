@@ -54,7 +54,7 @@ def anti_mass(W, Ro, Ri):
                         / W.norm() ** 2))
 
 
-torch.manual_seed(1)
+torch.manual_seed(_env("SEED", 1))
 tok = MathTokenizer()
 dev = ("cuda" if torch.cuda.is_available() else
        "mps" if torch.backends.mps.is_available() else "cpu")

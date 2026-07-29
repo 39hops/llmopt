@@ -9392,3 +9392,21 @@ budget; organization beats raw width below the cliff.
 Params-per-solve: the d56 matryoshka pair is the current
 scoreboard leader (one tensor, two working budgets). Fences:
 n=1, MPS, 1 joint epoch, gates-only.
+
+## PRE-REG: NIGHT-29 — Leg A hardening on the 3080 (2026-07-29, before launch; Artin GO for the night)
+
+Battery 1 (replication): d64 v d56 (production sym_birth
+recipe, EMA tracked), seeds {1,2,3}, PAIRED ON CUDA — its own
+comparator line, never read against the MPS numbers. READS:
+d56 within sigma of d64 on the cuda line (raw and EMA, n=3)
+=> the width-floor verdict replicates and transfers; d56
+below d64 on cuda => the floor is device/precision-sensitive
+— fence the MPS claim. Battery 2 (finer floor, Artin's d55/
+d54 ask): width quantizes to multiples of 8 (heads=4 x even
+head_dim for RoPE-half), so descend the CONTINUOUS axis —
+d56 with ffn {192,160,128} (from 224), seed 1. READS: gates
+flat => the floor is set by d, not ffn (attention-bound);
+graded drop => the capacity dial is total params, refine the
+knee in ffn units; cliff => ffn has its own sharp floor.
+9 births, sequential, marker on success only. Fences: cuda
+line n=3 / ffn n=1, gates-only.
