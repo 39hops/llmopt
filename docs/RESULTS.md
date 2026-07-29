@@ -9766,3 +9766,26 @@ ticket retries at full-fwd + backward-extra); A2 > B2 =>
 backward rows actively TAX forward (direction competes;
 pincer stays two-model). Fences: n=1 per arm, cuda line,
 gates-only.
+
+## SLACK RESTORATION VERDICT: heads are INTRINSICALLY incompressible — and the snap grid is sigma-priced (2026-07-29 evening)
+
+wfloor d256 (comparator 65), unified anatomy: HEADS 21/11/30/19
+— still catastrophic at 4x the geometric room. The at-floor
+prediction is WRONG (booked): head incompressibility is not
+floor-pinch, it is INTRINSIC — relations do not superpose at
+any width; every head is a load-bearing relation channel in
+both the floor crystal and the roomy one. RANK: 65/60/54/48 at
+r=192/128/96/64 — graded slack that SCALES with width (r=192 =
+75% rank is FREE at d256 v d56's -4 at 86%); prediction
+half-right (soft knee, right region). SNAP Q=16: attn 57 (-8),
+mlp 60 (-5), both 53 (-12) — NOT free at d256, reversing the
+d56 result. MECHANISM (post-hoc, flagged as such): d256
+weights sit at ~sigma 1/sqrt(256) ~ 0.06 while the Q<=16 grid
+steps at 1/16 = 0.0625 — the grid is COARSER than the weight
+scale; at d56 (sigma ~ 0.13) the same grid is fine-grained.
+LAW CANDIDATE: the precision currency is priced in SIGMA
+units, not absolute denominators — Q must scale ~sqrt(d) for
+constant relative resolution (the sigma-never-transports fence
+reappearing on the bits axis). Falsifiable: Q=64 at d256
+should be free (grid/sigma ratio matches d56's Q=16).
+Fences: n=1 per arm, MPS, gates-only.
