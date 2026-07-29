@@ -1300,6 +1300,10 @@ Distribution rows (spec 2026-07-28 rung 3): for each diet cur, enumerate the eng
 
 - `enumerate_moves(cur, expr)` — -> [(rule_name, child_sstr)]; axiom bridge (deadline-walled,
 
+### scratch/farmer_probe.py
+FARMER PROBE (pre-reg 2026-07-29: escalation-engine cell 6, Artin's reverse-self-learner riff). A full-reverse d64 birth (sym_birth REV=2, SKIP_GATE) plays farmer: sample predecessor candidates for NOVEL band expressions (gate-band + 50k offset, disjoint from the gate), verify each by FORWARD rule application (fork-boxed verify_wave: cand -> seed must be a valid step), and score verified-distinct-NOVEL yield per 1000 samples + wall time. Novel = candidate absent from the entire gen-4 corpus (cur+nxt). Usage: CKPT=checkpoints/sym_birth_dense_revfarm_ema.pt        .venv/bin/python scratch/farmer_probe.py
+
+
 ### scratch/fixed_q_snap.py
 Fixed-denominator snap (spec addendum 2026-07-27, 'integer twin'): every 2-D weight -> round(w*q)/q for ONE shared q. Unlike best-rational (free denominators), this makes W = P/q with integer P — the forward pass becomes an integer GEMM / q, the road to exact integer inference (ozaki/FX-V1 substrate). Error bound 1/(2q), vs ~1/Q^2 for best-rational. Usage: fixed_q_snap.py <ckpt_in> <q> <ckpt_out>
 
@@ -1844,6 +1848,13 @@ Ternary compounding session #2 (Mac, MPS lineage, paired gates): the doctrine-co
 
 - `ternary(w)`
 - `class TLin` (forward)
+
+### scratch/tier_escalate.py
+3-rung escalation policy (pre-reg 2026-07-29 night: cell 1). matryoshka_d56_3tier.pt: per gate row eighth -> half -> dense, escalate on oracle-fail. TierP inlined (module-level-script scar). Desk, MPS.
+
+- `shift_perm(n, nb, sh, dev)`
+- `class TierP` (forward)
+- `try_row(lv, i, nb)`
 
 ### scratch/tier_retry.py
 Tier-retry controller (pre-reg 2026-07-29: attention-core Leg 0). d56 matryoshka pair: attempt each gate row on the CHEAP tier (commutant projection, 1/8 gate params); on failure retry the same row on the DENSE tier. Oracle-fail = the free difficulty signal. Reports retry solves, the overlap census, and effective gate-params per row. Desk only, MPS.
