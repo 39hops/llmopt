@@ -9410,3 +9410,30 @@ graded drop => the capacity dial is total params, refine the
 knee in ffn units; cliff => ffn has its own sharp floor.
 9 births, sequential, marker on success only. Fences: cuda
 line n=3 / ffn n=1, gates-only.
+
+## NIGHT-29 VERDICT 1: THE WIDTH FLOOR REPLICATES — d56 = d64 at n=3 on the cuda line (2026-07-29 overnight)
+
+Paired cuda births, seeds {1,2,3}: d64 raw {50,52,52} mean
+51.3, EMA {57,61,58} mean 58.7; d56 raw {48,54,53} mean 51.7,
+EMA {58,59,58} mean 58.3. d56 matches d64 on BOTH endpoints
+within seed noise (n=3) — the MPS n=1 floor verdict replicates
+AND transfers device (each line read internally; no cross-
+device comparison). EMA's constant-LR gain replicates at +7.0
+(d64) / +6.7 (d56) mean. The width-floor claim is now
+n=4-across-devices class. Fences: cuda line, gates-only.
+
+## NIGHT-29 VERDICT 2: FFN IS NOT THE DIAL EITHER — flat to ffn 160, params-per-solve leader moves to d56/f128 (2026-07-29 overnight)
+
+d56 with ffn {224,192,160,128}, cuda, seed 1: EMA 58/58/58/55,
+raw 48/50/46/52. EMA-endpoint capability is FLAT from ffn 224
+down to 160 (0.71x the ffn params for -0) and dips only -3
+(within sigma) at 128. Combined with verdict 1 (d56=d64) and
+the sharp d48 cliff: capability at this diet is pinned by the
+ATTENTION WIDTH d (with a cliff in (48,56]), not by ffn
+capacity — the ffn was carrying slack all along, consistent
+with gate-layer band cuts being where every compression
+instrument bites. Params-per-solve leader is now d56/ffn128
+EMA (55-58 class at ~0.55x the d64/f256 params). NEXT
+candidates: ffn 96/64 to find the ffn cliff; d56/f128 as the
+new floor substrate for matryoshka + snap stacking. Fences:
+n=1 per ffn point, cuda, gates-only, sigma 3.5.
