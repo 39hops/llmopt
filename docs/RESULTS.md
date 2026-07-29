@@ -10259,3 +10259,46 @@ crystal measured. Note: import-scar bite #3 (polar_snap
 module-level battery re-ran on import; inlined fill —
 __main__ guards adopted for future instruments). Fences: n=1,
 MPS, gates-only, gate+up fence, cplx_none only.
+
+## PRE-REG: THE HEAD AUTOPSY — per-(layer, head) deletion map (2026-07-29 eve; Artin's review ask on the head-tension cell)
+
+The day census deleted head h across ALL layers at once — a
+COLUMN of the layers x heads grid. Autopsy on the h8 EMA
+crystal (d64/f256/8 heads): delete each SINGLE (layer, head)
+cell — 64 cells on the proxy gate (n=8/level, +-2 noise; read
+the MAP shape), then FULL gates on the min/max cells + the
+control. READS: single-cell deletions gentle (proxy drop
+within noise for most cells) => "all heads essential" AMENDS
+to "no head INDEX is disposable across depth" — redundancy
+exists layer-wise and the intrinsic-heads law weakens to its
+column form; single cells catastrophic too => heads are
+per-layer organs, the law hardens further. MPS, n=1.
+
+## PRE-REG: G5 POLAR — the predicted BREAK of geometry-blindness (2026-07-29 eve)
+
+Mechanism claim: bits are geometry-blind because our weights
+are ISOTROPIC (R1: rotation lives in activations only). The
+exception the mechanism predicts: cplx_G5 was BORN on the
+4-angle star {0, +-s, +-is} — anisotropic by construction.
+Cells on cplx_G5 (d384, alpha=G5): control; polar 4 angles x
+{1s, 2s} magnitude (ALIGNED with the star); polar 4 angles
+ROTATED 45 deg (misaligned control); uniform u={1,2}s.
+PREDICTION: aligned-4-angle polar ~ control even at very low
+bits; misaligned-45 and uniform at matched bits BITE — if
+so, geometry-blindness is a property of ISOTROPY, not of
+quantization, and the law rewrites: the knee follows bits
+priced in the weight DISTRIBUTION's own coordinates. MPS.
+
+## PRE-REG: THE DISTORTION COLLAPSE — one curve for the quantization axis (2026-07-29 eve; Artin's "build the equation" ask)
+
+Claim under test: solves = f(D/sigma^2) — a single function
+of normalized induced weight distortion, independent of grid
+geometry/location/width. Desk instrument: recompute the
+induced normalized MSE (D/sigma^2, per snapped tensor, mean)
+for EVERY logged snap cell (d56 Q16/Q8; d256 Q64/Q16; 19M
+knee cells; polar battery incl. low-bit fills) and scatter
+against booked solves. PREDICTION: monotone collapse with a
+knee at D/sigma^2 ~ 0.02-0.08 (= (0.5-1.0 sigma)^2/12, the
+sigma law restated as rate-distortion); polar and Cartesian
+cells interleave on ONE curve. Any crystal whose cells sit
+OFF the curve names a non-Gaussian weight structure. Desk.
