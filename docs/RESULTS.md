@@ -9520,3 +9520,35 @@ priority and keeps the load-bearers); intermediate (graded
 spectrum of drops) => mixed economy, rank read (1b) decides.
 Fences: n=1 per arm, MPS, gates-only, all-layer deletion
 (per-layer follow-up only for load-bearing heads).
+
+## HEAD CENSUS VERDICT: NO SLACK IN ATTENTION — every head is load-bearing (2026-07-29)
+
+d56 EMA crystal, all-layer single-head deletions: h0 8, h1 6,
+h2 4, h3 17 (of 63; valid rates 1.4-10.5%). NEITHER pre-reg
+read: not democratic-with-redundancy (holography predicts
+graceful drops; these are catastrophic) and not an oligarchy
+(no single carrier — ALL FOUR are essential, h3 marginally
+least so). The attention-machine law sharpens: the MLP held
+~all the slack (flat to ffn48), and attention holds ~NONE —
+25% of attention width removed post-hoc destroys the function
+regardless of WHICH 25%. Consequence for Leg 2: post-hoc head
+pruning is dead; attention compression must be TRAINED-IN
+(heads-2 birth, C8-on-qkv with heal) — mirroring the floor
+lesson (trained-in tiers work where desk cuts fail). NOTE the
+contrast with gate layers, where post-hoc desk cuts (bands,
+tiers, snap) all found free points at d256: the slack pool is
+not just size-dependent but LOCATION-dependent. Fences: n=1
+per arm, MPS, gates-only.
+
+## PRE-REG: ATTENTION ANATOMY 1b — the rank read (2026-07-29, before the run)
+
+d56 EMA crystal, desk: SVD every qkv.weight [168,56] and
+o.weight [56,56]; report singular-value decay (top-k mass);
+truncate ALL attention mats to rank r in {48, 32, 24, 16}
+(per-matrix), gate each. READS: parity at r<=32 => attention
+is LOW-RANK — the d-cliff is about head geometry/count, not
+rank, and factorized qkv births are the Leg 2 arm; fragile by
+r=48 => d IS the effective rank (the width cliff explained
+mechanically — 56 dims because the function needs ~56 rank);
+graded => rank is a smooth axis (unlike heads), knee sets the
+factorization budget. Fences: n=1 per r, MPS, gates-only.
