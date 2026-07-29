@@ -10732,3 +10732,31 @@ failure mode; (2) rtn at matched ~10 bits still <= ours by
 rows); (3) hqq at matched bits <= rtn (ordering preserved).
 If (1) fails too, the sigma form itself is dead on web
 LLMs, not just the constant. Fences: as C6.
+
+## PACKED CRYSTAL C6c VERDICT: the sigma FORM survives (11.6x recovery) but max-anchored grids own heavy tails — the external fence is now MECHANISTIC (2026-07-29 night, 3080; C-series COMPLETE)
+
+sigma[row, K=16] (step sigma/8, 9.64 raw bits -> matched 10):
+DeltaKL 0.1127/tok, ppl 60.64 — an 11.6x recovery from C6b
+(PREDICTION 1 CONFIRMED: the knee constant, not the
+allocation form, was the C6 failure). But rtn10 0.0029 and
+hqq10 0.0007 (PREDICTION 2 FALSIFIED — not within 2x of rtn;
+PREDICTION 3 CONFIRMED — hqq <= rtn). MECHANISM, now clean:
+our fixed-width bits are priced by the WORST outlier's span
+(sigma-anchored step is uniform, so one 50-sigma outlier
+inflates every row's bit count), while max-anchored grids
+spend the same bits as a finer step on every quiet row. On a
+crystal this cannot happen — C1 measured entropy = Gaussian
+capacity to <1%, i.e. NO outlier structure to exploit; on
+web-trained weights the outliers ARE the structure and
+max/zero-point-anchored schemes harvest it. THE PAPER'S
+HONEST SHAPE: (a) calibration-free sigma-allocation is
+OPTIMAL for at-capacity (max-entropy) weights — born
+crystals, measured; (b) web LLMs are not at capacity; their
+tails demand max-anchored or calibrated grids (use rtn/hqq
+there); (c) universal claims unaffected: entropy-bound
+packing (C0/C1), bit-packed kernels 2.39x (C2b), cross-
+device integer determinism (C4), tiered bytes (C5).
+C-SERIES COMPLETE: C0-C6 all run, 5 confirms / 3 honest
+falsifications, every claim measured. Fences: one web model,
+fake-quant, n=1 per arm; entropy-coded (rather than fixed-
+width) sigma-grids on heavy tails = banked follow-up.
