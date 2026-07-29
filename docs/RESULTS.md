@@ -10552,3 +10552,20 @@ tiers as comparators (same instrument, 07-29 night), nesting
 assumption unverified per-row. Artifact rule: prefer packing
 EMA-parent crystals; tier + pack compound taxes on joint-STE
 tensors.
+
+## PACKED CRYSTAL C2 VERDICT: fused sigma-pack GEMV correct and 1.76x at large shapes; honest loss at 256x64 (2026-07-29 night)
+
+crystal8 GEMV (int8 codes + one per-tensor scale, dequant
+fused): CORRECT everywhere (bit-exact v the dequantized
+reference at crystal shapes; 1.6e-4 relative at 14336x4096 —
+fp32 accumulate v fp16 reference rounding). Bench (M3 Pro,
+mx.eval every iteration): 224x56 1.36x over fp16 GEMV,
+256x64 0.91x (LOSS — launch-overhead-bound, as pre-reg'd),
+1536x384 1.16x, 8192x2048 1.58x, 14336x4096 1.76x v the
+2.00x bandwidth model — 88% of model at the largest shape,
+same shape class where int4 v3 hit its wins. All three
+predictions held (correctness, approach-2x at large,
+parity-to-loss at micro shapes). The deploy story is
+consistent: at crystal scale the win is FOOTPRINT (5 bits/wt
+on disk, 1 B/wt live); tok/s wins arrive with size. Fences:
+M3 Pro, MLX, n=1 per shape, weights-only bandwidth model.
