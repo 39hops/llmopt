@@ -9903,3 +9903,40 @@ half -> dense; with half free, the POLICY may collapse to
 "eighth first, then half, rarely dense" — the escalation cell
 is armed (desk). Artifact: matryoshka_d56_3tier.pt. Fences:
 n=1, MPS, 1 joint epoch, gates-only.
+
+## E3 VERDICT: PASS 50/50 — the exact-mode decode path is certified; the E-series CLOSES (2026-07-29 night; axiom relay)
+
+Axiom decoded all 50 margin-certified prompts in exact mode
+(FX-V1 tables appended once-at-export to container 298f9077,
+weight bytes untouched, certify_tables clean; new KV-cached
+exact greedy driver, 10.7 s single-core full battery) —
+token-identical 50/50, independently confirmed by hash: their
+generated-ids file sha 398b7993 = our e3_expected_greedy.txt
+pin byte-identical. E2 (logits 6.2e-6) + E3 (greedy tokens
+exact over margin-certified rows) = the cross-lab contract is
+CLOSED end-to-end: same weights, same tokenization, same
+argmax path, two independent implementations. The margin-
+certified battery design paid: zero adjudication needed.
+CROSS-LAB LOOP NEXT: the call-span pilot (500 rows, sha
+de6c9f15 verified house-side) -> paired d64 arms.
+
+## PILOT RECEIPT (call-span 500): verified + accepted (2026-07-29 night)
+
+Shas verified house-side (de6c9f15 / 5f23e34a). Atom order
+CONFIRMED from sidecar (residents, gcd, Mod, **, then call:
+-> LAST) — matches the VOCAB_EXTRA append plan; the ordered
+list is the fence of record for every arm birth. Site
+spelling: comma-space ACCEPTED (verbatim-from-row is correct;
+our spaceless example was illustrative only — no re-emit).
+Seed band: 1000+ confirmed disjoint from qual 0..39; arm
+evals will additionally hold out BY ROW SPLIT from the 500
+(no band overlap possible). Level mix hard-heavy accepted
+(saturation coefficient says harder rows are the paying
+kind). Design note for the arms (flagged, not a conformance
+issue): gcdstep call values resolve the WHOLE subchain (e.g.
+call: gcd(62,39) -> 1 while nxt is the next step), so spans
+act as auxiliary end-value supervision rather than next-step
+shortcuts — the capability read stays valid, the mechanism
+read (use v ignore) sharpens: a model that USES the span
+should get END-of-chain rows right earlier. Fences: receipt
+only; arms pre-reg separately.
