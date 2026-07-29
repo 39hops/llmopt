@@ -9279,3 +9279,31 @@ d32; d48 drops > sigma => the cliff is between 48 and 64 —
 probe d56 or stop and stack compressions on the smallest
 survivor. Scoreboard: params-per-solve. n=1 per width, paired
 device/recipe.
+
+## LEG A d48 VERDICT: the width cliff is between 48 and 64 — bisect (2026-07-29)
+
+d48/ffn192/heads4, atlas cell (constant lr 1.5e-3, bs 8, seed
+1), gen-4/3ep, MPS: raw 44/120 @ 39.06%, EMA(0.999) 50/120 @
+51.43%. Like-for-like: raw-vs-raw 44 v d64's 53 = -9 (> sigma
+3.5); EMA-vs-EMA 50 v the d64 night-28b EMA class (~59-65) =
+similar-sized drop. EMA again earns +6 at constant LR (the A0
+law holding: this recipe has no annealing, so averaging pays)
+and also recovers most of the width toll's VALID-rate collapse
+(39% -> 51%). READ: d48 is below the d64 line — the cliff sits
+in (48, 64]. Next per pre-reg: probe d56 (ffn 224) to bisect.
+Params note: d48 is ~0.6x the d64 param count for -9 gates —
+params-per-solve WORSE than d64, so the floor search is already
+bracketing, not descending. Fences: n=1 per width, MPS,
+gates-only.
+
+## PRE-REG: LEG A WIDTH FLOOR — d56 bisection (2026-07-29, before the run)
+
+Same recipe exactly (atlas cell, gen-4/3ep, seed 1, MPS, EMA
+0.999 tracked): d56, ffn 224 (4x), heads 4 (head_dim 14).
+READS: d56 within sigma of d64 (raw ~53 / EMA ~59+) => floor
+is d56 — stack compressions there (matryoshka tier, top-3
+spectral bands, snap); d56 at the d48 line => cliff is sharp
+in (56, 64] — d64 IS the floor at this diet/recipe; strictly
+between => the toll is graded, book the slope and take
+whichever width wins params-per-solve. n=1, paired
+device/recipe.
