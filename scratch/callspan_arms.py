@@ -16,7 +16,10 @@ from llmopt.train.mathnative import MathTokenizer, build_model  # noqa: E402
 
 PILOT = os.path.expanduser(
     "~/code/axiom/data/llmopt/nt_callspan_pilot500.jsonl")
-ATOMS = ["gcd", "Mod", "**", "call:", "->"]  # sidecar order (fence)
+ATOMS = ["gcd", "Mod", "**", "call:", "->",  # sidecar order (fence)
+         "Hints: ", ";"]  # format atoms appended AFTER the diet
+# atoms (amendment booked: base tokenizer covers "Hints: none"
+# only as one fixed template atom, so span hints need "Hints: ")
 D, LAYERS, FFN, HEADS, BS, EPOCHS, LR = 64, 8, 256, 4, 8, 20, 1.5e-3
 
 rows = [json.loads(ln) for ln in open(PILOT)]

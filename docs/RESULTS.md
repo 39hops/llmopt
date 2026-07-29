@@ -9961,3 +9961,5 @@ headline); SPAN ~ PLAIN => spans ignored at this scale/mix
 step-local span option already banked with axiom); SPAN <
 PLAIN => hint tokens tax context (format cost). Fences: n=1,
 MPS, tiny-corpus regime, exact-match (not sympy) scoring.
+
+## AMENDMENT (target: call-span paired-arms pre-reg, same night, before the valid run): first SPAN run was VOID — 0/0 rows tokenized (the base tokenizer covers "Hints: none" only as ONE fixed template atom, so any non-none hint is unencodable; PLAIN arm unaffected, scored 38/100). Fix: two FORMAT atoms "Hints: " and ";" appended AFTER the five pinned diet atoms (full order: gcd,Mod,**,call:,->,"Hints: ",";" — the atom-order fence of record for these arms; round-trip verified). Rerun both arms under the 47-atom vocab so the arms stay format-paired.
