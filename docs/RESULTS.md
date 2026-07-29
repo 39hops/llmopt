@@ -9645,3 +9645,18 @@ INCOMPRESSIBLE by the axes tried; remaining untried: C8-on-
 qkv (sharing), attention-side snap (bits — 1c still queued).
 Params-per-solve leader UNCHANGED (d56/f48 EMA class).
 Fences: n=1, MPS, gates-only.
+
+## PRE-REG: ATTENTION ANATOMY 1c — where snap bites (2026-07-29, before the run)
+
+d56 EMA crystal, rational snap Q=16 (below the knee) on
+attn-only (qkv+o) v mlp-only (gate+up+down) v both, desk, MPS.
+READS: attn craters, mlp survives => bits follow the function
+(the slack map from ffn/census transfers to the bits axis —
+allocate precision to attention, snap the MLP hard: the
+bits-portfolio riff's first measured allocation); both
+degrade equally => snap damage is diffuse (contradicts the
+location-dependent slack map — book hard); both-arm ~=
+sum of singles => bits-axis damage composes additively across
+blocks (v the corner's sub-additive slack pool: tests whether
+LOCATION-split budgets are independent where AXIS-split ones
+were not). Fences: n=1 per arm, MPS, gates-only.
