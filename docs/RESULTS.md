@@ -9505,3 +9505,18 @@ routing must now beat THIS baseline (the fence from the
 entropy-adaptive null: adaptivity pays only where variance
 lives — here it measurably does). Fences: n=1, MPS, gates-only,
 retry +2 within sigma.
+
+## PRE-REG: ATTENTION ANATOMY 1a — the head census (2026-07-29, before the run; attention-core Leg 1)
+
+d56 EMA crystal (63/120), desk: for each head h of 4 (head_dim
+14), zero head h across ALL layers (q,k,v row blocks + o
+column block), gate. 4 arms. READS: uniform ~equal drops =>
+heads are DEMOCRATIC (holography extends into attention —
+compression should shrink all heads, e.g. head_dim cuts);
+one head's deletion craters while others are ~free => an
+OLIGARCHY inside attention (echoes the NNUE readout
+oligarchy; compression should PRUNE heads — 4->2 arm gets
+priority and keeps the load-bearers); intermediate (graded
+spectrum of drops) => mixed economy, rank read (1b) decides.
+Fences: n=1 per arm, MPS, gates-only, all-layer deletion
+(per-layer follow-up only for load-bearing heads).
