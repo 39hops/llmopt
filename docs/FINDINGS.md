@@ -381,3 +381,30 @@ honest negatives booked with the same care as wins.
   gates EXACTLY 65 (anti-mass < 1e-12 by theorem) — exact
   rotational conversion exists at 2x width; at-width
   conversion pays the measured toll instead. (07-28)
+
+## The chaos program + matryoshka (07-28/29 overnight)
+
+- **Training is chaotic in initial conditions, smooth in
+  hyperparameters, degenerate in capability**: twin
+  disagreement flat across 4 orders of eps at ~78% of seed
+  saturation; LR x BS map a smooth plateau; all twins gate
+  plateau-level. The attractor is a quality SHELL. Even eps=0
+  reruns diverge (cuda nondeterminism = sigma). (07-28/29)
+- **EMA tames it and pays**: Polyak 0.999 contracts the shell
+  58% AND raises gates (+12/+6 d64, +6 d256) — adopt-candidate.
+  Soups of independent births crater (no weight-space
+  convexity); EMA's running average along ONE trajectory is
+  the working form of averaging. (07-29)
+- **The matryoshka crystal works**: joint loss CE(W)+CE(P(W))
+  gives one tensor with a dense tier at 65 (zero price) and a
+  params/8 circulant tier at 60. Like-family tiers nest free;
+  cross-family compression (quantization on sharing) pays
+  double — slack is a shared budget across UNLIKE axes.
+  (07-29)
+- **Capability ~ spectral mass**: under the C8 isotypic
+  decomposition, cumulative band reconstruction gates
+  19/49/63/64/65 — holography along the frequency axis; band
+  masses exactly generic. (07-29)
+- **The sharing toll is grammar-dependent at scale**: 45M math
+  -5 (scale-stable) but ZX 36->17 — graph-grammar capability
+  is far less symmetry-compressible than tree-grammar. (07-29)
