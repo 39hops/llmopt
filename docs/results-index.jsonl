@@ -422,3 +422,4 @@
 {"id": "2026-07-29-pre-reg-the-d56-exact-twin", "date": "2026-07-29", "line": 9844, "title": "PRE-REG: THE d56 EXACT TWIN \u2014 full-model snap at the sigma rule (2026-07-29 night)", "type": "prereg", "threads": ["continents", "precision", "instruments"]}
 {"id": "2026-07-29-exact-twin-verdict-the-d56-floor", "date": "2026-07-29", "line": 9859, "title": "EXACT-TWIN VERDICT: the d56 floor crystal has a FULL exact-rational twin at Q<=16 (2026-07-29 night)", "type": "verdict", "threads": ["precision"]}
 {"id": "2026-07-29-pre-reg-matryoshka-rung-2-the", "date": "2026-07-29", "line": 9874, "title": "PRE-REG: MATRYOSHKA RUNG 2 \u2014 the 3-tier ladder (2026-07-29 night, before the run)", "type": "prereg", "threads": []}
+{"id": "2026-07-29-matryoshka-rung-2-verdict-the-3", "date": "2026-07-29", "line": 9888, "title": "MATRYOSHKA RUNG 2 VERDICT: the 3-rung ladder works \u2014 and the HALF tier is FREE (2026-07-29 night)", "type": "verdict", "threads": []}

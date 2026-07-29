@@ -9884,3 +9884,22 @@ COUNT deepens the slack tax (each rung prices in); middle
 tier ~ eighth => nesting collapses to binary (intermediate
 groups buy nothing). Fences: n=1, MPS, 1 joint epoch,
 gates-only.
+
+## MATRYOSHKA RUNG 2 VERDICT: the 3-rung ladder works — and the HALF tier is FREE (2026-07-29 night)
+
+1 joint epoch (3 forwards: dense + STE P_C2 + STE P_C8) from
+the d56 EMA crystal: DENSE 57, HALF 57, EIGHTH 48. Reads: (1)
+tier COUNT does not deepen the tax — dense pays exactly
+rung-1's -6 (63->57) with a third objective added; (2) the
+C2 half-tier gates AT the dense line (57=57, half the gate
+params) — consistent with the ladder toll (2x sharing: -1)
+and the mlp-slack law; the middle rung is a free stop; (3)
+eighth 48 v rung-1's 52 (-4, ~sigma): the deepest rung pays
+slightly for sharing its tensor with a third sibling. The
+nested-subspace ladder (C2 contains C8-commutant) is REAL:
+one tensor, three working budgets 57/57/48 at 1x/0.5x/0.125x
+gate params. Tier-retry upgrade path: escalate eighth ->
+half -> dense; with half free, the POLICY may collapse to
+"eighth first, then half, rarely dense" — the escalation cell
+is armed (desk). Artifact: matryoshka_d56_3tier.pt. Fences:
+n=1, MPS, 1 joint epoch, gates-only.
