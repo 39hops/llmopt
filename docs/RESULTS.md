@@ -9799,3 +9799,24 @@ denominators scale ~sqrt(d); "Q" fences must state width);
 still bites => the d256 crystal is genuinely more precision-
 sensitive (a capability-density story instead). n=1, MPS,
 gates-only.
+
+## SIGMA-PRICED SNAP VERDICT: Q=64 at d256 is EXACTLY FREE — the precision knee is a sigma-ratio constant (2026-07-29 evening)
+
+Q=64 x {attn, mlp, both} on wfloor d256: 65/65/65, identical
+per-level profiles to the comparator. The law books: snap
+denominators are priced in WEIGHT-SIGMA units, not absolute
+values. Quantitative cross-check across every measured
+crystal: the knee sits where grid ~ 0.5-1.0 sigma everywhere
+— d56 (sigma~0.13): Q=16 free (grid 0.48 sigma), Q=8 bites
+(0.96 sigma); d256 (sigma~0.06): Q=64 free (0.25 sigma), Q=16
+bites (1.0 sigma); 19M/d256 rational-snap knee Q in (16,24]
+(2026-07-27) = grid 0.65-1.0 sigma. One constant, three
+crystals, two widths, both labs' precision results unified.
+CONSEQUENCES: (1) every Q fence in the corpus is width-bound —
+state sigma or d; (2) the exact-twin format gets a principled
+rule: denominator ~ 2/sigma (Q ~ 2*sqrt(d) class) for free
+snap, no magic numbers; (3) the d56 "bits free everywhere"
+verdict amends implicitly: free BECAUSE its Q=16 grid was
+half-sigma — the location-blindness read stands, the
+free-ness was scale. Fences: n=1 per arm, MPS, gates-only,
+sigma estimated from init-scale class.
