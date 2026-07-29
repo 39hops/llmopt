@@ -10779,3 +10779,28 @@ reported honestly). Alongside: line-review of all six
 instruments (bits accounting, Hessian construction, KL
 direction, restore-after-arm). Any discrepancy books an
 AMENDMENT naming its target.
+
+## PRE-REG: THE CAPACITY METER — a zero-calibration predicate for which allocator a model deserves (2026-07-29 late night, desk, before the read)
+
+C6c's mechanism implies a MEASURABLE decision rule, no
+inference required: at step sigma_r/2 per row, M =
+(span bits) - (code-stream Shannon entropy), param-weighted
+over 2-D weights. M is the fixed-width penalty the sigma
+grid pays to the worst outlier; at-capacity (Gaussian)
+weights give M ~ 1.5-2 bits (C1 measured 1.8), heavy tails
+inflate span while entropy stays low. Kurtosis rides along.
+Instrument scratch/capacity_meter.py. Cells: house crystals
+(d64h8, L4d56, cplx_none), Qwen2.5-0.5B (3080), SmolLM2-1.7B
+(Mac), DeepSeek-V3 layer-30 routed experts from the cached
+shard (the 07-17 "experts are crystals" gauge, now on the
+capacity axis; weights fp8-dequant via block scales as then).
+PREDICTIONS: (1) crystals M in 1.5-2.5; (2) Qwen + SmolLM
+M >= 4 (the C6 failure, predicted from disk); (3) DeepSeek
+experts land CLOSER TO THE CRYSTAL BAND than to the web-
+dense band (router-as-diet-focuser extends from spectral
+gauge to capacity) — if (3) holds, sigma-law packing has a
+web-scale home in MoE experts and the C7 cell (pack an
+expert, score it) arms. DECISION RULE shipped either way:
+M small -> sigma-law; M large -> max-anchored/calibrated.
+Fences: desk read only, one shard for V3, block-dequant
+approximation noted.
