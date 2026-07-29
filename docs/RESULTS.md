@@ -9855,3 +9855,32 @@ exactness is a speed/determinism lever); embeddings/norms
 crack it => the sigma rule is blockwise (norm gains sit at
 sigma~1, not 1/sqrt(d) — per-tensor denominators needed:
 Q_t ~ 2/sigma_t). Fences: n=1, MPS, gates-only.
+
+## EXACT-TWIN VERDICT: the d56 floor crystal has a FULL exact-rational twin at Q<=16 (2026-07-29 night)
+
+Full-model snap (attn + mlp + emb + head + all 1D norm gains):
+62/120 @ 54.35% v 63 comparator — parity-class (-1, sub-
+sigma). Norm gains needed no special treatment (snap error
+<= 0.22 sigma per tensor — the sigma rule held per-tensor
+without blockwise denominators). Artifact saved:
+checkpoints/exact_twin_d56_q16.pt (fp32 image; rational-of-
+record = the (n, q<=16) table, deterministically derivable;
+dyadic share 39.8%). The exact-representation thread now
+spans 19M (int twin fq512) and the d56 floor (best-rational
+Q<=16) — smallest crystal, smallest denominators, consistent
+with the sigma law (bigger sigma at small width => coarser
+free grid). Fences: n=1, MPS, gates-only.
+
+## PRE-REG: MATRYOSHKA RUNG 2 — the 3-tier ladder (2026-07-29 night, before the run)
+
+Warm 1 joint epoch from the d56 EMA crystal, THREE forwards
+per step: CE(W) + CE(P_C2(W)) + CE(P_C8(W)) on gate weights
+(C2 = half params, C8 = eighth; STE both). Gate all three
+tiers. READS: full ~63-class AND half > eighth > desk-floor =>
+a working 3-rung ladder in one tensor — tier-retry becomes
+ESCALATION (cheap -> mid -> dense) and the Snell policy has a
+real dial; full pays > sigma more than rung-1's -6 => tier
+COUNT deepens the slack tax (each rung prices in); middle
+tier ~ eighth => nesting collapses to binary (intermediate
+groups buy nothing). Fences: n=1, MPS, 1 joint epoch,
+gates-only.
