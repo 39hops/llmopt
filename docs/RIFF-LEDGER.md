@@ -1581,3 +1581,32 @@ to the collaboration itself.
   oracle-collapsed two-model superposition, as banked 07-26.
   Attribution: Artin (the promotion + self-learning frame);
   house (lineage + economics + cell).
+
+- **"Black-hole density: why can they be so dense, and how close
+  are we?" + "is there just something missing?" (Artin,
+  2026-07-29 night, recurring riff — answered with measurement
+  this time)**: (1) We are AT our storage bound already: the
+  integer-twin result measured 6.65 bits/weight against the
+  max-entropy Gaussian capacity log2(sigma*sqrt(2*pi*e)) = 6.755
+  — the crystal codes its weights at ~99% of the Shannon
+  rate-distortion bound, and the sigma-priced knee (0.5-1.0
+  sigma) IS that bound's knee. Density-of-storage is not the
+  missing thing. (2) The black-hole lesson properly mapped:
+  Bekenstein-Hawking entropy is an AREA law — the densest
+  object stores bits on its boundary, and the bulk is gone. Our
+  measured analog: the incompressible part of the crystal is
+  the ROUTING (attention geometry + heads = the boundary
+  structure); the bulk (ffn, bits, rank) is compressible or
+  delegable. Delegation (+15, 3-sigma) is exactly the area-law
+  trick — store the pointer, let the engine be the bulk. (3)
+  What is actually missing, per the ledger: the THREE never-
+  varied axes — DEPTH (LAYERS=8 in every single birth this
+  month; the horizon property of the sensitivity wall and the
+  12-ply gate ceiling both point at depth/iteration, and we
+  have zero measurements), RECURRENCE (weight-tied iteration =
+  depth without params), and the reverse-farmer curriculum
+  (now cell 6). Banked: THE DEPTH LADDER (d56/f224 at layers
+  {4,8,12,16}, params-matched variants) as the cheapest probe
+  of the untouched axis. Attribution: Artin (riff, x3 now —
+  the persistence was warranted); house (bound check + area-law
+  mapping + the depth gap flag).
