@@ -9610,3 +9610,19 @@ the knee is a hard property of the FUNCTION, not the
 projection; worse => the bottleneck hurts optimization itself
 (low-rank births are known-harder — book against lottery-
 ticket reachability). n=1, MPS, gates-only.
+
+## PRE-REG: E3 — exact-mode paired greedy gate, 50 rows (2026-07-29; axiom GO by relay 0b47888)
+
+House emits 50 fresh gate-style prompts (band 777000, disjoint
+from battery20 and GATE_BAND) + fp32-eager greedy continuations
+(<=64 tok, eos-stop) from the S2 scorer of record (sha
+298f9077). Delivery: e3_battery50.txt / _meta.jsonl /
+e3_expected_greedy.txt + sha pins to axiom's data/llmopt/.
+Axiom decodes in EXACT mode; PASS = token-identical on 50/50.
+READS: 50/50 => exact-mode decode path certified (E-series
+closes; call-span tranche becomes next joint work); any
+divergent row => diff the first divergent position's eager
+logit margin — margin <= ~0.02 is the known fp16-near-tie
+class (composition rounding), NOT a bug; margin > 0.02 =>
+real decode-path divergence, bisect. Fences: greedy-only,
+prompt-format-bound (CE-400 class), house side fp32 eager.
