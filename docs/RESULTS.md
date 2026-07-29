@@ -9963,3 +9963,20 @@ PLAIN => hint tokens tax context (format cost). Fences: n=1,
 MPS, tiny-corpus regime, exact-match (not sympy) scoring.
 
 ## AMENDMENT (target: call-span paired-arms pre-reg, same night, before the valid run): first SPAN run was VOID — 0/0 rows tokenized (the base tokenizer covers "Hints: none" only as ONE fixed template atom, so any non-none hint is unencodable; PLAIN arm unaffected, scored 38/100). Fix: two FORMAT atoms "Hints: " and ";" appended AFTER the five pinned diet atoms (full order: gcd,Mod,**,call:,->,"Hints: ",";" — the atom-order fence of record for these arms; round-trip verified). Rerun both arms under the 47-atom vocab so the arms stay format-paired.
+
+## CALL-SPAN PAIRED ARMS VERDICT: end-value spans are NEUTRAL-to-positive — delegation neither pays nor taxes yet (2026-07-29 night)
+
+Paired 47-atom vocab, d64, 20 ep, same 400/100 rows: PLAIN
+48/100, SPAN 52/100 held-out greedy exact. +4 at n=100 is
+sub-sigma (binomial sigma ~5) — the read lands between (1)
+and (2): no format tax (hint tokens are free), no clear
+delegation win. The mechanism flag from the receipt holds:
+gcdstep spans carry END-of-subchain values, which cannot
+shortcut next-step prediction — the span is auxiliary signal,
+not a prosthetic. The sharpened cell is already banked with
+axiom: STEP-LOCAL spans (call: Mod(62, 39) -> 23 for the
+immediate step) would let the model READ the answer off its
+hint — use-v-ignore dissociates cleanly there. Also honest:
+tiny-corpus regime (400 rows), single seed; a real Leg B
+verdict wants the full-size tranche. Fences: n=1, MPS,
+exact-match scoring, end-value spans only.
