@@ -9552,3 +9552,32 @@ r=48 => d IS the effective rank (the width cliff explained
 mechanically — 56 dims because the function needs ~56 rank);
 graded => rank is a smooth axis (unlike heads), knee sets the
 factorization budget. Fences: n=1 per r, MPS, gates-only.
+
+## RANK READ VERDICT: attention has a rank knee in (24, 32] — graded then cliff (2026-07-29)
+
+d56 EMA crystal, all qkv/o truncated per-matrix: r=48 -> 59
+(-4, ~sigma), r=32 -> 54 (-9), r=24 -> 12 (crater), r=16 -> 0.
+SV energy heavy-tailed (qkv top-32 = 88.9%, top-48 = 98.2%;
+o more compact: top-32 = 96.8%). READ (graded-then-cliff
+hybrid): rank is a SMOOTH axis down to ~32 (unlike heads,
+where any deletion craters) with a hard floor in (24,32] —
+the crystal runs on ~32 effective attention rank inside
+56-dim head geometry. The d-cliff and the rank floor are
+DIFFERENT walls: width 48 kills (head_dim geometry shrinks)
+while rank 32 in full 56-dim geometry only pays -9 — geometry
+matters beyond rank. Leg 2 arms (anatomy-informed): (1)
+trained-in heads-2 birth (tests count v width, post-hoc
+untestable per census); (2) factorized-qkv birth at r=32
+(trained-in should beat the post-hoc -9; params 168x56 ->
+168x32+32x56 = 76%). Fences: n=1 per r, MPS, gates-only.
+
+## PRE-REG: LEG 2 ARM 1 — heads-2 at d56 (2026-07-29, before the run)
+
+sym_birth, Mac, one variable v the d56 Mac comparator (raw 54
+/ EMA 63): D=56, FFN=224, HEADS=2 (head_dim 28), seed 1, EMA
+tracked. READS: parity => head COUNT is slack at fixed width
+(only total width matters — compression should cut heads not
+dims); drop > sigma => 4 heads at hd14 beat 2 at hd28 — head
+multiplicity is load-bearing (matches census: 4 essential
+specialists), and the attention core is count x geometry, not
+just width. n=1, MPS, gates-only.

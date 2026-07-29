@@ -400,3 +400,5 @@
 {"id": "2026-07-29-pre-reg-attention-anatomy-1a-the", "date": "2026-07-29", "line": 9509, "title": "PRE-REG: ATTENTION ANATOMY 1a \u2014 the head census (2026-07-29, before the run; attention-core Leg 1)", "type": "prereg", "threads": ["instruments"]}
 {"id": "2026-07-29-head-census-verdict-no-slack-in", "date": "2026-07-29", "line": 9524, "title": "HEAD CENSUS VERDICT: NO SLACK IN ATTENTION \u2014 every head is load-bearing (2026-07-29)", "type": "verdict", "threads": ["instruments"]}
 {"id": "2026-07-29-pre-reg-attention-anatomy-1b-the", "date": "2026-07-29", "line": 9543, "title": "PRE-REG: ATTENTION ANATOMY 1b \u2014 the rank read (2026-07-29, before the run)", "type": "prereg", "threads": []}
+{"id": "2026-07-29-rank-read-verdict-attention-has-a", "date": "2026-07-29", "line": 9556, "title": "RANK READ VERDICT: attention has a rank knee in (24, 32] \u2014 graded then cliff (2026-07-29)", "type": "verdict", "threads": []}
+{"id": "2026-07-29-pre-reg-leg-2-arm-1", "date": "2026-07-29", "line": 9574, "title": "PRE-REG: LEG 2 ARM 1 \u2014 heads-2 at d56 (2026-07-29, before the run)", "type": "prereg", "threads": []}
