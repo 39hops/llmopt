@@ -9994,3 +9994,26 @@ decode-side resolver is next; SPAN ~ PLAIN again => the model
 ignores hints ENTIRELY at this scale (hint-blindness — a
 format/attention question, book hard); PLAIN drifts from 48 =>
 seed/vocab sensitivity fence. n=1, MPS, exact-match, paired.
+
+## STEP-LOCAL CALL-SPAN VERDICT: DELEGATION WORKS — the model reads its prosthetic (2026-07-29 night)
+
+Row-paired arms (dd5fbb09), same vocab/split: PLAIN 44/100,
+SPAN 59/100 — +15 at n=100 (~3 sigma binomial), v the
+end-value tranche's +4 (sub-sigma). Read 1 lands: when the
+span carries the IMMEDIATE step's value, the model USES
+engine-computed results it did not compute itself — Artin's
+"weights call an external function" measured at its first
+scale. The dissociation is clean: same rows, same atoms, same
+budget; only span locality changed, and the effect went from
+noise to 3 sigma. PLAIN drifted 48->44 across runs (sub-sigma
+backend noise; fence noted per pre-reg). CONSEQUENCES: (1)
+Leg B's mechanism is confirmed — spans must be STEP-LOCAL
+(prosthetics answer the question being asked, not the question
+five steps ahead); (2) next rungs: full-size tranche (scale
+read), then the LLMUE decode-side resolver (engine computes
+the span AT INFERENCE — true delegation, weights store the
+protocol not the arithmetic); (3) capability-per-param note:
++15 exact-match for ZERO added params — the prosthetic diet
+is the cheapest capability lever measured this week. Fences:
+n=1 per arm, MPS, tiny-corpus, exact-match, gcdstep-carried
+(309/500 rows).
