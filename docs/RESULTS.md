@@ -10302,3 +10302,31 @@ knee at D/sigma^2 ~ 0.02-0.08 (= (0.5-1.0 sigma)^2/12, the
 sigma law restated as rate-distortion); polar and Cartesian
 cells interleave on ONE curve. Any crystal whose cells sit
 OFF the curve names a non-Gaussian weight structure. Desk.
+
+## DISTORTION COLLAPSE VERDICT: ONE CURVE PER CRYSTAL, NOT ONE CURVE — the equation is two-parameter (2026-07-29 eve)
+
+21 historical snap cells recomputed to x = param-weighted
+D/sigma^2 (distortion_collapse.py, desk). WITHIN each crystal
+the cells are monotone within noise — but there is NO
+universal f(x): at x~0.09, 19M keeps 0.878 while cplx_none
+keeps 1.000; at x~0.33 cplx keeps 0.921 while 19M at x~0.45
+keeps 0.531; d56 bites by x~0.014 where cplx is untouched at
+x~0.12 — a ~30x fragility spread at matched normalized
+distortion. Geometry-blindness SURVIVES (polar and Cartesian
+cplx cells interleave on the cplx curve) but the knee
+CONSTANT is crystal-priced. THE EQUATION: kept ~ f(k_c *
+D/sigma^2) — f a universal monotone shape, k_c a per-crystal
+fragility (rough fit: cplx_none 1, 19M ~4-5, d56 ~25-30).
+AND WE ALREADY OWN k_c's METER: calibration R1 measured
+flips/token predicting snap robustness at rho .883 — near-tie
+density is the conversion factor from noise power to gate
+damage. Chain: bits (in sigma units) -> distortion power
+(geometry-blind, rate-distortion) -> logit flips (priced by
+near-tie density, per-crystal) -> solves. Also explains the
+day's "knee at 0.5-1.0 sigma across crystals" as grid-step
+accounting hiding the fragility spread that D/sigma^2
+exposes. NEXT (banked): fit f + k_c jointly across all cells;
+predict a NEW crystal's knee from its flips/token probe alone
+(1% of a gate's cost) — the prediction that would ship the
+equation. Fences: booked solves transcribed (no re-gates);
+best-rational vs sigma-step grids mix in x; n=1 per cell.
