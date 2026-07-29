@@ -10234,3 +10234,28 @@ angles BEATS uniform (the rotational crystal spends its
 information angularly); (3) angle-starved polar (8-16 bins)
 bites even with fine magnitude — the angular axis is the
 priced one. Desk, MPS, n=1, gates-only. polar_snap.py.
+
+## POLAR-SPLIT SNAP VERDICT: BITS ARE GEOMETRY-BLIND — the knee follows measured bits, not the grid's coordinates (2026-07-29 day; cell 4)
+
+cplx_none d384 (control 63): uniform 0.5s 63 @ 7.83 bits, 1s
+63 @ 5.97, 2s 60 @ 4.62; polar 1s x64 63 @ 8.14, 1s x16 63 @
+6.30, 2s x64 63 @ 7.57, 0.5s x8 63 @ 6.23; low-bit fills:
+2s x8 61 @ 4.75, 3s x6 58 @ 3.83. Prediction 1 (sigma knee on
+the uniform arm) CONFIRMED. Prediction 2 (polar wins at
+matched bits) FALSIFIED: 4.75-bit polar 61 v 4.62-bit uniform
+60 — parity, sub-sigma. Prediction 3 (angle starvation bites)
+FALSIFIED: EIGHT angle bins are free at fine magnitude (63 @
+6.23 bits) — the rotational crystal does NOT price its phase
+finely. THE LAW THAT BOOKS: the snap knee follows TOTAL
+MEASURED bits/weight regardless of grid geometry — Cartesian
+and polar grids at equal information cost equal capability.
+This EXTENDS the bits-v-structure currency law: bits were
+location-blind (Q8 uniform -4 everywhere); they are now also
+GEOMETRY-blind. One scalar (information per weight, priced in
+sigma units) governs the entire quantization axis; the free
+knee sits at ~5-6 bits/complex (~2.5-3 bits/real component),
+consistent with the sigma-law's Q~2/sigma across every
+crystal measured. Note: import-scar bite #3 (polar_snap
+module-level battery re-ran on import; inlined fill —
+__main__ guards adopted for future instruments). Fences: n=1,
+MPS, gates-only, gate+up fence, cplx_none only.
