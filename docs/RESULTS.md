@@ -9335,3 +9335,23 @@ crystal — stackable; (3) capability accumulates ~linearly
 with mass (holography) => the frequency-holography law is
 width-independent. Divergence on any read = width-dependence
 of the spectrum laws — book hard. n=1, desk, gates-only.
+
+## SPECTRUM ON THE FLOOR VERDICT: no spontaneous frequency structure, but the FREE-COMPRESSION POINT VANISHES at the floor (2026-07-29)
+
+d56 EMA crystal, desk: band masses again exactly dimension-
+proportional (0.1242/0.248/0.2499/0.2538/0.1242) — read (1)
+holds, the no-spontaneous-frequency law is width-independent.
+Cumulative gates (descending mass): 2 -> 30 -> 54 -> 60 -> 63.
+Read (2) FAILS: top-3 bands (75% of gate params) = 54, a -9
+toll — at d256 the same cut cost -2. Read (3) refined:
+accumulation is CONVEX at the floor (last 25% of mass carries
++9 gates), v ~linear at d256. VERDICT: holography-along-
+frequency is a SLACK phenomenon — a crystal at its width floor
+uses its whole spectrum, and band deletion pays the same
+sub-additive slack-budget law the compression corner measured
+(bits x sharing x width: three axes, ONE shared budget). The
+free 75% point at d256 was excess width dressed as spectrum.
+Consequence for Leg A stacking: desk-side band cuts are NOT
+free on the floor model — compression must be trained-in
+(matryoshka joint loss), not sliced-off. Fences: n=1, desk,
+MPS, gates-only.
