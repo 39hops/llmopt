@@ -10569,3 +10569,33 @@ parity-to-loss at micro shapes). The deploy story is
 consistent: at crystal scale the win is FOOTPRINT (5 bits/wt
 on disk, 1 B/wt live); tok/s wins arrive with size. Fences:
 M3 Pro, MLX, n=1 per shape, weights-only bandwidth model.
+
+## PRE-REG: PACKED CRYSTAL C2b — the disk format goes live: bit-packed 5-bit GEMV (2026-07-29 night)
+
+crystal5 GEMV: 6 codes per uint32 word (5 bits each, 2 bits
+pad -> 5.33 effective bits/wt), signed codes clamped to
+[-15, 15] (clamp fraction reported; sigma-law q keeps the
+6.8-sigma tail inside range). Bandwidth model v fp16: 16 /
+5.33 = 3.0x. PREDICTIONS: (1) correct v dequantized
+reference; (2) large shapes reach 2.2-2.7x (73-90% of model,
+same efficiency band C2 hit); (3) micro shapes remain
+overhead-bound (parity-to-loss); (4) the bit-unpack ALU cost
+does not knock the kernel off the bandwidth roofline at
+large shapes (if it does — honest loss v crystal8 booked).
+Fences: M3 Pro, MLX, n=1 per shape.
+
+## PACKED CRYSTAL C2b VERDICT: the disk format runs live — bit-packed 5-bit GEMV hits 2.39x, BEATING the byte-aligned kernel (2026-07-29 night)
+
+crystal5 (6 signed 5-bit codes per uint32, 5.33 eff bits/wt):
+CORRECT at every shape (<=1.7e-4 relative v dequantized
+reference), clamp fraction 0.0000 everywhere (the 6.8-sigma
+tail never fires at these q). Bench: 224x54 1.11x, 256x66
+1.21x, 1536x384 1.07x, 8192x2046 1.73x, 14336x4098 2.39x v
+the 3.00x bandwidth model (80% of model) — and it BEATS
+crystal8's 1.76x at the same shape class: prediction 4 held,
+the bit-unpack ALU is free next to the bandwidth saved. All
+four predictions confirmed. Consequence for the paper: the
+sigma-law artifact needs NO byte-aligned runtime twin — the
+5-bit disk format IS the runtime format, 3x footprint v fp16
+live. Fences: M3 Pro, MLX, n=1 per shape, synthetic Gaussian
+weights at crystal sigma (0.19).

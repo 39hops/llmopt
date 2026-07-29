@@ -96,3 +96,87 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+_SRC5 = """
+    // crystal5 GEMV: 6 signed 5-bit codes per uint32 word (2 pad
+    // bits) — the disk format live. y[row] = scale * sum x*code.
+    constexpr uint LANES = 32;
+    const uint row = threadgroup_position_in_grid.x;
+    const uint lane = thread_position_in_threadgroup.x;
+    const uint nw = D / 6;
+    const device uint* wrow = wq + (size_t)row * nw;
+    float acc = 0.0f;
+    for (uint i = lane; i < nw; i += LANES) {
+        const uint word = wrow[i];
+        const device half* xv = x + i * 6;
+        for (uint j = 0; j < 6; ++j) {
+            const int c = (int)((word >> (5 * j)) & 31u) - 15;
+            acc += (float)xv[j] * (float)c;
+        }
+    }
+    acc = metal::simd_sum(acc);
+    if (lane == 0) out[row] = (T)(acc * scale[0]);
+"""
+
+_kern5 = mx.fast.metal_kernel(
+    name="llmopt_crystal5_gemv", input_names=["x", "wq", "scale"],
+    output_names=["out"], source=_SRC5)
+
+
+def pack5(w):
+    """fp [N, D] (D % 6 == 0) -> (words uint32 [N, D/6], scale,
+    clamp fraction). Codes clamped to [-15, 15], stored biased +15."""
+    import numpy as np
+    n, d = w.shape
+    assert d % 6 == 0
+    s = float(mx.array(w).astype(mx.float32).std())
+    q = math.ceil(2.0 / s)
+    codes = np.round(np.array(w, dtype=np.float32) * q)
+    clamped = float((np.abs(codes) > 15).mean())
+    codes = (np.clip(codes, -15, 15).astype(np.int64) + 15).astype(np.uint32)
+    codes = codes.reshape(n, d // 6, 6)
+    words = np.zeros((n, d // 6), dtype=np.uint32)
+    for j in range(6):
+        words |= (codes[:, :, j] - 0) << (5 * j)
+    return (mx.array(words), mx.array([1.0 / q], dtype=mx.float32),
+            clamped)
+
+
+def crystal5_gemv(x, words, scale, d):
+    n = words.shape[0]
+    (out,) = _kern5(
+        inputs=[x, words, scale], template=[("T", x.dtype), ("D", d)],
+        grid=(n * 32, 1, 1), threadgroup=(32, 1, 1),
+        output_shapes=[(n,)], output_dtypes=[x.dtype])
+    return out
+
+
+def main5():
+    mx.random.seed(0)
+    shapes = [(224, 54), (256, 66), (1536, 384),
+              (8192, 2046), (14336, 4098)]
+    print(f"{'N x D':>14} {'fp16 us':>9} {'crystal5 us':>12} "
+          f"{'speedup':>8} {'bw-model':>9} {'max err':>9} {'clamp':>7}")
+    for n, d in shapes:
+        w = mx.random.normal((n, d)) * 0.19
+        x = mx.random.normal((d,)).astype(mx.float16)
+        words, scale, cl = pack5(w)
+        wh = w.astype(mx.float16)
+        mx.eval(words, scale, wh, x)
+        import numpy as np
+        cn = np.array(words)
+        dq = np.zeros((n, d), dtype=np.float32)
+        for j in range(6):
+            dq[:, j::6] = ((cn >> (5 * j)) & 31).astype(np.int32) - 15
+        dq *= float(scale[0])
+        ref = (x.astype(mx.float32) @ mx.array(dq).T).astype(mx.float16)
+        out = crystal5_gemv(x, words, scale, d)
+        err = float((out.astype(mx.float32)
+                     - ref.astype(mx.float32)).abs().max())
+        rel = err / float(ref.abs().max())
+        t_fp = bench(lambda: x @ wh.T)
+        t_c5 = bench(lambda: crystal5_gemv(x, words, scale, d))
+        print(f"{n:>6} x {d:<5} {t_fp:9.1f} {t_c5:12.1f} "
+              f"{t_fp / t_c5:7.2f}x {'3.00x':>9} {rel:9.1e} "
+              f"{cl:7.4f}", flush=True)
