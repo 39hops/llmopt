@@ -9131,3 +9131,34 @@ symmetry toll is plausibly worse. Booked as measured; a longer
 heal or stronger ramp is the confirmation rung (banked).
 Fences: cuda, union diet, n=1, VOCAB_EXTRA pinned (the vocab-47
 scar), comparators same-device (65/36).
+
+## NIGHT-28b VERDICT: EMA TAMES THE CHAOS (+12 gate, -58% divergence); ALL SOUPS CRATER — the shell is not convex (2026-07-28 overnight)
+
+(A) TWIN SOUPS CRATER: base+e6 47 (members 64/64), base+e4 49,
+base+e2 8, all-4 13. **Even 1e-6 twins cross basin
+boundaries** — the equal-quality shell is NOT weight-space
+convex; model-soup averaging is dead on independent births.
+Nuance kept: soup damage is GRADED in eps (47/49/8) even though
+function disagreement was FLAT — weight-space distance grows
+with eps while function distance saturates (two different
+geometries, now both measured).
+(D) HYPERPARAM SOUP: members 62/60/65/63, soup **1/120** —
+greedy-soup does NOT transplant to independent births (it
+lives on shared-init fine-tunes). Decisive null, cheap.
+INCIDENTAL FINDING (kept): the lr1.5e-3/bs8 seed-1 REBIRTH
+gated 60 v the atlas's 65 — same seed, same config, same
+device class: cuda nondeterminism alone moves a cell ~sigma.
+Even eps=0 "twins" diverge; the chaos needs NO perturbation.
+(B) **EMA IS THE NIGHT'S WIN — both dials at once**: EMA gates
+59/57 v raw 47/51 (+12/+6, a real SCORE LEVER at zero training
+cost) AND EMA-vs-EMA twin disagreement 0.0087 v raw 0.0210 —
+**a 58% contraction of the shell. Polyak averaging is a
+measured chaos damper and a capability lever simultaneously.**
+Banked follow-up: EMA on the production recipes (d256, 45M).
+(C) SYMMETRY TWINS: c8 twin disagreement 0.0322 v dense
+0.0210 — the commutant AMPLIFIES functional divergence (~1.5x),
+not damps: fewer parameters means each carries more function,
+so equal weight-noise moves the function further. Symmetry
+compresses params, not variance.
+Fences: all d64/cuda in-battery paired; disagreement
+format-bound; EMA decay 0.999 single value; n=1/cell.
