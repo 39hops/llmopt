@@ -10705,3 +10705,30 @@ max-grid); (3) still loses to hqq7 (robust zero-point
 optimization buys real error on outlier tensors) — if it
 TIES hqq, calibration-free wins the 0.5B table outright and
 claim 1 un-fences. Wall-time stays <5s. Fences: as C6.
+
+## PACKED CRYSTAL C6b VERDICT: per-row rescue FAILS — granularity is not the wound, the KNEE CONSTANT is (2026-07-29 night, 3080)
+
+sigma-pack[row] (q_r per output row): DeltaKL 1.3072/tok,
+ppl 90.26 — statistically unchanged from per-tensor (1.2839
+/ 96.39). PREDICTION 1 FALSIFIED (no >=10x recovery); rtn7
+0.167 / hqq7 0.039 unchanged. READ: both sigma arms anchor
+the grid STEP at sigma/2 — the CRYSTAL knee. The collapse
+law says damage ~ f(k_c * D/sigma^2); web-trained Qwen's
+k_c is evidently far larger than any crystal's, so its knee
+sits at a much finer step. The sigma-law FORM survives; the
+knee CONSTANT is model-priced — exactly what the flips/token
+meter measures. C6c below closes the chain.
+
+## PRE-REG: PACKED CRYSTAL C6c — the knee is model-priced: step sigma/8 arm (2026-07-29 night, 3080)
+
+Same harness, ARM=row K=16: q_r = ceil(16/sigma_r) (step
+sigma/8, ~3 extra bits; still closed form, zero data).
+Baselines re-read at the new measured avg bits (expect ~10;
+rtn/hqq at round(avg)). PREDICTIONS: (1) sigma[row,K=16]
+DeltaKL drops >=10x v C6b (into the 0.05-0.15 class) —
+confirming step-anchor, not allocation form, as the C6
+failure mode; (2) rtn at matched ~10 bits still <= ours by
+<=2x (max-anchored grids stay slightly better on outlier
+rows); (3) hqq at matched bits <= rtn (ordering preserved).
+If (1) fails too, the sigma form itself is dead on web
+LLMs, not just the constant. Fences: as C6.

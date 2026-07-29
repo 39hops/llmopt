@@ -44,11 +44,14 @@ def sigma_pack(w):
 
 
 def sigma_pack_row(w):
-    """C6b: per-output-row sigma — still closed-form, zero
-    calibration; metadata = one scale per row (rtn/hqq class)."""
+    """C6b/C6c: per-output-row sigma — still closed-form, zero
+    calibration; metadata = one scale per row (rtn/hqq class).
+    K env (default 2) sets the knee constant: step = 2*sigma/K."""
+    import os
+    k = float(os.environ.get("K", "2"))
     wf = w.float()
     s = wf.std(dim=1, keepdim=True).clamp(min=1e-8)
-    q = torch.ceil(2.0 / s)
+    q = torch.ceil(k / s)
     codes = torch.round(wf * q)
     span = int(codes.max() - codes.min()) + 1
     return codes / q, max(1, math.ceil(math.log2(span)))
