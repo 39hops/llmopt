@@ -1438,3 +1438,40 @@ to the collaboration itself.
   farm tranches by derivative; probes (flips/token rho .883,
   mass-on-valid) ride free. Attribution: Artin (all three
   riffs); house (instruments + unification).
+
+- **"The reverse LLM's alphabet: what is its {-1,0,1}? Is an
+  infinite vocab good?" (Artin, 2026-07-29)**: house resolution —
+  split the two alphabets. (a) WEIGHT alphabet: ternary economics
+  are direction-blind (nxt->cur is the same architecture); the
+  ternary-from-birth result (63/120 at 1.58 bits, parity at 3ep+)
+  should transfer — cheap paired arm banked: reverse-pairs
+  ternary vs fp, matched dose. (b) TOKEN alphabet: infinite vocab
+  is anti-optimal — embedding rows already dominate small-model
+  params (params-per-solve poison), softmax over an unbounded
+  set is undefined, and per-token generalization dies. The
+  predecessor SPACE is infinite but STRUCTURED: predecessors one
+  rule away = {rules} x {sites}, a finite move-vocab — the exact
+  B-b one-pass design. So the reverse LLM's {-1,0,1} is the
+  finite RULE set; composition supplies the infinity, the vocab
+  never does (measured lineage: 47-atom vocab spans the whole
+  math diet; capability rides flips-per-token, not vocab size).
+  Attribution: Artin (riff); house (resolution + arm).
+
+- **"Is there any way to have infinite density?" (Artin,
+  2026-07-29)**: three honest answers. (1) Literal bound: a
+  model with P params at b bits holds <= Pb bits — no infinite
+  density in the weights themselves (information theory, no
+  escape). (2) Topological loophole, already ours: Q is DENSE in
+  R — the born-rational/snap results mean finite-description
+  weights sit arbitrarily close to any real target; snap-to-
+  rationals is "infinite density" in the mathematician's sense
+  (countable set, dense everywhere). (3) The real escape =
+  DELEGATION (minimal-crystal Leg B): finite crystal + exact
+  engine — the weights store the CALL (an index, ~log-size), the
+  oracle stores the function (unbounded precision, sympy/axiom
+  exact arithmetic). System density is unbounded even though
+  crystal density is capped; the model's job collapses from
+  warehouse to catalog. Prediction banked: call-span arms should
+  show capability-per-param jumping precisely on the buckets
+  where the stored function is expensive (gcd chains, modexp).
+  Attribution: Artin (riff); house (bounds + mapping).
