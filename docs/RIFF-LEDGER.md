@@ -1475,3 +1475,35 @@ to the collaboration itself.
   show capability-per-param jumping precisely on the buckets
   where the stored function is expensive (gcd chains, modexp).
   Attribution: Artin (riff); house (bounds + mapping).
+
+- **"The model should CHANGE in precision + sharing + width per
+  query — question difficult => increase precision/snap back"
+  (Artin, 2026-07-29)**: the slack-pool law's constructive
+  reading — since bits x sharing x width x tiers draw on ONE
+  budget, the compression point should be a runtime DIAL, not a
+  birth-time choice. Lineage: matryoshka tier toggle (already a
+  2-point dial, zero-cost switch), Snell tier policy (banked:
+  route by refraction/difficulty), entropy-adaptive draft length
+  (same law in spec-decoding). CHEAPEST CELL banked: difficulty-
+  gated tier policy on the d56 matryoshka pair — route level<=4
+  rows to the cheap tier, level>=5 to dense, measure solves AND
+  effective-params-per-solve v always-dense (the dial's first
+  measured win would be compute-free: same tensor, per-row
+  projection toggle). Attribution: Artin (riff); house (lineage
+  + cell).
+
+- **"Split the bits up — magic bit at inference; have weights
+  represent more than what they are, adaptable" (Artin,
+  2026-07-29)**: bits-as-portfolio riff. Mappings: (1) snap-to-
+  rational IS variable-length description (a weight near p/q
+  stores fewer effective bits, freeing budget elsewhere —
+  measured knee); (2) the magic-estimator slots (banked) as the
+  judge of WHERE precision pays; (3) NF4/AF4-class nonuniform
+  codes = bits representing "more than they are" via a learned
+  codebook — never tried on our crystals. Honest fence: a bit
+  is a bit (information bound stands); what varies is the
+  ALLOCATION — adaptive quantization = spending the same bits
+  where the function's curvature lives. CELL banked: per-layer
+  mixed precision on d56 (snap the low-curvature layers, keep
+  attention fp16) v uniform snap at matched total bits.
+  Attribution: Artin (riff); house (mappings + fence).
