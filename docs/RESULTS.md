@@ -9840,3 +9840,18 @@ should buy HARDER rows (level/kind gaps), not more rows —
 Leg C's allocation question just got its first coefficient.
 Fences: n=1 per arm, cuda line, gates-only; A2-B2 gap 1.7
 sigma (directional, consistent with the raw gap 4.9 sigma).
+
+## PRE-REG: THE d56 EXACT TWIN — full-model snap at the sigma rule (2026-07-29 night)
+
+Sigma-priced rule says Q=16 (grid ~0.5 sigma) is the free
+denominator at d56. Cell: snap EVERY floating tensor of the
+d56 EMA crystal (attn + mlp + emb + head + 1D norm gains —
+the prior "both" arm covered only attn+mlp) to best-rational
+Q<=16, gate. READS: 63-class => the d56 crystal has a FULL
+exact-rational twin at 4-bit-class denominators — every weight
+an integer/16; book the artifact (int16 numerators + one
+denominator = a deployable exact format; precision doctrine:
+exactness is a speed/determinism lever); embeddings/norms
+crack it => the sigma rule is blockwise (norm gains sit at
+sigma~1, not 1/sqrt(d) — per-tensor denominators needed:
+Q_t ~ 2/sigma_t). Fences: n=1, MPS, gates-only.
