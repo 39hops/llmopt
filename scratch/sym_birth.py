@@ -85,7 +85,10 @@ gi = Ri[1].to(dev)
 rows = load_rows(gen4=True)
 rows = [r for r in rows
         if r["cur"].replace(" ", "") != r["nxt"].replace(" ", "")]
-if _env("REV", 0):  # reverse-pairs arm: 50/50 fwd + nxt->cur,
+REV = _env("REV", 0)
+if REV == 2:  # farmer birth: FULL reverse (nxt->cur, every row)
+    rows = [{"cur": r["nxt"], "nxt": r["cur"]} for r in rows]
+elif REV:  # reverse-pairs arm: 50/50 fwd + nxt->cur,
     random.Random(11).shuffle(rows)  # matched TOTAL dose
     half = len(rows) // 2
     rows = (rows[:half]
@@ -94,6 +97,14 @@ if _env("REV", 0):  # reverse-pairs arm: 50/50 fwd + nxt->cur,
 elif _env("HALF", 0):  # dose control: forward-only, half dose
     random.Random(11).shuffle(rows)  # same shuffle => same half
     rows = rows[:len(rows) // 2]
+CUTLV = _env("CUTLV", 0)  # Leg C: per-level dose cut — keep only
+if CUTLV:  # CUT% of level-CUTLV rows, all other levels untouched
+    keep = float(os.environ.get("CUT", "0.25"))
+    lv_rows = [r for r in rows if r.get("level") == CUTLV]
+    random.Random(11).shuffle(lv_rows)
+    kept = {id(r) for r in lv_rows[:int(len(lv_rows) * keep)]}
+    rows = [r for r in rows
+            if r.get("level") != CUTLV or id(r) in kept]
 enc = []
 for r in rows:
     try:
@@ -155,6 +166,10 @@ torch.save(sd, OUT)
 if ema is not None:
     torch.save({k: v.cpu() for k, v in ema.items()},
                OUT.replace(".pt", "_ema.pt"))
+if _env("SKIP_GATE", 0):  # farmer births: forward gate meaningless
+    print(f"[{ARM}{TAG}] saved {OUT} (gate skipped)", flush=True)
+    sys.exit(0)
+if ema is not None:
     model.load_state_dict(ema)  # gate the EMA weights below too
     model.eval()
     with torch.no_grad():

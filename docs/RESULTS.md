@@ -10050,3 +10050,40 @@ a free difficulty signal, and a decode policy that converts
 tier diversity into capability. Predictive routing's bar is
 now 62 @ 94%. Fences: n=1, MPS, gates-only, fail-heavy
 traffic profile.
+
+## PRE-REG: THE FARMER PROBE — reverse model as data farmer (2026-07-29 day; escalation-engine cell 6, Artin's reverse-self-learner riff)
+
+Full-reverse d64 birth (sym_birth REV=2: every gen-4 row
+flipped nxt->cur; EMA 0.999, SKIP_GATE — the forward gate is
+meaningless for a backward model). Probe (farmer_probe.py):
+125 NOVEL band expressions (gate band + 50k seed offset,
+disjoint from the gate's i<24), 8 samples each = 1000
+predecessor candidates; each verified by FORWARD rule
+application (fork-boxed verify_wave: cand -> seed must be a
+valid step), identity-rejected, deduped, and checked against
+the ENTIRE gen-4 corpus (cur+nxt) for novelty. METRIC:
+verified-distinct-novel yield /1000 + novel/s wall rate.
+PREDICTION: yield 100-300/1000 — reverse direction is
+GENERATIVE (many predecessors per expression), so verify
+should pass often; novelty fence is the real filter. READS:
+yield >> sympy-farm rate at matched hardness => the
+self-farming loop is LIVE (reverse learns, forward eats; two
+models per the backward-tax law, hardness-targeted per the
+saturation law) — next rung closes the loop (train forward
+on farmed rows). Yield ~0 => reverse model memorizes rather
+than inverts; book and stop the arc. Desk, MPS, n=1.
+
+## PRE-REG: LEG C — THE MARGINAL-VALUE LADDER (2026-07-29 day; escalation-engine cell 2, night31 cuda)
+
+Saturation law in hand (half dose ~ free at d64); now resolve
+it BY LEVEL. 8 births (night31.sh, cuda, EMA 0.999, seed 1):
+levels {1,2,3,5} x keep {25%, 50%} of that level's rows only,
+all other levels untouched. Corpus masses: L1 26.7k, L2
+39.3k, L3 12.2k, L5 14.6k. Comparator: cuda d64 EMA 58.7
+(n=3, night-29). METRIC: d(gate)/d(log rows) per level = the
+allocation answer for the next farm tranche (and the farmer
+probe's targeting order). PREDICTION: L1/L2 cuts free at both
+doses (easy mass saturated); L3/L5 cuts bite at 25% (the
+gate lives at L3-L7). Fences: n=1 per cell, cuda line only
+(sigma ~3.5, so single-cell deltas < 4 are noise — read the
+LADDER shape, not cells).
