@@ -9626,3 +9626,22 @@ logit margin — margin <= ~0.02 is the known fp16-near-tie
 class (composition rounding), NOT a bug; margin > 0.02 =>
 real decode-path divergence, bisect. Fences: greedy-only,
 prompt-format-bound (CE-400 class), house side fp32 eager.
+
+## AMENDMENT (target: E3 pre-reg, same day, before delivery): stop rule and margin design changed after inspecting the first generation — (1) the dist-trained scorer rarely emits eos greedily (0/50; post-newline decode degenerates to repetition), so continuations stop at newline/eos/64; (2) whole-row margin filtering kept only 20/120, so the protocol is TRUNCATE-at-first-near-tie instead: every delivered token has eager margin >= 0.05 (min row len 8). Consequence: any axiom-side divergence is a real decode bug by construction — the margin-adjudication branch of the pre-reg is unreachable. Delivered shas: battery 466a6592, meta 223235ee, greedy 398b7993.
+
+## FACTORIZED-QKV VERDICT: the rank knee is a FUNCTION property — trained-in factorization does not recover it (2026-07-29)
+
+d56/ffn224/heads4, qkv = 56->32->168 from birth, Mac, seed 1:
+raw 50 / EMA 55 v comparator 54/63 — EMA -8 (>2 sigma),
+matching the post-hoc r=32 toll (-9). Unlike tiers (train-in
+beat slice-off at the floor), attention rank does NOT heal by
+training through the bottleneck: the function needs the
+near-full-rank maps, and SGD cannot route around the
+constraint. Leg 2 closes 0-for-2 (heads-2 -7, rank-32 -8):
+the attention core resists BOTH count and rank compression —
+consistent with the census (no slack) and the sharp d-cliff.
+The attention block at this diet is effectively
+INCOMPRESSIBLE by the axes tried; remaining untried: C8-on-
+qkv (sharing), attention-side snap (bits — 1c still queued).
+Params-per-solve leader UNCHANGED (d56/f48 EMA class).
+Fences: n=1, MPS, gates-only.

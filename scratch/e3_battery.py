@@ -27,7 +27,7 @@ model = model.float().eval()
 
 rows = []
 i = 0
-while len(rows) < 50:
+while len(rows) < 120:  # candidates; margin filter trims to 50
     p = _gen_isolated(3 + len(rows) % 5, E3_BAND + i)
     i += 1
     if p is None:
@@ -40,18 +40,34 @@ while len(rows) < 50:
     if len(ids) <= 400:
         rows.append((text, ids))
 
+MARGIN_BAR = 0.05  # rows below this are near-tie land; excluded so
+# any axiom-side token diff is a REAL decode divergence by construction
+nl = tok.encode("\n")[-1]
 with torch.no_grad():
-    conts = []
+    conts, margins, kept = [], [], []
     for text, ids in rows:
         cur = list(ids)
-        out = []
+        out, mmin = [], float("inf")
         for _ in range(64):
-            nxt = int(model(torch.tensor([cur]))[0, -1].argmax())
+            lg = model(torch.tensor([cur]))[0, -1]
+            top2 = torch.topk(lg, 2).values
+            m = float(top2[0] - top2[1])
+            if m < MARGIN_BAR:  # truncate BEFORE the first near-tie:
+                break  # every retained token is certified high-margin
+            mmin = min(mmin, m)
+            nxt = int(lg.argmax())
             out.append(nxt)
-            if nxt == tok.eos_id:
+            if nxt in (tok.eos_id, nl):  # Step lines end at newline
                 break
             cur.append(nxt)
-        conts.append(out)
+        if len(out) >= 8:  # enough tokens to exercise the decode path
+            conts.append(out)
+            margins.append(mmin)
+            kept.append((text, ids))
+assert len(kept) >= 50, f"only {len(kept)} margin-clean rows"
+rows, conts, margins = kept[:50], conts[:50], margins[:50]
+print(f"margin filter: kept {len(kept)} of 120 candidates; "
+      f"battery min margin {min(margins):.3f}")
 
 with open("data/e3_battery50.txt", "w") as f:
     for _, ids in rows:
@@ -67,6 +83,7 @@ for fn in ("data/e3_battery50.txt", "data/e3_battery50_meta.jsonl",
            "data/e3_expected_greedy.txt"):
     sha = hashlib.sha256(open(fn, "rb").read()).hexdigest()[:16]
     print(f"{fn} sha256[:16]={sha}")
+nl = tok.encode("\n")[-1]
 print(f"greedy lens: min {min(map(len, conts))} "
       f"max {max(map(len, conts))} "
-      f"eos-terminated {sum(o[-1] == tok.eos_id for o in conts)}/50")
+      f"terminated {sum(o[-1] in (tok.eos_id, nl) for o in conts)}/50")

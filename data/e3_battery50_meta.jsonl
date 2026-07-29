@@ -1,0 +1,50 @@
+{"idx": 0, "text": "Current: Integral((2*x - 1)**2*exp(x**2 - x + 3) + 12*(5*x**2 + 1)*exp(5*x**3 + 3*x + 2)*cos(x) + 2*exp(x**2 - x + 3) - 4*exp(5*x**3 + 3*x + 2)*sin(x), x)\nHints: none\nStep: "}
+{"idx": 1, "text": "Current: Integral(4*(2*sin(x) + cos(x))*exp(2*x), x)\nHints: none\nStep: "}
+{"idx": 2, "text": "Current: Integral((30*x + 9)*exp(x*(5*x + 3)), x)\nHints: none\nStep: "}
+{"idx": 3, "text": "Current: Integral(2*(x*(2*x + 3)*log(3*x) + (x**2 + 3*x + 2)*log(x**2 + 3*x + 2))/(x*(x**2 + 3*x + 2)), x)\nHints: none\nStep: "}
+{"idx": 4, "text": "Current: Integral(-5*x**5*sin(x) + 25*x**4*cos(x) - 3*sin(x), x)\nHints: none\nStep: "}
+{"idx": 5, "text": "Current: Integral(9*(3*sin(x) + cos(x))*exp(3*x), x)\nHints: none\nStep: "}
+{"idx": 6, "text": "Current: Integral((5*x*(x - 1)*(4*x**2 + 1) + ((24*x + 3)*cos(x*(4*x + 1)) + (60*x**2 + 5)*sqrt(x**2 - 2*x + 4))*sqrt(x**2 - 2*x + 4))/sqrt(x**2 - 2*x + 4), x)\nHints: none\nStep: "}
+{"idx": 7, "text": "Current: Integral(10*x*(4*x + 1)*cos(4*x**2 + 2*x + 1) + 5*sin(4*x**2 + 2*x + 1), x)\nHints: none\nStep: "}
+{"idx": 8, "text": "Current: Integral((sqrt(x)*(12*x**2 - 6) + sqrt(3))*cos(sqrt(3)*sqrt(x) + 2*x**3 - 3*x + 2)/(2*sqrt(x)), x)\nHints: none\nStep: "}
+{"idx": 9, "text": "Current: Integral((24*sin(2*x) + 16*cos(2*x))*exp(3*x), x)\nHints: none\nStep: "}
+{"idx": 10, "text": "Current: Integral((sqrt(1 - 4*x**2)*((30*x - 9)*cos(5*x**2 - 3*x + 4) + 5) + 16)/sqrt(1 - 4*x**2), x)\nHints: none\nStep: "}
+{"idx": 11, "text": "Current: Integral((3*x*(2*x + 1)*(3*x**2 - x + 5)*log(-x)/2 + x*((6*x - 1)*sqrt(3*x**2 + 3*x + 5) + (8*x - 4)*cos(x**2 - x + 3))*sqrt(3*x**2 + 3*x + 5)*log(-x) + sqrt(3*x**2 + 3*x + 5))/(x*sqrt(3*x**2 + 3*x + 5)*log(-x)), x)\nHints: none\nStep: "}
+{"idx": 12, "text": "Current: Integral((6*x - 1)*exp(3*x**2 - x + 2), x)\nHints: none\nStep: "}
+{"idx": 13, "text": "Current: Integral(112*cos(4*x + 1), x)\nHints: none\nStep: "}
+{"idx": 14, "text": "Current: Integral(3*x/sqrt(x**2 + 4), x)\nHints: none\nStep: "}
+{"idx": 15, "text": "Current: Integral(3*log(3*x) + 3, x)\nHints: none\nStep: "}
+{"idx": 16, "text": "Current: Integral(6*x**2*log(4*x)**2 + 4*x**2*log(4*x) + 8*exp(4*x)*sin(4*x) + 8*exp(4*x)*cos(4*x) + 2*log(2*x)**2 + 4*log(2*x), x)\nHints: none\nStep: "}
+{"idx": 17, "text": "Current: Integral((6*x + 1)/(2*sqrt(3*x**2 + x + 4)), x)\nHints: none\nStep: "}
+{"idx": 18, "text": "Current: Integral(7*cos(7*x + 5), x)\nHints: none\nStep: "}
+{"idx": 19, "text": "Current: Integral(5*(18*x**3 - 23*x**2 + 46*x - 15)/sqrt(2*x**2 - 2*x + 5), x)\nHints: none\nStep: "}
+{"idx": 20, "text": "Current: Integral(3*(8*x**4 + 24*x**3 + 41*x**2 + 30*x + 15)/(4*x**4 + 12*x**3 + 21*x**2 + 18*x + 9), x)\nHints: none\nStep: "}
+{"idx": 21, "text": "Current: Integral(4*((3*x - 1)*(4*x**2 + 1)*atan(2*x) + (3*x**2 - 2*x + 2)*log(3*x**2 - 2*x + 2))/((4*x**2 + 1)*(3*x**2 - 2*x + 2)), x)\nHints: none\nStep: "}
+{"idx": 22, "text": "Current: Integral(9*exp(x) - 30*cos(2*x), x)\nHints: none\nStep: "}
+{"idx": 23, "text": "Current: Integral((2*x*(4*(15*x**2 - sin(x) + 1)*exp(5*x**3 + x + cos(x) + 3) - 9*log(x)*sin(6*x + 2)) + 3*cos(6*x + 2))/x, x)\nHints: none\nStep: "}
+{"idx": 24, "text": "Current: Integral(6*(log(3*x) + 2)*log(3*x), x)\nHints: none\nStep: "}
+{"idx": 25, "text": "Current: Integral((5*x**4 - 20*x**3 + 48*x**2 - 48*x + 39)/(x**4 - 4*x**3 + 10*x**2 - 12*x + 9), x)\nHints: none\nStep: "}
+{"idx": 26, "text": "Current: Integral(21*log(x) + 21 + 3/x, x)\nHints: none\nStep: "}
+{"idx": 27, "text": "Current: Integral((288*x**2 + 36)*exp(4*x**2 + 8), x)\nHints: none\nStep: "}
+{"idx": 28, "text": "Current: Integral((125*x**4 - 150*x**3 + 170*x**2 - 80*x + 57)/(25*x**4 - 30*x**3 + 39*x**2 - 18*x + 9), x)\nHints: none\nStep: "}
+{"idx": 29, "text": "Current: Integral(18*cos(3*x + 2), x)\nHints: none\nStep: "}
+{"idx": 30, "text": "Current: Integral(4*x*(3*x + 2*(3*x + 1)*log(3*x + 1)*log(log(3*x + 1)))/((3*x + 1)*log(3*x + 1)), x)\nHints: none\nStep: "}
+{"idx": 31, "text": "Current: Integral((8*x - 4)*cos(4*x*(x - 1)), x)\nHints: none\nStep: "}
+{"idx": 32, "text": "Current: Integral(40*x*cos(log(4*x**2 + 1))/(4*x**2 + 1), x)\nHints: none\nStep: "}
+{"idx": 33, "text": "Current: Integral(28*log(x) + 33, x)\nHints: none\nStep: "}
+{"idx": 34, "text": "Current: Integral(2*((10*x - 3)**2 + 5)*exp(10*x**2 - 6*x + 4), x)\nHints: none\nStep: "}
+{"idx": 35, "text": "Current: Integral(2*x*(2*log(5*x) + 1), x)\nHints: none\nStep: "}
+{"idx": 36, "text": "Current: Integral(12*x*cos(3*x**2 + x) + 2*cos(3*x**2 + x) + 3 + 6/sqrt(1 - 9*x**2), x)\nHints: none\nStep: "}
+{"idx": 37, "text": "Current: Integral(3*(3*(x + 1)*log(4*x + 4) + (9*x**2 + 1)*atan(3*x))/((x + 1)*(9*x**2 + 1)), x)\nHints: none\nStep: "}
+{"idx": 38, "text": "Current: Integral((240*x + 144*(5*x**2 + 1)**2)*exp(10*x**3 + 6*x + 4), x)\nHints: none\nStep: "}
+{"idx": 39, "text": "Current: Integral(log(3*x) + 1, x)\nHints: none\nStep: "}
+{"idx": 40, "text": "Current: Integral(4*(2*(3*x + 4)*log(3*x + 4) + 3*(4*x**2 + 1)*atan(2*x))/((3*x + 4)*(4*x**2 + 1)), x)\nHints: none\nStep: "}
+{"idx": 41, "text": "Current: Integral(2*(x**2 + 5)/(x**2 + 1), x)\nHints: none\nStep: "}
+{"idx": 42, "text": "Current: Integral((16 - 32*x)*sin(4*x**2 - 4*x + 1), x)\nHints: none\nStep: "}
+{"idx": 43, "text": "Current: Integral(4*((2*x - 1)*log(1 - 2*x) + 2*(x**2 + 1)*atan(x))/((2*x - 1)*(x**2 + 1)), x)\nHints: none\nStep: "}
+{"idx": 44, "text": "Current: Integral(-32*sin(x - 5)**3*cos(x - 5), x)\nHints: none\nStep: "}
+{"idx": 45, "text": "Current: Integral((-12*x**2 + 3*x + 2)/(2*sqrt(3*x**2 + 3*x + 2)), x)\nHints: none\nStep: "}
+{"idx": 46, "text": "Current: Integral(16*x*log(4*x) + 8*x + 2*exp(x)*sin(4*x) + 8*exp(x)*cos(4*x) + 3 + 12/sqrt(1 - 9*x**2), x)\nHints: none\nStep: "}
+{"idx": 47, "text": "Current: Integral(2*(x*log(-x) + (x**2 + 1)*atan(x))/(x*(x**2 + 1)), x)\nHints: none\nStep: "}
+{"idx": 48, "text": "Current: Integral((3 - 3*x**2)*sin(x**3 - 3*x + 5), x)\nHints: none\nStep: "}
+{"idx": 49, "text": "Current: Integral(-384*x**2*sin(8*x**2 + 6) + 24*cos(8*x**2 + 6) + 24, x)\nHints: none\nStep: "}
