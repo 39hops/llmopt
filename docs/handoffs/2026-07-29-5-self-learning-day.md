@@ -38,3 +38,17 @@ geometry x diet hardness x decode policy.
 ## Knobs added today (sym_birth.py)
 REV=2 full reverse; CUTLV/CUT per-level dose; SKIP_GATE.
 farmer_probe.py: SEEDMODE=band|corpus.
+
+## Addendum (same day, later): the spec CLOSES
+4. HEAD-TENSION booked: h8 gates 58 (= 4-head line; heads x2
+   free) yet all 8 essential (best -11, worst -37) —
+   provisioning frame falsified; relations scale with
+   provision; THEORY intrinsic-heads row hardened.
+5. POLAR-SPLIT booked: bits are GEOMETRY-blind — knee follows
+   measured bits/weight in any coordinates; phase not finely
+   priced (8 angles free); sigma-knee THEORY row extended.
+   Import-scar bite #3 (polar_snap) — adopt __main__ guards.
+Escalation-engine cells 1-4 + 6 all booked; cell 5 (axiom
+tranche) event-driven. Queue for next session: new-hardness
+diet design (Leg C's allocation answer), LLMUE decode-side
+resolver when tranche lands, greedy-first adoption cell.
