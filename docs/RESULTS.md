@@ -9372,3 +9372,23 @@ wins over like-family nesting — the two laws finally collide);
 cheap-tier stays dead (~single digits) => even training can't
 fit a d56/8-class function — the cliff is representational,
 not organizational. n=1, MPS, gates-only, sigma 3.5.
+
+## MATRYOSHKA AT THE FLOOR VERDICT: the tier COMPETES — nesting price = slack (2026-07-29)
+
+d56 joint epoch from the EMA crystal: DENSE-TIER 57/120 @
+54.71% (from 63: -6, > sigma), CHEAP-TIER 52/120 @ 45.86%
+(commutant projection, 1/8 gate params — desk projection of
+the same crystal class gated 2). Read 2 lands: at the width
+floor the sub-tier is no longer free — the d256 zero-price
+result (65/60) was slack again. UNIFIED LAW (three
+measurements now agree): the price of ANY compression —
+band cuts, snap bits, nested tiers — is paid from ONE slack
+pool, and a floor crystal has none; what training buys at the
+floor is a TRADE (dense -6 for a viable 1/8-tier), not a free
+lunch. Striking datum: the cheap tier (52) BEATS the full d48
+birth (raw 44) — a projected sub-model inside d56 outperforms
+a natively-born narrower crystal at comparable effective
+budget; organization beats raw width below the cliff.
+Params-per-solve: the d56 matryoshka pair is the current
+scoreboard leader (one tensor, two working budgets). Fences:
+n=1, MPS, 1 joint epoch, gates-only.
