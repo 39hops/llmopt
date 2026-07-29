@@ -1693,3 +1693,23 @@ to the collaboration itself.
   exact accumulation for sums, log-domain where multiplies
   dominate, and nobody divides in the forward pass.
   Attribution: Artin (riff), house (pricing against ledger).
+
+- **2026-07-29 (Artin, late — the feedback lens riff)**: "the
+  model needs quick, verified, optimal feedback... inference
+  the model WHILE training, a lens on what weights are being
+  trained, how + why — watch it attempt a question while its
+  weights are being generated." Banked as **THE TRAINING
+  LENS**: a periodic in-birth probe battery (proxy gate n=8
+  ~40s; flips/token ~1min; per-layer/per-cell update mass —
+  free from the optimizer) logged as a capability TIMELINE.
+  Watchables the ledger already names: WHEN the sparse
+  critical circuit crystallizes (L1h7-class cells); which
+  level solves arrive when (L4-canary law says watch L4
+  first); whether EMA's shell-contraction is visible live;
+  loss-blind capability holes forming in real time (the
+  gate-not-loss law made temporal). Tempo upgrade to the
+  exchange loop: feedback within a birth, not between
+  generations. Cheap version = checkpoint-hook + probes
+  (hours to build); the full "why" (per-question gradient
+  attribution) is a second rung. Attribution: Artin (riff),
+  house (instrument mapping).

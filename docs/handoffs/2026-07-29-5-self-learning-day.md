@@ -66,3 +66,13 @@ resolver when tranche lands, greedy-first adoption cell.
    representations. SPEC WRITTEN: 2026-07-30-packed-crystal
    (FRONT OF QUEUE; C6 transfer cell is [HOLD]).
 Next session opener: packed crystal C0+C1 (desk).
+
+## Addendum 3 (pre-compact)
+10. TRAINING LENS riff banked (Artin): in-birth probe battery
+    -> capability timeline (proxy gate + flips + update mass;
+    watch the critical circuit form; L4 first). Queue slot:
+    after packed-crystal C0-C2, or as the rider ON its births.
+Post-compact resume: BOARD -> this handoff -> spec
+2026-07-30-packed-crystal -> RESULTS tail (L10300+). Mac only.
+Opener: packed crystal C0+C1 (pre-reg first), lens rider
+optional on any birth the session fires.
