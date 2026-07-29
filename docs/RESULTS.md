@@ -9820,3 +9820,23 @@ verdict amends implicitly: free BECAUSE its Q=16 grid was
 half-sigma — the location-blindness read stands, the
 free-ness was scale. Fences: n=1 per arm, MPS, gates-only,
 sigma estimated from init-scale class.
+
+## REVERSE-PAIRS CONTROLS VERDICT: backward rows actively TAX — and the diet is already SATURATED at half dose (2026-07-29 evening)
+
+cuda line (comparators n=3: raw 51.3 / EMA 58.7): A2 half-dose
+forward-only raw 52 / EMA 56 — HALF the corpus costs ~nothing
+(-2.7 EMA, sub-sigma). B2 revpairs raw 35 / EMA 50 —
+replicates the Mac null on the paired line (36/50 there). A2 >
+B2 by 6 EMA / 17 raw: the read lands on TAX — backward rows
+actively damage forward capability at matched dose; direction
+competes for capacity; the temporal pincer stays TWO-MODEL as
+originally banked (single dual-direction crystal rejected
+twice, now dose-controlled). BONUS VERDICT (Leg C's first
+datum, free): gate capability at d64 is FLAT in dose from 50%
+to 100% of the gen-4 corpus — the marginal value of the second
+~325k rows is ~zero at this width. Diet-descent implication:
+the corpus is oversized for d64-class crystals; farm tranches
+should buy HARDER rows (level/kind gaps), not more rows —
+Leg C's allocation question just got its first coefficient.
+Fences: n=1 per arm, cuda line, gates-only; A2-B2 gap 1.7
+sigma (directional, consistent with the raw gap 4.9 sigma).
