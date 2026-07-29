@@ -10017,3 +10017,16 @@ protocol not the arithmetic); (3) capability-per-param note:
 is the cheapest capability lever measured this week. Fences:
 n=1 per arm, MPS, tiny-corpus, exact-match, gcdstep-carried
 (309/500 rows).
+
+## PRE-REG: THE ESCALATION POLICY — 3-rung tier-retry (2026-07-29 night; escalation-engine cell 1)
+
+matryoshka_d56_3tier.pt (57/57/48): per gate row, attempt
+EIGHTH; on fail, HALF; on fail, DENSE. Report policy solves,
+full escalation census (8 outcome classes), effective gate
+params/row. PREDICTION: ~57 at effective params well below
+half-alone (eighth catches the easy mass, half is free).
+READS: policy > 57 (union effects, cf. rung-1's +2) => the
+ladder is a CAPABILITY lever, not just cost; policy ~ 57 =>
+cost lever confirmed; policy < 57 => escalation loses rows
+the dense tier alone would catch (ordering effect — book).
+Desk, MPS, n=1, gates-only.
