@@ -9660,3 +9660,31 @@ sum of singles => bits-axis damage composes additively across
 blocks (v the corner's sub-additive slack pool: tests whether
 LOCATION-split budgets are independent where AXIS-split ones
 were not). Fences: n=1 per arm, MPS, gates-only.
+
+## SNAP-ALLOC VERDICT: Q=16 IS FREE EVERYWHERE — bits and structure are different currencies (2026-07-29)
+
+d56 EMA crystal: attn-only 63, mlp-only 63, both 63 — v
+baseline 63. NEITHER pre-reg read: snap at Q=16 costs NOTHING
+in any location, including the attention block that just
+resisted rank (-8) and count (-7) compression and the both-arm
+that snaps every 2D weight in the model. HARD BOOK: the
+attention core is structurally incompressible but fully
+BIT-compressible at Q=16 — precision and structure spend from
+DIFFERENT budgets at this width (v the corner's bits-x-sharing
+sub-additivity on the 19M: sharing consumed quantization slack
+there; here plain snap without sharing finds the full bits
+slack intact even at the width floor). The bits-portfolio
+allocation answer at Q=16 is: NO allocation needed — snap all.
+Follow-up armed same-day: Q=8 sweep to find where the bits
+axis finally bites and whether THAT is location-dependent.
+Fences: n=1 per arm, MPS, gates-only, Q=16 only.
+
+## PRE-REG: SNAP-ALLOC Q=8 (2026-07-29, immediately following)
+
+Same three arms at Q=8. READS: location-dependent damage at
+Q=8 => the allocation question reopens below Q=16 (bits follow
+the function once bits are scarce); uniform damage => bits-
+axis damage is diffuse at every price; still free => the d56
+crystal has an exactly-rational twin at Q<=8 (echoes the 19M
+integer-twin result — book toward the exact-representation
+thread). Fences: n=1 per arm, MPS, gates-only.

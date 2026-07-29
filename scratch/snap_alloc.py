@@ -14,7 +14,10 @@ import torch  # noqa: E402
 import step_grpo_micro as G  # noqa: E402
 from llmopt.train.mathnative import MathTokenizer, build_model  # noqa: E402
 
-D, LAYERS, FFN, HEADS, Q = 56, 8, 224, 4, 16
+import os  # noqa: E402
+
+D, LAYERS, FFN, HEADS = 56, 8, 224, 4
+Q = int(os.environ.get("Q", "16"))
 
 base = torch.load("checkpoints/sym_birth_dense_w56_ema.pt",
                   map_location="cpu", weights_only=True)
