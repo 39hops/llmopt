@@ -408,3 +408,49 @@ honest negatives booked with the same care as wins.
 - **The sharing toll is grammar-dependent at scale**: 45M math
   -5 (scale-stable) but ZX 36->17 — graph-grammar capability
   is far less symmetry-compressible than tree-grammar. (07-29)
+
+## The slack atlas + the escalation engine (07-29, one day+evening)
+
+- **The width floor and the attention machine**: capability
+  holds to d56 at 1/3 params (cliff sharp in (48,56]), FFN flat
+  224->48, depth flat at layers {4,8,12,16} (params-matched
+  shallow-wide ties deep-narrow), per-level dose flat at
+  quarter-cuts — the crystal is bound by NONE of depth, dose,
+  FFN, or bits. The binding resources: attention geometry x
+  diet hardness x decode policy. (07-29)
+- **The sigma-priced snap law, then its true form**: the
+  quantization knee sits at grid = 0.5-1.0 sigma across every
+  crystal — and the distortion collapse shows the full
+  equation is two-parameter: kept ~ f(k_c x D/sigma^2), with
+  k_c a ~30x per-crystal fragility spread whose meter already
+  exists (flips/token, rho .883). Geometry-blind three ways
+  (Cartesian = polar at matched bits; 8 angle bins free; a
+  45-degree grid rotation against star-anisotropic weights
+  costs ~1): coordinates appear nowhere in the chain bits ->
+  distortion -> flips -> solves. (07-29)
+- **Heads: a sparse critical circuit**: single-head deletion is
+  catastrophic at every width and provision (all 8 essential at
+  double provision — load spreads to fill), but the 64-cell
+  autopsy resolves it: ~13/64 (layer,head) cells load-bearing
+  (one costs -34 alone), ~51/64 slack; every index-column
+  contains a critical cell. Precious = the circuit, not the
+  grid. (07-29)
+- **Delegation works, step-locally**: call-span hints carrying
+  the IMMEDIATE step's engine-computed value buy +15 (~3 sigma)
+  at zero params; end-value spans buy noise. Prosthetics must
+  answer the question being asked. (07-29)
+- **The escalation ladder is a capability lever**: eighth ->
+  half -> dense tier-retry on one matryoshka tensor gates 62 v
+  dense 57 at 94% effective params — decode-time policy buys
+  back the tier tax and then some. Hardness comes free as
+  "first rung that solves". (07-29)
+- **The farmer's honest null**: a full-reverse model INVERTS
+  the step grammar in-distribution (107/1000 forward-verified)
+  but is memorization-dominant (11/1000 novel) — self-farming
+  needs multi-ply trees, solved-state seeding, or scale.
+  (07-29)
+- **E-series closed cross-lab**: margin-certified 50-row
+  battery (every token margin >= 0.05 by construction) decoded
+  byte-identical by axiom's exact mode — 50/50, sha-pinned,
+  zero adjudication needed. Instrument design replaced
+  arbitration. (07-29)

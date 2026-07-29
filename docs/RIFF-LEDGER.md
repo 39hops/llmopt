@@ -1663,3 +1663,33 @@ to the collaboration itself.
   become an actual inference artifact. Pairs with the
   bitpacked matryoshka (tiers = real memory at decode).
   Attribution: Artin (the catch), house (design).
+
+- **2026-07-29 (Artin, late — number representations riff)**:
+  "floating point is awful... why are computers so bad at
+  dividing... is there a better representation? bank these."
+  House answers banked: (1) cross-device nondeterminism is NOT
+  the basic ops (IEEE +,-,x,/ are correctly-rounded and
+  bit-exact everywhere) — it is reduction ORDER, FMA fusion,
+  and libm transcendentals; the universal fix exists (fixed-
+  order/exact accumulation + correctly-rounded libm, cf.
+  RLIBM/CORE-MATH) and our Ozaki/RNS arc measured it
+  AFFORDABLE — emulation is the lazy equilibrium, not the
+  optimum. Packed-crystal C4 tests the strong form (integer
+  GEMM hash-identical across Mac/cuda). (2) Division is slow
+  because it is the one basic op with no carry-parallel trick
+  (Newton-Raphson/SRT iteration, ~10-20x a multiply); the
+  arrangements where it is free: LNS (log-domain: divide =
+  subtract; adds become the hard op — interesting for
+  matmul-dominated NN inference), reciprocal precompute (norms
+  do ONE divide per row — precompute), RNS (mul/add carry-free,
+  division awful — we already exploit the good half). (3)
+  Better representations menu, priced by our own measurements:
+  posits/tapered precision (elegant, but sigma-law says NN
+  weights need no taper — plain sigma-grid already sits at the
+  Shannon bound); MX/block-scaled ints (industry conceding the
+  point); Kulisch exact accumulator (kills reduction-order
+  nondeterminism at the root — consumed into C4). The
+  NN-native system in one line: sigma-scaled ints for weights,
+  exact accumulation for sums, log-domain where multiplies
+  dominate, and nobody divides in the forward pass.
+  Attribution: Artin (riff), house (pricing against ledger).
