@@ -43,6 +43,17 @@ def sigma_pack(w):
     return codes / q, max(1, math.ceil(math.log2(span)))
 
 
+def sigma_pack_row(w):
+    """C6b: per-output-row sigma — still closed-form, zero
+    calibration; metadata = one scale per row (rtn/hqq class)."""
+    wf = w.float()
+    s = wf.std(dim=1, keepdim=True).clamp(min=1e-8)
+    q = torch.ceil(2.0 / s)
+    codes = torch.round(wf * q)
+    span = int(codes.max() - codes.min()) + 1
+    return codes / q, max(1, math.ceil(math.log2(span)))
+
+
 def main():
     from transformers import AutoModelForCausalLM, AutoTokenizer
     dev = "cuda"
@@ -81,22 +92,25 @@ def main():
     print(f"C6 fp16 control: ppl {math.exp(fp_loss):.3f}", flush=True)
 
     # sigma-pack (measures its own avg bits -> sets matched bits)
+    import os
+    arm = os.environ.get("ARM", "tensor")  # tensor | row (C6b)
+    pack_fn = sigma_pack_row if arm == "row" else sigma_pack
     t0 = time.time()
     bits_sum = pn = 0
     packs = {}
     for name, w in orig.items():
-        wq, b = sigma_pack(w.cpu())
+        wq, b = pack_fn(w.cpu())
         packs[name] = wq
         bits_sum += b * w.numel()
         pn += w.numel()
     t_sig = time.time() - t0
     avg_bits = bits_sum / pn
     mb = max(2, round(avg_bits))
-    print(f"C6 sigma-pack avg raw bits {avg_bits:.2f} "
+    print(f"C6 sigma-pack[{arm}] avg raw bits {avg_bits:.2f} "
           f"-> matched bits {mb}", flush=True)
     for name, m in lin.items():
         m.weight.data.copy_(packs[name].to(dev).half())
-    score("sigma-pack", t_sig)
+    score(f"sigma-pack[{arm}]", t_sig)
 
     for tag, fn in (("rtn", lambda w: rtn(w, mb)),
                     ("hqq", lambda w: hqq(w, mb, group_size=64))):

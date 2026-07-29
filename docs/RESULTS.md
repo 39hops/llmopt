@@ -10672,3 +10672,36 @@ the determinism differentiator v GPTQ/AWQ/HQQ artifacts is
 real. Fences: one crystal (d64h8), 5-prompt battery, greedy
 only; full integer end-to-end decode not yet built (the
 GEMM-path hash is the claim, as pre-registered).
+
+## PACKED CRYSTAL C6 VERDICT: THE FALSIFIER FIRES — per-tensor sigma-allocation does NOT transport to Qwen-0.5B (2026-07-29 night, 3080)
+
+Qwen2.5-0.5B, 168 linears / 357.8M params, fp16 control ppl
+60.29. sigma-pack (per-TENSOR q=ceil(2/sigma), avg raw 6.82
+bits -> matched 7): DeltaKL 1.2839/tok, ppl 96.39 — v rtn7
+0.1669 / 60.90 and hqq7 0.0388 / 60.52. 33x HQQ's DeltaKL:
+the pre-reg'd falsifier (>5x) FIRES decisively. Even plain
+RTN (per-ROW max scales) beats per-tensor sigma by 8x.
+Wall-time held: 0.9s v HQQ 61.7s (69x, just under the
+predicted >=100x). READ: born crystals are per-tensor
+Gaussian (entropy = capacity, C1); web-trained LLMs are NOT —
+row scales vary ~an order of magnitude, so one tensor grid
+over-quantizes quiet rows. The claim FENCES honestly:
+calibration-free per-tensor allocation is a CRYSTAL-CLASS
+result. Open rescue (C6b, pre-reg below): per-ROW sigma is
+STILL closed-form and calibration-free — the granularity,
+not the calibration, may be what real LLMs demand. Fences:
+one model, fake-quant, 16-prompt DeltaKL + README-slice ppl,
+n=1.
+
+## PRE-REG: PACKED CRYSTAL C6b — per-row sigma rescue arm (2026-07-29 night, 3080)
+
+Same harness, one change: q_r = ceil(2/sigma_r) per OUTPUT
+ROW (still zero calibration, closed form, one std() per
+row; storage cost one scale/row = same metadata class as
+rtn/hqq). PREDICTIONS: (1) DeltaKL improves >=10x over
+per-tensor sigma-pack (the row-scale spread was the wound);
+(2) lands within 2x of rtn7 (same granularity, sigma-grid v
+max-grid); (3) still loses to hqq7 (robust zero-point
+optimization buys real error on outlier tensors) — if it
+TIES hqq, calibration-free wins the 0.5B table outright and
+claim 1 un-fences. Wall-time stays <5s. Fences: as C6.
