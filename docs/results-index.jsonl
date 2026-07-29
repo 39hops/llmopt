@@ -402,3 +402,5 @@
 {"id": "2026-07-29-pre-reg-attention-anatomy-1b-the", "date": "2026-07-29", "line": 9543, "title": "PRE-REG: ATTENTION ANATOMY 1b \u2014 the rank read (2026-07-29, before the run)", "type": "prereg", "threads": []}
 {"id": "2026-07-29-rank-read-verdict-attention-has-a", "date": "2026-07-29", "line": 9556, "title": "RANK READ VERDICT: attention has a rank knee in (24, 32] \u2014 graded then cliff (2026-07-29)", "type": "verdict", "threads": []}
 {"id": "2026-07-29-pre-reg-leg-2-arm-1", "date": "2026-07-29", "line": 9574, "title": "PRE-REG: LEG 2 ARM 1 \u2014 heads-2 at d56 (2026-07-29, before the run)", "type": "prereg", "threads": []}
+{"id": "2026-07-29-heads-2-verdict-head-multiplicity-is", "date": "2026-07-29", "line": 9585, "title": "HEADS-2 VERDICT: head multiplicity is load-bearing \u2014 4 specialists beat 2 generalists at equal width (2026-07-29)", "type": "verdict", "threads": ["width"]}
+{"id": "2026-07-29-pre-reg-leg-2-arm-2", "date": "2026-07-29", "line": 9600, "title": "PRE-REG: LEG 2 ARM 2 \u2014 factorized qkv at the knee (2026-07-29, before the run)", "type": "prereg", "threads": ["speed"]}

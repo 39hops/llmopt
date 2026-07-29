@@ -9581,3 +9581,32 @@ dims); drop > sigma => 4 heads at hd14 beat 2 at hd28 — head
 multiplicity is load-bearing (matches census: 4 essential
 specialists), and the attention core is count x geometry, not
 just width. n=1, MPS, gates-only.
+
+## HEADS-2 VERDICT: head multiplicity is load-bearing — 4 specialists beat 2 generalists at equal width (2026-07-29)
+
+d56/ffn224/HEADS=2 (head_dim 28), Mac, seed 1: raw 51 / EMA 56
+v the 4-head comparator raw 54 / EMA 63 — EMA -7 (2 sigma).
+Read 2 lands: at FIXED width, halving head count while
+doubling head_dim costs real capability — the census's four
+essential specialists are not an artifact of post-hoc
+deletion; the attention core is COUNT x GEOMETRY, and the
+multiplicity itself (4 distinct attention patterns per
+position) carries function that fatter single patterns cannot.
+With the rank knee (32) this completes the anatomy: the
+attention core = MANY cheap-rank specialist heads in
+sufficient geometric room; compression must preserve count
+and geometry, may cut rank. Fences: n=1, MPS, gates-only.
+
+## PRE-REG: LEG 2 ARM 2 — factorized qkv at the knee (2026-07-29, before the run)
+
+sym_birth + RANK knob: each blk.qkv becomes Linear(56->32) @
+Linear(32->168), trained FROM BIRTH (post-hoc r=32 paid -9;
+trained-in is the test). d56/ffn224/heads4, seed 1, EMA, Mac,
+v the same comparator (54/63). qkv params 76% of dense. READS:
+parity => trained-in factorization recovers the post-hoc toll
+(matches the matryoshka/floor pattern: train-in beats
+slice-off) — attention params-per-solve win; -9-class drop =>
+the knee is a hard property of the FUNCTION, not the
+projection; worse => the bottleneck hurts optimization itself
+(low-rank births are known-harder — book against lottery-
+ticket reachability). n=1, MPS, gates-only.

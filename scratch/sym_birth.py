@@ -66,6 +66,12 @@ if EPS > 0:  # release the twin a hair away (lyapunov protocol)
     with torch.no_grad():
         for p in model.parameters():
             p.add_(EPS * torch.randn(p.shape, generator=g).to(dev))
+RANK = _env("RANK", 0)  # 0 = dense qkv; else factorized bottleneck
+if RANK:
+    for blk in model.blocks:
+        blk.qkv = torch.nn.Sequential(
+            torch.nn.Linear(D, RANK, bias=False),
+            torch.nn.Linear(RANK, 3 * D, bias=False)).to(dev)
 Ro, Ri = shift_reps(FFN), shift_reps(D)
 if ARM == "c8":
     with torch.no_grad():
