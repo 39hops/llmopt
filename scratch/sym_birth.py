@@ -85,6 +85,12 @@ gi = Ri[1].to(dev)
 rows = load_rows(gen4=True)
 rows = [r for r in rows
         if r["cur"].replace(" ", "") != r["nxt"].replace(" ", "")]
+if _env("REV", 0):  # reverse-pairs arm: 50/50 fwd + nxt->cur,
+    random.Random(11).shuffle(rows)  # matched TOTAL dose
+    half = len(rows) // 2
+    rows = (rows[:half]
+            + [{"cur": r["nxt"], "nxt": r["cur"]}
+               for r in rows[half:]])
 enc = []
 for r in rows:
     try:
