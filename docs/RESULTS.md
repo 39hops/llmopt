@@ -10481,3 +10481,74 @@ the wall-time differentiator is trivial HERE — it becomes
 real at 0.5B+ (C6, HOLD). The quality claim stands: zero
 data, zero search, parity with Hessian-armed baselines.
 Fences: n=1 per arm, MPS, one crystal, C1 controls reused.
+
+## PRE-REG: PACKED CRYSTAL C5 — the tiered pack (matryoshka as real bytes) (2026-07-29 night)
+
+Pack matryoshka_d56_3tier.pt (d56, tiers on the 8 gate.weight
+tensors; booked gates DENSE 57 / HALF 57 / EIGHTH 48) as a
+NESTED artifact: (a) non-gate tensors packed once (C0 rule);
+(b) gate payloads nested — tier-8 base = the numel/8 orbit
+representatives of P_C8 (exact reconstruction by the joint
+block-shift identity), tier-2 payload = numel/2 delta of
+P_C2's representatives v the tier-8 prediction, dense payload
+= full-numel delta v reconstructed P_C2; every payload
+sigma-law-quantized on its OWN sigma (q=ceil(2/sigma), never
+transported). Reader reconstructs any tier touching only its
+prefix of bytes. Desk check first: unquantized reconstruction
+must match project() exactly. Then full gates on all three
+packed tiers. PREDICTIONS: (1) each packed tier within sigma
+(~3.5) of its booked fp tier (57/57/48); (2) bits/wt of each
+payload ~5 (sigma-normalized Gaussians all look alike); tier-8
+artifact ~75-80% of the dense artifact's bytes (gate tensors
+are only ~25% of params — honest: tier savings are capped by
+the tiered-tensor share); (3) desk escalation economics
+(eighth-first -> half -> dense using booked solve rates):
+bytes-touched per solved row beats dense-always. Fences: n=1,
+MPS, full gates n=24, one crystal, deltas quantized after
+tier-8 quantization (error does not compound silently —
+deltas measured against the QUANTIZED base).
+
+## PRE-REG: PACKED CRYSTAL C2 — dequant-fused sigma-pack GEMV (Metal/MLX) (2026-07-29 night)
+
+Kernel: crystal8 GEMV — sigma-law codes stored int8 (1 B/wt;
+byte-aligned runtime twin of the 5-bit disk format), one fp
+scale (1/q_t) per tensor, dequant fused into the GEMV (one
+simdgroup per row, char4 weight + half4 activation vector
+loads, simd_sum, scale applied once per row — int4_gemv v3
+style). Bench protocol: mx.eval EVERY timed iteration (the
+lazy-graph scar). PREDICTIONS: (1) elementwise correct v fp
+reference (max err ~1e-3); (2) large shapes (D=4096
+N=14336, D=2048 N=8192): approaches the bandwidth model's
+2.0x over fp16 GEMV (2 B -> 1 B per weight), model printed
+next to measured; (3) crystal shapes (56x224, 64x256,
+384x1536): overhead-bound, parity-to-LOSS v fp16 (fp16 GEMV
+itself only ~40 GB/s at D=896 — honest losses booked, the
+win is the memory footprint not tok/s at micro shapes).
+Fences: M3 Pro 36GB, MLX, n=1 per shape.
+
+## PACKED CRYSTAL C5 VERDICT: the nested artifact is REAL and the escalation economics win — but zero-tax does NOT transport to the matryoshka crystal (prediction 1 partially falsified) (2026-07-29 night)
+
+Reconstruction identities EXACT (C2 0.0, C8 3e-8). Bytes: the
+nested pack ships tier-8 at 193,060 B, tier-2 at +29,008,
+dense at +62,720 (cum 284,788 B v fp32 1,627,360 — 5.7x);
+gate payloads 6,468 / 35,476 / 98,196 B v 401,408 fp32.
+Gates: packed EIGHTH 42 (fp 48, -6), HALF 53 (fp 57, -4),
+DENSE 52 (fp 57, -5) — the ladder ORDERING survives and the
+half tier still ties packed-dense, but every tier pays ~1-2
+sigma where C1's crystals paid ZERO with the same squant
+rule. PREDICTION 1 PARTIALLY FALSIFIED. Read: the joint-STE
+matryoshka crystal is MORE FRAGILE (higher k_c) than its EMA
+parent — third data point that fragility is crystal-priced
+(C3's d64h8 shrugged 3-bit; this one pays at sigma/2 steps);
+the flips/token meter should have predicted it BEFORE the
+gates — booked as the next desk cell for the k_c meter.
+PREDICTION 2 held (payload bits ~5, tier-8 artifact 68% of
+dense). PREDICTION 3 held on the packed gates: escalation
+decode (eighth-first -> half -> dense, nesting assumption)
+touches ~559 kB per solved row v 657 kB dense-always — the
+tiered artifact beats dense-always by ~15% bytes/solve even
+WITH the deepest tier degraded. Fences: n=1, MPS, booked fp
+tiers as comparators (same instrument, 07-29 night), nesting
+assumption unverified per-row. Artifact rule: prefer packing
+EMA-parent crystals; tier + pack compound taxes on joint-STE
+tensors.
