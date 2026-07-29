@@ -10834,3 +10834,23 @@ ARMS: pack DeepSeek experts (or any open MoE's) with the
 sigma rule v HQQ — the paper's web-scale home. Fences: desk
 read, one V3 shard (layer 30), 48-tensor samples for the big
 models, thresholds n=1 per class.
+
+## R-PASS VERDICT: the C-series replicates on every arm (2026-07-29 late night)
+
+R1 (C0+C1 rerun, Mac): EXACT — all pack stats and all four
+gates reproduce line-for-line (deterministic instrument
+confirmed, no flake). R2 (C4, SECOND activation seed): hash A
+seed-5 = 7f6849f7...024eb4 IDENTICAL on MPS and cuda — the
+cross-device integer invariance holds on a fresh random
+battery, not just the registered one; hash B and greedy
+streams also reproduce per-device. R4 (C6c rerun, 3080):
+DeltaKL 0.1127/0.0029/0.0007 and ppl reproduce to printed
+precision. R3 (kernel bench rerun, Mac): large-shape
+speedups within 2% of booked (crystal8 1.73x v 1.76x;
+crystal5 2.35x v 2.39x); micro shapes are +-0.1x-class
+timing noise (256x64 read 0.91x then 1.03x) — micro-shape
+entries are hereby fenced as parity-within-noise, the
+large-shape claims stand. NO AMENDMENTS REQUIRED from the
+instrument line-review (bits accounting, Hessian
+construction, KL direction, arm-restore all verified).
+C-series numbers are CONFIRMED for docs/README promotion.
