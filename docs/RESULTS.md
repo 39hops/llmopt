@@ -9741,3 +9741,28 @@ dose from tax); (b) a reverse-gate instrument (backward
 capability read); both cheap. The temporal-pincer bank stays
 banked — its entry price just went up. Fences: n=1, MPS,
 gates-only, dose-confounded as stated.
+
+## PRE-REG: SLACK RESTORATION — d256 anatomy (2026-07-29 evening, before the run; spec 2026-07-29-slack-restoration)
+
+Unified instrument (scratch/anatomy.py; frozen 07-29 originals
+kept) on wfloor d256 (comparator 65, MPS): head census (4
+drops), rank read (RANKS 192,128,96,64 — scaled to d256), snap
+Q=16 x {attn, mlp, both}. PREDICTIONS (at-floor theory): head
+drops GRACEFUL at d256 (slack = provisioning above floor);
+rank knee ~2x the d56 knee in proportion (~96-128); Q=16 free.
+READS: graceful heads => incompressibility is a FLOOR
+property, per-block — the slack-location law generalizes;
+catastrophic again => attention is INTRINSICALLY routing-bound
+at any width (relations do not superpose — stronger law).
+Fences: n=1 per arm, MPS, gates-only.
+
+## PRE-REG: REVERSE-PAIRS CONTROLS on the cuda line (2026-07-29 evening, before launch)
+
+3080: A2 = forward-only HALF dose (HALF=1, same shuffle seed
+as the REV split); B2 = REV=1 replication. Comparators: cuda
+d64 n=3 (raw 51.3 / EMA 58.7). READS: A2 ~ B2 => the Mac
+revpairs drop was DOSE (backward rows neutral filler; pincer
+ticket retries at full-fwd + backward-extra); A2 > B2 =>
+backward rows actively TAX forward (direction competes;
+pincer stays two-model). Fences: n=1 per arm, cuda line,
+gates-only.

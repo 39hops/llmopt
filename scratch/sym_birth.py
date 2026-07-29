@@ -91,6 +91,9 @@ if _env("REV", 0):  # reverse-pairs arm: 50/50 fwd + nxt->cur,
     rows = (rows[:half]
             + [{"cur": r["nxt"], "nxt": r["cur"]}
                for r in rows[half:]])
+elif _env("HALF", 0):  # dose control: forward-only, half dose
+    random.Random(11).shuffle(rows)  # same shuffle => same half
+    rows = rows[:len(rows) // 2]
 enc = []
 for r in rows:
     try:
