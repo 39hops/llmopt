@@ -34,8 +34,10 @@ def main():
     # --- hash A: exact integer GEMM on-device (fp32 carrier: MPS has
     # no fp64; |code|<2^6, |x|<2^6, sum over <=256 -> partials < 2^24,
     # exact in fp32 and reduction-order-invariant) ---
+    import os
+    seed = int(os.environ.get("SEED", "4"))
     h = hashlib.sha256()
-    g = torch.Generator().manual_seed(4)
+    g = torch.Generator().manual_seed(seed)
     for k in sorted(base):
         v = base[k]
         if not (v.ndim == 2 and k.startswith("blocks.")):
@@ -50,8 +52,8 @@ def main():
         yi = y.to(torch.int64).cpu().numpy()
         assert float((y - y.round()).abs().max()) == 0.0
         h.update(yi.tobytes())
-    print(f"C4 hash A (integer GEMM, {dev}): {h.hexdigest()}",
-          flush=True)
+    print(f"C4 hash A (integer GEMM, {dev}, seed {seed}): "
+          f"{h.hexdigest()}", flush=True)
 
     # --- hash B: fp32 full forward + greedy streams ---
     m = build_model(len(tok.vocab), **CFG).to(dev)

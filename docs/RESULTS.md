@@ -10760,3 +10760,22 @@ C-SERIES COMPLETE: C0-C6 all run, 5 confirms / 3 honest
 falsifications, every claim measured. Fences: one web model,
 fake-quant, n=1 per arm; entropy-coded (rather than fixed-
 width) sigma-grids on heavy tails = banked follow-up.
+
+## PRE-REG: PACKED CRYSTAL R-PASS — replication + review battery (2026-07-29 late night, before the reruns)
+
+Confirmation sweep before docs/README promote the C-series:
+(R1, Mac) C0+C1 full rerun — bar: identical pack stats and
+gates within sigma of first pass (instrument deterministic;
+any drift = flake caught). (R2, Mac+3080) C4 with a SECOND
+activation seed (SEED=5 v 4) — hash A must AGAIN match
+across devices on fresh integer activations (stronger than a
+rerun: new random battery, same invariance). (R3, Mac)
+C2/C2b bench rerun — timing is the only stochastic channel;
+bar: speedups within ~15% of booked (1.76x / 2.39x classes
+hold). (R4, 3080) C6c rerun as-is — bar: DeltaKL/ppl
+reproduce to the printed precision (fake-quant + fixed
+prompts = deterministic modulo cudnn nondet in eval; drift
+reported honestly). Alongside: line-review of all six
+instruments (bits accounting, Hessian construction, KL
+direction, restore-after-arm). Any discrepancy books an
+AMENDMENT naming its target.
