@@ -10113,3 +10113,21 @@ sweep (the wave is 8 near-greedy samples), (2) seed with
 SOLVED states (the true farmer seeding — needs cheap answer
 generation), (3) scale (d64 is memorization-prone at 120k
 expressions). Fences: n=1, MPS, EMA weights, gen-4 corpus.
+
+## PRE-REG: THE DEPTH LADDER — the never-varied axis (2026-07-29 day; Mac battery)
+
+LAYERS=8 in every birth all month; the horizon wall (12-ply
+gate, compositional steps) is a DEPTH property. Ladder:
+d56/f224/heads4 births at layers {4, 8, 12, 16}, EMA 0.999,
+seed 1, gen-4, 3ep, MPS — layers-8 cell is the in-battery
+control (same battery, same device; cross-battery comparators
+stay advisory only). Plus ONE params-matched pair: layers-4
+at d80/f320 (per-layer params x2.04 ~= layers-8 at d56/f224)
+— does capability live in DEPTH or in PARAMS when matched?
+PREDICTIONS: (1) layers-4 drops hard (>1 sigma below the
+in-battery 8) — chain steps are compositional; (2) layers-12
+and -16 ~= 8 (diet-bound per the saturation law, not
+architecture-bound); (3) the params-matched shallow-wide
+(4x d80) lands BELOW deep-narrow (8x d56) — depth is not
+purchasable with width (the attention-machine law extended
+to the third axis). Read against sigma ~3.5. 5 births.
