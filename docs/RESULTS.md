@@ -9307,3 +9307,17 @@ in (56, 64] — d64 IS the floor at this diet/recipe; strictly
 between => the toll is graded, book the slope and take
 whichever width wins params-per-solve. n=1, paired
 device/recipe.
+
+## LEG A d56 VERDICT: d56 IS THE WIDTH FLOOR — the cliff is sharp in (48, 56] (2026-07-29)
+
+d56/ffn224/heads4, atlas cell, gen-4/3ep, MPS: raw 54/120 @
+46.70%, EMA(0.999) 63/120 @ 54.45%. Read 1 lands: d56 sits ON
+the d64 line (raw 54 v 53; EMA 63 v the 59-65 class) at ~0.77x
+the params — the params-per-solve winner so far. With d48's
+44/50, the width cliff is SHARP: 8 dims (56->48) cost -10 raw
+/ -13 EMA, while 8 dims (64->56) cost ~nothing. EMA's
+constant-LR +9 here is the largest single-run EMA gain yet
+booked. NEXT (per spec): stack measured compressions on the
+d56 EMA crystal — top-m spectral bands (desk), matryoshka
+tier, snap at the knee. Fences: n=1 per width, MPS, gates-only,
+sigma 3.5.
