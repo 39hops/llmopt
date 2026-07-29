@@ -16,7 +16,13 @@ import torch  # noqa: E402
 import step_grpo_micro as G  # noqa: E402
 from llmopt.train.mathnative import MathTokenizer, build_model  # noqa: E402
 
-NB, D, LAYERS, FFN, HEADS = 8, 256, 8, 1024, 4
+import os  # noqa: E402
+
+NB = 8
+D = int(os.environ.get("D", "256"))
+LAYERS, HEADS = 8, 4
+FFN = int(os.environ.get("FFN", "1024"))
+CKPT = os.environ.get("CKPT", "checkpoints/mathnative_wfloor_d256.pt")
 BANDS = [(0,), (1, 7), (2, 6), (3, 5), (4,)]
 
 
@@ -38,8 +44,7 @@ def band(W, ks):
     return acc / NB
 
 
-base = torch.load("checkpoints/mathnative_wfloor_d256.pt",
-                  map_location="cpu", weights_only=True)
+base = torch.load(CKPT, map_location="cpu", weights_only=True)
 keys = [f"blocks.{li}.gate.weight" for li in range(LAYERS)]
 comps = {ks: {k: band(base[k].float(), ks) for k in keys}
          for ks in map(tuple, BANDS)}

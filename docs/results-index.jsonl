@@ -386,3 +386,4 @@
 {"id": "2026-07-29-leg-a-d48-verdict-the-width", "date": "2026-07-29", "line": 9283, "title": "LEG A d48 VERDICT: the width cliff is between 48 and 64 \u2014 bisect (2026-07-29)", "type": "verdict", "threads": ["width"]}
 {"id": "2026-07-29-pre-reg-leg-a-width-floor-b", "date": "2026-07-29", "line": 9299, "title": "PRE-REG: LEG A WIDTH FLOOR \u2014 d56 bisection (2026-07-29, before the run)", "type": "prereg", "threads": ["width"]}
 {"id": "2026-07-29-leg-a-d56-verdict-d56-is", "date": "2026-07-29", "line": 9311, "title": "LEG A d56 VERDICT: d56 IS THE WIDTH FLOOR \u2014 the cliff is sharp in (48, 56] (2026-07-29)", "type": "verdict", "threads": ["width"]}
+{"id": "2026-07-29-pre-reg-spectrum-on-the-floor", "date": "2026-07-29", "line": 9325, "title": "PRE-REG: SPECTRUM ON THE FLOOR \u2014 top-m bands of the d56 EMA crystal (2026-07-29, before the run; desk only)", "type": "prereg", "threads": []}

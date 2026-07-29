@@ -9321,3 +9321,17 @@ booked. NEXT (per spec): stack measured compressions on the
 d56 EMA crystal — top-m spectral bands (desk), matryoshka
 tier, snap at the knee. Fences: n=1 per width, MPS, gates-only,
 sigma 3.5.
+
+## PRE-REG: SPECTRUM ON THE FLOOR — top-m bands of the d56 EMA crystal (2026-07-29, before the run; desk only)
+
+sym_spectrum (now env-parameterized: CKPT/D/FFN) on
+sym_birth_dense_w56_ema.pt: band masses + cumulative gates in
+descending-mass order, MPS, no training. READS: (1) masses
+dimension-proportional again (0.125/0.25/0.25/0.25/0.125) =>
+the no-spontaneous-frequency law holds at the floor; (2)
+top-3 bands within ~sigma of 63 => the d256 free-compression
+point (75% of gate params for ~-2) transfers to the floor
+crystal — stackable; (3) capability accumulates ~linearly
+with mass (holography) => the frequency-holography law is
+width-independent. Divergence on any read = width-dependence
+of the spectrum laws — book hard. n=1, desk, gates-only.
