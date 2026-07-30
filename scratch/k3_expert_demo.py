@@ -114,9 +114,47 @@ def det_gemv(codes2x, exps, x, dev):
     return y.cpu(), emin
 
 
+A = 1024  # activation fixed-point scale for the D2 chain
+SILU_TAB = "checkpoints/k3_silu_tab.pt"
+
+
+def chain(deq, dev):
+    """K3-D2: full deterministic expert forward y = w2 @ (silu(w1@x)
+    * (w3@x)) in integers. SiLU via the shipped table (generated once
+    on the Mac, sha-pinned); requants are power-of-two shifts."""
+    if not os.path.exists(SILU_TAB):
+        x = np.arange(-(1 << 15), (1 << 15) + 1, dtype=np.float64) / A
+        tab = np.round(x / (1.0 + np.exp(-x)) * A).astype(np.int64)
+        torch.save(torch.from_numpy(tab), SILU_TAB)
+        print("[chain] silu table GENERATED (Mac master) — ship it")
+    tab = torch.load(SILU_TAB, weights_only=True)
+    raw = open(SILU_TAB, "rb").read()
+    print(f"[chain] silu table sha {hashlib.sha256(raw).hexdigest()[:16]}")
+    tab = tab.to(dev)
+    rng = np.random.default_rng(45_7_2)
+    x = torch.from_numpy(rng.integers(
+        -A, A + 1, size=(64, deq["w1"][0].shape[1])).astype(np.int64))
+
+    def rdiv(v, d):
+        return torch.where(v >= 0, (2 * v + d) // (2 * d),
+                           -((-2 * v + d) // (2 * d)))
+
+    g, e1 = det_gemv(*deq["w1"], x, dev)
+    u, e3 = det_gemv(*deq["w3"], x, dev)
+    g = torch.clamp(rdiv(g.to(dev), 1 << (1 - e1)), -(1 << 15), 1 << 15)
+    u = torch.clamp(rdiv(u.to(dev), 1 << (1 - e3)), -(1 << 15), 1 << 15)
+    h = torch.clamp(rdiv(tab[g + (1 << 15)] * u, A),
+                    -(1 << 15), 1 << 15)
+    y, e2 = det_gemv(*deq["w2"], h.cpu(), dev)
+    hh = hashlib.sha256(y.numpy().tobytes()).hexdigest()
+    print(f"[chain] dev={dev} e1={e1} e3={e3} e2={e2} "
+          f"sha256={hh}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dev", default="cpu")
+    ap.add_argument("--chain", action="store_true")
     args = ap.parse_args()
     from llmopt.quantize.meter import meter, meter_group
     from llmopt.quantize.pack import rans_size
@@ -140,6 +178,10 @@ def main():
     mg, kg, npar = meter_group(ws)
     print(f"[meter] expert group: M={mg:.2f} kurt={kg:.2f} "
           f"params={npar / 1e6:.1f}M")
+
+    if args.chain:
+        chain(deq, args.dev)
+        return
 
     for n in names[:1]:
         codes = deq[n][0] // 1  # signed 2x-ints, |.| <= 12

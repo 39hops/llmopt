@@ -11490,3 +11490,22 @@ the paper's determinism section upgrades from cross-vendor
 to CROSS-LAB, and the E-series protocol (sha-pinned
 artifact + pinned instrument + full-digest compare) is now
 the standing template for replication cells.
+
+## PRE-REG K3-D2: THE FULL-EXPERT CHAIN — closing K3-D1's composition fence (2026-07-30 ~11:45)
+
+K3-D1 fenced itself to GEMV-level. D2 composes the tested
+pieces into ONE deterministic full-expert forward on the
+shipped MXFP4 codes: x (int, A=2^10 fixed point, 64-vector
+battery) -> w1 and w3 integer GEMVs -> power-of-two requant
+back to A scale (pure shifts, round-half-away) -> SiLU via
+a SHIPPED integer table (generated once on the Mac,
+sha-pinned, scp'd — P3 doctrine: tables travel as bytes) ->
+gate*up product at A scale, clamped +-2^15 -> w2 integer
+GEMV -> int64 output trace. PREDICTION: sha256 of the full
+expert output identical on cpu, mps, and cuda (the same
+claim as D1, one level up the composition). FALSIFIER: any
+mismatch = a nondeterministic op introduced by the chain
+glue (requant shifts, table lookup, product) — hunt and
+book. Fences: synthetic battery (not real routed
+activations); one expert (l45/e7); activation clamp +-2^15
+in A units named as the D2 analog of P3's ACT_CLAMP.
