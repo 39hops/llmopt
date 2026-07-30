@@ -11939,3 +11939,34 @@ rows (the confident-nonsense class proper). CONSISTENT-
 CORRUPTION ARM BANKED (e.g. a deterministic wrong rule at
 f=0.1; predicts the DK flip). Fences: n=1 per dose,
 token-level, one corruption class, house scale.
+
+## PRE-REG UMOE-3: THE THIN CHANNEL AND THE GRAVITATIONAL TIE — do experts talk if offered a cheap way to? (2026-07-30 ~5:10 PM, Mac overnight)
+
+Artin's design, sharpened by UMOE-2's law (no correlating
+force exists; only shared gradient paths couple). ARMS
+(d64h8 4-expert recipe, seed 1, Mac, paired): (a) channel
+— expert_i = delta_i + a_i * S, S a THIN shared low-rank
+base (r=16 per mat), a_i per-expert learned coupling INIT
+0 (experts talk only if training opens the channel; the
+a_i trajectory is the measurement); (b) gravmoe — same-
+layer pairwise coupling c_ij = lambda_g * EMA(router
+overlap <p_i p_j>): experts that serve similar tokens are
+PULLED TOGETHER in weight space (mass = usage, force =
+co-assignment), lambda_g 0.5, EMA decay 0.99, coupling
+applied as W_i <- W_i + c_ij (W_j - W_i) every 100 steps
+(a relaxation toward co-used neighbors). MEASURED: gate;
+final a_i / c_ij values (did anyone talk/move?); expert
+corr; MI ratio; meter M. PREDICTIONS: (1) channel arm:
+a_i grows away from 0 (|a_i| > 0.1 for >=1 expert) AND
+gate >= tied arm's 43 — the shared mass wants to exist
+when offered cheaply (based on tied's near-parity); (2)
+gravmoe: c_ij concentrates on high-overlap pairs (the
+attraction is selective, not uniform); gate within sigma
+of lb; (3) corr rises ONLY through the offered channels
+(the UMOE-2 law holds elsewhere). FALSIFIERS: a_i pinned
+~0 with gate unchanged = experts have NOTHING to share
+(the strongest possible form of the init-default law —
+book it as such); gravmoe gate crater = usage-attraction
+destroys specialization (the anti-gravity result, also a
+law). Fences: n=1 per arm this pass, house scale, one
+lambda_g/r point each.

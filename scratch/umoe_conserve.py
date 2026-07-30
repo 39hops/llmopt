@@ -35,7 +35,11 @@ ARM = os.environ["ARM"]
 D, LAYERS, HEADS, FFN = 64, 8, 8, 256
 NE, FFN_E = 4, 128
 BS, EPOCHS, LR = 8, 3, 1.5e-3
-AUX = {"lb": 0.01, "free": 0.0, "tied": 0.01, "soft": 0.0}.get(ARM, 0.0)
+AUX = {"lb": 0.01, "free": 0.0, "tied": 0.01, "soft": 0.0,
+       "channel": 0.01, "gravmoe": 0.01}.get(ARM, 0.0)
+CH_R = 16          # channel arm: shared base rank
+GRAV_LAM = 0.5     # gravmoe: relaxation strength
+GRAV_EVERY = 100   # gravmoe: apply every N steps
 SEED = int(os.environ.get("SEED", "1"))
 OUT = f"checkpoints/umoe_{ARM}_s{SEED}.pt"
 
@@ -47,8 +51,18 @@ class MoEFFN(nn.Module):
     def __init__(self, tied: bool):
         super().__init__()
         self.tied = tied
+        self.channel = ARM == "channel"
         self.router = nn.Linear(D, NE, bias=False)
         mk = (lambda i, o: nn.Linear(i, o, bias=False))
+        if self.channel:  # thin shared base: low-rank triple + a_i
+            self.sg = nn.Parameter(torch.randn(FFN_E, CH_R) * 0.05)
+            self.sg2 = nn.Parameter(torch.randn(CH_R, D) * 0.05)
+            self.su = nn.Parameter(torch.randn(FFN_E, CH_R) * 0.05)
+            self.su2 = nn.Parameter(torch.randn(CH_R, D) * 0.05)
+            self.sd = nn.Parameter(torch.randn(D, CH_R) * 0.05)
+            self.sd2 = nn.Parameter(torch.randn(CH_R, FFN_E) * 0.05)
+            self.a = nn.Parameter(torch.zeros(NE))  # talk iff needed
+        self.ema = None  # gravmoe router-overlap EMA [NE, NE]
         if tied:
             self.base = nn.ModuleDict(
                 {"g": mk(D, FFN_E), "u": mk(D, FFN_E),
@@ -66,6 +80,13 @@ class MoEFFN(nn.Module):
         self.last_idx = None
 
     def _one(self, e, h):
+        if self.channel:
+            i = list(self.exp).index(e)
+            a = self.a[i]
+            g = F.linear(h, e["g"].weight + a * (self.sg @ self.sg2))
+            u = F.linear(h, e["u"].weight + a * (self.su @ self.su2))
+            return F.linear(F.silu(g) * u,
+                            e["d"].weight + a * (self.sd @ self.sd2))
         if self.tied:  # expert_i = base + delta_i, weight-level
             b = self.base
             g = F.linear(h, b["g"].weight + e["g"].weight)
@@ -89,6 +110,12 @@ class MoEFFN(nn.Module):
             if m.any():
                 y[m] = self._one(self.exp[i], h[m])
         y = y * top_p.unsqueeze(-1)
+        if ARM == "gravmoe":  # router-overlap EMA (usage attraction)
+            ov = torch.einsum("bti,btj->ij", p, p) / p.shape[0] \
+                / p.shape[1]
+            ov = ov.detach().cpu()
+            self.ema = ov if self.ema is None else \
+                0.99 * self.ema + 0.01 * ov
         # switch aux: NE * sum_i f_i * mean-prob_i
         f = F.one_hot(top_i, NE).float().mean((0, 1))
         self.aux = NE * (f * p.mean((0, 1))).sum()
@@ -168,6 +195,13 @@ def probes(model, enc, dev):
     print(f"[probe corr] per-block mean pairwise expert corr: "
           f"{[round(c, 3) for c in corrs]} | "
           f"mean {sum(corrs) / len(corrs):.4f}")
+    if ARM == "channel":
+        avals = [[round(float(a), 3) for a in blk.moe.a]
+                 for blk in model.blocks]
+        print(f"[probe channel] a_i per block: {avals}")
+    if ARM == "gravmoe":
+        E = model.blocks[0].moe.ema
+        print(f"[probe grav] block0 overlap EMA:\n{E}")
     if ARM == "tied":
         bn = torch.cat([model.blocks[0].moe.base[k].weight.flatten()
                         for k in ("g", "u", "d")]).norm()
@@ -270,6 +304,21 @@ def main():
             loss.backward()
             opt.step()
             step += 1
+            if ARM == "gravmoe" and step % GRAV_EVERY == 0:
+                with torch.no_grad():  # relax toward co-used peers
+                    for blk in model.blocks:
+                        E = blk.moe.ema
+                        if E is None:
+                            continue
+                        for i in range(NE):
+                            for j in range(NE):
+                                if i == j:
+                                    continue
+                                c = GRAV_LAM * float(E[i, j])
+                                for k in ("g", "u", "d"):
+                                    wi = blk.moe.exp[i][k].weight
+                                    wj = blk.moe.exp[j][k].weight
+                                    wi.add_(c * (wj - wi))
             if step % 500 == 0:
                 print(f"  ep{ep} step {step} loss {float(loss):.3f}",
                       flush=True)
