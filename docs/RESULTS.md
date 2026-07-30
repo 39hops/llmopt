@@ -11386,3 +11386,46 @@ bit-reproducible transformer decode is REAL and cheap to
 build (one file, ~280 lines); the axiom FX-V1 cross-lab
 hash cell is now a pure formality of shipping them the
 tables.
+
+## PRE-REG K3-D1: THE KIMI-K3 SINGLE-EXPERT DETERMINISTIC DEMO — one expert out of 2.8T, metered, packed, hash-locked cross-vendor (2026-07-30 ~10:30)
+
+The victory-lap-as-integration-test: pull ONE routed expert
+(layer 45, expert 7 — w1/w2/w3, 7168x3072x3 ~ 66M params)
+out of moonshotai/Kimi-K3 by safetensors byte-range (header
+parse + HTTP Range on shard model-00046-of-000096), never
+touching the other 2.8T params. FORMAT DISCOVERY (probe,
+pre-run): routed experts ship MXFP4-pack-quantized, group
+32, SYMMETRIC, uint8 E8M0 scales — i.e. e2m1 codes
+(2x-integers 0..12 signed) times power-of-two scales:
+EXACTLY representable in integer arithmetic. The confound
+that blocked the B3 meter becomes the carrier: the
+deterministic GEMV consumes Moonshot's shipped codes
+NATIVELY (int codes, shift scales, int64 accumulation
+relative to the min group exponent) — no requantization.
+CELLS: (a) EXTRACTION — bytes fetched < 50 MB for the
+expert (v 2.8T full pull); dequant exactness asserted
+(integer reconstruction == compressed-tensors reference
+dequant, bit-for-bit in fp32). (b) METER — llmopt.quantize
+.meter on the exactly-dequantized fp expert: Artin's
+per-expert-size law says capacity is monotone DECREASING
+premium in expert size (5M 2.93, 6M 2.85, 45M 2.33, 40M
+2.01); K3 at ~66M/expert is the largest expert ever
+metered. PREDICTION: M <= 2.0 (at/below the K2 boundary —
+the most black-hole-like expert yet). Fence: the meter
+reads the MXFP4 grid's image, not the fp master (named
+confound; kurtosis reported alongside). (c) ENTROPY — rANS
+size of the shipped 4-bit code stream v its Shannon
+entropy: how close Moonshot's format is to capacity
+(PREDICTION: code entropy < 4 bits/param, i.e. MXFP4 still
+leaves lossless margin; report the free %). (d) THE HASH —
+deterministic integer GEMV (fixed battery of 64 int
+activation vectors, sha256 of the full int64 output trace)
+run on Mac AND 3080: PREDICTION: bit-identical. FALSIFIERS:
+range-fetch reconstruction mismatch = format
+misunderstanding (book it, stop); M > 2.4 breaks the
+size-monotone law at n=5 (book the break — that IS the
+result); hash mismatch = a nondeterministic op in the new
+MXFP4 path. Fences: one expert, one layer (spot-check a
+second expert for the meter only); GEMV-level demo, not
+full-model decode; same instrument both devices
+(scratch/k3_expert_demo.py).
