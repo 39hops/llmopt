@@ -22,11 +22,11 @@ CKPT = "checkpoints/sym_birth_dense_mps_h8_ema.pt"
 TABLES = "checkpoints/p3_tables.pt"
 D, LAYERS, FFN, HEADS = 64, 8, 256, 8
 HD = D // HEADS
-A = 256            # activation fixed-point scale (2^8)
-ACT_CLAMP = 8 * A  # |x| <= 8
+A = 1024           # activation fixed-point scale (2^10; 2^8 read 92% agreement — pre-reg fallback)
+ACT_CLAMP = 32 * A  # |x| <= 32 (8 clamped real features; silu table covers 32)
 ROPE_S = 1 << 14   # rope table scale
 EXP_S = 1 << 16    # exp table value scale
-EXP_K = 256        # score-index granularity: idx = round(score*EXP_K)
+EXP_K = 1024       # score-index granularity (256 left flips at small margins)
 SILU_S = A         # silu table maps a-scale -> a-scale
 CTX = 512
 
@@ -38,7 +38,10 @@ def make_tables():
     for k, v in sd.items():
         if v.ndim == 2:
             s = float(v.float().std())
-            q = math.ceil(2.0 / s)
+            # emb/head are INTERFACE tensors (C1 kept them fp32):
+            # sigma/8 step there; block tensors at the sigma/2 law
+            k_step = 16.0 if k in ("emb.weight", "head.weight") else 2.0
+            q = math.ceil(k_step / s)
             t[k + ".codes"] = torch.round(v.float() * q).to(torch.int64)
             t[k + ".q"] = torch.tensor(q, dtype=torch.int64)
         elif k.endswith(".g"):
@@ -110,10 +113,10 @@ class DetLM:
         # r ~ round(2^20 / sqrt(mean+eps)). sqrt via integer Newton on
         # m40 = (s2*2^40)/(D*A^2) + eps*2^40  -> r = 2^40 // isqrt(m40)?
         # keep exact ints: m = s2 * (2**28) // (D * A * A) + 268  (eps*2^28)
-        m = s2 * (1 << 28) // (D * A * A) + 268
-        r = isqrt_newton(m)                          # ~ sqrt(mean)*2^14
+        m = (s2 // D) * (1 << 32) // (A * A) + 4295  # div D first: no int64 overflow
+        r = isqrt_newton(m)                          # ~ sqrt(mean)*2^16
         y = rdiv(a * g, A)                           # g*x at a-scale
-        y = rdiv(y * (1 << 14), torch.clamp(r, min=1))
+        y = rdiv(y * (1 << 16), torch.clamp(r, min=1))
         return torch.clamp(y, -ACT_CLAMP, ACT_CLAMP)
 
     def rope(self, x, pos0):
