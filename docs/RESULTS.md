@@ -11997,3 +11997,42 @@ systems lever would DIE here — important either way).
 Fences: trace-driven simulation (no wall-clock claim),
 one model, one trace corpus (README + prompt battery
 class), C single-point.
+
+## PRE-REG BASIN-1: EXPERTS AS ATTRACTORS — routing basin radius v usage (2026-07-30 ~5:50 PM, CPU desk probe)
+
+The Hopfield identification's first measurable: perturb
+the pre-router hidden state by eps * rms noise and measure
+P(top-1 route unchanged) v eps, per expert, on
+umoe_lb_s{1,2} (cpu; battery as GRAV-1b). Basin radius =
+eps at 50% retention. PREDICTIONS: (1) retention monotone
+decreasing in eps (sanity); (2) THE MASS HYPOTHESIS:
+higher-usage experts have LARGER basins (mass = basin
+size, the Hopfield coordinate replacing GRAV-1's failed
+write-norm mass) — rank corr(usage, radius) > 0 both
+seeds. FALSIFIER: no usage-basin relation = routing basins
+are usage-blind; the attractor picture loses its mass
+variable (book and keep the contract-arm comparison as
+the remaining Hopfield rung). Fences: token-level routing
+retention (not full-trajectory attractor convergence),
+house scale, n=2 seeds.
+
+## BASIN-1 VERDICT: basins are real and remarkably robust; the mass relation is WEAK-POSITIVE only (2026-07-30 ~6 PM, n=2)
+
+Retention is monotone and HIGH: the routing decision
+survives eps=0.2 perturbations at 87% and even eps=0.8
+(perturbation as large as the signal) at 63% — top-1
+routing sits in wide attractor basins, consistent with
+the Hopfield-retrieval reading of the router (both seeds
+near-identical: 0.986/0.984 at 0.02 down to 0.630/0.632
+at 0.8 — the retention curve itself REPLICATES to 3
+decimals). PREDICTION 2 (mass = basin size): rank
+corr(usage, basin) = +0.142 (s1) / +0.263 (s2) — positive
+both seeds as predicted but WEAK; usage explains little
+of basin geometry. Verdict: the attractor picture stands
+(wide, stable basins measured), but its mass variable is
+NOT usage — basin size is mostly usage-blind at this
+scale. The remaining Hopfield rung is the sharp one:
+contract-arm MoE v standard (does a lawful medium widen
+basins?) — still banked, needs the contract-MoE birth.
+Fences: router-level retention only (not full-block
+trajectory), house scale, n=2.
