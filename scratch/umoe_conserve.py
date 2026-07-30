@@ -35,7 +35,7 @@ ARM = os.environ["ARM"]
 D, LAYERS, HEADS, FFN = 64, 8, 8, 256
 NE, FFN_E = 4, 128
 BS, EPOCHS, LR = 8, 3, 1.5e-3
-AUX = {"lb": 0.01, "free": 0.0, "tied": 0.01}.get(ARM, 0.0)
+AUX = {"lb": 0.01, "free": 0.0, "tied": 0.01, "soft": 0.0}.get(ARM, 0.0)
 SEED = int(os.environ.get("SEED", "1"))
 OUT = f"checkpoints/umoe_{ARM}_s{SEED}.pt"
 
@@ -77,6 +77,12 @@ class MoEFFN(nn.Module):
     def forward(self, h):
         p = F.softmax(self.router(h), -1)          # [B,T,NE]
         top_p, top_i = p.max(-1)                   # [B,T]
+        if os.environ.get("ARM") == "soft":        # full mixture
+            y = sum(p[..., i:i + 1] * self._one(self.exp[i], h)
+                    for i in range(NE))
+            self.aux = torch.tensor(0.0)
+            self.last_idx = top_i.detach()
+            return y
         y = torch.zeros_like(h)
         for i in range(NE):
             m = top_i == i

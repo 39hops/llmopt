@@ -14,13 +14,15 @@ import torch.nn.functional as F  # noqa: E402
 from train_mathnative import load_rows  # noqa: E402
 from llmopt.train.mathnative import MathTokenizer, build_model  # noqa: E402
 
-CKPT = "checkpoints/sym_birth_dense_mps_h8_ema.pt"
+import os
+CKPT = os.environ.get("CKPT", "checkpoints/sym_birth_dense_mps_h8_ema.pt")
 D, LAYERS, HEADS, FFN = 64, 8, 8, 256
 N_PER_LEVEL = 300
 
 
 def main():
-    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    dev = ("cuda" if torch.cuda.is_available() else
+       "mps" if torch.backends.mps.is_available() else "cpu")
     tok = MathTokenizer()
     model = build_model(len(tok.vocab), d=D, layers=LAYERS,
                         heads=HEADS, ffn=FFN)

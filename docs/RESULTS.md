@@ -11794,3 +11794,36 @@ amplification lives in attention mixing, not block
 expansion (a mechanism finding — book it); gate crater
 >10 = lawfulness unaffordable at this scale. Fences: house
 scale, one seed this pass, lambda single-point (no sweep).
+
+## PRE-REG UMOE-2 + CAL-DK-2: two falsifiers on the 3080 window (2026-07-30 ~3:05 PM)
+
+UMOE-2 SOFT-ROUTING (falsifier for the UMOE-1 mechanism):
+one arm, ARM=soft — the same 4-expert d64h8 MoE but with
+FULL soft mixing (every expert sees every token, prob-
+weighted; no aux). If top-1 sparse assignment is what
+creates the split (UMOE-1, n=2), soft routing removes the
+cause: PREDICTION: pairwise expert corr rises by >=10x
+(from ~0.008 toward the tied arm's ~0.06 or beyond);
+argmax-MI ratio reported (expected to fall; the argmax of
+a soft mixture is a weaker object, fenced). FALSIFIER:
+corr stays ~0.008 under soft routing = decorrelation does
+NOT come from assignment (mechanism wrong — book and
+rethink).
+
+CAL-DK-2 DIET DILUTION (falsifier for the verified-diet
+calibration hypothesis): train the same dense d64h8 recipe
+with a fraction f of rows' TARGETS corrupted (nxt swapped
+among the corrupted subset — fluent, determined-looking,
+WRONG rows: the confident-nonsense class). Arms f=0.1,
+f=0.3 on the 3080; control = umoe_dense_s1 (f=0, same
+recipe/device, already born). Probe = cal_dk instrument
+(CKPT env). PREDICTIONS: (1) ECE degrades monotonically
+in f; (2) the DK gap flips POSITIVE (overconfident) at
+f=0.3 — the model learns confident wrongness only when
+the diet contains it; (3) gate degrades too (dose-
+response, reported). FALSIFIER: calibration SURVIVES 30%
+corruption = honesty is architectural/scale-driven, not
+diet-driven (would kill the dilution hypothesis and be
+interesting alone). Fences: token-level, corruption =
+target-swap (one corruption class), house scale, n=1 per
+f this pass.
