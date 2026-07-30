@@ -95,10 +95,30 @@ Three instrument bugs caught by controls, all amended.
 - [x] Venue DECIDED: MLSys, efficient-ML workshop as
       fast-feedback fallback (Artin, 2026-07-30)
 - [x] Fences section drafted (sec. 9)
-- [x] Flagged cites verified 2026-07-30 (TurboQuant =
-      arXiv 2504.19874 KV-cache online VQ; REAP = arXiv
-      2510.13999 Lasby et al.); remaining cites re-check
-      against the actual PDFs at final writing
+- [x] ALL cites verified 2026-07-30 (arXiv IDs pinned
+      below); final-writing pass re-reads PDFs for claims,
+      not existence
+
+## Cite registry (all VERIFIED 2026-07-30 via search)
+- GPTQ: Frantar et al., arXiv 2210.17323
+- AWQ: Lin et al., arXiv 2306.00978
+- HQQ: Badri & Shaji 2023 (Mobius Labs; software/blog
+  release, no arXiv — cite the repo + blog)
+- LLM.int8(): Dettmers et al., arXiv 2208.07339
+- SqueezeLLM: Kim et al., arXiv 2306.07629
+- QLoRA/NF4: Dettmers et al., arXiv 2305.14314
+- QuIP#: Tseng et al., arXiv 2402.04396 (Hadamard
+  incoherence + E8 lattice codebooks)
+- AQLM: Egiazarian et al., arXiv 2401.06118
+- TurboQuant: arXiv 2504.19874 (KV-cache online VQ,
+  rotation -> near-Gaussian; ICLR 2026)
+- Deep Compression: Han et al., arXiv 1510.00149
+- DeepCABAC: Wiedemann et al., arXiv 1907.11900
+- Switch: Fedus, Zoph & Shazeer, arXiv 2101.03961
+- DeepSeekMoE: Dai et al., arXiv 2401.06066
+- MoE offloading: Eliseev & Mazur, arXiv 2312.17238
+- Integer-only inference: Jacob et al., arXiv 1712.05877
+- REAP: Lasby et al., arXiv 2510.13999 (ICLR 2026)
 - [x] Cross-LAB determinism: FX-V1-H PASS (axiom, MPS,
       both digests full-match) + house CPU point — the
       hash now holds cpu/mps/cuda across two labs
