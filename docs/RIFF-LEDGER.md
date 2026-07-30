@@ -1968,3 +1968,33 @@ to the collaboration itself.
   its correct coordinates (basin depth/radius, not write
   norm). Attribution: Artin (the identification), house
   (formal mapping + probe design).
+
+- **2026-07-30 (Artin, night — HCE/NNUE-experts + the mass hunt
+  + NNUE-parity question)**: (a) THE HCE FRAME: Stockfish's
+  architecture as MoE blueprint — handcrafted eval (fast
+  symbolic features) routing into NNUE specialists inside a
+  search tree. House mapping, every piece already measured
+  somewhere: HCE features = the corpus-signature machinery
+  (template births compute them already); the search tree =
+  the escalation ladder (62/120 beats dense 57, booked);
+  NNUE specialists = per-class crystals at exact saturation
+  (the born-rational nt-chain's 720 certified IS an NNUE-
+  class result for its class); packed via the zero-tax
+  format. The composite = the packed-expert shelf, upgraded:
+  HCE-features router + escalation tiers + specialist
+  leaves. Banked as the shelf's v2 spec. (b) THE MASS HUNT
+  after EQUIV-1's inequivalence: three quantities (usage,
+  robustness, influence) all decoupled at expert grain.
+  Candidates banked: mass = ROUTER MARGIN (energy gap;
+  near-definitionally the basin radius for a linear router
+  — cheap confirm, and CAL-DK says margins are honest);
+  mass lives at SUB-expert grain (the head-autopsy sparse
+  critical circuit as the true massive bodies — port the
+  per-cell census to experts); gravitational mass may be a
+  ROUTING-GRAPH property (damage flows through co-routing
+  edges, B4's MI graph as the metric field). (c) NNUE-parity
+  path: class-by-class saturation (define closed class +
+  oracle -> wide generator -> specialist birth to the
+  exposure-curve plateau -> pack -> shelf), NOT generalist
+  scaling; the nt-chain shows the endpoint exists.
+  Attribution: Artin (all three frames), house (mappings).
