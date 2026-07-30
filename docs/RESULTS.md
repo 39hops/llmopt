@@ -11624,3 +11624,27 @@ FFN, MI probe on training-distribution rows. NEXT: seed-2
 same-day replication (3080 window); the causal story for
 the paper amends from "the loss does it" to "the sparsity
 does it."
+
+## UMOE-1 SEED-2: THE CORE NULL REPLICATES; the (M, MI) rider dies (2026-07-30 ~1:45 PM)
+
+Same protocol, seed 2, same device. TABLE: dense 40/120;
+lb 44, corr 0.0082, MI 205x, M 1.38; free 40, corr 0.0085,
+MI 299x, M 1.35; tied 42, delta-corr 0.0613, MI 219x, M
+1.43 (base 20.4 v delta 16.8). REPLICATED at n=2: (1)
+split-from-sparsity — lb v free indistinguishable on corr
+(0.0082 v 0.0085) and both at hundreds-x MI, router alive
+in the free arm both seeds; the balance loss shapes LOAD,
+not the split. (2) tied anatomy — deltas ~7x more
+correlated than untied experts, deltas grow to ~0.8x base,
+gate within sigma of dense both seeds (tie-at-birth stays
+a live cheap lever). (3) micro-scale production signature
+(corr ~0, MI 205-299x). KILLED HONESTLY: the seed-1
+(M, MI) opposite-motion rider — seed 2 shows no monotone
+pattern (M 1.38/1.35/1.43 v MI 205/299/219); the
+exploratory trend was seed noise, deleted from the paper
+rider. Gate ordering across arms is within sigma both
+seeds (no capability claim between MoE arms and dense at
+matched recipe). Fences: n=2 seeds, house scale, one
+diet. Thread closes for the day; next falsifier stays
+banked (soft-routing arm should KILL decorrelation if
+assignment is the mechanism).

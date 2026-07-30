@@ -83,8 +83,10 @@ laptop pass, zero calibration (B0); routers incompressible
   see the same tokens, so they cannot stay correlated.
   Bonus scale replication: a 0.9M-param micro-MoE shows
   the production signature (corr ~0, MI 235-288x shuffle)
-  at 1/30,000th the size. Exploratory: M and MI move
-  oppositely across arms (1.26/1.37/1.47 v 288/256/235x).
+  at 1/30,000th the size (n=2 seeds). A seed-1 (M, MI)
+  opposite-motion hint did NOT replicate at seed 2 —
+  deleted, booked as seed noise. Tie-at-birth rider: tied
+  experts gate within sigma of dense both seeds.
 
 ## 6. Honest negatives (load-bearing)
 C5 tier tax on joint-STE tensors (fragility k_c is an
