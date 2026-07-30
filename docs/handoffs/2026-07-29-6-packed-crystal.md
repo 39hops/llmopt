@@ -52,3 +52,20 @@ Allow` + profile Private is the recipe, memory-worthy).
   (pre-existing WIP, NOT dropped — inspect before next sync).
 - Queue next: diet-evolution spec; multi-ply farmer tree;
   axiom step tranche -> LLMUE resolver.
+
+## Addendum 1 (late night): R-pass + capacity meter + C7
+- R-pass: every C-series arm replicated (C1 exact; C4 hash-A
+  invariance on a SECOND activation seed, Mac=cuda 7f6849f7;
+  C6c to printed precision; kernels within 2%, micro shapes
+  fenced as parity-within-noise). No amendments.
+- Corpus re-sweep tie-ins: Lloyd-Max race = at-capacity law
+  from the codebook side; experts-are-crystals extends to
+  capacity axis; "quantize the notches" framing.
+- CAPACITY METER shipped (scratch/capacity_meter.py): crystals
+  0.96-1.61 bits / DeepSeek-V3 experts 2.33 @ kurt 3.07 /
+  Qwen 3.62 @ 5.29 / SmolLM 3.85 @ 6.54. Decision rule booked.
+- C7 ARMED (not yet pre-reg'd): sigma-pack MoE routed experts
+  v HQQ per-expert — candidate: a small open MoE end-to-end
+  (Qwen1.5-MoE / OLMoE class) or V3 shard desk-DeltaKL.
+- README Highlights + design note updated; THEORY row added;
+  RIFF banked. All pushed.

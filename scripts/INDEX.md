@@ -1169,6 +1169,15 @@ Call-span paired arms (pre-reg 2026-07-29 night: Leg B first read). Pilot 500 (a
 - `text(r, span)`
 - `run_arm(span)`
 
+### scratch/capacity_meter.py
+THE CAPACITY METER (pre-reg 2026-07-29 late night): M = span_bits - code_entropy at per-row step sigma/2 — the fixed-width penalty the sigma grid pays to the worst outlier. At-capacity (Gaussian) weights: M ~ 1.5-2 bits; heavy tails inflate M. Decision rule: M small -> sigma-law allocator; M large -> max-anchored/calibrated. Cells: house crystals, SmolLM2-1.7B, DeepSeek-V3 layer-30 routed experts (fp8 block-dequant, as the 07-17 gauge). Desk only. Run on 3080 with MODELS=qwen for the Qwen cell. __main__-guarded.
+
+- `meter(w)` — w [out, in] fp -> (M bits, kurtosis), per-row sigma/2 step.
+- `report(tag, tensors)`
+- `house(path, keys=None)`
+- `hf_linears(st_path, want, limit=64)`
+- `main()`
+
 ### scratch/ce400.py
 CE-400: fixed-sample CE proxy (the standing instrument from the CE-gate study). Usage: ce400.py <ckpt> <label>
 

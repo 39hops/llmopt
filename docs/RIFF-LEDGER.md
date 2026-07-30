@@ -1713,3 +1713,22 @@ to the collaboration itself.
   (hours to build); the full "why" (per-question gradient
   attribution) is a second rung. Attribution: Artin (riff),
   house (instrument mapping).
+
+- **2026-07-29 (Artin, late — "anything else we can tie in?" +
+  confirm-everything push)**: the R-pass replication battery
+  (all C-series arms confirmed, C4 invariance on fresh seeds)
+  and the corpus re-sweep it demanded surfaced three dormant
+  tie-ins: (1) the Lloyd-Max race (07-25) is the at-capacity
+  law measured from the CODEBOOK side (MSE-optimal k-means
+  ties naive uniform on outlier-free crystals — nothing to
+  fit); (2) "experts are crystals" (07-17) upgraded from
+  spectral gauge to CAPACITY axis — house capacity meter
+  measured DeepSeek-V3 routed experts at kurtosis 3.07
+  (Gaussian) v web-dense 5.3-6.5; (3) "quantize the notches,
+  never the axes" (07-17 rank floor) as the paper's framing.
+  Product of the riff: **THE CAPACITY METER** (M = span_bits
+  - code_entropy at sigma/2, from disk, zero inference) —
+  ships the allocator decision rule and arms **C7: sigma-pack
+  MoE experts v HQQ** (the web-scale home the C6 fence
+  pointed to). Attribution: Artin (push), house (meter design
+  + corpus links).

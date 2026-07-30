@@ -11,7 +11,7 @@ verdict-by-verdict history (wins, nulls, and retractions alike) is
 
 ## Highlights
 
-**The lab, current state (2026-07-27)** — the lab moved from tuning
+**The lab, current state (2026-07-29)** — the lab moved from tuning
 pretrained LLMs to growing **closed-system-native micro-models from
 birth** (hand-built ~40-token math vocabulary, zero pretraining,
 engine-minted oracle-verified diets) and measuring the laws they
@@ -42,6 +42,27 @@ Where it stands:
   max-entropy Gaussian capacity); and an exact-lattice birth
   (every weight a small fraction from step 0) that beat its fp32
   control (+5, single seed, replication in flight).
+- **The packed crystal (2026-07-29)**: the month's quantization laws
+  became a real deploy artifact, every claim measured and replicated
+  (`scratch/pack_*.py`, verdicts in `docs/RESULTS.md`). Per-tensor
+  bit-widths read off weight sigma in **closed form — zero
+  calibration data, zero search** — pack born crystals at ~5
+  bits/weight with **gate parity** (58/120 → 58/120 exact), code
+  streams within **1% of the Gaussian-capacity entropy bound**, and
+  GPTQ/AWQ/HQQ (real Hessians, in-tree) gain *nothing* over it at
+  matched bits. A bit-packed 5-bit Metal GEMV runs the disk format
+  directly at **2.39x over fp16** (large shapes; micro shapes are
+  parity-within-noise — honest losses booked). The packed integer
+  forward hashes **bit-identical across MPS and cuda** (exact
+  integer accumulation: no reduction-order ambiguity), two seeds
+  confirmed. Honest external fence, mechanistic: on web-trained
+  dense LLMs (Qwen-0.5B) sigma grids lose to max-anchored/calibrated
+  schemes — their outlier tails are exploitable structure that
+  at-capacity crystal weights provably lack. A zero-inference
+  **capacity meter** (span-bits minus code entropy, from disk)
+  predicts which regime a model is in; DeepSeek-V3's routed experts
+  read kurtosis 3.07 — Gaussian — landing MoE experts in the
+  sigma-law's regime.
 - **Sister engine**: `axiom`, a C++23 exact CAS built in a parallel
   Fable session — certified row factory (ten+ consecutive clean
   independently-adjudicated batches), hybrid solver at ~6x sympy's
@@ -236,7 +257,7 @@ On Windows, `torch.compile` needs MSVC — run benchmark scripts inside a vcvars
 - Ref logprobs stored as top-k + tail mass (full-vocab for 164×1k×150k would be ~100 GB).
 - transformers 5.x StaticCache appends at an internal `cumulative_length` counter; rewinding resets that tensor in-place (`fill_`), CUDA-graph-safe because HF marks it as a static address.
 - Allocator assumes ΔKL additivity across layers — approximate; always re-measure the final mixed config end-to-end.
-- Fake-quant measures quality only. Real memory savings need bitpacked kernels (HQQ/GPTQ) at deploy time.
+- Fake-quant measures quality only; real memory savings need bitpacked storage + kernels at deploy time. As of 2026-07-29 the lab ships its own: the packed-crystal format (`scratch/pack_crystal.py`, sigma-law allocation, `.npz` + reader) and bit-packed 5-bit / int8 dequant-fused GEMV kernels (`scratch/pack_gemv.py`), with the honest bench card in `docs/RESULTS.md`.
 
 ## License
 
