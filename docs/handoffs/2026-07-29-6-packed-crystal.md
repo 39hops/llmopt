@@ -130,3 +130,17 @@ Allow` + profile Private is the recipe, memory-worthy).
 - 3080 overnight: night30 (seed-2) -> night30b (seed-3)
   markers pending. MORNING: scp EMAs, pack_crystal both,
   C1 at n=3 -> paper skeleton (P7/B5) -> P5 -> P3.
+
+## Addendum 6 (07-30 morning): n=3 + P5 card
+- C1 n=3: h8 parity REPLICATES (+2/-3/0 — headline solid);
+  L4 floor pays -5 at seeds 2/3 (-1 at seed 1) — fragility
+  axis surfaced. Entropy 3.10-3.13 v cap ~3.13 at n=3 both
+  archs.
+- P5 retrodiction: flips card predicts at CLASS level (L4
+  1.3x h8, correctly ranked) but not seed level; card ships
+  as class gate. Follow-up named: matched-operator probe.
+- 3080 overnight arms crashed (friendly-fire #8 missing dep,
+  #9 stale marker) — births recovered on Mac (better fence).
+- Paper skeleton drafted: docs/paper-draft-entropy-bound.md.
+  Checklist remaining: rANS coder, P3 deterministic decode,
+  related work. practice_14 left for Artin (rank/nullspace).

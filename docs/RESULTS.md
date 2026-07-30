@@ -11253,3 +11253,25 @@ if it separates seed-1-L4 from seeds-2/3-L4, the card
 graduates from diagnostic to gate. Fences: n=3 per arch,
 MPS, one packer, weaker-seed confound named (fp gates
 differ across seeds).
+
+## P5 RETRODICTION VERDICT: the flips card predicts at CLASS level, not seed level (2026-07-30 morning)
+
+Six crystals, standing instrument (Q=16 best-rational,
+400-row probe): h8 class 0.00838-0.00952 flips/tok; L4 class
+0.01046-0.01205 (~1.3x higher). CLASS-LEVEL RETRODICTION
+PASSES: the card ranks the architectures correctly — it
+would have flagged the L4 class as the pack-tax risk before
+any gate (L4 paid -1/-5/-5; h8 paid +2/-3/0). SEED-LEVEL
+RETRODICTION FAILS: within L4, seed-1 (paid -1) reads 0.01176
+~ seed-2 (paid -5) at 0.01205, and seed-3 (paid -5) reads
+LOWEST at 0.01046 — flips/token does not resolve which seed
+pays. Two honest readings: (a) the probe's operator is Q=16
+rational, not the actual sigma-pack operator — fences travel
+with instruments, and the matched-operator probe is the
+named follow-up; (b) the seed-level distinction itself
+(-1 v -5, ~1 sigma apart) may be gate noise — the ROBUST
+n=3 statement is class-level (L4 pays ~-4+-2, h8 ~0), and
+THAT the card predicts. CARD STATUS: shipped as a CLASS
+gate (meter M for regime + flips/tok for class fragility);
+seed-granular prediction unproven at current probe power.
+Fences: one Q, one probe set, n=3 per class.
