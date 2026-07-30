@@ -76,10 +76,9 @@ mid-dip not a regularity; N2 dial-pack loses to rtn on KL.
 Three instrument bugs caught by controls, all amended.
 
 ## 7. Needed before submission
-- [ ] C1 at n=3 (TODAY, births running)
+- [x] C1 at n=3 DONE: h8 parity replicates (+2/-3/0); L4 floor pays -5 at weak seeds (claim scoped to d64h8 class; fragility axis named)
 - [x] rANS coder DONE (P6-v2): crystals 9.10x/8.25x fp32; Qwen3-30B 16.48 GB = 3.67x bf16, lossless, laptop, zero calibration
-- [ ] P5 pre-deploy card + 4/4 retrodiction (reviewer
-      artifact)
+- [x] P5 card DONE at CLASS scope: flips/tok ranks architectures correctly (L4 1.3x h8) pre-pack; seed-level unresolved (matched-operator probe = named follow-up)
 - [ ] P3a/b end-to-end deterministic decode (strengthens S3)
 - [ ] Related work with honest deltas: GPTQ/AWQ/HQQ/QLoRA/
       LLM.int8/SqueezeLLM/TurboQuant; MoE: Switch, DeepSeek
