@@ -144,3 +144,15 @@ Allow` + profile Private is the recipe, memory-worthy).
 - Paper skeleton drafted: docs/paper-draft-entropy-bound.md.
   Checklist remaining: rANS coder, P3 deterministic decode,
   related work. practice_14 left for Artin (rank/nullspace).
+
+## Addendum 7 (07-30 ~10:00): the flagship morning
+- P3 LANDS: bit-identical logit traces MPS=cuda, 2 table
+  versions (bf76568d / 311f71bf); 96.66% agreement price;
+  tables sha-pinned, shipped via scp. P6-v2 rANS: 16.48GB
+  30B artifact. Checklist: builds ALL DONE.
+- NEXT: (1) scratch->llmopt promotion (pack, meter, kernels,
+  deterministic decode + tests, INDEX regen); (2) axiom
+  relay: p3_tables.pt + spec -> FX-V1 cross-lab hash; (3)
+  related work; (4) banked: K3-single-expert deterministic
+  demo, packed-expert shelf (router over packed crystals),
+  micro-MoE conservation program.

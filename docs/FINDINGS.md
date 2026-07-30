@@ -479,3 +479,24 @@ honest negatives booked with the same care as wins.
   solved row) but the joint-STE matryoshka crystal pays where
   EMA parents packed free — fragility is crystal-priced,
   again; the flips meter should gate what we pack.
+
+## The flagship morning (07-30): determinism end-to-end + the bound as bytes
+
+- A full transformer decode now hashes BIT-IDENTICAL across
+  Apple and NVIDIA silicon — every logit of every step
+  (shipped tables + exact-integer arithmetic, no libm; ~280
+  lines). Price measured: 96.7% argmax agreement v fp, with
+  disagreements at coin-flip margins; ~10-40x reference-speed
+  cost. Cross-lab verification becomes "ship one file."
+- rANS made the entropy bound physical: house crystals at
+  ~9x fp32; a 30B production MoE at 16.48GB (3.67x bf16),
+  packed + coded on a laptop, zero calibration, lossless.
+- The parity headline survived n=3 on d64h8 and honestly
+  narrowed at the width floor (weak seeds pay); the flips
+  card predicts at architecture level.
+- The capacity dial completed: premium monotone in M across
+  6 groups; expert capacity monotone in PER-EXPERT SIZE
+  (Artin's law: Qwen3 5M/2.93 -> K2 40M/2.01); K2 flat in
+  depth; experts decorrelated in weights, correlated in
+  routing (the split law) — compression closed post-hoc,
+  systems levers open.
