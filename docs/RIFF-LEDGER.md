@@ -1918,3 +1918,30 @@ to the collaboration itself.
   two riffs may be one: chaos destroys the meaning of
   confidence. Attribution: Artin (both frames), house
   (operationalization).
+
+- **2026-07-30 (Artin, evening — P v NP as the lab's spine +
+  diet-calibration)**: (a) P v NP mapped onto the house:
+  FORWARD = P-face (apply one verified step, check cheaply —
+  the oracle's side); REVERSE = NP-face (invert, search the
+  preimage space — the farmer's side). The lab already
+  measured the asymmetry without naming it: farmer probe
+  (reverse model inverts in-distribution but memorization-
+  dominant, 11 novel), reverse-pairs TAX (no free dual-
+  direction crystal), and the entire oracle-verified
+  doctrine works BECAUSE verification is cheap while
+  generation is search. Banked sharp version: the temporal
+  pincer (fwd + reverse models meeting in the middle) IS
+  bidirectional search — its value should scale with how
+  NP-like the task's inversion is; testable by comparing
+  pincer gain across task families of different inversion
+  hardness. Quantum-wave rider kept as color, not claim.
+  (b) DIET-CALIBRATION HYPOTHESIS (from CAL-DK-1):
+  determined rows train honesty (dual of "underdetermined
+  rows train hallucination") — dilution arm banked: mix
+  unverified/contradictory rows into the diet at 10/30%,
+  watch ECE degrade. Attribution: Artin (both), house
+  (mappings + arms).
+- **2026-07-30 (Artin, standing request)**: periodic
+  OLD-NULL REVIVAL SWEEP — older nulls deserve re-checks
+  more than newer ones (instruments and scale have moved);
+  candidates queue from results_query, not memory.
