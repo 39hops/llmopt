@@ -11154,3 +11154,32 @@ MoE, n=1, experts only. The paper gains a sharper claim
 boundary, not a loss: our gates were never the soft option —
 they are the deployment-realistic one (nobody ships logits;
 everybody ships answers).
+
+## PRE-REG: NIGHT-30b — the extended overnight queue (2026-07-30 ~01:45, before the runs)
+
+(B3, Mac): K2 depth curve — shards 5 (early) + 55 (late) v
+booked 37 (layer 36, M 2.01); meter experts per layer; ALL
+K2 shards deleted after. PREDICTION: mid > ends is the house
+guess (the Qwen3 atlas found a mid-stack dip; if K2 shows
+the same shape, "black-hole depth profile" is a cross-model
+regularity; if flat, the dip is a Qwen3 recipe artifact).
+(B4, Mac): entangled-experts MI — hooks on OLMoE's routers,
+top-8 selections over the 16-prompt battery + README slice;
+pairwise MI between expert-active indicators within layer v
+a shuffle baseline. Then merge the top-MI pair (weight mean
+in both slots) -> DeltaKL. PREDICTIONS: (1) MI above shuffle
+exists (co-routing structure is real); (2) house prior:
+top-pair merge COSTS measurably (N3 says weights are
+decorrelated even if routing is correlated — co-firing does
+NOT imply mergeable); Artin's link hypothesis wins if merge
+is ~free.
+(P6-acct, Mac desk): entropy accounting of the Qwen3 packed
+parts — raw code bits v Shannon entropy v npz-deflate bytes,
+by group. PREDICTION: deflate recovers >=60% of the
+fixed-width penalty on sigma tensors (C1 precedent), less on
+max-anchored (their code distributions are flatter).
+(N1b, 3080, chained behind night30's marker): seed-3 births
+of both C1 crystals -> tomorrow C1 parity at n=3.
+PREDICTION: births normal, gates within sigma of seeds 1-2.
+Fences: B3 fp8-dequant, B4 one MoE + 2 merge reads max,
+watcher pgrep-fenced, markers on success only.
