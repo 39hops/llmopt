@@ -11718,3 +11718,79 @@ battery from training distribution tail. RIDER for the
 paper's Sec. 7: "params-side compression closed" now has an
 inference-side face — you also cannot LOCALIZE an expert's
 influence for cheap approximation; the medium spreads it.
+
+## PRE-REG CAL-DK-1: DOES THE CRYSTAL KNOW WHEN IT DOESN'T KNOW — token-level reliability by difficulty (2026-07-30 ~4 PM)
+
+Artin's Dunning-Kruger question operationalized at house
+scale: teacher-forced pass of the d64h8 EMA crystal over a
+held-out gen-4 battery; per token record confidence (max
+softmax prob) and correctness (argmax == target); report
+(a) reliability curve + ECE (is confidence honest
+overall?), (b) per-level split 3..7: confidence v accuracy
+by difficulty — the DK signature would be overconfidence
+concentrated at the hardest levels (accuracy falls faster
+than confidence). PREDICTIONS: (1) the crystal is
+DIRECTIONALLY calibrated (higher conf -> higher acc,
+monotone reliability curve) — margins already predicted
+flip fragility (P5) and soft-token disagreements (P3), so
+confidence carries real signal; (2) mild DK: confidence
+falls with level SLOWER than accuracy does (overconfidence
+grows with difficulty); magnitude reported not predicted.
+FALSIFIER: flat/non-monotone reliability = confidence
+carries no self-knowledge (would invalidate margin-based
+escalation ideas downstream). Fences: token-level (not
+solve-level), one crystal, teacher-forced.
+
+## CAL-DK-1 VERDICT: NO DUNNING-KRUGER — the crystal is slightly HUMBLE, and its confidence is a working error detector (2026-07-30 ~4:15 PM)
+
+Teacher-forced, d64h8 EMA, 5 levels x ~300 rows, answer-
+span tokens only. PREDICTION 1 CONFIRMED strongly:
+reliability is monotone across all bins and ECE = 0.0068
+(a 0.9M-param model, essentially calibrated). PREDICTION 2
+FALSIFIED in the good direction: the DK gap (conf - acc)
+is NEGATIVE at every level (-0.004 to -0.012) — the
+crystal is systematically UNDERconfident, and no more so
+at hard levels than easy ones; there is no overconfidence-
+where-skill-is-lowest signature at all. AUROC of
+confidence as a correctness detector: 0.989 — the model
+KNOWS when it doesn't know, at token granularity, for
+free. CONSEQUENCE: margin/confidence-based machinery
+downstream (escalation tiers, entropy-adaptive drafting,
+soft-token flagging in P3) rests on a measured foundation,
+not an assumption. The verified-diet hypothesis (named,
+untested): calibration may come from training exclusively
+on oracle-verified rows — a web-trained model has no such
+guarantee; comparing calibration v diet purity is a
+banked follow-up. Fences: token-level (solve-level
+calibration = separate probe), one crystal, teacher-
+forced, in-distribution battery.
+
+## PRE-REG GRAV-2: ENGINEERED SPACETIME — train the medium lawful, price the toll (2026-07-30 ~4:20 PM)
+
+GRAV-1 measured the trained medium as turbulent
+(amplifying, unscreened). Artin's push: don't simulate the
+fluid — CONSTRAIN it; a lawful medium should give more
+control over the weights. DESIGN (Mac, background, paired
+seed-1): dense d64h8 arms via the umoe trainer's dense
+path + a CONTRACTIVITY penalty — per step, one random
+block, input perturbed by delta ~ N(0, 0.01*rms); penalty
+lambda * relu(||f(x+delta)-f(x)|| / ||delta|| - 1)
+(block expansion factor above 1 is taxed). Arms: ctl
+(lambda 0) v contract (lambda 0.1). MEASURED: (a) the
+falloff curve (epsilon-kick displacement by depth, the
+GRAV-1 instrument at gentle amplitude) — does it flip from
+growing to flat/decaying; (b) gate (the toll of
+lawfulness); (c) CAL-DK reliability on both arms (Artin's
+two riffs joined: does a lawful medium sharpen
+self-knowledge?). PREDICTIONS: (1) contract arm's
+displacement growth rate drops measurably (else the
+penalty failed to bind — check penalty loss curve); (2)
+the gate pays a toll > 0 (chaos is likely load-bearing;
+magnitude is the measurement — a FREE lawful medium would
+be the surprise result); (3) exploratory: calibration
+unchanged (already near-ceiling per CAL-DK-1).
+FALSIFIERS: penalty binds but falloff unchanged =
+amplification lives in attention mixing, not block
+expansion (a mechanism finding — book it); gate crater
+>10 = lawfulness unaffordable at this scale. Fences: house
+scale, one seed this pass, lambda single-point (no sweep).

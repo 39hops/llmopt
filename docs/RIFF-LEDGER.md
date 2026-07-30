@@ -1897,3 +1897,24 @@ to the collaboration itself.
   post-hoc N3 null could not touch (tie at BIRTH, not after).
   Attribution: Artin (conservation question), house (arms,
   verdict, soft-routing falsifier design).
+
+- **2026-07-30 (Artin, afternoon — Dunning-Kruger + engineered
+  spacetime)**: (a) KNOWING-WHEN-YOU-DON'T-KNOW: does the
+  crystal's confidence (logit margin / max-prob) actually
+  predict its correctness, per difficulty level — the DK
+  question made measurable (overconfidence concentrated
+  where skill is lowest?). Artin himself tagged the fence:
+  this is a "prediction pays where variance lives" rung —
+  a confidence meter only earns keep where outcomes vary.
+  Probe = CAL-DK-1 (token-level reliability + per-level
+  ECE on existing crystals, desk-cheap). (b) ENGINEERED
+  SPACETIME (the GRAV-1 answer inverted): a turbulent
+  medium is expensive to control; train the medium LAWFUL
+  instead — birth arms with a contractivity penalty
+  (per-block perturbation-growth <= 1) and measure (i)
+  does the falloff curve flip from amplifying to decaying,
+  (ii) what lawfulness costs at the gate, (iii) does
+  calibration (rung a!) improve in a lawful medium — the
+  two riffs may be one: chaos destroys the meaning of
+  confidence. Attribution: Artin (both frames), house
+  (operationalization).
