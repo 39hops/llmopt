@@ -11827,3 +11827,38 @@ diet-driven (would kill the dilution hypothesis and be
 interesting alone). Fences: token-level, corruption =
 target-swap (one corruption class), house scale, n=1 per
 f this pass.
+
+## PRE-REG GRAV-1b: DISTANCE FROM THE EXPERT — the field in router coordinates (2026-07-30 ~3:30 PM)
+
+Artin's refinement of GRAV-1: the natural distance is not
+depth or the binary routed/not split — it is ROUTER
+PROXIMITY. For ablated expert e at layer l, bin every
+token by its router probability p_e (the pre-ablation
+model's assignment mass on e) and measure ablation dNLL
+per bin. PREDICTION: dNLL monotone increasing in p_e —
+tokens closer to the expert feel more force; a lawful
+field in the right coordinates (GRAV-1's chaos = wrong
+metric). FALSIFIER: flat/non-monotone dNLL in p_e = the
+field is genuinely unlawful, not mis-coordinatized.
+Instrument: grav_probe extension, umoe_lb_s1+s2, same
+battery, Mac. Fences: as GRAV-1.
+
+## GRAV-1b VERDICT: NOT LAWFUL IN ROUTER COORDINATES EITHER — damage is not monotone in distance-from-expert (2026-07-30 ~3:50 PM, n=2)
+
+The coordinate-change hypothesis FALSIFIED. Binning
+ablation dNLL by router probability p_e (Artin's
+distance-from-expert metric): no consistent monotone
+profile in either seed. Cells disagree with themselves
+across seeds (L4e1 rises in s1, falls in s2), several
+cells put their LARGEST damage at the extreme bins in a
+U-shape (s1 L1e2: +0.24 at p<0.05 AND +0.56 at p>0.75),
+and many cells are flat at noise level. Weak rising
+trends exist in some mid-layer cells but do not
+replicate cell-by-cell. VERDICT: the influence field is
+genuinely unlawful at this scale — not mis-coordinatized;
+GRAV-1's turbulence conclusion stands in the routing
+metric too. The U-shapes hint at a two-population story
+(tokens the expert OWNS and tokens it actively REPELS
+both matter; the middle is slack) — banked as a follow-up
+lens, not a claim. Fences: as GRAV-1 (zero-ablation kick,
+house scale, top-1); n=2 seeds.
