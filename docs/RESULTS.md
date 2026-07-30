@@ -11862,3 +11862,33 @@ metric too. The U-shapes hint at a two-population story
 both matter; the middle is slack) — banked as a follow-up
 lens, not a claim. Fences: as GRAV-1 (zero-ablation kick,
 house scale, top-1); n=2 seeds.
+
+## GRAV-2 VERDICT: SPACETIME IS TRAINABLE, AND LAWFULNESS IS NEARLY FREE (2026-07-30 ~4:10 PM)
+
+The headline result of the gravity thread. The
+contractivity penalty (expansion tax, lambda 0.1, one
+random block per step) FLIPPED THE MEDIUM: epsilon-kick
+displacement profile goes from AMPLIFYING in the ctl arm
+(L1 kick: 0.67 -> 2.24 by L7; L4: 1.63 -> 2.95 — GRAV-1's
+turbulence replicated in a paired dense arm) to FLAT in
+the contract arm (L1: 0.26 -> 0.44; L4: 0.40 -> 0.50) —
+~5x smaller displacement, per-layer growth ~1.06x v
+~1.2x. PREDICTION 1 CONFIRMED decisively. PREDICTION 2
+(gate toll > 0): the SURPRISE branch fired — ctl 50/120 v
+contract 46/120, a -4 at the edge of gate sigma (~3.5):
+chaos is NOT load-bearing at this scale; a lawful medium
+costs almost nothing. PREDICTION 3 CONFIRMED: calibration
+identical (ECE 0.0055 v 0.0053, AUROC 0.980 v 0.979 —
+also a same-recipe REPLICATION of CAL-DK-1's no-DK result
+on two fresh births). CONSEQUENCE (the control story
+Artin asked for): the turbulent medium GRAV-1 measured is
+a TRAINING DEFAULT, not a necessity — a one-line penalty
+buys a near-dissipative residual stream at ~zero gate
+cost, which is the precondition for local editing,
+influence-bounded packing, and any future gravity-like
+structure (fields can only be lawful in a medium that
+does not amplify noise). NEXT (banked): rerun the GRAV-1
+screening probe on a contract-arm MoE (does a lawful
+medium RESTORE expert locality?); lambda sweep; seed 2.
+Fences: n=1 seed, dense arm (not MoE), single lambda,
+house scale.
