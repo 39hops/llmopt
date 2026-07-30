@@ -11129,3 +11129,28 @@ undefined on it; the meta-fact that a frontier lab SHIPS
 4-bit experts is independent, industry-side evidence for
 the at-capacity scaling story. Fences: one model, 2 layers,
 gate_proj only, desk.
+
+## N2 VERDICT: dial-pack recovers 3.8x over sigma-pure but rtn still wins — DeltaKL forgives nothing (2026-07-30 ~01:30)
+
+OLMoE experts, dial policy (685 tensors sigma[row] at M<2 /
+2,387 max-anchored 6-bit): DeltaKL 0.0187/tok, ppl 76.25,
+quant 60.7s. v the booked arms: sigma-pure 0.0716 (dial 3.8x
+better), rtn 0.0097 (dial 1.9x WORSE), hqq 0.0044.
+PREDICTION (at-or-below rtn) FALSIFIED, and the mechanism is
+worth the booking: a sigma/2 grid carries intrinsic
+distortion sigma^2/48 while a 6-bit max grid on a typical
+expert row (max ~5 sigma) steps at ~0.16 sigma = ~10x less
+distortion at comparable bits. On HOUSE crystals that extra
+distortion is FREE because the capability metric (gate
+solves) has slack below the knee — but DeltaKL is a
+slack-free metric: it sees every logit perturbation and
+forgives none. THE CLARIFIED LAW: sigma-law's zero-tax
+domain = (M < ~2) AND (the deployment metric has knee slack,
+i.e. you score FUNCTION OUTCOMES, not logit distance). For
+web MoEs scored by KL/ppl, the zero-calibration
+recommendation is plain per-row max-anchoring (rtn) — which
+STILL ties hqq within ~2x at seconds v minutes. Fences: one
+MoE, n=1, experts only. The paper gains a sharper claim
+boundary, not a loss: our gates were never the soft option —
+they are the deployment-realistic one (nobody ships logits;
+everybody ships answers).

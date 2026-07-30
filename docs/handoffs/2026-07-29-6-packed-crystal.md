@@ -101,3 +101,19 @@ Allow` + profile Private is the recipe, memory-worthy).
 - Banked riffs this evening: black-hole model title;
   superposition frame (already measured x3); tied-expert
   ladder; cosmology bank with literal fences.
+
+## Addendum 4 (07-30 ~01:30): black-hole MoEs night
+- B0-B2 booked: capacity atlas of Qwen3-30B (30.2B, 136.6
+  min, 21GB artifact); routers incompressible (M 4.45);
+  up_proj IN sigma domain (1.93); mid-stack dip L8-16;
+  LADDER VARIABLE = per-expert SIZE (Artin, twice).
+- N3: experts decorrelated to zero — replication only at
+  birth. N2: dial-pack 3.8x over sigma-pure, rtn still wins
+  on KL (clarified: zero-tax needs knee-slack metric).
+- N1 IN FLIGHT (3080): seed-2 births of both C1 crystals
+  (marker logs/night30_done.marker). Morning: scp EMAs to
+  Mac, pack_crystal on both -> C1 at n=2 (paper cell).
+- Queue: B3 (K2 depth, 2 shards, then DELETE K2 shards),
+  B4 (entangled-experts MI on OLMoE), B5/P7 paper skeleton,
+  P5 pre-deploy card. K3 excluded (MXFP4). Disk: 21GB parts
+  + 17GB K2 shard — clean after B3.
