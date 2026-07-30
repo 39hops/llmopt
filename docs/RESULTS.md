@@ -11318,3 +11318,38 @@ exactly when the sigma step is capability-free. Fences: n=1
 per artifact, table overhead per-tensor (amortizable),
 decode-side rANS throughput not benched (storage format;
 the runtime twin remains crystal5/int8).
+
+## PRE-REG: P3 — THE DETERMINISTIC DECODE (full fixed-point forward; 2026-07-30 morning, before the build)
+
+Instrument scratch/pack_decode.py: a deterministic twin of
+the MicroLM forward on the PACKED d64h8 crystal, where every
+operation is either exact integer or a shipped-table lookup
+— no libm anywhere in the path (the axiom FX-V1 recipe,
+house-built): weights = sigma-law codes (5-6 bit ints);
+activations fixed-point (scale 2^8, clamped, requant by
+exact shifts); GEMMs via the exact-fp32 integer carrier
+(all partials < 2^24 by construction — bounds printed);
+RMSNorm via int64 sum-of-squares + integer-Newton isqrt;
+SiLU and exp as precomputed int tables (computed ONCE on
+CPU, shipped in the artifact, looked up exactly); RoPE from
+shipped fixed-point sin/cos tables; attention softmax as
+exp-table weights + exact int64 weighted sum + one fixed-
+point divide; greedy readout = integer argmax (no softmax).
+CELLS: (a) CORRECTNESS/PRICE (Mac): full gate of the
+deterministic path v the fp control 58 — bar: within sigma
+~3.5 (the fixed-point activation quantization is the new
+tax; 2^8 levels predicted inside the knee); (b) THE HASH
+(Mac + 3080): 40-token greedy streams AND full integer
+logit hashes on a fixed battery — bar: BOTH identical
+across MPS and cuda (the claim C4 could not make: C4's fp
+norms let logits differ; here nothing may differ); (c)
+wall-time honest card v the fp path (expected SLOWER —
+tables and fixed-point are a determinism price, booked as
+such). PREDICTIONS: (1) gate within sigma of 58; (2) hash
+equality on both channels; (3) tok/s 2-10x slower than fp
+MPS (unoptimized reference path). FALSIFIER: any hash
+mismatch = a nondeterministic op survived (hunt it, book
+it); gate crater = 2^8 activations below the knee (raise to
+2^10, re-gate, book the activation-knee reading). Fences:
+one crystal, greedy only, reference implementation (speed
+is not the claim).
