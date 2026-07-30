@@ -11648,3 +11648,73 @@ matched recipe). Fences: n=2 seeds, house scale, one
 diet. Thread closes for the day; next falsifier stays
 banked (soft-routing arm should KILL decorrelation if
 assignment is the mechanism).
+
+## PRE-REG GRAV-1: EXPERT GRAVITY — mass, field falloff, and screening in the micro-MoE (2026-07-30 ~3:15 PM)
+
+Artin's frame: mass bends spacetime EFFICIENTLY — it
+affects what it needs to. Operationalized on the residual
+stream (the shared medium): per-expert MASS m_e = mean
+residual-write norm x usage share; FIELD FALLOFF g_e(k) =
+representation displacement at depth l+k after ablating
+expert e at layer l (does influence decay lawfully with
+depth-distance; do heavy experts reach further?);
+EFFICIENCY/SCREENING = on-target effect (delta-NLL on
+tokens routed THROUGH e) / off-target broadcast (delta-NLL
+on tokens never routed to e). Instrument
+scratch/grav_probe.py on umoe_lb_s1 + s2 (checkpoints
+local, Mac, no GPU window needed); eval battery = held-out
+gen-4 rows. PREDICTIONS: (1) mass predicts ablation damage
+(rank corr positive, both seeds); (2) SCREENING: off-target
+delta-NLL << on-target (routing = gravitational screening;
+the split law's inference-side face) — ratio > 5x; (3)
+falloff g_e(k) monotone decreasing in k (perturbations
+wash out, not amplify — the stability prior), shape
+reported not predicted; (4) EXPLORATORY, the "optimal
+gravity" question: efficiency (on/off ratio) varies across
+experts and correlates with usage share (the busiest
+expert is NOT the most efficient — attention-hog v
+surgeon distinction). FALSIFIERS: off-target ~ on-target
+kills screening (routing does NOT localize influence —
+would itself be a finding against the split law's
+inference face); g_e(k) non-monotone = chaotic
+amplification (book as stability finding). Fences: house
+scale, top-1 routing (screening is partly definitional
+under hard routing — the LEAK is the measurement), n=2
+seeds, analogy fenced as instrument-naming (no conserved
+charge, no reciprocity, distance = depth).
+
+## GRAV-1 VERDICT: NO GRAVITY — influence is UNSCREENED and AMPLIFYING; attention is the long-range channel routing cannot contain (2026-07-30 ~3:45 PM, n=2 seeds)
+
+All three predictions FALSIFIED, both seeds, and the
+falsifications cohere into one mechanism. (1) SCREENING
+FAILS: median on/off-target dNLL ratio 1.6x (s1) and 1.0x
+(s2) v the predicted >5x — ablating an expert hurts tokens
+that NEVER routed through it about as much as tokens that
+did; several cells show off > on. (2) FALLOFF INVERTED:
+displacement GROWS monotonically with depth in every one of
+24 (layer,expert) cells both seeds (e.g. L1: 0.18 -> 1.70
+by L7) — the residual stream AMPLIFIES perturbations, it
+does not dissipate them (the pre-registered chaotic-
+amplification falsifier branch; consistent with the
+2026-07-28 Lyapunov atlas verdict, chaotic-degenerate). (3)
+MASS-DAMAGE DECOUPLED: rank corr 0.168 (s1) v -0.245 (s2)
+— write-norm x usage does not predict ablation damage; no
+"heaviest body" exists. MECHANISM (the finding): routing
+localizes COMPUTATION but not INFLUENCE — attention is the
+unscreened long-range interaction; a perturbed token's
+representation enters every other token's attention keys/
+values downstream, so the field of any expert reaches the
+whole context within a layer or two, and the chaotic medium
+amplifies it thereafter. Artin's gravity frame thus gets a
+precise answer: the experts are not gravitating bodies with
+efficient local fields — the medium (residual stream +
+attention) is closer to a turbulent fluid than to
+spacetime; the split law's tidiness lives in WEIGHTS and
+ROUTING STATISTICS, not in inference-time influence, which
+is global. Fences: micro-MoE house scale, top-1, dNLL under
+full-expert zero-ablation (a large perturbation — a
+gentler-kick falloff probe is the banked follow-up),
+battery from training distribution tail. RIDER for the
+paper's Sec. 7: "params-side compression closed" now has an
+inference-side face — you also cannot LOCALIZE an expert's
+influence for cheap approximation; the medium spreads it.
