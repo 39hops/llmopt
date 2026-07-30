@@ -330,10 +330,76 @@ gate within sigma of a dense control both seeds — the
 factorization that post-hoc analysis proves impossible is
 approximately free if imposed before training.
 
-## 8. Related work / 9. Fences / 10. Reproducibility
+## 8. Related work
 
-[Related work and fences: lift from skeleton secs 8–9 —
-already prose-shaped. Reproducibility: every experiment
-pre-registered in an append-only log with falsifiers named
-before runs; amendments preserved; instruments and seeds in
-the repository; replication protocol as in Sec. 6.]
+Our relationship to calibrated PTQ — GPTQ, AWQ, HQQ — is not
+competitive but *conditional*: on web-dense LLMs they earn a
+16–34x premium over our closed form and we say use them; on
+at-capacity networks they tie it, and the meter tells you
+which case you are in from the file alone. We know of no
+prior pre-quantization regime test. Outlier-isolation
+methods (LLM.int8(), SqueezeLLM) rest on the premise that
+outliers are load-bearing; our clipping falsifier is direct
+evidence for that premise from the opposite direction
+(clipping web-dense weights at 4 sigma is catastrophic —
+perplexity 138,890), and M is precisely a measure of the
+fixed-width price those outliers impose. The codebook line —
+NF4's information-optimal quantiles, QuIP#'s Hadamard
+incoherence processing, AQLM's learned lattices, TurboQuant's
+random rotations — is a family of transforms *toward* the
+Gaussian regime; our measurement is that convergent training
+on verified tasks produces that regime natively, so we
+characterize the endpoint of the line the transforms are
+walking. Weight entropy coding goes back to Deep Compression
+and DeepCABAC on pruned CNNs; Sec. 5 is the LLM-scale
+revival with the coding gain predicted a priori. On MoE
+structure, Switch and DeepSeekMoE argue fine-grained experts
+specialize; Sec. 7 is the weight-space receipt, and its
+merge probe agrees independently with REAP's finding that
+merging carries irreducible error versus pruning. Expert
+offloading systems implicitly bet on routing locality; our
+co-routing MI is the statistic they are betting on, measured.
+Integer-only inference exists for edge CNNs (Jacob et al.);
+we know of no prior LLM decode with cross-vendor
+bit-identical logit traces, nor one executing a frontier
+model's shipped format exactly.
+
+## 9. Fences
+
+Every scope limit, in one place. (1) The zero-tax parity
+claim is scoped to the d64h8 class at n=3; the L4 depth
+floor pays −5 at weak seeds. Per-crystal fragility (near-tie
+flip density) is an orthogonal axis the entropy meter does
+not see; our class-level probe ranks architectures but not
+seeds. (2) The meter on quantized releases (K2, K3) reads
+the shipped grid's image, not the fp master — those rows
+support bands, not rank orderings. (3) All paired
+comparisons are same-device, same-seed; we measured 2x
+device dependence in gate scores and do not compare across
+devices, ever. (4) The determinism claim is about the
+fixed-point path's own reproducibility; it is not fp
+equivalence (96.66% argmax agreement, disagreements at
+coin-flip margins), and the reference implementation is
+10–40x slower than fp. (5) The Kimi-K3 cells are two experts
+at GEMV-and-chain level on synthetic batteries, not
+full-model decode. (6) Wall-time wins in Sec. 4 are
+calibration-time, not inference-time. (7) Cells at n=1 are
+named as such where they appear; the causal MoE experiment
+is n=2 seeds at house scale on one task diet.
+
+## 10. Reproducibility
+
+Every experiment in this paper was pre-registered in an
+append-only log — predictions and falsifiers named before
+the run fired — and every falsification appears in the text
+with the same prominence as the confirmations; corrections
+are amendments naming their target, never edits. All
+instruments, seeds, and the log itself are in the
+repository. Numeric artifacts travel sha-pinned, and the
+replication protocol of Sec. 6 (pinned artifact, pinned
+instrument, full-digest compare) was validated by an
+independent laboratory reproducing both hashes on first
+attempt. Where a result depends on a generated dataset, the
+generator uses stable string seeds and exclusion-guarded
+train/eval splits; two historical contamination incidents
+that motivated this discipline are documented in the log.
