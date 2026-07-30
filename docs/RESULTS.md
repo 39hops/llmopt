@@ -11073,3 +11073,33 @@ inference flows through the dial, not measured end-to-end
 here), n=1 model, bf16 source, atlas jsonl =
 logs/blackhole_atlas.jsonl, parts = checkpoints/
 blackhole_q3_parts/ (untracked).
+
+## PRE-REG: NIGHT-30 TRIPLE — C1 seed-2 births (3080), OLMoE dial-pack end-to-end (Mac), expert-similarity desk (2026-07-30 ~01:00, before the runs)
+
+(N1, 3080 overnight, Artin's night GO): seed-2 births of the
+two C1 crystals — sym_birth ARM=dense SEED=2, (a) D=64
+HEADS=8 FFN=256 L=8, (b) D=56 HEADS=4 FFN=224 LAYERS=4 —
+EMA 0.999, markers on success. Purpose: n=2 on the flagship
+zero-tax parity claim (C1 replication packs+gates tomorrow,
+Mac). PREDICTION: both birth normally (gates within the
+seed sigma ~3.5 of seed-1's 58/56).
+(N2, Mac): OLMoE dial-pack END-TO-END — the atlas policy
+applied to a RUNNABLE MoE: per-tensor sigma[row] where
+M<2 else per-row max-anchored 6-bit, experts only; DeltaKL
++ ppl v the booked C7 arms (sigma-pure 0.0716, rtn 0.0097,
+hqq 0.0044). PREDICTION: dial-pack lands AT-OR-BELOW rtn
+(0.0097-class) — the dial fixes sigma-pure's damage by
+routing only the ~M<2 tensors to sigma grids; falsifier:
+dial worse than rtn -> per-tensor routing adds nothing over
+uniform max-anchoring on this MoE.
+(N3, Mac desk): EXPERT SIMILARITY / dynamic replication
+(Artin's riff): from the packed Qwen3 parts, one mid-dip
+layer (L12) + one endpoint layer (L40): decode all 128
+experts' gate_proj, compute the mean-expert and per-expert
+delta; report sigma(delta)/sigma(weight) and the top-16
+pairwise correlation. PREDICTION (house): deltas are NOT
+small (ratio > 0.8) and correlations ~0 — router
+specialization decorrelates experts (the anti-tied limit;
+the C7 meter said experts carry max marginal info). If the
+ratio reads < 0.5 anywhere, base+delta compression arms and
+Artin's dynamic-replication idea gets a rung.
