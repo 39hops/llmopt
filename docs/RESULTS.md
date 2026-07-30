@@ -11429,3 +11429,38 @@ MXFP4 path. Fences: one expert, one layer (spot-check a
 second expert for the meter only); GEMV-level demo, not
 full-model decode; same instrument both devices
 (scratch/k3_expert_demo.py).
+
+## K3-D1 VERDICT: ONE EXPERT OUT OF 2.8T — 17.5 MB fetched, natively hash-locked across THREE backends, and K3 is a LATENT MoE (2026-07-30 ~11:00)
+
+ALL FOUR CELLS LAND. (a) EXTRACTION: 17.5 MB by safetensors
+byte-range for the full expert (v 2.8T repo); integer
+reconstruction roundtrip asserted exact; the 3080
+re-fetched its own bytes from HF and the raw-blob sha256s
+matched the Mac's. DISCOVERY: the expert is 3072x3584, not
+3072x7168 — K3 is a latent MoE (config latent_moe_use_norm:
+experts read a 3584-dim latent, half the residual width),
+so a K3 expert is ~33M params, NOT the ~66M naive estimate.
+(b) METER: l45/e7 M=1.94 (kurt 3.12), spot-check l70/e512
+M=2.15 — K3 spans 1.94-2.15, STRADDLING K2's 2.01;
+prediction M <= 2.0 confirmed on the named expert; at 33M
+params strict size-monotonicity would put K3 ABOVE K2 —
+mild tension, but the MXFP4 grid confound (the meter reads
+the 4-bit image, which caps span) biases K3 low, so the law
+stands as a BAND (large experts ~2.0, at the boundary), not
+a rank claim here. (c) ENTROPY: shipped 4-bit codes carry
+3.643 bits/param (rANS = Shannon to 3 decimals) — MXFP4
+leaves ~9% lossless margin (Moonshot ships within ~0.36
+bits of its own format's capacity; they packed well). (d)
+THE HASH: deterministic integer GEMV (native MXFP4 codes,
+shift scales, int64 accumulation) on a fixed 64-vector
+battery: sha256 traces IDENTICAL on cpu, mps, AND cuda for
+all three mats (9c4062/fd1257/8a7486) — the P3 result now
+holds on a frontier model's own shipped format with ZERO
+requantization. Fences: two experts, GEMV-level (not
+full-expert SiLU chain, trivially composable from P3
+pieces); meter fenced to the MXFP4 image. CONSEQUENCE: the
+whole pipeline — range-fetch, exact dequant, meter, rANS,
+cross-vendor determinism — is library calls + ~180 lines
+(scratch/k3_expert_demo.py); "pull one organ from a 2.8T
+model and hash-lock it on any GPU" is now a cheap,
+repeatable operation.
