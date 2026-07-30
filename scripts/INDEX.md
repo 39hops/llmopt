@@ -1565,6 +1565,14 @@ Muon at the STANDARD 3-epoch schedule (null-revival mix, pre-reg 2026-07-28 nigh
 
 - `ns5(g, steps=5)`
 
+### scratch/night30_mac.py
+NIGHT-30b Mac chain (pre-reg 2026-07-30): B3 K2 depth curve -> B4 entangled-experts MI (OLMoE) -> P6 entropy accounting of the Qwen3 parts. Streaming discipline; K2 shards deleted after B3. __main__-guarded.
+
+- `b3()`
+- `b4()`
+- `p6()`
+- `main()`
+
 ### scratch/ozaki_2b_bisect.py
 *(no docstring)*
 
@@ -1699,6 +1707,17 @@ THE PACKED CRYSTAL C0+C1 (pre-reg 2026-07-29 eve): real bytes for the sigma-law.
 - `load_crystal(path)`
 - `main()`
 
+### scratch/pack_decode.py
+P3 THE DETERMINISTIC DECODE (pre-reg 2026-07-30): fixed-point twin of the MicroLM forward on the packed d64h8 crystal. Every op is exact integer arithmetic or a SHIPPED-table lookup — no libm in the path. GEMMs run on the exact-fp32 integer carrier with hi/lo splitting (every partial < 2^24, printed). Tables are generated once (CPU) and saved to checkpoints/p3_tables.pt — ship the SAME file to every device. Usage:   python scratch/pack_decode.py tables   # generate + save tables   python scratch/pack_decode.py hash     # 40-tok greedy battery hash   python scratch/pack_decode.py gate     # full gate (capability price) __main__-guarded.
+
+- `make_tables()` — CPU, once. Shipped — never regenerated per device.
+- `rdiv(x, d)` — round-half-away integer division, exact + deterministic.
+- `isqrt_newton(n, iters=30)` — integer sqrt of int64 scalar tensor via Newton; exact floor.
+- `class DetLM` (gemm, rmsnorm, rope, attn, step, gemm_embed, greedy)
+- `cmd_hash()`
+- `class GateShim` (forward, eval)
+- `cmd_gate()`
+
 ### scratch/pack_determinism.py
 PACKED CRYSTAL C4 (pre-reg 2026-07-29 night): cross-device determinism. Hash A: integer-GEMM outputs of every block Linear's sigma-law codes x a fixed integer activation battery, accumulated via fp64 matmul (all partials integers < 2^53 -> EXACT, reduction- order-invariant) — must match across devices. Hash B: fp32 full forward logits on a fixed prompt battery — expected to differ. Greedy token streams reported alongside. Run on each machine at the same commit; compare printed hashes. __main__-guarded.
 
@@ -1719,6 +1738,14 @@ PACKED CRYSTAL C2 (pre-reg 2026-07-29 night): dequant-fused sigma-pack GEMV. Run
 P2a-v2 THE ANALYTIC-CLIP ALLOCATOR (pre-reg 2026-07-29 close): zero-calibration span attack on SmolLM2-1.7B (Mac). Arms: rtn per-row absmax | sigma-clip k in {4,6,8} (grid over +-min(absmax, k*sigma), outliers saturate) | hqq. DeltaKL + README ppl + wall-time, C6 harness form. __main__-guarded.
 
 - `grid_q(w, rng, bits)` — Per-row symmetric uniform grid over [-rng, rng]; saturate.
+- `main()`
+
+### scratch/pack_rans.py
+P6-v2 (pre-reg 2026-07-30): rANS the packed artifacts — the entropy bound as real bytes. constriction static-Categorical rANS per tensor (frequency table stored alongside, overhead counted). Cells: house packed_*.npz crystals; Qwen3 blackhole parts. Every stream verified by exact roundtrip. __main__-guarded.
+
+- `rans_bytes(codes, verify=True)` — codes int array -> (compressed bytes incl. table, entropy
+- `house()`
+- `qwen()`
 - `main()`
 
 ### scratch/pack_tiered.py

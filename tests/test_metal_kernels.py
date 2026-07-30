@@ -207,3 +207,39 @@ def test_flash_prefill_matches_sdpa(t, causal):
     got = flash_prefill(q, k, v, causal=causal)
     assert mx.abs(got.astype(mx.float32)
                   - ref.astype(mx.float32)).max() < 5e-3
+
+
+def test_crystal8_gemv_exact():
+    from llmopt.kernels.metal import crystal8_gemv, crystal_pack8
+    mx.random.seed(21)
+    n, d = 96, 64
+    w = mx.random.normal((n, d)) * 0.19
+    x = mx.random.normal((d,)).astype(mx.float16)
+    codes, scale = crystal_pack8(w)
+    mx.eval(codes, scale, x)
+    ref = (x.astype(mx.float32)
+           @ (codes.astype(mx.float32) * scale).T).astype(mx.float16)
+    got = crystal8_gemv(x, codes, scale)
+    assert mx.abs(got.astype(mx.float32)
+                  - ref.astype(mx.float32)).max() < 1e-2
+
+
+def test_crystal5_gemv_exact():
+    from llmopt.kernels.metal import crystal5_gemv, crystal_pack5
+    import numpy as np
+    mx.random.seed(22)
+    n, d = 96, 66
+    w = mx.random.normal((n, d)) * 0.19
+    x = mx.random.normal((d,)).astype(mx.float16)
+    words, scale, clamp_frac = crystal_pack5(np.array(w))
+    mx.eval(words, scale, x)
+    wn = np.array(words)
+    dq = np.zeros((n, d), dtype=np.float32)
+    for j in range(6):
+        dq[:, j::6] = ((wn >> (5 * j)) & 31).astype(np.int32) - 15
+    dq *= float(scale[0])
+    ref = (x.astype(mx.float32) @ mx.array(dq).T).astype(mx.float16)
+    got = crystal5_gemv(x, words, scale, d)
+    assert clamp_frac < 0.001
+    assert mx.abs(got.astype(mx.float32)
+                  - ref.astype(mx.float32)).max() < 1e-2

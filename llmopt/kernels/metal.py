@@ -949,3 +949,125 @@ def attention_decode_gqa(
         output_dtypes=[q.dtype],
     )
     return out
+
+
+_CRYSTAL8_GEMV_SRC = """
+    // crystal8 GEMV (packed-crystal runtime twin, 2026-07-29):
+    // y[row] = scale * sum_d x[d] * codes[row, d]; codes int8, ONE
+    // fp scale per tensor (sigma-law: scale = 1/ceil(2/sigma)).
+    // One simdgroup per row; char4 weight + half4 activation loads.
+    // Measured (M3 Pro): 1.76x v fp16 GEMV at 14336x4096 (2.0x
+    // bandwidth model), parity-to-loss at crystal shapes (honest:
+    // micro shapes are launch-overhead-bound).
+    constexpr uint LANES = 32;
+    const uint row = threadgroup_position_in_grid.x;
+    const uint lane = thread_position_in_threadgroup.x;
+    const device char4* w4 =
+        (const device char4*)(wq + (size_t)row * D);
+    float acc = 0.0f;
+    for (uint i = lane; i < D / 4; i += LANES) {
+        const char4 c = w4[i];
+        const device half4* xv = (const device half4*)(x + i * 4);
+        const half4 xh = *xv;
+        acc += (float)xh.x * (float)c.x + (float)xh.y * (float)c.y
+             + (float)xh.z * (float)c.z + (float)xh.w * (float)c.w;
+    }
+    acc = metal::simd_sum(acc);
+    if (lane == 0) out[row] = (T)(acc * scale[0]);
+"""
+
+_CRYSTAL5_GEMV_SRC = """
+    // crystal5 GEMV (2026-07-29): the DISK format live — 6 signed
+    // 5-bit codes per uint32 word (2 pad bits, 5.33 eff bits/wt).
+    // Measured (M3 Pro): 2.39x v fp16 at 14336x4098 (3.0x model),
+    // BEATS the byte-aligned crystal8 — below ~8 bits the unpack
+    // ALU is free next to the bandwidth saved.
+    constexpr uint LANES = 32;
+    const uint row = threadgroup_position_in_grid.x;
+    const uint lane = thread_position_in_threadgroup.x;
+    const uint nw = D / 6;
+    const device uint* wrow = wq + (size_t)row * nw;
+    float acc = 0.0f;
+    for (uint i = lane; i < nw; i += LANES) {
+        const uint word = wrow[i];
+        const device half* xv = x + i * 6;
+        for (uint j = 0; j < 6; ++j) {
+            const int c = (int)((word >> (5 * j)) & 31u) - 15;
+            acc += (float)xv[j] * (float)c;
+        }
+    }
+    acc = metal::simd_sum(acc);
+    if (lane == 0) out[row] = (T)(acc * scale[0]);
+"""
+
+_crystal8_gemv = _kernel(
+    "llmopt_crystal8_gemv", _CRYSTAL8_GEMV_SRC, ["x", "wq", "scale"]
+)
+_crystal5_gemv = _kernel(
+    "llmopt_crystal5_gemv", _CRYSTAL5_GEMV_SRC, ["x", "wq", "scale"]
+)
+
+
+def crystal_pack8(w: mx.array):
+    """Sigma-law int8 pack: q = ceil(2/std), codes = round(w*q).
+    Returns (codes int8 [N, D], scale fp32 [1])."""
+    import math as _math
+
+    s = float(mx.array(w).astype(mx.float32).std())
+    q = _math.ceil(2.0 / max(s, 1e-8))
+    codes = mx.round(w.astype(mx.float32) * q)
+    assert float(codes.abs().max()) < 127, "codes exceed int8"
+    return codes.astype(mx.int8), mx.array([1.0 / q], dtype=mx.float32)
+
+
+def crystal8_gemv(x: mx.array, codes: mx.array, scale: mx.array) -> mx.array:
+    """y = x @ dequant(codes).T for sigma-law int8 codes."""
+    n, d = codes.shape
+    (out,) = _crystal8_gemv(
+        inputs=[x, codes, scale],
+        template=[("T", x.dtype), ("D", d)],
+        grid=(n * 32, 1, 1),
+        threadgroup=(32, 1, 1),
+        output_shapes=[(n,)],
+        output_dtypes=[x.dtype],
+    )
+    return out
+
+
+def crystal_pack5(w):
+    """Bit-packed 5-bit sigma-law pack: 6 codes per uint32 word
+    (D % 6 == 0), codes clamped to [-15, 15] (clamp fraction
+    returned; sigma-law q keeps the ~7-sigma tail in range).
+    Returns (words uint32 [N, D//6], scale fp32 [1], clamp_frac)."""
+    import math as _math
+
+    import numpy as np
+
+    n, d = w.shape
+    assert d % 6 == 0
+    s = float(mx.array(w).astype(mx.float32).std())
+    q = _math.ceil(2.0 / max(s, 1e-8))
+    codes = np.round(np.array(w, dtype=np.float32) * q)
+    clamp_frac = float((np.abs(codes) > 15).mean())
+    codes = (np.clip(codes, -15, 15).astype(np.int64) + 15).astype(np.uint32)
+    codes = codes.reshape(n, d // 6, 6)
+    words = np.zeros((n, d // 6), dtype=np.uint32)
+    for j in range(6):
+        words |= codes[:, :, j] << (5 * j)
+    return (mx.array(words), mx.array([1.0 / q], dtype=mx.float32),
+            clamp_frac)
+
+
+def crystal5_gemv(x: mx.array, words: mx.array, scale: mx.array,
+                  d: int) -> mx.array:
+    """y = x @ dequant(words).T for the bit-packed 5-bit format."""
+    n = words.shape[0]
+    (out,) = _crystal5_gemv(
+        inputs=[x, words, scale],
+        template=[("T", x.dtype), ("D", d)],
+        grid=(n * 32, 1, 1),
+        threadgroup=(32, 1, 1),
+        output_shapes=[(n,)],
+        output_dtypes=[x.dtype],
+    )
+    return out
