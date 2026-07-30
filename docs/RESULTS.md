@@ -11211,3 +11211,20 @@ ironically the LEAST meter-compressible tensors are the MOST
 entropy-codable). Fences: B3 3 layers/1 shard each; B4 one
 model, one merge read, MI on 16-prompt+README battery; P6
 bound-accounting, rANS not yet implemented.
+
+AMENDMENT (targets: NIGHT-30 N1 + NIGHT-30b N1b pre-regs):
+both 3080 birth arms CRASHED at launch — friendly-fire
+variants #8 and #9 booked. (8) Missing data dep: sym_birth
+reads data/micromodel_gen4_sidecar.jsonl, which lives on the
+Mac only (untracked, file-handoff convention) — the launcher
+never verified file deps at arm time (standing doctrine,
+violated). (9) STALE MARKER: logs/night30_done.marker
+already existed from a July-29 job of the same name, so the
+chained night30b watcher fired IMMEDIATELY into the same
+crash — markers must be unique per launch (extends
+friendly-fire #7's unique-job-file rule to marker names).
+Zero GPU-hours lost (crashes were instant). RECOVERY: the
+seed-2/3 births move to the MAC — which the comparability
+fence PREFERS anyway (seed-1 C1 crystals are MPS-born and
+MPS-gated; same-device doctrine). Births relaunched Mac-side
+this morning, same pre-reg predictions.
