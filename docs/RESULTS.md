@@ -11275,3 +11275,21 @@ THAT the card predicts. CARD STATUS: shipped as a CLASS
 gate (meter M for regime + flips/tok for class fragility);
 seed-granular prediction unproven at current probe power.
 Fences: one Q, one probe set, n=3 per class.
+
+## PRE-REG: P6-v2 — rANS lands the entropy bound as real bytes (2026-07-30 morning, before the runs)
+
+Coder: constriction (Rust rANS, smoke-tested: exact
+roundtrip, +0.01% over entropy on synthetic). Instrument
+scratch/pack_rans.py. Cells: (a) house artifacts — re-emit
+the six packed crystals (seed 1-3 x h8/L4) with per-tensor
+rANS code streams (frequency tables + fp scales in the
+container); (b) Qwen3-30B parts — rANS all 30.2B params'
+codes. PREDICTIONS: (1) rANS lands within 0.5% of the
+per-tensor Shannon entropy everywhere; (2) house crystals
+drop from ~5.0 to ~3.3-3.5 bits/param INCLUDING fp
+passthrough (=> ~9x v fp32); (3) the Qwen3 artifact reads
+~16.3GB (P6's 4.31 bits/wt accounting made real, 3.7x v
+bf16); (4) every stream roundtrips EXACTLY (lossless, or
+the cell is void). Fences: table overhead counted honestly
+(counts stored per tensor); wall-time reported; n=1 per
+artifact.
