@@ -11571,3 +11571,20 @@ observational law stands regardless). Fences: house scale
 (d64), one seed per arm this pass, MoE params 2x dense FFN
 (active 1/2) — arm-internal comparisons only; gate v dense
 control is context, not a matched-params claim.
+
+## AMENDMENT (UMOE-1 launch): friendly-fire #8 REPEATED — same file, same lesson, one day later (2026-07-30 ~12:40)
+
+First UMOE-1 launch crashed all four arms in seconds:
+data/micromodel_gen4_sidecar.jsonl is Mac-only and was
+never shipped — the EXACT dep that killed the night-30
+births, booked as friendly-fire #8 yesterday. The lesson
+("verify file deps at arm time") was in the doctrine and
+not applied. Cost: ~3 min (smoke-tested locally, crash
+surfaced immediately in the monitor; sidecar shipped by
+gzip ssh-pipe, dep VERIFIED loading on the box — 38,325
+rows — before relaunch). Process change adopted: the
+arm-time check is now "run the loader on the target box
+before launch," not "eyeball the script's imports."
+Fresh log + fresh marker per relaunch (friendly-fire #9
+discipline held). Arms relaunched 12:40, chained
+dense->lb->free->tied, monitor armed.
