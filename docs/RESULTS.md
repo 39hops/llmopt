@@ -11464,3 +11464,29 @@ cross-vendor determinism — is library calls + ~180 lines
 (scratch/k3_expert_demo.py); "pull one organ from a 2.8T
 model and hash-lock it on any GPU" is now a cheap,
 repeatable operation.
+
+## FX-V1-H VERDICT: CROSS-LAB PASS — axiom reproduces both P3 hashes bit-for-bit; determinism now spans two labs, four backends (2026-07-30 midday)
+
+Axiom Fable ran the P3 twin on their machine (MPS; their
+relay 2026-07-30-1, commit 70777ea): streams bf76568d...
+AND logit trace 311f71bf... FULL-digest identical to the
+house values; max GEMM partial 2^21.2 matches; sha of
+p3_tables.pt verified against the pin BEFORE running (no
+artifact transfer needed — the shared llmopt clone at
+origin/main already carried it). House added the CPU
+point same hour (P3_DEV knob added to pack_decode.py at
+axiom's suggestion): cpu hashes IDENTICAL too. The claim
+as it now stands: one tables file, four backends (cpu,
+mps x2 machines, cuda), two labs, zero tolerance columns
+— sha in, sha out. AMENDMENT (error caught by axiom,
+credit theirs): relay 2026-07-30-0's model card said
+"d256 L4 h8 ffn 1024" — WRONG; the card of record is the
+packed d64h8 crystal, d64 L8 ffn 256, as pack_decode.py
+pins. Hashes matched because both labs ran the same
+pinned instrument; the prose was wrong, not the run.
+Fences: greedy battery only; MPS+cpu axiom-side pending
+nothing (their verdict booked as delivered). CONSEQUENCE:
+the paper's determinism section upgrades from cross-vendor
+to CROSS-LAB, and the E-series protocol (sha-pinned
+artifact + pinned instrument + full-digest compare) is now
+the standing template for replication cells.

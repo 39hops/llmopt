@@ -92,11 +92,16 @@ Three instrument bugs caught by controls, all amended.
 - [x] P5 card DONE at CLASS scope: flips/tok ranks architectures correctly (L4 1.3x h8) pre-pack; seed-level unresolved (matched-operator probe = named follow-up)
 - [x] P3 DONE: full fixed-point decode, bit-identical logit traces MPS=cuda (2 table versions), 96.66% argmax agreement v fp at low-margin disagreements; sec.3 upgrades to end-to-end
 - [x] Related work drafted (sec. 8) with honest deltas
-- [ ] Venue: MLSys or efficient-ML workshop first
+- [x] Venue DECIDED: MLSys, efficient-ML workshop as
+      fast-feedback fallback (Artin, 2026-07-30)
 - [x] Fences section drafted (sec. 9)
-- [ ] Verify flagged citations (TurboQuant authorship) at
-      writing time; every cite must be checked against the
-      actual paper before submission (THEORY discipline)
+- [x] Flagged cites verified 2026-07-30 (TurboQuant =
+      arXiv 2504.19874 KV-cache online VQ; REAP = arXiv
+      2510.13999 Lasby et al.); remaining cites re-check
+      against the actual PDFs at final writing
+- [x] Cross-LAB determinism: FX-V1-H PASS (axiom, MPS,
+      both digests full-match) + house CPU point — the
+      hash now holds cpu/mps/cuda across two labs
 
 ## 8. Related work (honest deltas)
 
@@ -133,8 +138,12 @@ machinery — their sigma/2 code stream already carries
 Gaussian capacity (<1% gap), and Lloyd-Max ties uniform
 (07-25). Incoherence processing is a transform TOWARD the
 regime our training produces natively. TurboQuant
-(rotation-based, 2025 — cite to verify) belongs to the
-same transform family.
+(Google/NYU, arXiv 2504.19874, ICLR 2026; VERIFIED) is
+the sharpest statement of the transform family: its random
+rotation explicitly manufactures near-Gaussian coordinates
+(Beta -> Gaussian by concentration) before scalar
+quantization — for KV caches, online. Our crystals are
+born in the distribution their rotation constructs.
 
 **Weight entropy coding.** Deep Compression (Han et al.,
 2016) Huffman-codes pruned CNNs; DeepCABAC (Wiedemann et
@@ -156,8 +165,12 @@ router. Expert offloading/prefetch (e.g. Eliseev & Mazur,
 memory; our B4 measurement says co-routing MI is the
 statistic such systems are implicitly betting on, and our
 merge probe (+3.4 ppl top pair) closes the params-side
-alternative. Expert pruning (REAP, 2025) is orthogonal:
-it removes experts; we compress the survivors at rest.
+alternative. Expert pruning (REAP; Lasby et al., arXiv
+2510.13999, ICLR 2026; VERIFIED) is orthogonal — it
+removes experts, we compress the survivors at rest — and
+independently agrees with our merge result: they show
+merging carries an irreducible error v pruning on
+generative tasks.
 
 **Determinism.** Integer-only inference exists for edge
 CNNs (Jacob et al., 2018 quantized inference); we know of

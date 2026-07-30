@@ -12,6 +12,7 @@ __main__-guarded.
 """
 import hashlib
 import math
+import os
 import sys
 
 sys.path.insert(0, ".")
@@ -206,8 +207,9 @@ def cmd_hash():
     import step_grpo_micro as G
     from llmopt.train.mathnative import MathTokenizer
     tok = MathTokenizer()
-    dev = ("cuda" if torch.cuda.is_available() else
-           "mps" if torch.backends.mps.is_available() else "cpu")
+    dev = os.environ.get("P3_DEV") or (
+        "cuda" if torch.cuda.is_available() else
+        "mps" if torch.backends.mps.is_available() else "cpu")
     m = DetLM(dev)
     streams, lh = [], hashlib.sha256()
     for lv in G.GATE_LEVELS:
