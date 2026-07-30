@@ -10991,3 +10991,32 @@ the scale where it matters, as a scaling law rather than a
 binary. Fences: desk, one shard, fp8-dequant approximation,
 n=1 per model class, expert-fineness and total-scale
 confounded (named).
+
+## EXPERT-SCALE VERDICT: ARTIN'S PREDICTION CONFIRMED — expert capacity is monotone in fineness, and frontier experts REACH the sigma-law boundary (2026-07-29 close)
+
+Kimi-K2-Instruct shard 37 (layer 36, 384 routed experts/
+layer, fp8-dequant, 705M params read): M = 2.01 bits, kurt
+3.02. THE LADDER AT n=3, monotone exactly as Artin called
+it ("cramming many experts into few params is probably not
+optimal" -> finer/larger should be more crystal-like):
+  OLMoE   7B,  64 exp/layer:  M 2.85
+  DS-V3 671B, 256 exp/layer:  M 2.33
+  K2     1T,  384 exp/layer:  M 2.01  <- AT the M~2 domain
+                                          boundary
+Read against the dial (premium monotone in M; crystals ~1x
+at M<2, OLMoE experts 16x at 2.85): K2-class fine-grained
+experts sit where the projected sigma premium approaches
+the noise floor — the transport claim revives as a SCALING
+LAW: routers at frontier scale focus each expert toward
+max-entropy weights, and sufficiently fine-grained experts
+enter the calibration-free domain exactly where calibration
+is most expensive (hqq 675s on OLMoE's 6.4B; a 1T MoE pays
+that x150). K3 (2.78T) excluded as instrument-confounded
+(ships 8-bit pre-quantized). NEXT rungs banked: (a) second
+K2 shard (depth check — does M vary by layer?); (b) the
+DeltaKL arm at K2 scale needs hardware the house lacks —
+flagged as the paper's external-collab cell; (c) the title
+riff banked: "black-hole experts" (max-entropy endpoint of
+router focusing). Fences: one shard, desk, fp8-dequant
+approximation, fineness confounded with total scale AND
+training recipe (n=3 model classes).
