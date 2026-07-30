@@ -1878,3 +1878,22 @@ to the collaboration itself.
   of the micro-MoE conservation program; every component
   already measured separately. Attribution: Artin (all three
   pushes), house (mappings).
+
+- **2026-07-30 (UMOE-1 verdict rider — the micro-MoE program
+  fires its first arm)**: the banked conservation 3-arm RAN
+  (first house MoE births). Verdict amends the bank: the
+  split law's cause is TOP-1 SPARSE ASSIGNMENT, not the
+  balance loss (predictions 1/2/4 nulled cleanly; the
+  free arm did not collapse and did not re-correlate).
+  Surviving banked follow-ups, sharpened: (a) the (M, MI)
+  trade-off hint — capacity meter M rose exactly as MI fell
+  across arms (1.26/1.37/1.47 v 288/256/235x), a possible
+  conservation law on DIFFERENT axes than pre-registered
+  (seed-2 first, then a top-2/soft-routing arm to test "the
+  sparsity does it" directly — soft routing should KILL the
+  decorrelation if assignment is the mechanism); (b) tied
+  experts pay ~nothing at the gate (43 v dense 45) — the
+  tied-expert ladder is LIVE as a params-side lever the
+  post-hoc N3 null could not touch (tie at BIRTH, not after).
+  Attribution: Artin (conservation question), house (arms,
+  verdict, soft-routing falsifier design).
