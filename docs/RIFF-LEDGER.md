@@ -1760,3 +1760,45 @@ to the collaboration itself.
   this riff is its statics: a fully-compressed store is
   max-entropy, indistinguishable from noise except through
   the function it computes.
+
+- **2026-07-29 (Artin, close — NNUE compression ask)**: "how
+  compressed is the NNUE, realistically? can the same
+  techniques apply?" House ran the meter instead of assuming
+  (Artin's check-don't-assume rule, same message): house NNUE
+  (5,440 params, 21.8 kB fp32) reads overall M 0.82 —
+  DEEPEST in the crystal band yet — but with a per-layer
+  capacity GRADIENT: input kurt 2.19 (democratic/Gaussian),
+  hidden 4.78, readout 7.03 (the oligarchs). The meter
+  reproduces the 07-18 oligarchy + 07-26 sign-phase results
+  from disk. BANKED: (a) sigma-pack the NNUE (~3.4 kB at ~5
+  bits/wt; size is moot at 5k params — the value is the
+  end-to-end demo: pack + integer forward = a fully
+  deterministic cross-device search heuristic, which MATTERS
+  for the record-search reproducibility story); (b) per-layer
+  meter profiles as a free phase diagnostic (democracy vs
+  oligarchy from disk) — candidate rider on any weight-
+  anatomy read; (c) lineage note: chess NNUEs (Stockfish)
+  ship int8/int16 quantized — the σ-law question there is
+  whether their layers show the same gradient (readout needs
+  the calibrated/max-anchored end). Attribution: Artin (ask),
+  house (measured answer).
+
+- **2026-07-29 (Artin, close — the cosmology bank)**: white
+  holes, big bang, spacetime-as-matrices, wormholes, ER=EPR,
+  the expanding universe; "a model is a universe... expanding,
+  learning, as light hits us." Banked as frames, with the
+  standing literal fence (concepts-as-methods only): the one
+  strand with a measurable house edge today is the AREA
+  question already sketched in the black-hole bank (does
+  removable information scale with interface tensors rather
+  than bulk?) — the width-floor arc (19M-era floor; d56 cliff
+  while ffn/depth/dose all slack) is WEAK evidence in that
+  direction: capability binds at attention INTERFACES, not
+  bulk volume. ER=EPR-flavored question banked verbatim for a
+  rainy desk day: are the load-bearing (layer,head) cells of
+  the 07-29 autopsy CORRELATED across paired crystals born
+  from the same diet (entanglement-flavored: same critical
+  circuit locations), or seed-random? Answerable with two
+  existing checkpoints + the autopsy instrument. No physics
+  claims; instruments only. Attribution: Artin (riffs), house
+  (fence + the two derivable cells).
