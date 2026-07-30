@@ -1860,3 +1860,21 @@ to the collaboration itself.
   escalation economics, routing-side stats + weights-side
   bits cooperating — the "link" at the artifact level).
   Attribution: Artin (question), house (arms + predictions).
+
+- **2026-07-30 (Artin, mid-morning — Ozaki link + "stupidest
+  K3 thing" + packed-as-expert)**: (a) P3's carrier confirmed
+  as the Ozaki error-free-transformation principle aimed at
+  determinism instead of fp64 exactness — doctrine's
+  "exact = speed/determinism lever" now an artifact; 3080
+  fp64 1:64 is WHY int-in-fp32 wins there. (b) BANKED, the
+  K3 SINGLE-EXPERT DETERMINISTIC DEMO: one ~66M expert from
+  the 2.8T model -> pack -> fixed-point twin -> bit-identical
+  Mac/3080 hash ("frontier weights, laptop determinism");
+  rider: K3 shipped-code entropy v the 4-bit bound, by
+  layer/expert (are Moonshot's parts uniform? desk, one
+  shard). (c) BANKED, the PACKED-EXPERT SHELF: house MoE
+  assembled from packed specialist crystals + the 8-neuron
+  free-router + escalation-as-tier-routing — deployment face
+  of the micro-MoE conservation program; every component
+  already measured separately. Attribution: Artin (all three
+  pushes), house (mappings).
