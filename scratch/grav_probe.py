@@ -21,7 +21,7 @@ import umoe_conserve as U  # noqa: E402
 from train_mathnative import load_rows  # noqa: E402
 
 SEED = int(os.environ.get("SEED", "1"))
-CKPT = f"checkpoints/umoe_lb_s{SEED}.pt"
+CKPT = os.environ.get("CKPT", f"checkpoints/umoe_lb_s{SEED}.pt")
 NE, LAYERS = U.NE, U.LAYERS
 N_EVAL = 400
 

@@ -12117,3 +12117,44 @@ for the full question (Mod-diet crystal, VOCAB_EXTRA
 gcd/Mod, sweep both n and k) needs a purpose-birth —
 BANKED as FOURIER-2. Fences: one crystal, k=10 only,
 answer-position residual only, R^2 threshold single-point.
+
+## PRE-REG x3: EQUIV-1 (the equivalence principle), FOURIER-2 (Mod-diet birth), HOPF-1 (contract-MoE) — 2026-07-30 ~8:15 PM, 3080 window + desk
+
+EQUIV-1 (desk, now): Artin asked what MASS is in the
+Hopfield picture. Physics has two masses that happen to
+coincide — INERTIAL (resistance to perturbation) and
+GRAVITATIONAL (influence on others). We measured both,
+separately, per (layer,expert) cell: basin radius
+(BASIN-1: routing retention under kick) and ablation
+damage (GRAV-1 on-target dNLL). The probe: rank
+corr(basin, damage) on the 12 probed cells x 2 seeds.
+PREDICTION: positive both seeds (masses equivalent —
+robust experts are influential experts). FALSIFIER: no
+relation = the two masses are INEQUIVALENT in this
+universe (deep either way; would mean robustness and
+influence are separately trainable).
+
+FOURIER-2 (3080): birth d64 (callspan recipe, atoms
+pinned sidecar order, plain arm) on the nt pilot 500
+(gcd/Mod diet, 20 ep) and run the roots-of-unity probe
+PROPERLY: "Current: Mod(n, k)" sweeps, k=5 and 7.
+PREDICTIONS: (1) periodic population >> FOURIER-1's
+11/512 (the diet drives the mechanism); (2) top-frequency
+concentration > 0.534 (closer to the grokked zeta^k
+filter of Nanda et al. 2301.05217). FALSIFIER: population
+stays tiny on a Mod-DOMINANT diet = the filter is not how
+small crystals do modular arithmetic at all.
+
+HOPF-1 (3080): the unification arm — UMOE lb recipe +
+GRAV-2's contractivity penalty (CONTRACT=0.1), seed 1,
+then the basin probe and the GRAV screening probe ON the
+contract-MoE v the lb control. PREDICTIONS: (1) falloff
+flattens (the GRAV-2 result transfers to MoE); (2) basins
+WIDEN (retention curve strictly above lb's
+0.986/0.966/.../0.630 — lawful medium => stronger
+attractors, the Hopfield unification's first
+falsifiable); (3) exploratory: on/off screening ratio
+improves. FALSIFIER: basins unchanged while falloff
+flattens = medium lawfulness and attractor geometry are
+INDEPENDENT (unification dies, both results stand).
+Fences: n=1 each this pass, house scale.

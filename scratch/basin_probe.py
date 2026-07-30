@@ -23,7 +23,7 @@ def main():
     dev = "cpu"
     U.ARM = "lb"
     tok, model = U.build()
-    sd = torch.load(f"checkpoints/umoe_lb_s{SEED}.pt",
+    sd = torch.load(os.environ.get("CKPT", f"checkpoints/umoe_lb_s{SEED}.pt"),
                     map_location="cpu", weights_only=True)["sd"]
     model.load_state_dict(sd)
     model = model.eval()

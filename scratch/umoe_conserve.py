@@ -41,7 +41,9 @@ CH_R = 16          # channel arm: shared base rank
 GRAV_LAM = 0.5     # gravmoe: relaxation strength
 GRAV_EVERY = 100   # gravmoe: apply every N steps
 SEED = int(os.environ.get("SEED", "1"))
-OUT = f"checkpoints/umoe_{ARM}_s{SEED}.pt"
+CONTRACT = float(os.environ.get("CONTRACT", "0"))
+TAG = "_ct" if CONTRACT > 0 else ""
+OUT = f"checkpoints/umoe_{ARM}{TAG}_s{SEED}.pt"
 
 
 class MoEFFN(nn.Module):
@@ -343,6 +345,21 @@ def main():
             if ARM != "dense" and AUX > 0:
                 loss = loss + AUX * sum(
                     blk.moe.aux for blk in model.blocks) / LAYERS
+            if CONTRACT > 0:  # GRAV-2 expansion tax, MoE edition
+                li_c = random.randrange(LAYERS)
+                blk_c = model.blocks[li_c]
+                with torch.no_grad():
+                    h_in = model.emb(x)
+                    for b_ in model.blocks[:li_c]:
+                        h_in, _ = b_(h_in, None)
+                delta = torch.randn_like(h_in)
+                delta = delta / delta.norm(dim=-1, keepdim=True) \
+                    * 0.01 * h_in.norm(dim=-1, keepdim=True)
+                o1, _ = blk_c(h_in, None)
+                o2, _ = blk_c(h_in + delta, None)
+                ratio = ((o2 - o1).norm(dim=-1)
+                         / delta.norm(dim=-1).clamp(min=1e-8))
+                loss = loss + CONTRACT * F.relu(ratio - 1.0).mean()
             opt.zero_grad(set_to_none=True)
             loss.backward()
             opt.step()
