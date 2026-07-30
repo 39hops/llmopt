@@ -69,3 +69,17 @@ Allow` + profile Private is the recipe, memory-worthy).
   (Qwen1.5-MoE / OLMoE class) or V3 shard desk-DeltaKL.
 - README Highlights + design note updated; THEORY row added;
   RIFF banked. All pushed.
+
+## Addendum 2 (close): C7 verdict + the dial
+- C7 (OLMoE): strong transport FAILS (16x hqq on experts) but
+  the meter becomes a CONTINUOUS DIAL — premium monotone in M
+  (6 points, crystals 1x -> Qwen 34x); meter warned pre-run.
+  hqq 675.5s v sigma 16.6s on 6.4B (the wall-time exhibit).
+- Sharpened rule: sigma-law below M~2. NNUE (M 0.82) is a
+  member; DeepSeek experts (2.33) between bands, unmeasured.
+- Banked this evening: entangled-experts MI/merge cell,
+  tied-expert ladder, superposition frame (already measured:
+  R0b + duo-wave + dist readout), NNUE pack (deterministic
+  search heuristic), area-law probe sketch.
+- Next: P2a hybrid allocator (meter-routed, zero calibration)
+  -> P5 retrodiction card -> P3; P4 on nightly GO.
