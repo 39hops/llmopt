@@ -1834,3 +1834,29 @@ to the collaboration itself.
   clade-experts tied by group action v untied v single union
   crystal, matched params. Attribution: Artin (riffs), house
   (frame verdicts + cells).
+
+- **2026-07-30 (Artin, morning — "is there a deeper technique
+  to have router + weights conserve their efficient
+  attributes?")**: the conservation observation (redundancy
+  leaves weights, reappears as co-routing MI) has a CAUSAL
+  version. Standard MoE training uses load-balancing aux
+  losses that force expert independence — plausibly the very
+  thing that pushes redundancy into routing. THE MICRO-MoE
+  PROGRAM (banked, house-sized, new territory: the house has
+  never birthed a MoE): birth tiny MoEs (2-4 experts,
+  d64-class, math diet, one router) under three aux-loss
+  regimes — (a) load-balanced (standard), (b) correlation-
+  permitted (no balance loss), (c) tied experts (base +
+  delta, the tied-expert ladder) — and measure WHERE the
+  redundancy lands in each: expert meter M + routing MI +
+  gate. Prediction sketch: (a) high MI/low weight redundancy,
+  (b) lower MI/higher weight redundancy (mergeable), (c)
+  redundancy explicit in the tie at a small gate toll. If
+  the total is roughly conserved across regimes, that IS the
+  conservation law, made causal with three arms. Second
+  bankable: USAGE-TIERED PACKING — routing statistics give
+  per-expert temperature for free at deployment; pack cold
+  experts to coarse tiers, hot experts fine (matryoshka x
+  escalation economics, routing-side stats + weights-side
+  bits cooperating — the "link" at the artifact level).
+  Attribution: Artin (question), house (arms + predictions).
