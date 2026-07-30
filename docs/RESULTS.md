@@ -11892,3 +11892,50 @@ screening probe on a contract-arm MoE (does a lawful
 medium RESTORE expert locality?); lambda sweep; seed 2.
 Fences: n=1 seed, dense arm (not MoE), single lambda,
 house scale.
+
+## UMOE-2 VERDICT: SOFT ROUTING DOES NOT RESTORE CORRELATION — decorrelation is the INIT DEFAULT, and nothing we tried moves it (2026-07-30 ~4:30 PM)
+
+The soft-mixture arm (every expert sees every token,
+prob-weighted) landed corr 0.0089 — INDISTINGUISHABLE from
+top-1 arms (0.0080-0.0085). PREDICTION (corr rises >=10x
+under soft routing) FALSIFIED, which kills the UMOE-1
+amended mechanism too: decorrelation is NOT caused by
+sparse assignment. The desk check that settles it:
+expert correlation AT INITIALIZATION is 0.0016 —
+independently-initialized high-dim weight vectors start at
+~0, training raises it only to ~0.008 in EVERY regime
+(lb/free/soft), and the single arm that produced real
+correlation (tied, 0.06) is the one where experts SHARE A
+GRADIENT PATH through the base. FINAL MECHANISM (two
+falsifications deep): the split law's weight-side face is
+the INIT DEFAULT PRESERVED — independent parameterization
+starts orthogonal and no routing regime supplies a force
+toward correlation; the ROUTING-side structure (MI 205-374x
+shuffle across ALL arms incl. soft) is where training
+actually writes. Gate soft 42/120 (within sigma of the
+family). Fences: n=1 for soft (its corr number sits inside
+the n=2 top-1 band), house scale. Rider: N3's production
+observation now reads as the same default at 1000x scale —
+"experts decorrelated" is not an achievement of MoE
+training, it is the absence of a correlating force.
+
+## CAL-DK-2 VERDICT: DILUTION BREAKS CALIBRATION MONOTONICALLY — but noise teaches DOUBT, not arrogance (2026-07-30 ~4:35 PM)
+
+Dose-response CONFIRMED, direction SURPRISED. ECE: clean
+0.0049 -> f=0.1 0.0225 -> f=0.3 0.0386 (monotone, ~8x at
+30%; PREDICTION 1 CONFIRMED — the verified diet IS what
+calibration rests on). Gate: 45 -> 35 -> 30 with validity
+sigma 45 -> 25 -> 17 (corruption crushes fluency first).
+AUROC: 0.971 -> 0.968 -> 0.956 (self-knowledge degrades
+but survives). PREDICTION 2 FALSIFIED, informatively: the
+DK gap goes MORE NEGATIVE with dilution (-0.005 ->
+-0.023 -> -0.039) — target-SWAP corruption is NOISE
+(conflicting evidence for the same prompt), and noise
+teaches HEDGING, not confidence. The sharpened law:
+inconsistent falsehood -> underconfidence; to train
+OVERCONFIDENCE (true DK) you likely need CONSISTENT
+falsehood — systematically wrong but internally coherent
+rows (the confident-nonsense class proper). CONSISTENT-
+CORRUPTION ARM BANKED (e.g. a deterministic wrong rule at
+f=0.1; predicts the DK flip). Fences: n=1 per dose,
+token-level, one corruption class, house scale.
