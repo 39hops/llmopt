@@ -11509,3 +11509,24 @@ glue (requant shifts, table lookup, product) — hunt and
 book. Fences: synthetic battery (not real routed
 activations); one expert (l45/e7); activation clamp +-2^15
 in A units named as the D2 analog of P3's ACT_CLAMP.
+
+## K3-D2 VERDICT: FULL-EXPERT CHAIN HASH-LOCKED — a Kimi-K3 expert forward, exactly, on three backends (2026-07-30 ~12:00)
+
+PREDICTION CONFIRMED first run: the composed expert forward
+(w1/w3 integer GEMVs -> power-of-two requant -> shipped
+SiLU table f503c814... -> gate*up at A=2^10 -> w2 GEMV)
+hashes d771796f... IDENTICAL on cpu, mps, and cuda. The
+SiLU table traveled as bytes (Mac master, sha-verified on
+the 3080 before the run — P3 doctrine held). K3-D1's
+composition fence is CLOSED: what is now demonstrated is a
+frontier model's routed expert running EXACTLY — same
+integers, any GPU — directly on Moonshot's shipped MXFP4.
+Fences (carried): synthetic 64-vector battery, one expert,
+clamp +-2^15 in A units. Friendly-fire note: scp mangled
+the remote colon-path (target parsed as local cp) — shipped
+via ssh cat-pipe instead; transfer verified by sha, the
+standing pattern anyway. CONSEQUENCE: "the packed model as
+the expert" (Artin's riff) now has its existence proof at
+the single-expert level; a deterministic-MoE shelf (router
+in fp, experts as hash-locked integer organs) is buildable
+from tested parts alone.
