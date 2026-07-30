@@ -11020,3 +11020,23 @@ riff banked: "black-hole experts" (max-entropy endpoint of
 router focusing). Fences: one shard, desk, fp8-dequant
 approximation, fineness confounded with total scale AND
 training recipe (n=3 model classes).
+
+## PRE-REG: BLACK HOLE MoEs B0+B1+B2 — the capacity atlas + streaming pack of Qwen3-30B-A3B (2026-07-29 close, before the pass)
+
+One streaming pass (scratch/blackhole_b0.py; shard ->
+process -> delete, one shard on disk at a time): (B0) meter
+every 2-D tensor -> M/kurt by (layer, group expert|attn|
+shared|router); (B1) dial-routed zero-calibration pack —
+sigma[row] codes where M<2, per-row max-anchored codes
+otherwise; real packed bytes + entropy v capacity per group;
+(B2) per-tensor function-space error ||x(Wq-W)||/||xW|| on
+64 Gaussian probes. PREDICTIONS: (1) experts read below
+attn/shared at every layer (C7 ordering replicates
+in-model); (2) expert M at 128-fineness lands BETWEEN OLMoE
+2.85 and V3 2.33 (fineness drives the ladder, not total
+scale — the discriminating point); (3) router tensors read
+worst; (4) function-space error <=2% on expert tensors at
+their assigned grids; (5) whole pass wall-clock < 2.5h on
+the Mac, zero calibration data. Fences: desk only (no 30B
+inference), bf16 source, spot checks are not end-to-end
+quality, n=1 model.

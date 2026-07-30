@@ -83,3 +83,21 @@ Allow` + profile Private is the recipe, memory-worthy).
   search heuristic), area-law probe sketch.
 - Next: P2a hybrid allocator (meter-routed, zero calibration)
   -> P5 retrodiction card -> P3; P4 on nightly GO.
+
+## Addendum 3 (close): the dial day ends in BLACK HOLE MoEs
+- P2a-v2: falsifier fired (clip k=4 ppl 138,890) — outliers
+  load-bearing at full magnitude; P2 CLOSED; domain = M<~2.
+- EXPERT-SCALE LAW (Artin's prediction, confirmed n=3):
+  M monotone in expert fineness — OLMoE 64exp 2.85 / V3
+  256exp 2.33 / Kimi-K2 384exp 2.01 (AT the boundary).
+  Transport claim revives as a scaling law.
+- NNUE metered: M 0.82 (deepest crystal-band); per-layer
+  oligarchy gradient visible from disk (2.19/4.78/7.03).
+- NEW SPEC: 2026-07-30-blackhole-moes.md (B0 atlas + B1
+  streaming dial-pack of Qwen3-30B-A3B + B2 function checks
+  + B3 K2 depth + B4 entangled-experts MI on OLMoE + B5
+  paper fold-in). B0-B2 pass LAUNCHED at close (bg, ~2h,
+  logs/blackhole_b0.log + atlas jsonl).
+- Banked riffs this evening: black-hole model title;
+  superposition frame (already measured x3); tied-expert
+  ladder; cosmology bank with literal fences.

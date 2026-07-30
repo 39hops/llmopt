@@ -1141,6 +1141,13 @@ Unified crystal anatomy (2026-07-29 spec: slack-restoration). One env-parameteri
 - `snap(w, q_max)`
 - `truncate(W, r)`
 
+### scratch/blackhole_b0.py
+BLACK HOLE MoEs B0+B1+B2 (pre-reg 2026-07-29 close): capacity atlas + dial-routed streaming pack + function-space spot check of Qwen3-30B-A3B. One shard on disk at a time (download -> process -> DELETE — the C7 OOM lesson, applied to disk). Zero calibration. Atlas rows to logs/blackhole_atlas.jsonl; packed parts to checkpoints/blackhole_q3_parts/ (codes npz per shard). Env: START/END shard 1-indexed bounds. __main__-guarded.
+
+- `group_of(name)`
+- `pack_codes(w, sigma_law)` — -> (codes int16, scales fp32 [rows], bits, err). sigma_law:
+- `main()`
+
 ### scratch/boundary_or_bulk.py
 Boundary-or-bulk regression on the completed 0.5M->400M grid.
 
@@ -1680,7 +1687,8 @@ PACKED CRYSTAL C6 (pre-reg 2026-07-29 night, Artin's GO): external validity on Q
 PACKED CRYSTAL C7 (pre-reg 2026-07-29 late, Artin's GO): the at-capacity transport claim. OLMoE-1B-7B: sigma[row] v rtn v hqq fake-quant on ROUTED EXPERT tensors (control arm: same on dense attention tensors). Capacity meter reads both groups first. DeltaKL on 16 fixed prompts + README-slice ppl + wall-times. Mac 36GB / MPS. __main__-guarded.
 
 - `sigma_row(w)`
-- `main()`
+- `group_of(name)`
+- `main()` — Streaming design (v2 after the OOM kill): the model is
 
 ### scratch/pack_crystal.py
 THE PACKED CRYSTAL C0+C1 (pre-reg 2026-07-29 eve): real bytes for the sigma-law. C0: per-tensor denominator q_t = ceil(2/sigma_t) (grid step <= sigma/2, below the knee), codes = round(W*q_t) packed to ceil(log2(span)) bits, one (q_t, offset) per tensor -> .npz + reader. Norms/emb/head stay fp32 (tiny, never snapped). C1: full gates on packed v fresh fp control, same device — bar: within sigma (~3.5). Reports bits/wt, Shannon entropy of the code stream (Gaussian-capacity check), artifact bytes v fp32/fp16. __main__-guarded.
@@ -1706,6 +1714,12 @@ PACKED CRYSTAL C2 (pre-reg 2026-07-29 night): dequant-fused sigma-pack GEMV. Run
 - `pack5(w)` — fp [N, D] (D % 6 == 0) -> (words uint32 [N, D/6], scale,
 - `crystal5_gemv(x, words, scale, d)`
 - `main5()`
+
+### scratch/pack_p2a.py
+P2a-v2 THE ANALYTIC-CLIP ALLOCATOR (pre-reg 2026-07-29 close): zero-calibration span attack on SmolLM2-1.7B (Mac). Arms: rtn per-row absmax | sigma-clip k in {4,6,8} (grid over +-min(absmax, k*sigma), outliers saturate) | hqq. DeltaKL + README ppl + wall-time, C6 harness form. __main__-guarded.
+
+- `grid_q(w, rng, bits)` — Per-row symmetric uniform grid over [-rng, rng]; saturate.
+- `main()`
 
 ### scratch/pack_tiered.py
 PACKED CRYSTAL C5 (pre-reg 2026-07-29 night): the tiered pack. matryoshka_d56_3tier.pt -> nested artifact: non-gate tensors packed once (C0 rule); gate.weight payloads nested — tier-8 base = numel/8 orbit representatives of P_C8, tier-2 payload = numel/2 delta v the QUANTIZED tier-8 prediction, dense payload = full delta v reconstructed tier-2. Each payload sigma-law-quantized on its own sigma. Desk identity check, then full gates on all three packed tiers (booked fp tiers: 57/57/48). __main__-guarded.
