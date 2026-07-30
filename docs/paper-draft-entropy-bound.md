@@ -77,7 +77,7 @@ Three instrument bugs caught by controls, all amended.
 
 ## 7. Needed before submission
 - [ ] C1 at n=3 (TODAY, births running)
-- [ ] rANS coder (P6 implementation) for the artifact table
+- [x] rANS coder DONE (P6-v2): crystals 9.10x/8.25x fp32; Qwen3-30B 16.48 GB = 3.67x bf16, lossless, laptop, zero calibration
 - [ ] P5 pre-deploy card + 4/4 retrodiction (reviewer
       artifact)
 - [ ] P3a/b end-to-end deterministic decode (strengthens S3)

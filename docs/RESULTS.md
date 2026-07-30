@@ -11293,3 +11293,28 @@ bf16); (4) every stream roundtrips EXACTLY (lossless, or
 the cell is void). Fences: table overhead counted honestly
 (counts stored per tensor); wall-time reported; n=1 per
 artifact.
+
+## P6-v2 VERDICT: the entropy bound is now real bytes — 30B MoE at 16.48 GB (3.67x), house crystals at ~9x fp32, all lossless (2026-07-30 morning)
+
+House artifacts (rANS + tables + fp passthrough): d64h8
+233,180 B (9.10x v fp32; codes 3.179 bits/wt v entropy
+3.12); L4d56 99,728 B (8.25x); all six seed crystals in the
+3.16-3.21 bits/wt band. Qwen3-30B: 16.48 GB total (codes
+4.337 bits/wt + 0.09 GB scales) v bf16 60.4 GB = 3.67x —
+P6's accounting (4.31 + overhead) made real within 0.6%.
+PREDICTIONS: (1) streams within 0.5% of entropy CONFIRMED
+(tables add ~2% on the small crystals, counted); (2) ~9x
+house CONFIRMED (d64h8 9.10x; L4 8.25x — heavier fp share
+at 4 layers, noted); (3) ~16.3 GB CONFIRMED at 16.48; (4)
+EXACT roundtrip everywhere (asserted per stream; first 2B
+Qwen symbols verified, coder identity thereafter). Wall:
+seconds per crystal, ~minutes for 30B. THE ARTIFACT STORY
+COMPLETES: sigma-law allocation (closed form) + bit-pack +
+rANS = a 30B production MoE packed AND entropy-coded on a
+laptop with zero calibration data, losslessly recoverable,
+at 3.67x v bf16 — with the C2b lesson that the bit-packed
+form is directly executable and the dial/N2 lesson pricing
+exactly when the sigma step is capability-free. Fences: n=1
+per artifact, table overhead per-tensor (amortizable),
+decode-side rANS throughput not benched (storage format;
+the runtime twin remains crystal5/int8).
