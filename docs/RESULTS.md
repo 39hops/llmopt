@@ -12036,3 +12036,29 @@ contract-arm MoE v standard (does a lawful medium widen
 basins?) — still banked, needs the contract-MoE birth.
 Fences: router-level retention only (not full-block
 trajectory), house scale, n=2.
+
+## PRE-REG TREE-1: THE EXPERT TREE — weights in a phylogeny, not a fluid (2026-07-30 ~6:15 PM; Mac, chained after PLACE-1)
+
+Artin's frame: structure the parameters as a TREE instead
+of a fluid/spacetime. House lineage: tied = a one-level
+tree and the ONLY arm that ever correlated experts
+(UMOE-1/2); clade-transfer terms measured in the exposure
+curve (lineage tree in time); matryoshka/escalation =
+trees in bits; published anchor Jordan & Jacobs 1994
+(hierarchical MoE). ARM=tree (d64h8 4-expert recipe, seed
+1): expert_i = S_root + S_side(i) + delta_i — root shared
+by all, mid bases shared by sibling PAIRS (0,1 | 2,3),
+leaf deltas private; root full init, mids+leaves 0.1
+init; aux 0.01. MEASURED: gate; per-level norms (does
+training USE the mid scale or collapse it?); WITHIN-PAIR v
+ACROSS-PAIR expert correlation (the tree's signature in
+weight space — by construction the first real correlating
+force); MI; meter M. PREDICTIONS: (1) gate >= tied's 43
+(more sharing structure at matched leaf capacity); (2)
+within-pair corr > across-pair corr by >=2x (the tree
+visible); (3) mid norms grow from 0.1-init (the
+intermediate scale is WANTED — falsifier: mids collapse
+toward 0 = two scales suffice, hierarchy unwanted, star
+is enough). Fences: n=1, one tree shape (binary, fixed
+sibling assignment — random pairing, not learned; a
+learned-topology arm is the follow-up), house scale.

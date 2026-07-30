@@ -36,7 +36,7 @@ D, LAYERS, HEADS, FFN = 64, 8, 8, 256
 NE, FFN_E = 4, 128
 BS, EPOCHS, LR = 8, 3, 1.5e-3
 AUX = {"lb": 0.01, "free": 0.0, "tied": 0.01, "soft": 0.0,
-       "channel": 0.01, "gravmoe": 0.01}.get(ARM, 0.0)
+       "channel": 0.01, "gravmoe": 0.01, "tree": 0.01}.get(ARM, 0.0)
 CH_R = 16          # channel arm: shared base rank
 GRAV_LAM = 0.5     # gravmoe: relaxation strength
 GRAV_EVERY = 100   # gravmoe: apply every N steps
@@ -52,6 +52,7 @@ class MoEFFN(nn.Module):
         super().__init__()
         self.tied = tied
         self.channel = ARM == "channel"
+        self.tree = ARM == "tree"
         self.router = nn.Linear(D, NE, bias=False)
         mk = (lambda i, o: nn.Linear(i, o, bias=False))
         if self.channel:  # thin shared base: low-rank triple + a_i
@@ -63,6 +64,16 @@ class MoEFFN(nn.Module):
             self.sd2 = nn.Parameter(torch.randn(CH_R, FFN_E) * 0.05)
             self.a = nn.Parameter(torch.zeros(NE))  # talk iff needed
         self.ema = None  # gravmoe router-overlap EMA [NE, NE]
+        if self.tree:  # root + sibling-pair mids (0,1 | 2,3)
+            mk3 = lambda: nn.ModuleDict(
+                {"g": mk(D, FFN_E), "u": mk(D, FFN_E),
+                 "d": mk(FFN_E, D)})
+            self.base = mk3()                 # root, full init
+            self.mid = nn.ModuleList([mk3(), mk3()])
+            with torch.no_grad():
+                for md in self.mid:
+                    for m in md.values():
+                        m.weight.mul_(0.1)
         if tied:
             self.base = nn.ModuleDict(
                 {"g": mk(D, FFN_E), "u": mk(D, FFN_E),
@@ -80,6 +91,17 @@ class MoEFFN(nn.Module):
         self.last_idx = None
 
     def _one(self, e, h):
+        if self.tree:
+            i = list(self.exp).index(e)
+            md = self.mid[i // 2]
+            b = self.base
+            g = F.linear(h, b["g"].weight + md["g"].weight
+                         + e["g"].weight)
+            u = F.linear(h, b["u"].weight + md["u"].weight
+                         + e["u"].weight)
+            return F.linear(F.silu(g) * u,
+                            b["d"].weight + md["d"].weight
+                            + e["d"].weight)
         if self.channel:
             i = list(self.exp).index(e)
             a = self.a[i]
@@ -195,6 +217,27 @@ def probes(model, enc, dev):
     print(f"[probe corr] per-block mean pairwise expert corr: "
           f"{[round(c, 3) for c in corrs]} | "
           f"mean {sum(corrs) / len(corrs):.4f}")
+    if ARM == "tree":
+        m0 = model.blocks[0].moe
+        nrm = lambda md: float(torch.cat(
+            [md[k].weight.flatten() for k in ("g", "u", "d")]).norm())
+        print(f"[probe tree] block0 norms root {nrm(m0.base):.2f} "
+              f"mids {nrm(m0.mid[0]):.2f}/{nrm(m0.mid[1]):.2f} "
+              f"leaves {[round(nrm(e), 2) for e in m0.exp]}")
+        wi, ac = [], []
+        for blk in model.blocks:
+            vs = [torch.cat([e[k].weight.flatten()
+                             for k in ("g", "u", "d")]).cpu()
+                  for e in blk.moe.exp]
+            def cc(a, b):
+                a, b = a - a.mean(), b - b.mean()
+                return float((a @ b) / (a.norm() * b.norm()))
+            wi += [cc(vs[0], vs[1]), cc(vs[2], vs[3])]
+            ac += [cc(vs[0], vs[2]), cc(vs[0], vs[3]),
+                   cc(vs[1], vs[2]), cc(vs[1], vs[3])]
+        print(f"[probe tree] leaf-delta corr within-pair "
+              f"{sum(wi) / len(wi):.4f} v across "
+              f"{sum(ac) / len(ac):.4f}")
     if ARM == "channel":
         avals = [[round(float(a), 3) for a in blk.moe.a]
                  for blk in model.blocks]
