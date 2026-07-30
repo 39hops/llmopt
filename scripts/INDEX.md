@@ -1676,6 +1676,12 @@ PACKED CRYSTAL C6 (pre-reg 2026-07-29 night, Artin's GO): external validity on Q
 - `sigma_pack_row(w)` — C6b/C6c: per-output-row sigma — still closed-form, zero
 - `main()`
 
+### scratch/pack_c7.py
+PACKED CRYSTAL C7 (pre-reg 2026-07-29 late, Artin's GO): the at-capacity transport claim. OLMoE-1B-7B: sigma[row] v rtn v hqq fake-quant on ROUTED EXPERT tensors (control arm: same on dense attention tensors). Capacity meter reads both groups first. DeltaKL on 16 fixed prompts + README-slice ppl + wall-times. Mac 36GB / MPS. __main__-guarded.
+
+- `sigma_row(w)`
+- `main()`
+
 ### scratch/pack_crystal.py
 THE PACKED CRYSTAL C0+C1 (pre-reg 2026-07-29 eve): real bytes for the sigma-law. C0: per-tensor denominator q_t = ceil(2/sigma_t) (grid step <= sigma/2, below the knee), codes = round(W*q_t) packed to ceil(log2(span)) bits, one (q_t, offset) per tensor -> .npz + reader. Norms/emb/head stay fp32 (tiny, never snapped). C1: full gates on packed v fresh fp control, same device — bar: within sigma (~3.5). Reports bits/wt, Shannon entropy of the code stream (Gaussian-capacity check), artifact bytes v fp32/fp16. __main__-guarded.
 

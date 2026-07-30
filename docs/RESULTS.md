@@ -10854,3 +10854,29 @@ large-shape claims stand. NO AMENDMENTS REQUIRED from the
 instrument line-review (bits accounting, Hessian
 construction, KL direction, arm-restore all verified).
 C-series numbers are CONFIRMED for docs/README promotion.
+
+## PRE-REG: PACKED CRYSTAL C7 — sigma-law on MoE ROUTED EXPERTS (the at-capacity transport claim; 2026-07-29 late, Artin's GO)
+
+Model: allenai/OLMoE-1B-7B-0924-Instruct (smallest good open
+MoE; 64 routed experts/layer; Mac 36GB, MPS/fp16 — 3080
+cannot hold it). Instrument scratch/pack_c7.py, C6-harness
+form (fake-quant, 16 fixed prompts DeltaKL + README-slice
+ppl, wall-times). ARMS on EXPERT tensors only (router/attn/
+embed untouched): sigma[row, K=2] v rtn v hqq at matched
+measured bits. CONTROL ARM: the same three on the DENSE
+attention tensors only (experts untouched) — the meter reads
+both groups first. PREDICTIONS: (1) capacity meter on OLMoE
+experts lands <= 2.5 bits / kurt ~3 (crystal band, as
+DeepSeek's did) and the dense attn group reads HIGHER (web-
+dense band); (2) THE TRANSPORT CLAIM: sigma[row] DeltaKL
+within 2x of hqq on the EXPERT arm (v 33x on dense Qwen —
+at-capacity weights need no calibration ANYWHERE they occur);
+(3) the meter ORDERS the damage within one model: sigma's
+relative loss v hqq is larger on the attn control arm than on
+the expert arm; (4) wall-time sigma <=2s v hqq minutes-class
+on ~6B expert params. FALSIFIER: sigma >5x hqq on experts
+despite a crystal-band meter reading — the meter would be
+measuring the wrong statistic and the at-capacity criterion
+takes an amendment. Fences: one MoE, fake-quant, n=1,
+fp16-on-MPS eval, expert sample may be capped for wall-time
+(reported).
