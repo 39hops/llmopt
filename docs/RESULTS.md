@@ -12222,3 +12222,58 @@ the basin curve's near-identity across lb/ct AND s1/s2
 is an ARCHITECTURAL invariant — set by router
 dimensionality/init, not by training regime; mass will
 not be found there.
+
+## UMOE-3 VERDICT: ARTIN'S CHANNEL BET PAYS (48/120, best-in-family) — but NOT through the channel; and GRAVITY COLLAPSES THE EXPERTS INTO ONE, WHICH WINS EVEN BIGGER (52/120) (2026-07-30 ~9:45 PM)
+
+CHANNEL ARM: gate 48/120 @ 45.5 valid — the best MoE arm
+of the entire program to this point (family: lb 37/44,
+free 36/40, tied 43/42, soft 42). Artin's prediction
+("the channel arm will score REALLY well") CONFIRMED at
++11 over lb-s1 (~3 sigma). BUT prediction 1's mechanism
+half FALSIFIED: the couplings a_i stayed PINNED near zero
+(max |a_i| 0.03 across all 32) — the experts did NOT open
+the offered channel, corr stayed 0.0080, and yet the arm
+wins. The win is NOT carried by shared mass; candidate
+mechanisms (banked for seed-2 + ablation): the shared
+low-rank params act as a gradient-coupled regularizer
+even at near-zero read-out, or seed fortune. DO NOT book
+the +11 as real until seed-2.
+GRAVMOE ARM: the falsifier table flipped. Usage-
+attraction pulled expert corr to 0.9625 (!) — gravity
+HOMOGENIZED the experts (overlap ~uniform, so all pairs
+attracted; four near-copies remain) — and the gate went
+UP: 52/120 @ 47.8, the best MoE gate of the program,
+BEATING both dense controls (45/40). Neither
+pre-registered branch fired (selective attraction: no;
+gate crater: NO — the opposite). READ: at house scale the
+4-way specialization never paid; relaxing experts toward
+each other = an averaging/ensemble effect (the EMA
+averaging=annealing law resurfacing at module grain), and
+the router's MI structure SURVIVES homogenization (245x —
+routing structure is about assignment, not about the
+experts differing; the strongest decoupling of routing
+from weights yet measured). Fences: n=1 each, house
+scale; the 48 and 52 both need seed-2 before entering any
+table as laws. NEXT: seed-2 pair; channel-ablation (zero
+the S params at eval: does 48 survive?); gravmoe
+lambda-sweep (is there an optimum between split and
+collapse?).
+
+## PLACE-1 VERDICT: INFERENCE-TIME GRAVITY IS REAL — co-routing prediction beats popularity by +13.8 points; prefetch cuts cache misses 27% (2026-07-30 ~9:40 PM)
+
+All three predictions CONFIRMED on real OLMoE traces (16
+layers, 6,255 tokens, fit/eval split): (a) next-layer
+expert prediction: conditional co-occurrence recall@8 =
+0.522 v marginal frequency 0.384 v uniform 0.125 — the
+co-routing structure B4 measured as MI is EXPLOITABLE,
+worth +13.8 absolute points over popularity (bar was
++5); (b) cache sim at C=16/64: LRU 0.469 misses/expert
+-> LRU+MI-prefetch 0.343 (-27% bytes moved), freq-pin
+0.434 between them. CONSEQUENCE: the split law's systems
+lever is measured — routing statistics from the fit half
+transport to the eval half, so "co-locate co-routed
+experts, prefetch by conditional" is a real deployment
+win with zero model change. The Artin cell ("co-located
+WITH the training stats, WITHOUT as control") closes
+CONFIRMED. Fences: trace-driven sim (no wall-clock), one
+model, one corpus class, C single-point.
