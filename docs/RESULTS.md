@@ -12158,3 +12158,37 @@ improves. FALSIFIER: basins unchanged while falloff
 flattens = medium lawfulness and attractor geometry are
 INDEPENDENT (unification dies, both results stand).
 Fences: n=1 each this pass, house scale.
+
+## EQUIV-1 VERDICT: THE MASSES ARE INEQUIVALENT — robustness and influence are different quantities in this universe (2026-07-30 ~8:45 PM, n=2)
+
+PREDICTION FALSIFIED cleanly: rank corr(basin radius,
+ablation damage) = -0.371 (s1) and -0.119 (s2) over the
+12 probed (layer,expert) cells — NEGATIVE both seeds.
+Inertial mass (resistance to routing perturbation) and
+gravitational mass (influence of removal on the loss) do
+NOT coincide; if anything the widest-basin experts are
+mildly LESS damaging to remove. With BASIN-1 (usage is
+not basin size) and GRAV-1 (write-norm is not damage),
+the picture: usage, robustness, and influence are THREE
+separately-varying quantities at expert granularity — no
+single "mass" exists. The equivalence principle does not
+hold in the crystal universe; whatever organizes experts,
+it is not a gravity with one charge. Fences: 12 cells x 2
+seeds, damage from zero-ablation, house scale.
+
+## FOURIER-2 VERDICT: VOID ON SUBSTRATE — the 500-row pilot birth MEMORIZED, so there is no Mod capability to probe (2026-07-30 ~8:50 PM)
+
+The Mod-diet birth (nt pilot 500, 20 ep) shows 0/512
+periodic neurons — but the check-don't-assume sanity
+probe shows WHY: the model cannot answer isolated
+"Mod(n, 5)" prompts AT ALL (answers are chain-shaped
+garbage) — 500 rows x 20 epochs is the farmer-probe
+memorization regime, and a memorizer needs no filter.
+VERDICT: void on this substrate; the mechanism question
+stands open. FOURIER-2b BANKED with the data-hygiene
+doctrine applied: a WIDE generated Mod/gcd diet (stable
+string seeds, exclude=-guarded, 20k+ rows so the
+generator space forces computation over memorization),
+then the zeta^k probe. Fences: the FOURIER-1 digit
+result (11/512, share 0.534) remains the only live
+in-vivo reading of the mechanism.
