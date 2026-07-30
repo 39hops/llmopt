@@ -10970,3 +10970,24 @@ parent 1.63 — the meter does NOT see the C5 tier tax,
 confirming fragility (k_c, flips/token) is an ORTHOGONAL
 second axis: the P5 card needs BOTH numbers. Fences: one
 model, n=1/arm, coarse k grid, 6 bits only.
+
+## PRE-REG: THE EXPERT-SCALE HYPOTHESIS — Artin's prediction, Kimi-K2 shard meter (2026-07-29 close, desk)
+
+Artin (verbatim intuition, mid-session): a small MoE
+cramming many experts into few params is "probably not very
+optimal" — bigger/finer-grained MoEs should have MORE
+crystal-like experts. The house's two existing points agree:
+OLMoE (7B, 64 exp/layer) M 2.85 v DeepSeek-V3 (671B, 256
+exp/layer) M 2.33. Cell: meter one mid-stack expert shard of
+Kimi-K2-Instruct (1T-class, 384 experts/layer, fp8 +
+scale_inv like V3; K3 exists but ships 8-bit compressed-
+tensors — histogram pre-gridded, confounded, excluded).
+PREDICTION (Artin's): K2 experts read M < 2.33 (monotone in
+expert fineness/scale), extending the dial's expert branch
+toward the crystal band. If confirmed at n=3, the projection
+is that sufficiently fine-grained frontier experts ENTER the
+sigma-law domain (M < ~2) — the transport claim revives at
+the scale where it matters, as a scaling law rather than a
+binary. Fences: desk, one shard, fp8-dequant approximation,
+n=1 per model class, expert-fineness and total-scale
+confounded (named).
