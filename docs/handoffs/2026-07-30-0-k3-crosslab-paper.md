@@ -45,3 +45,18 @@ probe, training lens.
 BOARD -> this handoff -> docs/paper-draft-entropy-bound.md
 -> RESULTS tail. Nothing in flight, tree clean at commit
 time.
+
+## Addendum 1 (~2 PM): K3-D2 + UMOE-1 n=2 booked
+- K3-D2: full-expert deterministic chain sha d771796f...
+  identical cpu/mps/cuda (SiLU table shipped as bytes,
+  f503c814...). Composition fence closed.
+- UMOE-1 + seed-2: first house MoE births. Split law =
+  sparse assignment, NOT balance loss (n=2). Tied-at-birth
+  ~free at the gate. (M,MI) rider killed honestly.
+  Soft-routing falsifier banked (kills decorrelation if
+  assignment is the mechanism). Checkpoints umoe_*_s{1,2}
+  on the 3080 (pull to Mac when convenient).
+- ff#8 repeat amended: loader-on-box before launch is now
+  the arm-time check.
+- Remaining today: paper prose (no GPU); 3080 idle+clean
+  for Artin at 5.

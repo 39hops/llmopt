@@ -75,8 +75,8 @@ laptop pass, zero calibration (B0); routers incompressible
 - Consequence: params-side compression is closed post-hoc;
   the exploitable levers are (a) our packing at rest, (b)
   routing-side systems (prefetch/placement/caching).
-- CAUSAL arm (UMOE-1, house-scale 3-arm, seed 1 + seed-2
-  pending): the split is NOT the balance loss's doing —
+- CAUSAL arm (UMOE-1, house-scale 3-arm, REPLICATED n=2
+  seeds): the split is NOT the balance loss's doing —
   removing the aux loss changed neither decorrelation
   (0.0080 v 0.0085) nor MI (256x v 288x). TOP-1 HARD
   ASSIGNMENT itself creates it: hard-routed experts never
