@@ -60,3 +60,20 @@ time.
   the arm-time check.
 - Remaining today: paper prose (no GPU); 3080 idle+clean
   for Artin at 5.
+
+## Addendum 2 (~4:45 PM): the gravity afternoon
+Artin's physics frames drove 5 pre-reg'd verdicts in ~4 h:
+- GRAV-1/1b: influence unscreened + amplifying; not lawful
+  in router coordinates either (n=2 each).
+- GRAV-2 (headline): SPACETIME IS TRAINABLE — expansion
+  tax flips falloff flat at ~zero gate toll; calibration
+  untouched. checkpoints/grav2_{ctl,contract}_s1.pt.
+- CAL-DK-1/2: crystal is calibrated and HUMBLE (no DK);
+  dilution degrades ECE monotonically but toward doubt;
+  consistent-corruption arm banked for the true DK flip.
+- UMOE-2: decorrelation is the init default (0.0016 init);
+  only shared-gradient (tied) correlates.
+Artifacts pulled to Mac; 3080 verified clean 4:40 PM.
+Paper BANKED at prose-v1 (all sections written). Next
+session openers: contract-MoE screening rerun; consistent-
+corruption arm; lambda sweep; old-null revival sweep.
