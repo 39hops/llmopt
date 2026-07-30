@@ -179,35 +179,156 @@ M 4.45; expert up_proj already in the sigma domain.
 
 ## 4. The artifact: packing at the bound
 
-[PROSE TODO — from C0/C1/C2/C2b/C3/C5/C6 bookings: the
-closed-form q_t = ceil(2/sigma_t); gate parity table at n=3;
-the honest L4 floor scoping; GPTQ/AWQ/HQQ tie table; kernel
-cards including the micro-shape losses; wall-time column.]
+The packing rule is two lines. For each tensor t with
+standard deviation sigma_t, choose the integer grid
+q_t = ceil(2/sigma_t) — i.e. step sigma_t/2 — round, and
+store the codes bit-packed at the width the span requires
+(~5 bits/weight on our models; interface tensors emb/head
+take a sigma/8 step, a distinction the fragility probe
+prices, Sec. 9). No calibration data, no optimization, no
+inference. The pack runs in 0.9 s where HQQ takes 61.7 s at
+0.5B scale, and 16.6 s where HQQ takes 675.5 s on 6.4B
+expert parameters — a 41x wall-time gap that matters
+precisely because, in this regime, the expensive method buys
+nothing:
+
+*Parity.* On the d64 8-head class, gate score is preserved
+exactly (58 -> 58 solved of 120), replicated at three seeds
+(+2/−3/0). On the L4 depth-floor class the pack pays −5 at
+weak seeds; we scope the zero-tax claim to the d64h8 class
+and name per-crystal fragility (Sec. 9) as the axis the
+entropy argument does not see. Compression is 6.15–6.65x
+over fp32.
+
+*The tie.* At matched 5 bits on at-capacity weights, GPTQ
+with its real Hessian, AWQ with real activation profiles,
+and HQQ with its per-tensor optimization all tie the closed
+form at the gate — as the capacity measurement predicts:
+there is no structure for them to spend their budget on. A
+3-bit arm shows where damage lands when it does come:
+solve rates stay flat while validity and DeltaKL degrade
+first.
+
+*The disk format is the runtime format.* A Metal GEMV kernel
+consumes the bit-packed 5-bit codes directly — six codes per
+uint32, no unpack pass — at 2.39x over fp16 at large shapes,
+*beating* the byte-aligned variant of the same kernel: the
+denser format wins on bandwidth. We report the honest
+losses: at micro shapes the same kernel runs 0.91x, and our
+first attempts at both kernels lost to their baselines.
+
+One negative fences the artifact class: on a
+jointly-trained matryoshka (tiered) crystal, every tier of
+the nested pack pays 1–2 sigma — tiered packing is real
+(−15% bytes per solve under escalation economics) but its
+zero-tax version requires packing EMA parents, not
+joint-STE children. Fragility, again, is orthogonal to
+entropy.
 
 ## 5. Lossless coding: the bound as bytes
 
-[PROSE TODO — from P6/P6-v2: rANS at 9.10x/8.25x over fp32
-on crystals; Qwen3-30B at 16.48 GB = 3.67x bf16, zero
-calibration, laptop wall-clock; coding gain predicted by the
-meter's entropy reading.]
+If the code stream carries H bits/weight, an entropy coder
+should store it in H bits/weight, and the meter already
+measured H from disk. A range-coder (rANS) stage over the
+sigma-law codes achieves exactly that: on crystals, 9.10x
+and 8.25x over fp32 (the residual gap to H is the coder's
+~0.1% overhead); on Qwen3-30B, the packed-plus-coded
+artifact is 16.48 GB — 3.67x smaller than the bf16 release —
+lossless, produced on a laptop in one pass with zero
+calibration. The pipeline composes: rANS is the at-rest
+container, and decompression yields the same bit-packed
+codes the Sec. 4 kernel executes, so the storage format and
+the execution format are two states of one object. Deep
+Compression Huffman-coded pruned CNNs in 2016; this is that
+idea revived at LLM scale, with the coding gain *predicted
+in advance* by the same statistic that selects the
+quantization regime.
 
 ## 6. Determinism: exact arithmetic as a deployment property
 
-[PROSE TODO — from C4/P3/K3-D1/K3-D2/FX-V1-H: integer
-carrier; shipped tables doctrine; bit-identical logit traces
-across vendors; cross-lab replication protocol (sha-pinned
-artifact, pinned instrument, full-digest compare); the
-Kimi-K3 expert consumed natively; 96.66% argmax agreement
-price at coin-flip margins.]
+Integer codes admit exact arithmetic, and exact arithmetic
+is order-invariant: an int64 sum gives the same bits under
+any reduction schedule, which is precisely what
+floating-point inference cannot promise across GPUs. We
+build this out in three stages, each verified by hash
+equality, not tolerance.
+
+*Stage 1 — exact GEMMs.* Weights as integer codes, GEMMs on
+an exact-fp32 carrier with hi/lo splitting keeping every
+partial below 2^24 (the fp32 mantissa bound, asserted at
+runtime). Forward hashes are bit-identical between Apple
+(MPS) and NVIDIA (cuda) silicon at two independent seeds,
+while the fp logits of the same model differ.
+
+*Stage 2 — full fixed-point decode.* RMSNorm as int64
+sums-of-squares with integer-Newton isqrt; SiLU, softmax-exp
+and RoPE as integer tables generated once and shipped as
+bytes (libm variation across platforms is exactly the thing
+being excluded, so tables must travel, never be
+regenerated). The complete per-step logit *traces* — every
+number, not just the argmax — hash identically on MPS and
+cuda. The capability price, measured honestly: 96.66%
+teacher-forced argmax agreement against the fp parent, with
+disagreements concentrated at coin-flip margins (median
+0.177 vs 7.6 overall); the reference implementation runs
+10–40x slower than fp, and speed is not the claim. An
+independent laboratory reproduced both digests from the
+sha-pinned tables file on first attempt; the replication
+protocol — pinned artifact, pinned instrument, full-digest
+compare — deletes the tolerance column that replication
+arguments usually turn on.
+
+*Stage 3 — a frontier model's own format.* Kimi-K3's routed
+experts ship as MXFP4: e2m1 integer codes times power-of-two
+scales — already exact. We pulled one expert (17.5 MB by
+safetensors byte-range, out of a 2.8T release), consumed the
+shipped codes natively with zero requantization, and
+measured sha-identical full-expert forwards (both GEMVs,
+SiLU table, gating product, down-projection) on cpu, MPS,
+and cuda. Bit-reproducible execution of frontier weights
+requires no cooperation from the format: the industry's
+4-bit block formats are already integer formats.
+
+TODO figure 3: the three-stage hash ladder with digests.
 
 ## 7. What routing does to weights
 
-[PROSE TODO — from N3/B4/UMOE-1: decorrelation ~0 +
-co-routing MI 300–500x shuffle on production models; merge
-probe +3.4 ppl closes post-hoc params-side compression; the
-causal 3-arm: sparse assignment, not the balance loss,
-creates the split (n=2 seeds); tie-at-birth as the live
-lever; what this means for offloading systems.]
+The MoE rows of the dial (M ~ 2–2.9) invite an obvious
+post-hoc program: find the redundancy between experts and
+compress it — merge similar experts, share bases, factor
+deltas. We measured the preconditions and closed the
+program.
+
+In weight space, production experts are decorrelated to
+zero: across OLMoE expert pairs, delta-sigma ratio 0.995 and
+correlation ~0.005 — there is no shared component for a
+base-plus-delta factorization to extract, and merging the
+*most* similar pair costs +3.4 perplexity. But the
+redundancy did not vanish; it moved. Co-routing mutual
+information between adjacent layers runs 300–500x above a
+token-shuffle control at every depth. Storage-side
+redundancy became usage-side structure — which is a systems
+lever (prefetch, placement, caching, as the offloading
+literature already exploits), not a parameters lever.
+
+A causal experiment sharpens the mechanism. Training
+matched micro-MoEs (0.9M parameters, four experts, top-1
+switch routing; two seeds) under (a) the standard
+load-balance loss, (b) no balance loss, and (c) tied
+base-plus-delta experts: removing the balance loss changed
+*neither* the decorrelation (0.0080 vs 0.0085) *nor* the
+routing structure (256x vs 288x shuffle), and the router did
+not collapse. The split is created by sparse assignment
+itself — hard-routed experts never see the same tokens and
+cannot stay correlated. The balance loss shapes load, not
+structure. (Our pre-registered predictions said otherwise;
+they were falsified, and the mechanism above is what the
+falsification taught.) Two riders: the production
+signature reproduces at 1/30,000th production scale, making
+the phenomenon cheap to study; and experts *tied at birth*
+gate within sigma of a dense control both seeds — the
+factorization that post-hoc analysis proves impossible is
+approximately free if imposed before training.
 
 ## 8. Related work / 9. Fences / 10. Reproducibility
 
