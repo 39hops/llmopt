@@ -11530,3 +11530,44 @@ the expert" (Artin's riff) now has its existence proof at
 the single-expert level; a deterministic-MoE shelf (router
 in fp, experts as hash-locked integer organs) is buildable
 from tested parts alone.
+
+## PRE-REG UMOE-1: MICRO-MoE CONSERVATION, THE CAUSAL 3-ARM — does the balance loss push redundancy out of weights and into routing? (2026-07-30 ~12:15)
+
+The split law (N3+B4) is observational: production MoEs
+show expert decorrelation ~0 in weight space AND co-routing
+MI 300-500x shuffle. The banked causal version (RIFF
+2026-07-30): load-balancing aux losses force expert
+independence — plausibly the very mechanism that moves
+redundancy into routing. FIRST HOUSE MoE BIRTHS. DESIGN:
+d64 h8 L8 crystal class, FFN replaced by 4 experts (SwiGLU
+ffn_e=128 each) + per-block top-1 switch router
+(prob-weighted); gen-4 diet, 3 epochs, seed 1, ALL arms on
+the 3080 (paired, one device), instrument
+scratch/umoe_conserve.py. ARMS: (a) lb — switch
+load-balance aux (coef 0.01, the standard); (b) free — aux
+0 (correlation permitted; collapse risk accepted as a
+finding); (c) tied — expert_i = base + delta_i (deltas
+0.1-scale init), aux 0.01. Plus (d) a dense d64h8 control
+born same-seed same-device for the gate reference (Mac-born
+58 does not transport). MEASURED PER ARM: gate
+(G.gate_eval); mean pairwise expert-weight correlation per
+block (the N3 instrument); adjacent-layer co-routing MI v
+token-shuffle control (the B4 instrument, 4x4 joint);
+capacity meter M per expert group (exploratory axis).
+PREDICTIONS: (1) corr(free) > corr(lb) — without the
+balance loss experts stay partially redundant/mergeable;
+(2) MI/shuffle(lb) > MI/shuffle(free) — the loss converts
+weight redundancy into routing structure; (3) tied arm:
+the tie carries the shared mass explicitly (base norm >>
+delta norm), deltas decorrelated, gate within ~2 of lb;
+(4) CONSERVATION (the law, if it holds): corr and MI move
+in OPPOSITE directions across arms — the redundancy total
+is roughly conserved, only its address changes.
+FALSIFIERS: router collapse in (b) (one expert takes >90%
+of tokens) makes corr unmeasurable-as-designed — book the
+collapse itself and rerun (b) with a floor eps; MI flat
+across arms kills prediction 2 and the causal story (the
+observational law stands regardless). Fences: house scale
+(d64), one seed per arm this pass, MoE params 2x dense FFN
+(active 1/2) — arm-internal comparisons only; gate v dense
+control is context, not a matched-params claim.

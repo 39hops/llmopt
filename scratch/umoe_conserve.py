@@ -1,0 +1,279 @@
+"""UMOE-1 (pre-reg 2026-07-30): micro-MoE conservation 3-arm.
+First house MoE births. d64 h8 L8, FFN -> 4 experts (SwiGLU
+ffn_e=128) + top-1 switch router per block; gen-4 diet, 3 epochs,
+seed 1, all arms one device (3080).
+
+ARM=lb    switch load-balance aux 0.01 (standard)
+ARM=free  aux 0 (correlation permitted)
+ARM=tied  expert_i = base + 0.1-init delta_i, aux 0.01
+ARM=dense plain d64h8 control (gate reference, same seed/device)
+
+Measures after training: gate (G.gate_eval), mean pairwise
+expert-weight corr per block (N3), adjacent-layer co-routing MI v
+token-shuffle (B4, 4x4 joint), meter M per expert group.
+Usage: ARM=lb python scratch/umoe_conserve.py
+"""
+import math
+import os
+import random
+import sys
+import types
+
+sys.path.insert(0, ".")
+sys.path.insert(0, "scripts")
+sys.path.insert(0, "scratch")
+import torch  # noqa: E402
+import torch.nn as nn  # noqa: E402
+import torch.nn.functional as F  # noqa: E402
+
+import step_grpo_micro as G  # noqa: E402
+from train_mathnative import load_rows  # noqa: E402
+from llmopt.train.mathnative import MathTokenizer, build_model  # noqa: E402
+from llmopt.quantize.meter import meter_group  # noqa: E402
+
+ARM = os.environ["ARM"]
+D, LAYERS, HEADS, FFN = 64, 8, 8, 256
+NE, FFN_E = 4, 128
+BS, EPOCHS, LR = 8, 3, 1.5e-3
+AUX = {"lb": 0.01, "free": 0.0, "tied": 0.01}.get(ARM, 0.0)
+SEED = int(os.environ.get("SEED", "1"))
+OUT = f"checkpoints/umoe_{ARM}_s{SEED}.pt"
+
+
+class MoEFFN(nn.Module):
+    """4-expert SwiGLU with top-1 switch routing. Stores the last
+    batch's aux loss + per-token expert choice for the probes."""
+
+    def __init__(self, tied: bool):
+        super().__init__()
+        self.tied = tied
+        self.router = nn.Linear(D, NE, bias=False)
+        mk = (lambda i, o: nn.Linear(i, o, bias=False))
+        if tied:
+            self.base = nn.ModuleDict(
+                {"g": mk(D, FFN_E), "u": mk(D, FFN_E),
+                 "d": mk(FFN_E, D)})
+        self.exp = nn.ModuleList()
+        for _ in range(NE):
+            e = nn.ModuleDict({"g": mk(D, FFN_E), "u": mk(D, FFN_E),
+                               "d": mk(FFN_E, D)})
+            if tied:  # deltas: 0.1-scale init
+                with torch.no_grad():
+                    for m in e.values():
+                        m.weight.mul_(0.1)
+            self.exp.append(e)
+        self.aux = torch.tensor(0.0)
+        self.last_idx = None
+
+    def _one(self, e, h):
+        if self.tied:  # expert_i = base + delta_i, weight-level
+            b = self.base
+            g = F.linear(h, b["g"].weight + e["g"].weight)
+            u = F.linear(h, b["u"].weight + e["u"].weight)
+            return F.linear(F.silu(g) * u,
+                            b["d"].weight + e["d"].weight)
+        return e["d"](F.silu(e["g"](h)) * e["u"](h))
+
+    def forward(self, h):
+        p = F.softmax(self.router(h), -1)          # [B,T,NE]
+        top_p, top_i = p.max(-1)                   # [B,T]
+        y = torch.zeros_like(h)
+        for i in range(NE):
+            m = top_i == i
+            if m.any():
+                y[m] = self._one(self.exp[i], h[m])
+        y = y * top_p.unsqueeze(-1)
+        # switch aux: NE * sum_i f_i * mean-prob_i
+        f = F.one_hot(top_i, NE).float().mean((0, 1))
+        self.aux = NE * (f * p.mean((0, 1))).sum()
+        self.last_idx = top_i.detach()
+        return y
+
+
+def rope(q, k, pos0=0):
+    B, H, T, Dh = q.shape
+    half = Dh // 2
+    freq = torch.exp(-math.log(10000.0)
+                     * torch.arange(half, device=q.device) / half)
+    t = torch.arange(pos0, pos0 + T, device=q.device)
+    ang = t[:, None] * freq[None, :]
+    cos, sin = ang.cos(), ang.sin()
+
+    def rot(v):
+        v1, v2 = v[..., :half], v[..., half:]
+        return torch.cat([v1 * cos - v2 * sin,
+                          v1 * sin + v2 * cos], -1)
+    return rot(q), rot(k)
+
+
+def moe_forward(self, x, mask, past=None):
+    """Block.forward twin with the FFN swapped for self.moe."""
+    B, T, _ = x.shape
+    h = self.n1(x)
+    q, k, v = self.qkv(h).chunk(3, -1)
+    q = q.view(B, T, HEADS, -1).transpose(1, 2)
+    k = k.view(B, T, HEADS, -1).transpose(1, 2)
+    v = v.view(B, T, HEADS, -1).transpose(1, 2)
+    pos0 = past[0].shape[2] if past is not None else 0
+    q, k = rope(q, k, pos0)
+    if past is not None:
+        k = torch.cat([past[0], k], 2)
+        v = torch.cat([past[1], v], 2)
+    new_past = (k, v)
+    a = F.scaled_dot_product_attention(
+        q, k, v, attn_mask=mask,
+        is_causal=(mask is None and past is None))
+    a = a.transpose(1, 2).reshape(B, T, D)
+    x = x + self.o(a)
+    x = x + self.moe(self.n2(x))
+    return x, new_past
+
+
+def build():
+    torch.manual_seed(SEED)
+    tok = MathTokenizer()
+    model = build_model(len(tok.vocab), d=D, layers=LAYERS,
+                        heads=HEADS, ffn=FFN)
+    if ARM != "dense":
+        for blk in model.blocks:
+            del blk.gate, blk.up, blk.down
+            blk.moe = MoEFFN(tied=(ARM == "tied"))
+            blk.forward = types.MethodType(moe_forward, blk)
+    return tok, model
+
+
+def probes(model, enc, dev):
+    """corr / MI / meter on the trained model."""
+    if ARM == "dense":
+        return
+    # N3: mean pairwise expert corr per block (flattened g|u|d)
+    corrs = []
+    for blk in model.blocks:
+        vs = []
+        for e in blk.moe.exp:
+            vs.append(torch.cat([e[k].weight.flatten()
+                                 for k in ("g", "u", "d")]).cpu())
+        c = []
+        for i in range(NE):
+            for j in range(i + 1, NE):
+                a, b = vs[i] - vs[i].mean(), vs[j] - vs[j].mean()
+                c.append(float((a @ b) / (a.norm() * b.norm())))
+        corrs.append(sum(c) / len(c))
+    print(f"[probe corr] per-block mean pairwise expert corr: "
+          f"{[round(c, 3) for c in corrs]} | "
+          f"mean {sum(corrs) / len(corrs):.4f}")
+    if ARM == "tied":
+        bn = torch.cat([model.blocks[0].moe.base[k].weight.flatten()
+                        for k in ("g", "u", "d")]).norm()
+        dn = torch.cat([model.blocks[0].moe.exp[0][k].weight.flatten()
+                        for k in ("g", "u", "d")]).norm()
+        print(f"[probe tied] block0 base norm {float(bn):.2f} "
+              f"v delta norm {float(dn):.2f}")
+    # B4: adjacent-layer co-routing MI v token shuffle
+    model.eval()
+    idxs = [[] for _ in range(LAYERS)]
+    with torch.no_grad():
+        for off in range(0, min(len(enc), 512), BS):
+            batch = enc[off:off + BS]
+            L = max(len(q) for q in batch)
+            x = torch.tensor([q + [0] * (L - len(q)) for q in batch],
+                             device=dev)
+            model(x)
+            for li, blk in enumerate(model.blocks):
+                idxs[li].append(blk.moe.last_idx.flatten().cpu())
+    idxs = [torch.cat(v) for v in idxs]
+
+    def mi(a, b):
+        j = torch.zeros(NE, NE)
+        for i in range(NE):
+            for k in range(NE):
+                j[i, k] = ((a == i) & (b == k)).float().sum()
+        j /= j.sum()
+        pa, pb = j.sum(1, keepdim=True), j.sum(0, keepdim=True)
+        nz = j > 0
+        return float((j[nz] * (j[nz] / (pa @ pb)[nz]).log()).sum())
+
+    g = torch.Generator().manual_seed(7)
+    mis, mis_sh = [], []
+    for li in range(LAYERS - 1):
+        a, b = idxs[li], idxs[li + 1]
+        mis.append(mi(a, b))
+        mis_sh.append(mi(a, b[torch.randperm(len(b), generator=g)]))
+    usage = [float((idxs[0] == i).float().mean()) for i in range(NE)]
+    print(f"[probe usage] L0 expert shares "
+          f"{[round(u, 3) for u in usage]}")
+    print(f"[probe MI] adjacent-layer MI "
+          f"{[round(m, 4) for m in mis]} | shuffle "
+          f"{[round(m, 4) for m in mis_sh]} | ratio "
+          f"{sum(mis) / max(sum(mis_sh), 1e-9):.1f}x")
+    # meter (exploratory): all expert tensors, param-weighted
+    ts = []
+    for blk in model.blocks:
+        for e in blk.moe.exp:
+            for k in ("g", "u", "d"):
+                w = e[k].weight.detach()
+                if ARM == "tied":  # meter the effective expert
+                    w = w + blk.moe.base[k].weight.detach()
+                ts.append(w.cpu())
+    m, kurt, n = meter_group(ts)
+    print(f"[probe meter] experts M={m:.2f} kurt={kurt:.2f} "
+          f"({n / 1e6:.2f}M params)")
+
+
+def main():
+    dev = ("cuda" if torch.cuda.is_available() else
+           "mps" if torch.backends.mps.is_available() else "cpu")
+    tok, model = build()
+    model = model.to(dev)
+    nparam = sum(p.numel() for p in model.parameters())
+    print(f"[umoe] ARM={ARM} seed={SEED} dev={dev} "
+          f"params {nparam / 1e6:.2f}M aux={AUX}", flush=True)
+    rows = load_rows(gen4=True)
+    rows = [r for r in rows
+            if r["cur"].replace(" ", "") != r["nxt"].replace(" ", "")]
+    enc = []
+    for r in rows:
+        try:
+            ids = tok.encode(f"Current: {r['cur']}\nHints: none\n"
+                             f"Step: {r['nxt']}\n") + [tok.eos_id]
+        except ValueError:
+            continue
+        if len(ids) <= 512:
+            enc.append(ids)
+    enc.sort(key=len)
+    opt = torch.optim.AdamW(model.parameters(), lr=LR,
+                            weight_decay=0.01)
+    order = list(range(0, len(enc) - BS + 1, BS))
+    step = 0
+    for ep in range(EPOCHS):
+        random.Random(ep).shuffle(order)
+        for off in order:
+            batch = enc[off:off + BS]
+            L = max(len(q) for q in batch)
+            x = torch.tensor([q + [tok.pad_id] * (L - len(q))
+                              for q in batch], device=dev)
+            logits = model(x)[:, :-1]
+            y = x[:, 1:]
+            loss = F.cross_entropy(
+                logits.reshape(-1, logits.shape[-1]), y.reshape(-1),
+                ignore_index=tok.pad_id)
+            if ARM != "dense" and AUX > 0:
+                loss = loss + AUX * sum(
+                    blk.moe.aux for blk in model.blocks) / LAYERS
+            opt.zero_grad(set_to_none=True)
+            loss.backward()
+            opt.step()
+            step += 1
+            if step % 500 == 0:
+                print(f"  ep{ep} step {step} loss {float(loss):.3f}",
+                      flush=True)
+    torch.save({"sd": model.state_dict(), "arm": ARM, "seed": SEED},
+               OUT)
+    solves, valid = G.gate_eval(model, tok, dev)
+    print(f"[gate] ARM={ARM} solves {solves}/120 valid {valid}",
+          flush=True)
+    probes(model, enc, dev)
+
+
+if __name__ == "__main__":
+    main()
