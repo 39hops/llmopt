@@ -1802,3 +1802,35 @@ to the collaboration itself.
   existing checkpoints + the autopsy instrument. No physics
   claims; instruments only. Attribution: Artin (riffs), house
   (fence + the two derivable cells).
+
+- **2026-07-29 (Artin, close — ER=EPR at inference + rotational
+  models as experts)**: two riffs, three house-shaped cells.
+  (a) SUPERPOSITION IS ALREADY MEASURED HERE: the sampling wave
+  IS a superposition of candidate rewrites and the oracle IS the
+  measurement — R0b's collapse-ordered readout (1.7x fewer
+  oracle calls, 2.06x in the needle regime) and the duo-substrate
+  wave (+5 at equal budget: two proposal distributions, one
+  collapse) are the frame's existing verdicts. The frame adds a
+  question, not a metaphor: is the wave's amplitude CALIBRATED
+  (Born-rule-flavored)? — answered too: amplitudes are POLICY
+  not landscape (dist readout 07-26), and calibration belongs to
+  the scorer. (b) ENTANGLED EXPERTS, the efficiency cell: in a
+  real MoE, "a question needing two experts" = correlated
+  co-routing. Instrument: co-activation MI matrix between routed
+  experts (OLMoE, hooks on router top-k, gate-battery prompts)
+  — if high-MI pairs exist, MERGE the pair offline (task-vector
+  style W = base + aDa + bDb; house federation says ~zero
+  interference below W*) and route to the merged expert with the
+  free-router trick (8-neuron committee, 94%). Fewer active
+  params per token where routing is predictable — the "bridge
+  between always-co-firing experts" made literal. (c) TIED-
+  EXPERT LADDER (the rotational link): a commutant/group layer
+  is a bundle of experts TIED by symmetry (one parameter set,
+  K views — C8 retrofit toll 2x:-1..8x:-6); MoE experts are the
+  UNTIED limit (meter: each at capacity, marginal info max).
+  The ladder between them — experts sharing a base and differing
+  by group action / low-rank deltas — is a compression axis for
+  MoE nobody in the house ledger has priced. House cell: birth K
+  clade-experts tied by group action v untied v single union
+  crystal, matched params. Attribution: Artin (riffs), house
+  (frame verdicts + cells).
