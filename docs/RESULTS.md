@@ -11228,3 +11228,28 @@ seed-2/3 births move to the MAC — which the comparability
 fence PREFERS anyway (seed-1 C1 crystals are MPS-born and
 MPS-gated; same-device doctrine). Births relaunched Mac-side
 this morning, same pre-reg predictions.
+
+## C1 AT n=3 VERDICT: h8 parity REPLICATES (headline holds); the L4 floor-crystal pays -5 at both new seeds — the fragility axis surfaces exactly where the theory says it should (2026-07-30 morning)
+
+Same packer, same instrument, same device (MPS), fresh
+seed-2/3 births. d64h8: fp 54 -> packed 56 (+2), fp 59 ->
+56 (-3); with seed-1's 58 -> 58, n=3 reads +2/-3/0 — CLEAN
+PARITY, the headline claim stands at n=3. Entropy replicates
+too: 3.10-3.13 v capacity ~3.13 on all four (bound-gap <1%
+at n=3 on BOTH architectures). BUT layers-4 d56: fp 50 ->
+45 (-5) and fp 52 -> 47 (-5), v seed-1's 56 -> 55 (-1) —
+TWO -5 readings (>sigma 3.5) is not noise: the smallest
+crystal pays a pack tax at the weaker seeds. READ: exactly
+the two-parameter law's shape — seeds 2/3 of the floor
+architecture birthed weaker (fp 50/52 v 56) and near-tie
+density (k_c) plausibly higher; distortion that is free on
+d64h8 bites the floor crystal. THE PAPER'S CLAIM NARROWS
+HONESTLY: zero-tax parity is n=3-solid on the d64h8 class;
+at the width floor it is seed-dependent — and the flips/
+token meter (rho .883) is the pre-pack check that should
+predict which seeds pay. NEXT (queued): P5 card on all six
+seed crystals — retrodict the -5s from flips/token alone;
+if it separates seed-1-L4 from seeds-2/3-L4, the card
+graduates from diagnostic to gate. Fences: n=3 per arch,
+MPS, one packer, weaker-seed confound named (fp gates
+differ across seeds).
