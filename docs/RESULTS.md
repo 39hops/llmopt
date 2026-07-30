@@ -11103,3 +11103,29 @@ specialization decorrelates experts (the anti-tied limit;
 the C7 meter said experts carry max marginal info). If the
 ratio reads < 0.5 anywhere, base+delta compression arms and
 Artin's dynamic-replication idea gets a rung.
+
+## N3 VERDICT: experts share NOTHING in weight space — dynamic replication is dead post-hoc, alive only at birth (2026-07-30 ~01:15)
+
+Qwen3-30B, 128 gate_proj experts decoded from the packed
+parts at L12 (mid-dip) and L40 (endpoint):
+sigma(delta)/sigma(W) = 0.995 / 0.993; pairwise correlations
+mean 0.0024/0.0054, max 0.0155. HOUSE PREDICTION CONFIRMED:
+router specialization decorrelates experts to numerical
+zero — no shared base, no low-rank family, no post-hoc
+base+delta compression, no static replication of one expert
+from another. Consistent with (and mechanistically explains)
+the capacity ladder: each expert carries maximal MARGINAL
+information; the router's focusing is precisely what removed
+the redundancy a tied representation would need. Artin's
+dynamic-replication idea therefore re-routes to BIRTH-TIME
+(impose the sharing: the tied-expert ladder riff — group-
+action or low-rank-delta experts trained jointly, symmetry-
+ladder precedent 2x:-1..8x:-6) — banked, not runnable
+post-hoc on trained MoEs. K3 side-answer booked here too:
+896 experts x 93 layers at ~66M params/expert (BIGGEST
+per-expert yet — the size ladder predicts deepest M), but
+K3 ships MXFP4 (4-bit pre-gridded) so the meter is
+undefined on it; the meta-fact that a frontier lab SHIPS
+4-bit experts is independent, industry-side evidence for
+the at-capacity scaling story. Fences: one model, 2 layers,
+gate_proj only, desk.
