@@ -11970,3 +11970,30 @@ book it as such); gravmoe gate crater = usage-attraction
 destroys specialization (the anti-gravity result, also a
 law). Fences: n=1 per arm this pass, house scale, one
 lambda_g/r point each.
+
+## PRE-REG PLACE-1: INFERENCE-TIME GRAVITY — co-routing-informed placement/prefetch v popularity, on real OLMoE traces (2026-07-30 ~5:30 PM; Mac, chained after UMOE-3)
+
+Artin's cell: co-locate co-routed experts WITH the
+(training-derived) routing statistics, and WITHOUT as
+control. Trace-driven, honest-as-simulation. COLLECT:
+OLMoE-1B-7B routing traces (top-8 of 64 per layer per
+token) over a few thousand tokens; split first/second
+half = fit/eval. CELLS: (a) NEXT-LAYER PREFETCH — predict
+layer l+1's expert set from layer l's ACTUAL routed set
+via the fit-half conditional co-occurrence (the co-routing
+face), v marginal frequency ranking (popularity face), v
+uniform floor; metric recall@8 and @16 on eval half.
+(b) CACHE SIM — per-layer device cache of C=16/64 experts:
+LRU dynamic v FREQ-pinned static v LRU+MI-prefetch;
+metric miss rate = bytes moved per token. PREDICTIONS:
+(1) conditional beats marginal on recall@8 by a REAL
+margin (>=5 points absolute) — B4's MI 300-500x is
+exploitable, not just present; (2) LRU+prefetch beats
+plain LRU on misses; (3) freq-pinned beats uniform
+trivially (sanity floor). FALSIFIER: conditional ==
+marginal recall = co-routing MI is real but NOT
+exploitable at placement granularity (the split law's
+systems lever would DIE here — important either way).
+Fences: trace-driven simulation (no wall-clock claim),
+one model, one trace corpus (README + prompt battery
+class), C single-point.
