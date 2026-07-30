@@ -12192,3 +12192,33 @@ generator space forces computation over memorization),
 then the zeta^k probe. Fences: the FOURIER-1 digit
 result (11/512, share 0.534) remains the only live
 in-vivo reading of the mechanism.
+
+## HOPF-1 VERDICT: LAWFUL MEDIUM AND ATTRACTOR GEOMETRY ARE INDEPENDENT — the unification's falsifier branch fires (2026-07-30 ~9:15 PM)
+
+The contract-MoE (lb recipe + CONTRACT=0.1) landed gate
+41/120 (v lb 37 — within sigma; lawfulness again ~free,
+GRAV-2's toll result transfers to MoE). PREDICTION 2
+FALSIFIED with surgical precision: basin retention curve
+[0.986, 0.966, 0.931, 0.869, 0.768, 0.626] v lb's
+[0.986, 0.966, 0.935, 0.874, 0.773, 0.630] — IDENTICAL to
+noise. The contractivity penalty calmed the medium
+(ablation displacements 3-5x smaller across cells;
+prediction 1 partial: magnitudes shrink, within-cell
+growth shape persists) while leaving routing-basin
+geometry UNTOUCHED: medium lawfulness and attractor
+geometry are INDEPENDENT properties. The Hopfield
+unification (lawful medium => stronger attractors) is
+DEAD as stated; both component results stand alone.
+EXPLORATORY riders: median screening on/off ratio 2.5x v
+lb's 1.6x (a lawful medium mildly LOCALIZES influence —
+the GRAV-1 screening failure softens under contraction);
+usage-basin corr 0.334 and mass-damage corr 0.322 (both
+higher than lb's 0.14/0.17 — weak hints that a calmer
+medium makes the mass-like quantities slightly MORE
+lawful; single seed, exploratory only). Fences: n=1, one
+lambda, basin probe router-level. READ for the mass hunt:
+the basin curve's near-identity across lb/ct AND s1/s2
+(four models, three decimals) says routing-basin geometry
+is an ARCHITECTURAL invariant — set by router
+dimensionality/init, not by training regime; mass will
+not be found there.
