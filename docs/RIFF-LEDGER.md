@@ -1732,3 +1732,31 @@ to the collaboration itself.
   MoE experts v HQQ** (the web-scale home the C6 fence
   pointed to). Attribution: Artin (push), house (meter design
   + corpus links).
+
+- **2026-07-29 (Artin, close — the black-hole riff)**:
+  "compression is intelligence -> the black hole holds the
+  universe's secrets... experts are essentially black holes
+  within a universe: high entropy, high density." Banked with
+  the literal reading attached: the tight part is that BOTH
+  are maximum-entropy states under their constraints — a
+  black hole is the max-entropy configuration of a region
+  (Bekenstein), and an at-capacity crystal/expert is the
+  max-entropy weight distribution at fixed sigma (measured:
+  code entropy = Gaussian capacity <1%; DeepSeek expert kurt
+  3.07). In both cases max-entropy means NO exploitable
+  internal structure from outside — why calibrated
+  quantizers, like external observers, get nothing (the
+  no-hair flavor of C3's tie). The loose part, kept honest:
+  black-hole entropy scales with AREA, not volume; no
+  holographic claim is made for weights (the 07-17 "code is
+  holographic" router result is a separate, measured thing).
+  Possible instrument if it ever earns one: an area-law probe
+  — does removable information in a crystal scale with a
+  boundary measure (interface tensors) rather than bulk
+  params? Desk-able against the existing deletion/snap
+  ledger. Attribution: Artin (riff), house (literal fence +
+  probe sketch). Ties: FA Law v2 (intelligence = rate at
+  which verified variance becomes compressed structure) —
+  this riff is its statics: a fully-compressed store is
+  max-entropy, indistinguishable from noise except through
+  the function it computes.
