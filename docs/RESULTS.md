@@ -12062,3 +12062,58 @@ toward 0 = two scales suffice, hierarchy unwanted, star
 is enough). Fences: n=1, one tree shape (binary, fixed
 sibling assignment — random pairing, not learned; a
 learned-topology arm is the follow-up), house scale.
+
+## PRE-REG FOURIER-1: THE ROOTS-OF-UNITY PROBE — does the crystal implement the zeta^k filter in its activations? (2026-07-30 ~7:15 PM, CPU desk probe)
+
+The 3B1B generating-function machinery (evaluate at roots
+of unity to extract residue classes by interference) is
+the published mechanism grokked networks implement for
+modular arithmetic (Nanda et al. 2023, progress measures /
+modular-addition Fourier circuits; arXiv 2301.05217). R1
+booked rotation as living in ACTIVATIONS only — this is
+the activation-side probe the weight-side R-series never
+ran. DESIGN: d64h8 EMA crystal, prompts "Current:
+Mod(n, k)" for k=5,7, n swept 0..N; capture the residual
+stream at the answer position; per neuron, regress
+activation(n) on the Fourier basis {cos, sin}(2 pi m n /
+k), m = 1..(k-1)/2, PLUS a residue-class-indicator basis
+(the non-Fourier way to be periodic). METRICS: (a)
+spectral concentration — fraction of periodic variance in
+the top single frequency per neuron (Fourier circuits
+concentrate; lookup tables spread); (b) population count:
+neurons with periodic R^2 > 0.5 v a shuffle control
+(n randomly permuted). PREDICTIONS: (1) a real population
+of residue-periodic neurons exists (>> shuffle); (2) the
+INTERESTING split: variance concentrated in single
+frequencies = the crystal grokked the zeta^k filter
+(Fourier circuit); spread across the indicator basis
+instead = memorized residue lookup (the farmer-probe
+memorization signature would then extend to Mod).
+FALSIFIER: no periodic population at all = Mod is solved
+some third way (book and hunt). Fences: one crystal, two
+moduli, answer-position activations, CPU.
+
+## FOURIER-1 VERDICT (amended instrument): a small, real population of digit-periodic neurons, with PARTIAL Fourier character (2026-07-30 ~7:45 PM)
+
+INSTRUMENT AMENDMENT first: run 1 was VOID — the gen-4
+crystal's vocab (40 atoms) has NO Mod atom; strict encode
+fails and lenient encode fed "Current: (23, 5)" garbage
+(caught by the check-don't-assume round-trip, not by the
+probe). No Mod-capable checkpoint exists house-side (the
+nt/callspan births live in axiom's pilot); probe
+REFORMULATED on clean vocabulary: digits ARE residues —
+sweep "Current: n+7", test activation periodicity in n
+mod 10. RESULT: 11/512 neurons periodic (R^2 > 0.5)
+v 0/512 in the permutation control — the population is
+REAL; median top-single-frequency share 0.534 — roughly
+half the periodic variance lives in ONE frequency,
+between the pure-Fourier signature (~1.0, the grokked
+zeta^k filter of Nanda et al.) and a residue lookup
+(~0.2). READ: the crystal carries a small, partially
+Fourier-flavored units-digit subsystem — the
+roots-of-unity mechanism is PRESENT but not the dominant
+implementation at this scale/diet. The proper substrate
+for the full question (Mod-diet crystal, VOCAB_EXTRA
+gcd/Mod, sweep both n and k) needs a purpose-birth —
+BANKED as FOURIER-2. Fences: one crystal, k=10 only,
+answer-position residual only, R^2 threshold single-point.
