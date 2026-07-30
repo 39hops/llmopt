@@ -10891,3 +10891,34 @@ kill): EXPERTS M 2.85 / kurt 3.50, ATTN M 3.11 / kurt 7.55 —
 kurtosis separates the groups cleanly in-model; experts' M
 lands 0.35 ABOVE the predicted <=2.5 band (booked when the
 verdict reads). Predictions otherwise unchanged.
+
+## C7 VERDICT: strong-form transport FAILS — and the capacity meter upgrades from predicate to CONTINUOUS DIAL (2026-07-29 close; OLMoE-1B-7B, Mac)
+
+Full table (DeltaKL/tok v fp16, ppl 75.74 control; matched 6
+bits): EXPERTS sigma[row] 0.0716 / rtn 0.0097 / hqq 0.0044
+(sigma = 16.3x hqq; quant 16.6s v hqq 675.5s). ATTN sigma
+0.0442 / rtn 0.0053 / hqq 0.0020 (sigma = 22x hqq).
+PREDICTION 1 MISSED: OLMoE experts are NOT crystal-band
+(M 2.85, kurt 3.50 — Gaussian-shaped but wide-spanned).
+PREDICTION 2 FALSIFIED: 16x, not within 2x. PREDICTION 3
+CONFIRMED in ordering form — and this is the finding: the
+sigma-v-calibrated premium is MONOTONE IN M across every
+group ever measured: crystals M 0.8-1.6 -> ~1x (parity);
+OLMoE experts M 2.85 -> 16x; OLMoE attn M 3.11 -> 22x; Qwen
+dense M 3.62 -> 34x (C6b, same sigma[row] form). The
+at-capacity criterion is GRADED, not binary; M is the dial
+that prices the calibration premium, and it said so BEFORE
+the arms ran (the amendment flagged M 2.85 > band at kill
+time). The pre-reg falsifier does NOT fire against the meter
+(it required a crystal-band reading; the meter refused to
+give one). PREDICTION 4 CONFIRMED at scale: hqq 675.5s on
+6.4B params v sigma 16.6s (41x) — the wall-time claim's
+first real exhibit. DECISION RULE SHARPENED: sigma-law only
+below M ~ 2 (measured members: born crystals, the house NNUE
+at 0.82); DeepSeek experts (2.33) sit between bands —
+predicted premium ~5-10x, UNMEASURED (no full model in
+house). Paper shape: the meter-premium curve (6 points,
+monotone) may be worth more than the binary claim it
+replaces. Fences: one MoE, n=1/arm, fp16 MPS, kurtosis
+demoted (3.50 looked Gaussian; span-priced M caught what the
+4th moment missed).
