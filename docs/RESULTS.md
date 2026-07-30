@@ -10880,3 +10880,14 @@ measuring the wrong statistic and the at-capacity criterion
 takes an amendment. Fences: one MoE, fake-quant, n=1,
 fp16-on-MPS eval, expert sample may be capped for wall-time
 (reported).
+
+AMENDMENT (targets: C7 pre-reg): first run KILLED mid-pack —
+the instrument cloned all 6.4B expert params (fp32) on top of
+the 14GB fp16 model and blew the Mac's 36GB. v2 is streaming:
+model RELOADED per arm, quantized in place tensor-by-tensor,
+matched bits pinned at 6 (measured 5.85 first pass). Meter
+readings from the killed run stand (they printed before the
+kill): EXPERTS M 2.85 / kurt 3.50, ATTN M 3.11 / kurt 7.55 —
+kurtosis separates the groups cleanly in-model; experts' M
+lands 0.35 ABOVE the predicted <=2.5 band (booked when the
+verdict reads). Predictions otherwise unchanged.
