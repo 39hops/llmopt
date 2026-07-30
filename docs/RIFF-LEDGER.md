@@ -1945,3 +1945,26 @@ to the collaboration itself.
   OLD-NULL REVIVAL SWEEP — older nulls deserve re-checks
   more than newer ones (instruments and scale have moved);
   candidates queue from results_query, not memory.
+
+- **2026-07-30 (Artin, evening — "isn't this Hopfield?")**: YES,
+  and partly FORMALLY: (1) gravmoe's usage-attraction c_ij ∝
+  EMA(co-assignment) is Hebb's rule at expert granularity
+  (Hebb 1949; Hopfield 1982); (2) the router is a modern-
+  Hopfield retrieval step — softmax attention = one energy-
+  descent update (Ramsauer et al. 2020, arXiv 2008.02217;
+  dense associative memories Krotov & Hopfield 2016), so
+  top-1 routing = pattern completion into an attractor
+  basin; (3) THE UNIFICATION CANDIDATE: Hopfield dynamics
+  require contractivity — an amplifying medium (GRAV-1 ctl)
+  cannot sustain attractors; GRAV-2's contract arm is the
+  regime where associative-memory dynamics become possible.
+  "Trainable spacetime" and "Hopfield-izable network" may be
+  one property. BANKED RUNG — the BASIN PROBE: P(route
+  unchanged) v epsilon-perturbation = per-expert attractor
+  basin radius, on existing umoe checkpoints; prediction:
+  contract-arm MoE (already-banked GRAV follow-up) shows
+  larger/cleaner basins; if confirmed, lawful medium =>
+  stable basins => experts as attractors, and "mass" gets
+  its correct coordinates (basin depth/radius, not write
+  norm). Attribution: Artin (the identification), house
+  (formal mapping + probe design).
