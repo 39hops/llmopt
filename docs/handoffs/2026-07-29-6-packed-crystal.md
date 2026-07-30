@@ -117,3 +117,16 @@ Allow` + profile Private is the recipe, memory-worthy).
   B4 (entangled-experts MI on OLMoE), B5/P7 paper skeleton,
   P5 pre-deploy card. K3 excluded (MXFP4). Disk: 21GB parts
   + 17GB K2 shard — clean after B3.
+
+## Addendum 5 (07-30 ~02:15): night-30b mac chain booked
+- B3: K2 depth FLAT (2.04-2.09) — black-hole state uniform;
+  Qwen3 dip is recipe-local. K2 shards deleted (disk freed).
+- B4: THE SPLIT LAW — co-routing MI 0.21-0.46 bits (~300-500x
+  shuffle; Artin's links confirmed ROUTING-side) but top-pair
+  merge costs +3.4 ppl (not weight-side). Lever = prefetch/
+  placement/cache, not merge.
+- P6: entropy coding worth 1.29 bits/wt on experts (21GB ->
+  ~16.3GB, 3.7x v bf16); routers ironically most codable.
+- 3080 overnight: night30 (seed-2) -> night30b (seed-3)
+  markers pending. MORNING: scp EMAs, pack_crystal both,
+  C1 at n=3 -> paper skeleton (P7/B5) -> P5 -> P3.

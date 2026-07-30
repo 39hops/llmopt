@@ -11183,3 +11183,31 @@ of both C1 crystals -> tomorrow C1 parity at n=3.
 PREDICTION: births normal, gates within sigma of seeds 1-2.
 Fences: B3 fp8-dequant, B4 one MoE + 2 merge reads max,
 watcher pgrep-fenced, markers on success only.
+
+## NIGHT-30b VERDICTS: K2 is uniformly black-hole in depth; co-routing links are REAL but live in routing, not weights; entropy coding has 1.3 bits/wt on the table (2026-07-30 ~02:15)
+
+B3 (K2 depth): L4 M 2.09 / L36 2.04 / L54 2.09 (kurt 3.02-
+3.04) — FLAT. House guess (mid-dip regularity) FALSIFIED:
+K2's near-boundary state is uniform in depth; Qwen3's L8-16
+dip is a recipe/scale artifact, not a law. K2 shards deleted.
+B4 (entangled experts): co-routing MI is REAL and large —
+top-pair MI 0.21-0.46 bits per layer v shuffle scale 0.0009
+(~300-500x baseline): Artin's link hypothesis CONFIRMED at
+the ROUTING level — expert pairs fire together far above
+chance, every layer. But the merge read: averaging the
+top-MI pair (L15, experts 1+29) costs ppl 75.74 -> 79.10 —
+co-firing does NOT imply mergeable weights (house prediction
+2 confirmed, consistent with N3's zero weight correlation).
+THE SPLIT LAW: the links exist in the ROUTER's statistics,
+not in weight space — so the exploitable structure is
+routing-side (speculative expert prefetch, cache policy,
+paired placement across devices), not weight-side (merging,
+sharing). Bandwidth/latency lever, not a params lever.
+P6 (entropy accounting, 30.2B params): experts raw 5.60 v
+entropy 4.31 bits/wt (1.29 recoverable by rANS — artifact
+21GB -> ~16.3GB, 3.7x v bf16); router raw 6.00 v entropy
+2.84 (penalty 3.16 — heavy-tailed weights concentrate codes;
+ironically the LEAST meter-compressible tensors are the MOST
+entropy-codable). Fences: B3 3 layers/1 shard each; B4 one
+model, one merge read, MI on 16-prompt+README battery; P6
+bound-accounting, rANS not yet implemented.
