@@ -10943,3 +10943,30 @@ web-dense rows are load-bearing at full magnitude (the AWQ
 salient-channel story) and the span attack dies — hybrid
 routing (original P2a) resumes as the fallback. Fences: one
 model, n=1/arm, fp16 MPS, k grid coarse.
+
+## P2a-v2 VERDICT: THE FALSIFIER FIRES — web-dense outliers are load-bearing at FULL magnitude; the span attack dies (2026-07-29 close)
+
+SmolLM2-1.7B, 6 bits: rtn(absmax) DeltaKL 3.32 / ppl 62.98;
+sigma-clip k=4 DeltaKL 8.82 / ppl 138,890 (DESTROYED); k=6
+ppl 5,913; k=8 ppl 532; hqq 0.445 / 61.96 (127s). Every clip
+arm catastrophically loses to plain absmax — saturating even
+the >8-sigma tail kills the model. PREDICTIONS 1-2 FALSIFIED;
+the pre-reg falsifier fires: outliers are not wasted span,
+they are LOAD-BEARING at full magnitude (the AWQ salient-
+channel mechanism, confirmed in-house from the destructive
+direction). Corrected mechanism for the dial: sigma grids
+lose on web-dense NOT because bits are wasted on outliers
+but because BOTH ends bind — the outliers must be kept AND
+the bulk needs fine steps; only range-adaptive (max-anchored
+per row) or calibrated (zero-point/scale-optimized) grids
+serve both. P2 CLOSES (both forms): the hybrid fallback is
+vacuous (web-dense tensors are uniformly M>3 — nothing to
+route); the zero-calibration domain is M < ~2, period.
+Honest metric note: prompt-KL and ppl disagree on rtn (KL
+3.32 but ppl +2.0) — KL over 16 prompts is the harsher,
+noisier channel; ppl carries the verdict. DESK RIDER (same
+close): meter on the C5 matryoshka crystal reads M 1.46 ~
+parent 1.63 — the meter does NOT see the C5 tier tax,
+confirming fragility (k_c, flips/token) is an ORTHOGONAL
+second axis: the P5 card needs BOTH numbers. Fences: one
+model, n=1/arm, coarse k grid, 6 bits only.
