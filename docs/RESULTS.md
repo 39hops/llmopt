@@ -11353,3 +11353,36 @@ it); gate crater = 2^8 activations below the knee (raise to
 2^10, re-gate, book the activation-knee reading). Fences:
 one crystal, greedy only, reference implementation (speed
 is not the claim).
+
+## P3 VERDICT: THE DETERMINISTIC DECODE LANDS — bit-identical logit traces across GPU vendors, at a measured 96.7% agreement price (2026-07-30 midday)
+
+The fixed-point twin (shipped tables, exact-integer
+everything, no libm) hashes IDENTICAL on MPS and cuda on
+BOTH channels: greedy streams bf76568d... AND the full
+per-step logit trace 311f71bf... — two independent table
+versions confirmed equality (first pass 2f06e6c8/af0ba7e7,
+final a2c89daa-tables bf76568d/311f71bf). Max GEMM partial
+2^21.2 (bound 2^24 held by construction). PREDICTION 2
+CONFIRMED — the claim C4 could not make: not just tokens,
+every NUMBER identical cross-vendor. CAPABILITY PRICE
+(amended cell — full gate infeasible at reference-python
+speed, ~5 tok/s: substituted teacher-forced argmax
+agreement v the fp model, 3,055 tokens): 96.66%, with
+disagreements concentrated at low margins (median 0.177 v
+7.6 overall — the soft-token class). Debug lineage booked:
+A=2^8 -> 2^10 changed NOTHING; emb/head sigma/8 nothing;
+the wound was ACT_CLAMP=8 (real residual features clamped
+— 92.0 -> 96.7 at clamp 32); an int64 overflow in the
+rmsnorm bump caught and fixed (5.4% canary); remaining 3.3%
+= sigma/2 weight grids + table softmax, the honest floor of
+this table set. PREDICTION 1 (gate within sigma) NOT
+MEASURED — flips-chain prediction is within-sigma, named as
+unverified. PREDICTION 3 CONFIRMED (reference path ~10-40x
+slower than fp — determinism price, unoptimized). Fences:
+one crystal, greedy, 5-prompt battery + 3k-token agreement
+probe; tables travel as bytes (sha-pinned), never
+regenerated per device. CONSEQUENCE: cross-vendor
+bit-reproducible transformer decode is REAL and cheap to
+build (one file, ~280 lines); the axiom FX-V1 cross-lab
+hash cell is now a pure formality of shipping them the
+tables.
