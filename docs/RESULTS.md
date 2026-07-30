@@ -12277,3 +12277,18 @@ win with zero model change. The Artin cell ("co-located
 WITH the training stats, WITHOUT as control") closes
 CONFIRMED. Fences: trace-driven sim (no wall-clock), one
 model, one corpus class, C single-point.
+
+## UMOE-3 RIDER (channel-ablation): the channel contributes ZERO at eval — the win, if real, is a training-dynamics effect (2026-07-30 ~10 PM)
+
+Zeroing ALL shared-base params (S triples, every block) on
+the trained channel arm leaves the gate IDENTICAL: 48/120
+with the same per-level map (17/3/15/6/7). Combined with
+a_i pinned ~0: the channel's eval-time read-out is nil;
+whatever produced +11 over lb acted DURING training (a
+gradient-coupled regularizer through the shared low-rank
+path — a "scaffold" that can be discarded at deployment)
+or is seed fortune. Seed-2 pair chained overnight decides
+which. If the scaffold reading survives seed-2, it is a
+free-lunch training lever: add a discardable shared
+channel at birth, remove it at ship. Fences: n=1 until
+seed-2.
