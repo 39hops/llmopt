@@ -11040,3 +11040,36 @@ their assigned grids; (5) whole pass wall-clock < 2.5h on
 the Mac, zero calibration data. Fences: desk only (no 30B
 inference), bf16 source, spot checks are not end-to-end
 quality, n=1 model.
+
+## BLACK HOLE MoEs B0-B2 VERDICT: the first full capacity atlas of a production MoE — routers are the incompressible organ, experts are bimodal by projection, and the ladder's variable is EXPERT SIZE (2026-07-30 ~00:30; pass 136.6 min)
+
+Qwen3-30B-A3B, all 16 shards streamed (download -> process ->
+delete), 30.2B params / 18,673 tensors metered + dial-packed;
+artifact 21GB v ~60GB bf16 (2.9x; expert raw 5.60 bits/wt).
+ATLAS: experts M med 2.93 (40% of expert tensors in the
+sigma-law domain), attn 2.94 (k_proj worst at 3.93), router
+4.45 (ALL top-5 function errors are routers), shared 3.93.
+Depth: mid-stack dip (layers ~8-16 read 1.93 — the most
+black-hole-like region), both ends at 2.93. Projection
+bimodality: up_proj med 1.93 (IN the sigma domain) v
+gate/down 2.93. PREDICTIONS: (1) PARTIAL — experts tie q/v/o
+attn, beat only k_proj/router; (2) FALSIFIED INFORMATIVELY —
+128-fineness at 30B reads 2.93, ABOVE OLMoE's 2.85: the
+ladder's variable is PER-EXPERT SIZE, not count (Qwen3 ~5M/
+expert 2.93 | OLMoE ~6M 2.85 | V3 ~45M 2.33 | K2 ~40M 2.01
+— monotone in expert params; Artin's original phrasing "the
+little guy's experts can't be crystal" was the correct
+variable both times); (3) CONFIRMED — routers worst
+everywhere (they serve every token; keep them fp); (4)
+FALSIFIED BY MIS-SPECIFICATION (amendment): the <=2% bar
+ignored that a sigma/2 grid's INTRINSIC relative output
+error is sqrt(1/48) ~ 14.4% — measured sigma tensors read
+0.1424, max-anchored 6-bit read ~0.043 = their step's
+arithmetic; the err column is comparative-at-matched-bits
+only, not a quality readout (check-don't-assume applies to
+pre-reg bars); (5) CONFIRMED — 136.6 min < 2.5h, laptop,
+zero data. Fences: desk only (no 30B inference; quality
+inference flows through the dial, not measured end-to-end
+here), n=1 model, bf16 source, atlas jsonl =
+logs/blackhole_atlas.jsonl, parts = checkpoints/
+blackhole_q3_parts/ (untracked).
