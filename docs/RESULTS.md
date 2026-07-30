@@ -11588,3 +11588,39 @@ before launch," not "eyeball the script's imports."
 Fresh log + fresh marker per relaunch (friendly-fire #9
 discipline held). Arms relaunched 12:40, chained
 dense->lb->free->tied, monitor armed.
+
+## UMOE-1 VERDICT: THE SPLIT LAW IS NOT THE BALANCE LOSS'S DOING — sparse assignment itself creates it (2026-07-30 ~12:15 PM)
+
+First house MoE births, all four arms landed (d64 h8 L8, 4
+experts ffn_e 128, top-1 switch, gen-4, seed 1, one
+device). THE TABLE: dense gate 45/120; lb 37, corr 0.0085,
+MI 288x shuffle, M 1.26; free 36, corr 0.0080, MI 256x, M
+1.37; tied 43, delta-corr 0.0589, MI 235x, M 1.47 (base
+norm 21.1 v delta 16.0). PREDICTIONS 1+2 FALSIFIED, and
+the falsification IS the finding: removing the balance
+loss changed NEITHER the decorrelation (0.0080 v 0.0085)
+NOR the routing structure (256x v 288x), and the router
+did not collapse (worst share 55%). The split signature —
+experts decorrelated to ~0 in weights, co-routing MI
+hundreds-x shuffle — is created by TOP-1 HARD ASSIGNMENT
+ITSELF: hard-routed experts never see the same tokens, so
+they cannot stay correlated; the aux loss only shapes the
+load, not the split. PREDICTION 3 SPLIT: tied gate 43 =
+best MoE arm, within 2 of dense (the tie pays almost
+nothing) — but base does NOT dominate (deltas grew to
+0.76x base norm) and deltas stay 7x more correlated than
+untied experts (the base absorbs shared mass imperfectly).
+PREDICTION 4 (conservation on corr x MI): NOT OBSERVED —
+both axes flat across arms. EXPLORATORY rider worth a
+seed-2 look: M and MI move OPPOSITELY across the three MoE
+arms (M 1.26/1.37/1.47 as MI 288/256/235x) — a hint that
+routing structure and weight-side capacity trade off on
+the (M, MI) axes instead. SCALE REPLICATION (unplanned
+win): the 0.9M-param micro-MoE reproduces the production
+split-law signature (N3 corr ~0.005, B4 MI 300-500x) at
+1/30,000th the size — the phenomenon is studyable at house
+scale. Fences: one seed, house scale, MoE params 2x dense
+FFN, MI probe on training-distribution rows. NEXT: seed-2
+same-day replication (3080 window); the causal story for
+the paper amends from "the loss does it" to "the sparsity
+does it."
