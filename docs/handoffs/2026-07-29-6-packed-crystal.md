@@ -156,3 +156,17 @@ Allow` + profile Private is the recipe, memory-worthy).
   related work; (4) banked: K3-single-expert deterministic
   demo, packed-expert shelf (router over packed crystals),
   micro-MoE conservation program.
+
+## Addendum 8 (07-30 ~10:30): promotions done; COMPACT POINT
+- Toolkit promoted scratch->llmopt: quantize/pack.py,
+  quantize/meter.py, crystal8/crystal5 kernels in
+  kernels/metal.py, decoding/deterministic.py; tests 374+8
+  green (7 device-skips); README quantize/ row + INDEX regen.
+- Post-compact resume: BOARD -> this handoff -> docs/
+  paper-draft-entropy-bound.md + specs/2026-07-30-blackhole-
+  moes.md -> RESULTS tail. Opener options (Artin picks):
+  K3 single-expert deterministic demo (library-call
+  integration test; pre-reg first), axiom relay note (P3
+  tables -> FX-V1 hash cell), or related-work writing pass.
+  3080 usable until ~5PM EST then Artin's. Machines idle,
+  nothing in flight, tree clean.
