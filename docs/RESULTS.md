@@ -10922,3 +10922,24 @@ monotone) may be worth more than the binary claim it
 replaces. Fences: one MoE, n=1/arm, fp16 MPS, kurtosis
 demoted (3.50 looked Gaussian; span-priced M caught what the
 4th moment missed).
+
+## PRE-REG: P2a-v2 — THE ANALYTIC-CLIP ALLOCATOR (trajectory change per the C7 dial; 2026-07-29 close, Mac only)
+
+The C7 dial locates the sigma premium in SPAN-PRICING, so P2a
+pivots from meter-routing to closed-form span attack (Artin's
+GO to re-rung). Arms on SmolLM2-1.7B (local fp, Mac; all
+linears ex lm_head), matched bits, C6 harness (DeltaKL 16
+prompts + README ppl + wall-time): (a) rtn per-row absmax
+(baseline, the max-anchored incumbent); (b) SIGMA-CLIP k in
+{4, 6, 8}: per-row uniform grid over [-min(absmax, k*sigma),
++...], outliers SATURATE — zero calibration, two stats per
+row; (c) hqq (calibrated-class bar). PREDICTIONS: (1) some
+sigma-clip k BEATS rtn (absmax wastes resolution on one
+outlier per row; clipping trades rare saturation error for
+everywhere-finer steps); (2) best sigma-clip closes >=half
+the log-gap between rtn and hqq; (3) wall-time stays rtn-
+class (<5s). FALSIFIER: all k lose to rtn -> outliers in
+web-dense rows are load-bearing at full magnitude (the AWQ
+salient-channel story) and the span attack dies — hybrid
+routing (original P2a) resumes as the fallback. Fences: one
+model, n=1/arm, fp16 MPS, k grid coarse.
