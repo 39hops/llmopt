@@ -547,3 +547,40 @@ honest negatives booked with the same care as wins.
   first partial in-vivo sighting of Fourier digit features
   (11/512 neurons, half their periodic variance in one
   frequency).
+
+## The 31st (07-31): the clock-placement law, and the day the scoreboard learned statistics
+
+The rotational thread, chased since the 3Blue1Brown
+roots-of-unity riff, closed with a two-sided law built
+from a pair of pre-registered experiments. FOURIER-2b
+(wide Mod diet) showed the crystal learns exactly the
+moduli that digit-locality makes cheap (4/5/10 perfect,
+7/9/11 near chance) and builds Fourier clocks only there
+— 276 of 512 neurons periodic at a solved modulus, zero
+at an unsolved one. FOURIER-3 then taught the digit-sum
+algorithm for k=9: competence arrived (0.83 via rewrite
+chains) and the clock NEVER FORMED (0/512). Rotational
+structure marks WHERE the computation runs — one forward
+pass or an external chain — not whether the task is
+solved. Teaching an algorithm is a substitute for growing
+a representation; the same trade the step-local-span
+prosthetics made at the capability layer. En route, a new
+diet clause: multi-step skills need exposure share per
+recursion DEPTH (v1's uniform generator starved the base
+case and every chain looped at two digits).
+
+The scaffold program ended the day honest: of a week of
+structured-MoE wins, what survives n>=3 and a second
+device is merge-free (train four Hebbian-coupled experts,
+ship their average, pay nothing — four births, two
+devices, never negative) and a Mac-scoped gravmoe gate
+advantage. Everything else — tree, channel, capacity
+slopes in both directions — dissolved under the day's
+methods adoption, the RESOLUTION LAW: a 120-prompt gate
+carries sigma ~5, so single-seed deltas below ~5 solves
+are weather. The law was bought with a measured
+embarrassment (the rung-1 capacity verdict inverting on
+cuda within nine hours) and is now a pre-registration
+fence. Cross-lab, axiom's torch-free C++ twin reproduced
+both P3 digests in 0.16 seconds: the determinism ladder
+closed device -> lab -> runtime.

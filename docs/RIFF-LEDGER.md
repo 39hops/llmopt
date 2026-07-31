@@ -2049,3 +2049,31 @@ as to why the different machines ran the rest." Banked
 behind the cleanup GO; the manifest tool (ckpt_manifest)
 is the enabling first step and ships now. Attribution:
 Artin.
+
+## 2026-07-31 ~1 PM — outcome pass on open banks (living-doc check)
+
+- 3B1B roots-of-unity riff (Artin, 07-30): PAID IN FULL —
+  became FOURIER-2b/3 and the clock-placement law (THEORY
+  row). The "did we exhaust rotational weights?" question
+  has its answer: rotation is a diet consequence, not an
+  architecture feature; whether clocks form is a
+  curriculum decision.
+- Combo riffs tree+gravmoe / channel+tree (Artin, 07-30):
+  RUN. treegrav made the designed phylogeny (0.9465
+  within-pair) and lost the gate (45) — anatomy without
+  capability; chantree a_i pinned (4th). Both retire from
+  the queue; the negative is the finding.
+- Scaffold = continuation/homotopy anchor (house, 07-30):
+  WEAKENED by the scaffold retraction — with only gravmoe
+  surviving, the homotopy frame scopes to "relaxation
+  toward co-used peers", closer to a soup than a
+  continuation. Keep as naming only; hardness-scaling
+  test unbanked unless gravmoe transports.
+- Joint-model-soup anchor (Wortsman/SWA): STRENGTHENED —
+  merge-free n=4 is precisely an online, routing-weighted
+  soup with a free collapse. This is the related-work
+  anchor for the recipe writeup.
+- Measurement-collapse reading (house): still apt for
+  merge-free; keep as naming.
+- Untouched today: HCE/NNUE shelf v2, P/NP pincer-scaling,
+  mass candidates, KK color, old-null revival sweep.
