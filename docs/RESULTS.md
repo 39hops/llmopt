@@ -12844,3 +12844,21 @@ truth; weight-side rotation reads require imposed
 structure (the symmetry ladder) or activation probes,
 never raw-basis lenses. Revival candidate #6 resolves:
 the instruments were the wound.
+
+## VERDICT TIER-A A1: GATE POOLING ADOPTED — full 120-prompt battery digest IDENTICAL Mac/3080 (2026-07-31 ~1:15 PM)
+
+P3 integer battery, greedy, 120 prompts, both machines:
+sha256 9ee4fa83ec9a52e8408aaf01b234557b68f22264c2692009c
+c3b18b71e26864b — byte-identical (Mac cpu / 3080 cpu).
+Prediction confirmed; ADOPTION: cross-device POOLED seed
+ladders are legal for greedy deterministic batteries.
+The resolution law's n>=3 requirement now costs half the
+wall-clock (both machines contribute seeds to one
+ladder). Fences travel with the instrument: pooling
+covers the DETERMINISTIC integer path only — fp sampled
+gates remain device-scoped (the 18/24-v-9/24 lesson
+stands); and the deterministic battery is a DIFFERENT
+instrument from the fp gate (scores may differ; pool
+within one instrument, never across). Tier A closes
+3-for-3 booked in one afternoon: one adoption, one
+reversal, one instrument autopsy.
