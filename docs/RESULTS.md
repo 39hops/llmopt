@@ -12616,3 +12616,38 @@ crystal PART-generalized; birth was 226s at loss 0.88
 (undertrained, cf. ~0.3-0.4 at convergence elsewhere).
 v2 relaunched at EPOCHS=30 (env knob added). Not booked
 as a FOURIER verdict either way yet.
+
+## VERDICT FOURIER-2b: CLOCKS FOLLOW COMPETENCE, COMPETENCE FOLLOWS DIGIT LOCALITY (2026-07-31 ~10:50 AM, Mac, 30-epoch v2)
+
+Gate: held-out Mod acc 0.526 — passes the 0.5 VOID bar,
+barely. Per-k breakdown (in-line check before booking):
+  k=4 1.00 | k=5 1.00 | k=10 1.00 | k=8 0.63
+  k=6 0.38 | k=3 0.34 | k=7 0.21 | k=9 0.16 | k=11 0.14
+Perfectly bimodal by MECHANISM: moduli decidable from the
+last 1-2 digits (4, 5, 10; 8 needs three -> partial 0.63)
+are SOLVED; moduli needing whole-number reduction / digit
+sums / carries (3, 6, 7, 9, 11) sit near chance. The
+crystal learned positional shortcuts, not modular
+arithmetic.
+
+Probe (the payoff): at k=5 — a SOLVED modulus — 276/512
+neurons periodic (54%!, v FOURIER-1's 11/512), median
+top-freq share 0.779 (v 0.534), shuffle 0/512. At k=7 —
+an UNSOLVED modulus — 0/512. The roots-of-unity clock
+structure appears exactly where competence exists and
+nowhere else, at 25x the population FOURIER-1 found on a
+diet that merely contains modular structure.
+
+LAW (rotational thread, weights-side closure): Fourier/
+rotational structure in a crystal is DIET-FORCED, not
+architecture-available — it emerges iff the training
+distribution makes the periodic computation both needed
+and learnable, and its per-frequency presence is a
+readout of per-modulus competence. Grokking literature
+(Nanda et al. 2301.05217) agrees from the forced side;
+we now have the unforced side: no competence, no clock.
+Loss plateaued (~0.78, ep25-29 flat) — the hard moduli
+are not "more epochs" away at this recipe; they need the
+ALGORITHM in the diet (FOURIER-3 candidate: digit-sum
+decomposition rows for k=3/9, then test whether clocks
+APPEAR at k=9 after competence — the causal arrow test).
