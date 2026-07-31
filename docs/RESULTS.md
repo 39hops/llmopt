@@ -12330,3 +12330,47 @@ ordering therefore: seed-2 -> params-matched controls ->
 Artin's combo arms (tree-edged gravity; branching
 channel). Booked so the confound cannot be forgotten if
 seed-2 replicates the 48s.
+
+## PRE-REG MERGE-1: gravmoe's collapse as a COMPRESSION result — merge 4 experts to 1, price the deltas (2026-07-30 ~11 PM, CPU desk)
+
+Artin's frame: the scaffolds trade structure for
+COMPRESSION. Gravmoe (corr 0.9625) is the limit case: it
+manufactured the base+delta redundancy that N3 showed
+post-hoc merging cannot find in production MoEs (top-pair
+merge +3.4 ppl there). CELLS on umoe_gravmoe_s1 (cpu):
+(a) TRUE MERGE — replace each block's 4 experts by their
+mean (4x expert params -> 1x, router made irrelevant):
+gate v the unmerged 52. (b) DELTA PRICE — sigma/2 code
+entropy of the deltas (W_i - mean) v the experts
+themselves: bytes for keeping the 4% differences.
+PREDICTIONS: (1) merged gate within sigma of 52 (the
+differences are decorative) OR drops meaningfully (the 4%
+carries real function — then the deltas are the cheapest
+params in the model, priced in (b)); named as a fork, not
+a bet — EITHER branch is a result: branch A = "gravity
+trains a dense model wearing MoE routing" (router theater;
+compression 4x free), branch B = "gravity trains
+base+delta AT BIRTH" (the N3-impossible factorization,
+manufactured). Fences: n=1, house scale, mean-merge only.
+
+## MERGE-1 VERDICT: BRANCH A — gravity trained a dense model wearing MoE routing; the 4->1 merge is FREE and gains (2026-07-30 ~11:15 PM)
+
+The true merge (each block's 4 experts replaced by their
+mean; router rendered decorative) gates 54/120 @ 48.6 —
+UP from the unmerged 52 (within sigma; certainly no
+price). Delta entropy was 3.05 bits/param but is moot:
+the deltas can be deleted outright. READ: gravmoe is a
+TRAINING RECIPE, not an architecture — birth as 4-expert
+MoE with usage-attraction, then ship the MERGED DENSE
+model: 54/52-class gates v the same-recipe dense
+controls' 45/40, at 1/4 the expert params and zero
+routing machinery at inference. This is the scaffold
+hypothesis's strongest single datapoint (the entire MoE
+apparatus was scaffolding) AND Artin's structure-for-
+compression trade made exact: the structure's value was
+never in the shipped weights — it was in the training
+dynamics, and at ship time it compresses away ENTIRELY.
+Caveat honestly held: gravmoe-s1's 52 v dense 45/40 is
+n=1 v n=2; seed-2 (running) adjudicates before this
+becomes the recommended recipe. Fences: n=1, house scale,
+mean-merge, one lambda.
