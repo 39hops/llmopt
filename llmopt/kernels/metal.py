@@ -1071,3 +1071,50 @@ def crystal5_gemv(x: mx.array, words: mx.array, scale: mx.array,
         output_dtypes=[x.dtype],
     )
     return out
+
+
+# ---------------------------------------------------------------
+# Exact integer GEMM (deterministic-birth R4 groundwork,
+# 2026-07-31): the Mac/Metal sibling of the Ozaki cuda int8-TC
+# path. C = A @ B.T computed ENTIRELY in integers — int32 inputs,
+# 64-bit `long` accumulation, int64 out. Zero rounding, so the
+# result is bit-identical to big-int math by construction; the
+# oracle test asserts exact equality. Bounds: |A|,|B| < 2^15 and
+# K <= 2^17 keep |acc| < 2^47 (checked in the wrapper).
+# One thread per output cell — correctness first; tiling is the
+# R4 speed rung, and the honest bench lands with it.
+_EXACT_GEMM_SRC = """
+    uint gid = thread_position_in_grid.x;
+    uint i = gid / N_OUT;
+    uint j = gid % N_OUT;
+    if (i >= M_OUT) return;
+    long acc = 0;
+    for (uint k = 0; k < K_DIM; ++k) {
+        acc += (long)a[i * K_DIM + k] * (long)b[j * K_DIM + k];
+    }
+    out[i * N_OUT + j] = acc;
+"""
+
+_exact_gemm = _kernel("llmopt_exact_gemm", _EXACT_GEMM_SRC, ["a", "b"])
+
+
+def exact_gemm(a: mx.array, b: mx.array) -> mx.array:
+    """C[i, j] = sum_k a[i, k] * b[j, k], exact int64.
+
+    a: [M, K] int32, b: [N, K] int32, |values| < 2^15, K <= 2^17.
+    """
+    m, k = a.shape
+    n, k2 = b.shape
+    assert k == k2, "K mismatch"
+    assert k <= (1 << 17), "K too large for the 2^47 bound"
+    assert int(mx.abs(a).max()) < (1 << 15), "a exceeds 2^15 bound"
+    assert int(mx.abs(b).max()) < (1 << 15), "b exceeds 2^15 bound"
+    (out,) = _exact_gemm(
+        inputs=[a.astype(mx.int32), b.astype(mx.int32)],
+        template=[("M_OUT", m), ("N_OUT", n), ("K_DIM", k)],
+        grid=(m * n, 1, 1),
+        threadgroup=(min(m * n, 256), 1, 1),
+        output_shapes=[(m, n)],
+        output_dtypes=[mx.int64],
+    )
+    return out
