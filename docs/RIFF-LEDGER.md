@@ -1998,3 +1998,16 @@ to the collaboration itself.
   exposure-curve plateau -> pack -> shelf), NOT generalist
   scaling; the nt-chain shows the endpoint exists.
   Attribution: Artin (all three frames), house (mappings).
+
+- **2026-07-30 (Artin, 10:30 PM — combine the scaffolds)**:
+  tree x gravmoe (attraction acting along tree edges only —
+  gravity with a topology) and channel x tree (the shared
+  channel BRANCHING: experts reach each other only along
+  specific tree paths — constrained talk). Both are
+  "structured scaffold" composites; run AFTER the seed-2
+  gatekeeper and AFTER the params-matched control (see
+  amendment rider — channel/tree carry more params than lb;
+  gravmoe does not, so the collapse-wins result is
+  unconfounded, but the 48s need the control before combos
+  are interpretable). Attribution: Artin (both combos),
+  house (ordering + control demand).

@@ -12316,3 +12316,17 @@ pair-blind; gravmoe homogenized). Named THE SCAFFOLD
 HYPOTHESIS; seed-2 pair (chained, overnight) is the
 gatekeeper before it becomes a law. MI 354x (structure
 robust as ever). Fences: n=1, house scale, one topology.
+
+## AMENDMENT RIDER (UMOE-3/TREE-1 verdicts): a params confound the verdicts under-weighted (2026-07-30 ~10:40 PM)
+
+Named against my own bookings, before seed-2: the channel
+arm carries 1.00M params and the tree arm 1.52M v the lb
+family's 0.93M — their +11 gates are CONFOUNDED with
+capacity until a params-matched control runs (lb with
+ffn_e scaled to match each). GRAVMOE IS NOT CONFOUNDED
+(0.93M, identical to lb) — the collapse-wins 52 stands as
+the cleanest scaffold datapoint. The scaffold program's
+ordering therefore: seed-2 -> params-matched controls ->
+Artin's combo arms (tree-edged gravity; branching
+channel). Booked so the confound cannot be forgotten if
+seed-2 replicates the 48s.
