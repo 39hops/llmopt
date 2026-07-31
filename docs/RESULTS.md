@@ -12810,3 +12810,37 @@ representations); FIRE -> the old nulls were diet
 statements (clock-placement reading). House lean: NULL
 (gauge law — clocks live in activation SPACE, channel
 basis stays meaningless).
+
+## VERDICT TIER-A A2+A3: a NULL REVERSES (gen-8 modules are ~10-sigma real against measured seed dispersion) and the rotation lenses are BLIND to clocks (2026-07-31 ~1 PM, Mac desk cells)
+
+A2 GRAPH-MOD SIGMA: Q per seed on the three same-diet
+wfloor_d256 births = 0.2673 / 0.2663 / 0.2702, sd 0.0020.
+The 07-26 dQ +0.030 (gen-8 five-grammar v single-grammar)
+sits at z ~ 10.5 in delta-sigma units. RE-ADJUDICATION:
+the "modules do NOT appear" bar-based null REVERSES —
++0.030 is overwhelmingly resolved against measured
+dispersion; the five-grammar diet DOES buy weight-graph
+modularity. FENCE (honest): sigma measured on the
+wfloor_d256 family (the entry's own named free-sigma
+substrate), not on the gen-8/19M pair itself — dispersion
+could differ by family. Confirmatory cell (banked): Q
+sigma on 19M-class same-diet seeds when a pair exists.
+First revival-sweep payoff: the resolution law CONVICTS
+in both directions — it retracted three of our wins this
+morning and resurrected someone else's null after lunch.
+
+A3 ROTATION POSITIVE CONTROL: on fourier2b_widemod.pt
+(confirmed 276/512 activation clock at k=5): phase-pair
+z mean +0.03 max 1.68; fft-order z mean +0.60 max 2.92
+(bar 3); adjacent anti-mass 0.5011 v random-pairing null
+0.4999±0.0057 (z +0.21). ALL NULL — as house-leaned
+(gauge law). VERDICT: the weight-side rotation
+instruments are BLIND to activation clocks; the
+spontaneous-rotation nulls (weight-FFT euler, complex
+NNUE, quaternion R1) were statements about WEIGHT-BASIS
+structure only and say nothing about representations.
+The clock-placement law stands as the activation-side
+truth; weight-side rotation reads require imposed
+structure (the symmetry ladder) or activation probes,
+never raw-basis lenses. Revival candidate #6 resolves:
+the instruments were the wound.
