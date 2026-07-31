@@ -13141,3 +13141,21 @@ are now measurably DISTINCT. Banked revive conditions
 stand unchanged: temperature/diversity sweep, solved-
 state seeding, scale. Fences: n=1, MPS, EMA, same
 novelty fence (119,371 expressions).
+
+## PRE-REG FOURIER-4a: clock-FORMATION dynamics — does the representation lead or lag the competence? (2026-07-31 night, Mac)
+
+scratch/fourier4a_dynamics.py: identical FOURIER-2b birth
+(diet/split/seed/recipe), probed every 2 epochs — per-k
+greedy accuracy (k in 4/5/8/7, 40-prompt subsets) +
+periodic-neuron counts (k in 5/8/7) + an init-epoch
+baseline. PREDICTIONS (all branches book): (a) clock
+LEADS acc at k=5 -> the probe upgrades to a training-time
+progress instrument (representation forms before behavior
+converges, grokking-shaped); (b) clock LAGS acc -> clocks
+are post-hoc consolidation, and the clock-placement law's
+causal reading weakens to correlational; (c) co-arrival
+-> single transition. Hard control: k=7 clock stays 0 at
+every probe (any nonzero = probe artifact, run VOID).
+Fences: within-arch counts only (review-adoption clause);
+acc subsets are 40/k (sigma ~0.08) — read trajectories,
+not points; single seed.
