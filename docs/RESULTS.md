@@ -12888,3 +12888,25 @@ reported, presence/absence is the readout per the
 clock-placement rider. Resolution-law fence: single
 seed; deltas < 5 points on per-k accs read as noise
 unless k=8 hits the 1.0-v-0.63 separation.
+
+## PRE-REG B5 (revival Tier B): farmer rebirth on a DEPTH-UNIFORM reversed corpus (2026-07-31 afternoon, Mac, chained behind B6)
+
+sym_birth REV=3 (new): full reverse + chain-position
+reconstruction (link nxt->cur; every row resolves — 0
+unresolved of 132,870) + depth-uniform resample at
+matched dose. Measured skew being corrected: rows/depth
+= 52,937 / 37,845 / 29,771 / 10,439 / 1,878 (28x
+depth-0-to-4) — the recursion-depth diet-share clause
+applied to the farmer. Then farmer_probe on the new EMA
+ckpt, BOTH seed modes (band + corpus), same novelty
+fence. PREDICTIONS: (1) SEEDMODE=corpus verified stays
+~100/1000 (inversion not harmed); (2) the revival claim:
+NOVEL yield moves off 11/1000 (bar: >=2x, i.e. >=22/1000,
+else the depth-share lever reads null for farming and the
+banked revive conditions — temperature, solved-state
+seeding, scale — stay the path); (3) SEEDMODE=band novel
+also rises if starved-depth coverage was the wound (band
+seeds are starts; their predecessors barely exist in the
+grammar — this mode may stay dead for structural reasons,
+fenced as such). Single seed, MPS, EMA — resolution-law
+fence on any sub-2x delta.

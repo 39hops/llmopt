@@ -86,7 +86,50 @@ rows = load_rows(gen4=True)
 rows = [r for r in rows
         if r["cur"].replace(" ", "") != r["nxt"].replace(" ", "")]
 REV = _env("REV", 0)
-if REV == 2:  # farmer birth: FULL reverse (nxt->cur, every row)
+if REV == 3:  # B5 revival 2026-07-31: full reverse + DEPTH-UNIFORM
+    # resample (recursion-depth diet-share clause). Reconstruct
+    # chain positions by linking nxt->cur, then draw the reversed
+    # rows so each depth bucket gets ~equal share at matched dose.
+    key = lambda s: s.replace(" ", "")
+    nxts = {key(r["nxt"]) for r in rows}
+    by_cur = {}
+    for r in rows:
+        by_cur.setdefault(key(r["cur"]), []).append(r)
+    depth = {}
+    frontier = [k for k in by_cur if k not in nxts]   # chain starts
+    for k in frontier:
+        depth[k] = 0
+    while frontier:
+        nk = []
+        for k in frontier:
+            for r in by_cur.get(k, []):
+                t = key(r["nxt"])
+                if t not in depth:
+                    depth[t] = depth[k] + 1
+                    nk.append(t)
+        frontier = nk
+    buckets = {}
+    for r in rows:
+        d_ = depth.get(key(r["cur"]), -1)
+        buckets.setdefault(d_, []).append(
+            {"cur": r["nxt"], "nxt": r["cur"]})
+    dose = len(rows)
+    ds = sorted(buckets)
+    per = dose // len(ds)
+    rng3 = random.Random("rev3-depth-1")
+    out3 = []
+    for d_ in ds:
+        b = buckets[d_]
+        if len(b) >= per:
+            out3 += rng3.sample(b, per)
+        else:                       # oversample rare depths w/ repl.
+            out3 += [rng3.choice(b) for _ in range(per)]
+    rng3.shuffle(out3)
+    print(f"[rev3] depths {ds[0]}..{ds[-1]} buckets "
+          f"{[len(buckets[d_]) for d_ in ds]} -> {per}/depth, "
+          f"dose {len(out3)}", flush=True)
+    rows = out3
+elif REV == 2:  # farmer birth: FULL reverse (nxt->cur, every row)
     rows = [{"cur": r["nxt"], "nxt": r["cur"]} for r in rows]
 elif REV:  # reverse-pairs arm: 50/50 fwd + nxt->cur,
     random.Random(11).shuffle(rows)  # matched TOTAL dose
