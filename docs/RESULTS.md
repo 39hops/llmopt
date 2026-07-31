@@ -12292,3 +12292,27 @@ which. If the scaffold reading survives seed-2, it is a
 free-lunch training lever: add a discardable shared
 channel at birth, remove it at ship. Fences: n=1 until
 seed-2.
+
+## TREE-1 VERDICT: the tree GATES like the channel (48/120) but leaves NO phylogenetic trace — the scaffold pattern repeats (2026-07-30 ~10:45 PM)
+
+Gate 48/120 @ 44.6 — ties channel for best structured arm
+(family now: lb 37/44, free 36/40, tied 43/42, soft 42,
+channel 48, gravmoe 52, tree 48, dense 45/40). PREDICTION
+1 CONFIRMED (>= tied). PREDICTION 3 CONFIRMED: the mid
+bases GREW from 0.1-init to full norm (27 v root 31,
+leaves 27-29) — training fills every offered level of the
+hierarchy. PREDICTION 2 FALSIFIED: within-pair leaf corr
+0.0437 v across-pair 0.0616 — siblings are NOT more
+similar than cousins; the tree's sharing structure is
+used (norms) but leaves NO pair signature in the deltas.
+THE EMERGING PATTERN (channel + tree + gravmoe, n=1
+each): offering ANY extra shared-gradient structure at
+birth improves the gate (48/48/52 v 36-44 family) while
+the predicted weight-space signatures consistently fail
+to materialize — the benefit appears to live in TRAINING
+DYNAMICS (shared gradient paths as scaffolding), not in
+the deployed weight structure (channel eval-inert; tree
+pair-blind; gravmoe homogenized). Named THE SCAFFOLD
+HYPOTHESIS; seed-2 pair (chained, overnight) is the
+gatekeeper before it becomes a law. MI 354x (structure
+robust as ever). Fences: n=1, house scale, one topology.

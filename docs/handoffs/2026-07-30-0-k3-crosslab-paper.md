@@ -77,3 +77,18 @@ Artifacts pulled to Mac; 3080 verified clean 4:40 PM.
 Paper BANKED at prose-v1 (all sections written). Next
 session openers: contract-MoE screening rerun; consistent-
 corruption arm; lambda sweep; old-null revival sweep.
+
+## Addendum 3 (~11 PM): the night wave — 21 verdicts on the day
+PLACE-1 confirmed (+13.8 pts, -27% misses: systems lever
+real). UMOE-3: channel 48 (eval-inert — scaffold);
+gravmoe 52 BEST (collapse wins; MI survives); TREE-1 48
+(no pair signature). SCAFFOLD HYPOTHESIS named — seed-2
+chained overnight (logs/umoe3_s2_0730.log) = tomorrow's
+first booking. HOPF-1 unification dead (basin curve =
+architectural invariant). EQUIV-1 masses inequivalent.
+FOURIER-1 partial / -2 void (2b banked, needs wide Mod
+generator). All checkpoints Mac-side except day's 3080
+births (pulled). Machines: Mac runs seed-2 overnight;
+3080 idle/clean (Artin's). Tomorrow's openers: seed-2
+scaffold adjudication -> gravmoe lambda-sweep ->
+FOURIER-2b generator -> paper stays banked.
