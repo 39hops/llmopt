@@ -13317,3 +13317,36 @@ Merge reviews on the two new gravmoe ckpts (prediction
 .sh [HOLD]. SCAFFOLD PROGRAM: this was the last open
 question — thread CLOSED pending only the night31b
 merge-free extension and the R3 deterministic pair.
+
+## INSTRUMENT + READ: gate transcripts — at L4 the STRATEGY is present and the ARITHMETIC is the wound (2026-07-31 night, Artin's ask)
+
+scratch/gate_transcripts.py: mirrors gate_eval's exact
+loop (same seeds, sampler, oracle) but prints the full
+step chain per prompt — the first instrument that shows
+HOW the crystal works a problem rather than whether.
+Read on umoe_gravmoe_s1 (Mac, eval device-stable):
+
+L3 (18-19/24 in the gates): clean textbook chains —
+linearity split, term-by-term closure, and ONE-SHOT
+u-substitution recognition (Integral(6*x*exp(3*x**2+1))
+-> exp(3*x**2+1) at ply 0; same for the (15x^2+2)e^u
+form). The strategy library is real.
+
+L4 (2-5/24, the weakest gate level): all four sampled
+prompts STUCK AT PLY 0 with 0/8 valid — and the failure
+mode is diagnostic: every sample has the RIGHT SHAPE
+(linearity splits, derivative-of-composite patterns)
+with GARBLED TERM ARITHMETIC — dropped terms, mutated
+coefficients (3*x*cos(u) -> (9*x**2+2)*cos(u)), even
+unbalanced parentheses. The model pattern-matches the
+ansatz and cannot execute the exact algebra at L4's
+expression size. This is the transcript-level face of
+the L1/L2-basics dependency (66k transfer rows, RESULTS
+L2429/L5668): strategy transfers, symbol-exact
+manipulation is the binding constraint. NOTE the gate
+needs no trust in model arithmetic — sympy verifies
+every step; invalid algebra scores zero by
+construction. IMPLICATION (banked, not spec'd): the
+next capability dollar at L4 is exact-manipulation
+diet share (long-expression copy/edit fidelity), not
+more strategy exposure.
