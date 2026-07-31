@@ -13031,3 +13031,31 @@ determinism family. Awaiting Artin's relay to confirm.
 The recipe's lifecycle is now measured end-to-end in one
 day: torch birth -> free merge (n=4) -> C++ deployment
 (token-identical, two labs).
+
+## AMENDMENT (B5 launches): two stumbles before the clean run — ARM env missing (crash at import), then EMA omitted (birth completed raw-only; original fence is EMA 0.999) (2026-07-31 evening)
+
+The v2 raw birth (sym_birth_dense_revdepth.pt, loss 0.30)
+is kept but NOT the comparison substrate; v3 relaunched
+with EMA=0.999 matching the booked farmer birth exactly.
+Lesson for the launch checklist: when rebirthing against
+a booked baseline, diff the FULL env line of the original
+launch (the pre-reg text carries it), not just the new
+knob. Cost ~2h Mac.
+
+## PRE-REG CUDA SEED LADDER (Tier C opener; 3080 idle, evening): does the gravmoe advantage transport, at n=3? (2026-07-31)
+
+The last open question of the scaffold program: Mac
+gravmoe beats lb by +5-6 at n=3; cuda n=1 showed +1.
+Chain (3080, OTAG=_cuda, internally paired): lb SEED=2 ->
+lb SEED=3 -> gravmoe SEED=2 -> gravmoe SEED=3 (~4h).
+With the existing cuda s1 pair (lb 48, gravmoe 49) this
+gives n=3 BOTH arms on one device. PREDICTIONS: (1) if
+mean(gravmoe) - mean(lb) >= +4 on cuda, the advantage
+transports and the recipe's capability claim upgrades
+from device-scoped to general; (2) if the means sit
+within +-2, the advantage is Mac-specific (candidates
+then: mps numerics, batch composition) and the recipe's
+card stays "free merge, capability-neutral"; (3) merge
+review on every new gravmoe ckpt extends merge-free
+toward n=6. Resolution law satisfied by design (n=3
+paired, one device).
