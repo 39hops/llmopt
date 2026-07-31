@@ -12576,3 +12576,22 @@ axiom C++ backend ask — HELD pending the cuda chain's
 device-transport adjudication (early cuda arms show a
 TIGHTER family spread: lb 48, gravmoe 49 — the Mac-sized
 advantage may not transport; booked when chain lands).
+
+## PRE-REG FOURIER-2b: wide-Mod birth + roots-of-unity probe with memorization gate (2026-07-31 morning, Mac)
+
+scratch/fourier2b_widemod.py: 20,000 Mod(n,k) rows, n
+uniform [10, 99999], k in 3..11, string seeds; 500 eval
+pairs whose n's are EXCLUDED from train (prompt-set
+guard, asserted). Memorization gate BEFORE the probe:
+greedy exact-match on held-out n's; below 0.5 the run is
+VOID and the probe skips (the FOURIER-2 pilot lesson —
+memorized substrate probes nothing). Tokenizer round-trip
+verified pre-launch (the FOURIER-1 lesson).
+PREDICTIONS: (1) held-out acc > 0.9 — Mod is learnable
+in-format at d64 with a wide generator; (2) if learned,
+periodic-neuron count at k=5,7 LARGE v FOURIER-1's 11/512
+(a dedicated Mod diet should force clock structure, the
+grokking-modular-arithmetic literature's signature), with
+shuffle ~0; (3) top-freq share HIGHER than 0.534 (purer
+Fourier under a diet that needs it). First use of
+llmopt.runlog in a birth script (elapsed-stamped log).
