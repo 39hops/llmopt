@@ -92,3 +92,20 @@ births (pulled). Machines: Mac runs seed-2 overnight;
 3080 idle/clean (Artin's). Tomorrow's openers: seed-2
 scaffold adjudication -> gravmoe lambda-sweep ->
 FOURIER-2b generator -> paper stays banked.
+
+## Addendum 4 (~11:45 PM): COMPACT POINT — 24 verdicts on the day
+MERGE-1 nightcap: gravmoe merges 4->1 FREE at 54/120 —
+"birth as Hebbian MoE, ship as dense" is the recipe
+candidate; seed-2 + params controls adjudicate overnight
+(chain live: logs/overnight_0730.log — scaffold_review on
+s2 ckpts, then lb at FFN_E 139/224). Axiom relay
+2026-07-30-2 drafted (C++ FX-V2 twin ask — cross-RUNTIME
+determinism; Artin relays when ready). Brainstorm banked:
+scaffold=continuation-method (hardness-scaling testable),
+gravmoe=joint model soup (SWA/soups anchors), KK color,
+measurement-collapse merge reading. MACHINES: Mac runs the
+overnight chain; 3080 IDLE — Artin's GO required.
+Post-compact resume: BOARD -> this handoff (add.3+4) ->
+specs/2026-07-31-scaffold-program.md -> RESULTS tail.
+Morning opener = read logs/overnight_0730.log + seed-2
+log, book rung-0/1 verdicts, then Artin picks rung 2+.
