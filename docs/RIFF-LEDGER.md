@@ -2109,3 +2109,11 @@ economics to training. House reframe credited in-spec: determinism
 TF32-off cuda ladder isolates whether the gap is Ampere's TF32
 alone. Attribution: Artin (composition of the Ozaki, P3, and
 pooling winners was his call).
+
+- **2026-07-31 (Artin): "is the model's fundamental arithmetic
+  perfect? read the actual transcripts"** — two-part riff: (a)
+  verify the basics dependency, (b) build a transcript reader for
+  the gate. Landed same night: scratch/gate_transcripts.py +
+  the L4 read (strategy present, term arithmetic garbled — the
+  wound is exact manipulation, not ansatz knowledge). Banked
+  follow-up: exact-manipulation diet share for L4.
