@@ -13118,3 +13118,26 @@ Unadopted reviewer notes (checked, judged fine): rung-0's
 family-band comparison already superseded by rung-1+law;
 A2's sd-of-sd caveat folded into its existing family
 fence.
+
+## VERDICT B5: depth-uniform diet does NOT revive the farmer — the novelty wall is not base-case starvation (2026-07-31 night, Mac)
+
+EMA-matched rebirth on the depth-uniform reversed corpus
+(28x skew flattened to 26,574/depth, matched dose), same
+probe protocol as the booked FARMER PROBE:
+- SEEDMODE=corpus: 7/1000 verified-distinct-novel
+  (original 11/1000; bar was >=22), verified 97 (orig
+  107) — inversion competence unchanged, novelty did NOT
+  move. PREDICTION 2 FAILS at its pre-registered bar.
+- SEEDMODE=band: 2/992 (original 2/992 — identical).
+NULL: the recursion-depth diet-share clause, which fixed
+FOURIER-3's fixed-point loops, does NOT transfer to the
+farmer's problem. Sharpens the diagnosis: FOURIER-3 v1
+failed at CHAIN EXECUTION (couldn't finish a rewrite it
+had started — a coverage wound; depth share healed it);
+the farmer fails at GENERATION NOVELTY (memorization-
+dominant sampling — a diversity/scale wound; depth share
+is the wrong medicine). The two multi-step failure modes
+are now measurably DISTINCT. Banked revive conditions
+stand unchanged: temperature/diversity sweep, solved-
+state seeding, scale. Fences: n=1, MPS, EMA, same
+novelty fence (119,371 expressions).
