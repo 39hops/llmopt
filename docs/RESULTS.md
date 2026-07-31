@@ -12968,3 +12968,31 @@ complete; recommendation to Artin: promote the RECIPE
 as capability-neutral-or-better with zero deploy cost;
 hold the capability CLAIM at device-scoped until a
 pooled deterministic ladder exists.
+
+## PROMOTION (Artin GO): hebbian_moe + complex_ffn land in llmopt/ — the scaffold program and the rotation thread ship their survivors (2026-07-31 ~4 PM)
+
+llmopt/train/hebbian_moe.py: HebbianCoupler (co-routing
+overlap EMA + periodic relaxation, optional edge
+restriction) + merge_experts (ship-time E->1 collapse,
+with the dense-plus-scalar-gate export caveat documented
+— top-1 switch scaling survives the merge). Docstring
+carries the full measured card: merge-free n=4, lambda =
+anatomy dial, advantage device-scoped, decorrelation-is-
+default (why post-hoc merging fails). 6 tests: EMA math
+v manual, contraction, schedule/edges, snapshot symmetry,
+merge mean, validation.
+
+llmopt/train/complex_ffn.py (Artin's tie-in): the
+UNSNAPPED complex FFN (modReLU + genuine complex
+multiply), promoted with its honest card — ties real
+overall, suggestive at the carry modulus (fenced), and
+the zeta-N snap variant explicitly NOT promoted (B6:
+neutral-to-negative, teach-don't-impose). 4 tests incl.
+equivalence to torch.complex64 arithmetic and the
+e^{2i*theta} phase-equivariance property of the gated
+product.
+
+Suite: 392 passed. Axiom C++ ask drafted (relay
+2026-07-31-0): dense-plus-scalar-gate forward for merged
+crystals in their stack — training stays torch by
+doctrine; inference homecoming is theirs.
