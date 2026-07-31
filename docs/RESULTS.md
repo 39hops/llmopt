@@ -12553,3 +12553,26 @@ device-paired replication of rung 1. PREDICTION: same
 shape as Mac (224-twin reaches/passes tree-class; 139-twin
 closes most of channel's gap). If cuda replicates the
 confound, the narrowed scaffold verdict is device-robust.
+
+## VERDICT DAY-31(a): MERGE-FREE AT n=3 — "birth as Hebbian MoE, ship as dense" books as a RECIPE (2026-07-31 morning, Mac)
+
+gravmoe seed 3 (logs/gravmoe_s3_0731.log): gate 50/120,
+corr collapse 0.9665 (per-block 0.92-0.97), and the merged
+4->1 model gates 51/120 — the merged model matches or
+BEATS the unmerged MoE for the third seed in a row:
+s1 54 v 52, s2 49 v 51, s3 51 v 50. Merge deltas
+{+2, -2, +1}: zero-mean, tiny. Prediction confirmed as
+pre-registered (corr > 0.9, gate in band, merge within
+1σ).
+
+RECIPE (bookable): train a top-1 switch MoE with
+co-routing-weighted weight relaxation (GRAV_LAM 0.5 every
+100 steps), then average the four experts into ONE dense
+FFN at ship time. Cost: zero extra params v dense, zero
+deploy-time routing, zero merge tax (n=3). On Mac the
+recipe holds +5-6 over params-matched lb (n=3 v n=2
+controls). PROMOTION CANDIDATE: llmopt/ implementation +
+axiom C++ backend ask — HELD pending the cuda chain's
+device-transport adjudication (early cuda arms show a
+TIGHTER family spread: lb 48, gravmoe 49 — the Mac-sized
+advantage may not transport; booked when chain lands).
