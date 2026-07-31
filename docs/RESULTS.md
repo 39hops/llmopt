@@ -13228,3 +13228,26 @@ equality; the Mac/Metal Ozaki sibling, correctness-first,
 tiling = R4). Suite 396 passed. NEXT per spec: attention
 sublayer backward (softmax table + jacobian), then
 fixed-point AdamW -> R2 short-birth trajectory hash.
+
+## VERDICT DETERMINISTIC-BIRTH R1b: integer ATTENTION forward+backward bit-identical Mac-cpu = 3080-cuda (2026-07-31 late night)
+
+scratch/detbwd_r1b.py: single-head causal attention core
+(q/k/v/o projections, scaled dot with SCALE = Q*sqrt(dh)
+folded into one rdiv, integer softmax via exp table sha
+9b864924 — range [-8, 0], exact integer max/sum — and
+the softmax JACOBIAN in fixed point: ds = p*(dp - <p,dp>)
+needs NO derivative table, only forward probabilities).
+RESULTS: fwd+bwd sha 2eeacdca4bc3656681521ef2444af7ce
+IDENTICAL cpu(Mac)/cuda(3080); rerun-identical; gradient
+cosines v the fp64 causal-softmax twin: dx 0.999974,
+dwq 0.999964, dwk 0.999977, dwv/dwo 0.999998. Two bugs
+caught by the fidelity check pre-booking: dx projection
+transposes, and a relative-scale error (dq/dk carried an
+extra Q — per-tensor cosines blind to it, the dx SUM
+exposed it at 0.949; lesson: fidelity-check COMPOSITE
+grads, not just leaves). With R1a, both hard sublayers
+of the block are now cross-device bit-exact in training
+math. R2 remaining: rmsnorm backward (algebraic),
+embedding + CE/margin loss path, fixed-point AdamW, then
+the short-birth trajectory hash. Rope: R1c (fixed
+rotation, backward = transpose).
