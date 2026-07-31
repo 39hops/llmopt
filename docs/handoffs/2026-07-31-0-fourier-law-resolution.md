@@ -133,3 +133,38 @@
   (verdict cross-check, output to be verified before adoption).
 - Role clarification (Artin): Fable owns queue + ideas; Opus
   reviewers verify only, plainly.
+
+## Addendum 2 (evening) — the deterministic-birth sprint
+
+Artin's winners-composition riff became a three-rung PASS streak
+in one evening (spec: 2026-08-01-deterministic-birth.md):
+- R1a: integer FFN fwd+BWD bit-identical Mac-cpu/3080-cuda (sha
+  d6b67323; SiLU+dSiLU tables sha-pinned; grad cos 1.000000 x4).
+- R1b: integer ATTENTION fwd+bwd bit-identical (sha 2eeacdca; exp
+  table 9b864924; softmax jacobian needs NO table — p only; grad
+  cos >=0.999964 x5). Lesson: fidelity-check COMPOSITE grads (a
+  relative-scale bug hid at cos-per-tensor and showed in dx).
+- R2-mini: fixed-point AdamW (exact isqrt, big-int bias
+  correction) + 200-step integer teacher-student birth —
+  TRAJECTORY sha and every loss value identical cross-device
+  (5f8dcdcc; loss -4e6x, monotone). Lessons: grad-scale
+  normalization at the loss boundary (int64 v-path); Q=512 floors
+  small-lr updates (wide weight accumulator = R3); init on CPU
+  then move (device RNG streams differ — the trajectory sha
+  caught a wrong-init run instantly).
+- Metal exact GEMM shipped (llmopt/kernels/metal.py exact_gemm,
+  4 big-int oracle tests, exact equality) — the Mac/Metal Ozaki
+  sibling; tiling = R4.
+- Suite 396. Remaining to full R2b: rmsnorm bwd, rope (R1c),
+  CE/margin loss path, block wiring; then R3 = deterministic
+  gravmoe pair (the transport question, answered exactly) +
+  birth-pooling adoption decision.
+- Also queued tonight: R0 TF32-off lb ladder n=3 (behind
+  lam-merges) — the cheap mechanism probe for the transport gap.
+- IN FLIGHT: cuda seed ladder (lb arms in: 51/53 + s1 48;
+  gravmoe s2/s3 pending -> transport verdict) -> lam-merges ->
+  R0. FOURIER-4a booked earlier (co-arrival; no-eviction;
+  count run-sensitivity; live-gauge).
+- Clock note (Artin): wall-time narration drifted again — check
+  the clock before claiming the hour; it was 6:10 PM EST at the
+  "late night" claim.
