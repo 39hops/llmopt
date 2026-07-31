@@ -12910,3 +12910,61 @@ seeds are starts; their predecessors barely exist in the
 grammar — this mode may stay dead for structural reasons,
 fenced as such). Single seed, MPS, EMA — resolution-law
 fence on any sub-2x delta.
+
+## VERDICT B6: THE ROTATION REOPENING CLOSES AGAIN — exact zeta-8 phases are neutral-to-negative even on the diet that wants them; and the clock law goes GRADED (2026-07-31 ~3 PM, Mac)
+
+Three-arm table (same diet/split/seed/epochs, Mac):
+| arm | overall | k=8 acc | k5 clock | k8 clock | k7 clock |
+| real (2b)     | 0.526 | 0.63 | 276/512 | 115/512 | 0 |
+| complex-none  | 0.530 | 0.77 | 175/512 |  51/512 | 0 |
+| G9 zeta-8 STE | 0.504 | 0.54 | 264/512 | 115/512 | 0 |
+(real k=8 clock measured fresh this session — CPU probe,
+shuffle 0/512 everywhere.)
+
+VERDICTS: (1) Prediction 1 lands on the house lean: the
+exact-phase alphabet does NOT pay overall (0.504 v 0.526)
+and the resonant-modulus falsifier did NOT fire (k=8:
+G9 0.54 v real 0.63 — the alphabet is worst at its own
+modulus). Alphabet-follows-domain stays CLOSED, now
+tested on the one substrate where the computation is
+provably rotational. Architecture-provided rotation is
+not adopted even where the diet is periodic — the
+strongest form of teach-don't-impose yet measured.
+(2) Complex-none ties real overall (0.530 v 0.526) —
+complex structure alone is neutral, consistent with the
+whole cplx history. Rider (suggestive, ~2.2 sigma, n=57,
+single seed — resolution-law fenced): complex arithmetic
+may help k=8 (0.77 v 0.63) while the zeta-8 SNAP hurts
+it; if anyone revives the alphabet, revive the
+UNSNAPPED complex FFN, not the exact phases.
+(3) THE GRADED CLOCK LAW: within every arm, clock
+presence tracks per-modulus competence — full competence
+big clock (175-276), partial competence partial clock
+(51-115), no competence zero (0/512, all arms, k=7).
+Clock COUNT varies by architecture at matched competence
+(real 115 v none 51 at k=8) — count stays a non-readout;
+the presence/absence/partial LADDER is the robust
+instrument. The clock-placement THEORY row gains this
+gradation.
+
+## VERDICT RUNG-3 LAMBDA-SWEEP: the Hebbian pull is a DIAL FOR ANATOMY, NOT CAPABILITY (2026-07-31 ~3 PM, 3080, internally paired)
+
+Gates across lambda {0.1, 0.25, 0.5, 1.0} on cuda:
+48 / 47 / 49 / 50 (lb control 48) — FLAT, every delta
+inside 1 sigma. Expert-corr collapse across the same
+sweep: 0.827 / 0.935 / 0.951 / 0.974 — MONOTONE dose
+response. Prediction 4's threshold branch books: the
+relaxation strength dials how HOMOGENIZED the experts
+get, while the gate does not move on this device. With
+the merge-free property (n=4) this completes the
+recipe's honest card: "birth as Hebbian MoE, ship as
+dense" costs nothing at ANY lambda, collapses anatomy
+proportional to lambda, and its +5-6 gate advantage
+exists on Mac (n=3) but not cuda — device-scoped, cause
+unadjudicated (candidates: mps numerics, seed pool).
+PROMOTION DECISION now unblocked — evidence table
+complete; recommendation to Artin: promote the RECIPE
+(training utility + merge function + test) to llmopt/
+as capability-neutral-or-better with zero deploy cost;
+hold the capability CLAIM at device-scoped until a
+pooled deterministic ladder exists.
