@@ -12862,3 +12862,29 @@ instrument from the fp gate (scores may differ; pool
 within one instrument, never across). Tier A closes
 3-for-3 booked in one afternoon: one adoption, one
 reversal, one instrument autopsy.
+
+## PRE-REG B6 (revival Tier B): G9 zeta-8 on the Mod diet — the rotation reopening, fired on the substrate that wants it (2026-07-31 afternoon, Mac)
+
+scratch/fourier_g9.py: complex-FFN d64 crystal (modReLU,
+genuine complex multiply), phases STE-snapped exactly to
+Z[zeta_8] (ARM=G9) v complex-unsnapped (ARM=none), both
+on the EXACT fourier2b diet/split/seed/epochs; paired
+against the booked real crystal (0.526 overall; k=8
+partial 0.63; clocks 276/512 at k=5). Snap verified
+pre-launch (phase residues exactly 0 on pi/4 grid).
+PREDICTIONS: (1) house lean from the 2026-07-26 closure
+(alphabet-follows-domain null): G9 does NOT beat the
+real control overall — architecture-provided rotation
+is not adopted even where the diet is periodic; the
+interesting falsifier is k=8 (zeta_8's own modulus,
+real ctrl 0.63): if G9 solves k=8 to ~1.0 while real
+stalls, the alphabet DID pay exactly at its resonant
+modulus and alphabet-follows-domain reopens for real.
+(2) complex-none arm ~ties real (complex structure alone
+neutral, consistent with cplx history). (3) clock
+populations: complex arms may read differently on the
+SAME probe (activation geometry differs) — count
+reported, presence/absence is the readout per the
+clock-placement rider. Resolution-law fence: single
+seed; deltas < 5 points on per-k accs read as noise
+unless k=8 hits the 1.0-v-0.63 separation.
