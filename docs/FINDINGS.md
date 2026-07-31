@@ -500,3 +500,50 @@ honest negatives booked with the same care as wins.
   depth; experts decorrelated in weights, correlated in
   routing (the split law) — compression closed post-hoc,
   systems levers open.
+
+## The full 30th (07-30): one frontier expert, two labs, and the day the metaphors got measured
+
+- ONE EXPERT FROM 2.8T: a Kimi-K3 routed expert pulled by
+  safetensors byte-range (17.5 MB), discovered to be LATENT
+  (3584-dim, ~33M/expert), and executed EXACTLY — the full
+  SwiGLU chain sha-identical on cpu/mps/cuda, natively on
+  Moonshot's shipped MXFP4, zero requantization. Their 4-bit
+  codes carry 3.643 bits/param (~9% from capacity).
+- CROSS-LAB: axiom reproduced both P3 hash digests bit-for-bit
+  from the sha-pinned tables (FX-V1-H). Four backends, two
+  labs, zero tolerance columns. Replication as a boolean.
+- THE GRAVITY CHAIN (one afternoon, five verdicts): expert
+  influence is unscreened and AMPLIFIES with depth (no
+  gravity; not lawful in router coordinates either) — but the
+  turbulence is a TRAINING DEFAULT: a one-line contractivity
+  tax flips the medium flat at ~zero gate cost. Spacetime is
+  trainable; nobody had asked.
+- CALIBRATION IS DIET-BORNE: a 0.9M crystal has ECE 0.0068
+  and detects its own errors at AUROC 0.989 — no
+  Dunning-Kruger, slightly humble, replicated across three
+  births. Corrupting 10/30% of targets degrades ECE 5x/8x
+  monotonically — toward DOUBT, not arrogance (noise teaches
+  hedging; consistent falsehood, banked, is the DK candidate).
+- THE SPLIT LAW'S CAUSE DISSOLVED TWICE: not the balance loss
+  (lb == free), not sparse assignment (soft routing changes
+  nothing) — expert decorrelation is the INIT DEFAULT
+  preserved (0.0016 at birth); only shared gradient paths
+  couple anything. Meanwhile the systems lever is REAL:
+  co-routing prediction beats popularity by +13.8 recall
+  points and MI-prefetch cuts cache misses 27% on real OLMoE
+  traces.
+- THE SCAFFOLD PATTERN (n=1 each, seed-2 running): every
+  structured-sharing arm (thin channel 48, expert tree 48,
+  Hebbian usage-attraction 52 — the collapse WON, beating
+  dense) improves the gate while leaving NONE of its designed
+  weight-space signature: the channel is eval-inert (zeroing
+  it changes nothing), the tree has no phylogeny, gravity
+  homogenized the experts and routing MI survived at 245x.
+  Structure helps as TRAINING DYNAMICS, not as anatomy.
+  Params confound named for channel/tree; gravmoe is clean.
+- Also: no single "mass" exists (usage, robustness, influence
+  mutually decoupled; basin geometry an architectural
+  invariant identical across 4 models to 3 decimals), and a
+  first partial in-vivo sighting of Fourier digit features
+  (11/512 neurons, half their periodic variance in one
+  frequency).
