@@ -13251,3 +13251,34 @@ math. R2 remaining: rmsnorm backward (algebraic),
 embedding + CE/margin loss path, fixed-point AdamW, then
 the short-birth trajectory hash. Rope: R1c (fixed
 rotation, backward = transpose).
+
+## VERDICT DETERMINISTIC-BIRTH R2 (mini): a 200-step INTEGER TRAINING RUN is bit-identical Mac-cpu = 3080-cuda — trajectory sha and every loss value (2026-07-31 evening)
+
+scratch/detbwd_r2_adamw.py: fixed-point AdamW (int64
+throughout — EMA moments as integer rationals 9/10 and
+999/1000, bias correction via exact python big-int
+rationals capped to 30 bits, denominator via exact
+integer Newton isqrt, decoupled decay) driving the R1a
+integer FFN on a teacher-student regression (squared
+loss, integer dL/dy). RESULTS: loss 2.19e12 -> 1.45e6
+(six orders, monotone) and the trajectory sha
+5f8dcdcc75acc0f4... IDENTICAL on both machines, with
+every printed loss value equal. Training is now
+cross-device deterministic end to end at the mini scale.
+
+Three lessons bought en route (all caught by checks
+before booking): (1) R1a's Q^2-scale weight-grads
+overflow int64 in the v-path (g^2) — grads normalize to
+Q at the loss boundary; (2) Q=512 FLOORS real-1e-3
+Adam updates to zero — toy runs at lr 0.05; production
+needs a WIDER WEIGHT ACCUMULATOR (R3 refinement, the
+standard fixed-point-training move); (3) torch.randint
+on device draws from DEVICE RNG streams — init on CPU
+then move (the R1a/b convention; violating it cost one
+cross-check: first cuda run had a different INIT, not
+different arithmetic — the trajectory sha caught it
+immediately, which is the instrument working).
+SCOPE: R2-mini = FFN-only birth. Full-block short birth
+(rmsnorm bwd + rope + CE/margin loss + attention wired
+in) = R2b, then R3 (gravmoe deterministic pair; wide
+accumulators; speed).
