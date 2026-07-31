@@ -12723,3 +12723,26 @@ next device/seed and did. This also amends rung-1's tone:
 statement is "no structured arm separates from matched-
 params lb at current resolution; gravmoe-on-Mac and
 merge-free are the only resolved effects."
+
+## AMENDMENT FOURIER-3 v1: the chain's BASE CASE was diet-starved — taught moduli 0.00 by fixed-point looping, not incompetence (2026-07-31 ~12 PM)
+
+v1 rollout gate: k=3/9 = 0.00 (worse than 2b's
+no-algorithm 0.34/0.16) while 4/5/10 stayed 1.00 and the
+k=5 clock GREW to 351/512. Transcript autopsy before
+booking (check-don't-assume): the digit-sum rewrite WAS
+learned — first hops from 5-digit n are correct
+(23807->20, 96750->27, 93223->19...) — but chains die at
+2-digit n with junk rewrites and fixed-point loops
+(Mod(10,3)->Mod(10,3) forever). Cause: uniform n on
+[2,99999] puts ~90% of rows at 5 digits; the reduced
+forms every chain must pass through (n<100) got ~0.1%
+share. The recursion's base case was starved — the diet-
+exposure-SHARE doctrine measured at micro scale, and a
+new failure shape for it: MULTI-STEP competence needs
+share allocated per RECURSION DEPTH, not per input.
+v2 relaunched: length-uniform generator (each digit
+count 1-5 gets ~20% share), everything else fixed.
+Predictions unchanged from the FOURIER-3 pre-reg; v1
+clocks (k=5 351/512, k=9 0, k=7 0) consistent with
+clocks-follow-competence but NOT bookable for the causal
+arrow until competence actually arrives at k=9.

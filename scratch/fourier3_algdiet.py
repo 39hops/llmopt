@@ -63,10 +63,18 @@ def gen_rows():
             seen.add((n, k))
             ev.append((n, k))
     excl = {n for n, _ in ev}
-    r_tr = random.Random("fourier3-train-1")
+    r_tr = random.Random("fourier3-train-2")   # v2: length-uniform
     tr = []
     while len(tr) < N_TRAIN:
-        n, k = r_tr.randint(2, 99999), r_tr.choice(KS)
+        # v2 fix (diet-share lesson): uniform n starves the chain's
+        # base case (~90% of uniform [2,99999] is 5-digit; reduced
+        # forms n<100 got ~0.1% share and the rollout looped there).
+        # Draw digit-LENGTH uniformly so every recursion depth gets
+        # equal exposure.
+        length = r_tr.randint(1, 5)
+        n = r_tr.randint(max(2, 10 ** (length - 1)),
+                         10 ** length - 1)
+        k = r_tr.choice(KS)
         if n not in excl:
             tr.append((n, k))    # includes n<10 terminal practice
     assert not excl & {n for n, _ in tr}, "train/eval n-overlap"
