@@ -12778,3 +12778,35 @@ with diet composition (351 -> 142 across v1/v2 at acc
 1.00 both) — population SIZE is exposure-sensitive even
 where competence saturates; clock presence/absence is the
 robust readout, count is not.
+
+## PRE-REG TIER-A REVIVAL CELLS (2026-07-31 afternoon, Artin GO): gate pooling + graph-mod sigma + rotation positive control
+
+A1 GATE POOLING (scratch/pack_decode.py battery): greedy-
+decode the full 120-prompt gate battery through the P3
+integer path on Mac AND 3080 (P3_DEV=cpu box-side to
+spare the lambda run), one sha256 digest over all
+streams. PREDICTION: digests IDENTICAL (P3 already
+bit-identical on 5 prompts + a full logit trace) ->
+ADOPT cross-device pooled seed ladders for greedy
+deterministic batteries; the resolution law's n>=3 cost
+halves. Fence: pooling legality claim covers the
+DETERMINISTIC path only, not fp sampled gates.
+A2 GRAPH-MOD SIGMA (scratch/graph_mod_sigma.py): the
+07-26 dQ +0.030 null was BAR-based, dispersion
+unmeasured; run the same instrument on the three
+same-diet wfloor_d256 seeds (the entry's own named free
+sigma). PREDICTION (house): seed sd >= ~0.02 -> +0.030
+stays unresolved (z < 1.5); if sd is tiny (<0.01) the
++0.030 RE-ADJUDICATES toward real modularity and gen-8
+modules reopen.
+A3 ROTATION POSITIVE CONTROL (scratch/rotinstr_control.py):
+euler lenses (phase-pair KS, rFFT top-8, 20 shuffles) +
+anti-commutant mass (adjacent v 20 random pairings) on
+fourier2b_widemod.pt — the crystal with a CONFIRMED
+276/512 activation clock. Either outcome books: NULL ->
+weight-side lenses are blind to activation clocks (old
+spontaneous-rotation nulls said nothing about
+representations); FIRE -> the old nulls were diet
+statements (clock-placement reading). House lean: NULL
+(gauge law — clocks live in activation SPACE, channel
+basis stays meaningless).

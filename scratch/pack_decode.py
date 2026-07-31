@@ -275,6 +275,37 @@ def cmd_gate():
           f"@ {valid:.2f}% (fp proxy ctrl was 19/40)", flush=True)
 
 
+def cmd_battery():
+    """A1 gate-pooling cell (revival-sweep Tier A, 2026-07-31):
+    greedy-decode the FULL 120-prompt gate battery through the
+    integer path and print one digest. Identical digests across
+    machines make cross-device seed POOLING legal for greedy
+    deterministic batteries (resolution-law throughput lever)."""
+    import sympy as sp
+    from bench_step_tokens import _gen_isolated
+    import step_grpo_micro as G
+    from llmopt.train.mathnative import MathTokenizer
+    tok = MathTokenizer()
+    dev = os.environ.get("P3_DEV") or (
+        "cuda" if torch.cuda.is_available() else
+        "mps" if torch.backends.mps.is_available() else "cpu")
+    m = DetLM(dev)
+    streams, n = [], 0
+    for lv in G.GATE_LEVELS:
+        for i in range(G.GATE_N):
+            p = _gen_isolated(lv, G.GATE_BAND + 1000 * lv + i)
+            if p is None:
+                continue
+            cur = f"Integral({sp.sstr(p._expr)}, x)"
+            ids = tok.encode(f"Current: {cur}\nHints: none\nStep: ")
+            streams.append(m.greedy(ids, 40))
+            n += 1
+            if n % 20 == 0:
+                print(f"  {n} prompts decoded", flush=True)
+    dg = hashlib.sha256(repr(streams).encode()).hexdigest()
+    print(f"P3 battery ({dev}, {n} prompts): {dg}", flush=True)
+
+
 if __name__ == "__main__":
     {"tables": make_tables, "hash": cmd_hash,
-     "gate": cmd_gate}[sys.argv[1]]()
+     "gate": cmd_gate, "battery": cmd_battery}[sys.argv[1]]()
