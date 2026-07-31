@@ -6,13 +6,15 @@ relaxing each expert toward its co-routed peers, then average the
 experts into ONE dense FFN at ship time.
 
 Measured basis (scaffold program, 15+ cells):
-- merge-free at n=4 (three Mac seeds + one cuda birth; merge
-  deltas {+2, -2, +1, +2} on the 120 gate — never negative in
-  expectation);
+- merge cost ZERO-MEAN AND BOUNDED at n=4 (three Mac seeds +
+  one cuda birth; deltas {+2, -2, +1, +2} on the 120 gate: mean
+  +0.75, |delta| <= 2 — no systematic cost, NOT never-negative);
+  measured at lam=0.5 only (other lambdas merge-untested;
+  lambda-merge rider pre-registered 2026-07-31);
 - lambda-sweep on cuda: gates FLAT across lam {0.1..1.0} while
   expert correlation rises monotonically 0.83 -> 0.97 — the pull
   dials anatomy, not capability;
-- gate advantage over load-balanced MoE is device-scoped (+5-6 on
+- gate advantage over load-balanced MoE is device-scoped (+5.5-7.5 on
   Mac at n=3, ~0 on cuda n=1) — the recipe's robust claim is the
   FREE MERGE, not a capability lift;
 - expert decorrelation is the init default preserved by training

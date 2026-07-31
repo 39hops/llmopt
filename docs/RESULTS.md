@@ -13059,3 +13059,62 @@ card stays "free merge, capability-neutral"; (3) merge
 review on every new gravmoe ckpt extends merge-free
 toward n=6. Resolution law satisfied by design (n=3
 paired, one device).
+
+## AMENDMENT (REVIEW ADOPTION, day-31 pass): the reviewer's verified corrections to today's bookings (2026-07-31 night)
+
+An Opus reviewer (self-reported Opus 5 this pass) cross-
+checked all day-31 bookings against logs; Fable verified
+each finding before adoption. CORRECTIONS (each names its
+target entry):
+
+1. MERGE DELTAS {+2, -2, +1, +2} are NOT "zero-or-
+   positive"/"sign-consistent" (DAY-31(a), MERGE-CUDA,
+   resolution-law entries all misphrase this — the set
+   contains a -2). Correct claim, everywhere including
+   the recipe card: merge cost is ZERO-MEAN AND BOUNDED
+   (mean +0.75, |delta| <= 2, n=4) — "free merge" means
+   no systematic cost, not never-negative.
+   llmopt/train/hebbian_moe.py docstring corrected.
+2. THE MAC GRAVMOE ADVANTAGE is +5.5 to +7.5 (gravmoe
+   52/51/50 v lb 44/45), not the "+5-6" quoted in five
+   entries. The cuda seed-ladder's +4 bar stands but is
+   a ~1sigma call at n=3 (se of the mean diff ~4.1) —
+   read the ladder with its CI, not just the bar.
+3. B6 RIDER downgraded: the k=8 complex-v-real gap is
+   z=1.63 two-proportion (not "~2.2 sigma") — below the
+   noise fence; likewise "worst at its own modulus"
+   (G9 0.54 v real 0.63) is inside the fence. B6's
+   defensible core: NO resonant advantage anywhere for
+   exact phases; direction claims withdrawn.
+4. RESOLUTION-LAW SCOPE fixed: the Mac capacity slope
+   (44 -> 53, ~1.8 sigma) CLEARS the 1.5-sigma bar and
+   should read UNRESOLVED-pending-replication (it failed
+   device transport), not "noise". The blanket "both
+   directions" retraction was stricter than the law.
+5. GRADED CLOCK LAW scoped WITHIN-architecture: across
+   architectures the one checkable comparison INVERTS
+   (complex-none: higher k=8 acc 0.77, smaller clock 51
+   v real 0.63/115). THEORY row updated. Presence/
+   absence remains the only cross-arch readout.
+6. LAMBDA CARD scoped: merge-free is MEASURED at lambda
+   0.5 only; "costs nothing at ANY lambda" was unearned.
+   RIDER PRE-REG: merge reviews on the three lambda-arm
+   ckpts (0.1/0.25/1.0, on the 3080) queued behind the
+   seed ladder — prediction: zero-mean bounded deltas at
+   every lambda (the collapse is higher at 1.0, lower at
+   0.1 — if LOW lambda merges badly, merge-free needs
+   the collapse, a mechanism claim worth having).
+7. Small fixes: FOURIER-2b-v1 chance ratio is 2.9x
+   (mean 1/k = 0.169), not 3.5x; rung-1's "1.00M" for
+   the FFN_E=139 arm should be 0.99M; FOURIER-3 v2's
+   k=6 fell 0.38 -> 0.25 (unremarked; consistent with
+   6 = 2x3 needing the untaught 3-part). Axiom's "48
+   steps" RECONCILES with "5 prompts x 40 tokens"
+   (8-token prompt + 40 generated). Remote-side logs now
+   mirrored to logs/remote/ (cuda ladder/controls/
+   lambda/battery — the 3080 battery digest 9ee4fa83...
+   is now locally recorded, completing A1's evidence).
+Unadopted reviewer notes (checked, judged fine): rung-0's
+family-band comparison already superseded by rung-1+law;
+A2's sd-of-sd caveat folded into its existing family
+fence.
