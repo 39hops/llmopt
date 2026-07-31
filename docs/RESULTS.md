@@ -13159,3 +13159,48 @@ every probe (any nonzero = probe artifact, run VOID).
 Fences: within-arch counts only (review-adoption clause);
 acc subsets are 40/k (sigma ~0.08) — read trajectories,
 not points; single seed.
+
+## VERDICT FOURIER-4a: CO-ARRIVAL at solved moduli, post-plateau DEEPENING at partial ones — and the "overshoot-then-prune" reading RETRACTS as cross-run variance (2026-07-31 night, Mac, threshold-free v2)
+
+Formation curve (probe every 2 ep, init baseline clean:
+n50 = 0 everywhere at init):
+- k=5 (solved): acc 0 -> 1.0 AND clock 0 -> 459/512
+  within ONE epoch — co-arrival, faster than the probe
+  cadence resolves (branch (c) of the pre-reg). No lead
+  or lag measurable at the easy modulus.
+- k=8 (partial): acc plateaus ~0.5 by ep3 while the clock
+  KEEPS GROWING (69 -> 210 by ep5, then 165-230 band) —
+  at partial competence, representation formation
+  continues AFTER behavior plateaus. The lag branch,
+  scoped to unsolved moduli.
+- k=7 control: n50 = 0 at every probe — run VALID. (The
+  loose metrics have a noise floor: n25 ~1-29, sumR2
+  ~53-74 at a ~70 null baseline — n50 is the clean
+  instrument; sumR2 reads relative to floor.)
+- NO PRUNING: k=5 n50 oscillates 440-473 the whole run;
+  sumR2 co-moves. The v1 "441 overshoots then prunes to
+  2b's 276" story is RETRACTED: v1/v2/2b are same-seed
+  mps runs whose trajectories diverge (fp scheduling),
+  and the k=5 population at acc 1.0 spans 276-473 ACROSS
+  runs. Clock count gains its THIRD sensitivity (exposure,
+  architecture, now RUN) — the presence-only doctrine is
+  final. Artin's threshold-free instrument catch made
+  this diagnosable: at the ep21/25 accuracy dips (0.88,
+  0.70), n50 AND sumR2 both fall ~15% — real weakening,
+  not blurring, and it RECOVERS with accuracy.
+- LIVE-GAUGE finding (the practical yield): within a run,
+  the clock co-tracks instantaneous per-modulus competence
+  through training fluctuations (dips and recoveries
+  mirror in both metrics). The probe works as a
+  training-time competence readout WITHOUT running a
+  gate — presence/level at THIS run's own baseline, never
+  compared across runs. Market riff status: bubble-and-
+  correction dissolves; what remains measured is
+  "instant recruitment, no eviction" — SGD recruits the
+  whole available population immediately and never
+  prunes it at this scale.
+Fences: n=1 formation curve (cross-run claims rest on
+the 3-run k=5 spread); 40-prompt acc subsets (sigma
+~0.08 — dips at ep21/25 are 1.5-3.7 sigma, read as real
+but single-run); within-arch, within-run comparisons
+only.
