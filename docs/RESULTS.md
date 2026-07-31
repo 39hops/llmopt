@@ -12693,3 +12693,33 @@ greedy gates on this checkpoint are device-stable.
 Remaining transport question is only the SIZE of the
 gravmoe advantage v lb (Mac +5-6, cuda +1) — adjudicates
 with the cuda lambda-sweep + a cuda lb seed-2 if needed.
+
+## VERDICT NIGHT-31-CUDA (controls): THE RESOLUTION LAW — single-cell gate deltas under ~5 are seed noise; the confound adjudication INVERTS across devices (2026-07-31 ~11:40 AM)
+
+Cuda params controls: lb at 0.93M/0.99M/1.52M = 48/46/47
+— the capacity slope that was decisive on Mac (44/45/53)
+is FLAT on cuda. Meanwhile cuda tree (51) and channel
+(51) sit ABOVE their params-twins (+4/+5) — the opposite
+sign of the Mac rung-1 verdict. Neither pattern clears
+1σ (binomial σ≈5 at these rates) cell-by-cell.
+
+JOINT READING (the honest one): with a 120-prompt gate,
+n=1 cells CANNOT resolve effects smaller than ~5 solves.
+What survives across all 15+ cells of the program:
+(1) MERGE-FREE: sign-consistent at n=4 (never negative
+    in expectation: +2,-2,+1,+2) — a property claim, not
+    a delta claim, robust;
+(2) MAC GRAVMOE ADVANTAGE: +5-6 v lb at n=3 consistent
+    seeds — real ON MAC; did not appear on cuda (n=1) —
+    device-scoped until a cuda seed ladder says otherwise;
+(3) EVERYTHING ELSE (tree/channel/capacity slopes, both
+    directions) — below resolution, retract to noise.
+
+METHODS RULE (adopt): any claim of a gate delta < 1.5σ
+requires n>=3 paired seeds BEFORE booking a direction; a
+single-seed adjudication (as rung-1 was) can flip on the
+next device/seed and did. This also amends rung-1's tone:
+"tree's win was capacity" overreached — the defensible
+statement is "no structured arm separates from matched-
+params lb at current resolution; gravmoe-on-Mac and
+merge-free are the only resolved effects."
