@@ -13204,3 +13204,27 @@ the 3-run k=5 spread); 40-prompt acc subsets (sigma
 ~0.08 — dips at ep21/25 are 1.5-3.7 sigma, read as real
 but single-run); within-arch, within-run comparisons
 only.
+
+## VERDICT DETERMINISTIC-BIRTH R1a: integer FFN forward+BACKWARD bit-identical Mac-cpu = 3080-cuda, same evening as the spec (2026-07-31 night)
+
+scratch/detbwd_r1.py: fixed-point (fq512) FFN sublayer,
+int64 elementwise+sum ops (order-independent -> backend-
+exact by construction), SiLU + dSiLU tables sha-pinned
+(24499877 / 967943f9), round-half-away rdiv, STE-style
+table-derivative backward. RESULTS: fwd+bwd sha
+d6b673234474dc1abaaf71d6b664e8f9 IDENTICAL cpu(Mac) and
+cuda(3080); rerun-identical both; gradient fidelity v
+fp64 autograd of the smooth twin cos = 1.000000 on all
+four tensors (dx, dwg, dwu, dwd), both devices. Two bugs
+found+fixed by the fidelity check before booking: dwd
+computed transposed (cos 0.013) and the derivative table
+inheriting SiLU's saturation extension (returns x, not
+1.0, above range -> gradient explosion on saturated
+units; per-table extensions now explicit). Sibling
+shipped: exact integer GEMM Metal kernel
+(llmopt/kernels/metal.py exact_gemm — int32 in, long
+accum, int64 out; 4 oracle tests v Python big-int, exact
+equality; the Mac/Metal Ozaki sibling, correctness-first,
+tiling = R4). Suite 396 passed. NEXT per spec: attention
+sublayer backward (softmax table + jacobian), then
+fixed-point AdamW -> R2 short-birth trajectory hash.
