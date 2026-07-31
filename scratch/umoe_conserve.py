@@ -30,6 +30,10 @@ import torch  # noqa: E402
 import torch.nn as nn  # noqa: E402
 import torch.nn.functional as F  # noqa: E402
 
+if os.environ.get("TF32OFF"):  # deterministic-birth R0 knob
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
+
 import step_grpo_micro as G  # noqa: E402
 from train_mathnative import load_rows  # noqa: E402
 from llmopt.train.mathnative import MathTokenizer, build_model  # noqa: E402
