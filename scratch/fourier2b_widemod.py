@@ -23,7 +23,8 @@ from llmopt.runlog import get_logger, timed  # noqa: E402
 
 ATOMS = ["gcd", "Mod", "**", "call:", "->",  # sidecar order (fence)
          "Hints: ", ";"]
-D, LAYERS, FFN, HEADS, BS, EPOCHS, LR = 64, 8, 256, 4, 8, 6, 1.5e-3
+D, LAYERS, FFN, HEADS, BS, LR = 64, 8, 256, 4, 8, 1.5e-3
+EPOCHS = int(__import__("os").environ.get("EPOCHS", "6"))
 N_TRAIN, N_EVAL = 20000, 500
 KS = list(range(3, 12))
 OUT = "checkpoints/fourier2b_widemod.pt"

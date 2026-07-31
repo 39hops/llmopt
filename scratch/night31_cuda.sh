@@ -8,7 +8,11 @@ PY=.venv/bin/python
 [ -x "$PY" ] || PY=python
 run() {
   echo "=== $(date '+%F %T') ARM=$1 ${2:-} ==="
-  ARM="$1" SEED=1 OTAG=_cuda ${2:+GRAV_LAM=$2} "$PY" scratch/umoe_conserve.py
+  # NOTE friendly-fire #10: ${2:+GRAV_LAM=$2} expanded AFTER the
+  # shell parses assignment prefixes -> "command not found". env(1)
+  # accepts assignments as arguments, so this form is expansion-safe.
+  ARM="$1" SEED=1 OTAG=_cuda env GRAV_LAM="${2:-0.5}" \
+    "$PY" scratch/umoe_conserve.py
 }
 run lb
 run tree

@@ -12595,3 +12595,24 @@ grokking-modular-arithmetic literature's signature), with
 shuffle ~0; (3) top-freq share HIGHER than 0.534 (purer
 Fourier under a diet that needs it). First use of
 llmopt.runlog in a birth script (elapsed-stamped log).
+
+## AMENDMENT (NIGHT-31-CUDA) + FOURIER-2b v1: friendly-fire #10 kills the lambda-sweep silently; the memorization gate WORKS and fires (2026-07-31 ~9:30 AM)
+
+(a) FRIENDLY-FIRE #10: the chain's run() used
+${2:+GRAV_LAM=$2} as an env prefix — but expansions happen
+AFTER the shell parses assignment prefixes, so the three
+lambda arms died in 0s with "command not found", and the
+chain's DONE marker fired anyway (per-arm failures don't
+propagate). Fix: env(1) form (assignments as ARGUMENTS
+survive expansion). Lesson for the remote-ops doctrine:
+a chain's success marker must depend on its arms' exit
+codes, or at minimum the morning read must check arm
+COUNT, not the marker. Lambda arms re-queued behind the
+running ctl chain.
+(b) FOURIER-2b v1: the pre-registered VOID gate FIRED —
+held-out Mod acc 0.492 < 0.5, probe skipped. Informative:
+0.492 is ~3.5x chance (~0.14 across k=3..11), so the
+crystal PART-generalized; birth was 226s at loss 0.88
+(undertrained, cf. ~0.3-0.4 at convergence elsewhere).
+v2 relaunched at EPOCHS=30 (env knob added). Not booked
+as a FOURIER verdict either way yet.
