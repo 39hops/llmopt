@@ -12393,3 +12393,34 @@ claim then rests on gravmoe alone); if widened-lb stays
 in the 37-44 band, structure is real at matched params.
 Fences: controls seed-1 only tonight; combos (tree-edged
 gravity, branching channel) remain gated behind these.
+
+## VERDICT OVERNIGHT-31 (rung 0): scaffold REPLICATES on seed 2 — both review cells pass (2026-07-31 morning, Mac)
+
+Seed-2 pair (logs/umoe3_s2_0730.log) + review cells
+(logs/overnight_0730.log, scratch/scaffold_review.py):
+
+- channel s2: 49/120 (s1 48); gravmoe s2: 51/120 (s1 52).
+  Both hold the top of the family band on a fresh seed
+  (plain family 36-44/45-48; tree s1 48).
+- Prediction 1 CONFIRMED: gravmoe-s2 expert corr 0.9642
+  (>0.9, per-block 0.90-0.98 — the collapse replicates),
+  routing MI 304x shuffle survives, and the MERGED 4->1
+  model gates 49/120 vs 51 unmerged — within sigma
+  (binomial sigma ~5 at this rate; s1 was 54 v 52). The
+  "birth as Hebbian MoE, ship as dense" recipe is now
+  2-for-2 seeds: merging costs nothing either time.
+- Prediction 2 CONFIRMED: channel-s2 max|a_i| = 0.021
+  (pinned, <0.1) and the S-zeroed gate is 50/120 vs
+  49/120 full — one-solve difference, eval-inert again.
+  The channel scaffold leaves no load-bearing anatomy on
+  a second seed either.
+
+Rung-0 verdict: the scaffold hypothesis survives seed
+adjudication. Structure-during-birth (Hebbian pull,
+channel tail, tree) beats the plain family on both seeds
+while remaining anatomically deletable at ship time.
+STILL OPEN (rung 1, running): the params confound — lb at
+FFN_E=139/224 will say whether channel/tree wins were
+capacity; gravmoe (0.93M, params-clean) is already
+confound-free and is the strongest single result of the
+program. Prediction 3 adjudicates when those gates land.
