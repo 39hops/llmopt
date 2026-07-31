@@ -7,6 +7,10 @@ ARM=lb    switch load-balance aux 0.01 (standard)
 ARM=free  aux 0 (correlation permitted)
 ARM=tied  expert_i = base + 0.1-init delta_i, aux 0.01
 ARM=dense plain d64h8 control (gate reference, same seed/device)
+ARM=treegrav rung-2 combo: tree parameterization + Hebbian
+          relaxation restricted to tree edges (siblings only)
+ARM=chantree rung-2 combo: per-sibling-pair low-rank channels
+          (experts talk only through their pair's channel)
 
 Measures after training: gate (G.gate_eval), mean pairwise
 expert-weight corr per block (N3), adjacent-layer co-routing MI v
@@ -36,7 +40,8 @@ D, LAYERS, HEADS, FFN = 64, 8, 8, 256
 NE, FFN_E = 4, int(os.environ.get("FFN_E", "128"))
 BS, EPOCHS, LR = 8, 3, 1.5e-3
 AUX = {"lb": 0.01, "free": 0.0, "tied": 0.01, "soft": 0.0,
-       "channel": 0.01, "gravmoe": 0.01, "tree": 0.01}.get(ARM, 0.0)
+       "channel": 0.01, "gravmoe": 0.01, "tree": 0.01,
+       "treegrav": 0.01, "chantree": 0.01}.get(ARM, 0.0)
 CH_R = 16          # channel arm: shared base rank
 GRAV_LAM = 0.5     # gravmoe: relaxation strength
 GRAV_EVERY = 100   # gravmoe: apply every N steps
@@ -55,7 +60,8 @@ class MoEFFN(nn.Module):
         super().__init__()
         self.tied = tied
         self.channel = ARM == "channel"
-        self.tree = ARM == "tree"
+        self.chantree = ARM == "chantree"
+        self.tree = ARM in ("tree", "treegrav")
         self.router = nn.Linear(D, NE, bias=False)
         mk = (lambda i, o: nn.Linear(i, o, bias=False))
         if self.channel:  # thin shared base: low-rank triple + a_i
@@ -66,6 +72,14 @@ class MoEFFN(nn.Module):
             self.sd = nn.Parameter(torch.randn(D, CH_R) * 0.05)
             self.sd2 = nn.Parameter(torch.randn(CH_R, FFN_E) * 0.05)
             self.a = nn.Parameter(torch.zeros(NE))  # talk iff needed
+        if self.chantree:  # per-sibling-pair channels (0,1 | 2,3)
+            self.psg = nn.Parameter(torch.randn(2, FFN_E, CH_R) * 0.05)
+            self.psg2 = nn.Parameter(torch.randn(2, CH_R, D) * 0.05)
+            self.psu = nn.Parameter(torch.randn(2, FFN_E, CH_R) * 0.05)
+            self.psu2 = nn.Parameter(torch.randn(2, CH_R, D) * 0.05)
+            self.psd = nn.Parameter(torch.randn(2, D, CH_R) * 0.05)
+            self.psd2 = nn.Parameter(torch.randn(2, CH_R, FFN_E) * 0.05)
+            self.a = nn.Parameter(torch.zeros(NE))
         self.ema = None  # gravmoe router-overlap EMA [NE, NE]
         if self.tree:  # root + sibling-pair mids (0,1 | 2,3)
             mk3 = lambda: nn.ModuleDict(
@@ -105,6 +119,17 @@ class MoEFFN(nn.Module):
             return F.linear(F.silu(g) * u,
                             b["d"].weight + md["d"].weight
                             + e["d"].weight)
+        if self.chantree:
+            i = list(self.exp).index(e)
+            pi = i // 2                      # sibling-pair channel only
+            a = self.a[i]
+            g = F.linear(h, e["g"].weight
+                         + a * (self.psg[pi] @ self.psg2[pi]))
+            u = F.linear(h, e["u"].weight
+                         + a * (self.psu[pi] @ self.psu2[pi]))
+            return F.linear(F.silu(g) * u,
+                            e["d"].weight
+                            + a * (self.psd[pi] @ self.psd2[pi]))
         if self.channel:
             i = list(self.exp).index(e)
             a = self.a[i]
@@ -135,7 +160,7 @@ class MoEFFN(nn.Module):
             if m.any():
                 y[m] = self._one(self.exp[i], h[m])
         y = y * top_p.unsqueeze(-1)
-        if ARM == "gravmoe":  # router-overlap EMA (usage attraction)
+        if ARM in ("gravmoe", "treegrav"):  # router-overlap EMA
             ov = torch.einsum("bti,btj->ij", p, p) / p.shape[0] \
                 / p.shape[1]
             ov = ov.detach().cpu()
@@ -220,7 +245,7 @@ def probes(model, enc, dev):
     print(f"[probe corr] per-block mean pairwise expert corr: "
           f"{[round(c, 3) for c in corrs]} | "
           f"mean {sum(corrs) / len(corrs):.4f}")
-    if ARM == "tree":
+    if ARM in ("tree", "treegrav"):
         m0 = model.blocks[0].moe
         nrm = lambda md: float(torch.cat(
             [md[k].weight.flatten() for k in ("g", "u", "d")]).norm())
@@ -241,11 +266,11 @@ def probes(model, enc, dev):
         print(f"[probe tree] leaf-delta corr within-pair "
               f"{sum(wi) / len(wi):.4f} v across "
               f"{sum(ac) / len(ac):.4f}")
-    if ARM == "channel":
+    if ARM in ("channel", "chantree"):
         avals = [[round(float(a), 3) for a in blk.moe.a]
                  for blk in model.blocks]
         print(f"[probe channel] a_i per block: {avals}")
-    if ARM == "gravmoe":
+    if ARM in ("gravmoe", "treegrav"):
         E = model.blocks[0].moe.ema
         print(f"[probe grav] block0 overlap EMA:\n{E}")
     if ARM == "tied":
@@ -365,7 +390,8 @@ def main():
             loss.backward()
             opt.step()
             step += 1
-            if ARM == "gravmoe" and step % GRAV_EVERY == 0:
+            if (ARM in ("gravmoe", "treegrav")
+                    and step % GRAV_EVERY == 0):
                 with torch.no_grad():  # relax toward co-used peers
                     for blk in model.blocks:
                         E = blk.moe.ema
@@ -375,6 +401,9 @@ def main():
                             for j in range(NE):
                                 if i == j:
                                     continue
+                                if (ARM == "treegrav"
+                                        and j // 2 != i // 2):
+                                    continue  # gravity on tree edges
                                 c = GRAV_LAM * float(E[i, j])
                                 for k in ("g", "u", "d"):
                                     wi = blk.moe.exp[i][k].weight

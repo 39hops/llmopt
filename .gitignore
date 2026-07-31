@@ -20,3 +20,5 @@ scratch/remote.env.sh
 /*.json
 _attic/
 practice/
+checkpoints/
+.DS_Store

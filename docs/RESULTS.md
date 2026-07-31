@@ -12424,3 +12424,33 @@ FFN_E=139/224 will say whether channel/tree wins were
 capacity; gravmoe (0.93M, params-clean) is already
 confound-free and is the strongest single result of the
 program. Prediction 3 adjudicates when those gates land.
+
+## PRE-REG RUNG-2 COMBOS (OVERNIGHT-31 chain): treegrav + chantree drafted, launch gated on rung-1 (2026-07-31 morning, Mac)
+
+Artin's combo riffs implemented in scratch/umoe_conserve.py
+(smoke-tested CPU: build/forward/backward/EMA all pass):
+
+- ARM=treegrav: tree parameterization + Hebbian relaxation
+  RESTRICTED TO TREE EDGES (leaf i relaxes only toward its
+  sibling, weighted by co-routing EMA). Params 1.52M =
+  tree exactly (relaxation is param-free) — the cleanest
+  paired comparison of the program: treegrav v tree
+  isolates edge-gravity with zero confound.
+- ARM=chantree: per-sibling-pair low-rank channels (expert
+  i talks only through pair i//2's channel; a_i gates as
+  before). Params 1.07M v channel 1.00M (+7% from the
+  second channel — noted, small).
+
+PREDICTIONS: (1) treegrav >= tree on the gate, and the
+within-pair leaf corr flips ABOVE across-pair (TREE-1
+measured within 0.044 < across 0.062 — no phylogeny;
+edge-gravity should CREATE the phylogeny the tree alone
+failed to produce). (2) chantree a_i stays pinned near 0
+(the eval-inert family signature) unless pair-scoping
+makes the channel cheap enough to use; gate in the
+structured band (45-52). (3) If treegrav beats BOTH tree
+and gravmoe, topology-shaped gravity is a real lever and
+the lambda-sweep (rung 3) runs on treegrav, not gravmoe.
+FENCES: launch only after rung-1 params controls book
+(prediction-3 adjudication first); Mac, seed 1, same
+recipe/diet; chantree's +7% params noted at booking.
