@@ -12374,3 +12374,22 @@ Caveat honestly held: gravmoe-s1's 52 v dense 45/40 is
 n=1 v n=2; seed-2 (running) adjudicates before this
 becomes the recommended recipe. Fences: n=1, house scale,
 mean-merge, one lambda.
+
+## PRE-REG OVERNIGHT-31: seed-2 review chain + params-matched controls (2026-07-30 ~11:40 PM, Mac, chained)
+
+After the seed-2 pair lands: (a) REVIEW cells —
+MERGE-1 on gravmoe_s2 (does merge-free replicate?) and
+channel-ablation on channel_s2 (does eval-inertness
+replicate?); (b) RUNG-1 CONTROLS — lb at FFN_E=139
+(params-matched to channel's 1.00M) and FFN_E=224
+(matched to tree's 1.52M), seed 1, same device/recipe.
+PREDICTIONS: (1) gravmoe-s2 corr > 0.9 and merged gate
+within sigma of unmerged (the recipe replicates); (2)
+channel-s2 a_i stays pinned < 0.1 and S-zeroed gate
+identical (eval-inertness is systematic); (3) THE
+CONFOUND TEST: if widened-lb reaches 48-class gates, the
+channel/tree wins were CAPACITY, not structure (scaffold
+claim then rests on gravmoe alone); if widened-lb stays
+in the 37-44 band, structure is real at matched params.
+Fences: controls seed-1 only tonight; combos (tree-edged
+gravity, branching channel) remain gated behind these.

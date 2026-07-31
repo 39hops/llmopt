@@ -33,7 +33,7 @@ from llmopt.quantize.meter import meter_group  # noqa: E402
 
 ARM = os.environ["ARM"]
 D, LAYERS, HEADS, FFN = 64, 8, 8, 256
-NE, FFN_E = 4, 128
+NE, FFN_E = 4, int(os.environ.get("FFN_E", "128"))
 BS, EPOCHS, LR = 8, 3, 1.5e-3
 AUX = {"lb": 0.01, "free": 0.0, "tied": 0.01, "soft": 0.0,
        "channel": 0.01, "gravmoe": 0.01, "tree": 0.01}.get(ARM, 0.0)
@@ -43,7 +43,8 @@ GRAV_EVERY = 100   # gravmoe: apply every N steps
 SEED = int(os.environ.get("SEED", "1"))
 CONTRACT = float(os.environ.get("CONTRACT", "0"))
 TAG = "_ct" if CONTRACT > 0 else ""
-OUT = f"checkpoints/umoe_{ARM}{TAG}_s{SEED}.pt"
+FTAG = f"_f{FFN_E}" if FFN_E != 128 else ""
+OUT = f"checkpoints/umoe_{ARM}{TAG}{FTAG}_s{SEED}.pt"
 
 
 class MoEFFN(nn.Module):

@@ -2011,3 +2011,24 @@ to the collaboration itself.
   unconfounded, but the 48s need the control before combos
   are interpretable). Attribution: Artin (both combos),
   house (ordering + control demand).
+
+- **2026-07-30 (house, pre-compact brainstorm on the day's
+  verdicts)**: (a) SCAFFOLD = CONTINUATION METHOD: birth-
+  structured-ship-dense is homotopy continuation (solve the
+  relaxed problem, deform to the target; numerical-methods
+  lineage) — predicts scaffold value GROWS with problem
+  hardness (testable: scaffold delta at L7-heavy diets v
+  L3). (b) GRAVMOE = JOINT MODEL SOUP: usage-attraction is
+  souping DURING training (Wortsman et al. 2022 soups;
+  Izmailov et al. 2018 SWA — both post-hoc; ours is online
+  with routing-driven weights + a merge-free endpoint) —
+  related-work anchor if the recipe replicates. (c)
+  KALUZA-KLEIN COLOR (color only): extra expert dimensions
+  during training, compactified at ship — the "extra
+  dimensions as optimization aid" frame; keep as naming,
+  not claim. (d) MEASUREMENT-COLLAPSE reading of merge:
+  train in superposition (4 coupled experts), collapse to
+  the mean state at deployment; the deltas ARE the
+  uncertainty and they were deletable — ties the black-hole
+  arc back to the compression arc. Attribution: house,
+  seeded by Artin's day of frames.
