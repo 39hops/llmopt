@@ -85,14 +85,21 @@ def clock_at(model, tok, dev, ev, k, rng):
         ssr = ((y - X @ b) ** 2).sum()
         return 1 - ssr / (((y - y.mean()) ** 2).sum() + 1e-12)
 
-    n_per = 0
+    # threshold-free (Artin 2026-07-31: "can't R^2 change
+    # dynamically?"): report the count at two thresholds AND the
+    # total periodic variance sum(R^2) — if count@0.5 falls while
+    # sum(R^2) holds, "pruning" is really BLURRING (mass
+    # redistributes below the cutoff); if both fall, real pruning.
+    r2s = []
     for li in range(LAYERS):
         for dd in range(D):
             y = A[:, li, dd]
             y = (y - y.mean()) / (y.std() + 1e-9)
-            if r2(four, y) > 0.5:
-                n_per += 1
-    return n_per
+            r2s.append(max(r2(four, y), 0.0))
+    r2s = np.array(r2s)
+    return {"n50": int((r2s > 0.5).sum()),
+            "n25": int((r2s > 0.25).sum()),
+            "sumR2": round(float(r2s.sum()), 1)}
 
 
 def main():

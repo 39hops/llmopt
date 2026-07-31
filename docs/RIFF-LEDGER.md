@@ -2077,3 +2077,20 @@ Artin.
   merge-free; keep as naming.
 - Untouched today: HCE/NNUE shelf v2, P/NP pincer-scaling,
   mass candidates, KK color, old-null revival sweep.
+
+## 2026-07-31 night — overshoot-then-prune / the market riff (Artin)
+
+On the ep1 finding (k=5 clock 441/512 at first probe v 276 in the
+final crystal): (a) MARKET ANALOGY — rapid redundant formation +
+consolidation = bubble-and-correction; SGD as an "unoptimized
+Stockfish, awful at pruning/eval during training" — exploration
+overshoots, consolidation prunes. Frame candidate if the dynamics
+replicate: training = search with a bad evaluation function early.
+(b) INSTRUMENT CATCH (adopted immediately): the fixed R^2>0.5
+threshold can't distinguish PRUNING (neurons leave) from BLURRING
+(periodic mass redistributes below the cutoff) — FOURIER-4a
+re-armed with threshold-free metrics (count@0.5, count@0.25,
+sum(R^2) total periodic variance) mid-session. (c) "deterministic
+in a way?" — same seed same trajectory; cross-seed dynamics
+unknown (n=1); a seed-2 formation curve banks as the cheap
+follow-up if the overshoot is real. Attribution: Artin.
