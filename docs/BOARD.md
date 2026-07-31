@@ -66,6 +66,7 @@ instrument); birth precision (bracketed, closed); 113M capacity
 
 | Thread | Waiting on | Pointer |
 |---|---|---|
+| **DETERMINISTIC BIRTH (Artin's winners-composition, spec'd)** | Ozaki exact GEMM + P3 tables + fixed-point AdamW -> bit-identical cross-device training; prizes: transport question provable + BIRTH pooling; R0 = TF32-off cuda lb ladder (one flag, queued behind lam-merges) | specs/2026-08-01-deterministic-birth.md |
 | Pincer residue: R8 re-run on axiom S7 enumeration + B-b spearhead | pincer revival GO | specs/2026-07-26-reverse-llmue-pincer.md |
 | ZX next levers: diet quality / serialization / curriculum (width nulled) | ZX continent GO | RESULTS 2026-07-27 45M verdict |
 | Exact-representations queue: GPTQ-rational, int8+outlier format, lattice-native template, RNS rung | exact-reps revival GO | specs/2026-07-27-exact-representations.md |

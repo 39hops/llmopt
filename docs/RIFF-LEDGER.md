@@ -2094,3 +2094,18 @@ sum(R^2) total periodic variance) mid-session. (c) "deterministic
 in a way?" — same seed same trajectory; cross-seed dynamics
 unknown (n=1); a seed-2 formation curve banks as the cheap
 follow-up if the overshoot is real. Attribution: Artin.
+
+## 2026-07-31 night — deterministic birth (Artin: "use our winners")
+
+On the transport gap: "so it's the accuracy of the registers?
+don't we have the ability to have the numbers be EXACT? the Ozaki
+algorithm? we should be using our winners." Composed into the
+DETERMINISTIC BIRTH spec (2026-08-01): Ozaki exact GEMMs + P3
+nonlinearity tables + fixed-point AdamW = bit-identical training
+trajectories cross-device -> the transport question becomes
+provable and BIRTH POOLING extends the resolution law's seed
+economics to training. House reframe credited in-spec: determinism
+<= exactness (identical bits, not exact reals). Cheap R0 first:
+TF32-off cuda ladder isolates whether the gap is Ampere's TF32
+alone. Attribution: Artin (composition of the Ozaki, P3, and
+pooling winners was his call).
