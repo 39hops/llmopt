@@ -43,13 +43,15 @@ AUX = {"lb": 0.01, "free": 0.0, "tied": 0.01, "soft": 0.0,
        "channel": 0.01, "gravmoe": 0.01, "tree": 0.01,
        "treegrav": 0.01, "chantree": 0.01}.get(ARM, 0.0)
 CH_R = 16          # channel arm: shared base rank
-GRAV_LAM = 0.5     # gravmoe: relaxation strength
+GRAV_LAM = float(os.environ.get("GRAV_LAM", "0.5"))  # relaxation
 GRAV_EVERY = 100   # gravmoe: apply every N steps
 SEED = int(os.environ.get("SEED", "1"))
 CONTRACT = float(os.environ.get("CONTRACT", "0"))
 TAG = "_ct" if CONTRACT > 0 else ""
 FTAG = f"_f{FFN_E}" if FFN_E != 128 else ""
-OUT = f"checkpoints/umoe_{ARM}{TAG}{FTAG}_s{SEED}.pt"
+GTAG = f"_g{GRAV_LAM}" if GRAV_LAM != 0.5 else ""
+OTAG = os.environ.get("OTAG", "")  # device/run namespace
+OUT = f"checkpoints/umoe_{ARM}{TAG}{FTAG}{GTAG}{OTAG}_s{SEED}.pt"
 
 
 class MoEFFN(nn.Module):

@@ -12454,3 +12454,55 @@ the lambda-sweep (rung 3) runs on treegrav, not gravmoe.
 FENCES: launch only after rung-1 params controls book
 (prediction-3 adjudication first); Mac, seed 1, same
 recipe/diet; chantree's +7% params noted at booking.
+
+## VERDICT FX-V2 (cross-lab receipt): C++ twin PASSES — determinism is now CROSS-RUNTIME (2026-07-31, axiom's box, their commit d5e9d5a)
+
+Axiom's report (relayed by Artin; their reply relay at
+docs/relay/2026-07-31-1-fx-v2-verdict.md their side): a
+~350-line single-file C++ binary (tools/fx_v2/) that never
+touches torch, Python, or libm reproduces BOTH P3 digests
+exactly — streams bf76568d... and logit trace 311f71bf...
+— in 0.16 s. Pipeline: stdlib-only exporter (whitelisted
+Unpickler, sha-pin verified before parse) copies the int64
+storages verbatim to a flat "AXP3" binary; battery prompt
+ids frozen as data (sympy/tokenizer needed only at prompt
+GENERATION, never at decode); pure-int64 end-to-end (their
+pick of our "pure int64" branch — no fp32 carrier, no
+hi/lo split; max partial ~2^21, matching house diagnostic);
+own minimal SHA-256 over the exact repr byte formatting.
+Port subtlety they proved rather than assumed: Python
+floor division = C++ truncating division here because the
+round-half-away numerators are nonnegative with positive
+divisors — no floor emulation needed.
+
+VERDICT: the determinism ladder gains its final rung —
+cross-device (P3) -> cross-lab (FX-V1-H) -> CROSS-RUNTIME
+(FX-V2). The model is the integers, not the framework: the
+same weights produce the same bytes from a torch-free
+binary on a different substrate. Paper claim upgrade
+available for the determinism section. rANS-unpack rider
+deliberately left for a future cell (their call, agreed).
+
+## PRE-REG NIGHT-31-CUDA: rung-2 combos + rung-3 lambda-sweep, internally paired on the 3080 (2026-07-31 night, Artin's GO)
+
+Chain (scratch/night31_cuda.sh, seed 1, OTAG=_cuda, one
+device): lb -> tree -> treegrav -> gravmoe(0.5) -> channel
+-> chantree -> gravmoe lambda {0.1, 0.25, 1.0}. All nine
+arms born on cuda; comparisons stay WITHIN this chain
+(cross-device doctrine — Mac gates are never the control
+for these). FENCE AMENDMENT, honest: the rung-2 launch
+fence said "after rung-1 books"; FFN_E=139 (channel's
+params twin) has landed at 45/120 — above the old lb band,
+below channel's 48/49, so the capacity confound is already
+part-adjudicated (capacity buys some, not all); FFN_E=224
+(tree's twin) still training on the Mac and books when it
+lands. Launching combos tonight on that basis.
+PREDICTIONS (inherit RUNG-2 pre-reg, now device-paired):
+(1) the scaffold ORDER transports to cuda: gravmoe/channel
+/tree family beats same-device lb; (2) treegrav >= tree
+(params-identical pair) and within-pair leaf corr flips
+above across-pair; (3) chantree a_i pinned ~0 again; (4)
+lambda-sweep: collapse corr rises monotonically with
+lambda; gate has an interior optimum (0.5 was not tuned —
+if 0.25 or 1.0 beats it, the Hebbian pull is a real dial;
+if flat, the scaffold is threshold-not-dose).
