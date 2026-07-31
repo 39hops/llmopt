@@ -13282,3 +13282,38 @@ SCOPE: R2-mini = FFN-only birth. Full-block short birth
 (rmsnorm bwd + rope + CE/margin loss + attention wired
 in) = R2b, then R3 (gravmoe deterministic pair; wide
 accumulators; speed).
+
+## VERDICT CUDA SEED LADDER: the gravmoe advantage does NOT transport — cuda means are IDENTICAL (50.7 v 50.7); the recipe stays "free merge, capability-neutral"; rescue framing adopted (2026-07-31 night)
+
+Pre-reg above (Tier C opener). Chain completed on the
+3080 (logs/cuda_ladder_0731.log, internally paired,
+OTAG=_cuda): lb s2 51, lb s3 53; gravmoe s2 53,
+gravmoe s3 50. With the existing s1 pair: lb {48, 51,
+53} mean 50.7 v gravmoe {49, 53, 50} mean 50.7 — diff
+0.0, dead-center in the pre-registered +-2 band.
+PREDICTION (2) FIRES: the advantage is Mac-scoped; the
+recipe card stays "free merge, capability-neutral" with
+the Mac +5.5-7.5 gate advantage listed device-scoped.
+
+READ (the rescue framing, pre-registered before s3):
+cuda lb ALREADY sits at ~50.7 — the same basin Mac
+gravmoe reaches only WITH the pull (Mac lb 44/45). The
+gravitational relaxation doesn't add capability on cuda
+because there is nothing left to rescue: it lifts Mac
+births to the basin cuda training (TF32 matmul + its
+kernel reduction orders) reaches unaided. This makes
+the transport gap a TRAINING-ARITHMETIC effect, exactly
+the question the deterministic-birth program (R2b/R3)
+is built to answer exactly — a bit-identical gravmoe
+pair will show whether the pull's effect is a function
+of birth arithmetic or vanishes when arithmetic is
+equalized. Per amendment #2 the +-2 call at n=3 carries
+se(mean diff) ~4.1: the SIGN of a small residual is not
+resolved, but ">= +4 transport" is excluded at the
+observed 0.0.
+
+Merge reviews on the two new gravmoe ckpts (prediction
+3, toward merge-free n=6) ride in scratch/night31b_cuda
+.sh [HOLD]. SCAFFOLD PROGRAM: this was the last open
+question — thread CLOSED pending only the night31b
+merge-free extension and the R3 deterministic pair.
