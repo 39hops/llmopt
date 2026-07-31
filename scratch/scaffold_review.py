@@ -1,6 +1,6 @@
-"""Overnight scaffold review (2026-07-30 night): on the seed-2
-checkpoints — MERGE-1 on gravmoe_s2, channel-ablation on
-channel_s2. CPU. Runs as part of the overnight chain."""
+"""Overnight scaffold review: MERGE-1 on gravmoe_s{S}, channel
+ablation on channel_s{S} (S env, default 2; missing files skip).
+CPU. Runs as part of overnight chains."""
 import os
 import sys
 
@@ -9,6 +9,8 @@ sys.path.insert(0, ".")
 sys.path.insert(0, "scripts")
 sys.path.insert(0, "scratch")
 import torch  # noqa: E402
+
+S = os.environ.get("S", "2")
 
 import umoe_conserve as U  # noqa: E402
 import step_grpo_micro as G  # noqa: E402
@@ -24,7 +26,7 @@ def main():
     U.ARM = "gravmoe"
     os.environ["ARM"] = "gravmoe"
     tok, m = U.build()
-    sd = torch.load("checkpoints/umoe_gravmoe_s2.pt",
+    sd = torch.load(f"checkpoints/umoe_gravmoe_s{S}.pt",
                     map_location="cpu", weights_only=True)["sd"]
     m.load_state_dict(sd)
     corrs = []
@@ -39,7 +41,7 @@ def main():
                     b = vs[j] - vs[j].mean()
                     corrs.append(float((a @ b)
                                        / (a.norm() * b.norm())))
-        print(f"[review gravmoe_s2] corr "
+        print(f"[review gravmoe_s{S}] corr "
               f"{sum(corrs) / len(corrs):.4f}", flush=True)
         for blk in m.blocks:
             for k in ("g", "u", "d"):
@@ -48,12 +50,15 @@ def main():
                 for e in blk.moe.exp:
                     e[k].weight.copy_(mw)
     s, v = gate(m, tok)
-    print(f"[review merge_s2] gate {s}/120 valid {v}", flush=True)
-    # channel_s2 ablation
+    print(f"[review merge_s{S}] gate {s}/120 valid {v}", flush=True)
+    # channel ablation (skip if this seed has no channel ckpt)
+    if not os.path.exists(f"checkpoints/umoe_channel_s{S}.pt"):
+        print(f"[review] no channel_s{S} ckpt; skipping", flush=True)
+        return
     U.ARM = "channel"
     os.environ["ARM"] = "channel"
     tok, m = U.build()
-    sd = torch.load("checkpoints/umoe_channel_s2.pt",
+    sd = torch.load(f"checkpoints/umoe_channel_s{S}.pt",
                     map_location="cpu", weights_only=True)["sd"]
     m.load_state_dict(sd)
     amax = max(float(a.abs().max())
@@ -64,7 +69,7 @@ def main():
                         blk.moe.su2, blk.moe.sd, blk.moe.sd2):
                 pnm.zero_()
     s, v = gate(m, tok)
-    print(f"[review channel_s2] max|a_i| {amax:.3f}; S-zeroed "
+    print(f"[review channel_s{S}] max|a_i| {amax:.3f}; S-zeroed "
           f"gate {s}/120 valid {v}", flush=True)
 
 

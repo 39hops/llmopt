@@ -2032,3 +2032,20 @@ to the collaboration itself.
   uncertainty and they were deletable — ties the black-hole
   arc back to the compression arc. Attribution: house,
   seeded by Artin's day of frames.
+
+## 2026-07-31 ~3 AM — checkpoint forensics (Artin)
+
+The cleanup pass upgraded from janitorial to INSTRUMENT:
+during the checkpoints/ triage, (a) sha256 every .pt on
+BOTH machines, dedupe exact matches; (b) AUTOPSY the
+name-twins that differ — same script, same seed, different
+bytes tells us exactly where device/version nondeterminism
+entered a rung, and flags rungs worth re-checking; (c)
+cross-check surviving checkpoints against their booked
+RESULTS scores (re-run gates on a sample) — a score that
+doesn't reproduce is an amendment waiting to be found.
+Artin's framing: the diffs "give us more specific insight
+as to why the different machines ran the rest." Banked
+behind the cleanup GO; the manifest tool (ckpt_manifest)
+is the enabling first step and ships now. Attribution:
+Artin.

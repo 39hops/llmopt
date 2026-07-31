@@ -12506,3 +12506,50 @@ lambda-sweep: collapse corr rises monotonically with
 lambda; gate has an interior optimum (0.5 was not tuned —
 if 0.25 or 1.0 beats it, the Hebbian pull is a real dial;
 if flat, the scaffold is threshold-not-dose).
+
+## VERDICT OVERNIGHT-31 (rung 1): THE PARAMS CONFOUND BITES — tree's win was capacity, channel's mostly; the scaffold claim narrows to GRAVMOE (2026-07-31 ~3 AM, Mac)
+
+Params-matched lb controls (same recipe/device/seed):
+- FFN_E=224 (1.52M = tree's twin): 53/120 — ABOVE tree's
+  48. Prediction 3's capacity branch fires PAST its own
+  threshold: at matched params, plain lb beats the tree.
+  The tree parameterization was not a scaffold; if
+  anything it TAXED capacity (-5 at equal params, ~1σ).
+- FFN_E=139 (1.00M = channel's twin): 45/120 v channel
+  48/49 — a +3.5 residual, under 1σ. Channel's win is
+  mostly capacity; the structured residual is not
+  distinguishable from noise at n=2.
+- GRAVMOE UNTOUCHED: 0.93M (= plain lb exactly), 52/51
+  across seeds, corr-collapse + merge-free replicated.
+  It is the only params-clean structured win, and it
+  remains the program's result.
+
+VERDICT: the scaffold hypothesis SURVIVES ONLY AS THE
+HEBBIAN PULL. "Any extra shared-gradient structure helps
+training" is retracted to: "co-routing-weighted weight
+relaxation (gravmoe) helps at zero params and zero
+deploy-time anatomy; tree/channel structure was buying
+capacity, not dynamics." Yesterday's family narrative is
+hereby scoped — the BOARD line and THEORY row get the
+amendment. Rider: FFN_E=224 at 53 is itself notable
+(best non-merged single model of the program at +63%
+params); the capacity dial on this diet is not saturated
+at 0.93M. Cuda chain (NIGHT-31-CUDA) adjudicates the
+same questions device-paired; its lb-at-48 baseline
+makes the within-cuda bar appropriately higher.
+
+## PRE-REG DAY-31 QUEUE (both machines to 5 PM): gravmoe n=3 (Mac) + cuda params controls (3080 follow-on)
+
+(a) MAC: ARM=gravmoe SEED=3 birth + S=3 scaffold review
+(merge + corr). The surviving pillar goes to n=3.
+PREDICTION: corr collapse > 0.9, gate in the 46-56 band,
+merged within 1σ of unmerged — the merge-free recipe at
+3-for-3 becomes a bookable RECIPE (promotion candidate to
+llmopt/ + axiom C++ backend ask).
+(b) 3080 (chained after NIGHT-31-CUDA DONE marker):
+ARM=lb FFN_E=139 and FFN_E=224, OTAG=_cuda — the params
+controls INSIDE the cuda pairing, completing the
+device-paired replication of rung 1. PREDICTION: same
+shape as Mac (224-twin reaches/passes tree-class; 139-twin
+closes most of channel's gap). If cuda replicates the
+confound, the narrowed scaffold verdict is device-robust.

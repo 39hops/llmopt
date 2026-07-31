@@ -685,6 +685,13 @@ HCE calibration: does hce(state) predict solvability? (spec: 2026-07-06-hce-cali
 - `probe(state: State) -> tuple[int | None, bool, bool]` — (nodes-to-solve or None, solved@small, timed_out).
 - `main(levels: list[int], per_level: int, max_states: int, kind: str) -> None`
 
+### scripts/ckpt_manifest.py
+ckpt_manifest.py — checkpoint manifest for the curated tree.
+
+- `sha256(path, bufsize=1 << 20)`
+- `scan(base)`
+- `main()`
+
 ### scripts/consolidate_mathnative.py
 Self-distillation consolidation (post-climb strategy item B).
 
@@ -1141,6 +1148,11 @@ Unified crystal anatomy (2026-07-29 spec: slack-restoration). One env-parameteri
 - `snap(w, q_max)`
 - `truncate(W, r)`
 
+### scratch/basin_probe.py
+BASIN-1: routing basin radius v usage. CPU. Usage: SEED=1 python scratch/basin_probe.py
+
+- `main()`
+
 ### scratch/blackhole_b0.py
 BLACK HOLE MoEs B0+B1+B2 (pre-reg 2026-07-29 close): capacity atlas + dial-routed streaming pack + function-space spot check of Qwen3-30B-A3B. One shard on disk at a time (download -> process -> DELETE — the C7 OOM lesson, applied to disk). Zero calibration. Atlas rows to logs/blackhole_atlas.jsonl; packed parts to checkpoints/blackhole_q3_parts/ (codes npz per shard). Env: START/END shard 1-indexed bounds. __main__-guarded.
 
@@ -1163,6 +1175,16 @@ Build the rung-3 paired diets (spec 2026-07-28, 3-arm design).
 ### scratch/build_merged_diet.py
 Build data/merged_diet.jsonl (schedule-law queue item 1): gen-6 cumulative corpus (v22 + l8 + gen4 sidecar) + the L9a shard, with L1-L3 rationed to 45% (the gen-7 lesson). Stable string seed.
 
+
+### scratch/cal_dilute.py
+CAL-DK-2 (pre-reg 2026-07-30): diet dilution. Train the dense d64h8 recipe with fraction DILUTE of rows' targets swapped among the corrupted subset (fluent, determined-looking, WRONG rows). Usage: DILUTE=0.1 SEED=1 python scratch/cal_dilute.py Then: CKPT=checkpoints/cal_dilute_10_s1.pt python scratch/cal_dk_probe.py
+
+- `main()`
+
+### scratch/cal_dk_probe.py
+CAL-DK-1 (pre-reg 2026-07-30): does the crystal know when it doesn't know? Teacher-forced token-level reliability + per-level (3..7) confidence-v-accuracy on the d64h8 EMA crystal, Mac. Usage: python scratch/cal_dk_probe.py
+
+- `main()`
 
 ### scratch/calib_probe.py
 Calibration probe (spec 2026-07-28 rung 1): flips-per-token under a Q-lattice snap. Teacher-forced greedy argmax on a fixed 400-row probe set; count positions where the snapped twin's argmax differs from the unsnapped model's. Control arm: Q=0 (no snap) must read exactly 0 flips. Also reports the logit-margin distribution at flip sites (the snap-anatomy read: flips should sit at tiny margins). Usage: calib_probe.py <ckpt> <d> <layers> <ffn> <heads> [Q=16]
@@ -1345,6 +1367,16 @@ The format ladder (spec 2026-07-26-format-ladder, pre-reg in RESULTS). One birth
 - `build_chains()` — State-linked greedy chains from roots; consumes every row
 - `run_batches(batches, lr_fn, epochs_label='')`
 
+### scratch/fourier2_modbirth.py
+FOURIER-2: birth a Mod-diet crystal (nt pilot 500, callspan plain-arm recipe) and run the roots-of-unity probe properly. Usage: python scratch/fourier2_modbirth.py (pilot at data/)
+
+- `main()`
+
+### scratch/fourier_probe.py
+FOURIER-1: does the crystal implement the roots-of-unity filter? Per-neuron Fourier v indicator regression of answer-position activations over n mod k. CPU. Usage: python scratch/fourier_probe.py
+
+- `main()`
+
 ### scratch/fp64_paired.py
 THE ROUNDING-LOSS DECIDER (overnight GO): fp32 vs fp64-master paired burst at LR 2.5e-6 (GRPO's real regime). Same food stream, late-layer STE, 40 min/arm. PRIMARY metric: committed ternary flips vs own start (sub-ULP nudges absorbed by fp32 should COMMIT under fp64 masters -> more flips at equal food). Secondary: proxy. Usage: fp64_paired.py <fp32|fp64>
 
@@ -1425,6 +1457,23 @@ Graph-modularity read: gen-8 five-grammar crystal vs single-grammar 19M.
 - `layer_graph(feat: torch.Tensor) -> nx.Graph`
 - `read(path: str) -> tuple[float, float]`
 
+### scratch/grav1b_distance.py
+GRAV-1b (pre-reg 2026-07-30): the field in router coordinates. Bin tokens by router probability p_e on the ablated expert; report ablation dNLL per distance bin. Mac, umoe_lb_s{1,2}. Usage: SEED=1 python scratch/grav1b_distance.py
+
+- `main()`
+
+### scratch/grav2_spacetime.py
+GRAV-2 (pre-reg 2026-07-30): engineered spacetime — birth a d64h8 crystal with a contractivity penalty and price the toll.
+
+- `falloff(model, enc, tok, dev, eps=0.05)` — Gentle-kick displacement profile: perturb block-k input by
+- `main()`
+
+### scratch/grav_probe.py
+GRAV-1 (pre-reg 2026-07-30): expert gravity in the micro-MoE.
+
+- `batches(enc, tok, dev, bs=8)`
+- `main()`
+
 ### scratch/greedy_first_gate.py
 Greedy-first adoption cell (pre-reg 2026-07-28 night): on the FULL production gate battery (same seeds/levels as gate_eval), race (a) wave-8 (production) vs (b) greedy-first with wave-8 retry only at plies where greedy's candidate fails verification. Same chain semantics as gate_eval (12 plies, oracle-picked). Usage: greedy_first_gate.py <ckpt> <d> <layers> <ffn> <heads> <label>
 
@@ -1470,6 +1519,16 @@ Judge-collapsed decoding (spec 2026-07-28 rung 4, pre-reg 2026-07-28). Three arm
 
 - `greedy_step(prefix, spend, branch=False)` — Greedy decode one Step line. branch=True: at the FIRST
 - `run_chain(cur0, arm, seed0)`
+
+### scratch/k3_expert_demo.py
+K3-D1: the Kimi-K3 single-expert deterministic demo.
+
+- `_get(url, lo=None, hi=None)`
+- `fetch_expert()`
+- `dequant(packed, scale)` — MXFP4-pack -> (codes2x int64 [out,in], exps int64 [out,groups],
+- `det_gemv(codes2x, exps, x, dev)` — Exact integer y = W @ x on the shipped MXFP4 codes.
+- `chain(deq, dev)` — K3-D2: full deterministic expert forward y = w2 @ (silu(w1@x)
+- `main()`
 
 ### scratch/kv_equiv.py
 KV-cache sampler + equivalence oracle (house rule: token- identical to eager full-recompute, or it doesn't ship).
@@ -1800,6 +1859,12 @@ Pincer R8: meet v1 — full protocol (conjecture + peel + meet) vs let-it-finish
 - `wave(model, cur, seeds, arm)`
 - `chain_search(model, root, seed0, arm, goal=None, plies=12)` — Greedy verified chain (gate discipline); if goal set given,
 
+### scratch/place1_gravity.py
+PLACE-1 (pre-reg 2026-07-30): inference-time gravity — co-routing prefetch v popularity on real OLMoE traces. Mac, after UMOE-3. Usage: python scratch/place1_gravity.py
+
+- `collect()`
+- `main()`
+
 ### scratch/polar_snap.py
 POLAR-SPLIT SNAP (pre-reg 2026-07-29 day: escalation-engine cell 4). cplx_none.pt (unconstrained complex FFN, d384/f1536/h6): quantize the complex gate/up weights |c| COARSE x arg(c) FINE v uniform re/im grids, both expressed in sigma units (sigma law rider), bits/complex MEASURED as log2(#distinct values used). Fence: gate+up only (the complex-paired tensors); qkv/o/down untouched. Desk, MPS.
 
@@ -1877,6 +1942,12 @@ Rotational snap R2 (pre-reg 2026-07-28): gate wfloor_d256 with gate matrices pro
 
 - `project(sd, t)`
 - `gate(sd, tag)`
+
+### scratch/scaffold_review.py
+Overnight scaffold review: MERGE-1 on gravmoe_s{S}, channel ablation on channel_s{S} (S env, default 2; missing files skip). CPU. Runs as part of overnight chains.
+
+- `gate(m, tok)`
+- `main()`
 
 ### scratch/scorer_s1_battery.py
 S1: the frontier battery + persistent value cache (spec 2026-07-27-calibrated-scorer; pre-reg in RESULTS).
@@ -2001,6 +2072,16 @@ Tier-retry controller (pre-reg 2026-07-29: attention-core Leg 0). d56 matryoshka
 fp64 end-to-end birth (the rounding-loss-veil A/B, banked 2026-07-17): all weights/activations/optimizer double precision on CPU. One variable vs seedvar-1 (fp32, same seed/diet). If the gate moves >=3, matmul/update rounding at fp32 costs capability at birth — the veil is real. If flat, fp32 birth arithmetic is above the noise floor and precision stays an ONLINE-only knob.
 
 
+### scratch/umoe_conserve.py
+UMOE-1 (pre-reg 2026-07-30): micro-MoE conservation 3-arm. First house MoE births. d64 h8 L8, FFN -> 4 experts (SwiGLU ffn_e=128) + top-1 switch router per block; gen-4 diet, 3 epochs, seed 1, all arms one device (3080).
+
+- `class MoEFFN` (forward)
+- `rope(q, k, pos0=0)`
+- `moe_forward(self, x, mask, past=None)` — Block.forward twin with the FFN swapped for self.moe.
+- `build()`
+- `probes(model, enc, dev)` — corr / MI / meter on the trained model.
+- `main()`
+
 ### scratch/vmasm.py
 vm-asm closed system (code continent rung 1): straight-line mini-ISA over r0-r3, one-rule rewrite chains, EXACT symbolic oracle (programs are polynomial register maps; sympy decides equivalence). Emits diet + probe with standing doctrine: stable string seeds, determinable one-rule rows, every row oracle-verified before write. Usage: vmasm.py <n_train_rows> <out_prefix>
 
@@ -2034,6 +2115,13 @@ Weight-FFT euler read (pre-reg 2026-07-26, RESULTS.md).
 ### llmopt/__init__.py
 llmopt: inference + training optimization library.
 
+
+### llmopt/runlog.py
+llmopt.runlog — standard run logging with honest wallclock.
+
+- `class ElapsedFormatter` (format)
+- `get_logger(name='llmopt', level=None, stream=None, fmt=DEFAULT_FMT)` — Idempotent: repeated calls return the same configured logger.
+- `timed(label, log=None, level=logging.INFO)` — Context manager: logs '<label> done in <t>s' on exit,
 
 ## llmopt/train/
 
