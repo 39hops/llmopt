@@ -12746,3 +12746,35 @@ Predictions unchanged from the FOURIER-3 pre-reg; v1
 clocks (k=5 351/512, k=9 0, k=7 0) consistent with
 clocks-follow-competence but NOT bookable for the causal
 arrow until competence actually arrives at k=9.
+
+## VERDICT FOURIER-3: THE ALGORITHM SUBSTITUTES FOR THE CLOCK — competence WITHOUT representation (2026-07-31 ~12:40 PM, Mac, v2 length-uniform)
+
+Gate (multi-hop rollout, held-out n): taught moduli
+k=3 0.71, k=9 0.83 — competence ARRIVED via the digit-sum
+rewrite chain (v1-starved 0.00; no-algorithm 2b baseline
+0.34/0.16). Untaught hard controls stay dead: k=7 0.04,
+k=11 0.11 — no leak (prediction 2 confirmed). Shortcut
+moduli 4/5/10 hold 1.00; k=8 rose 0.63->1.00 (length-
+uniform diet gave the 3-digit rule its share too).
+Overall 0.674 v 2b's 0.526.
+
+Clock probe: k=9 periodic neurons = 0/512 AT 0.83
+COMPETENCE. Branch (a) of the pre-registration books:
+the learned ALGORITHM externalizes the computation into
+the rewrite chain, and the single-pass rotational
+representation NEVER FORMS. With FOURIER-2b this
+completes a two-sided law:
+  - single-pass competence (digit shortcuts) -> clocks,
+    massively (276-351/512);
+  - chain competence (taught algorithm) -> NO clocks
+    (0/512), same accuracy class;
+  - no competence -> no clocks (k=7: 1/512 at 0.04).
+Clocks are the signature of WHERE the computation runs,
+not whether the task is solved. Prosthetics-replace-
+anatomy (step-local spans, 07-28) now has its
+representation-level twin, measured with a pre-registered
+two-branch design. Rider: k=5 clock population varies
+with diet composition (351 -> 142 across v1/v2 at acc
+1.00 both) — population SIZE is exposure-sensitive even
+where competence saturates; clock presence/absence is the
+robust readout, count is not.
