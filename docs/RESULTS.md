@@ -12996,3 +12996,38 @@ Suite: 392 passed. Axiom C++ ask drafted (relay
 2026-07-31-0): dense-plus-scalar-gate forward for merged
 crystals in their stack — training stays torch by
 doctrine; inference homecoming is theirs.
+
+## VERDICT MERGED-CRYSTAL C++ (cross-lab receipt): PASS both seeds — the merge recipe's endpoint runs token-identical in axiom's stack, same day as the ask (2026-07-31 evening, their commit 0104e1d)
+
+Axiom's report (relayed; their reply relay at
+docs/relay/2026-07-31-2-merged-crystal-cpp.md their
+side): C++ forward reproduces the torch merged model's
+greedy streams TOKEN-FOR-TOKEN — 5 prompts x 40 tokens,
+zero divergences, BOTH umoe_gravmoe_s1 and s2. No
+artifact transfer needed (shared llmopt clone); they
+wrote the exporter to their own spec and closed the cell
+locally. Shipped their side: AXNN v1.2 (declared
+ffn_gate "switch_top1" + n_experts + per-block router
+tensor; validation rejects undeclared/stray/missing
+router — new gtest, suite 481/481);
+tools/moe_merge/export_merged_axnn.py (merge 4->1 dense
+SwiGLU keeping the router, sha-pinned exports, torch
+fp32 reference streams); axiom-nn-moe-greedy driver on
+the frozen FX-V2 battery prompts. The scalar-gate
+subtlety (router softmax-max off the pre-LN hidden,
+exactly as the trainer computes it) landed correctly
+first try.
+
+HONEST CAVEAT (theirs, adopted): the bar is
+token-identical FLOAT agreement (torch fp32 v their
+double-accumulation), not bit-identical logits — argmax
+margins survived all 48 steps x 8 blocks per row.
+FOLLOW-UP ON OFFER (house recommendation: ACCEPT as
+FX-V3): route the merged crystal through the P3/FX-V2
+integer twin — one extra shipped table (router softmax)
+deletes the tolerance column here too and puts the
+recipe's endpoint fully inside the cross-runtime
+determinism family. Awaiting Artin's relay to confirm.
+The recipe's lifecycle is now measured end-to-end in one
+day: torch birth -> free merge (n=4) -> C++ deployment
+(token-identical, two labs).
