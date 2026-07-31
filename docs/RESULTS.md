@@ -12651,3 +12651,27 @@ are not "more epochs" away at this recipe; they need the
 ALGORITHM in the diet (FOURIER-3 candidate: digit-sum
 decomposition rows for k=3/9, then test whether clocks
 APPEAR at k=9 after competence — the causal arrow test).
+
+## PRE-REG FOURIER-3 + MERGE-CUDA review (2026-07-31 ~11 AM, Mac, parallel)
+
+(a) FOURIER-3 (scratch/fourier3_algdiet.py): FOURIER-2b
+diet + the ALGORITHM for k in {3,9} — rows teach
+Mod(n,k) -> Mod(digitsum(n),k) rewrites (n>=10), terminal
+answers below; k=7/11 stay UNTAUGHT as hard controls;
+eval = multi-hop greedy rollout on held-out n's (oracle
+convergence of the teaching chain verified pre-launch, 0
+mismatches/2000). PREDICTIONS: (1) k=3/9 rollout acc
+rises far above 2b's 0.34/0.16 (algorithm learnable as
+local rewriting); (2) k=7/11 stay near chance on BOTH
+axes (acc + clocks) — competence doesn't leak; (3) THE
+POINT — the k=9 clock either (a) stays absent while
+competence arrives (algorithm SUBSTITUTES for rotational
+representation; single-pass activations never need n mod
+9) or (b) appears (practice on reduced forms builds it).
+House lean: (a), by the prosthetics-replace-anatomy
+precedent (step-local spans). Either branch books.
+(b) MERGE-CUDA: umoe_gravmoe_cuda_s1.pt pulled sha-
+verified (3e86e7c3); merged v unmerged BOTH gated on Mac
+(same-device pair; cuda-run gate never compared).
+PREDICTION: merge delta within 1σ — merge-free goes
+4-for-4 across devices.
