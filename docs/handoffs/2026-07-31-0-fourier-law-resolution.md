@@ -94,3 +94,42 @@
 - [HOLD] paper (banked at prose-v1; FX-V2 upgrade available).
 - Standing: consistent-corruption DK arm; mass candidates; old-null
   revival sweep; HCE/NNUE shelf v2; P/NP pincer-scaling.
+
+## Addendum 1 (~evening) — the afternoon and evening
+
+- TIER A closed 3-for-3: gate POOLING adopted (120-prompt integer
+  battery digest identical Mac/3080 — cross-device seed ladders
+  legal on the deterministic path); graph-modularity NULL REVERSED
+  (dQ +0.030 = z~10 v measured seed sd 0.0020, wfloor-family
+  fence); rotation weight-lenses BLIND to activation clocks
+  (positive control null — old spontaneous-rotation nulls scope to
+  weight-basis only).
+- B6 booked: zeta-8 alphabet neutral-to-negative ON the periodic
+  diet (worst at its own modulus); complex-none ties real;
+  GRADED clock law (partial competence -> partial clock, all
+  arms; THEORY row amended). Rider: unsnapped complex suggestive
+  at k=8 (fenced).
+- Lambda-sweep booked: gates flat 48/47/49/50, corr monotone
+  0.83->0.97 — anatomy dial, not capability.
+- PROMOTIONS (Artin GO): llmopt/train/hebbian_moe.py (coupler +
+  merge, 6 tests) + llmopt/train/complex_ffn.py (unsnapped only,
+  4 tests incl. torch.complex equivalence); suite 392.
+- CROSS-LAB same-day: axiom merged-crystal C++ PASS both seeds,
+  token-identical greedy (AXNN v1.2 switch_top1, their 0104e1d);
+  FX-V3 (integer twin + router-softmax table) on offer — house
+  recommends ACCEPT, awaiting Artin relay. Their no-transfer close
+  was enabled by the morning's checkpoints/confirmed/ commit.
+- INFRA: RESULTS-index PostToolUse hook (.claude/settings.json;
+  may need /hooks reload first session); /book + /labstatus
+  project skills; 5 friendly-fire hookify rules; hookify plugin
+  cache bug fixed (versioned-layout symlink, report upstream);
+  reviewer agent def (.claude/agents/reviewer.md — read-only opus,
+  ask-first, verify-always, self-report demanded; memory updated).
+- IN FLIGHT at addendum: B5 v3 (EMA-matched depth-uniform farmer;
+  two launch stumbles amended — diff the FULL env line of the
+  original launch); CUDA SEED LADDER (lb/gravmoe s2+s3 — the
+  transport question at n=3, pre-registered); Mac + (queued) 3080
+  ckpt_manifest --all forensics scans; Opus day-review pass
+  (verdict cross-check, output to be verified before adoption).
+- Role clarification (Artin): Fable owns queue + ideas; Opus
+  reviewers verify only, plainly.
