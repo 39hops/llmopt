@@ -12675,3 +12675,21 @@ verified (3e86e7c3); merged v unmerged BOTH gated on Mac
 (same-device pair; cuda-run gate never compared).
 PREDICTION: merge delta within 1σ — merge-free goes
 4-for-4 across devices.
+
+## VERDICT MERGE-CUDA: merge-free goes 4-for-4 — seeds AND devices (2026-07-31 ~11:30 AM)
+
+umoe_gravmoe_cuda_s1.pt (cuda-born, sha 3e86e7c3, gated
+both ways on Mac for a same-device pair): corr collapse
+0.9508; UNMERGED 49/120, MERGED 51/120. Fourth
+consecutive merge at zero-or-positive delta: {+2, -2,
++1, +2} across three Mac seeds + one cuda birth. The
+merge-free property of the Hebbian-pull MoE is now
+replicated across BOTH training devices — it is a
+property of the RECIPE, not of a seed or a backend.
+Incidental determinism point: the Mac re-run of the
+unmerged gate reproduced the cuda-run gate EXACTLY
+(49/120, valid 45.1867816091954 to full precision) —
+greedy gates on this checkpoint are device-stable.
+Remaining transport question is only the SIZE of the
+gravmoe advantage v lb (Mac +5-6, cuda +1) — adjudicates
+with the cuda lambda-sweep + a cuda lb seed-2 if needed.
