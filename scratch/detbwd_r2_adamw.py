@@ -106,11 +106,13 @@ def main():
     torch.manual_seed(SEED)
     ts, td = (t.to(dev) for t in build_tables())
     # teacher: frozen integer FFN; student starts elsewhere
-    mk = lambda: torch.randint(-Q, Q + 1, (F, D), dtype=torch.int64,
-                               device=dev)
+    # draw on CPU then move: device RNG streams differ (the R1a/b
+    # convention; violating it cost this run its first cross-check)
+    mk = lambda: torch.randint(-Q, Q + 1, (F, D),
+                               dtype=torch.int64).to(dev)
     tw = [mk() for _ in range(3)]
-    xq = torch.randint(-Q, Q + 1, (T, D), dtype=torch.int64,
-                       device=dev)
+    xq = torch.randint(-Q, Q + 1, (T, D),
+                       dtype=torch.int64).to(dev)
     tgt, _ = ffn_fwd(xq, *tw, ts)
     student = [mk() for _ in range(3)]
     opt = IntAdamW(student)
