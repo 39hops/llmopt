@@ -2,9 +2,13 @@ cff-version: 1.2.0
 message: >-
   If you replicate, build on, or benchmark against this repository
   (the capacity meter, the deterministic integer training battery,
-  the gate protocols, or any booked result), please cite it as
-  below. The verdict-by-verdict ledger (docs/RESULTS.md) is the
-  citable record; entries are dated and sha-pinned.
+  the gate protocols, or any booked result), cite it as below AND
+  pin the exact commit: every citation must name the git commit
+  sha (and tag, if any) it relies on — the lab is a moving ledger
+  and results are amended in place by dated entries, so an
+  unpinned citation is unverifiable. The verdict-by-verdict ledger
+  (docs/RESULTS.md) is the citable record; name the specific
+  verdict entry plus the commit sha that contains it.
 title: "llmopt: an oracle-verified LLM inference and training optimization lab"
 type: software
 authors:

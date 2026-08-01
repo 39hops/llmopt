@@ -11,10 +11,14 @@ verdict-by-verdict history (wins, nulls, and retractions alike) is
 
 **Citing this work**: if you replicate or build on anything here —
 the capacity meter, the deterministic integer battery, the gate
-protocols, or any booked result — please cite the repo (see
+protocols, or any booked result — cite the repo (see
 [`CITATION.cff`](CITATION.cff); GitHub's "Cite this repository"
-button uses it). Results in the ledger are dated and sha-pinned, so
-a citation can name the specific verdict it relies on.
+button uses it) **and pin the version: every citation must name
+the exact git commit sha (and tag, if any) it relies on**. This is
+a moving ledger — verdicts are amended in place by dated entries —
+so an unpinned citation is unverifiable. Name the specific verdict
+entry in [`docs/RESULTS.md`](docs/RESULTS.md) plus the commit that
+contains it.
 
 ## Highlights
 
