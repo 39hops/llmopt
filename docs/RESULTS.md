@@ -14336,3 +14336,36 @@ zero-prob 0.90 in all arms).
 NEXT: P4 device/lab legs (3080 rjob nightly + axiom
 relay) now carry BOTH contracts (saturated + COND);
 the q/k logit-scale rung stays banked.
+
+## PRE-REG QK-COND: the q/k logit-scale knob + LEARNED attention temperature (dynamic attention), on the conditioned base (2026-08-01 evening, Mac)
+
+All arms COND=1 (residual writers +-Q/8), 2000 steps,
+seed 17, same windows. FIRST LIGHT, before arms: QK=1
+(wq/wk at +-Q/8) removes attention saturation
+ENTIRELY (zero-prob 0.901 -> 0.000, clamp 0.000) and
+twin fidelity reaches 0.999986 — the near-tie class
+dies with the saturation, as the instrument booking
+theorized. TAU=1 adds a LEARNED per-body integer
+temperature tt (Q-scale, init 1.0): s = rdiv(s0*Q,
+tt), dtt = -rdiv(sum(ds*s), tt) — attention sharpness
+becomes a trained parameter (dynamic attention,
+Artin's ask; kin to the dynamic-k/R^2 riff). Contract
+forks: QK changes wq/wk draw bounds only; TAU appends
+tt to body KEYS (no rng draw).
+ARMS: B1 QK, B2 TAU, B3 QK+TAU (all lambda 0); B4
+QK+TAU + lambda 1/4 (does the interior optimum survive
+FULL conditioning?). Booked baselines: COND A0 8883,
+COND A2 8185.
+PREDICTIONS: (1) B1 < COND A0 (soft attention at init
+= more gradient through attention; direction firm,
+size unknown); (2) B2 alone changes little at init
+(tt starts at 1.0 = identity) but learned tts drift
+DOWN (sharper) by end — the saturated softmax was
+compensating for something: if tts instead drift UP
+(softer), the peaked-attention regime was
+load-bearing and the knob books as its own finding;
+(3) B3 best loss of the battery so far; (4) B4 <= B3
+(gravity still helps or is neutral at 1/4 under full
+conditioning — if B4 > B3, the interior optimum was a
+rails+attention artifact and the gravmoe help does
+not survive conditioning, an honest possible null).

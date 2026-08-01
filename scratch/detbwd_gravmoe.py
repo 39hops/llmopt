@@ -51,6 +51,14 @@ LD = int(os.environ.get("LD", "1"))
 # ORDER, different bound — a contract fork, never a tweak.
 COND = os.environ.get("COND") == "1"
 QW = (Q // 8) if COND else Q
+# QK-COND rung: q/k logit scale. QK=1 draws wq/wk at +-Q/8
+# (softer attention at init). TAU=1 adds a LEARNED per-body
+# integer temperature tt (Q-scale, init Q): s = rdiv(s0*Q, tt)
+# after the fixed SCALE division — dynamic attention sharpness,
+# trained by the same optimizer.
+QK = os.environ.get("QK") == "1"
+QKW = (Q // 8) if QK else Q
+TAU = os.environ.get("TAU") == "1"
 K = int(os.environ.get("K", "100"))
 STEPS = int(os.environ.get("STEPS", "2000"))
 # gravmoe contract boost: the top_p gate shrinks backward values
@@ -65,13 +73,17 @@ EKEYS = tuple(f"e{j}.{k}" for j in range(E)
 
 class MoBody(M.Body):
     """Body with the FFN behind an E-expert switch_top1 router."""
-    KEYS = ("wq", "wk", "wv", "wo", "g1", "g2", "wr") + EKEYS
+    KEYS = (("wq", "wk", "wv", "wo", "g1", "g2", "wr") + EKEYS
+            + (("tt",) if TAU else ()))
 
     def __init__(self):
         mk = lambda *sh: torch.randint(-Q, Q + 1, sh,
                                        dtype=torch.int64)
         mkc = lambda *sh: torch.randint(-QW, QW + 1, sh,
                                         dtype=torch.int64)
+        mk = (lambda *sh: torch.randint(-QKW, QKW + 1, sh,
+                                        dtype=torch.int64)) \
+            if QK else mk
         # shared draws first, then router, then experts (spec);
         # wo and e{j}.wd are the residual writers (mkc under COND)
         self.w = {"wq": mk(M.DH, D), "wk": mk(M.DH, D),
@@ -83,6 +95,8 @@ class MoBody(M.Body):
             self.w[f"e{j}.wg"] = mk(F, D)
             self.w[f"e{j}.wu"] = mk(F, D)
             self.w[f"e{j}.wd"] = mkc(D, F)
+        if TAU:      # learned temperature, Q-scale, init 1.0 (=Q)
+            self.w["tt"] = torch.full((1,), Q, dtype=torch.int64)
 
     def _ffn_fwd(self, h2, j, tab, c, sel):
         """Expert j forward on selected rows; caches under j."""
@@ -112,8 +126,11 @@ class MoBody(M.Body):
                   M.rope_fwd(k, cos, sin))
         c["qr"], c["kr"] = qr, kr
         s = rdiv(int_mm(qr, kr), M.SCALE)
+        if TAU:
+            s = rdiv(s * Q, w["tt"])
         causal = torch.tril(torch.ones(T, T, dtype=torch.bool))
         s = torch.where(causal, s, torch.full_like(s, -(1 << 40)))
+        c["s"] = s
         p = softmax_rows(s, t_exp, PQ)
         c["p"] = p
         a = rdiv(int_mm(p, v.transpose(0, 1)), PQ)
@@ -205,6 +222,12 @@ class MoBody(M.Body):
         dv = rdiv(int_mm(c["p"].transpose(0, 1),
                          da.transpose(0, 1)), PQ)
         ds = softmax_bwd(c["p"], dp, PQ)
+        if TAU:
+            # s = s0*Q/tt: dtt at boost scale (masked entries have
+            # ds=0, so the -(1<<40) fill never enters the sum)
+            G["tt"] = -rdiv((ds * c["s"]).sum().reshape(1),
+                            w["tt"])
+            ds = rdiv(ds * Q, w["tt"])
         dqr = rdiv(int_mm(ds, c["kr"].transpose(0, 1)), M.SCALE)
         dkr = rdiv(int_mm(ds.transpose(0, 1),
                           c["qr"].transpose(0, 1)), M.SCALE)
@@ -338,6 +361,8 @@ def twin_fp64(m, tok, tgt, tops, masks=None):
         q, k_, v = h1 @ w["wq"].T, h1 @ w["wk"].T, h1 @ w["wv"].T
         qr, kr = rope(q), rope(k_)
         s = (qr @ kr.T) / M.DH ** 0.5
+        if TAU:
+            s = s / w["tt"]
         mask = torch.tril(torch.ones(T, T, dtype=torch.bool))
         p = torch.softmax(s.masked_fill(~mask, float("-inf")), -1)
         x1 = iclamp(x + (p @ v) @ w["wo"].T, mk1)
@@ -454,6 +479,9 @@ def main():
     m.emb, m.g_f = nar["emb"], nar["g_f"]
     for i, b in enumerate(m.bodies):
         b.w = {k: nar[f"b{i}.{k}"] for k in MoBody.KEYS}
+    if TAU:
+        tts = [int(b.w["tt"]) for b in m.bodies]
+        print(f"[gmoe] learned tt (Q=512=1.0): {tts}")
     agr = agreement(m, wins, tab)
     base = run_loss(m, wins, tab, t_exp)
     # merge test: average experts to dense, in place, exactly
