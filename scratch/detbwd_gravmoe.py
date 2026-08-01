@@ -43,7 +43,7 @@ from detbwd_r3_qw import IntAdamWQw  # noqa: E402
 V = 40
 M.V = V
 E = int(os.environ.get("E", "4"))
-D, F = 64, 128
+D, F = M.D, M.F   # r2b's dims (DIM/FFN env knobs, defaults 64/128)
 LN = int(os.environ.get("LN", "0"))
 LD = int(os.environ.get("LD", "1"))
 # DIET-COND rung: residual-WRITING matrices (wo, e{j}.wd) drawn

@@ -23,7 +23,13 @@ from detbwd_r1b import TSE, build_exp_table, exp_lut  # noqa: E402
 from detbwd_r2_adamw import isqrt_newton  # noqa: E402
 from detbwd_r3_qw import IntAdamWQw  # noqa: E402
 
-T, D, DH, F, V = 32, 64, 16, 128, 64
+T, V = 32, 64
+# GRAVMOE-BRUTE params axis: width env knobs, defaults unchanged
+# (default path stays sha-identical to every pinned trajectory)
+_env = __import__("os").environ
+D = int(_env.get("DIM", "64"))
+DH = int(_env.get("DHEAD", "16"))
+F = int(_env.get("FFN", "128"))
 ACT_CLAMP = 32 * 512               # P3 residual clamp, Q units
 SEED = 17
 SCALE = round(Q * DH ** 0.5)
