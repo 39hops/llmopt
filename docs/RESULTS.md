@@ -14915,3 +14915,20 @@ surface: the axiom lab leg (relay -5 staged; EXPORT
 artifacts shipping). Fence: sha-identity certifies
 determinism, not correctness — correctness lives in
 the oracle gates and the fp64 twin, unchanged.
+
+## PRE-REG GRAVMOE-BRUTE-C (extends GRAVMOE-BRUTE-B): the clamp-matched width arm — ACT_CLAMP is measured, not scaled (2026-08-01 night, Mac)
+
+BR-W4b's fence FIRED AGAIN at the pre-registered bar:
+INIT clamp-frac 0.064 > 0.05 with ACLAMP doubled for
+doubled D — clamp demand does not scale linearly in
+width. Instrument answer: MEASURE it. STEPS=1 init
+sweep at D=128: ACLAMP 32768 -> 0.064, 49152 -> 0.013,
+65536 -> 0.002. Matched-at-init value = 49152 (0.013 v
+baseline 0.010).
+ARM BR-W4c: GATE=1 COND=1 QK=1 DIM=128 DHEAD=32
+FFN=256 ACLAMP=49152, STEPS=2000 — fires after BR-W4b
+completes. PREDICTIONS: unchanged from BRUTE-B's width
+arm (TRAIN > 2/8 and tok > 94/140 if capacity binds);
+BR-W4b books as data (its 0.064 is mild — read it
+against W4c as an accidental clamp-dose pair).
+Decision rule unchanged. n=1.
