@@ -15,7 +15,11 @@ that FINISHED or CRASHED since the last check.
    ls -t logs/*.log | head -8
    for f in $(ls -t logs/*.log | head -6); do echo "== $f"; tail -3 "$f"; done
    pgrep -fl "python scratch/" | grep -v grep || echo "no local runs"
+   RJOB_LOCAL=1 .venv/bin/python scripts/rjob.py status
    ```
+
+   (rjob jobs are the preferred launch path — `status` shows
+   RUNNING/DONE-with-rc/DIED by job ID, no string matching.)
 
 2. **3080** (single wsl.sh call; never compare its gate numbers to
    Mac numbers — cross-device doctrine):

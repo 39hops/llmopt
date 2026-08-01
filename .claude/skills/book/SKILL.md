@@ -36,3 +36,23 @@ metadata, perform ALL of these steps in order:
   legal within it only).
 - If the verdict touches a THEORY row or a RIFF-LEDGER bank,
   update those in the same commit (living-docs discipline).
+
+## Checksums learned the hard way (2026-08-01 session)
+
+- **Gate numbers book as DICTS, not totals** — quote the per-level
+  solves dict and verify it SUMS to the claimed total before the
+  entry is written. The one number in a gate line that is NOT a
+  solve count is the validity float; a "48" was booked from
+  `valid 48.27` once and survived TWO review passes. The dict is
+  the checksum.
+- **Amendments set their `amends` target in the index in the same
+  commit** — an amendment without a target is the needs_link
+  backlog being born.
+- **Before booking any constant** (GBOOST, SHIFT, Q, lr), grep the
+  SHIPPED script for its current value — a diagnostic edit that
+  was never reverted becomes the shipped value silently (GBOOST
+  64->256 was booked as 64). What the artifact/JSON records
+  governs; the prose must match it.
+- **Provenance line**: a gate booking quotes the `weights sha`
+  line that gate_eval now prints (dtype-sensitive — never compare
+  shas across precisions).
