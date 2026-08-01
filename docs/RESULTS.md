@@ -13781,3 +13781,58 @@ bit-reproducible from shipped bytes across two
 codebases. Remaining rungs are SCALE (multi-block,
 real diet, gravmoe pair = the transport answer) and
 DEVICE (3080 legs on night31b GO) — no new mathematics.
+
+## AMENDMENT (REVIEW ADOPTION #2, morning pass; supersedes the provenance amendment of 2026-07-31 night): the "45" was the FFN_E=139 CAPACITY TWIN — no artifact was ever lost; plus three corrections (2026-08-01 morning)
+
+An Opus 5 reviewer (self-reported, read-only) audited
+every booking from the transport verdict onward; each
+finding verified against primary sources before
+adoption, including one fresh confirmation gate.
+
+1. PROVENANCE, CORRECTED (target: the RE-GATE SIGMA
+   amendment's "artifact lost" story — that story is
+   WITHDRAWN): param counts are decisive — disk
+   umoe_lb_s1 = 0.93M (plain lb, FFN_E=128), and its
+   ORIGINAL UMOE-1 booking was 37 (L11596), matching
+   every re-gate today. The overnight "45" run printed
+   0.99M = FFN_E=139, the channel's params twin (booked
+   45 at L12495); the 1.52M run = FFN_E=224 (53).
+   CONFIRMATION GATE (fresh, this morning):
+   umoe_lb_f139_s1.pt re-gates 45 with the EXACT dict
+   {3:16, 4:5, 5:14, 6:7, 7:3} and validity
+   43.975903614457835 — character-identical to
+   overnight_0730.log L110. NOTHING WAS LOST; the bug
+   was the day-31 shorthand "Mac lb 44/45" absorbing a
+   capacity-twin number into the baseline. Mac lb
+   baseline = {37 (s1), 44 (s2)}; 45 and 53 belong to
+   the capacity row. Consequence: the Mac gravmoe
+   advantage (52/51/50 v 37/44) is LARGER than the
+   booked +5.5-7.5 — but n=2 baseline, so the figure
+   stays device-scoped and unsharpened until a third lb
+   seed exists. The gate instrument emerges STRONGER:
+   every number it has ever produced now reconciles.
+2. TRANSPORT VERDICT, REWORDED (target: cuda seed
+   ladder verdict): ">= +4 transport is excluded at the
+   observed 0.0" overreached — with se(mean diff) ~4.1
+   at n=3, +4 sits under 1 se from 0. Correct: the
+   point estimate is 0.0 and prediction (2)'s +-2 band
+   fires; +4 is UNSUPPORTED but not excludable at n=3.
+3. GBOOST ERRATUM (target: R2b relay + v1 comment): the
+   shipped value is 256, not 64 (the 64->256 diagnostic
+   was never reverted; every digest was produced at
+   256; r2b_ref.json governed so axiom's leg is
+   unaffected). Relay erratum appended; comment fixed.
+4. MINOR SCOPING (adopted): R2b v2's "still descending"
+   holds over the last eighth but the pre-reg bar (c)
+   "strictly falling" remains UNMET at v2 (milestones
+   non-monotone: 625:10420 -> 750:10633) — carried as
+   an open bar to the multi-block cell. Gate-transcript
+   "0/8 valid" is a display denominator (post-dedup),
+   not gate_eval's validity statistic; "L4 2-5/24"
+   scopes to gravmoe/merge arms (lb s1's L4 is 1).
+   Weights-sha is dtype-sensitive (bf16 hashes its raw
+   bits) — never compare shas across precisions.
+5. rjob HARDENING (adopted, tested): jid validation,
+   child-written remote pid (util-linux setsid may
+   fork), kill writes rc=killed. Transcript instrument
+   gained an ARM/CKPT consistency assert.
