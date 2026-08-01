@@ -8,6 +8,12 @@ sys.path.insert(0, "scratch")
 import detbwd_gravmoe as G  # noqa: E402
 
 
+def _sleeping_worker(q):
+    import time
+    time.sleep(10)
+    q.put("late")
+
+
 def test_answer_region_includes_one_terminator_only():
     # marker [4, 26], answer [31, 32], newline 27, repeated EOS 1
     full = torch.tensor([8, 4, 26, 31, 32, 27, 1, 1],
@@ -20,6 +26,79 @@ def test_answer_region_rejects_missing_marker_or_terminator():
         G.answer_region(torch.tensor([8, 31, 27]), [4, 26], {27, 1})
     with pytest.raises(ValueError, match="terminator"):
         G.answer_region(torch.tensor([8, 4, 26, 31]), [4, 26], {27, 1})
+
+
+def test_token_accuracy_separates_suffix_from_padding():
+    full = torch.tensor([8, 4, 26, 31, 32, 27, 1, 1],
+                        dtype=torch.int64)
+    generated = full.clone()
+    generated[6:] = torch.tensor([9, 9])  # suffix correct, padding wrong
+    got = G.token_accuracy_counts(generated, full, (3, 5))
+    assert got == {
+        "standard_hits": 3,
+        "standard_total": 5,
+        "suffix_hits": 3,
+        "suffix_total": 3,
+    }
+
+
+def test_sympy_assess_separates_parseability_and_equivalence():
+    assert G.sympy_assess("x + x", "2*x") == (True, True)
+    assert G.sympy_assess("x + 1", "2*x") == (True, False)
+    assert G.sympy_assess("(", "2*x") == (False, False)
+
+
+def test_fork_deadline_kills_worker_without_alarm():
+    import time
+    t0 = time.monotonic()
+    assert G._fork_call(_sleeping_worker, (), timeout=0.01) is None
+    assert time.monotonic() - t0 < 1.0
+
+
+def test_gate_returns_padding_aware_oracle_metrics():
+    class Model:
+        def fwd(self, w, tab):
+            logits = torch.zeros((G.T, G.V), dtype=torch.int64)
+            logits[2, 31] = 1
+            logits[3, 32] = 1
+            logits[4, 27] = 1
+            logits[5:, 9] = 1
+            return logits, None
+
+    class Tokenizer:
+        eos_id = 1
+        id = {"\n": 27}
+        vocab = [""] * G.V
+        vocab[27] = "\n"
+
+        def encode(self, text):
+            assert text == "Step: "
+            return [4, 26]
+
+        def decode(self, ids):
+            assert ids == [31, 32]
+            return "x + x"
+
+    row = torch.tensor([8, 4, 26, 31, 32, 27] + [1] * (G.T - 5),
+                       dtype=torch.int64)
+    got = G.gate(Model(), row[None], ["2*x"], Tokenizer(), None, "TEST")
+    assert got == {
+        "solves": 1,
+        "parseable": 1,
+        "terminated": 1,
+        "standard_hits": 3,
+        "standard_total": 29,
+        "suffix_hits": 3,
+        "suffix_total": 3,
+    }
+
+
+def test_prompt_disjoint_guard():
+    ids = torch.tensor([[1, 2, 9], [3, 4, 9]], dtype=torch.int64)
+    assert G.assert_disjoint_prompts(ids, [2, 2], 1) == (1, 1, 0)
+    ids[1] = ids[0]
+    with pytest.raises(ValueError, match="overlap"):
+        G.assert_disjoint_prompts(ids, [2, 2], 1)
 
 
 def test_loss_dlogits_masks_scaffold_and_repeated_padding():

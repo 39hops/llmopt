@@ -282,6 +282,30 @@ def answer_region(full, mark, terminator_ids):
     raise ValueError("answer terminator not found")
 
 
+def token_accuracy_counts(generated, full, region):
+    split, terminator = region
+    standard_g = generated[split:T]
+    standard_t = full[split:T]
+    suffix_g = generated[split:terminator + 1]
+    suffix_t = full[split:terminator + 1]
+    return {
+        "standard_hits": int((standard_g == standard_t).sum()),
+        "standard_total": int(standard_t.numel()),
+        "suffix_hits": int((suffix_g == suffix_t).sum()),
+        "suffix_total": int(suffix_t.numel()),
+    }
+
+
+def assert_disjoint_prompts(ids, splits, cut):
+    keys = [tuple(ids[i, :splits[i]].tolist())
+            for i in range(ids.shape[0])]
+    train, heldout = set(keys[:cut]), set(keys[cut:])
+    overlap = train & heldout
+    if overlap:
+        raise ValueError(f"train/heldout prompt overlap: {len(overlap)}")
+    return len(train), len(heldout), 0
+
+
 def loss_dlogits(pp, tgt, eye, boost, region=None):
     dlogits = (pp - Q * eye[tgt]) * boost
     if region is None:
@@ -327,63 +351,85 @@ def draw_complete(n):
     return torch.tensor(rows, dtype=torch.int64), texts, tok
 
 
-def sympy_equiv(a, b, timeout=10):
-    """Fork-isolated symbolic equivalence (NO sympy without a
-    fork timebox — house rule; SIGALRM does not box sympy)."""
+def _fork_call(worker, args, timeout):
     import multiprocessing as mp
-
-    def work(q, a, b):
-        try:
-            import sympy as sp
-            ea = sp.sympify(a)
-            eb = sp.sympify(b)
-            q.put(bool(sp.simplify(ea - eb) == 0))
-        except Exception:
-            q.put(False)
     ctx = mp.get_context("fork")
     q = ctx.Queue()
-    p = ctx.Process(target=work, args=(q, a, b))
+    p = ctx.Process(target=worker, args=(q, *args))
     p.start()
     p.join(timeout)
     if p.is_alive():
         p.kill()
         p.join()
-        return False
-    return q.get() if not q.empty() else False
+        return None
+    return q.get() if not q.empty() else None
+
+
+def _sympy_worker(q, a, b):
+    try:
+        import sympy as sp
+        ea = sp.sympify(a)
+        eb = sp.sympify(b)
+        q.put((True, bool(sp.simplify(ea - eb) == 0)))
+    except Exception:
+        q.put((False, False))
+
+
+def sympy_assess(a, b, timeout=10):
+    return _fork_call(_sympy_worker, (a, b), timeout) or (False, False)
+
+
+def sympy_equiv(a, b, timeout=10):
+    return sympy_assess(a, b, timeout)[1]
 
 
 def gate(m, ids, truths, tok, tab, label):
     """Free-run validity gate: prefix through 'Step: ', greedy
     decode the rest, oracle-score the produced step."""
     mark = tok.encode("Step: ")
-    lm = len(mark)
-    solves, tokacc, ntok = 0, 0, 0
+    nrows = ids.shape[0]
+    metrics = {
+        "solves": 0,
+        "parseable": 0,
+        "terminated": 0,
+        "standard_hits": 0,
+        "standard_total": 0,
+        "suffix_hits": 0,
+        "suffix_total": 0,
+    }
+    terminators = {tok.eos_id, tok.id["\n"]}
     for wi in range(ids.shape[0]):
         w = ids[wi, :T].clone()
         full = ids[wi]
-        split = find_split(full, mark)
-        assert split is not None, \
-            f"gate row {wi}: 'Step: ' marker not found (silent " \
-            f"skip would deflate solves/N — reviewer catch)"
+        region = answer_region(full, mark, terminators)
+        split = region[0]
         for t in range(split, T):
             lg, _ = m.fwd(w, tab)
             w[t] = int(lg[t - 1].argmax())
-        gen = w[split:T]
-        tru = full[split:T]
-        tokacc += int((gen == tru).sum())
-        ntok += T - split
+        counts = token_accuracy_counts(w, full, region)
+        for name, count in counts.items():
+            metrics[name] += count
+        terminated = any(int(t) in terminators
+                         for t in w[region[0]:T])
+        metrics["terminated"] += int(terminated)
         # decode generated step text up to eos/newline
         keep = []
-        for t in gen.tolist():
-            if t == tok.eos_id or tok.vocab[t] == "\n":
+        for t in w[split:T].tolist():
+            if t in terminators:
                 break
             keep.append(t)
         gen_s = tok.decode(keep).strip()
-        if gen_s and sympy_equiv(gen_s, truths[wi]):
-            solves += 1
-    print(f"[gate] {label}: solves {solves}/{ids.shape[0]} "
-          f"free-run token-acc {tokacc}/{ntok}", flush=True)
-    return solves
+        parseable, equivalent = sympy_assess(gen_s, truths[wi]) \
+            if gen_s else (False, False)
+        metrics["parseable"] += int(parseable)
+        metrics["solves"] += int(equivalent)
+    print(f"[gate] {label}: solves {metrics['solves']}/{nrows} "
+          f"parseable {metrics['parseable']}/{nrows} "
+          f"terminated {metrics['terminated']}/{nrows}", flush=True)
+    print(f"[gate] {label}: token-acc standard "
+          f"{metrics['standard_hits']}/{metrics['standard_total']} suffix "
+          f"{metrics['suffix_hits']}/{metrics['suffix_total']}", flush=True)
+    return metrics
 
 
 class GMB(M.MB):
@@ -548,16 +594,17 @@ def run_loss(m, wins, tab, t_exp):
 def main():
     if GATE:
         all_ids, truths, tok = draw_complete(16)
+        mark = tok.encode("Step: ")
+        splits = [find_split(all_ids[wi], mark)
+                  for wi in range(all_ids.shape[0])]
+        assert all(s is not None for s in splits)
+        assert_disjoint_prompts(all_ids, splits, 8)
         wins = all_ids[:8]          # train on the first 8
         print("[gmoe] GATE mode: 8 complete train rows + "
               "8 held-out, oracle-scored free-run", flush=True)
         if SS:
-            mark = tok.encode("Step: ")
-            splits = [find_split(all_ids[wi], mark)
-                      for wi in range(wins.shape[0])]
-            assert all(s is not None for s in splits)
             print(f"[gmoe] SS mode: parallel scheduled sampling "
-                  f"after warmup {SSW}, splits {splits}",
+                  f"after warmup {SSW}, splits {splits[:8]}",
                   flush=True)
     else:
         wins = draw_windows()
