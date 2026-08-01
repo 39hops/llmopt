@@ -23,6 +23,9 @@ CKPT = os.environ.get("CKPT", "checkpoints/umoe_lb_s1.pt")
 def main():
     dev = ("mps" if torch.backends.mps.is_available() else
            "cuda" if torch.cuda.is_available() else "cpu")
+    import hashlib
+    sha = hashlib.sha256(open(CKPT, "rb").read()).hexdigest()[:16]
+    print(f"[regate] ckpt sha {sha}", flush=True)
     tok, m = U.build()
     sd = torch.load(CKPT, map_location="cpu", weights_only=True)["sd"]
     m.load_state_dict(sd)
