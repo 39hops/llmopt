@@ -1,3 +1,4 @@
+import hashlib
 import os
 import subprocess
 import sys
@@ -28,6 +29,49 @@ def test_answer_only_contract_fences():
     assert no_gate.returncode != 0 and "requires GATE=1" in no_gate.stderr
     combined = _import_with(GATE=1, ANSWER_ONLY=1, SS=1)
     assert combined.returncode != 0 and "separate mechanisms" in combined.stderr
+
+
+@pytest.mark.parametrize(
+    ("drift", "message"),
+    [("diet", "gate diet SHA drift"),
+     ("train", "gate train-row SHA drift"),
+     ("full", "gate full-row SHA drift")],
+)
+def test_gate_sha_drift_stops_before_model_construction(
+        tmp_path, monkeypatch, drift, message):
+    model_constructed = False
+
+    def unexpected_model_construction():
+        nonlocal model_constructed
+        model_constructed = True
+        raise AssertionError("model constructed after gate SHA drift")
+
+    monkeypatch.setattr(G, "GATE", True)
+    monkeypatch.setattr(G, "build_model", unexpected_model_construction)
+
+    if drift == "diet":
+        diet = tmp_path / "diet.jsonl"
+        diet.write_bytes(b"drifted diet\n")
+        monkeypatch.setattr(G, "GATE_DIET_PATH", str(diet), raising=False)
+    else:
+        pinned = torch.arange(16 * (G.T + 1), dtype=torch.int64).reshape(
+            16, G.T + 1)
+        drifted = pinned.clone()
+        drifted[0 if drift == "train" else 8, 0] += 1
+        monkeypatch.setattr(
+            G, "PINNED_TRAIN_ROWS_SHA",
+            hashlib.sha256(pinned[:8].numpy().tobytes()).hexdigest(),
+            raising=False)
+        monkeypatch.setattr(
+            G, "PINNED_FULL_ROWS_SHA",
+            hashlib.sha256(pinned.numpy().tobytes()).hexdigest(),
+            raising=False)
+        monkeypatch.setattr(
+            G, "draw_complete", lambda n: (drifted, [""] * n, None))
+
+    with pytest.raises(ValueError, match=message):
+        G.main()
+    assert not model_constructed
 
 
 def _sleeping_worker(q):

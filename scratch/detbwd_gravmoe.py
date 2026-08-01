@@ -265,6 +265,38 @@ if ANSWER_ONLY and not GATE:
 if ANSWER_ONLY and SS:
     raise ValueError("ANSWER_ONLY and SS are separate mechanisms")
 
+GATE_DIET_PATH = "data/micromodel_gen4_sidecar.jsonl"
+PINNED_DIET_SHA = \
+    "809bce4215a24164ecbf5e951d77507d455bfd1923d08fe39aa02942b11a200b"
+PINNED_TRAIN_ROWS_SHA = \
+    "32cc244bf28fdadf01b343ae16fe1a55200ffe9fab9bd784e8abd739b12ef2c0"
+PINNED_FULL_ROWS_SHA = \
+    "78f8aef992debe6ec74e4701fba23167ff5fda1d4294546b9f7621605429798a"
+
+
+def _require_sha(label, observed, expected):
+    if observed != expected:
+        raise ValueError(
+            f"{label} SHA drift: expected {expected}, got {observed}")
+
+
+def assert_gate_diet_sha(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    observed = h.hexdigest()
+    _require_sha("gate diet", observed, PINNED_DIET_SHA)
+    return observed
+
+
+def assert_gate_row_shas(ids):
+    train_sha = hashlib.sha256(ids[:8].numpy().tobytes()).hexdigest()
+    full_sha = hashlib.sha256(ids.numpy().tobytes()).hexdigest()
+    _require_sha("gate train-row", train_sha, PINNED_TRAIN_ROWS_SHA)
+    _require_sha("gate full-row", full_sha, PINNED_FULL_ROWS_SHA)
+    return train_sha, full_sha
+
 
 def find_split(full, mark):
     """Index just past the LAST 'Step: ' marker, or None."""
@@ -329,15 +361,18 @@ def loss_proxy(pp, tgt, region=None):
     return int(err.sum())
 
 
-def draw_complete(n):
+def draw_complete(n, diet_path=None):
     """First n diet rows whose FULL text fits T+1 tokens (padded
     with eos) — complete steps, so the oracle can score free-run
     generations. Returns (ids [n, T+1], truth step strings)."""
+    if diet_path is None:
+        diet_path = GATE_DIET_PATH
+    assert_gate_diet_sha(diet_path)
     import json as _json
     from scripts.train_mathnative import MathTokenizer
     tok = MathTokenizer()
     rows, texts = [], []
-    with open("data/micromodel_gen4_sidecar.jsonl") as f:
+    with open(diet_path) as f:
         for line in f:
             r = _json.loads(line)
             t = (f"Current: {r['cur']}\nHints: none\n"
@@ -601,6 +636,7 @@ def main():
     train_regions = None
     if GATE:
         all_ids, truths, tok = draw_complete(16)
+        train_rows_sha, full_rows_sha = assert_gate_row_shas(all_ids)
         mark = tok.encode("Step: ")
         terminator_ids = [tok.id["\n"], tok.eos_id]
         regions = [answer_region(all_ids[wi], mark, terminator_ids)
@@ -613,11 +649,11 @@ def main():
         assert mark == [4, 26]
         assert tok.id["\n"] == 27 and tok.eos_id == 1
         assert splits[:8] == [15, 10, 15, 15, 19, 15, 12, 15]
-        full_rows_sha = hashlib.sha256(
-            all_ids.numpy().tobytes()).hexdigest()
         print(f"[gmoe] marker ids {mark} terminator ids "
               f"{terminator_ids}", flush=True)
         print(f"[gmoe] answer regions {train_regions}", flush=True)
+        print(f"[gmoe] diet sha {PINNED_DIET_SHA}", flush=True)
+        print(f"[gmoe] train-row sha {train_rows_sha}", flush=True)
         print(f"[gmoe] full 16-row sha {full_rows_sha}", flush=True)
         print(f"[gmoe] prompt overlap train {prompt_counts[0]} "
               f"heldout {prompt_counts[1]} overlap {prompt_counts[2]}",
