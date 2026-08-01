@@ -14369,3 +14369,31 @@ load-bearing and the knob books as its own finding;
 conditioning — if B4 > B3, the interior optimum was a
 rails+attention artifact and the gravmoe help does
 not survive conditioning, an honest possible null).
+
+## AMENDMENT QK-COND-CRASH (amends PRE-REG QK-COND): B3/B4 died at tt=0 — the model DRIVES temperature to infinite sharpness; floor added, starvation probe arm added (2026-08-01 evening, Mac)
+
+B1 and B2 completed; B3 crashed at step ~1000-1250
+with ZeroDivisionError: the learned temperature walks
+DOWN monotonically and hits 0 (B2's completed twin of
+the effect: body-0 tt = 23/512 ~ 0.045, a 22x
+sharpening; body-1 stays ~1.0). Floor added: wide tt
+clamped to >= 1 narrow after each step (a zero
+temperature is a division, not a preference). B4 died
+identically. COMPLETED-ARM readouts, booked now:
+  B1 QK: loss 15350 (v COND A0 8883 — prediction (1)
+  FAILS, hugely), nz 0.022 = UPDATE STARVATION (soft
+  small q/k weights shrink attention-path gradients
+  below the fixed-point update floor; the
+  update-starvation law names the fix).
+  B2 TAU: loss 10327 (> A0 8883), merge +5583; tts
+  [23, 502] — prediction (2)'s ALTERNATIVE branch
+  fires: tts drift DOWN, the peaked-attention regime
+  is LOAD-BEARING for this diet (pointer-style
+  attention is what the task wants; the model, given
+  the dial, re-sharpens itself).
+RELAUNCH (same predictions otherwise): B3/B4 with the
+floor; plus B1-S16 (QK at SHIFT=16) — the starvation
+probe: if B1's failure is starvation, two more
+accumulator bits should recover most of the gap; if
+B1-S16 still sits ~15000, soft-init attention is
+wrong for this diet independent of update width.

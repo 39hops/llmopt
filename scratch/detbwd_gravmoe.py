@@ -465,6 +465,12 @@ def main():
         losses.append(int((Q - pp[torch.arange(T), tgt]).sum()))
         GG = m.bwd((pp - Q * eye[tgt]) * GB, cc, tab)
         opt.step([rdiv(GG[n], Q * GB) for n in names])
+        if TAU:
+            # temperature floor: tt >= 1 narrow (the b3 crash —
+            # the model drives tt toward 0 = infinite sharpening;
+            # a zero temperature is a division, not a preference)
+            for i in range(M.NBLK):
+                wide[f"b{i}.tt"].clamp_(min=1 << SHIFT)
         if step % K == 0 and LN:
             relax(wide)
         if step % max(125, STEPS // 8) == 0:
