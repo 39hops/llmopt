@@ -252,6 +252,22 @@ class MoBody(M.Body):
 
 
 GATE = os.environ.get("GATE") == "1"
+# GRAVMOE-SS rung: parallel scheduled sampling (one-step,
+# deterministic). After SSW warmup steps, each training step runs
+# a first forward on the truth input and replaces the input
+# positions after the row's "Step: " marker with the model's own
+# previous-position greedy predictions; targets stay truth.
+SS = os.environ.get("SS") == "1"
+SSW = int(os.environ.get("SSW", "500"))
+
+
+def find_split(full, mark):
+    """Index just past the LAST 'Step: ' marker, or None."""
+    lm = len(mark)
+    for t0 in range(T - lm, 0, -1):
+        if full[t0:t0 + lm].tolist() == mark:
+            return t0 + lm
+    return None
 
 
 def draw_complete(n):
@@ -315,12 +331,7 @@ def gate(m, ids, truths, tok, tab, label):
     for wi in range(ids.shape[0]):
         w = ids[wi, :T].clone()
         full = ids[wi]
-        # find the 'Step: ' marker (last occurrence)
-        split = None
-        for t0 in range(T - lm, 0, -1):
-            if full[t0:t0 + lm].tolist() == mark:
-                split = t0 + lm
-                break
+        split = find_split(full, mark)
         assert split is not None, \
             f"gate row {wi}: 'Step: ' marker not found (silent " \
             f"skip would deflate solves/N — reviewer catch)"
@@ -510,6 +521,14 @@ def main():
         wins = all_ids[:8]          # train on the first 8
         print("[gmoe] GATE mode: 8 complete train rows + "
               "8 held-out, oracle-scored free-run", flush=True)
+        if SS:
+            mark = tok.encode("Step: ")
+            splits = [find_split(all_ids[wi], mark)
+                      for wi in range(wins.shape[0])]
+            assert all(s is not None for s in splits)
+            print(f"[gmoe] SS mode: parallel scheduled sampling "
+                  f"after warmup {SSW}, splits {splits}",
+                  flush=True)
     else:
         wins = draw_windows()
     print(f"[gmoe] LN/LD {LN}/{LD} K {K} STEPS {STEPS} "
@@ -568,6 +587,14 @@ def main():
         m.emb, m.g_f = nar["emb"], nar["g_f"]
         for i, b in enumerate(m.bodies):
             b.w = {k: nar[f"b{i}.{k}"] for k in MoBody.KEYS}
+        if SS and GATE and step > SSW:
+            # one-step exposure: greedy preds from the truth-input
+            # forward spliced in after the row's "Step: " marker
+            lg0, _ = m.fwd(tok_in, tab)
+            preds = lg0.argmax(-1)
+            sp = splits[(step - 1) % wins.shape[0]]
+            tok_in = tok_in.clone()
+            tok_in[sp:T] = preds[sp - 1:T - 1]
         lg, cc = m.fwd(tok_in, tab)
         pp = softmax_rows(lg, t_exp)
         losses.append(int((Q - pp[torch.arange(T), tgt]).sum()))

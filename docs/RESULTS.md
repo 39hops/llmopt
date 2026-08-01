@@ -14599,3 +14599,154 @@ therefore comes from experts moving into
 mutually-compatible-but-distinct functions, NOT from
 partial output agreement — a sharper mechanism
 statement than the original booking.
+
+## PRE-REG QK-RESCOPE: the wq/wk-ONLY soft cell — the review BLOCKER's owed leg (2026-08-01 late night, Mac)
+
+The booked QK-COND B-arms were GLOBAL-soft (the mk
+rebind softened wq/wk/wv/wr/wg/wu — amendment
+REVIEW-ADOPTION-0801 #1). The code now softens wq/wk
+ONLY (mkq). Same contract otherwise: COND=1, 2000
+steps, seed 17, truncated windows, booked baselines
+COND A0 8883 / A2 8185.
+ARMS: RB1 QK=1; RB3 QK=1 TAU=1; RB1-S16 QK=1 at
+SHIFT=16 (the starvation probe, re-run because the
+prior S16 null was also global-soft). INIT
+diagnostics (clamp/zero-prob) re-read under the
+corrected knob — the "saturation removed entirely"
+first light was global-soft too.
+PREDICTIONS: (1) if RB1 lands ~15000 again, the
++73% failure was genuinely the attention path and
+"peaked attention is load-bearing" GRADUATES to
+doctrine on its own leg; (2) if RB1 recovers most of
+the gap (loss < ~10500, i.e. closer to A0 than to
+15350), the failure was the OTHER four softened
+families and the QK-COND verdict rescopes to
+"global soft init cripples; q/k-only is mild" —
+doctrine line rewritten; (3) TAU on the soft base
+(RB3): tts drift DOWN again (re-sharpening) in
+either branch; (4) S16 changes nothing in either
+branch (starvation refutation expected to survive).
+
+## PRE-REG GRAVMOE-SS: scheduled sampling in the integer loop — the exposure-bias rung the gate opened (2026-08-01 late night, Mac)
+
+Parallel scheduled sampling (Goyal-style one-step
+version, deterministic): SS=1 in GATE mode. After a
+warmup (SSW, default 500 steps) each training step
+runs a first forward on the truth input, takes the
+row-wise greedy predictions, and rebuilds the input
+window with positions AFTER the row's "Step: "
+marker replaced by the model's own previous-position
+predictions; loss/backprop run on that mixed input
+against the UNCHANGED truth targets. One extra
+forward per step, fully deterministic (int argmax,
+first-index ties). Contract fork on the training
+input only — targets, windows, optimizer untouched.
+ARM: S1 = GATE=1 SS=1 COND=1 lambda 0, 2000 steps —
+one variable against the pinned G-A0 (loss 6408,
+TRAIN 0/8 tok 56/140, HELDOUT 0/8 tok 35/140, sha
+2b29bd4a...). PREDICTIONS: (1) TRAIN free-run
+token-acc RISES vs 56/140 (direction firm — this is
+the exposure-bias treatment; if it does NOT rise,
+the derailment is capacity, not exposure, and the
+brute steps/params leg becomes the rung); (2)
+teacher-forced final loss WORSENS vs 6408 (the mixed
+input is a harder diet — the honest cost line); (3)
+solves: any nonzero TRAIN solve is the win
+condition; 0/8 with improved token-acc books as
+partial. Gate readout standing, both splits.
+
+## VERDICT QK-RESCOPE (amends VERDICT QK-COND): the +73% failure was the OTHER four softened families — wq/wk-only soft init is the biggest loss WIN in the battery (-72%); "peaked attention is load-bearing" is RETIRED as doctrine (2026-08-01 late night, Mac)
+
+Arms per PRE-REG QK-RESCOPE (COND=1, 2000 steps,
+corrected mkq; log logs/qkrescope_arms_0801.log):
+  RB1  QK soft wq/wk only   loss 2496  merge +12044  sha c6766da2...
+  RB3  QK+TAU               loss 2484  tts [947, 502] sha 6968b583...
+  RB1-S16 QK at SHIFT=16    loss 3668  sha 14981553...
+Baselines: COND A0 8883; global-soft B1 15350.
+BRANCH (2) of the pre-reg fires, maximally: wq/wk-only
+soft init does not merely recover the gap — it lands
+at 2496, 3.5x BETTER than the conditioned baseline
+(8883 -> 2496, -72%), the largest single loss win in
+the battery. The booked "+73% failure" belonged
+entirely to softening wv/wr/wg/wu alongside (the
+global-soft arms); q/k logit scale was never the
+problem — it was the second real init win, masked by
+the code defect the review caught.
+DOCTRINE REWRITE: "peaked attention is load-bearing"
+is RETIRED. Init saturation (zero-prob 0.891) was a
+DEFECT after all — the original framing before the
+QK-COND arms inverted it on bad code. The battery
+default becomes COND=1 QK=1 (residual writers AND
+wq/wk at +-Q/8). What SURVIVES of QK-COND: (a) B2's
+finding stands on its own leg — given a dial ON THE
+HARD BASE, the model sharpens (tt -> 23); but RB3
+shows this is BASIN-DEPENDENT: from the soft basin
+tts land [947, 502] (body-0 ~1.85x SOFTER, body-1
+neutral) and TAU is loss-neutral (2484 v 2496) — the
+model does NOT re-sharpen from soft, refuting
+prediction (3) and the load-bearing reading; (b) the
+starvation refutation transports: S16 buys nothing
+here either (3668 >= 2496 — two extra bits are
+neutral-to-negative in the healthy basin too); (c)
+the twin-fidelity note (soft = cleaner instrument)
+now aligns with capability instead of opposing it.
+Merge damage scales with capability as elsewhere
+(+12044 at loss 2496) — no free mergeability.
+Gate cell on the new best init (GATE COND QK) fired
+as the standing-readout leg; books separately.
+Lesson line for the ledger: the reviewer's BLOCKER
+did not just rescope a verdict — the corrected cell
+INVERTED it. Verify-the-knob is now part of any
+init-conditioning pre-reg (print draw bounds per
+family at arm start).
+
+## NULL GRAVMOE-SS: one-step scheduled sampling HURTS at this scale — exposure-bias treatment fails, both axes degrade; the brute steps/params leg is the rung (2026-08-01 late night, Mac)
+
+Arms per PRE-REG GRAVMOE-SS (log
+logs/ss_arms_0801.log):
+  S0 (SS off, regression): sha 2b29bd4a... EXACTLY
+  reproduces the pinned G-A0 — the SS code path is
+  certified read-only on non-SS runs.
+  S1 (SS=1, warmup 500): TRAIN 0/8 tok 22/140 (v 56),
+  HELDOUT 0/8 tok 27/140 (v 35), teacher-forced base
+  loss 12269 (v 6195), merge +3801, sha e1b633a9...
+Prediction (1) FAILS in the strong direction: free-run
+token-acc does not rise — it HALVES. The one-step
+mixed input at 60k params / 8 rows does not teach the
+model to recover from its own mistakes; it destroys
+the teacher-forced signal (loss 2x worse) without
+buying free-run competence. READ per the pre-reg's own
+alternative: at this scale the derailment is CAPACITY,
+not (treatable) exposure — the model cannot fit the
+clean diet and the corrupted diet at once. The
+exposure-bias rung moves to the brute leg: more
+steps/params on the intbirth engine, gate-scored.
+Accounting note (pre-registered): in-loop cycle prints
+after warmup are mixed-input losses; the clean
+teacher-forced number is the merge-test base run_loss
+(12269), used above. SS stays in the script as a knob
+(SS/SSW) — it is the right instrument at the scale
+where capacity stops binding.
+
+## RIDER on VERDICT QK-RESCOPE: the gate leg — FIRST NONZERO SOLVES in the battery; the COND+QK init win is REAL under free-run, not a teacher-forced artifact (2026-08-01 late night, Mac)
+
+G-RB1 (GATE=1 COND=1 QK=1, 2000 steps, complete-row
+diet; same log):
+  TRAIN 2/8 SOLVES, free-run token-acc 94/140 (67%)
+  HELDOUT 0/8, token-acc 47/140
+  loss 2564 (v G-A0 6195), merge +10447
+  sha 1fcfd187...
+Against the standing gate rider: this is the first
+cell where the free-run oracle confirms a loss claim
+— G-A0's 56/140 rises to 94/140 and two train rows
+are fully solved (sympy-verified) at the SAME
+steps/params/diet, one variable (the wq/wk draw
+bound). The exposure-bias reading of GRAVMOE-GATE
+sharpens: derailment was partly a CAPABILITY deficit
+of the saturated-attention init, and the init fix
+buys back most of the free-run gap that scheduled
+sampling could not (NULL GRAVMOE-SS, same night).
+Heldout stays 0/8 as predicted everywhere (8 rows,
+60k params — memorization regime). The COND+QK
+default is now supported on both axes: teacher-forced
+(-72%) and free-run (+68% token-acc, 0 -> 2 solves).
