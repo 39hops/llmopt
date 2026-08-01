@@ -70,3 +70,19 @@ Resume: this file -> BOARD header -> RESULTS tail.
 4. night31b on GO; then transport n=6 merge reviews.
 5. Banked: exact-manipulation diet share for L4; ckpt DB;
    checkpoint forensics (51GB triage, Artin GO).
+
+## Queue addendum (Artin, 2026-08-01 morning, pre-compact)
+
+- **QUEUED EXPLICITLY: deterministic mini-crystal birth on the
+  REAL MATH DIET** (the bridge cell, Artin's GO): multi-block
+  integer model (llmopt/intmath core + R2b block machinery),
+  MathTokenizer + gen-4 rows, integer CE against real next-token
+  targets — derisks tokenizer/diet plumbing separately from MoE
+  before the deterministic gravmoe pair. Success = falling loss +
+  trajectory digests + (stretch) a nonzero proxy gate. Design
+  note: run heavy legs on axiom's engine if the module-exposure
+  ask lands (below).
+- AMENDMENT #3 booked same morning (3080 audit): cuda lb s1 = 51
+  not 48 (validity misread); transport means correct to 51.7 v
+  50.7, verdict direction unchanged, rescue framing sharpened.
+  New mechanical rule: book gate DICTS, not totals.

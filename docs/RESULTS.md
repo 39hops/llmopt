@@ -13836,3 +13836,34 @@ adoption, including one fresh confirmation gate.
    child-written remote pid (util-linux setsid may
    fork), kill writes rc=killed. Transcript instrument
    gained an ARM/CKPT consistency assert.
+
+## AMENDMENT #3 (target: cuda seed-ladder verdict + the day-31 "TIGHTER family spread" line): cuda lb s1 = 51, NOT 48 — the 48 was the VALIDITY percentage misread as the solve count (2026-08-01 morning, 3080 audit on Artin's GO)
+
+Artin opened the box for the deferred primary-source
+audit. All four LADDER dicts verify exactly (lb s2
+{19,5,12,7,8}=51, s3 {19,3,14,7,10}=53; gravmoe s2
+{19,2,15,6,11}=53, s3 {18,2,15,6,9}=50). But the s1
+pair's source line (night31_cuda.log) reads:
+  lb {18,3,13,6,11} = 51 /120, valid 48.27
+  gravmoe {16,4,12,7,10} = 49 /120, valid 45.19
+The booked "lb 48" took lb's VALIDITY (48.27) as its
+solve count; gravmoe's 49 is genuine. CORRECTED
+TRANSPORT TABLE: cuda lb {51, 51, 53} mean 51.7 v
+gravmoe {49, 53, 50} mean 50.7 — diff -1.0, still
+dead-inside the +-2 band; PREDICTION (2) UNCHANGED (if
+anything the point estimate now leans negative). The
+rescue framing SHARPENS: cuda lb basin = 51.7, almost
+exactly the Mac gravmoe level (~51) — the pull lifts
+Mac births to precisely the basin cuda reaches unaided.
+Day-31's "TIGHTER family spread: lb 48, gravmoe 49"
+also corrects to lb 51, gravmoe 49 (gravmoe -2 v lb on
+cuda s1, within noise). Neither review pass caught this
+— only the primary log did. RULE (adopted, now
+mechanical): a booked gate number must quote its DICT,
+not just the total; the dict is the checksum.
+RIDER (free confirmation while auditing): logs/
+umoe_conserve_0730b.log gates Mac-born checkpoints ON
+CUDA with digit-identical dicts AND validity (37 =
+{13,1,8,6,9} valid 32.7724358974359) — eval
+device-stability, previously booked as a claim, is now
+visible at 13-digit precision in the primary logs.
