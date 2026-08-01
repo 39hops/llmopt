@@ -46,6 +46,11 @@ E = int(os.environ.get("E", "4"))
 D, F = 64, 128
 LN = int(os.environ.get("LN", "0"))
 LD = int(os.environ.get("LD", "1"))
+# DIET-COND rung: residual-WRITING matrices (wo, e{j}.wd) drawn
+# at +-Q/8 (GPT-2/muP residual scaling, integerized). Same draw
+# ORDER, different bound — a contract fork, never a tweak.
+COND = os.environ.get("COND") == "1"
+QW = (Q // 8) if COND else Q
 K = int(os.environ.get("K", "100"))
 STEPS = int(os.environ.get("STEPS", "2000"))
 # gravmoe contract boost: the top_p gate shrinks backward values
@@ -65,16 +70,19 @@ class MoBody(M.Body):
     def __init__(self):
         mk = lambda *sh: torch.randint(-Q, Q + 1, sh,
                                        dtype=torch.int64)
-        # shared draws first, then router, then experts (spec)
+        mkc = lambda *sh: torch.randint(-QW, QW + 1, sh,
+                                        dtype=torch.int64)
+        # shared draws first, then router, then experts (spec);
+        # wo and e{j}.wd are the residual writers (mkc under COND)
         self.w = {"wq": mk(M.DH, D), "wk": mk(M.DH, D),
-                  "wv": mk(M.DH, D), "wo": mk(D, M.DH),
+                  "wv": mk(M.DH, D), "wo": mkc(D, M.DH),
                   "g1": torch.full((D,), Q, dtype=torch.int64),
                   "g2": torch.full((D,), Q, dtype=torch.int64)}
         self.w["wr"] = mk(E, D)
         for j in range(E):
             self.w[f"e{j}.wg"] = mk(F, D)
             self.w[f"e{j}.wu"] = mk(F, D)
-            self.w[f"e{j}.wd"] = mk(D, F)
+            self.w[f"e{j}.wd"] = mkc(D, F)
 
     def _ffn_fwd(self, h2, j, tab, c, sel):
         """Expert j forward on selected rows; caches under j."""
@@ -384,6 +392,18 @@ def main():
     tab = {"silu": ts, "dsilu": td, "exp": t_exp,
            "cos": cos, "sin": sin}
     eye = torch.eye(V, dtype=torch.int64)
+    # init conditioning diagnostics: clamp + zero-prob fractions
+    cl, zp, tot_cl, tot_zp = 0, 0, 0, 0
+    causal = torch.tril(torch.ones(T, T, dtype=torch.bool))
+    for wi in range(wins.shape[0]):
+        _, cc0 = m.fwd(wins[wi, :T], tab)
+        for cb in cc0["bodies"]:
+            cl += int((cb["m1"] == 0).sum()) + int((cb["m2"] == 0).sum())
+            tot_cl += 2 * T * D
+            zp += int((cb["p"][causal] == 0).sum())
+            tot_zp += int(causal.sum())
+    print(f"[gmoe] INIT clamp-frac {cl / tot_cl:.3f} "
+          f"zero-prob-frac {zp / tot_zp:.3f}", flush=True)
     if os.environ.get("TWIN") == "1":
         tok_in, tgt = wins[0, :T], wins[0, 1:T + 1]
         lg, cc = m.fwd(tok_in, tab)

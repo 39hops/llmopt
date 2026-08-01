@@ -14270,3 +14270,31 @@ GRAVMOE TRADE LINE re-measured (the real question: is
 gravity or of the rails?). Contract change = new draw
 semantics, so it forks the reference artifacts;
 explicit [pending fire, house].
+
+## PRE-REG DIET-COND: conditioned-init gravmoe arms (wo/e.wd at +-Q/8), A0-A3 + saturated regression arm (2026-08-01 afternoon, Mac)
+
+COND=1 draws the residual writers (wo, e{j}.wd) at
++-Q/8, same draw order (contract fork). FIRST LIGHT,
+booked before arms: clamp-frac 0.454 -> 0.009 (rails
+GONE), twin worst cosine on the pathological window
+0.53 -> 0.998 (the near-tie class heals with the
+rails), BUT zero-prob attention UNCHANGED at 0.901 —
+the saturation decomposes into TWO knobs: residual
+scale (fixed here) and q/k logit scale (NOT touched;
+its own future rung if attention peaking matters).
+ARMS: COND=1 A0-A3 (lambda 0, 1/16, 1/4, 1), 2000
+steps, K=100, seed 17, same windows; plus A0-REGRESS
+(COND=0, LN=0, 2000 steps) which must reproduce the
+booked A0 final sha 6fffa718... exactly (the STEPS=250
+spot-check matched loss/nz but not sha — milestone
+CADENCE is part of the hash, so only the full-length
+run is the regression).
+PREDICTIONS: (1) conditioned A0 final loss BELOW
+saturated A0's 13072 (less clamping = more usable
+gradient); (2) the TRADE LINE question, undirected on
+slope but directed on ORDER: loss(A0) <= loss(A1) <=
+loss(A2) <= loss(A3) and merge damage monotone
+decreasing in lambda, merge-free only at A3 collapse
+(if the line survives conditioning it is gravity's
+property, not the rails'); (3) A3 still collapses
+(agreement 1.0); (4) A0-REGRESS sha-identical.
