@@ -14466,3 +14466,37 @@ init win. Twin-fidelity note kept honest: the QK arms
 DID measure cleaner (0.999986) — instrument fidelity
 and training capability are different axes, and
 optimizing the first can destroy the second.
+
+## VERDICT GRAVMOE-GATE: loss said "learning well" — the free-run gate says 0/8 EVERYWHERE; every teacher-forced capability claim in the battery now carries a gate rider (2026-08-01 night, Mac)
+
+Arms per PRE-REG GRAVMOE-GATE (2000 steps, COND=1,
+complete-row diet; shas in logs/gate_arms log):
+  G-A0 lambda 0    loss 6408  TRAIN 0/8 (tok 56/140)  HELDOUT 0/8 (35/140)  merge +9056
+  G-A2 lambda 1/4  loss 7166  TRAIN 0/8 (tok 44/140)  HELDOUT 0/8 (54/140)  merge +2922
+  G-A3 lambda 1    loss 6612  TRAIN 0/8 (tok 33/140)  HELDOUT 0/8 (59/140)  merge     0
+Against predictions: (1) UNANSWERABLE on solves (all
+zero); on the graded signal, train token-acc ranks
+A0 > A2 > A3 — and note the loss ordering ITSELF
+shifted on this diet (A0 < A3 < A2), so the interior
+optimum is also diet-format-sensitive. (2) PASS —
+heldout solves 0 (though heldout token-acc > train for
+A2/A3, likely shared scaffold; not chased). (3) FAILS,
+and this is the verdict: predicted >90% train
+token-acc, measured 24-40%. THE MODEL CANNOT FREE-RUN
+ITS OWN 8 MEMORIZED ROWS. Teacher-forced CE says
+"solid learner" (6408, best in the battery); the
+moment the model consumes its own outputs it derails
+within a few tokens — exposure bias at mini scale,
+measured exactly. THE RIDER IS NOW STANDING: every
+loss-based capability claim in the gravmoe battery
+(and the diet-bridge plateau) is a TEACHER-FORCED
+claim; generation validity is a separate, harder axis
+that 2000 steps x 8 rows does not buy at 60-200k
+params. This is precisely why the gate exists (Artin's
+ask, the run-the-weights doctrine) — and its first
+official act was to catch our own battery
+overclaiming. NEXT RUNGS where the gate changes the
+game: free-run-trained arms (scheduled sampling /
+self-consumption in the integer loop) or simply more
+steps/params on the intbirth engine; the gate is now a
+standing readout for every future cell.
