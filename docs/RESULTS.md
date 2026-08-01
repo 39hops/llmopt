@@ -14298,3 +14298,41 @@ decreasing in lambda, merge-free only at A3 collapse
 (if the line survives conditioning it is gravity's
 property, not the rails'); (3) A3 still collapses
 (agreement 1.0); (4) A0-REGRESS sha-identical.
+
+## VERDICT DIET-COND: the linear trade was THE RAILS TALKING — under conditioned init, moderate gravity HELPS capability (interior optimum at lambda 1/4); merge-free still only at collapse (2026-08-01 evening, Mac)
+
+Arms per PRE-REG DIET-COND (all deterministic; shas in
+logs/dietcond_arms log):
+  COND A0 lambda 0    loss 8883  agree 0.0  merge +6983
+  COND A1 lambda 1/16 loss 8319  agree 0.0  merge +6938
+  COND A2 lambda 1/4  loss 8185  agree 0.0  merge +4412
+  COND A3 lambda 1    loss 8733  agree 1.0  merge     0
+  A0-REGRESS (COND=0): final sha 6fffa718... EXACT
+  match to the booked arm — regression closed, cadence
+  loophole retired.
+Against predictions: (1) PASS, large — conditioned A0
+8883 v saturated 13072 (the rails cost ~32% of
+reachable loss). (2) THE ORDER PREDICTION FAILS, and
+the failure is the finding: loss is NON-MONOTONE in
+lambda (8883 -> 8319 -> 8185 -> 8733) — moderate
+gravity IMPROVES capability (A2 best, -8% v A0) while
+also cutting merge damage 37% (6983 -> 4412). The
+saturated cell's "linear capability-for-mergeability
+trade" was a property of the clamp rails, not of
+gravity: with usable gradients, consensus pull acts as
+a regularizer up to an interior optimum near lambda
+1/4, and only full collapse (A3) costs. (3) PASS — A3
+collapses (agreement 1.0), merge-free exactly there.
+(4) PASS.
+CONVERGENCE NOTE: this rhymes with the original fp
+story (Mac gravmoe +5-6, the rescue framing) — gravity
+helped there too; the exact battery now shows the
+help is real, dose-dependent, and init-conditioned,
+NOT a device artifact. AMENDS-IN-SPIRIT the
+GRAVMOE-PAIR read: "linear trade" is now SCOPED to
+saturated init; the conditioned line is the one that
+generalizes (pending the q/k-scale knob, still open,
+zero-prob 0.90 in all arms).
+NEXT: P4 device/lab legs (3080 rjob nightly + axiom
+relay) now carry BOTH contracts (saturated + COND);
+the q/k logit-scale rung stays banked.
