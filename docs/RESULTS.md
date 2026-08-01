@@ -15011,3 +15011,41 @@ integer runs (MB-S14 transports), ACT_CLAMP is
 rms_fwd's int64 overflow guard (safe bound ~80
 Q-units), and clamp demand is measured (STEPS=1 init
 sweep), never scaled. All n=1.
+
+## VERDICT GRAVMOE-P4-LAB: the gravmoe battery is bit-identical in a THIRD runtime — 10/10 engine arms PASS in axiom's C++ after one gate-backward fix; the divergence was caught by pins where a parity gate provably could not (2026-08-01 night, axiom C++ / Mac, relay 2026-08-01-5 theirs)
+
+Axiom's torch-free C++ engine (block::moe_body_fwd/bwd +
+MoeBirth: window cycling, GB=4xGBOOST, gravity events)
+reproduces all 10 engine-side FINAL trajectory shas
+exactly: A0-A3, CA0-CA3, RB1, RB1S16 (TAU/GATE/SS arms
+SKIP by design — house-side knobs). Acceptance their
+verify_gravmoe.py: init/windows/param_order asserted,
+per-family draw bounds printed (verify-the-knob shows
+RB1's wq/wk at +-64 — QK=1 scoped correctly in a
+foreign runtime).
+THE DEBUG, one round-trip: their first run FAILED
+10/10 (relay -6 ours). Of the two rounding placements
+their plan pre-declared unpinned, #2 (router/h2 merge)
+already matched; #1 was the defect — they pre-rounded
+dout = rdiv(dx2*top_p, PQ) where the house keeps dgate
+EXACT and folds /PQ into each consumer's single rdiv
+(df, G[wd] at PQ*Q; dtop_p by Q not PQ). Fixed in
+their a263321; the RB1 bisect ladder (STEPS=125/250/
+500) agreed immediately, no E=1 reduction needed.
+METHOD LAW (their observation, adopted): the E=1
+parity gate SURVIVED both conventions — rdiv(PQ*x,
+PQ*Q) == rdiv(x, Q) exactly (common-factor identity),
+so the two gate-backward placements only separate at
+E>1. A parity gate provably could not catch this
+class; only cross-implementation pins could. Corollary
+already adopted in relay -6: ROUNDING PLACEMENT IS
+CONTRACT TEXT — every multi-term int sum names its
+grouping in the spec, never in prose.
+Ladder state: the gravmoe rung closes the deterministic
+-birth scale program at 3 implementations / 2 labs /
+2 devices (Mac Python, 3080 Python [P4-DEVICE 16/16],
+axiom C++ [this verdict]) — MoE + gravity + window
+cycling now integer-closed everywhere. Schema note
+booked honestly: the artifact schema itself was the
+first FAIL (relay -6; house defect — the relay never
+pinned it); fixed same day.
