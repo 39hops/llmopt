@@ -14885,3 +14885,33 @@ across widths; ACLAMP knob added, corrected arm
 BR-W4b pre-registered). The G-RB1 optimum at 2000
 steps stands as the battery's best cell. Decision
 rule defers to GRAVMOE-BRUTE-B. All n=1.
+
+## VERDICT GRAVMOE-P4-DEVICE: the ENTIRE gravmoe battery is bit-identical on the 3080 — 16/16 arms sha-exact, both contracts + gate + SS + rescope pins; transport is DISSOLVED for this instrument (2026-08-01 evening, 3080 via rjob, Artin GO "go parallel")
+
+All 16 pinned trajectories re-run on the 3080 box
+(CPU int64 battery, 16 arms in parallel, 1 torch
+thread each; scratch/p4_arms_0801.sh, self-verifying;
+remote checkout hash-asserted at 2deb4524 = launch
+HEAD; log logs/p4_arms_0801.log on the box):
+  PASS x16: A0-A3 (saturated), CA0-CA3 (COND),
+  GA0/GA2/GA3 (gate arms incl. sympy free-run
+  scoring), RB1/RB3/RB1-S16 (rescope), G-RB1, S1 (SS)
+  — every FINAL trajectory sha equals its Mac pin.
+  P4 DEVICE LEG: ALL ARMS SHA-IDENTICAL. rc=0,
+  wallclock 6m28s for the full battery (16:17:27 ->
+  16:23:55), ~40x the fp-era cross-device protocol
+  cost of answering a WEAKER question.
+READ: the deterministic-gravmoe spec's P4 prediction
+lands exactly — "transport" is not a question this
+instrument can even ask; the same birth is the same
+bits on both machines, gate oracles included (the
+fork-timeboxed sympy scoring reproduced the same
+solves on the same generations). Every gravmoe
+verdict booked this week (DIET-COND interior optimum,
+QK-RESCOPE inversion, GRAVMOE-GATE exposure reading,
+SS null) is now device-free: they are claims about
+the TRAJECTORY, not about a machine. Remaining P4
+surface: the axiom lab leg (relay -5 staged; EXPORT
+artifacts shipping). Fence: sha-identity certifies
+determinism, not correctness — correctness lives in
+the oracle gates and the fp64 twin, unchanged.
