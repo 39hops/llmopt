@@ -2143,3 +2143,25 @@ pooling winners was his call).
   provenance bug is the motivating incident. Standing bar for
   promotion into llmopt/ or axiom C++: instrument must be proven
   accurate, honest, consistent first.
+
+- **2026-08-01 (K3, external reader): architectural transfer
+  routing vs the bridge law** — the strong-form bridge law
+  ("NOTHING transfers without demonstrated shared steps in
+  context") is measured only against IN-CONTEXT transfer in the
+  closed system (ODE probe VOID-BY-VOCAB; desert v2 coefficient
+  (iv)=0). K3's question exposes the untested cell: transfer
+  architectures that route through shared LATENT structure —
+  a two-grammar crystal with a shared trunk + task-specific
+  heads, or cross-attention between two born stacks. Well-posed
+  in house instruments: birth-able anatomy, gate-scored, exact
+  in the integer battery if built on the mb stack. If shared-
+  latent routing ALSO shows zero transfer, the bridge law
+  graduates from a diet law to an architecture-independent law;
+  if it transfers, the law is scoped to token-level context and
+  the latent channel becomes the interesting object. Same
+  exchange banked: K3's "path-dependent representation" framing
+  for the clock-placement law (the force-the-clock arm is the
+  causal test, already banked) and the read that determinability
+  law + contamination scars are the lab's most transportable
+  findings for open-LM data curation. Attribution: K3 (external
+  doc-only reader), relayed by Artin.
