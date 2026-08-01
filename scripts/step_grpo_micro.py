@@ -164,12 +164,24 @@ def logp_new(model, tok, g, dev):
 
 def gate_eval(model, tok, dev, n=None):
     """Honest chain gate. n<GATE_N = cheap proxy tier (same seeds,
-    prefix subset — noisier per reading, never used for promotion)."""
+    prefix subset — noisier per reading, never used for promotion).
+    Prints the WEIGHTS sha first (provenance rule, 2026-07-31: a
+    gate number books with the hash of the weights that produced
+    it — true even for in-process gates, which is exactly where
+    the lb-s1 45-v-37 provenance bug lived)."""
+    import hashlib
     import sympy as sp
     import torch
 
     from bench_step_tokens import _gen_isolated
     from bench_verify_fast import verify_wave
+    wh = hashlib.sha256()
+    for k, v in sorted(model.state_dict().items()):
+        v = v.detach().cpu().contiguous()
+        if v.dtype == torch.bfloat16:      # numpy can't view bf16
+            v = v.view(torch.int16)
+        wh.update(v.numpy().tobytes())
+    print(f"[gate] weights sha {wh.hexdigest()[:16]}", flush=True)
     solves = {}
     valid = tried = 0
     with torch.no_grad():
