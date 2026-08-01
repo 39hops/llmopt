@@ -13564,3 +13564,51 @@ rider (theirs). NOTE the gate spec transferred by PROSE
 alone — no code was exchanged for the gate; the two
 proven properties (winner contributes exactly Q;
 tie-break provably irrelevant) made the spec complete.
+
+## PRE-REG R3a: the wide weight accumulator — pinning Q_w (2026-07-31 late night, Mac cpu, before the run)
+
+R2's measured floor: at Q=512, real-1e-3 Adam updates
+round to zero (lesson 2; toy ran at lr=1/20). R3a: carry
+weights at Q_w = Q << SHIFT, rdiv back to Q at the
+matmul boundary; moments/grads stay at R2 scales; the
+update applies at Q_w resolution:
+  w -= rdiv(LRN * mh * (Q << SHIFT), LRD * den).
+Cell: teacher-student mini-birth (R2 harness), lr =
+1/1000 (the production-scale rate R2 could NOT
+represent), SHIFT in {0, 4, 8, 12}, 400 steps.
+MEASURES per arm: fraction of nonzero update entries at
+step 1 and step 200; loss trajectory; rerun determinism
+sha (cpu). PREDICTIONS: (1) SHIFT=0 reproduces the R2
+floor (updates ~all zero, loss flat); (2) some SHIFT in
+{8, 12} unlocks lr=1e-3 (majority-nonzero updates, loss
+falls) — that SHIFT pins Q_w for the axiom C++ leg;
+(3) rerun sha identical per arm (integer path). FENCE:
+Mac-cpu only tonight; the cross-device leg re-runs on
+the 3080 after GO (deterministic path makes pooling
+legal per A1).
+
+## VERDICT R3a: Q_w PINNED at Q << 8 (2^17) — the wide accumulator unlocks production-scale lr; deterministic; SHIFT=12 buys nothing (2026-07-31 late night)
+
+scratch/detbwd_r3_qw.py, lr=1/1000, 400 steps, cpu, all
+arms rerun-identical (shas match on full repeat).
+  SHIFT=0:  loss -> 4.13e10, nonzero updates decay
+            0.999 -> 0.014 — the R2 floor, seen live:
+            early large grads punch through, then the
+            quantizer strangles convergence.
+  SHIFT=4:  -> 1.10e8, nz 0.044 (still starving)
+  SHIFT=8:  -> 3.22e7, nz 0.646
+  SHIFT=12: -> 3.26e7, nz 0.973 — loss TIES SHIFT=8
+            (8 marginally better); resolution beyond
+            2^17 is wasted on this problem.
+PIN: Q_w = Q << 8 = 2^17 (weights int64 at 2^17, rdiv
+to Q at the matmul boundary, update applied at Q_w).
+AMENDED READ of prediction (1): the floor is not
+"updates all zero from step 1" — early grads are large
+enough to update at any shift; the floor bites LATE
+(update starvation as grads shrink), which is why R2's
+toy needed lr=1/20 to finish in 200 steps. FENCE:
+Mac-cpu, single problem scale; 3080 cross-device leg
+after GO; longer trainings may prefer SHIFT=12's
+headroom (nz 0.97 v 0.65 at step 400) — flag for the
+full-birth cell, but the pin for the axiom C++ leg is
+SHIFT=8.
