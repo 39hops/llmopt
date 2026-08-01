@@ -14500,3 +14500,80 @@ game: free-run-trained arms (scheduled sampling /
 self-consumption in the integer loop) or simply more
 steps/params on the intbirth engine; the gate is now a
 standing readout for every future cell.
+
+## AMENDMENT REVIEW-ADOPTION-0801 (amends VERDICT QK-COND, VERDICT GRAVMOE-PAIR, VERDICT DIET-COND, VERDICT GRAVMOE-GATE): Opus review of 07-31/08-01, findings verified line-by-line — one BLOCKER confirmed (2026-08-01 night, Mac)
+
+Reviewer (Opus 5, self-reported and consistent) swept
+both days; every adopted finding below was verified
+against primary sources by the house before adoption.
+
+1. CONFIRMED BLOCKER — QK-COND arms were GLOBAL-soft,
+not wq/wk-soft: the QK draw lambda was rebound over mk
+itself, so B1/B3/B4/B1-S16 drew wq, wk, wv, wr, wg, wu
+ALL at +-Q/8 (verified in code; only wo/e.wd — already
+conditioned — and the g-vectors were unaffected).
+VERDICT QK-COND is RESCOPED: leg (1) (TAU
+self-sharpening on the hard base) STANDS unaffected;
+legs (2)/(3) now read "GLOBAL-soft init cripples
+training and SHIFT=16 does not rescue it" — the
+attention-specific mechanism ("signal dilution ~1/T")
+is ONE candidate, not the finding. "Peaked attention
+is load-bearing" is DOWNGRADED from three-way
+triangulation to leg-1-supported; a true wq/wk-only
+cell is required before it books as doctrine. Code
+fixed (QK now softens wq/wk only, comment names the
+catch); the booked arms remain reproducible at their
+commit. Also: "-73%" was a +73% loss INCREASE
+(15350 v 8883) — direction wording corrected here.
+2. ADOPTED — "merge damage falls LINEARLY with dose"
+overstates: lambda is log-spaced (0, 1/16, 1/4, 1) and
+damage is roughly linear in ARM INDEX (log-dose), not
+in lambda (linear-in-lambda predicts 2849 at 1/16;
+measured 2111). All "linear trade" phrasings now read
+"monotone in dose (roughly linear in log-dose, 4
+log-spaced points)".
+3. ADOPTED — GRAVMOE-PAIR P1 regrades to UNMEASURED:
+the spec's coarse (+-1 LSB) agreement metric was never
+implemented in v1, and P1's "step function" reading
+was graded against the missing instrument. Coarse
+metric now implemented; deterministic rerun of A0-A3
+launched (coarse numbers + sha regression to follow as
+a rider on this amendment).
+4. ADOPTED (gate caveats): (a) the marker-miss path
+silently deflated solves/N — now an assert (the booked
+runs are consistent with zero skips: ntok=140 all six
+calls); (b) 0/8 is a LOWER BOUND — the oracle scores
+against the single recorded next step, and a valid
+different rewrite scores zero (at 24-40% token-acc
+this cannot flip the verdict); (c) train/heldout rows
+verified 16/16 unique, zero overlap (checked this
+session; an exclude=-style assert is the standing ask
+for future gate diets); (d) reviewer confirmed NO
+future-token leakage in the free-run loop, and the
+0/8-as-exposure-bias reading SURVIVES review.
+5. ADOPTED — DIET-COND interior-optimum fencing
+tightened: "n=1 suffices" is scoped to the MEASUREMENT
+(exact arithmetic removes measurement noise, not
+seed/init/window sampling noise), and the BOARD line
+now carries the diet-format fence (the gate diet
+re-orders the arms at the scale of the claimed
+effect). Numbers themselves re-verified correct.
+6. ADOPTED — tts nuance: "22x self-sharpening" is 1 of
+2 bodies in the one hard-base arm (B2 body-0 = 23;
+body-1 stayed ~1.0; post-floor B3 body-0 landed
+SOFTER at 974). Wording now carries the split.
+7. ADOPTED — BOARD hygiene: stale pre-amendment-#3
+dict set struck from the 07-31 evening header line;
+sigma phrasings for paired within-checkpoint deltas
+rephrased per the reviewer's "exact for this
+checkpoint; n=1 ckpt per arm" form; R0-TF32OFF gains
+its se (~4.1 at n=3) alongside the null.
+8. CHECKED CLEAN by reviewer AND verified: all 08-01
+dict sums; sha agreement across entries/relays for
+mb/r2b/regression pins; index amends fields; R0-s1
+dict coincidence (primary log shows its own line, own
+weights sha 6b629e1f, own validity 46.71 — genuine
+coincidence); no leaks; fork-boxed sympy; no
+weight-distance scoring; rjob pidfile ops (one note:
+kill combines kill+rc-write in one transport call —
+accepted as-is, mentioned for the record).

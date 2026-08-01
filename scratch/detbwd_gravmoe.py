@@ -81,12 +81,16 @@ class MoBody(M.Body):
                                        dtype=torch.int64)
         mkc = lambda *sh: torch.randint(-QW, QW + 1, sh,
                                         dtype=torch.int64)
-        mk = (lambda *sh: torch.randint(-QKW, QKW + 1, sh,
-                                        dtype=torch.int64)) \
+        mkq = (lambda *sh: torch.randint(-QKW, QKW + 1, sh,
+                                         dtype=torch.int64)) \
             if QK else mk
         # shared draws first, then router, then experts (spec);
-        # wo and e{j}.wd are the residual writers (mkc under COND)
-        self.w = {"wq": mk(M.DH, D), "wk": mk(M.DH, D),
+        # wo and e{j}.wd are the residual writers (mkc under COND).
+        # REVIEWER CATCH (2026-08-01 review): the first cut rebound
+        # mk itself, so QK=1 softened wq/wk/wv/wr/wg/wu — the booked
+        # B-arms are GLOBAL-soft arms (amendment in RESULTS). QK now
+        # means wq/wk ONLY, as the pre-reg contract stated.
+        self.w = {"wq": mkq(M.DH, D), "wk": mkq(M.DH, D),
                   "wv": mk(M.DH, D), "wo": mkc(D, M.DH),
                   "g1": torch.full((D,), Q, dtype=torch.int64),
                   "g2": torch.full((D,), Q, dtype=torch.int64)}
@@ -317,8 +321,9 @@ def gate(m, ids, truths, tok, tab, label):
             if full[t0:t0 + lm].tolist() == mark:
                 split = t0 + lm
                 break
-        if split is None:
-            continue
+        assert split is not None, \
+            f"gate row {wi}: 'Step: ' marker not found (silent " \
+            f"skip would deflate solves/N — reviewer catch)"
         for t in range(split, T):
             lg, _ = m.fwd(w, tab)
             w[t] = int(lg[t - 1].argmax())
@@ -385,9 +390,11 @@ def relax(wide):
 
 
 def agreement(m, wins, tab):
-    """Pairwise % of probe tokens where expert outputs are
-    bit-identical, per body, averaged over pairs + bodies."""
-    tot, hit = 0, 0
+    """Pairwise % of probe tokens where expert outputs agree:
+    strict (bit-identical) AND coarse (within +-1 LSB, the spec's
+    graded metric — reviewer catch: v1 shipped strict-only and P1
+    was graded against the missing instrument)."""
+    tot, hit, chit = 0, 0, 0
     for wi in range(wins.shape[0]):
         tok_in = wins[wi, :T]
         x = m.emb[tok_in]
@@ -403,9 +410,11 @@ def agreement(m, wins, tab):
                 for b_ in range(a_ + 1, E):
                     eq = (outs[a_] == outs[b_]).all(-1)
                     hit += int(eq.sum())
+                    co = ((outs[a_] - outs[b_]).abs() <= 1).all(-1)
+                    chit += int(co.sum())
                     tot += T
             x = x2
-    return hit / tot
+    return hit / tot, chit / tot
 
 
 def twin_fp64(m, tok, tgt, tops, masks=None):
@@ -590,7 +599,7 @@ def main():
     if GATE:
         gate(m, all_ids[:8], truths[:8], tok, tab, "TRAIN")
         gate(m, all_ids[8:], truths[8:], tok, tab, "HELDOUT")
-    agr = agreement(m, wins, tab)
+    agr, agr_c = agreement(m, wins, tab)
     base = run_loss(m, wins, tab, t_exp)
     # merge test: average experts to dense, in place, exactly
     for i, b in enumerate(m.bodies):
@@ -603,7 +612,8 @@ def main():
     c0 = sum(losses[:8]) // 8
     cf = sum(losses[-8:]) // 8
     print(f"[gmoe] cycle-mean {c0} -> {cf}  falling: {cf < c0}")
-    print(f"[gmoe] expert agreement {agr:.4f}")
+    print(f"[gmoe] expert agreement strict {agr:.4f} "
+          f"coarse(+-1) {agr_c:.4f}")
     print(f"[gmoe] merge test: loss {base} -> {merged} "
           f"(delta {merged - base})")
     print(f"[gmoe] FINAL trajectory sha {th.hexdigest()}")

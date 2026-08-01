@@ -6,8 +6,8 @@ GRAVMOE-PAIR (L~14200) to VERDICT GRAVMOE-GATE (tail).
 
 ## The arc (each verdict scopes the previous one)
 
-1. **GRAVMOE-PAIR** (saturated init): gravity = linear
-   capability-for-mergeability trade; merge-free only at full
+1. **GRAVMOE-PAIR** (saturated init): gravity = monotone
+   capability-for-mergeability trade (linear in log-dose); merge-free only at full
    collapse. fp collapse threshold did NOT transport.
 2. **DIET-COND** (residual writers +-Q/8): the linear trade was
    the clamp rails. Conditioned: interior optimum at lambda 1/4
@@ -18,8 +18,10 @@ GRAVMOE-PAIR (L~14200) to VERDICT GRAVMOE-GATE (tail).
    goal.
 3. **QK-COND**: peaked attention (90% zero probs) is
    LOAD-BEARING, not pathology — a learned temperature
-   self-sharpens 22x (crashed at tt=0 pre-floor), soft q/k init
-   loses 73%, SHIFT=16 does NOT rescue (it is signal dilution
+   self-sharpens 22x (1 of 2 bodies, hard-base arm) (crashed at tt=0 pre-floor), GLOBAL-soft init
+   costs +73% loss (REVIEW RESCOPE: the arms softened six
+   matrix families, not wq/wk only — see amendment
+   REVIEW-ADOPTION-0801; wq/wk-only cell still owed), SHIFT=16 does NOT rescue (it is signal dilution
    ~1/T, not starvation). Battery default stays hard attention,
    no temperature param. Twin fidelity and training capability
    are DIFFERENT AXES.
