@@ -85,9 +85,13 @@ def launch(jid, cmd):
         # catch, 2026-08-01)
         inner = (f"echo $$ > {JOBS}/{jid}.pid; exec bash -c "
                  f"{shlex.quote(runner)}")
+        # double-fork through a subshell that exits immediately —
+        # a plain `... & ` keeps the ssh channel held for the job's
+        # whole life (measured: a 3 s job made launch take 3.5 s;
+        # night31b made it hang past 120 s, 2026-08-01)
         rc, _ = sh(
-            f"setsid bash -c {shlex.quote(inner)} >/dev/null 2>&1 "
-            f"</dev/null & sleep 0.3; cat {JOBS}/{jid}.pid "
+            f"( setsid bash -c {shlex.quote(inner)} >/dev/null 2>&1 "
+            f"</dev/null & ); sleep 0.5; cat {JOBS}/{jid}.pid "
             f"2>/dev/null || echo pending")
         pid = _
     print(f"[rjob] launched {jid} pid {pid} (rc file on exit)")

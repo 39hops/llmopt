@@ -13902,3 +13902,46 @@ are two Claude Code sessions operated by Artin on his
 own machines and models. ALSO ADOPTED: relays READ AS
 FILES from the co-located repos, never pasted — the
 flag path disappears entirely.
+
+## VERDICT INTBIRTH-PRIMITIVES: house-composed loop on axiom primitives reproduces all 8 certified digests — PRIMITIVES PASS both sides (2026-08-01, Mac)
+
+Axiom relay 2026-08-01-3 (read as a file, provenance-note
+header): intbirth now exposes the primitive layer under
+the composed FullBirth — Block.fwd/bwd/softmax_rows,
+AdamW (IntAdamWQw, state internal), int_gemm/_nt/_xty
+returning EXACT unrounded int64 sums, and rdiv — so
+rounding placement stays caller-side per the booked
+spec rule. Their acceptance: R2b training loop rebuilt
+in Python from primitives alone reproduces r2b_ref.json
+(PRIMITIVES PASS, 1.7 s); FullBirth is now internally
+composed from block + adamw, so the layers cannot
+drift (ENGINE PASS re-verified, r2b tool still prints
+efe3557c..., suite 481/481).
+
+HOUSE ACCEPTANCE (scratch/verify_intbirth_prims.py,
+house-AUTHORED composition, init artifact sha-checked
+against ref before use): ALL 8 MILESTONES PASS, digests
+AND losses, 1.66 s. Loop is pure composition — Block/
+AdamW/rdiv from the module, hashing and unboost
+placement house-side. Two implementations of the driver
+agreeing on 8 digests leaves no room for a shared
+driver bug.
+
+SEMANTIC ADDITION (theirs, digest-confirmed no-op for
+single block): Block.bwd returns dx0 with residual
+added and clamp mask applied — the multi-block chain
+point, ready. Grads return at boosted scale; unboost is
+the caller's rdiv (matches the reference's placement).
+
+OPERATIONAL, same session: first remote rjob use
+launched NIGHT-31b on the 3080 (job night31b, pid
+1337) and caught a launch-detach bug — a backgrounded
+`setsid ... &` still held the ssh channel for the
+job's whole life (measured: 3 s dummy job = 3.5 s
+launch; night31b hung the call past 120 s). Fixed by
+double-forking through an immediately-exiting subshell;
+retested: 30 s job launches in 0.97 s with pid
+captured. The gate lines in the night31b log land in
+dict form with weights shas — the amendment-#3
+checksums are live in the instrument, not just the
+skill.
