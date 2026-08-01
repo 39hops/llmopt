@@ -215,3 +215,83 @@ that remains a proposal in `NOTES.md`, avoiding a cross-repo dependency.
    confirmation: run the full suite in a no-Metal session and inspect the exit
    code; adoption should add capability-aware MLX skips and retain pipeline
    failure propagation.
+
+## PRE-REG SOL-GRAVMOE-AO1: answer-only loss allocation at the pinned G-RB1 gate (2026-08-01, Mac)
+
+Mechanism: `ANSWER_ONLY=1` changes only the loss-gradient allocation in the
+pinned G-RB1 contract. Forward logits, complete rows, row order, targets,
+optimizer arithmetic, boost, model, initialization, 2,000-step budget,
+autoregressive decoding, and symbolic oracle remain fixed. For a complete row
+`full`, let `s` be the position immediately after its final marker `Step: `.
+With `tok_in = full[:T]` and `tgt = full[1:T+1]`, AO1 supervises logit rows
+`s - 1 : terminator`, where `terminator` is the token index of the first
+newline or EOS at or after `s`. Thus the included targets are the first answer
+token through exactly one terminator; preceding scaffold targets and repeated
+EOS padding receive zero loss gradient. `ANSWER_ONLY=0` retains the exact
+legacy dlogits expression and optimizer division.
+
+Pinned contract:
+
+- Marker IDs `[4, 26]`; newline ID `27`; EOS ID `1`.
+- Training splits `[15, 10, 15, 15, 19, 15, 12, 15]`.
+- Diet SHA `809bce4215a24164ecbf5e951d77507d455bfd1923d08fe39aa02942b11a200b`.
+- Eight-row training SHA `32cc244bf28fdadf01b343ae16fe1a55200ffe9fab9bd784e8abd739b12ef2c0`;
+  full 16-row SHA `78f8aef992debe6ec74e4701fba23167ff5fda1d4294546b9f7621605429798a`.
+- The eight training prompts and eight held-out prompts have zero overlap.
+- Design commit `5382b53947f83c77fc61ea919ef13da6498900a7`;
+  implementation commit `459bc3e6847128fdec824367272b55439d5291aa`.
+
+The complete 16-arm pinned regression battery is mandatory before AO1 may be
+interpreted. All 16 arms must reproduce their committed trajectory SHAs, and
+the REG member G-RB1 must reproduce
+`1fcfd187873d980c7c082a56c0f380ce2c40a859eab1e8a0c9dcf6baa4853eca`.
+Any mismatch voids AO1 until it is diagnosed, fixed under a new commit, and the
+entire 16/16 gate passes. The separate commit containing this pre-registration
+is the pre-run code/documentation SHA and will be recorded in both REG and AO1
+log bookings before their measurements are interpreted.
+
+REG and the mandatory pin gate will run Mac-local with:
+
+```bash
+mkdir -p logs/sol
+zsh -o pipefail -c 'export RJOB_LOCAL=1; bash <(sed \
+  "s|^PY=.*$|PY=/Users/artin/code/llmopt/.venv/bin/python|" \
+  scratch/p4_arms_0801.sh) 2>&1 | tee logs/sol/answer_only_pins.log'
+```
+
+Its planned aggregate log is `logs/sol/answer_only_pins.log`; the recomputed
+REG readout is `logs/p4/GRB1.log`. Only after the 16/16 gate passes, AO1 will
+run Mac-local with:
+
+```bash
+zsh -o pipefail -c 'RJOB_LOCAL=1 GATE=1 COND=1 QK=1 \
+  LN=0 LD=1 STEPS=2000 ANSWER_ONLY=1 \
+  /Users/artin/code/llmopt/.venv/bin/python \
+  scratch/detbwd_gravmoe.py 2>&1 | tee logs/sol/answer_only_ao1.log'
+```
+
+Prediction: AO1 reaches at least 3/8 TRAIN symbolic solves because full-token
+CE currently spends gradient on supplied scaffold and repeated padding. The
+honest alternative is that scaffold/padding supervision is load-bearing, in
+which case AO1 loses termination or parseability. HELDOUT is expected to remain
+0/8.
+
+Decision rule: TRAIN symbolic solves are primary. A capability win is at least
+3/8. At exactly 2/8, suffix-only TRAIN token accuracy above REG is a graded
+partial. At no more than 2/8 with suffix-only accuracy not above REG, the result
+is null unless the format-failure branch applies. A suffix-only accuracy drop
+accompanied by worse termination or parseability than REG is a format failure.
+Fewer than 2/8 solves with higher suffix-only accuracy is a negative mixed
+regression, not a partial win. Standard full-continuation accuracy is reported
+only for continuity, with REG expected to reproduce the historical `94/140`
+TRAIN count; suffix-only accuracy from the first answer token through the first
+terminator is the secondary decision readout. Termination and fork-timeboxed
+SymPy parseability are format diagnostics, and symbolic equivalence is the
+solve oracle.
+
+Fences: this is `n=1`—one seed, initialization, train/held-out row set, and
+binary mask. Even a 3/8 discovery queues paired-seed confirmation before any
+general ML claim. The result is format-bound to this supplied scaffold,
+tokenizer, finite row length, and deterministic G-RB1 diet. AO1's masked
+teacher-forced CE proxy and merge diagnostic form a new lineage and are not
+numerically compared with REG or any prior full-token CE cell.
