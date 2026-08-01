@@ -13467,3 +13467,34 @@ and manifest must cross-link. (3) GRAV-0T's control 37
 is CORRECT for its artifact — the harness check
 actually passed; tonight's instrument alarm was the
 provenance bug surfacing.
+
+## RECEIPT FX-V3 (axiom-side PASS) + house reproduction QUEUED (2026-07-31 night)
+
+Axiom reports FX-V3 complete (their f9b0e04, relay
+2026-07-31-3): the integer twin of the merged crystal
+runs BIT-IDENTICALLY in two runtimes axiom-side (Python
+reference subclassing their DeterministicLM + pure-int64
+C++ decoder on the FX-V2 core), frozen battery, both
+seeds. Digests house must reproduce:
+  s1 e377201c79bc2034ad74bc039f5c2bddbd5c3d2c16f2d8aa
+     0b916a6fea4917f7
+  s2 f5013f2b34c00f8a0a47b26630c284f0bf7d5d8ed0bea3df
+     923ceae212fbd82b
+Cross-lab check ALREADY LANDED: they adopted the house
+detbwd_r1b exp-table construction and verified BYTE
+IDENTITY against our code (sha 9b8649244ca8c235 — the
+same table our attention backward pins). Their gate
+spec: rdiv(rl*Q, A) -> integer max-shift -> table ->
+top_p = rdiv(Q*Q, z), FFN out scaled rdiv(out*top_p, Q)
+pre-residual-clamp; two proven properties: winner
+contributes exactly Q to the partition (division never
+degenerate) and only the max logit enters (tie-breaking
+provably cannot affect output — house lowest-index rule
+compatible by construction). Doctrine note honored:
+tables ship as BYTES (their fx3_tables_*.pt sha-pinned;
+house must DECODE, not regenerate — make_tables derives
+sigma from a float std()). QUEUED (next session): house
+twin implementing their gate spec on our P3 core,
+reproduce both digests from their shipped tables. They
+accepted the R2 optimizer teaser — spec relayed
+(2026-07-31-2 house-side).

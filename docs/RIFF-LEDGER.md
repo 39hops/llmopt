@@ -2129,3 +2129,17 @@ pooling winners was his call).
   07-31 dynamic-instrument catch from probes to the training
   force itself. Physics frames welcome as methods (GR/QM
   analogies for the coupling schedule).
+
+- **2026-07-31 (Artin): per-component logging + checkpoint DB** —
+  (a) log4j/Minecraft-mod-style logging: every component owns a
+  named child logger under one hierarchy. Python's stdlib logging
+  IS this pattern (dotted hierarchical names); llmopt.runlog
+  already owns the root — the build is instrumenting components
+  with get_logger("llmopt.<component>") + per-component level
+  control from env, so a run's log shows WHO said WHAT (tonight's
+  45-v-37 hunt would have been minutes, not an hour). (b) a real
+  checkpoint DATABASE (provenance: sha, birth env, git rev, gate
+  numbers, source log) — MANIFEST.jsonl is the seed; tonight's
+  provenance bug is the motivating incident. Standing bar for
+  promotion into llmopt/ or axiom C++: instrument must be proven
+  accurate, honest, consistent first.
