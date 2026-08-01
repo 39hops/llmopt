@@ -14982,3 +14982,32 @@ W4d also lands <= 2/8, the decision rule closes on
 free-run gap is not capacity and not schedule; SS
 revives only above this scale, and the seeds/windows
 ladder becomes the COND+QK graduation path. All n=1.
+
+## VERDICT GRAVMOE-BRUTE (closing): BRUTE DOES NOT CONVERT at this diet — the legal width arm is WORSE than baseline on every axis; the residual free-run gap is neither capacity nor schedule; G-RB1 stands as the battery optimum (2026-08-01 night, Mac)
+
+BR-W4d (GATE=1 COND=1 QK=1 DIM=128 DHEAD=32 FFN=256
+ACLAMP=40960 SCHED=1; log logs/brute_w4d_0801.log):
+  Prediction (1) FIRES: no crash, loss monotone-falls
+  after the first decay point (7213 @ 500 -> 6337 @
+  2000) — the instrument is finally healthy at width.
+  Prediction (2) FAILS: TRAIN 0/8 tok 56/140, HELDOUT
+  0/8 tok 50/140, merge +8637, sha 72edcdf1... — the
+  825k model UNDERPERFORMS the 208k baseline (2/8,
+  94/140, loss 2564) on both axes at equal steps.
+DECISION RULE (branch 3 of BRUTE-B/C): both brute axes
+land <= 2/8. The exposure-bias/free-run residual is NOT
+capacity (width hurts at this diet/steps) and NOT
+schedule (decay only smooths). READ: 8 rows x 2000
+steps is a DATA-BOUND regime — 4x params dilute
+steps-per-param and memorize SLOWER; capacity was never
+the binder the SS null guessed at this scale. STANDING:
+G-RB1 (COND=1 QK=1, 208k, 2000 steps) is the battery
+optimum; SS revives only at a diet/scale where the data
+bound lifts; the COND+QK graduation path is the
+seeds/windows ladder + wider diet (heldout rung), not
+brute compute. Program note: the brute leg's real
+yield is three instrument laws — decay legalizes long
+integer runs (MB-S14 transports), ACT_CLAMP is
+rms_fwd's int64 overflow guard (safe bound ~80
+Q-units), and clamp demand is measured (STEPS=1 init
+sweep), never scaled. All n=1.
