@@ -13527,3 +13527,40 @@ runtime. Standing: rANS rider queued (theirs), FX-V3
 house reproduction awaited (ours), R3 wide-accumulator
 Q_w pin = house, then axiom takes the C++ leg of the
 full birth.
+
+## PRE-REG FX-V3 HOUSE REPRODUCTION (2026-07-31 night, before the run; Mac, axiom co-located at ~/code/axiom)
+
+Their fx3_tables_s{1,2}.pt verified against the pinned
+shas (1df989a6..., ddf31c4e... — exact match); key
+layout is the house dialect (blocks.N.router alongside
+the P3 tensors; rexp.tab 4097 = [-TSE, 0], TSE=4096).
+Cell: house integer reference = P3 DetLM (pack_decode)
++ their gate spec verbatim (s = rdiv(rl*Q, A); d = s -
+max(s); e = rexp lookup, z >= Q; top_p = rdiv(Q*Q, z);
+x = clamp(x + rdiv(down_out * top_p, Q))), tables
+DECODED from their files (never regenerated), frozen
+FX-V2 battery (5 prompts, 40 greedy tokens, sha of
+repr(streams)). PASS = both published digests reproduced
+(e377201c... s1, f5013f2b... s2). Any mismatch names an
+op.
+
+## VERDICT FX-V3 HOUSE REPRODUCTION: PASS both seeds, FIRST RUN — the merged crystal is integer-closed across THREE implementations (2026-07-31 night)
+
+scratch/fx3_house.py: P3 DetLM subclass + their gate
+spec implemented from the relay prose, tables decoded
+from their shipped files. s1 e377201c... PASS, s2
+f5013f2b... PASS — digest-identical to axiom's Python
+reference AND their pure-int64 C++ decoder. The merged
+crystal now has THREE independent implementations (house
+python-int, axiom python-int, axiom C++) in TWO labs
+producing bit-identical streams from shipped bytes.
+Combined with tonight's R2 C++ leg, the cross-lab
+determinism program state: DECODE integer-closed at 3
+implementations (merged MoE incl. router softmax);
+TRAINING integer-closed at 3 runtimes (mini scale).
+Remaining open rungs: R2b full-block, R3 wide
+accumulator (Q_w pin = house, C++ leg = axiom), rANS
+rider (theirs). NOTE the gate spec transferred by PROSE
+alone — no code was exchanged for the gate; the two
+proven properties (winner contributes exactly Q;
+tie-break provably irrelevant) made the spec complete.
