@@ -576,6 +576,35 @@ def main():
             if cosv < worst:
                 worst, argw = cosv, n
         print(f"[gmoe] TWIN worst cosine {worst:.6f} ({argw})")
+    if os.environ.get("EXPORT"):
+        # P4 lab-leg artifacts: init bytes (param_items order,
+        # int64 LE) + window token ids + contract JSON; no training.
+        import json
+        out = os.environ["EXPORT"]
+        os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
+        with open(out + "_init.bin", "wb") as f:
+            for _, p in m.param_items():
+                f.write(p.numpy().tobytes())
+        with open(out + "_windows.bin", "wb") as f:
+            f.write(wins.numpy().tobytes())
+        contract = {
+            "env": {k: os.environ.get(k, "") for k in
+                    ("COND", "QK", "TAU", "GATE", "SS", "LN", "LD",
+                     "K", "E", "STEPS", "SHIFT")},
+            "dims": {"V": V, "T": T, "D": D, "DH": M.DH, "F": F,
+                     "E": E, "NBLK": len(m.bodies)},
+            "GB": GB, "seed": M.SEED,
+            "param_order": names,
+            "draw_bounds": {"wq/wk": QKW, "wo/wd": QW, "other": Q},
+            "windows_sha":
+                hashlib.sha256(wins.numpy().tobytes()).hexdigest(),
+            "init_sha": hashlib.sha256(
+                open(out + "_init.bin", "rb").read()).hexdigest(),
+        }
+        with open(out + "_contract.json", "w") as f:
+            json.dump(contract, f, indent=1)
+        print(f"[gmoe] EXPORT -> {out}_(init|windows).bin + contract")
+        return
     flat = dict(m.param_items())
     wide = {n: flat[n] << SHIFT for n in names}
     opt = IntAdamWQw([wide[n] for n in names], SHIFT, lrd=1000)
