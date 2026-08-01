@@ -278,8 +278,11 @@ def main():
     flat = dict(m.param_items())
     wide = {n: flat[n] << SHIFT for n in names}
     opt = IntAdamWQw([wide[n] for n in names], SHIFT, lrd=1000)
+    sched = os.environ.get("SCHED") == "1"
     losses, th = [], hashlib.sha256()
     for step in range(1, STEPS + 1):
+        if sched and step in (250, 500, 750):
+            opt.lrd *= 2                      # integer lr decay
         nar = {n: rdiv(wide[n], 1 << SHIFT) for n in names}
         m.emb = nar["emb"]
         m.g_f = nar["g_f"]

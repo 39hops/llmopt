@@ -13995,3 +13995,49 @@ alone — a SHIFT=14 + SCHED arm is the natural next
 cell. Milestone losses: 9119 7786 6896 6552 6961 6716
 9409 8055 (dict-form checksum: these are the 8 booked
 values, sum 61494).
+
+## PRE-REG MB-S14: SHIFT=14 + integer lr decay vs the MB-REF late overshoot (2026-08-01, Mac)
+
+Same mb cell (NBLK=2, seed 17, 1000 steps), two arms
+against the MB-REF baseline (SHIFT=12, const lr, min
+6552 @ 500 then bump to 9409 @ 875): (A) SHIFT=14
+const lr — accumulator width alone; (B) SHIFT=14 +
+SCHED (lrd doubles at 250/500/750) — width + decay, the
+update-starvation law's prescribed combination (decay
+alone deepens starvation; decay + width is untested).
+PREDICTIONS: (B) removes the late bump (all milestones
+past 500 stay under 7000) and lands the lowest final
+loss; (A) alone does not fix the bump (overshoot is an
+lr problem, not a width problem — nz was 0.334, no
+starvation signature); if (B) shows nz collapse (<0.05
+late) the law's fix is insufficient at this scale and
+that books as a null.
+
+## VERDICT MB-S14: width+decay closes the "strictly falling" bar — first all-monotone integer birth; width alone was a bigger lever than predicted (2026-08-01, Mac)
+
+Against PRE-REG MB-S14 (baseline S12 const: min 6552,
+bump to 9409, final 8055):
+ARM A (SHIFT=14 const): milestones 9468 7350 6882 6291
+5952 5882 5896 6138 — prediction "(A) alone does not
+fix the bump" is WRONG in the large: width alone
+removed the 9409-class blowup entirely, leaves only a
+mild late rise (5882 -> 6138) and holds the LOWEST
+point of any arm (5882 @ 750). FINAL sha
+a5d0b4e7c489e917...757866ba.
+ARM B (SHIFT=14 + SCHED, lrd x2 @ 250/500/750):
+milestones 9468 7350 7271 6919 6788 6643 6395 6271 —
+STRICTLY MONOTONE, all 8. The R2b "strictly falling"
+open bar (carried since the single-block cell) is
+CLOSED at multi-block by width+decay. nz steady 0.298
+throughout — no starvation signature, so the update-
+starvation law's prescription (decay only WITH width)
+holds. Prediction "(B) lands the lowest final loss" is
+WRONG: A's 6138 < B's 6271 — decay buys monotonicity
+at the price of late progress rate.
+READ: accumulator width is the primary stabilizer
+(overshoot at S12 was partly update GRANULARITY, not
+just lr magnitude); decay then trades a little depth
+for monotonicity. Default going forward for mb-scale
+births: SHIFT=14; add SCHED when the run is a
+demonstration of stability, A-style const when chasing
+the lowest loss.
