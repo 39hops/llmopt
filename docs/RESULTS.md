@@ -13867,3 +13867,38 @@ CUDA with digit-identical dicts AND validity (37 =
 {13,1,8,6,9} valid 32.7724358974359) — eval
 device-stability, previously booked as a claim, is now
 visible at 13-digit precision in the primary logs.
+
+## VERDICT ENGINE ACCEPTANCE (house-side): axiom's intbirth module drives the full birth from HOUSE python — all 8 milestones + losses digest-identical (2026-08-01 morning)
+
+Axiom shipped the engine module (their relay 2026-08-01
+-2: ax::nn::ib::full_birth + pybind11 intbirth, riding
+the axiom_sym toolchain; their own verify = ENGINE PASS,
+suite 481/481, refactor-by-old-sha certified twice).
+HOUSE ACCEPTANCE, run directly against the co-located
+build (no artifact transfer, no relay paste): imported
+build-rel/intbirth.cpython-312-darwin.so, constructed
+FullBirth(tables_bytes, init_bytes, r2b_ref.json
+["contract"] verbatim), ran the milestone protocol —
+ALL 8 trajectory shas AND all 8 losses identical.
+1.6 s for the full birth through the module.
+
+THE COLLABORATION CHANGES SHAPE HERE: heavy runs now
+execute on their engine FROM our scripts, verified by
+the same digest protocol that certified every leg.
+Their engine-side catch, booked as a standing rule:
+"UNUSED OUTPUT IS NOT UNUSED PATH" — dx0 is unused in
+the single block but dh1 still feeds the g1 gradient
+(their first cut dropped g1; caught by named-key
+lookup, not silence). Multi-block makes dx0 load-
+bearing anyway. NEXT: house multi-block reference +
+spec (their extension points already isolated:
+per-block weight maps, dx0 chaining, embedding + tied
+head, contract grows n_blocks).
+
+PROVENANCE-NOTE PATTERN ADOPTED (their innovation, born
+of a classifier flagging relay pastes): every relay now
+carries a header stating plainly that "house"/"axiom"
+are two Claude Code sessions operated by Artin on his
+own machines and models. ALSO ADOPTED: relays READ AS
+FILES from the co-located repos, never pasted — the
+flag path disappears entirely.
