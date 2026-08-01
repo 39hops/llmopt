@@ -1,4 +1,17 @@
 {
+ "contract": {
+  "V": 40,
+  "T": 32,
+  "D": 64,
+  "DH": 16,
+  "F": 128,
+  "n_blocks": 2,
+  "SHIFT": 14,
+  "E": 4,
+  "K": 100,
+  "LN": 0,
+  "LD": 1
+ },
  "env": {
   "COND": "1",
   "QK": "1",
@@ -70,6 +83,7 @@
   "wo/wd": 64,
   "other": 512
  },
- "windows_sha": "99caaa646925d1503cb30d17c6b37ee36a9b82fd78ddd204957d5676600bf75b",
+ "windows_sha": "06790898d0ac41f20f1d419767b6fc00fdc765b59b6b6b06cec14d923f868b78",
+ "windows_rows_sha": "99caaa646925d1503cb30d17c6b37ee36a9b82fd78ddd204957d5676600bf75b",
  "init_sha": "e0dc7d8634ae0eb200b889160c598d457388afb7e811fac118a18bdd768594ea"
 }

@@ -585,9 +585,20 @@ def main():
         with open(out + "_init.bin", "wb") as f:
             for _, p in m.param_items():
                 f.write(p.numpy().tobytes())
+        # axiom record format: NW records of tok[T] ++ tgt[T]
+        # (int64 LE); NW inferred from length engine-side.
         with open(out + "_windows.bin", "wb") as f:
-            f.write(wins.numpy().tobytes())
+            for wi in range(wins.shape[0]):
+                f.write(wins[wi, :T].numpy().tobytes())
+                f.write(wins[wi, 1:T + 1].numpy().tobytes())
         contract = {
+            # the engine-consumed dict, axiom key spelling
+            # (docs/plans/2026-08-01-gravmoe-engine.md; LN/LD/
+            # SHIFT/STEPS overridden per-arm from pins.json)
+            "contract": {"V": V, "T": T, "D": D, "DH": M.DH,
+                         "F": F, "n_blocks": len(m.bodies),
+                         "SHIFT": SHIFT, "E": E, "K": K,
+                         "LN": LN, "LD": LD},
             "env": {k: os.environ.get(k, "") for k in
                     ("COND", "QK", "TAU", "GATE", "SS", "LN", "LD",
                      "K", "E", "STEPS", "SHIFT")},
@@ -596,7 +607,11 @@ def main():
             "GB": GB, "seed": M.SEED,
             "param_order": names,
             "draw_bounds": {"wq/wk": QKW, "wo/wd": QW, "other": Q},
-            "windows_sha":
+            "windows_sha": hashlib.sha256(
+                open(out + "_windows.bin", "rb").read()).hexdigest(),
+            # the 33-token-row sha the house logs print (pins
+            # 99caaa64 truncated / 32cc24 gate), for cross-ref:
+            "windows_rows_sha":
                 hashlib.sha256(wins.numpy().tobytes()).hexdigest(),
             "init_sha": hashlib.sha256(
                 open(out + "_init.bin", "rb").read()).hexdigest(),

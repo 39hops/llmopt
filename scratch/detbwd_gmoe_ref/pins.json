@@ -1,87 +1,122 @@
 {
- "steps": 2000,
- "shift_default": 14,
- "p4_device_leg": "16/16 PASS on 3080, 2026-08-01",
- "arms": [
-  {
-   "arm": "A0 LN=0 LD=1",
-   "env": "COND=0",
-   "final_sha": "6fffa718f9c7b2c07f2196a4ce079a705517b229baa71b853896f0cda8128faf"
-  },
-  {
-   "arm": "A1 LN=1 LD=16",
-   "env": "COND=0 LN=1 LD=16",
-   "final_sha": "1ad5f466aa9dab17540cae26358c4ad50749e9ae8ea4ad1faa71f4b4d2ed3ec1"
-  },
-  {
-   "arm": "A2 LN=1 LD=4",
-   "env": "COND=0 LN=1 LD=4",
-   "final_sha": "23c154e6a31daef758230c3780d55082a9be871b734e0844008514760b652ff1"
-  },
-  {
-   "arm": "A3 LN=1 LD=1",
-   "env": "COND=0 LN=1 LD=1",
-   "final_sha": "300e61ad2cd621f8c7c2f89cbce3d5f2cafd7397233d9b05ed571a6fe9bd8cab"
-  },
-  {
-   "arm": "COND-A0 LN=0 LD=1",
-   "env": "COND=1",
-   "final_sha": "0ad9da9476d8be45a6ffe28cd95702edabf7d41124c36efa454bf22777f08c2d"
-  },
-  {
-   "arm": "COND-A1 LN=1 LD=16",
-   "env": "COND=1 LN=1 LD=16",
-   "final_sha": "a328188cc7f46ebf2cacea1d6b23bd5a0e0b7f7acc58ed61119018d0f9dc21bc"
-  },
-  {
-   "arm": "COND-A2 LN=1 LD=4",
-   "env": "COND=1 LN=1 LD=4",
-   "final_sha": "35396b368e2f42b781f39167696ae21e60b83c2d3c0e1d483608ea46548aaa76"
-  },
-  {
-   "arm": "COND-A3 LN=1 LD=1",
-   "env": "COND=1 LN=1 LD=1",
-   "final_sha": "4b98a6ef05bb45f7ad3a7e5a50f32bb63b736060aa64b7763369c2ef8dc476e0"
-  },
-  {
-   "arm": "G-A0",
-   "env": "GATE=1 COND=1",
-   "final_sha": "2b29bd4aa29bc4fb4ac1ea76084dd4c88e7d93084f27945df0c48c07fae407b1"
-  },
-  {
-   "arm": "G-A2 lambda 1/4",
-   "env": "GATE=1 COND=1 LN=1 LD=4",
-   "final_sha": "66d8f8799f85599b05ac5cf2dd44dd12e88010ba835304625f9d6bed5babb9fc"
-  },
-  {
-   "arm": "G-A3 lambda 1",
-   "env": "GATE=1 COND=1 LN=1 LD=1",
-   "final_sha": "919b83476dc9b84e3791821bd884933f88a57e4e261cd7d59bfeab4960412ce0"
-  },
-  {
-   "arm": "RB QK=1",
-   "env": "COND=1 QK=1",
-   "final_sha": "c6766da235cf0b76be20035b893cb41fd0a2f8dbbc6339c96e8527ce2cb3f65f"
-  },
-  {
-   "arm": "RB QK=1 TAU=1",
-   "env": "COND=1 QK=1 TAU=1",
-   "final_sha": "6968b583f440405f7da819ece57f924ffb5fd59dcc228dcf27c1d349b2ecd29d"
-  },
-  {
-   "arm": "RB QK=1 SHIFT=16",
-   "env": "COND=1 QK=1 SHIFT=16",
-   "final_sha": "14981553e6cbebe11f9625fc7b4405dd73ffb9fc5060d8161b57f076ce492ee4"
-  },
-  {
-   "arm": "G-RB1 GATE COND QK",
-   "env": "GATE=1 COND=1 QK=1",
-   "final_sha": "1fcfd187873d980c7c082a56c0f380ce2c40a859eab1e8a0c9dcf6baa4853eca"
-  },
-  {
-   "arm": "S1 SS=1",
-   "env": "GATE=1 COND=1 SS=1",
-   "final_sha": "e1b633a965171f16ca58d17fe8c597ffbe6362ae2dc6ed7b6f58ec0ed69c6087"
-  }
- ]
+ "A0": {
+  "cell": "a0",
+  "LN": 0,
+  "LD": 1,
+  "STEPS": 2000,
+  "final_sha": "6fffa718f9c7b2c07f2196a4ce079a705517b229baa71b853896f0cda8128faf"
+ },
+ "A1": {
+  "cell": "a0",
+  "LN": 1,
+  "LD": 16,
+  "STEPS": 2000,
+  "final_sha": "1ad5f466aa9dab17540cae26358c4ad50749e9ae8ea4ad1faa71f4b4d2ed3ec1"
+ },
+ "A2": {
+  "cell": "a0",
+  "LN": 1,
+  "LD": 4,
+  "STEPS": 2000,
+  "final_sha": "23c154e6a31daef758230c3780d55082a9be871b734e0844008514760b652ff1"
+ },
+ "A3": {
+  "cell": "a0",
+  "LN": 1,
+  "LD": 1,
+  "STEPS": 2000,
+  "final_sha": "300e61ad2cd621f8c7c2f89cbce3d5f2cafd7397233d9b05ed571a6fe9bd8cab"
+ },
+ "CA0": {
+  "cell": "ca0",
+  "LN": 0,
+  "LD": 1,
+  "STEPS": 2000,
+  "final_sha": "0ad9da9476d8be45a6ffe28cd95702edabf7d41124c36efa454bf22777f08c2d"
+ },
+ "CA1": {
+  "cell": "ca0",
+  "LN": 1,
+  "LD": 16,
+  "STEPS": 2000,
+  "final_sha": "a328188cc7f46ebf2cacea1d6b23bd5a0e0b7f7acc58ed61119018d0f9dc21bc"
+ },
+ "CA2": {
+  "cell": "ca0",
+  "LN": 1,
+  "LD": 4,
+  "STEPS": 2000,
+  "final_sha": "35396b368e2f42b781f39167696ae21e60b83c2d3c0e1d483608ea46548aaa76"
+ },
+ "CA3": {
+  "cell": "ca0",
+  "LN": 1,
+  "LD": 1,
+  "STEPS": 2000,
+  "final_sha": "4b98a6ef05bb45f7ad3a7e5a50f32bb63b736060aa64b7763369c2ef8dc476e0"
+ },
+ "GA0": {
+  "cell": "grb1",
+  "GATE": 1,
+  "LN": 0,
+  "LD": 1,
+  "STEPS": 2000,
+  "final_sha": "2b29bd4aa29bc4fb4ac1ea76084dd4c88e7d93084f27945df0c48c07fae407b1"
+ },
+ "GA2": {
+  "cell": "grb1",
+  "GATE": 1,
+  "LN": 1,
+  "LD": 4,
+  "STEPS": 2000,
+  "final_sha": "66d8f8799f85599b05ac5cf2dd44dd12e88010ba835304625f9d6bed5babb9fc"
+ },
+ "GA3": {
+  "cell": "grb1",
+  "GATE": 1,
+  "LN": 1,
+  "LD": 1,
+  "STEPS": 2000,
+  "final_sha": "919b83476dc9b84e3791821bd884933f88a57e4e261cd7d59bfeab4960412ce0"
+ },
+ "RB1": {
+  "cell": "rb1",
+  "LN": 0,
+  "LD": 1,
+  "STEPS": 2000,
+  "final_sha": "c6766da235cf0b76be20035b893cb41fd0a2f8dbbc6339c96e8527ce2cb3f65f"
+ },
+ "RB3": {
+  "cell": "rb1",
+  "TAU": 1,
+  "LN": 0,
+  "LD": 1,
+  "STEPS": 2000,
+  "final_sha": "6968b583f440405f7da819ece57f924ffb5fd59dcc228dcf27c1d349b2ecd29d"
+ },
+ "RB1S16": {
+  "cell": "rb1",
+  "SHIFT": 16,
+  "LN": 0,
+  "LD": 1,
+  "STEPS": 2000,
+  "final_sha": "14981553e6cbebe11f9625fc7b4405dd73ffb9fc5060d8161b57f076ce492ee4"
+ },
+ "GRB1": {
+  "cell": "grb1",
+  "GATE": 1,
+  "LN": 0,
+  "LD": 1,
+  "STEPS": 2000,
+  "final_sha": "1fcfd187873d980c7c082a56c0f380ce2c40a859eab1e8a0c9dcf6baa4853eca"
+ },
+ "S1": {
+  "cell": "grb1",
+  "GATE": 1,
+  "SS": 1,
+  "LN": 0,
+  "LD": 1,
+  "STEPS": 2000,
+  "final_sha": "e1b633a965171f16ca58d17fe8c597ffbe6362ae2dc6ed7b6f58ec0ed69c6087"
+ }
 }
