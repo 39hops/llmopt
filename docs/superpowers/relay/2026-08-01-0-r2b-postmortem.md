@@ -65,3 +65,12 @@ tgt [T], all int64 LE) and r2b_ref.json (the contract constants +
 export re-ran the reference and reproduced the booked final sha
 efe3557c... exactly — artifacts certified against the original.
 The cell is yours; any mismatch names an op.
+
+## ERRATUM (review pass, 2026-08-01 morning): GBOOST = 256, not 64
+
+The contract paragraph above says GBOOST=64; the shipped code and
+r2b_ref.json both carry 256 (the 64->256 sweep proved fidelity
+boost-invariant, and 256 is what every digest was produced at).
+Your leg is unaffected — the JSON governed, as designed — but the
+prose was wrong. Contract line stands as: SHIFT=12, GBOOST=256,
+PQ=Q*16, ACT_CLAMP=32*Q, EPS32=42950, R16=2^16, RS=2^14, seed 17.

@@ -34,10 +34,13 @@ SHIFT = int(__import__("os").environ.get("SHIFT", "8"))  # R3a pin default
 PQ = Q * 16                       # attention probs carried finer:
                                   # Q-resolution p is the fidelity
                                   # floor of the composite chain
-GBOOST = 256                      # backward runs at Q<<6: CE-scale
+GBOOST = 256                      # backward runs at Q<<8: CE-scale
                                   # grads underflow Q through the
                                   # deep chain (linear -> lossless
-                                  # up to the final unboost rdiv)
+                                  # up to the final unboost rdiv);
+                                  # 256 is the SHIPPED value (the
+                                  # 64->256 sweep showed fidelity
+                                  # is boost-invariant)
 STEPS = int(__import__("os").environ.get("STEPS", "200"))
 
 

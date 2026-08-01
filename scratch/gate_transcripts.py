@@ -10,6 +10,10 @@ import os
 import sys
 
 os.environ.setdefault("ARM", "gravmoe")
+_ck = os.environ.get("CKPT", "checkpoints/umoe_gravmoe_s1.pt")
+assert os.environ["ARM"] in os.path.basename(_ck), (
+    f"ARM={os.environ['ARM']} does not match CKPT {_ck} — "
+    "set ARM to the checkpoint's arm (reviewer catch 2026-08-01)")
 sys.path.insert(0, ".")
 sys.path.insert(0, "scripts")
 sys.path.insert(0, "scratch")

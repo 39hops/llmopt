@@ -10,8 +10,11 @@ crashed arms). The unit is a JOB, not a process pattern:
                          jobs/<id>.rc    (exit code, written ON EXIT)
 
   status/tail/kill/wait operate on the ID via the pidfile — never
-  on a grep pattern, so a watcher can never match itself and a
-  DONE state always carries the real exit code.
+  on a grep pattern, so a watcher can never match itself. DONE
+  carries the real exit code for jobs that exit; killed jobs get
+  rc=killed (written by the kill itself). DIED means pid gone with
+  no rc — genuinely anomalous, though a brief exit-to-rc-write
+  race can show it transiently; re-check before acting on it.
 
 Transport: remote commands go through scratch/wsl.sh (one ssh call
 per subcommand, per the remote-ops doctrine). RJOB_LOCAL=1 runs on
@@ -45,7 +48,19 @@ def sh(cmd):
     return r.returncode, (r.stdout + r.stderr).strip()
 
 
+import re
+
+
+def check_jid(jid):
+    if not re.fullmatch(r"[A-Za-z0-9_.-]{1,64}", jid):
+        print(f"[rjob] invalid job id {jid!r} "
+              f"(allowed: [A-Za-z0-9_.-], max 64)")
+        sys.exit(1)
+    return jid
+
+
 def launch(jid, cmd):
+    check_jid(jid)
     rc, out = sh(
         f"mkdir -p {JOBS} && test ! -e {JOBS}/{jid}.pid || exit 91; "
         f"printf %s {shlex.quote(cmd)} > {JOBS}/{jid}.cmd && echo ok")
@@ -65,10 +80,16 @@ def launch(jid, cmd):
             f.write(str(p.pid))
         pid = p.pid
     else:
-        rc, pid = sh(
-            f"setsid bash -c {shlex.quote(runner)} >/dev/null 2>&1 "
-            f"</dev/null & echo $! > {JOBS}/{jid}.pid; "
-            f"cat {JOBS}/{jid}.pid")
+        # the CHILD writes its own pid (util-linux setsid may fork,
+        # making $! neither the job pid nor the pgid — reviewer
+        # catch, 2026-08-01)
+        inner = (f"echo $$ > {JOBS}/{jid}.pid; exec bash -c "
+                 f"{shlex.quote(runner)}")
+        rc, _ = sh(
+            f"setsid bash -c {shlex.quote(inner)} >/dev/null 2>&1 "
+            f"</dev/null & sleep 0.3; cat {JOBS}/{jid}.pid "
+            f"2>/dev/null || echo pending")
+        pid = _
     print(f"[rjob] launched {jid} pid {pid} (rc file on exit)")
 
 
@@ -85,18 +106,24 @@ def status():
 
 
 def tail(jid, n="20"):
+    check_jid(jid)
     rc, out = sh(f"tail -n {int(n)} {JOBS}/{jid}.log")
     print(out)
 
 
 def kill(jid):
+    check_jid(jid)
+    # the kill itself writes the rc file (the wrapper dies with the
+    # group and can't) so a killed job resolves to DONE rc=killed
     rc, out = sh(
         f"pid=$(cat {JOBS}/{jid}.pid) && kill -- -$pid 2>/dev/null; "
-        f"kill $pid 2>/dev/null; echo killed-$pid")
+        f"kill $pid 2>/dev/null; echo killed > {JOBS}/{jid}.rc; "
+        f"echo killed-$pid")
     print(f"[rjob] {out}")
 
 
 def clean(jid):
+    check_jid(jid)
     rc, out = sh(
         f"if [ -e {JOBS}/{jid}.rc ] || "
         f"! kill -0 $(cat {JOBS}/{jid}.pid 2>/dev/null) 2>/dev/null; "
