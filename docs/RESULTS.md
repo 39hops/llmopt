@@ -14577,3 +14577,25 @@ coincidence); no leaks; fork-boxed sympy; no
 weight-distance scoring; rjob pidfile ops (one note:
 kill combines kill+rc-write in one transport call —
 accepted as-is, mentioned for the record).
+
+## RIDER on AMENDMENT REVIEW-ADOPTION-0801: coarse agreement measured — collapse is genuinely all-or-nothing; P1 regrades from UNMEASURED to MEASURED-NEGATIVE for the middle arms (2026-08-01 night, Mac)
+
+Deterministic rerun of GRAVMOE-PAIR A0-A3 with the
+spec's coarse (+-1 LSB) metric implemented:
+  A0/A1/A2: strict 0.0000, coarse 0.0000
+  A3:       strict 1.0000, coarse 1.0000
+All four FINAL shas reproduce the booked pins exactly
+(6fffa718/1ad5f466/23c154e6/300e61ad — regression
+PASS; the strict/coarse addition is read-only on the
+trajectory, as it must be). READ: the reviewer's
+methodological point stands (P1 had been graded
+against a missing instrument), but the measurement
+lands where the strict metric suggested — partial
+gravity produces NO expert output convergence even at
++-1 LSB resolution; expert collapse at these doses is
+all-or-nothing, not graded. The merge-damage gradient
+(6983 -> 4412 at lambda 1/4, conditioned cell)
+therefore comes from experts moving into
+mutually-compatible-but-distinct functions, NOT from
+partial output agreement — a sharper mechanism
+statement than the original booking.
