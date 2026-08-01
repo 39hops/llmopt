@@ -25,8 +25,13 @@ through which mechanism.
   router logits rdiv(int_mm(h2, wr_e), Q), argmax with FIXED
   tie-break (lowest expert index wins — determinism is a
   CONVENTION, write it down). Per-token routing; chosen expert's
-  FFN output used; router grad via the straight-through
-  convention pinned in fx3_house.py.
+  FFN output SCALED by the router's top softmax prob:
+  y = rdiv(out_e * top_p, PQ) — the fx3 inference convention,
+  which is also the trainable one (router grads flow through
+  top_p via softmax_bwd; no straight-through needed).
+  [Refined at implementation 2026-08-01: fx3_house.py is
+  inference-only, so "straight-through" was wrong — the
+  multiplicative gate fx3 already uses is the convention.]
 
 ## The gravity event (integer relaxation)
 
@@ -91,7 +96,7 @@ P4 3080/axiom legs reproduce every digest bit-identically
 
 ## New-surface fences
 
-- Router tie-break and straight-through convention are part of
+- Router tie-break and multiplicative-gate convention are part of
   the CONTRACT (write them in the ref JSON).
 - Relax event cadence counts OPTIMIZER steps (not windows);
   K=100 at 8-window cycling means the event lands mid-cycle —

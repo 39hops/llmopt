@@ -14163,3 +14163,51 @@ CYCLING is new surface (MultiBirth holds fixed
 tok/tgt) — the diet-bridge engine leg needs a spec'd
 extension, flagged in their relay ("data loader = new
 surface, spec first").
+
+## PRE-REG GRAVMOE-PAIR: arms A0-A3 (lambda 0, 1/16, 1/4, 1), 2000 steps, diet windows, SHIFT=14, GB=1024 (2026-08-01 afternoon, Mac)
+
+Reference scratch/detbwd_gravmoe.py per the approved
+spec (2026-08-01-deterministic-gravmoe) with three
+implementation refinements, all booked here BEFORE the
+arms fire: (1) multiplicative top_p gate (fx3
+convention) replaces "straight-through" (fx3 is
+inference-only; spec amended in place); (2) dtop_p at
+boost scale (/Q not /PQ, the attention dp convention;
+/PQ underweighted the router path 16x) + dgate kept
+exact with /PQ folded into each consumer's single rdiv
+(the rdiv-grouping-correct form); (3) GB = 4x GBOOST
+(the gate shrinks backward values by up to E x;
+boost-invariance re-measured: worst cosine identical
+at GB 1024 v 4096).
+TWIN INSTRUMENT (the session's methodological find):
+E=1 reduces BIT-IDENTICALLY to the certified dense
+Body (fwd, bwd, dx0, all grads) — the restructure is
+certified by construction. The naive twin showed
+b0.wq/wk at -0.996 on window 0: NOT a bug but the
+near-tie class — the models run saturated (36-55% of
+activations at the clamp rails, ~90% exactly-zero
+attention probs), and 3-18 BOUNDARY elements per
+window disagree between the integer mask (|pre| <=
+16384) and fp 32.0; the attention softmax cancellation
+(~60x) amplifies those flips into anti-correlation.
+Fix: ALL discrete decisions come from the integer side
+— twin takes routing tops AND clamp masks as
+constants. Result: composite cosines {+0.53(win0),
++0.9935..+0.9994(wins 1-7)}, median 0.9954. Window 0
+carries a residual discrete disagreement (suspected
+exp-cutoff adjacent; universal 90% zero-prob makes it
+intrinsic) — fenced as a known outlier, bar set on the
+median.
+ARMS (fire after this booking): A0 LN=0; A1 LN=1
+LD=16; A2 LN=1 LD=4; A3 LN=1 LD=1; K=100, seed 17,
+same windows (ids sha 99caaa646925d150). PREDICTIONS
+as spec'd: P1 agreement rises with lambda, A3
+collapses to 100% well before 2000, A1 stays diverse;
+P2 merge delta ~0 for A2/A3, HARMFUL for A1 (the
+LAM-MERGE mechanism, threshold bracketed); P3 diet
+loss A0-v-A2 NO direction predicted (that is the
+point); P4 (later legs) digest reproduction on
+3080/axiom. Saturated-init conditioning is NOTED as a
+limitation of this cell (attention 90% zero at init) —
+any init-scale change is a NEW cell, not a tweak to
+this one.
