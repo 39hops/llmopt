@@ -14750,3 +14750,70 @@ Heldout stays 0/8 as predicted everywhere (8 rows,
 60k params — memorization regime). The COND+QK
 default is now supported on both axes: teacher-forced
 (-72%) and free-run (+68% token-acc, 0 -> 2 solves).
+
+## AMENDMENT PARAMS-GRAVMOE (amends NULL GRAVMOE-SS + RIDER on VERDICT QK-RESCOPE): the gravmoe battery model is 208,192 params, not "60k" (2026-08-01 evening, Mac)
+
+Every gravmoe arm's log prints `[gmoe] params 208192`
+(logs/gate_arms_0801.log, ss_arms_0801.log,
+qkrescope_arms_0801.log — all five lines checked). The
+"60k params" figure in NULL GRAVMOE-SS ("capacity binds
+at 60k/8 rows") and the rider ("8 rows, 60k params —
+memorization regime") was quoted from memory, not the
+artifact. The READINGS are unchanged — 208k params on 8
+complete rows is still a memorization regime and
+capacity still binds — but the constant governs: 208,192
+(E=4 experts, D=64, F=128, DH=16, V=40, NBLK=2).
+
+## PRE-REG GRAVMOE-BRUTE: the exposure-bias brute leg — more steps and more params on the intbirth gravmoe, gate-scored, one axis per arm (2026-08-01 evening, Mac)
+
+Motivation: NULL GRAVMOE-SS moved the exposure-bias rung
+to the brute leg ("capacity binds at this scale"); the
+G-RB1 rider showed the COND+QK init converts loss into
+free-run competence (2/8 solves, 94/140 tokens). The
+question: does raw compute (steps) or raw capacity
+(width) convert further, at the SAME diet (8 complete
+train rows + 8 heldout, oracle-scored free-run)?
+
+Baseline: G-RB1 (GATE=1 COND=1 QK=1, STEPS=2000,
+208,192 params) — TRAIN 2/8, tok 94/140, loss 2564,
+sha 1fcfd187.
+
+Code change owed first (Fable): env-ize the dims —
+detbwd_r2b.py gains DIM/DHEAD/FFN env knobs with
+defaults 64/16/128 unchanged; detbwd_gravmoe.py inherits
+D, F from detbwd_mb instead of hardcoding. Regression
+arm BR-REG (identical env to G-RB1) must reproduce sha
+1fcfd187 EXACTLY before any brute arm is read; a
+mismatch voids the leg.
+
+Arms (all GATE=1 COND=1 QK=1, LN=0, SHIFT=14, same
+windows/seed; one variable each vs G-RB1):
+  BR-S4:  STEPS=8000 (4x steps, same params)
+  BR-W4:  DIM=128 DHEAD=32 FFN=256, STEPS=2000
+          (~4x params, same steps)
+  BR-SW:  both axes (fires after the singles land,
+          same session)
+
+Predictions:
+  (1) BR-S4: loss falls below 2564; TRAIN solves rise
+      (>= 3/8); HELDOUT stays 0/8.
+  (2) BR-W4: if the SS null's capacity reading is right,
+      the params axis is the stronger lever — TRAIN
+      solves and free-run token-acc beat BR-S4's.
+      Fence: the init clamp-frac/zero-prob diagnostics
+      must be read at D=128 (ACT_CLAMP is fixed at
+      32*512; wider accumulation may clamp more — a
+      clamp-frac far above G-RB1's voids the
+      one-variable claim).
+  (3) HELDOUT 0/8 everywhere (8-row diet; generalization
+      is the seeds/windows-ladder rung, not this one).
+  Decision rule: any arm at TRAIN >= 4/8 = "brute
+  converts", exposure-bias framing stays retired at this
+  scale; all arms flat at 2/8 with loss falling = the
+  residual free-run gap is NOT capacity — revive SS at
+  the widest passing scale.
+
+Fences: all n=1 (one seed/window set); gate cells not
+loss-comparable to truncated cells; BR-W4's draw stream
+differs by shape (new cell, not a paired arm in weight
+space — pairing is at the diet/protocol level).
