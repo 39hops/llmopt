@@ -13350,3 +13350,31 @@ construction. IMPLICATION (banked, not spec'd): the
 next capability dollar at L4 is exact-manipulation
 diet share (long-expression copy/edit fidelity), not
 more strategy exposure.
+
+## PRE-REG GRAV-0T + GRAV-REV: post-hoc gravity (no-training gravmoe) and the white-hole arm (2026-07-31 night, Mac only; Artin's riff)
+
+The transport verdict's rescue framing makes a testable
+claim: the pull lifts Mac births into a basin via WEIGHT
+GEOMETRY. If true, applying the same relaxation POST-HOC
+to an already-trained lb checkpoint should recover part
+of the deficit with ZERO training. Design (Mac, mps,
+paired on ckpts with known gates): load Mac lb s1/s2
+(gates 44/45), observe routing over 200 TRAIN-side
+prompts (exclude= guards the gate seeds), build the
+co-routing EMA exactly as HebbianCoupler does, then
+apply R relaxation steps of the merge-free pull to
+expert weights; re-gate. Arms per ckpt: (a) GRAV-0T
+pull lam=0.5, R in {1, 10, 50}; (b) GRAV-REV repel
+lam=-0.5, R=10 (the white-hole arm); (c) control =
+re-gate untouched ckpt (harness check, must reproduce
+44/45). PREDICTIONS: (1) if 0T recovers >= +4 at any R,
+the pull is a geometry operation and "no-training
+gravmoe" is real (huge: post-hoc rescue for any birth);
+(2) +-2 = the pull needs training-time gradient
+interaction; post-hoc null banked and the win stays a
+training force; (3) REV: rescue-of-noise story predicts
+repel hurts NO MORE than pull helps (|delta| <= pull's
+gain); a large asymmetric LOSS (>= -6) instead means
+the basin is load-bearing structure, not noise rescue.
+Resolution law: n=2 ckpts x paired arms on one device;
+any single-cell delta < 5 reads as noise by default.

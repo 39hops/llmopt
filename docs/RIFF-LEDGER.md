@@ -2117,3 +2117,15 @@ pooling winners was his call).
   the L4 read (strategy present, term arithmetic garbled — the
   wound is exact manipulation, not ansatz knowledge). Banked
   follow-up: exact-manipulation diet share for L4.
+
+- **2026-07-31 (Artin): the gravmoe expansion riff** — three
+  banked directions: (a) REVERSE GRAVMOE ("white hole") — repel
+  co-routed experts instead of attracting (negative lambda /
+  anti-Hebbian); (b) NO-TRAINING GRAVMOE — apply the pull
+  post-hoc to an already-born checkpoint (inference-time or
+  one-shot relaxation), "every win we can use, we use"; (c)
+  DYNAMIC PULL — lambda (and instrument constants like k, R^2)
+  adapt during training instead of being fixed, extending the
+  07-31 dynamic-instrument catch from probes to the training
+  force itself. Physics frames welcome as methods (GR/QM
+  analogies for the coupling schedule).
