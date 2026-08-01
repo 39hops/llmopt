@@ -14428,3 +14428,41 @@ arms (60k params, 8 rows — generalization is not
 expected; any nonzero heldout solve is a finding); (3)
 token-acc(TRAIN) > 90% for the best arm (memorization
 should be near-complete at 2000 steps).
+
+## VERDICT QK-COND: peaked attention is LOAD-BEARING, from three independent directions — soft q/k init is a dead end and wider accumulators do NOT rescue it (2026-08-01 night, Mac)
+
+Completed arms (with the tt floor; logs
+logs/qkcond_arms_0801.log + jobs/qkcond2 log):
+  B1  QK soft init          loss 15350  (baseline 8883)
+  B2  TAU only              loss 10327  tts [23, 502]
+  B3  QK+TAU                loss 15329  tts [974, 216]
+  B4  QK+TAU lambda 1/4     loss 15350  tts [187, 114]
+  B1-S16 QK at SHIFT=16     loss 15476
+THE TRIANGULATION: (1) given a temperature dial on the
+working (hard-attention) model, the model drives it to
+22x SHARPER — body-0 tt hit the floor territory (23/512;
+pre-floor it walked to literal zero, the crash); (2)
+soft q/k init cripples training (15350 v 8883, -73%);
+(3) the starvation hypothesis is REFUTED — SHIFT=16
+recovers nothing (15476), so the low nz (0.022) is a
+symptom, not the disease: near-uniform attention over
+32 positions dilutes every position's gradient
+contribution ~1/T and the attention path simply
+carries no usable learning signal until it sharpens
+— which it cannot bootstrap from a soft start in this
+regime. TAU cannot rescue QK either (B3/B4 flat), and
+gravity is a non-factor in a model that never leaves
+the floor. B2 (TAU on the hard base) also LOSES to
+the plain base (10327 v 8883): the dial costs more
+than it buys even when the model uses it "correctly."
+DOCTRINE: attention "saturation" (90% zero probs) in
+this battery is the WORKING REGIME — pointer-style
+hard attention is what the gen-4 step-rewriting diet
+wants (it is a copy task); the earlier framing of
+zero-prob as a defect is RETIRED. The battery default
+stays wq/wk +-Q, no temperature param. The residual
+conditioning (DIET-COND) remains the real and only
+init win. Twin-fidelity note kept honest: the QK arms
+DID measure cleaner (0.999986) — instrument fidelity
+and training capability are different axes, and
+optimizing the first can destroy the second.
