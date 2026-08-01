@@ -30,7 +30,10 @@ _env = __import__("os").environ
 D = int(_env.get("DIM", "64"))
 DH = int(_env.get("DHEAD", "16"))
 F = int(_env.get("FFN", "128"))
-ACT_CLAMP = 32 * 512               # P3 residual clamp, Q units
+# P3 residual clamp, Q units. Default 32*512 was sized for D=64;
+# ACLAMP env scales it for the width arms (GRAVMOE-BRUTE fence:
+# D=128 at the default clamps 23% of activations at init).
+ACT_CLAMP = int(_env.get("ACLAMP", str(32 * 512)))
 SEED = 17
 SCALE = round(Q * DH ** 0.5)
 RS = 1 << 14                      # rope table scale

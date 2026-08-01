@@ -579,8 +579,13 @@ def main():
     flat = dict(m.param_items())
     wide = {n: flat[n] << SHIFT for n in names}
     opt = IntAdamWQw([wide[n] for n in names], SHIFT, lrd=1000)
+    # SCHED=1: the mb integer lr decay (doublings of lrd at the
+    # quarter points, scaled to STEPS — mb's 250/500/750 at 1000)
+    sched = os.environ.get("SCHED") == "1"
     losses, th = [], hashlib.sha256()
     for step in range(1, STEPS + 1):
+        if sched and step in (STEPS // 4, STEPS // 2, 3 * STEPS // 4):
+            opt.lrd *= 2
         w = wins[(step - 1) % wins.shape[0]]
         tok_in, tgt = w[:T], w[1:T + 1]
         nar = {n: rdiv(wide[n], 1 << SHIFT) for n in names}

@@ -14817,3 +14817,38 @@ Fences: all n=1 (one seed/window set); gate cells not
 loss-comparable to truncated cells; BR-W4's draw stream
 differs by shape (new cell, not a paired arm in weight
 space — pairing is at the diet/protocol level).
+
+## PRE-REG GRAVMOE-BRUTE-B (extends PRE-REG GRAVMOE-BRUTE): the corrected width arm + the decay rescue arm (2026-08-01 night, Mac)
+
+Two arms owed by the first leg's own readouts, pre-registered
+before firing (BR-W4 still in flight when this books):
+
+- BR-S4 DIVERGED (loss 2281 @ 1k -> 12391 @ 8k, gate 0/8,
+  tok 15/140): at constant lr the steps axis measures the
+  SCHEDULE, not capacity — the MB-S14 lesson (decay makes long
+  integer runs monotone) predicts the fix.
+- BR-W4's pre-registered clamp fence FIRED: INIT clamp-frac
+  0.231 v 0.010 baseline (ACT_CLAMP fixed 32*512 while D
+  doubled) — the arm is confounded as a params read; its
+  numbers book as data, not verdict.
+
+Knobs added (defaults unchanged; the default path re-runs the
+G-RB1 regression before any arm is read): ACLAMP env on
+ACT_CLAMP; SCHED=1 = the mb integer lr decay (lrd doublings at
+STEPS/4, /2, 3/4 — mb's 250/500/750 convention scaled).
+
+Arms (GATE=1 COND=1 QK=1, vs G-RB1 2/8, 94/140, loss 2564):
+  BR-REG2: defaults — must reproduce sha 1fcfd187 (gate).
+  BR-S4D:  STEPS=8000 SCHED=1 — prediction: monotone-ish loss,
+           final < 2564, TRAIN solves >= 2/8 (the steps axis,
+           legally read).
+  BR-W4b:  DIM=128 DHEAD=32 FFN=256 ACLAMP=32768, STEPS=2000 —
+           prediction: clamp-frac back near baseline (<0.05,
+           else the fence fires again and the clamp law needs
+           its own cell); if the SS null's capacity reading is
+           right, TRAIN solves > 2/8 and token-acc > 94/140.
+Decision rule unchanged from GRAVMOE-BRUTE: any arm >= 4/8 =
+"brute converts"; both axes flat at 2/8 = the residual free-run
+gap is not capacity — revive SS at the widest passing scale.
+Fences: n=1 everywhere; BR-W4b's draw stream differs by shape
+(protocol-paired, not weight-paired); heldout expected 0/8.
