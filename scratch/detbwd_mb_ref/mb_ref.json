@@ -1,0 +1,78 @@
+{
+ "contract": {
+  "SHIFT": 12,
+  "GBOOST": 256,
+  "PQ": 8192,
+  "ACT_CLAMP": 16384,
+  "EPS32": 42950,
+  "n_blocks": 2,
+  "steps": 1000,
+  "lr": "1/1000",
+  "seed": 17
+ },
+ "param_order": [
+  "emb",
+  "b0.wq",
+  "b0.wk",
+  "b0.wv",
+  "b0.wo",
+  "b0.wg",
+  "b0.wu",
+  "b0.wd",
+  "b0.g1",
+  "b0.g2",
+  "b1.wq",
+  "b1.wk",
+  "b1.wv",
+  "b1.wo",
+  "b1.wg",
+  "b1.wu",
+  "b1.wd",
+  "b1.g1",
+  "b1.g2",
+  "g_f"
+ ],
+ "init_sha": "8b0e09b9e52e64da8c07c8b0f89d60298986bcaa6e0274c99bf8a29573097717",
+ "milestones": [
+  {
+   "step": 125,
+   "loss": 9119,
+   "traj_sha": "e7d20797383cc857f88ba030bc64ba27d16ea696d746b4b892baa08dd08a50c3"
+  },
+  {
+   "step": 250,
+   "loss": 7786,
+   "traj_sha": "7f9de1804f083d6dd94484bdba36632de2e96bf1e76f7da69cf6c41ac1b5a5a2"
+  },
+  {
+   "step": 375,
+   "loss": 6896,
+   "traj_sha": "269633667cb07e79c8ed9a753f4dcee825e769111dec858ed2b21d631aad836b"
+  },
+  {
+   "step": 500,
+   "loss": 6552,
+   "traj_sha": "23c4617b6ecb78150277bcb394c93a14973553714cef3b167bae65c4624d055b"
+  },
+  {
+   "step": 625,
+   "loss": 6961,
+   "traj_sha": "b4ca3a9410924706a06bdbc31bb04dbbc8065d2d472816f26e8ae3dc0b329899"
+  },
+  {
+   "step": 750,
+   "loss": 6716,
+   "traj_sha": "aa2bd003a6d16f6b8a233a1abfeaf3ac65c144ac9278949c2c9c33099d627798"
+  },
+  {
+   "step": 875,
+   "loss": 9409,
+   "traj_sha": "60cc55423e0e98044a3cc87be35343246a58d57eb825e9c13d1eabe1e6cfdd11"
+  },
+  {
+   "step": 1000,
+   "loss": 8055,
+   "traj_sha": "64e07c871428867a2fb6a8130588af0cb2874ba092eeb9599be277162cbaff39"
+  }
+ ]
+}

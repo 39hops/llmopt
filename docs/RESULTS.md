@@ -13945,3 +13945,53 @@ captured. The gate lines in the night31b log land in
 dict form with weights shas — the amendment-#3
 checksums are live in the instrument, not just the
 skill.
+
+## PRE-REG MB-REF: multi-block deterministic-birth reference — 2-block mini-LM (emb + tied head), 1000 steps at the R2b contract (2026-08-01, Mac)
+
+Anatomy: emb[tok] -> 2x Body (Block minus g3/wh; 9 params
+each) chained by dx0 -> rmsnorm(g_f) -> TIED head
+(logits = rdiv(hf @ emb^T, Q)). Embedding grad = head
+part (wh convention) + EXACT integer scatter-add of dx0
+rows by token, each part rounded before the sum
+(placement pinned per the rdiv-grouping rule). Contract
+= R2b's + n_blocks=2, SHIFT=12, constant lr 1/1000,
+seed 17, 61,760 params. PREDICTIONS: (1) composite
+fp64-twin cosines all >= 0.985 (first light measured
+worst 0.988312 at b1.wq, emb 0.994 — the single-block
+0.9985 floor is NOT expected to transport to a 2x
+deeper chain; the mb acceptance bar is 0.985); (2)
+rerun-deterministic; (3) trajectory reproducible from
+mb_init.bin by an independent leg (axiom's, via
+primitives composition); (4) loss falls; OPEN QUESTION
+carried from R2b: are milestones monotone? First light
+at 200 steps was monotone throughout (16283 -> 7942, nz
+0.29 vs single block's 0.109 — starvation eased by
+param count), which would close R2b's "strictly
+falling" open bar at the multi-block scale.
+
+## VERDICT MB-REF: multi-block reference SHIPPED — 2-block mini-LM trains all-integer, digest-reproducible across two house drivers; monotone-milestone hope DENIED at 1000 steps (2026-08-01, Mac)
+
+Against PRE-REG MB-REF: (1) PASS — all 21 param-grad
+cosines >= 0.988 (worst b1.wq 0.988312, emb 0.994327,
+bar was 0.985); (2) PASS — rerun sha identical; (3)
+artifacts exported: mb_init.bin sha 8b0e09b9e52e64da...
+73097717, mb_ref.json with 8 milestone digests; two
+INDEPENDENT house drivers (detbwd_mb training loop and
+export_mb_ref) reproduce the trajectory digest-
+identically (FINAL 64e07c871428867a...162cbaff39); (4)
+loss FALLS overall 16283 -> 8055, BUT the open question
+lands NEGATIVE: milestones are NOT monotone at 1000
+steps — min 6552 @ 500, then 6961/6716/9409(!)/8055.
+The 200-step first light (monotone, booked in the
+pre-reg) was an early-phase artifact; the late bump at
+constant lr 1/1000 looks like overshoot once the loss
+floor nears, NOT starvation (nz RISES to 0.334 late —
+plenty of updates landing, they're just not all
+helpful). The R2b "strictly falling" bar stays OPEN and
+now has a mechanism candidate: integer lr DECAY was
+measured starvation-deepening (update-starvation law),
+so the fix wants a wider accumulator + decay, not decay
+alone — a SHIFT=14 + SCHED arm is the natural next
+cell. Milestone losses: 9119 7786 6896 6552 6961 6716
+9409 8055 (dict-form checksum: these are the 8 booked
+values, sum 61494).

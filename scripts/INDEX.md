@@ -940,6 +940,7 @@ Query docs/results-index.jsonl (the RESULTS.md index).
 rjob — job-ID-based remote/local run management (2026-08-01).
 
 - `sh(cmd)` — One transport call. Local: bash here. Remote: via wsl.sh run.
+- `check_jid(jid)`
 - `launch(jid, cmd)`
 - `status()`
 - `tail(jid, n='20')`
@@ -1294,6 +1295,14 @@ Desert test v2 — cross-grammar composition probe (union eq coefficient iv).
 - `sample_step(cur, temp=0.7)`
 - `verify(cur, pred, q)`
 
+### scratch/detbwd_mb.py
+Deterministic-birth MULTI-BLOCK reference (queued 2026-08-01): N transformer bodies chained by dx0 + embedding and TIED head at the ends — the full mini-LM anatomy, all int64, at the R2b contract (SHIFT=12 default here, GBOOST=256, PQ, ACT_CLAMP, constant lr 1/1000).
+
+- `class Body` (fwd, bwd)
+- `class MB` (param_items, fwd, bwd)
+- `twin_fp64(m, tok, tgt)`
+- `main()`
+
 ### scratch/detbwd_r1.py
 Deterministic-birth R1a (pre-reg 2026-07-31 night): integer FFN forward + BACKWARD, the first training-side rung.
 
@@ -1403,6 +1412,11 @@ THE EXCHANGE TEST (pre-registered 2026-07-23): train the v4 organism on axiom's 
 ### scratch/export_axnn.py
 E2: export a MicroLM crystal to AXNN v1.1 (proposed extension: cfg ffn="swiglu" + fused-qkv + rmsnorm-no-bias + rope + SEPARATE (untied) head — every convention DECLARED per the AXNN doctrine).
 
+
+### scratch/export_mb_ref.py
+Export the multi-block deterministic-birth reference for axiom's leg: init bytes (all params in param_items order, then tok, then tgt; int64 LE) + milestone trajectory digests at the R2b contract grown by n_blocks (SHIFT=12, GBOOST=256, constant lr 1/1000, 1000 steps, NBLK=2, seed 17). Artifacts land in scratch/detbwd_mb_ref/ (committed — small). Usage: .venv/bin/python scratch/export_mb_ref.py
+
+- `main()`
 
 ### scratch/export_r2b_ref.py
 Export the R2b full-birth reference for axiom's C++ leg (relay 2026-08-01-0): init bytes in seed-17 draw order + the reference trajectory digests at the amended contract (SHIFT=12, constant lr 1/1000, 1000 steps). Artifacts land in scratch/detbwd_r2b_ref/ (committed — small). Usage: python scratch/export_r2b_ref.py
@@ -2223,6 +2237,10 @@ UMOE-1 (pre-reg 2026-07-30): micro-MoE conservation 3-arm. First house MoE birth
 - `build()`
 - `probes(model, enc, dev)` — corr / MI / meter on the trained model.
 - `main()`
+
+### scratch/verify_intbirth_prims.py
+House-side acceptance of axiom's intbirth PRIMITIVE layer (relay 2026-08-01-3): rebuild the R2b training loop from intbirth.Block / AdamW / rdiv alone, house-authored composition, and check all 8 r2b_ref.json milestone digests + losses. This is also the shape the multi-block reference will take (dx0 chaining, one AdamW over the concatenated param list).
+
 
 ### scratch/vmasm.py
 vm-asm closed system (code continent rung 1): straight-line mini-ISA over r0-r3, one-rule rewrite chains, EXACT symbolic oracle (programs are polynomial register maps; sympy decides equivalence). Emits diet + probe with standing doctrine: stable string seeds, determinable one-rule rows, every row oracle-verified before write. Usage: vmasm.py <n_train_rows> <out_prefix>
