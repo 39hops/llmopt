@@ -14852,3 +14852,36 @@ Decision rule unchanged from GRAVMOE-BRUTE: any arm >= 4/8 =
 gap is not capacity — revive SS at the widest passing scale.
 Fences: n=1 everywhere; BR-W4b's draw stream differs by shape
 (protocol-paired, not weight-paired); heldout expected 0/8.
+
+## VERDICT GRAVMOE-BRUTE (leg 1): NEITHER brute axis converts as fired — the steps arm diverges at constant lr, the width arm is voided by its own clamp fence; both book as instrument findings, the capacity question moves to leg B (2026-08-01 night, Mac)
+
+Arms per PRE-REG GRAVMOE-BRUTE (log
+logs/brute_arms_0801.log; baseline G-RB1 = 2/8 solves,
+tok 94/140, loss 2564, sha 1fcfd187):
+  BR-REG  regression: sha 1fcfd187... EXACT — the
+          DIM/DHEAD/FFN width knobs are certified
+          read-only on the default path.
+  BR-S4   STEPS=8000: loss 2281 @ 1k -> 12391 @ 8k
+          (monotone blowup past ~1.5k; nz 0.165 ->
+          0.371), TRAIN 0/8 tok 15/140, HELDOUT 0/8
+          tok 12/140, merge +3036, sha cfb20ae0...
+  BR-W4   DIM=128 DHEAD=32 FFN=256 (825,984 params):
+          INIT clamp-frac 0.231 v 0.010 — THE
+          PRE-REGISTERED FENCE FIRES, the arm is
+          void as a params read. Its data: loss
+          6359 @ 500 -> 13595 @ 2000 (also rising),
+          TRAIN 0/8 tok 38/140, HELDOUT 0/8 tok
+          40/140 (train ~= heldout: no memorization
+          signal — the clamped forward never learns
+          the rows), merge +2360, sha 716e8b45...
+READ: prediction (1) fails in the strong direction —
+at constant lr the steps axis measures the SCHEDULE
+(the MB-S12 blowup shape reproduced at 8k steps;
+MB-S14's decay lesson predicts the fix, pre-registered
+as BR-S4D). Prediction (2) is unread — BR-W4 never
+tested capacity, it tested ACT_CLAMP sized for D=64
+(a real instrument law: the clamp does NOT transport
+across widths; ACLAMP knob added, corrected arm
+BR-W4b pre-registered). The G-RB1 optimum at 2000
+steps stands as the battery's best cell. Decision
+rule defers to GRAVMOE-BRUTE-B. All n=1.
