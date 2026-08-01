@@ -14932,3 +14932,53 @@ arm (TRAIN > 2/8 and tok > 94/140 if capacity binds);
 BR-W4b books as data (its 0.064 is mild — read it
 against W4c as an accidental clamp-dose pair).
 Decision rule unchanged. n=1.
+
+## VERDICT GRAVMOE-BRUTE-B/C (partial): decay legalizes the steps axis (2/8 flat, tok +18); the width axis found an INSTRUMENT LAW — ACT_CLAMP is rms_fwd's int64 OVERFLOW GUARD, and raising it past ~46341 crashes the battery (2026-08-01 night, Mac)
+
+Arms (logs/brute_b_arms_0801.log, brute_c_arm_0801.log;
+baseline G-RB1 2/8, 94/140, loss 2564):
+  BR-REG2 defaults: sha 1fcfd187... EXACT (third
+    reproduction — ACLAMP/SCHED/EXPORT knobs certified
+    read-only).
+  BR-S4D  STEPS=8000 SCHED=1: loss 2349 (blowup TAMED:
+    v BR-S4's 12391; step-1000 traj-sha 6a618866 equals
+    BR-S4's exactly — trajectories identical until the
+    first decay point, a surgically clean pair), TRAIN
+    2/8 tok 112/140, HELDOUT 0/8 tok 45/140, merge
+    +11037, sha 6a5bf01a... READ: the MB-S14 decay law
+    transports to gravmoe; 4x compute at fixed capacity
+    buys token-acc (+18) but ZERO new solves.
+  BR-W4b  width, ACLAMP=32768: fence fired again (0.064
+    > 0.05); data: loss rising 7239 -> 10066, 0/8, tok
+    31/140, sha fe1619b6...
+  BR-W4c  width, ACLAMP=49152 (clamp-frac 0.013, fence
+    PASSED): loss rising 4535 -> 6665 by step 1000,
+    then CRASH — rdiv ZeroDivisionError in rms_fwd.
+MECHANISM (read from the code, verified by arithmetic):
+m40 = (s2 // D) << 32 overflows int64 once mean-square
+activation exceeds 2^31 (rms ~ 46341 raw ~ 90 Q-units);
+the negative feeds isqrt_newton, isq -> 0, rdiv divides
+by zero. THE LAW: ACT_CLAMP=32*512 was never a tuning
+constant — at 32 Q-units worst-case rms it is the
+overflow guard for rms_fwd's headroom. Raising it to 96
+Q-units (49152) breached the guard; the hot-lr blowup
+(loss rising in EVERY wide arm) walked through the gap.
+Safe bound: clamp <= ~80 Q-units (worst-case mean-sq <
+2^31). True width scaling needs an rms_fwd headroom
+rung (pre-shift s2 by Q^2 before the << 32, or 128-bit)
+— a contract change, spec'd separately if width
+graduates.
+STATE OF THE DECISION RULE: steps axis legally read =
+flat at 2/8. Width axis still unread (every wide arm
+schedule-sick: loss rises monotonically at lrd=1000 —
+the muP intuition, integerized: D=128 needs colder lr).
+FINAL ARM (pre-registered here, fires immediately):
+BR-W4d = GATE=1 COND=1 QK=1 DIM=128 DHEAD=32 FFN=256
+ACLAMP=40960 (0.030 at init, overflow-safe) SCHED=1.
+Predictions: (1) no crash, loss FALLS after the first
+decay point; (2) if capacity binds, TRAIN > 2/8; (3) if
+W4d also lands <= 2/8, the decision rule closes on
+"brute does NOT convert at this diet" — the residual
+free-run gap is not capacity and not schedule; SS
+revives only above this scale, and the seeds/windows
+ladder becomes the COND+QK graduation path. All n=1.
