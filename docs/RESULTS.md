@@ -13429,3 +13429,41 @@ REAL on mps and every cross-process Mac gate comparison
 gains a fence: paired arms must share a process, and
 frozen-ckpt gate numbers carry +-sigma_regate. Either
 way the number becomes part of the resolution law.
+
+## VERDICT RE-GATE SIGMA + AMENDMENT (target: Mac lb baseline "44/45"): the gate is EXACT (spread 0) — the discrepancy was checkpoint PROVENANCE, not noise (2026-07-31 night)
+
+Sigma cell: umoe_lb_s1.pt gated in 3 fresh processes —
+THREE IDENTICAL READS (37/120, per-level and validity
+digit-identical). Cross-checks: umoe_gravmoe_s1 re-gates
+52/120 EXACTLY matching its booked line (umoe3_0730.log
+L213, digit-for-digit); umoe_lb_s2 re-gates 44 (its
+booked number). PREDICTION (1) FIRES, strongly: the
+120-gate with seeded sampling is a fully deterministic
+instrument on mps — eval-side determinism now MEASURED
+at gate granularity (training remains nondeterministic;
+FOURIER-4a's run variance was training-side).
+
+THE 45-v-37 EXPLANATION (provenance, not physics):
+overnight_0730.log L7-110 re-trained a FRESH ARM=lb
+seed=1 (params-control chain) which gated 45 — but
+umoe_lb_s1.pt's mtime (Jul 30 11:44 AM) predates that
+run: the overnight model was never saved to (or never
+overwrote) the disk path. The booked Mac lb "45" refers
+to a model that NO LONGER EXISTS; the surviving morning
+artifact gates 37. The checkpoint selection-effect's
+cousin, now bitten a 4th way: a VERDICT NUMBER whose
+artifact wasn't the one preserved.
+
+CONSEQUENCES: (1) Mac lb baseline for the scaffold
+program is {37 (disk s1), 44 (s2), 45 (overnight model,
+artifact lost)} — the Mac gravmoe advantage (52/51/50)
+is if anything LARGER than the booked +5.5-7.5; the
+device-scoped fence and the transport verdict are
+unaffected (cuda ladder was internally paired). (2) NEW
+RULE (proposed for doctrine): a gate number books WITH
+the sha256 of its checkpoint; scripts/ckpt_manifest.py
+already carries shas for the confirmed/ tree — booking
+and manifest must cross-link. (3) GRAV-0T's control 37
+is CORRECT for its artifact — the harness check
+actually passed; tonight's instrument alarm was the
+provenance bug surfacing.
