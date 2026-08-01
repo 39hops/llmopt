@@ -14087,3 +14087,52 @@ not Python): more windows/steps to find where the
 plateau breaks; the capacity question (params vs
 windows) is exactly what the intbirth engine's 60x
 makes cheap.
+
+## VERDICT LAM-MERGE-REVIEWS: low-lambda merges BADLY — merge-free NEEDS the collapse; the mechanism claim lands (2026-08-01 night, 3080, night31b)
+
+Rider pre-reg (review-adoption amendment #6): merge
+reviews on the 0.1/0.25/1.0 lambda-arm ckpts;
+prediction "zero-mean bounded deltas at every lambda"
+with the flagged alternative "if LOW lambda merges
+badly, merge-free needs the collapse — a mechanism
+claim worth having." MEASURED (dicts are the checksum;
+weights shas in jobs/night31b.log):
+- lambda 0.1: UNMERGED {3:16,4:4,5:14,6:6,7:8} = 48
+  (sha 958148...) vs MERGED {3:13,4:2,5:9,6:6,7:6} = 36
+  (sha e62391...) — DELTA -12, ~2.4 sigma, DESTRUCTIVE.
+- lambda 0.25: UNMERGED {3:16,4:3,5:14,6:6,7:8} = 47 vs
+  MERGED {3:17,4:3,5:13,6:7,7:10} = 50 — delta +3,
+  within resolution.
+- lambda 1.0: UNMERGED {3:18,4:2,5:14,6:7,7:9} = 50 vs
+  MERGED {3:18,4:2,5:14,6:7,7:8} = 49 — delta -1,
+  within resolution.
+The zero-mean prediction FAILS at lambda 0.1 exactly
+the flagged way: MERGE-FREE IS NOT FREE BELOW THE
+COLLAPSE THRESHOLD (between 0.1 and 0.25). Low-gravity
+births keep diverse experts; averaging diverse experts
+destroys them (the GRAV-0T mechanism, now seen from the
+other side). The lambda card gains its mechanism line:
+"birth as Hebbian MoE, ship as dense" requires the
+gravity dose that collapses experts first.
+
+## VERDICT R0-TF32OFF: TF32 is NOT the transport wedge — cuda lb unchanged with TF32 off; kernel-order is the wedge, deterministic birth the only route (2026-08-01 night, 3080, night31b)
+
+Spec R0 (2026-08-01-deterministic-birth): if TF32-off
+cuda lb drops toward Mac's ~44s, the transport gap is
+TF32's implicit regularization; if not, the wedge is
+kernel-order. MEASURED, n=3 (dicts + shas):
+- s1 {3:16,4:4,5:12,6:7,7:10} = 49 (sha 6b629e1f...)
+- s2 {3:20,4:3,5:13,6:7,7:9} = 52 (sha 3598cab9...)
+- s3 {3:19,4:3,5:13,6:5,7:9} = 49 (sha b54b3d31...)
+Mean 50.0 vs TF32-on cuda lb {51,51,53} mean 51.7
+(amendment #3 table) — delta -1.7, inside the +-2 band;
+NO drop toward 44. TF32 exonerated (consistent with the
+CLOSED precision doctrine: precision above TF32 is a
+non-factor; now measured AT the TF32 boundary too for
+this instrument). The cuda-vs-Mac lb gap is
+kernel-order/nondeterminism, so the deterministic
+integer battery is the ONLY instrument that can compare
+births across devices — which it now does (R1-R2b
+cross-device bit-identical). R1+'s motivation is
+measured, not assumed. Cross-device fp doctrine
+unchanged and re-armed.
