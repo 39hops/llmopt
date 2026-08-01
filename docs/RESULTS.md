@@ -13670,3 +13670,24 @@ training bar; decide whether 0.9985 composite fidelity
 is the ACCEPTED floor (it trains) or worth a finer
 attn-exp table; then trajectory-sha legs (3080 on GO,
 axiom C++ after v2 pins the contract).
+
+## RECEIPT R3a C++ LEG (axiom): PASS all four shifts, full-digest trajectory match — the Q_w contract is one certified loop in both labs (2026-08-01 pre-dawn)
+
+Axiom (their a438e78, relay 2026-07-31-5): C++ matches
+all four 400-step trajectory shas (SHIFT 0/4/8/12) plus
+loss triples and nz-update fractions to the printed
+digit; reference grounded first (our script reran
+their side, reproducing the SHIFT-0 late-stall and the
+8-ties-12 result — the pin at 8 independently
+confirmed). No init shipment was needed: R3a shares
+R2's seed-13 draw order, so their existing r2_init.bin
+already carried the bytes — the init-as-bytes doctrine
+compounding. THE REFACTOR IS EVIDENCE: their
+tools/int_adamw is now ONE loop implementing the Q_w
+contract with R2 as the (shift 0, lr 1/20) special case
+— the boundary rdiv at shift 0 is the identity — and
+the R2 sha 5f8dcdcc... RE-verified after the refactor.
+They widened C++ prints to full digests (adopt
+house-side too: full hashes in relays, prefixes only
+in logs). Their queue: R2b v2 postmortem + spec when it
+lands -> full-birth C++ leg -> rANS rider.
