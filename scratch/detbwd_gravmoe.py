@@ -247,6 +247,99 @@ class MoBody(M.Body):
         return G, dx0
 
 
+GATE = os.environ.get("GATE") == "1"
+
+
+def draw_complete(n):
+    """First n diet rows whose FULL text fits T+1 tokens (padded
+    with eos) — complete steps, so the oracle can score free-run
+    generations. Returns (ids [n, T+1], truth step strings)."""
+    import json as _json
+    from scripts.train_mathnative import MathTokenizer
+    tok = MathTokenizer()
+    rows, texts = [], []
+    with open("data/micromodel_gen4_sidecar.jsonl") as f:
+        for line in f:
+            r = _json.loads(line)
+            t = (f"Current: {r['cur']}\nHints: none\n"
+                 f"Step: {r['nxt']}\n")
+            try:
+                ids = tok.encode(t) + [tok.eos_id]
+            except ValueError:
+                continue
+            if len(ids) <= T + 1:
+                ids = ids + [tok.eos_id] * (T + 1 - len(ids))
+                rows.append(ids)
+                texts.append(r["nxt"])
+            if len(rows) == n:
+                break
+    assert len(rows) == n
+    return torch.tensor(rows, dtype=torch.int64), texts, tok
+
+
+def sympy_equiv(a, b, timeout=10):
+    """Fork-isolated symbolic equivalence (NO sympy without a
+    fork timebox — house rule; SIGALRM does not box sympy)."""
+    import multiprocessing as mp
+
+    def work(q, a, b):
+        try:
+            import sympy as sp
+            ea = sp.sympify(a)
+            eb = sp.sympify(b)
+            q.put(bool(sp.simplify(ea - eb) == 0))
+        except Exception:
+            q.put(False)
+    ctx = mp.get_context("fork")
+    q = ctx.Queue()
+    p = ctx.Process(target=work, args=(q, a, b))
+    p.start()
+    p.join(timeout)
+    if p.is_alive():
+        p.kill()
+        p.join()
+        return False
+    return q.get() if not q.empty() else False
+
+
+def gate(m, ids, truths, tok, tab, label):
+    """Free-run validity gate: prefix through 'Step: ', greedy
+    decode the rest, oracle-score the produced step."""
+    mark = tok.encode("Step: ")
+    lm = len(mark)
+    solves, tokacc, ntok = 0, 0, 0
+    for wi in range(ids.shape[0]):
+        w = ids[wi, :T].clone()
+        full = ids[wi]
+        # find the 'Step: ' marker (last occurrence)
+        split = None
+        for t0 in range(T - lm, 0, -1):
+            if full[t0:t0 + lm].tolist() == mark:
+                split = t0 + lm
+                break
+        if split is None:
+            continue
+        for t in range(split, T):
+            lg, _ = m.fwd(w, tab)
+            w[t] = int(lg[t - 1].argmax())
+        gen = w[split:T]
+        tru = full[split:T]
+        tokacc += int((gen == tru).sum())
+        ntok += T - split
+        # decode generated step text up to eos/newline
+        keep = []
+        for t in gen.tolist():
+            if t == tok.eos_id or tok.vocab[t] == "\n":
+                break
+            keep.append(t)
+        gen_s = tok.decode(keep).strip()
+        if gen_s and sympy_equiv(gen_s, truths[wi]):
+            solves += 1
+    print(f"[gate] {label}: solves {solves}/{ids.shape[0]} "
+          f"free-run token-acc {tokacc}/{ntok}", flush=True)
+    return solves
+
+
 class GMB(M.MB):
     """MB with MoBody bodies (param_items/bwd re-keyed)."""
 
@@ -403,7 +496,13 @@ def run_loss(m, wins, tab, t_exp):
 
 
 def main():
-    wins = draw_windows()
+    if GATE:
+        all_ids, truths, tok = draw_complete(16)
+        wins = all_ids[:8]          # train on the first 8
+        print("[gmoe] GATE mode: 8 complete train rows + "
+              "8 held-out, oracle-scored free-run", flush=True)
+    else:
+        wins = draw_windows()
     print(f"[gmoe] LN/LD {LN}/{LD} K {K} STEPS {STEPS} "
           f"SHIFT {SHIFT} E {E}")
     m = build_model()
@@ -488,6 +587,9 @@ def main():
     if TAU:
         tts = [int(b.w["tt"]) for b in m.bodies]
         print(f"[gmoe] learned tt (Q=512=1.0): {tts}")
+    if GATE:
+        gate(m, all_ids[:8], truths[:8], tok, tab, "TRAIN")
+        gate(m, all_ids[8:], truths[8:], tok, tab, "HELDOUT")
     agr = agreement(m, wins, tab)
     base = run_loss(m, wins, tab, t_exp)
     # merge test: average experts to dense, in place, exactly

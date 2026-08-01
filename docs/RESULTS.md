@@ -14397,3 +14397,34 @@ probe: if B1's failure is starvation, two more
 accumulator bits should recover most of the gap; if
 B1-S16 still sits ~15000, soft-init attention is
 wrong for this diet independent of update width.
+
+## PRE-REG GRAVMOE-GATE: free-run oracle validity for the gravmoe battery — score the models by RUNNING them, not by loss (2026-08-01 evening, Mac)
+
+Artin's ask, and the house religion applied to the mini
+battery: GATE=1 mode trains on 8 COMPLETE diet rows
+(full text <= 33 tokens, eos-padded — a contract fork:
+different windows than the truncated-window cells) and
+scores by FREE-RUN generation: prefix through the
+"Step:" atom, greedy decode, sympy-equivalence of the
+produced step against the row's truth (fork-timeboxed
+oracle, house rule), on the 8 TRAIN rows (memorization
+gate) and 8 HELD-OUT complete rows (generalization
+gate); free-run token-acc reported alongside as the
+graded signal. Plumbing smoke (200 steps): 0/8 solves,
+token-acc ~30% — floor established. DATA-FORMAT
+observation booked in passing: complete short rows
+train ~2x faster than truncated windows (cycle-mean
+7008 @ 200 steps v 8883 @ 2000) — eos padding +
+complete scaffold is an easier diet; the gate cells
+are NOT loss-comparable to the truncated-window cells.
+ARMS (2000 steps, COND=1, fire after qkcond2 frees the
+box): G-A0 lambda 0, G-A2 lambda 1/4, G-A3 lambda 1.
+PREDICTIONS: (1) TRAIN solves order follows the loss
+order of DIET-COND (A2 >= A0 > A3) — if the gate
+INVERTS the loss ranking, loss is a misleading readout
+for this battery and every capability claim above
+needs a gate rider; (2) HELDOUT solves near 0 for all
+arms (60k params, 8 rows — generalization is not
+expected; any nonzero heldout solve is a finding); (3)
+token-acc(TRAIN) > 90% for the best arm (memorization
+should be near-complete at 2000 steps).
