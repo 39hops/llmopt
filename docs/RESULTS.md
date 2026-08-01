@@ -13415,3 +13415,17 @@ tokens — the fp16-near-tie mechanism, run-scoped like
 FOURIER-4a's clock counts). Sigma cell queued. (2) lb
 s1 only, n=1 ckpt — but at effect sizes of -28 and -37
 solves the resolution law is satisfied by any sigma.
+
+## PRE-REG RE-GATE SIGMA: cross-process gate spread of one frozen checkpoint on mps (2026-07-31 night, before the runs)
+
+GRAV-0T's control read 37 v the booked 44 on the SAME
+frozen umoe_lb_s1 (seeded sampler, fresh process v
+post-training in-process). Cell: gate the untouched
+ckpt in 3 fresh processes (scratch/gate_regate.py).
+PREDICTIONS: (1) spread (max-min) <= 3 -> the 37 v 44
+gap needs another explanation (audit the original
+booking context); (2) spread >= 5 -> re-gate sigma is
+REAL on mps and every cross-process Mac gate comparison
+gains a fence: paired arms must share a process, and
+frozen-ckpt gate numbers carry +-sigma_regate. Either
+way the number becomes part of the resolution law.
