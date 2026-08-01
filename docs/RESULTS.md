@@ -13378,3 +13378,40 @@ gain); a large asymmetric LOSS (>= -6) instead means
 the basin is load-bearing structure, not noise rescue.
 Resolution law: n=2 ckpts x paired arms on one device;
 any single-cell delta < 5 reads as noise by default.
+
+## VERDICT GRAV-0T + GRAV-REV: NO no-training gravmoe — post-hoc pull is DESTRUCTIVE both directions (37 -> 9 -> 1; repel -> 0); the pull is a TRAINING-COUPLED force (2026-07-31 night)
+
+Pre-reg above. Mac lb s1, within-process paired (all five
+gates share one mps fp context). Control 37, observation
+512 train rows (off-diag co-routing mass 0.58-0.73 per
+layer), then: pull lam=0.5 R=10 -> 9/120 (valid 2.3);
+R=50 -> 1/120; repel lam=-0.5 R=10 -> 0/120 (valid 0).
+PREDICTION (2) FIRES, emphatically: the pull only works
+INTERLEAVED with gradient repair (training applies ONE
+relaxation per 100 optimizer steps; post-hoc R=10
+consecutive steps is ~100x the recipe's dose density
+with zero repair between).
+
+MECHANISM READ (resolves an apparent contradiction with
+merge-free): consecutive relaxation is consensus
+dynamics — with sum_j lam*E[i,j] ~ 0.3/step, R=10 drives
+experts ~97% of the way to their co-routing-weighted
+consensus. Merge-free measured that collapse-to-mean is
+FREE on GRAVMOE-trained ckpts (experts already
+co-adapted near their mean). On an LB-trained ckpt the
+experts are DIVERSE — consensus collapse destroys the
+capability the router was exploiting. Merge-free is a
+property OF the pulled basin, not of merging. The repel
+arm is the mirror: (1+0.3)^10 ~ 14x weight spread —
+the white hole explodes, as white holes do.
+
+FENCES: (1) small-dose post-hoc (R=1, lam<=0.05)
+untested and currently UNREADABLE — the control gate
+came back 37 v the booked 44 (fresh process v
+post-training in-process), exposing an UNMEASURED
+CROSS-PROCESS RE-GATE SIGMA on mps (same seeded
+sampler; wobble enters via forward-pass fp at coin-flip
+tokens — the fp16-near-tie mechanism, run-scoped like
+FOURIER-4a's clock counts). Sigma cell queued. (2) lb
+s1 only, n=1 ckpt — but at effect sizes of -28 and -37
+solves the resolution law is satisfied by any sigma.
