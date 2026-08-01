@@ -270,6 +270,36 @@ def find_split(full, mark):
     return None
 
 
+def answer_region(full, mark, terminator_ids):
+    """Return (first answer token, first newline/EOS token)."""
+    split = find_split(full, mark)
+    if split is None:
+        raise ValueError("final Step marker not found")
+    terms = set(int(t) for t in terminator_ids)
+    for pos in range(split, len(full)):
+        if int(full[pos]) in terms:
+            return split, pos
+    raise ValueError("answer terminator not found")
+
+
+def loss_dlogits(pp, tgt, eye, boost, region=None):
+    dlogits = (pp - Q * eye[tgt]) * boost
+    if region is None:
+        return dlogits
+    split, terminator = region
+    keep = torch.zeros(pp.shape[0], dtype=torch.int64)
+    keep[split - 1:terminator] = 1
+    return dlogits * keep[:, None]
+
+
+def loss_proxy(pp, tgt, region=None):
+    err = Q - pp[torch.arange(tgt.shape[0]), tgt]
+    if region is not None:
+        split, terminator = region
+        err = err[split - 1:terminator]
+    return int(err.sum())
+
+
 def draw_complete(n):
     """First n diet rows whose FULL text fits T+1 tokens (padded
     with eos) — complete steps, so the oracle can score free-run
