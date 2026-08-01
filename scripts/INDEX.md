@@ -936,6 +936,17 @@ Query docs/results-index.jsonl (the RESULTS.md index).
 
 - `show(e, mark='')`
 
+### scripts/rjob.py
+rjob — job-ID-based remote/local run management (2026-08-01).
+
+- `sh(cmd)` — One transport call. Local: bash here. Remote: via wsl.sh run.
+- `launch(jid, cmd)`
+- `status()`
+- `tail(jid, n='20')`
+- `kill(jid)`
+- `clean(jid)`
+- `main()`
+
 ### scripts/step_grpo.py
 GRPO at the frontier band — sustained RL over verified steps.
 
@@ -1283,6 +1294,56 @@ Desert test v2 — cross-grammar composition probe (union eq coefficient iv).
 - `sample_step(cur, temp=0.7)`
 - `verify(cur, pred, q)`
 
+### scratch/detbwd_r1.py
+Deterministic-birth R1a (pre-reg 2026-07-31 night): integer FFN forward + BACKWARD, the first training-side rung.
+
+- `rdiv(x, d)` — Round-half-away integer divide (pack_decode convention).
+- `build_tables()`
+- `lut(t, xq, hi_pos)` — Table lookup with per-table saturation: beyond +TS the
+- `int_mm(a, w)` — [..., K] x [N, K] -> [..., N] in int64 exact (sum-reduce).
+- `ffn_fwd(xq, wg, wu, wd, t_silu)`
+- `ffn_bwd(dy, xq, wg, wu, wd, cache, t_dsilu)`
+- `main()`
+
+### scratch/detbwd_r1b.py
+Deterministic-birth R1b (pre-reg 2026-07-31 night): integer ATTENTION forward + backward — softmax via exp table, jacobian in fixed point.
+
+- `build_exp_table()`
+- `exp_lut(t, x)` — x <= 0 in Q units; below -TSE -> 0 (exp(-8) < 1/2Q).
+- `attn_fwd(xq, wq, wk, wv, wo, t_exp)`
+- `attn_bwd(dy, xq, wq, wk, wv, wo, cache)`
+- `main()`
+
+### scratch/detbwd_r2_adamw.py
+Deterministic-birth R2 (pre-reg 2026-07-31 evening): fixed-point AdamW + a mini end-to-end INTEGER training loop, trajectory-hashed.
+
+- `isqrt(x)` — Exact integer sqrt, elementwise (torch has no int sqrt).
+- `isqrt_newton(x)` — Exact floor-sqrt via Newton (fast, deterministic).
+- `class IntAdamW` (step)
+- `loss_and_grads(xq, tgt, wg, wu, wd, ts, td)`
+- `main()`
+
+### scratch/detbwd_r2b.py
+Deterministic-birth R2b (pre-reg 2026-08-01 pre-dawn): FULL transformer block trained end-to-end in int64 — adds the three missing integer pieces: rmsnorm backward, rope backward, CE gradient at the head. One block (n1 -> single-head causal attn -> residual -> n2 -> FFN -> residual -> n3 -> head), fixed random next-token targets, IntAdamW at the R3a pin (Q_w = Q<<8, lr 1/1000). Checks: fp64-twin cosines on every param grad (composite, the R1b lesson), rerun determinism sha, falling loss, trajectory sha for the cross-device/cross-lab legs. Usage: python scratch/detbwd_r2b.py
+
+- `rope_tables()`
+- `rope_fwd(x, cos, sin)`
+- `rope_bwd(dx, cos, sin)`
+- `rms_fwd(x, g)`
+- `rms_bwd(dy, x, g, isq)`
+- `softmax_rows(s, t_exp, scale=None)`
+- `softmax_bwd(p, dp, scale=None)`
+- `class Block` (fwd, bwd)
+- `twin_fp64(blk, x, tgt)` — Smooth fp64 autograd twin; returns grads dict keyed like w.
+- `main()`
+
+### scratch/detbwd_r3_qw.py
+Deterministic-birth R3a (pre-reg 2026-07-31 late night): pin the wide weight accumulator Q_w. Weights carried at Q_w = Q << SHIFT; rdiv back to Q at the matmul boundary; update applies at Q_w resolution so production-scale lr (1e-3) survives quantization. Usage: python scratch/detbwd_r3_qw.py   (SHIFT sweep in-process)
+
+- `class IntAdamWQw` (step)
+- `run(shift)`
+- `main()`
+
 ### scratch/distortion_collapse.py
 THE DISTORTION COLLAPSE (pre-reg 2026-07-29 eve): one curve for the quantization axis. For every logged snap cell, recompute the induced normalized distortion x = param-weighted mean of (W - Wq)^2 / sigma_t^2 over ALL params (unsnapped tensors contribute 0), and pair with the BOOKED solves (y = solves / control). Claim: y = f(x), geometry/location/width-blind, knee at x ~ (0.5-1.0 sigma)^2 / 12 = 0.02-0.08. Desk only, no gates. Solves below are transcribed from logs/ (snap_alloc*.log, polar_snap*.log, snap_q*_gate.log). __main__-guarded.
 
@@ -1343,6 +1404,11 @@ THE EXCHANGE TEST (pre-registered 2026-07-23): train the v4 organism on axiom's 
 E2: export a MicroLM crystal to AXNN v1.1 (proposed extension: cfg ffn="swiglu" + fused-qkv + rmsnorm-no-bias + rope + SEPARATE (untied) head — every convention DECLARED per the AXNN doctrine).
 
 
+### scratch/export_r2b_ref.py
+Export the R2b full-birth reference for axiom's C++ leg (relay 2026-08-01-0): init bytes in seed-17 draw order + the reference trajectory digests at the amended contract (SHIFT=12, constant lr 1/1000, 1000 steps). Artifacts land in scratch/detbwd_r2b_ref/ (committed — small). Usage: python scratch/export_r2b_ref.py
+
+- `main()`
+
 ### scratch/farm_dist_rows.py
 Distribution rows (spec 2026-07-28 rung 3): for each diet cur, enumerate the engine's verified-valid moves (successors: sympy- verified, non-identity by construction), weight by MarkovPrior (rule-name unigram, @site stripped, unseen = 0.5*median — the proposer's own convention), emit ALL of them as weighted rows. Rows STREAM out incrementally (the killed-worker doctrine). sympify here runs on farm-certified diet strings, not model text.
 
@@ -1372,6 +1438,35 @@ FOURIER-2: birth a Mod-diet crystal (nt pilot 500, callspan plain-arm recipe) an
 
 - `main()`
 
+### scratch/fourier2b_widemod.py
+FOURIER-2b (pre-reg 2026-07-31): wide-Mod birth + roots-of-unity probe, with the memorization check FOURIER-2 lacked.
+
+- `gen_rows()` — Eval n's drawn first, excluded from train (prompt-set guard).
+- `fmt(n, k)`
+- `main()`
+
+### scratch/fourier3_algdiet.py
+FOURIER-3 (pre-reg 2026-07-31): the causal arrow — put the ALGORITHM in the diet and watch where clocks appear.
+
+- `dsum(n)`
+- `nxt_of(n, k)` — One teaching step: decompose for ALG_KS, else answer.
+- `gen_rows()`
+- `fmt(n, k)`
+- `rollout(model, tok, dev, n, k, hops=4)` — Greedy; follow Mod(m, k) rewrites until a bare number.
+- `main()`
+
+### scratch/fourier4a_dynamics.py
+FOURIER-4a (pre-reg 2026-07-31): clock-FORMATION dynamics.
+
+- `acc_at(model, tok, dev, ev, k, n=N_ACC)`
+- `clock_at(model, tok, dev, ev, k, rng)`
+- `main()`
+
+### scratch/fourier_g9.py
+B6 (revival-sweep Tier B, 2026-07-31): G9 zeta-8 ON THE MOD DIET — the declared rotation reopening, fired on the one substrate where the target computation is provably rotational (clock- placement law). Completes the causal square: diet-forced clocks exist (FOURIER-2b); does architecture-PROVIDED rotation get adopted where the diet wants it?
+
+- `main()`
+
 ### scratch/fourier_probe.py
 FOURIER-1: does the crystal implement the roots-of-unity filter? Per-neuron Fourier v indicator regression of answer-position activations over n mod k. CPU. Usage: python scratch/fourier_probe.py
 
@@ -1382,6 +1477,13 @@ THE ROUNDING-LOSS DECIDER (overnight GO): fp32 vs fp64-master paired burst at LR
 
 - `ternary(w)`
 - `class TLin` (forward)
+
+### scratch/fx3_house.py
+FX-V3 house reproduction (pre-reg 2026-07-31 night): the house integer reference for the MERGED crystal — P3 DetLM + axiom's switch_top1 gate spec (relay 2026-07-31-3), decoding THEIR shipped tables (never regenerated). PASS = both published stream digests. Usage: AXIOM=~/code/axiom python scratch/fx3_house.py
+
+- `class Fx3LM` (step)
+- `battery(m, tok)`
+- `main()`
 
 ### scratch/g5_polar.py
 G5 POLAR (pre-reg 2026-07-29 eve): the predicted BREAK of geometry-blindness. cplx_G5_dep.pt carries DEPLOYED star weights ({0, +-s, +-is} per complex — anisotropic by construction); cplx_none.pt is the isotropic control crystal. Cells per crystal: control; polar 4 angles ALIGNED (1s mag); polar 4 angles ROTATED 45 deg (same bits); uniform u=1s. Prediction: rotation hurts ONLY the star crystal. alpha=none for both (dep weights are already hard). __main__-guarded.
@@ -1422,6 +1524,16 @@ Rarity-stratified gate (schedule-law queue item 2): capability as a curve over e
 - `skeleton(e: str) -> str`
 - `binof(n: int) -> str`
 
+### scratch/gate_regate.py
+Re-gate sigma cell (pre-reg 2026-07-31 night): gate ONE untouched checkpoint in a fresh process — run N times via the bash loop below to measure cross-process re-gate spread on mps (the GRAV-0T control came back 37 v the booked 44). Usage: for i in 1 2 3; do CKPT=checkpoints/umoe_lb_s1.pt        python scratch/gate_regate.py; done
+
+- `main()`
+
+### scratch/gate_transcripts.py
+Gate transcript dump (Artin's ask, 2026-07-31 night): print the model's ACTUAL step chains on gate prompts — how it works a problem, not just whether it solved. Mirrors gate_eval's loop exactly (same seeds, same wave sampler, same oracle) but records every accepted step plus the rejected-sample count per ply. Usage: CKPT=checkpoints/umoe_gravmoe_s1.pt LEVEL=4 N=6        python scratch/gate_transcripts.py
+
+- `main()`
+
 ### scratch/gate_zx.py
 ZX gate (pre-reg 2026-07-26, the factorial's ZX column).
 
@@ -1450,6 +1562,11 @@ Gauge-slack 4-crystal cell (pre-reg 2026-07-27 night, RIFF-LEDGER).
 - `perm_align2(a, b)`
 - `rot_align(a, b)`
 
+### scratch/graph_mod_sigma.py
+A2 (revival-sweep Tier A, 2026-07-31): graph-modularity Q dispersion on the three same-diet wfloor_d256 seed births — the "free sigma" the 07-26 NULL entry named but never ran. The +0.030 dQ verdict was a BAR-based null with unmeasured dispersion; this cell measures it and re-adjudicates. CPU, minutes. Usage: python scratch/graph_mod_sigma.py
+
+- `main()`
+
 ### scratch/graph_modularity_gen8.py
 Graph-modularity read: gen-8 five-grammar crystal vs single-grammar 19M.
 
@@ -1466,6 +1583,15 @@ GRAV-1b (pre-reg 2026-07-30): the field in router coordinates. Bin tokens by rou
 GRAV-2 (pre-reg 2026-07-30): engineered spacetime — birth a d64h8 crystal with a contractivity penalty and price the toll.
 
 - `falloff(model, enc, tok, dev, eps=0.05)` — Gentle-kick displacement profile: perturb block-k input by
+- `main()`
+
+### scratch/grav_posthoc.py
+GRAV-0T + GRAV-REV (pre-reg 2026-07-31 night, Artin's riff): post-hoc gravity — does the merge-free pull work with NO training?
+
+- `load(dev)`
+- `observe(tok, m, dev)` — Build each block's co-routing EMA over train-side rows.
+- `relax(m, emas, lam, steps)`
+- `gate(tag, m, tok, dev)`
 - `main()`
 
 ### scratch/grav_probe.py
@@ -1538,6 +1664,11 @@ KV-cache sampler + equivalence oracle (house rule: token- identical to eager ful
 ### scratch/l9_probe.py
 L9 probe: 24 fresh L9a problems (band 90M — disjoint from the farm's 72/73M and roots_c1), gate_eval-style rollout, 12 plies. Usage: l9_probe.py <ckpt> <d> <layers> <ffn> <heads> <label>
 
+
+### scratch/lam_merge_review.py
+Lambda-merge rider (pre-reg in the review-adoption amendment, 2026-07-31): merge reviews on the three lambda-arm checkpoints — is merge-free lambda-independent, and does LOW lambda (weak collapse) merge badly? Runs on the device holding the ckpts. Usage: python scratch/lam_merge_review.py
+
+- `main()`
 
 ### scratch/lloydmax_race.py
 The Lloyd-Max codebook race (pre-reg RESULTS 2026-07-25): per-output-channel exact 1-D k-means quantizers on the 19M infix twin, free vs zero-pinned centroids, PTQ-only. Writes one _lm*.pt checkpoint per arm; gates run separately (MPS, to match baselines).
@@ -1776,6 +1907,7 @@ P3 THE DETERMINISTIC DECODE (pre-reg 2026-07-30): fixed-point twin of the MicroL
 - `cmd_hash()`
 - `class GateShim` (forward, eval)
 - `cmd_gate()`
+- `cmd_battery()` — A1 gate-pooling cell (revival-sweep Tier A, 2026-07-31):
 
 ### scratch/pack_determinism.py
 PACKED CRYSTAL C4 (pre-reg 2026-07-29 night): cross-device determinism. Hash A: integer-GEMM outputs of every block Linear's sigma-law codes x a fixed integer activation battery, accumulated via fp64 matmul (all partials integers < 2^53 -> EXACT, reduction- order-invariant) — must match across devices. Hash B: fp32 full forward logits on a fixed prompt battery — expected to differ. Greedy token streams reported alongside. Run on each machine at the same commit; compare printed hashes. __main__-guarded.
@@ -1942,6 +2074,16 @@ Rotational snap R2 (pre-reg 2026-07-28): gate wfloor_d256 with gate matrices pro
 
 - `project(sd, t)`
 - `gate(sd, tag)`
+
+### scratch/rotinstr_control.py
+A3 (revival-sweep Tier A, 2026-07-31): rotation-instrument POSITIVE CONTROL. Run the weight-side rotation instruments (weight-FFT euler lenses + anti-commutant mass) on the FOURIER-2b crystal, the one substrate with a CONFIRMED activation clock (276/512 periodic neurons at k=5). Two informative outcomes:   - instruments read NULL here too -> weight-side lenses are blind     to activation clocks (the old spontaneous-rotation nulls said     nothing about representations);   - instruments FIRE -> the old nulls were DIET statements (no     forced periodic computation), per the clock-placement law. CPU, minutes. Usage: python scratch/rotinstr_control.py
+
+- `ks_uniform(theta)`
+- `phase_stat(W)`
+- `fft_stat(W)`
+- `J_perm(n, perm)`
+- `anti_mass(W, Jo, Ji)`
+- `main()`
 
 ### scratch/scaffold_review.py
 Overnight scaffold review: MERGE-1 on gravmoe_s{S}, channel ablation on channel_s{S} (S env, default 2; missing files skip). CPU. Runs as part of overnight chains.
@@ -2116,6 +2258,18 @@ Weight-FFT euler read (pre-reg 2026-07-26, RESULTS.md).
 llmopt: inference + training optimization library.
 
 
+### llmopt/intmath.py
+The certified integer core of the deterministic-birth program.
+
+- `rdiv(x, d)` — Round-half-away integer division, exact + deterministic.
+- `int_mm(a, w)` — [..., K] x [N, K] -> [..., N], exact int64 (order-free sum).
+- `isqrt_newton(x, iters=40)` — Exact elementwise floor-sqrt for int64 tensors (Newton +
+- `build_silu_tables()` — Shipped-bytes doctrine: build ONCE on cpu, pin the shas.
+- `build_exp_table()` — exp on [-TSE, 0] in Q units, values at Q scale.
+- `table_sha(t)`
+- `lut(t, xq, hi_pos)` — Table lookup with per-table saturation: beyond +TS the value
+- `class IntAdamW` (step)
+
 ### llmopt/runlog.py
 llmopt.runlog — standard run logging with honest wallclock.
 
@@ -2129,12 +2283,23 @@ llmopt.runlog — standard run logging with honest wallclock.
 *(no docstring)*
 
 
+### llmopt/train/complex_ffn.py
+Complex-valued SwiGLU-style FFN (modReLU + genuine complex multiply), promoted from scratch/complex_model.py.
+
+- `class ComplexFFN` (forward)
+
 ### llmopt/train/fused_ce.py
 Fused (chunked) cross-entropy for MLX — the Liger-style trick.
 
 - `naive_ce(hidden: mx.array, weight: mx.array, targets: mx.array) -> mx.array` — Reference: full logits, mean CE over non-ignored targets.
 - `_make_fused(c: int)`
 - `fused_ce(hidden: mx.array, weight: mx.array, targets: mx.array, chunk: int=1024) -> mx.array` — Chunked CE: same value/grads as naive_ce, O(chunk*V)-class peak.
+
+### llmopt/train/hebbian_moe.py
+Hebbian-coupled MoE birth with a merge-free dense endpoint.
+
+- `class HebbianCoupler` (observe, maybe_relax)
+- `merge_experts(expert_params: list[list[torch.Tensor]]) -> list[torch.Tensor]` — Ship-time collapse: average E experts into one weight list.
 
 ### llmopt/train/lora.py
 LoRA family: low-rank adapters on frozen linears, plus DoRA.

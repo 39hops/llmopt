@@ -7,9 +7,7 @@ Prior days (07-29/30) live in the handoffs (2026-07-29-*, 2026-07-30-0) and FIND
 
 | Thread | Status | Pointer |
 |---|---|---|
-| **SCAFFOLD PROGRAM (CLOSED 07-31 night: transport verdict NO — cuda means 50.7=50.7; Mac-scoped, rescue framing; remaining: night31b merges [HOLD] + R3 deterministic pair)** | SURVIVES: merge-free n=4 seeds+devices (+2,-2,+1,+2 — 'birth as Hebbian MoE, ship as dense') + Mac gravmoe +5-6 n=3 (device-scoped); RETRACTED: tree/channel/capacity single-seed calls (resolution law); treegrav = phylogeny without capability; lambda-sweep BOOKED (gates flat 48/47/49/50, corr monotone 0.83->0.97: anatomy dial, not capability); **PROMOTED (Artin GO): llmopt/train/hebbian_moe.py + complex_ffn.py, 392 tests; axiom merged-crystal C++ ask drafted (relay 2026-07-31-0)** | specs/2026-07-31-scaffold-program.md; handoff 2026-07-31-0 |
-| **FOURIER / CLOCK-PLACEMENT LAW (booked, THEORY row)** | 2b: clocks only where single-pass competence (276/512 k=5 v 0/512 k=7; competence follows digit locality); 3: taught algorithm -> k=9 acc 0.83 with 0/512 clock (algorithm SUBSTITUTES for representation); recursion-depth diet-share clause (v1 amendment); FOURIER-4 candidates banked (formation dynamics; force-the-clock arm) | RESULTS 2026-07-31; THEORY clock-placement row |
-| **RESOLUTION LAW (methods, adopted)** | 120-gate sigma~5 -> n=1 cells can't resolve <5-solve deltas; claims <1.5 sigma need n>=3 paired seeds; rung-1 inversion = the measured cautionary case | RESULTS 2026-07-31 ~11:40 AM |
+| **DETERMINISTIC BIRTH (flagship)** | integer-closed at FULL-BLOCK scale, cross-lab: R1a/R1b (fwd/bwd) + R2 (IntAdamW) + R3a (Q_w pin: 8 mini / 12 full-block, starvation law at 3 scales) + R2b v1/v2 (rmsnorm/rope/CE/clamp-mask backward; fidelity floor 0.9985 accepted) — every rung C++-certified by axiom same-day (full birth 1.5 s/1000 steps, all milestone digests); **PROMOTED: llmopt/intmath.py (sha-pinned tables + step-equivalence tests)**; NEXT: multi-block -> real-diet mini-crystal bridge -> deterministic gravmoe pair (= transport answered exactly); 3080 legs on night31b GO; ask axiom to expose the int engine as a Python module (speed: their C++ is ~60x our reference) | scratch/detbwd_*.py; relay 2026-08-01-0; specs/2026-08-01-deterministic-birth.md |
 | **AXIOM LOOP (FX-V2 landed 07-31)** | determinism ladder COMPLETE (device->lab->RUNTIME: their torch-free C++ twin reproduces both P3 digests, 0.16s, d5e9d5a); rANS-unpack rider deferred (their call); **MERGED-CRYSTAL C++ PASS same-day (0104e1d): token-identical greedy both seeds, AXNN v1.2 switch_top1 gate, exporter their side, 481/481**; **FX-V3 PASS axiom-side (f9b0e04: two-runtime bit-identical, exp table BYTE-identical to house detbwd_r1b; house reproduction PASS both seeds FIRST RUN — merged crystal integer-closed at 3 implementations / 2 labs, gate spec transferred by prose alone)**; **R2 C++ PASS (c0ef854: 200-step integer birth trajectory-identical in a third runtime, 1.1 s; rdiv unified by proof)** — training determinism ladder = Mac-cpu/3080-cuda/axiom-C++; **FULL-BIRTH C++ PASS (f8aa16f, first run: all 8 milestone digests + final sha efe3557c, 1.5 s/1000 steps) — the complete block trains bit-identically cross-lab; rdiv-grouping hazard booked**; remaining rungs = SCALE (multi-block, real diet, deterministic gravmoe pair) + DEVICE (3080 on night31b GO); scorer AXNN export still banked | relay/2026-07-31-1 (theirs); RESULTS FX-V2 |
 | **REVIVAL SWEEP (spec'd 2026-07-31)** | 15 old verdicts re-priced by the day's laws (reviewer-swept, Fable-verified line-by-line); Tier A desk cells first: deterministic gate POOLING (integer decode makes cross-device seed ladders legal), graph-mod free sigma, rotation-instrument positive control on the Mod crystal; G9 zeta-8-on-Mod = the causal-square completer | specs/2026-07-31-revival-sweep.md |
 | **ORG/INDEX (live)** | results-index 537 entries + results_query; checkpoints/confirmed/ tree + MANIFEST (sha-pinned, curation-preserving, --all forensics mode); llmopt.runlog (elapsed-wallclock standard logging); 385 tests green; NEXT: checkpoint forensics + 51GB triage (Artin GO), scratch scripts adopt runlog opportunistically | scripts/ckpt_manifest.py; llmopt/runlog.py |
@@ -24,9 +22,21 @@ Prior days (07-29/30) live in the handoffs (2026-07-29-*, 2026-07-30-0) and FIND
 | **THE EQUATION (flagship)** | geometry sector now UNIVERSAL at 3 grammars (kurt 1.9 matched-feeding: calculus/mechanics/programs — encodes FEEDING not content); capability counted in PRIMITIVES (decomposition discount MEASURED ~10x/row; primitives saturate at S_max=1); determinability law measured (96 v 47 within one model) | RESULTS 2026-07-22 |
 | **PRECISION PROGRAM (closed at birth, open online)** | birth: BRACKETED bf16..fp64 indistinguishable; online: fp64 masters proven; **Ozaki arc RUN 2026-07-23**: error-free transform proven (CPU + cuda), int8-TC crossover (55ms exact beats fp64 accuracy; 21ms tri beats fp64 wall 2x), ZERO-rounding GPU matmul verified vs big-int, fp64-input GEMM at the dd floor (2^-107), **stay-in-RNS lazy pipeline: exact chains beat inexact fp64 past ~6 layers**; CAPABILITY LEG CLOSED (d2 bit-identity — exact ties fp64-masters; dd arm dropped); remaining = SPEED only (int8-exact wall, speculative-arithmetic router, fused kernel shipped) | RESULTS 2026-07-24 |
 | **RARITY INSTRUMENT (adopted)** | every promotion reads the curve; duo wave = adopted farm sampler (133/200 equal-budget); gates stay single-model | specs/2026-07-22-duo-substrate.md |
+| **RESOLUTION LAW (doctrine, adopted 07-31)** | 120-gate sigma~5 across SEEDS -> n=1 cells can't resolve <5-solve deltas; <1.5-sigma claims need n>=3 paired seeds. COMPANION (07-31 night): the gate is EXACTLY deterministic for FROZEN weights on mps — sigma is seed/training variance, never re-gate noise; gates print weights sha (provenance rule) | RESULTS 2026-07-31 |
 | Speed doctrine (all shipped this week) | KV cache 3.4x; bf16 births default (--fast NEVER without --nopack — packing hole re-measured −13 at 19M); sigma_diff=sqrt(2)*sigma decision rule + >=5 single-seed bar; grad-ckpt kills 10GB OOM class; allocator tripwire doctrine (the 43x); gates ~2 min | RESULTS 2026-07-22/23 |
 
 ## CLOSED this week (see RESULTS for verdicts)
+
+Newly moved from LIVE 2026-08-01 morning: SCAFFOLD PROGRAM (transport
+NO — means 50.7=50.7, Mac-scoped, rescue framing; survives = merge-free
+recipe promoted (hebbian_moe.py + complex_ffn.py) + Mac gravmoe
+advantage device-scoped; GRAV-0T/REV: post-hoc gravity destructive
+both ways — merge-free is a property OF the pulled basin; remaining
+riders: night31b merges [HOLD], deterministic pair under the flagship);
+FOURIER / CLOCK-PLACEMENT LAW (THEORY row; 4a dynamics booked;
+force-the-clock arm banked); RESOLUTION LAW -> doctrine (now in
+STANDING); RE-GATE SIGMA (gate EXACTLY deterministic on mps; 45-v-37
+was checkpoint provenance -> gates now print weights sha).
 
 Newly moved from LIVE 2026-07-31 (all booked, no in-flight work):
 THE PINCER PROGRAM (7 cells; B-a demoted, rests on B-b; residue banked);
@@ -65,7 +75,7 @@ instrument); birth precision (bracketed, closed); 113M capacity
 
 | Thread | Waiting on | Pointer |
 |---|---|---|
-| **DETERMINISTIC BIRTH (Artin's winners-composition, spec'd)** | Ozaki exact GEMM + P3 tables + fixed-point AdamW -> bit-identical cross-device training; prizes: transport question provable + BIRTH pooling; R0 = TF32-off cuda lb ladder (one flag, queued behind lam-merges) | specs/2026-08-01-deterministic-birth.md |
+| **NIGHT-31b CUDA QUEUE [HOLD — Artin's GO]** | scratch/night31b_cuda.sh: lambda-merge reviews (merge-free toward n=6) + R0 TF32-off lb ladder n=3 (the deterministic-birth device leg's warm-up); launch line in the script header — migrate to scripts/rjob.py launch on next use | scratch/night31b_cuda.sh |
 | Pincer residue: R8 re-run on axiom S7 enumeration + B-b spearhead | pincer revival GO | specs/2026-07-26-reverse-llmue-pincer.md |
 | ZX next levers: diet quality / serialization / curriculum (width nulled) | ZX continent GO | RESULTS 2026-07-27 45M verdict |
 | Exact-representations queue: GPTQ-rational, int8+outlier format, lattice-native template, RNS rung | exact-reps revival GO | specs/2026-07-27-exact-representations.md |
