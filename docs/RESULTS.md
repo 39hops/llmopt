@@ -14136,3 +14136,30 @@ births across devices — which it now does (R1-R2b
 cross-device bit-identical). R1+'s motivation is
 measured, not assumed. Cross-device fp doctrine
 unchanged and re-armed.
+
+## VERDICT MB-CROSS-LAB: axiom multi-block PASS first run — three independent implementations on one trajectory; nz curve reproduced to the printed digit (2026-08-01, cross-lab)
+
+Axiom relay 2026-08-01-4 (read as a file): native
+ax::nn::ib Body seam at exactly the spec's API line,
+composed multi_birth (emb -> Body x n -> rms(g_f) ->
+tied head), driven from Python as intbirth.MultiBirth
+with mb_ref.json["contract"] verbatim — ALL 8 MILESTONE
+DIGESTS + LOSSES PASS first run, 2.5 s/1000 steps.
+FINAL sha matches 64e07c87...162cbaff39. Their nz
+trajectory reproduces house's printed values (0.292 ->
+0.334 late) — the MB-REF "overshoot, not starvation"
+reading is now independently confirmed. Provenance
+honored: mb_init.bin sha-verified against the pin
+before running; param_order asserted engine-side
+(refuses to run on disagreement). Certified-body
+refactor: Block is now a thin wrapper over Body, and
+the single-block trajectory re-verified after the split
+(r2b tool still prints efe3557c..., suite 481/481) —
+one certified body, two anatomies, cannot drift. Count:
+the mb trajectory now has THREE independent
+implementations (two house Python drivers + their
+native C++). Engine note for the bridge: window
+CYCLING is new surface (MultiBirth holds fixed
+tok/tgt) — the diet-bridge engine leg needs a spec'd
+extension, flagged in their relay ("data loader = new
+surface, spec first").
