@@ -20,8 +20,8 @@ from detbwd_r1 import Q, int_mm, rdiv  # noqa: E402
 from detbwd_r1 import build_tables as build_silu_tables  # noqa: E402
 from detbwd_r1 import lut  # noqa: E402
 from detbwd_r1b import TSE, build_exp_table, exp_lut  # noqa: E402
-from detbwd_r2_adamw import isqrt_newton  # noqa: E402
 from detbwd_r3_qw import IntAdamWQw  # noqa: E402
+from llmopt.intmath import rms_isqrt_q16  # noqa: E402
 
 T, V = 32, 64
 # GRAVMOE-BRUTE params axis: width env knobs, defaults unchanged
@@ -38,7 +38,6 @@ SEED = 17
 SCALE = round(Q * DH ** 0.5)
 RS = 1 << 14                      # rope table scale
 R16 = 1 << 16                     # rmsnorm rsqrt scale
-EPS32 = 42950                     # round(1e-5 * 2^32)
 SHIFT = int(__import__("os").environ.get("SHIFT", "8"))  # R3a pin default
 PQ = Q * 16                       # attention probs carried finer:
                                   # Q-resolution p is the fidelity
@@ -79,9 +78,10 @@ def rope_bwd(dx, cos, sin):
 
 
 def rms_fwd(x, g):
-    s2 = (x * x).sum(-1, keepdim=True)
-    m40 = (s2 // D) * (1 << 32) // (Q * Q) + EPS32
-    isq = isqrt_newton(m40)                    # ~ sqrt(mean)*2^16
+    # Q^2 divides 2^32: factor to 2^14 before multiplying.  This is
+    # bit-identical to the certified expression in its safe range but
+    # removes the BR-W4c multiply-first overflow at rms > ~90 Q-units.
+    isq = rms_isqrt_q16(x, D, q=Q)             # ~ sqrt(mean)*2^16
     y = rdiv(rdiv(x * g, Q) * R16, isq)
     return y, isq
 

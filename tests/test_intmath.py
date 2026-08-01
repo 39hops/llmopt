@@ -2,6 +2,7 @@
 bit-equivalent to the certified scratch references (table shas
 pinned to the cross-lab digests; optimizer checked step-for-step
 against the R2 implementation)."""
+import math
 import sys
 
 import pytest
@@ -12,7 +13,8 @@ sys.path.insert(0, "scratch")
 
 from llmopt.intmath import (IntAdamW, Q, build_exp_table,  # noqa: E402
                             build_silu_tables, int_mm,
-                            isqrt_newton, rdiv, table_sha)
+                            isqrt_newton, mean_square_q32, rdiv,
+                            rms_isqrt_q16, table_sha)
 
 
 def test_table_shas_pinned():
@@ -51,6 +53,36 @@ def test_isqrt_exact_floor():
     r = isqrt_newton(x)
     assert torch.all(r * r <= x)
     assert torch.all((r + 1) * (r + 1) > x)
+
+
+@pytest.mark.parametrize("dim", [1, 2, 64, 128])
+def test_mean_square_q32_bitidentical_to_legacy_in_safe_range(dim):
+    """Factoring Q^2 before multiplication changes no safe bit."""
+    torch.manual_seed(dim)
+    x = torch.randint(-46340, 46341, (17, dim), dtype=torch.int64)
+    s2 = (x * x).sum(-1, keepdim=True)
+    legacy = (s2 // dim) * (1 << 32) // (Q * Q) + 42950
+    assert torch.equal(mean_square_q32(x, dim), legacy)
+
+
+def test_rms_factoring_recovers_booked_w4c_overflow():
+    """ACLAMP=49152 used to wrap m40 negative and produce isq=0."""
+    dim = 128
+    x = torch.full((3, dim), 49152, dtype=torch.int64)
+    s2 = (x * x).sum(-1, keepdim=True)
+    legacy = (s2 // dim) * (1 << 32) // (Q * Q) + 42950
+    assert torch.all(legacy < 0)  # reproduces BR-W4c's failure mechanism
+
+    mean = 49152 ** 2
+    oracle = mean * ((1 << 32) // (Q * Q)) + 42950
+    got = mean_square_q32(x, dim)
+    assert torch.all(got == oracle)
+    assert torch.all(rms_isqrt_q16(x, dim) == math.isqrt(oracle))
+
+
+def test_mean_square_rejects_rounding_contract_change():
+    with pytest.raises(ValueError, match="exactly divide"):
+        mean_square_q32(torch.ones(1, 4, dtype=torch.int64), 4, q=500)
 
 
 def test_intadamw_matches_r2_reference():

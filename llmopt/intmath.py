@@ -18,6 +18,9 @@ Conventions (the contract every leg implements):
 - Init draws on ONE canonical device (cpu) in a pinned order and
   ships as bytes.
 - Clamp masks recorded in forward are part of the backward contract.
+- RMS Q16 scaling is factored before multiplication: at Q=512,
+  2^32 / Q^2 = 2^14 exactly.  Multiplying by 2^32 first is
+  algebraically equivalent but loses 18 bits of int64 headroom.
 - Wide accumulator: weights at Q_w = Q << shift; rdiv to Q at the
   matmul boundary. Pins: shift=8 for optimizer-mini, shift=12 for
   full-block births (update-starvation law, measured at 3 scales).
@@ -29,6 +32,7 @@ import torch
 Q = 512
 TS = 4096          # silu/dsilu table half-range (Q units)
 TSE = 8 * Q        # exp table range [-TSE, 0] (Q units)
+EPS32 = 42950       # round(1e-5 * 2^32), RMS epsilon
 
 
 def rdiv(x, d):
@@ -54,6 +58,43 @@ def isqrt_newton(x, iters=40):
     r = torch.where(r * r > x, r - 1, r)
     r = torch.where((r + 1) * (r + 1) <= x, r + 1, r)
     return torch.where(x <= 0, torch.zeros_like(x), r)
+
+
+def mean_square_q32(x, dim, q=Q, eps32=EPS32):
+    """Mean square in Q16-squared units without false int64 overflow.
+
+    The RMS contract needs::
+
+        floor(floor(sum(x*x) / dim) * 2**32 / q**2) + eps32
+
+    ``q**2`` exactly divides ``2**32`` for the shipped Q=512, so
+    scaling by the factored quotient is bit-identical wherever the
+    legacy multiply-first expression is in range and retains 18 more
+    bits of headroom.  This function deliberately rejects other q
+    values whose ratio is not integral: silently changing rounding
+    placement would change the certified trajectory contract.
+
+    The caller remains responsible for keeping ``sum(x*x)`` itself in
+    int64 range; this removes the later, observed scale-order overflow.
+    """
+    if dim <= 0 or q <= 0:
+        raise ValueError("dim and q must be positive")
+    numerator = 1 << 32
+    denominator = q * q
+    factor, remainder = divmod(numerator, denominator)
+    if remainder:
+        raise ValueError("q**2 must exactly divide 2**32")
+    s2 = (x * x).sum(-1, keepdim=True)
+    mean = s2 // dim
+    max_mean = (torch.iinfo(torch.int64).max - eps32) // factor
+    if bool((mean < 0).any()) or bool((mean > max_mean).any()):
+        raise OverflowError("RMS mean square exceeds int64 headroom")
+    return mean * factor + eps32
+
+
+def rms_isqrt_q16(x, dim, q=Q, eps32=EPS32):
+    """Q16 magnitude for integer RMSNorm, exact floor square root."""
+    return isqrt_newton(mean_square_q32(x, dim, q=q, eps32=eps32))
 
 
 def build_silu_tables():

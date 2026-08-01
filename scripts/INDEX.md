@@ -948,6 +948,26 @@ rjob — job-ID-based remote/local run management (2026-08-01).
 - `clean(jid)`
 - `main()`
 
+### scripts/sol_enrich_results.py
+Build Sol's maturity-enriched, read-only copy of the results index.
+
+- `_sections(entries: list[dict]) -> dict[str, str]`
+- `_refs(value) -> list[str]` — The curated index contains both scalar and list link fields.
+- `_topic(title: str) -> str`
+- `_resolved_preregs(entries: list[dict]) -> dict[str, str]`
+- `_evidence(text: str, pattern: re.Pattern, fallback: str) -> str`
+- `_impact(entry: dict) -> int` — Transparent ranking proxy, not a scientific importance judgment.
+- `enrich() -> list[dict]`
+- `write_summary(entries: list[dict]) -> None`
+- `main() -> None`
+
+### scripts/sol_generate_tables.py
+Generate adoptable read-only tables from Sol's enriched index.
+
+- `_refs(value) -> list[str]`
+- `_entry_row(entry: dict) -> str`
+- `main() -> None`
+
 ### scripts/step_grpo.py
 GRPO at the frontier band — sustained RL over verified steps.
 
@@ -1294,6 +1314,28 @@ Desert test v2 — cross-grammar composition probe (union eq coefficient iv).
 
 - `sample_step(cur, temp=0.7)`
 - `verify(cur, pred, q)`
+
+### scratch/detbwd_diet.py
+Deterministic mini-crystal birth on the REAL MATH DIET (queued by Artin 2026-08-01 pre-compact): the multi-block integer model (detbwd_mb anatomy, V=40 = MathTokenizer vocab) trained with true next-token CE on gen-4 diet windows — the bridge from random-target demos to the actual curriculum.
+
+- `draw_windows()` — First NWIN strictly-encodable diet rows with >= T+1 tokens,
+- `main()`
+
+### scratch/detbwd_gravmoe.py
+Deterministic gravmoe pair (spec 2026-08-01-deterministic- gravmoe): the mb bridge model with each Body's FFN split into E=4 experts behind an integer switch_top1 router (multiplicative top_p gate, fx3 convention), plus an integer gravity relaxation every K optimizer steps. All arms share seed/init/windows; the only variable is lambda = LN/LD.
+
+- `class MoBody` (fwd, bwd)
+- `find_split(full, mark)` — Index just past the LAST 'Step: ' marker, or None.
+- `draw_complete(n)` — First n diet rows whose FULL text fits T+1 tokens (padded
+- `sympy_equiv(a, b, timeout=10)` — Fork-isolated symbolic equivalence (NO sympy without a
+- `gate(m, ids, truths, tok, tab, label)` — Free-run validity gate: prefix through 'Step: ', greedy
+- `class GMB` (param_items, bwd)
+- `relax(wide)` — The gravity event, per spec: per body, kinds order, mean
+- `agreement(m, wins, tab)` — Pairwise % of probe tokens where expert outputs agree:
+- `twin_fp64(m, tok, tgt, tops, masks=None)` — fp64 autograd twin. ALL discrete decisions come from the
+- `build_model()`
+- `run_loss(m, wins, tab, t_exp)` — Exact cycle-mean loss over the 8 windows (no training).
+- `main()`
 
 ### scratch/detbwd_mb.py
 Deterministic-birth MULTI-BLOCK reference (queued 2026-08-01): N transformer bodies chained by dx0 + embedding and TIED head at the ends — the full mini-LM anatomy, all int64, at the R2b contract (SHIFT=12 default here, GBOOST=256, PQ, ACT_CLAMP, constant lr 1/1000).
@@ -2282,11 +2324,22 @@ The certified integer core of the deterministic-birth program.
 - `rdiv(x, d)` — Round-half-away integer division, exact + deterministic.
 - `int_mm(a, w)` — [..., K] x [N, K] -> [..., N], exact int64 (order-free sum).
 - `isqrt_newton(x, iters=40)` — Exact elementwise floor-sqrt for int64 tensors (Newton +
+- `mean_square_q32(x, dim, q=Q, eps32=EPS32)` — Mean square in Q16-squared units without false int64 overflow.
+- `rms_isqrt_q16(x, dim, q=Q, eps32=EPS32)` — Q16 magnitude for integer RMSNorm, exact floor square root.
 - `build_silu_tables()` — Shipped-bytes doctrine: build ONCE on cpu, pin the shas.
 - `build_exp_table()` — exp on [-TSE, 0] in Q units, values at Q scale.
 - `table_sha(t)`
 - `lut(t, xq, hi_pos)` — Table lookup with per-table saturation: beyond +TS the value
 - `class IntAdamW` (step)
+
+### llmopt/reproduce.py
+One-command reproduction of pinned llmopt results.
+
+- `_arm_env(arm: str, pin: dict) -> dict[str, str]` — Resolve the pin schema plus its declared gravmoe cell contract.
+- `available() -> dict[str, dict]`
+- `_runner_env(spec: dict, base: dict[str, str] | None=None) -> dict[str, str]` — Remove ambient experiment knobs before applying the pinned contract.
+- `reproduce(name: str) -> int`
+- `main(argv: list[str] | None=None) -> int`
 
 ### llmopt/runlog.py
 llmopt.runlog — standard run logging with honest wallclock.
