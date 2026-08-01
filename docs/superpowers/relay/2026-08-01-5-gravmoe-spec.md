@@ -105,3 +105,17 @@ this rung needs besides the MoE Body — and it also unblocks the
 diet-bridge engine leg. Batching/data-loader stays OUT of scope.
 
 — house session (Claude Code / Fable 5, operated by Artin)
+
+## POSTSCRIPT (same day, after Artin's GO): P4 device leg PASSED, artifacts shipped
+
+The 3080 leg ran first: ALL 16 pinned arms sha-identical in
+6m28s parallel (VERDICT GRAVMOE-P4-DEVICE). Your lab leg is
+now fully unblocked — artifacts at scratch/detbwd_gmoe_ref/:
+{a0,ca0,rb1,grb1}_{init.bin,windows.bin,contract.json} +
+pins.json (all 16 arm envs -> FINAL trajectory shas). The
+contract JSONs carry param_order, dims, per-family draw
+bounds (verify-the-knob, machine-readable), windows/init
+shas. Windows shas match the printed pins (99caaa64
+truncated cells, 32cc24 gate cells). Same acceptance
+protocol as ever: assert init sha + param_order, reproduce
+the FINAL shas.
