@@ -14211,3 +14211,62 @@ point); P4 (later legs) digest reproduction on
 limitation of this cell (attention 90% zero at init) —
 any init-scale change is a NEW cell, not a tweak to
 this one.
+
+## VERDICT GRAVMOE-PAIR: gravity buys mergeability LINEARLY and pays capability MONOTONICALLY — merge-free requires FULL collapse; the whole mechanism in one exact battery (2026-08-01 afternoon, Mac)
+
+Arms per PRE-REG GRAVMOE-PAIR (2000 steps, diet
+windows, K=100, seed 17, all digests deterministic):
+  A0 lambda 0    loss 13072  agree 0.0000  merge +3039
+  A1 lambda 1/16 loss 13417  agree 0.0000  merge +2111
+  A2 lambda 1/4  loss 13724  agree 0.0000  merge +1210
+  A3 lambda 1    loss 13865  agree 1.0000  merge     0
+Against predictions: P1 PARTIAL — A3 fully collapses
+(bit-identical experts) and A1 stays diverse, but
+strict-agreement is a STEP function (0 until full
+collapse; the coarse metric would grade the middle).
+P2 HALF WRONG in the informative direction: A2 (above
+the fp collapse threshold 0.1-0.25) still merges
+HARMFULLY (+1210) — the fp threshold does NOT
+transport into the exact battery; here collapse needs
+lambda between 1/4 and 1. But the MECHANISM is cleaner
+than predicted: merge damage falls LINEARLY with dose
+(3039 -> 2111 -> 1210 -> 0). P3 (undirected by
+design): gravity COSTS diet capability monotonically
+(13072 -> 13865, ~6% at full dose). READ: in this
+exact cell, "birth as Hebbian MoE, ship as dense" is a
+LINEAR TRADE — each unit of gravity dose converts
+capability into mergeability; merge-free is the
+endpoint (full consensus), not a threshold freebie.
+n=1 suffices for every number above (exact
+arithmetic); what n=1 does NOT establish is
+generality across inits/windows — and this cell is
+SATURATED at init (36-55% clamp rails, 90% zero
+attention probs), so the conditioned-init rung
+(banked, this session) is the required robustness leg
+before the trade line is doctrine. P4 (3080 + axiom
+digest reproduction) queued: night rjob + relay after
+the conditioning rung settles the init question.
+FINAL trajectory shas (the P4 pins; full log
+logs/gmoe_arms_0801.log): A0 6fffa718f9c7b2c0..., A1
+1ad5f466aa9dab17..., A2 23c154e6a31daef7..., A3
+300e61ad2cd621f8...
+
+## BANKED DIET-COND: conditioned-init rung for the saturated battery (2026-08-01, queued)
+
+Every diet-battery cell to date inherits a SATURATED
+init (36-55% of activations at the clamp rails, ~90%
+exactly-zero attention probs at step 0) — random +-Q
+weights make residual-branch outputs ~30x the residual
+scale. Rung (a NEW paired cell, not a tweak to any
+booked one): draw the residual-WRITING matrices (wo,
+wd / e{j}.wd) at +-Q/8 (the GPT-2/muP-style residual
+scaling, integerized), everything else unchanged.
+Readouts: clamp fraction + zero-prob fraction at init
+(prediction: both collapse toward 0/moderate), twin
+composite (prediction: near-tie class shrinks, window
+0 heals), diet loss v the saturated twin cell, and the
+GRAVMOE TRADE LINE re-measured (the real question: is
+"linear capability-for-mergeability" a property of
+gravity or of the rails?). Contract change = new draw
+semantics, so it forks the reference artifacts;
+explicit [pending fire, house].
