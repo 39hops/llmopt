@@ -14041,3 +14041,49 @@ for monotonicity. Default going forward for mb-scale
 births: SHIFT=14; add SCHED when the run is a
 demonstration of stability, A-style const when chasing
 the lowest loss.
+
+## PRE-REG DIET-BRIDGE: deterministic mini-crystal birth on the real gen-4 math diet (2026-08-01, Mac)
+
+The mb anatomy (NBLK=2, seed 17) at V=40 (MathTokenizer
+base vocab), TRUE next-token CE on 8 gen-4 diet windows
+(33 tokens each, first strictly-encodable rows in file
+order), windows cycled round-robin one per step, 1000
+steps at SHIFT=14 const lr (the MB-S14 default).
+Reproducibility: window token ids are serialized INTO
+diet_init.bin — the untracked diet file sources tokens
+but is never a trajectory dependency. PREDICTIONS:
+(1) cycle-mean loss falls (real text has structure the
+random-target cells lacked — repeated "Current:/Hints:/
+Step:" scaffolding should be learned fast); (2) rerun-
+deterministic (same sha twice); (3) per-window loss
+varies across the cycle (windows differ in difficulty)
+— milestone lines print both loss(win) and loss(cyc8);
+(4) no starvation (nz > 0.1 throughout). If cycle-mean
+does NOT fall, the suspect ordering is objective scale:
+CE at Q on V=40 gives max per-token grad Q, same as
+V=64 — no reason to fail, so a non-fall books as a real
+anomaly, not a knob issue.
+
+## VERDICT DIET-BRIDGE: the integer birth eats real math — deterministic next-token training on gen-4 windows, falls but plateaus far from crystal (2026-08-01, Mac)
+
+Against PRE-REG DIET-BRIDGE: (1) PASS with a fence —
+cycle-mean loss falls 15909 -> 12518, but plateaus
+~12500 after step 500 (per-token ~391 of max 512):
+8 distinct real windows sharing one 60k-param model is
+a genuinely harder objective than the random-target
+cells (which memorize ONE fixed mapping to ~6000);
+"learned fast" was optimistic. (2) PASS — rerun FINAL
+sha identical (8b443b68b31ed966...f6759d026), windows
+ids sha 99caaa646925d150 stable. (3) PASS — loss(win)
+vs loss(cyc8) diverge visibly per milestone. (4) PASS —
+nz 0.43 throughout, no starvation. Artifact:
+scratch/detbwd_diet_ref/diet_init.bin (sha 880e4e295f1e
+9544...4bd9b97e) carries weights init + all window
+token ids — trajectory reproducible without the
+untracked diet file. THE BRIDGE STANDS: the
+deterministic integer stack now trains on the actual
+curriculum text end-to-end. NEXT RUNGS (for the engine,
+not Python): more windows/steps to find where the
+plateau breaks; the capacity question (params vs
+windows) is exactly what the intbirth engine's 60x
+makes cheap.
