@@ -13691,3 +13691,55 @@ They widened C++ prints to full digests (adopt
 house-side too: full hashes in relays, prefixes only
 in logs). Their queue: R2b v2 postmortem + spec when it
 lands -> full-birth C++ leg -> rANS rider.
+
+## PRE-REG R2b v2: the training bar — is the plateau lr-bounce or update starvation? (2026-08-01 pre-dawn, Mac cpu, before the runs)
+
+v1 fell 23% then plateaued/wobbled (lr=1/1000, SHIFT=8,
+200 steps). Two mechanisms, one arm each + combo, 1000
+steps, same seed/init/data as v1:
+  (a) SHIFT=8 + integer lr DECAY (LRD doubles at steps
+      250/500/750 — deterministic schedule);
+  (b) SHIFT=12 constant lr (R3a's headroom arm: if the
+      plateau is late-stage update STARVATION at
+      SHIFT=8, the wider accumulator alone revives it);
+  (c) SHIFT=12 + decay (combo).
+MEASURES: loss at 200/500/1000; nz-update fraction at
+plateau entry v late; rerun determinism per arm.
+PREDICTIONS: (1) bounce -> (a) beats v1's floor and (b)
+alone does not; (2) starvation -> (b) beats (a);
+(3) both -> (c) best; (4) if NO arm beats v1's ~12400
+floor by >10%, the floor is the Q-quantized forward's
+noise floor on this task (loss monitor resolution), and
+the training bar gets re-specified against a matched
+fp32 baseline instead. FIDELITY DECISION (standing for
+v2): 0.9985 composite is ACCEPTED as the R2b floor —
+structural (boost- and PQ-invariant), forward 0.99998,
+and it trains; a finer attn-exp table stays banked.
+
+## VERDICT R2b v2: the plateau was UPDATE STARVATION — SHIFT=12 alone wins (10233, still falling at 1000); lr decay HURTS; full-birth contract amends to Q_w = Q << 12 (2026-08-01 pre-dawn)
+
+Same seed/init/data as v1, 1000 steps each:
+  (a) SHIFT=8  + lr decay: 11333
+  (b) SHIFT=12 constant:   10233 — best, and STILL
+      DESCENDING at step 1000 (10471 -> 10233 over the
+      last eighth)
+  (c) SHIFT=12 + lr decay: 11263
+PREDICTION (2) FIRES: starvation. The decay arms
+CONFIRM by hurting — shrinking lr deepens starvation
+(exactly R3a's late-stall mechanism at one more scale).
+v1's 200-step floor (~12400) beaten by 17% — the
+Q-noise-floor hypothesis (prediction 4) not triggered.
+
+AMENDMENT (target: R3a pin): the pin SPLITS by scope.
+Optimizer-only mini (R3a's 400-step FFN cell): SHIFT=8
+suffices and stays the certified reference (axiom C++
+matches all four shifts anyway). FULL-BLOCK BIRTH: the
+contract moves to SHIFT=12 (Q_w = Q << 12 = 2^21) —
+R3a's own headroom flag ("longer trainings may prefer
+12"), now measured at the block scale. Relay-worthy:
+axiom's full-birth leg should build against SHIFT=12;
+their unified int_adamw loop already parameterizes it.
+Fidelity floor 0.9985 stands ACCEPTED per the v2
+pre-reg. R2b v2 trajectory shas printed per arm
+(deterministic machinery certified R2/R3a; arm (b)
+final sha efe3557c6cceef91df78ddfd8fb74a95...).

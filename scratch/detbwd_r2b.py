@@ -30,7 +30,7 @@ SCALE = round(Q * DH ** 0.5)
 RS = 1 << 14                      # rope table scale
 R16 = 1 << 16                     # rmsnorm rsqrt scale
 EPS32 = 42950                     # round(1e-5 * 2^32)
-SHIFT = 8                         # R3a pin: Q_w = Q << 8
+SHIFT = int(__import__("os").environ.get("SHIFT", "8"))  # R3a pin default
 PQ = Q * 16                       # attention probs carried finer:
                                   # Q-resolution p is the fidelity
                                   # floor of the composite chain
@@ -38,7 +38,7 @@ GBOOST = 256                      # backward runs at Q<<6: CE-scale
                                   # grads underflow Q through the
                                   # deep chain (linear -> lossless
                                   # up to the final unboost rdiv)
-STEPS = 200
+STEPS = int(__import__("os").environ.get("STEPS", "200"))
 
 
 def rope_tables():
@@ -309,10 +309,14 @@ def main():
     for k in Block.KEYS:                       # lift to Q_w
         blk.w[k] = blk.w[k] << SHIFT
     wide = {k: blk.w[k] for k in Block.KEYS}
-    opt = IntAdamWQw([wide[k] for k in Block.KEYS], SHIFT)
+    import os
+    sched = os.environ.get("SCHED") == "1"
+    opt = IntAdamWQw([wide[k] for k in Block.KEYS], SHIFT, lrd=1000)
     losses = []
     th = hashlib.sha256()
     for step in range(1, STEPS + 1):
+        if sched and step in (250, 500, 750):
+            opt.lrd *= 2                      # integer lr decay
         blk.w = {k: rdiv(wide[k], 1 << SHIFT) for k in Block.KEYS}
         lg, cc = blk.fwd(x, tab)
         pp = softmax_rows(lg, t_exp)
@@ -320,10 +324,11 @@ def main():
         losses.append(int((Q - pp[torch.arange(T), tgt]).sum()))
         GG, _ = blk.bwd((pp - Q * onehot) * GBOOST, cc, tab)
         opt.step([rdiv(GG[k], Q * GBOOST) for k in Block.KEYS])
-        if step % 50 == 0:
+        if step % max(50, STEPS // 8) == 0:
             for k in Block.KEYS:
                 th.update(wide[k].numpy().tobytes())
             print(f"[r2b] step {step} loss {losses[-1]} "
+                  f"nz {opt.nz_last:.3f} "
                   f"traj-sha {th.hexdigest()[:16]}", flush=True)
     fell = losses[-1] < losses[len(losses) // 2] < losses[0]
     print(f"[r2b] loss {losses[0]} -> {losses[len(losses) // 2]} -> "

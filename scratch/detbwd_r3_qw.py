@@ -25,9 +25,10 @@ SHIFTS = (0, 4, 8, 12)
 class IntAdamWQw:
     """R2's IntAdamW with weights at Q_w = Q << shift."""
 
-    def __init__(self, params, shift):
+    def __init__(self, params, shift, lrd=None):
         self.p = params           # int64 at Q_w scale
         self.shift = shift
+        self.lrd = lrd or LRD     # override for integer lr schedules
         self.m = [torch.zeros_like(w) for w in params]
         self.v = [torch.zeros_like(w) for w in params]
         self.t = 0
@@ -52,7 +53,8 @@ class IntAdamWQw:
             mh = rdiv(m * bc1n, max(bc1d, 1))
             vh = rdiv(v * bc2n, max(bc2d, 1))
             den = isqrt_newton(vh * Q) + EPS
-            upd = rdiv(LRN * mh * (Q << self.shift), LRD * den)
+            upd = rdiv(LRN * mh * (Q << self.shift),
+                       self.lrd * den)
             nz += int((upd != 0).sum())
             tot += upd.numel()
             w -= upd
