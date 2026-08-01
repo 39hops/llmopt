@@ -13612,3 +13612,61 @@ after GO; longer trainings may prefer SHIFT=12's
 headroom (nz 0.97 v 0.65 at step 400) — flag for the
 full-birth cell, but the pin for the axiom C++ leg is
 SHIFT=8.
+
+## PRE-REG R2b: the FULL-BLOCK integer birth — rmsnorm + rope backward, CE gradient, one transformer block trained end-to-end in int64 (2026-08-01 pre-dawn, Mac cpu, before the run)
+
+Closes the R2-mini scope fence. New integer machinery:
+(1) rmsnorm backward — dx = r*(g.dy) - x*(r^3/D)*
+sum(g.dy.x) in fixed point, isqrt-based, no new table;
+(2) rope backward = the transpose rotation (cos/sin
+tables reused); (3) CE gradient at the head —
+dlogits = p - Q*onehot via the R1b softmax machinery
+(exp table; the loss MONITOR is sum(Q - p_target),
+avoiding a log table — grads are what train). Cell:
+one full block (n1 -> single-head attn -> residual ->
+n2 -> FFN -> residual) + head, T=32 D=64 DH=16 V=64,
+random fixed next-token targets, IntAdamW at the R3a
+pin (Q_w = Q<<8, lr=1/1000), 200 steps. CHECKS in
+order: (a) fp64-twin gradient cosines >= 0.999 on every
+COMPOSITE param grad (the R1b lesson); (b) rerun
+determinism sha; (c) training loss strictly falling;
+(d) trajectory sha printed for the 3080 + axiom-C++
+legs (both deferred: box on HOLD, their leg awaits our
+init bytes). PASS = a-c on Mac cpu.
+
+## VERDICT R2b v1: PARTIAL — full-block integer backward VERIFIED and deterministic; two pre-reg bars missed honestly (fidelity 0.9985 v 0.999; training plateaus) (2026-08-01 pre-dawn)
+
+scratch/detbwd_r2b.py. What PASSED: (1) rerun
+determinism sha identical (full fwd+bwd); (2) forward
+fidelity 0.99998+ on every intermediate; (3) rmsnorm
+backward EXACT in isolation (cos 0.9999999); rope
+backward, CE gradient, clamp backward all implemented
+and verified in-chain. What MISSED: (a) composite
+param-grad cosines: 7 of 11 tensors >= 0.9994, but
+wq/wk/g1/x-adjacent sit at 0.9985-0.9989 v the 0.999
+bar — PROVEN structural, not rounding (invariant under
+GBOOST 64 -> 256 AND attention-prob resolution Q -> Q*16):
+the aggregate table-fidelity floor of a chain crossing
+TWO softmaxes + THREE rmsnorms; (b) training falls 23%
+(16282 -> ~12500 by step 100) then plateaus/wobbles at
+lr=1/1000, 200 steps.
+
+THREE BUGS BOUGHT (each caught by a check): (1) missing
+residual ACT_CLAMP overflowed rmsnorm's fixed point
+(int64 wrap -> isqrt(neg)=0 -> div0); (2) G[wo] built
+from the wrong operand (da for dx1 — shape mismatch
+caught it); (3) THE CLAMP BACKWARD WAS MISSING —
+cosines 0.3-0.6 depth-graded and boost-invariant until
+the masks went in (autograd zeroes clamped positions;
+the integer path must too). Lesson for the C++ leg:
+clamp masks are part of the backward contract.
+
+NEW MACHINERY (all shipped in-script, no new tables):
+rms_bwd (isqrt-based, exact in isolation), rope_bwd
+(transpose rotation), CE grad p - Q*onehot, clamp
+masks, GBOOST backward scaling, PQ attention probs.
+QUEUED R2b v2: lr schedule / longer run for the
+training bar; decide whether 0.9985 composite fidelity
+is the ACCEPTED floor (it trains) or worth a finer
+attn-exp table; then trajectory-sha legs (3080 on GO,
+axiom C++ after v2 pins the contract).
