@@ -259,6 +259,11 @@ GATE = os.environ.get("GATE") == "1"
 # previous-position greedy predictions; targets stay truth.
 SS = os.environ.get("SS") == "1"
 SSW = int(os.environ.get("SSW", "500"))
+ANSWER_ONLY = os.environ.get("ANSWER_ONLY") == "1"
+if ANSWER_ONLY and not GATE:
+    raise ValueError("ANSWER_ONLY requires GATE=1")
+if ANSWER_ONLY and SS:
+    raise ValueError("ANSWER_ONLY and SS are separate mechanisms")
 
 
 def find_split(full, mark):
@@ -580,25 +585,44 @@ def build_model():
     return GMB()
 
 
-def run_loss(m, wins, tab, t_exp):
+def run_loss(m, wins, tab, t_exp, regions=None):
     """Exact cycle-mean loss over the 8 windows (no training)."""
     tot = 0
     for wi in range(wins.shape[0]):
         tok_in, tgt = wins[wi, :T], wins[wi, 1:T + 1]
         lg, _ = m.fwd(tok_in, tab)
         pp = softmax_rows(lg, t_exp)
-        tot += int((Q - pp[torch.arange(T), tgt]).sum())
+        region = regions[wi] if regions is not None else None
+        tot += loss_proxy(pp, tgt, region)
     return tot // wins.shape[0]
 
 
 def main():
+    train_regions = None
     if GATE:
         all_ids, truths, tok = draw_complete(16)
         mark = tok.encode("Step: ")
+        terminator_ids = [tok.id["\n"], tok.eos_id]
+        regions = [answer_region(all_ids[wi], mark, terminator_ids)
+                   for wi in range(all_ids.shape[0])]
+        train_regions = regions[:8]
         splits = [find_split(all_ids[wi], mark)
                   for wi in range(all_ids.shape[0])]
         assert all(s is not None for s in splits)
-        assert_disjoint_prompts(all_ids, splits, 8)
+        prompt_counts = assert_disjoint_prompts(all_ids, splits, 8)
+        assert mark == [4, 26]
+        assert tok.id["\n"] == 27 and tok.eos_id == 1
+        assert splits[:8] == [15, 10, 15, 15, 19, 15, 12, 15]
+        full_rows_sha = hashlib.sha256(
+            all_ids.numpy().tobytes()).hexdigest()
+        print(f"[gmoe] marker ids {mark} terminator ids "
+              f"{terminator_ids}", flush=True)
+        print(f"[gmoe] answer regions {train_regions}", flush=True)
+        print(f"[gmoe] full 16-row sha {full_rows_sha}", flush=True)
+        print(f"[gmoe] prompt overlap train {prompt_counts[0]} "
+              f"heldout {prompt_counts[1]} overlap {prompt_counts[2]}",
+              flush=True)
+        print(f"[gmoe] ANSWER_ONLY {int(ANSWER_ONLY)}", flush=True)
         wins = all_ids[:8]          # train on the first 8
         print("[gmoe] GATE mode: 8 complete train rows + "
               "8 held-out, oracle-scored free-run", flush=True)
@@ -707,7 +731,9 @@ def main():
     for step in range(1, STEPS + 1):
         if sched and step in (STEPS // 4, STEPS // 2, 3 * STEPS // 4):
             opt.lrd *= 2
-        w = wins[(step - 1) % wins.shape[0]]
+        row_index = (step - 1) % wins.shape[0]
+        w = wins[row_index]
+        region = train_regions[row_index] if ANSWER_ONLY else None
         tok_in, tgt = w[:T], w[1:T + 1]
         nar = {n: rdiv(wide[n], 1 << SHIFT) for n in names}
         m.emb, m.g_f = nar["emb"], nar["g_f"]
@@ -723,8 +749,8 @@ def main():
             tok_in[sp:T] = preds[sp - 1:T - 1]
         lg, cc = m.fwd(tok_in, tab)
         pp = softmax_rows(lg, t_exp)
-        losses.append(int((Q - pp[torch.arange(T), tgt]).sum()))
-        GG = m.bwd((pp - Q * eye[tgt]) * GB, cc, tab)
+        losses.append(loss_proxy(pp, tgt, region))
+        GG = m.bwd(loss_dlogits(pp, tgt, eye, GB, region), cc, tab)
         opt.step([rdiv(GG[n], Q * GB) for n in names])
         if TAU:
             # temperature floor: tt >= 1 narrow (the b3 crash —
@@ -753,7 +779,8 @@ def main():
         gate(m, all_ids[:8], truths[:8], tok, tab, "TRAIN")
         gate(m, all_ids[8:], truths[8:], tok, tab, "HELDOUT")
     agr, agr_c = agreement(m, wins, tab)
-    base = run_loss(m, wins, tab, t_exp)
+    diagnostic_regions = train_regions if ANSWER_ONLY else None
+    base = run_loss(m, wins, tab, t_exp, diagnostic_regions)
     # merge test: average experts to dense, in place, exactly
     for i, b in enumerate(m.bodies):
         for kind in ("wg", "wu", "wd"):
@@ -761,7 +788,7 @@ def main():
                             for j in range(E)), E)
             for j in range(E):
                 b.w[f"e{j}.{kind}"] = mean
-    merged = run_loss(m, wins, tab, t_exp)
+    merged = run_loss(m, wins, tab, t_exp, diagnostic_regions)
     c0 = sum(losses[:8]) // 8
     cf = sum(losses[-8:]) // 8
     print(f"[gmoe] cycle-mean {c0} -> {cf}  falling: {cf < c0}")

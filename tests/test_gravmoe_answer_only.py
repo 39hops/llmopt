@@ -1,3 +1,5 @@
+import os
+import subprocess
 import sys
 
 import pytest
@@ -6,6 +8,26 @@ torch = pytest.importorskip("torch")
 sys.path.insert(0, "scratch")
 
 import detbwd_gravmoe as G  # noqa: E402
+
+
+def _import_with(**knobs):
+    env = {k: v for k, v in os.environ.items()
+           if k not in {"ANSWER_ONLY", "GATE", "SS"}}
+    env.update({k: str(v) for k, v in knobs.items()})
+    return subprocess.run(
+        [sys.executable, "-c",
+         "import sys; sys.path.insert(0, 'scratch'); "
+         "import detbwd_gravmoe as g; print(int(g.ANSWER_ONLY))"],
+        env=env, text=True, capture_output=True)
+
+
+def test_answer_only_contract_fences():
+    assert _import_with().stdout.strip() == "0"
+    assert _import_with(GATE=1, ANSWER_ONLY=1).stdout.strip() == "1"
+    no_gate = _import_with(ANSWER_ONLY=1)
+    assert no_gate.returncode != 0 and "requires GATE=1" in no_gate.stderr
+    combined = _import_with(GATE=1, ANSWER_ONLY=1, SS=1)
+    assert combined.returncode != 0 and "separate mechanisms" in combined.stderr
 
 
 def _sleeping_worker(q):
