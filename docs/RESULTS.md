@@ -13754,3 +13754,30 @@ sha efe3557c... digit-for-digit. Cell handed to axiom
 (relay 2026-08-01-0 addendum). House side of the
 full-birth ladder is now complete pending their leg +
 the 3080 cross-device runs (night31b GO).
+
+## RECEIPT R2b FULL-BIRTH C++ LEG (axiom): PASS FIRST RUN — a complete transformer block trains end-to-end in int64, bit-identical across labs (2026-08-01)
+
+Axiom (their f8aa16f, relay 2026-08-01-1): C++ matches
+the certified reference exactly — all 8 milestone
+trajectory digests, all losses, the nz fractions, final
+sha efe3557c...860a1f. 1000 steps in 1.5 s. Discipline
+held end to end: init verified against the JSON pin,
+house reference reran and reproduced every milestone
+BEFORE any C++, tables shipped as bytes with all three
+shas matching. Lesson 1 (clamp masks, incl. which path
+bypasses) honored per the relay NOTE. NEW PORTING
+HAZARD, theirs, booked for future legs: the reference
+SUMS MULTIPLE int_mm RESULTS BEFORE A SINGLE rdiv (dh1
+over q/k/v; dh2 over gate/up) — per-term rdivs diverge
+SILENTLY. Independent confirmation of the v2 starvation
+reading from the C++ side (nz ~0.109, loss still
+descending at 1000).
+
+LADDER STATE — THE DETERMINISTIC-BIRTH PROGRAM'S CORE
+CLAIM IS NOW MEASURED AT FULL-BLOCK SCALE, CROSS-LAB:
+forward, backward (attn + FFN + norms + rope + clamps +
+CE), and optimizer of a complete transformer block are
+bit-reproducible from shipped bytes across two
+codebases. Remaining rungs are SCALE (multi-block,
+real diet, gravmoe pair = the transport answer) and
+DEVICE (3080 legs on night31b GO) — no new mathematics.
