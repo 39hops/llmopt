@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: >-
+  If you replicate, build on, or benchmark against this repository
+  (the capacity meter, the deterministic integer training battery,
+  the gate protocols, or any booked result), please cite it as
+  below. The verdict-by-verdict ledger (docs/RESULTS.md) is the
+  citable record; entries are dated and sha-pinned.
+title: "llmopt: an oracle-verified LLM inference and training optimization lab"
+type: software
+authors:
+  - name: "39hops"
+repository-code: "https://github.com/39hops/llmopt"
+license: Apache-2.0
+keywords:
+  - LLM inference optimization
+  - deterministic training
+  - integer-exact neural networks
+  - verified search
+  - reproducibility

@@ -9,6 +9,13 @@ verdict-by-verdict history (wins, nulls, and retractions alike) is
 [`docs/BOARD.md`](docs/BOARD.md); the laws-with-citations map is
 [`docs/THEORY.md`](docs/THEORY.md).
 
+**Citing this work**: if you replicate or build on anything here —
+the capacity meter, the deterministic integer battery, the gate
+protocols, or any booked result — please cite the repo (see
+[`CITATION.cff`](CITATION.cff); GitHub's "Cite this repository"
+button uses it). Results in the ledger are dated and sha-pinned, so
+a citation can name the specific verdict it relies on.
+
 ## Highlights
 
 **The lab, current state (2026-07-29)** — the lab moved from tuning
