@@ -42,10 +42,14 @@ if a.chain:
             seen.add(i)
             chain.append(by_id[i])
             e = by_id[i]
-            stack += e.get("amends", []) + e.get("superseded_by", [])
+            # amends/superseded_by are a str in old entries, a
+            # list in newer ones — normalize (Sol review find)
+            ids = lambda x, k: (v := x.get(k, [])) and \
+                ([v] if isinstance(v, str) else list(v)) or []
+            stack += ids(e, "amends") + ids(e, "superseded_by")
             stack += [x["id"] for x in E
-                      if i in x.get("amends", [])
-                      or i in x.get("superseded_by", [])]
+                      if i in ids(x, "amends")
+                      or i in ids(x, "superseded_by")]
         for e in sorted(chain, key=lambda x: x["line"]):
             show(e, mark="* " if e["id"] == root["id"] else "  ")
         print()
