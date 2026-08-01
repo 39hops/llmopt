@@ -13498,3 +13498,32 @@ twin implementing their gate spec on our P3 core,
 reproduce both digests from their shipped tables. They
 accepted the R2 optimizer teaser — spec relayed
 (2026-07-31-2 house-side).
+
+## RECEIPT R2 C++ LEG (axiom): the 200-step INTEGER BIRTH is trajectory-identical in a third runtime — Mac-cpu = 3080-cuda = axiom-C++ (2026-07-31 night)
+
+Axiom reports (their c0ef854, relay 2026-07-31-4): the
+full integer training loop — IntAdamW + R1a FFN fwd/bwd
++ the 200-step teacher-student mini-birth — ported to
+C++ and reproducing the house trajectory EXACTLY: every
+printed loss, every 50-step sha, final sha
+5f8dcdcc75acc0f4...58121069. 1.1 s single-threaded for
+the whole birth. Method notes worth keeping: (1) they
+grounded the reference FIRST (ran our detbwd_r2_adamw.py
+locally, reproduced the pinned sha, THEN wrote C++);
+(2) init shipped as bytes (r2_init.bin, seed-13 CPU
+draws in draw order + the sha-pinned tables — their
+binary never touches an RNG); (3) one real subtlety:
+the bias-correction cap is a STRICT > 2^30 on an exact
+big-int — a bit-length test would wrongly shift the
+exactly-2^30 case (their gt_pow30); (4) they proved the
+r1 rdiv form and the P3 rdiv form equal on ALL integers
+including odd divisors — "the house rdiv" is now one
+function program-wide, by proof; (5) even the loss-
+summary quirk (losses[len//2] = step 101) is matched so
+human-readable lines diff clean, not just hashes.
+DETERMINISM LADDER STATE: decode was device->lab->
+runtime (FX-V2); TRAINING is now device->device->
+runtime. Standing: rANS rider queued (theirs), FX-V3
+house reproduction awaited (ours), R3 wide-accumulator
+Q_w pin = house, then axiom takes the C++ leg of the
+full birth.
