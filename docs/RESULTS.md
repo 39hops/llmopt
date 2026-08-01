@@ -13743,3 +13743,14 @@ Fidelity floor 0.9985 stands ACCEPTED per the v2
 pre-reg. R2b v2 trajectory shas printed per arm
 (deterministic machinery certified R2/R3a; arm (b)
 final sha efe3557c6cceef91df78ddfd8fb74a95...).
+
+## GO + ARTIFACTS: axiom full-birth C++ leg (Artin GO, 2026-08-01 pre-dawn)
+
+scratch/export_r2b_ref.py shipped scratch/detbwd_r2b_ref/
+(r2b_init.bin + r2b_ref.json: contract constants, 8
+milestone digests). Export CERTIFIED: re-running the
+reference reproduced arm (b)'s booked final trajectory
+sha efe3557c... digit-for-digit. Cell handed to axiom
+(relay 2026-08-01-0 addendum). House side of the
+full-birth ladder is now complete pending their leg +
+the 3080 cross-device runs (night31b GO).

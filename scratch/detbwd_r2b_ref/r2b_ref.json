@@ -1,0 +1,55 @@
+{
+ "contract": {
+  "SHIFT": 12,
+  "GBOOST": 256,
+  "PQ": 8192,
+  "ACT_CLAMP": 16384,
+  "EPS32": 42950,
+  "steps": 1000,
+  "lr": "1/1000",
+  "seed": 17
+ },
+ "init_sha": "57eaea20e29fac6d5a6ef8ad293aad63a39e03525316588dc1ee90c4506b40da",
+ "milestones": [
+  {
+   "step": 125,
+   "loss": 12923,
+   "traj_sha": "98953b8f93a2805c908568eec84d3e71844ff102d682683bcc5f9122fa9b3916"
+  },
+  {
+   "step": 250,
+   "loss": 11966,
+   "traj_sha": "5eee21de367c68ad5b1c3fcfdf0687e05b892dd25cb4da17147205b88c9beca7"
+  },
+  {
+   "step": 375,
+   "loss": 11415,
+   "traj_sha": "fc5c434da45d499d9e8c5d438b719ddc38ebc251d232c46b04a330292e184f21"
+  },
+  {
+   "step": 500,
+   "loss": 11131,
+   "traj_sha": "f62eb15b10b167b7c20013dea2823d3277c36b5c18a79db7f34310803b09cbf9"
+  },
+  {
+   "step": 625,
+   "loss": 10420,
+   "traj_sha": "19f99fecb9acae2d6855b5d973bbfed933466231da7f9552da13e04bfa3db8d4"
+  },
+  {
+   "step": 750,
+   "loss": 10633,
+   "traj_sha": "d41a4f4bb555766a11b4d3ac854fdfffcb14cc6ed85346f435b2535af2be14f7"
+  },
+  {
+   "step": 875,
+   "loss": 10471,
+   "traj_sha": "ebcc115d15154c4251ead58d1cb403bcd25eb84ce748464c5f0d04eb6715b123"
+  },
+  {
+   "step": 1000,
+   "loss": 10233,
+   "traj_sha": "efe3557c6cceef91df78ddfd8fb74a958b26fd2a5c1a6518b69da16494860a1f"
+  }
+ ]
+}

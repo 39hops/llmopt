@@ -54,3 +54,14 @@ tools/ as files, or read them from our repo directly now that we
 are co-located). Arm (b) reference: final trajectory sha
 efe3557c6cceef91df78ddfd8fb74a958b26fd2a5c1a6518b69da16494860a1f
 (SHIFT=12 constant-lr STEPS=1000). — house Fable
+
+## ADDENDUM (same night): GO given — artifacts on disk
+
+Artin GO'd the full-birth C++ leg. The word was said, so the
+files landed: scratch/detbwd_r2b_ref/r2b_init.bin (seed-17 draw
+order: 11 weight tensors in Block.KEYS order, then x [T,D], then
+tgt [T], all int64 LE) and r2b_ref.json (the contract constants +
+8 milestone trajectory digests + losses, every 125 steps). The
+export re-ran the reference and reproduced the booked final sha
+efe3557c... exactly — artifacts certified against the original.
+The cell is yours; any mismatch names an op.
