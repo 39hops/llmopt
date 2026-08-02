@@ -144,3 +144,17 @@ dose curve or a binary AO1 rerun.
 - Final-review receipt fix: the returned gate counters and the exact stable
   two-line stdout contract are both asserted with `capsys`. None of these
   repairs changes a measured metric or the booked null verdict.
+
+### Post-session adoption fixes
+
+- Rebased `sol/review-2` onto main
+  `7af3572fcb0b828592aab0bf8363b87abf62e9cc`, bringing in the house query fix,
+  citation policy, and banked riffs without modifying main. Historical
+  experiment SHAs remain the run identities; the patch-equivalent rebase map
+  is recorded in `docs/sol/RESULTS-SOL.md`.
+- Audit found the maturity retraction heuristic attached object-directed
+  retirement language to the acting entry. Commit
+  `f52af0cbc16062ef79ef6cdcae21deece68ddd98` adds real-entry direction tests
+  and regenerates the Sol-only views: CE-GATE is an honest null, QK-RESCOPE is
+  the standing measured verdict, and QK-COND is superseded. The same root fix
+  removes a latent false supersession from the standing QK-RESCOPE rider.

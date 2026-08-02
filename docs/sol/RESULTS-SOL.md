@@ -493,3 +493,63 @@ Its continuity card is unchanged: TRAIN `2/8` solves, `5/8` parseable, `6/8`
 terminated, `94/140` standard and `79/116` suffix tokens; HELDOUT `0/8`,
 `2/8`, `7/8`, `47/140`, and `30/88`, respectively. This replay is default
 regression evidence only; it neither fires treatment nor changes the AO1 null.
+
+## ADOPTION RECEIPT SOL-REVIEW-2-REBASE + MATURITY-DIRECTION (2026-08-01)
+
+**Status:** non-experimental adoption repair. No training or gate arm ran.
+
+The clean `sol/review-2` branch was rebased with `git rebase main` onto main
+`7af3572fcb0b828592aab0bf8363b87abf62e9cc`. That base contains the
+`results_query --chain` normalization fix (`4f982c7`), the citation commits
+(`d3a7c12`, `3fba7ad`), and the three banked riff commits (`7490010`,
+`14dce01`, `7af3572`). Git skipped Sol's two patch-duplicate citation
+cherry-picks during the rebase. `git merge-base --is-ancestor main HEAD`
+exits zero; the retained audit is `logs/sol/adoption_rebase_audit.log`, SHA
+`a9e4fddfdeeb4c8589f48b4cd40e649f4d1153fb1758c6c503a23f10962b78f2`.
+
+Historical experiment receipts keep the SHAs that actually produced their
+logs. The rebase produced these patch-equivalent branch identities, verified
+by `git range-diff 32b05cd..fdeaa97 7af3572..f309b69`:
+
+| Role | Historical run/receipt SHA | Rebased patch-equivalent SHA |
+|---|---|---|
+| review-1 handoff | `32b05cd` | `39a30461b9c4944e032296aa4441fb2ac07eb273` |
+| AO1 design | `5382b53` | `80ed8bd977595966fd125e128bfc57caf99b86d5` |
+| AO1 pre-registration | `af2ae5b` | `e85e4b2153b88d0f6d591acca5d29fc6699031ca` |
+| executable data-pin fix | `5517a7f` | `4984fe177cc9f3a3c972747cafd0bf619a058daa` |
+| REG receipt | `3398ffe` | `803e1e0232b4d159f6a15e914900b53628dbceea` |
+| AO1 null verdict | `e41d9e9` | `17521275bcf0709c6c6e0ba41cd48f430cde04c3` |
+| final review fixes | `85b67ed` | `45ed041ba5b6978655ad2fb350d8993947bf0cb3` |
+| hostile-env pin pre-registration | `9995ac8` | `c4b53190584d3a20241ed9a203b71245aa00b0df` |
+| hostile-env 16/16 receipt | `fdeaa97` | `f309b6953f0c660bafe1617e34447b75940e4d23` |
+
+Audit then reproduced the maturity classifier's direction error. The old
+whole-title match assigned retirement language to the current entry even when
+that entry acted on an amended target. Commit
+`f52af0cbc16062ef79ef6cdcae21deece68ddd98` makes self-retraction require the
+current entry as grammatical subject, makes target retirement require an
+action rather than a referenced name, and gives explicit strong lineage
+priority over descriptive failure words. The regenerated 621-entry view now
+has CE-GATE `retracted -> null`, QK-RESCOPE `retracted -> measured`, and
+QK-COND `null -> superseded`. It also corrects the same latent direction error
+on the standing QK-RESCOPE rider (`superseded -> measured`); its PARAMS
+amendment referenced the word RESCOPE but did not retire the rider.
+
+Validation commands:
+
+```bash
+PYTHONPATH=. /Users/artin/code/llmopt/.venv/bin/python -m pytest \
+  tests/test_sol_enrich_results.py -q
+PYTHONPATH=. /Users/artin/code/llmopt/.venv/bin/python \
+  scripts/sol_enrich_results.py
+PYTHONPATH=. /Users/artin/code/llmopt/.venv/bin/python \
+  scripts/sol_generate_tables.py
+```
+
+Results: `4 passed`; deterministic generation reports 621 entries with
+`measured=392`, `in-flight=129`, `superseded=53`, `null=39`, `adopted=8`, and
+no self-retracted entries. Logs:
+`logs/sol/maturity_directional_pytest.log` SHA
+`364ee67226095f20328ed9d08b9d81815746d90891434ba3cb3a67fbce00f5c9` and
+`logs/sol/maturity_directional_generate.log` SHA
+`125256ee98d8a1a5c1749c6d0cacdb6ce4901d7551c793f6c8f8de549f311938`.
