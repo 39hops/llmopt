@@ -17,11 +17,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PINS = ROOT / "scratch" / "detbwd_gmoe_ref" / "pins.json"
 RUNNER = ROOT / "scratch" / "detbwd_gravmoe.py"
+REFERENCE_DIR = ROOT / "scratch" / "detbwd_gmoe_ref"
 FINAL_PREFIX = "[gmoe] FINAL trajectory sha "
 CONTRACT_ENV = {
     "ACLAMP", "ANSWER_ONLY", "COND", "DHEAD", "DIM", "E", "EXPORT", "FFN",
     "GATE", "GB", "K", "LD", "LN", "NBLK", "QK", "SCHED", "SHIFT",
-    "SS", "SSW", "STEPS", "TAU", "TWIN",
+    "SS", "SSW", "STEPS", "TAU", "TRAJECTORY_ONLY", "TWIN",
+    "WINDOWS_BIN", "WINDOWS_CONTRACT",
 }
 
 
@@ -51,11 +53,26 @@ def _arm_env(arm: str, pin: dict) -> dict[str, str]:
 
 def available() -> dict[str, dict]:
     pins = json.loads(PINS.read_text())
-    return {f"gravmoe-{arm.lower()}": {
-        "arm": arm,
-        "expected_sha": pin["final_sha"],
-        "env": _arm_env(arm, pin),
-    } for arm, pin in pins.items()}
+    choices = {}
+    for arm, pin in pins.items():
+        env = _arm_env(arm, pin)
+        family = "grb1" if env.get("GATE") == "1" else "rb1"
+        windows_path = REFERENCE_DIR / f"{family}_windows.bin"
+        contract_path = REFERENCE_DIR / f"{family}_contract.json"
+        env.update(
+            WINDOWS_BIN=str(windows_path),
+            WINDOWS_CONTRACT=str(contract_path),
+        )
+        if env.get("GATE") == "1":
+            env["TRAJECTORY_ONLY"] = "1"
+        choices[f"gravmoe-{arm.lower()}"] = {
+            "arm": arm,
+            "expected_sha": pin["final_sha"],
+            "windows_path": str(windows_path),
+            "contract_path": str(contract_path),
+            "env": env,
+        }
+    return choices
 
 
 def _runner_env(spec: dict, base: dict[str, str] | None = None) -> dict[str, str]:

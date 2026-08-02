@@ -25,6 +25,7 @@ Usage: .venv/bin/python scratch/detbwd_gravmoe.py
 import hashlib
 import os
 import sys
+from pathlib import Path
 
 sys.path.insert(0, ".")
 sys.path.insert(0, "scratch")
@@ -33,6 +34,7 @@ import torch  # noqa: E402
 
 import detbwd_mb as M  # noqa: E402
 from detbwd_diet import draw_windows  # noqa: E402
+from llmopt.window_artifact import load_contiguous_windows  # noqa: E402
 from detbwd_r1 import Q, int_mm, rdiv  # noqa: E402
 from detbwd_r1 import lut  # noqa: E402
 from detbwd_r2b import (  # noqa: E402
@@ -252,6 +254,19 @@ class MoBody(M.Body):
 
 
 GATE = os.environ.get("GATE") == "1"
+WINDOWS_BIN = os.environ.get("WINDOWS_BIN")
+WINDOWS_CONTRACT = os.environ.get("WINDOWS_CONTRACT")
+if bool(WINDOWS_BIN) != bool(WINDOWS_CONTRACT):
+    raise ValueError(
+        "WINDOWS_BIN and WINDOWS_CONTRACT must be provided together")
+ARTIFACT_MODE = bool(WINDOWS_BIN)
+TRAJECTORY_ONLY = os.environ.get("TRAJECTORY_ONLY") == "1"
+if TRAJECTORY_ONLY and not ARTIFACT_MODE:
+    raise ValueError("TRAJECTORY_ONLY requires committed artifact inputs")
+if TRAJECTORY_ONLY and not GATE:
+    raise ValueError("TRAJECTORY_ONLY requires GATE=1")
+if GATE and ARTIFACT_MODE and not TRAJECTORY_ONLY:
+    raise ValueError("gate artifact inputs require TRAJECTORY_ONLY=1")
 # GRAVMOE-SS rung: parallel scheduled sampling (one-step,
 # deterministic). After SSW warmup steps, each training step runs
 # a first forward on the truth input and replaces the input
@@ -649,7 +664,44 @@ def run_loss(m, wins, tab, t_exp, regions=None):
 
 def main():
     train_regions = None
-    if GATE:
+    artifact_rows = None
+    if ARTIFACT_MODE:
+        artifact_rows = load_contiguous_windows(
+            Path(WINDOWS_BIN), Path(WINDOWS_CONTRACT), T)
+        wins = torch.tensor(artifact_rows, dtype=torch.int64)
+        if wins.shape != (8, T + 1):
+            raise ValueError(
+                "gravmoe artifacts must contain exactly eight T+1 rows")
+        print(f"[gmoe] artifact windows {WINDOWS_BIN} contract "
+              f"{WINDOWS_CONTRACT} rows {wins.shape[0]}", flush=True)
+
+    if GATE and ARTIFACT_MODE:
+        from scripts.train_mathnative import MathTokenizer
+        tok = MathTokenizer()
+        assert len(tok.vocab) == V, f"vocab drifted: {len(tok.vocab)}"
+        mark = tok.encode("Step: ")
+        terminator_ids = [tok.id["\n"], tok.eos_id]
+        splits = [find_split(wins[wi], mark)
+                  for wi in range(wins.shape[0])]
+        assert all(s is not None for s in splits)
+        assert mark == [4, 26]
+        assert tok.id["\n"] == 27 and tok.eos_id == 1
+        assert splits == [15, 10, 15, 15, 19, 15, 12, 15]
+        if ANSWER_ONLY:
+            train_regions = [
+                answer_region(wins[wi], mark, terminator_ids)
+                for wi in range(wins.shape[0])
+            ]
+            print(f"[gmoe] answer regions {train_regions}", flush=True)
+        print(f"[gmoe] marker ids {mark} terminator ids "
+              f"{terminator_ids}", flush=True)
+        print(f"[gmoe] ANSWER_ONLY {int(ANSWER_ONLY)}", flush=True)
+        print("[gmoe] GATE artifact mode: 8 committed train rows; "
+              "trajectory-only readouts", flush=True)
+        if SS:
+            print(f"[gmoe] SS mode: parallel scheduled sampling "
+                  f"after warmup {SSW}, splits {splits}", flush=True)
+    elif GATE:
         all_ids, truths, tok = draw_complete(16)
         train_rows_sha, full_rows_sha = assert_gate_row_shas(all_ids)
         mark = tok.encode("Step: ")
@@ -681,7 +733,7 @@ def main():
             print(f"[gmoe] SS mode: parallel scheduled sampling "
                   f"after warmup {SSW}, splits {splits[:8]}",
                   flush=True)
-    else:
+    elif not ARTIFACT_MODE:
         wins = draw_windows()
     print(f"[gmoe] LN/LD {LN}/{LD} K {K} STEPS {STEPS} "
           f"SHIFT {SHIFT} E {E}")
@@ -826,7 +878,11 @@ def main():
     if TAU:
         tts = [int(b.w["tt"]) for b in m.bodies]
         print(f"[gmoe] learned tt (Q=512=1.0): {tts}")
-    if GATE:
+    if GATE and TRAJECTORY_ONLY:
+        print("[gmoe] trajectory-only: skipping free-run gate; "
+              "SymPy solve scoring requires the uncommitted row text",
+              flush=True)
+    elif GATE:
         gate(m, all_ids[:8], truths[:8], tok, tab, "TRAIN")
         gate(m, all_ids[8:], truths[8:], tok, tab, "HELDOUT")
     agr, agr_c = agreement(m, wins, tab)
