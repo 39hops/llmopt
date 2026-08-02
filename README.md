@@ -9,6 +9,8 @@ verdict-by-verdict history (wins, nulls, and retractions alike) is
 [`docs/BOARD.md`](docs/BOARD.md); the laws-with-citations map is
 [`docs/THEORY.md`](docs/THEORY.md).
 
+**The controlled terminology and evidence/scope tags are in [`GLOSSARY.md`](GLOSSARY.md).**
+
 **Citing this work**: if you replicate or build on anything here —
 the capacity meter, the deterministic integer battery, the gate
 protocols, or any booked result — cite the repo (see
