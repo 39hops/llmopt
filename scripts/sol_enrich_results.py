@@ -135,6 +135,8 @@ def _is_self_retraction(title: str) -> bool:
 
 def _retires_amended_target(title: str) -> bool:
     """Whether this entry acts on an amended target's standing."""
+    if _is_self_retraction(title):
+        return False
     head, _, body = title.partition(":")
     return bool(re.match(r"^(?:RETRACTION|SUPERSESSION|RESCOPE)\b", head, re.I)
                 or TARGET_RETIREMENT.search(body))

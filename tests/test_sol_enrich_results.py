@@ -41,4 +41,6 @@ def test_target_retirement_requires_an_action_not_a_referenced_name():
     assert S._retires_amended_target(
         'VERDICT QK-RESCOPE: "peaked attention" is RETIRED as doctrine')
     assert not S._retires_amended_target(
+        "VERDICT QK-COND: this verdict is RETIRED after replication")
+    assert not S._retires_amended_target(
         "RIDER on VERDICT QK-RESCOPE: the gate leg is real")
