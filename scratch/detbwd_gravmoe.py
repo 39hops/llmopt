@@ -678,15 +678,29 @@ def main():
     if GATE and ARTIFACT_MODE:
         from scripts.train_mathnative import MathTokenizer
         tok = MathTokenizer()
-        assert len(tok.vocab) == V, f"vocab drifted: {len(tok.vocab)}"
+        if len(tok.vocab) != V:
+            raise ValueError(
+                "S1 marker-ID contract violated: expected code-defined "
+                f"vocabulary size {V}, got {len(tok.vocab)}")
         mark = tok.encode("Step: ")
         terminator_ids = [tok.id["\n"], tok.eos_id]
         splits = [find_split(wins[wi], mark)
                   for wi in range(wins.shape[0])]
-        assert all(s is not None for s in splits)
-        assert mark == [4, 26]
-        assert tok.id["\n"] == 27 and tok.eos_id == 1
-        assert splits == [15, 10, 15, 15, 19, 15, 12, 15]
+        expected_mark = [4, 26]
+        if mark != expected_mark:
+            raise ValueError(
+                "S1 marker-ID contract violated: expected Step marker IDs "
+                f"{expected_mark}, got {mark}")
+        expected_terminators = [27, 1]
+        if terminator_ids != expected_terminators:
+            raise ValueError(
+                "S1 marker-ID contract violated: expected newline/EOS IDs "
+                f"{expected_terminators}, got {terminator_ids}")
+        expected_splits = [15, 10, 15, 15, 19, 15, 12, 15]
+        if splits != expected_splits:
+            raise ValueError(
+                "S1 split-position contract violated: expected "
+                f"{expected_splits}, got {splits}")
         if ANSWER_ONLY:
             train_regions = [
                 answer_region(wins[wi], mark, terminator_ids)

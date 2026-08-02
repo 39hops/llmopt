@@ -1,5 +1,7 @@
+import hashlib
 import json
 import os
+import struct
 import subprocess
 import sys
 
@@ -20,11 +22,30 @@ def runner_env(**updates):
     return env
 
 
-def run_runner(env):
+def run_runner(env, *, optimized=False):
+    command = [sys.executable]
+    if optimized:
+        command.append("-O")
+    command.append(str(RUNNER))
     return subprocess.run(
-        [sys.executable, str(RUNNER)], cwd=ROOT, env=env,
+        command, cwd=ROOT, env=env,
         text=True, capture_output=True, timeout=60,
     )
+
+
+def write_sha_consistent_rows(tmp_path, rows):
+    rows_raw = b"".join(struct.pack("<33q", *row) for row in rows)
+    windows_raw = b"".join(
+        struct.pack("<64q", *(row[:32] + row[1:])) for row in rows
+    )
+    contract = json.loads((REF / "grb1_contract.json").read_text())
+    contract["windows_sha"] = hashlib.sha256(windows_raw).hexdigest()
+    contract["windows_rows_sha"] = hashlib.sha256(rows_raw).hexdigest()
+    windows_path = tmp_path / "windows.bin"
+    contract_path = tmp_path / "contract.json"
+    windows_path.write_bytes(windows_raw)
+    contract_path.write_text(json.dumps(contract))
+    return windows_path, contract_path
 
 
 def test_runner_refuses_artifact_with_wrong_raw_sha(tmp_path):
@@ -112,3 +133,25 @@ def test_s1_derives_marker_and_recorded_splits_from_artifact_rows():
     assert "SymPy solve scoring requires the uncommitted row text" in proc.stdout
     assert "[gate] TRAIN" not in proc.stdout
     assert "[gate] HELDOUT" not in proc.stdout
+
+
+def test_optimized_runner_refuses_sha_consistent_s1_split_drift(tmp_path):
+    values = struct.unpack(
+        "<512q", (REF / "grb1_windows.bin").read_bytes()
+    )
+    rows = []
+    for offset in range(0, len(values), 64):
+        tok = list(values[offset:offset + 32])
+        tgt = values[offset + 32:offset + 64]
+        rows.append(tok + [tgt[-1]])
+    rows[0][16:18] = [4, 26]  # Later valid marker moves split 15 to split 18.
+    windows_path, contract_path = write_sha_consistent_rows(tmp_path, rows)
+
+    proc = run_runner(runner_env(
+        GATE="1", COND="1", SS="1", TRAJECTORY_ONLY="1",
+        WINDOWS_BIN=str(windows_path),
+        WINDOWS_CONTRACT=str(contract_path),
+    ), optimized=True)
+
+    assert proc.returncode != 0, proc.stdout + proc.stderr
+    assert "S1 split-position contract violated" in proc.stdout + proc.stderr
