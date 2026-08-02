@@ -2165,3 +2165,28 @@ pooling winners was his call).
   law + contamination scars are the lab's most transportable
   findings for open-LM data curation. Attribution: K3 (external
   doc-only reader), relayed by Artin.
+
+- **2026-08-01 (DeepSeek, external paper review): why are
+  web-LLMs not at capacity?** — the meter M provokes it: crystals
+  at capacity are trivially compressible (1% Gaussian bound),
+  web-LLMs need the whole calibrated machinery — is the gap
+  undertraining, the loss function, or natural-language-vs-formal
+  domains? House-testable form via the Equation flagship (geometry
+  encodes FEEDING, not content, kurt 1.9 matched-feeding): feed a
+  crystal a web-like token distribution at matched budget and read
+  M — does the capacity gap follow the data, the objective, or
+  neither? "Probably a different paper" (theirs) but the cell is
+  ours to run. Same review, adoptable paper edits (tracked here so
+  they survive until the paper is picked back up): (a) narrow the
+  abstract's at-capacity claim to the measured d64h8 scope; (b)
+  run the meter on a second family we already hold BOTH halves of
+  (fp32 champion + 1.58-bit merged_grown = the crown pair; gen-8
+  19M as third); (c) outcome-vs-KL footnote — outcome scoring when
+  downstream consumes DECISIONS, KL when it consumes
+  DISTRIBUTIONS; (d) reference CUDA kernel (unoptimized,
+  correctness-only) for the disk-format-is-runtime-format result
+  [3080, Artin GO]. Their meta-observation banked verbatim: the
+  append-only verdict ledger with falsifications booked alongside
+  confirmations "should be normalized" — the discipline may be the
+  paper's real contribution. Attribution: DeepSeek (external
+  paper-prose reader), relayed by Artin.
