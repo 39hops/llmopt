@@ -57,6 +57,18 @@ OPEN_DEVICE = re.compile(
     r"same-device [^.\n]{0,30}gate)",
     re.I,
 )
+RETRACTION_TERM = re.compile(r"\b(?:RETRACT(?:ED|ION)?|RETIRED|WITHDRAWN)\b",
+                             re.I)
+SELF_RETRACTION = re.compile(
+    r"\b(?:THIS|THE)\s+(?:ENTRY|VERDICT|RESULT|FINDING|CLAIM)\s+"
+    r"(?:IS|WAS|HAS BEEN)\s+(?:RETRACTED|RETIRED|WITHDRAWN)\b",
+    re.I,
+)
+TARGET_RETIREMENT = re.compile(
+    r"\b(?:RETRACT(?:S|ED|ION)?|RETIRES?|RETIRED|SUPERSEDES?|SUPERSEDED|"
+    r"WITHDRAWS?|WITHDRAWN)\b",
+    re.I,
+)
 
 
 def _sections(entries: list[dict]) -> dict[str, str]:
@@ -115,6 +127,19 @@ def _evidence(text: str, pattern: re.Pattern, fallback: str) -> str:
     return flat[lo + 2:hi].strip()[:300]
 
 
+def _is_self_retraction(title: str) -> bool:
+    """Whether retirement language applies to this entry, not its object."""
+    head, _, body = title.partition(":")
+    return bool(RETRACTION_TERM.search(head) or SELF_RETRACTION.search(body))
+
+
+def _retires_amended_target(title: str) -> bool:
+    """Whether this entry acts on an amended target's standing."""
+    head, _, body = title.partition(":")
+    return bool(re.match(r"^(?:RETRACTION|SUPERSESSION|RESCOPE)\b", head, re.I)
+                or TARGET_RETIREMENT.search(body))
+
+
 def _impact(entry: dict) -> int:
     """Transparent ranking proxy, not a scientific importance judgment."""
     score = min(entry["line"] // 500, 30)  # recent ledger position
@@ -135,8 +160,7 @@ def enrich() -> list[dict]:
     resolved = _resolved_preregs(entries)
     strong_superseded = {}
     for later in entries:
-        if re.search(r"\b(?:RETRACT(?:ED|ION)?|RETIRED|RESCOPE|SUPERSEDE)\b",
-                     later["title"], re.I):
+        if _retires_amended_target(later["title"]):
             for target in _refs(later.get("amends")):
                 strong_superseded[target] = later["id"]
     out = []
@@ -164,22 +188,24 @@ def enrich() -> list[dict]:
             maturity, source = "superseded", "inferred"
             entry["inferred_superseded_by"] = [resolved[entry["id"]]]
             evidence = f"later entry with matching heading label: {resolved[entry['id']]}"
-        elif re.search(r"\b(?:RETRACT(?:ED|ION)?|RETIRED|WITHDRAWN)\b", title, re.I):
-            maturity, source = "retracted", "explicit"
-            evidence = _evidence(title, re.compile(r"RETRACT|RETIRED|WITHDRAWN", re.I), title)
-        elif entry["type"] in {"prereg", "banked"}:
-            maturity, source = "in-flight", "inferred"
-            evidence = f"index type={entry['type']} and no matched later result"
-        elif entry["type"] == "null" or re.search(
-                r"\b(?:NULL|NO-ADOPT|VOID|DIES|DEAD)\b", title, re.I):
-            maturity = "null"
-            source = "explicit" if re.search(
-                r"\b(?:NULL|NO-ADOPT|VOID|DIES|DEAD)\b", title, re.I) else "inferred"
-            evidence = f"title/index type={entry['type']}"
         elif entry["id"] in strong_superseded:
             maturity, source = "superseded", "explicit"
             entry["inferred_superseded_by"] = [strong_superseded[entry["id"]]]
             evidence = f"later strong amendment: {strong_superseded[entry['id']]}"
+        elif entry["type"] == "null":
+            maturity = "null"
+            source = "explicit" if re.search(
+                r"\b(?:NULL|NO-ADOPT|VOID|DIES|DEAD)\b", title, re.I) else "inferred"
+            evidence = f"title/index type={entry['type']}"
+        elif _is_self_retraction(title):
+            maturity, source = "retracted", "explicit"
+            evidence = _evidence(title, RETRACTION_TERM, title)
+        elif entry["type"] in {"prereg", "banked"}:
+            maturity, source = "in-flight", "inferred"
+            evidence = f"index type={entry['type']} and no matched later result"
+        elif re.search(r"\b(?:NULL|NO-ADOPT|VOID|DIES|DEAD)\b", title, re.I):
+            maturity, source = "null", "explicit"
+            evidence = f"title/index type={entry['type']}"
         elif ADOPTED.search(title):
             maturity, source = "adopted", "explicit"
             evidence = _evidence(title, ADOPTED, title)

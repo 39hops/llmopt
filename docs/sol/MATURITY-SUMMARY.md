@@ -9,12 +9,11 @@ Labels marked inferred are deterministic heuristics, not house verdicts.
 |---|---:|
 | adopted | 8 |
 | in-flight | 129 |
-| measured | 390 |
+| measured | 392 |
 | null | 39 |
-| retracted | 2 |
 | superseded | 53 |
 
-Provenance: explicit=51, inferred=570.
+Provenance: explicit=48, inferred=573.
 
 ## Ten highest-impact live single-seed entries
 
