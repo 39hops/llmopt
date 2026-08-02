@@ -295,3 +295,58 @@ general ML claim. The result is format-bound to this supplied scaffold,
 tokenizer, finite row length, and deterministic G-RB1 diet. AO1's masked
 teacher-forced CE proxy and merge diagnostic form a new lineage and are not
 numerically compared with REG or any prior full-token CE cell.
+
+## REGRESSION RECEIPT SOL-GRAVMOE-AO1/REG: 16/16 pins reproduced and the G-RB1 baseline is fixed (2026-08-01, Mac)
+
+The mandatory pre-AO1 regression replay ran with `ANSWER_ONLY=0` and
+`RJOB_LOCAL=1`. Pre-registration receipt
+`af2ae5be3773b9a668612a5aae92dc3c60966eea`; executable code SHA
+`5517a7f01a3340c11401551504b76d42301c8d18`. The local diet was exposed
+read-only and reproduced SHA
+`809bce4215a24164ecbf5e951d77507d455bfd1923d08fe39aa02942b11a200b`.
+G-RB1 reproduced training-row SHA
+`32cc244bf28fdadf01b343ae16fe1a55200ffe9fab9bd784e8abd739b12ef2c0`
+and full 16-row SHA
+`78f8aef992debe6ec74e4701fba23167ff5fda1d4294546b9f7621605429798a`;
+the eight training and eight held-out prompts had zero overlap.
+
+Exact command and logs:
+
+```bash
+mkdir -p logs/sol
+zsh -o pipefail -c 'export RJOB_LOCAL=1; bash <(sed \
+  "s|^PY=.*$|PY=/Users/artin/code/llmopt/.venv/bin/python|" \
+  scratch/p4_arms_0801.sh) 2>&1 | tee logs/sol/answer_only_pins.log'
+# aggregate pin gate: logs/sol/answer_only_pins.log
+# G-RB1 REG readout: logs/p4/GRB1.log
+```
+
+All expected and observed FINAL trajectory SHAs were identical:
+
+| Arm | Expected SHA | Observed SHA |
+|---|---|---|
+| A0 | `6fffa718f9c7b2c07f2196a4ce079a705517b229baa71b853896f0cda8128faf` | `6fffa718f9c7b2c07f2196a4ce079a705517b229baa71b853896f0cda8128faf` |
+| A1 | `1ad5f466aa9dab17540cae26358c4ad50749e9ae8ea4ad1faa71f4b4d2ed3ec1` | `1ad5f466aa9dab17540cae26358c4ad50749e9ae8ea4ad1faa71f4b4d2ed3ec1` |
+| A2 | `23c154e6a31daef758230c3780d55082a9be871b734e0844008514760b652ff1` | `23c154e6a31daef758230c3780d55082a9be871b734e0844008514760b652ff1` |
+| A3 | `300e61ad2cd621f8c7c2f89cbce3d5f2cafd7397233d9b05ed571a6fe9bd8cab` | `300e61ad2cd621f8c7c2f89cbce3d5f2cafd7397233d9b05ed571a6fe9bd8cab` |
+| CA0 | `0ad9da9476d8be45a6ffe28cd95702edabf7d41124c36efa454bf22777f08c2d` | `0ad9da9476d8be45a6ffe28cd95702edabf7d41124c36efa454bf22777f08c2d` |
+| CA1 | `a328188cc7f46ebf2cacea1d6b23bd5a0e0b7f7acc58ed61119018d0f9dc21bc` | `a328188cc7f46ebf2cacea1d6b23bd5a0e0b7f7acc58ed61119018d0f9dc21bc` |
+| CA2 | `35396b368e2f42b781f39167696ae21e60b83c2d3c0e1d483608ea46548aaa76` | `35396b368e2f42b781f39167696ae21e60b83c2d3c0e1d483608ea46548aaa76` |
+| CA3 | `4b98a6ef05bb45f7ad3a7e5a50f32bb63b736060aa64b7763369c2ef8dc476e0` | `4b98a6ef05bb45f7ad3a7e5a50f32bb63b736060aa64b7763369c2ef8dc476e0` |
+| GA0 | `2b29bd4aa29bc4fb4ac1ea76084dd4c88e7d93084f27945df0c48c07fae407b1` | `2b29bd4aa29bc4fb4ac1ea76084dd4c88e7d93084f27945df0c48c07fae407b1` |
+| GA2 | `66d8f8799f85599b05ac5cf2dd44dd12e88010ba835304625f9d6bed5babb9fc` | `66d8f8799f85599b05ac5cf2dd44dd12e88010ba835304625f9d6bed5babb9fc` |
+| GA3 | `919b83476dc9b84e3791821bd884933f88a57e4e261cd7d59bfeab4960412ce0` | `919b83476dc9b84e3791821bd884933f88a57e4e261cd7d59bfeab4960412ce0` |
+| RB1 | `c6766da235cf0b76be20035b893cb41fd0a2f8dbbc6339c96e8527ce2cb3f65f` | `c6766da235cf0b76be20035b893cb41fd0a2f8dbbc6339c96e8527ce2cb3f65f` |
+| RB3 | `6968b583f440405f7da819ece57f924ffb5fd59dcc228dcf27c1d349b2ecd29d` | `6968b583f440405f7da819ece57f924ffb5fd59dcc228dcf27c1d349b2ecd29d` |
+| RB1S16 | `14981553e6cbebe11f9625fc7b4405dd73ffb9fc5060d8161b57f076ce492ee4` | `14981553e6cbebe11f9625fc7b4405dd73ffb9fc5060d8161b57f076ce492ee4` |
+| GRB1 | `1fcfd187873d980c7c082a56c0f380ce2c40a859eab1e8a0c9dcf6baa4853eca` | `1fcfd187873d980c7c082a56c0f380ce2c40a859eab1e8a0c9dcf6baa4853eca` |
+| S1 | `e1b633a965171f16ca58d17fe8c597ffbe6362ae2dc6ed7b6f58ec0ed69c6087` | `e1b633a965171f16ca58d17fe8c597ffbe6362ae2dc6ed7b6f58ec0ed69c6087` |
+
+G-RB1 REG measurements: TRAIN symbolic solves `2/8`, parseable `5/8`,
+terminated `6/8`, standard token accuracy `94/140`, and suffix-only token
+accuracy `79/116`; HELDOUT symbolic solves `0/8`, parseable `2/8`, terminated
+`7/8`, standard token accuracy `47/140`, and suffix-only token accuracy
+`30/88`. The historical TRAIN standard count therefore reproduces exactly,
+and these suffix/format counts are the fixed REG baselines for the
+pre-registered AO1 decision rule. No AO1 measurement is included in this
+receipt.
