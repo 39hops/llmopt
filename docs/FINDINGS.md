@@ -41,11 +41,10 @@ maturity tag. Retractions/nulls remain visible. Scope omission never broadens a 
 
 ## The micro-model program
 
-- [REPLICATED] [FREE-RUN-GATED] [REGIME-SCOPED: closed-system math] The
-  from-scratch math-native decoder exceeded the pretrained 0.5B comparator on
-  the oracle gate; the route was an independent 19M implementation and a
-  separate 0.5B training run. ([Micro-model phase 2 + 0.5B run
-  3d](RESULTS.md#L1682).)
+- [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: closed-system math] At n=1
+  comparison, the from-scratch 19M decoder exceeded the pretrained 0.5B arm on
+  the oracle gate; these were the two sides of the original comparison, not a
+  reproduction route. ([Micro-model phase 2 + 0.5B run 3d](RESULTS.md#L1682).)
 - [MECHANISM-CONFIRMED] [TEACHER-FORCED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] Paired packing, diet, and integer
   training-contract arms produced favorable teacher-forced loss alongside
@@ -81,10 +80,12 @@ VERDICT](RESULTS.md#L10676).)
 
 ## The crystal laws
 
-- [REPLICATED] [REGIME-SCOPED: house crystals] Independent weight-statistics
-  and graph-anatomy implementations found dense marginal use and distributed
-  connectivity across the measured house widths. ([Weight
-  anatomy](RESULTS.md#L1625); [Graph anatomy](RESULTS.md#L2299).)
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] At n=1 registered RL-climb
+  analysis, small near-uniform low-rank deltas and almost unchanged intermediate
+  CKA supported a policy-preference edit. ([Weight anatomy](RESULTS.md#L1625).)
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] At n=1 graph-anatomy census
+  across six measured minds, low clustering plus connectivity supported the
+  expander-topology read; this is not implementation replication. ([Graph anatomy](RESULTS.md#L2299).)
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] At n=1 examined crystal,
   family-selective committees were informative but not necessary: deleting
   or reading the committee supported a holographic, preference-not-dependency
