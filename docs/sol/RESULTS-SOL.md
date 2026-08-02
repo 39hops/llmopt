@@ -432,3 +432,27 @@ mask. It cannot move general ML doctrine; even the pre-registered `3/8` win
 would only have queued paired-seed confirmation. The verdict is format-bound
 to this supplied scaffold, tokenizer, finite row length, deterministic G-RB1
 diet, and exact answer-region convention.
+
+## PRE-REGISTRATION SOL-GRAVMOE-AO1/FINAL-FIX: ambient treatment scrub in the default 16-pin replay (2026-08-01, Mac)
+
+This is default regression verification, not a treatment and not a rerun or
+reinterpretation of AO1. Executable code SHA:
+`85b67edf2f41d62bf15854ed78c29856157631aa`. The replay will deliberately
+export ambient `ANSWER_ONLY=1`; the fixed default launcher is predicted to
+scrub it before every arm, after which all 16 observed trajectory SHAs will
+match their committed default pins. The new aggregate log is
+`logs/sol/answer_only_finalfix_pins.log`.
+
+Exact Mac-local command:
+
+```bash
+mkdir -p logs/sol
+zsh -o pipefail -c 'export RJOB_LOCAL=1 ANSWER_ONLY=1; bash <(sed \
+  "s|^PY=.*$|PY=/Users/artin/code/llmopt/.venv/bin/python|" \
+  scratch/p4_arms_0801.sh) 2>&1 | tee logs/sol/answer_only_finalfix_pins.log'
+```
+
+Decision rule: every one of A0, A1, A2, A3, CA0, CA1, CA2, CA3, GA0, GA2,
+GA3, RB1, RB3, RB1S16, GRB1, and S1 must reproduce its exact default pin. Any
+mismatch blocks completion. No treatment may fire as a consequence of this
+check, and the measured metrics and booked AO1 null remain unchanged.
