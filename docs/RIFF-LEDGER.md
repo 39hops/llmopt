@@ -2190,3 +2190,32 @@ pooling winners was his call).
   confirmations "should be normalized" — the discipline may be the
   paper's real contribution. Attribution: DeepSeek (external
   paper-prose reader), relayed by Artin.
+
+- **2026-08-01 (Grok, external paper review): the second edit
+  list + the reframing sentence** — CONVERGES with DeepSeek
+  (previous entry) on three points, which upgrades them to
+  near-certain reviewer objections: outcome-vs-KL (their sharper
+  version: the knee-slack claim rests on the house gate alone —
+  wants the same packs under a harder battery or held-out
+  distribution shift), quantized-release meter rows over-weighted
+  (same fp-master ask; the crown-pair cell covers it), abstract
+  density/over-claim. NEW and adoptable: (a) M-threshold
+  sensitivity sentence ("cut between 1.6-2.3 changes no measured
+  decision") + specify whether M is full-model / per-tensor /
+  max-over-tensors; (b) related-work preemption — one sentence
+  that rotation/incoherence/learned-lattice transforms (QuIP#,
+  AQLM etc.) are ALSO expected to collapse to the closed form at
+  capacity, measurement left open (else those authors ask why no
+  arms); (c) matryoshka negative tied to the fragility axis
+  explicitly ("entropy predicts the bits; fragility predicts
+  whether the bits are free under outcome scoring"); (d) Sec. 10
+  pointer to the sha-pinned tables + exact battery prompts
+  (artifact paths; citation policy already requires commit pins);
+  (e) STRUCTURAL: promote the Sec. 2 sentence to the abstract —
+  "calibration complexity is wasted exactly when training has
+  already used the weight budget as a capacity-achieving code" —
+  the paper's identity in one line. Their read that Sec. 7
+  (decorrelation-to-zero + 300-500x co-routing MI,
+  tied-at-birth-free / post-hoc-impossible) is the most citable
+  result: noted for emphasis decisions. Attribution: Grok
+  (external paper-prose reader), relayed by Artin.
