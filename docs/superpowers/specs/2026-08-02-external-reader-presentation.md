@@ -1,7 +1,7 @@
 # External-reader presentation design
 
-**Date:** 2026-08-02  
-**Branch:** `sol/present-1`  
+**Date:** 2026-08-02
+**Branch:** `sol/present-1`
 **Status:** approved design; implementation pending
 
 ## Objective
@@ -161,4 +161,3 @@ Each unit receives its own commit:
 - Changed-scope tests pass, then the relevant non-Metal suite.
 - Artifact-backed and default-path trajectory gates report exact committed
   SHAs before any reproducibility claim is booked.
-
