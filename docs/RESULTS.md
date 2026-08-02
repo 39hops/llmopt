@@ -15156,3 +15156,53 @@ No new claims found in review; fences survive into the
 public surface (n=1 stays n=1). Attribution: Sol
 (GPT 5.6, sol/present-1), house-verified line-by-line
 where it counts and by receipt elsewhere.
+
+## AMENDMENT P4-DEVICE-SCOPE (amends VERDICT GRAVMOE-P4-DEVICE + VERDICT GRAVMOE-P4-LAB): "2 devices" means two MACHINES / two CPU architectures — and the battery is device-PORTABLE, not CPU-bound (2026-08-02, Mac; Opus-5 read-only review, branch opus-5)
+
+Both P4 legs executed on CPU. Measured, not inferred: no
+file in the battery chain (detbwd_gravmoe / detbwd_mb /
+detbwd_r2b / detbwd_r1, llmopt/reproduce, llmopt/intmath)
+contains a device= argument, .cuda(), .to("mps"), or
+set_default_device, so every tensor lands on the CPU
+default; scratch/p4_arms_0801.sh sets OMP/MKL thread caps
+(CPU threading) and never selects a GPU. The ladder's
+"2 devices" therefore means Apple silicon arm64 CPU +
+x86-64 CPU: two machines, two ISAs, ONE compute class.
+WHY THIS NEEDS SAYING: [DEVICE-SCOPED] is a formal tag in
+this repo and the earlier integer-determinism verdicts
+(P3, PACKED CRYSTAL C4, FX-V1-H) crossed MPS<->cuda GPU
+paths — a genuinely different and stronger device claim.
+The verdict's own phrase "on the 3080" invites the GPU
+reading it does not support. Nothing measured changes:
+16/16 and 10/10 sha-identity stand exactly as booked.
+SELF-CORRECTION (the reviewer's first draft of this
+finding was WRONG, caught before booking): "the battery
+is CPU-only by construction" is FALSE. int_mm is
+broadcast-multiply-then-sum ((a.unsqueeze(-2)*w).sum(-1)),
+not torch.matmul, and this session measured on torch
+2.12.1 / Apple silicon that MPS runs int64 matmul AND all
+eight battery primitives BIT-IDENTICALLY to CPU: int_mm,
+rdiv, softmax_rows, softmax_bwd, rms_fwd, its isq,
+rms_bwd dx and dg. The battery is CPU-only by PLUMBING
+(no device argument), not by capability.
+MECHANISM (why portability is expected here): integer
+addition is associative and exact, so reduction ORDER —
+the measured transport wedge for fp (R0 TF32 null:
+"KERNEL-ORDER is the wedge") — cannot change an integer
+value. That property is what makes this battery a legal
+cross-device instrument at all; it predicts a GPU leg
+reproduces the pins rather than merely approximating them.
+BANKED CELL (not run by this review; pre-register first):
+an MPS leg of the gravmoe battery = a real cross-DEVICE
+rung on the ladder. Known work: thread a device through
+the birth/draw path, and .cpu() before .numpy() at the
+digest points (milestone hashing currently assumes CPU).
+Bar: the 16 pinned FINAL shas, unchanged. If it passes,
+"2 devices" upgrades honestly to CPU + GPU; if it fails,
+the failure localizes an integer op whose GPU kernel is
+not exact — either outcome is worth the run.
+Fence: the primitive probe was 8 ops on one seed/shape at
+n=1; it establishes PORTABILITY IS PLAUSIBLE, not that
+the full trajectory transports. Only the pinned-sha leg
+can establish that. Reviewer: Opus 5 (read-only seat,
+findings are proposals); Fable audits before adoption.

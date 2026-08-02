@@ -88,7 +88,13 @@ pinned arms SHA-identical. **VERDICT GRAVMOE-P4-LAB**, at repository commit
 implementations / 2 labs / 2 devices.
 
 In **VERDICT GRAVMOE-P4-LAB**, 2 labs means independent Python and C++ code
-paths under one human operator, not independent investigators. The close
+paths under one human operator, not independent investigators. 2 devices means
+two machines with different CPU architectures — Apple silicon arm64 and
+x86-64 — and both legs execute on CPU: the battery carries no device
+placement, so this is narrower than the MPS-to-CUDA GPU transport established
+by [P3 VERDICT](RESULTS.md#L11357) and [PACKED CRYSTAL C4
+VERDICT](RESULTS.md#L10657). Integer execution does not require CPU; see
+[AMENDMENT P4-DEVICE-SCOPE](RESULTS.md#L15160). The close
 establishes exact transport of the registered trajectory; it does not enlarge
 the correctness or capability claim.
 
