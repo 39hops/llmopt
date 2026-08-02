@@ -6,11 +6,11 @@ This controlled vocabulary makes the living ledgers legible to external readers 
 
 Every finding carries exactly one maturity tag.
 
-- `[RETRACTED]` — a formerly reported finding withdrawn or corrected by its ledger record.
-- `[NULL]` — an evaluated effect was not observed under its tagged conditions.
+- `[RETRACTED]` — an earlier conclusion explicitly withdrawn or superseded by contrary evidence in its ledger record.
+- `[NULL]` — a registered treatment did not clear its registered decision bar.
 - `[MECHANISM-CONFIRMED]` — a causal arm, not a story, establishes the stated mechanism.
 - `[REPLICATED]` — each tagged finding names the route by which it was reproduced: `n>=3` paired seeds for sub-1.5-sigma gate deltas, an independent device, or an independent implementation ([`docs/RESULTS.md:12697`](docs/RESULTS.md)).
-- `[SINGLE-SEED]` — a finding based on one training seed and not carrying a replication route.
+- `[SINGLE-SEED]` — a finding based on one registered observation, run, or cell; it has no named replication route and carries an explicit `n=1` fence.
 
 ## Scope tags
 
