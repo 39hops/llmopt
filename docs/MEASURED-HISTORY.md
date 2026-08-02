@@ -39,7 +39,8 @@ use [`FINDINGS.md`](FINDINGS.md) for the maturity- and scope-tagged catalog and
 - **`Ansatz-structure search, rung 2: greedy loses to hand design`** is the
   exact ledger entry supporting the follow-on negative. At criticality the
   greedy search returned `1.518%` relative error against the hand-designed
-  arm's `0.694%`; a second search method also failed its quantitative bar.
+  arm's `0.694%`; both figures carry the booked `n=1` inner-optimization
+  fence. A second search method also failed its quantitative bar.
   The ledger retains the qualitative phase-reading observation but closes the
   engineering search after those registered failures. See
   [`docs/RESULTS.md` verdict: Ansatz-structure search, rung 2: greedy loses to hand design](RESULTS.md#ansatz-structure-search-rung-2-greedy-loses-to-hand-design-2026-07-12).
@@ -48,11 +49,10 @@ use [`FINDINGS.md`](FINDINGS.md) for the maturity- and scope-tagged catalog and
 
 - **`ODE engine, rung 1: an engine made of engines`** is the exact ledger
   entry supporting the retained composition result. The registered families
-  scored `75/75` for both the house engine and `sympy.dsolve`; `dsolve` was
-  faster overall at `6s` versus `28s`, while the constant-coefficient family
-  read `0.0s` versus `1.3s` in the other direction. This is solve parity on
-  that generated family, not superiority over differential-equation solvers
-  in general. See
+  scored `75/75` for both the house engine and `sympy.dsolve`. The ledger books
+  no device/runtime environment for its timing readout, so that comparison is
+  not republished here. This is solve parity on that generated family, not
+  superiority over differential-equation solvers in general. See
   [`docs/RESULTS.md` verdict: ODE engine, rung 1: an engine made of engines](RESULTS.md#ode-engine-rung-1-an-engine-made-of-engines-2026-07-12).
 
 ## Routed rather than retained

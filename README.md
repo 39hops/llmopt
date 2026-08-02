@@ -102,7 +102,7 @@ RJOB_LOCAL=1 python -m llmopt.reproduce gravmoe-rb1
 On the current Mac-local contract, `PASS` means the final training-trajectory
 digest exactly matches the committed `gravmoe-rb1` pin. The adopted command is
 booked by **VERDICT SOL-ADOPTION-1** in [`docs/RESULTS.md`](docs/RESULTS.md);
-repository commit `4ef9cd5` made the path self-contained from committed windows.
+repository commit `4ef9cd511369023d69db7332aebf36517de62951` made the path self-contained from committed windows.
 
 Trajectory agreement is not oracle correctness. It certifies the pinned
 weight path and teacher-forced training readouts. Free-run symbolic solve
