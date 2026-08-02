@@ -350,3 +350,85 @@ accuracy `79/116`; HELDOUT symbolic solves `0/8`, parseable `2/8`, terminated
 and these suffix/format counts are the fixed REG baselines for the
 pre-registered AO1 decision rule. No AO1 measurement is included in this
 receipt.
+
+## VERDICT SOL-GRAVMOE-AO1: null; binary answer-only allocation does not improve the pinned G-RB1 gate (2026-08-01, Mac)
+
+AO1 was the single pre-registered treatment arm. It ran once, Mac-local with
+`RJOB_LOCAL=1`, after the complete regression gate passed. Pre-registration
+SHA: `af2ae5be3773b9a668612a5aae92dc3c60966eea`; executable implementation
+SHA: `5517a7f01a3340c11401551504b76d42301c8d18`; reviewed REG receipt and AO1
+execution-parent SHA: `3398ffe34b32526b1c577c4695c518416ab7a106`.
+The diet SHA was
+`809bce4215a24164ecbf5e951d77507d455bfd1923d08fe39aa02942b11a200b`,
+the eight-row TRAIN SHA was
+`32cc244bf28fdadf01b343ae16fe1a55200ffe9fab9bd784e8abd739b12ef2c0`,
+and the full 16-row SHA was
+`78f8aef992debe6ec74e4701fba23167ff5fda1d4294546b9f7621605429798a`.
+The local diet was exposed only through the plan's temporary symlink; its
+target and SHA were validated before execution, and the symlink was removed
+afterward without modifying the source.
+
+Exact treatment and evidence commands:
+
+```bash
+ln -s /Users/artin/code/llmopt/data/micromodel_gen4_sidecar.jsonl \
+  data/micromodel_gen4_sidecar.jsonl
+zsh -o pipefail -c 'RJOB_LOCAL=1 GATE=1 COND=1 QK=1 \
+  LN=0 LD=1 STEPS=2000 ANSWER_ONLY=1 \
+  /Users/artin/code/llmopt/.venv/bin/python \
+  scratch/detbwd_gravmoe.py 2>&1 | tee logs/sol/answer_only_ao1.log'
+rg 'ANSWER_ONLY|marker|answer regions|\[gate\]|cycle-mean|merge test|FINAL trajectory sha' \
+  logs/sol/answer_only_ao1.log logs/p4/GRB1.log
+test -L data/micromodel_gen4_sidecar.jsonl
+readlink data/micromodel_gen4_sidecar.jsonl
+rm data/micromodel_gen4_sidecar.jsonl
+```
+
+The streamed AO1 log is `logs/sol/answer_only_ao1.log`; the fixed REG readout
+is `logs/p4/GRB1.log`; the 16-arm gate receipt is
+`logs/sol/answer_only_pins.log`. All 16 regression arms were PASS and
+SHA-identical: A0, A1, A2, A3, CA0, CA1, CA2, CA3, GA0, GA2, GA3, RB1, RB3,
+RB1S16, GRB1, and S1. REG trajectory SHA:
+`1fcfd187873d980c7c082a56c0f380ce2c40a859eab1e8a0c9dcf6baa4853eca`.
+AO1 trajectory SHA:
+`3a219ebed65154c19c854e15ec7fbba72596ab66793c9aca27b6d53e9bd95a3b`.
+
+Complete free-run evidence card:
+
+| Split | Arm | Symbolic solves | Parseable | Terminated | Standard token accuracy | Suffix-only token accuracy |
+|---|---|---:|---:|---:|---:|---:|
+| TRAIN | REG | 2/8 | 5/8 | 6/8 | 94/140 | 79/116 |
+| TRAIN | AO1 | 0/8 | 5/8 | 7/8 | 60/140 | 60/116 |
+| HELDOUT | REG | 0/8 | 2/8 | 7/8 | 47/140 | 30/88 |
+| HELDOUT | AO1 | 0/8 | 1/8 | 8/8 | 23/140 | 23/88 |
+
+Standard 140-denominator accuracy is recorded only for continuity and did not
+select the verdict. The registered primary/secondary branch is: AO1 has fewer
+than two TRAIN solves, and its TRAIN suffix-only accuracy is lower than REG
+(`60/116 < 79/116`), so the mixed-regression branch does not apply and the
+result is null unless the format-failure branch applies. That exception does
+not apply on TRAIN: parseability is unchanged at `5/8` and termination
+improves from `6/8` to `7/8`. The honest registered verdict is therefore
+**null**, not a capability win, graded partial, mixed regression, or format
+failure. HELDOUT symbolic solves remain `0/8` as predicted, but its lower
+parseability and suffix accuracy do not override the TRAIN-selected branch.
+
+The prediction of at least `3/8` TRAIN solves is falsified. Its proposed
+format-loss alternative is also not observed on TRAIN because parseability is
+flat and termination improves; the measured result is instead lower symbolic
+capability and suffix accuracy with intact TRAIN format diagnostics. No paired
+seed, dose curve, new schedule/capacity arm, or doctrine movement is authorized
+by this null.
+
+Loss diagnostics are lineage-local teacher-forced proxies only. Within REG's
+full-token lineage, cycle mean is `14162 -> 2690` (falling) and the merge test
+is `2564 -> 13011` (delta `10447`). Within AO1's masked lineage, cycle mean is
+`6562 -> 2264` (falling) and the merge test is `2199 -> 6899` (delta `4700`).
+Neither masked value is numerically compared with REG or any earlier
+full-token cell.
+
+This is `n=1`: one seed, initialization, TRAIN/HELDOUT row set, and binary
+mask. It cannot move general ML doctrine; even the pre-registered `3/8` win
+would only have queued paired-seed confirmation. The verdict is format-bound
+to this supplied scaffold, tokenizer, finite row length, deterministic G-RB1
+diet, and exact answer-region convention.
