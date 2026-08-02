@@ -38,12 +38,19 @@ the TRAIN-row and full-row SHAs are respectively
 `32cc244bf28fdadf01b343ae16fe1a55200ffe9fab9bd784e8abd739b12ef2c0`
 and `78f8aef992debe6ec74e4701fba23167ff5fda1d4294546b9f7621605429798a`.
 
+Interpretation fence: this is `n=1`—one seed, initialization, TRAIN/HELDOUT
+row set, and binary mask—and every finding is limited to the supplied
+scaffold, tokenizer, finite row length, deterministic G-RB1 diet, and exact
+answer-region convention. Nothing here establishes a general ML law.
+
 ### Ranked findings
 
-1. **Claim:** Binary answer-only loss allocation is a null at the exact pinned
-   G-RB1 gate and is worse on the registered capability readouts: REG reaches
-   `2/8` TRAIN solves and `79/116` suffix tokens, whereas AO1 reaches `0/8`
-   and `60/116`. **Evidence:** the 16-arm REG command is the Mac-local
+1. **Claim:** The mechanism-level hypothesis is that answer prioritization
+   fails here only when scaffold weight is driven to zero: retaining scaffold
+   weight `1/4` while keeping answer weight `1` will recover at least the REG
+   TRAIN baselines of `2/8` solves and `79/116` suffix tokens. **Evidence:**
+   binary AO1 reaches `0/8` and `60/116`, below those REG baselines. The 16-arm
+   REG command is the Mac-local
    `RJOB_LOCAL=1` invocation of `scratch/p4_arms_0801.sh`, recorded in
    `logs/sol/answer_only_pins.log` with GRB1 detail in `logs/p4/GRB1.log`;
    all 16 default pins reproduce exactly and REG trajectory SHA is
@@ -53,46 +60,48 @@ and `78f8aef992debe6ec74e4701fba23167ff5fda1d4294546b9f7621605429798a`.
    scratch/detbwd_gravmoe.py`, recorded in
    `logs/sol/answer_only_ao1.log`, with trajectory SHA
    `3a219ebed65154c19c854e15ec7fbba72596ab66793c9aca27b6d53e9bd95a3b`.
-   **Confidence:** high for this deterministic, format-bound cell; low for a
-   general ML law because it is one seed, initialization, diet, and row split.
-   **Cheapest legal confirm/kill experiment:** pre-register one new mechanism,
-   a single soft-scaffold arm with answer weight `1` and scaffold weight `1/4`
-   at the same gate. It confirms the binary-allocation finding if it remains
-   below REG on solves and suffix accuracy, and kills the sharper claim that
-   answer prioritization itself is harmful if it recovers REG or better. This
-   is not permission to rerun the already-booked binary AO1 arm or launch a
-   dose curve.
+   **Confidence:** low: the hypothesis is motivated by one binary contrast and
+   is not itself measured. **Cheapest house experiment:** pre-register exactly
+   one new soft-scaffold arm with answer weight `1` and scaffold weight `1/4`
+   at the same pinned gate. A result with both at least `2/8` TRAIN solves and
+   at least `79/116` suffix accuracy confirms the claim; failure to reach
+   either threshold kills it. This is a distinct mechanism, not permission to
+   rerun booked binary AO1 or launch a dose curve.
 
-2. **Claim:** AO1's TRAIN loss is not a format failure; removing scaffold loss
-   degrades symbolic capability while leaving the registered format diagnostics
-   intact. **Evidence:** the same REG/AO1 commands, logs, code/data/row SHAs,
-   and trajectory SHAs above show TRAIN parseability unchanged at `5/8` and
-   termination improved from `6/8` to `7/8`, despite solves falling `2/8 ->
-   0/8` and suffix accuracy falling `79/116 -> 60/116`. The registered rule in
-   `docs/sol/RESULTS-SOL.md` therefore selects null, not format failure.
-   **Confidence:** high for classification under the registered rule; medium
-   for the mechanistic interpretation that scaffold gradients support answer
-   learning rather than only syntax. **Cheapest legal confirm/kill experiment:**
-   add a no-training, fixed-birth gradient diagnostic that measures norm and
-   cosine alignment of scaffold-token and answer-token parameter gradients on
-   the eight pinned TRAIN rows. Consistent positive alignment would support the
-   mechanism; near-zero or opposed alignment would kill it without rerunning
+2. **Claim:** The mechanism-level hypothesis is that scaffold-token gradients
+   positively align with answer-token gradients at the fixed birth, so zeroing
+   scaffold loss removes useful answer-learning signal rather than merely a
+   formatting signal. **Evidence:** under the same exact REG/AO1 commands,
+   logs, code/data/row SHAs, and trajectory SHAs above, TRAIN parseability is
+   unchanged at `5/8` and termination improves `6/8 -> 7/8`, while solves fall
+   `2/8 -> 0/8` and suffix accuracy falls `79/116 -> 60/116`. The registered
+   rule in `docs/sol/RESULTS-SOL.md` therefore selects null, not format failure.
+   **Confidence:** medium-low because these aggregate readouts motivate but do
+   not measure gradient alignment. **Cheapest house experiment:** run one
+   no-training, fixed-birth diagnostic that separately computes scaffold-token
+   and answer-token parameter gradients for each of the eight pinned TRAIN
+   rows. A positive median cosine with at least `6/8` row cosines positive
+   confirms the claim; a non-positive median, fewer than `6/8` positive rows,
+   or an undefined cosine from a zero gradient kills it. This does not rerun
    AO1.
 
-3. **Claim:** There is no held-out capability rescue: both arms solve `0/8`,
-   while AO1 parseability is `1/8` versus REG `2/8` and AO1 suffix accuracy is
-   `23/88` versus REG `30/88`. **Evidence:** these are the HELDOUT lines in
+3. **Claim:** The held-out mechanism hypothesis is that retaining scaffold
+   weight `1/4` will recover at least the REG HELDOUT construction baselines of
+   `2/8` parseable continuations and `30/88` suffix tokens, even though neither
+   fixed arm currently solves a HELDOUT row. **Evidence:** REG and binary AO1
+   both solve `0/8`; AO1 falls to `1/8` parseable from REG's `2/8` and to
+   `23/88` suffix accuracy from REG's `30/88`. These are the HELDOUT lines in
    `logs/p4/GRB1.log` and `logs/sol/answer_only_ao1.log` under the exact
-   commands and lineage SHAs above; their TRAIN/FULL row SHAs are
+   commands and lineage SHAs above; the TRAIN/FULL row SHAs are
    `32cc244bf28fdadf01b343ae16fe1a55200ffe9fab9bd784e8abd739b12ef2c0`
    and `78f8aef992debe6ec74e4701fba23167ff5fda1d4294546b9f7621605429798a`.
-   **Confidence:** high that neither fixed arm generalizes on these eight
-   prompts, low beyond this small split. **Cheapest legal confirm/kill
-   experiment:** only after a distinct mechanism beats the registered TRAIN
-   gate, evaluate that frozen winning mechanism on a pre-registered expanded,
-   prompt-disjoint symbolic held-out set; any reproducible solve advantage
-   kills the present no-rescue finding for the new mechanism. Replaying binary
-   AO1 on another seed is not authorized by this booked null.
+   **Confidence:** low: this extrapolates from one binary treatment and eight
+   HELDOUT prompts. **Cheapest house experiment:** use the same single
+   pre-registered `1/4` soft-scaffold arm named in finding 1 and read its already
+   required eight-row HELDOUT card. At least `2/8` parseable continuations and
+   at least `30/88` suffix accuracy confirms the claim; failure to reach either
+   threshold kills it. This is one unconditional new-mechanism arm, not a
+   second-stage experiment or a binary AO1 rerun.
 
 4. **Claim:** The gate is now fail-closed against data or row drift, but this
    integrity property was missing before the Sol fix. **Evidence:** commit
@@ -101,12 +110,12 @@ and `78f8aef992debe6ec74e4701fba23167ff5fda1d4294546b9f7621605429798a`.
    tests in `tests/test_gravmoe_answer_only.py`; the production evidence is the
    exact 16/16 replay command and `logs/sol/answer_only_pins.log`, with all pins
    unchanged. **Confidence:** high for the asserted G-RB1 gate inputs and the
-   focused failure-before-model-construction cases. **Cheapest legal
-   confirm/kill experiment:** run `PYTHONPATH=.
+   focused failure-before-model-construction cases. **Cheapest house
+   experiment:** run `PYTHONPATH=.
    /Users/artin/code/llmopt/.venv/bin/python -m pytest
    tests/test_gravmoe_answer_only.py -q`; the three drift cases must each abort
-   before model construction, and any case that reaches construction kills the
-   fail-closed claim.
+   before model construction to confirm the fail-closed claim; any drift case
+   that reaches model construction kills it.
 
 ### With more budget
 
