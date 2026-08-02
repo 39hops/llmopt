@@ -9,7 +9,7 @@ Every finding carries exactly one maturity tag.
 - `[RETRACTED]` — a formerly reported finding withdrawn or corrected by its ledger record.
 - `[NULL]` — an evaluated effect was not observed under its tagged conditions.
 - `[MECHANISM-CONFIRMED]` — a causal arm, not a story, establishes the stated mechanism.
-- `[REPLICATED]` — each tagged finding names the route by which it was reproduced: `n>=3` paired seeds for sub-1.5-sigma gate deltas, an independent device, or an independent implementation.
+- `[REPLICATED]` — each tagged finding names the route by which it was reproduced: `n>=3` paired seeds for sub-1.5-sigma gate deltas, an independent device, or an independent implementation ([`docs/RESULTS.md:12697`](docs/RESULTS.md)).
 - `[SINGLE-SEED]` — a finding based on one training seed and not carrying a replication route.
 
 ## Scope tags
@@ -36,7 +36,7 @@ Scope tags may stack: `[DEVICE-SCOPED]` names the measured device, `[FORMAT-BOUN
 - **battery** — A fixed suite of related prompts, arms, and readouts run as one reproducible instrument ([`docs/RESULTS.md:14889`](docs/RESULTS.md)).
 - **pin** — A fixed reference artifact, value, or hash defining a contract and expected to reproduce exactly; this includes selected contract constants and expected artifact or trajectory hashes ([`docs/RESULTS.md:14889`](docs/RESULTS.md)).
 - **relay** — A provenance-carrying, file-based cross-lab handoff of specifications, artifacts, or verification receipts ([`docs/RESULTS.md:15015`](docs/RESULTS.md)).
-- **house/axiom** — “House” is the llmopt-side lab/session and “axiom” the separate repo/session for independent implementation and cross-lab checks: independent code/lab paths, one human operator, Artin ([`docs/RESULTS.md:13896`](docs/RESULTS.md)).
+- **house/axiom** — “House” is the llmopt-side lab/session and “axiom” the separate repo/session for independent implementation and cross-lab checks: independent code/lab paths, one human operator, Artin ([`docs/RESULTS.md:13898`](docs/RESULTS.md)).
 - **rung** — One ordered stage in an experimental ladder whose result unlocks, blocks, or redirects the next stage ([`docs/RESULTS.md:14703`](docs/RESULTS.md)).
 - **riff** — An exploratory question, mechanism, analogy, or experiment idea recorded before possible promotion, testing, or retirement ([`docs/RIFF-LEDGER.md:2098`](docs/RIFF-LEDGER.md)).
 - **twin** — A counterpart matched on a declared invariant—function, parameters, data, or representation—to isolate one difference; the matched invariant must always be named ([`docs/RESULTS.md:9859`](docs/RESULTS.md)).
