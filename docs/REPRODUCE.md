@@ -102,13 +102,15 @@ The cross-lab implementation is the public
 [`39hops/axiom`](https://github.com/39hops/axiom) repository. The pinned
 verifier identity is axiom commit
 `8f8376d86ce6a25fdd6fee2455c220e7055cb018`, path
-`tools/int_adamw/verify_gravmoe.py`. That verified revision is 21 commits ahead
-of the linked public origin and is unreachable there today, so a fresh public
-clone cannot obtain or run this verifier at the pinned identity. This is a
-booked cross-lab receipt, not a currently available external reproduction.
+`tools/int_adamw/verify_gravmoe.py`. As of 2026-08-02 both halves of that
+reproduction are public: axiom pushed, so the pinned commit, the verifier, and
+its `r2b_tables.bin` are fetchable from origin, and the reference artifacts it
+consumes are in `scratch/detbwd_gmoe_ref/` here. An outside reader can run the
+cross-lab leg rather than only read its receipt. What stays true is the
+authorship caveat above — two sessions, one operator — not a reachability
+limit ([AMENDMENT AXIOM-PUBLICATION](RESULTS.md#L15283)).
 
-In a checkout that already contains the verified revision, its interface from
-`tools/int_adamw` is:
+Its interface from `tools/int_adamw` is:
 
 ```bash
 python verify_gravmoe.py <build_dir> <ref_dir> [arm ...]

@@ -15279,3 +15279,59 @@ one review that checking a claim against the code
 inverted the reviewer's own framing (the first: "CPU-only
 by construction", falsified by the MPS probe). Both are
 booked rather than quietly fixed, per house practice.
+
+## AMENDMENT AXIOM-PUBLICATION (amends VERDICT GRAVMOE-P4-LAB's reachability disclosure): the cross-lab leg is now EXTERNALLY RUNNABLE — axiom pushed, both halves public; plus a reviewer error and a license fact (2026-08-02, Mac; axiom relay 2026-08-02-1, Opus-5 both seats)
+
+axiom pushed main on Artin's GO (their 447fb08 docs +
+6e20d06 relay), closing the 22-commit publication gap.
+VERIFIED HOUSE-SIDE, independent of their claim and of
+any local checkout, via the GitHub API:
+  repos/39hops/axiom/commits/8f8376d -> exists
+  .../contents/tools/int_adamw/verify_gravmoe.py?ref=
+     8f8376d -> 3069 bytes
+  that directory also carries r2b_tables.bin, the only
+  other input the verifier opens
+  repos/39hops/llmopt/contents/scratch/detbwd_gmoe_ref
+     -> the reference artifacts, already public here
+So BOTH halves of the cross-lab reproduction are public
+and a third party can RUN the P4 lab leg, not merely
+read its receipt. docs/REPRODUCE.md and the FINDINGS
+cross-lab note both UNDERSTATED availability and are
+corrected in this commit; the caveat that survives is
+AUTHORSHIP (two sessions, one operator), which was
+already booked and is unaffected.
+REVIEWER ERROR, booked (mine): relay 2026-08-02-0 told
+axiom their three-valued soundness contract "is not on
+the front page." FALSE. `git show 8f8376d:README.md`
+carries it at lines 77-78 (EQUIVALENT only on structural
+proof, NOT_EQUIVALENT only on a confirmed numeric
+witness, UNDECIDED otherwise — never guessed). The six
+grep counts in that relay were all correct and they
+reproduced every one; this seventh claim was asserted
+without the grep. THE LESSON IS SPECIFIC AND WORTH
+KEEPING: I searched for the NAMES of things (ax::nn,
+intbirth, AXNN, MoeBirth, "fixed-point", "deterministic"
+— genuinely 0 each) and then inferred the absence of a
+CONCEPT I had not searched for. Absence of a name is not
+absence of a documented idea. Their fix stands on the
+real criticism (present in paragraph three of Status =
+practically invisible; now its own section).
+LICENSE FACT for the ledger: axiom was MIT at 8f8376d
+and Artin relicensed it to Apache-2.0 in the same
+commit, with a NOTICE. No llmopt doc characterizes
+axiom's terms (grepped; nothing to correct), so this is
+recorded, not fixed. axiom now also carries a
+CITATION.cff with a commit: field — the sha-pinning
+policy is enforced on both sides.
+THEIR PROPOSAL, banked not adopted (axiom's emphasis
+argument): device count is a WEAK axis for an integer
+instrument, because if reduction order cannot change an
+integer value then a second device mainly tests that no
+float crept in; the strong axes are IMPLEMENTATIONS and
+RUNTIMES. This reads correctly against our own
+mechanism and it lowers the expected value of the banked
+GPU trajectory leg — that leg is now best framed as a
+NEGATIVE CONTROL (it should be boring; a failure would
+be the interesting outcome) rather than a rung that adds
+strength. Banked to RIFF-LEDGER; the ladder's phrasing
+is not changed by this entry.

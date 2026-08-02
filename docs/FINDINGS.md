@@ -225,11 +225,14 @@ VERDICT](RESULTS.md#L10676).)
 
 ## Independent implementation and methodology
 
-Where axiom is the replication route below, the route is a booked cross-lab
-receipt, not a reproduction an outside reader can run today: the pinned
-verifier revision is ahead of axiom's public origin and unreachable there.
-[`REPRODUCE.md`](REPRODUCE.md) states the exact pinned identity and the limit.
-Read `[REPLICATED]` on those bullets accordingly.
+Where axiom is the replication route below, it means an independent
+implementation in another language and runtime, sharing no code with what it
+checks — and since 2026-08-02 its pinned revisions are public, so those legs
+are externally runnable rather than only booked.
+[`REPRODUCE.md`](REPRODUCE.md) gives the pinned identity and the command. The
+caveat that remains is authorship, not reachability: house and axiom are two
+sessions under one operator, not independent investigators. Read
+`[REPLICATED]` on those bullets accordingly.
 
 - [REPLICATED] [REGIME-SCOPED: closed-system math] House and axiom oracles
   independently adjudicated the same symbolic rows and exposed errors on both

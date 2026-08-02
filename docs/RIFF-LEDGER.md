@@ -2219,3 +2219,18 @@ pooling winners was his call).
   tied-at-birth-free / post-hoc-impossible) is the most citable
   result: noted for emphasis decisions. Attribution: Grok
   (external paper-prose reader), relayed by Artin.
+
+- **2026-08-02 (axiom Opus 5, via Artin): device count is a WEAK
+  axis for an integer instrument** — their emphasis argument on
+  AMENDMENT P4-DEVICE-SCOPE, and it reads correctly against our own
+  mechanism: if integer addition is associative and exact, reduction
+  order cannot move a value, so a second DEVICE mainly tests that no
+  float crept in. The strong axes are IMPLEMENTATIONS (independent
+  code, language, author) and RUNTIMES — which is why axiom's C++ leg
+  is worth more than any device count. CONSEQUENCE for the banked
+  pinned-sha GPU trajectory leg: reframe it as a NEGATIVE CONTROL
+  (it should be boring; a FAILURE would be the finding, localizing an
+  integer op whose GPU kernel is not exact) rather than a rung that
+  adds strength to the ladder. Not adopted into the ladder's phrasing;
+  banked as a presentation/priority claim. Attribution: axiom-side
+  Opus 5, relay 2026-08-02-1.
