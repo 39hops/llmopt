@@ -7,8 +7,12 @@
 **Base / merge-base with `main`:**
 `0dea97283d4a270c4f8b2b1ad48adcf01b42e5f8`
 
-**Verified pre-note HEAD:**
+**Original close-out pre-note HEAD:**
 `78b4e56304c7d2ed625efb0cb0be2ecd781ba5f7`
+
+**Final-review base / verified final-review pre-note HEAD:**
+`6eb82f05ebb0a2fd71b28879da581662a23d01f5` /
+`7eff22c7a76a0567681bf462986b13b6b64ab5c4`
 
 **Execution fence:** Mac-local only; no remote, SSH, WSL, or other device was
 used in this presentation session.
@@ -17,7 +21,7 @@ used in this presentation session.
 not a ledger verdict and does not change any booked claim.
 
 This session made the mathematics/physics evidence hierarchy legible to an
-external reader and repaired one operational defect in the advertised
+external reader and repaired two operational defects in the advertised
 trajectory reproduction. It did not add a scientific result. Exact trajectory
 digest agreement is determinism evidence only; it is not symbolic correctness
 or capability evidence. Every `n=1` result below remains fenced as `n=1`.
@@ -34,12 +38,19 @@ or capability evidence. Every `n=1` result below remains fenced as `n=1`.
   acceptance: artifact-backed 16/16 and unchanged default-path 16/16 exact pin
   matches, recorded in
   `.superpowers/sdd/2026-08-02-external-reader-presentation/task-1-5-report.md`.
+  Final-review commit `b610e23fa2b41751d44db9ee969350b5aec537ba`,
+  subject `fix: enforce artifact split validation`, replaced optimized-away S1
+  marker/split assertions with explicit validation and raised the focused
+  result to 22/22.
 - [x] **Task 6 — controlled glossary.** Adoption commit
   `80505abf28ec5f1556926fe7565b7d1627c4a7da`, subject `docs: add the
   llmopt glossary`, files `GLOSSARY.md` and `README.md`; reviewed pointer fix
   `833129a646630f7b7f2f46dcb7a4f16b47ad38e8`, subject `docs: fix glossary
   evidence pointers`, file `GLOSSARY.md`. Final local-link audit is included
-  below.
+  below. Final-review commit
+  `2d7ca1121db7e67a6170869368a7fabdd3ebf7db`, subject `docs: restore
+  evidence tag grammar`, restored the approved null, retraction, and broad
+  registered-`n=1` definitions.
 - [x] **Task 7 — external-reader README and measured-history appendix.**
   Adoption commit `550555b250ad33baa972355a530b4bbd7895bf8d`, subject `docs:
   give README an external reader path`, files `README.md` and
@@ -56,18 +67,28 @@ or capability evidence. Every `n=1` result below remains fenced as `n=1`.
   exactly one approved maturity tag per unit, controlled scopes/regimes, 33/33
   single-seed `n=1` fences, 24/24 named replication routes, 23/23 causal-arm
   descriptions, zero numeric/link errors, and 499 lines versus the 586-line
-  baseline.
+  baseline. Final-review commit
+  `8e4d241fff2d7eae1f30a426064b30dad95de143`, subject `docs: correct
+  findings maturity routes`, split the unsupported combined crystal claim and
+  corrected the original 19M/0.5B comparison. Current verification is 101
+  units, 36/36 `n=1` fences, 22/22 replication routes, 23/23 causal-arm
+  descriptions, zero numeric/link errors, and 500 lines.
 - [x] **Task 9 — reproduction walkthrough.** Adoption commit
   `548e9c550d3f49d300868730296b707b800ce2bd`, subject `docs: add the
   reproduction walkthrough`, file `docs/REPRODUCE.md`. The fresh-worktree RB1
   receipt is a full-digest PASS in 83.9 seconds at
   `/tmp/llmopt-task9-rb1.log`; the separate house-booked receipt is 81.7
   seconds under [VERDICT SOL-ADOPTION-1](../RESULTS.md#L15081) at ledger commit
-  `0dea97283d4a270c4f8b2b1ad48adcf01b42e5f8`.
+  `0dea97283d4a270c4f8b2b1ad48adcf01b42e5f8`. Final-review commit
+  `87880035810dd3cece3bf0980181cbd027135d0b`, subject `docs: disclose
+  verifier publication limit`, states that the verified axiom revision is 21
+  commits ahead of and unreachable at the linked public origin today.
 - [x] **Task 10 — external-review digest.** Adoption commit
   `6228a10f9359fb3f8fc8283b371f776e45fc6572`, subject `docs: digest
-  external review outcomes`, file `docs/EXTERNAL-REVIEWS.md`. Review was clean
-  with the two deferred wording nits listed below.
+  external review outcomes`, file `docs/EXTERNAL-REVIEWS.md`. Final-review
+  commit `7eff22c7a76a0567681bf462986b13b6b64ab5c4`, subject `docs: correct
+  external review scope`, fixes the source-record count wording; the separate
+  “living ledger entry” suggestion was explicitly declined below.
 - [x] **Task 11 preflight blocker repaired and re-reviewed.** The original
   `git diff --check main...HEAD` failed on spec trailing whitespace and a
   final blank line. Commit `472aff31b235b0ab8a71adee1b4bbb3c77bb9263`,
@@ -80,6 +101,14 @@ or capability evidence. Every `n=1` result below remains fenced as `n=1`.
   unit. Use `git log -1 --format='%H %s' -- docs/sol/SESSION-NOTES-PRESENT-1.md`
   to resolve the immutable latest containing SHA and subject after commit. This
   checklist remains a branch proposal until the house adopts it.
+- [x] **Final whole-branch review — five Important and one Minor finding.** The
+  Important fixes are optimized-mode S1 validation
+  (`b610e23fa2b41751d44db9ee969350b5aec537ba`), the original-comparison
+  maturity correction and separate crystal evidence units
+  (`8e4d241fff2d7eae1f30a426064b30dad95de143`), restored evidence grammar
+  (`2d7ca1121db7e67a6170869368a7fabdd3ebf7db`), and the axiom publication
+  limit (`87880035810dd3cece3bf0980181cbd027135d0b`). The Minor source-scope
+  wording fix is `7eff22c7a76a0567681bf462986b13b6b64ab5c4`.
 
 No living ledger changed. The final exact-path guard excludes
 `docs/RESULTS.md`, `docs/BOARD.md`, `docs/THEORY.md`,
@@ -220,30 +249,35 @@ Commit `4ef9cd511369023d69db7332aebf36517de62951` fixed the defect by loading
 and validating committed window bytes/contracts, pinning the selected inputs,
 scrubbing hostile ambient artifact variables, and making gate artifact mode
 explicitly trajectory-only. Coverage lives in `tests/test_window_artifact.py`,
-`tests/test_reproduce.py`, and `tests/test_gravmoe_artifact_input.py`. Fresh
-final focused verification is 21/21; prior acceptance is artifact 16/16 and
-default 16/16. The default courtesy sidecar SHA was
+`tests/test_reproduce.py`, and `tests/test_gravmoe_artifact_input.py`.
+Original close-out focused verification was 21/21; prior acceptance is
+artifact 16/16 and default 16/16. The default courtesy sidecar SHA was
 `809bce4215a24164ecbf5e951d77507d455bfd1923d08fe39aa02942b11a200b`,
 and the temporary link is absent after testing.
 
-No other house-code defect was established in this session. The Task 11
-whitespace failure was presentation-spec hygiene, not scientific or runner
-behavior: it was repaired by `472aff31b235b0ab8a71adee1b4bbb3c77bb9263`
-and layout-preserved/re-reviewed by
+Final review found a second operational defect: artifact-backed S1 marker and
+split contracts were enforced with `assert`, so optimized Python removed the
+checks. Commit `b610e23fa2b41751d44db9ee969350b5aec537ba` replaces them with
+diagnostic `ValueError`s and adds a real `python -O` subprocess regression over
+a SHA-consistent malformed artifact. No other house-code defect was
+established. The Task 11 whitespace failure was presentation-spec hygiene, not
+scientific or runner behavior: it was repaired by
+`472aff31b235b0ab8a71adee1b4bbb3c77bb9263` and
+layout-preserved/re-reviewed by
 `78b4e56304c7d2ed625efb0cb0be2ecd781ba5f7` before final verification.
 
-## Deferred wording nits for final reviewer triage
+## Final-review wording dispositions
 
-The reviewed [external-review digest](../EXTERNAL-REVIEWS.md) has two minor,
-non-blocking wording candidates:
+The reviewed [external-review digest](../EXTERNAL-REVIEWS.md) had two minor
+wording candidates:
 
-1. Its title says document-only even though the Sol source record includes
-   tooling and runs.
-2. “living ledger entry” would be more exact as “source record” where a
-   citation set mixes RIFF and RESULTS sources.
+1. **Resolved:** “four doc-only reads” became “four external-review source
+   records” in `7eff22c7a76a0567681bf462986b13b6b64ab5c4`.
+2. **Declined:** “living ledger entry” remains unchanged. Each cited RIFF or
+   RESULTS source is an exact entry in a living ledger, so the wording is
+   defensible and preserves the digest's provenance fence.
 
-They are recorded for final-review triage and were not changed in this
-single-file Task 11 adoption unit.
+The disposition changes no review suggestion into a result or house adoption.
 
 ## Final verification receipts
 
@@ -251,7 +285,29 @@ All Python commands used
 `/Users/artin/code/llmopt/.venv/bin/python`. Runner receipts used
 `RJOB_LOCAL=1`. No acceptance run used a remote or non-Mac device.
 
-### Fresh final commands
+### Final-review optimized and focused commands
+
+```bash
+RJOB_LOCAL=1 /Users/artin/code/llmopt/.venv/bin/python -m pytest -q \
+  tests/test_gravmoe_artifact_input.py::test_optimized_runner_refuses_sha_consistent_s1_split_drift
+RJOB_LOCAL=1 /Users/artin/code/llmopt/.venv/bin/python -m pytest -q \
+  tests/test_window_artifact.py tests/test_reproduce.py \
+  tests/test_gravmoe_artifact_input.py
+```
+
+Fresh outputs on final-review pre-note HEAD
+`7eff22c7a76a0567681bf462986b13b6b64ab5c4`:
+
+```text
+optimized-mode regression: 1 passed in 0.65s
+focused artifact/reproduce suite: 22 passed in 6.43s
+```
+
+The optimized regression launches the real runner with `python -O` and a
+malformed marker/split artifact whose raw and reconstructed-row SHAs are
+internally consistent; it now refuses at the split-position contract.
+
+### Original close-out commands
 
 ```bash
 git diff main --name-only
@@ -267,7 +323,7 @@ git diff --check main...HEAD
   --ignore=tests/test_metal_kernels.py
 ```
 
-Fresh outputs on pre-note HEAD
+Original outputs on pre-note HEAD
 `78b4e56304c7d2ed625efb0cb0be2ecd781ba5f7`:
 
 ```text
