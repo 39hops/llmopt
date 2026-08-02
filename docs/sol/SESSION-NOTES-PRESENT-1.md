@@ -77,10 +77,9 @@ or capability evidence. Every `n=1` result below remains fenced as `n=1`.
   preserve presentation spec metadata layout`, changed the same file. Fresh
   `git diff --check main...HEAD` then exited 0 with no findings.
 - [x] **Task 11 — close-out note.** This file is the only file in its adoption
-  unit. Its containing commit subject is `docs: close external presentation
-  session`; use `git log -1 --format='%H %s' -- docs/sol/SESSION-NOTES-PRESENT-1.md`
-  to resolve the immutable containing SHA after commit. This checklist remains
-  a branch proposal until the house adopts it.
+  unit. Use `git log -1 --format='%H %s' -- docs/sol/SESSION-NOTES-PRESENT-1.md`
+  to resolve the immutable latest containing SHA and subject after commit. This
+  checklist remains a branch proposal until the house adopts it.
 
 No living ledger changed. The final exact-path guard excludes
 `docs/RESULTS.md`, `docs/BOARD.md`, `docs/THEORY.md`,
