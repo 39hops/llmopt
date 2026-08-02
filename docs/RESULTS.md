@@ -15121,3 +15121,38 @@ Division-of-labor note for the ledger: this adoption
 validates the branch protocol — proposals with shas
 attached, house verification cheap (one diff + two
 runs), zero living-ledger contamination.
+
+## VERDICT SOL-ADOPTION-2: the presentation branch is ADOPTED (ff to 1bdf63b) — external-reader surface rebuilt with a controlled evidence grammar; the reproduce path is now fresh-clone self-contained (2026-08-02, Mac)
+
+Adopted after review: sol/present-1, 22 commits, living
+ledgers untouched (0 diff lines, verified).
+(1) ARTIFACT-BACKED REPRODUCTION (code): windows load
+    from the committed detbwd_gmoe_ref bytes
+    (llmopt/window_artifact.py: sha refusal, record
+    decode, contiguity invariant; TRAJECTORY_ONLY mode
+    for gate arms — solve-scoring alone still needs the
+    diet, disclosed in REPRODUCE.md). Acceptance: Sol's
+    16/16 artifact-backed + 16/16 default-path receipts
+    (logs verified, shas match pins) + house-independent
+    PASS on an arm Sol did not feature (A2, 23c154e6
+    EXACT, 78.7s) + 26/26 new tests.
+(2) PRESENTATION SURFACE (docs): README -> 140-line
+    four-section gateway (one-sentence thesis, citation
+    policy up top); GLOSSARY.md; docs/REPRODUCE.md
+    walkthrough; docs/FINDINGS.md -> 500-line evidence
+    catalog under a controlled grammar (ONE maturity tag
+    + stacked scope tags; 9 pinned regime values, zero
+    vocabulary drift measured; TEACHER-FORCED/FREE-RUN
+    distinction surfaced per the standing gate rider);
+    the capacity/packing regime correction placed BEFORE
+    the crystal laws with the Qwen2.5-0.5B C6 chain
+    named as the measured boundary; measured history
+    preserved in docs/MEASURED-HISTORY.md;
+    docs/EXTERNAL-REVIEWS.md digests the four external
+    reads. Every surfaced number carries a named
+    RESULTS anchor (line anchors are stable BECAUSE the
+    ledger is append-only).
+No new claims found in review; fences survive into the
+public surface (n=1 stays n=1). Attribution: Sol
+(GPT 5.6, sol/present-1), house-verified line-by-line
+where it counts and by receipt elsewhere.
