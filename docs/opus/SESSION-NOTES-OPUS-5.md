@@ -1,0 +1,104 @@
+# Opus-5 review session — audit sheet for Fable
+
+Branch `opus-5`, forked from `main` at `7ab8837`. Not pushed. Nothing
+here reaches `main` without Fable's line-by-line audit.
+
+Seat: Artin switched the model to Opus 5 and authorized branch work,
+which overrides the standing "code changes are Fable's job" convention
+for this branch only. I kept the reviewer discipline anyway: every
+claim below carries the command that shows it.
+
+## Commits, in order, each independently reviewable
+
+| Commit | What | How to audit in one command |
+|---|---|---|
+| `5673ec0` | AMENDMENT P4-DEVICE-SCOPE + `docs/REPRODUCE.md` clarification | `.venv/bin/python scripts/results_query.py --chain p4-device-scope` |
+| `<this>` | Doc-integrity guard + axiom relay + these notes | `.venv/bin/python tests/test_docs_integrity.py` |
+
+Full suite after both: **450 passed, 7 skipped** (was 448; the two new
+ones are mine).
+
+## Finding 1 — "2 devices" was imprecise [FIXED, needs your audit]
+
+Claim: both P4 legs ran on CPU, so "2 devices" means two machines /
+two CPU architectures (arm64, x86-64), not GPU diversity — a narrower
+claim than P3 / PACKED CRYSTAL C4, which genuinely crossed MPS↔cuda.
+
+Evidence: no `device=`, `.cuda()`, `.to("mps")`, or
+`set_default_device` anywhere in the battery chain
+(`detbwd_gravmoe`, `detbwd_mb`, `detbwd_r2b`, `detbwd_r1`,
+`llmopt/reproduce`, `llmopt/intmath`); `scratch/p4_arms_0801.sh` sets
+OMP/MKL thread caps and never selects a GPU.
+
+**Provenance, so nobody blames the wrong agent**: `git log -S` shows
+the phrase entered at `94e29cd` — the house's own P4-LAB booking
+(Fable). Sol quoted it faithfully into `docs/REPRODUCE.md` at
+`548e9c5`. This is a house wording issue, not a Sol review defect.
+
+**Self-correction worth reading before you trust the rest of my
+work**: my first draft of this finding said "the battery is CPU-only
+by construction." That is FALSE and I caught it by testing instead of
+asserting. `int_mm` is `(a.unsqueeze(-2) * w).sum(-1)`, not
+`torch.matmul`; on torch 2.12.1 / Apple silicon, MPS runs int64 matmul
+AND all eight battery primitives bit-identically to CPU (`int_mm`,
+`rdiv`, `softmax_rows`, `softmax_bwd`, `rms_fwd`, its `isq`,
+`rms_bwd` dx and dg). The battery is CPU-only by PLUMBING. The booked
+amendment says so, including the failed first draft.
+
+Nothing measured changed: 16/16 and 10/10 sha-identity stand as
+booked.
+
+## Finding 2 — doc-layer had no guard [FIXED, needs your audit]
+
+`tests/test_docs_integrity.py`, two tests, both verified failable
+(I monkeypatched each failure path and confirmed the assertion fires):
+
+1. **Anchor rot** — all 148 repo-wide `RESULTS.md#L<n>` citations must
+   land on a `## ` entry heading. Currently 148/148 valid. This is the
+   invariant that silently dies the first time anyone edits RESULTS.md
+   mid-file; "append-only" is convention, not enforcement.
+2. **Curation ratchet** — curatable (`verdict`/`null`) entries newer
+   than anything FINDINGS cites, capped at the measured backlog of
+   **10**. May fall freely; raising it needs a stated reason.
+
+## Finding 3 — FINDINGS is 19 entries stale [NOT FIXED — yours]
+
+I deliberately did not write FINDINGS bullets. Curating verdicts onto
+the public layer is a judgement call about what the lab claims, and
+that is the house's call, not a reviewer's. The ratchet above will
+keep reminding you. The uncurated set (run the standalone report):
+QK-RESCOPE, NULL GRAVMOE-SS, the rider, BRUTE leg 1, BRUTE-B/C,
+BRUTE closing, **P4-DEVICE**, **P4-LAB**, SOL-ADOPTION-1, -2.
+
+The two P4 entries are the ones I would curate first: the ladder
+closing at three implementations and two labs is the strongest claim
+the lab currently owns and it is invisible externally.
+
+## Proposals I did NOT act on (waiting on Artin/Fable)
+
+- **GitHub repo description** still reads like the pre-thesis lab.
+  It is a repo *setting*, not a file — `gh repo edit --description`
+  or the web UI. Outward-facing, so I did not touch it.
+- **Grok's "FINDINGS is chronological"** is STALE — it is thematic and
+  maturity-tagged since `a5b3a98`. Grok read a pre-restructure copy or
+  conflated it with RESULTS. The residual half-point is fair though:
+  README line 6 says "curated findings" without saying *curated by
+  maturity, not chronology*. One clause.
+- **Grok's cross-lab disclosure placement** is fair and unfixed: the
+  "21 commits ahead / unreachable" disclosure lives in
+  `docs/REPRODUCE.md:106`, but `docs/FINDINGS.md:443` carries a
+  `[REPLICATED]` axiom claim with no pointer to it. An external reader
+  meets the strong tag without the caveat.
+- **MPS leg of the battery** — banked in the amendment, not run.
+  Pre-register first. Known work: thread a device through the
+  birth/draw path and `.cpu()` before `.numpy()` at the digest points.
+- **CUDA parity of the primitives** — UNTESTED and untestable from
+  here; needs the 3080, which needs Artin's GO.
+
+## What I did not touch
+
+`docs/BOARD.md`, `docs/THEORY.md`, `docs/RIFF-LEDGER.md`,
+`docs/handoffs/`, `docs/FINDINGS.md`, `README.md`, any `scratch/`
+experiment code, any pinned artifact, and the axiom repo (read-only
+throughout; the relay is a file on the llmopt side for Artin to
+carry).
