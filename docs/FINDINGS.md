@@ -1,11 +1,8 @@
 # FINDINGS — the curated research results
 
-This is the external-reader layer over the append-only
-[`RESULTS.md`](RESULTS.md) verdict ledger. Each bullet is one measured claim
-with exactly one evidence-maturity tag from the
-[`GLOSSARY.md`](../GLOSSARY.md#evidence-maturity) grammar. Scope tags name the
-instrument actually used; omitted scope is never permission to generalize.
-Retractions and nulls stay visible because they are part of the result.
+This is the external-reader layer over [`RESULTS.md`](RESULTS.md). Each bullet
+is one measured claim with one [`GLOSSARY.md`](../GLOSSARY.md#evidence-maturity)
+maturity tag. Retractions/nulls remain visible. Scope omission never broadens a claim.
 
 ## The derivation engine
 
@@ -18,6 +15,9 @@ Retractions and nulls stay visible because they are part of the result.
   cells per budget; the routed engine then strictly dominated both pure arms.
   ([The racing arc](RESULTS.md#L74); [The router: strict dominance,
   adopted](RESULTS.md#L910).)
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] At n=1 fixed battery, the
+  bigram supplied move grammar; model confidence was distinct and width partly
+  substituted for it. ([The component taxonomy](RESULTS.md#L234).)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Expert-iteration
   arms from mature and tabula-rasa starts both reached their operator-closure
   ceiling in one round; adding operators, rather than more self-teaching,
@@ -26,6 +26,13 @@ Retractions and nulls stay visible because they are part of the result.
   using Liouville's non-elementarity certificate removed dead branches with
   zero observed false positives inside the engine's operator closure.
   ([The magic estimator](RESULTS.md#L531).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] In the causal autopsy
+  ladder, the linear-basis arm subsumed earlier rules and moved the L4 ceiling.
+  ([The autopsy ladder](RESULTS.md#L151).)
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] At n=1 recorded policy ladder,
+  DAgger recovered diagnosed L5 misses but stayed below its Markov teacher and
+  lost the wall-time win, so Markov kept production at that rung. ([Syndrome
+  policy v2 + DAgger round 2](RESULTS.md#L852).)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] At n=1 battery, the hybrid
   engine beat its SymPy subcontractor through the measured upper levels while
   retaining SymPy as judge; this is a battery result, not a general CAS rank.
@@ -58,18 +65,19 @@ Retractions and nulls stay visible because they are part of the result.
   the fitted corpus-signature × width equation predicted the held-out house
   battery; it remains a measured battery model, not a general scaling law.
   ([The closed-system equation, v0](RESULTS.md#L2677).)
-- [REPLICATED] [REGIME-SCOPED: closed-system math] Technique lineages and the
-  isolated L4 dialect were reproduced by independent rule-bigram and gzip-NCD
-  implementations. ([The math phylogeny](RESULTS.md#L2098); [Compression
-  phylogeny](RESULTS.md#L2116).)
+- [SINGLE-SEED] [REGIME-SCOPED: closed-system math] At n=1 corpus analysis,
+  rule-bigram clustering grouped techniques rather than difficulty levels and
+  isolated the ansatz clade. ([The math phylogeny](RESULTS.md#L2098).)
+- [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: closed-system math] At n=1
+  gzip-NCD corpus analysis, a separate lens isolated L4's dialect; this is a
+  corroborating read, not implementation replication. ([Compression phylogeny](RESULTS.md#L2116).)
 
 ## Capacity fence for crystals and packing
 
-Every capacity, maximum-entropy, and sigma-pack statement below is scoped to
-the measured at-capacity house-crystal regime unless a verdict explicitly
-transports it. The Qwen2.5-0.5B C6 chain is the boundary experiment, not a
-license to generalize the house result to web-trained dense models. ([PACKED
-CRYSTAL C6 VERDICT](RESULTS.md#L10676).)
+Capacity, maximum-entropy, and sigma-pack statements below are at-capacity
+house-crystal results unless a verdict transports them. The Qwen2.5-0.5B C6
+chain is the boundary, not a web-trained dense-model law. ([PACKED CRYSTAL C6
+VERDICT](RESULTS.md#L10676).)
 
 ## The crystal laws
 
@@ -142,7 +150,7 @@ CRYSTAL C6 VERDICT](RESULTS.md#L10676).)
   reproduced on independent crystal/checkpoint implementations; a shared
   denominator made the tested forward an integer GEMM. ([QUICK EXACT BATTERY
   VERDICT](RESULTS.md#L7819).)
-- [MECHANISM-CONFIRMED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] A
+- [MECHANISM-CONFIRMED] [TEACHER-FORCED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] A
   causal snap arm localized gate damage to pre-existing near-tie decisions
   amplified by decode horizon, rather than to bulk weight error.
   ([SNAP-ANATOMY VERDICT](RESULTS.md#L7699).)
@@ -226,9 +234,9 @@ CRYSTAL C6 VERDICT](RESULTS.md#L10676).)
   across Apple/NVIDIA devices and the independent axiom implementation, with
   byte-pinned inputs and zero-tolerance output comparison. ([E3
   VERDICT](RESULTS.md#L9907); [FX-V1-H VERDICT](RESULTS.md#L11468).)
-- [REPLICATED] Control arms repeatedly overturned attractive headlines and
-  found instrument faults; the route is more than three independently booked
-  paired-control incidents, not repetition of one narrative.
+- [REPLICATED] Paired controls repeatedly overturned attractive headlines and
+  found instrument faults; independent strict-encoding and cross-repo E4
+  audit routes are named examples rather than a numeric incident count.
   ([The 388 mangled rows](RESULTS.md#L4453); [E4 AUDIT
   CLOSE-OUT](RESULTS.md#L7492).)
 - [REPLICATED] [DEVICE-SCOPED] [FREE-RUN-GATED] Gate and probe differences
@@ -239,7 +247,7 @@ CRYSTAL C6 VERDICT](RESULTS.md#L10676).)
 
 ## Calibration and generation
 
-- [MECHANISM-CONFIRMED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals]
+- [MECHANISM-CONFIRMED] [TEACHER-FORCED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals]
   Controlled snap interventions across six house crystals showed that
   flips-per-token predicts gate damage; the causal arm is the applied snap,
   not a post-hoc story. ([CALIBRATION PROBE R1
@@ -297,14 +305,14 @@ CRYSTAL C6 VERDICT](RESULTS.md#L10676).)
 
 ## Chaos, EMA, and nested crystals
 
-- [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
+- [SINGLE-SEED] [DEVICE-SCOPED] [FORMAT-BOUND] [TEACHER-FORCED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] At n=1 NVIDIA perturbation grid,
   trajectories mixed strongly while capability stayed on the same measured
   shell; the claim is device-and-recipe scoped. ([ATLAS-2 LYAPUNOV
   VERDICT](RESULTS.md#L9009).)
-- [SINGLE-SEED] [FREE-RUN-GATED]
+- [SINGLE-SEED] [DEVICE-SCOPED] [FORMAT-BOUND] [TEACHER-FORCED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] At n=1 under the tested simple
-  schedules, EMA contracted trajectory divergence and improved the gate.
+  NVIDIA schedules, EMA contracted format-bound disagreement and improved the gate.
   ([NIGHT-28b VERDICT](RESULTS.md#L9135).)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] Under
   the production schedule, EMA was redundant and was not adopted as the
@@ -375,7 +383,7 @@ CRYSTAL C6 VERDICT](RESULTS.md#L10676).)
   matched-bit d64h8 crystal, GPTQ, AWQ, and HQQ did not separate from the
   closed-form calibration-free pack. ([PACKED CRYSTAL C3
   VERDICT](RESULTS.md#L10458).)
-- [SINGLE-SEED] [DEVICE-SCOPED]
+- [SINGLE-SEED] [DEVICE-SCOPED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] At n=1 Apple kernel
   benchmark, the bit-packed format executed directly and beat the byte-aligned
   kernel; this is a measured shape/device result. ([PACKED CRYSTAL C2b
@@ -404,7 +412,7 @@ CRYSTAL C6 VERDICT](RESULTS.md#L10676).)
 
 ## Deployment artifacts and the capacity meter
 
-- [REPLICATED] [DEVICE-SCOPED]
+- [REPLICATED] [DEVICE-SCOPED] [TEACHER-FORCED]
   [REGIME-SCOPED: deterministic integer battery] Full transformer logit traces
   reproduced bit-identically on independent Apple and NVIDIA GPU paths; the
   floating-point agreement price remains part of the verdict. ([P3
@@ -435,10 +443,14 @@ CRYSTAL C6 VERDICT](RESULTS.md#L10676).)
   [REGIME-SCOPED: deterministic integer battery] Axiom independently
   implemented the full deterministic decode and reproduced both house hashes
   across four backends. ([FX-V1-H VERDICT](RESULTS.md#L11468).)
-- [MECHANISM-CONFIRMED] [FREE-RUN-GATED]
-  [REGIME-SCOPED: tested MoE recipes] A contractivity-treatment arm made the
-  tested expert medium contractive at near-zero gate toll; unmodified controls
-  remained unscreened. ([GRAV-2 VERDICT](RESULTS.md#L11866).)
+- [NULL] [DEVICE-SCOPED] [TEACHER-FORCED] [REGIME-SCOPED: tested MoE recipes]
+  On two Apple seeds, ablations were unscreened and amplified with depth;
+  router-distance bins restored no lawful field. ([GRAV-1 VERDICT](RESULTS.md#L11686);
+  [GRAV-1b VERDICT](RESULTS.md#L11846).)
+- [MECHANISM-CONFIRMED] [DEVICE-SCOPED] [TEACHER-FORCED] [FREE-RUN-GATED]
+  [REGIME-SCOPED: tested MoE recipes] In one paired Apple cell (n=1), the causal
+  contractivity arm flattened epsilon-kick propagation at near-zero gate toll.
+  ([GRAV-2 VERDICT](RESULTS.md#L11866).)
 - [REPLICATED] [TEACHER-FORCED] [REGIME-SCOPED: specified diet and recipe]
   Calibration quality and error detection reproduced on the original crystal
   and two fresh paired births; those n=3 births are the route. ([CAL-DK-1
@@ -461,14 +473,14 @@ CRYSTAL C6 VERDICT](RESULTS.md#L10676).)
   did not transport: on n=3 paired CUDA seeds, gravmoe and baseline means tied
   at 50.7 versus 50.7. The retained recipe is merge-free and
   capability-neutral. ([VERDICT CUDA SEED LADDER](RESULTS.md#L13286).)
-- [SINGLE-SEED] [REGIME-SCOPED: closed-system math] At n=1 activation probe,
+- [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: closed-system math] At n=1 activation probe,
   a small population of digit-periodic neurons showed partial Fourier
   character; this is an in-vivo sighting, not a general representation law.
   ([FOURIER-1 VERDICT](RESULTS.md#L12096).)
 
 ## The clock-placement and deterministic-birth close
 
-- [MECHANISM-CONFIRMED] [DEVICE-SCOPED] [FREE-RUN-GATED]
+- [MECHANISM-CONFIRMED] [DEVICE-SCOPED] [TEACHER-FORCED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] On Apple training runs, causal
   wide-Mod and digit-sum diet arms separated single-pass competence from
   external rewrite competence: clocks marked where the computation ran, not
