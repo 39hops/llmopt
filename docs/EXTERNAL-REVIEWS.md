@@ -1,9 +1,9 @@
 # External review digest
 
-This is a status-preserving digest of four doc-only reads. It does not turn a
-review suggestion into a result: the mathematics and physics charter still
-requires a declared arm and named verdict. Links point to the exact living
-ledger entry.
+This is a status-preserving digest of four external-review source records. It
+does not turn a review suggestion into a result: the mathematics and physics
+charter still requires a declared arm and named verdict. Links point to the exact
+living ledger entry.
 
 ## Status key
 
