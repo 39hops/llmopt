@@ -13,7 +13,11 @@ claim below carries the command that shows it.
 | Commit | What | How to audit in one command |
 |---|---|---|
 | `5673ec0` | AMENDMENT P4-DEVICE-SCOPE + `docs/REPRODUCE.md` clarification | `.venv/bin/python scripts/results_query.py --chain p4-device-scope` |
-| `<this>` | Doc-integrity guard + axiom relay + these notes | `.venv/bin/python tests/test_docs_integrity.py` |
+| `78f9c57` | Doc-integrity guard (2 tests, both verified failable) | `.venv/bin/python tests/test_docs_integrity.py` |
+| `1c8f523` | axiom relay + this audit sheet | read `docs/superpowers/relay/2026-08-02-0-axiom-docs-ask.md` |
+| `<docs>` | README organizing-principle clause + FINDINGS cross-lab reachability note (Grok #2, #3) | `git show --stat` |
+| `<probe>` | `scratch/probe_int_device_parity.py` | `.venv/bin/python scratch/probe_int_device_parity.py` |
+| `<rider>` | RIDER: GPU parity measured on MPS **and** CUDA, 8/8 each | `.venv/bin/python scripts/results_query.py --chain p4-device-scope` |
 
 Full suite after both: **450 passed, 7 skipped** (was 448; the two new
 ones are mine).
@@ -89,11 +93,10 @@ the lab currently owns and it is invisible externally.
   `docs/REPRODUCE.md:106`, but `docs/FINDINGS.md:443` carries a
   `[REPLICATED]` axiom claim with no pointer to it. An external reader
   meets the strong tag without the caveat.
-- **MPS leg of the battery** — banked in the amendment, not run.
-  Pre-register first. Known work: thread a device through the
-  birth/draw path and `.cpu()` before `.numpy()` at the digest points.
-- **CUDA parity of the primitives** — UNTESTED and untestable from
-  here; needs the 3080, which needs Artin's GO.
+- **Full GPU leg of the battery** (pinned-sha trajectory, not just
+  primitives) — banked, not run. Pre-register first. Known work:
+  thread a device through the birth/draw path and `.cpu()` before
+  `.numpy()` at the digest points; bar = the 16 pinned FINAL shas.
 
 ## What I did not touch
 

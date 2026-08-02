@@ -15206,3 +15206,40 @@ n=1; it establishes PORTABILITY IS PLAUSIBLE, not that
 the full trajectory transports. Only the pinned-sha leg
 can establish that. Reviewer: Opus 5 (read-only seat,
 findings are proposals); Fable audits before adoption.
+
+## RIDER on AMENDMENT P4-DEVICE-SCOPE: the GPU probe fires on BOTH accelerators — every integer-battery primitive is bit-identical to CPU on Apple MPS and on NVIDIA CUDA (2026-08-02, Mac + 3080 via wsl.sh, Opus-5 review branch)
+
+scratch/probe_int_device_parity.py, same file both legs
+(extracted from origin/opus-5), same seed 17, same shapes,
+same battery code (both checkouts at main's detbwd_r2b):
+  Mac,  torch 2.12.1,      device mps : 8/8 BIT-IDENTICAL
+  3080, torch 2.13.0+cu130, device cuda: 8/8 BIT-IDENTICAL
+Primitives covered: int_mm, rdiv, softmax_rows, softmax_bwd,
+rms_fwd, its rms_isq, rms_bwd dx and dg — the complete
+integer op set the forward and backward chain uses.
+Bonus cross-device fact: the exp table sha printed on both
+machines is the same bytes (9b8649244ca8c235), so the
+shipped-tables doctrine transports as written.
+READ: the amendment's prediction holds on the first try.
+Integer addition is associative and exact, so reduction
+ORDER — the wedge that makes fp cross-device comparison
+illegal on this instrument (R0 TF32 null) — cannot move an
+integer value, and neither GPU vendor's kernels move one
+here. The battery is CPU-only by PLUMBING, now measured on
+two accelerators rather than argued.
+PROVENANCE (remote-ops doctrine): the 3080 checkout was
+synced git pull --ff-only and its HEAD hash VERIFIED equal
+to the Mac's main (7ab8837) BEFORE the run; the probe
+shipped as a single git-extracted file, was removed after,
+and the remote scratch/ tree was confirmed clean (0
+modified). TORCH_DISABLE_NATIVE_JIT=1 per the in-tree WSL
+rule. Short test on Artin's explicit GO; no long job.
+FENCE, and it is the whole fence: this is PRIMITIVES at
+n=1 seed and one shape pair. It does NOT establish
+trajectory transport. The pinned-sha GPU leg (thread a
+device through the birth/draw path; .cpu() before .numpy()
+at digest points; bar = the 16 pinned FINAL shas unchanged)
+stays BANKED and unrun — pre-register before firing. Until
+that lands, "2 devices" in the P4 verdicts still means two
+CPU architectures. Reviewer: Opus 5; findings are proposals
+until Fable audits.
