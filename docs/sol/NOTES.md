@@ -154,7 +154,9 @@ dose curve or a binary AO1 rerun.
   is recorded in `docs/sol/RESULTS-SOL.md`.
 - Audit found the maturity retraction heuristic attached object-directed
   retirement language to the acting entry. Commit
-  `f52af0cbc16062ef79ef6cdcae21deece68ddd98` adds real-entry direction tests
-  and regenerates the Sol-only views: CE-GATE is an honest null, QK-RESCOPE is
-  the standing measured verdict, and QK-COND is superseded. The same root fix
-  removes a latent false supersession from the standing QK-RESCOPE rider.
+  `f52af0cbc16062ef79ef6cdcae21deece68ddd98` plus direction-overlap guard
+  `64867fbc79e503e462a47016d2e9f75eda1bab92` add real-entry direction tests and
+  regenerate the Sol-only views:
+  CE-GATE is an honest null, QK-RESCOPE is the standing measured verdict, and
+  QK-COND is superseded. The same root fix removes a latent false supersession
+  from the standing QK-RESCOPE rider.

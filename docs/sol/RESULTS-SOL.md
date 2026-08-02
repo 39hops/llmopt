@@ -525,11 +525,13 @@ by `git range-diff 32b05cd..fdeaa97 7af3572..f309b69`:
 
 Audit then reproduced the maturity classifier's direction error. The old
 whole-title match assigned retirement language to the current entry even when
-that entry acted on an amended target. Commit
-`f52af0cbc16062ef79ef6cdcae21deece68ddd98` makes self-retraction require the
-current entry as grammatical subject, makes target retirement require an
-action rather than a referenced name, and gives explicit strong lineage
-priority over descriptive failure words. The regenerated 621-entry view now
+that entry acted on an amended target. Commits
+`f52af0cbc16062ef79ef6cdcae21deece68ddd98` and
+`64867fbc79e503e462a47016d2e9f75eda1bab92` make self-retraction
+require the current entry as grammatical subject, prevent self-retraction from
+also acting on an amended target, make target retirement require an action
+rather than a referenced name, and give explicit strong lineage priority over
+descriptive failure words. The regenerated 621-entry view now
 has CE-GATE `retracted -> null`, QK-RESCOPE `retracted -> measured`, and
 QK-COND `null -> superseded`. It also corrects the same latent direction error
 on the standing QK-RESCOPE rider (`superseded -> measured`); its PARAMS
