@@ -456,3 +456,40 @@ Decision rule: every one of A0, A1, A2, A3, CA0, CA1, CA2, CA3, GA0, GA2,
 GA3, RB1, RB3, RB1S16, GRB1, and S1 must reproduce its exact default pin. Any
 mismatch blocks completion. No treatment may fire as a consequence of this
 check, and the measured metrics and booked AO1 null remain unchanged.
+
+## REGRESSION RECEIPT SOL-GRAVMOE-AO1/FINAL-FIX: ambient treatment scrub preserves 16/16 default pins (2026-08-01, Mac)
+
+The pre-registered default replay passed its stop rule: A0, A1, A2, A3, CA0,
+CA1, CA2, CA3, GA0, GA2, GA3, RB1, RB3, RB1S16, GRB1, and S1 each reproduced
+its exact committed trajectory SHA. The run checked out pre-registration SHA
+`9995ac809cbf5dfbe55c464d5d25cd81c78df22a`; the last executable-code change
+was `85b67edf2f41d62bf15854ed78c29856157631aa`.
+
+Exact Mac-local command:
+
+```bash
+mkdir -p logs/sol
+zsh -o pipefail -c 'export RJOB_LOCAL=1 ANSWER_ONLY=1; bash <(sed \
+  "s|^PY=.*$|PY=/Users/artin/code/llmopt/.venv/bin/python|" \
+  scratch/p4_arms_0801.sh) 2>&1 | tee logs/sol/answer_only_finalfix_pins.log'
+```
+
+Evidence artifacts and input identities:
+
+- Aggregate log: `logs/sol/answer_only_finalfix_pins.log`, SHA
+  `7dc293c247946487216745994d2a16e0260152badb38ee82d5e84300d585ef1e`.
+- GRB1 log: `logs/p4/GRB1.log`, SHA
+  `6346254be30b050146cd066b8142683031190b40442264dfa64236a7cd6758d9`.
+- Diet SHA: `809bce4215a24164ecbf5e951d77507d455bfd1923d08fe39aa02942b11a200b`.
+- TRAIN-row SHA:
+  `32cc244bf28fdadf01b343ae16fe1a55200ffe9fab9bd784e8abd739b12ef2c0`.
+- Full 16-row SHA:
+  `78f8aef992debe6ec74e4701fba23167ff5fda1d4294546b9f7621605429798a`.
+
+The gate logs report `ANSWER_ONLY 0` despite the exported ambient value and
+contain no `ANSWER_ONLY 1`. GRB1 reproduced trajectory SHA
+`1fcfd187873d980c7c082a56c0f380ce2c40a859eab1e8a0c9dcf6baa4853eca`.
+Its continuity card is unchanged: TRAIN `2/8` solves, `5/8` parseable, `6/8`
+terminated, `94/140` standard and `79/116` suffix tokens; HELDOUT `0/8`,
+`2/8`, `7/8`, `47/140`, and `30/88`, respectively. This replay is default
+regression evidence only; it neither fires treatment nor changes the AO1 null.
