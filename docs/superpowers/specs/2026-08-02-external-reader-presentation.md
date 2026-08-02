@@ -1,7 +1,9 @@
 # External-reader presentation design
 
 **Date:** 2026-08-02
+
 **Branch:** `sol/present-1`
+
 **Status:** approved design; implementation pending
 
 ## Objective
