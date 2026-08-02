@@ -19,9 +19,9 @@ PINS = ROOT / "scratch" / "detbwd_gmoe_ref" / "pins.json"
 RUNNER = ROOT / "scratch" / "detbwd_gravmoe.py"
 FINAL_PREFIX = "[gmoe] FINAL trajectory sha "
 CONTRACT_ENV = {
-    "ACLAMP", "COND", "DHEAD", "DIM", "E", "EXPORT", "FFN", "GATE",
-    "GB", "K", "LD", "LN", "NBLK", "QK", "SCHED", "SHIFT", "SS",
-    "SSW", "STEPS", "TAU", "TWIN",
+    "ACLAMP", "ANSWER_ONLY", "COND", "DHEAD", "DIM", "E", "EXPORT", "FFN",
+    "GATE", "GB", "K", "LD", "LN", "NBLK", "QK", "SCHED", "SHIFT",
+    "SS", "SSW", "STEPS", "TAU", "TWIN",
 }
 
 

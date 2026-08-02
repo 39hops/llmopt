@@ -1,7 +1,7 @@
 # Sol answer-only gate design
 
-**Date:** 2026-08-01  
-**Branch:** `sol/review-2`  
+**Date:** 2026-08-01
+**Branch:** `sol/review-2`
 **Status:** approved design; no experiment may fire before the Sol ledger pre-registration
 
 ## Question

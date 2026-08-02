@@ -74,10 +74,14 @@ def test_gate_sha_drift_stops_before_model_construction(
     assert not model_constructed
 
 
-def _sleeping_worker(q):
+def _sleeping_worker(sender):
     import time
     time.sleep(10)
-    q.put("late")
+    sender.send("late")
+
+
+def _echo_worker(sender, value):
+    sender.send(value)
 
 
 def test_answer_region_includes_one_terminator_only():
@@ -114,6 +118,10 @@ def test_sympy_assess_separates_parseability_and_equivalence():
     assert G.sympy_assess("(", "2*x") == (False, False)
 
 
+def test_fork_call_delivers_success_over_pipe():
+    assert G._fork_call(_echo_worker, ("delivered",), timeout=1) == "delivered"
+
+
 def test_fork_deadline_kills_worker_without_alarm():
     import time
     t0 = time.monotonic()
@@ -121,7 +129,7 @@ def test_fork_deadline_kills_worker_without_alarm():
     assert time.monotonic() - t0 < 1.0
 
 
-def test_gate_returns_padding_aware_oracle_metrics():
+def test_gate_returns_padding_aware_oracle_metrics(capsys):
     class Model:
         def fwd(self, w, tab):
             logits = torch.zeros((G.T, G.V), dtype=torch.int64)
@@ -157,6 +165,10 @@ def test_gate_returns_padding_aware_oracle_metrics():
         "suffix_hits": 3,
         "suffix_total": 3,
     }
+    assert capsys.readouterr().out == (
+        "[gate] TEST: solves 1/1 parseable 1/1 terminated 1/1\n"
+        "[gate] TEST: token-acc standard 3/29 suffix 3/3\n"
+    )
 
 
 def test_prompt_disjoint_guard():

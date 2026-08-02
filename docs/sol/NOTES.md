@@ -45,12 +45,13 @@ answer-region convention. Nothing here establishes a general ML law.
 
 ### Ranked findings
 
-1. **Claim:** The mechanism-level hypothesis is that answer prioritization
-   fails here only when scaffold weight is driven to zero: retaining scaffold
-   weight `1/4` while keeping answer weight `1` will recover at least the REG
-   TRAIN baselines of `2/8` solves and `79/116` suffix tokens. **Evidence:**
-   binary AO1 reaches `0/8` and `60/116`, below those REG baselines. The 16-arm
-   REG command is the Mac-local
+1. **Claim:** Scaffold-token parameter gradients positively align with
+   answer-token parameter gradients at the fixed birth, so zeroing scaffold
+   loss removes useful answer-learning signal rather than merely a formatting
+   signal. **Evidence:** binary AO1 reaches `0/8` solves and `60/116` suffix
+   tokens versus REG's `2/8` and `79/116`; TRAIN parseability is unchanged at
+   `5/8` and termination improves `6/8 -> 7/8`. The 16-arm REG command is the
+   Mac-local
    `RJOB_LOCAL=1` invocation of `scratch/p4_arms_0801.sh`, recorded in
    `logs/sol/answer_only_pins.log` with GRB1 detail in `logs/p4/GRB1.log`;
    all 16 default pins reproduce exactly and REG trajectory SHA is
@@ -60,48 +61,48 @@ answer-region convention. Nothing here establishes a general ML law.
    scratch/detbwd_gravmoe.py`, recorded in
    `logs/sol/answer_only_ao1.log`, with trajectory SHA
    `3a219ebed65154c19c854e15ec7fbba72596ab66793c9aca27b6d53e9bd95a3b`.
-   **Confidence:** low: the hypothesis is motivated by one binary contrast and
-   is not itself measured. **Cheapest house experiment:** pre-register exactly
-   one new soft-scaffold arm with answer weight `1` and scaffold weight `1/4`
-   at the same pinned gate. A result with both at least `2/8` TRAIN solves and
-   at least `79/116` suffix accuracy confirms the claim; failure to reach
-   either threshold kills it. This is a distinct mechanism, not permission to
-   rerun booked binary AO1 or launch a dose curve.
-
-2. **Claim:** The mechanism-level hypothesis is that scaffold-token gradients
-   positively align with answer-token gradients at the fixed birth, so zeroing
-   scaffold loss removes useful answer-learning signal rather than merely a
-   formatting signal. **Evidence:** under the same exact REG/AO1 commands,
-   logs, code/data/row SHAs, and trajectory SHAs above, TRAIN parseability is
-   unchanged at `5/8` and termination improves `6/8 -> 7/8`, while solves fall
-   `2/8 -> 0/8` and suffix accuracy falls `79/116 -> 60/116`. The registered
-   rule in `docs/sol/RESULTS-SOL.md` therefore selects null, not format failure.
-   **Confidence:** medium-low because these aggregate readouts motivate but do
-   not measure gradient alignment. **Cheapest house experiment:** run one
+   The registered rule in `docs/sol/RESULTS-SOL.md` therefore selects null, not
+   format failure. **Confidence:** medium-low because these aggregate readouts
+   motivate but do not measure gradient alignment. **Cheapest house
+   experiment:** run one
    no-training, fixed-birth diagnostic that separately computes scaffold-token
    and answer-token parameter gradients for each of the eight pinned TRAIN
    rows. A positive median cosine with at least `6/8` row cosines positive
    confirms the claim; a non-positive median, fewer than `6/8` positive rows,
    or an undefined cosine from a zero gradient kills it. This does not rerun
-   AO1.
+   AO1 and is the sole next step eligible under the current approved design.
 
-3. **Claim:** The held-out mechanism hypothesis is that retaining scaffold
-   weight `1/4` will recover at least the REG HELDOUT construction baselines of
-   `2/8` parseable continuations and `30/88` suffix tokens, even though neither
-   fixed arm currently solves a HELDOUT row. **Evidence:** REG and binary AO1
-   both solve `0/8`; AO1 falls to `1/8` parseable from REG's `2/8` and to
+2. **Claim:** At exactly scaffold weight `1/4` and answer weight `1`, a
+   soft-scaffold arm will recover at least the REG TRAIN baselines of `2/8`
+   solves and `79/116` suffix tokens. This is a prediction about that one
+   weight pair, not a dose-curve or nonzero-weight law. **Evidence:** binary AO1
+   reaches `0/8` and `60/116`, below those REG baselines, under the exact
+   commands, logs, and SHAs in finding 1. **Confidence:** low because one binary
+   contrast does not measure the `1/4` point. **Eligibility:** **UNAPPROVED**
+   under the current design, which permits weighting only after a binary win.
+   It may be tested only if a fresh approved design explicitly supersedes that
+   boundary. If so, both at least `2/8` TRAIN solves and at least `79/116`
+   suffix accuracy confirm this exact prediction; failure on either threshold
+   kills it.
+
+3. **Claim:** At exactly scaffold weight `1/4` and answer weight `1`, the same
+   soft-scaffold arm will recover at least the REG HELDOUT construction
+   baselines of `2/8` parseable continuations and `30/88` suffix tokens, even
+   though neither fixed arm currently solves a HELDOUT row. **Evidence:** REG
+   and binary AO1 both solve `0/8`; AO1 falls to `1/8` parseable from REG's
+   `2/8` and to
    `23/88` suffix accuracy from REG's `30/88`. These are the HELDOUT lines in
    `logs/p4/GRB1.log` and `logs/sol/answer_only_ao1.log` under the exact
    commands and lineage SHAs above; the TRAIN/FULL row SHAs are
    `32cc244bf28fdadf01b343ae16fe1a55200ffe9fab9bd784e8abd739b12ef2c0`
    and `78f8aef992debe6ec74e4701fba23167ff5fda1d4294546b9f7621605429798a`.
    **Confidence:** low: this extrapolates from one binary treatment and eight
-   HELDOUT prompts. **Cheapest house experiment:** use the same single
-   pre-registered `1/4` soft-scaffold arm named in finding 1 and read its already
-   required eight-row HELDOUT card. At least `2/8` parseable continuations and
-   at least `30/88` suffix accuracy confirms the claim; failure to reach either
-   threshold kills it. This is one unconditional new-mechanism arm, not a
-   second-stage experiment or a binary AO1 rerun.
+   HELDOUT prompts. **Eligibility:** **UNAPPROVED** under the current design and
+   not a current next step. Only a fresh approved design that explicitly
+   supersedes the weighting boundary may authorize the arm; its already
+   required HELDOUT card would confirm this exact prediction at both at least
+   `2/8` parseable continuations and at least `30/88` suffix accuracy, with
+   failure on either threshold killing it.
 
 4. **Claim:** The gate is now fail-closed against data or row drift, but this
    integrity property was missing before the Sol fix. **Evidence:** commit
@@ -119,28 +120,27 @@ answer-region convention. Nothing here establishes a general ML law.
 
 ### With more budget
 
-Do not repeat binary AO1: its null is booked. The next training allocation, if
-the house wants to test a new mechanism, should be one pre-registered
-soft-scaffold arm (`1/4` scaffold weight, answer weight `1`) with the same
-integrity pins and decision metrics, preceded by the no-training gradient
-alignment diagnostic. A discovery-level TRAIN win should then receive paired
-seed confirmation before any dose curve, expanded held-out evaluation, or
-general claim. Another null should close this fixed-gate allocation family
-rather than trigger a seed rerun.
+Do not repeat binary AO1: its null is booked. The sole currently eligible next
+step is the no-training, fixed-birth gradient-alignment diagnostic in finding
+1. The exact `1/4` scaffold-weight training arm is **UNAPPROVED** because the
+approved design permits weighting only after a binary win. Do not schedule or
+run it unless a fresh approved design explicitly supersedes that boundary. If
+such a design is later approved, it must pre-register the single exact weight
+pair and its integrity pins and decision metrics; it is not permission for a
+dose curve or a binary AO1 rerun.
 
 ### House experiment-code audit
 
 - Broken code found and fixed on this Sol branch: the original locked gate did
   not assert diet, TRAIN-row, and full-row SHAs before model construction.
   Commit `5517a7f01a3340c11401551504b76d42301c8d18` adds those assertions and
-  focused drift regressions. No other broken experiment code was observed.
-- Non-blocking robustness note: `_fork_call` reads a joined multiprocessing
-  queue through `Queue.empty()`. It worked for every small SymPy result here,
-  but a pipe or an exception-safe blocking read would provide a stronger
-  cross-platform delivery contract. This is not evidence of a measured result
-  error.
-- Non-blocking receipt note: the returned gate counters are asserted, but the
-  exact two-line textual print format is not captured in a dedicated test.
-  Current retained logs contain the expected text; a small `capsys` regression
-  would protect external log parsers without changing any mathematical
-  readout.
+  focused drift regressions.
+- Final-review fix: default reproduction previously inherited ambient
+  `ANSWER_ONLY=1`. The Python reproduction environment and the 16-pin launcher
+  now scrub that treatment knob, with focused coverage at both boundaries.
+- Final-review robustness fix: `_fork_call` now receives the small SymPy result
+  over a one-way pipe with a bounded deadline, forced kill, and join; focused
+  tests cover delivery, parse/equivalence, and timeout.
+- Final-review receipt fix: the returned gate counters and the exact stable
+  two-line stdout contract are both asserted with `capsys`. None of these
+  repairs changes a measured metric or the booked null verdict.

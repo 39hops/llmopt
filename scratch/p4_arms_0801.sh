@@ -6,6 +6,7 @@
 set -u
 PY=.venv/bin/python
 export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 TORCH_DISABLE_NATIVE_JIT=1
+unset ANSWER_ONLY
 mkdir -p logs/p4
 
 # arm-name | env | expected FINAL trajectory sha (Mac pins)

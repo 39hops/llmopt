@@ -393,26 +393,41 @@ def draw_complete(n, diet_path=None):
 
 def _fork_call(worker, args, timeout):
     import multiprocessing as mp
+    import time
     ctx = mp.get_context("fork")
-    q = ctx.Queue()
-    p = ctx.Process(target=worker, args=(q, *args))
+    receiver, sender = ctx.Pipe(duplex=False)
+    p = ctx.Process(target=worker, args=(sender, *args))
+    deadline = time.monotonic() + timeout
     p.start()
-    p.join(timeout)
-    if p.is_alive():
-        p.kill()
-        p.join()
-        return None
-    return q.get() if not q.empty() else None
+    sender.close()
+    result = None
+    try:
+        if receiver.poll(timeout):
+            try:
+                result = receiver.recv()
+            except (EOFError, OSError):
+                result = None
+        p.join(max(0.0, deadline - time.monotonic()))
+        if p.is_alive():
+            p.kill()
+            p.join()
+            return None
+        return result
+    finally:
+        receiver.close()
+        if p.is_alive():
+            p.kill()
+            p.join()
 
 
-def _sympy_worker(q, a, b):
+def _sympy_worker(sender, a, b):
     try:
         import sympy as sp
         ea = sp.sympify(a)
         eb = sp.sympify(b)
-        q.put((True, bool(sp.simplify(ea - eb) == 0)))
+        sender.send((True, bool(sp.simplify(ea - eb) == 0)))
     except Exception:
-        q.put((False, False))
+        sender.send((False, False))
 
 
 def sympy_assess(a, b, timeout=10):
