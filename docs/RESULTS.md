@@ -15049,3 +15049,75 @@ cycling now integer-closed everywhere. Schema note
 booked honestly: the artifact schema itself was the
 first FAIL (relay -6; house defect — the relay never
 pinned it); fixed same day.
+
+## AMENDMENT RMS-HEADROOM (amends VERDICT GRAVMOE-BRUTE-B/C): the "~80 Q-unit overflow guard" was an EVALUATION-ORDER artifact, not an inherent int64 ceiling — exact scale factoring removes it losslessly (2026-08-01, Mac; Sol branch, house-verified)
+
+The B/C verdict booked ACT_CLAMP as rms_fwd's int64
+overflow guard with an inherent safe bound of ~80
+Q-units (mean-sq < 2^31 before the << 32). Sol's
+branch proved the sharper reading: at Q=512, Q^2=2^18
+divides 2^32 EXACTLY, so
+  (s2//D) * 2^32 // Q^2  ==  (s2//D) * 2^14
+bit-for-bit wherever the legacy form is in range — the
+multiply-first order was simply throwing away 18 bits
+of headroom. The factored primitive
+(llmopt/intmath.py: mean_square_q32 / rms_isqrt_q16)
+is in range to mean-sq ~2^49, rejects any q whose
+ratio is non-integral (rounding placement stays
+contract text), and RAISES OverflowError past range
+instead of wrapping (the W4c crash class is a tripwire
+now, not a divide-by-zero). House verification:
+independent G-RB1 regression (1fcfd187 EXACT) ran
+BEFORE reading Sol's claims; Sol's own gate replayed
+all 16 pins twice (pre- and post-rebase receipts).
+What stands from B/C: the W4c crash observation, the
+measured clamp-demand sweep, and the closing
+capability verdict (data-bound, G-RB1 optimum) — none
+depended on the ceiling reading. What falls: "true
+width scaling needs an rms_fwd headroom rung" — that
+rung is DONE, it cost one refactor. Attribution: Sol
+(GPT 5.6, sol/review-1), house line-by-line verified.
+
+## VERDICT SOL-ADOPTION-1: the Sol branch is ADOPTED onto main (ff to f1d317c) — RMS primitive, reproduce module, maturity views, and the ANSWER-ONLY NULL, all house-verified (2026-08-01, Mac)
+
+Adopted after line-by-line review + independent runs:
+(1) llmopt/intmath RMS primitives + detbwd_r2b adoption
+    (see AMENDMENT RMS-HEADROOM above).
+(2) llmopt/reproduce — one-command pinned-sha
+    reproduction; house ran it live: PASS gravmoe-rb1,
+    sha c6766da2 EXACT, 81.7s; --list covers all 16
+    pins. This is the repo's minimal reproduction path
+    (external readers asked; now it exists).
+(3) docs/sol/ maturity views (621 entries enriched,
+    explicit=51/inferred=570 provenance, generated
+    tables). House audit caught a direction-blind
+    "retracted" classifier (QK-RESCOPE marked retracted
+    for containing "RETIRED" — it is the RETIRER);
+    Sol fixed it with direction regressions in
+    tests/ before adoption. Labels remain PROPOSALS
+    (inferred heuristics, not house verdicts) until
+    individually promoted.
+(4) NULL SOL-GRAVMOE-AO1 re-booked house-side: binary
+    answer-only loss allocation on the G-RB1 gate is a
+    NULL in the strong direction — TRAIN 2/8 -> 0/8,
+    suffix-only token-acc 79/116 -> 60/116 with format
+    diagnostics INTACT (parseable flat 5/8, termination
+    up 6->7/8), so the pre-registered format-failure
+    branch does not fire; the capability itself fell.
+    AO1 sha 3a219ebe; 16/16 pin regression both sides
+    of the cell; suffix-only readout (house amendment
+    to the design) was the selector, exactly as
+    pre-registered. READ, consistent with VERDICT
+    GRAVMOE-BRUTE (closing): in a DATA-BOUND regime,
+    masking scaffold tokens deletes supervised signal
+    the model was living on — loss allocation is not
+    the free-run lever at this diet either. The
+    exposure-bias program now has three closed doors
+    (SS, brute compute, loss allocation) and one open
+    one: WIDER DIET. n=1, format-bound fences as
+    booked in docs/sol/RESULTS-SOL.md (the evidence
+    record; logs copied to logs/sol/).
+Division-of-labor note for the ledger: this adoption
+validates the branch protocol — proposals with shas
+attached, house verification cheap (one diff + two
+runs), zero living-ledger contamination.
