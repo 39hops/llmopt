@@ -15243,3 +15243,39 @@ stays BANKED and unrun — pre-register before firing. Until
 that lands, "2 devices" in the P4 verdicts still means two
 CPU architectures. Reviewer: Opus 5; findings are proposals
 until Fable audits.
+
+## RIDER #2 on AMENDMENT P4-DEVICE-SCOPE: the device plumbing EXISTED at the R1/R2 rungs and was dropped as the chain grew — the GPU leg is a RESTORATION, not new capability (2026-08-02, Mac, Opus-5 review branch)
+
+Reviewer self-check while curating FINDINGS, and it
+corrects the amendment's framing: scratch/detbwd_r1.py:89
+and scratch/detbwd_r2_adamw.py:105 BOTH auto-select the
+accelerator — dev = "cuda" if torch.cuda.is_available()
+else "cpu" — and draw on CPU before moving (their own
+booked lesson: device RNG streams differ). So VERDICT
+DETERMINISTIC-BIRTH R2's headline, "bit-identical
+Mac-cpu = 3080-cuda", is EXACT AS WRITTEN: that rung
+genuinely trained integers on the GPU, and the FINDINGS
+bullet citing it needs no correction.
+WHAT THIS CHANGES: AMENDMENT P4-DEVICE-SCOPE said the
+battery is "CPU-only by plumbing". True of the gravmoe
+chain (detbwd_r2b / detbwd_mb / detbwd_gravmoe carry no
+device argument), but the LADDER did not lack the
+plumbing — it LOST it. Device selection was present at
+R1/R2 and absent from every rung built after. That is an
+instrument REGRESSION, not an absent capability, and it
+is a better description of the same facts.
+CONSEQUENCE: the banked GPU leg is cheaper than the
+amendment estimated — the pattern to restore is already
+in-tree and already carries the draw-on-CPU-then-move
+rule that the R1a/R1b lesson paid for. Both rider legs
+now point the same way: primitives measured exact on MPS
+and CUDA (RIDER #1), and the plumbing pattern proven at
+an earlier rung (here). Still BANKED, still unrun,
+still wants a pre-registration; "2 devices" in the P4
+verdicts still means two CPU architectures until a
+pinned-sha GPU trajectory lands.
+METHOD NOTE for the ledger: this is the second time in
+one review that checking a claim against the code
+inverted the reviewer's own framing (the first: "CPU-only
+by construction", falsified by the MPS probe). Both are
+booked rather than quietly fixed, per house practice.

@@ -65,18 +65,34 @@ booked.
    than anything FINDINGS cites, capped at the measured backlog of
    **10**. May fall freely; raising it needs a stated reason.
 
-## Finding 3 — FINDINGS is 19 entries stale [NOT FIXED — yours]
+## Finding 3 — FINDINGS staleness [FIXED on Artin's GO; audit the claims]
 
-I deliberately did not write FINDINGS bullets. Curating verdicts onto
-the public layer is a judgement call about what the lab claims, and
-that is the house's call, not a reviewer's. The ratchet above will
-keep reminding you. The uncurated set (run the standalone report):
-QK-RESCOPE, NULL GRAVMOE-SS, the rider, BRUTE leg 1, BRUTE-B/C,
-BRUTE closing, **P4-DEVICE**, **P4-LAB**, SOL-ADOPTION-1, -2.
+Backlog 10 -> **0**. Eleven bullets appended to "The clock-placement
+and deterministic-birth close", covering all ten entries: both P4
+verdicts, QK-RESCOPE and its gate rider, the three exposure-bias
+nulls (scheduled sampling, brute compute, answer-only allocation),
+the decay and ACT_CLAMP mechanisms, the E=1-parity-blindness
+methods finding, and the GPU primitive probe.
 
-The two P4 entries are the ones I would curate first: the ladder
-closing at three implementations and two labs is the strongest claim
-the lab currently owns and it is invisible externally.
+**Audit these first** — I wrote claims about the lab's own results,
+which is the part of this session most worth a second pair of eyes:
+
+- every number was re-read out of RESULTS.md before it was written
+  (`825,984` / `208,192`, `56 -> 94/140`, `8883 -> 2496`,
+  `2/8 -> 0/8`), not recalled from the session;
+- the P4 bullet uses the AMENDED device wording, not the original;
+- no bullet claims anything the cited entry does not.
+
+I did NOT re-curate anything Sol wrote, and I did not touch the
+maturity tags on existing bullets.
+
+**A defect I introduced and then guarded**: three of my bullets
+wrapped `[REGIME-SCOPED: deterministic integer battery]` across a
+line break. Semantically fine, invisible to grep — exactly the
+vocabulary drift the controlled list exists to prevent. Fixed, and
+`test_findings_tag_grammar` now catches it (verified failable on
+that precise defect). The guard did not exist when I made the
+mistake; my manual check found it, so the check became a test.
 
 ## Proposals I did NOT act on (waiting on Artin/Fable)
 

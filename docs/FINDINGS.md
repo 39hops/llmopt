@@ -504,3 +504,69 @@ Read `[REPLICATED]` on those bullets accordingly.
   axiom C++ implementation; independent devices and implementation are the
   route. ([VERDICT DETERMINISTIC-BIRTH R2](RESULTS.md#L13255); [RECEIPT R2 C++
   LEG](RESULTS.md#L13502).)
+- [REPLICATED] [REGIME-SCOPED: deterministic integer battery] All sixteen
+  pinned gravmoe trajectory hashes reproduced on a second machine; the route
+  is an independent machine with a different CPU architecture, and both legs
+  ran on CPU, so this is narrower than GPU transport. ([VERDICT
+  GRAVMOE-P4-DEVICE](RESULTS.md#L14889); [AMENDMENT
+  P4-DEVICE-SCOPE](RESULTS.md#L15160).)
+- [REPLICATED] [REGIME-SCOPED: deterministic integer battery] Ten of those
+  same pinned hashes reproduced inside axiom's independent C++ engine after
+  one rounding-placement fix; the route is an independent implementation.
+  ([VERDICT GRAVMOE-P4-LAB](RESULTS.md#L15015).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery] A
+  reduce-to-one-expert parity gate cannot see the gate-backward rounding
+  placement it was trusted to cover: the folded and pre-rounded forms are
+  equal whenever a single expert routes, so only the cross-implementation
+  hash pins could expose the defect. ([VERDICT
+  GRAVMOE-P4-LAB](RESULTS.md#L15015).)
+- [SINGLE-SEED] [REGIME-SCOPED: deterministic integer battery] At one seed
+  and shape pair, every integer primitive in the battery's forward and
+  backward chain returned bit-identical results on Apple MPS and on NVIDIA
+  CUDA against CPU; this covers primitives only, and no pinned trajectory has
+  been run on a GPU. ([RIDER on AMENDMENT
+  P4-DEVICE-SCOPE](RESULTS.md#L15210).)
+- [SINGLE-SEED] [TEACHER-FORCED]
+  [REGIME-SCOPED: deterministic integer battery]
+  At n=1 seed and window set, drawing only the query and key
+  matrices at the softer initialization bound cut battery loss from 8883 to
+  2496; the earlier arm's booked 73% loss increase belonged to four other
+  matrix families softened alongside them, and the reading that peaked
+  attention is load-bearing was retired rather than qualified. ([VERDICT
+  QK-RESCOPE](RESULTS.md#L14658).)
+- [SINGLE-SEED] [FREE-RUN-GATED]
+  [REGIME-SCOPED: deterministic integer battery]
+  That same initialization produced the battery's first nonzero
+  oracle solves — two of eight training rows symbolically verified, free-run
+  token accuracy 56 to 94 of 140 — so the loss win survived the free-run
+  gate; held-out solves stayed at zero of eight in this memorization regime.
+  ([RIDER on VERDICT QK-RESCOPE](RESULTS.md#L14731).)
+- [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
+  One-step scheduled sampling halved free-run token accuracy, 56 to 22 of
+  140, and doubled teacher-forced loss, so the registered exposure-bias
+  treatment missed its bar at this scale. ([NULL
+  GRAVMOE-SS](RESULTS.md#L14703).)
+- [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
+  Four times the training steps and four times the parameters both failed to
+  convert: the 825,984-parameter arm solved zero of eight where the
+  208,192-parameter baseline solved two, so at this diet the residual
+  free-run gap is neither compute nor capacity. ([VERDICT GRAVMOE-BRUTE,
+  closing](RESULTS.md#L14986); [leg 1](RESULTS.md#L14856).)
+- [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
+  Masking the loss to the answer region removed the solves as well, two of
+  eight to zero of eight, while format diagnostics stayed intact —
+  parseability flat and termination improved — so the registered
+  format-failure branch did not apply and the loss was capability, not
+  formatting. ([VERDICT SOL-ADOPTION-1](RESULTS.md#L15081).)
+- [MECHANISM-CONFIRMED] [TEACHER-FORCED]
+  [REGIME-SCOPED: deterministic integer battery]
+  A paired 8000-step arm diverged at constant learning rate
+  and stayed bounded under integer decay, with both arms bit-identical until
+  the first decay point; long integer runs measure the schedule unless decay
+  is present. ([VERDICT GRAVMOE-BRUTE-B/C](RESULTS.md#L14936).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery] The
+  activation clamp was an integer overflow guard for the norm's mean-square
+  scaling, and the crash a raised clamp produced was an evaluation-order
+  artifact: factoring the scale exactly removed it with every pinned
+  trajectory unchanged. ([VERDICT GRAVMOE-BRUTE-B/C](RESULTS.md#L14936);
+  [AMENDMENT RMS-HEADROOM](RESULTS.md#L15053).)

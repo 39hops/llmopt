@@ -27,10 +27,23 @@ INDEX = ROOT / "docs/results-index.jsonl"
 # amendments, and riders qualify their parents rather than standing alone.
 CURATABLE = ("verdict", "null")
 
-# Ratchet, measured 2026-08-02 on the opus-5 review branch. LOWER this as
-# FINDINGS catches up; raising it needs a note saying which verdicts were
-# deliberately left off the curated layer and why.
-MAX_UNCURATED = 10
+# Backlog slack, not a target. The measured backlog is 0; this leaves room
+# for a working session to book verdicts before curating them, so the suite
+# does not go red mid-experiment. Raising it needs a note saying which
+# verdicts were deliberately left off the curated layer and why.
+MAX_UNCURATED = 3
+
+# GLOSSARY.md is the authority for all three lists; a tag outside them is
+# either a typo or vocabulary drift, and drift is what makes the tags
+# unreadable by anything but a human.
+MATURITY = ("RETRACTED", "NULL", "MECHANISM-CONFIRMED", "REPLICATED",
+            "SINGLE-SEED")
+SCOPE = ("DEVICE-SCOPED", "FORMAT-BOUND", "TEACHER-FORCED", "FREE-RUN-GATED")
+REGIME_VALUES = (
+    "calculus search", "closed-system math", "house crystals",
+    "at-capacity house crystals", "specified diet and recipe",
+    "deterministic integer battery", "tested MoE recipes",
+    "measured deployment artifacts", "Qwen2.5-0.5B")
 
 
 def _anchors():
@@ -63,6 +76,35 @@ def test_results_anchors_land_on_entry_headings():
     assert not broken, (
         "citation(s) no longer land on a verdict heading — RESULTS.md was "
         "edited mid-file, or the anchors drifted:\n  " + "\n  ".join(broken))
+
+
+def test_findings_tag_grammar():
+    """One maturity tag per claim, and no tag outside the glossary.
+
+    A tag wrapped across a line break reads fine to a human and is
+    invisible to every grep — which is the property the controlled
+    vocabulary exists to provide. It shows up here as an unknown value.
+    """
+    bullets = re.findall(r"^- \[.*?(?=^- \[|^#|\Z)",
+                         FINDINGS.read_text(), re.S | re.M)
+    assert bullets, "no tagged bullets found — did FINDINGS change shape?"
+    problems = []
+    for bullet in bullets:
+        head = bullet.split("(")[0]
+        tags = re.findall(r"\[([A-Z][A-Z-]*(?::[^\]]*)?)\]", head)
+        first = bullet.strip().split("\n")[0][:60]
+        mats = [t for t in tags if t in MATURITY]
+        if len(mats) != 1:
+            problems.append(f"{first!r}: {len(mats)} maturity tags {mats}")
+        for tag in tags:
+            base, _, value = tag.partition(":")
+            if base not in MATURITY + SCOPE + ("REGIME-SCOPED",):
+                problems.append(f"{first!r}: unknown tag [{tag}]")
+            elif base == "REGIME-SCOPED" and value.strip() not in REGIME_VALUES:
+                problems.append(
+                    f"{first!r}: regime {value.strip()!r} is not in the "
+                    "controlled vocabulary (or the tag wrapped a line)")
+    assert not problems, "FINDINGS tag grammar:\n  " + "\n  ".join(problems)
 
 
 def test_findings_curation_backlog_does_not_grow():
