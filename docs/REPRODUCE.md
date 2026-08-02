@@ -96,8 +96,13 @@ The cross-lab implementation is the public
 [`39hops/axiom`](https://github.com/39hops/axiom) repository. The pinned
 verifier identity is axiom commit
 `8f8376d86ce6a25fdd6fee2455c220e7055cb018`, path
-`tools/int_adamw/verify_gravmoe.py`. At that verified revision, its interface
-from `tools/int_adamw` is:
+`tools/int_adamw/verify_gravmoe.py`. That verified revision is 21 commits ahead
+of the linked public origin and is unreachable there today, so a fresh public
+clone cannot obtain or run this verifier at the pinned identity. This is a
+booked cross-lab receipt, not a currently available external reproduction.
+
+In a checkout that already contains the verified revision, its interface from
+`tools/int_adamw` is:
 
 ```bash
 python verify_gravmoe.py <build_dir> <ref_dir> [arm ...]
