@@ -535,18 +535,19 @@ sessions under one operator, not independent investigators. Read
   battery loss from 8883 to 2496; the earlier arm's booked 73% increase
   belonged to four other matrix families softened with them, retiring the
   peaked-attention reading. ([VERDICT QK-RESCOPE](RESULTS.md#L14658).)
-- [REPLICATED] [FREE-RUN-GATED]
-  [REGIME-SCOPED: deterministic integer battery]
-  On the gate diet, softening the query and key draws turned zero solves
-  into two or three of eight and raised free-run token accuracy at every
-  draw; three paired initialization draws on one device and diet are the
-  route. ([RIDER on VERDICT QK-RESCOPE](RESULTS.md#L14731); [VERDICT
-  QK-SEED3](RESULTS.md#L15462).)
+- [REPLICATED] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
+  Against a COND-only control on this diet, the softer query/key draw lifted
+  TRAIN free-run solves from zero to two or three of eight at all three paired
+  init draws on one device, while HELD-OUT solves stayed at zero throughout.
+  That is a train-side gain at a low absolute level under one diet, not free-run
+  capability. ([VERDICT QK-SEED3](RESULTS.md#L15462).)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery]
   What that initialization removes is measurable before training: the share
   of zero attention probabilities at birth is about 0.89 without it and
-  exactly zero with it, at all three draws, and capability follows the
-  diagnostic rather than the seed. ([VERDICT QK-SEED3](RESULTS.md#L15462).)
+  exactly zero with it, at all three draws, so the train-side gain tracks the
+  diagnostic rather than the seed. It does not address the held-out gap, which
+  the exposure-bias cells locate in diet width. ([VERDICT
+  QK-SEED3](RESULTS.md#L15462).)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
   One-step scheduled sampling halved free-run token accuracy, 56 to 22 of
   140, and doubled teacher-forced loss, so the registered exposure-bias

@@ -15501,3 +15501,35 @@ the variance claim.
 Fence: three draws, one diet, one window set, one
 device, one architecture. n>=3 licenses the DIRECTION
 here, never generalization past this diet.
+
+## READING FENCE on VERDICT QK-SEED3: what three draws license, and the sentence they do NOT license (2026-08-02, Mac; Artin's scoping catch, Opus-5 review branch)
+
+Booked because the public layer drifted on first
+writing and a reader quotes the public layer.
+WHAT THE THREE PAIRED DRAWS LICENSE: against a
+COND-only control, on ONE diet, on one device, the
+softer q/k draw lifts TRAIN free-run solves 0 -> 2-3
+of 8 and TRAIN token-acc at every draw, and zeroes a
+before-training diagnostic (init zero-prob 0.89 ->
+0.000, 3/3).
+WHAT THEY DO NOT LICENSE, and the drift to watch for:
+"QK fixes free-run". It does not. (a) The absolute
+level is LOW — 2-3 of 8 train rows, on rows the model
+also trains on; (b) HELD-OUT IS DEAD at every draw and
+in every gate cell booked to date, 0/8 without
+exception; (c) the comparison is RELATIVE to a
+COND-only control under this diet, not against any
+external baseline.
+THE EXPOSURE-BIAS STACK IS UNTOUCHED. NULL GRAVMOE-SS
+(scheduled sampling), VERDICT GRAVMOE-BRUTE (closing:
+steps and params) and the answer-only null in VERDICT
+SOL-ADOPTION-1 remain three closed doors, and the open
+one remains DIET WIDTH. This result does not reopen
+any of them: it raises the train side of the SAME
+data-bound regime those cells characterized, and the
+held-out zero is precisely the thing they say diet
+width, not compute or allocation or init, will move.
+CURATION RULE for anyone writing the public sentence:
+name TRAIN explicitly, state that held-out stayed at
+zero, and keep the COND-only control in the sentence.
+FINDINGS was corrected to do all three in this commit.
