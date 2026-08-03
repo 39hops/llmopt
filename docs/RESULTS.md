@@ -17356,3 +17356,44 @@ ARTIFACT: scratch/v4flash_f1b.py (self-testing).
 NEXT (gated): F1c — real embed + layers 0-2 (~1.5 GB of
 sha-pinned fetches), hidden-state sanity, expert output
 vs the exact fp64 reference.
+
+## VERDICT V4-F1c: REAL V4-Flash weights forward on the Mac — layers 0-2 with exact hash-routed expert demand, all bars pass on cpu AND mps, and trained weights collapse the cross-device gap by three orders of magnitude (2026-08-03, Mac; Fable seat)
+
+Real embed + layers 0-2 (all hash-routed: expert demand
+is EXACT from tid2eid — [35, 33, 33] distinct experts
+for a 6-token prompt, 101 experts, 1.35 GB) through the
+vendor model.py over the twin. Prefill + one decode
+step.
+BARS: finite everywhere PASS (cpu and mps); per-layer
+hidden-state rms 0.922 / 2.064 / 2.592, inside the
+registered band PASS; the twin's fp4_gemm on a real
+DEMANDED expert vs the exact fp64 dequant reference:
+rel 1.46e-06 PASS (<= 1/128).
+THE F1b PREDICTION CONFIRMED: cpu-vs-mps per-layer
+rel-L2 with REAL weights is 0.00220 / 0.00166 / 0.00187
+— versus 0.12-0.56 under random weights at the same
+depths. Trained norms make the map non-expansive; the
+F1b divergence was the untrained composition, as
+booked.
+LOADER FACTS for F1d: shards ship VENDOR-NAMED tensors
+(convert.py's HF renames are no-ops here); the two real
+transforms are wo_a (block-128x128 fp8->bf16 dequant)
+and expert I8 bytes viewed as packed fp4; tid2eid ships
+I64 into an int32 module param; some fp32 module params
+ship bf16 — cast on copy, never view (the vendor's
+load_model semantics; a byte view reinterprets).
+BUDGET: 1.79 GB fetched this run (pre-reg estimated
+~1.5 GB); head + final norm NOT fetched (zeroed, logits
+are plumbing only — disclosed; the bars live in hidden
+states and the expert oracle, as registered).
+ARTIFACT: scratch/v4flash_f1c.py.
+NEXT (gated): F1d — the full 43-layer dense path +
+subset-resident experts, greedy decode, tok/s and RSS
+measured. Subset rule declared in the pre-reg; the bias
+DIRECTION is now pinned: under noaux_tc, naturally
+strong experts receive NEGATIVE bias (the balancer
+pushes them down), so "top-K by bias rank" means MOST
+NEGATIVE bias = most naturally demanded. Hash layers
+use exact prompt demand plus FETCH-ON-MISS during
+decode (a generated token's hash demand is unknowable
+in advance — a miss costs one 13.37 MB range fetch).

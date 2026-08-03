@@ -2315,6 +2315,18 @@ F1b (PRE-REG V4-F1): boot the VENDOR's model.py over the kernel twin — truncat
 - `run(dev, mod, args, tokens)`
 - `main()`
 
+### scratch/v4flash_f1c.py
+F1c (PRE-REG V4-F1): REAL weights into the vendor model — embed + layers 0-2 (all hash-routed, so expert demand is EXACT from tid2eid), prefill + one decode step on cpu and mps.
+
+- `_get(url, lo=None, hi=None)`
+- `index_map()` — tensor name -> (shard file, [lo, hi]) from per-shard headers of
+- `fetch(man, name)` — Sha-side-cached byte-range fetch with the length assert.
+- `tensor(man, name)`
+- `demanded_experts(man, ids)` — Exact per-layer expert demand for hash layers, from tid2eid.
+- `load_real(model, man, demand)` — Load embed + layers 0-2 dense + demanded experts; zero the head.
+- `run(dev, mod, args, man, demand, ids)`
+- `main()`
+
 ### scratch/v4flash_header.py
 RUNG -1 (spec 2026-08-02-v4flash-lossless-recode): read a DeepSeek-V4-Flash safetensors HEADER by HTTP byte-range and report the tensor inventory — names, dtypes, shapes, and the implied fp4 scale granularity. Costs well under 1 MB; downloads no weights.
 
