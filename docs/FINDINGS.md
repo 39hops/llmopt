@@ -476,10 +476,9 @@ sessions under one operator, not independent investigators. Read
 - [REPLICATED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
   A 304B frontier MoE's routed expert runs entirely in integers on the vendor's
   own shipped 4-bit weights, with the output trace hash-identical on Apple CPU,
-  Apple GPU and NVIDIA GPU, each machine having fetched the weights
-  independently; three backends are the route, and the decode was checked
-  against the vendor's own dtype semantics rather than against itself.
-  ([VERDICT V4-RUNG-A](RESULTS.md#L15884).)
+  Apple GPU and NVIDIA GPU — three backends are the route, each having fetched
+  the weights independently, and the decode was checked against the vendor's
+  own dtype semantics. ([VERDICT V4-RUNG-A](RESULTS.md#L15884).)
 - [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
   A frontier 304B MoE's shipped 4-bit expert codes carry 3.865 bits of entropy,
   and their 8-bit power-of-two block scales carry 0.964 — so the scale stream
