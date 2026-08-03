@@ -473,6 +473,16 @@ sessions under one operator, not independent investigators. Read
   soft-routing causal arms explained expert decorrelation in the tested MoE
   recipes. ([UMOE-1 VERDICT](RESULTS.md#L11592); [UMOE-2
   VERDICT](RESULTS.md#L11896).)
+- [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
+  A frontier 304B MoE's shipped 4-bit expert codes carry 3.865 bits of entropy,
+  and their 8-bit power-of-two block scales carry 0.964 — so the scale stream
+  is 5.9% of the bytes but 62% of the losslessly recoverable headroom, on a
+  3-layer sample. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
+- [MECHANISM-CONFIRMED] [FORMAT-BOUND]
+  [REGIME-SCOPED: measured deployment artifacts]
+  The sign bit of a symmetric 4-bit weight code is exactly incompressible
+  (measured 1.00000 bits on every tensor), so all coding margin provably lives
+  in the magnitude alphabet. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
 - [REPLICATED] [TEACHER-FORCED] [REGIME-SCOPED: deterministic integer battery]
   Consensus pull between experts buys mergeability monotonically: merge damage
   falls with dose and reaches exactly zero at full pull, where experts collapse

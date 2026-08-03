@@ -15668,3 +15668,170 @@ reporting, not a single number.
 Fence: four dose points; an optimum between grid points
 is indistinguishable from the nearest point. One diet,
 one window set, one device.
+
+## RECEIPT V4-RUNG-MINUS-1: the free header read settles it — V4-Flash experts are group-32 MXFP4, byte-identical in encoding to K3, and the scale stream is ~8.7 GB (2026-08-02, Mac; Opus-5 review branch)
+
+Rung -1 of spec 2026-08-02-v4flash-lossless-recode: one
+HTTP byte-range read of shard 24's safetensors header,
+175,120 bytes, sha256 bce06d09..., 1576 tensors. No
+weights downloaded. Script scratch/v4flash_header.py.
+WHAT THE SHIPPED ARTIFACT SAYS (not the config):
+  layers.22.ffn.experts.0.w1.weight [2048, 2048] I8
+    scale [2048, 128] F8_E8M0  -> 16 bytes/scale
+  layers.22.ffn.experts.0.w2.weight [4096, 1024] I8
+    scale [4096,  64] F8_E8M0  -> 16 bytes/scale
+16 bytes = 32 fp4 nibbles, so the expert scale group is
+32 VALUES, not the [128,128] block in config.json —
+that block describes the fp8 path only, exactly as the
+reviewer scan hypothesized. The vendor's own
+inference/convert.py:26 agrees: fp4_block_size = 32,
+with scale.size(1) == in_dim // 32.
+CONSEQUENCE 1, the 500x swing resolves to the valuable
+branch: 277e9 expert params / 32 = 8.66e9 scales at one
+byte each = ~8.7 GB, about 5% of the artifact (measured
+in-shard: 201.3 MB of scales against 3221.2 MB of
+expert weight, 5.6%). RUNG 3 IS A REAL SIZE RUNG, not
+the ~17 MB footnote it would have been at [128,128].
+CONSEQUENCE 2: the encoding is byte-identical to K3's
+MXFP4. Vendor FP4_TABLE = [0, .5, 1, 1.5, 2, 3, 4, 6]
+with sign bit 0x8 is exactly the house LUT2X halved
+(scratch/k3_expert_demo.py:33); nibble order is
+low-first in both; scales are E8M0 powers of two, which
+the vendor kernel states outright ("Power-of-2 scale
+via bit ops", fast_round_scale = fast_pow2 o
+fast_log2_ceil). So K3-D1's 3.643 bits/param entropy
+anchor is a SAME-FORMAT prior, not an approximate one,
+and the house exact decoder ports by changing repo and
+prefix constants only — the scan's predicted "group-32
+to 2-D block broadcast" port delta is SUPERSEDED, there
+is no broadcast change to make.
+CONSEQUENCE 3, and it cuts rung 0's cost by ~50x:
+expert weights ship as dtype I8, i.e. raw bytes needing
+no exotic dtype support, and the header gives exact
+byte offsets per tensor. So rung 0 can byte-range fetch
+a stratified sample of EXPERT TENSORS (~25.2M params
+each) rather than whole 3.5 GB shards — a 200-500 MB
+sample instead of ~25 GB, with entropy statistics that
+are ample at that size.
+LAYOUT NOTES: 768 expert tensors per shard = 256
+experts x 3 matrices, so one layer's experts per shard
+(shard 24 = layer 22). Per expert 25.2M params and
+786,432 scales. Non-expert tensors are F8_E4M3 with
+F8_E8M0 scales.
+Fence: one shard's header. Layer-to-shard mapping and
+the non-expert layout are read from this shard only and
+are assumed, not verified, elsewhere.
+
+## PRE-REG V4-RUNG-0/1: fp4 symbol entropy, sign-magnitude split, pooled-table KL, the scale stream, and lossless rANS — one byte-range pass (2026-08-02, Mac; Opus-5 review branch)
+
+Fires after RECEIPT V4-RUNG-MINUS-1, which made all of
+these one fetch. SAMPLE: expert tensors byte-range
+fetched by header offset, stratified across layers
+(early / middle / late), target 8-16 experts totalling
+200-500 MB — NOT whole shards. Each blob sha256'd at
+write and re-asserted at load (the K3-D1 protocol).
+READOUTS, all from the same bytes:
+  R0  order-0 empirical entropy of the 16-symbol fp4
+      code stream, per tensor and pooled, in bits/param
+      against the 4 bits stored.
+  R0b the same split into sign (2 symbols) and
+      magnitude (8 symbols).
+  R2c mean KL(expert || pooled) in bits/param — does
+      ONE global 16-symbol table serve every expert?
+  R3  entropy of the E8M0 scale stream (8.7 GB
+      model-wide, so a real size rung).
+  R1  rANS per tensor via llmopt/quantize/pack.py
+      rans_size(codes, verify=True), verify pinned ON
+      unconditionally; report bytes-including-table.
+PREDICTIONS: (0) the code stream reads 3.6-3.9
+bits/param. The prior is K3-D1's 3.643 on the SAME
+format (group-32 MXFP4, identical alphabet), which
+RECEIPT V4-RUNG-MINUS-1 established; it is an n=1
+prior and is labelled as one. Direction: at or above
+3.643 if V4's effective within-group spread is wider.
+(0b) H(sign) >= 0.9995 bits and essentially all coding
+margin sits in the magnitude sub-stream. (1) rANS lands
+within 0.5% of the R0 entropy and round-trip verifies
+on EVERY tensor, no exceptions. (2c) mean KL < 0.01
+bits/param. (3) H(scale) < 2.5 bits/symbol, i.e. gain
+> 5.5 bits/symbol, per the P6 regularity that the least
+meter-compressible tensors are the most entropy-codable.
+DECISION RULES: (0) outside 3.4-4.0 is a finding about
+V4's packing, not a measurement error, and gets booked
+as such. (1) ANY round-trip failure voids the lossless
+claim for that tensor and is reported, never averaged
+away. (2c) KL > 0.05 means experts differ in
+DISTRIBUTION as well as coordinates — a new finding
+that would revive per-expert tables. (3) H(scale) > 3.5
+falsifies the P6 ordering on this model.
+FENCES: a sample is not a census and every model-wide
+figure is labelled an ESTIMATE with its sample named;
+per-TENSOR coding only, never per-shard (a 3.5 GB shard
+is ~28 GB as int32 — the C7 OOM lesson); no capability
+claim is possible at any point, so no seed argument
+applies; the constriction version is recorded with the
+tables since perfect=False makes the stream
+version-coupled.
+
+## VERDICT V4-RUNG-0/1: all five predictions fire — V4-Flash's fp4 experts are 3.865 bits/param, and 62% of the lossless headroom sits in the SCALE stream that is 5.9% of the bytes (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG V4-RUNG-0/1. Sample: 27 expert tensors
+(9 experts x w1/w2/w3) byte-range fetched from shards 6,
+24, 42 = LAYERS 4, 22, 40, 226,492,416 params, ~113 MB
+transferred. Every blob sha256-pinned at write and
+re-asserted at load. constriction 0.5.0. Script
+scratch/v4flash_rung0.py; rows streamed to
+logs/opus/v4_rung0.jsonl.
+  R0  code entropy   3.8646 bits/param (stored 4.000)
+  R0b sign 1.00000 exactly | magnitude 2.8646 of 3
+  R1  rANS           3.8647 bits/param, ROUND-TRIP
+      VERIFIED 27/27, no exceptions
+  R2c mean KL(expert||pooled) 0.000751 bits/param,
+      max 0.003104
+  R3  scale entropy  0.9640 bits/symbol (stored 8),
+      rANS 0.9649
+PREDICTION (0) FIRES: 3.865 is inside the registered
+3.6-3.9 band, and the registered DIRECTION fires too —
+it sits ABOVE K3-D1's 3.643 on the same format, so V4
+leaves only 3.4% lossless margin where K3 left ~9%.
+DeepSeek packed the code stream tighter than Moonshot.
+(0b) FIRES exactly: H(sign) = 1.00000 on all 27
+tensors, so the sign bit is exactly incompressible and
+100% of the code-stream margin is in the magnitude
+alphabet, as the symmetric-weight argument requires.
+(1) FIRES: rANS is 0.003% above the order-0 entropy —
+the coder is at the bound — and every tensor
+round-tripped. verify=True was pinned unconditionally
+(NOT the scratch/pack_rans.py:84 driver, whose
+verify=(tot_n < 2e9) would have silently stopped
+checking inside the first shard).
+(2c) FIRES, and by 13x: mean KL 0.00075 bits/param
+against a registered bar of 0.01. ONE global 16-symbol
+table serves every expert measured, across three layers
+20 apart. The per-tensor table overhead named as a
+fence in the paper draft is amortizable in practice.
+(3) FIRES, and it is the headline: the E8M0 scale
+stream carries 0.964 bits in an 8-bit symbol — a gain
+of 7.04 bits/symbol against a registered bar of 5.5.
+This REPLICATES the P6 regularity ("the LEAST
+meter-compressible tensors are the MOST entropy-codable")
+on a new vendor, new model and new format.
+MODEL-WIDE ESTIMATE, and it is an ESTIMATE from a
+3-layer sample, not a census:
+  expert codes 138.5 GB -> 133.8 GB   saves  4.69 GB
+  E8M0 scales    8.7 GB ->   1.0 GB   saves  7.61 GB
+  total        147.2 GB -> 134.9 GB   saves 12.30 GB (8.4%)
+THE STRUCTURAL FINDING: the scale stream is 5.9% of the
+bytes and 62% of the recoverable headroom. A
+compression effort aimed at the weights would capture
+about a third of what is available. This is only
+visible because RECEIPT V4-RUNG-MINUS-1's free header
+read established group-32 scaling; at the [128,128]
+granularity config.json advertises, the scale stream
+would have been ~17 MB and invisible.
+Fences: sample not census, and the model-wide line is
+labelled an estimate with its layers named; per-tensor
+coding throughout; lossless verified by round-trip, not
+by ratio; constriction 0.5.0 recorded because
+perfect=False makes the stream version-coupled; no
+capability claim is made or possible on this machine.

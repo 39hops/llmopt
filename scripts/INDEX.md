@@ -2300,6 +2300,25 @@ UMOE-1 (pre-reg 2026-07-30): micro-MoE conservation 3-arm. First house MoE birth
 - `probes(model, enc, dev)` — corr / MI / meter on the trained model.
 - `main()`
 
+### scratch/v4flash_header.py
+RUNG -1 (spec 2026-08-02-v4flash-lossless-recode): read a DeepSeek-V4-Flash safetensors HEADER by HTTP byte-range and report the tensor inventory — names, dtypes, shapes, and the implied fp4 scale granularity. Costs well under 1 MB; downloads no weights.
+
+- `_get(url, lo=None, hi=None)`
+- `read_header(shard)`
+- `group_of(n)` — Coarse tensor class, from the name alone.
+- `main()`
+
+### scratch/v4flash_rung0.py
+RUNGS 0/0b/1/2c/3 (pre-reg V4-RUNG-0/1): entropy and lossless rANS of DeepSeek-V4-Flash's shipped fp4 expert stream, from byte-range fetches only.
+
+- `_get(url, lo=None, hi=None)`
+- `header(shard)`
+- `fetch(url, base, name, spec, cache)` — Byte-range fetch one tensor, sha-pinned on disk.
+- `nibbles(raw)` — Unpack packed fp4 bytes to 16-symbol codes, low nibble first.
+- `entropy(sym, k)` — Order-0 empirical entropy in bits, and the probability vector.
+- `kl(p, q)` — KL(p || q) in bits, over the support of p.
+- `main()`
+
 ### scratch/verify_intbirth_prims.py
 House-side acceptance of axiom's intbirth PRIMITIVE layer (relay 2026-08-01-3): rebuild the R2b training loop from intbirth.Block / AdamW / rdiv alone, house-authored composition, and check all 8 r2b_ref.json milestone digests + losses. This is also the shape the multi-block reference will take (dx0 chaining, one AdamW over the concatenated param list).
 
