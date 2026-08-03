@@ -34,7 +34,10 @@ from detbwd_r2b import (  # noqa: E402
     rope_bwd, rope_fwd, rope_tables, softmax_bwd, softmax_rows)
 from detbwd_r3_qw import IntAdamWQw  # noqa: E402
 
-SEED = 17
+# PRE-REG QK-SEED2: BIRTH_SEED moves the init draw. In a GATE cell that
+# is the ONLY thing it moves (gate rows are unseeded); in a non-gate cell
+# draw_windows() consumes it too, so there it is not a one-variable change.
+SEED = int(os.environ.get("BIRTH_SEED", "17"))
 NBLK = int(os.environ.get("NBLK", "2"))
 SHIFT = int(os.environ.get("SHIFT", "12"))
 STEPS = int(os.environ.get("STEPS", "200"))

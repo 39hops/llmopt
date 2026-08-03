@@ -956,6 +956,8 @@ Build Sol's maturity-enriched, read-only copy of the results index.
 - `_topic(title: str) -> str`
 - `_resolved_preregs(entries: list[dict]) -> dict[str, str]`
 - `_evidence(text: str, pattern: re.Pattern, fallback: str) -> str`
+- `_is_self_retraction(title: str) -> bool` — Whether retirement language applies to this entry, not its object.
+- `_retires_amended_target(title: str) -> bool` — Whether this entry acts on an amended target's standing.
 - `_impact(entry: dict) -> int` — Transparent ranking proxy, not a scientific importance judgment.
 - `enrich() -> list[dict]`
 - `write_summary(entries: list[dict]) -> None`
@@ -1325,16 +1327,27 @@ Deterministic mini-crystal birth on the REAL MATH DIET (queued by Artin 2026-08-
 Deterministic gravmoe pair (spec 2026-08-01-deterministic- gravmoe): the mb bridge model with each Body's FFN split into E=4 experts behind an integer switch_top1 router (multiplicative top_p gate, fx3 convention), plus an integer gravity relaxation every K optimizer steps. All arms share seed/init/windows; the only variable is lambda = LN/LD.
 
 - `class MoBody` (fwd, bwd)
+- `_require_sha(label, observed, expected)`
+- `assert_gate_diet_sha(path)`
+- `assert_gate_row_shas(ids)`
 - `find_split(full, mark)` — Index just past the LAST 'Step: ' marker, or None.
-- `draw_complete(n)` — First n diet rows whose FULL text fits T+1 tokens (padded
-- `sympy_equiv(a, b, timeout=10)` — Fork-isolated symbolic equivalence (NO sympy without a
+- `answer_region(full, mark, terminator_ids)` — Return (first answer token, first newline/EOS token).
+- `token_accuracy_counts(generated, full, region)`
+- `assert_disjoint_prompts(ids, splits, cut)`
+- `loss_dlogits(pp, tgt, eye, boost, region=None)`
+- `loss_proxy(pp, tgt, region=None)`
+- `draw_complete(n, diet_path=None)` — First n diet rows whose FULL text fits T+1 tokens (padded
+- `_fork_call(worker, args, timeout)`
+- `_sympy_worker(sender, a, b)`
+- `sympy_assess(a, b, timeout=10)`
+- `sympy_equiv(a, b, timeout=10)`
 - `gate(m, ids, truths, tok, tab, label)` — Free-run validity gate: prefix through 'Step: ', greedy
 - `class GMB` (param_items, bwd)
 - `relax(wide)` — The gravity event, per spec: per body, kinds order, mean
 - `agreement(m, wins, tab)` — Pairwise % of probe tokens where expert outputs agree:
 - `twin_fp64(m, tok, tgt, tops, masks=None)` — fp64 autograd twin. ALL discrete decisions come from the
 - `build_model()`
-- `run_loss(m, wins, tab, t_exp)` — Exact cycle-mean loss over the 8 windows (no training).
+- `run_loss(m, wins, tab, t_exp, regions=None)` — Exact cycle-mean loss over the 8 windows (no training).
 - `main()`
 
 ### scratch/detbwd_mb.py
@@ -2067,6 +2080,13 @@ PRACTICE MODE, model-side (the mirror of axiom's arg-10): duo-wave rollouts that
 - `skeleton(e)`
 - `binof(n)`
 
+### scratch/probe_int_device_parity.py
+Probe: are the integer-battery primitives bit-identical off the CPU?
+
+- `pick_device(argv)`
+- `primitives(dev, tensors)` — Every integer op the battery's forward and backward chain uses.
+- `main()`
+
 ### scratch/prologue_arms.py
 Zero-birth prologue arms (Opus-5 reviewer, 2026-07-25): S4 symmetry-without-zero PTQ, sparsity control at ternary's zero-fraction, and the gauge-commutation checkpoint pair.
 
@@ -2280,6 +2300,95 @@ UMOE-1 (pre-reg 2026-07-30): micro-MoE conservation 3-arm. First house MoE birth
 - `probes(model, enc, dev)` — corr / MI / meter on the trained model.
 - `main()`
 
+### scratch/v4flash_census.py
+CENSUS (unregistered, free): what is actually IN DeepSeek-V4-Flash's 48 shards? Headers only -- ~8 MB of range reads, no weights.
+
+- `is_routed(name)` — Routed expert weight or scale -- NOT the always-on shared expert.
+- `main()`
+
+### scratch/v4flash_header.py
+RUNG -1 (spec 2026-08-02-v4flash-lossless-recode): read a DeepSeek-V4-Flash safetensors HEADER by HTTP byte-range and report the tensor inventory — names, dtypes, shapes, and the implied fp4 scale granularity. Costs well under 1 MB; downloads no weights.
+
+- `_get(url, lo=None, hi=None)`
+- `read_header(shard)`
+- `group_of(n)` — Coarse tensor class, from the name alone.
+- `main()`
+
+### scratch/v4flash_router.py
+RUNG R (pre-reg V4-RUNG-R + 2B-ROUTER): read DeepSeek-V4-Flash's MoE router for free — 2 MB of gate weights and 1 KB of bias, no inference.
+
+- `bf16_to_f32(raw, shape)` — safetensors BF16 -> float32 (upper 16 bits of the f32 word).
+- `read_router(shard, layer)`
+- `null_cosines(n, d, rng, reps=1)` — Matched null: cosines among n random Gaussian vectors in R^d.
+- `main()`
+
+### scratch/v4flash_rung0.py
+RUNGS 0/0b/1/2c/3 (pre-reg V4-RUNG-0/1): entropy and lossless rANS of DeepSeek-V4-Flash's shipped fp4 expert stream, from byte-range fetches only.
+
+- `_get(url, lo=None, hi=None)`
+- `header(shard)`
+- `fetch(url, base, name, spec, cache)` — Byte-range fetch one tensor, sha-pinned on disk.
+- `nibbles(raw)` — Unpack packed fp4 bytes to 16-symbol codes, low nibble first.
+- `entropy(sym, k)` — Order-0 empirical entropy in bits, and the probability vector.
+- `kl(p, q)` — KL(p || q) in bits, over the support of p.
+- `main()`
+
+### scratch/v4flash_rung2b.py
+RUNG 2b (pre-reg V4-RUNG-2B): are DeepSeek-V4-Flash experts closer to each other UP TO A PERMUTATION than they are coordinate-wise?
+
+- `load_expert(idx, hdr, url, base)` — Integer weights on the shared dyadic lattice, per projection.
+- `hidden_cost(a, b)` — Squared-distance cost between hidden units of two experts.
+- `permute(ref, perm)` — Apply a hidden-unit permutation to a reference expert.
+- `resid_entropy(e, ref)` — Order-0 entropy in bits/param of the exact integer residual.
+- `raw_entropy(e)`
+- `main()`
+
+### scratch/v4flash_rung2b_router.py
+RUNG 2b-ROUTER (pre-reg V4-RUNG-R + 2B-ROUTER): the retest VERDICT V4-RUNG-2B could not do.
+
+- `pairs_from_router()` — Top-NPAIR by raw gate-key cosine (the pre-registered rule), plus
+- `measure(a, b, hdr, url, base, rng)` — Residual entropy of expert a against expert b, three alignments.
+- `main()`
+
+### scratch/v4flash_rungA.py
+RUNG A (pre-reg V4-RUNG-A): a full DeepSeek-V4-Flash expert forward run ENTIRELY IN INTEGERS on the vendor's shipped fp4 codes, hash-locked across backends. Ported from the certified K3-D2 chain (scratch/k3_expert_demo.py:99-151); RECEIPT V4-RUNG-MINUS-1 established the two formats are byte-identical, so only constants and the activation change.
+
+- `_get(url, lo=None, hi=None)`
+- `header()`
+- `cached(name, hdr=None, url=None, base=None)` — Blob bytes, sha-pinned. Byte-range fetches on a cold cache so the
+- `decode(proj, hdr, url, base)` — Shipped bytes -> (codes2x [out, din] int64, exps [out, g] int64).
+- `det_gemv(codes2x, exps, x, dev, chunk=512)` — Exact integer y = W @ x on the shipped codes. Per-group-32 int64
+- `rdiv(v, d)` — Round-half-away-from-zero integer division (house convention).
+- `to_scale_A(y, e)` — Requant det_gemv output (scale 2^(e-1), x already at A) to A.
+- `main()`
+
+### scratch/v4flash_rungd.py
+RUNG D (pre-reg V4-RUNG-D + S0; rewritten after AMENDMENT RUNGD-0803): how much of DeepSeek-V4-Flash's routing survives deleting the shared router key direction, and under WHICH input model?
+
+- `vendor_scoring()` — Confirm the score function, top-k, and the ABSENCE of group routing.
+- `shared_directions(W)` — Four defensible definitions of "the" shared key direction.
+- `score(X, W, bias)` — Vendor scores for selection: sqrt(softplus(X W^T)) + bias.
+- `topk_sets(S, k)` — Top-k indices per row (sorted, so the sets are canonical).
+- `agreement(X, W, Wd, bias, k)`
+- `main()`
+
+### scratch/v4flash_rungd2.py
+RUNG D2 (pre-reg V4-RUNG-D2): measure <u,x> on DeepSeek-V4-Flash's REAL traffic by inverting its trained load-balancing bias. No forward pass.
+
+- `input_norm(shard, layer)` — ||ffn_norm.weight|| -- the length the gate's input actually has.
+- `perp_basis(u, n, rng, gain)` — n unit vectors orthogonal to u, shaped by the layer's channel gains.
+- `imbalance(W, bias, X, topk)` — Coefficient of variation of expert load under top-k selection.
+- `main()`
+
+### scratch/v4flash_s0.py
+RUNG S0 (pre-reg V4-RUNG-D + S0): is the entropy-coded form of a DeepSeek-V4-Flash expert EXECUTABLE, or only an archive?
+
+- `vendor_shape()` — Route width, layer count and shared-expert bytes -- READ, not typed.
+- `blob(name, nbytes=None)` — Cached bytes, cache-integrity checked, cold-fetching if absent.
+- `nibbles(raw)`
+- `bench(sym, nrep)` — Encode once, decode nrep times; return (bytes, best decode s, enc s).
+- `main()`
+
 ### scratch/verify_intbirth_prims.py
 House-side acceptance of axiom's intbirth PRIMITIVE layer (relay 2026-08-01-3): rebuild the R2b training loop from intbirth.Block / AdamW / rdiv alone, house-authored composition, and check all 8 r2b_ref.json milestone digests + losses. This is also the shape the multi-block reference will take (dx0 chaining, one AdamW over the concatenated param list).
 
@@ -2347,6 +2456,11 @@ llmopt.runlog — standard run logging with honest wallclock.
 - `class ElapsedFormatter` (format)
 - `get_logger(name='llmopt', level=None, stream=None, fmt=DEFAULT_FMT)` — Idempotent: repeated calls return the same configured logger.
 - `timed(label, log=None, level=logging.INFO)` — Context manager: logs '<label> done in <t>s' on exit,
+
+### llmopt/window_artifact.py
+Validation and decoding for committed gravmoe training windows.
+
+- `load_contiguous_windows(windows_path: Path, contract_path: Path, sequence_length: int) -> list[list[int]]` — Load ``tok[T] ++ tgt[T]`` records as contiguous ``T+1`` rows.
 
 ## llmopt/train/
 

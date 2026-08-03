@@ -15156,3 +15156,2034 @@ No new claims found in review; fences survive into the
 public surface (n=1 stays n=1). Attribution: Sol
 (GPT 5.6, sol/present-1), house-verified line-by-line
 where it counts and by receipt elsewhere.
+
+## AMENDMENT P4-DEVICE-SCOPE (amends VERDICT GRAVMOE-P4-DEVICE + VERDICT GRAVMOE-P4-LAB): "2 devices" means two MACHINES / two CPU architectures — and the battery is device-PORTABLE, not CPU-bound (2026-08-02, Mac; Opus-5 read-only review, branch opus-5)
+
+Both P4 legs executed on CPU. Measured, not inferred: no
+file in the battery chain (detbwd_gravmoe / detbwd_mb /
+detbwd_r2b / detbwd_r1, llmopt/reproduce, llmopt/intmath)
+contains a device= argument, .cuda(), .to("mps"), or
+set_default_device, so every tensor lands on the CPU
+default; scratch/p4_arms_0801.sh sets OMP/MKL thread caps
+(CPU threading) and never selects a GPU. The ladder's
+"2 devices" therefore means Apple silicon arm64 CPU +
+x86-64 CPU: two machines, two ISAs, ONE compute class.
+WHY THIS NEEDS SAYING: [DEVICE-SCOPED] is a formal tag in
+this repo and the earlier integer-determinism verdicts
+(P3, PACKED CRYSTAL C4, FX-V1-H) crossed MPS<->cuda GPU
+paths — a genuinely different and stronger device claim.
+The verdict's own phrase "on the 3080" invites the GPU
+reading it does not support. Nothing measured changes:
+16/16 and 10/10 sha-identity stand exactly as booked.
+SELF-CORRECTION (the reviewer's first draft of this
+finding was WRONG, caught before booking): "the battery
+is CPU-only by construction" is FALSE. int_mm is
+broadcast-multiply-then-sum ((a.unsqueeze(-2)*w).sum(-1)),
+not torch.matmul, and this session measured on torch
+2.12.1 / Apple silicon that MPS runs int64 matmul AND all
+eight battery primitives BIT-IDENTICALLY to CPU: int_mm,
+rdiv, softmax_rows, softmax_bwd, rms_fwd, its isq,
+rms_bwd dx and dg. The battery is CPU-only by PLUMBING
+(no device argument), not by capability.
+MECHANISM (why portability is expected here): integer
+addition is associative and exact, so reduction ORDER —
+the measured transport wedge for fp (R0 TF32 null:
+"KERNEL-ORDER is the wedge") — cannot change an integer
+value. That property is what makes this battery a legal
+cross-device instrument at all; it predicts a GPU leg
+reproduces the pins rather than merely approximating them.
+BANKED CELL (not run by this review; pre-register first):
+an MPS leg of the gravmoe battery = a real cross-DEVICE
+rung on the ladder. Known work: thread a device through
+the birth/draw path, and .cpu() before .numpy() at the
+digest points (milestone hashing currently assumes CPU).
+Bar: the 16 pinned FINAL shas, unchanged. If it passes,
+"2 devices" upgrades honestly to CPU + GPU; if it fails,
+the failure localizes an integer op whose GPU kernel is
+not exact — either outcome is worth the run.
+Fence: the primitive probe was 8 ops on one seed/shape at
+n=1; it establishes PORTABILITY IS PLAUSIBLE, not that
+the full trajectory transports. Only the pinned-sha leg
+can establish that. Reviewer: Opus 5 (read-only seat,
+findings are proposals); Fable audits before adoption.
+
+## RIDER on AMENDMENT P4-DEVICE-SCOPE: the GPU probe fires on BOTH accelerators — every integer-battery primitive is bit-identical to CPU on Apple MPS and on NVIDIA CUDA (2026-08-02, Mac + 3080 via wsl.sh, Opus-5 review branch)
+
+scratch/probe_int_device_parity.py, same file both legs
+(extracted from origin/opus-5), same seed 17, same shapes,
+same battery code (both checkouts at main's detbwd_r2b):
+  Mac,  torch 2.12.1,      device mps : 8/8 BIT-IDENTICAL
+  3080, torch 2.13.0+cu130, device cuda: 8/8 BIT-IDENTICAL
+Primitives covered: int_mm, rdiv, softmax_rows, softmax_bwd,
+rms_fwd, its rms_isq, rms_bwd dx and dg — the complete
+integer op set the forward and backward chain uses.
+Bonus cross-device fact: the exp table sha printed on both
+machines is the same bytes (9b8649244ca8c235), so the
+shipped-tables doctrine transports as written.
+READ: the amendment's prediction holds on the first try.
+Integer addition is associative and exact, so reduction
+ORDER — the wedge that makes fp cross-device comparison
+illegal on this instrument (R0 TF32 null) — cannot move an
+integer value, and neither GPU vendor's kernels move one
+here. The battery is CPU-only by PLUMBING, now measured on
+two accelerators rather than argued.
+PROVENANCE (remote-ops doctrine): the 3080 checkout was
+synced git pull --ff-only and its HEAD hash VERIFIED equal
+to the Mac's main (7ab8837) BEFORE the run; the probe
+shipped as a single git-extracted file, was removed after,
+and the remote scratch/ tree was confirmed clean (0
+modified). TORCH_DISABLE_NATIVE_JIT=1 per the in-tree WSL
+rule. Short test on Artin's explicit GO; no long job.
+FENCE, and it is the whole fence: this is PRIMITIVES at
+n=1 seed and one shape pair. It does NOT establish
+trajectory transport. The pinned-sha GPU leg (thread a
+device through the birth/draw path; .cpu() before .numpy()
+at digest points; bar = the 16 pinned FINAL shas unchanged)
+stays BANKED and unrun — pre-register before firing. Until
+that lands, "2 devices" in the P4 verdicts still means two
+CPU architectures. Reviewer: Opus 5; findings are proposals
+until Fable audits.
+
+## RIDER #2 on AMENDMENT P4-DEVICE-SCOPE: the device plumbing EXISTED at the R1/R2 rungs and was dropped as the chain grew — the GPU leg is a RESTORATION, not new capability (2026-08-02, Mac, Opus-5 review branch)
+
+Reviewer self-check while curating FINDINGS, and it
+corrects the amendment's framing: scratch/detbwd_r1.py:89
+and scratch/detbwd_r2_adamw.py:105 BOTH auto-select the
+accelerator — dev = "cuda" if torch.cuda.is_available()
+else "cpu" — and draw on CPU before moving (their own
+booked lesson: device RNG streams differ). So VERDICT
+DETERMINISTIC-BIRTH R2's headline, "bit-identical
+Mac-cpu = 3080-cuda", is EXACT AS WRITTEN: that rung
+genuinely trained integers on the GPU, and the FINDINGS
+bullet citing it needs no correction.
+WHAT THIS CHANGES: AMENDMENT P4-DEVICE-SCOPE said the
+battery is "CPU-only by plumbing". True of the gravmoe
+chain (detbwd_r2b / detbwd_mb / detbwd_gravmoe carry no
+device argument), but the LADDER did not lack the
+plumbing — it LOST it. Device selection was present at
+R1/R2 and absent from every rung built after. That is an
+instrument REGRESSION, not an absent capability, and it
+is a better description of the same facts.
+CONSEQUENCE: the banked GPU leg is cheaper than the
+amendment estimated — the pattern to restore is already
+in-tree and already carries the draw-on-CPU-then-move
+rule that the R1a/R1b lesson paid for. Both rider legs
+now point the same way: primitives measured exact on MPS
+and CUDA (RIDER #1), and the plumbing pattern proven at
+an earlier rung (here). Still BANKED, still unrun,
+still wants a pre-registration; "2 devices" in the P4
+verdicts still means two CPU architectures until a
+pinned-sha GPU trajectory lands.
+METHOD NOTE for the ledger: this is the second time in
+one review that checking a claim against the code
+inverted the reviewer's own framing (the first: "CPU-only
+by construction", falsified by the MPS probe). Both are
+booked rather than quietly fixed, per house practice.
+
+## AMENDMENT AXIOM-PUBLICATION (amends VERDICT GRAVMOE-P4-LAB's reachability disclosure): the cross-lab leg is now EXTERNALLY RUNNABLE — axiom pushed, both halves public; plus a reviewer error and a license fact (2026-08-02, Mac; axiom relay 2026-08-02-1, Opus-5 both seats)
+
+axiom pushed main on Artin's GO (their 447fb08 docs +
+6e20d06 relay), closing the 22-commit publication gap.
+VERIFIED HOUSE-SIDE, independent of their claim and of
+any local checkout, via the GitHub API:
+  repos/39hops/axiom/commits/8f8376d -> exists
+  .../contents/tools/int_adamw/verify_gravmoe.py?ref=
+     8f8376d -> 3069 bytes
+  that directory also carries r2b_tables.bin, the only
+  other input the verifier opens
+  repos/39hops/llmopt/contents/scratch/detbwd_gmoe_ref
+     -> the reference artifacts, already public here
+So BOTH halves of the cross-lab reproduction are public
+and a third party can RUN the P4 lab leg, not merely
+read its receipt. docs/REPRODUCE.md and the FINDINGS
+cross-lab note both UNDERSTATED availability and are
+corrected in this commit; the caveat that survives is
+AUTHORSHIP (two sessions, one operator), which was
+already booked and is unaffected.
+REVIEWER ERROR, booked (mine): relay 2026-08-02-0 told
+axiom their three-valued soundness contract "is not on
+the front page." FALSE. `git show 8f8376d:README.md`
+carries it at lines 77-78 (EQUIVALENT only on structural
+proof, NOT_EQUIVALENT only on a confirmed numeric
+witness, UNDECIDED otherwise — never guessed). The six
+grep counts in that relay were all correct and they
+reproduced every one; this seventh claim was asserted
+without the grep. THE LESSON IS SPECIFIC AND WORTH
+KEEPING: I searched for the NAMES of things (ax::nn,
+intbirth, AXNN, MoeBirth, "fixed-point", "deterministic"
+— genuinely 0 each) and then inferred the absence of a
+CONCEPT I had not searched for. Absence of a name is not
+absence of a documented idea. Their fix stands on the
+real criticism (present in paragraph three of Status =
+practically invisible; now its own section).
+LICENSE FACT for the ledger: axiom was MIT at 8f8376d
+and Artin relicensed it to Apache-2.0 in the same
+commit, with a NOTICE. No llmopt doc characterizes
+axiom's terms (grepped; nothing to correct), so this is
+recorded, not fixed. axiom now also carries a
+CITATION.cff with a commit: field — the sha-pinning
+policy is enforced on both sides.
+THEIR PROPOSAL, banked not adopted (axiom's emphasis
+argument): device count is a WEAK axis for an integer
+instrument, because if reduction order cannot change an
+integer value then a second device mainly tests that no
+float crept in; the strong axes are IMPLEMENTATIONS and
+RUNTIMES. This reads correctly against our own
+mechanism and it lowers the expected value of the banked
+GPU trajectory leg — that leg is now best framed as a
+NEGATIVE CONTROL (it should be boring; a failure would
+be the interesting outcome) rather than a rung that adds
+strength. Banked to RIFF-LEDGER; the ladder's phrasing
+is not changed by this entry.
+
+## PRE-REG QK-SEED2: does the COND+QK init win survive a SECOND init draw, or is the battery's new default resting on one? (2026-08-02, Mac; Opus-5 review branch)
+
+VERDICT QK-RESCOPE (-72% loss) and its gate rider (first
+nonzero solves, TRAIN 2/8) are n=1 in the strongest
+sense, and the battery default COND=1 QK=1 inherits that
+fence. This is the cheapest possible test of it.
+WHAT VARIES, exactly one thing: M.SEED seeds
+torch.manual_seed inside build_model() and nothing else
+in a GATE cell — draw_complete() takes the FIRST rows of
+the sha-asserted gate diet, unseeded, so rows, targets,
+windows, steps, and every hyperparameter are byte-
+identical across arms. The variable is the INIT DRAW.
+(Caveat for future users of the knob: in NON-gate cells
+draw_windows() also consumes M.SEED, so there it moves
+the diet too and is not a one-variable change.)
+Knob: BIRTH_SEED env on detbwd_mb.SEED, default 17.
+ARMS (each 2000 steps, GATE=1, Mac, RJOB_LOCAL):
+  SEED-REG  default env — must reproduce the pinned
+            G-RB1 sha 1fcfd187 before any arm is read,
+            certifying the knob read-only at default.
+  S23-COND  BIRTH_SEED=23 COND=1
+  S23-QK    BIRTH_SEED=23 COND=1 QK=1
+Seed-17 references, already pinned: G-A0 (COND=1) loss
+6195, TRAIN 0/8, tok 56/140, sha 2b29bd4a; G-RB1
+(COND=1 QK=1) loss 2564, TRAIN 2/8, tok 94/140, sha
+1fcfd187.
+PREDICTIONS: (1) PRIMARY, loss direction: S23-QK loss <
+S23-COND loss. (2) Gate direction: S23-QK TRAIN solves
+>= S23-COND TRAIN solves AND free-run token-acc higher.
+(3) NOT predicted: the -72% magnitude — magnitude is
+measured here, not predicted, and a much smaller effect
+still counts as direction-confirmed. (4) HELDOUT 0/8
+both arms.
+DECISION RULE, pre-committed: (1) and (2) both hold ->
+direction reproduced at a second init draw. This does
+NOT license [REPLICATED] — the resolution law wants n>=3
+paired seeds and 0-to-2 solves is a small absolute
+delta; it licenses a FINDINGS clause naming the second
+draw, and queues a third seed. (1) holds, (2) fails ->
+the loss win does not transport to the gate at this
+seed, the standing teacher-forced rider bites its own
+headline, and the COND+QK default is re-scoped to loss
+only. (1) FAILS -> falsification: the default rests on
+one draw; book it and halt doctrine movement.
+Fence: n=2 is not replication; Mac only; shas pinned for
+every arm so any leg is auditable.
+
+## VERDICT QK-SEED2: the COND+QK init win REPRODUCES at a second init draw — both pre-registered directions fire, and the saturation mechanism reappears unchanged (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG QK-SEED2 (logs logs/opus/s23_cond.log,
+s23_qk.log; all readouts are step-2000 cycle-mean, the
+same readout on both seeds):
+  SEED-REG default env: sha 1fcfd187 EXACT — BIRTH_SEED
+  is certified read-only at its default.
+  S23-COND (BIRTH_SEED=23, COND=1): loss 6631, TRAIN
+  0/8, tok 52/140, suffix 37/116, HELDOUT 0/8, init
+  zero-prob-frac 0.897, sha 4e9ee270...
+  S23-QK (BIRTH_SEED=23, COND=1 QK=1): loss 3566, TRAIN
+  2/8, tok 89/140, suffix 87/116, HELDOUT 0/8, init
+  zero-prob-frac 0.000, sha 7eb9326c...
+PAIRED AGAINST SEED 17 (same readout, from the pinned
+logs): COND-only 6408 -> COND+QK 2690, solves 0/8 ->
+2/8, tok 56 -> 94/140, zero-prob 0.891 -> 0.000.
+Prediction (1) FIRES: 3566 < 6631, a 46% cut against
+58% at seed 17. Prediction (2) FIRES on both halves:
+solves 0/8 -> 2/8 at BOTH draws, token-acc +37 here and
++38 there. Prediction (4) holds: HELDOUT 0/8 everywhere.
+Prediction (3) was deliberately not made and the
+magnitudes differ (46% v 58%) — direction is the claim.
+MECHANISM REAPPEARS: the init attention-saturation
+diagnostic is 0.891 and 0.897 for the two COND-only
+draws and EXACTLY 0.000 for both COND+QK draws. The
+knob is not moving a lucky seed; it is removing the
+same defect twice, and the capability follows it.
+DECISION RULE, as pre-committed: both directions hold,
+so the direction is reproduced at a second init draw.
+This does NOT license [REPLICATED] — the resolution law
+wants n>=3 paired seeds and 0-to-2 is a small absolute
+solve delta. FINDINGS gains a clause naming the second
+draw; the third seed is queued as PRE-REG QK-SEED3.
+LEDGER-HYGIENE NOTE, found while pinning the
+comparison: G-A0's loss is quoted as 6408 in PRE-REG
+GRAVMOE-SS and as 6195 in the QK-RESCOPE rider and NULL
+GRAVMOE-SS. Both are correct but they are DIFFERENT
+READOUTS — 6408 is the step-2000 cycle-mean, 6195 the
+merge-test base run_loss. Neither entry says which.
+Comparisons must name the readout; this cell uses
+cycle-mean throughout.
+Fence: n=2 is not replication; one diet, one window
+set, gate rows unseeded so the init draw is the only
+variable; Mac only.
+
+## PRE-REG QK-SEED3: the third paired init draw — the arm that decides whether QK-RESCOPE can carry a replication route (2026-08-02, Mac; Opus-5 review branch)
+
+Queued by VERDICT QK-SEED2's own decision rule. Same
+protocol exactly: GATE=1, 2000 steps, gate rows
+unseeded so the INIT DRAW is the only variable, all
+readouts step-2000 cycle-mean.
+ARMS: S31-COND (BIRTH_SEED=31 COND=1) and S31-QK
+(BIRTH_SEED=31 COND=1 QK=1).
+PREDICTIONS, unchanged in form from QK-SEED2 so the
+three cells are comparable: (1) S31-QK loss < S31-COND
+loss; (2) S31-QK TRAIN solves >= S31-COND solves AND
+higher free-run token-acc; (3) magnitude not predicted;
+(4) HELDOUT 0/8 both arms; (5) NEW, mechanism: the init
+zero-prob-frac is ~0.89 for COND-only and exactly 0.000
+for COND+QK, as at both prior draws — this is the
+sharpest of the five because it is a near-point
+prediction, and a miss would mean the diagnostic, not
+the capability, is seed-dependent.
+DECISION RULE: all of (1), (2), (5) hold across three
+paired draws -> QK-RESCOPE's FINDINGS bullet may carry
+[REPLICATED] with the route named as three paired init
+draws on one device and diet; the tag says draws, never
+devices or diets. Any of them fails -> the bullet stays
+[SINGLE-SEED] with the reproduced-direction clause from
+QK-SEED2, and the failure is booked as the interesting
+result. No doctrine movement either way: the resolution
+law's n>=3 is a floor for claiming a direction, not a
+licence to generalize past this diet.
+Fence: three draws, one diet, one window set, one
+device. Mac only.
+
+## VERDICT QK-SEED3: three paired init draws, 3/3 on every axis — the gate-cell COND+QK direction earns a replication route, and the saturation diagnostic is a near-point hit (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG QK-SEED3 (logs logs/opus/s31_*.log):
+  S31-COND: loss 7718, TRAIN 0/8, tok 33/140, HELDOUT
+  0/8, init zero-prob-frac 0.897, sha fa79208b...
+  S31-QK:   loss 2998, TRAIN 3/8, tok 98/140, HELDOUT
+  0/8, init zero-prob-frac 0.000, sha f1fe9e91...
+THE THREE PAIRED DRAWS, one readout (step-2000
+cycle-mean), one diet, one device:
+  seed  COND loss  QK loss   delta  solves  tok
+   17      6408      2690    -58%  0->2/8  56->94
+   23      6631      3566    -46%  0->2/8  52->89
+   31      7718      2998    -61%  0->3/8  33->98
+Predictions (1), (2), (4) fire at the third draw as at
+the first two. Prediction (5), the near-point one,
+HITS: init zero-prob-frac is 0.891 / 0.897 / 0.897 for
+the three COND-only draws and EXACTLY 0.000 for all
+three COND+QK draws. The diagnostic is not
+seed-dependent; the defect it names is what the knob
+removes, three times.
+DECISION RULE, as pre-committed: all of (1), (2), (5)
+hold across three paired draws, so the GATE-CELL
+direction may carry [REPLICATED] with the route named
+as three paired INIT DRAWS on one device and one diet.
+SCOPE, and this is the part not to blur: the cell
+re-run here is the GATE pair (G-A0 v G-RB1). VERDICT
+QK-RESCOPE's headline -72% (8883 -> 2496) is the
+TRUNCATED-WINDOW cell, which was NOT re-run. Its
+FINDINGS bullet stays [SINGLE-SEED]; only the gate
+rider's bullet earns the route. Different diet,
+different cell, no transport claimed.
+OBSERVATION, offered as an observation and not a claim
+(n=3): the COND-only baseline is the volatile arm
+(token-acc 56 / 52 / 33) while COND+QK is the stable
+one (94 / 89 / 98). If that holds at more draws the
+knob is reducing variance as well as raising the mean,
+which the loss numbers alone would not show. Not
+booked as a finding; a cell would have to pre-register
+the variance claim.
+Fence: three draws, one diet, one window set, one
+device, one architecture. n>=3 licenses the DIRECTION
+here, never generalization past this diet.
+
+## READING FENCE on VERDICT QK-SEED3: what three draws license, and the sentence they do NOT license (2026-08-02, Mac; Artin's scoping catch, Opus-5 review branch)
+
+Booked because the public layer drifted on first
+writing and a reader quotes the public layer.
+WHAT THE THREE PAIRED DRAWS LICENSE: against a
+COND-only control, on ONE diet, on one device, the
+softer q/k draw lifts TRAIN free-run solves 0 -> 2-3
+of 8 and TRAIN token-acc at every draw, and zeroes a
+before-training diagnostic (init zero-prob 0.89 ->
+0.000, 3/3).
+WHAT THEY DO NOT LICENSE, and the drift to watch for:
+"QK fixes free-run". It does not. (a) The absolute
+level is LOW — 2-3 of 8 train rows, on rows the model
+also trains on; (b) HELD-OUT IS DEAD at every draw and
+in every gate cell booked to date, 0/8 without
+exception; (c) the comparison is RELATIVE to a
+COND-only control under this diet, not against any
+external baseline.
+THE EXPOSURE-BIAS STACK IS UNTOUCHED. NULL GRAVMOE-SS
+(scheduled sampling), VERDICT GRAVMOE-BRUTE (closing:
+steps and params) and the answer-only null in VERDICT
+SOL-ADOPTION-1 remain three closed doors, and the open
+one remains DIET WIDTH. This result does not reopen
+any of them: it raises the train side of the SAME
+data-bound regime those cells characterized, and the
+held-out zero is precisely the thing they say diet
+width, not compute or allocation or init, will move.
+CURATION RULE for anyone writing the public sentence:
+name TRAIN explicitly, state that held-out stayed at
+zero, and keep the COND-only control in the sentence.
+FINDINGS was corrected to do all three in this commit.
+
+## AMENDMENT SEED-SCOPE (amends PRE-REG QK-SEED2's caveat): draw_windows() is NOT seeded — BIRTH_SEED moves the init draw ONLY, in gate AND non-gate cells (2026-08-02, Mac; Opus-5 review branch)
+
+PRE-REG QK-SEED2 carries this caveat: "in NON-gate
+cells draw_windows() also consumes M.SEED, so there it
+moves the diet too and is not a one-variable change."
+FALSE. detbwd_diet.draw_windows() takes "the first
+NWIN strictly-encodable diet rows ... FILE ORDER" and
+never calls manual_seed; the two manual_seed(M.SEED)
+calls in that file are in main() and the EXPORT block,
+both for model init. Measured, not read:
+  BIRTH_SEED=17 truncated cell -> windows sha 99caaa64
+  BIRTH_SEED=23 truncated cell -> windows sha 99caaa64
+CONSEQUENCE, and it is a strengthening: every gravmoe
+cell, gate or truncated, has a seed-invariant diet, so
+BIRTH_SEED is a clean ONE-VARIABLE init knob
+everywhere. VERDICT QK-SEED2 and VERDICT QK-SEED3 are
+unaffected — their cells were gate cells, whose rows
+were already established as unseeded, and every number
+in them stands. The DIET-COND replication needs no
+WINDOW_SEED knob.
+ERROR MODE, third instance this session and the same
+one every time: I grepped for a NAME (manual_seed near
+detbwd_diet.py) and inferred BEHAVIOR without reading
+the function. The prior two: "the battery is CPU-only
+by construction" (AMENDMENT P4-DEVICE-SCOPE) and
+"axiom's soundness contract is not on their front page"
+(AMENDMENT AXIOM-PUBLICATION). A grep locates a symbol;
+it does not tell you what the symbol does. Standing
+correction for this reviewer seat: any claim about
+BEHAVIOR reads the function or runs it, and a claim
+about ABSENCE names what was searched.
+
+## PRE-REG DIET-COND-SEED: is the lambda interior optimum real, or one draw? — the other half of the battery default, replicated (2026-08-02, Mac; Opus-5 review branch)
+
+VERDICT DIET-COND is the second n=1 claim the battery
+default rests on: under conditioned init the
+capability-for-mergeability trade becomes NON-MONOTONE
+in gravity dose, with an interior optimum. COND=1 is
+half the default; QK=1 was replicated at three draws
+(VERDICT QK-SEED3), this is the other half.
+CLEAN BY CONSTRUCTION (AMENDMENT SEED-SCOPE, measured):
+draw_windows() is file-order and unseeded, so the diet,
+targets, steps and every hyperparameter are byte-
+identical across arms and BIRTH_SEED moves the INIT
+DRAW alone. No new knob.
+ARMS: the DIET-COND lambda grid at two further draws —
+BIRTH_SEED in {23, 31} x LN/LD in {0/1, 1/16, 1/4,
+1/1}, COND=1, 2000 steps, truncated windows, 8 arms.
+Seed-17 reference, booked: loss 8883 / 8319 / 8185 /
+8733; merge +6983 / +6938 / +4412 / 0; agreement
+0.0 / 0.0 / 0.0 / 1.0 for lambda 0 / 1/16 / 1/4 / 1.
+PREDICTIONS: (1a) PRIMARY, shape: at each draw the
+best-loss arm is INTERIOR — lambda 1/16 or 1/4, not 0
+and not 1. (1b) SHARP, location: the best-loss arm is
+lambda 1/4 exactly, at both draws. (2) Merge damage is
+non-increasing in lambda, and lambda 1 gives merge
+delta 0 with agreement 1.0 (collapse). (3) Magnitude
+not predicted. (4) OUT OF SCOPE, stated so it is not
+read in: no COND=0 arm runs here, so this cell says
+nothing about the conditioning effect itself, only
+about the dose curve given conditioning.
+DECISION RULE: (1a) and (2) hold at both draws -> the
+interior-optimum SHAPE carries [REPLICATED] with route
+three paired init draws, one diet, one device; the
+LOCATION claim (lambda 1/4 specifically) carries it
+only if (1b) also holds at both. (1a) fails at either
+draw -> the interior optimum is a one-draw artifact,
+booked as falsification, and the battery's lambda
+default is re-opened. (2) fails alone -> the
+mergeability half is seed-dependent and gets scoped
+while the capability half stands.
+FENCE, and it is a real limit on the LOCATION claim:
+the grid is FOUR points. "lambda 1/4 is the optimum"
+can only ever mean "best of {0, 1/16, 1/4, 1}"; an
+optimum lying between grid points is indistinguishable
+from lambda 1/4 here. One diet, one window set, one
+device, Mac only.
+
+## VERDICT DIET-COND-SEED: the interior optimum SURVIVES three draws, its LOCATION does NOT — lambda 1/4 is a seed-17 property and is WORSE than no gravity at both new draws (2026-08-02, Mac; Opus-5 review branch)
+
+Regression first: default COND=1 lambda 0 reproduced
+the booked COND-A0 sha 0ad9da94 and loss 8883 exactly,
+so BIRTH_SEED is read-only at default here too.
+Arms per PRE-REG DIET-COND-SEED (8 arms, logs
+logs/opus/dc_s{23,31}_lam*.log). Cycle-mean loss by
+gravity dose, three draws, one diet:
+  lambda      s17     s23     s31
+   0         8883    8724    7851
+   1/16      8319   [8484]  [7800]
+   1/4      [8185]   9026    9500
+   1         8733    8818    9906
+  ([.] marks the argmin of its column.)
+Merge delta, same order:
+   0         6983    6680    8422
+   1/16      6938    6595    7875
+   1/4       4412    3492    3318
+   1            0       0       0   (agreement 1.0)
+PREDICTION (1a) PASSES 3/3: the best-loss arm is
+INTERIOR at every draw — never lambda 0, never lambda
+1. PREDICTION (2) PASSES 3/3: merge damage is monotone
+non-increasing in dose and collapses to exactly 0 with
+agreement 1.0 at lambda 1, at every draw.
+PREDICTION (1b) FAILS 2/3: the argmin is lambda 1/16
+at both new draws, not 1/4.
+THE FINDING IS THE FAILURE, and it is sharper than the
+missed location: lambda 1/4 — the booked optimum — is
+WORSE THAN NO GRAVITY at both new draws (9026 v 8724,
++3.5%; 9500 v 7851, +21%). VERDICT DIET-COND's "-8%
+loss at lambda 1/4" is a seed-17 property, not a dose
+recommendation. The interior gain that does replicate
+sits at lambda 1/16 and SHRINKS across draws: -6.3%,
+-2.8%, -0.65%. At seed 31 it is 51 loss units in 7851
+and should be read as a tie, not a win.
+DECISION RULE, as pre-committed: (1a) and (2) held, so
+the interior-optimum SHAPE and the mergeability trade
+carry [REPLICATED] with route three paired init draws,
+one diet, one device. (1b) failed, so the LOCATION
+claim does not, and no lambda value is recommended by
+this cell.
+NO SHIPPED DEFAULT MOVES: the battery default is and
+remains LN=0 (lambda 0); lambda 1/4 was a booked claim,
+never a shipped dose, so nothing downstream inherits
+the correction. VERDICT QK-SEED3 and the COND+QK gate
+results are untouched — they all ran at lambda 0.
+WHAT SURVIVES for the gravmoe program: consensus pull
+buys mergeability monotonically and reliably (3/3), and
+can help capability slightly at small dose, but the
+useful dose is not located by four points at n=3 and
+may not be constant across draws at all. A dose
+recommendation needs a finer grid AND per-draw argmin
+reporting, not a single number.
+Fence: four dose points; an optimum between grid points
+is indistinguishable from the nearest point. One diet,
+one window set, one device.
+
+## RECEIPT V4-RUNG-MINUS-1: the free header read settles it — V4-Flash experts are group-32 MXFP4, byte-identical in encoding to K3, and the scale stream is ~8.7 GB (2026-08-02, Mac; Opus-5 review branch)
+
+Rung -1 of spec 2026-08-02-v4flash-lossless-recode: one
+HTTP byte-range read of shard 24's safetensors header,
+175,120 bytes, sha256 bce06d09..., 1576 tensors. No
+weights downloaded. Script scratch/v4flash_header.py.
+WHAT THE SHIPPED ARTIFACT SAYS (not the config):
+  layers.22.ffn.experts.0.w1.weight [2048, 2048] I8
+    scale [2048, 128] F8_E8M0  -> 16 bytes/scale
+  layers.22.ffn.experts.0.w2.weight [4096, 1024] I8
+    scale [4096,  64] F8_E8M0  -> 16 bytes/scale
+16 bytes = 32 fp4 nibbles, so the expert scale group is
+32 VALUES, not the [128,128] block in config.json —
+that block describes the fp8 path only, exactly as the
+reviewer scan hypothesized. The vendor's own
+inference/convert.py:26 agrees: fp4_block_size = 32,
+with scale.size(1) == in_dim // 32.
+CONSEQUENCE 1, the 500x swing resolves to the valuable
+branch: 277e9 expert params / 32 = 8.66e9 scales at one
+byte each = ~8.7 GB, about 5% of the artifact (measured
+in-shard: 201.3 MB of scales against 3221.2 MB of
+expert weight, 5.6%). RUNG 3 IS A REAL SIZE RUNG, not
+the ~17 MB footnote it would have been at [128,128].
+CONSEQUENCE 2: the encoding is byte-identical to K3's
+MXFP4. Vendor FP4_TABLE = [0, .5, 1, 1.5, 2, 3, 4, 6]
+with sign bit 0x8 is exactly the house LUT2X halved
+(scratch/k3_expert_demo.py:33); nibble order is
+low-first in both; scales are E8M0 powers of two, which
+the vendor kernel states outright ("Power-of-2 scale
+via bit ops", fast_round_scale = fast_pow2 o
+fast_log2_ceil). So K3-D1's 3.643 bits/param entropy
+anchor is a SAME-FORMAT prior, not an approximate one,
+and the house exact decoder ports by changing repo and
+prefix constants only — the scan's predicted "group-32
+to 2-D block broadcast" port delta is SUPERSEDED, there
+is no broadcast change to make.
+CONSEQUENCE 3, and it cuts rung 0's cost by ~50x:
+expert weights ship as dtype I8, i.e. raw bytes needing
+no exotic dtype support, and the header gives exact
+byte offsets per tensor. So rung 0 can byte-range fetch
+a stratified sample of EXPERT TENSORS (~25.2M params
+each) rather than whole 3.5 GB shards — a 200-500 MB
+sample instead of ~25 GB, with entropy statistics that
+are ample at that size.
+LAYOUT NOTES: 768 expert tensors per shard = 256
+experts x 3 matrices, so one layer's experts per shard
+(shard 24 = layer 22). Per expert 25.2M params and
+786,432 scales. Non-expert tensors are F8_E4M3 with
+F8_E8M0 scales.
+Fence: one shard's header. Layer-to-shard mapping and
+the non-expert layout are read from this shard only and
+are assumed, not verified, elsewhere.
+
+## PRE-REG V4-RUNG-0/1: fp4 symbol entropy, sign-magnitude split, pooled-table KL, the scale stream, and lossless rANS — one byte-range pass (2026-08-02, Mac; Opus-5 review branch)
+
+Fires after RECEIPT V4-RUNG-MINUS-1, which made all of
+these one fetch. SAMPLE: expert tensors byte-range
+fetched by header offset, stratified across layers
+(early / middle / late), target 8-16 experts totalling
+200-500 MB — NOT whole shards. Each blob sha256'd at
+write and re-asserted at load (the K3-D1 protocol).
+READOUTS, all from the same bytes:
+  R0  order-0 empirical entropy of the 16-symbol fp4
+      code stream, per tensor and pooled, in bits/param
+      against the 4 bits stored.
+  R0b the same split into sign (2 symbols) and
+      magnitude (8 symbols).
+  R2c mean KL(expert || pooled) in bits/param — does
+      ONE global 16-symbol table serve every expert?
+  R3  entropy of the E8M0 scale stream (8.7 GB
+      model-wide, so a real size rung).
+  R1  rANS per tensor via llmopt/quantize/pack.py
+      rans_size(codes, verify=True), verify pinned ON
+      unconditionally; report bytes-including-table.
+PREDICTIONS: (0) the code stream reads 3.6-3.9
+bits/param. The prior is K3-D1's 3.643 on the SAME
+format (group-32 MXFP4, identical alphabet), which
+RECEIPT V4-RUNG-MINUS-1 established; it is an n=1
+prior and is labelled as one. Direction: at or above
+3.643 if V4's effective within-group spread is wider.
+(0b) H(sign) >= 0.9995 bits and essentially all coding
+margin sits in the magnitude sub-stream. (1) rANS lands
+within 0.5% of the R0 entropy and round-trip verifies
+on EVERY tensor, no exceptions. (2c) mean KL < 0.01
+bits/param. (3) H(scale) < 2.5 bits/symbol, i.e. gain
+> 5.5 bits/symbol, per the P6 regularity that the least
+meter-compressible tensors are the most entropy-codable.
+DECISION RULES: (0) outside 3.4-4.0 is a finding about
+V4's packing, not a measurement error, and gets booked
+as such. (1) ANY round-trip failure voids the lossless
+claim for that tensor and is reported, never averaged
+away. (2c) KL > 0.05 means experts differ in
+DISTRIBUTION as well as coordinates — a new finding
+that would revive per-expert tables. (3) H(scale) > 3.5
+falsifies the P6 ordering on this model.
+FENCES: a sample is not a census and every model-wide
+figure is labelled an ESTIMATE with its sample named;
+per-TENSOR coding only, never per-shard (a 3.5 GB shard
+is ~28 GB as int32 — the C7 OOM lesson); no capability
+claim is possible at any point, so no seed argument
+applies; the constriction version is recorded with the
+tables since perfect=False makes the stream
+version-coupled.
+
+## VERDICT V4-RUNG-0/1: all five predictions fire — V4-Flash's fp4 experts are 3.865 bits/param, and 62% of the lossless headroom sits in the SCALE stream that is 5.9% of the bytes (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG V4-RUNG-0/1. Sample: 27 expert tensors
+(9 experts x w1/w2/w3) byte-range fetched from shards 6,
+24, 42 = LAYERS 4, 22, 40, 226,492,416 params, ~113 MB
+transferred. Every blob sha256-pinned at write and
+re-asserted at load. constriction 0.5.0. Script
+scratch/v4flash_rung0.py; rows streamed to
+logs/opus/v4_rung0.jsonl.
+  R0  code entropy   3.8646 bits/param (stored 4.000)
+  R0b sign 1.00000 exactly | magnitude 2.8646 of 3
+  R1  rANS           3.8647 bits/param, ROUND-TRIP
+      VERIFIED 27/27, no exceptions
+  R2c mean KL(expert||pooled) 0.000751 bits/param,
+      max 0.003104
+  R3  scale entropy  0.9640 bits/symbol (stored 8),
+      rANS 0.9649
+PREDICTION (0) FIRES: 3.865 is inside the registered
+3.6-3.9 band, and the registered DIRECTION fires too —
+it sits ABOVE K3-D1's 3.643 on the same format, so V4
+leaves only 3.4% lossless margin where K3 left ~9%.
+DeepSeek packed the code stream tighter than Moonshot.
+(0b) FIRES exactly: H(sign) = 1.00000 on all 27
+tensors, so the sign bit is exactly incompressible and
+100% of the code-stream margin is in the magnitude
+alphabet, as the symmetric-weight argument requires.
+(1) FIRES: rANS is 0.003% above the order-0 entropy —
+the coder is at the bound — and every tensor
+round-tripped. verify=True was pinned unconditionally
+(NOT the scratch/pack_rans.py:84 driver, whose
+verify=(tot_n < 2e9) would have silently stopped
+checking inside the first shard).
+(2c) FIRES, and by 13x: mean KL 0.00075 bits/param
+against a registered bar of 0.01. ONE global 16-symbol
+table serves every expert measured, across three layers
+20 apart. The per-tensor table overhead named as a
+fence in the paper draft is amortizable in practice.
+(3) FIRES, and it is the headline: the E8M0 scale
+stream carries 0.964 bits in an 8-bit symbol — a gain
+of 7.04 bits/symbol against a registered bar of 5.5.
+This REPLICATES the P6 regularity ("the LEAST
+meter-compressible tensors are the MOST entropy-codable")
+on a new vendor, new model and new format.
+MODEL-WIDE ESTIMATE, and it is an ESTIMATE from a
+3-layer sample, not a census:
+  expert codes 138.5 GB -> 133.8 GB   saves  4.69 GB
+  E8M0 scales    8.7 GB ->   1.0 GB   saves  7.61 GB
+  total        147.2 GB -> 134.9 GB   saves 12.30 GB (8.4%)
+THE STRUCTURAL FINDING: the scale stream is 5.9% of the
+bytes and 62% of the recoverable headroom. A
+compression effort aimed at the weights would capture
+about a third of what is available. This is only
+visible because RECEIPT V4-RUNG-MINUS-1's free header
+read established group-32 scaling; at the [128,128]
+granularity config.json advertises, the scale stream
+would have been ~17 MB and invisible.
+Fences: sample not census, and the model-wide line is
+labelled an estimate with its layers named; per-tensor
+coding throughout; lossless verified by round-trip, not
+by ratio; constriction 0.5.0 recorded because
+perfect=False makes the stream version-coupled; no
+capability claim is made or possible on this machine.
+
+## PRE-REG V4-RUNG-A: port the K3-D2 exact integer expert forward to V4-Flash — one expert, all integers, hash-locked across devices (2026-08-02, Mac; Opus-5 review branch)
+
+RECEIPT V4-RUNG-MINUS-1 established that V4's expert
+encoding is byte-identical to K3's MXFP4, so the house
+exact decoder ports by constants. This rung runs a
+FULL expert forward in integers on the vendor's shipped
+codes and asks whether the trace is device-independent.
+THE CHAIN, fixed-point at A=1024, ported from
+scratch/k3_expert_demo.py:99-151 with V4's activation:
+  g = det_gemv(w1, x); u = det_gemv(w3, x)     exact
+  requant both to scale A by power-of-two shift
+  SWIGLU LIMIT (new, V4-specific, from the vendor's
+    inference/model.py:601-607): up = clamp(u, -L, +L)
+    and gate = clamp(g, max=L) — ASYMMETRIC, gate is
+    clamped on the high side only. L = 10.0 =
+    10240 at scale A.
+  h = silu(gate) * up via a sha-pinned SiLU table
+  y = det_gemv(w2, h)                          exact
+  readout = sha256 of the int64 y trace
+det_gemv is exact: per-group-32 int64 dot, then shifts
+relative to the tensor-min exponent. Overflow bound
+re-derived for V4 rather than copied: |code2x| <= 12 <
+2^4 and |x| <= 2^10 give |product| < 2^14; summing 32
+gives < 2^19; summing g = din/32 = 128 groups adds 7
+bits; so the assert is shift_span + 19 + 7 < 62, i.e.
+shift_span < 36. Asserted at run time, not assumed.
+E8M0 bias verified EMPIRICALLY, not assumed: raw scale
+bytes decoded as 2^(b-127) match torch's own
+float8_e8m0fnu .float() exactly on the shipped bytes.
+PREDICTIONS: (1) EXACTNESS — reconstructing fp32 from
+the integer codes and exponents round-trips against the
+codes bit-exactly, asserted per tensor. (2) DEVICE
+IDENTITY — the sha256 of the int64 output trace is
+IDENTICAL on cpu and mps. (3) the overflow assert holds
+with margin, and the margin is reported.
+FENCE, and it is the whole claim: this is an
+EXACTLY-SPECIFIED INTEGER function evaluated on the
+vendor's shipped weights. It is NOT bit-equal to
+DeepSeek's float32 expert forward and is not offered as
+such; fixed-point requants and a tabulated SiLU are a
+different function. What is claimed is that this
+function is reproducible to the bit on any backend. No
+capability claim follows, and none is possible here.
+3080/cuda is Artin's and stays out unless he GOes it.
+
+## VERDICT V4-RUNG-A: a DeepSeek-V4-Flash expert runs EXACTLY in integers on the vendor's shipped fp4 — trace sha256 identical on cpu and mps, all three predictions fire (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG V4-RUNG-A. Expert
+layers.22.ffn.experts.0 (w1/w2/w3), blobs byte-range
+fetched by rung 0 and sha-re-asserted at load. Script
+scratch/v4flash_rungA.py, batch 16.
+  DEV=cpu  sha256 a68256ce17b9b5ad...3ff257b0
+  DEV=mps  sha256 a68256ce17b9b5ad...3ff257b0
+PREDICTION (1) FIRES — exactness: the integer decode
+was checked against the VENDOR'S OWN semantics, not
+against itself. FP4_TABLE from inference/convert.py
+times torch's native float8_e8m0fnu equals
+codes2x * 2^(exp-1) with np.array_equal on every
+element of all three tensors. E8M0 bias 127 was
+verified empirically against torch's dtype on the
+shipped bytes rather than assumed.
+PREDICTION (2) FIRES — device identity: the sha256 of
+the int64 output trace is IDENTICAL on cpu and mps.
+Per-op check as well: det_gemv output torch.equal on
+the two backends.
+PREDICTION (3) FIRES with room: the re-derived overflow
+bound reads 29 / 29 / 28 against the int64 limit of 62,
+so 33 bits of headroom. Exponent spans are only 3 —
+the same near-constant scale field that made the scale
+stream 0.964 bits in VERDICT V4-RUNG-0/1, showing up
+here as an arithmetic safety margin.
+EXTRA CHECK, not pre-registered, run because the code
+asserted it in a comment: det_gemv chunks over output
+rows to bound memory, and the comment claimed chunking
+cannot change a value. Measured at chunk 128 / 512 /
+4096 — identical sha. The claim is now tested, not
+asserted.
+PROVENANCE WORTH KEEPING: the SiLU table is the SAME
+sha-pinned bytes generated for the K3-D2 cell on
+2026-07-30 (f503c81446c97adb), reused unmodified for a
+different vendor's model. Tables travel as bytes; this
+is the P3 doctrine paying off across model families.
+FENCE, restated because it is the whole claim: this is
+an exactly-specified INTEGER function on the vendor's
+shipped weights, reproducible to the bit on any
+backend. It is NOT bit-equal to DeepSeek's float32
+expert forward — fixed-point requants and a tabulated
+SiLU are a different function — and no capability claim
+follows or is possible here. The V4-specific asymmetric
+swiglu clamp (up both sides, gate high side only,
+inference/model.py:601-607) is implemented as the
+vendor writes it. One expert, one layer, batch 16, two
+backends; cuda is Artin's and was not run.
+
+## RIDER on VERDICT V4-RUNG-A: the CUDA leg — three backends, one hash, and the weights were fetched independently on each machine (2026-08-02, 3080 via rjob on Artin's GO; Opus-5 review branch)
+
+  DEV=cpu   a68256ce17b9b5ad...3ff257b0  (Mac)
+  DEV=mps   a68256ce17b9b5ad...3ff257b0  (Mac)
+  DEV=cuda  a68256ce17b9b5ad...3ff257b0  (RTX 3080, rc=0)
+All three IDENTICAL. The overflow bounds (29/29/28 of
+62), exponent minima and spans printed the same on the
+3080 as on the Mac, so the arithmetic is reproducing,
+not merely the final digest.
+PROVENANCE, and it is stronger than a file copy: the
+3080 downloaded its OWN copy of the expert from the
+vendor by byte range rather than receiving the Mac's
+bytes. All six blobs match sha256 across the two
+independent fetches (w1/w2/w3 weight and scale:
+8cc3d9ad, 08076d48, 62095889, fd5e67f5, 7741f337,
+ad76fb34). Two machines, two network paths, same bytes,
+same trace.
+THE ONE THING THAT WAS COPIED had to be: the SiLU table
+travels as BYTES and is never regenerated per device
+(P3 doctrine — a different libm silently changes it).
+scratch/wsl.sh has no copy subcommand, so the table is
+now a COMMITTED sha-pinned reference artifact under
+scratch/v4flash_ref/, the same shape as
+detbwd_gmoe_ref/, and git is the transport. It arrived
+at f503c81446c97adb..., 525,893 bytes, asserted at run
+time on both machines.
+REMOTE-OPS NOTE: the 3080 checkout never left main.
+Branch files were extracted with git show
+origin/opus-5:<path> into /tmp/rungA and HEAD was
+re-verified at 7ab8837 after the run; the job ran under
+rjob (id v4rungA) with TORCH_DISABLE_NATIVE_JIT=1 per
+the in-tree WSL rule.
+READ: a frontier 304B MoE's routed expert now has an
+exactly-specified integer forward that reproduces to
+the bit on Apple CPU, Apple GPU and NVIDIA GPU, on the
+vendor's own shipped 4-bit weights. Fences from the
+parent verdict are unchanged and still govern: this is
+NOT bit-equality with DeepSeek's float32 forward, and
+no capability claim follows or is possible here.
+
+## PRE-REG V4-RUNG-2B: permutation-aligned expert residuals — the question N3's instrument provably could not answer (2026-08-02, Mac; Opus-5 review branch)
+
+N3 (RESULTS.md:11107) killed coordinate-aligned mu+delta
+at production scale: sigma(delta)/sigma(W) = 0.995,
+pairwise correlations ~0.003, "experts share NOTHING in
+weight space". But N3's instrument was ENTRYWISE
+correlation, and CLAUDE.md's standing gauge law says
+that instrument is invalid for weight comparison: "the
+same function lives at many weight arrangements (neuron
+permutations, rescalings)". Two experts computing
+overlapping functions with permuted hidden units read
+correlation zero. So N3 correctly kills the coordinate
+version and says nothing about the aligned one.
+THE GAUGE: permuting a SwiGLU expert's hidden units —
+rows of w1 and w3, columns of w2, one shared
+permutation — leaves its function EXACTLY invariant. So
+comparing expert e against a permuted reference is
+legitimate, and a permutation is a bijection, so the
+coding stays lossless (index cost 2048 x 11 bits = 2.8
+KB against 25.2M params, 0.001%).
+CELL: layer 22, expert 0 as reference, experts 1-7
+compared. Alignment by Hungarian assignment
+(scipy.linear_sum_assignment) on a float32 cost matrix
+built with ||a-b||^2 = ||a||^2 + ||b||^2 - 2a.b, costs
+summed over w1 rows, w3 rows and w2 columns so one
+permutation serves all three. The alignment search is a
+float HEURISTIC and affects no claim of exactness; the
+residual is then coded in EXACT integers, values being
+codes2x << (exp - emin) on the shared dyadic lattice.
+THREE ARMS, same residual pipeline, so the alphabet
+expansion is common and cancels in the comparison:
+  IDENT  delta = int(e) - int(ref)
+  RAND   delta = int(e) - int(Pi_random(ref))
+  HUNG   delta = int(e) - int(Pi_hungarian(ref))
+PREDICTIONS: (1) PRIMARY — H(HUNG) is within 0.2
+bits/param of H(IDENT), i.e. alignment does NOT help.
+(2) All three residual entropies EXCEED the raw code
+entropy of 3.865 bits/param (VERDICT V4-RUNG-0/1), so
+residual coding is a net loss in every arm — the
+quantitative form of N3's sigma ratio 0.995. (3) HUNG
+beats RAND by only a small margin, because a Hungarian
+fit on 2048 units will always absorb some noise; the
+RAND arm exists precisely to price that. (4) FREE
+NECESSARY CONDITION, reported alongside: the sorted
+hidden-unit norm profiles across experts. If experts do
+not even share a sorted norm profile, no permutation
+could align them and (1) is over-determined.
+DECISION RULE: (1) holds -> N3's conclusion SURVIVES a
+gauge-legal instrument, and the mu+delta family closes
+for good rather than on a technicality. (1) FAILS, i.e.
+HUNG beats IDENT by more than 0.2 bits/param -> N3
+needs an amendment, the gauge law has a measured
+consequence for compression, and change-of-basis coding
+revives as a rung.
+FENCES: one layer, one reference expert, 7 pairs;
+Hungarian is optimal FOR THE GIVEN COST but the cost is
+a proxy, so a better permutation may exist and a null
+here is "no win under this cost", not "no win
+possible"; no capability claim is made or possible.
+
+## VERDICT V4-RUNG-2B: N3 SURVIVES a gauge-legal instrument — permutation alignment does not help, and the necessary condition holds while the sufficient one fails (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG V4-RUNG-2B. Layer 22, expert 0 as
+reference, experts 1-7 compared, residuals coded in
+exact integers on the shared dyadic lattice. Script
+scratch/v4flash_rung2b.py; rows in
+logs/opus/v4_rung2b.jsonl.
+  raw code entropy (integer lattice)   3.6157
+  residual IDENT                       4.3788
+  residual RAND                        4.3789
+  residual HUNG                        4.3578
+  HUNG - IDENT   -0.0210 bits/param (bar: helps < -0.2)
+  HUNG - RAND    -0.0211
+  cost hung/ident 0.9698 | rand/ident 1.0001
+PREDICTION (1) HOLDS, ten times inside the bar:
+Hungarian alignment buys 0.021 bits/param where the
+registered threshold for "helps" was 0.2. Every one of
+the 7 pairs reads between -0.0207 and -0.0214 — this is
+not a marginal call.
+(2) HOLDS: all three residual streams (4.36-4.41) cost
+MORE than the raw codes (3.62), so residual coding is a
+net loss of ~0.75 bits/param in every arm. That is N3's
+sigma ratio 0.995 restated in bits.
+(3) HOLDS: Hungarian beats a RANDOM permutation by
+0.021 bits — its entire advantage is noise-fitting on
+2048 units, which is exactly why the RAND arm was
+registered. And rand/ident = 1.0001: pairing expert e's
+unit i with reference unit i is INDISTINGUISHABLE from
+pairing it with a random unit.
+(4) is the interesting one. The necessary condition
+PASSES — sorted hidden-unit norm profiles agree to 7.3%
+relative L2 across experts — and alignment still fails.
+So experts are not incompatible; they are statistically
+IDENTICAL and individually UNMATCHABLE, like independent
+draws from one distribution. That is precisely what the
+split law predicts for hard-routed experts that never
+see the same tokens.
+DECISION RULE: (1) holds, so N3's conclusion SURVIVES a
+gauge-legal instrument. The mu+delta family closes for
+good rather than on the technicality that N3's entrywise
+correlation was the wrong invariant. No amendment to N3
+is owed.
+Fence: one layer, one reference, 7 pairs; Hungarian is
+optimal for the given proxy cost, so this is "no win
+under this cost", not "no win possible".
+
+## OBSERVATION V4-MERGED-LATTICE (unregistered, found in rung 2b's plumbing): coding the code and scale streams JOINTLY is 0.307 bits/param cheaper than coding them separately, and still exactly lossless (2026-08-02, Mac; Opus-5 review branch)
+
+NOT PRE-REGISTERED — it fell out of rung 2b needing a
+common integer space, and it is booked as an observation
+with a confirming cell owed, not as a verdict.
+Like-for-like on the SAME bytes (layer 22 expert 0,
+25,165,824 params):
+  nibble stream            3.8674 bits/param
+  + scale stream (0.9640/scale)  0.0301 bits/param
+  = separate total         3.8975 bits/param
+  MERGED integer lattice   3.5903 bits/param
+  difference               0.3073 bits/param
+The merge is LOSSLESS by construction: every weight is
+codes2x * 2^(exp-1), so the integer codes2x <<
+(exp - emin) plus one emin per tensor determines the
+weight exactly, and the separate scale stream becomes
+unnecessary rather than merely cheaper.
+MECHANISM, measured and decomposed rather than asserted:
+the (code, scale) representation is MANY-TO-ONE. On w1,
+57 distinct (nibble, shift) pairs collapse to 24
+distinct integers.
+  (a) SIGNED ZERO. 12.70% of codes are zero, split
+      6.357% at 0x0 and 6.338% at 0x8 — an even split,
+      so the sign bit of a zero carries no information.
+      Merging two symbols at p each into one at 2p
+      saves exactly 2p bits: 0.127 bits/param, and the
+      measured zero fraction gives 0.127 to three
+      decimals.
+  (b) SCALE ALIASING accounts for the remaining ~0.180
+      bits/param: 2 * 2^1 and 4 * 2^0 are the same
+      weight but distinct (code, scale) pairs.
+IF IT CONFIRMS, the size picture changes materially: at
+3.590 bits/param the expert store is ~124.3 GB against
+the 134.9 GB estimated from separate streams in VERDICT
+V4-RUNG-0/1 — about 10.6 GB further, and the total
+saving against the 147.2 GB shipped becomes ~15.6%
+rather than 8.4%.
+OWED before this can be a verdict: a pre-registered cell
+over the rung-0 sample with rANS on the merged stream
+and a round-trip assertion, since these are ENTROPY
+numbers and only a verified coder makes them a lossless
+claim. One expert, one layer here.
+
+## PRE-REG V4-RUNG-R + 2B-ROUTER: read the router for free, then retest the gravity idea on the pairs 2b never looked at (2026-08-02, Mac; Opus-5 review branch)
+
+Artin's catch, and it exposes a real limit in VERDICT
+V4-RUNG-2B: that cell compared expert 0 against experts
+1-7 BY INDEX, which is arbitrary. If experts organize
+by router key, the pairs most likely to share structure
+are router NEIGHBOURS, and 2b never tested them. So 2b's
+honest scope is "arbitrary pairs share nothing", not "no
+pair shares anything".
+WHY THE ROUTER IS FREE (read from the vendor's
+inference/model.py Gate.forward): scores =
+sqrtsoftplus(x @ gate.weight); selection uses scores +
+gate.bias; the OUTPUT weight uses the UNBIASED scores.
+So gate.bias shifts SELECTION ONLY — it is DeepSeek's
+aux-loss-free load balancing, and therefore a trained
+per-expert record of how much correction that expert
+needed to get its share of tokens. Readable with zero
+inference. gate.weight is [256, 4096] = 2 MB, gate.bias
+is [256] = 1 KB.
+RUNG R (fact-read plus two measured claims), layers 4,
+22, 40:
+  R-a bias distribution: range, spread, the most- and
+      least-corrected experts.
+  R-b key geometry: the 256x256 cosine matrix of gate
+      key vectors against a MATCHED RANDOM NULL (256
+      Gaussian vectors in R^4096, where cosines are
+      ~N(0, 1/4096), sd 0.0156, so the expected max over
+      32,640 pairs is ~0.064).
+  R-c confirm the hash-routing table tid2eid
+      [vocab, 6] exists in an early-layer shard —
+      n_hash_layers = 3 means the first three layers
+      route by TOKEN ID, an exact public routing map.
+RUNG 2B-ROUTER: the 2b residual pipeline (IDENT / RAND /
+HUNG, exact integer residuals on the shared dyadic
+lattice) run on the FIVE most-similar expert pairs by
+key cosine, against five arbitrary index pairs as the
+matched control. Pair selection is defined here, before
+the router is read, so it cannot be fitted.
+PREDICTIONS: (1) R-b: observed max |cosine| EXCEEDS the
+null's 0.064 — a 256-expert router trained with load
+balancing should not be isotropic. Direction only; no
+magnitude predicted. (2) PRIMARY: router-neighbour pairs
+show residual entropy within 0.05 bits/param of
+arbitrary pairs, i.e. proximity in ROUTING space does
+NOT imply shared structure in WEIGHT space. This is the
+prediction the split law makes. (3) HUNG still fails to
+beat IDENT by the 0.2 bits/param bar on the neighbour
+pairs, as it did on arbitrary ones.
+DECISION RULE: (2) holds -> VERDICT V4-RUNG-2B's scope
+widens from "arbitrary pairs" to "including the pairs
+most likely to share structure", and the mu+delta family
+is closed on the strongest available test. (2) FAILS,
+i.e. neighbour residuals beat arbitrary by more than
+0.05 -> routing proximity is a real handle on weight
+structure, 2b needs an amendment, and cluster-local
+change-of-basis coding becomes a live rung.
+FENCES: one model, three layers for R and one layer for
+2b-router; cosine on router keys is a proxy for
+functional relatedness, not a measurement of it; no
+capability claim is made or possible.
+
+## VERDICT V4-RUNG-R + 2B-ROUTER: the confluence is REAL but it lives in the ROUTER, not the weights — every expert key shares a direction, and routing proximity still buys nothing in weight space (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG V4-RUNG-R + 2B-ROUTER. Scripts
+scratch/v4flash_router.py and
+scratch/v4flash_rung2b_router.py; rows in
+logs/opus/v4_router.jsonl and v4_rung2b_router.jsonl.
+Total transfer for the router read: ~2 MB per layer.
+
+R-b, PREDICTION (1) FIRES and not marginally. Gate-key
+cosines against a matched random null (256 Gaussian
+vectors in R^4096, null |cos| max ~0.065, p99.9 ~0.053):
+  layer 4   |cos| max 0.720  mean 0.164  99.81% above null p99.9
+  layer 22  |cos| max 0.618  mean 0.145  99.69% above
+  layer 40  |cos| max 0.847  mean 0.185  99.98% above
+DECOMPOSED, because a high mean |cos| can mean one
+shared direction rather than clustering, and the
+distinction is the whole question. At layer 22 every one
+of the 32,640 signed cosines is POSITIVE (min +0.0285),
+and every key aligns with the mean key at +0.385 +/-
+0.045 (min +0.254). After projecting that mean direction
+out, residual |cos| falls to mean 0.0276 — BELOW the
+null's p99.9 — with max 0.5277.
+So the router carries a strong SHARED COMPONENT plus a
+thin tail of genuinely-related pairs, and is otherwise
+near-isotropic. That is a measured confluence, and it is
+in ROUTING space.
+R-a, the bias: means +8.86 / +10.65 / +12.71 at layers
+4 / 22 / 40 with sd 0.056 / 0.099 / 0.061. A CONSTANT
+added to every expert's score is a topk NO-OP, so
+roughly 99% of the bias magnitude cannot affect routing
+at all; the entire selection signal is the ~0.1 sd
+deviation (range 0.84 at layer 22). Most-boosted and
+most-suppressed experts differ per layer (e103/e71,
+e137/e253, e105/e220). Reading the bias vector as
+"expert popularity" is legitimate only after the mean is
+removed.
+R-c CONFIRMED: layers.0.ffn.gate.tid2eid [129280, 6]
+I64 exists in shard 2. With n_hash_layers = 3, the first
+three layers route by TOKEN ID through an exact public
+table — expert-activation frequency for those layers is
+computable from any corpus's token histogram with ZERO
+inference.
+2B-ROUTER, PREDICTION (2) HOLDS, and the sign is wrong
+for the hypothesis. Five most-similar pairs by key
+cosine (mean 0.549) against five random pairs (mean
+0.161), identical residual pipeline:
+  NEIGHBOUR  raw 3.6265  IDENT 4.4290  HUNG 4.3789
+  CONTROL    raw 3.6102  IDENT 4.4032  HUNG 4.3763
+  NEIGHBOUR - CONTROL: IDENT +0.0258, HUNG +0.0026
+The registered bar was "routing helps if < -0.05"; the
+measurement is POSITIVE, i.e. router-neighbours have
+marginally HIGHER residual entropy. And most of that gap
+is a confound rather than an effect: their raw entropy
+is also higher by +0.0163, leaving ~+0.010 bits/param
+unexplained, which is nothing.
+(3) HOLDS: within the neighbour group HUNG - IDENT =
+-0.0501 against the -0.2 bar. Worth one honest note —
+alignment does about 2.4x more on router-neighbours than
+on arbitrary pairs (-0.050 v -0.021), a faint signal in
+the direction of relatedness, still four times inside
+the bar and not actionable.
+DECISION RULE: (2) holds, so VERDICT V4-RUNG-2B's scope
+widens from "arbitrary pairs share nothing" to "nothing
+is shared even between the pairs most likely to share
+it". The mu+delta family is now closed on the strongest
+test available without running the model. No amendment
+to N3 is owed.
+THE READING, and it is the useful sentence: the shared
+component that a gravity decomposition would look for
+EXISTS in this model, but it has been factored into the
+ROUTER (one common key direction) and into the
+architecture's own shared expert — which V4 stores at
+fp8 with [128,128] blocks while the routed experts get
+fp4 at group-32, i.e. DOUBLE the bit width for the
+component every token uses. The routed experts are what
+remains after the common part is removed at training
+time, which is exactly why no post-hoc method finds
+anything in them. Consistent with GRAV-0T/REV (post-hoc
+gravity destructive both ways) and with VERDICT
+DIET-COND-SEED (consensus pull works at birth, and its
+dose does not transport).
+FENCES: one model; three layers for R, one for
+2b-router; five pairs per group; cosine on router keys
+is a proxy for functional relatedness, not a measurement
+of it; the shared-expert precision asymmetry is read
+from tensor dtypes, not from an ablation. No capability
+claim is made or possible.
+
+## AMENDMENT AUDIT-0802 (amends VERDICT V4-RUNG-2B, AMENDMENT P4-DEVICE-SCOPE, VERDICT DIET-COND-SEED, RECEIPT V4-RUNG-MINUS-1, VERDICT V4-RUNG-0/1): ten corrections from a three-agent audit of this branch — wrong extremes, a false enumeration, an over-awarded tag, and a systematic receipt gap (2026-08-03, Mac; Opus-5 review branch)
+
+Three agents audited all 23 entries booked on branch
+opus-5 plus its code. Every claim below was verified
+before booking. The measurements survive; ten READINGS
+and one code-vs-claim gap did not.
+(1) VERDICT V4-RUNG-2B, wrong extreme. Booked "every
+one of the 7 pairs reads between -0.0207 and -0.0214".
+Recomputed from logs/opus/v4_rung2b.jsonl the true
+range is -0.02078 to -0.02182 — expert 1 sits OUTSIDE
+the booked lower bound. The script prints only means,
+so the range was hand-derived and got the extreme
+wrong. Same entry: "all three residual streams
+(4.36-4.41)" — the three means are 4.3578 / 4.3788 /
+4.3789, so 4.41 appears nowhere and 4.3578 is below
+4.36. Correct text: range -0.0208 to -0.0218; means
+4.358-4.379. The conclusion (10x inside a 0.2 bar) is
+untouched.
+(2) AMENDMENT P4-DEVICE-SCOPE, FALSE enumerated
+evidence, labelled "Measured, not inferred". It lists
+detbwd_r1 among files containing no device selection.
+scratch/detbwd_r1.py:89 reads dev = ("cuda" if
+torch.cuda.is_available() else "cpu"), and
+detbwd_r2_adamw.py does likewise. RIDER #2 later found
+this and quietly re-scoped to "the gravmoe chain
+(detbwd_r2b / detbwd_mb / detbwd_gravmoe)", dropping
+detbwd_r1 from the list without saying the sentence had
+been wrong. A retraction that does not name what it
+retracts is half a retraction; this names it. The
+substance of both entries stands — P4 did run CPU-only.
+(3) VERDICT DIET-COND-SEED, over-awarded tag. It grants
+[REPLICATED] to the interior-optimum SHAPE while the
+same entry says of seed 31 "it is 51 loss units in 7851
+and should be read as a tie, not a win". A route may
+not rest on a draw the entry itself calls unresolved.
+docs/FINDINGS.md already tags that bullet
+[SINGLE-SEED]; FINDINGS is right and the verdict's
+award is the defect. The MERGEABILITY half (merge
+damage monotone, collapse at lambda 1, 3/3 with no
+marginal call) keeps [REPLICATED]. Root cause worth
+keeping: the pre-registered rule was a bare argmin test
+with NO minimum effect size — register one next time.
+(4) RECEIPT V4-RUNG-MINUS-1, arithmetic. "201.3 MB of
+scales against 3221.2 MB of expert weight, 5.6%" — the
+quoted numbers give 6.25% as a ratio or 5.88% as a
+share of the total. Neither is 5.6%. VERDICT
+V4-RUNG-0/1's 5.9% is the correct share figure.
+(5) VERDICT V4-RUNG-0/1, "exactly" and "provably".
+H(sign) measured 0.9999980821698847 to
+0.999999999978309 across the 27 tensors — 1.00000 to
+five decimals, which is what the registered >= 0.9995
+bar asked for. "Exactly incompressible" and "provably"
+overstate a measurement; say it fired with room.
+(6) VERDICT V4-RUNG-0/1, "REPLICATES the P6 regularity
+on a new vendor, new model and new format". P6 compared
+two WEIGHT TENSOR CLASSES inside one model (router
+6.00/2.84 v experts 5.60/4.31); this cell compared an
+E8M0 metadata stream against fp4 weight codes, and its
+mechanism is near-constant per-group exponents (span 3)
+rather than heavy-tailed weights concentrating codes.
+Different object, different mechanism. Correct wording:
+CONSISTENT WITH the P6 ordering, not a replication of
+it. Living-docs note: docs/THEORY.md has no P6 row at
+all, so nothing was being replicated INTO the grounding
+map either.
+(7) FINDINGS tag misuse. GLOSSARY.md defines
+[MECHANISM-CONFIRMED] as "a causal arm, not a story".
+Two bullets from this branch are descriptive reads of a
+shipped artifact with no intervention (the gate-key
+geometry, the sign-bit result) and one reports a
+registered treatment that FAILED its bar — which the
+glossary calls [NULL]. Corrected in this commit.
+(8) EVIDENCE GAP, systematic and the most useful
+finding. About eight booked numbers have no committed
+artifact: the gate-key mean-direction decomposition
+(+0.385, min +0.254, residual |cos| 0.0276), the
+tid2eid confirmation, the MPS/CUDA primitive-parity
+run, the rung-A cpu/mps/cuda shas, the chunk-invariance
+check, both regression receipts, and the merged-lattice
+figures. All were produced by one-off inline commands
+whose output was never saved, and several are NOT
+recomputable from the logs that do exist (v4_router.jsonl
+stores only absolute cosines, so the sign result cannot
+be recovered). The audit independently recomputed
+everything that COULD be checked and found it correct —
+so this is a receipts problem, not a numbers problem.
+STANDING CORRECTION for this seat: a number that
+reaches the ledger must come from a committed script
+writing to a log, not from an inline command.
+(9) VERDICT V4-RUNG-0/1, undisclosed deviation: the
+pre-reg registered "200-500 MB" of sample; 113 MB was
+transferred. Expert count was in band, bytes were not,
+and the verdict did not say so.
+(10) VERDICT V4-RUNG-2B, comparator swap: prediction
+(2) registered "EXCEED the raw code entropy of 3.865
+bits/param"; the verdict compared against 3.62, the
+integer-lattice figure. Both hold, but the registered
+number was silently replaced by a different quantity on
+a different alphabet.
+Also booked as code, not prose (commit 0802a24, seven
+fixes with their verification): a CRITICAL leak of
+BIRTH_SEED past llmopt/reproduce.py's sanitizer
+(measured: BIRTH_SEED=1 turned gravmoe-rb1 into
+9264fcf0 instead of c6766da2); an exactness assert that
+was an algebraic identity and could not fail; a
+curation ratchet pinned structurally at 0 while 296
+entries were uncited; missing length/dtype guards on
+the fetch path; an overflow bound 5 bits short on the
+w2 leg; an unasserted shared-lattice assumption; and a
+device probe whose skip was indistinguishable from a
+pass.
+WHAT DID NOT CHANGE: every measured number in every
+verdict recomputed correctly from its logs where logs
+exist, all amendment chains resolve, every pre-reg
+precedes its verdict with no missing or smuggled arm,
+and the 3080 re-ran all 16 pins sha-identical against
+this branch's modified certified files.
+
+## PRE-REG V4-RUNG-D + S0: is the shared router direction routing-INERT, and is the entropy-coded form executable? (2026-08-03, Mac; Opus-5 review branch)
+
+Two short Mac-local cells, zero download, both fired
+against a stated prediction. R-d is registered FIRST
+because it is the cheapest available falsifier of this
+branch's own headline; S0 is registered to FAIL.
+
+RUNG D — the falsifier. VERDICT V4-RUNG-R booked "the
+confluence is REAL but it lives in the ROUTER" on the
+strength of every one of the 32,640 key pairs having a
+positive cosine and every key sharing a +0.385 mean
+direction. Hazard 8 of the spec already says a CONSTANT
+additive term is a top-k no-op, which is why gate.bias
+shifts selection without touching the output weight. The
+same argument was never turned on the KEYS. If every key
+w_i carries the same component along a unit vector u,
+then every score picks up 0.385 * <u, x> — identical
+across experts, and therefore invisible to a top-k that
+only compares scores to each other. What survives
+selection is the RESIDUAL (W - u u^T W).
+CELL: for layers 4, 22, 40, take U = row-normalized gate
+keys, u = the normalized mean of U (the same object the
++0.385 figure describes). Draw x ~ N(0, I_4096), n =
+2000 per layer, fixed seed. Compare the top-6 index SET
+from raw scores against the top-6 from deflated scores,
+on the scores as the vendor computes them
+(sqrtsoftplus(x @ W^T), then + bias for selection). The
+deflation is applied to the keys, before the
+nonlinearity, because that is where the shared direction
+lives.
+READOUTS: mean set agreement |intersection| / 6; the
+fraction of draws with a fully identical set; rank-1
+(argmax) agreement; and the deflation's effect on the
+score spread.
+PREDICTION (1): mean set agreement >= 90%. The shared
+direction is MOSTLY ROUTING-INERT.
+PREDICTION (2): the deflation removes a large share of
+score MEAN and a small share of score VARIANCE across
+experts — the shared component is a level, not a
+contrast.
+IF (1) FIRES: the headline qualifies. "The confluence
+lives in the router" becomes a statement about key
+GEOMETRY, not a routing MECHANISM, and FINDINGS plus
+spec v3 both need the edit in the same commit.
+IF (1) FAILS: the shared direction is doing selection
+work and the headline strengthens. Either way this is a
+result, and the direction is registered here before the
+run.
+FENCE, registered in advance: isotropic x is a NULL
+MODEL. Real hidden states are anisotropic and could put
+large mass on <u, x>. This cell licenses "consistent
+with routing-inert under an isotropic input model", and
+NEVER "proven inert". No capability claim.
+RECEIPT DEBT PAID HERE: AMENDMENT AUDIT-0802 item (8)
+recorded that the +0.385 / +0.254 / 0.0276 decomposition
+came from an inline command and is NOT recomputable from
+v4_router.jsonl, which stores only absolute cosines.
+This cell recomputes the decomposition from the same
+sha-pinned blobs and writes it to a log. If the numbers
+do not reproduce, that is itself the finding and gets
+booked as an amendment.
+
+RUNG S0 — registered to FAIL. House doctrine already
+answers this in the negative: P6-v2's fences say
+decode-side rANS throughput was never benched because
+the format is storage and "the runtime twin remains
+crystal5/int8", citing the C2b lesson that the
+bit-packed form is DIRECTLY EXECUTABLE. The payoff is
+small: a raw expert is 13.37 MB against 11.29 MB coded,
+15.6%, bought with a full entropy decode.
+CELL: encode one cached expert's nibble stream with
+constriction 0.5.0, Categorical(perfect=False), pinned
+verify=True via the same coder path llmopt/quantize/
+pack.py:108 uses; then time the DECODE alone, best of 5,
+single-threaded, reporting MB/s of DECODED PAYLOAD (not
+compressed bytes). Report the encode side too.
+PREDICTION: single-threaded decode lands in 20-300 MB/s,
+one to two orders of magnitude short of the 5 GB/s bar
+the streaming arithmetic needs.
+REGISTERED CONCLUSION IF IT FAILS AS EXPECTED: the
+entropy-coded form is an ARCHIVE format and the
+bit-packed fp4 form is the STREAMING format. That is a
+format-design statement, not a defeat — it is what
+converts an inference the spec has been carrying into a
+number.
+IF IT SURPRISES (>= 1 GB/s): spec item C5, interleaved
+rANS, becomes live.
+FENCE: this is a Python-binding measurement of one
+coder on one machine. It bounds THIS implementation, not
+rANS as a technique; a SIMD or GPU decoder is a
+different instrument and is not being claimed on.
+Both cells are Mac-only, minutes each, and touch no
+certified file.
+
+## VERDICT V4-RUNG-D + S0: the shared router direction is a LEVEL, not a contrast — 97.4-98.0% of routing survives deleting it, and the entropy-coded expert decodes 131x too slowly to stream (2026-08-03, Mac; Opus-5 review branch)
+
+Both registered predictions FIRE, and the first one
+qualifies this branch's own headline downward.
+
+RUNG D. Vendor scoring read from the shipped source
+rather than remembered: inference/model.py sha
+c0c19e6c9fa439ba asserts scores = F.softplus(x @ W^T)
+.sqrt(); scores = scores + self.bias; indices =
+scores.topk(topk). config.json gives topk 6, 256 routed
+experts, scoring_func sqrtsoftplus. Note the two vendor
+namespaces disagree by NAME: ModelArgs calls it
+n_activated_experts, config.json calls it
+num_experts_per_tok. Both say 6.
+RESULT, at the registered scale (x ~ N(0, I_4096),
+n = 2000, seed 2026_08_03 + layer):
+  layer   set agr   identical   rank-1
+    4      0.9802     0.8815     0.9815
+   22      0.9744     0.8485     0.9730
+   40      0.9741     0.8505     0.9750
+PREDICTION (1) registered >= 0.90 set agreement: FIRES
+on all three layers with 7-8 points of room. Deleting
+the shared direction from the keys leaves 97.4-98.0% of
+the top-6 selection unchanged and ~97.3-98.2% of the
+rank-1 winner unchanged.
+PREDICTION (2), level not contrast: FIRES, and more
+sharply than registered. Deflation removes ~99% of the
+logit MEAN (L4 0.0520 -> 0.0003; L22 0.0110 -> 0.0008;
+L40 0.0063 -> 0.0004) and 0.033% / 0.081% / 0.048% of
+the across-expert SD. The mechanism is one number: the
+shared contribution to expert i is c_i * <u,x> with
+c = W u, and c has coefficient of variation 0.051 /
+0.097 / 0.070 — near-constant across experts, hence
+nearly invisible to a top-k that only compares experts
+to each other.
+UNREGISTERED ROBUSTNESS PROBE, labelled as such:
+softplus is not scale-invariant, so the same cell ran at
+input scale 0.1 and 10 (logit across-expert sd 0.21-0.27
+to 20.6-27.1, i.e. the near-linear and the saturated
+regime). Set agreement 0.968-0.982 throughout. The
+conclusion does not come from the null model sitting in
+one regime.
+WHAT THIS DOES TO THE HEADLINE. VERDICT V4-RUNG-R said
+"the confluence is REAL but it lives in the ROUTER".
+The geometry is unchanged and still real — every key
+still shares a large positive component. But that
+component is a LEVEL added to all 256 scores alike, and
+top-k cannot see a level. So the correct statement is
+about key GEOMETRY, not a routing MECHANISM: the
+confluence is visible in the weights and nearly absent
+from the behaviour. FINDINGS and spec v3 edited in this
+commit. This is the same structure as hazard 8 (a
+constant router bias is a top-k no-op), one level down,
+and it is the first time the argument was turned on the
+keys.
+FENCE, registered in advance and binding: isotropic x is
+a NULL MODEL. Real hidden states are anisotropic and
+could place large mass on <u,x> — though note that even
+that would move all 256 scores together. This licenses
+"consistent with routing-inert under an isotropic input
+model" and NEVER "proven inert". No capability claim.
+RECEIPT DEBT PAID (AMENDMENT AUDIT-0802 item 8). The
++0.385 / +0.254 / 0.0276 decomposition is recomputed
+from the sha-pinned blobs and logged. Layer 22
+reproduces mean +0.3851 and residual |cos| 0.0276
+exactly. The MIN did not reproduce at first (+0.2427),
+and the cause is definitional, not arithmetic: the
+booked +0.254 used u = normalize(mean of RAW rows)
+(+0.2544), while the natural reading is mean of
+UNIT rows. All four defensible definitions are now
+measured and logged. Their mean projections agree to
+0.0008 and their residual |cos| to 0.0001, but their
+MINIMA span 0.2397-0.2643 — so the EXTREMUM is the
+definition-sensitive statistic, which is the third
+wrong-extreme finding on this branch (AUDIT-0802 items
+1 and 2 were the other two). Standing note: book
+extrema with their definition attached, or book the
+mean.
+
+RUNG S0. Fires as registered, and the registered
+conclusion is adopted.
+Same coder path as llmopt/quantize/pack.py:108
+(constriction, Categorical(perfect=False), AnsCoder),
+roundtrip asserted, single-threaded, best of 5, on
+expert layers.22.ffn.experts.0 (sha-pinned cache).
+  per projection: 8.39M codes, 4.19 MB packed -> 4.06 MB
+    coded, decode 114 ms = 36.7 MB/s of packed weight
+    (73.4 Msym/s), encode 37 ms
+  whole expert: 13.37 MB stored -> 12.26 MB coded,
+    decode 350 ms = 38.2 MB/s of delivered weight
+PREDICTION registered 20-300 MB/s: FIRES at 38.2 MB/s,
+in the lower third of the band. That is 131x SHORT of
+the 5 GB/s the streaming arithmetic assumes. A 6-expert
+layer batch costs 2.1 s of decode alone; 43 layers is
+90.4 s/token of pure entropy decoding.
+REGISTERED CONCLUSION, ADOPTED: the entropy-coded form
+is an ARCHIVE format; the bit-packed fp4 form is the
+STREAMING format. Spec item C5 (interleaved rANS) stays
+dormant — it was gated on >= 1 GB/s.
+FENCE: one Python-bound coder, one core, one machine.
+This bounds THIS implementation, not rANS as a
+technique.
+BONUS FINDING — a spec arithmetic error, found by
+measuring. Spec v3 says "a raw expert is 13.37 MB
+against 11.29 MB coded — 15.6%". Measured byte-lossless
+coded size is 12.26 MB, i.e. 8.3% saved, not 15.6%.
+The 11.29 MB figure is 25.17M params at 3.5903 bits,
+which is the MERGED-LATTICE rate — a WEIGHT-EXACT,
+BYTE-LOSSY, n=1 measurement — silently substituted for
+the byte-lossless rate the sentence describes. The
+error propagates: the streaming line "6 x 43 x 11.29 MB
+= 2.9 GB per token" prices per-token traffic at a rate
+no executable stream can carry. The packed fp4 form is
+what a runtime reads, so per-token expert traffic is
+6 x 43 x 13.37 MB = 3.45 GB, and the 5 GB/s bound
+tightens from "at most ~1.7 tok/s" to at most ~1.45
+tok/s. Spec corrected in this commit. This makes the
+registered conclusion STRONGER: the byte-lossless
+archive buys 8.3%, and costs 131x the pipe to open.
+ARTIFACTS: scratch/v4flash_rungd.py ->
+logs/opus/v4_rungd.jsonl; scratch/v4flash_s0.py ->
+logs/opus/v4_s0.jsonl. Per the AUDIT-0802 standing
+correction, every number above comes from a committed
+script writing to a log.
+
+## AMENDMENT RUNGD-0803 (amends VERDICT V4-RUNG-D + S0): four reviewers, and the fence was the thing that was wrong — the shared direction is inert ONLY under the null model that assumed it (2026-08-03, Mac; Opus-5 review branch)
+
+Four read-only reviewers (lab reviewer, code-reviewer,
+silent-failure-hunter, feasibility red-team) audited the
+booking from 24 hours earlier. Every load-bearing finding
+below was verified in-tree before adoption; several were
+found INDEPENDENTLY by two or three of them, which is the
+only reason some are stated this strongly.
+The registered PREDICTION (1) still fires and the
+"level, not contrast" reading still holds in the
+geometry. What does not survive is the leap from that to
+ROUTING-INERT, and one of the two evidence lines under
+prediction (2).
+
+(1) THE FENCE WAS SOFTENED IN THE ONE DIRECTION THE
+MECHANISM FORBIDS — the most serious item. The verdict
+wrote: "Real hidden states are anisotropic and could
+place large mass on <u,x> — though note that even that
+would move all 256 scores together." That parenthetical
+is BACKWARDS. The shared component contributes
+c_i * <u,x> with sd(c) = 0.060/0.097/0.065, so a large
+<u,x> scales the CONTRAST linearly. Now measured
+(scratch/v4flash_rungd.py SHIFT arm, x = N(0,I) + m*u):
+  m       <u,x>    L4 set   L22 set   L40 set
+   0      ~0.0     0.9790   0.9705    0.9733
+   5      ~5.0     0.8876   0.8283    0.8598
+  10      ~10.0    0.7976   0.6692    0.7520
+  30      ~30.0    0.5069   0.2416    0.4652
+  64      ~64.0    0.2669   0.1174    0.2609
+Set agreement collapses to 12-27%. The isotropic null has
+E<u,x> = 0, which is EXACTLY the condition that makes a
+shared direction irrelevant — the null model quietly
+assumed the answer. And the unregistered scale sweep did
+not test this: scaling x scales the shared term and the
+contrast together, preserving their ratio. It looked like
+a robustness check and was inert with respect to the
+hazard it appeared to address.
+CORRECTED READING: under isotropic inputs the shared
+direction is nearly inert; under inputs carrying mass
+along u it DOMINATES selection. Which regime V4 operates
+in is a fact about its residual stream that cannot be
+measured on this machine. VERDICT V4-RUNG-R's headline is
+therefore NOT qualified downward as booked — it is
+UNDETERMINED, and the honest scope of RUNG-D is "top-6
+selection is robust to this rank-1 deflation under an
+isotropic input model", full stop.
+
+(2) THE OPERATION WAS NOT A LEVEL REMOVAL, and the
+verdict read it as one. W - (Wu)u^T removes a level AND
+cuts each key's logit scale by sqrt(1-p_i^2), which is
+3.5-20.2% and VARIES per expert (gain multipliers
+0.824-0.955 / 0.864-0.970 / 0.798-0.965). The clean arm
+was free and is now run — W - 1*cbar*u^T, subtracting the
+MEAN coefficient and leaving each expert's deviation:
+  arm      L4       L22      L40
+  LEVEL    0.9974   0.9928   0.9952
+  RANK1    0.9790   0.9705   0.9733
+A pure level is near-exactly invisible, as theory
+demands: sqrt(softplus(.)) is strictly monotone, so a
+term identical across experts is an EXACT top-k no-op
+absent bias, and the ~0.5% residual is the bias
+interacting with the nonlinearity's local slope. So the
+mechanism decomposes: the level part is trivially
+invisible, and the whole measured 2-3% disagreement is
+the part that is NOT a level. The verdict attributed all
+of it to the level.
+
+(3) "DEFLATION REMOVES ~99% OF THE LOGIT MEAN" IS
+UNSOUND, and wrong on two of three layers. z.mean() is
+the grand mean over all draws and all experts; with
+x ~ N(0,I) its expectation is EXACTLY ZERO on both arms.
+It is sampling noise of order ||Wbar||/sqrt(n). Measured
+over 10-12 seeds: the sign flips (4+/6-, 5+/5-, 2+/8-)
+and the implied "% removed" ranges 24.6% to 99.4%, with
+one seed where deflation makes it 5.5x LARGER. The booked
+pairs are one favourable draw. Recomputed properly the
+quoted layers give 99.5% / 92.6% / 93.9%, not "~99%".
+Two further tells: L40's raw value is NEGATIVE
+(-0.006317) and the verdict printed "0.0063" — the sign
+was lost to an abs() in the inline command that produced
+the prose, which is the AUDIT-0802 standing correction
+being violated in the entry that cites it. And the SAME
+log carries logit_absmean, giving 8.9%/7.3%/9.8% for a
+defensible reading of the same words — a comparator
+choice the entry did not disclose (AUDIT-0802 item 10's
+pattern).
+REPLACEMENT, draw-free and seed-free: the level lives in
+the WEIGHTS, so measure it there. ||mean key row||
+collapses 1.1816 -> 0.0351 (97.0%), 1.0016 -> 0.0318
+(96.8%), 0.9333 -> 0.0430 (95.4%). No draw, no seed, no
+estimator.
+
+(4) THE REGISTERED ROW WAS NOT REPRODUCIBLE FROM ITS OWN
+FIELDS. One rng was threaded through the SCALES loop, so
+the registered scale-1.0 arm consumed the second draw
+block only because the UNREGISTERED scale-0.1 probe ran
+first. Reproducing the registered prediction alone gives
+different numbers: 0.9790/0.9705/0.9733 against the
+booked 0.9802/0.9744/0.9741. The row stored scale, ndraw
+and seed — insufficient to regenerate it. It also made
+the three scale arms UNPAIRED, mixing the scale effect
+with sampling noise, which is the house's most basic
+rule. Fixed: one draw block per layer, reused across
+every scale and every deflation. THE CORRECTED
+REGISTERED NUMBERS ARE 0.9790 / 0.9705 / 0.9733 (set),
+0.8755 / 0.8280 / 0.8430 (identical), 0.9815 / 0.9685 /
+0.9650 (rank-1). Prediction (1)'s >= 0.90 bar still
+clears by 7.1-7.9 points.
+
+(5) THE 97-98% WAS NEVER COMPOUNDED, while the S0 half of
+the same entry compounds over 43 layers freely. Under
+layer independence (an approximation; real routes
+correlate): P(route identical at EVERY layer) = 0.0044 /
+0.00086 / 0.00095, and the expected number of changed
+expert slots per token is 6 x 43 x 0.026 = 6.1 — about
+one full layer's route replaced. "97.4-98.0% agreement"
+and "~99.9% of tokens route differently somewhere" are
+the same numbers. The entry chose the framing that
+supported its conclusion.
+
+(6) THE SIGN DEFECT AUDIT-0802 FLAGGED WAS RE-INTRODUCED,
+and fixing it inverted a headline. The cell logged only
+ABSOLUTE residual cosines — the exact complaint AUDIT-0802
+item (8) made about v4_router.jsonl, in the cell written
+to pay that debt off. Now logged signed, and the result
+is substantive: after removing the shared direction, only
+34.8% / 36.2% / 36.5% of the 32,640 residual pairs are
+still positive (range [-0.274, +0.653] at L4). V4-RUNG-R's
+"all 32,640 pairs positively aligned" is carried ENTIRELY
+by the shared component; the residual keys are majority
+negatively correlated.
+
+(7) SHARED-EXPERT TRAFFIC WAS OMITTED — the entry's own
+correction of the spec was 31% short. n_shared_experts=1
+runs on EVERY token in EVERY layer and is not routed;
+measured from the shard-24 header it is 25.17 MB/layer in
+F8_E4M3 (w1/w2/w3, [2048,4096] each). Per-token traffic
+is 43 x (6 x 13.37 + 25.17) = 4.53 GB, not 3.45 GB, and
+the ceiling is ~1.10 tok/s, not ~1.45. Cause:
+v4flash_s0.py hardcoded 6 and 43 as literals and read
+nothing, so n_shared_experts=1 was sitting in the same
+config unread. Both are now read and asserted.
+FREE FINDING from the same header: the shared expert's
+scales are [16,32] against [2048,4096] weights, i.e.
+128x128 blocks — which answers spec v3's open W1 question
+("currently taken from config.json") at zero cost.
+
+(8) THE 131x IS SINGLE-CORE AND THE HEADLINE DOES NOT SAY
+SO. The body fence does; the title does not. The three
+streams are independent, so the free order of magnitude
+is real: 38.1 MB/s x 11 cores = 0.42 GB/s, ~12x under the
+MEASURED NVMe rate of 3.5-4.5 GB/s (not the 5 GB/s the
+spec assumes). The adopted conclusion — archive format,
+not runtime format — survives an order of magnitude of
+headroom, which is a stronger statement than 131x from
+one core. Now printed by the cell.
+
+(9) SMALLER, ALL VERIFIED: the pre-reg registered
+"constriction 0.5.0" but the cell used
+getattr(constriction, "__version__", "unknown"), and
+constriction has no __version__ — so every logged row
+recorded "unknown" and a registered pin went unmeasured
+(importlib.metadata gives 0.5.0; now asserted).
+"sha-pinned" overstates what the code checks: the .sha is
+derived from the same bytes at write time, so it detects
+disk rot and nothing else — there is no independent
+vendor pin (contrast RA.SILU_SHA, which is one); language
+downgraded to cache-integrity-checked. The four
+shared-direction definitions agree to 0.0002 in residual
+|cos|, not 0.0001. The residual |cos| MAX also failed to
+reproduce under the registered definition (0.5297 vs
+V4-RUNG-R's booked 0.5277, which is the raw_mean value) —
+same definitional cause as the MIN, unmentioned, and it
+strengthens the standing note rather than weakening it.
+The traffic figures mix formats: 3.45 GB/token is the
+packed fp4 stream, which needs no decode, while 90.4
+s/token is the coded form, whose traffic would be 3.16
+GB — the two sat adjacent and invited mis-combination.
+
+(10) CODE DEFECTS FIXED IN THIS COMMIT, each verified
+before the fix. The deflation assert was VACUOUS —
+Wd @ u = (W u)(1 - ||u||^2) and u is normalized two lines
+above, so it held with 1.2e6x of margin and passed for a
+RANDOMLY CHOSEN u, the one failure that would void the
+null. This is the same defect class fixed in
+v4flash_rungA.py on 2026-08-02, reintroduced in a new
+file. Replaced with guards that fired on first run (they
+caught a wrong expectation in the replacement itself):
+||u|| = 1, min projection > 0, and removed energy equal
+to c.c. A docstring asserted "the four unit vectors agree
+to |cos| > 0.999" — never computed by the cell, not in
+the log, and FALSE (0.9980/0.9975/0.9953). A run that
+measures zero layers exited 0; now asserts. Layers below
+num_hash_layers route by tid2eid with no bias and no
+top-k, and nothing stopped LAYERS=0,1,2 from producing a
+full fabricated table; now asserted. The three
+substring asserts on the vendor source could not have
+detected a group-limited routing stage (DeepSeek's V3
+lineage puts one between the bias add and the top-k, and
+all three substrings survive it); n_group is now asserted
+too — verified absent, so the flat top-k operator was
+correct, but it was correct by luck.
+NOT CHANGED: the S0 measurements (38.1 MB/s, 8.3% saved,
+12.26 MB coded) all reproduce; the spec-error diagnosis
+that 11.29 MB was the merged-lattice rate is independently
+confirmed; and every set-agreement number reproduces from
+the logs under the run that produced it.
+
+## RECEIPT V4-CENSUS: the "27B dense path" is 7.8B — nineteen of those billions are three forgotten MTP blocks full of experts, and the artifact does not fit on this disk at all (2026-08-03, Mac; Opus-5 review branch)
+
+Free: 48 shard headers, ~8 MB of range reads, no weights.
+scratch/v4flash_census.py -> logs/opus/v4_census.jsonl.
+Written because spec v3's load-bearing memory claim was
+derived by SUBTRACTION and never checked bottom-up.
+MEASURED, 72,317 tensors across 48 shards:
+  routed experts    296.353 B params    157.437 GB
+  NON-ROUTED          7.828 B params      9.441 GB
+  TOTAL ARTIFACT                        166.879 GB
+Spec v3 (lines 64-67) says "the ~27B non-routed params
+are fp8, i.e. ~27 GB — which alone nearly fills the
+machine before a single routed expert is considered. The
+dense every-token path is the binding constraint, not the
+experts", and calls this "the stronger argument v2 failed
+to make". It is FALSE. The dense path is 9.4 GB, 31% of a
+36 GB machine, and leaves ~20 GB of room — so the same
+paragraph's "leaves no room for an expert cache" is
+withdrawn too.
+WHERE THE 27B CAME FROM, exactly: 304.181 - 277.025 =
+27.156, with 277.025 = 43 x 256 x 25.17M. But routed
+experts live in FORTY-SIX blocks, not 43: layers.0..42
+plus mtp.0/1/2, three full multi-token-prediction blocks
+carrying 256 experts each. 19.327 B of the "dense params"
+are forgotten EXPERTS; 7.83 B is the real dense path.
+THE CONCLUSION SURVIVES AND HARDENS, for a different
+reason than the spec gave. The 166.879 GB artifact
+against 31 GiB free on this disk is 5.4x over, and
+deleting everything deletable (checkpoints/ 51 GB +
+~/.cache/huggingface 52 GB) still leaves it ~31 GB short.
+There is no pipe to stream through because there is
+nowhere to put the file. That is the cheapest and hardest
+form of the conclusion and the spec never states it.
+Corrected memory arithmetic for the base path: expert
+budget = 30.15 - 8.85 = 21.3 GB against 124.3 GB of
+base-path experts at the best measured rate, i.e. 5.8x
+short, not the spec's 4.1x.
+ALSO CORRECTS RECEIPT V4-RUNG-MINUS-1, which says
+non-expert tensors are "F8_E4M3 with F8_E8M0 scales". The
+split is three-way: F8_E4M3 6.304 GB, BF16 2.967 GB (31%
+— embed.weight, head.weight, every ffn.gate.weight, the
+compressor and indexer projections), F32 0.151 GB, I64
+0.019 GB. The routed-vs-not-routed asymmetry is real; the
+format story is not two-way.
+RESOLVES spec v3's "Owed, free" item: there are 46
+expert-bearing shards at ~3.42 GB of experts each and two
+pure non-expert shards (1 = embed.weight, 45 = head +
+norm + hc_head); non-expert weight per main-layer shard
+is 167 MB. No contradiction remains.
+FENCE: header arithmetic only. Nothing here is a
+capability claim, nothing was run, and no weights beyond
+the 428 MB already cached were fetched.
+
+## PRE-REG V4-RUNG-D2: invert the trained load-balancing bias to measure <u,x> on real traffic, without a forward pass (2026-08-03, Mac; Opus-5 review branch)
+
+AMENDMENT RUNGD-0803 left the question UNDETERMINED:
+the shared router direction is inert under isotropic
+input and dominant under input aligned with u, and
+nothing in the artifact told us which regime V4 is in.
+Settling it appeared to need real hidden states, i.e. a
+forward pass. It does not.
+THE INSTRUMENT. DeepSeek's aux-loss-free bias
+(topk_method noaux_tc) is updated until expert loads
+EQUALISE under the traffic the model actually saw, and
+it touches selection only (inference/model.py:579-585,
+weights gather original_scores). So the shipped bias is
+a trained record of the real input distribution, and it
+can be INVERTED: feed a one-parameter family of inputs
+x(mu) = sqrt(d) * (cos t * u + sin t * v), v a random
+unit vector orthogonal to u, so that <u,x> = mu; score
+with the SHIPPED bias; and find the mu at which load is
+most balanced. That mu is the estimate.
+The logic is a conditional the house has used before:
+if the bias balances load at the true input
+distribution, then the mu that balances load under this
+family is the family's best fit to it.
+ALREADY IN HAND (stated so it cannot be presented later
+as a prediction): corr(bias, c) with c = W u is -0.202 /
+-0.591 / -0.102 at layers 4 / 22 / 40, and -0.103 /
+-0.413 / +0.026 after partialling out key norm. Negative
+is the predicted sign if <u,x> > 0 on real traffic: a
+positive mu boosts high-c experts, they over-win, and
+the balancer pushes them back.
+PREDICTIONS, registered before the inversion runs:
+(1) The load-imbalance-minimising mu is POSITIVE and
+    resolvably far from zero at layer 22.
+(2) It is nearer zero at layers 4 and 40, tracking the
+    partial correlations (-0.103, +0.026).
+(3) With the bias REMOVED, the imbalance-minimising mu
+    moves toward zero at every layer -- that is the
+    control which shows the bias, not the geometry, is
+    carrying the signal.
+IF (1) FIRES: the isotropic null was the wrong input
+model, RUNG-D's inertness does not apply to V4's actual
+traffic, and VERDICT V4-RUNG-R's "the confluence lives
+in the router" is REINSTATED rather than undetermined.
+IF (1) FAILS (mu* ~ 0 at all three layers): the
+isotropic null is vindicated, RUNG-D's original reading
+stands, and the negative correlations above need some
+other explanation.
+FENCES, binding. (a) This is a ONE-PARAMETER family, not
+real hidden states; it varies the axis in question and
+holds everything else isotropic. It estimates the u
+component under that model and nothing else. (b) Load
+balance is measured on a synthetic corpus, so the
+estimate inherits whatever the family gets wrong about
+the perpendicular directions. (c) The bias also absorbs
+expert-quality and frequency effects that have nothing
+to do with u; the partial correlation controls only for
+key norm. This licenses "the shipped bias is consistent
+with a large positive <u,x> at layer 22", never "<u,x>
+= mu* on real text". (d) No capability claim.
+WHY NOT JUST RUN THE MODEL: the dense path is 9.44 GB
+and storable (RECEIPT V4-CENSUS), but the forward
+requires the Indexer (Hadamard rotation, simulated fp4
+activation quant), the Compressor and its KV cache, MLA
+with sliding window and attention sinks, and
+hyper-connections with 20 Sinkhorn iterations. A subtle
+error there yields WRONG hidden states, which is worse
+than none. That build is banked, not abandoned.
+
+## VERDICT V4-RUNG-D2: prediction (1) FAILS — the bias does not locate a large <u,x>; what it does is EXCLUDE one, which puts the shared direction at ~12-17% of routing rather than 2% or 75% (2026-08-03, Mac; Opus-5 review branch)
+
+The registered estimator did not resolve what it was
+built to resolve. It delivered a BOUND instead, and the
+bound is the useful result.
+PREDICTION (1) — "the load-imbalance-minimising mu is
+POSITIVE and resolvably far from zero at layer 22":
+FAILS. Measured argmin <u,x> = -6.0 / -2.0 / -6.0 at
+layers 4 / 22 / 40, on a grid spanning -32 to +64 in
+steps of 2. Small, slightly negative, nowhere near the
+large positive value the -0.591 correlation suggested.
+PREDICTION (3) — "with the bias removed the minimum
+moves toward zero": FAILS. It does not move (L4 -6 to
+-6, L40 -6 to -6) or moves AWAY (L22 -2 to -6). The
+control does not behave as registered, so the argmin is
+not being driven by the bias.
+PREDICTION (2) is not evaluable: no layer produced a
+large mu for the others to be "nearer zero" than.
+WHY THE ESTIMATOR FAILED, and this is the honest
+diagnosis rather than a rescue. The minimum coefficient
+of variation reached is 0.584 / 0.635 / 0.798 against a
+Poisson floor of 0.103 for genuinely balanced load at
+this sample size. NO POINT IN THE FAMILY BALANCES LOAD —
+not within a factor of six. The one-parameter family
+x(mu) = sqrt(d)(cos t u + sin t v) is simply the wrong
+model of V4's router input in the PERPENDICULAR
+directions, and the inversion logic ("the bias balances
+load at the true distribution") only bites if some
+member of the family can balance load. None can.
+WHAT THE CURVE DOES ESTABLISH, and it is a real bound.
+The imbalance rises steeply away from mu ~ 0. At layer
+22, with the shipped bias:
+  <u,x>   -32   -16    -6     0    +4    +8   +16   +32   +64
+  CV     6.455 4.650 0.689 0.639 0.741 0.987 1.790 3.379 6.455
+|<u,x>| >= 8 costs 54% more imbalance than mu ~ 0, and
+|<u,x>| >= 16 costs 180% more; at +64 (all input mass on
+u) the load is 6.5, the degenerate value. Same shape at
+layers 4 and 40. So a LARGE alignment between real
+hidden states and u is strongly disfavoured by the
+shipped bias: whatever the true input distribution is,
+it is one the balancer could work with, and the family
+says that region is |mu| <~ 6.
+CONSEQUENCE FOR AMENDMENT RUNGD-0803, which is why this
+was run. That amendment left RUNG-D undetermined between
+"97% inert" (isotropic, mu = 0) and "12-27% agreement"
+(mu = 30-64). The permitted region |mu| <~ 6 maps onto
+the RUNG-D SHIFT arm at m = 5, where set agreement is
+0.8876 / 0.8283 / 0.8598. So the shared router direction
+plausibly accounts for roughly 12-17% of top-6
+selection: NOT the ~2% the isotropic reading implied,
+and NOT the 75%+ the aligned reading allowed. VERDICT
+V4-RUNG-R's "the confluence lives in the router" is
+partially reinstated — the direction does real routing
+work, but it is a minority of the signal, and the
+majority still lives in the residual keys.
+INDEPENDENT SIDE-RESULT, unregistered and worth the
+line: the bias's balancing WORK is concentrated where
+its correlation with c is. At mu = 0 the bias cuts the
+coefficient of variation 0.9145 -> 0.6388 at layer 22
+(30%), 0.6666 -> 0.6412 at layer 4 (3.8%), and 0.9807 ->
+0.9723 at layer 40 (0.9%) — tracking corr(bias, c) of
+-0.591 / -0.202 / -0.102. The layer whose keys share the
+most structure is the layer whose balancer works
+hardest. That is a correlation across three layers, so
+it is a direction and not a law.
+FENCES, all registered in advance and all binding. The
+family is not real hidden states; load balance is
+measured on a synthetic corpus; the bias absorbs
+expert-quality and token-frequency effects unrelated to
+u, and the partial correlation controls only for key
+norm. This entry licenses "the shipped bias is
+inconsistent with a large |<u,x>| under this family" and
+NEVER a value for <u,x> on real text. The estimator's
+own failure (no member balances load) is the strongest
+statement of that fence. No capability claim.
+STILL OWED, and now the only way to close it: the real
+forward. RECEIPT V4-CENSUS establishes the 9.44 GB dense
+path is storable here, but the Indexer (Hadamard
+rotation, simulated fp4 activation quant), the
+Compressor and KV cache, MLA with sliding window and
+attention sinks, and hyper-connections with 20 Sinkhorn
+iterations have to be right or the hidden states are
+wrong — which is worse than not measuring. BANKED as
+rung F1, not abandoned.
+ARTIFACTS: scratch/v4flash_rungd2.py ->
+logs/opus/v4_rungd2.jsonl.
+
+## AMENDMENT FINAL-0803 (amends VERDICT V4-RUNG-D2, AMENDMENT RUNGD-0803, RECEIPT V4-CENSUS, VERDICT V4-RUNG-R + 2B-ROUTER): the D2 headline is RETRACTED — its instrument does not carry its bound, and its input family used the wrong norm (2026-08-03, Mac; Opus-5 review branch)
+
+Third audit round, three reviewers. Everything below verified in-tree
+before adoption. The two serious items both hit VERDICT V4-RUNG-D2,
+booked hours earlier.
+
+(1) THE INPUT FAMILY USED THE WRONG NORM, layer-dependently. D2 held
+||x|| at sqrt(d) = 64, calling that "its RMS-normalised value". V4's
+RMSNorm returns weight * x/rms(x) (inference/model.py:197-202) and the
+gate is fed ffn_norm(x) (:704), so the router input has length
+||ffn_norm.weight|| — MEASURED 15.51 / 29.24 / 41.08 at layers 4 / 22 /
+40. The family was 4.1x / 2.2x / 1.6x too wide, so the three layers were
+not even on a common mu axis, and most of the swept grid was
+geometrically unreachable at layer 4 (|mu| > 15.5), including the entire
+-32..-16 region the verdict's CV table quoted. np.clip hid it: an
+out-of-range mu was clamped while the row still logged the REQUESTED
+value.
+This is the THIRD instance on this branch of a bound travelling without
+its assumption — and it is in the cell written to correct the second.
+CORRECTED, with the grid re-expressed as a fraction of R: argmin <u,x> =
+-0.78 (-0.05R) / -0.00 (-0.00R) / -4.11 (-0.10R). Prediction (1) still
+FAILS; the corrected argmins supersede the booked -6.0 / -2.0 / -6.0.
+
+(2) THE HEADLINE IS RETRACTED: THE BIAS DOES NOT CARRY THE BOUND. D2 ran
+THREE arms — with_bias, no_bias, and a SHUFFLED-bias null — logged all
+three, and the verdict reported two. The omitted arm is the one that
+falsifies the framing. Penalty in load CV going from <u,x> = 0 to 0.2R,
+at the corrected norm:
+  layer   with_bias   no_bias   shuffled null (n=40)
+    4       +65%       +70%        +69%
+   22      +115%      +174%       +165%
+   40       +80%       +85%        +85%
+The exclusion of a large |<u,x>| is present WITHOUT any bias and under a
+bias with no relationship to c. It is a property of the key geometry and
+the one-parameter family, not of the trained balancer. The registered
+instrument — "invert the trained load-balancing bias" — therefore does
+no work in the surviving claim, and the verdict's headline ("what it
+does is EXCLUDE one") misattributes the result to it. RETRACTED.
+WHAT THE TRAINED BIAS DOES DO, which is the honest residue and is the
+opposite of the framing: at layer 22 the shipped bias SOFTENS the
+penalty (+115% against the null's +165%) and moves the optimum to
+exactly 0.00R from the null's -0.10R. It is absorbing part of a
+u-aligned skew — weak evidence that such a skew exists, at the one layer
+where corr(bias, c) = -0.591. That is a direction across three layers,
+not a measurement.
+(3) THE "12-17%" IS WITHDRAWN. It mapped D2's mu onto RUNG-D's SHIFT
+arm, two cells whose input families had DIFFERENT norms (64 vs R), so
+the mapping was never apples to apples. Both curves are now measured
+under one family at the corrected norm. Rank-1 set agreement:
+  at 0.05R: 0.9260 / 0.8920 / 0.9047  -> direction accounts for 7-11%
+  at 0.10R: 0.8645 / 0.7899 / 0.8295  -> 14-21%
+Without a working estimator for mu there is no basis for choosing
+between those rows, so the shared direction's share of top-6 selection
+is bounded but NOT located. VERDICT V4-RUNG-R is UNDETERMINED again, not
+"partially reinstated".
+Further, the 12-17% inherited the RANK1/LEVEL conflation that AMENDMENT
+RUNGD-0803 item (2) exists to name: at m = 0 the LEVEL arm gives
+99.3-99.7% against RANK1's 97.1-97.9%, so most of the baseline
+disagreement is the per-expert gain cut, not the shared level, and D2
+attributed the whole shift-arm disagreement to "the shared direction".
+
+(4) AMENDMENT RUNGD-0803 ITEM (5) IS WRONG TWICE. Its compounding used
+0.8815/0.8485/0.8505 — the identical-set fractions item (4) of the SAME
+amendment retracts. On the corrected 0.8755/0.8280/0.8430 the products
+are 0.0033 / 0.00030 / 0.00065, not the booked 0.0044 / 0.00086 /
+0.00095 (layer 22 off by 2.9x). And "6 x 43 x 0.026 = 6.1" evaluates to
+6.708; on the corrected agreements it is 6.64.
+(5) ITEM (8)'s "~12x" IS THE NUMBER IT WAS CORRECTING. 38.1 MB/s x 11
+cores = 0.4187 GB/s; against the measured 3.5-4.5 GB/s NVMe that is
+8.4-10.7x. 11.9x comes from 5.0 GB/s — the rate the same sentence
+disclaims. Also, "the three streams are independent" justifies 3x for
+one expert, not 11x; 11 cores needs multiple experts in flight. Same
+error in scratch/v4flash_s0.py's docstring and in the audit sheet.
+(6) ITEM (2)'s GAIN RANGE has a wrong low extreme: the cuts are
+4.50-17.61% / 2.99-13.61% / 3.47-20.17%, so the range across the three
+layers is 2.99-20.17%. The booked "3.5-20.2%" is layer 40's alone. The
+FOURTH wrong-extremum finding on this branch, in the amendment that
+booked the standing note about extrema.
+(7) ITEM (3)'s REPLACEMENT STATISTIC CANNOT DISTINGUISH THE TWO ARMS.
+mean(W - c u^T) and mean(W - 1 cbar u^T) are algebraically equal, and
+the log confirms mean_row_norm_rank1 == mean_row_norm_level to 15
+digits. So the 95.4-97.0% collapse is structurally blind to the
+RANK1-vs-LEVEL distinction item (2) establishes as the core correction,
+and — since u is DEFINED as normalize(mean of unit rows) — it is close
+to tautological. It is a correct number that supports less than the
+prose around it implies.
+
+(8) RECEIPT V4-CENSUS, two corrections. "The always-on dense path is
+9.44 GB" counts the non-expert tensors inside mtp.0/1/2, which are not
+always-on: shards 46-48 carry 0.595 GB of dense weight, so the always-on
+figure is 8.846 GB — which is, unremarked, the 8.85 the same entry then
+uses for its memory budget. And "9.4 GB, 31% of a 36 GB machine" is
+26.2%; 31% is 9.441/30.15, the usable budget, not the machine.
+(9) RECEIPT V4-CENSUS DID NOT AMEND FAR ENOUGH. VERDICT V4-RUNG-0/1
+books a model-wide 147.2 GB expert store and a 12.30 GB saving built on
+43 blocks; the census measures 157.437 GB, and 147.2 x 46/43 = 157.5 —
+the gap is exactly the three MTP blocks. RECEIPT V4-RUNG-MINUS-1's
+"~8.7 GB scale stream" (277e9/32) is ~9.26 GB on the measured 296.353 B
+routed params. Both entries name 43 blocks and both still report LIVE.
+(10) AN UNCAUGHT COMPARATOR SWAP IN VERDICT V4-RUNG-R + 2B-ROUTER, which
+two prior audits missed. It books "2.4x more on router-neighbours than
+on arbitrary pairs (-0.050 v -0.021)". The -0.021 is from a DIFFERENT
+cell (v4_rung2b.jsonl, expert-0-referenced pairs). That cell's OWN
+matched control gives HUNG - IDENT = -0.0269, i.e. 1.86x. The in-cell
+control was replaced by an out-of-cell comparator that enlarges the
+ratio — the same pattern AUDIT-0802 item (10) booked.
+(11) LEDGER PLUMBING. Two index references on this branch do not resolve:
+AMENDMENT RUNGD-0803 amends "2026-08-03-verdict-v4-rung-d-s0" (real id
+ends -d-s0-the) and VERDICT V4-RUNG-D2 links
+"2026-08-03-pre-reg-v4-rung-d2" (real id ends -d2-invert), so
+results_query --chain returns them alone. Fixed in this commit. The
+audit sheet's claim that "all amendment chains resolve" was therefore
+false and is corrected.
+(12) FINDINGS: the D2 bullet reported a result whose two evaluable
+registered predictions both FAILED, tagged [SINGLE-SEED] and without the
+family fence — which is AUDIT-0802 item (7)'s ruling, violated by the
+first bullet written after it. Retagged [NULL] with the fence restored.
+NOT CHANGED, and re-verified: AMENDMENT AUDIT-0802's own corrections
+were checked item by item and none was found to have corrected something
+that was right. All S0 measurements reproduce. The census totals
+reproduce and independently match the vendor's published 304.181 B.
+
+## VERDICT MERGE-AUDIT-OPUS5: the opus-5 branch is adopted to main — 16/16 pins sha-identical against its modified certified files, the D2 retraction independently confirmed, three residue fixes landed (2026-08-03, Mac; Fable seat)
+
+Fable's line-by-line merge audit of the 32-commit opus-5
+branch (Opus 5 seat, 2026-08-02/03; three self-initiated
+audit rounds already booked as AUDIT-0802, RUNGD-0803,
+FINAL-0803).
+WHAT WAS VERIFIED BY EXECUTION, not by reading:
+(1) The full 16-pin gravmoe battery against the branch's
+modified detbwd_mb.py + reproduce.py: A0-A3, CA0-CA3,
+GA0/GA2/GA3, RB1, RB3, RB1S16, GRB1, S1 — ALL 16
+sha-identical to their pins. This pays the receipt debt
+the audit sheet flagged (only 2 of 16 had been verified
+against the branch).
+(2) The BIRTH_SEED matched pair under a POLLUTED
+environment: BIRTH_SEED=1 in the shell still reproduces
+gravmoe-rb1 at c6766da2 — the sanitizer strips it.
+(3) 451 tests pass on the branch, including the new
+docs-integrity guards.
+WHAT WAS VERIFIED BY INDEPENDENT RECOMPUTATION:
+(4) The FINAL-0803 retraction of VERDICT V4-RUNG-D2, the
+branch's one large judgment call: recomputed from
+v4_rungd2.jsonl, the shuffled-bias null (n=40) excludes
+the same inputs the trained bias does (penalty 0->0.2R:
+69/165/85% vs 65/115/80%), so the retraction is CORRECT
+and the L22 residue (bias softens the penalty where
+corr(bias,c)=-0.591) also reproduces.
+(5) S0, census, and the corrected registered rungd
+agreements all match their committed logs and the FINAL
+booked state (not any superseded intermediate).
+RESIDUE FIXED IN THIS COMMIT (Fable files, flagged by
+the branch's audits): scratch/pack_rans.py:84 verify
+gate now unconditional (was OFF past 2B symbols);
+llmopt/moe/offload.py docstring's unmeasured
+"heavy-tailed in practice" replaced with the measured
+statement (aux-loss-free balancing makes uniform routing
+the design point; hit rate is C/E); the "NON-VACUOUS
+guards" comment in v4flash_rungd.py corrected to say
+which single assert actually tests the data.
+ADOPTION: merged to main WITHOUT squash — the
+self-correction trail (11 corrective entries across
+three audit rounds) is the scientific record, not noise.
+The V4 programme's final state is what SESSION-NOTES-
+OPUS-5.md's "What the V4 programme actually established"
+section says, read together with FINAL-0803.

@@ -3,8 +3,9 @@
 Training that uses the weight budget as a capacity-achieving code can make
 calibration machinery unnecessary; this lab measures when that statement holds.
 
-Start with the [glossary](GLOSSARY.md), [curated findings](docs/FINDINGS.md),
-[reproduction walkthrough](docs/REPRODUCE.md), and living
+Start with the [glossary](GLOSSARY.md), [curated findings](docs/FINDINGS.md)
+— organized by evidence maturity and scope rather than chronology, one tag per
+claim — the [reproduction walkthrough](docs/REPRODUCE.md), and the living
 [verdict ledger](docs/RESULTS.md). The [measured-history appendix](docs/MEASURED-HISTORY.md)
 keeps supported earlier mathematics and physics results without making this
 page chronological.

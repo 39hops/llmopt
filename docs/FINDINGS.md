@@ -225,6 +225,15 @@ VERDICT](RESULTS.md#L10676).)
 
 ## Independent implementation and methodology
 
+Where axiom is the replication route below, it means an independent
+implementation in another language and runtime, sharing no code with what it
+checks — and since 2026-08-02 its pinned revisions are public, so those legs
+are externally runnable rather than only booked.
+[`REPRODUCE.md`](REPRODUCE.md) gives the pinned identity and the command. The
+caveat that remains is authorship, not reachability: house and axiom are two
+sessions under one operator, not independent investigators. Read
+`[REPLICATED]` on those bullets accordingly.
+
 - [REPLICATED] [REGIME-SCOPED: closed-system math] House and axiom oracles
   independently adjudicated the same symbolic rows and exposed errors on both
   sides; the independent implementation is the replication route.
@@ -464,6 +473,66 @@ VERDICT](RESULTS.md#L10676).)
   soft-routing causal arms explained expert decorrelation in the tested MoE
   recipes. ([UMOE-1 VERDICT](RESULTS.md#L11592); [UMOE-2
   VERDICT](RESULTS.md#L11896).)
+- [REPLICATED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
+  A 304B frontier MoE's routed expert runs entirely in integers on the vendor's
+  own shipped 4-bit weights, with the output trace hash-identical on Apple CPU,
+  Apple GPU and NVIDIA GPU — three backends are the route, each having fetched
+  the weights independently, and the decode was checked against the vendor's
+  own dtype semantics. ([VERDICT V4-RUNG-A](RESULTS.md#L15884).)
+- [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
+  A frontier 304B MoE's shipped 4-bit expert codes carry 3.865 bits of entropy,
+  and their 8-bit power-of-two block scales carry 0.964 — so the scale stream
+  is 5.9% of the bytes but 62% of the losslessly recoverable headroom, on a
+  3-layer sample. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
+- [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
+  The shared component a gravity decomposition looks for is present in a
+  frontier MoE's ROUTER GEOMETRY, not its weights: at layer 22 all 32,640
+  gate-key pairs are positively aligned and every key shares a common
+  direction, while pairs closest in routing space show no more weight
+  structure than random ones. ([VERDICT V4-RUNG-R +
+  2B-ROUTER](RESULTS.md#L16183); qualified below.)
+- [NULL] [REGIME-SCOPED: measured deployment artifacts]
+  An attempt to measure a frontier MoE's router input by inverting its trained
+  load-balancing bias FAILED its registered predictions: a shuffled-bias null
+  excludes the same inputs the trained bias does, so the exclusion is a
+  property of the key geometry and the synthetic input family, not of the
+  balancer. The shared direction's share of top-6 selection is bounded to
+  7-21% under that family and remains unlocated. ([AMENDMENT
+  FINAL-0803](RESULTS.md#L17024); [VERDICT V4-RUNG-D2](RESULTS.md#L16937).)
+- [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
+  Entropy-coding a frontier MoE's shipped 4-bit experts yields an archive,
+  not a runtime: the byte-lossless form saves 8.3% and decodes at 38 MB/s
+  single-threaded, 131x under the pipe a streaming design assumes and 90 s
+  per token of pure decode for a 43-layer, 6-expert route. ([VERDICT
+  V4-RUNG-D + S0](RESULTS.md#L16483); traffic corrected in [AMENDMENT
+  RUNGD-0803](RESULTS.md#L16608).)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  A 304B checkpoint's own parameter census overturned the reason it cannot
+  be run locally: the always-on dense path is 9.4 GB, not the 27 GB a
+  subtraction implied, because 19 of those "dense" billions are three
+  multi-token-prediction blocks each holding a full 256-expert layer.
+  ([RECEIPT V4-CENSUS](RESULTS.md#L16816).)
+- [NULL] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
+  Experts in a 256-expert frontier layer are statistically identical yet
+  individually unmatchable: sorted hidden-unit norm profiles agree to 7%, while
+  pairing a unit with its counterpart is indistinguishable from pairing it at
+  random, so aligning by permutation before differencing buys 0.02 bits/param
+  against a 0.2 bar. ([VERDICT V4-RUNG-2B](RESULTS.md#L16033).)
+- [SINGLE-SEED] [FORMAT-BOUND]
+  [REGIME-SCOPED: measured deployment artifacts]
+  The sign bit of a symmetric 4-bit weight code is incompressible to five
+  decimals (1.00000 bits on all 27 tensors, against a 0.9995 bar), so the
+  coding margin sits in the magnitude alphabet. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
+- [REPLICATED] [TEACHER-FORCED] [REGIME-SCOPED: deterministic integer battery]
+  Consensus pull between experts buys mergeability monotonically: merge damage
+  falls with dose and reaches exactly zero at full pull, where experts collapse
+  to bit-identical agreement, at all three paired init draws. ([VERDICT
+  DIET-COND-SEED](RESULTS.md#L15615).)
+- [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: deterministic integer battery]
+  The best dose is interior at every draw, but its location is not stable: the
+  optimum sits at 1/4 for one draw and 1/16 for two others, and the 1/4 dose is
+  worse than no gravity at both of the latter, so no dose is recommended.
+  ([VERDICT DIET-COND-SEED](RESULTS.md#L15615).)
 - [REPLICATED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: tested MoE recipes] Hebbian-coupled experts merged to one
   dense expert with zero-mean bounded gate cost across n=3 Mac seeds and an
@@ -498,3 +567,72 @@ VERDICT](RESULTS.md#L10676).)
   axiom C++ implementation; independent devices and implementation are the
   route. ([VERDICT DETERMINISTIC-BIRTH R2](RESULTS.md#L13255); [RECEIPT R2 C++
   LEG](RESULTS.md#L13502).)
+- [REPLICATED] [REGIME-SCOPED: deterministic integer battery] All sixteen
+  pinned gravmoe trajectory hashes reproduced on a second machine; the route
+  is an independent machine with a different CPU architecture, and both legs
+  ran on CPU, so this is narrower than GPU transport. ([VERDICT
+  GRAVMOE-P4-DEVICE](RESULTS.md#L14889); [AMENDMENT
+  P4-DEVICE-SCOPE](RESULTS.md#L15160).)
+- [REPLICATED] [REGIME-SCOPED: deterministic integer battery] Ten of those
+  same pinned hashes reproduced inside axiom's independent C++ engine after
+  one rounding-placement fix; the route is an independent implementation.
+  ([VERDICT GRAVMOE-P4-LAB](RESULTS.md#L15015).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery] A
+  reduce-to-one-expert parity gate cannot see the gate-backward rounding
+  placement it was trusted to cover: the folded and pre-rounded forms are
+  equal whenever a single expert routes, so only the cross-implementation
+  hash pins could expose the defect. ([VERDICT
+  GRAVMOE-P4-LAB](RESULTS.md#L15015).)
+- [SINGLE-SEED] [REGIME-SCOPED: deterministic integer battery] At one seed
+  and shape pair, every integer primitive in the battery's forward and
+  backward chain returned bit-identical results on Apple MPS and on NVIDIA
+  CUDA against CPU; this covers primitives only, and no pinned trajectory has
+  been run on a GPU. ([RIDER on AMENDMENT
+  P4-DEVICE-SCOPE](RESULTS.md#L15210).)
+- [SINGLE-SEED] [TEACHER-FORCED]
+  [REGIME-SCOPED: deterministic integer battery]
+  At n=1 seed and window set, softening only the query and key draws cut
+  battery loss from 8883 to 2496; the earlier arm's booked 73% increase
+  belonged to four other matrix families softened with them, retiring the
+  peaked-attention reading. ([VERDICT QK-RESCOPE](RESULTS.md#L14658).)
+- [REPLICATED] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
+  Against a COND-only control on this diet, the softer query/key draw lifted
+  TRAIN free-run solves from zero to two or three of eight at all three paired
+  init draws on one device, while HELD-OUT solves stayed at zero throughout.
+  That is a train-side gain at a low absolute level under one diet, not free-run
+  capability. ([VERDICT QK-SEED3](RESULTS.md#L15462).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery]
+  What that initialization removes is measurable before training: the share of
+  zero attention probabilities at birth is about 0.89 without it and exactly
+  zero with it at all three draws, so the train-side gain tracks the diagnostic
+  rather than the seed. It leaves the held-out gap untouched, which the
+  exposure-bias cells attribute to diet width. ([VERDICT QK-SEED3](RESULTS.md#L15462).)
+- [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
+  One-step scheduled sampling halved free-run token accuracy, 56 to 22 of
+  140, and doubled teacher-forced loss, so the registered exposure-bias
+  treatment missed its bar at this scale. ([NULL
+  GRAVMOE-SS](RESULTS.md#L14703).)
+- [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
+  Four times the training steps and four times the parameters both failed to
+  convert: the 825,984-parameter arm solved zero of eight where the
+  208,192-parameter baseline solved two, so at this diet the residual
+  free-run gap is neither compute nor capacity. ([VERDICT GRAVMOE-BRUTE,
+  closing](RESULTS.md#L14986); [leg 1](RESULTS.md#L14856).)
+- [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
+  Masking the loss to the answer region removed the solves as well, two of
+  eight to zero of eight, while format diagnostics stayed intact —
+  parseability flat and termination improved — so the registered
+  format-failure branch did not apply and the loss was capability, not
+  formatting. ([VERDICT SOL-ADOPTION-1](RESULTS.md#L15081).)
+- [MECHANISM-CONFIRMED] [TEACHER-FORCED]
+  [REGIME-SCOPED: deterministic integer battery]
+  A paired 8000-step arm diverged at constant learning rate
+  and stayed bounded under integer decay, with both arms bit-identical until
+  the first decay point; long integer runs measure the schedule unless decay
+  is present. ([VERDICT GRAVMOE-BRUTE-B/C](RESULTS.md#L14936).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery] The
+  activation clamp was an integer overflow guard for the norm's mean-square
+  scaling, and the crash a raised clamp produced was an evaluation-order
+  artifact: factoring the scale exactly removed it with every pinned
+  trajectory unchanged. ([VERDICT GRAVMOE-BRUTE-B/C](RESULTS.md#L14936);
+  [AMENDMENT RMS-HEADROOM](RESULTS.md#L15053).)

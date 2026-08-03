@@ -2,9 +2,14 @@
 
 MoE weights dwarf activations, but each token touches only k experts —
 so most experts can live on slow storage (CPU RAM, disk) with a small
-LRU-cached resident set on the fast device. Hit rate is the whole game:
-routing is heavy-tailed in practice, so a resident set far smaller than
-E catches most traffic.
+LRU-cached resident set on the fast device. Hit rate is the whole game,
+and it is NOT free: models trained with aux-loss-free load balancing
+(DeepSeek's noaux_tc bias) actively equalize expert marginals, so the
+uniform-routing worst case is their design point — LRU hit rate is then
+just C/E, and a small resident set catches little (measured against
+V4-Flash, opus-5 branch RECEIPT V4-CENSUS lineage, 2026-08-03). A
+heavy-tailed routing distribution is a property to MEASURE per model,
+never to assume.
 """
 
 from __future__ import annotations
