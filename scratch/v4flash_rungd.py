@@ -186,11 +186,14 @@ def main():
         p = U @ u                          # ... normalized
         W_rank1 = W - np.outer(c, u)
         W_level = W - np.outer(np.full(n, c.mean()), u)
-        # NON-VACUOUS guards. `Wd @ u ~= 0` is true for ANY normalized u,
-        # so it certifies nothing (it passed for a RANDOM u -- the exact
-        # failure that would void the null). These check that the removed
-        # energy is what the decomposition predicts, and that u is the
-        # direction the keys actually share.
+        # Guards. Honest accounting (merge audit, 2026-08-03): only
+        # `p.min() > 0` tests the DATA — it fails for a random u and is
+        # the check that voids a wrong direction. The other four are
+        # algebraic identities of the construction (||u||=1 by the line
+        # that made it; removed energy == c.c and cl.mean()==0,
+        # cl.std()==c.std() hold for ANY unit u by expansion). They are
+        # kept as tripwires against future edits to the construction,
+        # not as evidence about the router.
         assert abs(np.linalg.norm(u) - 1) < 1e-12, "u is not a unit vector"
         assert p.min() > 0, "u is not shared by every key"
         removed = np.linalg.norm(W)**2 - np.linalg.norm(W_rank1)**2

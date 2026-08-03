@@ -17142,3 +17142,48 @@ NOT CHANGED, and re-verified: AMENDMENT AUDIT-0802's own corrections
 were checked item by item and none was found to have corrected something
 that was right. All S0 measurements reproduce. The census totals
 reproduce and independently match the vendor's published 304.181 B.
+
+## VERDICT MERGE-AUDIT-OPUS5: the opus-5 branch is adopted to main — 16/16 pins sha-identical against its modified certified files, the D2 retraction independently confirmed, three residue fixes landed (2026-08-03, Mac; Fable seat)
+
+Fable's line-by-line merge audit of the 32-commit opus-5
+branch (Opus 5 seat, 2026-08-02/03; three self-initiated
+audit rounds already booked as AUDIT-0802, RUNGD-0803,
+FINAL-0803).
+WHAT WAS VERIFIED BY EXECUTION, not by reading:
+(1) The full 16-pin gravmoe battery against the branch's
+modified detbwd_mb.py + reproduce.py: A0-A3, CA0-CA3,
+GA0/GA2/GA3, RB1, RB3, RB1S16, GRB1, S1 — ALL 16
+sha-identical to their pins. This pays the receipt debt
+the audit sheet flagged (only 2 of 16 had been verified
+against the branch).
+(2) The BIRTH_SEED matched pair under a POLLUTED
+environment: BIRTH_SEED=1 in the shell still reproduces
+gravmoe-rb1 at c6766da2 — the sanitizer strips it.
+(3) 451 tests pass on the branch, including the new
+docs-integrity guards.
+WHAT WAS VERIFIED BY INDEPENDENT RECOMPUTATION:
+(4) The FINAL-0803 retraction of VERDICT V4-RUNG-D2, the
+branch's one large judgment call: recomputed from
+v4_rungd2.jsonl, the shuffled-bias null (n=40) excludes
+the same inputs the trained bias does (penalty 0->0.2R:
+69/165/85% vs 65/115/80%), so the retraction is CORRECT
+and the L22 residue (bias softens the penalty where
+corr(bias,c)=-0.591) also reproduces.
+(5) S0, census, and the corrected registered rungd
+agreements all match their committed logs and the FINAL
+booked state (not any superseded intermediate).
+RESIDUE FIXED IN THIS COMMIT (Fable files, flagged by
+the branch's audits): scratch/pack_rans.py:84 verify
+gate now unconditional (was OFF past 2B symbols);
+llmopt/moe/offload.py docstring's unmeasured
+"heavy-tailed in practice" replaced with the measured
+statement (aux-loss-free balancing makes uniform routing
+the design point; hit rate is C/E); the "NON-VACUOUS
+guards" comment in v4flash_rungd.py corrected to say
+which single assert actually tests the data.
+ADOPTION: merged to main WITHOUT squash — the
+self-correction trail (11 corrective entries across
+three audit rounds) is the scientific record, not noise.
+The V4 programme's final state is what SESSION-NOTES-
+OPUS-5.md's "What the V4 programme actually established"
+section says, read together with FINAL-0803.

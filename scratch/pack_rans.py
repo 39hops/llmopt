@@ -81,7 +81,11 @@ def qwen():
             if not name.endswith(".codes"):
                 continue
             c = z[name].astype(np.int64)
-            b, ent = rans_bytes(c, verify=(tot_n < 2e9))
+            # verify unconditionally: the old `tot_n < 2e9` gate turned
+            # round-trip checking OFF for the tail of large models, so a
+            # coder bug past 2B symbols would book a size for a stream
+            # that does not decode (opus-5 audit catch, 2026-08-03).
+            b, ent = rans_bytes(c, verify=True)
             tot_b += b
             tot_n += c.size
         print(f"P6v2 qwen {p.split('/')[-1]}: cum "
