@@ -16865,3 +16865,158 @@ is 167 MB. No contradiction remains.
 FENCE: header arithmetic only. Nothing here is a
 capability claim, nothing was run, and no weights beyond
 the 428 MB already cached were fetched.
+
+## PRE-REG V4-RUNG-D2: invert the trained load-balancing bias to measure <u,x> on real traffic, without a forward pass (2026-08-03, Mac; Opus-5 review branch)
+
+AMENDMENT RUNGD-0803 left the question UNDETERMINED:
+the shared router direction is inert under isotropic
+input and dominant under input aligned with u, and
+nothing in the artifact told us which regime V4 is in.
+Settling it appeared to need real hidden states, i.e. a
+forward pass. It does not.
+THE INSTRUMENT. DeepSeek's aux-loss-free bias
+(topk_method noaux_tc) is updated until expert loads
+EQUALISE under the traffic the model actually saw, and
+it touches selection only (inference/model.py:579-585,
+weights gather original_scores). So the shipped bias is
+a trained record of the real input distribution, and it
+can be INVERTED: feed a one-parameter family of inputs
+x(mu) = sqrt(d) * (cos t * u + sin t * v), v a random
+unit vector orthogonal to u, so that <u,x> = mu; score
+with the SHIPPED bias; and find the mu at which load is
+most balanced. That mu is the estimate.
+The logic is a conditional the house has used before:
+if the bias balances load at the true input
+distribution, then the mu that balances load under this
+family is the family's best fit to it.
+ALREADY IN HAND (stated so it cannot be presented later
+as a prediction): corr(bias, c) with c = W u is -0.202 /
+-0.591 / -0.102 at layers 4 / 22 / 40, and -0.103 /
+-0.413 / +0.026 after partialling out key norm. Negative
+is the predicted sign if <u,x> > 0 on real traffic: a
+positive mu boosts high-c experts, they over-win, and
+the balancer pushes them back.
+PREDICTIONS, registered before the inversion runs:
+(1) The load-imbalance-minimising mu is POSITIVE and
+    resolvably far from zero at layer 22.
+(2) It is nearer zero at layers 4 and 40, tracking the
+    partial correlations (-0.103, +0.026).
+(3) With the bias REMOVED, the imbalance-minimising mu
+    moves toward zero at every layer -- that is the
+    control which shows the bias, not the geometry, is
+    carrying the signal.
+IF (1) FIRES: the isotropic null was the wrong input
+model, RUNG-D's inertness does not apply to V4's actual
+traffic, and VERDICT V4-RUNG-R's "the confluence lives
+in the router" is REINSTATED rather than undetermined.
+IF (1) FAILS (mu* ~ 0 at all three layers): the
+isotropic null is vindicated, RUNG-D's original reading
+stands, and the negative correlations above need some
+other explanation.
+FENCES, binding. (a) This is a ONE-PARAMETER family, not
+real hidden states; it varies the axis in question and
+holds everything else isotropic. It estimates the u
+component under that model and nothing else. (b) Load
+balance is measured on a synthetic corpus, so the
+estimate inherits whatever the family gets wrong about
+the perpendicular directions. (c) The bias also absorbs
+expert-quality and frequency effects that have nothing
+to do with u; the partial correlation controls only for
+key norm. This licenses "the shipped bias is consistent
+with a large positive <u,x> at layer 22", never "<u,x>
+= mu* on real text". (d) No capability claim.
+WHY NOT JUST RUN THE MODEL: the dense path is 9.44 GB
+and storable (RECEIPT V4-CENSUS), but the forward
+requires the Indexer (Hadamard rotation, simulated fp4
+activation quant), the Compressor and its KV cache, MLA
+with sliding window and attention sinks, and
+hyper-connections with 20 Sinkhorn iterations. A subtle
+error there yields WRONG hidden states, which is worse
+than none. That build is banked, not abandoned.
+
+## VERDICT V4-RUNG-D2: prediction (1) FAILS — the bias does not locate a large <u,x>; what it does is EXCLUDE one, which puts the shared direction at ~12-17% of routing rather than 2% or 75% (2026-08-03, Mac; Opus-5 review branch)
+
+The registered estimator did not resolve what it was
+built to resolve. It delivered a BOUND instead, and the
+bound is the useful result.
+PREDICTION (1) — "the load-imbalance-minimising mu is
+POSITIVE and resolvably far from zero at layer 22":
+FAILS. Measured argmin <u,x> = -6.0 / -2.0 / -6.0 at
+layers 4 / 22 / 40, on a grid spanning -32 to +64 in
+steps of 2. Small, slightly negative, nowhere near the
+large positive value the -0.591 correlation suggested.
+PREDICTION (3) — "with the bias removed the minimum
+moves toward zero": FAILS. It does not move (L4 -6 to
+-6, L40 -6 to -6) or moves AWAY (L22 -2 to -6). The
+control does not behave as registered, so the argmin is
+not being driven by the bias.
+PREDICTION (2) is not evaluable: no layer produced a
+large mu for the others to be "nearer zero" than.
+WHY THE ESTIMATOR FAILED, and this is the honest
+diagnosis rather than a rescue. The minimum coefficient
+of variation reached is 0.584 / 0.635 / 0.798 against a
+Poisson floor of 0.103 for genuinely balanced load at
+this sample size. NO POINT IN THE FAMILY BALANCES LOAD —
+not within a factor of six. The one-parameter family
+x(mu) = sqrt(d)(cos t u + sin t v) is simply the wrong
+model of V4's router input in the PERPENDICULAR
+directions, and the inversion logic ("the bias balances
+load at the true distribution") only bites if some
+member of the family can balance load. None can.
+WHAT THE CURVE DOES ESTABLISH, and it is a real bound.
+The imbalance rises steeply away from mu ~ 0. At layer
+22, with the shipped bias:
+  <u,x>   -32   -16    -6     0    +4    +8   +16   +32   +64
+  CV     6.455 4.650 0.689 0.639 0.741 0.987 1.790 3.379 6.455
+|<u,x>| >= 8 costs 54% more imbalance than mu ~ 0, and
+|<u,x>| >= 16 costs 180% more; at +64 (all input mass on
+u) the load is 6.5, the degenerate value. Same shape at
+layers 4 and 40. So a LARGE alignment between real
+hidden states and u is strongly disfavoured by the
+shipped bias: whatever the true input distribution is,
+it is one the balancer could work with, and the family
+says that region is |mu| <~ 6.
+CONSEQUENCE FOR AMENDMENT RUNGD-0803, which is why this
+was run. That amendment left RUNG-D undetermined between
+"97% inert" (isotropic, mu = 0) and "12-27% agreement"
+(mu = 30-64). The permitted region |mu| <~ 6 maps onto
+the RUNG-D SHIFT arm at m = 5, where set agreement is
+0.8876 / 0.8283 / 0.8598. So the shared router direction
+plausibly accounts for roughly 12-17% of top-6
+selection: NOT the ~2% the isotropic reading implied,
+and NOT the 75%+ the aligned reading allowed. VERDICT
+V4-RUNG-R's "the confluence lives in the router" is
+partially reinstated — the direction does real routing
+work, but it is a minority of the signal, and the
+majority still lives in the residual keys.
+INDEPENDENT SIDE-RESULT, unregistered and worth the
+line: the bias's balancing WORK is concentrated where
+its correlation with c is. At mu = 0 the bias cuts the
+coefficient of variation 0.9145 -> 0.6388 at layer 22
+(30%), 0.6666 -> 0.6412 at layer 4 (3.8%), and 0.9807 ->
+0.9723 at layer 40 (0.9%) — tracking corr(bias, c) of
+-0.591 / -0.202 / -0.102. The layer whose keys share the
+most structure is the layer whose balancer works
+hardest. That is a correlation across three layers, so
+it is a direction and not a law.
+FENCES, all registered in advance and all binding. The
+family is not real hidden states; load balance is
+measured on a synthetic corpus; the bias absorbs
+expert-quality and token-frequency effects unrelated to
+u, and the partial correlation controls only for key
+norm. This entry licenses "the shipped bias is
+inconsistent with a large |<u,x>| under this family" and
+NEVER a value for <u,x> on real text. The estimator's
+own failure (no member balances load) is the strongest
+statement of that fence. No capability claim.
+STILL OWED, and now the only way to close it: the real
+forward. RECEIPT V4-CENSUS establishes the 9.44 GB dense
+path is storable here, but the Indexer (Hadamard
+rotation, simulated fp4 activation quant), the
+Compressor and KV cache, MLA with sliding window and
+attention sinks, and hyper-connections with 20 Sinkhorn
+iterations have to be right or the hidden states are
+wrong — which is worse than not measuring. BANKED as
+rung F1, not abandoned.
+ARTIFACTS: scratch/v4flash_rungd2.py ->
+logs/opus/v4_rungd2.jsonl.

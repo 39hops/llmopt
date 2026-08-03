@@ -492,12 +492,13 @@ sessions under one operator, not independent investigators. Read
   structure than random ones. ([VERDICT V4-RUNG-R +
   2B-ROUTER](RESULTS.md#L16183); qualified below.)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
-  Whether that shared router direction matters is decided entirely by the
-  input model, not the weights: under isotropic inputs, deleting it leaves
-  97.1-97.9% of top-6 routing unchanged, but under inputs carrying mass
-  along it, agreement collapses to 12-27% — and an isotropic draw is
-  precisely the case in which a shared direction cannot matter, so the null
-  assumed its own answer. ([AMENDMENT RUNGD-0803](RESULTS.md#L16608).)
+  A trained load-balancing bias is a readable record of the traffic a model
+  saw, and inverting one bounds an input statistic with no forward pass:
+  V4-Flash's bias is inconsistent with hidden states strongly aligned to its
+  shared router direction, which puts that direction at roughly 12-17% of
+  top-6 selection — not the ~2% an isotropic null implies, nor the 75%+ an
+  aligned one allows. ([VERDICT V4-RUNG-D2](RESULTS.md#L16937);
+  [AMENDMENT RUNGD-0803](RESULTS.md#L16608).)
 - [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
   Entropy-coding a frontier MoE's shipped 4-bit experts yields an archive,
   not a runtime: the byte-lossless form saves 8.3% and decodes at 38 MB/s
