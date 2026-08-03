@@ -17397,3 +17397,77 @@ NEGATIVE bias = most naturally demanded. Hash layers
 use exact prompt demand plus FETCH-ON-MISS during
 decode (a generated token's hash demand is unknowable
 in advance — a miss costs one 13.37 MB range fetch).
+
+## VERDICT V4-F1d: DeepSeek-V4-Flash GENERATED TOKENS ON THE MAC — 43 layers, 785 subset-resident experts, 0.100 tok/s, and the registered degradation prediction fired as a textbook repetition attractor (2026-08-03, Mac; Fable seat)
+
+THE SYSTEM RESULT, which is the deliverable. The
+vendor's unmodified model.py, over the pure-torch twin,
+on mps: full 43-layer dense path resident (fp8 kept
+packed, uint8-LUT dequant per use), K=16
+most-negative-bias experts resident per score layer +
+exact tid2eid demand for the hash layers with
+FETCH-ON-MISS during decode. 785 resident experts
+(10.5 GB packed fp4). Greedy, batch 1, 9-token prompt,
+63 generated tokens.
+  load (warm cache)   13.3 s
+  prefill             30.6 s
+  decode              0.100 tok/s (630 s for 63)
+  process RSS         5.26 GB  — bar <= 30 GB PASS,
+    WITH AN INSTRUMENT CAVEAT booked here: ru_maxrss
+    does NOT count Metal driver allocations, where the
+    ~20 GB of moved weights actually live (unified
+    memory). The bar's intent (fit the machine) held —
+    the machine never paged or pressured — but the
+    metric undercounts; F1e adds
+    torch.mps.driver_allocated_memory to the row.
+  hash misses         159 — LABELING CAVEAT: the counter
+    includes the prompt's initial hash-layer demand
+    (~100 experts by the F1c measurement), so decode-
+    time misses are ~60; the repetition loop re-demands
+    the same tokens, saturating quickly. Fix the label
+    before any number is quoted from it.
+THE TEXT, verbatim as registered (and the registered
+prediction — "degraded text is the EXPECTED outcome" —
+fired in its most canonical form, a greedy repetition
+attractor):
+  " the three most important ideas in computer science
+  are the three most important ideas in computer
+  science are [repeats to length]"
+WHAT SURVIVES 94% EXPERT AMPUTATION, a real observation
+inside the failure: the model does not emit noise — it
+COPIES ITS CONTEXT, fluently and grammatically. The
+attention stack, embeddings and dense path (all intact)
+carry induction/copy behavior; content generation,
+which lives in the routed experts, is what died. The
+output is the architecture showing which of its organs
+we kept. Consistent with GRAVMOE-GATE doctrine:
+free-run output reveals what hidden-state sanity checks
+(F1c's rms bands all passed!) cannot.
+WHY 0.100 tok/s, honestly: everything is RESIDENT, so
+this is COMPUTE-bound, not IO-bound — the streaming
+arithmetic (1.10 tok/s ceiling at 5 GB/s) never enters.
+~8B active params/token in bf16 on this GPU should
+land 1-3 tok/s efficient; the 10-30x gap is the
+per-Linear uint8-LUT fp8 dequant + eager-mode overhead.
+Named optimization rungs (F1e, none run): pre-dequant
+the dense path to bf16 at load (flips the vendor's own
+dispatch to F.linear; +~6 GB Metal, well in budget);
+K-sweep (16 -> 32/64: does the attractor break before
+memory does?); prompt-conditioned resident selection;
+MLX port only after torch-MPS headroom is exhausted.
+FENCES: NO capability claim — this entry claims a
+running SYSTEM and its measurements, nothing about
+model quality; the text is logged verbatim precisely so
+nobody has to trust a summary of it. K=16/256 = 6.25%
+residency sits far below the house pruning cliff, as
+the pre-reg said. The three earlier failed launches are
+part of the record: MPS-default construction
+materializes 47.74 GiB of empty expert buffers
+(risk-scan B1, now measured), harness-coupled
+background jobs were reaped twice (rjob.py detachment
+fixed it — the friendly-fire lesson, Mac edition), and
+one index-device mismatch in the decode loop.
+ARTIFACTS: scratch/v4flash_f1d.py -> jobs/f1d_k16.log,
+logs/opus/v4_f1d.jsonl (full row incl. generated ids).
+PRE-REG V4-F1 IS CLOSED: F1a/F1b/F1c/F1d all booked,
+every bar disposed of explicitly.

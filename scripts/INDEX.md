@@ -2327,6 +2327,17 @@ F1c (PRE-REG V4-F1): REAL weights into the vendor model — embed + layers 0-2 (
 - `run(dev, mod, args, man, demand, ids)`
 - `main()`
 
+### scratch/v4flash_f1d.py
+F1d (PRE-REG V4-F1): DeepSeek-V4-Flash GENERATES TOKENS ON THE MAC — full 43-layer dense path resident, K experts/layer subset-resident, greedy decode, tok/s and RSS measured, text logged verbatim.
+
+- `manifest()`
+- `tensor(man, name)`
+- `rss_gb()`
+- `class ExpertProvider` (load, ensure_hash)
+- `choose_residents(man)` — Score layers: K most-negative-bias experts (the trained load
+- `load_dense(model, man, dev)` — Everything except routed experts, straight onto dev.
+- `main()`
+
 ### scratch/v4flash_header.py
 RUNG -1 (spec 2026-08-02-v4flash-lossless-recode): read a DeepSeek-V4-Flash safetensors HEADER by HTTP byte-range and report the tensor inventory — names, dtypes, shapes, and the implied fp4 scale granularity. Costs well under 1 MB; downloads no weights.
 
