@@ -473,6 +473,16 @@ sessions under one operator, not independent investigators. Read
   soft-routing causal arms explained expert decorrelation in the tested MoE
   recipes. ([UMOE-1 VERDICT](RESULTS.md#L11592); [UMOE-2
   VERDICT](RESULTS.md#L11896).)
+- [REPLICATED] [TEACHER-FORCED] [REGIME-SCOPED: deterministic integer battery]
+  Consensus pull between experts buys mergeability monotonically: merge damage
+  falls with dose and reaches exactly zero at full pull, where experts collapse
+  to bit-identical agreement, at all three paired init draws. ([VERDICT
+  DIET-COND-SEED](RESULTS.md#L15615).)
+- [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: deterministic integer battery]
+  The best dose is interior at every draw, but its location is not stable: the
+  optimum sits at 1/4 for one draw and 1/16 for two others, and the 1/4 dose is
+  worse than no gravity at both of the latter, so no dose is recommended.
+  ([VERDICT DIET-COND-SEED](RESULTS.md#L15615).)
 - [REPLICATED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: tested MoE recipes] Hebbian-coupled experts merged to one
   dense expert with zero-mean bounded gate cost across n=3 Mac seeds and an

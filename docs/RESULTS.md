@@ -15533,3 +15533,138 @@ CURATION RULE for anyone writing the public sentence:
 name TRAIN explicitly, state that held-out stayed at
 zero, and keep the COND-only control in the sentence.
 FINDINGS was corrected to do all three in this commit.
+
+## AMENDMENT SEED-SCOPE (amends PRE-REG QK-SEED2's caveat): draw_windows() is NOT seeded — BIRTH_SEED moves the init draw ONLY, in gate AND non-gate cells (2026-08-02, Mac; Opus-5 review branch)
+
+PRE-REG QK-SEED2 carries this caveat: "in NON-gate
+cells draw_windows() also consumes M.SEED, so there it
+moves the diet too and is not a one-variable change."
+FALSE. detbwd_diet.draw_windows() takes "the first
+NWIN strictly-encodable diet rows ... FILE ORDER" and
+never calls manual_seed; the two manual_seed(M.SEED)
+calls in that file are in main() and the EXPORT block,
+both for model init. Measured, not read:
+  BIRTH_SEED=17 truncated cell -> windows sha 99caaa64
+  BIRTH_SEED=23 truncated cell -> windows sha 99caaa64
+CONSEQUENCE, and it is a strengthening: every gravmoe
+cell, gate or truncated, has a seed-invariant diet, so
+BIRTH_SEED is a clean ONE-VARIABLE init knob
+everywhere. VERDICT QK-SEED2 and VERDICT QK-SEED3 are
+unaffected — their cells were gate cells, whose rows
+were already established as unseeded, and every number
+in them stands. The DIET-COND replication needs no
+WINDOW_SEED knob.
+ERROR MODE, third instance this session and the same
+one every time: I grepped for a NAME (manual_seed near
+detbwd_diet.py) and inferred BEHAVIOR without reading
+the function. The prior two: "the battery is CPU-only
+by construction" (AMENDMENT P4-DEVICE-SCOPE) and
+"axiom's soundness contract is not on their front page"
+(AMENDMENT AXIOM-PUBLICATION). A grep locates a symbol;
+it does not tell you what the symbol does. Standing
+correction for this reviewer seat: any claim about
+BEHAVIOR reads the function or runs it, and a claim
+about ABSENCE names what was searched.
+
+## PRE-REG DIET-COND-SEED: is the lambda interior optimum real, or one draw? — the other half of the battery default, replicated (2026-08-02, Mac; Opus-5 review branch)
+
+VERDICT DIET-COND is the second n=1 claim the battery
+default rests on: under conditioned init the
+capability-for-mergeability trade becomes NON-MONOTONE
+in gravity dose, with an interior optimum. COND=1 is
+half the default; QK=1 was replicated at three draws
+(VERDICT QK-SEED3), this is the other half.
+CLEAN BY CONSTRUCTION (AMENDMENT SEED-SCOPE, measured):
+draw_windows() is file-order and unseeded, so the diet,
+targets, steps and every hyperparameter are byte-
+identical across arms and BIRTH_SEED moves the INIT
+DRAW alone. No new knob.
+ARMS: the DIET-COND lambda grid at two further draws —
+BIRTH_SEED in {23, 31} x LN/LD in {0/1, 1/16, 1/4,
+1/1}, COND=1, 2000 steps, truncated windows, 8 arms.
+Seed-17 reference, booked: loss 8883 / 8319 / 8185 /
+8733; merge +6983 / +6938 / +4412 / 0; agreement
+0.0 / 0.0 / 0.0 / 1.0 for lambda 0 / 1/16 / 1/4 / 1.
+PREDICTIONS: (1a) PRIMARY, shape: at each draw the
+best-loss arm is INTERIOR — lambda 1/16 or 1/4, not 0
+and not 1. (1b) SHARP, location: the best-loss arm is
+lambda 1/4 exactly, at both draws. (2) Merge damage is
+non-increasing in lambda, and lambda 1 gives merge
+delta 0 with agreement 1.0 (collapse). (3) Magnitude
+not predicted. (4) OUT OF SCOPE, stated so it is not
+read in: no COND=0 arm runs here, so this cell says
+nothing about the conditioning effect itself, only
+about the dose curve given conditioning.
+DECISION RULE: (1a) and (2) hold at both draws -> the
+interior-optimum SHAPE carries [REPLICATED] with route
+three paired init draws, one diet, one device; the
+LOCATION claim (lambda 1/4 specifically) carries it
+only if (1b) also holds at both. (1a) fails at either
+draw -> the interior optimum is a one-draw artifact,
+booked as falsification, and the battery's lambda
+default is re-opened. (2) fails alone -> the
+mergeability half is seed-dependent and gets scoped
+while the capability half stands.
+FENCE, and it is a real limit on the LOCATION claim:
+the grid is FOUR points. "lambda 1/4 is the optimum"
+can only ever mean "best of {0, 1/16, 1/4, 1}"; an
+optimum lying between grid points is indistinguishable
+from lambda 1/4 here. One diet, one window set, one
+device, Mac only.
+
+## VERDICT DIET-COND-SEED: the interior optimum SURVIVES three draws, its LOCATION does NOT — lambda 1/4 is a seed-17 property and is WORSE than no gravity at both new draws (2026-08-02, Mac; Opus-5 review branch)
+
+Regression first: default COND=1 lambda 0 reproduced
+the booked COND-A0 sha 0ad9da94 and loss 8883 exactly,
+so BIRTH_SEED is read-only at default here too.
+Arms per PRE-REG DIET-COND-SEED (8 arms, logs
+logs/opus/dc_s{23,31}_lam*.log). Cycle-mean loss by
+gravity dose, three draws, one diet:
+  lambda      s17     s23     s31
+   0         8883    8724    7851
+   1/16      8319   [8484]  [7800]
+   1/4      [8185]   9026    9500
+   1         8733    8818    9906
+  ([.] marks the argmin of its column.)
+Merge delta, same order:
+   0         6983    6680    8422
+   1/16      6938    6595    7875
+   1/4       4412    3492    3318
+   1            0       0       0   (agreement 1.0)
+PREDICTION (1a) PASSES 3/3: the best-loss arm is
+INTERIOR at every draw — never lambda 0, never lambda
+1. PREDICTION (2) PASSES 3/3: merge damage is monotone
+non-increasing in dose and collapses to exactly 0 with
+agreement 1.0 at lambda 1, at every draw.
+PREDICTION (1b) FAILS 2/3: the argmin is lambda 1/16
+at both new draws, not 1/4.
+THE FINDING IS THE FAILURE, and it is sharper than the
+missed location: lambda 1/4 — the booked optimum — is
+WORSE THAN NO GRAVITY at both new draws (9026 v 8724,
++3.5%; 9500 v 7851, +21%). VERDICT DIET-COND's "-8%
+loss at lambda 1/4" is a seed-17 property, not a dose
+recommendation. The interior gain that does replicate
+sits at lambda 1/16 and SHRINKS across draws: -6.3%,
+-2.8%, -0.65%. At seed 31 it is 51 loss units in 7851
+and should be read as a tie, not a win.
+DECISION RULE, as pre-committed: (1a) and (2) held, so
+the interior-optimum SHAPE and the mergeability trade
+carry [REPLICATED] with route three paired init draws,
+one diet, one device. (1b) failed, so the LOCATION
+claim does not, and no lambda value is recommended by
+this cell.
+NO SHIPPED DEFAULT MOVES: the battery default is and
+remains LN=0 (lambda 0); lambda 1/4 was a booked claim,
+never a shipped dose, so nothing downstream inherits
+the correction. VERDICT QK-SEED3 and the COND+QK gate
+results are untouched — they all ran at lambda 0.
+WHAT SURVIVES for the gravmoe program: consensus pull
+buys mergeability monotonically and reliably (3/3), and
+can help capability slightly at small dose, but the
+useful dose is not located by four points at n=3 and
+may not be constant across draws at all. A dose
+recommendation needs a finer grid AND per-draw argmin
+reporting, not a single number.
+Fence: four dose points; an optimum between grid points
+is indistinguishable from the nearest point. One diet,
+one window set, one device.
