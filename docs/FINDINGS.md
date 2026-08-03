@@ -485,6 +485,12 @@ sessions under one operator, not independent investigators. Read
   is 5.9% of the bytes but 62% of the losslessly recoverable headroom, on a
   3-layer sample. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
+  The shared component a gravity decomposition looks for is present in a
+  frontier MoE but sits in the ROUTER, not the weights: all 32,640 gate-key
+  pairs are positively aligned and every key shares a common direction, while
+  pairs closest in routing space show no more weight structure than random
+  ones. ([VERDICT V4-RUNG-R + 2B-ROUTER](RESULTS.md#L16183).)
+- [MECHANISM-CONFIRMED] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
   Experts in a 256-expert frontier layer are statistically identical yet
   individually unmatchable: sorted hidden-unit norm profiles agree to 7%, while
   pairing a unit with its counterpart is indistinguishable from pairing it at

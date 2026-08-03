@@ -16118,3 +16118,152 @@ over the rung-0 sample with rANS on the merged stream
 and a round-trip assertion, since these are ENTROPY
 numbers and only a verified coder makes them a lossless
 claim. One expert, one layer here.
+
+## PRE-REG V4-RUNG-R + 2B-ROUTER: read the router for free, then retest the gravity idea on the pairs 2b never looked at (2026-08-02, Mac; Opus-5 review branch)
+
+Artin's catch, and it exposes a real limit in VERDICT
+V4-RUNG-2B: that cell compared expert 0 against experts
+1-7 BY INDEX, which is arbitrary. If experts organize
+by router key, the pairs most likely to share structure
+are router NEIGHBOURS, and 2b never tested them. So 2b's
+honest scope is "arbitrary pairs share nothing", not "no
+pair shares anything".
+WHY THE ROUTER IS FREE (read from the vendor's
+inference/model.py Gate.forward): scores =
+sqrtsoftplus(x @ gate.weight); selection uses scores +
+gate.bias; the OUTPUT weight uses the UNBIASED scores.
+So gate.bias shifts SELECTION ONLY — it is DeepSeek's
+aux-loss-free load balancing, and therefore a trained
+per-expert record of how much correction that expert
+needed to get its share of tokens. Readable with zero
+inference. gate.weight is [256, 4096] = 2 MB, gate.bias
+is [256] = 1 KB.
+RUNG R (fact-read plus two measured claims), layers 4,
+22, 40:
+  R-a bias distribution: range, spread, the most- and
+      least-corrected experts.
+  R-b key geometry: the 256x256 cosine matrix of gate
+      key vectors against a MATCHED RANDOM NULL (256
+      Gaussian vectors in R^4096, where cosines are
+      ~N(0, 1/4096), sd 0.0156, so the expected max over
+      32,640 pairs is ~0.064).
+  R-c confirm the hash-routing table tid2eid
+      [vocab, 6] exists in an early-layer shard —
+      n_hash_layers = 3 means the first three layers
+      route by TOKEN ID, an exact public routing map.
+RUNG 2B-ROUTER: the 2b residual pipeline (IDENT / RAND /
+HUNG, exact integer residuals on the shared dyadic
+lattice) run on the FIVE most-similar expert pairs by
+key cosine, against five arbitrary index pairs as the
+matched control. Pair selection is defined here, before
+the router is read, so it cannot be fitted.
+PREDICTIONS: (1) R-b: observed max |cosine| EXCEEDS the
+null's 0.064 — a 256-expert router trained with load
+balancing should not be isotropic. Direction only; no
+magnitude predicted. (2) PRIMARY: router-neighbour pairs
+show residual entropy within 0.05 bits/param of
+arbitrary pairs, i.e. proximity in ROUTING space does
+NOT imply shared structure in WEIGHT space. This is the
+prediction the split law makes. (3) HUNG still fails to
+beat IDENT by the 0.2 bits/param bar on the neighbour
+pairs, as it did on arbitrary ones.
+DECISION RULE: (2) holds -> VERDICT V4-RUNG-2B's scope
+widens from "arbitrary pairs" to "including the pairs
+most likely to share structure", and the mu+delta family
+is closed on the strongest available test. (2) FAILS,
+i.e. neighbour residuals beat arbitrary by more than
+0.05 -> routing proximity is a real handle on weight
+structure, 2b needs an amendment, and cluster-local
+change-of-basis coding becomes a live rung.
+FENCES: one model, three layers for R and one layer for
+2b-router; cosine on router keys is a proxy for
+functional relatedness, not a measurement of it; no
+capability claim is made or possible.
+
+## VERDICT V4-RUNG-R + 2B-ROUTER: the confluence is REAL but it lives in the ROUTER, not the weights — every expert key shares a direction, and routing proximity still buys nothing in weight space (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG V4-RUNG-R + 2B-ROUTER. Scripts
+scratch/v4flash_router.py and
+scratch/v4flash_rung2b_router.py; rows in
+logs/opus/v4_router.jsonl and v4_rung2b_router.jsonl.
+Total transfer for the router read: ~2 MB per layer.
+
+R-b, PREDICTION (1) FIRES and not marginally. Gate-key
+cosines against a matched random null (256 Gaussian
+vectors in R^4096, null |cos| max ~0.065, p99.9 ~0.053):
+  layer 4   |cos| max 0.720  mean 0.164  99.81% above null p99.9
+  layer 22  |cos| max 0.618  mean 0.145  99.69% above
+  layer 40  |cos| max 0.847  mean 0.185  99.98% above
+DECOMPOSED, because a high mean |cos| can mean one
+shared direction rather than clustering, and the
+distinction is the whole question. At layer 22 every one
+of the 32,640 signed cosines is POSITIVE (min +0.0285),
+and every key aligns with the mean key at +0.385 +/-
+0.045 (min +0.254). After projecting that mean direction
+out, residual |cos| falls to mean 0.0276 — BELOW the
+null's p99.9 — with max 0.5277.
+So the router carries a strong SHARED COMPONENT plus a
+thin tail of genuinely-related pairs, and is otherwise
+near-isotropic. That is a measured confluence, and it is
+in ROUTING space.
+R-a, the bias: means +8.86 / +10.65 / +12.71 at layers
+4 / 22 / 40 with sd 0.056 / 0.099 / 0.061. A CONSTANT
+added to every expert's score is a topk NO-OP, so
+roughly 99% of the bias magnitude cannot affect routing
+at all; the entire selection signal is the ~0.1 sd
+deviation (range 0.84 at layer 22). Most-boosted and
+most-suppressed experts differ per layer (e103/e71,
+e137/e253, e105/e220). Reading the bias vector as
+"expert popularity" is legitimate only after the mean is
+removed.
+R-c CONFIRMED: layers.0.ffn.gate.tid2eid [129280, 6]
+I64 exists in shard 2. With n_hash_layers = 3, the first
+three layers route by TOKEN ID through an exact public
+table — expert-activation frequency for those layers is
+computable from any corpus's token histogram with ZERO
+inference.
+2B-ROUTER, PREDICTION (2) HOLDS, and the sign is wrong
+for the hypothesis. Five most-similar pairs by key
+cosine (mean 0.549) against five random pairs (mean
+0.161), identical residual pipeline:
+  NEIGHBOUR  raw 3.6265  IDENT 4.4290  HUNG 4.3789
+  CONTROL    raw 3.6102  IDENT 4.4032  HUNG 4.3763
+  NEIGHBOUR - CONTROL: IDENT +0.0258, HUNG +0.0026
+The registered bar was "routing helps if < -0.05"; the
+measurement is POSITIVE, i.e. router-neighbours have
+marginally HIGHER residual entropy. And most of that gap
+is a confound rather than an effect: their raw entropy
+is also higher by +0.0163, leaving ~+0.010 bits/param
+unexplained, which is nothing.
+(3) HOLDS: within the neighbour group HUNG - IDENT =
+-0.0501 against the -0.2 bar. Worth one honest note —
+alignment does about 2.4x more on router-neighbours than
+on arbitrary pairs (-0.050 v -0.021), a faint signal in
+the direction of relatedness, still four times inside
+the bar and not actionable.
+DECISION RULE: (2) holds, so VERDICT V4-RUNG-2B's scope
+widens from "arbitrary pairs share nothing" to "nothing
+is shared even between the pairs most likely to share
+it". The mu+delta family is now closed on the strongest
+test available without running the model. No amendment
+to N3 is owed.
+THE READING, and it is the useful sentence: the shared
+component that a gravity decomposition would look for
+EXISTS in this model, but it has been factored into the
+ROUTER (one common key direction) and into the
+architecture's own shared expert — which V4 stores at
+fp8 with [128,128] blocks while the routed experts get
+fp4 at group-32, i.e. DOUBLE the bit width for the
+component every token uses. The routed experts are what
+remains after the common part is removed at training
+time, which is exactly why no post-hoc method finds
+anything in them. Consistent with GRAV-0T/REV (post-hoc
+gravity destructive both ways) and with VERDICT
+DIET-COND-SEED (consensus pull works at birth, and its
+dose does not transport).
+FENCES: one model; three layers for R, one for
+2b-router; five pairs per group; cosine on router keys
+is a proxy for functional relatedness, not a measurement
+of it; the shared-expert precision asymmetry is read
+from tensor dtypes, not from an ablation. No capability
+claim is made or possible.
