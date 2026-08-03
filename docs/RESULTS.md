@@ -18062,3 +18062,24 @@ FENCES: n=1 per arm, one prompt; recall judged on the
 trajectory each arm CREATES (the F2b closed-loop
 lesson); no capability claim; tok/s comparisons only
 between arms of THIS sweep (same disk state).
+
+## READING FENCE (from axiom relay 2026-08-03, adopted house-side): battery verdicts on sqrt/fractional-pow rows are FORMAL-EXPRESSION equalities — domain conditions over R are unchecked (2026-08-03, Mac; Fable seat)
+
+Axiom's analysis of its own judge, adopted here because
+our batteries consume its verdicts: the structural-proof
+path merges fractional powers (sqrt(u)*sqrt(u) -> u,
+oracle.cpp ratio_pow), which is valid as an identity of
+formal expressions and NOT unconditionally valid over R
+(false pointwise at u < 0 under total-function
+semantics). CONSEQUENCE for reading the ledger: any
+EQUIVALENT verdict whose proof route used a
+fractional-pow merge certifies formal equality, not
+pointwise real equality on all of R. Whether any booked
+battery verdict actually turned on that edge is being
+measured axiom-side (corpus grep); if an instance
+exists, a joint amendment follows. The Lean certificate
+tier (relays 2026-08-03-0/-1) exists to make exactly
+this class of judge-semantics gap surface as a failing
+artifact instead of a silent reading error. No verdict
+is amended by this fence; it scopes how sqrt-row
+verdicts may be QUOTED until the grep lands.
