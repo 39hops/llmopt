@@ -2234,3 +2234,21 @@ pooling winners was his call).
   adds strength to the ladder. Not adopted into the ladder's phrasing;
   banked as a presentation/priority claim. Attribution: axiom-side
   Opus 5, relay 2026-08-02-1.
+
+- **2026-08-03 (Artin): simplify weights like math equations; rebuild
+  weights as a B-TREE ("algorithmic distillation").** Three banked
+  forms, each with its killer: (1) encoding simplification — measured
+  near-exhausted for V4 (order-0 3.8646/4 bits; C2-C4 longshots keep
+  their killers); (2) algebraic simplification = rung 13 within-expert
+  subspace energy (banked, instrument fixed; house prior: rank floor
+  says dimensions hurt more than bits); (3) THE TREE FORM THAT COULD
+  WORK: tree-structured / hierarchical VQ — weights as paths through
+  shared codebook hierarchies, GROUNDED by the pooled-table result
+  (one table serves all experts, KL 0.00075 — the shared-distribution
+  precondition). Lossy => function-space gate (DeltaKL), killer: if
+  32-weight vectors do not cluster below product entropy, the tree
+  buys nothing over scalar fp4. One-afternoon cell on cached blobs.
+  Literal learn-a-program regeneration banked BEHIND the VQ cell
+  (weight-space-reader lineage is the nearest measured relative).
+  Attribution: Artin (equation-simplification frame, B-tree form),
+  house (killers, grounding).
