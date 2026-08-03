@@ -44,7 +44,6 @@ def read_router(shard, layer):
     wn, bn = f"layers.{layer}.ffn.gate.weight", f"layers.{layer}.ffn.gate.bias"
     if wn not in hdr:
         return None
-    RA.EXPERT = f"layers.{layer}.ffn"      # only used for cache naming
     W = bf16_to_f32(RA.cached(wn, hdr, url, base), hdr[wn]["shape"])
     b = None
     if bn in hdr:

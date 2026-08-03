@@ -33,6 +33,10 @@ from scipy.optimize import linear_sum_assignment  # noqa: E402
 import v4flash_rungA as RA  # noqa: E402
 
 LAYER = int(os.environ.get("LAYER", "22"))
+# SHARD must move with LAYER: experts live one layer per shard, so a
+# LAYER change against the default shard looks for tensors that are not
+# in that header (reviewer catch, 2026-08-02).
+RA.SHARD = int(os.environ.get("SHARD", str(RA.SHARD)))
 NEXP = int(os.environ.get("NEXP", "8"))
 OUT = "logs/opus/v4_rung2b.jsonl"
 
