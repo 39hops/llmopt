@@ -542,12 +542,11 @@ sessions under one operator, not independent investigators. Read
   That is a train-side gain at a low absolute level under one diet, not free-run
   capability. ([VERDICT QK-SEED3](RESULTS.md#L15462).)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery]
-  What that initialization removes is measurable before training: the share
-  of zero attention probabilities at birth is about 0.89 without it and
-  exactly zero with it, at all three draws, so the train-side gain tracks the
-  diagnostic rather than the seed. It does not address the held-out gap, which
-  the exposure-bias cells locate in diet width. ([VERDICT
-  QK-SEED3](RESULTS.md#L15462).)
+  What that initialization removes is measurable before training: the share of
+  zero attention probabilities at birth is about 0.89 without it and exactly
+  zero with it at all three draws, so the train-side gain tracks the diagnostic
+  rather than the seed. It leaves the held-out gap untouched, which the
+  exposure-bias cells attribute to diet width. ([VERDICT QK-SEED3](RESULTS.md#L15462).)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
   One-step scheduled sampling halved free-run token accuracy, 56 to 22 of
   140, and doubled teacher-forced loss, so the registered exposure-bias
