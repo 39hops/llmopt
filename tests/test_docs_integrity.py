@@ -10,9 +10,12 @@ Two failure modes this guards, both silent without a test:
 
 2. CURATION DRIFT. RESULTS.md grows on every booking; FINDINGS.md is a
    hand-maintained projection with no staleness signal. The backlog below
-   is a ratchet: it may fall freely, but raising it means new verdicts
-   were booked without deciding whether an external reader should see
-   them.
+   counts curatable entries FINDINGS does not cite at all — a set
+   difference, not a high-water mark. The first version compared against
+   `max(cited)`, which FINDINGS pins to the newest entry, so the metric
+   read 0 while 296 entries were uncited and it could never rise
+   (reviewer catch, 2026-08-02). It is a ratchet: it may fall freely,
+   and raising it means bookings went uncurated.
 """
 import json
 import pathlib
@@ -27,11 +30,11 @@ INDEX = ROOT / "docs/results-index.jsonl"
 # amendments, and riders qualify their parents rather than standing alone.
 CURATABLE = ("verdict", "null")
 
-# Backlog slack, not a target. The measured backlog is 0; this leaves room
-# for a working session to book verdicts before curating them, so the suite
-# does not go red mid-experiment. Raising it needs a note saying which
-# verdicts were deliberately left off the curated layer and why.
-MAX_UNCURATED = 3
+# Measured backlog of curatable entries FINDINGS does not cite, plus a
+# little slack so a working session can book before curating. This counts
+# the WHOLE ledger, not just recent entries — most of the 296 are older
+# results the curated layer never covered, which is itself worth seeing.
+MAX_UNCURATED = 300
 
 # GLOSSARY.md is the authority for all three lists; a tag outside them is
 # either a typo or vocabulary drift, and drift is what makes the tags
@@ -58,12 +61,11 @@ def _anchors():
 
 def _uncurated():
     """Curatable ledger entries booked past the newest FINDINGS citation."""
-    cited = [int(n) for n in re.findall(r"RESULTS\.md#L(\d+)",
-                                        FINDINGS.read_text())]
-    newest = max(cited)
+    cited = {int(n) for n in re.findall(r"RESULTS\.md#L(\d+)",
+                                        FINDINGS.read_text())}
     rows = [json.loads(line) for line in INDEX.open()]
     return [r for r in rows
-            if r["line"] > newest and r["type"] in CURATABLE]
+            if r["line"] not in cited and r["type"] in CURATABLE]
 
 
 def test_results_anchors_land_on_entry_headings():
@@ -110,10 +112,11 @@ def test_findings_tag_grammar():
 def test_findings_curation_backlog_does_not_grow():
     stale = _uncurated()
     assert len(stale) <= MAX_UNCURATED, (
-        f"{len(stale)} curatable entries are newer than anything FINDINGS "
-        f"cites (ratchet is {MAX_UNCURATED}). Curate them or raise the "
-        "ratchet with a reason:\n  "
-        + "\n  ".join(r["id"] for r in stale[MAX_UNCURATED:]))
+        f"{len(stale)} curatable entries are not cited by FINDINGS "
+        f"(ratchet is {MAX_UNCURATED}). Curate them or raise the ratchet "
+        "with a reason. Newest uncited:\n  "
+        + "\n  ".join(r["id"] for r in sorted(
+            stale, key=lambda r: -r["line"])[:10]))
 
 
 if __name__ == "__main__":       # standalone report, no pytest needed
@@ -122,5 +125,5 @@ if __name__ == "__main__":       # standalone report, no pytest needed
     stale = _uncurated()
     print(f"uncurated {CURATABLE} entries: {len(stale)} "
           f"(ratchet {MAX_UNCURATED})")
-    for row in stale:
-        print(f"  {row['type']:8s} {row['id']}")
+    for row in sorted(stale, key=lambda r: -r["line"])[:10]:
+        print(f"  newest uncited: {row['type']:8s} {row['id']}")

@@ -30,6 +30,7 @@ import v4flash_rungA as RA  # noqa: E402
 LAYERS = [int(x) for x in os.environ.get("LAYERS", "4,22,40").split(",")]
 SHARDS = [int(x) for x in os.environ.get("SHARDS", "6,24,42").split(",")]
 OUT = "logs/opus/v4_router.jsonl"
+assert len(SHARDS) == len(LAYERS), "SHARDS and LAYERS must pair up"
 
 
 def bf16_to_f32(raw, shape):
@@ -44,11 +45,16 @@ def read_router(shard, layer):
     wn, bn = f"layers.{layer}.ffn.gate.weight", f"layers.{layer}.ffn.gate.bias"
     if wn not in hdr:
         return None
+    # dtypes are asserted, not assumed: a BF16 bias read as F32 yields
+    # half as many plausible-looking garbage floats and every bias
+    # readout below would be wrong with no error (reviewer catch).
+    assert hdr[wn]["dtype"] == "BF16", hdr[wn]["dtype"]
     W = bf16_to_f32(RA.cached(wn, hdr, url, base), hdr[wn]["shape"])
     b = None
     if bn in hdr:
+        assert hdr[bn]["dtype"] == "F32", hdr[bn]["dtype"]
         b = np.frombuffer(RA.cached(bn, hdr, url, base),
-                          dtype=np.float32).copy()
+                          dtype=np.float32).reshape(hdr[bn]["shape"]).copy()
     return W.astype(np.float64), b, hdr
 
 
@@ -96,6 +102,7 @@ def main():
         row["top_pairs"] = [[int(iu[0][k]), int(iu[1][k]), float(off[k])]
                             for k in order]
         sink.write(json.dumps(row) + "\n")
+        sink.flush()
         print(f"[R] layer {layer}: |cos| max {row['cos_absmax']:.4f} "
               f"mean {row['cos_absmean']:.4f} | null max "
               f"{row['null_absmax']:.4f} p99.9 {p999:.4f} | above "

@@ -14,7 +14,8 @@ banked and pre-registered separately.
 
 Usage: python scratch/probe_int_device_parity.py [device]
        (device defaults to cuda, then mps, whichever is available)
-Exit code 0 iff every primitive is bit-identical to the CPU result.
+Exit 0 iff every primitive is bit-identical to CPU; 1 on mismatch or
+kernel failure; 2 if there was no accelerator to compare against.
 """
 import sys
 
@@ -57,8 +58,10 @@ def primitives(dev, tensors):
 def main():
     dev = pick_device(sys.argv)
     if not dev:
-        print("[probe] no accelerator available — nothing to compare")
-        return 0
+        # exit 2, NOT 0: a harness scoring this by exit status would
+        # otherwise read "pass" from "never ran" (reviewer catch).
+        print("[probe] no accelerator available — NOTHING COMPARED")
+        return 2
     torch.manual_seed(SEED)
     tensors = (
         torch.randint(-4 * Q, 4 * Q, (32, 64), dtype=torch.int64),

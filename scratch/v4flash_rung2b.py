@@ -53,7 +53,9 @@ def load_expert(idx, hdr, url, base):
         codes2x, exps = RA.decode(proj, hdr, url, base)
         emin = int(exps.min())
         sh = (exps - emin).repeat(32, axis=1)
+        assert int(sh.max()) + 4 < 63, "lattice shift would overflow"
         out[proj] = (codes2x << sh).astype(np.int64)
+        out[f"{proj}_emin"] = emin
     return out
 
 
@@ -83,9 +85,18 @@ def permute(ref, perm):
 
 
 def resid_entropy(e, ref):
-    """Order-0 entropy in bits/param of the exact integer residual."""
+    """Order-0 entropy in bits/param of the exact integer residual.
+
+    The subtraction is only meaningful if both experts sit on the SAME
+    dyadic lattice, i.e. share emin per projection — otherwise the
+    residual measures a scale mismatch, not weight structure. Asserted
+    rather than assumed (reviewer catch).
+    """
     tot, n = 0.0, 0
     for proj in ("w1", "w2", "w3"):
+        assert e[f"{proj}_emin"] == ref[f"{proj}_emin"], (
+            f"{proj}: emin {e[f'{proj}_emin']} vs {ref[f'{proj}_emin']} "
+            "— experts are not on a shared lattice")
         d = (e[proj] - ref[proj]).ravel()
         _, cnt = np.unique(d, return_counts=True)
         p = cnt / cnt.sum()

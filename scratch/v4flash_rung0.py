@@ -68,6 +68,11 @@ def fetch(url, base, name, spec, cache):
     lo, hi = spec["data_offsets"]
     if not (os.path.exists(blob) and os.path.exists(meta)):
         raw = _get(url, base + lo, base + hi)
+        # a 200 (whole file) or a truncated 206 would otherwise sail
+        # through: nibbles() accepts any length and the wrong sha would
+        # be written as canonical, permanently (reviewer catch).
+        assert len(raw) == hi - lo, (
+            f"{name}: got {len(raw)} bytes, expected {hi - lo}")
         with open(blob, "wb") as f:
             f.write(raw)
         with open(meta, "w") as f:
@@ -127,7 +132,11 @@ def main():
                     continue
                 wraw, wsha = fetch(url, base, wname, hdr[wname], CACHE)
                 sraw, _ = fetch(url, base, sname, hdr[sname], CACHE)
+                assert hdr[wname]["dtype"] == "I8", hdr[wname]["dtype"]
                 codes = nibbles(wraw)
+                want = 2 * int(np.prod(hdr[wname]["shape"]))
+                assert codes.size == want, (
+                    f"{wname}: {codes.size} codes, header says {want}")
                 sign = (codes >> 3).astype(np.uint8)      # 0/1
                 mag = (codes & 0x7).astype(np.uint8)      # 0..7
                 scales = np.frombuffer(sraw, dtype=np.uint8)

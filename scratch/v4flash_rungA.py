@@ -110,10 +110,16 @@ def decode(proj, hdr, url, base):
     codes2x = sign * LUT2X[nib & 0x7]
     exps = sb.astype(np.int64) - 127   # E8M0 bias, verified empirically
 
-    # EXACTNESS (prediction 1): our integer decode must reproduce the
-    # vendor's own float semantics bit-for-bit.
-    ref = FP4_TABLE[nib] * np.exp2(
-        exps.astype(np.float64)).repeat(32, axis=1)
+    # EXACTNESS (prediction 1). The reference scale is decoded by TORCH's
+    # native float8_e8m0fnu, not by our own `- 127`, so this can actually
+    # fail if the bias or the scale format is wrong. Deriving both sides
+    # from `exps` would make the assert an algebraic identity in the
+    # constants (LUT2X == 2 * FP4_TABLE) and prove nothing — reviewer
+    # catch, 2026-08-02.
+    sc = torch.frombuffer(bytearray(sb.tobytes()),
+                          dtype=torch.float8_e8m0fnu).float().numpy()
+    ref = FP4_TABLE[nib] * sc.astype(np.float64).reshape(
+        sshape).repeat(32, axis=1)
     ours = codes2x.astype(np.float64) * np.exp2(
         exps.astype(np.float64) - 1.0).repeat(32, axis=1)
     assert np.array_equal(ref, ours), f"{proj}: decode disagrees"
@@ -130,7 +136,12 @@ def det_gemv(codes2x, exps, x, dev, chunk=512):
     e_all = torch.from_numpy(exps)
     emin = int(e_all.min())
     span = int((e_all - emin).max())
-    bound = span + 19 + math.ceil(math.log2(g))
+    # |code2x| <= 12 < 2^4; |x| needs bits_x; the 32-sum adds 5; the
+    # g-sum adds log2(g); the shift adds span. bits_x is measured, not
+    # assumed: the w2 leg is fed h clamped to 2^15, not x at 2^10, so a
+    # fixed constant understates it by 5 bits (reviewer catch).
+    bits_x = max(1, int(x.abs().max()).bit_length())
+    bound = span + 4 + bits_x + 5 + math.ceil(math.log2(g))
     assert bound < 62, f"shift span would overflow int64: {bound}"
     xt = x.view(x.shape[0], g, 32).to(dev)
     ys = []

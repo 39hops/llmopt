@@ -20,6 +20,12 @@ RUNNER = ROOT / "scratch" / "detbwd_gravmoe.py"
 REFERENCE_DIR = ROOT / "scratch" / "detbwd_gmoe_ref"
 FINAL_PREFIX = "[gmoe] FINAL trajectory sha "
 CONTRACT_ENV = {
+    # BIRTH_SEED reaches detbwd_mb.SEED, which detbwd_gravmoe and
+    # detbwd_diet both consume — and scratch/calib_dist_birth.sh exports
+    # it. Without it here a polluted shell silently reproduces the WRONG
+    # trajectory (measured 2026-08-02: BIRTH_SEED=1 turns gravmoe-rb1
+    # into 9264fcf0 instead of c6766da2).
+    "BIRTH_SEED",
     "ACLAMP", "ANSWER_ONLY", "COND", "DHEAD", "DIM", "E", "EXPORT", "FFN",
     "GATE", "GB", "K", "LD", "LN", "NBLK", "QK", "SCHED", "SHIFT",
     "SS", "SSW", "STEPS", "TAU", "TRAJECTORY_ONLY", "TWIN",
