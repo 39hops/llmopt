@@ -2306,6 +2306,15 @@ CENSUS (unregistered, free): what is actually IN DeepSeek-V4-Flash's 48 shards? 
 - `is_routed(name)` — Routed expert weight or scale -- NOT the always-on shared expert.
 - `main()`
 
+### scratch/v4flash_f1b.py
+F1b (PRE-REG V4-F1): boot the VENDOR's model.py over the kernel twin — truncated architecture, RANDOM weights, no downloads beyond the sha-pinned vendor source (checkpoints/v4flash_vendor/, fetched from the HF repo; model.py sha c0c19e6c9fa439ba matches the rung-D pin).
+
+- `load_vendor_model_module()`
+- `boot_args(mod)`
+- `init_random(model, n_routed, gen)` — The vendor model has no init (inference-only, torch.empty).
+- `run(dev, mod, args, tokens)`
+- `main()`
+
 ### scratch/v4flash_header.py
 RUNG -1 (spec 2026-08-02-v4flash-lossless-recode): read a DeepSeek-V4-Flash safetensors HEADER by HTTP byte-range and report the tensor inventory — names, dtypes, shapes, and the implied fp4 scale granularity. Costs well under 1 MB; downloads no weights.
 

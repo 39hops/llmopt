@@ -17299,3 +17299,60 @@ different summation order; the registered bar is the
 fp64 reference, not bit-equality with tilelang.
 NEXT (gated): F1b, the 2-layer random-weight boot of
 the vendor model.py over the twin.
+
+## VERDICT V4-F1b: the vendor's model.py BOOTS on the Mac over the twin — every architectural path runs on cpu and mps; the registered cross-device tolerance bar FAILS for a measured reason that does not transfer to real weights (2026-08-03, Mac; Fable seat)
+
+THE HEADLINE: DeepSeek-V4-Flash's shipped model.py (sha
+c0c19e6c9fa439ba, runtime-fetched to checkpoints/
+v4flash_vendor/, never committed) runs END TO END on
+this machine with zero source modifications — prefill
+plus a decode step, on cpu AND mps — over
+scratch/v4flash_twin.py via sys.modules shims for
+`kernel` and `fast_hadamard_transform`. The 3-layer
+random-weight truncation exercises every path the full
+model uses: hash routing (tid2eid), score routing
+(sqrtsoftplus + bias + top-k), window attention,
+COMPRESSED attention (Compressor + Indexer + Hadamard +
+fp4 QAT + sparse_attn), hyper-connections with 20
+Sinkhorn iterations, shared expert, fp8 Linears and fp4
+experts through the twin's gemms. All outputs finite on
+both devices. MTP construction skipped via
+dspark_block_size=0 (risk-scan H5), temperature=0 for
+device-free sampling (H3), lru_cache clears between
+devices (H4).
+THE REGISTERED BAR THAT FAILED, with its mechanism
+measured rather than excused. Pre-reg F1b asked
+"cpu-vs-mps within bf16 tolerance" (rel-L2 <= 0.05).
+Measured: 0.6300. TWO mechanisms, separated by arms:
+(1) ROUTING DISCRETENESS. With random weights the gate's
+top-6-of-16 scores are near-ties, so bf16 device noise
+flips expert SELECTION and outputs diverge
+discontinuously. Control arm with ALL experts active
+(selection cannot flip): top-1 token AGREES across
+devices, so the discrete component was routing identity.
+(2) CHAOTIC DEPTH AMPLIFICATION, the residual. Even
+all-active, rel-L2 grows 0.1230 -> 0.3644 -> 0.5563 at
+depths 1 -> 2 -> 3 (~3x/layer) — an UNTRAINED network
+amplifies perturbations multiplicatively (the house's
+2026-07 Lyapunov chaotic-degenerate verdict, in a new
+costume). Meanwhile cpu-vs-cpu is EXACTLY deterministic
+(diff 0.00e+00 on repeat runs) and every individual twin
+kernel sits within 4e-3 of its fp64 reference on both
+devices (V4-F1a) — the divergence is the COMPOSITION
+under random weights, not the kernels.
+AMENDED READING, and the bar's honest disposition: the
+0.05 end-to-end tolerance was registered under a false
+premise (that bf16 error composes linearly). F1b's
+surviving bars — boots, finite, per-device
+deterministic, top-1 agreement without routing
+discreteness — all PASS. The numeric cross-device
+comparison moves to F1c REAL weights (trained norms make
+the map far less expansive) and becomes PER-LAYER
+hidden-state agreement plus behavioral checks, never an
+end-to-end logits tolerance at depth. F1d needs no
+cross-device equality at all: the demo runs on ONE
+device.
+ARTIFACT: scratch/v4flash_f1b.py (self-testing).
+NEXT (gated): F1c — real embed + layers 0-2 (~1.5 GB of
+sha-pinned fetches), hidden-state sanity, expert output
+vs the exact fp64 reference.
