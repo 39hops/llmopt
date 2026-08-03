@@ -18026,3 +18026,39 @@ FENCES: n=1, one prompt, descriptive text readouts, no
 capability claim; both attractors are logged verbatim.
 ARTIFACTS: scratch/v4flash_f1d.py (ORACLE mode),
 logs/opus/v4_f1d.jsonl row 7, jobs/f2b_oracle.log.
+
+## PRE-REG V4-F2c: the K-sweep — does static coverage grow the way uniform routing predicts, and where does the fp8-dense base hit the memory wall? (2026-08-03, Mac; Fable seat)
+
+THREE ARMS, one variable: K in {16, 24, 32}, all on the
+fp8-dense + pair-LUT + batched base (Metal 23.0 GB at
+K=16, measured in F2a), all with the RECALL instrument,
+same prompt, 64 greedy tokens, mps.
+RESIDENCY RULE, declared: most-POSITIVE-bias — the best
+measured static from-disk rule (V4-F2a bake-off: 0.069
+vs random 0.062; neg-bias 0.035 is anti-selective and
+retired; oracle rules are trajectory-unstable per
+V4-F2b). Positive-bias sets NEST (argsort suffix), so
+the K=32 fetch (~17 GB, disk 26 GB free after deleting
+21 GB of regenerable blackhole_q3_parts intermediates,
+logged here) serves all three arms.
+REGISTERED PREDICTIONS:
+(1) recall scales with K under near-uniform selection:
+    recall(K=32) >= 2x recall(K=16), same rule, each
+    measured against its own run's demand. Expected
+    magnitudes ~0.07 / ~0.10 / ~0.14.
+(2) MEMORY: K=16 ~23 GB and K=24 ~27 GB fit; K=32
+    (~31.6 GB) crosses the working-set ceiling on this
+    36 GB machine — REGISTER: if K=32 shows the paging
+    signature (throughput collapse >= 2x vs K=24 with
+    Metal > 29 GB), that books as the fp8-base memory
+    frontier, completing the bf16-base point from
+    V4-F1e.
+(3) TEXT: descriptive only, no direction — distinct-4
+    count + verbatim per arm. The F2b lesson stands: at
+    these residencies degeneracy is over-determined;
+    the sweep asks whether MORE static coverage changes
+    that, and either answer books.
+FENCES: n=1 per arm, one prompt; recall judged on the
+trajectory each arm CREATES (the F2b closed-loop
+lesson); no capability claim; tok/s comparisons only
+between arms of THIS sweep (same disk state).
