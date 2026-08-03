@@ -13,8 +13,8 @@ tabulated SiLU are a different function. No capability claim follows.
 V4-specific: the swiglu limit (inference/model.py:601-607) is
 ASYMMETRIC — up is clamped both sides, gate on the high side only.
 
-Env: DEV (cpu|mps, default cpu), BATCH (default 16), EXPERT
-(default layers.22.ffn.experts.0).
+Env: DEV (cpu|mps|cuda, default cpu), BATCH (default 16), EXPERT,
+CACHE, SILU_TAB. Blobs byte-range fetch on a cold cache.
 Usage: .venv/bin/python scratch/v4flash_rungA.py
 """
 import hashlib
@@ -33,13 +33,21 @@ sys.path.insert(0, ".")
 REPO = ("https://huggingface.co/deepseek-ai/"
         "DeepSeek-V4-Flash-0731/resolve/main")
 NSHARD, SHARD = 48, 24
-CACHE = "checkpoints/v4flash_sample"
+CACHE = os.environ.get("CACHE", "checkpoints/v4flash_sample")
 EXPERT = os.environ.get("EXPERT", "layers.22.ffn.experts.0")
 DEV = os.environ.get("DEV", "cpu")
 BATCH = int(os.environ.get("BATCH", "16"))
 A = 1024                     # activation fixed-point scale
 SWIGLU_LIMIT = 10.0          # config.json swiglu_limit
-SILU_TAB = "checkpoints/k3_silu_tab.pt"
+# The SiLU table travels as BYTES and is never regenerated per device
+# (P3 doctrine — a different libm would silently change it). The
+# committed copy is the transport; the sha is asserted either way.
+SILU_SHA = ("f503c81446c97adb01f657d37f490909"
+            "a0cbd5d752d2bc2ae5613ced9cf56378")
+SILU_TAB = os.environ.get("SILU_TAB") or next(
+    (p for p in ("checkpoints/k3_silu_tab.pt",
+                 "scratch/v4flash_ref/silu_tab.pt") if os.path.exists(p)),
+    "scratch/v4flash_ref/silu_tab.pt")
 LUT2X = np.array([0, 1, 2, 3, 4, 6, 8, 12], dtype=np.int64)
 # the vendor's own table (inference/convert.py:11), for the exactness check
 FP4_TABLE = np.array([0., .5, 1., 1.5, 2., 3., 4., 6.,
@@ -60,12 +68,22 @@ def header():
     hlen = struct.unpack("<Q", _get(url, 0, 8))[0]
     hdr = json.loads(_get(url, 8, 8 + hlen))
     hdr.pop("__metadata__", None)
-    return hdr
+    return hdr, url, 8 + hlen
 
 
-def cached(name):
-    """Read a byte-range blob fetched by rung 0, re-asserting its sha."""
+def cached(name, hdr=None, url=None, base=None):
+    """Blob bytes, sha-pinned. Byte-range fetches on a cold cache so the
+    cell is self-contained on any machine; an independent fetch that
+    lands on the same sha is itself a provenance check."""
+    os.makedirs(CACHE, exist_ok=True)
     p = os.path.join(CACHE, name.replace("/", "_") + ".bin")
+    if not os.path.exists(p):
+        lo, hi = hdr[name]["data_offsets"]
+        raw = _get(url, base + lo, base + hi)
+        with open(p, "wb") as f:
+            f.write(raw)
+        with open(p[:-4] + ".sha", "w") as f:
+            f.write(hashlib.sha256(raw).hexdigest())
     raw = open(p, "rb").read()
     want = open(p[:-4] + ".sha").read().strip()
     got = hashlib.sha256(raw).hexdigest()
@@ -73,7 +91,7 @@ def cached(name):
     return raw
 
 
-def decode(proj, hdr):
+def decode(proj, hdr, url, base):
     """Shipped bytes -> (codes2x [out, din] int64, exps [out, g] int64).
 
     codes2x holds 2x the e2m1 magnitude with sign, so the real weight is
@@ -82,8 +100,8 @@ def decode(proj, hdr):
     """
     wn, sn = f"{EXPERT}.{proj}.weight", f"{EXPERT}.{proj}.scale"
     wshape, sshape = hdr[wn]["shape"], hdr[sn]["shape"]
-    wb = np.frombuffer(cached(wn), np.uint8).reshape(wshape)
-    sb = np.frombuffer(cached(sn), np.uint8).reshape(sshape)
+    wb = np.frombuffer(cached(wn, hdr, url, base), np.uint8).reshape(wshape)
+    sb = np.frombuffer(cached(sn, hdr, url, base), np.uint8).reshape(sshape)
     out, half = wshape
     nib = np.empty((out, half * 2), np.uint8)
     nib[:, 0::2] = wb & 0x0F           # low nibble first (vendor order)
@@ -137,13 +155,15 @@ def to_scale_A(y, e):
 
 
 def main():
-    hdr = header()
-    deq = {p: decode(p, hdr) for p in ("w1", "w2", "w3")}
+    hdr, url, base = header()
+    deq = {p: decode(p, hdr, url, base) for p in ("w1", "w2", "w3")}
     print(f"[rungA] expert {EXPERT} decode EXACT vs vendor FP4_TABLE "
           f"x float8_e8m0fnu, 3/3 tensors")
     tab_raw = open(SILU_TAB, "rb").read()
-    print(f"[rungA] silu table sha {hashlib.sha256(tab_raw).hexdigest()[:16]}"
-          f" (shipped bytes, reused from the K3-D2 cell)")
+    tsha = hashlib.sha256(tab_raw).hexdigest()
+    assert tsha == SILU_SHA, f"silu table sha DISAGREE: {tsha}"
+    print(f"[rungA] silu table sha {tsha[:16]} PINNED ({SILU_TAB}) "
+          f"— shipped bytes, from the K3-D2 cell")
     tab = torch.load(SILU_TAB, weights_only=True).to(DEV)
 
     rng = np.random.default_rng(45_7_2)
