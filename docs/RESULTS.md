@@ -17945,3 +17945,36 @@ ARTIFACTS: scratch/v4flash_f1d.py (RECALL mode),
 logs/opus/v4_f1d.jsonl row 6 (incl. full per-layer
 demand counts — the bake-off ground truth), analysis
 inline above from that row.
+
+## PRE-REG V4-F2b: profile-then-swap — oracle-16 residents from F2a's measured demand, same memory, same config; does the echo loop break when recall jumps ~20x? (2026-08-03, Mac; Fable seat)
+
+CELL: identical to F2a's config (K=16 equivalent
+budget, fp8-dense + pair-LUT + batched, same prompt, 64
+greedy tokens, mps) with ONE variable: score-layer
+residents are the ORACLE-16 per layer — the 16 most-
+demanded experts in F2a's logged unmasked-demand counts
+— instead of most-negative-bias. Hash layers unchanged.
+RECALL is re-measured against THIS run's own unmasked
+demand (demand can shift if generation diverges — the
+oracle was profiled on the OLD trajectory; this
+staleness is part of what the cell measures).
+REGISTERED READOUTS AND PREDICTIONS:
+(1) recall: PREDICT >= 0.5 (F2a coverage was 0.758 on
+    the profiling trajectory; divergence and staleness
+    eat some of it).
+(2) the loop: readout is the distinct-4-gram COUNT
+    (F1d/F2a both measured exactly 9) plus the verbatim
+    text. NO registered direction — whether 75%-recall
+    routing produces different text at 6.25% residency
+    is exactly the unknown; either answer is a result.
+    If the count stays 9 and the text is the same loop,
+    that is evidence the loop is over-determined (not
+    rescued by routing fidelity at this K); if it
+    moves, the amputation story gains its causal arm.
+(3) tok/s and Metal (expect ~F2a's 0.173 / 23 GB).
+FENCES: n=1, one prompt, descriptive text readout, no
+capability claim; oracle sets are PROMPT-CONDITIONED by
+construction — this is a diagnostic, not a deployable
+selection rule. Disk: ~8.6 GB of oracle-expert fetches
+against 13 GB free (4.28 GB of K24-only cache deleted
+first, logged here).
