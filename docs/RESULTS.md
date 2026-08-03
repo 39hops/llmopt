@@ -17259,3 +17259,43 @@ NOT part of F1.
 Two scanner surveys (vendor-code portability risks; repo-tool tie-ins)
 run in parallel and their verified findings amend this pre-reg by
 name if they change any bar or premise.
+
+## VERDICT V4-F1a: the kernel twin passes all acceptance bars on cpu AND mps — the fp4 decode is bit-identical to the certified rungA decode, and every gemm sits inside 1/128 of its exact fp64 reference (2026-08-03, Mac; Fable seat)
+
+All bars from PRE-REG V4-F1 rung F1a, plus bars added
+after the two scanner surveys (which are hereby adopted
+into the pre-reg by its own clause):
+  e4m3 RNE == torch's own cast over all finite values
+    INCLUDING every exact tie              PASS
+  e2m1 ties-to-even hand vector            PASS
+  2^ceil(log2 x) exact at powers of two
+    and neighbours (vendor bit trick)      PASS
+  inplace QAT writes back through a
+    NON-CONTIGUOUS slice                   PASS cpu+mps
+  fp4 decode vs certified rungA decode     BIT-IDENTICAL
+  fp4_gemm vs exact fp64 reference on a
+    REAL cached expert (rel <= 1/128)      3.89e-3 both
+  sinkhorn doubly-stochastic residual      1.0e-6 both
+  hadamard involution + isometry           PASS both
+  sparse_attn vs dense fp64 reference
+    with sink + (-1)-masking (<= 1/64)     3.42e-3 both
+  ue8m0 scales exact powers of two         PASS both
+DEVICE FINDINGS folded in from the risk scan, each
+verified: MPS stores fp8/e8m0 but cannot run ANY kernel
+on them (even .float()), so the twin decodes via
+view(uint8) + LUT gather and returns bf16 grid VALUES
+on MPS (its only consumers are its own gemms); frexp/
+ldexp are absent on MPS, so the pow2 helpers use the
+vendor's own IEEE bit trick (integer ops, verified
+equal to the smallest-pow2>=x reference); the five
+inplace QAT call sites pass non-contiguous slices, and
+the twin preserves the vendor's copy_-writeback
+contract (tested on a strided view).
+ARTIFACT: scratch/v4flash_twin.py (self-testing; exit
+nonzero on any bar). The twin's fp8_gemm/fp4_gemm
+dequantize once and matmul in fp32 — mathematically
+equal to the vendor's per-K-block accumulation with a
+different summation order; the registered bar is the
+fp64 reference, not bit-equality with tilelang.
+NEXT (gated): F1b, the 2-layer random-weight boot of
+the vendor model.py over the twin.

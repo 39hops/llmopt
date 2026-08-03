@@ -2389,6 +2389,29 @@ RUNG S0 (pre-reg V4-RUNG-D + S0): is the entropy-coded form of a DeepSeek-V4-Fla
 - `bench(sym, nrep)` — Encode once, decode nrep times; return (bytes, best decode s, enc s).
 - `main()`
 
+### scratch/v4flash_twin.py
+F1a (PRE-REG V4-F1): pure-torch twin of DeepSeek-V4-Flash's inference/kernel.py — the six tilelang kernels plus the Hadamard rotation — so the vendor's model.py runs unmodified on Mac CPU/MPS.
+
+- `_pow2_ceil_log2(x)` — 2^ceil(log2(x)) exactly, via the vendor's own IEEE bit trick
+- `_rne_to_grid(x, grid)` — Round to nearest grid value, ties to even CODE INDEX — which is
+- `_quant_values(x, grid)` — |x| RNE'd onto grid, sign restored, fp32.
+- `_f8_to_f32(a)` — fp8 e4m3 tensor -> fp32 values, device-pure (uint8 LUT gather).
+- `_e8m0_to_f32(s)` — e8m0 byte -> 2^(b-127), bit-constructed (MPS-safe, no ldexp).
+- `_f32_to_e8m0(s)` — Exact power-of-two fp32 -> e8m0 byte: the exponent field IS the
+- `_scale_f32(s)` — Any scale tensor (f32 / e8m0) -> fp32, device-pure.
+- `_unpack_fp4(b)` — [.., K//2] packed e2m1 (any 1-byte view) -> [.., K] fp32.
+- `act_quant(x, block_size=128, scale_fmt=None, scale_dtype=torch.float32, inplace=False)` — Vendor contract: per-(row, block) amax (floor 1e-4); scale
+- `fp4_act_quant(x, block_size=32, inplace=False)` — Per-(row,32) amax (floor 6*2^-126); scale 2^ceil(log2(amax/6))
+- `_deq_act(a, a_s, group=128)` — Quantized activations (fp8 on cpu, bf16 grid values on mps) +
+- `fp8_gemm(a, a_s, b, b_s, scale_dtype=torch.float32)` — C = A_fp8[M,K] @ B_fp8[N,K]^T; A per-1x128 scales, B per-128x128
+- `fp4_gemm(a, a_s, b, b_s, scale_dtype=torch.float32)` — C = A_fp8[M,K] @ B_fp4[N,K]^T; B packed 2 codes/byte along K
+- `sparse_attn(q, kv, attn_sink, topk_idxs, softmax_scale)` — q [b,s,h,d], kv [b,n,d] (K==V latent), idx -1 masked; the sink
+- `hc_split_sinkhorn(mixes, hc_scale, hc_base, hc_mult=4, sinkhorn_iters=20, eps=1e-06)` — pre=sigmoid(m0*s0+b0)+eps; post=2*sigmoid(m1*s1+b1); comb =
+- `hadamard_transform(x, scale=1.0)` — Sylvester-order Walsh-Hadamard along the last dim (power of 2).
+- `install()` — Register the twin as `kernel` and `fast_hadamard_transform` so
+- `_smallest_pow2_geq(v)`
+- `_bars(dev)`
+
 ### scratch/verify_intbirth_prims.py
 House-side acceptance of axiom's intbirth PRIMITIVE layer (relay 2026-08-01-3): rebuild the R2b training loop from intbirth.Block / AdamW / rdiv alone, house-authored composition, and check all 8 r2b_ref.json milestone digests + losses. This is also the shape the multi-block reference will take (dx0 chaining, one AdamW over the concatenated param list).
 
