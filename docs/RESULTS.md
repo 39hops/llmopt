@@ -17546,3 +17546,31 @@ conservative for the general case where 258 distinct
 experts/token could exceed the 60-expert cap.
 FENCE: same-device, same-prompt comparison; no quality
 claim; cache capacity and hit rate logged.
+
+## RIDER 2 on PRE-REG V4-F1e (arm 3 result + arm 4 registration): the cache THRASHED — the per-token working set is 774 tensors against a 180 cap; arm 4 makes the unpack itself cheap instead (2026-08-03, Mac; Fable seat)
+
+ARM 3 FAILED, worse than doing nothing: 0.018 tok/s at
+the 16-token mark vs the 0.100 baseline — killed there
+(prediction (3) was >= 0.30). MECHANISM, so the failure
+is a measurement: one token touches 6 experts x 43
+layers x 3 matrices = 774 DISTINCT weight tensors, and
+a FIFO cache capped at 180 evicts every entry before
+its reuse arrives — 100% miss rate plus cache
+bookkeeping plus ~13 GB/token of Metal alloc/free
+churn. The cap cannot grow to fit: 774 x ~17 MB = 13 GB
+on top of 26.1 GB resident exceeds the machine. The
+arm-3 reasoning ("the hot set is small") was true of
+EXPERTS and false of the PER-TOKEN WORKING SET, which
+is what a cache actually sees.
+ARM 4, registered now, zero memory cost: make the
+unpack itself cheap. The twin's _unpack_fp4 does two
+shift-mask-gather rounds plus a where per byte; a
+precomputed [256, 2] pair-LUT does it in ONE gather per
+byte. Also: cast the activation row to bf16 once per
+call rather than matmul in fp32.
+PREDICTION (4): decode >= 0.25 tok/s (>= 2.5x baseline)
+at K=16, same prompt. (The profile says ffn is 7312 ms
+of 8741; if unpack is the bulk of it and the pair-LUT
+buys ~3-5x on that term, per-token lands ~2.5-3.5 s.)
+FENCE: unpack output must stay BIT-IDENTICAL to the
+certified decode — the F1a bar re-runs before launch.
