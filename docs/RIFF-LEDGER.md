@@ -2269,3 +2269,20 @@ pooling winners was his call).
   cell (optimal lattice quantization intractable in general). No new
   runs warranted. Attribution: Artin (the kinship observation), house
   (the scoping).
+
+- **2026-08-03 (Artin, via openai/ten-proofs): LEAN CERTIFICATE TIER
+  for the axiom judge.** The ten-advances results ship Lean 4
+  formalizations — kernel-checked certificates above the claims (with
+  the standard coverage caveat: audit what the .lean files actually
+  prove vs the prose). The bankable house move: axiom's equivalent()
+  emits, for the rational-identity subset of EQUIVALENT verdicts, a
+  Lean statement + one-tactic proof (ring / norm_num / field_simp); a
+  batch Lean check upgrades those verdicts from judge-blessed to
+  KERNEL-CERTIFIED — i.e. "verified AND distinct" applied to the
+  VERIFIER layer itself: a sympy/axiom bug surfaces as a failing cert,
+  never a silent wrong verdict. Killer: cost per certificate vs the
+  11 ms/row oracle; scope fence: only the tactic-closable subset, the
+  three-valued contract stays the production judge. Travels to axiom
+  as a RELAY ASK (their repo), not an edit. Attribution: Artin (the
+  Lean-can-do-this observation, pre-axiom thread), OpenAI repo (the
+  existence proof), house (the judge-audit framing).
