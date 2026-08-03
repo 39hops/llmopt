@@ -1,33 +1,42 @@
-"""RUNG D (pre-reg V4-RUNG-D + S0): is DeepSeek-V4-Flash's shared router
-key direction routing-INERT?
+"""RUNG D (pre-reg V4-RUNG-D + S0; rewritten after AMENDMENT RUNGD-0803):
+how much of DeepSeek-V4-Flash's routing survives deleting the shared
+router key direction, and under WHICH input model?
 
 VERDICT V4-RUNG-R booked "the confluence lives in the ROUTER" because
-all 32,640 key pairs have positive cosine and every key shares a +0.385
-mean direction. Hazard 8 says a CONSTANT additive term is a top-k no-op
--- that is why gate.bias can shift selection without touching the output
-weight. The same argument was never turned on the KEYS: if every key
-carries the same component along a unit u, every logit picks up the same
-<u,x> term, which a top-k comparing scores to each other cannot see.
+all 32,640 key pairs have positive cosine and every key shares a large
+mean direction u. Hazard 8 notes that a term identical across experts is
+a top-k no-op -- top-k compares experts to each other, so a level cancels
+(exactly, since sqrt(softplus(.)) is strictly monotone, absent bias).
+The question is whether the shared key component IS such a level.
 
-Scoring is the vendor's, verified against the shipped source
-(inference/model.py Gate.forward, sha pinned below):
+Scoring is the vendor's, asserted against the shipped source
+(inference/model.py Gate.forward, sha pinned at run time):
     scores = F.softplus(linear(x.float(), weight.float())).sqrt()
     indices = (scores + bias).topk(topk)      # bias = SELECTION only
-So the deflation is applied to the KEYS, pre-nonlinearity, which is
-where the shared direction lives.
+so the deflations act on the KEYS, pre-nonlinearity.
 
-Also recomputes the +0.385 / +0.254 / 0.0276 decomposition from the
-sha-pinned blobs and LOGS it -- AMENDMENT AUDIT-0802 item (8) recorded
-that those numbers came from an inline command and are not recoverable
-from v4_router.jsonl (which stores only absolute cosines).
+THREE ARMS, because the first version conflated them (reviewer catch,
+2026-08-03):
+  RANK1  W - (W u) u^T   -- delete the shared direction outright. This
+         removes a level AND cuts each key's gain by sqrt(1-p_i^2),
+         which is 3.5-20.2% and VARIES per expert. It is not a pure
+         level removal and the original verdict wrongly read it as one.
+  LEVEL  W - 1 cbar u^T  -- subtract the MEAN coefficient from every
+         key, leaving each expert's deviation intact. THIS is the level.
+  SHIFT  RANK1 scored on x = N(0,I) + m*u. The isotropic null has
+         E<u,x> = 0, which is exactly the condition that makes a shared
+         direction irrelevant -- so the null quietly assumed the answer.
+         Varying m is the only arm that tests the fence.
 
-Registered prediction is evaluated at SCALE 1.0 (x ~ N(0, I)). The other
-scales are an UNREGISTERED robustness probe of the fence: softplus is
-not scale-invariant, so a conclusion drawn only in its saturated regime
-would be an artifact of the null model, not a fact about the router.
+Statistics are chosen to be draw-free where possible. The first version
+logged z.mean(), whose expectation is ZERO on both arms under an
+isotropic x; it is sampling noise, its sign flips across seeds, and the
+"% removed" it implies ranges 24.6-99.4%. The level lives in the WEIGHTS
+(the norm of the mean key row), so it is computed there, with no draw.
 
 Env: LAYERS (default "4,22,40"), SHARDS (default "6,24,42"),
-     NDRAW (default 2000), SCALES (default "0.1,1.0,10.0").
+     NDRAW (default 2000), SCALES (default "0.1,1.0,10.0"),
+     SHIFTS (default "0,5,10,30,64").
 Usage: .venv/bin/python scratch/v4flash_rungd.py
 """
 import hashlib
@@ -47,18 +56,24 @@ LAYERS = [int(x) for x in os.environ.get("LAYERS", "4,22,40").split(",")]
 SHARDS = [int(x) for x in os.environ.get("SHARDS", "6,24,42").split(",")]
 NDRAW = int(os.environ.get("NDRAW", "2000"))
 SCALES = [float(s) for s in os.environ.get("SCALES", "0.1,1.0,10.0").split(",")]
+SHIFTS = [float(s) for s in os.environ.get("SHIFTS", "0,5,10,30,64").split(",")]
 SEED = 2026_08_03
 OUT = "logs/opus/v4_rungd.jsonl"
 assert len(SHARDS) == len(LAYERS), "SHARDS and LAYERS must pair up"
-# The scoring function is READ, not remembered: this cell's whole claim
-# rests on top-k being applied to sqrt(softplus(.)) + bias, so the file
-# that defines it is pinned like any other artifact.
 MODEL_PY = f"{RA.REPO}/inference/model.py"
 CONFIG = f"{RA.REPO}/config.json"
 
 
 def vendor_scoring():
-    """Confirm the score function and top-k from the shipped source."""
+    """Confirm the score function, top-k, and the ABSENCE of group routing.
+
+    The three substring asserts alone are not sufficient: DeepSeek's V3
+    lineage puts a group-limited stage (n_group / topk_group, top-2-sum
+    per group, masked_fill_) BETWEEN the bias add and the final topk, and
+    all three substrings survive verbatim in that implementation. A flat
+    top-k would then be the wrong operator. So the config keys are
+    asserted too (reviewer catch, 2026-08-03).
+    """
     with urllib.request.urlopen(MODEL_PY) as r:
         src = r.read()
     sha = hashlib.sha256(src).hexdigest()
@@ -66,27 +81,29 @@ def vendor_scoring():
     assert "F.softplus(scores).sqrt()" in txt, "score function moved"
     assert "scores = scores + self.bias" in txt, "bias path moved"
     assert "indices = scores.topk(self.topk, dim=-1)[1]" in txt, "topk moved"
+    assert "group_scores" not in txt and "topk_group" not in txt, \
+        "group-limited routing appeared: flat top-k is the wrong operator"
     with urllib.request.urlopen(CONFIG) as r:
         cfg = json.loads(r.read())
     # config.json is the HF namespace (num_experts_per_tok), NOT
     # inference/model.py's ModelArgs namespace (n_activated_experts) --
     # the two ship side by side and only one of them is in this file.
     assert cfg["scoring_func"] == "sqrtsoftplus", cfg["scoring_func"]
-    return sha, int(cfg["num_experts_per_tok"]), int(cfg["n_routed_experts"])
+    assert int(cfg.get("n_group", 1)) == 1, "grouped routing in config"
+    return (sha, int(cfg["num_experts_per_tok"]), int(cfg["n_routed_experts"]),
+            int(cfg["num_hash_layers"]))
 
 
 def shared_directions(W):
     """Four defensible definitions of "the" shared key direction.
 
     They matter because VERDICT V4-RUNG-R's inline decomposition did not
-    record which one it used. Measured here (layer 22): the MEAN
-    projection is stable to 0.0008 across all four and the residual
-    |cos| to 0.0001, but the MIN swings 0.2397-0.2643 -- so the extremum
-    is the definition-sensitive statistic, which is the same class of
-    number AUDIT-0802 caught twice. The booked "min +0.254" is
-    reproduced by mean-of-RAW-rows; this cell's registered arm uses
-    mean-of-UNIT-rows, and the deflation result is insensitive to the
-    choice (the four unit vectors agree to |cos| > 0.999).
+    record which one it used. Measured (layer 22): the MEAN projection is
+    stable to 0.0008 across all four and the residual |cos| to 0.0002,
+    but the MIN swings 0.2397-0.2643 and the residual |cos| MAX swings
+    0.5277-0.5297 -- the EXTREMA are the definition-sensitive statistics.
+    The booked "min +0.254" is reproduced by mean-of-RAW-rows; the
+    registered arm here uses mean-of-UNIT-rows.
     """
     U = W / np.linalg.norm(W, axis=1, keepdims=True)
     out = {}
@@ -99,108 +116,157 @@ def shared_directions(W):
         if p.mean() < 0:            # singular vectors have a free sign
             u, p = -u, -p
         R = U - np.outer(p, u)
-        Rn = R / np.linalg.norm(R, axis=1, keepdims=True)
-        rc = (Rn @ Rn.T)[np.triu_indices(len(W), 1)]
-        out[name] = (u, {"proj_mean": float(p.mean()),
-                         "proj_min": float(p.min()),
-                         "proj_max": float(p.max()),
-                         "proj_std": float(p.std()),
-                         "resid_abscos_mean": float(np.abs(rc).mean()),
-                         "resid_abscos_max": float(np.abs(rc).max())})
+        rn = np.linalg.norm(R, axis=1, keepdims=True)
+        assert rn.min() > 1e-12, "a key is parallel to u; residual undefined"
+        Rn = R / rn
+        C = (Rn @ Rn.T)[np.triu_indices(len(W), 1)]
+        out[name] = (u, {
+            "proj_mean": float(p.mean()), "proj_min": float(p.min()),
+            "proj_max": float(p.max()), "proj_std": float(p.std()),
+            # SIGNED extrema too: AUDIT-0802 item (8) complained that
+            # v4_router.jsonl stored only absolute cosines, so the
+            # all-pairs-positive result was unrecoverable. Logging |cos|
+            # alone here would re-introduce exactly that defect.
+            "resid_cos_min": float(C.min()), "resid_cos_max": float(C.max()),
+            "resid_cos_mean": float(C.mean()),
+            "resid_abscos_mean": float(np.abs(C).mean()),
+            "resid_abscos_max": float(np.abs(C).max()),
+            "resid_frac_positive": float((C > 0).mean())})
     return U, out
 
 
 def score(X, W, bias):
     """Vendor scores for selection: sqrt(softplus(X W^T)) + bias."""
     z = X @ W.T
-    # softplus via the numerically stable identity; float64 throughout
-    # so the comparison is not decided by rounding in a near-tie.
-    sp = np.logaddexp(0.0, z)
-    s = np.sqrt(sp)
+    # stable softplus; float64 throughout so a near-tie is not decided by
+    # rounding. The vendor computes in float32, so set_agreement is a
+    # property of a float64 idealization -- a disclosed difference.
+    s = np.sqrt(np.logaddexp(0.0, z))
     return s if bias is None else s + bias
 
 
 def topk_sets(S, k):
-    """Top-k indices per row, unordered, plus the rank-1 index."""
+    """Top-k indices per row (sorted, so the sets are canonical)."""
     idx = np.argpartition(-S, k - 1, axis=1)[:, :k]
     return np.sort(idx, axis=1), S.argmax(axis=1)
 
 
+def agreement(X, W, Wd, bias, k):
+    kr, ar = topk_sets(score(X, W, bias), k)
+    kd, ad = topk_sets(score(X, Wd, bias), k)
+    inter = np.array([len(np.intersect1d(r, q, assume_unique=True))
+                      for r, q in zip(kr, kd)])
+    return {"set_agreement": float(inter.mean() / k),
+            "frac_identical_set": float((inter == k).mean()),
+            "rank1_agreement": float((ar == ad).mean())}
+
+
 def main():
     os.makedirs("logs/opus", exist_ok=True)
-    sha, topk, n_exp_cfg = vendor_scoring()
+    sha, topk, n_exp_cfg, n_hash = vendor_scoring()
     print(f"[Rd] vendor model.py sha {sha[:16]} | topk {topk} | "
-          f"n_routed {n_exp_cfg}", flush=True)
-    sink = open(OUT, "a")
+          f"n_routed {n_exp_cfg} | hash layers {n_hash}", flush=True)
+    sink, measured = open(OUT, "a"), 0
     for shard, layer in zip(SHARDS, LAYERS):
+        # layers < num_hash_layers route by tid2eid lookup and have NO
+        # bias and NO top-k; a set-agreement table for them would be a
+        # fabrication (reviewer catch).
+        assert layer >= n_hash, f"layer {layer} is hash-routed, not top-k"
         got = read_router(shard, layer)
-        if got is None:
-            print(f"[Rd] layer {layer}: no ffn.gate in shard {shard}")
-            continue
+        assert got is not None, f"no ffn.gate for layer {layer} in shard {shard}"
         W, bias, _ = got
         n, d = W.shape
         assert n == n_exp_cfg, f"{n} keys, config says {n_exp_cfg}"
+        assert bias is not None, f"layer {layer} has no gate.bias"
+        measured += 1
 
-        # --- the decomposition VERDICT V4-RUNG-R reported inline ---
-        _, dirs = shared_directions(W)
+        U, dirs = shared_directions(W)
         u = dirs["unit_mean"][0]           # the registered definition
+        c = W @ u                          # per-key shared coefficient
+        p = U @ u                          # ... normalized
+        W_rank1 = W - np.outer(c, u)
+        W_level = W - np.outer(np.full(n, c.mean()), u)
+        # NON-VACUOUS guards. `Wd @ u ~= 0` is true for ANY normalized u,
+        # so it certifies nothing (it passed for a RANDOM u -- the exact
+        # failure that would void the null). These check that the removed
+        # energy is what the decomposition predicts, and that u is the
+        # direction the keys actually share.
+        assert abs(np.linalg.norm(u) - 1) < 1e-12, "u is not a unit vector"
+        assert p.min() > 0, "u is not shared by every key"
+        removed = np.linalg.norm(W)**2 - np.linalg.norm(W_rank1)**2
+        assert abs(removed - float(c @ c)) < 1e-6 * abs(removed), \
+            "rank-1 deflation removed the wrong energy"
+        # LEVEL removes the common part and KEEPS each expert's deviation,
+        # so the surviving coefficient is c - cbar: mean zero, same spread.
+        cl = W_level @ u
+        assert abs(cl.mean()) < 1e-9 * abs(c.mean()), "level not removed"
+        assert abs(cl.std() - c.std()) < 1e-9 * c.std(), "deviation altered"
 
-        # --- deflate the KEYS along u, pre-nonlinearity ---
-        Wd = W - np.outer(W @ u, u)
-        # the deflation must actually annihilate u, or every number below
-        # measures a partial projection and the null is not the null.
-        assert np.abs(Wd @ u).max() < 1e-9 * np.abs(W).max(), \
-            "deflation left mass along u"
-
-        rng = np.random.default_rng(SEED + layer)
-        for sc in SCALES:
-            X = rng.standard_normal((NDRAW, d)) * sc
-            S_raw, S_def = score(X, W, bias), score(X, Wd, bias)
-            k_raw, a_raw = topk_sets(S_raw, topk)
-            k_def, a_def = topk_sets(S_def, topk)
-            # set agreement: |intersection| / k, row by row
-            inter = np.array([len(np.intersect1d(r, q, assume_unique=True))
-                              for r, q in zip(k_raw, k_def)])
-            z_raw, z_def = X @ W.T, X @ Wd.T
-            # The shared component adds c_i * <u,x> to expert i, with
-            # c = W u. sd(c)/|mean(c)| is the whole question in one
-            # number: a LEVEL if it is small, a CONTRAST if not.
-            c = W @ u
-            row = {
-                "layer": layer, "n_experts": n, "dim": d, "topk": topk,
-                "scale": sc, "ndraw": NDRAW, "seed": SEED + layer,
-                "model_py_sha": sha[:16],
-                "registered": sc == 1.0,
+        # The LEVEL, measured in the weights -- no draw, no seed. The
+        # first version sampled z.mean(), whose expectation is 0.
+        wbar, wbar1, wbarL = (np.linalg.norm(M.mean(axis=0))
+                              for M in (W, W_rank1, W_level))
+        gain = np.sqrt(1 - p**2)           # per-expert logit-scale cut
+        base = {"layer": layer, "n_experts": n, "dim": d, "topk": topk,
+                "ndraw": NDRAW, "model_py_sha": sha[:16],
                 "decomposition": {k: v for k, (_, v) in dirs.items()},
-                "set_agreement": float(inter.mean() / topk),
-                "frac_identical_set": float((inter == topk).mean()),
-                "rank1_agreement": float((a_raw == a_def).mean()),
-                # is the shared component a LEVEL or a CONTRAST?
-                "logit_mean_raw": float(z_raw.mean()),
-                "logit_mean_def": float(z_def.mean()),
-                "logit_absmean_raw": float(np.abs(z_raw).mean()),
-                "logit_absmean_def": float(np.abs(z_def).mean()),
-                "logit_across_expert_sd_raw": float(z_raw.std(axis=1).mean()),
-                "logit_across_expert_sd_def": float(z_def.std(axis=1).mean()),
+                "mean_row_norm_raw": float(wbar),
+                "mean_row_norm_rank1": float(wbar1),
+                "mean_row_norm_level": float(wbarL),
                 "shared_c_mean": float(c.mean()), "shared_c_sd": float(c.std()),
                 "shared_c_cv": float(c.std() / abs(c.mean())),
-            }
+                "gain_min": float(gain.min()), "gain_max": float(gain.max()),
+                "gain_sd": float(gain.std()), "bias_present": bias is not None}
+        print(f"[Rd] L{layer} level in the WEIGHTS: ||mean row|| "
+              f"{wbar:.4f} -> {wbar1:.4f} rank1 ({100*(1-wbar1/wbar):.1f}% "
+              f"removed) / {wbarL:.4f} level | per-expert gain "
+              f"{gain.min():.3f}-{gain.max():.3f}", flush=True)
+
+        # PAIRED arms: one draw block per layer, reused for every scale
+        # and every deflation. The first version threaded one rng through
+        # the scale loop, so the REGISTERED row's numbers depended on how
+        # many unregistered arms ran first (0.9744 with the sweep, 0.9705
+        # alone) and the row could not be regenerated from its own fields.
+        X0 = np.random.default_rng(SEED + layer).standard_normal((NDRAW, d))
+        for sc in SCALES:
+            X = X0 * sc
+            for arm, Wd in (("rank1", W_rank1), ("level", W_level)):
+                row = dict(base, arm=arm, scale=sc, shift=0.0,
+                           seed=SEED + layer,
+                           registered=(sc == 1.0 and arm == "rank1"),
+                           **agreement(X, W, Wd, bias, topk))
+                sink.write(json.dumps(row) + "\n")
+                sink.flush()
+                tag = "REGISTERED" if row["registered"] else "unregistered"
+                print(f"[Rd] L{layer} {arm:5s} scale {sc:<5g} {tag:12s} "
+                      f"set {row['set_agreement']:.4f} | identical "
+                      f"{row['frac_identical_set']:.4f} | rank1 "
+                      f"{row['rank1_agreement']:.4f}", flush=True)
+        # THE FENCE ARM. Scaling x scales the shared term and the contrast
+        # together, so the scale sweep tests nothing about isotropy. The
+        # hazard is a MEAN along u, which only this varies.
+        for m in SHIFTS:
+            X = X0 + m * u
+            row = dict(base, arm="rank1", scale=1.0, shift=float(m),
+                       seed=SEED + layer, registered=False,
+                       proj_x_mean=float((X @ u).mean()),
+                       **agreement(X, W, W_rank1, bias, topk))
             sink.write(json.dumps(row) + "\n")
             sink.flush()
-            tag = "REGISTERED" if row["registered"] else "robustness"
-            print(f"[Rd] L{layer} scale {sc:<5g} {tag:11s} "
-                  f"set {row['set_agreement']:.4f} | identical "
+            print(f"[Rd] L{layer} SHIFT m={m:<5g} <u,x>={row['proj_x_mean']:+7.2f}"
+                  f" set {row['set_agreement']:.4f} | identical "
                   f"{row['frac_identical_set']:.4f} | rank1 "
-                  f"{row['rank1_agreement']:.4f} | across-expert sd "
-                  f"{row['logit_across_expert_sd_raw']:.3f} -> "
-                  f"{row['logit_across_expert_sd_def']:.3f}", flush=True)
+                  f"{row['rank1_agreement']:.4f}", flush=True)
         for name, (_, d_) in dirs.items():
             star = " <- registered" if name == "unit_mean" else ""
             print(f"[Rd] L{layer} u={name:9s} proj mean {d_['proj_mean']:+.4f} "
                   f"min {d_['proj_min']:+.4f} max {d_['proj_max']:+.4f} | "
-                  f"residual |cos| {d_['resid_abscos_mean']:.4f}{star}",
-                  flush=True)
+                  f"residual cos [{d_['resid_cos_min']:+.4f}, "
+                  f"{d_['resid_cos_max']:+.4f}] {d_['resid_frac_positive']:.1%}"
+                  f" positive{star}", flush=True)
     sink.close()
+    # A run that measured nothing must not look like a run that passed.
+    assert measured == len(LAYERS), f"measured {measured}/{len(LAYERS)} layers"
 
 
 if __name__ == "__main__":

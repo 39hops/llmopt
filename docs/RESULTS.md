@@ -16604,3 +16604,264 @@ logs/opus/v4_rungd.jsonl; scratch/v4flash_s0.py ->
 logs/opus/v4_s0.jsonl. Per the AUDIT-0802 standing
 correction, every number above comes from a committed
 script writing to a log.
+
+## AMENDMENT RUNGD-0803 (amends VERDICT V4-RUNG-D + S0): four reviewers, and the fence was the thing that was wrong — the shared direction is inert ONLY under the null model that assumed it (2026-08-03, Mac; Opus-5 review branch)
+
+Four read-only reviewers (lab reviewer, code-reviewer,
+silent-failure-hunter, feasibility red-team) audited the
+booking from 24 hours earlier. Every load-bearing finding
+below was verified in-tree before adoption; several were
+found INDEPENDENTLY by two or three of them, which is the
+only reason some are stated this strongly.
+The registered PREDICTION (1) still fires and the
+"level, not contrast" reading still holds in the
+geometry. What does not survive is the leap from that to
+ROUTING-INERT, and one of the two evidence lines under
+prediction (2).
+
+(1) THE FENCE WAS SOFTENED IN THE ONE DIRECTION THE
+MECHANISM FORBIDS — the most serious item. The verdict
+wrote: "Real hidden states are anisotropic and could
+place large mass on <u,x> — though note that even that
+would move all 256 scores together." That parenthetical
+is BACKWARDS. The shared component contributes
+c_i * <u,x> with sd(c) = 0.060/0.097/0.065, so a large
+<u,x> scales the CONTRAST linearly. Now measured
+(scratch/v4flash_rungd.py SHIFT arm, x = N(0,I) + m*u):
+  m       <u,x>    L4 set   L22 set   L40 set
+   0      ~0.0     0.9790   0.9705    0.9733
+   5      ~5.0     0.8876   0.8283    0.8598
+  10      ~10.0    0.7976   0.6692    0.7520
+  30      ~30.0    0.5069   0.2416    0.4652
+  64      ~64.0    0.2669   0.1174    0.2609
+Set agreement collapses to 12-27%. The isotropic null has
+E<u,x> = 0, which is EXACTLY the condition that makes a
+shared direction irrelevant — the null model quietly
+assumed the answer. And the unregistered scale sweep did
+not test this: scaling x scales the shared term and the
+contrast together, preserving their ratio. It looked like
+a robustness check and was inert with respect to the
+hazard it appeared to address.
+CORRECTED READING: under isotropic inputs the shared
+direction is nearly inert; under inputs carrying mass
+along u it DOMINATES selection. Which regime V4 operates
+in is a fact about its residual stream that cannot be
+measured on this machine. VERDICT V4-RUNG-R's headline is
+therefore NOT qualified downward as booked — it is
+UNDETERMINED, and the honest scope of RUNG-D is "top-6
+selection is robust to this rank-1 deflation under an
+isotropic input model", full stop.
+
+(2) THE OPERATION WAS NOT A LEVEL REMOVAL, and the
+verdict read it as one. W - (Wu)u^T removes a level AND
+cuts each key's logit scale by sqrt(1-p_i^2), which is
+3.5-20.2% and VARIES per expert (gain multipliers
+0.824-0.955 / 0.864-0.970 / 0.798-0.965). The clean arm
+was free and is now run — W - 1*cbar*u^T, subtracting the
+MEAN coefficient and leaving each expert's deviation:
+  arm      L4       L22      L40
+  LEVEL    0.9974   0.9928   0.9952
+  RANK1    0.9790   0.9705   0.9733
+A pure level is near-exactly invisible, as theory
+demands: sqrt(softplus(.)) is strictly monotone, so a
+term identical across experts is an EXACT top-k no-op
+absent bias, and the ~0.5% residual is the bias
+interacting with the nonlinearity's local slope. So the
+mechanism decomposes: the level part is trivially
+invisible, and the whole measured 2-3% disagreement is
+the part that is NOT a level. The verdict attributed all
+of it to the level.
+
+(3) "DEFLATION REMOVES ~99% OF THE LOGIT MEAN" IS
+UNSOUND, and wrong on two of three layers. z.mean() is
+the grand mean over all draws and all experts; with
+x ~ N(0,I) its expectation is EXACTLY ZERO on both arms.
+It is sampling noise of order ||Wbar||/sqrt(n). Measured
+over 10-12 seeds: the sign flips (4+/6-, 5+/5-, 2+/8-)
+and the implied "% removed" ranges 24.6% to 99.4%, with
+one seed where deflation makes it 5.5x LARGER. The booked
+pairs are one favourable draw. Recomputed properly the
+quoted layers give 99.5% / 92.6% / 93.9%, not "~99%".
+Two further tells: L40's raw value is NEGATIVE
+(-0.006317) and the verdict printed "0.0063" — the sign
+was lost to an abs() in the inline command that produced
+the prose, which is the AUDIT-0802 standing correction
+being violated in the entry that cites it. And the SAME
+log carries logit_absmean, giving 8.9%/7.3%/9.8% for a
+defensible reading of the same words — a comparator
+choice the entry did not disclose (AUDIT-0802 item 10's
+pattern).
+REPLACEMENT, draw-free and seed-free: the level lives in
+the WEIGHTS, so measure it there. ||mean key row||
+collapses 1.1816 -> 0.0351 (97.0%), 1.0016 -> 0.0318
+(96.8%), 0.9333 -> 0.0430 (95.4%). No draw, no seed, no
+estimator.
+
+(4) THE REGISTERED ROW WAS NOT REPRODUCIBLE FROM ITS OWN
+FIELDS. One rng was threaded through the SCALES loop, so
+the registered scale-1.0 arm consumed the second draw
+block only because the UNREGISTERED scale-0.1 probe ran
+first. Reproducing the registered prediction alone gives
+different numbers: 0.9790/0.9705/0.9733 against the
+booked 0.9802/0.9744/0.9741. The row stored scale, ndraw
+and seed — insufficient to regenerate it. It also made
+the three scale arms UNPAIRED, mixing the scale effect
+with sampling noise, which is the house's most basic
+rule. Fixed: one draw block per layer, reused across
+every scale and every deflation. THE CORRECTED
+REGISTERED NUMBERS ARE 0.9790 / 0.9705 / 0.9733 (set),
+0.8755 / 0.8280 / 0.8430 (identical), 0.9815 / 0.9685 /
+0.9650 (rank-1). Prediction (1)'s >= 0.90 bar still
+clears by 7.1-7.9 points.
+
+(5) THE 97-98% WAS NEVER COMPOUNDED, while the S0 half of
+the same entry compounds over 43 layers freely. Under
+layer independence (an approximation; real routes
+correlate): P(route identical at EVERY layer) = 0.0044 /
+0.00086 / 0.00095, and the expected number of changed
+expert slots per token is 6 x 43 x 0.026 = 6.1 — about
+one full layer's route replaced. "97.4-98.0% agreement"
+and "~99.9% of tokens route differently somewhere" are
+the same numbers. The entry chose the framing that
+supported its conclusion.
+
+(6) THE SIGN DEFECT AUDIT-0802 FLAGGED WAS RE-INTRODUCED,
+and fixing it inverted a headline. The cell logged only
+ABSOLUTE residual cosines — the exact complaint AUDIT-0802
+item (8) made about v4_router.jsonl, in the cell written
+to pay that debt off. Now logged signed, and the result
+is substantive: after removing the shared direction, only
+34.8% / 36.2% / 36.5% of the 32,640 residual pairs are
+still positive (range [-0.274, +0.653] at L4). V4-RUNG-R's
+"all 32,640 pairs positively aligned" is carried ENTIRELY
+by the shared component; the residual keys are majority
+negatively correlated.
+
+(7) SHARED-EXPERT TRAFFIC WAS OMITTED — the entry's own
+correction of the spec was 31% short. n_shared_experts=1
+runs on EVERY token in EVERY layer and is not routed;
+measured from the shard-24 header it is 25.17 MB/layer in
+F8_E4M3 (w1/w2/w3, [2048,4096] each). Per-token traffic
+is 43 x (6 x 13.37 + 25.17) = 4.53 GB, not 3.45 GB, and
+the ceiling is ~1.10 tok/s, not ~1.45. Cause:
+v4flash_s0.py hardcoded 6 and 43 as literals and read
+nothing, so n_shared_experts=1 was sitting in the same
+config unread. Both are now read and asserted.
+FREE FINDING from the same header: the shared expert's
+scales are [16,32] against [2048,4096] weights, i.e.
+128x128 blocks — which answers spec v3's open W1 question
+("currently taken from config.json") at zero cost.
+
+(8) THE 131x IS SINGLE-CORE AND THE HEADLINE DOES NOT SAY
+SO. The body fence does; the title does not. The three
+streams are independent, so the free order of magnitude
+is real: 38.1 MB/s x 11 cores = 0.42 GB/s, ~12x under the
+MEASURED NVMe rate of 3.5-4.5 GB/s (not the 5 GB/s the
+spec assumes). The adopted conclusion — archive format,
+not runtime format — survives an order of magnitude of
+headroom, which is a stronger statement than 131x from
+one core. Now printed by the cell.
+
+(9) SMALLER, ALL VERIFIED: the pre-reg registered
+"constriction 0.5.0" but the cell used
+getattr(constriction, "__version__", "unknown"), and
+constriction has no __version__ — so every logged row
+recorded "unknown" and a registered pin went unmeasured
+(importlib.metadata gives 0.5.0; now asserted).
+"sha-pinned" overstates what the code checks: the .sha is
+derived from the same bytes at write time, so it detects
+disk rot and nothing else — there is no independent
+vendor pin (contrast RA.SILU_SHA, which is one); language
+downgraded to cache-integrity-checked. The four
+shared-direction definitions agree to 0.0002 in residual
+|cos|, not 0.0001. The residual |cos| MAX also failed to
+reproduce under the registered definition (0.5297 vs
+V4-RUNG-R's booked 0.5277, which is the raw_mean value) —
+same definitional cause as the MIN, unmentioned, and it
+strengthens the standing note rather than weakening it.
+The traffic figures mix formats: 3.45 GB/token is the
+packed fp4 stream, which needs no decode, while 90.4
+s/token is the coded form, whose traffic would be 3.16
+GB — the two sat adjacent and invited mis-combination.
+
+(10) CODE DEFECTS FIXED IN THIS COMMIT, each verified
+before the fix. The deflation assert was VACUOUS —
+Wd @ u = (W u)(1 - ||u||^2) and u is normalized two lines
+above, so it held with 1.2e6x of margin and passed for a
+RANDOMLY CHOSEN u, the one failure that would void the
+null. This is the same defect class fixed in
+v4flash_rungA.py on 2026-08-02, reintroduced in a new
+file. Replaced with guards that fired on first run (they
+caught a wrong expectation in the replacement itself):
+||u|| = 1, min projection > 0, and removed energy equal
+to c.c. A docstring asserted "the four unit vectors agree
+to |cos| > 0.999" — never computed by the cell, not in
+the log, and FALSE (0.9980/0.9975/0.9953). A run that
+measures zero layers exited 0; now asserts. Layers below
+num_hash_layers route by tid2eid with no bias and no
+top-k, and nothing stopped LAYERS=0,1,2 from producing a
+full fabricated table; now asserted. The three
+substring asserts on the vendor source could not have
+detected a group-limited routing stage (DeepSeek's V3
+lineage puts one between the bias add and the top-k, and
+all three substrings survive it); n_group is now asserted
+too — verified absent, so the flat top-k operator was
+correct, but it was correct by luck.
+NOT CHANGED: the S0 measurements (38.1 MB/s, 8.3% saved,
+12.26 MB coded) all reproduce; the spec-error diagnosis
+that 11.29 MB was the merged-lattice rate is independently
+confirmed; and every set-agreement number reproduces from
+the logs under the run that produced it.
+
+## RECEIPT V4-CENSUS: the "27B dense path" is 7.8B — nineteen of those billions are three forgotten MTP blocks full of experts, and the artifact does not fit on this disk at all (2026-08-03, Mac; Opus-5 review branch)
+
+Free: 48 shard headers, ~8 MB of range reads, no weights.
+scratch/v4flash_census.py -> logs/opus/v4_census.jsonl.
+Written because spec v3's load-bearing memory claim was
+derived by SUBTRACTION and never checked bottom-up.
+MEASURED, 72,317 tensors across 48 shards:
+  routed experts    296.353 B params    157.437 GB
+  NON-ROUTED          7.828 B params      9.441 GB
+  TOTAL ARTIFACT                        166.879 GB
+Spec v3 (lines 64-67) says "the ~27B non-routed params
+are fp8, i.e. ~27 GB — which alone nearly fills the
+machine before a single routed expert is considered. The
+dense every-token path is the binding constraint, not the
+experts", and calls this "the stronger argument v2 failed
+to make". It is FALSE. The dense path is 9.4 GB, 31% of a
+36 GB machine, and leaves ~20 GB of room — so the same
+paragraph's "leaves no room for an expert cache" is
+withdrawn too.
+WHERE THE 27B CAME FROM, exactly: 304.181 - 277.025 =
+27.156, with 277.025 = 43 x 256 x 25.17M. But routed
+experts live in FORTY-SIX blocks, not 43: layers.0..42
+plus mtp.0/1/2, three full multi-token-prediction blocks
+carrying 256 experts each. 19.327 B of the "dense params"
+are forgotten EXPERTS; 7.83 B is the real dense path.
+THE CONCLUSION SURVIVES AND HARDENS, for a different
+reason than the spec gave. The 166.879 GB artifact
+against 31 GiB free on this disk is 5.4x over, and
+deleting everything deletable (checkpoints/ 51 GB +
+~/.cache/huggingface 52 GB) still leaves it ~31 GB short.
+There is no pipe to stream through because there is
+nowhere to put the file. That is the cheapest and hardest
+form of the conclusion and the spec never states it.
+Corrected memory arithmetic for the base path: expert
+budget = 30.15 - 8.85 = 21.3 GB against 124.3 GB of
+base-path experts at the best measured rate, i.e. 5.8x
+short, not the spec's 4.1x.
+ALSO CORRECTS RECEIPT V4-RUNG-MINUS-1, which says
+non-expert tensors are "F8_E4M3 with F8_E8M0 scales". The
+split is three-way: F8_E4M3 6.304 GB, BF16 2.967 GB (31%
+— embed.weight, head.weight, every ffn.gate.weight, the
+compressor and indexer projections), F32 0.151 GB, I64
+0.019 GB. The routed-vs-not-routed asymmetry is real; the
+format story is not two-way.
+RESOLVES spec v3's "Owed, free" item: there are 46
+expert-bearing shards at ~3.42 GB of experts each and two
+pure non-expert shards (1 = embed.weight, 45 = head +
+norm + hc_head); non-expert weight per main-layer shard
+is 167 MB. No contradiction remains.
+FENCE: header arithmetic only. Nothing here is a
+capability claim, nothing was run, and no weights beyond
+the 428 MB already cached were fetched.

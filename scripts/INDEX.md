@@ -2300,6 +2300,12 @@ UMOE-1 (pre-reg 2026-07-30): micro-MoE conservation 3-arm. First house MoE birth
 - `probes(model, enc, dev)` — corr / MI / meter on the trained model.
 - `main()`
 
+### scratch/v4flash_census.py
+CENSUS (unregistered, free): what is actually IN DeepSeek-V4-Flash's 48 shards? Headers only -- ~8 MB of range reads, no weights.
+
+- `is_routed(name)` — Routed expert weight or scale -- NOT the always-on shared expert.
+- `main()`
+
 ### scratch/v4flash_header.py
 RUNG -1 (spec 2026-08-02-v4flash-lossless-recode): read a DeepSeek-V4-Flash safetensors HEADER by HTTP byte-range and report the tensor inventory — names, dtypes, shapes, and the implied fp4 scale granularity. Costs well under 1 MB; downloads no weights.
 
@@ -2357,18 +2363,20 @@ RUNG A (pre-reg V4-RUNG-A): a full DeepSeek-V4-Flash expert forward run ENTIRELY
 - `main()`
 
 ### scratch/v4flash_rungd.py
-RUNG D (pre-reg V4-RUNG-D + S0): is DeepSeek-V4-Flash's shared router key direction routing-INERT?
+RUNG D (pre-reg V4-RUNG-D + S0; rewritten after AMENDMENT RUNGD-0803): how much of DeepSeek-V4-Flash's routing survives deleting the shared router key direction, and under WHICH input model?
 
-- `vendor_scoring()` — Confirm the score function and top-k from the shipped source.
+- `vendor_scoring()` — Confirm the score function, top-k, and the ABSENCE of group routing.
 - `shared_directions(W)` — Four defensible definitions of "the" shared key direction.
 - `score(X, W, bias)` — Vendor scores for selection: sqrt(softplus(X W^T)) + bias.
-- `topk_sets(S, k)` — Top-k indices per row, unordered, plus the rank-1 index.
+- `topk_sets(S, k)` — Top-k indices per row (sorted, so the sets are canonical).
+- `agreement(X, W, Wd, bias, k)`
 - `main()`
 
 ### scratch/v4flash_s0.py
 RUNG S0 (pre-reg V4-RUNG-D + S0): is the entropy-coded form of a DeepSeek-V4-Flash expert EXECUTABLE, or only an archive?
 
-- `blob(name)` — Cached bytes with the sha re-asserted (the K3-D1 protocol).
+- `vendor_shape()` — Route width, layer count and shared-expert bytes -- READ, not typed.
+- `blob(name, nbytes=None)` — Cached bytes, cache-integrity checked, cold-fetching if absent.
 - `nibbles(raw)`
 - `bench(sym, nrep)` — Encode once, decode nrep times; return (bytes, best decode s, enc s).
 - `main()`

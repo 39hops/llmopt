@@ -492,18 +492,25 @@ sessions under one operator, not independent investigators. Read
   structure than random ones. ([VERDICT V4-RUNG-R +
   2B-ROUTER](RESULTS.md#L16183); qualified below.)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
-  That shared router direction is a LEVEL, not a contrast: deleting it from
-  the keys leaves 97.4-98.0% of top-6 routing unchanged across three layers,
-  because it adds a near-constant term (variation 5-10%) to all 256 scores
-  and a top-k cannot see a level — so the confluence is plain in the geometry
-  and nearly absent from the behaviour. ([VERDICT V4-RUNG-D +
-  S0](RESULTS.md#L16483).)
+  Whether that shared router direction matters is decided entirely by the
+  input model, not the weights: under isotropic inputs, deleting it leaves
+  97.1-97.9% of top-6 routing unchanged, but under inputs carrying mass
+  along it, agreement collapses to 12-27% — and an isotropic draw is
+  precisely the case in which a shared direction cannot matter, so the null
+  assumed its own answer. ([AMENDMENT RUNGD-0803](RESULTS.md#L16608).)
 - [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
   Entropy-coding a frontier MoE's shipped 4-bit experts yields an archive,
   not a runtime: the byte-lossless form saves 8.3% and decodes at 38 MB/s
   single-threaded, 131x under the pipe a streaming design assumes and 90 s
   per token of pure decode for a 43-layer, 6-expert route. ([VERDICT
-  V4-RUNG-D + S0](RESULTS.md#L16483).)
+  V4-RUNG-D + S0](RESULTS.md#L16483); traffic corrected in [AMENDMENT
+  RUNGD-0803](RESULTS.md#L16608).)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  A 304B checkpoint's own parameter census overturned the reason it cannot
+  be run locally: the always-on dense path is 9.4 GB, not the 27 GB a
+  subtraction implied, because 19 of those "dense" billions are three
+  multi-token-prediction blocks each holding a full 256-expert layer.
+  ([RECEIPT V4-CENSUS](RESULTS.md#L16816).)
 - [NULL] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
   Experts in a 256-expert frontier layer are statistically identical yet
   individually unmatchable: sorted hidden-unit norm profiles agree to 7%, while

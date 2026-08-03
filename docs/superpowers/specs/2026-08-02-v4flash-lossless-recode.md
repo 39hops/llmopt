@@ -28,10 +28,11 @@ because they change what this program is allowed to claim:
 | merged code+scale lattice | 3.5903 v 3.8975 separate, **one expert** | OBSERVATION V4-MERGED-LATTICE |
 | exact integer expert forward | one hash on cpu / mps / cuda | VERDICT V4-RUNG-A + rider |
 | experts share weight structure? | no — coordinate, permutation, and router-neighbour | N3; V4-RUNG-2B; V4-RUNG-R + 2B-ROUTER |
-| router keys | all 32,640 pairs positive; +0.385 shared direction — but that direction is a **level**: deleting it leaves 97.4-98.0% of top-6 routing | V4-RUNG-R + 2B-ROUTER; **V4-RUNG-D** |
+| router keys | all 32,640 pairs positive; +0.385 shared direction — but positivity is carried ENTIRELY by it (only 35-37% of residual pairs stay positive), and whether it steers routing is **undetermined**: 97.1-97.9% agreement under isotropic input, 12-27% under input aligned with it | V4-RUNG-R + 2B-ROUTER; **AMENDMENT RUNGD-0803** |
 | byte-lossless expert | 13.37 MB → **12.26 MB (8.3%)**, decoding at **38 MB/s** | V4-RUNG-D + S0 |
 | hash routing table | `tid2eid` [129280, 6] confirmed, layer 0 | same |
-| non-expert tensors | **F8_E4M3 with F8_E8M0 scales** | RECEIPT V4-RUNG-MINUS-1 |
+| non-expert tensors | three-way: F8_E4M3 6.30 GB, **BF16 2.97 GB**, F32 0.15 GB | RECEIPT V4-CENSUS (corrects V4-RUNG-MINUS-1) |
+| whole artifact | 296.4 B routed + **7.83 B dense** = **166.9 GB**, vs 31 GiB free disk | RECEIPT V4-CENSUS |
 
 ## Claim types admitted (corrected)
 
@@ -61,36 +62,57 @@ ledger already contains proof that it can, since the merge itself found
 correct wording is *best measured rate*. The conclusion survives anyway:
 even another 2× leaves 62 GB, still 2× short.
 
-**The stronger argument v2 failed to make**: the ~27B **non-routed**
-params are fp8, i.e. ~27 GB — which alone nearly fills the machine before
-a single routed expert is considered. The dense every-token path is the
-binding constraint, not the experts.
+**v3's "stronger argument" was FALSE and is struck** (RECEIPT V4-CENSUS,
+2026-08-03). It said the ~27B non-routed params are ~27 GB and "alone
+nearly fill the machine". Measured bottom-up over all 48 headers: the
+dense path is **7.83 B params / 9.44 GB**, 31% of the machine, leaving
+~20 GB for an expert cache. The 27B came from `304.181 − 277.025` with
+277.025 = 43×256×25.17M — but routed experts live in **46** blocks, not
+43 (`mtp.0/1/2` are full 256-expert MTP blocks), so **19.3 B of the
+"dense" params are forgotten experts**.
 
-**Owed, free**: the whole-artifact arithmetic does not close. 43 expert
-shards × 3.42 GB = 147.1 GB leaves 5 shards for ~27B non-expert params,
-i.e. ~5.4 GB/shard, contradicting the "~3.5 GB shard" figure elsewhere.
-One header read of a non-expert shard reconciles it.
+**The replacement argument is cheaper and harder**: the artifact is
+**166.879 GB** against **31 GiB free** on this disk — 5.4× over, and
+deleting `checkpoints/` (51 GB) plus the HF cache (52 GB) still leaves it
+~31 GB short. There is no pipe to stream through because there is nowhere
+to put the file. Corrected memory arithmetic: expert budget 21.3 GB
+against 124.3 GB of base-path experts = **5.8× short**, not 4.1×.
+
+**Owed, free — CLOSED** (RECEIPT V4-CENSUS). The arithmetic never closed
+because the premise was wrong: there are **46** expert-bearing shards at
+~3.42 GB of experts each, and only **two** pure non-expert shards
+(1 = `embed.weight`, 45 = `head` + `norm` + `hc_head`). Non-expert weight
+per main-layer shard is **167 MB**, fully consistent with ~3.5 GB shards.
+No contradiction remains.
 
 ## Streaming, corrected
 
 **v3 priced this wrong and S0 caught it.** 11.29 MB is 25.17M params at
 3.5903 bits — the **merged-lattice** rate, which is weight-exact,
 byte-LOSSY and n=1. A stream has to be executable, and the executable
-form is packed fp4 at **13.37 MB**. So per token, experts only:
-6 × 43 × 13.37 MB = **3.45 GB**, not 2.9 GB, and every bound below
-tightens accordingly (the ~1.7 tok/s ceiling becomes **~1.45 tok/s**).
-Three omissions in v2, the first load-bearing:
+form is packed fp4 at **13.37 MB**. Routed experts alone are then
+6 × 43 × 13.37 MB = 3.45 GB — but the **always-on shared expert** (25.17
+MB/layer, F8_E4M3) was omitted from both versions, so the real figure is
+43 × (6 × 13.37 + 25.17) = **4.53 GB/token** and the batch-1 ceiling is
+**~1.10 tok/s** at 5 GB/s (AMENDMENT RUNGD-0803). Three omissions in v2,
+the first load-bearing:
 
-1. **The dense path is missing.** Every token also reads attention, the
-   shared expert, norms and routers for all 43 layers. Resident, that
-   ~27 GB consumes the entire budget and leaves no room for an expert
-   cache — which undercuts the cache motivation. Non-resident, it adds
-   ~20 GB/token, ~7× the expert traffic.
+1. **The dense path is missing** — v2 omitted it, and v3 then priced it
+   at 27 GB, which RECEIPT V4-CENSUS measured at **9.44 GB**. Every token
+   reads attention, the shared expert, norms and routers for all 43
+   layers. Resident, that is 31% of the machine and leaves ~20 GB for an
+   expert cache, so v3's "leaves no room for a cache" is **withdrawn**.
+   The shared expert is the part that must be counted per-token either
+   way (item 2).
 2. **The reads are 43 dependent batches of 6, not one 2.9 GB stream** —
-   layer L's routing is unknown until L−1 runs. Floor: 43 × (68 MB /
-   5 GB/s) = 585 ms **plus 43 round-trip latencies plus decode plus
-   compute**. So "**at most ~1.7 tok/s**, ignoring decode and attention",
-   not "roughly 1-2".
+   layer L's routing is unknown until L−1 runs. Floor: 43 × (105.4 MB /
+   5 GB/s) = **906 ms** plus 43 round-trip latencies plus decode plus
+   compute — where 105.4 MB = 6 routed experts (13.37 MB) **plus the
+   always-on shared expert (25.17 MB, F8_E4M3, 128×128 blocks)**, which
+   v3 omitted entirely. So **at most ~1.10 tok/s at batch 1** on a 5 GB/s
+   assumption, and ~0.77-0.88 tok/s at this machine's measured 3.5-4.5
+   GB/s NVMe rate. Batch amortises it (the same law as prefill below);
+   the bound is a batch-1 latency figure, not a throughput ceiling.
 3. **Prefill has a computable crossover.** The full expert store is
    43 × 256 × 11.29 MB = 124.3 GB, and balanced routing (which DeepSeek's
    aux-loss-free bias actively enforces) reaches near-full coverage fast.
@@ -168,7 +190,10 @@ earned:
 
 ### S0 — rANS decode throughput, pre-registered to FAIL — **RUN, fired**
 
-**Measured 2026-08-03: 38.2 MB/s, 131× short. Conclusion adopted — the
+**Measured 2026-08-03: 38.1 MB/s single-threaded, 131× short — but that
+is one Python-bound core. All 11 cores, perfectly parallel, is 0.42 GB/s,
+still ~12× under the machine's measured 3.5-4.5 GB/s NVMe rate. The
+conclusion survives an order of magnitude of headroom and is adopted: the
 entropy-coded form is an archive, the bit-packed fp4 form is the runtime.
 C5 stays dormant. The 15.6% below was also wrong (same 11.29 MB error):
 byte-lossless saves 8.3%.** Original registration kept for the record:
@@ -186,12 +211,17 @@ streaming format.**
 
 ### R-d — is the shared router direction routing-INERT? — **RUN, fired**
 
-**Measured 2026-08-03: 97.4-98.0% set agreement at three layers and
-three input scales; deflation removes ~99% of the logit mean and <0.1%
-of the across-expert spread. The direction is a LEVEL. Headline
-qualified in FINDINGS and in the table above.** Original registration:
+**Measured 2026-08-03, then substantially corrected the same day —
+read AMENDMENT RUNGD-0803 before this section.** Registered arm (scale
+1.0, paired draws): 97.90 / 97.05 / 97.33%, clearing the ≥90% bar. But
+the operation is not a pure level removal (it also cuts per-expert gain
+3.5-20.2%; the clean level arm gives 99.3-99.7%), the logit-mean evidence
+was a mean-zero sampling artifact, and — decisively — the inertness holds
+**only under the isotropic null**: shifting the input along u collapses
+agreement to 12-27%. V4-RUNG-R's headline is UNDETERMINED, not qualified.
+Original registration:
 
-Hazard 7 says a constant bias offset is a top-k no-op. **The same
+Hazard 8 says a constant bias offset is a top-k no-op. **The same
 argument was never applied to the shared key direction.** Keys align at
 +0.385 ± 0.045 — equal to within ±12% — so the shared component
 contributes a near-identical additive term to every score and is
@@ -216,10 +246,10 @@ the other 40 layers.
 
 v2 compared the shared expert (fp8) against routed experts (fp4) —
 exactly the format-image confound of hazard 4. The legal comparison is
-shared expert vs **the other fp8 non-expert tensors**. Also free: one
-header read of the shared-expert scale *shape* settles whether it really
-uses [128,128] blocks, which is currently taken from `config.json` — the
-same source that misdescribed the routed path.
+shared expert vs **the other fp8 non-expert tensors**. **Answered free, 2026-08-03**: the shared expert's scales are `[16,32]`
+against `[2048,4096]` weights, so it really does use **[128,128] blocks**
+— identical treatment to `wq_a/wq_b/wkv/wo_a/wo_b`, confirming "no
+deliberate singling-out" and giving W1 its legal per-layer comparators.
 
 ### Q1 — the falsifiable arm
 
