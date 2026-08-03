@@ -57,6 +57,7 @@ DEQ = os.environ.get("DEQ", "")          # "bf16": F1e arm 1
 PROFILE = os.environ.get("PROFILE", "") == "1"
 BATCH = os.environ.get("BATCH", "") == "1"   # F1e arm 5 (rider 3)
 RECALL = os.environ.get("RECALL", "") == "1"  # F2a instrument
+ORACLE = os.environ.get("ORACLE", "")         # F2b: demand-json row idx
 OUT = "logs/opus/v4_f1d.jsonl"
 
 
@@ -122,9 +123,29 @@ class ExpertProvider:
 
 
 def choose_residents(man):
-    """Score layers: K most-negative-bias experts (the trained load
-    record, direction pinned in VERDICT V4-F1c)."""
+    """Score layers, two rules:
+    default: K most-NEGATIVE-bias experts — RETAINED FOR THE RECORD but
+      measured ANTI-selective (VERDICT V4-F2a: recall 0.035, below the
+      random floor; the deployed selection ADDS the bias, so these are
+      the most-penalized experts — V4-F1c's direction pin was wrong);
+    ORACLE=<jsonl row index>: the K most-DEMANDED experts per layer from
+      a prior RECALL run's logged demand counts (F2b profile-then-swap).
+    """
     keep = {}
+    if ORACLE:
+        rows = [l for l in open(OUT)]
+        row = __import__("json").loads(rows[int(ORACLE)])
+        dem = row["demand_counts"]
+        for lay in range(3, NL):
+            d = {int(k): v for k, v in dem.get(str(lay), {}).items()}
+            top = sorted(d, key=lambda e: d[e], reverse=True)[:K]
+            while len(top) < K:          # pad rare layers deterministically
+                for e in range(NE):
+                    if e not in top:
+                        top.append(e)
+                        break
+            keep[lay] = sorted(top)
+        return keep
     for lay in range(3, NL):
         b = tensor(man, f"layers.{lay}.ffn.gate.bias").float()
         keep[lay] = sorted(torch.argsort(b)[:K].tolist())

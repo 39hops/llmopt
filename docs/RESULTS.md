@@ -17978,3 +17978,51 @@ construction — this is a diagnostic, not a deployable
 selection rule. Disk: ~8.6 GB of oracle-expert fetches
 against 13 GB free (4.28 GB of K24-only cache deleted
 first, logged here).
+
+## VERDICT V4-F2b: the swap CHANGED the attractor — routing causally selects the text — but recall stalled at 0.345 because DEMAND IS TRAJECTORY-DEPENDENT: the oracle chased a text that its own installation destroyed (2026-08-03, Mac; Fable seat)
+
+PREDICTION (1) FAILS: recall 0.3452 against the
+registered >= 0.5 — ten times F2a's 0.035, far under
+the 0.758 profiling-trajectory coverage. THE MECHANISM
+IS THE FINDING: the oracle was profiled on the echo
+trajectory, and installing it immediately produced a
+DIFFERENT trajectory (hash-layer misses jumped 14 ->
+72 — the new token stream demands different experts),
+whose demand the stale oracle no longer covers. Expert
+demand CO-EVOLVES with the text it produces; any static
+resident set faces a moving target the moment it
+changes the generation. This is a closed-loop property
+the pre-reg's staleness clause anticipated in kind and
+under-predicted in size.
+READOUT (2), the causal arm: the output is QUALITATIVELY
+DIFFERENT — the 9-token prompt-echo loop is gone,
+replaced by a tighter degenerate cycle ("of the\n...",
+distinct-4-gram COUNT 5, down from 9; verbatim in the
+row). So: (a) routing composition CAUSALLY selects
+which attractor the text falls into — the amputation
+story now has its intervention arm; (b) degeneracy
+itself is OVER-DETERMINED at 6.25% residency — 10x
+better routing fidelity did not buy coherent text, it
+bought a different failure. Both directions the pre-reg
+allowed for; both landed at once.
+READOUT (3): decode 0.114 tok/s (depressed by an
+UNREGISTERED condition, disclosed: 3-5 GB free disk
+during the run; F2a's same config did 0.173), Metal
+24.0 GB, RSS 5.2 GB.
+CONSEQUENCE FOR THE PROGRAMME: prompt-conditioned
+static selection is capped by demand nonstationarity —
+the ceiling on any profile-then-swap is set by how much
+the swap changes the trajectory. The routes forward are
+(i) K large enough that the resident set covers the
+demand of MANY trajectories (memory-bound, K-sweep on
+the fp8-dense base), or (ii) DYNAMIC residency
+(fetch-on-miss for score layers — 13.37 MB per miss,
+viable at low miss rates only), or (iii) accept the
+diagnostic role: this instrument pair (recall +
+demand log) is now the standard readout for any
+residency rule. No further F2 arms without a new
+pre-reg.
+FENCES: n=1, one prompt, descriptive text readouts, no
+capability claim; both attractors are logged verbatim.
+ARTIFACTS: scratch/v4flash_f1d.py (ORACLE mode),
+logs/opus/v4_f1d.jsonl row 7, jobs/f2b_oracle.log.

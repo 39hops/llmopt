@@ -2334,7 +2334,7 @@ F1d (PRE-REG V4-F1): DeepSeek-V4-Flash GENERATES TOKENS ON THE MAC — full 43-l
 - `tensor(man, name)`
 - `rss_gb()`
 - `class ExpertProvider` (load, ensure_hash)
-- `choose_residents(man)` — Score layers: K most-negative-bias experts (the trained load
+- `choose_residents(man)` — Score layers, two rules:
 - `load_dense(model, man, dev)` — Everything except routed experts, straight onto dev.
 - `install_batched_moe(mod)` — F1e arm 5 (RIDER 3): batch the <= 6 hit experts of a SINGLE-TOKEN
 - `check_batched_equiv(model, dev)` — Equivalence bar (RIDER 3): patched vs vendor MoE on a real
