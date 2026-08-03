@@ -16267,3 +16267,121 @@ is a proxy for functional relatedness, not a measurement
 of it; the shared-expert precision asymmetry is read
 from tensor dtypes, not from an ablation. No capability
 claim is made or possible.
+
+## AMENDMENT AUDIT-0802 (amends VERDICT V4-RUNG-2B, AMENDMENT P4-DEVICE-SCOPE, VERDICT DIET-COND-SEED, RECEIPT V4-RUNG-MINUS-1, VERDICT V4-RUNG-0/1): ten corrections from a three-agent audit of this branch — wrong extremes, a false enumeration, an over-awarded tag, and a systematic receipt gap (2026-08-03, Mac; Opus-5 review branch)
+
+Three agents audited all 23 entries booked on branch
+opus-5 plus its code. Every claim below was verified
+before booking. The measurements survive; ten READINGS
+and one code-vs-claim gap did not.
+(1) VERDICT V4-RUNG-2B, wrong extreme. Booked "every
+one of the 7 pairs reads between -0.0207 and -0.0214".
+Recomputed from logs/opus/v4_rung2b.jsonl the true
+range is -0.02078 to -0.02182 — expert 1 sits OUTSIDE
+the booked lower bound. The script prints only means,
+so the range was hand-derived and got the extreme
+wrong. Same entry: "all three residual streams
+(4.36-4.41)" — the three means are 4.3578 / 4.3788 /
+4.3789, so 4.41 appears nowhere and 4.3578 is below
+4.36. Correct text: range -0.0208 to -0.0218; means
+4.358-4.379. The conclusion (10x inside a 0.2 bar) is
+untouched.
+(2) AMENDMENT P4-DEVICE-SCOPE, FALSE enumerated
+evidence, labelled "Measured, not inferred". It lists
+detbwd_r1 among files containing no device selection.
+scratch/detbwd_r1.py:89 reads dev = ("cuda" if
+torch.cuda.is_available() else "cpu"), and
+detbwd_r2_adamw.py does likewise. RIDER #2 later found
+this and quietly re-scoped to "the gravmoe chain
+(detbwd_r2b / detbwd_mb / detbwd_gravmoe)", dropping
+detbwd_r1 from the list without saying the sentence had
+been wrong. A retraction that does not name what it
+retracts is half a retraction; this names it. The
+substance of both entries stands — P4 did run CPU-only.
+(3) VERDICT DIET-COND-SEED, over-awarded tag. It grants
+[REPLICATED] to the interior-optimum SHAPE while the
+same entry says of seed 31 "it is 51 loss units in 7851
+and should be read as a tie, not a win". A route may
+not rest on a draw the entry itself calls unresolved.
+docs/FINDINGS.md already tags that bullet
+[SINGLE-SEED]; FINDINGS is right and the verdict's
+award is the defect. The MERGEABILITY half (merge
+damage monotone, collapse at lambda 1, 3/3 with no
+marginal call) keeps [REPLICATED]. Root cause worth
+keeping: the pre-registered rule was a bare argmin test
+with NO minimum effect size — register one next time.
+(4) RECEIPT V4-RUNG-MINUS-1, arithmetic. "201.3 MB of
+scales against 3221.2 MB of expert weight, 5.6%" — the
+quoted numbers give 6.25% as a ratio or 5.88% as a
+share of the total. Neither is 5.6%. VERDICT
+V4-RUNG-0/1's 5.9% is the correct share figure.
+(5) VERDICT V4-RUNG-0/1, "exactly" and "provably".
+H(sign) measured 0.9999980821698847 to
+0.999999999978309 across the 27 tensors — 1.00000 to
+five decimals, which is what the registered >= 0.9995
+bar asked for. "Exactly incompressible" and "provably"
+overstate a measurement; say it fired with room.
+(6) VERDICT V4-RUNG-0/1, "REPLICATES the P6 regularity
+on a new vendor, new model and new format". P6 compared
+two WEIGHT TENSOR CLASSES inside one model (router
+6.00/2.84 v experts 5.60/4.31); this cell compared an
+E8M0 metadata stream against fp4 weight codes, and its
+mechanism is near-constant per-group exponents (span 3)
+rather than heavy-tailed weights concentrating codes.
+Different object, different mechanism. Correct wording:
+CONSISTENT WITH the P6 ordering, not a replication of
+it. Living-docs note: docs/THEORY.md has no P6 row at
+all, so nothing was being replicated INTO the grounding
+map either.
+(7) FINDINGS tag misuse. GLOSSARY.md defines
+[MECHANISM-CONFIRMED] as "a causal arm, not a story".
+Two bullets from this branch are descriptive reads of a
+shipped artifact with no intervention (the gate-key
+geometry, the sign-bit result) and one reports a
+registered treatment that FAILED its bar — which the
+glossary calls [NULL]. Corrected in this commit.
+(8) EVIDENCE GAP, systematic and the most useful
+finding. About eight booked numbers have no committed
+artifact: the gate-key mean-direction decomposition
+(+0.385, min +0.254, residual |cos| 0.0276), the
+tid2eid confirmation, the MPS/CUDA primitive-parity
+run, the rung-A cpu/mps/cuda shas, the chunk-invariance
+check, both regression receipts, and the merged-lattice
+figures. All were produced by one-off inline commands
+whose output was never saved, and several are NOT
+recomputable from the logs that do exist (v4_router.jsonl
+stores only absolute cosines, so the sign result cannot
+be recovered). The audit independently recomputed
+everything that COULD be checked and found it correct —
+so this is a receipts problem, not a numbers problem.
+STANDING CORRECTION for this seat: a number that
+reaches the ledger must come from a committed script
+writing to a log, not from an inline command.
+(9) VERDICT V4-RUNG-0/1, undisclosed deviation: the
+pre-reg registered "200-500 MB" of sample; 113 MB was
+transferred. Expert count was in band, bytes were not,
+and the verdict did not say so.
+(10) VERDICT V4-RUNG-2B, comparator swap: prediction
+(2) registered "EXCEED the raw code entropy of 3.865
+bits/param"; the verdict compared against 3.62, the
+integer-lattice figure. Both hold, but the registered
+number was silently replaced by a different quantity on
+a different alphabet.
+Also booked as code, not prose (commit 0802a24, seven
+fixes with their verification): a CRITICAL leak of
+BIRTH_SEED past llmopt/reproduce.py's sanitizer
+(measured: BIRTH_SEED=1 turned gravmoe-rb1 into
+9264fcf0 instead of c6766da2); an exactness assert that
+was an algebraic identity and could not fail; a
+curation ratchet pinned structurally at 0 while 296
+entries were uncited; missing length/dtype guards on
+the fetch path; an overflow bound 5 bits short on the
+w2 leg; an unasserted shared-lattice assumption; and a
+device probe whose skip was indistinguishable from a
+pass.
+WHAT DID NOT CHANGE: every measured number in every
+verdict recomputed correctly from its logs where logs
+exist, all amendment chains resolve, every pre-reg
+precedes its verdict with no missing or smuggled arm,
+and the 3080 re-ran all 16 pins sha-identical against
+this branch's modified certified files.

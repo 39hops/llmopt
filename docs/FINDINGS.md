@@ -484,23 +484,23 @@ sessions under one operator, not independent investigators. Read
   and their 8-bit power-of-two block scales carry 0.964 — so the scale stream
   is 5.9% of the bytes but 62% of the losslessly recoverable headroom, on a
   3-layer sample. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
-- [MECHANISM-CONFIRMED] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
+- [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
   The shared component a gravity decomposition looks for is present in a
-  frontier MoE but sits in the ROUTER, not the weights: all 32,640 gate-key
-  pairs are positively aligned and every key shares a common direction, while
+  frontier MoE but sits in the ROUTER, not the weights: at layer 22 all
+  32,640 gate-key pairs are positively aligned and every key shares a common direction, while
   pairs closest in routing space show no more weight structure than random
   ones. ([VERDICT V4-RUNG-R + 2B-ROUTER](RESULTS.md#L16183).)
-- [MECHANISM-CONFIRMED] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
+- [NULL] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
   Experts in a 256-expert frontier layer are statistically identical yet
   individually unmatchable: sorted hidden-unit norm profiles agree to 7%, while
   pairing a unit with its counterpart is indistinguishable from pairing it at
   random, so aligning by permutation before differencing buys 0.02 bits/param
   against a 0.2 bar. ([VERDICT V4-RUNG-2B](RESULTS.md#L16033).)
-- [MECHANISM-CONFIRMED] [FORMAT-BOUND]
+- [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts]
-  The sign bit of a symmetric 4-bit weight code is exactly incompressible
-  (measured 1.00000 bits on every tensor), so all coding margin provably lives
-  in the magnitude alphabet. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
+  The sign bit of a symmetric 4-bit weight code is incompressible to five
+  decimals (1.00000 bits on all 27 tensors, against a 0.9995 bar), so the
+  coding margin sits in the magnitude alphabet. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
 - [REPLICATED] [TEACHER-FORCED] [REGIME-SCOPED: deterministic integer battery]
   Consensus pull between experts buys mergeability monotonically: merge damage
   falls with dose and reaches exactly zero at full pull, where experts collapse
