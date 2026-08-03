@@ -491,14 +491,14 @@ sessions under one operator, not independent investigators. Read
   direction, while pairs closest in routing space show no more weight
   structure than random ones. ([VERDICT V4-RUNG-R +
   2B-ROUTER](RESULTS.md#L16183); qualified below.)
-- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
-  A trained load-balancing bias is a readable record of the traffic a model
-  saw, and inverting one bounds an input statistic with no forward pass:
-  V4-Flash's bias is inconsistent with hidden states strongly aligned to its
-  shared router direction, which puts that direction at roughly 12-17% of
-  top-6 selection — not the ~2% an isotropic null implies, nor the 75%+ an
-  aligned one allows. ([VERDICT V4-RUNG-D2](RESULTS.md#L16937);
-  [AMENDMENT RUNGD-0803](RESULTS.md#L16608).)
+- [NULL] [REGIME-SCOPED: measured deployment artifacts]
+  An attempt to measure a frontier MoE's router input by inverting its trained
+  load-balancing bias FAILED its registered predictions: a shuffled-bias null
+  excludes the same inputs the trained bias does, so the exclusion is a
+  property of the key geometry and the synthetic input family, not of the
+  balancer. The shared direction's share of top-6 selection is bounded to
+  7-21% under that family and remains unlocated. ([AMENDMENT
+  FINAL-0803](RESULTS.md#L17024); [VERDICT V4-RUNG-D2](RESULTS.md#L16937).)
 - [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
   Entropy-coding a frontier MoE's shipped 4-bit experts yields an archive,
   not a runtime: the byte-lossless form saves 8.3% and decodes at 38 MB/s

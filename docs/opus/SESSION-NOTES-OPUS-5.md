@@ -1,6 +1,7 @@
 # Opus-5 branch — audit sheet for Fable
 
-Branch `opus-5`, forked from `main` at `7ab8837`, pushed, **30 commits**.
+Branch `opus-5`, forked from `main` at `7ab8837`, pushed, **32 commits**
+(this sheet commits last, so it cannot name its own HEAD).
 Nothing reaches `main` without Fable's line-by-line audit.
 
 Seat: Artin switched the model to Opus 5 and authorised branch work,
@@ -11,13 +12,19 @@ pre-registered before it fired.
 
 ## State at the end
 
-- 451 tests pass, 7 skipped; tree clean; branch pushed at `e58b9bb`.
-- **30 ledger entries** (13 verdicts, 9 pre-regs, 7 amendments, 1 null),
-  all carrying `opus-review` in their `threads`.
-- **Ten of those entries correct earlier claims of my own.** That ratio
-  is the most useful thing on this sheet: read the amendments first.
-- 3080 re-ran all 16 gravmoe pins sha-identical against this branch's
-  modified certified files; the remote checkout never left `main`.
+- 451 tests pass, 7 skipped; tree clean.
+- **31 ledger entries** (13 verdicts, 9 pre-regs,
+  8 amendments, 1 null), all carrying `opus-review`.
+- **Eleven of them correct earlier claims of my own, across THREE audit
+  rounds** — and each round found errors the previous one missed,
+  including inside its own corrections. That ratio is the most useful
+  thing on this sheet: read the amendments first, newest first.
+- **Unreceipted, do not rely on it**: an earlier version of this sheet
+  said the 3080 re-ran all 16 gravmoe pins against this branch's modified
+  files. No receipt exists, and the two booked 3080 runs both state the
+  remote checkout was on `main` — which cannot run this branch's modified
+  `detbwd_mb.py`. Two pins (`gravmoe-rb1`, `gravmoe-grb1`) ARE verified
+  locally against the branch. Re-run the other 14 yourself.
 
 ## Verify the branch in five commands
 
@@ -31,22 +38,28 @@ DEV=mps .venv/bin/python scratch/v4flash_rungA.py  # sha a68256ce
 
 ## Audit these first — the four that change something
 
-**1. `llmopt/reproduce.py` — the CRITICAL fix, adopt this one regardless
-of what you do with the rest.** `BIRTH_SEED` reached `detbwd_mb.SEED`
-but was not in the `CONTRACT_ENV` allowlist, so a shell that had run
-`scratch/calib_dist_birth.sh` would silently reproduce the WRONG
-trajectory. Measured: `BIRTH_SEED=1` turned `gravmoe-rb1` into
-`9264fcf0` instead of `c6766da2`. Fixed in `0802a24`, verified under
-both polluted and clean environments.
+**1. `BIRTH_SEED` — a MATCHED PAIR, adopt or reject together.** This
+branch CREATED the knob (`ded6a5f`, `scratch/detbwd_mb.py`) and then
+fixed the sanitizer that had to know about it (`0802a24`,
+`llmopt/reproduce.py`'s `CONTRACT_ENV`). On `main` the knob does not
+exist, so `reproduce.py` alone is a no-op and `detbwd_mb.py` alone
+silently breaks reproduction. Measured: with the knob and without the
+allowlist entry, `BIRTH_SEED=1` turns `gravmoe-rb1` into `9264fcf0`
+instead of `c6766da2`. (An earlier version said `calib_dist_birth.sh`
+could pollute a caller's shell — it uses per-command prefixes, not
+`export`, so it cannot. The in-code comment carries the same error.)
 
 **2. AMENDMENT AUDIT-0802** (`RESULTS.md`, 2026-08-03) — ten ledger
 corrections from three agents auditing the first 23 entries. Wrong
 extrema, a false enumeration presented as "measured, not inferred", an
 over-awarded `[REPLICATED]`, and a systematic receipt gap.
 
-**3. AMENDMENT RUNGD-0803** — four reviewers on the V4-RUNG-D booking,
-and **the fence was the thing that was wrong**. Read this before any V4
-claim. Six substantive corrections, listed below.
+**3. AMENDMENT FINAL-0803, then AMENDMENT RUNGD-0803** — read them in
+that order, newest first. RUNGD-0803 found that RUNG-D's fence was the
+thing that was wrong; FINAL-0803 then found errors inside RUNGD-0803
+(two arithmetic, one wrong extremum, one statistic that cannot support
+its prose) and RETRACTED VERDICT V4-RUNG-D2's headline outright. Read
+both before any V4 claim.
 
 **4. RECEIPT V4-CENSUS** — the spec's load-bearing memory argument was
 false. See "What the V4 programme actually established".
@@ -85,19 +98,27 @@ three places.
 - **The router's shared key direction is real and does a MINORITY of the
   work.** All 32,640 key pairs are positively aligned and every key
   shares a large component along one direction `u` — but remove `u` and
-  only **35-37%** of residual pairs stay positive, so the positivity
-  headline was carried entirely by `u`. Whether `u` steers routing
-  depends on the input model: 97% agreement survives deleting it under
-  isotropic input, 12-27% under input aligned with it. Inverting the
-  shipped load-balancing bias excludes strong alignment and puts `u` at
-  roughly **12-17% of top-6 selection** (VERDICT V4-RUNG-D2).
+  only **34.8-36.5%** of residual pairs stay positive, so the positivity
+  headline was carried entirely by `u`. (That raw all-pairs-positive
+  claim is itself still unrecomputed — `v4_router.jsonl` logs only
+  ABSOLUTE cosines — so its receipt debt is only PARTLY paid, contrary
+  to what VERDICT V4-RUNG-D + S0 says.) Whether `u` steers routing
+  depends on the input model, and the attempt to settle that by
+  inverting the shipped load-balancing bias FAILED (VERDICT V4-RUNG-D2,
+  retracted by AMENDMENT FINAL-0803): a shuffled-bias null excludes the
+  same inputs, so the bound is key geometry, not the balancer. The
+  share is bounded to **7-21%** and **UNLOCATED**.
 - **Entropy coding is an archive, not a runtime.** Byte-lossless saves
   **8.3%** (not the spec's 15.6%, which was the merged-lattice rate) and
-  decodes at 38.1 MB/s single-threaded — ~12x under this machine's
-  measured 3.5-4.5 GB/s NVMe even with all 11 cores.
+  decodes at 38.1 MB/s single-threaded — **8.4-10.7x** under this
+  machine's measured 3.5-4.5 GB/s NVMe even with all 11 cores. (The
+  ledger's "~12x" is against 5 GB/s, the rate the same sentence
+  disclaims; corrected in AMENDMENT FINAL-0803.)
 - **V4-Flash cannot run here, but not for the reason the spec gave.**
-  The dense path is **9.44 GB**, not 27 GB; 19.3 B of the claimed "27B
-  dense params" are three MTP blocks holding full 256-expert layers. The
+  The ALWAYS-ON dense path is **8.85 GB** (the census headline of 9.44 GB
+  includes 0.595 GB of non-expert weight inside the three MTP blocks,
+  which are not always-on), against 27 GB claimed; 19.3 B of the claimed
+  "27B dense params" are MTP blocks holding full 256-expert layers. The
   binding constraint is simpler: **166.879 GB artifact vs 31 GiB free
   disk**, unfixable by deleting everything deletable.
 - **Per-token expert traffic is 4.53 GB** (43 x [6 x 13.37 + 25.17
@@ -115,11 +136,14 @@ Six from AMENDMENT RUNGD-0803, in severity order:
 2. **The isotropic null assumed its own answer.** `E<u,x> = 0` is
    exactly the condition under which a shared direction cannot matter.
 3. **The operation was not a level removal.** It also cuts per-expert
-   gain 3.5-20.2%; the clean level arm gives 99.3-99.7%.
+   gain **3.0-20.2%** (the ledger's 3.5% low end is layer 40's alone);
+   the clean level arm gives 99.28-99.74%.
 4. **"Removes ~99% of the logit mean" was a mean-zero sampling
    artifact** whose sign flips across seeds (24.6-99.4% by seed). The
-   level lives in the weights: `||mean key row||` collapses 95.4-97.0%,
-   no draw required.
+   replacement — `||mean key row||` collapsing 95.4-97.0%, no draw
+   required — is correct but weaker than its prose: it is identical for
+   the RANK1 and LEVEL arms by algebra, so it cannot support the
+   "level, not contrast" reading (AMENDMENT FINAL-0803 item 7).
 5. **The registered row was not reproducible from its own fields** — one
    RNG threaded through the scale loop, so the registered arm depended
    on the unregistered probe running first (0.9744 vs 0.9705).
@@ -136,10 +160,17 @@ instead of by subtraction; in the weights instead of by sampling).
 
 ## Known-good and known-open
 
-Clean per the audits: all amendment chains resolve; every pre-reg
-precedes its verdict with no missing or smuggled arm; unregistered arms
-are labelled as such in RESULTS, the scripts and the logs; charter clean
-throughout; the SiLU-table sha pin is a real external check.
+Clean per the audits: **9 pre-regs for exactly 9 plain verdicts, 1:1**,
+with all 5 unregistered entries labelled RECEIPT / RIDER / OBSERVATION /
+READING FENCE in RESULTS, in the scripts, and via a `registered` boolean
+in the logs; charter clean throughout; `scratch/v4flash_ref/silu_tab.pt`
+is byte-identical to the gitignored checkpoint, so that transport
+survives a fresh clone.
+NOT clean, both found in the third audit round and both now fixed: two
+index references on this branch did not resolve (`results_query --chain`
+returned the amendments alone), and D2's shuffled-bias null arm was run
+and logged but omitted from its verdict. An earlier version of this
+sheet asserted the opposite of both.
 
 Open, none of it introduced here except where noted:
 - `scratch/pack_rans.py:84` still reads `verify=(tot_n < 2e9)` —
@@ -158,7 +189,19 @@ Open, none of it introduced here except where noted:
   either day of this branch. This sheet is the substitute.
 - `docs/THEORY.md` has no P6 row and no V4 row.
 - Curation ratchet honestly reports **296** uncited curatable entries
-  (it read 0 for structural reasons before this branch). Predates it.
+  against a ratchet of 300 — 4 slack. The BACKLOG predates this branch;
+  the instrument does not (written, read 0, and fixed all on this branch).
+- `logs/opus/` is **gitignored**, so no V4 or QK receipt reaches a fresh
+  clone. Most are regenerable (the scripts re-fetch by byte range; the
+  battery is sha-pinned). Two are uncheckable even here: the "all 32,640
+  pairs positive" sign result, and the per-seed logit-mean sweep quoted
+  in AMENDMENT RUNGD-0803 item (3).
+- Relay `2026-08-02-1` is cited by this sheet, by AMENDMENT
+  AXIOM-PUBLICATION and by RIFF-LEDGER, and is **not in the repo** — only
+  the outgoing `-0` was committed. It lives in `~/code/axiom/docs/relay/`.
+- `GLOSSARY.md` defines none of the V4 vocabulary (MXFP4, MTP, shared
+  expert, `noaux_tc`, rANS, MLA, Sinkhorn, Indexer, Compressor), and
+  nothing in `BOARD.md` or `docs/handoffs/` points at this sheet.
 
 ## What I did not touch
 
@@ -167,8 +210,11 @@ pinned artifact, and the axiom repo (read-only throughout; axiom's
 newest relay `2026-08-02-1` is already answered — AMENDMENT
 AXIOM-PUBLICATION at `RESULTS.md:15283`, and `docs/REPRODUCE.md:102-104`
 already cites the pinned verifier commit and path, so nothing is owed
-there). I DID edit `docs/FINDINGS.md` and appended to
-`docs/RIFF-LEDGER.md` (three external-reader banks).
+there). I DID edit `docs/FINDINGS.md`, `docs/REPRODUCE.md` (24 lines),
+`README.md` (5 lines, `89bfc19`), `tests/`, `scripts/INDEX.md` and
+`scratch/detbwd_mb.py`, and appended ONE bank to `docs/RIFF-LEDGER.md`.
+Earlier versions claimed README was untouched and that there were three
+banks; both were wrong.
 
 ## Next rungs, if the programme continues
 
@@ -192,5 +238,8 @@ claim is legal and sigma ≈ 5 applies → **13** with the instrument fixed
 their own `tid2eid` table `[129280, 6]`, so the exact pairwise
 co-activation graph follows from any corpus's unigram distribution with
 zero inference. Fence it as designed-not-learned; it is combinatorics,
-not a throughput lever (100% hit rate on 3 of 43 layers is a 7.0%
-traffic cut).
+not a throughput lever: 100% hit rate on 3 of 43 layers cuts 3/43 of
+ROUTED traffic, which is **5.3%** of the corrected per-token total once
+the always-on shared expert is counted. An earlier version said 7.0%,
+which credits those layers with shared-expert bytes a cache cannot
+save.

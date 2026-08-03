@@ -2375,7 +2375,8 @@ RUNG D (pre-reg V4-RUNG-D + S0; rewritten after AMENDMENT RUNGD-0803): how much 
 ### scratch/v4flash_rungd2.py
 RUNG D2 (pre-reg V4-RUNG-D2): measure <u,x> on DeepSeek-V4-Flash's REAL traffic by inverting its trained load-balancing bias. No forward pass.
 
-- `perp_basis(u, n, rng)` — n unit vectors orthogonal to u, uniform on that sphere.
+- `input_norm(shard, layer)` — ||ffn_norm.weight|| -- the length the gate's input actually has.
+- `perp_basis(u, n, rng, gain)` — n unit vectors orthogonal to u, shaped by the layer's channel gains.
 - `imbalance(W, bias, X, topk)` — Coefficient of variation of expert load under top-k selection.
 - `main()`
 

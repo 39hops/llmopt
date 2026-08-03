@@ -17020,3 +17020,125 @@ wrong — which is worse than not measuring. BANKED as
 rung F1, not abandoned.
 ARTIFACTS: scratch/v4flash_rungd2.py ->
 logs/opus/v4_rungd2.jsonl.
+
+## AMENDMENT FINAL-0803 (amends VERDICT V4-RUNG-D2, AMENDMENT RUNGD-0803, RECEIPT V4-CENSUS, VERDICT V4-RUNG-R + 2B-ROUTER): the D2 headline is RETRACTED — its instrument does not carry its bound, and its input family used the wrong norm (2026-08-03, Mac; Opus-5 review branch)
+
+Third audit round, three reviewers. Everything below verified in-tree
+before adoption. The two serious items both hit VERDICT V4-RUNG-D2,
+booked hours earlier.
+
+(1) THE INPUT FAMILY USED THE WRONG NORM, layer-dependently. D2 held
+||x|| at sqrt(d) = 64, calling that "its RMS-normalised value". V4's
+RMSNorm returns weight * x/rms(x) (inference/model.py:197-202) and the
+gate is fed ffn_norm(x) (:704), so the router input has length
+||ffn_norm.weight|| — MEASURED 15.51 / 29.24 / 41.08 at layers 4 / 22 /
+40. The family was 4.1x / 2.2x / 1.6x too wide, so the three layers were
+not even on a common mu axis, and most of the swept grid was
+geometrically unreachable at layer 4 (|mu| > 15.5), including the entire
+-32..-16 region the verdict's CV table quoted. np.clip hid it: an
+out-of-range mu was clamped while the row still logged the REQUESTED
+value.
+This is the THIRD instance on this branch of a bound travelling without
+its assumption — and it is in the cell written to correct the second.
+CORRECTED, with the grid re-expressed as a fraction of R: argmin <u,x> =
+-0.78 (-0.05R) / -0.00 (-0.00R) / -4.11 (-0.10R). Prediction (1) still
+FAILS; the corrected argmins supersede the booked -6.0 / -2.0 / -6.0.
+
+(2) THE HEADLINE IS RETRACTED: THE BIAS DOES NOT CARRY THE BOUND. D2 ran
+THREE arms — with_bias, no_bias, and a SHUFFLED-bias null — logged all
+three, and the verdict reported two. The omitted arm is the one that
+falsifies the framing. Penalty in load CV going from <u,x> = 0 to 0.2R,
+at the corrected norm:
+  layer   with_bias   no_bias   shuffled null (n=40)
+    4       +65%       +70%        +69%
+   22      +115%      +174%       +165%
+   40       +80%       +85%        +85%
+The exclusion of a large |<u,x>| is present WITHOUT any bias and under a
+bias with no relationship to c. It is a property of the key geometry and
+the one-parameter family, not of the trained balancer. The registered
+instrument — "invert the trained load-balancing bias" — therefore does
+no work in the surviving claim, and the verdict's headline ("what it
+does is EXCLUDE one") misattributes the result to it. RETRACTED.
+WHAT THE TRAINED BIAS DOES DO, which is the honest residue and is the
+opposite of the framing: at layer 22 the shipped bias SOFTENS the
+penalty (+115% against the null's +165%) and moves the optimum to
+exactly 0.00R from the null's -0.10R. It is absorbing part of a
+u-aligned skew — weak evidence that such a skew exists, at the one layer
+where corr(bias, c) = -0.591. That is a direction across three layers,
+not a measurement.
+(3) THE "12-17%" IS WITHDRAWN. It mapped D2's mu onto RUNG-D's SHIFT
+arm, two cells whose input families had DIFFERENT norms (64 vs R), so
+the mapping was never apples to apples. Both curves are now measured
+under one family at the corrected norm. Rank-1 set agreement:
+  at 0.05R: 0.9260 / 0.8920 / 0.9047  -> direction accounts for 7-11%
+  at 0.10R: 0.8645 / 0.7899 / 0.8295  -> 14-21%
+Without a working estimator for mu there is no basis for choosing
+between those rows, so the shared direction's share of top-6 selection
+is bounded but NOT located. VERDICT V4-RUNG-R is UNDETERMINED again, not
+"partially reinstated".
+Further, the 12-17% inherited the RANK1/LEVEL conflation that AMENDMENT
+RUNGD-0803 item (2) exists to name: at m = 0 the LEVEL arm gives
+99.3-99.7% against RANK1's 97.1-97.9%, so most of the baseline
+disagreement is the per-expert gain cut, not the shared level, and D2
+attributed the whole shift-arm disagreement to "the shared direction".
+
+(4) AMENDMENT RUNGD-0803 ITEM (5) IS WRONG TWICE. Its compounding used
+0.8815/0.8485/0.8505 — the identical-set fractions item (4) of the SAME
+amendment retracts. On the corrected 0.8755/0.8280/0.8430 the products
+are 0.0033 / 0.00030 / 0.00065, not the booked 0.0044 / 0.00086 /
+0.00095 (layer 22 off by 2.9x). And "6 x 43 x 0.026 = 6.1" evaluates to
+6.708; on the corrected agreements it is 6.64.
+(5) ITEM (8)'s "~12x" IS THE NUMBER IT WAS CORRECTING. 38.1 MB/s x 11
+cores = 0.4187 GB/s; against the measured 3.5-4.5 GB/s NVMe that is
+8.4-10.7x. 11.9x comes from 5.0 GB/s — the rate the same sentence
+disclaims. Also, "the three streams are independent" justifies 3x for
+one expert, not 11x; 11 cores needs multiple experts in flight. Same
+error in scratch/v4flash_s0.py's docstring and in the audit sheet.
+(6) ITEM (2)'s GAIN RANGE has a wrong low extreme: the cuts are
+4.50-17.61% / 2.99-13.61% / 3.47-20.17%, so the range across the three
+layers is 2.99-20.17%. The booked "3.5-20.2%" is layer 40's alone. The
+FOURTH wrong-extremum finding on this branch, in the amendment that
+booked the standing note about extrema.
+(7) ITEM (3)'s REPLACEMENT STATISTIC CANNOT DISTINGUISH THE TWO ARMS.
+mean(W - c u^T) and mean(W - 1 cbar u^T) are algebraically equal, and
+the log confirms mean_row_norm_rank1 == mean_row_norm_level to 15
+digits. So the 95.4-97.0% collapse is structurally blind to the
+RANK1-vs-LEVEL distinction item (2) establishes as the core correction,
+and — since u is DEFINED as normalize(mean of unit rows) — it is close
+to tautological. It is a correct number that supports less than the
+prose around it implies.
+
+(8) RECEIPT V4-CENSUS, two corrections. "The always-on dense path is
+9.44 GB" counts the non-expert tensors inside mtp.0/1/2, which are not
+always-on: shards 46-48 carry 0.595 GB of dense weight, so the always-on
+figure is 8.846 GB — which is, unremarked, the 8.85 the same entry then
+uses for its memory budget. And "9.4 GB, 31% of a 36 GB machine" is
+26.2%; 31% is 9.441/30.15, the usable budget, not the machine.
+(9) RECEIPT V4-CENSUS DID NOT AMEND FAR ENOUGH. VERDICT V4-RUNG-0/1
+books a model-wide 147.2 GB expert store and a 12.30 GB saving built on
+43 blocks; the census measures 157.437 GB, and 147.2 x 46/43 = 157.5 —
+the gap is exactly the three MTP blocks. RECEIPT V4-RUNG-MINUS-1's
+"~8.7 GB scale stream" (277e9/32) is ~9.26 GB on the measured 296.353 B
+routed params. Both entries name 43 blocks and both still report LIVE.
+(10) AN UNCAUGHT COMPARATOR SWAP IN VERDICT V4-RUNG-R + 2B-ROUTER, which
+two prior audits missed. It books "2.4x more on router-neighbours than
+on arbitrary pairs (-0.050 v -0.021)". The -0.021 is from a DIFFERENT
+cell (v4_rung2b.jsonl, expert-0-referenced pairs). That cell's OWN
+matched control gives HUNG - IDENT = -0.0269, i.e. 1.86x. The in-cell
+control was replaced by an out-of-cell comparator that enlarges the
+ratio — the same pattern AUDIT-0802 item (10) booked.
+(11) LEDGER PLUMBING. Two index references on this branch do not resolve:
+AMENDMENT RUNGD-0803 amends "2026-08-03-verdict-v4-rung-d-s0" (real id
+ends -d-s0-the) and VERDICT V4-RUNG-D2 links
+"2026-08-03-pre-reg-v4-rung-d2" (real id ends -d2-invert), so
+results_query --chain returns them alone. Fixed in this commit. The
+audit sheet's claim that "all amendment chains resolve" was therefore
+false and is corrected.
+(12) FINDINGS: the D2 bullet reported a result whose two evaluable
+registered predictions both FAILED, tagged [SINGLE-SEED] and without the
+family fence — which is AUDIT-0802 item (7)'s ruling, violated by the
+first bullet written after it. Retagged [NULL] with the fence restored.
+NOT CHANGED, and re-verified: AMENDMENT AUDIT-0802's own corrections
+were checked item by item and none was found to have corrected something
+that was right. All S0 measurements reproduce. The census totals
+reproduce and independently match the vendor's published 304.181 B.
