@@ -17831,3 +17831,53 @@ meaningful (ffn ~83%, stable across revisions) and its TOTALS are
 not wall-clock — true of the original 84% profile too, which no
 entry should quote as a latency. Receipt preserved at
 logs/opus/f1e_prof2.log.
+
+## PRE-REG V4-F2a: one run, three registered readouts — the unrun fp8-dense + pair-LUT config, the expert-recall instrument (is the echo loop amputation or a mask bug?), and ground-truth demand for a from-disk keep-set bake-off (2026-08-03, Mac; Fable seat)
+
+CONFIG: K=16, fp8-dense (DEQ off) + pair-LUT + batched
+experts — the config VERDICT V4-F1e named correct and
+never ran. Same prompt, 64 tokens, mps.
+READOUT 1 (config): decode tok/s and metal_gb. NAMED
+EXPECTATIONS, not bars: Metal ~20 GB (reclaiming arm
+1's ~6 GB); throughput BELOW arm 5's 0.268 (fp8 dense
+Linears go back through the twin's LUT path) but above
+the 0.100 baseline. Whatever it is, it is the honest
+speed of the memory-lean config that any K-sweep needs.
+READOUT 2 (the instrument, both reviewers' top ask): a
+runtime Gate wrapper logs, per score-layer per token,
+the UNMASKED top-6 (scores + the ORIGINAL bias, saved
+before the mask write) and records EXPERT RECALL =
+|unmasked top-6 ∩ resident| / 6. This is the demo's one
+load-bearing mechanism with no acceptance bar.
+INTERPRETATION, registered in advance:
+  recall ~ 1.0  -> the resident set contains the true
+    demand; the echo loop is NOT amputation of these
+    tokens' experts; suspicion moves to the mask or the
+    renormalized weights;
+  recall ~ K/256 = 0.0625 -> bias rank is no better
+    than random under noaux_tc (the offload-doctrine
+    prediction) and the loop is consistent with
+    near-total amputation;
+  in between -> the number IS the finding, layer
+    profile logged.
+READOUT 3 (data product): the per-layer demand COUNTS
+(which experts the unmasked router actually wanted, all
+tokens) written to the row — the ground truth against
+which from-disk keep-set signals (bias rank, weight
+norms, SVD energy, a resurrected weight-FFT read) can
+be scored OFFLINE later. That bake-off is a separate
+future cell; only its target data is produced here.
+EQUIVALENCE FENCE: the wrapper must not change
+routing — asserted by comparing its masked selection
+against the unwrapped gate on the first token.
+FENCES: no capability claim; the recall interpretation
+is scoped to THIS prompt's token distribution (an echo
+loop revisits few tokens — the demand set is small,
+which is exactly why recall could legitimately be
+high); same-device.
+CUDA LEG RIDING ALONG (F1a's optional leg, never run):
+attempt tilelang 0.1.8 on the 3080 and diff the vendor
+kernels against the twin on random tensors (quant
+outputs bitwise; gemms <= 1/128 rel). If tilelang fails
+to install, book the attempt honestly and the leg stays
+open — it gates nothing.
