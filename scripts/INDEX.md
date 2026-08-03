@@ -2319,6 +2319,18 @@ RUNGS 0/0b/1/2c/3 (pre-reg V4-RUNG-0/1): entropy and lossless rANS of DeepSeek-V
 - `kl(p, q)` — KL(p || q) in bits, over the support of p.
 - `main()`
 
+### scratch/v4flash_rungA.py
+RUNG A (pre-reg V4-RUNG-A): a full DeepSeek-V4-Flash expert forward run ENTIRELY IN INTEGERS on the vendor's shipped fp4 codes, hash-locked across backends. Ported from the certified K3-D2 chain (scratch/k3_expert_demo.py:99-151); RECEIPT V4-RUNG-MINUS-1 established the two formats are byte-identical, so only constants and the activation change.
+
+- `_get(url, lo=None, hi=None)`
+- `header()`
+- `cached(name)` — Read a byte-range blob fetched by rung 0, re-asserting its sha.
+- `decode(proj, hdr)` — Shipped bytes -> (codes2x [out, din] int64, exps [out, g] int64).
+- `det_gemv(codes2x, exps, x, dev, chunk=512)` — Exact integer y = W @ x on the shipped codes. Per-group-32 int64
+- `rdiv(v, d)` — Round-half-away-from-zero integer division (house convention).
+- `to_scale_A(y, e)` — Requant det_gemv output (scale 2^(e-1), x already at A) to A.
+- `main()`
+
 ### scratch/verify_intbirth_prims.py
 House-side acceptance of axiom's intbirth PRIMITIVE layer (relay 2026-08-01-3): rebuild the R2b training loop from intbirth.Block / AdamW / rdiv alone, house-authored composition, and check all 8 r2b_ref.json milestone digests + losses. This is also the shape the multi-block reference will take (dx0 chaining, one AdamW over the concatenated param list).
 

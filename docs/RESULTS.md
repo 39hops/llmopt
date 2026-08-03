@@ -15835,3 +15835,97 @@ coding throughout; lossless verified by round-trip, not
 by ratio; constriction 0.5.0 recorded because
 perfect=False makes the stream version-coupled; no
 capability claim is made or possible on this machine.
+
+## PRE-REG V4-RUNG-A: port the K3-D2 exact integer expert forward to V4-Flash — one expert, all integers, hash-locked across devices (2026-08-02, Mac; Opus-5 review branch)
+
+RECEIPT V4-RUNG-MINUS-1 established that V4's expert
+encoding is byte-identical to K3's MXFP4, so the house
+exact decoder ports by constants. This rung runs a
+FULL expert forward in integers on the vendor's shipped
+codes and asks whether the trace is device-independent.
+THE CHAIN, fixed-point at A=1024, ported from
+scratch/k3_expert_demo.py:99-151 with V4's activation:
+  g = det_gemv(w1, x); u = det_gemv(w3, x)     exact
+  requant both to scale A by power-of-two shift
+  SWIGLU LIMIT (new, V4-specific, from the vendor's
+    inference/model.py:601-607): up = clamp(u, -L, +L)
+    and gate = clamp(g, max=L) — ASYMMETRIC, gate is
+    clamped on the high side only. L = 10.0 =
+    10240 at scale A.
+  h = silu(gate) * up via a sha-pinned SiLU table
+  y = det_gemv(w2, h)                          exact
+  readout = sha256 of the int64 y trace
+det_gemv is exact: per-group-32 int64 dot, then shifts
+relative to the tensor-min exponent. Overflow bound
+re-derived for V4 rather than copied: |code2x| <= 12 <
+2^4 and |x| <= 2^10 give |product| < 2^14; summing 32
+gives < 2^19; summing g = din/32 = 128 groups adds 7
+bits; so the assert is shift_span + 19 + 7 < 62, i.e.
+shift_span < 36. Asserted at run time, not assumed.
+E8M0 bias verified EMPIRICALLY, not assumed: raw scale
+bytes decoded as 2^(b-127) match torch's own
+float8_e8m0fnu .float() exactly on the shipped bytes.
+PREDICTIONS: (1) EXACTNESS — reconstructing fp32 from
+the integer codes and exponents round-trips against the
+codes bit-exactly, asserted per tensor. (2) DEVICE
+IDENTITY — the sha256 of the int64 output trace is
+IDENTICAL on cpu and mps. (3) the overflow assert holds
+with margin, and the margin is reported.
+FENCE, and it is the whole claim: this is an
+EXACTLY-SPECIFIED INTEGER function evaluated on the
+vendor's shipped weights. It is NOT bit-equal to
+DeepSeek's float32 expert forward and is not offered as
+such; fixed-point requants and a tabulated SiLU are a
+different function. What is claimed is that this
+function is reproducible to the bit on any backend. No
+capability claim follows, and none is possible here.
+3080/cuda is Artin's and stays out unless he GOes it.
+
+## VERDICT V4-RUNG-A: a DeepSeek-V4-Flash expert runs EXACTLY in integers on the vendor's shipped fp4 — trace sha256 identical on cpu and mps, all three predictions fire (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG V4-RUNG-A. Expert
+layers.22.ffn.experts.0 (w1/w2/w3), blobs byte-range
+fetched by rung 0 and sha-re-asserted at load. Script
+scratch/v4flash_rungA.py, batch 16.
+  DEV=cpu  sha256 a68256ce17b9b5ad...3ff257b0
+  DEV=mps  sha256 a68256ce17b9b5ad...3ff257b0
+PREDICTION (1) FIRES — exactness: the integer decode
+was checked against the VENDOR'S OWN semantics, not
+against itself. FP4_TABLE from inference/convert.py
+times torch's native float8_e8m0fnu equals
+codes2x * 2^(exp-1) with np.array_equal on every
+element of all three tensors. E8M0 bias 127 was
+verified empirically against torch's dtype on the
+shipped bytes rather than assumed.
+PREDICTION (2) FIRES — device identity: the sha256 of
+the int64 output trace is IDENTICAL on cpu and mps.
+Per-op check as well: det_gemv output torch.equal on
+the two backends.
+PREDICTION (3) FIRES with room: the re-derived overflow
+bound reads 29 / 29 / 28 against the int64 limit of 62,
+so 33 bits of headroom. Exponent spans are only 3 —
+the same near-constant scale field that made the scale
+stream 0.964 bits in VERDICT V4-RUNG-0/1, showing up
+here as an arithmetic safety margin.
+EXTRA CHECK, not pre-registered, run because the code
+asserted it in a comment: det_gemv chunks over output
+rows to bound memory, and the comment claimed chunking
+cannot change a value. Measured at chunk 128 / 512 /
+4096 — identical sha. The claim is now tested, not
+asserted.
+PROVENANCE WORTH KEEPING: the SiLU table is the SAME
+sha-pinned bytes generated for the K3-D2 cell on
+2026-07-30 (f503c81446c97adb), reused unmodified for a
+different vendor's model. Tables travel as bytes; this
+is the P3 doctrine paying off across model families.
+FENCE, restated because it is the whole claim: this is
+an exactly-specified INTEGER function on the vendor's
+shipped weights, reproducible to the bit on any
+backend. It is NOT bit-equal to DeepSeek's float32
+expert forward — fixed-point requants and a tabulated
+SiLU are a different function — and no capability claim
+follows or is possible here. The V4-specific asymmetric
+swiglu clamp (up both sides, gate high side only,
+inference/model.py:601-607) is implemented as the
+vendor writes it. One expert, one layer, batch 16, two
+backends; cuda is Artin's and was not run.
