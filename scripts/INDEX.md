@@ -956,6 +956,8 @@ Build Sol's maturity-enriched, read-only copy of the results index.
 - `_topic(title: str) -> str`
 - `_resolved_preregs(entries: list[dict]) -> dict[str, str]`
 - `_evidence(text: str, pattern: re.Pattern, fallback: str) -> str`
+- `_is_self_retraction(title: str) -> bool` — Whether retirement language applies to this entry, not its object.
+- `_retires_amended_target(title: str) -> bool` — Whether this entry acts on an amended target's standing.
 - `_impact(entry: dict) -> int` — Transparent ranking proxy, not a scientific importance judgment.
 - `enrich() -> list[dict]`
 - `write_summary(entries: list[dict]) -> None`
@@ -1325,16 +1327,27 @@ Deterministic mini-crystal birth on the REAL MATH DIET (queued by Artin 2026-08-
 Deterministic gravmoe pair (spec 2026-08-01-deterministic- gravmoe): the mb bridge model with each Body's FFN split into E=4 experts behind an integer switch_top1 router (multiplicative top_p gate, fx3 convention), plus an integer gravity relaxation every K optimizer steps. All arms share seed/init/windows; the only variable is lambda = LN/LD.
 
 - `class MoBody` (fwd, bwd)
+- `_require_sha(label, observed, expected)`
+- `assert_gate_diet_sha(path)`
+- `assert_gate_row_shas(ids)`
 - `find_split(full, mark)` — Index just past the LAST 'Step: ' marker, or None.
-- `draw_complete(n)` — First n diet rows whose FULL text fits T+1 tokens (padded
-- `sympy_equiv(a, b, timeout=10)` — Fork-isolated symbolic equivalence (NO sympy without a
+- `answer_region(full, mark, terminator_ids)` — Return (first answer token, first newline/EOS token).
+- `token_accuracy_counts(generated, full, region)`
+- `assert_disjoint_prompts(ids, splits, cut)`
+- `loss_dlogits(pp, tgt, eye, boost, region=None)`
+- `loss_proxy(pp, tgt, region=None)`
+- `draw_complete(n, diet_path=None)` — First n diet rows whose FULL text fits T+1 tokens (padded
+- `_fork_call(worker, args, timeout)`
+- `_sympy_worker(sender, a, b)`
+- `sympy_assess(a, b, timeout=10)`
+- `sympy_equiv(a, b, timeout=10)`
 - `gate(m, ids, truths, tok, tab, label)` — Free-run validity gate: prefix through 'Step: ', greedy
 - `class GMB` (param_items, bwd)
 - `relax(wide)` — The gravity event, per spec: per body, kinds order, mean
 - `agreement(m, wins, tab)` — Pairwise % of probe tokens where expert outputs agree:
 - `twin_fp64(m, tok, tgt, tops, masks=None)` — fp64 autograd twin. ALL discrete decisions come from the
 - `build_model()`
-- `run_loss(m, wins, tab, t_exp)` — Exact cycle-mean loss over the 8 windows (no training).
+- `run_loss(m, wins, tab, t_exp, regions=None)` — Exact cycle-mean loss over the 8 windows (no training).
 - `main()`
 
 ### scratch/detbwd_mb.py
@@ -2067,6 +2080,13 @@ PRACTICE MODE, model-side (the mirror of axiom's arg-10): duo-wave rollouts that
 - `skeleton(e)`
 - `binof(n)`
 
+### scratch/probe_int_device_parity.py
+Probe: are the integer-battery primitives bit-identical off the CPU?
+
+- `pick_device(argv)`
+- `primitives(dev, tensors)` — Every integer op the battery's forward and backward chain uses.
+- `main()`
+
 ### scratch/prologue_arms.py
 Zero-birth prologue arms (Opus-5 reviewer, 2026-07-25): S4 symmetry-without-zero PTQ, sparsity control at ternary's zero-fraction, and the gauge-commutation checkpoint pair.
 
@@ -2347,6 +2367,11 @@ llmopt.runlog — standard run logging with honest wallclock.
 - `class ElapsedFormatter` (format)
 - `get_logger(name='llmopt', level=None, stream=None, fmt=DEFAULT_FMT)` — Idempotent: repeated calls return the same configured logger.
 - `timed(label, log=None, level=logging.INFO)` — Context manager: logs '<label> done in <t>s' on exit,
+
+### llmopt/window_artifact.py
+Validation and decoding for committed gravmoe training windows.
+
+- `load_contiguous_windows(windows_path: Path, contract_path: Path, sequence_length: int) -> list[list[int]]` — Load ``tok[T] ++ tgt[T]`` records as contiguous ``T+1`` rows.
 
 ## llmopt/train/
 
