@@ -531,19 +531,16 @@ sessions under one operator, not independent investigators. Read
   P4-DEVICE-SCOPE](RESULTS.md#L15210).)
 - [SINGLE-SEED] [TEACHER-FORCED]
   [REGIME-SCOPED: deterministic integer battery]
-  At n=1 seed and window set, drawing only the query and key
-  matrices at the softer initialization bound cut battery loss from 8883 to
-  2496; the earlier arm's booked 73% loss increase belonged to four other
-  matrix families softened alongside them, and the reading that peaked
-  attention is load-bearing was retired rather than qualified. ([VERDICT
-  QK-RESCOPE](RESULTS.md#L14658).)
+  At n=1 seed and window set, softening only the query and key draws cut
+  battery loss from 8883 to 2496; the earlier arm's booked 73% increase
+  belonged to four other matrix families softened with them, retiring the
+  peaked-attention reading. ([VERDICT QK-RESCOPE](RESULTS.md#L14658).)
 - [SINGLE-SEED] [FREE-RUN-GATED]
   [REGIME-SCOPED: deterministic integer battery]
-  That same initialization produced the battery's first nonzero
-  oracle solves — two of eight training rows symbolically verified, free-run
-  token accuracy 56 to 94 of 140 — so the loss win survived the free-run
-  gate; held-out solves stayed at zero of eight in this memorization regime.
-  ([RIDER on VERDICT QK-RESCOPE](RESULTS.md#L14731).)
+  That same initialization produced the battery's first nonzero oracle
+  solves — two of eight training rows verified, free-run token accuracy 56
+  to 94 of 140 — so the loss win survived the gate; held-out stayed at zero
+  of eight. ([RIDER on VERDICT QK-RESCOPE](RESULTS.md#L14731).)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
   One-step scheduled sampling halved free-run token accuracy, 56 to 22 of
   140, and doubled teacher-forced loss, so the registered exposure-bias
