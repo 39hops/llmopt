@@ -18083,3 +18083,30 @@ this class of judge-semantics gap surface as a failing
 artifact instead of a silent reading error. No verdict
 is amended by this fence; it scopes how sqrt-row
 verdicts may be QUOTED until the grep lands.
+
+## RIDER on READING FENCE 2026-08-03 (sqrt formal-vs-R): axiom's RED pass moved the mechanism ONE LAYER EARLIER — fractional-pow merging happens at EXPR CONSTRUCTION, before any walk can see it (2026-08-03, Mac; axiom relay, Fable seat)
+
+Axiom, building the certificate emitter against its own
+judge, found the registered caveat live earlier than
+either seat placed it: it is not canonical() that
+identifies fractional-pow merges — expr construction
+itself merges x**(1/2)*x**(1/2) -> x AT PARSE TIME, so
+no downstream expression walk can ever observe that the
+merge happened. CONSEQUENCES, both adopted: (1) the
+eligibility fence runs LEXICALLY on the raw sstr input
+("/" inside a **(...) exponent group -> fenced), not on
+the expr; (2) sqrt() itself survives construction as an
+fn node, so sin(sqrt(x)) stays eligible as a frozen
+atom, exactly per the agreed predicate. The reading
+fence STANDS unchanged in scope; its mechanism
+attribution is corrected. Axiom's local proxy (E3
+battery-50) shows ~20% of rows mention sqrt — the true
+house-corpus fenced fraction and the live-merge grep
+remain the registered house-side measurements. Emitter
+landed axiom-side at c0511bc (print_lean, atom tables,
+per-denominator neq hypotheses, equiv AND
+equiv_mod_const both certified — the latter certifying
+diff(candidate) = integrand, the identity the judge
+actually compares). House deliverable now unblocked:
+the lake checker + mechanical statement diff + cost
+verdict.
