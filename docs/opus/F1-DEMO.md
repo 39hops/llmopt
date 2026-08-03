@@ -2,22 +2,26 @@
 
 **DeepSeek-V4-Flash — a 304-billion-parameter, 166.9 GB frontier MoE —
 generated text on a 36 GB Mac this morning**, running the vendor's own
-unmodified `model.py` over a 260-line pure-torch kernel twin, with 6% of
-its routed experts resident.
+unmodified `model.py` over a ~450-line pure-torch kernel twin (half of it
+acceptance bars), with 7.1% of its routed experts resident.
 
 ## The numbers
 
-| | |
-|---|---|
-| model | DeepSeek-V4-Flash-0731 (304 B params, 43 layers, 256 experts/layer) |
-| machine | Apple silicon, 36 GB unified memory |
-| resident | full dense path (8.85 GB, fp8 kept packed) + 785 experts (10.5 GB packed fp4) |
-| routing | vendor's own gate; non-resident experts masked via **one write into the bias** |
-| load | 13.3 s (warm cache) |
-| prefill | 30.6 s (9 tokens) |
-| decode | **0.219 tok/s** after F1e (pair-LUT unpack; was 0.100), greedy |
-| process RSS | 5.3 GB (+ ~20 GB of weights in Metal buffers) |
-| downloads | ~19 GB of byte-range fetches, never the 166.9 GB artifact |
+One config per column (an earlier revision mixed three runs — reviewer
+catch, AMENDMENT F1-REVIEW):
+
+| | first demo (V4-F1d) | fastest (V4-F1e arm 5) |
+|---|---|---|
+| dense path | 8.85 GB packed fp8 | dequanted bf16 (~15 GB) |
+| experts resident | 785 (10.5 GB packed fp4) | same |
+| decode | 0.100 tok/s | **0.268 tok/s** |
+| prefill (9 tok) | 30.6 s | 58.8 s |
+| Metal / RSS | ~20 GB / 5.3 GB | ~26 GB / 6.2 GB |
+| output | prompt-echo loop | bit-identical to the first |
+
+Both greedy, batch 1, same prompt; masking = **one write into the
+aux-loss-free bias**; ~19 GB of byte-range fetches, never the 166.9 GB
+artifact.
 
 ## The text (verbatim, prompt: "The three most important ideas in computer science are")
 
@@ -47,8 +51,9 @@ still has.
    hyper-connections. Cross-device divergence at random weights was
    measured (~3×/layer growth) and correctly predicted to vanish with…
 3. **F1c — real weights.** Layers 0–2 with exact hash-routed expert
-   demand: all bars pass, cross-device gap collapses 100×, expert output
-   within 1.5e-6 of the exact reference.
+   demand: all bars pass, the cross-device gap collapses 56–297×
+   depth-matched (~2.5 orders of magnitude), expert output within
+   1.5e-6 of the exact reference.
 4. **F1d — generate.** Everything above, at full depth, on real weights.
 
 ## Why this was possible at all
@@ -73,13 +78,20 @@ bought **nothing** (it was never the wall — the profile said 84% of
 decode was the experts' per-use fp4 unpack); a bounded expert cache made
 things **5× worse** (774-tensor per-token working set vs a 180 cap =
 pure thrash); a **pair-LUT unpack** bought **2.2×** for zero memory
-(0.100 → 0.219 tok/s, output bit-identical); and at K=24 the repetition
-attractor **held** while Metal crossed its ceiling and paged — memory
-binds before text quality budges. Banked next: batch the per-layer
-expert calls, then torch.compile/MLX for the dispatch floor. No
-capability claims anywhere — this sheet describes a measured system and
-its honest output.
+(0.100 → 0.219 tok/s, output bit-identical); bit-exact **batched expert
+calls** (equivalence gate 0.00e+00) added 1.22× more to **0.268 tok/s**;
+and at K=24 — *in the bf16-dense config; the fp8-dense cell is unrun* —
+the repetition attractor **held** while Metal crossed its ceiling and
+throughput collapsed ~8× (paging inferred from decay, not instrumented).
+The localized remaining wall is unpack VOLUME per token, which neither
+launches, caching, nor batching reduce — banked next: prompt-lookup
+speculative decoding (already in-tree, and an echo loop accepts ~every
+draft), plus the unmasked-router "expert recall" instrument that
+separates amputation from mask bugs. No capability claims anywhere —
+this sheet describes a measured system and its honest output.
 
 *Everything above is booked in `docs/RESULTS.md` (PRE-REG V4-F1 →
-VERDICTs V4-F1a/b/c/d) with scripts in `scratch/v4flash_*.py` and raw
-rows in `logs/opus/v4_f1d.jsonl`.*
+VERDICTs V4-F1a/b/c/d → PRE-REG V4-F1e + riders → VERDICTs V4-F1e +
+ARM5 → AMENDMENT F1-REVIEW, which corrects this sheet's own first
+revision) with scripts in `scratch/v4flash_*.py` and raw rows in
+`logs/opus/v4_f1d.jsonl`.*

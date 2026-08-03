@@ -109,12 +109,19 @@ for _byte in range(256):
         _PAIR_LUT[_byte, _half] = -_mag if _nib >= 8 else _mag
 
 
+_PAIR_BY_DEV = {}
+
+
 def _unpack_fp4(b):
     """[.., K//2] packed e2m1 (any 1-byte view) -> [.., K] fp32.
-    Low nibble first; sign bit 0x8 (byte-identical to K3)."""
-    u = b.view(torch.uint8).long()
-    return _PAIR_LUT.to(u.device)[u].reshape(*u.shape[:-1],
-                                             u.size(-1) * 2)
+    Low nibble first; sign bit 0x8 (byte-identical to K3). The LUT is
+    cached per device — the first version re-uploaded it on every call,
+    258 times per token (reviewer catch)."""
+    u = b.view(torch.uint8)
+    lut = _PAIR_BY_DEV.get(u.device.type)
+    if lut is None:
+        lut = _PAIR_BY_DEV[u.device.type] = _PAIR_LUT.to(u.device)
+    return lut[u.int()].reshape(*u.shape[:-1], u.size(-1) * 2)
 
 
 # ---------------------------------------------------------------- kernels
@@ -197,6 +204,12 @@ _W_CACHE, _W_CAP = {}, int(__import__("os").environ.get("WCACHE", "0"))
 def fp4_gemm(a, a_s, b, b_s, scale_dtype=torch.float32):
     """C = A_fp8[M,K] @ B_fp4[N,K]^T; B packed 2 codes/byte along K
     (low nibble first), per-32 e8m0 weight scales [N, K/32].
+
+    ACCUMULATION NOTE (reviewer catch): since F1e arm 4 the matmul runs
+    on bf16 OPERANDS (each operand value-exact in bf16; partial-sum
+    precision is the backend's). The F1a fp64-reference bar re-passed
+    at the same 3.89e-3 after the change; "value-exact" claims apply to
+    operands and dequant, never to accumulation.
 
     WCACHE=<n> (F1e arm 3): memoize the unpacked+scaled bf16 weight,
     FIFO-capped at n tensors. Keys are the weight Parameter objects
@@ -334,11 +347,21 @@ def _bars(dev):
     base = torch.randn(2, 3, 192, generator=g).bfloat16().to(dev)
     keep = base[..., -64:].clone()
     view = base[..., :-64]                       # non-contiguous slice
+    # NON-VACUOUS form (the first version passed even for a no-op —
+    # the repo's fifth such instance, reviewer catch): the written
+    # values must equal the out-of-place quant-dequant reference, and
+    # the untouched tail must survive.
+    ref = view.clone().contiguous()
+    y, sc = act_quant(ref, 64, "ue8m0", torch.float8_e8m0fnu)
+    yv = y.float() if y.dtype != torch.float8_e4m3fn else _f8_to_f32(y)
+    expect = (yv.reshape(*ref.shape[:-1], -1, 64)
+              * _scale_f32(sc).unsqueeze(-1)).reshape(ref.shape)\
+        .to(ref.dtype)
     act_quant(view, 64, "ue8m0", torch.float8_e8m0fnu, inplace=True)
-    ok.append((f"inplace-on-slice[{dev}] writes back",
-               not torch.equal(view.cpu(), torch.randn(0)) and
+    ok.append((f"inplace-on-slice[{dev}] == out-of-place reference",
+               torch.equal(view.cpu(), expect.cpu()) and
                torch.equal(base[..., -64:].cpu(), keep.cpu()) and
-               (view.float().abs().sum() > 0).item()))
+               not torch.equal(view.cpu(), ref.cpu())))
 
     # (5) fp4_gemm on a REAL cached expert vs exact fp64 reference,
     #     decode side bit-identical to the certified rungA decode
@@ -392,8 +415,14 @@ def _bars(dev):
                                    torch.zeros(24, device=dev))
     resid = max((comb.sum(-1) - 1).abs().max().item(),
                 (comb.sum(-2) - 1).abs().max().item())
-    ok.append((f"sinkhorn[{dev}] residual {resid:.1e} (<=2e-5)",
-               resid <= 2e-5))
+    # The REGISTERED bar was 1e-6; it is UNATTAINABLE by the vendor's
+    # own algorithm — eps=1e-6 sits inside every normalization
+    # denominator, so the residual is structurally O(eps) (measured
+    # worst 2.7e-5 over 50 draws). Bar set at 4e-5 with the derivation;
+    # the silent 2e-5 loosening AND the impossible registration are
+    # both booked in the F1-review amendment.
+    ok.append((f"sinkhorn[{dev}] residual {resid:.1e} (<=4e-5)",
+               resid <= 4e-5))
 
     # (7) hadamard involution + isometry
     x = torch.randn(4, 128, generator=g).to(dev)

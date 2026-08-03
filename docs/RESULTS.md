@@ -17670,3 +17670,164 @@ PREDICTION (5): decode >= 0.35 tok/s (>= 1.6x arm 4's
 0.219) at K=16 DEQ=bf16, same prompt.
 FENCE: same-device same-prompt; no quality claim; the
 patch is env-gated (BATCH=1) and off by default.
+
+## VERDICT V4-F1e-ARM5: bit-exact batched expert calls buy 1.22x (0.268 tok/s, 2.68x the morning baseline) — the registered 0.35 bar FAILS, and the failure localizes the remaining wall to unpack VOLUME, which only speculative decoding can amortize (2026-08-03, Mac; Fable seat)
+
+RIDER 3's arm, run to completion. The batched MoE
+forward (single-token steps only; prefill keeps the
+vendor loop) passed its EQUIVALENCE GATE AT EXACTLY
+0.00e+00 — bit-identical to the vendor loop — after two
+gate failures taught the real contract: (i) 3.14e-3
+when the einsums ran on bf16 operands (vendor matmuls
+fp32), (ii) 1.11e-2 when the vendor's THREE per-
+projection bf16 roundings (the twin's get_default_dtype
+casts) were skipped. Equivalence to a quantized model
+means reproducing its ROUNDINGS, not just its algebra.
+RESULT: decode 0.268 tok/s (arm-4 comparator 0.219;
+morning baseline 0.100), prefill 58.8 s, RSS 6.2 GB,
+text VERBATIM-IDENTICAL as the gate guarantees. Row in
+logs/opus/v4_f1d.jsonl. PREDICTION (5) (>= 0.35) FAILS.
+THE DIAGNOSTIC VALUE OF THE MISS: batching collapsed
+~50 kernel launches per layer into ~8 and bought only
+1.22x — so after the pair-LUT, LAUNCH OVERHEAD IS NOT
+THE BINDING TERM EITHER. What remains is the unpack
+VOLUME itself: 6 experts x 25.17M params gathered and
+dequantized PER TOKEN, irreducible by batching or
+caching (arm 3's thrash showed the working set exceeds
+memory). The only in-reach lever that cuts VOLUME PER
+TOKEN is amortizing each unpack across several tokens —
+i.e. speculative decoding with a multi-token verify
+forward. llmopt/decoding/prompt_lookup.py already
+implements prompt-lookup drafting with a token-identical
+bar (integration sweep, 2026-08-03), and the current
+demo output being a LITERAL ECHO LOOP means draft
+acceptance would be ~100%. BANKED as the next arm,
+pre-reg required; register the fence up front: the
+speedup is attractor-conditional — it accelerates
+degraded output specifically, and a healthier output at
+higher K would accept fewer drafts.
+FENCES: same-device same-prompt; no quality claim; the
+equivalence gate makes the speed comparison exactly
+apples-to-apples.
+
+## AMENDMENT F1-REVIEW (amends VERDICTs V4-F1c, V4-F1d, V4-F1e and the F1 demo sheet): two reviewer passes on the F1 day — every verified finding adopted, one impossible bar re-derived, one vacuous bar made real, and the demo sheet's composite table rebuilt (2026-08-03, Mac; Fable seat)
+
+Two agents (lab reviewer on the bookings; integration
+scanner on the repo) reviewed the F1 day. Every item
+below was verified in-tree before adoption. The
+reviewer seat AGAIN self-reported as Claude Opus 4.5
+against an Opus 5 harness label — flagged per the
+respawn protocol, disagreement noted both ways.
+(1) WRONG EXTREME in VERDICT V4-F1c's title: "collapses
+the cross-device gap by three orders of magnitude".
+Depth-matched ratios are 56x / 220x / 297x — the
+maximum is ~2.5 orders and the depth-1 ratio is 56x.
+The FINDINGS/demo-sheet "100x" was the conservative
+form and stands; the title overstated. (The lineage's
+FIFTH wrong-extreme.)
+(2) WRONG FRACTIONS: 785/(43x256) = 7.13% residency,
+not "6%"; the amputation is 92.9%, not "94%". Demo
+sheet and V4-F1d prose corrected.
+(3) A VACUOUS BAR, the repo's fifth instance, in the
+twin's own acceptance suite: the inplace-QAT
+writes-back check compared a tensor to an EMPTY tensor
+(always true) and asserted a nonzero sum — a NO-OP
+act_quant would have passed. REPLACED with
+reference-equality against the out-of-place quant
+path; the new bar PASSES on both devices, so no booked
+number moves — but the bar had certified nothing.
+(4) THE SINKHORN BAR SAGA, all three layers booked:
+the pre-reg registered <= 1e-6; the code silently
+carried <= 2e-5; and re-deriving shows the REGISTERED
+BAR WAS UNATTAINABLE BY THE VENDOR'S OWN ALGORITHM —
+eps = 1e-6 sits inside every normalization denominator,
+so the doubly-stochastic residual is structurally
+O(eps) (measured worst 2.7e-5 over 50 draws). Bar now
+4e-5 WITH the derivation. Registering a bar the target
+algorithm cannot meet is its own failure mode: derive
+bars from the algorithm, not from aspiration.
+(5) THE F1d MEMORY BAR WAS INSTRUMENT-VACUOUS AND, AT
+K=24, VIOLATED: the code gated on ru_maxrss (4.5-5.8
+GB) while the weights live in Metal buffers; measured
+by the instrument F1e added, K=24 ran at 30.09 GB
+against the pre-reg's 30 GB target — a violated bar
+that no prior entry booked as violated. Booked here.
+The bar moves to metal_gb going forward.
+(6) "MEMORY BINDS FIRST" IS CONFIG-SCOPED: the K=24 arm
+ran WITH the bf16-dense pre-dequant that arm 1 proved
+worthless (+~6 GB); at fp8-dense, K=24 plausibly fits.
+The recommended fp8-dense + pair-LUT cell is NAMED,
+UNMEASURED. The sheet sentence is fenced accordingly.
+(7) ARM-4 ATTRIBUTION AND EXACTNESS WORDING: the
+isolated pair-LUT effect is 0.219/0.095 = 2.31x against
+its same-config comparator; 2.19x is the arm-1+arm-4
+STACK against the fp8 baseline. And "every arm-4 change
+is value-exact" holds for OPERANDS and dequant only —
+arm 4 also moved the gemm to bf16 operands (partial-sum
+precision is the backend's); the fp64 bar re-passed at
+the same 3.89e-3 and the token stream was unchanged,
+which is the honest defence. Twin docstring now says
+exactly this.
+(8) distinct-4-gram IS DEGENERATE HERE: both texts are
+a 9-token cycle, so distinct4 = 9/(NTOK-3) — a pure
+function of length. The stronger free statement: the
+K-sweep moved the distinct-4-gram COUNT by exactly zero
+(9 = 9). The K=24 "0.072 vs 0.148" comparison conveys
+nothing beyond NTOK.
+(9) ARM-2 CONFOUNDS: K, NTOK and cold-vs-warm cache all
+differ from arm 4 (load 1356 s vs 21 s), and "the run
+PAGED" is an INFERENCE from throughput decay — no
+memory-pressure instrument is in the row. Labeled as
+such.
+(10) SMALLER, all verified: arm 3 has NO row in
+v4_f1d.jsonl ("all four rows including the failed arms"
+was miscountable — arm 3 exists only in its job log,
+quoted in RIDER 2); arm 1's "bought nothing" is n=1
+inside 19% intra-run drift ("no measurable gain" is the
+supported form); F1b's "registered under a false
+premise" was retrospective reconstruction, no such
+premise is written in the pre-reg; "22/22 bars" counts
+11 checks x 2 devices; the twin is ~450 lines, half of
+it acceptance bars, not "260"; the original 84%/11%/5%
+profile's log was deleted by a careless rjob clean (the
+AUDIT-0802 receipt lesson, relapsed) — a fresh profile
+under the CURRENT code re-runs as f1e_prof2 and its log
+is preserved to logs/opus/.
+(11) PERF FIX RIDING ALONG (unmeasured, lossless): the
+pair-LUT was re-uploaded cpu->mps on EVERY fp4_gemm
+call (258/token); now cached per device, index narrowed
+int64->int32. F1a bars re-passed after every change in
+this amendment.
+(12) STANDING DEBT, now load-bearing: the "~28% pruning
+cliff" cited by PRE-REG V4-F1 and V4-F1e exists only on
+BOARD.md and was never booked in RESULTS (the 08-02
+spec flagged the same). Either the 07-14 result gets a
+retroactive booking or Q1 replaces it; until then the
+cliff is a CITATION TO CHAT STATE and both pre-regs'
+expectation language inherits that weakness.
+(13) THE INSTRUMENT BOTH REVIEWERS CONVERGED ON, banked
+as the next cell (pre-reg required): log the UNMASKED
+router scores during a normal run. One number ("expert
+recall": the fraction of the true pre-mask top-6 that
+was resident) simultaneously (a) separates "the
+repetition loop is amputation" from "the loop is a mask
+bug" — the bias-write mask is the demo's one
+load-bearing mechanism with NO acceptance bar — and (b)
+tests whether most-negative-bias residency beats random
+under noaux_tc balancing, which the house's own offload
+doctrine doubts.
+UNCHANGED: every tok/s, Metal, and distinct4 figure
+recomputed from logs by the reviewer checked out
+exactly; the verbatim texts match; pre-reg fences held
+at every rung; charter clean.
+
+POSTSCRIPT to AMENDMENT F1-REVIEW, same commit: the regenerated
+profile (f1e_prof2, current code: pair-LUT + hoist + batched MoE)
+reads per-token 8381 ms = ffn 6924 + attn 955 + other 502 — while
+the REAL arm-5 decode is 3731 ms/token. The profiler synchronizes
+around every component (86 syncs/step), which serializes work the
+async MPS queue otherwise OVERLAPS. So the instrument's SHARES are
+meaningful (ffn ~83%, stable across revisions) and its TOTALS are
+not wall-clock — true of the original 84% profile too, which no
+entry should quote as a latency. Receipt preserved at
+logs/opus/f1e_prof2.log.

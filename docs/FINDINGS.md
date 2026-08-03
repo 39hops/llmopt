@@ -512,6 +512,41 @@ sessions under one operator, not independent investigators. Read
   subtraction implied, because 19 of those "dense" billions are three
   multi-token-prediction blocks each holding a full 256-expert layer.
   ([RECEIPT V4-CENSUS](RESULTS.md#L16816).)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  A 304B frontier MoE's entire GPU dependency is six kernels, and a
+  pure-torch twin of them passes oracle acceptance on cpu and mps — the
+  fp4 decode bit-identical to the certified decoder, every gemm within
+  1/128 of an exact fp64 reference on real shipped weights. ([VERDICT
+  V4-F1a](RESULTS.md#L17263).)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  Under RANDOM weights an untrained 3-layer boot of the same model
+  amplifies cross-device bf16 noise ~3x per layer (0.12 to 0.56) while
+  each kernel individually sits at 4e-3 — and with TRAINED weights the
+  same comparison collapses to ~2e-3 per layer, so end-to-end tolerance
+  bars belong to trained networks only. ([VERDICT
+  V4-F1b](RESULTS.md#L17303); [VERDICT V4-F1c](RESULTS.md#L17360).)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  DeepSeek-V4-Flash generated tokens on a 36 GB Mac — vendor code
+  unmodified over the kernel twin, 7.13% of routed experts resident,
+  masking done by one write into the aux-loss-free bias — and what
+  survives 92.9% expert amputation is fluent CONTEXT-COPYING: the output
+  is a pure prompt-echo loop, logged verbatim, no capability claimed.
+  ([VERDICT V4-F1d](RESULTS.md#L17401).)
+- [NULL] [REGIME-SCOPED: measured deployment artifacts]
+  Neither making the biggest weights fast (bf16-dequanting the 40x-larger
+  dense path: no measurable gain) nor caching the hot ones (774-tensor
+  per-token working set thrashed any affordable cap, 5x slower) moved a
+  compute-bound MoE decode; making the hot OP cheap did — a [256,2]
+  pair-LUT unpack bought 2.2x at zero memory. ([VERDICT
+  V4-F1e](RESULTS.md#L17578).)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  Bit-exact batching of the per-layer expert calls (equivalence gate
+  0.00e+00 — reproducing the vendor's three per-projection bf16 roundings
+  was the contract) bought only 1.22x more, so neither launches nor
+  batching bound the decode: the wall is unpack VOLUME per token, which
+  only multi-token verification can amortize. ([VERDICT V4-F1e
+  ARM5](RESULTS.md#L17674); corrections in [AMENDMENT
+  F1-REVIEW](RESULTS.md#L17713).)
 - [NULL] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
   Experts in a 256-expert frontier layer are statistically identical yet
   individually unmatchable: sorted hidden-unit norm profiles agree to 7%, while

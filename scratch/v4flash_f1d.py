@@ -51,9 +51,11 @@ DEV = os.environ.get("DEV", "mps" if torch.backends.mps.is_available()
                      else "cpu")
 PROMPT = os.environ.get(
     "PROMPT", "The three most important ideas in computer science are")
+SEED = 20260803
 NL, NE = 43, 256
 DEQ = os.environ.get("DEQ", "")          # "bf16": F1e arm 1
 PROFILE = os.environ.get("PROFILE", "") == "1"
+BATCH = os.environ.get("BATCH", "") == "1"   # F1e arm 5 (rider 3)
 OUT = "logs/opus/v4_f1d.jsonl"
 
 
@@ -179,6 +181,89 @@ def load_dense(model, man, dev):
     return n
 
 
+def install_batched_moe(mod):
+    """F1e arm 5 (RIDER 3): batch the <= 6 hit experts of a SINGLE-TOKEN
+    step into one unpack + one bmm per projection, replicating the
+    vendor Expert math exactly (fp32; up clamped both sides, gate
+    max-only; silu(gate)*up; gate weights before w2). Multi-token calls
+    (prefill) fall back to the vendor loop — decode is where the
+    measured 84% lives. Also removes the vendor's per-layer hidden
+    counts.tolist() device sync on the batched path. Vendor SOURCE is
+    untouched; this replaces vendor LOGIC at runtime, hence the
+    equivalence bar run at startup (see check_batched_equiv)."""
+    import torch.nn.functional as F
+    tw = v4flash_twin
+    orig = mod.MoE.forward
+
+    def fwd(self, x, input_ids):
+        shape = x.size()
+        xf = x.view(-1, self.dim)
+        if xf.size(0) != 1:
+            return orig(self, x, input_ids)
+        weights, indices = self.gate(xf, input_ids.flatten())
+        hits = indices[0].tolist()                 # 6 distinct experts
+        exps = [self.experts[i] for i in hits]
+        a, a_s = tw.act_quant(xf, 128, "ue8m0", torch.float8_e8m0fnu)
+        af = tw._deq_act(a, a_s, 128)                      # [1, D] fp32
+
+        def stack_w(attr, rows, cols):
+            wb = torch.stack([getattr(e, attr).weight.view(torch.uint8)
+                              for e in exps])              # [6,rows,cols/2]
+            sc = torch.stack([getattr(e, attr).scale for e in exps])
+            wf = tw._unpack_fp4(wb)                        # [6,rows,cols]
+            # fp32, matching the vendor twin's fp32 matmul exactly —
+            # the first launch failed its equivalence gate at 3.1e-3
+            # because these were bf16 (accumulation inputs rounded).
+            return (wf.reshape(len(exps), rows, cols // 32, 32)
+                    * tw._scale_f32(sc).unsqueeze(-1)).reshape(
+                len(exps), rows, cols)
+        W1 = stack_w("w1", self.experts[hits[0]].w1.out_features,
+                     self.dim)
+        W3 = stack_w("w3", W1.size(1), self.dim)
+        # the vendor path rounds EVERY projection output to bf16 (the
+        # twin's get_default_dtype cast) before Expert.forward's
+        # .float() — reproduce those roundings or equivalence fails
+        # (measured: 1.1e-2 without them).
+        gate = torch.einsum("td,eid->ei", af, W1)\
+            .to(torch.bfloat16).float()                    # [6, I]
+        up = torch.einsum("td,eid->ei", af, W3)\
+            .to(torch.bfloat16).float()
+        lim = exps[0].swiglu_limit
+        if lim > 0:
+            up = up.clamp(-lim, lim)
+            gate = gate.clamp(max=lim)
+        h = (F.silu(gate) * up) * weights[0, :, None].float()  # [6, I]
+        h = h.to(x.dtype)
+        ha, ha_s = tw.act_quant(h, 128, "ue8m0", torch.float8_e8m0fnu)
+        hf = tw._deq_act(ha, ha_s, 128)                        # [6, I] fp32
+        W2 = stack_w("w2", self.dim, W1.size(1))
+        # per-expert bf16 rounding BEFORE the sum, as the vendor loop does
+        y = (torch.einsum("ei,edi->ed", hf, W2).to(torch.bfloat16)
+             .float().sum(0, keepdim=True))
+        y = y + self.shared_experts(xf).float()
+        return y.type_as(xf).view(shape)
+
+    mod.MoE.forward = fwd
+    mod.MoE._vendor_forward = orig
+
+
+def check_batched_equiv(model, dev):
+    """Equivalence bar (RIDER 3): patched vs vendor MoE on a real
+    loaded layer, same routing, single token. rel L2 <= 1e-3 gates."""
+    moe = model.layers[22].ffn
+    g = torch.Generator().manual_seed(SEED)
+    x = (torch.randn(1, 1, 4096, generator=g, device="cpu") * 0.5)\
+        .to(dev).to(torch.bfloat16)
+    ids = torch.tensor([5426], device=dev)
+    with torch.inference_mode():
+        yb = type(moe).forward(moe, x, ids)
+        yv = type(moe)._vendor_forward(moe, x, ids)
+    rel = ((yb.float() - yv.float()).norm() / yv.float().norm()).item()
+    print(f"[f1d] BATCH equivalence rel-L2 {rel:.2e} "
+          f"({'PASS' if rel <= 1e-3 else 'FAIL'} <=1e-3)", flush=True)
+    assert rel <= 1e-3, "batched MoE diverges from the vendor loop"
+
+
 def main():
     os.makedirs("logs/opus", exist_ok=True)
     from tokenizers import Tokenizer
@@ -235,6 +320,9 @@ def main():
     for _, b in model.named_buffers():
         b.data = b.data.to(DEV)
     torch.set_default_device(DEV)   # lru_cache'd index builders (H4)
+    if BATCH:
+        install_batched_moe(mod)
+        check_batched_equiv(model, DEV)
     n_res = sum(len(v) for v in prov.resident.values())
     print(f"[f1d] residents {n_res} experts ({n_res*13.37/1e3:.1f} GB "
           f"packed) | load total {time.time()-t0:.0f}s | "
