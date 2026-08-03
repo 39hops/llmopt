@@ -1,11 +1,12 @@
-# Spec: DeepSeek-V4-Flash lossless re-coding (2026-08-02, design pass v0)
+# Spec: DeepSeek-V4-Flash lossless re-coding (2026-08-02, v1)
 
-The quantization program has only ever measured house crystals and
-two external models (SmolLM2-1.7B, Qwen2.5-0.5B) plus a read of
-DeepSeek-V3's routed experts. V4-Flash is the largest and newest
-object available and it is a 91%-MoE, which makes it the natural
-next cell. But the obvious experiment is invalid, and saying why
-is what shapes this whole spec.
+v0 was a design pass. v1 folds in a read-only reviewer scan of the
+ledger, every claim of which was verified line-by-line before
+adoption (see "Provenance" at the end). The scan changed three
+things materially: it found a **free read that gates the whole
+program**, it found that one of my rungs was **already run and
+nulled at production scale**, and it found an **instrument hazard
+that would have silently voided my acceptance bar**.
 
 ## The catch: the experts are already fp4
 
@@ -25,167 +26,340 @@ routed-expert weight**, shipped at four bits.
 
 THEREFORE THE CAPACITY METER DOES NOT APPLY. M = span_bits -
 code_entropy detects heavy tails in a master. On weights already
-projected onto a 16-point lattice per 128x128 block, the format
-has destroyed the tail information the meter reads. A number
-computed there would look like a capacity reading and would not be
-comparable to any house-crystal reading, all of which were taken on
-fp32/bf16 masters. This is the K3 expert fence (reading the shipped
-quantized format, not the master) in a worse form: fp4 rather than
-fp8. Booking a meter number for V4-Flash without this paragraph
-attached would be an instrument error, not a result.
+projected onto a 16-point lattice per block, the format has
+destroyed the tail information the meter reads. A number computed
+there would look like a capacity reading and would not be
+comparable to any house-crystal reading, all taken on fp32/bf16
+masters. This is the K3 expert fence in a worse form: fp4 rather
+than fp8.
 
 ## The hard fence, stated first because it governs every rung
 
-**No capability claim is possible on this machine.** 152GB at fp4
-against 36GB of RAM: we cannot run this model, so we cannot gate
-it, and the standing rider (loss claims are teacher-forced claims;
-capability claims need the oracle gate) means any lossy proposal
-here would be unfalsifiable by construction.
+**No capability claim is possible on this machine.** The shipped
+footprint is ~168GB (48 shards; 277B at 4 bits plus ~27B at 8 bits
+≈ 165GB — the earlier "152GB" was the all-params-at-fp4
+idealization, so the case is ~10% stronger than v0 stated) against
+36GB of RAM. We cannot run this model, cannot gate it, and the
+standing rider — loss claims are teacher-forced claims, capability
+claims need the oracle gate — makes any lossy proposal here
+unfalsifiable by construction.
 
-Two claim types survive, and the spec admits only these:
+Two claim types survive, and this spec admits only these:
 
-- **LOSSLESS**, verified by bit-identical round-trip. Exact,
-  auditable, and needs no gate we cannot run.
-- **PER-EXPERT function-space**, at expert granularity only. One
-  expert is ~25M params and is comfortably runnable; the precedent
-  is `blackhole_b0.py`'s function-space spot check.
+- **LOSSLESS**, verified by bit-identical round-trip.
+- **PER-EXPERT function-space or exact-forward**, at expert
+  granularity only (one expert is ~25M params).
 
-Anything that would require a model-level capability verdict is out
-of scope for the Mac and stays out of this spec.
-
-## Why lossless is the interesting question anyway
-
-The weights are a **symbol stream on a known lattice**. Roughly
-Gaussian weights on a 16-point lattice do not have a uniform symbol
-distribution, so the empirical entropy is strictly below the 4 bits
-each symbol is stored in. The measured house precedent is that code
-streams land within 1% of the Gaussian-capacity entropy bound
-(packed crystal, RESULTS). The only question is the size of the gap
-on someone else's model, and it is computable per shard with zero
-capability risk.
-
-A dyadic detail that makes the arithmetic clean: `ue8m0` scales are
-exponent-only, so every block scale is a power of two and the whole
-expert set lives on a common dyadic lattice. Differences across
-experts with different block scales are then **exactly**
-representable after an integer shift — no rounding is introduced by
-aligning them. That is what makes rung 2 exact rather than
-approximate, and it is squarely the lab's exact-integer wheelhouse.
-VERIFY THIS against the reference implementation in the model repo's
-own `inference/` directory before relying on it.
+Because no capability claim is possible, **no seed-count argument
+applies anywhere in this program** — stated once so it covers every
+rung.
 
 ## Rungs
 
-Each rung is independently killable and rung 0 is the gate.
+Ordered bandwidth-optimally. Rung -1 is free and gates the rest.
 
-### Rung 0 — fp4 symbol entropy (the gate)
+### Rung -1 — the safetensors HEADER read (free, do this first)
 
-Stream a **stratified sample** of 4-6 shards (early / middle / late
-layers), dequant-free: read the fp4 codes and the ue8m0 scales as
-symbols. Report per-tensor and pooled empirical entropy in bits,
-against the 4 bits stored.
+`scratch/k3_expert_demo.py:44-79` already does exactly this:
+`struct.unpack("<Q", _get(url, 0, 8))` for the header length, then
+`json.loads` of the tensor index, then HTTP Range-fetches only the
+spans it wants — every blob sha256'd at write and re-asserted at
+load. This is the booked K3-D1 extraction cell.
 
-- Pre-registered prediction: the stream is non-uniform, so entropy
-  is measurably below 4 bits. Magnitude NOT predicted.
-- Kill condition: near-uniform symbols. Then rungs 1-3 die for the
-  cost of one afternoon of bandwidth, which is the point of
-  sampling first.
-- Cost: ~25GB download, one afternoon.
+What the header settles that `config.json` does not:
+
+- **The expert scale granularity.** `weight_block_size [128,128]`
+  plausibly describes the *fp8* path; the fp4 expert path may carry
+  its own layout (MXFP4 is group-32 with E8M0 scales; NVFP4 is
+  group-16). The scale tensor's shape decides it and is in the
+  header.
+- **This swings rung 3 by ~500x.** At [128,128], the scale stream
+  is 277e9/16384 ≈ 17 MB, i.e. 0.01% of the artifact — no
+  meaningful "GB saved" exists there. At group-32 it is
+  277e9/32 ≈ 8.7 GB ≈ 5% of the artifact — a real rung. One free
+  read decides which.
+- Whether the fp4 path is a power-of-two-scaled integer lattice at
+  all, which is what makes rung A exact rather than
+  fp-with-tolerance.
+- The true expert param count, the shared expert's storage, and
+  what the `index_*` / `num_hash_layers` / `dspark_*` tensors are
+  by name and shape.
+
+Cost: minutes, <1 MB. No prediction to register — this is a
+fact-read.
+
+### Rung 0 — fp4 symbol entropy (with a real prior)
+
+Stream a stratified sample of 4-6 shards; read fp4 codes and scales
+as symbols; report per-tensor and pooled empirical entropy.
+
+**Prior, and it is a good one:** VERDICT K3-D1 (RESULTS.md:11450)
+measured a frontier shipped 4-bit stream at **3.643 bits/param,
+rANS = Shannon to three decimals, ~9% lossless margin**. So:
+
+- Pre-registered prediction: V4's expert stream reads **3.6-3.9
+  bits/param** order-0, with rANS within ~0.5% of it (the P6-v2
+  precedent).
+- Directional refinement, mechanistic: if V4's scale blocks are
+  *coarser* than K3's group-32, within-block magnitude spread is
+  larger, the histogram flatter, and entropy should land **at or
+  above** 3.643.
+- **The kill condition changed.** v0 said "near-uniform symbols
+  kills it"; K3 says that almost certainly will not fire. The
+  honest framing is that rung 0 is a **second point on a one-point
+  law**, and the payoff is the *contrast* — how much coding margin
+  does block coarseness cost? That contrast is new.
+- Prior status: K3-D1 is n=1-ish (two experts, GEMV-level;
+  RESULTS.md:11459). The pre-reg must say "prior from n=1".
+
+### Rung 0b — split the stream into SIGN and MAGNITUDE (free)
+
+The e2m1 alphabet is sign x 8 magnitudes; the house LUT is pinned
+at `k3_expert_demo.py:33` (`[0,1,2,3,4,6,8,12]`).
+
+- For a symmetric weight distribution H(sign) = 1.000 bits exactly
+  and is incompressible, so K3's 3.643 implies **H(magnitude) ≈
+  2.643 of 3 bits — all the coding gain lives in the magnitudes.**
+- Predictions: (a) H(sign) >= 0.9995 bits per expert tensor; (b)
+  all rung-0 margin is in the magnitude sub-stream.
+- **A falsifier worth firing:** any tensor with H(sign) < 0.999 has
+  systematic sign asymmetry, contradicting the kurt≈3.0 Gaussian
+  readings across four MoEs — that would be a real finding about
+  V4's training.
+- Cost: free, same pass.
 
 ### Rung 1 — lossless re-code
 
-rANS over the rung-0 symbol statistics. Acceptance bar is
-**bit-identical round-trip**, not a size ratio: decode must
-reproduce the original bytes exactly, asserted per shard.
+rANS over the rung-0 statistics. Bar is **bit-identical
+round-trip**, asserted per tensor, never a size ratio.
 
-- Prediction: within ~1% of the rung-0 empirical bound (the house
-  packing precedent).
-- Report: GB saved on the sampled shards, extrapolated with an
-  explicit fence that extrapolation is not measurement.
+Use `llmopt/quantize/pack.py:108` `rans_size(codes, verify=True)`
+and pin `verify=True` unconditionally. **Do not** reuse
+`scratch/pack_rans.py:18` — see hazard 1.
 
-### Rung 2 — mu + delta expert coding
+### Rung 2 — naive mu+delta: ALREADY NULLED, run only as a control
 
-Write each expert as `w_e = mu + delta_e`, store mu once and
-entropy-code the residuals. Lossless by construction, in exact
-integer arithmetic on the shared dyadic lattice.
+v0 predicted "modest or zero win" from the wrong evidence. I cited
+the 208k-param 4-expert house micro-MoE's output agreement; the
+right citation is **N3, which is this exact rung run at production
+scale**:
 
-- What it tests that nothing here has: the ledger says experts are
-  FUNCTIONALLY distinct (strict agreement 0.0000; large merge
-  damage). Functional distinctness does not imply CODE
-  distinctness — two experts can compute different functions while
-  sharing most of their bits. 256 experts per layer gives real
-  statistical power where the battery's 4 did not.
-- Prediction from our own ledger: **modest or zero win**. The merge
-  tests say the experts are diverse. A null is the likely outcome
-  and is publishable.
-- Note this is NOT gravity: GRAV-0T/REV measured post-hoc gravity
-  destructive in both directions, and merge-free is a property OF
-  the pulled basin. Rung 2 never replaces an expert with mu; it
-  only codes relative to mu. None of the merge-damage findings
-  apply to a lossless change of basis.
+- Pre-reg (RESULTS.md:11095): "decode all 128 experts' gate_proj,
+  compute the mean-expert and per-expert delta; report
+  sigma(delta)/sigma(weight)... If the ratio reads < 0.5 anywhere,
+  base+delta compression arms."
+- **N3 VERDICT (RESULTS.md:11107): "experts share NOTHING in
+  weight space — dynamic replication is dead post-hoc, alive only
+  at birth." sigma(delta)/sigma(W) = 0.995 / 0.993; pairwise
+  correlations mean 0.0024 / 0.0054.**
 
-### Rung 3 — the block-scale stream
+Quantitative prediction now available: residual sigma ratio
+0.98-1.00, residual entropy >= raw entropy, so naive mu+delta is a
+**net loss** of roughly -0.0 to -0.1 bits/param once the extra
+frequency table and stored mu are counted. Run it only as a cheap
+confirmed-null on a new vendor and format (~1 hour), not as a
+candidate.
 
-The `ue8m0` scales are a second, entirely separate symbol stream
-(one exponent per 128x128 block) and are usually ignored. Code them
-on their own statistics.
+Note this was never gravity: GRAV-0T/REV measured post-hoc gravity
+destructive both ways, and rung 2 only *codes* relative to mu, it
+never replaces an expert with mu.
 
-- Prediction: none registered; this is unmeasured anywhere in the
-  ledger.
-- Cost: tiny, reuses rung-1 machinery.
+### Rung 2b — permutation-aligned mu+delta (the gauge-legal version)
 
-## Reuse inventory (write as little as possible)
+N3's instrument was entrywise pairwise correlation, which is
+exactly what `CLAUDE.md` forbids for weight comparison: "the same
+function lives at many weight arrangements (neuron permutations,
+rescalings)". Two experts computing overlapping functions with
+permuted hidden units read correlation 0. **So N3 correctly kills
+coordinate-aligned mu+delta and says nothing about the aligned
+version.**
 
-- `scratch/blackhole_b0.py` — one shard on disk at a time
-  (download -> process -> DELETE, the C7 OOM lesson applied to
-  disk), atlas rows to jsonl, zero calibration. This is the
-  streaming skeleton; V4 needs a naming/arch shim, not an
-  algorithm.
-- `scratch/capacity_meter.py:102` — a DeepSeek-V3 **fp8**
-  block-dequant cell that already reads `<name>_scale_inv` tensors
-  at 128x128. V4 plausibly shares that naming convention, but it is
-  fp4 with ue8m0 scales: re-verify, do not assume it carries.
-- `llmopt/quantize/pack.py:108` — `rans_size(codes, verify=True)`
-  entropy-codes an integer symbol array, returns bytes-with-table
-  AND entropy bits/symbol, and **round-trip-verifies with an
-  assert**. Rungs 0 and 1 are essentially this one call: rung 0 is
-  its `ent` return, rung 1 is its byte count under `verify=True`.
-  The genuinely new code is only the fp4/ue8m0 symbol reader.
-  `pack_tensor`/`unpack_tensor` and `allocator.py`,
-  `sensitivity.py` sit alongside it.
-- Exact-integer primitives in `llmopt/intmath.py` for rung 2's mu
-  computation, so the decomposition is reproducible bit-for-bit —
-  the deterministic-birth doctrine applied to compression.
+- Lossless-compatible: a permutation is a bijection; one 2048-entry
+  index per expert is ~2.8 KB against 25M params (0.001%).
+- Prediction is honestly two-sided. The split law says hard-routed
+  experts never see the same tokens, so alignment may buy nothing;
+  if it buys > 0.2 bits/param, N3 needs an amendment.
+- Kill: aligned residual entropy >= unaligned. Cost: one layer, 32
+  experts, `scipy.linear_sum_assignment` on 2048x2048 — an
+  afternoon, zero extra bandwidth.
 
-## Instrument fences
+### Rung 2c — the pooled-table question (free, predicted to WIN)
 
-1. The meter fence above: no capacity reading on fp4 weights.
-2. Extrapolation from sampled shards is not measurement; any
-   whole-model number is labelled as an estimate with its sample.
-3. Bandwidth is a real cost, not a footnote: 168GB for the full
-   set. Sample, always, and delete as you go.
-4. The fp4/ue8m0 dequant must be validated against the model's own
-   reference implementation before any number is booked.
-5. Lossless claims are verified by round-trip, never by a size
-   ratio alone; a size win with a failed round-trip is a bug
-   report, not a result.
+The version of "do experts share code mass" that N3 did *not* kill:
+do the 256 experts share a **frequency table**?
 
-## Observed but unexplained (deliberately not rungs yet)
+Mechanism: the black-hole law says router focusing drives expert
+weights to max-entropy Gaussian at their own scale (V3 experts read
+kurt 3.07, "Gaussian to two decimals"). Gaussian-on-a-fixed-lattice
+implies near-identical *marginal* histograms across experts even
+when the weights are fully decorrelated. Universal-coding
+decomposition: total rate = N·H(pooled) + sum_e KL(p_e || p_pooled).
 
-The config carries structure this spec does not touch and should
-not guess at: `q_lora_rank`/`o_lora_rank` 1024, an attention index
-(`index_n_heads` 64, `index_topk` 512), `num_hash_layers` 3 with
-`hc_sinkhorn_iters` 20, `dspark_*` on layers 40-42 with
-`dspark_markov_rank` 256, and per-layer `compress_ratios`
-alternating 4 and 128. The Sinkhorn iteration is an
-optimal-transport method and the low-rank ranks are exactly the
-kind of structure the lab's rank-floor work speaks to, but none of
-that is measured here. Listed so a later pass can pick it up
-honestly rather than as decoration.
+- Prediction: mean KL(expert || pooled) **< 0.01 bits/param**, so
+  one global 16-symbol table serves all ~33,000 expert tensors —
+  collapsing per-tensor table overhead and making the artifact
+  seekable. Per-tensor table overhead is already a named fence in
+  the paper draft; this rung is its measured amortization.
+- Kill: KL > 0.05 bits/param — which would itself be a new finding
+  (experts differing in distribution, not just coordinates) and
+  would revive rung 2 in a per-expert-table form.
+- Cost: free — a histogram pass over the rung-0 data.
+
+### Rung 3 — the scale stream, reframed as a STRUCTURE probe
+
+Two corrections to v0. First, the GB payoff is probably ~17 MB (see
+rung -1), so this is not a size rung unless the header says
+group-32. Second, v0 said "no prediction registered" — the ledger
+does predict the ordering:
+
+P6 (RESULTS.md:11206): experts raw 5.60 v entropy 4.31; **router
+raw 6.00 v entropy 2.84 — "the LEAST meter-compressible tensors are
+the MOST entropy-codable."**
+
+- Prediction, a cross-model replication of a booked regularity:
+  rank per-param rANS gain as **ue8m0 scales > router/gate and
+  `index_*`/hash tensors > shared expert > routed-expert fp4
+  codes**. Exponent streams are the extreme concentrated-code case:
+  adjacent blocks of a Gaussian tensor share scales, so predict
+  **H(scale) < 2.5 bits/symbol, gain > 5.5 bits/symbol**.
+- The interesting readout is spatial: is the exponent field smooth
+  across (row-block, col-block) and across experts and layers? An
+  order-1 conditional entropy costs one extra histogram.
+
+### Rung A — port K3-D2: one expert, exact, hash-locked
+
+The strongest form of the per-expert claim type, already built:
+`k3_expert_demo.py:99-151` has `det_gemv` (exact int64 GEMV on
+shipped codes with power-of-two shift scales and an overflow assert)
+and `chain` (w1/w3 GEMV → shift requant → sha-pinned SiLU table →
+gate*up → w2 GEMV → sha256 of the int64 trace). **VERDICT K3-D2
+(RESULTS.md:11513): hashes identical on cpu, mps and cuda — a
+frontier model's routed expert running exactly, same integers, any
+backend, directly on the vendor's shipped format.**
+
+Port delta: projection naming (`gate/up/down_proj`), shapes
+4096↔2048, and a 2-D block scale broadcast instead of
+group-32-along-last-dim — **the donor for which already exists** at
+`capacity_meter.py:102-107` (the V3-proven 128x128
+`repeat_interleave` dequant). Both halves exist; the new code is the
+join.
+
+- Prediction: sha256 identical on cpu and mps (cuda optional, 3080
+  is Artin's and GO-gated).
+- Kill: if the expert scale is not power-of-two (e4m3 rather than
+  ue8m0), exact integer accumulation needs a different carrier and
+  the rung weakens to fp-with-tolerance. Rung -1 decides.
+- Fence: tables travel as bytes, sha-verified, never regenerated
+  per device (P3 doctrine).
+- Cost: ~35 MB byte-range fetch, an afternoon.
+
+### Rung 13 — subspace overlap vs a random-matrix null (speculative)
+
+The complement N3 never ran: principal angles between expert
+row-spaces are permutation-invariant and ask whether experts share
+a **subspace** despite zero coordinate correlation. One layer, 64
+experts, SVD the `gate_proj`s, compare the principal-angle spectrum
+against a matched random-Gaussian null.
+
+- Indistinguishable from the null → N3 confirmed at the geometry
+  level and the whole mu+delta family closes for good. Measurably
+  more overlap → a shared basis exists and rung 2 revives as a
+  change-of-basis (still exactly invertible if kept integer).
+- The *rung* is speculative; the *criticism of N3's instrument* is
+  grounded in the standing gauge law. The null must be generated,
+  not assumed — 2048-dim subspaces in R^4096 have non-trivial
+  generic overlap.
+
+## Instrument hazards (all verified in-tree)
+
+1. **The verify gate.** `scratch/pack_rans.py:84` reads
+   `rans_bytes(c, verify=(tot_n < 2e9))` — round-trip verification
+   **silently switches off** past 2 billion cumulative symbols. At
+   277B expert params that threshold is crossed inside the first
+   shard, so reusing that driver would leave my "asserted per
+   tensor" bar unmet on ~99% of the stream. Use
+   `pack.py:108 rans_size(..., verify=True)` and pin it.
+   (The booked P6-v2 verdict discloses this honestly — "first 2B
+   Qwen symbols verified, coder identity thereafter" — so it is a
+   fence, not an error; but a V4 full-verification claim must not
+   be read as equivalent to it.)
+2. **Code per TENSOR, never per shard.** `rans_size` materializes
+   symbols as int32: one 3.5GB fp4 shard is ~7e9 symbols = **28 GB
+   as int32**, which kills the Mac. One expert tensor (8.4M
+   symbols) is 34 MB. This is the C7 OOM lesson — its amendment
+   records the first run being killed for cloning expert params on
+   top of the model. Per-tensor loop, `blackhole_b0.py:73-93`
+   shape, with delete-as-you-go on disk.
+3. **Derive the function-space bar, do not guess it.** VERDICT
+   B0-B2 was "FALSIFIED BY MIS-SPECIFICATION": a <=2% bar ignored
+   that a sigma/2 grid's *intrinsic* relative output error is
+   sqrt(1/48) ≈ 14.4%. Compute fp4's intrinsic error at V4's block
+   granularity before writing any bar, and state that
+   function-space numbers are comparative between arms, never a
+   quality readout.
+4. **Do not add V4 to the expert-size ladder** in
+   `llmopt/quantize/meter.py`. A V4 expert is 25.2M params and
+   lands temptingly between Qwen3 (5M) and V3 (45M) — but fp4 caps
+   span even harder than K3's MXFP4, and V3's own ladder point came
+   through an fp8 dequant approximation. Two different format
+   images cannot be rank-ordered.
+5. **Pin the coder version.** `pack.py:126` uses
+   `Categorical(probs, perfect=False)`, which approximates the
+   probability model internally — a stored stream plus stored
+   counts is only decodable by a compatible `constriction` version.
+   If "lossless artifact" is the claim, record the version beside
+   the frequency tables, the way the lab already ships sha-pinned
+   tables as bytes.
+6. **Extrapolation is not measurement.** Any whole-model number is
+   labelled an estimate with its sample named.
+7. **Validate the fp4/ue8m0 dequant** against the model repo's own
+   `inference/` reference before booking any number.
+
+## Reuse inventory (verified by reading the code)
+
+| Tool | Path:line | Interface | Change for V4 |
+|---|---|---|---|
+| Header + byte-range fetch | `scratch/k3_expert_demo.py:44-79` | `_get(url, lo, hi)`, `fetch_expert()` → named uint8 arrays, sha-asserted | repo/shard constants only |
+| fp4 nibble unpack + LUT | `k3_expert_demo.py:33,82-96` | `dequant(packed, scale)` | scale broadcast: group-32 → 2-D block |
+| 2-D block-scale broadcast | `scratch/capacity_meter.py:102-107` | `repeat_interleave` 128x128 dequant | none — this is the donor |
+| Exact integer expert forward | `k3_expert_demo.py:99-151` | `det_gemv`, `chain` → sha256 | naming + shapes; re-derive the overflow assert |
+| rANS, verified | `llmopt/quantize/pack.py:108` | `rans_size(codes, verify=True)` → (bytes incl. table, entropy bits/symbol) | none — call this, not `pack_rans.py` |
+| Streaming shard skeleton | `scratch/blackhole_b0.py:61-102` | START/END env, per-tensor loop, jsonl atlas, `os.remove` | `group_of()` needs V4 tensor names |
+| Function-space probe | `blackhole_b0.py:56-57` | 64 Gaussian probes, relative output error | bar must be derived (hazard 3) |
+| Capacity meter | `llmopt/quantize/meter.py` | `meter(w)`, `meter_group(...)` | **not on fp4 experts**; legitimate on fp8 non-expert tensors |
+
+**Dropped from v0's list:** `llmopt/quantize/allocator.py`. Verified
+— `allocate_bits` requires per-layer `delta_kl` per bit-width as
+input, which can only be measured by running the model. Under the
+no-capability fence it has no input it can be fed, so listing it as
+available would be misleading.
+
+## Rung order (bandwidth-optimal)
+
+`-1` header read (free; gates rung 3's value and rung A's
+feasibility) → `0` + `0b` + `2c` in **one streaming pass** over the
+stratified sample (entropy, sign/magnitude split, pooled-table KL —
+all histograms, one read) → `1` lossless rANS with `verify=True`
+per tensor → `A` K3-D2 port on one expert (separate 35 MB fetch) →
+`3` scale stream, free from the rung-0 pass → `2` naive mu+delta as
+a confirmed null → `2b` permutation-aligned, only if an N3
+amendment is wanted → `13` subspace overlap, only if 2b is
+ambiguous.
+
+## Provenance
+
+Rungs -1, 0b, 2b, 2c, 13, the rung-0 and rung-3 priors, all seven
+hazards, and the reuse corrections came from a read-only Opus 5
+reviewer scan (2026-08-02). Every load-bearing citation was
+verified in-tree before adoption: the verify gate at
+`pack_rans.py:84`, N3's pre-reg and verdict at RESULTS.md:11095 and
+:11107, the K3-D1 entropy anchor at :11450, the P6 group ordering
+at :11206, K3-D2's cross-backend hashes at :11513, the byte-range
+fetch and `det_gemv` in `k3_expert_demo.py`, and the allocator's
+input requirement. The scan also corrected v0's citation for rung 2
+(I had cited the 208k micro-MoE's output agreement instead of N3's
+production-scale weight-space null) and v0's footprint arithmetic.
 
 ## Status
 
-v0, design pass. A read-only reviewer scan of the ledger and
-tooling is in flight to propose further rungs; this document gets a
-v1 after those are verified line-by-line. Nothing runs until the
-rungs are pre-registered in RESULTS.
+v1. Nothing runs until the rungs are pre-registered in RESULTS.
