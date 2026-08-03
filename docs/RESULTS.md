@@ -15335,3 +15335,169 @@ NEGATIVE CONTROL (it should be boring; a failure would
 be the interesting outcome) rather than a rung that adds
 strength. Banked to RIFF-LEDGER; the ladder's phrasing
 is not changed by this entry.
+
+## PRE-REG QK-SEED2: does the COND+QK init win survive a SECOND init draw, or is the battery's new default resting on one? (2026-08-02, Mac; Opus-5 review branch)
+
+VERDICT QK-RESCOPE (-72% loss) and its gate rider (first
+nonzero solves, TRAIN 2/8) are n=1 in the strongest
+sense, and the battery default COND=1 QK=1 inherits that
+fence. This is the cheapest possible test of it.
+WHAT VARIES, exactly one thing: M.SEED seeds
+torch.manual_seed inside build_model() and nothing else
+in a GATE cell — draw_complete() takes the FIRST rows of
+the sha-asserted gate diet, unseeded, so rows, targets,
+windows, steps, and every hyperparameter are byte-
+identical across arms. The variable is the INIT DRAW.
+(Caveat for future users of the knob: in NON-gate cells
+draw_windows() also consumes M.SEED, so there it moves
+the diet too and is not a one-variable change.)
+Knob: BIRTH_SEED env on detbwd_mb.SEED, default 17.
+ARMS (each 2000 steps, GATE=1, Mac, RJOB_LOCAL):
+  SEED-REG  default env — must reproduce the pinned
+            G-RB1 sha 1fcfd187 before any arm is read,
+            certifying the knob read-only at default.
+  S23-COND  BIRTH_SEED=23 COND=1
+  S23-QK    BIRTH_SEED=23 COND=1 QK=1
+Seed-17 references, already pinned: G-A0 (COND=1) loss
+6195, TRAIN 0/8, tok 56/140, sha 2b29bd4a; G-RB1
+(COND=1 QK=1) loss 2564, TRAIN 2/8, tok 94/140, sha
+1fcfd187.
+PREDICTIONS: (1) PRIMARY, loss direction: S23-QK loss <
+S23-COND loss. (2) Gate direction: S23-QK TRAIN solves
+>= S23-COND TRAIN solves AND free-run token-acc higher.
+(3) NOT predicted: the -72% magnitude — magnitude is
+measured here, not predicted, and a much smaller effect
+still counts as direction-confirmed. (4) HELDOUT 0/8
+both arms.
+DECISION RULE, pre-committed: (1) and (2) both hold ->
+direction reproduced at a second init draw. This does
+NOT license [REPLICATED] — the resolution law wants n>=3
+paired seeds and 0-to-2 solves is a small absolute
+delta; it licenses a FINDINGS clause naming the second
+draw, and queues a third seed. (1) holds, (2) fails ->
+the loss win does not transport to the gate at this
+seed, the standing teacher-forced rider bites its own
+headline, and the COND+QK default is re-scoped to loss
+only. (1) FAILS -> falsification: the default rests on
+one draw; book it and halt doctrine movement.
+Fence: n=2 is not replication; Mac only; shas pinned for
+every arm so any leg is auditable.
+
+## VERDICT QK-SEED2: the COND+QK init win REPRODUCES at a second init draw — both pre-registered directions fire, and the saturation mechanism reappears unchanged (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG QK-SEED2 (logs logs/opus/s23_cond.log,
+s23_qk.log; all readouts are step-2000 cycle-mean, the
+same readout on both seeds):
+  SEED-REG default env: sha 1fcfd187 EXACT — BIRTH_SEED
+  is certified read-only at its default.
+  S23-COND (BIRTH_SEED=23, COND=1): loss 6631, TRAIN
+  0/8, tok 52/140, suffix 37/116, HELDOUT 0/8, init
+  zero-prob-frac 0.897, sha 4e9ee270...
+  S23-QK (BIRTH_SEED=23, COND=1 QK=1): loss 3566, TRAIN
+  2/8, tok 89/140, suffix 87/116, HELDOUT 0/8, init
+  zero-prob-frac 0.000, sha 7eb9326c...
+PAIRED AGAINST SEED 17 (same readout, from the pinned
+logs): COND-only 6408 -> COND+QK 2690, solves 0/8 ->
+2/8, tok 56 -> 94/140, zero-prob 0.891 -> 0.000.
+Prediction (1) FIRES: 3566 < 6631, a 46% cut against
+58% at seed 17. Prediction (2) FIRES on both halves:
+solves 0/8 -> 2/8 at BOTH draws, token-acc +37 here and
++38 there. Prediction (4) holds: HELDOUT 0/8 everywhere.
+Prediction (3) was deliberately not made and the
+magnitudes differ (46% v 58%) — direction is the claim.
+MECHANISM REAPPEARS: the init attention-saturation
+diagnostic is 0.891 and 0.897 for the two COND-only
+draws and EXACTLY 0.000 for both COND+QK draws. The
+knob is not moving a lucky seed; it is removing the
+same defect twice, and the capability follows it.
+DECISION RULE, as pre-committed: both directions hold,
+so the direction is reproduced at a second init draw.
+This does NOT license [REPLICATED] — the resolution law
+wants n>=3 paired seeds and 0-to-2 is a small absolute
+solve delta. FINDINGS gains a clause naming the second
+draw; the third seed is queued as PRE-REG QK-SEED3.
+LEDGER-HYGIENE NOTE, found while pinning the
+comparison: G-A0's loss is quoted as 6408 in PRE-REG
+GRAVMOE-SS and as 6195 in the QK-RESCOPE rider and NULL
+GRAVMOE-SS. Both are correct but they are DIFFERENT
+READOUTS — 6408 is the step-2000 cycle-mean, 6195 the
+merge-test base run_loss. Neither entry says which.
+Comparisons must name the readout; this cell uses
+cycle-mean throughout.
+Fence: n=2 is not replication; one diet, one window
+set, gate rows unseeded so the init draw is the only
+variable; Mac only.
+
+## PRE-REG QK-SEED3: the third paired init draw — the arm that decides whether QK-RESCOPE can carry a replication route (2026-08-02, Mac; Opus-5 review branch)
+
+Queued by VERDICT QK-SEED2's own decision rule. Same
+protocol exactly: GATE=1, 2000 steps, gate rows
+unseeded so the INIT DRAW is the only variable, all
+readouts step-2000 cycle-mean.
+ARMS: S31-COND (BIRTH_SEED=31 COND=1) and S31-QK
+(BIRTH_SEED=31 COND=1 QK=1).
+PREDICTIONS, unchanged in form from QK-SEED2 so the
+three cells are comparable: (1) S31-QK loss < S31-COND
+loss; (2) S31-QK TRAIN solves >= S31-COND solves AND
+higher free-run token-acc; (3) magnitude not predicted;
+(4) HELDOUT 0/8 both arms; (5) NEW, mechanism: the init
+zero-prob-frac is ~0.89 for COND-only and exactly 0.000
+for COND+QK, as at both prior draws — this is the
+sharpest of the five because it is a near-point
+prediction, and a miss would mean the diagnostic, not
+the capability, is seed-dependent.
+DECISION RULE: all of (1), (2), (5) hold across three
+paired draws -> QK-RESCOPE's FINDINGS bullet may carry
+[REPLICATED] with the route named as three paired init
+draws on one device and diet; the tag says draws, never
+devices or diets. Any of them fails -> the bullet stays
+[SINGLE-SEED] with the reproduced-direction clause from
+QK-SEED2, and the failure is booked as the interesting
+result. No doctrine movement either way: the resolution
+law's n>=3 is a floor for claiming a direction, not a
+licence to generalize past this diet.
+Fence: three draws, one diet, one window set, one
+device. Mac only.
+
+## VERDICT QK-SEED3: three paired init draws, 3/3 on every axis — the gate-cell COND+QK direction earns a replication route, and the saturation diagnostic is a near-point hit (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG QK-SEED3 (logs logs/opus/s31_*.log):
+  S31-COND: loss 7718, TRAIN 0/8, tok 33/140, HELDOUT
+  0/8, init zero-prob-frac 0.897, sha fa79208b...
+  S31-QK:   loss 2998, TRAIN 3/8, tok 98/140, HELDOUT
+  0/8, init zero-prob-frac 0.000, sha f1fe9e91...
+THE THREE PAIRED DRAWS, one readout (step-2000
+cycle-mean), one diet, one device:
+  seed  COND loss  QK loss   delta  solves  tok
+   17      6408      2690    -58%  0->2/8  56->94
+   23      6631      3566    -46%  0->2/8  52->89
+   31      7718      2998    -61%  0->3/8  33->98
+Predictions (1), (2), (4) fire at the third draw as at
+the first two. Prediction (5), the near-point one,
+HITS: init zero-prob-frac is 0.891 / 0.897 / 0.897 for
+the three COND-only draws and EXACTLY 0.000 for all
+three COND+QK draws. The diagnostic is not
+seed-dependent; the defect it names is what the knob
+removes, three times.
+DECISION RULE, as pre-committed: all of (1), (2), (5)
+hold across three paired draws, so the GATE-CELL
+direction may carry [REPLICATED] with the route named
+as three paired INIT DRAWS on one device and one diet.
+SCOPE, and this is the part not to blur: the cell
+re-run here is the GATE pair (G-A0 v G-RB1). VERDICT
+QK-RESCOPE's headline -72% (8883 -> 2496) is the
+TRUNCATED-WINDOW cell, which was NOT re-run. Its
+FINDINGS bullet stays [SINGLE-SEED]; only the gate
+rider's bullet earns the route. Different diet,
+different cell, no transport claimed.
+OBSERVATION, offered as an observation and not a claim
+(n=3): the COND-only baseline is the volatile arm
+(token-acc 56 / 52 / 33) while COND+QK is the stable
+one (94 / 89 / 98). If that holds at more draws the
+knob is reducing variance as well as raising the mean,
+which the loss numbers alone would not show. Not
+booked as a finding; a cell would have to pre-register
+the variance claim.
+Fence: three draws, one diet, one window set, one
+device, one architecture. n>=3 licenses the DIRECTION
+here, never generalization past this diet.

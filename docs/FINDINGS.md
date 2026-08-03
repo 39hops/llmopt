@@ -535,12 +535,18 @@ sessions under one operator, not independent investigators. Read
   battery loss from 8883 to 2496; the earlier arm's booked 73% increase
   belonged to four other matrix families softened with them, retiring the
   peaked-attention reading. ([VERDICT QK-RESCOPE](RESULTS.md#L14658).)
-- [SINGLE-SEED] [FREE-RUN-GATED]
+- [REPLICATED] [FREE-RUN-GATED]
   [REGIME-SCOPED: deterministic integer battery]
-  That same initialization produced the battery's first nonzero oracle
-  solves — two of eight training rows verified, free-run token accuracy 56
-  to 94 of 140 — so the loss win survived the gate; held-out stayed at zero
-  of eight. ([RIDER on VERDICT QK-RESCOPE](RESULTS.md#L14731).)
+  On the gate diet, softening the query and key draws turned zero solves
+  into two or three of eight and raised free-run token accuracy at every
+  draw; three paired initialization draws on one device and diet are the
+  route. ([RIDER on VERDICT QK-RESCOPE](RESULTS.md#L14731); [VERDICT
+  QK-SEED3](RESULTS.md#L15462).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery]
+  What that initialization removes is measurable before training: the share
+  of zero attention probabilities at birth is about 0.89 without it and
+  exactly zero with it, at all three draws, and capability follows the
+  diagnostic rather than the seed. ([VERDICT QK-SEED3](RESULTS.md#L15462).)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
   One-step scheduled sampling halved free-run token accuracy, 56 to 22 of
   140, and doubled teacher-forced loss, so the registered exposure-bias
