@@ -58,6 +58,7 @@ PROFILE = os.environ.get("PROFILE", "") == "1"
 BATCH = os.environ.get("BATCH", "") == "1"   # F1e arm 5 (rider 3)
 RECALL = os.environ.get("RECALL", "") == "1"  # F2a instrument
 ORACLE = os.environ.get("ORACLE", "")         # F2b: demand-json row idx
+RULE = os.environ.get("RULE", "neg")          # neg | pos bias rank (F2c)
 OUT = "logs/opus/v4_f1d.jsonl"
 
 
@@ -148,7 +149,9 @@ def choose_residents(man):
         return keep
     for lay in range(3, NL):
         b = tensor(man, f"layers.{lay}.ffn.gate.bias").float()
-        keep[lay] = sorted(torch.argsort(b)[:K].tolist())
+        order = torch.argsort(b)
+        pick = order[-K:] if RULE == "pos" else order[:K]
+        keep[lay] = sorted(pick.tolist())
     return keep
 
 

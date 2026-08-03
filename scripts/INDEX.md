@@ -1739,6 +1739,14 @@ Lambda-merge rider (pre-reg in the review-adoption amendment, 2026-07-31): merge
 
 - `main()`
 
+### scratch/lean_check.py
+House-side batch checker for axiom's Lean certificate sidecars (relays 2026-08-03-0/-1; axiom emitter c0511bc).
+
+- `sstr_to_lean(s, atoms)` — sstr (tier-1 subset) -> Lean expression text. Deliberately
+- `rederive(row)` — Our canonical statement text from (lhs, rhs, atoms) + tactic.
+- `norm(s)`
+- `main()`
+
 ### scratch/lloydmax_race.py
 The Lloyd-Max codebook race (pre-reg RESULTS 2026-07-25): per-output-channel exact 1-D k-means quantizers on the 19M infix twin, free vs zero-pinned centroids, PTQ-only. Writes one _lm*.pt checkpoint per arm; gates run separately (MPS, to match baselines).
 
