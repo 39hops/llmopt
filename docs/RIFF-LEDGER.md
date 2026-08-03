@@ -2252,3 +2252,20 @@ pooling winners was his call).
   (weight-space-reader lineage is the nearest measured relative).
   Attribution: Artin (equation-simplification frame, B-tree form),
   house (killers, grounding).
+
+- **2026-08-03 (Artin, via OpenAI "Ten advances in mathematics"):
+  frontier validation of the verifier-first thesis + three technical
+  echoes.** All ten claimed results live in hard-verification domains
+  — the FA Law v2 frame at frontier scale (their compute, our
+  mechanism: verified variance -> compressed structure; racing-arc
+  lineage). HOUSE EPISTEMICS APPLIES TO THEM: claims-as-published
+  (Connes rigidity disproof, non-sofic group) are proposals until the
+  community verifies. Echoes banked to existing cells: (1) sphere
+  packing/codes = lineage for the capacity-achieving-code frame (the
+  README sentence; 6.65 bits/wt meter); (2) permanent circuit lower
+  bounds = the theoretical ceiling context for the B-tree/algorithmic-
+  distillation riff (some functions have no small program); (3) CVP
+  hardness = the justification line for HEURISTIC VQ in the codebook
+  cell (optimal lattice quantization intractable in general). No new
+  runs warranted. Attribution: Artin (the kinship observation), house
+  (the scoping).
