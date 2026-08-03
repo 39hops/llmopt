@@ -18110,3 +18110,65 @@ diff(candidate) = integrand, the identity the judge
 actually compares). House deliverable now unblocked:
 the lake checker + mechanical statement diff + cost
 verdict.
+
+## VERDICT V4-F2c: K-sweep — recall scales sub-linearly (1.99x at 2x K, a hair under the registered 2x); the registered fp8-base memory wall DID NOT FIRE (RSS flat 5.4 GB); throughput is miss-driven, not memory-driven (2026-08-03, Mac; Fable seat)
+
+Three arms, pos-bias residents, fp8-dense + pair-LUT +
+batched base, same prompt, 64 greedy tokens, one disk
+state (jobs/f2c_sweep.log; rows 7-9 of
+logs/opus/v4_f1d.jsonl).
+
+MEASURED TABLE (recall on each arm's OWN trajectory):
+  K=16: residents  785 | recall 0.0888 | prefill  20.7s | decode 0.118 tok/s | misses  73 | RSS 5.2 GB
+  K=24: residents 1105 | recall 0.1481 | prefill  62.1s | decode 0.035 tok/s | misses 189 | RSS 5.4 GB
+  K=32: residents 1425 | recall 0.1763 | prefill 138.6s | decode 0.050 tok/s | misses  14 | RSS 5.4 GB
+
+PREDICTION 1 (recall >= 2x at 2x K): MISS BY A HAIR —
+0.1763/0.0888 = 1.99x vs registered 2.0x. Directionally
+as the uniform-routing model predicts, but magnitudes ran
+HIGH across the board (measured 0.089/0.148/0.176 vs
+expected ~0.07/~0.10/~0.14) and the tail saturates:
+16->24 gains 1.67x for +41% residents; 24->32 gains only
+1.19x for +29%. Static coverage buys recall at a
+diminishing rate even under near-uniform selection.
+
+PREDICTION 2 (K=32 crosses the memory wall, >=2x collapse
+vs K=24 with Metal > 29 GB): DID NOT FIRE — an honest
+null on the registered frontier. RSS stayed flat at
+5.4 GB for BOTH K=24 and K=32 (bar <=30 GB PASS all
+arms); K=32 decoded 1.4x FASTER than K=24, the opposite
+of a paging signature. The pre-compact reading that "the
+wall sits between K=16 and 24" was ALSO wrong: the K=24
+slowdown (0.118 -> 0.035) tracks its MISS count (189 vs
+73 vs 14), not memory. Mechanism, as measured: each arm's
+routing trajectory demands different experts; the K=24
+arm's attractor happened to demand the most non-resident
+experts, and miss-servicing — not the working set — set
+its decode rate. K=32's larger nest covered its own
+trajectory almost fully (14 misses) and ran faster
+despite 29% more residents. THE F2B CLOSED-LOOP LESSON,
+now in the throughput column: you cannot predict an arm's
+speed from its residency size alone, because the
+trajectory the residency CREATES determines the miss
+load. (Prefill is the K-monotone cost: 20.7/62.1/138.6 s,
+dominated by resident loading, 1183 s load at K=32.)
+
+PREDICTION 3 (text, descriptive): three arms, three
+DISTINCT degenerate attractors — K=16-pos: numbered-list
+prompt echo ("): 1) the three most important ideas...");
+K=24: a NOVEL enumeration attractor (": 1. computer
+science, 2. computer science, ... 11." — verbatim in row
+8); K=32: bare prompt echo ("the three most important
+ideas in computer science are" loop). With F2a-neg and
+F2b-oracle that is FIVE distinct attractors across
+residency rules on one prompt — more static coverage does
+NOT restore non-degenerate text at these K; it just
+selects a different attractor. Degeneracy remains
+over-determined at <=12.5% expert residency.
+
+FENCES: n=1 per arm, one prompt; tok/s comparisons valid
+within this sweep only (same disk state); recall judged
+on each arm's own demand (closed-loop); no capability
+claim. The miss-driven mechanism is an OBSERVATION from
+n=3 arms, not a law — a paired miss-controlled arm would
+be the falsification instrument if it ever matters.
