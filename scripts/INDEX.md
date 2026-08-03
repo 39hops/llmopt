@@ -2319,13 +2319,23 @@ RUNGS 0/0b/1/2c/3 (pre-reg V4-RUNG-0/1): entropy and lossless rANS of DeepSeek-V
 - `kl(p, q)` — KL(p || q) in bits, over the support of p.
 - `main()`
 
+### scratch/v4flash_rung2b.py
+RUNG 2b (pre-reg V4-RUNG-2B): are DeepSeek-V4-Flash experts closer to each other UP TO A PERMUTATION than they are coordinate-wise?
+
+- `load_expert(idx, hdr, url, base)` — Integer weights on the shared dyadic lattice, per projection.
+- `hidden_cost(a, b)` — Squared-distance cost between hidden units of two experts.
+- `permute(ref, perm)` — Apply a hidden-unit permutation to a reference expert.
+- `resid_entropy(e, ref)` — Order-0 entropy in bits/param of the exact integer residual.
+- `raw_entropy(e)`
+- `main()`
+
 ### scratch/v4flash_rungA.py
 RUNG A (pre-reg V4-RUNG-A): a full DeepSeek-V4-Flash expert forward run ENTIRELY IN INTEGERS on the vendor's shipped fp4 codes, hash-locked across backends. Ported from the certified K3-D2 chain (scratch/k3_expert_demo.py:99-151); RECEIPT V4-RUNG-MINUS-1 established the two formats are byte-identical, so only constants and the activation change.
 
 - `_get(url, lo=None, hi=None)`
 - `header()`
-- `cached(name)` — Read a byte-range blob fetched by rung 0, re-asserting its sha.
-- `decode(proj, hdr)` — Shipped bytes -> (codes2x [out, din] int64, exps [out, g] int64).
+- `cached(name, hdr=None, url=None, base=None)` — Blob bytes, sha-pinned. Byte-range fetches on a cold cache so the
+- `decode(proj, hdr, url, base)` — Shipped bytes -> (codes2x [out, din] int64, exps [out, g] int64).
 - `det_gemv(codes2x, exps, x, dev, chunk=512)` — Exact integer y = W @ x on the shipped codes. Per-group-32 int64
 - `rdiv(v, d)` — Round-half-away-from-zero integer division (house convention).
 - `to_scale_A(y, e)` — Requant det_gemv output (scale 2^(e-1), x already at A) to A.

@@ -15969,3 +15969,152 @@ vendor's own shipped 4-bit weights. Fences from the
 parent verdict are unchanged and still govern: this is
 NOT bit-equality with DeepSeek's float32 forward, and
 no capability claim follows or is possible here.
+
+## PRE-REG V4-RUNG-2B: permutation-aligned expert residuals — the question N3's instrument provably could not answer (2026-08-02, Mac; Opus-5 review branch)
+
+N3 (RESULTS.md:11107) killed coordinate-aligned mu+delta
+at production scale: sigma(delta)/sigma(W) = 0.995,
+pairwise correlations ~0.003, "experts share NOTHING in
+weight space". But N3's instrument was ENTRYWISE
+correlation, and CLAUDE.md's standing gauge law says
+that instrument is invalid for weight comparison: "the
+same function lives at many weight arrangements (neuron
+permutations, rescalings)". Two experts computing
+overlapping functions with permuted hidden units read
+correlation zero. So N3 correctly kills the coordinate
+version and says nothing about the aligned one.
+THE GAUGE: permuting a SwiGLU expert's hidden units —
+rows of w1 and w3, columns of w2, one shared
+permutation — leaves its function EXACTLY invariant. So
+comparing expert e against a permuted reference is
+legitimate, and a permutation is a bijection, so the
+coding stays lossless (index cost 2048 x 11 bits = 2.8
+KB against 25.2M params, 0.001%).
+CELL: layer 22, expert 0 as reference, experts 1-7
+compared. Alignment by Hungarian assignment
+(scipy.linear_sum_assignment) on a float32 cost matrix
+built with ||a-b||^2 = ||a||^2 + ||b||^2 - 2a.b, costs
+summed over w1 rows, w3 rows and w2 columns so one
+permutation serves all three. The alignment search is a
+float HEURISTIC and affects no claim of exactness; the
+residual is then coded in EXACT integers, values being
+codes2x << (exp - emin) on the shared dyadic lattice.
+THREE ARMS, same residual pipeline, so the alphabet
+expansion is common and cancels in the comparison:
+  IDENT  delta = int(e) - int(ref)
+  RAND   delta = int(e) - int(Pi_random(ref))
+  HUNG   delta = int(e) - int(Pi_hungarian(ref))
+PREDICTIONS: (1) PRIMARY — H(HUNG) is within 0.2
+bits/param of H(IDENT), i.e. alignment does NOT help.
+(2) All three residual entropies EXCEED the raw code
+entropy of 3.865 bits/param (VERDICT V4-RUNG-0/1), so
+residual coding is a net loss in every arm — the
+quantitative form of N3's sigma ratio 0.995. (3) HUNG
+beats RAND by only a small margin, because a Hungarian
+fit on 2048 units will always absorb some noise; the
+RAND arm exists precisely to price that. (4) FREE
+NECESSARY CONDITION, reported alongside: the sorted
+hidden-unit norm profiles across experts. If experts do
+not even share a sorted norm profile, no permutation
+could align them and (1) is over-determined.
+DECISION RULE: (1) holds -> N3's conclusion SURVIVES a
+gauge-legal instrument, and the mu+delta family closes
+for good rather than on a technicality. (1) FAILS, i.e.
+HUNG beats IDENT by more than 0.2 bits/param -> N3
+needs an amendment, the gauge law has a measured
+consequence for compression, and change-of-basis coding
+revives as a rung.
+FENCES: one layer, one reference expert, 7 pairs;
+Hungarian is optimal FOR THE GIVEN COST but the cost is
+a proxy, so a better permutation may exist and a null
+here is "no win under this cost", not "no win
+possible"; no capability claim is made or possible.
+
+## VERDICT V4-RUNG-2B: N3 SURVIVES a gauge-legal instrument — permutation alignment does not help, and the necessary condition holds while the sufficient one fails (2026-08-02, Mac; Opus-5 review branch)
+
+Arms per PRE-REG V4-RUNG-2B. Layer 22, expert 0 as
+reference, experts 1-7 compared, residuals coded in
+exact integers on the shared dyadic lattice. Script
+scratch/v4flash_rung2b.py; rows in
+logs/opus/v4_rung2b.jsonl.
+  raw code entropy (integer lattice)   3.6157
+  residual IDENT                       4.3788
+  residual RAND                        4.3789
+  residual HUNG                        4.3578
+  HUNG - IDENT   -0.0210 bits/param (bar: helps < -0.2)
+  HUNG - RAND    -0.0211
+  cost hung/ident 0.9698 | rand/ident 1.0001
+PREDICTION (1) HOLDS, ten times inside the bar:
+Hungarian alignment buys 0.021 bits/param where the
+registered threshold for "helps" was 0.2. Every one of
+the 7 pairs reads between -0.0207 and -0.0214 — this is
+not a marginal call.
+(2) HOLDS: all three residual streams (4.36-4.41) cost
+MORE than the raw codes (3.62), so residual coding is a
+net loss of ~0.75 bits/param in every arm. That is N3's
+sigma ratio 0.995 restated in bits.
+(3) HOLDS: Hungarian beats a RANDOM permutation by
+0.021 bits — its entire advantage is noise-fitting on
+2048 units, which is exactly why the RAND arm was
+registered. And rand/ident = 1.0001: pairing expert e's
+unit i with reference unit i is INDISTINGUISHABLE from
+pairing it with a random unit.
+(4) is the interesting one. The necessary condition
+PASSES — sorted hidden-unit norm profiles agree to 7.3%
+relative L2 across experts — and alignment still fails.
+So experts are not incompatible; they are statistically
+IDENTICAL and individually UNMATCHABLE, like independent
+draws from one distribution. That is precisely what the
+split law predicts for hard-routed experts that never
+see the same tokens.
+DECISION RULE: (1) holds, so N3's conclusion SURVIVES a
+gauge-legal instrument. The mu+delta family closes for
+good rather than on the technicality that N3's entrywise
+correlation was the wrong invariant. No amendment to N3
+is owed.
+Fence: one layer, one reference, 7 pairs; Hungarian is
+optimal for the given proxy cost, so this is "no win
+under this cost", not "no win possible".
+
+## OBSERVATION V4-MERGED-LATTICE (unregistered, found in rung 2b's plumbing): coding the code and scale streams JOINTLY is 0.307 bits/param cheaper than coding them separately, and still exactly lossless (2026-08-02, Mac; Opus-5 review branch)
+
+NOT PRE-REGISTERED — it fell out of rung 2b needing a
+common integer space, and it is booked as an observation
+with a confirming cell owed, not as a verdict.
+Like-for-like on the SAME bytes (layer 22 expert 0,
+25,165,824 params):
+  nibble stream            3.8674 bits/param
+  + scale stream (0.9640/scale)  0.0301 bits/param
+  = separate total         3.8975 bits/param
+  MERGED integer lattice   3.5903 bits/param
+  difference               0.3073 bits/param
+The merge is LOSSLESS by construction: every weight is
+codes2x * 2^(exp-1), so the integer codes2x <<
+(exp - emin) plus one emin per tensor determines the
+weight exactly, and the separate scale stream becomes
+unnecessary rather than merely cheaper.
+MECHANISM, measured and decomposed rather than asserted:
+the (code, scale) representation is MANY-TO-ONE. On w1,
+57 distinct (nibble, shift) pairs collapse to 24
+distinct integers.
+  (a) SIGNED ZERO. 12.70% of codes are zero, split
+      6.357% at 0x0 and 6.338% at 0x8 — an even split,
+      so the sign bit of a zero carries no information.
+      Merging two symbols at p each into one at 2p
+      saves exactly 2p bits: 0.127 bits/param, and the
+      measured zero fraction gives 0.127 to three
+      decimals.
+  (b) SCALE ALIASING accounts for the remaining ~0.180
+      bits/param: 2 * 2^1 and 4 * 2^0 are the same
+      weight but distinct (code, scale) pairs.
+IF IT CONFIRMS, the size picture changes materially: at
+3.590 bits/param the expert store is ~124.3 GB against
+the 134.9 GB estimated from separate streams in VERDICT
+V4-RUNG-0/1 — about 10.6 GB further, and the total
+saving against the 147.2 GB shipped becomes ~15.6%
+rather than 8.4%.
+OWED before this can be a verdict: a pre-registered cell
+over the rung-0 sample with rANS on the merged stream
+and a round-trip assertion, since these are ENTROPY
+numbers and only a verified coder makes them a lossless
+claim. One expert, one layer here.

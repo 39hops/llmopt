@@ -484,6 +484,12 @@ sessions under one operator, not independent investigators. Read
   and their 8-bit power-of-two block scales carry 0.964 — so the scale stream
   is 5.9% of the bytes but 62% of the losslessly recoverable headroom, on a
   3-layer sample. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
+- [MECHANISM-CONFIRMED] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
+  Experts in a 256-expert frontier layer are statistically identical yet
+  individually unmatchable: sorted hidden-unit norm profiles agree to 7%, while
+  pairing a unit with its counterpart is indistinguishable from pairing it at
+  random, so aligning by permutation before differencing buys 0.02 bits/param
+  against a 0.2 bar. ([VERDICT V4-RUNG-2B](RESULTS.md#L16033).)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts]
   The sign bit of a symmetric 4-bit weight code is exactly incompressible
