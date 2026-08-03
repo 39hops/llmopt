@@ -17644,3 +17644,29 @@ failed arms).
 ARTIFACTS: scratch/v4flash_twin.py (pair-LUT + WCACHE),
 scratch/v4flash_f1d.py (DEQ/PROFILE modes),
 jobs/f1e_*.log, logs/opus/v4_f1d.jsonl.
+
+## RIDER 3 on PRE-REG V4-F1e (arm 5, registered before running): batch the per-layer expert calls — one unpack, one bmm, and 43 fewer hidden syncs per token (2026-08-03, Mac; Fable seat)
+
+WHAT: replace MoE.forward at RUNTIME (a declared
+monkeypatch installed next to the kernel shims — the
+vendor SOURCE stays unmodified, but this arm, unlike
+all prior ones, substitutes vendor LOGIC, so it carries
+an EQUIVALENCE BAR). The vendor loop runs each hit
+expert separately: per token that is 258 expert calls x
+(act_quant + 3 pair-LUT unpacks + 3 gemms + clamps),
+plus a hidden counts.tolist() DEVICE SYNC per layer.
+The batched form: stack the <= 6 hit experts' packed
+weights per projection, ONE pair-LUT unpack, ONE bmm
+per projection, vendor Expert math replicated exactly
+(fp32 compute; up clamped both sides, gate max-only;
+silu(gate) * up; per-token gate weights applied before
+w2), scatter-add, shared expert unchanged.
+EQUIVALENCE BAR (gating): on a real layer-22 input, the
+patched MoE output vs the vendor loop, same weights
+same routing: rel L2 <= 1e-3 (same fp32 math, different
+batching order), and the demo's greedy token stream
+UNCHANGED vs the arm-4 run.
+PREDICTION (5): decode >= 0.35 tok/s (>= 1.6x arm 4's
+0.219) at K=16 DEQ=bf16, same prompt.
+FENCE: same-device same-prompt; no quality claim; the
+patch is env-gated (BATCH=1) and off by default.
