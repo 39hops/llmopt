@@ -2356,6 +2356,23 @@ RUNG A (pre-reg V4-RUNG-A): a full DeepSeek-V4-Flash expert forward run ENTIRELY
 - `to_scale_A(y, e)` — Requant det_gemv output (scale 2^(e-1), x already at A) to A.
 - `main()`
 
+### scratch/v4flash_rungd.py
+RUNG D (pre-reg V4-RUNG-D + S0): is DeepSeek-V4-Flash's shared router key direction routing-INERT?
+
+- `vendor_scoring()` — Confirm the score function and top-k from the shipped source.
+- `shared_directions(W)` — Four defensible definitions of "the" shared key direction.
+- `score(X, W, bias)` — Vendor scores for selection: sqrt(softplus(X W^T)) + bias.
+- `topk_sets(S, k)` — Top-k indices per row, unordered, plus the rank-1 index.
+- `main()`
+
+### scratch/v4flash_s0.py
+RUNG S0 (pre-reg V4-RUNG-D + S0): is the entropy-coded form of a DeepSeek-V4-Flash expert EXECUTABLE, or only an archive?
+
+- `blob(name)` — Cached bytes with the sha re-asserted (the K3-D1 protocol).
+- `nibbles(raw)`
+- `bench(sym, nrep)` — Encode once, decode nrep times; return (bytes, best decode s, enc s).
+- `main()`
+
 ### scratch/verify_intbirth_prims.py
 House-side acceptance of axiom's intbirth PRIMITIVE layer (relay 2026-08-01-3): rebuild the R2b training loop from intbirth.Block / AdamW / rdiv alone, house-authored composition, and check all 8 r2b_ref.json milestone digests + losses. This is also the shape the multi-block reference will take (dx0 chaining, one AdamW over the concatenated param list).
 

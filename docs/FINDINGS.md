@@ -486,10 +486,24 @@ sessions under one operator, not independent investigators. Read
   3-layer sample. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
 - [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
   The shared component a gravity decomposition looks for is present in a
-  frontier MoE but sits in the ROUTER, not the weights: at layer 22 all
-  32,640 gate-key pairs are positively aligned and every key shares a common direction, while
-  pairs closest in routing space show no more weight structure than random
-  ones. ([VERDICT V4-RUNG-R + 2B-ROUTER](RESULTS.md#L16183).)
+  frontier MoE's ROUTER GEOMETRY, not its weights: at layer 22 all 32,640
+  gate-key pairs are positively aligned and every key shares a common
+  direction, while pairs closest in routing space show no more weight
+  structure than random ones. ([VERDICT V4-RUNG-R +
+  2B-ROUTER](RESULTS.md#L16183); qualified below.)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  That shared router direction is a LEVEL, not a contrast: deleting it from
+  the keys leaves 97.4-98.0% of top-6 routing unchanged across three layers,
+  because it adds a near-constant term (variation 5-10%) to all 256 scores
+  and a top-k cannot see a level — so the confluence is plain in the geometry
+  and nearly absent from the behaviour. ([VERDICT V4-RUNG-D +
+  S0](RESULTS.md#L16483).)
+- [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
+  Entropy-coding a frontier MoE's shipped 4-bit experts yields an archive,
+  not a runtime: the byte-lossless form saves 8.3% and decodes at 38 MB/s
+  single-threaded, 131x under the pipe a streaming design assumes and 90 s
+  per token of pure decode for a 43-layer, 6-expert route. ([VERDICT
+  V4-RUNG-D + S0](RESULTS.md#L16483).)
 - [NULL] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
   Experts in a 256-expert frontier layer are statistically identical yet
   individually unmatchable: sorted hidden-unit norm profiles agree to 7%, while

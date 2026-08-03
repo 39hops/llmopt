@@ -28,7 +28,8 @@ because they change what this program is allowed to claim:
 | merged code+scale lattice | 3.5903 v 3.8975 separate, **one expert** | OBSERVATION V4-MERGED-LATTICE |
 | exact integer expert forward | one hash on cpu / mps / cuda | VERDICT V4-RUNG-A + rider |
 | experts share weight structure? | no — coordinate, permutation, and router-neighbour | N3; V4-RUNG-2B; V4-RUNG-R + 2B-ROUTER |
-| router keys | all 32,640 pairs positive; +0.385 shared direction | V4-RUNG-R + 2B-ROUTER |
+| router keys | all 32,640 pairs positive; +0.385 shared direction — but that direction is a **level**: deleting it leaves 97.4-98.0% of top-6 routing | V4-RUNG-R + 2B-ROUTER; **V4-RUNG-D** |
+| byte-lossless expert | 13.37 MB → **12.26 MB (8.3%)**, decoding at **38 MB/s** | V4-RUNG-D + S0 |
 | hash routing table | `tid2eid` [129280, 6] confirmed, layer 0 | same |
 | non-expert tensors | **F8_E4M3 with F8_E8M0 scales** | RECEIPT V4-RUNG-MINUS-1 |
 
@@ -72,8 +73,13 @@ One header read of a non-expert shard reconciles it.
 
 ## Streaming, corrected
 
-Per token, experts only: 6 × 43 × 11.29 MB = **2.9 GB**. Three omissions
-in v2, the first load-bearing:
+**v3 priced this wrong and S0 caught it.** 11.29 MB is 25.17M params at
+3.5903 bits — the **merged-lattice** rate, which is weight-exact,
+byte-LOSSY and n=1. A stream has to be executable, and the executable
+form is packed fp4 at **13.37 MB**. So per token, experts only:
+6 × 43 × 13.37 MB = **3.45 GB**, not 2.9 GB, and every bound below
+tightens accordingly (the ~1.7 tok/s ceiling becomes **~1.45 tok/s**).
+Three omissions in v2, the first load-bearing:
 
 1. **The dense path is missing.** Every token also reads attention, the
    shared expert, norms and routers for all 43 layers. Resident, that
@@ -160,7 +166,12 @@ earned:
 - **All 9 cached experts, not one** — v2's 124 GB headline extrapolates
   an n=1 number, violating its own hazard 6. Zero download.
 
-### S0 — rANS decode throughput, pre-registered to FAIL
+### S0 — rANS decode throughput, pre-registered to FAIL — **RUN, fired**
+
+**Measured 2026-08-03: 38.2 MB/s, 131× short. Conclusion adopted — the
+entropy-coded form is an archive, the bit-packed fp4 form is the runtime.
+C5 stays dormant. The 15.6% below was also wrong (same 11.29 MB error):
+byte-lossless saves 8.3%.** Original registration kept for the record:
 
 House doctrine already answers this in the negative: P6-v2's fences say
 *"decode-side rANS throughput not benched (storage format; **the runtime
@@ -173,7 +184,12 @@ an inference into a number, but register the expected conclusion: **the
 entropy-coded form is an archive format; the bit-packed fp4 form is the
 streaming format.**
 
-### R-d — is the shared router direction routing-INERT? (new, minutes)
+### R-d — is the shared router direction routing-INERT? — **RUN, fired**
+
+**Measured 2026-08-03: 97.4-98.0% set agreement at three layers and
+three input scales; deflation removes ~99% of the logit mean and <0.1%
+of the across-expert spread. The direction is a LEVEL. Headline
+qualified in FINDINGS and in the table above.** Original registration:
 
 Hazard 7 says a constant bias offset is a top-k no-op. **The same
 argument was never applied to the shared key direction.** Keys align at
@@ -293,7 +309,15 @@ port needs an exponent decode, not a multiply. Not usable:
 
 ## Status
 
-v3. Order: **M1** (re-scoped, zero download) → **S0** (registered to
-fail) → **R-d** (cheapest falsifier of the headline) → **W1**
-format-matched → **Q1** with sigma ≈ 5 → **13** with the fixed
-instrument. Nothing runs until its rung is pre-registered in RESULTS.
+v3, amended 2026-08-03: **R-d and S0 are RUN** (VERDICT V4-RUNG-D + S0)
+and both fired as registered — the router direction is a level, the
+coded form is an archive. Remaining order: **M1** (re-scoped, zero
+download) → **W1** format-matched → **Q1** with sigma ≈ 5 → **13** with
+the fixed instrument. Nothing runs until its rung is pre-registered in
+RESULTS.
+
+**Standing note earned by R-d**: the mean projection of the router keys
+onto the shared direction is stable to 0.0008 across four defensible
+definitions of that direction, while the MINIMUM spans 0.2397-0.2643.
+Book extrema with their definition attached, or book the mean. This is
+the third wrong-extreme finding on this branch.

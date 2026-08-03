@@ -16385,3 +16385,222 @@ exist, all amendment chains resolve, every pre-reg
 precedes its verdict with no missing or smuggled arm,
 and the 3080 re-ran all 16 pins sha-identical against
 this branch's modified certified files.
+
+## PRE-REG V4-RUNG-D + S0: is the shared router direction routing-INERT, and is the entropy-coded form executable? (2026-08-03, Mac; Opus-5 review branch)
+
+Two short Mac-local cells, zero download, both fired
+against a stated prediction. R-d is registered FIRST
+because it is the cheapest available falsifier of this
+branch's own headline; S0 is registered to FAIL.
+
+RUNG D — the falsifier. VERDICT V4-RUNG-R booked "the
+confluence is REAL but it lives in the ROUTER" on the
+strength of every one of the 32,640 key pairs having a
+positive cosine and every key sharing a +0.385 mean
+direction. Hazard 8 of the spec already says a CONSTANT
+additive term is a top-k no-op, which is why gate.bias
+shifts selection without touching the output weight. The
+same argument was never turned on the KEYS. If every key
+w_i carries the same component along a unit vector u,
+then every score picks up 0.385 * <u, x> — identical
+across experts, and therefore invisible to a top-k that
+only compares scores to each other. What survives
+selection is the RESIDUAL (W - u u^T W).
+CELL: for layers 4, 22, 40, take U = row-normalized gate
+keys, u = the normalized mean of U (the same object the
++0.385 figure describes). Draw x ~ N(0, I_4096), n =
+2000 per layer, fixed seed. Compare the top-6 index SET
+from raw scores against the top-6 from deflated scores,
+on the scores as the vendor computes them
+(sqrtsoftplus(x @ W^T), then + bias for selection). The
+deflation is applied to the keys, before the
+nonlinearity, because that is where the shared direction
+lives.
+READOUTS: mean set agreement |intersection| / 6; the
+fraction of draws with a fully identical set; rank-1
+(argmax) agreement; and the deflation's effect on the
+score spread.
+PREDICTION (1): mean set agreement >= 90%. The shared
+direction is MOSTLY ROUTING-INERT.
+PREDICTION (2): the deflation removes a large share of
+score MEAN and a small share of score VARIANCE across
+experts — the shared component is a level, not a
+contrast.
+IF (1) FIRES: the headline qualifies. "The confluence
+lives in the router" becomes a statement about key
+GEOMETRY, not a routing MECHANISM, and FINDINGS plus
+spec v3 both need the edit in the same commit.
+IF (1) FAILS: the shared direction is doing selection
+work and the headline strengthens. Either way this is a
+result, and the direction is registered here before the
+run.
+FENCE, registered in advance: isotropic x is a NULL
+MODEL. Real hidden states are anisotropic and could put
+large mass on <u, x>. This cell licenses "consistent
+with routing-inert under an isotropic input model", and
+NEVER "proven inert". No capability claim.
+RECEIPT DEBT PAID HERE: AMENDMENT AUDIT-0802 item (8)
+recorded that the +0.385 / +0.254 / 0.0276 decomposition
+came from an inline command and is NOT recomputable from
+v4_router.jsonl, which stores only absolute cosines.
+This cell recomputes the decomposition from the same
+sha-pinned blobs and writes it to a log. If the numbers
+do not reproduce, that is itself the finding and gets
+booked as an amendment.
+
+RUNG S0 — registered to FAIL. House doctrine already
+answers this in the negative: P6-v2's fences say
+decode-side rANS throughput was never benched because
+the format is storage and "the runtime twin remains
+crystal5/int8", citing the C2b lesson that the
+bit-packed form is DIRECTLY EXECUTABLE. The payoff is
+small: a raw expert is 13.37 MB against 11.29 MB coded,
+15.6%, bought with a full entropy decode.
+CELL: encode one cached expert's nibble stream with
+constriction 0.5.0, Categorical(perfect=False), pinned
+verify=True via the same coder path llmopt/quantize/
+pack.py:108 uses; then time the DECODE alone, best of 5,
+single-threaded, reporting MB/s of DECODED PAYLOAD (not
+compressed bytes). Report the encode side too.
+PREDICTION: single-threaded decode lands in 20-300 MB/s,
+one to two orders of magnitude short of the 5 GB/s bar
+the streaming arithmetic needs.
+REGISTERED CONCLUSION IF IT FAILS AS EXPECTED: the
+entropy-coded form is an ARCHIVE format and the
+bit-packed fp4 form is the STREAMING format. That is a
+format-design statement, not a defeat — it is what
+converts an inference the spec has been carrying into a
+number.
+IF IT SURPRISES (>= 1 GB/s): spec item C5, interleaved
+rANS, becomes live.
+FENCE: this is a Python-binding measurement of one
+coder on one machine. It bounds THIS implementation, not
+rANS as a technique; a SIMD or GPU decoder is a
+different instrument and is not being claimed on.
+Both cells are Mac-only, minutes each, and touch no
+certified file.
+
+## VERDICT V4-RUNG-D + S0: the shared router direction is a LEVEL, not a contrast — 97.4-98.0% of routing survives deleting it, and the entropy-coded expert decodes 131x too slowly to stream (2026-08-03, Mac; Opus-5 review branch)
+
+Both registered predictions FIRE, and the first one
+qualifies this branch's own headline downward.
+
+RUNG D. Vendor scoring read from the shipped source
+rather than remembered: inference/model.py sha
+c0c19e6c9fa439ba asserts scores = F.softplus(x @ W^T)
+.sqrt(); scores = scores + self.bias; indices =
+scores.topk(topk). config.json gives topk 6, 256 routed
+experts, scoring_func sqrtsoftplus. Note the two vendor
+namespaces disagree by NAME: ModelArgs calls it
+n_activated_experts, config.json calls it
+num_experts_per_tok. Both say 6.
+RESULT, at the registered scale (x ~ N(0, I_4096),
+n = 2000, seed 2026_08_03 + layer):
+  layer   set agr   identical   rank-1
+    4      0.9802     0.8815     0.9815
+   22      0.9744     0.8485     0.9730
+   40      0.9741     0.8505     0.9750
+PREDICTION (1) registered >= 0.90 set agreement: FIRES
+on all three layers with 7-8 points of room. Deleting
+the shared direction from the keys leaves 97.4-98.0% of
+the top-6 selection unchanged and ~97.3-98.2% of the
+rank-1 winner unchanged.
+PREDICTION (2), level not contrast: FIRES, and more
+sharply than registered. Deflation removes ~99% of the
+logit MEAN (L4 0.0520 -> 0.0003; L22 0.0110 -> 0.0008;
+L40 0.0063 -> 0.0004) and 0.033% / 0.081% / 0.048% of
+the across-expert SD. The mechanism is one number: the
+shared contribution to expert i is c_i * <u,x> with
+c = W u, and c has coefficient of variation 0.051 /
+0.097 / 0.070 — near-constant across experts, hence
+nearly invisible to a top-k that only compares experts
+to each other.
+UNREGISTERED ROBUSTNESS PROBE, labelled as such:
+softplus is not scale-invariant, so the same cell ran at
+input scale 0.1 and 10 (logit across-expert sd 0.21-0.27
+to 20.6-27.1, i.e. the near-linear and the saturated
+regime). Set agreement 0.968-0.982 throughout. The
+conclusion does not come from the null model sitting in
+one regime.
+WHAT THIS DOES TO THE HEADLINE. VERDICT V4-RUNG-R said
+"the confluence is REAL but it lives in the ROUTER".
+The geometry is unchanged and still real — every key
+still shares a large positive component. But that
+component is a LEVEL added to all 256 scores alike, and
+top-k cannot see a level. So the correct statement is
+about key GEOMETRY, not a routing MECHANISM: the
+confluence is visible in the weights and nearly absent
+from the behaviour. FINDINGS and spec v3 edited in this
+commit. This is the same structure as hazard 8 (a
+constant router bias is a top-k no-op), one level down,
+and it is the first time the argument was turned on the
+keys.
+FENCE, registered in advance and binding: isotropic x is
+a NULL MODEL. Real hidden states are anisotropic and
+could place large mass on <u,x> — though note that even
+that would move all 256 scores together. This licenses
+"consistent with routing-inert under an isotropic input
+model" and NEVER "proven inert". No capability claim.
+RECEIPT DEBT PAID (AMENDMENT AUDIT-0802 item 8). The
++0.385 / +0.254 / 0.0276 decomposition is recomputed
+from the sha-pinned blobs and logged. Layer 22
+reproduces mean +0.3851 and residual |cos| 0.0276
+exactly. The MIN did not reproduce at first (+0.2427),
+and the cause is definitional, not arithmetic: the
+booked +0.254 used u = normalize(mean of RAW rows)
+(+0.2544), while the natural reading is mean of
+UNIT rows. All four defensible definitions are now
+measured and logged. Their mean projections agree to
+0.0008 and their residual |cos| to 0.0001, but their
+MINIMA span 0.2397-0.2643 — so the EXTREMUM is the
+definition-sensitive statistic, which is the third
+wrong-extreme finding on this branch (AUDIT-0802 items
+1 and 2 were the other two). Standing note: book
+extrema with their definition attached, or book the
+mean.
+
+RUNG S0. Fires as registered, and the registered
+conclusion is adopted.
+Same coder path as llmopt/quantize/pack.py:108
+(constriction, Categorical(perfect=False), AnsCoder),
+roundtrip asserted, single-threaded, best of 5, on
+expert layers.22.ffn.experts.0 (sha-pinned cache).
+  per projection: 8.39M codes, 4.19 MB packed -> 4.06 MB
+    coded, decode 114 ms = 36.7 MB/s of packed weight
+    (73.4 Msym/s), encode 37 ms
+  whole expert: 13.37 MB stored -> 12.26 MB coded,
+    decode 350 ms = 38.2 MB/s of delivered weight
+PREDICTION registered 20-300 MB/s: FIRES at 38.2 MB/s,
+in the lower third of the band. That is 131x SHORT of
+the 5 GB/s the streaming arithmetic assumes. A 6-expert
+layer batch costs 2.1 s of decode alone; 43 layers is
+90.4 s/token of pure entropy decoding.
+REGISTERED CONCLUSION, ADOPTED: the entropy-coded form
+is an ARCHIVE format; the bit-packed fp4 form is the
+STREAMING format. Spec item C5 (interleaved rANS) stays
+dormant — it was gated on >= 1 GB/s.
+FENCE: one Python-bound coder, one core, one machine.
+This bounds THIS implementation, not rANS as a
+technique.
+BONUS FINDING — a spec arithmetic error, found by
+measuring. Spec v3 says "a raw expert is 13.37 MB
+against 11.29 MB coded — 15.6%". Measured byte-lossless
+coded size is 12.26 MB, i.e. 8.3% saved, not 15.6%.
+The 11.29 MB figure is 25.17M params at 3.5903 bits,
+which is the MERGED-LATTICE rate — a WEIGHT-EXACT,
+BYTE-LOSSY, n=1 measurement — silently substituted for
+the byte-lossless rate the sentence describes. The
+error propagates: the streaming line "6 x 43 x 11.29 MB
+= 2.9 GB per token" prices per-token traffic at a rate
+no executable stream can carry. The packed fp4 form is
+what a runtime reads, so per-token expert traffic is
+6 x 43 x 13.37 MB = 3.45 GB, and the 5 GB/s bound
+tightens from "at most ~1.7 tok/s" to at most ~1.45
+tok/s. Spec corrected in this commit. This makes the
+registered conclusion STRONGER: the byte-lossless
+archive buys 8.3%, and costs 131x the pipe to open.
+ARTIFACTS: scratch/v4flash_rungd.py ->
+logs/opus/v4_rungd.jsonl; scratch/v4flash_s0.py ->
+logs/opus/v4_s0.jsonl. Per the AUDIT-0802 standing
+correction, every number above comes from a committed
+script writing to a log.
