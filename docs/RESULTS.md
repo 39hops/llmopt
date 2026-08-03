@@ -15929,3 +15929,43 @@ swiglu clamp (up both sides, gate high side only,
 inference/model.py:601-607) is implemented as the
 vendor writes it. One expert, one layer, batch 16, two
 backends; cuda is Artin's and was not run.
+
+## RIDER on VERDICT V4-RUNG-A: the CUDA leg — three backends, one hash, and the weights were fetched independently on each machine (2026-08-02, 3080 via rjob on Artin's GO; Opus-5 review branch)
+
+  DEV=cpu   a68256ce17b9b5ad...3ff257b0  (Mac)
+  DEV=mps   a68256ce17b9b5ad...3ff257b0  (Mac)
+  DEV=cuda  a68256ce17b9b5ad...3ff257b0  (RTX 3080, rc=0)
+All three IDENTICAL. The overflow bounds (29/29/28 of
+62), exponent minima and spans printed the same on the
+3080 as on the Mac, so the arithmetic is reproducing,
+not merely the final digest.
+PROVENANCE, and it is stronger than a file copy: the
+3080 downloaded its OWN copy of the expert from the
+vendor by byte range rather than receiving the Mac's
+bytes. All six blobs match sha256 across the two
+independent fetches (w1/w2/w3 weight and scale:
+8cc3d9ad, 08076d48, 62095889, fd5e67f5, 7741f337,
+ad76fb34). Two machines, two network paths, same bytes,
+same trace.
+THE ONE THING THAT WAS COPIED had to be: the SiLU table
+travels as BYTES and is never regenerated per device
+(P3 doctrine — a different libm silently changes it).
+scratch/wsl.sh has no copy subcommand, so the table is
+now a COMMITTED sha-pinned reference artifact under
+scratch/v4flash_ref/, the same shape as
+detbwd_gmoe_ref/, and git is the transport. It arrived
+at f503c81446c97adb..., 525,893 bytes, asserted at run
+time on both machines.
+REMOTE-OPS NOTE: the 3080 checkout never left main.
+Branch files were extracted with git show
+origin/opus-5:<path> into /tmp/rungA and HEAD was
+re-verified at 7ab8837 after the run; the job ran under
+rjob (id v4rungA) with TORCH_DISABLE_NATIVE_JIT=1 per
+the in-tree WSL rule.
+READ: a frontier 304B MoE's routed expert now has an
+exactly-specified integer forward that reproduces to
+the bit on Apple CPU, Apple GPU and NVIDIA GPU, on the
+vendor's own shipped 4-bit weights. Fences from the
+parent verdict are unchanged and still govern: this is
+NOT bit-equality with DeepSeek's float32 forward, and
+no capability claim follows or is possible here.
