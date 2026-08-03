@@ -17574,3 +17574,73 @@ of 8741; if unpack is the bulk of it and the pair-LUT
 buys ~3-5x on that term, per-token lands ~2.5-3.5 s.)
 FENCE: unpack output must stay BIT-IDENTICAL to the
 certified decode — the F1a bar re-runs before launch.
+
+## VERDICT V4-F1e: 2.2x from making the hot op cheap, nothing from making the big thing fast — and at K=24 the repetition attractor HOLDS while memory binds first, collapsing throughput 8x (2026-08-03, Mac; Fable seat)
+
+Four arms, three registered predictions, two failures
+and one near-miss, every mechanism measured. Baseline
+throughout: VERDICT V4-F1d's 0.100 tok/s, same prompt,
+same device.
+ARM 1 (bf16 pre-dequant of the fp8 dense path): NULL.
+0.095 tok/s. Prediction (1) (>= 0.5) FAILS decisively.
+The dense path is ~40x the expert params and was never
+the wall — cost is work-per-byte-redone, not parameter
+count.
+PROFILE (synchronized, 3 decode steps): per-token
+8741 ms = ffn 7312 (84%) + attn 975 (11%) + other 454.
+The routed experts' packed-fp4 unpack, re-done on every
+one of 258 expert calls per token, is the wall.
+ARM 3 (bounded hot-expert bf16 cache, cap 180 tensors):
+FAILED WORSE THAN NOTHING — 0.018 tok/s, killed at 16
+tokens. The per-token working set is 774 distinct
+weight tensors; a 180-cap FIFO evicts everything before
+reuse: 100% miss + bookkeeping + ~13 GB/token of Metal
+churn. The cap cannot grow to fit (13 GB on top of 26.1
+resident). "The hot set is small" was true of EXPERTS
+and false of the PER-TOKEN WORKING SET — which is what
+a cache sees.
+ARM 4 (pair-LUT unpack, [256,2] table, one gather per
+byte, zero memory): 0.219 tok/s. Prediction (4)
+(>= 0.25) MISSES NARROWLY at 2.19x vs the registered
+2.5x; booked as a miss, not rounded up. The mechanism
+claim stands: the unpack was the wall and halving its
+gather count bought 2.2x end to end. Decode output
+BIT-IDENTICAL to baseline, as it must be — every arm-4
+change is value-exact (e2m1 and e4m3 grid values carry
+<= 3 mantissa bits, exact in bf16; F1a bars re-passed
+before launch, decode still bit-identical to rungA).
+ARM 2 (K=24, 128 tokens, fastest config): BOTH
+registered outcomes arrived at once.
+(a) THE ATTRACTOR HOLDS: the verbatim output is the
+same prompt-echo loop as K=16, unbroken over 127
+tokens. distinct-4-gram 0.072 vs K=16's 0.148 — with
+the registered caveat that NTOK differs (128 vs 64), so
+the fractions are not directly comparable; the
+loop-persistence read comes from the verbatim text, not
+the fraction.
+(b) MEMORY BINDS FIRST, as the pre-reg anticipated:
+Metal 30.09 GB crossed the working-set ceiling and the
+run PAGED rather than died — prefill 30.6 -> 110.8 s,
+decode 0.219 -> 0.026 tok/s, an ~8x throughput tax for
++160 resident experts. On this machine, K=16-at-bf16
+(26.1 GB) is the practical frontier; pushing K requires
+giving back the arm-1 bf16 dense (which arm 1 proved
+worthless anyway) — the correct config for any K-sweep
+continuation is fp8-dense + pair-LUT.
+STATE OF THE DEMO after F1e: 0.219 tok/s, 26.1 GB
+Metal, 4.8 GB RSS, K=16, output unchanged. The
+remaining measured headroom: ffn was 84% of 8741 ms;
+arm 4 cut the total to ~4550 ms, so unpack-adjacent
+work is still the majority term. Next levers, banked
+not run: batch the 6 expert calls per layer into one
+gather+gemm (kills 5/6 of the per-call overhead), and
+torch.compile-on-MPS or the MLX port for the eager
+dispatch floor. No further F1e arms without a new
+pre-reg.
+FENCES: no capability claim; all comparisons
+same-device same-prompt; texts logged verbatim in
+logs/opus/v4_f1d.jsonl (all four rows, including the
+failed arms).
+ARTIFACTS: scratch/v4flash_twin.py (pair-LUT + WCACHE),
+scratch/v4flash_f1d.py (DEQ/PROFILE modes),
+jobs/f1e_*.log, logs/opus/v4_f1d.jsonl.

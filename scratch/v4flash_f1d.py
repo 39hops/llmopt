@@ -52,6 +52,8 @@ DEV = os.environ.get("DEV", "mps" if torch.backends.mps.is_available()
 PROMPT = os.environ.get(
     "PROMPT", "The three most important ideas in computer science are")
 NL, NE = 43, 256
+DEQ = os.environ.get("DEQ", "")          # "bf16": F1e arm 1
+PROFILE = os.environ.get("PROFILE", "") == "1"
 OUT = "logs/opus/v4_f1d.jsonl"
 
 
@@ -107,11 +109,13 @@ class ExpertProvider:
         self.resident[lay].add(eid)
         self.misses += miss
 
-    def ensure_hash(self, tid2eid, ids):
+    def ensure_hash(self, tid2eid, ids, miss=True):
+        """miss=False for the prompt's initial preload — V4-F1d booked
+        the caveat that preloads were being counted as misses."""
         for lay in range(3):
             need = set(tid2eid[lay][ids].reshape(-1).tolist())
             for eid in need - self.resident[lay]:
-                self.load(lay, eid, miss=True)
+                self.load(lay, eid, miss=miss)
 
 
 def choose_residents(man):
@@ -144,6 +148,21 @@ def load_dense(model, man, dev):
         if name.endswith("wo_a.scale") or name not in sd:
             continue
         p, t = sd[name], tensor(man, name)
+        if DEQ == "bf16" and p.dtype == torch.float8_e4m3fn:
+            # F1e arm 1: value-exact fp8 -> bf16 (per-128x128 block
+            # scales); model.py's dtype dispatch then takes F.linear.
+            sc = tensor(man, name.replace("weight", "scale"))
+            O, I = t.shape
+            w = (v4flash_twin._f8_to_f32(t)
+                 .reshape(O // 128, 128, I // 128, 128)
+                 * v4flash_twin._e8m0_to_f32(sc)[:, None, :, None])
+            p.data = w.reshape(O, I).bfloat16().to(dev)
+            n += 1
+            continue
+        if DEQ == "bf16" and name.endswith(".scale"):
+            wname = name[:-6] + ".weight"
+            if wname in sd and sd[wname].dtype == torch.bfloat16:
+                continue                 # scale folded into the weight
         if p.dtype == torch.int32:
             p.data = t.to(torch.int32).to(dev)
         elif p.dtype == t.dtype:
@@ -209,7 +228,7 @@ def main():
                 print(f"[f1d] layer {lay} residents loaded, "
                       f"rss {rss_gb():.1f} GB", flush=True)
     tid = {L: tensor(man, f"layers.{L}.ffn.gate.tid2eid") for L in range(3)}
-    prov.ensure_hash(tid, torch.tensor(ids))
+    prov.ensure_hash(tid, torch.tensor(ids), miss=False)
     # buffers (KV/compressor caches, freqs_cis) follow the loaded params;
     # do this BEFORE any forward so the lazy Compressor cache aliasing
     # (risk-scan N4) is set up on the right device.
@@ -221,6 +240,41 @@ def main():
           f"packed) | load total {time.time()-t0:.0f}s | "
           f"rss {rss_gb():.1f} GB", flush=True)
 
+    if PROFILE:
+        # Component partition of a decode step, SYNCHRONIZED timers
+        # (enqueue != complete on MPS — measured 65 vs 108 ms earlier).
+        acc = {"attn": 0.0, "ffn": 0.0}
+
+        def timed(fn, key):
+            def w(*a, **kw):
+                torch.mps.synchronize()
+                t = time.perf_counter()
+                r = fn(*a, **kw)
+                torch.mps.synchronize()
+                acc[key] += time.perf_counter() - t
+                return r
+            return w
+        for blk in model.layers:
+            blk.attn.forward = timed(blk.attn.forward, "attn")
+            blk.ffn.forward = timed(blk.ffn.forward, "ffn")
+        toks = torch.tensor([ids], device=DEV)
+        with torch.inference_mode():
+            o, _, _ = model.forward(toks, start_pos=0)
+            cur = int(o.reshape(-1)[-1])
+            acc["attn"] = acc["ffn"] = 0.0
+            t0p = time.perf_counter()
+            for j in range(3):
+                prov.ensure_hash(tid, torch.tensor([cur], device="cpu"))
+                o, _, _ = model.forward(torch.tensor([[cur]], device=DEV),
+                                        start_pos=len(ids) + j)
+                torch.mps.synchronize()
+                cur = int(o.reshape(-1)[-1])
+        tot = (time.perf_counter() - t0p) / 3
+        a_, f_ = acc["attn"] / 3, acc["ffn"] / 3
+        print(f"[prof] per-token {tot*1e3:.0f} ms | attn {a_*1e3:.0f} ms"
+              f" | ffn {f_*1e3:.0f} ms | other {(tot-a_-f_)*1e3:.0f} ms",
+              flush=True)
+        return
     toks = torch.tensor([ids], device=DEV)
     tp0 = time.time()
     with torch.inference_mode():
@@ -241,7 +295,12 @@ def main():
                       f"{(i+1)/(time.time()-t_dec0):.3f} tok/s", flush=True)
     t_dec = time.time() - t_dec0
     text = tok.decode(gen)
-    row = {"K": K, "dev": DEV, "ntok": NTOK, "prompt": PROMPT,
+    grams = [tuple(gen[i:i + 4]) for i in range(len(gen) - 3)]
+    distinct4 = len(set(grams)) / max(len(grams), 1)
+    drv = (torch.mps.driver_allocated_memory() / 2 ** 30
+           if DEV == "mps" else 0.0)
+    row = {"K": K, "dev": DEV, "deq": DEQ, "ntok": NTOK,
+           "distinct4": distinct4, "metal_gb": drv, "prompt": PROMPT,
            "prompt_tokens": len(ids), "residents": n_res,
            "hash_misses": prov.misses, "prefill_s": t_prefill,
            "decode_s": t_dec, "tok_per_s": (NTOK - 1) / t_dec,

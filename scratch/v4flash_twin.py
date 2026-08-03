@@ -98,18 +98,23 @@ def _scale_f32(s):
             else s.float())
 
 
+# [256, 2] pair-LUT: byte -> (low-nibble value, high-nibble value).
+# One gather per byte replaces two shift+mask+gather rounds plus a
+# where (F1e arm 4: the unpack was 84%-of-decode hot). Built from the
+# same grid, so bit-identity with the certified decode is structural.
+_PAIR_LUT = torch.empty(256, 2)
+for _byte in range(256):
+    for _half, _nib in ((0, _byte & 0xF), (1, _byte >> 4)):
+        _mag = float(FP4_GRID[_nib & 0x7])
+        _PAIR_LUT[_byte, _half] = -_mag if _nib >= 8 else _mag
+
+
 def _unpack_fp4(b):
     """[.., K//2] packed e2m1 (any 1-byte view) -> [.., K] fp32.
     Low nibble first; sign bit 0x8 (byte-identical to K3)."""
-    u = b.view(torch.uint8)
-    out = torch.empty(*u.shape[:-1], u.size(-1) * 2,
-                      dtype=torch.float32, device=u.device)
-    lut = FP4_GRID.to(u.device)
-    for shift, sl in ((0, slice(0, None, 2)), (4, slice(1, None, 2))):
-        nib = ((u >> shift) & 0xF).long()
-        mag = lut[nib & 0x7]
-        out[..., sl] = torch.where(nib >= 8, -mag, mag)
-    return out
+    u = b.view(torch.uint8).long()
+    return _PAIR_LUT.to(u.device)[u].reshape(*u.shape[:-1],
+                                             u.size(-1) * 2)
 
 
 # ---------------------------------------------------------------- kernels
@@ -186,15 +191,34 @@ def fp8_gemm(a, a_s, b, b_s, scale_dtype=torch.float32):
     return out.to(torch.get_default_dtype())
 
 
+_W_CACHE, _W_CAP = {}, int(__import__("os").environ.get("WCACHE", "0"))
+
+
 def fp4_gemm(a, a_s, b, b_s, scale_dtype=torch.float32):
     """C = A_fp8[M,K] @ B_fp4[N,K]^T; B packed 2 codes/byte along K
-    (low nibble first), per-32 e8m0 weight scales [N, K/32]."""
+    (low nibble first), per-32 e8m0 weight scales [N, K/32].
+
+    WCACHE=<n> (F1e arm 3): memoize the unpacked+scaled bf16 weight,
+    FIFO-capped at n tensors. Keys are the weight Parameter objects
+    (long-lived), so id-reuse cannot alias. Dequant stays value-exact;
+    only WHEN it happens changes. Measured motivation: 84% of decode
+    time was this unpack, re-done for every expert on every token."""
     af = _deq_act(a, a_s, 128)
-    bf = _unpack_fp4(b)
-    N, K = bf.size(0), bf.size(-1)
-    bf = (bf.reshape(N, K // 32, 32)
-          * _scale_f32(b_s).unsqueeze(-1)).reshape(N, K)
-    return (af @ bf.T).to(torch.get_default_dtype())
+    key = id(b)
+    hit = _W_CAP and key in _W_CACHE
+    if hit:
+        bf = _W_CACHE[key][1]
+    else:
+        bf = _unpack_fp4(b)
+        N, K = bf.size(0), bf.size(-1)
+        bf = ((bf.reshape(N, K // 32, 32)
+               * _scale_f32(b_s).unsqueeze(-1)).reshape(N, K)
+              .to(torch.bfloat16))
+        if _W_CAP:
+            if len(_W_CACHE) >= _W_CAP:
+                _W_CACHE.pop(next(iter(_W_CACHE)))
+            _W_CACHE[key] = (b, bf)      # hold b so id stays valid
+    return (af.to(torch.bfloat16) @ bf.T).to(torch.get_default_dtype())
 
 
 def sparse_attn(q, kv, attn_sink, topk_idxs, softmax_scale):

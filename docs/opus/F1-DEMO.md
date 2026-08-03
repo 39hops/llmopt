@@ -15,7 +15,7 @@ its routed experts resident.
 | routing | vendor's own gate; non-resident experts masked via **one write into the bias** |
 | load | 13.3 s (warm cache) |
 | prefill | 30.6 s (9 tokens) |
-| decode | **0.100 tok/s**, greedy, 63 tokens |
+| decode | **0.219 tok/s** after F1e (pair-LUT unpack; was 0.100), greedy |
 | process RSS | 5.3 GB (+ ~20 GB of weights in Metal buffers) |
 | downloads | ~19 GB of byte-range fetches, never the 166.9 GB artifact |
 
@@ -66,13 +66,19 @@ still has.
   *writable routing mask* (used to fence them) — zero vendor-code
   changes.
 
-## What's next (F1e, banked)
+## F1e, run (same day)
 
-Pre-dequant the dense path to bf16 (the 10–30× compute headroom is in
-the per-use fp8 LUT), sweep K upward (does the attractor break before
-memory does?), prompt-conditioned resident selection. No capability
-claims anywhere — this sheet describes a measured system and its honest
-output.
+Four optimization arms, honestly scored: bf16-dequanting the dense path
+bought **nothing** (it was never the wall — the profile said 84% of
+decode was the experts' per-use fp4 unpack); a bounded expert cache made
+things **5× worse** (774-tensor per-token working set vs a 180 cap =
+pure thrash); a **pair-LUT unpack** bought **2.2×** for zero memory
+(0.100 → 0.219 tok/s, output bit-identical); and at K=24 the repetition
+attractor **held** while Metal crossed its ceiling and paged — memory
+binds before text quality budges. Banked next: batch the per-layer
+expert calls, then torch.compile/MLX for the dispatch floor. No
+capability claims anywhere — this sheet describes a measured system and
+its honest output.
 
 *Everything above is booked in `docs/RESULTS.md` (PRE-REG V4-F1 →
 VERDICTs V4-F1a/b/c/d) with scripts in `scratch/v4flash_*.py` and raw
