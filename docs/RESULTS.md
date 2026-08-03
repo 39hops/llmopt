@@ -17471,3 +17471,53 @@ ARTIFACTS: scratch/v4flash_f1d.py -> jobs/f1d_k16.log,
 logs/opus/v4_f1d.jsonl (full row incl. generated ids).
 PRE-REG V4-F1 IS CLOSED: F1a/F1b/F1c/F1d all booked,
 every bar disposed of explicitly.
+
+## PRE-REG V4-F1e: two optimization arms — pre-dequant the dense path to bf16 (the measured 10-30x compute headroom), and sweep K to ask whether the repetition attractor breaks before memory does (2026-08-03, Mac; Fable seat)
+
+ARM 1, SPEED (K=16, same prompt, same 63 greedy tokens
+as the booked V4-F1d baseline of 0.100 tok/s). The F1d
+profile is compute-bound in the per-use uint8-LUT fp8
+dequant: every dense Linear re-decodes its fp8 weight
+EVERY TOKEN. Pre-dequanting the fp8 Linears to bf16 at
+LOAD flips the vendor's own dtype dispatch
+(model.py:119-126) to F.linear — the twin leaves the
+path entirely for dense matmuls. Dequant is VALUE-EXACT
+(every e4m3 value is exactly representable in bf16,
+verified in PRE-REG V4-F1), so this is a lossless
+speed lever in the house sense.
+MEMORY ARITHMETIC, declared: fp8 dense 6.3 GB -> 12.6
+GB bf16, + 2.9 GB already-bf16, + 10.5 GB packed
+experts (K=16) ~= 26 GB Metal + caches. In budget.
+Experts STAY packed fp4 (they are ~2% of per-token
+matmul params; the dense path dominates ~40:1, so the
+win does not need them).
+PREDICTION (1): decode >= 0.5 tok/s, i.e. >= 5x the
+baseline. (Efficient bf16 on this GPU would be 1-3
+tok/s; eager-mode overhead and the small expert path
+keep the registered bar conservative.)
+ARM 2, THE ATTRACTOR QUESTION (bf16 dense, K swept 16
+-> 24, NTOK 128, same prompt). F1d's output was a pure
+prompt-echo loop. The question is whether that is a
+CLIFF property (more experts -> qualitatively different
+text) or saturated degradation. Readout, descriptive
+and registered now: distinct-4-gram fraction of the
+generated tokens, and whether the output ever leaves
+the prompt-echo cycle. K=24 memory: 12.8 GB experts +
+15.5 GB dense bf16 ~= 28 GB + caches — the edge of
+budget; if Metal pressure kills it, that IS the "memory
+binds first" answer and gets booked as such.
+PREDICTION (2): none registered on direction — the
+house pruning baseline (~28% cliff) suggests K=24
+(9.4%) stays degraded, but n=1 anecdotes about text
+quality are not gate results. The readout is the
+distinct-4-gram number and the verbatim text; no
+quality claim either way.
+INSTRUMENT FIXES riding along (booked caveats from
+V4-F1d): torch.mps.driver_allocated_memory added to the
+row (ru_maxrss missed the ~20 GB in Metal buffers), and
+the hash-miss counter no longer counts the prompt's
+initial preload as misses.
+FENCES: no capability claim; same-device comparisons
+only (F1d baseline was this machine); texts logged
+verbatim; sigma~5 resolution law untouched (no gate is
+run).
