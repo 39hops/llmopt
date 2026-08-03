@@ -2338,6 +2338,7 @@ F1d (PRE-REG V4-F1): DeepSeek-V4-Flash GENERATES TOKENS ON THE MAC — full 43-l
 - `load_dense(model, man, dev)` — Everything except routed experts, straight onto dev.
 - `install_batched_moe(mod)` — F1e arm 5 (RIDER 3): batch the <= 6 hit experts of a SINGLE-TOKEN
 - `check_batched_equiv(model, dev)` — Equivalence bar (RIDER 3): patched vs vendor MoE on a real
+- `install_recall(model, mod, orig_bias)` — F2a READOUT 2: per score-layer per token, log the UNMASKED top-6
 - `main()`
 
 ### scratch/v4flash_header.py

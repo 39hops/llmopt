@@ -17881,3 +17881,67 @@ kernels against the twin on random tensors (quant
 outputs bitwise; gemms <= 1/128 rel). If tilelang fails
 to install, book the attempt honestly and the leg stays
 open — it gates nothing.
+
+## VERDICT V4-F2a: expert recall is 0.035 — BELOW the random floor, with the mechanism — while the oracle-16 set would capture 75.8% of demand at the same memory; the F1c bias-direction pin was operatively WRONG (2026-08-03, Mac; Fable seat)
+
+All three registered readouts landed, and readout 2
+resolved BELOW its registered interpretation range.
+READOUT 1, the unrun config (fp8-dense + pair-LUT +
+batched, K=16): decode 0.173 tok/s, Metal 23.0 GB,
+prefill 24.5 s. As named: slower than arm 5's
+bf16-dense 0.268 (the dense fp8 Linears pay the LUT
+path), well above the 0.100 baseline, and ~3 GB LEANER
+than arm 5 — the memory-lean base for any K-sweep.
+Text: the same echo loop, verbatim in the row.
+READOUT 2, EXPERT RECALL = 0.0348 over 15,120 slots —
+below the K/256 = 0.0625 uniform floor. The registered
+menu did not include "below random"; the mechanism
+explains it and CORRECTS VERDICT V4-F1c's "direction
+pinned" claim: the deployed selection is
+topk(scores + bias), so the most-NEGATIVE-bias experts
+are precisely the ones the vendor's own routing
+penalizes hardest. F1c's reasoning ("most negative =
+most naturally demanded") was true of RAW scores and
+operatively wrong for the selection that actually runs.
+Layer profile in the row; layers 41-42 recall 0.000.
+CONSEQUENCE FOR THE DEMO'S STORY: with ~96.5% of
+intended routing masked away, the echo loop is
+CONSISTENT WITH near-total amputation, and the mask
+mechanism itself is verified (the wrapper's equivalence
+fence passed; masked selection routes within residents
+by construction). The reviewers' open question — loop
+from amputation or from a mask bug — resolves to
+AMPUTATION-CONSISTENT, mask verified.
+READOUT 3, THE BAKE-OFF against measured demand
+(48.5 distinct experts demanded per layer on this
+prompt, but heavily concentrated):
+  oracle best-16 per layer      0.758   <- the headroom
+  most-POSITIVE bias            0.069
+  uniform-random expectation    0.062
+  most-NEGATIVE bias (deployed) 0.035
+Bias rank in EITHER direction is ~uninformative-to-
+harmful — the offload-doctrine prediction (noaux_tc
+balancing destroys static load signals) is CONFIRMED at
+the frontier. The oracle row is the finding: a
+prompt-conditioned resident set would capture 75.8% of
+routing AT THE SAME MEMORY as the 3.5% we ran. The
+obvious next cell (pre-reg required): profile-then-swap
+— re-run with the oracle-16 residents chosen from this
+run's demand log and ask whether the echo loop breaks
+at 75.8% recall. That is the cheapest strong test of
+the amputation story ever available to this programme.
+CUDA LEG (F1a optional): tilelang 0.1.8 installs on the
+3080 but its import crashes in tvm_ffi on Python 3.12
+("attribute '__dict__' of 'type' objects is not
+writable"). The leg stays OPEN with its requirement
+named (py3.11 env + CUDA torch); it gates nothing, as
+registered.
+FENCES: recall numbers are scoped to THIS prompt's
+token distribution (an echo loop — small demand set,
+which if anything should have FLATTERED recall); no
+capability claim; the oracle row is coverage of
+observed demand, not a text-quality prediction.
+ARTIFACTS: scratch/v4flash_f1d.py (RECALL mode),
+logs/opus/v4_f1d.jsonl row 6 (incl. full per-layer
+demand counts — the bake-off ground truth), analysis
+inline above from that row.

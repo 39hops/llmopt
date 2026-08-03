@@ -56,6 +56,7 @@ NL, NE = 43, 256
 DEQ = os.environ.get("DEQ", "")          # "bf16": F1e arm 1
 PROFILE = os.environ.get("PROFILE", "") == "1"
 BATCH = os.environ.get("BATCH", "") == "1"   # F1e arm 5 (rider 3)
+RECALL = os.environ.get("RECALL", "") == "1"  # F2a instrument
 OUT = "logs/opus/v4_f1d.jsonl"
 
 
@@ -264,6 +265,47 @@ def check_batched_equiv(model, dev):
     assert rel <= 1e-3, "batched MoE diverges from the vendor loop"
 
 
+def install_recall(model, mod, orig_bias):
+    """F2a READOUT 2: per score-layer per token, log the UNMASKED top-6
+    (scores + ORIGINAL bias) and expert recall vs the resident set.
+    The wrapper recomputes selection identically for the masked path —
+    asserted against the unwrapped gate on first use (equivalence
+    fence)."""
+    stats = {"hits": 0, "slots": 0, "per_layer": {}, "demand": {},
+             "checked": False}
+    orig_fwd = mod.Gate.forward
+
+    def fwd(self, x, input_ids=None):
+        w, idx = orig_fwd(self, x, input_ids)
+        if not self.hash and self.bias is not None and x.size(0) == 1:
+            lay = getattr(self, "_lay", None)
+            if lay is not None:
+                import torch as T
+                s = T.nn.functional.softplus(
+                    (x.float() @ self.weight.float().T)).sqrt()
+                un = T.topk(s + orig_bias[lay].to(s.device), self.topk,
+                            dim=-1)[1][0].tolist()
+                res = set(idx[0].tolist())      # resident == selected set
+                hit = len(set(un) & stats["res_sets"][lay])
+                stats["hits"] += hit
+                stats["slots"] += self.topk
+                pl = stats["per_layer"].setdefault(lay, [0, 0])
+                pl[0] += hit
+                pl[1] += self.topk
+                d = stats["demand"].setdefault(lay, {})
+                for e in un:
+                    d[e] = d.get(e, 0) + 1
+                if not stats["checked"]:        # equivalence fence
+                    w2, idx2 = orig_fwd(self, x, input_ids)
+                    assert T.equal(idx, idx2) and T.equal(w, w2)
+                    stats["checked"] = True
+        return w, idx
+    mod.Gate.forward = fwd
+    for li, blk in enumerate(model.layers):
+        blk.ffn.gate._lay = li
+    return stats
+
+
 def main():
     os.makedirs("logs/opus", exist_ok=True)
     from tokenizers import Tokenizer
@@ -300,10 +342,12 @@ def main():
 
     # gate masking by bias: zero code change (see docstring)
     keep = choose_residents(man)
+    orig_bias = {}
     prov = ExpertProvider(model, man, DEV)
     with torch.no_grad():
         for lay, eids in keep.items():
             gate = model.layers[lay].ffn.gate
+            orig_bias[lay] = gate.bias.data.clone().cpu()
             mask = torch.full((NE,), -1e9, device=DEV)
             mask[torch.tensor(eids, device=DEV)] = 0.0
             gate.bias.data = gate.bias.data + mask
@@ -323,6 +367,10 @@ def main():
     if BATCH:
         install_batched_moe(mod)
         check_batched_equiv(model, DEV)
+    rec = None
+    if RECALL:
+        rec = install_recall(model, mod, orig_bias)
+        rec["res_sets"] = {lay: set(keep[lay]) for lay in keep}
     n_res = sum(len(v) for v in prov.resident.values())
     print(f"[f1d] residents {n_res} experts ({n_res*13.37/1e3:.1f} GB "
           f"packed) | load total {time.time()-t0:.0f}s | "
@@ -388,6 +436,12 @@ def main():
     drv = (torch.mps.driver_allocated_memory() / 2 ** 30
            if DEV == "mps" else 0.0)
     row = {"K": K, "dev": DEV, "deq": DEQ, "ntok": NTOK,
+           "recall": (rec["hits"] / max(rec["slots"], 1)) if rec else None,
+           "recall_per_layer": ({k: v[0] / max(v[1], 1) for k, v in
+                                 sorted(rec["per_layer"].items())}
+                                if rec else None),
+           "demand_counts": ({str(k): v for k, v in rec["demand"].items()}
+                             if rec else None),
            "distinct4": distinct4, "metal_gb": drv, "prompt": PROMPT,
            "prompt_tokens": len(ids), "residents": n_res,
            "hash_misses": prov.misses, "prefill_s": t_prefill,
