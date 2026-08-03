@@ -17521,3 +17521,28 @@ FENCES: no capability claim; same-device comparisons
 only (F1d baseline was this machine); texts logged
 verbatim; sigma~5 resolution law untouched (no gate is
 run).
+
+## RIDER on PRE-REG V4-F1e (arm 3, registered before running): a bounded hot-expert dequant cache, sized by the measured wall (2026-08-03, Mac; Fable seat)
+
+MEASURED WALL (synchronized profiler, 3 decode steps,
+bf16-dense K=16 config): per-token 8741 ms = ffn 7312
+(84%) + attn 975 (11%) + other 454 (5%). Arm 1's null
+is thereby EXPLAINED: the bf16 pre-dequant removed the
+dense fp8 LUT, but 6 experts x 43 layers = 258 routed
+expert calls per token each unpack ~25M packed-fp4
+params through the nibble LUT EVERY use — the dense
+path was never the wall, the expert path is.
+ARM 3: memoize the unpacked+scaled bf16 expert matrix
+inside the twin's fp4_gemm, FIFO-capped at 180 tensors
+(= 60 experts x 3 mats x ~17 MB = ~3 GB Metal, on top
+of the measured 26.1 GB — inside budget). Dequant
+remains value-exact; this changes WHEN it happens, not
+what is computed — a lossless speed lever.
+PREDICTION (3): decode >= 0.30 tok/s (>= 3x the 0.100
+baseline) on the same K=16 prompt/config. Under the
+repetition attractor the hot set is small, so the cache
+should absorb most calls after warmup; the bound is
+conservative for the general case where 258 distinct
+experts/token could exceed the 60-expert cap.
+FENCE: same-device, same-prompt comparison; no quality
+claim; cache capacity and hit rate logged.
