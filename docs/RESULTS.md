@@ -17187,3 +17187,75 @@ three audit rounds) is the scientific record, not noise.
 The V4 programme's final state is what SESSION-NOTES-
 OPUS-5.md's "What the V4 programme actually established"
 section says, read together with FINAL-0803.
+
+## PRE-REG V4-F1: run DeepSeek-V4-Flash on the Mac — vendor model.py unmodified over a pure-torch kernel twin, dense path resident, experts subset-resident (2026-08-03, Mac; Fable seat)
+
+Artin's ask, scoped after checking rather than assuming: the vendor's
+entire GPU dependency is ONE module (inference/kernel.py: act_quant,
+fp4_act_quant, fp8_gemm, fp4_gemm, sparse_attn, hc_split_sinkhorn —
+six tilelang kernels, all with simple pure-torch semantics) plus
+fast_hadamard_transform (a fixed orthogonal butterfly). world_size=1
+is the shipped default and every dist. call is gated. So F1 is a
+KERNEL TWIN plus a LOADER, not an architecture rewrite — the feared
+MLA/Indexer/Compressor cost was the wrong frame.
+MEASURED PREMISES (booked or verified this morning): torch 2.12.1 on
+the Mac has float8_e4m3fn, float8_e8m0fnu, float4_e2m1fn_x2, MPS
+available. EVERY finite e4m3 value is exactly representable in bf16
+(verified over all 256 codes), and e2m1 x e8m0 dequant carries <= 2
+significant mantissa bits, so DEQUANTIZATION TO BF16 IS VALUE-EXACT
+for every stored dtype in the artifact — degradation can enter only
+through (a) masking routing to a resident expert subset and (b) the
+vendor's own activation-quant simulation, which the twin reproduces.
+MEMORY ARITHMETIC (RECEIPT V4-CENSUS numbers): always-on dense 8.85 GB
+stored (~2.9 bf16 + ~5.9 fp8) -> ~14.8 GB resident at bf16; experts
+KEPT PACKED fp4 in RAM at 13.37 MB each and dequantized per use;
+K experts/layer x 43 layers: K=16 -> 9.2 GB, K=20 -> 11.5 GB; plus KV
+and compressor caches (sized at run time, batch 1). Target RSS <= 30
+GB; K chosen by measurement, not hope. Disk: ~20 GB of fetches
+against 31 GiB free. MTP blocks skipped entirely.
+RUNGS, each gated on the previous:
+F1a KERNEL TWIN (scratch/v4flash_twin.py). Pure-torch implementations
+  of the six kernels + hadamard rotate, same signatures, CPU/MPS.
+  BARS: (1) fp4/fp8 quant twins reproduce the vendor's declared
+  rounding (power-of-2 scale via exponent extraction; RNE code
+  rounding) — checked against exact fp64 references on random and
+  adversarial inputs (halfway points, subnormal-adjacent, amax=0
+  rows); (2) fp4_gemm twin on a REAL cached expert matches an exact
+  fp64 dequant+matmul reference to <= bf16 output rounding; the fp4
+  DECODE side must be bit-identical to v4flash_rungA's certified
+  decode; (3) sinkhorn twin doubly-stochastic to <= 1e-6 residual at
+  20 iterations; (4) CPU and MPS twins agree within bf16 tolerance.
+  OPTIONAL leg (not gating): tilelang 0.1.8 on the 3080 as a direct
+  reference diff, IF it installs on Artin's schedule.
+F1b BOOT: 2-layer truncated config, RANDOM weights, vendor model.py
+  forward end to end (prefill + one decode step) on CPU and MPS.
+  BARS: runs, finite outputs everywhere, CPU-vs-MPS within bf16
+  tolerance. No weights fetched.
+F1c REAL LAYERS 0-2: real embed + layers 0-2 (HASH-ROUTED — exact
+  expert demand from tid2eid, no routing uncertainty) on a short
+  prompt. BARS: finite, hidden-state norms in a plausible band, and
+  the twin's expert output vs the exact fp64 reference on the same
+  cached expert <= bf16 rounding. Fetches: ~1.5 GB.
+F1d GENERATE: full 43-layer dense path + subset-resident experts.
+  Subset selection, declared now: for hash layers the EXACT experts
+  the prompt's token ids demand; for score layers the top-K experts
+  by gate.bias rank (the trained load record — the only free signal;
+  VERDICT V4-RUNG-D2 lineage) with routing masked to the resident set
+  (llmopt/moe/prune.py discipline). K set by measured RSS, starting
+  16. Greedy decode, batch 1, <= 256 tokens.
+  BARS: RSS <= 30 GB; no NaN; tok/s and RSS REPORTED (no target —
+  this is the first number of its kind here); the generated text
+  logged VERBATIM in the verdict whatever it looks like.
+FENCES, binding. NO capability claim at any rung — K/256 residency is
+far below the ~28% keep cliff the house pruning baseline suggests, so
+the expected outcome is DEGRADED text; the deliverable is the measured
+system (it runs, at X tok/s, in Y GB) plus honest output samples. The
+120-gate sigma~5 resolution law applies to any future quality
+comparison; none is registered here. Weight-exactness claims are
+limited to dequantization (proven above); the forward is bf16/fp32
+numerics, NOT the integer-exact rungA function. Q1 (Qwen3-30B masked
+pruning quality) remains the legal quality-vs-keep instrument and is
+NOT part of F1.
+Two scanner surveys (vendor-code portability risks; repo-tool tie-ins)
+run in parallel and their verified findings amend this pre-reg by
+name if they change any bar or premise.
