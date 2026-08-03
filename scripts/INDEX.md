@@ -2308,6 +2308,14 @@ RUNG -1 (spec 2026-08-02-v4flash-lossless-recode): read a DeepSeek-V4-Flash safe
 - `group_of(n)` — Coarse tensor class, from the name alone.
 - `main()`
 
+### scratch/v4flash_router.py
+RUNG R (pre-reg V4-RUNG-R + 2B-ROUTER): read DeepSeek-V4-Flash's MoE router for free — 2 MB of gate weights and 1 KB of bias, no inference.
+
+- `bf16_to_f32(raw, shape)` — safetensors BF16 -> float32 (upper 16 bits of the f32 word).
+- `read_router(shard, layer)`
+- `null_cosines(n, d, rng, reps=1)` — Matched null: cosines among n random Gaussian vectors in R^d.
+- `main()`
+
 ### scratch/v4flash_rung0.py
 RUNGS 0/0b/1/2c/3 (pre-reg V4-RUNG-0/1): entropy and lossless rANS of DeepSeek-V4-Flash's shipped fp4 expert stream, from byte-range fetches only.
 
@@ -2327,6 +2335,13 @@ RUNG 2b (pre-reg V4-RUNG-2B): are DeepSeek-V4-Flash experts closer to each other
 - `permute(ref, perm)` — Apply a hidden-unit permutation to a reference expert.
 - `resid_entropy(e, ref)` — Order-0 entropy in bits/param of the exact integer residual.
 - `raw_entropy(e)`
+- `main()`
+
+### scratch/v4flash_rung2b_router.py
+RUNG 2b-ROUTER (pre-reg V4-RUNG-R + 2B-ROUTER): the retest VERDICT V4-RUNG-2B could not do.
+
+- `pairs_from_router()` — Top-NPAIR by raw gate-key cosine (the pre-registered rule), plus
+- `measure(a, b, hdr, url, base, rng)` — Residual entropy of expert a against expert b, three alignments.
 - `main()`
 
 ### scratch/v4flash_rungA.py
