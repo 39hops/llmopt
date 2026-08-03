@@ -1,123 +1,123 @@
-# Opus-5 review session — audit sheet for Fable
+# Opus-5 branch — audit sheet for Fable
 
-Branch `opus-5`, forked from `main` at `7ab8837`. Not pushed. Nothing
-here reaches `main` without Fable's line-by-line audit.
+Branch `opus-5`, forked from `main` at `7ab8837`, pushed, 26 commits.
+Nothing reaches `main` without Fable's line-by-line audit.
 
-Seat: Artin switched the model to Opus 5 and authorized branch work,
-which overrides the standing "code changes are Fable's job" convention
-for this branch only. I kept the reviewer discipline anyway: every
-claim below carries the command that shows it.
+Seat: Artin switched the model to Opus 5 and authorised branch work,
+overriding the standing "code changes are Fable's job" convention for
+this branch only. Reviewer discipline was kept anyway — every claim
+below carries the command that shows it, and every experiment was
+pre-registered before it fired.
 
-## Commits, in order, each independently reviewable
+## State at the end
 
-| Commit | What | How to audit in one command |
-|---|---|---|
-| `5673ec0` | AMENDMENT P4-DEVICE-SCOPE + `docs/REPRODUCE.md` clarification | `.venv/bin/python scripts/results_query.py --chain p4-device-scope` |
-| `78f9c57` | Doc-integrity guard (2 tests, both verified failable) | `.venv/bin/python tests/test_docs_integrity.py` |
-| `1c8f523` | axiom relay + this audit sheet | read `docs/superpowers/relay/2026-08-02-0-axiom-docs-ask.md` |
-| `<docs>` | README organizing-principle clause + FINDINGS cross-lab reachability note (Grok #2, #3) | `git show --stat` |
-| `<probe>` | `scratch/probe_int_device_parity.py` | `.venv/bin/python scratch/probe_int_device_parity.py` |
-| `<rider>` | RIDER: GPU parity measured on MPS **and** CUDA, 8/8 each | `.venv/bin/python scripts/results_query.py --chain p4-device-scope` |
+- 451 tests pass, 7 skipped; tree clean; branch pushed.
+- 24 ledger entries booked (12 verdicts, 7 pre-regs, 6 amendments),
+  all with `opus-review` in their `threads`.
+- **Six of those entries are corrections to my own earlier claims.**
+- 3080 re-ran all 16 gravmoe pins sha-identical against this branch's
+  modified certified files; the remote checkout never left `main`.
 
-Full suite after both: **450 passed, 7 skipped** (was 448; the two new
-ones are mine).
+## Verify the branch in four commands
 
-## Finding 1 — "2 devices" was imprecise [FIXED, needs your audit]
+```bash
+.venv/bin/pytest -q                              # 451 passed
+.venv/bin/python tests/test_docs_integrity.py    # anchors + curation
+.venv/bin/python -m llmopt.reproduce gravmoe-rb1 # PASS c6766da2
+DEV=mps .venv/bin/python scratch/v4flash_rungA.py  # sha a68256ce
+```
 
-Claim: both P4 legs ran on CPU, so "2 devices" means two machines /
-two CPU architectures (arm64, x86-64), not GPU diversity — a narrower
-claim than P3 / PACKED CRYSTAL C4, which genuinely crossed MPS↔cuda.
+## What landed, by programme
 
-Evidence: no `device=`, `.cuda()`, `.to("mps")`, or
-`set_default_device` anywhere in the battery chain
-(`detbwd_gravmoe`, `detbwd_mb`, `detbwd_r2b`, `detbwd_r1`,
-`llmopt/reproduce`, `llmopt/intmath`); `scratch/p4_arms_0801.sh` sets
-OMP/MKL thread caps and never selects a GPU.
+**Replication of two n=1 init laws.** QK-SEED2/3: the COND+QK gate
+direction reproduces at three paired init draws, 3/3 on every axis,
+with the near-point prediction (init zero-prob 0.89 → exactly 0.000)
+hitting all three times. DIET-COND-SEED: the interior-optimum SHAPE
+replicates but its LOCATION does not — λ=1/4 is a seed-17 property and
+is worse than no gravity at both new draws. `BIRTH_SEED` knob added,
+regression-gated.
 
-**Provenance, so nobody blames the wrong agent**: `git log -S` shows
-the phrase entered at `94e29cd` — the house's own P4-LAB booking
-(Fable). Sol quoted it faithfully into `docs/REPRODUCE.md` at
-`548e9c5`. This is a house wording issue, not a Sol review defect.
+**P4 device/lab legs closed** (device: 16/16 on the 3080; lab: 10/10 in
+axiom C++), with the "2 devices" phrasing corrected to two machines /
+two CPU architectures, and GPU primitive parity measured on both
+accelerators.
 
-**Self-correction worth reading before you trust the rest of my
-work**: my first draft of this finding said "the battery is CPU-only
-by construction." That is FALSE and I caught it by testing instead of
-asserting. `int_mm` is `(a.unsqueeze(-2) * w).sum(-1)`, not
-`torch.matmul`; on torch 2.12.1 / Apple silicon, MPS runs int64 matmul
-AND all eight battery primitives bit-identically to CPU (`int_mm`,
-`rdiv`, `softmax_rows`, `softmax_bwd`, `rms_fwd`, its `isq`,
-`rms_bwd` dx and dg). The battery is CPU-only by PLUMBING. The booked
-amendment says so, including the failed first draft.
+**DeepSeek-V4-Flash, ten rungs.** Format is group-32 MXFP4 byte-identical
+to K3; code entropy 3.8646 of 4 bits; the scale stream is 5.9% of bytes
+and 62% of the lossless headroom; one global table serves all experts
+(KL 0.00075); an expert runs exactly in integers with one trace hash on
+cpu/mps/cuda; experts share no weight structure coordinate-wise, up to
+the optimal permutation, or between router-nearest pairs; the router
+carries a +0.385 shared key direction. Spec at
+`docs/superpowers/specs/2026-08-02-v4flash-lossless-recode.md` (v3).
 
-Nothing measured changed: 16/16 and 10/10 sha-identity stand as
-booked.
+## Audit these first
 
-## Finding 2 — doc-layer had no guard [FIXED, needs your audit]
+**1. AMENDMENT AUDIT-0802** is the entry to read before anything else.
+Three agents (silent-failure hunter, code reviewer, lab reviewer)
+audited all 23 prior entries and the code. Ten readings were wrong and
+are corrected there; every measured number that could be recomputed
+from a log recomputed correctly.
 
-`tests/test_docs_integrity.py`, two tests, both verified failable
-(I monkeypatched each failure path and confirmed the assertion fires):
+**2. The CRITICAL code defect and its fix.** `BIRTH_SEED` reached
+`detbwd_mb.SEED` but was not in `llmopt/reproduce.py`'s `CONTRACT_ENV`
+allowlist, so a shell that had run `scratch/calib_dist_birth.sh` would
+silently reproduce the wrong trajectory. Measured: `BIRTH_SEED=1` turned
+`gravmoe-rb1` into `9264fcf0` instead of `c6766da2`. Fixed in `0802a24`
+and verified under both polluted and clean environments. **If you adopt
+one thing from this branch, adopt that fix.**
 
-1. **Anchor rot** — all 148 repo-wide `RESULTS.md#L<n>` citations must
-   land on a `## ` entry heading. Currently 148/148 valid. This is the
-   invariant that silently dies the first time anyone edits RESULTS.md
-   mid-file; "append-only" is convention, not enforcement.
-2. **Curation ratchet** — curatable (`verdict`/`null`) entries newer
-   than anything FINDINGS cites, capped at the measured backlog of
-   **10**. May fall freely; raising it needs a stated reason.
+**3. The exactness assert that could not fail.** `v4flash_rungA.py`
+built both sides of its decode check from the same `exps`, and
+`LUT2X == 2*FP4_TABLE` by construction, so no bias error could fail it —
+while VERDICT V4-RUNG-A claims the decode was checked against the
+vendor's own semantics "not against itself". The reference now decodes
+through torch's native `float8_e8m0fnu`. Trace sha unchanged, so the
+claim was true; the committed reproducer just did not establish it.
 
-## Finding 3 — FINDINGS staleness [FIXED on Artin's GO; audit the claims]
+**4. The receipts gap.** About eight booked numbers came from one-off
+inline commands whose output was never saved, and several cannot be
+recomputed from the logs that exist. The numbers are right — the audit
+checked every one it could — but a future reader cannot verify them.
+Standing correction adopted: a number that reaches the ledger comes
+from a committed script writing to a log.
 
-Backlog 10 -> **0**. Eleven bullets appended to "The clock-placement
-and deterministic-birth close", covering all ten entries: both P4
-verdicts, QK-RESCOPE and its gate rider, the three exposure-bias
-nulls (scheduled sampling, brute compute, answer-only allocation),
-the decay and ACT_CLAMP mechanisms, the E=1-parity-blindness
-methods finding, and the GPU primitive probe.
+## Known-good and known-open
 
-**Audit these first** — I wrote claims about the lab's own results,
-which is the part of this session most worth a second pair of eyes:
+Clean per the audit: all amendment chains resolve; every pre-reg
+precedes its verdict with no missing or smuggled arm; the two
+unregistered items are labelled as such; charter clean throughout; the
+SiLU-table sha pin is a real external check.
 
-- every number was re-read out of RESULTS.md before it was written
-  (`825,984` / `208,192`, `56 -> 94/140`, `8883 -> 2496`,
-  `2/8 -> 0/8`), not recalled from the session;
-- the P4 bullet uses the AMENDED device wording, not the original;
-- no bullet claims anything the cited entry does not.
-
-I did NOT re-curate anything Sol wrote, and I did not touch the
-maturity tags on existing bullets.
-
-**A defect I introduced and then guarded**: three of my bullets
-wrapped `[REGIME-SCOPED: deterministic integer battery]` across a
-line break. Semantically fine, invisible to grep — exactly the
-vocabulary drift the controlled list exists to prevent. Fixed, and
-`test_findings_tag_grammar` now catches it (verified failable on
-that precise defect). The guard did not exist when I made the
-mistake; my manual check found it, so the check became a test.
-
-## Proposals I did NOT act on (waiting on Artin/Fable)
-
-- **GitHub repo description** still reads like the pre-thesis lab.
-  It is a repo *setting*, not a file — `gh repo edit --description`
-  or the web UI. Outward-facing, so I did not touch it.
-- **Grok's "FINDINGS is chronological"** is STALE — it is thematic and
-  maturity-tagged since `a5b3a98`. Grok read a pre-restructure copy or
-  conflated it with RESULTS. The residual half-point is fair though:
-  README line 6 says "curated findings" without saying *curated by
-  maturity, not chronology*. One clause.
-- **Grok's cross-lab disclosure placement** is fair and unfixed: the
-  "21 commits ahead / unreachable" disclosure lives in
-  `docs/REPRODUCE.md:106`, but `docs/FINDINGS.md:443` carries a
-  `[REPLICATED]` axiom claim with no pointer to it. An external reader
-  meets the strong tag without the caveat.
-- **Full GPU leg of the battery** (pinned-sha trajectory, not just
-  primitives) — banked, not run. Pre-register first. Known work:
-  thread a device through the birth/draw path and `.cpu()` before
-  `.numpy()` at the digest points; bar = the 16 pinned FINAL shas.
+Open, not fixed here:
+- `scratch/pack_rans.py:84` still reads `verify=(tot_n < 2e9)` —
+  round-trip checking silently off past 2B symbols. Untouched by this
+  branch; it is Fable's file to fix.
+- `scripts/results_query.py --live` only reads `superseded_by` forward,
+  never scanning for entries that name a row in their `amends`; 26 rows
+  report LIVE while something amends them.
+- `docs/BOARD.md:102` cites a MoE-pruning baseline ("61%-keep,
+  50% count-quantile, ~28% cliff") to "RESULTS MoE pruning" that the
+  audit could not locate in RESULTS.md — possibly un-booked chat state.
+- `docs/THEORY.md` has no P6 row, so nothing grounds the
+  "least meter-compressible are most entropy-codable" regularity.
+- The curation ratchet now honestly reports **296** uncited curatable
+  entries (it previously read 0 for structural reasons). That backlog
+  predates this branch.
 
 ## What I did not touch
 
-`docs/BOARD.md`, `docs/THEORY.md`, `docs/RIFF-LEDGER.md`,
-`docs/handoffs/`, `docs/FINDINGS.md`, `README.md`, any `scratch/`
-experiment code, any pinned artifact, and the axiom repo (read-only
-throughout; the relay is a file on the llmopt side for Artin to
-carry).
+`docs/BOARD.md`, `docs/THEORY.md`, `docs/handoffs/`, `README.md`, any
+pinned artifact, and the axiom repo (read-only throughout; the two
+relays are files on the llmopt side for Artin to carry). I *did* edit
+`docs/FINDINGS.md` (added bullets, then corrected their tags) and
+appended to `docs/RIFF-LEDGER.md` (three external-reader banks) — an
+earlier version of this sheet wrongly claimed otherwise.
+
+## Next rungs, if the programme continues
+
+M1 (merged lattice, re-scoped weight-exact, zero download) → S0 (rANS
+decode throughput, pre-registered to FAIL its 5 GB/s bar) → R-d (is the
+shared router direction routing-inert? the cheapest falsifier of my own
+headline) → W1 format-matched → Q1 on Qwen3-30B where a capability
+claim is legal and σ≈5 applies → rung 13 with the instrument fixed.
