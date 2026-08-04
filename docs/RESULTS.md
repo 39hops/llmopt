@@ -18390,3 +18390,54 @@ also test keep-set TRANSFER across problem splits (a
 harder, more honest test than refitting demand per
 seed; noted so a null is read correctly). Resolution
 law governs leg B's bar; one machine, one session.
+
+## VERDICT MOE-GT-1-R1: "masking beats full" is NOT claimed (3/3 positive but pooled +4.7 < the +7 bar); the real finding is CHURN — the 50% mask reshuffles ~25% of the solved set in BOTH directions; the slope is graded to 33% then a cliff in (25%, 33%] (2026-08-03, Mac; Fable seat)
+
+Both legs per pre-reg (jobs/gt1_r1.log; summary rows in
+logs/opus/moe_gt1.jsonl; per-problem rows in
+logs/opus/moe_gt1_perprob.jsonl).
+
+LEG A (bisection, seed 1234): frac 0.40 = 57/120
+{1:18,2:23,3:16}; frac 0.33 = 43/120 {1:15,2:19,3:9}.
+Both ALIVE (>= 40 bar). Full ladder now: 100%: 64 |
+50%: 78 | 40%: 57 | 33%: 43 | 25%: 0. The registered
+"sharp wall, no middle" is HALF right: above 33% the
+decline is GRADED (~1.7 solves per keep-point), and the
+death in (25%, 33%] is total (0/120, not low). L3 decays
+fastest on the slope (26 -> 16 -> 9); L2 is most robust
+(24 -> 23 -> 19) — chain-length fragility, consistent
+with compounding per-step error.
+
+LEG B (n=3 fresh seeds, paired full vs masked-50%,
+keep-sets TRANSFERRED from arm-0 demand):
+  seed 4242: 62 -> 72 (+10) | seed 777: 73 -> 76 (+3) |
+  seed 90210: 66 -> 67 (+1). With arm-2's seed 1234
+  (+14): 4/4 positive.
+REGISTERED CONJUNCTION: 3/3 positive PASSES, pooled
+fresh-seed delta +4.7 FAILS the >= +7 bar. THE DIRECTION
+IS NOT CLAIMED. The arm-2 (+14) reading books as the
+high draw of a positive-leaning but sub-resolution
+effect.
+
+THE FINDING THE PER-PROBLEM LOGS FORCED: the net deltas
+hide enormous CHURN. Per seed, the mask flips 26-33
+problems TO solved and 23-26 AWAY from solved —
+~50 flips (~25-40% of the gate) for net gains of +1 to
++10. Masked-at-50% is not "the full model plus focus";
+it is a DIFFERENT SOLVER of similar strength whose
+solved set overlaps the full model's on only ~3/4 of the
+gate. Pooled flips by level: up {1:33, 2:29, 3:24},
+down {1:31, 2:16, 3:25} — the only clean net gain is L2
+(+13); L1 and L3 churn near-symmetrically. Both prior
+mechanism candidates (noise-expert removal; domain
+filtering) predicted mostly-monotone improvements and
+are DISFAVORED as stated; the measured picture is
+trajectory rerouting — the mask changes WHICH problems
+land, echoing F2b/F2c (routing selects trajectories)
+at the capability layer.
+
+FENCES: keep rule top-demand only; keep-sets fitted on
+seed-1234 prompts and transferred (leg B also tested
+transfer — it survived, all deltas non-negative);
+per-level flip counts are descriptive (no per-level
+bars registered); one machine, one session, greedy.
