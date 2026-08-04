@@ -19524,3 +19524,47 @@ FENCES: exclusion table mixes one seed (555) with pooled physics
 (+3); churn numbers are descriptive; the interior peak in exclusion
 is the same data as the fraction peak, re-axed — not independent
 confirmation. D4-PHYS-B receipts to follow.
+
+## VERDICT MOE-GT-2-D4-PHYS-B: the rescue arm CRATERS — exclusion mass is not the mechanism; the math-only crest survives its confound-free test (2026-08-04, Mac)
+
+Pre-reg: GT2-EXCLUSION item 4(a). Physics keep-sets from the POOLED
+physics log (the exact recipe of the math crest) at 45.3%, seeds
+707/808/909, paired against D4's full baselines (42/28/24).
+Receipts: jobs/gt2_d4_phys_b.log (rc=0, RULE echoed 'top' — the
+GT2-REVIEW receipt fix, first outing).
+
+  seed 707: full 42 -> 10/120 {2:9, 3:1}    (-32)
+  seed 808: full 28 -> 16/120 {2:7, 3:9}    (-12)
+  seed 909: full 24 ->  9/120 {2:5, 3:4}    (-15)
+
+POOLED -59. PREDICTION (a) DOES NOT FIRE — inverted, hard.
+THE MATCHED-INSTRUMENT DISSOCIATION (the finding): this arm's
+readouts are near-identical to the math crest's — open recall
+0.9013 vs math's 0.9014 (matched by construction of the axis),
+closed recall 0.8838-0.8848 vs math's ~0.887 — yet math gains
++14.7/+22 and physics loses -59. Coverage and recall, the two
+quantities every keep-rule optimizes, DO NOT PREDICT THE SIGN of
+the capability effect. Whatever the math crest removes, it is a
+property of which computation the excluded experts carry, not how
+much routed mass they carry.
+EXCLUSION-MASS HYPOTHESIS: KILLED as a sufficient condition
+(matched ~10% exclusion on physics is catastrophic, not curative).
+The math exclusion table (GT2-EXCLUSION item 2) stands as
+DESCRIPTIVE within-math structure only.
+INVERSION worth banking: the decode-built physics mask (1%
+exclusion) was NEUTRAL (+3, heavy churn); the pooled-built mask
+(10% exclusion) is CATASTROPHIC — on physics, excluding real
+demand only ever hurts. The crest's beats-full direction has now
+failed to appear on mechanics under BOTH mask recipes: the
+math-only reading is the strongest surviving claim, now with the
+demand-log confound removed.
+FENCES: same underpowered-corpus caveat as D4-PHYS for magnitude
+claims (baselines 24-42), but -59 pooled with 3/3 signs is far
+outside any noise reading; single demand-log seed (606) still
+shared by both physics arms.
+DOWNSTREAM: code second-crest run stays deprioritized (both its
+predictors now point null). The live mechanism question is WHAT
+the math-excluded experts compute — the churn judge and the
+per-level structure of the math crest gains are the next
+instruments; a physics-native fraction ladder is no longer the
+priority (both recipes fail at 45.3%).
