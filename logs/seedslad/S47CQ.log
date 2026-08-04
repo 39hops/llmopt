@@ -1,0 +1,30 @@
+[gmoe] marker ids [4, 26] terminator ids [27, 1]
+[gmoe] answer regions [(15, 30), (10, 20), (15, 30), (15, 30), (19, 30), (15, 30), (12, 24), (15, 30)]
+[gmoe] diet sha 809bce4215a24164ecbf5e951d77507d455bfd1923d08fe39aa02942b11a200b
+[gmoe] train-row sha 32cc244bf28fdadf01b343ae16fe1a55200ffe9fab9bd784e8abd739b12ef2c0
+[gmoe] full 16-row sha 78f8aef992debe6ec74e4701fba23167ff5fda1d4294546b9f7621605429798a
+[gmoe] prompt overlap train 8 heldout 8 overlap 0
+[gmoe] ANSWER_ONLY 0
+[gmoe] GATE mode: 8 complete train rows + 8 held-out, oracle-scored free-run
+[gmoe] LN/LD 0/1 K 100 STEPS 2000 SHIFT 14 E 4
+[gmoe] params 208192 windows sha 32cc244bf28fdadf
+[r1a] table silu sha 24499877ab63ee6b
+[r1a] table dsilu sha 967943f938fc924f
+[r1b] table exp sha 9b8649244ca8c235
+[gmoe] INIT clamp-frac 0.017 zero-prob-frac 0.000
+[gmoe] step 250 loss(cyc8) 3410 nz 0.130 traj-sha 6771b023cde080d2
+[gmoe] step 500 loss(cyc8) 3545 nz 0.138 traj-sha 78c27004cb5d7550
+[gmoe] step 750 loss(cyc8) 2762 nz 0.141 traj-sha bc328f64cf6e8249
+[gmoe] step 1000 loss(cyc8) 3122 nz 0.143 traj-sha b11d9510d69af3a5
+[gmoe] step 1250 loss(cyc8) 2588 nz 0.147 traj-sha d3aa3dd82e5fb024
+[gmoe] step 1500 loss(cyc8) 4276 nz 0.151 traj-sha 64a3bce6b7cc3634
+[gmoe] step 1750 loss(cyc8) 2579 nz 0.153 traj-sha f644b7de62c53bb5
+[gmoe] step 2000 loss(cyc8) 5539 nz 0.160 traj-sha dc7a34665f8372d5
+[gate] TRAIN: solves 0/8 parseable 1/8 terminated 8/8
+[gate] TRAIN: token-acc standard 65/140 suffix 44/116
+[gate] HELDOUT: solves 0/8 parseable 1/8 terminated 8/8
+[gate] HELDOUT: token-acc standard 58/140 suffix 14/88
+[gmoe] cycle-mean 12886 -> 5539  falling: True
+[gmoe] expert agreement strict 0.0000 coarse(+-1) 0.0000
+[gmoe] merge test: loss 5091 -> 14428 (delta 9337)
+[gmoe] FINAL trajectory sha dc7a34665f8372d53b166444bdcd5836aa4604444c5cc3ca577c5e143ec5dc0c

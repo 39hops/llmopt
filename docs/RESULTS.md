@@ -18958,3 +18958,89 @@ router self-sabotages on-domain at full width) is the
 program's open door, with the trajectory-fencing read
 (R1 churn + ITINERARY-0 phase dominance) as the live
 candidate.
+
+## AMENDMENT GT1-TRAJ-CORR (amends OBSERVATION GT1-ITINERARY-0, OBSERVATION GT1-PHASE-PREFETCH-0, OBSERVATION ENTROPY-LICENSE-1, VERDICT LEAN-TIER-1, VERDICT MOE-GT-1-R4, VERDICT MOE-GT-1-R5, VERDICT GRAVMOE-SEEDS-LADDER): the TRAJ data is ~80% PREFILL over a SHARED PROMPT PREFIX — phase-dominance RETRACTED as interpreted; entropy dilation and phase-prefetch SURVIVE decode-only; plus six reviewer-verified corrections (2026-08-04, Mac; reviewer-proposed, Fable-recomputed)
+
+THE CRITICAL ONE. The trajectory file carries mean 79
+prefill vs 22.9 decode tokens per prompt (decode
+fraction 0.20; recovered from the layer-0 run-lengths,
+per the reviewer's method — reviewer's hand counts for
+prompts 0-2 reproduced exactly). The system prompt +
+chat template are byte-identical across all 120 prompts.
+DIAGNOSTIC (reviewer-proposed, run): cross-prompt
+Jaccard restricted to shared-prefix positions = 1.000 —
+the ITINERARY-0 "null" (0.641) was inflated by
+identical tokens routing identically.
+DECODE-ONLY RERUNS (n=86 prompts with >=12 decode
+tokens):
+(1) ITINERARY-0's headline is RETRACTED AS INTERPRETED:
+    within-prompt decode-half Jaccard 0.469 vs
+    cross-prompt same-half 0.443 — near-equal. The
+    "routing is phase-dominated, not content-dominated"
+    reading was a shared-template artifact. What
+    remains true: the coarse prefill/decode coalition
+    difference is real, and rotation WITHIN decode is
+    substantial (0.469) but not phase-locked.
+(2) The ENTROPY DILATION SURVIVES: decode-only
+    second-half minus first-half +0.081, RISING IN
+    100% of the 86 prompts. Blackhole-commitment stays
+    refuted, now on clean data.
+(3) PHASE-PREFETCH SURVIVES, RESCOPED to the honest
+    phase pair (prefill vs decode): a 32/layer LOO
+    template built from others' DECODE demand covers
+    0.870 of held-out decode demand vs 0.755 for the
+    all-token template — aware wins 120/120. STRUCK
+    from the original entry: "equal budget => miss-rate
+    reduction" — a phase schedule pays SWAP TRAFFIC the
+    static set does not; the bandwidth-matched control
+    is owed before any deployment claim.
+(4) ENTROPY-LICENSE-1's 187/442 is REINTERPRETED:
+    quartile phases are mostly prefix positions, so
+    "phase-predictable" substantially means
+    "prefix-position-predictable"; a phase-permutation
+    null + decode-only recount are owed before the
+    fold-to-dense list is used. (Bits-vs-nats checked:
+    the license computed its own bits; the traj H field
+    is nats and was not mixed in.)
+REVIEWER CORRECTIONS, Fable-recomputed:
+(5) LEAN-TIER-1: "every emitted ring/field_simp proof"
+    -> RING ONLY. The corpus contains ZERO division
+    rows — the generator's rational rows SELF-CANCELLED
+    at sympy construction ((x+a)(x+b)/(x+a) simplifies
+    before sstr). The field_simp/hypothesis tier is
+    UNTESTED (and ac_equal's regex would fail-closed on
+    hypothesis rows — landmine noted for the next
+    corpus). The "443 emitted / 0 fenced" third bucket:
+    all 57 unemitted rows are the two-fn-atom kind
+    ((f+g)^2) — an axiom-side skip not covered by the
+    fence counter; question relayed. ac_equal's
+    docstring tightened: comparison is up to sympy
+    AUTO-EVALUATION (AC + like-term collection +
+    rational folding), not bare AC.
+(6) R5 level dict typo: L2 gains are (+6/+4/+8), not
+    (+5/+4/+8) (seed 111: 30-24). Sums now match +17.
+(7) R4 "never more than 3 from paired full" at 61.8%:
+    FALSE for seed 777 (73->64, a 9 drop); correct
+    reading "within 3 on 3 of 4 seeds".
+(8) R4 bar (i) wording: fires 2/3 with 9-16 margins;
+    the 90210 arm (67>66) is nominally positive but
+    unresolved at the gate's noise scale.
+(9) 222/777 identical-dict due diligence (same check as
+    111/333): 0/120 shared prompts, per-problem
+    agreement 88/120 — coincidence, clean.
+(10) GRAVMOE-SEEDS-LADDER receipts PULLED to the house
+    checkout (logs/seedslad/*.log, 7 arms; untracked
+    per the logs convention, sha of REG17.log
+    115c20a2c37b) —
+    the verdict's table is now house-verifiable. The
+    instrument finding gains a named CO-ALTERNATIVE:
+    an fp near-tie at a generation argmax (the
+    documented non-bug class) could also flip 1 row at
+    unchanged token-acc count; discriminator = diff the
+    8 generated strings / re-score serially on one
+    machine — owed before the 1/8-vs-2/8 delta is
+    attributed.
+R4/R5 HEADLINE UNTOUCHED: the reviewer byte-verified
+every gate dict, delta, and conjunct across both
+verdicts (R5 rows confirmed in two independent
+artifacts) — the crest claim stands as booked.
