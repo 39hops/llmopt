@@ -18555,3 +18555,63 @@ each re-verified by Fable against the per-problem log:
     are n_eval=2 smoke rows duplicating (4242, 1.0,
     idx 0-1); any recompute must key by (seed,frac,idx),
     not append. No booked number is affected.
+
+## PRE-REG GRAVMOE-SEEDS-LADDER: does the COND+QK gate win survive three NEW birth seeds? — the graduation rung the battery owes (2026-08-04, 3080 via wsl.sh, launch on Artin's GO)
+
+THE QUESTION. G-RB1 (GATE=1 COND=1 QK=1, sha 1fcfd187)
+holds the battery's only nonzero solves. QK-SEED2/3
+replicated the DIRECTION at seeds 17/23/31 (paired
+solve deltas +2/+2/+3 on the 8-row train gate); those
+three seeds are SPENT as pre-registered anchors. This
+ladder asks the same paired question at three FRESH
+seeds. Windows/diet CANNOT vary (triple-pinned:
+diet sha 809bce42, train-rows sha 32cc244b, full-rows
+sha 78f8aef9, plus hard-coded token-contract asserts) —
+the wider-diet half of the graduation stays BLOCKED on
+a Fable SHA-pin edit, booked here as out of scope.
+
+ARMS (one wave, ~7 min wallclock, single-threaded arms
+in parallel per p4_arms_0801.sh convention):
+  arm 0 REGRESSION: defaults + GATE=1 COND=1 QK=1,
+    BIRTH_SEED=17 — must reproduce sha 1fcfd187 EXACTLY
+    or NOTHING ELSE IS READ (env-pollution tripwire;
+    llmopt/reproduce.py CONTRACT_ENV discipline).
+  arms 1-6: BIRTH_SEED in {41, 47, 53} x
+    {COND=1 (QK off), COND=1 QK=1}, GATE=1, all else
+    default (E=4 K=100 LN=0 LD=1 STEPS=2000 SHIFT=14
+    GB=1024 DIM/DHEAD/FFN=64/16/128 ACLAMP=16384 NBLK=2;
+    SS/TAU/SCHED/ANSWER_ONLY/EXPORT/TWIN unset).
+
+REGISTERED READOUTS + BARS (both axes, per the
+GRAVMOE-GATE standing rider — loss claims are
+teacher-forced claims):
+(P1) SOLVES (train 8-row, sympy fork-boxed): QK-on adds
+     >= +1 solve vs its paired QK-off arm in >= 2 of 3
+     new seeds, with NO new seed showing QK-on < QK-off.
+     Combined with the spent anchors that would make the
+     sign 5-6/6 — graduation of the DIRECTION to
+     "replicated across 6 paired seeds". Any QK-on
+     regression below its pair books the direction back
+     to seed-scoped.
+(P2) TOKEN-ACC (free-run, 140-token suffix axis): QK-on
+     > QK-off in >= 2 of 3 new seeds (the graded axis;
+     anchors measured 94 vs 56 at seed 17).
+(P3) HELDOUT stays 0/8 everywhere (generalization is
+     the WIDER-DIET rung's question, not this one's —
+     a nonzero heldout solve at any arm is NEWS and
+     books as such).
+FENCES: 8-row gate, no measured sigma — bars are
+sign-consistency counts, NOT sigma claims; the 120-gate
+resolution law does NOT transport here. Merge-test
+run_loss vs cycle-mean ambiguity: this ladder reads the
+STEP-2000 CYCLE-MEAN (the QK-SEED2/3 convention).
+Device: 3080; legal to pool with Mac anchors ONLY
+because P4-DEVICE certified bit-identity for this
+battery. PRE-FLIGHT (registered, from the fact-sheet
+tripwires): remote checkout hash-asserted at launch
+HEAD; remote data/micromodel_gen4_sidecar.jsonl sha ==
+809bce42... asserted BEFORE arming (untracked file —
+git pull does not carry it); every CONTRACT_ENV key
+explicitly set or unset in the launch script; marker
+fires on all-arms-success only. HOLD: launches on
+Artin's explicit GO.
