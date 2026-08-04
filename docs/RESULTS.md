@@ -18662,3 +18662,34 @@ FENCES: corpus is HOUSE-GENERATED tier-1-family rows
 (the closable fraction on axiom's REAL verdict corpus is
 their measurement, still owed); one toolchain pin; the
 timing spread is booked, not resolved.
+
+## OBSERVATION ENTROPY-LICENSE-0 (desk, arm-0 counts): on a heavy-tailed router the MARGINAL entropy license collapses into demand ranking — the registered fold experiment is VACUOUS at 50% keep (2026-08-04, Mac; Fable seat)
+
+Desk computation on checkpoints/moe_gt1_arm0.json
+(pooled gate+probe demand, 48 layers x 128 experts).
+Per-expert Bernoulli selection entropy; license
+candidates = lowest-entropy quartile (32/layer, 1536
+total). MEASURED: (1) zero candidates have p > 0.9
+(no "always-on" experts exist on this vehicle — the
+fold-to-dense direction of the license has NO targets);
+(2) 560/1536 are never-selected; the rest are
+rarely-selected — on a heavy-tailed router, low marginal
+selection entropy IS low usage; (3) candidate overlap
+with the 50% top-demand keep-set: 0/1536 — every license
+candidate is ALREADY masked at 50% keep, so the
+registered killer experiment (fold the low-entropy
+quartile at 50% keep, watch the gate) is VACUOUS as
+registered: it would fold experts the mask already
+removed.
+WHAT SURVIVES: the license's non-trivial form needs
+CONDITIONAL entropy — experts that are heavily used but
+predictable from context (H(select | layer-input) low
+while marginal H is high) are the real fold-to-dense
+candidates, and the pooled counts cannot see them. That
+is an instrument request (per-token routing records),
+which the pooled-artifact correction (RIFF rider
+2026-08-04) already owes for two other cells — one
+instrument edit now serves three cells.
+FENCES: pooled gate+probe demand, one vehicle, one
+corpus; no gate was run; books as an observation
+scoping the riff, not a verdict on it.
