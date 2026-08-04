@@ -18829,3 +18829,31 @@ phases (positional, not semantic); 32/128 budget point
 only; coverage is demand-weighted slots, not a gate —
 the gate-level test (phase-scheduled masking vs static
 at equal budget) is the natural registered follow-up.
+
+## OBSERVATION ENTROPY-LICENSE-1 (desk, TRAJ data; extends ENTROPY-LICENSE-0): the CONDITIONAL license has targets, and the conditioning variable is PHASE — 187/442 heavily-used experts are phase-predictable (>0.15 bits of selection uncertainty explained by position quartile) (2026-08-04, Mac; Fable seat)
+
+LICENSE-0 found the marginal license vacuous (low
+marginal entropy = low usage). This reading asks the
+surviving conditional form with phase as the context:
+per (layer, expert) with marginal selection p > 0.2
+(442 such experts), compare marginal Bernoulli entropy
+vs phase-conditional entropy (position quartiles).
+MEASURED: 187/442 have H_marg - H(sel|phase) > 0.15
+bits. Profiles are clean monotone ramps — e.g. L1/e102
+p by phase [0.02, 0.28, 0.42, 0.55] (an emission
+specialist), L4/e104 [0.73, 0.37, 0.20, 0.11] (a setup
+specialist). READ: the three desk findings now close
+into one mechanism — the router runs a universal phase
+program (ITINERARY-0), the program is exploitable as a
+residency timetable (PHASE-PREFETCH-0), and for ~42% of
+the heavy experts the timetable is most of what the
+router "decides" about them (this reading). Artin's
+fold-to-dense license applies to those 187 in
+phase-scheduled form: within their active phase they
+approach always-on (fold into the dense path FOR THAT
+PHASE); outside it they approach never-on (evict).
+FENCES: descriptive; positional quartile phases; 0.15
+bit threshold and p>0.2 floor are analysis choices, not
+registered bars; gate-level test = phase-scheduled
+residency vs static at equal budget (the registered
+follow-up named in PHASE-PREFETCH-0).
