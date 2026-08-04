@@ -18358,3 +18358,35 @@ single-seed; the rider owes replication before any
 direction is claimed. One machine, one session, 4-bit
 vehicle; keep rule is top-demand only (other rules
 unmeasured here); nothing transports to V4 numerically.
+
+## PRE-REG MOE-GT-1-R1 (rider on ARM2): bisect the wall (40% / 33%) and replicate the +14 at 50% over n=3 fresh problem seeds with per-problem logging (2026-08-03, Mac; Fable seat)
+
+Two legs, same vehicle, same top-demand keep rule from
+the arm-0 demand log, greedy throughout.
+
+LEG A — BISECTION (seed 1234, the arm-2 split): fractions
+0.40 and 0.33. REGISTERED: the wall is sharp — each
+fraction lands either ALIVE (>= 40/120) or DEAD
+(<= 10/120), no middle; the (25%, 50%] band narrows to
+one side. A mid-band reading (11-39) would itself be
+news (a graded shoulder) and books as such.
+
+LEG B — REPLICATION of the unregistered-direction +14:
+three FRESH problem seeds (4242, 777, 90210), each run
+PAIRED full (frac 1.0) vs masked 50%, per-problem
+logging ON (problem index, level, solved — both arms,
+same file). REGISTERED: "masking beats full" is claimed
+as a direction ONLY IF the masked-minus-full delta is
+positive in 3/3 seeds AND the pooled delta >= +7 solves
+(1.5 sigma on the 120 gate). Anything less books as
+seed-luck fencing of the arm-2 reading. The per-problem
+logs name every flipped question; the L3-concentration
+sub-reading (arm-2: +9 at L3) is checked against the
+pooled flips, descriptive.
+
+FENCES: keep-sets come from arm-0 demand (seed-1234
+prompts) for ALL legs — leg B's fresh seeds therefore
+also test keep-set TRANSFER across problem splits (a
+harder, more honest test than refitting demand per
+seed; noted so a null is read correctly). Resolution
+law governs leg B's bar; one machine, one session.
