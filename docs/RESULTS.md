@@ -19140,3 +19140,84 @@ mechanism, at last seen from the healthy side).
 FENCES: n=1 seed, 2 random draws (identical outcome —
 a third draw buys nothing); random keep-sets do not
 nest; no cross-fraction reads.
+
+## PRE-REG MOE-GT-2: the domain program (coalition transport) + crest-location seed check (2026-08-04, Mac)
+
+Spec: docs/superpowers/specs/2026-08-04-next-session.md rung 1,
+amended by the two 2026-08-04 post-spec survey seats (leverage +
+speculative; both self-reported Opus 4.5 under the Opus 5 label,
+disclosed). All findings below were Fable-verified before this
+pre-reg: mechanics L1 space enumerated (30 unique prompts per kind
+at L1 — 3000-seed enumeration; L2 240-450, L3 1250-1500),
+place1_gravity.py prefetch-cost gap confirmed at source, decode
+split confirmed prose-only until today's instrument edit (4f3dc6c:
+phase + router scores recorded at write time, TRAJ_OUT knob;
+smoke-verified, certified artifacts restored bit-identical).
+
+ARMS (in firing order):
+D0 TRAJ-v2 regression (RUNNING at pre-reg time, Mac, rjob
+   gt1_trajv2): full arm-0 rerun writing
+   logs/opus/moe_gt1_traj_v2.jsonl. BAR: gate bit-identical to the
+   certified artifact — 64/120 {1:23, 2:24, 3:17}, mean tail
+   0.7494347865757821; new fields (phase, scores) strictly
+   additive. Any drift = the edit touched the certified path, stop.
+D1 CREST-LOCATION SEED CHECK (speculative-survey catch; the
+   DIET-COND-SEED failure mode — "the interior optimum survives,
+   its LOCATION does not" — is live and unaddressed: R5 confirmed
+   the FRACTION 45.3% on fresh seeds but never re-derived the crest
+   location per seed). One unspent seed (555), RULE=top,
+   FRACS=1.0,0.618,0.50,0.453,0.40 in one paired run.
+   P-D1a: argmax over masked fractions stays at 0.453.
+   P-D1b (failure branch): if argmax moves, the location is
+   seed-fitted; every downstream rung unhardcodes 45.3% and carries
+   "fraction band 0.40-0.50" instead. Single seed: a non-move is
+   weak evidence, a move is strong (the asymmetry is the point).
+D2 PHYSICS ARM-0: mechanics gate, N=120, LEVELS 2-3 ONLY (L1 fence
+   from the enumeration above; make_dataset's dedup loop is
+   unbounded and HANGS on exhausted cells — never ask L1 for more
+   than its 30), kinds eom/small_osc/kinematics, fresh seed,
+   decode-only demand read from phase-tagged traj.
+   DESK PREDICTION REGISTERED BEFORE THE RUN (mass-spectrum-is-a-
+   dial transport): Jaccard(math, mechanics) > Jaccard(math, code)
+   — the coalition should track corpus overlap. Readout:
+   router_stats.overlap per layer on decode-only keep-sets.
+   KILLER (from the bank): Jaccard ~1.0 vs math = router is not
+   domain-biased, program dies honestly, no gate runs.
+   SECONDARY STATISTIC (specialist-shelf transport, registered so
+   a high Jaccard can't hide it): overlap of the LOW-count tails,
+   not just the keep-sets — if physics demand lives in math's
+   low-count tail, top-demand Jaccard overstates coalition identity.
+D3 CODE ARM-0: codegen ladder corpus (llmopt/codegen/ladder.py
+   RungTasks; llvm.py toolchain — Mac homebrew LLVM path; oracle.py
+   is MSVC-only and stays out of any Mac-paired arm). Pre-flights
+   REQUIRED before GPU time: llvm_available() true (Xcode clang has
+   no llvm-mc — a silent-empty-corpus failure mode), build_ladder
+   output cached to JSON (subprocess storm), code-specific SYSTEM
+   prompt (the mathgen "calculus assistant" prompt is wrong here).
+   Same Jaccard-first killer as D2. FENCE: the 120-gate sigma~5 is
+   a MATHGEN number and does not transport — no code-gate delta
+   claims until a code-gate dispersion is measured.
+D4 (CONDITIONAL, only if D2/D3 coalitions differ from math):
+   second-crest gates per the R5 recipe verbatim — domain-X keep-set
+   at the surviving fraction on domain-X gate, paired vs full, n>=3
+   seeds, +7 pooled bar, CROSS-ARMS mandatory (math mask on code
+   gate + vice versa; predicted catastrophic — the mechanism's
+   sharpest falsifier).
+
+Instruments owed before D2 fires: KINDS/LEVELS env knobs on
+scratch/moe_gt1.py's make_dataset call (one line); D3 additionally
+owes the generate_fn seam between evaluate_ladder and the MLX
+masked model. Rung-2 correction adopted from the surveys, booked
+here so it travels: place1_gravity.py as written does NOT charge
+prefetch inserts as traffic (scratch/place1_gravity.py:131-139,
+unfinished comment at the exact line) and is hardcoded NE=64 vs
+GT-1's 128 — the bandwidth control CANNOT be discharged by running
+it as-is; three arms (LRU / demand-template-pin / conditional-
+prefetch) must be named when rung 2 pre-registers.
+CREST-NESTING hygiene item: discharged at the desk today —
+keep(0.453) subset of keep(0.50) in 48/48 layers, but this holds BY
+CONSTRUCTION (same stable sort, prefix property), so the license
+revival it kills is killed tautologically; the non-trivial residue
+is that the crest and 50% masks differ by exactly the 6
+lowest-demand experts per layer (58 vs 64 of 128), making the
+41-47% churn between them attributable to a small named set.
