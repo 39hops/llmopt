@@ -19079,3 +19079,28 @@ may fail to even parse (bottom-demand includes
 never-touched experts — that outcome books as data, not
 error). Random keep-sets do NOT nest across fractions;
 no cross-fraction reads from this cell.
+
+## AMENDMENT CLIFF-DEBT-DISCHARGED (amends the standing debt in AMENDMENT F1-REVIEW item 12; corrects BOARD's chat-state clause): the "~28% pruning cliff" citation is replaced by the booked GT-1 ladder (2026-08-04, Mac; reviewer-surfaced, Fable seat)
+
+AMENDMENT F1-REVIEW booked the debt: the "~28% cliff"
+cited by PRE-REG V4-F1 and V4-F1e existed only on BOARD
+(chat state, never booked). The GT-1 programme now
+supplies registered replacements for every clause:
+- "cliff below ~28%": SUPERSEDED by the measured
+  collapsing shoulder — 43/120 at 33%, 30/120 at 31.4%,
+  0/120 at 25% (VERDICTs ARM2/R1/R2; top-demand rule,
+  Qwen3-30B-A3B). Directionally the old number was
+  right; it is now a booked curve instead of a memory.
+- "61%-keep holds accuracy": SUPERSEDED — 61.8% keep is
+  statistically the FULL model (63/63/64/66 vs paired
+  full across four seeds; R4).
+- "50% count-quantile BEATS full": the one chat-state
+  clause that was AHEAD of the ledger — now booked far
+  stronger as the 45.3% crest (+14.7 pooled, 6/6 seeds,
+  R5 fully registered).
+The V4-F1/F1e pre-regs' expectation language now has a
+booked basis (vehicle caveat: Qwen3, not Qwen3-30B's
+2024 predecessor the chat-state numbers came from —
+the SHAPE transported, the exact fractions are
+vehicle-specific). BOARD's clause is corrected in the
+same commit. Debt closed.
