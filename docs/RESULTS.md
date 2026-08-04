@@ -19374,3 +19374,42 @@ obvious next arm and remains unrun).
 DOWNSTREAM: cross-arms (math mask on code gate, code mask on math
 gate) still fire — the catastrophic prediction tests coalition
 SPECIFICITY, which D2/D3 support, independently of crest transport.
+
+## VERDICT MOE-GT-2-D4-CROSS: cross-domain masks degrade severely but do NOT die — the coverage curve gets its third point (2026-08-04, Mac)
+
+Pre-reg: MOE-GT-2 D4 cross-arms (math mask on code gate + code mask
+on math gate; registered prediction: catastrophic). Masks at 45.3%,
+decode-only demand logs, sole-resident runs. Receipts:
+jobs/gt2_crossarms.log (rc=0).
+
+  MATH mask on CODE gate: 21/120 {encode:0, decode:0, mangle:0,
+    lifetime:0, output:1, diagnose:20}   (full code gate: 48/120)
+  CODE mask on MATH gate: 19/120 {1:6, 2:9, 3:4}
+    (full math gate, seed 1234: 64/120; math crest: 78-82)
+
+PREDICTION PARTIALLY FIRES: severe degradation both directions
+(-56% and -70% relative) — but NOT the 0/120 death of R6's
+random/anti masks. The desk numbers explain it and give the
+coverage-vs-capability curve its third point:
+  random-45% mask:  44.7% of math demand covered -> 0/120
+  cross-domain:     77.6-80.2% of demand covered -> 19-21/120
+  own-domain 40%:   86.5% covered               -> 55-60/120
+  own-domain crest: 90.1% covered               -> 76-87/120
+The curve is continuous and violently steep between 45% and 90%
+coverage — capability is not "coalition present or absent" but a
+sharp sigmoid in demanded-coalition coverage. Cross-coalitions
+(Jaccard 0.543) sit on its lower knee.
+CO-OBSERVATION (unregistered, striking): under the math mask the
+code gate's survival is ENTIRELY the diagnose rung (20/26 of its
+tasks; every compile/assemble rung 0-1). Diagnose is the one rung
+answered in natural language — the math coalition preserves
+verbal/analytic capability while the asm-emission rungs die.
+Consistent with coalitions being FUNCTIONAL, not just topical.
+FENCES: one seed per direction; coverage numbers are count-weighted
+decode-only; diagnose-rung reading is post-hoc (rung mix was fixed
+by the round-robin rule, not designed for this contrast).
+DOWNSTREAM: MOE-GT-2 pre-reg is fully resolved (D0-D4 + cross).
+The program's corrected summary: coalitions are real, domain-
+organized, and functionally specific; the beats-full crest is
+math-only on present evidence; capability follows a steep coverage
+sigmoid, not a cliff.
