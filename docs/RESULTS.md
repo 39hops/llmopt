@@ -18493,3 +18493,32 @@ DESCRIPTION and any finer hunt needs paired seeds. No
 capability-mechanism claim either way; churn (R1) means
 adjacent points may solve substantially different
 problem sets at similar totals.
+
+## VERDICT MOE-GT-1-R3: the peak is REAL and lives near 50% — 61.8% scores 63/120 (indistinguishable from full's 64), so 50%'s 78 beats BOTH bracket ends by >= 7 and the registered location claim fires: capability peaks inside (40%, 61.8%) (2026-08-03, Mac; Fable seat)
+
+frac 0.618 (79/128 experts, 97.1% open-loop coverage):
+63/120 {1:22,2:23,3:18} (jobs/gt1_r3.log). Registered
+case (ii) with the location clause SATISFIED: 78 at 50%
+exceeds 63 at 61.8% by 15 and 57 at 40% by 21 — both
+over the >= 7 resolution bar at n=1 on the same seed.
+THE RIDGE IS REAL ON THIS SEED: masking to ~half the
+experts genuinely outperforms both near-full coverage
+and deeper pruning; at 61.8% keep (97% demand coverage)
+the model is statistically the FULL model (63 vs 64),
+so the improvement is NOT "less noise monotonically" —
+it switches on only when coverage drops well below
+demand saturation, then dies again by 40%. Full ladder,
+one seed, one rule:
+  100%: 64 | 61.8%: 63 | 50%: 78 | 40%: 57 | 38.2%: 53
+  | 33%: 43 | 31.4%: 30 | 25%: 0.
+CAVEATS THAT TRAVEL: R1's churn result means the 50%
+solver overlaps full on only ~3/4 of the gate — "peak"
+means peak TOTAL, not a superset; and R1's pooled
+fresh-seed delta for 50%-vs-full was +4.7 (positive
+3/3 but sub-bar), so the RIDGE HEIGHT vs full remains
+sub-resolution across seeds even though the ridge SHAPE
+(50% >> its neighbors) cleared the bar within-seed
+here. Next golden step (~45.3%) and a paired-seed pass
+at the peak are the banked follow-ups, not fired.
+FENCES: n=1 seed, one keep rule, per-level dict is the
+checksum (22+23+18=63).
