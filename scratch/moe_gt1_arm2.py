@@ -42,7 +42,13 @@ from llmopt.mathgen.evaluate import SYSTEM, extract_expression
 from llmopt.mathgen.problems import make_dataset
 
 MODEL = "mlx-community/Qwen3-30B-A3B-4bit"
-ARM0 = Path("checkpoints/moe_gt1_arm0.json")
+# MOE-GT-2-D4 knobs: ARM0 selects the demand log the keep-sets come
+# from; KINDS/LEVELS select the gate corpus (defaults preserve the
+# certified math arms byte-for-byte).
+ARM0 = Path(os.environ.get("ARM0", "checkpoints/moe_gt1_arm0.json"))
+KINDS = tuple(k for k in os.environ.get("KINDS", "").split(",") if k) or None
+LEVELS = tuple(
+    int(x) for x in os.environ.get("LEVELS", "").split(",") if x) or None
 N_EVAL = int(os.environ.get("N_EVAL", 120))
 MAX_TOKENS = int(os.environ.get("MAX_TOKENS", 96))
 PROBE_TOKENS = int(os.environ.get("PROBE_TOKENS", 64))
@@ -173,7 +179,12 @@ def main():
     top_k = next(
         layer.mlp.top_k for layer in model.model.layers
         if hasattr(layer.mlp, "top_k"))
-    problems = make_dataset(N_EVAL, seed=SEED)
+    kw = {}
+    if KINDS:
+        kw["kinds"] = KINDS
+    if LEVELS:
+        kw["levels"] = LEVELS
+    problems = make_dataset(N_EVAL, seed=SEED, **kw)
     LOG.parent.mkdir(parents=True, exist_ok=True)
 
     for frac in FRACS:
@@ -202,6 +213,7 @@ def main():
         with LOG.open("a") as f:
             f.write(json.dumps({
                 "arm": 2, "seed": SEED, "frac": frac, "n_eval": N_EVAL,
+                "arm0": str(ARM0), "kinds": KINDS, "levels": LEVELS,
                 "gate_ok": n_ok, "gate_per_level": per_level,
                 "open_recall": ol, "closed_recall": cl,
                 "gap": abs(cl - ol), "gate_s": gate_s,
