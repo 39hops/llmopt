@@ -18454,3 +18454,23 @@ keep-points, an effectively discontinuous phase edge.
 Mid-band (11-39) at either point books as a shoulder.
 Fences: n=1 seed, descriptive ladder points, resolution
 law applies to any cross-point comparison.
+
+## VERDICT MOE-GT-1-R2: pi finds the SHOULDER — 31.4% is mid-band (30/120), so the death is a steepening shoulder, not a phase edge; golden 38.2% lands exactly on the slope line (53/120 vs 50-53 predicted) (2026-08-03, Mac; Fable seat)
+
+Seed 1234, top-demand rule (jobs/gt1_r2.log; rows in
+logs/opus/moe_gt1.jsonl).
+  frac 0.382: 53/120 {1:19,2:20,3:14} — ON the
+  registered interpolation band (50-53): the slope is
+  smooth and near-linear from 50% down to 38.2%.
+  frac 0.314: 30/120 {1:8,2:12,3:10} — MID-BAND
+  (11-39), the registered shoulder outcome. Ladder now:
+  100%: 64 | 50%: 78 | 40%: 57 | 38.2%: 53 | 33%: 43 |
+  31.4%: 30 | 25%: 0. The decline steepens (~1.7
+  solves/keep-point on the slope; ~6.8/point between
+  33% and 31.4%; everything gone by 25%) — a collapsing
+  shoulder, not a discontinuity at this resolution. The
+  closed-loop gap tracks the damage (0.007 -> 0.045
+  across the two points), still only exploding after
+  death.
+FENCES: n=1 seed, descriptive ladder; per-level dicts
+are the checksum (19+20+14=53; 8+12+10=30).
