@@ -19336,3 +19336,41 @@ DOWNSTREAM: D4 is licensed on BOTH domains. Physics second-crest
 gate (physics keep-set at 45.3% on the physics gate, paired vs
 full 36/120, n>=3 seeds) + mandatory cross-arms (math mask on code
 gate and vice versa, predicted catastrophic).
+
+## VERDICT MOE-GT-2-D4-PHYS: the crest does NOT transport to physics — +3 pooled vs the +7 bar (2026-08-04, Mac)
+
+Pre-reg: MOE-GT-2 arm D4 (R5 recipe verbatim: domain keep-set at
+45.3% on the domain gate, paired vs full, n=3 seeds, +7 pooled bar).
+Keep-sets from checkpoints/gt2_phys_arm0_decode.json (decode-only,
+gate-prompts-only). Receipts: jobs/gt2_d4_phys2.log (rc=0; first
+attempt gt2_d4_phys was killed by the 14:30 kernel panic — two
+resident 30B loads, operator error, no partial artifacts; rerun is
+clean and sole-resident).
+
+  seed 707: full 42/120 {2:23, 3:19} -> crest 38/120 {2:24, 3:14}  (-4)
+  seed 808: full 28/120 {2:17, 3:11} -> crest 32/120 {2:20, 3:12}  (+4)
+  seed 909: full 24/120 {2:13, 3:11} -> crest 27/120 {2:16, 3:11}  (+3)
+
+POOLED +3 — DOES NOT CLEAR the +7 bar. Signs 2/3. VERDICT: NULL.
+The math result (7/7 seeds crest >= full, +14.7 and +22 pooled) does
+not reproduce on mechanics. The corrected picture after D2/D3/D4:
+the router IS domain-organized (coalitions track corpus distance),
+but the BEATS-FULL crest is, on present evidence, a math-specific
+phenomenon — whatever full-width interference the math mask removes,
+the physics forward pass either does not suffer it or the physics
+coalition does not isolate it.
+CO-OBSERVATIONS: (i) crest closed-loop recall on physics is ~0.727
+(math crest: ~0.887) — the physics mask forces far more rerouting;
+the transported 45.3% may simply be the wrong fraction for this
+coalition's geometry. (ii) The gate/probe dissociation reappears:
+seed 909's crest probe degenerates ('3.3.3.3...') while its gate
+IMPROVES +3 — second domain, same dissociation as ARM2-P4.
+FENCES: physics baselines are weak and spread wide (24-42/120
+across seeds — the corpus is harder and seed-noisier than math's;
+a +7 bar calibrated on 64-ish baselines is conservative here);
+demand log came from ONE seed (606); 45.3% was transported, not
+re-derived per domain (a physics-native fraction ladder is the
+obvious next arm and remains unrun).
+DOWNSTREAM: cross-arms (math mask on code gate, code mask on math
+gate) still fire — the catastrophic prediction tests coalition
+SPECIFICITY, which D2/D3 support, independently of crest transport.
