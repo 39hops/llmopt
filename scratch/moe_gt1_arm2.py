@@ -143,23 +143,35 @@ def instrument(model, keep):
     return state, restore
 
 
-def run_gate(model, tok, problems, frac):
+def run_gate(model, tok, problems, frac, state=None):
     from mlx_lm import generate
 
     per_level, n_ok, rows = {}, 0, []
     for i, p in enumerate(problems):
+        # per-problem closed recall: snapshot the recall counters around
+        # each problem (CHURN-JUDGE-1 instrument; deploy-observable,
+        # oracle-free — as are parse success and completion length)
+        h0, s0 = (state["hits"], state["slots"]) if state else (0, 0)
         msgs = [{"role": "system", "content": SYSTEM},
                 {"role": "user", "content": p.prompt}]
         text = tok.apply_chat_template(
             msgs, add_generation_prompt=True, tokenize=False,
             enable_thinking=False)
         completion = generate(model, tok, prompt=text, max_tokens=MAX_TOKENS)
-        ok = p.check(extract_expression(completion))
+        expr = extract_expression(completion)
+        ok = p.check(expr)
         n_ok += ok
         lvl = getattr(p, "level", "?")
         per_level[lvl] = per_level.get(lvl, 0) + int(ok)
-        rows.append({"seed": SEED, "frac": frac, "idx": i, "level": lvl,
-                     "ok": bool(ok)})
+        from llmopt.mathgen.problems import parse_answer
+        row = {"seed": SEED, "frac": frac, "idx": i, "level": lvl,
+               "ok": bool(ok),
+               "parsed": bool(expr) and parse_answer(expr) is not None,
+               "gen_len": len(completion)}
+        if state and state["slots"] > s0:
+            row["recall"] = round(
+                (state["hits"] - h0) / (state["slots"] - s0), 4)
+        rows.append(row)
         if (i + 1) % 40 == 0:
             print(f"[gt1-2]   gate {i + 1}/{len(problems)} "
                   f"acc {n_ok / (i + 1):.1%}", flush=True)
@@ -199,7 +211,8 @@ def main():
         state, restore = instrument(model, keep)
         try:
             t0 = time.time()
-            n_ok, per_level = run_gate(model, tok, problems, frac)
+            n_ok, per_level = run_gate(model, tok, problems, frac,
+                                       state=state)
             gate_s = time.time() - t0
             probe_text = generate(
                 model, tok, prompt=PROBE, max_tokens=PROBE_TOKENS)
