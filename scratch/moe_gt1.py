@@ -101,11 +101,19 @@ def instrument(model):
                 # to the certified arm-0 artifact.
                 p = gates.reshape(-1, gates.shape[-1])
                 ent = (-(p * mx.log(p + 1e-12)).sum(axis=-1)).tolist()
+                # phase is RECORDED, not inferred: MLX prefill hits the
+                # router with the whole prompt batch, decode with 1 token
+                # (GT1-TRAJ-CORR made this field mandatory — the prose-only
+                # run-length recovery had no re-runnable artifact).
+                phase = "prefill" if len(flat_i) > 1 else "decode"
+                flat_sc = scores.reshape(-1, k).tolist()
                 tpos = state["tpos"].get(li, 0)
                 for t, picks in enumerate(flat_i):
                     state["traj"].append({
                         "prompt": state["prompt"], "layer": li,
                         "pos": tpos + t, "topk": picks,
+                        "scores": [round(s, 6) for s in flat_sc[t]],
+                        "phase": phase,
                         "H": round(float(ent[t]), 4)})
                 state["tpos"][li] = tpos + len(flat_i)
         y = self.switch_mlp(x, inds)
@@ -138,7 +146,8 @@ def main():
     problems = make_dataset(N_EVAL, seed=1234)
     traj_f = None
     if state["traj"] is not None:
-        traj_path = Path("logs/opus/moe_gt1_traj.jsonl")
+        traj_path = Path(os.environ.get(
+            "TRAJ_OUT", "logs/opus/moe_gt1_traj.jsonl"))
         traj_path.parent.mkdir(parents=True, exist_ok=True)
         traj_f = traj_path.open("w")
     per_level, n_ok = {}, 0
