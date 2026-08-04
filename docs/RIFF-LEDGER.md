@@ -2352,3 +2352,41 @@ pooling winners was his call).
   packing/densification question inherits it. Attribution: Artin
   (blackhole/gravity frame, prompt-in-weight-space inversion), house
   (literalization + fences from the merge ledger).
+
+- **2026-08-03 (Artin): FUNCTION-SPACE VERIFIER WEIGHTS — rigid,
+  verified experts layered over the model; routing gravity shifts
+  on DISAGREEMENT; "one sweep, find the disagreements and repair."**
+  The riff: some weights are special because their function is
+  CERTIFIED (the exact-twin / intbirth lineage: weights whose
+  arithmetic behavior is bit-verified against an oracle). Embed such
+  rigid experts alongside learned ones; when the learned pathway and
+  the certified pathway disagree on a computation both claim to do,
+  the disagreement is a LOCAL, ADDRESSABLE error signal — and the
+  router's pull toward the certified expert (or a repair of the
+  learned one) is the correction. Three house threads this fuses:
+  (1) certified-function weights exist (exact_twin_d56_q16,
+  integer-battery bit-identity doctrine); (2) "verified AND distinct
+  at every learning layer" — this pushes verification INSIDE the
+  forward pass instead of at the output; (3) the gate law/syndrome
+  frame — disagreement-as-syndrome, repair routed to where the
+  syndrome fires. Nearest published kin: process supervision /
+  tool-use grounding, but IN-WEIGHT rather than out-of-band.
+  MEASURABLE LADDER, smallest first: (a) DISAGREEMENT INSTRUMENT —
+  on a mathnative model with a certified twin of one operation
+  (addition circuits), measure per-token divergence between the
+  learned computation and the certified twin on held-out arithmetic;
+  does divergence PREDICT wrong answers (the syndrome property)?
+  (b) ROUTING RESPONSE — add the certified expert as a routable
+  alternative; does a trained router learn to prefer it exactly
+  where the learned pathway's syndrome fires? (c) REPAIR — distill
+  the certified expert's behavior back into the learned weights
+  ONLY at disagreement sites ("one sweep, find and repair") — gate
+  before/after, the repair must not damage non-arithmetic solves.
+  Fences: (a) is desk-scale on existing checkpoints; (b)/(c) are
+  training cells needing pre-reg; repair-by-distillation must be
+  scored by ORACLE (function MSE / gate), never weight distance
+  (house law). Killer for the whole ladder: if divergence does not
+  predict error at (a), the syndrome property fails and rigid
+  experts are just slow tools. Attribution: Artin (verifier-expert
+  frame, disagreement->gravity-shift, one-sweep repair), house
+  (syndrome framing + the certified-twin substrate + fences).
