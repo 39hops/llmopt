@@ -18923,3 +18923,38 @@ reading failing its confirmation, and the ridge claim
 retreats to shape-only. No other readout gates
 anything; probe text and recall gaps recorded
 descriptively.
+
+## VERDICT MOE-GT-1-R5: CONFIRMED, fully registered — 45.3% keep beats the paired full model +17/+9/+18 at three unspent seeds (pooled +14.7, 3/3 positive, both registered conjuncts pass at 2x the bar) (2026-08-04, Mac; Fable seat)
+
+The clean claim: MASKING Qwen3-30B-A3B-4bit TO ITS
+TOP-45% MATH-DEMAND EXPERTS (58/128 per layer,
+top-demand rule from the arm-0 oracle demand log)
+IMPROVES the 120-item mathgen gate over the full model.
+Registered before the run (PRE-REG R5), seeds never
+touched by this program:
+  seed 111: full 63 {24,24,15} -> 45.3% 80 {29,30,21}  (+17)
+  seed 222: full 73 {27,25,21} -> 45.3% 82 {28,29,25}  (+9)
+  seed 333: full 63 {24,24,15} -> 45.3% 81 {28,32,21}  (+18)
+Both conjuncts: 3/3 positive PASS; pooled +14.7 >= +7
+PASS. Across the program the crest has now beaten its
+paired full baseline in 6/6 seeds (R4: +14/+14/+16; R5:
++17/+9/+18) with per-problem logs for every arm.
+DUE DILIGENCE (booked because the flag was raised
+in-session): seeds 111 and 333 produced identical full
+dicts (63, {24,24,15}) — checked for generator-space
+collision per the contamination doctrine: 2/120 shared
+prompts, different orders, per-problem agreement 86/120.
+Coincidence, not collision.
+STANDING SCOPE: one vehicle (Qwen3-30B-A3B-4bit, MLX),
+one keep rule (top demand from seed-1234-derived arm-0
+demand — note the keep-set TRANSFERS: it was fitted to
+no seed it is now beating), mathgen L1-3 gate, greedy,
+N=120. Level pattern: gains lean L2 (+5/+4/+8) and L1
+(+5/+1/+4) with L3 mixed (+6/+4/+6 — actually positive
+everywhere this round). Text/coherence dissociation
+(ARM2 P4) still applies — this is a GATE claim, not a
+general-quality claim. The mechanism question (why the
+router self-sabotages on-domain at full width) is the
+program's open door, with the trajectory-fencing read
+(R1 churn + ITINERARY-0 phase dominance) as the live
+candidate.
