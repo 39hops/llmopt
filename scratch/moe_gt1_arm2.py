@@ -47,8 +47,11 @@ N_EVAL = int(os.environ.get("N_EVAL", 120))
 MAX_TOKENS = int(os.environ.get("MAX_TOKENS", 96))
 PROBE_TOKENS = int(os.environ.get("PROBE_TOKENS", 64))
 FRACS = [float(f) for f in os.environ.get("FRACS", "0.5,0.25,0.125").split(",")]
+SEED = int(os.environ.get("SEED", 1234))
+PERPROB = os.environ.get("PERPROB", "") == "1"
 PROBE = "The three most important ideas in computer science are"
 LOG = Path("logs/opus/moe_gt1.jsonl")
+PERPROB_LOG = Path("logs/opus/moe_gt1_perprob.jsonl")
 
 
 def keep_sets_from_counts(counts, frac, top_k):
@@ -122,10 +125,10 @@ def instrument(model, keep):
     return state, restore
 
 
-def run_gate(model, tok, problems):
+def run_gate(model, tok, problems, frac):
     from mlx_lm import generate
 
-    per_level, n_ok = {}, 0
+    per_level, n_ok, rows = {}, 0, []
     for i, p in enumerate(problems):
         msgs = [{"role": "system", "content": SYSTEM},
                 {"role": "user", "content": p.prompt}]
@@ -137,9 +140,15 @@ def run_gate(model, tok, problems):
         n_ok += ok
         lvl = getattr(p, "level", "?")
         per_level[lvl] = per_level.get(lvl, 0) + int(ok)
+        rows.append({"seed": SEED, "frac": frac, "idx": i, "level": lvl,
+                     "ok": bool(ok)})
         if (i + 1) % 40 == 0:
             print(f"[gt1-2]   gate {i + 1}/{len(problems)} "
                   f"acc {n_ok / (i + 1):.1%}", flush=True)
+    if PERPROB:
+        with PERPROB_LOG.open("a") as f:
+            for r in rows:
+                f.write(json.dumps(r) + "\n")
     return n_ok, per_level
 
 
@@ -152,19 +161,21 @@ def main():
     top_k = next(
         layer.mlp.top_k for layer in model.model.layers
         if hasattr(layer.mlp, "top_k"))
-    problems = make_dataset(N_EVAL, seed=1234)
+    problems = make_dataset(N_EVAL, seed=SEED)
     LOG.parent.mkdir(parents=True, exist_ok=True)
 
     for frac in FRACS:
+        # frac 1.0 = the paired FULL baseline (keep-all mask is a no-op
+        # routing-wise; the recall instrument still runs, recall == 1)
         keep = keep_sets_from_counts(counts, frac, top_k)
         ol = open_loop_recall(counts, keep)
         n_keep = sum(len(v) for v in keep.values()) / len(keep)
-        print(f"[gt1-2] === frac {frac} | keep {n_keep:.0f}/128 per layer "
-              f"| open-loop recall {ol:.4f} ===", flush=True)
+        print(f"[gt1-2] === seed {SEED} frac {frac} | keep {n_keep:.0f}/128 "
+              f"per layer | open-loop recall {ol:.4f} ===", flush=True)
         state, restore = instrument(model, keep)
         try:
             t0 = time.time()
-            n_ok, per_level = run_gate(model, tok, problems)
+            n_ok, per_level = run_gate(model, tok, problems, frac)
             gate_s = time.time() - t0
             probe_text = generate(
                 model, tok, prompt=PROBE, max_tokens=PROBE_TOKENS)
@@ -178,7 +189,7 @@ def main():
         print(f"[gt1-2] PROBE TEXT (verbatim): {probe_text!r}", flush=True)
         with LOG.open("a") as f:
             f.write(json.dumps({
-                "arm": 2, "frac": frac, "n_eval": N_EVAL,
+                "arm": 2, "seed": SEED, "frac": frac, "n_eval": N_EVAL,
                 "gate_ok": n_ok, "gate_per_level": per_level,
                 "open_recall": ol, "closed_recall": cl,
                 "gap": abs(cl - ol), "gate_s": gate_s,
