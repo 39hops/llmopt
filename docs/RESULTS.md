@@ -18474,3 +18474,22 @@ logs/opus/moe_gt1.jsonl).
   death.
 FENCES: n=1 seed, descriptive ladder; per-level dicts
 are the checksum (19+20+14=53; 8+12+10=30).
+
+## PRE-REG MOE-GT-1-R3 (Artin's golden-section search): hunt the capability peak in (40%, 100%) — probe 61.8% (2026-08-03, Mac; Fable seat)
+
+The ladder brackets a maximum: 64 at 100%, 78 at 50%,
+57 at 40%. Golden-section step: probe frac 0.618, seed
+1234, top-demand rule, per-problem logging. REGISTERED:
+(i) if 61.8% > 50%'s 78, the peak moves into
+(50%, 100%) and the next golden point is ~76.4%;
+(ii) if 61.8% <= 78, the peak bracket tightens to
+(40%, 61.8%) around 50%. RESOLUTION FENCE up front:
+R1 measured seed-level spread of this gate at ~ +/-5;
+single-seed differences under ~7 solves between ladder
+points are UNRESOLVED — the peak's LOCATION is claimed
+only if the winning point beats both bracket ends by
+>= 7 at n=1, else the shape books as a plateau/ridge
+DESCRIPTION and any finer hunt needs paired seeds. No
+capability-mechanism claim either way; churn (R1) means
+adjacent points may solve substantially different
+problem sets at similar totals.
