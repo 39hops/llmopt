@@ -18299,3 +18299,62 @@ distribution, reported with min/max, not seed-paired);
 nothing here transports to V4 numerically; first-touch
 log is banked DESCRIPTIVE (no prefetch claim); gate
 per-level dict is the checksum.
+
+## VERDICT MOE-GT-1-ARM2: the cliff is a WALL between 50% and 25% (78/120 -> 0/120); 50% residency BEATS the full model (+14, ~2.8 sigma, unregistered direction — seeds owed); text degenerates even where the gate improves (2026-08-03, Mac; Fable seat)
+
+Keep rule: top-demand from arm 0, per pre-reg. One
+session, greedy, paired against arm 0's 64/120 baseline
+(jobs/gt1_arm2.log; logs/opus/moe_gt1.jsonl arm-2 rows).
+
+MEASURED TABLE (gate dicts are the checksum):
+  frac 0.50 (64/128): GATE 78/120 {1:28,2:24,3:26} | open 0.9272 closed 0.9147 gap 0.0125 | 275s
+  frac 0.25 (32/128): GATE  0/120 {1:0,2:0,3:0}    | open 0.7143 closed 0.6371 gap 0.0773 | 880s
+  frac 0.125(16/128): GATE  0/120 {1:0,2:0,3:0}    | open 0.4976 closed 0.3719 gap 0.1257 | 877s
+
+P2 (|closed-open| >= 0.10 at 25%): MISSES AS REGISTERED
+(0.077 at 25%) and fires one step deeper (0.126 at
+12.5%). The gap is MONOTONE in residency (0.013 / 0.077
+/ 0.126) and always closed < open: the masked run's
+trajectory demands MORE outside-the-set experts than the
+healthy trajectory did — the closed-loop distortion the
+V4 instruments could never calibrate, now measured with
+its sign and growth curve.
+
+P3 (hold at 50%, collapse at 12.5%): the collapse half
+fired beyond its bar (0/120 vs "-15 solves"); the hold
+half OVERSHOT in the unregistered direction — 78/120 vs
+full's 64/120, +14 (~2.8 sigma), gains concentrated at
+L3 (+9, the hardest tier) and L1 (+5), L2 flat. NOT
+BOOKED AS A DIRECTION: single problem-seed, registered
+prediction was "hold", resolution-law fence applies. A
+rider (below) owes n=3 fresh-seed paired runs with
+per-problem logging before "masking beats full" is a
+claim. The CLIFF LOCATION books as: somewhere in
+(25%, 50%] keep-fraction under the top-demand rule —
+sharper and higher than the un-booked "~28%" folk number
+this rung was designed to replace; the 25% arm is not a
+degraded model but a DEAD one (0/120, all levels).
+
+P4 (text): MISSES as registered — the probe degenerates
+ALREADY AT 50% (repetitive list-loop; verbatim in log)
+while the gate IMPROVES at the same mask. Gate
+capability and open-ended coherence DISSOCIATE under
+expert subsetting. At 12.5% the text is fully degenerate
+("1\n 1\n 1\n..."), matching V4's attractor phenomenology
+on a healthy vehicle: degeneracy under aggressive expert
+subsetting is GENERIC, not a V4/MXFP4 artifact — which
+answers the question P4 was built to ask, in the
+direction that de-mystifies the V4 arms.
+
+MECHANISM NOTE (observation, not a claim): collapsed
+arms run 3x slower (880s vs 275s) because every wrong
+answer burns the full token budget — degeneracy is
+expensive, another F2c echo (the broken trajectory sets
+the cost).
+
+FENCES: n=1 problem-seed (seed 1234) for ALL rows —
+the +14 is 2.8 sigma but unregistered-direction,
+single-seed; the rider owes replication before any
+direction is claimed. One machine, one session, 4-bit
+vehicle; keep rule is top-demand only (other rules
+unmeasured here); nothing transports to V4 numerically.
