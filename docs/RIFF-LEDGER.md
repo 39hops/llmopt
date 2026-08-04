@@ -2439,3 +2439,37 @@ pooling winners was his call).
   when function localizes. Attribution: Artin (natural-formation
   claim + entropy-densification frame), house (MoEfication link,
   ladder placement, killer).
+
+- **2026-08-04 (house, reviewer-proposed + Fable-verified): RIDER on
+  the five 2026-08-03 banks — missing citations, one instrument
+  correction, two premise fences.** (1) INSTRUMENT CORRECTION: the
+  "free from arm-0 logs" claims in blackhole-mode (entropy
+  trajectory) and itineraries cell (b) are WRONG — moe_gt1.py pools
+  counts/first-touch across all 120 prompts + probe (one monotone
+  counter, no per-prompt reset); those cells need a per-prompt
+  instrument edit + a re-run (~5 min). The ONLY genuinely-free cell
+  is the entropy license (Bernoulli selection entropy from pooled
+  counts). (2) CITATIONS OWED: itineraries inherits THE DUAL VERDICT
+  (RESULTS:3552 — monolith beat the two-expert blackboard at house
+  scale; shared substrate fed physics +6.8 free) and collides with
+  the BLACKBOARD PROTOCOL bank (RIFF:213); blackhole-mode inherits
+  B4's merge read (RESULTS:11197 — averaging the top-MI pair on a
+  real MoE cost ppl 75.74->79.10; co-firing does not imply mergeable)
+  and GRAV-0T (RESULTS:13382 — post-hoc pull destructive both
+  directions), so its LEGAL form is prefetch/tiering (the split
+  law's own named lever), not runtime merging; verifier-weights
+  inherits the syndrome revive-if economics (RIFF:44 — a ns-cost
+  certified twin is on the wrong side of "prediction pays where the
+  oracle is expensive"; cell (b) must answer why not just USE the
+  twin); the lattice form of house-born experts is TREE-1, already
+  run and retracted-to-noise with a params confound (RESULTS:12296,
+  12320) — blocked absent a params-matched design; emergent-experts
+  re-aims the graph-anatomy bank (RIFF:56) from weight space to
+  function space and gains a partial positive kin (the 64-cell
+  autopsy: essentiality is cell-sparse, ~13/64 load-bearing).
+  (3) PREMISE FENCES: "the GT-1 ridge" rests on a pooled +4.7 <
+  +7-bar reading — house-born-at-the-ridge is BLOCKED on the owed
+  paired-seed pass; entropy-license framing upgraded: it is a TEST
+  of THEORY Row 28 ("prediction pays only where variance lives")
+  applied to routing, not a new law. Attribution: reviewer sweep
+  (proposals), Fable (verification + booking).
