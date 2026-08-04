@@ -55,14 +55,26 @@ PERPROB_LOG = Path("logs/opus/moe_gt1_perprob.jsonl")
 
 
 def keep_sets_from_counts(counts, frac, top_k):
-    """Per-layer top-demand keep-sets: the top `frac` of experts by
-    arm-0 selection count. Floor at top_k so the masked router always
-    has a full slate (prune.py asserts the same invariant)."""
+    """Per-layer keep-sets at fraction `frac`. RULE env selects the
+    rule: 'top' (default) = top-demand by arm-0 selection count;
+    'random' = uniform random per layer (RULESEED-seeded, the generic-
+    sparsity control for the crest claim); 'anti' = bottom-demand.
+    Floor at top_k so the masked router always has a full slate."""
+    import random as _random
+
+    rule = os.environ.get("RULE", "top")
+    rng = _random.Random(f"gt1-rule-{os.environ.get('RULESEED', '0')}")
     keep = {}
     for li, row in counts.items():
         n = len(row)
         n_keep = max(top_k, round(frac * n))
-        order = sorted(range(n), key=lambda e: -row[e])
+        if rule == "random":
+            order = list(range(n))
+            rng.shuffle(order)
+        elif rule == "anti":
+            order = sorted(range(n), key=lambda e: row[e])
+        else:
+            order = sorted(range(n), key=lambda e: -row[e])
         keep[int(li)] = set(order[:n_keep])
     return keep
 

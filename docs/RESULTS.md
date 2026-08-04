@@ -19050,3 +19050,32 @@ seedslad receipts ARE committed (d88bbff carries all 7
 arm logs) — the "untracked per convention" line is the
 error, not the commit; small text receipts belong in
 git and these are in.
+
+## PRE-REG MOE-GT-1-R6: the generic-sparsity control — is the crest the MATH COALITION or just sparsity? Random and anti-demand 45.3% masks (2026-08-04, Mac; reviewer-proposed falsifier, Fable seat)
+
+The crest claim (R5) is "top-45% MATH-DEMAND experts
+beat full". No arm has ever tested a 45.3% mask chosen
+WITHOUT the demand oracle. Reviewer-surfaced hole,
+adopted as the headline's falsifier.
+ARMS (seed 1234, harness RULE knob, per-problem logs):
+  (1) RULE=random 45.3% (RULESEED=0), (2) RULE=random
+  45.3% (RULESEED=1), (3) RULE=anti (bottom-45.3% by
+  demand). Reference points, same seed: full 64,
+  top-demand 50% 78 / 40% 57 (45.3% at seed 1234 was
+  never run; the fresh-seed crest is +14.7 pooled).
+REGISTERED:
+(P1) if random-45.3% >= full (>= 64) in either random
+     arm, the "math coalition" mechanism is REFUTED —
+     the crest books as generic sparsity and the
+     domain-conditional program loses its premise.
+(P2) if random lands catastrophically low (<= 20) and
+     anti at ~0, the demand rule carries the ENTIRE
+     effect: coalition confirmed.
+(P3) middle readings (random 20-63) book as partial —
+     sparsity helps but demand selects; the gap
+     random-vs-crest quantifies the coalition's value.
+FENCES: n=1 seed (1234), two random draws; the anti arm
+may fail to even parse (bottom-demand includes
+never-touched experts — that outcome books as data, not
+error). Random keep-sets do NOT nest across fractions;
+no cross-fraction reads from this cell.
