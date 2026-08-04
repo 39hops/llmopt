@@ -2286,3 +2286,39 @@ pooling winners was his call).
   as a RELAY ASK (their repo), not an edit. Attribution: Artin (the
   Lean-can-do-this observation, pre-axiom thread), OpenAI repo (the
   existence proof), house (the judge-audit framing).
+
+- **2026-08-03 (Artin): PROMPT-SHAPED EXPERT ITINERARIES — "experts
+  delegating to experts, sub-agents within a model."** The riff, in
+  three claims worth separating: (1) prompts have a DOMAIN
+  DECOMPOSITION (the thrown-ball example: a physics setup that
+  becomes an integration problem mid-solution), (2) inference could
+  be SEQUENCED optimally per prompt — route through the physics
+  circuitry, hand off to the calculus circuitry as the problem
+  transforms, (3) experts could DELEGATE — an expert's output
+  actively determining which expert serves the next step, like
+  sub-agents. What the house already knows that touches this:
+  routing is per-TOKEN per-LAYER (48x8 decisions/token on the GT-1
+  vehicle), so "the physics expert" is really a per-layer coalition;
+  co-routing MI (B4 split law, 300-500x over shuffle null) says
+  expert PAIRS do travel together — the coalition structure is real
+  and measured; and (3) is architecturally TRUE already in a weak
+  sense (layer-N routing depends on the residual stream that
+  layer-N-1's experts wrote — experts DO steer downstream routing;
+  what's missing is any verification/hand-off semantics). MEASURABLE
+  CELLS, cheapest first: (a) domain-conditional demand — arm-0
+  instrument on a physics corpus vs mathgen corpus, per-layer
+  keep-set Jaccard (moe_router_stats prints exactly this; the GT-1
+  vehicle now has a measured heavy tail so the question has room to
+  answer); (b) MID-PROMPT ITINERARY SHIFT — Artin's thrown-ball
+  prompt class: does the demand distribution measurably rotate
+  between the setup tokens and the solve tokens of ONE prompt?
+  (first-touch/order instrument already logs the sequence);
+  (c) the delegation ladder — train/probe whether expert identity at
+  layer L predicts routing at L+k beyond what the token alone
+  predicts (the co-routing MI instrument, conditioned). Killers: (a)
+  dies if cross-domain Jaccard ~1.0 (router not domain-biased —
+  report honestly, it kills the folk picture too); (b) dies if
+  within-prompt demand is stationary. No capability claim in any
+  cell; all desk-scale on the GT-1 vehicle. Attribution: Artin (the
+  delegation frame + the two-expert worked example), house (the
+  decomposition into measurable cells).
