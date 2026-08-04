@@ -2322,3 +2322,33 @@ pooling winners was his call).
   cell; all desk-scale on the GT-1 vehicle. Attribution: Artin (the
   delegation frame + the two-expert worked example), house (the
   decomposition into measurable cells).
+
+- **2026-08-03 (Artin): BLACKHOLE MODE — runtime densification of
+  co-routed expert coalitions; "the prompt placed in weight space,
+  expert gravity deciding the route."** Follow-on to the
+  expert-itineraries riff (above). Two separable pieces: (1) the
+  LITERALIZATION — the router's gate(x) IS a similarity field (one
+  key per expert, logit = dot product, token falls to the strongest
+  attractors), so "gravity decides where the experts are" is the
+  plain mechanics, and the riff's real content is making that field
+  DYNAMIC: expert positions responding to the prompt rather than
+  fixed keys. (2) BLACKHOLE MODE — when routing concentrates (low
+  routing entropy / a coalition dominating), collapse the co-routed
+  coalition into one DENSE block at runtime; sparse when exploring,
+  dense when committed. Measured constraints that fence it: LAM-MERGE
+  (RESULTS:14090) — averaging DIVERSE experts is destructive (-12,
+  2.4 sigma at lambda 0.1) and merge-free only above the collapse
+  threshold, so runtime densification is legal ONLY for
+  born-compatible coalitions (the GRAVMOE birth regime, which is the
+  same thread from the birth side); coarse-agreement rider
+  (RESULTS:14596) — collapse is all-or-nothing, no graded merge; N3 +
+  2B — the coalition members share no weight-space structure, so the
+  dense block must be built functionally (co-routed activation
+  merging), never by weight averaging outside the born-compatible
+  case. Measurable cell, desk-scale on GT-1: routing-entropy
+  trajectory per prompt (does the field measurably "commit" —
+  entropy dropping as the solve progresses?) — free from the arm-0
+  first-touch/demand logs; if commitment exists, the
+  packing/densification question inherits it. Attribution: Artin
+  (blackhole/gravity frame, prompt-in-weight-space inversion), house
+  (literalization + fences from the merge ledger).
