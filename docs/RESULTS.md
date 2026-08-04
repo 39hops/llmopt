@@ -18252,3 +18252,50 @@ layer (prune.py:73). Usage-tiered packing (banked,
 RIFF:1857) becomes eligible AFTER this rung books the
 tail — it consumes arm 1's number and is NOT part of
 this pre-reg.
+
+## VERDICT MOE-GT-1-ARM0/1: P1 FIRES by 3x — the aux-loss-trained router is heavily tail-concentrated (top-25% experts carry 74.9% of mass vs 40% bar); full-model oracle booked at 64/120; the V4 uniform doctrine does NOT transport (2026-08-03, Mac; Fable seat)
+
+Vehicle mlx-community/Qwen3-30B-A3B-4bit fully resident,
+48 MoE layers x 128 experts top-8, one session
+(jobs/gt1_arm0.log; checkpoints/moe_gt1_arm0.json;
+logs/opus/moe_gt1.jsonl). Instrument:
+scratch/moe_gt1.py — demand counts + router mass +
+FIRST-TOUCH order, collected across prefill AND decode
+of the full gate run.
+
+GATE BASELINE (the P3 reference): 64/120, per-level
+{1: 23, 2: 24, 3: 17} (dict sums to total). weights =
+the 4-bit MLX artifact as cached; quantization is part
+of the vehicle per pre-reg.
+
+P1 (routing tail): FIRES, and not narrowly — top-25%
+mass share mean 0.749 (min 0.522, max 0.900 across 48
+layers) vs the 0.40 bar and uniform's 0.250. This model
+trained WITH aux load balancing and still concentrates
+3x over uniform at deployment. The offload doctrine
+sentence ("a heavy-tailed routing distribution is a
+property to MEASURE per model, never to assume") now has
+its positive example; V4's noaux uniform design point is
+V4's, not MoE's.
+
+THE TENSION THAT MATTERS FOR RESIDENCY: mass is
+concentrated but SUPPORT is broad — 107-126 of 128
+experts per layer were touched at least once over the
+gate run. A static keep-set can cover most of the MASS
+cheaply, but F2c measured that throughput dies on MISS
+COUNT, and misses live in the long tail of touches.
+Arm 2 (open- vs closed-loop recall + gate at 50/25/12.5%
+residency) now measures exactly whether mass-coverage or
+touch-coverage is what the gate cares about.
+
+PROBE (P4 reference): full model is coherent on the F2
+probe — verbatim ": abstraction, recursion, and the
+ability to think in terms of the problem. But I think
+the most important is abstraction. ..." — the
+non-degenerate reference text for the residency arms.
+
+FENCES: single session, n=1 run (tail is a 48-layer
+distribution, reported with min/max, not seed-paired);
+nothing here transports to V4 numerically; first-touch
+log is banked DESCRIPTIVE (no prefetch claim); gate
+per-level dict is the checksum.
