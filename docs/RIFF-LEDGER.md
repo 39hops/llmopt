@@ -2414,3 +2414,28 @@ pooling winners was his call).
   quartile at 50%-keep changes the gate (beyond sigma), the license
   criterion is wrong. Attribution: Artin (all three frames + the
   fold-to-dense criterion), house (gravmoe substrate + fences).
+
+- **2026-08-03 (Artin, rider on house-born experts): EMERGENT
+  EXPERTS — "shouldn't they just form, naturally?" Dense training
+  concentrates function until a region IS an expert.** The claim:
+  without any imposed MoE architecture, training pressure alone
+  differentiates the weight mass into functional experts. Published
+  kin: FFN activation sparsity + MoEfication (post-hoc co-activation
+  clustering of dense FFNs recovers a working MoE — the experts were
+  latent). House kin: Fourier v4a instant clock recruitment
+  (spontaneous role specialization, no encouragement); LAM-MERGE
+  lambda 0.1 (minimal pull already yields diverse/unmergeable
+  experts — differentiation is the default). The ladder this
+  completes: hard MoE (imposed walls) -> gravmoe (soft pull at
+  birth) -> DENSE-LATENT (no walls; do experts form anyway?).
+  MEASURABLE CELL, desk-scale on owned checkpoints: cluster FFN
+  neurons of a dense mathnative model (110M-400M line) by
+  co-activation on the math corpus; wrap the GT-1 keep%-ladder
+  instrument around the clusters; REGISTERED KILLER: random
+  clusters matching co-activation clusters under keep%-pruning =
+  no emergent structure, riff dies. Correction that travels: the
+  "collapse" is in FUNCTION space (co-activation), not weight
+  values — N3/2B say the weights stay statistically bland even
+  when function localizes. Attribution: Artin (natural-formation
+  claim + entropy-densification frame), house (MoEfication link,
+  ladder placement, killer).
