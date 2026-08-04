@@ -45,9 +45,17 @@ MODEL = "mlx-community/Qwen3-30B-A3B-4bit"
 N_EVAL = int(os.environ.get("N_EVAL", 120))
 MAX_TOKENS = int(os.environ.get("MAX_TOKENS", 96))
 PROBE_TOKENS = int(os.environ.get("PROBE_TOKENS", 64))
+SEED = int(os.environ.get("SEED", 1234))
+# MOE-GT-2 corpus knobs: KINDS/LEVELS select the domain (defaults
+# preserve the certified math arm-0 call byte-for-byte). Mechanics
+# is fenced to levels 2-3 (L1 has exactly 30 unique prompts/kind and
+# make_dataset's dedup loop hangs on exhausted cells).
+KINDS = tuple(k for k in os.environ.get("KINDS", "").split(",") if k) or None
+LEVELS = tuple(
+    int(x) for x in os.environ.get("LEVELS", "").split(",") if x) or None
 # the F2 probe, verbatim from the V4 arms (logs/opus/v4_f1d.jsonl)
 PROBE = "The three most important ideas in computer science are"
-OUT = Path("checkpoints/moe_gt1_arm0.json")
+OUT = Path(os.environ.get("OUT", "checkpoints/moe_gt1_arm0.json"))
 LOG = Path("logs/opus/moe_gt1.jsonl")
 
 
@@ -143,7 +151,12 @@ def main():
     stats = RouterStats(n_experts=n_experts)
     state["stats"] = stats
 
-    problems = make_dataset(N_EVAL, seed=1234)
+    kw = {}
+    if KINDS:
+        kw["kinds"] = KINDS
+    if LEVELS:
+        kw["levels"] = LEVELS
+    problems = make_dataset(N_EVAL, seed=SEED, **kw)
     traj_f = None
     if state["traj"] is not None:
         traj_path = Path(os.environ.get(
@@ -208,7 +221,8 @@ def main():
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps({
         "model": MODEL, "n_experts": n_experts, "n_eval": N_EVAL,
-        "seed": 1234, "max_tokens": MAX_TOKENS,
+        "seed": SEED, "kinds": KINDS, "levels": LEVELS,
+        "max_tokens": MAX_TOKENS,
         "gate_ok": n_ok, "gate_per_level": per_level,
         "counts": stats.counts, "mass": stats.mass,
         "first_touch": state["first"],
