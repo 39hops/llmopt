@@ -18802,3 +18802,30 @@ the peak bracket. FENCES: sign-consistency bars, no
 sigma claims; churn (R1) means totals can tie while
 solved sets differ — per-problem overlap reported
 descriptively; one machine, one session.
+
+## OBSERVATION GT1-PHASE-PREFETCH-0 (desk, TRAJ data): a phase-aware residency template beats phase-agnostic at the same budget — late-phase demand coverage 0.840 vs 0.742 (leave-one-out, phase-aware wins 119/120 prompts) (2026-08-04, Mac; Fable seat)
+
+The feasibility number behind the phase-prefetch idea
+(follow-on to GT1-ITINERARY-0's phase-dominance).
+Method: per prompt, late phase = final position
+quartile; template = top-32/layer experts pooled from
+the OTHER 119 prompts (leave-one-out, so nothing is
+fitted to the prompt it serves); coverage = fraction of
+the held-out prompt's late-phase routed slots inside
+the template. Phase-aware template (built from others'
+LATE phases): 0.840. Phase-agnostic control (same
+budget, built from others' ALL phases): 0.742. Paired
+delta +0.098, phase-aware wins 119/120.
+READ: the universal itinerary is EXPLOITABLE — a
+schedule that swaps residency by phase buys ~10 points
+of demand coverage over the best static set at equal
+memory, with ZERO prediction machinery (it is a
+timetable, not a model). For a from-disk streaming
+deployment (the V4 regime), that converts directly to
+miss-rate reduction exactly where F2c showed misses set
+the decode rate.
+FENCES: one vehicle, one corpus family; quartile
+phases (positional, not semantic); 32/128 budget point
+only; coverage is demand-weighted slots, not a gate —
+the gate-level test (phase-scheduled masking vs static
+at equal budget) is the natural registered follow-up.
