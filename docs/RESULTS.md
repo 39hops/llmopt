@@ -18522,3 +18522,36 @@ here. Next golden step (~45.3%) and a paired-seed pass
 at the peak are the banked follow-ups, not fired.
 FENCES: n=1 seed, one keep rule, per-level dict is the
 checksum (22+23+18=63).
+
+## AMENDMENT GT1-CORR (amends VERDICT MOE-GT-1-R1, VERDICT MOE-GT-1-R3, VERDICT MOE-GT-1-ARM2): reviewer-verified corrections — churn is LARGER than booked (41-47% of the gate, solved-set overlap 61-68%, not "~3/4"); R3's peak claim is seed-1234-scoped; P3's hold half was a MISS (2026-08-03, Mac; Fable seat, reviewer-proposed, Fable-verified)
+
+A read-only reviewer recomputed the full GT-1 chain from
+the raw artifacts; every booked BAR held (all 11 gate
+dicts, the churn flip counts, pooled +4.7 < +7, no
+post-hoc bar movement). Corrections to derived prose,
+each re-verified by Fable against the per-problem log:
+(1) R1's "~50 flips (~25-40% of the gate)" UNDERSTATES:
+    measured flips are 56/49/53 of 120 = 41-47%.
+(2) R1/R3's "overlaps on ~3/4 of the gate" is not
+    reproducible under any metric: solved-set overlap is
+    39/62=63%, 50/73=68%, 40/66=61% (item-level
+    agreement 53-59%). The churn finding STRENGTHENS.
+(3) The slope figures "~1.7" and "~6.8 solves/point"
+    lacked units: correct values ~2.1/percentage-point
+    (1.6/expert) on the slope and ~8.1/percentage-point
+    (6.5/expert) at the shoulder.
+(4) R3's "the peak is REAL" is scoped: peak located in
+    (40%, 61.8%) ON SEED 1234 ONLY — that seed's 50%
+    value (78) is the known high draw (fresh seeds 72/
+    76/67 at 50%); 61.8% and 40% were never measured off
+    seed 1234.
+(5) ARM2's P3 "hold" half: the registered band was
+    two-sided (within 1.5 sigma of full); measured +14
+    is OUTSIDE it — that half of P3 is a MISS, not
+    merely an "overshoot".
+(6) FENCE ADDED: "3/3 seeds positive" is a sign test at
+    p=0.125 — not independent support for the direction.
+(7) DATA NOTE: logs/opus/moe_gt1_perprob.jsonl lines 1-2
+    are n_eval=2 smoke rows duplicating (4242, 1.0,
+    idx 0-1); any recompute must key by (seed,frac,idx),
+    not append. No booked number is affected.
