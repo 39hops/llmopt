@@ -2390,3 +2390,27 @@ pooling winners was his call).
   experts are just slow tools. Attribution: Artin (verifier-expert
   frame, disagreement->gravity-shift, one-sweep repair), house
   (syndrome framing + the certified-twin substrate + fences).
+
+- **2026-08-03 (Artin, late): HOUSE-BORN EXPERTS + the
+  blackhole/b-tree lattice + routing-entropy as the "expert
+  license."** Cluster of three: (1) BUILD EXPERTS OURSELVES —
+  internet-trained experts are open-system; house experts born on
+  oracle-verified math (the gravmoe/hebbian umoe line — which
+  already exists and is the measured substrate) are closed-system;
+  the GT-1 ridge (peak capability at ~50% keep) suggests even
+  foreign MoEs contain a better sub-model — a HOUSE-BORN one could
+  be built AT the ridge rather than pruned to it. (2) THE LATTICE —
+  experts as dense cores ("blackholes") with b-tree branches
+  connecting expert to expert; routing walks the tree between
+  cores; ties to the banked hierarchical-VQ form (codebook trees)
+  and the keep% ladder (prune/eval by FUNCTION, per house law).
+  (3) THE ENTROPY LICENSE — an expert whose ROUTING entropy is too
+  low (near-always or near-never selected; predictable from
+  context) carries no decision information and "should become
+  weights": fold it into the dense path; only high-entropy
+  components earn indirection. Measurable NOW from arm-0 demand
+  logs: per-expert selection entropy over the gate corpus ->
+  candidates for folding; killer: if folding the lowest-entropy
+  quartile at 50%-keep changes the gate (beyond sigma), the license
+  criterion is wrong. Attribution: Artin (all three frames + the
+  fold-to-dense criterion), house (gravmoe substrate + fences).
