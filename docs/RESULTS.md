@@ -18742,3 +18742,44 @@ FENCES: 8-row gate, sign-count bars (no sigma exists);
 seeds 41/47/53 now SPENT; the seed-53 row is the
 strongest single gate result in the battery and is n=1
 by construction.
+
+## OBSERVATION GT1-ITINERARY-0 (desk, TRAJ instrument): within-prompt expert rotation is LARGER than between-prompt difference (Jaccard 0.224 vs null 0.641) — routing is phase-dominated, not content-dominated; and the routing field DILATES monotonically (0% of prompts commit) (2026-08-04, Mac; Fable seat)
+
+Instrument: TRAJ=1 rerun of arm 0 (scratch/moe_gt1.py
+a19fffc; certified path regression-checked — gate
+64/120 {1:23,2:24,3:17} and tail 0.749 reproduced
+exactly). 590,736 per-token rows (prompt, layer,
+within-prompt pos, top-8, 128-way router entropy):
+logs/opus/moe_gt1_traj.jsonl.
+
+MEASURED, 120 prompts:
+(1) ITINERARY SHIFT (Artin's cell, descriptive): mean
+    Jaccard between one prompt's first-half and
+    second-half top-16 expert sets (per layer, pooled)
+    = 0.224. NULL CONTROL: two DIFFERENT prompts'
+    first halves = 0.641 (60 pairs). The coalition
+    serving the back half of a prompt differs from its
+    own front half MORE than two different problems
+    differ from each other at the same phase. Routing
+    is dominated by TRAJECTORY PHASE (setup vs solve
+    vs answer emission), not by problem identity — the
+    strongest possible descriptive confirmation of the
+    itinerary picture, with the surprise inverted:
+    itineraries are near-UNIVERSAL across prompts of
+    this family rather than prompt-specific.
+(2) COMMITMENT (the blackhole-mode hook): REFUTED at
+    this scale — router entropy RISES from first to
+    last quartile in 120/120 prompts (mean +0.209 nats;
+    solved +0.213 vs unsolved +0.205 — no success
+    signal). The prefill/decode confound was controlled:
+    within the decode half alone, Q4-Q3 is still +0.105
+    with 0% negative. The field monotonically DILATES as
+    generation proceeds; it never commits. Blackhole
+    mode's entropy trigger has no signal on this
+    vehicle/corpus; its banked cell books this as the
+    measured answer.
+FENCES: one vehicle, one corpus family (mathgen L1-3),
+descriptive (no pre-reg; instrument cell per the RIFF
+rider); top-16 Jaccard is scale-arbitrary (16 of 128
+chosen to match keep-ladder granularity); phase split
+is positional halves, not semantic segmentation.
