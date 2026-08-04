@@ -19478,3 +19478,49 @@ re-checked against the artifact before booking.
 7. Index hygiene: links curation restored on all six MOE-GT-2 rows
    (gen_results_index regeneration had dropped links while
    preserving threads — watch this on future bookings).
+
+## AMENDMENT GT2-EXCLUSION: the transport null is CONFOUNDED by demand-log type — exclusion mass is the live axis; physics rescue arm pre-registered (2026-08-04, Mac)
+
+Amends: MOE-GT-2-D4-PHYS. Source: post-review survey seat (Opus,
+self-reported 4.5) raised the exclusion-mass tension; Fable desk
+checks then found the confound. All numbers below re-derivable from
+checkpoints/gt2_*_decode.json + moe_gt1_arm0.json + perprob logs.
+
+1. THE MASK WAS NOT INERT (churn desk check, per-problem rows):
+   physics crest churns like math's 50% arm — lost/gained per seed
+   17/13, 9/13, 11/14; solved-set overlap 54-68%. The masked model
+   is a DIFFERENT solver of equal strength; the null is "forced
+   rerouting is capability-neutral on physics AS MASKED", not
+   "nothing happened". Consistent with closed recall 0.727-0.733.
+2. THE EXCLUSION TABLE (math seed-555 ladder, pooled-log recalls):
+   excluded demand 2.9% -> +4; 7.3% -> +15; 9.9% -> +22; 13.5% ->
+   +3 — a clean interior peak in EXCLUSION mass near ~10%.
+   Physics ran at ~1% exclusion: no lever.
+3. THE CONFOUND (the finding): the math crest mask was built from
+   the POOLED arm-0 log and covers only 0.8811 of math DECODE
+   demand (~12% excluded); the physics mask was built DECODE-ONLY
+   and covers 0.9903 (~1% excluded). Decode demand is far more
+   concentrated than pooled (math top-58: 0.9804 decode-only vs
+   0.9014 pooled). D4-PHYS therefore changed TWO things at once
+   (domain AND demand-log type); its null does not yet distinguish
+   "crest is math-only" from "the physics mask was built too well".
+4. REGISTERED PREDICTIONS (before any further run):
+   (a) D4-PHYS-B (the rescue arm, fires now): physics keep-sets
+       from the POOLED physics log (checkpoints/gt2_phys_arm0.json)
+       at 45.3%, same 3 seeds, same corpus, reusing D4's paired
+       full baselines (42/28/24). Exclusion-mass prediction: this
+       mask excludes real demand, so IF the crest mechanism is
+       domain-general, gains reappear (bar: pooled +7 vs the same
+       baselines). If it stays null, "math-only" survives its
+       strongest confound-free test at this fraction.
+   (b) CODE second crest at decode-45.3%: own-coverage 0.9855
+       (1.5% exclusion) -> NULL predicted; the run is deprioritized
+       unless (a) fires.
+   (c) Equal-exclusion fractions (desk): 90% own-coverage at keep
+       31/128 (phys, frac 0.242), 33/128 (code, 0.258), 37/128
+       (math decode, 0.289) — the fraction axis is NOT comparable
+       across demand-log types; future ladders name their log.
+FENCES: exclusion table mixes one seed (555) with pooled physics
+(+3); churn numbers are descriptive; the interior peak in exclusion
+is the same data as the fraction peak, re-axed — not independent
+confirmation. D4-PHYS-B receipts to follow.
