@@ -55,8 +55,17 @@ def instrument(model):
     """Class-patch every sparse-MoE block to record top-k picks, router
     mass, and FIRST-TOUCH order. Same dispatch pattern as
     scripts/moe_router_stats.py (obj(x) goes through type(obj).__call__,
-    so the patch must be class-level with a per-instance registry)."""
-    state = {"stats": None, "first": {}, "pos": {}}
+    so the patch must be class-level with a per-instance registry).
+
+    TRAJ=1 additionally records PER-TOKEN routing rows (prompt id set
+    via state["prompt"], per-layer position, top-k ids, router entropy
+    over the full 128-way softmax) to state["traj"] — the per-prompt
+    instrument the pooled arm-0 artifact could not provide (RIFF rider
+    2026-08-04: one edit serves the entropy-trajectory, itinerary-shift
+    and conditional-license cells)."""
+    state = {"stats": None, "first": {}, "pos": {}, "tpos": {},
+             "prompt": None,
+             "traj": [] if os.environ.get("TRAJ") == "1" else None}
     moe_layers = [
         (i, layer.mlp)
         for i, layer in enumerate(model.model.layers)
@@ -84,6 +93,21 @@ def instrument(model):
                     if e not in first:
                         first[e] = pos + t
             state["pos"][li] = pos + len(flat_i)
+            if state["traj"] is not None:
+                # `gates` is already the full 128-way softmax here;
+                # entropy per token in nats. Within-prompt position
+                # uses its OWN counter (tpos, reset per prompt) so the
+                # pooled `pos`/first-touch path stays byte-identical
+                # to the certified arm-0 artifact.
+                p = gates.reshape(-1, gates.shape[-1])
+                ent = (-(p * mx.log(p + 1e-12)).sum(axis=-1)).tolist()
+                tpos = state["tpos"].get(li, 0)
+                for t, picks in enumerate(flat_i):
+                    state["traj"].append({
+                        "prompt": state["prompt"], "layer": li,
+                        "pos": tpos + t, "topk": picks,
+                        "H": round(float(ent[t]), 4)})
+                state["tpos"][li] = tpos + len(flat_i)
         y = self.switch_mlp(x, inds)
         return (y * scores[..., None]).sum(axis=-2)
 
@@ -112,9 +136,17 @@ def main():
     state["stats"] = stats
 
     problems = make_dataset(N_EVAL, seed=1234)
+    traj_f = None
+    if state["traj"] is not None:
+        traj_path = Path("logs/opus/moe_gt1_traj.jsonl")
+        traj_path.parent.mkdir(parents=True, exist_ok=True)
+        traj_f = traj_path.open("w")
     per_level, n_ok = {}, 0
     t0 = time.time()
     for i, p in enumerate(problems):
+        state["prompt"] = i
+        if traj_f is not None:
+            state["tpos"] = {}
         msgs = [{"role": "system", "content": SYSTEM},
                 {"role": "user", "content": p.prompt}]
         text = tok.apply_chat_template(
@@ -125,6 +157,11 @@ def main():
         n_ok += ok
         lvl = getattr(p, "level", "?")
         per_level[lvl] = per_level.get(lvl, 0) + int(ok)
+        if traj_f is not None:
+            for row in state["traj"]:
+                row["ok"] = bool(ok)
+                traj_f.write(json.dumps(row) + "\n")
+            state["traj"].clear()
         if (i + 1) % 20 == 0:
             print(f"[gt1] gate {i + 1}/{len(problems)} "
                   f"acc {n_ok / (i + 1):.1%} "
@@ -134,7 +171,17 @@ def main():
           f"per-level {per_level} | {gate_s:.0f}s", flush=True)
 
     t0 = time.time()
+    state["prompt"] = "probe"
+    if traj_f is not None:
+        state["tpos"] = {}
     probe_text = generate(model, tok, prompt=PROBE, max_tokens=PROBE_TOKENS)
+    if traj_f is not None:
+        for row in state["traj"]:
+            traj_f.write(json.dumps(row) + "\n")
+        state["traj"].clear()
+        traj_f.close()
+        print("[gt1] traj rows written to logs/opus/moe_gt1_traj.jsonl",
+              flush=True)
     print(f"[gt1] PROBE TEXT (verbatim): {probe_text!r} "
           f"| {time.time() - t0:.0f}s", flush=True)
 
