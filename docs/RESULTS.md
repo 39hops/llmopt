@@ -18783,3 +18783,22 @@ descriptive (no pre-reg; instrument cell per the RIFF
 rider); top-16 Jaccard is scale-arbitrary (16 of 128
 chosen to match keep-ladder granularity); phase split
 is positional halves, not semantic segmentation.
+
+## PRE-REG MOE-GT-1-R4: the ridge's paired-seed pass — 61.8% / 45.3% / 40% at the three fresh seeds (2026-08-04, Mac; Fable seat)
+
+R3's location claim is seed-1234-scoped (GT1-CORR): 78
+at 50% towers over 63/57 neighbors ON ONE SEED; the
+fresh seeds measured 50% at 72/76/67 but never measured
+the neighbors. This pass completes the paired ladder:
+FRACS {0.618, 0.453 (next golden point), 0.40} x seeds
+{4242, 777, 90210}, top-demand rule, per-problem logs.
+REGISTERED: (i) THE RIDGE SHAPE replicates if, per seed,
+gate(50%) > gate(61.8%) AND gate(50%) > gate(40%) in
+>= 2/3 seeds (sign test, using each seed's leg-B 50%
+row: 72/76/67); (ii) 45.3% reads descriptively (does
+the slope bend between 40 and 50); (iii) any seed where
+61.8% beats 50% books against the ridge and re-opens
+the peak bracket. FENCES: sign-consistency bars, no
+sigma claims; churn (R1) means totals can tie while
+solved sets differ — per-problem overlap reported
+descriptively; one machine, one session.
