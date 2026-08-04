@@ -2521,3 +2521,40 @@ pooling winners was his call).
   control -> PRE-REG R6, pruning-cliff debt discharge, V4 residency
   re-pin, crest-teacher, weight-reader labels) tracked in RESULTS/
   queue rather than here.
+
+## 2026-08-04 (evening) — post-GT-2 survey banks + the exclusion arc
+
+- **Exclusion-mass hypothesis** (post-review survey seat, Opus
+  4.5-self-reported; Fable desk-verified the confound it implied):
+  "crest gain requires excluded demand mass, not coverage" —
+  BANKED AND SAME-DAY KILLED as a sufficient condition by
+  D4-PHYS-B (matched ~10% exclusion on physics: -59 pooled, 3/3).
+  Survives only as descriptive within-math structure (the
+  exclusion table, GT2-EXCLUSION item 2). The arc it produced is
+  the keeper: churn check (mask not inert) -> demand-log confound
+  (pooled vs decode) -> matched-instrument dissociation (recall
+  identical, sign opposite). Attribution: survey seat (tension +
+  P1/P3), house (confound discovery, rescue arm, kill).
+- **Coverage-dilution keep-rule** (survey seat P4): RULE=dilute —
+  own-domain keep-set diluted toward random at fixed expert count,
+  giving a coverage-controlled curve in ONE gate/corpus/baseline.
+  BANKED as the legal instrument for any future coverage-curve
+  claim (GT2-REVIEW killed the mixed-baseline table). Fence: draws
+  seeded and reported (random keep-sets do not nest, R6).
+- **Ledger-gap repair** (survey seat flagged; house confirms):
+  two morning speculative-survey items were discussed but never
+  banked — (i) CAPACITY-METER AS KEEP-SET PROPOSER (per-expert
+  M = span_bits - code_entropy from disk, correlate with demand
+  ranking; killer: Spearman < 0.2 or an M-chosen 45.3% mask near
+  0/120) and (ii) CREST-AS-DRAFT for spec decoding (crest = the
+  cheap resident draft the entropy-adaptive null priced; nearly-
+  free pre-check: greedy token agreement crest-vs-full from
+  existing logs; churn ~40% says acceptance may kill it first).
+  Both banked now with the morning seat's attribution. (ii) is
+  math-domain-only post-D4 (the draft must share the target's
+  domain crest).
+- **Crest-as-data-generator: NARROWED to math-domain** (transport
+  nulled twice, D4-PHYS and D4-PHYS-B; RESULTS 2026-08-04). The
+  two-domain gate/probe dissociation STRENGTHENS the
+  sequence-form-only fence (text quality is not implied by gate
+  scores on either domain).
