@@ -18441,3 +18441,16 @@ seed-1234 prompts and transferred (leg B also tested
 transfer — it survived, all deltas non-negative);
 per-level flip counts are descriptive (no per-level
 bars registered); one machine, one session, greedy.
+
+## PRE-REG MOE-GT-1-R2 (Artin's fractions): pi% and golden-ratio% ladder points — 0.314 bisects the death band, 0.382 tests the slope line (2026-08-03, Mac; Fable seat)
+
+Seed 1234, top-demand rule, same instrument. REGISTERED:
+0.382 lands ON the graded slope (interpolation predicts
+~50-53 solves; alive >= 40 books the slope as smooth);
+0.314 decides the death band — alive (>= 40) pushes the
+cliff into (25%, 31.4%], dead (<= 10) pulls it to
+(31.4%, 33%] and makes the transition width < 2
+keep-points, an effectively discontinuous phase edge.
+Mid-band (11-39) at either point books as a shoulder.
+Fences: n=1 seed, descriptive ladder points, resolution
+law applies to any cross-point comparison.
