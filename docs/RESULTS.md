@@ -19610,3 +19610,37 @@ FENCES: math domain only (crest is math-only, D4-PHYS/PHYS-B);
 same-device throughout; the rerun's gate totals are a REGRESSION
 GATE, not new evidence; escalation economics assume full-model
 availability (the V4-from-disk deploy story), priced separately.
+
+## VERDICT CHURN-JUDGE-1: AUC bar FIRES (0.679), spend bar MISSES (1.32x vs 1.5x) — the mask-caused-failure signal is real, the policy underpays at the registered budget (2026-08-04, Mac)
+
+Pre-reg: CHURN-JUDGE-1. Receipts: jobs/cj1_rerun.log (rc=0).
+REGRESSION GATE: all 7 crest reruns reproduce booked totals exactly
+(80/82/81/82/76/87/82) AND per-problem ok patterns match old rows
+0/840 mismatches — the feature instrument is certified non-invasive.
+
+Fit on 111/222/333 (117 crest-failures, rescue rate 0.52); FROZEN
+eval on 555/4242/777/90210 (153 failures, rescue rate 0.47).
+Judge = standardized logistic over {recall, parsed, gen_len, level}.
+
+P1 AUC: FIRES — held-out AUC 0.679 >= 0.60; level-only 0.438
+   (flipped 0.562) — the judge clearly beats its registered null.
+P2 SPEND: DOES NOT FIRE — at F=33% (50 escalations), judge recovers
+   31 vs random's 23.5 expected = 1.32x, under the 1.5x bar. The
+   policy pays, but not enough at this budget.
+P3: n/a (recall carries signal; the feature lives).
+
+MECHANISM NOTE the features give for free: the two loudest signals
+are LOW per-problem closed recall (train AUC 0.619 flipped) and
+SHORT completions (0.708 flipped) -> "full rescues it". Low recall
+= the mask bent this problem's routing hardest — i.e., the
+rescuable failures are MASK-CAUSED, not problem-hard, exactly the
+churn story. Weights: recall -1.571, gen_len -1.608, parsed +0.343,
+level -0.250 (escalate short, low-recall, unparsed outputs).
+FENCES: math domain only; one fit family (logistic) — no ranker
+shopping was done, and none is licensed post-hoc; F=33% was the
+only registered budget (other budgets are descriptive only);
+same-device throughout.
+DOWNSTREAM: the escalation policy is real but under-bar; the bank's
+revive-if: a feature that sees ROUTING margins (scores now in TRAJ
+v2 rows) rather than pooled recall might close the 1.32->1.5 gap —
+that is a new pre-reg if attempted, not a continuation.
