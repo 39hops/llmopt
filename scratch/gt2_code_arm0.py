@@ -68,9 +68,30 @@ def main():
     assert len(tasks) == N_EVAL, f"only {len(tasks)} tasks available"
 
     model, tok = load(moe_gt1.MODEL)
-    state, n_experts = moe_gt1.instrument(model)
-    stats = RouterStats(n_experts=n_experts)
-    state["stats"] = stats
+    # D4 cross-arm mode: ARM0+FRAC mask the router to a keep-set drawn
+    # from the named demand log (arm2's rule) instead of instrumenting
+    # for demand. Gate + closed-loop recall only, no traj.
+    mask_arm0 = os.environ.get("ARM0")
+    if mask_arm0:
+        import moe_gt1_arm2 as arm2
+        frac = float(os.environ.get("FRAC", "0.453"))
+        counts = json.loads(Path(mask_arm0).read_text())["counts"]
+        top_k = next(
+            layer.mlp.top_k for layer in model.model.layers
+            if hasattr(layer.mlp, "top_k"))
+        keep = arm2.keep_sets_from_counts(counts, frac, top_k)
+        ol = arm2.open_loop_recall(counts, keep)
+        print(f"[gt2-code] MASKED: {mask_arm0} frac {frac} "
+              f"keep {sum(len(v) for v in keep.values()) / len(keep):.0f}"
+              f"/128 | open-loop recall vs own log {ol:.4f}", flush=True)
+        recall_state, _restore = arm2.instrument(model, keep)
+        state = {"traj": None}
+        n_experts = 128
+        stats = None
+    else:
+        state, n_experts = moe_gt1.instrument(model)
+        stats = RouterStats(n_experts=n_experts)
+        state["stats"] = stats
 
     traj_f = None
     if state["traj"] is not None:
@@ -105,8 +126,23 @@ def main():
     gate_s = time.time() - t0
     if traj_f is not None:
         traj_f.close()
-    print(f"[gt2-code] GATE full model: {n_ok}/{len(tasks)} "
-          f"per-rung {per_rung} | {gate_s:.0f}s", flush=True)
+    print(f"[gt2-code] GATE {'MASKED' if mask_arm0 else 'full'} model: "
+          f"{n_ok}/{len(tasks)} per-rung {per_rung} | {gate_s:.0f}s",
+          flush=True)
+
+    if mask_arm0:
+        cl = recall_state["hits"] / max(recall_state["slots"], 1)
+        print(f"[gt2-code] closed-loop recall {cl:.4f} "
+              f"(open vs own log {ol:.4f})", flush=True)
+        with LOG.open("a") as f:
+            f.write(json.dumps({
+                "arm": "gt2-code-masked", "arm0": mask_arm0, "frac": frac,
+                "gate_ok": n_ok, "n_eval": N_EVAL, "seed": SEED,
+                "gate_per_rung": per_rung, "open_recall": ol,
+                "closed_recall": cl, "gate_s": gate_s,
+            }) + "\n")
+        _restore()
+        return
 
     tails = {li: moe_gt1.tail_share(stats.mass[li])
              for li in sorted(stats.mass)}
