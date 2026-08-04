@@ -19250,3 +19250,43 @@ would have opened it. (iii) Full-model 60/120 on seed 555 vs 64 on
 seed 1234 — seed-to-seed baseline spread of 4, inside sigma.
 DOWNSTREAM: D2 (physics arm-0) may proceed with 45.3% as the
 transported fraction, band 0.40-0.50 noted.
+
+## VERDICT MOE-GT-2-D2: the router IS domain-biased — physics coalition differs from math beyond the resampling null (2026-08-04, Mac)
+
+Pre-reg: MOE-GT-2 arm D2. Corpus: mechanics (eom/small_osc/
+kinematics), LEVELS 2-3 (L1 fence), seed 606, N=120, 120/120
+determinability self-check before any GPU time. Artifacts:
+checkpoints/gt2_phys_arm0.json, logs/opus/gt2_phys_traj.jsonl
+(phase-tagged, the 4f3dc6c instrument), jobs/gt2_phys_arm0.log
+(rc=0). Same SYSTEM prompt as math arm-0, deliberately: the
+output-format instruction is the load-bearing content and changing
+it between domains would confound the coalition comparison.
+
+PHYSICS FULL-MODEL BASELINE: 36/120 {2:20, 3:16} (harder corpus
+than the math gate by construction; this is D4's paired reference).
+Routing tail mean 0.742 (math: 0.749) — heavy tail transports.
+
+THE REGISTERED READOUT (decode-only keep-sets at 45.3%, 48 layers):
+  Jaccard(math, physics), full data:      mean 0.767, min 0.657
+  within-math split-half null:            mean 0.930, min 0.813
+  within-physics split-half null:         mean 0.871, min 0.785
+  cross-domain at matched (half) size:    mean 0.786, min 0.681
+KILLER DOES NOT FIRE (~1.0 would have killed the program): the
+cross-domain overlap sits clearly below BOTH within-domain
+resampling nulls at matched data size. The physics coalition is a
+real shift, not prompt-draw noise. Coverage view: 86.7% of the
+physics keep-set lies inside the math keep-set — the shift is
+carried by ~13% of slots (~8 experts/layer).
+SECONDARY (specialist-shelf statistic, registered): LOW-count tail
+Jaccard 0.753 — the domains disagree about their rarely-routed
+experts about as much as about their coalitions; no evidence that
+the physics coalition hides in math's low-count tail.
+DESK PREDICTION STATUS (registered pre-run with numbers): corpus
+prompt-token Jaccard math-mechanics 0.329 vs math-code 0.097 —
+the ORDERING test (routing Jaccard math-phys > math-code) resolves
+only when D3's code arm-0 lands.
+FENCES: one seed per domain; Jaccard dispersion across seeds
+unmeasured (the split-half null is the resampling proxy); no
+capability claim yet — D4's second-crest gate is where +/- bars
+apply. DOWNSTREAM: D3 proceeds; D4's physics arm is licensed
+(coalitions differ), cross-arms mandatory per pre-reg.
