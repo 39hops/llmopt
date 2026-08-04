@@ -18908,3 +18908,18 @@ takes over below 40%.
 FENCES: one vehicle, one keep rule, mathgen L1-3 gate;
 seeds 4242/777/90210 now spent for this question;
 per-level dicts are checksums (33+26+23=82 etc.).
+
+## PRE-REG MOE-GT-1-R5: the crest confirmation — 45.3% vs paired full at three UNSPENT seeds, fully registered this time (2026-08-04, Mac; Fable seat)
+
+R4 measured +14/+14/+16 at 45.3% but its readout was
+registered descriptive and best-of-3 fractions. This is
+the clean claim's registration, BEFORE the run: seeds
+{111, 222, 333} (never used in this program), paired
+frac {1.0, 0.453}, top-demand rule from arm-0 demand,
+per-problem logs. REGISTERED: the claim "45.3% keep
+beats full" stands IFF delta > 0 in 3/3 seeds AND
+pooled delta >= +7. Anything less books as the R4
+reading failing its confirmation, and the ridge claim
+retreats to shape-only. No other readout gates
+anything; probe text and recall gaps recorded
+descriptively.
