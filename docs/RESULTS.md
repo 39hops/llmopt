@@ -18172,3 +18172,83 @@ on each arm's own demand (closed-loop); no capability
 claim. The miss-driven mechanism is an OBSERVATION from
 n=3 arms, not a law — a paired miss-controlled arm would
 be the falsification instrument if it ever matters.
+
+## PRE-REG MOE-GT-1: the ground-truth platform — calibrate the F2 instrument pair on a FULLY-RESIDENT MoE, measure the routing tail, and re-book the un-booked pruning cliff (2026-08-03, Mac; Fable seat)
+
+MOTIVATION. Every F2 number so far is closed-loop on a
+model too big to run (V4-Flash at <=12.5% residency):
+recall is judged against the trajectory the crippled
+model itself creates, and no full-model control exists.
+This rung runs the WHOLE model as the oracle. It is an
+F2-family arm and per the F2b closing line ("no further
+F2 arms without a new pre-reg") this is that pre-reg.
+Per the recode-spec Q1 fence, capability claims are
+LEGAL on this rung — the first cell in the program where
+that is true — and the eval set stays math (the 120
+gate), per charter.
+
+VEHICLE: mlx-community/Qwen3-30B-A3B-4bit — CACHED
+(16 GB), MLX-runnable, 128 experts/layer top-8, softmax
+top-k router (llmopt/moe/prune.py mask_router matches it
+as written; verified at :83-92). DeepSeek-V2-Lite is the
+NAMED FOLLOW-UP vehicle (shared expert + sigmoid/bias
+router like V4) — blocked today on disk (12 GB free vs
+~31 GB) and on a known mask_router mismatch (drops
+shared-expert term, softmax-not-sigmoid; reviewer
+finding, verified). Known Q1 limitation inherited: no
+shared expert on this vehicle; the structural claim
+stays ungated here.
+
+ARMS (one machine, one session, greedy, same prompts):
+(0) FULL RESIDENCY (the oracle): full model, demand log
+    + FIRST-TOUCH ORDER log (new: per-expert arrival
+    index, the prefetch instrument) on the 120-gate
+    prompts + the F2 probe prompt. This arm defines TRUE
+    demand and the routing tail.
+(1) ROUTING TAIL: from arm 0 demand, book the measured
+    tail (share of routed mass in top-25% experts).
+    Offload doctrine says measure, never assume: this
+    model trained WITH aux load balancing, so a heavier
+    tail than V4's noaux design point is plausible.
+(2) RESIDENCY REPLAY, open- vs closed-loop: mask to
+    keep-sets at 50% / 25% / 12.5% residency (rule:
+    top-demand from arm 0), measure (a) OPEN-LOOP recall
+    of the keep-set vs arm-0 true demand, (b) CLOSED-LOOP
+    recall vs the masked run's own demand, (c) gate
+    solves at N_EVAL=120, (d) text on the F2 probe.
+
+REGISTERED PREDICTIONS:
+(P1) TAIL: top-25% of experts carry >=40% of routed mass
+     (heavier than uniform's 25%). If instead the tail
+     is flat (<=30%), the V4 uniform doctrine transports
+     to aux-loss models too and static residency rules
+     are near-worthless generally — either answer books.
+(P2) CLOSED-LOOP DIVERGENCE (the F2b lesson,
+     quantified): |closed - open| recall >= 0.10 at 25%
+     residency. This is the calibration number the V4
+     instrument has been missing.
+(P3) THE CLIFF, re-booked: gate solves hold within
+     1.5 sigma (~7 solves) of full at 50% residency and
+     COLLAPSE (>=3 sigma, ~15 solves) at 12.5%. This
+     replaces the "~28% cliff" standing debt (BOARD:106,
+     never booked in RESULTS) with a registered,
+     gate-scored measurement on a runnable vehicle.
+(P4) TEXT: the F2 probe stays non-degenerate at 50%; if
+     it stays non-degenerate even at 12.5%, the V4
+     degeneracy is a property of the frontier model /
+     MXFP4 path, not of expert-subsetting per se —
+     either answer books.
+
+FENCES: resolution law sigma~=5 on the 120 gate (deltas
+under ~7 solves at n=1 are unresolved — P3's bars are
+set above it); one machine, one session, 4-bit MLX base
+(quantization is part of the vehicle, not a variable);
+recall numbers do NOT transport to V4 (different router
+family, different balancing objective) — what transports
+is the INSTRUMENT calibration (open-vs-closed gap) and
+the method; first-touch log is descriptive this rung, no
+prefetch claim; mask_router keep >= top_k asserted per
+layer (prune.py:73). Usage-tiered packing (banked,
+RIFF:1857) becomes eligible AFTER this rung books the
+tail — it consumes arm 1's number and is NOT part of
+this pre-reg.
