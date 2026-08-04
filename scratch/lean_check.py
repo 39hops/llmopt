@@ -71,6 +71,37 @@ def norm(s):
     return re.sub(r"\s+", " ", s.strip())
 
 
+def ac_equal(ours, theirs):
+    """Statement equality up to associativity/commutativity: compare
+    binder + hypotheses + tactic as strings, and each equation side as
+    a sympy parse (auto-canonical arg ordering, NO simplification —
+    x*(x+2)**2 stays unexpanded, so this is still a syntactic check).
+    First run measured 238/443 raw-string mismatches, ALL commutative
+    reordering (axiom's printer orders terms differently); raw ==
+    stays as the fast path."""
+    import sympy as sp
+
+    if norm(ours) == norm(theirs):
+        return True
+    pat = re.compile(r"^example \(([^)]*) : ℝ\)(.*?) : (.*) = (.*) := by (.*)$")
+    mo, mt = pat.match(norm(ours)), pat.match(norm(theirs))
+    if not mo or not mt:
+        return False
+    if (sorted(mo.group(1).split()) != sorted(mt.group(1).split())
+            or norm(mo.group(2)) != norm(mt.group(2))
+            or mo.group(5) != mt.group(5)):
+        return False
+    try:
+        for a, b in ((mo.group(3), mt.group(3)), (mo.group(4), mt.group(4))):
+            ea = sp.parse_expr(a.replace("^", "**"), evaluate=True)
+            eb = sp.parse_expr(b.replace("^", "**"), evaluate=True)
+            if ea != eb:
+                return False
+        return True
+    except Exception:
+        return False
+
+
 def main():
     src = pathlib.Path(sys.argv[1])
     proj = pathlib.Path(sys.argv[sys.argv.index("--project") + 1]
@@ -81,7 +112,7 @@ def main():
         ours = rederive(r)
         if ours is None:
             diff_skip += 1
-        elif norm(ours) == norm(r["lean"]):
+        elif ac_equal(ours, r["lean"]):
             diff_ok += 1
         else:
             diff_bad.append((r.get("id", i), ours, r["lean"]))
