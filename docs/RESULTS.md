@@ -19290,3 +19290,49 @@ unmeasured (the split-half null is the resampling proxy); no
 capability claim yet — D4's second-crest gate is where +/- bars
 apply. DOWNSTREAM: D3 proceeds; D4's physics arm is licensed
 (coalitions differ), cross-arms mandatory per pre-reg.
+
+## VERDICT MOE-GT-2-D3: the ordering prediction FIRES — code coalition is twice as far from math as physics is (2026-08-04, Mac)
+
+Pre-reg: MOE-GT-2 arm D3 + the D2-registered desk prediction
+(corpus prompt-token overlap math-mech 0.329 vs math-code 0.097 =>
+routing Jaccard(math,phys) > Jaccard(math,code)). Corpus: codegen
+ladder (build_ladder seed 99), fixed 120-task round-robin rule over
+non-empty rungs; toolchain-scored (llvm.py, each task's own check).
+Pre-flights held: llvm_available() true, o2_asm rung EMPTY at this
+seed (0 tasks — excluded by the rule, flagged not absorbed).
+Artifacts: checkpoints/gt2_code_arm0.json,
+logs/opus/gt2_code_traj.jsonl, jobs/gt2_code_arm0.log (rc=0).
+Driver: scratch/gt2_code_arm0.py (reuses the certified TRAJ v2
+instrument). SYSTEM prompt is code-specific (fence: corpus+prompt
+treatment, unlike D2 which held SYSTEM fixed).
+
+CODE FULL-MODEL BASELINE: 48/120 {encode:1, decode:13, mangle:0,
+lifetime:4, output:10, diagnose:20} (D4's paired reference; encode
+and mangle are near-floor — rung mix matters for any later delta).
+Routing tail mean 0.731 (math 0.749, phys 0.742) — heavy tail is
+domain-invariant.
+
+THE THREE-WAY READOUT (decode-only keep-sets at 45.3%, gate prompts
+only, 48 layers):
+  Jaccard(math, phys):  mean 0.8041 min 0.7059
+  Jaccard(math, code):  mean 0.5430 min 0.4321
+  Jaccard(phys, code):  mean 0.5392 min 0.4321
+  code split-half null: mean 0.6529 min 0.4684
+ORDERING PREDICTION FIRES: math-phys > math-code, by ~0.26 of
+Jaccard — and math-code sits BELOW code's own split-half null, so
+the code coalition is a genuine domain shift, not the code corpus
+being internally noisy. The router-as-diet-readout mechanism gets
+its first cross-domain confirmation: coalition distance tracks
+corpus distance (0.329 vs 0.097 predicted the order).
+CONSISTENCY NOTE: D2 booked math-phys 0.767 on FULL traj data
+(probe rows included); the 0.804 here is gate-prompts-only — the
+filter is named so the two numbers don't read as drift.
+FENCES: one seed per domain; code decode volume is half of math's
+(517k vs 1.05M slots — subset Jaccards at matched volume were not
+run for code); SYSTEM prompt differs for code (deliberate,
+confounded with corpus by design this arm); no capability claim —
+that is D4.
+DOWNSTREAM: D4 is licensed on BOTH domains. Physics second-crest
+gate (physics keep-set at 45.3% on the physics gate, paired vs
+full 36/120, n>=3 seeds) + mandatory cross-arms (math mask on code
+gate and vice versa, predicted catastrophic).
