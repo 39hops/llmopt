@@ -19413,3 +19413,68 @@ The program's corrected summary: coalitions are real, domain-
 organized, and functionally specific; the beats-full crest is
 math-only on present evidence; capability follows a steep coverage
 sigmoid, not a cliff.
+
+## AMENDMENT GT2-REVIEW: reviewer pass on the MOE-GT-2 program — diagnose-rung artifact, sigmoid over-claim, D0 booking, precision fixes (2026-08-04, Mac)
+
+Amends: MOE-GT-2-D4-CROSS (primarily), MOE-GT-2-D4-PHYS, and books
+arm D0's registered bar. Source: reviewer seat (Opus, self-reported
+4.5), findings Fable-verified line-by-line; every item below was
+re-checked against the artifact before booking.
+
+1. D4-CROSS "coalitions are FUNCTIONAL, not topical" is DEMOTED TO
+   UNRESOLVED — likely a checker artifact. Fable-verified, and it is
+   worse than the reviewer stated: ALL 20 diagnose tasks in the
+   seed-99 gate are the lenient clean-variant (round-robin selection
+   takes build order; strict buggy-variant tasks got ZERO slots).
+   The clean checker (llmopt/codegen/ladder.py:101) passes ANY
+   completion containing "compile" without a leading negation —
+   verified live: 'The program will compile and run' -> PASS.
+   Masked = full = exactly 20 on this rung, the signature of a rung
+   carried by a stock answer, not preserved capability. The masked
+   probe text in the same run is a degenerate loop. CORPUS-DESIGN
+   FLAW booked with it: the 120-task rule must STRATIFY diagnose
+   variants (and any future functional/topical claim needs the
+   strict variant present). The other D4-CROSS numbers stand.
+2. The "coverage sigmoid" is RESTATED as booked-too-strong. What
+   the data supports: at least one INTERMEDIATE regime exists —
+   cross-domain masks (77.6-80.2% coverage) are neither dead (R6
+   random, 44.7% -> 0/120) nor healthy. "Continuous"/"sigmoid" were
+   inferences over unmeasured intervals (nothing between 0.447 and
+   0.776); the table also mixed gates with different baselines and
+   corpora without normalization (21/120 is a code gate, baseline
+   48; 19/120 a math gate, baseline 64), and omitted the flattest
+   relevant point: D4-PHYS ran at 99.03% open-loop coverage and
+   showed NO gain — the upper arm of any such curve is math-only.
+3. D0 IS NOW BOOKED (it was registered with a hard bar, passed, and
+   never booked; the v2 traj underlies every D2/D3 Jaccard number):
+   jobs/gt1_trajv2.log — gate 64/120 {1:23, 2:24, 3:17}, mean tail
+   0.7494347865757821, both identical to the certified artifact;
+   590,736 rows; v1 file sha-unchanged. D0 PASSES as registered.
+4. D4-PHYS fence CORRECTED: "+7 bar conservative on weak baselines"
+   is wrong in sigma units (binomial sigma is LARGER near p=0.5
+   than p=0.25). The honest statement: observed physics full-model
+   seed spread is 24-42 (range 18, far above binomial) — corpus/
+   seed heterogeneity dominates and the arm was UNDERPOWERED to
+   resolve +7 in either direction. The NULL verdict stands (the
+   pooled point estimate +3 is also small), but a future physics
+   crest claim needs more seeds or a tighter corpus, and this cuts
+   against trusting a hypothetical positive equally.
+5. Precision: D4-PHYS crest closed recall is 0.727-0.733 (three
+   arms), not "~0.727". D4-CROSS's calibration row "own-domain 40%:
+   55-60" predates same-day D1 (63 at frac 0.40, seed 555):
+   correct range 55-63.
+6. Instrument fixes committed with this amendment: masked-mode
+   receipt now names its recall "of the SOURCE log" (it is
+   self-recall, not cross-coverage — a receipt-misread hazard) and
+   echoes the resolved RULE env (a leaked RULE=random would have
+   been invisible in the old receipt); arm2 gate lines echo RULE
+   too. scratch/gt2_jaccard.py (committed 90dcd1c) re-derives all
+   booked coalition numbers; its GATE_ONLY=0 path reproduces D2's
+   0.767/0.8671 (the split-half TypeError the reviewer hit was
+   fixed pre-commit). Tie-break note adopted: zero-count experts
+   fill keep-sets in index order identically across domains, so
+   cross-domain Jaccards are UPPER bounds — the D3 ordering claim
+   is conservative.
+7. Index hygiene: links curation restored on all six MOE-GT-2 rows
+   (gen_results_index regeneration had dropped links while
+   preserving threads — watch this on future bookings).

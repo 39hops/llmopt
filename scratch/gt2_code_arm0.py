@@ -81,9 +81,14 @@ def main():
             if hasattr(layer.mlp, "top_k"))
         keep = arm2.keep_sets_from_counts(counts, frac, top_k)
         ol = arm2.open_loop_recall(counts, keep)
-        print(f"[gt2-code] MASKED: {mask_arm0} frac {frac} "
+        # NOTE: ol is SELF-recall (source-log demand inside its own
+        # keep-set), NOT coverage of this gate's domain — reviewer
+        # finding 16, 2026-08-04. Cross-coverage lives in gt2_jaccard.py.
+        rule = os.environ.get("RULE", "top")
+        print(f"[gt2-code] MASKED: {mask_arm0} frac {frac} rule {rule} "
               f"keep {sum(len(v) for v in keep.values()) / len(keep):.0f}"
-              f"/128 | open-loop recall vs own log {ol:.4f}", flush=True)
+              f"/128 | open-loop recall of the SOURCE log {ol:.4f}",
+              flush=True)
         recall_state, _restore = arm2.instrument(model, keep)
         state = {"traj": None}
         n_experts = 128

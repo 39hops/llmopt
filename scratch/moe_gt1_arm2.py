@@ -193,7 +193,8 @@ def main():
         keep = keep_sets_from_counts(counts, frac, top_k)
         ol = open_loop_recall(counts, keep)
         n_keep = sum(len(v) for v in keep.values()) / len(keep)
-        print(f"[gt1-2] === seed {SEED} frac {frac} | keep {n_keep:.0f}/128 "
+        print(f"[gt1-2] === seed {SEED} frac {frac} "
+              f"rule {os.environ.get('RULE', 'top')} | keep {n_keep:.0f}/128 "
               f"per layer | open-loop recall {ol:.4f} ===", flush=True)
         state, restore = instrument(model, keep)
         try:
