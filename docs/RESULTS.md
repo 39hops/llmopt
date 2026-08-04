@@ -18615,3 +18615,50 @@ git pull does not carry it); every CONTRACT_ENV key
 explicitly set or unset in the launch script; marker
 fires on all-arms-success only. HOLD: launches on
 Artin's explicit GO.
+
+## VERDICT LEAN-TIER-1: the certificate tier WORKS end to end — 443/443 kernel-checked PASS, 443/443 statement-diff ok (after AC-aware fix), 100-1610 ms/cert vs the 11 ms/row oracle (2026-08-04, WSL/3080 box CPU; axiom emitter c0511bc)
+
+Pipeline, as the relay contract specified: house corpus
+(data/lean_corpus_in.jsonl, 500 sympy identities,
+scratch/gen_lean_corpus.py, stable string seed) ->
+axiom-oracle --lean-cert (Mac-side, c0511bc) -> sidecar
+data/lean_certs_500.jsonl (443 emitted / 0 fenced; the
+sqrt fence verified LIVE on the smoke row s4:
+sqrt(x)*sqrt(x)=x correctly refused) -> WSL: elan +
+pinned mathlib (rev 9fb10993, toolchain v4.33.0-rc2,
+cache 8681 oleans) -> scratch/lean_check.py.
+
+MEASURED:
+- KERNEL CHECK: PASS, all 443 certificates. Every
+  emitted ring/field_simp proof compiles; zero judge
+  bugs surfaced on this corpus (the loud-artifact clause
+  stays armed for future corpora).
+- STATEMENT DIFF (the anti-theater clause): first run
+  205 ok / 238 MISMATCH — ALL 238 were commutative
+  term-reordering (axiom's printer vs ours); checker
+  upgraded to AC-aware comparison (sympy parse of each
+  equation side, NO simplification — x*(4x+6)^2 stays
+  unexpanded; binder/hypotheses/tactic compared as
+  strings; negative controls verified: wrong exponent
+  and swapped sides still FAIL). Second run: 443/443 ok,
+  0 skip, 0 mismatch. The emitted statements ARE our
+  independently re-derived statements, up to AC.
+- COST: kernel wall 44.1s total (100 ms/cert) on the
+  overnight run, 713s (1610 ms/cert) on the morning
+  rerun — same certs, same cached mathlib; the spread is
+  unexplained (CPU contention suspected) and the cost
+  books as the RANGE 100-1610 ms/cert = 9-146x the
+  11 ms/row sympy oracle. Either end confirms the
+  relay's economics: certificates are an AUDIT TIER, not
+  a production judge.
+VERDICT vs the registered killer (relay -0: "small
+closable fraction or seconds/cert = honest null"):
+the tier SURVIVES — closable fraction 443/500 = 88.6%
+on the tier-1 family, cost sub-2s/cert. The three-valued
+contract stays the production judge; the tier upgrades
+EQUIVALENT verdicts in the eligible family from
+judge-blessed to kernel-certified.
+FENCES: corpus is HOUSE-GENERATED tier-1-family rows
+(the closable fraction on axiom's REAL verdict corpus is
+their measurement, still owed); one toolchain pin; the
+timing spread is booked, not resolved.
