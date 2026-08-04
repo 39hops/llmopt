@@ -19221,3 +19221,32 @@ revival it kills is killed tautologically; the non-trivial residue
 is that the crest and 50% masks differ by exactly the 6
 lowest-demand experts per layer (58 vs 64 of 128), making the
 41-47% churn between them attributable to a small named set.
+
+## VERDICT MOE-GT-2-D1: crest LOCATION survives an unspent seed — argmax stays at 45.3% (2026-08-04, Mac)
+
+Pre-reg: MOE-GT-2 arm D1 (the DIET-COND-SEED failure-mode check).
+Seed 555, RULE=top, one paired run, five fractions, N=120,
+per-problem rows in logs/opus/moe_gt1_perprob.jsonl, receipts in
+jobs/gt1_d1_seed555.log (rc=0).
+
+  frac 1.000 (full): 60/120 {1:21, 2:19, 3:20}
+  frac 0.618:        64/120 {1:21, 2:22, 3:21}
+  frac 0.500:        75/120 {1:24, 2:29, 3:22}
+  frac 0.453:        82/120 {1:29, 2:27, 3:26}   <- argmax
+  frac 0.400:        63/120 {1:24, 2:21, 3:18}
+
+P-D1a FIRES: the argmax over masked fractions stays at 45.3% on a
+seed the fraction was never tuned on. The interior-peak SHAPE
+(rise into 45.3, collapse by 40) replicates for the 4th time; the
+crest-over-full margin here is +22, the program's largest
+single-seed delta (7th consecutive seed where crest >= full).
+FENCES: (i) 45.3-vs-50 margin is 7 = ~1.5 sigma on ONE seed — the
+registered readout was the argmax stay, not that margin; the
+45.3>50 ordering now holds on 4/4 seeds where both were measured,
+which is the sign-consistency form of the claim. (ii) A non-move
+was pre-registered as WEAK evidence; it de-risks hardcoding 45.3%
+in D2-D4 but does not close the location question the way a move
+would have opened it. (iii) Full-model 60/120 on seed 555 vs 64 on
+seed 1234 — seed-to-seed baseline spread of 4, inside sigma.
+DOWNSTREAM: D2 (physics arm-0) may proceed with 45.3% as the
+transported fraction, band 0.40-0.50 noted.
