@@ -19104,3 +19104,39 @@ booked basis (vehicle caveat: Qwen3, not Qwen3-30B's
 the SHAPE transported, the exact fractions are
 vehicle-specific). BOARD's clause is corrected in the
 same commit. Debt closed.
+
+## VERDICT MOE-GT-1-R6: the crest is the COALITION, not sparsity — random-45.3% masks score 0/120 (both draws) and anti-demand 0/120, at the exact fraction where the demand-chosen mask beats full by +14.7 (2026-08-04, Mac; Fable seat)
+
+Registered control (PRE-REG R6), seed 1234, all three
+arms (jobs/gt1_r6.log; rows in logs/opus/moe_gt1.jsonl):
+  RULE=random RULESEED=0: 0/120 {0,0,0} | open recall 0.4478
+  RULE=random RULESEED=1: 0/120 {0,0,0} | open recall 0.4471
+  RULE=anti  (bottom-45%): 0/120 {0,0,0} | open recall 0.0516
+P1 (random >= full => sparsity): DOES NOT FIRE — random
+is not merely below full, it is DEAD, twice.
+P2 (random catastrophic + anti ~0 => coalition carries
+the entire effect): FIRES EXACTLY AS REGISTERED. The
+demand rule is not a mild improvement over chance — at
+45.3% keep, WHICH experts you keep is the difference
+between 0/120 and 82/120 (R5, same fraction, fresh
+seeds) / 76-87 (R4). Generic sparsity contributes
+NOTHING measurable at this fraction; the "math
+coalition" mechanism stands as the only live reading,
+and the domain-conditional program (physics/code
+keep-sets as predicted second crests) keeps its premise.
+CALIBRATION NOTE the arms give for free: random-45%
+covers 44.7% of true demand and is dead; the top-demand
+40% arm covers 86.5% and scores 55-60. Between them the
+coverage-vs-capability curve is violently nonlinear —
+coverage of the DEMANDED coalition, not expert count,
+is the load-bearing quantity.
+OBSERVATION (unregistered): the anti arm is the only
+arm in the program where CLOSED-loop recall EXCEEDS
+open-loop (0.127 vs 0.052, gap +0.075 with the sign
+flipped) — the degenerate trajectory drifts TOWARD the
+resident set; consistent with the attractor being
+whatever the remaining experts can express (the V4
+mechanism, at last seen from the healthy side).
+FENCES: n=1 seed, 2 random draws (identical outcome —
+a third draw buys nothing); random keep-sets do not
+nest; no cross-fraction reads.
