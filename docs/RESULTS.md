@@ -19568,3 +19568,45 @@ the math-excluded experts compute — the churn judge and the
 per-level structure of the math crest gains are the next
 instruments; a physics-native fraction ladder is no longer the
 priority (both recipes fail at 45.3%).
+
+## PRE-REG CHURN-JUDGE-1: crest-default + judge-flagged escalation — the SPEND is registered first (2026-08-04, Mac)
+
+Bank: RIFF-LEDGER 2026-08-04 transfer (3), Row-28 instance; the
+bank's own condition — "MUST register its SPEND up front or it
+repeats the regret-probe null" — is this entry's reason to exist.
+
+THE SPEND (the deploy policy the prediction buys): run the CREST
+model (58/128 experts resident) on every problem; a JUDGE flags a
+fraction F for ESCALATION to the full model. Value = recovered
+solves per escalated problem. Ceiling measured across the 7 paired
+math seeds (111/222/333/555/4242/777/90210, per-problem logs):
+full 460, crest 570, union 703 of 840 — +133 recoverable, 270
+crest-failures of which 133 (49%) are full-rescuable.
+
+JUDGE FEATURES (registered; all observable at decision time from
+the crest run alone, NO oracle access): per-problem closed-loop
+recall (instrument c04098b), sympy parse success of the extracted
+answer, completion length, level. Level alone is registered as
+INSUFFICIENT (desk: rescue rates 57/53/41% by level — a gradient
+below the AUC bar; this is the null the judge must beat).
+
+PROTOCOL: rerun the 7 crest arms with the feature instrument
+(deterministic same-device — REGRESSION BAR: each seed's gate must
+reproduce its booked total exactly: 80/82/81/82/76/87/82). Fit any
+monotone ranker on 3 seeds (111/222/333), evaluate FROZEN on 4
+(555/4242/777/90210).
+
+REGISTERED BARS:
+P1 (AUC, the banked bar): judge AUC >= 0.60 on held-out seeds for
+   "full rescues this crest-failure", vs level-only and vs chance.
+P2 (the spend bar): at escalation budget F=33% of crest-failures,
+   recovered solves >= 1.5x the random-escalation baseline on
+   held-out seeds (random recovers 0.49F of failures in
+   expectation; the judge must beat 1.5x that).
+P3 (honesty): if per-problem recall carries no signal (AUC within
+   noise of level-only), book the null and the feature dies — the
+   instrument edit stays (it is free).
+FENCES: math domain only (crest is math-only, D4-PHYS/PHYS-B);
+same-device throughout; the rerun's gate totals are a REGRESSION
+GATE, not new evidence; escalation economics assume full-model
+availability (the V4-from-disk deploy story), priced separately.
