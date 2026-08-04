@@ -1,0 +1,443 @@
+{"id":"c0","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c1","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c2","lhs":"(3*x + 5)**2","rhs":"9*x**2 + 30*x + 25","lean":"example (x : ℝ) : (3*x + 5)^2 = 9*x^2 + 30*x + 25 := by ring","tactic":"ring","atoms":{}}
+{"id":"c3","lhs":"(2*x + 7)**3","rhs":"8*x**3 + 84*x**2 + 294*x + 343","lean":"example (x : ℝ) : (2*x + 7)^3 = 8*x^3 + 84*x^2 + 294*x + 343 := by ring","tactic":"ring","atoms":{}}
+{"id":"c4","lhs":"9*x*log(x) + 8*log(x)","rhs":"(9*x + 8)*log(x)","lean":"example (a1 x : ℝ) : 8*a1 + 9*x*a1 = (9*x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c5","lhs":"9*x*log(x) + log(x)","rhs":"(9*x + 1)*log(x)","lean":"example (a1 x : ℝ) : 9*x*a1 + a1 = (9*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c7","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c8","lhs":"2*x*log(x) + log(x)","rhs":"(2*x + 1)*log(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + a1 = (2*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c9","lhs":"x*(4*x + 6)**2","rhs":"16*x**3 + 48*x**2 + 36*x","lean":"example (x : ℝ) : x*(4*x + 6)^2 = 16*x^3 + 36*x + 48*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c10","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c11","lhs":"9*x*sin(x) + 4*sin(x)","rhs":"(9*x + 4)*sin(x)","lean":"example (a1 x : ℝ) : 4*a1 + 9*x*a1 = (9*x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c12","lhs":"x*(x + 8)**2","rhs":"x**3 + 16*x**2 + 64*x","lean":"example (x : ℝ) : x*(x + 8)^2 = 16*x^2 + 64*x + x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c13","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c14","lhs":"5*x*log(x) + log(x)","rhs":"(5*x + 1)*log(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + a1 = (5*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c15","lhs":"(7*x + 2)**2","rhs":"49*x**2 + 28*x + 4","lean":"example (x : ℝ) : (7*x + 2)^2 = 28*x + 49*x^2 + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c16","lhs":"(7*x + 4)**3","rhs":"343*x**3 + 588*x**2 + 336*x + 64","lean":"example (x : ℝ) : (7*x + 4)^3 = 336*x + 343*x^3 + 588*x^2 + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c17","lhs":"x*(2*x + 5)**2","rhs":"4*x**3 + 20*x**2 + 25*x","lean":"example (x : ℝ) : x*(2*x + 5)^2 = 4*x^3 + 20*x^2 + 25*x := by ring","tactic":"ring","atoms":{}}
+{"id":"c18","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c19","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c20","lhs":"(x + 6)**3","rhs":"x**3 + 18*x**2 + 108*x + 216","lean":"example (x : ℝ) : (x + 6)^3 = 18*x^2 + 108*x + x^3 + 216 := by ring","tactic":"ring","atoms":{}}
+{"id":"c21","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c22","lhs":"x + 7","rhs":"x + 7","lean":"example (x : ℝ) : x + 7 = x + 7 := by ring","tactic":"ring","atoms":{}}
+{"id":"c23","lhs":"8*x*cos(x) + 3*cos(x)","rhs":"(8*x + 3)*cos(x)","lean":"example (a1 x : ℝ) : 3*a1 + 8*x*a1 = (8*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c24","lhs":"x*(3*x + 7)**2","rhs":"9*x**3 + 42*x**2 + 49*x","lean":"example (x : ℝ) : x*(3*x + 7)^2 = 9*x^3 + 42*x^2 + 49*x := by ring","tactic":"ring","atoms":{}}
+{"id":"c25","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c26","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c27","lhs":"x*(7*x + 6)**3","rhs":"343*x**4 + 882*x**3 + 756*x**2 + 216*x","lean":"example (x : ℝ) : x*(7*x + 6)^3 = 216*x + 343*x^4 + 756*x^2 + 882*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c29","lhs":"3*x*sin(x) + 2*sin(x)","rhs":"(3*x + 2)*sin(x)","lean":"example (a1 x : ℝ) : 2*a1 + 3*x*a1 = (3*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c30","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c31","lhs":"3*x*log(x) + 6*log(x)","rhs":"3*(x + 2)*log(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 6*a1 = (3*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c32","lhs":"x + 7","rhs":"x + 7","lean":"example (x : ℝ) : x + 7 = x + 7 := by ring","tactic":"ring","atoms":{}}
+{"id":"c33","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c34","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c35","lhs":"9*x*sin(x) + 2*sin(x)","rhs":"(9*x + 2)*sin(x)","lean":"example (a1 x : ℝ) : 2*a1 + 9*x*a1 = (9*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c38","lhs":"3*x*sin(x) + 3*sin(x)","rhs":"3*(x + 1)*sin(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 3*a1 = (3*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c39","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c40","lhs":"(9*x + 7)**2","rhs":"81*x**2 + 126*x + 49","lean":"example (x : ℝ) : (9*x + 7)^2 = 81*x^2 + 126*x + 49 := by ring","tactic":"ring","atoms":{}}
+{"id":"c41","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c42","lhs":"x + 3","rhs":"x + 3","lean":"example (x : ℝ) : x + 3 = x + 3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c44","lhs":"x + 6","rhs":"x + 6","lean":"example (x : ℝ) : x + 6 = x + 6 := by ring","tactic":"ring","atoms":{}}
+{"id":"c45","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c46","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c47","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c48","lhs":"x + 3","rhs":"x + 3","lean":"example (x : ℝ) : x + 3 = x + 3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c49","lhs":"2*x*sin(x) + 5*sin(x)","rhs":"(2*x + 5)*sin(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + 5*a1 = (2*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c51","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c52","lhs":"x*(6*x + 6)**3","rhs":"216*x**4 + 648*x**3 + 648*x**2 + 216*x","lean":"example (x : ℝ) : x*(6*x + 6)^3 = 216*x + 216*x^4 + 648*x^2 + 648*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c54","lhs":"(x + 5)**2","rhs":"x**2 + 10*x + 25","lean":"example (x : ℝ) : (x + 5)^2 = 10*x + x^2 + 25 := by ring","tactic":"ring","atoms":{}}
+{"id":"c55","lhs":"(8*x + 2)**3","rhs":"512*x**3 + 384*x**2 + 96*x + 8","lean":"example (x : ℝ) : (8*x + 2)^3 = 96*x + 384*x^2 + 512*x^3 + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c56","lhs":"x + 3","rhs":"x + 3","lean":"example (x : ℝ) : x + 3 = x + 3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c57","lhs":"7*x*exp(x) + 8*exp(x)","rhs":"(7*x + 8)*exp(x)","lean":"example (a1 x : ℝ) : 7*x*a1 + 8*a1 = (7*x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c58","lhs":"(x + 3)**3","rhs":"x**3 + 9*x**2 + 27*x + 27","lean":"example (x : ℝ) : (x + 3)^3 = 9*x^2 + 27*x + x^3 + 27 := by ring","tactic":"ring","atoms":{}}
+{"id":"c59","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c60","lhs":"x*(x + 5)**3","rhs":"x**4 + 15*x**3 + 75*x**2 + 125*x","lean":"example (x : ℝ) : x*(x + 5)^3 = 15*x^3 + 75*x^2 + 125*x + x^4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c61","lhs":"3*x*sin(x) + 4*sin(x)","rhs":"(3*x + 4)*sin(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 4*a1 = (3*x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c62","lhs":"4*x*sin(x) + 8*sin(x)","rhs":"4*(x + 2)*sin(x)","lean":"example (a1 x : ℝ) : 4*x*a1 + 8*a1 = (4*x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c63","lhs":"x*sin(x) + 9*sin(x)","rhs":"(x + 9)*sin(x)","lean":"example (a1 x : ℝ) : 9*a1 + x*a1 = (x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c64","lhs":"x*(3*x + 2)**2","rhs":"9*x**3 + 12*x**2 + 4*x","lean":"example (x : ℝ) : x*(3*x + 2)^2 = 4*x + 9*x^3 + 12*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c65","lhs":"x*(3*x + 5)**2","rhs":"9*x**3 + 30*x**2 + 25*x","lean":"example (x : ℝ) : x*(3*x + 5)^2 = 9*x^3 + 25*x + 30*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c66","lhs":"x*(x + 4)**2","rhs":"x**3 + 8*x**2 + 16*x","lean":"example (x : ℝ) : x*(x + 4)^2 = 8*x^2 + 16*x + x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c67","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c68","lhs":"(5*x + 3)**2","rhs":"25*x**2 + 30*x + 9","lean":"example (x : ℝ) : (5*x + 3)^2 = 25*x^2 + 30*x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c69","lhs":"x + 3","rhs":"x + 3","lean":"example (x : ℝ) : x + 3 = x + 3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c70","lhs":"(2*x + 9)**2","rhs":"4*x**2 + 36*x + 81","lean":"example (x : ℝ) : (2*x + 9)^2 = 4*x^2 + 36*x + 81 := by ring","tactic":"ring","atoms":{}}
+{"id":"c71","lhs":"3*x*cos(x) + 6*cos(x)","rhs":"3*(x + 2)*cos(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 6*a1 = (3*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c72","lhs":"x + 3","rhs":"x + 3","lean":"example (x : ℝ) : x + 3 = x + 3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c73","lhs":"4*x*sin(x) + sin(x)","rhs":"(4*x + 1)*sin(x)","lean":"example (a1 x : ℝ) : 4*x*a1 + a1 = (4*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c74","lhs":"x*(2*x + 5)**2","rhs":"4*x**3 + 20*x**2 + 25*x","lean":"example (x : ℝ) : x*(2*x + 5)^2 = 4*x^3 + 20*x^2 + 25*x := by ring","tactic":"ring","atoms":{}}
+{"id":"c75","lhs":"x*(4*x + 9)**2","rhs":"16*x**3 + 72*x**2 + 81*x","lean":"example (x : ℝ) : x*(4*x + 9)^2 = 16*x^3 + 72*x^2 + 81*x := by ring","tactic":"ring","atoms":{}}
+{"id":"c76","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c77","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c78","lhs":"2*x*sin(x) + 2*sin(x)","rhs":"2*(x + 1)*sin(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + 2*a1 = (2*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c79","lhs":"x*(x + 6)**2","rhs":"x**3 + 12*x**2 + 36*x","lean":"example (x : ℝ) : x*(x + 6)^2 = 12*x^2 + 36*x + x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c80","lhs":"3*x*cos(x) + 3*cos(x)","rhs":"3*(x + 1)*cos(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 3*a1 = (3*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c81","lhs":"x + 6","rhs":"x + 6","lean":"example (x : ℝ) : x + 6 = x + 6 := by ring","tactic":"ring","atoms":{}}
+{"id":"c83","lhs":"x + 6","rhs":"x + 6","lean":"example (x : ℝ) : x + 6 = x + 6 := by ring","tactic":"ring","atoms":{}}
+{"id":"c84","lhs":"9*x*cos(x) + 2*cos(x)","rhs":"(9*x + 2)*cos(x)","lean":"example (a1 x : ℝ) : 2*a1 + 9*x*a1 = (9*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c85","lhs":"(5*x + 1)**3","rhs":"125*x**3 + 75*x**2 + 15*x + 1","lean":"example (x : ℝ) : (5*x + 1)^3 = 15*x + 75*x^2 + 125*x^3 + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c86","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c87","lhs":"3*x*cos(x) + 4*cos(x)","rhs":"(3*x + 4)*cos(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 4*a1 = (3*x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c88","lhs":"2*x*log(x) + 8*log(x)","rhs":"2*(x + 4)*log(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + 8*a1 = (2*x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c89","lhs":"(2*x + 6)**2","rhs":"4*x**2 + 24*x + 36","lean":"example (x : ℝ) : (2*x + 6)^2 = 4*x^2 + 24*x + 36 := by ring","tactic":"ring","atoms":{}}
+{"id":"c90","lhs":"x + 7","rhs":"x + 7","lean":"example (x : ℝ) : x + 7 = x + 7 := by ring","tactic":"ring","atoms":{}}
+{"id":"c91","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c93","lhs":"7*x*cos(x) + 2*cos(x)","rhs":"(7*x + 2)*cos(x)","lean":"example (a1 x : ℝ) : 2*a1 + 7*x*a1 = (7*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c94","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c96","lhs":"x*(2*x + 2)**3","rhs":"8*x**4 + 24*x**3 + 24*x**2 + 8*x","lean":"example (x : ℝ) : x*(2*x + 2)^3 = 8*x + 8*x^4 + 24*x^2 + 24*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c97","lhs":"x*exp(x) + 9*exp(x)","rhs":"(x + 9)*exp(x)","lean":"example (a1 x : ℝ) : 9*a1 + x*a1 = (x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c98","lhs":"(7*x + 1)**2","rhs":"49*x**2 + 14*x + 1","lean":"example (x : ℝ) : (7*x + 1)^2 = 14*x + 49*x^2 + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c99","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c101","lhs":"x + 3","rhs":"x + 3","lean":"example (x : ℝ) : x + 3 = x + 3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c102","lhs":"x*(5*x + 3)**2","rhs":"25*x**3 + 30*x**2 + 9*x","lean":"example (x : ℝ) : x*(5*x + 3)^2 = 9*x + 25*x^3 + 30*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c103","lhs":"(7*x + 1)**3","rhs":"343*x**3 + 147*x**2 + 21*x + 1","lean":"example (x : ℝ) : (7*x + 1)^3 = 21*x + 147*x^2 + 343*x^3 + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c104","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c105","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c106","lhs":"(4*x + 7)**3","rhs":"64*x**3 + 336*x**2 + 588*x + 343","lean":"example (x : ℝ) : (4*x + 7)^3 = 64*x^3 + 336*x^2 + 588*x + 343 := by ring","tactic":"ring","atoms":{}}
+{"id":"c107","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c108","lhs":"x*(7*x + 9)**2","rhs":"49*x**3 + 126*x**2 + 81*x","lean":"example (x : ℝ) : x*(7*x + 9)^2 = 49*x^3 + 81*x + 126*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c109","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c110","lhs":"4*x*exp(x) + 3*exp(x)","rhs":"(4*x + 3)*exp(x)","lean":"example (a1 x : ℝ) : 3*a1 + 4*x*a1 = (4*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c111","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c112","lhs":"x + 7","rhs":"x + 7","lean":"example (x : ℝ) : x + 7 = x + 7 := by ring","tactic":"ring","atoms":{}}
+{"id":"c113","lhs":"x*log(x) + 9*log(x)","rhs":"(x + 9)*log(x)","lean":"example (a1 x : ℝ) : 9*a1 + x*a1 = (x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c116","lhs":"(4*x + 3)**2","rhs":"16*x**2 + 24*x + 9","lean":"example (x : ℝ) : (4*x + 3)^2 = 16*x^2 + 24*x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c117","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c118","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c119","lhs":"2*x*exp(x) + exp(x)","rhs":"(2*x + 1)*exp(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + a1 = (2*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c120","lhs":"8*x*sin(x) + 2*sin(x)","rhs":"2*(4*x + 1)*sin(x)","lean":"example (a1 x : ℝ) : 2*a1 + 8*x*a1 = (8*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c121","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c122","lhs":"x*sin(x) + 4*sin(x)","rhs":"(x + 4)*sin(x)","lean":"example (a1 x : ℝ) : 4*a1 + x*a1 = (x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c123","lhs":"9*x*exp(x) + 4*exp(x)","rhs":"(9*x + 4)*exp(x)","lean":"example (a1 x : ℝ) : 4*a1 + 9*x*a1 = (9*x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c124","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c125","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c126","lhs":"x*log(x) + 7*log(x)","rhs":"(x + 7)*log(x)","lean":"example (a1 x : ℝ) : 7*a1 + x*a1 = (x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c127","lhs":"8*x*log(x) + 4*log(x)","rhs":"4*(2*x + 1)*log(x)","lean":"example (a1 x : ℝ) : 4*a1 + 8*x*a1 = (8*x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c128","lhs":"8*x*log(x) + 8*log(x)","rhs":"8*(x + 1)*log(x)","lean":"example (a1 x : ℝ) : 8*x*a1 + 8*a1 = (8*x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c129","lhs":"x + 6","rhs":"x + 6","lean":"example (x : ℝ) : x + 6 = x + 6 := by ring","tactic":"ring","atoms":{}}
+{"id":"c130","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c131","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c132","lhs":"(9*x + 9)**2","rhs":"81*x**2 + 162*x + 81","lean":"example (x : ℝ) : (9*x + 9)^2 = 81*x^2 + 162*x + 81 := by ring","tactic":"ring","atoms":{}}
+{"id":"c133","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c134","lhs":"8*x*log(x) + 8*log(x)","rhs":"8*(x + 1)*log(x)","lean":"example (a1 x : ℝ) : 8*x*a1 + 8*a1 = (8*x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c135","lhs":"(6*x + 8)**2","rhs":"36*x**2 + 96*x + 64","lean":"example (x : ℝ) : (6*x + 8)^2 = 36*x^2 + 96*x + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c136","lhs":"x*(3*x + 3)**2","rhs":"9*x**3 + 18*x**2 + 9*x","lean":"example (x : ℝ) : x*(3*x + 3)^2 = 9*x + 9*x^3 + 18*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c137","lhs":"x*(8*x + 9)**3","rhs":"512*x**4 + 1728*x**3 + 1944*x**2 + 729*x","lean":"example (x : ℝ) : x*(8*x + 9)^3 = 512*x^4 + 729*x + 1728*x^3 + 1944*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c139","lhs":"x*(7*x + 9)**2","rhs":"49*x**3 + 126*x**2 + 81*x","lean":"example (x : ℝ) : x*(7*x + 9)^2 = 49*x^3 + 81*x + 126*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c140","lhs":"(4*x + 2)**3","rhs":"64*x**3 + 96*x**2 + 48*x + 8","lean":"example (x : ℝ) : (4*x + 2)^3 = 48*x + 64*x^3 + 96*x^2 + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c141","lhs":"x*sin(x) + 8*sin(x)","rhs":"(x + 8)*sin(x)","lean":"example (a1 x : ℝ) : 8*a1 + x*a1 = (x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c143","lhs":"x*(x + 8)**3","rhs":"x**4 + 24*x**3 + 192*x**2 + 512*x","lean":"example (x : ℝ) : x*(x + 8)^3 = 24*x^3 + 192*x^2 + 512*x + x^4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c144","lhs":"5*x*cos(x) + 6*cos(x)","rhs":"(5*x + 6)*cos(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + 6*a1 = (5*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c147","lhs":"2*x*log(x) + 7*log(x)","rhs":"(2*x + 7)*log(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + 7*a1 = (2*x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c148","lhs":"x*(5*x + 8)**2","rhs":"25*x**3 + 80*x**2 + 64*x","lean":"example (x : ℝ) : x*(5*x + 8)^2 = 25*x^3 + 64*x + 80*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c149","lhs":"x*(6*x + 4)**3","rhs":"216*x**4 + 432*x**3 + 288*x**2 + 64*x","lean":"example (x : ℝ) : x*(6*x + 4)^3 = 64*x + 216*x^4 + 288*x^2 + 432*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c150","lhs":"(9*x + 4)**2","rhs":"81*x**2 + 72*x + 16","lean":"example (x : ℝ) : (9*x + 4)^2 = 72*x + 81*x^2 + 16 := by ring","tactic":"ring","atoms":{}}
+{"id":"c151","lhs":"(2*x + 7)**2","rhs":"4*x**2 + 28*x + 49","lean":"example (x : ℝ) : (2*x + 7)^2 = 4*x^2 + 28*x + 49 := by ring","tactic":"ring","atoms":{}}
+{"id":"c153","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c154","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c155","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c157","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c158","lhs":"2*x*cos(x) + 4*cos(x)","rhs":"2*(x + 2)*cos(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + 4*a1 = (2*x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c159","lhs":"x*(4*x + 7)**2","rhs":"16*x**3 + 56*x**2 + 49*x","lean":"example (x : ℝ) : x*(4*x + 7)^2 = 16*x^3 + 49*x + 56*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c160","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c162","lhs":"8*x*sin(x) + 8*sin(x)","rhs":"8*(x + 1)*sin(x)","lean":"example (a1 x : ℝ) : 8*x*a1 + 8*a1 = (8*x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c163","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c164","lhs":"x*(9*x + 6)**3","rhs":"729*x**4 + 1458*x**3 + 972*x**2 + 216*x","lean":"example (x : ℝ) : x*(9*x + 6)^3 = 216*x + 729*x^4 + 972*x^2 + 1458*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c165","lhs":"2*x*log(x) + 7*log(x)","rhs":"(2*x + 7)*log(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + 7*a1 = (2*x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c166","lhs":"x*(8*x + 7)**2","rhs":"64*x**3 + 112*x**2 + 49*x","lean":"example (x : ℝ) : x*(8*x + 7)^2 = 49*x + 64*x^3 + 112*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c167","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c168","lhs":"(2*x + 4)**3","rhs":"8*x**3 + 48*x**2 + 96*x + 64","lean":"example (x : ℝ) : (2*x + 4)^3 = 8*x^3 + 48*x^2 + 96*x + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c170","lhs":"x*(4*x + 8)**3","rhs":"64*x**4 + 384*x**3 + 768*x**2 + 512*x","lean":"example (x : ℝ) : x*(4*x + 8)^3 = 64*x^4 + 384*x^3 + 512*x + 768*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c171","lhs":"(9*x + 8)**2","rhs":"81*x**2 + 144*x + 64","lean":"example (x : ℝ) : (9*x + 8)^2 = 81*x^2 + 144*x + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c172","lhs":"3*x*exp(x) + 9*exp(x)","rhs":"3*(x + 3)*exp(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 9*a1 = (3*x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c173","lhs":"5*x*log(x) + 6*log(x)","rhs":"(5*x + 6)*log(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + 6*a1 = (5*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c174","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c175","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c176","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c177","lhs":"(9*x + 3)**2","rhs":"81*x**2 + 54*x + 9","lean":"example (x : ℝ) : (9*x + 3)^2 = 54*x + 81*x^2 + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c179","lhs":"x + 3","rhs":"x + 3","lean":"example (x : ℝ) : x + 3 = x + 3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c180","lhs":"5*x*sin(x) + sin(x)","rhs":"(5*x + 1)*sin(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + a1 = (5*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c182","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c183","lhs":"5*x*log(x) + 5*log(x)","rhs":"5*(x + 1)*log(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + 5*a1 = (5*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c184","lhs":"x*(2*x + 8)**2","rhs":"4*x**3 + 32*x**2 + 64*x","lean":"example (x : ℝ) : x*(2*x + 8)^2 = 4*x^3 + 32*x^2 + 64*x := by ring","tactic":"ring","atoms":{}}
+{"id":"c186","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c187","lhs":"(x + 4)**3","rhs":"x**3 + 12*x**2 + 48*x + 64","lean":"example (x : ℝ) : (x + 4)^3 = 12*x^2 + 48*x + x^3 + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c188","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c189","lhs":"x*(7*x + 9)**2","rhs":"49*x**3 + 126*x**2 + 81*x","lean":"example (x : ℝ) : x*(7*x + 9)^2 = 49*x^3 + 81*x + 126*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c190","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c191","lhs":"x*(5*x + 9)**3","rhs":"125*x**4 + 675*x**3 + 1215*x**2 + 729*x","lean":"example (x : ℝ) : x*(5*x + 9)^3 = 125*x^4 + 675*x^3 + 729*x + 1215*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c192","lhs":"8*x*cos(x) + 8*cos(x)","rhs":"8*(x + 1)*cos(x)","lean":"example (a1 x : ℝ) : 8*x*a1 + 8*a1 = (8*x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c193","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c194","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c196","lhs":"(8*x + 5)**3","rhs":"512*x**3 + 960*x**2 + 600*x + 125","lean":"example (x : ℝ) : (8*x + 5)^3 = 512*x^3 + 600*x + 960*x^2 + 125 := by ring","tactic":"ring","atoms":{}}
+{"id":"c197","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c198","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c199","lhs":"7*x*log(x) + 3*log(x)","rhs":"(7*x + 3)*log(x)","lean":"example (a1 x : ℝ) : 3*a1 + 7*x*a1 = (7*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c200","lhs":"(2*x + 6)**3","rhs":"8*x**3 + 72*x**2 + 216*x + 216","lean":"example (x : ℝ) : (2*x + 6)^3 = 8*x^3 + 72*x^2 + 216*x + 216 := by ring","tactic":"ring","atoms":{}}
+{"id":"c201","lhs":"(5*x + 9)**2","rhs":"25*x**2 + 90*x + 81","lean":"example (x : ℝ) : (5*x + 9)^2 = 25*x^2 + 90*x + 81 := by ring","tactic":"ring","atoms":{}}
+{"id":"c202","lhs":"3*x*sin(x) + 8*sin(x)","rhs":"(3*x + 8)*sin(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 8*a1 = (3*x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c203","lhs":"x + 7","rhs":"x + 7","lean":"example (x : ℝ) : x + 7 = x + 7 := by ring","tactic":"ring","atoms":{}}
+{"id":"c204","lhs":"5*x*log(x) + 8*log(x)","rhs":"(5*x + 8)*log(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + 8*a1 = (5*x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c206","lhs":"3*x*sin(x) + 9*sin(x)","rhs":"3*(x + 3)*sin(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 9*a1 = (3*x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c207","lhs":"x + 7","rhs":"x + 7","lean":"example (x : ℝ) : x + 7 = x + 7 := by ring","tactic":"ring","atoms":{}}
+{"id":"c208","lhs":"(4*x + 6)**2","rhs":"16*x**2 + 48*x + 36","lean":"example (x : ℝ) : (4*x + 6)^2 = 16*x^2 + 48*x + 36 := by ring","tactic":"ring","atoms":{}}
+{"id":"c209","lhs":"x*(3*x + 2)**3","rhs":"27*x**4 + 54*x**3 + 36*x**2 + 8*x","lean":"example (x : ℝ) : x*(3*x + 2)^3 = 8*x + 27*x^4 + 36*x^2 + 54*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c210","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c211","lhs":"9*x*exp(x) + 2*exp(x)","rhs":"(9*x + 2)*exp(x)","lean":"example (a1 x : ℝ) : 2*a1 + 9*x*a1 = (9*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c212","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c213","lhs":"x*exp(x) + 7*exp(x)","rhs":"(x + 7)*exp(x)","lean":"example (a1 x : ℝ) : 7*a1 + x*a1 = (x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c214","lhs":"4*x*sin(x) + 7*sin(x)","rhs":"(4*x + 7)*sin(x)","lean":"example (a1 x : ℝ) : 4*x*a1 + 7*a1 = (4*x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c215","lhs":"x*(x + 4)**3","rhs":"x**4 + 12*x**3 + 48*x**2 + 64*x","lean":"example (x : ℝ) : x*(x + 4)^3 = 12*x^3 + 48*x^2 + 64*x + x^4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c216","lhs":"(2*x + 8)**3","rhs":"8*x**3 + 96*x**2 + 384*x + 512","lean":"example (x : ℝ) : (2*x + 8)^3 = 8*x^3 + 96*x^2 + 384*x + 512 := by ring","tactic":"ring","atoms":{}}
+{"id":"c217","lhs":"(8*x + 4)**3","rhs":"512*x**3 + 768*x**2 + 384*x + 64","lean":"example (x : ℝ) : (8*x + 4)^3 = 384*x + 512*x^3 + 768*x^2 + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c219","lhs":"x*sin(x) + 2*sin(x)","rhs":"(x + 2)*sin(x)","lean":"example (a1 x : ℝ) : 2*a1 + x*a1 = (x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c220","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c221","lhs":"x*(7*x + 5)**2","rhs":"49*x**3 + 70*x**2 + 25*x","lean":"example (x : ℝ) : x*(7*x + 5)^2 = 25*x + 49*x^3 + 70*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c222","lhs":"7*x*sin(x) + 6*sin(x)","rhs":"(7*x + 6)*sin(x)","lean":"example (a1 x : ℝ) : 6*a1 + 7*x*a1 = (7*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c223","lhs":"7*x*sin(x) + 7*sin(x)","rhs":"7*(x + 1)*sin(x)","lean":"example (a1 x : ℝ) : 7*x*a1 + 7*a1 = (7*x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c225","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c226","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c227","lhs":"x*(5*x + 5)**3","rhs":"125*x**4 + 375*x**3 + 375*x**2 + 125*x","lean":"example (x : ℝ) : x*(5*x + 5)^3 = 125*x + 125*x^4 + 375*x^2 + 375*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c228","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c229","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c230","lhs":"(3*x + 7)**3","rhs":"27*x**3 + 189*x**2 + 441*x + 343","lean":"example (x : ℝ) : (3*x + 7)^3 = 27*x^3 + 189*x^2 + 441*x + 343 := by ring","tactic":"ring","atoms":{}}
+{"id":"c231","lhs":"(4*x + 2)**2","rhs":"16*x**2 + 16*x + 4","lean":"example (x : ℝ) : (4*x + 2)^2 = 16*x + 16*x^2 + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c232","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c233","lhs":"2*x*log(x) + 2*log(x)","rhs":"2*(x + 1)*log(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + 2*a1 = (2*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c234","lhs":"x*(2*x + 6)**2","rhs":"4*x**3 + 24*x**2 + 36*x","lean":"example (x : ℝ) : x*(2*x + 6)^2 = 4*x^3 + 24*x^2 + 36*x := by ring","tactic":"ring","atoms":{}}
+{"id":"c235","lhs":"3*x*exp(x) + 3*exp(x)","rhs":"3*(x + 1)*exp(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 3*a1 = (3*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c236","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c237","lhs":"x*(9*x + 6)**3","rhs":"729*x**4 + 1458*x**3 + 972*x**2 + 216*x","lean":"example (x : ℝ) : x*(9*x + 6)^3 = 216*x + 729*x^4 + 972*x^2 + 1458*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c238","lhs":"2*x*log(x) + log(x)","rhs":"(2*x + 1)*log(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + a1 = (2*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c239","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c240","lhs":"x*(7*x + 3)**2","rhs":"49*x**3 + 42*x**2 + 9*x","lean":"example (x : ℝ) : x*(7*x + 3)^2 = 9*x + 42*x^2 + 49*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c241","lhs":"7*x*sin(x) + 4*sin(x)","rhs":"(7*x + 4)*sin(x)","lean":"example (a1 x : ℝ) : 4*a1 + 7*x*a1 = (7*x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c242","lhs":"6*x*sin(x) + sin(x)","rhs":"(6*x + 1)*sin(x)","lean":"example (a1 x : ℝ) : 6*x*a1 + a1 = (6*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c245","lhs":"(3*x + 3)**2","rhs":"9*x**2 + 18*x + 9","lean":"example (x : ℝ) : (3*x + 3)^2 = 9*x^2 + 18*x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c246","lhs":"x*(4*x + 8)**2","rhs":"16*x**3 + 64*x**2 + 64*x","lean":"example (x : ℝ) : x*(4*x + 8)^2 = 16*x^3 + 64*x + 64*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c247","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c248","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c249","lhs":"7*x*exp(x) + 7*exp(x)","rhs":"7*(x + 1)*exp(x)","lean":"example (a1 x : ℝ) : 7*x*a1 + 7*a1 = (7*x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c252","lhs":"(8*x + 8)**3","rhs":"512*x**3 + 1536*x**2 + 1536*x + 512","lean":"example (x : ℝ) : (8*x + 8)^3 = 512*x^3 + 1536*x + 1536*x^2 + 512 := by ring","tactic":"ring","atoms":{}}
+{"id":"c253","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c254","lhs":"8*x*log(x) + 6*log(x)","rhs":"2*(4*x + 3)*log(x)","lean":"example (a1 x : ℝ) : 6*a1 + 8*x*a1 = (8*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c255","lhs":"5*x*log(x) + log(x)","rhs":"(5*x + 1)*log(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + a1 = (5*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c256","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c257","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c258","lhs":"(4*x + 7)**3","rhs":"64*x**3 + 336*x**2 + 588*x + 343","lean":"example (x : ℝ) : (4*x + 7)^3 = 64*x^3 + 336*x^2 + 588*x + 343 := by ring","tactic":"ring","atoms":{}}
+{"id":"c259","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c260","lhs":"(8*x + 7)**3","rhs":"512*x**3 + 1344*x**2 + 1176*x + 343","lean":"example (x : ℝ) : (8*x + 7)^3 = 512*x^3 + 1176*x + 1344*x^2 + 343 := by ring","tactic":"ring","atoms":{}}
+{"id":"c261","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c263","lhs":"7*x*sin(x) + 6*sin(x)","rhs":"(7*x + 6)*sin(x)","lean":"example (a1 x : ℝ) : 6*a1 + 7*x*a1 = (7*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c264","lhs":"x*(2*x + 7)**3","rhs":"8*x**4 + 84*x**3 + 294*x**2 + 343*x","lean":"example (x : ℝ) : x*(2*x + 7)^3 = 8*x^4 + 84*x^3 + 294*x^2 + 343*x := by ring","tactic":"ring","atoms":{}}
+{"id":"c265","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c266","lhs":"5*x*log(x) + 6*log(x)","rhs":"(5*x + 6)*log(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + 6*a1 = (5*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c267","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c268","lhs":"x*(5*x + 2)**3","rhs":"125*x**4 + 150*x**3 + 60*x**2 + 8*x","lean":"example (x : ℝ) : x*(5*x + 2)^3 = 8*x + 60*x^2 + 125*x^4 + 150*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c269","lhs":"3*x*cos(x) + 9*cos(x)","rhs":"3*(x + 3)*cos(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 9*a1 = (3*x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c270","lhs":"(5*x + 4)**2","rhs":"25*x**2 + 40*x + 16","lean":"example (x : ℝ) : (5*x + 4)^2 = 25*x^2 + 40*x + 16 := by ring","tactic":"ring","atoms":{}}
+{"id":"c272","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c273","lhs":"7*x*cos(x) + 7*cos(x)","rhs":"7*(x + 1)*cos(x)","lean":"example (a1 x : ℝ) : 7*x*a1 + 7*a1 = (7*x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c275","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c276","lhs":"x*(6*x + 5)**3","rhs":"216*x**4 + 540*x**3 + 450*x**2 + 125*x","lean":"example (x : ℝ) : x*(6*x + 5)^3 = 125*x + 216*x^4 + 450*x^2 + 540*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c277","lhs":"(x + 5)**2","rhs":"x**2 + 10*x + 25","lean":"example (x : ℝ) : (x + 5)^2 = 10*x + x^2 + 25 := by ring","tactic":"ring","atoms":{}}
+{"id":"c278","lhs":"6*x*sin(x) + sin(x)","rhs":"(6*x + 1)*sin(x)","lean":"example (a1 x : ℝ) : 6*x*a1 + a1 = (6*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c279","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c280","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c281","lhs":"6*x*sin(x) + 9*sin(x)","rhs":"3*(2*x + 3)*sin(x)","lean":"example (a1 x : ℝ) : 6*x*a1 + 9*a1 = (6*x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c283","lhs":"3*x*exp(x) + exp(x)","rhs":"(3*x + 1)*exp(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + a1 = (3*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c284","lhs":"x*(3*x + 8)**3","rhs":"27*x**4 + 216*x**3 + 576*x**2 + 512*x","lean":"example (x : ℝ) : x*(3*x + 8)^3 = 27*x^4 + 216*x^3 + 512*x + 576*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c285","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c286","lhs":"x*(5*x + 4)**3","rhs":"125*x**4 + 300*x**3 + 240*x**2 + 64*x","lean":"example (x : ℝ) : x*(5*x + 4)^3 = 64*x + 125*x^4 + 240*x^2 + 300*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c288","lhs":"x + 6","rhs":"x + 6","lean":"example (x : ℝ) : x + 6 = x + 6 := by ring","tactic":"ring","atoms":{}}
+{"id":"c289","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c290","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c291","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c292","lhs":"x*(x + 3)**3","rhs":"x**4 + 9*x**3 + 27*x**2 + 27*x","lean":"example (x : ℝ) : x*(x + 3)^3 = 9*x^3 + 27*x + 27*x^2 + x^4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c293","lhs":"(4*x + 8)**3","rhs":"64*x**3 + 384*x**2 + 768*x + 512","lean":"example (x : ℝ) : (4*x + 8)^3 = 64*x^3 + 384*x^2 + 768*x + 512 := by ring","tactic":"ring","atoms":{}}
+{"id":"c294","lhs":"2*x*log(x) + 5*log(x)","rhs":"(2*x + 5)*log(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + 5*a1 = (2*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c295","lhs":"9*x*cos(x) + 5*cos(x)","rhs":"(9*x + 5)*cos(x)","lean":"example (a1 x : ℝ) : 5*a1 + 9*x*a1 = (9*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c296","lhs":"(2*x + 8)**2","rhs":"4*x**2 + 32*x + 64","lean":"example (x : ℝ) : (2*x + 8)^2 = 4*x^2 + 32*x + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c297","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c298","lhs":"x + 6","rhs":"x + 6","lean":"example (x : ℝ) : x + 6 = x + 6 := by ring","tactic":"ring","atoms":{}}
+{"id":"c299","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c300","lhs":"8*x*sin(x) + 5*sin(x)","rhs":"(8*x + 5)*sin(x)","lean":"example (a1 x : ℝ) : 5*a1 + 8*x*a1 = (8*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c301","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c302","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c305","lhs":"(9*x + 1)**2","rhs":"81*x**2 + 18*x + 1","lean":"example (x : ℝ) : (9*x + 1)^2 = 18*x + 81*x^2 + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c306","lhs":"x + 3","rhs":"x + 3","lean":"example (x : ℝ) : x + 3 = x + 3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c307","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c308","lhs":"(3*x + 1)**3","rhs":"27*x**3 + 27*x**2 + 9*x + 1","lean":"example (x : ℝ) : (3*x + 1)^3 = 9*x + 27*x^2 + 27*x^3 + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c310","lhs":"3*x*sin(x) + sin(x)","rhs":"(3*x + 1)*sin(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + a1 = (3*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c311","lhs":"x*(2*x + 4)**2","rhs":"4*x**3 + 16*x**2 + 16*x","lean":"example (x : ℝ) : x*(2*x + 4)^2 = 4*x^3 + 16*x + 16*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c312","lhs":"6*x*cos(x) + 5*cos(x)","rhs":"(6*x + 5)*cos(x)","lean":"example (a1 x : ℝ) : 5*a1 + 6*x*a1 = (6*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c313","lhs":"8*x*cos(x) + 3*cos(x)","rhs":"(8*x + 3)*cos(x)","lean":"example (a1 x : ℝ) : 3*a1 + 8*x*a1 = (8*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c314","lhs":"(2*x + 2)**2","rhs":"4*x**2 + 8*x + 4","lean":"example (x : ℝ) : (2*x + 2)^2 = 4*x^2 + 8*x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c315","lhs":"x*exp(x) + 2*exp(x)","rhs":"(x + 2)*exp(x)","lean":"example (a1 x : ℝ) : 2*a1 + x*a1 = (x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c316","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c317","lhs":"(4*x + 7)**3","rhs":"64*x**3 + 336*x**2 + 588*x + 343","lean":"example (x : ℝ) : (4*x + 7)^3 = 64*x^3 + 336*x^2 + 588*x + 343 := by ring","tactic":"ring","atoms":{}}
+{"id":"c318","lhs":"(2*x + 9)**2","rhs":"4*x**2 + 36*x + 81","lean":"example (x : ℝ) : (2*x + 9)^2 = 4*x^2 + 36*x + 81 := by ring","tactic":"ring","atoms":{}}
+{"id":"c320","lhs":"x*(3*x + 7)**2","rhs":"9*x**3 + 42*x**2 + 49*x","lean":"example (x : ℝ) : x*(3*x + 7)^2 = 9*x^3 + 42*x^2 + 49*x := by ring","tactic":"ring","atoms":{}}
+{"id":"c321","lhs":"x + 6","rhs":"x + 6","lean":"example (x : ℝ) : x + 6 = x + 6 := by ring","tactic":"ring","atoms":{}}
+{"id":"c322","lhs":"(3*x + 9)**3","rhs":"27*x**3 + 243*x**2 + 729*x + 729","lean":"example (x : ℝ) : (3*x + 9)^3 = 27*x^3 + 243*x^2 + 729*x + 729 := by ring","tactic":"ring","atoms":{}}
+{"id":"c323","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c324","lhs":"x*(3*x + 4)**3","rhs":"27*x**4 + 108*x**3 + 144*x**2 + 64*x","lean":"example (x : ℝ) : x*(3*x + 4)^3 = 27*x^4 + 64*x + 108*x^3 + 144*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c325","lhs":"(2*x + 4)**3","rhs":"8*x**3 + 48*x**2 + 96*x + 64","lean":"example (x : ℝ) : (2*x + 4)^3 = 8*x^3 + 48*x^2 + 96*x + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c327","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c328","lhs":"x*(7*x + 3)**2","rhs":"49*x**3 + 42*x**2 + 9*x","lean":"example (x : ℝ) : x*(7*x + 3)^2 = 9*x + 42*x^2 + 49*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c329","lhs":"7*x*log(x) + 2*log(x)","rhs":"(7*x + 2)*log(x)","lean":"example (a1 x : ℝ) : 2*a1 + 7*x*a1 = (7*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c330","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c331","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c333","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c335","lhs":"x*cos(x) + 9*cos(x)","rhs":"(x + 9)*cos(x)","lean":"example (a1 x : ℝ) : 9*a1 + x*a1 = (x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c336","lhs":"x*(8*x + 7)**2","rhs":"64*x**3 + 112*x**2 + 49*x","lean":"example (x : ℝ) : x*(8*x + 7)^2 = 49*x + 64*x^3 + 112*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c337","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c338","lhs":"(x + 5)**2","rhs":"x**2 + 10*x + 25","lean":"example (x : ℝ) : (x + 5)^2 = 10*x + x^2 + 25 := by ring","tactic":"ring","atoms":{}}
+{"id":"c339","lhs":"x + 7","rhs":"x + 7","lean":"example (x : ℝ) : x + 7 = x + 7 := by ring","tactic":"ring","atoms":{}}
+{"id":"c342","lhs":"(x + 5)**3","rhs":"x**3 + 15*x**2 + 75*x + 125","lean":"example (x : ℝ) : (x + 5)^3 = 15*x^2 + 75*x + x^3 + 125 := by ring","tactic":"ring","atoms":{}}
+{"id":"c343","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c344","lhs":"x*(3*x + 4)**3","rhs":"27*x**4 + 108*x**3 + 144*x**2 + 64*x","lean":"example (x : ℝ) : x*(3*x + 4)^3 = 27*x^4 + 64*x + 108*x^3 + 144*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c345","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c346","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c348","lhs":"5*x*cos(x) + 6*cos(x)","rhs":"(5*x + 6)*cos(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + 6*a1 = (5*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c349","lhs":"x*(4*x + 4)**2","rhs":"16*x**3 + 32*x**2 + 16*x","lean":"example (x : ℝ) : x*(4*x + 4)^2 = 16*x + 16*x^3 + 32*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c350","lhs":"(6*x + 7)**2","rhs":"36*x**2 + 84*x + 49","lean":"example (x : ℝ) : (6*x + 7)^2 = 36*x^2 + 84*x + 49 := by ring","tactic":"ring","atoms":{}}
+{"id":"c351","lhs":"x*(x + 4)**2","rhs":"x**3 + 8*x**2 + 16*x","lean":"example (x : ℝ) : x*(x + 4)^2 = 8*x^2 + 16*x + x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c352","lhs":"x*(5*x + 2)**3","rhs":"125*x**4 + 150*x**3 + 60*x**2 + 8*x","lean":"example (x : ℝ) : x*(5*x + 2)^3 = 8*x + 60*x^2 + 125*x^4 + 150*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c353","lhs":"7*x*cos(x) + 7*cos(x)","rhs":"7*(x + 1)*cos(x)","lean":"example (a1 x : ℝ) : 7*x*a1 + 7*a1 = (7*x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c355","lhs":"4*x*exp(x) + 5*exp(x)","rhs":"(4*x + 5)*exp(x)","lean":"example (a1 x : ℝ) : 4*x*a1 + 5*a1 = (4*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c356","lhs":"x*(4*x + 1)**3","rhs":"64*x**4 + 48*x**3 + 12*x**2 + x","lean":"example (x : ℝ) : x*(4*x + 1)^3 = x + 12*x^2 + 48*x^3 + 64*x^4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c357","lhs":"(3*x + 8)**3","rhs":"27*x**3 + 216*x**2 + 576*x + 512","lean":"example (x : ℝ) : (3*x + 8)^3 = 27*x^3 + 216*x^2 + 576*x + 512 := by ring","tactic":"ring","atoms":{}}
+{"id":"c358","lhs":"x + 3","rhs":"x + 3","lean":"example (x : ℝ) : x + 3 = x + 3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c359","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c360","lhs":"(5*x + 7)**3","rhs":"125*x**3 + 525*x**2 + 735*x + 343","lean":"example (x : ℝ) : (5*x + 7)^3 = 125*x^3 + 525*x^2 + 735*x + 343 := by ring","tactic":"ring","atoms":{}}
+{"id":"c361","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c362","lhs":"(4*x + 7)**3","rhs":"64*x**3 + 336*x**2 + 588*x + 343","lean":"example (x : ℝ) : (4*x + 7)^3 = 64*x^3 + 336*x^2 + 588*x + 343 := by ring","tactic":"ring","atoms":{}}
+{"id":"c363","lhs":"x*(3*x + 5)**3","rhs":"27*x**4 + 135*x**3 + 225*x**2 + 125*x","lean":"example (x : ℝ) : x*(3*x + 5)^3 = 27*x^4 + 125*x + 135*x^3 + 225*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c365","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c366","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c367","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c368","lhs":"x*log(x) + 4*log(x)","rhs":"(x + 4)*log(x)","lean":"example (a1 x : ℝ) : 4*a1 + x*a1 = (x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c370","lhs":"5*x*cos(x) + 9*cos(x)","rhs":"(5*x + 9)*cos(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + 9*a1 = (5*x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c371","lhs":"(7*x + 8)**2","rhs":"49*x**2 + 112*x + 64","lean":"example (x : ℝ) : (7*x + 8)^2 = 49*x^2 + 112*x + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c373","lhs":"5*x*log(x) + 3*log(x)","rhs":"(5*x + 3)*log(x)","lean":"example (a1 x : ℝ) : 3*a1 + 5*x*a1 = (5*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c374","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c376","lhs":"9*x*exp(x) + 6*exp(x)","rhs":"3*(3*x + 2)*exp(x)","lean":"example (a1 x : ℝ) : 6*a1 + 9*x*a1 = (9*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c377","lhs":"4*x*sin(x) + 5*sin(x)","rhs":"(4*x + 5)*sin(x)","lean":"example (a1 x : ℝ) : 4*x*a1 + 5*a1 = (4*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c379","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c380","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c381","lhs":"(2*x + 6)**3","rhs":"8*x**3 + 72*x**2 + 216*x + 216","lean":"example (x : ℝ) : (2*x + 6)^3 = 8*x^3 + 72*x^2 + 216*x + 216 := by ring","tactic":"ring","atoms":{}}
+{"id":"c382","lhs":"x + 3","rhs":"x + 3","lean":"example (x : ℝ) : x + 3 = x + 3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c383","lhs":"5*x*sin(x) + 5*sin(x)","rhs":"5*(x + 1)*sin(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + 5*a1 = (5*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c384","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c385","lhs":"x*(8*x + 5)**2","rhs":"64*x**3 + 80*x**2 + 25*x","lean":"example (x : ℝ) : x*(8*x + 5)^2 = 25*x + 64*x^3 + 80*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c386","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c387","lhs":"2*x*exp(x) + exp(x)","rhs":"(2*x + 1)*exp(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + a1 = (2*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c388","lhs":"3*x*sin(x) + 2*sin(x)","rhs":"(3*x + 2)*sin(x)","lean":"example (a1 x : ℝ) : 2*a1 + 3*x*a1 = (3*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c389","lhs":"6*x*log(x) + 3*log(x)","rhs":"3*(2*x + 1)*log(x)","lean":"example (a1 x : ℝ) : 3*a1 + 6*x*a1 = (6*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c390","lhs":"6*x*exp(x) + 7*exp(x)","rhs":"(6*x + 7)*exp(x)","lean":"example (a1 x : ℝ) : 6*x*a1 + 7*a1 = (6*x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c391","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c392","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c393","lhs":"(6*x + 8)**2","rhs":"36*x**2 + 96*x + 64","lean":"example (x : ℝ) : (6*x + 8)^2 = 36*x^2 + 96*x + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c394","lhs":"x*(2*x + 6)**2","rhs":"4*x**3 + 24*x**2 + 36*x","lean":"example (x : ℝ) : x*(2*x + 6)^2 = 4*x^3 + 24*x^2 + 36*x := by ring","tactic":"ring","atoms":{}}
+{"id":"c395","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c396","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c397","lhs":"5*x*cos(x) + 3*cos(x)","rhs":"(5*x + 3)*cos(x)","lean":"example (a1 x : ℝ) : 3*a1 + 5*x*a1 = (5*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c398","lhs":"9*x*cos(x) + 9*cos(x)","rhs":"9*(x + 1)*cos(x)","lean":"example (a1 x : ℝ) : 9*x*a1 + 9*a1 = (9*x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c399","lhs":"x*(9*x + 4)**2","rhs":"81*x**3 + 72*x**2 + 16*x","lean":"example (x : ℝ) : x*(9*x + 4)^2 = 16*x + 72*x^2 + 81*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c400","lhs":"(9*x + 6)**3","rhs":"729*x**3 + 1458*x**2 + 972*x + 216","lean":"example (x : ℝ) : (9*x + 6)^3 = 729*x^3 + 972*x + 1458*x^2 + 216 := by ring","tactic":"ring","atoms":{}}
+{"id":"c401","lhs":"(8*x + 4)**3","rhs":"512*x**3 + 768*x**2 + 384*x + 64","lean":"example (x : ℝ) : (8*x + 4)^3 = 384*x + 512*x^3 + 768*x^2 + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c402","lhs":"(x + 6)**3","rhs":"x**3 + 18*x**2 + 108*x + 216","lean":"example (x : ℝ) : (x + 6)^3 = 18*x^2 + 108*x + x^3 + 216 := by ring","tactic":"ring","atoms":{}}
+{"id":"c404","lhs":"2*x*cos(x) + 2*cos(x)","rhs":"2*(x + 1)*cos(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + 2*a1 = (2*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c406","lhs":"9*x*cos(x) + 6*cos(x)","rhs":"3*(3*x + 2)*cos(x)","lean":"example (a1 x : ℝ) : 6*a1 + 9*x*a1 = (9*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c408","lhs":"(5*x + 3)**2","rhs":"25*x**2 + 30*x + 9","lean":"example (x : ℝ) : (5*x + 3)^2 = 25*x^2 + 30*x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c409","lhs":"(4*x + 5)**2","rhs":"16*x**2 + 40*x + 25","lean":"example (x : ℝ) : (4*x + 5)^2 = 16*x^2 + 40*x + 25 := by ring","tactic":"ring","atoms":{}}
+{"id":"c410","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c411","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c412","lhs":"6*x*cos(x) + 5*cos(x)","rhs":"(6*x + 5)*cos(x)","lean":"example (a1 x : ℝ) : 5*a1 + 6*x*a1 = (6*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c413","lhs":"x*(2*x + 6)**3","rhs":"8*x**4 + 72*x**3 + 216*x**2 + 216*x","lean":"example (x : ℝ) : x*(2*x + 6)^3 = 8*x^4 + 72*x^3 + 216*x + 216*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c414","lhs":"3*x*cos(x) + 3*cos(x)","rhs":"3*(x + 1)*cos(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 3*a1 = (3*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c415","lhs":"6*x*exp(x) + 3*exp(x)","rhs":"3*(2*x + 1)*exp(x)","lean":"example (a1 x : ℝ) : 3*a1 + 6*x*a1 = (6*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c416","lhs":"7*x*log(x) + 9*log(x)","rhs":"(7*x + 9)*log(x)","lean":"example (a1 x : ℝ) : 7*x*a1 + 9*a1 = (7*x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c417","lhs":"5*x*exp(x) + 9*exp(x)","rhs":"(5*x + 9)*exp(x)","lean":"example (a1 x : ℝ) : 5*x*a1 + 9*a1 = (5*x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c418","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c419","lhs":"7*x*sin(x) + 5*sin(x)","rhs":"(7*x + 5)*sin(x)","lean":"example (a1 x : ℝ) : 5*a1 + 7*x*a1 = (7*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c420","lhs":"3*x*exp(x) + exp(x)","rhs":"(3*x + 1)*exp(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + a1 = (3*x + 1)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c421","lhs":"x + 7","rhs":"x + 7","lean":"example (x : ℝ) : x + 7 = x + 7 := by ring","tactic":"ring","atoms":{}}
+{"id":"c422","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c423","lhs":"(5*x + 6)**2","rhs":"25*x**2 + 60*x + 36","lean":"example (x : ℝ) : (5*x + 6)^2 = 25*x^2 + 60*x + 36 := by ring","tactic":"ring","atoms":{}}
+{"id":"c424","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c425","lhs":"x*(7*x + 8)**2","rhs":"49*x**3 + 112*x**2 + 64*x","lean":"example (x : ℝ) : x*(7*x + 8)^2 = 49*x^3 + 64*x + 112*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c426","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c427","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c428","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c429","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c430","lhs":"2*x*cos(x) + 9*cos(x)","rhs":"(2*x + 9)*cos(x)","lean":"example (a1 x : ℝ) : 2*x*a1 + 9*a1 = (2*x + 9)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c431","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c432","lhs":"x*(6*x + 6)**2","rhs":"36*x**3 + 72*x**2 + 36*x","lean":"example (x : ℝ) : x*(6*x + 6)^2 = 36*x + 36*x^3 + 72*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c433","lhs":"7*x*cos(x) + 7*cos(x)","rhs":"7*(x + 1)*cos(x)","lean":"example (a1 x : ℝ) : 7*x*a1 + 7*a1 = (7*x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c434","lhs":"(4*x + 7)**3","rhs":"64*x**3 + 336*x**2 + 588*x + 343","lean":"example (x : ℝ) : (4*x + 7)^3 = 64*x^3 + 336*x^2 + 588*x + 343 := by ring","tactic":"ring","atoms":{}}
+{"id":"c435","lhs":"(6*x + 9)**3","rhs":"216*x**3 + 972*x**2 + 1458*x + 729","lean":"example (x : ℝ) : (6*x + 9)^3 = 216*x^3 + 972*x^2 + 1458*x + 729 := by ring","tactic":"ring","atoms":{}}
+{"id":"c436","lhs":"3*x*exp(x) + 2*exp(x)","rhs":"(3*x + 2)*exp(x)","lean":"example (a1 x : ℝ) : 2*a1 + 3*x*a1 = (3*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c437","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c438","lhs":"7*x*sin(x) + 8*sin(x)","rhs":"(7*x + 8)*sin(x)","lean":"example (a1 x : ℝ) : 7*x*a1 + 8*a1 = (7*x + 8)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c439","lhs":"8*x*log(x) + 2*log(x)","rhs":"2*(4*x + 1)*log(x)","lean":"example (a1 x : ℝ) : 2*a1 + 8*x*a1 = (8*x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c440","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c441","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c442","lhs":"(x + 2)**2","rhs":"x**2 + 4*x + 4","lean":"example (x : ℝ) : (x + 2)^2 = 4*x + x^2 + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c443","lhs":"x*(5*x + 6)**2","rhs":"25*x**3 + 60*x**2 + 36*x","lean":"example (x : ℝ) : x*(5*x + 6)^2 = 25*x^3 + 36*x + 60*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c444","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c445","lhs":"x*(4*x + 5)**2","rhs":"16*x**3 + 40*x**2 + 25*x","lean":"example (x : ℝ) : x*(4*x + 5)^2 = 16*x^3 + 25*x + 40*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c446","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c447","lhs":"x*(5*x + 1)**2","rhs":"25*x**3 + 10*x**2 + x","lean":"example (x : ℝ) : x*(5*x + 1)^2 = x + 10*x^2 + 25*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c448","lhs":"x*(6*x + 3)**3","rhs":"216*x**4 + 324*x**3 + 162*x**2 + 27*x","lean":"example (x : ℝ) : x*(6*x + 3)^3 = 27*x + 162*x^2 + 216*x^4 + 324*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c449","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c450","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c451","lhs":"3*x*log(x) + 5*log(x)","rhs":"(3*x + 5)*log(x)","lean":"example (a1 x : ℝ) : 3*x*a1 + 5*a1 = (3*x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c452","lhs":"8*x*sin(x) + 6*sin(x)","rhs":"2*(4*x + 3)*sin(x)","lean":"example (a1 x : ℝ) : 6*a1 + 8*x*a1 = (8*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c453","lhs":"x*(7*x + 6)**2","rhs":"49*x**3 + 84*x**2 + 36*x","lean":"example (x : ℝ) : x*(7*x + 6)^2 = 36*x + 49*x^3 + 84*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c454","lhs":"x + 6","rhs":"x + 6","lean":"example (x : ℝ) : x + 6 = x + 6 := by ring","tactic":"ring","atoms":{}}
+{"id":"c455","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c456","lhs":"x + 7","rhs":"x + 7","lean":"example (x : ℝ) : x + 7 = x + 7 := by ring","tactic":"ring","atoms":{}}
+{"id":"c457","lhs":"x + 7","rhs":"x + 7","lean":"example (x : ℝ) : x + 7 = x + 7 := by ring","tactic":"ring","atoms":{}}
+{"id":"c458","lhs":"x*(8*x + 3)**3","rhs":"512*x**4 + 576*x**3 + 216*x**2 + 27*x","lean":"example (x : ℝ) : x*(8*x + 3)^3 = 27*x + 216*x^2 + 512*x^4 + 576*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c459","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c460","lhs":"(sin(x) + cos(x))**2","rhs":"sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"sin(x)"}}
+{"id":"c461","lhs":"x*(7*x + 6)**2","rhs":"49*x**3 + 84*x**2 + 36*x","lean":"example (x : ℝ) : x*(7*x + 6)^2 = 36*x + 49*x^3 + 84*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c462","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c463","lhs":"x*(2*x + 5)**3","rhs":"8*x**4 + 60*x**3 + 150*x**2 + 125*x","lean":"example (x : ℝ) : x*(2*x + 5)^3 = 8*x^4 + 60*x^3 + 125*x + 150*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c464","lhs":"x*(4*x + 8)**3","rhs":"64*x**4 + 384*x**3 + 768*x**2 + 512*x","lean":"example (x : ℝ) : x*(4*x + 8)^3 = 64*x^4 + 384*x^3 + 512*x + 768*x^2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c465","lhs":"(4*x + 8)**2","rhs":"16*x**2 + 64*x + 64","lean":"example (x : ℝ) : (4*x + 8)^2 = 16*x^2 + 64*x + 64 := by ring","tactic":"ring","atoms":{}}
+{"id":"c466","lhs":"x + 3","rhs":"x + 3","lean":"example (x : ℝ) : x + 3 = x + 3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c467","lhs":"x*cos(x) + 2*cos(x)","rhs":"(x + 2)*cos(x)","lean":"example (a1 x : ℝ) : 2*a1 + x*a1 = (x + 2)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c468","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c469","lhs":"4*x*log(x) + 4*log(x)","rhs":"4*(x + 1)*log(x)","lean":"example (a1 x : ℝ) : 4*x*a1 + 4*a1 = (4*x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}
+{"id":"c470","lhs":"(8*x + 2)**2","rhs":"64*x**2 + 32*x + 4","lean":"example (x : ℝ) : (8*x + 2)^2 = 32*x + 64*x^2 + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c471","lhs":"(x + 2)**2","rhs":"x**2 + 4*x + 4","lean":"example (x : ℝ) : (x + 2)^2 = 4*x + x^2 + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c472","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c473","lhs":"x + 7","rhs":"x + 7","lean":"example (x : ℝ) : x + 7 = x + 7 := by ring","tactic":"ring","atoms":{}}
+{"id":"c474","lhs":"(9*x + 1)**3","rhs":"729*x**3 + 243*x**2 + 27*x + 1","lean":"example (x : ℝ) : (9*x + 1)^3 = 27*x + 243*x^2 + 729*x^3 + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c475","lhs":"x + 8","rhs":"x + 8","lean":"example (x : ℝ) : x + 8 = x + 8 := by ring","tactic":"ring","atoms":{}}
+{"id":"c476","lhs":"x + 1","rhs":"x + 1","lean":"example (x : ℝ) : x + 1 = x + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c477","lhs":"(x + 5)**2","rhs":"x**2 + 10*x + 25","lean":"example (x : ℝ) : (x + 5)^2 = 10*x + x^2 + 25 := by ring","tactic":"ring","atoms":{}}
+{"id":"c478","lhs":"x*(9*x + 1)**2","rhs":"81*x**3 + 18*x**2 + x","lean":"example (x : ℝ) : x*(9*x + 1)^2 = x + 18*x^2 + 81*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c479","lhs":"5*x*cos(x) + 3*cos(x)","rhs":"(5*x + 3)*cos(x)","lean":"example (a1 x : ℝ) : 3*a1 + 5*x*a1 = (5*x + 3)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c480","lhs":"x*(6*x + 2)**3","rhs":"216*x**4 + 216*x**3 + 72*x**2 + 8*x","lean":"example (x : ℝ) : x*(6*x + 2)^3 = 8*x + 72*x^2 + 216*x^3 + 216*x^4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c481","lhs":"x + 9","rhs":"x + 9","lean":"example (x : ℝ) : x + 9 = x + 9 := by ring","tactic":"ring","atoms":{}}
+{"id":"c482","lhs":"x + 6","rhs":"x + 6","lean":"example (x : ℝ) : x + 6 = x + 6 := by ring","tactic":"ring","atoms":{}}
+{"id":"c483","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c484","lhs":"(7*x + 5)**3","rhs":"343*x**3 + 735*x**2 + 525*x + 125","lean":"example (x : ℝ) : (7*x + 5)^3 = 343*x^3 + 525*x + 735*x^2 + 125 := by ring","tactic":"ring","atoms":{}}
+{"id":"c485","lhs":"6*x*cos(x) + 4*cos(x)","rhs":"2*(3*x + 2)*cos(x)","lean":"example (a1 x : ℝ) : 4*a1 + 6*x*a1 = (6*x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c486","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c487","lhs":"(log(x) + cos(x))**2","rhs":"log(x)**2 + 2*log(x)*cos(x) + cos(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"cos(x)","a2":"log(x)"}}
+{"id":"c488","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c489","lhs":"7*x*cos(x) + 7*cos(x)","rhs":"7*(x + 1)*cos(x)","lean":"example (a1 x : ℝ) : 7*x*a1 + 7*a1 = (7*x + 7)*a1 := by ring","tactic":"ring","atoms":{"a1":"cos(x)"}}
+{"id":"c490","lhs":"(4*x + 1)**2","rhs":"16*x**2 + 8*x + 1","lean":"example (x : ℝ) : (4*x + 1)^2 = 8*x + 16*x^2 + 1 := by ring","tactic":"ring","atoms":{}}
+{"id":"c491","lhs":"(log(x) + sin(x))**2","rhs":"log(x)**2 + 2*log(x)*sin(x) + sin(x)**2","lean":"example (a1 a2 x : ℝ) : (a1 + a2)^2 = 2*a1*a2 + a1^2 + a2^2 := by ring","tactic":"ring","atoms":{"a1":"log(x)","a2":"sin(x)"}}
+{"id":"c492","lhs":"x + 5","rhs":"x + 5","lean":"example (x : ℝ) : x + 5 = x + 5 := by ring","tactic":"ring","atoms":{}}
+{"id":"c493","lhs":"x*sin(x) + 5*sin(x)","rhs":"(x + 5)*sin(x)","lean":"example (a1 x : ℝ) : 5*a1 + x*a1 = (x + 5)*a1 := by ring","tactic":"ring","atoms":{"a1":"sin(x)"}}
+{"id":"c494","lhs":"x + 4","rhs":"x + 4","lean":"example (x : ℝ) : x + 4 = x + 4 := by ring","tactic":"ring","atoms":{}}
+{"id":"c495","lhs":"x + 2","rhs":"x + 2","lean":"example (x : ℝ) : x + 2 = x + 2 := by ring","tactic":"ring","atoms":{}}
+{"id":"c496","lhs":"x*(8*x + 3)**3","rhs":"512*x**4 + 576*x**3 + 216*x**2 + 27*x","lean":"example (x : ℝ) : x*(8*x + 3)^3 = 27*x + 216*x^2 + 512*x^4 + 576*x^3 := by ring","tactic":"ring","atoms":{}}
+{"id":"c498","lhs":"6*x*exp(x) + 4*exp(x)","rhs":"2*(3*x + 2)*exp(x)","lean":"example (a1 x : ℝ) : 4*a1 + 6*x*a1 = (6*x + 4)*a1 := by ring","tactic":"ring","atoms":{"a1":"exp(x)"}}
+{"id":"c499","lhs":"7*x*log(x) + 6*log(x)","rhs":"(7*x + 6)*log(x)","lean":"example (a1 x : ℝ) : 6*a1 + 7*x*a1 = (7*x + 6)*a1 := by ring","tactic":"ring","atoms":{"a1":"log(x)"}}

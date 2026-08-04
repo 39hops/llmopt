@@ -1,0 +1,500 @@
+{"id": "c0", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c1", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c2", "task": "equiv", "var": "x", "lhs": "(3*x + 5)**2", "rhs": "9*x**2 + 30*x + 25"}
+{"id": "c3", "task": "equiv", "var": "x", "lhs": "(2*x + 7)**3", "rhs": "8*x**3 + 84*x**2 + 294*x + 343"}
+{"id": "c4", "task": "equiv", "var": "x", "lhs": "9*x*log(x) + 8*log(x)", "rhs": "(9*x + 8)*log(x)"}
+{"id": "c5", "task": "equiv", "var": "x", "lhs": "9*x*log(x) + log(x)", "rhs": "(9*x + 1)*log(x)"}
+{"id": "c6", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c7", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c8", "task": "equiv", "var": "x", "lhs": "2*x*log(x) + log(x)", "rhs": "(2*x + 1)*log(x)"}
+{"id": "c9", "task": "equiv", "var": "x", "lhs": "x*(4*x + 6)**2", "rhs": "16*x**3 + 48*x**2 + 36*x"}
+{"id": "c10", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c11", "task": "equiv", "var": "x", "lhs": "9*x*sin(x) + 4*sin(x)", "rhs": "(9*x + 4)*sin(x)"}
+{"id": "c12", "task": "equiv", "var": "x", "lhs": "x*(x + 8)**2", "rhs": "x**3 + 16*x**2 + 64*x"}
+{"id": "c13", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c14", "task": "equiv", "var": "x", "lhs": "5*x*log(x) + log(x)", "rhs": "(5*x + 1)*log(x)"}
+{"id": "c15", "task": "equiv", "var": "x", "lhs": "(7*x + 2)**2", "rhs": "49*x**2 + 28*x + 4"}
+{"id": "c16", "task": "equiv", "var": "x", "lhs": "(7*x + 4)**3", "rhs": "343*x**3 + 588*x**2 + 336*x + 64"}
+{"id": "c17", "task": "equiv", "var": "x", "lhs": "x*(2*x + 5)**2", "rhs": "4*x**3 + 20*x**2 + 25*x"}
+{"id": "c18", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c19", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c20", "task": "equiv", "var": "x", "lhs": "(x + 6)**3", "rhs": "x**3 + 18*x**2 + 108*x + 216"}
+{"id": "c21", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c22", "task": "equiv", "var": "x", "lhs": "x + 7", "rhs": "x + 7"}
+{"id": "c23", "task": "equiv", "var": "x", "lhs": "8*x*cos(x) + 3*cos(x)", "rhs": "(8*x + 3)*cos(x)"}
+{"id": "c24", "task": "equiv", "var": "x", "lhs": "x*(3*x + 7)**2", "rhs": "9*x**3 + 42*x**2 + 49*x"}
+{"id": "c25", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c26", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c27", "task": "equiv", "var": "x", "lhs": "x*(7*x + 6)**3", "rhs": "343*x**4 + 882*x**3 + 756*x**2 + 216*x"}
+{"id": "c28", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c29", "task": "equiv", "var": "x", "lhs": "3*x*sin(x) + 2*sin(x)", "rhs": "(3*x + 2)*sin(x)"}
+{"id": "c30", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c31", "task": "equiv", "var": "x", "lhs": "3*x*log(x) + 6*log(x)", "rhs": "3*(x + 2)*log(x)"}
+{"id": "c32", "task": "equiv", "var": "x", "lhs": "x + 7", "rhs": "x + 7"}
+{"id": "c33", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c34", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c35", "task": "equiv", "var": "x", "lhs": "9*x*sin(x) + 2*sin(x)", "rhs": "(9*x + 2)*sin(x)"}
+{"id": "c36", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c37", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c38", "task": "equiv", "var": "x", "lhs": "3*x*sin(x) + 3*sin(x)", "rhs": "3*(x + 1)*sin(x)"}
+{"id": "c39", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c40", "task": "equiv", "var": "x", "lhs": "(9*x + 7)**2", "rhs": "81*x**2 + 126*x + 49"}
+{"id": "c41", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c42", "task": "equiv", "var": "x", "lhs": "x + 3", "rhs": "x + 3"}
+{"id": "c43", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c44", "task": "equiv", "var": "x", "lhs": "x + 6", "rhs": "x + 6"}
+{"id": "c45", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c46", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c47", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c48", "task": "equiv", "var": "x", "lhs": "x + 3", "rhs": "x + 3"}
+{"id": "c49", "task": "equiv", "var": "x", "lhs": "2*x*sin(x) + 5*sin(x)", "rhs": "(2*x + 5)*sin(x)"}
+{"id": "c50", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c51", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c52", "task": "equiv", "var": "x", "lhs": "x*(6*x + 6)**3", "rhs": "216*x**4 + 648*x**3 + 648*x**2 + 216*x"}
+{"id": "c53", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c54", "task": "equiv", "var": "x", "lhs": "(x + 5)**2", "rhs": "x**2 + 10*x + 25"}
+{"id": "c55", "task": "equiv", "var": "x", "lhs": "(8*x + 2)**3", "rhs": "512*x**3 + 384*x**2 + 96*x + 8"}
+{"id": "c56", "task": "equiv", "var": "x", "lhs": "x + 3", "rhs": "x + 3"}
+{"id": "c57", "task": "equiv", "var": "x", "lhs": "7*x*exp(x) + 8*exp(x)", "rhs": "(7*x + 8)*exp(x)"}
+{"id": "c58", "task": "equiv", "var": "x", "lhs": "(x + 3)**3", "rhs": "x**3 + 9*x**2 + 27*x + 27"}
+{"id": "c59", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c60", "task": "equiv", "var": "x", "lhs": "x*(x + 5)**3", "rhs": "x**4 + 15*x**3 + 75*x**2 + 125*x"}
+{"id": "c61", "task": "equiv", "var": "x", "lhs": "3*x*sin(x) + 4*sin(x)", "rhs": "(3*x + 4)*sin(x)"}
+{"id": "c62", "task": "equiv", "var": "x", "lhs": "4*x*sin(x) + 8*sin(x)", "rhs": "4*(x + 2)*sin(x)"}
+{"id": "c63", "task": "equiv", "var": "x", "lhs": "x*sin(x) + 9*sin(x)", "rhs": "(x + 9)*sin(x)"}
+{"id": "c64", "task": "equiv", "var": "x", "lhs": "x*(3*x + 2)**2", "rhs": "9*x**3 + 12*x**2 + 4*x"}
+{"id": "c65", "task": "equiv", "var": "x", "lhs": "x*(3*x + 5)**2", "rhs": "9*x**3 + 30*x**2 + 25*x"}
+{"id": "c66", "task": "equiv", "var": "x", "lhs": "x*(x + 4)**2", "rhs": "x**3 + 8*x**2 + 16*x"}
+{"id": "c67", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c68", "task": "equiv", "var": "x", "lhs": "(5*x + 3)**2", "rhs": "25*x**2 + 30*x + 9"}
+{"id": "c69", "task": "equiv", "var": "x", "lhs": "x + 3", "rhs": "x + 3"}
+{"id": "c70", "task": "equiv", "var": "x", "lhs": "(2*x + 9)**2", "rhs": "4*x**2 + 36*x + 81"}
+{"id": "c71", "task": "equiv", "var": "x", "lhs": "3*x*cos(x) + 6*cos(x)", "rhs": "3*(x + 2)*cos(x)"}
+{"id": "c72", "task": "equiv", "var": "x", "lhs": "x + 3", "rhs": "x + 3"}
+{"id": "c73", "task": "equiv", "var": "x", "lhs": "4*x*sin(x) + sin(x)", "rhs": "(4*x + 1)*sin(x)"}
+{"id": "c74", "task": "equiv", "var": "x", "lhs": "x*(2*x + 5)**2", "rhs": "4*x**3 + 20*x**2 + 25*x"}
+{"id": "c75", "task": "equiv", "var": "x", "lhs": "x*(4*x + 9)**2", "rhs": "16*x**3 + 72*x**2 + 81*x"}
+{"id": "c76", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c77", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c78", "task": "equiv", "var": "x", "lhs": "2*x*sin(x) + 2*sin(x)", "rhs": "2*(x + 1)*sin(x)"}
+{"id": "c79", "task": "equiv", "var": "x", "lhs": "x*(x + 6)**2", "rhs": "x**3 + 12*x**2 + 36*x"}
+{"id": "c80", "task": "equiv", "var": "x", "lhs": "3*x*cos(x) + 3*cos(x)", "rhs": "3*(x + 1)*cos(x)"}
+{"id": "c81", "task": "equiv", "var": "x", "lhs": "x + 6", "rhs": "x + 6"}
+{"id": "c82", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c83", "task": "equiv", "var": "x", "lhs": "x + 6", "rhs": "x + 6"}
+{"id": "c84", "task": "equiv", "var": "x", "lhs": "9*x*cos(x) + 2*cos(x)", "rhs": "(9*x + 2)*cos(x)"}
+{"id": "c85", "task": "equiv", "var": "x", "lhs": "(5*x + 1)**3", "rhs": "125*x**3 + 75*x**2 + 15*x + 1"}
+{"id": "c86", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c87", "task": "equiv", "var": "x", "lhs": "3*x*cos(x) + 4*cos(x)", "rhs": "(3*x + 4)*cos(x)"}
+{"id": "c88", "task": "equiv", "var": "x", "lhs": "2*x*log(x) + 8*log(x)", "rhs": "2*(x + 4)*log(x)"}
+{"id": "c89", "task": "equiv", "var": "x", "lhs": "(2*x + 6)**2", "rhs": "4*x**2 + 24*x + 36"}
+{"id": "c90", "task": "equiv", "var": "x", "lhs": "x + 7", "rhs": "x + 7"}
+{"id": "c91", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c92", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c93", "task": "equiv", "var": "x", "lhs": "7*x*cos(x) + 2*cos(x)", "rhs": "(7*x + 2)*cos(x)"}
+{"id": "c94", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c95", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c96", "task": "equiv", "var": "x", "lhs": "x*(2*x + 2)**3", "rhs": "8*x**4 + 24*x**3 + 24*x**2 + 8*x"}
+{"id": "c97", "task": "equiv", "var": "x", "lhs": "x*exp(x) + 9*exp(x)", "rhs": "(x + 9)*exp(x)"}
+{"id": "c98", "task": "equiv", "var": "x", "lhs": "(7*x + 1)**2", "rhs": "49*x**2 + 14*x + 1"}
+{"id": "c99", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c100", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c101", "task": "equiv", "var": "x", "lhs": "x + 3", "rhs": "x + 3"}
+{"id": "c102", "task": "equiv", "var": "x", "lhs": "x*(5*x + 3)**2", "rhs": "25*x**3 + 30*x**2 + 9*x"}
+{"id": "c103", "task": "equiv", "var": "x", "lhs": "(7*x + 1)**3", "rhs": "343*x**3 + 147*x**2 + 21*x + 1"}
+{"id": "c104", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c105", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c106", "task": "equiv", "var": "x", "lhs": "(4*x + 7)**3", "rhs": "64*x**3 + 336*x**2 + 588*x + 343"}
+{"id": "c107", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c108", "task": "equiv", "var": "x", "lhs": "x*(7*x + 9)**2", "rhs": "49*x**3 + 126*x**2 + 81*x"}
+{"id": "c109", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c110", "task": "equiv", "var": "x", "lhs": "4*x*exp(x) + 3*exp(x)", "rhs": "(4*x + 3)*exp(x)"}
+{"id": "c111", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c112", "task": "equiv", "var": "x", "lhs": "x + 7", "rhs": "x + 7"}
+{"id": "c113", "task": "equiv", "var": "x", "lhs": "x*log(x) + 9*log(x)", "rhs": "(x + 9)*log(x)"}
+{"id": "c114", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c115", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c116", "task": "equiv", "var": "x", "lhs": "(4*x + 3)**2", "rhs": "16*x**2 + 24*x + 9"}
+{"id": "c117", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c118", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c119", "task": "equiv", "var": "x", "lhs": "2*x*exp(x) + exp(x)", "rhs": "(2*x + 1)*exp(x)"}
+{"id": "c120", "task": "equiv", "var": "x", "lhs": "8*x*sin(x) + 2*sin(x)", "rhs": "2*(4*x + 1)*sin(x)"}
+{"id": "c121", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c122", "task": "equiv", "var": "x", "lhs": "x*sin(x) + 4*sin(x)", "rhs": "(x + 4)*sin(x)"}
+{"id": "c123", "task": "equiv", "var": "x", "lhs": "9*x*exp(x) + 4*exp(x)", "rhs": "(9*x + 4)*exp(x)"}
+{"id": "c124", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c125", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c126", "task": "equiv", "var": "x", "lhs": "x*log(x) + 7*log(x)", "rhs": "(x + 7)*log(x)"}
+{"id": "c127", "task": "equiv", "var": "x", "lhs": "8*x*log(x) + 4*log(x)", "rhs": "4*(2*x + 1)*log(x)"}
+{"id": "c128", "task": "equiv", "var": "x", "lhs": "8*x*log(x) + 8*log(x)", "rhs": "8*(x + 1)*log(x)"}
+{"id": "c129", "task": "equiv", "var": "x", "lhs": "x + 6", "rhs": "x + 6"}
+{"id": "c130", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c131", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c132", "task": "equiv", "var": "x", "lhs": "(9*x + 9)**2", "rhs": "81*x**2 + 162*x + 81"}
+{"id": "c133", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c134", "task": "equiv", "var": "x", "lhs": "8*x*log(x) + 8*log(x)", "rhs": "8*(x + 1)*log(x)"}
+{"id": "c135", "task": "equiv", "var": "x", "lhs": "(6*x + 8)**2", "rhs": "36*x**2 + 96*x + 64"}
+{"id": "c136", "task": "equiv", "var": "x", "lhs": "x*(3*x + 3)**2", "rhs": "9*x**3 + 18*x**2 + 9*x"}
+{"id": "c137", "task": "equiv", "var": "x", "lhs": "x*(8*x + 9)**3", "rhs": "512*x**4 + 1728*x**3 + 1944*x**2 + 729*x"}
+{"id": "c138", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c139", "task": "equiv", "var": "x", "lhs": "x*(7*x + 9)**2", "rhs": "49*x**3 + 126*x**2 + 81*x"}
+{"id": "c140", "task": "equiv", "var": "x", "lhs": "(4*x + 2)**3", "rhs": "64*x**3 + 96*x**2 + 48*x + 8"}
+{"id": "c141", "task": "equiv", "var": "x", "lhs": "x*sin(x) + 8*sin(x)", "rhs": "(x + 8)*sin(x)"}
+{"id": "c142", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c143", "task": "equiv", "var": "x", "lhs": "x*(x + 8)**3", "rhs": "x**4 + 24*x**3 + 192*x**2 + 512*x"}
+{"id": "c144", "task": "equiv", "var": "x", "lhs": "5*x*cos(x) + 6*cos(x)", "rhs": "(5*x + 6)*cos(x)"}
+{"id": "c145", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c146", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c147", "task": "equiv", "var": "x", "lhs": "2*x*log(x) + 7*log(x)", "rhs": "(2*x + 7)*log(x)"}
+{"id": "c148", "task": "equiv", "var": "x", "lhs": "x*(5*x + 8)**2", "rhs": "25*x**3 + 80*x**2 + 64*x"}
+{"id": "c149", "task": "equiv", "var": "x", "lhs": "x*(6*x + 4)**3", "rhs": "216*x**4 + 432*x**3 + 288*x**2 + 64*x"}
+{"id": "c150", "task": "equiv", "var": "x", "lhs": "(9*x + 4)**2", "rhs": "81*x**2 + 72*x + 16"}
+{"id": "c151", "task": "equiv", "var": "x", "lhs": "(2*x + 7)**2", "rhs": "4*x**2 + 28*x + 49"}
+{"id": "c152", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c153", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c154", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c155", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c156", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c157", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c158", "task": "equiv", "var": "x", "lhs": "2*x*cos(x) + 4*cos(x)", "rhs": "2*(x + 2)*cos(x)"}
+{"id": "c159", "task": "equiv", "var": "x", "lhs": "x*(4*x + 7)**2", "rhs": "16*x**3 + 56*x**2 + 49*x"}
+{"id": "c160", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c161", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c162", "task": "equiv", "var": "x", "lhs": "8*x*sin(x) + 8*sin(x)", "rhs": "8*(x + 1)*sin(x)"}
+{"id": "c163", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c164", "task": "equiv", "var": "x", "lhs": "x*(9*x + 6)**3", "rhs": "729*x**4 + 1458*x**3 + 972*x**2 + 216*x"}
+{"id": "c165", "task": "equiv", "var": "x", "lhs": "2*x*log(x) + 7*log(x)", "rhs": "(2*x + 7)*log(x)"}
+{"id": "c166", "task": "equiv", "var": "x", "lhs": "x*(8*x + 7)**2", "rhs": "64*x**3 + 112*x**2 + 49*x"}
+{"id": "c167", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c168", "task": "equiv", "var": "x", "lhs": "(2*x + 4)**3", "rhs": "8*x**3 + 48*x**2 + 96*x + 64"}
+{"id": "c169", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c170", "task": "equiv", "var": "x", "lhs": "x*(4*x + 8)**3", "rhs": "64*x**4 + 384*x**3 + 768*x**2 + 512*x"}
+{"id": "c171", "task": "equiv", "var": "x", "lhs": "(9*x + 8)**2", "rhs": "81*x**2 + 144*x + 64"}
+{"id": "c172", "task": "equiv", "var": "x", "lhs": "3*x*exp(x) + 9*exp(x)", "rhs": "3*(x + 3)*exp(x)"}
+{"id": "c173", "task": "equiv", "var": "x", "lhs": "5*x*log(x) + 6*log(x)", "rhs": "(5*x + 6)*log(x)"}
+{"id": "c174", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c175", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c176", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c177", "task": "equiv", "var": "x", "lhs": "(9*x + 3)**2", "rhs": "81*x**2 + 54*x + 9"}
+{"id": "c178", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c179", "task": "equiv", "var": "x", "lhs": "x + 3", "rhs": "x + 3"}
+{"id": "c180", "task": "equiv", "var": "x", "lhs": "5*x*sin(x) + sin(x)", "rhs": "(5*x + 1)*sin(x)"}
+{"id": "c181", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c182", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c183", "task": "equiv", "var": "x", "lhs": "5*x*log(x) + 5*log(x)", "rhs": "5*(x + 1)*log(x)"}
+{"id": "c184", "task": "equiv", "var": "x", "lhs": "x*(2*x + 8)**2", "rhs": "4*x**3 + 32*x**2 + 64*x"}
+{"id": "c185", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c186", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c187", "task": "equiv", "var": "x", "lhs": "(x + 4)**3", "rhs": "x**3 + 12*x**2 + 48*x + 64"}
+{"id": "c188", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c189", "task": "equiv", "var": "x", "lhs": "x*(7*x + 9)**2", "rhs": "49*x**3 + 126*x**2 + 81*x"}
+{"id": "c190", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c191", "task": "equiv", "var": "x", "lhs": "x*(5*x + 9)**3", "rhs": "125*x**4 + 675*x**3 + 1215*x**2 + 729*x"}
+{"id": "c192", "task": "equiv", "var": "x", "lhs": "8*x*cos(x) + 8*cos(x)", "rhs": "8*(x + 1)*cos(x)"}
+{"id": "c193", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c194", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c195", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c196", "task": "equiv", "var": "x", "lhs": "(8*x + 5)**3", "rhs": "512*x**3 + 960*x**2 + 600*x + 125"}
+{"id": "c197", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c198", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c199", "task": "equiv", "var": "x", "lhs": "7*x*log(x) + 3*log(x)", "rhs": "(7*x + 3)*log(x)"}
+{"id": "c200", "task": "equiv", "var": "x", "lhs": "(2*x + 6)**3", "rhs": "8*x**3 + 72*x**2 + 216*x + 216"}
+{"id": "c201", "task": "equiv", "var": "x", "lhs": "(5*x + 9)**2", "rhs": "25*x**2 + 90*x + 81"}
+{"id": "c202", "task": "equiv", "var": "x", "lhs": "3*x*sin(x) + 8*sin(x)", "rhs": "(3*x + 8)*sin(x)"}
+{"id": "c203", "task": "equiv", "var": "x", "lhs": "x + 7", "rhs": "x + 7"}
+{"id": "c204", "task": "equiv", "var": "x", "lhs": "5*x*log(x) + 8*log(x)", "rhs": "(5*x + 8)*log(x)"}
+{"id": "c205", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c206", "task": "equiv", "var": "x", "lhs": "3*x*sin(x) + 9*sin(x)", "rhs": "3*(x + 3)*sin(x)"}
+{"id": "c207", "task": "equiv", "var": "x", "lhs": "x + 7", "rhs": "x + 7"}
+{"id": "c208", "task": "equiv", "var": "x", "lhs": "(4*x + 6)**2", "rhs": "16*x**2 + 48*x + 36"}
+{"id": "c209", "task": "equiv", "var": "x", "lhs": "x*(3*x + 2)**3", "rhs": "27*x**4 + 54*x**3 + 36*x**2 + 8*x"}
+{"id": "c210", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c211", "task": "equiv", "var": "x", "lhs": "9*x*exp(x) + 2*exp(x)", "rhs": "(9*x + 2)*exp(x)"}
+{"id": "c212", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c213", "task": "equiv", "var": "x", "lhs": "x*exp(x) + 7*exp(x)", "rhs": "(x + 7)*exp(x)"}
+{"id": "c214", "task": "equiv", "var": "x", "lhs": "4*x*sin(x) + 7*sin(x)", "rhs": "(4*x + 7)*sin(x)"}
+{"id": "c215", "task": "equiv", "var": "x", "lhs": "x*(x + 4)**3", "rhs": "x**4 + 12*x**3 + 48*x**2 + 64*x"}
+{"id": "c216", "task": "equiv", "var": "x", "lhs": "(2*x + 8)**3", "rhs": "8*x**3 + 96*x**2 + 384*x + 512"}
+{"id": "c217", "task": "equiv", "var": "x", "lhs": "(8*x + 4)**3", "rhs": "512*x**3 + 768*x**2 + 384*x + 64"}
+{"id": "c218", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c219", "task": "equiv", "var": "x", "lhs": "x*sin(x) + 2*sin(x)", "rhs": "(x + 2)*sin(x)"}
+{"id": "c220", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c221", "task": "equiv", "var": "x", "lhs": "x*(7*x + 5)**2", "rhs": "49*x**3 + 70*x**2 + 25*x"}
+{"id": "c222", "task": "equiv", "var": "x", "lhs": "7*x*sin(x) + 6*sin(x)", "rhs": "(7*x + 6)*sin(x)"}
+{"id": "c223", "task": "equiv", "var": "x", "lhs": "7*x*sin(x) + 7*sin(x)", "rhs": "7*(x + 1)*sin(x)"}
+{"id": "c224", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c225", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c226", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c227", "task": "equiv", "var": "x", "lhs": "x*(5*x + 5)**3", "rhs": "125*x**4 + 375*x**3 + 375*x**2 + 125*x"}
+{"id": "c228", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c229", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c230", "task": "equiv", "var": "x", "lhs": "(3*x + 7)**3", "rhs": "27*x**3 + 189*x**2 + 441*x + 343"}
+{"id": "c231", "task": "equiv", "var": "x", "lhs": "(4*x + 2)**2", "rhs": "16*x**2 + 16*x + 4"}
+{"id": "c232", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c233", "task": "equiv", "var": "x", "lhs": "2*x*log(x) + 2*log(x)", "rhs": "2*(x + 1)*log(x)"}
+{"id": "c234", "task": "equiv", "var": "x", "lhs": "x*(2*x + 6)**2", "rhs": "4*x**3 + 24*x**2 + 36*x"}
+{"id": "c235", "task": "equiv", "var": "x", "lhs": "3*x*exp(x) + 3*exp(x)", "rhs": "3*(x + 1)*exp(x)"}
+{"id": "c236", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c237", "task": "equiv", "var": "x", "lhs": "x*(9*x + 6)**3", "rhs": "729*x**4 + 1458*x**3 + 972*x**2 + 216*x"}
+{"id": "c238", "task": "equiv", "var": "x", "lhs": "2*x*log(x) + log(x)", "rhs": "(2*x + 1)*log(x)"}
+{"id": "c239", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c240", "task": "equiv", "var": "x", "lhs": "x*(7*x + 3)**2", "rhs": "49*x**3 + 42*x**2 + 9*x"}
+{"id": "c241", "task": "equiv", "var": "x", "lhs": "7*x*sin(x) + 4*sin(x)", "rhs": "(7*x + 4)*sin(x)"}
+{"id": "c242", "task": "equiv", "var": "x", "lhs": "6*x*sin(x) + sin(x)", "rhs": "(6*x + 1)*sin(x)"}
+{"id": "c243", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c244", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c245", "task": "equiv", "var": "x", "lhs": "(3*x + 3)**2", "rhs": "9*x**2 + 18*x + 9"}
+{"id": "c246", "task": "equiv", "var": "x", "lhs": "x*(4*x + 8)**2", "rhs": "16*x**3 + 64*x**2 + 64*x"}
+{"id": "c247", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c248", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c249", "task": "equiv", "var": "x", "lhs": "7*x*exp(x) + 7*exp(x)", "rhs": "7*(x + 1)*exp(x)"}
+{"id": "c250", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c251", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c252", "task": "equiv", "var": "x", "lhs": "(8*x + 8)**3", "rhs": "512*x**3 + 1536*x**2 + 1536*x + 512"}
+{"id": "c253", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c254", "task": "equiv", "var": "x", "lhs": "8*x*log(x) + 6*log(x)", "rhs": "2*(4*x + 3)*log(x)"}
+{"id": "c255", "task": "equiv", "var": "x", "lhs": "5*x*log(x) + log(x)", "rhs": "(5*x + 1)*log(x)"}
+{"id": "c256", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c257", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c258", "task": "equiv", "var": "x", "lhs": "(4*x + 7)**3", "rhs": "64*x**3 + 336*x**2 + 588*x + 343"}
+{"id": "c259", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c260", "task": "equiv", "var": "x", "lhs": "(8*x + 7)**3", "rhs": "512*x**3 + 1344*x**2 + 1176*x + 343"}
+{"id": "c261", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c262", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c263", "task": "equiv", "var": "x", "lhs": "7*x*sin(x) + 6*sin(x)", "rhs": "(7*x + 6)*sin(x)"}
+{"id": "c264", "task": "equiv", "var": "x", "lhs": "x*(2*x + 7)**3", "rhs": "8*x**4 + 84*x**3 + 294*x**2 + 343*x"}
+{"id": "c265", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c266", "task": "equiv", "var": "x", "lhs": "5*x*log(x) + 6*log(x)", "rhs": "(5*x + 6)*log(x)"}
+{"id": "c267", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c268", "task": "equiv", "var": "x", "lhs": "x*(5*x + 2)**3", "rhs": "125*x**4 + 150*x**3 + 60*x**2 + 8*x"}
+{"id": "c269", "task": "equiv", "var": "x", "lhs": "3*x*cos(x) + 9*cos(x)", "rhs": "3*(x + 3)*cos(x)"}
+{"id": "c270", "task": "equiv", "var": "x", "lhs": "(5*x + 4)**2", "rhs": "25*x**2 + 40*x + 16"}
+{"id": "c271", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c272", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c273", "task": "equiv", "var": "x", "lhs": "7*x*cos(x) + 7*cos(x)", "rhs": "7*(x + 1)*cos(x)"}
+{"id": "c274", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c275", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c276", "task": "equiv", "var": "x", "lhs": "x*(6*x + 5)**3", "rhs": "216*x**4 + 540*x**3 + 450*x**2 + 125*x"}
+{"id": "c277", "task": "equiv", "var": "x", "lhs": "(x + 5)**2", "rhs": "x**2 + 10*x + 25"}
+{"id": "c278", "task": "equiv", "var": "x", "lhs": "6*x*sin(x) + sin(x)", "rhs": "(6*x + 1)*sin(x)"}
+{"id": "c279", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c280", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c281", "task": "equiv", "var": "x", "lhs": "6*x*sin(x) + 9*sin(x)", "rhs": "3*(2*x + 3)*sin(x)"}
+{"id": "c282", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c283", "task": "equiv", "var": "x", "lhs": "3*x*exp(x) + exp(x)", "rhs": "(3*x + 1)*exp(x)"}
+{"id": "c284", "task": "equiv", "var": "x", "lhs": "x*(3*x + 8)**3", "rhs": "27*x**4 + 216*x**3 + 576*x**2 + 512*x"}
+{"id": "c285", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c286", "task": "equiv", "var": "x", "lhs": "x*(5*x + 4)**3", "rhs": "125*x**4 + 300*x**3 + 240*x**2 + 64*x"}
+{"id": "c287", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c288", "task": "equiv", "var": "x", "lhs": "x + 6", "rhs": "x + 6"}
+{"id": "c289", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c290", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c291", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c292", "task": "equiv", "var": "x", "lhs": "x*(x + 3)**3", "rhs": "x**4 + 9*x**3 + 27*x**2 + 27*x"}
+{"id": "c293", "task": "equiv", "var": "x", "lhs": "(4*x + 8)**3", "rhs": "64*x**3 + 384*x**2 + 768*x + 512"}
+{"id": "c294", "task": "equiv", "var": "x", "lhs": "2*x*log(x) + 5*log(x)", "rhs": "(2*x + 5)*log(x)"}
+{"id": "c295", "task": "equiv", "var": "x", "lhs": "9*x*cos(x) + 5*cos(x)", "rhs": "(9*x + 5)*cos(x)"}
+{"id": "c296", "task": "equiv", "var": "x", "lhs": "(2*x + 8)**2", "rhs": "4*x**2 + 32*x + 64"}
+{"id": "c297", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c298", "task": "equiv", "var": "x", "lhs": "x + 6", "rhs": "x + 6"}
+{"id": "c299", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c300", "task": "equiv", "var": "x", "lhs": "8*x*sin(x) + 5*sin(x)", "rhs": "(8*x + 5)*sin(x)"}
+{"id": "c301", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c302", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c303", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c304", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c305", "task": "equiv", "var": "x", "lhs": "(9*x + 1)**2", "rhs": "81*x**2 + 18*x + 1"}
+{"id": "c306", "task": "equiv", "var": "x", "lhs": "x + 3", "rhs": "x + 3"}
+{"id": "c307", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c308", "task": "equiv", "var": "x", "lhs": "(3*x + 1)**3", "rhs": "27*x**3 + 27*x**2 + 9*x + 1"}
+{"id": "c309", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c310", "task": "equiv", "var": "x", "lhs": "3*x*sin(x) + sin(x)", "rhs": "(3*x + 1)*sin(x)"}
+{"id": "c311", "task": "equiv", "var": "x", "lhs": "x*(2*x + 4)**2", "rhs": "4*x**3 + 16*x**2 + 16*x"}
+{"id": "c312", "task": "equiv", "var": "x", "lhs": "6*x*cos(x) + 5*cos(x)", "rhs": "(6*x + 5)*cos(x)"}
+{"id": "c313", "task": "equiv", "var": "x", "lhs": "8*x*cos(x) + 3*cos(x)", "rhs": "(8*x + 3)*cos(x)"}
+{"id": "c314", "task": "equiv", "var": "x", "lhs": "(2*x + 2)**2", "rhs": "4*x**2 + 8*x + 4"}
+{"id": "c315", "task": "equiv", "var": "x", "lhs": "x*exp(x) + 2*exp(x)", "rhs": "(x + 2)*exp(x)"}
+{"id": "c316", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c317", "task": "equiv", "var": "x", "lhs": "(4*x + 7)**3", "rhs": "64*x**3 + 336*x**2 + 588*x + 343"}
+{"id": "c318", "task": "equiv", "var": "x", "lhs": "(2*x + 9)**2", "rhs": "4*x**2 + 36*x + 81"}
+{"id": "c319", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c320", "task": "equiv", "var": "x", "lhs": "x*(3*x + 7)**2", "rhs": "9*x**3 + 42*x**2 + 49*x"}
+{"id": "c321", "task": "equiv", "var": "x", "lhs": "x + 6", "rhs": "x + 6"}
+{"id": "c322", "task": "equiv", "var": "x", "lhs": "(3*x + 9)**3", "rhs": "27*x**3 + 243*x**2 + 729*x + 729"}
+{"id": "c323", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c324", "task": "equiv", "var": "x", "lhs": "x*(3*x + 4)**3", "rhs": "27*x**4 + 108*x**3 + 144*x**2 + 64*x"}
+{"id": "c325", "task": "equiv", "var": "x", "lhs": "(2*x + 4)**3", "rhs": "8*x**3 + 48*x**2 + 96*x + 64"}
+{"id": "c326", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c327", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c328", "task": "equiv", "var": "x", "lhs": "x*(7*x + 3)**2", "rhs": "49*x**3 + 42*x**2 + 9*x"}
+{"id": "c329", "task": "equiv", "var": "x", "lhs": "7*x*log(x) + 2*log(x)", "rhs": "(7*x + 2)*log(x)"}
+{"id": "c330", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c331", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c332", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c333", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c334", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c335", "task": "equiv", "var": "x", "lhs": "x*cos(x) + 9*cos(x)", "rhs": "(x + 9)*cos(x)"}
+{"id": "c336", "task": "equiv", "var": "x", "lhs": "x*(8*x + 7)**2", "rhs": "64*x**3 + 112*x**2 + 49*x"}
+{"id": "c337", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c338", "task": "equiv", "var": "x", "lhs": "(x + 5)**2", "rhs": "x**2 + 10*x + 25"}
+{"id": "c339", "task": "equiv", "var": "x", "lhs": "x + 7", "rhs": "x + 7"}
+{"id": "c340", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c341", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c342", "task": "equiv", "var": "x", "lhs": "(x + 5)**3", "rhs": "x**3 + 15*x**2 + 75*x + 125"}
+{"id": "c343", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c344", "task": "equiv", "var": "x", "lhs": "x*(3*x + 4)**3", "rhs": "27*x**4 + 108*x**3 + 144*x**2 + 64*x"}
+{"id": "c345", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c346", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c347", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c348", "task": "equiv", "var": "x", "lhs": "5*x*cos(x) + 6*cos(x)", "rhs": "(5*x + 6)*cos(x)"}
+{"id": "c349", "task": "equiv", "var": "x", "lhs": "x*(4*x + 4)**2", "rhs": "16*x**3 + 32*x**2 + 16*x"}
+{"id": "c350", "task": "equiv", "var": "x", "lhs": "(6*x + 7)**2", "rhs": "36*x**2 + 84*x + 49"}
+{"id": "c351", "task": "equiv", "var": "x", "lhs": "x*(x + 4)**2", "rhs": "x**3 + 8*x**2 + 16*x"}
+{"id": "c352", "task": "equiv", "var": "x", "lhs": "x*(5*x + 2)**3", "rhs": "125*x**4 + 150*x**3 + 60*x**2 + 8*x"}
+{"id": "c353", "task": "equiv", "var": "x", "lhs": "7*x*cos(x) + 7*cos(x)", "rhs": "7*(x + 1)*cos(x)"}
+{"id": "c354", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c355", "task": "equiv", "var": "x", "lhs": "4*x*exp(x) + 5*exp(x)", "rhs": "(4*x + 5)*exp(x)"}
+{"id": "c356", "task": "equiv", "var": "x", "lhs": "x*(4*x + 1)**3", "rhs": "64*x**4 + 48*x**3 + 12*x**2 + x"}
+{"id": "c357", "task": "equiv", "var": "x", "lhs": "(3*x + 8)**3", "rhs": "27*x**3 + 216*x**2 + 576*x + 512"}
+{"id": "c358", "task": "equiv", "var": "x", "lhs": "x + 3", "rhs": "x + 3"}
+{"id": "c359", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c360", "task": "equiv", "var": "x", "lhs": "(5*x + 7)**3", "rhs": "125*x**3 + 525*x**2 + 735*x + 343"}
+{"id": "c361", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c362", "task": "equiv", "var": "x", "lhs": "(4*x + 7)**3", "rhs": "64*x**3 + 336*x**2 + 588*x + 343"}
+{"id": "c363", "task": "equiv", "var": "x", "lhs": "x*(3*x + 5)**3", "rhs": "27*x**4 + 135*x**3 + 225*x**2 + 125*x"}
+{"id": "c364", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c365", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c366", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c367", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c368", "task": "equiv", "var": "x", "lhs": "x*log(x) + 4*log(x)", "rhs": "(x + 4)*log(x)"}
+{"id": "c369", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c370", "task": "equiv", "var": "x", "lhs": "5*x*cos(x) + 9*cos(x)", "rhs": "(5*x + 9)*cos(x)"}
+{"id": "c371", "task": "equiv", "var": "x", "lhs": "(7*x + 8)**2", "rhs": "49*x**2 + 112*x + 64"}
+{"id": "c372", "task": "equiv", "var": "x", "lhs": "(exp(x) + sin(x))**2", "rhs": "exp(2*x) + 2*exp(x)*sin(x) + sin(x)**2"}
+{"id": "c373", "task": "equiv", "var": "x", "lhs": "5*x*log(x) + 3*log(x)", "rhs": "(5*x + 3)*log(x)"}
+{"id": "c374", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c375", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c376", "task": "equiv", "var": "x", "lhs": "9*x*exp(x) + 6*exp(x)", "rhs": "3*(3*x + 2)*exp(x)"}
+{"id": "c377", "task": "equiv", "var": "x", "lhs": "4*x*sin(x) + 5*sin(x)", "rhs": "(4*x + 5)*sin(x)"}
+{"id": "c378", "task": "equiv", "var": "x", "lhs": "(exp(x) + cos(x))**2", "rhs": "exp(2*x) + 2*exp(x)*cos(x) + cos(x)**2"}
+{"id": "c379", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c380", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c381", "task": "equiv", "var": "x", "lhs": "(2*x + 6)**3", "rhs": "8*x**3 + 72*x**2 + 216*x + 216"}
+{"id": "c382", "task": "equiv", "var": "x", "lhs": "x + 3", "rhs": "x + 3"}
+{"id": "c383", "task": "equiv", "var": "x", "lhs": "5*x*sin(x) + 5*sin(x)", "rhs": "5*(x + 1)*sin(x)"}
+{"id": "c384", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c385", "task": "equiv", "var": "x", "lhs": "x*(8*x + 5)**2", "rhs": "64*x**3 + 80*x**2 + 25*x"}
+{"id": "c386", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c387", "task": "equiv", "var": "x", "lhs": "2*x*exp(x) + exp(x)", "rhs": "(2*x + 1)*exp(x)"}
+{"id": "c388", "task": "equiv", "var": "x", "lhs": "3*x*sin(x) + 2*sin(x)", "rhs": "(3*x + 2)*sin(x)"}
+{"id": "c389", "task": "equiv", "var": "x", "lhs": "6*x*log(x) + 3*log(x)", "rhs": "3*(2*x + 1)*log(x)"}
+{"id": "c390", "task": "equiv", "var": "x", "lhs": "6*x*exp(x) + 7*exp(x)", "rhs": "(6*x + 7)*exp(x)"}
+{"id": "c391", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c392", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c393", "task": "equiv", "var": "x", "lhs": "(6*x + 8)**2", "rhs": "36*x**2 + 96*x + 64"}
+{"id": "c394", "task": "equiv", "var": "x", "lhs": "x*(2*x + 6)**2", "rhs": "4*x**3 + 24*x**2 + 36*x"}
+{"id": "c395", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c396", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c397", "task": "equiv", "var": "x", "lhs": "5*x*cos(x) + 3*cos(x)", "rhs": "(5*x + 3)*cos(x)"}
+{"id": "c398", "task": "equiv", "var": "x", "lhs": "9*x*cos(x) + 9*cos(x)", "rhs": "9*(x + 1)*cos(x)"}
+{"id": "c399", "task": "equiv", "var": "x", "lhs": "x*(9*x + 4)**2", "rhs": "81*x**3 + 72*x**2 + 16*x"}
+{"id": "c400", "task": "equiv", "var": "x", "lhs": "(9*x + 6)**3", "rhs": "729*x**3 + 1458*x**2 + 972*x + 216"}
+{"id": "c401", "task": "equiv", "var": "x", "lhs": "(8*x + 4)**3", "rhs": "512*x**3 + 768*x**2 + 384*x + 64"}
+{"id": "c402", "task": "equiv", "var": "x", "lhs": "(x + 6)**3", "rhs": "x**3 + 18*x**2 + 108*x + 216"}
+{"id": "c403", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c404", "task": "equiv", "var": "x", "lhs": "2*x*cos(x) + 2*cos(x)", "rhs": "2*(x + 1)*cos(x)"}
+{"id": "c405", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c406", "task": "equiv", "var": "x", "lhs": "9*x*cos(x) + 6*cos(x)", "rhs": "3*(3*x + 2)*cos(x)"}
+{"id": "c407", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c408", "task": "equiv", "var": "x", "lhs": "(5*x + 3)**2", "rhs": "25*x**2 + 30*x + 9"}
+{"id": "c409", "task": "equiv", "var": "x", "lhs": "(4*x + 5)**2", "rhs": "16*x**2 + 40*x + 25"}
+{"id": "c410", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c411", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c412", "task": "equiv", "var": "x", "lhs": "6*x*cos(x) + 5*cos(x)", "rhs": "(6*x + 5)*cos(x)"}
+{"id": "c413", "task": "equiv", "var": "x", "lhs": "x*(2*x + 6)**3", "rhs": "8*x**4 + 72*x**3 + 216*x**2 + 216*x"}
+{"id": "c414", "task": "equiv", "var": "x", "lhs": "3*x*cos(x) + 3*cos(x)", "rhs": "3*(x + 1)*cos(x)"}
+{"id": "c415", "task": "equiv", "var": "x", "lhs": "6*x*exp(x) + 3*exp(x)", "rhs": "3*(2*x + 1)*exp(x)"}
+{"id": "c416", "task": "equiv", "var": "x", "lhs": "7*x*log(x) + 9*log(x)", "rhs": "(7*x + 9)*log(x)"}
+{"id": "c417", "task": "equiv", "var": "x", "lhs": "5*x*exp(x) + 9*exp(x)", "rhs": "(5*x + 9)*exp(x)"}
+{"id": "c418", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c419", "task": "equiv", "var": "x", "lhs": "7*x*sin(x) + 5*sin(x)", "rhs": "(7*x + 5)*sin(x)"}
+{"id": "c420", "task": "equiv", "var": "x", "lhs": "3*x*exp(x) + exp(x)", "rhs": "(3*x + 1)*exp(x)"}
+{"id": "c421", "task": "equiv", "var": "x", "lhs": "x + 7", "rhs": "x + 7"}
+{"id": "c422", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c423", "task": "equiv", "var": "x", "lhs": "(5*x + 6)**2", "rhs": "25*x**2 + 60*x + 36"}
+{"id": "c424", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c425", "task": "equiv", "var": "x", "lhs": "x*(7*x + 8)**2", "rhs": "49*x**3 + 112*x**2 + 64*x"}
+{"id": "c426", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c427", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c428", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c429", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c430", "task": "equiv", "var": "x", "lhs": "2*x*cos(x) + 9*cos(x)", "rhs": "(2*x + 9)*cos(x)"}
+{"id": "c431", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c432", "task": "equiv", "var": "x", "lhs": "x*(6*x + 6)**2", "rhs": "36*x**3 + 72*x**2 + 36*x"}
+{"id": "c433", "task": "equiv", "var": "x", "lhs": "7*x*cos(x) + 7*cos(x)", "rhs": "7*(x + 1)*cos(x)"}
+{"id": "c434", "task": "equiv", "var": "x", "lhs": "(4*x + 7)**3", "rhs": "64*x**3 + 336*x**2 + 588*x + 343"}
+{"id": "c435", "task": "equiv", "var": "x", "lhs": "(6*x + 9)**3", "rhs": "216*x**3 + 972*x**2 + 1458*x + 729"}
+{"id": "c436", "task": "equiv", "var": "x", "lhs": "3*x*exp(x) + 2*exp(x)", "rhs": "(3*x + 2)*exp(x)"}
+{"id": "c437", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c438", "task": "equiv", "var": "x", "lhs": "7*x*sin(x) + 8*sin(x)", "rhs": "(7*x + 8)*sin(x)"}
+{"id": "c439", "task": "equiv", "var": "x", "lhs": "8*x*log(x) + 2*log(x)", "rhs": "2*(4*x + 1)*log(x)"}
+{"id": "c440", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c441", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c442", "task": "equiv", "var": "x", "lhs": "(x + 2)**2", "rhs": "x**2 + 4*x + 4"}
+{"id": "c443", "task": "equiv", "var": "x", "lhs": "x*(5*x + 6)**2", "rhs": "25*x**3 + 60*x**2 + 36*x"}
+{"id": "c444", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c445", "task": "equiv", "var": "x", "lhs": "x*(4*x + 5)**2", "rhs": "16*x**3 + 40*x**2 + 25*x"}
+{"id": "c446", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c447", "task": "equiv", "var": "x", "lhs": "x*(5*x + 1)**2", "rhs": "25*x**3 + 10*x**2 + x"}
+{"id": "c448", "task": "equiv", "var": "x", "lhs": "x*(6*x + 3)**3", "rhs": "216*x**4 + 324*x**3 + 162*x**2 + 27*x"}
+{"id": "c449", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c450", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c451", "task": "equiv", "var": "x", "lhs": "3*x*log(x) + 5*log(x)", "rhs": "(3*x + 5)*log(x)"}
+{"id": "c452", "task": "equiv", "var": "x", "lhs": "8*x*sin(x) + 6*sin(x)", "rhs": "2*(4*x + 3)*sin(x)"}
+{"id": "c453", "task": "equiv", "var": "x", "lhs": "x*(7*x + 6)**2", "rhs": "49*x**3 + 84*x**2 + 36*x"}
+{"id": "c454", "task": "equiv", "var": "x", "lhs": "x + 6", "rhs": "x + 6"}
+{"id": "c455", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c456", "task": "equiv", "var": "x", "lhs": "x + 7", "rhs": "x + 7"}
+{"id": "c457", "task": "equiv", "var": "x", "lhs": "x + 7", "rhs": "x + 7"}
+{"id": "c458", "task": "equiv", "var": "x", "lhs": "x*(8*x + 3)**3", "rhs": "512*x**4 + 576*x**3 + 216*x**2 + 27*x"}
+{"id": "c459", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c460", "task": "equiv", "var": "x", "lhs": "(sin(x) + cos(x))**2", "rhs": "sin(x)**2 + 2*sin(x)*cos(x) + cos(x)**2"}
+{"id": "c461", "task": "equiv", "var": "x", "lhs": "x*(7*x + 6)**2", "rhs": "49*x**3 + 84*x**2 + 36*x"}
+{"id": "c462", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c463", "task": "equiv", "var": "x", "lhs": "x*(2*x + 5)**3", "rhs": "8*x**4 + 60*x**3 + 150*x**2 + 125*x"}
+{"id": "c464", "task": "equiv", "var": "x", "lhs": "x*(4*x + 8)**3", "rhs": "64*x**4 + 384*x**3 + 768*x**2 + 512*x"}
+{"id": "c465", "task": "equiv", "var": "x", "lhs": "(4*x + 8)**2", "rhs": "16*x**2 + 64*x + 64"}
+{"id": "c466", "task": "equiv", "var": "x", "lhs": "x + 3", "rhs": "x + 3"}
+{"id": "c467", "task": "equiv", "var": "x", "lhs": "x*cos(x) + 2*cos(x)", "rhs": "(x + 2)*cos(x)"}
+{"id": "c468", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c469", "task": "equiv", "var": "x", "lhs": "4*x*log(x) + 4*log(x)", "rhs": "4*(x + 1)*log(x)"}
+{"id": "c470", "task": "equiv", "var": "x", "lhs": "(8*x + 2)**2", "rhs": "64*x**2 + 32*x + 4"}
+{"id": "c471", "task": "equiv", "var": "x", "lhs": "(x + 2)**2", "rhs": "x**2 + 4*x + 4"}
+{"id": "c472", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c473", "task": "equiv", "var": "x", "lhs": "x + 7", "rhs": "x + 7"}
+{"id": "c474", "task": "equiv", "var": "x", "lhs": "(9*x + 1)**3", "rhs": "729*x**3 + 243*x**2 + 27*x + 1"}
+{"id": "c475", "task": "equiv", "var": "x", "lhs": "x + 8", "rhs": "x + 8"}
+{"id": "c476", "task": "equiv", "var": "x", "lhs": "x + 1", "rhs": "x + 1"}
+{"id": "c477", "task": "equiv", "var": "x", "lhs": "(x + 5)**2", "rhs": "x**2 + 10*x + 25"}
+{"id": "c478", "task": "equiv", "var": "x", "lhs": "x*(9*x + 1)**2", "rhs": "81*x**3 + 18*x**2 + x"}
+{"id": "c479", "task": "equiv", "var": "x", "lhs": "5*x*cos(x) + 3*cos(x)", "rhs": "(5*x + 3)*cos(x)"}
+{"id": "c480", "task": "equiv", "var": "x", "lhs": "x*(6*x + 2)**3", "rhs": "216*x**4 + 216*x**3 + 72*x**2 + 8*x"}
+{"id": "c481", "task": "equiv", "var": "x", "lhs": "x + 9", "rhs": "x + 9"}
+{"id": "c482", "task": "equiv", "var": "x", "lhs": "x + 6", "rhs": "x + 6"}
+{"id": "c483", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c484", "task": "equiv", "var": "x", "lhs": "(7*x + 5)**3", "rhs": "343*x**3 + 735*x**2 + 525*x + 125"}
+{"id": "c485", "task": "equiv", "var": "x", "lhs": "6*x*cos(x) + 4*cos(x)", "rhs": "2*(3*x + 2)*cos(x)"}
+{"id": "c486", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c487", "task": "equiv", "var": "x", "lhs": "(log(x) + cos(x))**2", "rhs": "log(x)**2 + 2*log(x)*cos(x) + cos(x)**2"}
+{"id": "c488", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c489", "task": "equiv", "var": "x", "lhs": "7*x*cos(x) + 7*cos(x)", "rhs": "7*(x + 1)*cos(x)"}
+{"id": "c490", "task": "equiv", "var": "x", "lhs": "(4*x + 1)**2", "rhs": "16*x**2 + 8*x + 1"}
+{"id": "c491", "task": "equiv", "var": "x", "lhs": "(log(x) + sin(x))**2", "rhs": "log(x)**2 + 2*log(x)*sin(x) + sin(x)**2"}
+{"id": "c492", "task": "equiv", "var": "x", "lhs": "x + 5", "rhs": "x + 5"}
+{"id": "c493", "task": "equiv", "var": "x", "lhs": "x*sin(x) + 5*sin(x)", "rhs": "(x + 5)*sin(x)"}
+{"id": "c494", "task": "equiv", "var": "x", "lhs": "x + 4", "rhs": "x + 4"}
+{"id": "c495", "task": "equiv", "var": "x", "lhs": "x + 2", "rhs": "x + 2"}
+{"id": "c496", "task": "equiv", "var": "x", "lhs": "x*(8*x + 3)**3", "rhs": "512*x**4 + 576*x**3 + 216*x**2 + 27*x"}
+{"id": "c497", "task": "equiv", "var": "x", "lhs": "(exp(x) + log(x))**2", "rhs": "exp(2*x) + 2*exp(x)*log(x) + log(x)**2"}
+{"id": "c498", "task": "equiv", "var": "x", "lhs": "6*x*exp(x) + 4*exp(x)", "rhs": "2*(3*x + 2)*exp(x)"}
+{"id": "c499", "task": "equiv", "var": "x", "lhs": "7*x*log(x) + 6*log(x)", "rhs": "(7*x + 6)*log(x)"}
