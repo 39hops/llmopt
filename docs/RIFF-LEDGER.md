@@ -2335,7 +2335,11 @@ pooling winners was his call).
   fixed keys. (2) BLACKHOLE MODE — when routing concentrates (low
   routing entropy / a coalition dominating), collapse the co-routed
   coalition into one DENSE block at runtime; sparse when exploring,
-  dense when committed. Measured constraints that fence it: LAM-MERGE
+  dense when committed. [REFUTED 2026-08-04, entropy-trigger half:
+  router entropy RISES monotonically in 100% of prompts, confirmed
+  decode-only after the prefix-artifact amendment (GT1-ITINERARY-0 +
+  AMENDMENT GT1-TRAJ-CORR) — the field dilates, never commits; any
+  trigger must be position- or miss-based, never entropy-level.] Measured constraints that fence it: LAM-MERGE
   (RESULTS:14090) — averaging DIVERSE experts is destructive (-12,
   2.4 sigma at lambda 0.1) and merge-free only above the collapse
   threshold, so runtime densification is legal ONLY for
@@ -2474,3 +2478,46 @@ pooling winners was his call).
   of THEORY Row 28 ("prediction pays only where variance lives")
   applied to routing, not a new law. Attribution: reviewer sweep
   (proposals), Fable (verification + booking).
+
+- **2026-08-04 (house, speculative-survey adoptions; reviewer
+  seat proposals, Fable-verified citations): FOUR GROUNDED TRANSFERS
+  banked, four killed.** BANKED: (1) ROUTING-BITS LEDGER — a
+  residency template is a context model in the coding sense; code
+  the decode-only routing stream under {uniform, per-layer marginal,
+  LOO decode template, previous-layer-conditional} and the bits/slot
+  deltas price what the router actually DECIDES (replaces the
+  entropy license's arbitrary 0.15-bit threshold with a
+  decision-theoretic currency; kin: V4-MERGED-LATTICE joint-coding
+  +0.307 bits). Killers: template buys <0.1 bits over marginal
+  (timetable story false), or prev-layer ≈ template (co-routing adds
+  nothing here). Desk, zero GPU; instrument gap: traj rows lack
+  router SCORES (one-line edit if a margin-conditioned coder is
+  wanted). (2) PREFETCH VIA THE PLACE-1 HARNESS — scratch/
+  place1_gravity.py (co-routing predictor + LRU cache sim) re-pointed
+  at GT-1 decode traj rows IS the bandwidth-matched control
+  GT1-TRAJ-CORR owes phase-prefetch; also transports the
+  spec-decode cost-ratio law (accept/reject <-> resident/miss) into
+  a regime that finally satisfies it (miss = multi-MB fetch,
+  predict = dot product; F2c measured miss-driven throughput).
+  Killer: conditional prefetch fails PLACE-1's +5-point bar on this
+  vehicle. (3) CHURN JUDGE (Row 28 instance) — full and crest
+  solvers disagree on ~40% of the gate; predict per-problem which
+  solves it (candidate feature: out-of-keep-set miss mass). AUC bar
+  0.6; MUST register its SPEND (arm-selection policy) up front or it
+  repeats the regret-probe null (real probe, nothing to buy).
+  (4) CREST AS DATA GENERATOR, not logit teacher — the dissociation
+  fence (ARM2 P4) makes logit-KD from a degenerate distribution a
+  known-shaped mistake; the right cell is sequence generation ->
+  oracle filter -> verified-AND-distinct yield vs the full model at
+  matched budget (drops into the existing diet pipeline). KILLED,
+  with reasons on record: Fourier-clock -> coalition mapping (no
+  shared observable; correlation-anatomy class), ZX/phase-teleport
+  -> routing graphs ("both are graphs" is not a mapping),
+  entropy-triggered anything (field dilates — see blackhole
+  refutation above), standalone syndrome-frame for misses (merged
+  into the churn judge, where its revive-if economics are actually
+  satisfied). Attribution: reviewer seat (mappings), house
+  (verification + banking); leverage-survey items (random-mask
+  control -> PRE-REG R6, pruning-cliff debt discharge, V4 residency
+  re-pin, crest-teacher, weight-reader labels) tracked in RESULTS/
+  queue rather than here.
