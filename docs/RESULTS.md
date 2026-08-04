@@ -18693,3 +18693,52 @@ instrument edit now serves three cells.
 FENCES: pooled gate+probe demand, one vehicle, one
 corpus; no gate was run; books as an observation
 scoping the riff, not a verdict on it.
+
+## VERDICT GRAVMOE-SEEDS-LADDER: the COND+QK direction does NOT graduate — P1 misses (1/3 new seeds add solves); the win is SEED-DEPENDENT (4/6 seeds positive, 0/6 negative); PLUS an instrument finding: gate SOLVES are not device-free even when the trajectory is (2026-08-04, 3080; regression PASS)
+
+Regression arm REPRODUCED 1fcfd187 exactly — the ladder
+is readable (jobs log: logs/seeds_ladder.log on the box;
+table in the session record).
+
+PAIRED TABLE (train gate, step-2000 cycle-mean loss):
+  seed 41: C 0/8 (tok 64/140, loss 5497) | CQ 0/8 (tok 48/140, loss 4509) — QK +0 solves, tok WORSE
+  seed 47: C 0/8 (tok 68/140, loss 5506) | CQ 0/8 (tok 65/140, loss 5539) — QK +0 solves, tok ~flat
+  seed 53: C 0/8 (tok 73/140, loss 5101) | CQ 3/8 (tok 133/140, loss 2392) — QK +3 solves, tok +60
+
+(P1) SOLVES: MISSES — QK-on adds >= +1 in only 1/3 new
+seeds (bar was >= 2/3). The no-regression clause HOLDS
+(no seed shows QK-on < QK-off on solves). Combined with
+the spent anchors (17/23/31: +2/+2/+3): 4/6 seeds
+positive, 2/6 zero, 0/6 negative. The honest state:
+COND+QK NEVER HURTS solves and sometimes helps
+dramatically (seed 53: 3/8 with 133/140 token-acc, the
+battery's best-ever gate row), but the direction is
+SEED-DEPENDENT, not graduated. Note the two flat seeds
+are also the two where the C arm itself sits at
+depressed token-acc (64-68/140 vs anchor 56 -> QK 94) —
+whether QK needs a "receptive" init is a mechanism
+question the ladder was not built to answer.
+(P2) TOKEN-ACC: MISSES — QK-on > QK-off in 1/3 new
+seeds (53 only; 41 clearly worse, 47 flat).
+(P3) HELDOUT: FIRES — 0/8 everywhere, all 7 arms.
+Generalization stays the wider-diet rung's question.
+
+INSTRUMENT FINDING (unregistered, books as its own
+fence): REG17's generation is bit-identical to the Mac
+anchor (token-acc 94/140 standard, identical trajectory
+sha) yet scores TRAIN 1/8 vs the booked 2/8. Identical
+weights + identical greedy text => the delta lives in
+sympy_assess (fork-boxed simplify, 10 s timebox) —
+timeout/library-version sensitivity across
+machines/load. CONSEQUENCE: trajectory shas are
+device-free (P4-DEVICE) but GATE SOLVE COUNTS ARE NOT —
+cross-device solve comparisons in this battery need the
+generated TEXT compared (device-free) with sympy scoring
+re-run on ONE machine, or the timebox raised and
+re-measured. Until then, +-1 solve cross-device is
+instrument noise, which further weakens any 8-row
+cross-device pooling.
+FENCES: 8-row gate, sign-count bars (no sigma exists);
+seeds 41/47/53 now SPENT; the seed-53 row is the
+strongest single gate result in the battery and is n=1
+by construction.
