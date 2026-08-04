@@ -19044,3 +19044,9 @@ R4/R5 HEADLINE UNTOUCHED: the reviewer byte-verified
 every gate dict, delta, and conjunct across both
 verdicts (R5 rows confirmed in two independent
 artifacts) — the crest claim stands as booked.
+
+POSTSCRIPT to AMENDMENT GT1-TRAJ-CORR, same hour: the
+seedslad receipts ARE committed (d88bbff carries all 7
+arm logs) — the "untracked per convention" line is the
+error, not the commit; small text receipts belong in
+git and these are in.

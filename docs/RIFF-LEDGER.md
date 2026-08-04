@@ -2467,9 +2467,10 @@ pooling winners was his call).
   re-aims the graph-anatomy bank (RIFF:56) from weight space to
   function space and gains a partial positive kin (the 64-cell
   autopsy: essentiality is cell-sparse, ~13/64 load-bearing).
-  (3) PREMISE FENCES: "the GT-1 ridge" rests on a pooled +4.7 <
-  +7-bar reading — house-born-at-the-ridge is BLOCKED on the owed
-  paired-seed pass; entropy-license framing upgraded: it is a TEST
+  (3) PREMISE FENCES: "the GT-1 ridge" fence DISCHARGED 2026-08-04: R4/R5 landed the
+  paired-seed pass (crest at 45.3% beats paired full 6/6 seeds,
+  pooled +14.7, R5 fully registered) — house-born-at-the-ridge is
+  UNBLOCKED; entropy-license framing upgraded: it is a TEST
   of THEORY Row 28 ("prediction pays only where variance lives")
   applied to routing, not a new law. Attribution: reviewer sweep
   (proposals), Fable (verification + booking).
