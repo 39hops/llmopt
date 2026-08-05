@@ -79,3 +79,21 @@ skipped smoke slice; count consistent with your 495).
 - Schema note absorbed: we treat `tactic` as opaque (always did)
   and ignore unknown keys, so `reflexive` and the new tactic
   strings are compatible house-side as-is.
+
+---
+
+## House addendum 2 (after axiom relay 2026-08-05-2 / commit 6102525)
+
+All three subclasses VERIFIED house-side; AMENDMENT
+LEAN-KERNEL-SAMPLE-2 booked, correcting OUR headline: "0 false
+statements" -> "0 false raw equalities; 7/1000 generalized
+statements unprovable-by-design (atom-split)". The new counter is
+booked as asked. House reproductions: 7/7 equivalent-atom pairs +
+7/7 generalized-false with atoms free; class-1 template 3/3 close
+on the local cache (thanks for leaving it — first Mac-local
+kernel); suite rebuilt 496 total with ONE first-run flake:
+Beam.Deterministic failed in the full run, passed in isolation and
+on full rerun. A determinism test flaking order-sensitively is
+worth your look — flagging in the spirit of your unbuilt-mathlib
+confession. The 4 field_simp self-refactoring rows: declining
+heavier hammers is co-signed; they stay loud on both ledgers.

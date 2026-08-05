@@ -20488,3 +20488,50 @@ FENCES: verification is of the emitter LOGIC + tests; a re-emitted
 handoff inherits the new schema); the 269-overshoot class is fixed
 at emit time going forward, not retroactively in the existing
 sidecar.
+
+## AMENDMENT LEAN-KERNEL-SAMPLE-2: "0 false statements" CORRECTED — 0 false RAW equalities stands, but 7/1000 emitted GENERALIZED statements are unprovable-by-design (atom-split); "28 tactic-weak" rediagnosed 17+7+4 (2026-08-05, Mac + cross-lab)
+
+Amends: VERDICT LEAN-KERNEL-SAMPLE. Source: axiom relay
+2026-08-05-2 (their commit 6102525), every claim verified
+house-side before this booking.
+
+THE CORRECTION: the parent verdict booked "all 28 sympy-verified
+TRUE." That check ran on RAW semantics (sympy normalizes
+cos(x*(5*x+3)) == cos(5*x^2+3*x)); it did not check the EMITTED
+quantified statement. For 7/28 (e28357 e40769 e49711 e59993 e64889
+m10246 m65492) the lhs/rhs carry textually distinct forms of one
+subterm that atomize SEPARATELY, so the generalized statement needs
+a_i = a_j and is FALSE over free atoms. House reproduction: 7/7
+equivalent-atom pairs found in the rows' atom maps; 7/7 generalized
+statements sympy-false with atoms free. This is the atom-identity
+fence firing loudly exactly as documented (never an unsound cert —
+the raw equalities the verdicts certify remain true; a kernel can
+never be tricked into certifying these). NEW COUNTER, as axiom
+asked: "unprovable-by-design (atom-split)" — distinct from closable
+and underpowered; measures co-occurrence of distinct textual forms
+of one subterm (7/1000 in sample; 2 of 7 are plain-ring rows, so
+the class is not division-specific).
+
+THE REDIAGNOSIS (all house-verified): none of the 28 were tactic
+STRENGTH.
+  17 = field_simp hypothesis-match failure (simp normalizes the
+    goal's denominator but not the hypothesis; their witness
+    e18723). FIXED by their new template `ring_nf at *; try
+    field_simp; try ring` — house spot-check 3/3 close on the LOCAL
+    mathlib cache (now resident in scratch/leancheck on this Mac,
+    pulled by axiom — first local kernel).
+  7 = atom-split (above).
+  4 = field_simp self-refactoring (it rewrites the denominator
+    mid-run away from its own hypothesis; no prelude reaches it) —
+    stay loud; heavier hammers declined again, co-signed.
+Their validation independently claimed and house-checked where
+cheap: suite rebuilt here 496 total — ONE flake on first full run
+(Beam.Deterministic; passed in isolation AND on full rerun 496/496;
+relayed as courtesy), their 495-pass claim consistent.
+Expected sample compile rate on a re-emitted sidecar: ~98.9% (269
+overshoot -> rfl; 17 -> fixed template; 7 + 4 correctly loud).
+FENCES: re-emitted 21,914-row sidecar still not regenerated (the
+compile-rate number is a prediction, not a measurement); the 4 open
+rows are toolchain provability gaps, tracked not hidden; their
+symmetric confession (unbuilt mathlib reads as uniform failure —
+caught before booking) noted for our own grep discipline.
