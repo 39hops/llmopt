@@ -20175,3 +20175,42 @@ FENCES: one seed (resolution law: deltas < ~7 solves unresolved);
 single arm; keep-set is branch-core-derived (demand logs from four
 different corpora, mixed 2-way/3-way arities — a structural object,
 not a demand rank); probe text books either way.
+
+## VERDICT MOE-GT-5: neither prediction fires — the union-of-bases mask scores 55/120, resurrecting the dead core (0 -> 55) with mostly VERBAL experts (2026-08-05, Mac)
+
+Pre-reg: MOE-GT-5. Receipts: jobs/gt5_union.log (rc=0, gate 255s).
+Row appended to logs/opus/moe_gt1.jsonl (arm 2, frac label 0.611,
+KEEPSET checkpoints/gt5_union_keep.json).
+
+  GATE 55/120 {1: 21, 2: 17, 3: 17} (sums verified)
+  open-loop recall 0.7292 | closed-loop 0.7251 (gap 0.004)
+  probe: coherent English, non-degenerate (mildly repetitive
+  "the algorithm" listing — nothing like D3's '1.1.1.1' collapse)
+
+NEITHER registered prediction fires. P-FRACTION dead: 55 vs full 64
+is a 9-solve deficit (~1.8 sigma) and 8 below the top-demand 61.8%
+mask's 63 — the 61.1~61.8 coincidence is demoted to numerology as
+expected. P-IDENTITY's registered strength ("plausibly the 0/120
+class") ALSO wrong, and wrong in the interesting direction:
+  - D3: symbolic core alone (37/128, recall 0.554) = 0/120, probe
+    degenerate.
+  - GT-5: core + VERBAL core (78/128, recall 0.729) = 55/120, probe
+    coherent.
+  Adding ~41 mostly-verbal-branch experts to the dead symbolic core
+  resurrects 86% of full math capability. Calibration makes it
+  sharper: R6's cross-domain masks carried HIGHER coverage
+  (0.78-0.80) and scored only 19-21/120; random-45% at comparable
+  fraction scored 0. The union mask beats the coverage->capability
+  mapping every prior mask followed.
+READING (one seed, stated cautiously): math capability does not
+live only in "math extension" experts — a substantial share routes
+through the verbal branch's base population once it is available,
+OR the shoulder between recall 0.55 and 0.73 is far steeper than
+the demand-ranked ladder suggested. The two readings separate with
+a control the demand logs already permit: a matched-size mask of
+core + 41 RANDOM non-core experts (banked, not queued — RULESEED
+machinery exists).
+FENCES: one seed 1234 (resolution law: the 8-solve gap to the
+61.8% top-demand mask is ~1.6 sigma — direction suggestive, not
+claimed); single arm; keep-set mixes 2-way/3-way arities by
+construction; probe repetitiveness noted, not scored.
