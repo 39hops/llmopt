@@ -117,8 +117,14 @@ def main():
         else:
             diff_bad.append((r.get("id", i), ours, r["lean"]))
         lines.append(f"-- id: {r.get('id', i)}\n{r['lean']}")
+    # maxErrors: warnings count toward Lean's default 100-cap, which
+    # aborted the first sampled pass at ~row 470 with only 2 real
+    # errors — rows past the abort were silently UNCHECKED. Linter
+    # off + cap raised so every row is actually kernel-checked.
     (proj / "Certs.lean").write_text(
-        "import Mathlib.Tactic\n\n" + "\n\n".join(lines) + "\n")
+        "import Mathlib.Tactic\n\nset_option maxErrors 10000\n"
+        "set_option linter.unusedVariables false\n\n"
+        + "\n\n".join(lines) + "\n")
     print(f"[lean] rows {len(rows)} | statement-diff ok {diff_ok} "
           f"skip {diff_skip} MISMATCH {len(diff_bad)}")
     for rid, ours, theirs in diff_bad[:5]:
