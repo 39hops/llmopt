@@ -20294,3 +20294,34 @@ one variable at a time, as registered).
 FENCES: n=3 seeds, one device, sigma~5 per gate (per-pair deltas
 individually 1.8-5 sigma; the pooled direction is the claim);
 union keep-set unchanged across seeds (frozen artifact).
+
+## OBSERVATION GT-VERBAL-SHARE: when FREE, math routes only 2.7% of decode demand through verbal-only experts — the resurrection is COMPENSATORY, not the normal path (2026-08-05, Mac, desk)
+
+Source: reviewer evidence-sweep proposal (discriminator #2), run
+in-line. Desk computation on the certified math decode traj
+(moe_gt1_traj_v2, decode-only, DROP_TAIL) vs the frozen branch
+populations:
+
+  math decode demand inside the VERBAL core:        0.1039
+  ... inside verbal-ONLY (verbal core minus symbolic core): 0.0274
+  ... inside the SYMBOLIC core:                     0.7540
+
+READING: with the full router available, math essentially does NOT
+use the verbal branch (2.7% of demand). "Verbal fallback" as a
+description of NORMAL 30B math operation is dead on arrival. What
+GT-5/5b measured is therefore a genuine FALLBACK in the literal
+sense: remove math's extension experts and the model can partially
+re-route through verbal machinery it would never choose freely
+(0 -> 42-55/120, at a 17.3-solve pooled tax). The verbal-tax
+question shifts from inference-time routing (measured: no tax) to
+training-history/representation (the math-native crystal contrast —
+where the corpus evidence actually lives).
+FENCES: recall/share numbers are NOT comparable across demand-log
+axes (the GT2-EXCLUSION 4c fence: 0.754 here is decode-traj-axis;
+D3's 0.554 was arm0-json-axis — different logs, never mix); shares
+are tie-fill upper bounds; one seed's traj. The emission-vs-
+reasoning third reading (reviewer F7: verbal experts may restore
+TEXT EMISSION, not math computation — D3's probe was degenerate,
+GT-5's coherent) is NOT separated by this observation and travels
+to the random-fill control's design: add a degenerate-output-rate
+readout per arm.
