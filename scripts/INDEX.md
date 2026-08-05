@@ -1631,6 +1631,10 @@ Gauge-slack 4-crystal cell (pre-reg 2026-07-27 night, RIFF-LEDGER).
 - `perm_align2(a, b)`
 - `rot_align(a, b)`
 
+### scratch/gen_lean_corpus.py
+Generator for the Lean-tier smoke corpus (2026-08-03).
+
+
 ### scratch/graph_mod_sigma.py
 A2 (revival-sweep Tier A, 2026-07-31): graph-modularity Q dispersion on the three same-diet wfloor_d256 seed births — the "free sigma" the 07-26 NULL entry named but never ran. The +0.030 dQ verdict was a BAR-based null with unmeasured dispersion; this cell measures it and re-adjudicates. CPU, minutes. Usage: python scratch/graph_mod_sigma.py
 
@@ -1680,6 +1684,21 @@ Potential-shaped GRPO on the gen-6 champion (2026-07-21, Artin GO — 'ahead of 
 
 - `phi(s)`
 - `shaped_collect(model, tok, dev, n_groups, seed0)`
+
+### scratch/gt2_code_arm0.py
+MOE-GT-2 arm D3: CODE arm-0 — decode-only demand log on the codegen ladder (pre-reg MOE-GT-2, 2026-08-04).
+
+- `select_tasks(by_rung, n)` — Fixed 120-task rule: round-robin across non-empty rungs in RUNGS
+- `main()`
+
+### scratch/gt2_jaccard.py
+MOE-GT-2 coalition Jaccard analysis (D2/D3 readouts, committed post-hoc so the booked numbers are re-derivable — they were desk computations in-session on 2026-08-04).
+
+- `decode_counts(path, pred=lambda r: True)`
+- `keep(counts, n=128, top_k=8)`
+- `jmean(ka, kb)`
+- `coverage(demand, kp)` — Count-weighted fraction of `demand` routed inside keep-set kp.
+- `main()`
 
 ### scratch/head_autopsy.py
 THE HEAD AUTOPSY (pre-reg 2026-07-29 eve): per-(layer, head) single-cell deletion map on the h8 EMA crystal. The day census deleted a head INDEX across all layers (a column); this deletes one (layer, head) cell at a time — 64 cells on the proxy gate (n=8/level, +-2 noise, read the map shape), then FULL gates on control + min/max cells. __main__-guarded.
@@ -1745,6 +1764,7 @@ House-side batch checker for axiom's Lean certificate sidecars (relays 2026-08-0
 - `sstr_to_lean(s, atoms)` — sstr (tier-1 subset) -> Lean expression text. Deliberately
 - `rederive(row)` — Our canonical statement text from (lhs, rhs, atoms) + tactic.
 - `norm(s)`
+- `ac_equal(ours, theirs)` — Statement equality up to associativity/commutativity: compare
 - `main()`
 
 ### scratch/lloydmax_race.py
@@ -1826,6 +1846,22 @@ METABOLIC V5 session 1 (spec 2026-07-23-metabolic-v5; dd arm retired per disagre
 - `sign_state()`
 - `try_state(cur0, seed0, plies=8)`
 - `probe(tag)`
+
+### scratch/moe_gt1.py
+MOE-GT-1 arm 0: the full-residency oracle run (pre-reg 2026-08-03).
+
+- `instrument(model)` — Class-patch every sparse-MoE block to record top-k picks, router
+- `tail_share(mass_row, frac=0.25)` — Share of total router mass carried by the top-`frac` experts.
+- `main()`
+
+### scratch/moe_gt1_arm2.py
+MOE-GT-1 arm 2: residency replay at 50% / 25% / 12.5% (pre-reg 2026-08-03).
+
+- `keep_sets_from_counts(counts, frac, top_k)` — Per-layer keep-sets at fraction `frac`. RULE env selects the
+- `open_loop_recall(counts, keep)` — Count-weighted fraction of arm-0 TRUE demand inside the keep-set.
+- `instrument(model, keep)` — Class-patch: masked routing (kept experts only) + closed-loop
+- `run_gate(model, tok, problems, frac, state=None)`
+- `main()`
 
 ### scratch/muon_3ep_d256.py
 Muon at the STANDARD 3-epoch schedule (null-revival mix, pre-reg 2026-07-28 night): the Muon crater (10/34) was measured only in single-pass streaming with LR coupled to the surprise rider; the banked variants row says published Muon wins live at standard schedules. One cell: control construction (length-sorted BS=32, shuffled batch order, 3ep) with Muon (ns5 orthogonalized momentum) on 2-D interior weights, AdamW (OneCycle 3e-4) on embeddings/head/ norms. Comparator wfloor_d256 65 (same construction, all-AdamW).
