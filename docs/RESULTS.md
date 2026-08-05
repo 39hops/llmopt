@@ -20002,3 +20002,108 @@ anatomy sharpens again: math-excluded experts are non-core symbolic-
 extension experts AND largely verbal-branch residents (dialog/prose
 Jaccard vs math ~0.16-0.19 says most of the other 70/128 live
 somewhere — the verbal base is a 48-expert candidate).
+
+## AMENDMENT MOE-GT-4-REVIEW: corrected null (2-way = 26.3, not 11.9), "MORE coherent" RETRACTED (matched 2-way inverts: math&phys 52.1 > verbal 48.5), 0.92 provenance fixed, shared-SYSTEM confound named (2026-08-05, Mac)
+
+Amends: VERDICT MOE-GT-4. Source: reviewer red-team pass (Opus,
+read-only), every item verified house-side against the quoted lines
+and re-run through the corrected scratch/gt4_verbal_core.py before
+booking. The P-VBRANCH DIRECTION stands (0.72 vs 0.16-0.23 is not
+in dispute); the STRENGTH and two supporting claims do not.
+
+1. WRONG NULL (headline number). The pre-reg and verdict used the
+   3-way independence null k*(k/128)^2 = 11.9, inherited from
+   gt2_jaccard's three-domain core. The verbal core is a TWO-way
+   intersection; the correct null is k*(k/128) = 26.3. Corrected
+   headline: verbal core 48.5/58 vs 26.3 null = 1.84x chance (was
+   claimed 4.1x). Error was pre-registered (honest inheritance),
+   now fixed in the script with a comment naming this amendment.
+2. "LARGER than the symbolic core, MORE coherent" RETRACTED — arity
+   mismatch (2-way vs 3-way intersections are not comparable).
+   Matched 2-way sizes: |math&phys| 52.1, |proofs&math| 48.1,
+   |prose&dialog| 48.5. Verbal coherence is ORDINARY for a
+   within-branch pair (equal to proofs-math, below math-phys), not
+   superior. The hierarchy display's size annotations inherit this.
+3. PROVENANCE FIX: GT2-CORE-0's 0.92 containment is the
+   leave-one-out (math&code in phys) WITHIN the three symbolic
+   corpora (RESULTS L19731), not a fourth-corpus (proofs)
+   measurement — the verdict's vacuity post-mortem conflated it
+   with GT-3's 0.901. Consequence stands with the correct reason:
+   leave-one-out is the non-vacuous form, and NO non-vacuous
+   coherence check exists on the verbal side yet (would need a
+   third verbal corpus).
+4. GAP WORDING SOFTENED: the verbal null-to-cross gap (0.145-0.202)
+   is ~2x math-phys's (0.066-0.119), not "matching" it. Defensible
+   statement: far above the cross-branch band, inside the symbolic
+   family's absolute Jaccard range, weaker than the tightest
+   symbolic pair, comparable to proofs-math.
+5. MARGINS NOW STATED: per-layer min Jaccard(prose,dialog) 0.5676
+   is BELOW the registered >=~0.6 line (mean fires; min misses —
+   mean-vs-min was unregistered); dialog-code 0.2275 passes the
+   <=~0.25 line at 91% of it; dialog's cross-branch band is
+   systematically ~+0.03 above prose's, not identical; containment
+   spread dialog 0.334 vs prose 0.245 is unexplained and mildly
+   cuts against branch homogeneity.
+6. RE-DERIVATION SHIPPED: GT-3's booked numbers were desk calcs
+   with no committed script (the pre-gt2_jaccard situation).
+   scratch/gt4_verbal_core.py now re-derives ALL of them:
+   containment proofs 0.8987 (booked 0.901), prose 0.2453 (0.250),
+   Jaccard proofs-math/phys/code 0.7111/0.7009/0.5224 (booked
+   0.707/0.696/0.529), proofs-prose 0.1770 (0.182). Uniform ±0.006
+   agreement; the verdict's "layer-averaging rounding" attribution
+   was an unverified guess — restated as: unreproduced ±0.006
+   desk-calc discrepancy, consistent across all eight numbers,
+   booked values within it.
+7. UNFENCED CONFOUND NAMED (the big one): prose and dialog SHARE a
+   neutral SYSTEM prompt that no symbolic corpus has — the one
+   variable that co-varies perfectly with the claimed branch. A
+   shared 6-token system prefix is a live alternative generator of
+   Jaccard(prose,dialog)=0.72. Also named: shared 4x20 template
+   geometry (a control against LOW Jaccard, an extra shared term
+   for HIGH); split-half nulls are not apples-to-apples (dialog
+   corpus shuffled, prose in template-block order, halves cut by
+   prompt%2). "The hierarchy is SYMMETRIC" is DOWNGRADED to
+   provisional pending the SYSTEM-swap control (MOE-GT-4b,
+   pre-registered below).
+8. BANKED FOR the verdict (reviewer, offered in balance): dialog's
+   topics are purely everyday-social while prose's include natural-
+   science subjects, yet dialog sits ~0.03 ABOVE prose vs the
+   symbolic domains — evidence against a science-content
+   explanation of the cross-branch band.
+
+## PRE-REG MOE-GT-4b: the SYSTEM-swap control — how much of Jaccard(prose, dialog)=0.72 is the shared system prompt? (2026-08-05, Mac)
+
+The MOE-GT-4-REVIEW item-7 control. One arm: the SAME 80-prompt
+dialog corpus re-run under the MATH SYSTEM prompt (the one all four
+symbolic corpora carry), everything else identical — same driver,
+same model, same MAX_TOKENS=96 (now receipted in the log), same
+corpus file. Driver gains a FORCE_SYS=math env override (committed
+with this pre-reg).
+
+READOUTS (corrected pipeline, gt4_verbal_core controls):
+  (a) Jaccard(dialog_mathsys, dialog) — the DIRECT measurement of
+      the SYSTEM prompt's routing contribution (same corpus, one
+      variable);
+  (b) Jaccard(dialog_mathsys, prose) — does the verbal-branch
+      overlap survive losing the shared prefix?
+  (c) Jaccard(dialog_mathsys, math/phys/code/proofs) — does the
+      math SYSTEM alone pull an everyday-social corpus toward the
+      symbolic coalitions?
+
+REGISTERED PREDICTIONS:
+P-BRANCH-ROBUST: the branch is content-driven — (a) stays near the
+  dialog split-half null (>=~0.85), (b) stays in the within-branch
+  range (>=~0.6), (c) stays in/near the cross-branch band
+  (<=~0.30). The SYMMETRIC-hierarchy claim is restored from
+  provisional.
+P-SYSTEM-DRIVEN: the shared prefix carries the branch — (a) drops
+  materially below the null, (b) falls toward the cross-branch
+  band, (c) rises toward the symbolic coalitions. The GT-4 verdict
+  narrows to "prose and dialog route together UNDER A SHARED
+  SYSTEM"; GT-3's split (which carries the same confound in
+  mirror) inherits a re-examination flag.
+Partial outcomes book as measured; the (a) number is the effect
+size either way.
+FENCES: one seed; 96-token decode; the math SYSTEM on a chatty
+corpus may shorten/alter completions (EOS behavior travels with
+the treatment, named now); demand-only, no gate.

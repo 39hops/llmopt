@@ -67,23 +67,43 @@ def main():
         print(f"(iii) GT2-CORE-0 containment in {d}: "
               f"{sum(cont) / len(cont):.4f}")
 
-    # (iv) the verbal-core candidate
+    # (iv) the verbal-core candidate. NULL CORRECTED per AMENDMENT
+    # MOE-GT-4-REVIEW: a TWO-way intersection of independent 58/128
+    # keep-sets expects k*(k/128) = 26.3, not the 3-way 11.9 the
+    # pre-reg inherited from gt2_jaccard's three-domain core.
     vcore = {li: keeps["prose"][li] & keeps["dialog"][li]
              for li in keeps["prose"]}
     sizes = [len(v) for v in vcore.values()]
     print(f"(iv) VERBAL core: mean {sum(sizes)/len(sizes):.1f}/{k} per "
-          f"layer (min {min(sizes)} max {max(sizes)}; independence "
-          f"null {k*(k/128)**2:.1f})")
-    for d in ("prose", "dialog"):
-        cont = [len(vcore[li] & keeps[d][li]) / len(vcore[li])
-                for li in vcore if vcore[li]]
-        print(f"    verbal-core containment in {d}: "
-              f"{sum(cont) / len(cont):.4f}")
+          f"layer (min {min(sizes)} max {max(sizes)}; 2-way "
+          f"independence null {k*(k/128):.1f})")
+    # arity-MATCHED symbolic 2-way intersections (the fair size
+    # comparison; the 3-way 37.1 core is mechanically smaller)
+    for a, b in (("math", "phys"), ("proofs", "math")):
+        s = [len(keeps[a][li] & keeps[b][li])
+             for li in keeps[a] if li in keeps[b]]
+        print(f"    matched 2-way |{a} & {b}|: mean "
+              f"{sum(s)/len(s):.1f}")
     # symmetry check vs the symbolic base: overlap of the two cores
     ov = [len(vcore[li] & core[li]) / len(vcore[li] | core[li])
           for li in core if vcore[li] | core[li]]
     print(f"    Jaccard(verbal core, GT2-CORE-0): "
           f"{sum(ov) / len(ov):.4f}")
+
+    # GT-3 RE-DERIVATION (the booked 0.901/0.250 and proofs Jaccards
+    # were in-session desk calcs with no committed script — the
+    # gt2_jaccard.py situation again; this block is the re-derivable
+    # artifact, per AMENDMENT MOE-GT-4-REVIEW)
+    print("-- GT-3 re-derivation --")
+    for d in ("proofs", "prose"):
+        cont = [len(core[li] & keeps[d][li]) / len(core[li])
+                for li in core if core[li]]
+        print(f"GT2-CORE-0 containment in {d}: {sum(cont)/len(cont):.4f}")
+    for d in ("math", "phys", "code"):
+        m, lo = jmean(keeps["proofs"], keeps[d])
+        print(f"Jaccard(proofs, {d}): mean {m:.4f} min {lo:.4f}")
+    m, _ = jmean(keeps["proofs"], keeps["prose"])
+    print(f"Jaccard(proofs, prose): mean {m:.4f}")
 
 
 if __name__ == "__main__":

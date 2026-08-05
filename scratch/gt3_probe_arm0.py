@@ -30,6 +30,9 @@ TRAJ_OUT = Path(os.environ["TRAJ_OUT"])
 # prose rows use a neutral one (registered: the prose arm is a corpus
 # PLUS prompt treatment, like D3's code arm — fence travels).
 PROSE_SYSTEM = "You are a helpful writing assistant."
+# MOE-GT-4b: FORCE_SYS=math forces the math SYSTEM on every row
+# (the SYSTEM-swap control; one variable against the same corpus)
+FORCE_SYS = os.environ.get("FORCE_SYS")
 
 
 def main():
@@ -53,8 +56,12 @@ def main():
             state["prompt"] = i
             state["tpos"] = {}
             state["tail_done"] = {}
-            sys_prompt = (PROSE_SYSTEM if r["kind"] in ("prose", "dialog")
-                          else SYSTEM)
+            if FORCE_SYS == "math":
+                sys_prompt = SYSTEM
+            else:
+                sys_prompt = (PROSE_SYSTEM
+                              if r["kind"] in ("prose", "dialog")
+                              else SYSTEM)
             msgs = [{"role": "system", "content": sys_prompt},
                     {"role": "user", "content": r["prompt"]}]
             text = tok.apply_chat_template(
