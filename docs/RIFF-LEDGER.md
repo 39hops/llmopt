@@ -2651,3 +2651,19 @@ pooling winners was his call).
   learned math THROUGH language. Attribution: Artin (thesis +
   program connection), house (control design). Reviewer evidence
   sweep dispatched same-day.
+
+- **Verbal-fallback + verbal-tax riffs: ADJUDICATED same-day**
+  (VERDICTS GT-VERBAL-SHARE + MOE-GT-5c, 2026-08-05). Both routing-
+  level readouts came back negative: free-routing math uses
+  verbal-only experts for 2.7% of decode demand, and the causal
+  control showed random fill resurrects the dead core as well as
+  verbal fill (51/36/48 vs 55 at matched size/recall) — the
+  resurrection is a RECALL SHOULDER, not verbal machinery. The
+  verbal-tax thesis narrows to the training-history/representation
+  layer, where the corpus evidence already lives ("the internet was
+  drag", rare-domain math neurons). Weak unresolved residue: union
+  sits at/above the top of the random band at lower recall (+10
+  mean, inside draw spread). Attribution: Artin (hypothesis), house
+  (both discriminators). The sorted/dynamic-model riff INHERITS a
+  design simplification: above the resident core, paging schedules
+  are recall-coverage arithmetic, not expert-class identity.
