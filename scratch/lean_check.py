@@ -117,29 +117,48 @@ def main():
         else:
             diff_bad.append((r.get("id", i), ours, r["lean"]))
         lines.append(f"-- id: {r.get('id', i)}\n{r['lean']}")
-    # maxErrors: warnings count toward Lean's default 100-cap, which
-    # aborted the first sampled pass at ~row 470 with only 2 real
-    # errors — rows past the abort were silently UNCHECKED. Linter
-    # off + cap raised so every row is actually kernel-checked.
-    (proj / "Certs.lean").write_text(
-        "import Mathlib.Tactic\n\nset_option maxErrors 10000\n"
-        "set_option linter.unusedVariables false\n\n"
-        + "\n\n".join(lines) + "\n")
     print(f"[lean] rows {len(rows)} | statement-diff ok {diff_ok} "
           f"skip {diff_skip} MISMATCH {len(diff_bad)}")
     for rid, ours, theirs in diff_bad[:5]:
         print(f"[lean]   DIFF {rid}:\n    ours:   {ours}\n    theirs: {theirs}")
-    t0 = time.time()
-    p = subprocess.run([str(ELAN / "lake"), "env", "lean", "Certs.lean"],
-                       cwd=proj, capture_output=True, text=True)
+    # CHUNKED kernel check: Lean aborts a file at ~100 diagnostics
+    # (set_option maxErrors in-file did NOT lift it — verified live
+    # 2026-08-05: the 1000-row single file truncated twice, rows past
+    # the abort silently unchecked). 50-row chunks bound the damage
+    # per file and give complete coverage + per-row attribution.
+    CHUNK = 50
+    header = ("import Mathlib.Tactic\n\n"
+              "set_option linter.unusedVariables false\n\n")
+    t0, n_fail, fail_ids = time.time(), 0, []
+    for c0 in range(0, len(rows), CHUNK):
+        chunk = rows[c0:c0 + CHUNK]
+        (proj / "Certs.lean").write_text(
+            header + "\n\n".join(
+                f"-- id: {r.get('id', c0 + j)}\n{r['lean']}"
+                for j, r in enumerate(chunk)) + "\n")
+        p = subprocess.run([str(ELAN / "lake"), "env", "lean",
+                            "Certs.lean"], cwd=proj,
+                           capture_output=True, text=True)
+        if p.returncode != 0:
+            # map error line numbers back to row ids
+            body = (proj / "Certs.lean").read_text().splitlines()
+            for m in re.finditer(r"Certs\.lean:(\d+):\d+: error: (.+)",
+                                 p.stdout + p.stderr):
+                ln, msg = int(m.group(1)), m.group(2)
+                rid = next((body[i][7:] for i in range(ln - 1, -1, -1)
+                            if body[i].startswith("-- id: ")), "?")
+                n_fail += 1
+                fail_ids.append(rid)
+                print(f"[lean]   KERNEL-FAIL {rid}: {msg[:120]}")
+        done = min(c0 + CHUNK, len(rows))
+        print(f"[lean] chunk {c0 // CHUNK}: {done}/{len(rows)} checked, "
+              f"{n_fail} failures ({time.time() - t0:.0f}s)", flush=True)
     dt = time.time() - t0
-    ok = p.returncode == 0
-    print(f"[lean] kernel check: {'PASS' if ok else 'FAIL'} | "
-          f"{dt:.1f}s total, {dt / max(len(rows), 1) * 1e3:.0f} ms/cert "
+    print(f"[lean] kernel check: {len(rows) - n_fail}/{len(rows)} PASS "
+          f"| failures: {sorted(set(fail_ids))} | {dt:.1f}s total, "
+          f"{dt / max(len(rows), 1) * 1e3:.0f} ms/cert "
           f"(vs ~11 ms/row oracle)")
-    if not ok:
-        print(p.stdout[-2000:] or p.stderr[-2000:])
-    sys.exit(0 if ok and not diff_bad else 1)
+    sys.exit(0 if n_fail == 0 and not diff_bad else 1)
 
 
 if __name__ == "__main__":
