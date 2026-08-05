@@ -2716,3 +2716,37 @@ pooling winners was his call).
   temporal-pincer bank is the same shape run backward from the
   answer. Attribution: Artin (the asymmetry + the test), house
   (proof-text framing + oracle scoring). Banked, not queued.
+
+- **The TENET battery (temporal-pincer super-spec)** (Artin,
+  2026-08-05 late: "I really want the temporal pincer to work and
+  be BETTER than not having the reverse LLM... tie in the experts
+  FINDINGS... 'gravmoe experts + temporal-pincer
+  solving/converging wherever in the model'"): promote the
+  temporal-pincer bank from a single queued experiment to a HOUSE
+  BATTERY — a fixed multi-arm/rung suite in the GLOSSARY sense
+  (battery + rung entries added same-day). Building blocks
+  restricted to TESTED+VERIFIED wins only (multi-seed, cross-
+  device/implementation where the claim needs it): deterministic
+  birth (bit-identical cross-lab training = a reverse twin is
+  birthable EXACTLY, and cheaply — 1.5 s/1000 steps C++),
+  math-native diets + oracle gates (the scoring instruments), and
+  the MoE branch/coalition findings (branch bases, recall
+  shoulder, crest-as-different-solver). Candidate rungs, sketched
+  for the spec pass, NOT registered: R0 birth a reversed-token
+  twin on a certified diet (does reverse capability exist at all —
+  gate it); R1 pincer search on derivations (forward from problem,
+  backward from answer, meet-in-the-middle; win condition =
+  solves-or-wall-clock BEATS forward-only at matched budget, the
+  "better than not having it" bar, verified-AND-distinct fence);
+  R2 convergence anatomy (WHERE do the two directions meet — step
+  space first; if an MoE vehicle, do forward/backward route
+  through mirrored or shared expert populations — the gravmoe
+  tie-in); R3 pincer-as-miner (meet-in-the-middle rows as diet).
+  Spec discipline: full spec AFTER consolidation + review,
+  sub-agent seats authorized by Artin for the spec pass; every
+  rung pre-registered with its null; the reformulation-ensemble
+  and expand-then-simplify banks are adjacent (same non-monotone
+  family) and the spec should say whether they fold in or stay
+  separate. Attribution: Artin (battery framing + convergence
+  question + verified-wins-only clause), house (rung sketch).
+  BANKED, not queued.

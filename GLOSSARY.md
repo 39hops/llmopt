@@ -26,6 +26,8 @@ Scope tags may stack: `[DEVICE-SCOPED]` names the measured device, `[FORMAT-BOUN
 - **gate** — Unless qualified as a technical routing or identity gate, a declared evaluation used to accept, reject, or compare a model; capability gates run outputs and oracle-verify them ([`docs/RESULTS.md:14401`](docs/RESULTS.md)).
 - **arm** — One treatment or configuration within an experiment ([`docs/RESULTS.md:14167`](docs/RESULTS.md)).
 - **cell** — One named, usually preregistered experiment or comparison that may contain multiple arms; this is not a tensor location ([`docs/RESULTS.md:10184`](docs/RESULTS.md)).
+- **battery** — A fixed, reusable suite of arms or checks run as one instrument, so results compare across sessions, devices, or implementations; the deterministic integer battery is the canonical example ([`docs/RESULTS.md:12850`](docs/RESULTS.md)).
+- **rung** — One step in a pre-planned ladder of experiments or capabilities, each gated on the one below it; engines and programs advance rung by rung ([`docs/RESULTS.md:45`](docs/RESULTS.md)).
 - **booked** — Entered into the authoritative results record with its prediction, verdict, caveat, or receipt; booked does not mean positive ([`docs/RESULTS.md:15081`](docs/RESULTS.md)).
 - **banked** — Recorded as a future candidate awaiting a prerequisite or GO, not yet a result; the status is at the entry's time and can later change ([`docs/RESULTS.md:14254`](docs/RESULTS.md)).
 - **fence** — An explicit boundary or invalidation condition limiting a claim, comparison, or launch; scope must use the [controlled scope vocabulary](#controlled-scope-vocabulary) to name what was measured, never a conjectured class, and spell `Qwen2.5-0.5B` exactly ([`docs/RESULTS.md:14767`](docs/RESULTS.md)).
