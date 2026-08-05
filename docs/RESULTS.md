@@ -20458,3 +20458,33 @@ core is resident.
 FENCES: one seed, three draws; probe text is a 1-sample instrument
 per draw; recall axes per GT2-EXCLUSION 4c (arm0-json axis
 throughout this entry).
+
+## VERDICT LEAN-EMITTER-FIX: axiom's same-day fix VERIFIED house-side — three-way tactic (rfl / ring / field_simp; try ring) + reflexive sidecar flag; suite rebuilt 496/496; house printer gap closed (diff 638 -> 690) (2026-08-05, Mac)
+
+Cross-lab round-trip on VERDICT LEAN-KERNEL-SAMPLE, closed within
+hours. Axiom c331894 (their public main), house-verified before
+booking per the reviewer doctrine (cross-lab included):
+  - Diff INSPECTED: tactic selection now reflexive->rfl /
+    no-denominators->ring / divisions->field_simp; try ring, and
+    the sidecar row carries "reflexive":true|false (the
+    verified-AND-distinct doctrine flag, accepted on their side —
+    detection on PRINTED post-merge-normalization sides, exactly
+    the house failure class).
+  - Suite REBUILT fresh on the Mac: 496 tests, 100% pass (495 + 1
+    skipped smoke slice — their 495 claim consistent).
+  - The 28 underpowered rows: deliberately left loud their side;
+    house SHIPPED the rows (scratch/lean_real_corpus/
+    unsolved_28.jsonl, file-handoff) for a stronger-tactic tier
+    design if wanted.
+HOUSE SIDE, same commit: lean_check.py printer gap closed
+(bare-symbol denominator hypotheses + 1-indexed h-numbering);
+statement-diff exact/AC matches 638 -> 690 of 1000. Remaining 287
+mismatches = the sign-factoring printer-divergence class,
+previously classified 0 semantic drift; the strict diff stays
+strict by design. Schema compatibility confirmed (tactic opaque,
+unknown keys ignored).
+FENCES: verification is of the emitter LOGIC + tests; a re-emitted
+21,914-row sidecar has not been regenerated/rechecked (next corpus
+handoff inherits the new schema); the 269-overshoot class is fixed
+at emit time going forward, not retroactively in the existing
+sidecar.
