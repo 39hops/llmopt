@@ -225,6 +225,38 @@ VERDICT](RESULTS.md#L10676).)
 
 ## Independent implementation and methodology
 
+- [SINGLE-SEED] [REGIME-SCOPED: closed-system math] A string-seeded
+  1000-cert sample of the cross-lab Lean certificate corpus missed its
+  registered 1000/1000 kernel pass at 703/1000 — and every one of the
+  297 failures was a tactic-script defect rather than a wrong verdict:
+  269 proofs succeed before their failing trailing token, and the 28
+  "tactic gaps" were rediagnosed as 17 hypothesis-match failures, 7
+  atom-split statements, and 4 rewriting failures. The sample is 1000
+  of 21,914 rows; the corrected compile rate for a re-emitted sidecar
+  is a prediction, not a measurement. ([VERDICT
+  LEAN-KERNEL-SAMPLE](RESULTS.md#L20365); [AMENDMENT
+  LEAN-KERNEL-SAMPLE-2](RESULTS.md#L20492).)
+- [RETRACTED] [REGIME-SCOPED: closed-system math] The "0 false
+  statements in 1000" reading is withdrawn as stated: 0 false raw
+  equalities stands, but 7 of 1000 emitted generalized statements are
+  false over free atoms — two textually distinct forms of one subterm
+  atomize separately — which no kernel can be tricked into certifying.
+  The class now has its own counter, "unprovable-by-design
+  (atom-split)"; 2 of the 7 carry no division, so it is not a
+  division-specific defect. ([AMENDMENT
+  LEAN-KERNEL-SAMPLE-2](RESULTS.md#L20492).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: closed-system math] A single
+  unreproduced test flake, relayed as courtesy rather than dropped,
+  resolved into two real defects in the independent implementation: a
+  wall-clock search budget whose expiry silently broke determinism,
+  and a cache that memoized a budget-aborted rule fire as a permanent
+  no-fire — the checkpoint-selection effect's in-process twin.
+  Determinism claims for that search are now scoped "modulo observed
+  budget expiry" on both ledgers. House verification is diff
+  inspection, a rebuild, and a 10x rerun; the stress receipts are the
+  other lab's. ([VERDICT BEAM-FLAKE-ROOT-CAUSE](RESULTS.md#L20539);
+  [VERDICT LEAN-EMITTER-FIX](RESULTS.md#L20462).)
+
 Where axiom is the replication route below, it means an independent
 implementation in another language and runtime, sharing no code with what it
 checks — and since 2026-08-02 its pinned revisions are public, so those legs
@@ -686,16 +718,49 @@ sessions under one operator, not independent investigators. Read
   coalition contains 0.90 of it, plain prose 0.25, with prose routing
   through a nearly different expert population at 0.16-0.19 Jaccard), a
   second verbal corpus showed the verbal side is its own branch with its
-  own shared base (prose-dialog Jaccard 0.72 vs 0.16-0.23 cross-branch;
+  own shared base (prose-dialog Jaccard 0.72 vs 0.16-0.24 cross-branch,
+  including the system-swapped arm;
   verbal core 48.5/58 per layer vs a 26.3 two-way independence null,
   nearly disjoint from the symbolic core at 0.095 Jaccard), and a
   system-prompt swap control priced the shared-prefix confound at
   ~0.05-0.10 Jaccard — too small to generate the branch separation. The
   core alone is dead on the math gate (0/120): necessary, not
-  sufficient. ([OBSERVATION GT2-CORE-0](RESULTS.md#L19718); [VERDICT
+  sufficient — and what restores capability above it is expert-population
+  recall, not class identity (the recall-shoulder bullets below).
+  ([OBSERVATION GT2-CORE-0](RESULTS.md#L19718); [VERDICT
   MOE-GT-3](RESULTS.md#L19852); [VERDICT MOE-GT-4](RESULTS.md#L19953)
   as corrected by [AMENDMENT MOE-GT-4-REVIEW](RESULTS.md#L20006);
   [VERDICT MOE-GT-4b](RESULTS.md#L20111).)
+- [REPLICATED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] A structural 61.1% mask
+  built as the union of the two branch cores loses to the paired full
+  model at every seed tried: 55/48/42 of 120 against full baselines of
+  64/73/60 — 3/3 negative, pooled deficit 17.3 solves, above the
+  registered 5-15 band, so the first seed's 86% of full capability
+  became 66% and 70% at fresh seeds (pooled 73.6%). Which experts are
+  kept still costs real capability at 61% keep when the identity is
+  wrong. ([VERDICT MOE-GT-5](RESULTS.md#L20179); [VERDICT
+  MOE-GT-5b](RESULTS.md#L20267); ranges per [AMENDMENT
+  DAY-CONSOLIDATION-0805](RESULTS.md).)
+- [SINGLE-SEED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] Above the symbolic
+  core, what restores capability is demand recall, not expert class:
+  matched-size random fills over the dead core (0/120 alone) scored
+  51/36/48 at recall 0.749-0.763 against the verbal fill's 55 at
+  0.729, killing the reading that the verbal base is specifically
+  load-bearing for mathematics. One seed, three draws; the union
+  mask's edge over the random band's mean is inside the draw spread
+  and unresolved; the registered per-answer degeneracy count was not
+  collected. ([VERDICT MOE-GT-5c](RESULTS.md#L20414).)
+- [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment
+  artifacts] With the full router available, mathematics routes 2.7%
+  of decode demand through verbal-only experts and 75.4% through the
+  symbolic core, so the verbal branch is not a normal path for
+  mathematics; the masked arms measured a literal fallback that
+  appears only once the symbolic extensions are removed. One decode
+  trajectory; tie-fill upper bounds; recall shares are not comparable
+  across demand-log axes. ([OBSERVATION
+  GT-VERBAL-SHARE](RESULTS.md#L20298).)
 
 ## The clock-placement and deterministic-birth close
 

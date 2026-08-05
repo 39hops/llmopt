@@ -145,9 +145,15 @@ work from closed results.
 Why masking a deployed MoE to its demand coalition beats full width on
 mathematics is unexplained, and the two quantities a keep rule optimizes
 — coverage and recall of demanded experts — were measured not to predict
-even the sign of that effect. Until what the excluded experts compute is
-measured, the crest is a booked observation on one vehicle and one
-domain, not a deployment recommendation.
+even the sign of that effect. One piece is now
+measured and it removes a class of explanation rather than supplying
+one: above the shared symbolic core, restoring capability tracks how
+much demand mass the kept population covers, not which class the added
+experts belong to — a matched-size random fill resurrected a dead core
+about as well as the verbal-branch fill (51/36/48 versus 55 of 120,
+one seed, three draws). Why the crest beats full width remains
+unexplained, and the crest stays a booked observation on one vehicle
+and one domain, not a deployment recommendation.
 
 Trajectory reproduction still stops short of self-contained free-run oracle
 scoring because the row text is not committed. Until that input can be shared

@@ -20571,3 +20571,23 @@ FENCES: house verification is diff-inspection + rebuild + 10x
 rerun; the SIGSTOP torture receipts are theirs; determinism claims
 for beam_search are now scoped "modulo observed budget expiry" on
 both ledgers.
+
+## AMENDMENT DAY-CONSOLIDATION-0805: two numeric corrections from the evening audit pass — GT-5b's "66-75%" is wrong (per-seed 86/66/70%, pooled 73.6%), and the day's sigma multiples used sigma, not sigma_diff (2026-08-05, Mac, desk)
+
+Amends: VERDICT MOE-GT-5b (and the sigma phrasing in VERDICT
+MOE-GT-5). Source: reviewer consistency audit, verified house-side.
+
+1. VERDICT MOE-GT-5b wrote "'86% of full capability' becomes 66-75%
+   across seeds (55/64, 48/73, 42/60)". The ratios are 85.9%, 65.8%,
+   70.0% — the across-seed range is 66-86%, and "75" was the POOLED
+   ratio (145/197 = 73.6%) mislabeled. Corrected statement: per-seed
+   86% / 66% / 70%; pooled 73.6%. Direction and the 17.3 pooled
+   deficit are unaffected.
+2. The day's paired-delta sigma multiples were quoted against
+   sigma (~5), not the house sigma_diff = sqrt(2)*sigma (~7.07)
+   decision rule (BOARD, speed-doctrine row). Restated: GT-5's
+   -9 is ~1.3 sigma_diff (not 1.8); the 8-solve gap to the
+   top-demand mask is ~1.1 (not 1.6); GT-5b per-pair deltas are
+   1.3-3.5 sigma_diff (not 1.8-5). No direction changes; the
+   single-seed GT-5 deltas were and remain individually
+   unresolved — GT-5b's 3/3 sign + pooled 17.3 is the claim.

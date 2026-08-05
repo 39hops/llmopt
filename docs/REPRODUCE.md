@@ -238,7 +238,7 @@ corrected coalition distances booked by **AMENDMENT GT2-REVIEW-2**:
 Jaccard(math, phys) 0.8013, (math, code) 0.5331, (phys, code) 0.5280,
 with split-half nulls 0.9205 / 0.8670 / 0.6364, plus the three-domain
 core of **OBSERVATION GT2-CORE-0** (37.1 of 58 experts per layer
-against an 11.9 independence null, containment 0.92). Setting
+against an 11.9 independence null, containment 0.92 (the leave-one-out form — math&code inside physics — not a fourth-corpus measurement)). Setting
 `DROP_TAIL=0` reproduces the numbers as originally booked in
 **VERDICT MOE-GT-2-D2** and **D3** (0.804 / 0.543 / 0.539, code null
 0.653); `GATE_ONLY=0` additionally restores the probe rows behind
@@ -250,9 +250,48 @@ and cross arms consumed (verified 2026-08-04), which makes those arms
 reproducible end-to-end through `ARM0=` on the mask drivers.
 
 The core observation is desk-only and carries its own fences: one seed
-per domain, tie-fill at the keep boundary, and the possibility that
-the core is the generic decoding substrate rather than anything
-symbolic. The 120-gate sigma of about 5 solves is a *mathgen* number;
+per domain and tie-fill at the keep boundary. The "generic decoding
+substrate" alternative it could not exclude has since been excluded by
+arms: the core is symbolic (the proofs coalition contains 0.90 of it,
+plain prose 0.245), and the shared-system-prompt confound is priced at
+0.05-0.10 Jaccard — too small to generate the branch separation
+([VERDICT MOE-GT-3](RESULTS.md#L19852); [VERDICT
+MOE-GT-4b](RESULTS.md#L20111)). ### The register split and the recall shoulder (MOE-GT-3 through GT-5c)
+
+The branch program adds three arm-0 demand runs (a proofs corpus and two
+verbal corpora) driven by `scratch/gt3_probe_arm0.py` over prompt lists;
+the dialog grid regenerates from `scratch/gt4_dialog_prompts.py`, and
+`FORCE_SYS=math` on the unchanged dialog corpus is the system-prompt
+control. The readout script `scratch/gt4_verbal_core.py` consumes the
+trajectories and re-derives every GT-3 number that was originally a desk
+calculation, to a uniform ±0.006 of the booked values (containment
+proofs 0.8987 vs booked 0.901, prose 0.2453 vs 0.250) — treat the
+±0.006 as an unexplained desk-calc discrepancy, not drift ([AMENDMENT
+MOE-GT-4-REVIEW](RESULTS.md#L20006), item 6).
+
+The mask arms reuse D3's instrument, `scratch/moe_gt1_arm2.py`, through
+`KEEPSET=`. Keep-set builders are committed: `scratch/gt5_union_keep.py`
+(union-of-bases, 78.2/128 per layer) and `scratch/gt5c_randfill_keep.py`
+(matched-size random fills over the frozen core). The seed replication
+is three within-seed pairs (1234, 777, 2026), full arm vs masked arm on
+the same device. Enable `PERPROB=1` for the per-answer degeneracy
+readout — the house did not, and booked that as a readout miss.
+Reproduce the direction and the magnitude class, never the digits: the
+full baselines themselves move 60-73/120 across seed problem sets.
+
+### The Lean certificate kernel check
+
+`scratch/lean_check.py` re-derives each cert's statement with an
+independent printer and kernel-checks the corpus in 50-row chunks
+against a mathlib cache (`scratch/leancheck`; a Linux/WSL or Mac `lake`
+both work — a Mac-local cache exists since 2026-08-05). The chunking is
+load-bearing, not cosmetic: Lean aborts a file at ~100 diagnostics and
+in-file `set_option maxErrors` does not lift it, so an unchunked
+single-file check silently truncates while looking complete — this bit
+the house twice before the fix ([VERDICT
+LEAN-KERNEL-SAMPLE](RESULTS.md#L20365)).
+
+The 120-gate sigma of about 5 solves is a *mathgen* number;
 the physics and code gates' dispersion is unmeasured, so no delta
 claims on those gates.
 

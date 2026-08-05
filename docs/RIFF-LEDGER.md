@@ -2667,3 +2667,13 @@ pooling winners was his call).
   (both discriminators). The sorted/dynamic-model riff INHERITS a
   design simplification: above the resident core, paging schedules
   are recall-coverage arithmetic, not expert-class identity.
+
+- **CORRECTION to the 2026-08-05 "hierarchy is SYMMETRIC" entry
+  above** (per AMENDMENT MOE-GT-4-REVIEW, same day): that entry's
+  "48.5/58 vs 11.9 null" used the 3-way null — the correct 2-way
+  independence null is 26.3 (1.84x chance) — and "LARGER than the
+  symbolic core (37.1)" was an arity mismatch, RETRACTED: matched
+  2-way |math&phys| = 52.1 > verbal 48.5; verbal coherence is
+  ordinary. The branch structure and near-disjointness (0.095)
+  stand. Never silently delete: the original text stays, this note
+  names its refutation.
