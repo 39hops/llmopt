@@ -2608,3 +2608,31 @@ pooling winners was his call).
   already fence this (KEEPSET knob). Attribution: Artin (sorting +
   dynamic question), house (permutation-invariance split +
   residency/paging framing). Banked, not queued.
+
+- **Global-workspace / J-space triple riff** (Artin, 2026-08-05, on
+  the GT-5 resurrection + Anthropic's global-workspace article):
+  (1) Are we rearranging how tokens flow through experts — is the
+  branch structure a routing-level analogue of the J-space
+  broadcast hub? House note: the article's J-space is an
+  ACTIVATION-space object (Jacobian lens, dense read/write
+  connectivity ~100x ordinary patterns) in a dense model; our
+  coalitions are ROUTING-space objects in an MoE — different
+  measurement planes, but the GT-5 resurrection (dead symbolic core
+  + verbal experts -> 55/120) is exactly the shape a workspace
+  story predicts: a shared broadcast population that domain
+  circuits need to act through. (2) Do experts have their own
+  J-space — per-expert workspace patterns, or a workspace that
+  lives IN the branch bases? Measurable house-side as expert
+  co-activation graph centrality (which experts read/write with the
+  most partners across corpora) — the branch bases are the
+  candidate hubs. (3) VERBAL-FALLBACK hypothesis: is the model
+  falling back to verbal understanding of math ("explain the
+  integral in plain English -> easier to break down")? GT-5's
+  random-fill control discriminates: if only VERBAL fill (not
+  random fill) resurrects the core, the verbal base is load-bearing
+  for math specifically. (4) Sort experts BY CLASS as the enabling
+  step for the dynamic model (extends the sorted/dynamic-model riff
+  above): class labels now exist per layer (symbolic-base /
+  verbal-base / extensions / rest), so the physical reorder is
+  specifiable today. Attribution: Artin (all four questions),
+  house (measurement-plane distinction + discriminators).
