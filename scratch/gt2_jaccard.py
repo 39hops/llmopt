@@ -33,12 +33,27 @@ TRAJ = {
 }
 
 
+DROP_TAIL = os.environ.get("DROP_TAIL", "1") == "1"
+
+
 def decode_counts(path, pred=lambda r: True):
+    """DROP_TAIL=1 (default) drops the FIRST decode-phase row per
+    (prompt, layer): mlx_lm's prefill leaves the last prompt token to
+    the first 1-token step, so that row is the chat-template tail
+    mislabeled as decode (reviewer bug 2026-08-04; TRAJ v3 records it
+    as phase=prompt_tail). DROP_TAIL=0 reproduces the originally
+    booked D2/D3 numbers."""
     c = defaultdict(lambda: defaultdict(int))
+    first_seen = set()
     for line in open(path):
         r = json.loads(line)
         if r["phase"] != "decode":
             continue
+        if DROP_TAIL and isinstance(r["prompt"], int):
+            key = (r["prompt"], r["layer"])
+            if key not in first_seen:
+                first_seen.add(key)
+                continue
         if GATE_ONLY and not isinstance(r["prompt"], int):
             continue
         if not pred(r):

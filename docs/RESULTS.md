@@ -19644,3 +19644,73 @@ DOWNSTREAM: the escalation policy is real but under-bar; the bank's
 revive-if: a feature that sees ROUTING margins (scores now in TRAJ
 v2 rows) rather than pooled recall might close the 1.32->1.5 gap —
 that is a new pre-reg if attempted, not a continuation.
+
+## AMENDMENT GT2-REVIEW-2: three-seat review pass on the evening — prompt-tail phase bug (Jaccards corrected, claims survive), P2 interpretation unresolved, confound-removal now measured (2026-08-04, Mac)
+
+Amends: MOE-GT-2-D2, MOE-GT-2-D3, MOE-GT-2-D4-PHYS-B, VERDICT
+CHURN-JUDGE-1, GT2-REVIEW (item 7), GT2-EXCLUSION. Sources: three
+read-only seats (bookings+stats, instrument code, docs consistency;
+all self-reported Opus 4.5, disclosed). Every item Fable-verified
+before booking; all analysis fixes are committed code.
+
+1. PHASE BUG (code seat, verified at mlx_lm source): _prefill loops
+   `while y.size > 1`, so the LAST PROMPT TOKEN is processed by the
+   first 1-token step and TRAJ v2 labeled it "decode" — one
+   chat-template-tail row per (prompt, layer), identical within a
+   domain, a pro-similarity bias in exactly the D2/D3 direction.
+   CORRECTED NUMBERS (gt2_jaccard.py DROP_TAIL=1, default; =0
+   reproduces the original booking): Jaccard math-phys 0.8013
+   (was 0.8041), math-code 0.5331 (0.5430), phys-code 0.5280
+   (0.5392); split-half nulls 0.9205/0.8670/0.6364. ALL CLAIMS
+   SURVIVE: ordering unchanged, math-code still below code's own
+   null (0.5331 < 0.6364). The instrument now records the row as
+   phase="prompt_tail" (TRAJ v3); tie-fill at the keep boundary
+   quantified at 0.4-2.4 experts/layer (upper-bound fence stands).
+2. CHURN-JUDGE-1 P2 INTERPRETATION DOWNGRADED TO UNRESOLVED (stats
+   seat): the bar verdict stands (31 < 36 needed at 1.5x), but the
+   gap is 4.25 solves — inside the house ~5-solve fence — while 31
+   sits +2.1 sd above the random baseline (Binomial(50, .47), one-
+   sided p~.018). A single draw at n=50 cannot distinguish a policy
+   paying 1.32x from one paying 1.5x; "the policy underpays" is
+   retracted in favor of "significantly beats random; bar
+   unresolved". Also corrected: level-only null AUC was tie-blind —
+   mid-rank value is 0.450 (was 0.438); P1 conclusion unchanged
+   (0.679 clears by ~1.8 SE; also beats chance, the registered
+   second comparator). Perprob log carries 2 duplicate seed-4242
+   full rows (aborted partial write); the booked ceiling
+   460/570/703 was computed dict-keyed and is UNAFFECTED (verified
+   by explicit whitelist+dedupe recompute).
+3. CONFOUND REMOVAL NOW MEASURED (stats seat's runner-up): the
+   phys-B pooled-58 keep-set covers 0.8908 of physics DECODE demand
+   vs math's 0.8811 analogue — the rescue arm was exclusion-matched
+   on BOTH axes; D4-PHYS-B's "confound removed" is now a number,
+   not testimony. Wording fixes adopted: recall match is empirical,
+   not "by construction"; math closed-recall range is 0.8822-0.8891
+   (phys-B's 0.8838-0.8848 sits inside it — a cleaner statement).
+   Free datum banked: decode-built mask open 0.9903/closed 0.727 vs
+   pooled-built open 0.9013/closed 0.884 — HIGHER open coverage
+   gave LOWER closed recall; open coverage is not "available lever".
+4. INSTRUMENT FIXES COMMITTED with this amendment: closed_recall no
+   longer folds probe tokens (was gate+probe vs gate-only in the
+   booked gap fields — magnitude ~1%, no P2/GT-1 flips claimed
+   without recompute); OUT refuses to overwrite existing artifacts
+   without OVERWRITE=1 (the certified-arm0-clobber hazard); LOG/
+   PERPROB_LOG default to *_smoke.jsonl when N_EVAL != 120 (the
+   twice-today pollution class); arm2 gate lines name their ARM0;
+   masked cross-arm registers atexit restore; gen_results_index.py
+   now PRESERVES links (root cause of the twice-dropped curation —
+   GT2-REVIEW item 7's "restored" was true at its commit and
+   dropped again by the next regeneration).
+5. DOCS (docs seat): THEORY domain-coalition row rewritten post-
+   PHYS-B (the "coverage is the load-bearing quantity" clause was
+   refuted the same day it was written; row now carries the
+   matched-instrument dissociation and corrected Jaccards); BOARD
+   AFTERNOON block retro-annotated per house precedent (sigmoid,
+   functional-not-topical); handoff -1 carries a supersession
+   header; the 08-04 spec carries a STATUS block; index "amends"
+   fields normalized to entry ids; links restored (again, now
+   durable).
+FENCES: corrected Jaccards inherit all prior fences (one seed per
+domain, tie-fill upper bounds); receipts note "rc=0" is operator
+testimony (rjob writes rc files, not log lines) — future receipts
+should quote the rc file.

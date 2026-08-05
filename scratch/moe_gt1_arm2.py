@@ -56,8 +56,12 @@ FRACS = [float(f) for f in os.environ.get("FRACS", "0.5,0.25,0.125").split(",")]
 SEED = int(os.environ.get("SEED", 1234))
 PERPROB = os.environ.get("PERPROB", "") == "1"
 PROBE = "The three most important ideas in computer science are"
-LOG = Path("logs/opus/moe_gt1.jsonl")
-PERPROB_LOG = Path("logs/opus/moe_gt1_perprob.jsonl")
+LOG = Path(os.environ.get("LOG",
+    "logs/opus/moe_gt1.jsonl" if N_EVAL == 120 else
+    "logs/opus/moe_gt1_smoke.jsonl"))
+PERPROB_LOG = Path(os.environ.get("PERPROB_LOG",
+    "logs/opus/moe_gt1_perprob.jsonl" if N_EVAL == 120 else
+    "logs/opus/moe_gt1_perprob_smoke.jsonl"))
 
 
 def keep_sets_from_counts(counts, frac, top_k):
@@ -205,7 +209,7 @@ def main():
         keep = keep_sets_from_counts(counts, frac, top_k)
         ol = open_loop_recall(counts, keep)
         n_keep = sum(len(v) for v in keep.values()) / len(keep)
-        print(f"[gt1-2] === seed {SEED} frac {frac} "
+        print(f"[gt1-2] === seed {SEED} frac {frac} arm0 {ARM0} "
               f"rule {os.environ.get('RULE', 'top')} | keep {n_keep:.0f}/128 "
               f"per layer | open-loop recall {ol:.4f} ===", flush=True)
         state, restore = instrument(model, keep)
@@ -214,9 +218,11 @@ def main():
             n_ok, per_level = run_gate(model, tok, problems, frac,
                                        state=state)
             gate_s = time.time() - t0
+            # snapshot BEFORE the probe: closed recall is a GATE quantity
+            # (reviewer bug 2026-08-04 — probe tokens were folded in)
+            cl = state["hits"] / max(state["slots"], 1)
             probe_text = generate(
                 model, tok, prompt=PROBE, max_tokens=PROBE_TOKENS)
-            cl = state["hits"] / max(state["slots"], 1)
         finally:
             restore()
         print(f"[gt1-2] frac {frac} GATE {n_ok}/{len(problems)} "

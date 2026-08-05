@@ -56,7 +56,9 @@ LEVELS = tuple(
 # the F2 probe, verbatim from the V4 arms (logs/opus/v4_f1d.jsonl)
 PROBE = "The three most important ideas in computer science are"
 OUT = Path(os.environ.get("OUT", "checkpoints/moe_gt1_arm0.json"))
-LOG = Path("logs/opus/moe_gt1.jsonl")
+LOG = Path(os.environ.get("LOG",
+    "logs/opus/moe_gt1.jsonl" if N_EVAL == 120 else
+    "logs/opus/moe_gt1_smoke.jsonl"))
 
 
 def instrument(model):
@@ -113,7 +115,20 @@ def instrument(model):
                 # router with the whole prompt batch, decode with 1 token
                 # (GT1-TRAJ-CORR made this field mandatory — the prose-only
                 # run-length recovery had no re-runnable artifact).
-                phase = "prefill" if len(flat_i) > 1 else "decode"
+                # mlx_lm's _prefill loops `while y.size > 1`, leaving the
+                # LAST PROMPT TOKEN to the first 1-token step — that call
+                # is labeled prompt_tail, not decode (reviewer bug,
+                # 2026-08-04: it is the identical chat-template tail and
+                # inflated cross-domain Jaccards when counted as decode).
+                li_tail = state.setdefault("tail_done", {})
+                if len(flat_i) > 1:
+                    phase = "prefill"
+                    li_tail[li] = False
+                elif not li_tail.get(li, False):
+                    phase = "prompt_tail"
+                    li_tail[li] = True
+                else:
+                    phase = "decode"
                 flat_sc = scores.reshape(-1, k).tolist()
                 tpos = state["tpos"].get(li, 0)
                 for t, picks in enumerate(flat_i):
@@ -169,6 +184,7 @@ def main():
         state["prompt"] = i
         if traj_f is not None:
             state["tpos"] = {}
+            state["tail_done"] = {}
         msgs = [{"role": "system", "content": SYSTEM},
                 {"role": "user", "content": p.prompt}]
         text = tok.apply_chat_template(
@@ -196,6 +212,7 @@ def main():
     state["prompt"] = "probe"
     if traj_f is not None:
         state["tpos"] = {}
+        state["tail_done"] = {}
     probe_text = generate(model, tok, prompt=PROBE, max_tokens=PROBE_TOKENS)
     if traj_f is not None:
         for row in state["traj"]:
@@ -219,6 +236,8 @@ def main():
           f"of {n_experts}", flush=True)
 
     OUT.parent.mkdir(exist_ok=True)
+    if OUT.exists() and os.environ.get("OVERWRITE") != "1":
+        raise SystemExit(f"[gt1] REFUSING to overwrite {OUT} (certified artifact guard; set OVERWRITE=1)")
     OUT.write_text(json.dumps({
         "model": MODEL, "n_experts": n_experts, "n_eval": N_EVAL,
         "seed": SEED, "kinds": KINDS, "levels": LEVELS,

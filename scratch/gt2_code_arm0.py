@@ -33,7 +33,9 @@ N_EVAL = int(os.environ.get("N_EVAL", 120))
 MAX_TOKENS = int(os.environ.get("MAX_TOKENS", 96))
 SEED = int(os.environ.get("SEED", 99))
 OUT = Path(os.environ.get("OUT", "checkpoints/gt2_code_arm0.json"))
-LOG = Path("logs/opus/moe_gt1.jsonl")
+LOG = Path(os.environ.get("LOG",
+    "logs/opus/moe_gt1.jsonl" if N_EVAL == 120 else
+    "logs/opus/moe_gt1_smoke.jsonl"))
 
 SYSTEM = (
     "You are an assembly and C toolchain assistant. Answer with only "
@@ -93,6 +95,8 @@ def main():
         state = {"traj": None}
         n_experts = 128
         stats = None
+        import atexit
+        atexit.register(_restore)  # class stays patched on exception otherwise
     else:
         state, n_experts = moe_gt1.instrument(model)
         stats = RouterStats(n_experts=n_experts)

@@ -1,5 +1,9 @@
 # Handoff 2026-08-04-1: the domain program (MOE-GT-2, resolved same-day)
 
+> SUPERSEDED IN PART by handoff -2 + AMENDMENTs GT2-REVIEW/GT2-EXCLUSION
+> (sigmoid demoted, functional-vs-topical unresolved, transport null
+> confounded then resolved by D4-PHYS-B at -59). Read -2 first.
+
 Session: Fable seat, Mac (3080 untouched today after the morning),
 post-compact continuation of 2026-08-04-0. Everything booked and
 pushed through VERDICT MOE-GT-2-D4-CROSS.

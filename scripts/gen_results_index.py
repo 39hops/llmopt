@@ -91,7 +91,7 @@ for ln, line in enumerate(SRC.read_text().splitlines(), 1):
         e["needs_link"] = True
     e["threads"] = infer_threads(title)
     prev = old.get(eid, {})
-    for k in ("threads", "verdict", "amends", "superseded_by"):
+    for k in ("threads", "verdict", "amends", "superseded_by", "links"):
         if k in prev:
             e[k] = prev[k]
     if "amends" in e:

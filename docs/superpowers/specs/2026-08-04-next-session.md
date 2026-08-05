@@ -1,5 +1,10 @@
 # Next-session spec — 2026-08-04 (post-R6, the coalition program)
 
+> STATUS (2026-08-04 evening): rung 1 EXECUTED (MOE-GT-2 D0-D4 + cross
+> + PHYS-B — coalitions domain-organized, crest math-only); churn judge
+> resolved (AUC fires, spend bar unresolved); crest-nesting discharged.
+> Rungs 2/3/4 + remaining hygiene UNRUN — carried in handoff -2 queue.
+
 Written after VERDICT MOE-GT-1-R6 landed (coalition confirmed:
 random-45% = 0/120 twice, anti = 0/120, demand-chosen 45.3% = +14.7
 over full, 6/6 seeds, R5 fully registered). Sequence agreed with
