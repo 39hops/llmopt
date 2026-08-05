@@ -53,7 +53,8 @@ def main():
             state["prompt"] = i
             state["tpos"] = {}
             state["tail_done"] = {}
-            sys_prompt = PROSE_SYSTEM if r["kind"] == "prose" else SYSTEM
+            sys_prompt = (PROSE_SYSTEM if r["kind"] in ("prose", "dialog")
+                          else SYSTEM)
             msgs = [{"role": "system", "content": sys_prompt},
                     {"role": "user", "content": r["prompt"]}]
             text = tok.apply_chat_template(

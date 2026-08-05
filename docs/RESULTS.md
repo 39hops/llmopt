@@ -19894,3 +19894,58 @@ whether the verbal branch has its own core; the "what do the
 math-excluded experts compute" question inherits a sharper frame —
 they are, by construction, largely NON-core symbolic-extension
 experts.
+
+## PRE-REG MOE-GT-4: does the VERBAL branch have its own core? (2026-08-05, Mac)
+
+Follows VERDICT MOE-GT-3 (deepest router split = SYMBOLIC vs VERBAL;
+symbolic base class measured; prose Jaccard 0.157-0.188 vs every
+symbolic domain). The banked question fires: is "verbal" a BRANCH
+with its own shared base class, or just not-symbolic — one diffuse
+outgroup?
+
+CORPUS (pre-flight done): DIALOG = 80 dialogue/QA-register prompts,
+4 templates x 20 topics — EXACTLY the prose corpus geometry, so
+corpus shape is not a confound; only the register changes
+(expository -> conversational). Topics DISJOINT from the 20 prose
+topics (fence: shared content words could inflate Jaccard without a
+shared branch). Zero symbolic content; same neutral SYSTEM as the
+prose arm (corpus+prompt treatment, D3-class fence, registered).
+Generator: scratch/gt4_dialog_prompts.py (literal lists +
+string-seeded shuffle); corpus: checkpoints/gt4_dialog_prompts.json.
+Driver: scratch/gt3_probe_arm0.py unchanged except the neutral-SYSTEM
+rule now covers kind="dialog" (demand log only, no oracle, no gate).
+
+READOUTS (all decode-only, prompt_tail excluded, keep-sets at 45.3%,
+size-matched 80-prompt references as in GT-3):
+  (i)   Jaccard(prose, dialog) + split-half nulls for BOTH verbal
+        corpora (the nulls set the attainable ceiling);
+  (ii)  Jaccard(dialog, math/phys/code/proofs) — does dialog land in
+        the 0.16-0.19 cross-branch band where prose sits?
+  (iii) GT2-CORE-0 containment in dialog (calibration: prose 0.250);
+  (iv)  VERBAL-CORE candidate: per-layer prose∩dialog keep-set size
+        vs the independence null (k*(k/128)^2 ~ 11.9 at k=58), and
+        its containment in each verbal coalition.
+
+REGISTERED PREDICTIONS:
+P-VBRANCH (verbal is a real branch with a base class): Jaccard(prose,
+  dialog) lands in the symbolic-family range (>=~0.6, vs math-phys
+  0.80 / proofs-math 0.71), dialog stays in the cross-branch band
+  (<=~0.25) against all four symbolic domains, and the prose∩dialog
+  core is GT2-CORE-0-sized (>> 11.9 null). The hierarchy is
+  symmetric: two branches, each with its own base.
+P-OUTGROUP (verbal = not-symbolic, diffuse): Jaccard(prose, dialog)
+  falls well below both verbal split-half nulls, toward the
+  cross-branch band — prose and dialog each route idiosyncratically
+  and share little beyond chance. The "verbal branch" was a
+  projection of the symbolic side's complement, not a class.
+DISCRIMINATOR LINE (registered): the split-half nulls arbitrate —
+  P-VBRANCH needs cross-corpus Jaccard close to the within-corpus
+  nulls; P-OUTGROUP needs a large gap between them.
+
+FENCES: one seed everywhere; both verbal corpora are 80-prompt
+template grids (split-half nulls will be wide; reported, not
+claimed inside); no gate exists for verbal corpora (demand-only);
+tie-fill upper bounds travel; register-vs-topic is only partially
+separable (topics disjoint BY DESIGN, so a low Jaccard cannot be
+blamed on topic overlap, but a high one still bundles register +
+"everyday content" — named now, not after).
