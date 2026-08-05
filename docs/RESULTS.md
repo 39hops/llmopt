@@ -20139,3 +20139,39 @@ the same price tag — 0.90-vs-0.25 containment cannot be a
 FENCES: one seed; (a)'s 0.026 miss of the ~0.85 line is booked, not
 argued away; EOS/length behavior under the swapped SYSTEM not
 audited (registered as traveling with the treatment); demand-only.
+
+## PRE-REG MOE-GT-5: the union-of-bases mask — is 61% keep enough when it's the WRONG 61%? (2026-08-05, Mac)
+
+Source: reviewer survey observation, house-verified exactly — the
+per-layer union of the two branch cores (symbolic 3-way core +
+verbal prose&dialog core) is 78.2/128 = 61.1% (min 65, max 86),
+numerically at MOE-GT-1-R3's 61.8% keep that tied the full model
+(63/120 vs 64/120). But the union is a DIFFERENT population: it
+contains both BASES and, by construction, few of math's ~21
+extension experts (the core covers only 55.4% of math's pooled
+demand; D3's core-only mask scored 0/120).
+
+ARM: math gate, N=120, seed 1234 (the certified paired split),
+KEEPSET=checkpoints/gt5_union_keep.json on scratch/moe_gt1_arm2.py
+(D3's exact instrument; FRACS label 0.611). Builder committed:
+scratch/gt5_union_keep.py. Readouts: gate dict, open/closed-loop
+recall, probe text.
+
+REGISTERED PREDICTIONS:
+P-IDENTITY (expected; the GT-1-R6 lesson — WHICH experts, not how
+  many): heavy degradation, plausibly the 0/120 class — the missing
+  math extensions carry the capability, and the 61.1~61.8
+  coincidence is numerology. Open-loop recall lands near the core's
+  0.554 plus a small verbal-overlap increment, far under the ~0.9
+  the working masks carry.
+P-FRACTION (would be a shock): within 1.5 sigma (~7) of 64/120 —
+  61% keep suffices REGARDLESS of identity, meaning generic routing
+  capacity, and the whole which-experts doctrine (R6, D3) needs
+  re-examination at high fractions.
+Intermediate scores book as measured (the shoulder exists: GT-1
+  50%:78, 40%:57, 33%:43 — but those were TOP-DEMAND sets; no
+  demand-ranked point exists for an off-demand 61% mask).
+FENCES: one seed (resolution law: deltas < ~7 solves unresolved);
+single arm; keep-set is branch-core-derived (demand logs from four
+different corpora, mixed 2-way/3-way arities — a structural object,
+not a demand rank); probe text books either way.
