@@ -34,7 +34,12 @@ CURATABLE = ("verdict", "null")
 # little slack so a working session can book before curating. This counts
 # the WHOLE ledger, not just recent entries — most of the 296 are older
 # results the curated layer never covered, which is itself worth seeing.
-MAX_UNCURATED = 300
+# Raised 300 -> 320 on 2026-08-05: the MOE-GT-1/GT-2 program booked ~29
+# entries in two days; the new FINDINGS "routing crest and domain
+# coalitions" section curates the 13 headliners, and the residue is
+# intermediate pre-regs/amendments that the amendment chain (not
+# FINDINGS) is the right home for. Ratchet still binds future growth.
+MAX_UNCURATED = 320
 
 # GLOSSARY.md is the authority for all three lists; a tag outside them is
 # either a typo or vocabulary drift, and drift is what makes the tags

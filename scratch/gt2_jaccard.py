@@ -9,12 +9,16 @@ keep-sets at 45.3% (arm2's top-demand rule), and prints:
   - coverage: fraction of each keep-set inside the other
   - count-weighted cross-coverage of demand (the D4-CROSS desk numbers)
 
-Booked numbers this reproduces: VERDICT MOE-GT-2-D2 (0.767 full-data*,
-0.930/0.871 nulls, 0.8671 coverage), D3 (0.804/0.543/0.539, 0.653 code
-null), D4-CROSS (0.7761/0.8023 cross-coverage).
-*D2's 0.767 included the probe prompt's decode rows (pred=all); the
- gate-prompts-only filter gives 0.804 — both filters are exposed here
- (GATE_ONLY env), and the D3 entry names the distinction.
+Default output (DROP_TAIL=1 GATE_ONLY=1) is the CORRECTED set booked
+by AMENDMENT GT2-REVIEW-2: Jaccard 0.8013/0.5331/0.5280, nulls
+0.9205/0.8670/0.6364, plus the GT2-CORE-0 core statistic (37.1/58,
+containment 0.92). DROP_TAIL=0 reproduces the ORIGINAL D2/D3 booking
+(0.804/0.543/0.539, code null 0.653); GATE_ONLY=0 additionally
+restores probe rows (D2's headline 0.767 and 0.8671 coverage).
+DUMP_DECODE=1 writes checkpoints/gt2_{dom}_arm0_decode.json; use
+DUMP_DECODE=1 DROP_TAIL=0 to reproduce BYTE-IDENTICALLY the demand
+logs the D4/PHYS-B/cross arms actually consumed (they were built
+before the prompt-tail correction; verified identical 2026-08-04).
 
 Usage: .venv/bin/python scratch/gt2_jaccard.py   [FRAC=0.453,
        GATE_ONLY=1 env overrides]
@@ -92,6 +96,14 @@ def coverage(demand, kp):
 
 def main():
     counts = {d: decode_counts(p) for d, p in TRAJ.items()}
+    if os.environ.get("DUMP_DECODE") == "1":
+        for d, c in counts.items():
+            out = f"checkpoints/gt2_{d}_arm0_decode.json"
+            json.dump({"counts": {str(li): [row.get(e, 0) for e in range(128)]
+                                  for li, row in sorted(c.items())},
+                       "source": f"{TRAJ[d]} decode-only gate-prompts-only"},
+                      open(out, "w"))
+            print(f"wrote {out}")
     keeps = {d: keep(c) for d, c in counts.items()}
     doms = list(TRAJ)
     print(f"frac {FRAC} | gate_only {GATE_ONLY}")

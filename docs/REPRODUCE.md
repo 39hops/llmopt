@@ -121,6 +121,160 @@ python verify_gravmoe.py <build_dir> <ref_dir> [arm ...]
 engine-arm result. No build command is reproduced here because the ledger books
 the verifier and interface, not a portable external build recipe.
 
+## Reproducing the MoE ground-truth program (MOE-GT-1 / MOE-GT-2)
+
+This is a second, independent reproduction path with different
+properties from the pinned trajectories above. It is not
+artifact-backed and it is not digest-checked. It regenerates its own
+inputs by running a 30B mixture-of-experts model, so it reproduces
+*measurements*, not bytes, and every number below carries a sampling
+fence.
+
+### What it needs
+
+An Apple-silicon Mac with at least 36 GB of unified memory, `mlx-lm`
+in the project environment, and one Hugging Face download of
+`mlx-community/Qwen3-30B-A3B-4bit` (the model id is pinned in
+[`scratch/moe_gt1.py`](../scratch/moe_gt1.py)). A 120-item gate takes
+roughly 3-7 minutes on an M3-class machine. The code arm additionally
+needs a Homebrew LLVM toolchain: check
+`llmopt.codegen.llvm.llvm_available()` before spending model time,
+because Xcode's clang has no `llvm-mc` and the corpus fails silently
+empty.
+
+Two operating rules travel with these runs. **One resident 30B at a
+time** — a smoke test loaded beside a live job on 2026-08-04 and the
+swap storm panicked the machine. And the gate solve counts below are
+Apple-silicon numbers: they do not transport to another device, and
+cross-device comparison of them is forbidden by house doctrine.
+
+### The artifacts are regenerated, not downloaded
+
+`checkpoints/` and `logs/` are untracked by design (file-handoff
+convention). Nothing in this section ships its inputs: the demand log
+`checkpoints/moe_gt1_arm0.json`, the trajectory logs under
+`logs/opus/`, and the per-problem logs are all produced by the first
+command you run. A reproduction therefore re-derives the keep-sets
+rather than replaying the house's.
+
+### Crest confirmation (VERDICT MOE-GT-1-R5)
+
+First produce the arm-0 demand log — the full-residency oracle run
+that every later mask reads:
+
+```bash
+.venv/bin/python scratch/moe_gt1.py
+```
+
+Then replay at the crest fraction against a paired full baseline, at
+the three registered seeds:
+
+```bash
+for s in 111 222 333; do
+  SEED=$s FRACS=1.0,0.453 PERPROB=1 .venv/bin/python scratch/moe_gt1_arm2.py
+done
+```
+
+**VERDICT MOE-GT-1-R5** books, seed by seed, full 63 -> 80 (+17),
+73 -> 82 (+9), 63 -> 81 (+18); pooled +14.7 against a registered +7
+bar, 3/3 positive. Keep the fence attached: the 120-item gate has
+sigma about 5 solves, so the +9 seed is by itself inside the noise
+band — the claim rests on the sign holding in 3/3 seeds and on the
+pooled delta, not on any single arm. The keep-set is derived from a
+seed-1234 demand log and transfers to seeds it was never fitted to;
+that transfer is the finding.
+
+This is a gate claim only. Free-run probe text degenerates at some
+fractions where the gate improves (ARM2 P4), so a solve delta must
+never be read as a general-quality improvement.
+
+### The sparsity control (VERDICT MOE-GT-1-R6)
+
+The same driver carries the falsifier, selected by `RULE`:
+
+```bash
+RULE=random RULESEED=0 FRACS=0.453 .venv/bin/python scratch/moe_gt1_arm2.py
+RULE=random RULESEED=1 FRACS=0.453 .venv/bin/python scratch/moe_gt1_arm2.py
+RULE=anti              FRACS=0.453 .venv/bin/python scratch/moe_gt1_arm2.py
+```
+
+All three score 0/120 at seed 1234. At the identical residency
+fraction, *which* experts remain is the difference between zero and
+the low eighties. Generic sparsity contributes nothing measurable
+here.
+
+### The domain program (VERDICT MOE-GT-2-D2 / D3)
+
+Each domain arm is a demand run with the trajectory instrument on,
+followed by one offline analysis pass. Physics reuses the math driver
+through its corpus knobs (this is the exact house invocation, from the
+job receipt); levels are fenced to 2-3 because the L1 cell is
+exhaustible and `make_dataset`'s dedup loop does not terminate on an
+exhausted cell:
+
+```bash
+KINDS=eom,small_osc,kinematics LEVELS=2,3 SEED=606 \
+  TRAJ=1 TRAJ_OUT=logs/opus/gt2_phys_traj.jsonl \
+  OUT=checkpoints/gt2_phys_arm0.json \
+  .venv/bin/python scratch/moe_gt1.py
+```
+
+Code has its own driver, because its corpus is the toolchain-scored
+ladder and its system prompt is deliberately code-specific:
+
+```bash
+TRAJ=1 TRAJ_OUT=logs/opus/gt2_code_traj.jsonl \
+  .venv/bin/python scratch/gt2_code_arm0.py
+```
+
+Then the coalition readout, which consumes all three trajectory files:
+
+```bash
+.venv/bin/python scratch/gt2_jaccard.py
+```
+
+With the defaults (`DROP_TAIL=1`, `GATE_ONLY=1`) this prints the
+corrected coalition distances booked by **AMENDMENT GT2-REVIEW-2**:
+Jaccard(math, phys) 0.8013, (math, code) 0.5331, (phys, code) 0.5280,
+with split-half nulls 0.9205 / 0.8670 / 0.6364, plus the three-domain
+core of **OBSERVATION GT2-CORE-0** (37.1 of 58 experts per layer
+against an 11.9 independence null, containment 0.92). Setting
+`DROP_TAIL=0` reproduces the numbers as originally booked in
+**VERDICT MOE-GT-2-D2** and **D3** (0.804 / 0.543 / 0.539, code null
+0.653); `GATE_ONLY=0` additionally restores the probe rows behind
+D2's headline 0.767. The filters are exposed precisely so the booked
+variants are distinguishable rather than looking like drift; all
+claims survive the correction. `DUMP_DECODE=1 DROP_TAIL=0` writes the
+decode-only demand JSONs byte-identical to the ones the D4 second-crest
+and cross arms consumed (verified 2026-08-04), which makes those arms
+reproducible end-to-end through `ARM0=` on the mask drivers.
+
+The core observation is desk-only and carries its own fences: one seed
+per domain, tie-fill at the keep boundary, and the possibility that
+the core is the generic decoding substrate rather than anything
+symbolic. The 120-gate sigma of about 5 solves is a *mathgen* number;
+the physics and code gates' dispersion is unmeasured, so no delta
+claims on those gates.
+
+### What you cannot reproduce without re-running
+
+- **CHURN-JUDGE-1.** [`scratch/churn_judge_eval.py`](../scratch/churn_judge_eval.py)
+  reads `logs/opus/moe_gt1_perprob.jsonl`, which is untracked. To
+  reproduce it you must first re-run the crest arm with `PERPROB=1` at
+  all seven seeds (111, 222, 333, 555, 4242, 777, 90210) plus their
+  paired full arms, and even then your log will not be byte-identical
+  to the house's, which carries two duplicate seed-4242 rows from an
+  aborted write (booked, harmless — the analysis keys by problem). The
+  booked readouts are a held-out AUC of 0.679 against a 0.60 bar, and
+  an escalation spend of 31 against 23.5 expected. Read the second
+  number with its amendment: the 1.5x bar is **unresolved**, not
+  missed — the shortfall is 4.25 solves, inside the house noise fence,
+  from a single n=50 draw.
+- **Exact solve counts, anywhere.** These are greedy decodes of a
+  quantized model on one device family. Reproduce the *direction and
+  magnitude class* of a delta, not its digits, and treat any
+  single-seed difference under about five solves as unresolved.
+
 ## If it does not pass
 
 - **SHA mismatch:** a `FAIL ... expected ... got ...` line means the observed

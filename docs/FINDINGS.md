@@ -583,6 +583,107 @@ sessions under one operator, not independent investigators. Read
   character; this is an in-vivo sighting, not a general representation law.
   ([FOURIER-1 VERDICT](RESULTS.md#L12096).)
 
+## The routing crest and domain coalitions
+
+- [REPLICATED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] Masking a resident
+  30B-class MoE to the top 45.3% of its per-layer math-demand experts
+  (58 of 128) BEAT the paired full model on the 120-item mathgen gate at
+  every one of six paired seeds — +14/+14/+16 descriptive, then
+  +17/+9/+18 fully registered at three unspent seeds, pooled +14.7
+  against a registered +7 bar. Six paired seeds are the replication
+  route; the claim is a gate claim on one vehicle, one keep rule, and
+  mathgen L1-3, not a general quality claim, and the text/coherence
+  dissociation still applies. ([VERDICT MOE-GT-1-R4](RESULTS.md#L18861);
+  [VERDICT MOE-GT-1-R5](RESULTS.md#L18927).)
+- [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] The effect is
+  selection, not sparsity: at the identical 45.3% keep fraction, two
+  random masks and one anti-demand mask each scored 0/120, so WHICH
+  experts are kept is the difference between 0 and 82 of 120. Generic
+  sparsity contributed nothing measurable at that fraction. ([VERDICT
+  MOE-GT-1-R6](RESULTS.md#L19108).)
+- [SINGLE-SEED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] At one unspent seed the
+  argmax over masked fractions stayed at 45.3% (82/120 against a paired
+  full model's 60), so the interior peak's LOCATION did not move the way
+  the diet-dose optimum did; the 45.3-versus-50 margin of 7 on that seed
+  is about 1.5 sigma on the house 120-prompt gate and is not resolved by
+  it. ([VERDICT MOE-GT-2-D1](RESULTS.md#L19225); [VERDICT
+  DIET-COND-SEED](RESULTS.md#L15615).)
+- [SINGLE-SEED] [FORMAT-BOUND]
+  [REGIME-SCOPED: measured deployment artifacts] The deployed router is
+  domain-organized: decode-only expert coalitions at 45.3% keep have
+  Jaccard 0.8013 between mathematics and mechanics and 0.5331 between
+  mathematics and code, against same-filter within-domain split-half
+  nulls of 0.9205, 0.8670, and 0.6364 — the code coalition sits below its
+  own null. The ordering was registered before the runs from corpus
+  prompt-token overlap (0.329 mathematics-mechanics versus 0.097
+  mathematics-code). One seed per domain; tie-filled keep-set boundaries
+  make every cross-domain Jaccard an upper bound. ([VERDICT
+  MOE-GT-2-D2](RESULTS.md#L19254); [VERDICT MOE-GT-2-D3](RESULTS.md#L19294);
+  numbers corrected for the prompt-tail phase bug in [AMENDMENT
+  GT2-REVIEW-2](RESULTS.md#L19648).)
+- [NULL] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] The beats-full crest did
+  not transport to mechanics under either mask recipe: the decode-built
+  physics mask returned pooled +3 against the +7 bar with signs 2/3, and
+  the exclusion-matched pooled-built rescue arm returned pooled -59 with
+  signs 3/3. The mechanics baselines spread 24-42 of 120 across seeds, so
+  that arm was underpowered to resolve +7 in EITHER direction; the
+  registered rescue prediction nonetheless inverted far outside any noise
+  reading. ([VERDICT MOE-GT-2-D4-PHYS](RESULTS.md#L19340); [VERDICT
+  MOE-GT-2-D4-PHYS-B](RESULTS.md#L19528); power fence in [AMENDMENT
+  GT2-REVIEW](RESULTS.md#L19417).)
+- [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] Coverage and recall do
+  not predict the SIGN of masking's capability effect. On matched
+  instruments the mechanics rescue mask reproduced the mathematics
+  crest's readouts — open recall 0.9013 versus 0.9014, closed recall
+  0.8838-0.8848 inside mathematics's 0.8822-0.8891, decode-demand
+  coverage 0.8908 versus 0.8811 — while mathematics gained +14.7 and
+  mechanics lost -59. Exclusion mass is therefore killed as a sufficient
+  mechanism, and what the excluded experts COMPUTE is the remaining
+  variable. ([VERDICT MOE-GT-2-D4-PHYS-B](RESULTS.md#L19528); confound
+  removal measured in [AMENDMENT GT2-REVIEW-2](RESULTS.md#L19648);
+  exclusion axis in [AMENDMENT GT2-EXCLUSION](RESULTS.md#L19482).)
+- [SINGLE-SEED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] Cross-domain masks
+  degrade severely without dying: a mathematics mask on the code gate
+  scored 21/120 against that gate's 48, and a code mask on the
+  mathematics gate 19/120 against 64, at 77.6-80.2% demand coverage —
+  between random-45%'s 44.7% coverage and 0/120 and own-domain crest's
+  90.1% and 76-87/120. What this establishes is that at least one
+  INTERMEDIATE regime exists; the intervals between the measured points
+  were never sampled, so no curve shape is claimed, and the surviving
+  code rung under the mathematics mask was a lenient-checker artifact,
+  leaving functional-versus-topical UNRESOLVED. ([VERDICT
+  MOE-GT-2-D4-CROSS](RESULTS.md#L19378); both demotions booked in
+  [AMENDMENT GT2-REVIEW](RESULTS.md#L19417).)
+- [SINGLE-SEED] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] A judge built only from
+  readouts available at decision time — per-problem closed-loop recall,
+  parse success, completion length, level — predicted which crest
+  failures the full model rescues at held-out AUC 0.679 against a
+  registered 0.60 bar and a tie-corrected level-only null of 0.450, and
+  the two loudest features say the rescuable failures are MASK-CAUSED
+  rather than problem-hard. The escalation spend bar is UNRESOLVED, not
+  missed: at the single registered budget the judge recovered 31 solves
+  against 36 needed, a 4.25-solve gap inside the house 120-prompt fence,
+  while sitting about 2.1 standard deviations above random escalation.
+  ([VERDICT CHURN-JUDGE-1](RESULTS.md#L19614); interpretation corrected
+  in [AMENDMENT GT2-REVIEW-2](RESULTS.md#L19648).)
+- [SINGLE-SEED] [FORMAT-BOUND]
+  [REGIME-SCOPED: measured deployment artifacts] The three measured
+  coalitions share a core of 37.1 of 58 experts per layer against an
+  independence null of 11.9, and the containment is class-like: 92% of
+  the mathematics-code intersection also lies in mechanics. This is a
+  desk computation on one demand log per domain with no mask arm run, and
+  the three corpora share chat template, English prose, and expression
+  emission — so the core may be the generic decoding substrate rather
+  than any symbolic or logical one. The discriminating arms are
+  registered and unrun. ([OBSERVATION GT2-CORE-0](RESULTS.md#L19718).)
+
 ## The clock-placement and deterministic-birth close
 
 - [MECHANISM-CONFIRMED] [DEVICE-SCOPED] [TEACHER-FORCED] [FREE-RUN-GATED]

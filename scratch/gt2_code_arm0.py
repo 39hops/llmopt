@@ -160,6 +160,9 @@ def main():
           f"{mean_tail:.3f}", flush=True)
 
     OUT.parent.mkdir(exist_ok=True)
+    if OUT.exists() and os.environ.get("OVERWRITE") != "1":
+        raise SystemExit(f"[gt2-code] REFUSING to overwrite {OUT} "
+                         "(artifact guard; set OVERWRITE=1)")
     OUT.write_text(json.dumps({
         "model": moe_gt1.MODEL, "n_experts": n_experts, "n_eval": N_EVAL,
         "seed": SEED, "max_tokens": MAX_TOKENS, "corpus": "codegen-ladder",

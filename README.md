@@ -88,6 +88,20 @@ index remain living authority surfaces: [`docs/BOARD.md`](docs/BOARD.md),
   null: **VERDICT SOL-ADOPTION-1** in
   [`docs/RESULTS.md`](docs/RESULTS.md).
 
+- `[REPLICATED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts]` **A resident 30B-class
+  MoE scored HIGHER on the registered mathematics gate with 45.3% of its
+  experts masked out than at full width**, +14.7 pooled across six paired
+  seeds. The effect is selection, not sparsity: random and anti-demand
+  masks at the identical fraction scored `0/120`. It is also
+  domain-specific — the same recipe on mechanics returned `+3` and then
+  `-59` pooled, with open and closed recall matched to the mathematics
+  arm to within `0.0001` and `0.003`, so coverage and recall do not
+  predict the sign of the effect. The scope is one vehicle, one keep
+  rule, one gate, and Mac MLX: **VERDICT MOE-GT-1-R5**, **VERDICT
+  MOE-GT-1-R6**, and **VERDICT MOE-GT-2-D4-PHYS-B** in
+  [`docs/RESULTS.md`](docs/RESULTS.md).
+
 The broader closed-system record, including positive results, nulls,
 retractions, and amendments, is curated by evidence maturity in
 [`docs/FINDINGS.md`](docs/FINDINGS.md). Historical mathematics and physics
@@ -127,6 +141,13 @@ Many training comparisons remain single-seed and device-scoped. The README
 keeps those fences visible; [`docs/FINDINGS.md`](docs/FINDINGS.md) carries the
 current maturity labels, and [`docs/BOARD.md`](docs/BOARD.md) separates live
 work from closed results.
+
+Why masking a deployed MoE to its demand coalition beats full width on
+mathematics is unexplained, and the two quantities a keep rule optimizes
+— coverage and recall of demanded experts — were measured not to predict
+even the sign of that effect. Until what the excluded experts compute is
+measured, the crest is a booked observation on one vehicle and one
+domain, not a deployment recommendation.
 
 Trajectory reproduction still stops short of self-contained free-run oracle
 scoring because the row text is not committed. Until that input can be shared
