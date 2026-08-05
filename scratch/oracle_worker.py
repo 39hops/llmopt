@@ -63,8 +63,17 @@ def main():
             problem, expr = pickle.loads(base64.b64decode(line))
             ok = bool(problem.check(expr))
         except Exception:
-            ok = False
-        sys.stdout.write("1\n" if ok else "0\n")
+            ok, expr = False, None
+        # parsed-flag ALSO computed here: parse_answer is sympy-on-
+        # model-text and ran in the DRIVER until v3.2 — the last
+        # unboxed parse, and the remaining candidate for the driver-
+        # side balloon (gt6v4 died with the worker watchdog silent)
+        try:
+            from llmopt.mathgen.problems import parse_answer
+            parsed = bool(expr) and parse_answer(expr) is not None
+        except Exception:
+            parsed = False
+        sys.stdout.write(f"{int(ok)},{int(parsed)}\n")
         sys.stdout.flush()
 
 

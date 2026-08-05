@@ -182,7 +182,7 @@ def check_isolated(p, expr, wall=20):
         print("[gt1-2]   ORACLE-CRASH (pipe) — respawned, booked as "
               "failure", flush=True)
         _ORACLE = None
-        return False, False
+        return (False, False), False
     # sliced wait with an RSS WATCHDOG: Darwin ignores RLIMIT_AS/DATA
     # (verified live — a worker memory bomb ran uncapped and drove the
     # machine to ~87MB free; jetsam kills the LARGEST process, i.e.
@@ -205,18 +205,19 @@ def check_isolated(p, expr, wall=20):
                   "killed, booked as failure", flush=True)
             _ORACLE.kill()
             _ORACLE = None
-            return False, True
+            return (False, False), True
     if not ready:
         _ORACLE.kill()
         _ORACLE = None
-        return False, True
+        return (False, False), True
     line = _ORACLE.stdout.readline()
     if line == "":  # EOF: worker died mid-check
         print("[gt1-2]   ORACLE-CRASH (eof) — respawned, booked as "
               "failure", flush=True)
         _ORACLE = None
-        return False, False
-    return line.strip() == "1", False
+        return (False, False), False
+    ok_s, _, parsed_s = line.strip().partition(",")
+    return (ok_s == "1", parsed_s == "1"), False
 
 
 def run_gate(model, tok, problems, frac, state=None):
@@ -235,7 +236,7 @@ def run_gate(model, tok, problems, frac, state=None):
             enable_thinking=False)
         completion = generate(model, tok, prompt=text, max_tokens=MAX_TOKENS)
         expr = extract_expression(completion)
-        ok, timed_out = check_isolated(p, expr)
+        (ok, parsed), timed_out = check_isolated(p, expr)
         if timed_out:
             run_gate.timeouts = getattr(run_gate, "timeouts", 0) + 1
             print(f"[gt1-2]   ORACLE-TIMEOUT problem {i} (level "
@@ -244,10 +245,9 @@ def run_gate(model, tok, problems, frac, state=None):
         n_ok += ok
         lvl = getattr(p, "level", "?")
         per_level[lvl] = per_level.get(lvl, 0) + int(ok)
-        from llmopt.mathgen.problems import parse_answer
         row = {"seed": SEED, "frac": frac, "idx": i, "level": lvl,
                "ok": bool(ok),
-               "parsed": bool(expr) and parse_answer(expr) is not None,
+               "parsed": parsed,
                "gen_len": len(completion)}
         if state and state["slots"] > s0:
             row["recall"] = round(

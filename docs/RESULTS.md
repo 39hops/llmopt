@@ -20726,3 +20726,20 @@ accepts TRUE. The rlimit attempt STAYS in the worker (it works on
 Linux — the 3080 twin inherits it for free).
 GATE CONSEQUENCES unchanged: arms 1-7 stand; all boxed r75 attempts
 discarded; arms 8-14 rerun under v3.1 (watchdog).
+
+## AMENDMENT MOE-GT-6-ORACLE-BOX-4: the LAST unboxed sympy-on-model-text found — parse_answer ran per-problem in the DRIVER (the row's parsed flag); gt6v4 died with the worker watchdog silent, which localized it (2026-08-05, Mac)
+
+Amends: AMENDMENT MOE-GT-6-ORACLE-BOX-3. gt6v4 (subprocess oracle +
+RSS watchdog) died the same Killed: 9 with ZERO membomb events —
+the worker was innocent this time, which left exactly one sympy
+call in the loop: parse_answer(expr) computing the per-problem row's
+"parsed" field, IN THE DRIVER, on model text (extract_expression is
+pure string-splitting and is innocent). v3.2: the worker now
+returns (ok, parsed) — parse_answer moved inside the box; the
+driver retains ZERO sympy-on-model-text call sites. Full-path smoke
+re-run: TRUE (1,1), wrong (0,1), garbage (0,0), SLEEP-timeout,
+respawn TRUE — all correct shapes. Doctrine line sharpened: the
+oracle-on-model-text fence covers EVERY sympy touch of the text —
+scoring, parsing, even a boolean diagnostic flag; audit the whole
+loop, not the obvious call.
+GATE CONSEQUENCES unchanged; arms 8-14 rerun as gt6v5.
