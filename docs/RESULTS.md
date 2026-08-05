@@ -20243,3 +20243,23 @@ Either way the RESURRECTION claim (0 -> 55-class from adding verbal
 FENCES: mps only (cross-device forbidden); sigma~5 per gate, so
 per-pair deltas stay unclaimed — only the n=3 pooled direction
 books; probe text recorded per arm.
+
+## PRE-REG LEAN-KERNEL-SAMPLE: the owed sampled kernel pass — 1000/21,914 certs, WSL mathlib kernel (2026-08-05, 3080/WSL)
+
+Discharges the LEAN-TIER-2 co-sign's open item ("cert validity is
+still kernel-pending house-side"). Sample: 1000 rows drawn
+string-seeded (random.Random("lean-kernel-sample-0")) from the
+21,914-cert sidecar (scratch/lean_real_corpus/parity_certs.jsonl).
+Harness: scratch/lean_check.py (statement re-derivation with the
+independent house printer + lake kernel check), leancheck project +
+mathlib cache on the WSL box. Window: Artin's open 3080 slot
+(until 5PM EST).
+
+REGISTERED: expectation 1000/1000 kernel-pass; ANY kernel failure
+books as a JUDGE-BUG artifact on both ledgers FIRST (the
+loud-artifact clause travels verbatim). Diff-ineligible rows (house
+printer grammar misses) are REPORTED, not silently passed; the
+pass fraction books over kernel-checked rows with the ineligible
+count named. A 1000-row clean pass upgrades the co-sign fence from
+"kernel-pending" to "kernel-sampled (1000, string-seeded)"; it does
+NOT claim the full corpus.
