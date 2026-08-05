@@ -20325,3 +20325,39 @@ TEXT EMISSION, not math computation — D3's probe was degenerate,
 GT-5's coherent) is NOT separated by this observation and travels
 to the random-fill control's design: add a degenerate-output-rate
 readout per arm.
+
+## PRE-REG MOE-GT-5c: the RANDOM-FILL control — three readings of the resurrection, one discriminator (2026-08-05, Mac)
+
+The GT-5 verdict's banked control, sharpened by GT-VERBAL-SHARE and
+the reviewer's F7. Per layer: keep = frozen D3 symbolic core + a
+uniform RANDOM draw from the 128-minus-core complement, sized to the
+union mask's exact per-layer sizes (65-86; mean 78.2). THREE draws,
+string-seeded (gt5c-randfill-{0,1,2}), each a math gate at seed 1234
+(the certified paired split), same instrument (moe_gt1_arm2.py).
+Builder committed: scratch/gt5c_randfill_keep.py.
+Calibration registered BEFORE the runs: a uniform random fill
+captures ~41/91 of non-core demand MASS in expectation (~0.75
+arm0-axis open recall) — HIGHER than the verbal fill's 0.729. So
+recall does not favor the verbal fill; if anything it favors random.
+
+REGISTERED READINGS (the three-way):
+R-VERBAL (verbal base is load-bearing for math): random draws stay
+  in the dead/collapsed class (<= R6's cross-mask 19-21 band, or
+  0-class) DESPITE >= recall — only verbal fill resurrects. The
+  verbal-fallback-as-contingency reading books.
+R-SHOULDER (recall threshold is all that matters): random draws
+  score in the union band (42-55 at this seed's 55) or above —
+  identity of the FILL is irrelevant once the core is present and
+  recall ~0.73-0.75. The resurrection was never about verbal.
+R-EMISSION (verbal experts restore text emission, not math): probe/
+  answer degeneracy separates it — registered readout: probe text
+  verbatim + count of gate completions with no parseable expression
+  per arm (the D3 '1.1.1.1' class). If random draws emit degenerate
+  text at union-class recall while verbal fill emitted coherent
+  text, emission is the verbal contribution.
+Mixed outcomes book as measured; the three-draw spread is the draw-
+variance fence (R6 precedent: two random draws at 45.3% both 0).
+FENCES: seed 1234 only (within-seed comparison vs D3 0/120 and
+GT-5 55/120 — same problem set); sigma~5; per-layer sizes matched
+exactly to the union artifact; degeneracy readout is descriptive
+(no registered threshold).
