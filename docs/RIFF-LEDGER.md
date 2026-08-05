@@ -2750,3 +2750,23 @@ pooling winners was his call).
   separate. Attribution: Artin (battery framing + convergence
   question + verified-wins-only clause), house (rung sketch).
   BANKED, not queued.
+
+- **Closed-loop pincer: reverse LM feeds forward LM, one step at a
+  time** (Artin, 2026-08-05 late, extending the TENET battery bank):
+  instead of independent forward/backward searches meeting in the
+  middle, ALTERNATE them — the reverse model proposes candidate
+  inputs/predecessors, the forward model chooses ONE step, the
+  reverse model consumes the new state and proposes again; a
+  generate-choose loop where each direction constrains the other
+  every step. Tie-in candidates: the weight-reader lineage (the
+  2026-07-06 ablation model — small, size to verify at spec time —
+  raw weights readable 80.8%, permutation-augmented 88.4%) and the
+  magic-estimator doctrine (prediction pays only where variance
+  lives): the reverse model is a learned predecessor-predictor, so
+  it should be spent exactly on the steps where forward search has
+  high branching variance. Candidate rung for the TENET battery
+  (R1b: alternating pincer vs independent pincer vs forward-only,
+  same matched budget, verified-AND-distinct). Attribution: Artin
+  (the alternation loop + weight-reader tie-in), house (variance-
+  targeting frame + rung placement). Banked into the TENET
+  battery's spec-pass inputs.
