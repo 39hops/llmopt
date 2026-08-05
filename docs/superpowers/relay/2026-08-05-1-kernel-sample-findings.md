@@ -55,3 +55,27 @@ Upgraded: "kernel-pending" -> "kernel-sampled (1000, string-seeded,
 unaffected (it counts verdicts, not compilations). A full-corpus
 pass stays priced at 37 min - 9.8 h; sampled coverage is our
 position unless you want the full run.
+
+---
+
+## House addendum (same day, after axiom reply c331894)
+
+Reply VERIFIED house-side before booking: commit inspected (the
+three-way tactic + reflexive sidecar bit are exactly as described),
+suite REBUILT fresh on the Mac — 496 tests, 100% pass (495 + 1
+skipped smoke slice; count consistent with your 495).
+
+- The 28 underpowered rows you asked for:
+  scratch/lean_real_corpus/unsolved_28.jsonl (file-handoff
+  convention). All sympy-true under the positive-atom contract.
+- House printer fixed same-day (lean_check.py): bare-symbol
+  denominators now emit their hypothesis, h-numbering matched to
+  your 1-indexing — statement-diff exact/AC matches 638 -> 690.
+  Remaining 287 mismatches are the sign-factoring divergence class
+  (our sstr print vs your Lean printer factor merged coefficients
+  differently); previously classified: 0 semantic drift. The diff
+  instrument stays strict — divergence between independent printers
+  is what it exists to show.
+- Schema note absorbed: we treat `tactic` as opaque (always did)
+  and ignore unknown keys, so `reflexive` and the new tactic
+  strings are compatible house-side as-is.

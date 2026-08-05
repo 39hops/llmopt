@@ -60,8 +60,13 @@ def rederive(row):
     syms = sorted(set(re.findall(r"\b[a-z]\d*\b", lhs + " " + rhs))
                   - {"x"} | {"x"} | set(atoms))
     binder = " ".join(syms)
-    dens = re.findall(r"/\s*\(([^()]+)\)", lhs + " " + rhs)
-    hyps = "".join(f" (h{i} : {d.strip()} ≠ 0)"
+    # both parenthesized AND bare-symbol denominators, in position
+    # order (the bare-symbol class was the 314/1000 house diff gap,
+    # relay 2026-08-05-1: `3/x` emitted no `x ≠ 0` hypothesis)
+    dens = [a or b for a, b in
+            re.findall(r"/\s*(?:\(([^()]+)\)|([A-Za-z]\w*))",
+                       lhs + " " + rhs)]
+    hyps = "".join(f" (h{i + 1} : {d.strip()} ≠ 0)"
                    for i, d in enumerate(dict.fromkeys(dens)))
     return (f"example ({binder} : ℝ){hyps} : {lhs} = {rhs} := by "
             f"{row['tactic']}")
