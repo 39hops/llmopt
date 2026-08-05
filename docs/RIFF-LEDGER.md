@@ -2636,3 +2636,18 @@ pooling winners was his call).
   verbal-base / extensions / rest), so the physical reorder is
   specifiable today. Attribution: Artin (all four questions),
   house (measurement-plane distinction + discriminators).
+
+- **The VERBAL TAX thesis** (Artin, 2026-08-05, sharpening the
+  verbal-fallback riff): a web-trained MoE routing math through
+  verbal machinery is EXACTLY the inefficiency the math-native
+  micro-model program was built to avoid — the 30B's possible
+  verbal fallback and the house crystals are the two sides of one
+  claim. If the random-fill control confirms verbal fill (not
+  random fill) resurrects the dead math core, we will have measured
+  the pathology inside the deployed model class that the
+  math-native thesis predicts, turning "from-scratch math-native
+  beats pretrained" from a benchmark result into a mechanism story:
+  the pretrained model pays a routing/representation tax for having
+  learned math THROUGH language. Attribution: Artin (thesis +
+  program connection), house (control design). Reviewer evidence
+  sweep dispatched same-day.
