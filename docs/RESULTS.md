@@ -20214,3 +20214,32 @@ FENCES: one seed 1234 (resolution law: the 8-solve gap to the
 61.8% top-demand mask is ~1.6 sigma — direction suggestive, not
 claimed); single arm; keep-set mixes 2-way/3-way arities by
 construction; probe repetitiveness noted, not scored.
+
+## PRE-REG MOE-GT-5b: union-mask seed replication — n=3 paired seeds per the resolution law (2026-08-05, Mac)
+
+GT-5's single-seed reading (union 55 vs full 64, ~1.8 sigma; 8
+below top-demand-61.8%'s 63) is under-resolved by the house
+resolution law. Replication: seeds 777 and 2026 join the certified
+1234 pair, each seed running BOTH arms paired on the same device
+(mps), same instrument (moe_gt1_arm2.py):
+  arm A: FULL baseline (no KEEPSET, FRACS=1.0)
+  arm B: UNION mask (KEEPSET=checkpoints/gt5_union_keep.json,
+         FRACS label 0.611)
+Note make_dataset(seed) changes the 120-problem set with the seed —
+pairs are within-seed; only the pooled deficit pools.
+
+REGISTERED PREDICTIONS:
+P-DEFICIT-HOLDS: union < full in all 3 pairs; pooled deficit in the
+  5-15 solve band (seed-1234 pair contributes 9). Books the GT-5
+  reading at n=3: a structural 61% mask costs a real but small
+  capability tax.
+P-DEFICIT-NOISE: pairs split sign or pooled deficit < 5 — the
+  union mask is capability-equivalent to full at this resolution,
+  and the R6/D3 identity doctrine needs a high-fraction amendment.
+Either way the RESURRECTION claim (0 -> 55-class from adding verbal
+  experts to the dead core) is not at stake here — D3's 0/120 was
+  seed-1234; resurrection replication would need core-only arms at
+  the new seeds (NOT run tonight; one variable at a time).
+FENCES: mps only (cross-device forbidden); sigma~5 per gate, so
+per-pair deltas stay unclaimed — only the n=3 pooled direction
+books; probe text recorded per arm.
