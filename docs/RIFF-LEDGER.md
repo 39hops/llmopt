@@ -2590,3 +2590,21 @@ pooling winners was his call).
   Artin (hierarchy frame), house (second-corpus design + runs). New
   residue: necessary-not-sufficient is untested on the verbal side
   (no verbal gate exists — banked, not queued).
+
+- **The sorted/dynamic model** (Artin, 2026-08-05, on the GT-4
+  verdict): "we LITERALLY are pruning/removing experts — can't we
+  SORT the model so it's optimally arranged, and make it dynamic?"
+  House framing: pure index permutation is a functional no-op
+  (permutation invariance — the never-score-by-weight-distance
+  doctrine's own fact), but PHYSICAL arrangement is an operational
+  lever: (a) store each branch's base-class experts CONTIGUOUSLY so
+  a branch load is one sequential read and keep-set gathers become
+  slices; (b) branch-conditional RESIDENCY — classify the branch
+  early, page in only that population (~50% residency, which
+  MOE-GT-1 measured as BETTER than full density, 78/120 vs 64/120);
+  (c) the two near-disjoint branch cores (48.5 + 37.1 of 128) are
+  the natural partition. Risks/fences: residency cliff at 25-33%
+  (GT-1); mid-stream branch switches; router is per-token — masks
+  already fence this (KEEPSET knob). Attribution: Artin (sorting +
+  dynamic question), house (permutation-invariance split +
+  residency/paging framing). Banked, not queued.
