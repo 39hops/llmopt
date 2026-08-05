@@ -20410,3 +20410,51 @@ FENCES: 1000-row sample, not the corpus; sympy cross-check assumes
 positive atoms (matches the tier's atomizer contract); trimmed-
 tactic spot-check n=3 of 269; the 28's Lean-provability with a
 stronger tactic NOT attempted (statement truth is the claim).
+
+## VERDICT MOE-GT-5c: random fill ALSO resurrects — R-SHOULDER fires (draws 51/36/48 vs union 55 at matched size); the verbal base is NOT specifically load-bearing for math (2026-08-05, Mac)
+
+Pre-reg: MOE-GT-5c (three readings registered). Receipts:
+jobs/gt5c_randfill.log (rc=0; dicts sum-verified). Seed 1234
+throughout (paired vs D3 core-only 0/120 and GT-5 union 55/120).
+
+  draw r0: 51/120 {1:20, 2:20, 3:11} | open recall 0.7553 | probe
+    coherent (deliberative CS answer)
+  draw r1: 36/120 {1:14, 2:12, 3:10} | open recall 0.7628 | probe
+    DEGENERATE-CLASS (repetition loop "I can't remember the exact
+    s, t, u")
+  draw r2: 48/120 {1:17, 2:17, 3:14} | open recall 0.7489 | probe
+    coherent (recursion/lambda/halting)
+  mean 45.0; recall 0.749-0.763 >= union's 0.729, as the pre-reg's
+  expectation math registered.
+
+R-VERBAL IS KILLED: random fill does not stay in the dead/collapsed
+class — core + ANY ~41-expert recall-restoring population
+resurrects math capability from 0 to the 36-51 band. The verbal
+base is not specifically load-bearing for math; GT-VERBAL-SHARE's
+2.7% free-routing share now has its causal twin.
+R-SHOULDER FIRES as the primary reading: between arm0-axis recall
+0.554 (dead) and ~0.73-0.76 (working), the shoulder is the
+mechanism. The GT-1 demand-ranked ladder hid it because identity
+and fraction moved together.
+RESIDUAL, honest: union 55 sits at/above the top of the random band
+(mean +10, best-draw +4) at slightly LOWER recall — a weak hint of
+verbal-fill advantage, individually inside the draw spread (36-51)
+and sigma~5; unresolved at n=3 draws, claim nothing.
+R-EMISSION: partially informative — the worst draw (36) is also the
+degenerate-probe draw, consistent with emission quality tracking
+gate score; the registered per-answer degeneracy COUNT was not
+collected (PERPROB not enabled — booked as a readout miss, not
+argued around).
+DOWNSTREAM: the verbal-fallback reading of GT-5 narrows to "the
+model can rebuild math emission on top of the core plus ANY
+sufficient expert population" — routing-level verbal-tax evidence
+is now dead on BOTH readouts (free routing 2.7%; causal control
+non-specific). The verbal-tax thesis lives only at the
+training-history/representation layer (the crystal contrast). For
+the residency program: the capability floor is RECALL-driven above
+the core, so branch-paging schedules should be built on
+recall-coverage arithmetic, not expert-class identity, once the
+core is resident.
+FENCES: one seed, three draws; probe text is a 1-sample instrument
+per draw; recall axes per GT2-EXCLUSION 4c (arm0-json axis
+throughout this entry).
