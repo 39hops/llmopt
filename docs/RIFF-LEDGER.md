@@ -2677,3 +2677,24 @@ pooling winners was his call).
   ordinary. The branch structure and near-disjointness (0.095)
   stand. Never silently delete: the original text stays, this note
   names its refutation.
+
+- **Tiered oracle: numeric pre-screen -> fork-boxed CAS -> kernel
+  certificate** (house, 2026-08-05, out of the GT-6 oracle hang +
+  Artin's "why are we still using sympy"): sympy stays the referee
+  because its breadth on arbitrary model text is unmatched (symengine
+  CLOSED; axiom C++ is sounder but tier-narrow), and the unbounded
+  tail is engine-independent (Richardson: zero-equivalence over
+  transcendentals is undecidable — swapping engines moves the
+  pathological set, never removes it). The hardening: (1) NUMERIC
+  PRE-SCREEN — evaluate lhs-rhs at a few random points before any
+  simplify; pathological completions are almost never EQUAL, just
+  expensive to prove unequal, so the 3-hour hang class becomes a
+  microsecond reject (fence: numeric agreement is one-sided — pass
+  still requires the symbolic/kernel tier; branch cuts and poles
+  need care in point sampling); (2) fork-boxed CAS for routine
+  confirmations (shipped, MOE-GT-6-ORACLE-BOX); (3) Lean kernel
+  certificates where soundness is the claim (Mac-local, 382 ms/cert,
+  0 false raw equalities in the 1000-sample) — the proofs-gate spec
+  item is the first gate scored at tier 3. Attribution: Artin
+  (question), house (tier design). Banked; tier-1 pre-screen is a
+  ~20-line change to check_isolated when next touched.
