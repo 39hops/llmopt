@@ -20591,3 +20591,44 @@ MOE-GT-5). Source: reviewer consistency audit, verified house-side.
    1.3-3.5 sigma_diff (not 1.8-5). No direction changes; the
    single-seed GT-5 deltas were and remain individually
    unresolved — GT-5b's 3/3 sign + pooled 17.3 is the claim.
+
+## PRE-REG MOE-GT-6: the recall ladder — the shoulder gets a shape, and the verbal-excluded fill closes GT-5c's pool gap (2026-08-05, Mac)
+
+Spec item 1 (2026-08-05-recall-shoulder-and-queue). All keep-sets =
+frozen D3 symbolic core + uniform RANDOM per-layer fill, fill count
+tuned so arm0-axis open recall lands within ~0.01 of target; fill is
+never demand-ranked, so recall is the only moving variable above the
+core. Builder committed: scratch/gt6_recall_ladder.py; achieved
+recalls (arm0 axis): 0.593/0.594, 0.645/0.647, 0.703/0.695,
+0.744/0.750, 0.795/0.792, and the VERBAL-EXCLUDED arms (fill from
+128 - core - verbal-core; the audit's F7 arm) 0.722/0.721.
+Instrument: moe_gt1_arm2.py KEEPSET, math gate, seed 1234 paired vs
+the certified full 64. 12 gates + 2 rider gates.
+
+REGISTERED PREDICTIONS:
+P-SHAPE: gate score rises monotonically in recall (2-draw means);
+  the 50%-of-full crossing (32/120) lands in the 0.65-0.75 bin.
+  Calibration points that must cohere: core-only 0.554 -> 0/120;
+  random fills at 0.75 -> the GT-5c 36-51 band; 0.79-0.80 arms
+  approach the 61.8% top-demand mask's 63.
+P-CLIFF (alternative): the shoulder is a step, not a slope — 0.65
+  arms stay 0-class and 0.70 arms jump into the 30+ band (or any
+  non-monotone 2-draw-mean ordering). Books as measured.
+P-NOVERBAL (the F7 discriminator): verbal-excluded fills at 0.72
+  score in the same band as verbal-included fills at matched recall
+  (interpolating the ladder at 0.72) — R-SHOULDER survives its
+  tightest control, and "not verbal-specific" is fully earned. IF
+  INSTEAD they collapse toward 0-class at matched recall, the
+  verbal population IS load-bearing and GT-5c's pool-inclusion
+  masked it (GT-5c would inherit a scope amendment).
+RIDER (resurrection anchor): core-only mask (gt3_core_keep) at
+  seeds 777 and 2026 — registered: 0-class both (the D3 0/120 was
+  seed-1234-only; this firms the anchor at n=3). A non-zero-class
+  score books as measured and re-fences the resurrection baseline.
+FENCES: one gate seed (1234) for the ladder (recall bins, not
+  seeds, are the ladder variable); 2 draws per bin (draw variance
+  fence: GT-5c spread was 15 solves at one bin); sigma_diff ~7 per
+  pair — per-arm deltas unclaimed, the SHAPE (monotonicity + the
+  crossing bin at 2-draw means) is the readout; arm0-axis recall
+  throughout; per-answer degeneracy count collected this time via
+  probe text per arm (PERPROB stays off — probe only, named).
