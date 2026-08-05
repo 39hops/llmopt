@@ -118,6 +118,20 @@ def main():
             if a != b:
                 print(f"{a} DEMAND covered by {b} keep-set: "
                       f"{coverage(counts[a], keeps[b]):.4f}")
+    # GT2-CORE-0: the three-domain core + containment (class hierarchy)
+    core = {li: keeps["math"][li] & keeps["phys"][li] & keeps["code"][li]
+            for li in keeps["math"]}
+    sizes = [len(v) for v in core.values()]
+    k = len(next(iter(keeps["math"].values())))
+    print(f"three-domain CORE: mean {sum(sizes)/len(sizes):.1f}/{k} "
+          f"per layer (min {min(sizes)} max {max(sizes)}; "
+          f"independence null {k*(k/128)**2:.1f})")
+    mc_in_p = sum(
+        len((keeps["math"][li] & keeps["code"][li]) & keeps["phys"][li])
+        / max(len(keeps["math"][li] & keeps["code"][li]), 1)
+        for li in core) / len(core)
+    print(f"containment: fraction of (math&code) also in phys "
+          f"{mc_in_p:.2f} (1.0 = clean class hierarchy)")
 
 
 if __name__ == "__main__":
