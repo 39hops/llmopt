@@ -2558,3 +2558,16 @@ pooling winners was his call).
   two-domain gate/probe dissociation STRENGTHENS the
   sequence-form-only fence (text quality is not implied by gate
   scores on either domain).
+
+- **The abstraction hierarchy / "simpler than math"** (Artin,
+  2026-08-04 ~23:50): domains as CLASSES over expert coalitions —
+  physics extends math; is there a base class below math, "the
+  pure logical ability to understand an equation"? Desk check the
+  same night CONFIRMED the structure (OBSERVATION GT2-CORE-0:
+  37/58-per-layer three-domain core vs 11.9 null; 92% containment
+  of math&code in phys — near-clean class hierarchy). The base-
+  class QUESTION stays open with registered discriminators: proofs
+  arm-0 (logic-pure), prose arm-0 (the language-substrate
+  control), core-only mask (necessity-vs-sufficiency). Attribution:
+  Artin (hierarchy + base-class question), house (desk
+  confirmation + discriminators).

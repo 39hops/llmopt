@@ -19714,3 +19714,41 @@ FENCES: corrected Jaccards inherit all prior fences (one seed per
 domain, tie-fill upper bounds); receipts note "rc=0" is operator
 testimony (rjob writes rc files, not log lines) — future receipts
 should quote the rc file.
+
+## OBSERVATION GT2-CORE-0: a three-domain expert CORE exists (37/58 per layer vs 11.9 independence null) and the containment structure is class-like (2026-08-04, Mac, desk)
+
+Source: Artin's abstraction-hierarchy riff ("Physics would extend
+Math... is there something simpler than math? The pure logical
+ability to understand an equation?"). Desk computation on the three
+decode-only demand logs (prompt-tail-corrected, 58/128 keep-sets).
+
+  three-domain core (math & phys & code): mean 37.1/58 per layer
+    (min 32, max 45) = 64% of each coalition; independence null
+    for random 58/128 coalitions: 11.9 — the shared substrate is
+    ~3x chance.
+  pairwise |intersection|/58: math-phys 0.89, math-code 0.69,
+    phys-code 0.69.
+  CONTAINMENT: 92% of (math & code) is also in phys — code's
+  overlap with math is almost entirely the universal core, while
+  physics shares ~25% MORE of math's coalition beyond it. The
+  class picture: a base substrate; math and physics as close
+  siblings extending it; code inheriting little beyond the base.
+
+FENCES (why the core is NOT yet "logic"): (i) all three corpora
+share chat template, English prose, and expression emission — the
+core may be the GENERIC DECODING substrate, not symbolic reasoning;
+(ii) tie-fill inflates intersections (0.4-2.4 boundary ties/layer,
+small but real); (iii) one seed per domain, desk-only, no mask arm
+run on the core.
+REGISTERED DISCRIMINATORS (next arms, not run tonight):
+  (a) PROOFS arm-0 (mathgen proofs kind — the most logic-pure
+      corpus in-house): prediction IF core=logic: proofs coalition
+      sits INSIDE the core + small extension, closer to core than
+      any domain coalition.
+  (b) PROSE arm-0 (non-symbolic control): IF the prose coalition
+      also contains >~90% of the core, the core is language/
+      formatting, and the "logic substrate" reading dies.
+  (c) CORE-ONLY mask (37/128 = 29% keep): prediction from the
+      class picture: the core alone solves ~nothing on ANY domain
+      gate (the domain extension carries capability; the core is
+      necessary-not-sufficient).
