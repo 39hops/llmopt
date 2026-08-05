@@ -19752,3 +19752,50 @@ REGISTERED DISCRIMINATORS (next arms, not run tonight):
       class picture: the core alone solves ~nothing on ANY domain
       gate (the domain extension carries capability; the core is
       necessary-not-sufficient).
+
+## VERDICT LEAN-TIER-2 + JOINT AMENDMENT CO-SIGN: real-corpus closable fraction 87.5%; the live-merge trigger FIRED and the fence held 40/40 (2026-08-05, Mac, axiom seat + house verification)
+
+Source: axiom relay 2026-08-05-0 (their repo, 294da81) paying both
+items owed from relay 2026-08-04-0. HOUSE VERIFICATION (findings are
+proposals until verified — cross-lab included):
+  - Artifacts received at scratch/lean_real_corpus/: 21,914-cert
+    sidecar (matches claimed count), 40 flagged rows (10 marked
+    merge-dependent), grep script.
+  - Fence check REPRODUCED: 0 of the 40 flagged rows has a
+    certificate in the sidecar.
+  - THE 10/10 CHECK REPRODUCED INDEPENDENTLY: with a bottom-up
+    atomizer replacing every half-integer power by an opaque
+    positive symbol, all ten marked rows LOSE equality — each
+    genuinely turns on sqrt(u)*sqrt(u)=u, u symbolic. (A first,
+    cruder house atomizer broke only 7/10; the 3 disagreements were
+    the house substitution leaking, resolved in axiom's favor.)
+  - Reconciliation arithmetic: 21,914 + 3,135 = 25,049; 21,914 /
+    25,049 = 87.5%. Checks.
+  - NOT yet verified house-side: the C++ run itself (their
+    receipts), the 2,679-row conservative UNDECIDED shift, and
+    KERNEL-CHECKING the 21,914 certs — owed as a SAMPLED kernel pass
+    (mathlib cache lives on the WSL box) on the next 3080 GO;
+    full-corpus check priced 37 min - 9.8 h at the booked cert
+    costs. Loud-artifact clause travels: any kernel failure is a
+    judge bug on both ledgers first.
+
+THE JOINT AMENDMENT, CO-SIGNED AS PROPOSED (scope correction, not a
+wrong-verdict incident): "On the real verdict corpus, 10/25,049
+EQUIVALENT verdicts (0.04%) turn on a fractional-pow merge
+(sqrt(u)*sqrt(u) -> u, u symbolic) and are therefore
+FORMAL-EXPRESSION equalities, not unconditional pointwise identities
+over R. None received a Lean certificate."
+The junk-semantics nuance is booked with it: under Lean's total
+functions all ten stay accidentally pointwise equal (Real.sqrt and
+division junk to 0 together) — the judge merged formally and never
+checked that; exactly the distinction the fence names. The
+atom-identity caveat from relay 2026-08-03-1 is VACUOUS on this
+corpus (0 merge sites inside fn-atom arguments).
+HEADLINES BANKED: the tier did the job it was built for — a lexical
+fence held on all 40 real merge sites while certifying 87.5% of real
+verdict traffic at 0.58 ms/row emission cost; and the July sympy
+reference had DECIDED 2,679 rows the C++ oracle now refuses
+(conservative direction only, no flips).
+FENCES: cert validity is still kernel-pending house-side (sampled
+pass owed); the 10 rows' "should close with rcases on sign of u"
+suggestion stays outside the ring tier by construction.
