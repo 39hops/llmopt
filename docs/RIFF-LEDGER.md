@@ -2698,3 +2698,21 @@ pooling winners was his call).
   item is the first gate scored at tier 3. Attribution: Artin
   (question), house (tier design). Banked; tier-1 pre-screen is a
   ~20-line change to check_isolated when next touched.
+
+- **Expand-then-simplify as a text operation** (Artin, 2026-08-05):
+  math simplification is NON-MONOTONE (you expand to cancel; the
+  path to smaller goes through bigger) while text summarization is
+  treated as monotone compression — but what if it shouldn't be?
+  Proposal: expand the text into more detail FIRST, then compress,
+  vs compress directly; does the answer improve? House grounding:
+  the engine's own wins came from complexity-raising moves (the
+  linear-basis/ansatz arm moved the L4 ceiling by proposing bigger
+  templates then collapsing them), and CoT is the degenerate
+  always-on version of expansion-before-answer. Charter-clean test
+  design: run it on PROOF text — expand terse derivations (Lean
+  corpus, kernel-verifiable) into detailed steps, then compress,
+  vs direct; score with the oracle. The explicit intermediate
+  artifact is auditable in a way CoT is not. Related: the
+  temporal-pincer bank is the same shape run backward from the
+  answer. Attribution: Artin (the asymmetry + the test), house
+  (proof-text framing + oracle scoring). Banked, not queued.
