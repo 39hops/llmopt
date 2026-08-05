@@ -183,7 +183,29 @@ def check_isolated(p, expr, wall=20):
               "failure", flush=True)
         _ORACLE = None
         return False, False
-    ready, _, _ = select.select([_ORACLE.stdout], [], [], wall)
+    # sliced wait with an RSS WATCHDOG: Darwin ignores RLIMIT_AS/DATA
+    # (verified live — a worker memory bomb ran uncapped and drove the
+    # machine to ~87MB free; jetsam kills the LARGEST process, i.e.
+    # the 30B driver, which is how four GT-6 runs died). The parent
+    # polls worker RSS every slice and kills a balloon early.
+    import subprocess as sp_
+    import time as time_
+
+    MEM_CAP_KB = 3 << 20  # 3 GB
+    deadline = time_.monotonic() + wall
+    ready = None
+    while time_.monotonic() < deadline:
+        ready, _, _ = select.select([_ORACLE.stdout], [], [], 0.5)
+        if ready:
+            break
+        rss = sp_.run(["ps", "-o", "rss=", "-p", str(_ORACLE.pid)],
+                      capture_output=True, text=True).stdout.strip()
+        if rss and int(rss) > MEM_CAP_KB:
+            print(f"[gt1-2]   ORACLE-MEMBOMB rss={int(rss) >> 10}MB — "
+                  "killed, booked as failure", flush=True)
+            _ORACLE.kill()
+            _ORACLE = None
+            return False, True
     if not ready:
         _ORACLE.kill()
         _ORACLE = None

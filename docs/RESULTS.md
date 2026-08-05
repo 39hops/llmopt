@@ -20699,3 +20699,30 @@ kills+respawns, post-respawn TRUE still accepts. Worker start
 GATE CONSEQUENCES: arms 1-7 stand (raw oracle, completed); the
 first boxed r75_d0 attempt is DISCARDED (died mid-gate; its 2
 timeout observations are receipts only); arms 8-14 rerun under v3.
+
+## AMENDMENT MOE-GT-6-ORACLE-BOX-3: the true kill mechanism — worker memory BALLOON, not fork; jetsam kills the largest process (the driver); Darwin rlimits verified no-op live; parent-side RSS watchdog shipped and bomb-tested (2026-08-05, Mac)
+
+Amends: AMENDMENT MOE-GT-6-ORACLE-BOX-2. The fork attribution was
+incomplete: gt6v3 (subprocess oracle, ZERO forks) died the same
+death — Killed: 9 on the driver, always shortly after the arm's
+first 1-2 oracle timeouts. MECHANISM (now reproduced deliberately):
+a pathological sympy simplify balloons GBs in seconds; during the
+20s timeout window the WORKER's spike drives system memory
+pressure and macOS jetsam kills the LARGEST process — the 17GB
+driver — after which pressure resolves and the post-mortem looks
+clean. The worker is the bomb; the driver is the casualty. (The
+fork of v1 made it worse but was never the root cause; v2/v3's
+kills retro-attribute here.)
+DARWIN FACT (verified live, worth the doctrine line):
+RLIMIT_AS/RLIMIT_DATA are no-ops on macOS — a capped worker ran a
+memory bomb to ~87MB system-free unimpeded. Fix must be
+parent-side: check_isolated now polls worker RSS every 0.5s slice
+of the wait and kills at 3GB with a loud ORACLE-MEMBOMB line
+(booked as failure, same conservative-reject contract).
+BOMB-TESTED: deliberate allocation bomb caught and killed at first
+poll (12.4GB RSS from the pre-armed test; in-path trigger is the
+first slice past 3GB), system memory recovered, respawned worker
+accepts TRUE. The rlimit attempt STAYS in the worker (it works on
+Linux — the 3080 twin inherits it for free).
+GATE CONSEQUENCES unchanged: arms 1-7 stand; all boxed r75 attempts
+discarded; arms 8-14 rerun under v3.1 (watchdog).
