@@ -20632,3 +20632,35 @@ FENCES: one gate seed (1234) for the ladder (recall bins, not
   crossing bin at 2-draw means) is the readout; arm0-axis recall
   throughout; per-answer degeneracy count collected this time via
   probe text per arm (PERPROB stays off — probe only, named).
+
+## AMENDMENT MOE-GT-6-ORACLE-BOX: the ladder hung the raw sympy oracle ~3 h on one shoulder-arm completion — pathology class #7/#10, SIXTH bite; gate oracle now fork-boxed, timeouts loud (2026-08-05, Mac)
+
+Amends: PRE-REG MOE-GT-6 (instrument change registered BEFORE the
+remaining arms fire; arms 1-7 already ran and stand).
+
+INCIDENT: arm 8 (r75_d0) pinned one core at ~100% for ~175 CPU-min
+inside p.check — raw sp.simplify on model text, no fork isolation
+(moe_gt1_arm2 -> problems.check). The shoulder arms are the first
+gates that mass-produce pathological-but-parseable completions
+(degenerate probe text was already visible at r70_d1, which had
+slowed to 536s), which is why 100+ prior gates never tripped it.
+This is the standing doctrine's exact class ("no sympy call is
+safely boxed by SIGALRM; fork is the only real timebox; applies to
+any oracle-on-model-text") — 6th bite. Secondary friendly-fire
+echo: the first kill targeted the child pid and the driver loop
+advanced to the next arm with the unboxed oracle; the run was then
+stopped at the task level.
+
+FIX (committed with this entry): check_isolated() in
+moe_gt1_arm2.py — fork, join(20s), SIGKILL; a timeout is a
+CONSERVATIVE REJECT and stays OBSERVABLE (per-problem
+ORACLE-TIMEOUT line + booked-as-failure), never silent — the same
+law axiom's budget-memoization fix landed on this morning: an
+abort must never become invisible state.
+
+REGISTERED CONSEQUENCES for the GT-6 verdict: arms 1-7 ran
+UNBOXED (their completed scores stand; no timeout misattribution
+possible — a hang blocks, it cannot mis-score); arms 8-14 run
+boxed with timeout counts reported; any nonzero timeout count is
+named in the verdict. The wall is 20s vs ~2s/problem typical — the
+box prices patience, not correctness.

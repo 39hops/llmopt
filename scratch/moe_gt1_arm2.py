@@ -147,6 +147,41 @@ def instrument(model, keep):
     return state, restore
 
 
+def check_isolated(p, expr, wall=20):
+    """Fork-boxed oracle check (the gen_magic_labels.solve_isolated
+    pattern; house doctrine: no sympy call is safely boxed by SIGALRM,
+    and p.check on model text is oracle-on-model-text). Added
+    2026-08-05 after GT-6's shoulder arms hung the raw check ~3 h on
+    one pathological-but-parseable completion (pathology class #7/#10,
+    6th bite). Child runs sympy only — never Metal. Returns
+    (ok, timed_out); a timeout is a conservative REJECT and must stay
+    observable (counted + printed), never silent."""
+    import multiprocessing as mp
+
+    ctx = mp.get_context("fork")
+    q = ctx.Queue()
+
+    def _w():
+        try:
+            q.put(bool(p.check(expr)))
+        except Exception:
+            q.put(False)
+
+    proc = ctx.Process(target=_w)
+    proc.start()
+    proc.join(wall)
+    if proc.is_alive():
+        proc.kill()
+        proc.join()
+        return False, True
+    try:
+        # not get_nowait: join() returning does not mean the child's
+        # put() crossed the pipe (the solve_isolated lesson)
+        return bool(q.get(timeout=10)), False
+    except Exception:
+        return False, False
+
+
 def run_gate(model, tok, problems, frac, state=None):
     from mlx_lm import generate
 
@@ -163,7 +198,12 @@ def run_gate(model, tok, problems, frac, state=None):
             enable_thinking=False)
         completion = generate(model, tok, prompt=text, max_tokens=MAX_TOKENS)
         expr = extract_expression(completion)
-        ok = p.check(expr)
+        ok, timed_out = check_isolated(p, expr)
+        if timed_out:
+            run_gate.timeouts = getattr(run_gate, "timeouts", 0) + 1
+            print(f"[gt1-2]   ORACLE-TIMEOUT problem {i} (level "
+                  f"{getattr(p, 'level', '?')}) — booked as failure",
+                  flush=True)
         n_ok += ok
         lvl = getattr(p, "level", "?")
         per_level[lvl] = per_level.get(lvl, 0) + int(ok)
