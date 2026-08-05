@@ -2770,3 +2770,15 @@ pooling winners was his call).
   (the alternation loop + weight-reader tie-in), house (variance-
   targeting frame + rung placement). Banked into the TENET
   battery's spec-pass inputs.
+
+- **TENET battery: SPECCED** (2026-08-05, specs/2026-08-05-tenet-
+  battery.md; reviewer scan verified house-side). Correction to the
+  bank above, per the scan: the "1.5 s/1000 steps" birth-cost line
+  is FIXED-WINDOW only — the intbirth fast path does not eat diets
+  yet, so reversed-diet births are torch-path (15-40 min Mac), not
+  C++-cheap. Weight-reader size verified EXACTLY: 796,550 params
+  (Artin's "<200M" holds by 250x — it is a Mac-minutes object).
+  Rung order: W0 (toy reverse-readability) -> R0-rev (reverse twin
+  + the REVERSE GATE build, the program's highest-value cheap
+  instrument) -> W1 (direction-from-weights, needs a birth
+  population) -> R1b-micro (the alternation, gated behind R0-rev).
