@@ -20107,3 +20107,35 @@ size either way.
 FENCES: one seed; 96-token decode; the math SYSTEM on a chatty
 corpus may shorten/alter completions (EOS behavior travels with
 the treatment, named now); demand-only, no gate.
+
+## VERDICT MOE-GT-4b: the branch is CONTENT-DRIVEN — the shared SYSTEM prompt is a minor additive term (same-corpus swap costs 0.10 Jaccard; the 0.5+ branch separation survives) (2026-08-05, Mac)
+
+Pre-reg: MOE-GT-4b. Receipts: jobs/gt4b_arm.log (rc=0, 266s,
+FORCE_SYS=math MAX_TOKENS=96 receipted in-log). Artifact:
+logs/opus/gt4b_dialog_mathsys_traj.jsonl (same 80-prompt dialog
+corpus, math SYSTEM, one variable).
+
+  (a) Jaccard(dialog_mathsys, dialog) = 0.8241 [dialog split-half
+      null 0.9225] — the SYSTEM prompt's total routing price on an
+      identical corpus is ~0.10 Jaccard.
+  (b) Jaccard(dialog_mathsys, prose) = 0.6705 — the within-branch
+      overlap SURVIVES losing the shared prefix (was 0.7207 with
+      it; the shared-SYSTEM share of the branch signal is ~0.05).
+  (c) Jaccard(dialog_mathsys, math/phys/code/proofs) =
+      0.2062/0.2061/0.2442/0.2333 — the math SYSTEM pulls an
+      everyday-social corpus toward the symbolic coalitions by only
+      ~0.02; still deep in the cross-branch band.
+
+P-BRANCH-ROBUST fires on (b) and (c) cleanly; (a) lands at 0.824,
+MARGINALLY below the registered >=~0.85 line (booked as measured:
+the SYSTEM effect is real, small, and now priced). P-SYSTEM-DRIVEN
+is killed — a 0.05-0.10 additive term cannot generate a 0.45-0.50
+branch separation. CONSEQUENCE: "the hierarchy is SYMMETRIC" is
+RESTORED from provisional (MOE-GT-4-REVIEW item 7), now carrying
+the priced confound instead of an unfenced one; GT-3's mirrored
+confound (proofs under math SYSTEM vs prose under neutral) inherits
+the same price tag — 0.90-vs-0.25 containment cannot be a
+0.05-class SYSTEM artifact.
+FENCES: one seed; (a)'s 0.026 miss of the ~0.85 line is booked, not
+argued away; EOS/length behavior under the swapped SYSTEM not
+audited (registered as traveling with the treatment); demand-only.

@@ -680,9 +680,22 @@ sessions under one operator, not independent investigators. Read
   the mathematics-code intersection also lies in mechanics. This is a
   desk computation on one demand log per domain with no mask arm run, and
   the three corpora share chat template, English prose, and expression
-  emission — so the core may be the generic decoding substrate rather
-  than any symbolic or logical one. The discriminating arms are
-  registered and unrun. ([OBSERVATION GT2-CORE-0](RESULTS.md#L19718).)
+  emission — so the core could have been the generic decoding substrate
+  rather than any symbolic or logical one. The discriminating arms have
+  since run and killed that reading: the core is symbolic (proofs
+  coalition contains 0.90 of it, plain prose 0.25, with prose routing
+  through a nearly different expert population at 0.16-0.19 Jaccard), a
+  second verbal corpus showed the verbal side is its own branch with its
+  own shared base (prose-dialog Jaccard 0.72 vs 0.16-0.23 cross-branch;
+  verbal core 48.5/58 per layer vs a 26.3 two-way independence null,
+  nearly disjoint from the symbolic core at 0.095 Jaccard), and a
+  system-prompt swap control priced the shared-prefix confound at
+  ~0.05-0.10 Jaccard — too small to generate the branch separation. The
+  core alone is dead on the math gate (0/120): necessary, not
+  sufficient. ([OBSERVATION GT2-CORE-0](RESULTS.md#L19718); [VERDICT
+  MOE-GT-3](RESULTS.md#L19852); [VERDICT MOE-GT-4](RESULTS.md#L19953)
+  as corrected by [AMENDMENT MOE-GT-4-REVIEW](RESULTS.md#L20006);
+  [VERDICT MOE-GT-4b](RESULTS.md#L20111).)
 
 ## The clock-placement and deterministic-birth close
 
