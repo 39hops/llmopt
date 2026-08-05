@@ -20361,3 +20361,52 @@ FENCES: seed 1234 only (within-seed comparison vs D3 0/120 and
 GT-5 55/120 — same problem set); sigma~5; per-layer sizes matched
 exactly to the union artifact; degeneracy readout is descriptive
 (no registered threshold).
+
+## VERDICT LEAN-KERNEL-SAMPLE: registered 1000/1000 MISSED — 703/1000 compile as written, but ZERO false statements: all 297 failures are tactic-SCRIPT defects (269 proved-by-prefix overshoot + 28 sympy-true-but-tactic-weak) (2026-08-05, 3080/WSL + Mac desk)
+
+Pre-reg: LEAN-KERNEL-SAMPLE (expectation 1000/1000; loud-artifact
+clause). Receipts: logs/lean_kernel_sample{,2,3}.log on the WSL box
+(runs 1-2 = the truncation incidents, run 3 = the complete chunked
+pass, 382s, 382 ms/cert).
+
+INSTRUMENT INCIDENT FIRST (books per the checkpoint-selection
+doctrine): the single-file kernel check silently TRUNCATED TWICE —
+Lean aborts a file at ~100 diagnostics, in-file `set_option
+maxErrors` does NOT lift it (verified live), and warnings counted
+toward the cap in run 1. Runs 1-2 checked only ~470 rows while
+looking complete. Fix shipped: chunked checker (50-row files,
+per-row failure attribution), lean_check.py.
+
+KERNEL RESULTS (complete, 1000 rows):
+  703 PASS as written.
+  269 FAIL "No goals to be solved" — the OVERSHOOT class:
+    `field_simp; ring` where field_simp alone closes the goal
+    (reflexive and near-reflexive rows), the trailing ring errors
+    on an empty goal state. The PROOF SUCCEEDS BEFORE THE FAILING
+    TOKEN; spot-check 3/3 pass with the trailing ring trimmed
+    (OvershootTest.lean). Script bug, cert semantically fine.
+  28 FAIL "unsolved goals" — tactic too weak for the statement.
+    ALL 28 independently sympy-verified TRUE house-side
+    (positive-symbol atoms, together+simplify). Tactic gap, not a
+    wrong verdict.
+  => FALSE STATEMENTS DETECTED: 0/1000.
+
+STATEMENT-DIFF (house printer, independent reconstruction), full
+classification: 337 byte-exact, 326 ordering/sign-equal
+(sympy-equal both sides), 314 HOUSE printer hypothesis gap (our
+printer drops `x != 0` for BARE-SYMBOL denominators; THEIR emission
+carries it correctly — house fix owed), 23 grammar-skip. SEMANTIC
+DRIFT: 0.
+
+LOUD-ARTIFACT CLAUSE, DISCHARGED AS REGISTERED: the artifact is a
+JUDGE/EMITTER SCRIPT bug (the `field_simp; ring` template misfires
+on ~27% of certs: overshoot on reflexive rows, underpowered on 28
+hard rows), NOT verdict corruption. Also relayed: reflexive X=X
+rows exist in the cert corpus at all — touches the verified-AND-
+distinct doctrine on their side. The co-sign's fence upgrades:
+"kernel-pending" -> "kernel-sampled (1000, string-seeded): 0 false
+statements; 29.7% of cert SCRIPTS do not compile as emitted."
+FENCES: 1000-row sample, not the corpus; sympy cross-check assumes
+positive atoms (matches the tier's atomizer contract); trimmed-
+tactic spot-check n=3 of 269; the 28's Lean-provability with a
+stronger tactic NOT attempted (statement truth is the claim).
