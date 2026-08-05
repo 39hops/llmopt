@@ -2580,3 +2580,13 @@ pooling winners was his call).
   (question + class frame), house (discriminators + runs). The
   open residue: does the verbal branch have its own core (second
   verbal corpus, banked)?
+
+- **Abstraction-hierarchy riff, residue CLOSED: the hierarchy is
+  SYMMETRIC** (VERDICT MOE-GT-4, 2026-08-05). The verbal branch has
+  its OWN base class — prose&dialog core 48.5/58 vs 11.9 null,
+  LARGER than the symbolic core (37.1), and nearly disjoint from it
+  (Jaccard 0.095). Two sibling branches, each with a base; the
+  router's deepest split is now measured on both sides. Attribution:
+  Artin (hierarchy frame), house (second-corpus design + runs). New
+  residue: necessary-not-sufficient is untested on the verbal side
+  (no verbal gate exists — banked, not queued).

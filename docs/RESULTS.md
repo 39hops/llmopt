@@ -19949,3 +19949,56 @@ tie-fill upper bounds travel; register-vs-topic is only partially
 separable (topics disjoint BY DESIGN, so a low Jaccard cannot be
 blamed on topic overlap, but a high one still bundles register +
 "everyday content" — named now, not after).
+
+## VERDICT MOE-GT-4: the verbal branch is REAL and has its own base class — P-VBRANCH fires (Jaccard(prose,dialog) 0.721; verbal core 48.5/58 vs 11.9 null, near-disjoint from the symbolic core at 0.095) (2026-08-05, Mac)
+
+Pre-reg: MOE-GT-4 (predictions registered before the arm fired).
+Receipts: jobs/gt4_arm0.log (rc=0, 378s). Artifacts:
+logs/opus/gt4_dialog_traj.jsonl, checkpoints/gt4_dialog_prompts.json
+(regenerable: scratch/gt4_dialog_prompts.py). Readouts:
+scratch/gt4_verbal_core.py (decode-only, prompt_tail excluded,
+45.3% keep-sets, first-80-gate-prompt symbolic references — the
+GT-3 controls unchanged).
+
+(i) THE DISCRIMINATOR: Jaccard(prose, dialog) = 0.7207 (min 0.5676);
+  split-half nulls prose 0.8657, dialog 0.9225. Cross-corpus overlap
+  sits in the SYMBOLIC-FAMILY range (math-phys 0.8013, proofs-math
+  0.707) and far above the cross-branch band — the null-to-cross gap
+  (~0.15-0.20) matches the symbolic family's own (math-phys 0.80 vs
+  nulls 0.92/0.87), not the P-OUTGROUP picture.
+(ii) dialog vs math/phys/code/proofs: 0.1886 / 0.1863 / 0.2275 /
+  0.2148 — the cross-branch band, exactly where prose sits
+  (0.157-0.188; dialog runs ~0.03 hotter, code highest again).
+(iii) GT2-CORE-0 containment in dialog 0.3337 (prose reproduced at
+  0.2453 vs booked 0.250 — the 0.005 is layer-averaging rounding in
+  the original desk calc; the frozen D3 core is the reference). The
+  symbolic base is NOT inherited by either verbal corpus.
+(iv) VERBAL CORE: prose&dialog = 48.5/58 per layer (min 42, max 53)
+  vs independence null 11.9 — LARGER than the symbolic core (37.1),
+  i.e. the verbal branch is MORE coherent than the symbolic one.
+  Jaccard(verbal core, GT2-CORE-0) = 0.0950: the two bases are
+  nearly disjoint expert populations. DESIGN NOTE (honest): the
+  registered containment-of-verbal-core-in-its-parents readout is
+  VACUOUS (1.0 by construction — the core is the intersection of
+  the parent keep-sets); size-vs-null and core-vs-core Jaccard are
+  the meaningful statistics. GT2-CORE-0 avoided this only because
+  its 0.92 containment was measured against a FOURTH corpus
+  (proofs).
+
+P-VBRANCH FIRES; P-OUTGROUP IS KILLED. The hierarchy is SYMMETRIC:
+two sibling branches under the router's deepest split, each with its
+own base class, the bases nearly disjoint (0.095). The class picture:
+  verbal-base  (48.5/58) < {prose, dialog}
+  symbolic-base (37.1/58) < {math, phys, proofs, code}
+with cross-branch Jaccard pinned at 0.16-0.23 everywhere measured.
+FENCES: one seed; both verbal corpora are 80-prompt template grids
+(4x20, topic-disjoint by design — a HIGH Jaccard still bundles
+register + everyday content, named in the pre-reg); no gate exists
+for verbal corpora (demand-only, so necessary-not-sufficient cannot
+be tested on this branch yet); tie-fill upper bounds travel.
+DOWNSTREAM: a verbal core-only mask (D3's twin) needs a verbal gate
+that does not exist — banked, not queued. The excluded-experts
+anatomy sharpens again: math-excluded experts are non-core symbolic-
+extension experts AND largely verbal-branch residents (dialog/prose
+Jaccard vs math ~0.16-0.19 says most of the other 70/128 live
+somewhere — the verbal base is a 48-expert candidate).
