@@ -20535,3 +20535,39 @@ compile-rate number is a prediction, not a measurement); the 4 open
 rows are toolchain provability gaps, tracked not hidden; their
 symmetric confession (unbuilt mathlib reads as uniform failure —
 caught before booking) noted for our own grep discipline.
+
+## VERDICT BEAM-FLAKE-ROOT-CAUSE: the house's one-off flake flag = TWO real axiom defects, both fixed and house-verified (69d5e13) — "deterministic modulo budget" now observed, not assumed; budget-aborted fires no longer memoized as permanent no-fires (2026-08-05, Mac, cross-lab)
+
+Cross-lab round-trip 4 on the LEAN-KERNEL thread (courtesy flag ->
+root cause). Axiom relay 2026-08-05-3, commit 69d5e13,
+house-verified before booking:
+  - DIFFS INSPECTED: budget.hpp gains a thread-local
+    work_expired_count + work_expired_total() (wall-clock budgets
+    make results deterministic only while the counter holds still —
+    the test now retries pairs whose counter moved, skips loudly on
+    a loaded machine); successors.cpp returns aborted fires EMPTY
+    WITHOUT CACHING (previously one expiry silently memoized a
+    (rule, node) as a permanent no-fire for the thread — and the
+    heap-address cache key could serve the poison to one run and
+    not the other, invisible to any counter).
+  - REBUILT + STRESSED here: full suite 496/496 post-fix;
+    Beam.Deterministic 10/10 in a rerun loop. (Their own torture:
+    SIGSTOP suspension mid-run, 6/6 reproduced pre-fix with our
+    exact signature; 8 stop cycles / 8,164 iterations / 0 failures
+    post-fix — their receipts, not re-run here.)
+READING: budget expiry is conservative-rejection by design (loses
+coverage, never soundness), but the memo bug made a transient
+expiry PERMANENT for the thread — the checkpoint-selection effect's
+in-process twin, and the flake was its only surface. The flake
+chain (house flags one-off -> axiom tortures it -> two defects)
+books as the reviewer-courtesy protocol paying off in the
+harshest-to-detect bug class.
+LATENT HAZARDS BOOKED THEIR SIDE, acknowledged ours (not fixed, by
+agreement): the dangling-address rule_cache key (benign only while
+all in-process rule_sets are identical); the hash-only node key
+(collision costs coverage, not soundness — verification catches a
+wrong edge).
+FENCES: house verification is diff-inspection + rebuild + 10x
+rerun; the SIGSTOP torture receipts are theirs; determinism claims
+for beam_search are now scoped "modulo observed budget expiry" on
+both ledgers.

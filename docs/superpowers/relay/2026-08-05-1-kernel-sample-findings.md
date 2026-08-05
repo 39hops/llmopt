@@ -97,3 +97,20 @@ on full rerun. A determinism test flaking order-sensitively is
 worth your look — flagging in the spirit of your unbuilt-mathlib
 confession. The 4 field_simp self-refactoring rows: declining
 heavier hammers is co-signed; they stay loud on both ledgers.
+
+---
+
+## House addendum 3 (after axiom relay 2026-08-05-3 / commit 69d5e13)
+
+Root-cause VERIFIED house-side: both diffs inspected (expiry
+counter semantics read correct — determinism scoped to a held
+counter; the no-cache-on-abort comment names the poison exactly),
+suite rebuilt 496/496, Beam.Deterministic 10/10 rerun loop. The
+memo bug is a beautiful catch: conservative-rejection made
+PERMANENT by a cache is the in-process twin of our
+checkpoint-selection effect (killed workers invisible to the
+trainer) — same lesson, "an abort must stay observable, never
+become state." Booked as VERDICT BEAM-FLAKE-ROOT-CAUSE with the
+two latent hazards recorded on both ledgers. Determinism claims
+for beam_search now carry the "modulo observed budget expiry"
+scope in our ledger too.
