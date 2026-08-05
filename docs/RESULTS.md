@@ -19799,3 +19799,52 @@ reference had DECIDED 2,679 rows the C++ oracle now refuses
 FENCES: cert validity is still kernel-pending house-side (sampled
 pass owed); the 10 rows' "should close with rcases on sign of u"
 suggestion stays outside the ring tier by construction.
+
+## PRE-REG MOE-GT-3: the base-class discriminators — is the three-domain core LOGIC or LANGUAGE? (2026-08-05, Mac)
+
+Follows OBSERVATION GT2-CORE-0 (37.1/58-per-layer core, 92%
+containment; Artin's abstraction-hierarchy riff). The core's two
+live readings — symbolic/logic substrate vs generic decoding
+substrate — get their registered discriminators.
+
+CORPORA (pre-flights done): PROOFS = the ENTIRE proofs space, 80
+unique prompts (prove_ind + prove_discover, L1-3 saturate at 80/
+cross-kind dedup by 400 seeds; a 120-gate is impossible and NOT
+attempted — demand log only). PROSE = 80 deterministic string-seeded
+plain-prose prompts, zero symbolic content, neutral SYSTEM prompt
+(corpus+prompt treatment, the D3-class fence). PATHOLOGY REPRODUCED
+during pre-flight and dodged: make_dataset(120) against the 44-row
+proofs L2-3 space live-locks in the unbounded dedup loop — the
+mechanics-L1 class, live. Driver: scratch/gt3_probe_arm0.py (TRAJ v3
+instrument; ok-less rows).
+
+CONTROLS: all readouts computed decode-only (prompt_tail excluded —
+recorded natively in TRAJ v3, first corpus outing) and against a
+SIZE-MATCHED math reference (first 80 gate prompts of
+moe_gt1_traj_v2, same keep-rule) so prompt-count does not confound.
+
+ARMS + REGISTERED PREDICTIONS:
+D1 PROOFS arm-0 (80 prompts). D2 PROSE arm-0 (80 prompts). Readout
+for each: coalition keep-set at 45.3% (58/128), then
+  (i) CORE CONTAINMENT: fraction of the GT2-CORE-0 core (recomputed
+      at matched size) inside each new coalition;
+  (ii) Jaccard vs math/phys/code coalitions.
+P-LOGIC (core = symbolic substrate) predicts: containment(proofs) >>
+  containment(prose), and Jaccard(proofs, math) in the phys-class
+  range (~0.8) with Jaccard(prose, math) in the code-class range or
+  below (~0.5).
+P-LANG (core = generic decoding substrate) predicts: containment
+  HIGH (>~0.85) for BOTH proofs AND prose — the core follows the
+  language, not the symbols. This kills the logic reading.
+D3 CORE-ONLY MASK (conditional, fires after D1/D2 book): keep
+  exactly the (matched-size) core per layer (~37/128 = 29%) on the
+  MATH gate, seed 1234 paired vs full. Registered prediction (both
+  readings agree here): near-zero solves — the core is necessary,
+  not sufficient; domain extensions carry capability. A HIGH score
+  would falsify both readings at once and reopen the crest
+  mechanism.
+FENCES: one seed everywhere; proofs corpus is SMALL (80 prompts —
+split-half nulls will be wide; report them, claim nothing inside
+them); prose arm changes SYSTEM prompt with the corpus (deliberate);
+no gate scores exist for proofs/prose (demand-only); tie-fill upper
+bounds travel.
