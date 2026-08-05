@@ -20263,3 +20263,34 @@ pass fraction books over kernel-checked rows with the ineligible
 count named. A 1000-row clean pass upgrades the co-sign fence from
 "kernel-pending" to "kernel-sampled (1000, string-seeded)"; it does
 NOT claim the full corpus.
+
+## VERDICT MOE-GT-5b: the union-mask deficit HOLDS at n=3 — 3/3 pairs negative, pooled deficit 17.3 (ABOVE the registered 5-15 band: the tax is larger than the first pair suggested) (2026-08-05, Mac)
+
+Pre-reg: MOE-GT-5b. Receipts: jobs/gt5b_seeds.log (rc=0; all dicts
+sum-verified). Paired arms, same device (mps), same instrument:
+
+  seed  FULL              UNION-78          deficit
+  1234  64/120 (certified) 55 {21,17,17}    -9
+  777   73 {27,25,21}      48 {19,13,16}    -25
+  2026  60 {23,21,16}      42 {16,15,11}    -18
+  pooled deficit 17.3 solves (open recall 0.7292 all union arms;
+  closed 0.724-0.725, gap <0.005 throughout)
+
+P-DEFICIT-HOLDS fires on DIRECTION (3/3 pairs negative, pooled well
+past the ~5 resolution bar) — the structural 61% mask costs real
+capability at every seed; identity still matters at high fractions.
+HONEST MISS: the registered magnitude band (5-15 pooled) is
+EXCEEDED — 17.3. Seed 1234 was the friendliest pair (-9); the tax
+at fresh seeds is 2-3x that. The GT-5 single-seed reading
+UNDERSTATED the union mask's cost; "86% of full capability"
+becomes 66-75% across seeds (55/64, 48/73, 42/60).
+Side observation (books as measured, no claim): FULL baseline
+varies 60-73 across seed problem-sets (~2.6 sigma spread) —
+seed-level difficulty variation is real; within-seed pairing was
+the right design.
+RESURRECTION STATUS UNCHANGED: 0 -> 42-55 still stands on
+seed-1234's D3 core-only arm alone (core-only at 777/2026 not run;
+one variable at a time, as registered).
+FENCES: n=3 seeds, one device, sigma~5 per gate (per-pair deltas
+individually 1.8-5 sigma; the pooled direction is the claim);
+union keep-set unchanged across seeds (frozen artifact).
