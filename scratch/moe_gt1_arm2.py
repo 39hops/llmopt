@@ -147,39 +147,54 @@ def instrument(model, keep):
     return state, restore
 
 
+_ORACLE = None
+
+
+def _oracle_start():
+    import subprocess
+    return subprocess.Popen(
+        [sys.executable, str(Path(__file__).parent / "oracle_worker.py")],
+        stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True,
+        cwd=Path(__file__).parent.parent)
+
+
 def check_isolated(p, expr, wall=20):
-    """Fork-boxed oracle check (the gen_magic_labels.solve_isolated
-    pattern; house doctrine: no sympy call is safely boxed by SIGALRM,
-    and p.check on model text is oracle-on-model-text). Added
-    2026-08-05 after GT-6's shoulder arms hung the raw check ~3 h on
-    one pathological-but-parseable completion (pathology class #7/#10,
-    6th bite). Child runs sympy only — never Metal. Returns
-    (ok, timed_out); a timeout is a conservative REJECT and must stay
-    observable (counted + printed), never silent."""
-    import multiprocessing as mp
+    """Timeboxed oracle check via a persistent SUBPROCESS line-server
+    (scratch/oracle_worker.py — sympy only, never Metal; see its
+    docstring for the v1-fork/v2-spawn post-mortem: fork of the
+    30B-resident driver got the PARENT SIGKILLed; a broken spawn pool
+    silently scored everything wrong). Contract: timeout -> kill +
+    respawn + conservative REJECT, observable; worker CRASH (EOF) ->
+    loud ORACLE-CRASH line + respawn + reject. A dead oracle must
+    never look like a hard gate."""
+    import base64
+    import pickle
+    import select
 
-    ctx = mp.get_context("fork")
-    q = ctx.Queue()
-
-    def _w():
-        try:
-            q.put(bool(p.check(expr)))
-        except Exception:
-            q.put(False)
-
-    proc = ctx.Process(target=_w)
-    proc.start()
-    proc.join(wall)
-    if proc.is_alive():
-        proc.kill()
-        proc.join()
-        return False, True
+    global _ORACLE
+    if _ORACLE is None or _ORACLE.poll() is not None:
+        _ORACLE = _oracle_start()
+    payload = base64.b64encode(pickle.dumps((p, expr))).decode()
     try:
-        # not get_nowait: join() returning does not mean the child's
-        # put() crossed the pipe (the solve_isolated lesson)
-        return bool(q.get(timeout=10)), False
-    except Exception:
+        _ORACLE.stdin.write(payload + "\n")
+        _ORACLE.stdin.flush()
+    except BrokenPipeError:
+        print("[gt1-2]   ORACLE-CRASH (pipe) — respawned, booked as "
+              "failure", flush=True)
+        _ORACLE = None
         return False, False
+    ready, _, _ = select.select([_ORACLE.stdout], [], [], wall)
+    if not ready:
+        _ORACLE.kill()
+        _ORACLE = None
+        return False, True
+    line = _ORACLE.stdout.readline()
+    if line == "":  # EOF: worker died mid-check
+        print("[gt1-2]   ORACLE-CRASH (eof) — respawned, booked as "
+              "failure", flush=True)
+        _ORACLE = None
+        return False, False
+    return line.strip() == "1", False
 
 
 def run_gate(model, tok, problems, frac, state=None):

@@ -20664,3 +20664,38 @@ possible — a hang blocks, it cannot mis-score); arms 8-14 run
 boxed with timeout counts reported; any nonzero timeout count is
 named in the verdict. The wall is 20s vs ~2s/problem typical — the
 box prices patience, not correctness.
+
+## AMENDMENT MOE-GT-6-ORACLE-BOX-2: the fork-box itself was the killer — macOS SIGKILLed the 30B-resident driver on fork (three runs lost); oracle is now a persistent subprocess line-server, all failure paths loud and smoke-tested (2026-08-05, Mac)
+
+Amends: AMENDMENT MOE-GT-6-ORACLE-BOX. The v1 fix introduced a new
+pathology: check_isolated forked the DRIVER — a process holding the
+30B in Metal-wired unified memory — once per pathological
+completion, and macOS's memory watchdog SIGKILLed the PARENT
+(observed: "Killed: 9" on the gate python inside the rjob wrapper,
+multiprocessing resource_tracker residue; r75_d0 lost mid-gate
+after 2 observed 20s timeouts; the two earlier harness-task deaths
+are retro-attributed to the same mechanism, possibly compounded by
+a Claude-Code executable update mid-session). The fork-only-sympy
+child was fork-safe; the fork ITSELF was not, at this resident
+size. Doctrine note: solve_isolated's fork pattern remains correct
+for CPU-side farms — the new fence is "never fork a Metal-resident
+driver; give it a worker it can talk to instead."
+
+v2 (spawn ProcessPoolExecutor) was rejected IN SMOKE TEST for two
+defects: spawn re-executes the driver script as __main__ in the
+child, and a broken pool returned (False, False) — A DEAD ORACLE
+SCORING EVERYTHING WRONG IS INDISTINGUISHABLE FROM A HARD GATE.
+The silent-failure class, caught before any gate consumed it.
+
+v3 (SHIPPED): scratch/oracle_worker.py — a plain subprocess
+line-server (base64-pickle in, 1/0 out; sympy+mathgen imports only,
+never Metal; private pipe, trusted same-codebase writer). Parent
+owns the deadline via select; timeout -> kill+respawn+REJECT
+(counted, printed); worker crash -> EOF -> loud ORACLE-CRASH line +
+respawn + reject. Smoke-tested on all paths: TRUE accepts (0.18s
+incl. worker start), wrong/garbage reject, SLEEP-forced timeout
+kills+respawns, post-respawn TRUE still accepts. Worker start
+~0.14s, steady-state check ~ms.
+GATE CONSEQUENCES: arms 1-7 stand (raw oracle, completed); the
+first boxed r75_d0 attempt is DISCARDED (died mid-gate; its 2
+timeout observations are receipts only); arms 8-14 rerun under v3.
