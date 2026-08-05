@@ -19848,3 +19848,49 @@ split-half nulls will be wide; report them, claim nothing inside
 them); prose arm changes SYSTEM prompt with the corpus (deliberate);
 no gate scores exist for proofs/prose (demand-only); tie-fill upper
 bounds travel.
+
+## VERDICT MOE-GT-3: the core is SYMBOLIC, not linguistic — P-LOGIC fires (containment 0.901 vs 0.250), and the core alone is dead (0/120) (2026-08-05, Mac)
+
+Pre-reg: MOE-GT-3 (all predictions registered before any arm fired).
+Receipts: jobs/gt3_arm0s.log, jobs/gt3_d3_core.log (both rc=0).
+Artifacts: logs/opus/gt3_{proofs,prose}_traj.jsonl,
+checkpoints/gt3_{proofs,prose}_prompts.json, gt3_core_keep.json.
+All readouts decode-only, prompt_tail excluded natively (TRAJ v3
+first corpus outing: exactly one tail row per prompt x layer),
+size-matched 80-prompt references throughout.
+
+D1/D2 (the discriminator):
+  CORE CONTAINMENT: proofs 0.901 | prose 0.250
+  Jaccard(proofs, .): math 0.707, phys 0.696, code 0.529
+  Jaccard(prose,  .): math 0.157, phys 0.157, code 0.188
+  Jaccard(proofs, prose): 0.182
+P-LOGIC FIRES; P-LANG IS KILLED. The three-domain core is not the
+generic decoding substrate — plain English routes through an almost
+entirely different expert population (0.16-0.19 Jaccard vs every
+symbolic domain). The class picture the data now supports: the
+deepest split in the router is SYMBOLIC vs VERBAL; under the
+symbolic branch sits a ~37/58-per-layer base class that proofs
+(0.90), math, physics, and code all inherit; proofs sits where a
+base-proximal corpus should (between math and code, near physics).
+"Math" is one level ABOVE the true base, exactly as the riff asked.
+
+D3 (core-only mask, math gate, seed 1234 paired vs certified 64):
+  0/120 {1:0, 2:0, 3:0}; probe degenerate ('1.1.1.1...'); the core
+  covers only 55.4% of math's pooled demand (free number). The
+  REGISTERED prediction fires: the base class is NECESSARY, NOT
+  SUFFICIENT — domain extensions carry the capability. (Calibration
+  vs R6: a 29% top-demand mask scored ~30/120 at the shoulder; the
+  29% core mask scores 0 — the core is not a demand mask, it is a
+  different object, and it cannot solve alone.)
+FENCES: one seed everywhere; proofs corpus is its ENTIRE 80-prompt
+space (split-half nulls not computed — too wide to mean anything at
+n=40/half, claim fenced accordingly); prose arm is a corpus+SYSTEM
+treatment (registered); tie-fill upper bounds travel; no gate exists
+for proofs/prose (demand-only).
+DOWNSTREAM: the hierarchy is now a measured object (prose sibling
+branch, symbolic base, domain extensions). Next discriminators
+banked, not fired: a SECOND verbal corpus (dialogue/QA) to test
+whether the verbal branch has its own core; the "what do the
+math-excluded experts compute" question inherits a sharper frame —
+they are, by construction, largely NON-core symbolic-extension
+experts.

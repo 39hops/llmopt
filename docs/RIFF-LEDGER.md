@@ -2571,3 +2571,12 @@ pooling winners was his call).
   control), core-only mask (necessity-vs-sufficiency). Attribution:
   Artin (hierarchy + base-class question), house (desk
   confirmation + discriminators).
+
+- **Abstraction-hierarchy riff: CONFIRMED same-night** (see
+  2026-08-04 entry above; VERDICT MOE-GT-3). The base class exists
+  and is SYMBOLIC (proofs contain 90% of the core, prose 25%);
+  language is a SIBLING branch, not the base; the core alone is
+  dead (0/120) — necessary, not sufficient. Attribution: Artin
+  (question + class frame), house (discriminators + runs). The
+  open residue: does the verbal branch have its own core (second
+  verbal corpus, banked)?

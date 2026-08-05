@@ -203,10 +203,17 @@ def main():
     problems = make_dataset(N_EVAL, seed=SEED, **kw)
     LOG.parent.mkdir(parents=True, exist_ok=True)
 
+    # KEEPSET env: explicit per-layer keep-set JSON ({layer: [experts]})
+    # bypassing the top-demand rule — MOE-GT-3 D3's core-only mask.
+    keepset_path = os.environ.get("KEEPSET")
     for frac in FRACS:
         # frac 1.0 = the paired FULL baseline (keep-all mask is a no-op
         # routing-wise; the recall instrument still runs, recall == 1)
-        keep = keep_sets_from_counts(counts, frac, top_k)
+        if keepset_path:
+            loaded = json.loads(Path(keepset_path).read_text())
+            keep = {int(li): set(v) for li, v in loaded.items()}
+        else:
+            keep = keep_sets_from_counts(counts, frac, top_k)
         ol = open_loop_recall(counts, keep)
         n_keep = sum(len(v) for v in keep.values()) / len(keep)
         print(f"[gt1-2] === seed {SEED} frac {frac} arm0 {ARM0} "
