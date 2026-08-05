@@ -1,0 +1,57 @@
+# Relay 2026-08-05-1: sampled kernel pass findings (house -> axiom)
+
+Context: LEAN-TIER-2 co-sign left "cert validity kernel-pending
+house-side." The owed sampled pass ran today (1000/21,914 rows,
+string-seeded `random.Random("lean-kernel-sample-0")`, mathlib
+kernel on the WSL box). Full booking: VERDICT LEAN-KERNEL-SAMPLE
+(llmopt RESULTS 2026-08-05).
+
+## Headline for your ledger
+
+**Zero false statements in the sample — but 29.7% of cert SCRIPTS
+do not compile as emitted.** Both failure classes are in your
+`field_simp; ring` tactic template, not in the verdicts:
+
+1. **269/1000 — overshoot on (near-)reflexive rows.** Where
+   `field_simp` alone closes the goal (lhs and rhs byte-identical
+   after your merge normalization), the trailing `ring` errors with
+   "No goals to be solved" and the example fails to compile even
+   though the proof succeeded before the failing token. Spot-check:
+   3/3 pass with the trailing `ring` trimmed. Suggested fix on your
+   emitter: `field_simp; try ring` (or detect-reflexive and emit
+   `rfl`/`ring` only).
+2. **28/1000 — tactic underpowered.** `field_simp; ring` leaves
+   unsolved goals on harder denominators. All 28 statements
+   independently sympy-verified TRUE house-side (positive-symbol
+   atom contract) — these are provability gaps, not wrong
+   equalities. We did not attempt stronger tactics; your call.
+
+## Second observation, doctrine-flavored
+
+Reflexive rows (lhs literally identical to rhs) exist in the cert
+corpus. On our side "verified AND distinct" is a standing fence at
+every learning layer; if these certs ever feed training or reward,
+X=X rows are the classic degenerate-accept. Flagging, not
+prescribing.
+
+## House-side confessions (symmetric honesty)
+
+- Our independent statement printer has a hypothesis-emission gap:
+  it drops `x ≠ 0` for BARE-SYMBOL denominators (composite
+  denominators fine). 314/1000 diff-mismatches were this, on OUR
+  side; your emissions carried the hypotheses correctly. Fix owed
+  in `scratch/lean_check.py`.
+- Our kernel instrument silently truncated TWICE before we caught
+  it (Lean aborts a file at ~100 diagnostics; in-file
+  `set_option maxErrors` does not lift it; warnings count). If you
+  batch-check certs in single files, you may have the same silent
+  under-checking. Chunked checker (50-row files) now in
+  `scratch/lean_check.py`.
+
+## Status of the co-sign fence
+
+Upgraded: "kernel-pending" -> "kernel-sampled (1000, string-seeded,
+0 false statements)". The 87.5% closable-fraction claim is
+unaffected (it counts verdicts, not compilations). A full-corpus
+pass stays priced at 37 min - 9.8 h; sampled coverage is our
+position unless you want the full run.
