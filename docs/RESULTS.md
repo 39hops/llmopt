@@ -21265,3 +21265,38 @@ consistent with the re-roll-luck class R8 named.
 FENCES: one seed pair; certified-subset diet; single device;
 the 8 rankable problems are too few to read a within-subset
 direction (0 outcome flips).
+
+## AMENDMENT MOE-GT-6-LENSES: the exploratory desk-cell Spearmans are only PARTLY re-derivable from committed artifacts — recall lenses reproduce, the verbal number is near (0.734 v 0.755), the math-ext lens is unreconstructable; a committed script is now the lens authority for GT-7 (2026-08-06, Mac)
+
+Amends VERDICT MOE-GT-6 (its REGISTERED content — the novrb
+exclusion contrast, the ladder dicts, the non-monotone shape — is
+untouched; this amends only the EXPLORATORY lens block, which was
+fenced as exploratory at booking). Trigger: the reviewer-scan gap
+(no committed derivation for the 0.755) + the GT-3 discipline —
+GT-7 cannot register coverage as its variable on a desk number.
+Script: scratch/gt7_coverage_rederive.py (now committed; inputs
+are the committed keep-sets, arm0 counts, gt3 core, prose/dialog
+trajectories via the gt2_jaccard keep rule).
+RE-DERIVED (12 arms, gate anchors from the verdict's quoted pairs
+incl. r70_d0=56 at 0.703 recall):
+  per-arm verbal coverages: EXACT (novrb 0.000/0.000, r75_d0
+    0.430, r80_d0 0.538) — the verbal lens definition is sound.
+  Spearman(gate, recall) 0.531 v booked 0.532: REPRODUCES.
+  Spearman(gate, min-layer) 0.492 v 0.502: reproduces to ~0.01
+    (residual = the unreconstructable r60/r65 draw order).
+  Spearman(gate, verbal) 0.734 v 0.755: NEAR, not exact.
+  Spearman(gate, math-ext) 0.671 v 0.434: DOES NOT REPRODUCE, and
+    the verdict's "novrb math-ext coverage 0.47/0.51" quotes fail
+    under both set-fraction (0.304) and demand-weighted (0.38)
+    definitions — the desk math-ext lens is UNRECONSTRUCTABLE.
+CONSEQUENCE: the four desk Spearmans and the 0.47/0.51 quotes are
+demoted to UNVERIFIED-EXPLORATORY; the qualitative claim they
+supported SURVIVES in re-derived form (novrb arms carry 0.304
+math-ext coverage — substantial — while scoring 0/7: math
+extensions without verbal experts still do not rescue). GT-7's
+registered variable is what the committed script computes
+(set-fraction verbal-only coverage; Spearman with mean-rank
+ties); the desk cell is no longer citable as a number source.
+FENCES: gate-pair draw order for r60/r65 remains reconstructed,
+not certain (affects rank correlations at the ~0.01 level, not
+the per-arm values).

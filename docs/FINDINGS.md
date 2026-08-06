@@ -844,16 +844,20 @@ regime tag on every bullet is the fence.
   capability: fills that exclude the verbal branch at matched 0.72
   recall score 0 and 7 of 120 against 16-55 for fills that include
   it, math-extension coverage without verbal experts does not rescue
-  (0.47-0.51 coverage, dead), and a recall ladder over
+  (0.30 set-fraction coverage per the committed re-derivation,
+  dead), and a recall ladder over
   random-identity fills is non-monotone with draw spread widening as
   recall rises — a 0.795-recall draw scores 9 while a 0.792 draw
   scores 66, at or above the paired full model's 64. Necessary is
   not sufficient: two arms fail with high coverage on every measured
   lens and stay open. The core-only baseline is 0/120 at three
   seeds. One gate seed, two draws per bin, and the exploratory
-  coverage correlations (verbal-only 0.755 against global recall
-  0.532) carry no causal claim beyond the registered exclusion
-  contrast. ([VERDICT MOE-GT-6](RESULTS.md#L20793).)
+  coverage correlations (verbal-only 0.73-class against global
+  recall 0.53) carry no causal claim beyond the registered
+  exclusion contrast; the original desk Spearmans are demoted to
+  unverified and the committed script is the lens authority.
+  ([VERDICT MOE-GT-6](RESULTS.md#L20793); [AMENDMENT
+  MOE-GT-6-LENSES](RESULTS.md#L21269).)
 - [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] With the full router
   available, mathematics routes 2.7%
