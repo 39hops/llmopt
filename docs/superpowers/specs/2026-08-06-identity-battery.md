@@ -30,6 +30,40 @@ variable of every rung here is EXPERT IDENTITY.
    does capability FOLLOW the swapped identity set? Bars on solve
    delta direction across >= 2 bin pairs; a bisection ladder (k
    halves) only if the first swap moves >= 14 pooled.
+   FROZEN DESIGN (Grok pressure points + Opus desk grounding,
+   Fable spot-verified — c30 k=4 cell reproduced exactly; adopted
+   2026-08-06 evening):
+   a. SWAP IS SYMMETRIC AND CLASS-PRESERVING — per layer, the
+      set-difference partitions into verbal-only and non-verbal-
+      fill classes; verbal exclusives exchange ONLY with verbal
+      exclusives, fill with fill. Coverage is then STRUCTURALLY
+      INVARIANT (verbal-for-verbal preserves |keep & vonly|
+      exactly; fill touches no vonly element) — measured cov
+      0.3016/0.3016 at every k on c30. One-way transplant and
+      non-class-preserving forms are REJECTED (measured: they
+      move coverage, and global-K trips the recall fence — the
+      baselines sit ~0.0005 from the window edge).
+   b. K-SELECTION RULE (frozen): within each class rank exclusives
+      by arm0 demand count (ties by ascending expert id); exchange
+      top q = min(|A_class|, |B_class|, k) per layer, same k both
+      classes. k = 4 (384/382/384 experts, ~40% of the diff, ~8/68
+      per layer; recall margins +0.0020..+0.0054 across all three
+      bins). k <= 8 stays in band everywhere; k = 16 degenerates
+      to the full diff (that is the other arm, not a swap) and is
+      FORBIDDEN.
+   c. POST-SWAP VALIDITY: the driver RECOMPUTES recall and
+      coverage on both swapped sets and ABORTS loudly if either
+      leaves the GT-7 tolerance (recall +-0.01, coverage +-0.03).
+      NO repair path — grounded finding: a re-draw of non-swapped
+      slots would break the "same underlying draw, identity
+      swapped" logic the rung depends on. Desk numbers say the
+      assertion never fires at k <= 8.
+   d. GROUNDED CONTEXT the bars should anticipate: the exclusive
+      sets are LARGE and demand-THIN (~1000 experts per pair,
+      ~9-10% of demand, top-10 exclusives carry only ~11-14% of
+      exclusive mass) — if capability follows a FEW experts, k=4
+      swap may miss them; the bisection ladder direction is
+      therefore DOWN from a moving k=8 arm, not up from k=1.
 2. EX-ANAT-2 (excluded-expert anatomy): for the crest mask's
    excluded population, measure what they compute — routing
    itinerary when forced resident, activation profile on gate
@@ -42,6 +76,14 @@ variable of every rung here is EXPERT IDENTITY.
    parseable-expression rate vs solve rate as the registered pair.
    Question: does the verbal population restore EMISSION (parseable
    output) or COMPETENCE (correct output)?
+   FROZEN DEFINITION (Grok pressure point 4): "emission restored"
+   = parseable-expression rate AND non-degenerate output (distinct-
+   answer count in the healthy band), jointly — parseable alone is
+   insufficient because the GT-1 text/coherence dissociation is
+   already booked (gate capability and text coherence separate
+   under subsetting). The healthy band is set from the GT-7 census
+   (>= 46-solve arms ran 118-120 distinct of 120; sub-20 arms
+   59-113) in the pre-reg, not read off the arm being judged.
 4. CHURN-JUDGE-2: gated TWICE — needs (a) a named identity handle
    from rungs 1-2 and (b) the booked CHURN-JUDGE-1 revive-if
    (routing-margin features, new pre-reg only). Not before.

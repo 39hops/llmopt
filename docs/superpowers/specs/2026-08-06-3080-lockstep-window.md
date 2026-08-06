@@ -77,6 +77,28 @@ Rungs:
   the cost is Fable kernel-authoring hours, not GPU hours; and the
   router rung must be preceded by an ambiguity-rate measurement or
   it is vacuous. Next after LOCKSTEP if Artin wants a kernel day.
+
+  C2 addendum — THE MAC PRECISION PATH (surveyed 2026-08-06,
+  Opus agent, Fable spot-verified; corrects the relayed framing):
+  - EXISTS, code-only, NEVER MEASURED: split-master training under
+    MPS — scratch/metabolic_v3.py:72 `MASTER_DEV = "cpu" if dev ==
+    "mps"` (fp64 masters on CPU, grads ferried per step, cast back
+    after AdamW). No RESULTS entry names it; every booked metabolic
+    precision verdict ran on cuda (metabolic_d2.py:43 hardcodes
+    cuda). Treat as an unverdicted code path, not a proven lever.
+  - PROVEN on Mac: the MPS KEY as an fp32 exact-integer CARRIER
+    (packed-crystal C4, hash identical MPS v cuda) — not as an
+    Ozaki matmul. llmopt/kernels/metal.py:1101 exact_gemm shipped
+    correctness-first, TILING DEFERRED (no Mac wall number exists).
+  - QUEUED, NEVER RUN: the MPS wall-clock race vs CPU fp64
+    (RESULTS ~3880, "queued behind gen-8"; two weeks stale, no
+    successor anywhere). It earns ONE slot on a future kernel day:
+    Mac-INTERNAL bar only (cross-device forbidden) — Ozaki-on-MPS
+    fp32 carrier (s=7, block 32) vs Mac-CPU native fp64 at matched
+    N, mx.eval every timed iteration; pass at <= 1.07x the CPU
+    wall (the cuda fused ratio 70.2/65.4 as a target SHAPE, never
+    a comparand). PREREQUISITE: exact_gemm tiling (R4) first, or
+    the untiled kernel loses the wall for unrelated reasons.
 - C4 WEIGHTSPACE-POP (W1 population, attention/embedding feature
   surfaces + hold-out-family transfer): rung 1 is DESK-CHEAP on the
   existing 50-birth population and should run as a desk cell first;
