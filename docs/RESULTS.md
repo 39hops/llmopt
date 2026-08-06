@@ -21136,3 +21136,32 @@ P-NULL: <= 13/20 — forward and reverse crystals are weight-
 FENCES: one classifier seed; one population recipe (2-epoch
 births); features are FFN GATE tensors only — attention/embedding
 readers are different instruments; 50-pair scale.
+
+## VERDICT TENET-W1: the null fires, against W0's registered expectation — direction is NOT readable from crystal FFN gate weights; eval 10/20 exact chance AND train accuracy never leaves the chance band (2026-08-06, 3080)
+
+Per PRE-REG TENET-W1, population 50/50 pairs (zero birth failures,
+terminal census clean), reader 104,770 params as registered, split
+w1-split-1, 16-vote eval.
+  EVAL: 10/20 = 0.500 (P-NULL line was <= 13/20 — fires).
+  TRAIN: 0.44-0.56 band across all 40 epochs — the reader cannot
+  even FIT the training pairs' direction labels under resampled
+  neuron tokens; this is a no-signal read, not a generalization
+  gap.
+READ: TENET-W0's registered consequence ("a direction classifier
+over forward and reverse crystals is now expected to succeed") is
+CONTRADICTED at crystal scale — toy-MLP direction-specificity
+(0.139 v 0.167) did not transport to d64 transformer gate weights.
+Books beside "experts share nothing in weight space": two
+functionally different populations (the R0-REV-B pair MEASURES the
+functional difference: 24/120 v 1/120) whose gate weights are
+indistinguishable to a neuron-token reader. The battery's W-side
+and R-side now DISAGREE about where direction lives — function
+shows it, sampled gate rows do not.
+FENCES: one classifier seed; features are FFN GATE tensors only
+(attention/embedding/head readers are different instruments);
+2-epoch births; 50-pair scale; INSTRUMENT FENCE — the pre-reg
+registered no positive control for the reader class on crystal
+subjects, so "no signal" and "reader too weak for crystals" are
+not yet separated; a trained-v-random-init control (trivially
+separable if the reader works at all) runs as the immediate
+follow-up diagnostic and books as a rider.
