@@ -1,5 +1,16 @@
 # Spec 2026-08-05: post-branch-day queue (recall shoulder first)
 
+STATUS 2026-08-05 night: item 1 RAN — VERDICT MOE-GT-6 (P-CLIFF
+branch books; P-SHAPE does not fire; the F7 verbal-excluded arms
+COLLAPSE 0/7 — AMENDMENT MOE-GT-5c-SCOPE; core-only rider firms the
+anchor at n=3, discharging the single-seed flag below). Do-not-revive
+amended: 'verbal-tax at the routing layer' is NARROWED, not dead —
+the masked-regime fallback is verbal-branch. Items 2-5 stand unrun.
+New Tier-1 candidate: GT-7 — verbal-coverage ladder at FIXED global
+recall (coverage the registered variable) + targeted repro arms for
+the r75_d0/r80_d0 anomalies + a degeneracy readout for the reopened
+R-EMISSION question. Pre-reg before fire.
+
 Written after the evening consolidation (three reviewer seats:
 ledger audit, forward-facing audit, idea survey — all proposals
 house-verified before adoption). Ranking is the house's, not the

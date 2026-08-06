@@ -1,5 +1,12 @@
 # Spec 2026-08-05: the TENET battery (temporal-pincer super-spec)
 
+STATUS 2026-08-05 night: D0 DONE (VERDICT WEIGHT-READER-0,
+back-booked; 796,550 params confirmed). W0 DONE — VERDICT TENET-W0:
+P-DIRECTIONAL null fires (0.139 vs 0.167 chance, 345 twins, sanity
+0.866); weight features direction-specific at toy scale; W1's
+registered expectation is now 'direction classifier SUCCEEDS'. Next:
+D1 (reverse gate) + D2 (exclude-union) builds, then R0-rev.
+
 Promotes the temporal-pincer bank to a house battery (GLOSSARY:
 battery/rung). Riff provenance: RIFF-LEDGER "The TENET battery" +
 "Closed-loop pincer" (Artin, 2026-08-05). Spec inputs: one reviewer

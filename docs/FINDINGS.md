@@ -725,8 +725,9 @@ sessions under one operator, not independent investigators. Read
   system-prompt swap control priced the shared-prefix confound at
   ~0.05-0.10 Jaccard — too small to generate the branch separation. The
   core alone is dead on the math gate (0/120): necessary, not
-  sufficient — and what restores capability above it is expert-population
-  recall, not class identity (the recall-shoulder bullets below).
+  sufficient — and what restores capability above it requires
+  verbal-branch residents (necessary, not sufficient; the recall
+  reading is corrected in the bullets below).
   ([OBSERVATION GT2-CORE-0](RESULTS.md#L19718); [VERDICT
   MOE-GT-3](RESULTS.md#L19852); [VERDICT MOE-GT-4](RESULTS.md#L19953)
   as corrected by [AMENDMENT MOE-GT-4-REVIEW](RESULTS.md#L20006);
@@ -742,13 +743,37 @@ sessions under one operator, not independent investigators. Read
   wrong. ([VERDICT MOE-GT-5](RESULTS.md#L20179); [VERDICT
   MOE-GT-5b](RESULTS.md#L20267); ranges per [AMENDMENT
   DAY-CONSOLIDATION-0805](RESULTS.md).)
-- [SINGLE-SEED] [FORMAT-BOUND] [FREE-RUN-GATED]
+- [RETRACTED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] Above the symbolic
   core, what restores capability is demand recall, not expert class:
   matched-size random fills over the dead core (0/120 alone) scored
   51/36/48 at recall 0.749-0.763 against the verbal fill's 55 at
   0.729, killing the reading that the verbal base is specifically
-  load-bearing for mathematics. One seed, three draws; the union
+  load-bearing for mathematics. CORRECTION, same day: that random
+  pool was ~45% verbal-branch, so "random" fills carried verbal
+  experts — clean verbal-EXCLUDED fills at matched 0.72 recall score
+  0/120 and 7/120 against 16-55 for verbal-containing fills, and the
+  recall ladder over random fills is non-monotone with widening draw
+  spread. The verbal population IS load-bearing (necessary, not
+  sufficient); recall is not the organizing variable either.
+  ([AMENDMENT MOE-GT-5c-SCOPE](RESULTS.md#L20860); [VERDICT
+  MOE-GT-6](RESULTS.md#L20780).)
+- [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] Verbal-branch
+  experts are necessary for resurrecting masked mathematics
+  capability: fills that exclude the verbal branch at matched 0.72
+  recall score 0 and 7 of 120 against 16-55 for fills that include
+  it, math-extension coverage without verbal experts does not rescue
+  (0.47-0.51 coverage, dead), and a recall ladder over
+  random-identity fills is non-monotone with draw spread widening as
+  recall rises — a 0.795-recall draw scores 9 while a 0.792 draw
+  scores 66, at or above the paired full model's 64. Necessary is
+  not sufficient: two arms fail with high coverage on every measured
+  lens and stay open. The core-only baseline is 0/120 at three
+  seeds. One gate seed, two draws per bin, and the exploratory
+  coverage correlations (verbal-only 0.755 against global recall
+  0.532) carry no causal claim beyond the registered exclusion
+  contrast. ([VERDICT MOE-GT-6](RESULTS.md#L20780).) One seed, three draws; the union
   mask's edge over the random band's mean is inside the draw spread
   and unresolved; the registered per-answer degeneracy count was not
   collected. ([VERDICT MOE-GT-5c](RESULTS.md#L20414).)
