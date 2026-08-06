@@ -223,7 +223,11 @@ def check_isolated(p, expr, wall=20):
 def run_gate(model, tok, problems, frac, state=None):
     from mlx_lm import generate
 
-    per_level, n_ok, rows = {}, 0, []
+    per_level, n_ok = {}, 0
+    # Rows STREAM out per problem (streaming corollary: a wall-killed
+    # gate must not lose its finished rows). Buffered-write version
+    # lost every row on kill — fixed 2026-08-05 (lab spec F1).
+    perprob_f = PERPROB_LOG.open("a") if PERPROB else None
     for i, p in enumerate(problems):
         # per-problem closed recall: snapshot the recall counters around
         # each problem (CHURN-JUDGE-1 instrument; deploy-observable,
@@ -252,14 +256,14 @@ def run_gate(model, tok, problems, frac, state=None):
         if state and state["slots"] > s0:
             row["recall"] = round(
                 (state["hits"] - h0) / (state["slots"] - s0), 4)
-        rows.append(row)
+        if perprob_f is not None:
+            perprob_f.write(json.dumps(row) + "\n")
+            perprob_f.flush()
         if (i + 1) % 40 == 0:
             print(f"[gt1-2]   gate {i + 1}/{len(problems)} "
                   f"acc {n_ok / (i + 1):.1%}", flush=True)
-    if PERPROB:
-        with PERPROB_LOG.open("a") as f:
-            for r in rows:
-                f.write(json.dumps(r) + "\n")
+    if perprob_f is not None:
+        perprob_f.close()
     return n_ok, per_level
 
 

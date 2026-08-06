@@ -28,37 +28,54 @@ import json
 import os
 from collections import defaultdict
 
-FRAC = float(os.environ.get("FRAC", "0.453"))
-GATE_ONLY = os.environ.get("GATE_ONLY", "1") == "1"
-TRAJ = {
+TRAJ_DEFAULTS = {
     "math": "logs/opus/moe_gt1_traj_v2.jsonl",
     "phys": "logs/opus/gt2_phys_traj.jsonl",
     "code": "logs/opus/gt2_code_traj.jsonl",
 }
 
 
-DROP_TAIL = os.environ.get("DROP_TAIL", "1") == "1"
+def _traj():
+    """TRAJ log paths, env-overridable per domain (TRAJ_MATH etc.)."""
+    return {d: os.environ.get(f"TRAJ_{d.upper()}", p)
+            for d, p in TRAJ_DEFAULTS.items()}
 
 
-def decode_counts(path, pred=lambda r: True):
+# Env is resolved at CALL time, not import time (lab spec F2: a
+# consumer importing this module and setting FRAC afterwards used to
+# get the default silently). None = "read the env now".
+def _frac(frac=None):
+    return float(os.environ.get("FRAC", "0.453")) if frac is None else frac
+
+
+def _flag(name, default, value=None):
+    if value is not None:
+        return value
+    return os.environ.get(name, default) == "1"
+
+
+def decode_counts(path, pred=lambda r: True,
+                  gate_only=None, drop_tail=None):
     """DROP_TAIL=1 (default) drops the FIRST decode-phase row per
     (prompt, layer): mlx_lm's prefill leaves the last prompt token to
     the first 1-token step, so that row is the chat-template tail
     mislabeled as decode (reviewer bug 2026-08-04; TRAJ v3 records it
     as phase=prompt_tail). DROP_TAIL=0 reproduces the originally
     booked D2/D3 numbers."""
+    gate_only = _flag("GATE_ONLY", "1", gate_only)
+    drop_tail = _flag("DROP_TAIL", "1", drop_tail)
     c = defaultdict(lambda: defaultdict(int))
     first_seen = set()
     for line in open(path):
         r = json.loads(line)
         if r["phase"] != "decode":
             continue
-        if DROP_TAIL and isinstance(r["prompt"], int):
+        if drop_tail and isinstance(r["prompt"], int):
             key = (r["prompt"], r["layer"])
             if key not in first_seen:
                 first_seen.add(key)
                 continue
-        if GATE_ONLY and not isinstance(r["prompt"], int):
+        if gate_only and not isinstance(r["prompt"], int):
             continue
         if not pred(r):
             continue
@@ -67,11 +84,12 @@ def decode_counts(path, pred=lambda r: True):
     return c
 
 
-def keep(counts, n=128, top_k=8):
+def keep(counts, n=128, top_k=8, frac=None):
+    frac = _frac(frac)
     out = {}
     for li, row in counts.items():
         full = [row.get(e, 0) for e in range(n)]
-        k = max(top_k, round(FRAC * n))
+        k = max(top_k, round(frac * n))
         out[li] = set(sorted(range(n), key=lambda e: -full[e])[:k])
     return out
 
@@ -95,23 +113,24 @@ def coverage(demand, kp):
 
 
 def main():
-    counts = {d: decode_counts(p) for d, p in TRAJ.items()}
+    traj = _traj()
+    counts = {d: decode_counts(p) for d, p in traj.items()}
     if os.environ.get("DUMP_DECODE") == "1":
         for d, c in counts.items():
             out = f"checkpoints/gt2_{d}_arm0_decode.json"
             json.dump({"counts": {str(li): [row.get(e, 0) for e in range(128)]
                                   for li, row in sorted(c.items())},
-                       "source": f"{TRAJ[d]} decode-only gate-prompts-only"},
+                       "source": f"{traj[d]} decode-only gate-prompts-only"},
                       open(out, "w"))
             print(f"wrote {out}")
     keeps = {d: keep(c) for d, c in counts.items()}
-    doms = list(TRAJ)
-    print(f"frac {FRAC} | gate_only {GATE_ONLY}")
+    doms = list(traj)
+    print(f"frac {_frac()} | gate_only {_flag('GATE_ONLY', '1')}")
     for i, a in enumerate(doms):
         for b in doms[i + 1:]:
             m, lo = jmean(keeps[a], keeps[b])
             print(f"Jaccard({a},{b}): mean {m:.4f} min {lo:.4f}")
-    for d, p in TRAJ.items():
+    for d, p in traj.items():
         half = lambda par: (lambda r: isinstance(r["prompt"], int)
                             and r["prompt"] % 2 == par)
         ke = keep(decode_counts(p, half(0)))

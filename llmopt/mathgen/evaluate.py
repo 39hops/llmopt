@@ -3,6 +3,13 @@
 Greedy-generate an answer per problem, parse it with sympy, score by
 Problem.check() — algebraic equivalence, not string match. Reports
 accuracy per (kind, level) plus overall.
+
+WARNING (pathology #7, lab spec F3): Problem.check() runs sympy on
+MODEL TEXT with no timebox here — a pathological expression can hang
+or balloon this process, and no SIGALRM wrapper saves it (fork is the
+only real timebox). Callers on adversarial/high-level output must
+route the check through a fork-boxed oracle (the gen_magic_labels
+.solve_isolated pattern / oracle_worker.py) until lab.oracle lands.
 """
 
 from __future__ import annotations
