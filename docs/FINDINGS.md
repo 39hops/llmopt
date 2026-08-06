@@ -302,6 +302,21 @@ VERDICT](RESULTS.md#L10676).)
   Gate tensors only; one classifier seed; 2-epoch births.
   ([VERDICT TENET-W1](RESULTS.md#L21140); control rider
   [RESULTS.md#L21169](RESULTS.md#L21169).)
+- [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe]
+  TENET closes: backward emission exists and is prompt-local, and
+  the closed-loop pincer does not bind at this scale because
+  verified-candidate multiplicity never appears — not because
+  ranking loses. All three matched-budget arms (forward-only,
+  reverse-ranked, length-ranked) read an identical 60 of 120 under
+  an honest token ledger; the reverse ranker had a rankable moment
+  on 8 of 120 problems and flipped none. The 60 itself carries a
+  caveat that must travel with it: re-roll headroom alone lifted
+  the forward twin from 44 to 60, so 60 is the budgeted-re-roll
+  level, not a pincer level. Revival fence: any future pincer case
+  measures verified-candidate multiplicity FIRST — at multiplicity
+  ~0 a ranking arm is invalid, not negative. Second bar failure
+  (R8 under a broken fence, this under a working one); one seed
+  pair. ([VERDICT TENET-R1B-MICRO](RESULTS.md#L21236).)
 
 Where axiom is the replication route below, it means an independent
 implementation in another language and runtime, sharing no code with what it
