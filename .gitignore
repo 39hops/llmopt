@@ -13,6 +13,12 @@ data/micromodel_grpo_mined.jsonl
 logs/
 scratch/remote.env.sh
 
+# file-handoff convention made structural (2026-08-06): big data
+# jsonl stay untracked by default; already-tracked files are
+# unaffected, and a DELIBERATE new commit uses `git add -f`
+data/*.jsonl
+data/*.json
+
 # root strays can never reform (2026-07-26 cleanup); artifacts
 # belong in logs/ (ignored) or data/ (case-by-case)
 /*.log
