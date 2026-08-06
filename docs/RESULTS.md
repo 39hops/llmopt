@@ -21490,3 +21490,30 @@ made or implied; wall-clock not a readout (not recorded). Next
 rungs per spec: PLATEAU-BREAK (pre-reg needed, loss-shape bar) and
 the gravmoe pair (Fable design pass first); Lean full pass on the
 overnight GO.
+
+## PRE-REG TENET-W1-S: the feature-surface ladder on the existing W1 population — does direction live in ANY weight surface at toy scale? (2026-08-06, 3080)
+
+Artin GO (queued behind the GT-7 booking; LOCKSTEP spec C4 rung 1).
+VERDICT TENET-W1: FFN gate rows read direction at chance (10/20);
+rider: instrument sound (randinit 20/20). W1-S re-asks with the
+IDENTICAL protocol (scratch/tenet_w1_surfaces.py — reader class,
+w1-split-1 seed split with pairs intact, 16-vote eval, copied
+verbatim from the frozen bridge) on four other surfaces of the SAME
+50-pair population:
+  attn (qkv+o rows, [8,256,64]) | up (FFN up rows, [8,256,64]) |
+  emb (emb+head rows, [1,80,64]) | ln (n1/n2 gains as rows,
+  [8,2,64] — resampling augmentation VACUOUS there, noted).
+BARS (per surface, 20 eval subjects, chance 10): FIRES at >= 16/20
+(one-sided binomial p ~ 0.006); 14-15 UNRESOLVED-suggestive (no
+claim; population scaling is the named follow-up, NOT auto-fired);
+<= 13 NULL. ANY firing surface must pass its CONTROL=randinit twin
+(>= 19/20) before being claimed — a surface that fires but whose
+control fails books as instrument artifact, loudly.
+REGISTERED CONSEQUENCE: all four <= 13 upgrades TENET-W1 to a
+SURFACE-EXHAUSTIVE negative at toy scale ("direction lives in
+FUNCTION, not weights" strengthens); any fire localizes direction
+to a named surface and opens the anatomy question.
+FENCES: one-device (3080, where the population lives); one split
+seed (the booked W1 split); classifier accuracy is the readout —
+the 120-gate sigma fence does not govern; no weight-distance
+scoring anywhere (reader classifies, never compares).
