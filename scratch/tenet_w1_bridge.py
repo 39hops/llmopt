@@ -104,6 +104,24 @@ def main():
         for direction in ("fwd", "rev"):
             subjects[(s, direction)] = load_subject(
                 by_seed[s][direction])
+    if os.environ.get("CONTROL") == "randinit":
+        # INSTRUMENT POSITIVE CONTROL (TENET-W1 rider): replace the
+        # "rev" class with fresh random-init gates of the same
+        # architecture — trivially separable iff the reader works
+        # on crystal-shaped subjects at all. Labels/split/votes
+        # unchanged; only the class-1 subjects are swapped.
+        from llmopt.train.mathnative import MathTokenizer, build_model
+        vocab_n = len(MathTokenizer().vocab)
+        for s in pairs:
+            torch.manual_seed(10_000 + s)
+            m = build_model(vocab_n, d=64, layers=8, heads=4,
+                            ffn=256)
+            sd = m.state_dict()
+            subjects[(s, "rev")] = torch.stack(
+                [sd[f"blocks.{li}.gate.weight"].float()
+                 for li in range(BLOCKS)])
+        print("[w1] CONTROL=randinit: class 1 = fresh inits",
+              flush=True)
     model = DirectionReader().to(dev)
     n_par = sum(p.numel() for p in model.parameters())
     print(f"[w1] reader params {n_par}", flush=True)
