@@ -189,7 +189,7 @@ Census: UNCITED 158, library 131, reproduce-pinned 9, results-cited 102, spec-ci
 | night31 | night31_cuda.sh | results-cited | RESULTS×1 | — |
 | night31 | night31_mac.sh | UNCITED | — | — |
 | night31b | night31b_cuda.sh | results-cited | RESULTS×1, specs×1 | — |
-| oracle | oracle_worker.py | library | REPRODUCE×1, RESULTS×2 | 2 |
+| oracle | oracle_worker.py | library | REPRODUCE×1, RESULTS×2 | 6 |
 | ozaki | ozaki_2b_bisect.py | UNCITED | — | — |
 | ozaki | ozaki_2b_check.py | results-cited | RESULTS×1 | — |
 | ozaki | ozaki_2b_debug.py | UNCITED | — | — |

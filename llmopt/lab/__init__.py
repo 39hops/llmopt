@@ -6,9 +6,12 @@ source scripts, guarded by source-identity + behavior tests
 they are the record booked verdicts cite. New code imports from here;
 existing scripts migrate only with a re-verified pass.
 
-Adopted so far (2026-08-06, the two highest-traffic primitives):
-  verify_wave   <- scripts/bench_verify_fast.py  (44 import sites)
-  _gen_isolated <- scripts/bench_step_tokens.py  (58 import sites)
+Adopted so far (2026-08-06):
+  verify_wave     <- scripts/bench_verify_fast.py  (44 import sites)
+  _gen_isolated   <- scripts/bench_step_tokens.py  (58 import sites)
+  Oracle          <- scratch/oracle_worker.py + moe_gt1_arm2.check_isolated
+                     (module 1 of the extraction spec; typed events)
 """
 from llmopt.lab.gen import _gen_isolated, gen_isolated  # noqa: F401
+from llmopt.lab.oracle import CheckResult, Oracle  # noqa: F401
 from llmopt.lab.verify import verify_wave  # noqa: F401

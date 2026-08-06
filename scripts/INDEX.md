@@ -2691,6 +2691,17 @@ lab.gen — fork-isolated problem generation, ADOPTED VERBATIM from scripts/benc
 
 - `_gen_isolated(level: int, seed: int, wall: int=45)`
 
+### llmopt/lab/oracle.py
+lab.oracle — the boxed oracle, v3.2 lineage (spec 2026-08-05-llmopt-lab-extraction module 1). Parent side of the subprocess line-server in lab/oracle_worker.py; behavior ported line-for-line from scratch/moe_gt1_arm2.check_isolated (which stays frozen — booked verdicts cite it).
+
+- `class CheckResult` (timed_out)
+- `class Oracle` (check, close)
+
+### llmopt/lab/oracle_worker.py
+Standalone oracle worker for timeboxed p.check — ADOPTED from scratch/oracle_worker.py (MOE-GT-6 v3; that file stays frozen). main() is character-identical to the source (guarded by tests/test_lab_oracle.py); only the repo-root sys.path depth differs.
+
+- `main()`
+
 ### llmopt/lab/verify.py
 lab.verify — the fast wave-verifier, ADOPTED VERBATIM from scripts/bench_verify_fast.py (2026-08-06; that file stays frozen — it backs the parity bench and every verdict that cites it). Function bodies below are character-identical to the source; guarded by tests/test_lab_adoption.py (source-identity + behavior parity). Fix a bug here and there in the SAME commit, or the guard fails.
 
