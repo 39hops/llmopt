@@ -1,0 +1,15 @@
+[w1s] SURFACE=ln complete pairs: 50
+[w1s] train 40 pairs, eval [15, 16, 19, 27, 28, 31, 32, 33, 34, 38]
+/home/a/code/llmopt/scratch/tenet_w1_surfaces.py:106: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, 2)
+[w1s] reader params 104770
+[w1s] ep 0 train acc 0.463
+[w1s] ep 5 train acc 0.500
+[w1s] ep 10 train acc 0.512
+[w1s] ep 15 train acc 0.500
+[w1s] ep 20 train acc 0.463
+[w1s] ep 25 train acc 0.438
+[w1s] ep 30 train acc 0.438
+[w1s] ep 35 train acc 0.500
+[w1s] ep 39 train acc 0.500
+[w1s] SURFACE=ln EVAL 10/20 (chance 10)

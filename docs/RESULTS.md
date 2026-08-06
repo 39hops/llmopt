@@ -21570,3 +21570,32 @@ anatomy (excluded-experts anatomy is the banked next) and
 R-EMISSION. Receipts: logs/gt7/gt7.jsonl force-added (small);
 answers/perprob streams stay untracked (regenerable via
 scratch/gt7_run.py; draws re-derive from string seeds).
+
+## VERDICT TENET-W1-S: ALL FOUR SURFACES NULL — attn 10/20, up 10/20, emb 11/20, ln 10/20; the registered consequence fires and TENET-W1 upgrades to a SURFACE-EXHAUSTIVE negative at toy scale (2026-08-06, 3080)
+
+Against PRE-REG TENET-W1-S, every bar as registered: 50 complete
+pairs, the booked w1-split-1 split (eval seeds 15/16/19/27/28/31/
+32/33/34/38 — identical to VERDICT TENET-W1), reader 104,770
+params (identical), 16-vote eval. Results (20 subjects, chance 10;
+fire bar 16, null bar <= 13):
+  attn (qkv+o rows)  10/20  train acc never leaves ~0.50
+  up   (FFN up rows) 10/20  train 0.463 at ep 39
+  emb  (emb+head)    11/20  train ~0.50
+  ln   (n1/n2 gains) 10/20  train ~0.50
+ALL <= 13: NULL on every surface; no randinit controls owed
+(nothing fired). The train-accuracy signature matches W1's gate
+arm exactly — the reader cannot even FIT direction from any weight
+surface, while the same reader fits trained-vs-randinit at 1.000
+(the booked rider). REGISTERED CONSEQUENCE: TENET-W1 upgrades to
+SURFACE-EXHAUSTIVE at toy scale — direction lives in FUNCTION
+(D1b: 24 v 1), not in ANY inspected weight surface (gate, attn,
+up, emb, ln). Per the adopted slate: stop mining weight readers
+until a new representational hypothesis; W2 is not invented.
+OPERATIONAL note (booked for the launcher class): the first W1-S
+launch died at spawn — the detached job's own log redirect pointed
+INTO the directory the command was about to create; the watcher's
+silence read as "running". Rule: a wsl.sh launch's LOG path must
+exist BEFORE launch (mkdir via a separate run call). Receipts:
+logs/w1s/ pulled to the Mac (small text, force-added).
+FENCES: one split seed; toy scale (d64/L8 sym_birth population);
+one device (3080); classifier readout, binomial bars.
