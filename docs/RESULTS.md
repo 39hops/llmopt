@@ -21016,3 +21016,34 @@ is 0); D1 is single-ply; both arms on the certified SUBSET diet;
 err-class candidates (unparseable emissions) are conservative
 rejects and 2.2x higher in the reverse twin — the reverse twin's
 emissions are not merely wrong, they are more often malformed.
+
+## AMENDMENT TENET-R0-REV-DIST: the 0/120 is scoped to the gate's PROMPT DISTRIBUTION — chain-start prompts are out-of-distribution INPUTS for a reverse model (they occur only as targets in reversed pairs); at in-distribution post-step prompts the twin scores 6/40 v the forward control's 1/40 (2026-08-06, Mac)
+
+Amends VERDICT TENET-R0-REV (the verdict STANDS on its registered
+gate; this scopes its headline). Autopsy trigger (Artin's morning
+question "why did it get nothing right"): raw-emission sampling
+showed the reverse twin, prompted with a fresh band integral,
+emitting FORWARD-shaped moves (a near-miss sum-split at L3) — the
+signature of an input-side distribution echo. MECHANISM: reversed
+rows map later-state -> earlier-state, so chain STARTS appear only
+as targets; D1's band prompts are therefore OOD inputs for the
+reverse twin while being in-distribution for the forward gate's
+model — a directional asymmetry in the instrument, not the
+capability. DIAGNOSTIC PROBE (unregistered, n=40, 8/level, one
+forward engine step applied to band problems, prompt = the child,
+replay-scored like D1): rev-cert 6/40 {L3: 4/8, L4: 0, L5: 1/8,
+L6: 1/8, L7: 0} v fwd-cert control 1/40 {L3: 1/8} at identical
+prompts. READ: backward emitting capability DOES train from
+reversed pairs — weakly, steeply level-gated, and only visible
+in-distribution; "does not train at micro scale" narrows to "does
+not transfer to chain-start prompts." The 27x equivalence deficit
+in the verdict is likewise a distribution artifact in part.
+CONSEQUENCE: R1b-micro's closure HOLDS procedurally (the
+registered line fired on the registered gate) but the mechanism
+basis is now scoped; reopening requires a pre-registered D1b
+(in-distribution reverse gate, 120 post-step prompts, both-twin
+control) and a fresh R0-rev-b line — queued as a candidate, fires
+on Artin's call. FENCES: probe n=40, one seed, unregistered
+(direction only, never promoted past a diagnostic); child choice =
+first encodable engine child (Subs-form children skipped —
+vocab(40) cannot encode them, counted at probe time).
