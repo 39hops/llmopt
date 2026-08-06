@@ -20789,3 +20789,86 @@ a conclusion; one seed; toy scale; inverse twins of non-monotone
 families that pass FIT_TOL are branch-fits (eligibility counts
 reported per family); chance floor is 1/6 regardless of eligible-
 family count (the reader has 6 output classes).
+
+## VERDICT MOE-GT-6: the recall ladder inverts its own premise — recall is NOT the organizing variable; the VERBAL-EXCLUDED arms collapse (0/7 at matched recall), verbal coverage is the best predictor (0.755), and the resurrection anchor firms at n=3 (2026-08-05, Mac)
+
+Pre-reg: MOE-GT-6 (+ ORACLE-BOX amendments 1-4: the run burned
+through four oracle designs; receipts jobs/gt6_ladder_arms1-7.log
+(arms 1-7, raw oracle) + jobs/gt6v5.log (arms 8-14, v3.2 boxed,
+rc=0). All dicts sum-verified. Timeout census: r75_d0 2 (problems
+22, 49 — deterministic across relaunches), 0 membombs, 0 crashes.
+
+THE LADDER (keep = frozen D3 core + uniform random fill; 2 draws
+per bin; seed 1234 paired vs certified full 64):
+  recall  draw0  draw1
+  0.59      0      4
+  0.65      4     30
+  0.70     56      9
+  0.75     16     51
+  0.79     9      66   <- draw1 ABOVE the full baseline
+P-SHAPE (monotone 2-draw means, crossing in 0.65-0.75) does NOT
+fire; P-CLIFF's "any non-monotone ordering" branch BOOKS: the
+2-draw means are non-monotone (2, 17, 32.5, 33.5, 37.5 — flat from
+0.70 up) and the draw spread WIDENS with recall (4, 26, 47, 35,
+57). Global recall does not organize capability for random-identity
+fills at ANY measured level: a 0.795-recall draw scores 9 while a
+0.703-recall draw scores 56 and a 0.792 draw scores 66 (>= full).
+
+THE F7 DISCRIMINATOR (verbal-EXCLUDED fills, 0.72 recall): 0/120
+and 7/120 — the registered COLLAPSE branch of P-NOVERBAL FIRES.
+Verbal-containing fills at matched recall: 16-55. The verbal
+population IS load-bearing for the resurrection; GT-5c's random
+pool contained verbal experts, so its "not verbal-specific" was a
+pool artifact (scope amendment below).
+
+RIDERS: core-only at seeds 777 and 2026: 0/120 and 0/120 — the
+0-class baseline now holds at n=3 seeds; the resurrection
+(0 -> anything) is no longer a single-seed anchor.
+
+EXPLORATORY (fenced as exploratory; 12 arms, 3 lenses, stopped
+there deliberately — forking-paths):
+  Spearman(gate, verbal-only coverage) 0.755  <- best
+  Spearman(gate, global recall)        0.532
+  Spearman(gate, min-layer recall)     0.502  <- weakest-link KILLED
+  Spearman(gate, math-ext coverage)    0.434  <- and novrb arms have
+    HIGH math-ext coverage (0.47/0.51) while DEAD: math extensions
+    without verbal experts do not rescue.
+  Structure: verbal coverage looks NECESSARY (every arm >= 30 has
+  >= 0.20; both novrb arms = 0.000) but NOT SUFFICIENT — two named
+  anomalies (r75_d0: 16 at 0.430 verbal; r80_d0: 9 at 0.538) are
+  OPEN, not explained.
+
+READING: masked-math capability above the symbolic core requires
+verbal-branch experts (causal at n=2 excluded draws vs 10
+containing draws) plus something not yet identified that the two
+anomalies withhold. Artin's verbal-fallback hypothesis, killed at
+the routing layer this morning and wounded by GT-5c, WINS the
+causal round in its narrowed form: the fallback machinery the
+model rebuilds math emission through, when its extensions are
+masked, lives in the verbal branch.
+DOWNSTREAM -> GT-7 candidate (pre-reg before fire): a
+verbal-coverage LADDER at fixed global recall (coverage the
+registered variable, recall the control — tonight's inversion of
+GT-6's design), plus the two anomalies as targeted repro arms.
+FENCES: one gate seed for ladder+novrb (recall/coverage bins are
+the variable); 2 draws/bin (spread IS a finding, not noise to
+average); sigma_diff ~7 per pair; exploratory lenses carry no
+causal claim except novrb's registered contrast; arms 1-7 ran the
+raw oracle, 8-14 the boxed one (timeouts booked as failures, 2
+total); tie-fill upper bounds travel.
+
+## AMENDMENT MOE-GT-5c-SCOPE: "the verbal base is NOT specifically load-bearing" RETRACTED as scoped — GT-5c's random pool CONTAINED verbal experts; the clean exclusion (GT-6 novrb) collapses (2026-08-05, Mac)
+
+Amends: VERDICT MOE-GT-5c. Its R-SHOULDER reading rested on random
+fills drawn from 128-minus-core, a pool ~45% verbal-branch — the
+audit's F7 flagged this the same day, GT-6 ran the exclusion, and
+verbal-excluded fills at matched recall score 0/7 vs
+verbal-containing 16-55. CORRECTED READING: random fill resurrects
+BECAUSE random draws from that pool carry verbal experts
+(GT-6 exploratory: verbal-only coverage is the best gate predictor
+at 0.755). R-SHOULDER survives only as "recall is not sufficient
+either" — the shoulder is not the mechanism, the verbal population
+is (necessary, not sufficient; two anomalies open). GT-5c's
+R-EMISSION third reading is REOPENED, not resolved: whether verbal
+experts restore emission or computation is untested and now the
+sharpest open question under the verbal-necessity finding.
