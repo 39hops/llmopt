@@ -2843,3 +2843,31 @@ pooling winners was his call).
   full vs crest on the same solved problems). The synthesis is a
   banked frame, not a finding. Attribution: DeepSeek (synthesis +
   identity-over-coverage observation), house (counter-notes).
+
+- **Repo structure review** (Grok, cross-lab commentary 2026-08-06,
+  relayed by Artin; house assessment by Fable, both-scout survey +
+  spot-checks): the "instruments outgrew the package" diagnosis
+  CONFIRMS the already-committed lab-extraction spec
+  (2026-08-05-llmopt-lab-extraction.md) — nothing to decide there.
+  ADOPTED from the review: (1) CODEMAP inventory as the gate for
+  every later move (shipped: docs/CODEMAP.md via
+  scripts/gen_codemap.py — mechanical class ladder, and it fixes
+  the spec's broken verification rule: results-index.jsonl carries
+  no path field, citations live in RESULTS/REPRODUCE body text);
+  (2) EARLY package adoption of bench_step_tokens/bench_verify_fast
+  (misnamed primitives: 61/43 in-code refs incl. live TENET
+  scripts); (3) scratch-doctrine paragraph for CLAUDE.md;
+  (4) experiments/ + archive-by-era, DEFERRED to the BOARD:114
+  freeze-point gate, merged with the banked 07-24 data/checkpoints
+  taxonomy. REJECTED WITH REASON (do not re-propose from the
+  original message): detbwd-family collapse — the family is a
+  layered import lattice, not copies (gravmoe imports r1/r2b/
+  r3_qw/mb/diet); the early rungs are regression anchors with
+  cross-lab byte certs and 16 sha-pinned arms, and the extraction
+  spec's do-not-extract law freezes them; wholesale bench_*
+  archival — import-time landmine (bare-name sys.path imports
+  across ~64 files); promote the two primitives FIRST, archive
+  only what CODEMAP shows nothing live references. Grok concurred
+  with both rejections on review. Attribution: Grok (diagnosis +
+  inventory-first + target shape), Fable (rejections + adoption
+  ordering), Artin (relay + GO on CODEMAP).

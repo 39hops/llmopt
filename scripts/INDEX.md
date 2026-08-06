@@ -778,6 +778,18 @@ House chart helpers (figs/ instrumentation). One style, two forms:
 - `grouped_bars(name: str, bins: list[str], series: dict[str, list[tuple[int, int]]], title: str='', png: bool=False) -> Path` — series: label -> [(solved, total) per bin]. Percent bars,
 - `lines(name: str, xs: list, series: dict[str, list[float]], title: str='', xlabel: str='', ylabel: str='', png: bool=False) -> Path` — series: label -> y values over shared xs. Direct end-labels,
 
+### scripts/gen_codemap.py
+Generate docs/CODEMAP.md: the move-gate inventory of scratch/ and scripts/ (adopted from the Grok structure review, 2026-08-06). One row per file: doc citations (RESULTS/REPRODUCE/BOARD/FINDINGS/handoffs/ specs), in-code references (imports + literal path strings), a mechanically derived class, and the filename family. The class ladder is observable-facts-only, no curation:
+
+- `collect_files(base: str, pat: str) -> list[Path]`
+- `load_texts(paths: list[str]) -> dict[str, str]`
+- `load_code() -> dict[str, str]`
+- `family(name: str) -> str`
+- `code_refs(target: Path, code: dict[str, str]) -> list[str]` — Files that import the module by name or embed its literal filename.
+- `doc_cites(name: str, docs: dict[str, dict[str, str]]) -> dict[str, int]`
+- `classify(cites: dict[str, int], refs: list[str]) -> str`
+- `main() -> None`
+
 ### scripts/gen_dispatch_labels.py
 Dispatcher-net labels: which brain wins each problem (2026-07-10, chasing the router's oracle ceiling — 127/130 vs threshold's 124).
 
@@ -1741,6 +1753,12 @@ MOE-GT-6 keep-sets: the recall ladder + the verbal-excluded arm.
 - `build(k_fill, rng, pool_fn)`
 - `tune(target, seed_tag, pool_fn, k_max=91)` — Search the per-layer fill count whose drawn keep-set lands
 - `dump(keep, r, k, name)`
+- `main()`
+
+### scratch/gt7_coverage_rederive.py
+GT-7 precursor: re-derive MOE-GT-6's exploratory coverage lenses from committed artifacts (reviewer-scan gap 2026-08-06: the 0.755 Spearman was a desk cell with no committed derivation — GT-7 cannot register coverage as its ladder variable until the number has a script, the GT-3 discipline).
+
+- `spearman(xs, ys)`
 - `main()`
 
 ### scratch/head_autopsy.py
