@@ -21635,3 +21635,38 @@ FENCES: [FORMAT-BOUND] [REGIME-SCOPED: measured deployment
 artifacts]; one gate seed; the swapped sets are DERIVED from the
 frozen GT-7 draws (paired comparison, no new randomness beyond
 the frozen swap rule); mathgen L1-3 only.
+
+## VERDICT EX-ANAT-1: P-FOLLOW FIRES AT 6x THE BAR — capability FOLLOWS the swapped identity set; a 4-expert-per-layer-per-class demand-ranked exchange largely INVERTS matched-bin pair outcomes (2026-08-06, Mac)
+
+Against PRE-REG EX-ANAT-1, all six arms, dicts sum-verified,
+receipts logs/ex1/ (gate log force-added):
+  c15: hi 53 -> 30 {1:12,2:9,3:9} | lo 15 -> 55 {1:15,2:21,3:19}
+       D = (55-15) + (53-30) = 63, both components positive
+  c30: hi 54 -> 77 {1:26,2:25,3:26} | lo 5 -> 57 {1:21,2:20,3:16}
+       D = (57-5) + (54-77) = 29, hi component NEGATIVE (hi rose)
+  c45: hi 46 -> 11 {1:1,2:4,3:6} | lo 10 -> 59 {1:21,2:19,3:19}
+       D = (59-10) + (46-11) = 84, both components positive
+POOLED D = 176 vs the 28 bar (6.3x); directional consistency 2/3
+(exactly the bar). P-FOLLOW FIRES AS REGISTERED: the demand-ranked
+top-4-per-class exclusives CARRY capability. The grounded worry
+(demand-thin diffs might mean k=4 misses the carriers) is answered:
+~8/68 experts per layer, ~40% of the set-difference, moved 23-52
+solves per side. Every lo draw jumped to or ABOVE its bin's
+original hi (55/57/59 v 53/54/46) — the swap does not merely dent
+the gap, it largely INVERTS it.
+ANOMALY WORTH ITS OWN LINE: c30 hi' scored 77 — ABOVE both its own
+baseline (54) and the paired full model's 64, at 0.72 recall. Both
+c30 swapped arms are strong (77/57). Not averaged away: at this
+bin the exchange left BOTH sides carrying capability, which the
+symmetric-swap frame reads as the low draw's exclusives containing
+carriers the high draw lacked, and vice versa NOT holding.
+DEGENERACY RIDER (descriptive, feeds R-EMISSION): collapsed arms
+89/113 distinct of 120; healthy arms 118-120 — tracks capability
+exactly as in GT-7. Closed recall drifts UP on collapsed arms
+(0.749/0.752 v open 0.714/0.721), the GT-7 c30_d0 signature again.
+CONSEQUENCE (registered): the bisection ladder (k=2, then 1) is
+the named follow-up, new pre-reg on GO. The identity handle
+CHURN-JUDGE-2 needs now EXISTS (a named 384-expert set that moves
+capability); its second gate (routing-margin features) still
+binds. FENCES: one gate seed; L1-3 mathgen; swapped sets derived
+from frozen GT-7 draws; oracle census clean (0 timeouts).
