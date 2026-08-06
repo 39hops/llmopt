@@ -20980,3 +20980,39 @@ eval-in-train exposure. Paired same-gate deltas are unaffected
 (shared exposure cancels); absolute solve counts carry a <=21-
 problem first-ply tailwind on a 12-ply chain gate — a fence to
 carry, not a correction to any booked delta.
+
+## VERDICT TENET-R0-REV: the null fires — backward capability does NOT train at micro scale; the reverse twin matches its forward twin in loss (0.319 v 0.358) and scores 0/120 on the reverse gate; R1b-micro CLOSES per the registered line (2026-08-06, Mac)
+
+Per PRE-REG TENET-R0-REV + amendments D1 (replay criterion) and D2
+(band excision). Arms as registered, seed 1, d64/L8/FFN256/H4,
+matched 67,048-row certified diets, one device (Mac/mps).
+  fwd-cert control: FORWARD gate {3: 18, 4: 3, 5: 12, 6: 5, 7: 6}
+    = 44/120 @ 31.76% valid, weights sha 272e47d2c906c968 (sanity
+    > 0 PASS; below full-gen4 class as registered — subset diet).
+  fwd-cert on D1 (instrument control): {3: 0, 4: 0, 5: 0, 6: 0,
+    7: 0} = 0/120 @ 5.62% equivalence — registered ~0-5, read 0.
+    Replay census: miss 460, err 117, no timeouts/membombs.
+  rev-cert twin on D1 (headline): {3: 0, 4: 0, 5: 0, 6: 0, 7: 0}
+    = 0/120 @ 0.21% equivalence, weights sha 0d5ece326ba989bf.
+    Replay census: miss 481, err 258, no timeouts/membombs.
+P-NULL FIRES (rev within 7 of control; both 0). READ: the
+reversed-token twin TRAINS in loss exactly like forward (0.319 v
+0.358 at step 24k) yet emits engine-legal predecessors never, and
+even derivative-EQUIVALENT expressions 27x more rarely than the
+forward control emits them accidentally (0.21% v 5.62%) — the old
+prior-art line sharpens: scoring and emitting are different
+skills, and at micro scale reversed-pair imitation buys NEITHER
+the emitting skill nor the forward model's incidental equivalence
+rate. CONSEQUENCE (registered): downstream closed-loop rungs
+(R1b-micro alternation) CLOSE at this scale; "either verdict
+outranks any further forward-side re-run." W1
+(direction-from-weights) is UNAFFECTED and its population build
+continues — the twins differ in weights by construction whether
+or not backward capability trains; tonight's pair IS its first
+population entry (one-device fence: 3080 births only for W1;
+tonight's Mac pair stays out of the classifier's training set).
+FENCES: one seed (direction only below 7 solves — here the delta
+is 0); D1 is single-ply; both arms on the certified SUBSET diet;
+err-class candidates (unparseable emissions) are conservative
+rejects and 2.2x higher in the reverse twin — the reverse twin's
+emissions are not merely wrong, they are more often malformed.

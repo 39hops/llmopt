@@ -7,6 +7,18 @@ P-DIRECTIONAL null fires (0.139 vs 0.167 chance, 345 twins, sanity
 registered expectation is now 'direction classifier SUCCEEDS'. Next:
 D1 (reverse gate) + D2 (exclude-union) builds, then R0-rev.
 
+STATUS 2026-08-06: D1 + D2 BUILT (tenet_d1_revgate.py replay-scored
+after AMENDMENT R0-REV-D1 caught the direction-blind first cut;
+tenet_d2_revdiet.py — the exclude-union law FIRED for real,
+AMENDMENT R0-REV-D2, 21/120 band expressions excised from gen-4).
+R0-rev DONE — VERDICT TENET-R0-REV: P-NULL fires (rev twin trains
+in loss 0.319 v fwd 0.358 but scores 0/120 on the reverse gate;
+fwd control 0/120 on D1 as registered). R1b-micro CLOSED per the
+registered line; D3 moot with it. W1 population building on the
+3080 (Artin GO, ~22 pairs projected this window); W1 still needs
+the reader-shape bridge (HIDDEN=16 tokenizer v d64/L8 crystals —
+reviewer scan 2026-08-06) before it can pre-register.
+
 Promotes the temporal-pincer bank to a house battery (GLOSSARY:
 battery/rung). Riff provenance: RIFF-LEDGER "The TENET battery" +
 "Closed-loop pincer" (Artin, 2026-08-05). Spec inputs: one reviewer
