@@ -2353,7 +2353,7 @@ Synonym gauge test: TWO label tokens per family on the frozen 19M readout (vocab
 ### scratch/tenet_d1_revgate.py
 TENET D1: THE REVERSE GATE (spec 2026-08-05-tenet-battery.md).
 
-- `rev_gate_eval(model, tok, dev, n=None)` — Reverse gate: solves per level + per-candidate equivalence %.
+- `rev_gate_eval(model, tok, dev, n=None, mode='start')` — Reverse gate: solves per level + per-candidate equivalence %.
 
 ### scratch/tenet_d2_revdiet.py
 TENET D2: the certified reversed diet + exclude-union semantics (spec 2026-08-05-tenet-battery.md).
@@ -2363,11 +2363,25 @@ TENET D2: the certified reversed diet + exclude-union semantics (spec 2026-08-05
 - `gate_band_exprs()`
 - `main()`
 
+### scratch/tenet_d3_budget.py
+TENET D3: the budget accountant (spec 2026-08-05-tenet-battery.md deliverable D3; fixes PINCER R8's booked instrument defect — "my equal-budget fence was violated by my own design": the peeler's 154,641 sampled tokens rode ON TOP of the 27,053-token forward budget instead of being traded against it, 5.7x for +1 solve).
+
+- `class BudgetAccountant` (remaining, debit, census)
+- `charge(acct: BudgetAccountant, who: str, texts, tok_counts=None)` — Charge a sampled wave; return the texts, or [] if refused.
+
 ### scratch/tenet_w0.py
 TENET W0: is reverse structure visible in weights? (pre-reg TENET-W0, 2026-08-05 — the battery's cheapest rung.)
 
 - `_fit_xy(x_in, y_out, torch_seed)` — The subjects._fit loop on arbitrary (input, output) data —
 - `make_inverse_twin(family, i, seed)` — Fit an MLP to the axis-swapped data of a fresh draw from
+- `main()`
+
+### scratch/tenet_w1_bridge.py
+TENET W1 bridge: crystal-weight tokenizer + direction reader (spec 2026-08-05-tenet-battery.md rung W1; the reader-shape gap named by the 2026-08-06 reviewer scan — weightspace.reader is pinned to HIDDEN=16 MLP subjects and cannot read d64/L8 crystals).
+
+- `load_subject(ckpt)` — [8, 256, 64] gate-weight stack from a sym_birth checkpoint.
+- `tokenize(gates, rng)` — Sample TOK_PER_BLOCK neurons/block -> [8*T, 64] + block ids.
+- `class DirectionReader` (forward)
 - `main()`
 
 ### scratch/tenet_w1_population.py
