@@ -2820,3 +2820,26 @@ pooling winners was his call).
   (spec, then Fable implements), not a live refactor. Attribution:
   Artin (library framing + standard-logging ask), house
   (loud-failure contract + migration fences).
+
+- **Routing-is-the-computation synthesis** (DeepSeek, cross-lab
+  commentary 2026-08-06, relayed by Artin): reading the crest
+  chain + the router-geometry rung together — "routing structure
+  is where the interesting computation lives, expert weights are
+  largely interchangeable within that structure, and domain
+  capability can be IMPROVED by pruning the routing graph to the
+  right coalition." Also names the sharpest open negative: the
+  non-monotone recall ladder means specific expert IDENTITIES
+  within the necessary branch decide resurrection, and no
+  coverage metric measured so far can tell the live draw from
+  the dead one. HOUSE COUNTER-NOTE at bank time: (1) "weights
+  largely interchangeable" OVERREADS the ledger — GT-5/GT-5b
+  (union mask loses 3/3 at 61% keep) and the ladder itself show
+  identity matters at fixed structure; the booked
+  statistically-identical-yet-unmatchable result is about norm
+  profiles, not functional interchangeability. (2) "full model
+  carries experts that actively interfere OR routing dilutes" —
+  the interference-vs-dilution fork is UNTESTED; no arm
+  separates them yet (candidate probe: logit-level comparison of
+  full vs crest on the same solved problems). The synthesis is a
+  banked frame, not a finding. Attribution: DeepSeek (synthesis +
+  identity-over-coverage observation), house (counter-notes).
