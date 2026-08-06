@@ -20961,3 +20961,22 @@ verdict, when booked, uses only the corrected gate. Kin: the
 verified-AND-distinct doctrine ("the oracle accepts X=>X"),
 now extended — the oracle also accepts X<=>Y both ways; DIRECTION
 needs the mint, not the checker.
+
+## AMENDMENT TENET-R0-REV-D2: the exclude-union law FIRED on its first full run — 21/120 forward gate-band expressions exist verbatim in gen-4 (prompt-side, L3-heavy small-space collision); 26 rows excised from both certified diets before any birth (2026-08-06, Mac)
+
+Amends PRE-REG TENET-R0-REV. D2's builder refused to write diets:
+21 distinct band expressions (of 119 distinct in the 120-problem
+battery) appear in the certified union, ALL as chain-row cur
+(prompt-side; 0 target-side), level histogram {3: 9, 5: 7, 6: 2,
+7: 3} — the known small-problem-space collision class reaching the
+gate band. Scope: 26 rows of 67,074 certified (0.04%). Excised;
+post-excision union clean 0/119; diets written at 67,048 rows
+matched dose (empirical hygiene: 0 identity rows either direction,
+encode-failures identical 140/140 — zero new atoms confirmed;
+row-for-row swap pairing asserted). STANDING NOTE for the forward
+program, no retraction implied: every gen-4-fed birth trained on
+those 26 rows, so 21/120 forward-gate problems carry first-ply
+eval-in-train exposure. Paired same-gate deltas are unaffected
+(shared exposure cancels); absolute solve counts carry a <=21-
+problem first-ply tailwind on a 12-ply chain gate — a fence to
+carry, not a correction to any booked delta.

@@ -242,20 +242,30 @@ def main():
           flush=True)
 
     certified = [k for k in keys if done[k] in ("unique", "ambig")]
-    # D2 proper: the exclude-union check. Union of both directions'
-    # normalized strings == {cur} U {nxt} (reversal-invariant).
+    # D2 proper: the exclude-union law. Union of both directions'
+    # normalized strings == {cur} U {nxt} (reversal-invariant). Any
+    # certified row touching a gate-band expression is EXCLUDED
+    # (exclude= doctrine: guard the split with prompt sets). First
+    # full run caught 21/120 band expressions prompt-side in gen-4
+    # (26 rows, L3-heavy small-space collision) — measured, booked,
+    # excised here.
+    band = set(gate_band_exprs())
+    n0 = len(certified)
+    certified = [k for k in certified
+                 if k[0] not in band and k[1] not in band]
+    if n0 - len(certified):
+        print(f"[d2] exclude-union EXCISED {n0 - len(certified)} "
+              f"certified rows touching gate-band expressions",
+              flush=True)
     union = {k[0] for k in certified} | {k[1] for k in certified}
-    print("[d2] building gate-band exclude check "
-          f"(union size {len(union)})", flush=True)
-    band = gate_band_exprs()
     hits = [b for b in band if b in union]
-    if hits:
-        print(f"[d2] EXCLUDE-VIOLATION: {len(hits)} gate-band "
-              f"expressions inside the certified union — DIETS NOT "
-              f"WRITTEN. First: {hits[0][:60]}", flush=True)
+    if hits:  # excision must leave the union clean, or we stop
+        print(f"[d2] EXCLUDE-VIOLATION persists: {len(hits)} band "
+              f"hits after excision — DIETS NOT WRITTEN. First: "
+              f"{hits[0][:60]}", flush=True)
         sys.exit(1)
-    print(f"[d2] exclude-union clean: 0/{len(band)} band hits",
-          flush=True)
+    print(f"[d2] exclude-union clean: 0/{len(band)} band hits "
+          f"({len(certified)} rows survive)", flush=True)
     with REV_OUT.open("w") as rf, FWD_OUT.open("w") as ff:
         for k in certified:
             r = by_key[k]
