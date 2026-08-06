@@ -2686,6 +2686,13 @@ Validation and decoding for committed gravmoe training windows.
 llmopt.lab — permanent instruments, adopted from the scripts that proved them (spec 2026-08-05-llmopt-lab-extraction.md; CODEMAP is the move gate). Adoption law: function bodies are VERBATIM copies of their source scripts, guarded by source-identity + behavior tests (tests/test_lab_adoption.py); the originating scripts stay frozen — they are the record booked verdicts cite. New code imports from here; existing scripts migrate only with a re-verified pass.
 
 
+### llmopt/lab/config.py
+lab.config — typed env-var config for arm drivers (spec 2026-08-05-llmopt-lab-extraction module 2). Kills the typo-takes-default class: 237 bare os.environ.get sites across 65+ scratch files meant a misspelled knob silently ran the WRONG EXPERIMENT with a clean exit. Here the contract is loud both ways:
+
+- `class ConfigError`
+- `_cast(name: str, raw: str, typ) -> object`
+- `class LabConfig` (from_env, echo)
+
 ### llmopt/lab/gen.py
 lab.gen — fork-isolated problem generation, ADOPTED VERBATIM from scripts/bench_step_tokens.py (2026-08-06; that file stays frozen — it backs the step-token race verdicts). The function body is character-identical to the source; guarded by tests/test_lab_adoption.py. Fix a bug here and there in the SAME commit, or the guard fails.
 

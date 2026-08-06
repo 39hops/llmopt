@@ -11,7 +11,10 @@ Adopted so far (2026-08-06):
   _gen_isolated   <- scripts/bench_step_tokens.py  (58 import sites)
   Oracle          <- scratch/oracle_worker.py + moe_gt1_arm2.check_isolated
                      (module 1 of the extraction spec; typed events)
+  LabConfig       <- new (module 2): from_env(prefix) — casts raise,
+                     unknown prefixed vars error, resolved-config echo
 """
+from llmopt.lab.config import ConfigError, LabConfig  # noqa: F401
 from llmopt.lab.gen import _gen_isolated, gen_isolated  # noqa: F401
 from llmopt.lab.oracle import CheckResult, Oracle  # noqa: F401
 from llmopt.lab.verify import verify_wave  # noqa: F401
