@@ -2369,6 +2369,14 @@ TENET D3: the budget accountant (spec 2026-08-05-tenet-battery.md deliverable D3
 - `class BudgetAccountant` (remaining, debit, census)
 - `charge(acct: BudgetAccountant, who: str, texts, tok_counts=None)` — Charge a sampled wave; return the texts, or [] if refused.
 
+### scratch/tenet_r1b_micro.py
+TENET R1b-micro: the closed loop at matched budget (PRE-REG TENET-R1B-MICRO, 2026-08-06 — read it first; arms, ledger contract, and registered lines live there, not here).
+
+- `tok_cost(tok, text)`
+- `rev_score(rev_model, tok, cand, cur, dev)` — Cycle-consistency: teacher-forced logprob of CUR given CAND
+- `run_problem(models, tok, dev, root, seed0)`
+- `main()`
+
 ### scratch/tenet_w0.py
 TENET W0: is reverse structure visible in weights? (pre-reg TENET-W0, 2026-08-05 — the battery's cheapest rung.)
 

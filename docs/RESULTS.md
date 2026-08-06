@@ -21183,3 +21183,52 @@ sampled gate geometry, at this scale and feature choice. FENCES
 carry over from the verdict (gate tensors only; one classifier
 seed; trained-v-random is an EASY control — it bounds
 reader-works-at-all, not reader-finds-every-subtle-signal).
+
+## PRE-REG TENET-R1B-MICRO: the closed loop at matched budget — does HAVING the reverse model beat not having it? (2026-08-06, Mac)
+
+The battery's last live rung; both gates satisfied (VERDICT
+TENET-R0-REV-B positive; D3 accountant built + tested). Bar is
+Artin's, unchanged from the spec: BETTER than not having the
+reverse model, at matched budget, verified-AND-distinct. The
+reverse model's role follows the measured assets: R0-REV-B showed
+emission is weak and distribution-local, while the prior art's
+strongest positive is the backward reverse-SCORER (Spearman 0.769,
+one seed) — so the closed loop uses the reverse twin as a RANKER
+(forward proposes, reverse scores, forward chooses), not an
+emitter.
+VEHICLE: the R0-rev certified twins (fwd-cert 272e47d2, rev-cert
+0d5ece32), the 120 forward-gate band problems, 12-ply chains, B=8
+waves, Mac/mps, one device, one seed schedule.
+LEDGER (the D3 contract): ONE BudgetAccountant per problem,
+B_TOK=6000; EVERY cost debited BEFORE use at REAL token counts
+(sampled emissions: len(tok.encode(text))+1 each; reverse scoring:
+the teacher-forced parent token count per candidate scored). A
+refused debit ends the problem for that arm (refusal-not-shrink).
+Per-arm ledger census books with the verdict.
+ARMS (same problems, same per-problem budget, same wave seeds):
+  F  forward-only: greedy verified chain; on stall or solve-fail,
+     re-roll with fresh registered seed offsets while budget
+     remains — "not having the reverse model" spends the same
+     tokens going wider.
+  FR the pincer: identical chain machinery, but each wave's
+     candidates are ranked by reverse-twin cycle-consistency
+     (logprob of the CURRENT state given the candidate as prompt,
+     charged) and the chain takes the highest-ranked VERIFIED
+     candidate; re-rolls with remaining budget like F.
+  LR length-only ranker (MANDATORY, the length-control law):
+     identical to FR but ranked by shortest-candidate-first, zero
+     scoring cost — if FR's edge is length, LR shows it.
+REGISTERED LINES:
+P-PINCER: FR - max(F, LR) >= 7 solves (the 1.5-sigma fence on the
+  120 gate) — the reverse model pays for its tokens; R2/R3 design
+  opens.
+P-NULL: anything else — the bar fails a SECOND time (R8 was the
+  first) and the battery CLOSES on the pincer claim; no R2/R3.
+  Ties and small deltas book as directions only.
+FENCES: one seed pair; the certified-subset diet caveat rides;
+scorer arm is teacher-forced (its skill claim stays [TEACHER-
+FORCED]); L4 anomaly watched (per-level dicts book for all arms);
+oracle calls are NOT in the token ledger (verification is the
+shared referee, identical across arms — only model tokens are
+budgeted); B_TOK=6000 chosen as ~2x the observed single-pass
+chain cost, giving every arm real re-roll headroom.
