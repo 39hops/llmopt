@@ -2668,6 +2668,22 @@ pooling winners was his call).
   design simplification: above the resident core, paging schedules
   are recall-coverage arithmetic, not expert-class identity.
 
+- **COUNTER-NOTE to the 'ADJUDICATED same-day' entry above**
+  (VERDICT MOE-GT-6 + AMENDMENT MOE-GT-5c-SCOPE, same night): the
+  adjudication was premature — GT-5c's random pool was ~45%
+  verbal-branch, so its control never tested exclusion. The clean
+  arm collapses (0/120 and 7/120 at matched 0.72 recall vs 16-55
+  verbal-containing): Artin's verbal-fallback hypothesis WINS the
+  causal round in its narrowed form — the fallback machinery math
+  emission is rebuilt through, once symbolic extensions are masked,
+  lives in the verbal branch. The verbal-TAX thesis at the routing
+  layer stays narrowed by GT-VERBAL-SHARE (2.7% free-routing
+  demand): fallback is a masked-regime path, not normal operation.
+  The sorted/dynamic-model inheritance is WITHDRAWN: paging is not
+  recall-coverage arithmetic. Original text stays; this note names
+  its refutation. Attribution: Artin (hypothesis), reviewer audit
+  F7 (the pool flag), house (the exclusion arm).
+
 - **CORRECTION to the 2026-08-05 "hierarchy is SYMMETRIC" entry
   above** (per AMENDMENT MOE-GT-4-REVIEW, same day): that entry's
   "48.5/58 vs 11.9 null" used the 3-way null — the correct 2-way

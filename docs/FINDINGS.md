@@ -256,6 +256,26 @@ VERDICT](RESULTS.md#L10676).)
   inspection, a rebuild, and a 10x rerun; the stress receipts are the
   other lab's. ([VERDICT BEAM-FLAKE-ROOT-CAUSE](RESULTS.md#L20539);
   [VERDICT LEAN-EMITTER-FIX](RESULTS.md#L20462).)
+- [SINGLE-SEED] [REGIME-SCOPED: toy weight-space subjects] A
+  796,550-parameter neuron-token transformer classifies the function
+  family of 1-16-16-1 tanh subject MLPs from raw weights at 80.8%
+  against a 16.7% chance floor; canonicalized 82.4%,
+  permutation-augmented 88.4% — augmentation beat canonicalization,
+  the measured basis of the teach-invariance-don't-impose-it rule. One
+  seed, one subject architecture, toy scale; the gate is
+  classification only, and no run-the-weights gate exists for
+  weight-space generation. ([VERDICT
+  WEIGHT-READER-0](RESULTS.md#L20747).)
+- [NULL] [REGIME-SCOPED: toy weight-space subjects] The
+  forward-trained weight reader does not recognize inverse twins:
+  0.139 accuracy against the 16.7% chance floor over 345 eligible
+  twins, so weight features are direction-specific at toy scale. The
+  sin family's 0.692 is flagged as shape resemblance (near-monotone
+  draws whose numerical inverse is still sinusoid-shaped), not
+  transfer; the registered consequence is that a direction classifier
+  over forward and reverse crystals is now expected to succeed.
+  Function-inverse analogy probe — it transfers a question, never a
+  conclusion. ([VERDICT TENET-W0](RESULTS.md#L20899).)
 
 Where axiom is the replication route below, it means an independent
 implementation in another language and runtime, sharing no code with what it
@@ -716,7 +736,11 @@ sessions under one operator, not independent investigators. Read
   rather than any symbolic or logical one. The discriminating arms have
   since run and killed that reading: the core is symbolic (proofs
   coalition contains 0.90 of it, plain prose 0.25, with prose routing
-  through a nearly different expert population at 0.16-0.19 Jaccard), a
+  through a nearly different expert population at 0.16-0.19 Jaccard).
+  ([OBSERVATION GT2-CORE-0](RESULTS.md#L19718); [VERDICT
+  MOE-GT-3](RESULTS.md#L19852).)
+- [SINGLE-SEED] [FORMAT-BOUND]
+  [REGIME-SCOPED: measured deployment artifacts] A
   second verbal corpus showed the verbal side is its own branch with its
   own shared base (prose-dialog Jaccard 0.72 vs 0.16-0.24 cross-branch,
   including the system-swapped arm;
@@ -742,7 +766,7 @@ sessions under one operator, not independent investigators. Read
   kept still costs real capability at 61% keep when the identity is
   wrong. ([VERDICT MOE-GT-5](RESULTS.md#L20179); [VERDICT
   MOE-GT-5b](RESULTS.md#L20267); ranges per [AMENDMENT
-  DAY-CONSOLIDATION-0805](RESULTS.md).)
+  DAY-CONSOLIDATION-0805](RESULTS.md#L20575).)
 - [RETRACTED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] Above the symbolic
   core, what restores capability is demand recall, not expert class:
@@ -777,8 +801,9 @@ sessions under one operator, not independent investigators. Read
   mask's edge over the random band's mean is inside the draw spread
   and unresolved; the registered per-answer degeneracy count was not
   collected. ([VERDICT MOE-GT-5c](RESULTS.md#L20414).)
-- [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment
-  artifacts] With the full router available, mathematics routes 2.7%
+- [SINGLE-SEED] [FORMAT-BOUND]
+  [REGIME-SCOPED: measured deployment artifacts] With the full router
+  available, mathematics routes 2.7%
   of decode demand through verbal-only experts and 75.4% through the
   symbolic core, so the verbal branch is not a normal path for
   mathematics; the masked arms measured a literal fallback that

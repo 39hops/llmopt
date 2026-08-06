@@ -252,11 +252,13 @@ reproducible end-to-end through `ARM0=` on the mask drivers.
 The core observation is desk-only and carries its own fences: one seed
 per domain and tie-fill at the keep boundary. The "generic decoding
 substrate" alternative it could not exclude has since been excluded by
-arms: the core is symbolic (the proofs coalition contains 0.90 of it,
-plain prose 0.245), and the shared-system-prompt confound is priced at
+arms: the core is symbolic (the proofs coalition contains 0.901 of it,
+plain prose 0.250), and the shared-system-prompt confound is priced at
 0.05-0.10 Jaccard — too small to generate the branch separation
 ([VERDICT MOE-GT-3](RESULTS.md#L19852); [VERDICT
-MOE-GT-4b](RESULTS.md#L20111)). ### The register split and the recall shoulder (MOE-GT-3 through GT-5c)
+MOE-GT-4b](RESULTS.md#L20111)).
+
+### The register split and the recall shoulder (MOE-GT-3 through GT-5c)
 
 The branch program adds three arm-0 demand runs (a proofs corpus and two
 verbal corpora) driven by `scratch/gt3_probe_arm0.py` over prompt lists;
@@ -275,9 +277,25 @@ The mask arms reuse D3's instrument, `scratch/moe_gt1_arm2.py`, through
 (matched-size random fills over the frozen core). The seed replication
 is three within-seed pairs (1234, 777, 2026), full arm vs masked arm on
 the same device. Enable `PERPROB=1` for the per-answer degeneracy
-readout — the house did not, and booked that as a readout miss.
+readout — the house did not, and booked that as a readout miss; GT-6
+collected the degeneracy readout via per-arm probe text instead, with
+PERPROB off, named in its pre-reg.
 Reproduce the direction and the magnitude class, never the digits: the
 full baselines themselves move 60-73/120 across seed problem sets.
+
+The GT-6 ladder arms build with `scratch/gt6_recall_ladder.py` (frozen
+D3 core + uniform per-layer random fill, count tuned so arm0-axis open
+recall lands within ~0.01 of target; the verbal-excluded arms draw from
+128 minus core minus verbal-core). Run mask arms ONLY with the boxed
+oracle: `check_isolated()` in `scratch/moe_gt1_arm2.py` talks to
+`scratch/oracle_worker.py`, a subprocess line-server with a parent-side
+RSS watchdog (kill at 3GB, loud `ORACLE-MEMBOMB`), because shoulder
+arms mass-produce pathological-but-parseable completions whose sympy
+simplify balloons gigabytes and gets the 17GB resident driver
+jetsam-killed. Never fork a Metal-resident driver; Darwin
+`RLIMIT_AS`/`RLIMIT_DATA` are verified no-ops. Timeouts and crashes are
+conservative rejects, always printed and counted ([AMENDMENT
+MOE-GT-6-ORACLE-BOX-3](RESULTS.md#L20703)).
 
 ### The Lean certificate kernel check
 
