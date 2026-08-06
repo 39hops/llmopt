@@ -16,7 +16,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_codemap_lists_exactly_the_inventory():
     text = (ROOT / "docs" / "CODEMAP.md").read_text()
-    listed = set(re.findall(r"^\| \S+ \| (\S+) \|", text, re.MULTILINE))
+    # family cell may be empty (__init__.py); header row never matches
+    # because the second cell must end .py/.sh
+    listed = set(re.findall(r"^\| [^|]* \| (\S+\.(?:py|sh)) \|",
+                            text, re.MULTILINE))
     on_disk = {f.name for f in (ROOT / "scratch").glob("*.py")} | \
               {f.name for f in (ROOT / "scratch").glob("*.sh")} | \
               {f.name for f in (ROOT / "scripts").glob("*.py")}
