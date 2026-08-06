@@ -162,7 +162,10 @@ at natural stopping points, not mid-sprint.
 - Instrument fences travel with instruments: CE-400 is
   format-BOUND (valid within matched-format comparisons only);
   sigma never transports across devices/widths; probe scripts pin
-  their VOCAB_EXTRA atom order.
+  their VOCAB_EXTRA atom order; end-to-end cross-device tolerance
+  bars belong to TRAINED networks only — random weights amplify
+  bf16 noise ~3x/layer (V4-F1b/F1c), so never calibrate a bar on
+  an untrained boot.
 - WSL side is a THIN EXECUTION TARGET, not a second lab: no
   WSL-side scratch authorship; scripts live in git, ship via
   push/pull or wsl.sh; logs land in logs/; artifacts pull back to
