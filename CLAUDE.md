@@ -230,7 +230,17 @@ at natural stopping points, not mid-sprint.
   this — it is doing its job when it is annoying); package-only
   improvements WAIT until a registered re-run migrates the driver,
   at which point that symbol's source-identity guard is deleted in
-  the same commit and the scratch copy is frozen-as-record. Bulk moves/archival happen only
+  the same commit and the scratch copy is frozen-as-record.
+- **Logs doctrine (2026-08-06)**: `logs/` is run exhaust — untracked
+  by default, regenerate-don't-download (REPRODUCE's rule). Layout:
+  `logs/<battery-or-day>/` subdirs, output paths unique per
+  arm×seed; NEVER append a new run into a path a booked verdict
+  cites as frozen. Scoped exception (the seedslad pattern,
+  RESULTS d88bbff postscript): SMALL TEXT RECEIPTS for a booked
+  verdict may be `git add -f`'d under `logs/<name>/`, with the why
+  booked in the same RESULTS entry — large jsonl/traj/per-problem
+  streams never. Bulk log deletion is Artin-GO (handoff payloads
+  live here; pairs with the banked 51GB triage thread). Bulk moves/archival happen only
   at a natural freeze point under the BOARD housekeeping gate
   (pytest green + smoke-launch entry points + both checkouts in
   lockstep).
