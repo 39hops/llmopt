@@ -21517,3 +21517,56 @@ FENCES: one-device (3080, where the population lives); one split
 seed (the booked W1 split); classifier accuracy is the readout —
 the 120-gate sigma fence does not govern; no weight-distance
 scoring anywhere (reader classifies, never compares).
+
+## VERDICT MOE-GT-7: P-NULL FIRES — verbal coverage does NOT organize capability at fixed recall (non-monotone bins, draw spread dwarfs bin means); BOTH anomaly points dissolve into draw identity; both aggregate lenses are now dead and the thread narrows to EXPERT IDENTITY (2026-08-06, Mac)
+
+Against PRE-REG MOE-GT-7, all frozen elements honored (lens =
+gt7_coverage_rederive.py's vonly set-fraction; draws two-constraint
+string-seeded, receipts in the gt7_draw log lines; gate = frozen
+moe_gt1_arm2 KEEPSET path via scratch/gt7_run.py, one model load,
+one-resident held; oracle v3.2 line-server, timeouts booked as
+failures). Dicts are the checksum — all ten sum-verified.
+
+LADDER (recall pinned 0.711-0.724; bin, draws, mean):
+  0.00  novrb REUSED (booked 0, 7)          mean  3.5
+  0.15  15 {1:5,2:3,3:7} | 53 {1:16,2:20,3:17}   mean 34.0
+  0.30   5 {1:2,2:2,3:1} | 54 {1:22,2:18,3:14}   mean 29.5
+  0.45  46 {1:18,2:13,3:15} | 10 {1:3,2:4,3:3}   mean 28.0
+P-COVERAGE: bin means are NON-MONOTONE (34.0 -> 29.5 -> 28.0
+falls) — does NOT fire despite top-bottom 24.5 >= 14. P-NULL FIRES
+as registered: coverage does not organize capability at fixed
+recall. The real signal is the DRAW SPREAD: 15-v-53, 5-v-54,
+46-v-10 — within-bin spreads of 38-49 solves at matched recall AND
+matched verbal coverage. Which experts, not how many of which
+class.
+
+ANOMALY ARMS (fresh draws at the booked recall/coverage points):
+  r75 point (0.75, 0.430; booked arm 16): fresh 75 {1:28,2:29,
+  3:18} and 19 {1:6,2:6,3:7}. r80 point (0.80, 0.538; booked arm
+  9): fresh 75 {1:23,2:27,3:25} and 48 {1:20,2:14,3:14}.
+The registered read fires at r80: both fresh draws >= 30 — the
+booked 9 was DRAW IDENTITY, not an arm-level phenomenon. r75 the
+same shape (fresh spread 19-75 straddles the booked 16). Both
+named GT-6 anomalies dissolve; identity-over-coverage reinforced
+from the anomaly side too.
+
+DEGENERACY READOUT (descriptive, per pre-reg no bar): distinct
+answers track collapse — the three sub-20 arms show 113/82/59
+distinct of 120 while every arm >= 46 shows 118-120; masked-regime
+degeneracy accompanies capability loss, does not precede it at
+these points. Probe text degenerates on low arms (the GT-1
+signature). ORACLE CENSUS: 2 timeouts total (both c30_d0, booked
+as failures inside its 5), zero crashes, zero membombs.
+
+Instrument note: closed recall tracked open recall within 0.01 on
+9/10 arms (c30_d0 the exception, 0.785 v 0.715 — the collapsed
+solver leans harder on kept experts) — recall pinning HELD; the
+variable separation the pre-reg wanted was real.
+
+SURVIVAL MAP (as registered): P-NULL -> BOTH aggregate lenses
+(recall: GT-6; coverage: this) are dead at fixed recall. No GT-8
+aggregate-lens ladder. The thread narrows to EXPERT-IDENTITY
+anatomy (excluded-experts anatomy is the banked next) and
+R-EMISSION. Receipts: logs/gt7/gt7.jsonl force-added (small);
+answers/perprob streams stay untracked (regenerable via
+scratch/gt7_run.py; draws re-derive from string seeds).
