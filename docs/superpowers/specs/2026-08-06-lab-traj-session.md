@@ -31,9 +31,17 @@ per the loud-failure contract).
 2. Regression tier: D0-style bit-identity — re-run the certified TRAJ
    regeneration (the 4f3dc6c instrument's regression: 590,736 rows
    bit-identical) through the unified patch.
-3. Live tier: one small gate run, unified patch vs frozen
-   moe_gt1_arm2 path, TRAJ rows byte-identical + recall counters
-   equal.
+3. Live tier (SPLIT resolved 2026-08-06, Artin nod — arm2 writes no
+   TRAJ rows, so the two claims separate):
+   3a. masked arm: one small gate run, unified patch vs frozen
+       moe_gt1_arm2 path — recall counters equal + per-problem rows
+       byte-identical.
+   3b. free arm: fresh free-routing TRAJ rows, unified patch vs the
+       frozen moe_gt1 instrument — rows byte-identical (on top of
+       tier 2's D0 regression).
+   traj+keep TOGETHER is REFUSED in v1 (loud ValueError; no source
+   copy ever ran the combination, no certified artifact constrains
+   it — Artin nod 2026-08-06); revisit only under a registered run.
 4. keepsets closes the loop for free: the always-on full acceptance
    (booked GT2 stats + dump bytes) re-runs over any regenerated rows.
 

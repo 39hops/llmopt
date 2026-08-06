@@ -98,24 +98,194 @@ DIVERGENCE TABLE (surface -> what differs -> AUTHORITY):
                       AUTHORITY: B's per-block shape (derived from the
                       weights themselves, no fallback constant).
 
-OPEN DESIGN QUESTIONS (flagged before unification, not decided here):
+DESIGN DECISIONS (both Artin-nodded 2026-08-06; were Q1/Q2):
 
-  Q1. traj + keep TOGETHER is a combination NO source copy ever ran:
-      A trajs only free routing; B masks without traj. If both are
-      requested, which distribution do H/scores come from — the
-      masked softmax (what the model actually did) or the unmasked
-      one (what the router wanted)? No certified artifact constrains
-      it. Proposal: refuse the combination in v1 (loud ValueError)
-      until a registered run needs it; acceptance never exercises it.
-  Q2. Live-tier comparison target: spec says "TRAJ rows byte-identical
-      + recall counters equal" vs the frozen arm2 path, but arm2
-      writes no TRAJ rows. Reading: recall counters + per-problem
-      rows compare vs frozen B on the masked arm; TRAJ byte-identity
-      is the D0 regression (tier 2) plus a fresh free-routing row
-      compare vs A. Confirm before the 30B block.
+  D-1. traj + keep TOGETHER is REFUSED (loud ValueError). No source
+       copy ever ran the combination (A trajs only free routing; B
+       masks without traj), so no certified artifact constrains which
+       distribution H/scores would come from. Revisit only under a
+       registered run that needs it.
+  D-2. Live tier SPLITS (spec updated in the same commit): 3a masked
+       arm — recall counters + per-problem rows byte-identical vs
+       frozen B; 3b free arm — fresh TRAJ rows byte-identical vs
+       frozen A, on top of tier 2's D0 regression.
 
 ACCEPTANCE (spec order): 1. this desk enumeration; 2. D0 590,736-row
-bit-identity through the unified patch; 3. live gate run vs frozen B;
-4. keepsets' always-on acceptance closes the loop over regenerated
-rows.
+bit-identity through the unified patch; 3a/3b. live gate runs vs
+frozen B (masked) and A (free); 4. keepsets' always-on acceptance
+closes the loop over regenerated rows.
+
+UNIFICATION (written after the table + D-1/D-2 nods, same session):
+`patch_moe_router(model, traj=False, keep=None)` — a context manager.
+keep=None -> A's wrapper body verbatim (traj gated on the state slot,
+not the TRAJ env — the only deliberate delta, param-for-env); keep
+given -> B's wrapper body verbatim (recall counters, raw-logits want,
+additive -inf mask). traj+keep raises (D-1). `begin_prompt` performs
+exactly the certified driver-side resets (surface 5). mlx is imported
+lazily so the module imports on non-Metal machines.
 """
+from __future__ import annotations
+
+
+def begin_prompt(state, prompt_id):
+    """The certified per-prompt driver resets (surface 5, A verbatim:
+    resets fire only when TRAJ is recording), nothing more."""
+    state["prompt"] = prompt_id
+    if state.get("traj") is not None:
+        state["tpos"] = {}
+        state["tail_done"] = {}
+
+
+class patch_moe_router:
+    """Context manager unifying the three router instruments.
+
+    keep=None: free-routing recorder (A) — RouterStats via
+      state["stats"] (None pauses), first-touch, optional TRAJ rows.
+    keep={layer: set(experts)}: masked routing + closed-loop recall
+      (B) — state["hits"]/state["slots"].
+    traj=True with keep is REFUSED (D-1).
+
+    __exit__ always restores the class __call__; if the class is found
+    patched by something other than this instrument at exit, it emits
+    a loud INSTRUMENT_NOT_RESTORED line and restores anyway (the
+    loud-failure contract: a raising gate must not leave the class
+    patched).
+    """
+
+    def __init__(self, model, *, traj=False, keep=None):
+        if traj and keep is not None:
+            raise ValueError(
+                "traj+keep REFUSED (D-1, 2026-08-06): no source copy "
+                "ever ran the combination and no certified artifact "
+                "constrains which distribution H/scores come from")
+        self.model = model
+        self.traj = traj
+        self.keep = keep
+
+    def __enter__(self):
+        import mlx.core as mx
+
+        model = self.model
+        moe_layers = [
+            (i, layer.mlp)
+            for i, layer in enumerate(model.model.layers)
+            if hasattr(layer.mlp, "gate") and hasattr(layer.mlp, "top_k")
+        ]
+        cls = type(moe_layers[0][1])
+        self._cls = cls
+        self._original = cls.__call__
+        n_exp = moe_layers[0][1].gate.weight.shape[0]
+
+        if self.keep is None:
+            state = {"stats": None, "first": {}, "pos": {}, "tpos": {},
+                     "prompt": None,
+                     "traj": [] if self.traj else None}
+            layer_of = {id(block): li for li, block in moe_layers}
+
+            def wrapped(self, x):
+                gates = mx.softmax(self.gate(x), axis=-1, precise=True)
+                k = self.top_k
+                inds = mx.argpartition(gates, kth=-k, axis=-1)[..., -k:]
+                scores = mx.take_along_axis(gates, inds, axis=-1)
+                if self.norm_topk_prob:
+                    scores = scores / mx.sum(scores, axis=-1, keepdims=True)
+                if state["stats"] is not None:
+                    li = layer_of[id(self)]
+                    flat_i = inds.reshape(-1, k).tolist()
+                    flat_s = scores.reshape(-1, k).tolist()
+                    state["stats"].update(li, flat_i, flat_s)
+                    first = state["first"].setdefault(li, {})
+                    pos = state["pos"].get(li, 0)
+                    for t, picks in enumerate(flat_i):
+                        for e in picks:
+                            if e not in first:
+                                first[e] = pos + t
+                    state["pos"][li] = pos + len(flat_i)
+                    if state["traj"] is not None:
+                        # `gates` is already the full softmax; entropy
+                        # per token in nats. tpos has its OWN counter
+                        # (reset per prompt) so the pooled pos/first-
+                        # touch path stays byte-identical to the
+                        # certified arm-0 artifact (surface 5).
+                        p = gates.reshape(-1, gates.shape[-1])
+                        ent = (-(p * mx.log(p + 1e-12)).sum(axis=-1)
+                               ).tolist()
+                        # phase is RECORDED, not inferred (surface 6):
+                        # prefill hits the router with the whole prompt
+                        # batch, decode with 1 token; mlx_lm leaves the
+                        # LAST PROMPT TOKEN to the first 1-token step —
+                        # labeled prompt_tail, never decode.
+                        li_tail = state.setdefault("tail_done", {})
+                        if len(flat_i) > 1:
+                            phase = "prefill"
+                            li_tail[li] = False
+                        elif not li_tail.get(li, False):
+                            phase = "prompt_tail"
+                            li_tail[li] = True
+                        else:
+                            phase = "decode"
+                        flat_sc = scores.reshape(-1, k).tolist()
+                        tpos = state["tpos"].get(li, 0)
+                        for t, picks in enumerate(flat_i):
+                            state["traj"].append({
+                                "prompt": state["prompt"], "layer": li,
+                                "pos": tpos + t, "topk": picks,
+                                "scores": [round(s, 6)
+                                           for s in flat_sc[t]],
+                                "phase": phase,
+                                "H": round(float(ent[t]), 4)})
+                        state["tpos"][li] = tpos + len(flat_i)
+                y = self.switch_mlp(x, inds)
+                return (y * scores[..., None]).sum(axis=-2)
+
+        else:
+            state = {"hits": 0, "slots": 0}
+            masks, keepsets = {}, {}
+            for li, block in moe_layers:
+                kept = self.keep[li]
+                assert len(kept) >= block.top_k
+                masks[id(block)] = mx.array(
+                    [0.0 if e in kept else float("-inf")
+                     for e in range(n_exp)])
+                keepsets[id(block)] = kept
+
+            def wrapped(self, x):
+                logits = self.gate(x)
+                k = self.top_k
+                # closed-loop recall: what the UNMASKED router wants
+                # (surface 2: raw-logits domain, B verbatim)
+                want = mx.argpartition(logits, kth=-k, axis=-1)[..., -k:]
+                kept = keepsets[id(self)]
+                for picks in want.reshape(-1, k).tolist():
+                    state["slots"] += k
+                    state["hits"] += sum(1 for e in picks if e in kept)
+                # actual routing: masked
+                gates = mx.softmax(logits + masks[id(self)], axis=-1,
+                                   precise=True)
+                inds = mx.argpartition(gates, kth=-k, axis=-1)[..., -k:]
+                scores = mx.take_along_axis(gates, inds, axis=-1)
+                if self.norm_topk_prob:
+                    scores = scores / mx.sum(scores, axis=-1,
+                                             keepdims=True)
+                y = self.switch_mlp(x, inds)
+                return (y * scores[..., None]).sum(axis=-2)
+
+        cls.__call__ = wrapped
+        self._wrapped = wrapped
+        state["n_experts"] = n_exp
+        print(f"[lab.traj] instrumented {len(moe_layers)} MoE layers "
+              f"({cls.__name__}), {n_exp} experts, "
+              f"mode={'masked' if self.keep is not None else 'free'}"
+              f"{'+traj' if self.traj else ''}", flush=True)
+        self.state = state
+        return state
+
+    def __exit__(self, exc_type, exc, tb):
+        if self._cls.__call__ is not self._wrapped:
+            print("[lab.traj] INSTRUMENT_NOT_RESTORED — class __call__ "
+                  "was re-patched by something else while this "
+                  "instrument was live; restoring the saved original "
+                  "anyway", flush=True)
+        self._cls.__call__ = self._original
+        return False
+

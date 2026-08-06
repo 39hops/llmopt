@@ -160,7 +160,7 @@ Census: UNCITED 157, library 133, reproduce-pinned 9, results-cited 101, spec-ci
 | metabolic | metabolic_v3.py | UNCITED | — | — |
 | metabolic | metabolic_v4.py | UNCITED | — | — |
 | metabolic | metabolic_v5.py | library | — | 2 |
-| moe | moe_gt1.py | library | REPRODUCE×4, RESULTS×3, specs×4 | 3 |
+| moe | moe_gt1.py | library | REPRODUCE×4, RESULTS×3, specs×4 | 4 |
 | moe | moe_gt1_arm2.py | library | REPRODUCE×6, RESULTS×5, specs×4 | 4 |
 | morning | morning_run.sh | UNCITED | — | — |
 | mps | mps_sigma_gates.sh | UNCITED | — | — |
