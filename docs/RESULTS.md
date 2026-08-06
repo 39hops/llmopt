@@ -20743,3 +20743,49 @@ oracle-on-model-text fence covers EVERY sympy touch of the text —
 scoring, parsing, even a boolean diagnostic flag; audit the whole
 loop, not the obvious call.
 GATE CONSEQUENCES unchanged; arms 8-14 rerun as gt6v5.
+
+## VERDICT WEIGHT-READER-0 (BACK-BOOKED): the 2026-07-06 weight-space reader ablation — 80.8% raw / 82.4% canonical / 88.4% permutation-augmented, 6-way family classification vs 16.7% chance (2026-08-05 back-booking of a 2026-07-06 result, Mac M3 CPU)
+
+Back-booked per TENET-battery deliverable D0: the result has been
+load-bearing doctrine since July ("teach invariance, don't impose
+it"; cited at RESULTS L5281) but lived only in
+llmopt/weightspace/__init__.py's docstring and specs/INDEX. The
+record: a 796,550-param neuron-token transformer (WeightReader;
+count house-verified 2026-08-05 by parameter sum) classifies the
+function family of 1-16-16-1 tanh subject MLPs from RAW WEIGHTS at
+80.8% (4000 train / 500 held-out, string-seeded, exclude=-guarded
+coeff splits); canonicalized 82.4%; permutation-AUGMENTED 88.4% —
+augmentation beat canonicalization, the measured basis of the
+never-impose-invariance rule. Gate: classification accuracy only —
+NO run-the-weights gate exists for weight-space GENERATION (named
+in the TENET spec as a deferred build). Fences: one seed, one
+subject architecture, toy scale.
+
+## PRE-REG TENET-W0: is reverse structure visible in weights? — the battery's first rung (2026-08-05, 3080/WSL CPU)
+
+Spec: 2026-08-05-tenet-battery.md rung W0. Driver committed:
+scratch/tenet_w0.py (smoke-tested: twin-fit eligibility behaves —
+monotone families fit inverse twins, gauss 0/6 as geometry
+demands). Design: train the CERTIFIED reader recipe (perm-augmented
+arm) on 4000 FORWARD subjects; evaluate on INVERSE TWINS (MLPs fit
+to axis-swapped data, eval-namespace string seeds, same rejection
+rule; families with <30 eligible twins book as ineligible, not
+evidence). Sanity gate: forward held-out must land ~0.88-class or
+the recipe reproduction failed and nothing else books.
+
+REGISTERED PREDICTIONS:
+P-TRANSFER: inverse-twin accuracy well above the 16.7% floor
+  (>=0.40 as the registered line) on eligible families — reverse
+  structure is visible to forward-trained weight features; the
+  weight-model-first ordering gets its first positive rung.
+P-DIRECTIONAL (the null): inverse accuracy at/near floor —
+  weight features are direction-specific; the transfer claim dies
+  at toy scale, cheaply, before any LM is born. Books as a clean
+  negative that CONSTRAINS rung W1's design (a direction classifier
+  would then be expected to succeed, not fail).
+FENCES (registered): "reverse" = function-INVERSE, an ANALOGY probe
+for the reversed-token LM — the result transfers a question, never
+a conclusion; one seed; toy scale; inverse twins of non-monotone
+families that pass FIT_TOL are branch-fits (eligibility counts
+reported per family); chance floor is 1/6 regardless of eligible-
+family count (the reader has 6 output classes).
