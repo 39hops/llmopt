@@ -525,12 +525,21 @@ sessions under one operator, not independent investigators. Read
   soft-routing causal arms explained expert decorrelation in the tested MoE
   recipes. ([UMOE-1 VERDICT](RESULTS.md#L11592); [UMOE-2
   VERDICT](RESULTS.md#L11896).)
+### Frontier deploy instruments (V4-Flash)
+
+Systems results on a shipped 304B artifact — deploy/decode
+instruments and measurements, not house-recipe MoE laws; the
+regime tag on every bullet is the fence.
+
 - [REPLICATED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
   A 304B frontier MoE's routed expert runs entirely in integers on the vendor's
   own shipped 4-bit weights, with the output trace hash-identical on Apple CPU,
   Apple GPU and NVIDIA GPU — three backends are the route, each having fetched
   the weights independently, and the decode was checked against the vendor's
-  own dtype semantics. ([VERDICT V4-RUNG-A](RESULTS.md#L15884).)
+  own dtype semantics. One expert, one layer, one model: replication is of the
+  integer-exactness route, not MoE integer exactness in general. ([VERDICT
+  V4-RUNG-A](RESULTS.md#L15884); the NVIDIA leg is a rider —
+  [RIDER V4-RUNG-A](RESULTS.md#L15933).)
 - [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
   A frontier 304B MoE's shipped 4-bit expert codes carry 3.865 bits of entropy,
   and their 8-bit power-of-two block scales carry 0.964 — so the scale stream
@@ -579,7 +588,9 @@ sessions under one operator, not independent investigators. Read
   V4-F1b](RESULTS.md#L17303); [VERDICT V4-F1c](RESULTS.md#L17360).)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
   DeepSeek-V4-Flash generated tokens on a 36 GB Mac — vendor code
-  unmodified over the kernel twin, 7.13% of routed experts resident,
+  unmodified over the kernel twin, 7.13% of routed experts resident
+  (785/11,008 measured, fetch-on-miss included; the K=16/256 per-score-layer
+  design ratio is 6.25% — same run, two denominators),
   masking done by one write into the aux-loss-free bias — and what
   survives 92.9% expert amputation is fluent CONTEXT-COPYING: the output
   is a pure prompt-echo loop, logged verbatim, no capability claimed.
