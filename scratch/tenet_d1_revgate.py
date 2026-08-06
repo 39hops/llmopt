@@ -6,10 +6,20 @@ is the missing instrument: a fixed 120-problem battery (same band
 seeds as the forward gate: GATE_BAND + 1000*lv + i, levels 3-7) on
 the REVERSED prompt frame. The model sees a band expression as
 "Current:" and must emit a PREDECESSOR as "Step:"; scoring is
-forward verification at the mint (verify_wave(cand, [s]) — the
-candidate applied FORWARD must reach the prompt expression), never
-corpus match (bidirectional-cheat fence). Verified AND distinct:
-identity emissions never score.
+forward verification at the MINT: s must be a legal engine child of
+the candidate (successors replay, the D2 mechanism, fork-boxed line
+server). Never corpus match (bidirectional-cheat fence). Verified
+AND distinct: identity emissions never score.
+
+INSTRUMENT CORRECTION (2026-08-05, caught in smoke BEFORE any arm
+fired): the first cut scored by verify_wave(cand, [s]) — but that
+oracle checks derivative-EQUIVALENCE, which is SYMMETRIC and
+direction-blind: a forward model's emitted successor of s verifies
+as a "predecessor" (smoke: 4/10 on a forward checkpoint). The
+replay criterion breaks the symmetry (a parent is not a child of
+its child). Equivalence validity is still reported as a DIAGNOSTIC
+(the R1a 11% emission-validity anchor), never as the solve
+criterion. Booked as AMENDMENT TENET-R0-REV-D1.
 
 Single-ply by design: backward emission validity is the R1a metric
 (11% booked); chains come later rungs. Solved = any of B=8 samples
@@ -29,11 +39,13 @@ sys.path.insert(0, "scripts")
 
 
 def rev_gate_eval(model, tok, dev, n=None):
-    """Reverse gate: solves per level + per-candidate validity %.
+    """Reverse gate: solves per level + per-candidate equivalence %.
 
     Same shape as G.gate_eval's return so fences transfer:
-    ({level: solves}, valid%). Timeouts inside verify_wave default
-    to reject (conservative; the reason travels in the count)."""
+    ({level: solves}, valid%) — but valid% here is the DIAGNOSTIC
+    equivalence rate (see docstring), solves are replay-scored.
+    Timeouts/membombs/crashes in the replay server default to
+    reject (conservative; the reason travels in the counters)."""
     import hashlib
 
     import sympy as sp
@@ -42,6 +54,7 @@ def rev_gate_eval(model, tok, dev, n=None):
     import step_grpo_micro as G
     from bench_step_tokens import _gen_isolated
     from bench_verify_fast import verify_wave
+    from tenet_d2_revdiet import Replayer
 
     wh = hashlib.sha256()
     for k, v in sorted(model.state_dict().items()):
@@ -52,6 +65,10 @@ def rev_gate_eval(model, tok, dev, n=None):
     print(f"[revgate] weights sha {wh.hexdigest()[:16]}", flush=True)
     solves = {}
     valid = tried = skipped = 0
+    replayer = Replayer()
+    counts = {s: 0 for s in ("unique", "ambig", "miss", "err",
+                             "timeout", "membomb", "crash")}
+    replay_cache = {}
     with torch.no_grad():
         for lv in G.GATE_LEVELS:
             s_lv = 0
@@ -74,17 +91,30 @@ def rev_gate_eval(model, tok, dev, n=None):
                     c_norm = cand.replace(" ", "") if cand else ""
                     if not c_norm or c_norm == s_norm:
                         continue  # verified AND distinct doctrine
+                    # diagnostic only: symmetric equivalence oracle
                     ok, _ = verify_wave(cand, [s]).get(s, (False, False))
-                    if ok:
-                        valid += 1
-                        done = True
+                    valid += ok
+                    if done:
+                        continue  # solve decided; skip replay cost
+                    st = replay_cache.get((c_norm, s_norm))
+                    if st is None:
+                        st = replayer.check_sync(cand, s, counts)
+                        replay_cache[(c_norm, s_norm)] = st
+                    if st in ("unique", "ambig"):  # s is a legal
+                        done = True                # child of cand
                 s_lv += done
             solves[lv] = s_lv
             print(f"[revgate] L{lv}: {s_lv}/{n or G.GATE_N}",
                   flush=True)
+    replayer.kill()
     if skipped:
         print(f"[revgate] SKIPPED {skipped} band problems "
               f"(generator returned None)", flush=True)
+    anomalies = {k_: v for k_, v in counts.items()
+                 if k_ in ("timeout", "membomb", "crash", "err") and v}
+    print(f"[revgate] replay census {counts}"
+          + (f" | ANOMALIES {anomalies}" if anomalies else ""),
+          flush=True)
     return solves, 100 * valid / max(tried, 1)
 
 

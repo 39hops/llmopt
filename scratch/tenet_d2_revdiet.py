@@ -134,6 +134,21 @@ class Replayer:
             return (key, row, "timeout")
         return None
 
+    def check_sync(self, cur, nxt, counts):
+        """Blocking single check -> status string (D1 reuses this:
+        'unique'/'ambig' = nxt IS a legal engine child of cur)."""
+        if not self.send(("sync", None), {"cur": cur, "nxt": nxt}):
+            counts["crash"] += 1
+            return "crash"
+        while True:
+            res = self.poll(counts)
+            if res is not None:
+                status = res[2]
+                if status in ("unique", "ambig", "miss", "err"):
+                    counts[status] += 1  # anomalies counted by poll
+                return status
+            time.sleep(0.02)
+
     def kill(self):
         if self.proc is not None:
             self.proc.kill()

@@ -20937,3 +20937,27 @@ chain gate as a capability magnitude; both arms sit on the
 certified SUBSET diet, so neither compares to booked full-gen4
 births; per-candidate validity % reported alongside (the R1a
 11% emission-validity anchor is the prior art baseline).
+
+## AMENDMENT TENET-R0-REV-D1: the reverse gate's registered scorer was direction-BLIND — verify_wave checks symmetric derivative-equivalence, and a FORWARD model scored on it in smoke; solve criterion corrected to engine replay BEFORE any arm fired (2026-08-05, Mac)
+
+Amends PRE-REG TENET-R0-REV. The pre-reg registered
+verify_wave(cand, [s]) as D1's solve criterion ("forward-verified
+at the mint"). Instrument smoke (n=2/level, forward checkpoint
+sym_birth_c8.pt, weights sha ea13c6991cf05178) scored 4/10 —
+a forward model passing a reverse gate. MECHANISM: verify_wave's
+oracle is derivative-EQUIVALENCE, which is symmetric — an emitted
+SUCCESSOR of s verifies exactly like a predecessor. The mint
+criterion is now engine replay (s must be a legal child of the
+candidate via successors(State(cand)) skeleton match — the same
+mechanism D2 certifies the diet with; a parent is not a child of
+its child, so the symmetry breaks). Post-fix smoke: same forward
+checkpoint 1/10 (the residual solve is a replay-verified legal
+move — an equivalence rewrite that IS an engine child; kept, the
+gate is honest). Equivalence validity stays REPORTED as a
+diagnostic (the R1a 11% anchor), never as the solve criterion.
+Registered lines (P-TRAINS/P-NULL thresholds) carry over
+unchanged onto the corrected criterion. No arm had fired; the
+verdict, when booked, uses only the corrected gate. Kin: the
+verified-AND-distinct doctrine ("the oracle accepts X=>X"),
+now extended — the oracle also accepts X<=>Y both ways; DIRECTION
+needs the mint, not the checker.
