@@ -38,7 +38,7 @@ sys.path.insert(0, ".")
 sys.path.insert(0, "scripts")
 
 
-def rev_gate_eval(model, tok, dev, n=None):
+def rev_gate_eval(model, tok, dev, n=None, mode="start"):
     """Reverse gate: solves per level + per-candidate equivalence %.
 
     Same shape as G.gate_eval's return so fences transfer:
@@ -78,6 +78,34 @@ def rev_gate_eval(model, tok, dev, n=None):
                     skipped += 1
                     continue
                 s = f"Integral({sp.sstr(p._expr)}, x)"
+                if mode == "poststep":
+                    # D1b (PRE-REG TENET-R0-REV-B): prompt with the
+                    # first ENCODABLE engine child of the band
+                    # integral — an in-distribution input for a
+                    # reverse model (chain starts occur only as
+                    # reversed TARGETS; AMENDMENT R0-REV-DIST).
+                    from llmopt.search.derivation import (
+                        State, successors)
+                    try:
+                        kids = list(successors(
+                            State(sp.sympify(s)), use_macros=True))
+                    except Exception:
+                        skipped += 1
+                        continue
+                    s2 = None
+                    for _, k_ in kids:
+                        cs = sp.sstr(k_.expr)
+                        try:
+                            tok.encode(f"Current: {cs}\n"
+                                       f"Hints: none\nStep: ")
+                            s2 = cs
+                            break
+                        except ValueError:
+                            continue
+                    if s2 is None:
+                        skipped += 1
+                        continue
+                    s = s2
                 s_norm = s.replace(" ", "")
                 prompt = tok.encode(
                     f"Current: {s}\nHints: none\nStep: ")
@@ -136,7 +164,8 @@ if __name__ == "__main__":
     model.load_state_dict(torch.load(CKPT, map_location="cpu",
                                      weights_only=True))
     model.eval()
-    solves, valid = rev_gate_eval(model, tok, dev)
-    print(f"[revgate] {CKPT}: {solves} = "
+    mode = os.environ.get("MODE", "start")
+    solves, valid = rev_gate_eval(model, tok, dev, mode=mode)
+    print(f"[revgate] {CKPT} mode={mode}: {solves} = "
           f"{sum(solves.values())}/120 @ {valid:.2f}% per-cand valid",
           flush=True)

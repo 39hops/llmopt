@@ -21047,3 +21047,33 @@ on Artin's call. FENCES: probe n=40, one seed, unregistered
 (direction only, never promoted past a diagnostic); child choice =
 first encodable engine child (Subs-form children skipped —
 vocab(40) cannot encode them, counted at probe time).
+
+## PRE-REG TENET-R0-REV-B: the in-distribution reverse gate (D1b) — does the reversed-token twin's backward emission survive a registered 120-problem reading? (2026-08-06, Mac)
+
+Reopens the R1b question per AMENDMENT TENET-R0-REV-DIST (Artin's
+call, 2026-08-06 morning). INSTRUMENT D1b: rev_gate_eval in
+poststep mode — for each of the 120 forward-gate band seeds
+(GATE_BAND + 1000*lv + i, levels 3-7, 24/level), apply ONE forward
+engine move to the band integral (successors, use_macros; first
+ENCODABLE child under vocab(40), Subs-form children skipped and
+counted), prompt = the child, B=8 samples, solved = any
+verified-AND-distinct candidate with the child a legal engine
+member of successors(candidate) — the same replay mint criterion as
+D1; equivalence % reported as diagnostic only. Both existing
+checkpoints read, same seeds, same device (Mac/mps):
+  rev-cert (sha 0d5ece326ba989bf) — the arm.
+  fwd-cert (sha 272e47d2c906c968) — the paired control.
+REGISTERED LINES:
+P-TRAINS-B: rev-cert >= 12/120 AND >= 7 solves over fwd-cert —
+  backward emission is REAL at micro scale in-distribution; R1b
+  reopens formally: D3 (budget accountant, the R8 defect fix)
+  becomes the next build, then R1b-micro pre-registers.
+P-NULL-B: rev-cert < 12 or within 7 of fwd-cert — the 6/40 probe
+  was noise/L3-only; R1b stays CLOSED and the battery proceeds to
+  W1 only.
+PRIOR: unregistered probe read rev 6/40 v fwd 1/40 (L3-heavy) on
+n=8/level; this gate is the same design at full n with the
+registered thresholds. FENCES: one seed pair; single-ply; child
+choice deterministic (first encodable engine child) — a different
+child rule is a different gate; certified-subset diet caveat
+carries over.
