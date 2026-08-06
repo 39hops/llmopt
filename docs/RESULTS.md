@@ -21105,3 +21105,34 @@ first-encodable-child prompt rule (a different child rule is a
 different gate); certified-subset diet; err-class emissions remain
 2x the control's (286 v 141) — trained backward emission is still
 malformed-heavy.
+
+## PRE-REG TENET-W1: direction from weights — can a reader classify forward v reverse crystals from FFN gate weights alone? (2026-08-06, 3080)
+
+Rung W1 per the battery spec; population = the 2026-08-06 3080
+build (paired sym_birth d64/L8/FFN256/H4 births on the D2-certified
+diets, 2 epochs, seeds 1..50, data/w1_population_manifest.jsonl,
+one device throughout — born AND read on the 3080; the Mac
+R0-rev pair stays OUT of every split). INSTRUMENT:
+scratch/tenet_w1_bridge.py — one token per sampled FFN gate neuron
+(32/block x 8 blocks, 64-wide rows + block-id embedding), 104,770-
+param 2-layer transformer reader, neuron RESAMPLING per epoch as
+the permutation augmentation (the 2026-07-06 measured basis; the
+reader CLASSIFIES, never compares — no weight-distance scoring).
+SPLIT: 10 held-out pairs by seed, pairs never straddle
+(string-seeded draw w1-split-1); eval = 16-vote majority over
+fresh neuron samplings, 20 subjects.
+PRIOR: TENET-W0's registered consequence — weight features are
+direction-specific at toy scale, so this classifier is EXPECTED
+to succeed; a null here is therefore the SURPRISING outcome and
+books loud.
+REGISTERED LINES (20 eval subjects, chance 10):
+P-DIRECTION: >= 15/20 correct — direction is readable from gate
+  weights; W-side of the battery gets its first positive.
+P-NULL: <= 13/20 — forward and reverse crystals are weight-
+  indistinguishable to this reader; books beside "experts share
+  nothing in weight space" and CONSTRAINS what W0's
+  direction-specificity meant.
+14/20 books UNRESOLVED explicitly (no direction claimed).
+FENCES: one classifier seed; one population recipe (2-epoch
+births); features are FFN GATE tensors only — attention/embedding
+readers are different instruments; 50-pair scale.
