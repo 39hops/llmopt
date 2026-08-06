@@ -20872,3 +20872,27 @@ is (necessary, not sufficient; two anomalies open). GT-5c's
 R-EMISSION third reading is REOPENED, not resolved: whether verbal
 experts restore emission or computation is untested and now the
 sharpest open question under the verbal-necessity finding.
+
+## VERDICT TENET-W0: the null fires — inverse-twin accuracy 0.139 (chance 0.167); weight features are DIRECTION-SPECIFIC at toy scale (2026-08-05, 3080/WSL CPU)
+
+Pre-reg: TENET-W0. Receipts: jobs/tenetw0.log on the 3080 (rc=0,
+2354s). Sanity gate PASSED: forward held-out 0.866 (certified arm
+0.884; cross-device recipe reproduction — not a paired comparison).
+Eligibility: sin 52 / poly2 4 (ineligible) / poly3 94 / gauss 0
+(ineligible, as geometry demands) / abslin 99 / tanh 100.
+
+P-DIRECTIONAL (the null) FIRES: 0.139 over 345 eligible twins —
+the forward-trained reader does not recognize inverse twins;
+per-family: poly3 0.000, tanh 0.000, abslin 0.121, sin 0.692.
+The sin outlier is flagged, not celebrated: sin twins that pass
+FIT_TOL are near-monotone small-b draws whose numerical inverse is
+still sinusoid-shaped — resemblance, not transfer (a targeted
+check would regress accuracy on |b|; not run, named).
+REGISTERED CONSEQUENCE (from the pre-reg): the clean negative
+CONSTRAINS W1 — if weight features are direction-specific, a
+direction CLASSIFIER (forward vs reverse crystal) is expected to
+succeed. W1's prediction is now sharpened before its birth
+population exists.
+FENCES: function-inverse analogy probe (transfers a question,
+never a conclusion — registered); one seed; toy scale; 4/6
+families eligible.
