@@ -275,7 +275,7 @@ VERDICT](RESULTS.md#L10676).)
   transfer; the registered consequence is that a direction classifier
   over forward and reverse crystals is now expected to succeed.
   Function-inverse analogy probe — it transfers a question, never a
-  conclusion. ([VERDICT TENET-W0](RESULTS.md#L20899).)
+  conclusion. ([VERDICT TENET-W0](RESULTS.md#L20876).)
 
 Where axiom is the replication route below, it means an independent
 implementation in another language and runtime, sharing no code with what it
@@ -781,7 +781,7 @@ sessions under one operator, not independent investigators. Read
   spread. The verbal population IS load-bearing (necessary, not
   sufficient); recall is not the organizing variable either.
   ([AMENDMENT MOE-GT-5c-SCOPE](RESULTS.md#L20860); [VERDICT
-  MOE-GT-6](RESULTS.md#L20780).)
+  MOE-GT-6](RESULTS.md#L20793).)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] Verbal-branch
   experts are necessary for resurrecting masked mathematics
@@ -797,7 +797,7 @@ sessions under one operator, not independent investigators. Read
   seeds. One gate seed, two draws per bin, and the exploratory
   coverage correlations (verbal-only 0.755 against global recall
   0.532) carry no causal claim beyond the registered exclusion
-  contrast. ([VERDICT MOE-GT-6](RESULTS.md#L20780).) One seed, three draws; the union
+  contrast. ([VERDICT MOE-GT-6](RESULTS.md#L20793).) One seed, three draws; the union
   mask's edge over the random band's mean is inside the draw spread
   and unresolved; the registered per-answer degeneracy count was not
   collected. ([VERDICT MOE-GT-5c](RESULTS.md#L20414).)

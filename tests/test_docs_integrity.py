@@ -51,7 +51,8 @@ REGIME_VALUES = (
     "calculus search", "closed-system math", "house crystals",
     "at-capacity house crystals", "specified diet and recipe",
     "deterministic integer battery", "tested MoE recipes",
-    "measured deployment artifacts", "Qwen2.5-0.5B")
+    "measured deployment artifacts", "Qwen2.5-0.5B",
+    "toy weight-space subjects")
 
 
 def _anchors():
