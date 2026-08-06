@@ -25,6 +25,18 @@ this morning); W1 still needs the reader-shape bridge (HIDDEN=16
 tokenizer v d64/L8 crystals — reviewer scan 2026-08-06) before it
 can pre-register.
 
+STATUS 2026-08-06 midday: D3 BUILT (tenet_d3_budget.py +
+regression tests — the R8 overdraft shape now refuses). W1 DONE —
+population 50/50 pairs clean; bridge built (tenet_w1_bridge.py);
+VERDICT TENET-W1: the null fires AGAINST W0's expectation (eval
+10/20 chance, train never fits) and the randinit control rider
+reads 20/20 — a real no-signal finding: direction lives in
+function (R0-REV-B: 24 v 1), not in sampled gate geometry. The
+battery's remaining live rung: R1b-micro (both gates satisfied —
+R0-REV-B positive + D3 built; pre-registers on its own, every
+wave through charge(), length-only ranker mandatory). Deferred
+weight-generation rungs unchanged.
+
 Promotes the temporal-pincer bank to a house battery (GLOSSARY:
 battery/rung). Riff provenance: RIFF-LEDGER "The TENET battery" +
 "Closed-loop pincer" (Artin, 2026-08-05). Spec inputs: one reviewer

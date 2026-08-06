@@ -21165,3 +21165,21 @@ subjects, so "no signal" and "reader too weak for crystals" are
 not yet separated; a trained-v-random-init control (trivially
 separable if the reader works at all) runs as the immediate
 follow-up diagnostic and books as a rider.
+
+## RIDER on VERDICT TENET-W1: the reader-capability control PASSES — trained-v-random-init reads 20/20 with train accuracy 1.000 under identical split/votes, so the W1 null is a real no-signal finding, not a weak instrument (2026-08-06, 3080)
+
+CONTROL=randinit per the verdict's instrument fence: class 1
+swapped to fresh random-init gates (same d64/L8/FFN256
+architecture, torch.manual_seed(10000+seed)), everything else
+identical — same reader, same split w1-split-1, same 16-vote eval.
+  EVAL 20/20 = 1.000; train 1.000 from epoch 20.
+READ: the 104,770-param neuron-token reader separates crystal-
+shaped subjects perfectly when a signal exists in sampled gate
+rows. The W1 null therefore hardens: forward and reverse crystals
+— functionally distinct at 24-v-1 on the reverse gate — carry NO
+direction signal in FFN gate weights that this reader class can
+find, even at train time. Direction lives in function, not in
+sampled gate geometry, at this scale and feature choice. FENCES
+carry over from the verdict (gate tensors only; one classifier
+seed; trained-v-random is an EASY control — it bounds
+reader-works-at-all, not reader-finds-every-subtle-signal).

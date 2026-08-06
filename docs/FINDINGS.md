@@ -289,6 +289,19 @@ VERDICT](RESULTS.md#L10676).)
   a non-monotone level-local hole, named and open. ([VERDICT
   TENET-R0-REV](RESULTS.md#L20984); [VERDICT
   TENET-R0-REV-B](RESULTS.md#L21081).)
+- [NULL] [REGIME-SCOPED: specified diet and recipe] Direction is not
+  readable from crystal FFN gate weights: over 50 forward/reverse
+  birth pairs a neuron-token reader scores exact chance on held-out
+  pairs and never fits the training labels, while the same reader
+  under the same split separates trained-from-random-init 20/20 —
+  a no-signal finding, not a weak instrument. The null fires
+  against the toy-scale expectation the W0 rung registered, and it
+  sits opposite the function-side measurement: the same pairs
+  differ 24-to-1 on the reverse gate. Direction lives in function,
+  not sampled gate geometry, at this scale and feature choice.
+  Gate tensors only; one classifier seed; 2-epoch births.
+  ([VERDICT TENET-W1](RESULTS.md#L21140); control rider
+  [RESULTS.md#L21169](RESULTS.md#L21169).)
 
 Where axiom is the replication route below, it means an independent
 implementation in another language and runtime, sharing no code with what it
