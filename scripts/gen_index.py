@@ -12,7 +12,8 @@ import ast
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DIRS = ["scripts", "scratch", "llmopt", "llmopt/train", "llmopt/search"]
+DIRS = ["scripts", "scratch", "llmopt", "llmopt/lab", "llmopt/train",
+        "llmopt/search"]
 
 
 def sig(fn: ast.FunctionDef) -> str:

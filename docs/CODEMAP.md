@@ -378,14 +378,14 @@ Census: UNCITED 158, library 131, reproduce-pinned 9, results-cited 102, spec-ci
 | bench | bench_stacked.py | UNCITED | — | — |
 | bench | bench_static.py | UNCITED | — | — |
 | bench | bench_step_diversity.py | results-cited | RESULTS×1 | — |
-| bench | bench_step_tokens.py | library | RESULTS×2, specs×6 | 61 |
+| bench | bench_step_tokens.py | library | RESULTS×2, specs×6 | 63 |
 | bench | bench_stitch_poc.py | results-cited | RESULTS×1 | — |
 | bench | bench_syndrome_head.py | UNCITED | — | — |
 | bench | bench_syndrome_policy.py | library | — | 1 |
 | bench | bench_temp_race.py | UNCITED | — | — |
 | bench | bench_tree_verify.py | UNCITED | — | — |
 | bench | bench_triton_kernels.py | library | — | 1 |
-| bench | bench_verify_fast.py | library | specs×2 | 43 |
+| bench | bench_verify_fast.py | library | specs×2 | 45 |
 | bench | bench_vge.py | spec-cited | specs×1 | — |
 | bench | bench_weight_anatomy.py | results-cited | RESULTS×1 | — |
 | bench | bench_zx.py | results-cited | RESULTS×1 | — |

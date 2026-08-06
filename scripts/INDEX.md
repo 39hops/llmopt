@@ -2680,6 +2680,23 @@ Validation and decoding for committed gravmoe training windows.
 
 - `load_contiguous_windows(windows_path: Path, contract_path: Path, sequence_length: int) -> list[list[int]]` — Load ``tok[T] ++ tgt[T]`` records as contiguous ``T+1`` rows.
 
+## llmopt/lab/
+
+### llmopt/lab/__init__.py
+llmopt.lab — permanent instruments, adopted from the scripts that proved them (spec 2026-08-05-llmopt-lab-extraction.md; CODEMAP is the move gate). Adoption law: function bodies are VERBATIM copies of their source scripts, guarded by source-identity + behavior tests (tests/test_lab_adoption.py); the originating scripts stay frozen — they are the record booked verdicts cite. New code imports from here; existing scripts migrate only with a re-verified pass.
+
+
+### llmopt/lab/gen.py
+lab.gen — fork-isolated problem generation, ADOPTED VERBATIM from scripts/bench_step_tokens.py (2026-08-06; that file stays frozen — it backs the step-token race verdicts). The function body is character-identical to the source; guarded by tests/test_lab_adoption.py. Fix a bug here and there in the SAME commit, or the guard fails.
+
+- `_gen_isolated(level: int, seed: int, wall: int=45)`
+
+### llmopt/lab/verify.py
+lab.verify — the fast wave-verifier, ADOPTED VERBATIM from scripts/bench_verify_fast.py (2026-08-06; that file stays frozen — it backs the parity bench and every verdict that cites it). Function bodies below are character-identical to the source; guarded by tests/test_lab_adoption.py (source-identity + behavior parity). Fix a bug here and there in the SAME commit, or the guard fails.
+
+- `_wave_worker(prev_s: str, cands: list[str], q) -> None` — One fork verifies a whole wave; verdicts streamed per candidate
+- `verify_wave(prev_s: str, cands: list[str], wall: int=20) -> dict[str, tuple[bool, bool]]` — Levers 1+2: cache, then one streamed fork for the misses.
+
 ## llmopt/train/
 
 ### llmopt/train/__init__.py
