@@ -1,0 +1,12 @@
+{"seed": 1234, "frac": 0.5, "idx": 0, "level": 1, "ok": true, "parsed": true, "gen_len": 25, "recall": 0.913}
+{"seed": 1234, "frac": 0.5, "idx": 1, "level": 1, "ok": true, "parsed": true, "gen_len": 24, "recall": 0.9132}
+{"seed": 1234, "frac": 0.5, "idx": 2, "level": 1, "ok": false, "parsed": true, "gen_len": 36, "recall": 0.9203}
+{"seed": 1234, "frac": 0.5, "idx": 3, "level": 2, "ok": false, "parsed": true, "gen_len": 27, "recall": 0.9214}
+{"seed": 1234, "frac": 0.5, "idx": 4, "level": 2, "ok": true, "parsed": true, "gen_len": 24, "recall": 0.9124}
+{"seed": 1234, "frac": 0.5, "idx": 5, "level": 2, "ok": true, "parsed": true, "gen_len": 79, "recall": 0.9195}
+{"seed": 1234, "frac": 0.5, "idx": 6, "level": 3, "ok": true, "parsed": true, "gen_len": 28, "recall": 0.9174}
+{"seed": 1234, "frac": 0.5, "idx": 7, "level": 3, "ok": true, "parsed": true, "gen_len": 30, "recall": 0.9149}
+{"seed": 1234, "frac": 0.5, "idx": 8, "level": 3, "ok": true, "parsed": true, "gen_len": 64, "recall": 0.9142}
+{"seed": 1234, "frac": 0.5, "idx": 9, "level": 1, "ok": true, "parsed": true, "gen_len": 18, "recall": 0.9211}
+{"seed": 1234, "frac": 0.5, "idx": 10, "level": 1, "ok": false, "parsed": false, "gen_len": 22, "recall": 0.9024}
+{"seed": 1234, "frac": 0.5, "idx": 11, "level": 1, "ok": true, "parsed": true, "gen_len": 47, "recall": 0.9193}

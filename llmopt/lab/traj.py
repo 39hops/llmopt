@@ -1,11 +1,14 @@
 """lab/traj — unified MoE router instrument (module 4; DESK TIER ONLY).
 
-STATUS 2026-08-06: divergence enumeration ONLY. No unification code
-exists yet — per spec 2026-08-06-lab-traj-session.md the authority
-table below must be settled from the actual three-way diff BEFORE any
-code is written, because this module fails the verbatim-adoption test
-that made oracle/config/keepsets safe: it unifies three DIVERGENT
-copies, which is design, not copy.
+STATUS 2026-08-06 (same-day update): desk tier + unification DONE —
+the divergence/authority table below was settled from the actual
+three-way diff FIRST, then `patch_moe_router` was written strictly
+against it (synthetic parity battery vs the frozen scratch
+instruments in tests/test_lab_traj.py). This module fails the
+verbatim-adoption test that made oracle/config/keepsets safe — it
+unifies three DIVERGENT copies — which is why the table precedes the
+code. Resident-model tiers (D0 regression, live 3a/3b) per the spec's
+acceptance ladder.
 
 The three source copies (frozen evidence record; do not edit):
 

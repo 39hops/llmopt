@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 157, library 133, reproduce-pinned 9, results-cited 101, spec-cited 39
+Census: UNCITED 157, library 133, reproduce-pinned 9, results-cited 102, spec-cited 39
 
 ## scratch/
 
@@ -121,7 +121,7 @@ Census: UNCITED 157, library 133, reproduce-pinned 9, results-cited 101, spec-ci
 | greedy | greedy_first_gate.py | library | — | 1 |
 | grpo | grpo_shaped.py | library | — | 1 |
 | gt2 | gt2_code_arm0.py | reproduce-pinned | REPRODUCE×1, RESULTS×1, specs×2 | — |
-| gt2 | gt2_jaccard.py | library | REPRODUCE×1, RESULTS×2, specs×3 | 8 |
+| gt2 | gt2_jaccard.py | library | REPRODUCE×1, RESULTS×3, specs×3 | 8 |
 | gt3 | gt3_probe_arm0.py | reproduce-pinned | REPRODUCE×1, RESULTS×2 | — |
 | gt4 | gt4_dialog_prompts.py | reproduce-pinned | REPRODUCE×1, RESULTS×2 | — |
 | gt4 | gt4_verbal_core.py | reproduce-pinned | REPRODUCE×1, RESULTS×3 | — |
@@ -160,8 +160,8 @@ Census: UNCITED 157, library 133, reproduce-pinned 9, results-cited 101, spec-ci
 | metabolic | metabolic_v3.py | UNCITED | — | — |
 | metabolic | metabolic_v4.py | UNCITED | — | — |
 | metabolic | metabolic_v5.py | library | — | 2 |
-| moe | moe_gt1.py | library | REPRODUCE×4, RESULTS×3, specs×4 | 4 |
-| moe | moe_gt1_arm2.py | library | REPRODUCE×6, RESULTS×5, specs×4 | 4 |
+| moe | moe_gt1.py | library | REPRODUCE×4, RESULTS×4, specs×4 | 5 |
+| moe | moe_gt1_arm2.py | library | REPRODUCE×6, RESULTS×6, specs×4 | 5 |
 | morning | morning_run.sh | UNCITED | — | — |
 | mps | mps_sigma_gates.sh | UNCITED | — | — |
 | muon | muon_3ep_d256.py | library | — | 1 |
@@ -283,6 +283,7 @@ Census: UNCITED 157, library 133, reproduce-pinned 9, results-cited 101, spec-ci
 | tier | tier_escalate.py | UNCITED | — | — |
 | tier | tier_retry.py | spec-cited | specs×1 | — |
 | train | train_fp64.py | UNCITED | — | — |
+| traj | traj_accept.py | results-cited | RESULTS×1 | — |
 | tuesday | tuesday_night.sh | UNCITED | — | — |
 | umoe | umoe_conserve.py | library | RESULTS×2 | 11 |
 | v4flash | v4flash_census.py | results-cited | RESULTS×1, specs×1 | — |
@@ -427,7 +428,7 @@ Census: UNCITED 157, library 133, reproduce-pinned 9, results-cited 101, spec-ci
 | markov | markov_prior.py | UNCITED | — | — |
 | mine | mine_highways.py | library | — | 1 |
 | mine | mine_prior_update.py | results-cited | RESULTS×1 | — |
-| moe | moe_router_stats.py | library | specs×2 | 4 |
+| moe | moe_router_stats.py | library | RESULTS×1, specs×2 | 4 |
 | plot | plot_neurons.py | UNCITED | — | — |
 | probe | probe_depth.py | results-cited | RESULTS×1 | — |
 | results | results_query.py | library | specs×8 | 1 |

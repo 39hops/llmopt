@@ -21350,3 +21350,79 @@ COST: 10 gated arms (8 ladder draws reused-novrb excluded + 4
 anomaly draws), ~2.5-4h Mac class. FENCES: one gate seed; 2
 draws/bin; tie-fill upper bounds travel; cross-domain claims out
 of scope.
+
+## VERDICT LAB-TRAJ: unified router instrument passes the full acceptance ladder — D0 bit-identity modulo the booked phase amendment; new fence: keepsets DROP_TAIL is v2-artifact-BOUND (2026-08-06, Mac)
+
+Module 4 of the lab extraction (spec 2026-08-06-lab-traj-session.md)
+closed same-day, all tiers in spec order. llmopt/lab/traj.py
+`patch_moe_router(model, traj=False, keep=None)` unifies the three
+divergent copies (scratch/moe_gt1.py, scratch/moe_gt1_arm2.py,
+scripts/moe_router_stats.py) — written strictly AGAINST the
+divergence/authority table (10 surfaces, settled from the actual
+three-way diff BEFORE any code, per the careful-session opener).
+Design decisions D-1 (traj+keep REFUSED, loud ValueError — no source
+copy ever ran the combination) and D-2 (live tier split 3a/3b) both
+Artin-nodded before implementation; spec updated in the same commit.
+
+ACCEPTANCE (driver scratch/traj_accept.py: the FROZEN scratch drivers
+run with ONLY `instrument` swapped for the lab patch — corpus, chat
+template, oracle path, and every row-write are the frozen code by
+import; outputs under logs/traj_accept/, no booked path touched):
+
+1. DESK (3685bbd): divergence enumeration + authority table in the
+   module docstring; only shared-line mutation across the three
+   copies is arm2's logits/masked-softmax split; recall probe tops
+   RAW LOGITS where gt1 tops softmaxed gates (monotone-equivalent,
+   kept verbatim per-surface — fp16 near-tie surface). The keep=None
+   path is the gt1 expression EXACTLY, not a zero-mask add (an extra
+   `logits + 0` fp op could flip D0 near-ties).
+2. SYNTHETIC (3688b45, tests/test_lab_traj.py): fake-MoE parity vs
+   the FROZEN scratch instruments in-process — traj rows
+   byte-identical (json.dumps), stats/first-touch/pos equal, recall
+   counters equal, outputs equal, restore contract exercised against
+   the realistic dirty state (gt1 never restores), refusal +
+   INSTRUMENT_NOT_RESTORED loudness. 4/4 first run; suite 481.
+3. TIER 3b (free, N_EVAL=8, TRAJ=1, seed 1234): frozen script vs
+   unified twin — TRAJ rows AND arm0 JSON byte-identical (cmp).
+   Receipts logs/traj_accept/{frozen,unified}_free8.jsonl.
+4. TIER 3a (masked, N_EVAL=12, FRACS=0.5, PERPROB=1, seed 1234,
+   certified arm0 keep-sets): gate 9/12 {1: 4, 2: 2, 3: 3} both,
+   closed recall 0.9162 (open 0.9272, gap 0.0111) both, per-problem
+   rows byte-identical (cmp), log rows equal on every compared key.
+   Receipts logs/traj_accept/{frozen,unified}_masked12*.jsonl.
+5. TIER 2 / D0 (full certified config, N_EVAL=120): gate 64/120
+   {1: 23, 2: 24, 3: 17} and mean tail 0.749 match the certified
+   artifact; 590,736 rows regenerated; 584,928 byte-identical to
+   frozen logs/opus/moe_gt1_traj_v2.jsonl and 5,808 rows (= 121
+   prompts x 48 layers, exactly the per-(prompt,layer) tail row)
+   differ ONLY in phase: "prompt_tail" (regenerated) vs "decode"
+   (frozen). PROVENANCE VERIFIED, not assumed: the v2 artifact was
+   written 08-04 13:37; the prompt_tail retag landed in 2c47630
+   (08-04 21:15, AMENDMENT GT2-REVIEW-2's instrument guards) —
+   the diff is the CODE-side amendment the artifact predates, and
+   tier 3b already proves the unified patch byte-matches the
+   current frozen script. Zero non-phase diffs (checked row by row).
+6. TIER 4 (keepsets loop-close): decode_counts over frozen-v2 with
+   DROP_TAIL=1 == regenerated-v3 with DROP_TAIL=0, counts BIT-EQUAL
+   and keep-sets equal — the two tail conventions are exactly
+   interconvertible on the same underlying rows.
+
+NEW INSTRUMENT FENCE (from tier 4's first failed form): DROP_TAIL=1
+is V2-ARTIFACT-BOUND. On a v3-tagged file the phase filter has
+already excluded the tail rows, so DROP_TAIL=1 then eats the first
+REAL decode row per (prompt, layer) — measured 46,080 picks (5,760
+rows x 8) wrongly dropped on the regenerated D0 file, shifting
+totals 258,003 vs the correct 261,989. Rule: v2 artifacts read with
+DROP_TAIL=1 (the booked default), v3-regenerated files with
+DROP_TAIL=0; never the default on a file containing phase=
+"prompt_tail". Code fix (auto-detection) deliberately NOT applied —
+keepsets is under the dual-copy source-identity guard with its
+frozen scratch original (gt2_jaccard.py); the fence books now, the
+v3-aware drop migrates only with a registered re-run per the scratch
+doctrine's package-improvement rule.
+
+Receipts (seedslad exception, small text only): the six tiny log-row
+/ per-problem receipt files under logs/traj_accept/ are force-added
+with this booking; the 128MB regenerated traj jsonl and the free8
+traj/arm0 artifacts stay untracked (regenerate via the driver).
+One-resident-30B held throughout; all runs sequential, Mac.
