@@ -21300,3 +21300,53 @@ ties); the desk cell is no longer citable as a number source.
 FENCES: gate-pair draw order for r60/r65 remains reconstructed,
 not certain (affects rank correlations at the ~0.01 level, not
 the per-arm values).
+
+## PRE-REG MOE-GT-7: the verbal-coverage ladder at FIXED recall — does coverage organize what recall could not? [HOLD: fires on Artin's GO] (2026-08-06, Mac)
+
+GT-6's inversion, run forward: recall was the variable and failed
+to organize; coverage was exploratory and is now honestly lensed
+(AMENDMENT MOE-GT-6-LENSES). Here coverage is the REGISTERED
+variable and recall the control.
+FROZEN ELEMENTS:
+1. LENS AUTHORITY: verbal-only coverage = the set-fraction
+   computed by scratch/gt7_coverage_rederive.py (vonly = prose&
+   dialog keep minus symbolic core; mean per-layer fraction), and
+   nothing else. No desk cells.
+2. LADDER: fixed global recall 0.72 +-0.01 (arm0 axis, never
+   mixed); verbal-coverage bins 0.00 / 0.15 / 0.30 / 0.45 (+-0.03
+   tolerance), 2 draws per bin, string-seeded fills tuned over
+   BOTH constraints (composition mix varies, recall pinned). The
+   0.00 bin is the existing novrb pair (reused, not redrawn).
+   Gate: moe_gt1_arm2 KEEPSET path, 120 problems, one gate seed.
+   BARS: P-COVERAGE fires iff 2-draw bin means are monotone
+   nondecreasing in coverage AND (top-bin mean - bottom-bin mean)
+   >= 14 (2x the sigma_diff~7 pair fence). P-NULL: non-monotone
+   means or delta < 7 — coverage does not organize either;
+   the residency story narrows to expert IDENTITY (the ladder's
+   widening-spread finding becomes the thread's center). Between
+   7 and 14 with monotone means: UNRESOLVED, direction only.
+   Draw spread is a finding, never averaged away.
+3. ANOMALY REPRO ARMS: r75_d0 (booked 16 at 0.430 verbal) and
+   r80_d0 (booked 9 at 0.538) re-drawn TWICE each with fresh
+   string seeds at their booked recall/coverage points — arm-level
+   phenomenon (replicates) v draw-level accident (vanishes).
+   Registered read: if fresh draws at r80's point score 30+, the
+   anomaly was draw identity, reinforcing identity-over-coverage.
+4. DEGENERACY READOUT: per-problem distinct-answer count across
+   the gate's samples, logged for EVERY arm — DESCRIPTIVE ONLY
+   (the GT-5c registered-but-uncollected readout, now collected;
+   no bar attaches to it this rung).
+5. ORACLE CONTRACT: the v3.2 boxed line-server path
+   (oracle_worker.py via check_isolated) with RSS watchdog;
+   timeouts book as failures; timeout census in the verdict.
+   One-resident-30B rule holds; no second model on the Mac.
+6. SURVIVAL MAP: P-COVERAGE -> coverage becomes the residency
+   design variable (paging respects verbal coverage). P-NULL ->
+   BOTH aggregate lenses (recall, coverage) are dead at fixed
+   recall; the thread narrows to expert-identity anatomy
+   (excluded-experts anatomy is the banked next) and R-EMISSION;
+   no GT-8 aggregate-lens ladder gets proposed.
+COST: 10 gated arms (8 ladder draws reused-novrb excluded + 4
+anomaly draws), ~2.5-4h Mac class. FENCES: one gate seed; 2
+draws/bin; tie-fill upper bounds travel; cross-domain claims out
+of scope.
