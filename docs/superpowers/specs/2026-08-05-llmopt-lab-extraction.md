@@ -24,7 +24,7 @@ hand-rolled jsonl append sites.
 - F2: scratch/gt2_jaccard.py binds FRAC/GATE_ONLY/DROP_TAIL at
   IMPORT time — env set after import is silently ignored. Make
   call-time parameters with env defaults.
-- F3: llmopt/mathgen/evaluate.py:71 calls p.check unboxed on model
+- F3: llmopt/mathgen/evaluate.py:78 calls p.check unboxed on model
   text IN LIBRARY CODE — the pathology-#7 call site. Route through
   lab.oracle when it exists; until then, a docstring warning.
 

@@ -2353,13 +2353,13 @@ Synonym gauge test: TWO label tokens per family on the frozen 19M readout (vocab
 ### scratch/tenet_d1_revgate.py
 TENET D1: THE REVERSE GATE (spec 2026-08-05-tenet-battery.md).
 
-- `rev_gate_eval(model, tok, dev, n=None)` — Reverse gate: solves per level + per-candidate validity %.
+- `rev_gate_eval(model, tok, dev, n=None)` — Reverse gate: solves per level + per-candidate equivalence %.
 
 ### scratch/tenet_d2_revdiet.py
 TENET D2: the certified reversed diet + exclude-union semantics (spec 2026-08-05-tenet-battery.md).
 
 - `worker_main()` — Line server: json [cur, nxt] per line -> status.
-- `class Replayer` (start, send, poll, kill)
+- `class Replayer` (start, send, poll, check_sync, kill)
 - `gate_band_exprs()`
 - `main()`
 
@@ -2368,6 +2368,12 @@ TENET W0: is reverse structure visible in weights? (pre-reg TENET-W0, 2026-08-05
 
 - `_fit_xy(x_in, y_out, torch_seed)` — The subjects._fit loop on arbitrary (input, output) data —
 - `make_inverse_twin(family, i, seed)` — Fit an MLP to the axis-swapped data of a fresh draw from
+- `main()`
+
+### scratch/tenet_w1_population.py
+TENET W1 population build (spec 2026-08-05-tenet-battery.md, W1 prerequisite; Artin GO 2026-08-06, 3080 window into 17:00 EST).
+
+- `birth(seed, direction)`
 - `main()`
 
 ### scratch/ternary_control.py
