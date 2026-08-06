@@ -137,3 +137,17 @@ delta; the 0.769 Spearman) — directions only. Charter clean
 (math/physics/q-circuits, re-affirmed). Plain technical language.
 Cross-device comparisons stay forbidden; the deterministic integer
 battery pools only within itself.
+
+STATUS 2026-08-06 CLOSE: R1b-micro RAN and the battery is CLOSED
+on the pincer claim — VERDICT TENET-R1B-MICRO: all three arms
+identical 60/120 at honestly-matched budget; mechanism = CHOICE
+SCARCITY (rankable moments on 8/120 problems; ranking flipped 0
+outcomes). Second bar failure (R8 the first); no R2/R3. Revival
+fence banked in the verdict: measure verified-candidate
+multiplicity FIRST. The battery's yield: 3 nulls (W0, R0-rev
+scoped, W1 control-hardened), 1 positive (R0-REV-B: backward
+emission real, prompt-distribution-local), 4 permanent
+instruments (D1/D1b gate, D2 certifier + exclude-union law, D3
+accountant, W1 bridge+control protocol), 2 standing fences
+(gen-4 first-ply exposure; direction-needs-the-mint), and the
+function-v-gate-geometry dissociation as the open puzzle.

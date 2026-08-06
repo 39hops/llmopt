@@ -21232,3 +21232,36 @@ oracle calls are NOT in the token ledger (verification is the
 shared referee, identical across arms — only model tokens are
 budgeted); B_TOK=6000 chosen as ~2x the observed single-pass
 chain cost, giving every arm real re-roll headroom.
+
+## VERDICT TENET-R1B-MICRO: the bar fails a second time and the battery CLOSES — all three arms read an IDENTICAL 60/120, and the ledger shows why: the forward proposer offers a rankable choice on only 8/120 problems (2026-08-06, Mac)
+
+Per PRE-REG TENET-R1B-MICRO, all arms as registered (fwd sha
+272e47d2c906c968, rev sha 0d5ece326ba989bf, B_TOK=6000/problem,
+real token counts, refusal-not-shrink).
+  F  {3: 21, 4: 7, 5: 13, 6: 7, 7: 12} = 60/120, 381,084 tokens
+  FR {3: 21, 4: 7, 5: 13, 6: 7, 7: 12} = 60/120, 381,655 tokens
+  LR {3: 21, 4: 7, 5: 13, 6: 7, 7: 12} = 60/120, 381,084 tokens
+FR - max(F, LR) = 0 < 7: P-NULL FIRES. MECHANISM (from the
+streamed ledgers, not conjecture): rev_score debits are nonzero on
+only 8/120 problems (1,068 tokens total) — at d64/B=8/temp 0.7, a
+wave almost never yields TWO distinct verified candidates, so the
+closed loop's intervention surface barely exists; per-problem
+spend is byte-identical to F on 112/120 problems and the three
+arms walk the same trajectories. Zero problems differ in outcome
+between any pair of arms. READ: the pincer claim dies at this
+scale not because reverse scoring ranks badly but because there
+is nothing to rank — CHOICE SCARCITY is the binding constraint,
+upstream of ranking quality. The bar has now failed twice (R8:
+5.7x tokens for +1 with the meet never firing; R1b-micro: exact
+tie at honestly-matched budget with the loop starved of
+branching). CONSEQUENCE (registered): the TENET battery CLOSES on
+the pincer claim — no R2/R3 at this scale. Revival requires a new
+riff-level case naming how the choice surface gets wide (bigger
+B, hotter sampling, or a proposer whose verified-candidate
+multiplicity is measured FIRST — banked as a fence, not a rung).
+NOTE the baseline: 60/120 budget-limited with re-rolls v the
+plain gate's 44/120 — the re-roll headroom itself bought +16,
+consistent with the re-roll-luck class R8 named.
+FENCES: one seed pair; certified-subset diet; single device;
+the 8 rankable problems are too few to read a within-subset
+direction (0 outcome flips).
