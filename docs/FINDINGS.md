@@ -276,6 +276,19 @@ VERDICT](RESULTS.md#L10676).)
   over forward and reverse crystals is now expected to succeed.
   Function-inverse analogy probe — it transfers a question, never a
   conclusion. ([VERDICT TENET-W0](RESULTS.md#L20876).)
+- [SINGLE-SEED] [FREE-RUN-GATED]
+  [REGIME-SCOPED: specified diet and recipe] Backward emission at
+  micro scale is prompt-distribution-local — null on the chain-start
+  reverse gate (0/120, where the forward control also reads 0) and
+  24/120 on the post-step gate against a 1/120 forward control, one
+  reversed-token twin, both gates replay-scored at the engine mint.
+  The two readings are one finding and do not separate: the twin
+  trains in loss exactly like its forward twin, emits nothing at
+  prompt shapes it only ever saw as targets, and emits real
+  predecessors one step in. L4 reads 0/24 while L3 and L5 score —
+  a non-monotone level-local hole, named and open. ([VERDICT
+  TENET-R0-REV](RESULTS.md#L20984); [VERDICT
+  TENET-R0-REV-B](RESULTS.md#L21081).)
 
 Where axiom is the replication route below, it means an independent
 implementation in another language and runtime, sharing no code with what it
