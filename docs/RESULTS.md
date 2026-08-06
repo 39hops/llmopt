@@ -21599,3 +21599,39 @@ exist BEFORE launch (mkdir via a separate run call). Receipts:
 logs/w1s/ pulled to the Mac (small text, force-added).
 FENCES: one split seed; toy scale (d64/L8 sym_birth population);
 one device (3080); classifier readout, binomial bars.
+
+## PRE-REG EX-ANAT-1: the identity swap — does capability FOLLOW a demand-ranked k=4 class-preserving exchange between matched-bin draws? (2026-08-06, Mac)
+
+IDENTITY battery rung 1 (spec 2026-08-06-identity-battery.md,
+frozen design a-d; Artin GO — machine corrected to Mac, the 30B
+vehicle). Subjects: GT-7's own bin pairs at matched recall AND
+matched verbal coverage — c15 hi=53/lo=15, c30 hi=54/lo=5, c45
+hi=46/lo=10 (dicts booked in VERDICT MOE-GT-7). Swap: symmetric,
+class-preserving, k=4 per layer per class, ranked by arm0 demand
+count (ties ascending id) — builder scratch/ex1_swap.py, all six
+swapped sets built and asserted in band BEFORE this pre-reg fires:
+recalls 0.7120-0.7212 (band +-0.01 of 0.72), coverage EXACTLY
+invariant per bin (0.1492/0.3016/0.4498), 382/384/384 experts
+exchanged per pair. Gate: frozen arm2 KEEPSET path via
+scratch/gt7_run.py (ARMS env), 120 problems seed 1234, one model
+load, one-resident, oracle v3.2, timeouts book as failures.
+
+READOUT per pair: D = (G_lo' - G_lo) + (G_hi - G_hi') — the low
+draw's gain plus the high draw's loss (positive D = capability
+moved WITH the swapped identity set).
+BARS: P-FOLLOW fires iff pooled D >= 28 across the three pairs
+AND >= 2/3 pairs have BOTH components positive (hi falls, lo
+rises) -> the demand-ranked exclusives carry capability; the
+bisection ladder (k=2, then 1) becomes the named follow-up.
+P-THIN fires iff pooled |D| <= 21 with no 2/3 directional
+consistency -> the top-4-by-demand exclusives do NOT carry it
+(consistent with the grounded demand-thin finding); the k=8 arm
+(bisection DOWN per spec design d) is the named follow-up, new
+pre-reg. Between 21 and 28 pooled, or mixed signs: UNRESOLVED,
+direction booked only. Draw spread is a finding, never averaged.
+DEGENERACY RIDER (descriptive): distinct-answer census per arm,
+free from the gt7_run driver — feeds R-EMISSION.
+FENCES: [FORMAT-BOUND] [REGIME-SCOPED: measured deployment
+artifacts]; one gate seed; the swapped sets are DERIVED from the
+frozen GT-7 draws (paired comparison, no new randomness beyond
+the frozen swap rule); mathgen L1-3 only.
