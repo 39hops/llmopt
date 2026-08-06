@@ -2782,3 +2782,25 @@ pooling winners was his call).
   + the REVERSE GATE build, the program's highest-value cheap
   instrument) -> W1 (direction-from-weights, needs a birth
   population) -> R1b-micro (the alternation, gated behind R0-rev).
+
+- **Instruments IN the library (llmopt.lab)** (Artin, 2026-08-05
+  night: "init one and boom it logs... logging more standard...
+  failures aren't silent"): promote the hard-won scratch instrument
+  patterns into llmopt/ proper — config-driven init, standard jsonl
+  logging, and the LOUD-FAILURE CONTRACT as the design center:
+  every timeout/crash/anomaly gets a typed, printed, counted event
+  (the ORACLE-BOX 1-4 lesson, the rjob design, axiom's
+  budget-expiry fix — same law three times in one day: an abort
+  must never become invisible state). Candidate modules: lab/oracle
+  (the boxed subprocess check), lab/gate (config-driven gate
+  runner), lab/traj (router instrumentation), lab/keepsets
+  (decode_counts/keep/coalition algebra), extending the existing
+  llmopt.runlog seed. FENCE named at bank time: certified
+  instruments (TRAJ v3, gt2_jaccard DROP_TAIL) must reproduce
+  BYTE-IDENTICALLY through any extraction — regeneration tests
+  before migration, and booked verdicts keep citing the frozen
+  scratch files they ran on (the lab-notebook argument). Survey
+  seat dispatched same-night; extraction is a PLANNED project
+  (spec, then Fable implements), not a live refactor. Attribution:
+  Artin (library framing + standard-logging ask), house
+  (loud-failure contract + migration fences).
