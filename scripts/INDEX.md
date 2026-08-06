@@ -1263,6 +1263,14 @@ CHAIN-CARRY ABLATION (Artin's carry hypothesis, spec'd 2026-07-21): same content
 *(no docstring)*
 
 
+### scratch/churn_judge_eval.py
+CHURN-JUDGE-1 fit/eval (committed so the booked verdict is re-derivable — it was a desk computation on 2026-08-04).
+
+- `load()`
+- `dataset(crest, full, seeds)`
+- `auc(score, y)` — Rank-sum AUC: P(score(pos) > score(neg)).
+- `main()`
+
 ### scratch/clade_stream_d256.py
 Clade-gated streaming pilot, arm G (pre-reg 2026-07-26).
 
@@ -1694,10 +1702,45 @@ MOE-GT-2 arm D3: CODE arm-0 — decode-only demand log on the codegen ladder (pr
 ### scratch/gt2_jaccard.py
 MOE-GT-2 coalition Jaccard analysis (D2/D3 readouts, committed post-hoc so the booked numbers are re-derivable — they were desk computations in-session on 2026-08-04).
 
-- `decode_counts(path, pred=lambda r: True)`
-- `keep(counts, n=128, top_k=8)`
+- `_traj()` — TRAJ log paths, env-overridable per domain (TRAJ_MATH etc.).
+- `_frac(frac=None)`
+- `_flag(name, default, value=None)`
+- `decode_counts(path, pred=lambda r: True, gate_only=None, drop_tail=None)` — DROP_TAIL=1 (default) drops the FIRST decode-phase row per
+- `keep(counts, n=128, top_k=8, frac=None)`
 - `jmean(ka, kb)`
 - `coverage(demand, kp)` — Count-weighted fraction of `demand` routed inside keep-set kp.
+- `main()`
+
+### scratch/gt3_probe_arm0.py
+MOE-GT-3 arm-0: demand log over an arbitrary prompt list (pre-reg MOE-GT-3, 2026-08-05 — the base-class discriminators).
+
+- `main()`
+
+### scratch/gt4_dialog_prompts.py
+MOE-GT-4 corpus: the SECOND verbal corpus (dialogue/QA register).
+
+- `main()`
+
+### scratch/gt4_verbal_core.py
+MOE-GT-4 readouts: does the verbal branch have its own core?
+
+- `main()`
+
+### scratch/gt5_union_keep.py
+MOE-GT-5 keep-set: per-layer UNION of the two branch cores.
+
+
+### scratch/gt5c_randfill_keep.py
+MOE-GT-5c keep-sets: symbolic core + RANDOM non-core fill, matched per-layer to the union mask's exact sizes.
+
+
+### scratch/gt6_recall_ladder.py
+MOE-GT-6 keep-sets: the recall ladder + the verbal-excluded arm.
+
+- `recall(keep)`
+- `build(k_fill, rng, pool_fn)`
+- `tune(target, seed_tag, pool_fn, k_max=91)` — Search the per-layer fill count whose drawn keep-set lands
+- `dump(keep, r, k, name)`
 - `main()`
 
 ### scratch/head_autopsy.py
@@ -1860,6 +1903,8 @@ MOE-GT-1 arm 2: residency replay at 50% / 25% / 12.5% (pre-reg 2026-08-03).
 - `keep_sets_from_counts(counts, frac, top_k)` — Per-layer keep-sets at fraction `frac`. RULE env selects the
 - `open_loop_recall(counts, keep)` — Count-weighted fraction of arm-0 TRUE demand inside the keep-set.
 - `instrument(model, keep)` — Class-patch: masked routing (kept experts only) + closed-loop
+- `_oracle_start()`
+- `check_isolated(p, expr, wall=20)` — Timeboxed oracle check via a persistent SUBPROCESS line-server
 - `run_gate(model, tok, problems, frac, state=None)`
 - `main()`
 
@@ -1874,6 +1919,11 @@ NIGHT-30b Mac chain (pre-reg 2026-07-30): B3 K2 depth curve -> B4 entangled-expe
 - `b3()`
 - `b4()`
 - `p6()`
+- `main()`
+
+### scratch/oracle_worker.py
+Standalone oracle worker for timeboxed p.check (MOE-GT-6 v3).
+
 - `main()`
 
 ### scratch/ozaki_2b_bisect.py
@@ -2299,6 +2349,26 @@ Synonym gauge test: TWO label tokens per family on the frozen 19M readout (vocab
 - `_one(args)`
 - `gen(n, band, exclude=None)`
 - `encode(e)`
+
+### scratch/tenet_d1_revgate.py
+TENET D1: THE REVERSE GATE (spec 2026-08-05-tenet-battery.md).
+
+- `rev_gate_eval(model, tok, dev, n=None)` — Reverse gate: solves per level + per-candidate validity %.
+
+### scratch/tenet_d2_revdiet.py
+TENET D2: the certified reversed diet + exclude-union semantics (spec 2026-08-05-tenet-battery.md).
+
+- `worker_main()` — Line server: json [cur, nxt] per line -> status.
+- `class Replayer` (start, send, poll, kill)
+- `gate_band_exprs()`
+- `main()`
+
+### scratch/tenet_w0.py
+TENET W0: is reverse structure visible in weights? (pre-reg TENET-W0, 2026-08-05 — the battery's cheapest rung.)
+
+- `_fit_xy(x_in, y_out, torch_seed)` — The subjects._fit loop on arbitrary (input, output) data —
+- `make_inverse_twin(family, i, seed)` — Fit an MLP to the axis-swapped data of a fresh draw from
+- `main()`
 
 ### scratch/ternary_control.py
 Deploy-ternarize the NNUE-metabolized latents, honest gate + L9 probe on cuda. Doctrine: gate the DEPLOYED 1.58-bit snapshot.

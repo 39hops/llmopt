@@ -20896,3 +20896,44 @@ population exists.
 FENCES: function-inverse analogy probe (transfers a question,
 never a conclusion — registered); one seed; toy scale; 4/6
 families eligible.
+
+## PRE-REG TENET-R0-REV: does backward capability TRAIN at micro scale? — reverse-twin birth on the certified reversed diet, gated by the new reverse gate (2026-08-05, Mac)
+
+Spec: docs/superpowers/specs/2026-08-05-tenet-battery.md (rung
+R0-rev; D1+D2 built this session). DESIGN, registered before any
+arm fires. Instruments: scratch/tenet_d1_revgate.py (D1, the
+reverse gate: 120 problems on the forward gate's band seeds,
+single-ply, B=8, solved = any verified-AND-distinct predecessor,
+forward-verified at the mint via verify_wave(cand, [s]) — never
+corpus match) and scratch/tenet_d2_revdiet.py (D2: a row reverses
+only if nxt is a legal engine child of cur by successors replay;
+the miss population — const-of-integration offsets, multi-rule
+skips, ~32-39% — is EXCLUDED, never silently reversed; exclude-
+union law checked against the gate band, 0/120 hits required;
+smoke slice: 61% certified, dedup 92,944 unique of 132,870 rows).
+ARMS (paired, matched dose, seed 1, d64/L8/FFN256/H4, lr 1.5e-3,
+bs 8, 3 epochs, one device):
+  fwd-cert: sym_birth DIET=data/gen4_forward_certified.jsonl —
+    the matched-dose forward control; gated by the FORWARD gate
+    (sanity: solves > 0; NOT expected to match booked full-gen4
+    dense births — the certified diet is a subset) AND by D1
+    (instrument control: a forward-trained model registered to
+    score ~0-5/120 on the reverse gate).
+  rev-cert: same, DIET=data/gen4_reverse_certified.jsonl (cur/nxt
+    swapped by the builder; REV=0) — gated by D1.
+REGISTERED LINES:
+P-TRAINS: rev-cert D1 solves >= 12/120 AND exceeds fwd-cert's D1
+  reading by >= 7 solves (the ~1.5-sigma fence on the 120 gate) —
+  backward capability trains from reversed pairs at this scale;
+  R1b-micro's alternation rung stays open.
+P-NULL: rev-cert D1 within 7 solves of the fwd-cert control (or
+  both ~0) — backward capability does NOT train at micro scale;
+  downstream closed-loop rungs close per the spec ("either verdict
+  outranks any further forward-side re-run").
+FENCES: one seed (resolution law: deltas < 7 solves are a
+direction only, n>=3 before any claim); D1 is SINGLE-PLY —
+its solve counts are not comparable to the multi-ply forward
+chain gate as a capability magnitude; both arms sit on the
+certified SUBSET diet, so neither compares to booked full-gen4
+births; per-candidate validity % reported alongside (the R1a
+11% emission-validity anchor is the prior art baseline).

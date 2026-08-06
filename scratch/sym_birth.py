@@ -82,7 +82,12 @@ if ARM == "c8":
 go = Ro[1].to(dev)  # shift-1 generates C8
 gi = Ri[1].to(dev)
 
-rows = load_rows(gen4=True)
+# DIET env (TENET R0-rev, 2026-08-05): explicit diet file REPLACES
+# gen-4 (load_rows diet= semantics). Rows arrive pre-oriented — the
+# certified reverse diet is already swapped by its builder, so REV
+# stays 0 for those births.
+DIET = os.environ.get("DIET")
+rows = load_rows(gen4=True) if not DIET else load_rows(diet=DIET)
 rows = [r for r in rows
         if r["cur"].replace(" ", "") != r["nxt"].replace(" ", "")]
 REV = _env("REV", 0)
