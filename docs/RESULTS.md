@@ -21426,3 +21426,33 @@ Receipts (seedslad exception, small text only): the six tiny log-row
 with this booking; the 128MB regenerated traj jsonl and the free8
 traj/arm0 artifacts stay untracked (regenerate via the driver).
 One-resident-30B held throughout; all runs sequential, Mac.
+
+## PRE-REG LOCKSTEP-A1/A2: the 3080 digest replays — MB-S14 arms + DIET-BRIDGE, bit-identity bars only (2026-08-06, 3080)
+
+Spec 2026-08-06-3080-lockstep-window.md, Leg A rungs 1-2, Artin GO
+(same-day, before 17:00 EST; scope fenced to digest rungs only —
+no solve-count arms on the 3080). Both checkouts verified at
+9381b2d before launch; diet file present remote-side (verified at
+arm time per remote-ops doctrine); runs land in logs/lockstep/.
+
+A1 (MB-S14-CUDA replay): scratch/detbwd_mb.py, NBLK=2 seed 17
+STEPS=1000, two arms — (a) SHIFT=14 const; (b) SHIFT=14 SCHED=1.
+BARS (all from VERDICT MB-S14, Mac): arm (a) milestone losses
+9468 7350 6882 6291 5952 5882 5896 6138 and FINAL trajectory sha
+matching booked a5d0b4e7c489e917...757866ba; arm (b) milestones
+9468 7350 7271 6919 6788 6643 6395 6271 (strictly monotone) and
+nz ~0.298 class with no starvation signature. Any digest/milestone
+mismatch is a FINDING (a cuda-side integer-path defect to
+localize), not a failed run.
+
+A2 (DIET-BRIDGE-CUDA replay): scratch/detbwd_diet.py, defaults
+(SHIFT=14 const, NBLK=2, seed 17, STEPS=1000, 8 windows).
+BARS (from VERDICT DIET-BRIDGE, Mac): windows ids sha
+99caaa646925d150; cycle-mean 15909 -> 12518 TO THE TOKEN; FINAL
+trajectory sha matching booked 8b443b68b31ed966...f6759d026.
+
+Registered consequence: PASSES extend the deterministic-birth
+cross-device ladder from R2's 200-step mini to the 1000-step
+multi-block + real-diet rungs — MB-S14 and DIET-BRIDGE become
+device-free claims. Fences: integer battery scope only; no fp
+comparison anywhere in this pre-reg; wall-clock is not a readout.
