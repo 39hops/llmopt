@@ -791,7 +791,11 @@ regime tag on every bullet is the fence.
   recall ladder over random fills is non-monotone with widening draw
   spread. The verbal population IS load-bearing (necessary, not
   sufficient); recall is not the organizing variable either.
-  ([AMENDMENT MOE-GT-5c-SCOPE](RESULTS.md#L20860); [VERDICT
+  Fences of the retracted reading: one seed, three draws; the union
+  mask's edge over the random band's mean is inside the draw spread
+  and unresolved; the registered per-answer degeneracy count was not
+  collected. ([VERDICT MOE-GT-5c](RESULTS.md#L20414); [AMENDMENT
+  MOE-GT-5c-SCOPE](RESULTS.md#L20860); [VERDICT
   MOE-GT-6](RESULTS.md#L20793).)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] Verbal-branch
@@ -808,10 +812,7 @@ regime tag on every bullet is the fence.
   seeds. One gate seed, two draws per bin, and the exploratory
   coverage correlations (verbal-only 0.755 against global recall
   0.532) carry no causal claim beyond the registered exclusion
-  contrast. ([VERDICT MOE-GT-6](RESULTS.md#L20793).) One seed, three draws; the union
-  mask's edge over the random band's mean is inside the draw spread
-  and unresolved; the registered per-answer degeneracy count was not
-  collected. ([VERDICT MOE-GT-5c](RESULTS.md#L20414).)
+  contrast. ([VERDICT MOE-GT-6](RESULTS.md#L20793).)
 - [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] With the full router
   available, mathematics routes 2.7%
