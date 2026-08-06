@@ -13,6 +13,9 @@ Adopted so far (2026-08-06):
                      (module 1 of the extraction spec; typed events)
   LabConfig       <- new (module 2): from_env(prefix) — casts raise,
                      unknown prefixed vars error, resolved-config echo
+  keepsets        <- scratch/gt2_jaccard.py (module 3): decode_counts,
+                     keep, jmean, coverage — GT2 booked stats + dump
+                     bytes re-verified at adoption
 """
 from llmopt.lab.config import ConfigError, LabConfig  # noqa: F401
 from llmopt.lab.gen import _gen_isolated, gen_isolated  # noqa: F401

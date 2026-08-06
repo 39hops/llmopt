@@ -2698,6 +2698,16 @@ lab.gen — fork-isolated problem generation, ADOPTED VERBATIM from scripts/benc
 
 - `_gen_isolated(level: int, seed: int, wall: int=45)`
 
+### llmopt/lab/keepsets.py
+lab.keepsets — keep-set / coalition algebra, ADOPTED VERBATIM from scratch/gt2_jaccard.py (2026-08-06; that file stays frozen — the GT2-REVIEW-2 booked numbers cite it as the re-derivation authority). Function bodies are character-identical to the source; guarded by tests/test_lab_keepsets.py (source identity + synthetic battery + env-gated full acceptance against the booked stats and the byte-frozen checkpoints/gt2_*_arm0_decode.json dumps).
+
+- `_frac(frac=None)`
+- `_flag(name, default, value=None)`
+- `decode_counts(path, pred=lambda r: True, gate_only=None, drop_tail=None)` — DROP_TAIL=1 (default) drops the FIRST decode-phase row per
+- `keep(counts, n=128, top_k=8, frac=None)`
+- `jmean(ka, kb)`
+- `coverage(demand, kp)` — Count-weighted fraction of `demand` routed inside keep-set kp.
+
 ### llmopt/lab/oracle.py
 lab.oracle — the boxed oracle, v3.2 lineage (spec 2026-08-05-llmopt-lab-extraction module 1). Parent side of the subprocess line-server in lab/oracle_worker.py; behavior ported line-for-line from scratch/moe_gt1_arm2.check_isolated (which stays frozen — booked verdicts cite it).
 
