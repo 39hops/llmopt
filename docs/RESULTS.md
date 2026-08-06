@@ -21077,3 +21077,31 @@ registered thresholds. FENCES: one seed pair; single-ply; child
 choice deterministic (first encodable engine child) — a different
 child rule is a different gate; certified-subset diet caveat
 carries over.
+
+## VERDICT TENET-R0-REV-B: backward emission is REAL in-distribution — the reverse twin reads 24/120 on the D1b gate against the forward control's 1/120; P-TRAINS-B fires and R1b formally REOPENS behind D3 (2026-08-06, Mac)
+
+Per PRE-REG TENET-R0-REV-B, both arms as registered, same seeds,
+same device, same replay mint criterion.
+  rev-cert (sha 0d5ece326ba989bf): {3: 12, 4: 0, 5: 8, 6: 1,
+    7: 3} = 24/120 @ 2.92% equivalence diag. Census: unique 23,
+    miss 375, err 286, no timeouts/membombs.
+  fwd-cert control (sha 272e47d2c906c968): {3: 0, 4: 0, 5: 1,
+    6: 0, 7: 0} = 1/120 @ 0.94%. Census: unique 1, miss 507,
+    err 141.
+BOTH REGISTERED CONDITIONS CLEAR: 24 >= 12, and 24 - 1 = 23 >= 7.
+READ with R0-REV's null: one twin, two gates, opposite verdicts —
+backward emission trains at micro scale but is PROMPT-DISTRIBUTION-
+LOCAL (0/120 at chain starts, 24/120 one step in). The pair
+(R0-REV, R0-REV-B) is the measured version of the DIST amendment's
+mechanism and replaces prior-art R1a's 11% forward-facing anchor
+with a direction-honest instrument. NAMED ANOMALY, open: L4 reads
+0/24 in the rev arm (and 0/8 in the probe) while L3 reads 12/24
+and L5 8/24 — non-monotone in level; no mechanism claimed.
+CONSEQUENCE (registered): R1b-micro REOPENS; D3 (the budget
+accountant fixing R8's booked instrument defect) is the next build
+and gates any alternation arm; the length-only ranker arm stays
+MANDATORY per the battery spec. FENCES: one seed pair; single-ply;
+first-encodable-child prompt rule (a different child rule is a
+different gate); certified-subset diet; err-class emissions remain
+2x the control's (286 v 141) — trained backward emission is still
+malformed-heavy.
