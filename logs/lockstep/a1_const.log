@@ -1,0 +1,36 @@
+[r1a] table silu sha 24499877ab63ee6b
+[r1a] table dsilu sha 967943f938fc924f
+[r1b] table exp sha 9b8649244ca8c235
+[mb] NBLK=2 SHIFT=14 params 61760
+[mb] cos(emb) = 0.994327
+[mb] cos(b0.wq) = 0.996020
+[mb] cos(b0.wk) = 0.996616
+[mb] cos(b0.wv) = 0.991894
+[mb] cos(b0.wo) = 0.991986
+[mb] cos(b0.wg) = 0.992176
+[mb] cos(b0.wu) = 0.992697
+[mb] cos(b0.wd) = 0.992325
+[mb] cos(b0.g1) = 0.994454
+[mb] cos(b0.g2) = 0.991139
+[mb] cos(b1.wq) = 0.988312
+[mb] cos(b1.wk) = 0.991356
+[mb] cos(b1.wv) = 0.991903
+[mb] cos(b1.wo) = 0.993552
+[mb] cos(b1.wg) = 0.994728
+[mb] cos(b1.wu) = 0.995177
+[mb] cos(b1.wd) = 0.994790
+[mb] cos(b1.g1) = 0.992616
+[mb] cos(b1.g2) = 0.993814
+[mb] cos(g_f) = 0.999907
+[mb] worst cosine 0.988312 (b1.wq)
+[mb] rerun identical: True  sha e5ed8554d836c273e26a530accdedfd5
+[mb] step 125 loss 9468 nz 0.301 traj-sha 5bb1582ff0d30aea
+[mb] step 250 loss 7350 nz 0.299 traj-sha 4abd6868ce7a4d0b
+[mb] step 375 loss 6882 nz 0.300 traj-sha c7ad9ba1fdba49c3
+[mb] step 500 loss 6291 nz 0.302 traj-sha a42695bb223cba29
+[mb] step 625 loss 5952 nz 0.302 traj-sha bdffad10962e16ea
+[mb] step 750 loss 5882 nz 0.311 traj-sha c60168254acb2998
+[mb] step 875 loss 5896 nz 0.313 traj-sha ed30a94b3b52c7d1
+[mb] step 1000 loss 6138 nz 0.319 traj-sha a5d0b4e7c489e917
+[mb] loss 16283 -> 6299 -> 6138  falling: True
+[mb] FINAL trajectory sha a5d0b4e7c489e917c276531da54c235a4763e2e53696afe4a5e736e7757866ba

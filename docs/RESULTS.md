@@ -21456,3 +21456,37 @@ cross-device ladder from R2's 200-step mini to the 1000-step
 multi-block + real-diet rungs — MB-S14 and DIET-BRIDGE become
 device-free claims. Fences: integer battery scope only; no fp
 comparison anywhere in this pre-reg; wall-clock is not a readout.
+
+## VERDICT LOCKSTEP-A1/A2: PASS on every bar — MB-S14 (both arms) and DIET-BRIDGE replay BIT-IDENTICALLY on the 3080; the deterministic-birth cross-device ladder now covers 1000-step multi-block + real-diet training (2026-08-06, 3080)
+
+Against PRE-REG LOCKSTEP-A1/A2, all bars from the booked Mac
+verdicts, receipts pulled to logs/lockstep/ (small text, force-added
+with this booking; both checkouts at 9381b2d for the run):
+
+A1 arm (a) SHIFT=14 const: milestones 9468 7350 6882 6291 5952 5882
+5896 6138 — ALL 8 identical to VERDICT MB-S14 ARM A; FINAL
+trajectory sha a5d0b4e7c489e917c276531da54c235a4763e2e53696afe4
+a5e736e7757866ba — EXACT match to the booked prefix+suffix.
+A1 arm (b) SHIFT=14 SCHED=1: milestones 9468 7350 7271 6919 6788
+6643 6395 6271 — ALL 8 identical to ARM B, strictly monotone
+reproduced; nz 0.298 as booked (no starvation signature).
+A2 DIET-BRIDGE: windows ids sha 99caaa646925d150 identical (same
+8 windows drawn from the remote diet file copy); cycle-mean
+15909 -> 12518 TO THE TOKEN; FINAL trajectory sha
+8b443b68b31ed9668abfdb3a67fad21297a7ad58d116596ace9dc13f6759d026 —
+EXACT match. nz 0.438 (booked 0.43 class).
+
+READ: MB-S14 and DIET-BRIDGE are now DEVICE-FREE claims — the
+cross-device ladder extends from R2's 200-step mini to the full
+1000-step multi-block anatomy AND real gen-4 next-token training.
+The width/decay laws (accumulator width primary stabilizer, decay
+trades depth for monotonicity) and the diet plateau (~12500,
+8-windows-on-60k-params capacity reading) all transport exactly.
+The RULER queue slot this window replaced produced its first two
+booked verdicts within 2h of the spec landing.
+
+Fences: deterministic integer battery scope only; no fp comparison
+made or implied; wall-clock not a readout (not recorded). Next
+rungs per spec: PLATEAU-BREAK (pre-reg needed, loss-shape bar) and
+the gravmoe pair (Fable design pass first); Lean full pass on the
+overnight GO.
