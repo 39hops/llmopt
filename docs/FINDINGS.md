@@ -858,6 +858,25 @@ regime tag on every bullet is the fence.
   unverified and the committed script is the lens authority.
   ([VERDICT MOE-GT-6](RESULTS.md#L20793); [AMENDMENT
   MOE-GT-6-LENSES](RESULTS.md#L21269).)
+- [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] Expert IDENTITY, not
+  any aggregate property of the keep-set, determines masked
+  mathematics capability: with global recall pinned to the 0.72
+  band and verbal-only coverage registered as the ladder variable,
+  bin means are non-monotone (3.5 / 34.0 / 29.5 / 28.0 at coverage
+  0.00 / 0.15 / 0.30 / 0.45) and within-bin draws matched on BOTH
+  recall and coverage differ by 38-49 solves of 120 (15-v-53,
+  5-v-54, 46-v-10). Both previously named recall-ladder anomalies
+  dissolve into draw identity — fresh draws at the r80 point score
+  75 and 48 against the booked 9. Coverage joins recall as a dead
+  aggregate lens; the registered survival map forecloses any
+  further aggregate-lens ladder and directs the thread to
+  excluded-experts anatomy. Distinct-answer degeneracy tracks
+  collapse (59-113 distinct of 120 on sub-20 arms against 118-120
+  elsewhere) and is descriptive this rung. One gate seed, two draws
+  per bin, tie-fill upper bounds travel.
+  ([PRE-REG MOE-GT-7](RESULTS.md#L21304); [VERDICT
+  MOE-GT-7](RESULTS.md#L21521).)
 - [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] With the full router
   available, mathematics routes 2.7%

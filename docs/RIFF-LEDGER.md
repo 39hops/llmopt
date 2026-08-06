@@ -2871,3 +2871,30 @@ pooling winners was his call).
   with both rejections on review. Attribution: Grok (diagnosis +
   inventory-first + target shape), Fable (rejections + adoption
   ordering), Artin (relay + GO on CODEMAP).
+
+## 2026-08-06 (evening): the post-GT-7 battery slate (Grok, Artin-relayed; Fable-verified against the ledgers)
+
+Grok survey of the living docs proposing the next high-leverage
+batteries; Artin adopted the science + instrument pair; Fable
+confirmed every rung and every low-priority call before adoption.
+BANKED AS ADOPTED: (1) IDENTITY battery — EX-ANAT-1 (swap/ablate
+SPECIFIC high-demand experts at fixed keep fraction + fixed verbal
+coverage; the only variable that still moves 38-49 solves inside a
+matched bin), EX-ANAT-2 (what math-excluded experts compute —
+banked since D4-PHYS-B/GT-5c, made mandatory by GT-7), R-EMISSION
+(verbal restore = emission vs competence; degeneracy census now
+collected), CHURN-JUDGE-2 (gated BEHIND a named identity handle
+AND the booked revive-if: routing-margin features, new pre-reg).
+Spec: 2026-08-06-identity-battery.md. (2) INSTRUMENT battery —
+lab/gate -> sink -> timebox (traj CLOSED same day, VERDICT
+LAB-TRAJ; Grok's list predated the booking), FINDINGS GT-7 append
+(done with this bank). CONFIRMED LOW-PRIORITY (each already
+fenced): GT-8 aggregate ladder (killed by the registered survival
+map), RULER/gist (dead as experiment, library stays), TENET R2/R3
+pincer (choice-scarcity closure; revival = measure verified-
+candidate multiplicity FIRST), PLACE-1-on-cuda (uncomparable cell,
+30B does not fit 10GB), Ozaki speed (kernel-hours + ambiguity-rate
+prerequisite), Fourier force-the-clock (banked, off critical
+path). Attribution: Grok (slate + sequencing), Artin (adoption
+call + relay), Fable (rung-by-rung verification + the one stale
+correction).
