@@ -22071,3 +22071,56 @@ result change).
    CROSS-MACHINE (Mac cpu = 3080-box cpu), unchanged in force;
    "-CUDA" in the arm names refers to the box, and front-facing
    text must not say the birth ran on CUDA. README corrected.
+
+## PRE-REG MULT-0: the verified-candidate multiplicity census — does the reverse model give ranking a surface to act on? (2026-08-07 morning, Mac)
+
+Rung 1 of the reverse-propose ladder (RIFF 2026-08-07 + extension;
+spec 2026-08-07-morning-specs.md item 3; Artin GO). The pincer
+closure's revival fence made measurable. Driver
+scratch/tenet_mult_census.py — the D1b frame VERBATIM minus the
+first-mint short-circuit (cited gate file untouched; replay
+minting stays the criterion, verify_wave diagnostic-only; rows
+stream). Zero-compute anchor reproduced first: the FR ledger
+carries exactly 8 nonzero rev_score rows (the booked 8/120).
+Smoke (N=2/level, rev ckpt sha 0d5ece32 matching the pin): census
+mechanics work; m>=2 already appears.
+ARMS: rev (sym_birth_dense_revcert.pt, 0d5ece32...) and fwd
+control (sym_birth_dense_fwdcert.pt, 272e47d2...), MODE=poststep
+(the in-distribution D1b frame), full 120-problem band, B=8.
+READOUTS: multiplicity histogram per problem/level; P(m>=2)
+headline; per-level carries the open L4 anomaly; miss/err census
+as the malformed-emission control.
+BARS: P-SURFACE fires iff rev P(m>=2) >= 12/120 (10% — a real
+intervention surface, vs the closed loop's 8/120 rankable
+PROBLEMS which conflated a different unit) AND rev P(m>=2)
+strictly above the fwd control's. P-STARVED: rev P(m>=2) < 6/120
+— the choice surface is too thin at B=8; the B=32 leg becomes the
+named follow-up (linear cost, ~25 min/arm), NOT auto-fired.
+Between: UNRESOLVED, histogram booked. Rung 2 (chooser
+calibration) fires only on P-SURFACE, new pre-reg.
+FENCES: one checkpoint pair (sha-pinned); single-ply; B=8; L3-7
+band; timeouts/membombs conservative-reject (counters travel).
+
+## PRE-REG P-CAPACITY-2: the params ladder — does capacity break the ~12k plateau where steps, windows, and schedule did not? (2026-08-07 morning, 3080 box CPU)
+
+LOCKSTEP continuation (spec 2026-08-07-morning-specs.md item 2;
+Artin GO). Anchor: 12,518 at 60,224 params / NWIN=8 / 1000 steps /
+SHIFT=14 (VERDICT DIET-BRIDGE; PLATEAU-BREAK + P-STEP-BOUND-2
+eliminated steps, window count, and the schedule). DESIGN FENCE:
+DIM held at 64 (GRAVMOE-BRUTE clamp law — D=128 clamps 23% at
+init; ACLAMP ceiling class); FFN and NBLK are the only moved
+knobs, one per arm. NO new driver: FFN/NBLK are env-read at
+import by the frozen modules — plain env invocation of
+scratch/detbwd_diet.py (the params print is the receipt).
+ARMS (NWIN=8, SHIFT=14 const, seed 17, STEPS=1000 — the anchor's
+exact schedule): P-SMALL NBLK=1 (31,424 params, 0.52x); P-WIDE
+FFN=256 (109,376, 1.82x); P-DEPTH NBLK=4 (117,824, 1.96x); WIDE v
+DEPTH double as depth-v-width at matched capacity class.
+BARS: P-CAPACITY-2 fires iff (P-WIDE or P-DEPTH) final cycle-mean
+<= 11,266 (the same 10% class both prior rungs missed) AND
+P-SMALL regresses ABOVE 12,518 (monotone capacity reading). Both
+clauses failing or mixed: UNRESOLVED, shapes booked; if BOTH big
+arms land 11,266-12,518 the plateau is capacity-INSENSITIVE at 2x
+and the binder question escalates to the diet itself.
+FENCES: deterministic integer battery; seed 17; single runs; CPU
+on the 3080 box (LOCKSTEP-DEVICE-SCOPE); wall-clock not a readout.
