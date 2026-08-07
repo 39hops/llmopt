@@ -3037,3 +3037,29 @@ the named 80, (c) physics-gate scalpel transport — ordered, each
 pre-reg before fire. Attribution: Grok (sharpening), three Opus
 seats (audit findings), Artin (sanction + relay), Fable
 (verification + application).
+
+- **2026-08-08 (Artin x Grok, the horizon refinement of the
+  black-hole frame)**: Artin — "LLMs are models of the universe we
+  find useful, hence why (i think) MoE's are similar to black
+  holes"; Grok's sharpening, adopted — "gravity-like concentration
+  of computation creates horizons in the model's information flow":
+  most parameter mass is interior, only a thin interface (router /
+  keep-set) talks to the outside, and what CROSSES the interface
+  decides usable v trapped/interfering. Why banked in this form:
+  unlike the original identity claim, the horizon version
+  compresses measured results (identity-over-coverage, deletion as
+  interference removal, router over-inclusive at the carrier rank
+  class) and its first testable consequence is already queued —
+  EX-ANAT-4's uniform-random deletion control separates "horizon
+  structure" from "any deletion helps." Scale corollary (Artin,
+  same exchange, measured side): closed-system math natives are
+  scale-SENSITIVE not scale-maximal (113M/200M/400M excluded from
+  every fit; width cliffs; tokens-per-width ceiling) — and the
+  lab's reproducibility discipline is a PROPERTY OF THE ARTIFACT
+  at this scale (bit-identical replay, sha acceptance bars),
+  structurally unavailable at datacenter scale. Frame stays
+  riff-tier until it predicts a new registered gate; FINDINGS
+  narration stays literal per the plain-language rule.
+  Attribution: Artin (frame), Grok (horizon sharpening + the
+  measured/riff split), Fable (banking + the
+  reproducibility-as-artifact-property corollary).
