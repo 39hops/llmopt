@@ -21897,3 +21897,22 @@ lands within 5% of 12,518 the plateau is REAL under the corrected
 optimizer and the capacity question moves to the params ladder
 (the intbirth engine's lever). FENCES: integer battery scope, seed
 17, single runs (determinism class), wall-clock not a readout.
+
+## VERDICT TENET-W1-R: BOTH ARMS NULL (aug 11/20, spectral 10/20) — cross-layer composition structure joins the surface-exhaustive negative; weight-reader mining stays closed pending a genuinely new hypothesis (2026-08-07 early, 3080)
+
+Against PRE-REG TENET-W1-R, receipts logs/w1r/ (force-added): aug
+(sampled cross-layer alignment rows, resampling augmentation)
+11/20; spectral (top-64 singular values per boundary) 10/20 — both
+<= 13, NULL; train accuracy never leaves ~0.50 on either (the same
+cannot-even-fit signature as W1 and all four W1-S surfaces). No
+randinit controls owed (nothing fired). The teach-don't-impose
+readout is VACUOUS at null-null (its prediction discriminated only
+a fire). READ, as registered: the composition-order hypothesis in
+its cross-layer-alignment form is dead at toy scale — direction is
+now invisible to gate/attn/up/emb/ln row features AND to write->
+read alignment structure, while remaining loudly visible in
+function (24 v 1). Weight-reader mining stays CLOSED; no W2-R
+fishing ladder. What a future reopening owes: a hypothesis that
+names WHY its feature family could see composition order when the
+alignment cross-Gram cannot (fences: one relational family tested;
+toy scale; one split; one device).
