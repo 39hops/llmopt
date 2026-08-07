@@ -894,6 +894,58 @@ regime tag on every bullet is the fence.
   the bisection ladder (k=2, k=1) is the registered follow-up.
   ([PRE-REG EX-ANAT-1](RESULTS.md#L21603); [VERDICT
   EX-ANAT-1](RESULTS.md#L21639).)
+- [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] The carrier
+  mechanism decomposes: named top-demand exclusive experts are
+  PORTABLE (adding four per layer per class transforms weak
+  keep-sets by +22 to +62 solves over count/class/coverage-matched
+  random controls, pooled +113 against a pre-registered bar of 28),
+  SATURATING (the same additions change strong keep-sets by -9 to
+  +2), and REDUNDANT at depth two (strong sets hold their score
+  under top-2-per-class removal even at reduced recall — the
+  symmetric-swap "compensation" was genuine redundancy, not
+  add-masking). Identity-selected additions are also UNIFORM where
+  matched-random additions reproduce the draw lottery (48-73
+  versus 8-79). A swapped set derived from two ~0.72-recall draws
+  ran above its paired full model at three gate seeds (+13, +13,
+  +4; pooled +30) but the third seed missed the per-seed fence and
+  the discovery seed contaminates the pool — direction booked,
+  beats-full NOT claimed; full-model baselines vary by gate seed
+  (64/60/73), so mask-versus-full comparisons stay paired per
+  seed. One gate seed for the arm batteries; the symmetric-swap
+  claim localizes to the k=4 exchange.
+  ([VERDICT EX-ANAT-1B](RESULTS.md#L21704); [VERDICT
+  EX-ANAT-2](RESULTS.md#L21943); [VERDICT
+  EX1-C30-REPL](RESULTS.md#L22007); [VERDICT
+  EX1-C30-REPL-3](RESULTS.md#L22034); [DESK
+  R-EMISSION-0](RESULTS.md#L21850).)
+- [REPLICATED] [REGIME-SCOPED: toy weight-space subjects] Training
+  DIRECTION (forward versus reverse curriculum) is invisible to
+  weight readers across every inspected representation while
+  remaining loudly visible in function: single-row features from
+  five surfaces (FFN gate, attention, up-projection, embeddings,
+  norm gains) and cross-layer write-to-read alignment features
+  (sampled rows and full spectra) all read at chance on 50 paired
+  d64/L8 subjects with a protocol whose positive control reads
+  trained-versus-random at ceiling. Weight-reader mining is closed
+  pending a hypothesis that names why a new feature family could
+  see composition order where the alignment cross-Gram cannot.
+  ([VERDICT TENET-W1-S](RESULTS.md#L21574); [VERDICT
+  TENET-W1-R](RESULTS.md#L21901).)
+- [REPLICATED] [REGIME-SCOPED: deterministic integer battery] The
+  deterministic integer birth is device-free at full scale: the
+  1000-step multi-block anatomy and the real-diet bridge replay
+  bit-identically on a second machine (all sixteen milestone
+  losses, both final trajectory shas, the 15,909-to-12,518 plateau
+  to the token), and the plateau itself is now mechanistically
+  bracketed — constant learning rate REGRESSES at long horizons
+  (the decay law at diet scale), window count saturates at fixed
+  parameters (32 and 64 windows land together), and the corrected
+  schedule bends the plateau by 5.9% without breaking the
+  registered 10% bar; the parameter ladder is the named next
+  lever. ([VERDICT LOCKSTEP-A1/A2](RESULTS.md#L21460); [VERDICT
+  PLATEAU-BREAK](RESULTS.md#L21874); [VERDICT
+  P-STEP-BOUND-2](RESULTS.md#L21920).)
 - [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] With the full router
   available, mathematics routes 2.7%
