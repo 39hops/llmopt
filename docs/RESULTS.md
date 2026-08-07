@@ -22683,3 +22683,9 @@ Fresh-band absolutes (76-89) are NOT comparable to the booked
 quoted here only inside their paired deltas.
 FENCES: mps, one session; R1 gates-only snap as the original;
 fresh bands same generator class; no cross-device numbers.
+
+## AMENDMENT HARDENING-P2-SIGMA: s3's sigma receipt corrected 0.0369 -> 0.0368 (measured after the entry text was drafted; the bar is unaffected) (2026-08-07 night, desk)
+
+Amends VERDICT HARDENING-P2: the s3 birth's block-weight sigma is
+0.0368 (measured), not the drafted 0.0369; all three births read
+0.0367/0.0368/0.0368. No bar or delta changes.
