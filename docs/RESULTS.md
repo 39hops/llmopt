@@ -22689,3 +22689,28 @@ fresh bands same generator class; no cross-device numbers.
 Amends VERDICT HARDENING-P2: the s3 birth's block-weight sigma is
 0.0368 (measured), not the drafted 0.0369; all three births read
 0.0367/0.0368/0.0368. No bar or delta changes.
+
+## PRE-REG HARDENING-P3-R5: the split law's causal leg gets n=3 — soft-routing seeds 1/2/3 on the D2-excised diet (2026-08-08 early, 3080)
+
+Phase 3 opens (Artin GO; frozen seven-row list + hard gates written
+into the spec at GO time). R5 repairs THEORY row 33's single-seed
+falsification arm: UMOE-2's "soft routing does NOT restore
+correlation" (corr 0.0089 v top-1 0.0080-0.0085 v init 0.0016) was
+n=1. ARMS: ARM=soft at SEED 1, 2, 3, OTAG=_x3, on the 3080
+(device-of-origin gate — all UMOE arms were 3080), through
+scratch/p3_umoe_soft.py (frozen driver + load-time D2 excision,
+receipt printed per run; hard gate 1 satisfied). Seed 1 doubles as
+the DIET-SENSITIVITY BRIDGE: its corr should land in the 0.0089
+class despite the ~129-row excision, or the excision itself moved
+the readout (bookable either way).
+BARS: P-INIT-DEFAULT-HOLDS fires iff all three soft seeds read
+mean pairwise expert corr < 0.02 (no 10x rise over init 0.0016,
+the original refutation's criterion) — THEORY row 33's causal leg
+gains n=3 and its single-seed fence lifts. Any seed >= 0.02: the
+row gains a seed-sensitivity caveat instead (the falsification was
+seed-local — itself a finding). Gate numbers print (provenance)
+but are DESCRIPTIVE — the registered readout is corr; absolute
+gates on this band carry the P1 exposure fence regardless.
+FENCES: one device (3080); the excised diet differs from the
+original by the band-touching rows (bridge seed prices it);
+corr is the N3 instrument as originally computed.

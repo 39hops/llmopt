@@ -53,6 +53,15 @@ effect.
 ## PHASE 3 — n>=3 seed ladders (pooled only within the
 deterministic integer battery; fp-gate cells stay Mac-scoped)
 
+FROZEN LIST (Grok gate, adopted at Phase-3 GO 2026-08-08): the
+seven rows below are the WHOLE of Phase 3 — additions require a
+new Artin GO, never mid-flight scope growth. HARD GATES on every
+re-birth: (1) D2-excised diet rebuild (Phase 1's law — the builder
+that refuses contaminated rows), receipts booked per diet; (2)
+device-of-origin — each replication runs on the device class its
+original claim is scoped to (no silent device drift); (3) pre-reg
+per ladder before fire, n>=3 or an explicit single-seed fence.
+
 Order (cheapest per claim): R5 split-law soft-routing (+2 births),
 R6 gravity-tax (+3 births, WITH free-run gate readout per the
 standing rider), R3 ffn-slack endpoints (6), R4 interaction-law
