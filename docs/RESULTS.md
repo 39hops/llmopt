@@ -22221,3 +22221,35 @@ alive at this model scale. FENCES: one checkpoint pair; B=8;
 single-ply; L3-7 band; replay-mint criterion; err census 287
 (rev) v 141 (fwd) — the reverse model also emits MORE malformed
 candidates, carried not hidden.
+
+## PRE-REG EX-ANAT-3: the tiny-deletion gate — do the invariant carriers carry load at FULL width, and does the decode lens name a different carriage? (2026-08-07 midday, Mac)
+
+IDENTITY battery rung (spec 2026-08-07-morning-specs.md item 1;
+Artin GO, leverage order). Desk grounding booked first (DESK
+EX-ANAT-3-0: prefill tilt 2.21x/0.84x) and the decode-lens
+separation measured this session: decode-ranked re-derivation
+names 83 invariants, overlap with the pooled 80 only 39
+(Jaccard 0.315) — the two lenses genuinely differ. Subjects
+saved: checkpoints/ex3_inv_{pooled,decode}.json.
+ARMS (full 128 minus the named set; gate = frozen arm2 KEEPSET
+path via gt7_run, seed 1234, one load; baseline = booked full 64):
+  DEL-INVP  minus the 80 pooled-lens invariants
+  DEL-INVD  minus the 83 decode-lens invariants
+  DEL-RAND0/1  minus 80 matched-rank randoms (per-invariant
+    +-8-rank window draw, string seeds; the sparsity/rank control)
+BARS: P-CARRIER-LOAD fires iff DEL-INVP (or DEL-INVD) <= 64 - 7
+AND both DEL-RANDs sit >= 7 ABOVE that deleted arm — identity-
+specific damage beyond matched-rank deletion at 1.3% sparsity.
+P-REROUTE (the null, itself informative) fires iff ALL FOUR arms
+land within +-7 of 64 — the full router absorbs 80-expert
+deletions regardless of identity; carrier value is then
+MASKED-REGIME-CONTEXTUAL (carriers matter when residency is
+scarce, invisible at full width — a residency-design statement).
+LENS SPLIT (descriptive unless P-CARRIER-LOAD fires on exactly
+one lens): DEL-INVD vs DEL-INVP difference >= 7 with controls
+quiet reads as decode-carriage vs prompt-carriage separation.
+FENCES: one gate seed (paired within-seed v the booked 64);
+[FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts];
+deletion arms are FULL-WIDTH masks (127-ish/128 keep), a
+different regime from every prior EX-ANAT arm — no cross-regime
+pooling.
