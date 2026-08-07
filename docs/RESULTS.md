@@ -22124,3 +22124,38 @@ arms land 11,266-12,518 the plateau is capacity-INSENSITIVE at 2x
 and the binder question escalates to the diet itself.
 FENCES: deterministic integer battery; seed 17; single runs; CPU
 on the 3080 box (LOCKSTEP-DEVICE-SCOPE); wall-clock not a readout.
+
+## DESK EX-ANAT-3-0: the 80 tri-bin invariant carriers are PREFILL-TILTED in free routing — 2.21x bank share on prefill picks, 0.84x on decode; carrier value may live in prompt-reading, not answer-writing (2026-08-07 morning, Mac desk)
+
+Descriptive desk cell (spec 2026-08-07-morning-specs.md EX-ANAT-3
+rung 1; no bars, no gate spend). Subjects: the 80 (layer, expert)
+carriers named by ALL THREE GT-7 bin pairs under the frozen
+ex1_swap rule (rederived; matches the morning agent's count; 34
+verbal-class / 46 fill-class; 37/48 layers covered, max 5 per
+layer, depth range 0-47). Census over the certified free-routing
+TRAJ (logs/opus/moe_gt1_traj_v2.jsonl, 590,736 rows):
+  prefill: invariant pick share 0.0288 (104,898/3,648,000)
+           = 2.21x their 80/6144 bank share
+  decode:  0.0109 (11,800/1,077,888) = 0.84x bank share
+Router entropy at rows containing an invariant pick is flat vs
+rows without (4.262 v 4.234) — no entropy signature.
+READ (descriptive; regime caveat named): carrier status was
+MEASURED under masked routing (the EX-ANAT arms); this census is
+FREE routing — different regime, so this is a lead, not a
+mechanism. But the tilt connects two live threads: (a) the arm0
+demand ranking that SELECTS carriers is pooled (prefill-heavy —
+the GT2-EXCLUSION pooled-vs-decode confound class), and (b) a
+prefill-tilted carrier population suggests the capability they
+carry is PROMPT-SIDE (representation building) rather than
+emission-side — consistent with DESK R-EMISSION-0's coupling
+(collapse degrades reading and writing together).
+CONSEQUENCE for the EX-ANAT-3 gate arm (pre-reg to come): the
+80-deletion arm should read per-phase — and a decode-demand-ranked
+carrier re-derivation (DROP_TAIL-correct decode counts instead of
+pooled arm0) is the natural paired lens; if carriers re-derived
+decode-only DIFFER, the two sets' deletion arms separate
+prompt-side from emission-side carriage.
+FENCES: descriptive; one vehicle; free-routing census on the v2
+artifact (v2 tail convention — tails counted as decode, ~5,760 of
+1.08M decode picks, negligible to the tilt); carrier definition =
+the frozen ex1_swap rule.
