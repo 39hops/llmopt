@@ -21916,3 +21916,26 @@ fishing ladder. What a future reopening owes: a hypothesis that
 names WHY its feature family could see composition order when the
 alignment cross-Gram cannot (fences: one relational family tested;
 toy scale; one split; one device).
+
+## VERDICT P-STEP-BOUND-2: the SCHED arm BENDS the plateau but does not break it — 11,777 final (5.9% below the 1000-step anchor, above the 10% fire bar); optimizer contributes, capacity remains the presumptive binder (2026-08-07 early, 3080)
+
+Against the rider pre-reg in VERDICT PLATEAU-BREAK: arm A-SCHED
+(NWIN=8, STEPS=4000, SCHED=1 — the MB-S14 arm-B decay schedule)
+finals at cycle-mean 11,777 (receipt logs/lockstep/
+plateau_a_sched.log, force-added; FINAL traj sha 15934bb8...40e0103a).
+P-STEP-BOUND-2 does NOT fire (11,777 > 11,266). The
+plateau-is-real clause does not hold either (11,777 sits 5.9%
+BELOW 12,518, outside the 5% band). BETWEEN THE BARS, direction
+booked only: decay fully recovers the const-lr overshoot (13,540
+-> 11,777 at identical data/steps) and buys ~6% beyond the
+certified 1000-step point — the plateau BENDS under the corrected
+optimizer but the 10%-class break the fire bar demanded is not
+there. READ with PLATEAU-BREAK's window saturation (32 == 64
+windows): neither steps, nor window count, nor the schedule alone
+breaks the ~12k class at 60,224 params — the PARAMS LADDER on the
+intbirth engine (its 60x speedup is the banked lever) is the named
+next rung, new pre-reg. MB-S14's law extends to diet scale: width
+stabilizes, decay converts long horizons from regression to
+progress. FENCES: integer battery scope; seed 17; single
+deterministic runs; one schedule tested (lrd x2 @ 250/500/750 —
+schedule-shape sweep not licensed by this rider).

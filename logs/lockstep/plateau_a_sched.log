@@ -1,0 +1,40 @@
+[plateau] NWIN=8 STEPS=4000 SHIFT=14
+[diet] 8 windows drawn, ids sha 99caaa646925d150
+[diet] V=40 NBLK=2 SHIFT=14 params 60224
+[r1a] table silu sha 24499877ab63ee6b
+[r1a] table dsilu sha 967943f938fc924f
+[r1b] table exp sha 9b8649244ca8c235
+[diet] step 125 loss(win) 13352 loss(cyc8) 13822 nz 0.429 traj-sha a519842defd9b954
+[diet] step 250 loss(win) 13377 loss(cyc8) 12959 nz 0.426 traj-sha 621088b3e7906e82
+[diet] step 375 loss(win) 12606 loss(cyc8) 12850 nz 0.428 traj-sha 1db657179d398a0b
+[diet] step 500 loss(win) 12270 loss(cyc8) 12651 nz 0.429 traj-sha fecb39867299b4c1
+[diet] step 625 loss(win) 12094 loss(cyc8) 12488 nz 0.434 traj-sha 021510a1d8219cc8
+[diet] step 750 loss(win) 11623 loss(cyc8) 12421 nz 0.432 traj-sha 13377da449b1e63a
+[diet] step 875 loss(win) 13177 loss(cyc8) 12406 nz 0.434 traj-sha 095c72e58db5d6b3
+[diet] step 1000 loss(win) 13322 loss(cyc8) 12376 nz 0.432 traj-sha 9169f2dc948c8999
+[diet] step 1125 loss(win) 12039 loss(cyc8) 12354 nz 0.432 traj-sha bb1596b723a18a65
+[diet] step 1250 loss(win) 13362 loss(cyc8) 12286 nz 0.433 traj-sha 562c344699264e3a
+[diet] step 1375 loss(win) 11640 loss(cyc8) 12267 nz 0.432 traj-sha 1f62f4bfd79dac7b
+[diet] step 1500 loss(win) 11590 loss(cyc8) 12249 nz 0.435 traj-sha f560f48f451736a1
+[diet] step 1625 loss(win) 11884 loss(cyc8) 12214 nz 0.434 traj-sha d96928ffcf4750b1
+[diet] step 1750 loss(win) 11488 loss(cyc8) 12098 nz 0.433 traj-sha eddcd414f77c5bed
+[diet] step 1875 loss(win) 12741 loss(cyc8) 12045 nz 0.434 traj-sha 444b48e694cc4298
+[diet] step 2000 loss(win) 12855 loss(cyc8) 12001 nz 0.434 traj-sha 6342ae3f057ab097
+[diet] step 2125 loss(win) 11645 loss(cyc8) 11980 nz 0.434 traj-sha 8622423bfe735e92
+[diet] step 2250 loss(win) 12642 loss(cyc8) 11937 nz 0.433 traj-sha 330fdf4637a07078
+[diet] step 2375 loss(win) 11169 loss(cyc8) 11878 nz 0.432 traj-sha 6841ce3adee92507
+[diet] step 2500 loss(win) 11249 loss(cyc8) 11841 nz 0.433 traj-sha f9a0b3cb39312ca9
+[diet] step 2625 loss(win) 11627 loss(cyc8) 11843 nz 0.432 traj-sha 5255fe15ca63df2e
+[diet] step 2750 loss(win) 11132 loss(cyc8) 11836 nz 0.433 traj-sha c27aca152f90c6e6
+[diet] step 2875 loss(win) 12839 loss(cyc8) 11861 nz 0.433 traj-sha ec1e4c8698d59244
+[diet] step 3000 loss(win) 12736 loss(cyc8) 11828 nz 0.433 traj-sha b86f6761eab2e8a7
+[diet] step 3125 loss(win) 11598 loss(cyc8) 11809 nz 0.434 traj-sha cd2683e1459fe820
+[diet] step 3250 loss(win) 12350 loss(cyc8) 11794 nz 0.436 traj-sha 1b5bcf94cc096264
+[diet] step 3375 loss(win) 11112 loss(cyc8) 11831 nz 0.435 traj-sha 91bc5dc605cf3cf9
+[diet] step 3500 loss(win) 11121 loss(cyc8) 11768 nz 0.437 traj-sha af9c62c73de60a5b
+[diet] step 3625 loss(win) 11579 loss(cyc8) 11820 nz 0.436 traj-sha 4335c37a7fb3519e
+[diet] step 3750 loss(win) 11118 loss(cyc8) 11828 nz 0.436 traj-sha 5d594ebab6579a2e
+[diet] step 3875 loss(win) 12731 loss(cyc8) 11828 nz 0.437 traj-sha 881e0392fdbd35eb
+[diet] step 4000 loss(win) 12772 loss(cyc8) 11777 nz 0.437 traj-sha 15934bb88401163c
+[diet] cycle-mean loss 15909 -> 11777  falling: True
+[diet] FINAL trajectory sha 15934bb88401163c716149f12dfdf94567581dd3eed2af7c6f9090bd40e0103a
