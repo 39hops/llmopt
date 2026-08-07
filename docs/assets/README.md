@@ -20,6 +20,7 @@ as-rendered; do not overwrite).
 | Image | Claim / fence |
 |---|---|
 | `identity-crest-fresh-seeds.png` `[R]` (`plot_identity_crest.py`) | capability follows expert IDENTITY: swap-derived keep-set +53, named 80-carrier deletion +55, rank-matched control +28 (router over-inclusive) — all 3/3 at fresh seeds 1001/2002/3003. VERDICT EX-FRESH. FORMAT-BOUND, one vehicle, mathgen L1-3, Mac MLX |
+| `gt1-crest-small-multiples.png` `[R]` (`plot_gt1_crest.py`, Grok-authored via Artin relay) | the crest itself: 45.3% math-demand mask beats paired full at 6/6 seeds (+14.7 pooled, R4+R5) AND the same recipe craters on mechanics (-59 pooled, D4-PHYS-B) — matched recall does not predict sign. Per-seed pairing explicit (different baselines per seed pool) |
 
 ## Internet diet vs closed system
 
@@ -66,9 +67,8 @@ as-rendered; do not overwrite).
 
 ## Wanted (figures the record has earned)
 
-- GT-1 crest small-multiples (masked v full, 6 paired seeds +
-  domain-specificity: math +14.7 v mechanics -59) — data booked,
-  needs a `plot_*` script in the `[R]` class.
+- ~~GT-1 crest small-multiples~~ SHIPPED 2026-08-08
+  (`gt1-crest-small-multiples.png`, Grok-authored).
 - Re-render of `three-minds` from the committed script + the
   on-disk `k3_expert_*` shards, so the gallery's best cross-scale
   figure leaves the `[H]` class.
