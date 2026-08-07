@@ -22616,3 +22616,41 @@ the band), confirming the small-problem-space collision mechanism.
 FENCES: verbatim-string instrument (notation-bound; semantic
 near-duplicates uncounted — conservative undercount); levels 1-2
 hits are chain rows whose cur matches a band expression.
+
+## PRE-REG HARDENING-P2: two free-from-disk cells — the precision-knee gets n=3 dispersion (R1) and the crown tie gets n=3 problem-set draws (R8) (2026-08-07 night, Mac)
+
+Phase 2 of spec 2026-08-07-results-hardening (Artin GO). No
+training; existing artifacts only; every gate deterministic for
+frozen weights (07-31 companion law), so single runs per cell.
+
+R1 (precision knee, THEORY row 143): scratch/anatomy.py CELLS=snap
+on the three same-diet births mathnative_wfloor_d256{,_s2,_s3}.pt
+(d256/L8/FFN1024/H4; measured block-weight sigma ~0.037 class), at
+Q=64 (grid ~0.25-0.5 sigma, predicted FREE) and Q=16 (grid ~1.0+
+sigma, predicted BITE) against each birth's unsnapped comparator
+gate. NOTE the P1 fence applies to ABSOLUTE numbers on this band;
+the snap cell reads PAIRED deltas (snapped v unsnapped, same
+birth, same gate) — exposure cancels.
+BARS: P-KNEE-CONSTANT fires iff 3/3 births read Q=64 within +-3 of
+their own comparator AND Q=16 at comparator -7 or worse — the
+sigma-ratio knee holds with dispersion; the THEORY row's [n=1]
+fence lifts. Any birth violating either side: the row gains a
+dispersion caveat instead (booked either way). Sigma per birth
+recorded in the receipt.
+R8 (crown, BOARD STANDING): both crown artifacts
+(mathnative_gen6_grown.pt d512/L12/FFN2304/H8;
+merged_grown.pt d768/L8/FFN3840/H12 ternary line) gated PAIRED
+per draw at three FRESH problem-set draws (G.GATE_BAND offsets
++1M, +2M, +3M — disjoint from the standing band and from each
+other), one session, one device (mps). The claim under test is
+the TIE, read as paired per-draw deltas — never compared to the
+booked 76/75 absolutes (device class differs; paired-per-seed
+law).
+BARS: P-TIE-STANDS fires iff pooled |gen6 - merged| < 7 over the
+three draws — the tie is real at n=3 draws (births still n=1
+each, fence stays); P-TIEBREAK fires iff pooled delta >= 7 with
+3/3 signs — the tiebreak books WITHOUT a growth round (scoped to
+these two artifacts). Between: UNRESOLVED, draws booked.
+FENCES: R1 mps gates-only as the original; R8 fresh bands are the
+SAME generator class (band-shift, not a new corpus law); no
+cross-device numbers quoted.
