@@ -22489,3 +22489,32 @@ artifacts]; one vehicle, mathgen L1-3; the drift finding is scoped
 to the carriers' rank class (not uniform-random deletion); crest
 prose may now say CLAIMED at n=3 for both forms, with GT-1's
 6/6-seed crest remaining the strongest single claim.
+
+## VERDICT LEAN-FULL-V2: P-CORPUS-CLEAN FIRES — 21,614/21,914 kernel PASS (98.63%), and the 300-failure taxonomy CLOSES with ZERO residual: 222 atom-split + 78 field_simp-open, no new class (2026-08-07 evening, Mac local kernel)
+
+Against PRE-REG LEAN-FULL-V2 (receipt logs/lean/leanfull_v2.log
+force-added; 2,882 s total, 132 ms/cert — the full corpus in 48
+minutes on the Mac-local kernel): PASS 21,614/21,914 = 98.63% >=
+the 98.5% bar. FAILURE TAXONOMY (desk-classified with the
+semantic detector — a sympy-equal atom PAIR, the amendment's
+definition; the naive duplicate-value test sees zero of them):
+  222 atom-split (1.01% of corpus; sample estimated 0.7% — the
+      class is corpus-real and includes ring-tactic rows, 173 e /
+      127 m, confirming it is not division-specific)
+   78 field_simp-open (0.36%; sample 0.4% — scales exactly)
+    0 RESIDUAL — every failure classifies; NO new class exists.
+All 11 sample failures recur (7/7 atom-split ids re-classified
+correctly by the detector; the 4 field_simp ids present).
+Statement-diff: 15,751/21,914 = 71.9% exact/AC (sample 69.0%,
+consistent; the sign-factoring divergence class at corpus scale).
+CONSEQUENCE: LEAN LEG B IS COMPLETE — the certificate tier's
+kernel story closes at corpus scale with a CLOSED failure
+taxonomy: the emitter is fixed (overshoot class extinct), the
+only non-compiling rows are the two named-and-understood classes,
+both loud by design. Relay to axiom: the 222 atom-split ids +
+the 78 field_simp ids travel for their counter reconciliation
+(their emitted/fenced counters predicted this shape).
+FENCES: Mac-local kernel; v2 sidecar (axiom 6737bff); the
+atom-split detector is house-side sympy equivalence (their
+atomizer is the authority on WHY a pair split); cost comparisons
+per their ~11 ms/row convention.

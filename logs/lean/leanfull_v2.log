@@ -1,0 +1,756 @@
+[lean] rows 21914 | statement-diff ok 15751 skip 483 MISMATCH 5680
+[lean]   DIFF e30:
+    ours:   example (a1 a2 a3 x : ℝ) (h1 : 9*x^2 + 1 ≠ 0) : ((18*x^2 + 2)*(12*a2*a3 + 3*a2*a1 + 2) + 27)/(9*x^2 + 1) = 24*a2*a3 + 6*a2*a1 + 4 + 27/(9*x^2 + 1) := by ring_nf at *; try field_simp; try ring
+    theirs: example (a1 a2 a3 x : ℝ) (h1 : 9*x^2 + 1 ≠ 0) : ((3*a1*a2 + 12*a2*a3 + 2)*(18*x^2 + 2) + 27)/(9*x^2 + 1) = 6*a1*a2 + 24*a2*a3 + 27/(9*x^2 + 1) + 4 := by ring_nf at *; try field_simp; try ring
+[lean]   DIFF m33:
+    ours:   example (a1 a2 a3 x : ℝ) (h1 : 9*x^2 + 1 ≠ 0) : 6*a1*a2 + 24*a2*a3 + 27*((3*x)^2 + 1)^-1 + 4 = ((18*x^2 + 2)*(12*a2*a3 + 3*a2*a1 + 2) + 27)/(9*x^2 + 1) := by ring_nf at *; try field_simp; try ring
+    theirs: example (a1 a2 a3 x : ℝ) (h1 : (3*x)^2 + 1 ≠ 0) (h2 : 9*x^2 + 1 ≠ 0) : 6*a1*a2 + 24*a2*a3 + 27/((3*x)^2 + 1) + 4 = ((3*a1*a2 + 12*a2*a3 + 2)*(18*x^2 + 2) + 27)/(9*x^2 + 1) := by ring_nf at *; try field_simp; try ring
+[lean]   DIFF e34:
+    ours:   example (a1 x : ℝ) (h1 : 4*x^2 + 1 ≠ 0) : a1 + 3 + 6/(4*x^2 + 1) = a1 + 3 + 6/(4*x^2 + 1) := by rfl
+    theirs: example (a1 x : ℝ) (h1 : 4*x^2 + 1 ≠ 0) : 6/(4*x^2 + 1) + a1 + 3 = 6/(4*x^2 + 1) + a1 + 3 := by rfl
+[lean]   DIFF e37:
+    ours:   example (x : ℝ) (h1 : x ≠ 0) : 4*x + 3/x = 4*x + 3/x := by rfl
+    theirs: example (x : ℝ) (h1 : x ≠ 0) : 3/x + 4*x = 3/x + 4*x := by rfl
+[lean]   DIFF e40:
+    ours:   example (a1 a2 a3 a4 x : ℝ) (h1 : a2 ≠ 0) (h2 : x ≠ 0) : 9*a4/a2 + 9*a3/a2 + 3*a1/x = 9*a4/a2 + 9*a3/a2 + 3*a1/x := by rfl
+    theirs: example (a1 a2 a3 a4 x : ℝ) (h1 : x ≠ 0) (h2 : a2 ≠ 0) : 3*a1/x + 9*a3/a2 + 9*a4/a2 = 3*a1/x + 9*a3/a2 + 9*a4/a2 := by rfl
+[lean] chunk 0: 50/21914 checked, 0 failures (23s)
+[lean]   KERNEL-FAIL e260: unsolved goals
+[lean]   KERNEL-FAIL m263: unsolved goals
+[lean] chunk 1: 100/21914 checked, 2 failures (30s)
+[lean]   KERNEL-FAIL e381: unsolved goals
+[lean] chunk 2: 150/21914 checked, 3 failures (37s)
+[lean] chunk 3: 200/21914 checked, 3 failures (44s)
+[lean] chunk 4: 250/21914 checked, 3 failures (52s)
+[lean]   KERNEL-FAIL e1008: unsolved goals
+[lean]   KERNEL-FAIL m1011: unsolved goals
+[lean] chunk 5: 300/21914 checked, 5 failures (59s)
+[lean]   KERNEL-FAIL m1187: unsolved goals
+[lean] chunk 6: 350/21914 checked, 6 failures (67s)
+[lean]   KERNEL-FAIL m1229: unsolved goals
+[lean]   KERNEL-FAIL e1293: unsolved goals
+[lean] chunk 7: 400/21914 checked, 8 failures (74s)
+[lean]   KERNEL-FAIL e1463: unsolved goals
+[lean]   KERNEL-FAIL m1466: unsolved goals
+[lean]   KERNEL-FAIL m1525: unsolved goals
+[lean] chunk 8: 450/21914 checked, 11 failures (81s)
+[lean] chunk 9: 500/21914 checked, 11 failures (88s)
+[lean]   KERNEL-FAIL e1735: unsolved goals
+[lean]   KERNEL-FAIL m1738: unsolved goals
+[lean] chunk 10: 550/21914 checked, 13 failures (95s)
+[lean]   KERNEL-FAIL m1961: unsolved goals
+[lean]   KERNEL-FAIL e2017: unsolved goals
+[lean]   KERNEL-FAIL m2020: unsolved goals
+[lean] chunk 11: 600/21914 checked, 16 failures (102s)
+[lean]   KERNEL-FAIL e2117: unsolved goals
+[lean] chunk 12: 650/21914 checked, 17 failures (108s)
+[lean] chunk 13: 700/21914 checked, 17 failures (115s)
+[lean] chunk 14: 750/21914 checked, 17 failures (121s)
+[lean] chunk 15: 800/21914 checked, 17 failures (127s)
+[lean] chunk 16: 850/21914 checked, 17 failures (133s)
+[lean]   KERNEL-FAIL e2991: unsolved goals
+[lean] chunk 17: 900/21914 checked, 18 failures (139s)
+[lean] chunk 18: 950/21914 checked, 18 failures (146s)
+[lean] chunk 19: 1000/21914 checked, 18 failures (152s)
+[lean] chunk 20: 1050/21914 checked, 18 failures (158s)
+[lean]   KERNEL-FAIL e3802: unsolved goals
+[lean]   KERNEL-FAIL m3805: unsolved goals
+[lean]   KERNEL-FAIL e3822: unsolved goals
+[lean]   KERNEL-FAIL m3825: unsolved goals
+[lean] chunk 21: 1100/21914 checked, 22 failures (165s)
+[lean] chunk 22: 1150/21914 checked, 22 failures (171s)
+[lean] chunk 23: 1200/21914 checked, 22 failures (177s)
+[lean] chunk 24: 1250/21914 checked, 22 failures (183s)
+[lean] chunk 25: 1300/21914 checked, 22 failures (189s)
+[lean]   KERNEL-FAIL e4692: unsolved goals
+[lean] chunk 26: 1350/21914 checked, 23 failures (196s)
+[lean]   KERNEL-FAIL m4695: unsolved goals
+[lean]   KERNEL-FAIL e4767: unsolved goals
+[lean]   KERNEL-FAIL m4770: unsolved goals
+[lean] chunk 27: 1400/21914 checked, 26 failures (203s)
+[lean]   KERNEL-FAIL e4846: unsolved goals
+[lean]   KERNEL-FAIL m4849: unsolved goals
+[lean] chunk 28: 1450/21914 checked, 28 failures (209s)
+[lean] chunk 29: 1500/21914 checked, 28 failures (216s)
+[lean]   KERNEL-FAIL e5279: unsolved goals
+[lean] chunk 30: 1550/21914 checked, 29 failures (222s)
+[lean] chunk 31: 1600/21914 checked, 29 failures (228s)
+[lean] chunk 32: 1650/21914 checked, 29 failures (234s)
+[lean]   KERNEL-FAIL e5732: unsolved goals
+[lean] chunk 33: 1700/21914 checked, 30 failures (241s)
+[lean]   KERNEL-FAIL e6026: unsolved goals
+[lean]   KERNEL-FAIL m6029: unsolved goals
+[lean]   KERNEL-FAIL e6036: unsolved goals
+[lean]   KERNEL-FAIL m6039: unsolved goals
+[lean] chunk 34: 1750/21914 checked, 34 failures (248s)
+[lean] chunk 35: 1800/21914 checked, 34 failures (254s)
+[lean] chunk 36: 1850/21914 checked, 34 failures (260s)
+[lean] chunk 37: 1900/21914 checked, 34 failures (266s)
+[lean]   KERNEL-FAIL e6601: unsolved goals
+[lean]   KERNEL-FAIL m6604: unsolved goals
+[lean]   KERNEL-FAIL e6626: unsolved goals
+[lean]   KERNEL-FAIL m6629: unsolved goals
+[lean] chunk 38: 1950/21914 checked, 38 failures (273s)
+[lean] chunk 39: 2000/21914 checked, 38 failures (279s)
+[lean]   KERNEL-FAIL e6954: unsolved goals
+[lean] chunk 40: 2050/21914 checked, 39 failures (285s)
+[lean] chunk 41: 2100/21914 checked, 39 failures (291s)
+[lean] chunk 42: 2150/21914 checked, 39 failures (297s)
+[lean]   KERNEL-FAIL e7539: unsolved goals
+[lean] chunk 43: 2200/21914 checked, 40 failures (304s)
+[lean] chunk 44: 2250/21914 checked, 40 failures (310s)
+[lean]   KERNEL-FAIL e7885: unsolved goals
+[lean]   KERNEL-FAIL m7888: unsolved goals
+[lean]   KERNEL-FAIL e7895: unsolved goals
+[lean]   KERNEL-FAIL m7898: unsolved goals
+[lean] chunk 45: 2300/21914 checked, 44 failures (317s)
+[lean] chunk 46: 2350/21914 checked, 44 failures (323s)
+[lean] chunk 47: 2400/21914 checked, 44 failures (330s)
+[lean] chunk 48: 2450/21914 checked, 44 failures (336s)
+[lean] chunk 49: 2500/21914 checked, 44 failures (342s)
+[lean] chunk 50: 2550/21914 checked, 44 failures (348s)
+[lean] chunk 51: 2600/21914 checked, 44 failures (354s)
+[lean] chunk 52: 2650/21914 checked, 44 failures (360s)
+[lean]   KERNEL-FAIL e9076: unsolved goals
+[lean]   KERNEL-FAIL m9079: unsolved goals
+[lean] chunk 53: 2700/21914 checked, 46 failures (367s)
+[lean]   KERNEL-FAIL e9317: unsolved goals
+[lean]   KERNEL-FAIL m9320: unsolved goals
+[lean]   KERNEL-FAIL m9364: unsolved goals
+[lean] chunk 54: 2750/21914 checked, 49 failures (373s)
+[lean]   KERNEL-FAIL e9448: unsolved goals
+[lean]   KERNEL-FAIL e9474: unsolved goals
+[lean] chunk 55: 2800/21914 checked, 51 failures (380s)
+[lean]   KERNEL-FAIL e9681: unsolved goals
+[lean]   KERNEL-FAIL m9684: unsolved goals
+[lean] chunk 56: 2850/21914 checked, 53 failures (386s)
+[lean]   KERNEL-FAIL e9750: unsolved goals
+[lean]   KERNEL-FAIL m9855: unsolved goals
+[lean] chunk 57: 2900/21914 checked, 55 failures (392s)
+[lean] chunk 58: 2950/21914 checked, 55 failures (398s)
+[lean]   KERNEL-FAIL e10100: unsolved goals
+[lean]   KERNEL-FAIL m10103: unsolved goals
+[lean]   KERNEL-FAIL e10210: unsolved goals
+[lean] chunk 59: 3000/21914 checked, 58 failures (405s)
+[lean]   KERNEL-FAIL e10243: unsolved goals
+[lean]   KERNEL-FAIL m10246: unsolved goals
+[lean] chunk 60: 3050/21914 checked, 60 failures (411s)
+[lean]   KERNEL-FAIL e10466: unsolved goals
+[lean]   KERNEL-FAIL m10469: unsolved goals
+[lean] chunk 61: 3100/21914 checked, 62 failures (418s)
+[lean] chunk 62: 3150/21914 checked, 62 failures (424s)
+[lean] chunk 63: 3200/21914 checked, 62 failures (430s)
+[lean]   KERNEL-FAIL e10902: unsolved goals
+[lean]   KERNEL-FAIL m10905: unsolved goals
+[lean] chunk 64: 3250/21914 checked, 64 failures (437s)
+[lean] chunk 65: 3300/21914 checked, 64 failures (443s)
+[lean] chunk 66: 3350/21914 checked, 64 failures (449s)
+[lean] chunk 67: 3400/21914 checked, 64 failures (455s)
+[lean] chunk 68: 3450/21914 checked, 64 failures (461s)
+[lean] chunk 69: 3500/21914 checked, 64 failures (467s)
+[lean]   KERNEL-FAIL e11918: unsolved goals
+[lean]   KERNEL-FAIL m11921: unsolved goals
+[lean] chunk 70: 3550/21914 checked, 66 failures (474s)
+[lean] chunk 71: 3600/21914 checked, 66 failures (480s)
+[lean] chunk 72: 3650/21914 checked, 66 failures (486s)
+[lean] chunk 73: 3700/21914 checked, 66 failures (492s)
+[lean] chunk 74: 3750/21914 checked, 66 failures (499s)
+[lean] chunk 75: 3800/21914 checked, 66 failures (505s)
+[lean]   KERNEL-FAIL e12972: unsolved goals
+[lean]   KERNEL-FAIL m13012: unsolved goals
+[lean] chunk 76: 3850/21914 checked, 68 failures (511s)
+[lean] chunk 77: 3900/21914 checked, 68 failures (518s)
+[lean] chunk 78: 3950/21914 checked, 68 failures (524s)
+[lean] chunk 79: 4000/21914 checked, 68 failures (530s)
+[lean]   KERNEL-FAIL e13633: unsolved goals
+[lean]   KERNEL-FAIL m13636: unsolved goals
+[lean] chunk 80: 4050/21914 checked, 70 failures (536s)
+[lean] chunk 81: 4100/21914 checked, 70 failures (543s)
+[lean]   KERNEL-FAIL e13960: unsolved goals
+[lean] chunk 82: 4150/21914 checked, 71 failures (549s)
+[lean] chunk 83: 4200/21914 checked, 71 failures (555s)
+[lean]   KERNEL-FAIL e14362: unsolved goals
+[lean]   KERNEL-FAIL m14365: unsolved goals
+[lean] chunk 84: 4250/21914 checked, 73 failures (561s)
+[lean]   KERNEL-FAIL e14508: unsolved goals
+[lean]   KERNEL-FAIL m14511: unsolved goals
+[lean]   KERNEL-FAIL e14540: unsolved goals
+[lean] chunk 85: 4300/21914 checked, 76 failures (567s)
+[lean] chunk 86: 4350/21914 checked, 76 failures (573s)
+[lean] chunk 87: 4400/21914 checked, 76 failures (580s)
+[lean] chunk 88: 4450/21914 checked, 76 failures (586s)
+[lean]   KERNEL-FAIL e15253: unsolved goals
+[lean] chunk 89: 4500/21914 checked, 77 failures (593s)
+[lean]   KERNEL-FAIL e15336: unsolved goals
+[lean]   KERNEL-FAIL m15339: unsolved goals
+[lean] chunk 90: 4550/21914 checked, 79 failures (599s)
+[lean] chunk 91: 4600/21914 checked, 79 failures (605s)
+[lean] chunk 92: 4650/21914 checked, 79 failures (611s)
+[lean] chunk 93: 4700/21914 checked, 79 failures (618s)
+[lean] chunk 94: 4750/21914 checked, 79 failures (624s)
+[lean] chunk 95: 4800/21914 checked, 79 failures (630s)
+[lean] chunk 96: 4850/21914 checked, 79 failures (636s)
+[lean] chunk 97: 4900/21914 checked, 79 failures (643s)
+[lean]   KERNEL-FAIL e16767: unsolved goals
+[lean] chunk 98: 4950/21914 checked, 80 failures (649s)
+[lean] chunk 99: 5000/21914 checked, 80 failures (655s)
+[lean] chunk 100: 5050/21914 checked, 80 failures (661s)
+[lean] chunk 101: 5100/21914 checked, 80 failures (667s)
+[lean] chunk 102: 5150/21914 checked, 80 failures (673s)
+[lean] chunk 103: 5200/21914 checked, 80 failures (679s)
+[lean] chunk 104: 5250/21914 checked, 80 failures (698s)
+[lean] chunk 105: 5300/21914 checked, 80 failures (704s)
+[lean] chunk 106: 5350/21914 checked, 80 failures (710s)
+[lean] chunk 107: 5400/21914 checked, 80 failures (716s)
+[lean] chunk 108: 5450/21914 checked, 80 failures (722s)
+[lean]   KERNEL-FAIL m18726: unsolved goals
+[lean]   KERNEL-FAIL e18759: unsolved goals
+[lean]   KERNEL-FAIL m18762: unsolved goals
+[lean] chunk 109: 5500/21914 checked, 83 failures (729s)
+[lean] chunk 110: 5550/21914 checked, 83 failures (735s)
+[lean]   KERNEL-FAIL e19075: unsolved goals
+[lean]   KERNEL-FAIL m19078: unsolved goals
+[lean]   KERNEL-FAIL m19111: unsolved goals
+[lean] chunk 111: 5600/21914 checked, 86 failures (741s)
+[lean] chunk 112: 5650/21914 checked, 86 failures (748s)
+[lean]   KERNEL-FAIL e19413: unsolved goals
+[lean]   KERNEL-FAIL m19416: unsolved goals
+[lean] chunk 113: 5700/21914 checked, 88 failures (754s)
+[lean] chunk 114: 5750/21914 checked, 88 failures (761s)
+[lean] chunk 115: 5800/21914 checked, 88 failures (767s)
+[lean] chunk 116: 5850/21914 checked, 88 failures (773s)
+[lean]   KERNEL-FAIL e20052: unsolved goals
+[lean] chunk 117: 5900/21914 checked, 89 failures (780s)
+[lean] chunk 118: 5950/21914 checked, 89 failures (786s)
+[lean]   KERNEL-FAIL e20382: unsolved goals
+[lean] chunk 119: 6000/21914 checked, 90 failures (793s)
+[lean] chunk 120: 6050/21914 checked, 90 failures (799s)
+[lean]   KERNEL-FAIL m20707: unsolved goals
+[lean] chunk 121: 6100/21914 checked, 91 failures (805s)
+[lean]   KERNEL-FAIL e20965: unsolved goals
+[lean] chunk 122: 6150/21914 checked, 92 failures (811s)
+[lean]   KERNEL-FAIL e21180: unsolved goals
+[lean]   KERNEL-FAIL m21183: unsolved goals
+[lean] chunk 123: 6200/21914 checked, 94 failures (819s)
+[lean] chunk 124: 6250/21914 checked, 94 failures (825s)
+[lean] chunk 125: 6300/21914 checked, 94 failures (831s)
+[lean]   KERNEL-FAIL e21573: unsolved goals
+[lean]   KERNEL-FAIL m21576: unsolved goals
+[lean] chunk 126: 6350/21914 checked, 96 failures (837s)
+[lean]   KERNEL-FAIL m21745: unsolved goals
+[lean] chunk 127: 6400/21914 checked, 97 failures (844s)
+[lean]   KERNEL-FAIL e22005: unsolved goals
+[lean] chunk 128: 6450/21914 checked, 98 failures (850s)
+[lean] chunk 129: 6500/21914 checked, 98 failures (856s)
+[lean] chunk 130: 6550/21914 checked, 98 failures (862s)
+[lean] chunk 131: 6600/21914 checked, 98 failures (868s)
+[lean] chunk 132: 6650/21914 checked, 98 failures (875s)
+[lean] chunk 133: 6700/21914 checked, 98 failures (881s)
+[lean] chunk 134: 6750/21914 checked, 98 failures (886s)
+[lean] chunk 135: 6800/21914 checked, 98 failures (892s)
+[lean]   KERNEL-FAIL e23367: unsolved goals
+[lean]   KERNEL-FAIL m23370: unsolved goals
+[lean] chunk 136: 6850/21914 checked, 100 failures (899s)
+[lean] chunk 137: 6900/21914 checked, 100 failures (905s)
+[lean] chunk 138: 6950/21914 checked, 100 failures (911s)
+[lean] chunk 139: 7000/21914 checked, 100 failures (917s)
+[lean]   KERNEL-FAIL e24025: unsolved goals
+[lean]   KERNEL-FAIL m24028: unsolved goals
+[lean] chunk 140: 7050/21914 checked, 102 failures (923s)
+[lean]   KERNEL-FAIL e24098: unsolved goals
+[lean]   KERNEL-FAIL e24171: unsolved goals
+[lean]   KERNEL-FAIL m24174: unsolved goals
+[lean] chunk 141: 7100/21914 checked, 105 failures (929s)
+[lean] chunk 142: 7150/21914 checked, 105 failures (935s)
+[lean] chunk 143: 7200/21914 checked, 105 failures (941s)
+[lean] chunk 144: 7250/21914 checked, 105 failures (948s)
+[lean] chunk 145: 7300/21914 checked, 105 failures (954s)
+[lean] chunk 146: 7350/21914 checked, 105 failures (960s)
+[lean] chunk 147: 7400/21914 checked, 105 failures (966s)
+[lean] chunk 148: 7450/21914 checked, 105 failures (972s)
+[lean] chunk 149: 7500/21914 checked, 105 failures (979s)
+[lean] chunk 150: 7550/21914 checked, 105 failures (984s)
+[lean]   KERNEL-FAIL e25953: unsolved goals
+[lean]   KERNEL-FAIL m25956: unsolved goals
+[lean] chunk 151: 7600/21914 checked, 107 failures (991s)
+[lean]   KERNEL-FAIL e25994: unsolved goals
+[lean] chunk 152: 7650/21914 checked, 108 failures (997s)
+[lean] chunk 153: 7700/21914 checked, 108 failures (1003s)
+[lean] chunk 154: 7750/21914 checked, 108 failures (1009s)
+[lean] chunk 155: 7800/21914 checked, 108 failures (1015s)
+[lean] chunk 156: 7850/21914 checked, 108 failures (1021s)
+[lean] chunk 157: 7900/21914 checked, 108 failures (1027s)
+[lean] chunk 158: 7950/21914 checked, 108 failures (1033s)
+[lean]   KERNEL-FAIL e27227: unsolved goals
+[lean]   KERNEL-FAIL e27268: unsolved goals
+[lean]   KERNEL-FAIL m27271: unsolved goals
+[lean] chunk 159: 8000/21914 checked, 111 failures (1040s)
+[lean] chunk 160: 8050/21914 checked, 111 failures (1046s)
+[lean] chunk 161: 8100/21914 checked, 111 failures (1052s)
+[lean]   KERNEL-FAIL e27772: unsolved goals
+[lean]   KERNEL-FAIL e27778: unsolved goals
+[lean]   KERNEL-FAIL m27781: unsolved goals
+[lean] chunk 162: 8150/21914 checked, 114 failures (1058s)
+[lean]   KERNEL-FAIL e27900: unsolved goals
+[lean] chunk 163: 8200/21914 checked, 115 failures (1065s)
+[lean] chunk 164: 8250/21914 checked, 115 failures (1071s)
+[lean] chunk 165: 8300/21914 checked, 115 failures (1079s)
+[lean]   KERNEL-FAIL e28354: unsolved goals
+[lean]   KERNEL-FAIL e28357: unsolved goals
+[lean] chunk 166: 8350/21914 checked, 117 failures (1086s)
+[lean]   KERNEL-FAIL e28539: unsolved goals
+[lean]   KERNEL-FAIL m28542: unsolved goals
+[lean]   KERNEL-FAIL e28659: unsolved goals
+[lean] chunk 167: 8400/21914 checked, 120 failures (1094s)
+[lean]   KERNEL-FAIL e28830: unsolved goals
+[lean]   KERNEL-FAIL m28833: unsolved goals
+[lean] chunk 168: 8450/21914 checked, 122 failures (1101s)
+[lean] chunk 169: 8500/21914 checked, 122 failures (1107s)
+[lean] chunk 170: 8550/21914 checked, 122 failures (1114s)
+[lean] chunk 171: 8600/21914 checked, 122 failures (1121s)
+[lean] chunk 172: 8650/21914 checked, 122 failures (1128s)
+[lean] chunk 173: 8700/21914 checked, 122 failures (1135s)
+[lean] chunk 174: 8750/21914 checked, 122 failures (1141s)
+[lean] chunk 175: 8800/21914 checked, 122 failures (1148s)
+[lean] chunk 176: 8850/21914 checked, 122 failures (1156s)
+[lean] chunk 177: 8900/21914 checked, 122 failures (1162s)
+[lean] chunk 178: 8950/21914 checked, 122 failures (1168s)
+[lean] chunk 179: 9000/21914 checked, 122 failures (1176s)
+[lean] chunk 180: 9050/21914 checked, 122 failures (1184s)
+[lean] chunk 181: 9100/21914 checked, 122 failures (1191s)
+[lean]   KERNEL-FAIL e31079: unsolved goals
+[lean]   KERNEL-FAIL e31112: unsolved goals
+[lean]   KERNEL-FAIL m31115: unsolved goals
+[lean] chunk 182: 9150/21914 checked, 125 failures (1198s)
+[lean] chunk 183: 9200/21914 checked, 125 failures (1205s)
+[lean] chunk 184: 9250/21914 checked, 125 failures (1213s)
+[lean]   KERNEL-FAIL e31557: unsolved goals
+[lean]   KERNEL-FAIL m31560: unsolved goals
+[lean] chunk 185: 9300/21914 checked, 127 failures (1220s)
+[lean] chunk 186: 9350/21914 checked, 127 failures (1227s)
+[lean]   KERNEL-FAIL e31851: unsolved goals
+[lean] chunk 187: 9400/21914 checked, 128 failures (1235s)
+[lean] chunk 188: 9450/21914 checked, 128 failures (1242s)
+[lean] chunk 189: 9500/21914 checked, 128 failures (1249s)
+[lean] chunk 190: 9550/21914 checked, 128 failures (1255s)
+[lean] chunk 191: 9600/21914 checked, 128 failures (1263s)
+[lean] chunk 192: 9650/21914 checked, 128 failures (1270s)
+[lean] chunk 193: 9700/21914 checked, 128 failures (1276s)
+[lean]   KERNEL-FAIL e33076: unsolved goals
+[lean]   KERNEL-FAIL m33079: unsolved goals
+[lean]   KERNEL-FAIL e33137: unsolved goals
+[lean]   KERNEL-FAIL m33140: unsolved goals
+[lean] chunk 194: 9750/21914 checked, 132 failures (1283s)
+[lean] chunk 195: 9800/21914 checked, 132 failures (1290s)
+[lean] chunk 196: 9850/21914 checked, 132 failures (1296s)
+[lean] chunk 197: 9900/21914 checked, 132 failures (1303s)
+[lean] chunk 198: 9950/21914 checked, 132 failures (1309s)
+[lean] chunk 199: 10000/21914 checked, 132 failures (1317s)
+[lean]   KERNEL-FAIL e34129: unsolved goals
+[lean] chunk 200: 10050/21914 checked, 133 failures (1324s)
+[lean]   KERNEL-FAIL e34252: unsolved goals
+[lean]   KERNEL-FAIL m34255: unsolved goals
+[lean] chunk 201: 10100/21914 checked, 135 failures (1331s)
+[lean] chunk 202: 10150/21914 checked, 135 failures (1339s)
+[lean]   KERNEL-FAIL e34581: unsolved goals
+[lean] chunk 203: 10200/21914 checked, 136 failures (1346s)
+[lean] chunk 204: 10250/21914 checked, 136 failures (1353s)
+[lean] chunk 205: 10300/21914 checked, 136 failures (1360s)
+[lean]   KERNEL-FAIL e35176: unsolved goals
+[lean]   KERNEL-FAIL m35179: unsolved goals
+[lean]   KERNEL-FAIL e35232: unsolved goals
+[lean]   KERNEL-FAIL m35235: unsolved goals
+[lean] chunk 206: 10350/21914 checked, 140 failures (1367s)
+[lean] chunk 207: 10400/21914 checked, 140 failures (1374s)
+[lean]   KERNEL-FAIL e35414: unsolved goals
+[lean]   KERNEL-FAIL m35417: unsolved goals
+[lean] chunk 208: 10450/21914 checked, 142 failures (1380s)
+[lean]   KERNEL-FAIL m35730: unsolved goals
+[lean] chunk 209: 10500/21914 checked, 143 failures (1387s)
+[lean] chunk 210: 10550/21914 checked, 143 failures (1394s)
+[lean]   KERNEL-FAIL m35949: unsolved goals
+[lean] chunk 211: 10600/21914 checked, 144 failures (1401s)
+[lean] chunk 212: 10650/21914 checked, 144 failures (1408s)
+[lean]   KERNEL-FAIL e36320: unsolved goals
+[lean] chunk 213: 10700/21914 checked, 145 failures (1415s)
+[lean] chunk 214: 10750/21914 checked, 145 failures (1422s)
+[lean]   KERNEL-FAIL e36661: unsolved goals
+[lean] chunk 215: 10800/21914 checked, 146 failures (1429s)
+[lean]   KERNEL-FAIL e36916: unsolved goals
+[lean] chunk 216: 10850/21914 checked, 147 failures (1436s)
+[lean]   KERNEL-FAIL e37066: unsolved goals
+[lean]   KERNEL-FAIL m37069: unsolved goals
+[lean] chunk 217: 10900/21914 checked, 149 failures (1445s)
+[lean] chunk 218: 10950/21914 checked, 149 failures (1452s)
+[lean] chunk 219: 11000/21914 checked, 149 failures (1459s)
+[lean] chunk 220: 11050/21914 checked, 149 failures (1466s)
+[lean]   KERNEL-FAIL e37702: unsolved goals
+[lean]   KERNEL-FAIL m37705: unsolved goals
+[lean] chunk 221: 11100/21914 checked, 151 failures (1474s)
+[lean]   KERNEL-FAIL e37941: unsolved goals
+[lean] chunk 222: 11150/21914 checked, 152 failures (1482s)
+[lean] chunk 223: 11200/21914 checked, 152 failures (1489s)
+[lean] chunk 224: 11250/21914 checked, 152 failures (1495s)
+[lean] chunk 225: 11300/21914 checked, 152 failures (1502s)
+[lean] chunk 226: 11350/21914 checked, 152 failures (1508s)
+[lean]   KERNEL-FAIL e38688: unsolved goals
+[lean]   KERNEL-FAIL m38691: unsolved goals
+[lean] chunk 227: 11400/21914 checked, 154 failures (1515s)
+[lean] chunk 228: 11450/21914 checked, 154 failures (1521s)
+[lean] chunk 229: 11500/21914 checked, 154 failures (1527s)
+[lean] chunk 230: 11550/21914 checked, 154 failures (1533s)
+[lean] chunk 231: 11600/21914 checked, 154 failures (1540s)
+[lean]   KERNEL-FAIL e39485: unsolved goals
+[lean] chunk 232: 11650/21914 checked, 155 failures (1547s)
+[lean] chunk 233: 11700/21914 checked, 155 failures (1554s)
+[lean] chunk 234: 11750/21914 checked, 155 failures (1560s)
+[lean] chunk 235: 11800/21914 checked, 155 failures (1566s)
+[lean] chunk 236: 11850/21914 checked, 155 failures (1572s)
+[lean] chunk 237: 11900/21914 checked, 155 failures (1578s)
+[lean]   KERNEL-FAIL e40533: unsolved goals
+[lean]   KERNEL-FAIL m40536: unsolved goals
+[lean]   KERNEL-FAIL e40561: unsolved goals
+[lean]   KERNEL-FAIL m40564: unsolved goals
+[lean] chunk 238: 11950/21914 checked, 159 failures (1585s)
+[lean]   KERNEL-FAIL e40668: unsolved goals
+[lean]   KERNEL-FAIL m40671: unsolved goals
+[lean]   KERNEL-FAIL e40769: unsolved goals
+[lean]   KERNEL-FAIL m40772: unsolved goals
+[lean] chunk 239: 12000/21914 checked, 163 failures (1592s)
+[lean] chunk 240: 12050/21914 checked, 163 failures (1598s)
+[lean] chunk 241: 12100/21914 checked, 163 failures (1605s)
+[lean] chunk 242: 12150/21914 checked, 163 failures (1611s)
+[lean] chunk 243: 12200/21914 checked, 163 failures (1618s)
+[lean] chunk 244: 12250/21914 checked, 163 failures (1624s)
+[lean]   KERNEL-FAIL e41792: unsolved goals
+[lean] chunk 245: 12300/21914 checked, 164 failures (1631s)
+[lean]   KERNEL-FAIL m41867: unsolved goals
+[lean] chunk 246: 12350/21914 checked, 165 failures (1638s)
+[lean] chunk 247: 12400/21914 checked, 165 failures (1645s)
+[lean]   KERNEL-FAIL e42158: unsolved goals
+[lean]   KERNEL-FAIL m42161: unsolved goals
+[lean]   KERNEL-FAIL e42192: unsolved goals
+[lean] chunk 248: 12450/21914 checked, 168 failures (1653s)
+[lean] chunk 249: 12500/21914 checked, 168 failures (1660s)
+[lean]   KERNEL-FAIL e42512: unsolved goals
+[lean]   KERNEL-FAIL m42515: unsolved goals
+[lean]   KERNEL-FAIL m42639: unsolved goals
+[lean] chunk 250: 12550/21914 checked, 171 failures (1667s)
+[lean] chunk 251: 12600/21914 checked, 171 failures (1675s)
+[lean] chunk 252: 12650/21914 checked, 171 failures (1682s)
+[lean] chunk 253: 12700/21914 checked, 171 failures (1689s)
+[lean] chunk 254: 12750/21914 checked, 171 failures (1695s)
+[lean]   KERNEL-FAIL e43406: unsolved goals
+[lean]   KERNEL-FAIL m43409: unsolved goals
+[lean] chunk 255: 12800/21914 checked, 173 failures (1702s)
+[lean] chunk 256: 12850/21914 checked, 173 failures (1708s)
+[lean]   KERNEL-FAIL e43885: unsolved goals
+[lean]   KERNEL-FAIL e43894: unsolved goals
+[lean]   KERNEL-FAIL m43897: unsolved goals
+[lean] chunk 257: 12900/21914 checked, 176 failures (1715s)
+[lean]   KERNEL-FAIL e44028: unsolved goals
+[lean]   KERNEL-FAIL m44031: unsolved goals
+[lean] chunk 258: 12950/21914 checked, 178 failures (1722s)
+[lean] chunk 259: 13000/21914 checked, 178 failures (1728s)
+[lean]   KERNEL-FAIL e44399: unsolved goals
+[lean] chunk 260: 13050/21914 checked, 179 failures (1735s)
+[lean]   KERNEL-FAIL e44572: unsolved goals
+[lean] chunk 261: 13100/21914 checked, 180 failures (1742s)
+[lean] chunk 262: 13150/21914 checked, 180 failures (1748s)
+[lean] chunk 263: 13200/21914 checked, 180 failures (1754s)
+[lean] chunk 264: 13250/21914 checked, 180 failures (1761s)
+[lean] chunk 265: 13300/21914 checked, 180 failures (1767s)
+[lean]   KERNEL-FAIL e45329: unsolved goals
+[lean]   KERNEL-FAIL m45332: unsolved goals
+[lean] chunk 266: 13350/21914 checked, 182 failures (1775s)
+[lean]   KERNEL-FAIL e45539: unsolved goals
+[lean] chunk 267: 13400/21914 checked, 183 failures (1781s)
+[lean] chunk 268: 13450/21914 checked, 183 failures (1788s)
+[lean]   KERNEL-FAIL e45856: unsolved goals
+[lean]   KERNEL-FAIL m45859: unsolved goals
+[lean]   KERNEL-FAIL e45860: unsolved goals
+[lean] chunk 269: 13500/21914 checked, 186 failures (1795s)
+[lean] chunk 270: 13550/21914 checked, 186 failures (1801s)
+[lean] chunk 271: 13600/21914 checked, 186 failures (1808s)
+[lean]   KERNEL-FAIL e46398: unsolved goals
+[lean]   KERNEL-FAIL m46401: unsolved goals
+[lean] chunk 272: 13650/21914 checked, 188 failures (1815s)
+[lean]   KERNEL-FAIL m46531: unsolved goals
+[lean] chunk 273: 13700/21914 checked, 189 failures (1821s)
+[lean] chunk 274: 13750/21914 checked, 189 failures (1831s)
+[lean]   KERNEL-FAIL e46849: unsolved goals
+[lean]   KERNEL-FAIL m46852: unsolved goals
+[lean]   KERNEL-FAIL e46880: unsolved goals
+[lean] chunk 275: 13800/21914 checked, 192 failures (1838s)
+[lean] chunk 276: 13850/21914 checked, 192 failures (1845s)
+[lean]   KERNEL-FAIL e47132: unsolved goals
+[lean]   KERNEL-FAIL m47135: unsolved goals
+[lean] chunk 277: 13900/21914 checked, 194 failures (1851s)
+[lean]   KERNEL-FAIL e47288: unsolved goals
+[lean]   KERNEL-FAIL e47304: unsolved goals
+[lean]   KERNEL-FAIL m47307: unsolved goals
+[lean] chunk 278: 13950/21914 checked, 197 failures (1858s)
+[lean]   KERNEL-FAIL e47557: unsolved goals
+[lean] chunk 279: 14000/21914 checked, 198 failures (1864s)
+[lean] chunk 280: 14050/21914 checked, 198 failures (1871s)
+[lean] chunk 281: 14100/21914 checked, 198 failures (1877s)
+[lean] chunk 282: 14150/21914 checked, 198 failures (1883s)
+[lean]   KERNEL-FAIL e48250: unsolved goals
+[lean]   KERNEL-FAIL m48253: unsolved goals
+[lean] chunk 283: 14200/21914 checked, 200 failures (1890s)
+[lean]   KERNEL-FAIL e48372: unsolved goals
+[lean]   KERNEL-FAIL m48375: unsolved goals
+[lean]   KERNEL-FAIL e48451: unsolved goals
+[lean] chunk 284: 14250/21914 checked, 203 failures (1897s)
+[lean]   KERNEL-FAIL m48535: unsolved goals
+[lean] chunk 285: 14300/21914 checked, 204 failures (1904s)
+[lean]   KERNEL-FAIL e48701: unsolved goals
+[lean]   KERNEL-FAIL e48741: unsolved goals
+[lean]   KERNEL-FAIL m48744: unsolved goals
+[lean] chunk 286: 14350/21914 checked, 207 failures (1911s)
+[lean] chunk 287: 14400/21914 checked, 207 failures (1917s)
+[lean] chunk 288: 14450/21914 checked, 207 failures (1924s)
+[lean] chunk 289: 14500/21914 checked, 207 failures (1930s)
+[lean] chunk 290: 14550/21914 checked, 207 failures (1937s)
+[lean] chunk 291: 14600/21914 checked, 207 failures (1943s)
+[lean]   KERNEL-FAIL e49711: unsolved goals
+[lean]   KERNEL-FAIL m49714: unsolved goals
+[lean] chunk 292: 14650/21914 checked, 209 failures (1950s)
+[lean] chunk 293: 14700/21914 checked, 209 failures (1956s)
+[lean] chunk 294: 14750/21914 checked, 209 failures (1962s)
+[lean] chunk 295: 14800/21914 checked, 209 failures (1969s)
+[lean] chunk 296: 14850/21914 checked, 209 failures (1977s)
+[lean] chunk 297: 14900/21914 checked, 209 failures (1984s)
+[lean] chunk 298: 14950/21914 checked, 209 failures (1991s)
+[lean] chunk 299: 15000/21914 checked, 209 failures (1999s)
+[lean] chunk 300: 15050/21914 checked, 209 failures (2005s)
+[lean]   KERNEL-FAIL e51281: unsolved goals
+[lean]   KERNEL-FAIL m51284: unsolved goals
+[lean] chunk 301: 15100/21914 checked, 211 failures (2012s)
+[lean] chunk 302: 15150/21914 checked, 211 failures (2018s)
+[lean] chunk 303: 15200/21914 checked, 211 failures (2025s)
+[lean] chunk 304: 15250/21914 checked, 211 failures (2032s)
+[lean] chunk 305: 15300/21914 checked, 211 failures (2039s)
+[lean] chunk 306: 15350/21914 checked, 211 failures (2046s)
+[lean] chunk 307: 15400/21914 checked, 211 failures (2053s)
+[lean]   KERNEL-FAIL e52491: unsolved goals
+[lean] chunk 308: 15450/21914 checked, 212 failures (2060s)
+[lean] chunk 309: 15500/21914 checked, 212 failures (2067s)
+[lean]   KERNEL-FAIL e52788: unsolved goals
+[lean]   KERNEL-FAIL m52791: unsolved goals
+[lean]   KERNEL-FAIL e52843: unsolved goals
+[lean] chunk 310: 15550/21914 checked, 215 failures (2073s)
+[lean] chunk 311: 15600/21914 checked, 215 failures (2080s)
+[lean] chunk 312: 15650/21914 checked, 215 failures (2087s)
+[lean]   KERNEL-FAIL e53294: unsolved goals
+[lean] chunk 313: 15700/21914 checked, 216 failures (2093s)
+[lean] chunk 314: 15750/21914 checked, 216 failures (2100s)
+[lean] chunk 315: 15800/21914 checked, 216 failures (2106s)
+[lean]   KERNEL-FAIL m53821: unsolved goals
+[lean] chunk 316: 15850/21914 checked, 217 failures (2113s)
+[lean]   KERNEL-FAIL e53930: unsolved goals
+[lean] chunk 317: 15900/21914 checked, 218 failures (2119s)
+[lean]   KERNEL-FAIL e54130: unsolved goals
+[lean] chunk 318: 15950/21914 checked, 219 failures (2125s)
+[lean]   KERNEL-FAIL e54334: unsolved goals
+[lean]   KERNEL-FAIL m54337: unsolved goals
+[lean] chunk 319: 16000/21914 checked, 221 failures (2132s)
+[lean] chunk 320: 16050/21914 checked, 221 failures (2139s)
+[lean] chunk 321: 16100/21914 checked, 221 failures (2145s)
+[lean] chunk 322: 16150/21914 checked, 221 failures (2151s)
+[lean] chunk 323: 16200/21914 checked, 221 failures (2158s)
+[lean]   KERNEL-FAIL e55040: unsolved goals
+[lean]   KERNEL-FAIL m55043: unsolved goals
+[lean] chunk 324: 16250/21914 checked, 223 failures (2164s)
+[lean] chunk 325: 16300/21914 checked, 223 failures (2171s)
+[lean]   KERNEL-FAIL e55427: unsolved goals
+[lean]   KERNEL-FAIL m55430: unsolved goals
+[lean] chunk 326: 16350/21914 checked, 225 failures (2177s)
+[lean]   KERNEL-FAIL e55717: unsolved goals
+[lean]   KERNEL-FAIL m55720: unsolved goals
+[lean] chunk 327: 16400/21914 checked, 227 failures (2184s)
+[lean]   KERNEL-FAIL m55852: unsolved goals
+[lean] chunk 328: 16450/21914 checked, 228 failures (2190s)
+[lean]   KERNEL-FAIL e56005: unsolved goals
+[lean] chunk 329: 16500/21914 checked, 229 failures (2197s)
+[lean]   KERNEL-FAIL e56098: unsolved goals
+[lean]   KERNEL-FAIL m56101: unsolved goals
+[lean] chunk 330: 16550/21914 checked, 231 failures (2203s)
+[lean] chunk 331: 16600/21914 checked, 231 failures (2211s)
+[lean]   KERNEL-FAIL e56535: unsolved goals
+[lean]   KERNEL-FAIL m56538: unsolved goals
+[lean] chunk 332: 16650/21914 checked, 233 failures (2218s)
+[lean] chunk 333: 16700/21914 checked, 233 failures (2225s)
+[lean]   KERNEL-FAIL e56916: unsolved goals
+[lean]   KERNEL-FAIL m56919: unsolved goals
+[lean] chunk 334: 16750/21914 checked, 235 failures (2232s)
+[lean] chunk 335: 16800/21914 checked, 235 failures (2238s)
+[lean] chunk 336: 16850/21914 checked, 235 failures (2244s)
+[lean] chunk 337: 16900/21914 checked, 235 failures (2251s)
+[lean] chunk 338: 16950/21914 checked, 235 failures (2257s)
+[lean] chunk 339: 17000/21914 checked, 235 failures (2263s)
+[lean] chunk 340: 17050/21914 checked, 235 failures (2269s)
+[lean] chunk 341: 17100/21914 checked, 235 failures (2276s)
+[lean] chunk 342: 17150/21914 checked, 235 failures (2282s)
+[lean] chunk 343: 17200/21914 checked, 235 failures (2288s)
+[lean] chunk 344: 17250/21914 checked, 235 failures (2294s)
+[lean]   KERNEL-FAIL m58701: unsolved goals
+[lean] chunk 345: 17300/21914 checked, 236 failures (2300s)
+[lean] chunk 346: 17350/21914 checked, 236 failures (2306s)
+[lean] chunk 347: 17400/21914 checked, 236 failures (2313s)
+[lean] chunk 348: 17450/21914 checked, 236 failures (2319s)
+[lean] chunk 349: 17500/21914 checked, 236 failures (2325s)
+[lean]   KERNEL-FAIL e59547: unsolved goals
+[lean] chunk 350: 17550/21914 checked, 237 failures (2331s)
+[lean] chunk 351: 17600/21914 checked, 237 failures (2338s)
+[lean] chunk 352: 17650/21914 checked, 237 failures (2344s)
+[lean]   KERNEL-FAIL e59993: unsolved goals
+[lean]   KERNEL-FAIL e60044: unsolved goals
+[lean]   KERNEL-FAIL m60047: unsolved goals
+[lean] chunk 353: 17700/21914 checked, 240 failures (2350s)
+[lean] chunk 354: 17750/21914 checked, 240 failures (2357s)
+[lean]   KERNEL-FAIL e60423: unsolved goals
+[lean] chunk 355: 17800/21914 checked, 241 failures (2363s)
+[lean] chunk 356: 17850/21914 checked, 241 failures (2369s)
+[lean] chunk 357: 17900/21914 checked, 241 failures (2375s)
+[lean]   KERNEL-FAIL e60969: unsolved goals
+[lean]   KERNEL-FAIL m60972: unsolved goals
+[lean] chunk 358: 17950/21914 checked, 243 failures (2381s)
+[lean]   KERNEL-FAIL e61042: unsolved goals
+[lean] chunk 359: 18000/21914 checked, 244 failures (2387s)
+[lean] chunk 360: 18050/21914 checked, 244 failures (2393s)
+[lean] chunk 361: 18100/21914 checked, 244 failures (2399s)
+[lean]   KERNEL-FAIL e61632: unsolved goals
+[lean]   KERNEL-FAIL m61635: unsolved goals
+[lean] chunk 362: 18150/21914 checked, 246 failures (2406s)
+[lean]   KERNEL-FAIL e61859: unsolved goals
+[lean] chunk 363: 18200/21914 checked, 247 failures (2412s)
+[lean]   KERNEL-FAIL e61949: unsolved goals
+[lean]   KERNEL-FAIL m61952: unsolved goals
+[lean]   KERNEL-FAIL e61972: unsolved goals
+[lean] chunk 364: 18250/21914 checked, 250 failures (2418s)
+[lean] chunk 365: 18300/21914 checked, 250 failures (2425s)
+[lean] chunk 366: 18350/21914 checked, 250 failures (2431s)
+[lean] chunk 367: 18400/21914 checked, 250 failures (2437s)
+[lean]   KERNEL-FAIL e62597: unsolved goals
+[lean] chunk 368: 18450/21914 checked, 251 failures (2443s)
+[lean]   KERNEL-FAIL m62726: unsolved goals
+[lean] chunk 369: 18500/21914 checked, 252 failures (2449s)
+[lean]   KERNEL-FAIL e62905: unsolved goals
+[lean]   KERNEL-FAIL m62908: unsolved goals
+[lean] chunk 370: 18550/21914 checked, 254 failures (2456s)
+[lean] chunk 371: 18600/21914 checked, 254 failures (2462s)
+[lean]   KERNEL-FAIL e63262: unsolved goals
+[lean]   KERNEL-FAIL m63265: unsolved goals
+[lean] chunk 372: 18650/21914 checked, 256 failures (2468s)
+[lean] chunk 373: 18700/21914 checked, 256 failures (2475s)
+[lean] chunk 374: 18750/21914 checked, 256 failures (2481s)
+[lean] chunk 375: 18800/21914 checked, 256 failures (2487s)
+[lean]   KERNEL-FAIL e63868: unsolved goals
+[lean]   KERNEL-FAIL m63871: unsolved goals
+[lean] chunk 376: 18850/21914 checked, 258 failures (2493s)
+[lean] chunk 377: 18900/21914 checked, 258 failures (2499s)
+[lean] chunk 378: 18950/21914 checked, 258 failures (2505s)
+[lean] chunk 379: 19000/21914 checked, 258 failures (2512s)
+[lean] chunk 380: 19050/21914 checked, 258 failures (2518s)
+[lean] chunk 381: 19100/21914 checked, 258 failures (2524s)
+[lean]   KERNEL-FAIL e64889: unsolved goals
+[lean]   KERNEL-FAIL e64932: unsolved goals
+[lean]   KERNEL-FAIL m64935: unsolved goals
+[lean] chunk 382: 19150/21914 checked, 261 failures (2530s)
+[lean] chunk 383: 19200/21914 checked, 261 failures (2536s)
+[lean] chunk 384: 19250/21914 checked, 261 failures (2542s)
+[lean]   KERNEL-FAIL e65449: unsolved goals
+[lean]   KERNEL-FAIL e65489: unsolved goals
+[lean]   KERNEL-FAIL m65492: unsolved goals
+[lean] chunk 385: 19300/21914 checked, 264 failures (2549s)
+[lean]   KERNEL-FAIL e65603: unsolved goals
+[lean] chunk 386: 19350/21914 checked, 265 failures (2555s)
+[lean] chunk 387: 19400/21914 checked, 265 failures (2561s)
+[lean] chunk 388: 19450/21914 checked, 265 failures (2567s)
+[lean] chunk 389: 19500/21914 checked, 265 failures (2573s)
+[lean] chunk 390: 19550/21914 checked, 265 failures (2580s)
+[lean] chunk 391: 19600/21914 checked, 265 failures (2586s)
+[lean]   KERNEL-FAIL e66547: unsolved goals
+[lean]   KERNEL-FAIL m66550: unsolved goals
+[lean]   KERNEL-FAIL e66614: unsolved goals
+[lean]   KERNEL-FAIL m66617: unsolved goals
+[lean] chunk 392: 19650/21914 checked, 269 failures (2592s)
+[lean]   KERNEL-FAIL e66761: unsolved goals
+[lean] chunk 393: 19700/21914 checked, 270 failures (2598s)
+[lean] chunk 394: 19750/21914 checked, 270 failures (2604s)
+[lean] chunk 395: 19800/21914 checked, 270 failures (2611s)
+[lean] chunk 396: 19850/21914 checked, 270 failures (2617s)
+[lean] chunk 397: 19900/21914 checked, 270 failures (2623s)
+[lean] chunk 398: 19950/21914 checked, 270 failures (2629s)
+[lean] chunk 399: 20000/21914 checked, 270 failures (2636s)
+[lean] chunk 400: 20050/21914 checked, 270 failures (2642s)
+[lean] chunk 401: 20100/21914 checked, 270 failures (2648s)
+[lean] chunk 402: 20150/21914 checked, 270 failures (2655s)
+[lean] chunk 403: 20200/21914 checked, 270 failures (2661s)
+[lean]   KERNEL-FAIL m68601: unsolved goals
+[lean] chunk 404: 20250/21914 checked, 271 failures (2667s)
+[lean]   KERNEL-FAIL e68728: unsolved goals
+[lean]   KERNEL-FAIL e68832: unsolved goals
+[lean]   KERNEL-FAIL m68835: unsolved goals
+[lean] chunk 405: 20300/21914 checked, 274 failures (2673s)
+[lean]   KERNEL-FAIL m68910: unsolved goals
+[lean] chunk 406: 20350/21914 checked, 275 failures (2680s)
+[lean]   KERNEL-FAIL e69068: unsolved goals
+[lean]   KERNEL-FAIL m69071: unsolved goals
+[lean] chunk 407: 20400/21914 checked, 277 failures (2688s)
+[lean] chunk 408: 20450/21914 checked, 277 failures (2694s)
+[lean] chunk 409: 20500/21914 checked, 277 failures (2700s)
+[lean]   KERNEL-FAIL e69596: unsolved goals
+[lean]   KERNEL-FAIL m69599: unsolved goals
+[lean] chunk 410: 20550/21914 checked, 279 failures (2707s)
+[lean]   KERNEL-FAIL e69798: unsolved goals
+[lean]   KERNEL-FAIL m69801: unsolved goals
+[lean] chunk 411: 20600/21914 checked, 281 failures (2713s)
+[lean] chunk 412: 20650/21914 checked, 281 failures (2719s)
+[lean]   KERNEL-FAIL m70155: unsolved goals
+[lean]   KERNEL-FAIL e70190: unsolved goals
+[lean] chunk 413: 20700/21914 checked, 283 failures (2725s)
+[lean] chunk 414: 20750/21914 checked, 283 failures (2731s)
+[lean]   KERNEL-FAIL e70482: unsolved goals
+[lean]   KERNEL-FAIL m70485: unsolved goals
+[lean] chunk 415: 20800/21914 checked, 285 failures (2738s)
+[lean] chunk 416: 20850/21914 checked, 285 failures (2744s)
+[lean] chunk 417: 20900/21914 checked, 285 failures (2750s)
+[lean] chunk 418: 20950/21914 checked, 285 failures (2756s)
+[lean]   KERNEL-FAIL e71155: unsolved goals
+[lean]   KERNEL-FAIL m71158: unsolved goals
+[lean]   KERNEL-FAIL e71178: unsolved goals
+[lean]   KERNEL-FAIL m71181: unsolved goals
+[lean]   KERNEL-FAIL e71231: unsolved goals
+[lean]   KERNEL-FAIL m71234: unsolved goals
+[lean] chunk 419: 21000/21914 checked, 291 failures (2764s)
+[lean] chunk 420: 21050/21914 checked, 291 failures (2770s)
+[lean]   KERNEL-FAIL m71468: unsolved goals
+[lean] chunk 421: 21100/21914 checked, 292 failures (2776s)
+[lean] chunk 422: 21150/21914 checked, 292 failures (2783s)
+[lean] chunk 423: 21200/21914 checked, 292 failures (2789s)
+[lean] chunk 424: 21250/21914 checked, 292 failures (2795s)
+[lean] chunk 425: 21300/21914 checked, 292 failures (2801s)
+[lean] chunk 426: 21350/21914 checked, 292 failures (2807s)
+[lean]   KERNEL-FAIL e72549: unsolved goals
+[lean]   KERNEL-FAIL m72552: unsolved goals
+[lean] chunk 427: 21400/21914 checked, 294 failures (2814s)
+[lean]   KERNEL-FAIL e72735: unsolved goals
+[lean]   KERNEL-FAIL m72738: unsolved goals
+[lean] chunk 428: 21450/21914 checked, 296 failures (2820s)
+[lean]   KERNEL-FAIL e72941: unsolved goals
+[lean] chunk 429: 21500/21914 checked, 297 failures (2826s)
+[lean] chunk 430: 21550/21914 checked, 297 failures (2832s)
+[lean]   KERNEL-FAIL e73318: unsolved goals
+[lean] chunk 431: 21600/21914 checked, 298 failures (2839s)
+[lean] chunk 432: 21650/21914 checked, 298 failures (2846s)
+[lean] chunk 433: 21700/21914 checked, 298 failures (2852s)
+[lean] chunk 434: 21750/21914 checked, 298 failures (2858s)
+[lean]   KERNEL-FAIL e74020: unsolved goals
+[lean]   KERNEL-FAIL m74023: unsolved goals
+[lean] chunk 435: 21800/21914 checked, 300 failures (2864s)
+[lean] chunk 436: 21850/21914 checked, 300 failures (2870s)
+[lean] chunk 437: 21900/21914 checked, 300 failures (2876s)
+[lean] chunk 438: 21914/21914 checked, 300 failures (2882s)
+[lean] kernel check: 21614/21914 PASS | failures: ['e1008', 'e10100', 'e10210', 'e10243', 'e10466', 'e10902', 'e11918', 'e1293', 'e12972', 'e13633', 'e13960', 'e14362', 'e14508', 'e14540', 'e1463', 'e15253', 'e15336', 'e16767', 'e1735', 'e18759', 'e19075', 'e19413', 'e20052', 'e2017', 'e20382', 'e20965', 'e2117', 'e21180', 'e21573', 'e22005', 'e23367', 'e24025', 'e24098', 'e24171', 'e25953', 'e25994', 'e260', 'e27227', 'e27268', 'e27772', 'e27778', 'e27900', 'e28354', 'e28357', 'e28539', 'e28659', 'e28830', 'e2991', 'e31079', 'e31112', 'e31557', 'e31851', 'e33076', 'e33137', 'e34129', 'e34252', 'e34581', 'e35176', 'e35232', 'e35414', 'e36320', 'e36661', 'e36916', 'e37066', 'e37702', 'e37941', 'e3802', 'e381', 'e3822', 'e38688', 'e39485', 'e40533', 'e40561', 'e40668', 'e40769', 'e41792', 'e42158', 'e42192', 'e42512', 'e43406', 'e43885', 'e43894', 'e44028', 'e44399', 'e44572', 'e45329', 'e45539', 'e45856', 'e45860', 'e46398', 'e46849', 'e46880', 'e4692', 'e47132', 'e47288', 'e47304', 'e47557', 'e4767', 'e48250', 'e48372', 'e48451', 'e4846', 'e48701', 'e48741', 'e49711', 'e51281', 'e52491', 'e52788', 'e5279', 'e52843', 'e53294', 'e53930', 'e54130', 'e54334', 'e55040', 'e55427', 'e55717', 'e56005', 'e56098', 'e56535', 'e56916', 'e5732', 'e59547', 'e59993', 'e60044', 'e6026', 'e6036', 'e60423', 'e60969', 'e61042', 'e61632', 'e61859', 'e61949', 'e61972', 'e62597', 'e62905', 'e63262', 'e63868', 'e64889', 'e64932', 'e65449', 'e65489', 'e65603', 'e6601', 'e6626', 'e66547', 'e66614', 'e66761', 'e68728', 'e68832', 'e69068', 'e6954', 'e69596', 'e69798', 'e70190', 'e70482', 'e71155', 'e71178', 'e71231', 'e72549', 'e72735', 'e72941', 'e73318', 'e74020', 'e7539', 'e7885', 'e7895', 'e9076', 'e9317', 'e9448', 'e9474', 'e9681', 'e9750', 'm10103', 'm1011', 'm10246', 'm10469', 'm10905', 'm1187', 'm11921', 'm1229', 'm13012', 'm13636', 'm14365', 'm14511', 'm1466', 'm1525', 'm15339', 'm1738', 'm18726', 'm18762', 'm19078', 'm19111', 'm19416', 'm1961', 'm2020', 'm20707', 'm21183', 'm21576', 'm21745', 'm23370', 'm24028', 'm24174', 'm25956', 'm263', 'm27271', 'm27781', 'm28542', 'm28833', 'm31115', 'm31560', 'm33079', 'm33140', 'm34255', 'm35179', 'm35235', 'm35417', 'm35730', 'm35949', 'm37069', 'm37705', 'm3805', 'm3825', 'm38691', 'm40536', 'm40564', 'm40671', 'm40772', 'm41867', 'm42161', 'm42515', 'm42639', 'm43409', 'm43897', 'm44031', 'm45332', 'm45859', 'm46401', 'm46531', 'm46852', 'm4695', 'm47135', 'm47307', 'm4770', 'm48253', 'm48375', 'm4849', 'm48535', 'm48744', 'm49714', 'm51284', 'm52791', 'm53821', 'm54337', 'm55043', 'm55430', 'm55720', 'm55852', 'm56101', 'm56538', 'm56919', 'm58701', 'm60047', 'm6029', 'm6039', 'm60972', 'm61635', 'm61952', 'm62726', 'm62908', 'm63265', 'm63871', 'm64935', 'm65492', 'm6604', 'm6629', 'm66550', 'm66617', 'm68601', 'm68835', 'm68910', 'm69071', 'm69599', 'm69801', 'm70155', 'm70485', 'm71158', 'm71181', 'm71234', 'm71468', 'm72552', 'm72738', 'm74023', 'm7888', 'm7898', 'm9079', 'm9320', 'm9364', 'm9684', 'm9855'] | 2882.2s total, 132 ms/cert (vs ~11 ms/row oracle)
