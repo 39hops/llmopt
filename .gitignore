@@ -31,3 +31,6 @@ checkpoints/
 jobs/
 scratch/leancheck/.lake/
 scratch/leancheck/Certs.lean
+AGENTS.md
+.agents/
+.codex/
