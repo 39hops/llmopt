@@ -22581,3 +22581,38 @@ frozen id list (kernel_sample_1000_ids.txt, 7KB) is force-added as
 the tracked fence. jobs/*.cmd receipts (44 files) force-added in
 the same phase — the arm-invocation record for the moe-gt/ex arc
 now has git redundancy.
+
+## VERDICT HARDENING-P1: the exclude-union law fires on EVERY legacy infix engine diet — 22-25/120 band expressions verbatim prompt-side in each; the gen-4 exposure fence WIDENS to all legacy engine-diet births; the audit is NOTATION-BOUND (2026-08-07 night, Mac desk)
+
+Phase 1 of spec 2026-08-07-results-hardening (Artin GO). Instrument:
+scratch/legacy_diet_audit.py — D2's exact band + norm reused
+(tenet_d2_revdiet.gate_band_exprs; 119 distinct), READ-ONLY (legacy
+diets are frozen evidence; nothing excised).
+  gen8_diet     1,107,799 rows | 132 touching (0.01%) | 25/120
+  gen9_diet_A/B ~1.2M each     | 153 (0.01%)          | 25/120
+  gen7_diet        79,274      | 117 (0.15%)          | 22/120
+  merged_diet     116,738      | 119 (0.10%)          | 22/120
+  dual_diet       153,090      | 129 (0.08%)          | 24/120
+  diet_dist_d256 / dosectl_d256  142,508 | 129 (0.09%) | 24/120
+  gen4_diet_infix 132,449      | 129 (0.10%)          | 24/120
+  gen4_diet_prefix              0 — BUT the audit is NOTATION-BOUND:
+    a verbatim-string check against the infix band cannot see
+    prefix-serialized collisions; the prefix diet's true exposure
+    needs a prefix-serialized band (owed if any prefix-diet claim
+    is revived).
+ALL hits are prompt-side (cur), 0 target-side — the gen-4 shape.
+CONSEQUENCE (fence widened, no retraction): every birth fed by
+these diets carries a <=22-25-problem first-ply eval-in-train
+exposure ON THE ENGINE FORWARD CHAIN GATE BAND (GATE_BAND
+9.9M, levels 3-7); the fence transfers to any verdict gated on
+that band. Paired same-gate deltas are unaffected (shared exposure
+cancels); ABSOLUTE solve counts on that band carry the tailwind
+fence — per-verdict applicability is checked at revival time, not
+blanket-retracted here. PHASE GATE SATISFIED: phases 3-4 re-births
+MUST rebuild their diets through the D2 excision path (the builder
+that refuses to write contaminated rows); the exposure class is
+stable across generations (~0.01-0.15% of rows reaching 18-21% of
+the band), confirming the small-problem-space collision mechanism.
+FENCES: verbatim-string instrument (notation-bound; semantic
+near-duplicates uncounted — conservative undercount); levels 1-2
+hits are chain rows whose cur matches a band expression.
