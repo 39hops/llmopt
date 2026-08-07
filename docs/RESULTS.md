@@ -22030,3 +22030,25 @@ rung. Between: UNRESOLVED, n=3 pooled delta booked either way.
 FENCES: one device/load per pair; [FORMAT-BOUND] [REGIME-SCOPED:
 measured deployment artifacts]; the crest comparison class is
 mask-vs-full within one load, per GT-1 precedent.
+
+## VERDICT EX1-C30-REPL-3: UNRESOLVED as registered — seed 777 lands +4 (77 v 73), below the per-seed fence; direction is 3/3 seeds (pooled +30, mean +10) but NO beats-full claim books (2026-08-07 early, Mac)
+
+Against PRE-REG EX1-C30-REPL-3 (receipts logs/ex1/ex1repl3.jsonl,
+force-added): at gate seed 777, ex1_c30_his 77/120 {1:32, 2:20,
+3:25} v ex1_full128 73/120 {1:27, 2:25, 3:21} (full recall 1.0000
+sanity holds). Delta +4 < 7: P-SWAP-CREST does NOT fire. P-KILL-3
+does not fire either (77 > 73). UNRESOLVED, n=3 pooled booked:
+(77-64) + (73-60) + (77-73) = +30 over seeds {1234, 555, 777},
+mean +10, signs 3/3 positive. WHY NO CLAIM DESPITE 3/3: the
+registered bar was per-seed >= +7 at the decider; and the seed
+pool is DISCOVERY-CONTAMINATED (1234 is the seed the anomaly was
+FOUND on — its +13 cannot count toward a claim it generated; the
+clean protocol is GT-1 R5's: fresh unspent seeds only, registered
+pooled bar). NAMED OPTIONAL FOLLOW-UP (Artin GO, not queued): 3
+fresh seeds, registered pooled >= 21 (3x the pair fence), full
+paired loads — fires only if the swap-crest question is worth
+~1h of Mac gate time on its own. Also booked: full-model seed
+spread on this corpus family is real (64/60/73 across the three
+seeds) — any future mask-vs-full claim must stay PAIRED per seed.
+FENCES: comparison class mask-vs-full within one load per seed;
+[FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts].
