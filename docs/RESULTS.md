@@ -21870,3 +21870,30 @@ if a specific dissociation hypothesis names where to look (e.g. a
 verbal-only-restored arm predicted to parse without solving).
 FENCES: descriptive, no pre-reg, one gate seed family, one format;
 parse flag is extract_expression's, not a fluency judgment.
+
+## VERDICT PLATEAU-BREAK: UNRESOLVED as registered — and the shape is the finding: const-lr at 4000 steps REGRESSES past the 1000-step plateau (late overshoot returns at long horizons, the MB-S14 decay law firing at diet scale); NWIN 32/64 saturate together above NWIN=8 (2026-08-07 early, 3080)
+
+Against PRE-REG PLATEAU-BREAK (receipts logs/lockstep/plateau_*.log,
+pulled + force-added; deterministic single runs, traj shas booked in
+the logs):
+  A  NWIN=8  4000 steps: 15,909 -> 13,540 (was 12,518 @1000; mid-run
+     touched ~13,143 @2125 then ROSE — the const-lr late-overshoot
+     class, at diet scale, exactly where MB-S14's law predicts decay
+     is required; "integer lr decay legalizes long runs" was already
+     banked and this design under-carried it — named honestly)
+  B  NWIN=32 4000 steps: 15,855 -> 14,684
+  C  NWIN=64 4000 steps: 15,602 -> 14,677
+P-STEP-BOUND does NOT fire (13,540 > 11,266). P-CAPACITY does NOT
+fire (A lands 8.2% above the anchor, outside the 5% clause; and B/C
+SATURATE at ~14,680 — 64 windows is not above 32, so the monotone
+clause fails). UNRESOLVED as registered; shapes booked: more
+windows cost ~1,140 loss at fixed 60k params (8 -> 32) then FLAT
+(32 -> 64) — window-count dilution saturates, hinting the binder
+above 32 windows is neither steps nor window count.
+RIDER PRE-REG (fires immediately, same window): P-STEP-BOUND-2 —
+arm A-SCHED (NWIN=8, STEPS=4000, SCHED=1, the MB-S14 arm-B decay
+schedule) fires step-bound iff final cycle-mean <= 11,266; if it
+lands within 5% of 12,518 the plateau is REAL under the corrected
+optimizer and the capacity question moves to the params ladder
+(the intbirth engine's lever). FENCES: integer battery scope, seed
+17, single runs (determinism class), wall-clock not a readout.
