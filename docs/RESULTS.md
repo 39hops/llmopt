@@ -22810,3 +22810,27 @@ absolute gate levels carry the P1 exposure fence (paired deltas
 cancel it); falloff read from the driver's own epsilon-kick
 instrument at defaults. Phase-3 row 2 CLOSES (booked, not
 bar-fired); next frozen row: R3 ffn-slack endpoints.
+
+## PRE-REG HARDENING-P3-R3: the ffn-slack endpoints get n=3 paired seeds — d56 f224 v f128 on the D2-excised diet, cuda (device-of-origin) (2026-08-08, before launch)
+
+Phase 3 row 3 of the frozen list (Artin GO 2026-08-08). NIGHT-29
+VERDICT 2's anatomy clause ("ffn=slack": EMA flat 58/58/58 from
+f224 to f160, -3 at f128, n=1 per point, cuda, sigma 3.5) gets its
+endpoints replicated. ARMS: (f224, f128) at SEEDS {2,3,4} — six
+births, d56/heads4/EMA=0.999, production sym_birth recipe via
+scratch/p3_ffnslack.py (frozen driver + load-time D2 excision with
+printed receipt; wrapper REFUSES existing OUT names AND refuses
+seed-free TAGs — sym_birth's OUT is seed-free unless TAG carries
+it). Device: 3080 cuda (the battery-2 line; never read against MPS
+numbers). Gate: the driver's own G.gate_eval chain gate, raw + EMA
+booked, BARS READ ON EMA (the original claim's metric).
+BARS: P-SLACK-HOLDS fires iff pooled EMA (f128 - f224) over the
+three paired seeds is within +-6 — the anatomy clause "ffn=slack"
+gains n=3 and its n=1 fence lifts. P-FFN-COSTS fires iff pooled
+EMA (f128 - f224) <= -15 with 3/3 negative — the slack claim
+amends (the f128 dip was real, not seed noise). Between / mixed:
+UNRESOLVED, dicts booked, no direction claim.
+FENCES: cuda line only; D2-excised diet (bridge priced ~zero for
+this loader class in R5); absolute levels carry the P1 exposure
+fence (paired deltas cancel); gates-only; sigma 3.5 (cuda line,
+NIGHT-29's own).
