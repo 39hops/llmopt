@@ -21984,3 +21984,22 @@ FENCES: one gate seed; L1-3; REM leg suggestive-only per pre-reg
 (recall confound); c15_hi REM/REMC outlier pair single-arm, no
 replication claim; [FORMAT-BOUND] [REGIME-SCOPED: measured
 deployment artifacts].
+
+## PRE-REG EX1-C30-REPL: the 77-above-full anomaly at an unspent gate seed — kill it or earn it a third seed (2026-08-07 early, Mac)
+
+The fenced bait from VERDICT EX-ANAT-1 (c30 hi' = 77 > paired full
+64 at gate seed 1234; one arm, one seed, no claim). Arms at gate
+seed 555 (the unspent-seed tradition), same frozen machinery:
+  R1  ex1_c30_his (the FROZEN swapped keep-set, cited evidence)
+  R2  ex1_full128 (all-128 keep — the paired full model through
+      the identical KEEPSET path, mask a no-op)
+BARS (resolution-law-shaped; n=2 seeds max after this run, so NO
+beats-full claim is available here): P-KILL fires iff R1 <= R2 at
+555 — the 77 reads as seed-1234-local draw weather, anomaly
+demoted. P-THIRD-SEED fires iff R1 >= R2 + 7 (the sigma_diff pair
+fence) — the direction holds at 2/2 seeds and a third-seed decider
+becomes the named follow-up (claim only at n>=3 per the resolution
+law). Between: UNRESOLVED, direction booked. Degeneracy census
+free. FENCES: mask-vs-full comparisons on ONE device, one load;
+[FORMAT-BOUND]; the 555 corpus is a different problem set —
+per-level dicts booked for both arms.
