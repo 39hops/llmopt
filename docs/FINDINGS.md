@@ -256,6 +256,20 @@ VERDICT](RESULTS.md#L10676).)
   inspection, a rebuild, and a 10x rerun; the stress receipts are the
   other lab's. ([VERDICT BEAM-FLAKE-ROOT-CAUSE](RESULTS.md#L20539);
   [VERDICT LEAN-EMITTER-FIX](RESULTS.md#L20462).)
+- [REPLICATED] [REGIME-SCOPED: closed-system math] The cross-lab
+  Lean certificate corpus closes at kernel scale with a CLOSED
+  failure taxonomy: under the fixed emitter, 21,614 of 21,914
+  certificates kernel-check (98.63%; the 1000-row sample's
+  registered ~98.9% prediction landed at 98.9% exactly), and every
+  one of the 300 failures classifies as either atom-split (222 —
+  generalized statement false over free atoms while the raw
+  equality stays true; detectable only by semantic equivalence,
+  invisible to duplicate-value tests) or open field_simp
+  self-refactoring (78), with ZERO residual and no new class. The
+  independent-implementation route: axiom's emitter and oracle
+  against the house's own printer, statement-diff, and Mac-local
+  kernel. ([VERDICT LEAN-SAMPLE-V2](RESULTS.md#L22407); [VERDICT
+  LEAN-FULL-V2](RESULTS.md#L22493).)
 - [SINGLE-SEED] [REGIME-SCOPED: toy weight-space subjects] A
   796,550-parameter neuron-token transformer classifies the function
   family of 1-16-16-1 tanh subject MLPs from raw weights at 80.8%
@@ -924,6 +938,29 @@ regime tag on every bullet is the fence.
   EX1-C30-REPL](RESULTS.md#L22007); [VERDICT
   EX1-C30-REPL-3](RESULTS.md#L22034); [DESK
   R-EMISSION-0](RESULTS.md#L21850).)
+- [REPLICATED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] Two crest claims
+  book at three fresh paired gate seeds each (the discovery pool
+  quarantined): a keep-set derived by identity surgery from two
+  ~0.72-recall draws beats the full model (+53 pooled, 3/3), and
+  deleting a NAMED 80-expert carrier set — 1.3% of the bank, 98.7%
+  keep — beats the full model (+55 pooled) and beats matched-rank
+  random deletion (+27 pooled), 3/3 both. The carrier population is
+  REGIME-DUAL: the same named experts that transform carrier-poor
+  masked sets are net interference in the full router (single-seed
+  discovery +17 over full, controls +3/+7, decode-lens set quiet at
+  +4), and they are prefill-tilted in free routing (2.21x bank
+  share on prompt reading, 0.84x on decode). The control carried
+  its own finding: rank-matched random deletion alone beats full
+  (+28 pooled, 3/3) — the router is over-inclusive at the carrier
+  rank class, and identity roughly doubles the deletion gain. Two
+  interventions at opposite keep fractions (54.7% and 98.7%) land
+  the same gain class, consistent with one interference-removal
+  mechanism. Scope: one vehicle, mathgen L1-3, drift finding scoped
+  to the carriers' rank class.
+  ([VERDICT EX-ANAT-3](RESULTS.md#L22353); [DESK
+  EX-ANAT-3-0](RESULTS.md#L22128); [VERDICT
+  EX-FRESH](RESULTS.md#L22454).)
 - [NULL] [REGIME-SCOPED: toy weight-space subjects] Training
   DIRECTION (forward versus reverse curriculum) is invisible to
   weight readers across every inspected representation while
