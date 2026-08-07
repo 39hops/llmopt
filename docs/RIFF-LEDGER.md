@@ -2982,3 +2982,29 @@ rank the verified ones above the unverified (a calibration read,
 not a capability run)? Only a positive census licenses the
 chooser rung. Attribution: Artin (riff), Fable (choice-scarcity
 tie + census-first framing).
+
+## 2026-08-07 (morning, cont.): engine-verified reverse-propose/forward-choose as the TRAINING loop (Artin extension)
+
+Extension of the same-morning riff: the math engine verifies the
+whole reverse-propose -> forward-choose process and the verified
+episodes become how the models train/learn. This is the
+expert-iteration shape with a REVERSE proposer: house already owns
+every stage measured — engine-replay mint criterion as verifier
+(the D1 reverse gate's criterion after AMENDMENT R0-REV-D1 killed
+symmetric equivalence), the exchange loop's conversion proof
+(metabolic v5: engine rows 2->6/12 in 10 min), and R0-REV-B's
+backward emission. NEW element: reverse-proposed,
+distribution-weighted candidates as the training stream — the
+q-wave % becomes a soft label over verified decompositions.
+STANDING FENCE ATTACHED AT BANK TIME: verified AND distinct at
+every learning layer — a reverse proposer is a prime X=>X
+identity-rewrite hazard (bit three times: GRPO reward, gate
+candidates, miner v5); the multiplicity census must count DISTINCT
+verified candidates, and any reward/diet built on this loop
+rejects identity rewrites at reward, gate, AND miner
+independently. Ladder shape (census-gated, no rung fires before
+the one below): (1) multiplicity census; (2) chooser calibration
+(does the q-wave dist rank verified above unverified); (3)
+exchange-loop episode: train on engine-verified
+reverse-decomposed rows, gate before/after. Attribution: Artin
+(riff + extension), Fable (stage mapping + fences).
