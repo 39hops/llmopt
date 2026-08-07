@@ -29,3 +29,5 @@ practice/
 checkpoints/
 .DS_Store
 jobs/
+scratch/leancheck/.lake/
+scratch/leancheck/Certs.lean

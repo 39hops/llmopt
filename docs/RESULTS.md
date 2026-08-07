@@ -22543,3 +22543,24 @@ sampling. The ladder holds at rung 1 with its census complete.
 FENCES: as MULT-0; B=32; the adjacent-problem seed-reuse note
 travels; err census 1,045 (rev) v 468 (fwd) — the malformed-
 emission gap persists at 4x.
+
+## AMENDMENT EX3-PROVENANCE: the EX-ANAT-3 / EX-FRESH subject keep-sets get their committed builder — byte-identity to the cited artifacts asserted 7/7 (2026-08-07 evening, desk)
+
+Amends: PRE-REG EX-ANAT-3; PRE-REG EX3-FRESH (provenance, not
+results). The 08-07 housekeeping review (Opus agent) found the
+cited subjects (ex3_inv_{pooled,decode}, ex3_del_{invp,invd,
+rand0,rand1}, ex1_full128) were built by INLINE heredocs with no
+committed builder — checkpoints/ is gitignored, so the claims
+rested on artifacts regenerable only from prose. REPAIR:
+scratch/ex3_build.py commits the exact recipe (frozen ex1_swap
+carrier rule; decode lens via moe_gt1_traj_v2 DROP_TAIL=1;
+matched-rank +-8-window draws, string seeds ex3-rand-{j}) and its
+VERIFY_ONLY mode asserted BYTE-IDENTITY against all seven cited
+artifacts before this amendment booked (7/7 BYTE-IDENTICAL; the
+builder ABORTS on any mismatch so it can never silently replace
+evidence). ARM INVOCATIONS transcribed from jobs/*.cmd while they
+exist (jobs/ is exhaust): EX-ANAT-3 = ARMS=ex3_del_invp,
+ex3_del_invd,ex3_del_rand0,ex3_del_rand1 N_EVAL=120 SEED=1234
+PERPROB=1 via scratch/gt7_run.py; EX-FRESH = for S in 1001 2002
+3003: ARMS=ex1_full128,ex1_c30_his,ex3_del_invp,ex3_del_rand0
+SEED=$S, same driver, logs under logs/ex3/.
