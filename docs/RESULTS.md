@@ -22403,3 +22403,29 @@ COST: 12 gates (~55 min one load-set). FENCES: paired within-seed
 within-load; the frozen keepsets are cited evidence
 (overwrite-guarded); [FORMAT-BOUND] [REGIME-SCOPED: measured
 deployment artifacts].
+
+## VERDICT LEAN-SAMPLE-V2: P-EMITTER-FIXED FIRES — 989/1000 kernel PASS (the registered ~98.9% prediction lands EXACTLY), and the 11 failures are PRECISELY the required-loud set (2026-08-07 afternoon, Mac local kernel)
+
+Against PRE-REG LEAN-SAMPLE-V2 (receipt logs/lean/leanv2_sample.log
+force-added): kernel check 989/1000 PASS >= the 985 bar — the
+registered prediction's arithmetic survived its own denominator
+caveat (98.9% predicted, 98.9% measured; the reflexive detector's
+broader reclassification changed the COMPOSITION, not the rate).
+FAILURES = exactly 11: the 7 atom-split rows ALL present (e28357
+e40769 e49711 e59993 e64889 m10246 m65492 — unprovable-by-design,
+correctly loud, the kernel can never be tricked) + 4 more (e21180
+e69068 m21183 m64935) matching the open field_simp count exactly —
+ids booked for axiom cross-check against their 4-row list. The
+269-overshoot class is GONE (0 of it in the failures).
+STATEMENT-DIFF (anti-theater tier): 690/1000 exact/AC match, 23
+skip, 287 mismatch — IDENTICAL to the v1 rate (690/1000), the
+known sign-factoring printer-divergence class, previously
+classified zero semantic drift; strict diff stays strict.
+COST: 153 ms/cert, 153.4 s total — the first full sample on the
+Mac-LOCAL kernel (v ~11 ms/row for axiom's oracle; the kernel is
+14x the oracle and both are cheap). CONSEQUENCE: Leg B rung 2
+(the full 21,914 chunked pass) is UNBLOCKED and armable — at 153
+ms/cert the full corpus is ~56 min single-threaded, ONE window,
+its own pre-reg. FENCES: frozen 1000-id sample; Mac-local
+mathlib cache (scratch/leancheck); the 4 field_simp ids await
+axiom confirmation before that sub-claim hardens.
