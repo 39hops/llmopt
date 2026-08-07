@@ -74,14 +74,14 @@ def load_surface(ckpt):
 def surface_from_model(m):
     """The same stacking applied to a live model's state dict
     (CONTROL=randinit path)."""
-    import io
+    import tempfile
 
-    buf = io.BytesIO()
-    torch.save(m.state_dict(), buf)
-    buf.seek(0)
-    tmp = Path("/tmp/w1s_ctrl.pt")
-    tmp.write_bytes(buf.getvalue())
-    return load_surface(tmp)
+    # per-call temp file (code review 2026-08-07: the fixed /tmp path
+    # raced concurrent SURFACE arms; relational's dict-direct
+    # load_subject is the better pattern for any v2)
+    with tempfile.NamedTemporaryFile(suffix=".pt") as f:
+        torch.save(m.state_dict(), f.name)
+        return load_surface(f.name)
 
 
 # ---- verbatim protocol pieces from scratch/tenet_w1_bridge.py ----

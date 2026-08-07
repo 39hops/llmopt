@@ -268,7 +268,8 @@ VERDICT](RESULTS.md#L10676).)
   self-refactoring (78), with ZERO residual and no new class. The
   independent-implementation route: axiom's emitter and oracle
   against the house's own printer, statement-diff, and Mac-local
-  kernel. ([VERDICT LEAN-SAMPLE-V2](RESULTS.md#L22407); [VERDICT
+  kernel; the failure CLASSIFICATION is house-side sympy equivalence
+  pending axiom counter reconciliation (id lists staged). ([VERDICT LEAN-SAMPLE-V2](RESULTS.md#L22407); [VERDICT
   LEAN-FULL-V2](RESULTS.md#L22493).)
 - [SINGLE-SEED] [REGIME-SCOPED: toy weight-space subjects] A
   796,550-parameter neuron-token transformer classifies the function
@@ -950,15 +951,17 @@ regime tag on every bullet is the fence.
   masked sets are net interference in the full router (single-seed
   discovery +17 over full, controls +3/+7, decode-lens set quiet at
   +4), and they are prefill-tilted in free routing (2.21x bank
-  share on prompt reading, 0.84x on decode). The control carried
+  share on prompt reading, 0.84x on decode — one decode trajectory,
+  descriptive). The control carried
   its own finding: rank-matched random deletion alone beats full
   (+28 pooled, 3/3) — the router is over-inclusive at the carrier
   rank class, and identity roughly doubles the deletion gain. Two
   interventions at opposite keep fractions (54.7% and 98.7%) land
   the same gain class, consistent with one interference-removal
   mechanism. CLAIM HIERARCHY, for weighting: GT-1's crest (+14.7
-  pooled, 6/6 paired seeds, 45.3% keep) remains the strongest
-  single crest claim; the swap and deletion crests are n=3 each
+  pooled, 6/6 paired seeds, 45.3% keep) remains the MOST-REPLICATED
+  crest claim (its per-seed effect is smaller; seed count is the
+  hierarchy axis); the swap and deletion crests are n=3 each
   with their discovery seeds quarantined; the over-inclusion
   finding is n=3 but scoped to the carriers' rank class only — a
   uniform-random deletion control (pre-registration owed) must run

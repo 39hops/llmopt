@@ -56,6 +56,16 @@ core = {int(l): set(v) for l, v in
         json.load(open("checkpoints/gt3_core_keep.json")).items()}
 
 
+def _assert_lens_env_clean():
+    # Cited-evidence guard (code review 2026-08-07): the lens resolves
+    # FRAC/GATE_ONLY/DROP_TAIL from env at CALL time — a polluted shell
+    # silently changes vonly and every drawn set. Refuse, never adapt.
+    import os as _os
+    bad = [k for k in ("FRAC", "GATE_ONLY", "DROP_TAIL") if k in _os.environ]
+    if bad:
+        raise SystemExit(f"lens env polluted ({bad}) — unset before drawing")
+
+
 def recall(kset):
     h = t = 0
     for l, row in counts.items():
@@ -77,6 +87,7 @@ def ranked(pool, l, is_v, vonly):
 
 
 def main():
+    _assert_lens_env_clean()
     from gt2_jaccard import decode_counts, keep as keeprule
 
     kp = keeprule(decode_counts("logs/opus/gt3_prose_traj.jsonl"))
@@ -91,7 +102,7 @@ def main():
         for side, own, other in (("hi", hi, lo), ("lo", lo, hi)):
             rng = random.Random(f"ex2-{binname}-{side}")
             arms = {m: {} for m in ("add", "addc", "rem", "remc")}
-            for l in core:
+            for l in sorted(core):  # RNG stream pinned
                 own_ex = own[l] - other[l]
                 oth_ex = other[l] - own[l]
                 nonkept = set(range(128)) - own[l]

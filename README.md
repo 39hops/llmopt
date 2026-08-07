@@ -12,9 +12,9 @@ calibration machinery unnecessary; this lab measures when that statement holds.
 - Capability follows **expert identity**, not any aggregate of the
   keep-set: with recall and coverage pinned, exchanging 4 experts per
   layer per class between matched keep-set draws moved 23–52 gate
-  solves per side and largely inverted the pair outcomes (at k=4, one
-  gate seed); recall- and coverage-organization both returned
-  registered nulls first ([FINDINGS](docs/FINDINGS.md), expert
+  solves per side and largely inverted the pair outcomes (at k=4; both derived
+  crest forms later replicated at three fresh paired seeds); recall-
+  and coverage-organization both returned registered nulls first ([FINDINGS](docs/FINDINGS.md), expert
   identity).
 - Integer training with sha-equality as the acceptance bar: a
   200-step birth is **trajectory-identical** across Mac CPU, the 3080
@@ -179,9 +179,13 @@ of 120, against 16 to 55 for fills that include it, and a recall
 ladder over random fills is non-monotone (a 0.795-recall draw scores
 9; a 0.792 draw scores 66). So the verbal population is necessary for
 the resurrection and recall does not organize it; what is sufficient
-is still unmeasured, with two named anomalies open. Why the crest
-beats full width remains unexplained, and the crest stays a booked
-observation on one vehicle and one domain, not a deployment
+is still unmeasured. The named anomalies later dissolved into draw
+identity, and the crest now carries a mechanism candidate:
+interference removal, reachable either by the demand mask or by
+deleting a named 80-expert carrier population (1.3% of the bank) —
+both forms replicated at three fresh paired seeds, with the router
+measured over-inclusive at the carriers' rank class. The crest
+remains a finding on one vehicle and one domain, not a deployment
 recommendation.
 
 Trajectory reproduction still stops short of self-contained free-run oracle

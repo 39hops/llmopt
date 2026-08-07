@@ -3008,3 +3008,32 @@ the one below): (1) multiplicity census; (2) chooser calibration
 exchange-loop episode: train on engine-verified
 reverse-decomposed rows, gate before/after. Attribution: Artin
 (riff + extension), Fable (stage mapping + fences).
+
+## 2026-08-07 (evening): Grok claims-day review + the triple-agent audit (Artin-relayed / Artin-sanctioned)
+
+Grok's eight sharpening points, all dispositioned: ADOPTED — FINDINGS
+claim-hierarchy line (GT-1 most-replicated; over-inclusion reading
+GATED behind an owed uniform-random deletion control), EX-ANAT-4
+ordering (uniform-random control FIRST, carrier TRAJ anatomy second,
+physics-scalpel transport LAST), instrument no-silent-drift note
+(gt7_run + frozen arm2 path load-bearing for every crest claim),
+pipeline-exit-code commit-gating lesson (standing memory). ALREADY
+SATISFIED — the diversity-diet door in MULT-0-B32's consequence.
+FOLDED INTO AUDIT — axiom booking contract (frozen in the
+ENGINE-SCALE-1 pre-reg: house books only after the three spot shas
+match), instrument-drift check. THE AUDIT (three Opus agents,
+findings Fable-verified): P0 provenance hole repaired
+(scratch/ex3_build.py, 7/7 byte-identity asserted, AMENDMENT
+EX3-PROVENANCE); lens-env pollution guards added to all four cited
+builders (refuse-never-adapt); gt7_run re-patch guard + restore;
+w1_surfaces tempfile race fix; traj.py per-block n_exp (authority-
+table conformance); RNG streams pinned to sorted order (verified
+no-op); docs pass numerically CLEAN (zero drift, zero broken
+anchors) with tag-grammar + staleness fixes applied (README crest
+prose modernized, THEORY row head de-contradicted, [NULL] scope
+alignment). EX-ANAT-4 SLATE BANKED here per bank-everything:
+(a) uniform-random deletion control, (b) carrier TRAJ anatomy on
+the named 80, (c) physics-gate scalpel transport — ordered, each
+pre-reg before fire. Attribution: Grok (sharpening), three Opus
+seats (audit findings), Artin (sanction + relay), Fable
+(verification + application).

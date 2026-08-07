@@ -247,9 +247,11 @@ class patch_moe_router:
             for li, block in moe_layers:
                 kept = self.keep[li]
                 assert len(kept) >= block.top_k
+                # per-block shape, per authority surface 10 (B verbatim)
+                n_b = block.gate.weight.shape[0]
                 masks[id(block)] = mx.array(
                     [0.0 if e in kept else float("-inf")
-                     for e in range(n_exp)])
+                     for e in range(n_b)])
                 keepsets[id(block)] = kept
 
             def wrapped(self, x):

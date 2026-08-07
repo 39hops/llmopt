@@ -49,6 +49,16 @@ core = {int(li): set(v) for li, v in
         json.load(open("checkpoints/gt3_core_keep.json")).items()}
 
 
+def _assert_lens_env_clean():
+    # Cited-evidence guard (code review 2026-08-07): the lens resolves
+    # FRAC/GATE_ONLY/DROP_TAIL from env at CALL time — a polluted shell
+    # silently changes vonly and every drawn set. Refuse, never adapt.
+    import os as _os
+    bad = [k for k in ("FRAC", "GATE_ONLY", "DROP_TAIL") if k in _os.environ]
+    if bad:
+        raise SystemExit(f"lens env polluted ({bad}) — unset before drawing")
+
+
 def recall(keep):
     hit = tot = 0
     for li, row in counts.items():
@@ -72,11 +82,15 @@ def draw(rtarget, ctarget, seed_tag, vonly, k_max=91, attempts=20):
     vsorted = {li: sorted(vonly[li]) for li in core}
     for a in range(attempts):
         tag = seed_tag if a == 0 else f"{seed_tag}-a{a}"
+        # scan assumption: accepts the FIRST k landing in window;
+        # per-k reseeding makes recall non-monotone in k, so a
+        # coverage-miss break may skip other viable k (reachability
+        # only — accepted arms recompute r/c exactly).
         for k in range(0, k_max + 1):
             rng = random.Random(f"{tag}-k{k}")
             keep = {}
-            for li in core:
-                nv = round(ctarget * len(vsorted[li]))
+            for li in sorted(core):  # RNG stream pinned to numeric
+                nv = round(ctarget * len(vsorted[li]))  # order (== file order today, asserted no-op at adoption)
                 vpick = set(rng.sample(vsorted[li], nv)) if nv else set()
                 fill = set(rng.sample(pool[li], min(k, len(pool[li]))))
                 keep[li] = core[li] | vpick | fill
@@ -106,6 +120,7 @@ def dump(keep, name, r, c, k, tag):
 
 
 def main():
+    _assert_lens_env_clean()
     from gt2_jaccard import decode_counts, keep as keeprule
 
     kp = keeprule(decode_counts("logs/opus/gt3_prose_traj.jsonl"))

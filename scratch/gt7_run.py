@@ -55,6 +55,9 @@ def main():
     ANSWERS_LOG.parent.mkdir(parents=True, exist_ok=True)
 
     frozen_extract = m.extract_expression
+    if getattr(frozen_extract, "_gt7_recording", False):
+        raise SystemExit("extract_expression already patched — one "
+                         "main() per process (code review 2026-08-07)")
     answers_f = ANSWERS_LOG.open("a")
     current = {"arm": None, "idx": 0, "exprs": []}
 
@@ -68,6 +71,7 @@ def main():
         current["exprs"].append(expr)
         return expr
 
+    recording_extract._gt7_recording = True
     m.extract_expression = recording_extract
 
     for arm in ARMS:
@@ -96,7 +100,7 @@ def main():
         n_empty = sum(1 for e in current["exprs"] if not e)
         print(f"[gt7] arm {arm} GATE {n_ok}/{len(problems)} "
               f"per-level {per_level} | closed recall {cl:.4f} "
-              f"(open {ol:.4f}) | distinct answers {distinct}/120 "
+              f"(open {ol:.4f}) | distinct answers {distinct}/{len(problems)} "
               f"(empty {n_empty}) | timeouts {n_timeouts} | "
               f"{gate_s:.0f}s", flush=True)
         print(f"[gt7] PROBE TEXT (verbatim): {probe_text!r}", flush=True)
@@ -109,6 +113,7 @@ def main():
                 "empty_answers": n_empty, "oracle_timeouts": n_timeouts,
                 "gate_s": gate_s, "probe_text": probe_text,
             }) + "\n")
+    m.extract_expression = frozen_extract
     answers_f.close()
     print("[gt7] all arms done", flush=True)
 

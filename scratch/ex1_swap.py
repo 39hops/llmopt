@@ -44,6 +44,16 @@ core = {int(l): set(v) for l, v in
         json.load(open("checkpoints/gt3_core_keep.json")).items()}
 
 
+def _assert_lens_env_clean():
+    # Cited-evidence guard (code review 2026-08-07): the lens resolves
+    # FRAC/GATE_ONLY/DROP_TAIL from env at CALL time — a polluted shell
+    # silently changes vonly and every drawn set. Refuse, never adapt.
+    import os as _os
+    bad = [k for k in ("FRAC", "GATE_ONLY", "DROP_TAIL") if k in _os.environ]
+    if bad:
+        raise SystemExit(f"lens env polluted ({bad}) — unset before drawing")
+
+
 def recall(kset):
     h = t = 0
     for l, row in counts.items():
@@ -60,6 +70,7 @@ def setcov(kset, ref):
 
 
 def main():
+    _assert_lens_env_clean()
     from gt2_jaccard import decode_counts, keep as keeprule
 
     kp = keeprule(decode_counts("logs/opus/gt3_prose_traj.jsonl"))
@@ -73,7 +84,7 @@ def main():
               json.load(open(f"checkpoints/{lo_f}.json")).items()}
         cov_band = setcov(hi, vonly)
         s_hi, s_lo, n_swap = {}, {}, 0
-        for l in core:
+        for l in sorted(core):
             A, B = hi[l] - lo[l], lo[l] - hi[l]
             nh, nl = set(hi[l]), set(lo[l])
             for is_v in (True, False):
@@ -93,10 +104,16 @@ def main():
                 raise SystemExit(f"REFUSING to overwrite {out} "
                                  "(cited-evidence guard)")
             r, c = recall(sw), setcov(sw, vonly)
-            assert abs(r - RTARGET) <= 0.01, (
-                f"{name} recall {r:.4f} OUT OF BAND — ABORT (no repair)")
-            assert abs(c - cov_band) <= 0.001, (
-                f"{name} coverage {c:.4f} moved from {cov_band:.4f}")
+            if abs(r - RTARGET) > 0.01:  # explicit raise: asserts
+                raise SystemExit(          # vanish under python -O
+                    f"{name} recall {r:.4f} OUT OF BAND — ABORT")
+            # cov_band = setcov(hi): valid ONLY because both draws in
+            # a bin share ctarget (equal nv per layer) and fill pools
+            # are vonly-disjoint — different-ctarget pairs would need
+            # per-side bands.
+            if abs(c - cov_band) > 0.001:
+                raise SystemExit(
+                    f"{name} coverage {c:.4f} moved from {cov_band:.4f}")
             json.dump({str(l): sorted(v) for l, v in sw.items()},
                       open(f"checkpoints/{name}.json", "w"))
             moved = sum(len(orig[l] - sw[l]) for l in core)
