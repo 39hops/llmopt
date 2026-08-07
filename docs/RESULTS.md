@@ -22286,3 +22286,30 @@ direction/shape booked, chase ENDS this vehicle (no seed-shopping;
 the discovery-seed pool stays quarantined). FENCES: paired
 within-seed always; mask-v-full one load per seed; [FORMAT-BOUND]
 [REGIME-SCOPED: measured deployment artifacts].
+
+## PRE-REG LEAN-SAMPLE-V2: the re-emitted sample re-run — scoring the registered ~98.9% prediction against the fixed emitter's corpus (2026-08-07 afternoon, Mac local kernel)
+
+Leg B UNBLOCKED same-day by axiom's relay 2026-08-07-2 (their
+6737bff): sidecar v2 delivered (21,914 rows, counts reconcile with
+v1 exactly — 21,914 emitted / 3,135 fenced, verdicts unchanged,
+only tactics moved). SAMPLE PAIRING: the original 1000 ids matched
+1000/1000 in v2 (scratch/lean_real_corpus/kernel_sample_1000_v2
+.jsonl); composition rfl 879 / ring_nf-prelude 69 / ring 52.
+DENOMINATOR CAVEAT booked WITH the pre-reg (axiom's heads-up,
+house-verified in the sample: 87.9% rfl v the prediction's
+269-overshoot accounting — the reflexive detector reclassified far
+more than the overshoot class; the ~98.9% number's SPIRIT is
+scored, its arithmetic re-derived at booking):
+BARS: P-EMITTER-FIXED fires iff sample compile >= 985/1000 AND the
+7 atom-split + 4 field_simp rows are among the non-compiling
+(correctly loud, never silently passing). Registered expected
+residual: 7 + 4 + whatever ring_nf misses (house spot-check was
+3/3, n small). Statement-diff tier runs first (the anti-theater
+clause) — diff-rate booked descriptively against v1's 690/1000.
+Runner: scratch/lean_check.py on the Mac-local mathlib
+(scratch/leancheck; the chunked path — the ~100-diagnostic abort
+fence is load-bearing). Full 21,914 pass is the NEXT rung, its own
+pre-reg, machine per window availability.
+FENCES: sample = the frozen 1000-id set; compile is kernel truth,
+statement-diff is the independence check; v1 stays in place for
+diffing (axiom's convention).
