@@ -18,11 +18,46 @@ Examples:
       --d 384 --title "math-native 19M" --out docs/assets/neurons-19m.png
   python scripts/plot_neurons.py --ckpt A.pt --compare B.pt \
       --method sphere --out docs/assets/neurons-a-vs-b.png
+
+Provenance (2026-08-08 gallery-hardening pass): every figure gets a
+footer stamp — checkpoint basename + sha256[:8] + the repo HEAD at
+render time — so a stranger can tie the pixels to exact artifacts
+(figures are claims; the citation policy applies to them too).
+--normalize divides each panel's magnitudes by that panel's MEDIAN
+before plotting: cross-substrate comparisons (fp32 v ternary v a
+671B expert shard) claim SHAPE similarity, so the radial axis must
+be commensurable — raw scales differ per alphabet and would fake
+or hide texture agreement.
 """
 import argparse
+import hashlib
+import subprocess
 
 BG = "#0d1117"
 FG = "#c9d1d9"
+DIM = "#8b949e"
+
+
+def sha8(path: str) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 22), b""):
+            h.update(chunk)
+    return h.hexdigest()[:8]
+
+
+def repo_head() -> str:
+    try:
+        return subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            capture_output=True, text=True).stdout.strip() or "unknown"
+    except OSError:
+        return "unknown"
+
+
+def provenance_line(ckpts) -> str:
+    parts = [f"{c.split('/')[-1]} {sha8(c)}" for c in ckpts]
+    return (f"{' | '.join(parts)} · plot_neurons.py @ {repo_head()}")
 
 
 def torch_svd_top2(X):
@@ -108,6 +143,14 @@ def main() -> None:
                     help="displacement magnification")
     ap.add_argument("--zoom", type=float, default=0.2,
                     help="central quantile box (0.2 = middle 60%)")
+    ap.add_argument("--normalize", action="store_true",
+                    help="divide each panel's magnitudes by that "
+                         "panel's median (cross-substrate SHAPE "
+                         "comparisons need commensurable axes)")
+    ap.add_argument("--foot", default=None,
+                    help="left-panel footer (layer/count/diet receipt)")
+    ap.add_argument("--foot2", default=None,
+                    help="right-panel footer")
     a = ap.parse_args()
     if a.displace:
         import numpy as np
@@ -138,7 +181,9 @@ def main() -> None:
         t = a.title or f"{a.ckpt} -> {a.displace}"
         ax.set_title(f"central lattice, displacements x{a.mult:g} — {t}",
                      color=FG, fontsize=11, family="monospace")
-        fig.tight_layout()
+        fig.text(0.01, 0.005, provenance_line([a.ckpt, a.displace]),
+                 color=DIM, fontsize=6.5, family="monospace")
+        fig.tight_layout(rect=(0, 0.015, 1, 1))
         fig.savefig(a.out, dpi=150, facecolor=BG)
         print(f"saved {a.out}")
         raise SystemExit
@@ -156,20 +201,47 @@ def main() -> None:
     for ck, title in ckpts:
         W = neuron_matrix(ck, a.key)
         xs, ys, mag = project(W, a.method)
+        if a.normalize:
+            med = mag.median().clamp(min=1e-12)
+            mag = mag / med
+            if a.method == "polar":
+                ys = ys / med  # polar's y IS the magnitude axis
         panels.append((xs, ys, mag, title))
     vmin = min(float(p[2].min()) for p in panels)
     vmax = max(float(p[2].max()) for p in panels)
-    for ax, (xs, ys, mag, title) in zip(axes, panels):
+    ylo = yhi = None
+    if a.method == "polar" and a.normalize:
+        # shared y-limits: SHAPE claims need commensurable axes
+        ylo = min(float(p[1].min()) for p in panels)
+        yhi = max(float(p[1].max()) for p in panels)
+    feet = [a.foot, a.foot2]
+    for i, (ax, (xs, ys, mag, title)) in enumerate(zip(axes, panels)):
         scatter(ax, xs, ys, mag, title, a.cmap, vmin=vmin, vmax=vmax)
         if a.method == "polar":
             ax.set_xlabel("phase (rad) of PC1 + i*PC2", color=FG,
                           fontsize=8, family="monospace")
-            ax.set_ylabel("neuron magnitude", color=FG, fontsize=8,
+            ax.set_ylabel("neuron magnitude"
+                          + (" / panel median" if a.normalize else ""),
+                          color=FG, fontsize=8, family="monospace")
+            if ylo is not None and yhi is not None:
+                ax.set_ylim(ylo * 0.98, yhi * 1.02)
+        elif a.method == "pca":
+            ax.set_xlabel("PC1", color=FG, fontsize=8,
                           family="monospace")
-    fig.suptitle(f"each dot a neuron ({a.key}, {a.method}), "
-                 f"color = magnitude", color=FG, fontsize=12,
+            ax.set_ylabel("PC2", color=FG, fontsize=8,
+                          family="monospace")
+        if i < len(feet) and feet[i]:
+            ax.text(0.5, -0.09, feet[i], transform=ax.transAxes,
+                    color=DIM, fontsize=7.5, family="monospace",
+                    ha="center")
+    fig.suptitle(f"each dot a neuron ({a.key}, {a.method}"
+                 + (", per-panel median-normalized" if a.normalize
+                    else "")
+                 + "), color = magnitude", color=FG, fontsize=12,
                  family="monospace")
-    fig.tight_layout()
+    fig.text(0.01, 0.005, provenance_line([c for c, _ in ckpts]),
+             color=DIM, fontsize=6.5, family="monospace")
+    fig.tight_layout(rect=(0, 0.02, 1, 1))
     fig.savefig(a.out, dpi=150, facecolor=BG)
     print(f"saved {a.out}")
 
