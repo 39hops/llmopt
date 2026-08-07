@@ -22740,3 +22740,27 @@ excised diet differs from the original by the 129 band rows
 (bridge-priced); corr is the N3 instrument as originally computed.
 NEXT per the frozen Phase-3 order: R6 gravity-tax (3 births + the
 free-run gate rider), new pre-reg.
+
+## PRE-REG HARDENING-P3-R6: the contractivity-tax toll gets n=3 paired seeds — GRAV-2 arms on the D2-excised diet, Mac (device-of-origin), free-run gate native (2026-08-08, Mac)
+
+Phase 3 row 2 of the frozen list (Artin GO). THEORY row 34's toll
+clause ("contractivity tax flips falloff flat at ~zero gate toll",
+toll -4 at n<=2 — inside the resolution law's sub-1.5-sigma class)
+gets paired replication. ARMS: (ctl, contract) at SEEDS 2, 3, 4 —
+six births, scratch/p3_grav2.py (frozen driver + load-time D2
+excision, receipt per run; wrapper REFUSES existing checkpoint
+names so seed-1 originals stay untouched). Device: Mac (the
+driver's own scope line); the free-run rider is satisfied natively
+(the driver gates via G.gate_eval, the honest chain gate).
+BARS: P-TAX-FLAT fires iff pooled (contract - ctl) over the three
+paired seeds is within +-7 AND the epsilon-kick falloff profile
+flattens or inverts under contract in 3/3 seeds (the mechanism
+half of the claim, read from the printed displacement-by-depth
+profiles) — THEORY row 34's toll clause gains n=3 and its fence
+lifts. P-TAX-REAL fires iff pooled (contract - ctl) <= -21 with
+3/3 negative — the tax is a real cost, the "~zero toll" clause
+amends. Between / mixed falloff: UNRESOLVED, profiles booked.
+Absolute gates carry the P1 exposure fence (paired deltas cancel).
+FENCES: one device (Mac/mps); excised diet (bridge priced ~zero in
+R5 for this loader class); falloff read is the driver's own
+epsilon-kick instrument at its defaults.
