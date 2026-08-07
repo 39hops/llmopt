@@ -102,7 +102,7 @@ def main() -> None:
     )
     ax0.set_ylabel("gate solves / 120", color=FG, fontsize=10,
                    family="monospace")
-    ax0.set_ylim(0, 100)
+    ax0.set_ylim(0, 112)
     ax0.set_title(
         "A  math crest — 45.3% keep beats paired full at 6/6 seeds",
         color=FG, fontsize=11, family="monospace", pad=10, loc="left",
@@ -133,9 +133,9 @@ def main() -> None:
         xmin=[-0.25, 0.75], xmax=[0.25, 1.25],
         colors=[MATH_DELTA_C, PHYS_C], lw=2.5, zorder=2,
     )
-    ax1.text(0.0, sum(MATH_D) / len(MATH_D) + 3.5,
+    ax1.text(-0.32, sum(MATH_D) / len(MATH_D),
              f"pooled +{sum(MATH_D) / len(MATH_D):.1f}",
-             color=MATH_DELTA_C, ha="center", fontsize=9,
+             color=MATH_DELTA_C, ha="right", va="center", fontsize=9,
              family="monospace")
     ax1.text(1.0, sum(PHYS_D) / len(PHYS_D) - 6.5,
              f"pooled {sum(PHYS_D):.0f}",
@@ -156,7 +156,7 @@ def main() -> None:
     )
     ax1.set_ylabel("delta vs paired full (solves)", color=FG,
                    fontsize=10, family="monospace")
-    ax1.set_xlim(-0.45, 1.55)
+    ax1.set_xlim(-0.85, 1.55)
     ax1.set_ylim(-70, 35)
     ax1.set_title(
         "B  domain-specificity — same recipe, opposite sign",
