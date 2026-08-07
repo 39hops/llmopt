@@ -1,0 +1,36 @@
+[gate] weights sha 2ddf31bf61e4db67
+ANATOMY snap Q=64 attn: {3: 22, 4: 7, 5: 16, 6: 8, 7: 12} = 65/120 @ 60.13%
+[gate] weights sha c0c4d702f7073e3c
+ANATOMY snap Q=64 mlp: {3: 22, 4: 7, 5: 16, 6: 8, 7: 12} = 65/120 @ 59.84%
+[gate] weights sha 367c4d225e733aa4
+ANATOMY snap Q=64 both: {3: 22, 4: 7, 5: 16, 6: 8, 7: 12} = 65/120 @ 60.27%
+[gate] weights sha 20c3a97de2f77a01
+ANATOMY snap Q=16 attn: {3: 20, 4: 5, 5: 14, 6: 7, 7: 11} = 57/120 @ 49.42%
+[gate] weights sha 6abc088fe71edc48
+ANATOMY snap Q=16 mlp: {3: 22, 4: 5, 5: 16, 6: 7, 7: 10} = 60/120 @ 56.61%
+[gate] weights sha 299e5fceb92e7866
+ANATOMY snap Q=16 both: {3: 21, 4: 3, 5: 13, 6: 6, 7: 10} = 53/120 @ 46.35%
+[gate] weights sha a9973f5f68a466c7
+ANATOMY snap Q=64 attn: {3: 20, 4: 7, 5: 17, 6: 7, 7: 12} = 63/120 @ 59.68%
+[gate] weights sha a79dfc90a7a8d592
+ANATOMY snap Q=64 mlp: {3: 20, 4: 6, 5: 17, 6: 7, 7: 12} = 62/120 @ 59.57%
+[gate] weights sha 6b9031af818498db
+ANATOMY snap Q=64 both: {3: 20, 4: 6, 5: 17, 6: 7, 7: 12} = 62/120 @ 59.03%
+[gate] weights sha 493ca6be59c18e26
+ANATOMY snap Q=16 attn: {3: 19, 4: 4, 5: 15, 6: 7, 7: 9} = 54/120 @ 49.43%
+[gate] weights sha 8800f9fbfa64c0fb
+ANATOMY snap Q=16 mlp: {3: 19, 4: 5, 5: 17, 6: 8, 7: 11} = 60/120 @ 54.62%
+[gate] weights sha 76ceb7d22c826440
+ANATOMY snap Q=16 both: {3: 17, 4: 3, 5: 13, 6: 8, 7: 9} = 50/120 @ 42.44%
+[gate] weights sha aff4f47004e2e6ad
+ANATOMY snap Q=64 attn: {3: 23, 4: 6, 5: 17, 6: 7, 7: 11} = 64/120 @ 62.43%
+[gate] weights sha 767ddf5661048639
+ANATOMY snap Q=64 mlp: {3: 22, 4: 6, 5: 17, 6: 7, 7: 11} = 63/120 @ 62.16%
+[gate] weights sha eb23a3c6647fb8c8
+ANATOMY snap Q=64 both: {3: 23, 4: 6, 5: 17, 6: 7, 7: 11} = 64/120 @ 62.50%
+[gate] weights sha af2352aa01216fcf
+ANATOMY snap Q=16 attn: {3: 21, 4: 4, 5: 16, 6: 7, 7: 7} = 55/120 @ 51.02%
+[gate] weights sha a3225ba69f47f8e9
+ANATOMY snap Q=16 mlp: {3: 20, 4: 6, 5: 16, 6: 7, 7: 10} = 59/120 @ 57.73%
+[gate] weights sha cb306f1c45593c76
+ANATOMY snap Q=16 both: {3: 19, 4: 5, 5: 14, 6: 7, 7: 10} = 55/120 @ 43.94%

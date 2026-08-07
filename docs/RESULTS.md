@@ -22654,3 +22654,32 @@ these two artifacts). Between: UNRESOLVED, draws booked.
 FENCES: R1 mps gates-only as the original; R8 fresh bands are the
 SAME generator class (band-shift, not a new corpus law); no
 cross-device numbers quoted.
+
+## VERDICT HARDENING-P2: BOTH CELLS FIRE — P-KNEE-CONSTANT 3/3 (the sigma-ratio knee holds with dispersion; THEORY row 143's n=1 fence lifts) and P-TIE-STANDS (crown paired deltas 0/+2/+2, pooled +4 over three fresh draws) (2026-08-07 night, Mac)
+
+Against PRE-REG HARDENING-P2, receipts logs/hardening/ (force-added;
+weights shas per gate in the log, provenance rule).
+R1 (precision knee, n=3): per birth — comparator | Q=64-both delta |
+Q=16-both delta:
+  wfloor_d256     65 | 65 (0)  | 53 (-12)   sigma 0.0367
+  wfloor_d256_s2  63 | 62 (-1) | 50 (-13)   sigma 0.0368
+  wfloor_d256_s3  64 | 64 (0)  | 55 (-9)    sigma 0.0369
+P-KNEE-CONSTANT FIRES: Q=64 within +-3 of comparator 3/3 (0/-1/0)
+AND Q=16 at -7 or worse 3/3 (-12/-13/-9). The sigma-ratio knee
+(grid ~0.25-0.5 sigma free; ~1.0 sigma bites) holds across three
+same-diet births with near-identical sigmas (0.0367-0.0369) — the
+constant now carries dispersion; the THEORY row's [n=1 per arm]
+fence LIFTS (edited this commit). s2/s3 comparators gated fresh
+this session (63, 64); paired snap deltas are exposure-clean under
+the P1 fence (shared band, same gate).
+R8 (crown tie, n=3 problem-set draws): per draw gen6 v merged —
+  band+1M: 76 v 76 (+0) | band+2M: 89 v 87 (+2) | band+3M: 83 v 81
+  (+2). Pooled +4 < 7: P-TIE-STANDS FIRES. The statistical tie is
+REAL at three fresh paired draws (deltas remarkably tight); the
+crown line stays a tie with the n=1-BIRTHS fence intact (draws
+resolve gate noise, not birth noise; tiebreak still needs births).
+Fresh-band absolutes (76-89) are NOT comparable to the booked
+76/75 (different band difficulty class + device era) and are
+quoted here only inside their paired deltas.
+FENCES: mps, one session; R1 gates-only snap as the original;
+fresh bands same generator class; no cross-device numbers.
