@@ -2898,3 +2898,23 @@ prerequisite), Fourier force-the-clock (banked, off critical
 path). Attribution: Grok (slate + sequencing), Artin (adoption
 call + relay), Fable (rung-by-rung verification + the one stale
 correction).
+
+## 2026-08-06 (late): Gemini README teardown (Artin-relayed; one adoption, two rejections-with-reason, one bank)
+
+ADOPTED: README headlines — three fenced punchlines above the fold
+(crest, identity-follows, cross-device integer birth), each carrying
+its FINDINGS pointer; Gemini's own phrasings ("intelligence
+multiplier", "MoEs get smarter") NOT used — unscoped claims are what
+the tag grammar exists to prevent. REJECTED: intmath.py split into a
+package — promoted, sha-pinned, cross-lab-certified evidence surface
+(402 tests, axiom C++ parity); architectural-aesthetics churn on
+frozen evidence is what the CODEMAP move-gate blocks; extensions go
+BESIDE it. BANKED (Artin's call on priority): the self-contained
+free-run-oracle reproduction gap — Gemini proposes a surrogate
+dataset; the house-shaped fix is the DIET-BRIDGE pattern instead
+(serialize gate-row tokens INTO the reproduce artifacts, as
+diet_init.bin already does for windows) — most house data is
+engine-minted and string-seeded, so the blocker is the file-handoff
+convention, not IP. A surrogate corpus would add a contamination
+surface for no reproduction gain. Attribution: Gemini (teardown),
+Artin (relay + headline call), Fable (adoption filter).
