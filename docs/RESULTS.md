@@ -21939,3 +21939,48 @@ stabilizes, decay converts long horizons from regression to
 progress. FENCES: integer battery scope; seed 17; single
 deterministic runs; one schedule tested (lrd x2 @ 250/500/750 —
 schedule-shape sweep not licensed by this rider).
+
+## VERDICT EX-ANAT-2: P-PORTABLE FIRES (pooled +113 v bar 42, 4/6) — and portability is RECEIVER-DEPENDENT: named carriers crush matched-random additions on weak bases and add NOTHING on strong ones; the REM leg reads as GENUINE top-rank redundancy (1B's compensation was NOT the masked add) (2026-08-07 early, Mac)
+
+Against PRE-REG EX-ANAT-2, 24 arms, dicts sum-verified, receipts
+logs/ex2/ex2.jsonl (force-added; 2 oracle timeouts total, both
+c30_lo_remc, booked as failures).
+
+PRIMARY — ADD leg (ADD - ADDC per pair):
+  c15 hi 48-51 = -3   lo 48-9  = +39
+  c30 hi 73-71 = +2   lo 70-8  = +62
+  c45 hi 70-79 = -9   lo 69-47 = +22
+  pooled +113 >= 42, positive 4/6: P-PORTABLE FIRES. Structure:
+  on LOW bases identity beats matched-random by +22..+62; on HIGH
+  bases identity == control (-9..+2) — carrier addition SATURATES
+  where the base already holds carriers. And the variance
+  asymmetry is its own finding: ADD arms are UNIFORM (48/70/69/
+  48/73/70) while matched-random ADDC arms are a lottery
+  (9/8/47/51/71/79 — GT-7's draw-identity variance reproduced in
+  the control column). Named-identity addition doesn't just raise
+  the mean; it REMOVES the draw lottery.
+SECONDARY — REM leg (registered suggestive-only, recall confound
+named in the pre-reg): REM-REMC = +35/-13/-9/-5/-3/-8 (5/6
+negative but pooled -3 — the c15_hi pair is a wild outlier both
+directions: REM 60 ABOVE its 53 baseline while its REMC control
+cratered to 25 on removing RANDOM non-top exclusives; a specific
+non-top expert was load-bearing there — identity again, rank is a
+weak proxy). THE RIDER ANSWERS CLEANLY though: on HIGH bases,
+losing top-2-per-class with only bottom-fill arriving — at recall
+0.65, BELOW baseline — leaves 53->60, 54->51, 46->57: no damage.
+1B's k=2 compensation was GENUINE REDUNDANCY, not add-masking.
+LOW bases floor out under both removals (0/1 v 13/5/9, mildly
+worse with top removal) — consistent with holding almost no
+redundant carriers to begin with.
+SYNTHESIS across EX-ANAT-1/1B/2: top-demand exclusive experts are
+PORTABLE, REDUNDANT-AT-DEPTH-2 on strong bases, and SATURATING —
+a strong base neither needs more of them nor misses two of them;
+a weak base is transformed by four of them. Draw quality =
+carrier holdings; aggregate metrics never saw it because carriers
+are a small, identity-specific population. Residency-design
+implication (working, fenced): page in the named carrier set, not
+demand-ranked bulk.
+FENCES: one gate seed; L1-3; REM leg suggestive-only per pre-reg
+(recall confound); c15_hi REM/REMC outlier pair single-arm, no
+replication claim; [FORMAT-BOUND] [REGIME-SCOPED: measured
+deployment artifacts].
