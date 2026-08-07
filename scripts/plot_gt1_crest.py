@@ -111,8 +111,8 @@ def main() -> None:
                fontsize=8, labelcolor=FG)
     ax0.text(
         0.5, -0.14,
-        "R4 seeds 4242/777/90210 (+14/+14/+16) · R5 seeds 111/222/333 "
-        "(+17/+9/+18) · pooled +14.7 vs +7 bar",
+        "each full bar is that seed's own paired baseline (R4 pool v R5 "
+        "pool) · R4 +14/+14/+16 · R5 +17/+9/+18 · pooled +14.7 vs +7 bar",
         transform=ax0.transAxes, color=DIM, fontsize=7.5,
         family="monospace", ha="center",
     )
