@@ -1,0 +1,15 @@
+[diet] 8 windows drawn, ids sha 99caaa646925d150
+[diet] V=40 NBLK=4 SHIFT=14 params 117824
+[r1a] table silu sha 24499877ab63ee6b
+[r1a] table dsilu sha 967943f938fc924f
+[r1b] table exp sha 9b8649244ca8c235
+[diet] step 125 loss(win) 15655 loss(cyc8) 15574 nz 0.688 traj-sha 05b76fff1a8ca43b
+[diet] step 250 loss(win) 14822 loss(cyc8) 14782 nz 0.678 traj-sha 88bf6ed5819e79db
+[diet] step 375 loss(win) 14166 loss(cyc8) 14134 nz 0.657 traj-sha 102940cd3ae76b2f
+[diet] step 500 loss(win) 13405 loss(cyc8) 13672 nz 0.652 traj-sha 6f0eda0cf052d47f
+[diet] step 625 loss(win) 14029 loss(cyc8) 13803 nz 0.647 traj-sha 1cd800c29da66c4a
+[diet] step 750 loss(win) 14147 loss(cyc8) 13933 nz 0.660 traj-sha 30ef346d70ea91b0
+[diet] step 875 loss(win) 14963 loss(cyc8) 14089 nz 0.657 traj-sha 41be1d835d672bf0
+[diet] step 1000 loss(win) 13944 loss(cyc8) 14009 nz 0.656 traj-sha c8c688255f970fa5
+[diet] cycle-mean loss 15953 -> 14009  falling: True
+[diet] FINAL trajectory sha c8c688255f970fa52e28876a829997241e8c99068f6688da602652bc348ae3b0

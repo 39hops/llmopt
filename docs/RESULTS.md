@@ -22159,3 +22159,36 @@ FENCES: descriptive; one vehicle; free-routing census on the v2
 artifact (v2 tail convention — tails counted as decode, ~5,760 of
 1.08M decode picks, negligible to the tilt); carrier definition =
 the frozen ex1_swap rule.
+
+## VERDICT P-CAPACITY-2: does NOT fire — capacity does not convert at the anchor's schedule; BOTH big arms land ABOVE the plateau (P-WIDE 12,868, P-DEPTH 14,009 v anchor 12,518) while P-SMALL regresses as required (12,931); the plateau is now knob-complete at this diet (2026-08-07 morning, 3080 box CPU)
+
+Against PRE-REG P-CAPACITY-2 (receipts logs/lockstep/params_*.log
+force-added; param counts match the spec's predictions exactly —
+31,424 / 109,376 / 117,824; deterministic single runs, FINAL shas
+in the logs):
+  P-SMALL  NBLK=1 (0.52x): 15,872 -> 12,931  (above the anchor —
+           capacity IS load-bearing downward, the monotone clause
+           holds)
+  P-WIDE   FFN=256 (1.82x): 15,567 -> 12,868 (ABOVE the anchor)
+  P-DEPTH  NBLK=4 (1.96x): 15,953 -> 14,009  (well above; depth
+           costs MORE than width at matched capacity class — the
+           free depth-v-width pair reads width > depth here)
+P-CAPACITY-2 does NOT fire (neither big arm approaches 11,266).
+The registered capacity-insensitive clause does not apply either —
+the big arms are not in the 11,266-12,518 window, they are ABOVE
+it: at the anchor's exact schedule (1000 steps, SHIFT=14 const),
+adding 2x params makes the same 1000 steps WORSE, the signature of
+under-training at fixed step budget, not of a capacity ceiling.
+KNOB-COMPLETE READING (the real result of the four-rung arc):
+at this diet (8 windows x 33 tokens = 264 real tokens), NO single
+knob beats the 12,518 anchor — steps regress (13,540), window
+count saturates worse (14,684), params in either direction land
+above (12,868/12,931/14,009) — except DECAY, which bends it to
+11,777. The plateau is DIET-BOUND at this scale in every
+single-knob direction; breaking it is a JOINT-scaling question
+(params x windows x steps x schedule together), which is exactly
+the intbirth engine's job (its 60x makes the joint sweep
+affordable) — banked as the engine-scale rung, Artin GO, spec
+before build. FENCES: deterministic integer battery; seed 17;
+single runs; CPU on the 3080 box; depth-v-width read is one pair
+at one schedule.
