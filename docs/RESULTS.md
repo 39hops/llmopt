@@ -21749,3 +21749,40 @@ the named top-4 carrier sets directly. FENCES: one gate seed;
 L1-3; derived from frozen draws; the "highs rise at small k"
 observation is cross-arm-consistent (5/6 arms) but carries no
 pre-registered bar this rung.
+
+## PRE-REG EX-ANAT-2: one-sided transplant/ablate arms vs matched controls — is carrier ADDITION portable beyond aggregates, and was 1B's k=2 "redundancy" a masked add? (2026-08-06 late, Mac)
+
+IDENTITY battery rung 2, sharpened by VERDICT EX-ANAT-1B, Artin GO.
+Design v2 after v1 aborted on its own band assertion (replace-with-
+bottom moves recall ~0.06, structurally unpinnable — receipt in the
+builder docstring): PURE one-sided arms, identity read as ARM minus
+MATCHED CONTROL. Builder scratch/ex2_build.py, all 24 sets built
+with receipts BEFORE this pre-reg: per bin pair per side —
+  ADD  (+top-4/class of the other side's exclusives, 382-384 slots)
+  ADDC (+count-equal nearest-demand-matched non-kept experts;
+        coverage identical, recall mismatch 0.014-0.023)
+  REM  (-own top-2/class exclusives, 192 slots; k=2 because k=4
+        consumes the vonly-exclusive class and becomes a GT-6
+        verbal-exclusion replay — first-build receipt showed cov
+        0.149->0.052 with the control pool exhausted)
+  REMC (-count-equal random non-top-2 exclusives; coverage matched
+        exactly on c30/c45, 0.1001 v 0.1013 on c15)
+Gate: frozen arm2 KEEPSET path via gt7_run.py, 120 problems seed
+1234, one load, one-resident; deterministic gate — deltas are real.
+
+BARS. PRIMARY, the ADD leg: P-PORTABLE fires iff pooled
+(ADD - ADDC) over the six pairs >= 42 AND >= 4/6 positive — the
+named top-4 carrier sets beat aggregate-matched random addition;
+grounding for the 0.014-0.023 recall mismatch: the ADD arms land
+at 0.79-0.80, exactly the measured r80 point where GT-7 fresh
+draws scored 9-75 (aggregates dead there). SECONDARY, the REM leg,
+REGISTERED AS SUGGESTIVE-ONLY regardless of outcome: the REM arms'
+recall (~0.65 v control ~0.70) is inseparable from carrier mass by
+construction, and the GT-6 ladder envelope at r60-r65 (draws 0, 4,
+4, 30) bounds what low recall alone permits; readout pooled
+(REM - REMC) with >= 4/6 sign consistency, direction booked only.
+RIDER (descriptive): strong negative REM signal reads 1B's k=2
+compensation as ADD-MASKING (the received top-2 hid the loss).
+Degeneracy census per arm (free). FENCES: one gate seed; L1-3;
+derived from frozen draws; [FORMAT-BOUND] [REGIME-SCOPED: measured
+deployment artifacts].
