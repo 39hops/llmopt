@@ -21786,3 +21786,37 @@ compensation as ADD-MASKING (the received top-2 hid the loss).
 Degeneracy census per arm (free). FENCES: one gate seed; L1-3;
 derived from frozen draws; [FORMAT-BOUND] [REGIME-SCOPED: measured
 deployment artifacts].
+
+## PRE-REG PLATEAU-BREAK: is the DIET-BRIDGE plateau step-bound or capacity-bound? (2026-08-07 early, 3080)
+
+LOCKSTEP Leg A rung 3 (spec 2026-08-06-3080-lockstep-window.md;
+3080 window open per Artin). NOTE BOOKED WITH THIS PRE-REG: the
+Lean Leg B rungs are BLOCKED on the axiom corpus handoff (the
+re-emitted 21,914-row sidecar does not exist yet — AMENDMENT
+LEAN-KERNEL-SAMPLE-2 fence; the ~98.9% compile rate is a
+registered prediction about that artifact, and running the OLD
+sidecar would re-measure retired defect classes). Relay item for
+Artin: request the re-emitted sidecar.
+
+Driver scratch/detbwd_plateau.py (thin knob-setter; the cited
+detbwd_diet.py stays frozen). Anchor: VERDICT DIET-BRIDGE cycle-
+mean 15,909 -> 12,518 at NWIN=8, 60,224 params, 1000 steps,
+SHIFT=14 const, seed 17. Arms (all deterministic, traj shas =
+receipts, single runs per the proven determinism class):
+  A  NWIN=8,  STEPS=4000   B  NWIN=32, STEPS=4000
+  C  NWIN=64, STEPS=4000
+BARS on final cycle-mean (integer, device-free per LOCKSTEP-A2):
+  P-STEP-BOUND fires iff arm A final <= 11,266 (>= 10% below the
+  1000-step plateau) — optimization was the binder; next rung is
+  a schedule ladder, not capacity.
+  P-CAPACITY fires iff arm A stays within 5% of 12,518 AND final
+  cycle-mean increases monotonically across NWIN 8 -> 32 -> 64 —
+  per-window capacity dilution binds at fixed 60k params; the
+  intbirth engine's 60x is the named next lever (params ladder).
+  Both-fail or mixed: UNRESOLVED, shapes booked. Secondary
+  readout (descriptive): per-window vs cycle-mean divergence
+  (window-difficulty spread) per arm.
+FENCES: deterministic integer battery scope; one seed (17); the
+NWIN=32/64 window sets are supersets drawn by the frozen
+first-strictly-encodable rule (ids shas booked in receipts); no
+fp claims; wall-clock not a readout.
