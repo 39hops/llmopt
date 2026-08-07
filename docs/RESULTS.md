@@ -22429,3 +22429,24 @@ ms/cert the full corpus is ~56 min single-threaded, ONE window,
 its own pre-reg. FENCES: frozen 1000-id sample; Mac-local
 mathlib cache (scratch/leancheck); the 4 field_simp ids await
 axiom confirmation before that sub-claim hardens.
+
+## PRE-REG LEAN-FULL-V2: the complete 21,914-cert kernel pass — the sample's census becomes the corpus's (2026-08-07 afternoon, Mac local kernel)
+
+Leg B rung 2, unblocked by VERDICT LEAN-SAMPLE-V2 (989/1000,
+prediction exact). Runner: scratch/lean_check.py on the full
+parity_certs_v2.jsonl, chunked (the ~100-diagnostic abort fence
+asserted by construction — 50-row chunks). ~56 min at the measured
+153 ms/cert.
+BARS: P-CORPUS-CLEAN fires iff kernel PASS rate >= 98.5% AND every
+failure classifies into the three named classes (atom-split /
+field_simp-open / a NEW class, which must be named and counted —
+newness is a finding, not a failure); the sample's 7+4 must all
+recur. DESCRIPTIVE: statement-diff rate v the sample's 690/1000
+class; per-tactic pass rates (rfl v ring v ring_nf-prelude);
+wall-clock per class. If PASS < 98.5%: the gap between sample and
+corpus is the verdict (sampling bias in the 1000 — bookable
+either way).
+FENCES: Mac-local kernel (scratch/leancheck cache); v2 sidecar =
+axiom 6737bff delivery (counts reconcile v1 exactly, their
+receipt); cost verdict comparisons stay against their ~11 ms/row
+oracle convention.
