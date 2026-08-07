@@ -1,0 +1,1 @@
+FRACS=0.382,0.314 SEED=1234 PERPROB=1 .venv/bin/python scratch/moe_gt1_arm2.py

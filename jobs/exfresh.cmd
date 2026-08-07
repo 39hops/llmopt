@@ -1,0 +1,1 @@
+for S in 1001 2002 3003; do ARMS=ex1_full128,ex1_c30_his,ex3_del_invp,ex3_del_rand0 N_EVAL=120 SEED=$S PERPROB=1 LOG=logs/ex3/fresh.jsonl PERPROB_LOG=logs/ex3/fresh_perprob.jsonl ANSWERS_LOG=logs/ex3/fresh_answers.jsonl .venv/bin/python scratch/gt7_run.py; done

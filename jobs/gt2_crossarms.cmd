@@ -1,0 +1,1 @@
+ARM0=checkpoints/gt2_math_arm0_decode.json FRAC=0.453 .venv/bin/python scratch/gt2_code_arm0.py && SEED=1234 FRACS=0.453 PERPROB=1 ARM0=checkpoints/gt2_code_arm0_decode.json .venv/bin/python scratch/moe_gt1_arm2.py

@@ -1,0 +1,1 @@
+KINDS=eom,small_osc,kinematics LEVELS=2,3 SEED=606 OUT=checkpoints/gt2_phys_arm0.json TRAJ=1 TRAJ_OUT=logs/opus/gt2_phys_traj.jsonl LOG=logs/opus/moe_gt1.jsonl .venv/bin/python scratch/moe_gt1.py

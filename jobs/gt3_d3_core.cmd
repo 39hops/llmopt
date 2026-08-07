@@ -1,0 +1,1 @@
+KEEPSET=checkpoints/gt3_core_keep.json SEED=1234 FRACS=0.29 PERPROB=1 .venv/bin/python scratch/moe_gt1_arm2.py

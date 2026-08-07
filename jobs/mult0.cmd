@@ -1,0 +1,1 @@
+CKPT=checkpoints/sym_birth_dense_revcert.pt MULT_LOG=logs/mult0/rev.jsonl .venv/bin/python scratch/tenet_mult_census.py && CKPT=checkpoints/sym_birth_dense_fwdcert.pt MULT_LOG=logs/mult0/fwd.jsonl .venv/bin/python scratch/tenet_mult_census.py

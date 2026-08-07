@@ -1,0 +1,1 @@
+PROMPTS=checkpoints/gt3_proofs_prompts.json TRAJ_OUT=logs/opus/gt3_proofs_traj.jsonl .venv/bin/python scratch/gt3_probe_arm0.py && PROMPTS=checkpoints/gt3_prose_prompts.json TRAJ_OUT=logs/opus/gt3_prose_traj.jsonl .venv/bin/python scratch/gt3_probe_arm0.py

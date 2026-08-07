@@ -1,0 +1,1 @@
+SEED=555 FRACS=1.0,0.618,0.5,0.453,0.40 PERPROB=1 .venv/bin/python scratch/moe_gt1_arm2.py

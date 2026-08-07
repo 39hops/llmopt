@@ -1,0 +1,1 @@
+PROFILE=1 BATCH=1 DEQ=bf16 K=16 .venv/bin/python scratch/v4flash_f1d.py

@@ -1,0 +1,1 @@
+TRAJ=1 TRAJ_OUT=logs/opus/moe_gt1_traj_v2.jsonl .venv/bin/python scratch/moe_gt1.py

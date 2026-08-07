@@ -1,0 +1,1 @@
+ARMS=ex3_del_invp,ex3_del_invd,ex3_del_rand0,ex3_del_rand1 N_EVAL=120 SEED=1234 PERPROB=1 LOG=logs/ex3/ex3.jsonl PERPROB_LOG=logs/ex3/ex3_perprob.jsonl ANSWERS_LOG=logs/ex3/ex3_answers.jsonl .venv/bin/python scratch/gt7_run.py

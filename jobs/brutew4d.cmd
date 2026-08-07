@@ -1,0 +1,1 @@
+GATE=1 COND=1 QK=1 DIM=128 DHEAD=32 FFN=256 ACLAMP=40960 SCHED=1 .venv/bin/python scratch/detbwd_gravmoe.py > logs/brute_w4d_0801.log 2>&1

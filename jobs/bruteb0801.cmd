@@ -1,0 +1,1 @@
+bash scratch/brute_b_arms_0801.sh > logs/brute_b_arms_0801.log 2>&1

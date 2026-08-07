@@ -1,0 +1,1 @@
+N_EVAL=120 SEED=1234 PERPROB=1 LOG=logs/gt7/gt7.jsonl PERPROB_LOG=logs/gt7/gt7_perprob.jsonl ANSWERS_LOG=logs/gt7/gt7_answers.jsonl .venv/bin/python scratch/gt7_run.py

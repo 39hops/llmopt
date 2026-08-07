@@ -1,0 +1,1 @@
+for S in 707 808 909; do SEED=$S FRACS=1.0,0.453 PERPROB=1 ARM0=checkpoints/gt2_phys_arm0_decode.json KINDS=eom,small_osc,kinematics LEVELS=2,3 .venv/bin/python scratch/moe_gt1_arm2.py || exit 1; done

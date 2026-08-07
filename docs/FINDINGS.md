@@ -408,8 +408,12 @@ sessions under one operator, not independent investigators. Read
   universal symmetry law. ([ROTATIONAL SNAP R3](RESULTS.md#L8610); [SYMMETRY
   LADDER S4 + S3](RESULTS.md#L8733).)
 - [NULL] [REGIME-SCOPED: house crystals] No spontaneous commutant structure
-  appeared in the tested dense crystal before intervention. ([SYMMETRY LADDER
-  S1 CELL 1 VERDICT](RESULTS.md#L8665).)
+  appeared in the tested dense crystal before intervention — a WEIGHT-BASIS
+  statement only: the rotation lenses were later shown blind to a confirmed
+  activation clock, so representation-level symmetry is unmeasured by this
+  instrument. ([SYMMETRY LADDER
+  S1 CELL 1 VERDICT](RESULTS.md#L8665); [VERDICT TIER-A
+  A2+A3](RESULTS.md#L12814).)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: house crystals] Projection followed
   by a warm-training arm kept the imposed commutant locally stable, showing
   that SGD accepted imposed symmetry even though it had not selected it.

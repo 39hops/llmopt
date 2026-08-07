@@ -1,0 +1,1 @@
+RULE=random RULESEED=0 FRACS=0.453 SEED=1234 PERPROB=1 .venv/bin/python scratch/moe_gt1_arm2.py && RULE=random RULESEED=1 FRACS=0.453 SEED=1234 PERPROB=1 .venv/bin/python scratch/moe_gt1_arm2.py && RULE=anti FRACS=0.453 SEED=1234 PERPROB=1 .venv/bin/python scratch/moe_gt1_arm2.py

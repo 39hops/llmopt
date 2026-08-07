@@ -1,0 +1,1 @@
+bash scratch/gt6_resume_arms.sh

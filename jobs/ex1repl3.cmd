@@ -1,0 +1,1 @@
+ARMS=ex1_c30_his,ex1_full128 N_EVAL=120 SEED=777 PERPROB=1 LOG=logs/ex1/ex1repl3.jsonl PERPROB_LOG=logs/ex1/ex1repl3_perprob.jsonl ANSWERS_LOG=logs/ex1/ex1repl3_answers.jsonl .venv/bin/python scratch/gt7_run.py

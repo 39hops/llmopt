@@ -1,0 +1,1 @@
+OUT=logs/triage/mac_inventory.jsonl .venv/bin/python scratch/ckpt_inventory.py

@@ -1,0 +1,1 @@
+.venv/bin/python scratch/lean_check.py scratch/lean_real_corpus/parity_certs_v2.jsonl --project scratch/leancheck

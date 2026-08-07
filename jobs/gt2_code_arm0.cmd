@@ -1,0 +1,1 @@
+TRAJ=1 TRAJ_OUT=logs/opus/gt2_code_traj.jsonl .venv/bin/python scratch/gt2_code_arm0.py

@@ -1,0 +1,1 @@
+for s in 111 222 333; do FRACS=1.0,0.453 SEED=$s PERPROB=1 .venv/bin/python scratch/moe_gt1_arm2.py; done
