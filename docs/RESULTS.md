@@ -21700,3 +21700,52 @@ DEGENERACY RIDER: distinct-answer census per arm (free from the
 driver), feeds R-EMISSION. FENCES: one gate seed; L1-3 mathgen;
 derived from frozen GT-7 draws; oracle v3.2, timeouts book as
 failures.
+
+## VERDICT EX-ANAT-1B: P-FOLLOW does NOT persist below k=4 — but the miss is ASYMMETRIC and mechanism-rich: GAINS transfer at every k (all six low draws rise, +6 to +58), LOSSES require k=4 (top-2-per-class removal is fully compensated; the highs RISE at k<=2) (2026-08-06, Mac)
+
+Against PRE-REG EX-ANAT-1B, 12 arms, dicts sum-verified, receipts
+logs/ex1/ex1b.jsonl (force-added). Baselines hi 53/54/46, lo
+15/5/10. The gate is exactly deterministic for frozen weights, so
+every delta below is real, not re-gate noise.
+
+k=2 (192 exchanged/pair):
+  c15 hi 53->63 (+10) | lo 15->33 (+18)   D=8
+  c30 hi 54->61 (+7)  | lo  5->63 (+58)   D=51
+  c45 hi 46->54 (+8)  | lo 10->52 (+42)   D=34
+  pooled D_2 = 93 >= 28, BUT both-components-positive 0/3 —
+  P-FOLLOW_2 DOES NOT FIRE (every high draw ROSE on losing its
+  own top-2-per-class and gaining the other side's).
+k=1 (96 exchanged/pair):
+  c15 hi 53->64 (+11) | lo 15->21 (+6)    D=-5
+  c30 hi 54->40 (-14) | lo  5->40 (+35)   D=49
+  c45 hi 46->58 (+12) | lo 10->52 (+42)   D=30
+  pooled D_1 = 74, both-positive 1/3 — P-FOLLOW_1 DOES NOT FIRE.
+
+REGISTERED READ, honored: the smallest k with P-FOLLOW is k=4 —
+the symmetric "capability follows the exchanged set" claim
+localizes to the 384-expert exchange, not below. THE ASYMMETRY IS
+THE FINDING (booked descriptively, next rung's target): the D
+metric conflates two effects that separate cleanly at small k —
+(1) ADDITION: receiving the other side's top-demand exclusives
+raises the receiver at EVERY k (all six low draws rise; even the
+high draws rise at k<=2 on receiving the low side's top picks —
+carriers are NOT exclusive to high-scoring draws, consistent with
+the k=4 c30 anomaly where both swapped arms landed strong);
+(2) REMOVAL: losing your own top-2-per-class is fully compensated
+(redundancy at the top of the demand ranking), but losing top-4
+craters (53->30, 46->11 at k=4) — the removal-damage threshold
+sits between 2 and 4 per class (between 192 and 384 slots).
+Also carried: c15's low draw barely moves at k=1 (+6, to 21, with
+100/120 distinct — still partly degenerate) while c30/c45 lows
+jump +35/+42 — per-bin carrier depth differs. Closed recall
+tracked open within 0.014 everywhere; coverage pinned; 0 timeouts.
+
+CONSEQUENCE: EX-ANAT-2 (excluded/exchanged-expert anatomy) now has
+a sharpened target — separate ADD from REMOVE with one-sided
+arms (transplant-only and ablate-only at k=2/4) instead of the
+symmetric exchange; the banked DeepSeek lenses (token-
+specialization signature, demand-rank-within-exclusives) apply to
+the named top-4 carrier sets directly. FENCES: one gate seed;
+L1-3; derived from frozen draws; the "highs rise at small k"
+observation is cross-arm-consistent (5/6 arms) but carries no
+pre-registered bar this rung.
