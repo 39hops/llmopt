@@ -29,7 +29,7 @@ blind) + B5/B6 booked; its seven unrun items fold in below.
   from the logs' own env dumps, params/plateau arm shell,
   p4_arms sha table pull, r2b_ref small-file tracking, seedslad
   local receipts, artifact_manifest.py for the large untracked
-  claim-bearing streams (docs/artifact-shas.jsonl).
+  claim-bearing streams (docs/artifact-shas.jsonl); poly3's sed-generated /tmp probe (a run-time-only artifact behind a booked verdict — commit the probe as a real file at the P4-4 re-run).
 
 ## PHASE 1 — hygiene audit (desk, free; GATES phases 3-4)
 
@@ -104,6 +104,37 @@ Read-only sha-inventories running on both machines
 cross-machine dedup + RESULTS-citation classification -> a
 keep/dedup/candidate-delete TABLE for Artin review. Nothing deletes
 without the table signed off.
+
+## MIGRATION APPENDIX (Opus survey 2026-08-08, hazards Fable-verified)
+
+The gate path needs NOTHING: every Phase-3 driver reaches the
+oracle through G.gate_eval -> verify_wave/_gen_isolated, already
+fork-isolated, and lab/verify + lab/gen are VERBATIM adoptions of
+those exact functions — migrating the gate leg is pure diff noise
+against frozen evidence. Calls:
+- MIGRATE AT RE-RUN (3): pincer_r1b_labels.py (line 39 calls
+  successors() in-process under derivation.py's SIGALRM box —
+  the one true checkpoint-selection carrier in the program; new
+  fork-per-state + streamed driver with source-identity guard on
+  the UNIQUE/AMBIG/MISS logic); poly3_pipeline.sh (inline
+  timeout-7200 unforked sympy audit, all-or-nothing assert, PLUS
+  a sed-generated /tmp probe = provenance hole — added to the
+  Phase-0 SEV list); scorer_s2_data.py -> lab/oracle ONLY if its
+  re-run is Mac-side (RSS/jetsam path).
+- WRAPPER-ONLY (7): R3, R4, R2 births, R7, R9, ZX 45M,
+  judge/dithered + farmer — the p3_umoe_soft pattern (frozen
+  driver + D2 excision + REFUSE-IF-EXISTS on checkpoint names).
+- LEAVE ALONE (2): SR-BF16 (confounds are arm-design, fixed in
+  its pre-reg not its code); ZX farm regen (adjudicate_zx already
+  fork-walled; problems are axiom-side — the phase-1 note NARROWS:
+  of the three named diets only R1b prep carries the alarm
+  hazard).
+- CROSS-CUTTING RULE (adopted): every Phase-3 wrapper carries the
+  refuse-if-exists checkpoint guard — sym_convert, wfloor_ladder,
+  and format_ladder all write SEED-FREE fixed OUT names that
+  would clobber cited artifacts (the real Phase-3 risk is name
+  collisions, not oracles). Wrappers also emit runlog receipts;
+  frozen drivers keep their shell-redirect logging untouched.
 
 ## Standing fences for the whole program
 
