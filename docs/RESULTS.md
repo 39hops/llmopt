@@ -22564,3 +22564,20 @@ ex3_del_invd,ex3_del_rand0,ex3_del_rand1 N_EVAL=120 SEED=1234
 PERPROB=1 via scratch/gt7_run.py; EX-FRESH = for S in 1001 2002
 3003: ARMS=ex1_full128,ex1_c30_his,ex3_del_invp,ex3_del_rand0
 SEED=$S, same driver, logs under logs/ex3/.
+
+## AMENDMENT LEAN-SAMPLE-PROVENANCE: the frozen 1000-id sample gets its committed sampler — byte-identity 2/2, and the true recipe documented (2026-08-07 evening, desk)
+
+Amends: PRE-REG LEAN-KERNEL-SAMPLE (provenance). The 08-07 audit
+flagged the frozen sample as unreconstructible (no committed
+sampler). Repair: scratch/lean_sample_build.py. The re-derivation
+found the registered prose recipe underspecified in two ways, both
+now documented in the builder: (1) the draw samples the ID LIST
+(not raw rows) in selection order; (2) rows are re-serialized via
+json.dumps (raw sidecar lines differ in whitespace only —
+1000/1000 verified semantically identical). With both, BYTE-
+IDENTITY holds for kernel_sample_1000.jsonl AND
+kernel_sample_1000_v2.jsonl; the builder aborts on mismatch. The
+frozen id list (kernel_sample_1000_ids.txt, 7KB) is force-added as
+the tracked fence. jobs/*.cmd receipts (44 files) force-added in
+the same phase — the arm-invocation record for the moe-gt/ex arc
+now has git redundancy.
