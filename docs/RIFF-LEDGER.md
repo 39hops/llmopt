@@ -2935,3 +2935,27 @@ exclusives (has measured signal: EX-ANAT-1 ranked by it and fired).
 Training provenance UNTESTABLE on the vendor model — fence, not
 lens. Attribution: DeepSeek (questions), Artin (relay), Fable
 (disposition).
+
+## 2026-08-06 (late): W1-R — the relationally-capable weight reader (Artin riff)
+
+"Have we thought about what a relationally-capable reader would look
+like? Pairwise inner products between weight rows?" — NOT previously
+banked (weight2vec is adjacent but about shared embedding geometry,
+not relational features). This is the "new representational
+hypothesis" the W1-S closure requires, so a rung is LICENSED.
+Sharp form: direction is a COMPOSITION-ORDER property — single-row
+tokens are structurally blind to it, which retroactively explains
+the W1/W1-S null without claiming the information is absent.
+Feature families, in attack order: (1) CROSS-LAYER alignment
+statistics (down_l write basis vs gate_{l+1} read basis; spectra of
+the cross-Gram — where composition order would live); (2) within-
+neuron functional pairing (gate/up/down triples: angles, norm
+ratios — the true functional unit); (3) within-layer Gram spectra
+(cheapest, fully invariant, weakest for direction). DESIGN FENCE:
+the 2026-07-06 ablation (augmentation 88.4 > canonicalization 82.4)
+predicts imposed-invariant spectra LOSE to augmented relational
+tokens — run both arms, the ablation's prediction is itself a
+readout. Protocol/subjects/bars: reuse W1-S verbatim (50 pairs,
+w1-split-1, 16 votes, binomial 16/20 fire). Cost: minutes, existing
+population. Fires as PRE-REG TENET-W1-R on Artin GO. Attribution:
+Artin (riff), Fable (composition-order sharpening + design).
