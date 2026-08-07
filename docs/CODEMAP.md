@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 155, library 138, reproduce-pinned 9, results-cited 106, spec-cited 41
+Census: UNCITED 155, library 139, reproduce-pinned 9, results-cited 106, spec-cited 41
 
 ## scratch/
 
@@ -67,8 +67,9 @@ Census: UNCITED 155, library 138, reproduce-pinned 9, results-cited 106, spec-ci
 | e2 | e2_logit_check.py | results-cited | RESULTS×1, specs×1 | — |
 | e3 | e3_battery.py | spec-cited | specs×1 | — |
 | emission | emission_wall_pair.py | UNCITED | — | — |
-| ex1 | ex1_swap.py | results-cited | RESULTS×2, specs×1 | — |
+| ex1 | ex1_swap.py | library | RESULTS×2, specs×1 | 1 |
 | ex2 | ex2_build.py | results-cited | RESULTS×1, specs×1 | — |
+| ex3 | ex3_build.py | results-cited | RESULTS×1 | — |
 | exact | exact_twin_d56.py | spec-cited | specs×1 | — |
 | exchange | exchange_test.py | results-cited | RESULTS×1 | — |
 | export | export_axnn.py | results-cited | RESULTS×1 | — |
@@ -124,7 +125,7 @@ Census: UNCITED 155, library 138, reproduce-pinned 9, results-cited 106, spec-ci
 | greedy | greedy_first_gate.py | library | — | 1 |
 | grpo | grpo_shaped.py | library | — | 1 |
 | gt2 | gt2_code_arm0.py | reproduce-pinned | REPRODUCE×1, RESULTS×1, specs×2 | — |
-| gt2 | gt2_jaccard.py | library | REPRODUCE×1, RESULTS×3, specs×3 | 11 |
+| gt2 | gt2_jaccard.py | library | REPRODUCE×1, RESULTS×3, specs×3 | 12 |
 | gt3 | gt3_probe_arm0.py | reproduce-pinned | REPRODUCE×1, RESULTS×2 | — |
 | gt4 | gt4_dialog_prompts.py | reproduce-pinned | REPRODUCE×1, RESULTS×2 | — |
 | gt4 | gt4_verbal_core.py | reproduce-pinned | REPRODUCE×1, RESULTS×3 | — |
@@ -134,7 +135,7 @@ Census: UNCITED 155, library 138, reproduce-pinned 9, results-cited 106, spec-ci
 | gt6 | gt6_resume_arms.sh | UNCITED | — | — |
 | gt7 | gt7_coverage_rederive.py | library | RESULTS×4, specs×2 | 1 |
 | gt7 | gt7_draw.py | library | specs×2 | 1 |
-| gt7 | gt7_run.py | results-cited | RESULTS×5, specs×1 | — |
+| gt7 | gt7_run.py | results-cited | RESULTS×6, specs×2 | — |
 | head | head_autopsy.py | UNCITED | — | — |
 | head | head_census.py | library | specs×2 | 1 |
 | holdout | holdout_gate.py | library | specs×1 | 1 |
