@@ -22003,3 +22003,30 @@ law). Between: UNRESOLVED, direction booked. Degeneracy census
 free. FENCES: mask-vs-full comparisons on ONE device, one load;
 [FORMAT-BOUND]; the 555 corpus is a different problem set —
 per-level dicts booked for both arms.
+
+## VERDICT EX1-C30-REPL: P-THIRD-SEED FIRES — the swapped set beats the paired full model at the unspent seed too (73 v 60, +13; was 77 v 64, +13 at seed 1234); a third-seed decider is now owed (2026-08-07 early, Mac)
+
+Against PRE-REG EX1-C30-REPL (receipts logs/ex1/ex1repl.jsonl,
+force-added): at gate seed 555, ex1_c30_his 73/120 {1:31, 2:19,
+3:23} v ex1_full128 60/120 {1:21, 2:19, 3:20} (full-model sanity:
+open/closed recall exactly 1.0000 — the all-128 keep is a true
+no-op mask). R1 - R2 = +13 >= 7: P-THIRD-SEED FIRES as registered.
+The direction now holds 2/2 gate seeds with identical magnitude
+(+13, +13). NO CLAIM YET (resolution law: n>=3); the third-seed
+decider is pre-registered below and fires immediately.
+
+## PRE-REG EX1-C30-REPL-3: the decider — seed 777 completes the n=3 paired set (2026-08-07 early, Mac)
+
+Same two frozen arms at gate seed 777. BAR: P-SWAP-CREST fires iff
+hi' >= full + 7 at 777 — then the n=3 paired-seed set (1234, 555,
+777) licenses the claim: a 384-expert class-preserving swap
+DERIVED FROM two ~0.72-recall draws produces a keep-set that BEATS
+THE FULL MODEL, pooled across three seeds — a second beats-full
+crest, found by identity surgery rather than demand ranking, at
+~55% keep... [correction at booking time: the swapped set keeps
+~70/128 = 54.7% mean]. P-KILL-3: hi' < full at 777 — 2/3 seeds
+positive books as direction-only, no claim, no further chase this
+rung. Between: UNRESOLVED, n=3 pooled delta booked either way.
+FENCES: one device/load per pair; [FORMAT-BOUND] [REGIME-SCOPED:
+measured deployment artifacts]; the crest comparison class is
+mask-vs-full within one load, per GT-1 precedent.
