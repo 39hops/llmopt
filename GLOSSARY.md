@@ -40,11 +40,15 @@ Scope tags may stack: `[DEVICE-SCOPED]` names the measured device, `[FORMAT-BOUN
 - **house/axiom** — “House” is the llmopt-side lab/session and “axiom” the separate repo/session for independent implementation and cross-lab checks: independent code/lab paths, one human operator, Artin ([`docs/RESULTS.md:13898`](docs/RESULTS.md)).
 - **riff** — An exploratory question, mechanism, analogy, or experiment idea recorded before possible promotion, testing, or retirement ([`docs/RIFF-LEDGER.md:2098`](docs/RIFF-LEDGER.md)).
 - **twin** — A counterpart matched on a declared invariant—function, parameters, data, or representation—to isolate one difference; the matched invariant must always be named ([`docs/RESULTS.md:9859`](docs/RESULTS.md)).
-- **HOLD/GO** — Run-control states: HOLD forbids launch until authority is given, while GO is explicit permission to fire; neither is an evidence-maturity label ([`docs/BOARD.md:11`](docs/BOARD.md), [`docs/RESULTS.md:13747`](docs/RESULTS.md)).
-- **demand log** — The recorded per-layer record of which experts a model actually routed to while running a declared corpus; masks and coalitions are derived from it, never from weights ([`docs/RESULTS.md:19108`](docs/RESULTS.md)).
+- **HOLD/GO** — Run-control states: HOLD forbids launch until authority is given, while GO is explicit permission to fire; neither is an evidence-maturity label ([`docs/RESULTS.md:13747`](docs/RESULTS.md), [`docs/RESULTS.md:13747`](docs/RESULTS.md)).
+- **demand log** — The recorded per-layer record of which experts a model actually routed to while running a declared corpus; masks and coalitions are derived from it, never from weights ([`docs/RESULTS.md:18176`](docs/RESULTS.md)).
+- **carrier** — An expert in the top-demand-ranked exclusive set of a
+  keep-set pair whose presence measurably moves gate capability;
+  carriers are identified from a demand log and gate arms, never from
+  weights ([`docs/RESULTS.md:21943`](docs/RESULTS.md)).
 - **coalition** — The set of experts a given domain's demand log selects at a stated keep fraction; a coalition is a measured routing property of one vehicle, not a claim about expert function ([`docs/RESULTS.md:19254`](docs/RESULTS.md)).
 - **keep-set** — The explicit list of experts a mask retains; the keep rule that builds it, and the fraction it keeps, are both part of any claim made with it ([`docs/RESULTS.md:20179`](docs/RESULTS.md)).
 - **crest** — The masked keep fraction at which a gate score peaks, including above the paired full model; a crest is a gate observation on one vehicle and one domain, never a deployment recommendation ([`docs/RESULTS.md:18927`](docs/RESULTS.md)).
 - **core / branch** — A core is the intersection shared by several measured coalitions against an independence null; a branch is a family of coalitions sharing their own core and separated from another branch by measured routing distance ([`docs/RESULTS.md:19852`](docs/RESULTS.md)).
 - **amendment** — An entry that corrects, rescopes, or retracts part of a named earlier entry; the ledger is append-only, so an amendment names its target rather than editing it ([`docs/RESULTS.md:20006`](docs/RESULTS.md)).
-- **pre-registration** — The declared prediction, arms, and decision bar recorded before a run fires; a verdict is read against its pre-registration, and an unregistered bar cannot be cleared after the fact ([`docs/RESULTS.md:19482`](docs/RESULTS.md)).
+- **pre-registration** — The declared prediction, arms, and decision bar recorded before a run fires; a verdict is read against its pre-registration, and an unregistered bar cannot be cleared after the fact ([`docs/RESULTS.md:21603`](docs/RESULTS.md)).

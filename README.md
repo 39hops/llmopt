@@ -12,12 +12,15 @@ calibration machinery unnecessary; this lab measures when that statement holds.
 - Capability follows **expert identity**, not any aggregate of the
   keep-set: with recall and coverage pinned, exchanging 4 experts per
   layer per class between matched keep-set draws moved 23–52 gate
-  solves per side and largely inverted the pair outcomes; recall- and
-  coverage-organization both returned registered nulls first.
-- A transformer birth (multi-block, real math diet, 1000 steps) runs
-  **bit-identically** across Mac CPU, RTX 3080 CUDA, and an external
-  lab's C++ reimplementation — integer training with sha-equality as
-  the acceptance bar, reproducible by one command
+  solves per side and largely inverted the pair outcomes (at k=4, one
+  gate seed); recall- and coverage-organization both returned
+  registered nulls first ([FINDINGS](docs/FINDINGS.md), expert
+  identity).
+- Integer training with sha-equality as the acceptance bar: a
+  200-step birth is **trajectory-identical** across Mac CPU, the 3080
+  box, and an external lab's C++ engine; the full 1000-step
+  multi-block + real-diet birth replays **bit-identically** on a
+  second machine (both legs CPU), with a one-command replay path
   ([REPRODUCE](docs/REPRODUCE.md)).
 
 These are measured, fenced claims — the tags and scope vocabulary in

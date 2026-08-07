@@ -22052,3 +22052,22 @@ spread on this corpus family is real (64/60/73 across the three
 seeds) — any future mask-vs-full claim must stay PAIRED per seed.
 FENCES: comparison class mask-vs-full within one load per seed;
 [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts].
+
+## AMENDMENT MOE-GT-7-RANGE + LOCKSTEP-DEVICE-SCOPE: two front-facing corrections from the 2026-08-07 doc review (Opus agent, Fable-verified) (2026-08-07 morning, desk)
+
+Amends: VERDICT MOE-GT-7; VERDICT LOCKSTEP-A1/A2 (scope note, not a
+result change).
+1. RANGE SLIP: MOE-GT-7's prose quotes within-bin draw spreads
+   "38-49 solves"; the pairs are 53-15=38, 54-5=49, 46-10=36 — the
+   correct range is 36-49. The booked dicts were always right (the
+   dicts are the checksum); the prose range propagated to FINDINGS,
+   THEORY, and two BOARD headers, all corrected in this commit.
+2. DEVICE SCOPE: LOCKSTEP-A1/A2's pre-reg named its arms
+   "MB-S14-CUDA"/"DIET-BRIDGE-CUDA"; the drivers contain ZERO cuda
+   calls (verified: detbwd_mb.py and detbwd_diet.py never place
+   tensors on a device) — execution was CPU on the 3080 BOX, the
+   same scope as the P4-DEVICE-SCOPE precedent (both machine legs
+   CPU; narrower than GPU transport). The device-free claim is
+   CROSS-MACHINE (Mac cpu = 3080-box cpu), unchanged in force;
+   "-CUDA" in the arm names refers to the box, and front-facing
+   text must not say the birth ran on CUDA. README corrected.

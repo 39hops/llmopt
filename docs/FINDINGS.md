@@ -272,8 +272,10 @@ VERDICT](RESULTS.md#L10676).)
   twins, so weight features are direction-specific at toy scale. The
   sin family's 0.692 is flagged as shape resemblance (near-monotone
   draws whose numerical inverse is still sinusoid-shaped), not
-  transfer; the registered consequence is that a direction classifier
-  over forward and reverse crystals is now expected to succeed.
+  transfer; the registered consequence — that a direction classifier over
+  forward and reverse crystals is now expected to succeed — was
+  subsequently REFUTED three protocols deep; see the weight-reader
+  closure bullet.
   Function-inverse analogy probe — it transfers a question, never a
   conclusion. ([VERDICT TENET-W0](RESULTS.md#L20876).)
 - [SINGLE-SEED] [FREE-RUN-GATED]
@@ -289,7 +291,7 @@ VERDICT](RESULTS.md#L10676).)
   a non-monotone level-local hole, named and open. ([VERDICT
   TENET-R0-REV](RESULTS.md#L20984); [VERDICT
   TENET-R0-REV-B](RESULTS.md#L21081).)
-- [NULL] [REGIME-SCOPED: specified diet and recipe] Direction is not
+- [NULL] [REGIME-SCOPED: toy weight-space subjects] Direction is not
   readable from crystal FFN gate weights: over 50 forward/reverse
   birth pairs a neuron-token reader scores exact chance on held-out
   pairs and never fits the training labels, while the same reader
@@ -865,7 +867,7 @@ regime tag on every bullet is the fence.
   band and verbal-only coverage registered as the ladder variable,
   bin means are non-monotone (3.5 / 34.0 / 29.5 / 28.0 at coverage
   0.00 / 0.15 / 0.30 / 0.45) and within-bin draws matched on BOTH
-  recall and coverage differ by 38-49 solves of 120 (15-v-53,
+  recall and coverage differ by 36-49 solves of 120 (15-v-53,
   5-v-54, 46-v-10). Both previously named recall-ladder anomalies
   dissolve into draw identity — fresh draws at the r80 point score
   75 and 48 against the booked 9. Coverage joins recall as a dead
@@ -889,7 +891,10 @@ regime tag on every bullet is the fence.
   and 46->11), pooled transfer 176 against a pre-registered bar of
   28 with 2/3 directional consistency. One anomaly is carried
   loudly, not claimed: one swapped high draw rose to 77, above the
-  paired full model's 64, at one seed — unreplicated. One gate
+  paired full model's 64; the direction later held at 3/3 gate seeds
+  (pooled +30) WITHOUT licensing a beats-full claim — see the carrier
+  bullet ([VERDICT EX1-C30-REPL](RESULTS.md#L22007); [VERDICT
+  EX1-C30-REPL-3](RESULTS.md#L22034)). One gate
   seed; swapped sets derived from the frozen coverage-ladder draws;
   the bisection ladder (k=2, k=1) is the registered follow-up.
   ([PRE-REG EX-ANAT-1](RESULTS.md#L21603); [VERDICT
@@ -899,7 +904,7 @@ regime tag on every bullet is the fence.
   mechanism decomposes: named top-demand exclusive experts are
   PORTABLE (adding four per layer per class transforms weak
   keep-sets by +22 to +62 solves over count/class/coverage-matched
-  random controls, pooled +113 against a pre-registered bar of 28),
+  random controls, pooled +113 against a pre-registered bar of 42),
   SATURATING (the same additions change strong keep-sets by -9 to
   +2), and REDUNDANT at depth two (strong sets hold their score
   under top-2-per-class removal even at reduced recall — the
@@ -919,7 +924,7 @@ regime tag on every bullet is the fence.
   EX1-C30-REPL](RESULTS.md#L22007); [VERDICT
   EX1-C30-REPL-3](RESULTS.md#L22034); [DESK
   R-EMISSION-0](RESULTS.md#L21850).)
-- [REPLICATED] [REGIME-SCOPED: toy weight-space subjects] Training
+- [NULL] [REGIME-SCOPED: toy weight-space subjects] Training
   DIRECTION (forward versus reverse curriculum) is invisible to
   weight readers across every inspected representation while
   remaining loudly visible in function: single-row features from
@@ -937,13 +942,17 @@ regime tag on every bullet is the fence.
   1000-step multi-block anatomy and the real-diet bridge replay
   bit-identically on a second machine (all sixteen milestone
   losses, both final trajectory shas, the 15,909-to-12,518 plateau
-  to the token), and the plateau itself is now mechanistically
-  bracketed — constant learning rate REGRESSES at long horizons
-  (the decay law at diet scale), window count saturates at fixed
-  parameters (32 and 64 windows land together), and the corrected
-  schedule bends the plateau by 5.9% without breaking the
-  registered 10% bar; the parameter ladder is the named next
-  lever. ([VERDICT LOCKSTEP-A1/A2](RESULTS.md#L21460); [VERDICT
+  to the token; both machine legs execute on CPU — the same scope
+  as the earlier device fence).
+  ([VERDICT LOCKSTEP-A1/A2](RESULTS.md#L21460).)
+- [SINGLE-SEED] [REGIME-SCOPED: deterministic integer battery] The
+  real-diet plateau is mechanistically bracketed, single runs:
+  constant learning rate REGRESSES at long horizons (12,518 to
+  13,540 at 4000 steps — the decay law at diet scale), window
+  count saturates at fixed parameters (32 and 64 windows land
+  together near 14,680), and the corrected schedule bends the
+  plateau by 5.9% (11,777) without breaking the registered 10%
+  bar; the parameter ladder is the named next lever. ([VERDICT
   PLATEAU-BREAK](RESULTS.md#L21874); [VERDICT
   P-STEP-BOUND-2](RESULTS.md#L21920).)
 - [SINGLE-SEED] [FORMAT-BOUND]
