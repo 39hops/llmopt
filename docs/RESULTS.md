@@ -22192,3 +22192,32 @@ affordable) — banked as the engine-scale rung, Artin GO, spec
 before build. FENCES: deterministic integer battery; seed 17;
 single runs; CPU on the 3080 box; depth-v-width read is one pair
 at one schedule.
+
+## VERDICT MULT-0: P-STARVED FIRES — the reverse model's choice surface is real but THIN at B=8 (P(m>=2) = 4/120 v the 12 bar; control 0/120); the chooser rung stays gated; the B=32 leg is the named follow-up on GO (2026-08-07 midday, Mac)
+
+Against PRE-REG MULT-0 (receipts logs/mult0/ — rev.jsonl/fwd.jsonl
+per-problem rows + run log, force-added). SANITY ANCHORS EXACT:
+rev P(m>=1) = 24/120 and fwd control = 1/120 — the census
+reproduces VERDICT TENET-R0-REV-B's headline numbers through the
+modified loop (the short-circuit removal changed counting, not
+scoring); weights shas match both pins (0d5ece32 / 272e47d2).
+  rev:  hist {0: 96, 1: 20, 2: 4}; P(m>=2) = 4/120; max m = 2
+        per level: L3 1/24, L5 3/24, L4/L6/L7 zero (the L4 hole
+        holds in multiplicity too: 0/24 even at m>=1)
+  fwd:  hist {0: 119, 1: 1}; P(m>=2) = 0/120
+P-SURFACE does NOT fire (4 < 12). P-STARVED FIRES (4 < 6): at
+B=8 the choice surface is too thin for a ranker to matter — when
+the reverse model succeeds it usually emits ONE verified
+predecessor (20 of 24 successes), two at most. Strictly above the
+control (4 v 0), so multiplicity is direction-REAL, just scarce —
+the pincer closure's "nothing to rank" mechanism now has its
+distribution, not just its count. CONSEQUENCE (as registered):
+rung 2 (chooser calibration) stays GATED; the B=32 leg (~25
+min/arm, linear cost) is the named follow-up, Artin GO — the
+question it answers: does the surface widen with samples (choice
+scarcity is a BUDGET property) or stay thin (a MODEL property)?
+Only the budget answer keeps the reverse-propose training loop
+alive at this model scale. FENCES: one checkpoint pair; B=8;
+single-ply; L3-7 band; replay-mint criterion; err census 287
+(rev) v 141 (fwd) — the reverse model also emits MORE malformed
+candidates, carried not hidden.
