@@ -22863,3 +22863,34 @@ disjoint from the gate's L3-7 levels by construction (level
 disjointness noted, not merely assumed: gate_eval draws from the
 standard gate set only); proxy immune gates are instrument
 internals, never booked as capability.
+
+## VERDICT HARDENING-P3-R3: P-SLACK-HOLDS FIRES — ffn=slack replicates at n=3 paired seeds (pooled EMA -4 within the +-6 bar); the n=1 fence on the anatomy clause lifts (2026-08-08, 3080 cuda)
+
+Against PRE-REG HARDENING-P3-R3 (bars frozen before fire). Six
+births complete via scratch/p3_ffnslack.py (frozen sym_birth +
+load-time D2 excision, receipt 129/132870 excised on ALL SIX runs
+— the fourth independent code path re-deriving P1's count;
+seed-in-TAG + refuse-if-exists guards held).
+
+EMA gate dicts (the checksum), f224 v f128 per seed:
+- s2: f224 {3:17, 4:4, 5:16, 6:7, 7:10} = 54 (sha 4b04a3f2a3fc0b5e)
+  v f128 {3:16, 4:6, 5:15, 6:7, 7:9} = 53: delta -1
+- s3: f224 {3:20, 4:5, 5:15, 6:7, 7:10} = 57
+  v f128 {3:15, 4:4, 5:15, 6:7, 7:10} = 51: delta -6
+- s4: f224 {3:18, 4:3, 5:14, 6:7, 7:12} = 54
+  v f128 {3:20, 4:4, 5:16, 6:7, 7:10} = 57: delta +3
+
+POOLED EMA (f128 - f224) = -4, within +-6: P-SLACK-HOLDS FIRES.
+P-FFN-COSTS does not (mixed signs, -4 > -15). THE CLAIM GAINS n=3:
+at d56 on this diet, cutting the ffn from 224 to 128 (0.57x the
+ffn params) costs nothing resolvable — capability is pinned by
+attention width, not ffn capacity. NIGHT-29 VERDICT 2's "ffn was
+carrying slack all along" clause is now a replicated fact on its
+device-of-origin; its n=1-per-point fence lifts for the ENDPOINTS
+(interior points 192/160 remain n=1).
+Raw gates booked (not bar-read): f224 47/50/51 v f128 46/52/49,
+pooled -1 — same read.
+FENCES: cuda line only (never read against MPS numbers); D2-excised
+diet; gates-only; EMA metric is the claim's own; endpoints only.
+Phase-3 row 3 CLOSES (bar-fired). Next frozen row: R4
+interaction-law small-delta cells.
