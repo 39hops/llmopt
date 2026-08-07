@@ -21670,3 +21670,33 @@ CHURN-JUDGE-2 needs now EXISTS (a named 384-expert set that moves
 capability); its second gate (routing-margin features) still
 binds. FENCES: one gate seed; L1-3 mathgen; swapped sets derived
 from frozen GT-7 draws; oracle census clean (0 timeouts).
+
+## PRE-REG EX-ANAT-1B: the bisection ladder — does P-FOLLOW persist as the swapped set halves to k=2 and k=1? (2026-08-06, Mac)
+
+Named follow-up of VERDICT EX-ANAT-1 (P-FOLLOW at 6.3x), Artin GO.
+Same frozen rule (symmetric, class-preserving, arm0-demand-ranked,
+ties ascending id), same three bin pairs, k = 2 then k = 1 per
+layer per class — 12 arms, all built and asserted in band BEFORE
+this pre-reg fires (builder scratch/ex1_swap.py PREFIX/KSWAP;
+cited-evidence overwrite guards added to ex1_swap + gt7_draw in the
+same commit): k=2 recalls 0.7116-0.7192, 192 experts moved per
+pair; k=1 recalls 0.7115-0.7202, 96 moved; coverage EXACTLY
+invariant everywhere. Gate: frozen arm2 KEEPSET path via
+scratch/gt7_run.py, 120 problems seed 1234, one load, one-resident.
+
+READOUT per pair and per k: D_k = (G_lo' - G_lo) + (G_hi - G_hi')
+against the SAME baselines as EX-ANAT-1 (hi 53/54/46, lo 15/5/10).
+BARS (per k, same as EX-ANAT-1): P-FOLLOW_k fires iff pooled
+D_k >= 28 AND >= 2/3 pairs have both components positive.
+REGISTERED READ: the smallest k with P-FOLLOW_k measures carrier
+CONCENTRATION — k=1 firing means capability rides <= 2 named
+experts per layer (~96 total); P-FOLLOW_2 firing with k=1 failing
+localizes the carrier scale between 96 and 192; both failing with
+EX-ANAT-1's k=4 fire bounds it between 192 and 384. Monotonicity
+of pooled D across k=4/2/1 is a finding either way. The c30
+anomaly (hi' rose at k=4) gets its trajectory across k tracked in
+the verdict, no bar attached this rung.
+DEGENERACY RIDER: distinct-answer census per arm (free from the
+driver), feeds R-EMISSION. FENCES: one gate seed; L1-3 mathgen;
+derived from frozen GT-7 draws; oracle v3.2, timeouts book as
+failures.

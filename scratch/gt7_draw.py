@@ -36,6 +36,7 @@ Usage: .venv/bin/python scratch/gt7_draw.py   (desk-only, no model)
 """
 
 import json
+import os
 import random
 import sys
 from pathlib import Path
@@ -93,6 +94,9 @@ def draw(rtarget, ctarget, seed_tag, vonly, k_max=91, attempts=20):
 
 def dump(keep, name, r, c, k, tag):
     out = f"checkpoints/{name}.json"
+    if Path(out).exists() and os.environ.get("OVERWRITE") != "1":
+        raise SystemExit(f"REFUSING to overwrite {out} "
+                         "(cited-evidence guard, handoff 2026-08-06-2)")
     json.dump({str(li): sorted(v) for li, v in keep.items()},
               open(out, "w"))
     sizes = [len(v) for v in keep.values()]

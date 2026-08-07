@@ -27,6 +27,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 K = int(os.environ.get("KSWAP", "4"))
+# PREFIX names the output family (ex1 = the booked EX-ANAT-1
+# subjects; the bisection ladder uses ex1b_k{K}). Existing outputs
+# REFUSE to overwrite (cited-evidence guard, handoff 2026-08-06-2).
+PREFIX = os.environ.get("PREFIX", "ex1")
 RTARGET = 0.72
 PAIRS = {  # bin -> (hi draw file, lo draw file)
     "c15": ("gt7_ladder_c15_d1", "gt7_ladder_c15_d0"),
@@ -82,8 +86,12 @@ def main():
                 nl -= set(Bc[:q]); nl |= set(Ac[:q])
                 n_swap += q
             s_hi[l], s_lo[l] = nh, nl
-        for name, orig, sw in ((f"ex1_{binname}_his", hi, s_hi),
-                               (f"ex1_{binname}_los", lo, s_lo)):
+        for name, orig, sw in ((f"{PREFIX}_{binname}_his", hi, s_hi),
+                               (f"{PREFIX}_{binname}_los", lo, s_lo)):
+            out = Path(f"checkpoints/{name}.json")
+            if out.exists() and os.environ.get("OVERWRITE") != "1":
+                raise SystemExit(f"REFUSING to overwrite {out} "
+                                 "(cited-evidence guard)")
             r, c = recall(sw), setcov(sw, vonly)
             assert abs(r - RTARGET) <= 0.01, (
                 f"{name} recall {r:.4f} OUT OF BAND — ABORT (no repair)")
