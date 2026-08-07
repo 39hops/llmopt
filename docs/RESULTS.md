@@ -22518,3 +22518,28 @@ FENCES: Mac-local kernel; v2 sidecar (axiom 6737bff); the
 atom-split detector is house-side sympy equivalence (their
 atomizer is the authority on WHY a pair split); cost comparisons
 per their ~11 ms/row convention.
+
+## VERDICT MULT-0-B32: UNRESOLVED as registered — P(m>=2) = 9/120 lands BETWEEN the bars (budget >= 12, model <= 8); the surface widens SUB-LINEARLY (4 -> 9 at 4x samples) and the L4 hole shows its first crack (2026-08-07 evening, Mac)
+
+Against PRE-REG MULT-0-B32 (receipts logs/mult0/rev_b32.jsonl,
+fwd_b32.jsonl, run log force-added):
+  rev @ B=32: hist {0:93, 1:18, 2:7, 3:2}; P(m>=1) 27/120,
+      P(m>=2) 9/120, max m=3. Per level: L5 leads (5/24 at m>=2);
+      L4 registers its FIRST m>=1 (1/24 — the hole cracks at 4x
+      budget, still zero at m>=2).
+  fwd control @ B=32: {0:118, 1:2}; P(m>=2) 0/120.
+P-BUDGET does NOT fire (9 < 12). P-MODEL does NOT fire (9 > 8).
+UNRESOLVED as registered; the SHAPE: m>=2 roughly doubles for 4x
+samples while P(m>=1) is near-saturated (24 -> 27) — extra budget
+occasionally finds a SECOND route to problems the model already
+solves, rarely a first route to new ones. Scarcity is therefore
+MOSTLY a model property with a thin budget margin; extrapolating
+the sub-linear trend, B=128 might reach the 12-15 class at ~4x
+the cost — BANKED, not queued (diminishing returns are visible).
+CONSEQUENCE: the chooser rung stays GATED; the reverse-propose
+training loop's honest next lever is a STRONGER PROPOSER (bigger
+reverse model or a diet that widens emission diversity), not more
+sampling. The ladder holds at rung 1 with its census complete.
+FENCES: as MULT-0; B=32; the adjacent-problem seed-reuse note
+travels; err census 1,045 (rev) v 468 (fwd) — the malformed-
+emission gap persists at 4x.

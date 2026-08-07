@@ -1,0 +1,16 @@
+[mult0-b32] B=32
+[mult0] weights sha 0d5ece326ba989bf
+[mult0] L3: n=24 P(m>=1)=12/24 P(m>=2)=3/24 max m=2
+[mult0] L4: n=24 P(m>=1)=1/24 P(m>=2)=0/24 max m=1
+[mult0] L5: n=24 P(m>=1)=8/24 P(m>=2)=5/24 max m=3
+[mult0] L6: n=24 P(m>=1)=3/24 P(m>=2)=0/24 max m=1
+[mult0] L7: n=24 P(m>=1)=3/24 P(m>=2)=1/24 max m=2
+[mult0] TOTAL n=120 P(m>=1)=27 P(m>=2)=9 hist={0: 93, 1: 18, 2: 7, 3: 2} | replay census {'unique': 36, 'ambig': 0, 'miss': 1379, 'err': 1045, 'timeout': 0, 'membomb': 0, 'crash': 0} | equiv-valid 0.99%
+[mult0-b32] B=32
+[mult0] weights sha 272e47d2c906c968
+[mult0] L3: n=24 P(m>=1)=1/24 P(m>=2)=0/24 max m=1
+[mult0] L4: n=24 P(m>=1)=0/24 P(m>=2)=0/24 max m=0
+[mult0] L5: n=24 P(m>=1)=1/24 P(m>=2)=0/24 max m=1
+[mult0] L6: n=24 P(m>=1)=0/24 P(m>=2)=0/24 max m=0
+[mult0] L7: n=24 P(m>=1)=0/24 P(m>=2)=0/24 max m=0
+[mult0] TOTAL n=120 P(m>=1)=2 P(m>=2)=0 hist={0: 118, 1: 2} | replay census {'unique': 2, 'ambig': 0, 'miss': 1570, 'err': 468, 'timeout': 0, 'membomb': 0, 'crash': 0} | equiv-valid 0.31%
