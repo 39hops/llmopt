@@ -78,6 +78,26 @@ Phase-4 slot decides.
   weight is UNCOMMITTED, so "a pull restores it" does NOT hold for
   checkpoints; the Mac copy is the only durable home.
 
+## Grok audit adopted (2026-08-08, repo-view review)
+
+- Mac sha audit of all 55 manifest keys: 55/55 accounted — 54
+  direct matches + step_lora_grpo via the .wsl copy (known byte
+  divergence; BOTH Mac files stay until the pair is reconciled).
+  Zero data loss confirmed.
+- All DELETE-row era claims verified against the ledger (BOARD ~85
+  GRPO closed, KNEE ~7655, gen6 crown ~2861, 113M excluded ~4576,
+  ZX sd ~7595, syndrome NULL BOARD ~122). No fabricated reasons.
+- Classifier law fixed as two-stage: evidence ledger + jobs +
+  SCRIPT-CONSUMPTION (required stage, not optional). handoffs/ and
+  specs/ stay a SOFT citation channel — report-only ("named in
+  handoff but uncited in evidence"), never auto-CITED, to avoid
+  chatty-path inflation.
+- uncited_but_consumed.json (141 paths) is FROZEN — never expands
+  into DELETE without clearing the consumer first.
+- NULL-recreate policy: modern n>=3 re-runs only for thin/unbooked/
+  suspect cells; closed regenerable eras on the DELETE table are
+  deleted, not re-run.
+
 Sign-off asks: (1) GO/no-GO per DELETE row above; (2) whether
 revive-candidates 1-3 get queued (each priced at 3 births);
 (3) confirm the load-bearing set stays frozen.
