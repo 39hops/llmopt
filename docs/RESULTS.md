@@ -21820,3 +21820,29 @@ FENCES: deterministic integer battery scope; one seed (17); the
 NWIN=32/64 window sets are supersets drawn by the frozen
 first-strictly-encodable rule (ids shas booked in receipts); no
 fp claims; wall-clock not a readout.
+
+## PRE-REG TENET-W1-R: the relational reader — is direction visible in CROSS-LAYER composition structure where every single-row surface failed? (2026-08-07 early, 3080)
+
+The banked composition-order hypothesis (RIFF 2026-08-06 late,
+Artin), the licensed reopening after the W1-S surface-exhaustive
+null. Features: per layer boundary l -> l+1, the alignment
+C_l = D_l^T-columns @ G_{l+1}-rows^T (write directions of layer
+l's FFN neurons against read directions of layer l+1's gates;
+[7, 256, 256] per subject). Driver
+scratch/tenet_w1_relational.py; protocol byte-parallel to the
+frozen W1 bridge (same manifest, w1-split-1, 16-vote eval).
+ARMS: aug (sampled C_l rows as tokens, resampling augmentation) v
+spectral (top-64 singular values per boundary, fully invariant,
+no augmentation possible). The 2026-07-06 teach-don't-impose
+ablation is itself a registered readout: it predicts aug beats
+spectral if either fires.
+BARS (per arm, 20 eval subjects, chance 10): FIRES >= 16/20
+(binomial ~0.006); 14-15 UNRESOLVED; <= 13 NULL. Any fire owes
+its CONTROL=randinit twin >= 19/20 before claim. ALL-NULL read:
+the composition-order hypothesis joins the surface-exhaustive
+negative — direction invisible to relational features of this
+family too; weight-reader mining stays closed pending a new
+hypothesis (no W2-R fishing ladder).
+FENCES: toy scale (d64/L8, 50 pairs); one split; one device
+(3080); this rung tests ONE relational family (cross-layer
+alignment), not all possible relational features — scope travels.
