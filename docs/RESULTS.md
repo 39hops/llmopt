@@ -22834,3 +22834,32 @@ FENCES: cuda line only; D2-excised diet (bridge priced ~zero for
 this loader class in R5); absolute levels carry the P1 exposure
 fence (paired deltas cancel); gates-only; sigma 3.5 (cuda line,
 NIGHT-29's own).
+
+## PRE-REG REVIVE-METAB-LATE: the never-booked late-metabolism arm gets its verdict — n=3 fresh problem bands, Mac (device-of-origin) (2026-08-08, before launch)
+
+Revive track item 1 (Artin GO 2026-08-08, revive_cite_plan.md):
+scratch/hot_chain.sh ran METABOLIC-LATE on 2026-07-21 and no
+verdict was ever booked — the highest-value revive because the
+instrument is fully committed. ARM: metabolic_hot.py --late
+(gen6_grown base, layers 0-7 + emb frozen, LR-ladder online loop
+with immune rollback, 150 cycles, L9 fresh-band problems) at
+BAND0 in {95_000_000 (the original band), 96_000_000, 97_000_000},
+TAG_SUFFIX _b95/_b96/_b97 + REFUSE_EXISTING=1 (the original
+metabolic_late.pt stays frozen; knobs added additively this
+commit, defaults preserve hot_chain.sh behavior). GATE: standard
+120 via gate_ckpt.py (512 12 2304 8) per arm; BASELINE =
+gen6_grown gated once in the same battery (deterministic for
+frozen weights).
+BARS (gate solves, arm - baseline, pooled over 3 bands):
+P-METAB-LATE-WINS iff pooled >= +21 with 3/3 positive (late
+metabolism converts fresh-band exposure into gate capability).
+P-METAB-NULL iff |pooled| <= 7 (a TRUE null books: online late-
+layer metabolism at this recipe neither pays nor costs).
+Between / mixed signs: UNRESOLVED, dicts booked.
+FENCES: Mac/mps only (device-of-origin, the 07-21 run's machine);
+one base checkpoint (gen6_grown) — arm deltas share the baseline,
+so this is band-replication, not birth-replication; L9 band is
+disjoint from the gate's L3-7 levels by construction (level
+disjointness noted, not merely assumed: gate_eval draws from the
+standard gate set only); proxy immune gates are instrument
+internals, never booked as capability.

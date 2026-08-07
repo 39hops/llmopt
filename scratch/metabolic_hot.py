@@ -16,6 +16,15 @@ import sympy as sp
 
 LATE = "--late" in sys.argv
 TAG = "late" if LATE else "hot"
+# REVIVE-METAB-LATE knobs (2026-08-08, additive; defaults preserve
+# the original hot_chain.sh behavior exactly): BAND0 moves the
+# fresh problem band; TAG_SUFFIX gives each arm a unique OUT name
+# (the original OUT names are seed-free — collision class).
+TAG += os.environ.get("TAG_SUFFIX", "")
+_out_final = f"checkpoints/metabolic_{TAG}.pt"
+if os.environ.get("REFUSE_EXISTING") and os.path.exists(_out_final):
+    raise SystemExit(f"REFUSING: {_out_final} exists "
+                     "(use a fresh TAG_SUFFIX)")
 tok = MathTokenizer()
 dev = "mps" if torch.backends.mps.is_available() else "cpu"
 model = build_model(len(tok.vocab), d=512, layers=12, heads=8,
@@ -35,7 +44,7 @@ sidecar = open(f"data/metabolic_{TAG}_sidecar.jsonl", "a")
 snap = f"checkpoints/metabolic_{TAG}_snap.pt"
 torch.save(model.state_dict(), snap)
 best = None; drops = 0; stable = 0; buf = []
-SEED0 = 95_000_000
+SEED0 = int(os.environ.get("BAND0", 95_000_000))
 t0 = time.time()
 for cycle in range(1, 151):
     rows = []
