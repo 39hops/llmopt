@@ -956,7 +956,14 @@ regime tag on every bullet is the fence.
   rank class, and identity roughly doubles the deletion gain. Two
   interventions at opposite keep fractions (54.7% and 98.7%) land
   the same gain class, consistent with one interference-removal
-  mechanism. Scope: one vehicle, mathgen L1-3, drift finding scoped
+  mechanism. CLAIM HIERARCHY, for weighting: GT-1's crest (+14.7
+  pooled, 6/6 paired seeds, 45.3% keep) remains the strongest
+  single crest claim; the swap and deletion crests are n=3 each
+  with their discovery seeds quarantined; the over-inclusion
+  finding is n=3 but scoped to the carriers' rank class only — a
+  uniform-random deletion control (pre-registration owed) must run
+  before any "generally over-inclusive" reading. Scope: one
+  vehicle, mathgen L1-3, drift finding scoped
   to the carriers' rank class.
   ([VERDICT EX-ANAT-3](RESULTS.md#L22353); [DESK
   EX-ANAT-3-0](RESULTS.md#L22128); [VERDICT
