@@ -98,6 +98,23 @@ Phase-4 slot decides.
   suspect cells; closed regenerable eras on the DELETE table are
   deleted, not re-run.
 
+## DELETE pass EXECUTED (Artin GO 2026-08-08)
+
+- Interlock as mandated: executor re-hashed EVERY file at rm time
+  against the inventory sha; mismatch = stop row + report. Zero
+  mismatches fired.
+- Mac: 196 removed, 3.86 GiB freed (delete_pass_mac.json).
+- WSL: 39 removed, 7.16 GiB freed, 1 already absent —
+  consistent with the earlier twin pass (delete_pass_wsl.json).
+- Freeze rules held mechanically: consumed/CITED/tracked/named-set
+  candidates auto-excluded (v4flash_f1/ CITED cache, u45_* and
+  gen4/tourn cells consumed by committed code all KEPT).
+- merged_grown_identity.pt HELD pending the crown-tie revive.
+- Revive queue (Artin GO, pre-reg before each fire, n>=3):
+  (1) metabolic_late/hot, (2) merged_grown crown-tie births,
+  (3) d768 ternary-v-fp32 crossover — outside the frozen Phase-3
+  seven, run as the revive track.
+
 Sign-off asks: (1) GO/no-GO per DELETE row above; (2) whether
 revive-candidates 1-3 get queued (each priced at 3 births);
 (3) confirm the load-bearing set stays frozen.
