@@ -2959,3 +2959,26 @@ readout. Protocol/subjects/bars: reuse W1-S verbatim (50 pairs,
 w1-split-1, 16 votes, binomial 16/20 fire). Cost: minutes, existing
 population. Fires as PRE-REG TENET-W1-R on Artin GO. Attribution:
 Artin (riff), Fable (composition-order sharpening + design).
+
+## 2026-08-07 (morning): reverse-guided step-distribution decoding (Artin riff)
+
+"One model takes input -> reverse LLM transforms the math equation
+into multiple steps with distribution % from q-wave -> normal LLM
+chooses based off that dist." NOT a weight-reader revival (the
+W1/W1-S/W1-R closure is scoped to reading DIRECTION from static
+weights; this is function-space and untouched by it). WHAT IT
+ACTUALLY IS: the named revival case the pincer closure demanded —
+TENET R1b died on CHOICE SCARCITY ("nothing to rank"; revival fence:
+a proposer whose verified-candidate multiplicity is measured FIRST),
+and a reverse model emitting multiple decompositions WITH a
+distribution is precisely a multiplicity-generating proposer.
+Measured basis already on the books: backward emission is REAL and
+prompt-distribution-local (R0-REV-B: rev 24/120 v fwd 1/120 on the
+D1b poststep gate). FENCE-MANDATED FIRST MEASUREMENT (before any
+architecture): the multiplicity census — on in-distribution inputs,
+how often does the reverse model emit >= 2 DISTINCT
+oracle-verified step-candidates, and does its q-wave distribution
+rank the verified ones above the unverified (a calibration read,
+not a capability run)? Only a positive census licenses the
+chooser rung. Attribution: Artin (riff), Fable (choice-scarcity
+tie + census-first framing).
