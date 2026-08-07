@@ -2918,3 +2918,20 @@ engine-minted and string-seeded, so the blocker is the file-handoff
 convention, not IP. A surrogate corpus would add a contamination
 surface for no reproduction gain. Attribution: Gemini (teardown),
 Artin (relay + headline call), Fable (adoption filter).
+
+## 2026-08-06 (late): DeepSeek review questions (Artin-relayed) — lens candidates banked into EX-ANAT-2
+
+Three questions, two already answered by registered work (weight-
+reader storage-vs-compute: property-specific invisibility, scoped
+toy-scale; Lean bottleneck: engineering-dominated with the loud
+7-row unprovable-by-design semantic residue + 4 open field_simp).
+BANKED for EX-ANAT-2's design: candidate lenses for what
+distinguishes carrier experts — (a) architecture-level properties
+(layer position, gate-weight geometry — note the W1-S caution that
+weight surfaces hide functional properties), (b) token-
+specialization signature (which token classes an expert fires on in
+free routing — TRAJ instrument ready), (c) demand-rank-within-
+exclusives (has measured signal: EX-ANAT-1 ranked by it and fired).
+Training provenance UNTESTABLE on the vendor model — fence, not
+lens. Attribution: DeepSeek (questions), Artin (relay), Fable
+(disposition).
