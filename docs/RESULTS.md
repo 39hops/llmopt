@@ -21846,3 +21846,27 @@ hypothesis (no W2-R fishing ladder).
 FENCES: toy scale (d64/L8, 50 pairs); one split; one device
 (3080); this rung tests ONE relational family (cross-layer
 alignment), not all possible relational features — scope travels.
+
+## DESK R-EMISSION-0: emission and competence DO NOT DISSOCIATE across the 28 booked identity-era arms — the high-parse/low-solve quadrant is EMPTY; rung 3's gate spend deprioritized (2026-08-07 early, Mac desk)
+
+Descriptive desk cell over already-collected receipts (gt7 + ex1 +
+ex1b perprob logs; 28 arms x 120 problems; no new gate spend, no
+bars). Per arm: solve rate, parseable rate (the driver's parsed
+flag), mean completion length. FINDING: the three move TOGETHER —
+every sub-20-solve arm parses 0.15-0.40 with 104-196-char rambling
+completions; every 40+ arm parses 0.68-0.98 at 26-40 chars; the
+transition sits ~30 solves (ex1_c15_his: 30/0.53/86). NO arm
+occupies the high-parse/low-solve quadrant that R-EMISSION's
+premise (a dissociable emission channel restored separately from
+competence) requires. READ: at this vehicle and format (mathgen
+L1-3, 96-token completions), parseable emission and correct
+mathematics are tightly coupled — masked-regime collapse degrades
+them jointly (the GT-1 text/coherence dissociation ran the OTHER
+direction: capability WITHOUT coherence; coherent-emission WITHOUT
+capability is what never appears). CONSEQUENCE: IDENTITY battery
+rung 3 (R-EMISSION) is DEPRIORITIZED — its registered pair readout
+would re-measure a coupling 28 arms already exhibit; it fires only
+if a specific dissociation hypothesis names where to look (e.g. a
+verbal-only-restored arm predicted to parse without solving).
+FENCES: descriptive, no pre-reg, one gate seed family, one format;
+parse flag is extract_expression's, not a fluency judgment.
