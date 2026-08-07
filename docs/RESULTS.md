@@ -22253,3 +22253,36 @@ FENCES: one gate seed (paired within-seed v the booked 64);
 deletion arms are FULL-WIDTH masks (127-ish/128 keep), a
 different regime from every prior EX-ANAT arm — no cross-regime
 pooling.
+
+## PRE-REG MULT-0-B32: the budget-v-model question — does the reverse choice surface widen at B=32? (2026-08-07 midday, Mac; queued behind EX-ANAT-3)
+
+Named follow-up of VERDICT MULT-0 (P-STARVED at B=8), Artin GO.
+Wrapper scratch/tenet_mult_b32.py sets G.B=32 and runs the booked
+census path verbatim (cited driver untouched). Arms: rev ckpt
+(0d5ece32...) + fwd control (272e47d2...), full band, poststep.
+BARS: P-BUDGET fires iff rev P(m>=2) at B=32 >= 12/120 (the same
+absolute surface bar MULT-0 registered) — scarcity was a sampling
+budget; rung 2 (chooser calibration) unlocks, new pre-reg.
+P-MODEL fires iff rev P(m>=2) at B=32 <= 8/120 (no material
+widening at 4x samples) — scarcity is a property of THIS reverse
+model; the training-loop ladder needs a stronger proposer before
+any chooser work (bigger reverse model or hotter sampling banked,
+not queued). Between 8 and 12: UNRESOLVED, histogram booked.
+FENCES: as MULT-0; B=32 seed lists extend the b-range (adjacent-
+problem seed reuse at b=31/b=0 noted — same seed, different
+prompt, sampling-RNG only).
+
+## PRE-REG EX1-CREST-FRESH: the swap-crest claim protocol — three FRESH seeds, pooled bar (2026-08-07 midday, Mac; queued)
+
+The clean protocol banked by VERDICT EX1-C30-REPL-3, Artin GO.
+Arms: ex1_c30_his v ex1_full128 (both frozen), PAIRED per seed, at
+gate seeds 1001, 2002, 3003 — verified UNSPENT (zero RESULTS
+hits). BAR: P-SWAP-CREST-N3 fires iff pooled (his - full) over the
+three fresh seeds >= 21 (3x the pair fence) AND signs 3/3
+positive — then and only then the claim books: a keep-set DERIVED
+by identity surgery from two ~0.72-recall draws beats the full
+model at n=3 fresh paired seeds (~55% keep). Any other outcome:
+direction/shape booked, chase ENDS this vehicle (no seed-shopping;
+the discovery-seed pool stays quarantined). FENCES: paired
+within-seed always; mask-v-full one load per seed; [FORMAT-BOUND]
+[REGIME-SCOPED: measured deployment artifacts].
