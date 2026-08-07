@@ -1,0 +1,30 @@
+{"cell": "31k-w8-s1000-const", "params": "31k", "knobs": {"NBLK": 1}, "NWIN": 8, "STEPS": 1000, "SCHED": 0, "slice": "diagonal"}
+{"cell": "60k-w32-s4000-const", "params": "60k", "knobs": {}, "NWIN": 32, "STEPS": 4000, "SCHED": 0, "slice": "diagonal"}
+{"cell": "110k-w128-s16000-const", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 128, "STEPS": 16000, "SCHED": 0, "slice": "diagonal"}
+{"cell": "31k-w128-s16000-const", "params": "31k", "knobs": {"NBLK": 1}, "NWIN": 128, "STEPS": 16000, "SCHED": 0, "slice": "leave-one-small"}
+{"cell": "110k-w8-s16000-const", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 8, "STEPS": 16000, "SCHED": 0, "slice": "leave-one-small"}
+{"cell": "110k-w128-s1000-const", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 128, "STEPS": 1000, "SCHED": 0, "slice": "leave-one-small"}
+{"cell": "31k-w8-s1000-sched", "params": "31k", "knobs": {"NBLK": 1}, "NWIN": 8, "STEPS": 1000, "SCHED": 1, "slice": "diagonal"}
+{"cell": "60k-w32-s4000-sched", "params": "60k", "knobs": {}, "NWIN": 32, "STEPS": 4000, "SCHED": 1, "slice": "diagonal"}
+{"cell": "110k-w128-s16000-sched", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 128, "STEPS": 16000, "SCHED": 1, "slice": "diagonal"}
+{"cell": "31k-w128-s16000-sched", "params": "31k", "knobs": {"NBLK": 1}, "NWIN": 128, "STEPS": 16000, "SCHED": 1, "slice": "leave-one-small"}
+{"cell": "110k-w8-s16000-sched", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 8, "STEPS": 16000, "SCHED": 1, "slice": "leave-one-small"}
+{"cell": "110k-w128-s1000-sched", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 128, "STEPS": 1000, "SCHED": 1, "slice": "leave-one-small"}
+{"cell": "60k-w8-s1000-const", "params": "60k", "knobs": {}, "NWIN": 8, "STEPS": 1000, "SCHED": 0, "slice": "anchor"}
+{"cell": "60k-w8-s1000-sched", "params": "60k", "knobs": {}, "NWIN": 8, "STEPS": 1000, "SCHED": 1, "slice": "anchor"}
+{"cell": "31k-w8-s4000-const", "params": "31k", "knobs": {"NBLK": 1}, "NWIN": 8, "STEPS": 4000, "SCHED": 0, "slice": "grid-s4k"}
+{"cell": "31k-w8-s4000-sched", "params": "31k", "knobs": {"NBLK": 1}, "NWIN": 8, "STEPS": 4000, "SCHED": 1, "slice": "grid-s4k"}
+{"cell": "31k-w32-s4000-const", "params": "31k", "knobs": {"NBLK": 1}, "NWIN": 32, "STEPS": 4000, "SCHED": 0, "slice": "grid-s4k"}
+{"cell": "31k-w32-s4000-sched", "params": "31k", "knobs": {"NBLK": 1}, "NWIN": 32, "STEPS": 4000, "SCHED": 1, "slice": "grid-s4k"}
+{"cell": "31k-w128-s4000-const", "params": "31k", "knobs": {"NBLK": 1}, "NWIN": 128, "STEPS": 4000, "SCHED": 0, "slice": "grid-s4k"}
+{"cell": "31k-w128-s4000-sched", "params": "31k", "knobs": {"NBLK": 1}, "NWIN": 128, "STEPS": 4000, "SCHED": 1, "slice": "grid-s4k"}
+{"cell": "60k-w8-s4000-const", "params": "60k", "knobs": {}, "NWIN": 8, "STEPS": 4000, "SCHED": 0, "slice": "grid-s4k"}
+{"cell": "60k-w8-s4000-sched", "params": "60k", "knobs": {}, "NWIN": 8, "STEPS": 4000, "SCHED": 1, "slice": "grid-s4k"}
+{"cell": "60k-w128-s4000-const", "params": "60k", "knobs": {}, "NWIN": 128, "STEPS": 4000, "SCHED": 0, "slice": "grid-s4k"}
+{"cell": "60k-w128-s4000-sched", "params": "60k", "knobs": {}, "NWIN": 128, "STEPS": 4000, "SCHED": 1, "slice": "grid-s4k"}
+{"cell": "110k-w8-s4000-const", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 8, "STEPS": 4000, "SCHED": 0, "slice": "grid-s4k"}
+{"cell": "110k-w8-s4000-sched", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 8, "STEPS": 4000, "SCHED": 1, "slice": "grid-s4k"}
+{"cell": "110k-w32-s4000-const", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 32, "STEPS": 4000, "SCHED": 0, "slice": "grid-s4k"}
+{"cell": "110k-w32-s4000-sched", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 32, "STEPS": 4000, "SCHED": 1, "slice": "grid-s4k"}
+{"cell": "110k-w128-s4000-const", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 128, "STEPS": 4000, "SCHED": 0, "slice": "grid-s4k"}
+{"cell": "110k-w128-s4000-sched", "params": "110k", "knobs": {"FFN": 256}, "NWIN": 128, "STEPS": 4000, "SCHED": 1, "slice": "grid-s4k"}

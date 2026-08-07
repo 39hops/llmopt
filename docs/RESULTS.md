@@ -22313,3 +22313,39 @@ pre-reg, machine per window availability.
 FENCES: sample = the frozen 1000-id set; compile is kernel truth,
 statement-diff is the independence check; v1 stays in place for
 diffing (axiom's convention).
+
+## PRE-REG ENGINE-SCALE-1: the joint-scaling grid — 30 cells on axiom's intbirth engine, house digest spot-verification (2026-08-07 afternoon, cross-lab)
+
+Axiom GO'd the offer same-day (their relay 2026-08-07-2, a39987a:
+set_lr shipped + gated — the no-op segmented-run digest-identity
+test is the load-bearing one, making SCHED cells digest-comparable
+to const cells; grid timing minutes-to-tens-of-minutes). Ball was
+house-side: this is the cell list + bars.
+CELLS: docs/superpowers/specs/2026-08-07-engine-scale-cells.jsonl
+— 30 cells: the diagonal (31k/8/1k -> 60k/32/4k -> 110k/128/16k),
+leave-one-small at the top corner, the anchor row (60k/8/1k, the
+12,518 continuity cell), and the params x windows grid at 4k
+steps; every cell x {const, SCHED}. DIM=64 everywhere (clamp law).
+Each cell emits milestone losses + FINAL trajectory sha, one jsonl
+row.
+BARS: P-JOINT fires iff min(110k-w128-s16000-{const,sched}) final
+cycle-mean <= 11,266 — joint scaling converts where every single
+knob failed. P-DIET-FLOOR fires iff NO cell <= 11,266 AND axis
+attribution at the top corner names WINDOWS: the leave-windows-
+small cell (110k-w8-s16000) is >= 5% worse than the full corner
+while leave-params-small and leave-steps-small sit within 2% —
+the floor is data; the diet becomes the lever. Other patterns:
+UNRESOLVED, surface booked. Schedule interaction descriptive at
+every cell.
+VERIFICATION CONTRACT (LOCKSTEP pattern): house re-derives THREE
+named cells digest-identical in the Python stack before the
+verdict books — 60k-w8-s1000-const (must equal the certified
+DIET-BRIDGE sha 8b443b68...), 60k-w32-s4000-const (must equal
+PLATEAU-BREAK arm B's 561e28c5...), and 60k-w8-s4000-sched (must
+equal P-STEP-BOUND-2's 15934bb8...) — three spot cells that are
+ALREADY house-certified, so the engine's digests verify against
+frozen receipts at zero new house compute.
+FENCES: deterministic integer battery; seed 17; cycle-mean
+comparisons across NWIN follow the PLATEAU-BREAK convention;
+wall-clock never a readout; engine leg is axiom's, verdicts book
+house-side only after the three spot digests match.
