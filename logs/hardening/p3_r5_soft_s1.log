@@ -1,0 +1,110 @@
+[umoe] ARM=soft seed=1 dev=cuda params 0.93M aux=0.0
+[p3-r5] D2 excision: 132870 -> 132741 rows (129 band-touching excised)
+/home/a/code/llmopt/scratch/umoe_conserve.py:419: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  print(f"  ep{ep} step {step} loss {float(loss):.3f}",
+  ep0 step 500 loss 0.799
+  ep0 step 1000 loss 0.755
+  ep0 step 1500 loss 0.493
+  ep0 step 2000 loss 0.219
+  ep0 step 2500 loss 0.456
+  ep0 step 3000 loss 0.911
+  ep0 step 3500 loss 0.544
+  ep0 step 4000 loss 0.420
+  ep0 step 4500 loss 0.517
+  ep0 step 5000 loss 0.445
+  ep0 step 5500 loss 0.313
+  ep0 step 6000 loss 0.531
+  ep0 step 6500 loss 0.283
+  ep0 step 7000 loss 0.279
+  ep0 step 7500 loss 0.249
+  ep0 step 8000 loss 0.435
+  ep0 step 8500 loss 0.433
+  ep0 step 9000 loss 0.802
+  ep0 step 9500 loss 0.447
+  ep0 step 10000 loss 0.431
+  ep0 step 10500 loss 0.424
+  ep0 step 11000 loss 0.519
+  ep0 step 11500 loss 0.432
+  ep0 step 12000 loss 0.373
+  ep0 step 12500 loss 0.238
+  ep0 step 13000 loss 0.317
+  ep0 step 13500 loss 0.372
+  ep0 step 14000 loss 0.414
+  ep0 step 14500 loss 0.557
+  ep0 step 15000 loss 0.414
+  ep0 step 15500 loss 0.389
+  ep0 step 16000 loss 0.428
+  ep0 step 16500 loss 0.356
+  ep1 step 17000 loss 0.321
+  ep1 step 17500 loss 0.368
+  ep1 step 18000 loss 0.261
+  ep1 step 18500 loss 0.383
+  ep1 step 19000 loss 0.432
+  ep1 step 19500 loss 0.391
+  ep1 step 20000 loss 0.367
+  ep1 step 20500 loss 0.412
+  ep1 step 21000 loss 0.401
+  ep1 step 21500 loss 0.369
+  ep1 step 22000 loss 0.346
+  ep1 step 22500 loss 0.403
+  ep1 step 23000 loss 0.386
+  ep1 step 23500 loss 0.387
+  ep1 step 24000 loss 0.485
+  ep1 step 24500 loss 0.600
+  ep1 step 25000 loss 0.361
+  ep1 step 25500 loss 0.363
+  ep1 step 26000 loss 0.271
+  ep1 step 26500 loss 0.391
+  ep1 step 27000 loss 0.442
+  ep1 step 27500 loss 0.372
+  ep1 step 28000 loss 0.505
+  ep1 step 28500 loss 0.223
+  ep1 step 29000 loss 0.243
+  ep1 step 29500 loss 0.287
+  ep1 step 30000 loss 0.399
+  ep1 step 30500 loss 0.266
+  ep1 step 31000 loss 0.422
+  ep1 step 31500 loss 0.339
+  ep1 step 32000 loss 0.477
+  ep1 step 32500 loss 0.369
+  ep1 step 33000 loss 0.387
+  ep2 step 33500 loss 0.336
+  ep2 step 34000 loss 0.245
+  ep2 step 34500 loss 0.213
+  ep2 step 35000 loss 0.416
+  ep2 step 35500 loss 0.370
+  ep2 step 36000 loss 0.293
+  ep2 step 36500 loss 0.367
+  ep2 step 37000 loss 0.351
+  ep2 step 37500 loss 0.372
+  ep2 step 38000 loss 0.333
+  ep2 step 38500 loss 0.381
+  ep2 step 39000 loss 0.371
+  ep2 step 39500 loss 0.249
+  ep2 step 40000 loss 0.343
+  ep2 step 40500 loss 0.331
+  ep2 step 41000 loss 0.500
+  ep2 step 41500 loss 0.334
+  ep2 step 42000 loss 0.281
+  ep2 step 42500 loss 0.323
+  ep2 step 43000 loss 0.354
+  ep2 step 43500 loss 0.358
+  ep2 step 44000 loss 0.427
+  ep2 step 44500 loss 0.494
+  ep2 step 45000 loss 0.529
+  ep2 step 45500 loss 0.394
+  ep2 step 46000 loss 0.351
+  ep2 step 46500 loss 0.339
+  ep2 step 47000 loss 0.332
+  ep2 step 47500 loss 0.369
+  ep2 step 48000 loss 0.310
+  ep2 step 48500 loss 0.270
+  ep2 step 49000 loss 0.394
+  ep2 step 49500 loss 0.382
+[gate] weights sha 3c07d16006617ecb
+[gate] ARM=soft solves {3: 19, 4: 5, 5: 16, 6: 7, 7: 9}/120 valid 50.51775147928994
+[probe corr] per-block mean pairwise expert corr: [0.006, 0.003, 0.01, 0.012, 0.011, 0.007, 0.014, 0.013] | mean 0.0096
+[probe usage] L0 expert shares [0.155, 0.334, 0.075, 0.437]
+[probe MI] adjacent-layer MI [0.0428, 0.0822, 0.0997, 0.0984, 0.1121, 0.1781, 0.3018] | shuffle [0.0004, 0.0004, 0.0006, 0.0001, 0.0004, 0.0008, 0.0003] | ratio 305.2x
+[probe meter] experts M=1.55 kurt=3.88 (0.79M params)

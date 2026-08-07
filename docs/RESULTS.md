@@ -22714,3 +22714,29 @@ gates on this band carry the P1 exposure fence regardless.
 FENCES: one device (3080); the excised diet differs from the
 original by the band-touching rows (bridge seed prices it);
 corr is the N3 instrument as originally computed.
+
+## VERDICT HARDENING-P3-R5: P-INIT-DEFAULT-HOLDS FIRES 3/3 — soft routing reads init-default correlation at every seed (0.0096/0.0071/0.0062, all < 0.02); THEORY row 33's causal leg is now n=3 and its single-seed fence lifts; the excision bridge prices the diet change at ~zero (2026-08-08 morning, 3080)
+
+Against PRE-REG HARDENING-P3-R5 (receipts logs/hardening/
+p3_r5_soft_s{1,2,3}.log, force-added; weights shas per gate in the
+logs). Mean pairwise expert corr, ARM=soft, D2-excised diet
+(132,870 -> 132,741; the 129-row excision receipt is IDENTICAL
+across all three runs and matches VERDICT HARDENING-P1's audit
+count for this loader exactly — two code paths, one number):
+  seed 1: 0.0096  (the BRIDGE — original unexcised soft seed-1 was
+          0.0089; the excision moves the readout ~0.0007, noise
+          class; hard gate 1's cost is priced at ~zero)
+  seed 2: 0.0071
+  seed 3: 0.0062
+All three < 0.02, none shows the 10x rise over init 0.0016 the
+original falsification criterion demanded. P-INIT-DEFAULT-HOLDS
+FIRES: "sparse assignment is NOT the cause of expert
+decorrelation" — the split law's causal leg — now rests on n=3
+soft-routing seeds instead of one. THEORY row 33 upgraded in this
+commit ([REPLICATED at the causal leg]). Gate solves printed in
+receipts are descriptive (P1 exposure fence applies to absolutes
+on this band). FENCES: one device (3080, device-of-origin); the
+excised diet differs from the original by the 129 band rows
+(bridge-priced); corr is the N3 instrument as originally computed.
+NEXT per the frozen Phase-3 order: R6 gravity-tax (3 births + the
+free-run gate rider), new pre-reg.

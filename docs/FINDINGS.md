@@ -271,6 +271,39 @@ VERDICT](RESULTS.md#L10676).)
   kernel; the failure CLASSIFICATION is house-side sympy equivalence
   pending axiom counter reconciliation (id lists staged). ([VERDICT LEAN-SAMPLE-V2](RESULTS.md#L22407); [VERDICT
   LEAN-FULL-V2](RESULTS.md#L22493).)
+- [REPLICATED] [REGIME-SCOPED: house crystals] The hardening sweep
+  converts pre-doctrine point estimates into replicated laws and
+  scoped fences without retracting any paired claim: the
+  eval-in-train exposure class is STRUCTURAL across every legacy
+  infix engine diet (22-25 of 120 gate-band expressions verbatim
+  prompt-side in each of eight diets — absolute solve counts on
+  that band carry a first-ply tailwind fence, paired deltas cancel
+  it); the precision-knee sigma-ratio constant holds at n=3
+  same-diet births (snap free at ~0.25-0.5 sigma with deltas
+  0/-1/0, biting at ~1.0 sigma with -12/-13/-9); the
+  fp32-versus-ternary crown tie is real at three fresh paired
+  problem-set draws (deltas 0/+2/+2); and the split law's causal
+  leg — sparse assignment does not cause expert decorrelation —
+  replicates at three soft-routing seeds (correlations
+  0.0096/0.0071/0.0062, all in the init-default class), with the
+  excision bridge pricing the mandated diet cleanup at zero.
+  ([VERDICT HARDENING-P1](RESULTS.md#L22585); [VERDICT
+  HARDENING-P2](RESULTS.md#L22658); [VERDICT
+  HARDENING-P3-R5](RESULTS.md#L22718).)
+- [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe] The
+  reverse model's verified-candidate choice surface is real but
+  thin, and the thinness is mostly a MODEL property: at eight
+  samples per problem 4 of 120 problems yield two distinct
+  verified predecessors (the forward control yields zero); at
+  thirty-two samples the count reaches only 9 of 120 —
+  sub-linear widening (the L4 hole cracks to 1/24 at the larger
+  budget). The ranking rung of the reverse-propose ladder stays
+  gated pending a stronger proposer; and the integer-diet plateau
+  is capacity-insensitive in both directions at its anchor
+  schedule, leaving joint scaling as the named lever.
+  ([VERDICT MULT-0](RESULTS.md#L22196); [VERDICT
+  MULT-0-B32](RESULTS.md#L22522); [VERDICT
+  P-CAPACITY-2](RESULTS.md#L22163).)
 - [SINGLE-SEED] [REGIME-SCOPED: toy weight-space subjects] A
   796,550-parameter neuron-token transformer classifies the function
   family of 1-16-16-1 tanh subject MLPs from raw weights at 80.8%
