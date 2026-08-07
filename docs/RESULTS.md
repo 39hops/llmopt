@@ -22450,3 +22450,42 @@ FENCES: Mac-local kernel (scratch/leancheck cache); v2 sidecar =
 axiom 6737bff delivery (counts reconcile v1 exactly, their
 receipt); cost verdict comparisons stay against their ~11 ms/row
 oracle convention.
+
+## VERDICT EX-FRESH: BOTH CREST CLAIMS BOOK AT n=3 FRESH PAIRED SEEDS — the swap-crest (+53 pooled, 3/3) AND the deletion-crest (+55 over full, +27 over the matched-rank control, 3/3 both); AND the control's own finding: rank-matched random 80-deletion beats the full model (+28 pooled, 3/3) (2026-08-07 afternoon, Mac)
+
+Against PRE-REG EX1-CREST-FRESH + PRE-REG EX3-FRESH, one paired
+load per fresh seed, receipts logs/ex3/fresh.jsonl (force-added),
+all twelve dicts sum-verified, full-model recall 1.0000 sanity on
+all three baselines:
+  seed  full  his  del_invp  del_rand0
+  1001   59    77     78        70
+  2002   67    83     85        76
+  3003   63    82     81        71
+P-SWAP-CREST-N3 FIRES: pooled (his - full) = 18+16+19 = +53 >= 21,
+signs 3/3. THE CLAIM BOOKS: a keep-set DERIVED BY IDENTITY SURGERY
+from two ~0.72-recall draws (the frozen c30 k=4 class-preserving
+swap, ~54.7% keep) beats the full model at three fresh paired
+seeds. The discovery-seed pool stays quarantined; this claim rests
+only on 1001/2002/3003.
+P-DEL-CREST FIRES: pooled (del_invp - full) = 19+18+18 = +55 >=
+21, signs 3/3; pooled (del_invp - del_rand0) = 8+9+10 = +27 >= 21,
+signs 3/3. THE CLAIM BOOKS: deleting the NAMED 80-expert pooled-
+lens carrier set (1.3% of the bank, 98.7% keep) beats the full
+model, identity-specifically beyond matched-rank deletion.
+P-DRIFT's registered escape clause FIRES: del_rand0 - full = +28
+pooled (11/9/8, 3/3) — NOT noise-class. Its own finding, scoped:
+deleting 80 RANK-MATCHED experts (the carriers' +-8 demand-rank
+windows, median global rank ~47) reliably helps — the full router
+is measurably OVER-INCLUSIVE at this rank class; identity ~doubles
+the deletion gain (+55 v +28).
+CONVERGENCE, booked descriptively: two utterly different
+interventions — a 54.7%-keep swap-derived mask and a 98.7%-keep
+named deletion — land the SAME gain class (+17.7 v +18.3 mean),
+consistent with one shared mechanism: removal of interfering
+computation, reachable by scalpel or by mask. Full-model spread
+59-67 re-confirms the paired-per-seed rule.
+FENCES: [FORMAT-BOUND] [REGIME-SCOPED: measured deployment
+artifacts]; one vehicle, mathgen L1-3; the drift finding is scoped
+to the carriers' rank class (not uniform-random deletion); crest
+prose may now say CLAIMED at n=3 for both forms, with GT-1's
+6/6-seed crest remaining the strongest single claim.
