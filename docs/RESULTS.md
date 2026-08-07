@@ -22349,3 +22349,35 @@ FENCES: deterministic integer battery; seed 17; cycle-mean
 comparisons across NWIN follow the PLATEAU-BREAK convention;
 wall-clock never a readout; engine leg is axiom's, verdicts book
 house-side only after the three spot digests match.
+
+## VERDICT EX-ANAT-3: NEITHER BAR FIRES — the result inverts the question: EVERY 80-expert deletion at full width IMPROVES the gate, and the pooled-lens carrier deletion improves MOST (81 v full 64, +17; controls +7/+3; decode-lens +4) — a deletion-crest candidate at 98.7% keep (2026-08-07 afternoon, Mac)
+
+Against PRE-REG EX-ANAT-3 (receipts logs/ex3/ex3.jsonl force-added;
+dicts sum-verified; recalls 0.975-0.986 — the deletions cost ~2.5%
+of demand):
+  DEL-INVP  81/120 {1:27, 2:31, 3:23}  (+17 v the booked full 64)
+  DEL-RAND0 71/120 {1:27, 2:26, 3:18}  (+7)
+  DEL-RAND1 67/120 {1:25, 2:26, 3:16}  (+3)
+  DEL-INVD  68/120 {1:21, 2:27, 3:20}  (+4)
+P-CARRIER-LOAD does NOT fire (nothing dropped). P-REROUTE does NOT
+fire (DEL-INVP is +17, outside the +-7 window). UNRESOLVED by the
+registered bars; THE SHAPE IS THE FINDING: at full width the
+pooled-lens carriers are INTERFERENCE — removing them by name
+beats removing matched-rank randoms by +10/+14 (both >= the pair
+fence) and lands a crest-class score at 98.7% keep (GT-1's crest:
+78 at 45.3% keep). Read together with EX-ANAT-2 the carrier story
+is REGIME-DUAL: the same named population that transforms
+carrier-poor masked sets (+22..+62) is net-negative tissue in the
+FULL router. The prefill tilt (DESK EX-ANAT-3-0) sharpens this:
+what they carry helps when residency is scarce and crowds when it
+is not — consistent with the crest-as-interference-removal
+mechanism, now localized to a NAMED 80-expert set instead of a
+demand-ranked 54.7% mask. The decode-lens set (Jaccard 0.315 to
+pooled) shows almost no identity effect (+4 v +3/+7 controls) —
+the interference lives in the POOLED (prefill-heavy) lens.
+SINGLE-SEED FENCE, loud: one gate seed, one draw per control;
+the resolution law licenses no claim; replication is
+pre-registered NEXT (EX3-FRESH, folded into the fresh-seed
+battery, same paired loads). Random-deletion drift (+3/+7)
+itself flags that tiny deletions may be net-mild-positive on this
+seed — the fresh-seed battery carries a rand control to price it.
