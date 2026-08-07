@@ -22764,3 +22764,49 @@ Absolute gates carry the P1 exposure fence (paired deltas cancel).
 FENCES: one device (Mac/mps); excised diet (bridge priced ~zero in
 R5 for this loader class); falloff read is the driver's own
 epsilon-kick instrument at its defaults.
+
+## VERDICT HARDENING-P3-R6: falloff-flip mechanism replicates 3/3; the gate toll lands BETWEEN the bars — pooled -11, unresolved magnitude (2026-08-08, Mac)
+
+Against PRE-REG HARDENING-P3-R6 (bars frozen before fire). Six
+births complete (scratch/p3_grav2.py wrapper: frozen GRAV-2 driver
++ load-time D2 excision receipts + refuse-if-exists; Mac/mps,
+device-of-origin).
+
+Gate dicts (the checksum), ctl vs contract per seed:
+- s2 ctl {3:19, 4:5, 5:16, 6:7, 7:10} = 57 (sha aa1ec4e94472eec1)
+  v contract {3:18, 4:5, 5:14, 6:6, 7:9} = 52 (sha
+  19834a00598651f3): delta -5
+- s3 ctl {3:16, 4:6, 5:16, 6:7, 7:12} = 57 (sha c3e907eb610826ee)
+  v contract {3:15, 4:4, 5:16, 6:7, 7:10} = 52 (sha
+  d03be41d86508992): delta -5
+- s4 ctl {3:20, 4:5, 5:15, 6:7, 7:9} = 56 (sha ae78f14ff5ab8fa6)
+  v contract {3:19, 4:5, 5:14, 6:7, 7:10} = 55 (sha
+  d59063b056621143): delta -1
+
+POOLED (contract - ctl) = -11, 3/3 negative. P-TAX-FLAT does NOT
+fire (|-11| > 7). P-TAX-REAL does NOT fire (-11 > -21). Verdict:
+the pre-registered BETWEEN case — UNRESOLVED magnitude, profiles
+booked, no direction claim beyond the 3/3 sign consistency.
+
+MECHANISM HALF CONFIRMED 3/3: epsilon-kick falloff flattens under
+contract in every seed. L1 kick profiles (first -> last):
+- s2: ctl 0.6122 -> 2.0299 v contract 0.2381 -> 0.4265
+- s3: ctl 0.6699 -> 2.1425 v contract 0.2583 -> 0.4129
+- s4: ctl 0.6895 -> 2.1060 v contract 0.2464 -> 0.3649
+L4 same shape (ctl ~1.6 -> 3.1-3.3 v contract ~0.39-0.42 ->
+0.49-0.56). The residual stream's default amplification and its
+flip under the one-line tax are now n=3-paired facts; what the
+flip COSTS is not settled at this n (pooled -11 sits at ~1.3
+sigma-pooled, between the bars by construction).
+
+THEORY row 34 updated same-commit: falloff-flip clause gains n=3;
+the "~zero gate toll" clause now carries an explicit
+unresolved-magnitude fence (was toll -4 at n<=2; measured -11
+pooled at n=3, neither flat nor established-real).
+
+FENCES: Mac/mps only; D2-excised diet (receipts in
+logs/hardening/p3_r6_*.log, excision count 129 matching R5/P1);
+absolute gate levels carry the P1 exposure fence (paired deltas
+cancel it); falloff read from the driver's own epsilon-kick
+instrument at defaults. Phase-3 row 2 CLOSES (booked, not
+bar-fired); next frozen row: R3 ffn-slack endpoints.
