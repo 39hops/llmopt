@@ -877,6 +877,23 @@ regime tag on every bullet is the fence.
   per bin, tie-fill upper bounds travel.
   ([PRE-REG MOE-GT-7](RESULTS.md#L21304); [VERDICT
   MOE-GT-7](RESULTS.md#L21521).)
+- [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
+  [REGIME-SCOPED: measured deployment artifacts] Capability FOLLOWS
+  a named expert-identity set under pinned aggregates: a symmetric,
+  class-preserving exchange of the top-4-by-demand exclusive experts
+  per layer per class (~8 of ~68 kept per layer) between the high
+  and low draw of a matched bin — recall within the 0.72 band,
+  verbal coverage exactly invariant by construction — moved 23-52
+  gate solves per side and largely inverted the pair outcomes
+  (low draws 15/5/10 rose to 55/57/59; two high draws fell 53->30
+  and 46->11), pooled transfer 176 against a pre-registered bar of
+  28 with 2/3 directional consistency. One anomaly is carried
+  loudly, not claimed: one swapped high draw rose to 77, above the
+  paired full model's 64, at one seed — unreplicated. One gate
+  seed; swapped sets derived from the frozen coverage-ladder draws;
+  the bisection ladder (k=2, k=1) is the registered follow-up.
+  ([PRE-REG EX-ANAT-1](RESULTS.md#L21603); [VERDICT
+  EX-ANAT-1](RESULTS.md#L21639).)
 - [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] With the full router
   available, mathematics routes 2.7%

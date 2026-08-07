@@ -3,6 +3,27 @@
 Training that uses the weight budget as a capacity-achieving code can make
 calibration machinery unnecessary; this lab measures when that statement holds.
 
+## Headlines (each carries its full scope in FINDINGS)
+
+- Masking a 30B-class MoE to its top-45.3%-demand experts **beats the
+  full model** on the lab's mathematics gate (+14.7 pooled, 6/6 paired
+  seeds); random masks at the same fraction score 0/120 — selection,
+  not sparsity ([FINDINGS](docs/FINDINGS.md), routing crest).
+- Capability follows **expert identity**, not any aggregate of the
+  keep-set: with recall and coverage pinned, exchanging 4 experts per
+  layer per class between matched keep-set draws moved 23–52 gate
+  solves per side and largely inverted the pair outcomes; recall- and
+  coverage-organization both returned registered nulls first.
+- A transformer birth (multi-block, real math diet, 1000 steps) runs
+  **bit-identically** across Mac CPU, RTX 3080 CUDA, and an external
+  lab's C++ reimplementation — integer training with sha-equality as
+  the acceptance bar, reproducible by one command
+  ([REPRODUCE](docs/REPRODUCE.md)).
+
+These are measured, fenced claims — the tags and scope vocabulary in
+[FINDINGS](docs/FINDINGS.md) are part of each statement, not optional
+reading.
+
 Start with the [glossary](GLOSSARY.md), [curated findings](docs/FINDINGS.md)
 — organized by evidence maturity and scope rather than chronology, one tag per
 claim — the [reproduction walkthrough](docs/REPRODUCE.md), and the living
