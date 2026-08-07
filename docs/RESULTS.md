@@ -22381,3 +22381,25 @@ pre-registered NEXT (EX3-FRESH, folded into the fresh-seed
 battery, same paired loads). Random-deletion drift (+3/+7)
 itself flags that tiny deletions may be net-mild-positive on this
 seed — the fresh-seed battery carries a rand control to price it.
+
+## PRE-REG EX3-FRESH (rider extending EX1-CREST-FRESH): the deletion-crest and the swap-crest replicate in the SAME paired loads — plus a matched-rank random deletion control (2026-08-07 afternoon, Mac)
+
+Extends PRE-REG EX1-CREST-FRESH BEFORE it fires (arms added, seeds
+and bars unchanged for the original claim). Per fresh seed (1001,
+2002, 3003), ONE load runs FOUR arms paired: ex1_full128 (base),
+ex1_c30_his (the swap-crest, original bar untouched),
+ex3_del_invp (the deletion-crest candidate), ex3_del_rand0 (the
+matched-rank control, pricing the tiny-deletion drift).
+NEW BARS (deletion-crest): P-DEL-CREST fires iff pooled
+(del_invp - full) over the three fresh seeds >= 21 AND signs 3/3
+AND pooled (del_invp - del_rand0) >= 21 — the claim would be:
+removing a NAMED 80-expert set (1.3% of the bank) beats the full
+model, identity-specifically, at n=3 fresh paired seeds. P-DRIFT:
+del_rand0 pooled within +-10 of full — tiny-deletion drift is
+noise-class; if del_rand0 itself clears +21 pooled, the seed-1234
+control drift was real and the identity margin is the only
+claimable part. Any other outcome: direction booked, no claim.
+COST: 12 gates (~55 min one load-set). FENCES: paired within-seed
+within-load; the frozen keepsets are cited evidence
+(overwrite-guarded); [FORMAT-BOUND] [REGIME-SCOPED: measured
+deployment artifacts].
