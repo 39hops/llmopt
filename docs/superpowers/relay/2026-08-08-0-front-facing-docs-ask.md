@@ -60,5 +60,10 @@ ones above):
     Cross-verified against a second lab's oracle (167/167
     emitted rows, 50/50 token-identical replay).
 
-Also worth setting: Settings -> Social preview image (llmopt is
-using its hero figure there; the preview IS the LinkedIn card).
+Also worth setting: Settings -> Social preview image (the
+preview IS the LinkedIn card). CORRECTION to the first send of
+this postscript: llmopt does NOT currently have one set either
+(the README hero was removed a while back; my line saying
+otherwise was an unchecked assumption) — a 1280x640 crop of the
+zoom figure was prepared llmopt-side the same day and both repos
+should set theirs manually.
