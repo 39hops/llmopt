@@ -23145,3 +23145,22 @@ FENCES: probe-tier instrument (k=8 T-sampled, never a gate);
 one seed per arm (the births are the frozen artifacts); Mac/mps;
 state class = first-encodable engine children of gate problems
 (not a general post-step population).
+
+## VERDICT HARDENING-P4-1-LABELS: the migrated label prep CERTIFIES the v1 number — 67.7% recoverable (203u/0a/95m/2 timeout), the 0.3-point delta inside the timeout mass; no amendment fires (2026-08-08, 3080 CPU)
+
+Companion leg of PRE-REG HARDENING-P4-1. pincer_labels_v2 (fork-
+per-state, streamed, timeout visible) on v1's exact sample
+(random.Random("r1b-labels-1"), 300 gen-4 rows): unique 203,
+ambig 0, miss 95, err 0, TIMEOUT 2 -> recoverable 67.7% v the
+booked 68.0% (204u/96m). The two timeout rows are the previously
+invisible class — under v1 they landed in unique/miss via the
+in-process alarm path; at a 20s hard wall they hang. 68.0 - 67.7
+= 0.3 points <= the 0.7-point timeout mass: the pre-registered
+no-amendment condition holds. PINCER R1b PREP's 68% stands, now
+with its selection-effect hole closed and a streamed row-level
+record (logs/pincer/labels_v2.jsonl, WSL-side).
+Top-rule histogram reproduces v1's shape (i_const family
+dominant). MIGRATION APPENDIX row 1 of 3 CLOSES: the program's
+last SIGALRM carrier is retired; v1 stays frozen-as-record.
+FENCES: CPU-only replay; 20s deadline (timeout class is deadline-
+relative); same 300-row sample as v1 (not a fresh draw).
