@@ -22894,3 +22894,28 @@ FENCES: cuda line only (never read against MPS numbers); D2-excised
 diet; gates-only; EMA metric is the claim's own; endpoints only.
 Phase-3 row 3 CLOSES (bar-fired). Next frozen row: R4
 interaction-law small-delta cells.
+
+## VERDICT REVIVE-METAB-LATE: neither bar fires — late metabolism leans NEGATIVE (pooled -10, 3/3) but sits between the null and any claim; the orphan arm is now BOOKED (2026-08-08, Mac)
+
+Against PRE-REG REVIVE-METAB-LATE. Battery rc=0, all dicts
+sum-verified, receipts logs/revive/metab_late_*.log:
+  BASELINE gen6_grown {3:23, 4:10, 5:19, 6:8, 7:16} = 76/120
+  (sha 6bafcfa585b26182 — the champion's known value)
+  b95 {3:23, 4:9, 5:17, 6:7, 7:15} = 71 (-5)
+  b96 {3:23, 4:11, 5:17, 6:8, 7:15} = 74 (-2)
+  b97 {3:23, 4:10, 5:17, 6:8, 7:15} = 73 (-3)
+POOLED -10, 3/3 negative. P-METAB-LATE-WINS does not fire.
+P-METAB-NULL does not fire (|-10| > 7). The registered between
+case books: 150 cycles of late-layer online metabolism on fresh
+L9 bands does NOT convert exposure into gate capability at this
+recipe, and the consistent 3/3 negative lean (sub-claim-bar) says
+the safe-plasticity frontier is not free either — the immune
+system prevented collapse, not regression.
+REVIVE TRACK ITEM 1 CLOSES: the 07-21 orphan arm (run, never
+booked) now has its verdict — the exact failure mode the
+revive-and-cite pass exists to prevent. The original
+metabolic_late.pt stays frozen; the three new arms carry their
+bands in their names.
+FENCES: Mac/mps; one base checkpoint (band-replication, not
+birth-replication); L9-band disjoint from the gate's levels;
+gates-only.
