@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 158, library 154, reproduce-pinned 9, results-cited 113, spec-cited 41
+Census: UNCITED 159, library 154, reproduce-pinned 9, results-cited 113, spec-cited 41
 
 ## scratch/
 
@@ -204,6 +204,7 @@ Census: UNCITED 158, library 154, reproduce-pinned 9, results-cited 113, spec-ci
 | night31 | night31_cuda.sh | results-cited | RESULTS×1 | — |
 | night31 | night31_mac.sh | UNCITED | — | — |
 | night31b | night31b_cuda.sh | results-cited | RESULTS×1, specs×1 | — |
+| nineteen | nineteen_m_displace.py | UNCITED | — | — |
 | oracle | oracle_worker.py | library | REPRODUCE×1, RESULTS×2 | 6 |
 | ozaki | ozaki_2b_bisect.py | UNCITED | — | — |
 | ozaki | ozaki_2b_check.py | results-cited | RESULTS×1 | — |
