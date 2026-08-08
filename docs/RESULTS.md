@@ -23311,3 +23311,40 @@ original mixed-device cells); one diet path (v22+gen4); 3ep both
 arms (the grid's own dose — the ternary 6ep dose question stays
 with R9's scope); gates-only. Crown-tie births (revive item 2)
 queue BEHIND this battery on the Mac.
+
+## PRE-REG REVIVE-CROWN-TIE-BIRTHS: the production crown tie gets its missing leg — n=3 fresh BIRTH pairs, both lines same-device (2026-08-08, Mac)
+
+Revive item 2 (standing GO 2026-08-08 morning; queued BEHIND the
+d768 battery). The crown tie (gen6_grown fp32 76 v merged_grown
+ternary 75, 2026-07-23) has had its draw-noise leg closed
+(HARDENING-P2 R8: pooled +4 over 3 fresh draws, tie stands) but
+carries the n=1-BIRTHS fence: "draws resolve gate noise, not
+birth noise; tiebreak still needs births." This battery is that
+tiebreak. ARMS per seed (2, 3, 4), wrapper scratch/rev3_crown.py:
+  c = champion LINE fresh: fp32 birth d512/L12/h8/ffn2048 on
+      v22+gen4 (3ep) -> grow +256/layer (grow_mathnative spray)
+      -> identity pre-check (gate(grown) must EQUAL gate(birth)
+      exactly — fp32 growth zero-cols are function-preserving;
+      abort on any mismatch) -> 3 warm ep on v22+l8+gen4. The
+      full lineage replicates: growth-inheritance IS the
+      champion's mechanism.
+  m = merged LINE fresh: ternary tournament birth DIRECTLY at
+      d768/L8/h12/ffn3840 on data/merged_diet.jsonl (116,738
+      rows, verified at arm time), 3ep. No growth stage —
+      ternary growth is non-preserving (2026-07-23 ~12AM); the
+      fresh birth tests the LINE, not that pathology.
+BARS (paired per-seed deltas c minus m at the standard gate,
+pooled over 3 pairs): P-TIE-BIRTHS iff pooled |delta| <= 7 —
+the tie survives birth noise and the n=1-BIRTHS fence LIFTS
+(crown stays formally tied between substrates). P-RESOLVE-FP32
+iff pooled >= +9 with 3/3 non-negative; P-RESOLVE-TERNARY iff
+pooled <= -9 with 3/3 non-positive — the crown resolves.
+Between / mixed signs: UNRESOLVED, dicts booked, fence stays.
+HARD GATES: D2 excision on load_rows (wrap covers the diet=
+path — the patch is on the function, not the flag); refuse-if-
+exists on every stage OUT; BIRTH_SEED env; GRAD_CKPT.
+FENCES: Mac/mps only, one battery; fresh absolutes NEVER read
+against the 76/75 originals (device era + band class); gates-only;
+dicts are the checksum at booking. Cost ~2 Mac-nights for 3
+pairs; if Mac time tightens, 2 pairs book with an explicit n=2
+fence sentence (resolution law).
