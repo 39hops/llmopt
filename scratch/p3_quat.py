@@ -37,6 +37,23 @@ from tenet_d2_revdiet import gate_band_exprs, norm  # noqa: E402
 
 random.seed(SEED)
 
+# the driver's ONLY stochastic knob is a hardcoded local
+# random.Random(0) shuffling the warm-epoch data order (line 68) —
+# discovered 2026-08-08 when three torch-seed arms replayed the
+# original trajectory byte-identically. Redirect exactly Random(0).
+_orig_Random = random.Random
+
+
+def redirected_Random(*args):
+    if args == (0,):
+        print(f"[p3-r7] Random(0) redirect -> Random({SEED})",
+              flush=True)
+        return _orig_Random(SEED)
+    return _orig_Random(*args)
+
+
+random.Random = redirected_Random
+
 _orig_seed = torch.manual_seed
 
 
