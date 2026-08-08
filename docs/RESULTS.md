@@ -23441,3 +23441,17 @@ displacement ray points through the origin (q4 cosine to base
 snap-era 19M via its q32 proxy base, ~1e-3 from true), one
 matrix rendered, arithmetic checked from disk; no new capability
 claim — the gate numbers stay with the 2026-07-27 verdict.
+
+## AMENDMENT Q4-DELETION-SOURCE: the observation's stats gain a committed source and the "NO weight" absolute softens to "all but ONE" (2026-08-08 late, desk; opus-seat recent-work audit F2/F3)
+
+Amends OBSERVATION Q4-DELETION-RENDER. (1) The zero-count /
+cosine / norm-ratio figures were computed ad hoc at booking —
+now committed as verify_deletion_stats() in
+scratch/nineteen_m_displace.py; re-run confirms 18,891,148/
+18,905,088 zeros (99.93%), cosine 0.0048 (booked as 0.005),
+norm ratio 0.0095. (2) The audit predicted from the ratio alone
+that the mid gate holds ~1 survivor, not zero — measured: EXACTLY
+ONE nonzero weight survives Q=4 in the mid gate (a single 1/4;
+0.25/||W0|| = 0.0096 ~ the booked ratio). "NO weight reaches
+|w| >= 1/8" corrects to "all but one." The starburst is 1,535
+rays to the origin and one that stays.

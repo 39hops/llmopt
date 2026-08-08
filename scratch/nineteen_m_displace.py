@@ -49,3 +49,25 @@ fig.tight_layout()
 fig.savefig("figs/2026-08-08/nineteen-m-quant-displace.png",
             dpi=130, facecolor=BG)
 print(f"saved; mean disp {mag.mean():.4f}")
+
+
+def verify_deletion_stats():
+    """The OBSERVATION Q4-DELETION-RENDER numbers, committed
+    (F2 fix: no booked number without a committed source)."""
+    q4 = torch.load("checkpoints/snap19m_q4.pt", map_location="cpu",
+                    weights_only=True)
+    z = n = 0
+    for k, w in q4.items():
+        if w.ndim == 2 and w.is_floating_point():
+            z += (w == 0).sum().item()
+            n += w.numel()
+    surv = int((W1 != 0).sum().item())
+    cos = torch.nn.functional.cosine_similarity(
+        W0.flatten(), W1.flatten(), dim=0).item()
+    print(f"zeros {z}/{n} = {100*z/n:.2f}% | mid-gate nonzero "
+          f"survivors: {surv} | cosine {cos:.4f} | "
+          f"norm ratio {(W1.norm()/W0.norm()).item():.4f}")
+
+
+if __name__ == "__main__" or True:
+    verify_deletion_stats()
