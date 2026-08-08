@@ -46,3 +46,19 @@ audience is a reader who has never seen either repo.
 
 Owed in the other direction (unchanged): the 222+78 Lean id
 lists relay; ENGINE-SCALE-1 spot-sha verify on axiom's return.
+
+## Postscript (same day): the GitHub repo description
+
+The repo description is now on Artin's LinkedIn as a Featured
+link card, and it currently describes the library, not the lab —
+no derivation engine, no Lean certs, no cross-lab arc. Suggested
+replacement (axiom's call on wording; numbers are the booked
+ones above):
+
+    From-scratch STL-only C++23 math engine: bigint/rational,
+    CAS, derivation search with Lean 4 certificates.
+    Cross-verified against a second lab's oracle (167/167
+    emitted rows, 50/50 token-identical replay).
+
+Also worth setting: Settings -> Social preview image (llmopt is
+using its hero figure there; the preview IS the LinkedIn card).
