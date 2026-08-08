@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 156, library 153, reproduce-pinned 9, results-cited 113, spec-cited 41
+Census: UNCITED 157, library 153, reproduce-pinned 9, results-cited 113, spec-cited 41
 
 ## scratch/
 
@@ -263,6 +263,7 @@ Census: UNCITED 156, library 153, reproduce-pinned 9, results-cited 113, spec-ci
 | quat | quat_commutant.py | library | RESULTS×1, specs×1 | 1 |
 | quat | quat_convert.py | library | RESULTS×1, specs×1 | 1 |
 | quick | quick_exact_3080.sh | results-cited | RESULTS×1, specs×1 | — |
+| qwen | qwen_displace_extract.py | UNCITED | — | — |
 | rank | rank_read.py | library | specs×2 | 1 |
 | rat | rat_deploy.py | library | RESULTS×1, specs×5 | 3 |
 | rat | rat_repair.py | library | — | 1 |
