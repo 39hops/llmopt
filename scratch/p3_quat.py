@@ -44,15 +44,19 @@ random.seed(SEED)
 _orig_Random = random.Random
 
 
-def redirected_Random(*args):
-    if args == (0,):
-        print(f"[p3-r7] Random(0) redirect -> Random({SEED})",
-              flush=True)
-        return _orig_Random(SEED)
-    return _orig_Random(*args)
+class RedirectedRandom(_orig_Random):
+    """Class (not function): downstream annotations use
+    `random.Random | None`, which needs a type on both sides."""
+
+    def __init__(self, *args):
+        if args == (0,):
+            print(f"[p3-r7] Random(0) redirect -> Random({SEED})",
+                  flush=True)
+            args = (SEED,)
+        super().__init__(*args)
 
 
-random.Random = redirected_Random
+random.Random = RedirectedRandom
 
 _orig_seed = torch.manual_seed
 
