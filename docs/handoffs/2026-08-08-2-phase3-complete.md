@@ -15,7 +15,7 @@ HARDENING-P3-R9 upward.
   INERT in quat_convert — "seed" = data order for that family).
 - R9 bits-dimension: BAR FIRED (ternary ties fp32 at 19M, pooled
   -3; THEORY 29 updated).
-Four n=1 fences lifted, two honest betweens, zero retractions.
+Five bars fired (R5/R3/R4/R7/R9), two honest betweens, zero retractions. (Corrected from 'four' per Grok's cross-check.)
 
 ## Phase 4 state
 - Row 1 (pincer in-dist) CLOSED both legs: labels_v2 migration
