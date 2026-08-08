@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 157, library 154, reproduce-pinned 9, results-cited 113, spec-cited 41
+Census: UNCITED 158, library 154, reproduce-pinned 9, results-cited 113, spec-cited 41
 
 ## scratch/
 
@@ -52,6 +52,7 @@ Census: UNCITED 157, library 154, reproduce-pinned 9, results-cited 113, spec-ci
 | confluence | confluence.py | UNCITED | — | — |
 | corner | corner_snap.py | UNCITED | — | — |
 | cplx | cplx_chain.sh | UNCITED | — | — |
+| crystal | crystal_recreate_test.py | UNCITED | — | — |
 | d2 | d2_verify.py | library | — | 1 |
 | day | day_chain.sh | UNCITED | — | — |
 | desert | desert_v2.py | spec-cited | specs×1 | — |
