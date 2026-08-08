@@ -181,7 +181,9 @@ at natural stopping points, not mid-sprint.
   all reject identity rewrites (bit three times: GRPO reward hack,
   gate candidates, miner v5's bank).
 - **Precision doctrine (CLOSED 2026-07-24)**: birth precision is a
-  non-factor above TF32; fp64 masters are the FINAL capability rung
+  non-factor above TF32 (round-to-nearest paths; the SR-BF16
+  per-forward stochastic-rounding arm is a SEPARATE lever, booked
+  negative n=1 with named confounds — P4 revival slot); fp64 masters are the FINAL capability rung
   for online learning (exact-vs-fp64 measured bit-identical);
   exact arithmetic is a SPEED/DETERMINISM lever (int8-sliced beats
   native fp64 — scratch/ozaki_*). Don't spend runs on

@@ -34,11 +34,11 @@ as-rendered; do not overwrite).
 
 | Image | Claim / fence |
 |---|---|
-| `neurons-gen6-ternary-vs-grown.png` `[R]` (regenerated 2026-08-08, normalized + stamped) | crown pair: ternary-born latent vs fp32 grown champion — same recipe, different alphabet; normalized view shows ternary's WIDER magnitude spread (0.78-1.37 v tight fp32), a real difference auto-scaling hid. Crown tie itself is n=1-births (BOARD fence) |
+| `neurons-gen6-ternary-vs-grown.png` `[R]` (regenerated 2026-08-08, normalized + stamped) | crown pair: ternary-born latent vs fp32 grown champion — same recipe, different alphabet; normalized view shows ternary's WIDER magnitude spread (0.78-1.37 v tight fp32 — IN-IMAGE render-time measurement, quote only as rendered), a real difference auto-scaling hid. Crown tie itself is n=1-births (BOARD fence) |
 | `neurons-pca-ternary6ep-vs-fp32.png`, `neurons-polar-ternary6ep-vs-fp32.png` `[H]` | the 69/120-both tie in weight space at 1.58 bits v fp32 |
 | `neurons-pca-ternary-vs-fp32.png`, `-sphere-`, `-polar-` (+`-normalized`) `[H]` | earlier 3-epoch ternary (63) vs champion |
 | `neurons-binary768-vs-ternary.png` `[H]` | binary-768 vs ternary geometry |
-| `three-minds-crystal/polar/sphere.png` + `three-minds-polar-normalized.png` `[H]` | fp32 champion / DeepSeek-V3 expert 42 shard / ternary-born under one lens — shared banded texture across substrates. Prefer the `-normalized` variant for the shape claim (unnormalized panels have incommensurable y-ranges) |
+| `three-minds-crystal/polar/sphere.png` + `three-minds-polar-normalized.png` `[H]` | fp32 champion / a 671B-MoE expert shard / ternary-born under one lens (VEHICLE UNVERIFIED 2026-08-08 claims-audit: 'DeepSeek-V3 expert 42' appears nowhere in RESULTS — the booked DeepSeek shard entry names expert 71, and the Wanted re-render names k3_expert_* = Kimi-K3; pin the source ckpt at re-render before captioning) — shared banded texture across substrates. Prefer the `-normalized` variant for the shape claim (unnormalized panels have incommensurable y-ranges) |
 
 ## Training dynamics
 
@@ -62,8 +62,8 @@ as-rendered; do not overwrite).
 
 | Image | Claim / fence |
 |---|---|
-| `symmetry-rmt-and-gtheta.png` `[H]` | eigenvalue density v Marchenko-Pastur edge (mass beyond edge = learned structure) + angular pair-distribution g(theta): DeepSeek expert shows a sharp ~90-degree peak. Physics-as-method lens; claims live in the symmetry RESULTS entries |
-| `neuron-weighting-pr.png`, `neuron-density-vs-phase.png` `[H]` | participation-ratio / density instruments (1/3 law + MP-sliver bookings) |
+| `symmetry-rmt-and-gtheta.png` `[H]` | eigenvalue density v Marchenko-Pastur edge (mass beyond edge = learned structure) + angular pair-distribution g(theta): DeepSeek expert shows a sharp ~90-degree peak. Physics-as-method lens; AUDIT 2026-08-08: NO booked RESULTS entry carries these claims (repo-wide grep clean) — all numbers incl. the ~90-degree peak are in-image render-time only, quote only as rendered |
+| `neuron-weighting-pr.png`, `neuron-density-vs-phase.png` `[H]` | participation-ratio / density instruments (1/3 law + MP-sliver: RIFF-LEDGER banks, NOT RESULTS bookings — unregistered, quote as riff-tier) |
 
 ## Wanted (figures the record has earned)
 

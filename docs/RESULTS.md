@@ -23397,3 +23397,30 @@ deviation must be discoverable from the pre-reg side, not only
 the verdict side. This amendment is that pointer. Doctrine line
 it feeds: "seed" must name the MECHANISM (now a standing wrapper
 clause). No numbers change.
+
+## ARCHIVE COMMIT-ONLY-NULLS: two engine-era nulls restored to the ledger from git history (2026-08-08, desk; opus-seat null archaeology, hash-verified by Fable)
+
+The null-archaeology sweep proposed five commit-only nulls; Fable
+hash-verified each and TWO check out (the other three hashes
+carry different content than reported — booked here so nobody
+re-chases them):
+1. POLICY REORDERER NULL (commit 5db168c): "imitation can't
+   out-order its teacher, but makes it 4x cheaper" — the learned
+   successor-ordering policy never beat its teacher ordering on
+   held-out solves; survives only as the 4x-cheaper inference
+   note. Engine era, pre-append-only habit; no RESULTS entry
+   until now.
+2. ENTROPY-BEAM: BOARD's null pointer ("entropy beam ... NULLs,
+   see RESULTS") points at NO entry — the select_fn hook landed
+   in commit 321dfd3 and the null verdict lived only in session
+   context. Booked now as: entropy-guided beam selection did not
+   beat the house selector at matched budget (engine era,
+   pre-doctrine, no paired receipt survives — treat as
+   weak-evidence null; a revival needs a fresh paired run).
+NOT confirmed (hashes 9c79b5e / b95f907 / 9815896 are gating-race
+feat, README docs, and ZX rungs respectively — no null text):
+"LLM gating null", "SwiGLU e2e null", "markov prior null" stay
+unbooked; if those nulls are real they live in other commits or
+only in session memory.
+FENCE: both restored nulls are engine-era, single-run, no paired
+receipts — doctrine-tier context, not claim-tier evidence.
