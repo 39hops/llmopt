@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 157, library 153, reproduce-pinned 9, results-cited 113, spec-cited 41
+Census: UNCITED 157, library 154, reproduce-pinned 9, results-cited 113, spec-cited 41
 
 ## scratch/
 
@@ -19,6 +19,7 @@ Census: UNCITED 157, library 153, reproduce-pinned 9, results-cited 113, spec-ci
 | anatomy | anatomy.py | library | RESULTS×5, specs×3 | 1 |
 | b768 | b768_after_v5.sh | UNCITED | — | — |
 | basin | basin_probe.py | UNCITED | — | — |
+| birth19m | birth19m_snaps.py | UNCITED | — | — |
 | blackhole | blackhole_b0.py | results-cited | RESULTS×1, specs×2 | — |
 | boundary | boundary_or_bulk.py | results-cited | RESULTS×1 | — |
 | brute | brute_arms_0801.sh | UNCITED | — | — |
@@ -263,7 +264,7 @@ Census: UNCITED 157, library 153, reproduce-pinned 9, results-cited 113, spec-ci
 | quat | quat_commutant.py | library | RESULTS×1, specs×1 | 1 |
 | quat | quat_convert.py | library | RESULTS×1, specs×1 | 1 |
 | quick | quick_exact_3080.sh | results-cited | RESULTS×1, specs×1 | — |
-| qwen | qwen_displace_extract.py | UNCITED | — | — |
+| qwen | qwen_displace_extract.py | library | — | 1 |
 | rank | rank_read.py | library | specs×2 | 1 |
 | rat | rat_deploy.py | library | RESULTS×1, specs×5 | 3 |
 | rat | rat_repair.py | library | — | 1 |
@@ -298,7 +299,7 @@ Census: UNCITED 157, library 153, reproduce-pinned 9, results-cited 113, spec-ci
 | sym45 | sym45_run.sh | UNCITED | — | — |
 | synonym | synonym_test.py | library | — | 1 |
 | tenet | tenet_d1_revgate.py | library | RESULTS×1, specs×2 | 1 |
-| tenet | tenet_d2_revdiet.py | library | RESULTS×1, specs×1 | 12 |
+| tenet | tenet_d2_revdiet.py | library | RESULTS×1, specs×1 | 13 |
 | tenet | tenet_d3_budget.py | library | specs×1 | 2 |
 | tenet | tenet_mult_b32.py | results-cited | RESULTS×1 | — |
 | tenet | tenet_mult_census.py | library | RESULTS×1, specs×1 | 1 |
@@ -482,7 +483,7 @@ Census: UNCITED 157, library 153, reproduce-pinned 9, results-cited 113, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — |
 | train | train_magic_estimator.py | library | RESULTS×1 | 8 |
 | train | train_magic_llm.py | results-cited | RESULTS×1 | — |
-| train | train_mathnative.py | library | RESULTS×2, specs×5 | 68 |
+| train | train_mathnative.py | library | RESULTS×2, specs×5 | 69 |
 | train | train_nnue.py | library | specs×8 | 15 |
 | train | train_proposer.py | spec-cited | specs×5 | — |
 | train | train_syndrome_decoder.py | library | RESULTS×1 | 1 |
