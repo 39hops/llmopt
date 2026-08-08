@@ -69,5 +69,5 @@ def verify_deletion_stats():
           f"norm ratio {(W1.norm()/W0.norm()).item():.4f}")
 
 
-if __name__ == "__main__" or True:
+if __name__ == "__main__":
     verify_deletion_stats()
