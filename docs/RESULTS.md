@@ -23109,3 +23109,39 @@ Between / mixed: UNRESOLVED, dicts booked.
 FENCES: Mac/mps; D2-excised diet; gates-only; arm b only (arm a's
 drift question is NOT re-run); the 2x and 8x points keep their
 n=1 scope.
+
+## PRE-REG HARDENING-P4-1: PINCER R1a-INDIST — the peeling probe re-run on in-distribution prompts (Phase-4 false-null row 1; 2026-08-08, before fire)
+
+Phase 4 opens (Artin GO, both machines to ~13:00 EST). The
+false-null hypothesis: R1a's 11.1/11.5% per-candidate peeling
+validity was read on pooled mid-chain states without conditioning
+on the reverse crystal's input-distribution asymmetry
+(TENET-R0-REV-DIST mechanism: reversed pairs put post-step states
+input-side; R0-REV-B booked the in-dist reverse gate at 24/120).
+ARMS: fmt_backpairs_1p + fmt_backpairs_3e (the EXISTING frozen
+births — no re-training; Mac, their device-of-origin) probed by
+scratch/pincer_r1_indist.py: states = one forward engine step off
+each standard-gate problem (the gate's own _gen_isolated recipe;
+fork-isolated child minting with a visible timeout class; first
+encodable child, Subs-skips counted), k=8 T-sampled predecessors,
+VALID iff p != t AND the forward step p -> t verifies (the
+bidirectional-cheat fence, verbatim R1a). Streamed sidecars
+logs/pincer/indist_{1p,3e}.jsonl.
+BARS (per-candidate validity, either arm): P-PEEL-INDIST fires
+iff >= 22% (2x the original class — peeling capability was real
+and hidden by the prompt distribution; unblocks the pincer
+residue + temporal-pincer re-pricing). P-NULL-STANDS fires iff
+<= 15% on BOTH arms — the 11% was not a distribution artifact;
+the R1a null hardens and the false-null hunt moves on. Between:
+UNRESOLVED, sidecars booked.
+COMPANION (booked with this row): pincer_labels_v2 re-derivation
+of the 68% label-recovery number with the timeout class VISIBLE
+(the v1 SIGALRM carrier migrated to fork-per-state + streamed
+rows per the migration appendix; behavior guard in
+tests/test_pincer_labels_v2.py). If v2's recoverable% differs
+from v1's 68.0 beyond the timeout mass, the v1 number gets an
+amendment.
+FENCES: probe-tier instrument (k=8 T-sampled, never a gate);
+one seed per arm (the births are the frozen artifacts); Mac/mps;
+state class = first-encodable engine children of gate problems
+(not a general post-step population).
