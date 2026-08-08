@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 155, library 153, reproduce-pinned 9, results-cited 113, spec-cited 41
+Census: UNCITED 156, library 153, reproduce-pinned 9, results-cited 113, spec-cited 41
 
 ## scratch/
 
@@ -113,6 +113,7 @@ Census: UNCITED 155, library 153, reproduce-pinned 9, results-cited 113, spec-ci
 | gauge | gauge_distance_d256.py | UNCITED | — | — |
 | gauge | gauge_m4x.py | UNCITED | — | — |
 | gauge | gauge_slack_rat.py | results-cited | RESULTS×1 | — |
+| gen | gen_lab_overview_pdf.py | UNCITED | — | — |
 | gen | gen_lean_corpus.py | results-cited | RESULTS×1, specs×1 | — |
 | gen8 | gen8_pipeline.sh | UNCITED | — | — |
 | gen9 | gen9_19m_cuda_control.sh | UNCITED | — | — |
@@ -269,7 +270,7 @@ Census: UNCITED 155, library 153, reproduce-pinned 9, results-cited 113, spec-ci
 | remote.env | remote.env.sh | library | — | 6 |
 | retention | retention_watcher.sh | UNCITED | — | — |
 | rev2 | rev2_d768.py | results-cited | RESULTS×1, specs×1 | — |
-| rev3 | rev3_crown.py | results-cited | RESULTS×1 | — |
+| rev3 | rev3_crown.py | results-cited | RESULTS×2 | — |
 | rev4 | rev4_zx45.py | library | RESULTS×1 | 1 |
 | rot | rot_commutant.py | library | RESULTS×1, specs×1 | 3 |
 | rot | rot_convert.py | spec-cited | specs×1 | — |
