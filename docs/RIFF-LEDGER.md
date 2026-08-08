@@ -3063,3 +3063,29 @@ seats (audit findings), Artin (sanction + relay), Fable
   Attribution: Artin (frame), Grok (horizon sharpening + the
   measured/riff split), Fable (banking + the
   reproducibility-as-artifact-property corollary).
+
+- **2026-08-08 (Artin x Grok, "lab Elo / fishtest-minus-the-grid")**:
+  Artin — steal chess-engine acceptance METHODOLOGY (SPRT/Elo with
+  error bars, one variable, fishtest-style orchestration) for the
+  lab's crystal/mask evaluation, explicitly WITHOUT the volunteer
+  distributed-compute part (lab-owned runners only); standardize
+  the weight-geometry instruments (polar/PCA/phase-density) so
+  identity and capability changes are scored the same way every
+  run; gate-level rating tracked across seeds instead of single
+  headline solve counts. Grok — split from the PR-slop rant,
+  scoped to "sketch a minimal row, no infra." House note at
+  banking: the lab already runs the SPRT SPIRIT (pre-reg = the
+  hypothesis pair, frozen bars = the accept/reject bounds, paired
+  arms = the match, RESULTS = the append-only match log); the
+  genuinely NEW ingredients are (1) per-prompt PAIRED outcome
+  records (current bookings keep per-level dicts, which discard
+  the pairing that SPRT feeds on — decisive pairs are the signal,
+  both-solve/both-fail draws are noise), and (2) a standing null
+  band per geometry instrument. Fence carried in from doctrine:
+  accept/reject authority stays with ORACLE-RUN outcomes only;
+  geometry instruments fingerprint and describe, never decide
+  (never-score-weights-by-weight-distance). Riff-tier until a
+  registered gate uses a paired-outcome sidecar. Attribution:
+  Artin (frame + no-volunteer-grid constraint), Grok (scoping),
+  Fable (banking + the already-SPRT observation + the
+  paired-record gap).
