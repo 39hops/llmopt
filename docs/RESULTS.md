@@ -23424,3 +23424,20 @@ unbooked; if those nulls are real they live in other commits or
 only in session memory.
 FENCE: both restored nulls are engine-era, single-run, no paired
 receipts — doctrine-tier context, not claim-tier evidence.
+
+## OBSERVATION Q4-DELETION-RENDER: the rational-snap cracked regime is DELETION — 99.93% of Q=4 weights are exactly zero; rendered as the displacement starburst (2026-08-08, Mac desk)
+
+Derived visualization of the booked rational-snap family
+(2026-07-27 verdict: Q=64 exact-twin parity, knee between 4e-3
+and 2e-4, Q=4 cracks). Mechanism now explicit: the snap grid's
+smallest nonzero fraction at Q<=4 is 1/4=0.25, while trained
+weights sit at sigma ~0.034 — NO weight in the mid gate reaches
+|w| >= 1/8, so nearest-fraction snapping sends 18,891,148 of
+18,905,088 2-D weights (99.93%) to exactly 0. "Cracks badly" was
+always deletion, not perturbation. Render:
+scratch/nineteen_m_displace.py (committed) — each neuron's
+displacement ray points through the origin (q4 cosine to base
+0.005, norm ratio 0.0095). FENCES: one model (the original
+snap-era 19M via its q32 proxy base, ~1e-3 from true), one
+matrix rendered, arithmetic checked from disk; no new capability
+claim — the gate numbers stay with the 2026-07-27 verdict.
