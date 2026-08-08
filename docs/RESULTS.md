@@ -23219,3 +23219,31 @@ temporal-pincer stay priced at the original numbers; Phase-4 row
 FENCES: probe-tier (k=8 T-sampled, never a gate); one seed per
 arm (frozen births); Mac/mps; state class = first-encodable
 engine children of gate problems.
+
+## PRE-REG HARDENING-P3-R9: the bits-dimension 19M row pooled at n=3 — ternary-at-dose v fp32, matched width d384, 3080 cuda (device-of-origin) (2026-08-08, before launch)
+
+Phase 3 row 7, the LAST of the frozen list. Interpretation stated
+explicitly (the spec line was terse): after the binary amendment
+("exchange holds only for COMPLETE alphabets"), the law's
+surviving 19M anchor is the TERNARY point, and it is n=1. ARMS
+(scratch/p3_bits.py; frozen tournament_birth + train_mathnative
+drivers, D2-excised diet, refuse-if-exists, BIRTH_SEED env):
+t = ternary {0,+-1} d384/L8/ffn1536/h6 at 6 EPOCHS (the discrete-
+learning dose that earned ternary its parity class); fp32 = same
+shape at 3 epochs (its own proven dose); SEEDS {2,3,4} = six
+births. GATE: standard 120 via gate_ckpt per birth (matched-
+format; deployed ternary weights for arm t).
+POOLED READ: (t - fp32) over 3 paired seeds = the alphabet tax at
+matched width, each alphabet at its own dose. BARS (sigma 3.5
+class): P-PARITY iff |pooled| <= 5 — dose-fed ternary TIES fp32
+at 19M (the exchange law's strong form gains n=3). P-TAX-CLASS
+iff pooled in [-21, -6] with 3/3 negative — a real bounded
+alphabet tax; the law amends to "width repays resolution up to a
+measured tax." P-CRATER iff pooled <= -30 — the ternary anchor
+was a seed accident; the law loses its last 19M point. Between /
+mixed: UNRESOLVED, dicts booked.
+FENCES: 3080 cuda line only (tournament device-of-origin; never
+read against Mac numbers); D2-excised diet; gates-only;
+dose-confounded BY DESIGN (each alphabet at its own proven dose —
+this replicates the LAW'S OWN comparison, not a dose-matched
+ablation; the dose axis keeps its earlier bookings).
