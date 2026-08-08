@@ -23164,3 +23164,58 @@ dominant). MIGRATION APPENDIX row 1 of 3 CLOSES: the program's
 last SIGALRM carrier is retired; v1 stays frozen-as-record.
 FENCES: CPU-only replay; 20s deadline (timeout class is deadline-
 relative); same 300-row sample as v1 (not a fresh draw).
+
+## VERDICT HARDENING-P3-R7: P-TOLL-REAL FIRES — the quaternionic 4x conversion toll is a real cost at n=3 data-order seeds (pooled -17, 3/3 negative, all heals at anti-mass <= 0.0007) (2026-08-08, Mac)
+
+Against PRE-REG HARDENING-P3-R7, via the v3 wrapper (the torch
+seed measured INERT in this driver — three torch-seed arms
+replayed the original trajectory receipt-identically, mps float
+noise entirely below gate resolution — so the replication
+variable became the hardcoded Random(0) data-order shuffle,
+redirected per seed; wrapper commits document the discovery).
+
+Gate dicts (the checksum), arm b FINAL v comparator 65:
+- s2 {3:19, 4:6, 5:15, 6:8, 7:11} = 59 (-6), anti-mass 0.0007
+- s3 {3:21, 4:6, 5:14, 6:9, 7:9} = 59 (-6), anti-mass 0.0007
+- s4 {3:20, 4:7, 5:15, 6:8, 7:10} = 60 (-5), anti-mass 0.0006
+
+Validity conjunct holds 3/3 (anti-mass << 0.05 — every heal
+retrofits fully). POOLED (b - 65) = -17 <= -6, 3/3 negative:
+P-TOLL-REAL FIRES. The toll curve's middle point replicates as a
+real cost and steepens slightly (original -4; fresh data orders
+-6/-6/-5): 4x quaternionic sharing costs ~5-6 solves at this
+recipe, not ~4. The 2x and 8x points keep their n=1 fences.
+INSTRUMENT RIDER (booked): in quat_convert the warm-epoch
+trajectory is DETERMINISTIC given data order — torch.manual_seed
+does not touch it, and mps run-to-run float noise moved ZERO gate
+solves across three replays. "Seed" in any future pre-reg on this
+driver family means DATA ORDER.
+FENCES: Mac/mps; D2-excised diet; gates-only; arm b only;
+comparator 65 is the frozen deterministic baseline.
+Phase-3 row 6 CLOSES (bar-fired). Remaining: R9 bits-dimension.
+
+## VERDICT HARDENING-P4-1: P-NULL-STANDS FIRES — in-distribution prompts make peeling WORSE, not better (4.3% / 5.0% v the original 11%); the R1a null HARDENS and the false-null hypothesis is refuted (2026-08-08, Mac)
+
+Against PRE-REG HARDENING-P4-1. Both frozen backpairs births
+probed on 119 in-dist post-step states (one engine child per
+standard-gate problem; 1 unencodable skipped, 0 timeouts):
+- fmt_backpairs_1p: 41/952 = 4.3% per-cand validity, coverage
+  {3: 12/24, 4: 4/24, 5: 8/24, 6: 6/23, 7: 9/24}
+- fmt_backpairs_3e: 48/952 = 5.0%, coverage {3: 14/24, 4: 3/24,
+  5: 9/24, 6: 5/23, 7: 13/24}
+BOTH arms <= 15%: P-NULL-STANDS FIRES. The distribution-artifact
+hypothesis is REFUTED for R1a: at in-distribution inputs the
+peeling validity is LOWER than the original mid-chain 11.1/11.5%.
+Note the asymmetry with R0-REV-DIST's 6/40 emission result: what
+the input distribution rescued there was backward EMISSION
+scoring on a 40-state diagnostic; per-candidate peeling validity
+at k=8 is a different, harder ask — and these states (children of
+chain starts) each have a KNOWN valid predecessor in-band, so the
+4-5% is measured against a floor where at least one answer
+always exists. Backward-peeling weakness is a property of the
+crystals, not the prompt distribution. The pincer residue and
+temporal-pincer stay priced at the original numbers; Phase-4 row
+1 CLOSES and the hunt moves to row 2 (ZX 45M).
+FENCES: probe-tier (k=8 T-sampled, never a gate); one seed per
+arm (frozen births); Mac/mps; state class = first-encodable
+engine children of gate problems.
