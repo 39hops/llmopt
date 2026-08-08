@@ -23379,3 +23379,21 @@ NAMED arm difference vs the unexcised seed-1 comparator
 (~130 excised rows are math-gate-band rows, outside the ZX
 column; share ~0.1%); ZX absolutes never read against 19M
 cross-width sigma — fence framing only; dicts are the checksum.
+
+## AMENDMENT HARDENING-P3-R7-ARM: the R7 replication variable changed between registration and fire — pre-reg said warm-epoch torch RNG; the fired arms vary the Random(0) data order (2026-08-08, desk; opus-seat ledger audit)
+
+Amends PRE-REG HARDENING-P3-R7. The pre-reg registered
+"manual_seed(1) -> SEED (the projection is deterministic; only
+warm-epoch RNG varies)". At fire, the torch seed measured INERT
+in this driver (three torch-seed arms replayed the original
+trajectory receipt-identically; mps float noise below gate
+resolution), and the replication variable became the hardcoded
+random.Random(0) data-order shuffle, redirected per seed (the v3
+subclass wrapper). The VERDICT disclosed this loudly and the
+BARS were read verbatim-unchanged (P-TOLL-REAL pooled <= -6 with
+3/3 negative; fired at -6/-6/-5, pooled -17) — but the arm
+definition moved after registration, and per the audit that
+deviation must be discoverable from the pre-reg side, not only
+the verdict side. This amendment is that pointer. Doctrine line
+it feeds: "seed" must name the MECHANISM (now a standing wrapper
+clause). No numbers change.
