@@ -23247,3 +23247,38 @@ read against Mac numbers); D2-excised diet; gates-only;
 dose-confounded BY DESIGN (each alphabet at its own proven dose —
 this replicates the LAW'S OWN comparison, not a dose-matched
 ablation; the dose axis keeps its earlier bookings).
+
+## VERDICT HARDENING-P3-R9: P-PARITY FIRES — dose-fed ternary TIES fp32 at 19M/d384 (pooled -3, deltas -1/0/-2) at n=3 paired seeds; THE FROZEN PHASE-3 LIST COMPLETES (2026-08-08, 3080 cuda)
+
+Against PRE-REG HARDENING-P3-R9. Six births rc=0 via
+scratch/p3_bits.py (frozen tournament_birth + train_mathnative;
+D2 excision receipt 132/165028 on ALL SIX runs — the exclusion law
+firing at a proportionally consistent rate on the LARGER v22+gen4
+tournament corpus, a fresh cross-check of P1 on a second diet;
+refuse-if-exists + BIRTH_SEED held).
+
+Gate dicts (the checksum), ternary-6ep v fp32-3ep per seed:
+- s2: t {3:19, 4:7, 5:15, 6:9, 7:13} = 63
+  v fp32 {3:22, 4:7, 5:16, 6:8, 7:11} = 64: delta -1
+- s3: t {3:23, 4:5, 5:15, 6:8, 7:13} = 64
+  v fp32 {3:22, 4:8, 5:14, 6:8, 7:12} = 64: delta 0
+- s4: t {3:21, 4:9, 5:15, 6:8, 7:11} = 64
+  v fp32 {3:22, 4:8, 5:16, 6:8, 7:12} = 66: delta -2
+
+POOLED (t - fp32) = -3, |pooled| <= 5: P-PARITY FIRES. The
+exchange law's surviving 19M anchor is now a REPLICATED tie: a
+1.58-bit complete alphabet at its discrete-learning dose matches
+fp32 at matched width on this gate, three paired seeds, zero
+overlap with the original tournament seed. THEORY row 29 updated
+same-commit (the 19M ternary point gains n=3; the complete-
+alphabet and low-bit-only caveats stand untouched).
+FENCES: 3080 cuda line; D2-excised v22+gen4 diet; gates-only;
+dose-confounded BY DESIGN (each alphabet at its proven dose — the
+law's own comparison); the 45M tie/win keeps its earlier scope.
+
+PHASE 3 CLOSES — all seven frozen rows booked: R5 bar-fired, R6
+between (mechanism 3/3), R3 bar-fired, R4 bar-fired, R2 between
+(structure recurs, identity does not transport), R7 bar-fired,
+R9 bar-fired. Four n=1 fences lifted, two honest betweens, zero
+retractions. The hardening program's Phase-4 queue continues on
+future 3080 nights (next: ZX 45M).
