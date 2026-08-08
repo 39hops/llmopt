@@ -22919,3 +22919,27 @@ bands in their names.
 FENCES: Mac/mps; one base checkpoint (band-replication, not
 birth-replication); L9-band disjoint from the gate's levels;
 gates-only.
+
+## PRE-REG HARDENING-P3-R4: the cooldown small-delta cell gets n=3 paired seeds — streaming 2x2 mixed+hot v mixed+cool, d256, Mac (device-of-origin) (2026-08-08, before launch)
+
+Phase 3 row 4 of the frozen list. STREAMING-CLOSES' cooldown
+clause (+4, mixed+hot 53 v mixed+cool 57, seed 1, d256 measured
+sigma ~1.0 — quoted at 2.9 sigma_diff but n=1) gets paired
+replication. ARMS: (hot = v1 mixed shuffled + surprise LR;
+cool = v4 same + final-10% cooldown) at BIRTH_SEED {2,3,4} — six
+single-pass births via scratch/p3_stream2x2.py (frozen
+streaming_birth_d256.py + load-time D2 excision receipt + a
+torch.save PATH REDIRECT: the driver's seed-free OUT names are
+07-26 frozen artifacts, so the wrapper makes them unreachable and
+writes p3r4_stream_{arm}_s{seed}.pt with refuse-if-exists).
+GATE: standard 120 via gate_ckpt.py (256 8 1024 4) per birth.
+BARS (gate solves, pooled cool - hot over 3 paired seeds, sigma
+~1.0 line): P-COOLDOWN-HOLDS iff pooled >= +6 with 3/3 positive —
+the +4 clause replicates, its n=1 fence lifts. P-COOLDOWN-NULL
+iff |pooled| <= 3 — the +4 was seed noise; the clause amends to
+measured-null. Between / mixed signs: UNRESOLVED, dicts booked.
+FENCES: Mac/mps only (the streaming line's device); D2-excised
+diet; single-pass regime (the epoch/homogeneity legs of the 2x2
+are NOT re-run — this replicates the cooldown leg only);
+gates-only; the era's control (65, 3ep) is historical context,
+not a re-gated arm.
