@@ -28,14 +28,6 @@ from pathlib import Path
 sys.path.insert(0, ".")
 sys.path.insert(0, "scripts")
 
-N = int(sys.argv[1]) if len(sys.argv) > 1 else 300
-OUT = Path(os.environ.get("OUT", "logs/pincer/labels_v2.jsonl"))
-DEADLINE = float(os.environ.get("DEADLINE", "20"))
-OUT.parent.mkdir(parents=True, exist_ok=True)
-if OUT.exists():
-    raise SystemExit(f"REFUSING: {OUT} exists (streamed record; "
-                     "move it or pick a new OUT)")
-
 norm = lambda s: s.replace(" ", "")  # noqa: E731  (verbatim v1)
 
 
@@ -64,6 +56,13 @@ def classify(names):
 
 
 def main():
+    N = int(sys.argv[1]) if len(sys.argv) > 1 else 300
+    OUT = Path(os.environ.get("OUT", "logs/pincer/labels_v2.jsonl"))
+    DEADLINE = float(os.environ.get("DEADLINE", "20"))
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    if OUT.exists():
+        raise SystemExit(f"REFUSING: {OUT} exists (streamed record; "
+                         "move it or pick a new OUT)")
     from train_mathnative import load_rows
     rows = load_rows(gen4=True)
     rows = [r for r in rows if norm(r["cur"]) != norm(r["nxt"])]
