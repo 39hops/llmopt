@@ -23282,3 +23282,32 @@ between (mechanism 3/3), R3 bar-fired, R4 bar-fired, R2 between
 R9 bar-fired. Four n=1 fences lifted, two honest betweens, zero
 retractions. The hardening program's Phase-4 queue continues on
 future 3080 nights (next: ZX 45M).
+
+## PRE-REG REVIVE-D768-CROSSOVER: the "ternary beats fp32 at d768" cell gets n=3 SAME-DEVICE paired seeds — Mac, both arms, one diet (2026-08-08, before launch)
+
+Revive track item 3 (Artin GO; Mac his call this morning). The
+original crossover headline (BOUNDARY GRID: ternary 65 v fp32 58
+at d768, +7 at sigma ~3.5, n=1/cell) carries TWO confounds by
+modern doctrine: (a) CROSS-DEVICE — the fp32 cell was Mac-born
+(night2_mac.sh), the ternary cell 3080-born (tournament line);
+(b) diet-path mismatch risk between the grid's CLI --gen4 and the
+tournament's v22+gen4. ARMS (scratch/rev2_d768.py, the p3_bits
+pattern at d768 — p3_bits itself is R9-cited and frozen):
+t = ternary d768/L8/ffn3072/h12, 3ep; fp32 = same shape/dose;
+BOTH via the same T.main v22+gen4 diet path, BOTH on Mac/mps,
+SEEDS {2,3,4} = six births, D2-excised, refuse-if-exists,
+GRAD_CKPT. GATE: standard 120 via gate_ckpt (768 8 3072 12).
+BARS (pooled t - fp32 over 3 paired seeds):
+P-CROSSOVER-REAL iff pooled >= +9 with 3/3 positive — ternary
+really beats fp32 at d768 on a clean same-device pairing; the
+boundary-grid crossover becomes a replicated law point.
+P-CROSSOVER-NULL iff |pooled| <= 5 — the +7 dissolves into the
+paired noise class once the device/diet confounds are removed.
+P-INVERT iff pooled <= -9 with 3/3 negative — the original sign
+was carried by the confounds (booked as its own finding).
+Between / mixed: UNRESOLVED, dicts booked.
+FENCES: Mac/mps line only (this pairing NEVER reads against the
+original mixed-device cells); one diet path (v22+gen4); 3ep both
+arms (the grid's own dose — the ternary 6ep dose question stays
+with R9's scope); gates-only. Crown-tie births (revive item 2)
+queue BEHIND this battery on the Mac.
