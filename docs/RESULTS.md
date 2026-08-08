@@ -23081,3 +23081,31 @@ full gates on extremes + control + fixed cells only; totals
 quoted from the frozen driver's own receipt format.
 Phase-3 row 5 CLOSES (booked, not bar-fired). Remaining: R7
 symmetry 4x toll, R9 bits-dimension.
+
+## PRE-REG HARDENING-P3-R7: the quaternionic 4x conversion toll gets n=3 warm-epoch seeds — quat_convert arm b, d256, Mac (device-of-origin) (2026-08-08, before launch)
+
+Phase 3 row 6 of the frozen list. SYMMETRY LADDER S1's 4x toll
+reading (arm b: 61 v comparator 65 = -4, n=1, the middle point of
+the 2x:-1 / 4x:-4 / 8x:-6 toll curve) gets warm-epoch replication.
+ARM: quat_convert ARM=b (commutation penalty, R3 recipe) at warm
+SEEDS {2,3,4} via scratch/p3_quat.py — frozen driver + THREE
+pre-import redirects: manual_seed(1) -> SEED (the projection is
+deterministic; only warm-epoch RNG varies), load_rows -> D2-
+excised (receipt), torch.save -> p3r7_quat_b_s{seed}.pt with
+refuse-if-exists (quat_convert_{a,b}.pt are cited frozen
+artifacts). COMPARATOR: the historical 65 (wfloor d256 gate —
+deterministic for frozen weights; the base checkpoint and
+projection are identical across arms, so 65 is a constant, not a
+per-seed baseline).
+BARS (pooled arm_b - 65 over 3 seeds, sigma 3.5 line), VALID only
+if all three arms reach anti-mass < 0.05 (the retrofit-quality
+conjunct — a failed heal is a void cell, not a toll):
+P-TOLL-REAL iff pooled <= -6 with 3/3 negative — the 4x toll is
+a real cost, the curve's middle point replicates as nonzero.
+P-TOLL-FREE iff pooled >= -3 — 4x conversion is free at this
+recipe; the curve amends (its -4 was seed noise) and the
+symmetry axis is cheaper than booked.
+Between / mixed: UNRESOLVED, dicts booked.
+FENCES: Mac/mps; D2-excised diet; gates-only; arm b only (arm a's
+drift question is NOT re-run); the 2x and 8x points keep their
+n=1 scope.
