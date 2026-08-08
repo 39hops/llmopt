@@ -23011,3 +23011,32 @@ FENCES: Mac/mps; D2-excised diet; single-pass regime; gates-only;
 d256 line (sigma ~1.0).
 Phase-3 row 4 CLOSES (bar-fired). Remaining frozen rows: R2 head
 cell-sparse, R7 symmetry 4x toll, R9 bits-dimension.
+
+## PRE-REG HARDENING-P3-R2: the cell-sparse critical circuit gets n=3 fresh h8 crystals — per-(layer,head) autopsy on seeds 2/3/4, Mac (device-of-origin) (2026-08-08, before launch)
+
+Phase 3 row 5 of the frozen list. HEAD AUTOPSY's structural claim
+(essentiality is CELL-SPARSE: ~13/64 load-bearing cells, min-cell
+full deletion -34, max-cell free +3 — n=1, one crystal) gets
+fresh-seed replication. LEG 1 (births): three h8 crystals via
+scratch/p3_ffnslack.py over frozen sym_birth (D=64 FFN=256 HEADS=8
+EMA=0.999, TAG=_mps_h8_s{2,3,4}, D2-excised diet, refuse-if-exists;
+the tracked original sym_birth_dense_mps_h8_ema.pt is untouched).
+LEG 2 (autopsy): scratch/p3_autopsy.py over frozen head_autopsy
+(CKPT override only; read-only) — per seed: proxy 64-cell map
+(n=8), full gates on control + that seed's OWN min/max cells, PLUS
+fixed-cell full gates on the ORIGINAL crystal's extremes (L1h7,
+L1h4) as a SECONDARY identity read (descriptive, no bar — cell
+identity may be seed-specific without hurting the structural
+claim).
+BARS (per-seed conjunct, own-extremes full gates, sigma 3.5 MPS
+line): P-CELL-SPARSE fires iff 3/3 seeds satisfy ALL of
+(i) min-cell full <= control full - 15 (one deleted cell craters);
+(ii) max-cell full >= control full - 4 (at least one cell free);
+(iii) proxy map count(cells <= ctrl-3) <= 24/64 (sparse, not
+uniform). P-UNIFORM fires iff >= 2/3 seeds violate (i) or (iii)
+(the circuit was a seed-1 accident). Between: UNRESOLVED, maps
+booked.
+FENCES: Mac/mps only; D2-excised diet; proxy map is n=8 +-2
+(shape-read only, never booked as capability); full gates on
+extremes + control only; identity transport of named cells is
+descriptive.
