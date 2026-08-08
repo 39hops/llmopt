@@ -22981,3 +22981,33 @@ path); TORCH_DISABLE_NATIVE_JIT=1 x explicit @triton.jit
 interaction on the night scripts is UNVERIFIED.
 FENCES: microbenches are Mac CPU, torch-only, shapes named above;
 "no queued program needs it" is scoped to the current BOARD.
+
+## VERDICT HARDENING-P3-R4: P-COOLDOWN-HOLDS FIRES — the cooldown +4 clause replicates at n=3 paired seeds (pooled +12, 3/3 positive); its n=1 fence lifts (2026-08-08, Mac)
+
+Against PRE-REG HARDENING-P3-R4. Battery rc=0 via
+scratch/p3_stream2x2.py (frozen streaming_birth_d256 + D2 excision
+receipt 129/132870 on all six runs + torch.save path redirect —
+the 07-26 frozen OUT names verified untouched, every save
+redirected to p3r4_stream_{arm}_s{seed}.pt).
+
+Gate dicts (the checksum), hot v cool per seed:
+- s2: hot {3:15, 4:4, 5:16, 6:8, 7:9} = 52
+  v cool {3:19, 4:4, 5:15, 6:8, 7:9} = 55: delta +3
+- s3: hot {3:16, 4:4, 5:12, 6:7, 7:12} = 51
+  v cool {3:20, 4:5, 5:15, 6:7, 7:10} = 57: delta +6
+- s4: hot {3:18, 4:4, 5:15, 6:7, 7:11} = 55
+  v cool {3:20, 4:6, 5:16, 6:7, 7:9} = 58: delta +3
+
+POOLED (cool - hot) = +12 >= +6, signs 3/3: P-COOLDOWN-HOLDS
+FIRES. THE CLAIM GAINS n=3: a final-10% cooldown on single-pass
+mixed-batch streaming reliably buys ~+4/seed at d256 — the
+STREAMING-CLOSES cooldown clause is now a replicated fact, not a
+2.9-sigma_diff n=1 reading. Seed-1 originals (53 v 57, +4) sit
+inside the replicated band.
+Context, not re-run: the homogeneity (-12) and epoch (-8) legs of
+the 2x2 keep their original n=1 scope; only the cooldown leg
+replicated here.
+FENCES: Mac/mps; D2-excised diet; single-pass regime; gates-only;
+d256 line (sigma ~1.0).
+Phase-3 row 4 CLOSES (bar-fired). Remaining frozen rows: R2 head
+cell-sparse, R7 symmetry 4x toll, R9 bits-dimension.
