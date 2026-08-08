@@ -22943,3 +22943,41 @@ diet; single-pass regime (the epoch/homogeneity legs of the 2x2
 are NOT re-run — this replicates the cooldown leg only);
 gates-only; the era's control (65, 3ep) is historical context,
 not a re-gated arm.
+
+## OBSERVATION KERNEL-SPEED-SURVEY: no queued program needs a GPU kernel today — the exact-path speed wins are RIDERS on already-queued rungs, not kernel-days (2026-08-08, desk + microbench)
+
+Two-seat read-only review (Grok's kernel map as input, both Opus
+seats' findings Fable-verified line-by-line, microbenches run):
+1. NOTHING HOT: integer batteries CPU-by-plumbing (LOCKSTEP-DEVICE-
+   SCOPE); exact_gemm's only caller is its own test (its "tiling =
+   R4 speed rung, honest bench lands with it" note from 07-31 is
+   still unretired); triton_kernels.py has zero production
+   importers; metabolic_v5's fp64 masters are elementwise AdamW —
+   not Ozaki's shape.
+2. int_mm MEASURED AT TODAY'S SHAPES (CPU int64, Mac): broadcast
+   0.98/0.73 ms v torch a@w.T 1.12/1.14 ms at M=512 (current
+   shapes: broadcast WINS); at M=2048 broadcast 7.56 v matmul 4.62
+   ms (1.6x, matmul wins). torch int64 matmul verified
+   BIT-IDENTICAL to the order-free sum at all benched shapes.
+   isqrt_newton (40 fixed int-div iterations) costs 5.3 ms at 65k
+   elements/call — real, but every naive fix (early exit, initial
+   guess) can change the iterate path under the internal clamp:
+   NOT digest-safe without an exhaustive equality battery.
+3. OZAKI: fused recombination is COMPLETE and booked (70.2 ms
+   bitwise-exact) — promote-at-next-use, which means a live >6-
+   layer exact chain (the stay-in-RNS break-even law). The
+   speculative router remains a banked sentence gated on an
+   ambiguity-rate measurement (lockstep spec C2).
+RIDERS ADOPTED (no work fires now): (A) at the plateau-break
+scaling rung, swap int_mm -> a@w.T inside that rung's pre-reg
+with digest-equality asserted (free ~1.6x at scale, order-free-
+safe); (B) at the banked pinned-sha MPS leg, build tiled
+exact_gemm (2^47 bound survives any tiling; ~23 bits headroom at
+real dtypes; all accumulators must stay int64 — no int32
+simd_sum, no fp MMA fragments).
+HAZARDS BANKED: torch._int_mm int32 accumulation overflows
+SILENTLY where int64 would not (mandatory guard on any slice
+path); TORCH_DISABLE_NATIVE_JIT=1 x explicit @triton.jit
+interaction on the night scripts is UNVERIFIED.
+FENCES: microbenches are Mac CPU, torch-only, shapes named above;
+"no queued program needs it" is scoped to the current BOARD.
