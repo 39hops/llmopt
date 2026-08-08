@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 155, library 150, reproduce-pinned 9, results-cited 114, spec-cited 41
+Census: UNCITED 155, library 153, reproduce-pinned 9, results-cited 113, spec-cited 41
 
 ## scratch/
 
@@ -101,7 +101,7 @@ Census: UNCITED 155, library 150, reproduce-pinned 9, results-cited 114, spec-ci
 | g5 | g5_polar.py | UNCITED | — | — |
 | gate | gate_batched.py | library | — | 2 |
 | gate | gate_ckpt.py | library | RESULTS×2, specs×6 | 26 |
-| gate | gate_ckpt_cuda.py | library | — | 9 |
+| gate | gate_ckpt_cuda.py | library | — | 10 |
 | gate | gate_cplx.py | library | specs×1 | 1 |
 | gate | gate_pp.py | library | — | 1 |
 | gate | gate_prefix.py | library | RESULTS×1 | 1 |
@@ -109,7 +109,7 @@ Census: UNCITED 155, library 150, reproduce-pinned 9, results-cited 114, spec-ci
 | gate | gate_regate.py | results-cited | RESULTS×1, specs×1 | — |
 | gate | gate_transcripts.py | results-cited | RESULTS×1, specs×1 | — |
 | gate | gate_v2_bench.sh | UNCITED | — | — |
-| gate | gate_zx.py | library | — | 9 |
+| gate | gate_zx.py | library | — | 10 |
 | gauge | gauge_distance_d256.py | UNCITED | — | — |
 | gauge | gauge_m4x.py | UNCITED | — | — |
 | gauge | gauge_slack_rat.py | results-cited | RESULTS×1 | — |
@@ -178,7 +178,7 @@ Census: UNCITED 155, library 150, reproduce-pinned 9, results-cited 114, spec-ci
 | muon | muon_3ep_d256.py | library | — | 1 |
 | night | night_28.sh | results-cited | RESULTS×1 | — |
 | night | night_28_mac.sh | results-cited | RESULTS×1 | — |
-| night | night_45m_union.sh | results-cited | RESULTS×1, specs×1 | — |
+| night | night_45m_union.sh | library | RESULTS×2, specs×1 | 2 |
 | night | night_calib.sh | UNCITED | — | — |
 | night | night_g9.sh | results-cited | RESULTS×1, specs×1 | — |
 | night | night_gates.sh | UNCITED | — | — |
@@ -188,6 +188,7 @@ Census: UNCITED 155, library 150, reproduce-pinned 9, results-cited 114, spec-ci
 | night | night_zx.sh | results-cited | RESULTS×1, specs×2 | — |
 | night | night_zx2.sh | library | RESULTS×1 | 1 |
 | night | night_zx3.sh | results-cited | RESULTS×1 | — |
+| night | night_zx45_x2.sh | library | RESULTS×1 | 1 |
 | night2 | night2_mac.sh | library | RESULTS×1 | 1 |
 | night2 | night2_mac_shift2.sh | UNCITED | — | — |
 | night28b | night28b.sh | UNCITED | — | — |
@@ -269,6 +270,7 @@ Census: UNCITED 155, library 150, reproduce-pinned 9, results-cited 114, spec-ci
 | retention | retention_watcher.sh | UNCITED | — | — |
 | rev2 | rev2_d768.py | results-cited | RESULTS×1, specs×1 | — |
 | rev3 | rev3_crown.py | results-cited | RESULTS×1 | — |
+| rev4 | rev4_zx45.py | library | RESULTS×1 | 1 |
 | rot | rot_commutant.py | library | RESULTS×1, specs×1 | 3 |
 | rot | rot_convert.py | spec-cited | specs×1 | — |
 | rot | rot_snap_anatomy.py | UNCITED | — | — |
@@ -294,7 +296,7 @@ Census: UNCITED 155, library 150, reproduce-pinned 9, results-cited 114, spec-ci
 | sym45 | sym45_run.sh | UNCITED | — | — |
 | synonym | synonym_test.py | library | — | 1 |
 | tenet | tenet_d1_revgate.py | library | RESULTS×1, specs×2 | 1 |
-| tenet | tenet_d2_revdiet.py | library | RESULTS×1, specs×1 | 11 |
+| tenet | tenet_d2_revdiet.py | library | RESULTS×1, specs×1 | 12 |
 | tenet | tenet_d3_budget.py | library | specs×1 | 2 |
 | tenet | tenet_mult_b32.py | results-cited | RESULTS×1 | — |
 | tenet | tenet_mult_census.py | library | RESULTS×1, specs×1 | 1 |
@@ -478,7 +480,7 @@ Census: UNCITED 155, library 150, reproduce-pinned 9, results-cited 114, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — |
 | train | train_magic_estimator.py | library | RESULTS×1 | 8 |
 | train | train_magic_llm.py | results-cited | RESULTS×1 | — |
-| train | train_mathnative.py | library | RESULTS×2, specs×5 | 67 |
+| train | train_mathnative.py | library | RESULTS×2, specs×5 | 68 |
 | train | train_nnue.py | library | specs×8 | 15 |
 | train | train_proposer.py | spec-cited | specs×5 | — |
 | train | train_syndrome_decoder.py | library | RESULTS×1 | 1 |

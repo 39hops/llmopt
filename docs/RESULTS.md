@@ -23348,3 +23348,34 @@ against the 76/75 originals (device era + band class); gates-only;
 dicts are the checksum at booking. Cost ~2 Mac-nights for 3
 pairs; if Mac time tightens, 2 pairs book with an explicit n=2
 fence sentence (resolution law).
+
+## PRE-REG HARDENING-P4-2: the 45M ZX scale-lever null gets its seed ladder — fresh union_45m births at seeds 2 and 3, pooled vs the 19M fence (2026-08-08, 3080, Artin GO "run it now")
+
+Phase-4 row 2. Target: the 45M UNION VERDICT's ZX read (36/120 =
++0.8 sigma inside the 19M seed fence mean 32.7 sd ~4.2) was n=1
+on a gate class with a measured 8-point seed swing — the pre-reg
+bar (37+) was never testable at n=1 against sd 4.2. ARMS: seeds
+2 and 3, wrapper scratch/rev4_zx45.py over the FROZEN recipe
+(night_45m_union.sh verbatim envs: union diet math gen-4 +
+zx_farm1 = data/union_math_zx.jsonl [127MB, verified at arm
+time], vocab-47 VOCAB_EXTRA, fp32, d512/L12/ffn2048/h8, 3ep,
+SEQ_CAP 1536, TF32, BIRTH_BS 8); both gates per seed (math
+gate_ckpt_cuda + gate_zx with shape envs); driver
+scratch/night_zx45_x2.sh, logs/zx45/.
+POOLED READ (booked s1=36 + fresh s2/s3, vs the 19M fence per
+the original pre-reg's own framing; sigma_mean at n=3 ~2.4):
+P-SCALE-FIRES iff 3-seed ZX mean >= 38 (~fence mean + 2
+sigma_mean) AND >= 2/3 seeds at 37+ — the n=1 boundary was a
+false null, the scale lever is real, and the G9 conditional
+REOPENS for adjudication. P-NULL-HOLDS iff 3-seed mean <= 35
+(within ~1 sigma_mean of 32.7) — "capacity was never the ZX
+constraint" hardens to n=3 and the G9 no-fire stands. Between:
+UNRESOLVED, dicts booked, fence stays.
+SECONDARY (no bar): math-column dicts booked per seed as
+dispersion context for the "union ~free at scale, boundary"
+read; no claim moves on it without its own pre-reg.
+FENCES: 3080 cuda only (device-of-origin); D2 excision is a
+NAMED arm difference vs the unexcised seed-1 comparator
+(~130 excised rows are math-gate-band rows, outside the ZX
+column; share ~0.1%); ZX absolutes never read against 19M
+cross-width sigma — fence framing only; dicts are the checksum.
