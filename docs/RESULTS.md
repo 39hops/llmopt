@@ -23040,3 +23040,44 @@ FENCES: Mac/mps only; D2-excised diet; proxy map is n=8 +-2
 (shape-read only, never booked as capability); full gates on
 extremes + control only; identity transport of named cells is
 descriptive.
+
+## VERDICT HARDENING-P3-R2: neither bar fires — the sparse-circuit STRUCTURE recurs at every fresh seed (craters -28/-12/-24, maps 8/5/9 of 64) but s3's crater misses the -15 conjunct; AND the named cells DO NOT TRANSPORT — seed-1's catastrophic L1h7 is FREE on all three fresh crystals (2026-08-08, Mac)
+
+Against PRE-REG HARDENING-P3-R2. Battery rc=0; three fresh h8
+births (D2 excision 129/132870 all three; EMA checkpoints
+sym_birth_dense_mps_h8_s{2,3,4}_ema.pt; tracked original
+untouched), autopsy receipts logs/hardening/p3_r2_autopsy_s*.log.
+
+Per seed (frozen driver prints totals; wrapper-added fixed-cell
+gates carry dicts):
+- s2: ctrl FULL 57; own-min L3h7 29 (-28); own-max L0h6 57 (-0);
+  proxy map 8/64 cells <= ctrl-3
+- s3: ctrl FULL 56; own-min L2h3 44 (-12); own-max L0h3 57 (+1);
+  map 5/64
+- s4: ctrl FULL 57; own-min L2h1 33 (-24); own-max L0h3 58 (+1);
+  map 9/64
+
+BARS: conjunct (i) min <= ctrl-15 holds 2/3 (s3 -12 misses);
+(ii) max free 3/3; (iii) sparse <= 24/64 3/3. P-CELL-SPARSE does
+NOT fire (needs 3/3 on all). P-UNIFORM does NOT fire (1/3
+violations < 2/3). The registered between case books: the
+structural claim is DIRECTIONALLY replicated at every seed (a
+single cell deletion can cost up to -28; ~86-92% of cells are
+slack) but crater DEPTH varies by seed and one seed's worst cell
+cost only -12.
+
+SECONDARY (descriptive, registered): IDENTITY DOES NOT TRANSPORT.
+Original extremes full-gated on all fresh seeds — L1h7 (seed-1
+catastrophic, -34): s2 {3:20,4:3,5:16,6:8,7:10}=57 (-0), s3
+{3:17,4:5,5:13,6:7,7:9}=51 (-5), s4 {3:21,4:4,5:15,6:8,7:10}=58
+(+1); L1h4: 56/54/57 (all within sigma of ctrl). Each crystal
+grows its OWN critical circuit at its own addresses; only the
+STATISTICS of the circuit (sparse, early-mid-layer-leaning min
+cells: L3/L2/L2) recur. Echoes the expert-identity era's lesson
+one scale down: capability lives at ADDRESSES, and addresses are
+born, not inherited from the recipe.
+FENCES: Mac/mps; D2-excised diet; proxy maps n=8 +-2 shape-only;
+full gates on extremes + control + fixed cells only; totals
+quoted from the frozen driver's own receipt format.
+Phase-3 row 5 CLOSES (booked, not bar-fired). Remaining: R7
+symmetry 4x toll, R9 bits-dimension.

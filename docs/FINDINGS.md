@@ -290,6 +290,29 @@ VERDICT](RESULTS.md#L10676).)
   ([VERDICT HARDENING-P1](RESULTS.md#L22585); [VERDICT
   HARDENING-P2](RESULTS.md#L22658); [VERDICT
   HARDENING-P3-R5](RESULTS.md#L22718).)
+- [REPLICATED] [REGIME-SCOPED: house crystals] The sprint's second
+  wave lifts two more n=1 fences and books two honest betweens: the
+  ffn-slack anatomy endpoints replicate on their cuda line (pooled
+  EMA -4 within the +-6 bar — attention width, not ffn capacity,
+  pins capability at d56); the streaming cooldown clause replicates
+  at +3/+6/+3 (pooled +12 over the +6 bar); the gravity-tax
+  falloff-flip is a 3/3 paired fact while its gate toll (-11
+  pooled) sits between the flat and real bars; and the head
+  autopsy's sparse critical circuit recurs at every fresh seed
+  (single-cell craters -28/-12/-24, 86-92% slack) with the striking
+  rider that CELL IDENTITY does not transport — seed-1's
+  catastrophic L1h7 is free on all three fresh crystals; the
+  addresses are born, not inherited. The revived late-metabolism
+  orphan books its first verdict (3/3 negative lean, pooled -10,
+  between bars), and the kernel survey closes with no kernel-day
+  needed: torch's int64 matmul is bit-identical to the order-free
+  sum and the speed riders attach to the plateau-break and MPS-leg
+  rungs. ([VERDICT HARDENING-P3-R6](RESULTS.md#L22768); [VERDICT
+  HARDENING-P3-R3](RESULTS.md#L22867); [VERDICT
+  HARDENING-P3-R4](RESULTS.md#L22985); [VERDICT
+  HARDENING-P3-R2](RESULTS.md#L23044); [VERDICT
+  REVIVE-METAB-LATE](RESULTS.md#L22898); [OBSERVATION
+  KERNEL-SPEED-SURVEY](RESULTS.md#L22947).)
 - [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe] The
   reverse model's verified-candidate choice surface is real but
   thin, and the thinness is mostly a MODEL property: at eight
