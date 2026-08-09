@@ -23562,3 +23562,29 @@ task capability; no capability claim books from them. Seed = init
 draw. Per the MECHANISM-POSITIVE/CAPABILITY-FLAT rider the finer
 instruments (per-step means/maxes, identity flags, wall-clocks)
 book alongside the bars.
+
+## AMENDMENT ENGINE-EXACT-1-DIGESTS (target: COUNTER-BOOK ENGINE-EXACT-1-RECEIPT 2026-08-09): the pinned rung digests were stdlib-dependent and are SUPERSEDED — the counter-book's suspect #1 confirmed by axiom before the counter-run burned (2026-08-09, desk)
+
+The receipt's fence named std::uniform_int_distribution
+(implementation-defined engine->value mapping) as suspect #1 for
+any cross-stdlib digest mismatch. Axiom confirmed it directly
+(gcc-16/libstdc++ on the Mac): the OLD pins failed under
+libstdc++ for exactly that reason — fixture bytes, engine
+innocent. Fixtures now map raw mt19937_64 output (fully specified
+by the standard); re-pinned digests verified bit-identical under
+BOTH stdlibs axiom-side (fix commit 6d5e7a8, reply relay
+f44755a):
+  Q32 ccbec427dd4f9a689a55a657510863b6a09f79b38e344a1e7d8fd3eca24a6197
+  Q64 bfd00a5b85e562421e15c22a263756a8a2fef10b0260df989939a213eea3e621
+These supersede the receipt's recorded values (which remain
+booked as-was: correct for libc++ at eb89c1a, wrong claim only if
+read as stdlib-independent). Same commit fixes the gcc/LP64
+narrow() blocker (i256/exr explicit long conversions — relay
+2026-08-09-0's mention, plus the predicted sibling sites).
+Engine paths untouched; test-side fixture bytes only; axiom
+gates green under both compilers (clang 512 + 7 digest drivers
+Q9 bit-identical; gcc-16 511 pass / 1 pre-existing skip).
+PRE-REG EXACT1-SMALL provenance note: the WSL counter-run now
+targets THESE pins at 6d5e7a8; the pre-reg's fixture-bytes-first
+suspect ordering is retired (resolved), engine-second stands for
+any residual mismatch.
