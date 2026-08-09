@@ -23588,3 +23588,54 @@ PRE-REG EXACT1-SMALL provenance note: the WSL counter-run now
 targets THESE pins at 6d5e7a8; the pre-reg's fixture-bytes-first
 suspect ordering is retired (resolved), engine-second stands for
 any residual mismatch.
+
+## PRE-REG EX4-UNIF: is the router's over-inclusion GENERAL or rank-class-scoped? — uniform-random and top-rank 80-deletion controls close the EX-FRESH escape clause's owed control (2026-08-09 afternoon, booked BEFORE any arm fires; runs on the next free Mac window, QUEUED behind d768/crown-tie)
+
+VERDICT EX-FRESH booked the control's own finding with an explicit
+scope fence: rank-matched random 80-deletion beats full (+28
+pooled, 11/9/8, 3/3) — over-inclusion claimed AT THE CARRIERS'
+RANK CLASS ONLY, uniform-random control owed. This pre-reg runs
+the owed control plus the directional sanity arm.
+ARMS (per seed, ONE load, all paired via scratch/gt7_run.py env
+arms; seeds 1001/2002/3003 — the same fresh pool, loads seed-keyed
+so full/rand0 double as REPRODUCTION ANCHORS against their booked
+values 59/67/63 and 70/76/71; any anchor mismatch aborts the read
+as an instrument alarm, not a finding):
+  ex1_full128    base (anchor)
+  ex3_del_rand0  rank-matched control (anchor; frozen keepset)
+  ex4_del_unif0  NEW: 80 deleted uniform-random bank-wide,
+                 string seed "ex4-unif-0"
+  ex4_del_unif1  NEW: independent second draw, "ex4-unif-1"
+                 (prices draw variance)
+  ex4_del_top80  NEW: the top-80 by the SAME global demand-rank
+                 instrument that defined the carriers' windows
+New keepsets from a NEW builder scratch/ex4_build.py (ex3_build.py
+is results-cited/frozen; import, never edit), emitted with the
+same invariants/overwrite guards, deletion counts and per-layer
+distribution booked descriptively.
+BARS (pooled over the three seeds, house pair fence):
+- P-GENERAL-OVERINC fires iff (del_unif - full) >= +21 pooled with
+  signs 3/3 for EACH uniform draw separately. Reading: deleting
+  ~1.3% of the bank helps regardless of rank — over-inclusion is a
+  property of this router's operating point.
+- P-RANK-SCOPED fires iff BOTH uniform draws land within +-10 of
+  full pooled AND the rand0 anchor reproduces (+28 booked).
+  Reading: over-inclusion is specific to the carriers' rank class;
+  the +28 was rank information, not deletion per se.
+- P-TOP-HARM (sanity, direction only): del_top80 <= -21 pooled
+  confirms the instrument sees demand where demand is. If
+  del_top80 ALSO clears +21, NO over-inclusion reading books from
+  this battery at all — everything-helps is a saturation/pathology
+  flag (the MECHANISM-POSITIVE/CAPABILITY-FLAT rider), booked as
+  its own finding.
+- Any other outcome: direction booked, no claim (between-band
+  discipline).
+COST: 15 gates (~70 min one Mac window). PRIORITY: queued behind
+the d768 battery close and the crown-tie births; not [HOLD] —
+fires on the next free window without further GO (Artin GO'd
+2026-08-09 afternoon).
+FENCES: [FORMAT-BOUND] [REGIME-SCOPED: measured deployment
+artifacts]; one vehicle, mathgen L1-3; paired within-seed
+within-load; deletion recall costs booked alongside (EX-ANAT-3
+class ~2.5% of demand); the deployment-relevant reading (prune-
+for-free) stays lab-scoped until it survives off the house gate.
