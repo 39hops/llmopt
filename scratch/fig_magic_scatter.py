@@ -93,13 +93,14 @@ def main(out: Path) -> None:
                    label=f"{label} (n={len(xs)})", zorder=2)
     ax.set_xlabel("measured hardness — log2(1 + search nodes actually spent)",
                   color=INK2, fontsize=10)
-    ax.set_ylabel("predicted hardness (microseconds per problem)",
+    ax.set_ylabel("predicted hardness (estimator output, same log2 scale)",
                   color=INK2, fontsize=10)
     ax.set_title("Predicting how hard a math problem is — before solving it",
                  color=INK, fontsize=13, loc="left", pad=14)
     ax.text(0.0, 1.015,
             f"held-out fit, {len(test)} problems never seen in training"
-            f"  ·  Spearman ρ = {rho:.3f} (recomputed at render)",
+            f"  ·  Spearman ρ = {rho:.3f} (recomputed at render)  ·  "
+            f"prediction cost: microseconds per problem",
             transform=ax.transAxes, color=INK2, fontsize=9)
     ax.legend(frameon=False, loc="upper left", fontsize=9,
               labelcolor=INK2)
