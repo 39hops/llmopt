@@ -929,9 +929,23 @@ Measure MoE router domain bias: math prompts vs general prose.
 - `run_corpus(model, tok, prompts, stats, state)`
 - `main() -> None`
 
+### scripts/plot_gt1_crest.py
+GT-1 crest small-multiples — the gallery Wanted figure (2026-08-08).
+
+- `_git_head() -> str`
+- `main() -> None`
+
+### scripts/plot_identity_crest.py
+The identity-era figure the gallery lacked (2026-08-08 pass).
+
+- `main() -> None`
+
 ### scripts/plot_neurons.py
 Neuron-geometry plots for the micro-model program (docs/assets).
 
+- `sha8(path: str) -> str`
+- `repo_head() -> str`
+- `provenance_line(ckpts) -> str`
 - `torch_svd_top2(X)`
 - `neuron_matrix(ckpt: str, key_sub: str)`
 - `project(W, method: str)`
@@ -1199,6 +1213,12 @@ BASIN-1: routing basin radius v usage. CPU. Usage: SEED=1 python scratch/basin_p
 
 - `main()`
 
+### scratch/birth19m_snaps.py
+Gallery instrument run: a fresh 19M-class birth with PER-EPOCH snapshots, so the 113M-style growth render (plot_neurons --displace, the recovered whisper-zoom instrument) exists for the 19M line as [R]-reproducible (Artin's ask 2026-08-08; the frozen crystal-era files have no surviving pair). Also feeds the calibrated internet-vs-native displacement comparison (qwen_displace_extract.py made the internet pair).
+
+- `excised_load_rows(*a, **kw)`
+- `tee_save(obj, f, *a, **kw)`
+
 ### scratch/blackhole_b0.py
 BLACK HOLE MoEs B0+B1+B2 (pre-reg 2026-07-29 close): capacity atlas + dial-routed streaming pack + function-space spot check of Qwen3-30B-A3B. One shard on disk at a time (download -> process -> DELETE — the C7 OOM lesson, applied to disk). Zero calibration. Atlas rows to logs/blackhole_atlas.jsonl; packed parts to checkpoints/blackhole_q3_parts/ (codes npz per shard). Env: START/END shard 1-indexed bounds. __main__-guarded.
 
@@ -1283,6 +1303,18 @@ CHURN-JUDGE-1 fit/eval (committed so the booked verdict is re-derivable — it w
 - `auc(score, y)` — Rank-sum AUC: P(score(pos) > score(neg)).
 - `main()`
 
+### scratch/ckpt_delete_pass.py
+Checkpoint DELETE pass (Artin sign-off 2026-08-08 on logs/triage/revive_cite_plan.md). Builds per-host rm manifests for the signed DELETE-AFTER-SIGNOFF families, with the safety interlock Artin mandated: the manifest carries the inventory sha256 and the executor re-hashes each file AT DELETE TIME — mismatch means stop that row, keep the file, report. Classifier class is never the interlock.
+
+
+### scratch/ckpt_inventory.py
+Checkpoint triage INVENTORY (Artin GO 2026-08-07; banked 51GB thread). READ-ONLY: walks checkpoints/ emitting one jsonl row per file (path, bytes, mtime, sha256). Deletion decisions happen elsewhere, with provenance, on Artin review — this script cannot modify anything.
+
+
+### scratch/ckpt_triage_table.py
+Checkpoint triage TABLE builder (Artin GO 2026-08-07; follows ckpt_inventory.py). READ-ONLY desk step: joins the two machine inventories (logs/triage/{mac,wsl}_inventory.jsonl), dedups by sha256, and classifies every path against the evidence record (docs/RESULTS.md + docs/REPRODUCE.md + jobs/*.cmd basename grep).
+
+
 ### scratch/clade_stream_d256.py
 Clade-gated streaming pilot, arm G (pre-reg 2026-07-26).
 
@@ -1325,6 +1357,11 @@ Metabolic-vs-champion confluence: where did 471 signed rows land? Per-matrix ||d
 The compression corner (pre-reg 2026-07-28 night): rational- snap (direct, exact-best p/q, q <= Q) x {dense wfloor d256, circulant-8x substrate}, Q in {8, 16}. Paired gates on one device. Delta-of-deltas reads orthogonality of the bits and sharing compression axes. Snap code inlined from scratch/rational_snap.py (same operator, no subprocess).
 
 - `snap_sd(sd, Q)`
+
+### scratch/crystal_recreate_test.py
+Provenance falsification test for docs/assets/neurons-19m.png's RIGHT panel (Artin's ask 2026-08-08): recreate it two ways and let the pixels decide.
+
+- `lora_delta(p)`
 
 ### scratch/d2_verify.py
 d2 endpoint verification (amendment 2026-07-28): are the fp64- masters and exact-dd arms' endpoints WEIGHT-identical, or only count/outcome-identical as booked? Three reads: (1) element-wise state_dict equality; (2) deployed ternary sign-map (flip-SET) equality; (3) calib_probe fingerprints on both. Runs on the 3080 (checkpoints live there); CPU-safe.
@@ -1377,6 +1414,10 @@ Deterministic-birth MULTI-BLOCK reference (queued 2026-08-01): N transformer bod
 - `class MB` (param_items, fwd, bwd)
 - `twin_fp64(m, tok, tgt)`
 - `main()`
+
+### scratch/detbwd_plateau.py
+PLATEAU-BREAK driver (LOCKSTEP Leg A rung 3, spec 2026-08-06-3080-lockstep-window.md; design pass 2026-08-07).
+
 
 ### scratch/detbwd_r1.py
 Deterministic-birth R1a (pre-reg 2026-07-31 night): integer FFN forward + BACKWARD, the first training-side rung.
@@ -1469,6 +1510,31 @@ Rung-1 bar (iii), in-diet form: does prefix move the operand-complexity emission
 
 - `load(ckpt)`
 - `greedy(model, ids, max_new=160)`
+- `main()`
+
+### scratch/ex1_swap.py
+EX-ANAT-1 swap builder (IDENTITY battery rung 1, spec 2026-08-06-identity-battery.md, frozen design a-d; Artin GO).
+
+- `_assert_lens_env_clean()`
+- `recall(kset)`
+- `setcov(kset, ref)`
+- `main()`
+
+### scratch/ex2_build.py
+EX-ANAT-2 one-sided arm builder v2 (IDENTITY battery rung 2, sharpened by VERDICT EX-ANAT-1B; Artin GO, Mac).
+
+- `_assert_lens_env_clean()`
+- `recall(kset)`
+- `setcov(kset, ref)`
+- `ranked(pool, l, is_v, vonly)`
+- `main()`
+
+### scratch/ex3_build.py
+EX-ANAT-3 subject builder (provenance repair, 2026-08-07 review: the cited keep-sets were built by inline heredocs — this commits the exact recipe; BYTE-IDENTITY against the existing cited artifacts is asserted before this file may serve as their provenance).
+
+- `_assert_lens_env_clean()`
+- `invariants(counts, vonly)`
+- `emit(name, obj)`
 - `main()`
 
 ### scratch/exact_twin_d56.py
@@ -1651,6 +1717,13 @@ Gauge-slack 4-crystal cell (pre-reg 2026-07-27 night, RIFF-LEDGER).
 - `perm_align2(a, b)`
 - `rot_align(a, b)`
 
+### scratch/gen_lab_overview_pdf.py
+LinkedIn Featured collateral: 3-page lab-overview PDF composed ENTIRELY from committed docs/assets figures + ledger-verified numbers (receipt-checked 2026-08-08 against RESULTS/FINDINGS/ README for the LinkedIn pass). Layout only — no generated imagery.
+
+- `head(c, title, sub=None)`
+- `para(c, x, y, width, lines, size=10, leading=14.5, color=INK, font='Helvetica')`
+- `image(c, path, y_top, max_h, caption=None)`
+
 ### scratch/gen_lean_corpus.py
 Generator for the Lean-tier smoke corpus (2026-08-03).
 
@@ -1761,6 +1834,21 @@ GT-7 precursor: re-derive MOE-GT-6's exploratory coverage lenses from committed 
 - `spearman(xs, ys)`
 - `main()`
 
+### scratch/gt7_draw.py
+MOE-GT-7 keep-set draws (PRE-REG MOE-GT-7, fired on Artin GO 2026-08-06). The verbal-coverage ladder at FIXED recall.
+
+- `_assert_lens_env_clean()`
+- `recall(keep)`
+- `setcov(keepset, ref)`
+- `draw(rtarget, ctarget, seed_tag, vonly, k_max=91, attempts=20)`
+- `dump(keep, name, r, c, k, tag)`
+- `main()`
+
+### scratch/gt7_run.py
+MOE-GT-7 gate driver (PRE-REG MOE-GT-7, Artin GO 2026-08-06).
+
+- `main()`
+
 ### scratch/head_autopsy.py
 THE HEAD AUTOPSY (pre-reg 2026-07-29 eve): per-(layer, head) single-cell deletion map on the h8 EMA crystal. The day census deleted a head INDEX across all layers (a column); this deletes one (layer, head) cell at a time — 64 cells on the proxy gate (n=8/level, +-2 noise, read the map shape), then FULL gates on control + min/max cells. __main__-guarded.
 
@@ -1827,6 +1915,15 @@ House-side batch checker for axiom's Lean certificate sidecars (relays 2026-08-0
 - `norm(s)`
 - `ac_equal(ours, theirs)` — Statement equality up to associativity/commutativity: compare
 - `main()`
+
+### scratch/lean_sample_build.py
+LEAN kernel-sample builder (provenance repair, 2026-08-07 audit: the frozen 1000-id sample had no committed sampler — SEV-1 class).
+
+- `check(name, text)`
+
+### scratch/legacy_diet_audit.py
+PHASE 1 of RESULTS-HARDENING (Artin GO 2026-08-07): exclude-union audit of LEGACY diets against the 120-problem forward gate band.
+
 
 ### scratch/lloydmax_race.py
 The Lloyd-Max codebook race (pre-reg RESULTS 2026-07-25): per-output-channel exact 1-D k-means quantizers on the 19M infix twin, free vs zero-pinned centroids, PTQ-only. Writes one _lm*.pt checkpoint per arm; gates run separately (MPS, to match baselines).
@@ -1939,6 +2036,11 @@ NIGHT-30b Mac chain (pre-reg 2026-07-30): B3 K2 depth curve -> B4 entangled-expe
 - `p6()`
 - `main()`
 
+### scratch/nineteen_m_displace.py
+The 19M in the crystal's displacement style (Artin's ask 2026-08-08). No training pair exists on disk until the snap birth lands, but the rational-snap family gives a real displacement of one 19M: snap19m_q32 (~base to ~1e-3, the Q=64/32 parity regime) -> snap19m_q4 (the cracked regime). Panel = "what 1/Q^2-coarse quantization moves", drawn with the crystal recipe: PCA plane of the base-proxy, displacement segments, inferno, mean-disp footer.
+
+- `verify_deletion_stats()` — The OBSERVATION Q4-DELETION-RENDER numbers, committed
+
 ### scratch/oracle_worker.py
 Standalone oracle worker for timeboxed p.check (MOE-GT-6 v3).
 
@@ -2048,6 +2150,49 @@ Ozaki rungs 2b+2c (CPU). 2b: recombine partials into a Shewchuk EXPANSION (exact
 - `aligned_partials(A, B, s=8, block=32)` — yield (scaled partial matrices) — each exactly representable
 - `dd_chain(mats)`
 
+### scratch/p2_crown_draws.py
+HARDENING-P2 R8: the crown tie at three fresh problem-set draws (PRE-REG HARDENING-P2). Both crown artifacts gated PAIRED per draw at G.GATE_BAND offsets +1M/+2M/+3M, one session, one device. Deterministic for frozen weights; paired per-draw deltas only.
+
+
+### scratch/p3_autopsy.py
+HARDENING-P3 R2 wrapper (autopsy leg): per-(layer,head) deletion map on a FRESH-SEED h8 crystal — frozen scratch/head_autopsy.py untouched (it is __main__-guarded; we import, point CKPT at the seed's EMA checkpoint, and run main()). The autopsy READS only — no save-redirect needed. After the driver's own map + min/max/ctrl full gates, two FIXED-CELL full gates (L1h7, L1h4 — the original crystal's extremes) answer the secondary identity question: do the named cells transport across seeds, or is only the STRUCTURE (sparse critical circuit) seed-stable?
+
+- `drop(li, h)`
+
+### scratch/p3_bits.py
+HARDENING-P3 R9 wrapper: the bits-dimension 19M row pooled at n=3 — frozen drivers untouched (tournament_birth.main for the ternary arm; train_mathnative.main for the fp32 comparator), with the standard hard gates: D2 excision on load_rows (patched BEFORE either driver binds it), refuse-if-exists on every OUT, seed via BIRTH_SEED env.
+
+- `excised_load_rows(*a, **kw)`
+
+### scratch/p3_ffnslack.py
+HARDENING-P3 R3 wrapper: ffn-slack ENDPOINTS (d56 f224 v f128) on the D2-EXCISED diet — frozen driver scratch/sym_birth.py untouched (import-and-override, the p3_umoe_soft/p3_grav2 pattern). train_mathnative.load_rows is patched BEFORE sym_birth's from-import binds it, so the excision covers the driver's diet verbatim.
+
+- `excised_load_rows(*a, **kw)`
+
+### scratch/p3_grav2.py
+HARDENING-P3 R6 wrapper: GRAV-2 contractivity-tax paired births on the D2-EXCISED diet (frozen driver grav2_spacetime.py untouched; import-and-override, the p3_umoe_soft pattern). OUT names collide with the originals at SEED=1 — this wrapper REFUSES SEED values whose checkpoint already exists (cited-evidence guard) unless OTAG-style suffixing is added upstream; run seeds 2/3/4.
+
+- `excised_load_rows(*a, **kw)`
+
+### scratch/p3_quat.py
+HARDENING-P3 R7 wrapper: the quaternionic 4x conversion toll gets n=3 warm-epoch seeds — frozen scratch/quat_convert.py untouched (import-and-override; the driver runs at import).
+
+- `class RedirectedRandom`
+- `redirected_seed(s)`
+- `excised_load_rows(*a, **kw)`
+- `redirected_save(obj, path, *a, **kw)`
+
+### scratch/p3_stream2x2.py
+HARDENING-P3 R4 wrapper: the cooldown small-delta cell of the streaming 2x2 gets n=3 paired seeds — frozen driver scratch/streaming_birth_d256.py untouched (import-and-override).
+
+- `excised_load_rows(*a, **kw)`
+- `redirected_save(obj, path, *a, **kw)`
+
+### scratch/p3_umoe_soft.py
+HARDENING-P3 R5 wrapper: UMOE soft-routing seeds on the D2-EXCISED diet (frozen driver umoe_conserve.py untouched — import-and-override; the loader filter is the Phase-1 law applied at load time, receipt printed).
+
+- `excised_load_rows(*a, **kw)`
+
 ### scratch/pack_baselines.py
 PACKED CRYSTAL C3 (pre-reg 2026-07-29 eve): GPTQ/AWQ/HQQ honest table on d64h8 EMA. Baselines from llmopt/quantize/methods.py on every block Linear; calibration activations hooked from 24 prompts at GATE_BAND+500_000 seed offsets (never the gate band). Arms: {rtn,gptq,awq,hqq} x {5,3} bits -> full gate + mean DeltaKL v fp logits + calibration wall-time. C1 controls reused (fp 58, packed 58). __main__-guarded.
 
@@ -2148,6 +2293,13 @@ Pincer distribution readout (Artin's quantum-frame ask, 2026-07-26 night; pre-re
 Aggregate logs/pp_dist_probe.jsonl (pincer distribution readout). Every dimension the sidecar carries, reported against chance: per-model calibration (mass-on-solving v uniform baseline, top-1 v chance, Spearman, entropy), per-level split, per-rule-family solve rates + model mass, calibration deciles (pooled children: predicted mass v realized solve freq), length bias. Pure read — no model, no oracle.
 
 
+### scratch/pincer_labels_v2.py
+Pincer label prep v2 — the MIGRATED replacement for pincer_r1b_labels.py (migration mandated by the results-hardening spec: the v1 driver calls successors() IN-PROCESS under derivation.py's SIGALRM box — the one true checkpoint-selection carrier left in the program. SIGALRM cannot box sympy; rows whose replay hangs vanish silently and the MISS class is undercounted).
+
+- `_worker(cur_s, nxt_s, q)` — Replay one row; runs in a fork, killed from outside.
+- `classify(names)` — Verbatim v1 decision structure (behavior-guarded).
+- `main()`
+
 ### scratch/pincer_r0.py
 Pincer R0: conjecture-leg readout (spec 2026-07-26-reverse-llmue-pincer.md, cell R0; pre-reg in RESULTS).
 
@@ -2156,6 +2308,12 @@ Pincer R0: conjecture-leg readout (spec 2026-07-26-reverse-llmue-pincer.md, cell
 R0b: collapse-ordered readout (pre-reg in RESULTS 2026-07-26 late). The honest Grover residue: does checking candidates in descending model-mass order reach the first verified solution in fewer ORACLE CALLS than random/sampling order? All candidates are oracle-checked once (instrument cost, not protocol cost); orders are then evaluated on the recorded truth.
 
 - `seq_logp(prefix, targets)`
+
+### scratch/pincer_r1_indist.py
+Pincer R1a-INDIST (Phase-4 row 1 of the results-hardening false-null hunt; pre-reg in RESULTS before fire): the R1a peeling probe re-run on IN-DISTRIBUTION prompts.
+
+- `_mint_child(prob, q)` — One forward engine step; first encodable child (fork).
+- `main()`
 
 ### scratch/pincer_r1_probe.py
 Pincer R1 backward-validity probe (spec 2026-07-26-reverse-llmue-pincer.md, cell R1; pre-reg in RESULTS).
@@ -2228,6 +2386,10 @@ Symmetry ladder S1 cell 1 (pre-reg 2026-07-28): quaternionic anti-commutant mass
 Symmetry ladder S1 cells 2-3 (pre-reg 2026-07-28): project the wfloor d256 gates onto the quaternionic commutant (deletes 75% of gate mass), gate the projected init, then warm-train 1 epoch. Arm a: lambda=0; arm b: commutation penalty summed over I,J,K, ramped 0.1->1.0. R3 recipe verbatim otherwise. Usage: ARM=a|b python scratch/quat_convert.py
 
 
+### scratch/qwen_displace_extract.py
+Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
+
+
 ### scratch/rank_read.py
 Rank read (pre-reg 2026-07-29: attention anatomy 1b). SVD of all qkv/o weights of the d56 EMA crystal: singular-value decay, then truncation gates at rank r in {48,32,24,16}. Desk only, MPS.
 
@@ -2244,6 +2406,22 @@ Snap+repair (RIFF 2026-07-27, precision-as-thin-film): take a snapped crystal, F
 ### scratch/rational_snap.py
 Rational-snap distillation (RIFF 2026-07-27, Artin's infinite-precision push, rung a): snap every 2-D weight of a gated crystal to the nearest fraction p/q with denominator q <= Q, then gate the snap. Asks "do trained weights want simple exact numbers?" as a COMPRESSION question (precision doctrine stays closed; E3 is its sole reopening).
 
+
+### scratch/rev2_d768.py
+REVIVE track item 3 wrapper: the d768 ternary-v-fp32 crossover gets n=3 SAME-DEVICE paired seeds (the p3_bits pattern at d768; p3_bits itself is R9-cited and stays frozen).
+
+- `excised_load_rows(*a, **kw)`
+
+### scratch/rev3_crown.py
+REVIVE track item 2 wrapper: CROWN-TIE BIRTHS — the production crown tie (gen6_grown fp32 76 v merged_grown ternary 75, booked 2026-07-23; draw-noise leg closed by HARDENING-P2 R8 "tiebreak still needs births") gets n=3 SAME-DEVICE fresh birth pairs.
+
+- `excised_load_rows(*a, **kw)`
+- `_gate(ckpt, d, layers, heads, ffn)`
+
+### scratch/rev4_zx45.py
+HARDENING-P4 row 2 wrapper: the 45M ZX scale-lever null gets its seed ladder. The 45M union verdict (2026-07-27: ZX 36 = +0.8 sigma inside the 19M seed fence mean 32.7 sd ~4.2) was n=1 on a gate class with a measured 8-point seed swing — the highest-value seed-starved null in the file after pincer. This wrapper reruns the FROZEN recipe (night_45m_union.sh: union diet math gen-4 + zx_farm1, vocab-47, fp32, d512/L12/ffn2048/h8, 3ep) at fresh seeds; the pooled 3-seed read (booked s1=36 + fresh) goes against the 19M fence per the original pre-reg's own framing.
+
+- `excised_load_rows(*a, **kw)`
 
 ### scratch/rot_commutant.py
 Rotational snap R1 (pre-reg 2026-07-28): anti-commutant mass of FFN gate matrices under channel-pairing complex structures. W_a = (W + J_out W J_in)/2; mass = ||W_a||^2/||W||^2 (0.5 = no rotational structure; 0 = fully complex-linear). Real crystals: adjacent pairing + 20 random-pairing nulls. Complex-FFN arms: native half-split pairing (positive control, expect ~0).
@@ -2387,6 +2565,15 @@ TENET D3: the budget accountant (spec 2026-08-05-tenet-battery.md deliverable D3
 - `class BudgetAccountant` (remaining, debit, census)
 - `charge(acct: BudgetAccountant, who: str, texts, tok_counts=None)` — Charge a sampled wave; return the texts, or [] if refused.
 
+### scratch/tenet_mult_b32.py
+MULT-0 B=32 leg (named follow-up of VERDICT MULT-0; Artin GO): is choice scarcity a BUDGET property (surface widens with samples) or a MODEL property (stays thin)? Wrapper only — sets G.B=32 then runs the cited census driver's path verbatim (tenet_mult_census is now booked evidence; never edited).
+
+
+### scratch/tenet_mult_census.py
+MULT-0: the verified-candidate MULTIPLICITY census (spec 2026-08-07-morning-specs.md item 3; rung 1 of the reverse-propose ladder, RIFF 2026-08-07; the pincer closure's fence made measurable).
+
+- `mult_census(model, tok, dev, n=None, mode='poststep', log_f=None)`
+
 ### scratch/tenet_r1b_micro.py
 TENET R1b-micro: the closed loop at matched budget (PRE-REG TENET-R1B-MICRO, 2026-08-06 — read it first; arms, ledger contract, and registered lines live there, not here).
 
@@ -2414,6 +2601,23 @@ TENET W1 bridge: crystal-weight tokenizer + direction reader (spec 2026-08-05-te
 TENET W1 population build (spec 2026-08-05-tenet-battery.md, W1 prerequisite; Artin GO 2026-08-06, 3080 window into 17:00 EST).
 
 - `birth(seed, direction)`
+- `main()`
+
+### scratch/tenet_w1_relational.py
+TENET W1-R: the RELATIONAL weight reader (Artin riff banked 2026-08-06 late; the licensed new representational hypothesis after the W1-S surface-exhaustive null).
+
+- `load_subject(ckpt_or_sd)` — [7, 256, 256] cross-layer alignment stack C_l, or its
+- `tokenize(subj, rng)`
+- `class DirectionReader` (forward)
+- `main()`
+
+### scratch/tenet_w1_surfaces.py
+TENET W1-S: the feature-surface ladder on the EXISTING W1 population (queued by Artin 2026-08-06 behind the GT-7 booking; LOCKSTEP spec C4 rung 1). VERDICT TENET-W1 read direction at chance (10/20) from FFN GATE rows; the rider proved the instrument sound (randinit control 20/20). Question: does direction live in any OTHER weight surface at this scale?
+
+- `load_surface(ckpt)`
+- `surface_from_model(m)` — The same stacking applied to a live model's state dict
+- `tokenize(gates, rng)`
+- `class DirectionReader` (forward)
 - `main()`
 
 ### scratch/ternary_control.py
@@ -2448,6 +2652,10 @@ Tier-retry controller (pre-reg 2026-07-29: attention-core Leg 0). d56 matryoshka
 
 ### scratch/train_fp64.py
 fp64 end-to-end birth (the rounding-loss-veil A/B, banked 2026-07-17): all weights/activations/optimizer double precision on CPU. One variable vs seedvar-1 (fp32, same seed/diet). If the gate moves >=3, matmul/update rounding at fp32 costs capability at birth — the veil is real. If flat, fp32 birth arithmetic is above the noise floor and precision stays an ONLINE-only knob.
+
+
+### scratch/traj_accept.py
+TRAJ acceptance driver (spec 2026-08-06-lab-traj-session.md, tiers 2 / 3a / 3b): runs the FROZEN scratch drivers with ONLY the instrument swapped for llmopt.lab.traj.patch_moe_router — corpus, chat template, oracle path, and every row-write remain the frozen code by import, so any byte difference is the unified patch's.
 
 
 ### scratch/umoe_conserve.py
@@ -2718,6 +2926,12 @@ lab.oracle — the boxed oracle, v3.2 lineage (spec 2026-08-05-llmopt-lab-extrac
 Standalone oracle worker for timeboxed p.check — ADOPTED from scratch/oracle_worker.py (MOE-GT-6 v3; that file stays frozen). main() is character-identical to the source (guarded by tests/test_lab_oracle.py); only the repo-root sys.path depth differs.
 
 - `main()`
+
+### llmopt/lab/traj.py
+lab/traj — unified MoE router instrument (module 4; DESK TIER ONLY).
+
+- `begin_prompt(state, prompt_id)` — The certified per-prompt driver resets (surface 5, A verbatim:
+- `class patch_moe_router`
 
 ### llmopt/lab/verify.py
 lab.verify — the fast wave-verifier, ADOPTED VERBATIM from scripts/bench_verify_fast.py (2026-08-06; that file stays frozen — it backs the parity bench and every verdict that cites it). Function bodies below are character-identical to the source; guarded by tests/test_lab_adoption.py (source-identity + behavior parity). Fix a bug here and there in the SAME commit, or the guard fails.

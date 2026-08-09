@@ -78,7 +78,8 @@ for ln, line in enumerate(SRC.read_text().splitlines(), 1):
     if not line.startswith("## ") or line.startswith("## Contents"):
         continue
     title = line[3:].strip()
-    m = re.search(r"\((\d{4}-\d{2}-\d{2})", title)
+    m = (re.search(r"\((\d{4}-\d{2}-\d{2})", title)
+        or re.search(r";\s*(\d{4}-\d{2}-\d{2})", title))
     date = m.group(1) if m else None
     eid = slug(title, date)
     while eid in seen:
