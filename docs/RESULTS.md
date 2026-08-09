@@ -23669,3 +23669,54 @@ pairing NEVER reads against the original mixed-device cells;
 gates-only. CONSEQUENCE: the d768 crossover leaves the revival
 ledger as a confound artifact; crown-tie births (revive item 2,
 pre-reg booked) fire NEXT on the freed Mac.
+
+## VERDICT ENGINE-SCALE-1: NEITHER BAR FIRES — joint scaling does NOT convert at the top corner (12,807 v 11,266), but the surface inverts the diet-floor story: the plateau is SCHEDULE-BOUND at horizon, and two cells BREAK the 10% bar from the small end (9,821 at 110k-w8-s16000-sched; 10,488 at 31k-w8-s4000-const) (2026-08-09 evening, cross-lab; verdict house-side)
+
+Against PRE-REG ENGINE-SCALE-1 (L22317). Rows:
+scratch/engine_scale1/engine_scale_results_v2_final.jsonl (sha
+4d539251...), 30/30 cells, single engine provenance 7d0f398,
+house-verified: cell-set == manifest; all 30 traj shas IDENTICAL
+to the v1 shipment (the statistic re-emit was observability-only,
+as required); cyc_final carries the registered statistic
+(sum(losses[-NWIN:]) // NWIN) and reproduces BOTH certified
+cycle-means exactly (60k-w8-s1000-const 12,518; 60k-w8-s4000-sched
+11,777). Spot receipts now stand at FOUR reproductions each
+(8b443b68 / 561e28c5 / 15934bb8).
+BARS: P-JOINT does NOT fire — top corner cyc_final 15,320 (const)
+/ 12,807 (sched), min 12,807 > 11,266. P-DIET-FLOOR does NOT fire
+— its no-cell-under-bar conjunct is false (two cells clear), and
+its attribution pattern is INVERTED at the corner family:
+leave-windows-small (110k-w8-s16000-sched, 9,821) is 23% BETTER
+than the full corner, not >=5% worse. UNRESOLVED by the
+registered bars; the surface books:
+  (1) THE PLATEAU BREAKS FROM THE SMALL END: 110k-w8-s16000-sched
+      9,821 = 21.5% below the 12,518 anchor (bar was 10%) — the
+      best integer-birth cycle-mean ever posted; 31k-w8-s4000-
+      const 10,488 = 16.2% below (NBLK=1: the SMALLEST model,
+      const lr).
+  (2) CONST-LR REGRESSES AT HORIZON: every s16000-const cell
+      lands 15,045-15,320 — WORSE than its own s1000/s4000
+      siblings (110k-w128: 14,350 @ s1000-const -> 15,320 @
+      s16000-const). More steps at fixed lr move the cycle-mean
+      BACKWARD; the schedule doesn't just help, it is what makes
+      long horizons pay at all (sched-const deltas at s16000:
+      2,513-5,386, every cell).
+  (3) W128 NEVER ENTERS BAR RANGE (best 11,671): more windows =
+      a harder objective at these capacities, monotonically.
+READ (booked as surface, not a fired bar): P-STEP-BOUND-2's
+"bends but does not break; capacity remains the presumptive
+binder" is now superseded on the loss instrument — at 4x steps
+WITH decay the plateau BREAKS (11,777 -> 9,821), while capacity
+(31k->110k) and windows moved nothing toward the bar at the
+corner. The measured binder at horizon is the OPTIMIZER SCHEDULE.
+Next lever if the program continues: schedule/decay ladder, not
+params or windows.
+FENCES: deterministic integer battery, seed 17, single runs
+(determinism class, four-way spot receipts); LOSS-LEVEL ONLY —
+no gate ran, no capability claim attaches to any number here;
+cycle-mean cross-NWIN comparisons per the PLATEAU-BREAK
+convention; wall-clock never a readout (the v1 file remains the
+O(step^2) defect's measurement record, mixed-provenance
+annotated); engine leg axiom's (their relay a3c64b6), verdict
+house-side per the verification contract — which caught one real
+statistic mismatch (relay 2026-08-09-2) before any bar was read.
