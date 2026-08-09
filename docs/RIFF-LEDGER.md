@@ -3112,3 +3112,30 @@ seats (audit findings), Artin (sanction + relay), Fable
   (frame + priority call), axiom-Fable (feasibility grounding),
   Fable (scope audit that opened the door + the exact-GEMM-only
   fallback).
+
+- **2026-08-08 (Artin x Fable, the capped-instrument sweep + exact
+  data-pricing)**: two banks from the disagreement-#3 exchange.
+  (1) MECHANISM-POSITIVE/CAPABILITY-FLAT as a named audit class —
+  rungs where a measured physical difference read zero on the
+  gate, so a coarse/saturated instrument may masquerade as a null.
+  Flagged instances: metabolic v3 (2.7x flips real, proxy 24=24,
+  time-capped at 75 min — the top revival candidate under this
+  lens), gate saturation at L3 24/24 and fresh-band 89/120
+  (treatments landing in saturated levels are structurally
+  invisible), the 113M capacity null's tokens-per-width masking
+  (the caught template), the fp64 rarity showdown's n=9/18 bin
+  power. Defended as TRUE null: the 1.06e-14 accumulator tail
+  (12 orders below flip threshold — no instrument problem).
+  Doctrine rider: disagreement-#3-class pre-regs pair the coarse
+  gate with FINER registered instruments (flips, validity %,
+  rarity bins, long-horizon retention) so a mechanism-positive
+  cannot hide. (2) EXACT DATA-PRICING (Artin): exact-substrate
+  training as the clean bench for "what data does a model EXACTLY
+  need" — schema/columns/links — sharpening the existing pricing
+  constants (decomposition discount ~10x/row, k_efold
+  ~1,900-2,400 rows per primitive kind, determinability audits)
+  by removing the absorption term from the estimate; possibly
+  exact-training's main payoff even if the capability race ties.
+  Goes into the eventual #3 pre-reg as a secondary instrument.
+  Attribution: Artin (both frames), Fable (instance sweep +
+  true-null defense).
