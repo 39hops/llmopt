@@ -3165,3 +3165,31 @@ seats (audit findings), Artin (sanction + relay), Fable
   engine is a scope decision, banked not launched. Attribution:
   Artin (both), Fable (counting argument + checkers control +
   curve reframe).
+
+- **2026-08-09 (Artin, the LinkedIn magic exchange): HARDNESS HEAD
+  IN THE MODEL'S FUNCTION-SPACE — embed the magic estimator INTO
+  the model, firing when it is unsure.** Precision on the state of
+  the bank: the ENGINE-side embedding already ran and split —
+  policy-gated expansion pays (~4x cheaper nodes, k=6, booked),
+  while the "when unsure" trigger specifically NULLED in-domain
+  (entropy-gated deference 69/80: traced losses held the winning
+  rule inside the gate and died on beam composition, not
+  uncertainty — confidence can't see that failure class; deference
+  stays banked for real-OOD domains, ZX port named). The OPEN leg
+  this riff adds: the MODEL-side embedding — a hardness/cost head
+  trained into the proposer itself (predict-own-cost as an
+  auxiliary target), read at inference to route: cheap head says
+  easy -> answer directly; says hard -> escalate (workspace,
+  deeper search, LLM slot). Pairs with the banked
+  magic-estimator judge slots ("prediction pays only where
+  variance lives") and the budget-alloc retarget (estimator
+  routes LLM wall-time, the currency that actually runs out).
+  Fence: NNUE-vs-LLM booked an exact tie at 1e5x cost — the head
+  must be justified by ROUTING value (fewer wasted escalations),
+  never by beating the microsecond MLP at its own job. Also
+  banked from the same exchange: the quantum framing stays a
+  labeled analogy (magic monotone = distance from the easy
+  subspace = simulation price), narration literal per the
+  plain-language rule. Attribution: Artin (embed-when-unsure +
+  the classical-simulability frame), Fable (state-of-bank
+  precision + routing-value fence).
