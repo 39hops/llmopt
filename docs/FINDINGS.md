@@ -290,6 +290,22 @@ VERDICT](RESULTS.md#L10676).)
   ([VERDICT HARDENING-P1](RESULTS.md#L22585); [VERDICT
   HARDENING-P2](RESULTS.md#L22658); [VERDICT
   HARDENING-P3-R5](RESULTS.md#L22718).)
+- [REPLICATED] [REGIME-SCOPED: house crystals] The ZX
+  scale-lever null is seed-hardened: three same-recipe 45M union
+  births score 36/34/32 on the ZX gate (mean 34.0, straddling the
+  19M seed-fence mean 32.7), so the original n=1 read of 36 was
+  ordinary seed noise and 2.4x capacity buys nothing on the graph
+  grammar; the roots-of-unity reopening stays un-fired.
+  ([VERDICT HARDENING-P4-2](RESULTS.md#L23459).)
+- [MECHANISM-CONFIRMED] [ONE VEHICLE] Over-coarse quantization is
+  deletion, not perturbation: snapping a 19M model's weights to
+  fractions with denominator <= 4 sends 99.93% of them to exactly
+  zero (trained weights sit near sigma 0.034, far under the 1/8
+  survival threshold; the mid gate keeps a single 1/4), which is
+  why the booked Q=4 gate is 0/120 while the denominator-64 snap
+  ties its control exactly.
+  ([OBSERVATION Q4-DELETION-RENDER](RESULTS.md#L23428);
+  [RATIONAL-SNAP VERDICT](RESULTS.md#L7613).)
 - [REPLICATED] [REGIME-SCOPED: house crystals] The sprint's second
   wave lifts two more n=1 fences and books two honest betweens: the
   ffn-slack anatomy endpoints replicate on their cuda line (pooled

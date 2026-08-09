@@ -23455,3 +23455,30 @@ ONE nonzero weight survives Q=4 in the mid gate (a single 1/4;
 0.25/||W0|| = 0.0096 ~ the booked ratio). "NO weight reaches
 |w| >= 1/8" corrects to "all but one." The starburst is 1,535
 rays to the origin and one that stays.
+
+## VERDICT HARDENING-P4-2: P-NULL-HOLDS — the 45M ZX scale-lever null hardens to n=3 (36/34/32, mean 34.0; capacity was never the ZX constraint) and the G9 no-fire stands (2026-08-08 night, 3080)
+
+Against PRE-REG HARDENING-P4-2. ZX PRIMARY (pooled with booked
+s1=36, read vs the 19M fence mean 32.7 sd ~4.2 per the original
+framing): s2 34/120 {color 22, lcomp 3, fuse 6, id 2, pivot 1};
+s3 32/120 {color 19, lcomp 4, fuse 6, id 2, pivot 1}; both
+parsefail 0, walls 0, misses 100% semantic (unsound 86/88) —
+the s1 profile exactly. 3-seed mean 34.0 <= 35: P-NULL-HOLDS
+FIRES. The n=1 "36 = +0.8 sigma" boundary read was ordinary
+seed noise — the three seeds straddle the 19M fence mean
+(32.7). 2.4x capacity bought ZERO on the graph grammar at n=3;
+the G9 roots-of-unity conditional's NO-FIRE is now
+seed-hardened. (P-SCALE-FIRES died algebraically at s2: both
+s1 and s2 under 37 made the 2/3-seeds-at-37+ conjunct
+unsatisfiable.)
+MATH SECONDARY (dispersion context only, no bar, no claim):
+s2 63/120 {3:22,4:6,5:16,6:7,7:12}; s3 64/120
+{3:21,4:7,5:15,6:9,7:12}; with s1's booked 65 — spread 63-65,
+tight; weights shas in gate logs (s3 8dc81e13).
+FENCES: 3080 cuda only; D2 excision on fresh arms is the named
+arm difference vs unexcised s1 (~129 math-band rows, outside
+the ZX column); seed = init draw (data order epoch-keyed,
+seed-invariant — the n=3 sigma is init noise only); ZX
+absolutes never read against 19M cross-width sigma; dicts are
+the checksum (all four sum-verified at booking). Receipts
+logs/zx45/ (3080-side).
