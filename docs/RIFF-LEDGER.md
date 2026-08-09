@@ -3242,3 +3242,30 @@ seats (audit findings), Artin (sanction + relay), Fable
   never score weights by weight distance). Attribution: Artin
   (architecture frame + foreshadowing read), Fable (evidence
   assembly + crossover test form).
+
+- **2026-08-09 (Artin, the crown-dict exchange): STAR PROFILE, not
+  black hole — precision belongs to the CORE, traversal only needs
+  {-1,0,1}.** The observation that seeded it: in the one crown
+  head-to-head, ternary's deficit sat in EASY bands while it won
+  L4 and tied L7 (descriptive, <3 noise class — fence stays). The
+  frame: a model as a star — a dense fusion core where precision/
+  compression/density matter (the primitive operations being
+  fused), and progressively simpler outer shells where computation
+  is TRAVERSAL through structure, needing only sign-and-silence
+  {-1,0,1}. Iron line = the element past which fusion stops paying
+  (the primitive set). MEASURABLE FORM (the bankable part): a
+  TENSOR-CLASS PRECISION-SENSITIVITY PROFILE — quantize one tensor
+  class at a time (emb / head / attn / ffn / norms) to ternary at
+  matched sigma-scale, gate each; the frame predicts a monotone
+  sensitivity gradient from interface/core classes outward. House
+  evidence already pointing this way: make_tables ships sigma/8 on
+  emb/head INTERFACE tensors specifically (the deterministic
+  pipeline already treats interfaces as precision-hungry); ternary
+  growth is non-preserving via absmean coupling (the discrete
+  substrate's fragile spot is a COUPLING, not a band); external
+  echo: BitNet-class recipes keep embeddings/activations at higher
+  precision than ternary bodies. FENCES: star/black-hole are frame
+  LABELS (plain-language rule — narration literal); the per-level
+  crown texture is noise-class until the births battery books.
+  Attribution: Artin (star frame + core-vs-traversal split),
+  Fable (tensor-class probe form + sigma/8 interface evidence).
