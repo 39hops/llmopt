@@ -125,7 +125,8 @@ y = para(c, M, H - 136, 95, [
     "pass llmopt's independent oracle, schema-exact; emission "
     "audits 5-for-5 clean (latest: 0 contaminated rows in "
     "145,011).",
-    "443 Lean 4 certificates for engine derivations; neural-net "
+    "21,614/21,914 kernel-certified Lean 4 certificates (98.63%, "
+        "closed failure taxonomy); neural-net "
     "interchange format (AXNN) at 20/20 cross-lab parity.",
     "Exactness work: integer and deterministic compute paths with "
     "digest and trajectory checks, so agreement is bit-level "

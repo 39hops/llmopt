@@ -1512,6 +1512,12 @@ Rung-1 bar (iii), in-diet form: does prefix move the operand-complexity emission
 - `greedy(model, ids, max_new=160)`
 - `main()`
 
+### scratch/engine_scale_export.py
+ENGINE-SCALE-1 per-cell export (PRE-REG 2026-08-07, RESULTS L22317).
+
+- `export_one(out_path: str) -> None` — Child: env already carries NBLK/FFN/NWIN; emit one .bin and
+- `main() -> None`
+
 ### scratch/ex1_swap.py
 EX-ANAT-1 swap builder (IDENTITY battery rung 1, spec 2026-08-06-identity-battery.md, frozen design a-d; Artin GO).
 
@@ -1536,6 +1542,14 @@ EX-ANAT-3 subject builder (provenance repair, 2026-08-07 review: the cited keep-
 - `invariants(counts, vonly)`
 - `emit(name, obj)`
 - `main()`
+
+### scratch/exact1_small_cells.py
+EXACT1-SMALL: d8/d16 ladder+anchor cells on axiom's ENGINE-EXACT-1.
+
+- `put_tensor(b, name, v)`
+- `make_tables(T, DH, **_)` — Fixture-style synthetic tables (identity rope, silu/exp ramps)
+- `make_init(T, D, DH, F, V, seed_str)` — 11 KEYS tensors at shipped Q9 scale, then x [T,D], then tgt
+- `run_arm(name, obj, steps, budget)`
 
 ### scratch/exact_twin_d56.py
 d56 exact twin (pre-reg 2026-07-29 night): snap EVERY floating tensor (incl. emb, head, 1D norm gains) to best-rational Q<=16, gate, and report per-tensor-class snap error in sigma units (blockwise-rule diagnostic). Desk, MPS.
@@ -1572,6 +1586,13 @@ Distribution rows (spec 2026-07-28 rung 3): for each diet cur, enumerate the eng
 ### scratch/farmer_probe.py
 FARMER PROBE (pre-reg 2026-07-29: escalation-engine cell 6, Artin's reverse-self-learner riff). A full-reverse d64 birth (sym_birth REV=2, SKIP_GATE) plays farmer: sample predecessor candidates for NOVEL band expressions (gate-band + 50k offset, disjoint from the gate), verify each by FORWARD rule application (fork-boxed verify_wave: cand -> seed must be a valid step), and score verified-distinct-NOVEL yield per 1000 samples + wall time. Novel = candidate absent from the entire gen-4 corpus (cur+nxt). Usage: CKPT=checkpoints/sym_birth_dense_revfarm_ema.pt        .venv/bin/python scratch/farmer_probe.py
 
+
+### scratch/fig_magic_scatter.py
+Gallery: magic-estimator held-out scatter (predicted vs measured).
+
+- `class Estimator` (forward)
+- `spearman(a, b)`
+- `main(out: Path) -> None`
 
 ### scratch/fixed_q_snap.py
 Fixed-denominator snap (spec addendum 2026-07-27, 'integer twin'): every 2-D weight -> round(w*q)/q for ONE shared q. Unlike best-rational (free denominators), this makes W = P/q with integer P — the forward pass becomes an integer GEMM / q, the road to exact integer inference (ozaki/FX-V1 substrate). Error bound 1/(2q), vs ~1/Q^2 for best-rational. Usage: fixed_q_snap.py <ckpt_in> <q> <ckpt_out>

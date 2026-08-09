@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 157, library 154, reproduce-pinned 9, results-cited 114, spec-cited 42
+Census: UNCITED 159, library 154, reproduce-pinned 9, results-cited 115, spec-cited 42
 
 ## scratch/
 
@@ -58,7 +58,7 @@ Census: UNCITED 157, library 154, reproduce-pinned 9, results-cited 114, spec-ci
 | desert | desert_v2.py | spec-cited | specs×1 | — |
 | detbwd | detbwd_diet.py | library | RESULTS×6, specs×1 | 2 |
 | detbwd | detbwd_gravmoe.py | library | RESULTS×2, specs×25 | 8 |
-| detbwd | detbwd_mb.py | library | RESULTS×4, specs×7 | 3 |
+| detbwd | detbwd_mb.py | library | RESULTS×4, specs×7 | 4 |
 | detbwd | detbwd_plateau.py | results-cited | RESULTS×1, specs×1 | — |
 | detbwd | detbwd_r1.py | library | RESULTS×3 | 9 |
 | detbwd | detbwd_r1b.py | library | RESULTS×1 | 1 |
@@ -72,16 +72,19 @@ Census: UNCITED 157, library 154, reproduce-pinned 9, results-cited 114, spec-ci
 | e2 | e2_logit_check.py | results-cited | RESULTS×1, specs×1 | — |
 | e3 | e3_battery.py | spec-cited | specs×1 | — |
 | emission | emission_wall_pair.py | UNCITED | — | — |
+| engine | engine_scale_export.py | UNCITED | — | — |
 | ex1 | ex1_swap.py | library | RESULTS×2, specs×1 | 1 |
 | ex2 | ex2_build.py | results-cited | RESULTS×1, specs×1 | — |
-| ex3 | ex3_build.py | results-cited | RESULTS×1, specs×1 | — |
+| ex3 | ex3_build.py | results-cited | RESULTS×2, specs×1 | — |
 | exact | exact_twin_d56.py | spec-cited | specs×1 | — |
+| exact1 | exact1_small_cells.py | results-cited | RESULTS×1 | — |
 | exchange | exchange_test.py | results-cited | RESULTS×1 | — |
 | export | export_axnn.py | results-cited | RESULTS×1 | — |
 | export | export_mb_ref.py | UNCITED | — | — |
 | export | export_r2b_ref.py | results-cited | RESULTS×1 | — |
 | farm | farm_dist_rows.py | results-cited | RESULTS×1, specs×4 | — |
 | farmer | farmer_probe.py | results-cited | RESULTS×1, specs×2 | — |
+| fig | fig_magic_scatter.py | UNCITED | — | — |
 | fixed | fixed_q_snap.py | library | — | 1 |
 | fmt | fmt_chain.sh | UNCITED | — | — |
 | fmt | fmt_chain2.sh | UNCITED | — | — |
@@ -141,7 +144,7 @@ Census: UNCITED 157, library 154, reproduce-pinned 9, results-cited 114, spec-ci
 | gt6 | gt6_resume_arms.sh | UNCITED | — | — |
 | gt7 | gt7_coverage_rederive.py | library | RESULTS×4, specs×2 | 1 |
 | gt7 | gt7_draw.py | library | specs×2 | 1 |
-| gt7 | gt7_run.py | results-cited | RESULTS×6, specs×2 | — |
+| gt7 | gt7_run.py | results-cited | RESULTS×7, specs×2 | — |
 | head | head_autopsy.py | library | — | 1 |
 | head | head_census.py | library | specs×2 | 1 |
 | holdout | holdout_gate.py | library | specs×1 | 1 |

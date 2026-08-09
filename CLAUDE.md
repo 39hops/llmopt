@@ -31,15 +31,15 @@ implementations. See README for the full inventory and measured numbers.
   it (file, line, what's wrong) — Fable handles the fix. Mechanical
   work (file moves, reference updates) only under explicit
   supervision, and Fable verifies the pass afterward.
-- **The reviewer agent (sanctioned 2026-07-24)**: ONE persistent
-  read-only Opus reviewer for ledger-keeping, verdict cross-checks
+- **The reviewer agent (sanctioned 2026-07-24)**: 1-3 read-only
+  Opus reviewers (07-31 update; spawn on ask) for ledger-keeping, verdict cross-checks
   (pre-reg vs measured, BEFORE booking), and red-teaming. It
   mentions, never edits/launches; its findings are proposals, not
   truth. Everything else stays direct-Fable — no other agents.
 - **Oracle-verified everything.** Decoding must be token-identical to eager
-  greedy (`eval/equivalence.py`); math answers checked by sympy symbolic
+  greedy (`llmopt/eval/equivalence.py`); math answers checked by sympy symbolic
   equivalence, never string match; asm/code scored by the toolchain
-  (assemble the prediction, run the program) — `codegen/llvm.py`.
+  (assemble the prediction, run the program) — `llmopt/codegen/llvm.py`.
 - **fp16 near-ties are a known non-bug**: different verify-block
   compositions round coin-flip logits differently. Diagnose with the eager
   logit margin at the divergence point (see `scripts/bench_stacked.py`);
@@ -66,7 +66,7 @@ implementations. See README for the full inventory and measured numbers.
 - **Never score weights by weight distance.** The same function lives at
   many weight arrangements (neuron permutations, rescalings), so
   matching numbers is the wrong target for anything that predicts,
-  generates, or compares weights (weightspace/ rungs, task vectors,
+  generates, or compares weights (weight-reader rungs, task vectors,
   distill). Score by *running* the weights against the oracle
   (function MSE, symbolic accuracy, toolchain). Measured basis: the
   2026-07-06 weight-reader ablation — raw weights already readable at
@@ -79,7 +79,7 @@ implementations. See README for the full inventory and measured numbers.
 benches via
 `cmd /c "call \"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Auxiliary\Build\vcvars64.bat\" && python scripts/..."`.
 MSYS LLVM toolchain (clang/llvm-mc/objdump) at `C:\msys64\mingw64\bin`,
-not on PATH — `codegen/llvm.py` finds it. transformers 5.12 quirks already
+not on PATH — `llmopt/codegen/llvm.py` finds it. transformers 5.12 quirks already
 handled in-tree: no `from_legacy_cache`, `apply_chat_template` returns an
 Encoding (go through `tokenize=False`), `cumulative_length` fills need
 `inference_mode`. StaticCache max_len is bucketed to 512 under compiled
@@ -89,14 +89,14 @@ kernels for aten ops (Qwen RoPE) even WITHOUT torch.compile —
 `TORCH_COMPILE_DISABLE`/`TORCHDYNAMO_DISABLE` don't stop it; set
 `TORCH_DISABLE_NATIVE_JIT=1` (knob lives in `torch/_native/common_utils.py`).
 
-**Mac (36GB, Apple silicon)**: MLX backend in `backends/mlx_backend.py`,
-Metal kernels in `kernels/metal.py`. Split-K decode (single-head +
+**Mac (36GB, Apple silicon)**: MLX backend in `llmopt/backends/mlx_backend.py`,
+Metal kernels in `llmopt/kernels/metal.py`. Split-K decode (single-head +
 GQA, exp2-domain softmax) landed 2026-07-05 — ties mx.fast sdpa at
 T=32k; see docstring for honest numbers. NOTE: the old bench harness
 timed lazy graph construction (MLX skips dropped unevaluated arrays);
-mx.eval every timed iteration. Still queued: flash prefill port
-(boundary-split masking, autotuned tiles), wiring kernels into the MLX
-backend. 36GB fits larger teachers for `distill/` (logit-KD + GKD
+mx.eval every timed iteration. Flash prefill + MLX kernel
+wiring both SHIPPED (kernels/metal.py + kernels/mlx_integration.py
+docstrings carry the honest numbers). 36GB fits larger teachers for `llmopt/distill/` (logit-KD + GKD
 ready) with 0.5B–3B students.
 
 ## Navigation — READ THESE BEFORE WORKING (in this order)
@@ -114,7 +114,7 @@ ready) with 0.5B–3B students.
    half-retracted ones ("bank everything" is standing policy).
 5. **`docs/THEORY.md`** — the grounding map: house laws x published
    lineage. No row without a measured result AND a real citation.
-6. **`scripts/INDEX.md`** — signature/docstring index of scripts/.
+6. **`scripts/INDEX.md`** — signature/docstring index of scripts/, scratch/, and llmopt/.
    Grep it before writing anything (don't rewrite existing code).
    **Regenerate after adding/changing scripts:**
    `.venv/bin/python scripts/gen_index.py`.
@@ -135,7 +135,7 @@ at natural stopping points, not mid-sprint.
   preserves curation) and ideally adds threads/verdict/links to
   its line in docs/results-index.jsonl, same commit. Query with
   `scripts/results_query.py` (--live / --chain / --thread) BEFORE
-  proposing experiments — faster than grepping 6,600 lines.
+  proposing experiments — faster than grepping ~24k lines.
 - THEORY.md and RIFF-LEDGER.md are LIVING documents: at every
   session close, check the day's verdicts against existing
   rows/banks — update, amend, or mark-dead whatever a finding
@@ -191,7 +191,11 @@ at natural stopping points, not mid-sprint.
 - **Speed defaults (lossless, always on)**: KV-cached sampling;
   bf16 births (--fast) on cuda / fp32 on Mac; GRAD_CKPT=1 for
   d768+ on 10GB; PYTORCH_CUDA_ALLOC_CONF set in-tree. A CUDA
-  allocator OOM warning in a log is a TRIPWIRE (the 43x), not noise.
+  allocator OOM warning in a log is a TRIPWIRE (the 43x), not noise
+  — restart at the next epoch boundary. Knob note: the 43x was
+  measured with expandable_segments, but that knob CRASHES the WSL
+  driver; the in-tree default is max_split_size_mb:128
+  (scripts/train_mathnative.py) and that is the knob on the 3080.
 - **Remote ops (friendly-fire, 7 variants deep)**: kill/write/
   launch = separate ssh calls; a watcher's pgrep must never match
   a string its own launcher carries; verify file deps at arm time;
@@ -212,7 +216,7 @@ at natural stopping points, not mid-sprint.
 - Math-native training: `scripts/train_mathnative.py` (--diet,
   --fast, VOCAB_EXTRA/BIRTH_SEED/GRAD_CKPT envs; probe scripts
   take VOCAB_EXTRA too — atom ORDER must match the birth env).
-  Legacy LoRA recipe (`train/lora.py`, r=16, answer-only loss,
+  Legacy LoRA recipe (`llmopt/train/lora.py`, r=16, answer-only loss,
   length-bucketed + shuffled) still serves the 0.5B-era scripts.
 - Scratch experiments live in `scratch/` (committed — they are the
   lab notebook); stray root artifacts go to `logs/archive/`; big

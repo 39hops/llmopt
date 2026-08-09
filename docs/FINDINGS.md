@@ -117,6 +117,13 @@ VERDICT](RESULTS.md#L10676).)
   implementations; the claim is parity for these house math crystals, not
   for arbitrary models. ([Extended-training night: ternary reaches
   parity](RESULTS.md#L2397); [GROWN-MERGED](RESULTS.md#L3643).)
+- [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe]
+  The "+7 ternary crossover at d768" dissolves on a clean instrument:
+  n=3 same-device, same-diet paired seeds read t-fp32 deltas of
+  -2/+1/-3 (pooled -4, inside the |<=5| null bar) — the original
+  boundary-grid point was carried by its cross-device and diet-path
+  confounds; ternary and fp32 are gate-indistinguishable at d768.
+  ([VERDICT REVIVE-D768-CROSSOVER](RESULTS.md#L23643).)
 - [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe]
   At n=1 per alphabet arm, the matched tournament favored the measured
   multi-level codebook, while the later S4 arm narrowed the role of zero.
@@ -339,7 +346,10 @@ VERDICT](RESULTS.md#L10676).)
   budget). The ranking rung of the reverse-propose ladder stays
   gated pending a stronger proposer; and the integer-diet plateau
   is capacity-insensitive in both directions at its anchor
-  schedule, leaving joint scaling as the named lever.
+  schedule, leaving joint scaling as the named lever — joint
+  scaling subsequently ran and did NOT convert; the measured
+  binder at horizon is the optimizer schedule ([VERDICT
+  ENGINE-SCALE-1](RESULTS.md#L23673)).
   ([VERDICT MULT-0](RESULTS.md#L22196); [VERDICT
   MULT-0-B32](RESULTS.md#L22522); [VERDICT
   P-CAPACITY-2](RESULTS.md#L22163).)
@@ -611,8 +621,14 @@ sessions under one operator, not independent investigators. Read
 - [REPLICATED] [DEVICE-SCOPED] [TEACHER-FORCED]
   [REGIME-SCOPED: deterministic integer battery] Full transformer logit traces
   reproduced bit-identically on independent Apple and NVIDIA GPU paths; the
-  floating-point agreement price remains part of the verdict. ([P3
-  VERDICT](RESULTS.md#L11357).)
+  floating-point agreement price remains part of the verdict — and the
+  ENGINE-EXACT ladder extended the family across compilers and C++
+  standard libraries: the pinned Q32/Q64 rung digests reproduce under
+  clang/libc++ and gcc/libstdc++ after the fixture RNG (not the engine)
+  was caught as stdlib-dependent and re-pinned, receipts four
+  reproductions deep. ([P3 VERDICT](RESULTS.md#L11357);
+  [COUNTER-BOOK ENGINE-EXACT-1-RECEIPT](RESULTS.md#L23486);
+  [AMENDMENT ENGINE-EXACT-1-DIGESTS](RESULTS.md#L23566).)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] At n=1 packing
   pass, rANS converted the measured entropy bound into real lossless bytes for
   the sampled house crystals and one production MoE artifact. ([P6-v2
@@ -1073,11 +1089,17 @@ regime tag on every bullet is the fence.
   constant learning rate REGRESSES at long horizons (12,518 to
   13,540 at 4000 steps — the decay law at diet scale), window
   count saturates at fixed parameters (32 and 64 windows land
-  together near 14,680), and the corrected schedule bends the
-  plateau by 5.9% (11,777) without breaking the registered 10%
-  bar; the parameter ladder is the named next lever. ([VERDICT
+  together near 14,680), and the schedule is the measured
+  binder: decay bends the plateau 5.9% at 4,000 steps (11,777) and
+  BREAKS it at 16,000 (9,821 = 21.5% below the anchor, bar was
+  10%), while const-lr regresses further with horizon
+  (15,045-15,320 at s16000) and neither params (31k-110k) nor
+  windows moved the top corner toward the bar — joint scaling did
+  not convert; the next lever is a decay ladder. Loss-level only,
+  no capability reading attaches. ([VERDICT
   PLATEAU-BREAK](RESULTS.md#L21874); [VERDICT
-  P-STEP-BOUND-2](RESULTS.md#L21920).)
+  P-STEP-BOUND-2](RESULTS.md#L21920); [VERDICT
+  ENGINE-SCALE-1](RESULTS.md#L23673).)
 - [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] With the full router
   available, mathematics routes 2.7%

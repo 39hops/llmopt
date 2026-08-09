@@ -34,3 +34,8 @@ scratch/leancheck/Certs.lean
 AGENTS.md
 .agents/
 .codex/
+
+# 2026-08-09 hygiene sweep (reviewer findings, verified)
+data/pull_l9a/
+data/*.axnn
+scratch/lean_real_corpus/*.jsonl

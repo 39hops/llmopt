@@ -23720,3 +23720,56 @@ O(step^2) defect's measurement record, mixed-provenance
 annotated); engine leg axiom's (their relay a3c64b6), verdict
 house-side per the verification contract — which caught one real
 statistic mismatch (relay 2026-08-09-2) before any bar was read.
+
+## AMENDMENT BOUNDARY-OR-BULK-D768 (target: Boundary-or-bulk VERDICT "volume is FEEDING-BLIND", 2026-07-25): the verdict's ONE real-magnitude ordering violation was the d768 crossover cell, now dissolved as a confound artifact (2026-08-09 evening, desk; reviewer-fleet cross-check)
+
+VERDICT REVIVE-D768-CROSSOVER (2026-08-09) read the d768 cell's
+"+7 ternary over fp32" at n=3 same-device paired seeds: pooled -4,
+P-CROSSOVER-NULL. The 2026-07-25 boundary-or-bulk verdict's
+ordering-violation leg ("the ONE real-magnitude violation, 7
+solves >= the 3-real bar") therefore loses its measured anchor,
+and its clause-2 mechanism reading ("fp32@768 is past fp32's W*")
+loses the cell it was fitted to. What survives: the low-bit-only
+scoping of the bits-dimension exchange stands on its sector-(b)
+reasoning (THEORY row amended in place this commit, refutation
+named); the FEEDING-BLIND conclusion is now single-legged and
+should not be quoted without this amendment. Index edges added
+both directions (links on the 07-25 verdict and the 08-09 null).
+
+## AMENDMENT EX4-UNIF-RIDERS (target: PRE-REG EX4-UNIF; extends the pre-reg BEFORE it fires, EX3-FRESH precedent; reviewer-fleet red-team, arithmetic Fable-verified): coverage gaps closed, anchor tolerance defined, harm direction gains its bar (2026-08-09 night, desk)
+
+No arm has run (battery queued behind crown-tie). Riders:
+(1) "within +-10 of full" is the POOLED SUM over three seeds
+    (+-3.33/seed), stated explicitly.
+(2) NEW BAR P-UNIF-HARM: fires iff either uniform draw lands
+    <= -9 pooled with 3/3 negative — consistent harm from
+    uniform deletion books as its own finding (the rank-scoped
+    bar's magnitude clause alone can no longer masquerade a harm
+    pattern as scoping).
+(3) DEAD-ZONE READING (the a-priori-likely middle): any uniform
+    draw pooled in (+10, +21) books PARTIAL-OVERINCLUSION,
+    direction only, no claim — named now so it cannot become
+    post-hoc narration.
+(4) SPLIT-DRAWS READING: if the two uniform draws differ by >= 21
+    pooled, the booked finding is DRAW VARIANCE DOMINATES (no
+    over-inclusion claim either way).
+(5) TOP80 INDETERMINATE: del_top80 in (-21, +21) books the sanity
+    arm inconclusive; other bars still read, verdict carries an
+    instrument-unconfirmed fence.
+(6) ANCHOR TOLERANCE replaces zero-tolerance: the rand0/full
+    reproduction conjunct is an ABORT GATE, not a bar conjunct
+    (deterministic-gate law makes it a checksum); tolerance = a
+    <=1-solve drift on <=1 anchor cell triggers ONE re-gate of
+    that cell with both reads recorded (the sympy-timebox/near-tie
+    class, BOARD-known); anything larger aborts the window.
+POWER NOTE (booked with the rider): at the booked within-load
+paired sd 1.53 (EX-FRESH 11/9/8; 2 df — order-of-magnitude only),
++21 is ~8 sigma and +-10 is ~3.8 sigma; bars are coherent across
+the plausible sd range. CROWN-TIE cross-check same pass: bars
+STAND as registered — the "UNRESOLVED likeliest" concern used the
+binomial prompt-sampling sigma, wrong class for paired births on
+a fixed prompt set; at measured seed sigma (2.0-2.5, RESULTS
+L4905/L23649) tie detection is 75-83%. Verdict-wording notes
+carried to booking: tie claims scope to "+-2.3 solves/seed
+resolution"; n=2 fallback re-derives bars on the per-seed scale;
+single-seed-dominance noted if signs ride one seed.
