@@ -68,5 +68,5 @@ def tee_save(obj, f, *a, **kw):
 torch.save = tee_save
 
 TM.main(v2=False, d=384, layers=8, ffn=1536, heads=6,
-        out=str(OUT), v21=False, fast=False,
+        out=str(OUT), v21=False, fast=True, nopack=True,
         v22=True, gen4=True, epochs=3)
