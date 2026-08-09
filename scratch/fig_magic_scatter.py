@@ -5,7 +5,7 @@ As-rendered derivative of the booked final-estimator verdict
 (RESULTS 2026-07-09 arc: rf rho 0.906 / AUC 0.986 on 1,848 held-out
 rows). Reloads checkpoints/magic_estimator_rf.pt and reproduces the
 trainer's exact held-out split (seed % 2 == 1) and normalization
-from data/magic_labels_cur_rf.jsonl; recomputes rho at render time
+from data/magic_labels_all_rf.jsonl; recomputes rho at render time
 and stamps it on the figure — the figure never quotes a number it
 did not just recompute. No new capability claim.
 
