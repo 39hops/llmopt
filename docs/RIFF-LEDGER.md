@@ -3193,3 +3193,26 @@ seats (audit findings), Artin (sanction + relay), Fable
   plain-language rule. Attribution: Artin (embed-when-unsure +
   the classical-simulability frame), Fable (state-of-bank
   precision + routing-value fence).
+
+- **2026-08-09 (Artin, the p=32 exchange): BORN-RULE NORMALIZER —
+  "if softmax is the problem, why not NOT use it?"** Replace the
+  softmax carry seam with a squared-amplitude normalization
+  (p_i = x_i^2 / sum x_j^2, the quantum measurement rule): purely
+  polynomial/rational, needs NO exp table, exactly representable
+  with one shared denominator in integer/rational arithmetic.
+  Precision on what it does and does not buy: the
+  Omega(2^steps) impossibility means SOME rounding must fire
+  somewhere per step — any normalizer (softmax, Born, sparsemax)
+  still quantizes its output to the PQ carry, so the frozen-carry
+  FLOOR survives the swap. What it could buy: (1) a table-free
+  forward (the exp table and its tse clamp deleted — fewer frozen
+  conventions to transport); (2) sparser/cheaper seams, possibly
+  making a PQ raise cheaper per bit (the E-E-2 exchange rate);
+  (3) house-precedent synergy — the complex-weight NNUE pre-reg
+  and the ZX line already carry the squared-amplitude frame.
+  Sparsemax noted as the other exact-friendly candidate
+  (piecewise-linear simplex projection, exact gradients). Slot:
+  an ENGINE-EXACT-2 design ARM (carry ladder x normalizer
+  family), not a way around the theorem. Attribution: Artin
+  (kill-the-softmax + quantum-wave frame), Fable (the
+  seam-survives analysis + sparsemax sibling).
