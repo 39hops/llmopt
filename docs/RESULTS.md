@@ -23773,3 +23773,17 @@ L4905/L23649) tie detection is 75-83%. Verdict-wording notes
 carried to booking: tie claims scope to "+-2.3 solves/seed
 resolution"; n=2 fallback re-derives bars on the per-seed scale;
 single-seed-dominance noted if signs ride one seed.
+
+## RECEIPT LEAN-300-LABELS (target verdicts: LEAN-FULL-V2 + the 222/78 axiom cross-verification; Artin ruling 2026-08-09): the 300-failure id list and labeled taxonomy tracked as small-text receipts (2026-08-09 night, desk)
+
+Per the seedslad small-receipt pattern: scratch/lean_real_corpus/
+failures_300_ids.txt (300 ids, 2.0KB) and failures_300_labeled.tsv
+(300 rows, 5.3KB) are committed this entry — they are the frozen
+id list and desk-labeled taxonomy behind LEAN-FULL-V2's CLOSED
+300-failure census (222 atom-split + 78 field_simp-open, zero
+residual) and the same-day axiom cross-verification (222/78
+confirmed). The large jsonl siblings in the same directory stay
+untracked per file-handoff convention (now gitignored). Why
+booked: uncited receipts rot — these two are the only artifacts
+from which the census is independently re-derivable without
+re-running the kernel pass.
