@@ -3216,3 +3216,29 @@ seats (audit findings), Artin (sanction + relay), Fable
   family), not a way around the theorem. Attribution: Artin
   (kill-the-softmax + quantum-wave frame), Fable (the
   seam-survives analysis + sparsemax sibling).
+
+- **2026-08-09 (Artin, the diverse-minds exchange): SMALL SPECIALIST
+  MODELS AS EXPERTS, connected through a general weightspace — "what
+  if the experts thing is foreshadowing?"** The measured base: (1)
+  the union-diet law (UNION EQUATION v1) — grammars federate nearly
+  FREE in one 19M substrate (probes at-or-above specialists; series
+  99.2 BEAT its specialist) until capacity W* binds via exposure
+  share; (2) the MoE's router is domain-biased with ordered
+  coalitions (GT-2-D2/D3: code twice as far from math as physics) —
+  a big MoE already self-organizes internal quasi-specialists; (3)
+  crests do NOT transport across domains (D4-PHYS +3 v bar +7) —
+  the right keep-set is domain-local; (4) over-inclusion — surplus
+  participation is interference. The riff composes these: explicit
+  SMALL specialist models + a general routing/connector layer,
+  instead of one big substrate with implicit coalitions. NAMED
+  CHEAP TEST (crossover form): at matched TOTAL params, do two
+  small single-grammar specialists + a dispatcher beat one
+  union-diet model once W* binds? House instruments exist (19M
+  specialist births, the dispatcher-race pattern, union births).
+  FENCE: "connected through weightspace" must mean FUNCTION-space
+  composition (routing, distill, oracle-verified exchange like the
+  12/12 model+engine complementarity) — direct weight-space
+  merging is the unproven leg (weight-reader closed at toy scale;
+  never score weights by weight distance). Attribution: Artin
+  (architecture frame + foreshadowing read), Fable (evidence
+  assembly + crossover test form).
