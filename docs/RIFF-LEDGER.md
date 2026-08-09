@@ -3287,3 +3287,25 @@ seats (audit findings), Artin (sanction + relay), Fable
   log2(3); quote as structure, not digits — plain-language rule).
   Attribution: Artin (iron<->1.58 question), Fable (radix-economy
   theorem + measured-curve assembly).
+
+- **2026-08-09 (Artin x grok-seat x axiom-Fable, the iron-point
+  closure): THE TWO-TERM LAW.** The iron/e/ternary confluence
+  dissolves cleanly: every efficiency-per-unit curve with a
+  ~linear benefit term and a superlinear penalty term has an
+  interior maximum — the confluence is the GEOMETRY, never the
+  x-axis labels (Fe-56 from volume~A vs surface~A^2/3 +
+  Coulomb~Z^2/A^1/3; e from the r/ln r functional; 3 from
+  alphabet completeness + measured nulls above). Artin's
+  9th-grade isoperimetric read is LITERALLY term one of the
+  liquid-drop model (surface fraction shrinking as the drop
+  grows); the fall always comes from whatever charges for size
+  (Coulomb / the leading r / structure the training can't cash).
+  DOCTRINE RIDER (axiom's, adopted): when a plateau appears, the
+  productive move is to IDENTIFY WHICH PENALTY TERM BINDS, never
+  to scan the axis for a magic value — leave-one-small slices are
+  that instrument. Same-day demonstration: ENGINE-SCALE-1's
+  plateau bound not by capacity or windows but by the const-lr
+  penalty term (s16000-const REGRESSES; decay removes the term
+  and the plateau breaks 21.5%). Attribution: grok seat
+  (geometry-not-labels dissolution), axiom-Fable (two-term form +
+  the which-term-binds rider), Artin (isoperimetric bridge).
