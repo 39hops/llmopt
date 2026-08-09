@@ -3269,3 +3269,21 @@ seats (audit findings), Artin (sanction + relay), Fable
   crown texture is noise-class until the births battery books.
   Attribution: Artin (star frame + core-vs-traversal split),
   Fable (tensor-class probe form + sigma/8 interface evidence).
+
+- **2026-08-09 (Artin, star-frame continuation): THE IRON POINT OF
+  ALPHABETS — is there something between iron and 1.58 bits?** The
+  real half: iron-56 = maximum of binding-energy-per-nucleon;
+  base 3 = the RADIX-ECONOMY optimum among integer bases (cost
+  r*log_r(N) minimized at e~2.718; 3 is the best integer — a
+  classical theorem, the Setun/Knuth balanced-ternary lineage).
+  Both are peaks of an efficiency-per-unit curve: "where building
+  bigger stops paying." The house has MEASURED its own such curve:
+  1.0 bit {-1,+1} = collapse (silence-is-structure crater); 1.58
+  bits {-1,0,+1} = peak (crown tie, d768 null); 16-64+ bits = flat
+  (precision doctrine closed). {-1,0,+1} = the minimal complete
+  instruction set (sign + abstention) — smallest alphabet with
+  direction AND silence. FENCE: curve-shaped analogy, never
+  number-shaped (no arithmetic link between 26/56/8.79 MeV and
+  log2(3); quote as structure, not digits — plain-language rule).
+  Attribution: Artin (iron<->1.58 question), Fable (radix-economy
+  theorem + measured-curve assembly).
