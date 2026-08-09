@@ -3089,3 +3089,26 @@ seats (audit findings), Artin (sanction + relay), Fable
   Artin (frame + no-volunteer-grid constraint), Grok (scoping),
   Fable (banking + the already-SPRT observation + the
   paired-record gap).
+
+- **2026-08-08 (Artin, the exact-compression extension of the
+  black-hole frame)**: exact-arithmetic training as "a true black
+  hole — compressing the data exactly and infinitely": if
+  precision, absorption, and LR are one law (THEORY absorption
+  row), then fp training is a LEAKY compressor (every rounded
+  update discards a little verified signal) and exact training is
+  the zero-leak limit — the model learns from the data EXACTLY.
+  House counter-position stays the absorption law's: at birth LRs
+  the leak is far below gradient noise, so the limit buys nothing
+  measurable. This is now PRE-REGISTERED DISAGREEMENT #3 territory
+  (lineage: #1 birth rarity — law won; #2 accumulator tail — law
+  won on scope; #3 exact-vs-fp32 END-TO-END gradients — genuinely
+  open, the 2026-08-08 audit showed fp32 backward rounding was
+  shared by every tested arm). Vehicle: axiom exact-engine
+  feasibility (relay sent; transcendental-site conventions become
+  contract pins; fallback rung = exact-GEMM-only isolating the
+  correlated-matmul-rounding mechanism). Fence: narration stays
+  literal per the plain-language rule — "black hole" is the
+  banked frame's name, not a mechanism claim. Attribution: Artin
+  (frame + priority call), axiom-Fable (feasibility grounding),
+  Fable (scope audit that opened the door + the exact-GEMM-only
+  fallback).
