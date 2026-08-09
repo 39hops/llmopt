@@ -23639,3 +23639,33 @@ artifacts]; one vehicle, mathgen L1-3; paired within-seed
 within-load; deletion recall costs booked alongside (EX-ANAT-3
 class ~2.5% of demand); the deployment-relevant reading (prune-
 for-free) stays lab-scoped until it survives off the house gate.
+
+## VERDICT REVIVE-D768-CROSSOVER: P-CROSSOVER-NULL FIRES — the "+7 ternary crossover at d768" dissolves into the paired noise class once device and diet confounds are removed (pooled t-fp32 = -4 over 3 same-device seeds) (2026-08-09 afternoon, Mac)
+
+Against PRE-REG REVIVE-D768-CROSSOVER (bars frozen 2026-08-08
+before launch). Six births, both arms per seed on ONE device
+(Mac/mps), one diet path (v22+gen4), 3ep, D2-excised, gates via
+gate_ckpt (768 8 3072 12), receipts logs/revive/d768_*.log:
+  fp32  s2 64/120 {3:23,4:6,5:15,6:8,7:12}  sha 6acd47b0a5218e73
+  fp32  s3 61/120 {3:21,4:5,5:16,6:7,7:12}  sha cd2b4dfc8470f567
+  fp32  s4 65/120 {3:23,4:6,5:16,6:7,7:13}  sha a6d1c990c7d89d0c
+  t     s2 62/120 {3:23,4:5,5:15,6:8,7:11}  sha 3e146e6ab84bce7c
+  t     s3 62/120 {3:21,4:4,5:17,6:7,7:13}  sha 5eee721f2bb2f452
+  t     s4 62/120 {3:22,4:5,5:15,6:8,7:12}  sha 72a9ff39567884ec
+All six dicts sum-verified. Paired deltas (t - fp32): -2 / +1 /
+-3, pooled -4: |pooled| <= 5, P-CROSSOVER-NULL FIRES.
+P-CROSSOVER-REAL (>= +9, 3/3 positive) dead; P-INVERT (<= -9,
+3/3 negative) dead. THE CLAIM BOOKS: the boundary-grid headline
+"ternary 65 v fp32 58 at d768 (+7)" was carried by its confounds
+(cross-device birth + diet-path mismatch risk) — on a clean
+same-device, same-diet, paired-seed instrument, ternary and fp32
+are gate-indistinguishable at d768 (all three deltas inside the
++-5 single-seed fence; the t arm is notably seed-stable at
+62/62/62 vs fp32's 61-65 spread, booked descriptively, no claim).
+FENCES: seed = init draw (data order epoch-keyed, seed-invariant
+— the n=3 spread is init noise only); Mac/mps line only, this
+pairing NEVER reads against the original mixed-device cells;
+3ep dose (the ternary 6ep question stays with R9's scope);
+gates-only. CONSEQUENCE: the d768 crossover leaves the revival
+ledger as a confound artifact; crown-tie births (revive item 2,
+pre-reg booked) fire NEXT on the freed Mac.
