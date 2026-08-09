@@ -3139,3 +3139,29 @@ seats (audit findings), Artin (sanction + relay), Fable
   Goes into the eventual #3 pre-reg as a secondary instrument.
   Attribution: Artin (both frames), Fable (instance sweep +
   true-null defense).
+
+- **2026-08-08 (Artin, data-as-terminal-limit + the chess
+  testbed)**: extension of the exact-compression bank. (1) The
+  local law's testable form: if, with every other dial measured
+  at its stop, only DIET DIFFICULTY moves capability, then data
+  is the binding constraint — already 1x observed (gen-6 plateau
+  broken only by territory); composition rider applies ("harder"
+  that starves the base rots the model — gen-7 lesson). The
+  cosmic version (modeling the universe needs more data than it
+  contains) is not reachable from this bench: it depends on
+  whether the target's difficulty ladder terminates. (2) CHESS as
+  the miniature where the cosmic claim is PROVABLE BY COUNTING:
+  ~10^44 positions cannot be stored exactly in physical
+  resources (7-piece tablebases = 140TB frontier), while checkers
+  (~10^20) WAS solved 2007 — one positive, one negative data
+  point for "solvable iff state space fits resources." lc0/SF are
+  the predicted objects: lossy compressions of an unstorable
+  function, on the purest data there is. The measurable question
+  for a chess-native model is NOT "solve" (settled by arithmetic)
+  but the COMPRESSION-EFFICIENCY CURVE: strength per param per
+  training position on a target of known exact size —
+  NNUE-lineage instruments fit it natively; charter-clean
+  (combinatorial game theory = mathematics). Riff-tier: a chess
+  engine is a scope decision, banked not launched. Attribution:
+  Artin (both), Fable (counting argument + checkers control +
+  curve reframe).
