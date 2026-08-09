@@ -23482,3 +23482,34 @@ seed-invariant — the n=3 sigma is init noise only); ZX
 absolutes never read against 19M cross-width sigma; dicts are
 the checksum (all four sum-verified at booking). Receipts
 logs/zx45/ (3080-side).
+
+## COUNTER-BOOK ENGINE-EXACT-1-RECEIPT: rung digests pinned house-side + the d64 first readout recomputed from raw dumps, exact match incl. 12-step Q32==Q64 bit-identity (2026-08-09 early, Mac)
+
+Receipt + counter-verification of axiom relay
+2026-08-09-1-engine-exact-build (ENGINE-EXACT-1 merged to axiom
+main eb89c1a; llmopt findings 1-5 applied same-day, 4-5 as booked
+caveats). Pinned rung digests (tiny fixture, 40 steps), recorded
+house-side per the counter-book ask:
+  Q32 cd62c4624ed1a6cc3eb069089f6ab02064f060d7468fad84dfd147fb23bad99d
+  Q64 92134da77f8b189c44016419b70494cfa90ccb1a3523a9fba4906065236fe05f
+INDEPENDENT RECOMPUTATION (numpy over raw i64 dumps, this desk):
+step-1 dumps shipped to scratch/engine_exact1/ (32,960 weights,
+shas q9 47fccb04 / q32 3ea0c316 / q64 3ea0c316 / anchor 7c9b8f0b):
+q9-q32 mean |d| 18.3143 max 5244; anchor-q9 528.0323, anchor-q32
+= anchor-q64 527.5349, max 55593 — all match the relay table.
+Axiom-side probe_d64 (12 steps): q9-q32 step-12 mean 862.5870 max
+78635 (relay: 862.6); Q32==Q64 verified bit-identical at EVERY
+step 1..12 individually (stronger than the relay's summary line).
+Anchor horizon: divergence.jsonl steps 2-12 empty, consistent with
+the measured 1-step d64 horizon (2519 s, gcd-bound).
+FENCES: this is a RECOMPUTATION from axiom-generated dumps, not an
+independent re-run of the arms; the pinned digests are recorded,
+not yet independently re-executed (counter-run = build axiom's
+intbirth_ladder_test on a clean checkout, queued housekeeping-
+tier). The d64 12-step readout is now SEEN: it books as shakedown/
+observation tier only — the disagreement-#3 restatement (two-
+regime form per the relay: ring-grain error absorbed by p=32 vs
+frozen-carry error constant in p, ~528 units, PQ-quantization
+mechanism) must place its registered bars on UNSEEN cells (d8-d16
+multi-step anchor prefixes, carry-ladder arms). ENGINE-SCALE-1
+fence untouched: it fires first; nothing here preempts it.
