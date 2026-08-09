@@ -23513,3 +23513,52 @@ frozen-carry error constant in p, ~528 units, PQ-quantization
 mechanism) must place its registered bars on UNSEEN cells (d8-d16
 multi-step anchor prefixes, carry-ladder arms). ENGINE-SCALE-1
 fence untouched: it fires first; nothing here preempts it.
+
+## PRE-REG EXACT1-SMALL (disagreement-#3, two-regime restatement): ring-grain vs frozen-carry error on d8/d16 ladder+anchor cells, WSL CPU (2026-08-09 early, booked BEFORE the cells fire)
+
+The eventual #3 pre-reg (RIFF-LEDGER banks, 2026-08-08) lands in
+the two-regime form axiom's build relay asked for: divergence-vs-p
+decomposes into RING-GRAIN error (operand rounding; d64 shakedown
+showed it absorbed by p=32 — bit-identical Q32/Q64, 12 steps) and
+FROZEN-CARRY error (the PQ softmax-carry quantization, identical
+at every rung BY the comparability freeze — d64 shakedown: ~528
+units, flat in p). The seen d64 12-step readout is shakedown tier
+(COUNTER-BOOK ENGINE-EXACT-1-RECEIPT); registered bars live on
+these UNSEEN cells.
+ARMS: cells d8 (T4 D8 DH4 F16 V8) and d16 (T8 D16 DH8 F32 V16);
+per cell Q9/Q32/Q64 rungs (12 steps) + exact-rational anchor
+(<=6 steps, 2h budget/arm, loud aborts), identical tables/init
+bytes per cell. Driver scratch/exact1_small_cells.py (committed
+this entry): portable numpy init (NOT the C++ fixture's
+std::uniform_int_distribution, implementation-defined), stable
+string seeds (exact1-small-<cell>-0), synthetic fixture-class
+tables, PQ at contract default (the carry ladder is
+ENGINE-EXACT-2, out of scope here). Streaming per-step rows.
+BARS (each cell separately; both must agree for a pooled claim):
+- P-RING-ABSORBED fires iff Q32 and Q64 de-grained dumps are
+  bit-identical at EVERY completed step. House predicts FIRES
+  (absorption's point transports off d64).
+- P-CARRY-FLOOR fires iff, at every anchor-certified step, mean
+  |anchor-Q32| and mean |anchor-Q64| agree within 1% relative AND
+  each exceeds 5x the step-matched mean |Q9-Q32|. House predicts
+  FIRES (the floor is grain-independent by mechanism, not by d64
+  accident).
+- P-GRAIN-GROWTH fires iff mean |Q9-Q32| at step 12 > 2x its
+  step-1 value. House predicts FIRES.
+Any bar partially satisfiable only because the anchor certified
+<2 steps books that bar UNRESOLVED for step-structure, step-1
+reads still legal. Failure of P-RING-ABSORBED at these dims books
+honest: ring-grain NOT absorbed at p=32 off d64, and the two-
+regime frame loses its clean split.
+SECONDARY (recorded, no bar): anchor step wall-clocks (gcd-cost
+scaling vs d64's 2519 s), loss traces, first-divergence steps.
+FENCES: WSL CPU; the deterministic integer engine is its own
+instrument (cross-device pooling legal within it ONLY; the pinned
+Q32/Q64 fixture digests get a WSL counter-run receipt before
+cells fire — a mismatch there indicts the mt19937/distribution
+fixture bytes first, the engine second). Synthetic tables =
+external-validity fence: these cells probe arithmetic seams, not
+task capability; no capability claim books from them. Seed = init
+draw. Per the MECHANISM-POSITIVE/CAPABILITY-FLAT rider the finer
+instruments (per-step means/maxes, identity flags, wall-clocks)
+book alongside the bars.
