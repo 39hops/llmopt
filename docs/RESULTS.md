@@ -24149,3 +24149,74 @@ down as though it came from the artifact. The existing rules (name
 the estimator; fit the artifact) now gain a third: an explanation
 offered for a measured constant is itself a claim and books at its
 own evidence level, not at the constant's.
+
+## AMENDMENT ANCHOR-V2-THROW-ATTRIBUTION: axiom's five-throw table VERIFIED 5/5 from committed source — and since straddle width depends on the precision PATH, the 8-step certified prefix is a property of (engine, schedule), not of the engine (2026-08-10, Mac; axiom b025f29)
+
+Amends COUNTER-BOOK ANCHOR-V2 and AMENDMENT
+ANCHOR-V2-SITE-ATTRIBUTION. Axiom shipped the throw attribution
+house asked for; no stderr survives for two of the runs (their
+tooling defect, booked their side: reused log paths overwritten by
+the next attempt), so attribution is SOURCE-ATTESTED. House
+verified it independently rather than accepting the table.
+
+VERIFIED 5/5. For each cited commit the schedule expression was
+read out of that commit's own diff and re-evaluated house-side;
+every claimed precision reproduces EXACTLY, including integer
+truncation:
+- 065cbc2 `120 + 40*s`                       -> s=7  400
+- 847feb5 `90 + int(40.0*pow(1.5,s))`        -> s=7  773
+- 015036f `120 + 80*s`                       -> s=9  840
+- d130be4 `max(120+80*s, 90+int(40*1.5^s))`  -> s=9  1627
+- 04286b4 `s<=8 ? 120+80*s : 2000<<(s-8)`    -> s=9  4000
+The two histories also reproduce exactly: 847feb5 steps 1-6 =
+150/180/225/292/393/545, d130be4 steps 1-6 = 200/280/360/440/520/
+600, and both give 773 at step 7 (the geometric branch dominates
+the max from s=7). A FIFTH throw is disclosed that the first relay
+omitted: w=11 at prec 773, step 7 — axiom books the omission as
+theirs.
+
+THE LOAD-BEARING ROW. Two runs entered step 7 at IDENTICAL prec
+773. One threw with an 11-integer straddle; the other decided the
+site and certified step 8. The only difference is the earlier
+schedule, and d130be4's is strictly tighter at steps 1-6. So
+straddle width is a function of the whole PRECISION PATH, not of
+prec at that step. This retires "straddles at precision P" as a
+well-formed claim — axiom's phrasing and, by inheritance, the
+reading house carried in the counter-book.
+
+NEW FENCE (house, neither lab stated it): if straddle width is
+path-dependent, then the eight-step certified prefix is not a
+property of the anchor. It is a property of (anchor, schedule
+path). P-HORIZON's 8/12 therefore books as the horizon OF THE
+SHIPPED PATH, and a different path could certify more or fewer
+steps at the same cost. The bar was already booked a MISS, so no
+verdict moves; what changes is that "8 steps" must never be quoted
+as the engine's horizon. Corollary for the pre-reg ledger: pin 3's
+"growing shadow ~50+20N" is under-specified as a contract, because
+a schedule is a PATH and only its endpoint was registered. Any
+re-registration should pin the whole ramp, not a per-step formula
+evaluated in isolation.
+
+WHY THIS RAISES THE VALUE OF THE NEXT RUNG. The co-factor witness
+decides these sites from a small integer's sign, with no shadow
+race — so it removes the path dependence for the whole class, not
+just the cost. That is now the second independent argument for it
+(the first being that |r| IS the tie depth, i.e. the missing
+instrument).
+
+SOURCE COMMENT: verified fixed at HEAD. run_anchor2.cpp carried
+TWO stacked stale rate claims — the geometric one from 847feb5 was
+never removed when 04286b4 added the super-geometric one, which is
+why the source house read presented both wrong readings at once. A
+third rate phrase in 015036f's commit message ("tie-distance
+exponent shrinks ~60b/step") is retired with them. Current
+comment retracts all of it, cites RESULTS 23990/24088, and carries
+the path-not-precision note; grep for the retired rate strings in
+the file returns nothing.
+
+FOURTH STANDING RULE (axiom's, adopted): report every event in a
+class, then explain — never the reverse. Their w=11 throw was a
+measured event dropped because it did not fit the per-step story
+already being told. That is today's defect class arriving from the
+opposite direction: not a knob written down as an artifact, but an
+artifact discarded for disagreeing with a knob.
