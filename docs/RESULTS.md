@@ -24652,3 +24652,45 @@ fresh 91M band, n=40/level; sigma language does not transport.
 Estimators named: median, Spearman on level-median pairs, n=7
 levels. Rung B stays [HOLD]; no-fire-as-designed is a
 recommendation, the decision is Artin's.
+
+## PRE-REG DATA-CEIL-0B: margin-vs-PLY-DEPTH — does the greedy chain compress decision margins as it advances, or do fat margins just fork at rare tie sites? (2026-08-10, Artin GO, Mac CPU)
+
+The last inference-side route for the ceiling-swap theory after
+DATA-CEIL-0A killed the hardness route (rho +0.18 v <= -0.8).
+Two competing readings, both booked in prior ledger form:
+(1) COMPRESSION: margins shrink with ply depth — precision
+genuinely binds harder on long chains (the theory's surviving
+mechanism); (2) FORK-ONLY: margins stay fat, chain length merely
+raises the odds of hitting one of the rare tie sites (the fp16
+near-tie doctrine + snap-anatomy decode-horizon reading — damage
+localizes to pre-existing near-ties amplified by horizon, not to
+progressive margin decay).
+
+INSTRUMENT (scratch/margin_by_ply.py): d256 control crystal
+(gate 65, 256/8/1024/4), greedy decode advanced up to 12 plies
+per problem — each ply's emission verified (verify_wave); chain
+advances on valid, stops on invalid/solve with the stop class
+recorded (rule 4). Levels 3-7 (chains that actually go deep),
+n=30/level, fresh band 92_000_000 (disjoint from 9.9M gate, 77M,
+88M, 91M). Per emitted token: top1-top2 gap. Rows stream to
+logs/data_ceil/margins_by_ply_d256.jsonl. CPU only (crown owns
+the Mac GPU).
+
+REGISTERED OBSERVABLES: per-ply median of per-chain min-margin,
+pooled across levels, over plies with n >= 20 surviving chains
+(survivorship stated before numbers — chains that die early are
+their own class, never silently dropped); per-ply fraction of
+tokens with margin < 0.1 and < 0.02.
+
+P-PLY-COMPRESSION predicts: Spearman rho <= -0.8 between ply
+index and per-ply median min-margin over the qualifying plies.
+REFUTATION READING: rho > -0.3 with all qualifying-ply medians
+above 0.2 books FORK-ONLY — the theory's inference-side leg is
+then fully dead at this scale, and remaining routes are
+training-side only (BRIDGE-1, exact-mode slot). Estimators named:
+median, Spearman; computed from the JSONL artifact only.
+SURVIVORSHIP CONFOUND, registered: chains surviving to deep plies
+are the model's EASY chains (it solved its way there), which
+biases deep-ply margins UP. If the refutation reading fires, this
+confound must be named in the verdict as an alternative
+explanation, and the per-ply survivor counts book alongside.
