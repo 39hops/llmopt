@@ -24882,3 +24882,98 @@ readout of the data's local branching factor" holds at
 
 Fences: greedy ply-1, in-corpus states, gradient-not-level claim,
 estimators median + Spearman on 5 bucket medians.
+
+## PRE-REG FP32LIMB-METAL: fp32-limb exact GEMM for Metal, three rungs — the banked MPS KEY finally gets its kernel; axiom build, bars first (2026-08-10, Artin GO to spec; R1 fires on axiom receipt, R2/R3 [HOLD] behind the crown window)
+
+LINEAGE: this is not a new idea — it is the booked MPS KEY
+(RESULTS 3870-3872: fp32 units as exact fixed-point accumulators,
+s=7 slices, block 32, 2s + log2(b) <= 24, 1.0e-15 on CPU with
+zero integer hardware) finally getting its Metal implementation,
+plus the fp32-pair carry ozaki v2 named as its next lift (3964)
+and never built. Design constants ADOPTED from the 08-06
+registration (specs/2026-08-06-3080-lockstep-window.md:93-101):
+s=7, block 32, Mac-internal bar. Two read-only reviewer sweeps
+(red-team + tie-in) integrated; every adopted finding verified
+against source.
+
+RUNG R1 — CPU oracle, C++ (axiom, fires on receipt). Port
+verbatim from scratch/ozaki_rung1.py arm (d) + ozaki_rung2bc.py
+(two_sum, to_int, slices, aligned_partials — note the file's
+s=8 signature default; the REGISTERED constant is s=7). Ground
+truth: axiom's own bigint/dyadic types (ax::core), no Python
+reference needed. DO NOT PORT dd_chain — its carrier term is
+multiplied by a literal 0 (rung2bc.py:99, placeholder; verified
+script-only, no booked number leans on it).
+P-ENVELOPE-EXACT: exact equality to big-int INSIDE the published
+envelope (the 2s + log2(b) <= 24 inequality, written down, with
+a loud reject outside it) across ALL registered input classes:
+narrow-band uniform (labelled NON-PROBATIVE), wide exponent
+spread inside one block, envelope edge +-1 ulp (reject must fire
+on the far side), cancellation-to-~zero blocks, one-giant-element
+blocks, denormals, signed zeros (value-compare v big-int), ragged
+K (K=1, block+-1, non-multiple), 2^24-boundary values, and the
+K-PERMUTATION test: permuting the K axis must give BIT-IDENTICAL
+output — the single best exactness detector (a compensation
+trick passes random tests and fails this). Guards must survive
+release builds (no NDEBUG-stripped asserts as the only fence —
+the torch._int_mm silent-overflow class, 22978).
+RIDERS AT R1 (priced ~zero, adopt don't build): triple-double
+exit = exp_add with len <= 3 (already strictly generalized by
+the expansion code); optional depth-L chain harness so the
+stay-in-RNS promotion trigger (22966: a live >6-layer chain)
+becomes a config flag later — THIS BUILD DOES NOT TRIGGER THE
+RNS PROMOTION, said here so nobody re-litigates.
+
+RUNG R2 — single-simdgroup Metal kernel [HOLD: any Mac GPU use
+waits for the crown window]. One threadgroup, 32 lanes, one
+block. P-KERNEL-BITEQ: bit-identical to R1's INTEGER oracle (the
+immovable reference — never fp-vs-fp). MANDATORY PINS: fast-math
+OFF and contraction pinned (two_sum is only correct under strict
+IEEE semantics — a contracting compiler destroys the error term
+silently; hazard BANKED here, it was written down nowhere);
+Metal fp32 denormal/FTZ behavior measured and documented (if FTZ
+is on, the scheme needs an explicit range restriction); the
+open question ANSWERED as a one-line receipt: does M-series
+expose an integer simdgroup MMA? (Unbooked in either repo;
+cheap; settles whether the RIFF-1149 int8-MMA leg is superseded
+or merely deferred.)
+
+RUNG R3 — tiled + fused, the wall number [HOLD: crown battery +
+its SEPARATE gate step finish first, EX4-UNIF is ahead in the
+queue, and R3 fires only on Artin GO]. Folds exact_gemm R4
+tiling in: ONE tiling choreography, TWO instantiations (int64-acc
+exact_gemm + fp32-limb) — the 2^47 bound survives any tiling
+(22975), so R4 is pure speed. P-WALL, exactly the 08-06
+registration: Mac-INTERNAL, vs Mac-CPU native fp64 at matched N,
+mx.eval every timed iteration, pass at <= 1.07x the CPU wall
+(the cuda fused ratio as target SHAPE, never a comparand — Apple
+GPUs have no fp64, so "vs native fp64 on-device" is undefined).
+SECONDARY, separately labelled: vs mx.matmul fp32 on-device
+(slowdown factor, the split-K precedent). RESOLUTION FENCE:
+n >= 5 timed reps, median + spread; a ratio whose spread
+straddles the bar books UNRESOLVED, not PASS. HONEST-LOSS CLAUSE
+pre-registered: MMA orchestration (not math) may lose the wall —
+the v2-correct-and-slower precedent (metal.py:56-64) says that
+outcome is publishable, not shameful.
+
+SLOPPIEST-LINK CONTRACT (all rungs): the spec ships a per-link
+table — align, split, product, local two-sum, simd reduce, block
+carry, recombine — each with the widest value it can hold and
+the proof it cannot round (the v3 lesson, 3977-3982; "the chain
+is only as exact as its sloppiest link"). fp32 accumulators
+satisfy the int64-rider's INTENT (22975: no link narrower than
+its load) iff the envelope inequality is proven, asserted, and
+permutation-tested; "no fp MMA fragments" carries over unchanged.
+
+TIE-IN LEDGER (from the sweep, priced): RIFF-1149's shared-page
+CPU big-int exit survives verbatim as the R3 exit (~1-2h, unified
+memory, no staging copy); its int8-MMA leg is superseded IF R2's
+MMA question answers no. NNUE runtime: KEPT SEPARATE (FX-V1's
+gate path is already bit-exact integer; its wall is sampling).
+Axiom builds the Metal harness from scratch (zero Metal source
+in their tree — the real cost center, priced honestly) but owns
+bigint/int256/dyadic/rns/blas/pool already.
+
+This is a SPEED/DETERMINISM rung. The capability question is
+closed (132,566 = 132,566); any capability pitch collides with a
+bit-identical paired null.
