@@ -23986,3 +23986,101 @@ precision that was discarded before the fit ran. The house rule
 against booking a number the entry did not just recompute already
 covers this — it was violated inside a correction, which is where
 it is hardest to notice.
+
+## COUNTER-BOOK ANCHOR-V2: P-DIGEST-EQUAL FIRES (byte-identity reproduced house-side); P-HORIZON DOES NOT FIRE (8/12 steps) — and the "tie depth" numbers measure the SHADOW'S EXPONENT, not a distance (2026-08-10, Mac; axiom relay 2026-08-09-7 @ 0c48367)
+
+Against PRE-REG ANCHOR-V2 (f9db0b7). Verified house-side from
+axiom's Mac checkout at their pushed HEAD 0c48367 — artifacts read
+directly, not taken from the relay.
+
+### P-DIGEST-EQUAL: FIRES
+
+Reproduced independently, not accepted:
+- `cmp` CLEAN between tools/exact_anchor/anchor2_d64/anchor2_step1.w9
+  and the booked exact-anchor dump probe_d64/anchor_step1.w9 —
+  byte-identical. Both sha256 7c9b8f0bfb592185... The gcd-free
+  anchor's step-1 weights ARE the exact-rational anchor's weights.
+- That sha256 is also the value of the `digest` field in
+  rows.jsonl step 1, so every streamed row is independently
+  checkable against its own dump. Step-1 loss 16282 matches the
+  booked exact value.
+- Counter columns are internally consistent: floor_exact is
+  CUMULATIVE 64/128/.../512 across steps 1-8, i.e. exactly +64 per
+  step, with eq_zero/cmp/recon/cache_hit all zero throughout.
+- SCHED-boundary and forced-fallback (starved shadow, 96 primes)
+  cells are axiom-side test-suite claims; house has NOT rebuilt
+  their suite, so those two legs of the pin are RELAY-ATTESTED, not
+  house-reproduced. The pin fires on the byte-identity leg, which
+  is the one house could check alone.
+
+### P-HORIZON: DOES NOT FIRE
+
+The bar was a 12-step d64 exact prefix in <= 4 h. The run
+certified 8 steps and blocked at step 9. Booked as a miss, per
+house practice on honest failures — axiom called it a partial
+themselves. Wall total re-added from the rows: 1,286.4 s = 21.44
+min for 8 steps (relay's 21.4 min confirmed), flat in step index
+at ~160 s. For contrast the exact-rational anchor spent 2,554 s on
+d64 step 1 and died in d8 step 3 after 19.34 h (per AMENDMENT
+EXACT1-SMALL-EXPONENT-2; the relay quotes the older loose 19.5 h).
+THE GCD WALL IS DELETED — that is the real result, and it is a
+horizon EXTENSION, not a bar clearance.
+
+### TWO READING CORRECTIONS (house catch, verified in their source)
+
+1. THE TIE-DEPTH NUMBERS ARE NOT DISTANCES. The relay reports the
+   blocked site's distance to its grain integer as < 2^-358 /
+   2^-798 / 2^-1585 / 2^-3958 at shadow precisions 400 / 840 /
+   1627 / 4000, and reads a "super-geometric deepening" off that
+   sequence. The reported exponent is `sh.e`, the SHARED EXPONENT
+   of the dyadic interval (dyadic.hpp:19, "value in [lo*2^e,
+   hi*2^e]"), emitted alongside `lo_bits = bit_len(sh.lo)` at
+   exact_anchor2.hpp:224-226. Then lo_bits - |e| = 42 at ALL FOUR
+   precisions, exactly, because that difference is log2 of the
+   SITE'S VALUE MAGNITUDE (~2^42) and the site is the same site.
+   The four "distances" are precision - 42; they carry no
+   information about the tie at all. The only measured statement
+   available is: at shadow precisions up to 4,000 bits this site
+   still straddles, and CRT reconstruction at the shipped prime
+   budget threw. No rate, and no per-step deepening, is measured.
+2. NO floor-near SITE WAS EVER RECORDED. The relay says
+   "floor-near: ONE site per late step" at steps 7, 8, 9.
+   floor_near reads 0 in every shipped row. By construction it can
+   only increment AFTER a SUCCESSFUL reconstruction
+   (exact_anchor2.hpp: `if (r.is_zero()) fb.floor_exact++; else
+   fb.floor_near++;`), and step 9's reconstruction threw, so the
+   class has never been observed. The relay's own two framings of
+   these numbers — per-step at 7/8/9 versus per-precision retries
+   at one step-9 site — contradict each other; the counters and the
+   constant 42 both select the second.
+
+### WHAT SURVIVES, AND THE CONSTRUCTIVE TURN
+
+The STRUCTURAL-TIE HYPOTHESIS stands, on different evidence than
+the relay offered. floor_decl() runs the pin-1 native test for
+every integer inside a straddle of width <= 4; the throw reports
+w=1, so the single candidate WAS tested for residue equality and
+was NOT equal. So v != k, and the site needs a sign, not an
+equality. That plus the measured x37/step growth of anchor
+numerator/denominator bits makes "true distance ~ 1/D, unreachable
+by any feasible precision" a well-motivated INFERENCE. It is not
+yet a measurement, and the ledger should not carry it as one.
+
+The co-factor witness axiom proposes is therefore doing double
+duty, which is the argument for building it: recovering t = v*z -
+k*z = +-r does not merely decide the floor natively — |r| IS the
+tie depth, so the fix supplies the instrument that is currently
+missing. House recommends it as the next rung and asks that the
+amendment register |r| as a reported observable per site, so the
+"super-geometric" claim becomes testable rather than inferred.
+
+### LEDGER
+
+Pin 3's growing shadow is CONFIRMED IN KIND (fixed precision dies
+early; the shipped 120+80N ramp carried 8 steps with every
+straddle decided natively) and REFUTED IN RATE for the tie race —
+though see correction 1: the replacement rate is not yet measured
+either. Pins 1, 2 and 4 all executed. Zero reconstructions across
+steps 1-8 is verified from the counters. Fence: axiom Mac CPU,
+one worker, 3080 untouched; wall-clocks carry the shared-use
+fence both labs applied.

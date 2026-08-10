@@ -3392,3 +3392,42 @@ seats (audit findings), Artin (sanction + relay), Fable
   should not let it become one without its own bar. Attribution:
   Artin (the fuse/crest link + the more-minds framing), Opus 5
   (confound decomposition + the blind-replay discriminator).
+
+- **2026-08-10 CORRECTION to the bank above (Artin: "there is,
+  we've done them both — query the headers").** The bank called the
+  three-arm seat discriminator an unrun probe. It is not unrun; it
+  is UNTABULATED. A header sweep of results-index returns ~26
+  review-adoption entries spanning every arm the bank proposed:
+  SAME-MODEL SELF-REVIEW (AMENDMENT house self-review 2026-07-26,
+  RESULTS L5453 — the streaming -12 confound, Fable catching
+  Fable); DIFFERENT-MODEL SEATS at every fleet size, one through
+  five (Opus-5 onboarding "four catches" L4803; reviewer catches
+  L4770/L4901/L5026/L5069; REVIEW-ADOPTION passes L13063/L13785/
+  L13840/L14504; AUDIT-0802 L16271; RUNGD-0803 "four reviewers,
+  and the fence was the thing that was wrong" L16608; FINAL-0803
+  L17024; MERGE-AUDIT-OPUS5 L17146; F1-REVIEW "two reviewer
+  passes" L17713; GT1-CORR L18526; GT2-REVIEW L19417 and the
+  three-seat GT2-REVIEW-2 L19648; GT-4 L20006; DAY-CONSOLIDATION
+  L20575; the 08-07 doc review L22056; opus-seat null archaeology
+  L23401; reviewer-fleet red-team L23739); CROSS-LAB SEATS (the
+  ozaki 2b "the auditor was the bug again" L3897, E4 AUDIT
+  CLOSE-OUT L7492, axiom's RED pass moving a mechanism one layer
+  earlier L18087); and NON-CLAUDE seats already policy (grok CLI +
+  codex read-only, cross-check-seats memory; DeepSeek's FINDINGS
+  commentary). Today adds two more rungs in one day: a
+  different-model seat catching a Fable booking, then ARTIN
+  catching that seat's own correction — the human seat is in the
+  fleet and scored a catch the model seats missed.
+  SO THE OPEN ITEM IS A STATISTIC, NOT AN EXPERIMENT. Nobody has
+  tabulated catches per seat by CLASS (arithmetic, statistic-swap,
+  scope-overreach, stale-reference, fabrication) against seat type
+  and fleet size. That is a desk pass over entries the lab already
+  owns, cheap, and it is the only way the "up to a point" half of
+  Artin's curve gets a measured knee instead of an analogy — the
+  five-seat sweep is the largest fleet run and would anchor the
+  right-hand side. The confound decomposition in the bank above
+  survives unchanged: the observational record cannot separate
+  model identity from independent state, because seats were never
+  assigned the same material. Attribution: Artin (the correction —
+  "we've done them both"), Opus 5 (the header sweep + the
+  statistic-not-experiment reframing).
