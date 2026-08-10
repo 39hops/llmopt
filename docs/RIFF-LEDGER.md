@@ -3575,3 +3575,27 @@ the ring is), step 9 defeated a third time with the sensor
 sizing the wall at >=15k bits. Surviving open edge: the
 invariance-v-anticipation tension (no derivative term possible
 without re-introducing history).
+
+- **2026-08-10 (Artin, late evening): SFT AS REPAIR OF NON-EXACT
+  WEIGHTS.** The frame: supervised fine-tuning is not "learning new
+  things", it is repairing the damage a non-exact substrate (rounded
+  births, quantized bodies, drifted masters) did to a function the
+  data already specifies — which predicts SFT's gradient mass should
+  CONCENTRATE where the representation error lives, not spread
+  uniformly. MEASURABLE FORM (bankable): per-tensor-class |dW| map
+  of an SFT pass v the same model's quantization-error map (fp v
+  ternarized-class deltas) — the repair frame predicts rank
+  correlation between "where SFT pushes" and "where precision was
+  lost"; the null is SFT mass tracking the task gradient regardless
+  of precision damage. Ties to the gradient-spectrum reading
+  (bits(needed) ~ log2(w/(LR*g)), DATA-CEIL survivors) and BRIDGE-1.
+  HONEST FENCE on the axiom-tools half of the ask: the exact
+  instruments do NOT speed SFT — the anchor runs 162 s/step at d64
+  (ring-bound, AMENDMENT FUNNEL-PREC-COST-SCOPE-AND-WALL) and SFT
+  sizes sit far beyond it; their role in this riff is CERTIFYING
+  small repair cells (exact d8-d64 SFT steps as ground truth for
+  what "repair" does bit-by-bit), not throughput. Pairs with the
+  STAR-PROFILE bank (both ask WHERE precision matters, from
+  opposite ends). Attribution: Artin (repair frame), Fable
+  (dW-v-quantization-error observable + exact-cell certification
+  role).

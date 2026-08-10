@@ -2560,6 +2560,12 @@ Sensitivity-wall anatomy (Artin 2026-07-27: "find WHERE the wall lives"): single
 Night-28b soup instrument: plain parameter mean of N checkpoints (same shape), then gate. Usage:   soup_gate.py TAG d layers ffn heads ckpt1 ckpt2 [ckpt3 ...] VOCAB_EXTRA rides (atom order must match the births).
 
 
+### scratch/star_profile.py
+Tensor-class ternary sensitivity profile (PRE-REG STAR-PROFILE-1, 2026-08-10). Star frame: precision belongs to interfaces/core; traversal tolerates {-1,0,1}.
+
+- `ternary(w)` — absmean ternary — row-scale for 2D (train_ternary.py's form),
+- `main()`
+
 ### scratch/streaming_birth_d256.py
 Streaming-birth A/B, arm S (RIFF-LEDGER 2026-07-24 "Streaming birth").
 

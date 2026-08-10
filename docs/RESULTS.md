@@ -25733,3 +25733,38 @@ Fence: n=1 crystal (d256), free-running greedy, house math
 crystal regime. What would move THEORY: a mechanism for absorbing
 confidence that survives a second crystal — candidate: answer-form
 proximity in the emission, not the state's branching.
+
+## PRE-REG STAR-PROFILE-1: tensor-class ternary sensitivity profile — does precision belong to the interfaces/core with traversal ternary-tolerant? (2026-08-10 late evening, 3080)
+
+The banked star-profile riff's measurable form (RIFF-LEDGER
+2026-08-09, Artin's star frame), first firing; Artin GO'd the
+Windows box (CPU+GPU open). Instrument: post-hoc ternarization
+(PTQ, scripts/train_ternary.py's absmean ternary(), row-scale for
+2D / global absmean for 1D gains) of ONE tensor class at a time on
+the FP-trained mathnative_wfloor_d256 crystal, then the standard
+120-prompt chain gate (step_grpo_micro.gate_eval seeds/oracle) per
+arm. SEVEN ARMS, all on the 3080, one seed, same gate seeds:
+  base(fp) / emb / head / norms(n1.g,n2.g,norm.g) / attn(qkv,o) /
+  ffn(gate,up,down) / body(attn+ffn).
+Driver scratch/star_profile.py, rows stream to
+logs/star_profile/star_profile_d256.jsonl (dicts, not totals).
+
+BARS:
+1. P-GRADIENT: the star frame predicts a sensitivity ORDERING —
+   interface/core classes (emb, head, norms) lose MORE solves than
+   traversal classes (attn, ffn) per ternarized parameter share.
+   FIRES if every interface arm's drop exceeds every body arm's
+   drop (strict ordering on solve totals). REFUTED if any body arm
+   drops below an interface arm by > 7 solves (1.5 sigma).
+2. P-TRAVERSAL-TOLERANT: at least one body class survives PTQ
+   ternary within 7 solves of base. NULL otherwise (would read:
+   ternary tolerance is a QAT property, not a weight-geometry
+   property — the crown ternary tie was trained-in, not latent).
+FENCES: single seed — any pairwise delta < 7 solves books as
+UNRESOLVED direction (resolution law, n>=3 for sub-1.5-sigma
+claims); the PROFILE SHAPE (orderings with gaps > 7) is the
+readable object. 3080 numbers never sit beside Mac gate numbers
+(cross-device doctrine). PTQ-not-QAT scope: this measures latent
+geometry of FP weights, not deployability.
+Prediction (house, from the bank): emb/head/norms crater (>30
+lost), attn and ffn drop moderately, ffn > attn tolerance.

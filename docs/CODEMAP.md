@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 156, library 156, reproduce-pinned 9, results-cited 120, spec-cited 44
+Census: UNCITED 156, library 157, reproduce-pinned 9, results-cited 121, spec-cited 43
 
 ## scratch/
 
@@ -18,7 +18,7 @@ Census: UNCITED 156, library 156, reproduce-pinned 9, results-cited 120, spec-ci
 | adjudicate | adjudicate_zx.py | library | — | 1 |
 | anatomy | anatomy.py | library | RESULTS×5, specs×4 | 1 |
 | attractor | attractor_census.py | library | RESULTS×1 | 1 |
-| attractor | attractor_census2.py | results-cited | RESULTS×1 | — |
+| attractor | attractor_census2.py | results-cited | RESULTS×2 | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — |
 | basin | basin_probe.py | UNCITED | — | — |
 | birth19m | birth19m_snaps.py | UNCITED | — | — |
@@ -301,6 +301,7 @@ Census: UNCITED 156, library 156, reproduce-pinned 9, results-cited 120, spec-ci
 | snap | snap_anatomy.py | results-cited | RESULTS×1 | — |
 | soup | soup_gate.py | library | specs×1 | 1 |
 | stability | stability_atlas.sh | UNCITED | — | — |
+| star | star_profile.py | results-cited | RESULTS×1 | — |
 | streaming | streaming_birth_d256.py | library | RESULTS×3 | 1 |
 | successors | successors_acceptance.py | results-cited | RESULTS×1 | — |
 | sym | sym_birth.py | library | RESULTS×1, specs×3 | 9 |
@@ -481,7 +482,7 @@ Census: UNCITED 156, library 156, reproduce-pinned 9, results-cited 120, spec-ci
 | sol | sol_enrich_results.py | library | specs×4 | 1 |
 | sol | sol_generate_tables.py | spec-cited | specs×3 | — |
 | step | step_grpo.py | spec-cited | specs×1 | — |
-| step | step_grpo_micro.py | library | specs×1 | 88 |
+| step | step_grpo_micro.py | library | specs×1 | 89 |
 | sweep | sweep_lookup.py | library | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — |
@@ -499,7 +500,7 @@ Census: UNCITED 156, library 156, reproduce-pinned 9, results-cited 120, spec-ci
 | train | train_proposer.py | spec-cited | specs×5 | — |
 | train | train_syndrome_decoder.py | library | RESULTS×1 | 1 |
 | train | train_syndrome_policy.py | results-cited | RESULTS×1 | — |
-| train | train_ternary.py | spec-cited | specs×1 | — |
+| train | train_ternary.py | library | RESULTS×1, specs×1 | 1 |
 | train | train_tf32x3.py | UNCITED | — | — |
 | train | train_value_head.py | results-cited | RESULTS×1 | — |
 | train | train_weight_reader.py | library | specs×4 | 1 |
