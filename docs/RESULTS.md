@@ -25032,3 +25032,17 @@ R2/R3 remain [HOLD] per the pre-reg (crown window + gate step +
 EX4-UNIF ahead + Artin GO). The integer-simdgroup-MMA question
 stays open until R2. Fences respected throughout: CPU only, one
 worker, no GPU touch either machine.
+
+## AMENDMENT FP32LIMB-METAL-GO (target: PRE-REG FP32LIMB-METAL 24886): R2/R3 [HOLD] LIFTED by Artin GO 2026-08-10 evening — build-now/dispatch-later split; EX4-UNIF reordered behind the R2/R3 dispatches (2026-08-10, Mac)
+
+Artin GO'd R2/R3 while the crown battery still owns the Mac GPU
+(4/6 cells done, c_s4 running). Resolution: all CPU-legal work
+fires now (Metal harness, kernel source, shader compilation, R1
+test rig, R3 tiling choreography); the first GPU DISPATCH waits
+for the crown battery AND its separate gate-eval step to finish
+— a physical constraint, not a hold. House pings axiom at that
+moment; axiom does not poll the GPU. EX4-UNIF moves behind the
+R2/R3 dispatches in the freed-window queue (Artin's reorder;
+cost to EX4 is minutes). R2's receipt must open with the _f24
+fork answer per COUNTER-BOOK 24981. Relay 2026-08-10-13 carries
+the GO.
