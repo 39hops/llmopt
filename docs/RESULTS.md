@@ -23906,3 +23906,41 @@ DEFECTS NAMED (frozen-driver list, fix on registered re-run
 only): divergence loop bound uses rung_steps; jsonl row appends
 after w9 dump (the d16 step-2 gap above); only RuntimeError
 caught; divergence pass not streamed (why d8's ran house-side).
+
+## AMENDMENT EXACT1-SMALL-EXPONENT: the two quoted grain-growth exponents used DIFFERENT estimators — matched, both cells read 0.80/0.82 (least-squares) or 0.72/0.73 (endpoint), and the cells AGREE (2026-08-10, desk)
+
+Amends VERDICT EXACT1-SMALL (2026-08-09 night). That entry's
+P-GRAIN-GROWTH paragraph reads "log-log fit d8 0.80, d16 0.73".
+Both numbers are real, but they are NOT the same statistic:
+- d8 0.802 is the least-squares slope of log(mean |Q9-Q32|) on
+  log(step) over steps 1-12.
+- d16 0.73 is the ENDPOINT exponent, log(m12/m1)/log(12) = 0.729.
+Recomputed both ways from the same dumps (d8 house-side pull,
+d16 the driver's own divergence.jsonl):
+  d8   least-squares 0.802   endpoint 0.716
+  d16  least-squares 0.817   endpoint 0.729
+Caught house-side while curating the verdict into FINDINGS; same
+class as the ENGINE-SCALE-1 last-window-vs-cycle-mean catch
+(relay 2026-08-09-2), this time self-inflicted — a derived
+statistic quoted without naming its estimator.
+
+WHAT CHANGES: nothing about the BAR. P-GRAIN-GROWTH is the 2x
+step-12-over-step-1 flag (d8 5.92x, d16 6.11x); it fired and
+still fires. The exponent was the descriptive read carried
+alongside it per the bar-language amendment, and it stays
+super-diffusive (>0.5) and sub-linear (<1.0) under BOTH
+estimators at BOTH dims.
+
+WHAT IMPROVES: the mixed pair 0.80-vs-0.73 falsely suggested
+grain grows SLOWER at d16 than at d8. Matched, the cells agree
+closely and d16 is marginally FASTER (0.802 v 0.817
+least-squares; 0.716 v 0.729 endpoint). Grain growth is
+dimension-insensitive across this pair — a cleaner result than
+the one booked, and one that contrasts with the frozen-carry
+floor, which does scale with width.
+
+STANDING RULE (adopted): a derived exponent books with its
+estimator named in the same sentence. The two estimators are not
+interchangeable — the endpoint form is systematically lower here
+(~0.09) because the series is flat over steps 1-2 and the
+least-squares fit is pulled by the interior points.

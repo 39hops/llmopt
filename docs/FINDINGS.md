@@ -166,6 +166,47 @@ VERDICT](RESULTS.md#L10676).)
   Born-rational training carried no resolved capability premium across the
   tested two-seed pair; the first apparent win demoted to parity.
   ([BORN-RATIONAL SEED-2](RESULTS.md#L7847).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery]
+  Rounding error in the exact-integer engine separates into two
+  independent regimes, and the precision arms are the causal test:
+  Q9, Q32, Q64 and an exact-rational anchor run from identical
+  initialization bytes, varying only precision. Ring-grain error is
+  fully absorbed at p=32 — de-grained Q32 and Q64 weights are
+  bit-identical at all twelve steps at both d8 and d16, so ring
+  precision beyond 32 buys nothing. Frozen-carry error, which is the
+  softmax carry quantization, is grain-independent by mechanism
+  rather than by accident: the anchor's distance to Q32 equals its
+  distance to Q64 to the last decimal at every certified step. Grain
+  growth itself is super-diffusive and sub-linear at both dims, and
+  under a matched estimator the two dims agree closely — least-squares
+  log-log slopes 0.802 and 0.817, endpoint exponents 0.716 and 0.729.
+  Both unseen cells fired all three registered bars, but two cells
+  share one implementation and one device, so this is a mechanism
+  reading and not a replication route. ([VERDICT
+  EXACT1-SMALL](RESULTS.md#L23852); [AMENDMENT
+  EXACT1-SMALL-EXPONENT](RESULTS.md#L23910).)
+- [SINGLE-SEED] [REGIME-SCOPED: deterministic integer battery] The
+  frozen-carry floor accumulates linearly in steps and grows with
+  model width while staying independent of ring precision: the
+  anchor-to-rung distance reads 19.0 then 38.0 at d8 and 44.8 then
+  87.2 at d16 across the two anchor-certified steps, against roughly
+  528 at d64 in the earlier shakedown. Per step and per unit of
+  width that is about 2.4, 2.7 and 8.3, so the floor rises faster
+  than width itself. One run per width and not pre-registered, so
+  this is a descriptive read; its value is that the carry-ladder arm
+  of the next engine pre-registration now has a measured curve to
+  beat rather than a guess. ([VERDICT EXACT1-SMALL](RESULTS.md#L23852).)
+- [SINGLE-SEED] [REGIME-SCOPED: deterministic integer battery] Exact
+  rational arithmetic is a cost wall rather than a correctness one.
+  The d8 anchor took 3.9 s for step 1 and 3,335 s for step 2, and was
+  killed 19.5 hours into step 3 against a projected multi-week run;
+  profiling attributes 86.6 to 96.4 percent of a d64 anchor step to
+  gcd inside rational addition. Wall-clocks are descriptive only,
+  because the machine carried interactive load during part of the
+  window. The abandonment is itself the horizon measurement that the
+  follow-on gcd-free design is registered against. ([VERDICT
+  EXACT1-SMALL](RESULTS.md#L23852); [PRE-REG
+  ANCHOR-V2](RESULTS.md#L23791).)
 
 ## Data, diet, and federation
 
@@ -275,9 +316,13 @@ VERDICT](RESULTS.md#L10676).)
   self-refactoring (78), with ZERO residual and no new class. The
   independent-implementation route: axiom's emitter and oracle
   against the house's own printer, statement-diff, and Mac-local
-  kernel; the failure CLASSIFICATION is house-side sympy equivalence
-  pending axiom counter reconciliation (id lists staged). ([VERDICT LEAN-SAMPLE-V2](RESULTS.md#L22407); [VERDICT
-  LEAN-FULL-V2](RESULTS.md#L22493).)
+  kernel; the failure CLASSIFICATION is house-side sympy equivalence,
+  since reconciled against axiom's independent count at the same 222
+  and 78. The frozen id list and the labeled taxonomy are committed
+  as small-text receipts, so the census is re-derivable without
+  re-running the kernel pass. ([VERDICT LEAN-SAMPLE-V2](RESULTS.md#L22407); [VERDICT
+  LEAN-FULL-V2](RESULTS.md#L22493); [RECEIPT
+  LEAN-300-LABELS](RESULTS.md#L23777).)
 - [REPLICATED] [REGIME-SCOPED: house crystals] The hardening sweep
   converts pre-doctrine point estimates into replicated laws and
   scoped fences without retracting any paired claim: the
@@ -304,8 +349,34 @@ VERDICT](RESULTS.md#L10676).)
   ordinary seed noise and 2.4x capacity buys nothing on the graph
   grammar; the roots-of-unity reopening stays un-fired.
   ([VERDICT HARDENING-P4-2](RESULTS.md#L23459).)
-- [MECHANISM-CONFIRMED] [ONE VEHICLE] Over-coarse quantization is
-  deletion, not perturbation: snapping a 19M model's weights to
+- [REPLICATED] [DEVICE-SCOPED] [FREE-RUN-GATED]
+  [REGIME-SCOPED: house crystals] The frozen Phase-3 list completes
+  with one real cost and one tie, both at n=3 paired seeds on the
+  device of origin. The quaternionic 4x conversion toll is real:
+  pooled -17 against the comparator, negative at all three seeds,
+  and every heal retrofits fully at anti-mass 0.0007 or less. Its
+  replication variable had to change between registration and fire,
+  because the registered torch seed measured INERT in that driver —
+  three torch-seed arms replayed the original trajectory
+  receipt-identically — so the data-order shuffle became the seed
+  axis instead, which is a weaker replication route than the one
+  registered and is booked as such. Separately, dose-fed ternary
+  TIES fp32 at 19M and d384: deltas -1, 0 and -2 for a pooled -3,
+  inside the tie band. ([VERDICT
+  HARDENING-P3-R7](RESULTS.md#L23168); [AMENDMENT
+  HARDENING-P3-R7-ARM](RESULTS.md#L23383); [VERDICT
+  HARDENING-P3-R9](RESULTS.md#L23251).)
+- [NULL] [REGIME-SCOPED: closed-system math] The peeling probe's
+  null HARDENS rather than dissolving: the registered suspicion was
+  that mid-chain states were out of distribution, so the probe was
+  re-run on 119 in-distribution post-step states, each with a known
+  valid predecessor in band. Per-candidate validity came out LOWER,
+  at 4.3 and 5.0 percent against the original 11 percent, so the
+  distribution-artifact explanation is refuted for that row.
+  ([VERDICT HARDENING-P4-1](RESULTS.md#L23197).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: house crystals] On one 19M
+  vehicle, over-coarse quantization is deletion rather than
+  perturbation: snapping a 19M model's weights to
   fractions with denominator <= 4 sends 99.93% of them to exactly
   zero (trained weights sit near sigma 0.034, far under the 1/8
   survival threshold; the mid gate keeps a single 1/4), which is

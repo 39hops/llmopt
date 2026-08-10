@@ -25,17 +25,19 @@ implementations. See README for the full inventory and measured numbers.
 
 ## Non-negotiable conventions
 
-- **Code changes are Fable 5's job** (Artin's standing policy,
-  2026-07-16). If you are any other model or agent working in this
-  repo: do not change code. Found a bug or stale reference? MENTION
-  it (file, line, what's wrong) — Fable handles the fix. Mechanical
-  work (file moves, reference updates) only under explicit
-  supervision, and Fable verifies the pass afterward.
-- **The reviewer agent (sanctioned 2026-07-24)**: 1-3 read-only
-  Opus reviewers (07-31 update; spawn on ask) for ledger-keeping, verdict cross-checks
-  (pre-reg vs measured, BEFORE booking), and red-teaming. It
-  mentions, never edits/launches; its findings are proposals, not
-  truth. Everything else stays direct-Fable — no other agents.
+- **The main session model owns code and docs** (Artin, 2026-08-10;
+  this replaces the Fable-only rule of 2026-07-16, retired because
+  Fable usage became a bottleneck). Whichever model is driving the
+  session makes the edits and is accountable for verifying them.
+  The bar did not move with the rule: pytest green, claims checked
+  against the source, no booking on an unverified number.
+- **Sub-agents review; they do not write.** Read-only reviewers
+  (sanctioned 2026-07-24, standing since 07-31) for ledger-keeping,
+  verdict cross-checks (pre-reg vs measured, BEFORE booking), and
+  red-teaming: cap 5 concurrent, spawn on ask, Opus model, read-only
+  tools. They MENTION (file, line, what's wrong) and never
+  edit/run/launch. Findings are proposals, not truth — the session
+  model verifies each one line-by-line before adopting it.
 - **Oracle-verified everything.** Decoding must be token-identical to eager
   greedy (`llmopt/eval/equivalence.py`); math answers checked by sympy symbolic
   equivalence, never string match; asm/code scored by the toolchain
