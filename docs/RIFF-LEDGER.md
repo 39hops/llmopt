@@ -3477,3 +3477,53 @@ simdgroup_matrix<int,8,8> fails while the float control
 compiles: M-series exposes no integer simdgroup MMA. fp32-limb
 is the only MMA-reaching exact path on Metal. The bank's other
 half (shared-page CPU big-int exit) survives and is the R3 exit.
+
+**2026-08-10 (Artin, folding-landscape mathematics as a routing/
+search frame — CHARTER NOTE FIRST)**: banked same day as the
+no-bio-engine reaffirmation (Fable 5 safeguards article read;
+Artin + house agreed: methods/mathematics IN, capability toward
+molecules NEVER). This bank is the sanctioned direction only:
+the MATHEMATICS of energy-landscape theory (funnels, minimal
+frustration, Levinthal counting) as analysis frames for OUR
+math/physics engines. No molecule, protein, sequence, or
+structure capability — the frame is landscape geometry, the
+subjects are model weights, routers, and search. Any rung from
+this bank that names a biological object books NOT-APPLICABLE
+and stops.
+
+THE FRAMES, two distinct ones (Artin said "tunnel"; both banked):
+(1) FUNNEL THEORY (Wolynes/Onuchic minimal frustration): fast
+convergence happens when the landscape is shaped so most
+downhill steps point home — a funnel, not a golf course; the
+obstacle count (frustration) is the design variable, not the
+state-space size (Levinthal's paradox dissolves by geometry,
+not speed). MEASURED HOOKS ALREADY IN THE LEDGER: (a) VERDICT
+ATTRACTOR-0 (25286) is a funnel statement — 198/198 single-basin
+absorption, median one step: the crystal trained on terminating
+chains has a minimally-frustrated landscape to answer-form
+(right or wrong — the funnel drains to CLAIM, not truth). (b)
+The MoE crest family (45% masks beat full; which-experts is
+0-v-82/120) reads as frustration: the router's raw landscape
+carries misleading minima that demand-ranking smooths. (c) The
+ambiguity law (DATA-CEIL-0C/-R): margins = local landscape
+steepness; branching data = flat/frustrated neighborhoods.
+CANDIDATE RUNG SHAPE (desk-first): a frustration METRIC for
+routers/search — count margin-inversions along verified
+trajectories (steps where the greedy-preferred move is not the
+oracle-verified move) as the frustration density; funnel-quality
+then predicts gate solve rate. Cheap, CPU, uses existing gate
+sidecars.
+(2) TUNNELING (barrier penetration, annealing lineage): escaping
+local minima by passing THROUGH barriers rather than over them —
+the quantum-annealing/simulated-annealing frame for search
+temperature and for why wave-sampling (B=8 at T=0.7) beats
+greedy in frustrated regions but loses in funneled ones.
+PREDICTION SKETCH, unregistered: sampling helps exactly where
+frustration density is high; in funnel regions greedy wins and
+waves waste tokens — the ATTRACTOR-0 result (greedy funnels
+straight to answer-form) v the gate's need for waves is already
+weak evidence of the split.
+
+Provenance: Artin's routing instinct ("seems like a better way
+to route through model weights"), same-day as the safeguards
+read; house supplied the ATTRACTOR-0 connection. Bank everything.
