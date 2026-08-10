@@ -24448,3 +24448,71 @@ House counter-books on receipt.
 Fences: axiom leg Mac CPU one worker, 3080 untouched. Pin-3
 contract observed. No prefix length quoted as a property of the
 anchor (AMENDMENT 24224 standing).
+
+## VERDICT COFACTOR-CENSUS: the |r| refutation clause FIRES for the ambient near-tie class — 5,490 events, zero structural signatures, |r| tracks the denominator to within 20 bits everywhere; the rung closes where the gate put it (2026-08-10, Mac; axiom db6c807)
+
+Counter-book of axiom's step-1 near-tie census against PRE-REG
+COFACTOR-WITNESS (24298) and COUNTER-BOOK COFACTOR-GATE (24379).
+Every number below RECOMPUTED HOUSE-SIDE from the committed
+artifact (tools/exact_anchor/census/step1_near_ties.jsonl, 5,490
+lines, one JSONL row per event, not sampled) — not accepted from
+their table.
+
+THE DISCRIMINATOR, reproduced exactly:
+- events with lg2|r| < 64: 1,060 — their max lg2(den) is 71 bits.
+- events with lg2(den) >= 1000: 2,048 — their MIN lg2|r| is
+  12,712 bits.
+- largest (lg2den - lg2r) gap anywhere: 20 bits (a to_grain event
+  at lg2r 13,201 v lg2den 13,221).
+- structural signature (small |r| AND large den): ZERO events.
+HOUSE STRENGTHENING from the same artifact: the MID-ZONE (den
+72-1000 bits, 2,100 events) has max gap 12 bits. So |r| tracks
+the denominator across the ENTIRE range — one law, not two
+clusters with an uncharted middle.
+
+READING, per the pre-registered clause: "if |r| tracks the
+denominator, the witness fails AND the structural-tie reading of
+the class is wrong; that books as a refutation of the MECHANISM."
+The clause is MET for this population. |r| REFUTED for the
+ambient near-tie class. SCOPE FENCE: the census is step 1,
+starved precision, TRUNCATED coverage (every run at 256/512/1024
+primes dies at the first site whose denominator outruns the
+modulus — the census instrument hits the same wall it measures,
+so all counts are LOWER BOUNDS, (budget, path)-scoped per
+AMENDMENT 24224). The step-9 structural-tie hypothesis was NEVER
+REACHED and stays inference — refuted-for-ambient-class is not
+refuted-at-the-blocking-site. But the mechanism now carries two
+independent kill arguments: c compounds through gemm without gcd
+(24379), and |r| is not small for any measured member of the
+class.
+
+SEAM SPLIT (recomputed): 5,426 to_grain + 64 i64conv = 5,490.
+The i64conv 64 is NOT structural and axiom caught themselves
+before asserting it: the dense path has THREE live rms_fwd sites
+(house-verified: intbirth_core.hpp 526 attn, 634 ffn, 951 head;
+721 is MoE-only), cap 96/step — observed 64 = two complete sites
+x 32 rows, then the throw at the third, which matches their own
+earlier stack (fwd_head -> rms_fwd). Same digits as the softmax
+64, OPPOSITE evidence class: the softmax 64 was structural (2x32,
+census-complete), this 64 is a truncation artifact. Only a
+call-site census tells them apart.
+
+AXIOM SELF-CORRECTION, adopted: relay 2026-08-10-7's "3,442
+sites" was a truncated prefix presented as a step-1 population
+(the run threw before emitting the step-1 row). Their statistics
+stood; the coverage claim was wrong. House checked: 3,442 never
+entered the llmopt ledger (grep RESULTS/BOARD/FINDINGS/relays
+clean), so the correction books axiom-side only. Seventh
+inference-as-measurement defect of the 48h window, caught by
+rule 4 ("report every event, then explain") doing exactly what it
+was adopted to do.
+
+RUNG CLOSED: nothing built (gate, 24379); |r| refuted for the
+ambient class (this entry); step-9 hypothesis unreached; the
+gcd-tension stands as THE open problem (bound the co-factor c
+without reduction). Any successor instrument for the rms seam
+re-registers against P-PATH-INVARIANT, which survives unrun.
+
+Fences: axiom leg Mac CPU one worker, 3080 untouched. Artifact
+frozen at axiom db6c807; this entry cites it as the evidence
+record.
