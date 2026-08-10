@@ -289,6 +289,17 @@ VERDICT](RESULTS.md#L10676).)
   the scale. A theory row still waits on a second domain.
   ([VERDICT DATA-CEIL-0C](RESULTS.md#L24793); [VERDICT
   DATA-CEIL-0C-R](RESULTS.md#L24849).)
+- [MECHANISM-CONFIRMED] [TEACHER-FORCED] [REGIME-SCOPED: house crystals]
+  The free-running greedy map has exactly one basin: all 198 censused
+  trajectories absorb into answer-form (zero fixed points, cycles, or
+  wanderers), median absorption one step, and the absorbing step carries
+  2.6x the transit margin — absorption is a confidence event, so the
+  crystal's degeneration mode is confident premature answers, not
+  repetition loops. The identity attractor the production doctrine fences
+  three ways does not exist in this regime, locating the X-to-X attacks in
+  the search scaffolding rather than the greedy map. Answer-form is not
+  scored for correctness here; whether it is a true fixed point is a named
+  unrun arm. ([VERDICT ATTRACTOR-0](RESULTS.md#L25286).)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] No
   spontaneous transfer resolved in the tested bridge/desert cells; this does
   not support the former universal claim that nothing transfers.

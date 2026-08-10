@@ -25282,3 +25282,55 @@ mechanism, finally measured directly).
 Fences: one crystal, greedy only, unscaffolded map is NOT the
 production decode (no capability claim attaches); CPU only;
 estimators median + counts from streamed JSONL.
+
+## VERDICT ATTRACTOR-0: the raw map has ONE basin — all 198 trajectories absorb into ANSWER-FORM (zero fixed points, zero cycles, zero wanderers), median absorption ONE step, and the absorbing step is the confident one (margin 2.25 v 0.85 in transit) (2026-08-10 night, Mac CPU)
+
+Counter-read of PRE-REG ATTRACTOR-0 from the streamed artifact
+(logs/data_ceil/attractor_census_d256.jsonl, 198 trajectories +
+2 genfail, all five levels).
+
+THE DRAINAGE MAP (rule 4 — every trajectory in one class):
+solved_form 198/198, at every level (L3 40, L4 38, L5 40, L6 40,
+L7 40). FIXED POINTS: ZERO. CYCLES: ZERO. WANDERING: ZERO.
+MALFORMED: ZERO. Time-to-absorption: median 1 step
+(dist: 1 -> 104, 2 -> 7, 3 -> 67, 4 -> 19, 6 -> 1; max 6).
+
+BAR READINGS:
+- P-IDENTITY-DOMINANT: NOT-APPLICABLE as registered — the
+  comparison population (absorbed-into-fixed-point-or-cycle) is
+  EMPTY. The identity attractor the production doctrine fences
+  (X => X, bit three times) DOES NOT EXIST in the free-running
+  greedy regime. Consequence booked plainly: the identity-rewrite
+  attacks are a property of the SEARCH SCAFFOLDING (wave
+  sampling, reward shaping, candidate pools), not of the greedy
+  map. The three fence layers stay (they guard the scaffolded
+  regime, which is production) but their mechanism is now
+  located.
+- P-CONFIDENT-ATTRACTOR: FIRES in its registered sense with the
+  attractor identified as answer-form — median min-margin at the
+  absorbing step 2.247 v 0.851 in transit (2.6x). Absorption is
+  a CONFIDENCE event: the model is surest precisely when it
+  claims an answer.
+
+THE READING: the universal attractor is not the solution — it is
+CLAIMING a solution. The scaffolded gate solves ~54%; the raw
+map reaches answer-SHAPE 100% of the time, over half in one
+step. The degeneration mode of this crystal is not repetition
+loops (the LLM-forum phenomenon that motivated the rung) but
+confident premature answers — plausibly a diet property: every
+training chain TERMINATES, so the map learned "head to terminal
+form," and the corpus contains no loops to imitate. That
+explanation books at ARGUED level (rule 3).
+
+INSTRUMENT DEVIATION, stated: the driver STOPS at answer-form
+rather than iterating through it (the pre-reg's "then whatever
+it does after" parenthetical was not implemented). Whether
+answer-forms are true fixed points of the map or launch pads for
+further drift is UNMEASURED — named follow-up arm, one line of
+code, not run tonight.
+
+FENCES: one crystal (d256 control), greedy, unscaffolded map is
+NOT production decode — no capability claim attaches; no
+correctness scoring in this rung (answer-form != right answer;
+a correctness rider would need the fork-boxed oracle and is its
+own arm); estimators median + counts from the artifact.
