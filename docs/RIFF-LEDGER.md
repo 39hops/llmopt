@@ -3527,3 +3527,27 @@ weak evidence of the split.
 Provenance: Artin's routing instinct ("seems like a better way
 to route through model weights"), same-day as the safeguards
 read; house supplied the ATTRACTOR-0 connection. Bank everything.
+
+**2026-08-10 ADDENDUM (the typo that paid: FUNNEL CONTROL, third
+meaning — Artin via a Gemini definition)**: control-theoretic
+funnel control (Ilchmann/Ryan prescribed-performance): error must
+stay inside a shrinking time-varying envelope; gain adapts to
+distance-from-boundary; no exact plant model needed. BEST FIT OF
+THE THREE MEANINGS — it attacks a REGISTERED open problem: the
+anchor-v2 path-dependence (AMENDMENT 24153: certified prefix is a
+property of (anchor, SCHEDULE); every schedule tried was
+OPEN-LOOP — linear/geometric/max ramps picked in advance, and the
+step-9 site defeated two strategies, 24224). Funnel-control
+reframe: straddle width = error, per-step precision = gain, throw
+= envelope violation. The dyadic shadow already MEASURES width
+every step — the sensor exists, only the feedback law is missing.
+CANDIDATE RUNG (axiom-side, cheap: schedule policy change, no new
+engine): prec(s+1) = f(measured width distance to envelope), pre-
+registered against the same d64 12-step cell — prediction: closed
+-loop certification is PATH-INVARIANT BY CONSTRUCTION (the
+schedule is no longer an input), which is the property
+P-PATH-INVARIANT wanted and never got an instrument for.
+Secondary hooks: LR schedules as funnel controllers on loss
+(training-side, LR-precision one-knob law adjacent); decode-margin
+floors. Provenance: Artin typo'd tunnel->funnel, googled, landed
+on the control meaning; all three meanings now banked.
