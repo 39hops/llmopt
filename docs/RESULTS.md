@@ -24375,3 +24375,76 @@ whole ramp as an expression, the prime budget beside it, per-row
 prec as the path record. Per AMENDMENT 24224 no prefix length
 books as a property of the anchor: every horizon statement names
 its path.
+
+## COUNTER-BOOK COFACTOR-GATE: the NOT-APPLICABLE clause FIRES — the blocking seam is rms_fwd's isqrt input where every locally-known divisor is dyadic, so no witness was built and no bar reads (2026-08-10, Mac; axiom 515c1f3)
+
+Counter-book of axiom's gate check against PRE-REG COFACTOR-WITNESS
+(24298). The pre-reg's NOT-APPLICABLE clause said: check FIRST
+whether the blocking site is a de-grain seam; if not, no bar reads
+and the class needs a different answer. Axiom checked first. It is
+not. Nothing was built. The clause did exactly what it was
+registered to do — it bought the answer for two probe runs instead
+of a build.
+
+VERIFIED HOUSE-SIDE from axiom source at 515c1f3 (re-derivation
+standard, not table acceptance):
+
+1. THE SITE. Stack at MODULUS EXHAUSTED: step_once -> fwd_head ->
+   rms_fwd -> narrow<i64> -> operator long long -> floor_decl. The
+   quoted formula reproduces VERBATIM at intbirth_core.hpp:436-440:
+   m40 = narrow<i64>(div_trunc(div_trunc(s2, D) * 2^32, Q*Q)) +
+   eps32. Every divisor the engine knows at this site is a power of
+   two — D = 64 = 2^6, Q^2 = 2^24, the 2^32 rescale — and dyi
+   shifts move only the shared exponent, exactly. A witness from
+   locally-known z contributes nothing here; the blocking
+   denominator arrives INSIDE s2 = sum v_d^2 from upstream
+   non-dyadic divisions (isqrt outputs, softmax sums, AdamW
+   denominators). Not local, not known, not small.
+2. THE 64/step CLASS CENSUS. Three softmax_rows call sites exist
+   (intbirth_core.hpp 548 attention, 728 router, 1280 loss); the
+   router site lives in the MoE forward (softmax over E experts)
+   and is NOT in the dense d64 path. Two live calls x T=32 rows =
+   64 — the constant floor_exact count reproduces from a call-site
+   census, and axiom reported all three sites before explaining
+   which are live (rule 4 observed on both sides). The class is
+   the ARGMAX ENTRY of each row, where s_cc - m is identically 0:
+   always straddles, always decided by pin-1 equality, never the
+   blocker. CORRECTION INHERITED: earlier relays (both labs)
+   implied the straddle class and the blocking site were one
+   population. They are two seams. Only the rms one throws.
+3. PROBE HYGIENE. All instrumentation is #ifdef AX_ANCHOR2_TRACE
+   (exact_anchor2.hpp, run_anchor2.cpp); default build structurally
+   untouched. Axiom attests byte-unchanged; consistent with the
+   ifdef structure house-side.
+
+ALL FOUR BARS READ NOT-APPLICABLE: P-DIGEST-INVARIANT,
+P-WITNESS-DECIDES, P-HORIZON-2, P-PATH-INVARIANT. The registered
+|r| prediction was never reached — neither confirmed nor refuted.
+Per the pre-reg, no verdict language attaches to any bar.
+
+THE STRUCTURAL TENSION, registered now so no re-registration can
+ignore it: the witness mechanism needs the REDUCED denominator.
+r = (v - k)*D is small only for D in lowest terms. A non-reduced
+co-factor D' is trackable in residues at fixed cost, but
+D' = c*D_red gives r' = c*r, and c compounds MULTIPLICATIVELY
+through gemm contractions. Reducing needs gcd — the wall anchor-v2
+deleted. So the co-factor witness is not blocked by placement; it
+is in tension with the gcd-free property itself. Open problem,
+named: bound c without reduction, or the mechanism dies for deep
+prefixes even where it applies.
+
+UNREGISTERED DATAPOINT, booked at its own evidence level (rule 3):
+at prec 60 — 140 bits below the shipped 200 — step 1 still yields
+64 argmax floors, zero near-ties, zero reconstructions, and the
+correct digest 7c9b8f0b.... One step, one path, not a bar; noted
+toward P-PATH-INVARIANT's instinct only.
+
+LIVE: axiom is running an |r| harvest at starved precision across
+8 steps — genuine near-ties (not argmax zeros) reconstructed and
+measured would hand the registered observable to the mechanism
+question WITHOUT a build; their absence bounds the class's rarity.
+House counter-books on receipt.
+
+Fences: axiom leg Mac CPU one worker, 3080 untouched. Pin-3
+contract observed. No prefix length quoted as a property of the
+anchor (AMENDMENT 24224 standing).
