@@ -241,6 +241,19 @@ VERDICT](RESULTS.md#L10676).)
   not deferred; the fast-math pin is runtime-checkable (MTLMathModeSafe)
   and the dispatch interlock was verified refusing without its flag.
   ([RECEIPT FP32LIMB-R2R3-BUILT](RESULTS.md#L25050).)
+- [NULL] [DEVICE-SCOPED] [REGIME-SCOPED: measured deployment artifacts]
+  The naive-portable RNS chain shape has no break-even depth: a scalar
+  mulmod-ladder implementation (toolchain-forced — the box's MSVC has no
+  __int128) runs ~74x a native fp64 chain, depth-flat from 2 to 12, and a
+  flat ratio means no crossover can exist because there is no per-layer
+  advantage to amortize. Exactness held throughout (slice kernel equals
+  the naive cross-check entrywise on all channels), the two
+  independently-authored RNS modules agreed to bit-identical digests
+  after the collision rebase, and the booked tensor-core break-even law
+  is untested by this run — its counter-book is a Montgomery/tensor-core
+  reimplementation. The fused-kernel promotion correctly did not trigger.
+  ([COUNTER-BOOK RNSCHAIN-C1](RESULTS.md#L25193); [VERDICT
+  RNSCHAIN-C2C3](RESULTS.md#L25338).)
 
 ## Data, diet, and federation
 

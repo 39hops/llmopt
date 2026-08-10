@@ -25334,3 +25334,53 @@ NOT production decode — no capability claim attaches; no
 correctness scoring in this rung (answer-form != right answer;
 a correctness rider would need the fork-boxed oracle and is its
 own arm); estimators median + counts from the artifact.
+
+## VERDICT RNSCHAIN-C2C3 (+ C1 re-receipt): biteq FIRES on the 3080, P-BREAKEVEN REFUTED — but INSTRUMENT-SCOPED: the scalar mulmod ladder is ~74x fp64 DEPTH-FLAT, and a flat ratio means no crossover can exist for this kernel shape; the tensor-core law is untested by this run (2026-08-10 night; axiom rnschain-cuda-2 @ 5af1148)
+
+Counter-book of the WSL seat's three legs against PRE-REG
+RNSCHAIN-CUDA (+ -SEAT amendment, + relay -15's no-merge gate).
+
+C1 RE-RECEIPT: PASS, and the collision resolved exactly as
+directed — anchor-v2's rns.hpp survives verbatim, the duplicate
+died, the oracle now rides the surviving module's API (integer
+entry + centered CRT exit moved oracle-local; the surviving
+module is rational-facing). LOAD-BEARING: post-rebase digests are
+BIT-IDENTICAL to the pre-rebase run — the port is proven
+semantics-preserving, and the two independently-authored RNS
+implementations agreeing to the digest is itself a receipt.
+STALE-BRANCH HYGIENE: rnschain-cuda-1 on the remote is
+pre-rebase garbage (classifier blocked the force-push); deletion
+is Artin's call, no science rides on it.
+
+C2 P-CUDA-BITEQ: FIRES. Slice kernel == naive mulmod kernel
+entrywise, all 8 channels, N=1024, on the 3080 — run by the seat
+itself under AMENDMENT -SEAT. TOOLCHAIN FINDING BANKED: this
+box's CUDA is Windows-side nvcc 13.3 + MSVC 14.51, and MSVC has
+NO __int128 — the blind-authored mulmod was rewritten as a
+portable shift-add ladder on host AND device. Hazard class noted
+for any future CUDA authoring on this machine.
+
+C3 P-BREAKEVEN: REFUTED, INSTRUMENT-SCOPED. House-recomputed
+from the receipt JSONL: ratios 71.8 / 73.8 / 75.6 / 73.7 / 76.8
+at depths 2/4/6/8/12 — DEPTH-FLAT, both walls linear in depth.
+Mechanism, stated plainly: a crossover requires a PER-LAYER
+advantage being amortized against a fixed exit cost; this
+kernel's per-layer cost exceeds fp64's outright, so no depth can
+ever cross. SCOPE FENCE, theirs and ours agreeing: the booked
+13-v-43 ms/layer law (4028) was measured on a FUSED TENSOR-CORE
+path; this run is scalar mulmod on CUDA cores, 8 u64 channels v
+one cuBLAS fp64 GEMM — the registered choreography (int8-slice
+TC + fused exit port) was NOT what compiled, because the
+toolchain forced the scalar rewrite. THE LAW IS UNTESTED BY THIS
+RUN. What IS refuted: the naive-portable-RNS-chain shape. The
+counter-book is a Montgomery/tensor-core reimplementation, not a
+rerun. PROMOTION DOES NOT TRIGGER (per the rider: biteq fired,
+breakeven did not) — the fused kernel stays in scratch.
+
+HONEST-LOSS CONVENTION honored on both sides: the seat booked
+the 74x loss with its caveats before the house asked. That is
+the benchmarks-report-honest-losses doctrine working cross-lab
+at its second seat.
+
+Fences: no merge performed (the -15 gate held); no cross-device
+comparison anywhere (all ratios Mac-free); one 3080 worker.
