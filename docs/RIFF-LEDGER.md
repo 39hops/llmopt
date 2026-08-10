@@ -3309,3 +3309,25 @@ seats (audit findings), Artin (sanction + relay), Fable
   and the plateau breaks 21.5%). Attribution: grok seat
   (geometry-not-labels dissolution), axiom-Fable (two-term form +
   the which-term-binds rider), Artin (isoperimetric bridge).
+
+- **2026-08-09 (Artin, the d8 step-3 marathon): PARALLELIZE THE
+  ANCHOR — "retry step 3 with more workers / cache the
+  computations."** Three-way resolution. (1) Across-step: never
+  (training is a dependent chain). (2) Within-step: real and
+  PROVABLY digest-preserving — rational arithmetic is exactly
+  associative, so entry-parallel gemm/gcd is bit-identical by
+  construction (unlike fp); axiom-side engine change, ~16x, but
+  at the measured ~845x per-step growth that buys only ~half a
+  step of horizon. (3) The design that actually moves the
+  horizon: RNS/CRT ANCHOR — run the whole trajectory modulo many
+  machine-word primes (no bignums, NO GCD — the measured binding
+  cost — perfectly parallel across primes and entries), CRT-
+  reconstruct exact rationals only at dump steps; prime count
+  budgeted by the ~10-bits/step growth law. REVIVES the parked
+  RNS rung of specs/2026-07-27-exact-representations.md; sibling
+  precedent = ozaki sliced-exact (int-sliced beats fp64). Slot:
+  anchor-v2 instrument design, axiom engine leg, own pre-reg;
+  would convert d64's 1-step/42-min horizon into multi-step
+  exact prefixes at real widths. Attribution: Artin (parallel +
+  caching push), Fable (associativity-safety note + RNS/CRT
+  mapping + parked-rung revival link).
