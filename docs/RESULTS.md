@@ -24294,3 +24294,84 @@ whether a run THROWS and so belongs to the reproducibility
 contract; and keep per-row `prec` as the path record — that field
 is the only reason the paths were recoverable after the stderr
 logs were overwritten.
+
+## PRE-REG COFACTOR-WITNESS: decide the path-resistant floor class by the SIGN OF A SMALL INTEGER — four bars including a path-invariance test neither lab has run (2026-08-10, Artin GO; booked BEFORE any build fires; axiom leg, Mac CPU)
+
+Rung follows COUNTER-BOOK ANCHOR-V2 and its three amendments
+(23990 / 24088 / 24153 / 24224). Design is axiom's, proposed in
+relay 2026-08-09-7 and sharpened across the 08-10 exchange.
+
+MECHANISM UNDER TEST. At de-grain seams the engine KNOWS the
+denominator co-factor z. For a value v and the single candidate
+integer k inside a straddle, t = v*z - k*z = +-r with r a SMALL
+integer, exactly recoverable from a handful of residues; sign(r)
+decides the floor natively. No shadow race, no reconstruction, no
+prime-budget growth in the prefix length. The claim being tested
+is that the step-9 blocker is exactly this shape.
+
+ARMS. Build the witness into ax::nn::exact_anchor2 as a new
+fallback class ahead of reconstruction; re-run the d64 cell under
+BOTH precision paths already characterized — the shipped linear
+ramp (120+80s, s<=8) and the max ramp
+(max(120+80s, 90+int(40*1.5^s))) — at the shipped 256-prime
+budget, plus one 64-prime starved arm.
+
+BARS (all four read at completion; each books separately):
+- P-DIGEST-INVARIANT fires iff every certified digest from the
+  pre-witness run reproduces BIT-IDENTICALLY, steps 1-8, and the
+  d64 step-1 dump stays byte-identical to the committed reference
+  (axiom 1dfaae2, sha256 7c9b8f0bfb592185...). This is the SAFETY
+  bar: a fallback class that moves the certified surface is a
+  defect regardless of how far it gets. House predicts FIRES.
+- P-WITNESS-DECIDES fires iff the step-9 site is decided by the
+  witness with ZERO reconstructions and the run certifies step 9.
+  House predicts FIRES.
+- P-HORIZON-2 fires iff a 12-step d64 exact prefix completes in
+  <= 4 h. At the measured flat ~160 s/step this is ~32 min, so the
+  bar is really "no new wall before step 12". House predicts
+  FIRES, with low confidence — see the track-record note.
+- P-PATH-INVARIANT fires iff the two precision paths produce
+  IDENTICAL digests AND identical per-site |r| at every witnessed
+  site. This bar is registered by the house and has not been run
+  by either lab; it is the direct test of the claim that the
+  witness removes path-dependence rather than merely outrunning
+  it. House predicts FIRES.
+
+REGISTERED OBSERVABLE (the instrument, per the 08-10 exchange):
+|r| reported PER SITE, per step, in the streamed rows. Registered
+prediction: |r| stays SMALL and recoverable inside the 256-prime
+budget even as the denominator explodes — concretely, log2|r| at
+the step-9 site is at least two orders of magnitude below the
+same step's max num/den bit-length (axiom measured 1,456 ->
+54,240 bits across ONE early step, x37 in bits per step). If |r|
+instead grows with the denominator, the witness fails AND the
+structural-tie reading of the class is wrong; that outcome books
+as a refutation of the mechanism, not merely a missed bar.
+
+NOT-APPLICABLE CLAUSE. The witness only exists where the engine
+knows z. If the blocking site is NOT at a de-grain seam, the rung
+books NOT-APPLICABLE — no bar reads — and the class needs a
+different answer. This is a real risk and is registered as such
+rather than discovered later.
+
+IF A NEW WALL APPEARS at steps 10-12, report its class against
+the running taxonomy {gcd, bits-in-ring, tie-depth} and say
+explicitly whether it is a fourth kind.
+
+TRACK RECORD, registered honestly: the house's last prediction on
+this instrument was REFUTED — "straddles thin out with depth" died
+against axiom's d64 probe. The house also shipped three
+inference-as-measurement defects on 2026-08-10 (mixed estimator,
+rounded-input fit, site-identity assertion) and axiom shipped two
+(phantom deepening rate, a dropped w=11 throw). The four standing
+rules adopted today apply to this rung's readout in both labs:
+name the estimator; fit the artifact; an explanation books at its
+own evidence level; report every event in a class, then explain.
+
+FENCES: axiom leg, Mac CPU, ONE worker; the 3080 stays untouched
+absent a separate Artin GO. Wall-clocks carry the shared-use
+fence. Pin-3 contract applies to any schedule quoted here — the
+whole ramp as an expression, the prime budget beside it, per-row
+prec as the path record. Per AMENDMENT 24224 no prefix length
+books as a property of the anchor: every horizon statement names
+its path.
