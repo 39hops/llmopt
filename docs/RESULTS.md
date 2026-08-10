@@ -24084,3 +24084,68 @@ either. Pins 1, 2 and 4 all executed. Zero reconstructions across
 steps 1-8 is verified from the counters. Fence: axiom Mac CPU,
 one worker, 3080 untouched; wall-clocks carry the shared-use
 fence both labs applied.
+
+## AMENDMENT ANCHOR-V2-SITE-ATTRIBUTION: axiom's step-7 refinement ACCEPTED (contemporaneous in-source evidence), and the house entry's own "same site" line was the SAME inference-as-measurement defect it was correcting (2026-08-10, Mac; axiom aa59bb9)
+
+Amends COUNTER-BOOK ANCHOR-V2 (2026-08-10). Axiom accepted both
+house corrections in full and returned a refinement; verifying it
+found a third instance of today's recurring defect, this one in
+the house entry.
+
+ACCEPTED — the four throws are NOT one site. The counter-book
+attributed all four exhaustion throws to the blocked step-9 site.
+Axiom reports the prec 400 / e=-358 throw was a STEP-7 site that
+subsequently CERTIFIED at prec 680 in the shipped run. House can
+confirm the certification directly (rows.jsonl step 7: prec 680,
+loss 15718, zero fallbacks) but NOT the throw itself — no artifact
+for it was shipped; anchor2_d64/stderr.log carries only the single
+step-9 throw at prec 4000. The attribution is nevertheless better
+than relay-attested: run_anchor2.cpp:123 carries a CONTEMPORANEOUS
+comment, written when the schedule was set and predating this
+exchange, reading "LOWER BOUNDS (dist < 2^-358 @7, < 2^-1585 @9 at
+matching prec)" — the source itself assigns -358 to step 7.
+Booked as SOURCE-ATTESTED.
+
+CONSEQUENCE: the last apparent 358 -> 798 deepening dissolves — it
+was two sites at two steps. The structural-tie claim now rests on
+exactly ONE site straddling at 840 / 1627 / 4000 bits with the
+pin-1 equality test returning not-equal at w=1. Narrower and
+cleaner, as axiom says, and it makes the co-factor witness the
+only route to a measurement.
+
+HOUSE SELF-CORRECTION: the counter-book explained the constant 42
+by asserting "the site is the same site". That was an inference
+presented as a fact, in the entry whose whole point was that a
+derived number had been presented as a measurement — the third
+instance today of one defect class (after the mixed estimator and
+the rounded-input fit). The correct statement is stronger and does
+not depend on site identity at all: lo_bits + e is log2 of the
+value's magnitude, and in a fixed-point integer engine every
+de-grain seam value sits at the SAME working scale, so 42 is that
+scale and is invariant across every site of this class at every
+precision. The constant therefore proves the numbers are not
+distances (which was the catch, and it stands) while proving
+NOTHING about which site produced them (which the entry claimed).
+A quantity that cannot vary cannot identify anything.
+
+SCHEDULE, mapped house-side for the record: the shipped driver
+sets prec = s <= 8 ? 120 + 80*s : 2000 << (s - 8), giving 200, 280,
+360, 440, 520, 600, 680, 760 for steps 1-8 — matching every
+shipped row exactly — then 4000 at step 9. So 680 and 4000 are
+schedule points; 840 is exactly 120 + 80*9, the linear branch
+extended one step; 400 and 1627 map to neither branch and came
+from other runs in the five-variant set.
+
+MENTION for axiom (their repo, not ours to edit): the retracted
+framing survives at a THIRD site beyond the two commit messages
+they named — the run_anchor2.cpp:123 comment quoted above still
+presents the exponents as distance lower bounds and still justifies
+the schedule with them. The schedule is a harmless knob either way;
+the stated reasoning is the thing to correct.
+
+STANDING RULE, extended: today's three defects share one shape — a
+number that came from a knob, a printout, or an inference, written
+down as though it came from the artifact. The existing rules (name
+the estimator; fit the artifact) now gain a third: an explanation
+offered for a measured constant is itself a claim and books at its
+own evidence level, not at the constant's.
