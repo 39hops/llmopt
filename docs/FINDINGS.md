@@ -179,12 +179,13 @@ VERDICT](RESULTS.md#L10676).)
   distance to Q64 to the last decimal at every certified step. Grain
   growth itself is super-diffusive and sub-linear at both dims, and
   under a matched estimator the two dims agree closely — least-squares
-  log-log slopes 0.802 and 0.817, endpoint exponents 0.716 and 0.729.
+  log-log slopes 0.800 and 0.817, endpoint exponents 0.714 and 0.729.
   Both unseen cells fired all three registered bars, but two cells
   share one implementation and one device, so this is a mechanism
   reading and not a replication route. ([VERDICT
   EXACT1-SMALL](RESULTS.md#L23852); [AMENDMENT
-  EXACT1-SMALL-EXPONENT](RESULTS.md#L23910).)
+  EXACT1-SMALL-EXPONENT](RESULTS.md#L23910); [AMENDMENT
+  EXACT1-SMALL-EXPONENT-2](RESULTS.md#L23948).)
 - [SINGLE-SEED] [REGIME-SCOPED: deterministic integer battery] The
   frozen-carry floor accumulates linearly in steps and grows with
   model width while staying independent of ring precision: the

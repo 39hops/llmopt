@@ -23944,3 +23944,45 @@ estimator named in the same sentence. The two estimators are not
 interchangeable — the endpoint form is systematically lower here
 (~0.09) because the series is flat over steps 1-2 and the
 least-squares fit is pulled by the interior points.
+
+## AMENDMENT EXACT1-SMALL-EXPONENT-2: the correction itself was computed from ROUNDED inputs — d8 reads 0.800/0.714, not 0.802/0.716 (2026-08-10, desk; Artin double-check)
+
+Amends AMENDMENT EXACT1-SMALL-EXPONENT (2026-08-10), which amends
+VERDICT EXACT1-SMALL. Artin asked for a recomputation; it found a
+second, smaller defect one level up.
+
+THE MIXED-ESTIMATOR DIAGNOSIS IS CONFIRMED, unchanged. The
+verdict's phrase "log-log fit d8 0.80, d16 0.73" is verified
+verbatim at RESULTS.md:23882-23883, and an estimator scan over
+twelve window/estimator variants per cell reproduces 0.80 for d8
+ONLY as the least-squares slope over steps 1-12 and 0.73 for d16
+ONLY as the endpoint exponent over steps 1-12 (0.729; the 1-11
+window gives 0.722). No other variant lands on either number.
+Two estimators, quoted as one.
+
+WHAT WAS WRONG IN THE CORRECTION: the d8 series was retyped from
+2-decimal PRINTED means (0.50, 0.82, 0.99 ...) rather than read
+from the dumps, so the d8 fits inherited that rounding. Recomputed
+from the raw .w9 files at full precision (n=600 weights/step):
+  d8   least-squares 0.8002   endpoint 0.7137   ratio 5.891
+  d16  least-squares 0.8172   endpoint 0.7285   ratio 6.112
+So d8 books 0.800 and 0.714, not the 0.802 and 0.716 the first
+amendment quoted; its ratio is 5.89, not 5.92. The d16 pair was
+already exact — it came from the driver's own divergence.jsonl,
+which stores full precision. FINDINGS is corrected in the same
+commit.
+
+WHAT DOES NOT CHANGE: P-GRAIN-GROWTH still fires (5.89x and
+6.11x, bar 2x). Both cells stay super-diffusive and sub-linear
+under both estimators. Matched, the cells still agree closely and
+d16 is still marginally faster — 0.800 v 0.817 least-squares,
+0.714 v 0.729 endpoint. Every conclusion in the first amendment
+survives; only its third decimal moved.
+
+STANDING RULE (extends the first amendment's): a derived
+statistic books from the ARTIFACT, never from a printed summary
+of it. Quoting three decimals off two-decimal inputs asserts
+precision that was discarded before the fit ran. The house rule
+against booking a number the entry did not just recompute already
+covers this — it was violated inside a correction, which is where
+it is hardest to notice.
