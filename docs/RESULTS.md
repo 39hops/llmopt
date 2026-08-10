@@ -25084,3 +25084,27 @@ house-side from their source at 16dd86e:
 544/544 on their main (SOURCE-ATTESTED). Dispatch fires on the
 house ping when crown + its gate step clear; watcher armed on
 jobs/rev3crown.rc.
+
+## NOTE CROWN-WINDOW-SWAP: crown battery pauses at the c_s4/m_s4 CELL BOUNDARY for the FP32LIMB R2/R3 dispatch window, then m_s4 relaunches — zero-loss interleave, Artin GO (2026-08-10 night, Mac)
+
+Artin GO'd interleaving the fp32limb GPU window into the crown
+battery at the c_s4 -> m_s4 boundary. Mechanics: the battery is a
+bash loop of INDEPENDENT cells (jobs/rev3crown.cmd); a watcher
+fires on c_s4's "deployed T" line and kills the loop before m_s4
+spawns. m_s4 relaunches as its own rjob after the axiom window
+(~15-30 min: ftz -> biteq -> wall, 7 evaluated reps). Cost to
+m_s4: start delay only. Pairing fences UNAFFECTED: m_s4 runs on
+the same device with the same seed discipline; cells share no
+runtime state. Race fence: if m_s4 spawns inside the watcher's
+120 s poll, it dies at epoch 0 and relaunches clean (the driver
+resumes at epoch boundaries; a minutes-old cell restarts
+deterministically).
+
+CUDA considered and REJECTED: R2/R3 are Metal kernels (fp32-limb
+is the only exact MMA path there; CUDA's exact winner is int8-TC,
+booked July), and m_s4 cannot move to the 3080 — crown is a
+paired same-device battery; a cuda cell would be unpoolable.
+
+Sequence: c_s4 deploys -> loop killed -> axiom pinged (--gpu-ok)
+-> ftz/biteq/wall -> m_s4 relaunched -> gate-eval after all six
+cells exist -> crown books. EX4-UNIF stays behind all of it.

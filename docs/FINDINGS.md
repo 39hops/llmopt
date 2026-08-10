@@ -223,6 +223,18 @@ VERDICT](RESULTS.md#L10676).)
   counts are lower bounds. ([COUNTER-BOOK
   COFACTOR-GATE](RESULTS.md#L24379); [VERDICT
   COFACTOR-CENSUS](RESULTS.md#L24452).)
+- [MECHANISM-CONFIRMED] [DEVICE-SCOPED]
+  [REGIME-SCOPED: measured deployment artifacts] The fp32-limb exact GEMM
+  oracle (the MPS KEY finally implemented: s=7 slices, block 32, budget
+  inequality as a compile-time fence) is exact against big-int across every
+  registered adversarial class including K-permutation bit-identity, with
+  all fences thrown-errors that survive release builds; the cross-lab build
+  sharpened the envelope contract from an exponent-spread condition to a
+  lowest-significant-BIT span condition, so registered inputs carry a
+  flush-to-zero contract rather than a silent cap. A compile probe settled
+  a banked question for free: M-series exposes no integer simdgroup MMA,
+  making fp32-limb the only MMA-reaching exact path on Metal.
+  ([COUNTER-BOOK FP32LIMB-R1](RESULTS.md#L24981).)
 
 ## Data, diet, and federation
 
