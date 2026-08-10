@@ -39,3 +39,4 @@ AGENTS.md
 data/pull_l9a/
 data/*.axnn
 scratch/lean_real_corpus/*.jsonl
+.claude/*.local.md
