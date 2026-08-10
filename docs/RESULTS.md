@@ -25447,3 +25447,52 @@ against any remaining Metal-window work); 3080 untouched by this
 rung; no prefix length quoted as a property of the anchor —
 under closed loop it is quoted as a property of (anchor,
 ENVELOPE), which is the entire point.
+
+## VERDICT FUNNEL-PREC: closed-loop precision WORKS — path-invariance holds EXACTLY by construction (entries 200 and 4000 give byte-identical everything from step 2), at 53% of the open-loop cost, digest-safe throughout; step 9 books its THIRD defeat and the funnel's sensor finally sizes the wall: a >=15k-bit demand CLIFF (2026-08-10 evening; axiom 9987b44, code 1d232dc on funnel-prec)
+
+Counter-book of the Mac seat's four bars against PRE-REG
+FUNNEL-PREC. Receipts recomputed house-side from
+tools/exact_anchor/funnel_d64/rows_entry{200,4000}.jsonl.
+
+1. P-CLOSED-INVARIANT: FIRES, EXACT. Recomputed from both
+   artifacts: entry 200 -> precs (200,160,160,192,224,288,352,
+   448); entry 4000 -> (4000,160,...,448) — IDENTICAL from step
+   2, and all eight digests IDENTICAL between runs
+   (7c9b8f0b, 0f8593c7, 702ff598, 8824b3c3, 68d49722, 3bdf2455,
+   30f4a563, 41bfedf6). Mechanism as designed: the law's
+   prec - slack form cancels entry precision algebraically
+   (slacks 144 v 3944 -> same demand 56 -> same prec(2)=160).
+   THE SCHEDULE IS NO LONGER AN INPUT. P-PATH-INVARIANT's
+   long-waited property is instrumented and measured: certified
+   prefixes under closed loop are properties of (anchor,
+   ENVELOPE).
+2. P-DIGEST-SAFE: FIRES — step 1 is the committed reference
+   sha (7c9b8f0b...) and the chain through step 8 matches the
+   booked reference rows; zero reconstructions on the certified
+   prefix.
+3. P-COST: FIRES at 53% — 2,024 bit-steps v the shipped ramp's
+   3,840 at equal certified depth (house-recomputed: 200+160+160
+   +192+224+288+352+448 = 2,024; sum(120+80s, s=1..8) = 3,840).
+   Adaptivity is CHEAPER, not just principled.
+4. P-STEP9: third defeat, same wall — both runs enter step 9 at
+   prec 544 and throw at floor w=21. NEW STRUCTURE the funnel's
+   sensor delivers: demand grew 56 -> 445 over steps 1-8
+   (ACCELERATING; slack bottomed at 3 bits at step 8), then hit
+   a >=15k-bit DISCONTINUITY. The wall is not open-loop
+   overshoot — it is a genuine demand cliff, consistent with the
+   structural-tie reading, now with a measured magnitude. The
+   obstacle book gains its first quantitative entry: {gcd:
+   deleted; bits-in-ring: schedulable; tie-depth: a >=15k-bit
+   cliff at one site}.
+CAVEAT BOOKED WITH THE WIN (theirs, honest): T=96 was barely
+sufficient (slack 3 at step 8) — a proportional-only law cannot
+track accelerating demand forever, and a derivative term is
+STRUCTURALLY unavailable (it re-introduces history and breaks
+the invariance that is the rung's point). The tension between
+invariance and anticipation is now a named design constraint,
+not a bug.
+Also: their relay renumbered to -18 (cross-lab date namespace
+collision with RNSCHAIN's -17) — adopting the shared-namespace
+convention; house relays continue from -19.
+544/544 green, default open-loop path untouched, AX_FUNNEL=1
+gated. Metal dispatch ping retains priority at the seat.
