@@ -25688,3 +25688,48 @@ scope fence (L7226) is unchanged; this note only swaps its
 statistic. Precondition unchanged: an exact inference path (fp32limb
 GEMM + declared nonlinearities) — R2/R3 Metal receipts are the next
 artifact toward it.
+
+## VERDICT ATTRACTOR-0B-JOIN: answer-form is a TERMINAL CLASS (198/198, with 6 in-class two-cycles the old stopping rule hid) — but the confidence gap is NOT the ambiguity law (n_succ 7 v 7, honest NULL on the join) (2026-08-10 late evening, Mac CPU)
+
+Pre-reg above. Artifact logs/data_ceil/attractor_census2_d256.jsonl
+(200 rows: 198 ok + 2 genfail, same band/levels as ATTRACTOR-0),
+driver scratch/attractor_census2.py, all numbers re-derived from
+the artifact house-side.
+
+1. P-TRUE-FIXED-POINT: FIRES. All 198 trajectories reach
+   answer-form and TERMINATE inside it: 192 true fixed points +
+   6 cycles of length 2, every recorded cycle member
+   Integral-free. ATTRACTOR-0's "zero cycles" headline is hereby
+   SCOPED, not retracted: it was true of the pre-answer-form map
+   (its stopping rule could not see past absorption); iterating
+   through shows the cycles live entirely INSIDE the answer-form
+   class. Single-basin survives and sharpens: the basin's floor is
+   a terminal CLASS (mostly fixed points, occasionally a 2-cycle),
+   not a launch pad.
+   RIDER (artifact recount, 2/198): two L4 trajectories LEFT
+   answer-form briefly (re-emitted Integral-bearing states at
+   t 3-7) before re-absorbing as fixed points — the class boundary
+   is ~99% one-way, not perfectly absorbing. The driver's printed
+   "relaunches: 0" is DEFECTIVE (its scan only ran over
+   non-terminating trajectories); the artifact recount (4 post-af
+   Integral-bearing steps across 2 trajectories) governs. Third
+   instance tonight of the same lesson: the summary is not the
+   artifact.
+2. P-MARGIN-UNIFIED: NULL, clean. Median n_succ at the
+   absorbing-move state = 7; at transit states = 7 (ratio 1.00 v
+   the registered >=1.5 bar; 395 fork-walled oracle readings, 195
+   absorb + 200 transit, zero deadline kills dominating). The
+   margin gap itself REPLICATES on this fresh instrumented run
+   (absorbing 2.31 v transit 0.88) — so the absorbing-step
+   confidence is NOT a low-branching readout. The ambiguity law
+   (margin ~ 1/branching, diet states, 0C/0C-R) and the
+   absorbing-confidence phenomenon are SEPARATE mechanisms; house
+   prediction (both fire) was half wrong, booked as such. Rider:
+   within off-diet trajectory states, median margin v n_succ is
+   non-monotone — no contradiction with 0C (different population;
+   the law was measured on diet states), but the law does NOT
+   extend for free off-diet.
+Fence: n=1 crystal (d256), free-running greedy, house math
+crystal regime. What would move THEORY: a mechanism for absorbing
+confidence that survives a second crystal — candidate: answer-form
+proximity in the emission, not the state's branching.

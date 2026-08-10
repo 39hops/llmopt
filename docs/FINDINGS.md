@@ -328,8 +328,16 @@ VERDICT](RESULTS.md#L10676).)
   repetition loops. The identity attractor the production doctrine fences
   three ways does not exist in this regime, locating the X-to-X attacks in
   the search scaffolding rather than the greedy map. Answer-form is not
-  scored for correctness here; whether it is a true fixed point is a named
-  unrun arm. ([VERDICT ATTRACTOR-0](RESULTS.md#L25286).)
+  scored for correctness here. The named arm RAN same-day: iterating
+  THROUGH answer-form, all 198 terminate inside it (192 true fixed
+  points + 6 two-cycles entirely in-class; the "zero cycles" read was
+  the stopping rule's shadow), with a ~99%-one-way boundary (2
+  trajectories briefly relaunched, then re-absorbed). The absorbing
+  confidence is NOT the ambiguity law: median n_succ 7 v 7 at
+  absorbing v transit states while the margin gap replicates (2.31 v
+  0.88) — separate mechanisms, honest null on the join.
+  ([VERDICT ATTRACTOR-0](RESULTS.md#L25286); [VERDICT
+  ATTRACTOR-0B-JOIN](RESULTS.md#L25692).)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] No
   spontaneous transfer resolved in the tested bridge/desert cells; this does
   not support the former universal claim that nothing transfers.
