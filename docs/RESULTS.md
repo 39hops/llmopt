@@ -25108,3 +25108,65 @@ paired same-device battery; a cuda cell would be unpoolable.
 Sequence: c_s4 deploys -> loop killed -> axiom pinged (--gpu-ok)
 -> ftz/biteq/wall -> m_s4 relaunched -> gate-eval after all six
 cells exist -> crown books. EX4-UNIF stays behind all of it.
+
+## PRE-REG RNSCHAIN-CUDA: the live >6-layer exact chain — the promote-at-next-use trigger finally pulled; axiom authors, house executes on the 3080 (2026-08-10 night, Artin GO; parallel to the Metal rung, not behind it)
+
+THE TRIGGER (booked, waiting since 08-08): "OZAKI: fused
+recombination is COMPLETE and booked (70.2 ms bitwise-exact) —
+promote-at-next-use, which means a live >6-layer exact chain"
+(22966). The break-even law it rides: any chain deeper than ~6
+layers is FASTER computed exactly in RNS than approximately in
+fp64 (13 v 43 ms/layer, 4028-4030). Our crystals are 8-block, so
+the depth exists in-model — the trigger is met, not manufactured.
+
+DIVISION OF LABOR (the fence-preserving split): axiom AUTHORS
+(they own ax::rns — CRT over pinned 61-bit primes — plus bigint/
+int256; the chain core is their sport and their code); the HOUSE
+EXECUTES every 3080 leg via scratch/wsl.sh and returns receipts.
+Axiom never touches the 3080; the 3080 runs axiom's code. CUDA
+does not compile on the Mac, so the build is blind-authored with
+a CPU oracle that is NOT blind: rung C1 runs entirely on their
+Mac CPU worker.
+
+RUNGS AND BARS:
+C1 — CPU chain oracle (Mac, axiom, fires on receipt). A depth-L
+exact chain (L in {2,4,6,8,12}) in ax::rns + bigint exit,
+oracle = entry-wise bigint equality at EVERY depth. Inputs:
+_f24-contracted fp32 (the R1 lesson travels; state the contract
+in the receipt). P-CHAIN-EXACT: equality at all depths, all
+registered input classes (the R1 adversarial set inherits),
+K-permutation bit-identity at depth 1 AND depth 8 (composed
+permutation is the sloppiest-link detector for chains).
+C2 — CUDA kernels (authored now on Mac; compiled + smoke-run on
+the 3080 by HOUSE, nightly window). int8-slice GEMM channels in
+RNS + the fused recombination exit (port of ozaki_fused.py's
+choreography or their own — cite which). P-CUDA-BITEQ: bitwise
+equality to C1's oracle at every depth. MANDATORY GUARD: int64
+accumulation everywhere torch._int_mm would overflow silently
+(the 22978 hazard class); a runtime bound check that survives
+release builds (the R1 thrown-error pattern).
+C3 — the wall (3080, house-executed). Depth ladder L in
+{2,4,6,8,12}: exact-RNS chain v native fp64 chain, matched
+shapes, n >= 5 reps, median + spread. P-BREAKEVEN: the measured
+break-even depth <= 8 (the law says ~6; production shape may
+move it — a measured shift is a finding, not a failure).
+P-EXIT-EXACT: the one-time exit at the deepest L is bitwise
+equal to big-int. HONEST-LOSS CLAUSE: if kernel-launch overhead
+at production N dominates and the crossover never comes, that
+books as the law's production-shape refutation — publishable.
+PROMOTION RIDER: on P-CUDA-BITEQ + P-BREAKEVEN both firing, the
+fused-recombination promotion (22966) executes — scratch ->
+llmopt/ adoption per the dual-copy doctrine, house-side.
+
+SEQUENCING: C1 fires NOW, in parallel with the Metal window
+(different code, no GPU, no contention — the Metal dispatch
+needs minutes of GPU while C1 needs CPU). C2 authoring also
+starts now; its 3080 compile waits for tonight's window. The
+Metal rung's receipts and this rung's receipts stay separate
+instruments — no cross-device comparison of any wall number,
+ever (standing fence).
+
+Fences: axiom Mac CPU one worker for C1; NO axiom process on the
+3080 — house executes C2/C3 legs via wsl.sh; 3080 window is
+Artin's nightly GO; Metal R2/R3 dispatch unchanged (crown
+boundary swap stands).
