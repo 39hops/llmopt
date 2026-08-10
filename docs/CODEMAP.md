@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 156, library 155, reproduce-pinned 9, results-cited 120, spec-cited 44
+Census: UNCITED 156, library 156, reproduce-pinned 9, results-cited 120, spec-cited 44
 
 ## scratch/
 
@@ -17,7 +17,8 @@ Census: UNCITED 156, library 155, reproduce-pinned 9, results-cited 120, spec-ci
 | absorb | absorb_1e5.py | UNCITED | — | — |
 | adjudicate | adjudicate_zx.py | library | — | 1 |
 | anatomy | anatomy.py | library | RESULTS×5, specs×4 | 1 |
-| attractor | attractor_census.py | results-cited | RESULTS×1 | — |
+| attractor | attractor_census.py | library | RESULTS×1 | 1 |
+| attractor | attractor_census2.py | results-cited | RESULTS×1 | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — |
 | basin | basin_probe.py | UNCITED | — | — |
 | birth19m | birth19m_snaps.py | UNCITED | — | — |
@@ -421,7 +422,7 @@ Census: UNCITED 156, library 155, reproduce-pinned 9, results-cited 120, spec-ci
 | bench | bench_stacked.py | UNCITED | — | — |
 | bench | bench_static.py | UNCITED | — | — |
 | bench | bench_step_diversity.py | results-cited | RESULTS×1 | — |
-| bench | bench_step_tokens.py | library | RESULTS×2, specs×6 | 68 |
+| bench | bench_step_tokens.py | library | RESULTS×2, specs×6 | 69 |
 | bench | bench_stitch_poc.py | results-cited | RESULTS×1 | — |
 | bench | bench_syndrome_head.py | UNCITED | — | — |
 | bench | bench_syndrome_policy.py | library | — | 1 |

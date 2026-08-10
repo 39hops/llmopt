@@ -1215,6 +1215,15 @@ Free-running iteration census (PRE-REG ATTRACTOR-0, 2026-08-10).
 - `norm(s)`
 - `main()`
 
+### scratch/attractor_census2.py
+Free-running census, THROUGH answer-form + n_succ join (PRE-REG ATTRACTOR-0B-JOIN, 2026-08-10).
+
+- `_nsucc_worker(cur, q)`
+- `n_succ_isolated(cur)` — Fork, join with deadline, SIGKILL — the solve_isolated pattern.
+- `greedy_step(model, tok, prompt_ids)`
+- `norm(s)`
+- `main()`
+
 ### scratch/basin_probe.py
 BASIN-1: routing basin radius v usage. CPU. Usage: SEED=1 python scratch/basin_probe.py
 

@@ -25620,3 +25620,71 @@ AX_PREC override is compiled only under -DAX_ANCHOR2_TRACE and the
 plain build silently ignored the env var (row's prec field caught
 it). Fit-the-artifact includes reading its ifdefs; an env knob is
 not a knob until the build that carries it is verified.
+
+## PRE-REG ATTRACTOR-0B-JOIN: iterate THROUGH answer-form + join margins to branching factor (2026-08-10 late evening, Mac CPU)
+
+Follow-ups named inside VERDICT ATTRACTOR-0 (L25286) and the
+reviewer ideas memo; Artin GO. One driver
+(scratch/attractor_census2.py), same instrument constants as
+ATTRACTOR-0: mathnative_wfloor_d256, band 93M, L3-L7 x 40, 50
+iters, greedy min-margin per step, CPU, rows STREAM. Two changes:
+the solved_form stop is REMOVED (iteration continues through
+answer-form until fixed_point / cycle / malformed / iter cap), and
+every visited state string is RECORDED, with n_succ computed for
+each visited Integral-bearing state by the derivation successor
+enumerator in a FORK-ISOLATED worker (10 s deadline, killed class
+streamed as n_succ=null — the checkpoint selection-effect rule).
+
+BARS:
+1. P-TRUE-FIXED-POINT: among trajectories that reach answer-form,
+   >= 90% terminate as fixed_point or as a cycle that stays inside
+   answer-form class (no "Integral(" in any cycle member). FIRES =
+   ATTRACTOR-0's "zero cycles, one basin" headline survives its
+   stopping rule. REFUTED if answer-forms relaunch (emit an
+   Integral-bearing successor) or wander in >10% of cases — then
+   the single-basin claim gets scoped to "absorbing CLASS, not
+   absorbing STATES" in an amendment.
+2. P-MARGIN-UNIFIED: the ATTRACTOR-0 confidence gap (absorbing
+   2.25 v transit 0.85) is the AMBIGUITY LAW in disguise. Observable:
+   median n_succ over the states at which the ABSORBING move was
+   emitted v median n_succ over earlier TRANSIT states. FIRES if
+   transit median >= 1.5x absorbing median (branching gap in the
+   law's direction). NULL if ratio < 1.5 or reversed — then the
+   confidence gap is a separate phenomenon and both verdicts stay
+   narrow. NOT-APPLICABLE if < 50 states obtain an n_succ reading
+   (oracle failures dominate).
+Prediction (house): both fire — absorbing moves come from
+low-branching states, and answer-forms are true fixed points.
+Fence: n=1 crystal (d256); a fire feeds the THEORY ambiguity row
+only alongside the existing d128 replication, and the row still
+waits on a second DOMAIN.
+
+## NOTE EXACT-GATE-POWER: the L7226 exact-mode retest slot is structurally underpowered as a SOLVE-COUNT arm — redesigned as a DECISION-FLIP count before it ever fires (2026-08-10 late evening, Mac, desk)
+
+Desk derivation from booked numbers only (no run). The retest slot
+(AMENDMENT at RESULTS L7226: exact-mode gate v rounded gate, same
+weights, sub-sigma resolution) can only change outcomes at tie-zone
+decisions — and the tie population is now counted:
+- 0B (L24698): 6/6,267 free-run decision tokens in the <0.02 zone
+  (0.096%), ~42 tokens per problem path -> P(any tie on a path)
+  = 3.9%; expected tie-affected problems on a 120 gate = 4.7.
+- 0A (L24602) cross-check: 7/279 problems (2.5%) carry a ply-1
+  margin < 0.02 -> 3.0 of 120.
+Even the WORST case — every affected problem flips the same
+direction — is 4.7 solves, inside the gate's ~5-solve sigma; the
+realistic case (coin-flip at ties) is far smaller. A solve-count
+verdict from this arm is unreadable at any seed count the lab
+would pay for.
+
+REDESIGN (the slot survives, the observable changes): run the
+paired arm but read DECISION FLIPS directly — at each greedy step,
+exact-path argmax v rounded-path argmax, same weights, same
+prompts; the flip count is deterministic (no sigma), and the
+per-flip downstream effect (solve gained/lost/unchanged) books as
+an exhaustive enumeration instead of a pooled delta. The precision
+doctrine's closure is then retested at the DECISION level, which is
+where the fp16-near-tie non-bug doctrine already lives. The slot's
+scope fence (L7226) is unchanged; this note only swaps its
+statistic. Precondition unchanged: an exact inference path (fp32limb
+GEMM + declared nonlinearities) — R2/R3 Metal receipts are the next
+artifact toward it.
