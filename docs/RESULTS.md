@@ -24598,3 +24598,57 @@ language: d256 seed sigma ~1.0 (RESULTS 4930) does not transport;
 rung B re-derives per-seed bars. Machines per Artin 2026-08-10 GO:
 "GO 0 + A now (CPU). Pre-reg B for next 3080 window; fire B only
 after 0/A readouts (and diet rations pinned)."
+
+## VERDICT DATA-CEIL-0A: P-MARGIN-HARDNESS MISSES (rho +0.18 v predicted <= -0.8) and the refutation reading FIRES — decision margins do not track problem hardness at d256, and every level's median has 20x headroom over the tie zone; census: only 9.65% of gen-4 states are choice-free (2026-08-10, Mac CPU)
+
+Both GO'd rungs of PRE-REG DATA-CEIL complete, artifacts streamed,
+numbers recomputed from the JSONL (never the printed table).
+
+RUNG 0 — MARGIN-VS-HARDNESS (logs/data_ceil/margins_d256_L1-7.jsonl,
+280 problems, 279 ok + 1 genfail at L7, greedy ply-1, d256 control
+crystal, CPU). Per-level median min-margin: L1 0.882, L2 1.192,
+L3 1.361, L4 0.839, L5 1.341, L6 0.416, L7 1.702. Spearman rho =
++0.179 against the registered <= -0.8: P-MARGIN-HARDNESS MISSES,
+decisively — the sign is not even negative. REFUTATION READING
+(registered) FIRES: no level's median sits below 0.2 (10x the
+0.02 fp16 tie zone); the greedy decision channel has headroom at
+every measured hardness. At this scale, on this instrument, data
+hardness does NOT compress decision margins — the ceiling-swap
+mechanism has no lever to pull here.
+RIDER (rule 4 — the tail reported before the explanation): 46/279
+problems (16.5%) have min-margin < 0.2 and 7/279 < 0.02, but the
+tail is NOT level-correlated (it is why rho lands near zero
+instead of positive-large). Tight decisions exist; hardness does
+not create them. L6's low median (0.416) is one level, not a
+trend, and books as noise pending any n>40 re-read.
+
+RUNG A — DETERMINABILITY CENSUS (logs/data_ceil/determinability_gen4.jsonl).
+COVERAGE FIRST: 4,000/4,000 scored, 0 unscored, axiom bridge
+never expired. frac(n_succ==1) = 386/4000 = 9.65%. Histogram mode
+n=3 (1,114 states); tail to n=12. The lab's first number for
+"how choice-free is the diet": ~1 in 10 states.
+CONSEQUENCE FOR RUNG B [HOLD -> RECOMMEND NO-FIRE AS DESIGNED]:
+a unique-only arm keeps ~10% of states — that is a 90% dose cut,
+and the composition rider (gen-7 lesson) says the arm would
+measure STARVATION, not cleanliness. The registered design's
+rations precondition cannot be met at frac=0.0965 without a
+different cut (e.g. determinable-rows-by-decomposition, the
+15->98 lever, which is a FORMAT rebuild, not a filter).
+
+WHERE THIS LEAVES THE THEORY: not dead, but its cheapest
+mechanism is. The margin channel (greedy, ply-1, d256, math band
+L1-7) shows no data->precision coupling. Surviving routes, in
+cost order: (a) multi-ply / harder-band margins (L8+, chains
+compound near-ties downstream — different instrument, needs its
+own pre-reg); (b) the sanctioned exact-mode retest slot (RESULTS
+7226) when exact inference lands; (c) BRIDGE-1 (carry-shaped
+perturbation transfer curve), unaffected by this verdict. The
+LR-precision law reading (bits ~ log2(w/(LR*g))) is TRAINING-side
+and this verdict is INFERENCE-side — the law is not touched, only
+the inference-margin route to it.
+
+Fences: single crystal (gate-65 control), greedy ply-1 only,
+fresh 91M band, n=40/level; sigma language does not transport.
+Estimators named: median, Spearman on level-median pairs, n=7
+levels. Rung B stays [HOLD]; no-fire-as-designed is a
+recommendation, the decision is Artin's.
