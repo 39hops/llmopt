@@ -23787,3 +23787,64 @@ untracked per file-handoff convention (now gitignored). Why
 booked: uncited receipts rot — these two are the only artifacts
 from which the census is independently re-derivable without
 re-running the kernel pass.
+
+## PRE-REG ANCHOR-V2: the gcd-free exact anchor — RNS/CRT ring core + interval shadow with four pins, assembled from booked wins (2026-08-09 night, cross-lab; booked BEFORE any build fires)
+
+Probes GO'd by Artin and run same-evening axiom-side (their relay
+5c5251f, tooling 1d7bcf9): PROBE 0 confirms the premise
+emphatically — gcd is 86.6% of d64 anchor step self-time rising
+to 96.4% mid-step, dominated by rational addition's reduction;
+ring multiplication 0.3%. PROBE 1 validates the interval shadow
+at machine speed (12 d64 steps ~1 s vs 2,554 s/step exact;
+shadow step-1 loss matches the exact anchor EXACTLY at 16,282)
+and returns the fallback taxonomy: ordered compares ZERO
+straddles both scales (the clamp-boundary worry acquitted);
+zero-tests all TRUE zeros (design class); floors a small
+structural exact-boundary class + a near-boundary class with ~5
+bits spare. HOUSE PREDICTION REFUTED, booked honestly: "straddles
+thin out as training breaks symmetry" held at d8 (constant ~2%
+structural) but FAILED at d64 — interval widths compound
+~15-20 bits/step through the optimizer's division chains; the
+double-precision shadow collapses by step 3 (0.4% -> 4.7% ->
+94%). The refutation forces pin (3).
+DESIGN (the assembly, components all booked: ozaki 2b exact
+accumulation; ozaki 2c never-leave-the-sliced-domain; the parked
+RNS rung of specs/2026-07-27-exact-representations.md; probe
+receipts above). FOUR PINS, all required:
+ (1) residue-native zero tests (the true-zero class never
+     reconstructs);
+ (2) exact-boundary site cache (structural floor ties decided
+     once per site);
+ (3) shadow refresh: growing dyadic shadow (~50 + 20N bits,
+     gcd-free) as the default, reconstruct-every-K re-anchoring
+     as the named alternative — the build picks one and books
+     why;
+ (4) per-class fallback counters (compares / zero-tests /
+     floors-structural / floors-near) as REGISTERED observables
+     in every run's output.
+BARS:
+- P-DIGEST-EQUAL fires iff reconstructed dumps are bit-equal to
+  the bignum anchor's on an overlap cell that exercises a SCHED
+  boundary AND at least one forced fallback (axiom's amendment,
+  adopted).
+- P-HORIZON fires iff a 12-step d64 exact prefix completes in
+  one machine window (<= 4 h wall) with all four pins' counters
+  in the probe-predicted classes (zero-test reconstructions = 0;
+  compare fallbacks = 0; floor fallbacks <= the structural rate
+  measured in PROBE 1). Instrument-speed bar: speed is this
+  instrument's PRODUCT; wall-clock here is an engineering bar,
+  not a science readout — the science bars stay digest-equality
+  and counter classes.
+- Any bar miss: direction booked, tighten loop named, no build
+  adoption.
+PREDICTION (house, registered now): with the dyadic shadow at
+50+20N bits, d64 fallback rates stay at the structural floor
+class only; the step-3 collapse does not recur.
+FENCES: axiom engine leg, builds only on Artin GO; Tier 1
+(parallel bignum anchor) independent and GO-ready pending the
+exr::guard cache freeze (data-race fix; freeze-at-run-start over
+thread-local for auditability); the WSL box stays single-worker
+until freed; probe numbers are axiom-side receipts, counter-
+booked house-side when the overlap cell lands; RIFF-LEDGER
+carries the assembly provenance (two banks + the spec-time
+parked-rung-sweep process lesson).
