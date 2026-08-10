@@ -253,6 +253,18 @@ VERDICT](RESULTS.md#L10676).)
   theory's inference-side legs are both closed at this scale.
   ([VERDICT DATA-CEIL-0A](RESULTS.md#L24602); [VERDICT
   DATA-CEIL-0B](RESULTS.md#L24698).)
+- [MECHANISM-CONFIRMED] [TEACHER-FORCED] [REGIME-SCOPED: house crystals]
+  Near-tie decisions are data-ambiguity sites: on the d256 control crystal
+  over 3,995 censused diet states, median minimum margin compresses
+  monotonically with the state's legal-successor count (rho -0.9 across
+  five buckets, a 3x range), tie-zone incidence rises in proportion, and
+  unique-successor states produced not one tie-zone event in 386 states.
+  The tie anatomy is coefficient choice, not rule choice (6 of 7 tie-zone
+  sites sit at a digit emission mid-expression), reading as the
+  inference-side face of the latent-arithmetic determinability law. The
+  registered inversion books: determinable data removes tie sites, so
+  cleaning data lowers inference precision demand — opposite to the
+  ceiling-swap direction. ([VERDICT DATA-CEIL-0C](RESULTS.md#L24793).)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] No
   spontaneous transfer resolved in the tested bridge/desert cells; this does
   not support the former universal claim that nothing transfers.

@@ -24748,3 +24748,100 @@ dynamics claim untouched by inference margins). Rung B remains
 
 Fences: one crystal (gate-65 control), greedy only, band 92M,
 CPU. Estimators named: median, Spearman over 3 qualifying plies.
+
+## PRE-REG DATA-CEIL-0C: margin-vs-BRANCHING and the tight-tail autopsy — are near-ties data-ambiguity sites? (2026-08-10, Artin standing GO for cheap CPU data probes; Mac CPU)
+
+After 0A/0B closed the hardness and depth routes, the tie
+population (~0.1% of tokens, 16.5% of problems at min<0.2) is
+unexplained. Two rungs, both against existing artifacts.
+
+RUNG C1 — MARGIN v BRANCHING (scratch/margin_vs_branching.py).
+Take the 4,000 censused diet states (n_succ known from
+logs/data_ceil/determinability_gen4.jsonl), greedy ply-1 decode
+on the d256 control crystal, record per-state min-margin, join to
+n_succ. Registered observable: median min-margin per n_succ
+bucket (1, 2, 3, 4-5, 6+; buckets with n >= 100 states qualify).
+P-AMBIGUITY predicts FIRES: median min-margin DECREASES
+monotonically across qualifying buckets (Spearman <= -0.8 on
+bucket medians) — near-ties are where the DATA offers multiple
+defensible continuations, i.e. the tie population is a
+data-ambiguity object. REGISTERED INVERSION, stated before the
+run: if P-AMBIGUITY fires, then determinable (unique-successor)
+data REMOVES tie sites, so cleaning data would LOWER precision
+demand — the OPPOSITE of the ceiling-swap theory's direction.
+Either verdict is doctrine: swap-refuting if fires,
+tie-population-still-unexplained if not. Sanity fence: diet
+states are IN-corpus (unlike 0A's fresh band) — margins expected
+fatter overall; the claim is about the GRADIENT across n_succ,
+not the level.
+
+RUNG C2 — TIGHT-TAIL AUTOPSY (desk, from the 0A artifact). Every
+0A problem with min_margin < 0.2 (46) and < 0.02 (7): book kind,
+level, token position of the min-margin site (expression-interior
+v rule-choice v digit), and the exposure proxy (the problem
+kind's row share in the gen-4 corpus). Rule 4: every member
+listed in the receipt, then classified. Registered question (no
+bar, descriptive): does the tail concentrate in thin-exposure
+kinds? A yes is the first mechanism evidence for "perceived
+difficulty = diet" at the margin level.
+
+Fences: d256 control crystal only; CPU; greedy ply-1; estimators
+median + Spearman on bucket medians, computed from streamed
+JSONL. Standing GO per Artin 2026-08-10 ("keep messing with the
+data ... cheap tests").
+
+## VERDICT DATA-CEIL-0C: P-AMBIGUITY FIRES (rho -0.9) — near-ties are DATA-AMBIGUITY sites: margins compress monotonically with the state's legal-successor count, and unique-successor states have ZERO tie-zone events; the tie population's anatomy is coefficient choice, not rule choice (2026-08-10, Mac CPU, 8-way sharded)
+
+Counter-read of PRE-REG DATA-CEIL-0C, both rungs, numbers
+recomputed from artifacts.
+
+RUNG C1 — MARGIN v BRANCHING
+(logs/data_ceil/margin_vs_branching_d256.jsonl, 3,995 scored / 5
+tokfail of 4,000 censused diet states, 8 shards all rc=0).
+Median min-margin by n_succ bucket: 1 -> 5.556, 2 -> 4.727,
+3 -> 3.784, 4-5 -> 1.830, 6+ -> 2.014. All five buckets qualify
+(n >= 100; smallest 386). Spearman rho = -0.9 against the
+registered <= -0.8: P-AMBIGUITY FIRES. The one inversion (6+
+slightly above 4-5) is why rho is -0.9 and not -1.0; the trend is
+otherwise strictly monotone across a 3x margin range.
+TIE-ZONE GRADIENT, same direction and sharper: frac(min < 0.2)
+rises 0.0104 -> 0.0461 -> 0.0495 -> 0.1067 -> 0.1325 across the
+buckets, and frac(min < 0.02) is EXACTLY ZERO at n_succ = 1 (386
+states, not one tie-zone event) rising to ~1.4% at 4-5/6+.
+Choice-free states do not produce near-ties. Ambiguous states do,
+in proportion.
+
+RUNG C2 — TIGHT-TAIL AUTOPSY (from the 0A artifact + 7-problem
+re-decode; every member listed in the session receipt). All 7
+tie-zone problems tie MID-EMISSION (median site ~30% in), and 6/7
+tie at a COEFFICIENT/DIGIT choice ('+ Integral(0', '+ Integral(4',
+'+ 3', ')*(4', '- 4', '3*x)'), not at a rule-selection point.
+Tight tail (46) is level-concentrated at L4-L6 (34/46), consistent
+with 0A's hardness null. Reading (books at its own evidence level,
+rule 3): the tie population is the inference-side face of the
+booked "latent arithmetic never trains" law — near-ties live
+where the forward pass must produce an arithmetic value with
+residual freedom, and C1 now shows that freedom is measurable as
+the state's legal-successor count.
+
+THE REGISTERED INVERSION BOOKS: near-ties are a DATA property.
+Determinable (unique-successor) data REMOVES tie sites — so
+cleaning data LOWERS precision demand at inference, the OPPOSITE
+of the ceiling-swap direction. Combined with 0A/0B: data cannot
+push the model INTO the precision floor (hardness null, depth
+null), and cleaning data pulls it further AWAY (this entry). The
+ceiling-swap theory is now refuted on the inference side in both
+directions at this scale. Its training-side routes (BRIDGE-1,
+exact-mode slot, gradient-spectrum reading) are untouched.
+
+NEW LAW CANDIDATE (needs a second crystal + a second domain
+before a THEORY row): margin is an inverse readout of the data's
+local branching factor — "the model's uncertainty is the diet's
+ambiguity, measured per state."
+
+Fences: one crystal (d256 control, gate 65); greedy ply-1;
+in-corpus states (level claim fenced accordingly — the GRADIENT
+across n_succ is the result, not the absolute margins); estimators
+median + Spearman on 5 bucket medians; sharding is
+compute-topology only (8 CPU shards, deterministic per-state work,
+order-independent by construction).
