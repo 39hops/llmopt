@@ -245,7 +245,14 @@ VERDICT](RESULTS.md#L10676).)
   data hardness has no inference-side lever on precision demand; the paired
   census puts the diet's choice-free share at 9.65% of states, which sinks
   the registered unique-only training arm on rations grounds before it
-  fires. ([VERDICT DATA-CEIL-0A](RESULTS.md#L24602).)
+  fires. The depth leg closed the same day: greedy chains terminate in one
+  to three plies and margins rise rather than compress with depth (rho +0.5
+  v -0.8 registered; ply-2 rise is the pre-registered survivor-bias
+  signature), so tight decisions are a rare (~0.1% of tokens),
+  hardness-uncorrelated, depth-uncorrelated population and the ceiling-swap
+  theory's inference-side legs are both closed at this scale.
+  ([VERDICT DATA-CEIL-0A](RESULTS.md#L24602); [VERDICT
+  DATA-CEIL-0B](RESULTS.md#L24698).)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] No
   spontaneous transfer resolved in the tested bridge/desert cells; this does
   not support the former universal claim that nothing transfers.

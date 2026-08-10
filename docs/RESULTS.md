@@ -24694,3 +24694,57 @@ are the model's EASY chains (it solved its way there), which
 biases deep-ply margins UP. If the refutation reading fires, this
 confound must be named in the verdict as an alternative
 explanation, and the per-ply survivor counts book alongside.
+
+## VERDICT DATA-CEIL-0B: FORK-ONLY BOOKS — margins RISE with ply depth (rho +0.5 v predicted <= -0.8), and greedy chains barely go three plies deep; the ceiling-swap theory's inference-side leg is closed at this scale (2026-08-10, Mac CPU)
+
+Counter-read of PRE-REG DATA-CEIL-0B, recomputed from the artifact
+(logs/data_ceil/margins_by_ply_d256.jsonl, 212 margin rows, rows
+streamed).
+
+SURVIVORSHIP FIRST (registered order): 150 chains enter ply 0; 34
+survive to ply 1, 27 to ply 2, 1 to ply 3. Stop census at ply 0:
+55 solved, 61 invalid, 34 advance. Greedy chains on the d256
+crystal essentially DO NOT reach depth — the 12-ply design space
+was never occupied. Qualifying plies (n >= 20): exactly three
+(0, 1, 2).
+
+P-PLY-COMPRESSION MISSES: qualifying-ply medians 1.484 / 1.409 /
+4.578 — Spearman rho = +0.5 against the registered <= -0.8. Wrong
+sign again. REFUTATION READING FIRES within its registered terms
+(rho > -0.3 AND all qualifying medians > 0.2 — they sit 7-23x
+above it): FORK-ONLY books. Chain depth does not compress
+margins; the tie-zone census across all plies is 0.096% of tokens
+(6,267 measured).
+
+THE REGISTERED CONFOUND, named as required: the ply-2 median
+(4.578, with 20/27 of its chains solving) is exactly the
+survivor-bias signature the pre-reg predicted — deep survivors
+are the model's easy chains. So the RISE is not evidence of
+anti-compression; it is selection. What the confound CANNOT
+explain away: no qualifying ply's median comes anywhere near the
+tie zone, and the rho needed the wrong sign even at ply 0-1 where
+selection is weakest (1.484 -> 1.409, a 5% dip, nothing like
+compression).
+
+INSTRUMENT FENCE, stated plainly: three qualifying plies is a
+WEAK instrument for a trend claim — this verdict rests less on
+the rho than on the joint facts that (a) chains terminate in 1-3
+plies, so there IS no long-chain regime at d256 for depth to
+compress, and (b) margins sit an order of magnitude above the tie
+zone everywhere measured.
+
+WHERE THIS LEAVES THE PROGRAM (with 0A): the ceiling-swap
+theory's INFERENCE-side legs are both closed at this scale —
+hardness does not compress margins (0A) and depth does not
+compress margins (0B; depth barely exists). Tight decisions are a
+rare (~0.1% of tokens), level-uncorrelated, depth-uncorrelated
+population — the fp16 near-tie doctrine's picture, now measured
+from two new angles. Surviving routes are TRAINING-side only:
+BRIDGE-1 (carry-shaped perturbation transfer), the sanctioned
+exact-mode retest slot (RESULTS 7226), and the LR-precision law's
+gradient-spectrum reading (bits ~ log2(w/(LR*g)) — a training
+dynamics claim untouched by inference margins). Rung B remains
+[HOLD], recommendation unchanged: no-fire as designed.
+
+Fences: one crystal (gate-65 control), greedy only, band 92M,
+CPU. Estimators named: median, Spearman over 3 qualifying plies.
