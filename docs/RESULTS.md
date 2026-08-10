@@ -24977,3 +24977,58 @@ bigint/int256/dyadic/rns/blas/pool already.
 This is a SPEED/DETERMINISM rung. The capability question is
 closed (132,566 = 132,566); any capability pitch collides with a
 bit-identical paired null.
+
+## COUNTER-BOOK FP32LIMB-R1: P-ENVELOPE-EXACT FIRES — the CPU oracle is built and exact across every registered adversarial class, and axiom's envelope finding SHARPENS the contract: the bound is a lowest-significant-BIT condition, not an exponent-spread condition (2026-08-10, Mac; axiom 2cd2b1d)
+
+Counter-book of axiom's R1 against PRE-REG FP32LIMB-METAL
+(24886), rung R1. Verified house-side from their source and
+artifacts at 2cd2b1d.
+
+VERIFIED:
+1. CONSTANTS AND FENCES IN SOURCE (include/ax/la/fp32limb.hpp):
+   SLICE_W = 7 (the registered constant, not the house file's
+   s=8 default — the relay's warning landed); block 32;
+   static_assert(2*7 + 5 <= 24) — the budget inequality as a
+   compile-time fence; every exactness fence throws
+   std::runtime_error explicitly so no guard dies under NDEBUG
+   (the release-build hazard from the red-team, closed by
+   construction). dd_chain NOT ported, as instructed.
+2. RECEIPTS RECOMPUTED: 18/18 JSONL rows (4 input classes x 3
+   seeds + 6 chain layers) all max_int_dev = 0 against the
+   bigint reference, per-row sha256 digests present, empirical
+   slice budget max 7 of 8 across all runs. House note for the
+   record: the first house recount script compared the string
+   '0' to the integer 0 and flagged all 18 rows — the defect was
+   in the counter-book tooling, caught before any conclusion
+   left the desk. Fit the artifact includes reading its types.
+3. BARS: P-ENVELOPE-EXACT FIRES (entry-wise bigint equality,
+   block-boundary-straddling sizes, N=128 drivers);
+   K-permutation bit-identical (3 perms x 3 seeds — the best
+   single exactness detector, passed); exponent-spread and
+   denormal classes exact; out-of-envelope inputs THROW,
+   verified firing in a Release build. 544/544 tests both build
+   types (SOURCE-ATTESTED — house did not rebuild; receipts +
+   header inspection are the house-verified layer).
+4. RIDERS: triple-double exit (exp_add capped at 3 components,
+   loud overflow reject) + depth-6 chain harness, both in the
+   receipt driver. The chain layers' receipts are the six
+   chain_layer rows, all exact.
+
+THE FINDING TO COUNTER-BOOK, accepted and sharpened into the
+contract: the envelope is a LOWEST-SIGNIFICANT-BIT condition,
+not an exponent-spread condition. The slice count is set by the
+bit-SPAN from the block's max exponent down to the lowest set
+bit of any element — a single-bit element at spread 40 is exact
+while a full-mantissa element at spread 33 is not (24 + 32 = 56
+bits = the 8x7 cap). Their driver crashed on exactly this
+(uniform/normal tails are unbounded downward), and the fix is
+an INPUT CONTRACT, not a silent cap: registered classes now
+flush to zero at 2^-24 of class scale, marked _f24 in the
+receipts. CONSEQUENCE FOR R2, booked now: the Metal kernel
+INHERITS the _f24 input contract, or R2 widens the slice cap —
+one of the two must be stated in R2's receipt, never assumed.
+
+R2/R3 remain [HOLD] per the pre-reg (crown window + gate step +
+EX4-UNIF ahead + Artin GO). The integer-simdgroup-MMA question
+stays open until R2. Fences respected throughout: CPU only, one
+worker, no GPU touch either machine.
