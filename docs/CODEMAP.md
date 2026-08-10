@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 159, library 154, reproduce-pinned 9, results-cited 115, spec-cited 42
+Census: UNCITED 157, library 155, reproduce-pinned 9, results-cited 116, spec-cited 44
 
 ## scratch/
 
@@ -16,7 +16,7 @@ Census: UNCITED 159, library 154, reproduce-pinned 9, results-cited 115, spec-ci
 |---|---|---|---|---|
 | absorb | absorb_1e5.py | UNCITED | — | — |
 | adjudicate | adjudicate_zx.py | library | — | 1 |
-| anatomy | anatomy.py | library | RESULTS×5, specs×3 | 1 |
+| anatomy | anatomy.py | library | RESULTS×5, specs×4 | 1 |
 | b768 | b768_after_v5.sh | UNCITED | — | — |
 | basin | basin_probe.py | UNCITED | — | — |
 | birth19m | birth19m_snaps.py | UNCITED | — | — |
@@ -65,6 +65,7 @@ Census: UNCITED 159, library 154, reproduce-pinned 9, results-cited 115, spec-ci
 | detbwd | detbwd_r2_adamw.py | library | RESULTS×4 | 2 |
 | detbwd | detbwd_r2b.py | library | RESULTS×2, specs×2 | 6 |
 | detbwd | detbwd_r3_qw.py | library | RESULTS×1 | 5 |
+| determinability | determinability_census.py | results-cited | RESULTS×1 | — |
 | distortion | distortion_collapse.py | results-cited | RESULTS×1 | — |
 | dual | dual_probe.py | UNCITED | — | — |
 | duo | duo_mine.py | UNCITED | — | — |
@@ -72,19 +73,19 @@ Census: UNCITED 159, library 154, reproduce-pinned 9, results-cited 115, spec-ci
 | e2 | e2_logit_check.py | results-cited | RESULTS×1, specs×1 | — |
 | e3 | e3_battery.py | spec-cited | specs×1 | — |
 | emission | emission_wall_pair.py | UNCITED | — | — |
-| engine | engine_scale_export.py | UNCITED | — | — |
+| engine | engine_scale_export.py | spec-cited | specs×1 | — |
 | ex1 | ex1_swap.py | library | RESULTS×2, specs×1 | 1 |
 | ex2 | ex2_build.py | results-cited | RESULTS×1, specs×1 | — |
 | ex3 | ex3_build.py | results-cited | RESULTS×2, specs×1 | — |
 | exact | exact_twin_d56.py | spec-cited | specs×1 | — |
-| exact1 | exact1_small_cells.py | results-cited | RESULTS×1 | — |
+| exact1 | exact1_small_cells.py | results-cited | RESULTS×2, specs×1 | — |
 | exchange | exchange_test.py | results-cited | RESULTS×1 | — |
 | export | export_axnn.py | results-cited | RESULTS×1 | — |
 | export | export_mb_ref.py | UNCITED | — | — |
 | export | export_r2b_ref.py | results-cited | RESULTS×1 | — |
-| farm | farm_dist_rows.py | results-cited | RESULTS×1, specs×4 | — |
+| farm | farm_dist_rows.py | library | RESULTS×1, specs×4 | 1 |
 | farmer | farmer_probe.py | results-cited | RESULTS×1, specs×2 | — |
-| fig | fig_magic_scatter.py | UNCITED | — | — |
+| fig | fig_magic_scatter.py | spec-cited | specs×1 | — |
 | fixed | fixed_q_snap.py | library | — | 1 |
 | fmt | fmt_chain.sh | UNCITED | — | — |
 | fmt | fmt_chain2.sh | UNCITED | — | — |
@@ -168,6 +169,7 @@ Census: UNCITED 159, library 154, reproduce-pinned 9, results-cited 115, spec-ci
 | mac | mac_day_chain.sh | UNCITED | — | — |
 | make | make_altpairs.py | library | RESULTS×1 | 1 |
 | make | make_union_diet.py | library | — | 1 |
+| margin | margin_by_level.py | results-cited | RESULTS×1 | — |
 | margin | margin_census.py | UNCITED | — | — |
 | mass | mass_on_valid.py | spec-cited | specs×4 | — |
 | matryoshka | matryoshka_r1.py | results-cited | RESULTS×1, specs×2 | — |
@@ -277,7 +279,7 @@ Census: UNCITED 159, library 154, reproduce-pinned 9, results-cited 115, spec-ci
 | remote.env | remote.env.sh | library | — | 6 |
 | retention | retention_watcher.sh | UNCITED | — | — |
 | rev2 | rev2_d768.py | results-cited | RESULTS×1, specs×1 | — |
-| rev3 | rev3_crown.py | results-cited | RESULTS×2, specs×1 | — |
+| rev3 | rev3_crown.py | results-cited | RESULTS×2, specs×2 | — |
 | rev4 | rev4_zx45.py | library | RESULTS×1 | 1 |
 | rot | rot_commutant.py | library | RESULTS×1, specs×1 | 3 |
 | rot | rot_convert.py | spec-cited | specs×1 | — |
@@ -416,7 +418,7 @@ Census: UNCITED 159, library 154, reproduce-pinned 9, results-cited 115, spec-ci
 | bench | bench_stacked.py | UNCITED | — | — |
 | bench | bench_static.py | UNCITED | — | — |
 | bench | bench_step_diversity.py | results-cited | RESULTS×1 | — |
-| bench | bench_step_tokens.py | library | RESULTS×2, specs×6 | 65 |
+| bench | bench_step_tokens.py | library | RESULTS×2, specs×6 | 66 |
 | bench | bench_stitch_poc.py | results-cited | RESULTS×1 | — |
 | bench | bench_syndrome_head.py | UNCITED | — | — |
 | bench | bench_syndrome_policy.py | library | — | 1 |
@@ -488,7 +490,7 @@ Census: UNCITED 159, library 154, reproduce-pinned 9, results-cited 115, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — |
 | train | train_magic_estimator.py | library | RESULTS×1 | 8 |
 | train | train_magic_llm.py | results-cited | RESULTS×1 | — |
-| train | train_mathnative.py | library | RESULTS×2, specs×5 | 69 |
+| train | train_mathnative.py | library | RESULTS×2, specs×5 | 70 |
 | train | train_nnue.py | library | specs×8 | 15 |
 | train | train_proposer.py | spec-cited | specs×5 | — |
 | train | train_syndrome_decoder.py | library | RESULTS×1 | 1 |

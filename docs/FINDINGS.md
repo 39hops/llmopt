@@ -210,6 +210,19 @@ VERDICT](RESULTS.md#L10676).)
   follow-on gcd-free design is registered against. ([VERDICT
   EXACT1-SMALL](RESULTS.md#L23852); [PRE-REG
   ANCHOR-V2](RESULTS.md#L23791).)
+- [NULL] [REGIME-SCOPED: deterministic integer battery] The structural-tie
+  reading of the anchor's near-tie class is refuted for the ambient
+  population: across 5,490 censused events the small integer |r| tracks the
+  blocking denominator to within 20 bits everywhere (mid-zone gap max 12
+  bits), and the co-factor witness rung closed at its pre-registered
+  NOT-APPLICABLE gate without a build — the blocking seam's locally-known
+  divisors are all powers of two, and the witness mechanism is in tension
+  with gcd-freeness itself (a trackable non-reduced co-factor compounds
+  through gemm contractions). The step-9 site's own hypothesis stays
+  unreached inference; the census dies at the wall it measures, so all
+  counts are lower bounds. ([COUNTER-BOOK
+  COFACTOR-GATE](RESULTS.md#L24379); [VERDICT
+  COFACTOR-CENSUS](RESULTS.md#L24452).)
 
 ## Data, diet, and federation
 
@@ -223,6 +236,16 @@ VERDICT](RESULTS.md#L10676).)
   chains with primitive emissions and sharply reduced the rows needed to
   learn the measured task families. ([The decomposition
   discount](RESULTS.md#L3682); [SERIES RUNG 1E](RESULTS.md#L3758).)
+- [NULL] [TEACHER-FORCED] [REGIME-SCOPED: house crystals] Greedy decision
+  margins do not track problem hardness: on the d256 control crystal over a
+  fresh seven-level band, the per-level median minimum margin correlates at
+  rho +0.18 against a registered bar of -0.8 or below, and every level's
+  median sits at least 20x above the fp16 near-tie zone. A 16.5% tail of
+  tight-margin problems exists but is not level-correlated, so at this scale
+  data hardness has no inference-side lever on precision demand; the paired
+  census puts the diet's choice-free share at 9.65% of states, which sinks
+  the registered unique-only training arm on rations grounds before it
+  fires. ([VERDICT DATA-CEIL-0A](RESULTS.md#L24602).)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] No
   spontaneous transfer resolved in the tested bridge/desert cells; this does
   not support the former universal claim that nothing transfers.
