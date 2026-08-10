@@ -25384,3 +25384,66 @@ at its second seat.
 
 Fences: no merge performed (the -15 gate held); no cross-device
 comparison anywhere (all ratios Mac-free); one 3080 worker.
+
+## PRE-REG FUNNEL-PREC: closed-loop precision for the exact anchor — the schedule becomes an OUTPUT of the measured straddle width, and path-invariance holds by construction or the frame dies (2026-08-10 ~17:30, Artin GO; axiom Mac seat, CPU only)
+
+PROVENANCE: funnel control (Ilchmann/Ryan prescribed-performance
+— error inside a shrinking envelope, gain adapted to distance-
+from-boundary, no plant model), banked today from Artin's
+tunnel->funnel typo. It attacks the registered open problem of
+the anchor-v2 arc: AMENDMENT 24153 booked the certified prefix as
+a property of (anchor, SCHEDULE) because every schedule tried was
+OPEN-LOOP; AMENDMENT 24224 booked the step-9 site defeating two
+open-loop strategies (more-late AND more-throughout);
+P-PATH-INVARIANT survives unrun for lack of an instrument. The
+dyadic shadow already measures straddle width at every decision
+site — the sensor exists; this rung supplies the feedback law.
+
+THE REFRAME: straddle width = error; per-step precision = gain;
+throw = envelope violation. Closed loop: prec(s+1) computed from
+the measured width margin at step s (the feedback law is axiom's
+to design — registered CONSTRAINT, not a registered formula: it
+may use only quantities the engine measures in-run, never the
+step index alone, or it is open-loop in disguise; the law and
+its constants are pinned IN THE RECEIPT per the pin-3 contract,
+whole expression + prime budget + per-row prec as path record).
+
+CELL: the characterized d64 12-step cell, 256 primes, the same
+committed reference surface (step-1 dump sha 7c9b8f0b...).
+
+BARS:
+1. P-DIGEST-SAFE (safety, reads FIRST): every step the closed
+   loop certifies is bit-identical to the committed reference
+   surface — a controller that moves certified digests is a
+   defect regardless of how far it gets.
+2. P-CLOSED-INVARIANT (the point): initialize the controller
+   from BOTH characterized open-loop histories' step-1 states
+   (the shipped linear ramp's and the max ramp's entry
+   conditions) — the closed loop must produce IDENTICAL
+   schedules and digests from step 2 onward. Path-invariance BY
+   CONSTRUCTION, finally instrumented. If the two runs diverge,
+   the feedback law still depends on history and the frame's
+   central claim dies — booked as refutation, not miss.
+3. P-STEP9 (exploratory, no confidence attached): the step-9
+   path-resistant site's fate under closed loop — certifies,
+   throws at measured cost, or exposes a THIRD obstacle class
+   against {gcd, bits-in-ring, tie-depth}. Any outcome books;
+   the site has defeated everything else and low confidence is
+   the registered posture (house track record on this
+   instrument: last two predictions REFUTED).
+4. P-COST: total bits-x-steps spent by the closed loop <= the
+   CHEAPEST open-loop run that reached the same certified depth
+   — adaptivity should not pay MORE for the same prefix; if it
+   does, the controller is mis-tuned and the receipt says by
+   how much.
+
+NOT-APPLICABLE clause: if the engine cannot expose the width
+margin at schedule-decision time without restructuring (sensor
+exists but not at the decision point), the rung books
+NOT-APPLICABLE with the restructuring priced, and no bar reads.
+
+Fences: axiom Mac seat, CPU only, one worker (sequenced by them
+against any remaining Metal-window work); 3080 untouched by this
+rung; no prefix length quoted as a property of the anchor —
+under closed loop it is quoted as a property of (anchor,
+ENVELOPE), which is the entire point.
