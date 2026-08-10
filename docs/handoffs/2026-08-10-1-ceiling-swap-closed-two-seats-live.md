@@ -20,8 +20,23 @@ EVENING handoff of the same date.
   check logs/revive/crown_c_s4.log for "deployed T" and do the
   kill/relaunch by hand (pid was 11734, bash loop).
 - mac-axiom seat: has TWO jobs — the armed Metal dispatch
-  (relay -13/-16 precedence: ping preempts) and PRE-REG
-  FUNNEL-PREC (closed-loop anchor precision, relay -16, GO'd).
+  (relay -13/-16 precedence: ping preempts) and FUNNEL-PREC,
+  which is BUILT AND MID-RUN as of ~17:45: sensors landed in
+  exact_anchor2.hpp (sense_t: min slack over floor sites, max
+  straddle width, max recon denominator bits), pinned law in
+  run_anchor2.cpp (prec(s+1) = 32*ceil((prec(s)-S+96)/32),
+  lift to D+64 under reconstruction pressure, floor 64, step
+  index never consulted; AX_FUNNEL=1 gate, default path
+  untouched, 544/544 green). NOT-APPLICABLE did not fire
+  (sensor existed at the decision point). Tiny-fixture
+  P-CLOSED-INVARIANT passed EXACTLY (entries 200/4000 ->
+  identical demand 42 -> identical prec 160 + digests from
+  step 2 — the proportional law cancels entry precision
+  algebraically). IN FLIGHT: both d64 entry states, 9 steps,
+  256 primes; the four bars (DIGEST-SAFE v committed rows,
+  CLOSED-INVARIANT, STEP9, COST v the shipped ramp's 3,840
+  bits/8 steps) report when the runs finish — COUNTER-BOOK
+  PENDING house-side.
 - wsl-axiom seat: DONE and HOLDing — rnschain-cuda-2 MERGED to
   axiom main (16dd86e..e06ca6a), stale branch deleted, checkout
   clean. Montgomery/TC reimplementation [HOLD, needs pre-reg +
