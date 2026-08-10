@@ -100,6 +100,27 @@ physics enumerator). Attractor follow-ups (through-answer-form;
 correctness rider). Frustration metric (desk, banked).
 BRIDGE-1. Seat tabulation. 12 [UNVERIFIED] specs-INDEX rows.
 
+## POSTSCRIPT (post-compact, ~19:30)
+- FUNNEL-PREC: no longer mid-run — BOOKED, all four bars (VERDICT
+  25451): path-invariance byte-identical from step 2, digest-safe,
+  cost 53% IN BIT-STEPS (entry-200 arm; entry-4000 pays entry bits
+  once, amortizes step 2), step-9 >=15k-bit cliff measured. House
+  wall sweep adds: wall clock FLAT ~162 s/step across precision —
+  the ring, not the shadow, is the wall lever (AMENDMENT
+  FUNNEL-PREC-WALL).
+- CROWN SWAP DEFECT: watcher pattern "deployed T" is m-arm-only —
+  never matches c_s4's log. Window MISSED; m_s4 launched 19:12 and
+  runs through it. Decision: m_s4 is the last cell, let it finish;
+  Metal R2/R3 dispatch window = natural battery end (~23:00),
+  watcher killed. Then gate-eval, crown books.
+- Reviewer sweep (4 seats) landed: bookings amendments batched
+  (P-EXIT-EXACT unread, DATA-CEIL observable drift, ~3x tie ratio
+  overstate, census non-partition), ledger updated in place
+  (funnel bank OUTCOME, int8-MMA in-place marker, fp32limb
+  NOT-BUILT retired, break-even SHAPE-FENCED x2, frustration
+  caveat). fp32limb R1 replicated house-side: 18/18 pass, 5.4 s
+  total (~0.3 s per N=128 exact GEMM).
+
 ## STATE
 483+ tests green at every commit (rc-gated). FINDINGS ratchet
 under 320 after three same-commit curations. Everything pushed

@@ -25496,3 +25496,127 @@ collision with RNSCHAIN's -17) — adopting the shared-namespace
 convention; house relays continue from -19.
 544/544 green, default open-loop path untouched, AX_FUNNEL=1
 gated. Metal dispatch ping retains priority at the seat.
+
+## AMENDMENT CROWN-WINDOW-SWAP-MISSED: the watcher's trigger pattern was m-arm-only — the Metal window at the c_s4/m_s4 boundary did NOT fire (2026-08-10 evening, Mac)
+
+Amends NOTE CROWN-WINDOW-SWAP (L25088). Defect, house-side,
+reviewer-caught and verified in the logs: the watcher grepped
+crown_c_s4.log for "deployed T", but that line is printed only by
+m-arm cells (grep across logs/revive/: matches in crown_m_s2.log
+and crown_m_s3.log ONLY; every c-arm log ends at "saved
+checkpoints/..."). The trigger could never match; c_s4 finished
+cleanly and the battery loop rolled straight into m_s4 (launched
+19:12, ~0.6 it/s, 3 epochs). The booked interleave did not happen.
+
+DECISION (no kill): m_s4 is the LAST cell of the battery — killing
+it mid-epoch would restart the cell and delay the crown booking for
+zero gain. The FP32LIMB R2/R3 Metal dispatch window moves to the
+NATURAL battery end (~23:00), followed by the separate gate-eval
+step and the crown booking. The inert watcher was killed.
+
+DEFECT CLASS, banked: a watcher's trigger pattern must be verified
+against a SAMPLE of the artifact it watches at arm time — same
+family as "verify file deps at arm time" (remote-ops doctrine);
+eighth variant of the friendly-fire ladder, first on the local
+machine. Corollary rider while in the logs: the gate print in the
+crown driver emits "{dict} = 65/120 @ 63.54%" where the percentage
+is the VALIDITY rate, not the solve rate (65/120 = 54.17%) — the
+exact confusion of the booked "48" incident (RESULTS 13840). The
+crown booking MUST read the dict, never the trailing percentage;
+driver print-label fix is queued for after the battery (frozen
+while cells run).
+
+## AMENDMENT RNSCHAIN-EXIT-BAR-UNREAD: P-EXIT-EXACT was registered and never read — status UNREAD, not passed (2026-08-10 evening, Mac)
+
+Amends PRE-REG RNSCHAIN-CUDA (L25153) and VERDICT RNSCHAIN-C2C3
+(L25338). The pre-reg registered four bars including P-EXIT-EXACT
+("the one-time exit at the deepest L is bitwise equal to big-int");
+the verdict read C1/C2/C3 and never mentioned the exit bar — a
+silent drop against the every-bar-books-separately convention.
+Honest status: on the CPU leg, C1's chain oracle verifies the
+final values entrywise against ax::bigint at every depth, so the
+CPU exit is covered by C1's PASS. On the CUDA leg, C2's biteq
+compares slice kernel v naive mulmod INSIDE the ring — the CRT
+exit itself was never separately receipted on-device. P-EXIT-EXACT
+therefore reads: CPU-COVERED (via C1), CUDA-UNREAD. Readable from
+a one-line receipt if the wsl-axiom seat reopens; not blocking (the
+verdict's refutation rests on wall ratios, not exit exactness).
+
+## AMENDMENT DATA-CEIL-BOOKKEEPING: observable drift in 0A/0B, tie-ratio overstate in 0C-R, census classes are not a partition (2026-08-10 evening, Mac)
+
+Amends VERDICT DATA-CEIL-0A (L24602), VERDICT DATA-CEIL-0B
+(L24698), VERDICT DATA-CEIL-0C-R (L24849), VERDICT COFACTOR-CENSUS
+(L24452). Reviewer-caught, house-verified line-by-line; none
+changes any verdict direction.
+
+1. 0A drift: the pre-reg registered per-level fractions of DECISION
+   TOKENS with margin < 0.1 and < 0.02; the verdict reported
+   per-PROBLEM counts at < 0.2 and < 0.02 (46/279, 7/279). The
+   < 0.1 token fraction was never reported and the 0.2 threshold
+   was imported from the refutation reading, not the observables
+   list. Direction unaffected (medians sit 20x above the zone).
+2. 0B drift: registered per-ply token fractions at two thresholds;
+   booked one pooled number (0.096% over 6,267 tokens). Direction
+   unaffected (margins RISE with ply).
+3. 0C-R overstate: "~3x d256's at every bucket" — recomputed
+   per-bucket ratios are 3.75/2.23/2.18/1.72/1.93: ~2x median,
+   rising to ~3.8x at the choice-free bucket, fatter at EVERY
+   bucket (that part stands). FINDINGS bullet corrected in the
+   same commit.
+4. COFACTOR-CENSUS: the three quoted classes (lg2|r|<64: 1,060;
+   den>=1000 bits: 2,048; den 72-1000 bits: 2,100) are cut on TWO
+   DIFFERENT AXES (|r| v denominator) and do NOT partition the
+   5,490 events — the den<72 class was never counted. A reader
+   summing them to the census total will be 282 short. The seam
+   split at L24489 (5,426 + 64 = 5,490) is the clean partition.
+
+Standing rule reaffirmed: the pre-reg's observable list is the
+contract — a verdict that reports a different cut books the switch
+explicitly or reads the registered observable too.
+
+## AMENDMENT FUNNEL-PREC-COST-SCOPE-AND-WALL: P-COST is bit-steps and entry-200-scoped; wall clock measured RING-BOUND — precision is not the wall lever (2026-08-10 evening, Mac)
+
+Amends VERDICT FUNNEL-PREC (L25451). Two scopes + one new
+measurement, reviewer-raised, house-verified from artifacts and a
+fresh paired run.
+
+1. P-COST SCOPE: the 53% (2,024 v 3,840 bit-steps) fires on the
+   ENTRY-200 arm. The entry-4000 arm totals 4,000 + 1,824 = 5,824
+   bit-steps = 1.52x the shipped ramp — the bar as registered
+   ("closed loop <= cheapest open-loop") does NOT fire there
+   unqualified. Honest reading: entry cost is an initialization
+   the controller cannot retroactively refund; the law amortizes
+   it in ONE step (prec 4000 -> 160 at step 2), after which the
+   arms are byte-identical. Bar stands scoped: closed loop is
+   cheaper PER STEP FROM STEP 2 ON, and cheaper in total whenever
+   the entry state is not itself wasteful.
+2. COST IS BIT-STEPS, NOT SECONDS. BOARD/prose compressions of
+   "53% cost" invite a time reading; the artifacts refute it: the
+   open-loop ramp (prec 200->760) and the funnel (160->448) both
+   run ~141-166 s/step, agreeing under 2% at matched steps.
+3. NEW MEASUREMENT (house, this session): step-1-only paired arms,
+   same inputs (int_adamw r2b tables/init, 256 primes), trace
+   build's AX_PREC override, receipt
+   logs/funnel_wall/prec_sweep_step1_d64.log —
+     AX_PREC=160:  wall 141.0 s  (sensor min_slack 104)
+     AX_PREC=4000: wall 194.3 s  (sensor min_slack 3944)
+   25x the dyadic precision costs 1.38x wall; digests IDENTICAL
+   (7c9b8f0b..., exactness precision-invariant at this step).
+   Run-to-run noise fence: two same-config default runs landed
+   141.9/144.0 s (~1.5%), receipt prec_repeat_noise_step1_d64.log.
+   READING: the anchor wall is RING-DOMINATED (~140 s floor at
+   d64/256 primes); the dyadic shadow is a weak second term
+   visible only at extreme precision. Within the whole operating
+   range (160-760 bits) the wall is FLAT — precision scheduling
+   (funnel included) buys certification structure and bit-step
+   economy, NEVER seconds. The only speed lever on this instrument
+   is the ring itself (prime count, ring kernels — the fp32limb /
+   RNS-kernel track). One caveat carried: n=1 per point,
+   interactive Mac load, crown m_s4 training concurrently; the
+   1.38x separation is 35x the observed repeat noise, direction
+   safe.
+METHOD NOTE, banked: the first sweep attempt was INVALID — the
+AX_PREC override is compiled only under -DAX_ANCHOR2_TRACE and the
+plain build silently ignored the env var (row's prec field caught
+it). Fit-the-artifact includes reading its ifdefs; an env knob is
+not a knob until the build that carries it is verified.

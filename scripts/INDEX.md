@@ -1208,6 +1208,13 @@ Unified crystal anatomy (2026-07-29 spec: slack-restoration). One env-parameteri
 - `snap(w, q_max)`
 - `truncate(W, r)`
 
+### scratch/attractor_census.py
+Free-running iteration census (PRE-REG ATTRACTOR-0, 2026-08-10).
+
+- `greedy_step(model, tok, prompt_ids)`
+- `norm(s)`
+- `main()`
+
 ### scratch/basin_probe.py
 BASIN-1: routing basin radius v usage. CPU. Usage: SEED=1 python scratch/basin_probe.py
 
@@ -1978,9 +1985,22 @@ Margin-vs-hardness probe (PRE-REG DATA-CEIL rung 0, 2026-08-10).
 - `greedy_margins(model, tok, prompt_ids)` — -> list of top1-top2 gaps along the greedy trajectory.
 - `main()`
 
+### scratch/margin_by_ply.py
+Margin-vs-ply-depth probe (PRE-REG DATA-CEIL-0B, 2026-08-10).
+
+- `greedy_step(model, tok, prompt_ids)` — -> (text, margins) greedy decode of one step.
+- `main()`
+
 ### scratch/margin_census.py
 Margin census on the crown-tie ternary latents (pre-reg 2026-07-26).
 
+
+### scratch/margin_vs_branching.py
+Margin-vs-branching probe (PRE-REG DATA-CEIL-0C rung C1).
+
+- `greedy_min_margin(model, tok, prompt_ids)`
+- `bucket(n)`
+- `main()`
 
 ### scratch/mass_on_valid.py
 Mass-on-valid (spec 2026-07-28 rung 2): teacher-forced sequence probability mass over the engine-enumerated verified-valid next-step set, vs the modal valid move (farm-pick proxy: fresh states have no banked row). No sampling anywhere. successors() output is already sympy-verified and non-identity (derivation.py docstring), so the valid set is the enumeration itself.

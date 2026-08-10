@@ -1,0 +1,4 @@
+== AX_PREC=160
+{"step":1,"loss":16282,"digest":"7c9b8f0bfb592185d8b61679c71e4328e31e2d688f579a52f9549ea4a437249b","fb":{"eq_zero":0,"floor_exact":64,"floor_near":0,"cmp":0,"recon":0,"cache_hit":0},"sense":{"min_slack":104,"max_wint_bits":1,"max_den_bits":0},"prec":160,"prec_next":-1,"wall_s":140.993}
+== AX_PREC=4000
+{"step":1,"loss":16282,"digest":"7c9b8f0bfb592185d8b61679c71e4328e31e2d688f579a52f9549ea4a437249b","fb":{"eq_zero":0,"floor_exact":64,"floor_near":0,"cmp":0,"recon":0,"cache_hit":0},"sense":{"min_slack":3944,"max_wint_bits":1,"max_den_bits":0},"prec":4000,"prec_next":-1,"wall_s":194.328}

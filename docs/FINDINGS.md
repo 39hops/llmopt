@@ -254,6 +254,22 @@ VERDICT](RESULTS.md#L10676).)
   reimplementation. The fused-kernel promotion correctly did not trigger.
   ([COUNTER-BOOK RNSCHAIN-C1](RESULTS.md#L25193); [VERDICT
   RNSCHAIN-C2C3](RESULTS.md#L25338).)
+- [MECHANISM-CONFIRMED] [DEVICE-SCOPED]
+  [REGIME-SCOPED: deterministic integer battery] (d64 12-step anchor
+  cell.) Closed-loop precision scheduling works: a proportional
+  law driven only by in-run sensors (slack, straddle width, denominator
+  bits — the step index never consulted) makes the certified prefix a
+  property of (anchor, envelope) instead of (anchor, schedule) — entries
+  at 200 and 4000 bits converge to byte-identical schedules and digests
+  from step 2, at 53% of the shipped ramp's cost IN BIT-STEPS (2,024 v
+  3,840; entry-200 arm — the entry-4000 arm pays its entry bits once and
+  amortizes at step 2). Wall clock is FLAT (~162 s/step) across the
+  precision range: the dyadic-shadow precision is not the wall lever,
+  the RNS ring is. Step 9 defeated a third time with the wall now
+  MEASURED: demand 56 to 445 accelerating, then a >=15k-bit cliff; a
+  derivative (anticipating) term is structurally unavailable without
+  re-introducing history and killing invariance.
+  ([VERDICT FUNNEL-PREC](RESULTS.md#L25451).)
 
 ## Data, diet, and federation
 
@@ -297,12 +313,13 @@ VERDICT](RESULTS.md#L10676).)
   cleaning data lowers inference precision demand — opposite to the
   ceiling-swap direction. Replicated same-day on a second crystal: d128
   gives rho -1.0 strictly monotone with the tie-zone gradient monotone in
-  both thresholds; the weaker crystal shows ~3x fatter tie incidence at a
+  both thresholds; the weaker crystal shows fatter tie incidence at every
+  bucket (~2x median, up to ~3.8x at the choice-free bucket) at a
   compressed absolute scale, so the law is the gradient, capability sets
   the scale. A theory row still waits on a second domain.
   ([VERDICT DATA-CEIL-0C](RESULTS.md#L24793); [VERDICT
   DATA-CEIL-0C-R](RESULTS.md#L24849).)
-- [MECHANISM-CONFIRMED] [TEACHER-FORCED] [REGIME-SCOPED: house crystals]
+- [MECHANISM-CONFIRMED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals]
   The free-running greedy map has exactly one basin: all 198 censused
   trajectories absorb into answer-form (zero fixed points, cycles, or
   wanderers), median absorption one step, and the absorbing step carries

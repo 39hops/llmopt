@@ -424,7 +424,11 @@ to the collaboration itself.
   literally lazy-computing")** (Artin, 2026-07-23 late): stay in RNS
   for entire computation chains, exit once — measured same night:
   exact 4-layer chain at 53 ms channels vs 173 ms inexact fp64;
-  break-even ~6 layers, deeper = exact AND faster. Composes with
+  break-even ~6 layers, deeper = exact AND faster [SHAPE-FENCED
+  2026-08-10, RNSCHAIN-C2C3 RESULTS 25338: that break-even is a
+  fused-tensor-core property — scalar mulmod chains are ~74x
+  fp64 DEPTH-FLAT (71.8-76.8, depths 2-12), no crossover for
+  that shape]. Composes with
   fractional-CRT decision exits (10 ms) and the speculative-
   arithmetic verifier. The deferred-carry frame: RNS is lazy
   evaluation applied to ARITHMETIC — carries are thunks, forced only
@@ -1150,7 +1154,11 @@ to the collaboration itself.
   slices + CPU big-int recombine, shared pages) — the Mac may be
   the BETTER exact-GEMM machine per dollar because the exit is
   free there. Pairs with [[ozaki stay-in-RNS endgame]] and the
-  Metal split-K lineage.
+  Metal split-K lineage. [SUPERSEDED IN PART 2026-08-10 — see
+  the correction near the file tail: M-series has no integer
+  simdgroup MMA (RECEIPT FP32LIMB-R2R3-BUILT, RESULTS 25050);
+  the int8-slice half is dead on Mac, the shared-page CPU
+  big-int exit survives as the R3 exit.]
 - **2026-07-27 (Artin, LoRA-as-precision + house sharpening)**:
   "LoRA brings precision to weights that haven't seen precise
   tuning; that's what the template models were." House
@@ -3459,7 +3467,11 @@ booked). (4) REVIVAL CONDITIONS, in order of pull: (a) Metal —
 M-series has no int8 tensor path, fp32 ALUs abundant, and
 exact_gemm has NO Mac wall number (tiling deferred); an fp32-limb
 Metal GEMM is the un-run cell of the family and the natural
-axiom-on-Mac rung; (b) the dd-EXIT floor (2^-107) that caps three
+axiom-on-Mac rung [STATUS 2026-08-10: EXECUTED — PRE-REG
+FP32LIMB-METAL 24886, R1 CPU oracle exact with the bound
+sharpened to a lowest-significant-BIT condition (24981), R2/R3
+built + dispatch-armed (25050, GO 25036, window 25088); clause
+(3)'s "NOT BUILT anywhere" is retired for Metal]; (b) the dd-EXIT floor (2^-107) that caps three
 booked results is itself a 2-limb exit — a 3-limb (triple-double)
 exit is named at RESULTS 4011/4038 and unbuilt. (5) FENCES that
 travel: block exponent alignment is mandatory ("slicing without
@@ -3512,7 +3524,11 @@ routers/search — count margin-inversions along verified
 trajectories (steps where the greedy-preferred move is not the
 oracle-verified move) as the frustration density; funnel-quality
 then predicts gate solve rate. Cheap, CPU, uses existing gate
-sidecars.
+sidecars. CAVEAT 2026-08-10: premise fenced by DATA-CEIL-0A
+(RESULTS 24602) — margins do NOT track problem hardness (rho
++0.18 v predicted <=-0.8); any frustration metric must be
+validated against solve rate directly, never assumed from
+margin geometry (margin reads branching factor, not hardness).
 (2) TUNNELING (barrier penetration, annealing lineage): escaping
 local minima by passing THROUGH barriers rather than over them —
 the quantum-annealing/simulated-annealing frame for search
@@ -3551,3 +3567,11 @@ Secondary hooks: LR schedules as funnel controllers on loss
 (training-side, LR-precision one-knob law adjacent); decode-margin
 floors. Provenance: Artin typo'd tunnel->funnel, googled, landed
 on the control meaning; all three meanings now banked.
+OUTCOME 2026-08-10 evening: RAN AND FIRED — VERDICT FUNNEL-PREC
+(RESULTS 25451): path-invariance exact (byte-identical from step
+2 at entries 200 v 4000), 53% of open-loop cost IN BIT-STEPS
+(wall clock FLAT ~162s/step — precision is not the wall lever;
+the ring is), step 9 defeated a third time with the sensor
+sizing the wall at >=15k bits. Surviving open edge: the
+invariance-v-anticipation tension (no derivative term possible
+without re-introducing history).
