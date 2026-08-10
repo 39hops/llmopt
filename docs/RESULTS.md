@@ -25189,3 +25189,57 @@ CUDA instruments, permanently. House verification standard
 unchanged: counter-books re-derive from axiom's committed
 receipts, with house spot-reruns via scratch/wsl.sh as the
 independence check when a number is load-bearing.
+
+## COUNTER-BOOK RNSCHAIN-C1: chain oracle PASSES all depths and classes — but the seat ran on a STALE CHECKOUT: the "ax::rns did not exist" premise correction is COUNTER-CORRECTED (it exists on main, 2e61d8f, anchor-v2's ring core), and the branch's re-authored rns.hpp COLLIDES with results-cited evidence (2026-08-10 night; axiom branch rnschain-cuda-1 @ 96e347d)
+
+Counter-book of the WSL seat's C1 receipt against PRE-REG
+RNSCHAIN-CUDA + AMENDMENT -SEAT.
+
+C1 SUBSTANCE, verified from their branch: oracle at
+tools/rnschain/c1_chain_oracle.cpp — bigint arm v RNS arm, N=32,
+depths {2,4,6,8,12}, 6 adversarial classes, entry-wise equality
+every depth, K-permutation bit-identity at depths 1 AND 8,
+thrown-error fences, all PASS in 2.9 s. The bar reads FIRES
+pending one re-run (below). PROVENANCE DEVIATION, accepted: C1
+ran on the WSL linux worker (gcc 15.2 LP64), not the Mac — legal
+under AMENDMENT -SEAT (the seat moved), booked as a deviation
+from the pre-reg's "Mac CPU" text, not a violation.
+
+THE STALE-CHECKOUT FINDING (house-verified, load-bearing):
+- Their premise correction claimed "ax::rns did not exist; repo
+  had raw parts only." FALSE ON MAIN: include/ax/core/rns.hpp
+  exists at 2e61d8f — anchor-v2's ring core ("residue number
+  system over pinned 61-bit primes + CRT + rational
+  reconstruction... reconstruction VERIFIES against held-out
+  primes"). The relay -14 premise was CORRECT.
+- Mechanism: the WSL/Windows checkout had not pulled since
+  before anchor-v2 (merge-base eb20896 is pre-anchor-v2) — the
+  exact stale-checkout hazard named at seat onboarding. The
+  seat surveyed the stale tree and re-authored a SECOND,
+  DIFFERENT rns.hpp (193 diff lines v main's; different
+  reconstruction surface — main's carries the held-out-prime
+  verify that the anchor-v2 verdicts lean on).
+- HAZARD: merging rnschain-cuda-1 as-is would overwrite a
+  RESULTS-CITED module (the anchor-v2 evidence chain: 23990,
+  24379, 24452 all stand on main's rns.hpp behavior). The
+  frozen-evidence rule applies across labs: DO NOT MERGE until
+  the branch is rebased onto main and the collision resolved —
+  either the chain adopts main's ax::rns, or their variant is
+  RENAMED into its own namespace with a one-line justification
+  for why main's module was not used.
+- REQUIRED RE-RUN: C1's receipt was produced against the
+  re-authored module. After rebase, C1 re-runs against whichever
+  module the chain finally uses and re-receipts. The 2.9 s wall
+  says this costs nothing.
+
+MACHINE CLARIFICATION, relayed: the seat believed it was
+blind-authoring for a remote 3080 ("first nvcc compile may need
+fixes — house should return the compile log"). The seat IS ON
+the 3080 machine (AMENDMENT -SEAT). It compiles and runs its own
+CUDA legs; no author/execute loop exists anymore.
+
+Positive rider kept with attribution: the deterministic
+descending prime scan with is_prime verification ("no memorized
+constants that could rot") is a good pin regardless of which
+module survives — if main's ax::rns pins primes differently,
+reconciling the two pin styles is part of the rebase receipt.

@@ -234,7 +234,13 @@ VERDICT](RESULTS.md#L10676).)
   flush-to-zero contract rather than a silent cap. A compile probe settled
   a banked question for free: M-series exposes no integer simdgroup MMA,
   making fp32-limb the only MMA-reaching exact path on Metal.
-  ([COUNTER-BOOK FP32LIMB-R1](RESULTS.md#L24981).)
+  ([COUNTER-BOOK FP32LIMB-R1](RESULTS.md#L24981).) The Metal build phase
+  settled the hardware question by compile probe — simdgroup_matrix over
+  int fails while the float control compiles, so M-series exposes no
+  integer simdgroup MMA and the banked int8-MMA Metal port is superseded,
+  not deferred; the fast-math pin is runtime-checkable (MTLMathModeSafe)
+  and the dispatch interlock was verified refusing without its flag.
+  ([RECEIPT FP32LIMB-R2R3-BUILT](RESULTS.md#L25050).)
 
 ## Data, diet, and federation
 
