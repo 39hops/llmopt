@@ -188,8 +188,12 @@ at natural stopping points, not mid-sprint.
   negative n=1 with named confounds — P4 revival slot); fp64 masters are the FINAL capability rung
   for online learning (exact-vs-fp64 measured bit-identical);
   exact arithmetic is a SPEED/DETERMINISM lever (int8-sliced beats
-  native fp64 — scratch/ozaki_*). Don't spend runs on
-  precision-capability questions.
+  native fp64 — scratch/ozaki_*). SCOPE (per AMENDMENT RESULTS
+  L7226): the closure holds ABOVE INSTRUMENT SIGMA (~±1-2
+  solves/120), and carries ONE named retest slot — exact-mode
+  gate v rounded gate, same weights, when exact inference lands.
+  Don't spend runs on precision-capability questions outside
+  that slot or a pre-reg that names this scope fence.
 - **Speed defaults (lossless, always on)**: KV-cached sampling;
   bf16 births (--fast) on cuda / fp32 on Mac; GRAD_CKPT=1 for
   d768+ on 10GB; PYTORCH_CUDA_ALLOC_CONF set in-tree. A CUDA

@@ -1469,6 +1469,12 @@ Deterministic-birth R3a (pre-reg 2026-07-31 late night): pin the wide weight acc
 - `run(shift)`
 - `main()`
 
+### scratch/determinability_census.py
+Determinability census (PRE-REG DATA-CEIL rung A, 2026-08-10).
+
+- `enumerate_moves(cur, expr)` — -> [(rule_name, child_sstr)]; axiom bridge (deadline-walled,
+- `main()`
+
 ### scratch/distortion_collapse.py
 THE DISTORTION COLLAPSE (pre-reg 2026-07-29 eve): one curve for the quantization axis. For every logged snap cell, recompute the induced normalized distortion x = param-weighted mean of (W - Wq)^2 / sigma_t^2 over ALL params (unsnapped tensors contribute 0), and pair with the BOOKED solves (y = solves / control). Claim: y = f(x), geometry/location/width-blind, knee at x ~ (0.5-1.0 sigma)^2 / 12 = 0.02-0.08. Desk only, no gates. Solves below are transcribed from logs/ (snap_alloc*.log, polar_snap*.log, snap_q*_gate.log). __main__-guarded.
 
@@ -1965,6 +1971,12 @@ Farm verified ALTERNATIVE successors for a sample of corpus states (the distribu
 ### scratch/make_union_diet.py
 Build the math+ZX union diet (next-session-2 item 1): gen-4 math rows + zx_farm1_train, one jsonl. Shares are organic (~133k math / ~97k ZX = 58/42); ZX provenance keys (kind, site) kept. Output: data/union_math_zx.jsonl
 
+
+### scratch/margin_by_level.py
+Margin-vs-hardness probe (PRE-REG DATA-CEIL rung 0, 2026-08-10).
+
+- `greedy_margins(model, tok, prompt_ids)` — -> list of top1-top2 gaps along the greedy trajectory.
+- `main()`
 
 ### scratch/margin_census.py
 Margin census on the crown-tie ternary latents (pre-reg 2026-07-26).

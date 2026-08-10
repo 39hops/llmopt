@@ -24516,3 +24516,85 @@ re-registers against P-PATH-INVARIANT, which survives unrun.
 Fences: axiom leg Mac CPU one worker, 3080 untouched. Artifact
 frozen at axiom db6c807; this entry cites it as the evidence
 record.
+
+## PRE-REG DATA-CEIL: the ceiling-swap program — margin-vs-hardness probe + determinability census now (CPU), the 2x2 [HOLD] behind their readouts (2026-08-10, Artin GO for rungs 0+A; rung B pre-registered, fires only after 0/A + rations pinned)
+
+THE THEORY (Artin): data is the current capability ceiling; clean
+the data enough and the ceiling swaps to PRECISION. Reviewer sweep
+(three read-only seats, 2026-08-10) established this is a
+COROLLARY of the booked LR-precision law, not an attack on the
+closed doctrine: bits(needed) ~ log2(w/(LR*g)) with g set by the
+DATA (THEORY.md consolidation block: absorption "deletes the FAINT
+signals first"). Cleaner/harder data -> smaller surviving
+gradients -> more bits needed. The doctrine closure's own
+amendment (RESULTS 7226) already scopes the null to ABOVE
+INSTRUMENT SIGMA and names one retest slot. Known evidence gap
+(reviewer G1): no experiment has ever held precision fixed and
+varied only data cleanliness.
+
+SCOPE FENCE UP FRONT: "clean" means DETERMINABILITY, not
+decontamination — the excision bridge priced contamination
+cleanup at zero and exclude-union never moved paired deltas
+(RESULTS 20979, FINDINGS 344). A cleanliness arm built on
+decontamination alone is pre-refuted.
+
+RUNG 0 — MARGIN-VS-HARDNESS PROBE (GO, CPU, scratch/margin_by_level.py).
+Instrument: greedy ply-1 decode on the d256 control crystal
+(mathnative_wfloor_d256.pt, gate 65, config 256/8/1024/4), fresh
+problem band via _gen_isolated(lv, 91_000_000 + 1000*lv + i)
+(disjoint from GATE_BAND 9.9M and training exposure), levels 1-7,
+n=40/level, top1-top2 logit gap recorded per emitted token,
+rows STREAM to JSONL.
+Registered observables: per-level median of per-problem MIN
+margin; per-level fraction of decision tokens with margin < 0.1
+and < 0.02 (the fp16 near-tie zone).
+P-MARGIN-HARDNESS predicts FIRES: median min-margin decreases
+monotonically with level (Spearman rho <= -0.8 across the 7
+levels). REFUTATION READING: if margins stay fat (no level's
+median min-margin below 10x the 0.02 tie zone), the decision
+channel has headroom everywhere and precision CANNOT bind at this
+scale regardless of data — the ceiling-swap theory dies at rung 0
+for this instrument. Estimator named: median (not mean), computed
+on the full JSONL artifact, never on printed summaries.
+
+RUNG A — DETERMINABILITY CENSUS (GO, CPU, scratch/determinability_census.py).
+Instrument: n_legal_successors per unique gen-4 cur state via
+farm_dist_rows.enumerate_moves (axiom bridge, deadline-walled,
+house sympy fallback), 4,000 states (farm precedent), rows STREAM
+(killed-worker doctrine; expired/failed states booked as their
+own class per rule 4 — never silently dropped).
+Registered observables: histogram of n_legal_successors;
+frac(n==1) = the unique-successor share. DESCRIPTIVE booking (no
+bar): the lab currently has NO number for what fraction of the
+diet is choice-free; this is the instrument rung B's arms are cut
+with. Rider: states where the axiom bridge expires AND the house
+path fails are reported as UNSCORED with count — a truncated
+census must state its coverage before its numbers (the 3,442
+lesson, same day).
+
+RUNG B — THE 2x2 [HOLD: fires ONLY on 0/A readouts + rations
+pinned + Artin GO for the 3080 window]. Design (registered now so
+the hold is on execution, not on design): 2 diets (gen-4 as-is v
+unique-only certified, cut by rung A's scorer through the D2
+excision path — WRAPPER over tenet_d2_revdiet, never an edit, the
+file is frozen-class) x n=3 paired seeds, d256 births on the
+3080, each birth gated UNSNAPPED and Q=64-SNAPPED (paired within
+birth; snap operator = calib_probe rat_snap lineage — name the
+operator in the readout). Registered fingerprint P-CEIL-SWAP: on
+the clean diet the Q=64 snap costs (pooled delta <= -3 across 3
+seeds) while on the as-is diet it stays a tie (within +-2,
+reproducing HARDENING-P2's 0/-1/0). That is a PRECISION SLOPE
+CHANGE between data rows — the 2x2 signature the closed doctrine
+cannot produce. If both rows tie, the swap is refuted at Q=64
+depth (deeper snap or exact-mode slot next, not a re-run).
+COMPOSITION RIDER (gen-7 lesson): the clean arm's diet must pin
+rations — if unique-only filtering starves a resident level's
+exposure share, the arm measures starvation, not cleanliness;
+level histogram of the filtered diet books BEFORE any birth.
+
+Fences: all rungs CPU or 3080 — the Mac belongs to the crown
+battery until s4 lands; rung 0 forces dev=cpu explicitly. Sigma
+language: d256 seed sigma ~1.0 (RESULTS 4930) does not transport;
+rung B re-derives per-seed bars. Machines per Artin 2026-08-10 GO:
+"GO 0 + A now (CPU). Pre-reg B for next 3080 window; fire B only
+after 0/A readouts (and diet rations pinned)."
