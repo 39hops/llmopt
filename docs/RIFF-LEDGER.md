@@ -3469,3 +3469,11 @@ exact as its sloppiest link (v3 lesson); torch._int_mm int32
 overflow guard on any slice path; and this is a SPEED/DETERMINISM
 lever only — the capability question is closed by the 132,566 =
 132,566 bit-identical null, never pitch it as capability.
+
+**2026-08-10 CORRECTION (ozaki-on-Metal bank, ~L1141)**: the
+int8-simdgroup-MMA leg is SUPERSEDED on Mac — axiom's compile
+probe (r2_rig.mm:85, RECEIPT FP32LIMB-R2R3-BUILT) shows
+simdgroup_matrix<int,8,8> fails while the float control
+compiles: M-series exposes no integer simdgroup MMA. fp32-limb
+is the only MMA-reaching exact path on Metal. The bank's other
+half (shared-page CPU big-int exit) survives and is the R3 exit.
