@@ -23848,3 +23848,61 @@ until freed; probe numbers are axiom-side receipts, counter-
 booked house-side when the overlap cell lands; RIFF-LEDGER
 carries the assembly provenance (two banks + the spec-time
 parked-rung-sweep process lesson).
+
+## VERDICT EXACT1-SMALL: 3/3 bars FIRE on both cells — two-regime law transports off d64 (ring grain absorbed at p=32; frozen-carry floor scales with d, not p) (2026-08-09 night, WSL CPU)
+
+Pre-reg: PRE-REG EXACT1-SMALL (3b9cdb7). Driver
+scratch/exact1_small_cells.py (frozen); dumps
+logs/exact1small/{d8,d16}/ on the WSL box, pulled to
+logs/exact1small_d8/ house-side. d16 divergence pass is the
+driver's own; d8's anchor was killed mid-step-3 so the d8
+divergence pass was computed HOUSE-SIDE from the streamed dumps
+with the identical pair metric (same numpy expression, verbatim).
+
+CERTIFICATION LANGUAGE (the bar-language amendment owed by
+handoff 2026-08-09-1, folded here): "anchor-certified step" =
+all four arms dumped that step's .w9. Both cells certify anchor
+steps 1-2 (d16's step-2 dump exists but its jsonl wall-clock row
+does not — the budget wall killed between dump and row append, a
+named driver-ordering quirk; the dump governs certification).
+The <2-step UNRESOLVED clause does not trigger on either cell.
+
+BARS (each cell separately; both agree -> pooled claim legal):
+- P-RING-ABSORBED: FIRES 2/2. Q32/Q64 de-grained dumps
+  bit-identical at every one of 12 steps, d8 AND d16 (max |diff|
+  = 0 throughout). Absorption at p=32 transports off d64.
+- P-CARRY-FLOOR: FIRES 2/2. At every certified step, mean
+  |anchor-Q32| = mean |anchor-Q64| EXACTLY (d8: 18.99/18.99 s1,
+  37.99/37.99 s2; d16: 44.75/44.75 s1, 87.21/87.21 s2 — 0%
+  relative, well inside 1%), each >5x step-matched mean |Q9-Q32|
+  (d8: 18.99 v 2.5 bar; d16: 44.75 v 2.44 bar). The floor is
+  grain-independent by mechanism.
+- P-GRAIN-GROWTH: FIRES 2/2. Mean |Q9-Q32| step-12 v step-1:
+  d8 2.96 v 0.50 (5.9x), d16 2.99 v 0.49 (6.1x) — both >2x.
+  Exponent read alongside the flag (per the amendment): log-log
+  fit d8 0.80, d16 0.73 — super-diffusive (>0.5) at both dims,
+  sub-linear; the 2x flag alone would have been vacuously easy,
+  the exponent is the real curve.
+
+NEW STRUCTURE (not pre-registered, descriptive): the carry floor
+is LINEAR PER STEP and scales with WIDTH — d8 ~19.0/step, d16
+~44.5/step, d64 ~528 (shakedown). Against d: 19/8=2.4, 44.5/16=2.8,
+528/64=8.3 per unit width — rises with d, consistent with the
+softmax-carry count growing with row length. Frozen-carry error
+is p-independent (the freeze) but NOT d-independent. ENGINE-
+EXACT-2's carry-ladder arm now has a measured d-scaling to beat.
+
+HORIZON (secondary, recorded): anchor wall-clocks d8 s1 3.95s,
+s2 3335s (845x); step 3 killed at ~19.5h elapsed (projected
+~4 weeks). d16 s1 17.9s, s2 unrecorded (dump-only). SHARED-USE
+FENCE: the WSL box carried Artin's interactive load part of the
+window — wall-clocks are descriptive, not instrument-grade.
+Step-3 abandonment IS the horizon measurement (d64 step-2
+precedent) and is explicitly recoverable by ANCHOR-V2 (pre-reg
+f9db0b7): the gcd toll that binds here is the exact term its
+RNS/CRT core deletes.
+
+DEFECTS NAMED (frozen-driver list, fix on registered re-run
+only): divergence loop bound uses rung_steps; jsonl row appends
+after w9 dump (the d16 step-2 gap above); only RuntimeError
+caught; divergence pass not streamed (why d8's ran house-side).
