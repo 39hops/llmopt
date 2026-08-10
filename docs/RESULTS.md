@@ -25170,3 +25170,22 @@ Fences: axiom Mac CPU one worker for C1; NO axiom process on the
 3080 — house executes C2/C3 legs via wsl.sh; 3080 window is
 Artin's nightly GO; Metal R2/R3 dispatch unchanged (crown
 boundary swap stands).
+
+## AMENDMENT RNSCHAIN-CUDA-SEAT (target: PRE-REG RNSCHAIN-CUDA): Artin opens an axiom seat ON the WSL machine — axiom runs its own 3080 legs; the house-executes split is retired before it ran (2026-08-10 night)
+
+Artin's call, superseding the division-of-labor in the pre-reg:
+an axiom Fable session opens on the WSL/3080 machine and axiom
+authors AND executes C2/C3 natively (on-device compile-fix loops
+instead of blind authoring). The "no axiom process on the 3080"
+fence is LIFTED by the machine's owner for this rung.
+
+Fences that REMAIN: one worker on the 3080 (axiom's CUDA leg IS
+that worker tonight — no llmopt job runs beside it); long walls
+in the nightly window, short compiles anytime; the WSL llmopt
+checkout stays a thin execution target (axiom-WSL writes only
+the axiom repo; both checkouts ff-only); C1 stays on the Mac CPU
+worker; NO cross-device wall comparisons between the Metal and
+CUDA instruments, permanently. House verification standard
+unchanged: counter-books re-derive from axiom's committed
+receipts, with house spot-reruns via scratch/wsl.sh as the
+independence check when a number is load-bearing.
