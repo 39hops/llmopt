@@ -3431,3 +3431,41 @@ seats (audit findings), Artin (sanction + relay), Fable
   assigned the same material. Attribution: Artin (the correction —
   "we've done them both"), Opus 5 (the header sweep + the
   statistic-not-experiment reframing).
+
+**2026-08-10 (Artin, fp32-limb registers for fp64-class exactness)**:
+"fp64 holds a 64 chunk, and other fp32 registers keep track of the
+remaining precision or do the exact" — partition fp32 registers
+into limbs that jointly carry fp64-or-better precision. Banked
+with its full house lineage, because the family is 80% explored:
+(1) BIT-ANATOMY CORRECTION carried with the bank: fp64 = 1 sign +
+11 EXPONENT + 52 mantissa; the exponent needs no tracking limbs
+(block alignment makes it shared), and fp32's 24-bit mantissa
+covers fp64's 53 in THREE limbs (2 = Dekker float-float ~49 bits),
+not 11 — the naive 52/24 arithmetic appears nowhere in the corpus
+until now. (2) ALREADY BUILT in-family: int8-limb GEMM (ozaki
+v1-v6: int8-TC full-exact 55.1 ms v native fp64 40.8 @ N=2048,
+triangular<5 2x FASTER than fp64; fused Triton recombination 70.2
+ms bitwise-exact = 1.07x fp64 wall; stay-in-RNS break-even ~6
+layers); tf32x3 2-limb split (scripts/train_tf32x3.py, Markidis/
+Ootomo-Yokota, machinery proven, SHELVED "the cheap rung won" —
+note that rejection rests on a +1-solve n=1 parity read, sound as
+no-deficit, not as equality); the deployed 2-limb integer carrier
+(llmopt/decoding/deterministic.py hi/lo >>6, partials asserted
+<2^24 — the riff's mechanism in production for fixed-point).
+(3) NOT BUILT anywhere: float-float/Dekker fp32-limb GEMM on
+either GPU (zero source hits; RESULTS 3964 names "fp32-pair
+(two-float) diagonal carry" as ozaki v2's next lift, never
+booked). (4) REVIVAL CONDITIONS, in order of pull: (a) Metal —
+M-series has no int8 tensor path, fp32 ALUs abundant, and
+exact_gemm has NO Mac wall number (tiling deferred); an fp32-limb
+Metal GEMM is the un-run cell of the family and the natural
+axiom-on-Mac rung; (b) the dd-EXIT floor (2^-107) that caps three
+booked results is itself a 2-limb exit — a 3-limb (triple-double)
+exit is named at RESULTS 4011/4038 and unbuilt. (5) FENCES that
+travel: block exponent alignment is mandatory ("slicing without
+alignment = compensation trick, not exactness" — RESULTS 3641,
+the naive version measured 2x not exact); the chain is only as
+exact as its sloppiest link (v3 lesson); torch._int_mm int32
+overflow guard on any slice path; and this is a SPEED/DETERMINISM
+lever only — the capability question is closed by the 132,566 =
+132,566 bit-identical null, never pitch it as capability.
