@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 157, library 155, reproduce-pinned 9, results-cited 116, spec-cited 44
+Census: UNCITED 156, library 155, reproduce-pinned 9, results-cited 120, spec-cited 44
 
 ## scratch/
 
@@ -17,6 +17,7 @@ Census: UNCITED 157, library 155, reproduce-pinned 9, results-cited 116, spec-ci
 | absorb | absorb_1e5.py | UNCITED | — | — |
 | adjudicate | adjudicate_zx.py | library | — | 1 |
 | anatomy | anatomy.py | library | RESULTS×5, specs×4 | 1 |
+| attractor | attractor_census.py | results-cited | RESULTS×1 | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — |
 | basin | basin_probe.py | UNCITED | — | — |
 | birth19m | birth19m_snaps.py | UNCITED | — | — |
@@ -170,7 +171,9 @@ Census: UNCITED 157, library 155, reproduce-pinned 9, results-cited 116, spec-ci
 | make | make_altpairs.py | library | RESULTS×1 | 1 |
 | make | make_union_diet.py | library | — | 1 |
 | margin | margin_by_level.py | results-cited | RESULTS×1 | — |
+| margin | margin_by_ply.py | results-cited | RESULTS×1 | — |
 | margin | margin_census.py | UNCITED | — | — |
+| margin | margin_vs_branching.py | results-cited | RESULTS×1 | — |
 | mass | mass_on_valid.py | spec-cited | specs×4 | — |
 | matryoshka | matryoshka_r1.py | results-cited | RESULTS×1, specs×2 | — |
 | matryoshka | matryoshka_r2.py | spec-cited | specs×1 | — |
@@ -221,10 +224,10 @@ Census: UNCITED 157, library 155, reproduce-pinned 9, results-cited 116, spec-ci
 | ozaki | ozaki_cuda4.py | results-cited | RESULTS×1 | — |
 | ozaki | ozaki_cuda5.py | results-cited | RESULTS×1, specs×1 | — |
 | ozaki | ozaki_cuda6.py | results-cited | RESULTS×1 | — |
-| ozaki | ozaki_fused.py | results-cited | RESULTS×1 | — |
-| ozaki | ozaki_rung1.py | UNCITED | — | — |
+| ozaki | ozaki_fused.py | results-cited | RESULTS×2 | — |
+| ozaki | ozaki_rung1.py | results-cited | RESULTS×1 | — |
 | ozaki | ozaki_rung1b.py | results-cited | RESULTS×2 | — |
-| ozaki | ozaki_rung2bc.py | library | — | 4 |
+| ozaki | ozaki_rung2bc.py | library | RESULTS×1 | 4 |
 | p2 | p2_crown_draws.py | UNCITED | — | — |
 | p3 | p3_autopsy.py | results-cited | RESULTS×1 | — |
 | p3 | p3_bits.py | results-cited | RESULTS×2 | — |
@@ -279,7 +282,7 @@ Census: UNCITED 157, library 155, reproduce-pinned 9, results-cited 116, spec-ci
 | remote.env | remote.env.sh | library | — | 6 |
 | retention | retention_watcher.sh | UNCITED | — | — |
 | rev2 | rev2_d768.py | results-cited | RESULTS×1, specs×1 | — |
-| rev3 | rev3_crown.py | results-cited | RESULTS×2, specs×2 | — |
+| rev3 | rev3_crown.py | results-cited | RESULTS×2, specs×3 | — |
 | rev4 | rev4_zx45.py | library | RESULTS×1 | 1 |
 | rot | rot_commutant.py | library | RESULTS×1, specs×1 | 3 |
 | rot | rot_convert.py | spec-cited | specs×1 | — |
@@ -345,7 +348,7 @@ Census: UNCITED 157, library 155, reproduce-pinned 9, results-cited 116, spec-ci
 | vrm | vrm_ab.py | library | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS×1 | — |
-| wsl | wsl.sh | library | RESULTS×7, specs×10 | 3 |
+| wsl | wsl.sh | library | RESULTS×10, specs×10 | 3 |
 | z1 | z1_gate.sh | UNCITED | — | — |
 | z1s | z1s_hot_watcher.sh | UNCITED | — | — |
 | zx | zx_chain.sh | UNCITED | — | — |
@@ -418,14 +421,14 @@ Census: UNCITED 157, library 155, reproduce-pinned 9, results-cited 116, spec-ci
 | bench | bench_stacked.py | UNCITED | — | — |
 | bench | bench_static.py | UNCITED | — | — |
 | bench | bench_step_diversity.py | results-cited | RESULTS×1 | — |
-| bench | bench_step_tokens.py | library | RESULTS×2, specs×6 | 66 |
+| bench | bench_step_tokens.py | library | RESULTS×2, specs×6 | 68 |
 | bench | bench_stitch_poc.py | results-cited | RESULTS×1 | — |
 | bench | bench_syndrome_head.py | UNCITED | — | — |
 | bench | bench_syndrome_policy.py | library | — | 1 |
 | bench | bench_temp_race.py | UNCITED | — | — |
 | bench | bench_tree_verify.py | UNCITED | — | — |
 | bench | bench_triton_kernels.py | library | — | 1 |
-| bench | bench_verify_fast.py | library | specs×2 | 47 |
+| bench | bench_verify_fast.py | library | specs×2 | 48 |
 | bench | bench_vge.py | spec-cited | specs×1 | — |
 | bench | bench_weight_anatomy.py | results-cited | RESULTS×1 | — |
 | bench | bench_zx.py | results-cited | RESULTS×1 | — |
