@@ -25243,3 +25243,42 @@ descending prime scan with is_prime verification ("no memorized
 constants that could rot") is a good pin regardless of which
 module survives — if main's ax::rns pins primes differently,
 reconciling the two pin styles is part of the rebase receipt.
+
+## PRE-REG ATTRACTOR-0: free-running iteration census — the raw map cur -> greedy(nxt) with no verify/no visited-set; where do trajectories actually go? (2026-08-10 night, Artin standing cheap-CPU GO; Mac CPU)
+
+MOTIVATION (Artin, from the degeneration-loop observation): an
+autoregressive model under self-feeding is a deterministic map on
+state space; greedy trajectories MUST terminate in a fixed point
+or cycle. The house has measured this attractor's SHADOW for
+weeks without censusing it: the verified-AND-distinct doctrine
+exists because identity (X => X) is the dominant attractor (bit
+three times); the gate's visited-set is cycle-breaking; 0B's
+stall class is the fixed point intruding. Nobody has run the raw
+map.
+
+INSTRUMENT (scratch/attractor_census.py): d256 control crystal,
+greedy decode, iterate cur -> emitted nxt with NO verification,
+NO visited-set, NO solve-stop — the unscaffolded map. 40
+problems/level x L3-L7 (fresh band 93M), 50 iterations each.
+Per step: emitted text, min-margin. Terminal classification per
+trajectory (rule 4 — every trajectory in exactly one class):
+FIXED POINT (nxt == cur, normalized), K-CYCLE (state repeats at
+lag k > 1; report k distribution), SOLVED-FORM (reaches a state
+containing no Integral(), then whatever it does after),
+WANDERING (50 steps, no repeat), MALFORMED (emission not
+parseable as a state — the map leaves the state space; its own
+class, never dropped).
+
+REGISTERED OBSERVABLES: class shares; time-to-absorption
+distribution; cycle-length distribution; and the MARGIN JOIN:
+median min-margin ON the attractor v during transit. P-CONFIDENT
+-ATTRACTOR predicts FIRES: attractor-resident steps have HIGHER
+median min-margin than transit steps (the degeneration loop is a
+confidence phenomenon — the loop is where the model is SURE).
+P-IDENTITY-DOMINANT predicts FIRES: fixed points outnumber
+cycles among absorbed trajectories (the X => X doctrine's
+mechanism, finally measured directly).
+
+Fences: one crystal, greedy only, unscaffolded map is NOT the
+production decode (no capability claim attaches); CPU only;
+estimators median + counts from streamed JSONL.
