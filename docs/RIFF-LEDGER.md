@@ -3331,3 +3331,27 @@ seats (audit findings), Artin (sanction + relay), Fable
   exact prefixes at real widths. Attribution: Artin (parallel +
   caching push), Fable (associativity-safety note + RNS/CRT
   mapping + parked-rung revival link).
+
+- **2026-08-09 addendum (Artin: "we already have that + the Ozaki
+  rungs — we should've taken those wins too"): the RNS/CRT anchor
+  is an ASSEMBLY, not an invention.** Components already booked:
+  ozaki 2b expansion recombination (exact accumulation, deviation
+  = ZERO); ozaki 2c doctrine ("never leave the sliced domain" —
+  the direct cure for the anchor's per-op gcd bill); the parked
+  RNS rung (cross-step representation); sliced-exact CUDA (247ms
+  N=2048, beats fp64 — the heavy layer runs on the 3080). The one
+  real design question: NON-RING OPS (softmax max-shift, clamps,
+  floor seams, AdamW div/isqrt) force reconstruction points —
+  hybrid architecture = slices/RNS through linear segments,
+  CRT-reconstruct only at nonlinear seams; the seam placement is
+  a frozen-grain contract, same discipline as the PQ carry.
+  PROCESS LESSON (Artin's, adopted): the anchor spec never swept
+  the parked-rung inventory — standing habit now: EVERY new
+  instrument spec greps parked rungs for components first
+  (reviewer revival-scan mandate extended to spec time).
+  House-side option: an RNS trajectory prototype in Python/CUDA
+  over the existing ozaki scratch is feasible WITHOUT waiting on
+  axiom (acceptance bar: reconstructed dumps equal the bignum
+  anchor's on an overlap cell). Attribution: Artin (take-the-wins
+  push + the process critique), Fable (component mapping +
+  non-ring-op catch).
