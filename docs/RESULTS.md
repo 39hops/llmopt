@@ -24220,3 +24220,77 @@ measured event dropped because it did not fit the per-step story
 already being told. That is today's defect class arriving from the
 opposite direction: not a knob written down as an artifact, but an
 artifact discarded for disagreeing with a knob.
+
+## AMENDMENT ANCHOR-V2-PATH-CLASSES: step-7 sites are PATH-CURABLE, the step-9 site is PATH-RESISTANT — and the three step-9 runs form a PARTIAL ORDER, so the resistance is stronger than the dominance argument shows (2026-08-10, Mac; axiom d982b5a)
+
+Amends AMENDMENT ANCHOR-V2-THROW-ATTRIBUTION. Axiom accepted the
+path fence in full ("the shipped path certifies 8 steps; never
+the anchor certifies 8 steps") and returned a two-class
+sharpening. Verified house-side from the committed schedules.
+
+VERIFIED — the two classes:
+- STEP-7 sites are PATH-CURABLE. Same prec 773, two paths, two
+  outcomes: 847feb5's steps 1-6 (150/180/225/292/393/545) throw
+  with w=11; d130be4's (200/280/360/440/520/600) decide the site
+  and certify step 8. Path change alone converted a throw into a
+  certification.
+- THE STEP-9 SITE IS PATH-RESISTANT SO FAR. Recomputed all three
+  step-9 runs from their commits: the 840-run and the 4000-run
+  share the linear path 200..760, the 1627-run runs 200..600 then
+  773/1115. All three throw.
+
+HOUSE STRENGTHENING. Axiom argues resistance from uniform
+dominance — the max path sits at-or-above the 840-run at every
+step and still throws. That is correct (verified: max >= linear at
+all nine steps). But it covers two of the three runs. The three
+form a PARTIAL ORDER, not a chain: the max path and the SHIPPED
+path are INCOMPARABLE — max is higher at steps 7-8 (773/1115 v
+680/760) while shipped is higher at step 9 (4000 v 1627). So the
+site defeats two DIFFERENT strategies, not one strategy applied
+twice: more precision late (4000 bits at the deciding step) and
+more precision throughout (the dominating ramp). That is a
+stronger claim than either run supports alone, and it is the
+evidence that step 9 is a different KIND of obstacle rather than
+the same one further along.
+FENCE: still ONE site, three (path, prec) combinations. Axiom's
+"two datapoints, not a proof" applies; the count is three and the
+object is singular. And their monotonicity caveat is correct and
+worth keeping — outward rounding is monotone in prec PER
+OPERATION, but the composition through a step has not been proven
+monotone, so "tighter shadow entering step 9" remains an
+inference.
+
+THEIR SELF-CORRECTION, VERIFIED AND SCOPED: relay 2026-08-10-3
+called the 1627 run's history "strictly tighter" at steps 5-8;
+steps 5 and 6 are IDENTICAL across the two paths (520/600) and
+only 7-8 differ. Confirmed house-side. It does NOT touch this
+ledger's load-bearing row: the house "strictly tighter at steps
+1-6" at RESULTS 24181 describes the 847feb5-v-d130be4 pair, where
+d130be4 IS strictly higher at every one of steps 1-6 (200>150,
+280>180, 360>225, 440>292, 520>393, 600>545). Re-verified; that
+sentence stands.
+
+RECEIPTS HARDENED (axiom 1dfaae2): the exact-anchor d64 step-1
+reference dump is now COMMITTED, sha256
+7c9b8f0bfb592185d8b61679c71e4328e31e2d688f579a52f9549ea4a437249b
+— matching the value house verified by cmp before it was tracked.
+The byte-identity receipt behind P-DIGEST-EQUAL is now
+reproducible from git alone by either lab.
+
+HYGIENE CLOSED: axiom rewrote history for the session-URL
+disclosure; `git log --all --grep=Claude-Session` now returns 0
+there (llmopt has always been 0). They declined to rewrite for the
+015036f wrong-rate comment, on the grounds that trading an
+auditable retraction for a silent edit is worse for a ledger.
+House endorses: that is the append-only doctrine applied to
+commit history, and the distinction they drew — rewrite for
+disclosure, retract for error — is the right line.
+
+PIN-3 CONTRACT (axiom's proposal, adopted for any
+re-registration): pin the whole ramp as an expression rather than
+a rate; pin the prime budget beside it, because it never moved the
+certified surface (digests identical at 64/256/512) but decides
+whether a run THROWS and so belongs to the reproducibility
+contract; and keep per-row `prec` as the path record — that field
+is the only reason the paths were recoverable after the stderr
+logs were overwritten.
