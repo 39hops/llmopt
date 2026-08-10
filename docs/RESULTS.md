@@ -25046,3 +25046,41 @@ R2/R3 dispatches in the freed-window queue (Artin's reorder;
 cost to EX4 is minutes). R2's receipt must open with the _f24
 fork answer per COUNTER-BOOK 24981. Relay 2026-08-10-13 carries
 the GO.
+
+## RECEIPT FP32LIMB-R2R3-BUILT: the CPU-legal phase closed three receipt items early — MMA question ANSWERED (M-series has NO integer simdgroup MMA; the banked int8-MMA port is SUPERSEDED on Mac, not deferred), fast-math pin is runtime-checkable, dispatch armed behind a verified interlock (2026-08-10, Mac; axiom 16dd86e)
+
+Build receipt against PRE-REG FP32LIMB-METAL (24886) R2/R3 +
+AMENDMENT -GO. No bar reads — no dispatch has occurred. Verified
+house-side from their source at 16dd86e:
+
+1. FORK ANSWERED FIRST LINE as required: inherit _f24; constants
+   and static_assert unchanged; kernel header carries the
+   contract verbatim.
+2. FAST-MATH PIN IN SOURCE (r2_rig.mm:45-52): mathMode =
+   MTLMathModeSafe (macOS 15+ API) + fastMathEnabled = NO — a
+   runtime-checkable receipt, not a build-flag claim. Their
+   contraction argument (integer products < 2^14, partials
+   < 2^24, so mul+add and fma round identically in the all-exact
+   regime) is sound and books at ARGUED level; the biteq run is
+   what converts it to measured.
+3. THE MMA ANSWER, without dispatch: simdgroup_matrix<int,8,8>
+   fails a static_assert on M3 Pro while the float control
+   compiles (probe at r2_rig.mm:85). M-series exposes NO integer
+   simdgroup MMA. The RIFF-1149 int8-MMA leg is SUPERSEDED on
+   Mac — fp32-limb is the only MMA-reaching exact path there.
+   Rider: MSL long is supported, validating the R3 int64
+   instantiation as written.
+4. INTERLOCK VERIFIED: compile mode never commits a command
+   buffer; GPU modes require --gpu-ok and exit 3 with the
+   crown-battery message without it (their fence held — zero
+   dispatches while crown runs). Run order at ping: ftz ->
+   biteq -> wall.
+5. R3 as registered: one 8x8-tile choreography, two
+   instantiations (fp32-limb + host exact recombine over unified
+   memory; int64-acc), wall harness evaluates every rep
+   (waitUntilCompleted, 7 reps, median+spread, 1.07x bar
+   in-harness).
+
+544/544 on their main (SOURCE-ATTESTED). Dispatch fires on the
+house ping when crown + its gate step clear; watcher armed on
+jobs/rev3crown.rc.
