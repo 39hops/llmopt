@@ -199,10 +199,12 @@ VERDICT](RESULTS.md#L10676).)
   beat rather than a guess. ([VERDICT EXACT1-SMALL](RESULTS.md#L23852).)
 - [SINGLE-SEED] [REGIME-SCOPED: deterministic integer battery] Exact
   rational arithmetic is a cost wall rather than a correctness one.
-  The d8 anchor took 3.9 s for step 1 and 3,335 s for step 2, and was
-  killed 19.5 hours into step 3 against a projected multi-week run;
-  profiling attributes 86.6 to 96.4 percent of a d64 anchor step to
-  gcd inside rational addition. Wall-clocks are descriptive only,
+  The d8 anchor took 3.9 s for step 1 and 3,335 s for step 2, a
+  factor of 845, and was killed 19.34 hours into step 3 against a
+  projected multi-week run; the ledger entry's "about 19.5 hours" is
+  the loose form of that figure, which is fixed by the interval
+  between the step-2 dump and the kill. Profiling attributes 86.6 to
+  96.4 percent of a d64 anchor step to gcd inside rational addition. Wall-clocks are descriptive only,
   because the machine carried interactive load during part of the
   window. The abandonment is itself the horizon measurement that the
   follow-on gcd-free design is registered against. ([VERDICT

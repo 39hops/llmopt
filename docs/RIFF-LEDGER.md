@@ -3355,3 +3355,40 @@ seats (audit findings), Artin (sanction + relay), Fable
   anchor's on an overlap cell). Attribution: Artin (take-the-wins
   push + the process critique), Fable (component mapping +
   non-ring-op catch).
+
+- **2026-08-10 (Artin, after Opus 5 caught a Fable-booked error):
+  "it's kinda like the physics + math model fuse — the more minds
+  the better, up to a point (45% experts beat the full model)."**
+  The observation is real and the arc is now three deep: the
+  fused physics+math birth beat the physics-only arm ON PHYSICS;
+  the routing crest peaks BELOW full inclusion; and a mixed-model
+  seat caught a mixed-estimator quote its author had reviewed and
+  shipped. Bank the shape — a benefit term that is linear in added
+  perspectives against a penalty term that is superlinear in
+  redundancy, so the optimum is interior. That is the two-term law
+  already adopted as doctrine (2026-08-09 iron-point bank); this
+  is the same curve read on SEATS instead of experts or alphabets.
+  NAMED CONFOUND, and it is the whole experiment: model identity
+  was not isolated. Opus 5 did not out-reason Fable — it ran the
+  fit again from the artifact, with no memory of having produced
+  the number. Three candidate active ingredients, and they staff
+  the lab very differently: (a) DIFFERENT MODEL — different priors
+  and failure modes; (b) INDEPENDENT STATE — any fresh session,
+  same model included, is unanchored by having authored the claim;
+  (c) THE TASK — curation forced a recomputation, and any seat
+  doing that step would have caught it. The house reviewer
+  doctrine already bets on (b) ("independent state + cheap
+  breadth"), which makes (a) a proxy the lab has never priced.
+  CHEAP DISCRIMINATOR, banked as a candidate probe: replay the
+  same catch as a blind 3-arm ask over the frozen dumps and the
+  verdict text — same-model-fresh-session, different-model-fresh-
+  session, and same-session-self-review — and score catch rate.
+  If fresh-same-model ties fresh-different-model, the lever is
+  state, not diversity, and reviewer seats should be cheap and
+  numerous rather than model-diverse. Fence before anyone
+  transports this: the 45% crest is expert MASKING on one vehicle
+  and one domain, a selection result, not an ensembling one —
+  the analogy is a curve shape, not a mechanism, and the ledger
+  should not let it become one without its own bar. Attribution:
+  Artin (the fuse/crest link + the more-minds framing), Opus 5
+  (confound decomposition + the blind-replay discriminator).
