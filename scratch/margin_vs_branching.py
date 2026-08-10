@@ -18,10 +18,15 @@ import torch  # noqa: E402
 
 from llmopt.train.mathnative import MathTokenizer, build_model  # noqa: E402
 
-CKPT = "checkpoints/mathnative_wfloor_d256.pt"
-D, LAYERS, FFN, HEADS = 256, 8, 1024, 4
+# replication knobs (DATA-CEIL-0C-R, 2026-08-10): CKPT/D/FFN/OUT
+# envs let the same instrument run on a second crystal unchanged.
+CKPT = os.environ.get("MB_CKPT", "checkpoints/mathnative_wfloor_d256.pt")
+D = int(os.environ.get("MB_D", "256"))
+LAYERS, HEADS = 8, 4
+FFN = int(os.environ.get("MB_FFN", "1024"))
 CENSUS = "logs/data_ceil/determinability_gen4.jsonl"
-OUT = "logs/data_ceil/margin_vs_branching_d256.jsonl"
+OUT = os.environ.get("MB_OUT",
+                     "logs/data_ceil/margin_vs_branching_d256.jsonl")
 MAX_NEW = 120
 DEV = "cpu"
 # sharding: SHARD/NSHARD envs; each worker streams to OUT.shardN,

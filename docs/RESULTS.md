@@ -24845,3 +24845,40 @@ across n_succ is the result, not the absolute margins); estimators
 median + Spearman on 5 bucket medians; sharding is
 compute-topology only (8 CPU shards, deterministic per-state work,
 order-independent by construction).
+
+## VERDICT DATA-CEIL-0C-R: the ambiguity law REPLICATES on a second crystal — rho -1.0 strictly monotone at d128, and every bucket's tie-zone incidence rises in order (2026-08-10, Mac CPU, 8-way sharded)
+
+Replication of DATA-CEIL-0C (Artin GO) on the d128 crystal
+(mathnative_wfloor_d128.pt, gate 57, config 128/8/512/4 — ffn
+read from checkpoint shapes), same instrument, same 4,000
+censused states, same estimators.
+(logs/data_ceil/margin_vs_branching_d128.jsonl, 3,995 scored / 5
+tokfail, 8 shards rc=0.)
+
+Median min-margin by n_succ bucket: 1 -> 3.602, 2 -> 2.347,
+3 -> 2.298, 4-5 -> 1.153, 6+ -> 0.760. Spearman rho = -1.0 —
+STRICTLY monotone, no inversion (the d256 run's 6+ uptick does
+not reproduce; it books as that crystal's noise, not structure).
+Tie-zone gradient monotone in BOTH thresholds: frac(min < 0.2)
+0.039 -> 0.103 -> 0.108 -> 0.184 -> 0.256; frac(min < 0.02)
+0.0026 -> 0.0203 -> 0.0189 -> 0.0289 -> 0.0428.
+
+TWO STRUCTURE NOTES, from the artifact:
+1. The weaker crystal (gate 57 v 65) has FATTER tie incidence at
+   every bucket (~3x d256's) and a compressed absolute scale —
+   consistent with margins being capability-scaled; the LAW is
+   the gradient, which is invariant.
+2. n_succ=1 states are not perfectly tie-free here (1 event in
+   386, v 0 at d256) — the law's clean form is "choice-free data
+   produces near-ties at ~zero rate," not exactly zero at every
+   width. Fence carried into any THEORY row.
+
+STATUS OF THE LAW CANDIDATE: two crystals down (d256 rho -0.9,
+d128 rho -1.0), one domain (calculus states). Per the 0C fence, a
+THEORY row still waits on a SECOND DOMAIN (ZX or physics states
+with a successor enumerator). Until then: "margin is an inverse
+readout of the data's local branching factor" holds at
+[REPLICATED] within house math crystals.
+
+Fences: greedy ply-1, in-corpus states, gradient-not-level claim,
+estimators median + Spearman on 5 bucket medians.

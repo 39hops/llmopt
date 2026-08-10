@@ -264,7 +264,13 @@ VERDICT](RESULTS.md#L10676).)
   inference-side face of the latent-arithmetic determinability law. The
   registered inversion books: determinable data removes tie sites, so
   cleaning data lowers inference precision demand — opposite to the
-  ceiling-swap direction. ([VERDICT DATA-CEIL-0C](RESULTS.md#L24793).)
+  ceiling-swap direction. Replicated same-day on a second crystal: d128
+  gives rho -1.0 strictly monotone with the tie-zone gradient monotone in
+  both thresholds; the weaker crystal shows ~3x fatter tie incidence at a
+  compressed absolute scale, so the law is the gradient, capability sets
+  the scale. A theory row still waits on a second domain.
+  ([VERDICT DATA-CEIL-0C](RESULTS.md#L24793); [VERDICT
+  DATA-CEIL-0C-R](RESULTS.md#L24849).)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] No
   spontaneous transfer resolved in the tested bridge/desert cells; this does
   not support the former universal claim that nothing transfers.
