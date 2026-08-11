@@ -3943,3 +3943,24 @@ without re-introducing history).
   recurrence first diverge from exact, and does it ever flip a
   gate decision. Relay drafts only AFTER SSM-STAR-1 books (bars
   first). Attribution: Artin (fork question), house (triage).
+
+- **QUEUED (2026-08-11): paper refresh — numbers current + figures**
+  (Artin: "bring numbers current + figures"). `docs/paper-prose-v1.md`
+  (405 lines, 2026-07-30) is the entropy-bound packing paper;
+  `docs/paper-draft-entropy-bound.md` (237) is its skeleton + cite
+  registry. It says "Figures TODO'd inline" and predates six weeks of
+  ledger. THE JOB, in order: (1) re-verify every number against the
+  current RESULTS — the 08-11 README audit found three claims in a
+  much shorter document that did not survive, so assume the paper has
+  its own; the packing boundary (house crystals hold, Qwen2.5-0.5B
+  does not, both n=1) is the section most likely to have moved;
+  (2) wire figures from the NEW system — `docs/figures.json` +
+  `llmopt/lab/figsvg.py` emit paper-grade SVG, so a paper figure is a
+  spec entry, not a one-off; the packing boundary wants a two-panel
+  "where the law stops" figure that does not exist yet; (3) decide
+  whether the routing crest belongs in this paper or its own — it is
+  the strongest result in the repo and it is not about quantization.
+  FENCE: the paper is a claims document, so it gets the prereg-auditor
+  pass BEFORE any submission, same as the README got. Do not start it
+  in a session that is also shepherding runs — it needs a clean read
+  of 27k lines of ledger. Attribution: Artin (scope call), house.
