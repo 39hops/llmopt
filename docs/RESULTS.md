@@ -27009,3 +27009,45 @@ FENCES: single device (3080), family-only, n=1 everywhere —
 deltas < 7 book with single-seed fence sentences; inner-average
 reads are descriptive only (not pre-registered bars); window
 17:00 EST, late cells book NOT-RUN.
+
+## VERDICT MERGE-SPACE-4 (R2c): soup is FREE, not PROFITABLE — 4-way order-twin soup gates exactly at the family max (2026-08-11 afternoon, 3080)
+
+Ran to completion (logs/merge_space4/driver.log,
+logs/merge_space4.DONE; both birth logs end "saved").
+
+  s1o8 (ORDER_SEED=8): {3:5,4:0,5:5,6:2,7:2} = 14/120
+      sha 209532f618893814
+  s1o9 (ORDER_SEED=9): {3:6,4:0,5:5,6:1,7:2} = 14/120
+      sha 91b1380b79ba3563
+  pair_a (s1+s1o):     {3:5,4:0,5:6,6:1,7:1} = 13/120
+      sha 4e66581bf54adb7e
+  pair_b (s1o8+s1o9):  {3:5,4:0,5:5,6:1,7:1} = 12/120
+      sha 9c155c215cb92e66
+  soup4 (pair_a+pair_b uniform 4-way):
+      {3:5,4:0,5:7,6:1,7:1} = 14/120   sha 75bde7b3b0025654
+
+Family: s1 12, s1o 11, s1o8 14, s1o9 14 (order twins span 11-14 —
+the order lever is worth ~3 solves at d64, still well under the
+12-30 init-seed spread booked in MERGE-SPACE-1).
+
+BARS v measured:
+1. P-SOUP-CLIMBS: NO-FIRE. soup4 14 v bar max+7 = 21. Souping
+   order twins is not a capability lever at this scale.
+2. P-SOUP-FREE: FIRES. 14 >= min-2 = 9; soup4 sits exactly AT the
+   family max. Books as consistent-with-free-not-profitable —
+   the registered prior (above family mean, below the bar) is
+   confirmed; the greedy-soup effect at d64 is
+   damage-free flattening onto the best member, not lift.
+Descriptive (no bars): inner pairs 13 and 12 sit mid-band; the
+4-way is not worse than its best 2-way.
+
+RECEIPT OF NOTE: pair_a's weights sha 4e66581bf54adb7e is
+BYTE-IDENTICAL to MERGE-SPACE-3's avg_ord (same inputs, rerun
+through merge.py on the same device) — the merge path is
+deterministic end-to-end, gate included. Free reproducibility
+check, passed.
+
+FENCES: single device (3080), family-only, n=1 — every delta
+here is < 7 and carries the single-seed fence; soup-of-N at
+LARGER N or WIDER d books only under its own pre-reg. Gate rows
+to the lake in this commit.
