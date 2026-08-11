@@ -25975,3 +25975,55 @@ Prediction (house, weak prior): P-INDEPENDENT-TOLLS — tonight's
 grown-not-projected law says lattice tolerance comes from training
 ON the lattice, and the quat crystal never did. Registered so the
 refutation is loud if sharing shields.
+
+## VERDICT STAR-PROFILE-2: P-SURFACE-SCALING REFUTED (rho -0.4) — the real structure is WIDTH BUYS TOLERANCE: every class's ternary retention rises with width, the d512 eye keeps 93% where the d64 eye keeps 0% (2026-08-10 night, 3080)
+
+Pre-reg above. Artifact logs/star_profile/star_profile_width.jsonl
+(pulled, every dict re-summed house-side) + tonight's d256 receipt.
+Full table (total/120, drop from own base, per-param = drop
+fraction / param share):
+
+   d  base | emb            | head        | attn        | ffn
+   64   38 |  0 (-38, 208)  | 33 (-5)     |  0 (pp 4)   |  0 (pp 1)
+  128   57 |  2 (-55, 402)  | 56 (-1)     |  0 (pp 4)   |  1 (pp 1)
+  256   65 | 38 (-27, 346)  | 65 ( 0)     |  0 (pp 4)   | 17 (pp 1)
+  384   49 | 37 (-12, 306)  | 47 (-2)     |  0 (pp 4)   | 14 (pp 1)
+  512   69 | 64 ( -5, 181)  | 70 (+1)     |  1 (pp 4)   | 18 (pp 1)
+
+1. P-SURFACE-SCALING: REFUTED. Emb per-param sensitivity by width:
+   208 / 402 / 346 / 306 / 181 — peaks at d128 and FALLS; Spearman
+   rho = -0.4 against the registered >= +0.8. The surface/volume
+   geometric reading is dead: the eye/mouth asymmetry is
+   POSITIONAL (input errors propagate through the whole stack;
+   output rank order survives absmean), not geometric.
+2. P-MOUTH-UNIVERSAL: FIRES at d128/d256/d384/d512 (drops 1, 0, 2,
+   -1); d64 sits in the registered unresolved band (drop 5:
+   above the 2-solve fire line, below the 7-solve refute line).
+   The mouth is ternary-free everywhere the crystal is not tiny.
+3. P-VOLUME-FLAT: FIRES, exactly — attn per-param sensitivity is 4
+   at EVERY width, ffn is 1 at EVERY width (variation << 3x). The
+   volume is uniform per class, and attn is uniformly ~4x ffn's
+   per-param fragility: the routing tensors are the most
+   lattice-fragile object in the star at every scale.
+4. UNREGISTERED, THE HEADLINE: retention rises with width in EVERY
+   class — emb retains 0% / 4% / 58% / 76% / 93% of base moving up
+   the ladder; ffn 0% / 2% / 26% / 29% / 26%. Small crystals
+   cannot survive PTQ of ANY class; the d512 star shrugs off eye
+   ternarization at -5. Reads as the holography doctrine's scaling
+   face: wider democracies absorb quantization the way they absorb
+   deletion (R2's gentle curve, S1's 50-75% edge) — redundancy is
+   a WIDTH budget. Candidate mechanism for the star bank: the
+   traversal shells earn ternary tolerance only once the star is
+   big enough to be redundant, which is the mass-core ratio riff
+   wearing measured clothes.
+INSTRUMENT NOTE: mathnative_19m.pt base = 49/120 here, matching
+distortion_collapse.py's recorded control (49), NOT
+boundary_or_bulk.py's RISING table (64) — two historical numbers
+for one file; 49 is the corroborated same-instrument value, the 64
+should be treated as a different-eval artifact until re-derived.
+FENCES: single seed per point; h4/h6/h8 and 12L at d512 ride the
+lineage's own scaling path (booked as profile-shape evidence,
+never per-width capability comparison); PTQ-not-QAT scope; 3080
+instrument throughout. FEEDS: ROT-X-TERNARY (fires next on this
+box), STAR-PROFILE-3 [HOLD], and the width-redundancy read is the
+star bank's next quantitative row.
