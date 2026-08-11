@@ -25768,3 +25768,53 @@ readable object. 3080 numbers never sit beside Mac gate numbers
 geometry of FP weights, not deployability.
 Prediction (house, from the bank): emb/head/norms crater (>30
 lost), attn and ffn drop moderately, ffn > attn tolerance.
+
+## VERDICT STAR-PROFILE-1: P-GRADIENT REFUTED as registered (body craters, output interfaces FREE), P-TRAVERSAL-TOLERANT NULL — PTQ ternary tolerance is trained-in, not latent; the crystal reads through a ternary mouth but cannot see through a ternary eye (2026-08-10 night, 3080)
+
+Pre-reg above. Artifact logs/star_profile/star_profile_d256.jsonl
+(pulled from the 3080, dicts verified summing house-side), driver
+scratch/star_profile.py, all seven arms one device one seed, base
+gate weights sha 84485bf8dc0c137d.
+
+  arm    solves dict              total  drop  share   drop/share
+  base   {3:22,4:7,5:16,6:8,7:12}  65      0   —       —
+  emb    {3:12,4:4,5:9,6:5,7:8}    38     27   0.0012  ~22,500
+  head   {3:22,4:7,5:16,6:8,7:12}  65      0   0.0012  0
+  norms  {3:22,4:7,5:16,6:8,7:12}  65      0   0.0005  0
+  attn   {3:0,...}                  0     65   0.2493  261
+  ffn    {3:9,4:2,5:1,6:3,7:2}     17     48   0.7478  64
+  body   {3:0,...}                  0     65   0.9970  65
+
+1. P-GRADIENT: REFUTED as operationalized (strict ordering on
+   solve totals). The ordering INVERTS the star-bank guess: body
+   classes crater (attn to ZERO, ffn to 17) while two of three
+   interface classes lose NOTHING — head and norms ternarize for
+   free at the solve level, identical dicts AND near-identical
+   validity. Only emb behaves as predicted (-27). Per-parameter
+   rider: emb is ~90x attn's sensitivity per param share (~22,500
+   v 261) — so a per-param version of the gradient claim survives
+   for the INPUT interface only.
+2. P-TRAVERSAL-TOLERANT: NULL, and it reads exactly as the
+   registered alternative: no body class sits within 7 of base
+   under PTQ, while the crown lineage has ternary-QAT bodies TYING
+   fp32 (HARDENING-P3-R9 pooled n=3). Ternary tolerance is a
+   PROPERTY OF TRAINING ON THE LATTICE, not a latent geometry of
+   fp-trained weights — the function must be GROWN at 1.58 bits,
+   it cannot be projected there.
+3. STRUCTURE, unregistered but loud: the asymmetry head=0-loss v
+   emb=-27 at IDENTICAL share (both 0.0012, both vocab-facing).
+   The crystal tolerates a ternary OUTPUT projection perfectly and
+   loses 40% of its solves to a ternary INPUT embedding. Candidate
+   mechanism (inference, unbooked): argmax at the head is
+   rank-invariant to absmean collapse, while emb errors propagate
+   through all 8 blocks. Touches the star bank's core-v-traversal
+   split: at PTQ level "the core" is the whole body plus the eye,
+   not the fusion center.
+FENCES: single seed, PTQ-not-QAT scope as registered (this
+measures latent geometry of FP weights, not deployability); the
+0-drop reads are exact dict identity, not sub-sigma ties; 3080
+instrument, never beside Mac gates. FEEDS: the ZX transport leg
+(strong-form diet claim, RIFF 2026-08-10 third movement) — same
+driver, ZX crystal, does the profile SHAPE transport; and the
+SFT-as-repair probe (watch emb-class dW first — it is where
+precision damage is deepest).

@@ -1,0 +1,7 @@
+{"arm": "base", "solves": {"3": 22, "4": 7, "5": 16, "6": 8, "7": 12}, "total": 65, "valid_pct": 59.91, "dev": "cuda", "quantized_params": 0, "param_share": 0.0}
+{"arm": "emb", "solves": {"3": 12, "4": 4, "5": 9, "6": 5, "7": 8}, "total": 38, "valid_pct": 31.45, "dev": "cuda", "quantized_params": 10240, "param_share": 0.0012}
+{"arm": "head", "solves": {"3": 22, "4": 7, "5": 16, "6": 8, "7": 12}, "total": 65, "valid_pct": 55.83, "dev": "cuda", "quantized_params": 10240, "param_share": 0.0012}
+{"arm": "norms", "solves": {"3": 22, "4": 7, "5": 16, "6": 8, "7": 12}, "total": 65, "valid_pct": 60.06, "dev": "cuda", "quantized_params": 4352, "param_share": 0.0005}
+{"arm": "attn", "solves": {"3": 0, "4": 0, "5": 0, "6": 0, "7": 0}, "total": 0, "valid_pct": 0.0, "dev": "cuda", "quantized_params": 2097152, "param_share": 0.2493}
+{"arm": "ffn", "solves": {"3": 9, "4": 2, "5": 1, "6": 3, "7": 2}, "total": 17, "valid_pct": 9.06, "dev": "cuda", "quantized_params": 6291456, "param_share": 0.7478}
+{"arm": "body", "solves": {"3": 0, "4": 0, "5": 0, "6": 0, "7": 0}, "total": 0, "valid_pct": 0.0, "dev": "cuda", "quantized_params": 8388608, "param_share": 0.997}

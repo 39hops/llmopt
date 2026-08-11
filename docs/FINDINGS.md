@@ -270,6 +270,16 @@ VERDICT](RESULTS.md#L10676).)
   derivative (anticipating) term is structurally unavailable without
   re-introducing history and killing invariance.
   ([VERDICT FUNNEL-PREC](RESULTS.md#L25451).)
+- [SINGLE-SEED] [DEVICE-SCOPED] [REGIME-SCOPED: house crystals]
+  Post-hoc ternary is NOT where trained tolerance lives: quantizing
+  the fp-trained d256 crystal one tensor class at a time, the output
+  head and norms ternarize for FREE (identical solve dicts), the
+  input embedding loses 27 of 65 solves at the same parameter share,
+  and the body craters (attention to zero) — inverting the star-bank
+  ordering, while ternary-QAT bodies tie fp32 when grown on the
+  lattice. Ternary capability is trained-in, never projected-in; the
+  eye is precision-hungry, the mouth is not.
+  ([VERDICT STAR-PROFILE-1](RESULTS.md#L25772).)
 
 ## Data, diet, and federation
 

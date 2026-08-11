@@ -3644,3 +3644,15 @@ without re-introducing history).
   the input interface is precision-hungry, the output interface is
   not; if it holds through booking, "the core" is not where the
   star bank guessed.
+
+- **2026-08-10 (STAR-PROFILE-1 outcome note, same night as the
+  third movement)**: the bank's tensor-class prediction RAN and
+  INVERTED — PTQ ternary: head and norms lose ZERO, emb loses 27,
+  body craters (attn 0/120, ffn 17/120); tolerance is trained-in,
+  not latent (VERDICT STAR-PROFILE-1). The star frame's surviving
+  form: per-PARAM sensitivity does peak at an interface (emb,
+  ~90x attn), and the crown QAT lineage still says the body CAN
+  live at 1.58 bits when grown there — so the frame's next honest
+  shape is "the core is wherever the function was NOT grown", a
+  training-history property, which is Artin's diet-strong-form
+  wearing weight-space clothes. ZX transport leg unchanged.
