@@ -20,9 +20,13 @@ import torch  # noqa: E402
 from llmopt.train.mathnative import MathTokenizer, build_model  # noqa: E402
 import step_grpo_micro as G  # noqa: E402
 
-CKPT = "checkpoints/mathnative_wfloor_d256.pt"
-D, LAYERS, FFN, HEADS = 256, 8, 1024, 4
-OUT = "logs/star_profile/star_profile_d256.jsonl"
+CKPT = os.environ.get("SP_CKPT", "checkpoints/mathnative_wfloor_d256.pt")
+D = int(os.environ.get("SP_D", 256))
+LAYERS = int(os.environ.get("SP_L", 8))
+FFN = int(os.environ.get("SP_FFN", 1024))
+HEADS = int(os.environ.get("SP_H", 4))
+OUT = os.environ.get("SP_OUT",
+                     "logs/star_profile/star_profile_d256.jsonl")
 
 CLASSES = {
     "emb": lambda k: k == "emb.weight",

@@ -25818,3 +25818,68 @@ instrument, never beside Mac gates. FEEDS: the ZX transport leg
 driver, ZX crystal, does the profile SHAPE transport; and the
 SFT-as-repair probe (watch emb-class dW first — it is where
 precision damage is deepest).
+
+## PRE-REG STAR-PROFILE-2: the surface/volume width sweep — does the eye's per-param sensitivity scale with width? (2026-08-10 night, 3080)
+
+Fourth-movement bank's named rung (surface = interface tensors,
+volume = body), Artin GO. Same PTQ instrument as STAR-PROFILE-1
+(driver scratch/star_profile.py, env-parametrized), FIVE widths of
+the ONE gen-4 3ep fp32 lineage (boundary_or_bulk.py's RISING
+ladder, all on-disk):
+  d64 (wfloor, 8L/ffn256/h4, gate 38) / d128 (wfloor, 8L/512/h4,
+  57) / d256 (wfloor, 8L/1024/h4, 65 — TONIGHT'S RECEIPT REUSED,
+  same instrument same device) / d384-19M (8L/1536/h6, 64) /
+  d512-45M (12L/2048/h8, 69).
+Arms per width: base, emb, head, attn, ffn (norms dropped — 0-drop
+at d256, lowest share; body redundant with attn+ffn craters). All
+arms all widths on the 3080, one seed, standard gate seeds. Rows
+stream to logs/star_profile/star_profile_width.jsonl.
+
+BARS:
+1. P-SURFACE-SCALING: emb's per-param sensitivity (solve-drop
+   fraction / param share) is MONOTONE INCREASING in width —
+   Spearman rho >= +0.8 over the 5 points. The geometric reading:
+   as volume (d^2 L) outgrows surface (vocab x d), each surface
+   parameter carries more of the function.
+2. P-MOUTH-UNIVERSAL: head ternarizes free (drop <= 2 solves) at
+   EVERY width. REFUTED at any width with drop > 7 — would scope
+   the eye/mouth asymmetry to mid-ladder widths.
+3. P-VOLUME-FLAT: body-class per-param sensitivity (attn, ffn
+   separately) varies < 3x across widths — the volume is uniform;
+   > 3x reads as depth/width structure inside the volume.
+FENCES: single seed per point; drops < 7 solves unresolved as
+directions (resolution law); heads differ across the ladder
+(h4/h6/h8) and d512 adds layers — the ladder is the LINEAGE's own
+scaling path, not a one-variable sweep; booked as profile-shape
+evidence, never as a per-width capability comparison. 3080
+instrument throughout.
+
+## PRE-REG STAR-PROFILE-3 [HOLD — nightly GO]: the alphabet ladder — is precision-as-a-TRAINING-SCHEDULE a lever? (2026-08-10 night, designed; runs on Artin's window)
+
+Artin's rung, verbatim intent: "small model exact precision train
+on ternary ~2 bits -> ~4 -> ~8, same data, compare against ternary
+-only 1.58 v the dynamic precision — can we squeeze more validity
+out of the model with static/consistent data?" Design (house):
+FOUR BIRTHS, d128 wfloor recipe, IDENTICAL data order and step
+budget, 3080, bf16-fast QAT with STE:
+  A. T-STATIC: ternary {-1,0,+1} absmean QAT, birth to end (the
+     07-17 recipe, the control lineage).
+  B. LADDER-UP: alphabet anneal 1.58b -> 4b -> 8b at the 1/3 and
+     2/3 step marks (weights re-quantized onto the finer lattice
+     at each switch — coarse lattice embeds in fine, so the switch
+     is function-preserving, UNLIKE ternary growth's absmean
+     coupling break, RESULTS 2026-07-23).
+  C. 8-STATIC: 8-bit QAT birth to end — the endpoint-matched
+     control that isolates the SCHEDULE from the final alphabet.
+  D. FP32: the ceiling reference.
+BARS (registered before any arm fires):
+1. P-LADDER-BEATS-STATIC: gate(B) - gate(C) >= +7 (1.5 sigma,
+   single seed) — the burn schedule itself pays.
+2. P-LADDER-OVER-TERNARY: gate(B) - gate(A) >= +7 — more alphabet
+   late buys capability at matched data.
+3. Curriculum-direction rider (no bar): if B > C, the DOWN ladder
+   (8b -> 1.58b) becomes the named follow-up — annealing INTO the
+   deployment alphabet, the actually deployable variant.
+Any |delta| < 7 books UNRESOLVED pending n=3 (resolution law).
+[HOLD]: births are hours-class on the 3080 — fires only on Artin's
+explicit night-window GO, never from this pre-reg.
