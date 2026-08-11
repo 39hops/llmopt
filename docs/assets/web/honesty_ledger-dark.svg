@@ -3,10 +3,10 @@
 <text x="34" y="44" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#ffffff">A fifth of the published record argues against the lab</text>
 <text x="34" y="74" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">Every claim in FINDINGS carries exactly one maturity tag. Nulls and retractions are published beside the wins, at the same</text>
 <text x="34" y="93" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">prominence, because a ledger that only records successes cannot be checked.</text>
-<rect x="34.0" y="124" width="158.7" height="30" rx="4" fill="#3987e5"/>
-<rect x="194.7" y="124" width="180.4" height="30" rx="4" fill="#199e70"/>
-<rect x="377.0" y="124" width="302.0" height="30" rx="4" fill="#c98500"/>
-<rect x="681.0" y="124" width="150.0" height="30" rx="4" fill="#d55181"/>
+<rect x="34.0" y="124" width="157.8" height="30" rx="4" fill="#3987e5"/>
+<rect x="193.8" y="124" width="179.4" height="30" rx="4" fill="#199e70"/>
+<rect x="375.2" y="124" width="304.7" height="30" rx="4" fill="#c98500"/>
+<rect x="681.9" y="124" width="149.2" height="30" rx="4" fill="#d55181"/>
 <rect x="833.0" y="124" width="11.0" height="30" rx="4" fill="#e66767"/>
 <rect x="34" y="185" width="10" height="10" rx="3" fill="#3987e5"/>
 <text x="54" y="194" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff">Replicated</text>
@@ -18,7 +18,7 @@
 <text x="364" y="220" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#898781">the cause was isolated</text>
 <rect x="34" y="237" width="10" height="10" rx="3" fill="#c98500"/>
 <text x="54" y="246" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff">Single seed</text>
-<text x="264" y="246" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#ffffff">70<tspan fill="#898781">  37%</tspan></text>
+<text x="264" y="246" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#ffffff">71<tspan fill="#898781">  38%</tspan></text>
 <text x="364" y="246" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#898781">fenced as provisional</text>
 <rect x="34" y="263" width="10" height="10" rx="3" fill="#d55181"/>
 <text x="54" y="272" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff">Null</text>
@@ -29,5 +29,5 @@
 <text x="264" y="298" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#ffffff">3<tspan fill="#898781">  2%</tspan></text>
 <text x="364" y="298" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#898781">we were wrong, in writing</text>
 <line x1="34" y1="348" x2="846" y2="348" stroke="#2c2c2a" stroke-width="1"/>
-<text x="34" y="368" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">docs/FINDINGS.md · 187 curated claims · recounted from the source at build time</text>
+<text x="34" y="368" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">docs/FINDINGS.md · 188 curated claims · recounted from the source at build time</text>
 </svg>

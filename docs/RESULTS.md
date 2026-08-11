@@ -27328,3 +27328,48 @@ booked with the arm: the SSM block carries ~80.4k params v attention's
 ~65.5k at d64 (1.23x), so parity is NOT claimed — each architecture
 ran at its natural size, disclosed. Gate rows to the lake in this
 commit.
+
+## VERDICT KEFF-PROBE-1: bar 1 FIRES (deep positions use 100+ tokens at every width), bar 2 DOES NOT — the width separation is NON-MONOTONE in k (2026-08-11 evening, Mac CPU)
+
+Ran to completion on the four FLOOR-HK-1 checkpoints (400 fixed rows,
+positions >=128, position-true truncation, no training). Loss (nats):
+
+  k        4       8      16      32      64     128     full
+  d64   2.2529  1.8553  1.5770  1.3943  1.3021  0.6742  0.4833
+  d128  2.1089  1.8968  1.6617  1.3110  1.0964  0.4617  0.2751
+  d256  2.1120  1.9077  1.5719  1.2432  0.8571  0.3232  0.1763
+  d512  2.0495  1.9600  1.5137  1.1282  0.7748  0.2899  0.1464
+
+BARS v measured:
+1. P-DEEP-CONTEXT-REAL (Loss(128) <= Loss(16) - 0.3): FIRES at all
+   four widths — drops 0.903 / 1.200 / 1.249 / 1.224. Deep positions
+   genuinely exploit 100+ tokens of context. This is the result the
+   probe was built for and it is unambiguous.
+2. P-WIDTH-BUYS-DEPTH-HERE (separation Loss_d64 - Loss_d512 GROWS
+   with k): DOES NOT FIRE. Measured +0.2034 / -0.1047 / +0.0633 /
+   +0.2661 / +0.5273 / +0.3843 at k = 4/8/16/32/64/128. It grows from
+   k=16 to k=64, then SHRINKS at k=128, and is NEGATIVE at k=8 (the
+   narrow model beats the wide one). The pre-reg's REFUTED-IF said
+   "flat/shrinking"; the last point shrinks. Books as NO-FIRE.
+
+CORRECTION TO AN IN-SESSION CLAIM (recorded because it was said aloud
+before the arithmetic was done): the session model told Artin the
+widths were "indistinguishable at k<=16, separating steadily after".
+The full-family spread is 0.2034 / 0.1047 / 0.1480 / 0.2661 / 0.5273 /
+0.3843 — the spread at k=4 is LARGER than at k=16, so "indistinguish-
+able until 16" is backwards, and "steadily" is wrong at k=128. The
+honest statement is narrower: there is a middle band (k=8 to k=16)
+where the widths nearly coincide, and a band (k=32 to k=64) where they
+separate most; the separation does not order monotonically in k.
+
+WHAT THIS LICENSES: the deep-position tail of this corpus carries real
+long-range dependency (bar 1), which FLOOR-HK-1's train-loss average
+could not see. It does NOT license "width buys long-context ability" —
+that was the registered bar and it did not fire.
+
+FENCES: probe losses NEVER compare to training floors (different
+position mixture by construction — deep tail only); rows are length
+>= 129 (selection named); one diet; Mac CPU, loss-only, no gate; 400
+fixed rows shared across all four models; no seeds (deterministic
+scoring of fixed rows), so no sigma applies and no direction is
+claimed beyond the two bars above.

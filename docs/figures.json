@@ -42,7 +42,7 @@
         "entity": "soup"
       }
     ],
-    "fence": "VERDICT MERGE-SPACE-1/4 \u00b7 RESULTS.md#L26770 \u00b7 d64 \u00b7 RTX 3080 \u00b7 n=1 per cell"
+    "fence": "VERDICT MERGE-SPACE-1 \u00b7 RESULTS.md#L26770 (craters, n=1 per cell) \u00b7 MERGE-SPACE-5 \u00b7 RESULTS.md#L27158 (same-init holds, n=3 paired seeds) \u00b7 d64 \u00b7 RTX 3080"
   },
   "ssm_star": {
     "kind": "gate_track",
@@ -65,8 +65,8 @@
   },
   "effective_context": {
     "kind": "curves",
-    "title": "Width buys the ability to exploit long context, not local precision",
-    "scope": "Loss at deep positions when the model may see only the last k tokens. The widths are indistinguishable to k=16 and separate steadily after it.",
+    "title": "Deep positions reach back more than a hundred tokens",
+    "scope": "Loss at positions past 128 when the model may see only the last k tokens. Every width improves by ~1 nat between k=16 and k=128, so the corpus really does carry long-range dependency. The gap BETWEEN widths does not order monotonically in k \u2014 it is negative at k=8 and narrows again at k=128 \u2014 so the registered width-buys-depth bar did not fire.",
     "x": [
       4,
       8,
@@ -128,7 +128,7 @@
         ]
       }
     ],
-    "fence": "PRE-REG KEFF-PROBE-1 \u00b7 400 fixed rows \u00b7 Mac CPU \u00b7 no training required"
+    "fence": "VERDICT KEFF-PROBE-1 \u00b7 RESULTS.md#L27332 \u00b7 bar 1 fires, bar 2 does not \u00b7 400 fixed rows \u00b7 Mac CPU \u00b7 loss only, no gate"
   },
   "loss_floor": {
     "kind": "ladder",
@@ -163,37 +163,37 @@
   },
   "routing_crest": {
     "kind": "gate_track",
-    "title": "Which experts you keep is the difference between 0 and 82 of 120",
-    "scope": "A resident 30B-class mixture-of-experts, masked to 58 of its 128 experts per layer. At that identical keep fraction, demand-ranked selection beats the full model while random and anti-demand selection score nothing at all. The effect is selection, not sparsity.",
+    "title": "Which experts you keep is the difference between 0 and 81 of 120",
+    "scope": "A resident 30B-class mixture-of-experts, masked to 58 of its 128 experts per layer. Demand-ranked selection beats the paired full model at every seed (80, 82, 81 against 63, 73, 63). At the identical keep fraction, random and anti-demand selection score nothing at all. The effect is selection, not sparsity.",
     "denominator": 120,
     "arms": [
       {
-        "label": "top 45.3% by math demand",
-        "value": 82,
+        "label": "top 45.3% by demand (mean of 3)",
+        "value": 81,
         "entity": "champion"
       },
       {
-        "label": "full model (all 128)",
-        "value": 67,
+        "label": "paired full model (mean of 3)",
+        "value": 66,
         "entity": "crown"
       },
       {
-        "label": "random mask, same 45.3%",
+        "label": "random mask, same fraction",
         "value": 0,
         "entity": "random"
       },
       {
-        "label": "random mask, same 45.3% (2)",
+        "label": "random mask, same fraction (2)",
         "value": 0,
         "entity": "random"
       },
       {
-        "label": "anti-demand, same 45.3%",
+        "label": "anti-demand, same fraction",
         "value": 0,
         "entity": "independent"
       }
     ],
-    "fence": "VERDICT MOE-GT-1-R5/R6 \u00b7 RESULTS.md#L18927 \u00b7 +14.7 pooled over 6 paired seeds \u00b7 Mac MLX \u00b7 mathgen L1-3"
+    "fence": "VERDICT MOE-GT-1-R5/R6 \u00b7 RESULTS.md#L18927 \u00b7 masked v full PAIRED at seeds 111/222/333 (+17/+9/+18, pooled +14.7 v a +7 bar); controls at seed 1234, NOT seed-paired to those arms \u00b7 Mac MLX \u00b7 mathgen L1-3"
   },
   "honesty_ledger": {
     "kind": "composition",
@@ -214,7 +214,7 @@
       },
       {
         "label": "Single seed",
-        "value": 70,
+        "value": 71,
         "entity": "crown",
         "note": "fenced as provisional"
       },
@@ -231,41 +231,6 @@
         "note": "we were wrong, in writing"
       }
     ],
-    "fence": "docs/FINDINGS.md \u00b7 187 curated claims \u00b7 recounted from the source at build time"
-  },
-  "width_curve": {
-    "kind": "curves",
-    "title": "Capability peaks at 45M parameters and falls away on both sides",
-    "scope": "One diet, one recipe, one gate. Past the peak, more parameters made the model worse \u2014 the corpus, not the capacity, is the binding constraint.",
-    "x": [
-      0.5,
-      2.1,
-      8.4,
-      19,
-      45,
-      113,
-      200,
-      400
-    ],
-    "xlabel": "parameters (millions, log scale)",
-    "ylabel": "chain gate (solves / 120)",
-    "logx": true,
-    "series": [
-      {
-        "label": "gen-4 corpus",
-        "entity": "champion",
-        "y": [
-          38,
-          57,
-          65,
-          65,
-          69,
-          65,
-          49,
-          30
-        ]
-      }
-    ],
-    "fence": "docs/FINDINGS.md micro-model program \u00b7 Mac-lineage gates \u00b7 200M and 400M are 1-epoch points"
+    "fence": "docs/FINDINGS.md \u00b7 188 curated claims \u00b7 recounted from the source at build time"
   }
 }

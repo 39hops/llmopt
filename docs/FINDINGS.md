@@ -1145,6 +1145,16 @@ regime tag on every bullet is the fence.
   to attention. The arm is near non-functional at this scale, so it licenses
   nothing about state-space models generally.
   ([VERDICT SSM-STAR-1](RESULTS.md#L27282).)
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] A truncation probe on trained
+  checkpoints — no retraining — found that deep positions do exploit long
+  context: at every one of four widths, loss at positions past 128 falls by
+  0.90 to 1.25 nats as the visible window grows from 16 tokens to 128. The
+  training-loss average could not see this, because it mixes those positions
+  with a majority that are locally predictable. The probe's second registered
+  bar, that wider models separate further as context grows, did NOT fire: the
+  width gap is negative at k=8 and narrows again at k=128, so it does not
+  order monotonically in k. One diet, one probe, loss only, no gate.
+  ([VERDICT KEFF-PROBE-1](RESULTS.md#L27332).)
 - [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: closed-system math] At n=1 activation probe,
   a small population of digit-periodic neurons showed partial Fourier
   character; this is an in-vivo sighting, not a general representation law.

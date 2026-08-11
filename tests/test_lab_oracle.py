@@ -64,8 +64,25 @@ def test_worker_crash_is_loud_and_recovers(problem):
     with Oracle(wall=30) as o:
         o._ensure().kill()
         r = o.check(problem, problem.answer)
-        assert (r.ok, r.parsed) == (False, False)
-        assert r.event in ("CRASH_PIPE", "CRASH_EOF")
-        assert o.counters[r.event] == 1
+        # Killing the worker leaves TWO correct outcomes, and which one
+        # happens depends on whether the kill has been reaped by the
+        # time _ensure() polls — a race this test cannot win. If the
+        # process is dead-but-unreaped, _ensure hands back the corpse
+        # and the write raises: typed CRASH, conservative reject. If it
+        # has already been reaped, _ensure respawns and the check simply
+        # succeeds. Asserting only the first outcome made this test fail
+        # under CPU load (seen 2026-08-11 during a training run).
+        #
+        # The invariant that actually matters is neither of those: a
+        # killed worker must never produce a WRONG verdict — no silent
+        # accept of a bad answer, and every failure typed and counted.
+        if r.event is None:
+            assert (r.ok, r.parsed) == (True, True), "respawn gave a bad verdict"
+            assert sum(o.counters.values()) == 0
+        else:
+            assert (r.ok, r.parsed) == (False, False), "crash must reject"
+            assert r.event in ("CRASH_PIPE", "CRASH_EOF")
+            assert o.counters[r.event] == 1
+        # either way the oracle is usable again on the next call
         r2 = o.check(problem, problem.answer)
         assert (r2.ok, r2.event) == (True, None)

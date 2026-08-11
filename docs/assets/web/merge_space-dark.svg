@@ -31,5 +31,5 @@
 <rect x="234" y="403" width="64.2" height="16" rx="8" fill="#199e70"/>
 <text x="796" y="415" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">14<tspan fill="#898781">/120</tspan></text>
 <line x1="34" y1="470" x2="846" y2="470" stroke="#2c2c2a" stroke-width="1"/>
-<text x="34" y="490" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">VERDICT MERGE-SPACE-1/4 · RESULTS.md#L26770 · d64 · RTX 3080 · n=1 per cell</text>
+<text x="34" y="490" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">VERDICT MERGE-SPACE-1 · RESULTS.md#L26770 (craters, n=1 per cell) · MERGE-SPACE-5 · RESULTS.md#L27158 (same-init holds, n=3 paired seeds) · d64 · RTX 3080</text>
 </svg>
