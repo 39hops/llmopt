@@ -66,9 +66,47 @@ def capture(svg: str, w: int, h: int, png: Path) -> bool:
         return True
 
 
+def recount_findings() -> None:
+    """Recount FINDINGS by maturity tag and write it back into the spec.
+
+    The ledger figure's whole point is that the negative share is real,
+    so it must not be a number someone typed once. Booking a null moves
+    this figure the next time it is built.
+    """
+    import json
+    import re
+    spec = json.loads(DATA.read_text())
+    fig = spec.get("honesty_ledger")
+    if not fig:
+        return
+    text = (ROOT / "docs" / "FINDINGS.md").read_text()
+    bullets = re.findall(r"^- \[.*?(?=^- \[|^#|\Z)", text, re.S | re.M)
+    tags = {"Replicated": "REPLICATED",
+            "Mechanism confirmed": "MECHANISM-CONFIRMED",
+            "Single seed": "SINGLE-SEED", "Null": "NULL",
+            "Retracted": "RETRACTED"}
+    counts = dict.fromkeys(tags.values(), 0)
+    for b in bullets:
+        head = b.split("(")[0]
+        found = [t for t in re.findall(r"\[([A-Z][A-Z-]*)\]", head)
+                 if t in counts]
+        if len(found) == 1:
+            counts[found[0]] += 1
+    for part in fig["parts"]:
+        part["value"] = counts[tags[part["label"]]]
+    total = sum(counts.values())
+    fig["fence"] = (f"docs/FINDINGS.md · {total} curated claims · recounted "
+                    f"from the source at build time")
+    DATA.write_text(json.dumps(spec, indent=2) + "\n")
+    neg = counts["NULL"] + counts["RETRACTED"]
+    print(f"[recount] {total} claims · {neg} negative "
+          f"({100 * neg / total:.0f}%)")
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     import json
+    recount_findings()
     names = [k for k in json.loads(DATA.read_text()) if not k.startswith("_")]
     made = 0
     for name in names:

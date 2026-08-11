@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="437" viewBox="0 0 880 437" role="img">
+<rect width="880" height="437" fill="#1a1a19"/>
+<text x="34" y="44" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#ffffff">Which experts you keep is the difference between 0 and 82 of 120</text>
+<text x="34" y="74" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">A resident 30B-class mixture-of-experts, masked to 58 of its 128 experts per layer. At that identical keep fraction,</text>
+<text x="34" y="93" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">demand-ranked selection beats the full model while random and anti-demand selection score nothing at all. The effect is</text>
+<text x="34" y="112" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">selection, not sparsity.</text>
+<text x="220" y="158" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">top 45.3% by math demand</text>
+<rect x="234" y="146" width="550" height="16" rx="8" fill="#2c2c2a"/>
+<rect x="234" y="146" width="375.8" height="16" rx="8" fill="#3987e5"/>
+<text x="796" y="158" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">82<tspan fill="#898781">/120</tspan></text>
+<text x="220" y="204" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">full model (all 128)</text>
+<rect x="234" y="192" width="550" height="16" rx="8" fill="#2c2c2a"/>
+<rect x="234" y="192" width="307.1" height="16" rx="8" fill="#c98500"/>
+<text x="796" y="204" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">67<tspan fill="#898781">/120</tspan></text>
+<text x="220" y="250" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">random mask, same 45.3%</text>
+<rect x="234" y="238" width="550" height="16" rx="8" fill="#2c2c2a"/>
+<text x="796" y="250" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#898781">0<tspan fill="#898781">/120</tspan></text>
+<text x="220" y="296" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">random mask, same 45.3% (2)</text>
+<rect x="234" y="284" width="550" height="16" rx="8" fill="#2c2c2a"/>
+<text x="796" y="296" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#898781">0<tspan fill="#898781">/120</tspan></text>
+<text x="220" y="342" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">anti-demand, same 45.3%</text>
+<rect x="234" y="330" width="550" height="16" rx="8" fill="#2c2c2a"/>
+<text x="796" y="342" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#898781">0<tspan fill="#898781">/120</tspan></text>
+<line x1="34" y1="397" x2="846" y2="397" stroke="#2c2c2a" stroke-width="1"/>
+<text x="34" y="417" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">VERDICT MOE-GT-1-R5/R6 · RESULTS.md#L18927 · +14.7 pooled over 6 paired seeds · Mac MLX · mathgen L1-3</text>
+</svg>

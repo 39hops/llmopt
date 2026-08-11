@@ -311,7 +311,54 @@ def _svg(w, h, c, head, body, fence, pad_x) -> str:
         _fence(c, w, h, pad_x, fence) + "\n</svg>")
 
 
-RENDERERS = {"gate_track": gate_track, "curves": curves, "ladder": ladder}
+def composition(spec: dict, mode: str = "light", width: int = 880) -> str:
+    """One whole, split into labelled parts — a single stacked rail.
+
+    Used for the ledger's own composition. A pie hides small slices and
+    a grouped bar hides the whole; the point here is the PROPORTION of
+    the record that is negative, so the whole has to stay visible and
+    the small segments have to stay labelled.
+    """
+    c = CHROME[mode]
+    parts = spec["parts"]
+    total = sum(p["value"] for p in parts)
+    pad_x = 34
+    head, top = _head(c, width, spec.get("title"), spec.get("scope"),
+                      pad_x, 44)
+    bar_h, rail_w = 30, width - 2 * pad_x
+    height = int(top + bar_h + 42 + len(parts) * 26 + 62)
+
+    body, x = [], float(pad_x)
+    for i, p in enumerate(parts):
+        w = rail_w * p["value"] / total
+        col = color(p.get("entity", p["label"]), i, mode)
+        # 2px surface gap between segments so adjacent fills stay legible
+        body.append(f'<rect x="{x:.1f}" y="{top}" width="{max(w - 2, 1):.1f}" '
+                    f'height="{bar_h}" rx="4" fill="{col}"/>')
+        x += w
+    # legend rows: identity never rests on colour alone
+    ly = top + bar_h + 40
+    for i, p in enumerate(parts):
+        col = color(p.get("entity", p["label"]), i, mode)
+        pct = 100 * p["value"] / total
+        body.append(f'<rect x="{pad_x}" y="{ly - 9}" width="10" height="10" '
+                    f'rx="3" fill="{col}"/>')
+        body.append(f'<text x="{pad_x + 20}" y="{ly}" font-family="{SANS}" '
+                    f'font-size="{T_LABEL}" fill="{c["primary"]}">'
+                    f'{_esc(p["label"])}</text>')
+        body.append(f'<text x="{pad_x + 230}" y="{ly}" font-family="{MONO}" '
+                    f'font-size="12" fill="{c["primary"]}">{p["value"]}'
+                    f'<tspan fill="{c["muted"]}">  {pct:.0f}%</tspan></text>')
+        if p.get("note"):
+            body.append(f'<text x="{pad_x + 330}" y="{ly}" '
+                        f'font-family="{SANS}" font-size="12" '
+                        f'fill="{c["muted"]}">{_esc(p["note"])}</text>')
+        ly += 26
+    return _svg(width, height, c, head, body, spec.get("fence"), pad_x)
+
+
+RENDERERS = {"gate_track": gate_track, "curves": curves, "ladder": ladder,
+             "composition": composition}
 
 
 def render(name: str, mode: str = "light", width: int = 880) -> str:

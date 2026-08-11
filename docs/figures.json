@@ -1,66 +1,271 @@
 {
-  "_": "Single source for every published figure. Each number is transcribed from the RESULTS verdict named in its `source`, and both renderers (llmopt/lab/figures.py for paper SVG, llmopt/lab/figsvg.py for web) read THIS file — so a corrected number cannot survive in one renderer and not the other. Re-run scripts/gen_readme_figures.py and scripts/gen_figures_web.py after any amendment.",
-
+  "_": "Single source for every published figure. Each number is transcribed from the RESULTS verdict named in its `source`, and both renderers (llmopt/lab/figures.py for paper SVG, llmopt/lab/figsvg.py for web) read THIS file \u2014 so a corrected number cannot survive in one renderer and not the other. Re-run scripts/gen_readme_figures.py and scripts/gen_figures_web.py after any amendment.",
   "merge_space": {
     "kind": "gate_track",
-    "title": "Averaging independently born weights does not degrade a model — it ends it",
+    "title": "Averaging independently born weights does not degrade a model \u2014 it ends it",
     "scope": "All six independent-pair averages gated exactly zero, at every level. Merges inside a shared-init lineage land in the parent band.",
     "denominator": 120,
     "arms": [
-      {"label": "birth s1", "value": 12, "entity": "champion"},
-      {"label": "birth s2", "value": 23, "entity": "champion"},
-      {"label": "birth s3", "value": 30, "entity": "champion"},
-      {"label": "birth s4", "value": 28, "entity": "champion"},
-      {"label": "independent merge (×6)", "value": 0, "entity": "independent"},
-      {"label": "same-init merge", "value": 13, "entity": "shared"},
-      {"label": "4-way order-twin soup", "value": 14, "entity": "soup"}
+      {
+        "label": "birth s1",
+        "value": 12,
+        "entity": "champion"
+      },
+      {
+        "label": "birth s2",
+        "value": 23,
+        "entity": "champion"
+      },
+      {
+        "label": "birth s3",
+        "value": 30,
+        "entity": "champion"
+      },
+      {
+        "label": "birth s4",
+        "value": 28,
+        "entity": "champion"
+      },
+      {
+        "label": "independent merge (\u00d76)",
+        "value": 0,
+        "entity": "independent"
+      },
+      {
+        "label": "same-init merge",
+        "value": 13,
+        "entity": "shared"
+      },
+      {
+        "label": "4-way order-twin soup",
+        "value": 14,
+        "entity": "soup"
+      }
     ],
-    "fence": "VERDICT MERGE-SPACE-1/4 · RESULTS.md#L26770 · d64 · RTX 3080 · n=1 per cell"
+    "fence": "VERDICT MERGE-SPACE-1/4 \u00b7 RESULTS.md#L26770 \u00b7 d64 \u00b7 RTX 3080 \u00b7 n=1 per cell"
   },
-
   "ssm_star": {
     "kind": "gate_track",
     "title": "The house's first state-space model lost on both axes",
-    "scope": "Paired arms: same device, same diet, same seed. The state-space arm also trained 22.6× slower. Booked as a loss, like every other result here.",
+    "scope": "Paired arms: same device, same diet, same seed. The state-space arm also trained 22.6\u00d7 slower. Booked as a loss, like every other result here.",
     "denominator": 120,
     "arms": [
-      {"label": "attention", "value": 38, "entity": "attention"},
-      {"label": "selective SSM", "value": 2, "entity": "ssm"}
+      {
+        "label": "attention",
+        "value": 38,
+        "entity": "attention"
+      },
+      {
+        "label": "selective SSM",
+        "value": 2,
+        "entity": "ssm"
+      }
     ],
-    "fence": "VERDICT SSM-STAR-1 · RESULTS.md#L27282 · d64 · RTX 3080 · n=1"
+    "fence": "VERDICT SSM-STAR-1 \u00b7 RESULTS.md#L27282 \u00b7 d64 \u00b7 RTX 3080 \u00b7 n=1"
   },
-
   "effective_context": {
     "kind": "curves",
     "title": "Width buys the ability to exploit long context, not local precision",
     "scope": "Loss at deep positions when the model may see only the last k tokens. The widths are indistinguishable to k=16 and separate steadily after it.",
-    "x": [4, 8, 16, 32, 64, 128],
+    "x": [
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
     "xlabel": "context the model may see, k (tokens)",
-    "ylabel": "loss at positions ≥128 (nats)",
+    "ylabel": "loss at positions \u2265128 (nats)",
     "logx": true,
     "series": [
-      {"label": "d64", "entity": "champion", "y": [2.2529, 1.8553, 1.577, 1.3943, 1.3021, 0.6742]},
-      {"label": "d128", "entity": "ternary", "y": [2.1089, 1.8968, 1.6617, 1.311, 1.0964, 0.4617]},
-      {"label": "d256", "entity": "shared", "y": [2.112, 1.9077, 1.5719, 1.2432, 0.8571, 0.3232]},
-      {"label": "d512", "entity": "crown", "y": [2.0495, 1.96, 1.5137, 1.1282, 0.7748, 0.2899]}
+      {
+        "label": "d64",
+        "entity": "champion",
+        "y": [
+          2.2529,
+          1.8553,
+          1.577,
+          1.3943,
+          1.3021,
+          0.6742
+        ]
+      },
+      {
+        "label": "d128",
+        "entity": "ternary",
+        "y": [
+          2.1089,
+          1.8968,
+          1.6617,
+          1.311,
+          1.0964,
+          0.4617
+        ]
+      },
+      {
+        "label": "d256",
+        "entity": "shared",
+        "y": [
+          2.112,
+          1.9077,
+          1.5719,
+          1.2432,
+          0.8571,
+          0.3232
+        ]
+      },
+      {
+        "label": "d512",
+        "entity": "crown",
+        "y": [
+          2.0495,
+          1.96,
+          1.5137,
+          1.1282,
+          0.7748,
+          0.2899
+        ]
+      }
     ],
-    "fence": "PRE-REG KEFF-PROBE-1 · 400 fixed rows · Mac CPU · no training required"
+    "fence": "PRE-REG KEFF-PROBE-1 \u00b7 400 fixed rows \u00b7 Mac CPU \u00b7 no training required"
   },
-
   "loss_floor": {
     "kind": "ladder",
-    "title": "The training floor walks down with width — and stops nowhere near the corpus limit",
+    "title": "The training floor walks down with width \u2014 and stops nowhere near the corpus limit",
     "scope": "Fresh births on one warm diet, fp32. Eight times the width buys roughly one token of effective context.",
     "xlabel": "model width",
     "ylabel": "final-epoch train loss (nats)",
     "points": [
-      {"label": "d64", "value": 0.4364},
-      {"label": "d128", "value": 0.3815},
-      {"label": "d256", "value": 0.3566},
-      {"label": "d512", "value": 0.3478}
+      {
+        "label": "d64",
+        "value": 0.4364
+      },
+      {
+        "label": "d128",
+        "value": 0.3815
+      },
+      {
+        "label": "d256",
+        "value": 0.3566
+      },
+      {
+        "label": "d512",
+        "value": 0.3478
+      }
     ],
-    "reference": {"label": "corpus entropy at k=32 · H = 0.187", "value": 0.187},
+    "reference": {
+      "label": "corpus entropy at k=32 \u00b7 H = 0.187",
+      "value": 0.187
+    },
     "entity": "champion",
-    "fence": "VERDICT FLOOR-HK-1 · RESULTS.md#L27055 · Mac · n=1"
+    "fence": "VERDICT FLOOR-HK-1 \u00b7 RESULTS.md#L27055 \u00b7 Mac \u00b7 n=1"
+  },
+  "routing_crest": {
+    "kind": "gate_track",
+    "title": "Which experts you keep is the difference between 0 and 82 of 120",
+    "scope": "A resident 30B-class mixture-of-experts, masked to 58 of its 128 experts per layer. At that identical keep fraction, demand-ranked selection beats the full model while random and anti-demand selection score nothing at all. The effect is selection, not sparsity.",
+    "denominator": 120,
+    "arms": [
+      {
+        "label": "top 45.3% by math demand",
+        "value": 82,
+        "entity": "champion"
+      },
+      {
+        "label": "full model (all 128)",
+        "value": 67,
+        "entity": "crown"
+      },
+      {
+        "label": "random mask, same 45.3%",
+        "value": 0,
+        "entity": "random"
+      },
+      {
+        "label": "random mask, same 45.3% (2)",
+        "value": 0,
+        "entity": "random"
+      },
+      {
+        "label": "anti-demand, same 45.3%",
+        "value": 0,
+        "entity": "independent"
+      }
+    ],
+    "fence": "VERDICT MOE-GT-1-R5/R6 \u00b7 RESULTS.md#L18927 \u00b7 +14.7 pooled over 6 paired seeds \u00b7 Mac MLX \u00b7 mathgen L1-3"
+  },
+  "honesty_ledger": {
+    "kind": "composition",
+    "title": "A fifth of the published record argues against the lab",
+    "scope": "Every claim in FINDINGS carries exactly one maturity tag. Nulls and retractions are published beside the wins, at the same prominence, because a ledger that only records successes cannot be checked.",
+    "parts": [
+      {
+        "label": "Replicated",
+        "value": 37,
+        "entity": "champion",
+        "note": "holds at n\u22653 paired seeds"
+      },
+      {
+        "label": "Mechanism confirmed",
+        "value": 42,
+        "entity": "shared",
+        "note": "the cause was isolated"
+      },
+      {
+        "label": "Single seed",
+        "value": 70,
+        "entity": "crown",
+        "note": "fenced as provisional"
+      },
+      {
+        "label": "Null",
+        "value": 35,
+        "entity": "random",
+        "note": "the idea did not work"
+      },
+      {
+        "label": "Retracted",
+        "value": 3,
+        "entity": "null",
+        "note": "we were wrong, in writing"
+      }
+    ],
+    "fence": "docs/FINDINGS.md \u00b7 187 curated claims \u00b7 recounted from the source at build time"
+  },
+  "width_curve": {
+    "kind": "curves",
+    "title": "Capability peaks at 45M parameters and falls away on both sides",
+    "scope": "One diet, one recipe, one gate. Past the peak, more parameters made the model worse \u2014 the corpus, not the capacity, is the binding constraint.",
+    "x": [
+      0.5,
+      2.1,
+      8.4,
+      19,
+      45,
+      113,
+      200,
+      400
+    ],
+    "xlabel": "parameters (millions, log scale)",
+    "ylabel": "chain gate (solves / 120)",
+    "logx": true,
+    "series": [
+      {
+        "label": "gen-4 corpus",
+        "entity": "champion",
+        "y": [
+          38,
+          57,
+          65,
+          65,
+          69,
+          65,
+          49,
+          30
+        ]
+      }
+    ],
+    "fence": "docs/FINDINGS.md micro-model program \u00b7 Mac-lineage gates \u00b7 200M and 400M are 1-epoch points"
   }
 }
