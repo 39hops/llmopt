@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 160, library 162, reproduce-pinned 9, results-cited 122, spec-cited 44
+Census: UNCITED 160, library 163, reproduce-pinned 9, results-cited 122, spec-cited 44
 
 ## scratch/
 
@@ -89,7 +89,8 @@ Census: UNCITED 160, library 162, reproduce-pinned 9, results-cited 122, spec-ci
 | farmer | farmer_probe.py | results-cited | RESULTS×1, specs×2 | — |
 | fig | fig_magic_scatter.py | spec-cited | specs×1 | — |
 | fixed | fixed_q_snap.py | library | — | 1 |
-| floor | floor_hk1.sh | UNCITED | — | — |
+| floor | floor_hk1.sh | library | — | 1 |
+| floor | floor_hk1_d256.sh | UNCITED | — | — |
 | fmt | fmt_chain.sh | UNCITED | — | — |
 | fmt | fmt_chain2.sh | UNCITED | — | — |
 | fmt | fmt_pp_watcher.sh | UNCITED | — | — |
@@ -109,7 +110,7 @@ Census: UNCITED 160, library 162, reproduce-pinned 9, results-cited 122, spec-ci
 | g19 | g19_sigma_cuda.sh | UNCITED | — | — |
 | g5 | g5_polar.py | UNCITED | — | — |
 | gate | gate_batched.py | library | — | 3 |
-| gate | gate_ckpt.py | library | RESULTS×2, specs×6 | 32 |
+| gate | gate_ckpt.py | library | RESULTS×2, specs×6 | 33 |
 | gate | gate_ckpt_cuda.py | library | — | 12 |
 | gate | gate_cplx.py | library | specs×1 | 1 |
 | gate | gate_pp.py | library | — | 1 |
@@ -506,7 +507,7 @@ Census: UNCITED 160, library 162, reproduce-pinned 9, results-cited 122, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — |
 | train | train_magic_estimator.py | library | RESULTS×1 | 8 |
 | train | train_magic_llm.py | results-cited | RESULTS×1 | — |
-| train | train_mathnative.py | library | RESULTS×4, specs×5 | 76 |
+| train | train_mathnative.py | library | RESULTS×4, specs×5 | 77 |
 | train | train_nnue.py | library | specs×8 | 15 |
 | train | train_proposer.py | spec-cited | specs×5 | — |
 | train | train_syndrome_decoder.py | library | RESULTS×1 | 1 |
