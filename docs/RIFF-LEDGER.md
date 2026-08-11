@@ -3599,3 +3599,48 @@ without re-introducing history).
   opposite ends). Attribution: Artin (repair frame), Fable
   (dW-v-quantization-error observable + exact-cell certification
   role).
+
+- **2026-08-10 (Artin, late evening, star-frame third movement):
+  SILICON BEFORE COLLAPSE + PRECISION-IS-DIET, STRONG FORM +
+  TRAINING AS THE CONTROLLED BURN.** Three riffs in one message,
+  banked separately (labels are labels; narration literal):
+  (1) STRONG-FORM DIET CLAIM: "precision is 100% diet-related" —
+  the maximal reading of the ambiguity law: a math crystal's
+  precision demand is entirely a property of what the data leaves
+  underdetermined, with the one-step basics settling into a
+  ternary-tolerant core as the diet is fully priced in. Evidence
+  FOR already booked: cleaning data removes tie sites (DATA-CEIL-0C
+  registered inversion), law replicated on two crystals. Against
+  the absolutism: capability sets the SCALE of margins (d128 v
+  d256), and the 0B-JOIN null shows at least one margin phenomenon
+  (absorbing confidence) that is not branching-borne. TEST OWNED BY
+  A RUNNING RUNG: STAR-PROFILE-1 (math) v the queued ZX leg — if
+  the tensor-class sensitivity profile TRANSPORTS across domains at
+  matched arch, precision geometry is architectural; if it moves
+  with the diet, Artin's strong form gains its first cross-domain
+  evidence. (2) SILICON POINT: ternary as Si — the last stable
+  stage before binary collapse {0,1} = Fe. The house curve already
+  measured (iron-point bank, 08-09): 1.0-bit collapse crater,
+  1.58-bit peak, 16+ bits flat. The addendum banked here: the
+  CONFLUENCE — Si is simultaneously the substrate of literal logic
+  gates (semiconductors: stable, simple, workable) and the
+  penultimate fusion stage; {-1,0,1} plays both roles for crystals
+  — the最-efficient computational alphabet (radix-economy theorem,
+  balanced-ternary lineage) AND the last pre-collapse rung of the
+  measured curve. Label only; no physics claimed. (3) CONTROLLED
+  BURN: training as the gravity/pressure phase — H/He (raw data)
+  fused under compute pressure into heavier structure; the house
+  controls the burn schedule. Literal content: the burn-schedule
+  levers already measured are the LR schedule (ENGINE-SCALE-1: the
+  schedule is the binder) and the precision schedule (FUNNEL-PREC:
+  closed-loop, sensor-driven). Candidate rung shape (desk):
+  read the two schedules as ONE controller — funnel-control law on
+  LR the way it now runs on precision (the RIFF's own secondary
+  hook, 3546-3549, now with a fired precedent). Attribution: Artin
+  (all three frames + the Si confluence); Fable (test mapping to
+  STAR-PROFILE/ZX transport, burn-lever identification). EARLY
+  TEXTURE from the mid-run profile (single seed, unbooked): emb
+  ternary craters (-27) while HEAD and NORMS ternary lose ZERO —
+  the input interface is precision-hungry, the output interface is
+  not; if it holds through booking, "the core" is not where the
+  star bank guessed.
