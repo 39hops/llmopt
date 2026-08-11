@@ -3807,3 +3807,26 @@ without re-introducing history).
   the instrument class, not a house anomaly.
   Attribution: Artin (spotted the drop, 13 h old); house (mapping
   to doctrine).
+
+- **BANK (2026-08-11): grok-seat architecture cross-check** — full
+  read-only refactor survey (grok CLI plan-mode seat, Artin-run;
+  house spot-verified the load-bearing claims: gate constants at
+  step_grpo_micro.py:36-39/165, NnueEval duplicated across 17
+  scripts/, lab/__init__ exports stale, extraction-spec items 5-7
+  still open). Keeps: (1) PRIORITY STACK — lab/gate.py adoption
+  (sample_wave_lp + gate_eval + GateSpec with per-lineage constants;
+  91-ref hub), lab/hash.py (THREE digest helpers with three
+  semantics landed in one night: catalog 1MiB chunks, merge full-sha
+  wrong-cwd, runfiles short-sha), lab/jsonl.py (40+ hand-rolled
+  sites, spec-counted), corpus-manifest OVERLAY (manifests point at
+  existing paths, zero moves — evidence stays in place); (2) SEAM
+  CRITIQUE — nothing auto-links merge sidecar -> catalog row ->
+  gate row -> marker (booking still hand-glues paths); lake is
+  rebuild-only except gates (marker-harvest into build_runs is the
+  cheap unifier); two modules named runlog (llmopt/runlog.py
+  logging v lab/runlog.py receipts) where the spec wanted ONE sink
+  extending the first; (3) honest deferrals — auto-booking prose
+  stays human (their #9 matches house doctrine), corpus parquet
+  mirrors skipped until a join hurts, AST-level dedup rejected as
+  evidence-risk. Attribution: grok (survey + designs), house
+  (verification + adoption order).

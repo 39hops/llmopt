@@ -17,7 +17,13 @@ Adopted so far (2026-08-06):
                      keep, jmean, coverage — GT2 booked stats + dump
                      bytes re-verified at adoption
 """
+from llmopt.lab.catalog import scan_checkpoint  # noqa: F401
 from llmopt.lab.config import ConfigError, LabConfig  # noqa: F401
 from llmopt.lab.gen import _gen_isolated, gen_isolated  # noqa: F401
 from llmopt.lab.oracle import CheckResult, Oracle  # noqa: F401
+from llmopt.lab.merge import average, shell_graft, task_vector  # noqa: F401
+from llmopt.lab.runfiles import (is_done, rc_of, read_marker,  # noqa: F401
+                                 require_resume_marker, run_dir,
+                                 write_marker)
+from llmopt.lab.runlog import RunLog  # noqa: F401
 from llmopt.lab.verify import verify_wave  # noqa: F401
