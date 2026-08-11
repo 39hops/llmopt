@@ -27235,3 +27235,46 @@ scan wall clock books as the honest speed price (no kernel
 claims); gate decode is O(1)-state (the same API sample_wave_lp
 uses); n=1 — deltas inside the +-0.02 floor band and gate deltas
 < 7 book with single-seed fences.
+
+## PRE-REG KEFF-PROBE-1: direct effective-context measurement — the truncation curve on the trained ladder, no training (2026-08-11 evening, Mac CPU)
+
+Artin's ask ("quicker/more granular than 3 h of training") produced
+the instrument FLOOR-HK-1 lacked: scratch/keff_probe.py measures
+Loss(k) — mean next-token loss at positions >= 128 when the model
+sees only the last k tokens — POSITION-TRUE (windows left-padded so
+kept tokens hold their original RoPE positions; the naive
+renumbered-window variant overstated loss by ~0.36 nats at k=128 in
+the smoke and is booked here as the method hazard). Fixed row
+sample across models (string seed, label-free); k in
+{4,8,16,32,64,128, full}; scored positions identical across k.
+
+SMOKE (n=40, floorhk_d64, labeled smoke — not a verdict): losses
+2.33/1.91/1.67/1.43/1.27/0.80, full 0.65 — MONOTONE GAINS THROUGH
+k=128. Deep positions (>=128) use 100+-token context: the answer
+tail reaches the problem statement. This does not contradict
+LOSS-FLOOR-1: H_k census and the training floor average over ALL
+positions (mostly locally predictable); the probe isolates the
+deep-position mixture where long dependency actually lives. Both
+readings stand; the probe DECOMPOSES the wall.
+
+CELLS (n=400, CPU, Mac, sequential): floorhk_d64 / d128 / d256 /
+d512, and ssmstar_ssm_d64 + ssmstar_attn_d64 when tonight's births
+land (--ssm path drives the identical scorer; pads never enter the
+SSM state).
+
+BARS:
+1. P-DEEP-CONTEXT-REAL: Loss(128) <= Loss(16) - 0.3 nats on every
+   ladder width — the deep-position long dependency is a corpus
+   property, not a d64 artifact.
+2. P-WIDTH-BUYS-DEPTH-HERE: the k-curve separation
+   Loss_d64(k) - Loss_d512(k) GROWS with k (wider stars exploit
+   the deep dependency better) — REFUTED if the separation is
+   flat/shrinking (width buys local precision only, sharpening
+   FLOOR-HK-1's architecture-bound reading).
+3. SSM rider (books when births land): the SSM twin's curve
+   placement v its attention twin at k >= 64 — descriptive, the
+   direct state-capacity read.
+FENCES: probe losses NEVER compare to training floors numerically
+(different position mixture by design — deep tail only); rows are
+length >= 129 (selection named); single diet; CPU eval, device-
+free claim class (loss, not gate); n=400 fixed rows.

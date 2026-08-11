@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 122, spec-cited 44
+Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 123, spec-cited 44
 
 ## scratch/
 
@@ -161,6 +161,7 @@ Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 122, spec-ci
 | jointperm | jointperm_distance.py | UNCITED | — | — |
 | judge | judge_decode.py | spec-cited | specs×3 | — |
 | k3 | k3_expert_demo.py | library | RESULTS×4, specs×1 | 2 |
+| keff | keff_probe.py | results-cited | RESULTS×1 | — |
 | kv | kv_after_night.sh | UNCITED | — | — |
 | kv | kv_equiv.py | library | — | 3 |
 | l9 | l9_probe.py | library | — | 3 |
@@ -311,7 +312,7 @@ Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 122, spec-ci
 | snap | snap_alloc.py | library | specs×2 | 1 |
 | snap | snap_anatomy.py | results-cited | RESULTS×1 | — |
 | soup | soup_gate.py | library | specs×1 | 1 |
-| ssm | ssm_star.py | library | RESULTS×1 | 1 |
+| ssm | ssm_star.py | library | RESULTS×1 | 2 |
 | ssm | ssm_star1.sh | UNCITED | — | — |
 | stability | stability_atlas.sh | UNCITED | — | — |
 | star | star_profile.py | results-cited | RESULTS×3 | — |
@@ -512,7 +513,7 @@ Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 122, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — |
 | train | train_magic_estimator.py | library | RESULTS×1 | 8 |
 | train | train_magic_llm.py | results-cited | RESULTS×1 | — |
-| train | train_mathnative.py | library | RESULTS×4, specs×5 | 82 |
+| train | train_mathnative.py | library | RESULTS×4, specs×5 | 83 |
 | train | train_nnue.py | library | specs×8 | 15 |
 | train | train_proposer.py | spec-cited | specs×5 | — |
 | train | train_syndrome_decoder.py | library | RESULTS×1 | 1 |
