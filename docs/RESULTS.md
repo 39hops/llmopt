@@ -26278,3 +26278,22 @@ belongs to the star or to the feeding is now entirely a rations
 question (cell (b) needs a diet widening pinned against the
 exposure-share doctrine + Artin GO). Single seed; the +1 is not a
 direction (resolution law).
+
+## AMENDMENT SATURATION-1-CELL-B: the widening is PINNED — warm corpus + 20% gen-8 rations, string-seeded sample, same +1 epoch shape (2026-08-11 early, Mac; Artin GO "continue with the SATURATION star stuff")
+
+Amends PRE-REG SATURATION-1 (fires cell b). Widening pinned
+against the exposure-share doctrine: the diet is the EXACT warm
+corpus (v22+gen4+l8 rows, materialized through the same load_rows
+path) PLUS a fresh-fuel slice of data/gen8_diet.jsonl capped at
+20% of the warm corpus size, sampled with the string seed
+random.Random("sat-b-widen-2026-08-11") (stable string seeds
+doctrine), written to data/sat_b_widened.jsonl with the mix
+counts printed. Resident grammars keep >= 83% exposure share.
+NOT --gen7 (that flag REPLACES the diet — a swap, not a widening;
+checked in source, load_rows L56).
+Arm: fresh COPY of crown_c_grown_s2 (+.ep marker "2"), ONE epoch
+on the widened diet (epochs=4 resume), D2 excision wrapper, then
+the standard gate. Same bars as cell (a) read against 73:
+P-HUNGRY >= +7 (the limit was the feeding); P-SATURATED-CLASS
+|delta| <= 2 (the star is full: neither burn nor fuel moves it —
+growth becomes the only proven lever). Single seed fences carry.

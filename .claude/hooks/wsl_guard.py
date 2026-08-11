@@ -39,13 +39,20 @@ if "wsl.sh" not in cmd:
     sys.exit(0)
 
 # outer verb
-m = re.search(r"wsl\.sh\s+(run|launch|check|tail)\b\s*(.*)", cmd, re.S)
+m = re.search(r"wsl\.sh\s+(run|launch|check|tail|clean-marker|kill|mkdir)"
+              r"\b\s*(.*)", cmd, re.S)
 if not m:
     out("ask", "wsl.sh with unrecognized verb — inspect manually")
 verb, rest = m.group(1), m.group(2)
 
 if verb in ("check", "tail"):
     out("allow", f"wsl.sh {verb}: read-only remote op")
+if verb in ("clean-marker", "mkdir"):
+    out("allow", f"wsl.sh {verb}: safe-class op (path-fenced in the "
+        f"script itself): {rest[:80]}")
+if verb == "kill":
+    out("ask", f"wsl.sh kill (self-match-proofed pkill) — pattern: "
+        f"{rest[:80]}")
 
 # extract the quoted payload (first "..." or '...' arg)
 pm = re.match(r'\s*"((?:[^"\\]|\\.)*)"|\s*\'([^\']*)\'', rest, re.S)

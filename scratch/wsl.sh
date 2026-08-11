@@ -5,6 +5,12 @@
 #   scratch/wsl.sh launch "cmd" LOGFILE MARKER # detached; marker fires on SUCCESS only
 #   scratch/wsl.sh check "pgrep-pattern"       # process status (never matches itself)
 #   scratch/wsl.sh tail LOGFILE [N]            # tail a remote log
+#   scratch/wsl.sh clean-marker FILE           # rm ONE .DONE/.rc marker under logs/ (safe class)
+#   scratch/wsl.sh kill PATTERN                # pkill -f, self-match-proofed (auto-brackets)
+#   scratch/wsl.sh mkdir DIR                   # mkdir -p under ~/code/llmopt (safe class)
+# Verb split (Artin, 2026-08-11): the permission classifier reads the
+# OUTER argv — safe ops get their own verbs so "rm a marker" never
+# rides the same approval as a glob rm or a pkill inside run "...".
 # Host/key live in gitignored scratch/remote.env.sh; repo = ~/code/llmopt.
 set -euo pipefail
 source "$(dirname "$0")/remote.env.sh"
@@ -31,6 +37,28 @@ case "${1:?run|launch|check|tail}" in
     ;;
   tail)
     "${SSH[@]}" "tail -n ${3:-15} ~/code/llmopt/${2:?logfile}"
+    ;;
+  clean-marker)
+    f=${2:?marker file}
+    case "$f" in
+      logs/*.DONE|logs/*.rc|logs/*/*.DONE|logs/*/*.rc) ;;
+      *) echo "refuse: clean-marker only touches logs/**.DONE|.rc" >&2; exit 3 ;;
+    esac
+    case "$f" in (*[\*\?\[]*) echo "refuse: no globs" >&2; exit 3 ;; esac
+    "${SSH[@]}" "rm -f ~/code/llmopt/$f && echo cleaned:$f"
+    ;;
+  kill)
+    p=${2:?pattern}
+    if [ "${#p}" -lt 4 ]; then echo "refuse: pattern too short" >&2; exit 3; fi
+    # self-match-proof: bracket the second char so the remote shell's
+    # own argv (which carries the bracketed form) can never match
+    bp="${p:0:1}[${p:1:1}]${p:2}"
+    "${SSH[@]}" "pkill -f '$bp'; sleep 2; pgrep -af '$bp' || echo dead"
+    ;;
+  mkdir)
+    d=${2:?dir}
+    case "$d" in (*..*|/*) echo "refuse: relative repo paths only" >&2; exit 3 ;; esac
+    "${SSH[@]}" "mkdir -p ~/code/llmopt/$d && echo mkdir:$d"
     ;;
   *)
     echo "unknown verb: $1" >&2; exit 2
