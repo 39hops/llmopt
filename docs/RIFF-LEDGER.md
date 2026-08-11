@@ -3779,3 +3779,31 @@ without re-introducing history).
   saturated; if it moves, the star was still hungry.
   Attribution: Artin (equilibrium-limit frame + can-it-grow);
   Fable (fuel-not-mass grounding, saturation arm shape).
+
+- **BANK (2026-08-11): the zeta-bound run as external validation of
+  the house method** — Anthropic published (anthropic.com/research/
+  riemann-zeta) an unreleased Claude improving the lower bound on
+  the proportion of Riemann zeta zeros on the critical line from
+  41.6% to 67.2%: 31M output tokens, ~60 subagents, 2,400 shell
+  commands, verified TWO-TIER — thousands of numerical checks
+  against known zeros (the cheap oracle) plus a Lean proof that
+  passed the kernel (the certificate), with subagents reviewing
+  proofs and hunting counterexamples (adversarial review). Every
+  layer is a house doctrine at industrial scale: oracle-verified
+  everything; verified-AND-distinct search; reviewer red-teaming;
+  and the FA Law's v2 phrasing (intelligence = rate at which
+  verified variance becomes compressed structure) — the result
+  itself is explicitly a COMPRESSION of existing lines (Baluyot/
+  Goldston/Suriajaya/Turnage-Butterbaugh, Bombieri), which the
+  post says plainly, RESULTS-style honesty included ("we don't
+  expect these techniques prove RH"). Also the largest public
+  instance of the orchestration mode this lab runs nightly:
+  human input was mostly "keep going". Useful as: (1) a THEORY
+  citation candidate for the verified-search/FA-Law rows once a
+  house result wants the pairing; (2) a scale reference for the
+  overnight-workflow pattern (60 agents, two sessions — ours cap
+  ~15 by config); (3) morale physics: the model needed
+  encouragement to keep going — priced-in self-doubt is real in
+  the instrument class, not a house anomaly.
+  Attribution: Artin (spotted the drop, 13 h old); house (mapping
+  to doctrine).
