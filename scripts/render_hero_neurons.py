@@ -100,6 +100,14 @@ def render(ckpt: str, key: str, out_stem: str, title: str,
 
     c = figstyle.CHROME[mode]
     plt.rcParams.update(figstyle.rc(mode))
+    # Math notation set in the text face, not DejaVu's math font, so
+    # $\|w_i\|_2$ sits in the same voice as the words around it.
+    plt.rcParams.update({
+        "mathtext.fontset": "custom",
+        "mathtext.rm": "Inter",
+        "mathtext.it": "Inter",
+        "mathtext.bf": "Inter:medium",
+    })
 
     # Magnitude is a sequential job: ONE hue, surface-light to deep.
     ramp = figstyle.SEQUENTIAL
@@ -117,9 +125,11 @@ def render(ckpt: str, key: str, out_stem: str, title: str,
                             left=0.045, right=0.985,
                             top=0.80, bottom=0.14)
     panels = [
-        ("pca", "PCA", "global linear axes"),
-        ("sphere", "SPHERE", "directions only — magnitude in color"),
-        ("polar", "POLAR", "phase (rad) vs magnitude"),
+        ("pca", "PCA", r"global linear axes  ·  $W V_{1:2}^{\top}$"),
+        ("sphere", "SPHERE",
+         r"directions only, $w_i\,/\,\|w_i\|_2$ — magnitude in color"),
+        ("polar", "POLAR",
+         r"$\arg(\mathrm{PC}_1 + i\,\mathrm{PC}_2)$ vs $\|w_i\|_2$"),
     ]
     import torch
     mags = W.norm(dim=1)
@@ -134,26 +144,31 @@ def render(ckpt: str, key: str, out_stem: str, title: str,
         ax.scatter(xs, ys, c=order, cmap=cmap, s=2.2, alpha=0.85,
                    linewidths=0, vmin=0, vmax=1,
                    rasterized=True)
-        ax.set_title(name, loc="left", fontsize=12,
-                     fontweight="semibold", pad=16)
+        ax.set_title(name, loc="left", fontsize=12, fontweight=500,
+                     pad=16)
         ax.text(0, 1.02, sub, transform=ax.transAxes,
-                fontsize=8.5, color=c["muted"])
+                fontsize=8.5, fontweight=300, color=c["muted"])
         ax.grid(False)
         ax.set_xticks([]); ax.set_yticks([])
         for s in ax.spines.values():
             s.set_visible(True)
             s.set_color(c["grid"])
         if method == "polar":
-            ax.set_xlabel("phase of PC1 + i·PC2", fontsize=8.5)
-            ax.set_ylabel("neuron magnitude", fontsize=8.5)
+            ax.set_xlabel(r"$\arg(\mathrm{PC}_1 + i\,\mathrm{PC}_2)$",
+                          fontsize=8.5)
+            ax.set_ylabel(r"neuron magnitude $\|w_i\|_2$",
+                          fontsize=8.5)
 
-    fig.text(0.045, 0.945, title, fontsize=16,
-             fontweight="semibold", color=c["primary"])
-    fig.text(0.045, 0.895,
+    # Type hierarchy: Light 300 display line, centered; secondary-ink
+    # scope line under it; Medium 500 panel names; muted eyebrows.
+    fig.text(0.5, 0.945, title, fontsize=19, fontweight=300,
+             color=c["primary"], ha="center")
+    fig.text(0.5, 0.887,
              f"each dot one neuron (rows of {layer_key}, "
-             f"{n:,} neurons × {d}-dim) · color = neuron magnitude "
-             f"(rank-scaled)",
-             fontsize=9.5, color=c["secondary"])
+             f"{n:,} neurons × {d}-dim) · "
+             r"color = $\|w_i\|_2$ (rank-scaled)",
+             fontsize=9.5, fontweight=300, color=c["secondary"],
+             ha="center")
     fig.text(0.045, 0.028,
              f"{Path(ckpt).name} {sha8(ckpt)} · "
              f"render_hero_neurons.py @ {repo_head()}",
