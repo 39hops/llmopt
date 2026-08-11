@@ -3914,3 +3914,18 @@ without re-introducing history).
   shared-expert/group-routing extension (the flagged V2-Lite
   mismatch, still unfixed). Attribution: Artin (spot + "do we see
   our predictions" framing), house (config census + mapping).
+
+- **BANK (2026-08-11): SSM-STAR candidate rung (Artin: "Mamba
+  state space models? Haven't tried that")** — house has ZERO SSM
+  results; FLOOR-HK-1 (27055) makes the first rung sharp. The
+  instrument question: attention with a 512-token window measures
+  k_eff ~16-17 on the warm diet (architecture-bound); a selective
+  SSM carries a FIXED state it must compress history into — the
+  opposite inductive bias. Rung: minimal selective-SSM block
+  (~100 lines pure PyTorch, no kernels needed at micro scale) in
+  the micro-star family, d64-class, same diet, floor + gate +
+  H_k placement. Three-way read, all informative: same H_16 wall
+  (the wall is the diet's), crosses toward H_32 (recurrence
+  extracts what attention leaves — big), lands above (SSM micro-
+  scale toll, honest loss). Evening-priced on the 3080; pre-reg
+  on GO. Attribution: Artin (spot), house (tie to FLOOR-HK-1).
