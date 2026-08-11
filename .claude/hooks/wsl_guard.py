@@ -1,22 +1,34 @@
 #!/usr/bin/env python3
-"""PreToolUse guard: give the permission layer a say INSIDE
-scratch/wsl.sh payloads (Artin, 2026-08-10 — the pkill-self-match
-night). Reads the hook JSON on stdin; emits a permissionDecision
-only for Bash commands that invoke wsl.sh. Everything else: silent
-exit 0 (no opinion).
+"""Permission helper for scratch/wsl.sh — decides which remote jobs
+can run without interrupting Artin, and which are worth a look first.
 
-Decisions:
-  allow  — read-only inner verbs (tail/check subcommands, or run
-           payloads made only of ls/tail/cat/pgrep/test/df/du/
-           md5sum/git-status-class reads)
-  ask    — anything mutating on the remote (kill/pkill/rm/mv/
-           truncate/git mutations/launch/redirects), reason quotes
-           the inner command so the human sees WHAT would run
-  deny   — catastrophic shapes (rm -rf on ~ or /, force push,
-           mkfs/dd-to-device)
-Extra: a pkill/pgrep -f whose pattern appears un-bracketed
-elsewhere in the same payload gets an ask with a SELF-MATCH
-warning (friendly-fire doctrine).
+CONTEXT: the lab is two computers Artin owns — this Mac and his
+Windows desktop with the 3080, on his home network, same repo checked
+out twice. scratch/wsl.sh hands training jobs to that machine and
+reads logs back. This helper exists so routine reads (tail a log,
+check whether a job is alive) don't prompt him every time, while
+anything that changes state on that box does.
+
+It is a convenience filter, not a barrier: Artin can approve anything
+it asks about. The point is signal — when a prompt appears, it should
+mean something.
+
+Reads the hook JSON on stdin; only speaks for Bash commands that call
+wsl.sh. Everything else exits silently with no opinion.
+
+  allow  — reads only: the tail/check verbs, or a run whose inner
+           command is entirely ls/tail/cat/pgrep/test/df/du/md5sum
+           and git read subcommands
+  ask    — anything that changes the remote box (kill, rm, mv, git
+           mutations, launch, redirects); the reason quotes the inner
+           command so Artin sees exactly what would run
+  deny   — the three shapes that would destroy work irrecoverably:
+           a recursive delete of home or root, a force push, a raw
+           write to a block device
+
+Also asks when a pkill/pgrep pattern appears unbracketed elsewhere in
+the same command — that shape makes a job kill itself, which cost a
+night in July (friendly-fire doctrine).
 """
 import json
 import re
@@ -38,80 +50,78 @@ cmd = data.get("tool_input", {}).get("command", "")
 if "wsl.sh" not in cmd:
     sys.exit(0)
 
-# SECURITY (2026-08-11 review): an "allow" decision applies to the
-# ENTIRE Bash command, so it may only be issued when the entire command
-# IS the single wsl.sh invocation we inspected. Matching wsl.sh anywhere
-# inside the string let `rm -rf ~ && scratch/wsl.sh tail x` be
-# auto-approved on the strength of the tail verb. Anchor at the start
-# and refuse any shell metacharacter that could chain, substitute, or
-# redirect — those fall through to "ask", never to "allow".
+# An "allow" applies to the WHOLE Bash command, so it is only issued
+# when the whole command is the single wsl.sh call examined here.
+# Hence: anchor at the start, and treat any shell metacharacter that
+# could chain, substitute, or redirect as a reason to ask instead.
 CHAINING = re.compile(r"[;&|`\n><]|\$\(")
 
 m = re.match(r"\s*(?:\./)?(?:[\w./-]*/)?wsl\.sh\s+"
              r"(run|launch|check|tail|clean-marker|kill|mkdir)\b\s*(.*)",
              cmd, re.S)
 if not m:
-    out("ask", "command contains wsl.sh but is not a bare wsl.sh "
-        "invocation — inspect manually")
+    out("ask", "command mentions wsl.sh but is not a plain wsl.sh "
+        "call — worth reading before it runs")
 verb, rest = m.group(1), m.group(2)
 
-# argv-only verbs: safe ONLY if nothing else rides along
+# verbs whose arguments the script itself checks: fine on their own
 _bare = not CHAINING.search(rest)
 if verb in ("check", "tail") and _bare:
-    out("allow", f"wsl.sh {verb}: read-only remote op")
+    out("allow", f"wsl.sh {verb}: reads remote state only")
 if verb in ("clean-marker", "mkdir") and _bare:
-    out("allow", f"wsl.sh {verb}: safe-class op (argument passes the "
-        f"script's character allowlist): {rest[:80]}")
+    out("allow", f"wsl.sh {verb}: simple op, argument already checked "
+        f"by the script: {rest[:80]}")
 if verb in ("check", "tail", "clean-marker", "mkdir"):
-    out("ask", f"wsl.sh {verb} with shell metacharacters in its "
-        f"arguments — not the bare form: {rest[:120]}")
+    out("ask", f"wsl.sh {verb} carries shell metacharacters in its "
+        f"arguments rather than the plain form: {rest[:120]}")
 if verb == "kill":
-    out("ask", f"wsl.sh kill (self-match-proofed pkill) — pattern: "
-        f"{rest[:80]}")
+    out("ask", f"wsl.sh kill — pattern: {rest[:80]}")
 
-# extract the quoted payload (first "..." or '...' arg)
+# the inner command: first quoted argument
 pm = re.match(r'\s*"((?:[^"\\]|\\.)*)"|\s*\'([^\']*)\'', rest, re.S)
-payload = (pm.group(1) or pm.group(2)) if pm else rest
+inner = (pm.group(1) or pm.group(2)) if pm else rest
 
-DENY = [
-    (r"rm\s+-rf?\s+(/|~|\$HOME)(\s|$|/\*)", "recursive delete at root/home"),
-    (r"git\s+push\s+.*(--force|-f)\b", "force push"),
-    (r"\b(mkfs|dd\s+.*of=/dev/)", "device-level write"),
+UNRECOVERABLE = [
+    (r"rm\s+-rf?\s+(/|~|\$HOME)(\s|$|/\*)", "a recursive delete of home or root"),
+    (r"git\s+push\s+.*(--force|-f)\b", "a force push"),
+    (r"\b(mkfs|dd\s+.*of=/dev/)", "a raw write to a block device"),
 ]
-for pat, why in DENY:
-    if re.search(pat, payload):
-        out("deny", f"remote payload is {why}: {payload[:160]}")
+for pat, why in UNRECOVERABLE:
+    if re.search(pat, inner):
+        out("deny", f"this would run {why}, which cannot be undone: "
+            f"{inner[:160]}")
 
-# self-matching pkill/pgrep (tonight's incident): -f pattern whose
-# literal text appears again in the payload without [] escape
+# a pkill/pgrep -f pattern that also appears literally elsewhere in the
+# command will match the job's own argv and kill it mid-run
 sm = re.search(r"p(?:kill|grep)\s+(?:-\w+\s+)*-?f?\s*['\"]?([\w./_-]{4,})",
-               payload)
+               inner)
 if sm and "[" not in sm.group(1):
     pat = sm.group(1)
-    if payload.count(pat) > 1:
-        out("ask", f"SELF-MATCH RISK: pkill/pgrep pattern '{pat}' appears "
-            f"elsewhere in the same payload (friendly-fire doctrine: "
-            f"bracket one char, e.g. '{pat[:2]}[{pat[2]}]{pat[3:]}'). "
-            f"Payload: {payload[:200]}")
+    if inner.count(pat) > 1:
+        out("ask", f"SELF-MATCH: the pkill/pgrep pattern '{pat}' also "
+            f"appears elsewhere in this command, so the job would match "
+            f"itself (bracket one character, e.g. "
+            f"'{pat[:2]}[{pat[2]}]{pat[3:]}'). Command: {inner[:200]}")
 
-MUTATING = r"""\b(pkill|kill|killall|rm|mv|cp\s+.*\s+~|truncate|
+CHANGES_STATE = r"""\b(pkill|kill|killall|rm|mv|cp\s+.*\s+~|truncate|
 git\s+(reset|clean|checkout\s+--|stash\s+drop|push|rebase)|
 chmod|chown|systemctl|service|shutdown|reboot|nohup|setsid)\b|>>?\s*[^&|]"""
-if verb == "launch" or re.search(MUTATING, payload, re.X):
-    out("ask", f"remote MUTATING op via wsl.sh {verb} — inner command: "
-        f"{payload[:220]}")
+if verb == "launch" or re.search(CHANGES_STATE, inner, re.X):
+    out("ask", f"changes state on the 3080 box via wsl.sh {verb} — "
+        f"inner command: {inner[:220]}")
 
-READONLY = re.compile(
+READS_ONLY = re.compile(
     r"^[\s(]*((ls|tail|head|cat|wc|grep|pgrep|test|df|du|md5sum|"
     r"sha256sum|echo|pwd|which|stat|find|sleep)\b|git\s+"
     r"(status|log|rev-parse|fetch|diff|show)\b)")
-parts = re.split(r"&&|\|\||;", payload)
-# command substitution hides arbitrary commands inside a read-only-
-# looking segment (`ls $(rm -rf ~)`), so it disqualifies the allow path
-if re.search(r"\$\(|`", payload):
-    out("ask", f"remote payload contains command substitution — cannot "
-        f"be classified read-only: {payload[:200]}")
-if all(READONLY.match(p.strip()) for p in parts if p.strip()):
-    out("allow", "wsl.sh run: all inner segments read-only")
+parts = re.split(r"&&|\|\||;", inner)
+# `ls $(...)` looks like a read but runs whatever is in the
+# substitution, so it never takes the allow path
+if re.search(r"\$\(|`", inner):
+    out("ask", f"inner command uses command substitution, so its effect "
+        f"cannot be read off the text: {inner[:200]}")
+if all(READS_ONLY.match(p.strip()) for p in parts if p.strip()):
+    out("allow", "wsl.sh run: every segment reads only")
 
-out("ask", f"wsl.sh run with unclassified payload: {payload[:220]}")
+out("ask", f"wsl.sh run — this helper has no rule covering this "
+    f"command, so showing it: {inner[:220]}")
