@@ -26766,3 +26766,67 @@ Index hygiene fixed in the same commit: title-string links ->
 ids on the SATURATION rows, missing links added (MICRO-STAR/
 LOSS-FLOOR pre-regs, REFACTOR-NIGHT-1), the pre-reg's stray
 "streaming" thread -> saturation family threads unified.
+
+## VERDICT MERGE-SPACE-1 (R1): independent merges crater to ZERO, shared-init merge free (unresolved-consistent-with at n=1), task vector craters — split law holds at micro scale (2026-08-11 morning, 3080)
+
+Ran to completion inside the window (logs/merge_space1/driver.log,
+logs/merge_space1.DONE fired; every birth log ends "saved" 7/7).
+Six parents, d64/L8/ffn256/h4, MICRO-STAR-1 recipe, BIRTH_SEED
+1-4 + shared-init fork pair 1a/1b off seed1's ep1 base:
+
+  s1 {3:4,4:0,5:5,6:2,7:1} = 12/120   sha 4064906912716ac0
+  s2 {3:10,4:1,5:6,6:4,7:2} = 23/120  sha 6436014c892c618a
+  s3 {3:11,4:1,5:7,6:7,7:4} = 30/120  sha 22246f305c9f96a1
+  s4 {3:12,4:3,5:7,6:4,7:2} = 28/120  sha 7cb23271967cb6be
+  1a {3:6,4:0,5:5,6:3,7:1} = 15/120   sha ba34dcf65245feab
+  1b {3:5,4:0,5:5,6:2,7:0} = 12/120   sha fc23c75c574104b6
+
+Merge cells (llmopt/lab/merge.py, sidecars written):
+  avg_12/13/14/23/24/34 (independent pairs, override note): ALL
+  {3:0,4:0,5:0,6:0,7:0} = 0/120
+    shas 303c492b34d33346 / 2356bf20732a6450 / 8f849d559b01a41c /
+         4d5260e217ae91c0 / 64ff0147a9df609a / 24769e5f9d7db57d
+  avg_shared (1a+1b): {3:6,4:0,5:5,6:2,7:1} = 14/120
+    sha 57618df638e14cd7
+  tv (base=fork point, a=1a, b=1b): {3:0,4:0,5:1,6:0,7:0} = 1/120
+    sha 8304f6c8d91307b5
+
+BARS v measured:
+1. P-CRATER-REPLICATES: FIRES, maximally. All six independent
+   averages gate 0/120 — not below min(parents)-7=5, ZERO, zeros
+   at every level. NIGHT-28b's soup crater (RESULTS 9135)
+   replicates at micro scale in its strongest possible form: the
+   average of independently-born weights is not a worse model, it
+   is not a model. merge.py's shared_lineage refusal is correctly
+   calibrated.
+2. P-SHARED-INIT-MERGEABLE: threshold clears (14 >= min(15,12)-2
+   = 10) and the merge lands INSIDE the parent band (1b 12 <= 14
+   <= 15 1a). Per the registered fence (MORNING-SWEEP-0811 item
+   6e): deltas vs both parents are <= 2, sub-sigma at n=1 — books
+   as UNRESOLVED-CONSISTENT-WITH mean-merge-free-inside-lineage
+   (RESULTS 12356's manufactured-redundancy reading), never as a
+   clean fire.
+3. P-TASK-VECTOR-ALIVE: NO-FIRE, decisively. 1/120 v bar
+   max(1a,1b)+7 = 22. First BOOKED task-vector gate result in the
+   ledger (the spec INDEX's "COMPLETE-BOOKED" claim was stale —
+   flagged 2026-08-11 early): negative, consistent with the split
+   law (11197, structure is routing-side). Note the fork point is
+   1 epoch old — task vectors between 2-epoch siblings off a
+   1-epoch base is a HARD cell; probe-grade as registered.
+
+Also books (registered rider): d64 birth-seed variance. Four
+identical-recipe births span 12-30/120 (mean 23.25, spread 18) —
+the seed lever at d64 is worth ~2.5x the gate, dwarfing every
+diet/schedule lever measured at this scale. Any future d64
+comparison without paired seeds is noise (resolution law already
+says so; this is the measured demonstration).
+
+FENCES (from pre-reg + MORNING-SWEEP-0811 item 6, all apply):
+single seed per cell; single device (3080), gates compare only
+inside this family; fork base is a differently-scheduled twin
+(OneCycle anneals to ~0 in its 1-epoch run; forks get fresh
+2-epoch schedules); BIRTH_SEED seeds init only — all parents
+share epoch-seeded batch order (weaker independence than
+NIGHT-28b); fork base ungated (5 gated parents + base). Gate rows
+appended to the lake gates table (device=3080, n_seeds=1) in the
+booking commit.
