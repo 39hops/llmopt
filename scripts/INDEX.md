@@ -783,7 +783,7 @@ v2.2 diet farm — the autopsy-aimed shard (2026-07-17).
 - `main(levels, n_per, part, parts, out, oneply_levels=(4, 5), oneply_cap=ONEPLY_CAP_FRAC) -> None`
 
 ### scripts/figlib.py
-House chart helpers (figs/ instrumentation). One style, two forms:
+SUPERSEDED 2026-08-11 by llmopt/lab/figstyle.py + llmopt/lab/figures.py.
 
 - `_color(name: str, i: int) -> str`
 - `_save(fig, name: str, png: bool=False) -> Path`
@@ -829,6 +829,13 @@ Dispatcher v2 labels: disagreement-oversampled farming.
 - `_worker(job, q)`
 - `main(n_per: int, seed_base: int, workers: int, out: Path, levels: list[int] | None=None) -> None`
 
+### scripts/gen_figures_web.py
+Render the web figures: SVG from docs/figures.json, PNG via Chrome.
+
+- `page(svg: str, w: int, h: int) -> str` — Wrap the SVG with @font-face pointing at the vendored files, so
+- `capture(svg: str, w: int, h: int, png: Path) -> bool`
+- `main() -> None`
+
 ### scripts/gen_frontier.py
 Magic-maximizing generation (frontier mining): draw a large candidate pool, score each with the estimator (microseconds), keep the ones predicted HARD-BUT-SOLVABLE, and measure whether selection actually concentrated difficulty.
 
@@ -872,14 +879,6 @@ Winning-path (state, legal moves, chosen move) triples for proposer SFT. Every r
 - `_root(rng, level, kind)`
 - `path_rows(root: sp.Expr) -> list[dict]` — Replay the winning history move-by-move, recording the legal
 - `main(per_cell: int, split: str, exclude_file: str | None) -> None`
-
-### scripts/gen_readme_figures.py
-Regenerate the README / paper figures from booked numbers.
-
-- `merge_space()` — VERDICT MERGE-SPACE-1/2/3/5 — the crater and its mechanism.
-- `keff()` — PRE-REG KEFF-PROBE-1 — measured effective context, no training.
-- `floor_ladder()` — VERDICT FLOOR-HK-1 — the floor descends but never nears the knee.
-- `ssm()` — VERDICT SSM-STAR-1 — an honest loss, booked like any other.
 
 ### scripts/gen_regret_labels.py
 Regret/corrective labels (DAgger-style, Artin's 'make it regret the wrong node' — hindsight credit assignment made mechanical).
@@ -3067,8 +3066,23 @@ lab.figstyle — the house figure style: validated palette, vendored fonts, ligh
 - `footer(ax, text: str) -> None` — Provenance line under the plot: the sha, the verdict, the fence.
 - `save(fig, name: str, outdir: Path | str | None=None, png: bool=True, svg: bool=True, dpi: int=220) -> list[Path]` — Write the figure. PNG for README/LinkedIn, SVG for the paper.
 
+### llmopt/lab/figsvg.py
+lab.figsvg — web-grade figures as hand-emitted SVG.
+
+- `_esc(s) -> str`
+- `_nice_ticks(lo: float, hi: float, target: int=5)` — Ticks a reader can hold in their head: steps of 1, 2, 2.5, or 5
+- `_fmt(v: float, step: float) -> str`
+- `load(name: str) -> dict`
+- `_head(c, w, title, scope, pad_x, y)` — Title block. Returns the y cursor below it.
+- `_fence(c, w, h, pad_x, text)` — The signature element: provenance as part of the figure, not a
+- `gate_track(spec: dict, mode: str='light', width: int=880) -> str` — Fixed-denominator capability, drawn as filled rails.
+- `curves(spec: dict, mode: str='light', width: int=880) -> str` — A measure over a shared x, with direct end labels.
+- `ladder(spec: dict, mode: str='light', width: int=880) -> str` — One measure across an ordered axis, value printed at each point,
+- `_svg(w, h, c, head, body, fence, pad_x) -> str`
+- `render(name: str, mode: str='light', width: int=880) -> str`
+
 ### llmopt/lab/figures.py
-lab.figures — the house chart forms.
+lab.figures — matplotlib chart forms for ANALYSIS figures.
 
 - `_both_modes(build, name: str, outdir=None) -> list[Path]` — Render light and dark from one description. Dark is drawn with
 - `gate_bars(name: str, arms: dict, title: str='', subtitle: str='', source: str='', outdir=None)` — arms: label -> (solved, total). Percent bars with solved/total

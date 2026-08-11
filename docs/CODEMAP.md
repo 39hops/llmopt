@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 164, library 163, reproduce-pinned 9, results-cited 123, spec-cited 44
+Census: UNCITED 165, library 163, reproduce-pinned 9, results-cited 123, spec-cited 44
 
 ## scratch/
 
@@ -471,6 +471,7 @@ Census: UNCITED 164, library 163, reproduce-pinned 9, results-cited 123, spec-ci
 | gen | gen_codemap.py | library | RESULTS×1, specs×1 | 1 |
 | gen | gen_dispatch_labels.py | library | — | 2 |
 | gen | gen_dispatch_labels_v2.py | UNCITED | — | — |
+| gen | gen_figures_web.py | UNCITED | — | — |
 | gen | gen_frontier.py | UNCITED | — | — |
 | gen | gen_index.py | library | specs×2 | 1 |
 | gen | gen_lake.py | library | RESULTS×1, specs×1 | 1 |

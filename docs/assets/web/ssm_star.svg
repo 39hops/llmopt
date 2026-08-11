@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="280" viewBox="0 0 880 280" role="img">
+<rect width="880" height="280" fill="#fcfcfb"/>
+<text x="34" y="44" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#0b0b0b">The house&#x27;s first state-space model lost on both axes</text>
+<text x="34" y="74" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">Paired arms: same device, same diet, same seed. The state-space arm also trained 22.6× slower. Booked as a loss, like every</text>
+<text x="34" y="93" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">other result here.</text>
+<text x="220" y="139" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">attention</text>
+<rect x="234" y="127" width="550" height="16" rx="8" fill="#e1e0d9"/>
+<rect x="234" y="127" width="174.2" height="16" rx="8" fill="#2a78d6"/>
+<text x="796" y="139" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#0b0b0b">38<tspan fill="#898781">/120</tspan></text>
+<text x="220" y="185" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">selective SSM</text>
+<rect x="234" y="173" width="550" height="16" rx="8" fill="#e1e0d9"/>
+<rect x="234" y="173" width="9.2" height="16" rx="8" fill="#eb6834"/>
+<text x="796" y="185" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#0b0b0b">2<tspan fill="#898781">/120</tspan></text>
+<line x1="34" y1="240" x2="846" y2="240" stroke="#e1e0d9" stroke-width="1"/>
+<text x="34" y="260" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">VERDICT SSM-STAR-1 · RESULTS.md#L27282 · d64 · RTX 3080 · n=1</text>
+</svg>

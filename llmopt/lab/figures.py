@@ -1,4 +1,18 @@
-"""lab.figures — the house chart forms.
+"""lab.figures — matplotlib chart forms for ANALYSIS figures.
+
+Division of labour, so the two renderers cannot drift:
+
+  lab.figsvg    PUBLISHED figures — README, paper, anything with an
+                audience. Reads docs/figures.json (booked numbers
+                only), emits SVG directly, captures PNG through Chrome.
+  lab.figures   ANALYSIS figures — this module. Ad-hoc plots while a
+                result is still being worked out, and anything that
+                needs real plotting machinery: thousands of scatter
+                points, PCA projections, heatmaps, weight-space
+                renders. Numbers come from wherever you are working.
+
+If a figure is going in front of someone, it belongs in figures.json
+and figsvg. If you are looking at data, use this.
 
 Each form encodes the choices that are easy to get wrong, so a caller
 picks the JOB and gets a correct chart rather than assembling one:

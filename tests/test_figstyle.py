@@ -109,3 +109,61 @@ def test_forms_render_both_modes(tmp_path):
     for stem in ("c", "l", "s"):
         assert (tmp_path / f"{stem}.png").exists()
         assert (tmp_path / f"{stem}-dark.png").exists()
+
+
+# ---- published figures (lab.figsvg) -----------------------------------
+
+def test_published_figures_render_both_modes():
+    """figsvg is pure Python: SVG must build with no browser and no
+    matplotlib, so CI can verify published figures."""
+    import json
+
+    from llmopt.lab import figsvg
+    names = [k for k in json.loads(figsvg.DATA.read_text())
+             if not k.startswith("_")]
+    assert names, "data/figures.json has no figures"
+    for name in names:
+        for mode in ("light", "dark"):
+            svg = figsvg.render(name, mode=mode)
+            assert svg.startswith("<svg"), name
+            assert svg.rstrip().endswith("</svg>"), name
+            assert figsvg.CHROME[mode]["surface"] in svg
+
+
+def test_every_published_figure_carries_its_fence():
+    """The provenance strip is chart anatomy, not decoration: a figure
+    that leaves the repo must still say what backs it."""
+    import json
+
+    from llmopt.lab import figsvg
+    spec = json.loads(figsvg.DATA.read_text())
+    for name, fig in spec.items():
+        if name.startswith("_"):
+            continue
+        assert fig.get("fence"), f"{name} has no provenance fence"
+        assert fig.get("title"), f"{name} has no title"
+        assert figsvg._esc(fig["fence"]) in figsvg.render(name)
+
+
+def test_gate_tracks_never_exceed_their_denominator():
+    import json
+
+    from llmopt.lab import figsvg
+    for name, fig in json.loads(figsvg.DATA.read_text()).items():
+        if name.startswith("_") or fig.get("kind") != "gate_track":
+            continue
+        denom = fig["denominator"]
+        for arm in fig["arms"]:
+            assert 0 <= arm["value"] <= denom, f"{name}/{arm['label']}"
+
+
+def test_nice_ticks_are_round_numbers():
+    """Axis labels a reader can compare without arithmetic."""
+    from llmopt.lab.figsvg import _nice_ticks
+    ticks, lo, hi = _nice_ticks(0.2899, 2.2529)
+    assert len(ticks) >= 3
+    step = ticks[1] - ticks[0]
+    mantissa = step / 10 ** __import__("math").floor(
+        __import__("math").log10(step))
+    assert round(mantissa, 6) in (1.0, 2.0, 2.5, 5.0), step
+    assert lo <= 0.2899 and hi >= 2.2529
