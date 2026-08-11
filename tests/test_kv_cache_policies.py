@@ -71,6 +71,9 @@ def test_snapkv_scores_from_observation_window():
 
 
 def test_apply_eviction_end_to_end():
+    # transformers is the [hf] extra, not a core dependency — skip
+    # rather than fail on an install that does not have it
+    pytest.importorskip("transformers")
     from transformers import LlamaConfig, LlamaForCausalLM
 
     torch.manual_seed(0)

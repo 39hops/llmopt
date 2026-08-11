@@ -29,7 +29,10 @@ jobs:
         run: |
           python -m pip install -U pip
           pip install torch --index-url https://download.pytorch.org/whl/cpu
-          pip install pytest numpy sympy
+          # transformers is the [hf] extra so a user install stays lean,
+          # but CI exercises those paths — a dozen tests build a small
+          # Llama to check decoding, caching, and distillation.
+          pip install pytest numpy sympy transformers
           # --no-deps: the deps above are already pinned to CPU wheels,
           # and pyproject asks for torch>=2.4 which would pull the CUDA
           # build over the top of them

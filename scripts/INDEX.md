@@ -834,6 +834,7 @@ Render the web figures: SVG from docs/figures.json, PNG via Chrome.
 
 - `page(svg: str, w: int, h: int) -> str` — Wrap the SVG with @font-face pointing at the vendored files, so
 - `capture(svg: str, w: int, h: int, png: Path) -> bool`
+- `recount_findings() -> None` — Recount FINDINGS by maturity tag and write it back into the spec.
 - `main() -> None`
 
 ### scripts/gen_frontier.py
@@ -3079,6 +3080,7 @@ lab.figsvg — web-grade figures as hand-emitted SVG.
 - `curves(spec: dict, mode: str='light', width: int=880) -> str` — A measure over a shared x, with direct end labels.
 - `ladder(spec: dict, mode: str='light', width: int=880) -> str` — One measure across an ordered axis, value printed at each point,
 - `_svg(w, h, c, head, body, fence, pad_x) -> str`
+- `composition(spec: dict, mode: str='light', width: int=880) -> str` — One whole, split into labelled parts — a single stacked rail.
 - `render(name: str, mode: str='light', width: int=880) -> str`
 
 ### llmopt/lab/figures.py
