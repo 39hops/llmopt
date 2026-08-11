@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 163, library 163, reproduce-pinned 9, results-cited 122, spec-cited 44
+Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 122, spec-cited 44
 
 ## scratch/
 
@@ -110,7 +110,7 @@ Census: UNCITED 163, library 163, reproduce-pinned 9, results-cited 122, spec-ci
 | g19 | g19_sigma_cuda.sh | UNCITED | — | — |
 | g5 | g5_polar.py | UNCITED | — | — |
 | gate | gate_batched.py | library | — | 3 |
-| gate | gate_ckpt.py | library | RESULTS×2, specs×6 | 36 |
+| gate | gate_ckpt.py | library | RESULTS×2, specs×6 | 37 |
 | gate | gate_ckpt_cuda.py | library | — | 12 |
 | gate | gate_cplx.py | library | specs×1 | 1 |
 | gate | gate_pp.py | library | — | 1 |
@@ -311,6 +311,8 @@ Census: UNCITED 163, library 163, reproduce-pinned 9, results-cited 122, spec-ci
 | snap | snap_alloc.py | library | specs×2 | 1 |
 | snap | snap_anatomy.py | results-cited | RESULTS×1 | — |
 | soup | soup_gate.py | library | specs×1 | 1 |
+| ssm | ssm_star.py | library | RESULTS×1 | 1 |
+| ssm | ssm_star1.sh | UNCITED | — | — |
 | stability | stability_atlas.sh | UNCITED | — | — |
 | star | star_profile.py | results-cited | RESULTS×3 | — |
 | streaming | streaming_birth_d256.py | library | RESULTS×3 | 1 |
@@ -361,7 +363,7 @@ Census: UNCITED 163, library 163, reproduce-pinned 9, results-cited 122, spec-ci
 | vrm | vrm_ab.py | library | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS×1 | — |
-| wsl | wsl.sh | library | RESULTS×10, specs×15 | 4 |
+| wsl | wsl.sh | library | RESULTS×10, specs×16 | 4 |
 | z1 | z1_gate.sh | UNCITED | — | — |
 | z1s | z1s_hot_watcher.sh | UNCITED | — | — |
 | zx | zx_chain.sh | UNCITED | — | — |
@@ -449,7 +451,7 @@ Census: UNCITED 163, library 163, reproduce-pinned 9, results-cited 122, spec-ci
 | bench | bench_zx_r5.py | library | RESULTS×1 | 3 |
 | bench | bench_zx_r6.py | results-cited | RESULTS×1 | — |
 | bench | bench_zx_r7.py | results-cited | RESULTS×1 | — |
-| book | book.py | library | RESULTS×5, specs×3 | 1 |
+| book | book.py | library | RESULTS×4, specs×3 | 1 |
 | build | build_gen7_diet.py | UNCITED | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs×8 | — |
 | ckpt | ckpt_manifest.py | library | RESULTS×3, specs×1 | 2 |
@@ -497,7 +499,7 @@ Census: UNCITED 163, library 163, reproduce-pinned 9, results-cited 122, spec-ci
 | sol | sol_enrich_results.py | library | specs×4 | 1 |
 | sol | sol_generate_tables.py | spec-cited | specs×3 | — |
 | step | step_grpo.py | spec-cited | specs×1 | — |
-| step | step_grpo_micro.py | library | specs×1 | 92 |
+| step | step_grpo_micro.py | library | specs×1 | 93 |
 | sweep | sweep_lookup.py | library | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — |
@@ -510,7 +512,7 @@ Census: UNCITED 163, library 163, reproduce-pinned 9, results-cited 122, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — |
 | train | train_magic_estimator.py | library | RESULTS×1 | 8 |
 | train | train_magic_llm.py | results-cited | RESULTS×1 | — |
-| train | train_mathnative.py | library | RESULTS×4, specs×5 | 80 |
+| train | train_mathnative.py | library | RESULTS×4, specs×5 | 82 |
 | train | train_nnue.py | library | specs×8 | 15 |
 | train | train_proposer.py | spec-cited | specs×5 | — |
 | train | train_syndrome_decoder.py | library | RESULTS×1 | 1 |

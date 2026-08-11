@@ -27193,3 +27193,45 @@ binary survives/craters pattern — per-pair delta magnitudes stay
 sub-sigma and are not claimed; ORDER_SEED=7 shared across pairs
 (the order-stream is a controlled second variable, not a third
 random draw). Gate rows to the lake in this commit.
+
+## PRE-REG SSM-STAR-1: the house's first state-space model — does recurrence move the k_eff=16 wall? (2026-08-11 evening, 3080, Artin GO "SSM rungs")
+
+FLOOR-HK-1 (27055) measured effective context as architecture-
+bound: attention with a 512-token window extracts ~16-17 tokens of
+structure, and 8x width buys ~1 token. A selective SSM carries a
+FIXED state it must compress history into — the opposite inductive
+bias. First rung, paired on ONE device.
+
+Instrument (scratch/ssm_star.py; smoke: decode-parity incremental
+v full forward 7e-7, backward clean): minimal selective SSM
+(S6-lite — diagonal negative A, per-channel input-dependent dt,
+per-token B/C, n_state=16, expand=2, sequential scan, pads never
+enter the state), same skeleton otherwise (RMSNorm/SwiGLU/untied
+head), trained through the SAME TM.main path via the build_model
+monkeypatch (rev3_crown pattern). Two arms, both 3080, both fp32,
+BIRTH_SEED=0, budget 6144, 3 epochs, d64/L8/ffn256 family:
+- ssm_d64: the SSM twin (~80.4k params/block, 1.23x attention's
+  ~65.5k — param parity NOT claimed, disclosed; architecture at
+  its natural size).
+- attn_d64: fresh attention twin through the identical driver
+  (only build_model unpatched). Self-contained pair — NEVER read
+  against the Mac floorhk ladder or the bf16 msearch family.
+
+BARS:
+1. P-SSM-BURNS: ssm_d64 gates >= 10/120 — the SSM ignites at d64
+   (double digits where the attention family spans 12-30).
+2. P-WALL-MOVES: floor(ssm_d64) <= floor(attn_d64) - 0.02 nats —
+   recurrent compression extracts structure attention leaves on
+   the table (read against the frozen H_k curve descriptively).
+   REFUTED-IF floor(ssm_d64) >= floor(attn_d64) + 0.02 (SSM pays
+   a micro-scale toll — honest loss, booked). Within +-0.02:
+   same wall — the 16-gram wall belongs to the DIET, the
+   strongest reading for LOSS-FLOOR doctrine.
+REGISTERED PRIOR (house, on the record): within-or-toll — we
+predict the wall is the diet's, not attention's; P-WALL-MOVES
+does NOT fire.
+FENCES: single seed per arm, single device, fp32 both; sequential-
+scan wall clock books as the honest speed price (no kernel
+claims); gate decode is O(1)-state (the same API sample_wave_lp
+uses); n=1 — deltas inside the +-0.02 floor band and gate deltas
+< 7 book with single-seed fences.
