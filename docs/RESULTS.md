@@ -26192,3 +26192,66 @@ must not perturb the certified prefix; wall numbers n=1 interactive
 primes on steps 1-8 (the ring is the cost floor — this doubles it
 twice and measures the slope for free). No house prediction
 registered: the 256-ring exhaustion is consistent with both bars.
+
+## PRE-REG SATURATION-1: is 73 the star's limit or the feeding's? — one more warm epoch on a COPY of the grown-s2 champion, same corpus, then the gate (2026-08-11 early, Mac, Artin GO "run 3 like grok said")
+
+The equilibrium-limit riff's cheap arm. Cell (a), fixed food:
+COPY crown_c_grown_s2.pt -> checkpoints/sat_s2.pt (the crown
+artifact stays frozen — it is cited evidence), resume the exact
+stage-3 recipe (v22+gen4+l8, d512/L12/ffn2304/h8) for ONE
+additional epoch (epochs=4 against the 3-epoch checkpoint), then
+the standard gate. Cell (b), widened food, NAMED BUT NOT FIRED:
+same +1 epoch with a widened-rations corpus — held until a diet
+widening is pinned against the rations/contamination doctrine
+(exposure share for resident grammars); (a) reads first.
+
+BARS (single seed, fences loaded):
+1. P-HUNGRY: gate(sat_s2) - 73 >= +7 (1.5 sigma) — the star was
+   still feeding; the 73/73/73 equilibrium was an epoch-budget
+   artifact and the saturation frontier moves to cell (b).
+2. P-SATURATED-CLASS: |gate(sat_s2) - 73| <= 2 with the dict in
+   the 73-class shape — more burn at fixed fuel changes nothing;
+   the (diet, recipe, arch) triple is saturated at 3 warm epochs
+   and "the limit of the star" reading survives its first test.
+Between / negative: UNRESOLVED direction (resolution law), dict
+booked, cell (b) decision goes to Artin either way.
+FENCES: Mac/mps, one worker (GPU free post-battery); D2 excision
+rides the driver wrapper class — the run goes through the same
+TM.main path rev3_crown used; dict is the checksum; sat_s2 gate
+never reads against the 76/75 originals.
+
+## PRE-REG MICRO-STAR-1: how small can a star be and still burn? — the sub-1M ladder, births in MINUTES (2026-08-11 early, 3080, Artin GO "see the limit there")
+
+Artin's ask, verbatim intent: "why do our model births need to be
+HOURS? ... go even smaller, less than 1M params. See the limit
+there. If NNUE can learn calc so can a <1M model?" Grounding: the
+smallest existing crystal (wfloor d64, ~0.5M params) already gates
+38/120 — sub-1M CAN burn; the un-measured region is BELOW it.
+Instrument: fresh self-contained family (never read against the
+Mac wfloor absolutes — new device, new battery): four births on
+the 3080, one command chain, identical recipe (v22+gen4, 3 epochs,
+fast/bf16, BIRTH_SEED=0), d in {16, 32, 48, 64}, layers 8, heads
+4, ffn 4d. Standard 120 gate per birth on the same device. Rows:
+birth WALL SECONDS + gate dict per d, streamed to
+logs/microstar/microstar_run.log.
+
+OBSERVABLES + BARS:
+1. P-MICRO-BURN: the smallest d whose gate >= 10/120 — the
+   ignition threshold of the family. FIRES at any d <= 48 (a star
+   smaller than the smallest ever built still burns). The d64 arm
+   anchors the family in-battery.
+2. P-MINUTES: every birth in this ladder completes in < 20 min
+   wall on the 3080 — the "births need hours" premise is a SIZE
+   property, not a pipeline property. (Expected trivially true;
+   registered so the wall table books as a receipt, because the
+   whole point is to make ladder-spam a measured capability.)
+3. Curve rider (no bar): gate(d) at fixed recipe — where the
+   RISING arm's foot actually sits; feeds the fuel-not-mass bank
+   and prices the CURRICULUM-FUNNEL and micro-SATURATION arms
+   Artin proposed (both become minutes-class if ignition holds
+   small).
+FENCES: single seed single device; gates cross-compare INSIDE
+this battery only; sub-10 totals read against the guess floor
+with the validity percentage quoted (dict is the checksum);
+recipe divergence from wfloor (packing/budget defaults at tiny d)
+books as family-difference, never as a scaling claim.

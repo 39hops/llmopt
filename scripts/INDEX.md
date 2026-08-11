@@ -2513,6 +2513,11 @@ A3 (revival-sweep Tier A, 2026-07-31): rotation-instrument POSITIVE CONTROL. Run
 - `anti_mass(W, Jo, Ji)`
 - `main()`
 
+### scratch/saturation_s2.py
+SATURATION-1 cell (a): +1 warm epoch at fixed food on a COPY of the grown-s2 champion (PRE-REG SATURATION-1). Crown artifact frozen; this trains checkpoints/sat_s2.pt (epochs=4 resumes the 3-ep state one epoch). Then the standard gate, dict printed. Usage: .venv/bin/python scratch/saturation_s2.py
+
+- `_load_rows(*a, **k)`
+
 ### scratch/scaffold_review.py
 Overnight scaffold review: MERGE-1 on gravmoe_s{S}, channel ablation on channel_s{S} (S env, default 2; missing files skip). CPU. Runs as part of overnight chains.
 
