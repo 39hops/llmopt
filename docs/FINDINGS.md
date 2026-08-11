@@ -1121,6 +1121,14 @@ regime tag on every bullet is the fence.
   damage-free flattening onto the best member, not lift; a byte-identical
   rerun of one inner merge doubled as a merge-determinism receipt.
   ([VERDICT MERGE-SPACE-4](RESULTS.md#L27013).)
+- [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
+  [REGIME-SCOPED: house crystals] The loss floor walks down monotonically
+  across a fresh 8x width ladder (0.4364 to 0.3478, d64 to d512) but never
+  approaches the k=32 entropy knee: the whole ladder buys roughly one token
+  of effective context past the 16-gram wall. Width sets the floor —
+  a fresh d512 landed on the grown crown's reference line — while gate
+  capability saturates in width long before the floor does.
+  ([VERDICT FLOOR-HK-1](RESULTS.md#L27055).)
 - [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: closed-system math] At n=1 activation probe,
   a small population of digit-periodic neurons showed partial Fourier
   character; this is an in-vivo sighting, not a general representation law.

@@ -27051,3 +27051,54 @@ FENCES: single device (3080), family-only, n=1 — every delta
 here is < 7 and carries the single-seed fence; soup-of-N at
 LARGER N or WIDER d books only under its own pre-reg. Gate rows
 to the lake in this commit.
+
+## VERDICT FLOOR-HK-1 (R3): BOTH BARS FIRE — the floor walks down with width but NEVER crosses the k=16 neighborhood; effective context is architecture-bound (2026-08-11 afternoon, Mac)
+
+Ran to completion (rjob floor_hk1 rc=0 births, floor_hk1b rc=0
+d256+gates; every birth log ends "saved" 4/4 — the no-pipefail
+fence checked and clear). Fresh births, warm diet, fp32/mps,
+BIRTH_SEED=0, L8/H4/ffn=4d:
+
+  width  floor (final-epoch mean)  gate                       sha
+  d64    0.4364   {3:13,4:1,5:13,6:5,7:11} = 43/120   07a7afa332f24a27
+  d128   0.3815   {3:21,4:6,5:16,6:7,7:15} = 65/120   7f55af73bd6a3f1b
+  d256   0.3566   {3:19,4:9,5:16,6:8,7:15} = 67/120   88ee1c2ba0037bc1
+  d512   0.3478   {3:23,4:9,5:16,6:8,7:16} = 72/120   7edcb967104464db
+
+Reference curve (RESULTS 26382, frozen): H_16=0.367, H_32=0.187,
+H_64=0.176, H_full=0.175 nats.
+
+BARS v measured:
+1. P-FLOOR-DESCENDS (re-anchored ladder-only per 26670): FIRES.
+   0.4364 > 0.3815 > 0.3566 > 0.3478, monotone across the full
+   fresh ladder.
+2. P-KNEE-CEILING: FIRES. floor(d512) = 0.3478 >= H_32 = 0.187 by
+   a wide margin — 8x width extracts essentially NONE of the
+   16->32-token structure. Effective context is
+   architecture-bound, not size-bound, on this diet.
+3. Curve rider (k_eff table, log-interpolated on the 16->32
+   segment where bracketed): d64 <16 (floor above H_16), d128 <~16
+   (0.3815 > 0.367, just above), d256 ~16.7, d512 ~17.2. The
+   whole 8x ladder moves k_eff by roughly ONE token past the
+   16-gram wall.
+
+OBSERVATIONS (booked, not bars):
+- The fresh d512 floor 0.3478 sits at the grown-crown reference
+  line 0.348 despite the three named confounds (grown recipe,
+  D2-excised diet, resumed schedule) — width sets the floor;
+  provenance does not visibly move it.
+- Fresh d512 gates 72/120 v the crown line's 73-75 (different
+  arch: L8/ffn2048 v L12/ffn2304; unpaired, single seed) — NOT a
+  growth-lever refutation, but it prices a question: how much of
+  the crown is growth v width? R5 (graft-v-grow) is the
+  registered home for that decomposition.
+- Gate steps +22/+2/+5 across the ladder: capability saturates in
+  width long before the floor does — the floor keeps buying loss
+  on structure the gate does not test.
+
+FENCES: floors are train-loss means on ONE diet in nats,
+comparable only within this ladder + sat_s2 (same corpus, same
+device class); gates single-seed, Mac/mps, NEVER comparable to
+the 3080 msearch family (cross-device doctrine); k_eff
+interpolation is descriptive. Gate rows to the lake
+(device=mac-mps, n_seeds=1) in this commit.
