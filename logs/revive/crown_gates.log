@@ -1,0 +1,12 @@
+[gate] weights sha da6402a2de43b984
+c_s2 gate: {3: 23, 4: 11, 5: 16, 6: 8, 7: 15} = 73/120 @ 66.71%
+[gate] weights sha 93cf29160b6f38c8
+m_s2 gate: {3: 19, 4: 7, 5: 15, 6: 8, 7: 15} = 64/120 @ 54.74%
+[gate] weights sha d1a8456788ce14e2
+c_s3 gate: {3: 23, 4: 9, 5: 17, 6: 9, 7: 15} = 73/120 @ 67.86%
+[gate] weights sha 209d58737e92df1f
+m_s3 gate: {3: 17, 4: 7, 5: 16, 6: 8, 7: 14} = 62/120 @ 55.96%
+[gate] weights sha dd36fd670ab5e2c3
+c_s4 gate: {3: 22, 4: 10, 5: 17, 6: 9, 7: 15} = 73/120 @ 69.13%
+[gate] weights sha 4a614d78eb09acf8
+m_s4 gate: {3: 17, 4: 6, 5: 16, 6: 8, 7: 14} = 61/120 @ 54.80%

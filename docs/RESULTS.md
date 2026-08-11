@@ -26062,3 +26062,42 @@ surviving revival question is QAT-side (does a ternary-BORN
 crystal accept symmetry conversion at the same ~4-solve toll? —
 the axes-independence read predicts YES, and that arm would be the
 real test of orthogonality where both tolls are trained-in).
+
+## VERDICT REVIVE-CROWN-TIE-BIRTHS: P-RESOLVE-FP32 FIRES — the crown tie BREAKS at n=3 fresh births: champion fp32 line +9/+11/+12 over ternary tournament line, pooled +10.7, 3/3 positive (2026-08-10 night -> 08-11, Mac)
+
+Pre-reg L23315. Battery scratch/rev3_crown.py (rjob rev3crown,
+rc=0, six cells; the c_s4/m_s4 Metal interleave was missed —
+AMENDMENT 25500 — battery ran through uninterrupted). Gate-eval
+the separate step as specified (rjob crowngates, mps), receipts
+logs/revive/crown_gates.log; every dict re-summed at booking:
+
+  seed  c (champion fp32 grown)          m (ternary tournament)   delta
+  s2    {3:23,4:11,5:16,6:8,7:15} = 73   {3:19,4:7,5:15,6:8,7:15} = 64   +9
+  s3    {3:23,4:9,5:17,6:9,7:15}  = 73   {3:17,4:7,5:16,6:8,7:14} = 62   +11
+  s4    {3:22,4:10,5:17,6:9,7:15} = 73   {3:17,4:6,5:16,6:8,7:14} = 61   +12
+
+BAR READ: P-RESOLVE-FP32 registered as "pooled >= +9 with 3/3
+non-negative" — pooled +10.67, every seed individually >= +9,
+3/3 strictly positive. FIRES. P-TIE-BIRTHS (|delta| <= 7) does
+not fire; no mixed signs. THE CROWN RESOLVES TO THE CHAMPION
+LINE: the 2026-07-23 tie (76 v 75, n=1 births) was birth luck —
+under fresh paired births the fp32 grow-inherit lineage beats the
+direct ternary tournament line by ~+10.7 solves, and the
+n=1-BIRTHS fence RETIRES with the tie it fenced.
+STRUCTURE: the champion line is eerily stable across birth seeds
+(73/73/73 — spread ZERO at the total, dicts nearly identical);
+the ternary line carries the birth noise (64/62/61). The fp32
+lineage's determinism-of-outcome is itself a finding-shaped
+observation (unregistered; single battery).
+SCOPE, load-bearing: the crown was always LINE v LINE — substrate
+(fp32 v ternary) rides with architecture (d512/L12 grown v
+d768/L8 direct) and recipe (grow-inherit v tournament). This
+verdict resolves the PRODUCTION-LINE question, NOT bits-at-
+matched-dose (that is HARDENING-P3-R9's booked TIE at 19M, which
+stands untouched). Read together: ternary matches fp32 when
+everything else is matched; the champion PIPELINE (growth
+inheritance) is worth ~+10 and only exists on the fp32 substrate
+(ternary growth non-preserving, 2026-07-23).
+FENCES: fresh absolutes never against the 76/75 originals (device
+era + band class, per pre-reg); Mac/mps instrument; identity
+pre-checks passed in-driver (c gates birth==grown exact).

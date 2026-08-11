@@ -280,6 +280,17 @@ VERDICT](RESULTS.md#L10676).)
   lattice. Ternary capability is trained-in, never projected-in; the
   eye is precision-hungry, the mouth is not.
   ([VERDICT STAR-PROFILE-1](RESULTS.md#L25772).)
+- [MECHANISM-CONFIRMED] [DEVICE-SCOPED] [REGIME-SCOPED: house crystals]
+  The crown tie was birth luck: n=3 fresh paired births resolve the
+  production crown to the champion fp32 grow-inherit line (+9/+11/+12
+  over the direct ternary tournament line, pooled +10.7, 3/3 positive)
+  and the n=1-births fence retires. Scope is line-v-line: ternary still
+  TIES fp32 at matched dose and architecture — the ~+10 is the growth-
+  inheritance pipeline, which only exists on the fp32 substrate because
+  ternary growth is non-preserving. The champion line's totals were
+  seed-invariant (73/73/73) while the ternary line carried the birth
+  noise (64/62/61).
+  ([VERDICT REVIVE-CROWN-TIE-BIRTHS](RESULTS.md#L26066).)
 
 ## Data, diet, and federation
 
