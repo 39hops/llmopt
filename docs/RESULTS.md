@@ -25915,3 +25915,63 @@ step 1), but step 9's demand is 100-1000x — the weak term may not
 stay weak; the timebox is the fence, prediction stays open. Mac
 CPU, one worker, interactive-load caveat carries. House
 prediction: none registered — genuinely unknown, the honest state.
+
+## AMENDMENT STAR-PROFILE-3-WARMSTART: the ladder advances FROM THE LAST TRAINED WEIGHT, and the advance trigger gets a sensor variant (2026-08-10 night, design amendment — no arm has fired)
+
+Amends PRE-REG STAR-PROFILE-3 (still [HOLD]; design change is
+legal pre-fire). Artin's upgrade, verbatim intent: "the dynamic/
+growing bits/precision needs to happen from the last trained
+weight."
+
+1. CLARIFIED (was implicit): arm B's switches are WARM — the
+   trained coarse weights re-quantize onto the finer lattice IN
+   PLACE and training continues; never a re-birth at the switch.
+   The coarse lattice embeds in the fine one, so the switch is
+   function-preserving at t=switch (contrast: ternary GROWTH broke
+   on absmean coupling, RESULTS 2026-07-23 — growth changes shape,
+   the ladder only changes resolution).
+2. NEW ARM B' (sensor-triggered, the funnel pattern's fourth
+   instance): same ladder alphabet 1.58 -> 4 -> 8, but the advance
+   fires on an IN-RUN sensor (train-loss slope over a 500-step
+   window flattening below a pinned threshold), step index never
+   consulted — precision advances when the current alphabet is
+   REGISTERED, exactly the FUNNEL-PREC law shape ported from
+   certification to training. B (fixed 1/3-2/3 marks) v B'
+   (sensor) isolates the trigger as a variable.
+3. NEW CHEAP ARM E (conditional): if a trained ternary checkpoint
+   of the matched recipe exists on disk, WARM-LADDER it directly
+   (continue at 4b then 8b, same data replay) — the economy read
+   of the same question; books only alongside the full arms, never
+   alone (different total data exposure).
+Bars unchanged (P-LADDER-BEATS-STATIC, P-LADDER-OVER-TERNARY,
+both >= +7 single-seed). [HOLD] unchanged: fires on Artin's night
+window GO only.
+
+## PRE-REG ROT-X-TERNARY: do the two compression axes stack — is a 4x-shared quaternionic crystal MORE or LESS ternary-tolerant per class? (2026-08-10 night, 3080; queued behind the width sweep)
+
+The rotational-revival bank's named cell, runnable tonight:
+checkpoints/quat_convert_b.pt survives (SYMMETRY LADDER S1 arm b,
+61/120 at anti-mass 0.0007, wfloor d256 recipe). Instrument: the
+star_profile driver, arms base/emb/head/attn/ffn on the quat
+crystal, 3080, standard gate seeds. CONTROL: tonight's
+STAR-PROFILE-1 table on plain wfloor d256 (same driver, same
+device, same seeds — paired by construction).
+
+BARS:
+1. P-SYMMETRY-SHIELDS: the quat crystal's ATTN class (where the
+   4x sharing lives — gate matrices) retains STRICTLY MORE of its
+   base solves under PTQ ternary than the control's attn arm
+   retained of its base (control: 0/65 retained). Any nonzero
+   attn retention fires this bar (control is literally zero;
+   direction is the read, magnitude fenced single-seed).
+2. P-INDEPENDENT-TOLLS: quat attn also craters to <= 7/120 —
+   the axes are independent; symmetry sharing does not coarsen
+   the function toward the lattice.
+FENCES: single seed, PTQ-not-QAT scope, 3080 instrument; the two
+crystals differ by the conversion epoch (61 v 65 base) so drops
+book as FRACTIONS OF OWN BASE, never raw cross-crystal deltas;
+any fraction gap < 10% of base books unresolved.
+Prediction (house, weak prior): P-INDEPENDENT-TOLLS — tonight's
+grown-not-projected law says lattice tolerance comes from training
+ON the lattice, and the quat crystal never did. Registered so the
+refutation is loud if sharing shields.

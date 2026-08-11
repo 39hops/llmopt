@@ -3723,3 +3723,30 @@ without re-introducing history).
   (engine-owns-the-estimator + advance-when-graspable + NNUE
   frame); Fable (0A/0C grounding, funnel-controller unification,
   ordering-arm design).
+
+- **2026-08-10 (Artin, night x2): PRECISION GROWS FROM THE LAST
+  TRAINED WEIGHT + MAKE THE MODELS ROTATIONAL AGAIN.** First half
+  booked as AMENDMENT STAR-PROFILE-3-WARMSTART (warm in-place
+  lattice refinement + sensor-triggered advance = the funnel
+  pattern's fourth instance). Second half: SYMMETRY-PROGRAM
+  REVIVAL ask. Where the program stopped (BOARD: ladder complete
+  through 8x): complex 2x sharing costs ~1 solve, quaternionic 4x
+  costs ~4 (S1: 61/120 at anti-mass 0.0007), holography's
+  absorption edge measured between 50-75% structured deletion.
+  WHY TONIGHT RE-PRICES IT: STAR-PROFILE-1 booked grown-not-
+  projected for the ALPHABET axis; the symmetry program had
+  already found the same law on the SYMMETRY axis (projected init
+  craters to 22, warm conversion recovers 61) — same shape, two
+  axes, never cross-referenced until now. NEW CELL NAMED (desk +
+  one 3080 gate pass, cheap): ROT-x-TERNARY — take the S1
+  quaternionic-converted crystal (if ckpt survives) and the plain
+  wfloor control, PTQ-ternarize BOTH with the star-profile driver:
+  does 4x weight sharing change the tensor-class sensitivity
+  profile? The symmetry frame predicts shared-parameter gates
+  tolerate the lattice BETTER (fewer free params = coarser
+  function already); a null says the two compression axes
+  (symmetry, alphabet) are independent tolls. Also pairs the
+  revival with RoPE's standing status as the one mainstream
+  rotational win (ledger L66 prior). Attribution: Artin (both
+  asks); Fable (warm-lattice function-preservation argument,
+  funnel-fourth-instance identification, ROT-x-TERNARY cell).
