@@ -26161,3 +26161,34 @@ STANDING: the exact-inference path toward the L7226 decision-flip
 retest (NOTE EXACT-GATE-POWER) now has its GEMM. Montgomery/TC
 RNS stays [HOLD]. Their relay -20 numbering noted; house next
 is -21.
+
+## PRE-REG NPRIMES-LADDER: the ring knob — 512 and 1024 primes at fixed shadow precision; separates "ring too small" from "tie exact in any modulus" (2026-08-11 early, spec'd house-side; runs mac-axiom CPU, Artin GO)
+
+Follows VERDICT STEP9-CLIFF-SIZE (26105): the step-9 tie is
+structural w.r.t. shadow precision AT FIXED RING — the shadow
+narrows to width 1 and reconstruct_rat exhausts the 256-prime
+modulus. This ladder moves the OTHER knob. Instrument: run_anchor2
+trace build, r2b inputs, AX_PREC_STEP gate (ramp steps 1-8, rung
+price at step 9 only), shadow precision at step 9 PINNED to 16384
+(the cheapest rung known to reach w=1 — 103 s attempt), NPRIMES in
+{512, 1024}. First success stops.
+
+BARS:
+1. P-RING-BOUNDED: step 9 completes at 512 or 1024 primes —
+   the tie was a MODULUS BUDGET, not a mathematical wall; the
+   completing rung's prime count and wall_s book as the price of
+   step 9, and the exact-training horizon extends by ring sizing
+   (a capacity schedule on primes becomes the next controller
+   candidate — the funnel pattern on the RING).
+2. P-EXACT-TIE: both rungs throw at w=1 — the reconstruction
+   target plausibly does not exist at ANY modulus size tested;
+   the co-factor/witness line re-elevates with a doubled-twice
+   ring behind it.
+FENCES: streamed rows before next rung (killed class visible);
+4 h timebox per rung; steps 1-8 digests must byte-match the booked
+ladder (7c9b8f0b -> 41bfedf6) or the run is void — the larger ring
+must not perturb the certified prefix; wall numbers n=1 interactive
+-Mac class. Ring-cost rider to record: per-step wall at 512/1024
+primes on steps 1-8 (the ring is the cost floor — this doubles it
+twice and measures the slope for free). No house prediction
+registered: the 256-ring exhaustion is consistent with both bars.
