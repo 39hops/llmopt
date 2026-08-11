@@ -873,6 +873,14 @@ Winning-path (state, legal moves, chosen move) triples for proposer SFT. Every r
 - `path_rows(root: sp.Expr) -> list[dict]` — Replay the winning history move-by-move, recording the legal
 - `main(per_cell: int, split: str, exclude_file: str | None) -> None`
 
+### scripts/gen_readme_figures.py
+Regenerate the README / paper figures from booked numbers.
+
+- `merge_space()` — VERDICT MERGE-SPACE-1/2/3/5 — the crater and its mechanism.
+- `keff()` — PRE-REG KEFF-PROBE-1 — measured effective context, no training.
+- `floor_ladder()` — VERDICT FLOOR-HK-1 — the floor descends but never nears the knee.
+- `ssm()` — VERDICT SSM-STAR-1 — an honest loss, booked like any other.
+
 ### scripts/gen_regret_labels.py
 Regret/corrective labels (DAgger-style, Artin's 'make it regret the wrong node' — hindsight credit assignment made mechanical).
 

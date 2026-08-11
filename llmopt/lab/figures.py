@@ -88,11 +88,22 @@ def curves(name: str, xs, series: dict, title: str = "", subtitle: str = "",
             col = color(label, i, mode)
             ax.plot(xs[:len(ys)], ys, color=col, marker="o",
                     markersize=4.5, markeredgewidth=0)
-            if annotate_last:
-                ax.annotate(f" {label}", (xs[len(ys) - 1], ys[-1]),
-                            xytext=(7, 0), textcoords="offset points",
-                            fontsize=9.5, color=col, va="center",
-                            weight=600)
+        if annotate_last:
+            # Nudge end labels apart when series finish close together:
+            # two labels on top of each other is worse than one sitting a
+            # little off its line. Place lowest-first, pushing each clear
+            # of the one below it.
+            lo = min(min(v) for v in series.values())
+            hi = max(max(v) for v in series.values())
+            gap = (hi - lo) * 0.055 or 1.0
+            placed = None
+            for label, ys in sorted(series.items(), key=lambda kv: kv[1][-1]):
+                y = ys[-1] if placed is None else max(ys[-1], placed + gap)
+                placed = y
+                ax.annotate(label, (xs[len(ys) - 1], y), xytext=(9, 0),
+                            textcoords="offset points", fontsize=9.5,
+                            color=color(label, list(series).index(label), mode),
+                            va="center", weight=600, annotation_clip=False)
         if logx:
             ax.set_xscale("log", base=2)
             ax.set_xticks(list(xs))
