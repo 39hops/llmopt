@@ -5,22 +5,62 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "llmopt"
 version = "0.1.0"
-description = "Inference optimization lab: speculative decoding, prompt-lookup, radix KV cache, per-layer quant sensitivity + bit allocator"
+description = "Oracle-verified mathematics and physics ML lab: exact integer training, symbolic derivation search, MoE routing anatomy, calibration-free quantization, and an append-only verdict ledger"
 readme = "README.md"
 license = { text = "Apache-2.0" }
 authors = [{ name = "Artin Azizi" }]
 requires-python = ">=3.11"
+keywords = [
+    "reproducible-research",
+    "symbolic-mathematics",
+    "quantization",
+    "mixture-of-experts",
+    "deterministic-computing",
+    "fixed-point-arithmetic",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+# sympy is core, not optional: it is the ORACLE. Symbolic equivalence is
+# how this lab accepts an answer, so 18 modules import it directly and a
+# torch-free install still needs it (mathgen, search, eval.equivalence).
 dependencies = [
     "torch>=2.4",
-    "transformers>=4.44",
     "numpy>=1.26",
+    "sympy>=1.12",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
+# Hugging Face model paths only (4 lazy call sites: static-cache backend,
+# gist context, batching, prefix reuse). Nothing imports transformers at
+# module scope, so the core install does not need it.
+hf = ["transformers>=4.44"]
+# Apple-silicon kernels + MLX backend (llmopt/kernels/metal.py,
+# llmopt/backends/mlx_backend.py, llmopt/lab/traj.py)
+mlx = ["mlx>=0.15", "mlx-lm"]
+# Parquet/DuckDB run-and-result lake (llmopt/lab/lake.py)
+lake = ["pyarrow>=15", "duckdb>=1.0", "pandas>=2.0"]
+# CUDA kernel experiments (llmopt/kernels/triton_kernels.py)
+triton = ["triton>=3.0"]
+
+[project.urls]
+Repository = "https://github.com/39hops/llmopt"
+"Verdict ledger" = "https://github.com/39hops/llmopt/blob/main/docs/RESULTS.md"
+"Curated findings" = "https://github.com/39hops/llmopt/blob/main/docs/FINDINGS.md"
+Reproduce = "https://github.com/39hops/llmopt/blob/main/docs/REPRODUCE.md"
 
 [tool.setuptools.packages.find]
 include = ["llmopt*"]
+
+[tool.setuptools.package-data]
+llmopt = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

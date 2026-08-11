@@ -1,17 +1,47 @@
-"""Weight-space learning: models that read other models' weights.
+"""llmopt.weightspace — predicting what a network computes from its parameters.
 
-First result (2026-07-06, scripts/train_weight_reader.py, 4000/500
-subjects, M3 Pro CPU): a ~1M-param neuron-token transformer classifies
-the function family of a 1-16-16-1 subject MLP from raw weights at
-80.8% (chance 16.7%); canonicalized 82.4%, permutation-augmented 88.4%.
-
-The spec's on-record prediction (canonical >> augmented > raw ~ chance)
-was wrong twice, instructively: (1) the neuron-token encoding (no
-neuron position, attention + mean-pool) is already order-invariant, so
-raw never faced most of the symmetry; (2) augmentation beat
-canonicalization — norm-sorting is discontinuous under near-ties,
-imposing invariance proved worse than teaching it.
-
-Later rungs: coefficient regression, weights-from-description
-generation, LoRA-adapter reading.
+Symbols resolve lazily: importing this package costs nothing, and torch
+or sympy load only when a name is actually used. `llmopt.weightspace.<module>`
+still works for anything not re-exported here.
 """
+from __future__ import annotations
+
+import importlib
+from typing import TYPE_CHECKING
+
+_EXPORTS = {
+    "Subject": "subjects",
+    "WeightReader": "reader",
+    "canonicalize": "subjects",
+    "evaluate_reader": "reader",
+    "make_dataset": "subjects",
+    "make_subject": "subjects",
+    "permute_hidden": "subjects",
+    "train_reader": "reader",
+}
+
+__all__ = sorted(_EXPORTS)
+
+
+def __getattr__(name: str):
+    try:
+        module = _EXPORTS[name]
+    except KeyError:
+        raise AttributeError(
+            f"module {__name__!r} has no attribute {name!r}") from None
+    return getattr(importlib.import_module(f"{__name__}.{module}"), name)
+
+
+def __dir__() -> list[str]:
+    return __all__
+
+
+if TYPE_CHECKING:  # let type checkers see through the lazy layer
+    from llmopt.weightspace.reader import (WeightReader, evaluate_reader, train_reader)
+    from llmopt.weightspace.subjects import (
+        Subject,
+        canonicalize,
+        make_dataset,
+        make_subject,
+        permute_hidden,
+    )

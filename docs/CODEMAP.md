@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 123, spec-cited 43
+Census: UNCITED 164, library 163, reproduce-pinned 9, results-cited 123, spec-cited 44
 
 ## scratch/
 
@@ -499,7 +499,7 @@ Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 123, spec-ci
 | sol | sol_enrich_results.py | library | specs×4 | 1 |
 | sol | sol_generate_tables.py | spec-cited | specs×3 | — |
 | step | step_grpo.py | spec-cited | specs×1 | — |
-| step | step_grpo_micro.py | library | specs×1 | 93 |
+| step | step_grpo_micro.py | library | specs×1 | 94 |
 | sweep | sweep_lookup.py | library | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — |
@@ -520,5 +520,5 @@ Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 123, spec-ci
 | train | train_ternary.py | library | RESULTS×1, specs×1 | 1 |
 | train | train_tf32x3.py | UNCITED | — | — |
 | train | train_value_head.py | results-cited | RESULTS×1 | — |
-| train | train_weight_reader.py | library | specs×4 | 1 |
+| train | train_weight_reader.py | spec-cited | specs×4 | — |
 | validity | validity_autopsy.py | results-cited | RESULTS×1 | — |

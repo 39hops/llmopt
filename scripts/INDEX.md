@@ -2990,7 +2990,7 @@ Weight-FFT euler read (pre-reg 2026-07-26, RESULTS.md).
 ## llmopt/
 
 ### llmopt/__init__.py
-llmopt: inference + training optimization library.
+llmopt — an oracle-verified mathematics and physics ML lab.
 
 
 ### llmopt/intmath.py
@@ -3155,8 +3155,10 @@ lab.verify — the fast wave-verifier, ADOPTED VERBATIM from scripts/bench_verif
 ## llmopt/train/
 
 ### llmopt/train/__init__.py
-*(no docstring)*
+llmopt.train — closed-system births, controlled diets, and comparable interventions.
 
+- `__getattr__(name: str)`
+- `__dir__() -> list[str]`
 
 ### llmopt/train/complex_ffn.py
 Complex-valued SwiGLU-style FFN (modReLU + genuine complex multiply), promoted from scratch/complex_model.py.
@@ -3234,8 +3236,10 @@ Task vectors from LoRA adapters: skill = weight delta, applied by arithmetic.
 ## llmopt/search/
 
 ### llmopt/search/__init__.py
-*(no docstring)*
+llmopt.search — symbolic derivation search and verified circuit reduction.
 
+- `__getattr__(name: str)`
+- `__dir__() -> list[str]`
 
 ### llmopt/search/axiom_oracle.py
 Axiom oracle adapter — Phase A of the axiom backend (docs/superpowers/specs/2026-07-18-axiom-backend.md).
