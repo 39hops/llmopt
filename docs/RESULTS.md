@@ -26372,3 +26372,47 @@ contribute 0), so bar 1 is conservative-hard to fire and bar 2's
 firing means headroom >= floor - H_full, not equality. Single
 corpus, nats throughout, positions weighted exactly as the training
 loss weights them (uniform over non-pad next-token positions).
+
+## VERDICT LOSS-FLOOR-1: MIXED at almost exactly HALF — H_full 0.175 v floor 0.348 (ratio 0.502); floor sits between H_16 and H_32 (2026-08-11 early, Mac CPU)
+
+scratch/loss_floor_census.py, wall 76 s, 178090 sequences (388
+out-of-language skips, matching train), 11,815,514 positions,
+vocab 40. Empirical conditional entropy in nats:
+
+| context | H (nats) | contexts |
+|---------|----------|----------|
+| k=1     | 1.5175   | 35       |
+| k=2     | 1.1639   | 412      |
+| k=4     | 1.0067   | 14,889   |
+| k=8     | 0.7558   | 269,978  |
+| k=16    | 0.3666   | 3,062,422 |
+| k=32    | 0.1867   | 6,536,695 |
+| k=64    | 0.1759   | 7,392,868 |
+| full    | 0.1747   | 7,661,206 |
+
+Floor 0.3480 (sat_s2 ep3). H_full/floor = 0.502 -> NEITHER bar:
+MIXED, booked as measured. The split: ~50% of the floor is the
+corpus's own ambiguity (irreducible at this diet — branching
+orders, form choices), ~50% is approximation error (real headroom
+at fixed diet; downward-bias fence means headroom >= 0.173 nats,
+this is a floor on the headroom, not an estimate).
+
+Curve riders (unregistered, strong):
+1. The entropy curve KNEES at k=32: H_32 -> H_full moves only
+   0.0120 nats. Nearly all corpus structure is local — 32 tokens
+   of context capture it.
+2. The trained floor (0.348) sits BETWEEN H_16 (0.367) and H_32
+   (0.187): the d256 star extracts essentially all 16-token
+   structure and roughly none of the marginal 16->32 structure,
+   despite 512-token attention. Effective-context read, worth its
+   own probe: if a star's loss floor ~ H_k at its EFFECTIVE k,
+   width ladders should move the floor down the H_k curve — a new
+   quantitative face for WIDTH-BUYS-TOLERANCE and the mass-
+   luminosity foot.
+3. Loss-to-0 equation, now measured: canonicalize the diet (one
+   continuation per context) and H_full -> 0; at THIS diet no
+   optimizer can go below ~0.175.
+
+FENCES: single corpus (sat_s2 warm diet); H_full downward-biased
+(unique prefixes + 8-byte hash merge); floor is train loss, same
+uniform position weighting as the census; nats throughout.
