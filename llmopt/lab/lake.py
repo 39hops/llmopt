@@ -143,7 +143,12 @@ def build_results(
                 }
             )
             for edge_type in EDGE_TYPES:
-                for dst in rec.get(edge_type) or []:
+                dsts = rec.get(edge_type) or []
+                if isinstance(dsts, str):
+                    # legacy index rows carry a bare string target;
+                    # iterating it would explode into characters
+                    dsts = [dsts]
+                for dst in dsts:
                     edges.append({"src_id": rec["id"], "edge_type": edge_type, "dst_id": dst})
     results_schema = pa.schema(
         [

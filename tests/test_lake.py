@@ -126,3 +126,19 @@ def test_gen_lake_cli(tmp_path):
     )
     assert out.returncode == 0, out.stderr
     assert (tmp_path / "lake" / "gates.parquet").exists()
+
+
+def test_string_amends_does_not_explode(tmp_path):
+    """Legacy index rows carry amends as a bare string; must yield
+    ONE edge, not one per character."""
+    import json
+    from llmopt.lab import lake
+    idx = tmp_path / "results-index.jsonl"
+    idx.write_text(json.dumps({
+        "id": "a-child", "date": "2026-01-01", "line": 1,
+        "title": "AMENDMENT X", "type": "amendment", "threads": [],
+        "amends": "the-parent-entry"}) + "\n")
+    lake.build_results(index_path=idx, lake_dir=tmp_path)
+    edges = lake.query("SELECT * FROM result_edges", lake_dir=tmp_path)
+    assert len(edges) == 1
+    assert edges[0]["dst_id"] == "the-parent-entry"
