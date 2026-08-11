@@ -40,3 +40,6 @@ data/pull_l9a/
 data/*.axnn
 scratch/lean_real_corpus/*.jsonl
 .claude/*.local.md
+
+# Parquet lake is regenerable exhaust (scripts/gen_lake.py, 2026-08-11)
+data/lake/
