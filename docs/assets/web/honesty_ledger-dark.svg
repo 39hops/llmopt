@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="388" viewBox="0 0 880 388" role="img">
-<rect width="880" height="388" fill="#1a1a19"/>
+<rect width="880" height="388" fill="#0f0f0e"/>
 <text x="34" y="44" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#ffffff">A fifth of the published record argues against the lab</text>
 <text x="34" y="74" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">Every claim in FINDINGS carries exactly one maturity tag. Nulls and retractions are published beside the wins, at the same</text>
 <text x="34" y="93" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">prominence, because a ledger that only records successes cannot be checked.</text>
@@ -28,6 +28,6 @@
 <text x="54" y="298" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff">Retracted</text>
 <text x="264" y="298" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#ffffff">3<tspan fill="#898781">  2%</tspan></text>
 <text x="364" y="298" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#898781">we were wrong, in writing</text>
-<line x1="34" y1="348" x2="846" y2="348" stroke="#2c2c2a" stroke-width="1"/>
+<line x1="34" y1="348" x2="846" y2="348" stroke="#232321" stroke-width="1"/>
 <text x="34" y="368" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">docs/FINDINGS.md · 188 curated claims · recounted from the source at build time</text>
 </svg>

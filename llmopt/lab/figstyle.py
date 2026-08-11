@@ -75,9 +75,12 @@ CHROME = {
     "light": {"surface": "#fcfcfb", "primary": "#0b0b0b",
               "secondary": "#52514e", "muted": "#898781",
               "grid": "#e1e0d9", "axis": "#c3c2b7"},
-    "dark": {"surface": "#1a1a19", "primary": "#ffffff",
+    # Dark surface is near-black (validated 2026-08-11: all 8 series
+    # pass CVD + contrast against #0f0f0e), grid/axis stepped down to
+    # keep the same relief above the darker ground.
+    "dark": {"surface": "#0f0f0e", "primary": "#ffffff",
              "secondary": "#c3c2b7", "muted": "#898781",
-             "grid": "#2c2c2a", "axis": "#383835"},
+             "grid": "#232321", "axis": "#2e2e2b"},
 }
 
 # Entity -> slot INDEX. Color follows the entity across every figure in

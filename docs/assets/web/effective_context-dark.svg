@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="561" viewBox="0 0 880 561" role="img">
-<rect width="880" height="561" fill="#1a1a19"/>
+<rect width="880" height="561" fill="#0f0f0e"/>
 <text x="34" y="44" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#ffffff">Deep positions reach back more than a hundred tokens</text>
 <text x="34" y="74" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">Loss at positions past 128 when the model may see only the last k tokens. Every width improves by ~1 nat between k=16 and</text>
 <text x="34" y="93" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">k=128, so the corpus really does carry long-range dependency. The gap BETWEEN widths does not order monotonically in k — it</text>
 <text x="34" y="112" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">is negative at k=8 and narrows again at k=128 — so the registered width-buys-depth bar did not fire.</text>
-<line x1="88" y1="443.0" x2="772" y2="443.0" stroke="#2c2c2a" stroke-width="1"/>
+<line x1="88" y1="443.0" x2="772" y2="443.0" stroke="#232321" stroke-width="1"/>
 <text x="76" y="447.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">0</text>
-<line x1="88" y1="343.0" x2="772" y2="343.0" stroke="#2c2c2a" stroke-width="1"/>
+<line x1="88" y1="343.0" x2="772" y2="343.0" stroke="#232321" stroke-width="1"/>
 <text x="76" y="347.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">1</text>
-<line x1="88" y1="243.0" x2="772" y2="243.0" stroke="#2c2c2a" stroke-width="1"/>
+<line x1="88" y1="243.0" x2="772" y2="243.0" stroke="#232321" stroke-width="1"/>
 <text x="76" y="247.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">2</text>
-<line x1="88" y1="143.0" x2="772" y2="143.0" stroke="#2c2c2a" stroke-width="1"/>
+<line x1="88" y1="143.0" x2="772" y2="143.0" stroke="#232321" stroke-width="1"/>
 <text x="76" y="147.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">3</text>
 <text x="88.0" y="469" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">4</text>
 <text x="224.8" y="469" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">8</text>
@@ -52,6 +52,6 @@
 <text x="784" y="418.0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#c98500">d512</text>
 <text x="430" y="495" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#c3c2b7">context the model may see, k (tokens)</text>
 <text transform="translate(16,293) rotate(-90)" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#c3c2b7">loss at positions ≥128 (nats)</text>
-<line x1="34" y1="521" x2="846" y2="521" stroke="#2c2c2a" stroke-width="1"/>
+<line x1="34" y1="521" x2="846" y2="521" stroke="#232321" stroke-width="1"/>
 <text x="34" y="541" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">VERDICT KEFF-PROBE-1 · RESULTS.md#L27332 · bar 1 fires, bar 2 does not · 400 fixed rows · Mac CPU · loss only, no gate</text>
 </svg>
