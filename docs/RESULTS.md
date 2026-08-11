@@ -27278,3 +27278,53 @@ FENCES: probe losses NEVER compare to training floors numerically
 (different position mixture by design — deep tail only); rows are
 length >= 129 (selection named); single diet; CPU eval, device-
 free claim class (loss, not gate); n=400 fixed rows.
+
+## VERDICT SSM-STAR-1: the house's first state-space model PAYS A TOLL — attention wins the floor by 0.13 nats and the gate 38 v 2; the k=16 wall is the DIET's (2026-08-11 evening, 3080)
+
+Ran to completion (logs/ssm_star1.DONE; both birth logs end "saved").
+Paired arms, ONE device (3080), fp32 both, BIRTH_SEED=0, budget 6144,
+3 epochs, d64/L8/ffn256:
+
+  arm        floor (ep2 mean)   gate                       sha
+  attn_d64   0.4381    {3:12,4:1,5:12,6:5,7:8} = 38/120   8e6feddb86e03250
+  ssm_d64    0.5675    {3:1,4:0,5:1,6:0,7:0}   =  2/120   cd57a3eaa0645c20
+
+Epoch walls: attention 105/105/106 s; SSM 2373/2362/2364 s — the
+sequential-scan price, 22.6x, exactly the no-kernel cost the pre-reg
+registered (no kernel claim is made; a chunked associative scan is
+the named cheap fix if this line continues).
+
+BARS v measured:
+1. P-SSM-BURNS (ssm >= 10/120): NO-FIRE. 2/120 — level 3 solves 1 of
+   24 and level 4/6/7 solve nothing. The minimal selective SSM barely
+   ignites at d64 where its attention twin reaches 38.
+2. P-WALL-MOVES (floor(ssm) <= floor(attn) - 0.02): REFUTED in the
+   registered direction — floor(ssm) is 0.129 nats HIGHER, the
+   pre-registered "SSM pays a micro-scale toll" branch. Booked as an
+   honest loss.
+REGISTERED PRIOR HELD: the house predicted within-or-toll and that
+P-WALL-MOVES would not fire. It did not. The k~16 effective-context
+wall measured by FLOOR-HK-1 is therefore NOT an artifact of
+attention's inductive bias — swapping in the opposite bias (a fixed
+recurrent state that must compress history) does not cross it either.
+The wall belongs to the DIET.
+
+SCOPE, stated plainly because this arm is easy to over-read: this is
+a MINIMAL S6-lite (diagonal A, n_state=16, expand=2, per-token B/C,
+sequential scan) at 0.6M params on a math diet, not Mamba. A 2/120
+gate means the arm is close to non-functional, so the floor gap
+CANNOT be attributed to "recurrence extracts less long structure" —
+an undertrained-or-underpowered arm produces the same signature. What
+this rung licenses: at this scale, with this implementation, the SSM
+substitution is a loss on both axes, and it gives no evidence the
+16-gram wall is attention's fault. It licenses nothing about SSMs at
+scale, where NVIDIA ships 23 Mamba layers in a 30B production model
+(RIFF 2026-08-11).
+
+FENCES: single seed per arm, one device, fp32 both, family-only —
+these two numbers NEVER read against the msearch family (bf16, different
+diet flags) or the Mac floorhk ladder (cross-device). Param note
+booked with the arm: the SSM block carries ~80.4k params v attention's
+~65.5k at d64 (1.23x), so parity is NOT claimed — each architecture
+ran at its natural size, disclosed. Gate rows to the lake in this
+commit.

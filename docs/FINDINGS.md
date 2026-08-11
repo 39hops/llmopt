@@ -1136,6 +1136,15 @@ regime tag on every bullet is the fence.
   cratered, while every independent-init merge in the same family had gated
   exactly zero. Merges flatten onto the better pair member at every seed.
   ([VERDICT MERGE-SPACE-5](RESULTS.md#L27158).)
+- [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
+  [REGIME-SCOPED: house crystals] Substituting a minimal selective state-space
+  block for attention at d64 lost on both axes against its paired twin — floor
+  0.5675 versus 0.4381 nats, gate 2 versus 38 of 120, at 22.6 times the wall
+  clock. The registered prior held: the roughly 16-token effective-context wall
+  survives the opposite inductive bias, so it belongs to the diet rather than
+  to attention. The arm is near non-functional at this scale, so it licenses
+  nothing about state-space models generally.
+  ([VERDICT SSM-STAR-1](RESULTS.md#L27282).)
 - [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: closed-system math] At n=1 activation probe,
   a small population of digit-periodic neurons showed partial Fourier
   character; this is an in-vivo sighting, not a general representation law.
