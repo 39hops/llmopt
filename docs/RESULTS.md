@@ -26943,3 +26943,37 @@ FENCES: single seed, single device (3080), family-only; deltas
 <= 2 book unresolved per resolution law; ORDER_SEED knob ships in
 the same commit with the default-stream identity noted (booked
 births unaffected); window 17:00 EST.
+
+## VERDICT MERGE-SPACE-3 (R2b): P-INIT-IS-THE-ADDRESS FIRES — same init, independent data order, merge lands at the TOP of the parent band (2026-08-11 midday, 3080)
+
+Ran to completion (logs/merge_space3/driver.log,
+logs/merge_space3.DONE fired; birth log ends "saved"). The
+deconfound cell for MERGE-SPACE-2:
+
+  s1o (BIRTH_SEED=1, ORDER_SEED=7, 6144, 3ep — same init as s1,
+      independent per-epoch shuffle stream):
+      {3:4,4:0,5:6,6:1,7:0} = 11/120   sha b8d51bd2e1cdf9b7
+  avg_ord (s1 + s1o): {3:5,4:0,5:6,6:1,7:1} = 13/120
+      sha 4e66581bf54adb7e
+
+BAR v measured: avg_ord 13 >= min(s1 12, s1o 11) - 2 = 9 — FIRES
+with room. The merge in fact gates ABOVE both parents (+1/+2 —
+sub-sigma at n=1, direction not claimed; the booked claim is
+in-band, not improvement). With data order now independent, the
+MERGE-SPACE-2 reading SURVIVES its fence: shared initialization
+alone keeps two never-synchronized trainings in the same
+mergeable basin at d64. Chain: R1 independent-init craters
+(6x 0/120) -> R2 same-init same-order in-band (11) -> R2b
+same-init INDEPENDENT-order in-band (13). The basin is chosen at
+initialization. ORDER_SEED itself moved the gate 12 -> 11 (s1 v
+s1o): order is a small lever, init is the address.
+
+Consequences booked: merge.py's shared_lineage gains its
+mechanistic meaning (shared BIRTH init, not shared trajectory);
+a soup-of-N-order-twins is now a legal, cheap capability probe
+at micro scale (candidate rung, not pre-registered here).
+
+FENCES: single seed pair, single device (3080), family-only;
+all deltas sub-sigma at n=1; ORDER_SEED knob's default-stream
+byte-identity verified by design (conditional path, booked with
+the knob commit 2eebf5e). Gate rows to the lake in this commit.

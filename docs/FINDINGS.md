@@ -1106,9 +1106,14 @@ regime tag on every bullet is the fence.
   [REGIME-SCOPED: house crystals] At d64 micro scale, two three-epoch
   trainings that never shared an optimizer step still merged inside the
   parent band when they shared initialization (and epoch-seeded data order —
-  the named fence): the basin is chosen at birth, not by the trajectory. The
-  init-versus-order deconfound is pre-registered, not yet run.
+  the named fence): the basin is chosen at birth, not by the trajectory.
   ([VERDICT MERGE-SPACE-2](RESULTS.md#L26866).)
+- [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
+  [REGIME-SCOPED: house crystals] The deconfound closed the chain: with data
+  order made independent (ORDER_SEED fork), the same-init merge still landed
+  in-band — in fact at the top of it. Shared initialization alone keeps two
+  never-synchronized d64 trainings mergeable; order moved the gate by one
+  solve, init is the address. ([VERDICT MERGE-SPACE-3](RESULTS.md#L26947).)
 - [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: closed-system math] At n=1 activation probe,
   a small population of digit-periodic neurons showed partial Fourier
   character; this is an in-vivo sighting, not a general representation law.
