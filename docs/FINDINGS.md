@@ -1093,6 +1093,14 @@ regime tag on every bullet is the fence.
   did not transport: on n=3 paired CUDA seeds, gravmoe and baseline means tied
   at 50.7 versus 50.7. The retained recipe is merge-free and
   capability-neutral. ([VERDICT CUDA SEED LADDER](RESULTS.md#L13286).)
+- [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
+  [REGIME-SCOPED: house micro-stars, d64] Averaging independently born weights
+  is not a worse model, it is not a model: all six independent-pair averages
+  gated exactly 0/120 with zeros at every level, while the shared-init fork
+  merge landed inside the 12-15 parent band and the task-vector child
+  cratered to 1/120. Four identical-recipe births spanned 12-30/120 — the
+  d64 seed lever dwarfs every diet and schedule lever measured at this
+  scale. ([VERDICT MERGE-SPACE-1](RESULTS.md#L26770).)
 - [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: closed-system math] At n=1 activation probe,
   a small population of digit-periodic neurons showed partial Fourier
   character; this is an in-vivo sighting, not a general representation law.
