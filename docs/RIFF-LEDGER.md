@@ -3689,3 +3689,37 @@ without re-introducing history).
   surface/volume tie); Fable (Chandrasekhar correction, the
   surface=interface / volume=body identification, width-sweep rung
   form).
+
+- **2026-08-10 (Artin, night): THE ESTIMATOR BELONGS TO THE ENGINE
+  — curriculum as closed-loop control (NNUE frame).** The riff:
+  stop trying to bolt a difficulty estimator onto the LLM
+  (magic-estimator judge slots banked; config estimator nulled on
+  a flat space) and give it to the ENGINE — compute the difficulty
+  of the next question/step engine-side and only ADVANCE the
+  curriculum when the next rung is within the crystal's grasp;
+  "an NNUE engine with the quantum-dist tool". Why the house's own
+  results make this sharper than when the estimator ideas were
+  first banked: (1) DATA-CEIL-0A booked that the MODEL cannot
+  supply the signal — margins do not track hardness (rho +0.18).
+  (2) But the ENGINE can: branching factor n_succ is cheaply
+  computable by the successor enumerator, and margin tracks IT
+  (the ambiguity law, replicated). So the difficulty axis the
+  crystal actually feels is engine-computable per state, for free.
+  (3) "Prediction pays where variance lives" (THEORY row 28) is
+  satisfied: gen-level diets span a 3x margin range and orders of
+  magnitude in tie incidence — the variance is there. RUNG SHAPE
+  (named, not fired): CURRICULUM-FUNNEL — the third instance of
+  the funnel-controller pattern (precision: FUNNEL-PREC, fired;
+  LR: banked hook): order/advance the diet by ENGINE-MEASURED
+  ambiguity, with the advance law driven only by in-run sensors
+  (held-out tie-rate / margin floor), step index never consulted.
+  Cheapest honest arm: two d128 births, SAME data set, different
+  ORDER (branching-annealed v shuffled control), standard gate —
+  isolates ordering as the one variable. Night-window class,
+  needs its own pre-reg + GO. NNUE tie: the engine-side value
+  head guiding which states enter the diet is exactly the
+  banked proposer/judge lineage, now with a measured quantity
+  (n_succ) instead of a learned guess. Attribution: Artin
+  (engine-owns-the-estimator + advance-when-graspable + NNUE
+  frame); Fable (0A/0C grounding, funnel-controller unification,
+  ordering-arm design).
