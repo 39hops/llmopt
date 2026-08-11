@@ -1,4 +1,12 @@
-"""House chart helpers (figs/ instrumentation). One style, two forms:
+"""SUPERSEDED 2026-08-11 by llmopt/lab/figstyle.py + llmopt/lab/figures.py.
+
+New figures use the lab package. This file stays for the scripts that
+already import it (plot_neurons, plot_gt1_crest, plot_identity_crest)
+and for reproducing figures made with it. Its palette does NOT pass a
+colorblind check — that is why the house style moved — so do not copy
+its COLORS into anything new.
+
+House chart helpers (figs/ instrumentation). One style, two forms:
 
 - grouped_bars: solve-rate comparisons across bins/levels (the rarity
   curve shape) — counts printed on bars, n= under bins.
