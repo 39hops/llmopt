@@ -187,6 +187,12 @@ def rc(mode: str = "light") -> dict:
         "lines.markersize": 5,
         "lines.solid_capstyle": "round",
         "patch.linewidth": 0,
+        # Math notation set in the text face so $\|w_i\|_2$ sits in
+        # the same voice as the words around it (DejaVu math clashes).
+        "mathtext.fontset": "custom",
+        "mathtext.rm": sans[0],
+        "mathtext.it": sans[0],
+        "mathtext.bf": sans[0] + ":medium",
         "svg.fonttype": "path",  # SVG renders identically without the font
     }
 

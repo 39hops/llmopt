@@ -1008,13 +1008,8 @@ Depth anatomy: WHERE in the stack does the rewrite decision form?
 - `main(ckpt: str, d: int, layers: int, ffn: int, heads: int, n: int) -> None`
 
 ### scripts/render_hero_neurons.py
-Render the README hero: the weight-space anatomy of one crystal.
+CLI for the README hero: llmopt.lab.anatomy dot views.
 
-- `sha8(path: str) -> str`
-- `repo_head() -> str`
-- `neuron_matrix(ckpt: str, key_sub: str)` — All matrices of the family, rows stacked: every gate neuron in
-- `project(W, method: str)`
-- `render(ckpt: str, key: str, out_stem: str, title: str, mode: str) -> str`
 - `main() -> None`
 
 ### scripts/results_query.py
@@ -3051,6 +3046,17 @@ Validation and decoding for committed gravmoe training windows.
 ### llmopt/lab/__init__.py
 llmopt.lab — permanent instruments, adopted from the scripts that proved them (spec 2026-08-05-llmopt-lab-extraction.md; CODEMAP is the move gate). Adoption law: function bodies are VERBATIM copies of their source scripts, guarded by source-identity + behavior tests (tests/test_lab_adoption.py); the originating scripts stay frozen — they are the record booked verdicts cite. New code imports from here; existing scripts migrate only with a re-verified pass.
 
+
+### llmopt/lab/anatomy.py
+Weight-space anatomy: neurons as dots, reusable for ANY matrix.
+
+- `_sha8(path: str) -> str`
+- `_repo_head() -> str`
+- `neuron_rows(ckpt: str, key_sub: str='gate.weight')` — All matrices of one family from a checkpoint, rows stacked:
+- `project(W, method: str)` — (xs, ys, mag) for one of pca | sphere | polar.
+- `rank_scale(mag)` — Magnitudes -> uniform [0,1] ranks. Row norms cluster tightly,
+- `render_dot_views(W, out_stem: str, title: str, source_label: str, provenance: str, modes=('dark', 'light'), dpi: int=300) -> list[str]` — The dot-view triptych for ANY neuron matrix.
+- `checkpoint_provenance(ckpt: str) -> str` — Footer text for a checkpoint source: basename + sha256[:8].
 
 ### llmopt/lab/catalog.py
 catalog.py — model-checkpoint catalog rows (logs-doctrine EXHAUST).

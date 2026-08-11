@@ -26,6 +26,15 @@ Written for the package
                   sidecars, never overwrites an existing file
   lake            Parquet runs/results/models/gates; needs the [lake]
                   extra (pyarrow, duckdb)
+
+Figure system (submodules — import explicitly, they pull matplotlib
+or torch: `from llmopt.lab import anatomy, figstyle, figsvg, figures`)
+  figstyle        validated palette, vendored fonts, light/dark
+                  CHROME, house rcParams incl. text-face mathtext
+  figsvg          PUBLISHED figures from docs/figures.json (SVG)
+  figures         matplotlib ANALYSIS figures
+  anatomy         weight-space dot views (pca/sphere/polar) for any
+                  neuron matrix; the README hero renders through it
 """
 from llmopt.lab.catalog import scan_checkpoint
 from llmopt.lab.config import ConfigError, LabConfig
