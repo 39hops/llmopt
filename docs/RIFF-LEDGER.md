@@ -3886,3 +3886,31 @@ without re-introducing history).
   (V4-Flash MoE scoping bank); A3B sparse activation sits in the
   expert-size-law regime (B0-B2 atlas). Reference bank only — no
   run implied. Attribution: Artin (spot).
+
+- **BANK (2026-08-11, addendum to the Nemotron reference point):
+  Nemotron-3.5-Lightning config census v house MoE results** —
+  config.json read in full (no weights run; Mac owned by
+  growdecomp, no MLX quant exists yet, transformers 5.8 v the
+  Mac pin <5). It is the MOE-GT NAMED FOLLOW-UP CLASS
+  (shared-expert + V3-style router — what DeepSeek-V2-Lite was
+  queued for and never ran) at exactly the Qwen3-30B-A3B skeleton:
+  128 experts/layer, but top-6 not top-8 (4.7% v 6.25% active),
+  +1 always-on shared expert at 2x width (overlap true), groups=8
+  topk_group=1 (concentration BY FIAT where house measured it
+  emerge demand-ranked), 23 MoE + 23 Mamba + only 6 attention of
+  52 layers, 1M context. FOUR house-result echoes, methods-level:
+  (1) shared expert = the verbal-fallback/generalist channel
+  (MOE-GT 0.755 Spearman) made architectural; (2) NVFP4 allocated
+  BY COMPONENT — routed-expert mass FP4 g16, mamba mixer FP8,
+  control machinery above = FUNNEL-PREC's cheap-interior/
+  precise-decision-points shape at production; (3)
+  num_nextn_predict_layers=1 MTP head = internalized proposer
+  (accept path is logit-side, no oracle — house fence stands);
+  (4) thin-experts regime (1856/2688 = 0.69x hidden) inside the
+  B0-B2 expert-size-law band. Star-frame echo: dense resident
+  core (shared expert + Mamba backbone) + thin routed corona —
+  mass cheap and fixed, control precise. RUNNABLE RUNG WHEN IT
+  OPENS: MOE-GT routing census on it — gated on the mask_router
+  shared-expert/group-routing extension (the flagged V2-Lite
+  mismatch, still unfixed). Attribution: Artin (spot + "do we see
+  our predictions" framing), house (config census + mapping).
