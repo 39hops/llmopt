@@ -41,9 +41,16 @@ SAFE = [
 
 
 def _pattern(rule_name: str) -> re.Pattern:
-    """Read the live pattern out of the rule file's frontmatter."""
+    """Read the live pattern out of the rule file's frontmatter.
+
+    Hookify rules are `.local.md` and gitignored by convention, so they
+    exist on a working machine and not on a clean checkout. Skip rather
+    than fail when absent: these tests protect the rules wherever the
+    hooks actually run, which is the only place they can fire.
+    """
     path = RULES / f"hookify.{rule_name}.local.md"
-    assert path.exists(), f"missing rule file: {path}"
+    if not path.exists():
+        pytest.skip(f"{path.name} not present (gitignored local rule)")
     text = path.read_text()
     m = re.search(r"^pattern:\s*(.+)$", text, re.M)
     assert m, f"no pattern in {path}"
