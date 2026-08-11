@@ -254,6 +254,43 @@ def append_gate(row: dict, lake_dir: Path = DEFAULT_LAKE_DIR) -> Path:
     return out
 
 
+WEIGHTS_SCHEMA = pa.schema(
+    [
+        pa.field("model", pa.string(), nullable=False),
+        pa.field("source", pa.string(), nullable=False),
+        pa.field("proj", pa.string()),
+        pa.field("n_rows", pa.int64()),
+        pa.field("n_cols", pa.int64()),
+        pa.field("meter_m_bits", pa.float64()),
+        pa.field("kurtosis", pa.float64()),
+        pa.field("row_norm_mean", pa.float64()),
+        pa.field("row_norm_std", pa.float64()),
+        pa.field("row_norm_max", pa.float64()),
+        pa.field("source_grade", pa.string()),
+    ]
+)
+
+
+def append_weights(rows: list[dict],
+                   lake_dir: Path = DEFAULT_LAKE_DIR) -> Path:
+    """Append shards.weigh() rows to weights.parquet. REFUSES rows
+    missing model or source — a weight metric with no provenance can
+    never be aggregated safely (same law as gates: fail at write)."""
+    for row in rows:
+        for key in ("model", "source"):
+            if not row.get(key):
+                raise ValueError(
+                    f"weights row missing required column {key!r}")
+    clean = [{**{f.name: None for f in WEIGHTS_SCHEMA}, **r,
+              "source_grade": r.get("source_grade", "exploration")}
+             for r in rows]
+    out = Path(lake_dir) / "weights.parquet"
+    tbl = pa.Table.from_pylist(clean, schema=WEIGHTS_SCHEMA)
+    if out.exists():
+        tbl = pa.concat_tables([pq.read_table(out), tbl])
+    return _write(tbl, Path(lake_dir), "weights")
+
+
 def query(sql: str, lake_dir: Path = DEFAULT_LAKE_DIR):
     """Run duckdb SQL over the lake. Every *.parquet under lake_dir is exposed
     as a view named by its stem (runs, results, result_edges, models, gates).

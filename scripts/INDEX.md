@@ -2821,6 +2821,11 @@ UMOE-1 (pre-reg 2026-07-30): micro-MoE conservation 3-arm. First house MoE birth
 - `probes(model, enc, dev)` — corr / MI / meter on the trained model.
 - `main()`
 
+### scratch/v4flash_anatomy.py
+V4-Flash offline anatomy: streamed experts -> instruments -> lake.
+
+- `main() -> None`
+
 ### scratch/v4flash_census.py
 CENSUS (unregistered, free): what is actually IN DeepSeek-V4-Flash's 48 shards? Headers only -- ~8 MB of range reads, no weights.
 
@@ -3155,6 +3160,7 @@ Parquet lake over the lab's jsonl/file exhaust — QUERY layer, not a write form
 - `build_models(catalog_path: Path=Path('data/catalog/models.jsonl'), lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — data/catalog/models.jsonl -> models.parquet; absent file => EMPTY table
 - `build_gates(lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — Materialize an empty gates.parquet with the pinned schema (idempotent;
 - `append_gate(row: dict, lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — Append one gate row. REFUSES (ValueError) rows missing/null in any of
+- `append_weights(rows: list[dict], lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — Append shards.weigh() rows to weights.parquet. REFUSES rows
 - `query(sql: str, lake_dir: Path=DEFAULT_LAKE_DIR)` — Run duckdb SQL over the lake. Every *.parquet under lake_dir is exposed
 
 ### llmopt/lab/merge.py
@@ -3200,6 +3206,17 @@ Per-step receipt writer — streaming jsonl rows for long runs.
 - `_device() -> str` — Best-effort device string, torch-optional (tests must skip
 - `class FallbackCounters` (bump)
 - `class RunLog` (step, abort, close)
+
+### llmopt/lab/shards.py
+Streamed big-model weights -> instruments -> lake, as one call each.
+
+- `dequant(packed, scale)` — MXFP4-pack -> (codes2x int64 [out,in], exps int64 [out,groups],
+- `v4flash_manifest(cache: str=V4FLASH_CACHE) -> dict` — The cached safetensors index: tensor name ->
+- `_cached_bin(cache: str, name: str) -> np.ndarray`
+- `list_v4flash_experts(cache: str=V4FLASH_CACHE, proj: str='w1') -> list[tuple[int, int]]` — (layer, expert) pairs whose packed weight AND scale for `proj`
+- `v4flash_expert(layer: int, expert: int, proj: str='w1', cache: str=V4FLASH_CACHE)` — One routed expert's projection, exactly dequantized to a
+- `iter_v4flash_experts(sample: int | None=None, seed: int=0, proj: str='w1', cache: str=V4FLASH_CACHE)` — Yield ("L<l>E<e>", W fp32) one expert at a time — stream,
+- `weigh(W, source: str, model: str='', proj: str='') -> dict` — Run the desk instruments on one weight matrix. Returns a flat
 
 ### llmopt/lab/traj.py
 lab/traj — unified MoE router instrument (module 4; DESK TIER ONLY).
