@@ -3853,3 +3853,36 @@ without re-introducing history).
   the d512 arch error via three independent routes — CI is the
   fix, not fewer minds). Attribution: Opus 5 chat (survey), Artin
   (relay + subagent pushback), house (verification + triage).
+
+- **BANK (2026-08-11): proposer/verifier control pattern x house
+  stack (Artin x grok-prompt riff)** — Artin's observation: Qwen
+  CoT control pattern (tokenize -> expand breadth -> iterate) is
+  speculative decoding's shape, and the interesting case is the
+  small model STOPPING or forcing a rethink. House mapping,
+  methods-level: (1) the gate loop IS small-proposer/large-verifier
+  (wave-of-8 at T=0.7 proposes, sympy verify_wave accepts, visited
+  set forces rethink, no-candidate = STOP — shipped instrument,
+  not analogy); (2) spec-decoding=gate-law + entropy-adaptive
+  draft length already banked; (3) fp16 margin<=0.02 tie doctrine
+  = the measured "don't trust the draft here" signal; (4)
+  ATTRACTOR-0/FUNNEL-PREC absorption = cheap-model-inside-the-
+  funnel, big-model-at-branch-points. NEW weight-space leg opened
+  by MERGE-SPACE-3/5 (init-is-the-address, REPLICATED):
+  LINEAGE-DRAFTING candidate rung — d64 proposes, d512 verifies,
+  acceptance rate v shared-lineage (grown-from v independent
+  init); micro-star family prices it at an afternoon. Fences
+  banked with it: oracle stays in the accept path (no
+  logit-agreement acceptance — identity-rewrite hazard),
+  cross-device draft/verify never compares, draft models earn
+  slots by measured wall/acceptance only. Attribution: Artin
+  (pattern + question), grok (prompt sharpening), house (mapping
+  to booked results).
+
+- **BANK (2026-08-11): Nemotron-3.5-Lightning reference point** —
+  nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4 (HF, updated
+  2026-08-11): nemotron_h hybrid Mamba-Transformer, 30B total /
+  ~3B active (A3B), NVFP4 4-bit weights. House hooks: fp4 experts
+  at production scale v C-series measured 6.65 bits/weight
+  (V4-Flash MoE scoping bank); A3B sparse activation sits in the
+  expert-size-law regime (B0-B2 atlas). Reference bank only — no
+  run implied. Attribution: Artin (spot).
