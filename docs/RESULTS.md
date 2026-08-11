@@ -26862,3 +26862,59 @@ only inside the msearch family; ep1 cell is R1's booking reused
 (same weights, same gate — no regate); fork budgets are the R1
 lever verbatim; parents share epoch-seeded batch order (R1 fence
 c travels); window closes 17:00 EST — late cells book NOT-RUN.
+
+## VERDICT MERGE-SPACE-2 (R2): P-INIT-INSUFFICIENT REFUTED — shared init alone keeps the merge alive; the basin is chosen at initialization (2026-08-11 midday, 3080)
+
+Ran to completion (logs/merge_space2/driver.log,
+logs/merge_space2.DONE fired; all 4 birth logs end "saved").
+Receipts (d64/L8/ffn256/h4, msearch family):
+
+  s1w (BIRTH_SEED=1, budget 8192, 3ep, fresh):
+      {3:4,4:0,5:5,6:1,7:0} = 10/120   sha a44aa363cfb7d438
+  base_e2 (fork base +1ep = 2ep):
+      {3:3,4:0,5:4,6:0,7:0} = 7/120    sha 4d53dd47b1d1c0c5
+  2a (base_e2 +1ep, 6144): {3:6,4:0,5:5,6:2,7:0} = 13/120
+      sha 00cb5021cab5a804
+  2b (base_e2 +1ep, 8192): {3:5,4:0,5:5,6:1,7:0} = 11/120
+      sha 012281060d9229a1
+  avg_e0 (s1 + s1w):  {3:4,4:0,5:6,6:1,7:0} = 11/120
+      sha 56eb23447ec4f028
+  avg_e2 (2a + 2b):   {3:5,4:0,5:5,6:1,7:0} = 11/120
+      sha 7ecc5661ff2cfa78
+
+BARS v measured:
+1. P-INIT-INSUFFICIENT: REFUTED — the registered "big, cheap
+   surprise" fired. avg_e0 gates 11/120, INSIDE the parent band
+   (s1w 10 <= 11 <= 12 s1), nowhere near the crater bar
+   (min-7 = 3). Two 3-epoch trainings that never shared a step
+   land in the SAME mergeable basin when they share
+   initialization. Read against R1's six independent-init craters
+   (all 0/120): at d64 the basin is chosen at INITIALIZATION, not
+   by the trajectory. The star frame sharpens: a star is born not
+   just with its size but with its ADDRESS.
+2. P-MONOTONE-MERGEABILITY: UNRESOLVED — merge-minus-min-parent
+   deltas are +1 (e0), +2 (e1, R1's cell), 0 (e2), all <= 2 and
+   sub-sigma at n=1 per the resolution law. No ordering readable;
+   the honest statement is that ALL THREE shared-init cells sit
+   flat inside their parent bands.
+
+THE FENCE THAT GOVERNS THE READING (registered R1 fence c, named
+in the pre-reg): BIRTH_SEED seeds init only — s1 and s1w saw the
+SAME data in the SAME epoch-seeded batch order, differing only in
+token-budget packing (6144 v 8192). "Zero shared trajectory" means
+zero shared optimizer steps, NOT independent data order. The
+refutation therefore reads: shared init + shared data order
+suffices for mergeability. Separating init from order needs a
+cell with a shuffled-order twin (candidate R-rung: same init,
+different DATA_ORDER seed — booked as the natural follow-up, not
+run in this window).
+
+Also: base_e2 gates 7 at 2 epochs v ~12-15 for its 3-epoch
+children — the third epoch is worth roughly a doubling at d64
+(consistent with MICRO-STAR-1's budget sensitivity).
+
+FENCES: single seed per cell, single device (3080), family-only
+comparisons; all deltas here are sub-sigma at n=1 — direction
+claims are explicitly NOT made; window fence respected (all cells
+ran). Gate rows appended to the lake gates table (device=3080,
+n_seeds=1) in the booking commit.
