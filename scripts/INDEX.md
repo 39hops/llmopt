@@ -669,6 +669,19 @@ ZX rung 7: push the phase-teleport win — markov prior on the new move set, the
 - `harvest(n: int, qubits: int, tofs: int, budget: int) -> None`
 - `race(n: int, qubits: int, tofs: int, budget: int) -> None`
 
+### scripts/book.py
+Programmatic booking — the /book ritual as a refusing machine.
+
+- `class Refusal`
+- `validate_marker(marker_path: Path) -> dict` — Fence 1: only clean, finished runs book. Absence is 'never
+- `validate_gate_checksum(entry: str, marker: dict) -> None` — Fence 2: gate numbers book as DICTS, not totals — the dict
+- `validate_weights_sha(entry: str, marker: dict) -> None` — Fence 3: a gate books WITH its weights sha (provenance rule
+- `validate_statistical_fence(entry: str, marker: dict, entry_type: str, fence_acknowledged: bool) -> None` — Fence 4 (resolution law 2026-07-31): gate deltas < 1.5 sigma
+- `append_entry(heading: str, entry: str) -> None` — Append-only, house heading format (SKILL.md step 1).
+- `regen_index() -> None` — CALL the frozen results-cited script — never reimplement.
+- `curate_index_row(heading: str, threads: list[str], links: list[str]) -> dict` — SKILL.md step 3: set threads/links on the new row, pop
+- `main(argv: list[str] | None=None) -> int`
+
 ### scripts/build_gen7_diet.py
 Gen-7 mass-targeted diet (Rung A of the epoch killer).
 
@@ -778,6 +791,15 @@ House chart helpers (figs/ instrumentation). One style, two forms:
 - `grouped_bars(name: str, bins: list[str], series: dict[str, list[tuple[int, int]]], title: str='', png: bool=False) -> Path` — series: label -> [(solved, total) per bin]. Percent bars,
 - `lines(name: str, xs: list, series: dict[str, list[float]], title: str='', xlabel: str='', ylabel: str='', png: bool=False) -> Path` — series: label -> y values over shared xs. Direct end-labels,
 
+### scripts/gen_catalog.py
+gen_catalog.py — regenerate data/catalog/models.jsonl (EXHAUST, not evidence).
+
+- `cited_names(repo_root)`
+- `walk_targets(ckpt_root)`
+- `load_jsonl(path)`
+- `cross_check_manifest(repo_root, rows_by_path)` — Raise on sha disagreement with the frozen manifest (confirmed/).
+- `main(argv=None)`
+
 ### scripts/gen_codemap.py
 Generate docs/CODEMAP.md: the move-gate inventory of scratch/ and scripts/ (adopted from the Grok structure review, 2026-08-06). One row per file: doc citations (RESULTS/REPRODUCE/BOARD/FINDINGS/handoffs/ specs), in-code references (imports + literal path strings), a mechanically derived class, and the filename family. The class ladder is observable-facts-only, no curation:
 
@@ -819,6 +841,11 @@ Generate scripts/INDEX.md: one entry per python file in scripts/, scratch/, and 
 - `sig(fn: ast.FunctionDef) -> str`
 - `entry(path: Path) -> str | None`
 - `main() -> None`
+
+### scripts/gen_lake.py
+Regenerate the Parquet lake (data/lake/) from the lab's jsonl/file exhaust.
+
+- `main() -> int`
 
 ### scripts/gen_magic_labels.py
 Magic-estimator labels: (root features, ground-truth hardness).
@@ -893,6 +920,18 @@ Expert-iteration round 2, harvest phase (spec: 2026-07-07-expert-iteration-r2-de
 - `_run(root, wall, **kw)`
 - `path_rows(root, history)`
 - `main(per_cell: int) -> None`
+
+### scripts/log_hygiene.py
+Print-only log hygiene planner (reviewer design, handoff 2026-08-11-0).
+
+- `build_citation_set(results_path: Path) -> set[str]` — One pass over RESULTS.md: every `logs/...` token becomes a citation.
+- `is_cited(rel: str, cites: set[str]) -> bool` — True if rel or any parent dir of rel appears in the citation set.
+- `is_receipt(name: str) -> bool`
+- `classify_one(rel: str, mtime: float, cites: set[str], age_days: float, now: float | None=None) -> tuple[str, str]` — Return (class, reason) for one logs/-relative path.
+- `scan(root: Path, cites: set[str], age_days: float) -> list[dict]`
+- `consolidation_map(root: Path) -> list[dict]` — Grep scripts/ + scratch/ (top level, minus scratch/leancheck) for
+- `print_plan(rows: list[dict], cmap: list[dict], out=sys.stdout) -> None`
+- `main(argv=None) -> int`
 
 ### scripts/markov_eval.py
 Absorbing-Markov eval (Artin's Markov thread, part 2): bucket states by coarse structure, estimate P(solve | bucket) from fast probes, use -P(solve) as eval_fn. A probability-theoretic eval raced against HCE's hand-tuned weights — both model-free.
@@ -2981,6 +3020,14 @@ Validation and decoding for committed gravmoe training windows.
 llmopt.lab — permanent instruments, adopted from the scripts that proved them (spec 2026-08-05-llmopt-lab-extraction.md; CODEMAP is the move gate). Adoption law: function bodies are VERBATIM copies of their source scripts, guarded by source-identity + behavior tests (tests/test_lab_adoption.py); the originating scripts stay frozen — they are the record booked verdicts cite. New code imports from here; existing scripts migrate only with a re-verified pass.
 
 
+### llmopt/lab/catalog.py
+catalog.py — model-checkpoint catalog rows (logs-doctrine EXHAUST).
+
+- `sha256_file(path: str, chunk: int=CHUNK) -> str`
+- `read_arch(path: str)` — House-format arch from state-dict shapes; None otherwise.
+- `parent_ids(name: str, siblings) -> list` — Filename-lineage parents (basenames) present in `siblings`.
+- `scan_checkpoint(path: str, repo_root: str, cited_names, siblings=None, want_sha: bool=True, want_arch: bool=True) -> dict`
+
 ### llmopt/lab/config.py
 lab.config — typed env-var config for arm drivers (spec 2026-08-05-llmopt-lab-extraction module 2). Kills the typo-takes-default class: 237 bare os.environ.get sites across 65+ scratch files meant a misspelled knob silently ran the WRONG EXPERIMENT with a clean exit. Here the contract is loud both ways:
 
@@ -3003,6 +3050,32 @@ lab.keepsets — keep-set / coalition algebra, ADOPTED VERBATIM from scratch/gt2
 - `jmean(ka, kb)`
 - `coverage(demand, kp)` — Count-weighted fraction of `demand` routed inside keep-set kp.
 
+### llmopt/lab/lake.py
+Parquet lake over the lab's jsonl/file exhaust — QUERY layer, not a write format.
+
+- `_write(table: pa.Table, lake_dir: Path, name: str) -> Path`
+- `build_runs(jobs_dir: Path=Path('jobs'), lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — jobs/<id>.{cmd,rc,pid} + <id>.log mtime -> runs.parquet.
+- `build_results(index_path: Path=Path('docs/results-index.jsonl'), lake_dir: Path=DEFAULT_LAKE_DIR) -> tuple[Path, Path]` — docs/results-index.jsonl -> results.parquet + result_edges.parquet.
+- `build_models(catalog_path: Path=Path('data/catalog/models.jsonl'), lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — data/catalog/models.jsonl -> models.parquet; absent file => EMPTY table
+- `build_gates(lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — Materialize an empty gates.parquet with the pinned schema (idempotent;
+- `append_gate(row: dict, lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — Append one gate row. REFUSES (ValueError) rows missing/null in any of
+- `query(sql: str, lake_dir: Path=DEFAULT_LAKE_DIR)` — Run duckdb SQL over the lake. Every *.parquet under lake_dir is exposed
+
+### llmopt/lab/merge.py
+Merge API over house .pt state dicts — average / task_vector / shell_graft.
+
+- `_sha256(path: str) -> str`
+- `_git_sha() -> str`
+- `_load(path: str)`
+- `_check_out(out: str, *inputs: str) -> None`
+- `_check_match(a: dict, b: dict, la: str, lb: str) -> None`
+- `_row(op: str, out: str, inputs: list[str], alpha, arch=None, label=None) -> dict`
+- `is_ternary_lattice(sd: dict, min_numel: int=16) -> bool` — True if any 2D weight looks absmean-lattice / ternary-quantized:
+- `average(a: str, b: str, out: str, alpha: float=0.5, *, shared_lineage: bool=False, arch: dict | None=None, label: str | None=None) -> dict` — out = (1-alpha)*a + alpha*b. REFUSES unless the caller asserts
+- `task_vector(base: str, a: str, b: str, out: str, alpha: float=1.0, *, arch: dict | None=None, label: str | None=None) -> dict` — out = base + alpha*((a-base) + (b-base)). PROBE-GRADE: no booked
+- `shell_graft(small: str, large_arch: dict, out: str, *, seed: int=6, arch: dict | None=None, label: str | None=None) -> dict` — Grow `small` into large_arch's FFN shells function-preservingly.
+- `gate_cmd(row: dict, device: str) -> str` — Return (never run) the shell command for the standing 120-problem
+
 ### llmopt/lab/oracle.py
 lab.oracle — the boxed oracle, v3.2 lineage (spec 2026-08-05-llmopt-lab-extraction module 1). Parent side of the subprocess line-server in lab/oracle_worker.py; behavior ported line-for-line from scratch/moe_gt1_arm2.check_isolated (which stays frozen — booked verdicts cite it).
 
@@ -3024,6 +3097,13 @@ Run-artifact contract — the Spark-_SUCCESS pattern for the lab.
 - `is_done(dir_or_path: str | Path) -> bool` — True iff a marker exists AND parses. Absence is 'never ran
 - `rc_of(dir_or_path: str | Path) -> int | None` — The marker's rc as an int, or None for absent/non-integer
 - `require_resume_marker(ckpt: str | Path) -> int` — REFUSE to proceed when a checkpoint exists without its .ep
+
+### llmopt/lab/runlog.py
+Per-step receipt writer — streaming jsonl rows for long runs.
+
+- `_device() -> str` — Best-effort device string, torch-optional (tests must skip
+- `class FallbackCounters` (bump)
+- `class RunLog` (step, abort, close)
 
 ### llmopt/lab/traj.py
 lab/traj — unified MoE router instrument (module 4; DESK TIER ONLY).

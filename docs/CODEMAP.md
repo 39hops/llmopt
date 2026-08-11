@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 156, library 157, reproduce-pinned 9, results-cited 123, spec-cited 44
+Census: UNCITED 156, library 162, reproduce-pinned 9, results-cited 122, spec-cited 44
 
 ## scratch/
 
@@ -107,9 +107,9 @@ Census: UNCITED 156, library 157, reproduce-pinned 9, results-cited 123, spec-ci
 | g19 | g19_probes_fix.sh | UNCITED | — | — |
 | g19 | g19_sigma_cuda.sh | UNCITED | — | — |
 | g5 | g5_polar.py | UNCITED | — | — |
-| gate | gate_batched.py | library | — | 2 |
-| gate | gate_ckpt.py | library | RESULTS×2, specs×6 | 26 |
-| gate | gate_ckpt_cuda.py | library | — | 10 |
+| gate | gate_batched.py | library | — | 3 |
+| gate | gate_ckpt.py | library | RESULTS×2, specs×6 | 28 |
+| gate | gate_ckpt_cuda.py | library | — | 12 |
 | gate | gate_cplx.py | library | specs×1 | 1 |
 | gate | gate_pp.py | library | — | 1 |
 | gate | gate_prefix.py | library | RESULTS×1 | 1 |
@@ -441,9 +441,10 @@ Census: UNCITED 156, library 157, reproduce-pinned 9, results-cited 123, spec-ci
 | bench | bench_zx_r5.py | library | RESULTS×1 | 3 |
 | bench | bench_zx_r6.py | results-cited | RESULTS×1 | — |
 | bench | bench_zx_r7.py | results-cited | RESULTS×1 | — |
+| book | book.py | library | — | 1 |
 | build | build_gen7_diet.py | UNCITED | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs×8 | — |
-| ckpt | ckpt_manifest.py | library | RESULTS×2, specs×1 | 1 |
+| ckpt | ckpt_manifest.py | library | RESULTS×2, specs×1 | 2 |
 | consolidate | consolidate_mathnative.py | results-cited | RESULTS×1 | — |
 | control | control_round.py | UNCITED | — | — |
 | convert | convert_diet_prefix.py | spec-cited | specs×1 | — |
@@ -456,21 +457,24 @@ Census: UNCITED 156, library 157, reproduce-pinned 9, results-cited 123, spec-ci
 | farm | farm_l4_calc.py | UNCITED | — | — |
 | farm | farm_v22.py | library | — | 1 |
 | figlib | figlib.py | UNCITED | — | — |
+| gen | gen_catalog.py | library | — | 1 |
 | gen | gen_codemap.py | library | RESULTS×1, specs×1 | 1 |
 | gen | gen_dispatch_labels.py | library | — | 2 |
 | gen | gen_dispatch_labels_v2.py | UNCITED | — | — |
 | gen | gen_frontier.py | UNCITED | — | — |
 | gen | gen_index.py | spec-cited | specs×2 | — |
+| gen | gen_lake.py | library | — | 1 |
 | gen | gen_magic_labels.py | results-cited | RESULTS×1 | — |
 | gen | gen_policy_labels.py | UNCITED | — | — |
 | gen | gen_proposer_data.py | spec-cited | specs×7 | — |
 | gen | gen_regret_labels.py | UNCITED | — | — |
-| gen | gen_results_index.py | results-cited | RESULTS×1, specs×3 | — |
+| gen | gen_results_index.py | library | RESULTS×1, specs×3 | 3 |
 | gen | gen_scoreboard.py | UNCITED | — | — |
 | gen | gen_syndrome_labels.py | library | RESULTS×1 | 1 |
-| grow | grow_mathnative.py | library | specs×1 | 1 |
+| grow | grow_mathnative.py | library | specs×1 | 2 |
 | harvest | harvest_champion.py | UNCITED | — | — |
 | harvest | harvest_frontier.py | spec-cited | specs×1 | — |
+| log | log_hygiene.py | library | specs×1 | 1 |
 | markov | markov_eval.py | UNCITED | — | — |
 | markov | markov_prior.py | UNCITED | — | — |
 | mine | mine_highways.py | library | — | 1 |
