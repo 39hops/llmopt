@@ -1,6 +1,6 @@
 ---
 name: probe
-description: Before queueing a long training run, check whether the same question can be answered by a probe on checkpoints that already exist. Measurement-cost triage plus the house probe catalogue.
+description: Use when the user proposes any multi-hour run — "train a model", "queue a run", "start a birth", "how long will that take" — to check first whether a probe on existing checkpoints answers the same question. Also for "write a probe", "effective context", "k_eff", "loss floor", "can we test this faster".
 ---
 
 # Probe first (measurement-cost triage)

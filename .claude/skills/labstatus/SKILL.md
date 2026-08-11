@@ -1,6 +1,6 @@
 ---
 name: labstatus
-description: One-shot status check of all live experiment logs on both machines (Mac local + 3080 via wsl.sh). Use when the user asks "how is everything going" or before booking/queueing decisions.
+description: Use when the user asks how the runs are going — "how is everything going", "what's running", "any runs finish", "check the 3080", "status" — or before booking and queueing decisions. One-shot sweep of every live log on both machines (Mac rjob + 3080 via wsl.sh) with the finished-but-unbooked ones first.
 ---
 
 # Lab status sweep

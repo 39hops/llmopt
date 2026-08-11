@@ -2,6 +2,7 @@
 name: reviewer
 description: Read-only reviewer for the llmopt lab — broad RESULTS sweeps, revival scans, red-teaming a standing claim, and cross-doc consistency. For checking ONE draft verdict against ONE pre-registration before booking, use prereg-auditor instead. Spawn only when Artin asks or approves; max 5 concurrent; findings are proposals the session model verifies line-by-line before adoption.
 tools: Read, Grep, Glob, Bash
+color: cyan
 model: claude-opus-5[1m]
 reasoningEffort: high
 ---

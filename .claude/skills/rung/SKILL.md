@@ -40,11 +40,18 @@ receipts exist is not a pre-registration.
 
 ## 3. Scaffold the driver in scratch/
 
-Name it after the rung. Requirements learned the hard way:
+FIRST: `grep scripts/INDEX.md` and `docs/CODEMAP.md` for an existing
+driver or instrument. Do not rewrite what exists, and do not fork a
+frozen family — extend the `llmopt/lab/` module instead. CODEMAP
+gives each file's class (frozen evidence / adopted / disposable).
 
-- `set -e`, and if you use `tee`, remember it masks failures — either
-  `set -o pipefail` or state in the pre-reg that every arm log must
-  be checked for its success line before the floors are trusted.
+Then name it after the rung. Requirements learned the hard way:
+
+- `set -eo pipefail`, always. `tee` reports ITS OWN exit code, so
+  without pipefail a training process that dies mid-epoch leaves the
+  driver running happily into its gate step against a checkpoint that
+  was never written — and the job records success. That happened on
+  2026-08-11 and rjob logged rc=0 for a completely failed run.
 - **Stream partial results**: gate and print each arm as it lands, so
   a wall-kill still leaves bookable cells. A driver that only reports
   at the end loses everything it did.

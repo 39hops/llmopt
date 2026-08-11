@@ -1,6 +1,6 @@
 ---
 name: counterbook
-description: Counter-book an axiom result the house way - pull, recompute their numbers from their artifacts/commits (never accept tables), book in RESULTS, update BOARD row, write reply relay, rc-gated commit. Use whenever axiom ships a result, receipt, or census.
+description: Use when the axiom lab (the sibling C++/exact-arithmetic repo Artin relays with) ships a result, receipt, census, or relay — or the user says "counter-book", "verify axiom's numbers", "axiom pushed something", "their relay landed". Recomputes their numbers from their artifacts (never accepts their tables), books house-side, and writes the reply relay.
 ---
 
 # Counter-booking an axiom result

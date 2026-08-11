@@ -8,21 +8,33 @@ description: Book a verdict/pre-reg/amendment into RESULTS.md the house way - ap
 Given the entry text (from the conversation) and its thread/link
 metadata, perform ALL of these steps in order:
 
-1. **Append** the entry to `docs/RESULTS.md`. Append-only — never
-   edit past entries; corrections are new `AMENDMENT` entries naming
-   their target. Heading format:
+1. **Append** the entry to `docs/RESULTS.md` — it is 27k lines, so
+   append with a `cat >> ... << 'EOF'` heredoc, never Read-then-Write.
+   Append-only: corrections are new `AMENDMENT` entries naming their
+   target. Heading:
    `## VERDICT|PRE-REG|AMENDMENT <NAME>: <one-line claim> (<date>, <machine>)`
-2. **Regenerate the index**: `.venv/bin/python scripts/gen_results_index.py`
-   (a PostToolUse hook may have already run it — running twice is
-   harmless; it preserves curation).
-3. **Link**: for any `needs_link` rows in `docs/results-index.jsonl`,
-   set `threads` (kebab-case program names) and `links` (related
-   entry names), pop `needs_link`, rewrite the file.
-4. **Commit and push** `docs/RESULTS.md docs/results-index.jsonl`
-   (plus any script the entry references) with a one-line message
-   summarizing the verdict. PUBLIC REPO: end the message with
-   exactly `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>`
-   and NEVER a Claude-Session URL.
+2. **Regenerate the index**: `.venv/bin/python scripts/gen_results_index.py`.
+   Always run it yourself. The PostToolUse hook matches `Edit|Write`
+   only, so a heredoc append does NOT trigger it.
+3. **Link**: `grep -n needs_link docs/results-index.jsonl` to find the
+   new rows, then patch them in place with
+   `llmopt.lab.jsonl.read_jsonl` / `write_jsonl` — set `threads`
+   (kebab-case program names) and `links` (related entry ids, not
+   titles), and pop `needs_link`. Never re-emit the file from context.
+   Verify: `grep -c needs_link` returns 0, and
+   `scripts/results_query.py --chain <new-id>` shows the entry.
+4. **Curate FINDINGS in the same commit** when the entry is a verdict.
+   `tests/test_docs_integrity.py` ratchets the uncurated backlog, so a
+   booking without its bullet turns the suite red — that is the guard
+   working. One bullet, one maturity tag from the controlled
+   vocabulary, its scope fences, and the `RESULTS.md#L<line>` anchor.
+5. **Commit and push** `docs/RESULTS.md docs/results-index.jsonl`
+   `docs/FINDINGS.md` (plus any script the entry references) with a
+   one-line message summarizing the verdict. Gate the commit on a real
+   exit code — read `$?` from a redirected pytest, never from a piped
+   one. PUBLIC REPO: end the message with exactly
+   `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>` and NEVER
+   a Claude-Session URL.
 
 ## Fences that travel with every booking
 
