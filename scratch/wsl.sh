@@ -16,6 +16,17 @@ set -euo pipefail
 source "$(dirname "$0")/remote.env.sh"
 SSH=(ssh -i "$WSL_KEY" -o ConnectTimeout=10 -o BatchMode=yes "$WSL_REMOTE")
 
+# Character allowlist for any argument that gets interpolated into a
+# remote shell string by the safe-class verbs (clean-marker/kill/mkdir).
+# Allows [A-Za-z0-9._/-] only: no quotes, no $ ` ; & | newline, no
+# globs, no `..` traversal, no absolute paths, no leading dash.
+_safe_path() {
+  case "$1" in
+    "" | *[!A-Za-z0-9._/-]* | *..* | /* | -*) return 1 ;;
+  esac
+  return 0
+}
+
 case "${1:?run|launch|check|tail}" in
   run)
     "${SSH[@]}" "cd ~/code/llmopt && ${2:?cmd}"
@@ -40,16 +51,23 @@ case "${1:?run|launch|check|tail}" in
     ;;
   clean-marker)
     f=${2:?marker file}
+    # SECURITY (2026-08-11 review): these three verbs interpolate their
+    # argument into a REMOTE shell string, and the permission hook
+    # auto-allows two of them — so the argument must be validated by a
+    # strict CHARACTER ALLOWLIST, not a glob whitelist. A `case` pattern
+    # like logs/*.DONE matches `logs/x;rm -rf ~/.DONE` (the * eats the
+    # semicolon), which was live command injection behind an auto-allow.
+    _safe_path "$f" || { echo "refuse: unsafe path chars" >&2; exit 3; }
     case "$f" in
       logs/*.DONE|logs/*.rc|logs/*/*.DONE|logs/*/*.rc) ;;
       *) echo "refuse: clean-marker only touches logs/**.DONE|.rc" >&2; exit 3 ;;
     esac
-    case "$f" in (*[\*\?\[]*) echo "refuse: no globs" >&2; exit 3 ;; esac
     "${SSH[@]}" "rm -f ~/code/llmopt/$f && echo cleaned:$f"
     ;;
   kill)
     p=${2:?pattern}
     if [ "${#p}" -lt 4 ]; then echo "refuse: pattern too short" >&2; exit 3; fi
+    _safe_path "$p" || { echo "refuse: unsafe pattern chars" >&2; exit 3; }
     # self-match-proof: bracket the second char so the remote shell's
     # own argv (which carries the bracketed form) can never match
     bp="${p:0:1}[${p:1:1}]${p:2}"
@@ -57,7 +75,7 @@ case "${1:?run|launch|check|tail}" in
     ;;
   mkdir)
     d=${2:?dir}
-    case "$d" in (*..*|/*) echo "refuse: relative repo paths only" >&2; exit 3 ;; esac
+    _safe_path "$d" || { echo "refuse: unsafe path chars" >&2; exit 3; }
     "${SSH[@]}" "mkdir -p ~/code/llmopt/$d && echo mkdir:$d"
     ;;
   *)

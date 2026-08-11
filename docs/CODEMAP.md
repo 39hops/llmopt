@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 157, library 157, reproduce-pinned 9, results-cited 121, spec-cited 43
+Census: UNCITED 157, library 157, reproduce-pinned 9, results-cited 122, spec-cited 43
 
 ## scratch/
 
@@ -291,7 +291,8 @@ Census: UNCITED 157, library 157, reproduce-pinned 9, results-cited 121, spec-ci
 | rotinstr | rotinstr_control.py | results-cited | RESULTS×1 | — |
 | run | run_snap_gates.sh | spec-cited | specs×1 | — |
 | run | run_snap_knee.sh | UNCITED | — | — |
-| saturation | saturation_s2.py | UNCITED | — | — |
+| saturation | saturation_s2.py | results-cited | RESULTS×1 | — |
+| saturation | saturation_s2b.py | UNCITED | — | — |
 | scaffold | scaffold_review.py | results-cited | RESULTS×1 | — |
 | scorer | scorer_s1_battery.py | results-cited | RESULTS×1 | — |
 | scorer | scorer_s2_data.py | results-cited | RESULTS×1, specs×1 | — |
@@ -312,7 +313,7 @@ Census: UNCITED 157, library 157, reproduce-pinned 9, results-cited 121, spec-ci
 | sym45 | sym45_run.sh | UNCITED | — | — |
 | synonym | synonym_test.py | library | — | 1 |
 | tenet | tenet_d1_revgate.py | library | RESULTS×1, specs×2 | 1 |
-| tenet | tenet_d2_revdiet.py | library | RESULTS×1, specs×1 | 14 |
+| tenet | tenet_d2_revdiet.py | library | RESULTS×1, specs×1 | 15 |
 | tenet | tenet_d3_budget.py | library | specs×1 | 2 |
 | tenet | tenet_mult_b32.py | results-cited | RESULTS×1 | — |
 | tenet | tenet_mult_census.py | library | RESULTS×1, specs×1 | 1 |
@@ -351,7 +352,7 @@ Census: UNCITED 157, library 157, reproduce-pinned 9, results-cited 121, spec-ci
 | vrm | vrm_ab.py | library | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS×1 | — |
-| wsl | wsl.sh | library | RESULTS×10, specs×10 | 3 |
+| wsl | wsl.sh | library | RESULTS×10, specs×10 | 4 |
 | z1 | z1_gate.sh | UNCITED | — | — |
 | z1s | z1s_hot_watcher.sh | UNCITED | — | — |
 | zx | zx_chain.sh | UNCITED | — | — |
@@ -483,7 +484,7 @@ Census: UNCITED 157, library 157, reproduce-pinned 9, results-cited 121, spec-ci
 | sol | sol_enrich_results.py | library | specs×4 | 1 |
 | sol | sol_generate_tables.py | spec-cited | specs×3 | — |
 | step | step_grpo.py | spec-cited | specs×1 | — |
-| step | step_grpo_micro.py | library | specs×1 | 90 |
+| step | step_grpo_micro.py | library | specs×1 | 91 |
 | sweep | sweep_lookup.py | library | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — |
@@ -496,7 +497,7 @@ Census: UNCITED 157, library 157, reproduce-pinned 9, results-cited 121, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — |
 | train | train_magic_estimator.py | library | RESULTS×1 | 8 |
 | train | train_magic_llm.py | results-cited | RESULTS×1 | — |
-| train | train_mathnative.py | library | RESULTS×2, specs×5 | 71 |
+| train | train_mathnative.py | library | RESULTS×2, specs×5 | 72 |
 | train | train_nnue.py | library | specs×8 | 15 |
 | train | train_proposer.py | spec-cited | specs×5 | — |
 | train | train_syndrome_decoder.py | library | RESULTS×1 | 1 |

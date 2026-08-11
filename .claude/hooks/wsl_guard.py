@@ -38,18 +38,33 @@ cmd = data.get("tool_input", {}).get("command", "")
 if "wsl.sh" not in cmd:
     sys.exit(0)
 
-# outer verb
-m = re.search(r"wsl\.sh\s+(run|launch|check|tail|clean-marker|kill|mkdir)"
-              r"\b\s*(.*)", cmd, re.S)
+# SECURITY (2026-08-11 review): an "allow" decision applies to the
+# ENTIRE Bash command, so it may only be issued when the entire command
+# IS the single wsl.sh invocation we inspected. Matching wsl.sh anywhere
+# inside the string let `rm -rf ~ && scratch/wsl.sh tail x` be
+# auto-approved on the strength of the tail verb. Anchor at the start
+# and refuse any shell metacharacter that could chain, substitute, or
+# redirect — those fall through to "ask", never to "allow".
+CHAINING = re.compile(r"[;&|`\n><]|\$\(")
+
+m = re.match(r"\s*(?:\./)?(?:[\w./-]*/)?wsl\.sh\s+"
+             r"(run|launch|check|tail|clean-marker|kill|mkdir)\b\s*(.*)",
+             cmd, re.S)
 if not m:
-    out("ask", "wsl.sh with unrecognized verb — inspect manually")
+    out("ask", "command contains wsl.sh but is not a bare wsl.sh "
+        "invocation — inspect manually")
 verb, rest = m.group(1), m.group(2)
 
-if verb in ("check", "tail"):
+# argv-only verbs: safe ONLY if nothing else rides along
+_bare = not CHAINING.search(rest)
+if verb in ("check", "tail") and _bare:
     out("allow", f"wsl.sh {verb}: read-only remote op")
-if verb in ("clean-marker", "mkdir"):
-    out("allow", f"wsl.sh {verb}: safe-class op (path-fenced in the "
-        f"script itself): {rest[:80]}")
+if verb in ("clean-marker", "mkdir") and _bare:
+    out("allow", f"wsl.sh {verb}: safe-class op (argument passes the "
+        f"script's character allowlist): {rest[:80]}")
+if verb in ("check", "tail", "clean-marker", "mkdir"):
+    out("ask", f"wsl.sh {verb} with shell metacharacters in its "
+        f"arguments — not the bare form: {rest[:120]}")
 if verb == "kill":
     out("ask", f"wsl.sh kill (self-match-proofed pkill) — pattern: "
         f"{rest[:80]}")
@@ -91,6 +106,11 @@ READONLY = re.compile(
     r"sha256sum|echo|pwd|which|stat|find|sleep)\b|git\s+"
     r"(status|log|rev-parse|fetch|diff|show)\b)")
 parts = re.split(r"&&|\|\||;", payload)
+# command substitution hides arbitrary commands inside a read-only-
+# looking segment (`ls $(rm -rf ~)`), so it disqualifies the allow path
+if re.search(r"\$\(|`", payload):
+    out("ask", f"remote payload contains command substitution — cannot "
+        f"be classified read-only: {payload[:200]}")
 if all(READONLY.match(p.strip()) for p in parts if p.strip()):
     out("allow", "wsl.sh run: all inner segments read-only")
 
