@@ -24,6 +24,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import subprocess
 import time
 from pathlib import Path
@@ -70,6 +71,15 @@ def _check_out(out: str, *inputs: str) -> None:
             raise ValueError(
                 f"out={out} would overwrite input {p} — merges "
                 "materialize NEW files, inputs stay frozen in place")
+    # 2026-08-11 review (M8): out may not be ANY existing checkpoint —
+    # only the two inputs were guarded, so a typo'd out could clobber a
+    # third, possibly RESULTS-cited, file. Frozen-in-place means all of
+    # them.
+    if o.exists():
+        raise ValueError(
+            f"out={out} already exists — merges never overwrite; pick "
+            "a fresh path (delete the stale file yourself if it is "
+            "truly disposable)")
 
 
 def _check_match(a: dict, b: dict, la: str, lb: str) -> None:
@@ -109,7 +119,16 @@ def is_ternary_lattice(sd: dict, min_numel: int = 16) -> bool:
     """True if any 2D weight looks absmean-lattice / ternary-quantized:
     <= 3 unique values per tensor after sign/scale normalization
     (|w| / max|w| rounded, plus zero). Ternary parents refuse growth —
-    identity-init grafts are non-preserving on a quantized lattice."""
+    identity-init grafts are non-preserving on a quantized lattice.
+
+    HONESTY FENCE (2026-08-11 review, M3, verified): house "ternary"
+    checkpoints trained via the RAT_Q straight-through path store
+    fp32 LATENTS, not lattice values (mathnative_45m_ternary.pt gate
+    tensor: 4091 unique values) — this check does NOT detect them.
+    It catches only genuinely-snapped state dicts (per-TENSOR scale;
+    per-row scales also evade it). shell_graft therefore ALSO refuses
+    on a "ternary"/"tern" name hint — callers merging STE-latent
+    checkpoints under an innocent name are on their own recognizance."""
     import torch
     for t in sd.values():
         if not torch.is_tensor(t) or t.dim() != 2 or t.numel() < min_numel:
@@ -178,7 +197,11 @@ def task_vector(base: str, a: str, b: str, out: str, alpha: float = 1.0,
     for k in sbase:
         t0 = sbase[k]
         if t0.is_floating_point():
-            merged[k] = (t0 + alpha * ((sa[k] - t0) + (sb[k] - t0))
+            # fp32 accumulate, matching average() (M9: three bf16
+            # rounding steps otherwise)
+            f0 = t0.float()
+            merged[k] = (f0 + alpha * ((sa[k].float() - f0)
+                                       + (sb[k].float() - f0))
                          ).to(t0.dtype)
         else:
             merged[k] = t0.clone()
@@ -211,15 +234,32 @@ def shell_graft(small: str, large_arch: dict, out: str, *,
     matching grow_mathnative.py's scope)."""
     import torch
     _check_out(out, small)
+    stem = Path(small).name.lower()
+    if "ternary" in stem or "tern" in stem:
+        raise ValueError(
+            "shell_graft() refused on NAME HINT: parent filename says "
+            "ternary — house RAT_Q checkpoints store fp32 latents the "
+            "lattice check cannot see (M3, 2026-08-11); ternary growth "
+            "is non-preserving.")
     sd = _load(small)
     if is_ternary_lattice(sd):
         raise ValueError(
             "shell_graft() refused: parent looks ternary/absmean-lattice "
             "quantized (<=3 unique values per 2D tensor after sign/scale "
             "normalization) — ternary growth is non-preserving.")
-    gate_keys = [k for k in sd if k.endswith("gate.weight")]
+    # anchor to the BLOCK FFN gate only (M1: a bare endswith matched
+    # MoE router gate.weight of shape [n_experts, d] — growing that
+    # adds phantom experts, not FFN rows)
+    _gate_re = re.compile(r"^blocks\.\d+\.gate\.weight$")
+    gate_keys = [k for k in sd if _gate_re.match(k)]
     if not gate_keys:
-        raise ValueError("no *gate.weight keys — not a house FFN state dict")
+        raise ValueError("no blocks.N.gate.weight keys — not a house "
+                         "dense-FFN state dict (routers not graftable)")
+    widths = {sd[k].shape[0] for k in gate_keys}
+    if len(widths) != 1:
+        raise ValueError(f"non-uniform FFN widths across layers "
+                         f"({sorted(widths)}) — refuse rather than "
+                         "grow to a wrong uniform target")
     cur_ffn = sd[gate_keys[0]].shape[0]
     tgt_ffn = int(large_arch["ffn"])
     grow = tgt_ffn - cur_ffn
@@ -227,8 +267,10 @@ def shell_graft(small: str, large_arch: dict, out: str, *,
         raise ValueError(f"large_arch ffn={tgt_ffn} <= current {cur_ffn}")
     g = torch.Generator().manual_seed(seed)
     new = {}
+    _ffn_re = re.compile(r"^blocks\.\d+\.(gate|up|down)\.weight$")
     for k, W in sd.items():
-        if k.endswith("gate.weight") or k.endswith("up.weight"):
+        _m = _ffn_re.match(k)
+        if _m and _m.group(1) in ("gate", "up"):
             n, d = W.shape
             anchors = torch.randn(5, d, generator=g)
             anchors = anchors / anchors.norm(dim=1, keepdim=True)
@@ -241,13 +283,21 @@ def shell_graft(small: str, large_arch: dict, out: str, *,
             idx = torch.randint(0, n, (grow,), generator=g)
             new[k] = torch.cat(
                 [W, (rows * src_norms[idx].unsqueeze(1)).to(W.dtype)])
-        elif k.endswith("down.weight"):
+        elif _m and _m.group(1) == "down":
             d, n = W.shape
             new[k] = torch.cat(
                 [W, torch.zeros(d, grow, dtype=W.dtype)], dim=1)
+        elif k.endswith((".gate.bias", ".up.bias", ".down.bias")):
+            # house models are bias-free; a biased FFN would need its
+            # own growth rule — refuse rather than ship a shape bomb
+            raise ValueError(f"FFN bias key {k}: bias growth is not "
+                             "implemented (house models are bias-free)")
         else:
             new[k] = W.clone() if torch.is_tensor(W) else W
     torch.save(new, out)
+    # grow_mathnative.py writes the "-1" .ep sidecar so the resume
+    # gate reads the graft as epoch-0-ready instead of refusing (M2)
+    Path(str(out) + ".ep").write_text("-1")
     row = _row("shell_graft", out, [small], None,
                arch or dict(large_arch), label)
     row["grow"] = grow
@@ -266,11 +316,15 @@ def gate_cmd(row: dict, device: str) -> str:
 
     row must carry row["arch"] = {d, layers, ffn, heads} (pass arch=
     to the op); label defaults to the out-file stem."""
-    arch = row.get("arch")
-    if not arch or not all(k in arch for k in ("d", "layers", "ffn", "heads")):
+    arch = dict(row.get("arch") or {})
+    if "d" not in arch and "d_model" in arch:   # catalog rows say d_model
+        arch["d"] = arch["d_model"]
+    if not all(arch.get(k) for k in ("d", "layers", "ffn", "heads")):
         raise ValueError(
-            "row['arch'] must carry d/layers/ffn/heads — pass arch= to "
-            "the merge op (heads is not inferable from the state dict)")
+            "row['arch'] must carry d(/d_model)/layers/ffn/heads with "
+            "non-null values — pass arch= to the merge op (heads is "
+            "not inferable from the state dict; catalog rows carry "
+            "heads=None and cannot satisfy this alone)")
     script = ("scratch/gate_ckpt_cuda.py" if device == "cuda"
               else "scratch/gate_ckpt.py")
     label = row.get("label") or Path(row["out"]).stem

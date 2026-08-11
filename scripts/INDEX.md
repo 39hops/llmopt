@@ -925,10 +925,11 @@ Expert-iteration round 2, harvest phase (spec: 2026-07-07-expert-iteration-r2-de
 Print-only log hygiene planner (reviewer design, handoff 2026-08-11-0).
 
 - `build_citation_set(results_path: Path) -> set[str]` — One pass over RESULTS.md: every `logs/...` token becomes a citation.
-- `is_cited(rel: str, cites: set[str]) -> bool` — True if rel or any parent dir of rel appears in the citation set.
+- `is_cited(rel: str, cites: set[str], basenames: set[str] | None=None) -> bool` — True if rel or any parent dir of rel appears in the citation set,
+- `cited_basenames(results_path: Path) -> set[str]` — Basenames of every *.log/*.jsonl-looking token in RESULTS,
 - `is_receipt(name: str) -> bool`
-- `classify_one(rel: str, mtime: float, cites: set[str], age_days: float, now: float | None=None) -> tuple[str, str]` — Return (class, reason) for one logs/-relative path.
-- `scan(root: Path, cites: set[str], age_days: float) -> list[dict]`
+- `classify_one(rel: str, mtime: float, cites: set[str], age_days: float, now: float | None=None, basenames: set[str] | None=None) -> tuple[str, str]` — Return (class, reason) for one logs/-relative path.
+- `scan(root: Path, cites: set[str], age_days: float, basenames: set[str] | None=None) -> list[dict]`
 - `consolidation_map(root: Path) -> list[dict]` — Grep scripts/ + scratch/ (top level, minus scratch/leancheck) for
 - `print_plan(rows: list[dict], cmap: list[dict], out=sys.stdout) -> None`
 - `main(argv=None) -> int`

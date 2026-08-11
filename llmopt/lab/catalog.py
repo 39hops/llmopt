@@ -148,8 +148,10 @@ def parent_ids(name: str, siblings) -> list:
         k = int(m.group(1))
         if k > 0:
             hit(stem[:m.start()] + f"_ep{k - 1}" + stem[m.end():])
-        else:
-            hit(stem[:m.start()] + stem[m.end():])
+        # _ep0 -> bare-stem edge DROPPED (review C1: gallery19m mtimes
+        # showed the bare stem can be the rolling LATEST file — the
+        # inferred edge pointed a child at its own future). _ep0 rows
+        # are parentless unless another axis names a parent.
     m = re.search(r"_(\d+)ep\b", stem)
     if m:  # _3ep style: parent is the no-ep twin
         hit(stem[:m.start()] + stem[m.end():])
@@ -183,7 +185,8 @@ def scan_checkpoint(path: str, repo_root: str, cited_names,
         siblings = os.listdir(os.path.dirname(path))
     ep = None
     if os.path.exists(path + ".ep"):
-        with open(path + ".ep") as f:
+        # errors=: a binary/garbled .ep must degrade, not kill the scan
+        with open(path + ".ep", errors="replace") as f:
             ep = f.read().strip()
     return {
         "path": rel,

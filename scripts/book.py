@@ -55,9 +55,16 @@ INDEX_CWD = REPO_ROOT
 TYPE_WORD = {"verdict": "VERDICT", "prereg": "PRE-REG",
              "amendment": "AMENDMENT"}
 
-GATE_TOTAL_RE = re.compile(r"= (\d+)/120")
-DELTA_RE = re.compile(r"(?:delta|Δ|\bd)\s*=\s*([+-]?\d+(?:\.\d+)?)",
-                      re.IGNORECASE)
+GATE_TOTAL_RE = re.compile(r"=\s*(\d+)\s*/\s*120")
+# Delta detection (2026-08-11 review, bypasses B1/B2): never match a
+# bare `d=` — `d=512` (an architecture width) was the first match in
+# most house entries and made the fence unreachable. Match the words
+# delta/Δ with `=`, `of`, or bare (`delta +3`), AND the house's most
+# natural phrasing `+3 solves` / `3-solve`.
+DELTA_RE = re.compile(
+    r"(?:delta|Δ)\s*(?:=|of)?\s*([+-]?\d+(?:\.\d+)?)"
+    r"|([+-]?\d+(?:\.\d+)?)[\s-]*solves?\b",
+    re.IGNORECASE)
 FENCE_SENTENCE_RE = re.compile(r"single[- ]seed", re.IGNORECASE)
 
 
@@ -98,17 +105,35 @@ def validate_marker(marker_path: Path) -> dict:
 def validate_gate_checksum(entry: str, marker: dict) -> None:
     """Fence 2: gate numbers book as DICTS, not totals — the dict
     is the checksum ('48 from valid 48.27', 2026-08-01)."""
-    m = GATE_TOTAL_RE.search(entry)
-    if not m:
+    claims = [int(g) for g in GATE_TOTAL_RE.findall(entry)]
+    if not claims:
         return
-    claimed = int(m.group(1))
     gate_dict = marker.get("gate_dict")
-    if not isinstance(gate_dict, dict):
+    if isinstance(gate_dict, str):        # lake stores it as JSON text
+        try:
+            gate_dict = json.loads(gate_dict)
+        except json.JSONDecodeError:
+            raise Refusal("marker gate_dict is an unparseable string "
+                          "— fix the marker before booking.")
+    if gate_dict is None:
         return
-    total = sum(int(v) for v in gate_dict.values())
-    if total != claimed:
+    if not isinstance(gate_dict, dict):
+        raise Refusal(f"marker gate_dict has unexpected shape "
+                      f"({type(gate_dict).__name__}) — refusing "
+                      "rather than skipping the checksum.")
+    try:
+        total = sum(int(v) for v in gate_dict.values())
+    except (TypeError, ValueError):
+        raise Refusal(f"marker gate_dict values are not integers "
+                      f"({gate_dict}) — refusing rather than "
+                      "skipping the checksum.")
+    # EVERY total in the entry must match some accounting: the
+    # marker's dict must equal at least one claimed total, and any
+    # OTHER totals are allowed only if the entry carries their own
+    # dicts (checked by eye at review; here we pin the marker's).
+    if total not in claims:
         raise Refusal(
-            f"entry claims = {claimed}/120 but marker gate_dict "
+            f"entry claims totals {claims}/120 but marker gate_dict "
             f"sums to {total} ({gate_dict}) — the dict is the "
             "checksum (the '48 booked from valid 48.27' class, "
             "2026-08-01).")
@@ -134,18 +159,24 @@ def validate_statistical_fence(entry: str, marker: dict,
     --fence-acknowledged AND an explicit fence sentence."""
     if entry_type != "verdict":
         return
-    dm = DELTA_RE.search(entry)
-    if not dm:
+    # scan ALL delta mentions; the fence fires on the SMALLEST (B1:
+    # first-match let `d=512` shadow a real `delta = +3`).
+    deltas = [abs(float(a or b)) for a, b in DELTA_RE.findall(entry)]
+    if not deltas or min(deltas) >= 7:
         return
-    if abs(float(dm.group(1))) >= 7:
-        return
-    if marker.get("n_seeds") != 1:
+    # n_seeds absent or non-int = UNKNOWN, which is fenced, not
+    # skipped (B3: absence of evidence is not multi-seed evidence).
+    try:
+        n_seeds = int(marker.get("n_seeds"))
+    except (TypeError, ValueError):
+        n_seeds = 1
+    if n_seeds > 1:
         return
     if not (fence_acknowledged and FENCE_SENTENCE_RE.search(entry)):
         raise Refusal(
-            f"verdict claims sub-sigma gate delta |{dm.group(1)}| < 7 "
-            "solves on n_seeds=1 — resolution law (2026-07-31) needs "
-            "n>=3 paired seeds for a direction, or "
+            f"verdict claims sub-sigma gate delta |{min(deltas)}| < 7 "
+            "solves without n_seeds>1 evidence — resolution law "
+            "(2026-07-31) needs n>=3 paired seeds for a direction, or "
             "--fence-acknowledged plus an explicit single-seed fence "
             "sentence in the entry.")
 
@@ -232,9 +263,21 @@ def main(argv: list[str] | None = None) -> int:
         print("would run: " + git_cmd)
         return 0
 
-    append_entry(heading, entry)
-    regen_index()
-    row = curate_index_row(heading, threads, links)
+    # atomic-ish booking (B8): snapshot both ledger files; restore on
+    # any downstream refusal so a half-booking never survives.
+    snap_results = RESULTS_PATH.read_text()
+    snap_index = INDEX_PATH.read_text() if INDEX_PATH.exists() else None
+    try:
+        append_entry(heading, entry)
+        regen_index()
+        row = curate_index_row(heading, threads, links)
+    except BaseException:
+        RESULTS_PATH.write_text(snap_results)
+        if snap_index is not None:
+            INDEX_PATH.write_text(snap_index)
+        print("rolled back RESULTS.md + index to pre-booking state",
+              file=sys.stderr)
+        raise
     print(f"booked: {row['id']}")
     print("NOW RUN (this script never commits):")
     print(git_cmd)

@@ -310,7 +310,8 @@ VERDICT](RESULTS.md#L10676).)
   rises with width (eye 0% -> 93% of base up the d64->d512 ladder;
   attention's per-param fragility a flat 4x ffn's 1 at every width) —
   holography's scaling face. And 4x quaternionic sharing changes the
-  profile by NOTHING (retention fractions identical per class): the
+  profile by nothing measurable (retention fractions match the
+  control within 4 percentage points per class): the
   symmetry and alphabet compression axes are orthogonal tolls.
   ([VERDICT STAR-PROFILE-1](RESULTS.md#L25772); [VERDICT
   STAR-PROFILE-2](RESULTS.md#L25979); [VERDICT
@@ -330,14 +331,17 @@ VERDICT](RESULTS.md#L10676).)
   then closed the same way: a 20% infusion of NEW food moved it +2
   (75 v 73, still inside the band). The 73-74-75 line is flat within
   resolution — at fixed mass, neither more burning time nor new fuel
-  moves the gate; equilibrium is a function of (width, diet-class),
+  moves the gate; equilibrium is a function of (width, diet-class) — the diet-class
+  dependence itself untested (CURRICULUM-FUNNEL territory) —
   and growth remains the only lever with a measured positive at this
   frontier. The width axis got its own ladder the same night: four
   sub-1M births on the 3080 (minutes each, max 546 s) put ignition
-  between d32 (0/120) and d48 (10/120 at ~180k params), with d64 at
-  30/120 — the gate(d) foot is sharp (0/0/10/30), a steep power of
-  mass, and "births take hours" is a size property, not a pipeline
-  property.
+  between d32 (0/120) and d48 (10/120 at ~295k params — column
+  corrected by AMENDMENT MORNING-SWEEP-0811), with d64 at 30/120 —
+  the gate(d) foot is sharp (0/0/10/30; the d48 firing sits exactly
+  at the >=10 bar on a single seed, so the ignition LOCATION carries
+  a single-seed fence while the d48->d64 tripling is >4 sigma), and
+  "births take hours" is a size property, not a pipeline property.
   ([VERDICT REVIVE-CROWN-TIE-BIRTHS](RESULTS.md#L26066); [VERDICT
   SATURATION-1](RESULTS.md#L26259); [VERDICT
   SATURATION-1-CELL-B](RESULTS.md#L26420); [VERDICT
@@ -351,12 +355,15 @@ VERDICT](RESULTS.md#L10676).)
   prefix v a trained floor of 0.348 — ratio 0.502, so ~half the
   floor is the corpus's own ambiguity (irreducible by ANY optimizer
   at this diet; loss-to-0 requires canonicalizing the corpus, one
-  continuation per context) and ~half is capacity headroom. The
+  continuation per context) and at least ~half is approximation
+  error — a LOWER BOUND on headroom (optimization and capacity not
+  separated). The
   entropy curve knees at k=32 (32 tokens of context capture nearly
   all corpus structure), and the trained floor sits BETWEEN H_16
-  (0.367) and H_32 (0.187): the d256 crystal extracts essentially
-  all 16-token structure and ~none of the 16-to-32 marginal despite
-  512-token attention — an effective-context instrument, and a
+  (0.367) and H_32 (0.187): the d512/L12 grown crystal extracts
+  essentially all 16-token structure and ~none of the 16-to-32
+  marginal despite 512-token attention (arch corrected by AMENDMENT
+  LOSS-FLOOR-1-ARCH — a bigger star than first booked, same floor) — an effective-context instrument, and a
   candidate quantitative face for the width ladder (does the floor
   walk down the H_k curve as width grows?).
   ([VERDICT LOSS-FLOOR-1](RESULTS.md#L26376).)
@@ -477,6 +484,25 @@ VERDICT](RESULTS.md#L10676).)
   a capability premium. ([Metabolic v3 paired arms](RESULTS.md#L3711).)
 
 ## Independent implementation and methodology
+
+- [MECHANISM-CONFIRMED] Booking
+  became a PROGRAM: one overnight workflow (7 builders + 7 paired
+  hazard reviewers) landed the checkpoint catalog (392 rows, 54
+  RESULTS-cited, the 33.1 GB uncited pool now enumerated), the
+  Parquet result lake (gates schema REQUIRES device + n_seeds +
+  weights_sha non-null — the cross-device fence and the books-with-
+  sha rule as schema constraints, graduating the RESULTS 13463
+  proposal), merge ops that refuse their own killed mechanisms in
+  the API (soups-crater, split-law, ternary-growth citations in the
+  docstrings), streamed per-step receipts in the axiom row shape,
+  and scripts/book.py — which refuses killed runs, dict-sum
+  mismatches, sha-less gates, and unfenced n=1 sub-sigma verdicts,
+  and booked its own shipping entry as the dogfood. The morning
+  review sweep (four reviewers) then caught a wrong arch label in a
+  booked entry (d256 -> d512, the catalog's own data was the
+  cross-check), a wrong params column, and a fence-bypass class in
+  book.py's first cut — all amended same-day.
+  ([VERDICT REFACTOR-NIGHT-1](RESULTS.md#L26536).)
 
 - [SINGLE-SEED] [REGIME-SCOPED: closed-system math] A string-seeded
   1000-cert sample of the cross-lab Lean certificate corpus missed its

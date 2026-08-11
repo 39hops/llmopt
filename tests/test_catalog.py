@@ -50,7 +50,9 @@ def test_latent_falls_back_birth():
 def test_ep_chain():
     sib = ["gallery19m_s1.pt", "gallery19m_s1_ep0.pt", "gallery19m_s1_ep1.pt"]
     assert parent_ids("gallery19m_s1_ep1.pt", sib) == ["gallery19m_s1_ep0.pt"]
-    assert parent_ids("gallery19m_s1_ep0.pt", sib) == ["gallery19m_s1.pt"]
+    # _ep0 -> bare-stem edge dropped 2026-08-11 (review C1: the bare
+    # stem can be the rolling latest file — edge pointed at the future)
+    assert parent_ids("gallery19m_s1_ep0.pt", sib) == []
 
 
 def test_3ep_parent_is_plain():

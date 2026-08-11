@@ -24,20 +24,28 @@ bit-identity on the outputs (tests/test_intbirth_native.py), per the
 """
 import os
 import sys
+from pathlib import Path
 
 import numpy as np
 
-AXIOM_BUILD_DIR = os.environ.get(
-    "AXIOM_BUILD_DIR", "/Users/artin/code/axiom/build-rel")
+# Repo-relative default (public-repo rule: no machine-identifying
+# absolute paths in committed code); AXIOM_BUILD_DIR overrides.
+_DEFAULT_BUILD = str(Path(__file__).resolve().parents[3]
+                     / "axiom" / "build-rel")
+AXIOM_BUILD_DIR = os.environ.get("AXIOM_BUILD_DIR", _DEFAULT_BUILD)
 
 _native = None
+NATIVE_IMPORT_ERROR: str | None = None  # why the fallback is active
 try:
     if os.path.isdir(AXIOM_BUILD_DIR):
         if AXIOM_BUILD_DIR not in sys.path:
             sys.path.append(AXIOM_BUILD_DIR)
         import intbirth as _native  # noqa: F401
-except Exception:
+    else:
+        NATIVE_IMPORT_ERROR = f"no such dir: {AXIOM_BUILD_DIR}"
+except Exception as e:  # record WHY, never guess from silence (I3)
     _native = None
+    NATIVE_IMPORT_ERROR = f"{type(e).__name__}: {e}"
 
 HAVE_NATIVE = _native is not None
 available = HAVE_NATIVE  # legacy-style flag; same truth
@@ -45,7 +53,14 @@ available = HAVE_NATIVE  # legacy-style flag; same truth
 
 # ------------------------------------------------ pure-python fallback
 def _as_i64(a):
-    return np.ascontiguousarray(np.asarray(a, dtype=np.int64))
+    """Coerce to contiguous int64, REFUSING non-integral floats — an
+    exact-integer core must never silently truncate 1.9 to 1 (I2)."""
+    arr = np.asarray(a)
+    if arr.dtype.kind == "f":
+        if not np.all(arr == np.trunc(arr)):
+            raise ValueError("non-integral float input to an exact "
+                             "int64 op — round explicitly first")
+    return np.ascontiguousarray(arr.astype(np.int64))
 
 
 def _py_rdiv(x, d):

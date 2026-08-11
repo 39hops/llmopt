@@ -90,7 +90,7 @@ def test_gates_append_and_roundtrip(tmp_path):
     ld = tmp_path / "lake"
     lake.append_gate(
         {"device": "mac", "n_seeds": 3, "weights_sha": "abc",
-         "gate_dict": json.dumps({"solved": 34}), "total": 120},
+         "gate_dict": json.dumps({"solved": 34}), "total": 34},
         lake_dir=ld,
     )
     lake.append_gate({"device": "3080", "n_seeds": 5, "weights_sha": "def"}, lake_dir=ld)

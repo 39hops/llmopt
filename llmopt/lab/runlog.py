@@ -90,7 +90,10 @@ class RunLog:
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self.kind = kind
-        self._fh = open(self.path, "w", encoding="utf-8")
+        # "x": REFUSE an existing receipt file (R1: mode "w" truncated
+        # a prior run's streamed rows — the checkpoint selection-effect
+        # this module exists to prevent). Re-runs pick a new path.
+        self._fh = open(self.path, "x", encoding="utf-8")
         self._t_last = time.monotonic()
         self._t0 = self._t_last
         self._last_step: int | None = None
@@ -149,8 +152,12 @@ class RunLog:
         if not self._closed:
             self._fh.close()
             self._closed = True
+        # marker named after the log stem (R2: the fixed run.marker.json
+        # name meant two RunLogs in one dir overwrote each other's
+        # marker and a booking read arm B's rc against arm A's receipt)
+        marker_path = self.path.parent / (self.path.stem + ".marker.json")
         return write_marker(
-            self.path.parent, self.kind, rc,
+            marker_path, self.kind, rc,
             wall_s=time.monotonic() - self._t0,
             artifacts=[self.path.name], **extra)
 

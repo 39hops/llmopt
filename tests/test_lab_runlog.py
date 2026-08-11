@@ -103,7 +103,7 @@ def test_marker_written_on_close(tmp_path):
     log = RunLog(d / "steps.jsonl", kind="gate")
     log.step(0)
     p = log.close(rc=0)
-    m = read_marker(d)
+    m = read_marker(d / "steps.marker.json")  # marker named per log stem (R2)
     assert m is not None and m["kind"] == "gate" and m["rc"] == 0
     assert m["artifacts"] == ["steps.jsonl"]
     assert p.parent == d
@@ -114,4 +114,24 @@ def test_context_manager_exception_rc(tmp_path):
     with pytest.raises(RuntimeError):
         with RunLog(d / "steps.jsonl"):
             raise RuntimeError("boom")
-    assert read_marker(d)["rc"] == "exception"
+    assert read_marker(d / "steps.marker.json")["rc"] == "exception"
+
+
+def test_refuses_existing_receipt(tmp_path):
+    """R1: mode 'x' — a re-launch must never truncate streamed rows."""
+    p = tmp_path / "steps.jsonl"
+    RunLog(p).close(rc=0)
+    with pytest.raises(FileExistsError):
+        RunLog(p)
+
+
+def test_two_runlogs_one_dir_keep_separate_markers(tmp_path):
+    """R2: the fixed marker name let arm B overwrite arm A's rc."""
+    a = RunLog(tmp_path / "arm_a.jsonl", kind="gate")
+    b = RunLog(tmp_path / "arm_b.jsonl", kind="gate")
+    a.close(rc=0)
+    b.close(rc=1)
+    ma = read_marker(tmp_path / "arm_a.marker.json")
+    mb = read_marker(tmp_path / "arm_b.marker.json")
+    assert ma["rc"] == 0 and mb["rc"] == 1
+    assert ma["artifacts"] == ["arm_a.jsonl"]

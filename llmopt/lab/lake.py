@@ -186,7 +186,14 @@ def build_models(
     if rows:
         table = pa.Table.from_pylist(rows)
     else:
-        table = pa.Table.from_pylist([], schema=pa.schema([("model_id", pa.string())]))
+        # empty fallback keeps the POPULATED table's column names (L1:
+        # a disjoint model_id-only schema made queries fail differently
+        # depending on whether the catalog existed)
+        table = pa.Table.from_pylist([], schema=pa.schema(
+            [("path", pa.string()), ("sha256", pa.string()),
+             ("bytes", pa.int64()), ("mtime", pa.float64()),
+             ("ext", pa.string()), ("parent_ids", pa.list_(pa.string())),
+             ("ep_marker", pa.string()), ("cited", pa.bool_())]))
     return _write(table, lake_dir, "models")
 
 
@@ -221,11 +228,29 @@ def append_gate(row: dict, lake_dir: Path = DEFAULT_LAKE_DIR) -> Path:
         "total": row.get("total"),
         "source_grade": row.get("source_grade", "exploration"),
     }
+    # the dict is the checksum, at the lake too (L7): a total that
+    # disagrees with its own dict never lands in the aggregation layer
+    if clean["gate_dict"] is not None and clean["total"] is not None:
+        try:
+            dict_total = sum(int(v) for v in
+                             json.loads(clean["gate_dict"]).values())
+        except (json.JSONDecodeError, TypeError, ValueError):
+            raise ValueError("gate_dict is not a JSON object of integer "
+                             "solves — refuse rather than store")
+        if dict_total != int(clean["total"]):
+            raise ValueError(
+                f"gate_dict sums to {dict_total} but total claims "
+                f"{clean['total']} — the dict is the checksum")
     lake_dir = Path(lake_dir)
     out = build_gates(lake_dir)
     existing = pq.read_table(out)
     new = pa.Table.from_pylist([clean], schema=GATES_SCHEMA)
-    pq.write_table(pa.concat_tables([existing, new]), out, compression="snappy")
+    # atomic tmp+rename (L6): an in-place rewrite truncates the WHOLE
+    # accumulated table on a crash mid-write
+    tmp = out.with_suffix(".parquet.tmp")
+    pq.write_table(pa.concat_tables([existing, new]), tmp,
+                   compression="snappy")
+    tmp.rename(out)
     return out
 
 

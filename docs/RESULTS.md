@@ -26666,3 +26666,103 @@ FENCES: floors are train-loss means on ONE diet, nats; floors
 compare only within this ladder + sat_s2 (same corpus, same
 device class); gates carry single-seed fences; d512 on Mac mps is
 the long pole (hours-class) — books when it lands, never rushed.
+
+## AMENDMENT LOSS-FLOOR-1-ARCH (target: VERDICT LOSS-FLOOR-1, 26376; also corrects PRE-REG FLOOR-HK-1, 26641): the 0.348 floor belongs to the d512 grown crown line, not "the d256 star" (2026-08-11 morning, Mac)
+
+Caught by the morning docs-review sweep, verified against the
+weights: sat_s2.pt reads emb d=512, 12 blocks, ffn 2304 — the
+crown grow-inherit line (its own pre-reg at 26201 says
+d512/L12/ffn2304/h8 plainly). LOSS-FLOOR-1's curve rider called it
+"the d256 star" (confusion with the STAR-PROFILE d256 base). Three
+consequences, none touching the measured numbers:
+1. The floor 0.348 and the entropy table stand unchanged. The
+   rider's reading STRENGTHENS: it is the d512 grown crystal that
+   extracts essentially all 16-token structure and ~none of the
+   16->32 marginal — a bigger star than claimed, still floored at
+   H_16.
+2. FLOOR-HK-1's "(d256 already measured = 0.348 from sat_s2)" is
+   RETRACTED as a ladder point: 0.348 is a GROWN multi-stage-
+   recipe number, not a fresh-3ep-birth number; it enters the
+   ladder only as a labeled reference line, never a curve point.
+3. The ladder gains a fresh d256 cell (same recipe as the other
+   three) so the curve has four in-recipe points; d512 fresh-birth
+   v d512 grown becomes a free recipe-contrast rider. Driver
+   untouched mid-run (bash lazy-read hazard); d256 fires as its
+   own run after the d512 cell lands.
+FINDINGS wording corrected in the same commit (d256 -> d512).
+
+## AMENDMENT MORNING-SWEEP-0811 (targets: MICRO-STAR-1 26301, SATURATION-1-CELL-B 26420, LOSS-FLOOR-1 26376, REFACTOR-NIGHT-1 26536): four booked-text corrections from the morning review sweep — no measured number changes except the params column (2026-08-11 morning, Mac)
+
+Two Opus reviewers swept the night's entries; each finding below
+was verified house-side before booking. The experiments stand;
+the prose gets corrected.
+
+1. MICRO-STAR-1 params column was an unverified estimate and is
+   WRONG at the top: birth logs print 0.0/0.1/0.3/0.5M and the
+   arithmetic (~128 d^2 for L8/ffn=4d/H4 blocks + 40d embedding)
+   gives ~33k / ~131k / ~295k / ~525k for d16/32/48/64 — not the
+   booked ~35k/95k/180k/290k. Ignition sits at ~295k params (d48),
+   not ~180k. "Sub-1M" holds throughout. ALSO three fences the
+   verdict owed: (a) the pre-reg required validity percentages
+   quoted on sub-10 totals — d16 0.00%, d48 3.79% (from the run
+   log; d32's 0.40% was quoted); (b) P-MICRO-BURN fired at
+   EXACTLY the bar (10 v >=10, single seed, sigma ~5): the d48->
+   d64 jump (10->30) is >4 sigma real, the ignition LOCATION
+   between d32 and d48 carries a single-seed fence; (c) the
+   --budget 6144 knob (OOM relaunch) was not in the pre-reg's
+   recipe list — in-family constant, fenced as such. Gate shas:
+   only d64's was printed by the gate (a756afb84fcb0a98); the
+   d16/d32/d48 gates predate the books-with-sha rule and carry
+   none.
+2. SATURATION-1-CELL-B verdict said "retrained 3 epochs" — the
+   arm was ONE epoch (epochs=4 resumed against the crown copy's
+   marker "2"; log line "resuming at epoch 3", single epoch wall
+   3469 s), exactly as the amendment at 26282 registered. The
+   copy + marker were shell steps outside the driver script —
+   which is why the driver alone reads as if it re-births; the
+   log is the receipt. D2 excision also fired (214197 -> 214065),
+   unmentioned in the verdict. Verdict unchanged: 75/120 on a
+   crown copy +1 widened epoch.
+3. LOSS-FLOOR-1 row arithmetic: 178498 - 388 = 178110, not the
+   178090 sequences reported — the missing 20 are over-SEQ_CAP
+   drops (same <= cap rule as train; both exclusion classes now
+   named). And the census ran on the raw warm diet WITHOUT the
+   D2 excision cell (a) trained under (132 rows, 0.07%) — the
+   "matches train" claim is loosened to "matches train's
+   tokenizer, template, and cap; differs by the 132-row D2
+   excision". Numbers unchanged (0.07% of rows cannot move H_k
+   at the quoted precision).
+4. REFACTOR-NIGHT-1: "595 green (was 511; +83 new)" — 511+83=594;
+   the 595th is the string-amends regression test added AFTER the
+   +83 count. And the lake's "results 903" is a snapshot from
+   before the night's last three entries — the lake is exhaust,
+   regenerated on read (regenerated this morning).
+5. FLOOR-HK-1 bar 1 is RE-ANCHORED (follows from the d512
+   correction at 26670, red-team verified independently via
+   saturation_s2.py:25 AND data/catalog/models.jsonl — the
+   catalog's first real catch): P-FLOOR-DESCENDS now reads
+   floor(d64) > floor(d128) > floor(d256) > floor(d512), monotone
+   WITHIN the fresh-birth ladder only; the 0.348 anchor is a
+   reference line (d512/L12/ffn2304/h8, grown recipe, D2-excised
+   diet, resumed-schedule ep3 — three named confounds v the
+   ladder). Bar 2 (floor(d512) >= H_32) unchanged. Driver fences
+   that book with the FLOOR-HK-1 verdict: no pipefail on the
+   tee pipes (a crashed width leaves ckpt+marker and a re-run
+   would SPLICE schedules — post-run check: every birth log must
+   end "saved"), no D2 excision (132 rows, disclosed), gates run
+   as a separate post-birth step.
+6. MERGE-SPACE-1 driver fences that book with its verdict
+   (red-team, all verified against train_mathnative.py): (a) the
+   fork base is a separate 1-epoch run whose OneCycle anneals to
+   ~0 — forks branch a differently-scheduled twin, not s1's ep1
+   trajectory; (b) each fork resume gets a fresh 2-epoch OneCycle;
+   (c) BIRTH_SEED seeds init only — all four "independent"
+   parents share the epoch-seeded batch order, a WEAKER
+   independence than NIGHT-28b's; (d) fork base is not gated
+   (five gated parents, not six); (e) bar 2 (|delta| <= 2 accept)
+   is sub-sigma at n=1 — its firing books as
+   unresolved-consistent-with, never as a clean fire.
+Index hygiene fixed in the same commit: title-string links ->
+ids on the SATURATION rows, missing links added (MICRO-STAR/
+LOSS-FLOOR pre-regs, REFACTOR-NIGHT-1), the pre-reg's stray
+"streaming" thread -> saturation family threads unified.

@@ -17,9 +17,9 @@ from llmopt.lab import merge  # noqa: E402
 def _sd(seed: int, ffn: int = 8, d: int = 4) -> dict:
     g = torch.Generator().manual_seed(seed)
     return {
-        "layers.0.ffn.gate.weight": torch.randn(ffn, d, generator=g),
-        "layers.0.ffn.up.weight": torch.randn(ffn, d, generator=g),
-        "layers.0.ffn.down.weight": torch.randn(d, ffn, generator=g),
+        "blocks.0.gate.weight": torch.randn(ffn, d, generator=g),
+        "blocks.0.up.weight": torch.randn(ffn, d, generator=g),
+        "blocks.0.down.weight": torch.randn(d, ffn, generator=g),
         "emb.weight": torch.randn(6, d, generator=g),
     }
 
@@ -85,7 +85,7 @@ def test_shell_graft_refuses_ternary(tmp_path):
     sd = _sd(6)
     w = torch.randint(-1, 2, (8, 4), generator=torch.Generator()
                       .manual_seed(0)).float() * 0.037
-    sd["layers.0.ffn.gate.weight"] = w
+    sd["blocks.0.gate.weight"] = w
     small = _save(tmp_path, "tern.pt", sd)
     with pytest.raises(ValueError, match="ternary"):
         merge.shell_graft(small, {"ffn": 16}, str(tmp_path / "o.pt"))
@@ -99,12 +99,12 @@ def test_shell_graft_function_preserving(tmp_path):
                             arch={"d": 4, "layers": 1, "ffn": 16,
                                   "heads": 2})
     big = torch.load(out, weights_only=True)
-    assert big["layers.0.ffn.gate.weight"].shape == (16, 4)
+    assert big["blocks.0.gate.weight"].shape == (16, 4)
     assert row["grow"] == 8
 
     def hidden(s, x):
-        g = x @ s["layers.0.ffn.gate.weight"].T
-        u = x @ s["layers.0.ffn.up.weight"].T
+        g = x @ s["blocks.0.gate.weight"].T
+        u = x @ s["blocks.0.up.weight"].T
         return torch.nn.functional.silu(g) * u
 
     x = torch.randn(3, 4, generator=torch.Generator().manual_seed(9))
@@ -116,8 +116,8 @@ def test_shell_graft_function_preserving(tmp_path):
     # exactly 0.0 (split-reduction check: a single fused matmul over
     # K=16 vs K=8 may re-pair the SAME summands, which is reduction
     # noise, not graft error — the fp16 near-tie non-bug's cousin)
-    y0 = h0 @ sd["layers.0.ffn.down.weight"].T
-    dn = big["layers.0.ffn.down.weight"]
+    y0 = h0 @ sd["blocks.0.down.weight"].T
+    dn = big["blocks.0.down.weight"]
     y1 = h1[:, :8] @ dn[:, :8].T + h1[:, 8:] @ dn[:, 8:].T
     assert torch.equal(dn[:, 8:], torch.zeros(4, 8))
     assert torch.equal(y0, y1)

@@ -127,7 +127,11 @@ def main(argv=None):
         reuse = (args.update and prior is not None
                  and prior.get("bytes") == st.st_size
                  and prior.get("mtime") == st.st_mtime)
-        want_sha = (not args.no_sha) and not reuse
+        # C7 fix: under --update, CHANGED rows are the ones that must
+        # be re-hashed regardless of --no-sha (--no-sha only governs
+        # the initial fast pass; the old logic left changed rows with
+        # null shas while unchanged rows kept theirs)
+        want_sha = not reuse if args.update else not args.no_sha
         row = scan_checkpoint(p, repo_root, cited, siblings=sib_cache[d],
                               want_sha=want_sha,
                               want_arch=not reuse)
