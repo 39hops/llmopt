@@ -26416,3 +26416,33 @@ Curve riders (unregistered, strong):
 FENCES: single corpus (sat_s2 warm diet); H_full downward-biased
 (unique prefixes + 8-byte hash merge); floor is train loss, same
 uniform position weighting as the census; nats throughout.
+
+## VERDICT SATURATION-1-CELL-B: P-SATURATED-CLASS FIRES — widened diet moves the gate +2 (75 v 73); the star is FULL, growth is the only proven lever (2026-08-11 early, Mac)
+
+Cell (b): crown copy (sat_s2b.pt, from frozen crown_c_grown_s2.pt)
+retrained 3 epochs on the WIDENED diet (warm 178498 + 20% gen8
+sample 35699 = 214197 rows, resident share 0.833, seed string
+"sat-b-widen-2026-08-11"). ep3 loss 0.4097 (not comparable to cell
+(a)'s 0.348 — different corpus, different entropy per LOSS-FLOOR-1).
+weights sha 335b8002acf439b9.
+
+Gate: {3: 23, 4: 11, 5: 18, 6: 8, 7: 15} = 75/120 @ 66.64% valid.
+
+Read against the pre-reg (RESULTS 26196): baseline 73 (crown),
+cell (a) fixed-food 74 (+1), cell (b) new-food 75 (+2).
+- P-HUNGRY (>= +7): does NOT fire.
+- P-SATURATED-CLASS (|delta| <= 2): FIRES on both cells.
+
+The 73-74-75 line is flat within resolution (all deltas < 1.5
+sigma; single-seed fence carries). At fixed mass, neither more
+burning time on the same food NOR a 20% infusion of new food moves
+the gate. Equilibrium gate is a function of (width, diet-class),
+not diet-quantity or training time — "stars are born with their
+size." The only lever with a measured positive at this frontier
+remains GROWTH (the crown's +10.7 grow-inherit line). Star-frame
+read: main-sequence — luminosity set by mass, not by fuel piled on.
+
+FENCES: single seed per cell, single device, gen8 sample is one
+draw; a diet-CLASS change (not more of the adjacent class) remains
+untested — that is the CURRICULUM-FUNNEL arm's territory, not
+this verdict's.
