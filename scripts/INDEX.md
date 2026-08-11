@@ -1007,6 +1007,16 @@ Depth anatomy: WHERE in the stack does the rewrite decision form?
 
 - `main(ckpt: str, d: int, layers: int, ffn: int, heads: int, n: int) -> None`
 
+### scripts/render_hero_neurons.py
+Render the README hero: the weight-space anatomy of one crystal.
+
+- `sha8(path: str) -> str`
+- `repo_head() -> str`
+- `neuron_matrix(ckpt: str, key_sub: str)` — All matrices of the family, rows stacked: every gate neuron in
+- `project(W, method: str)`
+- `render(ckpt: str, key: str, out_stem: str, title: str, mode: str) -> str`
+- `main() -> None`
+
 ### scripts/results_query.py
 Query docs/results-index.jsonl (the RESULTS.md index).
 

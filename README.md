@@ -7,17 +7,21 @@ assembled and run. Weights are scored by what they compute, never by their
 distance to other weights. Every experiment is pre-registered with a
 threshold it can fail, and the failures are published beside the wins.
 
-![Every neuron of one weight matrix, each streak that neuron's movement under
-training, both panels on the same scale. Supervised fine-tuning scatters the
-lattice; the reinforcement-learning run barely moves
-it.](docs/assets/neurons-19m.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)"
+          srcset="docs/assets/neurons-19m-dark.png">
+  <img alt="Every gate neuron of a math-native 19M model as a dot in
+weight space, three projections of the same matrix rows: PCA, unit-sphere
+stereographic, and phase-vs-magnitude polar. Color is neuron magnitude."
+       src="docs/assets/neurons-19m-light.png">
+</picture>
 
-That is one weight matrix — 4,864 neurons, each streak a real displacement in
-896-dimensional space, both panels drawn on the same scale. Imitation learning
-sets the lattice on fire. A whole reinforcement-learning run barely disturbs
-it: the booked weight-movement measurement is roughly **6% of one supervised
-run's displacement**. Nothing in that image was designed. It is the model,
-drawn.
+That is every gate neuron in a 19M-parameter model born on this lab's
+math corpus — 12,288 rows of weight matrices, drawn three ways: global
+PCA axes, directions alone on the unit sphere, and phase against
+magnitude. Color is each neuron's magnitude. Nothing in that image was
+designed. It is the model, drawn — checkpoint hash and repo commit are
+stamped in the footer, so the pixels trace to exact artifacts.
 
 ---
 
