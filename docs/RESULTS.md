@@ -26532,3 +26532,69 @@ standard); mac-axiom CPU one worker; nothing fires without Artin's
 relay/GO; wall numbers n=1 interactive-Mac class. No house
 prediction on the census — the compounding argument cuts both ways
 (most step-9 mass may route through dyadic rms rescales).
+
+## VERDICT REFACTOR-NIGHT-1: catalog + lake + merge API + programmatic booking + axiom adoptions land in one workflow (2026-08-11 early, Mac)
+
+Overnight refactor workflow (14 agents: 7 builders + 7 hazard
+reviewers, ~10 min wall, Artin GO'd scope after two survey agents +
+one RESULTS-sweep reviewer). Everything committed b9ba572..30dfafb
+plus the string-amends fix; pytest 595 green (was 511; +83 new, old
+runlog coverage restored after the one adjudicated defect — the
+runlog builder overwrote tests/test_runlog.py, split to
+tests/test_lab_runlog.py and restored).
+
+SHIPPED:
+1. llmopt/lab/catalog.py + scripts/gen_catalog.py — checkpoint
+   catalog: streaming sha256, shape-only arch read
+   (weights_only=True, mmap), parent_ids filename-lineage parse,
+   RESULTS-citation join, ckpt_manifest.py cross-check (raise on
+   sha mismatch). First pass: 392 rows, 54 cited (33.1 GB uncited
+   pool confirmed). data/catalog/models.jsonl is EXHAUST,
+   regenerable.
+2. llmopt/lab/merge.py — merge ops with doctrine baked in:
+   average REFUSES without shared_lineage (RESULTS 9135 soups
+   crater, 12356 MERGE-1 scope); task_vector probe-grade (RESULTS
+   11197 split law; spec-INDEX "COMPLETE-BOOKED" task-arithmetic
+   claim has ZERO RESULTS backing — flagged); shell_graft refuses
+   ternary parents (26092 crown scope: +10.7 is grow+RE-FEED,
+   line-v-line). Provenance sidecar json per merge. gate_cmd
+   returns command strings, never gates (device doctrine).
+3. llmopt/lab/lake.py + scripts/gen_lake.py — Parquet lake under
+   data/lake/ (gitignored): runs (82 from jobs/), results 903 +
+   result_edges 412 (links 289 / amends 110 / superseded_by 13),
+   models 392, gates (schema: device + n_seeds + weights_sha
+   REQUIRED non-null — cross-device fence and resolution law as
+   schema constraints). DuckDB query() shim.
+4. scripts/book.py — programmatic booking from runfiles markers.
+   Refuses: killed/nonzero/missing marker; gate-dict sum v claimed
+   total mismatch (the "48 from valid 48.27" class); gate without
+   weights_sha in entry (GRADUATES the RESULTS 13463
+   proposed-for-doctrine rule); verdict-type entry claiming |d|<7
+   at n_seeds=1 without explicit fence sentence (resolution law).
+   Composes with gen_results_index.py (calls, never replaces);
+   prints the git command, never commits.
+5. llmopt/lab/runlog.py — per-step streamed receipts, axiom row
+   shape: cumulative digest chain per row, fb counters, wall_s,
+   aborted-as-row, header row with device before numbers; close()
+   writes the runfiles marker. Old llmopt/runlog.py untouched.
+6. llmopt/backends/intbirth_native.py — axiom's prebuilt
+   intbirth .so (exact int64 GEMM x3 + rdiv) behind
+   intmath-compatible signatures with pure-Python fallback;
+   parity battery green. llmopt/vendor/axiom/ — nn_exact_ref.py
+   (.axnn reader/writer), divergence.py, classify_sample.py
+   vendored VERBATIM + provenance headers + source-identity
+   guards; .axnn roundtrip test on data/scorer_s2_dist.axnn.
+7. scripts/log_hygiene.py — PRINT-ONLY archive planner (FROZEN /
+   PRESERVE-AS-RECEIPT / SWEEPABLE / UNKNOWN; --apply gated on
+   ARTIN_GO=1 + zero FROZEN/UNKNOWN; doubled logs/archive path
+   always FROZEN) + completion-signal consolidation map (.DONE /
+   .rc / .marker / .ep writers table); plan booked at
+   docs/hygiene-plan-2026-08-11.md.
+
+Defect ledger (all caught by the paired reviewers or smoke
+queries, all fixed same-session): runlog test-file collision
+(above); legacy string `amends` exploding into per-character
+edges (3006 -> 110, regression test added).
+
+This entry is itself the dogfood: booked by scripts/book.py from
+the run marker at logs/refactor-2026-08-11/run.marker.json.
