@@ -1,0 +1,5 @@
+{"ckpt": "quat_convert_b.pt", "d": 256, "layers": 8, "arm": "base", "solves": {"3": 20, "4": 6, "5": 15, "6": 8, "7": 12}, "total": 61, "valid_pct": 56.03, "dev": "cuda", "quantized_params": 0, "param_share": 0.0}
+{"ckpt": "quat_convert_b.pt", "d": 256, "layers": 8, "arm": "emb", "solves": {"3": 10, "4": 4, "5": 8, "6": 7, "7": 9}, "total": 38, "valid_pct": 22.89, "dev": "cuda", "quantized_params": 10240, "param_share": 0.0012}
+{"ckpt": "quat_convert_b.pt", "d": 256, "layers": 8, "arm": "head", "solves": {"3": 21, "4": 6, "5": 15, "6": 8, "7": 12}, "total": 62, "valid_pct": 51.89, "dev": "cuda", "quantized_params": 10240, "param_share": 0.0012}
+{"ckpt": "quat_convert_b.pt", "d": 256, "layers": 8, "arm": "attn", "solves": {"3": 0, "4": 0, "5": 0, "6": 0, "7": 0}, "total": 0, "valid_pct": 0.0, "dev": "cuda", "quantized_params": 2097152, "param_share": 0.2493}
+{"ckpt": "quat_convert_b.pt", "d": 256, "layers": 8, "arm": "ffn", "solves": {"3": 8, "4": 1, "5": 1, "6": 3, "7": 3}, "total": 16, "valid_pct": 5.67, "dev": "cuda", "quantized_params": 6291456, "param_share": 0.7478}

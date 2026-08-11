@@ -26027,3 +26027,38 @@ never per-width capability comparison); PTQ-not-QAT scope; 3080
 instrument throughout. FEEDS: ROT-X-TERNARY (fires next on this
 box), STAR-PROFILE-3 [HOLD], and the width-redundancy read is the
 star bank's next quantitative row.
+
+## VERDICT ROT-X-TERNARY: P-INDEPENDENT-TOLLS FIRES — 4x quaternionic sharing changes the ternary sensitivity profile by NOTHING; the two compression axes are orthogonal tolls (2026-08-10 night, 3080)
+
+Pre-reg above. Artifact logs/star_profile/rotx_ternary.jsonl
+(pulled, dicts re-summed), control = tonight's STAR-PROFILE-1
+receipt, same driver/device/seeds, fractions of OWN base per the
+pre-reg fence.
+
+  arm    quat (of base 61)   control (of base 65)
+  emb    38  (62%)           38  (58%)
+  head   62  (102%)          65  (100%)
+  attn    0  (0%)             0  (0%)
+  ffn    16  (26%)           17  (26%)
+
+1. P-SYMMETRY-SHIELDS: does not fire — quat attn retains zero,
+   exactly like the control (the bar demanded any nonzero).
+2. P-INDEPENDENT-TOLLS: FIRES. Every class's retention fraction
+   matches the control within 4 points of a percent; the gate
+   matrices carrying the 4x sharing crater identically. Symmetry
+   sharing does NOT coarsen the function toward the lattice —
+   the symmetry axis and the alphabet axis are separate tolls,
+   paid separately (complex ~1, quat ~4, ternary-PTQ everything;
+   a converted-then-quantized pipeline buys no discount).
+House prediction registered pre-run (independent tolls, from
+grown-not-projected): CORRECT — first registered prediction to
+survive tonight, booked against the two that didn't.
+RIDER: quat base reads 61/120 on this instrument, numerically
+equal to S1's booked 61 — noted as a soft replication only (S1's
+device lineage not re-verified tonight; no cross-device claim).
+FENCES: single seed, PTQ scope, fractions-of-own-base per pre-reg.
+FEEDS: closes the rotational-revival bank's first cell; the
+surviving revival question is QAT-side (does a ternary-BORN
+crystal accept symmetry conversion at the same ~4-solve toll? —
+the axes-independence read predicts YES, and that arm would be the
+real test of orthogonality where both tolls are trained-in).
