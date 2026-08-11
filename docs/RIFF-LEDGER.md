@@ -3656,3 +3656,36 @@ without re-introducing history).
   shape is "the core is wherever the function was NOT grown", a
   training-history property, which is Artin's diet-strong-form
   wearing weight-space clothes. ZX transport leg unchanged.
+
+- **2026-08-10 (Artin, night, star-frame fourth movement):
+  HYDROSTATIC EQUILIBRIUM + MASS-CORE RATIO + SURFACE-TO-VOLUME.**
+  The physics half, stated honestly: stars sit in hydrostatic
+  equilibrium — at every shell, gravity inward balances pressure
+  outward; heavier fuels (C, Ne, O, Si) each need a hotter, denser
+  core, so only bigger-MASS stars ignite them; and collapse is not
+  "reaching Fe" per se but the CORE exceeding what pressure can
+  hold (the Chandrasekhar threshold) once fusion stops paying. The
+  surface/volume tie is real physics too: a star radiates through
+  its SURFACE but generates in its core VOLUME — the mass-
+  luminosity scaling lives in that ratio. MAPPING (bankable):
+  (1) harder capabilities need a bigger core = the house's own
+  capability-sets-scale reads (d128 margins compressed v d256;
+  gen-6 growth ladder). (2) COLLAPSE IS ALREADY MEASURED: the
+  1.0-bit {-1,+1} crater is the house's supernova — alphabet
+  pressure exceeded what the capacity could hold; 1.58 bits is the
+  last equilibrium (silicon point, prior movement). (3) The
+  surface/volume split got MEASURED TONIGHT without planning to:
+  interface tensors ARE the surface (emb/head scale as vocab x d)
+  and the body IS the volume (d^2 x layers) — STAR-PROFILE-1's
+  per-param table is a surface-v-volume sensitivity read (surface
+  eye ~90x volume per param; surface mouth free). CANDIDATE RUNG
+  (cheap, same driver): repeat the PTQ profile at d128/d384 —
+  surface/volume ratio changes with d, so the frame predicts emb's
+  per-param sensitivity MOVES with width while body's stays flat;
+  a null says the eye/mouth asymmetry is positional (input v
+  output), not geometric. Fences: labels are labels; equilibrium
+  narration is analogy, the measured objects are craters, margins,
+  and the profile table. Attribution: Artin (equilibrium + ratio +
+  surface/volume tie); Fable (Chandrasekhar correction, the
+  surface=interface / volume=body identification, width-sweep rung
+  form).
