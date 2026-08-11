@@ -73,7 +73,8 @@ def main():
         model.eval()
         solves, valid = G.gate_eval(model, tok, dev)
         tot = sum(solves.values())
-        row = {"arm": arm, "solves": solves, "total": tot,
+        row = {"ckpt": os.path.basename(CKPT), "d": D, "layers": LAYERS,
+               "arm": arm, "solves": solves, "total": tot,
                "valid_pct": round(valid, 2), "dev": dev,
                "quantized_params": n_q, "param_share": round(
                    n_q / n_tot, 4)}
