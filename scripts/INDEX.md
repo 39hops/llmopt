@@ -803,6 +803,8 @@ gen_catalog.py — regenerate data/catalog/models.jsonl (EXHAUST, not evidence).
 ### scripts/gen_codemap.py
 Generate docs/CODEMAP.md: the move-gate inventory of scratch/ and scripts/ (adopted from the Grok structure review, 2026-08-06). One row per file: doc citations (RESULTS/REPRODUCE/BOARD/FINDINGS/handoffs/ specs), in-code references (imports + literal path strings), a mechanically derived class, and the filename family. The class ladder is observable-facts-only, no curation:
 
+- `_tracked() -> set[str] | None` — Repo-relative paths git knows about, or None if git is unusable.
+- `_is_tracked(f: Path) -> bool`
 - `collect_files(base: str, pat: str) -> list[Path]`
 - `load_texts(paths: list[str]) -> dict[str, str]`
 - `load_code() -> dict[str, str]`

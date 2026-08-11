@@ -30,6 +30,10 @@ jobs:
           python -m pip install -U pip
           pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install pytest numpy sympy
+          # --no-deps: the deps above are already pinned to CPU wheels,
+          # and pyproject asks for torch>=2.4 which would pull the CUDA
+          # build over the top of them
+          pip install -e . --no-deps
       - name: pytest
         run: pytest tests/ -q
 

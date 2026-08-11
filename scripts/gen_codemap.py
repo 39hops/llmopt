@@ -42,8 +42,36 @@ DOC_GROUPS = {
 CODE_DIRS = ["scratch", "scripts", "llmopt", "tests"]
 
 
+def _tracked() -> set[str] | None:
+    """Repo-relative paths git knows about, or None if git is unusable.
+
+    CODEMAP describes the REPOSITORY, so it must read the same on every
+    checkout. Globbing the working tree instead made it depend on
+    whichever untracked scratch directories a machine happened to have
+    (found 2026-08-11 when CI regenerated a different file than the Mac
+    had committed). Untracked files are excluded; if git is not
+    available the glob is used unchanged.
+    """
+    import subprocess
+    try:
+        r = subprocess.run(["git", "ls-files"], cwd=ROOT,
+                           capture_output=True, text=True, timeout=30)
+        if r.returncode != 0:
+            return None
+        return set(r.stdout.split())
+    except Exception:
+        return None
+
+
+TRACKED = _tracked()
+
+
+def _is_tracked(f: Path) -> bool:
+    return TRACKED is None or str(f.relative_to(ROOT)) in TRACKED
+
+
 def collect_files(base: str, pat: str) -> list[Path]:
-    return sorted((ROOT / base).glob(pat))
+    return sorted(f for f in (ROOT / base).glob(pat) if _is_tracked(f))
 
 
 def load_texts(paths: list[str]) -> dict[str, str]:
@@ -64,6 +92,8 @@ def load_code() -> dict[str, str]:
         base = ROOT / d
         for f in sorted(base.glob("**/*.py")) + sorted(base.glob("**/*.sh")):
             if "leancheck" in f.parts or "__pycache__" in f.parts:
+                continue
+            if not _is_tracked(f):
                 continue
             out[str(f.relative_to(ROOT))] = f.read_text(errors="replace")
     return out

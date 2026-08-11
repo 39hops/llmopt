@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 164, library 165, reproduce-pinned 9, results-cited 123, spec-cited 43
+Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 123, spec-cited 43
 
 ## scratch/
 
@@ -290,7 +290,6 @@ Census: UNCITED 164, library 165, reproduce-pinned 9, results-cited 123, spec-ci
 | rat | rat_deploy.py | library | RESULTS×1, specs×5 | 3 |
 | rat | rat_repair.py | library | — | 1 |
 | rational | rational_snap.py | library | RESULTS×1, specs×1 | 6 |
-| remote.env | remote.env.sh | library | — | 6 |
 | retention | retention_watcher.sh | UNCITED | — | — |
 | rev2 | rev2_d768.py | results-cited | RESULTS×1, specs×1 | — |
 | rev3 | rev3_crown.py | results-cited | RESULTS×3, specs×3 | — |
