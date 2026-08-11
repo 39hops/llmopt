@@ -27154,3 +27154,42 @@ stay individually sub-sigma (the n=3 claim is the BINARY
 survives/craters pattern, not a delta magnitude); window 17:00
 EST — if the window closes mid-run, completed pairs book, missing
 pairs book NOT-RUN.
+
+## VERDICT MERGE-SPACE-5 (R2d): P-ADDRESS-REPLICATES FIRES AT n=3 — same-init merges survive at every paired seed; init-is-the-address graduates to replicated (2026-08-11 afternoon, 3080)
+
+Ran to completion (logs/merge_space5/driver.log,
+logs/merge_space5.DONE; both birth logs end "saved").
+
+  s2o (BIRTH_SEED=2, ORDER_SEED=7): {3:10,4:1,5:7,6:3,7:4} = 25/120
+      sha feb7227ac3ae9f59
+  s3o (BIRTH_SEED=3, ORDER_SEED=7): {3:11,4:1,5:8,6:7,7:4} = 31/120
+      sha 7bb774df1a19bb1a
+  avg2o (s2 23 + s2o 25): {3:11,4:1,5:7,6:4,7:2} = 25/120
+      sha f5a98d0a31e6e124
+  avg3o (s3 30 + s3o 31): {3:9,4:2,5:8,6:7,7:4} = 30/120
+      sha 2a19cf3c5829f087
+
+The n=3 paired table (same-init, independent-order merge per seed):
+  seed  pair gates   merge   in-band?
+  1     12, 11       13      YES (R2b)
+  2     23, 25       25      YES
+  3     30, 31       30      YES
+
+BARS v measured:
+1. P-ADDRESS-REPLICATES: FIRES. All three merges >= min(pair)-2
+   (13>=9, 25>=21, 30>=28). Zero craters anywhere. The
+   qualitative claim — shared initialization alone keeps two
+   independently-ordered trainings mergeable at d64 — is now
+   REPLICATED at n=3 paired seeds across the family's full
+   capability range (11-31), resolution-law grade.
+2. REFUTED-IF (any crater): did not occur.
+Pattern note (descriptive): at every seed the merge lands at or
+within 1 of max(pair) — soup-flattens-onto-best, consistent with
+MERGE-SPACE-4. ORDER_SEED again a small positive lever at higher
+seeds (23->25, 30->31; sub-sigma individually).
+
+FENCES: single device (3080), family-only; the n=3 claim is the
+binary survives/craters pattern — per-pair delta magnitudes stay
+sub-sigma and are not claimed; ORDER_SEED=7 shared across pairs
+(the order-stream is a controlled second variable, not a third
+random draw). Gate rows to the lake in this commit.

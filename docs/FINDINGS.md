@@ -1129,6 +1129,13 @@ regime tag on every bullet is the fence.
   a fresh d512 landed on the grown crown's reference line — while gate
   capability saturates in width long before the floor does.
   ([VERDICT FLOOR-HK-1](RESULTS.md#L27055).)
+- [REPLICATED] [DEVICE-SCOPED] [FREE-RUN-GATED]
+  [REGIME-SCOPED: house crystals] Init-is-the-address, replicated: at n=3
+  paired seeds spanning the family's 11-31 capability range, every
+  same-init independent-order merge landed in the parent band and none
+  cratered, while every independent-init merge in the same family had gated
+  exactly zero. Merges flatten onto the better pair member at every seed.
+  ([VERDICT MERGE-SPACE-5](RESULTS.md#L27158).)
 - [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: closed-system math] At n=1 activation probe,
   a small population of digit-periodic neurons showed partial Fourier
   character; this is an in-vivo sighting, not a general representation law.
