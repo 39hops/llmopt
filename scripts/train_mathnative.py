@@ -267,13 +267,21 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
 
     import contextlib
     for ep in range(start_ep, EPOCHS):
+        # ORDER_SEED=0 (default) keeps the historic epoch-seeded
+        # stream BYTE-IDENTICAL (every booked birth reproduces);
+        # nonzero forks the data ORDER while BIRTH_SEED holds the
+        # init fixed (MERGE-SPACE-3's lever). String-seeded per
+        # doctrine — never tuple hashes.
+        _oseed = int(os.environ.get("ORDER_SEED", "0"))
+        _rng = (random.Random(ep) if _oseed == 0
+                else random.Random(f"order-{_oseed}-{ep}"))
         if starts is None:  # proper packing: shuffle THEN pack
             perm = list(range(len(enc)))
-            random.Random(ep).shuffle(perm)
+            _rng.shuffle(perm)
             idx = pack_epoch(perm)
         else:
             idx = list(starts)
-            random.Random(ep).shuffle(idx)   # per-epoch order shuffle
+            _rng.shuffle(idx)   # per-epoch order shuffle
         tot = steps = 0
         t0 = time.time()
         for b in idx:

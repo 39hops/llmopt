@@ -26918,3 +26918,28 @@ comparisons; all deltas here are sub-sigma at n=1 — direction
 claims are explicitly NOT made; window fence respected (all cells
 ran). Gate rows appended to the lake gates table (device=3080,
 n_seeds=1) in the booking commit.
+
+## PRE-REG MERGE-SPACE-3 (R2b): init v data order — the deconfound cell (2026-08-11 midday, 3080)
+
+MERGE-SPACE-2's refutation is fenced: s1/s1w shared BOTH init and
+epoch-seeded data order. This cell cuts the confound with the new
+ORDER_SEED knob (scripts/train_mathnative.py, default stream
+byte-identical; nonzero forks the per-epoch shuffle stream while
+BIRTH_SEED pins the init):
+- s1o: BIRTH_SEED=1, ORDER_SEED=7, budget 6144, 3ep — SAME init
+  as s1, INDEPENDENT data order, same packing.
+- avg_ord = average(s1, s1o).
+- Control read (no new run): R1's craters had independent init
+  AND shared order — order-sharing did not save them.
+BARS:
+1. P-INIT-IS-THE-ADDRESS: avg_ord gates >= min(s1, s1o) - 2 —
+   shared init ALONE (order now independent) keeps the merge in
+   the parent band. Fires = the basin really is chosen at
+   initialization; MERGE-SPACE-2's reading survives its fence.
+2. REFUTED-IF: avg_ord craters (< min - 7) — then mergeability
+   needed init AND order together, and the R2 reading demotes to
+   shared-recipe-lockstep.
+FENCES: single seed, single device (3080), family-only; deltas
+<= 2 book unresolved per resolution law; ORDER_SEED knob ships in
+the same commit with the default-stream identity noted (booked
+births unaffected); window 17:00 EST.
