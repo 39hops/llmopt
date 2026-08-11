@@ -3048,6 +3048,27 @@ lab.config — typed env-var config for arm drivers (spec 2026-08-05-llmopt-lab-
 - `_cast(name: str, raw: str, typ) -> object`
 - `class LabConfig` (from_env, echo)
 
+### llmopt/lab/figstyle.py
+lab.figstyle — the house figure style: validated palette, vendored fonts, light and dark surfaces.
+
+- `_register_fonts() -> bool` — Add the vendored fonts to matplotlib. Returns whether Inter is
+- `color(entity: str, index: int=0, mode: str='light') -> str` — Color for a named entity, stable across every house figure.
+- `sequential(n: int) -> list[str]` — n evenly spread steps of the single-hue sequential ramp.
+- `rc(mode: str='light') -> dict` — House rcParams. Recessive chrome, thin marks, real typography.
+- `figure(title: str='', subtitle: str='', mode: str='light', figsize: tuple[float, float]=(7.2, 4.0), **kw)` — A styled figure + axes with house title furniture.
+- `footer(ax, text: str) -> None` — Provenance line under the plot: the sha, the verdict, the fence.
+- `save(fig, name: str, outdir: Path | str | None=None, png: bool=True, svg: bool=True, dpi: int=220) -> list[Path]` — Write the figure. PNG for README/LinkedIn, SVG for the paper.
+
+### llmopt/lab/figures.py
+lab.figures — the house chart forms.
+
+- `_both_modes(build, name: str, outdir=None) -> list[Path]` — Render light and dark from one description. Dark is drawn with
+- `gate_bars(name: str, arms: dict, title: str='', subtitle: str='', source: str='', outdir=None)` — arms: label -> (solved, total). Percent bars with solved/total
+- `curves(name: str, xs, series: dict, title: str='', subtitle: str='', xlabel: str='', ylabel: str='', source: str='', logx: bool=False, outdir=None, annotate_last: bool=True)` — series: label -> y values over shared xs. Direct end-labels, no
+- `ladder(name: str, points: dict, title: str='', subtitle: str='', xlabel: str='', ylabel: str='', source: str='', reference: tuple | None=None, entity: str='series', fmt: str='{:.4f}', outdir=None)` — points: ordered x-label -> y. One series across an ordered axis,
+- `scatter(name: str, series: dict, title: str='', subtitle: str='', xlabel: str='', ylabel: str='', source: str='', identity: bool=False, outdir=None)` — series: label -> (xs, ys). Every pair of colors is compared in a
+- `stat(name: str, value: str, label: str, detail: str='', source: str='', entity: str='series', outdir=None)` — A hero number: the finding IS the value, so no chart is drawn.
+
 ### llmopt/lab/gate.py
 lab.gate — the standard 120 gate, ADOPTED VERBATIM from scripts/step_grpo_micro.py (2026-08-11; that file stays frozen — it is the 91-reference hub backing every gate number in RESULTS). Function bodies below are character-identical to the source; guarded by tests/test_lab_adoption.py (source-identity). Fix a bug here and there in the SAME commit, or the guard fails.
 

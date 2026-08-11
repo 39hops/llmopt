@@ -49,6 +49,9 @@ mlx = ["mlx>=0.15", "mlx-lm"]
 lake = ["pyarrow>=15", "duckdb>=1.0", "pandas>=2.0"]
 # CUDA kernel experiments (llmopt/kernels/triton_kernels.py)
 triton = ["triton>=3.0"]
+# House figure style (llmopt/lab/figstyle.py, figures.py). Fonts are
+# vendored in assets/fonts/, so only the plotting library is needed.
+figures = ["matplotlib>=3.8"]
 
 [project.urls]
 Repository = "https://github.com/39hops/llmopt"
