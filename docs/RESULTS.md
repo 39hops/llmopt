@@ -26101,3 +26101,63 @@ inheritance) is worth ~+10 and only exists on the fp32 substrate
 FENCES: fresh absolutes never against the 76/75 originals (device
 era + band class, per pre-reg); Mac/mps instrument; identity
 pre-checks passed in-driver (c gates birth==grown exact).
+
+## VERDICT STEP9-CLIFF-SIZE (counter-booked): P-STRUCTURAL FIRES, RING-SCOPED — three rungs to 2^18 bits all throw at the same floor site; the shadow narrows to width 1 at ANY paid precision and reconstruct_rat exhausts the fixed 256-prime ring (2026-08-10 late night, mac-axiom CPU; house re-derivation from 4042b33/42713e5)
+
+Pre-reg L25887. House verification from their commits, not their
+tables: rows_rung{16384,65536,262144}.jsonl each carry 9 streamed
+rows; steps 1-8 digests BYTE-MATCH the booked ladder (7c9b8f0b ->
+41bfedf6) in all three runs; all three stderr logs end EXIT:134
+with the throw naming the site: "modulus exhausted (site floor
+w=1 lo_bits=<prec> e=-(prec-42))". Arithmetic verified at all
+four known attempts (4,000 / 16,384 / 65,536 / 262,144): lo_bits
+= paid precision exactly, e = -(prec-42) exactly — the 42 is the
+site's booked value-magnitude constant (RESULTS 23990/24088
+lineage). Attempt walls 103 s / 383 s / 1,868 s (~3.7x per 4x
+precision — the shadow term goes superlinear at extreme precision,
+the ring-bound amendment's named caveat now measured), all far
+inside the 4 h timebox; the timebox never fired, every attempt
+left its receipt.
+
+BAR: P-STRUCTURAL as registered ("all three rungs throw") FIRES —
+with the seat's mechanism scope adopted VERBATIM after source
+check (exact_anchor2.hpp:257-299): the shadow SUCCEEDS (width-1
+straddle at every precision, no finite demand being approached);
+the throw is rational reconstruction exhausting the FIXED ring.
+Honest wording: STRUCTURAL WITH RESPECT TO SHADOW PRECISION AT
+FIXED RING. The untested knob is PRIME COUNT — which converges
+with the house's ring-bound wall result from the opposite
+direction: the ring is the cost floor AND the feasibility ceiling.
+NEXT ARM (proposed by seat, NOT started, needs Artin GO):
+NPRIMES ladder 512/1024 at fixed shadow precision — separates
+"ring too small" from "tie exact in any modulus". Instrument note
+verified in source: their AX_PREC_STEP gate (run_anchor2.cpp:123-
+128) is what makes the run match the registration (ramp 1-8, rung
+price at 9 only); adopted as the reference form.
+
+## COUNTER-BOOK FP32LIMB-R2R3-GPU: the Metal battery is GREEN — FTZ-PRESENT (range restriction required), bit-identical to the R1 oracle x3 seeds, and the wall bar passes by an order of magnitude: exact fp32-limb GEMM at 0.120x cpu_fp64, int64-accumulator at 0.004x (2026-08-10 late night, M3 Pro; house re-derivation from 42713e5)
+
+Pre-reg 24886, dispatch GO at the battery's natural end (the
+booked window; the missed-interleave amendment 25500 stands as
+the path there). Receipts read house-side from
+tools/fp32limb/receipts/:
+- r2_ftz.log: denormal-producing add/sub FLUSH, mul at 2^-140
+  PRESERVED — verdict FTZ-PRESENT, the R1 envelope's range
+  restriction is REQUIRED on GPU, exactly the contract the _f24
+  flush-to-zero input clause anticipated.
+- r2_biteq.log: seeds 1/2/3, n=64, BIT-IDENTICAL to the CPU
+  oracle, bad=0 — the MPS KEY's exactness transports to the
+  device.
+- r3_wall.log: cpu_fp64 median 0.3062 s; fp32limb 0.0366 s =
+  0.120x; intacc 0.0011 s = 0.004x. The registered bar (<= 1.07x)
+  is passed by 8.4x and ~280x respectively — the first EXACT GEMM
+  on Metal is not a tax, it is a speedup. Fence: fp32limb spread
+  0.0215 s on a 0.0366 s median (n=7 reps, noisy) — the RATIO
+  class is safe (bar cleared by 8x), the absolute medians are
+  single-battery numbers. Cross-device doctrine: these Metal
+  ratios never sit beside the 3080's 74x RNS loss — different
+  instruments, permanently.
+STANDING: the exact-inference path toward the L7226 decision-flip
+retest (NOTE EXACT-GATE-POWER) now has its GEMM. Montgomery/TC
+RNS stays [HOLD]. Their relay -20 numbering noted; house next
+is -21.

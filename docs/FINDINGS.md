@@ -240,7 +240,14 @@ VERDICT](RESULTS.md#L10676).)
   integer simdgroup MMA and the banked int8-MMA Metal port is superseded,
   not deferred; the fast-math pin is runtime-checkable (MTLMathModeSafe)
   and the dispatch interlock was verified refusing without its flag.
-  ([RECEIPT FP32LIMB-R2R3-BUILT](RESULTS.md#L25050).)
+  ([RECEIPT FP32LIMB-R2R3-BUILT](RESULTS.md#L25050).) The dispatched
+  battery is GREEN: FTZ-PRESENT on device (range restriction required,
+  as the envelope's flush-to-zero clause anticipated), bit-identical to
+  the CPU oracle across three seeds, and the wall bar passed by an
+  order of magnitude — exact fp32-limb GEMM at 0.120x cpu_fp64 and the
+  int64-accumulator at 0.004x: the first exact GEMM on Metal is a
+  speedup, not a tax.
+  ([COUNTER-BOOK FP32LIMB-R2R3-GPU](RESULTS.md#L26138).)
 - [NULL] [DEVICE-SCOPED] [REGIME-SCOPED: measured deployment artifacts]
   The naive-portable RNS chain shape has no break-even depth: a scalar
   mulmod-ladder implementation (toolchain-forced — the box's MSVC has no
@@ -268,8 +275,16 @@ VERDICT](RESULTS.md#L10676).)
   the RNS ring is. Step 9 defeated a third time with the wall now
   MEASURED: demand 56 to 445 accelerating, then a >=15k-bit cliff; a
   derivative (anticipating) term is structurally unavailable without
-  re-introducing history and killing invariance.
-  ([VERDICT FUNNEL-PREC](RESULTS.md#L25451).)
+  re-introducing history and killing invariance. The cliff then took
+  its strongest test: three precision rungs to 2^18 bits all throw at
+  the same floor site with lo_bits = paid precision and e = -(prec-42)
+  exactly — the shadow narrows to width 1 at ANY precision and the
+  throw is rational reconstruction exhausting the fixed 256-prime
+  ring. The tie is structural WITH RESPECT TO SHADOW PRECISION AT
+  FIXED RING; the untested knob is prime count, and the ring is now
+  measured as both the cost floor and the feasibility ceiling.
+  ([VERDICT FUNNEL-PREC](RESULTS.md#L25451); [VERDICT
+  STEP9-CLIFF-SIZE](RESULTS.md#L26105).)
 - [SINGLE-SEED] [DEVICE-SCOPED] [REGIME-SCOPED: house crystals]
   Post-hoc ternary is NOT where trained tolerance lives: quantizing
   the fp-trained d256 crystal one tensor class at a time, the output
