@@ -6,7 +6,13 @@
 # 120 (gate script invoked by the runner that owns each checkpoint).
 # Pre-reg: RESULTS PRE-REG FLOOR-HK-1. Streams per-width, smallest
 # first so partial results book if the wall hits.
-set -e
+# pipefail is load-bearing: these steps pipe through `tee`, and a
+# pipeline reports the LAST command's status. Without it a training
+# process that dies mid-epoch leaves tee returning 0, set -e never
+# fires, the gate step runs against a checkpoint that was never
+# written, and the driver prints 'done'. That happened on
+# 2026-08-11 (GROW-DECOMP-1 cell A) and the job recorded rc=0.
+set -eo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p logs/floor_hk1
 for D in 64 128 512; do

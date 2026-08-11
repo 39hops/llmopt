@@ -3,7 +3,13 @@
 # reference is d512-grown; the ladder needs its own fresh d256).
 # Same recipe as floor_hk1.sh, then gates for ALL FOUR ladder widths
 # as the separate post-birth step the pre-reg registered.
-set -e
+# pipefail is load-bearing: these steps pipe through `tee`, and a
+# pipeline reports the LAST command's status. Without it a training
+# process that dies mid-epoch leaves tee returning 0, set -e never
+# fires, the gate step runs against a checkpoint that was never
+# written, and the driver prints 'done'. That happened on
+# 2026-08-11 (GROW-DECOMP-1 cell A) and the job recorded rc=0.
+set -eo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p logs/floor_hk1
 BIRTH_SEED=0 .venv/bin/python scripts/train_mathnative.py \

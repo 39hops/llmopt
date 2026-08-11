@@ -2,7 +2,13 @@
 # GROW-DECOMP-1 cell A driver (Mac). Pre-reg: RESULTS PRE-REG
 # GROW-DECOMP-1. One fresh birth at the crown's exact arch, then
 # the standard gate.
-set -e
+# pipefail is load-bearing: these steps pipe through `tee`, and a
+# pipeline reports the LAST command's status. Without it a training
+# process that dies mid-epoch leaves tee returning 0, set -e never
+# fires, the gate step runs against a checkpoint that was never
+# written, and the driver prints 'done'. That happened on
+# 2026-08-11 (GROW-DECOMP-1 cell A) and the job recorded rc=0.
+set -eo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p logs/grow_decomp1
 BIRTH_SEED=0 .venv/bin/python scripts/train_mathnative.py \
