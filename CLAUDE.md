@@ -31,13 +31,17 @@ implementations. See README for the full inventory and measured numbers.
   session makes the edits and is accountable for verifying them.
   The bar did not move with the rule: pytest green, claims checked
   against the source, no booking on an unverified number.
-- **Sub-agents review; they do not write.** Read-only reviewers
-  (sanctioned 2026-07-24, standing since 07-31) for ledger-keeping,
-  verdict cross-checks (pre-reg vs measured, BEFORE booking), and
-  red-teaming: cap 5 concurrent, spawn on ask, Opus model, read-only
-  tools. They MENTION (file, line, what's wrong) and never
-  edit/run/launch. Findings are proposals, not truth — the session
-  model verifies each one line-by-line before adopting it.
+- **Sub-agents: review by default, MAY WRITE when directed** (Artin,
+  2026-08-11 — the read-only default is a habit, not a safety
+  property). Reviewers (sanctioned 2026-07-24, standing since
+  07-31) for ledger-keeping, verdict cross-checks (pre-reg vs
+  measured, BEFORE booking), and red-teaming: cap 5 concurrent,
+  spawn on ask, Opus model. In the default review shape they MENTION
+  (file, line, what's wrong) and findings are proposals, not truth —
+  the session model verifies each one line-by-line before adopting
+  it. Opus 5 sub-agents may also be given write tools and asked to
+  make code changes outright; the session model still owns the
+  verification bar for whatever lands.
 - **Oracle-verified everything.** Decoding must be token-identical to eager
   greedy (`llmopt/eval/equivalence.py`); math answers checked by sympy symbolic
   equivalence, never string match; asm/code scored by the toolchain
