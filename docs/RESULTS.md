@@ -26481,3 +26481,54 @@ house-side per the pre-reg's named successor.
 
 STANDING: Montgomery/TC RNS [HOLD] unchanged; their GPU battery
 closed green. Next move house-side: co-factor/witness pre-reg.
+
+## PRE-REG COFACTOR-WITNESS-2: certify step 9's floor without reconstructing the value — denominator-ledger design gate, then the witness (2026-08-11 early, spec'd house-side; probes run mac-axiom CPU on Artin relay/GO)
+
+Successor named by NPRIMES-LADDER bar 2 (P-EXACT-TIE fired,
+counter-booked this session): the step-9 reconstruction target
+appears not to exist at any tested budget on EITHER axis (precision
+offset-42 law; ring-invariant under 4x modulus). The remaining
+route is certifying floor(v) WITHOUT reconstructing v.
+
+INHERITED CONSTRAINTS (from COUNTER-BOOK COFACTOR-GATE, 24379 —
+this pre-reg may not ignore them):
+- The blocking denominator at the rms seam is NOT locally known:
+  it arrives inside s2 from upstream non-dyadic divisions (isqrt,
+  softmax sums, AdamW denominators). A locally-built witness reads
+  nothing.
+- The gcd-tension is THE open problem: witness needs the REDUCED
+  denominator; a non-reduced co-factor c compounds multiplicatively
+  through gemm; reduction needs the gcd the anchor deleted.
+
+DESIGN: a DENOMINATOR LEDGER — track, in residues only (gcd-free,
+ring-native), a running product D' of every non-dyadic divisor the
+prefix emits on the path into the blocking value, alongside a BIT
+BOUND on c = D'/D_red accumulated per contraction. Then decide the
+floor by the exact ring sign of (v - k) * D' — an integer test, no
+rational reconstruction, no gcd.
+
+ARMS (strictly ordered, each gates the next):
+1. LEDGER CENSUS (probe, trace build only): instrument the step-9
+   path to COUNT the non-dyadic divisor sites feeding the blocking
+   value and the bit-growth of D' step-by-step. Books regardless
+   of outcome — this is the c-compounding curve the open problem
+   asked for.
+2. Build gate reads on the census:
+   P-LEDGER-BOUNDED: D' bit-size at step 9 <= 2x the shadow
+   precision that already failed (<= 32768 bits) — the sign test
+   is affordable in-ring; witness build is GO.
+   NOT-APPLICABLE (registered in advance, the honest death): D'
+   blows the bound — gcd-tension is CONFIRMED-BLOCKING for deep
+   prefixes; the line dies with the compounding curve as its
+   obituary and no bar language attaches further.
+3. WITNESS RUN (only if GO): P-SIGN-DECIDES — step 9 completes
+   with ZERO reconstructions, floor decided by the ledger sign
+   test; steps 1-8 digests byte-match 7c9b8f0b... -> 41bfedf6...
+   (void otherwise); step-9 outcome digest books as the FIRST
+   post-cliff row.
+FENCES: probes are #ifdef AX_ANCHOR2_TRACE only, default build
+byte-untouched (attestation both sides, the COFACTOR-GATE
+standard); mac-axiom CPU one worker; nothing fires without Artin's
+relay/GO; wall numbers n=1 interactive-Mac class. No house
+prediction on the census — the compounding argument cuts both ways
+(most step-9 mass may route through dyadic rms rescales).
