@@ -26598,3 +26598,71 @@ edges (3006 -> 110, regression test added).
 
 This entry is itself the dogfood: booked by scripts/book.py from
 the run marker at logs/refactor-2026-08-11/run.marker.json.
+
+## PRE-REG MERGE-SPACE-1 (R1): pairwise merge search on a fresh micro-star family — does ANY merge beat both parents? (2026-08-11 early, 3080, Artin GO "queue R1-R8")
+
+First arm priced by MICRO-STAR-1 (births in minutes) and armed by
+the new merge API. Instrument: FOUR fresh d64 births on the 3080
+(recipe = MICRO-STAR-1 exactly, BIRTH_SEED in {1,2,3,4} — seed 0
+already exists), plus TWO shared-init forks (seed 1 weights copied
+at ep1, trained 2 more epochs each on shuffled order 1a/1b) — six
+parents total. Merge cells, all via llmopt/lab/merge.py with
+provenance sidecars:
+- average on all 6 pairwise independent pairs (shared_lineage
+  passed with an OVERRIDE note — this IS the registered
+  replication of the soups-crater at micro scale);
+- average on the one true shared-init pair (1a, 1b);
+- task_vector (base=seed1-ep1 fork point, a=1a, b=1b), probe-grade.
+Every merged child auto-gated (standard 120, same device, gate
+books to the lake gates table with device=3080 n_seeds=1).
+
+REGISTERED PRIOR (house, on the record): independent-pair averages
+CRATER (NIGHT-28b RESULTS 9135: 1e-6 twins cross basins) — we
+predict every independent merge gates BELOW min(parents), most
+near zero. The informative cells are the shared-init pair and the
+task-vector.
+
+BARS:
+1. P-CRATER-REPLICATES: all 6 independent averages gate <
+   min(parents) - 7. (Confirms basin-crossing at micro scale — the
+   catalog's shared-init refusal is correctly calibrated.)
+2. P-SHARED-INIT-MERGEABLE: the shared-init average gates >=
+   min(1a, 1b) - 2 (merge is free inside a lineage — greedy-soup's
+   home turf transplants to house births).
+3. P-TASK-VECTOR-ALIVE: task-vector child gates >= max(1a,1b) + 7
+   (would be the FIRST booked positive task-vector result; prior
+   is against it — split law 11197).
+FENCES: single seed per cell, single device (3080), gates compare
+only inside this family; merged-child gate deltas < 7 book with
+the single-seed fence sentence; window closes 17:00 EST — cells
+that miss the window book as NOT-RUN, never rushed onto the Mac
+(cross-device).
+
+## PRE-REG FLOOR-HK-1 (R3): does the loss floor walk down the H_k curve as width grows? (2026-08-11 early, Mac)
+
+The LOSS-FLOOR-1 rider (RESULTS 26404), armed. The frozen
+reference curve (RESULTS 26382): H_16=0.367, H_32=0.187,
+H_64=0.176, H_full=0.175 nats on the sat_s2 warm diet. LOSS-FLOOR-1
+measured the d256 floor at 0.348 — between H_16 and H_32.
+
+Instrument: THREE fresh births on the SAME warm diet, same recipe
+class (3 epochs, fp32 Mac/mps, BIRTH_SEED=0), widths d64, d128,
+d512 (d256 already measured = 0.348 from sat_s2). Observable per
+width: final-epoch mean train loss (the floor) + standard 120 gate.
+Placement of each floor on the H_k curve read as effective-context
+k_eff (interpolated).
+
+BARS:
+1. P-FLOOR-DESCENDS: floor(d64) > floor(d128) > 0.348 >
+   floor(d512) — the floor is monotone in width on a fixed diet.
+2. P-KNEE-CEILING: floor(d512) >= H_32 (0.187) — even 4x width
+   does not cross the k=32 knee; the marginal 16->32 structure
+   stays unextracted (effective context is architecture-bound,
+   not size-bound). REFUTED if floor(d512) < 0.187, which would
+   read as width buying context depth directly.
+3. Curve rider: k_eff(d) table books regardless — the mass-
+   luminosity foot in loss units.
+FENCES: floors are train-loss means on ONE diet, nats; floors
+compare only within this ladder + sat_s2 (same corpus, same
+device class); gates carry single-seed fences; d512 on Mac mps is
+the long pole (hours-class) — books when it lands, never rushed.
