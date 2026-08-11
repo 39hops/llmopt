@@ -363,7 +363,7 @@ Census: UNCITED 165, library 163, reproduce-pinned 9, results-cited 123, spec-ci
 | vrm | vrm_ab.py | library | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS×1 | — |
-| wsl | wsl.sh | library | RESULTS×10, specs×17 | 4 |
+| wsl | wsl.sh | library | RESULTS×10, specs×19 | 4 |
 | z1 | z1_gate.sh | UNCITED | — | — |
 | z1s | z1s_hot_watcher.sh | UNCITED | — | — |
 | zx | zx_chain.sh | UNCITED | — | — |
@@ -374,7 +374,7 @@ Census: UNCITED 165, library 163, reproduce-pinned 9, results-cited 123, spec-ci
 
 | family | file | class | doc citations | refs |
 |---|---|---|---|---|
-|  | __init__.py | library | RESULTS×1, specs×2 | 1 |
+|  | __init__.py | library | RESULTS×1, specs×3 | 1 |
 | arena | arena.py | UNCITED | — | — |
 | autopsy | autopsy_int.py | UNCITED | — | — |
 | bench | bench_adaptive.py | spec-cited | specs×1 | — |
@@ -468,7 +468,7 @@ Census: UNCITED 165, library 163, reproduce-pinned 9, results-cited 123, spec-ci
 | farm | farm_v22.py | library | — | 1 |
 | figlib | figlib.py | UNCITED | — | — |
 | gen | gen_catalog.py | library | RESULTS×1, specs×1 | 1 |
-| gen | gen_codemap.py | library | RESULTS×1, specs×1 | 1 |
+| gen | gen_codemap.py | library | RESULTS×1, specs×2 | 1 |
 | gen | gen_dispatch_labels.py | library | — | 2 |
 | gen | gen_dispatch_labels_v2.py | UNCITED | — | — |
 | gen | gen_figures_web.py | UNCITED | — | — |
