@@ -21,13 +21,13 @@ importable on torch-less environments (tests skip cleanly).
 """
 from __future__ import annotations
 
-import hashlib
 import json
 import os
 import re
-import subprocess
 import time
 from pathlib import Path
+
+from llmopt.lab import hash as lab_hash
 
 __all__ = ["average", "task_vector", "shell_graft", "gate_cmd",
            "is_ternary_lattice"]
@@ -36,22 +36,11 @@ __all__ = ["average", "task_vector", "shell_graft", "gate_cmd",
 # ---------------------------------------------------------------- helpers
 
 def _sha256(path: str) -> str:
-    h = hashlib.sha256()
-    with open(path, "rb") as f:
-        for chunk in iter(lambda: f.read(1 << 20), b""):
-            h.update(chunk)
-    return h.hexdigest()
+    return lab_hash.sha256_file(path)
 
 
 def _git_sha() -> str:
-    try:
-        return subprocess.run(
-            ["git", "rev-parse", "HEAD"],
-            cwd=Path(__file__).resolve().parent,
-            capture_output=True, text=True, timeout=10,
-        ).stdout.strip() or "unknown"
-    except Exception:
-        return "unknown"
+    return lab_hash.git_sha()
 
 
 def _load(path: str):

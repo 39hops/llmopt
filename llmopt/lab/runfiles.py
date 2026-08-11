@@ -24,10 +24,11 @@ from __future__ import annotations
 
 import json
 import os
-import subprocess
 import sys
 import time
 from pathlib import Path
+
+from llmopt.lab import hash as lab_hash
 
 __all__ = ["run_dir", "write_marker", "read_marker", "is_done",
            "rc_of", "require_resume_marker"]
@@ -46,13 +47,9 @@ def run_dir(name: str, root: str | Path = "logs") -> Path:
 
 
 def _git_sha() -> str:
-    try:
-        return subprocess.run(
-            ["git", "rev-parse", "--short", "HEAD"],
-            capture_output=True, text=True, timeout=10,
-        ).stdout.strip() or "unknown"
-    except Exception:
-        return "unknown"
+    # cwd-anchored via lab.hash (grok cross-check: the un-anchored
+    # variant reported whatever repo the CALLER was standing in)
+    return lab_hash.git_sha(short=True)
 
 
 def write_marker(dir_or_path: str | Path, kind: str, rc: int | str,

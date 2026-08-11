@@ -31,23 +31,11 @@ Row schema (scan_checkpoint):
 """
 from __future__ import annotations
 
-import hashlib
 import os
 import posixpath
 import re
 
-CHUNK = 8 << 20  # 8 MB streaming chunks — sha of an 80 GB tree must not buffer
-
-
-def sha256_file(path: str, chunk: int = CHUNK) -> str:
-    h = hashlib.sha256()
-    with open(path, "rb") as f:
-        while True:
-            b = f.read(chunk)
-            if not b:
-                break
-            h.update(b)
-    return h.hexdigest()
+from llmopt.lab.hash import CHUNK, sha256_file  # noqa: F401  (canonical home moved 2026-08-11)
 
 
 # ---------------------------------------------------------------- arch

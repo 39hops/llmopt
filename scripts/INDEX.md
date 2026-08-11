@@ -3024,7 +3024,6 @@ llmopt.lab — permanent instruments, adopted from the scripts that proved them 
 ### llmopt/lab/catalog.py
 catalog.py — model-checkpoint catalog rows (logs-doctrine EXHAUST).
 
-- `sha256_file(path: str, chunk: int=CHUNK) -> str`
 - `read_arch(path: str)` — House-format arch from state-dict shapes; None otherwise.
 - `parent_ids(name: str, siblings) -> list` — Filename-lineage parents (basenames) present in `siblings`.
 - `scan_checkpoint(path: str, repo_root: str, cited_names, siblings=None, want_sha: bool=True, want_arch: bool=True) -> dict`
@@ -3049,6 +3048,12 @@ lab.gate — the standard 120 gate, ADOPTED VERBATIM from scripts/step_grpo_micr
 lab.gen — fork-isolated problem generation, ADOPTED VERBATIM from scripts/bench_step_tokens.py (2026-08-06; that file stays frozen — it backs the step-token race verdicts). The function body is character-identical to the source; guarded by tests/test_lab_adoption.py. Fix a bug here and there in the SAME commit, or the guard fails.
 
 - `_gen_isolated(level: int, seed: int, wall: int=45)`
+
+### llmopt/lab/hash.py
+lab.hash — ONE digest semantics for the lab package (grok-seat cross-check adoption, 2026-08-11: three helpers with three semantics landed in one night — catalog 8MiB-chunk file sha, merge 1MiB-chunk file sha, runfiles short git sha WITHOUT a cwd anchor, which reports whatever repo the CALLER happens to be standing in).
+
+- `sha256_file(path: str | Path, chunk: int=CHUNK) -> str` — Streaming file sha256, hex. Chunk size never changes the digest.
+- `git_sha(short: bool=False) -> str` — HEAD of THIS repo (anchored to this file, never the caller's
 
 ### llmopt/lab/keepsets.py
 lab.keepsets — keep-set / coalition algebra, ADOPTED VERBATIM from scratch/gt2_jaccard.py (2026-08-06; that file stays frozen — the GT2-REVIEW-2 booked numbers cite it as the re-derivation authority). Function bodies are character-identical to the source; guarded by tests/test_lab_keepsets.py (source identity + synthetic battery + env-gated full acceptance against the booked stats and the byte-frozen checkpoints/gt2_*_arm0_decode.json dumps).
