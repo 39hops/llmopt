@@ -26830,3 +26830,35 @@ share epoch-seeded batch order (weaker independence than
 NIGHT-28b); fork base ungated (5 gated parents + base). Gate rows
 appended to the lake gates table (device=3080, n_seeds=1) in the
 booking commit.
+
+## PRE-REG MERGE-SPACE-2 (R2): the shared-init ladder — how much shared TRAJECTORY does merge-freeness need? (2026-08-11 morning, 3080)
+
+MERGE-SPACE-1 measured the endpoints: zero shared anything =
+crater (0/120 x6), fork-at-ep1 = merge free (14 in the 12-15
+parent band). R2 sweeps the fork point. Three cells, shared
+trajectory 0/3, 1/3, 2/3 of training (all d64/L8/ffn256/h4,
+micro-star recipe, 3 total epochs per parent, fork variable =
+token-budget packing 6144 v 8192, same implementation note as R1):
+- ep0 cell: TWO fresh births BIRTH_SEED=1, budgets 6144 v 8192 —
+  identical init (BIRTH_SEED seeds init), zero shared steps. The
+  6144 parent IS msearch_s1 (12/120, sha 4064906912716ac0,
+  reused); one new 8192 birth (s1w). Merge avg_e0.
+- ep1 cell: BOOKED IN R1 (avg_shared 14/120) — reused, not rerun.
+- ep2 cell: R1's fork base (ep1) trained 1 more epoch = base_e2;
+  two 1-epoch resumes at 6144 v 8192 (2a/2b); merge avg_e2.
+
+BARS:
+1. P-INIT-INSUFFICIENT: avg_e0 gates < min(parents) - 7 — shared
+   init alone does NOT buy mergeability (the basin is chosen by
+   trajectory, not initialization). REFUTED if avg_e0 lands
+   within 2 of the parent band, which would read as
+   init-determines-basin — a big, cheap surprise.
+2. P-MONOTONE-MERGEABILITY: merge-minus-min-parent delta is
+   non-decreasing in shared fraction across e0/e1/e2 cells
+   (read with n=1 single-seed fences; deltas <= 2 book
+   unresolved per the resolution law).
+FENCES: single seed per cell, single device (3080), gates compare
+only inside the msearch family; ep1 cell is R1's booking reused
+(same weights, same gate — no regate); fork budgets are the R1
+lever verbatim; parents share epoch-seeded batch order (R1 fence
+c travels); window closes 17:00 EST — late cells book NOT-RUN.
