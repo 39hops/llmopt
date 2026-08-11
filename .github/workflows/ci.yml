@@ -23,8 +23,12 @@ jobs:
         with:
           python-version: "3.12"
       - name: install
+        # CPU torch wheel: ten test modules import torch at module top,
+        # so without it they are collection ERRORS, not skips. The
+        # CUDA/MLX/toolchain tests inside them still skip on their own.
         run: |
           python -m pip install -U pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install pytest numpy sympy
       - name: pytest
         run: pytest tests/ -q
