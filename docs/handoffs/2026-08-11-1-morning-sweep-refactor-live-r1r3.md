@@ -125,6 +125,14 @@ by a 4-reviewer morning sweep. All in llmopt/lab/ unless noted:
    home) + remaining BOARD line items — at the next freeze point.
 5. Corpus-manifest overlay (grok D): manifests POINT at existing
    paths, zero moves, evidence stays in place.
+6. MECHANIZE-THE-RITUAL block (opus-chat cross-check, banked in
+   RIFF 2026-08-11): .github/workflows CI (pytest + INDEX/CODEMAP/
+   results-index staleness regen checks), doctrine-as-lint tests
+   (SIGALRM-near-sympy, non-string random.Random seeds),
+   GENERATED/HAND doc headers, annotated verdict tags, rjob
+   refuses launch without prereg_ref. All additive, zero history
+   risk. Rejected in the same bank: scratch git-mv tiering,
+   generated handoffs, fewer-writer subagent posture.
 
 ## STANDING FENCES THAT TRAVEL
 

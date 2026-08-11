@@ -3830,3 +3830,26 @@ without re-introducing history).
   mirrors skipped until a join hurts, AST-level dedup rejected as
   evidence-risk. Attribution: grok (survey + designs), house
   (verification + adoption order).
+
+- **BANK (2026-08-11): opus-chat restructuring cross-check** —
+  second external read-only survey (Opus 5 chat seat, Artin-run;
+  house verified the load-bearing claim: NO .github/ directory
+  exists — zero CI, every ritual enforced by session memory).
+  Keeps: (1) "mechanize the ritual" block — CI (pytest + staleness
+  regen checks for INDEX/CODEMAP/results-index), doctrine-as-lint
+  (any doctrine bullet naming a past incident becomes a test:
+  SIGALRM-near-sympy grep, non-string random.Random seed, INDEX
+  staleness), GENERATED/HAND headers with regen-or-fail tests,
+  annotated verdict tags (verdict/<NAME> at booking commits —
+  additive, makes SHA citations resolvable); (2) rjob-refuses-
+  without-prereg_ref — pre-registration becomes enforced, not
+  doctrinal; (3) byte-identical round-trip proof as the gate IF
+  RESULTS.md ever inverts to generated-from-ledger. Rejected:
+  scratch git-mv tiering (conflicts frozen-evidence doctrine —
+  CODEMAP is the move gate, cited files stay in place on purpose);
+  generated handoffs (handoffs carry intent/narrative, state
+  already lives in BOARD/RESULTS); fewer-writers subagent posture
+  (record shows opposite: 14-agent build + 4-reviewer sweep caught
+  the d512 arch error via three independent routes — CI is the
+  fix, not fewer minds). Attribution: Opus 5 chat (survey), Artin
+  (relay + subagent pushback), house (verification + triage).
