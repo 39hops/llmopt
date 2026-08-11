@@ -3750,3 +3750,32 @@ without re-introducing history).
   rotational win (ledger L66 prior). Attribution: Artin (both
   asks); Fable (warm-lattice function-preservation argument,
   funnel-fourth-instance identification, ROT-x-TERNARY cell).
+
+- **2026-08-11 (Artin, post-crown): EQUILIBRIUM AS THE STAR'S
+  LIMIT — is 73/73/73 the literal ceiling of that star?** The
+  crown battery's champion line landed the SAME total at all
+  three birth seeds (73/73/73, dicts near-identical) while the
+  ternary line spread (64/62/61). Artin's read: a star in
+  equilibrium has found the output its mass and fuel supply
+  support — seed-invariance means the (diet, recipe, arch)
+  triple DETERMINES the equilibrium, and 73 is that star's
+  limit, not a lucky draw. Measured support: the house scaling
+  curve is FOOD-limited, not mass-limited — RISING (3ep gen-4):
+  d64 38 -> d512 69; UNDERFED giants INVERT it (d768-113M 65 at
+  3ep; d1024-200M 49 and d1280-400M 30 on 1-epoch rations) — a
+  bigger star with too little fuel burns DIMMER (data-as-
+  terminal-limit bank, 2026-08-08). Growth exists and pays: the
+  crown's +10.7 IS the grow-inherit mechanism (add shells to a
+  burning star, re-feed) — and it only works on the continuous
+  substrate (ternary growth non-preserving). SO: size is set by
+  fuel (diet dose per param) and burn schedule (ENGINE-SCALE:
+  the schedule is the binder), not by the initial mass; the
+  seed-invariant 73 says equilibrium is deterministic given the
+  triple. OPEN measurable: is 73 stable under MORE fuel at fixed
+  arch (a 4th epoch / wider diet on the same grown crystal), or
+  does the equilibrium move — "limit of the star" v "limit of
+  the feeding". Cheap arm shape: one grown-s2 crystal, +1 warm
+  epoch on widened rations, gate — if 73 holds, the triple is
+  saturated; if it moves, the star was still hungry.
+  Attribution: Artin (equilibrium-limit frame + can-it-grow);
+  Fable (fuel-not-mass grounding, saturation arm shape).
