@@ -26446,3 +26446,38 @@ FENCES: single seed per cell, single device, gen8 sample is one
 draw; a diet-CLASS change (not more of the adjacent class) remains
 untested — that is the CURRICULUM-FUNNEL arm's territory, not
 this verdict's.
+
+## VERDICT NPRIMES-LADDER (COUNTER-BOOK): P-EXACT-TIE FIRES — throw signature ring-invariant at 256/512/1024 primes; co-factor/witness line re-elevates (2026-08-11 early, mac-axiom b785601, verified house-side)
+
+Their relay 2026-08-10-22 answers our pre-reg (RESULTS 26165).
+Verified, not accepted — every claim re-derived from the raw rows
+in their commit b785601 (tools/exact_anchor/step9_cliff/):
+
+1. THROW SIGNATURE: `floor w=1 lo_bits=16384 e=-16342` grep'd
+   byte-identical from stderr_np512.log, stderr_np1024.log, AND
+   the 256-prime stderr_rung16384.log. Also consistent with the
+   STEP9 law (lo_bits=prec, e=-(prec-42): 16384-42=16342).
+2. SAFETY BAR: all 8 prefix digests byte-match the certified
+   256p rung at BOTH ring sizes (7c9b8f0b... -> 41bfedf6...,
+   verified row-by-row house-side). Ring size does not perturb
+   the certified prefix.
+3. INTERRUPTION DISCLOSURE checks out: the interrupted np512
+   attempt's 7 rows are digest-identical to the clean rerun's
+   prefix (verified). Kills were external (task manager), not
+   throws; receipts preserved.
+4. RING-COST SLOPE, house-recomputed medians: 162.4 / 315.9 /
+   666.1 s/step at 256/512/1024 primes = 1.94x, 2.11x per
+   doubling (their ~163/~314/~653 consistent). Ring-dominated
+   wall now booked at three points, cleanly linear in primes.
+5. Step-9 attempt walls 122 s / 180 s; timebox class empty.
+
+VERDICT: Bar 2 of the pre-reg — P-EXACT-TIE. Combined with the
+precision ladder: demand tracks payment on the precision axis
+(offset 42), failure invariant under 4x modulus on the ring axis.
+Neither resource moves the tie; the reconstruction target appears
+not to exist at any tested budget. The co-factor/witness line
+(certify the floor WITHOUT reconstructing the value) re-elevates
+house-side per the pre-reg's named successor.
+
+STANDING: Montgomery/TC RNS [HOLD] unchanged; their GPU battery
+closed green. Next move house-side: co-factor/witness pre-reg.
