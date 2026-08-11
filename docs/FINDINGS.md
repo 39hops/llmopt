@@ -1094,8 +1094,9 @@ regime tag on every bullet is the fence.
   at 50.7 versus 50.7. The retained recipe is merge-free and
   capability-neutral. ([VERDICT CUDA SEED LADDER](RESULTS.md#L13286).)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
-  [REGIME-SCOPED: house micro-stars, d64] Averaging independently born weights
-  is not a worse model, it is not a model: all six independent-pair averages
+  [REGIME-SCOPED: house crystals] At d64 micro scale, the average of
+  independently born weights is not a worse model, it is not a model: all
+  six independent-pair averages
   gated exactly 0/120 with zeros at every level, while the shared-init fork
   merge landed inside the 12-15 parent band and the task-vector child
   cratered to 1/120. Four identical-recipe births spanned 12-30/120 — the
