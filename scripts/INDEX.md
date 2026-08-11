@@ -3036,6 +3036,15 @@ lab.config — typed env-var config for arm drivers (spec 2026-08-05-llmopt-lab-
 - `_cast(name: str, raw: str, typ) -> object`
 - `class LabConfig` (from_env, echo)
 
+### llmopt/lab/gate.py
+lab.gate — the standard 120 gate, ADOPTED VERBATIM from scripts/step_grpo_micro.py (2026-08-11; that file stays frozen — it is the 91-reference hub backing every gate number in RESULTS). Function bodies below are character-identical to the source; guarded by tests/test_lab_adoption.py (source-identity). Fix a bug here and there in the SAME commit, or the guard fails.
+
+- `class GateSpec`
+- `apply_spec(spec: GateSpec) -> None` — Point the module constants at a lineage. Single-threaded use.
+- `sample_wave_lp(model, tok, prompt_ids, seeds, dev, max_new=120)` — KV-cached (2026-07-22): token-identical to the eager
+- `gate_eval(model, tok, dev, n=None)` — Honest chain gate. n<GATE_N = cheap proxy tier (same seeds,
+- `gate_checkpoint(ckpt: str, d: int, layers: int, ffn: int, heads: int, label: str, device: str | None=None, spec: GateSpec | None=None)` — The scratch/gate_ckpt.py behavior as a callable: load a house
+
 ### llmopt/lab/gen.py
 lab.gen — fork-isolated problem generation, ADOPTED VERBATIM from scripts/bench_step_tokens.py (2026-08-06; that file stays frozen — it backs the step-token race verdicts). The function body is character-identical to the source; guarded by tests/test_lab_adoption.py. Fix a bug here and there in the SAME commit, or the guard fails.
 

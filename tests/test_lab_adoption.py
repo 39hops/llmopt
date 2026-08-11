@@ -85,3 +85,28 @@ def test_gen_isolated_parity(bst):
         assert (a is None) == (b is None)
         if a is not None:
             assert sp.sstr(a._expr) == sp.sstr(b._expr)
+
+
+@pytest.fixture(scope="module")
+def sgm():
+    pytest.importorskip("torch")
+    return _load_script("step_grpo_micro")
+
+
+def test_gate_sources_identical(sgm):
+    from llmopt.lab import gate
+    assert inspect.getsource(gate.sample_wave_lp) == \
+        inspect.getsource(sgm.sample_wave_lp)
+    assert inspect.getsource(gate.gate_eval) == \
+        inspect.getsource(sgm.gate_eval)
+
+
+def test_gate_constants_match_lineage(sgm):
+    from llmopt.lab import gate
+    assert gate.GRPO_MICRO.wave == sgm.B
+    assert gate.GRPO_MICRO.levels == sgm.GATE_LEVELS
+    assert gate.GRPO_MICRO.n == sgm.GATE_N
+    assert gate.GRPO_MICRO.band == sgm.GATE_BAND
+    # module defaults start at the standard lineage
+    assert (gate.B, gate.GATE_LEVELS, gate.GATE_N, gate.GATE_BAND) == \
+        (sgm.B, sgm.GATE_LEVELS, sgm.GATE_N, sgm.GATE_BAND)
