@@ -26333,3 +26333,42 @@ FENCES: single seed, single device (3080), gates compare only
 inside this family. Feeds fuel-not-mass (star size set by what it
 can burn, and ignition needs a minimum core) and prices
 CURRICULUM-FUNNEL + micro-SATURATION arms as minutes-class.
+
+## PRE-REG LOSS-FLOOR-1: is the 0.348 loss floor the corpus's own entropy, or capacity headroom? (2026-08-11 early, Mac CPU, Artin GO)
+
+Riff (Artin + house, this session): loss bottoms out and never
+reaches 0 because CE = H(y|x) + KL(true||model) — training kills
+only the KL term. Our corpus has real conditional entropy: multiple
+valid derivation orders, form ambiguity (the ambiguity law's
+branching factor, now read at the LOSS layer instead of the margin
+layer). Prediction market: how much of the measured floor is data,
+how much is model?
+
+INSTRUMENT: scratch/loss_floor_census.py (CPU, minutes-class).
+Tokenize the sat_s2 warm diet EXACTLY as train_mathnative does
+(same template, same strict-encode row skips, same SEQ_CAP, eos
+appended; loss there is full-sequence, all positions, so the census
+covers all positions too). Compute empirical conditional entropy of
+the token stream, in nats:
+- H_k for k in {1,2,4,8,16,32,64}: next-token entropy given the
+  last k tokens (grouped by hashed k-gram context).
+- H_full: entropy given the ENTIRE prefix from sequence start
+  (rolling-hash context; 64-bit blake2b, collision risk fenced as
+  negligible-downward).
+Reference floor: 0.3480 nats = sat_s2 ep3 mean train loss (crown
+copy, warm diet 178498 rows, RESULTS 26259).
+
+BARS:
+1. P-FLOOR-IS-ENTROPY: H_full >= 0.244 (>= 70% of the floor). The
+   floor is mostly the data's own ambiguity — nothing left for the
+   optimizer at this diet; loss-to-0 requires canonicalizing the
+   corpus (one continuation per context), not more capacity.
+2. P-HEADROOM: H_full <= 0.104 (<= 30% of the floor). The floor is
+   mostly approximation error — real headroom at fixed diet; a
+   bigger/longer-trained star should push loss toward H_full.
+3. Neither -> MIXED, book the split as measured.
+FENCES: H_full is empirically DOWNWARD-biased (unique prefixes
+contribute 0), so bar 1 is conservative-hard to fire and bar 2's
+firing means headroom >= floor - H_full, not equality. Single
+corpus, nats throughout, positions weighted exactly as the training
+loss weights them (uniform over non-pad next-token positions).
