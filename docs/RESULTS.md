@@ -26977,3 +26977,35 @@ FENCES: single seed pair, single device (3080), family-only;
 all deltas sub-sigma at n=1; ORDER_SEED knob's default-stream
 byte-identity verified by design (conditional path, booked with
 the knob commit 2eebf5e). Gate rows to the lake in this commit.
+
+## PRE-REG MERGE-SPACE-4 (R2c): the order-twin soup — is souping inside an init-lineage FREE CAPABILITY? (2026-08-11 midday, 3080)
+
+MERGE-SPACE-3 legalized the cell: order twins (same BIRTH_SEED,
+different ORDER_SEED) merge in-band, and the n=1 direction hint
+was UP (13 v 12/11 — sub-sigma, unclaimed). This rung asks the
+greedy-soup question on house births: does a 4-way soup of order
+twins climb ABOVE the family?
+
+Instrument: two NEW order twins s1o8/s1o9 (BIRTH_SEED=1,
+ORDER_SEED=8/9, budget 6144, 3ep, d64/L8/ffn256/h4) joining s1
+(12/120) and s1o (11/120). soup4 = uniform 4-way average via a
+pairwise tree: avg(avg(s1,s1o), avg(s1o8,s1o9)) — equal weights
+exactly, fp32 accumulate per merge.py. Gates: s1o8, s1o9, soup4
+(+ the two inner averages gate as free intermediate reads).
+
+REGISTERED PRIOR (house, on the record): soup4 lands ABOVE the
+family mean but BELOW the +7 bar — modest positive, sub-sigma at
+n=1 (the greedy-soup effect is real but small at this scale).
+
+BARS:
+1. P-SOUP-CLIMBS: soup4 >= max(4 parents) + 7 — souping order
+   twins is a real capability lever at micro scale (would
+   graduate soup-inside-lineage from "free" to "profitable").
+2. P-SOUP-FREE (fallback, the MERGE-SPACE-2/3 continuity read):
+   soup4 >= min(4 parents) - 2 — souping stays at worst free.
+   Bar 2 firing without bar 1 books as
+   consistent-with-free-not-profitable.
+FENCES: single device (3080), family-only, n=1 everywhere —
+deltas < 7 book with single-seed fence sentences; inner-average
+reads are descriptive only (not pre-registered bars); window
+17:00 EST, late cells book NOT-RUN.
