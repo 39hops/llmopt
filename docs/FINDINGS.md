@@ -314,8 +314,13 @@ VERDICT](RESULTS.md#L10676).)
   inheritance pipeline, which only exists on the fp32 substrate because
   ternary growth is non-preserving. The champion line's totals were
   seed-invariant (73/73/73) while the ternary line carried the birth
-  noise (64/62/61).
-  ([VERDICT REVIVE-CROWN-TIE-BIRTHS](RESULTS.md#L26066).)
+  noise (64/62/61). The equilibrium survived its first hunger test:
+  a fourth warm epoch at fixed food moved the champion +1 (74 v 73,
+  inside the tie band, same dict shape) — at fixed fuel, more burn
+  buys nothing; whether the limit belongs to the star or the feeding
+  is now purely a rations question.
+  ([VERDICT REVIVE-CROWN-TIE-BIRTHS](RESULTS.md#L26066); [VERDICT
+  SATURATION-1](RESULTS.md#L26259).)
 
 ## Data, diet, and federation
 

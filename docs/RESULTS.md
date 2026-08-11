@@ -26255,3 +26255,26 @@ this battery only; sub-10 totals read against the guess floor
 with the validity percentage quoted (dict is the checksum);
 recipe divergence from wfloor (packing/budget defaults at tiny d)
 books as family-difference, never as a scaling claim.
+
+## VERDICT SATURATION-1 (cell a): P-SATURATED-CLASS FIRES — a fourth warm epoch at fixed food moves the champion +1 (74 v 73, inside the tie band); the equilibrium is not epoch-starved (2026-08-11 early, Mac)
+
+Pre-reg L26196. Driver scratch/saturation_s2.py (COPY of
+crown_c_grown_s2 + manually-written .ep resume marker — arm-time
+catch: no marker existed on disk, and without it TM.main re-births
+from scratch and overwrites; verified "resuming at epoch 3" in the
+log before letting it run). D2 excision fired (178,498 -> 178,366).
+Gate: {3:23, 4:10, 5:17, 6:8, 7:16} = 74/120 @ 67.50 (dict sums,
+weights sha 8a784d939cbea46d).
+
+BAR READ: 74 - 73 = +1, far inside the +-2 saturated band and the
++-2.3/seed tie language; the dict is the 73-class shape (L3 23,
+L5 17, L7 15->16 — single-problem wobble). P-HUNGRY (>= +7) does
+not fire. AT FIXED FOOD, MORE BURN BUYS NOTHING: the (diet,
+recipe, arch) triple is saturated at 3 warm epochs, and the
+seed-invariant 73 reads as that star's equilibrium under this
+fuel, surviving its first test. WHAT REMAINS OPEN: cell (b) —
+WIDENED food — is untouched by this read; whether the limit
+belongs to the star or to the feeding is now entirely a rations
+question (cell (b) needs a diet widening pinned against the
+exposure-share doctrine + Artin GO). Single seed; the +1 is not a
+direction (resolution law).
