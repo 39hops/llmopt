@@ -21,6 +21,8 @@ from llmopt.lab.catalog import scan_checkpoint  # noqa: F401
 from llmopt.lab.config import ConfigError, LabConfig  # noqa: F401
 from llmopt.lab.gate import GRPO_MICRO, GateSpec, gate_checkpoint  # noqa: F401
 from llmopt.lab.gen import _gen_isolated, gen_isolated  # noqa: F401
+from llmopt.lab.hash import git_sha, sha256_file  # noqa: F401
+from llmopt.lab.jsonl import append_jsonl, read_jsonl, write_jsonl  # noqa: F401
 from llmopt.lab.oracle import CheckResult, Oracle  # noqa: F401
 from llmopt.lab.merge import average, shell_graft, task_vector  # noqa: F401
 from llmopt.lab.runfiles import (is_done, rc_of, read_marker,  # noqa: F401

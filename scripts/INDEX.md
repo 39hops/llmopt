@@ -3055,6 +3055,13 @@ lab.hash — ONE digest semantics for the lab package (grok-seat cross-check ado
 - `sha256_file(path: str | Path, chunk: int=CHUNK) -> str` — Streaming file sha256, hex. Chunk size never changes the digest.
 - `git_sha(short: bool=False) -> str` — HEAD of THIS repo (anchored to this file, never the caller's
 
+### llmopt/lab/jsonl.py
+lab.jsonl — one jsonl read/write semantics (grok-seat cross-check adoption, 2026-08-11: 40+ hand-rolled open/loads loops across scripts/ and scratch/, each with its own blank-line, encoding, and partial-write behavior).
+
+- `read_jsonl(path: str | Path)` — List of rows. Blank lines skipped; malformed rows raise with
+- `write_jsonl(path: str | Path, rows) -> None` — Atomic full-file write (tmp+rename, same directory).
+- `append_jsonl(path: str | Path, row) -> None` — One row, appended and flushed — the streaming shape for
+
 ### llmopt/lab/keepsets.py
 lab.keepsets — keep-set / coalition algebra, ADOPTED VERBATIM from scratch/gt2_jaccard.py (2026-08-06; that file stays frozen — the GT2-REVIEW-2 booked numbers cite it as the re-derivation authority). Function bodies are character-identical to the source; guarded by tests/test_lab_keepsets.py (source identity + synthetic battery + env-gated full acceptance against the booked stats and the byte-frozen checkpoints/gt2_*_arm0_decode.json dumps).
 
