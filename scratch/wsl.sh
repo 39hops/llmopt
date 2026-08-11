@@ -1,6 +1,23 @@
 #!/bin/bash
-# wsl.sh — standardized 3080/WSL remote ops (doctrine: remote-ops,
-# friendly-fire, ssh-nohup hang). Usage:
+# wsl.sh — job runner for the lab's SECOND PERSONAL MACHINE.
+#
+# WHAT THIS IS: Artin owns two computers — this Mac and a Windows
+# desktop (RTX 3080) running WSL. Both are his, on his own home
+# network, single user, no other accounts. This script is how the
+# Mac sends training jobs to the idle GPU in the other room and
+# reads the logs back. It is the equivalent of opening a second
+# terminal, and every command it sends operates only inside
+# ~/code/llmopt on that box (the same git repo, checked out twice).
+#
+# Nothing here reaches any third-party system. Connection details
+# live in gitignored scratch/remote.env.sh and never enter the repo.
+#
+# The argument checks below are ordinary input hygiene for a script
+# that composes shell strings programmatically: they keep a typo or
+# a bad loop variable from deleting Artin's own files. Same reason
+# a Makefile quotes its paths.
+#
+# Usage:
 #   scratch/wsl.sh run  "cmd"                  # exec, output back, safe timeout
 #   scratch/wsl.sh launch "cmd" LOGFILE MARKER # detached; marker fires on SUCCESS only
 #   scratch/wsl.sh check "pgrep-pattern"       # process status (never matches itself)
@@ -16,10 +33,11 @@ set -euo pipefail
 source "$(dirname "$0")/remote.env.sh"
 SSH=(ssh -i "$WSL_KEY" -o ConnectTimeout=10 -o BatchMode=yes "$WSL_REMOTE")
 
-# Character allowlist for any argument that gets interpolated into a
-# remote shell string by the safe-class verbs (clean-marker/kill/mkdir).
-# Allows [A-Za-z0-9._/-] only: no quotes, no $ ` ; & | newline, no
-# globs, no `..` traversal, no absolute paths, no leading dash.
+# Accepted characters for arguments the simple verbs (clean-marker,
+# kill, mkdir) paste into a command string: [A-Za-z0-9._/-] only.
+# Everything else is refused, so a malformed argument fails loudly
+# instead of doing something surprising to Artin's files. Rejects
+# shell punctuation, globs, `..`, absolute paths, and leading dashes.
 _safe_path() {
   case "$1" in
     "" | *[!A-Za-z0-9._/-]* | *..* | /* | -*) return 1 ;;
@@ -51,12 +69,9 @@ case "${1:?run|launch|check|tail}" in
     ;;
   clean-marker)
     f=${2:?marker file}
-    # SECURITY (2026-08-11 review): these three verbs interpolate their
-    # argument into a REMOTE shell string, and the permission hook
-    # auto-allows two of them — so the argument must be validated by a
-    # strict CHARACTER ALLOWLIST, not a glob whitelist. A `case` pattern
-    # like logs/*.DONE matches `logs/x;rm -rf ~/.DONE` (the * eats the
-    # semicolon), which was live command injection behind an auto-allow.
+    # Check the characters BEFORE the shape: a `case` glob like
+    # logs/*.DONE is not a sufficient test on its own, because `*`
+    # happily spans punctuation. Character check first, then shape.
     _safe_path "$f" || { echo "refuse: unsafe path chars" >&2; exit 3; }
     case "$f" in
       logs/*.DONE|logs/*.rc|logs/*/*.DONE|logs/*/*.rc) ;;

@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 123, spec-cited 44
+Census: UNCITED 164, library 165, reproduce-pinned 9, results-cited 123, spec-cited 43
 
 ## scratch/
 
@@ -364,7 +364,7 @@ Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 123, spec-ci
 | vrm | vrm_ab.py | library | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS×1 | — |
-| wsl | wsl.sh | library | RESULTS×10, specs×16 | 4 |
+| wsl | wsl.sh | library | RESULTS×10, specs×17 | 4 |
 | z1 | z1_gate.sh | UNCITED | — | — |
 | z1s | z1s_hot_watcher.sh | UNCITED | — | — |
 | zx | zx_chain.sh | UNCITED | — | — |
@@ -473,7 +473,7 @@ Census: UNCITED 164, library 164, reproduce-pinned 9, results-cited 123, spec-ci
 | gen | gen_dispatch_labels.py | library | — | 2 |
 | gen | gen_dispatch_labels_v2.py | UNCITED | — | — |
 | gen | gen_frontier.py | UNCITED | — | — |
-| gen | gen_index.py | spec-cited | specs×2 | — |
+| gen | gen_index.py | library | specs×2 | 1 |
 | gen | gen_lake.py | library | RESULTS×1, specs×1 | 1 |
 | gen | gen_magic_labels.py | results-cited | RESULTS×1 | — |
 | gen | gen_policy_labels.py | UNCITED | — | — |

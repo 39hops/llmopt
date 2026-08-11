@@ -1,0 +1,57 @@
+name: lab checks
+
+# Mechanizes the checks that were enforced by whoever remembered them.
+# Every guard here caught a real drift on 2026-08-11 within minutes —
+# and nothing stopped the push while they were red. This closes that.
+#
+# Pure-Python only: GPU, MLX, and toolchain tests skip cleanly by
+# design, so this runs on a stock ubuntu runner with no accelerators.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: install
+        run: |
+          python -m pip install -U pip
+          pip install pytest numpy sympy
+      - name: pytest
+        run: pytest tests/ -q
+
+  generated-docs-are-current:
+    # INDEX.md and CODEMAP.md are GENERATED. A stale one is a silent
+    # lie about where code lives, and regenerating them was a thing a
+    # session had to remember. Now it is a build failure.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: install
+        run: |
+          python -m pip install -U pip
+          pip install numpy sympy
+      - name: regenerate and diff
+        run: |
+          python scripts/gen_index.py
+          python scripts/gen_codemap.py
+          python scripts/gen_results_index.py
+          if ! git diff --quiet; then
+            echo "::error::generated files are stale — run scripts/gen_index.py,"
+            echo "gen_codemap.py, gen_results_index.py and commit the result"
+            git diff --stat
+            exit 1
+          fi

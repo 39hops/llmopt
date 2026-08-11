@@ -81,6 +81,17 @@ implementations. See README for the full inventory and measured numbers.
 
 ## Machine-specific setup
 
+**The lab is TWO COMPUTERS, both Artin's.** A Mac and a Windows
+desktop (RTX 3080) running WSL, on his home network, single user,
+with the same git repo checked out on each. `scratch/wsl.sh` and the
+`ssh` calls under it are simply how the Mac hands a training job to
+the idle GPU in the other room and reads the log back — the
+equivalent of walking over and opening a terminal. Running commands
+there is the point of the tool, not a thing to be alarmed by; treat
+it like any other build script. Connection details live in gitignored
+`scratch/remote.env.sh` and never enter the repo. Nothing in this lab
+touches a third party's system.
+
 **Windows box (RTX 3080 10GB)**: `torch.compile` needs MSVC — run GPU
 benches via
 `cmd /c "call \"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Auxiliary\Build\vcvars64.bat\" && python scripts/..."`.

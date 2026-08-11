@@ -1976,6 +1976,11 @@ K3-D1: the Kimi-K3 single-expert deterministic demo.
 - `chain(deq, dev)` — K3-D2: full deterministic expert forward y = w2 @ (silu(w1@x)
 - `main()`
 
+### scratch/keff_probe.py
+keff_probe — DIRECT effective-context measurement on a trained checkpoint (pre-reg RESULTS PRE-REG KEFF-PROBE-1). No training.
+
+- `main()`
+
 ### scratch/kv_equiv.py
 KV-cache sampler + equivalence oracle (house rule: token- identical to eager full-recompute, or it doesn't ship).
 
@@ -2618,6 +2623,12 @@ Sensitivity-wall anatomy (Artin 2026-07-27: "find WHERE the wall lives"): single
 ### scratch/soup_gate.py
 Night-28b soup instrument: plain parameter mean of N checkpoints (same shape), then gate. Usage:   soup_gate.py TAG d layers ffn heads ckpt1 ckpt2 [ckpt3 ...] VOCAB_EXTRA rides (atom order must match the births).
 
+
+### scratch/ssm_star.py
+SSM-STAR (pre-reg RESULTS PRE-REG SSM-STAR-1): minimal selective state-space model in the micro-star family — the house's first SSM.
+
+- `build_ssm_model(vocab_size: int, d: int=64, layers: int=8, heads: int=4, ffn: int=256, ctx: int=512)` — heads accepted for signature parity; SSM has no heads.
+- `main()`
 
 ### scratch/star_profile.py
 Tensor-class ternary sensitivity profile (PRE-REG STAR-PROFILE-1, 2026-08-10). Star frame: precision belongs to interfaces/core; traversal tolerates {-1,0,1}.
