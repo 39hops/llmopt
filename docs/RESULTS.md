@@ -27102,3 +27102,55 @@ device class); gates single-seed, Mac/mps, NEVER comparable to
 the 3080 msearch family (cross-device doctrine); k_eff
 interpolation is descriptive. Gate rows to the lake
 (device=mac-mps, n_seeds=1) in this commit.
+
+## PRE-REG GROW-DECOMP-1 (R5 cell A): the crown's premium — growth or width? Fresh arch-twin v grown line (2026-08-11 afternoon, Mac)
+
+Priced by FLOOR-HK-1's observation: fresh d512/L8 gated 72 v the
+crown line's 73-75. But the crown is d512/L12/ffn2304/h8 — the
+fresh comparison so far crosses TWO variables (arch + provenance).
+Cell A kills the arch variable: ONE fresh birth at the crown's
+EXACT arch (d512/L12/ffn2304/h8), same warm diet class
+(v22+gen4+l8), fp32/mps, BIRTH_SEED=0, 3 epochs — the crown
+stage-3 recipe minus the grow-inherit history. Gate v the crown's
+73/74/75 equilibrium band (same device class, same gate).
+
+BARS:
+1. P-GROWTH-PREMIUM: gate(fresh twin) <= 74 - 7 — the grown
+   line's capability needed the growth history; width+arch alone
+   does not reach the crown band. (Prior FOR this: crown
+   grow-inherit lever booked +10.7.)
+2. REFUTED-IF: gate(fresh twin) within 2 of 74 — the crown band
+   is reachable by a fresh birth at matched arch; the growth
+   premium at d512 demotes to at-most-schedule-savings, and the
+   +10.7 lever gets an AMENDMENT-grade re-read (it was measured
+   against a DIFFERENT base, not this arch).
+Between: UNRESOLVED per resolution law; dict books either way.
+FENCES: single seed, Mac/mps only (crown numbers are Mac numbers
+— legal same-device comparison); diet is the warm class WITHOUT
+D2 excision (132 rows, 0.07% — named, carried from FLOOR-HK);
+fresh twin never reads against 3080 families; long pole
+hours-class, books when it lands.
+
+## PRE-REG MERGE-SPACE-5 (R2d): init-is-the-address at n=3 — paired-seed replication (2026-08-11 afternoon, 3080)
+
+The headline chain (R1 craters -> R2b in-band) is n=1 per cell.
+This rung replicates the DECISIVE cell (same init, independent
+order, merge) at BIRTH_SEED 2 and 3, using the existing R1
+parents s2 (23/120) and s3 (30/120) — spanning the family's
+capability range:
+- s2o: BIRTH_SEED=2, ORDER_SEED=7, 6144, 3ep; avg2 = avg(s2, s2o)
+- s3o: BIRTH_SEED=3, ORDER_SEED=7, 6144, 3ep; avg3 = avg(s3, s3o)
+With R2b's (s1, s1o, avg_ord=13) this makes n=3 paired seeds.
+
+BARS:
+1. P-ADDRESS-REPLICATES: ALL THREE merges gate >= min(their pair)
+   - 2 — the in-band result holds at every seed, resolution-law
+   grade for the qualitative claim (merge-survives-shared-init).
+2. REFUTED-IF: ANY merge craters (< min(pair) - 7) — the
+   init-address reading is seed-fragile and demotes to
+   single-seed observation.
+FENCES: single device (3080), family-only; per-pair deltas <= 2
+stay individually sub-sigma (the n=3 claim is the BINARY
+survives/craters pattern, not a delta magnitude); window 17:00
+EST — if the window closes mid-run, completed pairs book, missing
+pairs book NOT-RUN.
