@@ -278,8 +278,18 @@ VERDICT](RESULTS.md#L10676).)
   and the body craters (attention to zero) — inverting the star-bank
   ordering, while ternary-QAT bodies tie fp32 when grown on the
   lattice. Ternary capability is trained-in, never projected-in; the
-  eye is precision-hungry, the mouth is not.
-  ([VERDICT STAR-PROFILE-1](RESULTS.md#L25772).)
+  eye is precision-hungry, the mouth is not. The 5-width ladder then
+  killed the geometric reading (per-param eye sensitivity NON-monotone
+  in width, rho -0.4 — the asymmetry is positional) and surfaced the
+  real law: WIDTH BUYS TOLERANCE — every class's ternary retention
+  rises with width (eye 0% -> 93% of base up the d64->d512 ladder;
+  attention's per-param fragility a flat 4x ffn's 1 at every width) —
+  holography's scaling face. And 4x quaternionic sharing changes the
+  profile by NOTHING (retention fractions identical per class): the
+  symmetry and alphabet compression axes are orthogonal tolls.
+  ([VERDICT STAR-PROFILE-1](RESULTS.md#L25772); [VERDICT
+  STAR-PROFILE-2](RESULTS.md#L25979); [VERDICT
+  ROT-X-TERNARY](RESULTS.md#L26031).)
 - [MECHANISM-CONFIRMED] [DEVICE-SCOPED] [REGIME-SCOPED: house crystals]
   The crown tie was birth luck: n=3 fresh paired births resolve the
   production crown to the champion fp32 grow-inherit line (+9/+11/+12
