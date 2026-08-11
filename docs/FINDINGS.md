@@ -1102,6 +1102,13 @@ regime tag on every bullet is the fence.
   cratered to 1/120. Four identical-recipe births spanned 12-30/120 — the
   d64 seed lever dwarfs every diet and schedule lever measured at this
   scale. ([VERDICT MERGE-SPACE-1](RESULTS.md#L26770).)
+- [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
+  [REGIME-SCOPED: house crystals] At d64 micro scale, two three-epoch
+  trainings that never shared an optimizer step still merged inside the
+  parent band when they shared initialization (and epoch-seeded data order —
+  the named fence): the basin is chosen at birth, not by the trajectory. The
+  init-versus-order deconfound is pre-registered, not yet run.
+  ([VERDICT MERGE-SPACE-2](RESULTS.md#L26866).)
 - [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: closed-system math] At n=1 activation probe,
   a small population of digit-periodic neurons showed partial Fourier
   character; this is an in-vivo sighting, not a general representation law.
