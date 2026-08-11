@@ -26297,3 +26297,39 @@ the standard gate. Same bars as cell (a) read against 73:
 P-HUNGRY >= +7 (the limit was the feeding); P-SATURATED-CLASS
 |delta| <= 2 (the star is full: neither burn nor fuel moves it —
 growth becomes the only proven lever). Single seed fences carry.
+
+## VERDICT MICRO-STAR-1: BOTH BARS FIRE — ignition between d32 and d48; d64 burns 30/120 with a 7-minute birth (2026-08-11 early, 3080)
+
+Ladder complete (relaunch after two OOM-poisoned attempts, both
+killed unread per the 43x tripwire; run carried --budget 6144,
+receipts in logs/microstar/, poisoned logs preserved as
+microstar_run_oomkilled.log / _oom2.log). Recipe as pre-registered
+(v22+gen4, 3 epochs, fast/bf16, BIRTH_SEED=0, L8 H4 ffn=4d).
+
+| d  | params (~) | birth wall | gate dict                      | total |
+|----|-----------|-----------|---------------------------------|-------|
+| 16 | ~35k      | 546 s     | {3:0, 4:0, 5:0, 6:0, 7:0}       | 0/120 |
+| 32 | ~95k      | 424 s     | {3:0, 4:0, 5:0, 6:0, 7:0}       | 0/120 |
+| 48 | ~180k     | 529 s     | {3:3, 4:0, 5:4, 6:2, 7:1}       | 10/120 |
+| 64 | ~290k     | 424 s     | {3:11, 4:2, 5:7, 6:5, 7:5}      | 30/120 |
+
+d64 weights sha a756afb84fcb0a98 (bf16).
+
+1. P-MICRO-BURN: FIRES at d48 — 10/120 clears the >= 10 ignition
+   bar at ~180k params. The ignition threshold of this family sits
+   between d32 (0/120, validity 0.40%) and d48. A star smaller
+   than any previously built burns.
+2. P-MINUTES: FIRES — max wall 546 s (~9.1 min), all four births
+   < 20 min. "Births need hours" was a SIZE property, not a
+   pipeline property; ladder-spam is now a measured minutes-class
+   capability on the 3080.
+3. Curve rider: gate(d) foot is sharp — 0, 0, 10, 30 across
+   16/32/48/64. The rising arm triples from d48 to d64. Note d64
+   here reads 30/120 where the Mac wfloor d64 reads 38/120 —
+   NOT comparable (different device, different battery; the
+   in-family curve is the instrument).
+
+FENCES: single seed, single device (3080), gates compare only
+inside this family. Feeds fuel-not-mass (star size set by what it
+can burn, and ignition needs a minimum core) and prices
+CURRICULUM-FUNNEL + micro-SATURATION arms as minutes-class.
