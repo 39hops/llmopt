@@ -11,11 +11,27 @@ crown's exact arch (d512/L12/ffn2304/h8), warm diet, fp32, BIRTH_SEED=0,
 3 epochs + gate. Pre-reg is in RESULTS (grep `PRE-REG GROW-DECOMP-1`).
 Bars: fresh gate <= 67 means the growth premium is real; within 2 of 74
 means it demotes to schedule-savings and the booked +10.7 grow-inherit
-lever needs an amendment-grade re-read. It has been slow (0.4-0.9 it/s)
-because this session kept competing with it for the machine — see the
-scheduling lesson below. When `jobs/growdecomp1b.rc` appears:
-`cat logs/grow_decomp1/gate.log`, check the birth log ends `saved`, then
-book with the `/book` skill.
+lever needs an amendment-grade re-read. When `jobs/growdecomp1b.rc`
+appears: `cat logs/grow_decomp1/gate.log`, check the birth log ends
+`saved`, then book with the `/book` skill.
+
+**OPEN INSTRUMENT PROBLEM — this arm decays 5x and I mis-attributed it
+once.** Throughput over this run: 2.0, 2.0, 2.1, 1.5, 1.3, 1.0, 0.9,
+0.7, 0.7, 0.7, 0.6, 0.6, 0.4, 0.4, 0.4, 0.4 it/s. Monotone, then a
+plateau at 0.4. The FIRST attempt showed the identical curve and died
+silently mid-epoch, and I attributed that to the keff probe competing
+for unified memory. That attribution was at best incomplete: the
+relaunch ran with the Mac far quieter and decayed exactly the same way.
+Contention may contribute, but the shape is intrinsic to this
+d512/L12/ffn2304 MPS run — a progressive allocator or fragmentation
+effect is the obvious suspect and it is UNINVESTIGATED. At the 0.4
+plateau the remaining ~14k steps are ~10 hours.
+
+This matters beyond one arm: every large Mac birth is presumably paying
+it, and a 5x decay would not show up in any gate number — only in wall
+clock. Worth a small pre-registered probe (fixed arch, log it/s against
+step, with and without a periodic `torch.mps.empty_cache()`) before the
+next hours-class Mac run.
 
 3080: idle. Window closed ~17:00; anything new needs Artin's GO.
 
@@ -123,10 +139,11 @@ saying plainly that this is two computers Artin owns. Memory carries
 ## STANDING FENCES
 
 - **Apple silicon has UNIFIED memory**: a "CPU-only" job and an MPS
-  training job COMPETE. Running the keff probe beside GROW-DECOMP
-  starved it into a silent death (2026-08-11). Do not schedule CPU
-  work beside a live Mac training run, and do not run the full test
-  suite repeatedly while one is training.
+  training job compete for one pool, so do not schedule CPU work — or
+  repeated full test-suite runs — beside a live Mac training run. NOTE
+  the correction above: this was blamed for GROW-DECOMP's first silent
+  death, but the relaunch decayed identically on a quiet machine, so
+  contention is a contributor at most and the real cause is open.
 - **`set -eo pipefail` in every driver.** A tee'd training death
   recorded rc=0 and ran its gate step against a checkpoint that never
   existed. A hookify rule now warns on the shape.
