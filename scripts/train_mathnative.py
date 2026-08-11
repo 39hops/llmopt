@@ -159,10 +159,14 @@ def main(v2: bool = False, d: int = 384, layers: int = 8,
 
     # resume BEFORE the schedule so OneCycle spans only the epochs
     # actually run (full-horizon sched on resume ends at peak LR)
+    # resume gate (llmopt.lab.runfiles, 2026-08-11): a ckpt WITHOUT
+    # its .ep marker refuses instead of silently re-birthing over
+    # the weights (the crown near-miss). Fresh path -> 0; grow's
+    # "-1" marker -> 0 with weights loaded, as before.
+    from llmopt.lab.runfiles import require_resume_marker
     marker = Path(str(CKPT) + ".ep")
-    start_ep = 0
+    start_ep = require_resume_marker(CKPT)
     if marker.exists() and CKPT.exists():
-        start_ep = int(marker.read_text()) + 1
         model.load_state_dict(torch.load(CKPT, map_location="cpu"))
         model.to(dev)
         print(f"resuming at epoch {start_ep}", flush=True)

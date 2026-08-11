@@ -281,10 +281,20 @@ VERDICT](RESULTS.md#L10676).)
   exactly — the shadow narrows to width 1 at ANY precision and the
   throw is rational reconstruction exhausting the fixed 256-prime
   ring. The tie is structural WITH RESPECT TO SHADOW PRECISION AT
-  FIXED RING; the untested knob is prime count, and the ring is now
-  measured as both the cost floor and the feasibility ceiling.
+  FIXED RING; the ring knob then got its own ladder and the tie
+  survived it too: the throw signature is byte-identical at 256,
+  512, AND 1024 primes (lo_bits=16384, e=-16342, obeying the
+  offset-42 law), all eight prefix digests byte-match the certified
+  ladder at every ring size, and the ring-cost slope books at three
+  points (162/316/666 s/step — cleanly ~2x per doubling). Neither
+  precision nor modulus moves the tie: the reconstruction target
+  appears not to exist at any tested budget on either axis, and the
+  co-factor/witness line re-elevates as a denominator-ledger design
+  gate. The ring is measured as both the cost floor and the
+  feasibility ceiling.
   ([VERDICT FUNNEL-PREC](RESULTS.md#L25451); [VERDICT
-  STEP9-CLIFF-SIZE](RESULTS.md#L26105).)
+  STEP9-CLIFF-SIZE](RESULTS.md#L26105); [COUNTER-BOOK
+  NPRIMES-LADDER](RESULTS.md#L26450).)
 - [SINGLE-SEED] [DEVICE-SCOPED] [REGIME-SCOPED: house crystals]
   Post-hoc ternary is NOT where trained tolerance lives: quantizing
   the fp-trained d256 crystal one tensor class at a time, the output
@@ -316,14 +326,40 @@ VERDICT](RESULTS.md#L10676).)
   seed-invariant (73/73/73) while the ternary line carried the birth
   noise (64/62/61). The equilibrium survived its first hunger test:
   a fourth warm epoch at fixed food moved the champion +1 (74 v 73,
-  inside the tie band, same dict shape) — at fixed fuel, more burn
-  buys nothing; whether the limit belongs to the star or the feeding
-  is now purely a rations question.
+  inside the tie band, same dict shape), and the rations question
+  then closed the same way: a 20% infusion of NEW food moved it +2
+  (75 v 73, still inside the band). The 73-74-75 line is flat within
+  resolution — at fixed mass, neither more burning time nor new fuel
+  moves the gate; equilibrium is a function of (width, diet-class),
+  and growth remains the only lever with a measured positive at this
+  frontier. The width axis got its own ladder the same night: four
+  sub-1M births on the 3080 (minutes each, max 546 s) put ignition
+  between d32 (0/120) and d48 (10/120 at ~180k params), with d64 at
+  30/120 — the gate(d) foot is sharp (0/0/10/30), a steep power of
+  mass, and "births take hours" is a size property, not a pipeline
+  property.
   ([VERDICT REVIVE-CROWN-TIE-BIRTHS](RESULTS.md#L26066); [VERDICT
-  SATURATION-1](RESULTS.md#L26259).)
+  SATURATION-1](RESULTS.md#L26259); [VERDICT
+  SATURATION-1-CELL-B](RESULTS.md#L26420); [VERDICT
+  MICRO-STAR-1](RESULTS.md#L26301).)
 
 ## Data, diet, and federation
 
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] The training-loss
+  floor decomposes measurably into data and model halves: the warm
+  diet's empirical conditional entropy is 0.175 nats given the full
+  prefix v a trained floor of 0.348 — ratio 0.502, so ~half the
+  floor is the corpus's own ambiguity (irreducible by ANY optimizer
+  at this diet; loss-to-0 requires canonicalizing the corpus, one
+  continuation per context) and ~half is capacity headroom. The
+  entropy curve knees at k=32 (32 tokens of context capture nearly
+  all corpus structure), and the trained floor sits BETWEEN H_16
+  (0.367) and H_32 (0.187): the d256 crystal extracts essentially
+  all 16-token structure and ~none of the 16-to-32 marginal despite
+  512-token attention — an effective-context instrument, and a
+  candidate quantitative face for the width ladder (does the floor
+  walk down the H_k curve as width grows?).
+  ([VERDICT LOSS-FLOOR-1](RESULTS.md#L26376).)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [TEACHER-FORCED]
   [REGIME-SCOPED: specified diet and recipe] A causal row-format arm changed
   determinability while holding the task family fixed; underdetermined rows

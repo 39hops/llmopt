@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 157, library 157, reproduce-pinned 9, results-cited 122, spec-cited 43
+Census: UNCITED 156, library 157, reproduce-pinned 9, results-cited 123, spec-cited 44
 
 ## scratch/
 
@@ -166,6 +166,7 @@ Census: UNCITED 157, library 157, reproduce-pinned 9, results-cited 122, spec-ci
 | lean | lean_sample_build.py | results-cited | RESULTS×1, specs×1 | — |
 | legacy | legacy_diet_audit.py | results-cited | RESULTS×1 | — |
 | lloydmax | lloydmax_race.py | library | — | 1 |
+| loss | loss_floor_census.py | results-cited | RESULTS×2 | — |
 | lyap | lyap_compare.py | library | RESULTS×1, specs×1 | 2 |
 | lyapunov | lyapunov_birth.sh | UNCITED | — | — |
 | mac | mac_day_chain.sh | UNCITED | — | — |
@@ -292,7 +293,7 @@ Census: UNCITED 157, library 157, reproduce-pinned 9, results-cited 122, spec-ci
 | run | run_snap_gates.sh | spec-cited | specs×1 | — |
 | run | run_snap_knee.sh | UNCITED | — | — |
 | saturation | saturation_s2.py | results-cited | RESULTS×1 | — |
-| saturation | saturation_s2b.py | UNCITED | — | — |
+| saturation | saturation_s2b.py | spec-cited | specs×1 | — |
 | scaffold | scaffold_review.py | results-cited | RESULTS×1 | — |
 | scorer | scorer_s1_battery.py | results-cited | RESULTS×1 | — |
 | scorer | scorer_s2_data.py | results-cited | RESULTS×1, specs×1 | — |
@@ -352,7 +353,7 @@ Census: UNCITED 157, library 157, reproduce-pinned 9, results-cited 122, spec-ci
 | vrm | vrm_ab.py | library | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS×1 | — |
-| wsl | wsl.sh | library | RESULTS×10, specs×10 | 4 |
+| wsl | wsl.sh | library | RESULTS×11, specs×14 | 4 |
 | z1 | z1_gate.sh | UNCITED | — | — |
 | z1s | z1s_hot_watcher.sh | UNCITED | — | — |
 | zx | zx_chain.sh | UNCITED | — | — |

@@ -1975,6 +1975,15 @@ The Lloyd-Max codebook race (pre-reg RESULTS 2026-07-25): per-output-channel exa
 - `uniform_rows(w: torch.Tensor, bits: int) -> torch.Tensor` — Symmetric-range int grid {-2^(b-1) .. 2^(b-1)-1} x s.
 - `main() -> None`
 
+### scratch/loss_floor_census.py
+LOSS-FLOOR-1: empirical conditional entropy of the sat_s2 warm diet vs the measured 0.348 train-loss floor (RESULTS pre-reg LOSS-FLOOR-1).
+
+- `encode_corpus()`
+- `entropy_of_groups(groups)` — Mean -log p_hat(next | context) over all positions, nats.
+- `h_kgram(enc, k)`
+- `h_full(enc)`
+- `main()`
+
 ### scratch/lyap_compare.py
 Atlas-2 Lyapunov leg: function-space divergence between twin births. Observable (weight distance forbidden by doctrine): teacher-forced argmax disagreement on 200 fixed gen-4 rows — fraction of non-pad positions where the two models' greedy next- token predictions differ. Usage:   lyap_compare.py ckptA ckptB TAG   (d64/ffn256/heads4 assumed)
 
@@ -2518,6 +2527,11 @@ SATURATION-1 cell (a): +1 warm epoch at fixed food on a COPY of the grown-s2 cha
 
 - `_load_rows(*a, **k)`
 
+### scratch/saturation_s2b.py
+SATURATION-1 cell (b): +1 epoch on WIDENED rations (AMENDMENT SATURATION-1-CELL-B). Warm corpus + 20% gen-8 slice, string-seeded. Usage: .venv/bin/python scratch/saturation_s2b.py
+
+- `_load_rows(*a, **kw)`
+
 ### scratch/scaffold_review.py
 Overnight scaffold review: MERGE-1 on gravmoe_s{S}, channel ablation on channel_s{S} (S env, default 2; missing files skip). CPU. Runs as part of overnight chains.
 
@@ -2999,6 +3013,17 @@ lab.oracle — the boxed oracle, v3.2 lineage (spec 2026-08-05-llmopt-lab-extrac
 Standalone oracle worker for timeboxed p.check — ADOPTED from scratch/oracle_worker.py (MOE-GT-6 v3; that file stays frozen). main() is character-identical to the source (guarded by tests/test_lab_oracle.py); only the repo-root sys.path depth differs.
 
 - `main()`
+
+### llmopt/lab/runfiles.py
+Run-artifact contract — the Spark-_SUCCESS pattern for the lab.
+
+- `run_dir(name: str, root: str | Path='logs') -> Path` — Create (idempotently) and return logs/<name>/ AT NAME TIME.
+- `_git_sha() -> str`
+- `write_marker(dir_or_path: str | Path, kind: str, rc: int | str, wall_s: float | None=None, artifacts: list[str] | None=None, **extra) -> Path` — Write the run's single marker line, atomically.
+- `read_marker(dir_or_path: str | Path) -> dict | None` — Return the marker dict, or None when absent/unparseable.
+- `is_done(dir_or_path: str | Path) -> bool` — True iff a marker exists AND parses. Absence is 'never ran
+- `rc_of(dir_or_path: str | Path) -> int | None` — The marker's rc as an int, or None for absent/non-integer
+- `require_resume_marker(ckpt: str | Path) -> int` — REFUSE to proceed when a checkpoint exists without its .ep
 
 ### llmopt/lab/traj.py
 lab/traj — unified MoE router instrument (module 4; DESK TIER ONLY).
