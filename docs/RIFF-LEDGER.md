@@ -3929,3 +3929,17 @@ without re-introducing history).
   extracts what attention leaves — big), lands above (SSM micro-
   scale toll, honest loss). Evening-priced on the 3080; pre-reg
   on GO. Attribution: Artin (spot), house (tie to FLOOR-HK-1).
+
+- **BANK (2026-08-11): SSM x axiom fork (Artin: "faster if
+  mac-axiom builds it in axiom?")** — for SSM-STAR-1 itself: no
+  (wall = Python-loop kernel-launch overhead, 2.2 v 33 it/s; rung
+  finishes in ~2.5 h; relay cycle is days). Two post-verdict
+  cases where axiom earns it: (1) ladder-scale SSM program ->
+  house chunked associative scan first (~10x, one evening), fused
+  axiom kernel after; (2) THE AXIOM-SHAPED RUNG: exact integer
+  recurrence — an SSM compounds state every token, the worst-case
+  fp-error accumulator, exactly their exact-v-fp divergence
+  instrument class (P-EXACT-TIE lineage). Ask: where does fp32
+  recurrence first diverge from exact, and does it ever flip a
+  gate decision. Relay drafts only AFTER SSM-STAR-1 books (bars
+  first). Attribution: Artin (fork question), house (triage).
