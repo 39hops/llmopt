@@ -25883,3 +25883,35 @@ BARS (registered before any arm fires):
 Any |delta| < 7 books UNRESOLVED pending n=3 (resolution law).
 [HOLD]: births are hours-class on the 3080 — fires only on Artin's
 explicit night-window GO, never from this pre-reg.
+
+## PRE-REG STEP9-CLIFF-SIZE: the >=15k-bit wall gets a ladder — finite constant or structural tie? (2026-08-10 night, spec'd house-side; runs mac-axiom CPU)
+
+The exact track's highest-value open number. FUNNEL-PREC's sensor
+measured step 9's demand at >=15k bits (third defeat, first
+quantitative wall read); nobody has ever paid enough precision to
+see whether step 9 reconstructs AT ALL. Instrument: run_anchor2
+d64 (int_adamw r2b tables/init, 256 primes), TRACE BUILD ONLY
+(-DAX_ANCHOR2_TRACE — the AX_PREC override does not exist in the
+plain build; house method note, AMENDMENT FUNNEL-PREC-COST-SCOPE-
+AND-WALL), steps 1-8 replayed on the shipped ramp, then step 9 at
+AX_PREC in {16384, 65536, 262144}, FIRST SUCCESS STOPS THE LADDER.
+
+BARS:
+1. P-CLIFF-FINITE: step 9 completes (digest emitted, no throw) at
+   some rung of the ladder. FIRES -> the tie is EXPENSIVE, not
+   structural: the obstacle book replaces ">=15k" with a measured
+   constant, and the co-factor open problem loses its "only path"
+   status. The fired rung's wall_s is the price tag.
+2. P-STRUCTURAL: all three rungs throw. Books as the structural-
+   tie hypothesis surviving its strongest test yet (2^18 bits of
+   shadow), and the witness/co-factor line is re-elevated.
+FENCES (the checkpoint-selection rule, load-bearing here): every
+attempt STREAMS its row (prec, wall_s, throw site or digest)
+BEFORE the next fires — a killed 262144-bit attempt must leave a
+receipt or the killed class is invisible. HARD TIMEBOX 4 h per
+rung, kill -> row says killed-at-wall. Ring-bound wall note: the
+dyadic shadow is a weak second term (25x prec cost 1.38x wall at
+step 1), but step 9's demand is 100-1000x — the weak term may not
+stay weak; the timebox is the fence, prediction stays open. Mac
+CPU, one worker, interactive-load caveat carries. House
+prediction: none registered — genuinely unknown, the honest state.
