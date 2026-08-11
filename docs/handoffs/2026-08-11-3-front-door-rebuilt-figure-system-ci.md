@@ -33,6 +33,19 @@ clock. Worth a small pre-registered probe (fixed arch, log it/s against
 step, with and without a periodic `torch.mps.empty_cache()`) before the
 next hours-class Mac run.
 
+REFINED (18:36, machine-idle check + code read): (a) the printed rate
+is a CUMULATIVE average (`steps/(t - epoch_start)`,
+train_mathnative.py:312) — instantaneous is ~0.5 s/step early, ~2.5
+s/step late; the 5x is real, the monotone shape partly smoothing.
+(b) The relaunch matches the first attempt STEP-FOR-STEP (same losses,
+same rates at same steps) on an idle machine (top consumer a system
+daemon) — decay is deterministic in step number; environment ruled
+out. (c) Named candidate: token-budget packing gives every batch a
+distinct (B, L) shape; MPS allocates per shape, so buffer
+churn/fragmentation grows then plateaus when the shape vocabulary
+saturates. Probe arms: periodic empty_cache; pad L to 64-buckets to
+collapse shape count; instantaneous-rate logging.
+
 3080: idle. Window closed ~17:00; anything new needs Artin's GO.
 
 ## BOOKED THIS BLOCK (all pushed)
