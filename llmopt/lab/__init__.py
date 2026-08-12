@@ -24,7 +24,7 @@ Written for the package
 
 Moved out in Phase 5 (2026-08-12; old llmopt.lab.<name> paths stay
 valid via alias shims)
-  llmopt.runs     runlog (streamed per-step receipts), runfiles
+  llmopt.runs     receipts (streamed per-step RunLog), runfiles
                   (marker contract), traj (MoE router-patch path),
                   lake (Parquet; needs the [lake] extra)
   llmopt.figures  figstyle (validated palette, house rcParams),
@@ -44,7 +44,7 @@ from llmopt.lab.oracle import CheckResult, Oracle
 from llmopt.runs.runfiles import (is_done, rc_of, read_marker,
                                  require_resume_marker, run_dir,
                                  write_marker)
-from llmopt.runs.runlog import RunLog
+from llmopt.runs.receipts import RunLog
 from llmopt.lab.verify import verify_wave
 
 # lake is NOT imported here: it needs pyarrow at module scope (the

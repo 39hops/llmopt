@@ -71,6 +71,16 @@ Measurement
   reproduce     pinned one-command replays; `python -m llmopt.reproduce
                 --list` shows the registry.
 
+API stability tiers
+-------------------
+Stable: `common`, `intmath`, `eval.equivalence` — signatures hold.
+Supported research API: `lab`, `runs`, `figures`, `moe`, `search`,
+`mathgen`, `train` — evolves with the program, changes are booked.
+Experimental: every other subpackage — may be refactored without
+notice.
+Frozen evidence: `vendor/` and anything `docs/CODEMAP.md` marks
+results-cited — never rewritten, only superseded.
+
 Dependencies
 ------------
 Core is torch, numpy, and sympy. Optional extras keep the heavy paths
