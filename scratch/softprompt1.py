@@ -82,8 +82,12 @@ def diet_batches(tok, n_steps, bs=24, seq_cap=192):
     rng.shuffle(rows)
     texts = []
     for r in rows:
-        s = f"{r['cur']}>{r['nxt']}"
-        ids = tok.encode(s, strict=False)
+        # the trainer's own row format (a bare '>' is not an atom)
+        s = f"Current: {r['cur']}\nHints: none\nStep: {r['nxt']}\n"
+        try:
+            ids = tok.encode(s, strict=True)
+        except ValueError:
+            continue  # same skip class as the trainer's strict path
         if ids and len(ids) <= seq_cap:
             texts.append(ids)
         if len(texts) >= n_steps * bs:

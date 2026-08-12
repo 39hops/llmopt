@@ -48,12 +48,6 @@ def base_rows() -> list[dict]:
             if r["cur"].replace(" ", "") != r["nxt"].replace(" ", "")]
 
 
-def char_shuffle(s: str, rng: random.Random) -> str:
-    cs = list(s)
-    rng.shuffle(cs)
-    return "".join(cs)
-
-
 def write(name: str, rows: list[dict]) -> str:
     p = f"{OUT}/{name}.jsonl"
     with open(p, "w") as f:
@@ -82,14 +76,26 @@ def main() -> None:
     keep = rng.sample(range(n), n // 2)
     z1 = [dict(z2[i]) for i in keep for _ in (0, 1)][:n]
 
-    # z0: char-shuffle every text field of z3 in place
-    rng = random.Random("metallicity-z0-1")
+    # z0: TOKEN-level shuffle of every text field (v2 — the char
+    # shuffle broke multi-char vocab atoms, strict encode dropped
+    # every row, and the empty diet crashed the trainer; token
+    # shuffle roundtrips encode(decode(shuffled)) exactly).
+    # Identical token multiset + length distribution, zero syntax.
+    from llmopt.train.mathnative import MathTokenizer
+    tok = MathTokenizer()
+    rng = random.Random("metallicity-z0-2")
+
+    def tok_shuffle(s: str) -> str:
+        ids = tok.encode(s, strict=False)
+        rng.shuffle(ids)
+        return tok.decode(ids)
+
     z0 = []
     for r in z3:
         r = dict(r)
         for k in ("cur", "nxt", "think"):
             if isinstance(r.get(k), str):
-                r[k] = char_shuffle(r[k], rng)
+                r[k] = tok_shuffle(r[k])
         z0.append(r)
 
     man = {name: write(name, rows) for name, rows in

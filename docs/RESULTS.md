@@ -27472,3 +27472,21 @@ FENCES: one device (3080), one ckpt, single seed everything; P=8 and
 after seeing data); prefix trains on diet CE, never on gate
 problems; z0-z3 diets and this rung share the METALLICITY-1 window —
 if the 17:00 wall kills the chain, books NOT-RUN.
+
+## AMENDMENT METALLICITY-1-Z0: z0 construction corrected BEFORE any z0 receipts existed — char shuffle -> token shuffle (2026-08-11 night)
+
+Amends: PRE-REG METALLICITY-1. The registered z0 (char-shuffled
+fields) could not strict-encode: shuffling breaks multi-char vocab
+atoms ("Integral(", " => "), so the trainer dropped every row and
+the empty diet crashed the driver at the first z0 cell
+(total_steps=0; the z3 lane completed first and its four receipts
+stand). No z0/z1/z2 model was ever born from the flawed grade, so
+this is a construction fix, not a post-data reword: z0 v2 is a
+TOKEN-level shuffle of every text field (encode -> shuffle ids ->
+decode; verified 3000/3000 rows strict-encode in the trainer's own
+row format). Same intent, now realizable: identical token multiset
+and length distribution, zero syntax. New z0 sha 8084262fe657fec0
+(manifest.ref.json updated; z1/z2/z3 shas unchanged). Driver gains
+per-cell tolerance (a failed cell books FAILED and the battery
+streams on) and skip-if-gated (the four z3 receipts are not re-run).
+Bars, prior, and every other fence unchanged.

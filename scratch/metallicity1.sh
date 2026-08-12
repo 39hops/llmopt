@@ -29,16 +29,24 @@ for Z in z3 z0 z2 z1; do            # z3 first (anchor), z0 second (control)
   for D in 64 56 48 32; do          # widest first: ignition read earliest
     FFN=$((D * 4))
     CK="checkpoints/metal_${Z}_d${D}.pt"
-    BIRTH_SEED=1 .venv/bin/python scripts/train_mathnative.py \
+    GL="logs/metallicity1/${Z}_d${D}_gate.log"
+    if grep -q "gate:" "$GL" 2>/dev/null; then
+      echo "CELL SKIP ${Z} d${D} (already gated)"; continue
+    fi
+    # per-cell tolerance: one dead cell books FAILED, the battery
+    # streams on (a z0-lane crash killed the whole driver once)
+    if BIRTH_SEED=1 .venv/bin/python scripts/train_mathnative.py \
       --diet data/metallicity/${Z}.jsonl --fast --epochs 3 \
       --budget 6144 --d $D --layers 8 --ffn $FFN --heads 4 \
       --out "$CK" \
-      > "logs/metallicity1/${Z}_d${D}_birth.log" 2>&1
-    .venv/bin/python scratch/gate_ckpt.py "$CK" $D 8 $FFN 4 \
-      "metal_${Z}_d${D}" \
-      > "logs/metallicity1/${Z}_d${D}_gate.log" 2>&1
-    grep -h "gate" "logs/metallicity1/${Z}_d${D}_gate.log" | tail -1
-    echo "CELL DONE ${Z} d${D}"
+      > "logs/metallicity1/${Z}_d${D}_birth.log" 2>&1 \
+    && .venv/bin/python scratch/gate_ckpt.py "$CK" $D 8 $FFN 4 \
+      "metal_${Z}_d${D}" > "$GL" 2>&1; then
+      grep -h "gate" "$GL" | tail -1
+      echo "CELL DONE ${Z} d${D}"
+    else
+      echo "CELL FAILED ${Z} d${D} (see birth/gate log)"
+    fi
   done
 done
 echo "METALLICITY-1 done"
