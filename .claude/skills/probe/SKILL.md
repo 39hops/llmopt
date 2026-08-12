@@ -42,6 +42,13 @@ without one, and probes are granular where training gives a point.
   run serves every model trained on that diet.
 - **The standard 120 gate** (`llmopt.lab.gate.gate_checkpoint`) —
   capability on any checkpoint, no training.
+- **`scratch/softprompt_sampler_probe.py` — harness v stock.** When a
+  wrapped or rebuilt model gates differently from the checkpoint it
+  was built from, this separates the two candidate causes in seconds:
+  part 1 compares logits and every state-dict tensor (is the model
+  identical?), part 2 compares `torch.multinomial` draws at two
+  category counts (is the sampler identical?). CPU, no training.
+  Reach for it before theorizing about any harness discrepancy.
 
 ## Building a new probe — the rules that bit
 
@@ -59,6 +66,12 @@ without one, and probes are granular where training gives a point.
   It is how you catch a broken probe before it produces a verdict.
 - **Never compare probe numbers to training-floor numbers.**
   Different position mixtures by construction — say so in the fence.
+- **When a reading changes, isolate the model from the sampler before
+  explaining it.** They fail independently and the fix differs. A
+  bit-exact forward with a different gate number is a sampler
+  problem, and no amount of weight comparison will show it — the
+  weights sha and the logits both agree while the trajectories
+  diverge. Two cheap checks, in that order, beat one plausible story.
 
 ## Booking
 

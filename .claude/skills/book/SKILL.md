@@ -16,11 +16,16 @@ metadata, perform ALL of these steps in order:
 2. **Regenerate the index**: `.venv/bin/python scripts/gen_results_index.py`.
    Always run it yourself. The PostToolUse hook matches `Edit|Write`
    only, so a heredoc append does NOT trigger it.
-3. **Link**: `grep -n needs_link docs/results-index.jsonl` to find the
-   new rows, then patch them in place with
+3. **Link**: patch the new rows in place with
    `llmopt.lab.jsonl.read_jsonl` / `write_jsonl` — set `threads`
    (kebab-case program names) and `links` (related entry ids, not
    titles), and pop `needs_link`. Never re-emit the file from context.
+   **Match rows by `id`, and assert the id before writing.** The
+   backlog is not empty, so "the row with `needs_link`" is not
+   necessarily yours: on 2026-08-11 a scan-for-needs_link patch
+   silently overwrote an unrelated entry's threads while the new row
+   kept its auto-extracted default. Read the id out of the generator's
+   output, then edit that id and no other.
    Verify: `grep -c needs_link` returns 0, and
    `scripts/results_query.py --chain <new-id>` shows the entry.
 4. **Curate FINDINGS in the same commit** when the entry is a verdict.
@@ -32,7 +37,13 @@ metadata, perform ALL of these steps in order:
    `docs/FINDINGS.md` (plus any script the entry references) with a
    one-line message summarizing the verdict. Gate the commit on a real
    exit code — read `$?` from a redirected pytest, never from a piped
-   one. PUBLIC REPO: end the message with exactly
+   one. **If the entry adds a NEW script, CODEMAP needs a second
+   regeneration after the commit**: `gen_codemap.py` inventories
+   git-TRACKED files, so a script staged in the same commit is
+   invisible to a regen run before it and `test_codemap_inventory`
+   goes red on the next suite. Commit the entry, re-run
+   `gen_codemap.py` and `gen_index.py`, commit the map. PUBLIC REPO:
+   end the message with exactly
    `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>` and NEVER
    a Claude-Session URL.
 
@@ -67,4 +78,17 @@ metadata, perform ALL of these steps in order:
   governs; the prose must match it.
 - **Provenance line**: a gate booking quotes the `weights sha`
   line that gate_eval now prints (dtype-sensitive — never compare
-  shas across precisions).
+  shas across precisions). That sha lives in `gate_eval`
+  (`scripts/step_grpo_micro.py:184`) and hashes the LOADED tensors,
+  not the file — a reviewer reading only `gate_ckpt.py` will report
+  it missing, which is a false positive.
+- **Gate numbers are comparable only across runs whose sampler saw
+  the SAME NUMBER OF CATEGORIES** (booked 2026-08-12, AMENDMENT
+  SOFT-PROMPT-1-SAMPLER). Widening the logit vector — padded vocab,
+  added special tokens, reserved slots, virtual tokens — leaves the
+  distribution bit-identical and still changes the sampled
+  trajectory, because `torch.multinomial` consumes a
+  category-count-dependent number of random values and one generator
+  is reused down a whole rollout. Neither the weights sha nor a logit
+  comparison detects this. If an arm changed vocabulary width, say so
+  in the fence or do not compare the numbers.

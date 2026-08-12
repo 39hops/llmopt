@@ -34,6 +34,15 @@ Every pre-reg carries:
   is an instrument.
 - **FENCES**: device, seed count, family-only comparisons, diet
   confounds, window/GO limits, what books NOT-RUN if the wall hits.
+- **A NO-OP PRECONDITION, whenever the rung rebuilds or wraps the
+  model** (virtual tokens, vocab padding, patched forwards, adapter
+  shells). Register a cell that reproduces the stock reading EXACTLY,
+  cell for cell, and gate every treatment cell behind it. A
+  perturbation control is not a substitute: SOFT-PROMPT-1 had one, it
+  fired correctly, and the rung still cost a full run because the
+  harness was already off before any prefix existed. Bit-identical
+  weights do not imply an identical reading — the sampler sees the
+  harness too.
 
 Commit the pre-reg BEFORE the run fires. A pre-reg committed after
 receipts exist is not a pre-registration.
@@ -91,6 +100,24 @@ until scratch/wsl.sh run 'ls logs/<rung>.DONE' 2>/dev/null; do sleep 180; done
 ```
 as a background Bash call, with the receipt dump on the same line so
 the notification carries the numbers.
+
+**A watcher watches; it does not launch.** Before arming one, confirm
+two things, or it will poll happily forever:
+
+- **Something wrote the marker.** `wsl.sh launch` appends
+  `&& echo DONE > <marker>` itself, but a driver run any other way
+  must `touch` its own marker on success. On 2026-08-11 a watcher
+  polled `logs/softprompt1.DONE` for two hours against a driver whose
+  last line was a `tee` — the marker had no author.
+- **Something launched the driver.** A chained driver
+  (`while [ ! -f logs/<other>.DONE ]; do sleep 300; done`) still has
+  to be started by someone. That same night the chain was written,
+  committed, and never launched; the first rung finished, the marker
+  appeared, and nothing was waiting on it. `pgrep -af <driver>` is
+  the check, and "launched" in a tool result is not.
+
+Chaining rung B on rung A's marker is fine — but launch B explicitly
+at arm time, and give B its own marker on success.
 
 ## Machine rules
 

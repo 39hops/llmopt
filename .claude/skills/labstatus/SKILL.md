@@ -22,13 +22,32 @@ that FINISHED or CRASHED since the last check.
    RUNNING/DONE-with-rc/DIED by job ID, no string matching.)
 
 2. **3080** (single wsl.sh call; never compare its gate numbers to
-   Mac numbers — cross-device doctrine):
+   Mac numbers — cross-device doctrine). Sweep `logs/*/` too, not
+   just top level — driver receipts land in `logs/<rung>/`, so a
+   top-level-only glob reports "nothing running" for a battery that
+   is streaming cells:
 
    ```bash
-   scratch/wsl.sh run "ls -t logs/*.log | head -5; for f in \$(ls -t logs/*.log | head -3); do echo \"== \$f\"; tail -3 \"\$f\"; done; ls logs/*.DONE 2>/dev/null | tail -3"
+   scratch/wsl.sh run "ls -t logs/*.log logs/*/*.log 2>/dev/null | head -8; for f in \$(ls -t logs/*.log logs/*/*.log 2>/dev/null | head -4); do echo \"== \$f\"; tail -3 \"\$f\"; done; ls logs/*.DONE 2>/dev/null | tail -3"
    ```
 
-3. Report: one line per live run (name, progress, ETA if knowable),
+3. **Verify anything you believe is QUEUED is actually running.** A
+   marker file and a live process are different facts, and a watcher
+   proves neither. Check the process, not the plan:
+
+   ```bash
+   scratch/wsl.sh run "pgrep -af '<driver>' | grep -v pgrep || echo 'NOT RUNNING'"
+   ```
+
+   Two failure shapes have both fired (2026-08-11, same night):
+   a chained driver that nothing ever launched, and a watcher polling
+   a `.DONE` marker its driver never writes. Either way the run looks
+   pending forever and the window burns. If a driver is chained on
+   another rung's marker, confirm the driver process exists — the
+   chain's `while [ ! -f marker ]` loop only runs if something started
+   it.
+
+4. Report: one line per live run (name, progress, ETA if knowable),
    then finished-but-unbooked results (these are the action items —
    offer to /book them), then anything anomalous (empty logs,
    dead pids, OOM/Traceback lines — an allocator OOM warning is a
