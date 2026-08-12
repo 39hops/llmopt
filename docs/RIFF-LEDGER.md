@@ -4038,3 +4038,25 @@ without re-introducing history).
   coordinate system, or it re-runs a booked null in disguise.
   Attribution: Artin (ladder ask, QM-complex-plane thread), house
   (Hurwitz identification, fence).
+
+- **CORRECTION (2026-08-11, minutes later) to the division-algebra
+  bank above: dim-4 is NOT unclimbed — the house has a measured
+  quaternion program.** A confluence sweep (verified line-by-line
+  against RESULTS) found: S1 quaternionic CONVERSION at the bar
+  (61/120 at anti-mass 0.0007, 4x sharing, RESULTS 8682); the 4x
+  toll REAL at n=3 (P-TOLL-REAL pooled -17, 3/3 negative, RESULTS
+  23168); symmetry x alphabet orthogonal (ROT-X-TERNARY 26031); and
+  the standing nulls a dim-4 rung must respect: no spontaneous
+  quaternionic structure (8665), alphabet-follows-domain dead (ZX
+  column 6652), bits geometry-blind (10238/10334), zeta-8 imposition
+  neutral-to-negative (B6 12914), commutant lenses blind to
+  activation clocks (TIER-A A3). What remains genuinely OPEN on the
+  ladder: (a) BORN-quaternion births (all measured cells are
+  retrofit conversions of real crystals; the alphabet-tournament
+  spec's Q9 unit alphabet at 3.17 bits is designed and unrun), and
+  (b) the ladder-as-ladder question — one pre-reg spanning dims
+  1/2/4/8 born-matched at equal real DOF, which no single booked
+  cell covers. Instruments ready: quat_commutant/quat_convert
+  (frozen), complex_ffn (promoted), p3_quat n=3 wrapper pattern.
+  Attribution: house sweep + line verification; the "unclimbed"
+  claim above is retracted.
