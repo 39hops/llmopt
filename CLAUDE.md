@@ -144,6 +144,24 @@ RESULTS before a run fires; book verdicts (including honest
 failures) the moment they land; consolidate BOARD + a new handoff
 at natural stopping points, not mid-sprint.
 
+**The rituals below are SKILLS — use them instead of re-deriving
+the steps** (`.claude/skills/`, each carrying the gotchas that
+earned it):
+
+| Skill | Covers |
+|---|---|
+| `/rung` | pre-reg -> driver -> launch -> watcher (the front half) |
+| `/book` | append RESULTS, regen index, link, curate FINDINGS, push |
+| `/riff` | bank an idea in RIFF-LEDGER, or correct a bank in place |
+| `/labstatus` | one-shot sweep of both machines, unbooked results first |
+| `/probe` | measurement-cost triage before any multi-hour run |
+| `/relay` | house -> axiom relay |
+| `/counterbook` | recompute axiom's numbers from their artifacts |
+
+Read the skill before improvising a variant of it; where a skill
+and this file disagree, the skill is the more recently corrected of
+the two and should be reconciled here in the same session.
+
 ## Doc lifecycle + machines (living-docs discipline)
 
 - RESULTS.md is append-only; corrections are AMENDMENT entries
@@ -152,7 +170,13 @@ at natural stopping points, not mid-sprint.
   preserves curation) and ideally adds threads/verdict/links to
   its line in docs/results-index.jsonl, same commit. Query with
   `scripts/results_query.py` (--live / --chain / --thread) BEFORE
-  proposing experiments — faster than grepping ~24k lines.
+  proposing experiments — faster than grepping ~28k lines.
+- **docs/FINDINGS.md is CI-RATCHETED**: `test_docs_integrity.py`
+  caps the uncurated backlog, so booking a VERDICT without adding
+  its FINDINGS bullet in the same commit turns the suite red. That
+  is the guard working, not a flake. One bullet, exactly one
+  maturity tag from the controlled vocabulary, its scope tags, and
+  a `RESULTS.md#L<line>` anchor.
 - THEORY.md and RIFF-LEDGER.md are LIVING documents: at every
   session close, check the day's verdicts against existing
   rows/banks — update, amend, or mark-dead whatever a finding
