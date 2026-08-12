@@ -2653,6 +2653,12 @@ S2 trainer (calibrated-scorer spec): the listwise objective race. State + enumer
 - `spearman(xs, ys)`
 - `eval_battery(name, score_fn)`
 
+### scratch/seed_audit.py
+RNG seed audit (spec 2026-08-12 Phase 6.4). Report-only.
+
+- `classify(line: str) -> str`
+- `main() -> None`
+
 ### scratch/series_probe.py
 Series rung 1 probe: greedy next-partial-sum emission on the 142 held-out steps (seeds 17-19), scored by sympy polynomial equivalence in fork-isolated workers (the solve_isolated doctrine). Also runs the standard 120 gate for the paired regression read vs seedvar-1 (65). Usage: series_probe.py <ckpt>
 

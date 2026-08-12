@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-cited 74, cited-but-library 51
+Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-cited 77, cited-but-library 51
 
 ## scratch/
 
@@ -123,7 +123,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | gate | gate_transcripts.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | gate | gate_v2_bench.sh | UNCITED | — | — | — | — |
 | gate | gate_zx.py | UNCITED | — | — | — | 10 |
-| gatepins | gatepins_freeze.py | spec-cited | specs | specs×4 | — | 1 |
+| gatepins | gatepins_freeze.py | spec-cited | specs | specs×5 | — | 1 |
 | gauge | gauge_distance_d256.py | UNCITED | — | — | — | — |
 | gauge | gauge_m4x.py | UNCITED | — | — | — | — |
 | gauge | gauge_slack_rat.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -165,7 +165,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | int3 | int3_rider.py | UNCITED | — | — | — | — |
 | jointperm | jointperm_distance.py | UNCITED | — | — | — | — |
 | judge | judge_decode.py | spec-cited | specs | specs×3 | — | — |
-| k3 | k3_expert_demo.py | results-cited | RESULTS, specs | RESULTS×5, specs×3 | — | 4 |
+| k3 | k3_expert_demo.py | results-cited | RESULTS, specs | RESULTS×4, specs×3 | — | 4 |
 | keff | keff_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | kv | kv_after_night.sh | UNCITED | — | — | — | — |
 | kv | kv_equiv.py | UNCITED | — | — | — | 2 |
@@ -266,7 +266,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | pack | pack_rans.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | pack | pack_tiered.py | spec-cited | specs | specs×1 | — | — |
 | paper | paper_figs.py | UNCITED | — | — | — | — |
-| phase4 | phase4_rewrite.py | UNCITED | — | — | — | — |
+| phase4 | phase4_rewrite.py | spec-cited | specs | specs×1 | — | — |
 | phase4 | phase4_sites.py | spec-cited | specs | specs×3 | — | 1 |
 | phase4 | phase4_unboot.py | UNCITED | — | — | — | — |
 | phase5 | phase5_deadcode.py | spec-cited | specs | specs×1 | — | — |
@@ -318,6 +318,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | scorer | scorer_s1_battery.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | scorer | scorer_s2_data.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | scorer | scorer_s2_train.py | spec-cited | specs | specs×1 | — | — |
+| seed | seed_audit.py | spec-cited | specs | specs×1 | — | — |
 | seeds | seeds_ladder_0804.sh | UNCITED | — | — | — | — |
 | series | series_probe.py | spec-cited | specs | specs×5 | — | 15 |
 | snap | snap_alloc.py | spec-cited | specs | specs×2 | — | 1 |
@@ -390,7 +391,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
-|  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×10 | — | 1 |
+|  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×12 | — | 1 |
 | arena | arena.py | UNCITED | — | — | — | — |
 | autopsy | autopsy_int.py | UNCITED | — | — | — | — |
 | backfill | backfill_code_commit.py | spec-cited | specs | specs×3 | — | — |
@@ -427,7 +428,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | bench | bench_interference.py | UNCITED | — | — | — | — |
 | bench | bench_ksweep.py | UNCITED | — | — | — | — |
 | bench | bench_kv_quant_decode.py | UNCITED | — | — | — | 1 |
-| bench | bench_ladder.py | UNCITED | — | — | — | — |
+| bench | bench_ladder.py | spec-cited | specs | specs×1 | — | — |
 | bench | bench_lazy.py | library | RESULTS | RESULTS×1 | 1 | — |
 | bench | bench_llm_gating.py | UNCITED | — | — | — | — |
 | bench | bench_lookup_static.py | UNCITED | — | — | — | — |
@@ -485,7 +486,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | farm | farm_v22.py | UNCITED | — | — | — | 1 |
 | figlib | figlib.py | spec-cited | specs | specs×1 | — | — |
 | gen | gen_catalog.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
-| gen | gen_codemap.py | results-cited | RESULTS, specs | RESULTS×1, specs×20 | — | 1 |
+| gen | gen_codemap.py | results-cited | RESULTS, specs | RESULTS×1, specs×21 | — | 1 |
 | gen | gen_dispatch_labels.py | UNCITED | — | — | — | 2 |
 | gen | gen_dispatch_labels_v2.py | UNCITED | — | — | — | — |
 | gen | gen_figures_web.py | UNCITED | — | — | — | — |
@@ -495,7 +496,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | gen | gen_magic_labels.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
 | gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | 1 |
-| gen | gen_readme.py | spec-cited | specs | specs×14 | — | 1 |
+| gen | gen_readme.py | spec-cited | specs | specs×20 | — | 1 |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
 | gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 4 |
 | gen | gen_scoreboard.py | UNCITED | — | — | — | — |
@@ -520,7 +521,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | sol | sol_enrich_results.py | library | specs | specs×4 | 1 | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — |
 | step | step_grpo.py | spec-cited | specs | specs×1 | — | — |
-| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×18 | 95 | 5 |
+| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×19 | 95 | 5 |
 | sweep | sweep_lookup.py | UNCITED | — | — | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — | — | — |
