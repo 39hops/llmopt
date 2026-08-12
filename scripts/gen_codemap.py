@@ -146,15 +146,20 @@ def main() -> None:
     code = load_code()
     rows: dict[str, list[tuple]] = defaultdict(list)
     tallies: dict[str, int] = defaultdict(int)
+    hidden = 0
     for base, pat in INVENTORY_GLOBS:
         for f in collect_files(base, pat):
             cites = doc_cites(f.name, docs)
             refs = code_refs(f, code)
             cls = classify(cites, refs)
             tallies[cls] += 1
+            if cls == "library" and cites:
+                hidden += 1
             cite_s = ", ".join(f"{g}×{n}" for g, n in cites.items()) or "—"
+            cited_by = ", ".join(cites.keys()) or "—"
             ref_s = str(len(refs)) if refs else "—"
-            rows[base].append((family(f.name), f.name, cls, cite_s, ref_s))
+            rows[base].append(
+                (family(f.name), f.name, cls, cited_by, cite_s, ref_s))
 
     lines = [
         "# CODEMAP — the move-gate inventory (generated, do not hand-edit)",
@@ -167,15 +172,19 @@ def main() -> None:
         "code files that import the module OR embed its literal filename",
         "(catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).",
         "",
-        "Census: " + ", ".join(f"{k} {v}" for k, v in sorted(tallies.items())),
+        "Census: " + ", ".join(f"{k} {v}" for k, v in sorted(tallies.items()))
+        + f", cited-but-library {hidden}",
         "",
     ]
     for base in ("scratch", "scripts"):
         lines += [f"## {base}/", "",
-                  "| family | file | class | doc citations | refs |",
-                  "|---|---|---|---|---|"]
-        for fam, name, cls, cite_s, ref_s in sorted(rows[base]):
-            lines.append(f"| {fam} | {name} | {cls} | {cite_s} | {ref_s} |")
+                  "| family | file | class | cited by | doc citations"
+                  " | refs |",
+                  "|---|---|---|---|---|---|"]
+        for fam, name, cls, cited_by, cite_s, ref_s in sorted(rows[base]):
+            lines.append(
+                f"| {fam} | {name} | {cls} | {cited_by} | {cite_s}"
+                f" | {ref_s} |")
         lines.append("")
     OUT.write_text("\n".join(lines))
     print(f"[codemap] wrote {OUT.relative_to(ROOT)}: "
