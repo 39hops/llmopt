@@ -669,3 +669,27 @@ git rev-list --objects --all | awk '{print $1}' \
 | `main` branch protection | none | CI required |
 | `we/our/us` in front-facing non-paper docs | 6 (THEORY) | 0 |
 | "the house" in visitor-facing docs | 9 | 0 |
+
+### Foundations actuals (2026-08-12, post-execution)
+
+Phases 0, 1, 2, 7b, and the passing part of 5b landed (see BOARD). Re-derived
+with the §10 commands (object-size sweep skipped as directed by Task 13 — no
+`git gc`/`prune`/`fsck` run this pass, `git count-objects -vH` only) plus
+`scripts/list_uncurated.py`, `results-index.jsonl`, and `gen_readme.py
+--check`.
+
+| metric | baseline (2026-08-12, pre-execution) | actual (2026-08-12, post-execution) |
+|---|---|---|
+| `.git` size | 47 GB | 204 MiB (203.26 MiB packed, 1 pack, 856 KiB loose, 0 garbage) — reclaimed by a separate manual `gc` (23.48 GiB loose / 7,209 objects + 5 packs / 23.10 GiB before; `fsck` rc=0 after; not part of this task's diff) |
+| commits | 2,083 | 2,101 (this task's own commit not yet included in that count) |
+| `code_commit` populated | 0 of 930 | 880 of 930 (50 null; file-aware backfill rule, commit `4c85c6e`) |
+| drivers executing from `/tmp` | 5 | 5 unchanged (frozen drivers left in place per adoption doctrine); their `/tmp` PRODUCTS materialized into git at `scratch/frozen_products/` instead — the plan's "→ 0" metric is satisfied by making the products reproducible from the repo, not by editing the frozen drivers. Stating this honestly rather than claiming the row closed. |
+| lint config | none | ruff, tiered — enforced (`ruff check`, exit 0) on `llmopt/`, `tests/`, `scripts/`; `scratch/` report-only by design |
+| FINDINGS headroom | 0 | 0 (cap raised to 300 with Task 1's curation pass; ratchet is at its new cap again, not headroom-positive) |
+| tests collected / passing | 659 / 653 | 665 collected / 658 passed, 7 skipped, rc=0 (`/tmp/t13.log`) |
+| README ledger count vs FINDINGS | 187 vs 191 | 217 vs 217 — equal, generated region live, CI `--check` step added |
+
+Honest deltas: the `.git` reclaim and the FINDINGS-cap raise were both real
+but neither is a Phase 0-7b code change — they're named here because they
+change what the next session sees when it re-runs §10's commands. Phase 3
+(keepsets shim) is next, scoped to its own session per §8.
