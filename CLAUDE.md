@@ -260,6 +260,8 @@ the two and should be reconciled here in the same session.
 - `pytest` (scoped to tests/ via pyproject; scratch/*_test.py are
   scripts, not tests). Pure-Python runs anywhere; GPU/toolchain
   tests skip cleanly.
+- `pytest -m "not docs"` = code only; `-m docs` = ledger guards;
+  plain pytest = both (CI's run).
 - Math-native training: `scripts/train_mathnative.py` (--diet,
   --fast, VOCAB_EXTRA/BIRTH_SEED/GRAD_CKPT envs; probe scripts
   take VOCAB_EXTRA too — atom ORDER must match the birth env).

@@ -21,6 +21,10 @@ import json
 import pathlib
 import re
 
+import pytest
+
+pytestmark = pytest.mark.docs
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 RESULTS = ROOT / "docs/RESULTS.md"
 FINDINGS = ROOT / "docs/FINDINGS.md"

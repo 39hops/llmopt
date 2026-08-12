@@ -12,6 +12,10 @@ import re
 import subprocess
 from pathlib import Path
 
+import pytest
+
+pytestmark = pytest.mark.docs
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
