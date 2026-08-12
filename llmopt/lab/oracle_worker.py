@@ -1,7 +1,8 @@
-"""Standalone oracle worker for timeboxed p.check — ADOPTED from
-scratch/oracle_worker.py (MOE-GT-6 v3; that file stays frozen).
-main() is character-identical to the source (guarded by
-tests/test_lab_oracle.py); only the repo-root sys.path depth differs.
+"""Standalone oracle worker for timeboxed p.check (MOE-GT-6 v3).
+CANONICAL BODY since 2026-08-12 (Phase 3 module 2);
+scratch/oracle_worker.py is a re-export shim kept as the by-path
+entry point. Originally adopted from that file. Behavior guarded by
+tests/test_lab_oracle.py (shim identity + typed failure paths).
 
 A plain subprocess line-server: reads base64(pickle((problem, expr)))
 lines on stdin, writes "ok,parsed" per check on stdout. Imports sympy

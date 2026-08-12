@@ -2197,7 +2197,6 @@ The 19M in the crystal's displacement style (Artin's ask 2026-08-08). No trainin
 ### scratch/oracle_worker.py
 Standalone oracle worker for timeboxed p.check (MOE-GT-6 v3).
 
-- `main()`
 
 ### scratch/ozaki_2b_bisect.py
 *(no docstring)*
@@ -3232,7 +3231,7 @@ lab.oracle — the boxed oracle, v3.2 lineage (spec 2026-08-05-llmopt-lab-extrac
 - `class Oracle` (check, close)
 
 ### llmopt/lab/oracle_worker.py
-Standalone oracle worker for timeboxed p.check — ADOPTED from scratch/oracle_worker.py (MOE-GT-6 v3; that file stays frozen). main() is character-identical to the source (guarded by tests/test_lab_oracle.py); only the repo-root sys.path depth differs.
+Standalone oracle worker for timeboxed p.check (MOE-GT-6 v3). CANONICAL BODY since 2026-08-12 (Phase 3 module 2); scratch/oracle_worker.py is a re-export shim kept as the by-path entry point. Originally adopted from that file. Behavior guarded by tests/test_lab_oracle.py (shim identity + typed failure paths).
 
 - `main()`
 

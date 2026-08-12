@@ -1,6 +1,6 @@
-"""Guards for llmopt.lab.oracle (lab-extraction module 1): the worker's
-main() must stay character-identical to the frozen
-scratch/oracle_worker.py, and the parent's typed failure paths must
+"""Guards for llmopt.lab.oracle (lab-extraction module 1): the
+scratch/oracle_worker.py shim must bind the lab worker's main()
+(Phase 3 module 2, 2026-08-12), and the parent's typed failure paths must
 actually fire — TIMEOUT via the SLEEP affordance, crash via a real
 kill, clean verdicts against a real mathgen problem. Every failure
 returns conservative reject and increments its counter.
@@ -8,7 +8,6 @@ returns conservative reject and increments its counter.
 from __future__ import annotations
 
 import importlib.util
-import inspect
 from pathlib import Path
 
 import pytest
@@ -18,14 +17,16 @@ ROOT = Path(__file__).resolve().parents[1]
 pytest.importorskip("sympy")
 
 
-def test_worker_main_identical_to_frozen_script():
+def test_worker_shim_binds_lab_main():
+    """scratch/oracle_worker.py is a shim: its main IS the lab
+    worker's (Phase 3 module 2). The typed failure-path battery
+    below is the behavioral proof that replaced source identity."""
     spec = importlib.util.spec_from_file_location(
         "scratch_oracle_worker", ROOT / "scratch" / "oracle_worker.py")
     scratch_mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(scratch_mod)
     from llmopt.lab import oracle_worker
-    assert inspect.getsource(oracle_worker.main) == \
-        inspect.getsource(scratch_mod.main)
+    assert scratch_mod.main is oracle_worker.main
 
 
 @pytest.fixture(scope="module")
