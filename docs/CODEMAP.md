@@ -8,7 +8,7 @@ adoption-with-reverification, never a silent move. `refs` counts
 code files that import the module OR embed its literal filename
 (catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).
 
-Census: UNCITED 167, library 166, reproduce-pinned 9, results-cited 125, spec-cited 44
+Census: UNCITED 168, library 166, reproduce-pinned 9, results-cited 125, spec-cited 44
 
 ## scratch/
 
@@ -313,7 +313,8 @@ Census: UNCITED 167, library 166, reproduce-pinned 9, results-cited 125, spec-ci
 | series | series_probe.py | library | — | 13 |
 | snap | snap_alloc.py | library | specs×2 | 1 |
 | snap | snap_anatomy.py | results-cited | RESULTS×1 | — |
-| softprompt1 | softprompt1.py | library | RESULTS×4 | 1 |
+| softprompt | softprompt_sampler_probe.py | UNCITED | — | — |
+| softprompt1 | softprompt1.py | library | RESULTS×4 | 2 |
 | softprompt1 | softprompt1.sh | results-cited | RESULTS×1 | — |
 | soup | soup_gate.py | library | specs×1 | 1 |
 | ssm | ssm_star.py | library | RESULTS×1 | 2 |
