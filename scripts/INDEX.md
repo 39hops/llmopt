@@ -2435,6 +2435,10 @@ One-shot Phase 4 survey: device-idiom sites x CODEMAP class. Output drives the m
 One-shot Phase 4.3: delete sys.path.insert bootstrap lines in the UNCITED files passed as args. Handles the one-line form and the two-line continuation form (open paren balance). py_compile checks the result; reverts the file on failure.
 
 
+### scratch/phase5_deadcode.py
+One-shot Phase 5 dead-code sweep (report only, no edits): AST walk of llmopt/ (vendor excluded) collecting module-level def/class names, then grep the whole repo (llmopt, scripts, scratch, tests) for references. Prints names with zero references outside their own definition line. Triage is the caller's job — battery-pinned bodies and __getattr__-reached names are NOT safe to delete on this signal alone.
+
+
 ### scratch/phys_probe.py
 Physics rung 1 probe: greedy emission on held-out phys steps (seeds 17-19), sympy-equivalence in t, fork-isolated. No math gate — the physics expert is vocab-41, a separate model class by design. Usage: phys_probe.py <ckpt>
 
@@ -3275,7 +3279,6 @@ Population LoRA for MLX: K adapters, ONE frozen base, one forward.
 - `class PopLoRALinear`
 - `apply_population_lora(model, k: int, *, r: int=16, alpha: float=32.0, targets=TARGETS) -> int` — Freeze the model, wrap every matching nn.Linear. Returns count.
 - `population_loss(hidden: mx.array, head_weight: mx.array, targets: mx.array, k: int, chunk: int=1024) -> mx.array` — Sum of per-adapter mean CEs. hidden: (K*B, T, D) or (K*N, D);
-- `adapter_state(model, i: int) -> dict` — Extract adapter i's {name.a, name.b} for saving/merging —
 
 ### llmopt/train/preference.py
 Preference-optimization losses: DPO, IPO, KTO, ORPO, SimPO, GRPO.
@@ -3427,7 +3430,6 @@ T-count engine rung 1 (spec: 2026-07-08-tcount-engine-design.md): the derivation
 
 - `tcount(g) -> int`
 - `class ZXState` (key)
-- `_phases_ok(g) -> bool`
 - `moves(state: ZXState, max_per_rule: int=8)` — (label, child) pairs. Each child is an independent graph copy.
 - `_phase_teleport_macro(g) -> None` — Rung-5 winner as a macro move: teleport_reduce moves phases
 - `macro_moves(state: ZXState)` — Whole-graph macro moves (the algebra-moves analog): pyzx's

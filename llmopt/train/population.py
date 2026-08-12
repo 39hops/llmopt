@@ -107,14 +107,3 @@ def population_loss(hidden: mx.array, head_weight: mx.array,
     for i in range(k):
         total = total + fused_ce(h[i], head_weight, t[i], chunk=chunk)
     return total
-
-
-def adapter_state(model, i: int) -> dict:
-    """Extract adapter i's {name.a, name.b} for saving/merging —
-    the {**a, **b} adapter-dict convention from the torch side."""
-    out = {}
-    for name, module in model.named_modules():
-        if isinstance(module, PopLoRALinear):
-            out[f"{name}.a"] = module.a[i]
-            out[f"{name}.b"] = module.b[i]
-    return out

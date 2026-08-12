@@ -45,10 +45,6 @@ class ZXState:
         return hashlib.md5(str(vs).encode()).hexdigest()
 
 
-def _phases_ok(g) -> bool:
-    return True
-
-
 def moves(state: ZXState, max_per_rule: int = 8):
     """(label, child) pairs. Each child is an independent graph copy."""
     g = state.g
