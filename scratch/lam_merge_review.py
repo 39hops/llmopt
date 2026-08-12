@@ -4,6 +4,7 @@ is merge-free lambda-independent, and does LOW lambda (weak
 collapse) merge badly? Runs on the device holding the ckpts.
 Usage: python scratch/lam_merge_review.py
 """
+from llmopt.common.device import pick_device
 import os
 import sys
 
@@ -18,7 +19,7 @@ import step_grpo_micro as G  # noqa: E402
 
 
 def main():
-    dev = "cuda" if torch.cuda.is_available() else "cpu"
+    dev = pick_device()
     for lam in ("0.1", "0.25", "1.0"):
         ck = f"checkpoints/umoe_gravmoe_g{lam}_cuda_s1.pt"
         if not os.path.exists(ck):

@@ -2,6 +2,7 @@
 (seeds 17-19), sympy-equivalence in t, fork-isolated. No math gate —
 the physics expert is vocab-41, a separate model class by design.
 Usage: phys_probe.py <ckpt>"""
+from llmopt.common.device import pick_device
 import sys, json
 import multiprocessing as mp
 mp.set_start_method("fork", force=True)
@@ -30,7 +31,7 @@ def equiv(pred, gold, deadline=10):
 
 ckpt = sys.argv[1]
 tok = MathTokenizer(extra=["t"])
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 model = build_model(len(tok.vocab)).to(dev)
 model.load_state_dict(torch.load(ckpt, map_location="cpu"))
 model.eval()

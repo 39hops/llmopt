@@ -5,6 +5,7 @@ pairs as-is. Arm 'oneshot' = reconstructed root->final-answer
 rows (chains followed by nxt->cur linkage), upsampled to equal
 tokens. Gate both. If chains >> oneshot, capability numbers carry
 a format dividend. Usage: chain_carry.py <chains|oneshot>"""
+from llmopt.common.device import pick_device
 import sys, json, glob, random, time
 sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 import torch
@@ -14,7 +15,7 @@ import step_grpo_micro as G
 
 ARM = sys.argv[1]
 tok = MathTokenizer()
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 
 rows = []
 for f in sorted(glob.glob("data/micromodel_chains_shard*.jsonl")):

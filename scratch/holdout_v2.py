@@ -2,6 +2,7 @@
 collisions caught by the audit). Probes drawn from band 88M but
 each slot advances its seed until the expr is NOT in the corpus
 cur-set. Usage: holdout_v2.py <ckpt> <d> <layers> <ffn> <heads> <label>"""
+from llmopt.common.device import pick_device
 import sys, glob, json
 sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 import torch
@@ -42,7 +43,7 @@ for lv in G.GATE_LEVELS:
 print(f"[holdout-v2] {len(probes)} probes, {skipped} collisions "
       f"skipped", flush=True)
 tok = MathTokenizer()
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 model = build_model(len(tok.vocab), d=d, layers=layers, heads=heads,
                     ffn=ffn).to(dev)
 model.load_state_dict(torch.load(ckpt, map_location="cpu"))

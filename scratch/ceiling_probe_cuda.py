@@ -1,5 +1,6 @@
 """Ceiling probe: which L7/L8 integrals can a checkpoint actually
 solve? Same machinery as gate_eval but per-problem printout."""
+from llmopt.common.device import pick_device
 import sys, torch, sympy as sp
 sys.path.insert(0, 'scripts'); sys.path.insert(0, '.')
 ckpt, d, layers, ffn, heads, label = (sys.argv[1], int(sys.argv[2]),
@@ -10,7 +11,7 @@ from bench_step_tokens import _gen_isolated
 from bench_verify_fast import verify_wave
 
 tok = MathTokenizer()
-dev = "cuda" if torch.cuda.is_available() else "cpu"
+dev = pick_device()
 model = build_model(len(tok.vocab), d=d, layers=layers, heads=heads,
                     ffn=ffn).to(dev)
 model.load_state_dict(torch.load(ckpt, map_location="cpu"))

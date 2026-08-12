@@ -3,6 +3,7 @@ Score: pred parses AND is symbolically equivalent to cur AND
 differs from cur (a valid productive rewrite — any equivalent
 answer accepted, string match never used). Exact-gold reported
 separately. Usage: vmasm_probe.py <ckpt>"""
+from llmopt.common.device import pick_device
 import sys, json
 sys.path.insert(0, "."); sys.path.insert(0, "scripts"); sys.path.insert(0, "scratch")
 import torch
@@ -11,7 +12,7 @@ from llmopt.train.mathnative import MathTokenizer, build_model
 
 # MUST match the birth env VOCAB_EXTRA order exactly (token ids)
 tok = MathTokenizer(extra="m,o,v,a,d,s,u,b,l,h,n,g,r,e,;".split(","))
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 model = build_model(len(tok.vocab)).to(dev)
 model.load_state_dict(torch.load(sys.argv[1], map_location="cpu"))
 model.eval()

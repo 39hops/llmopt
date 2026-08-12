@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from llmopt.common.device import pick_device
 import time
 from dataclasses import dataclass
 
@@ -19,7 +20,7 @@ def perplexity(model, token_ids, *, batch_size: int = 8, device: str | None = No
     import torch
 
     if device is None:
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+        device = pick_device()
     model = model.to(device).eval()
     total_nll, total_toks = 0.0, 0
     with torch.inference_mode():

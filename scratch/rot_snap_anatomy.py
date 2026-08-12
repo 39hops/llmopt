@@ -4,6 +4,7 @@ adjacent pairing, t in {0.25, 0.5, 1.0}. Fence: gate matrices
 only (attention/up/down untouched). Flips-probe fingerprint per t
 rides (vs the unmodified model, teacher-forced argmax diff).
 """
+from llmopt.common.device import pick_device
 import sys
 
 sys.path.insert(0, ".")
@@ -19,7 +20,7 @@ CKPT = "checkpoints/mathnative_wfloor_d256.pt"
 D, LAYERS, FFN, HEADS = 256, 8, 1024, 4
 
 tok = MathTokenizer()
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 base = torch.load(CKPT, map_location="cpu", weights_only=True)
 Jo = J_perm(FFN, list(range(FFN)))
 Ji = J_perm(D, list(range(D)))

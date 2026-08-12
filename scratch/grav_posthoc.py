@@ -10,6 +10,7 @@ lam=+0.5 at R milestones, repel lam=-0.5 (white-hole arm).
 Usage: CKPT=checkpoints/umoe_lb_s1.pt RS=10,50 REPEL_R=10 \
        python scratch/grav_posthoc.py
 """
+from llmopt.common.device import pick_device
 import os
 import sys
 
@@ -88,8 +89,7 @@ def gate(tag, m, tok, dev):
 
 
 def main():
-    dev = ("mps" if torch.backends.mps.is_available() else
-           "cuda" if torch.cuda.is_available() else "cpu")
+    dev = pick_device()
     print(f"[0T] ckpt {CKPT} dev {dev} lam {LAM} RS {RS} "
           f"repel_r {REPEL_R}", flush=True)
     tok, m = load(dev)

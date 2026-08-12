@@ -4,6 +4,7 @@ the corrupted subset (fluent, determined-looking, WRONG rows).
 Usage: DILUTE=0.1 SEED=1 python scratch/cal_dilute.py
 Then: CKPT=checkpoints/cal_dilute_10_s1.pt python scratch/cal_dk_probe.py
 """
+from llmopt.common.device import pick_device
 import os
 import random
 import sys
@@ -25,8 +26,7 @@ OUT = f"checkpoints/cal_dilute_{int(DILUTE * 100)}_s{SEED}.pt"
 
 
 def main():
-    dev = ("cuda" if torch.cuda.is_available() else
-           "mps" if torch.backends.mps.is_available() else "cpu")
+    dev = pick_device()
     torch.manual_seed(SEED)
     tok = MathTokenizer()
     model = build_model(len(tok.vocab), d=D, layers=LAYERS,

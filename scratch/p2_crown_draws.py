@@ -5,6 +5,7 @@ Deterministic for frozen weights; paired per-draw deltas only.
 
 Usage: .venv/bin/python scratch/p2_crown_draws.py
 """
+from llmopt.common.device import pick_device
 import sys
 
 sys.path.insert(0, ".")
@@ -23,7 +24,7 @@ CROWNS = [
      dict(d=768, layers=8, heads=12, ffn=3840)),
 ]
 tok = MathTokenizer()
-dev = ("mps" if torch.backends.mps.is_available() else "cpu")
+dev = pick_device()
 results = {}
 for label, ckpt, arch in CROWNS:
     model = build_model(len(tok.vocab), **arch).to(dev)

@@ -12,6 +12,7 @@ indices plus the tail mass, which is enough for a tight KL estimate.
 
 from __future__ import annotations
 
+from llmopt.common.device import pick_device
 import hashlib
 import json
 from dataclasses import dataclass
@@ -79,7 +80,7 @@ def precompute_ref_logprobs(
         raise ValueError(f"cache miss for key {key} and no model provided")
 
     if device is None:
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+        device = pick_device()
     model = model.to(device).eval()
 
     results: list[RefLogprobs] = []

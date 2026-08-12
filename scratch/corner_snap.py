@@ -5,6 +5,7 @@ device. Delta-of-deltas reads orthogonality of the bits and
 sharing compression axes. Snap code inlined from
 scratch/rational_snap.py (same operator, no subprocess).
 """
+from llmopt.common.device import pick_device
 import sys
 
 sys.path.insert(0, ".")
@@ -41,7 +42,7 @@ def snap_sd(sd, Q):
 
 
 tok = MathTokenizer()
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 for name, path in SUBSTRATES.items():
     base = torch.load(path, map_location="cpu", weights_only=True)
     for Q in (8, 16):

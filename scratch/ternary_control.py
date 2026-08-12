@@ -1,5 +1,6 @@
 """Deploy-ternarize the NNUE-metabolized latents, honest gate +
 L9 probe on cuda. Doctrine: gate the DEPLOYED 1.58-bit snapshot."""
+from llmopt.common.device import pick_device
 import sys, torch
 sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 import sympy as sp
@@ -23,7 +24,7 @@ for k, W in sd.items():
         dep[k] = W
 torch.save(dep, "checkpoints/ternary_control_deployed.pt")
 tok = MathTokenizer()
-dev = "cuda" if torch.cuda.is_available() else "cpu"
+dev = pick_device()
 torch.backends.cuda.matmul.allow_tf32 = True
 model = build_model(len(tok.vocab), d=512, layers=12, heads=8,
                     ffn=2048).to(dev)

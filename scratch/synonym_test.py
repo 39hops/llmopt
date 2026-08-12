@@ -3,6 +3,7 @@
 pick either synonym 50/50. Gauge-law prediction: both fire
 near-equal off the same concept. Reports family-accuracy +
 per-synonym share."""
+from llmopt.common.device import pick_device
 import sys, random, time
 sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 import torch
@@ -64,7 +65,7 @@ if __name__ == "__main__":
     t0 = time.time()
     train, seen = gen(2000, 1)
     evl, _ = gen(200, 2, exclude=seen)
-    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    dev = pick_device()
     model = build_model(len(tok.vocab), d=384, layers=8, heads=6,
                         ffn=1536).to(dev)
     sd = torch.load("checkpoints/mathnative_19m_v21.pt",

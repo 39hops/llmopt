@@ -3,6 +3,7 @@ Bin tokens by router probability p_e on the ablated expert; report
 ablation dNLL per distance bin. Mac, umoe_lb_s{1,2}.
 Usage: SEED=1 python scratch/grav1b_distance.py
 """
+from llmopt.common.device import pick_device
 import os
 import sys
 
@@ -24,7 +25,7 @@ BINS = [(0.0, 0.05), (0.05, 0.15), (0.15, 0.3), (0.3, 0.5),
 
 
 def main():
-    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    dev = pick_device()
     U.ARM = "lb"
     tok, model = U.build()
     sd = torch.load(CKPT, map_location="cpu", weights_only=True)["sd"]

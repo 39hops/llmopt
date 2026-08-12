@@ -2,6 +2,7 @@
 per ply, B/2 samples from TERNARY + B/2 from CHAMPION (budget-matched
 vs a single model's B), merged and oracle-verified. Same 200-probe
 rarity battery as gate_rarity.py (same seeds, same census)."""
+from llmopt.common.device import pick_device
 import sys, glob, json, re
 from collections import Counter
 sys.path.insert(0, "."); sys.path.insert(0, "scripts")
@@ -50,8 +51,7 @@ print(f"[probes] {len(probes)}; bins "
       f"{dict(Counter(b for *_, b in probes))}", flush=True)
 
 tok = MathTokenizer()
-dev = ("cuda" if torch.cuda.is_available() else
-       "mps" if torch.backends.mps.is_available() else "cpu")
+dev = pick_device()
 champ = build_model(len(tok.vocab), d=512, layers=12, heads=8,
                     ffn=2304).to(dev)
 champ.load_state_dict(torch.load(

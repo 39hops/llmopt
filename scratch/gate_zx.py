@@ -8,6 +8,7 @@ in-grammar parse AND invariant-distinct AND compare_tensors-equal
     VOCAB_EXTRA="in(,out(,Z(,X(,P(,H(,:" .venv/bin/python \
         scratch/gate_zx.py <ckpt> <real|cplx> <label>
 """
+from llmopt.common.device import pick_device
 import json
 import os
 import random
@@ -25,8 +26,7 @@ from llmopt.train.mathnative import MathTokenizer, build_model
 ckpt, arch, label = sys.argv[1], sys.argv[2], sys.argv[3]
 extra = os.environ["VOCAB_EXTRA"]
 tok = MathTokenizer(extra=extra.split(","))
-dev = ("mps" if torch.backends.mps.is_available() else
-       "cuda" if torch.cuda.is_available() else "cpu")
+dev = pick_device()
 # shape rides env (defaults = the 19M ZX standard) so 45M+ unions gate too
 _d = int(os.environ.get("ZX_D", "384")); _L = int(os.environ.get("ZX_LAYERS", "8"))
 _h = int(os.environ.get("ZX_HEADS", "6")); _f = int(os.environ.get("ZX_FFN", "1536"))

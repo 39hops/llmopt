@@ -9,6 +9,7 @@ identity/cycle-guarded exactly like every other honest metric.
 """
 from __future__ import annotations
 
+from llmopt.common.device import pick_device
 import sys
 from pathlib import Path
 
@@ -75,8 +76,7 @@ def main(ckpt: str, levels: tuple[int, ...], unseen: bool,
     from bench_verify_fast import verify_wave
 
     tok = MathTokenizer()
-    dev = ("mps" if torch.backends.mps.is_available() else
-           "cuda" if torch.cuda.is_available() else "cpu")
+    dev = pick_device()
     model = build_model(len(tok.vocab), d=d, layers=layers,
                         heads=heads, ffn=ffn).to(dev)
     model.load_state_dict(torch.load(ckpt, map_location="cpu"))

@@ -386,7 +386,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
-|  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×5 | — | 1 |
+|  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×7 | — | 1 |
 | arena | arena.py | UNCITED | — | — | — | — |
 | autopsy | autopsy_int.py | UNCITED | — | — | — | — |
 | backfill | backfill_code_commit.py | spec-cited | specs | specs×3 | — | — |
@@ -534,7 +534,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | train | train_syndrome_policy.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_ternary.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
+| train | train_ternary.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
 | train | train_tf32x3.py | UNCITED | — | — | — | — |
 | train | train_value_head.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | train | train_weight_reader.py | spec-cited | specs | specs×4 | — | — |

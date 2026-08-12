@@ -1,6 +1,7 @@
 """L9 probe: 24 fresh L9a problems (band 90M — disjoint from the
 farm's 72/73M and roots_c1), gate_eval-style rollout, 12 plies.
 Usage: l9_probe.py <ckpt> <d> <layers> <ffn> <heads> <label>"""
+from llmopt.common.device import pick_device
 import sys
 sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 import torch
@@ -14,7 +15,7 @@ ckpt, d, layers, ffn, heads, label = (sys.argv[1], int(sys.argv[2]),
     int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5]), sys.argv[6])
 BAND = 90_000_000
 tok = MathTokenizer()
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 model = build_model(len(tok.vocab), d=d, layers=layers, heads=heads,
                     ffn=ffn).to(dev)
 model.load_state_dict(torch.load(ckpt, map_location="cpu"))

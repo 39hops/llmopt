@@ -7,6 +7,7 @@ control; polar 4 angles ALIGNED (1s mag); polar 4 angles ROTATED
 the star crystal. alpha=none for both (dep weights are already
 hard). __main__-guarded.
 """
+from llmopt.common.device import pick_device
 import math
 import sys
 
@@ -43,7 +44,7 @@ def uni_q(W, u):
 
 def main():
     tok = MathTokenizer()
-    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    dev = pick_device()
     C.set_alpha("none")
 
     def gate(sd, tag):

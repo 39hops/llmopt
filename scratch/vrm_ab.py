@@ -4,6 +4,7 @@ Mask: per-layer FFN committee probe; per-family top-5% neurons =
 heavy -> LR x0.2, rest x1.5, field normalized to mean 1.0 (equal
 average LR vs uniform arm). Arms: uniform vs routed, same 8k rows,
 1 epoch, honest 120-gate each. Baseline 19m_v21 = 64."""
+from llmopt.common.device import pick_device
 import sys, json, glob, random, time
 sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 import torch
@@ -21,7 +22,7 @@ FAM = {
     "log":   lambda r: f"log({r.randint(2,7)}*x)",
 }
 tok = MathTokenizer()
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 
 
 def committee_masks():

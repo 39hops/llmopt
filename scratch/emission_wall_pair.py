@@ -11,6 +11,7 @@ by cur token length (the operand-complexity proxy). One curve per arm.
 
     .venv/bin/python scratch/emission_wall_pair.py <infix_ckpt> <prefix_ckpt>
 """
+from llmopt.common.device import pick_device
 import sys
 
 import torch
@@ -30,7 +31,7 @@ PER_LEVEL = 48
 LEVELS = (3, 4, 5, 6, 7)
 
 tok = MathTokenizer()
-dev = ("mps" if torch.backends.mps.is_available() else "cpu")
+dev = pick_device()
 
 
 def load(ckpt):

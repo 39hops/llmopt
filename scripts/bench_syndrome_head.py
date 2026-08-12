@@ -18,6 +18,7 @@ Pre-registered (from the spec): interesting if multi-task validity
 """
 from __future__ import annotations
 
+from llmopt.common.device import pick_device
 import json
 import random
 import sys
@@ -94,7 +95,7 @@ def train_arm(lam: float, out: Path) -> None:
     MODEL = "Qwen/Qwen2.5-0.5B-Instruct"
     TARGETS = ("q_proj", "k_proj", "v_proj", "o_proj",
                "gate_proj", "up_proj", "down_proj")
-    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    dev = pick_device()
     tok = AutoTokenizer.from_pretrained(MODEL)
     model = AutoModelForCausalLM.from_pretrained(
         MODEL, dtype=torch.float32).to(dev)

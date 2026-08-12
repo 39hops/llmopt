@@ -3,6 +3,7 @@ read). Pilot 500 (axiom, sha de6c9f15): plain v span hints,
 same rows, d64, 20 ep; held-out greedy next-step exact match.
 Atoms pinned in sidecar order. MPS.
 """
+from llmopt.common.device import pick_device
 import json
 import os
 import random
@@ -37,7 +38,7 @@ def text(r, span):
 def run_arm(span):
     torch.manual_seed(1)
     tok = MathTokenizer(extra=ATOMS)
-    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    dev = pick_device()
     model = build_model(len(tok.vocab), d=D, layers=LAYERS,
                         heads=HEADS, ffn=FFN).to(dev)
     enc = []

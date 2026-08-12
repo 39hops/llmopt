@@ -2,6 +2,7 @@
 plain-arm recipe) and run the roots-of-unity probe properly.
 Usage: python scratch/fourier2_modbirth.py (pilot at data/)
 """
+from llmopt.common.device import pick_device
 import json
 import random
 import sys
@@ -22,8 +23,7 @@ OUT = "checkpoints/fourier2_modbirth.pt"
 
 
 def main():
-    dev = ("cuda" if torch.cuda.is_available() else
-           "mps" if torch.backends.mps.is_available() else "cpu")
+    dev = pick_device()
     rows = [json.loads(ln) for ln in open(PILOT)]
     random.Random(7).shuffle(rows)
     torch.manual_seed(1)

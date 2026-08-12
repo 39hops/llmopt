@@ -2437,6 +2437,16 @@ Publication PDF figures for the entropy-bound packing paper.
 - `fig_quant_knee()`
 - `fig_symmetry_toll()`
 
+### scratch/phase4_rewrite.py
+One-shot Phase 4 rewriter: replace the default-accelerator idiom with pick_device() in the FREE files listed by phase4_sites.py.
+
+- `insert_import(text: str) -> str`
+- `main() -> None`
+
+### scratch/phase4_sites.py
+One-shot Phase 4 survey: device-idiom sites x CODEMAP class. Output drives the migration list; only class UNCITED or package rows are migrated. --bootstrap lists sys.path.insert sites instead.
+
+
 ### scratch/phys_probe.py
 Physics rung 1 probe: greedy emission on held-out phys steps (seeds 17-19), sympy-equivalence in t, fork-isolated. No math gate — the physics expert is vocab-41, a separate model class by design. Usage: phys_probe.py <ckpt>
 

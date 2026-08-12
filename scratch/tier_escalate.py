@@ -3,6 +3,7 @@ matryoshka_d56_3tier.pt: per gate row eighth -> half -> dense,
 escalate on oracle-fail. TierP inlined (module-level-script
 scar). Desk, MPS.
 """
+from llmopt.common.device import pick_device
 import sys
 
 sys.path.insert(0, ".")
@@ -47,7 +48,7 @@ class TierP(torch.nn.Module):
 
 
 tok = MathTokenizer()
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 model = build_model(len(tok.vocab), d=D, layers=LAYERS, heads=HEADS,
                     ffn=FFN).to(dev)
 model.load_state_dict(torch.load(

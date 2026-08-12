@@ -19,6 +19,7 @@ Usage: ARM=F|FR|LR .venv/bin/python scratch/tenet_r1b_micro.py
        (N=2 for smoke tier; runs all levels at n/level)
 Output: logs/tenet_r1b_<arm>.jsonl rows + a terminal census.
 """
+from llmopt.common.device import pick_device
 import json
 import os
 import sys
@@ -129,8 +130,7 @@ def main():
 
     assert ARM in ("F", "FR", "LR")
     tok = MathTokenizer()
-    dev = ("cuda" if torch.cuda.is_available() else
-           "mps" if torch.backends.mps.is_available() else "cpu")
+    dev = pick_device()
     def load(ckpt):
         m = build_model(len(tok.vocab), d=64, layers=8, heads=4,
                         ffn=256).to(dev)

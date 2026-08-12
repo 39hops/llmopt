@@ -9,6 +9,7 @@ Same cells/seeds as the 113/120 record races.
 
 from __future__ import annotations
 
+from llmopt.common.device import pick_device
 import argparse
 import heapq
 import itertools
@@ -70,8 +71,7 @@ def load_fused(v2: bool = False):
 
     from llmopt.train.lora import apply_lora
 
-    device = ("cuda" if torch.cuda.is_available()
-              else "mps" if torch.backends.mps.is_available() else "cpu")
+    device = pick_device()
     tok = AutoTokenizer.from_pretrained(MODEL)
     model = AutoModelForCausalLM.from_pretrained(
         MODEL, dtype=torch.bfloat16).to(device)

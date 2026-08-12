@@ -12,6 +12,7 @@ Output: data/tr_round1.jsonl + roots json + per-cell r0-vs-r1 table.
 
 from __future__ import annotations
 
+from llmopt.common.device import pick_device
 import argparse
 import json
 import random
@@ -45,8 +46,7 @@ def count_ops_eval(state: State) -> float:
 
 
 def load_tr_proposer():
-    device = ("cuda" if torch.cuda.is_available()
-              else "mps" if torch.backends.mps.is_available() else "cpu")
+    device = pick_device()
     tok = AutoTokenizer.from_pretrained(MODEL)
     model = AutoModelForCausalLM.from_pretrained(
         MODEL, dtype=torch.bfloat16).to(device)

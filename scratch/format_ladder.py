@@ -9,6 +9,7 @@ cooldown, surprise rider); 3e = standard 3ep OneCycle (control
 construction: length-sorted BS=32, shuffled batch order).
 Checkpoint: checkpoints/fmt_{FORMAT}_{SCHED}.pt
 """
+from llmopt.common.device import pick_device
 import json
 import os
 import random
@@ -192,7 +193,7 @@ print(f"[{FORMAT}/{SCHED}] {len(texts)} sequences -> {len(enc)} "
       f"encoded (dropped {dropped}), token mass {tokmass/1e6:.1f}M",
       flush=True)
 
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 torch.manual_seed(int(os.environ.get("BIRTH_SEED", "1")))
 model = build_model(len(tok.vocab), d=D, layers=LAYERS, heads=HEADS,
                     ffn=FFN).to(dev)

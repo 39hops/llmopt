@@ -6,6 +6,7 @@ as gate_eval (results comparable to gate_ckpt numbers).
     gate_pp.py <ckpt> <d> <layers> <ffn> <heads> <label>
 Sidecar: logs/pp_<label>.jsonl
 """
+from llmopt.common.device import pick_device
 import json
 import sys
 
@@ -23,8 +24,7 @@ ckpt, d, layers, ffn, heads, label = (
     sys.argv[1], int(sys.argv[2]), int(sys.argv[3]),
     int(sys.argv[4]), int(sys.argv[5]), sys.argv[6])
 tok = MathTokenizer()
-dev = ("mps" if torch.backends.mps.is_available() else
-       "cuda" if torch.cuda.is_available() else "cpu")
+dev = pick_device()
 model = build_model(len(tok.vocab), d=d, layers=layers,
                     heads=heads, ffn=ffn).to(dev)
 model.load_state_dict(torch.load(ckpt, map_location="cpu"))

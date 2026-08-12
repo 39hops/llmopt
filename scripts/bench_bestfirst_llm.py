@@ -8,6 +8,7 @@ runs; compare row-by-row against the recorded incumbent table.
 
 from __future__ import annotations
 
+from llmopt.common.device import pick_device
 import argparse
 import random
 import signal
@@ -68,8 +69,7 @@ def load_nnue(path: str):
 
 
 def load_llm():
-    device = ("cuda" if torch.cuda.is_available()
-              else "mps" if torch.backends.mps.is_available() else "cpu")
+    device = pick_device()
     from transformers import AutoModelForCausalLM, AutoTokenizer
     tok = AutoTokenizer.from_pretrained(MODEL)
     model = AutoModelForCausalLM.from_pretrained(

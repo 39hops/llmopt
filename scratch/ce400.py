@@ -1,5 +1,6 @@
 """CE-400: fixed-sample CE proxy (the standing instrument from the
 CE-gate study). Usage: ce400.py <ckpt> <label>"""
+from llmopt.common.device import pick_device
 import random, sys
 sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 import torch, torch.nn.functional as F
@@ -11,7 +12,7 @@ tok = MathTokenizer()
 rows = load_rows(gen4=True)
 rows = [r for r in rows if r["cur"].replace(" ","") != r["nxt"].replace(" ","")]
 random.Random(7).shuffle(rows)
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 model = build_model(len(tok.vocab), d=256, layers=8, heads=4, ffn=1024).to(dev)
 model.load_state_dict(torch.load(ckpt, map_location="cpu"))
 model.eval()

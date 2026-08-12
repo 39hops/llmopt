@@ -10,6 +10,7 @@ harvested for a possible round 3.
 
 from __future__ import annotations
 
+from llmopt.common.device import pick_device
 import argparse
 import json
 import random
@@ -42,8 +43,7 @@ def count_ops_eval(state: State) -> float:
 
 
 def load_proposer(ckpt: str):
-    device = ("cuda" if torch.cuda.is_available()
-              else "mps" if torch.backends.mps.is_available() else "cpu")
+    device = pick_device()
     tok = AutoTokenizer.from_pretrained(MODEL)
     model = AutoModelForCausalLM.from_pretrained(
         MODEL, dtype=torch.bfloat16).to(device)

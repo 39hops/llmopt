@@ -24,6 +24,7 @@ Notes:
 """
 from __future__ import annotations
 
+from llmopt.common.device import pick_device
 from dataclasses import dataclass
 
 # GRPO-MICRO lineage constants (scripts/step_grpo_micro.py values —
@@ -168,8 +169,7 @@ def gate_checkpoint(ckpt: str, d: int, layers: int, ffn: int,
     if spec is not None:
         apply_spec(spec)
     tok = MathTokenizer()
-    dev = device or ("mps" if torch.backends.mps.is_available() else
-                     "cuda" if torch.cuda.is_available() else "cpu")
+    dev = device or pick_device()
     model = build_model(len(tok.vocab), d=d, layers=layers, heads=heads,
                         ffn=ffn).to(dev)
     model.load_state_dict(torch.load(ckpt, map_location="cpu"))

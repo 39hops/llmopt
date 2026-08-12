@@ -3,6 +3,7 @@ doesn't know? Teacher-forced token-level reliability + per-level
 (3..7) confidence-v-accuracy on the d64h8 EMA crystal, Mac.
 Usage: python scratch/cal_dk_probe.py
 """
+from llmopt.common.device import pick_device
 import sys
 
 sys.path.insert(0, ".")
@@ -21,8 +22,7 @@ N_PER_LEVEL = 300
 
 
 def main():
-    dev = ("cuda" if torch.cuda.is_available() else
-       "mps" if torch.backends.mps.is_available() else "cpu")
+    dev = pick_device()
     tok = MathTokenizer()
     model = build_model(len(tok.vocab), d=D, layers=LAYERS,
                         heads=HEADS, ffn=FFN)

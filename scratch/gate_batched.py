@@ -5,6 +5,7 @@ keep RoPE phases identical to the unbatched path. NOTE: float
 reduction order changes => near-ties may resolve differently =>
 this is a NEW GATE LINEAGE (re-baseline models of record once).
 Usage: gate_batched.py <ckpt> <d> <layers> <ffn> <heads> <label> [K]"""
+from llmopt.common.device import pick_device
 import sys, time
 sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 import torch
@@ -131,7 +132,7 @@ if __name__ == "__main__":
         dev = "cuda"
         torch.backends.cuda.matmul.allow_tf32 = True
     else:
-        dev = "mps" if torch.backends.mps.is_available() else "cpu"
+        dev = pick_device()
     model = build_model(len(tok.vocab), d=d, layers=layers,
                         heads=heads, ffn=ffn).to(dev)
     model.load_state_dict(torch.load(ckpt, map_location="cpu"))

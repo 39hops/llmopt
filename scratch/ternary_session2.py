@@ -3,6 +3,7 @@ gates): the doctrine-composed organism — STE ternary latents,
 LATE layers only (8-11), LR 1e-4 cap, ABSOLUTE-anchor tripwire,
 fp32-vs-fp64 update-absorption instrument riding along.
 Pre/post MPS gates make it a clean paired delta."""
+from llmopt.common.device import pick_device
 import sys, json, time
 sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 import torch
@@ -29,7 +30,7 @@ class TLin(nn.Linear):
 
 nn.Linear = TLin
 tok = MathTokenizer()
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 model = build_model(len(tok.vocab), d=512, layers=12, heads=8,
                     ffn=2048).to(dev)
 model.load_state_dict(torch.load(

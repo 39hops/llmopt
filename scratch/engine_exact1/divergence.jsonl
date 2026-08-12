@@ -1,0 +1,13 @@
+{"step": 1, "pairs": {"anchor-q9": {"mean": 528.0323118932039, "max": 55593}, "anchor-q32": {"mean": 527.5349211165048, "max": 55593}, "anchor-q64": {"mean": 527.5349211165048, "max": 55593}}}
+{"step": 2, "pairs": {}}
+{"step": 3, "pairs": {}}
+{"step": 4, "pairs": {}}
+{"step": 5, "pairs": {}}
+{"step": 6, "pairs": {}}
+{"step": 7, "pairs": {}}
+{"step": 8, "pairs": {}}
+{"step": 9, "pairs": {}}
+{"step": 10, "pairs": {}}
+{"step": 11, "pairs": {}}
+{"step": 12, "pairs": {}}
+{"first_divergence_step": {"anchor-q9": 1, "anchor-q32": 1, "anchor-q64": 1}}

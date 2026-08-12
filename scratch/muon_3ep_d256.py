@@ -7,6 +7,7 @@ shuffled batch order, 3ep) with Muon (ns5 orthogonalized momentum)
 on 2-D interior weights, AdamW (OneCycle 3e-4) on embeddings/head/
 norms. Comparator wfloor_d256 65 (same construction, all-AdamW).
 """
+from llmopt.common.device import pick_device
 import os
 import random
 import sys
@@ -26,7 +27,7 @@ OUT = "checkpoints/muon3ep_d256.pt"
 
 torch.manual_seed(1)
 tok = MathTokenizer()
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 rows = load_rows(gen4=True)
 rows = [r for r in rows
         if r["cur"].replace(" ", "") != r["nxt"].replace(" ", "")]

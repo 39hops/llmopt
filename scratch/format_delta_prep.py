@@ -3,6 +3,7 @@
 the pairs-trained control crystal (wfloor_d256) over each pair
 text. Output: checkpoints/fmt_row_emb.pt (N, d) unit vectors,
 row-aligned with the filtered gen-4 row list."""
+from llmopt.common.device import pick_device
 import sys
 
 sys.path.insert(0, ".")
@@ -16,7 +17,7 @@ tok = MathTokenizer()
 rows = load_rows(gen4=True)
 rows = [r for r in rows
         if r["cur"].replace(" ", "") != r["nxt"].replace(" ", "")]
-dev = "mps" if torch.backends.mps.is_available() else "cpu"
+dev = pick_device()
 model = build_model(len(tok.vocab), d=256, layers=8, heads=4,
                     ffn=1024).to(dev)
 model.load_state_dict(
