@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 168, spec-cited 70, cited-but-library 51
+Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-cited 71, cited-but-library 51
 
 ## scratch/
 
@@ -113,7 +113,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 168, spec-ci
 | g19 | g19_sigma_cuda.sh | UNCITED | — | — | — | — |
 | g5 | g5_polar.py | UNCITED | — | — | — | — |
 | gate | gate_batched.py | UNCITED | — | — | — | 3 |
-| gate | gate_ckpt.py | results-cited | RESULTS, specs | RESULTS×4, specs×12 | — | 38 |
+| gate | gate_ckpt.py | results-cited | RESULTS, specs | RESULTS×3, specs×12 | — | 38 |
 | gate | gate_ckpt_cuda.py | UNCITED | — | — | — | 12 |
 | gate | gate_cplx.py | spec-cited | specs | specs×1 | — | 1 |
 | gate | gate_pp.py | UNCITED | — | — | — | 1 |
@@ -144,7 +144,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 168, spec-ci
 | grow | grow_decomp1.sh | UNCITED | — | — | — | — |
 | grpo | grpo_shaped.py | UNCITED | — | — | — | 1 |
 | gt2 | gt2_code_arm0.py | reproduce-pinned | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×1, specs×2 | — | — |
-| gt2 | gt2_jaccard.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×3, specs×14 | 8 | 4 |
+| gt2 | gt2_jaccard.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×3, specs×15 | 8 | 4 |
 | gt3 | gt3_probe_arm0.py | reproduce-pinned | REPRODUCE, RESULTS | REPRODUCE×1, RESULTS×2 | — | — |
 | gt4 | gt4_dialog_prompts.py | reproduce-pinned | REPRODUCE, RESULTS | REPRODUCE×1, RESULTS×2 | — | — |
 | gt4 | gt4_verbal_core.py | reproduce-pinned | REPRODUCE, RESULTS | REPRODUCE×1, RESULTS×3 | — | — |
@@ -164,7 +164,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 168, spec-ci
 | int3 | int3_rider.py | UNCITED | — | — | — | — |
 | jointperm | jointperm_distance.py | UNCITED | — | — | — | — |
 | judge | judge_decode.py | spec-cited | specs | specs×3 | — | — |
-| k3 | k3_expert_demo.py | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | 4 |
+| k3 | k3_expert_demo.py | results-cited | RESULTS, specs | RESULTS×5, specs×3 | — | 4 |
 | keff | keff_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | kv | kv_after_night.sh | UNCITED | — | — | — | — |
 | kv | kv_equiv.py | UNCITED | — | — | — | 3 |
@@ -374,7 +374,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 168, spec-ci
 | vrm | vrm_ab.py | UNCITED | — | — | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS | RESULTS×1 | — | — |
-| wsl | wsl.sh | results-cited | RESULTS, specs | RESULTS×10, specs×19 | — | 4 |
+| wsl | wsl.sh | results-cited | RESULTS, specs | RESULTS×10, specs×20 | — | 4 |
 | z1 | z1_gate.sh | UNCITED | — | — | — | — |
 | z1s | z1s_hot_watcher.sh | UNCITED | — | — | — | — |
 | zx | zx_chain.sh | UNCITED | — | — | — | — |
@@ -385,7 +385,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 168, spec-ci
 
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
-|  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
+|  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×5 | — | 1 |
 | arena | arena.py | UNCITED | — | — | — | — |
 | autopsy | autopsy_int.py | UNCITED | — | — | — | — |
 | backfill | backfill_code_commit.py | spec-cited | specs | specs×3 | — | — |
@@ -455,7 +455,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 168, spec-ci
 | bench | bench_temp_race.py | UNCITED | — | — | — | — |
 | bench | bench_tree_verify.py | UNCITED | — | — | — | — |
 | bench | bench_triton_kernels.py | UNCITED | — | — | — | 1 |
-| bench | bench_verify_fast.py | library | specs | specs×3 | 47 | 2 |
+| bench | bench_verify_fast.py | library | specs | specs×4 | 47 | 2 |
 | bench | bench_vge.py | spec-cited | specs | specs×1 | — | — |
 | bench | bench_weight_anatomy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | bench | bench_zx.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -480,12 +480,12 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 168, spec-ci
 | farm | farm_v22.py | UNCITED | — | — | — | 1 |
 | figlib | figlib.py | spec-cited | specs | specs×1 | — | — |
 | gen | gen_catalog.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
-| gen | gen_codemap.py | results-cited | RESULTS, specs | RESULTS×1, specs×18 | — | 1 |
+| gen | gen_codemap.py | results-cited | RESULTS, specs | RESULTS×1, specs×20 | — | 1 |
 | gen | gen_dispatch_labels.py | UNCITED | — | — | — | 2 |
 | gen | gen_dispatch_labels_v2.py | UNCITED | — | — | — | — |
 | gen | gen_figures_web.py | UNCITED | — | — | — | — |
 | gen | gen_frontier.py | UNCITED | — | — | — | — |
-| gen | gen_index.py | spec-cited | specs | specs×8 | — | 1 |
+| gen | gen_index.py | spec-cited | specs | specs×10 | — | 1 |
 | gen | gen_lake.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | gen | gen_magic_labels.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
@@ -510,12 +510,12 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 168, spec-ci
 | plot | plot_neurons.py | UNCITED | — | — | — | — |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | render | render_hero_neurons.py | UNCITED | — | — | — | 1 |
-| results | results_query.py | results-cited | RESULTS, specs | RESULTS×1, specs×15 | — | 2 |
+| results | results_query.py | spec-cited | specs | specs×15 | — | 2 |
 | rjob | rjob.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | sol | sol_enrich_results.py | library | specs | specs×4 | 1 | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — |
 | step | step_grpo.py | spec-cited | specs | specs×1 | — | — |
-| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×7 | 95 | 4 |
+| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×18 | 95 | 4 |
 | sweep | sweep_lookup.py | UNCITED | — | — | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — | — | — |

@@ -1812,6 +1812,10 @@ ZX gate (pre-reg 2026-07-26, the factorial's ZX column).
 - `greedy(cur, max_new=700)`
 - `invariants(s)`
 
+### scratch/gatepins_freeze.py
+One-shot: print the sstr of the first gate problem per level for the standard 120 gate's seed grid (GATE_BAND + 1000*lv + 0). Output becomes the GATE_PINS literal in tests/test_gate_battery.py.
+
+
 ### scratch/gauge_distance_d256.py
 Gauge-aligned model distance on the d256 zoo (pre-reg 2026-07-26).
 
