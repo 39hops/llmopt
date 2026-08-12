@@ -116,11 +116,16 @@ anatomy: demand ranking, keep-sets, router masking, expert surgery.
 [`weightspace/`](llmopt/weightspace/) — predicting what a network computes
 from its parameters. [`quantum/`](llmopt/quantum/) — model-Hamiltonian
 ground-state instruments. [`lab/`](llmopt/lab/) — the adopted instrument
-layer: the standard gate, the fork-isolated oracle, run receipts, the
-checkpoint catalog, merge operations, the result lake, the figure system.
+layer: the standard gate, the fork-isolated oracle, the checkpoint catalog,
+merge operations. [`runs/`](llmopt/runs/) — run receipts, completion
+markers, trajectory instruments, the Parquet result lake.
+[`figures/`](llmopt/figures/) — the validated palette and both figure
+renderers, reading every published number from `docs/figures.json`.
 
 **Training and numerics.** [`train/`](llmopt/train/) — closed-system births,
 controlled diets, LoRA, preference objectives.
+[`common/`](llmopt/common/) — device selection, string-seeded RNG,
+checkpoint IO.
 [`intmath`](llmopt/intmath.py) — exact integer primitives, the arithmetic
 behind bit-identical cross-machine replay. [`quantize/`](llmopt/quantize/) —
 sensitivity probes, closed-form bit allocation, packed integer artifacts.
