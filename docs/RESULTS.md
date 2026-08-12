@@ -27373,3 +27373,59 @@ position mixture by construction — deep tail only); rows are length
 fixed rows shared across all four models; no seeds (deterministic
 scoring of fixed rows), so no sigma applies and no direction is
 claimed beyond the two bars above.
+
+## PRE-REG METALLICITY-1: does diet refinement move the ignition width? Four grades of the same cloud x four widths (2026-08-11 night, 3080)
+
+The stellar-collapse bank's testable residue (RIFF-LEDGER 2026-08-11
+night): metallicity = data refinement. If refined diets let smaller
+models ignite — the Pop III reading — the ignition width should fall
+as the grade rises.
+
+INSTRUMENT: scratch/metallicity1.sh on the 3080. Four diets built by
+scratch/metallicity_diets.py from the SAME base pool (standard
+v22+gen4 rows, trainer identity guard mirrored; string-seeded;
+per-grade sha256 committed in data/metallicity/manifest.ref.json and
+re-verified on the 3080 at arm time):
+  z0 vacuum    — cur/nxt/think char-shuffled in place (identical
+                 charset + length distribution, zero syntax)
+  z1 pop3      — z2's pollution + duplication (half the unique rows,
+                 each twice; same row count)
+  z2 polluted  — 35% of rows given another row's nxt (answer
+                 shuffle: format-valid, wrong)
+  z3 verified  — the standard rows, untouched
+Births: micro-star recipe (3ep, bf16 --fast, budget 6144), d in
+{32, 48, 56, 64}, ffn=4d, L8, H4, BIRTH_SEED=1, ORDER_SEED=0.
+Gates: scratch/gate_ckpt.py, streamed per cell (wall-kill leaves
+bookable cells). 16 cells.
+
+DEFINITION: ignition width w(Z) = min d in the ladder with gate
+total >= 8 (the 7-solve/1.5-sigma resolution floor, cleared by 1);
+w = "none" if no width reaches 8.
+
+BARS:
+1. P-METALLICITY: w(z3) <= w(z2) <= w(z1) with at least one strict
+   inequality among them, AND z0 gates < 8 at every width.
+2. P-VACUUM (control): z0 < 8 everywhere. If z0 >= 8 anywhere the
+   whole rung books INSTRUMENT-INVALID regardless of bar 1.
+
+REFUTED-IF: w(z1) == w(z2) == w(z3) (all grades ignite at the same
+width — refinement does not move ignition at this scale), or the
+z0 control fires.
+
+REGISTERED PRIOR: house predicts w(z3) <= 56 (the standard diet
+ignites below the top of the ladder), w(z1) = 64 or none (pollution
+plus halved unique mass pushes ignition off the ladder top), and z0
+never ignites. Confidence moderate; the d<64 cells at THIS micro
+recipe have never been measured.
+
+FENCES: one device (3080, msearch family — NEVER compared to Mac
+gates); single seed, so per-cell deltas under 7 solves carry no
+direction — only the ignition-width ORDERING is claimed, and only
+if it clears whole widths; grades z1/z2 are CONSTRUCTED refinement
+(answer-shuffle + duplication), a controlled proxy — the true
+raw-farm-stream grade is banked as cell B, so bar 1 firing licenses
+"constructed refinement moves ignition", nothing about the farm
+pipeline; trainer strict-encode may drop slightly different row
+counts per grade after the nxt shuffle (counts printed in
+diets.log, receipt); 17:00 window — cells stream, whatever lands
+books, the rest books NOT-RUN.
