@@ -571,7 +571,6 @@ Bigger tokens for the LLM (Artin, 2026-07-12): the unit of generation becomes a 
 - `_expr_mask(tok)` — Charset-constrained decoding v1 (Artin's GO after round 1:
 - `sample(tok, model, prompt: str, seed: int, constrain: bool=False) -> tuple[str, int]`
 - `sample_batch(tok, model, prompt: str, seeds: list[int], constrain: bool=False, temps: list[float] | None=None, return_logps: bool=False)` — B parallel sampled completions of the same prompt — the step
-- `_gen_isolated(level: int, seed: int, wall: int=45)`
 - `solve_chain(tok, model, integ: str, budget: int, seed0: int)` — Oracle-gated chain; returns (solved, verified_pairs,
 - `main(n: int, seed_base: int, budget: int, adapter: str | None=None) -> None`
 
@@ -618,8 +617,6 @@ Benchmark llmopt Triton kernels vs unfused torch ops and torch SDPA.
 ### scripts/bench_verify_fast.py
 Fast wave-verifier: the three lossless levers, parity-benched.
 
-- `_wave_worker(prev_s: str, cands: list[str], q) -> None` — One fork verifies a whole wave; verdicts streamed per candidate
-- `verify_wave(prev_s: str, cands: list[str], wall: int=20) -> dict[str, tuple[bool, bool]]` — Levers 1+2: cache, then one streamed fork for the misses.
 - `_battery()`
 - `main() -> None`
 
@@ -1845,6 +1842,10 @@ LinkedIn Featured collateral: 3-page lab-overview PDF composed ENTIRELY from com
 
 ### scratch/gen_lean_corpus.py
 Generator for the Lean-tier smoke corpus (2026-08-03).
+
+
+### scratch/genpins_freeze.py
+One-shot freeze helper for tests/test_lab_verify_gen_battery.py: prints sp.sstr of _gen_isolated problems on the pin grid, to be pasted into GEN_PINS as frozen literals (string-seed house law makes them stable across processes/machines).
 
 
 ### scratch/graph_mod_sigma.py
@@ -3169,7 +3170,7 @@ lab.gate — the standard 120 gate, ADOPTED VERBATIM from scripts/step_grpo_micr
 - `gate_checkpoint(ckpt: str, d: int, layers: int, ffn: int, heads: int, label: str, device: str | None=None, spec: GateSpec | None=None)` — The scratch/gate_ckpt.py behavior as a callable: load a house
 
 ### llmopt/lab/gen.py
-lab.gen — fork-isolated problem generation, ADOPTED VERBATIM from scripts/bench_step_tokens.py (2026-08-06; that file stays frozen — it backs the step-token race verdicts). The function body is character-identical to the source; guarded by tests/test_lab_adoption.py. Fix a bug here and there in the SAME commit, or the guard fails.
+lab.gen — fork-isolated problem generation. CANONICAL BODY since 2026-08-12 (Phase 3 module 4); scripts/bench_step_tokens.py is a re-export shim for _gen_isolated. Originally adopted verbatim from that script 2026-08-06. Behavior pinned by tests/test_lab_adoption.py (shim identity) and the string-seed pin grid in tests/test_lab_verify_gen_battery.py.
 
 - `_gen_isolated(level: int, seed: int, wall: int=45)`
 
@@ -3270,7 +3271,7 @@ lab/traj — unified MoE router instrument (module 4; DESK TIER ONLY).
 - `class patch_moe_router`
 
 ### llmopt/lab/verify.py
-lab.verify — the fast wave-verifier, ADOPTED VERBATIM from scripts/bench_verify_fast.py (2026-08-06; that file stays frozen — it backs the parity bench and every verdict that cites it). Function bodies below are character-identical to the source; guarded by tests/test_lab_adoption.py (source-identity + behavior parity). Fix a bug here and there in the SAME commit, or the guard fails.
+lab.verify — the fast wave-verifier. CANONICAL BODY since 2026-08-12 (Phase 3 module 4); scripts/bench_verify_fast.py is a re-export shim that keeps only the parity bench. Originally adopted verbatim from that script 2026-08-06. Behavior pinned by tests/test_lab_adoption.py (shim identity + expected-verdict battery) and tests/test_lab_verify_gen_battery.py (booked Phase D 167/167 replay, RESULTS.md L2871).
 
 - `_wave_worker(prev_s: str, cands: list[str], q) -> None` — One fork verifies a whole wave; verdicts streamed per candidate
 - `verify_wave(prev_s: str, cands: list[str], wall: int=20) -> dict[str, tuple[bool, bool]]` — Levers 1+2: cache, then one streamed fork for the misses.

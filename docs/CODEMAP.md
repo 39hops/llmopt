@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 168, spec-cited 70, cited-but-library 51
+Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 168, spec-cited 70, cited-but-library 51
 
 ## scratch/
 
@@ -133,6 +133,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 168, spec-ci
 | gen9 | gen9_45m_fp32_control.sh | UNCITED | — | — | — | — |
 | gen9 | gen9_45m_probes.sh | UNCITED | — | — | — | — |
 | gen9 | gen9_pipeline.sh | spec-cited | specs | specs×2 | — | 1 |
+| genpins | genpins_freeze.py | UNCITED | — | — | — | 1 |
 | graph | graph_mod_sigma.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | graph | graph_modularity_gen8.py | library | — | — | 1 | — |
 | grav | grav_posthoc.py | UNCITED | — | — | — | — |
@@ -514,7 +515,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 168, spec-ci
 | sol | sol_enrich_results.py | library | specs | specs×4 | 1 | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — |
 | step | step_grpo.py | spec-cited | specs | specs×1 | — | — |
-| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×7 | 95 | 3 |
+| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×7 | 95 | 4 |
 | sweep | sweep_lookup.py | UNCITED | — | — | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — | — | — |

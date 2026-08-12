@@ -1,9 +1,10 @@
-"""lab.verify — the fast wave-verifier, ADOPTED VERBATIM from
-scripts/bench_verify_fast.py (2026-08-06; that file stays frozen — it
-backs the parity bench and every verdict that cites it). Function
-bodies below are character-identical to the source; guarded by
-tests/test_lab_adoption.py (source-identity + behavior parity). Fix a
-bug here and there in the SAME commit, or the guard fails.
+"""lab.verify — the fast wave-verifier. CANONICAL BODY since
+2026-08-12 (Phase 3 module 4); scripts/bench_verify_fast.py is a
+re-export shim that keeps only the parity bench. Originally adopted
+verbatim from that script 2026-08-06. Behavior pinned by
+tests/test_lab_adoption.py (shim identity + expected-verdict battery)
+and tests/test_lab_verify_gen_battery.py (booked Phase D 167/167
+replay, RESULTS.md L2871).
 
 Design provenance (spec 2026-07-14-grpo-v2): (1) verdict cache by
 (prev, cand); (2) ONE fork per wave, verdicts streamed (magic-bucket

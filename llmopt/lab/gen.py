@@ -1,9 +1,9 @@
-"""lab.gen — fork-isolated problem generation, ADOPTED VERBATIM from
-scripts/bench_step_tokens.py (2026-08-06; that file stays frozen — it
-backs the step-token race verdicts). The function body is
-character-identical to the source; guarded by
-tests/test_lab_adoption.py. Fix a bug here and there in the SAME
-commit, or the guard fails.
+"""lab.gen — fork-isolated problem generation. CANONICAL BODY since
+2026-08-12 (Phase 3 module 4); scripts/bench_step_tokens.py is a
+re-export shim for _gen_isolated. Originally adopted verbatim from
+that script 2026-08-06. Behavior pinned by
+tests/test_lab_adoption.py (shim identity) and the string-seed pin
+grid in tests/test_lab_verify_gen_battery.py.
 
 This is the fork-SIGKILL timebox law applied to make_integrate (the
 pathology-#7 call site class): fork, join with deadline, kill — no

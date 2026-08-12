@@ -1,8 +1,13 @@
-"""Adoption guards for llmopt.lab (spec 2026-08-05-llmopt-lab-extraction):
-the lab copies of verify_wave and _gen_isolated must stay
-CHARACTER-IDENTICAL to their frozen source scripts, and agree verdict-
-for-verdict on a behavior battery. A drift in either copy fails here —
-fixes land in both files in the same commit or not at all.
+"""Adoption guards for llmopt.lab (spec 2026-08-05-llmopt-lab-extraction).
+
+verify/gen (Phase 3 module 4, 2026-08-12): the scripts are shims —
+their symbols must BE the lab objects; behavior is pinned by the
+WAVE_CASES battery here plus the booked-number battery in
+tests/test_lab_verify_gen_battery.py (Phase D 167/167 replay).
+
+gate (module 5, pending): the lab copies must stay
+CHARACTER-IDENTICAL to scripts/step_grpo_micro.py — fixes land in
+both files in the same commit or not at all.
 """
 from __future__ import annotations
 
@@ -38,18 +43,16 @@ def bst():
     return _load_script("bench_step_tokens")
 
 
-def test_verify_sources_identical(bvf):
+def test_verify_shim_binds_lab_bodies(bvf):
     from llmopt.lab import verify
-    assert inspect.getsource(verify._wave_worker) == \
-        inspect.getsource(bvf._wave_worker)
-    assert inspect.getsource(verify.verify_wave) == \
-        inspect.getsource(bvf.verify_wave)
+    assert bvf._wave_worker is verify._wave_worker
+    assert bvf.verify_wave is verify.verify_wave
+    assert bvf._WAVE_CACHE is verify._WAVE_CACHE
 
 
-def test_gen_source_identical(bst):
+def test_gen_shim_binds_lab_body(bst):
     from llmopt.lab import gen
-    assert inspect.getsource(gen._gen_isolated) == \
-        inspect.getsource(bst._gen_isolated)
+    assert bst._gen_isolated is gen._gen_isolated
 
 
 # Behavior battery: true step, solved step, perturbed, sign flip,
@@ -70,21 +73,20 @@ WAVE_CASES = [
 ]
 
 
-def test_verify_wave_parity(bvf):
+# expected ok-verdicts per WAVE_CASES row, same order as the cands
+WAVE_EXPECT = [
+    [True, True, False, False, False, False],
+    [True, True, False],
+    [True, True, False],
+]
+
+
+def test_verify_wave_expected_verdicts():
+    pytest.importorskip("sympy")
     from llmopt.lab.verify import verify_wave as lab_vw
-    for prev, cands in WAVE_CASES:
-        assert lab_vw(prev, cands) == bvf.verify_wave(prev, cands), prev
-
-
-def test_gen_isolated_parity(bst):
-    import sympy as sp
-    from llmopt.lab.gen import _gen_isolated as lab_gen
-    for level, seed in [(2, 7_000_000), (3, 7_000_001)]:
-        a = lab_gen(level, seed)
-        b = bst._gen_isolated(level, seed)
-        assert (a is None) == (b is None)
-        if a is not None:
-            assert sp.sstr(a._expr) == sp.sstr(b._expr)
+    for (prev, cands), want in zip(WAVE_CASES, WAVE_EXPECT):
+        got = lab_vw(prev, cands)
+        assert [got[c][0] for c in cands] == want, prev
 
 
 @pytest.fixture(scope="module")
