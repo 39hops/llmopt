@@ -58,6 +58,10 @@ DECISIONS = [
     ("allow", 'scratch/wsl.sh run "ls -la logs/; git status --short"'),
     ("allow", "scratch/wsl.sh run 'ls -t logs/*.log | head -5'"),
     ("allow", "scratch/wsl.sh run 'git log --oneline -1'"),
+    # pgrep self-match WITHOUT a kill acting on it: a status peek that
+    # lists an extra pid, not a hazard (narrowed 2026-08-11)
+    ("allow", "scratch/wsl.sh run 'pgrep -af metallicity1; "
+              "tail -4 logs/metallicity1/driver2.log'"),
     # changes the remote box — show Artin first
     ("ask", "scratch/wsl.sh kill merge_space"),
     ("ask", "scratch/wsl.sh launch 'bash x.sh' logs/a.log logs/a.DONE"),
@@ -106,6 +110,14 @@ def test_self_match_pattern_is_flagged():
     July, hence the check)."""
     assert decide(
         "scratch/wsl.sh run 'pkill -f trainer; pgrep -af trainer'") == "ask"
+
+
+def test_self_match_needs_a_kill_to_escalate():
+    """pgrep alone matching itself is a read; the same shape piped to
+    xargs kill is the July hazard and still asks."""
+    assert decide(
+        "scratch/wsl.sh run 'pgrep -f trainer | xargs kill; "
+        "tail logs/trainer.log'") == "ask"
 
 
 # wsl.sh's own argument checks, verified locally: these must fail

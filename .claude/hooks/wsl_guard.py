@@ -91,17 +91,23 @@ for pat, why in UNRECOVERABLE:
         out("deny", f"this would run {why}, which cannot be undone: "
             f"{inner[:160]}")
 
-# a pkill/pgrep -f pattern that also appears literally elsewhere in the
-# command will match the job's own argv and kill it mid-run
-sm = re.search(r"p(?:kill|grep)\s+(?:-\w+\s+)*-?f?\s*['\"]?([\w./_-]{4,})",
+# a pkill/pgrep -f pattern that also appears literally elsewhere in
+# the command will match the job's own argv. That only destroys work
+# when a kill acts on the match — pkill directly, or pgrep piped into
+# kill/xargs. A bare pgrep status peek that matches itself just lists
+# an extra pid, so it stays on the read path (narrowed 2026-08-11
+# after a status check prompted on 'pgrep -af x; tail logs/x/...').
+sm = re.search(r"(pkill|pgrep)\s+(?:-\w+\s+)*-?f?\s*['\"]?([\w./_-]{4,})",
                inner)
-if sm and "[" not in sm.group(1):
-    pat = sm.group(1)
-    if inner.count(pat) > 1:
-        out("ask", f"SELF-MATCH: the pkill/pgrep pattern '{pat}' also "
-            f"appears elsewhere in this command, so the job would match "
-            f"itself (bracket one character, e.g. "
-            f"'{pat[:2]}[{pat[2]}]{pat[3:]}'). Command: {inner[:200]}")
+if sm and "[" not in sm.group(2):
+    pat = sm.group(2)
+    can_kill = (sm.group(1) == "pkill"
+                or re.search(r"\b(kill|killall|xargs)\b", inner))
+    if can_kill and inner.count(pat) > 1:
+        out("ask", f"SELF-MATCH: the {sm.group(1)} pattern '{pat}' also "
+            f"appears elsewhere in this command and a kill acts on the "
+            f"match, so the job would kill itself (bracket one character, "
+            f"e.g. '{pat[:2]}[{pat[2]}]{pat[3:]}'). Command: {inner[:200]}")
 
 CHANGES_STATE = r"""\b(pkill|kill|killall|rm|mv|cp\s+.*\s+~|truncate|
 git\s+(reset|clean|checkout\s+--|stash\s+drop|push|rebase)|
