@@ -8,11 +8,8 @@ MORE than fp16. Accuracy is reported as max |error| vs the exact-KV
 output so the speed claim carries its quality cost.
 """
 
-import sys
 import time
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch
 

@@ -7,10 +7,7 @@ reduce-overhead captures one extra CUDA graph per shape (paid in warmup).
 Run inside vcvars64 (see bench_compile.py docstring).
 """
 
-import sys
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer

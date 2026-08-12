@@ -5,11 +5,8 @@ unfused op chains on memory-bound ops; flash_attention is compared against
 torch's scaled_dot_product_attention (cuDNN/flash backends).
 """
 
-import sys
 import time
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch
 

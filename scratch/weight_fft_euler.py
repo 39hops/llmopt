@@ -10,7 +10,6 @@ meaningless to SGD). Structure bar: crystal > control by 3 sigma.
 """
 import sys
 
-sys.path.insert(0, ".")
 import torch
 
 CKPT = "checkpoints/merged_grown_latent.pt"

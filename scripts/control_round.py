@@ -18,11 +18,8 @@ any gate failure is variance.
 from __future__ import annotations
 
 import subprocess
-import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 R23 = Path("data/step_chains_r23.jsonl")
 CAND = Path("checkpoints/step_lora_control.pt")

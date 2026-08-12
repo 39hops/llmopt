@@ -14,9 +14,6 @@ import os
 import random
 import sys
 
-sys.path.insert(0, ".")
-sys.path.insert(0, "scripts")
-sys.path.insert(0, "scratch")
 
 import torch
 

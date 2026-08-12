@@ -17,12 +17,10 @@ from __future__ import annotations
 import argparse
 import multiprocessing as mp
 import signal
-import sys
 
 import sympy as sp
 import torch
 
-sys.path.insert(0, "scripts")
 
 from llmopt.mathgen.problems import make_integrate
 from llmopt.search.engine import solve

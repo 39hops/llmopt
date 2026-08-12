@@ -5,7 +5,6 @@ answer accepted, string match never used). Exact-gold reported
 separately. Usage: vmasm_probe.py <ckpt>"""
 from llmopt.common.device import pick_device
 import sys, json
-sys.path.insert(0, "."); sys.path.insert(0, "scripts"); sys.path.insert(0, "scratch")
 import torch
 from vmasm import parse, run
 from llmopt.train.mathnative import MathTokenizer, build_model

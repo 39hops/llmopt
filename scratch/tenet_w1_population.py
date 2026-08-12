@@ -31,7 +31,6 @@ import sys
 import time
 from pathlib import Path
 
-sys.path.insert(0, ".")
 
 MANIFEST = Path("data/w1_population_manifest.jsonl")
 DEADLINE = float(os.environ.get("DEADLINE", str(time.time() + 14 * 3600)))

@@ -18,13 +18,11 @@ from __future__ import annotations
 import argparse
 import json
 import multiprocessing as mp
-import sys
 import time
 from pathlib import Path
 
 import sympy as sp
 
-sys.path.insert(0, "scripts")
 
 from llmopt.mathgen.problems import make_integrate
 from llmopt.search.derivation import beam_search

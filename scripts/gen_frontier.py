@@ -87,8 +87,6 @@ def main(pool: int, keep: int, workers: int, out: Path,
          seed_base: int = 970_000) -> None:
     payload = torch.load("checkpoints/magic_estimator.pt",
                          weights_only=False)
-    import sys
-    sys.path.insert(0, "scripts")
     from train_magic_estimator import Estimator
     net = Estimator(d_in=len(payload["mu"]))
     net.load_state_dict(payload["state_dict"])

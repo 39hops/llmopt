@@ -11,8 +11,6 @@ import json
 import os
 import sys
 
-sys.path.insert(0, ".")
-sys.path.insert(0, "scratch")
 os.environ.setdefault("SHIFT", "12")
 os.environ.setdefault("NBLK", "2")
 import torch  # noqa: E402

@@ -21,12 +21,9 @@ from __future__ import annotations
 from llmopt.common.device import pick_device
 import json
 import random
-import sys
 import time
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 LAM = 0.3
 SYN_LAYER = 15

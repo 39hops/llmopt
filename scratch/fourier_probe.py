@@ -4,8 +4,6 @@ activations over n mod k. CPU. Usage: python scratch/fourier_probe.py
 """
 import sys
 
-sys.path.insert(0, ".")
-sys.path.insert(0, "scripts")
 import numpy as np  # noqa: E402
 import torch  # noqa: E402
 

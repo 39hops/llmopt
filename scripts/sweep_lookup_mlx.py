@@ -5,11 +5,8 @@ Apple-silicon counterpart of sweep_lookup.py: same generic decode loop
 graph capture needed — mlx-lm caches grow on demand and trim on rewind.
 """
 
-import sys
 import time
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import mlx.core as mx
 from mlx_lm import load

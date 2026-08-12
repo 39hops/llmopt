@@ -17,11 +17,8 @@ this addition stay independently attributable.
 """
 from __future__ import annotations
 
-import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import expert_iter_steps as EIS
 

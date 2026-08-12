@@ -6,11 +6,8 @@ rungs (encode/decode/diagnose) train up fast; the simulation rungs
 (ladder.py), never by string proximity.
 """
 
-import sys
 import time
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer

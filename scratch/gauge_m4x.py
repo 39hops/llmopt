@@ -7,7 +7,6 @@ import sys
 
 import torch
 
-sys.path.insert(0, "scratch")
 from prologue_arms import gauge_flip  # noqa: E402
 
 PATH = "checkpoints/mathnative_19m_infixtwin.pt"

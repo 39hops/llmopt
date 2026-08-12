@@ -10,14 +10,11 @@ and the SVGs are committed so nothing downstream depends on a browser.
 """
 from __future__ import annotations
 
-import os
 import shutil
 import subprocess
-import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from llmopt.lab.figsvg import DATA, render  # noqa: E402
 

@@ -492,7 +492,7 @@ Census: UNCITED 207, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | gen | gen_lake.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | gen | gen_magic_labels.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
-| gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | — |
+| gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | 1 |
 | gen | gen_readme.py | spec-cited | specs | specs×14 | — | 1 |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
 | gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 4 |
@@ -532,11 +532,11 @@ Census: UNCITED 207, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 53 | 31 |
-| train | train_nnue.py | library | specs | specs×8 | 1 | 11 |
+| train | train_nnue.py | library | specs | specs×8 | 1 | 12 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | train | train_syndrome_policy.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_ternary.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
+| train | train_ternary.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 2 |
 | train | train_tf32x3.py | UNCITED | — | — | — | — |
 | train | train_value_head.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | train | train_weight_reader.py | spec-cited | specs | specs×4 | — | — |

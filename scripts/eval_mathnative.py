@@ -10,11 +10,7 @@ identity/cycle-guarded exactly like every other honest metric.
 from __future__ import annotations
 
 from llmopt.common.device import pick_device
-import sys
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from llmopt.train.mathnative import MathTokenizer, build_model
 

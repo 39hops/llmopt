@@ -8,10 +8,7 @@ distribution). Output must stay token-identical to target greedy.
 Corpus prompts are held out from the benchmark prompt.
 """
 
-import sys
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer

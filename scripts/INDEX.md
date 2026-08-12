@@ -2431,6 +2431,10 @@ One-shot Phase 4 rewriter: replace the default-accelerator idiom with pick_devic
 One-shot Phase 4 survey: device-idiom sites x CODEMAP class. Output drives the migration list; only class UNCITED or package rows are migrated. --bootstrap lists sys.path.insert sites instead.
 
 
+### scratch/phase4_unboot.py
+One-shot Phase 4.3: delete sys.path.insert bootstrap lines in the UNCITED files passed as args. Handles the one-line form and the two-line continuation form (open paren balance). py_compile checks the result; reverts the file on failure.
+
+
 ### scratch/phys_probe.py
 Physics rung 1 probe: greedy emission on held-out phys steps (seeds 17-19), sympy-equivalence in t, fork-isolated. No math gate — the physics expert is vocab-41, a separate model class by design. Usage: phys_probe.py <ckpt>
 

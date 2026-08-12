@@ -10,11 +10,8 @@ wall time per request. Ladder:
 Run inside vcvars64 (see bench_compile.py docstring).
 """
 
-import sys
 import time
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer

@@ -7,9 +7,6 @@ Runs on the 3080 (checkpoints live there); CPU-safe.
 """
 import sys
 
-sys.path.insert(0, ".")
-sys.path.insert(0, "scripts")
-sys.path.insert(0, "scratch")
 import torch  # noqa: E402
 
 A = "checkpoints/metab_d2_fp64.pt"

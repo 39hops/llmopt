@@ -13,8 +13,6 @@ import sys
 import numpy as np
 import torch
 
-sys.path.insert(0, ".")
-sys.path.insert(0, "scratch")
 from capacity_meter import meter  # noqa: E402
 
 
@@ -59,7 +57,6 @@ def b3():
 
 def b4():
     from transformers import AutoModelForCausalLM, AutoTokenizer
-    sys.path.insert(0, "scratch")
     from pack_c6 import PROMPTS
     MODEL = "allenai/OLMoE-1B-7B-0924-Instruct"
     dev = "mps"

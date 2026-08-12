@@ -2,7 +2,6 @@
 Per-matrix ||dW||, effective rank of delta, top-layer localization,
 ternary flip census (would the 1.58-bit deployment even change?)."""
 import sys, torch
-sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 
 A = torch.load("checkpoints/mathnative_gen6_grown.pt", map_location="cpu")
 B = torch.load("checkpoints/metabolic_live.pt", map_location="cpu")

@@ -15,8 +15,6 @@ import sys
 import torch
 import torch.nn.functional as F
 
-sys.path.insert(0, ".")
-sys.path.insert(0, "scripts")
 from llmopt.train.mathnative import MathTokenizer, build_model
 
 ckpt_in, diet, steps, ckpt_out = (sys.argv[1], sys.argv[2],

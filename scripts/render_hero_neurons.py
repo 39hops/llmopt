@@ -13,10 +13,7 @@ Usage:
   (writes <out>-light.png and <out>-dark.png at 300 dpi)
 """
 import argparse
-import sys
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from llmopt.lab import anatomy  # noqa: E402
 

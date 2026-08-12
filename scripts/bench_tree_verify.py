@@ -6,10 +6,7 @@ verifying the single best candidate linearly? Both must stay
 token-identical to vanilla greedy.
 """
 
-import sys
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer

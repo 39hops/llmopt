@@ -10,10 +10,7 @@ integrate problems the int skill (same seed-99 protocol as the other
 task-arithmetic experiments).
 """
 
-import sys
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer

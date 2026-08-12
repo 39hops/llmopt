@@ -9,11 +9,8 @@ fp32 on GA102, the arm measures it.
 
     TF32X3 birth: python scripts/train_tf32x3.py --gen4 ...
 """
-import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch
 import torch.nn as nn

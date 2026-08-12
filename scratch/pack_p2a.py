@@ -8,8 +8,6 @@ import math
 import sys
 import time
 
-sys.path.insert(0, ".")
-sys.path.insert(0, "scratch")
 import torch  # noqa: E402
 
 from llmopt.quantize.methods import hqq  # noqa: E402

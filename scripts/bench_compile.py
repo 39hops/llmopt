@@ -4,10 +4,7 @@ Run from a vcvars64 environment on Windows (inductor's cpp wrapper needs MSVC):
   cmd /c "call \"C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Auxiliary\\Build\\vcvars64.bat\" && python scripts/bench_compile.py"
 """
 
-import sys
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer

@@ -14,12 +14,8 @@ agrees (the hints-flip discipline).
 from __future__ import annotations
 
 import argparse
-import sys
 import time
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 LEVELS = (2, 3, 4, 5)
 LADDER = [0.4, 0.55, 0.7, 0.85, 1.0, 1.15, 1.3, 1.45]

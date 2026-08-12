@@ -12,11 +12,9 @@ import heapq
 import itertools
 import random
 import signal
-import sys
 
 import sympy as sp
 
-sys.path.insert(0, "scripts")
 from bench_lazy import lazy_children, make_rankers  # noqa: E402
 from bench_magic import is_dead, load_nnue  # noqa: E402
 from llmopt.search.benchkit import _check, _root  # noqa: E402

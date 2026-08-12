@@ -6,7 +6,6 @@ from llmopt.common.device import pick_device
 import sys, json
 import multiprocessing as mp
 mp.set_start_method("fork", force=True)
-sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 import torch
 from llmopt.train.mathnative import MathTokenizer, build_model
 

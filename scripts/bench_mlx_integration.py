@@ -7,11 +7,8 @@ small slice of a decode step next to the projections and attention).
 Report whatever falls out, including a loss.
 """
 
-import sys
 import time
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 MODEL = "mlx-community/Qwen2.5-0.5B-Instruct-4bit"
 PROMPT = "Explain, step by step, why the derivative of sin(x**2) is 2*x*cos(x**2)."

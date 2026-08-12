@@ -11,11 +11,8 @@ from __future__ import annotations
 
 import argparse
 import multiprocessing as mp
-import sys
 import time
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 GREEN, RED, DIM, BOLD, CYAN, END = ("\033[92m", "\033[91m", "\033[2m",
                                     "\033[1m", "\033[96m", "\033[0m")

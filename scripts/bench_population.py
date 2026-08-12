@@ -17,13 +17,11 @@ lives in tests/test_population.py.
 """
 import sys
 import time
-from pathlib import Path
 
 import mlx.core as mx
 import mlx.nn as nn
 import mlx.optimizers as optim
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from llmopt.train.population import (apply_population_lora,
                                      population_loss)
