@@ -10,6 +10,7 @@ Prints: date  type  id  [line]  title/verdict.
 import argparse
 import json
 import re
+import sys
 
 E = [json.loads(l) for l in open("docs/results-index.jsonl")]
 by_id = {e["id"]: e for e in E}
@@ -20,7 +21,29 @@ ap.add_argument("--type")
 ap.add_argument("--live", action="store_true")
 ap.add_argument("--chain")
 ap.add_argument("--grep")
+ap.add_argument("--repro")
 a = ap.parse_args()
+
+
+def repro(rows, entry_id: str) -> int:
+    row = next((r for r in rows if r["id"] == entry_id), None)
+    if row is None:
+        print(f"no entry with id {entry_id}", file=sys.stderr)
+        return 1
+    sha = row.get("code_commit")
+    if not sha:
+        print(f"{entry_id}: code_commit is null (ambiguous backfill); "
+              f"fall back to the booking commit via "
+              f"git log -S over docs/RESULTS.md", file=sys.stderr)
+        return 1
+    print(f"git worktree add ../repro-{entry_id[:24]} {sha}")
+    for f in row.get("files", []):
+        print(f"  # cited: {f}")
+    return 0
+
+
+if a.repro:
+    raise SystemExit(repro(E, a.repro))
 
 
 def show(e, mark=""):

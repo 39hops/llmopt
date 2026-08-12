@@ -45,7 +45,9 @@ metadata, perform ALL of these steps in order:
    `gen_codemap.py` and `gen_index.py`, commit the map. PUBLIC REPO:
    end the message with exactly
    `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>` and NEVER
-   a Claude-Session URL.
+   a Claude-Session URL. Set `code_commit` on the new row = parent of
+   the booking commit (`git rev-parse HEAD^` after committing), and
+   verify `files` was auto-extracted.
 
 ## Fences that travel with every booking
 

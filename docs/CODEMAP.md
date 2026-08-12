@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-cited 69, cited-but-library 51
+Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-cited 70, cited-but-library 51
 
 ## scratch/
 
@@ -317,7 +317,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | snap | snap_alloc.py | spec-cited | specs | specs×2 | — | 1 |
 | snap | snap_anatomy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | softprompt | softprompt_sampler_probe.py | spec-cited | specs | specs×1 | — | — |
-| softprompt1 | softprompt1.py | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | 2 |
+| softprompt1 | softprompt1.py | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | 3 |
 | softprompt1 | softprompt1.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | soup | soup_gate.py | spec-cited | specs | specs×1 | — | 1 |
 | ssm | ssm_star.py | library | RESULTS | RESULTS×1 | 1 | 1 |
@@ -387,6 +387,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 |  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
 | arena | arena.py | UNCITED | — | — | — | — |
 | autopsy | autopsy_int.py | UNCITED | — | — | — | — |
+| backfill | backfill_code_commit.py | spec-cited | specs | specs×3 | — | — |
 | bench | bench_adaptive.py | spec-cited | specs | specs×1 | — | — |
 | bench | bench_adaptive_draft.py | UNCITED | — | — | — | — |
 | bench | bench_anneal.py | UNCITED | — | — | — | — |
@@ -489,7 +490,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
 | gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | — |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
-| gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 3 |
+| gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 4 |
 | gen | gen_scoreboard.py | UNCITED | — | — | — | — |
 | gen | gen_syndrome_labels.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | grow | grow_mathnative.py | library | specs | specs×1 | 1 | 1 |
@@ -512,7 +513,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | sol | sol_enrich_results.py | library | specs | specs×4 | 1 | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — |
 | step | step_grpo.py | spec-cited | specs | specs×1 | — | — |
-| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×7 | 95 | 2 |
+| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×7 | 95 | 3 |
 | sweep | sweep_lookup.py | UNCITED | — | — | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — | — | — |

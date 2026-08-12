@@ -70,6 +70,9 @@ Then name it after the rung. Requirements learned the hard way:
 
 ## 4. Launch — the signatures that bite
 
+Record `git rev-parse HEAD` at launch; it becomes the entry's
+`code_commit` at booking.
+
 **Mac** (jobs land in `jobs/<id>.rc`, `jobs/<id>.log`):
 ```bash
 RJOB_LOCAL=1 .venv/bin/python scripts/rjob.py launch <id> 'bash scratch/<driver>.sh'
