@@ -57,6 +57,59 @@ jobs:
       - name: generated README in sync
         run: python scripts/gen_readme.py --check
 
+  wheel:
+    # An installed wheel is not a source checkout: scratch/, docs/, and
+    # assets/ are absent, and the repo-bound subsystems must say so
+    # clearly instead of FileNotFoundError (spec Phase 7a). This job
+    # would have caught the parents[N] path class before review did.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: build wheel
+        run: |
+          python -m pip install -U pip build
+          python -m build --wheel
+      - name: install wheel in a clean venv and smoke it
+        run: |
+          python -m venv /tmp/wheelenv
+          # CPU torch first so the wheel's torch>=2.4 dep resolves
+          # against it instead of pulling the CUDA build
+          /tmp/wheelenv/bin/pip install -q torch --index-url https://download.pytorch.org/whl/cpu
+          /tmp/wheelenv/bin/pip install -q dist/*.whl
+          cd /tmp
+          /tmp/wheelenv/bin/python -c "import llmopt; print(llmopt.__name__)"
+          # repo-bound subsystems must fail with the honest message,
+          # not a bare FileNotFoundError
+          set +e
+          out=$(/tmp/wheelenv/bin/python -m llmopt.reproduce --list 2>&1)
+          rc=$?
+          set -e
+          test $rc -ne 0
+          echo "$out" | grep -q "source checkout"
+
+  core-deps:
+    # Core import surface must not quietly grow an optional-extra
+    # dependency (spec Phase 7a.3).
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: install core only
+        run: |
+          python -m pip install -U pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install pytest numpy sympy
+          pip install -e . --no-deps
+      - name: import smoke without extras
+        run: pytest tests/test_public_imports.py tests/test_lazy_root.py -q
+
   generated-docs-are-current:
     # INDEX.md and CODEMAP.md are GENERATED. A stale one is a silent
     # lie about where code lives, and regenerating them was a thing a

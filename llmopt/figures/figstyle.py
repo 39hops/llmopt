@@ -45,7 +45,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib import font_manager  # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[2]
+from llmopt.common.repo import repo_root  # noqa: E402
+
+ROOT = repo_root()
 FONT_DIR = ROOT / "assets" / "fonts"
 
 # ---------------------------------------------------------------- color

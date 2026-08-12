@@ -25,11 +25,12 @@ from __future__ import annotations
 
 import html
 import json
-from pathlib import Path
 
 from llmopt.figures.figstyle import CHROME, color
 
-ROOT = Path(__file__).resolve().parents[2]
+from llmopt.common.repo import repo_root
+
+ROOT = repo_root()
 DATA = ROOT / "docs" / "figures.json"
 
 # Type scale (px at 1x). Mono is reserved for measured values and

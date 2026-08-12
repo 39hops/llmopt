@@ -12,9 +12,10 @@ import os
 import subprocess
 import sys
 import time
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+from llmopt.common.repo import repo_root
+
+ROOT = repo_root()
 PINS = ROOT / "scratch" / "detbwd_gmoe_ref" / "pins.json"
 RUNNER = ROOT / "scratch" / "detbwd_gravmoe.py"
 REFERENCE_DIR = ROOT / "scratch" / "detbwd_gmoe_ref"
