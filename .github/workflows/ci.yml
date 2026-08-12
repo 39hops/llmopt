@@ -44,6 +44,8 @@ jobs:
         run: ruff check llmopt tests scripts
       - name: lint (scratch, report only)
         run: ruff check scratch --exit-zero
+      - name: generated README in sync
+        run: python scripts/gen_readme.py --check
 
   generated-docs-are-current:
     # INDEX.md and CODEMAP.md are GENERATED. A stale one is a silent

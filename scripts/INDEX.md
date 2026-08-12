@@ -24,6 +24,13 @@ Failure autopsy for integration: run the best structural engine (bf + NNUE h + m
 - `best_first(root, budget, prop, h)`
 - `main(n: int, budget: int) -> None`
 
+### scripts/backfill_code_commit.py
+One-time (rerunnable via --redo): attach code_commit to ledger rows.
+
+- `path_exists_at(sha: str, path: str) -> bool`
+- `find_commit(title: str, files: list) -> str | None`
+- `main() -> None`
+
 ### scripts/bench_adaptive.py
 Adaptive-k race: entropy-gated branching vs the fixed strategies. Pre-registered prediction (spec 2026-07-07-adaptive-k-design.md): adaptive should match k1x3 on diff L2-3 AND match full on int L3 — spending width exactly where the sweep showed width matters. Also prints mean-k and an H histogram per cell: the null-check instrument (if H doesn't localize, the confidence signal is the gap).
 
@@ -881,6 +888,13 @@ Winning-path (state, legal moves, chosen move) triples for proposer SFT. Every r
 - `path_rows(root: sp.Expr) -> list[dict]` — Replay the winning history move-by-move, recording the legal
 - `main(per_cell: int, split: str, exclude_file: str | None) -> None`
 
+### scripts/gen_readme.py
+Rewrite generated regions in README.md from ledger truth.
+
+- `counts() -> dict[str, int]`
+- `render() -> str`
+- `main() -> int`
+
 ### scripts/gen_regret_labels.py
 Regret/corrective labels (DAgger-style, Artin's 'make it regret the wrong node' — hindsight credit assignment made mechanical).
 
@@ -894,6 +908,7 @@ Generate/refresh docs/results-index.jsonl from RESULTS.md.
 - `slug(title, date)`
 - `infer_type(title)`
 - `infer_threads(title)`
+- `extract_files(body: str) -> list[str]` — Sorted unique repo paths cited in an entry body.
 
 ### scripts/gen_scoreboard.py
 Generate docs/SCOREBOARD.md from results-index.jsonl — the curated current-truth view (live, verdict-bearing entries grouped by thread, newest first). NEVER hand-edit SCOREBOARD.md; deepen the index instead and regenerate.
@@ -1020,6 +1035,7 @@ CLI for the README hero: llmopt.lab.anatomy dot views.
 ### scripts/results_query.py
 Query docs/results-index.jsonl (the RESULTS.md index).
 
+- `repro(rows, entry_id: str) -> int`
 - `show(e, mark='')`
 
 ### scripts/rjob.py

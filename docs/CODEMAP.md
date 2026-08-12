@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-cited 70, cited-but-library 51
+Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-cited 71, cited-but-library 51
 
 ## scratch/
 
@@ -489,6 +489,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | gen | gen_magic_labels.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
 | gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | — |
+| gen | gen_readme.py | spec-cited | specs | specs×12 | — | 1 |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
 | gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 4 |
 | gen | gen_scoreboard.py | UNCITED | — | — | — | — |
@@ -508,7 +509,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | plot | plot_neurons.py | UNCITED | — | — | — | — |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | render | render_hero_neurons.py | UNCITED | — | — | — | 1 |
-| results | results_query.py | spec-cited | specs | specs×14 | — | 1 |
+| results | results_query.py | spec-cited | specs | specs×14 | — | 2 |
 | rjob | rjob.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | sol | sol_enrich_results.py | library | specs | specs×4 | 1 | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — |

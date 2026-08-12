@@ -81,8 +81,12 @@ narrows again at k=128.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/web/honesty_ledger-dark.png">
-  <img alt="The 187 curated claims in FINDINGS by maturity: 37 replicated, 42 mechanism-confirmed, 70 single-seed, 35 null, 3 retracted." src="docs/assets/web/honesty_ledger.png">
+  <img alt="FINDINGS ledger by maturity" src="docs/assets/web/honesty_ledger.png">
 </picture>
+
+<!-- llmopt:generated honesty-ledger:start -->
+The 217 curated claims in FINDINGS by maturity: 38 replicated, 54 mechanism-confirmed, 82 single-seed, 39 null, 4 retracted.
+<!-- llmopt:generated honesty-ledger:end -->
 
 A fifth of the published record is negative. Nulls and retractions sit beside
 the wins at the same prominence, because a ledger that only records successes
