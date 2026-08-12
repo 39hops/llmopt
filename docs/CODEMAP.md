@@ -107,7 +107,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | fourier4a | fourier4a_dynamics.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | fp64 | fp64_paired.py | spec-cited | specs | specs×1 | — | — |
 | fx3 | fx3_house.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
-| g19 | g19_bf16_isolation.sh | spec-cited | specs | specs×2 | — | — |
+| g19 | g19_bf16_isolation.sh | spec-cited | specs | specs×2 | — | 1 |
 | g19 | g19_fp32_cell.sh | UNCITED | — | — | — | — |
 | g19 | g19_probes_fix.sh | UNCITED | — | — | — | — |
 | g19 | g19_sigma_cuda.sh | UNCITED | — | — | — | — |
@@ -128,11 +128,11 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | gauge | gauge_slack_rat.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | gen | gen_lab_overview_pdf.py | UNCITED | — | — | — | — |
 | gen | gen_lean_corpus.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
-| gen8 | gen8_pipeline.sh | spec-cited | specs | specs×2 | — | — |
+| gen8 | gen8_pipeline.sh | spec-cited | specs | specs×2 | — | 1 |
 | gen9 | gen9_19m_cuda_control.sh | UNCITED | — | — | — | — |
 | gen9 | gen9_45m_fp32_control.sh | UNCITED | — | — | — | — |
 | gen9 | gen9_45m_probes.sh | UNCITED | — | — | — | — |
-| gen9 | gen9_pipeline.sh | spec-cited | specs | specs×2 | — | — |
+| gen9 | gen9_pipeline.sh | spec-cited | specs | specs×2 | — | 1 |
 | graph | graph_mod_sigma.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | graph | graph_modularity_gen8.py | library | — | — | 1 | — |
 | grav | grav_posthoc.py | UNCITED | — | — | — | — |
@@ -276,10 +276,10 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | pincer | pincer_r8.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | place1 | place1_gravity.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | — |
 | polar | polar_snap.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| poly3 | poly3_pipeline.sh | spec-cited | specs | specs×2 | — | — |
-| poly4 | poly4_pipeline.sh | spec-cited | specs | specs×1 | — | 1 |
+| poly3 | poly3_pipeline.sh | spec-cited | specs | specs×2 | — | 1 |
+| poly4 | poly4_pipeline.sh | spec-cited | specs | specs×1 | — | 2 |
 | poly4 | poly4_watcher.sh | UNCITED | — | — | — | — |
-| poly5 | poly5_pipeline.sh | spec-cited | specs | specs×1 | — | 1 |
+| poly5 | poly5_pipeline.sh | spec-cited | specs | specs×1 | — | 2 |
 | poly5 | poly5_watcher.sh | UNCITED | — | — | — | — |
 | practice | practice_mine.py | spec-cited | specs | specs×1 | — | — |
 | prefix | prefix_pair.sh | UNCITED | — | — | — | — |
@@ -313,7 +313,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | scorer | scorer_s2_data.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | scorer | scorer_s2_train.py | spec-cited | specs | specs×1 | — | — |
 | seeds | seeds_ladder_0804.sh | UNCITED | — | — | — | — |
-| series | series_probe.py | spec-cited | specs | specs×5 | — | 13 |
+| series | series_probe.py | spec-cited | specs | specs×5 | — | 15 |
 | snap | snap_alloc.py | spec-cited | specs | specs×2 | — | 1 |
 | snap | snap_anatomy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | softprompt | softprompt_sampler_probe.py | spec-cited | specs | specs×1 | — | — |
@@ -512,7 +512,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | sol | sol_enrich_results.py | library | specs | specs×4 | 1 | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — |
 | step | step_grpo.py | spec-cited | specs | specs×1 | — | — |
-| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×7 | 93 | 2 |
+| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×7 | 95 | 2 |
 | sweep | sweep_lookup.py | UNCITED | — | — | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — | — | — |

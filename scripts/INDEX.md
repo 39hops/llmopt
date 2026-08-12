@@ -809,9 +809,9 @@ Generate docs/CODEMAP.md: the move-gate inventory of scratch/ and scripts/ (adop
 - `load_texts(paths: list[str]) -> dict[str, str]`
 - `load_code() -> dict[str, str]`
 - `family(name: str) -> str`
-- `code_refs(target: Path, code: dict[str, str]) -> list[str]` — Files that import the module by name or embed its literal filename.
+- `code_refs(target: Path, code: dict[str, str]) -> tuple[list[str], list[str]]` — (importers, mention-only referrers) for the module.
 - `doc_cites(name: str, docs: dict[str, dict[str, str]]) -> dict[str, int]`
-- `classify(cites: dict[str, int], refs: list[str]) -> str`
+- `classify(cites: dict[str, int], imports: list[str]) -> str`
 - `main() -> None`
 
 ### scripts/gen_dispatch_labels.py
