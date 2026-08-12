@@ -1,6 +1,7 @@
 """lab.keepsets guards. Three tiers:
 
-1. Source identity vs the frozen scratch/gt2_jaccard.py (always on).
+1. Shim identity: scratch/gt2_jaccard.py re-exports the lab bodies
+   (always on).
 2. Synthetic battery locking the regeneration-sensitive rules —
    DROP_TAIL first-row-per-(prompt,layer), GATE_ONLY string-prompt
    exclusion, stable-sort tie-break at the keep boundary (always on).
@@ -12,7 +13,6 @@
 from __future__ import annotations
 
 import importlib.util
-import inspect
 import json
 from pathlib import Path
 
@@ -32,11 +32,14 @@ def frozen():
     return mod
 
 
-def test_source_identity(frozen):
+def test_shim_binds_lab_bodies(frozen):
+    """scratch/gt2_jaccard.py is a shim: its public symbols ARE the
+    llmopt.lab.keepsets objects (Phase 3 module 1, 2026-08-12). The
+    booked-number acceptance below is the behavioral proof that
+    replaced the source-identity guard."""
     for name in ("_frac", "_flag", "decode_counts", "keep", "jmean",
                  "coverage"):
-        assert inspect.getsource(getattr(keepsets, name)) == \
-            inspect.getsource(getattr(frozen, name)), name
+        assert getattr(frozen, name) is getattr(keepsets, name), name
 
 
 def _write_traj(path):
@@ -56,7 +59,7 @@ def _write_traj(path):
     path.write_text("\n".join(json.dumps(r) for r in rows) + "\n")
 
 
-def test_drop_tail_and_gate_only_rules(tmp_path, frozen):
+def test_drop_tail_and_gate_only_rules(tmp_path):
     p = tmp_path / "traj.jsonl"
     _write_traj(p)
     got = keepsets.decode_counts(p, gate_only=True, drop_tail=True)
@@ -64,27 +67,19 @@ def test_drop_tail_and_gate_only_rules(tmp_path, frozen):
         {0: {3: 2, 4: 1, 5: 1, 6: 1}}   # tails dropped, probe excluded
     loose = keepsets.decode_counts(p, gate_only=False, drop_tail=False)
     assert loose[0][7] == 1 and loose[0][1] == 1  # both rules off
-    # parity with the frozen implementation on the same file
-    for go in (True, False):
-        for dt in (True, False):
-            assert keepsets.decode_counts(p, gate_only=go, drop_tail=dt) \
-                == frozen.decode_counts(p, gate_only=go, drop_tail=dt)
 
 
-def test_keep_tie_break_is_stable(frozen):
+def test_keep_tie_break_is_stable():
     # experts 2 and 3 tie at the boundary: stable sort keeps LOWER id
     counts = {0: {5: 10, 1: 9, 2: 3, 3: 3}}
-    k = keepsets.keep(counts, n=8, top_k=3, frac=0.0)
-    assert k == {0: {5, 1, 2}} == frozen.keep(counts, n=8, top_k=3,
-                                              frac=0.0)
+    assert keepsets.keep(counts, n=8, top_k=3, frac=0.0) == {0: {5, 1, 2}}
 
 
-def test_jmean_and_coverage(frozen):
+def test_jmean_and_coverage():
     ka, kb = {0: {1, 2, 3}, 1: {4, 5, 6}}, {0: {2, 3, 7}, 1: {4, 5, 6}}
-    assert keepsets.jmean(ka, kb) == frozen.jmean(ka, kb) == (0.75, 0.5)
+    assert keepsets.jmean(ka, kb) == (0.75, 0.5)
     demand = {0: {1: 10, 7: 30}, 1: {4: 60}}
-    assert keepsets.coverage(demand, ka) == \
-        frozen.coverage(demand, ka) == 0.7
+    assert keepsets.coverage(demand, ka) == 0.7
 
 
 BOOKED = {("math", "phys"): 0.8013, ("math", "code"): 0.5331,

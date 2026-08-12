@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-cited 71, cited-but-library 51
+Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 168, spec-cited 70, cited-but-library 51
 
 ## scratch/
 
@@ -113,7 +113,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | g19 | g19_sigma_cuda.sh | UNCITED | — | — | — | — |
 | g5 | g5_polar.py | UNCITED | — | — | — | — |
 | gate | gate_batched.py | UNCITED | — | — | — | 3 |
-| gate | gate_ckpt.py | results-cited | RESULTS, specs | RESULTS×3, specs×11 | — | 38 |
+| gate | gate_ckpt.py | results-cited | RESULTS, specs | RESULTS×4, specs×12 | — | 38 |
 | gate | gate_ckpt_cuda.py | UNCITED | — | — | — | 12 |
 | gate | gate_cplx.py | spec-cited | specs | specs×1 | — | 1 |
 | gate | gate_pp.py | UNCITED | — | — | — | 1 |
@@ -143,16 +143,16 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | grow | grow_decomp1.sh | UNCITED | — | — | — | — |
 | grpo | grpo_shaped.py | UNCITED | — | — | — | 1 |
 | gt2 | gt2_code_arm0.py | reproduce-pinned | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×1, specs×2 | — | — |
-| gt2 | gt2_jaccard.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×3, specs×4 | 8 | 4 |
+| gt2 | gt2_jaccard.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×3, specs×14 | 8 | 4 |
 | gt3 | gt3_probe_arm0.py | reproduce-pinned | REPRODUCE, RESULTS | REPRODUCE×1, RESULTS×2 | — | — |
 | gt4 | gt4_dialog_prompts.py | reproduce-pinned | REPRODUCE, RESULTS | REPRODUCE×1, RESULTS×2 | — | — |
 | gt4 | gt4_verbal_core.py | reproduce-pinned | REPRODUCE, RESULTS | REPRODUCE×1, RESULTS×3 | — | — |
-| gt5 | gt5_union_keep.py | reproduce-pinned | REPRODUCE, RESULTS | REPRODUCE×1, RESULTS×1 | — | — |
+| gt5 | gt5_union_keep.py | reproduce-pinned | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×1, specs×1 | — | — |
 | gt5c | gt5c_randfill_keep.py | reproduce-pinned | REPRODUCE, RESULTS | REPRODUCE×1, RESULTS×1 | — | — |
 | gt6 | gt6_recall_ladder.py | reproduce-pinned | REPRODUCE, RESULTS | REPRODUCE×1, RESULTS×1 | — | — |
 | gt6 | gt6_resume_arms.sh | UNCITED | — | — | — | — |
 | gt7 | gt7_coverage_rederive.py | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | 1 |
-| gt7 | gt7_draw.py | spec-cited | specs | specs×2 | — | 1 |
+| gt7 | gt7_draw.py | spec-cited | specs | specs×3 | — | 1 |
 | gt7 | gt7_run.py | results-cited | RESULTS, specs | RESULTS×7, specs×2 | — | — |
 | head | head_autopsy.py | library | — | — | 1 | — |
 | head | head_census.py | spec-cited | specs | specs×2 | — | 1 |
@@ -479,17 +479,17 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | farm | farm_v22.py | UNCITED | — | — | — | 1 |
 | figlib | figlib.py | spec-cited | specs | specs×1 | — | — |
 | gen | gen_catalog.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
-| gen | gen_codemap.py | results-cited | RESULTS, specs | RESULTS×1, specs×16 | — | 1 |
+| gen | gen_codemap.py | results-cited | RESULTS, specs | RESULTS×1, specs×18 | — | 1 |
 | gen | gen_dispatch_labels.py | UNCITED | — | — | — | 2 |
 | gen | gen_dispatch_labels_v2.py | UNCITED | — | — | — | — |
 | gen | gen_figures_web.py | UNCITED | — | — | — | — |
 | gen | gen_frontier.py | UNCITED | — | — | — | — |
-| gen | gen_index.py | spec-cited | specs | specs×6 | — | 1 |
+| gen | gen_index.py | spec-cited | specs | specs×8 | — | 1 |
 | gen | gen_lake.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | gen | gen_magic_labels.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
 | gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | — |
-| gen | gen_readme.py | spec-cited | specs | specs×12 | — | 1 |
+| gen | gen_readme.py | spec-cited | specs | specs×14 | — | 1 |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
 | gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 4 |
 | gen | gen_scoreboard.py | UNCITED | — | — | — | — |
@@ -497,7 +497,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | grow | grow_mathnative.py | library | specs | specs×1 | 1 | 1 |
 | harvest | harvest_champion.py | UNCITED | — | — | — | — |
 | harvest | harvest_frontier.py | spec-cited | specs | specs×1 | — | — |
-| list | list_uncurated.py | spec-cited | specs | specs×5 | — | — |
+| list | list_uncurated.py | spec-cited | specs | specs×6 | — | — |
 | log | log_hygiene.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
 | markov | markov_eval.py | UNCITED | — | — | — | — |
 | markov | markov_prior.py | UNCITED | — | — | — | — |
@@ -509,7 +509,7 @@ Census: UNCITED 205, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | plot | plot_neurons.py | UNCITED | — | — | — | — |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | render | render_hero_neurons.py | UNCITED | — | — | — | 1 |
-| results | results_query.py | spec-cited | specs | specs×14 | — | 2 |
+| results | results_query.py | results-cited | RESULTS, specs | RESULTS×1, specs×15 | — | 2 |
 | rjob | rjob.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | sol | sol_enrich_results.py | library | specs | specs×4 | 1 | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — |

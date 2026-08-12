@@ -1907,12 +1907,6 @@ MOE-GT-2 arm D3: CODE arm-0 — decode-only demand log on the codegen ladder (pr
 MOE-GT-2 coalition Jaccard analysis (D2/D3 readouts, committed post-hoc so the booked numbers are re-derivable — they were desk computations in-session on 2026-08-04).
 
 - `_traj()` — TRAJ log paths, env-overridable per domain (TRAJ_MATH etc.).
-- `_frac(frac=None)`
-- `_flag(name, default, value=None)`
-- `decode_counts(path, pred=lambda r: True, gate_only=None, drop_tail=None)` — DROP_TAIL=1 (default) drops the FIRST decode-phase row per
-- `keep(counts, n=128, top_k=8, frac=None)`
-- `jmean(ka, kb)`
-- `coverage(demand, kp)` — Count-weighted fraction of `demand` routed inside keep-set kp.
 - `main()`
 
 ### scratch/gt3_probe_arm0.py
@@ -3195,7 +3189,7 @@ lab.jsonl — one jsonl read/write semantics (grok-seat cross-check adoption, 20
 - `append_jsonl(path: str | Path, row) -> None` — One row, appended and flushed — the streaming shape for
 
 ### llmopt/lab/keepsets.py
-lab.keepsets — keep-set / coalition algebra, ADOPTED VERBATIM from scratch/gt2_jaccard.py (2026-08-06; that file stays frozen — the GT2-REVIEW-2 booked numbers cite it as the re-derivation authority). Function bodies are character-identical to the source; guarded by tests/test_lab_keepsets.py (source identity + synthetic battery + env-gated full acceptance against the booked stats and the byte-frozen checkpoints/gt2_*_arm0_decode.json dumps).
+lab.keepsets — keep-set / coalition algebra. CANONICAL BODY since 2026-08-12 (Phase 3 module 1); scratch/gt2_jaccard.py is a re-export shim over these symbols and keeps only its CLI. Originally adopted verbatim from that file 2026-08-06. Guarded by tests/test_lab_keepsets.py (shim identity + synthetic battery + full acceptance against the booked stats and the byte-frozen checkpoints/gt2_*_arm0_decode.json dumps).
 
 - `_frac(frac=None)`
 - `_flag(name, default, value=None)`

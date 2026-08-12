@@ -1,10 +1,10 @@
-"""lab.keepsets — keep-set / coalition algebra, ADOPTED VERBATIM from
-scratch/gt2_jaccard.py (2026-08-06; that file stays frozen — the
-GT2-REVIEW-2 booked numbers cite it as the re-derivation authority).
-Function bodies are character-identical to the source; guarded by
-tests/test_lab_keepsets.py (source identity + synthetic battery +
-env-gated full acceptance against the booked stats and the
-byte-frozen checkpoints/gt2_*_arm0_decode.json dumps).
+"""lab.keepsets — keep-set / coalition algebra. CANONICAL BODY since
+2026-08-12 (Phase 3 module 1); scratch/gt2_jaccard.py is a re-export
+shim over these symbols and keeps only its CLI. Originally adopted
+verbatim from that file 2026-08-06. Guarded by
+tests/test_lab_keepsets.py (shim identity + synthetic battery +
+full acceptance against the booked stats and the byte-frozen
+checkpoints/gt2_*_arm0_decode.json dumps).
 
 REGENERATION-SENSITIVE (the extraction spec's warning): the DROP_TAIL
 first-row rule, GATE_ONLY filter, and the stable-sort tie-break at
