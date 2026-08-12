@@ -110,13 +110,13 @@ def fig_capacity_meter():
             ("d64h8 / L4d56 1.61", 1.61, 11, "~1x premium")]),
         ("MoE routed experts", C1, [
             ("DeepSeek-V3 L30 2.33", 2.33, -22, "premium unmeasured"),
-            ("OLMoE-1B-7B 2.85", 2.85, 11, "16x")]),
-        ("web-dense", C2, [
+            ("OLMoE-1B-7B 2.85", 2.85, 11, "16.3x")]),
+        ("dense / attention", C2, [
             ("OLMoE attn 3.11", 3.11, 11, "22x"),
             ("Qwen2.5-0.5B 3.62", 3.62, -22, "34x*"),
             ("SmolLM2-1.7B 3.85", 3.85, 11, None)]),
     ]
-    for x, txt in ((2.5, "sigma-law below ~2.5"), (3.5, "calibrated above ~3.5")):
+    for x, txt in ((2.0, "sigma-law below ~2 (C7-sharpened)"), (3.5, "calibrated above ~3.5")):
         ax.axvline(x, color=CHROME["light"]["axis"], lw=0.9, ls=(0, (4, 3)),
                    zorder=1)
         ax.text(x, 2.72, txt, fontsize=8.5, color=MUTED, ha="center")
@@ -148,7 +148,7 @@ def fig_capacity_meter():
 
 # --------------------------------------------------------------- fig 3
 # SNAP-ALLOC (L9664) d56 EMA baseline 63, Q=16 both 63; SNAP-ALLOC Q=8
-#   (L9692) both 56. SIGMA-PRICED SNAP (L9803) wfloor d256 comparator 65,
+#   (L9692) both 56. SLACK RESTORATION (L9780) wfloor d256 comparator 65,
 #   Q=64 both 65; Q=16 both 53 (SLACK RESTORATION arms, same entry).
 # VERDICT HARDENING-P2 (L22658) d256 n=3: Q=64 0/-1/0, Q=16 -12/-13/-9.
 # KNEE VERDICT (L7655) 19M control 49: Q=16 26, 24 45, 32 43, 48 47, 64 48;
