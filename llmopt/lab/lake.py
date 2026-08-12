@@ -32,7 +32,6 @@ key only, never a similarity axis. Function-space metrics or nothing.
 from __future__ import annotations
 
 import json
-import os
 from pathlib import Path
 
 import pyarrow as pa

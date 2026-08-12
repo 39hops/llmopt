@@ -11,14 +11,13 @@ import argparse
 import random
 import signal
 import statistics
-import time
 
 import sympy as sp
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from llmopt.mathgen.problems import _expression
-from llmopt.search.derivation import beam_search, hce
+from llmopt.search.derivation import beam_search
 from llmopt.search.proposer import entropy_k, hf_score_fn, make_proposer, \
     make_scoring_proposer
 from llmopt.train.lora import apply_lora

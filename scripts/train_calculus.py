@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from llmopt.mathgen.evaluate import SYSTEM, evaluate_model
+from llmopt.mathgen.evaluate import evaluate_model
 from llmopt.mathgen.problems import make_dataset
 from llmopt.train.lora import apply_lora
 

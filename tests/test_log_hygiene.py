@@ -9,7 +9,6 @@ import os
 import time
 from pathlib import Path
 
-import pytest
 
 SPEC = importlib.util.spec_from_file_location(
     "log_hygiene",

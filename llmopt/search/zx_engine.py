@@ -18,7 +18,6 @@ from __future__ import annotations
 import heapq
 import itertools
 from dataclasses import dataclass, field
-from fractions import Fraction
 
 import pyzx as zx
 from pyzx import optimize

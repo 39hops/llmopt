@@ -45,7 +45,6 @@ def yarn_inv_freq(
     """Per-frequency interpolation (YaRN). A frequency completing more
     than beta_fast rotations over the trained window is untouched;
     fewer than beta_slow gets full PI; a linear ramp interpolates."""
-    import torch
 
     rotations = inv_freq * orig_max_pos / (2 * math.pi)
     t = (rotations - beta_slow) / (beta_fast - beta_slow)

@@ -38,7 +38,6 @@ def iid_proposer(seed: str):
 def golden_proposer(seed: str, i: int):
     """One fixed base shuffle per problem; restart i rotates it by the
     golden-angle stride — deterministic, maximally-spread orderings."""
-    rng = random.Random(seed)  # same base across restarts of a problem
 
     def prop(state, children):
         children = list(children)

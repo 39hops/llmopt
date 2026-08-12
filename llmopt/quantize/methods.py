@@ -55,7 +55,6 @@ def gptq(w, hessian, bits: int, damp: float = 0.01):
 def awq(w, x, bits: int, grid: int = 20):
     """AWQ: per-in-channel scale search. x: [n, in] calibration
     activations. Returns (w_fake_quant, scales)."""
-    import torch
 
     act = x.abs().mean(0).clamp(min=1e-8)  # per-in-channel magnitude
     best, best_loss, best_s = None, float("inf"), None

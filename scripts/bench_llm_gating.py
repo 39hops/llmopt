@@ -18,7 +18,6 @@ import argparse
 import multiprocessing as mp
 import signal
 import sys
-import time
 
 import sympy as sp
 import torch

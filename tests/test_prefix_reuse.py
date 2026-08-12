@@ -118,7 +118,7 @@ def test_shared_prefix_diverging_suffix_exact(model):
     p1 = PROMPT
     p2 = PROMPT[:6] + [101, 102, 103]
     engine = _engine(model, max_batch=2, chunk_size=4)
-    r1 = engine.submit(p1, max_new_tokens=n)
+    engine.submit(p1, max_new_tokens=n)
     engine.run()
     r2 = engine.submit(p2, max_new_tokens=n)
     results = engine.run()

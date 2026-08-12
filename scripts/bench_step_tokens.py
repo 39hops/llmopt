@@ -22,7 +22,6 @@ from __future__ import annotations
 
 import argparse
 import multiprocessing as mp
-import time
 
 import torch
 
@@ -380,7 +379,7 @@ def main(n: int, seed_base: int, budget: int,
     import sympy as sp
     tok, model = load(adapter)
     res = {"one_shot": 0, "steps": 0, "steps_chained": 0}
-    parse_ok = step_ok = step_tries = 0
+    step_ok = step_tries = 0
     for i in range(n):
         lv = 2 + i % 2                      # L2/L3: format probe first
         p = _gen_isolated(lv, seed_base + i)

@@ -19,7 +19,7 @@ from pathlib import Path
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from llmopt.lab.figsvg import DATA, load, render  # noqa: E402
+from llmopt.lab.figsvg import DATA, render  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "assets" / "web"

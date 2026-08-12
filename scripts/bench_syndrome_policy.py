@@ -11,11 +11,9 @@ plies 24, budget 200, propose_k 3, verify_p 0.1, magic prune on.
 from __future__ import annotations
 
 import argparse
-import json
 import multiprocessing as mp
 import signal
 import time
-from pathlib import Path
 
 import sympy as sp
 import torch

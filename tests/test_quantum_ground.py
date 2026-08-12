@@ -1,6 +1,5 @@
 """Variational ground-state engine vs exact diagonalization."""
 import numpy as np
-import pytest
 
 from llmopt.quantum.ground import (ansatz_state, build_tfim, energy,
                                    exact_ground, param_shift_grad)

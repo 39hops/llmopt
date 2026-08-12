@@ -37,8 +37,13 @@ jobs:
           # and pyproject asks for torch>=2.4 which would pull the CUDA
           # build over the top of them
           pip install -e . --no-deps
+          pip install ruff
       - name: pytest
         run: pytest tests/ -q
+      - name: lint (enforced tier)
+        run: ruff check llmopt tests scripts
+      - name: lint (scratch, report only)
+        run: ruff check scratch --exit-zero
 
   generated-docs-are-current:
     # INDEX.md and CODEMAP.md are GENERATED. A stale one is a silent

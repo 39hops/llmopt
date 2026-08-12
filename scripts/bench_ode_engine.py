@@ -53,7 +53,6 @@ def _engine_worker(kind: str, level: int, seed: int, q: "mp.Queue") -> None:
     cand = None
     lhs = (eq.lhs - eq.rhs).expand()
     dy = sp.Derivative(y(x), x)
-    d2y = sp.Derivative(y(x), x, 2)
     if kind == "separable":
         # lhs = y' - f(x)*y  -> f = -coeff of y
         f = -sp.simplify(lhs.coeff(y(x)))

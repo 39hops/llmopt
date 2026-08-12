@@ -391,7 +391,6 @@ def _ode_chain_worker(kind: str, seed: int, q: "mp.Queue") -> None:
     pairs = []
     prompt0 = f"SolveODE: {sp.sstr(eq)}"
     if kind == "cc2":
-        d2y = sp.Derivative(y(x), x, 2)
         a = sp.simplify(lhs.coeff(dy))
         b = sp.simplify(lhs.coeff(y(x)))
         r = sp.Symbol("r")

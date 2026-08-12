@@ -12,7 +12,6 @@ import itertools
 import json
 import random
 import signal
-from collections import Counter, defaultdict
 
 import sympy as sp
 

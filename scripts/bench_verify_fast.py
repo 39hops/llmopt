@@ -180,7 +180,6 @@ def main() -> None:
           f"-> {t_old / max(t_new, 1e-9):.1f}x")
     print(f"accept flips (unsound if >0): {flips_accept}")
     print(f"reject flips (conservative-ok, report): {flips_reject}")
-    n = len(battery)
     print(f"bar: 0 accept flips AND speedup > 2x -> "
           f"{'SHIP' if flips_accept == 0 and t_old > 2 * t_new else 'NO SHIP'}")
 

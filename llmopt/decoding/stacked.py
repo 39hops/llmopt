@@ -86,7 +86,6 @@ class StackedEngine:
 
         # store this prompt's KV for future requests (uncached suffix only)
         layers = backend.cache.layers
-        n = len(prompt_ids)
         self.prefix_cache.insert(
             prompt_ids,
             lambda s, e: [

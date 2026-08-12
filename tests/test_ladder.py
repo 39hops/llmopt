@@ -47,7 +47,6 @@ def test_decode_scored_by_assembling_not_text():
 
 def test_mangle_scored_by_demangling():
     from llmopt.codegen.ladder import _mangle_task
-    from llmopt.codegen.llvm import mangle
 
     t = _mangle_task(1, 3)
     assert t is not None and t.check(t.target)

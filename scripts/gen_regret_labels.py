@@ -28,7 +28,7 @@ sys.path.insert(0, "scripts")
 
 from llmopt.mathgen.problems import make_integrate
 from llmopt.search.derivation import beam_search
-from llmopt.search.engine import MarkovPrior, solve
+from llmopt.search.engine import solve
 from llmopt.search.features import featurize
 from llmopt.search.magic import is_dead
 from llmopt.search.rules import INT_RULES

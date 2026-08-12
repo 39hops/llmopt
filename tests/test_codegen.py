@@ -2,7 +2,7 @@
 
 import pytest
 
-from llmopt.codegen.generator import ALL_KINDS, make_arith, make_programs
+from llmopt.codegen.generator import ALL_KINDS, make_programs
 from llmopt.codegen.oracle import compile_c, msvc_available
 
 pytestmark = pytest.mark.skipif(not msvc_available(), reason="MSVC not found")

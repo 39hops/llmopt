@@ -22,7 +22,6 @@ from pathlib import Path
 import mlx.core as mx
 import mlx.nn as nn
 import mlx.optimizers as optim
-from mlx.utils import tree_flatten
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 

@@ -1,6 +1,5 @@
 """Complex-coefficient calculus kinds (spec: mathgen-expansion Part A)."""
 
-import random
 
 import sympy as sp
 

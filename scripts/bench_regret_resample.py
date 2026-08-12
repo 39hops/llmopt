@@ -22,7 +22,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import signal as _signal
 from pathlib import Path
 
 import torch
@@ -162,7 +161,6 @@ def phase_labels(n_problems: int, k: int, seed_base: int,
                  out: Path) -> None:
     import sympy as sp  # noqa: F401  (Problem.check needs sympy env)
 
-    from llmopt.mathgen.problems import make_integrate
     tok, model = load_model()
     n_rows = 0
     with out.open("w") as f:
@@ -227,7 +225,6 @@ def phase_probe(labels: Path, epochs: int) -> None:
 
 def phase_race(n_problems: int, k: int, seed_base: int,
                thresh: float) -> None:
-    from llmopt.mathgen.problems import make_integrate
     tok, model = load_model()
     p_ = torch.load(PROBE, weights_only=False)
     net = torch.nn.Sequential(
@@ -309,7 +306,6 @@ def phase_pool(n_problems: int, seed_base: int, pool: int,
     the router playbook (raw signal -> offline threshold sweep -> only
     then a live race). Round 1's naive 0.15@ckpt-8 policy lost 78 vs
     100 precisely because it skipped this step."""
-    from llmopt.mathgen.problems import make_integrate
     tok, model = load_model()
     p_ = torch.load(PROBE, weights_only=False)
     net = torch.nn.Sequential(

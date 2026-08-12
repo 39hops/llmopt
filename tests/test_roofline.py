@@ -8,7 +8,6 @@ torch = pytest.importorskip("torch")
 
 from llmopt.eval.roofline import (
     A100_80G,
-    Hardware,
     ModelShape,
     op_costs,
     profile_op_times,

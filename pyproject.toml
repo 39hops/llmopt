@@ -67,3 +67,45 @@ llmopt = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 79
+target-version = "py311"
+
+[tool.ruff.lint]
+# Narrow on purpose: dead imports/names only. Style rules wait.
+select = ["F401", "F821", "F841"]
+
+[tool.ruff.lint.per-file-ignores]
+"scratch/*" = ["ALL"]
+# Lazy-import re-export pattern (import llmopt.<pkg> costs nothing;
+# torch/sympy load only when a name is used). The `if TYPE_CHECKING:`
+# block exists only so static type checkers can see through
+# `__getattr__` — the names are never used at runtime in the file
+# itself, so F401 is a false positive on this architecture, not a
+# dead import.
+"llmopt/backends/__init__.py" = ["F401"]
+"llmopt/cache/__init__.py" = ["F401"]
+"llmopt/codegen/__init__.py" = ["F401"]
+"llmopt/context/__init__.py" = ["F401"]
+"llmopt/decoding/__init__.py" = ["F401"]
+"llmopt/distill/__init__.py" = ["F401"]
+"llmopt/eval/__init__.py" = ["F401"]
+"llmopt/internals/__init__.py" = ["F401"]
+"llmopt/kernels/__init__.py" = ["F401"]
+"llmopt/mathgen/__init__.py" = ["F401"]
+"llmopt/moe/__init__.py" = ["F401"]
+"llmopt/quantize/__init__.py" = ["F401"]
+"llmopt/quantum/__init__.py" = ["F401"]
+"llmopt/search/__init__.py" = ["F401"]
+"llmopt/train/__init__.py" = ["F401"]
+"llmopt/weightspace/__init__.py" = ["F401"]
+# scripts/ frozen evidence files (docs/CODEMAP.md class: results-cited)
+# — never edit their bodies, not even a noqa comment.
+"scripts/bench_budget_alloc.py" = ["F401"]
+"scripts/bench_hints_ab.py" = ["F401"]
+"scripts/bench_weight_anatomy.py" = ["F401"]
+"scripts/train_value_head.py" = ["F401"]
+# Vendored (tests/test_vendor_axiom.py enforces byte-identity against
+# the sibling axiom repo checkout) — body is not ours to edit.
+"llmopt/vendor/axiom/classify_sample.py" = ["F841"]

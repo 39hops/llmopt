@@ -23,7 +23,10 @@ away, the mask is the whole trick):
 
 from __future__ import annotations
 
-from typing import Sequence
+from typing import TYPE_CHECKING, Sequence
+
+if TYPE_CHECKING:  # let type checkers see through the lazy import
+    import torch
 
 
 def add_gist_tokens(model, tokenizer, k: int = 1) -> list[int]:
