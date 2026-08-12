@@ -27429,3 +27429,46 @@ pipeline; trainer strict-encode may drop slightly different row
 counts per grade after the nxt shuffle (counts printed in
 diets.log, receipt); 17:00 window — cells stream, whatever lands
 books, the rest books NOT-RUN.
+
+## PRE-REG SOFT-PROMPT-1: is there capability behind the tokenizer? Learned continuous prefix v the discrete alphabet (2026-08-11 night, 3080, chained after METALLICITY-1)
+
+Artin's optimal-input-vector ask: the model's input does not have to
+be text. If a learned continuous prefix raises the standard gate on
+a frozen model, capability exists that the tokenizer's alphabet
+cannot elicit.
+
+INSTRUMENT: scratch/softprompt1.py on scratch/softprompt1.sh
+(3080, fires on METALLICITY-1's DONE marker). Target: the
+freshly-born metal_z3_d64 (verified-grade micro-star). Mechanism:
+P=8 VIRTUAL TOKENS — the embedding gains 8 trainable rows (ids
+V..V+7), every original weight frozen (grad hook zeroes rows [:V]);
+output logits for virtual ids clamped -1e9 so decode can never emit
+them; gate prompts get the 8 ids prepended via a tok.encode wrap —
+everything downstream is the stock gate_eval. Prefix trained 600
+Adam steps, CE on the model's own diet (z3), lr 3e-3. Smoked on CPU
+(mask, grads, CE falls).
+
+CELLS: plain gate / random-prefix gate (untrained rows — mechanism
+perturbation control) / trained-prefix gate. Same ckpt, same device,
+same gate.
+
+BARS:
+1. P-FREE-CAPABILITY: trained-prefix total >= plain total + 8
+   (clears the 7-solve resolution floor).
+2. P-MECHANISM-CLEAN (control): |random-prefix - plain| <= 7. If the
+   untrained prefix alone moves the gate past sigma, the mechanism
+   perturbs and bar 1 is unreadable — books INSTRUMENT-INVALID.
+
+REFUTED-IF: trained-prefix <= plain + 7 — no free capability at this
+scale/recipe; books as a null.
+
+REGISTERED PRIOR: house predicts NO-FIRE (trained within +7 of
+plain). The diet is closed and the model was born on it; the prefix
+can only re-weight what training already saw. A fire would be the
+surprising outcome — which is why it is worth one cheap rung.
+
+FENCES: one device (3080), one ckpt, single seed everything; P=8 and
+600 steps are the registered budget (no reward-hacking the budget
+after seeing data); prefix trains on diet CE, never on gate
+problems; z0-z3 diets and this rung share the METALLICITY-1 window —
+if the 17:00 wall kills the chain, books NOT-RUN.
