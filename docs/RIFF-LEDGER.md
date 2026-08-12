@@ -4014,3 +4014,27 @@ without re-introducing history).
   token (the FA Law rate), not currently first-class. Attribution:
   Artin (no-dust ask, fusion-as-efficiency), house (Pop III anchor,
   measured fences).
+
+- **BANKED (2026-08-11 late night): the division-algebra ladder as a
+  weight-alphabet axis — quaternion crystals as the unclimbed dim-4
+  rung** (Artin, chasing a remembered "closed system equation" through
+  {0,1,2,4,8,16}; house identified Hurwitz). The math: normed
+  division algebras exist ONLY at dims 1/2/4/8 (R, C, H, O —
+  Cayley-Dickson doubling; each step pays a law: ordering,
+  commutativity, associativity; dim 16 loses division itself). The
+  house already sits on the ladder's first two rungs MEASURED: real
+  crystals everywhere, and dim-2 via the cplx family (G5 POLAR
+  anisotropy break: rotation hurts only the star crystal), the
+  roots-of-unity Fourier probe, and the polar-v-Cartesian
+  quantization null (geometry-blind at matched bits). The rung this
+  banks: QUATERNION-WEIGHT crystals — weights as dim-4 hypercomplex
+  units, the Hamilton product replacing scalar mul — does
+  capability-per-param or the quantization knee move when the
+  alphabet loses commutativity? Published lineage exists (quaternion
+  NNs: Parcollet et al. 2018; Zhu et al. 2018), so a THEORY row is
+  reachable if a result lands. Fences to carry: the polar null says
+  GEOMETRY of the grid is free at matched bits — the quaternion
+  question must be about the MULTIPLICATION structure, not the
+  coordinate system, or it re-runs a booked null in disguise.
+  Attribution: Artin (ladder ask, QM-complex-plane thread), house
+  (Hurwitz identification, fence).
