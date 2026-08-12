@@ -104,20 +104,31 @@ def family(name: str) -> str:
     return stem.split("_", 1)[0] if "_" in stem else stem
 
 
-def code_refs(target: Path, code: dict[str, str]) -> list[str]:
-    """Files that import the module by name or embed its literal filename."""
+def code_refs(
+    target: Path, code: dict[str, str]
+) -> tuple[list[str], list[str]]:
+    """(importers, mention-only referrers) for the module.
+
+    A `.py` file counts as imported only by a real `import`/`from`
+    statement; anything else that embeds its literal filename (path
+    strings, shell invocations, comments) is a mention. `.sh` files
+    can only be mentioned, never imported.
+    """
     name = target.name
     mod = target.stem
     rel = str(target.relative_to(ROOT))
-    imp = re.compile(rf"^\s*(?:import\s+{re.escape(mod)}\b|from\s+{re.escape(mod)}\s+import)",
-                     re.MULTILINE)
-    hits = []
+    imp = re.compile(
+        rf"^\s*(?:import\s+{re.escape(mod)}\b"
+        rf"|from\s+{re.escape(mod)}\s+import)", re.MULTILINE)
+    imports, mentions = [], []
     for path, text in code.items():
         if path == rel:
             continue
-        if name in text or (target.suffix == ".py" and imp.search(text)):
-            hits.append(path)
-    return hits
+        if target.suffix == ".py" and imp.search(text):
+            imports.append(path)
+        elif name in text:
+            mentions.append(path)
+    return imports, mentions
 
 
 def doc_cites(name: str, docs: dict[str, dict[str, str]]) -> dict[str, int]:
@@ -129,8 +140,8 @@ def doc_cites(name: str, docs: dict[str, dict[str, str]]) -> dict[str, int]:
     return counts
 
 
-def classify(cites: dict[str, int], refs: list[str]) -> str:
-    if refs:
+def classify(cites: dict[str, int], imports: list[str]) -> str:
+    if imports:
         return "library"
     if cites.get("REPRODUCE"):
         return "reproduce-pinned"
@@ -150,16 +161,18 @@ def main() -> None:
     for base, pat in INVENTORY_GLOBS:
         for f in collect_files(base, pat):
             cites = doc_cites(f.name, docs)
-            refs = code_refs(f, code)
-            cls = classify(cites, refs)
+            imports, mentions = code_refs(f, code)
+            cls = classify(cites, imports)
             tallies[cls] += 1
             if cls == "library" and cites:
                 hidden += 1
             cite_s = ", ".join(f"{g}×{n}" for g, n in cites.items()) or "—"
             cited_by = ", ".join(cites.keys()) or "—"
-            ref_s = str(len(refs)) if refs else "—"
+            imp_s = str(len(imports)) if imports else "—"
+            men_s = str(len(mentions)) if mentions else "—"
             rows[base].append(
-                (family(f.name), f.name, cls, cited_by, cite_s, ref_s))
+                (family(f.name), f.name, cls, cited_by, cite_s,
+                 imp_s, men_s))
 
     lines = [
         "# CODEMAP — the move-gate inventory (generated, do not hand-edit)",
@@ -168,9 +181,12 @@ def main() -> None:
         "top-level file in scratch/ and scripts/. Class ladder (mechanical):",
         "library > reproduce-pinned > results-cited > spec-cited > UNCITED.",
         "House law: cited files are the evidence record — extraction means",
-        "adoption-with-reverification, never a silent move. `refs` counts",
-        "code files that import the module OR embed its literal filename",
-        "(catches path couplings like llmopt/reproduce.py → detbwd_gravmoe).",
+        "adoption-with-reverification, never a silent move. `imports`",
+        "counts code files with a real `import`/`from` statement on the",
+        "module (drives `library`); `mentions` counts files that only",
+        "embed its literal filename (path strings, shell invocations —",
+        "catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but",
+        "does not by itself make a file `library`).",
         "",
         "Census: " + ", ".join(f"{k} {v}" for k, v in sorted(tallies.items()))
         + f", cited-but-library {hidden}",
@@ -179,12 +195,13 @@ def main() -> None:
     for base in ("scratch", "scripts"):
         lines += [f"## {base}/", "",
                   "| family | file | class | cited by | doc citations"
-                  " | refs |",
-                  "|---|---|---|---|---|---|"]
-        for fam, name, cls, cited_by, cite_s, ref_s in sorted(rows[base]):
+                  " | imports | mentions |",
+                  "|---|---|---|---|---|---|---|"]
+        for fam, name, cls, cited_by, cite_s, imp_s, men_s \
+                in sorted(rows[base]):
             lines.append(
                 f"| {fam} | {name} | {cls} | {cited_by} | {cite_s}"
-                f" | {ref_s} |")
+                f" | {imp_s} | {men_s} |")
         lines.append("")
     OUT.write_text("\n".join(lines))
     print(f"[codemap] wrote {OUT.relative_to(ROOT)}: "
