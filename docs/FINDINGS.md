@@ -1582,11 +1582,19 @@ regime tag on every bullet is the fence.
   narrowing the growth premium to a few solves — under the resolution floor
   at one seed, so the premium is neither confirmed nor refuted by this cell.
   ([VERDICT GROW-DECOMP-1](RESULTS.md#L27494).)
-- [SINGLE-SEED] [DEVICE-SCOPED] [REGIME-SCOPED: specified diet and recipe]
-  A virtual-token harness that rebuilds a model at a widened vocabulary
-  and copies the original rows changed the gate reading with no prefix
-  present, while the gate itself reproduced exactly on the stock
-  checkpoint at an identical in-process weights hash. A harness that
-  claims to be a no-op has to be shown to be one, cell for cell, before
-  any treatment cell it produces can be read.
-  ([VERDICT SOFT-PROMPT-1](RESULTS.md#L27633).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: specified diet and recipe]
+  Widening the logit vector changes sampled gate numbers even when the
+  model is bit-identical. A virtual-token harness rebuilt at a wider
+  vocabulary reproduced the stock model exactly — zero logit difference,
+  identical argmax, every copied tensor equal — and still gated
+  differently with no prefix present. The cause is the sampler, not the
+  model: the eight appended zero-probability columns leave the
+  distribution untouched but change how many random values the
+  multinomial draw consumes, so one generator reused down a rollout
+  desynchronizes from the second token onward. Single draws from a fresh
+  generator agree in all 200 seeds tested; sequential draws do not.
+  Neither a weights hash nor a logit comparison detects this, so gate
+  numbers are comparable only across runs whose sampler saw the same
+  number of categories.
+  ([VERDICT SOFT-PROMPT-1](RESULTS.md#L27633);
+  [AMENDMENT SOFT-PROMPT-1-SAMPLER](RESULTS.md#L27693).)

@@ -4086,8 +4086,15 @@ without re-introducing history).
   ids; the same checkpoint reads 14/120 stock (reproduced twice, same
   in-process sha) and 10/120 inside the harness. The gate itself is
   deterministic given weights, so this is the harness, not noise.
-  The riff is UNTESTED, not refuted — nothing here speaks to whether
-  continuous inputs carry reachable capability. Precondition for any
-  re-run: the V+P harness must reproduce the stock gate dict cell for
-  cell before a single prefix number is read. Attribution: Artin
-  (the ask), house (mechanism, and the control that caught it).
+  DIAGNOSED same night (AMENDMENT SOFT-PROMPT-1-SAMPLER): the model is
+  bit-exact and the defect is in the SAMPLER — the eight appended
+  zero-probability logit columns leave the distribution identical but
+  change how many random values torch's multinomial consumes, so a
+  generator reused down a rollout desynchronizes from the second token
+  on. The riff is UNTESTED, not refuted — nothing here speaks to
+  whether continuous inputs carry reachable capability. A re-run needs
+  the head sliced to V categories on the gate path (masking gets the
+  probabilities right and the random stream wrong), plus the booked
+  precondition: reproduce the stock gate dict cell for cell before a
+  single prefix number is read. Attribution: Artin (the ask), house
+  (mechanism, the control that caught it, and the diagnosis).

@@ -27689,3 +27689,62 @@ throughout; P=8 and 600 steps were the registered budget and were not
 altered after seeing data; the prefix trained on diet CE only, never
 on gate problems; the 17:00 window did not bind (the rung completed
 in minutes).
+
+## AMENDMENT SOFT-PROMPT-1-SAMPLER: the harness defect is DIAGNOSED and it is not the model — a widened logit vector desynchronizes the sampler's random stream (2026-08-12 early, Mac)
+
+Amends: VERDICT SOFT-PROMPT-1, which named three candidate defects
+and asserted none. One is now measured; the other two are cleared.
+
+CLEARED — the forward is bit-exact. Rebuilding at vocab V+P and
+copying rows [:V] is a true no-op on ordinary ids. Probe: build a
+stock model, save it, run it back through with_virtual_tokens, and
+compare. max |stock - big[:V]| = 0.0 across all positions, argmax
+identical at every position, virtual logits pinned at -1e9, and all
+59 state-dict tensors compare equal on their copied rows. emb and
+head are NOT tied, so the row-copy candidate is dead, and the
+head.forward monkey-patch candidate is dead with it — the patch does
+exactly what it claims.
+
+MEASURED — the defect is in the sampler, at
+scripts/step_grpo_micro.py:65, `torch.multinomial(probs[b], 1,
+generator=gens[b])`. In the harness `probs` has 48 entries instead of
+40, the extra 8 being exact zeros (exp of -1e9/0.7 underflows to 0),
+so the DISTRIBUTION over real tokens is identical to the last bit.
+The SAMPLE is not, because torch's CPU multinomial consumes a number
+of random values that depends on the category count:
+  - a single draw from a FRESH generator agrees: 0 mismatches in 200
+    seeds, 40-way v 48-way;
+  - SEQUENTIAL draws from ONE generator diverge at the second draw
+    (seed 7: 40-way [13, 32, 32, ...] v 48-way [13, 26, 32, ...]).
+sample_wave_lp reuses one generator per rollout for up to max_new=120
+tokens, so trajectories separate almost immediately. Same
+distribution, different alignment of the random stream.
+
+This closes the 14-v-10 gap booked in the verdict without appealing
+to noise: the gate is deterministic given weights (14/120 reproduced
+twice at sha f914fcdb75f8fc9d), the model is bit-identical, and the
+readings still differ — because the two runs sampled different
+trajectories from the same distribution. The verdict's
+INSTRUMENT-INVALID standing is UNCHANGED and correct; what changes is
+that the cause is no longer a list of candidates.
+
+THE FIX A RE-RUN MUST CARRY: the sampler has to see exactly V
+categories. Slice the head output to [..., :V] on the gate path
+rather than masking the virtual columns to -1e9 — masking makes the
+probabilities right and the random stream wrong. CE training is
+unaffected by the slice, since every label is an ordinary id. The
+re-run precondition booked in the verdict stands as the check that
+the fix worked: reproduce the stock gate dict cell for cell before
+reading any prefix number.
+NOT APPLIED HERE. scratch/softprompt1.py is cited by VERDICT
+SOFT-PROMPT-1 and is frozen as the evidence record; the fix belongs
+to whatever driver a re-registration ships.
+
+SCOPE — this is bigger than one rung. Any change to the width of the
+logit vector makes gate numbers incomparable even when the model is
+functionally identical: padded vocabularies, added special tokens,
+reserved slots. The weights sha does not catch it (the two runs here
+have honestly different shas) and neither does a logit comparison
+(they agree exactly). Gate numbers are comparable only across runs
+whose sampler saw the same number of categories. Registered as a
+house fence for any instrument that samples.

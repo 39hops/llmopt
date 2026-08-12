@@ -2660,6 +2660,13 @@ SOFT-PROMPT-1: is there capability behind the tokenizer?
 - `gate_with_prefix(model, tok, dev, prefix_ids)` — The standard 120 gate, prompts prefixed with the virtual ids.
 - `main() -> None`
 
+### scratch/softprompt_sampler_probe.py
+Why a bit-identical model gates differently behind the virtual-token harness (AMENDMENT SOFT-PROMPT-1-SAMPLER).
+
+- `_load_softprompt()`
+- `part1_model() -> None`
+- `part2_sampler(n_seeds: int=200, rollout: int=30) -> None`
+
 ### scratch/soup_gate.py
 Night-28b soup instrument: plain parameter mean of N checkpoints (same shape), then gate. Usage:   soup_gate.py TAG d layers ffn heads ckpt1 ckpt2 [ckpt3 ...] VOCAB_EXTRA rides (atom order must match the births).
 

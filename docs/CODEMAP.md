@@ -313,7 +313,7 @@ Census: UNCITED 167, library 166, reproduce-pinned 9, results-cited 125, spec-ci
 | series | series_probe.py | library | — | 13 |
 | snap | snap_alloc.py | library | specs×2 | 1 |
 | snap | snap_anatomy.py | results-cited | RESULTS×1 | — |
-| softprompt1 | softprompt1.py | library | RESULTS×2 | 1 |
+| softprompt1 | softprompt1.py | library | RESULTS×4 | 1 |
 | softprompt1 | softprompt1.sh | results-cited | RESULTS×1 | — |
 | soup | soup_gate.py | library | specs×1 | 1 |
 | ssm | ssm_star.py | library | RESULTS×1 | 2 |
@@ -507,7 +507,7 @@ Census: UNCITED 167, library 166, reproduce-pinned 9, results-cited 125, spec-ci
 | sol | sol_enrich_results.py | library | specs×4 | 1 |
 | sol | sol_generate_tables.py | spec-cited | specs×3 | — |
 | step | step_grpo.py | spec-cited | specs×1 | — |
-| step | step_grpo_micro.py | library | RESULTS×2, specs×1 | 95 |
+| step | step_grpo_micro.py | library | RESULTS×5, specs×1 | 95 |
 | sweep | sweep_lookup.py | library | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — |
