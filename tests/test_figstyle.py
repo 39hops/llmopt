@@ -121,7 +121,7 @@ def test_published_figures_render_both_modes():
     from llmopt.lab import figsvg
     names = [k for k in json.loads(figsvg.DATA.read_text())
              if not k.startswith("_")]
-    assert names, "data/figures.json has no figures"
+    assert names, "docs/figures.json has no figures"
     for name in names:
         for mode in ("light", "dark"):
             svg = figsvg.render(name, mode=mode)

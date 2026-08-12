@@ -94,9 +94,9 @@ def test_full_acceptance_booked_stats_and_dump_bytes(tmp_path):
     """~15s measured on the Mac (2026-08-06 first pass: all booked
     stats + all three dumps byte-identical); skips where the TRAJ
     artifacts are absent."""
+    from conftest import artifact_or_skip
     for p in TRAJ.values():
-        if not (ROOT / p).exists():
-            pytest.skip(f"TRAJ artifact missing: {p}")
+        artifact_or_skip((ROOT / p).exists(), f"TRAJ artifact missing: {p}")
     counts = {d: keepsets.decode_counts(ROOT / p, gate_only=True,
                                         drop_tail=True)
               for d, p in TRAJ.items()}
@@ -117,8 +117,7 @@ def test_full_acceptance_booked_stats_and_dump_bytes(tmp_path):
     # logs the D4/PHYS-B/cross arms consumed (frozen in checkpoints/)
     for d, p in TRAJ.items():
         ref = ROOT / f"checkpoints/gt2_{d}_arm0_decode.json"
-        if not ref.exists():
-            pytest.skip(f"frozen dump missing: {ref}")
+        artifact_or_skip(ref.exists(), f"frozen dump missing: {ref}")
         c = keepsets.decode_counts(ROOT / p, gate_only=True,
                                    drop_tail=False)
         out = tmp_path / f"{d}.json"

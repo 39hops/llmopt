@@ -18,7 +18,7 @@ import pytest
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VENDOR = os.path.join(REPO, "llmopt", "vendor", "axiom")
-AXIOM = os.environ.get("AXIOM_CHECKOUT", "/Users/artin/code/axiom")
+AXIOM = os.environ.get("AXIOM_CHECKOUT", "")
 HEADER_LINES = 3
 
 PAIRS = [
@@ -30,9 +30,11 @@ PAIRS = [
 
 @pytest.mark.parametrize("vend,up", PAIRS)
 def test_source_identity(vend, up):
+    from conftest import artifact_or_skip
+    artifact_or_skip(bool(AXIOM) and os.path.isdir(AXIOM),
+                     "axiom checkout absent (set AXIOM_CHECKOUT)")
     upstream = os.path.join(AXIOM, up)
-    if not os.path.exists(upstream):
-        pytest.skip("axiom checkout absent")
+    artifact_or_skip(os.path.exists(upstream), f"upstream absent: {up}")
     with open(os.path.join(VENDOR, vend), "rb") as f:
         body = b"".join(f.readlines()[HEADER_LINES:])
     with open(upstream, "rb") as f:
@@ -69,8 +71,9 @@ def _parse_axnn(path):
 
 def test_axnn_roundtrip_real_fixture():
     path = os.path.join(REPO, "data", "scorer_s2_dist.axnn")
-    if not os.path.exists(path):
-        pytest.skip("data/scorer_s2_dist.axnn absent (untracked 33MB)")
+    from conftest import artifact_or_skip
+    artifact_or_skip(os.path.exists(path),
+                     "data/scorer_s2_dist.axnn absent (untracked 33MB)")
     magic, version, cfg, tensors = _parse_axnn(path)
     assert magic == b"AXNN"
     assert version == 1
