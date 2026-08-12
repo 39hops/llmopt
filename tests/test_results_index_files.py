@@ -1,0 +1,25 @@
+"""tests/test_results_index_files.py"""
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+def test_extract_files_finds_repo_paths():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "gri", ROOT / "scripts" / "gen_results_index.py")
+    gri = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gri)
+    body = ("Driver: scratch/softprompt1.py wraps "
+            "scripts/step_grpo_micro.py; receipts in logs/x.log "
+            "and llmopt/lab/gate.py. Not a path: results.md")
+    assert gri.extract_files(body) == [
+        "llmopt/lab/gate.py",
+        "scratch/softprompt1.py",
+        "scripts/step_grpo_micro.py",
+    ]
+
+def test_every_index_row_has_files_key():
+    rows = [json.loads(l) for l in
+            (ROOT / "docs" / "results-index.jsonl").open()]
+    assert all("files" in r for r in rows)

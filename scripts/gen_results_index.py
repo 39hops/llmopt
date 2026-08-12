@@ -66,17 +66,34 @@ def infer_threads(title):
     return out[:3]
 
 
+FILE_RE = re.compile(
+    r"\b((?:scratch|scripts|llmopt)/[\w./-]+\.(?:py|sh))\b")
+
+
+def extract_files(body: str) -> list[str]:
+    """Sorted unique repo paths cited in an entry body."""
+    return sorted(set(FILE_RE.findall(body)))
+
+
 old = {}
 if DST.exists():
     for line in DST.read_text().splitlines():
         e = json.loads(line)
         old[e["id"]] = e
 
+lines = SRC.read_text().splitlines()
+header_lines = [
+    ln for ln, line in enumerate(lines, 1)
+    if line.startswith("## ") and not line.startswith("## Contents")
+]
+
 entries = []
 seen = set()
-for ln, line in enumerate(SRC.read_text().splitlines(), 1):
-    if not line.startswith("## ") or line.startswith("## Contents"):
-        continue
+for idx, ln in enumerate(header_lines):
+    line = lines[ln - 1]
+    body_end = (header_lines[idx + 1] - 1
+                if idx + 1 < len(header_lines) else len(lines))
+    body = "\n".join(lines[ln:body_end])
     title = line[3:].strip()
     m = (re.search(r"\((\d{4}-\d{2}-\d{2})", title)
         or re.search(r";\s*(\d{4}-\d{2}-\d{2})", title))
@@ -91,6 +108,7 @@ for ln, line in enumerate(SRC.read_text().splitlines(), 1):
     if t == "amendment":
         e["needs_link"] = True
     e["threads"] = infer_threads(title)
+    e["files"] = extract_files(body)
     prev = old.get(eid, {})
     for k in ("threads", "verdict", "amends", "superseded_by", "links"):
         if k in prev:
