@@ -79,13 +79,19 @@ Apple-silicon kernels, `[lake]` for Parquet/DuckDB queries, `[triton]`
 for the CUDA kernels. Torch is imported lazily inside functions
 throughout, so importing this package is cheap.
 """
-from llmopt.cache.radix import RadixCache
-from llmopt.decoding.prompt_lookup import find_ngram_continuation
-from llmopt.quantize.allocator import allocate_bits, pareto_front
+_LAZY = {
+    "RadixCache": "llmopt.cache.radix",
+    "find_ngram_continuation": "llmopt.decoding.prompt_lookup",
+    "allocate_bits": "llmopt.quantize.allocator",
+    "pareto_front": "llmopt.quantize.allocator",
+}
 
-__all__ = [
-    "find_ngram_continuation",
-    "RadixCache",
-    "allocate_bits",
-    "pareto_front",
-]
+__all__ = sorted(_LAZY)
+
+
+def __getattr__(name):
+    if name in _LAZY:
+        import importlib
+        mod = importlib.import_module(_LAZY[name])
+        return getattr(mod, name)
+    raise AttributeError(f"module 'llmopt' has no attribute {name!r}")
