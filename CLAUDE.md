@@ -157,6 +157,8 @@ earned it):
 | `/probe` | measurement-cost triage before any multi-hour run |
 | `/relay` | house -> axiom relay |
 | `/counterbook` | recompute axiom's numbers from their artifacts |
+| `/handoff` | session close: handoff file, BOARD repoint, suite, push |
+| `codemap-check` | (Claude-only) CODEMAP class before touching scratch/scripts |
 
 Read the skill before improvising a variant of it; where a skill
 and this file disagree, the skill is the more recently corrected of

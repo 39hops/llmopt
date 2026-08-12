@@ -487,6 +487,28 @@ This is an editing pass over five files, not a program phase. It should
 land early and cheaply, and the rule belongs in CLAUDE.md so it does not
 have to be re-derived.
 
+**Extended (Artin, 2026-08-12, later the same day) — full front-facing
+style.** The two rules above stand, and the following applies to all
+front-facing documentation, READMEs, project pages, and public posts:
+
+- Extremely concise and high-signal; every sentence earns its place.
+- No first-person pronouns (I, we, our, my).
+- No em-dashes or en-dashes; colons, periods, commas only.
+- Short paragraphs, 1-3 sentences.
+- Declarative and confident; results stated directly, no hedging, no
+  soft qualifiers, no marketing language.
+- Concrete numbers and precise claims over vague praise.
+- Strong, aphoristic titles when appropriate.
+- A clean, punchy closing observation when the topic allows.
+- Never explain the style or comment on the writing itself.
+
+Scope: this tightens rule 2 for README/REPRODUCE/project pages/posts
+(zero first person there). The paper keeps methodological academic
+register per rule 2 unless Artin says otherwise. Ledger register
+(RESULTS, FINDINGS bullets, handoffs, relays) is unchanged. Applies to
+new text forward; retroactive rewrites ride Phase 7b (generated README
+regions), not a standalone pass.
+
 ---
 
 ## 5c. Reconciliation with the external review

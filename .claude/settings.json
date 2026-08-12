@@ -11,6 +11,17 @@
             "statusMessage": "Classifying remote wsl.sh payload"
           }
         ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".venv/bin/python .claude/hooks/codemap_guard.py",
+            "timeout": 15,
+            "statusMessage": "Checking CODEMAP class"
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -19,7 +30,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; case \"$f\" in */docs/RESULTS.md) .venv/bin/python scripts/gen_results_index.py;; esac; } 2>/dev/null || true",
+            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; case \"$f\" in */docs/RESULTS.md) .venv/bin/python scripts/gen_results_index.py 2>/dev/null; .venv/bin/python .claude/hooks/findings_headroom.py;; esac; } || true",
             "timeout": 60,
             "statusMessage": "Regenerating results index"
           }
