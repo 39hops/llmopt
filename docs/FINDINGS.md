@@ -38,6 +38,172 @@ maturity tag. Retractions/nulls remain visible. Scope omission never broadens a 
   retaining SymPy as judge; this is a battery result, not a general CAS rank.
   ([The L6 evening](RESULTS.md#L1005); [L5 CLOSED at 100%; L7
   56/60](RESULTS.md#L1036).)
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] At n=1 held-out battery, four
+  days of measure-everything iteration moved the full stack from 265/360 to
+  360/360, with every step a named, measured component (search wisdom,
+  autopsy-derived operators, a 1835-era pruning theorem); the same
+  methodology speed-ran a second domain (T-count minimization) to an honest
+  greedy-wins null in one day. ([The one-paragraph
+  version](RESULTS.md#L55).)
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] At n=1 held-out battery, the
+  full stack (best-first frontier, NNUE eval, Markov ranking, entropy-gated
+  0.5B confidence, Liouville pruning) reached 356/360, with the sole holdout
+  budget-invariant across four budgets — a capability miss, not a search
+  miss. ([THE RECORD: 356/360](RESULTS.md#L114).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Racing the dict
+  ranker against LLM-gated confidence on the same 24 cells isolated the
+  confidence premium at +15 solves on top of identical ranking and rules
+  (349 v 334), the largest confidence premium measured, and confirmed at
+  n=30 (694/720). ([The hybrid record](RESULTS.md#L127).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] The failure-census
+  autopsy ladder (dump every failure, classify, implement the top family,
+  repeat) moved L3/L4 solve rate rung by rung from a fixed baseline, the
+  same industrialized-reading method that had earlier produced the euler and
+  i_apart movers by hand. ([The autopsy ladder](RESULTS.md#L127).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] An asynchronous
+  best-first frontier strictly beat the depth-synchronized beam at equal
+  node budgets (104-113 v 91-93 across variants), and with the frontier
+  finally asynchronous, greedy (g=0) beat Dijkstra-weighted variants — path
+  length is not worth trading nodes for when any solution is a verified
+  proof. ([Best-first beats the beam](RESULTS.md#L191).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Decomposing the
+  best-first win against a shared transposition table showed asynchrony
+  worth +12 solves given dedup and dedup worth +21 within best-first — the
+  frontier re-treads commuting rewrite orders far more than a synchronized
+  ply does. ([Best-first beats the beam](RESULTS.md#L191).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Verifying integral
+  edges by differentiating the difference instead of calling `doit()`, and a
+  timeboxed expand-then-numeric-screen simplify-as-zero ladder that rejects
+  Integral/Subs residues, were both required to keep the oracle's search-time
+  cost bounded; probe timeouts had to catch `BaseException` because broad
+  `except` swallowed the alarm. ([Engineering findings](RESULTS.md#L289).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Macro promotion by
+  measured winning-path traffic beat promotion by textbook convention: a
+  mined rule covering 14.8% of winning-path traffic paid +12 solves while
+  the textbook quotient rule, at zero traffic, never fired.
+  ([Engineering findings](RESULTS.md#L289).)
+- [NULL] [REGIME-SCOPED: calculus search] Re-mining the move prior from
+  mixed-quality paths dropped the control from 334 to 300 when 41% of the
+  harvest came from random-search wins; a prior inherits the policy quality
+  of the paths it is mined from, not just their verified correctness, so
+  re-mining only pays when the harvesting engine is at least as strong as
+  the prior's current user. ([The experiment ledger](RESULTS.md#L289).)
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] A fused one-trunk, two-head
+  architecture with a value head reading the 0.5B's hidden state lost
+  honestly to the hand-featured NNUE eval (115 v 119) while the trunk stayed
+  frozen under ranking-tuned LoRA; joint value-LoRA training (v2) then beat
+  the hand features offline (rho +0.966) and won the frontier cell 10 v 9.
+  ([The experiment ledger](RESULTS.md#L306).)
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] Porting the search-engine
+  methodology to T-count minimization (ZX-calculus rewrites, boundary-oracle
+  verification) found the pre-registered bar (search beats greedy full_reduce
+  by >=20%) FAILED honestly on random circuits — 0 wins, 30/30 exact ties —
+  consistent with the literature that full_reduce is near-optimal on random
+  rather than structured circuits. ([T-count engine, day
+  one](RESULTS.md#L448).)
+- [MECHANISM-CONFIRMED] A T-count claimed by scoring an unextractable ZX
+  diagram is fiction: safe rewrites preserve semantics but can destroy
+  GFLOW, so about half a race's tempting low T-count "descents" corresponded
+  to no real circuit; the eval must score the T-count of the EXTRACTED
+  circuit, or the move set must be GFLOW-preserving. ([T-count engine, day
+  one](RESULTS.md#L448).)
+- [REPLICATED] [REGIME-SCOPED: Qwen2.5-0.5B] A frozen-trunk value-head probe
+  sweep across 24 layers peaked at 83% depth rather than the last hidden
+  state (L20 +0.873 v last +0.858), replicating the global-workspace paper's
+  geography at three fresh splits (L20 winning all three); a jointly-trained
+  value-LoRA at the same probe point then matched the last-layer arm,
+  showing the geography constrains frozen probes, not trained
+  representations. ([Middle-layer value probe](RESULTS.md#L703).)
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] Sub-term probing pinned the
+  frontier-mined failure census to two missing rule shapes; adding both
+  moved same-seed L5 from 42% to 89.6% (223/249), a ~+12-point gain from two
+  measured rules. ([Frontier rule gaps -> two rules](RESULTS.md#L703).)
+- [RETRACTED] [REGIME-SCOPED: calculus search] Re-mining the move prior after
+  the two new rules landed, on the theory that unseen-rule smoothing was
+  guillotining them, regressed L5 from 89.6% to 73.1% on both a general and
+  a 3x-weighted harvest — diluting winning bigrams costs more than new-rule
+  mass gains, the second measured prior-mining regression; the fixed 0.01
+  median smoothing was already sufficient. ([Frontier rule gaps -> two
+  rules](RESULTS.md#L726).)
+- [NULL] [DEVICE-SCOPED] At draft:target cost ratio ~1:3 (Qwen2.5 0.5B draft,
+  1.5B target, 3080), entropy-adaptive speculative decoding's acceptance
+  signal was real (prose 0.47->0.69, code 0.79->0.90) and target passes
+  nearly halved, but wall-clock never beat fixed k=3 because the adaptive
+  arms burned ~40% more draft passes; the falsifiable prediction is that the
+  measured pass-halving converts to wall-time only at draft:target cost
+  <= ~1:10. Entropy must be computed in float32 — fp16 underflow silently
+  degenerated the gate to fixed k_max in 771 passes. ([Entropy-adaptive
+  speculative decoding](RESULTS.md#L762).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Replacing a `.doit()`
+  verify call (which legally re-invoked sympy's own heurisch integrator) with
+  `doit(integrals=False)` cut node cost enough to widen the beam 2->3 at the
+  same budget, taking same-seed L5 from 223 to 238/249 (95.6%) at 3.5x less
+  wall. ([Node-cost round 2](RESULTS.md#L807).)
+- [NULL] [REGIME-SCOPED: calculus search] Widening the move-proposal layer to
+  k=4 was a decisive NO-ADOPT (210/249 v the 238 bar): it spent the fixed
+  node budget faster by cutting search depth, and it never reached the
+  target rank-5/6 move anyway — proposal-layer width mostly re-covers what
+  top-3 already had, unlike selection-layer width. ([propose_k=4: decisive
+  null](RESULTS.md#L828).)
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] The syndrome policy (DAgger,
+  state-aware move ranking) was ADOPTED into production after a
+  fresh-100 tie/win race (98/96 solves at 36% less wall than Markov) and a
+  fresh-80 exact tie (76/76) closed the 2-problem curated-gate deficit as
+  benchmark-specific rather than a capability gap; Markov remains the
+  fallback and the wall-time choice for deep-L5 batch work. ([The brain
+  races, concluded](RESULTS.md#L879).)
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] New coordination (L6) and
+  nesting (L7) generator levels found the engine held up better than
+  sympy's heurisch as depth grew (L6 60% v sympy 93%; L7 60% v sympy 70%,
+  a 23-point sympy drop the engine did not share), with three money
+  problems the engine solved and sympy failed, certified by sympy's own
+  differentiator. ([L6/L7 and the engine-vs-sympy
+  probe](RESULTS.md#L974).)
+- [SINGLE-SEED] [REGIME-SCOPED: Qwen2.5-0.5B] A 128-unit probe on the
+  calculus-LoRA 0.5B's layer-20 hidden state, read mid-generation,
+  predicted eventual sympy-correctness at AUC 0.914 on 2,760 trace states
+  — the trajectory's fate is largely encoded early. The naive spend policy
+  built on that signal then lost decisively to best-of-N at equal token
+  spend (greedy 85, best-of-N 100, regret-abort 78 of 150): the signal was
+  real but an uncalibrated early-abort threshold killed traces before
+  their fate had formed. ([The regret probe](RESULTS.md#L1060).)
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] A new L8 generator level,
+  built from measured L6/L7 failure modes rather than imagination, probed
+  at 30/40 (75%, all ten misses genuine solve failures, not hangs); a
+  same-day autopsy of two missing orbitals (sqrt*log ansatz, trig(log)
+  admission) closed most of the gap to 37/40. ([L8: the frontier reopened
+  from the residue](RESULTS.md#L1131).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: Qwen2.5-0.5B] Racing three 4-bit
+  quantization schemes on real Qwen2.5-0.5B weights and real captured
+  activations in function space (mean GEMV relative error) found the
+  activation-aware lane (awq_lite) winning at 8.07% v uniform min/max
+  10.06% and NF4-style quantile codes 8.89%, largest on late layers
+  (layer-23 down_proj 14.7% -> 6.5%); a toy round on synthetic gaussian
+  weights had ranked uniform first, because synthetic weights lack the
+  outlier channels real transformers carry and activation-awareness
+  protects — weight-space and function-space rankings disagreed in both
+  rounds. ([Three-lane 4-bit quantization race](RESULTS.md#L1163).)
+- [MECHANISM-CONFIRMED] [DEVICE-SCOPED] A fused int4 dequant-GEMV Metal
+  kernel (packed nibbles, awq_lite scales folded in at pack time) reached
+  1.11x mx.quantized_matmul at D=4096 (2.80x over fp16) but only 0.72x at
+  D=896, where small decode shapes are launch/overhead-bound rather than
+  bandwidth-bound. ([Fused int4 dequant-GEMV Metal
+  kernel](RESULTS.md#L1185).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Engine-level regret
+  (abort a search reading doom from per-ply beam features, AUC 0.760) FAILED
+  its pre-registered bar (zero solve loss + >=25% wall cut) — two stubborn
+  deep chains always looked doomed then landed — but at equal total wall,
+  the FA-Law-native metric was a blowout (176 v 82 solves in the same
+  1888s, 2.1x, stable across budgets): regret trades 2.4% completeness for
+  2.1x throughput, so adoption is workload-dependent and it is not wired
+  into `solve()` by default. ([Engine-level regret](RESULTS.md#L1203).)
+- [NULL] [REGIME-SCOPED: calculus search] A fresh L3-L8 dispatcher retrain
+  (v4, 275 post-orbital disagreement rows) was NO-ADOPT against the v3
+  incumbent (110 v 112 solves, fourth appearance of the starved-judge
+  pattern): as engine rules cover more of the space one-ply, the arms
+  converge and brain choice matters less; the currency rule softened to
+  retrain only when the world changes AND the arms still disagree enough to
+  route. ([Dispatcher v4: NO-ADOPT](RESULTS.md#L1228).)
 
 ## The micro-model program
 

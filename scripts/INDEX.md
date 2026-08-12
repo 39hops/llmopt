@@ -931,6 +931,11 @@ Expert-iteration round 2, harvest phase (spec: 2026-07-07-expert-iteration-r2-de
 - `path_rows(root, history)`
 - `main(per_cell: int) -> None`
 
+### scripts/list_uncurated.py
+Print the oldest uncurated ledger entries (candidates for FINDINGS).
+
+- `main(n: int=20) -> None`
+
 ### scripts/log_hygiene.py
 Print-only log hygiene planner (reviewer design, handoff 2026-08-11-0).
 

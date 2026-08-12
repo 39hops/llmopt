@@ -39,7 +39,9 @@ CURATABLE = ("verdict", "null")
 # coalitions" section curates the 13 headliners, and the residue is
 # intermediate pre-regs/amendments that the amendment chain (not
 # FINDINGS) is the right home for. Ratchet still binds future growth.
-MAX_UNCURATED = 320
+# Lowered 320 -> 300 on 2026-08-12: curated the 20 oldest uncurated
+# ledger entries (all in "The derivation engine" section) into FINDINGS.
+MAX_UNCURATED = 300
 
 # GLOSSARY.md is the authority for all three lists; a tag outside them is
 # either a typo or vocabulary drift, and drift is what makes the tags
