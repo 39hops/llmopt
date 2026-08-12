@@ -1,18 +1,16 @@
 """Adoption guards for llmopt.lab (spec 2026-08-05-llmopt-lab-extraction).
 
-verify/gen (Phase 3 module 4, 2026-08-12): the scripts are shims —
-their symbols must BE the lab objects; behavior is pinned by the
-WAVE_CASES battery here plus the booked-number battery in
-tests/test_lab_verify_gen_battery.py (Phase D 167/167 replay).
-
-gate (module 5, pending): the lab copies must stay
-CHARACTER-IDENTICAL to scripts/step_grpo_micro.py — fixes land in
-both files in the same commit or not at all.
+Phase 3 complete (2026-08-12): all five pairs are shims — the frozen
+scripts/scratch originals re-export the canonical llmopt.lab bodies.
+Source-identity guards are gone; behavior is pinned by batteries:
+WAVE_CASES here, tests/test_lab_verify_gen_battery.py (Phase D
+167/167 replay + gen pins), tests/test_gate_battery.py (booked
+sampler-amendment replay + gate problem-grid pins),
+tests/test_lab_keepsets.py, tests/test_lab_oracle.py.
 """
 from __future__ import annotations
 
 import importlib.util
-import inspect
 import sys
 from pathlib import Path
 
@@ -95,12 +93,25 @@ def sgm():
     return _load_script("step_grpo_micro")
 
 
-def test_gate_sources_identical(sgm):
+def test_gate_shim_binds_lab_bodies(sgm):
     from llmopt.lab import gate
-    assert inspect.getsource(gate.sample_wave_lp) == \
-        inspect.getsource(sgm.sample_wave_lp)
-    assert inspect.getsource(gate.gate_eval) == \
-        inspect.getsource(sgm.gate_eval)
+    assert sgm.sample_wave_lp is gate.sample_wave_lp
+    assert sgm.gate_eval is gate.gate_eval
+
+
+def test_gate_shim_line_anchors():
+    # RESULTS cites step_grpo_micro.py:65 and :184 (inside the old
+    # bodies); the shim is line-count-preserving and must keep the
+    # quoted fragments on their booked lines.
+    text = (ROOT / "scripts" / "step_grpo_micro.py").read_text() \
+        .splitlines()
+    assert "torch.multinomial(probs[b], 1, generator=gens[b])" \
+        in text[64]
+    assert "[gate] weights sha" in text[183]
+    assert text[76].startswith("from llmopt.lab.gate import")
+    assert text[223].startswith("from llmopt.lab.gate import")
+    assert text[79].startswith("def collect(")
+    assert text[226].startswith("def main(")
 
 
 def test_gate_constants_match_lineage(sgm):

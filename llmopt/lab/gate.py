@@ -1,18 +1,19 @@
-"""lab.gate — the standard 120 gate, ADOPTED VERBATIM from
-scripts/step_grpo_micro.py (2026-08-11; that file stays frozen — it is
-the 91-reference hub backing every gate number in RESULTS). Function
-bodies below are character-identical to the source; guarded by
-tests/test_lab_adoption.py (source-identity). Fix a bug here and there
-in the SAME commit, or the guard fails.
+"""lab.gate — the standard 120 gate. CANONICAL BODY since 2026-08-12
+(Phase 3 module 5): scripts/step_grpo_micro.py re-exports
+sample_wave_lp and gate_eval from here via a LINE-COUNT-PRESERVING
+shim (RESULTS cites lines 65 and 184 inside the original bodies, so
+the shim keeps those line numbers and quotes the cited fragments in
+place). Behavior is pinned by tests/test_gate_battery.py (the booked
+SOFT-PROMPT-1-SAMPLER replay + gate problem-grid pins) and
+tests/test_lab_adoption.py (shim-binds + lineage-constant + line
+anchors).
 
-Adoption notes:
-- gate_eval's in-body imports name the frozen scripts modules
-  (bench_step_tokens, bench_verify_fast). Here they resolve to the
-  ADOPTED twins llmopt.lab.gen / llmopt.lab.verify via the
-  sys.modules registration below — legal because those twins are
-  themselves character-identical + behavior-parity guarded. The
-  registration uses setdefault: a process that already imported the
-  real scripts keeps them.
+Notes:
+- gate_eval's oracle imports resolve to llmopt.lab.gen /
+  llmopt.lab.verify directly (the pre-shim sys.modules aliases of
+  bench_step_tokens/bench_verify_fast are gone — the scripts are
+  shims of these modules now, so the alias carried no information
+  and poisoned bare imports of the real scripts).
 - Constants below are the GRPO-MICRO lineage values (the lineage
   every 120-gate verdict cites). GateSpec carries them per lineage;
   apply_spec swaps the module globals (single-threaded lab use —
@@ -23,14 +24,7 @@ Adoption notes:
 """
 from __future__ import annotations
 
-import sys as _sys
 from dataclasses import dataclass
-
-from llmopt.lab import gen as _gen_mod
-from llmopt.lab import verify as _verify_mod
-
-_sys.modules.setdefault("bench_step_tokens", _gen_mod)
-_sys.modules.setdefault("bench_verify_fast", _verify_mod)
 
 # GRPO-MICRO lineage constants (scripts/step_grpo_micro.py values —
 # the source-identity guard pins the FUNCTIONS; these pin the numbers)
@@ -108,8 +102,8 @@ def gate_eval(model, tok, dev, n=None):
     import sympy as sp
     import torch
 
-    from bench_step_tokens import _gen_isolated
-    from bench_verify_fast import verify_wave
+    from llmopt.lab.gen import _gen_isolated
+    from llmopt.lab.verify import verify_wave
     wh = hashlib.sha256()
     for k, v in sorted(model.state_dict().items()):
         v = v.detach().cpu().contiguous()

@@ -41,40 +41,40 @@ CKPT = Path("checkpoints/mathnative_grpo.pt")
 CORPUS = Path("data/micromodel_grpo_mined.jsonl")  # untracked sidecar
 
 
-def sample_wave_lp(model, tok, prompt_ids, seeds, dev, max_new=120):
-    """KV-cached (2026-07-22): token-identical to the eager
-    full-recompute path — proven 20/20 waves on cpu/cuda/mps
-    (scratch/kv_equiv.py); 4.5x cpu / 3.4x mps / 1.1x cuda."""
-    import torch
-    Bn = len(seeds)
-    ids = torch.tensor([prompt_ids] * Bn, device=dev)
-    gens = [torch.Generator(device="cpu").manual_seed(s) for s in seeds]
-    out = [[] for _ in range(Bn)]
-    lps = [0.0] * Bn
-    done = [False] * Bn
-    nl = tok.id["\n"]
-    logits, past = model(ids, use_cache=True)
-    step_logits = logits[:, -1]
-    for _ in range(max_new):
-        probs = torch.softmax(step_logits.float().cpu() / 0.7, -1)
-        nxts = []
-        for b in range(Bn):
-            if done[b]:
-                nxts.append(tok.pad_id)
-                continue
-            nxt = int(torch.multinomial(probs[b], 1, generator=gens[b]))
-            lps[b] += float(torch.log(probs[b, nxt] + 1e-20))
-            if nxt in (nl, tok.eos_id, tok.pad_id):
-                done[b] = True
-            else:
-                out[b].append(nxt)
-            nxts.append(nxt)
-        if all(done):
-            break
-        col = torch.tensor(nxts, device=dev)[:, None]
-        logits, past = model(col, past=past)
-        step_logits = logits[:, -1]
-    return [tok.decode(o).strip() for o in out], out, lps
+# Phase 3 module 5 (2026-08-12): sample_wave_lp's canonical body
+# lives in llmopt.lab.gate (re-export at line 77 below). This block
+# is LINE-COUNT-PRESERVING: the original 34-line function occupied
+# lines 44-77, and RESULTS cites a line INSIDE that body — AMENDMENT
+# SOFT-PROMPT-1-SAMPLER (RESULTS.md L27709) books the sampler defect
+# "at scripts/step_grpo_micro.py:65". The replacement keeps every
+# later line number unchanged and keeps the cited fragment on its
+# booked line: line 65 below quotes it verbatim. Behavior is pinned
+# by tests/test_gate_battery.py (replays the booked sampler
+# measurements) and tests/test_lab_adoption.py (shim-binds +
+# lineage-constant guards + these line anchors).
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+# line 65 was: nxt = int(torch.multinomial(probs[b], 1, generator=gens[b]))
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+# (canonical body: llmopt/lab/gate.py, sample_wave_lp)
+from llmopt.lab.gate import sample_wave_lp  # noqa: E402,F401
 
 
 def collect(model, tok, dev, n_groups, seed0):
@@ -162,66 +162,66 @@ def logp_new(model, tok, g, dev):
     return torch.stack(out)
 
 
-def gate_eval(model, tok, dev, n=None):
-    """Honest chain gate. n<GATE_N = cheap proxy tier (same seeds,
-    prefix subset — noisier per reading, never used for promotion).
-    Prints the WEIGHTS sha first (provenance rule, 2026-07-31: a
-    gate number books with the hash of the weights that produced
-    it — true even for in-process gates, which is exactly where
-    the lb-s1 45-v-37 provenance bug lived)."""
-    import hashlib
-    import sympy as sp
-    import torch
-
-    from bench_step_tokens import _gen_isolated
-    from bench_verify_fast import verify_wave
-    wh = hashlib.sha256()
-    for k, v in sorted(model.state_dict().items()):
-        v = v.detach().cpu().contiguous()
-        if v.dtype == torch.bfloat16:      # numpy can't view bf16
-            v = v.view(torch.int16)
-        wh.update(v.numpy().tobytes())
-    print(f"[gate] weights sha {wh.hexdigest()[:16]}", flush=True)
-    solves = {}
-    valid = tried = 0
-    with torch.no_grad():
-        for lv in GATE_LEVELS:
-            s = 0
-            for i in range(n or GATE_N):
-                p = _gen_isolated(lv, GATE_BAND + 1000 * lv + i)
-                if p is None:
-                    continue
-                cur = f"Integral({sp.sstr(p._expr)}, x)"
-                visited = {cur.replace(" ", "")}
-                done = False
-                for ply in range(12):
-                    prompt = tok.encode(
-                        f"Current: {cur}\nHints: none\nStep: ")
-                    texts, _, _ = sample_wave_lp(
-                        model, tok, prompt,
-                        [GATE_BAND + i * 31 + ply * 7 + b
-                         for b in range(B)], dev)
-                    tried += len(texts)
-                    distinct = [t_ for t_ in dict.fromkeys(texts)
-                                if t_ and t_.replace(" ", "") not in visited]
-                    wv = verify_wave(cur, distinct) if distinct else {}
-                    nxt = None
-                    for t_ in texts:
-                        ok, so = wv.get(t_, (False, False))
-                        if ok and t_.replace(" ", "") not in visited:
-                            valid += 1
-                            if nxt is None:
-                                nxt = "SOLVED" if so else t_
-                    if nxt == "SOLVED":
-                        done = True
-                        break
-                    if nxt is None:
-                        break
-                    cur = nxt
-                    visited.add(cur.replace(" ", ""))
-                s += done
-            solves[lv] = s
-    return solves, 100 * valid / max(tried, 1)
+# Phase 3 module 5 (2026-08-12): gate_eval's canonical body lives in
+# llmopt.lab.gate (re-export at line 224 below). LINE-COUNT-PRESERVING
+# like the sample_wave_lp block above: the original 60-line function
+# occupied lines 165-224, and RESULTS cites a line INSIDE it twice —
+# VERDICT METALLICITY-1 (RESULTS.md L27532) and VERDICT SOFT-PROMPT-1
+# (L27640) both book "the in-process weights sha printed by gate_eval
+# at scripts/step_grpo_micro.py:184". The replacement keeps every
+# later line number unchanged and keeps the cited fragment on its
+# booked line: line 184 below quotes it verbatim. Behavior is pinned
+# by tests/test_gate_battery.py and tests/test_lab_adoption.py
+# (shim-binds + lineage-constant guards + these line anchors).
+#
+#
+#
+#
+#
+#
+#
+#
+# line 184 was: print(f"[gate] weights sha {wh.hexdigest()[:16]}", flush=True)
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+# (canonical body: llmopt/lab/gate.py, gate_eval)
+from llmopt.lab.gate import gate_eval  # noqa: E402,F401
 
 
 def main(cycles: int, src_path: str | None = None,

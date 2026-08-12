@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-cited 71, cited-but-library 51
+Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-cited 72, cited-but-library 51
 
 ## scratch/
 
@@ -123,6 +123,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | gate | gate_transcripts.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | gate | gate_v2_bench.sh | UNCITED | — | — | — | — |
 | gate | gate_zx.py | UNCITED | — | — | — | 10 |
+| gatepins | gatepins_freeze.py | spec-cited | specs | specs×4 | — | 1 |
 | gauge | gauge_distance_d256.py | UNCITED | — | — | — | — |
 | gauge | gauge_m4x.py | UNCITED | — | — | — | — |
 | gauge | gauge_slack_rat.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -167,7 +168,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | k3 | k3_expert_demo.py | results-cited | RESULTS, specs | RESULTS×5, specs×3 | — | 4 |
 | keff | keff_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | kv | kv_after_night.sh | UNCITED | — | — | — | — |
-| kv | kv_equiv.py | UNCITED | — | — | — | 3 |
+| kv | kv_equiv.py | UNCITED | — | — | — | 2 |
 | l9 | l9_probe.py | UNCITED | — | — | — | 3 |
 | lam | lam_merge_review.py | UNCITED | — | — | — | 1 |
 | lean | lean_check.py | reproduce-pinned | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×7, specs×3 | — | — |
@@ -448,14 +449,14 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | bench | bench_stacked.py | UNCITED | — | — | — | — |
 | bench | bench_static.py | UNCITED | — | — | — | — |
 | bench | bench_step_diversity.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| bench | bench_step_tokens.py | library | RESULTS, specs | RESULTS×2, specs×7 | 68 | 2 |
+| bench | bench_step_tokens.py | library | RESULTS, specs | RESULTS×2, specs×7 | 67 | 2 |
 | bench | bench_stitch_poc.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | bench | bench_syndrome_head.py | UNCITED | — | — | — | — |
 | bench | bench_syndrome_policy.py | library | — | — | 1 | — |
 | bench | bench_temp_race.py | UNCITED | — | — | — | — |
 | bench | bench_tree_verify.py | UNCITED | — | — | — | — |
 | bench | bench_triton_kernels.py | UNCITED | — | — | — | 1 |
-| bench | bench_verify_fast.py | library | specs | specs×4 | 47 | 2 |
+| bench | bench_verify_fast.py | library | specs | specs×4 | 46 | 2 |
 | bench | bench_vge.py | spec-cited | specs | specs×1 | — | — |
 | bench | bench_weight_anatomy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | bench | bench_zx.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -515,7 +516,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | sol | sol_enrich_results.py | library | specs | specs×4 | 1 | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — |
 | step | step_grpo.py | spec-cited | specs | specs×1 | — | — |
-| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×18 | 95 | 4 |
+| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×18 | 95 | 5 |
 | sweep | sweep_lookup.py | UNCITED | — | — | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — | — | — |

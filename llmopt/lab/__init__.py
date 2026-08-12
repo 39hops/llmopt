@@ -1,12 +1,12 @@
 """llmopt.lab — permanent instruments, adopted from the scripts that
 proved them (spec 2026-08-05-llmopt-lab-extraction.md; CODEMAP is the
-move gate). Adoption law: function bodies are VERBATIM copies of their
-source scripts, guarded by source-identity + behavior tests
-(tests/test_lab_adoption.py); the originating scripts stay frozen —
-they are the record booked verdicts cite. New code imports from here;
-existing scripts migrate only with a re-verified pass.
+move gate). Since Phase 3 (2026-08-12) these are the CANONICAL bodies:
+the originating scripts are re-export shims (line-count-preserving
+where RESULTS line-cites them), and behavior is pinned by booked-number
+batteries (tests/test_lab_*_battery*, test_gate_battery,
+test_lab_adoption). New code imports from here.
 
-Verbatim adoptions (source-identity guarded)
+Canonical bodies (frozen originals re-export from here)
   verify_wave     <- scripts/bench_verify_fast.py
   _gen_isolated   <- scripts/bench_step_tokens.py
   sample_wave_lp,

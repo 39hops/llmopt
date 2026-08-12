@@ -1080,10 +1080,8 @@ GRPO at the frontier band — sustained RL over verified steps.
 ### scripts/step_grpo_micro.py
 Phase 2: GRPO from birth — the math-native 19M climbs on the Mac.
 
-- `sample_wave_lp(model, tok, prompt_ids, seeds, dev, max_new=120)` — KV-cached (2026-07-22): token-identical to the eager
 - `collect(model, tok, dev, n_groups, seed0)`
 - `logp_new(model, tok, g, dev)`
-- `gate_eval(model, tok, dev, n=None)` — Honest chain gate. n<GATE_N = cheap proxy tier (same seeds,
 - `main(cycles: int, src_path: str | None=None, out_path: str | None=None, d: int=384, layers: int=8, ffn: int=1536, heads: int=6, groups_n: int=GROUPS) -> None`
 
 ### scripts/sweep_lookup.py
@@ -3099,7 +3097,7 @@ Validation and decoding for committed gravmoe training windows.
 ## llmopt/lab/
 
 ### llmopt/lab/__init__.py
-llmopt.lab — permanent instruments, adopted from the scripts that proved them (spec 2026-08-05-llmopt-lab-extraction.md; CODEMAP is the move gate). Adoption law: function bodies are VERBATIM copies of their source scripts, guarded by source-identity + behavior tests (tests/test_lab_adoption.py); the originating scripts stay frozen — they are the record booked verdicts cite. New code imports from here; existing scripts migrate only with a re-verified pass.
+llmopt.lab — permanent instruments, adopted from the scripts that proved them (spec 2026-08-05-llmopt-lab-extraction.md; CODEMAP is the move gate). Since Phase 3 (2026-08-12) these are the CANONICAL bodies: the originating scripts are re-export shims (line-count-preserving where RESULTS line-cites them), and behavior is pinned by booked-number batteries (tests/test_lab_*_battery*, test_gate_battery, test_lab_adoption). New code imports from here.
 
 
 ### llmopt/lab/anatomy.py
@@ -3165,7 +3163,7 @@ lab.figures — matplotlib chart forms for ANALYSIS figures.
 - `stat(name: str, value: str, label: str, detail: str='', source: str='', entity: str='series', outdir=None)` — A hero number: the finding IS the value, so no chart is drawn.
 
 ### llmopt/lab/gate.py
-lab.gate — the standard 120 gate, ADOPTED VERBATIM from scripts/step_grpo_micro.py (2026-08-11; that file stays frozen — it is the 91-reference hub backing every gate number in RESULTS). Function bodies below are character-identical to the source; guarded by tests/test_lab_adoption.py (source-identity). Fix a bug here and there in the SAME commit, or the guard fails.
+lab.gate — the standard 120 gate. CANONICAL BODY since 2026-08-12 (Phase 3 module 5): scripts/step_grpo_micro.py re-exports sample_wave_lp and gate_eval from here via a LINE-COUNT-PRESERVING shim (RESULTS cites lines 65 and 184 inside the original bodies, so the shim keeps those line numbers and quotes the cited fragments in place). Behavior is pinned by tests/test_gate_battery.py (the booked SOFT-PROMPT-1-SAMPLER replay + gate problem-grid pins) and tests/test_lab_adoption.py (shim-binds + lineage-constant + line anchors).
 
 - `class GateSpec`
 - `apply_spec(spec: GateSpec) -> None` — Point the module constants at a lineage. Single-threaded use.

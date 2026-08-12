@@ -60,10 +60,6 @@ def _battery():
 
 
 def main() -> None:
-    # llmopt.lab.gate aliases sys.modules["bench_step_tokens"] to
-    # llmopt.lab.gen (which has no verify_step); drop the alias so
-    # this resolves to the real script via the scripts/ path entry
-    sys.modules.pop("bench_step_tokens", None)
     from bench_step_tokens import verify_step  # the old oracle
     battery = _battery()
     print(f"# parity battery: {len(battery)} pairs")
