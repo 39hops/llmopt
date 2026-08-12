@@ -3964,3 +3964,29 @@ without re-introducing history).
   pass BEFORE any submission, same as the README got. Do not start it
   in a session that is also shepherding runs — it needs a clean read
   of 27k lines of ledger. Attribution: Artin (scope call), house.
+
+- **BANKED (2026-08-11 night): the stellar-collapse frame for training
+  — gravity/pressure/Jeans as loss/entropy/width-floor** (Artin, riffed
+  live off "how are stars formed"; house mapped and fenced). The
+  mapping, with measured anchors: gravity = the compression pull of
+  the loss (FA Law v2 — verified variance -> compressed structure);
+  thermal pressure = entropy (init noise, gradient noise, and the
+  corpus H_k wall the FLOOR-HK-1 d512 floor sits on at 0.3478 v
+  H_16=0.367); Jeans mass = the width floor (sub-d56 births never
+  ignite — the standing brown-dwarf class; MICRO-STAR-1's "ignition"
+  naming was already this frame); supernova-seeds-new-stars =
+  distillation; softmax temperature = NOT an analogy, the same
+  Boltzmann form p ∝ exp(logit/T); inference = the frozen
+  deterministic attractor (oracle token-identity is the founding
+  invariant; V4-F1d's booked repetition attractor is an event horizon
+  in trajectory space — trajectories that enter never exit). WHERE IT
+  BREAKS (fence, so the bank stays honest): no fusion — training has
+  no new energy source at ignition, capability is a compression
+  threshold, not power generation; and the 08-11 MPS it/s decay is an
+  allocator, explicitly NOT stellar physics. Testable residue worth a
+  rung someday: the n-ball/cube volume ratio pi/6 -> 0 as d grows
+  (corner-flight) as the WHY of the capacity-meter split — crystals
+  at-capacity (M 0.96-1.61, shell-concentrated) v web-dense outlier
+  tails (M 3.6-3.9, corner mass); a per-width corner-mass census
+  would make the geometry claim measurable. Attribution: Artin
+  (frame + black-hole determinism ask), house (anchors + fences).
