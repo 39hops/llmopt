@@ -27490,3 +27490,32 @@ and length distribution, zero syntax. New z0 sha 8084262fe657fec0
 per-cell tolerance (a failed cell books FAILED and the battery
 streams on) and skip-if-gated (the four z3 receipts are not re-run).
 Bars, prior, and every other fence unchanged.
+
+## VERDICT GROW-DECOMP-1 (R5 cell A): fresh arch-twin gates 71 — BETWEEN the bars; the growth premium narrows to 2-4 solves, sub-sigma at n=1 (2026-08-11 night, Mac)
+
+Ran to completion (rjob growdecomp1b; birth log ends "saved", 3
+epochs, final train loss 0.3440; the rc=1 was the driver's stale
+gate step — gate re-run by hand on the saved checkpoint).
+
+  growdecomp_fresh512 (d512/L12/ffn2304/h8, warm diet, fp32/mps,
+  BIRTH_SEED=0): {3:22,4:9,5:17,6:7,7:16} = 71/120 @ 66.88%
+
+BARS v measured (pre-reg L27106): bar A (fresh <= 67 -> growth
+premium real): NO-FIRE. Bar B (within 2 of 74 -> demotes to
+schedule-savings): NO-FIRE (71 = 74-3). The measured position is
+BETWEEN: the crown line's 73-75 sits 2-4 solves above the fresh
+twin — inside ~1 sigma of the 120 gate, single seed. Direction NOT
+claimed (resolution law). What this prices: the grow-inherit lever's
+premium at the crown arch is AT MOST small; the +10.7 booking keeps
+its device/recipe fences and gains this narrowing note, not an
+amendment. n=3 paired seeds would resolve it; banked, not queued.
+
+INSTRUMENT NOTE (books with the verdict): the run's it/s decayed
+2.1 -> 0.3 through ep0-ep1 and RECOVERED to a steady 2.1 for all of
+ep2 (2680s epoch). The decay is not monotone-terminal; whatever
+accumulates, clears. Probe arms already banked in handoff -3
+REFINED block; add "per-epoch boundary reset?" as arm (d).
+
+FENCES: single seed, Mac/mps, warm diet; crown-line comparison is
+same-device but different provenance/schedule (three named
+confounds stand); gate row to the lake (device=mac-mps, n_seeds=1).

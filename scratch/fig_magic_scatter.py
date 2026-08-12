@@ -22,13 +22,9 @@ import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 
-# palette: dataviz reference instance, light mode (validated pair)
-SURFACE = "#fcfcfb"
-INK = "#0b0b0b"
-INK2 = "#52514e"
-BLUE = "#2a78d6"    # solved at budget
-ORANGE = "#eb6834"  # unsolved at budget
-GRID = "#e4e3df"
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from llmopt.lab import figstyle  # house palette + fonts + mathtext
 
 
 class Estimator(nn.Module):
@@ -80,48 +76,54 @@ def main(out: Path) -> None:
     print(f"held-out n={len(test)} recomputed rho={rho:.3f}")
 
     solved = [r["solved"] for r in test]
-    fig, ax = plt.subplots(figsize=(7.5, 7.2), dpi=200)
-    fig.patch.set_facecolor(SURFACE)
-    ax.set_facecolor(SURFACE)
-    lim = (min(true + pred) - 0.4, max(true + pred) + 0.4)
-    ax.plot(lim, lim, ls="--", lw=1.2, color="#cfcec9", zorder=1)
-    ax.set_xlim(lim)
-    ax.set_ylim(lim)
-    ax.set_aspect("equal")
-    for flag, color, label in ((True, BLUE, "solved at budget"),
-                               (False, ORANGE, "unsolved at budget")):
-        xs = [t for t, s in zip(true, solved) if s == flag]
-        ys = [p for p, s in zip(pred, solved) if s == flag]
-        ax.scatter(xs, ys, s=26, alpha=0.5, lw=0.5,
-                   edgecolors=SURFACE, color=color,
-                   label=f"{label} (n={len(xs):,})", zorder=2)
-    ax.set_xlabel("measured hardness — log2(1 + search nodes spent)",
-                  color=INK2, fontsize=13, labelpad=8)
-    ax.set_ylabel("predicted hardness (same log2 scale)",
-                  color=INK2, fontsize=13, labelpad=8)
-    ax.text(0, 1.115, "Predicting how hard a math problem is\n"
-            "— before solving it",
-            transform=ax.transAxes, color=INK, fontsize=17,
-            fontweight="bold", va="bottom")
-    ax.text(0, 1.03, f"held-out: {len(test):,} problems never seen "
-            f"in training  ·  Spearman ρ = {rho:.3f}\n"
-            "prediction cost: microseconds per problem",
-            transform=ax.transAxes, color=INK2, fontsize=11.5,
-            va="bottom")
-    ax.legend(frameon=False, loc="upper left", fontsize=12,
-              labelcolor=INK2, handletextpad=0.1, borderaxespad=0.4,
-              markerscale=1.6)
-    for s in ("top", "right"):
-        ax.spines[s].set_visible(False)
-    for s in ("left", "bottom"):
-        ax.spines[s].set_color(GRID)
-    ax.tick_params(colors=INK2, labelsize=11)
-    ax.grid(color=GRID, lw=0.5, alpha=0.6)
-    ax.set_axisbelow(True)
     out.parent.mkdir(parents=True, exist_ok=True)
-    fig.subplots_adjust(top=0.8, bottom=0.09, left=0.11, right=0.98)
-    fig.savefig(out, facecolor=SURFACE)
-    print(f"saved -> {out}")
+    for mode in ("light", "dark"):
+        c = figstyle.CHROME[mode]
+        plt.rcParams.update(figstyle.rc(mode))
+        series = (figstyle.SERIES_DARK if mode == "dark"
+                  else figstyle.SERIES_LIGHT)
+        blue, orange = series[0], series[1]
+        fig, ax = plt.subplots(figsize=(7.5, 7.2), dpi=200)
+        lim = (min(true + pred) - 0.4, max(true + pred) + 0.4)
+        ax.plot(lim, lim, ls="--", lw=1.2, color=c["axis"], zorder=1)
+        ax.set_xlim(lim); ax.set_ylim(lim)
+        ax.set_aspect("equal")
+        for flag, color, label in ((True, blue, "solved at budget"),
+                                   (False, orange,
+                                    "unsolved at budget")):
+            xs = [t for t, s in zip(true, solved) if s == flag]
+            ys = [p for p, s in zip(pred, solved) if s == flag]
+            ax.scatter(xs, ys, s=22, alpha=0.55, lw=0.5,
+                       edgecolors=c["surface"], color=color,
+                       label=f"{label} (n={len(xs):,})", zorder=2)
+        ax.set_xlabel(r"measured hardness — "
+                      r"$\log_2(1 + \mathrm{search\ nodes\ spent})$",
+                      fontsize=12, labelpad=8)
+        ax.set_ylabel(r"predicted hardness (same $\log_2$ scale)",
+                      fontsize=12, labelpad=8)
+        ax.text(0, 1.115, "Predicting how hard a math problem is\n"
+                "— before solving it",
+                transform=ax.transAxes, color=c["primary"],
+                fontsize=17, fontweight=500, va="bottom")
+        ax.text(0, 1.03, f"held-out: {len(test):,} problems never "
+                r"seen in training  ·  Spearman $\rho$ = "
+                f"{rho:.3f}\n"
+                r"prediction cost: microseconds per problem",
+                transform=ax.transAxes, color=c["secondary"],
+                fontsize=11, fontweight=300, va="bottom")
+        ax.legend(frameon=False, loc="upper left", fontsize=11,
+                  labelcolor=c["secondary"], handletextpad=0.1,
+                  borderaxespad=0.4, markerscale=1.5)
+        fig.text(0.11, 0.015,
+                 "magic_estimator_rf.pt · rho recomputed at render · "
+                 "RESULTS 2026-07-09 arc",
+                 fontsize=7, color=c["muted"], family="monospace")
+        fig.subplots_adjust(top=0.8, bottom=0.1, left=0.11,
+                            right=0.98)
+        dst = out.with_name(f"{out.stem}-{mode}{out.suffix}")
+        fig.savefig(dst, facecolor=c["surface"])
+        plt.close(fig)
+        print(f"saved -> {dst}")
 
 
 if __name__ == "__main__":
