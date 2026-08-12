@@ -330,6 +330,78 @@ modules; every public symbol importable in a smoke test.
 Exit: no module with booked verdicts has zero tests; no test skips
 silently on all machines.
 
+### Phase 7a — The packaging contract (from the external review)
+
+An installed wheel is not the same world as a source checkout, and the
+package does not currently admit that.
+
+`pyproject.toml:66` packages exactly one data file (`py.typed`), yet
+three package modules resolve checkout-level paths:
+`llmopt/reproduce.py:17-20` (`parents[1]` → `scratch/detbwd_gravmoe.py`,
+executed at `:109`), `llmopt/lab/figsvg.py:32-33` (`parents[2]` →
+`docs/figures.json`), and `llmopt/lab/figstyle.py:48` (`parents[2]` →
+`assets/fonts`). In an installed wheel `parents[2]` is `site-packages`,
+so those paths do not exist and the figure and reproduce subsystems are
+broken on `pip install llmopt` while passing every test under `-e .`.
+
+7a.1 Split the contract explicitly. Data a package module needs moves
+     to `llmopt/resources/` and is read through `importlib.resources`;
+     anything that genuinely needs the repo declares so and fails with
+     a clear message rather than a confusing `FileNotFoundError`.
+7a.2 CI builds the wheel, installs it in a clean environment, and runs
+     an import-and-smoke check. Today CI only installs `-e .`, so this
+     entire class is invisible.
+7a.3 A minimal-dependency CI job alongside the full one, so a core
+     module cannot quietly start importing an optional extra.
+
+Exit: `pip install dist/*.whl` in a fresh venv, then `import llmopt`
+plus a figure render and `reproduce --list`, all green in CI.
+
+### Phase 7b — Generated front matter
+
+`README.md:84` states the ledger as 37 / 42 / 70 / 35 / 3 = 187. The
+actual counts in `docs/FINDINGS.md` today are 37 replicated, 43
+mechanism-confirmed, 73 single-seed, 35 null, 3 retracted = **191**.
+The external review, reading an earlier snapshot, found 188. Three
+different numbers for one fact, and it moved again tonight when three
+bullets were curated — which is the point: a hand-typed number in the
+README cannot survive a ledger that grows every session.
+
+Fix the class, not the instance. Factual numbers in front-facing prose
+come from generated regions:
+
+```markdown
+<!-- llmopt:generated honesty-ledger:start -->
+<!-- llmopt:generated honesty-ledger:end -->
+```
+
+with `scripts/gen_readme.py --check` in CI beside the existing
+generated-docs job. The same number is never typed twice: ledger →
+`figures.json` → SVG → README snippet → alt text → caption.
+
+Exit: no factual count appears in README prose outside a generated
+region; CI fails on drift.
+
+### Phase 7c — Repository hygiene
+
+- **Protect `main`.** Confirmed unprotected (`gh api ... /protection`
+  returns 404). For a repo whose thesis is "nothing counts until
+  verified", CI-must-pass-before-main-moves is the matching policy.
+  Reviews are unnecessary for a solo maintainer; the status check is
+  the point.
+- **API stability tiers**, documented in `llmopt/__init__.py`: stable
+  top-level surface, supported research API (`lab`, `moe`, …),
+  experimental, and frozen evidence. This is what makes aggressive
+  refactoring of the experimental tier honest.
+- **`CONTRIBUTING.md`** covering where code belongs, how a finding is
+  booked, how a figure is published, and what must never be rewritten
+  because it is cited evidence. Today that knowledge lives in CLAUDE.md
+  and in skills, which is fine for this lab and useless to a visitor.
+- **Rename the `runlog` pair.** `llmopt/runlog.py` and
+  `llmopt/lab/runlog.py` both exist and mean different things — general
+  logging versus experiment receipts. `llmopt/lab/receipts.py` with a
+  compatibility re-export.
+
 ### Phase 7 — The shell harness
 
 90 drivers, all in `scratch/`, sharing an un-abstracted preamble:
@@ -369,6 +441,109 @@ same commit. A module is not "done" until its original is a shim.
 
 ---
 
+## 5b. Voice in front-facing documents
+
+Artin, 2026-08-12: front-facing prose should read "this was X, and so Y
+was the next logical path" rather than "this was X, so we decided to do
+Y". The repo is public and the deliberation framing invites a reader to
+wonder who was deliberating.
+
+Measured before writing the rule, because the intuition and the files
+disagree:
+
+| document | `we` / `our` / `us` | `the house` |
+|---|---|---|
+| `README.md` | 0 | 0 |
+| `docs/REPRODUCE.md` | 0 | 5 |
+| `docs/FINDINGS.md` | 0 | 4 |
+| `docs/THEORY.md` | 6 | 0 |
+| `docs/paper/main.tex` | **66** | 0 |
+
+So the README, the reproduction guide, and the findings ledger already
+use the impersonal result-first voice. The concentration is in the
+paper, and a smaller amount in THEORY.
+
+**The rule, in two parts, because the two cases differ:**
+
+1. **Never narrate a deliberation, anywhere front-facing.** "So we
+   decided to test Y" becomes "Y was the next test the result implied",
+   or simply "Y followed". This is the part Artin asked for and it
+   applies uniformly. It is also better scientific writing: the reason
+   for the next experiment should be the previous result, not somebody's
+   preference.
+2. **Methodological `we` stays in the paper.** "We measure", "we
+   report", "we hold the seed fixed" is standard academic register, and
+   stripping all 66 instances would make the paper read as though it
+   were avoiding something. A paper is *expected* to have authors. The
+   distinction that matters is credit-and-choice language versus method
+   language; only the former is the problem.
+
+**Also front-facing, and separate:** "the house" appears 9 times across
+REPRODUCE and FINDINGS. It is in-group lab jargon that means nothing to
+a visitor. Replace with the plain subject ("the lab", or better, the
+instrument or the result doing the work).
+
+This is an editing pass over five files, not a program phase. It should
+land early and cheaply, and the rule belongs in CLAUDE.md so it does not
+have to be re-derived.
+
+---
+
+## 5c. Reconciliation with the external review
+
+An independent review (GPT web chat, pinned to the same commit
+`2671030`) covered the public surface. It is complementary rather than
+overlapping: it is strong exactly where this survey was weak, and blind
+where the structural debt actually is.
+
+**Adopted, verified true, and this spec had missed them entirely:**
+- The wheel-versus-checkout contract → Phase 7a. Genuinely the best
+  find of the external review; three package modules resolve
+  `parents[1..2]` to the repo root while the wheel ships one data file.
+- Generated README regions → Phase 7b. The review found 187 vs 188; the
+  live number is 191, and it moved during the session that wrote this
+  spec, which strengthens the argument.
+- Branch protection → Phase 7c. Confirmed unprotected.
+- Core-versus-all-extras CI → Phase 7a.3.
+- API stability tiers, `CONTRIBUTING.md`, the `runlog` rename → 7c.
+
+**Adopted with modification:**
+- *Claim → experiment → receipt → figure → reproduce as one spine.*
+  This is a superset of Phase 1 and the right long-term shape. Merge it
+  into Phase 1 as the eventual target, but build the minimum first
+  (`code_commit`, `files`), because a full graph schema designed before
+  the shim work is a schema designed without knowing what the shim work
+  needs.
+- *Figure provenance in `figures.json`* — same reasoning, same phase.
+- *Scope chips on published figures* (`d64 · N=120 · 3 preregistered
+  seeds`) — cheap, and it makes the epistemics part of the visual
+  identity rather than a caption footnote. Fold into the figure work.
+- *An `experiments/` lifecycle layer.* Reasonable, but sequence it
+  AFTER Phase 3. The measured layering is already clean one-way
+  (`scratch`→`scripts` 144, reverse 0), and the actual disease is that
+  the library lives in `scripts/` with 93 importers. Introducing a
+  third tree before the shim migration risks repeating the exact
+  failure of 2026-08-05: a new home created, callers never moved.
+
+**Corrected:**
+- The review reports `scripts/figlib.py` as intentional legacy retained
+  for `plot_neurons`, `plot_gt1_crest`, and `plot_identity_crest`, and
+  recommends freezing new imports of it. That is the file's own
+  docstring, and it is false: none of those three import it, and
+  CODEMAP shows zero refs. It is archivable, not freezable. A docstring
+  is not evidence.
+- The ledger drift is 191 against README's 187, not 188.
+
+**What the external review could not see**, because it read the public
+surface rather than the dependency graph — and these are the findings
+this program is actually built on: the six zero-caller `lab` modules,
+`step_grpo_micro` at 93 importers, the five `/tmp`-executing drivers,
+the 46 GB of unreachable git objects, the CODEMAP citation mask, the
+FINDINGS ratchet at zero headroom, and the 96-of-178 import exposure.
+Neither review substitutes for the other.
+
+---
+
 ## 6. Doctrine changes this implies
 
 CLAUDE.md and the `/book`, `/rung`, `/riff` skills need edits when the
@@ -382,6 +557,9 @@ relevant phase lands. Naming them now so they are not discovered late:
 - **`/book`**: records `code_commit` and `files` at booking.
 - **`/rung`**: scaffolds from `scratch/lib/driver.sh`; forbids the
   sed-into-`/tmp` pattern explicitly.
+- **Front-facing voice** (§5b): never narrate a deliberation;
+  methodological `we` stays in the paper; no "the house" in
+  visitor-facing docs.
 - **CLAUDE.md**: the tiered lint contract, the `-m docs` marker, and
   `llmopt/common/` as the home for shared helpers.
 
@@ -464,3 +642,8 @@ git rev-list --objects --all | awk '{print $1}' \
 | FINDINGS headroom | 0 | > 20 |
 | tests collected / passing | 659 / 653 | grows with Phase 6 |
 | modules with verdicts and no tests | ≥ 1 (`zx_engine`) | 0 |
+| README ledger count vs FINDINGS | 187 vs 191 | generated, always equal |
+| wheel install smoke-tested in CI | no | yes |
+| `main` branch protection | none | CI required |
+| `we/our/us` in front-facing non-paper docs | 6 (THEORY) | 0 |
+| "the house" in visitor-facing docs | 9 | 0 |
