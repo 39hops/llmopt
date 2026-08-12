@@ -11,6 +11,29 @@ EXPERIMENT with a clean exit. Here the contract is loud both ways:
   banner line + one jsonl line at init — pre-reg cross-checks need
   what the run actually used, not what the launcher shell intended.
 
+Package env-read census (Phase 5, 2026-08-12) — every os.environ
+site in llmopt/ outside tests, with its routing verdict:
+
+  llmopt/common/device.py     LLMOPT_DEVICE   exempt: pre-config
+                              device override, resolved per call
+  llmopt/runlog.py            LLMOPT_LOG      exempt: bootstrap
+                              logging level, needed before any
+                              config object can exist
+  llmopt/reproduce.py:86      (passthrough)   exempt: forwards the
+                              whole env to a pinned child process
+  backends/intbirth_native.py AXIOM_BUILD_DIR exempt: build-machine
+                              path knob for the vendored native leg
+  lab/keepsets.py             FRAC, GT2_*     frozen: canonical
+                              battery body; FRAC default 0.453 is
+                              the GT keep-frac golden point
+                              (RESULTS.md L18793), call-time read
+  lab/config.py               (the router)    this module
+
+Verdict: zero sites remain that should route through LabConfig but
+do not — new driver knobs go through from_env, the sites above are
+either pre-config bootstrap, deliberate passthrough, or
+battery-frozen.
+
 Also fixes the env-at-import hazard (lab spec F2, the gt2_jaccard
 burn): from_env reads the environment at CALL time, so drivers bind
 config where they construct it, never at module import.

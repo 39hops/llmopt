@@ -23,6 +23,9 @@ import json
 # Env is resolved at CALL time, not import time (lab spec F2: a
 # consumer importing this module and setting FRAC afterwards used to
 # get the default silently). None = "read the env now".
+# Default 0.453: the next-golden-point keep fraction from the GT
+# keep-frac arms (RESULTS.md L18793, FRACS {0.618, 0.453, 0.40});
+# value frozen — the keepsets battery pins behavior at this default.
 def _frac(frac=None):
     return float(os.environ.get("FRAC", "0.453")) if frac is None else frac
 
