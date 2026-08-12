@@ -3990,3 +3990,27 @@ without re-introducing history).
   tails (M 3.6-3.9, corner mass); a per-width corner-mass census
   would make the geometry claim measurable. Attribution: Artin
   (frame + black-hole determinism ask), house (anchors + fences).
+
+- **BANKED (2026-08-11 night, extension of the stellar-collapse bank):
+  metallicity = data refinement across model generations; the lab as
+  a max-metallicity nursery** (Artin: "what if there was no dust and
+  you wanted to snap-create a star"; house: Population III). The
+  mapping: Pop III stars formed from ZERO-metal primordial gas —
+  cooling was so poor they had to be 100-1000 solar masses to ignite,
+  then their supernovae MADE the metals that let every later
+  generation form small and efficient. Reading: first-gen web-scale
+  LLMs = Pop III (raw unrefined corpus, enormous ignition mass);
+  distilled/synthetic corpora = metal-enriched clouds -> small
+  efficient stars; llmopt's oracle-verified synthetic diet = maximum
+  metallicity, which is WHY 19M-class objects ignite here.
+  Snap-a-star has a MEASURED no: init-is-the-address (MERGE-SPACE
+  n=3) gives you the seed, but init alone gates ~0, task vectors
+  crater 1/120, foreign averages 0/120 — collapse (training) is not
+  skippable; you snap addresses, not objects. Testable residue:
+  ignition mass (min params to gate > 0 at fixed arch family) as a
+  function of diet refinement — the width-floor ladder re-run across
+  refinement grades of the SAME content would put a number on
+  "metallicity". Fusion-rate candidate instrument: solves per diet
+  token (the FA Law rate), not currently first-class. Attribution:
+  Artin (no-dust ask, fusion-as-efficiency), house (Pop III anchor,
+  measured fences).
