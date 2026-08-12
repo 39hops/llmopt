@@ -4098,3 +4098,35 @@ without re-introducing history).
   precondition: reproduce the stock gate dict cell for cell before a
   single prefix number is read. Attribution: Artin (the ask), house
   (mechanism, the control that caught it, and the diagnosis).
+
+- **BANKED (2026-08-12): volatility drag as a data-quality frame —
+  two sigmas, not one** (Artin). The mapping / the math: compounded
+  return ≈ arithmetic mean − σ²/2, so variance taxes a compounding
+  process directly even at equal average; training compounds too
+  (each step multiplies into the next parameter state), and SGD
+  convergence bounds carry an explicit gradient-noise σ² term, so
+  cleaner/more-accurate data = lower gradient variance = less drag.
+  Artin's original form: better data minimizes training volatility,
+  but you might not learn everything, because you are limited to the
+  data you take in. Measured anchors: no booked llmopt result
+  measures the drag term itself; nearest house evidence is
+  qualitative — underdetermined rows train hallucination (data
+  hygiene doctrine) and the two contamination incidents that forced
+  exclude=-guarded splits + "widen the generator space before
+  trusting a split". Honest breaks: in markets variance is pure
+  cost; in data, part of the "variance" IS the signal. The frame
+  only works split into two sigmas — variance of the ERROR TERM
+  (wrong/underdetermined labels: always a tax, always cut) vs
+  variance of the SUPPORT (input/problem diversity: coverage — cut
+  it and the low-drag trajectory converges onto a narrow manifold
+  and caps what is learnable). Markets have only the first; datasets
+  have both, which is why the analogy feels right and slightly off
+  at once. Testable residue: (1) hold support fixed, inject label
+  noise at rate p into a mathgen diet, measure gate vs p — drag
+  predicts monotone loss with no diversity compensation; (2) hold
+  error rate at 0, shrink generator support, measure eval-gate on
+  held-out wide support — coverage predicts the cap. Fence for the
+  quality program: any diet-curation report carries BOTH an
+  error-rate number and a coverage number, never one alone.
+  Attribution: Artin (the frame, twice — raised once before and
+  under-credited), house (the two-sigma split and the residue).
