@@ -155,7 +155,7 @@ convention). Nothing in this section ships its inputs: the demand log
 `checkpoints/moe_gt1_arm0.json`, the trajectory logs under
 `logs/opus/`, and the per-problem logs are all produced by the first
 command you run. A reproduction therefore re-derives the keep-sets
-rather than replaying the house's.
+rather than replaying the original run's.
 
 ### Crest confirmation (VERDICT MOE-GT-1-R5)
 
@@ -277,7 +277,7 @@ The mask arms reuse D3's instrument, `scratch/moe_gt1_arm2.py`, through
 (matched-size random fills over the frozen core). The seed replication
 is three within-seed pairs (1234, 777, 2026), full arm vs masked arm on
 the same device. Enable `PERPROB=1` for the per-answer degeneracy
-readout — the house did not, and booked that as a readout miss; GT-6
+readout — the original run did not, and booked that as a readout miss; GT-6
 collected the degeneracy readout via per-arm probe text instead, with
 PERPROB off, named in its pre-reg.
 Reproduce the direction and the magnitude class, never the digits: the
@@ -306,7 +306,7 @@ both work — a Mac-local cache exists since 2026-08-05). The chunking is
 load-bearing, not cosmetic: Lean aborts a file at ~100 diagnostics and
 in-file `set_option maxErrors` does not lift it, so an unchunked
 single-file check silently truncates while looking complete — this bit
-the house twice before the fix ([VERDICT
+the check twice before the fix ([VERDICT
 LEAN-KERNEL-SAMPLE](RESULTS.md#L20365)).
 
 The 120-gate sigma of about 5 solves is a *mathgen* number;
@@ -320,13 +320,13 @@ claims on those gates.
   reproduce it you must first re-run the crest arm with `PERPROB=1` at
   all seven seeds (111, 222, 333, 555, 4242, 777, 90210) plus their
   paired full arms, and even then your log will not be byte-identical
-  to the house's, which carries two duplicate seed-4242 rows from an
+  to the original, which carries two duplicate seed-4242 rows from an
   aborted write (booked, harmless — the analysis keys by problem). The
   booked readouts are a held-out AUC of 0.679 against a 0.60 bar, and
   an escalation spend of 31 against 23.5 expected. Read the second
   number with its amendment: the 1.5x bar is **unresolved**, not
-  missed — the shortfall is 4.25 solves, inside the house noise fence,
-  from a single n=50 draw.
+  missed — the shortfall is 4.25 solves, inside the measured noise
+  fence, from a single n=50 draw.
 - **Exact solve counts, anywhere.** These are greedy decodes of a
   quantized model on one device family. Reproduce the *direction and
   magnitude class* of a delta, not its digits, and treat any

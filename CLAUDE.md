@@ -78,6 +78,11 @@ implementations. See README for the full inventory and measured numbers.
   2026-07-06 weight-reader ablation — raw weights already readable at
   80.8%, permutation-augmentation (88.4%) beat canonical sorting
   (82.4%); teach invariance, don't impose it.
+- **Front-facing voice (Artin, 2026-08-12; full text in spec
+  2026-08-12 §5b).** README, REPRODUCE, project pages, and public
+  posts use the front-facing style: no deliberation narration, no
+  first person, no em/en dashes in new text, concrete numbers over
+  praise. Ledger register (RESULTS, FINDINGS, handoffs) is unchanged.
 
 ## Machine-specific setup
 

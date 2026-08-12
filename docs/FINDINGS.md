@@ -712,7 +712,7 @@ VERDICT](RESULTS.md#L10676).)
   invisible to duplicate-value tests) or open field_simp
   self-refactoring (78), with ZERO residual and no new class. The
   independent-implementation route: axiom's emitter and oracle
-  against the house's own printer, statement-diff, and Mac-local
+  against the lab's own printer, statement-diff, and Mac-local
   kernel; the failure CLASSIFICATION is house-side sympy equivalence,
   since reconciled against axiom's independent count at the same 222
   and 78. The frozen id list and the labeled taxonomy are committed
@@ -1351,7 +1351,7 @@ regime tag on every bullet is the fence.
   argmax over masked fractions stayed at 45.3% (82/120 against a paired
   full model's 60), so the interior peak's LOCATION did not move the way
   the diet-dose optimum did; the 45.3-versus-50 margin of 7 on that seed
-  is about 1.5 sigma on the house 120-prompt gate and is not resolved by
+  is about 1.5 sigma on the 120-prompt gate and is not resolved by
   it. ([VERDICT MOE-GT-2-D1](RESULTS.md#L19225); [VERDICT
   DIET-COND-SEED](RESULTS.md#L15615).)
 - [SINGLE-SEED] [FORMAT-BOUND]
@@ -1412,7 +1412,7 @@ regime tag on every bullet is the fence.
   the two loudest features say the rescuable failures are MASK-CAUSED
   rather than problem-hard. The escalation spend bar is UNRESOLVED, not
   missed: at the single registered budget the judge recovered 31 solves
-  against 36 needed, a 4.25-solve gap inside the house 120-prompt fence,
+  against 36 needed, a 4.25-solve gap inside the 120-prompt fence,
   while sitting about 2.1 standard deviations above random escalation.
   ([VERDICT CHURN-JUDGE-1](RESULTS.md#L19614); interpretation corrected
   in [AMENDMENT GT2-REVIEW-2](RESULTS.md#L19648).)
