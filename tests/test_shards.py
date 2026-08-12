@@ -1,6 +1,4 @@
 """llmopt.lab.shards — MXFP4 dequant identity + streaming path."""
-import inspect
-import re
 from pathlib import Path
 
 import numpy as np
@@ -12,22 +10,20 @@ ROOT = Path(__file__).resolve().parents[1]
 K3_DEMO = ROOT / "scratch" / "k3_expert_demo.py"
 
 
-def _source_of(path: Path, name: str) -> str:
-    """The named function's source segment from a script file."""
-    text = path.read_text()
-    m = re.search(rf"^def {name}\(.*?(?=^\ndef |^\nclass |\Z)", text,
-                  re.M | re.S)
-    assert m, f"{name} not found in {path}"
-    return m.group(0).strip()
-
-
-def test_dequant_is_verbatim_from_k3_demo():
-    """Dual-copy guard (adoption doctrine): while the scratch original
-    and the lab copy coexist, fixes land in BOTH, same commit."""
+def test_dequant_shim_binds_lab_body():
+    """scratch/k3_expert_demo.py is a line-count-preserving shim for
+    dequant (Phase 3 module 3, 2026-08-12): its dequant IS the lab
+    body, and the booked line anchors (:33 LUT2X, :99 det_gemv,
+    :121 chain — RESULTS.md L15698/L15847) stay on their lines.
+    The exact-value battery below is the behavioral proof that
+    replaced the source-identity guard."""
     if not K3_DEMO.exists():
         pytest.skip("scratch original absent on this checkout")
-    assert (inspect.getsource(shards.dequant).strip()
-            == _source_of(K3_DEMO, "dequant"))
+    text = K3_DEMO.read_text().splitlines()
+    assert "from llmopt.lab.shards import dequant" in text[95]
+    assert text[32].startswith("LUT2X = ")
+    assert text[98].startswith("def det_gemv(")
+    assert text[120].startswith("def chain(")
 
 
 def test_dequant_exact_values():

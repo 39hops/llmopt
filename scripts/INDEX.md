@@ -2001,7 +2001,6 @@ K3-D1: the Kimi-K3 single-expert deterministic demo.
 
 - `_get(url, lo=None, hi=None)`
 - `fetch_expert()`
-- `dequant(packed, scale)` — MXFP4-pack -> (codes2x int64 [out,in], exps int64 [out,groups],
 - `det_gemv(codes2x, exps, x, dev)` — Exact integer y = W @ x on the shipped MXFP4 codes.
 - `chain(deq, dev)` — K3-D2: full deterministic expert forward y = w2 @ (silu(w1@x)
 - `main()`

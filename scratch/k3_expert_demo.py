@@ -79,21 +79,21 @@ def fetch_expert():
     return tensors
 
 
-def dequant(packed, scale):
-    """MXFP4-pack -> (codes2x int64 [out,in], exps int64 [out,groups],
-    fp32 exact dequant). Two 4-bit codes per byte, low nibble first;
-    sign bit 0x8; scale is E8M0: w = e2m1 * 2^(scale-127)."""
-    lo, hi = packed & 0x0F, packed >> 4
-    nib = np.empty(packed.shape[:-1] + (packed.shape[-1] * 2,),
-                   np.uint8)
-    nib[..., 0::2], nib[..., 1::2] = lo, hi
-    sign = np.where(nib & 0x8, -1, 1).astype(np.int64)
-    codes2x = sign * LUT2X[nib & 0x7]
-    exps = scale.astype(np.int64) - 127
-    # exact fp32: codes2x * 2^(exp-1); |w| <= 6 * 2^exp, exact in fp32
-    w = (codes2x.reshape(codes2x.shape[0], -1, 32)
-         * np.exp2(exps - 1.0)[..., None].astype(np.float64))
-    return codes2x, exps, w.reshape(codes2x.shape).astype(np.float32)
+# Phase 3 module 3 (2026-08-12): dequant's body lives in
+# llmopt.lab.shards (canonical since this commit); the import below
+# is a LINE-COUNT-PRESERVING shim — this block occupies exactly the
+# 15 lines the function body did, so the booked line citations into
+# this file stay valid: RESULTS.md L15847 cites
+# k3_expert_demo.py:99-151 (det_gemv/chain, unchanged below) and
+# L15698 cites :33 (LUT2X, kept above for the same reason; only
+# dequant consumed it here). Behavior is pinned by
+# tests/test_shards.py: the exact nibble/scale value battery plus
+# the real-shard streaming test against checkpoints/v4flash_f1
+# (runs where that cache exists). MXFP4 semantics: two 4-bit e2m1
+# codes per byte, low nibble first, sign bit 0x8, E8M0 scales,
+# w = e2m1 * 2^(scale-127) — see the canonical docstring in
+# llmopt/lab/shards.py.
+from llmopt.lab.shards import dequant  # noqa: E402,F401
 
 
 def det_gemv(codes2x, exps, x, dev):

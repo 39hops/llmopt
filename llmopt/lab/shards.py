@@ -5,10 +5,12 @@ byte-range expert fetch (scratch/k3_expert_demo.py, K3-D1 evidence),
 the V4-Flash manifest/shard cache (scratch/v4flash_f1c/d.py, V4-F1*
 evidence), the capacity meter, the anatomy dot views — but none was a
 simple call from inside llmopt, so none got reused. This module is
-the adoption. The scratch originals stay frozen (they are the record
-booked verdicts cite); ``dequant`` and the manifest/tensor readers
-are VERBATIM copies under source-identity guards
-(tests/test_shards.py, the test_lab_adoption pattern).
+the adoption. ``dequant`` is the CANONICAL body since 2026-08-12
+(Phase 3 module 3): scratch/k3_expert_demo.py holds a
+line-count-preserving re-export shim (its booked line citations
+survive). The other scratch originals stay frozen as the record;
+behavior is pinned by tests/test_shards.py (exact-value battery +
+real-shard streaming test).
 
 Typical use (offline anatomy of a 300B-class MoE on 36 GB — weights
 stream one expert at a time, nothing accumulates but metrics):
