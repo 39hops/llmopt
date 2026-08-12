@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-cited 73, cited-but-library 51
+Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-cited 74, cited-but-library 51
 
 ## scratch/
 
@@ -269,6 +269,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | phase4 | phase4_rewrite.py | UNCITED | — | — | — | — |
 | phase4 | phase4_sites.py | spec-cited | specs | specs×3 | — | 1 |
 | phase4 | phase4_unboot.py | UNCITED | — | — | — | — |
+| phase5 | phase5_deadcode.py | spec-cited | specs | specs×1 | — | — |
 | phys | phys_probe.py | UNCITED | — | — | — | — |
 | pincer | pincer_dist_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | pincer | pincer_dist_report.py | UNCITED | — | — | — | 1 |
