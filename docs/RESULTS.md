@@ -27519,3 +27519,113 @@ REFINED block; add "per-epoch boundary reset?" as arm (d).
 FENCES: single seed, Mac/mps, warm diet; crown-line comparison is
 same-device but different provenance/schedule (three named
 confounds stand); gate row to the lake (device=mac-mps, n_seeds=1).
+
+## VERDICT METALLICITY-1: P-METALLICITY FIRES on one of two steps — only the verified diet ignites on this ladder; both degraded grades and the vacuum control stay off it (2026-08-11 night, 3080)
+
+All 16 cells landed inside the window (driver DONE 23:44; no cell
+FAILED, no cell NOT-RUN). Gates are 3080/msearch-family only and are
+never compared to Mac numbers. Receipts frozen as small text under
+`logs/metallicity1/` (17 gate/diet files, 1.8 KB total, plus
+`rowcounts.txt`) per the logs-doctrine text-receipt exception.
+
+GATES (dict, total/120, in-process weights sha printed by gate_eval
+at scripts/step_grpo_micro.py:184 — the hash of the loaded tensors,
+not of the file on disk):
+  z0 vacuum     d32 {3:0,4:0,5:0,6:0,7:0} = 0   0c940f37d4f2cc6f
+                d48 {3:0,4:0,5:0,6:0,7:0} = 0   7951d8403d15dd56
+                d56 {3:0,4:0,5:0,6:0,7:0} = 0   ae8764dec556c6d0
+                d64 {3:0,4:0,5:0,6:0,7:0} = 0   fe585f45460b0a41
+  z1 pop3       d32 {3:0,4:0,5:0,6:0,7:0} = 0   ee0821ea836d8a6e
+                d48 {3:0,4:0,5:0,6:0,7:0} = 0   72d4025cf2a21cc1
+                d56 {3:2,4:0,5:3,6:0,7:0} = 5   e818ec67b55c437b
+                d64 {3:0,4:0,5:1,6:0,7:0} = 1   5a89b41e8eb367af
+  z2 polluted   d32 {3:0,4:0,5:0,6:0,7:0} = 0   cd978c1d31b58a66
+                d48 {3:0,4:0,5:0,6:0,7:0} = 0   75f6100c2535451a
+                d56 {3:1,4:0,5:2,6:0,7:0} = 3   78b351a91ea213de
+                d64 {3:0,4:0,5:0,6:0,7:0} = 0   d7e0b250b2f16a17
+  z3 verified   d32 {3:0,4:0,5:0,6:0,7:0} = 0   724f4f4c99c334f8
+                d48 {3:1,4:0,5:4,6:1,7:0} = 6   266e6fd2e7436601
+                d56 {3:4,4:0,5:6,6:4,7:1} = 15  1f90a3a598b5aee0
+                d64 {3:7,4:0,5:5,6:1,7:1} = 14  f914fcdb75f8fc9d
+Every dict sums to its stated total (house checksum). The trailing
+percent in each gate line is the VALIDITY float, not a solve rate —
+which is why z2_d64 reads "0/120 @ 0.71%" with zero solves and
+z3_d56 reads "@ 12.15%" against 15/120 = 12.50%.
+
+IGNITION WIDTHS (w(Z) = min d with total >= 8):
+  w(z3) = 56    w(z2) = none    w(z1) = none    w(z0) = none
+
+BARS:
+- P-VACUUM (control) HOLDS. z0 is not merely below 8, it is exactly
+  0 at all four widths. Independently corroborated by the birth
+  loss: z0 ends epoch 2 at 2.2576 against 0.5089 / 0.6118 / 0.6131
+  for z3 / z1 / z2 — the token-shuffled cloud carries no learnable
+  structure, so the control fails for the registered reason rather
+  than by accident.
+- P-METALLICITY FIRES, on one of its two steps. Bar 1 asks for
+  w(z3) <= w(z2) <= w(z1) with at least one strict inequality, and
+  z0 < 8 everywhere.
+  ORDERING CONVENTION, stated explicitly because the DEFINITION did
+  not order the "none" value: "none" is read as lying ABOVE the top
+  of the ladder. This is the pre-reg's own pre-data semantics, not a
+  post-hoc choice — REGISTERED PRIOR reads "w(z1) = 64 or none
+  (pollution plus halved unique mass pushes ignition OFF THE LADDER
+  TOP)". Under it: 56 <= none <= none, strict at 56 < none.
+  REFUTED-IF (all three w equal) is not triggered.
+
+WHAT IS AND IS NOT RESOLVED:
+- RESOLVED: w(z3) = 56 vs w(z2) = none. A whole-width, on-ladder
+  vs off-ladder gap — the only comparison here that clears the
+  resolution floor.
+- UNRESOLVED: w(z2) vs w(z1). Both are "none": a tie at the ladder's
+  edge, not a confirmation of ordering. Bar 1's "at least one strict
+  inequality" clause survives on the z3 step alone. The
+  pollution-vs-duplication contrast is untested by this rung.
+- Therefore the licensed claim is NARROWER than "ignition width
+  falls as grade rises": at this micro recipe, only the verified
+  diet ignites on this ladder at all, and every degraded grade sits
+  off it. The monotone ladder is tested at one of its two steps.
+
+FRAGILITY: w(z3) = 56 is threshold-fragile at n=1. z3_d48 = 6
+against a threshold of 8 — a 2-solve gap, well under the 7-solve /
+1.5-sigma floor, single seed. Another seed could read w(z3) = 48.
+The ORDERING is unaffected (either value is strictly below "none"),
+but the number 56 is not itself a resolved quantity.
+
+DIET RECEIPTS + a correction to the pre-reg's own text: rows/sha
+z0 133859 / 8084262fe657fec0, z1 133858 / ca5e960687bcbd58,
+z2 133859 / fcce80d6dd350f6c, z3 133859 / acedf99bf405402a, all four
+re-verified against manifest.ref.json on the 3080 before any cell
+ran. The pre-reg asserts z1 has the "same row count" as the others;
+it has 133858, one short. This is arithmetic, not drift: exact
+duplication of 133859//2 = 66929 unique rows gives 133858, and an
+odd count cannot be hit by doubling. Corrected here for the record.
+POST-STRICT-ENCODE EXPOSURE (the receipt the pre-reg's fence pointed
+at diets.log for, which cannot show it — the counts live in the
+birth logs, now frozen in rowcounts.txt): training sequences
+z0 133842, z1 133430, z2 133443, z3 133454; skipped-as-out-of-
+language 0 / 412 / 403 / 388. A 0.31% spread across grades, with the
+VACUUM CONTROL THE BEST-FED of the four. z0 did not fail for want of
+exposure. All four grades train at vocab 40.
+
+PROVENANCE of the z3 lane (the four cells the amendment says were
+not re-run): confirmed by mtime. metal_z3_d64.pt 20:41 and
+z3_d64_gate.log 20:42 both PREDATE the second run's diets.log at
+22:07, while the z0 lane is 22:13/22:14. Skip-if-gated did its job;
+the z3 shas describe first-run checkpoints, born from a z3 grade
+whose sha is unchanged across both runs.
+
+REGISTERED PRIOR: CORRECT on all three counts — predicted w(z3) <=
+56 (measured exactly 56), w(z1) = 64 or none (measured none), z0
+never ignites (measured 0 everywhere). Logged for track record.
+
+FENCES CARRIED: one device (3080, msearch family; NEVER compared to
+Mac gates); single seed throughout, so no per-cell delta under 7
+solves carries direction — explicitly including z3 d56=15 vs d64=14,
+z1 d56=5 vs d64=1, z1-max 5 vs z2-max 3 (which would INVERT the
+grade order if read, and must not be), and the z1/z2 birth-loss gap
+of 0.0013; z1 and z2 are CONSTRUCTED refinement (answer-shuffle plus
+duplication), so bar 1 firing licenses "constructed refinement moves
+ignition" and says nothing about the farm pipeline — the true
+raw-farm-stream grade remains banked as cell B; the 17:00 window did
+not bind (all 16 cells landed).

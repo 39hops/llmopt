@@ -1,0 +1,16 @@
+z0_d32: 133859 rows; charset 40; uncovered chars: [':', 'C', 'H', 'I', 'S', 'a', 'c', 'e', 'g', 'i'] 133842 sequences, vocab 40 model: 0.1M params on cuda [fast: bf16 + token-budget] 
+z0_d48: 133859 rows; charset 40; uncovered chars: [':', 'C', 'H', 'I', 'S', 'a', 'c', 'e', 'g', 'i'] 133842 sequences, vocab 40 model: 0.3M params on cuda [fast: bf16 + token-budget] 
+z0_d56: 133859 rows; charset 40; uncovered chars: [':', 'C', 'H', 'I', 'S', 'a', 'c', 'e', 'g', 'i'] 133842 sequences, vocab 40 model: 0.4M params on cuda [fast: bf16 + token-budget] 
+z0_d64: 133859 rows; charset 40; uncovered chars: [':', 'C', 'H', 'I', 'S', 'a', 'c', 'e', 'g', 'i'] 133842 sequences, vocab 40 model: 0.5M params on cuda [fast: bf16 + token-budget] 
+z1_d32: 133858 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 412 out-of-language rows (strict encode; historically silently mangled) 133430 sequences, vocab 40 
+z1_d48: 133858 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 412 out-of-language rows (strict encode; historically silently mangled) 133430 sequences, vocab 40 
+z1_d56: 133858 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 412 out-of-language rows (strict encode; historically silently mangled) 133430 sequences, vocab 40 
+z1_d64: 133858 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 412 out-of-language rows (strict encode; historically silently mangled) 133430 sequences, vocab 40 
+z2_d32: 133859 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 403 out-of-language rows (strict encode; historically silently mangled) 133443 sequences, vocab 40 
+z2_d48: 133859 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 403 out-of-language rows (strict encode; historically silently mangled) 133443 sequences, vocab 40 
+z2_d56: 133859 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 403 out-of-language rows (strict encode; historically silently mangled) 133443 sequences, vocab 40 
+z2_d64: 133859 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 403 out-of-language rows (strict encode; historically silently mangled) 133443 sequences, vocab 40 
+z3_d32: 133859 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 388 out-of-language rows (strict encode; historically silently mangled) 133454 sequences, vocab 40 
+z3_d48: 133859 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 388 out-of-language rows (strict encode; historically silently mangled) 133454 sequences, vocab 40 
+z3_d56: 133859 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 388 out-of-language rows (strict encode; historically silently mangled) 133454 sequences, vocab 40 
+z3_d64: 133859 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e'] skipped 388 out-of-language rows (strict encode; historically silently mangled) 133454 sequences, vocab 40 

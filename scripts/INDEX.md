@@ -2136,6 +2136,13 @@ METABOLIC V5 session 1 (spec 2026-07-23-metabolic-v5; dd arm retired per disagre
 - `try_state(cur0, seed0, plies=8)`
 - `probe(tag)`
 
+### scratch/metallicity_diets.py
+METALLICITY-1 diet grades — the same cloud at four refinements.
+
+- `base_rows() -> list[dict]`
+- `write(name: str, rows: list[dict]) -> str`
+- `main() -> None`
+
 ### scratch/moe_gt1.py
 MOE-GT-1 arm 0: the full-residency oracle run (pre-reg 2026-08-03).
 
@@ -2405,6 +2412,15 @@ PACKED CRYSTAL C5 (pre-reg 2026-07-29 night): the tiered pack. matryoshka_d56_3t
 - `squant(x)` — sigma-law quantize; -> (xq, q, bits, nbits_total)
 - `main()`
 
+### scratch/paper_figs.py
+Publication PDF figures for the entropy-bound packing paper.
+
+- `_save(fig, name: str) -> Path`
+- `fig_packing_curve()`
+- `fig_capacity_meter()`
+- `fig_quant_knee()`
+- `fig_symmetry_toll()`
+
 ### scratch/phys_probe.py
 Physics rung 1 probe: greedy emission on held-out phys steps (seeds 17-19), sympy-equivalence in t, fork-isolated. No math gate — the physics expert is vocab-41, a separate model class by design. Usage: phys_probe.py <ckpt>
 
@@ -2634,6 +2650,15 @@ Snap allocation (pre-reg 2026-07-29: attention anatomy 1c). Rational snap at Q=1
 Sensitivity-wall anatomy (Artin 2026-07-27: "find WHERE the wall lives"): single-tensor Q=16 snap ablation on the 19M crystal. For each 2-D tensor alone-snapped (rest fp32), measure teacher-forced divergence vs control on gen-4 rows: mean KL + argmax-flip rate. Localization instrument (CPU, no gate contention with the births); top culprits earn real gates later. House pre-reg guess: head/attn out-projections carry the wall, ffn interiors tolerant.
 
 - `snap(w)`
+
+### scratch/softprompt1.py
+SOFT-PROMPT-1: is there capability behind the tokenizer?
+
+- `with_virtual_tokens(ckpt, d, layers, ffn, heads, dev)` — Model whose vocab is V+P: rows [:V] are the frozen checkpoint,
+- `diet_batches(tok, n_steps, bs=24, seq_cap=192)` — CE batches from the standard diet (same rows the ckpt was
+- `train_prefix(model, tok, prefix_ids, dev, steps)`
+- `gate_with_prefix(model, tok, dev, prefix_ids)` — The standard 120 gate, prompts prefixed with the virtual ids.
+- `main() -> None`
 
 ### scratch/soup_gate.py
 Night-28b soup instrument: plain parameter mean of N checkpoints (same shape), then gate. Usage:   soup_gate.py TAG d layers ffn heads ckpt1 ckpt2 [ckpt3 ...] VOCAB_EXTRA rides (atom order must match the births).

@@ -4006,12 +4006,20 @@ without re-introducing history).
   Snap-a-star has a MEASURED no: init-is-the-address (MERGE-SPACE
   n=3) gives you the seed, but init alone gates ~0, task vectors
   crater 1/120, foreign averages 0/120 — collapse (training) is not
-  skippable; you snap addresses, not objects. Testable residue:
-  ignition mass (min params to gate > 0 at fixed arch family) as a
-  function of diet refinement — the width-floor ladder re-run across
-  refinement grades of the SAME content would put a number on
-  "metallicity". Fusion-rate candidate instrument: solves per diet
-  token (the FA Law rate), not currently first-class. Attribution:
+  skippable; you snap addresses, not objects. The ignition-mass
+  residue is now MEASURED (VERDICT METALLICITY-1, 2026-08-11 night,
+  3080): the width-floor ladder run across four refinement grades of
+  the same content gives ignition widths w(z3 verified) = 56 and
+  w = none for the polluted, Pop-III-duplicated, and token-shuffled
+  vacuum grades — only the verified diet ignites on a d{32,48,56,64}
+  ladder at all. That is a real number on "metallicity", but a
+  PARTIAL one: z1 and z2 tie at "none", so the monotone ladder is
+  tested at one of its two steps and the pollution-vs-duplication
+  contrast stays open. Fences that travel with it: constructed
+  refinement only (answer-shuffle + duplication), not the raw farm
+  stream — that grade remains banked as cell B. Remaining residue:
+  fusion-rate instrument, solves per diet token (the FA Law rate),
+  still not first-class. Attribution:
   Artin (no-dust ask, fusion-as-efficiency), house (Pop III anchor,
   measured fences).
 

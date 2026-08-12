@@ -1563,3 +1563,22 @@ regime tag on every bullet is the fence.
   artifact: factoring the scale exactly removed it with every pinned
   trajectory unchanged. ([VERDICT GRAVMOE-BRUTE-B/C](RESULTS.md#L14936);
   [AMENDMENT RMS-HEADROOM](RESULTS.md#L15053).)
+
+## The ignition ladder and diet refinement
+
+- [SINGLE-SEED] [DEVICE-SCOPED] [REGIME-SCOPED: specified diet and recipe]
+  Across four refinement grades of the same content, only the
+  oracle-verified diet ignited on a width ladder at all: ignition width 56
+  for the verified grade and none at any tested width for the polluted,
+  duplicated, and token-shuffled grades. The vacuum control was the
+  best-fed of the four after strict-encode filtering, so it failed for lack
+  of structure rather than lack of exposure. One of the two ordering steps
+  is resolved — the two degraded grades tie off the ladder, leaving
+  pollution versus duplication untested, and the width 56 itself is
+  threshold-fragile at a single seed.
+  ([VERDICT METALLICITY-1](RESULTS.md#L27523).)
+- [SINGLE-SEED] [DEVICE-SCOPED] [REGIME-SCOPED: specified diet and recipe]
+  A freshly born architecture twin gated between the pre-registered bars,
+  narrowing the growth premium to a few solves — under the resolution floor
+  at one seed, so the premium is neither confirmed nor refuted by this cell.
+  ([VERDICT GROW-DECOMP-1](RESULTS.md#L27494).)
