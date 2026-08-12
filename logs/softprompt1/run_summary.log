@@ -1,0 +1,13 @@
+[gate] weights sha 69b26bd2a30f6e1c
+plain gate: {3: 4, 4: 0, 5: 4, 6: 1, 7: 1} = 10/120
+[gate] weights sha 69b26bd2a30f6e1c
+random-prefix gate: {3: 0, 4: 0, 5: 1, 6: 0, 7: 0} = 1/120
+  prefix step 1/600 ce 1.0315
+  prefix step 100/600 ce 0.6423
+  prefix step 200/600 ce 0.6418
+  prefix step 300/600 ce 0.5785
+  prefix step 400/600 ce 0.5617
+  prefix step 500/600 ce 0.5924
+  prefix step 600/600 ce 0.5827
+[gate] weights sha e81bd0042c29d5f3
+trained-prefix gate: {3: 2, 4: 0, 5: 1, 6: 1, 7: 0} = 4/120

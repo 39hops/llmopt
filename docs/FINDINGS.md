@@ -1582,3 +1582,11 @@ regime tag on every bullet is the fence.
   narrowing the growth premium to a few solves — under the resolution floor
   at one seed, so the premium is neither confirmed nor refuted by this cell.
   ([VERDICT GROW-DECOMP-1](RESULTS.md#L27494).)
+- [SINGLE-SEED] [DEVICE-SCOPED] [REGIME-SCOPED: specified diet and recipe]
+  A virtual-token harness that rebuilds a model at a widened vocabulary
+  and copies the original rows changed the gate reading with no prefix
+  present, while the gate itself reproduced exactly on the stock
+  checkpoint at an identical in-process weights hash. A harness that
+  claims to be a no-op has to be shown to be one, cell for cell, before
+  any treatment cell it produces can be read.
+  ([VERDICT SOFT-PROMPT-1](RESULTS.md#L27633).)

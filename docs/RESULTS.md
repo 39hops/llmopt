@@ -27629,3 +27629,63 @@ duplication), so bar 1 firing licenses "constructed refinement moves
 ignition" and says nothing about the farm pipeline — the true
 raw-farm-stream grade remains banked as cell B; the 17:00 window did
 not bind (all 16 cells landed).
+
+## VERDICT SOFT-PROMPT-1: INSTRUMENT-INVALID — the mechanism control fires; the virtual-token harness perturbs the model with no prefix present (2026-08-11 night, 3080)
+
+Ran to completion on metal_z3_d64 (the verified-grade micro-star born
+in METALLICITY-1) inside the same 3080 window. Receipts frozen in-repo
+at logs/softprompt1/ (cells.json + run_summary.log, 919 B).
+
+CELLS (dict, total/120, in-process weights sha from gate_eval at
+scripts/step_grpo_micro.py:184):
+  plain            {3:4,4:0,5:4,6:1,7:1} = 10   69b26bd2a30f6e1c
+  random_prefix    {3:0,4:0,5:1,6:0,7:0} =  1   69b26bd2a30f6e1c
+  trained_prefix   {3:2,4:0,5:1,6:1,7:0} =  4   e81bd0042c29d5f3
+All three dicts sum to their stated totals. Prefix CE fell 1.0315 ->
+0.5827 over the registered 600 steps, so the prefix did train.
+
+BAR 2 (P-MECHANISM-CLEAN) FIRES, and the pre-reg's own consequence
+applies: |random_prefix - plain| = |1 - 10| = 9 > 7. The untrained
+prefix alone moves the gate past sigma, so bar 1 is UNREADABLE and the
+rung books INSTRUMENT-INVALID exactly as registered. No capability
+claim is made in either direction.
+
+BAR 1 IS NOT SCORED. For the record only, and explicitly NOT a null:
+trained_prefix 4 v plain 10. The registered prior (NO-FIRE) is
+likewise NOT scored — an invalid instrument cannot confirm a prior,
+and booking it as a correct prediction would be reading a broken
+gauge.
+
+THE PERTURBATION IS IN THE HARNESS, NOT THE PREFIX VECTORS. The
+driver's "plain" cell is supposed to be the stock model: no prefix
+ids, virtual logits clamped to -1e9. It reads 10. The SAME checkpoint
+read 14 in METALLICITY-1 (sha f914fcdb75f8fc9d), and re-gating it
+just now reproduced 14/120 {3:7,4:0,5:5,6:1,7:1} at the identical sha
+— so the gate is a deterministic function of the weights and the
+14 is not a sampling fluctuation. gate_eval passes explicit per-rollout
+seeds into sample_wave_lp, which is why it reproduces.
+What differs is the model object: with_virtual_tokens rebuilds at
+vocab V+P and copies rows [:V], giving in-process sha 69b26bd2a30f6e1c
+against the stock f914fcdb75f8fc9d. Rebuild-plus-mask was intended to
+be a no-op on non-virtual ids and measurably is not.
+FENCE ON THAT READING: the 10-v-14 gap is 4 solves, UNDER the 7-solve
+floor, single seed — it is not a direction and is not booked as one.
+What is booked is the provenance fact, which needs no sigma: two
+different weight objects, two different readings, where the harness
+promised one. The sha difference alone is expected (the state_dict
+carries P extra rows); the READING difference is not.
+
+WHAT A RE-REGISTRATION OWES: a no-op-exact check as a gating
+precondition — the V+P harness must reproduce the stock gate dict
+EXACTLY, cell for cell, before any prefix cell is read. Candidates for
+the defect, none of them tested and none asserted here: the
+head.forward monkey-patch interacting with how sample_wave_lp reaches
+the logits; a tied emb/head making the row-copy incomplete; the -1e9
+clamp interacting with the sampler's normalization. Diagnose before
+re-running, not after.
+
+FENCES CARRIED: one device (3080), one checkpoint, single seed
+throughout; P=8 and 600 steps were the registered budget and were not
+altered after seeing data; the prefix trained on diet CE only, never
+on gate problems; the 17:00 window did not bind (the rung completed
+in minutes).

@@ -4068,3 +4068,26 @@ without re-introducing history).
   (frozen), complex_ffn (promoted), p3_quat n=3 wrapper pattern.
   Attribution: house sweep + line verification; the "unclimbed"
   claim above is retracted.
+
+- **BANKED (2026-08-11 night): the optimal input vector — is there
+  capability behind the tokenizer?** (Artin: "what if we just strip
+  away the data completely and just pass in random vectors"). The
+  riff: a model's input is not obliged to be text. If a learned
+  CONTINUOUS prefix raises the gate on frozen weights, then there is
+  capability the tokenizer's discrete alphabet cannot reach, and the
+  alphabet — not the weights — is the binding constraint. Realized as
+  P=8 virtual tokens: the embedding gains 8 trainable rows, every
+  original weight frozen, output logits for the virtual ids clamped so
+  decode can never emit them. FIRST ATTEMPT BOOKED
+  INSTRUMENT-INVALID (VERDICT SOFT-PROMPT-1): the mechanism control
+  fired, and the diagnosis is sharper than the bar required — the
+  harness perturbs the model with NO prefix present. Rebuilding at
+  vocab V+P and copying rows [:V] was meant to be a no-op on ordinary
+  ids; the same checkpoint reads 14/120 stock (reproduced twice, same
+  in-process sha) and 10/120 inside the harness. The gate itself is
+  deterministic given weights, so this is the harness, not noise.
+  The riff is UNTESTED, not refuted — nothing here speaks to whether
+  continuous inputs carry reachable capability. Precondition for any
+  re-run: the V+P harness must reproduce the stock gate dict cell for
+  cell before a single prefix number is read. Attribution: Artin
+  (the ask), house (mechanism, and the control that caught it).
