@@ -19,7 +19,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 |---|---|---|---|---|---|---|
 | absorb | absorb_1e5.py | UNCITED | — | — | — | — |
 | adjudicate | adjudicate_zx.py | library | — | — | 1 | — |
-| anatomy | anatomy.py | results-cited | RESULTS, specs | RESULTS×5, specs×4 | — | 3 |
+| anatomy | anatomy.py | results-cited | RESULTS, specs | RESULTS×5, specs×5 | — | 3 |
 | attractor | attractor_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
@@ -389,7 +389,7 @@ Census: UNCITED 208, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
-|  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×7 | — | 1 |
+|  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×10 | — | 1 |
 | arena | arena.py | UNCITED | — | — | — | — |
 | autopsy | autopsy_int.py | UNCITED | — | — | — | — |
 | backfill | backfill_code_commit.py | spec-cited | specs | specs×3 | — | — |

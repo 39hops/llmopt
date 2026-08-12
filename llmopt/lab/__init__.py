@@ -13,28 +13,24 @@ Canonical bodies (frozen originals re-export from here)
   gate_eval       <- scripts/step_grpo_micro.py (the standard 120 gate)
   Oracle          <- scratch/oracle_worker.py + moe_gt1_arm2
   keepsets        <- scratch/gt2_jaccard.py (GT2 stats re-verified)
-  traj            <- the MoE router-patch path
 
 Written for the package
   LabConfig       from_env(prefix): casts raise, unknown prefixed vars
                   error, resolved config echoed
   hash, jsonl     one digest and one jsonl semantics for the package
-  runfiles        marker contract; refuses a checkpoint with no epoch
-  runlog          streamed per-step receipts (aborted runs still book)
   catalog         checkpoint rows read from state-dict SHAPES only
   merge           average / shell_graft / task_vector, provenance
                   sidecars, never overwrites an existing file
-  lake            Parquet runs/results/models/gates; needs the [lake]
-                  extra (pyarrow, duckdb)
 
-Figure system (submodules — import explicitly, they pull matplotlib
-or torch: `from llmopt.lab import anatomy, figstyle, figsvg, figures`)
-  figstyle        validated palette, vendored fonts, light/dark
-                  CHROME, house rcParams incl. text-face mathtext
-  figsvg          PUBLISHED figures from docs/figures.json (SVG)
-  figures         matplotlib ANALYSIS figures
-  anatomy         weight-space dot views (pca/sphere/polar) for any
-                  neuron matrix; the README hero renders through it
+Moved out in Phase 5 (2026-08-12; old llmopt.lab.<name> paths stay
+valid via alias shims)
+  llmopt.runs     runlog (streamed per-step receipts), runfiles
+                  (marker contract), traj (MoE router-patch path),
+                  lake (Parquet; needs the [lake] extra)
+  llmopt.figures  figstyle (validated palette, house rcParams),
+                  figsvg (PUBLISHED figures from docs/figures.json),
+                  figures (matplotlib ANALYSIS figures), anatomy
+                  (weight-space dot views; the README hero)
 """
 from llmopt.lab.catalog import scan_checkpoint
 from llmopt.lab.config import ConfigError, LabConfig
@@ -45,14 +41,14 @@ from llmopt.lab.jsonl import append_jsonl, read_jsonl, write_jsonl
 from llmopt.lab.keepsets import coverage, decode_counts, jmean, keep
 from llmopt.lab.merge import average, shell_graft, task_vector
 from llmopt.lab.oracle import CheckResult, Oracle
-from llmopt.lab.runfiles import (is_done, rc_of, read_marker,
+from llmopt.runs.runfiles import (is_done, rc_of, read_marker,
                                  require_resume_marker, run_dir,
                                  write_marker)
-from llmopt.lab.runlog import RunLog
+from llmopt.runs.runlog import RunLog
 from llmopt.lab.verify import verify_wave
 
 # lake is NOT imported here: it needs pyarrow at module scope (the
-# [lake] extra). Reach it as `from llmopt.lab import lake`.
+# [lake] extra). Reach it as `from llmopt.runs import lake`.
 __all__ = [
     "CheckResult", "ConfigError", "GRPO_MICRO", "GateSpec", "LabConfig",
     "Oracle", "RunLog", "_gen_isolated", "append_jsonl", "average",

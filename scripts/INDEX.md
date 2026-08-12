@@ -3054,6 +3054,7 @@ Weight-FFT euler read (pre-reg 2026-07-26, RESULTS.md).
 ### llmopt/__init__.py
 llmopt — an oracle-verified mathematics and physics ML lab.
 
+- `__getattr__(name)`
 
 ### llmopt/intmath.py
 The certified integer core of the deterministic-birth program.
@@ -3097,15 +3098,8 @@ llmopt.lab — permanent instruments, adopted from the scripts that proved them 
 
 
 ### llmopt/lab/anatomy.py
-Weight-space anatomy: neurons as dots, reusable for ANY matrix.
+Moved to llmopt.figures.anatomy (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 
-- `_sha8(path: str) -> str`
-- `_repo_head() -> str`
-- `neuron_rows(ckpt: str, key_sub: str='gate.weight')` — All matrices of one family from a checkpoint, rows stacked:
-- `project(W, method: str)` — (xs, ys, mag) for one of pca | sphere | polar.
-- `rank_scale(mag)` — Magnitudes -> uniform [0,1] ranks. Row norms cluster tightly,
-- `render_dot_views(W, out_stem: str, title: str, source_label: str, provenance: str, modes=('dark', 'light'), dpi: int=300) -> list[str]` — The dot-view triptych for ANY neuron matrix.
-- `checkpoint_provenance(ckpt: str) -> str` — Footer text for a checkpoint source: basename + sha256[:8].
 
 ### llmopt/lab/catalog.py
 catalog.py — model-checkpoint catalog rows (logs-doctrine EXHAUST).
@@ -3122,41 +3116,16 @@ lab.config — typed env-var config for arm drivers (spec 2026-08-05-llmopt-lab-
 - `class LabConfig` (from_env, echo)
 
 ### llmopt/lab/figstyle.py
-lab.figstyle — the house figure style: validated palette, vendored fonts, light and dark surfaces.
+Moved to llmopt.figures.figstyle (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 
-- `_register_fonts() -> bool` — Add the vendored fonts to matplotlib. Returns whether Inter is
-- `color(entity: str, index: int=0, mode: str='light') -> str` — Color for a named entity, stable across every house figure.
-- `sequential(n: int) -> list[str]` — n evenly spread steps of the single-hue sequential ramp.
-- `rc(mode: str='light') -> dict` — House rcParams. Recessive chrome, thin marks, real typography.
-- `figure(title: str='', subtitle: str='', mode: str='light', figsize: tuple[float, float]=(7.2, 4.0), **kw)` — A styled figure + axes with house title furniture.
-- `footer(ax, text: str) -> None` — Provenance line under the plot: the sha, the verdict, the fence.
-- `save(fig, name: str, outdir: Path | str | None=None, png: bool=True, svg: bool=True, dpi: int=220) -> list[Path]` — Write the figure. PNG for README/LinkedIn, SVG for the paper.
 
 ### llmopt/lab/figsvg.py
-lab.figsvg — web-grade figures as hand-emitted SVG.
+Moved to llmopt.figures.figsvg (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 
-- `_esc(s) -> str`
-- `_nice_ticks(lo: float, hi: float, target: int=5)` — Ticks a reader can hold in their head: steps of 1, 2, 2.5, or 5
-- `_fmt(v: float, step: float) -> str`
-- `load(name: str) -> dict`
-- `_head(c, w, title, scope, pad_x, y)` — Title block. Returns the y cursor below it.
-- `_fence(c, w, h, pad_x, text)` — The signature element: provenance as part of the figure, not a
-- `gate_track(spec: dict, mode: str='light', width: int=880) -> str` — Fixed-denominator capability, drawn as filled rails.
-- `curves(spec: dict, mode: str='light', width: int=880) -> str` — A measure over a shared x, with direct end labels.
-- `ladder(spec: dict, mode: str='light', width: int=880) -> str` — One measure across an ordered axis, value printed at each point,
-- `_svg(w, h, c, head, body, fence, pad_x) -> str`
-- `composition(spec: dict, mode: str='light', width: int=880) -> str` — One whole, split into labelled parts — a single stacked rail.
-- `render(name: str, mode: str='light', width: int=880) -> str`
 
 ### llmopt/lab/figures.py
-lab.figures — matplotlib chart forms for ANALYSIS figures.
+Moved to llmopt.figures.figures (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 
-- `_both_modes(build, name: str, outdir=None) -> list[Path]` — Render light and dark from one description. Dark is drawn with
-- `gate_bars(name: str, arms: dict, title: str='', subtitle: str='', source: str='', outdir=None)` — arms: label -> (solved, total). Percent bars with solved/total
-- `curves(name: str, xs, series: dict, title: str='', subtitle: str='', xlabel: str='', ylabel: str='', source: str='', logx: bool=False, outdir=None, annotate_last: bool=True)` — series: label -> y values over shared xs. Direct end-labels, no
-- `ladder(name: str, points: dict, title: str='', subtitle: str='', xlabel: str='', ylabel: str='', source: str='', reference: tuple | None=None, entity: str='series', fmt: str='{:.4f}', outdir=None)` — points: ordered x-label -> y. One series across an ordered axis,
-- `scatter(name: str, series: dict, title: str='', subtitle: str='', xlabel: str='', ylabel: str='', source: str='', identity: bool=False, outdir=None)` — series: label -> (xs, ys). Every pair of colors is compared in a
-- `stat(name: str, value: str, label: str, detail: str='', source: str='', entity: str='series', outdir=None)` — A hero number: the finding IS the value, so no chart is drawn.
 
 ### llmopt/lab/gate.py
 lab.gate — the standard 120 gate. CANONICAL BODY since 2026-08-12 (Phase 3 module 5): scripts/step_grpo_micro.py re-exports sample_wave_lp and gate_eval from here via a LINE-COUNT-PRESERVING shim (RESULTS cites lines 65 and 184 inside the original bodies, so the shim keeps those line numbers and quotes the cited fragments in place). Behavior is pinned by tests/test_gate_battery.py (the booked SOFT-PROMPT-1-SAMPLER replay + gate problem-grid pins) and tests/test_lab_adoption.py (shim-binds + lineage-constant + line anchors).
@@ -3196,16 +3165,8 @@ lab.keepsets — keep-set / coalition algebra. CANONICAL BODY since 2026-08-12 (
 - `coverage(demand, kp)` — Count-weighted fraction of `demand` routed inside keep-set kp.
 
 ### llmopt/lab/lake.py
-Parquet lake over the lab's jsonl/file exhaust — QUERY layer, not a write format.
+Moved to llmopt.runs.lake (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 
-- `_write(table: pa.Table, lake_dir: Path, name: str) -> Path`
-- `build_runs(jobs_dir: Path=Path('jobs'), lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — jobs/<id>.{cmd,rc,pid} + <id>.log mtime -> runs.parquet.
-- `build_results(index_path: Path=Path('docs/results-index.jsonl'), lake_dir: Path=DEFAULT_LAKE_DIR) -> tuple[Path, Path]` — docs/results-index.jsonl -> results.parquet + result_edges.parquet.
-- `build_models(catalog_path: Path=Path('data/catalog/models.jsonl'), lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — data/catalog/models.jsonl -> models.parquet; absent file => EMPTY table
-- `build_gates(lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — Materialize an empty gates.parquet with the pinned schema (idempotent;
-- `append_gate(row: dict, lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — Append one gate row. REFUSES (ValueError) rows missing/null in any of
-- `append_weights(rows: list[dict], lake_dir: Path=DEFAULT_LAKE_DIR) -> Path` — Append shards.weigh() rows to weights.parquet. REFUSES rows
-- `query(sql: str, lake_dir: Path=DEFAULT_LAKE_DIR)` — Run duckdb SQL over the lake. Every *.parquet under lake_dir is exposed
 
 ### llmopt/lab/merge.py
 Merge API over house .pt state dicts — average / task_vector / shell_graft.
@@ -3234,22 +3195,12 @@ Standalone oracle worker for timeboxed p.check (MOE-GT-6 v3). CANONICAL BODY sin
 - `main()`
 
 ### llmopt/lab/runfiles.py
-Run-artifact contract — the Spark-_SUCCESS pattern for the lab.
+Moved to llmopt.runs.runfiles (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 
-- `run_dir(name: str, root: str | Path='logs') -> Path` — Create (idempotently) and return logs/<name>/ AT NAME TIME.
-- `_git_sha() -> str`
-- `write_marker(dir_or_path: str | Path, kind: str, rc: int | str, wall_s: float | None=None, artifacts: list[str] | None=None, **extra) -> Path` — Write the run's single marker line, atomically.
-- `read_marker(dir_or_path: str | Path) -> dict | None` — Return the marker dict, or None when absent/unparseable.
-- `is_done(dir_or_path: str | Path) -> bool` — True iff a marker exists AND parses. Absence is 'never ran
-- `rc_of(dir_or_path: str | Path) -> int | None` — The marker's rc as an int, or None for absent/non-integer
-- `require_resume_marker(ckpt: str | Path) -> int` — REFUSE to proceed when a checkpoint exists without its .ep
 
 ### llmopt/lab/runlog.py
-Per-step receipt writer — streaming jsonl rows for long runs.
+Moved to llmopt.runs.runlog (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 
-- `_device() -> str` — Best-effort device string, torch-optional (tests must skip
-- `class FallbackCounters` (bump)
-- `class RunLog` (step, abort, close)
 
 ### llmopt/lab/shards.py
 Streamed big-model weights -> instruments -> lake, as one call each.
@@ -3263,10 +3214,8 @@ Streamed big-model weights -> instruments -> lake, as one call each.
 - `weigh(W, source: str, model: str='', proj: str='') -> dict` — Run the desk instruments on one weight matrix. Returns a flat
 
 ### llmopt/lab/traj.py
-lab/traj — unified MoE router instrument (module 4; DESK TIER ONLY).
+Moved to llmopt.runs.traj (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 
-- `begin_prompt(state, prompt_id)` — The certified per-prompt driver resets (surface 5, A verbatim:
-- `class patch_moe_router`
 
 ### llmopt/lab/verify.py
 lab.verify — the fast wave-verifier. CANONICAL BODY since 2026-08-12 (Phase 3 module 4); scripts/bench_verify_fast.py is a re-export shim that keeps only the parity bench. Originally adopted verbatim from that script 2026-08-06. Behavior pinned by tests/test_lab_adoption.py (shim identity + expected-verdict battery) and tests/test_lab_verify_gen_battery.py (booked Phase D 167/167 replay, RESULTS.md L2871).
