@@ -37,7 +37,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "pytest-cov"]
 # Hugging Face model paths only (4 lazy call sites: static-cache backend,
 # gist context, batching, prefix reuse). Nothing imports transformers at
 # module scope, so the core install does not need it.

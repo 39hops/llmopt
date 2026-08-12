@@ -32,14 +32,24 @@ jobs:
           # transformers is the [hf] extra so a user install stays lean,
           # but CI exercises those paths — a dozen tests build a small
           # Llama to check decoding, caching, and distillation.
-          pip install pytest numpy sympy transformers
+          pip install pytest pytest-cov numpy sympy transformers
           # --no-deps: the deps above are already pinned to CPU wheels,
           # and pyproject asks for torch>=2.4 which would pull the CUDA
           # build over the top of them
           pip install -e . --no-deps
           pip install ruff
       - name: pytest
-        run: pytest tests/ -q
+        run: pytest tests/ -q --cov=llmopt --cov-report=
+      - name: coverage by subpackage
+        # numbers first, ratchets later: no threshold gate, just a
+        # per-subpackage table so lab at 20/20 test files and search
+        # at 7/10 stop reading alike (spec Phase 6.6)
+        run: |
+          for pkg in llmopt/*/; do
+            coverage report --include="$pkg*" 2>/dev/null \
+              | tail -1 | sed "s|^TOTAL|$pkg|"
+          done
+          coverage report | tail -1
       - name: lint (enforced tier)
         run: ruff check llmopt tests scripts
       - name: lint (scratch, report only)
