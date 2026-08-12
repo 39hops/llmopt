@@ -54,7 +54,12 @@ driver or instrument. Do not rewrite what exists, and do not fork a
 frozen family — extend the `llmopt/lab/` module instead. CODEMAP
 gives each file's class (frozen evidence / adopted / disposable).
 
-Then name it after the rung. Requirements learned the hard way:
+Then name it after the rung. NEW DRIVERS SOURCE THE HARNESS:
+`. "$(dirname "$0")/lib/driver.sh"` (scratch/lib/driver.sh) — it
+carries strict mode with pipefail, `llmopt_cd`, `cuda_preamble`,
+`mark_done` (marker on success only), and `wait_for` (pgrep pattern
+must never match the launcher). Frozen drivers are never retrofitted.
+Requirements the harness encodes, learned the hard way:
 
 - `set -eo pipefail`, always. `tee` reports ITS OWN exit code, so
   without pipefail a training process that dies mid-epoch leaves the

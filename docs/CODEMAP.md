@@ -62,7 +62,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | day | day_chain.sh | UNCITED | — | — | — | — |
 | desert | desert_v2.py | spec-cited | specs | specs×1 | — | — |
 | detbwd | detbwd_diet.py | library | RESULTS, specs | RESULTS×6, specs×1 | 2 | — |
-| detbwd | detbwd_gravmoe.py | library | RESULTS, specs | RESULTS×2, specs×27 | 1 | 7 |
+| detbwd | detbwd_gravmoe.py | library | RESULTS, specs | RESULTS×2, specs×27 | 1 | 8 |
 | detbwd | detbwd_mb.py | library | RESULTS, specs | RESULTS×4, specs×7 | 4 | — |
 | detbwd | detbwd_plateau.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | detbwd | detbwd_r1.py | library | RESULTS | RESULTS×3 | 9 | — |
