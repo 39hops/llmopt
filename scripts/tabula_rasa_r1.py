@@ -23,7 +23,7 @@ import sympy as sp
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from llmopt.mathgen.problems import _expression
+from llmopt.search.benchkit import _check, _root
 from llmopt.search.derivation import State, beam_search, successors
 from llmopt.search.proposer import hf_score_fn, make_proposer
 from llmopt.train.lora import apply_lora
@@ -67,22 +67,6 @@ def random_proposer(seed: str):
         return children
 
     return prop
-
-
-def _root(rng, level, kind):
-    if kind == "diff":
-        f = _expression(rng, level)
-        return sp.Derivative(f, X), sp.diff(f, X)
-    while True:
-        g = sp.simplify(sp.diff(_expression(rng, level), X))
-        if g != 0:
-            return sp.Integral(g, X), g
-
-
-def _check(kind, expr, truth):
-    if kind == "diff":
-        return sp.simplify(expr - truth) == 0
-    return sp.simplify(sp.diff(expr, X) - truth) == 0
 
 
 def solve_r0(root, seed):

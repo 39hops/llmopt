@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-cited 72, cited-but-library 51
+Census: UNCITED 207, library 62, reproduce-pinned 10, results-cited 167, spec-cited 73, cited-but-library 51
 
 ## scratch/
 
@@ -266,6 +266,8 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | pack | pack_rans.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | pack | pack_tiered.py | spec-cited | specs | specs×1 | — | — |
 | paper | paper_figs.py | UNCITED | — | — | — | — |
+| phase4 | phase4_rewrite.py | UNCITED | — | — | — | — |
+| phase4 | phase4_sites.py | spec-cited | specs | specs×3 | — | 1 |
 | phys | phys_probe.py | UNCITED | — | — | — | — |
 | pincer | pincer_dist_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | pincer | pincer_dist_report.py | UNCITED | — | — | — | 1 |
@@ -530,7 +532,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 53 | 31 |
-| train | train_nnue.py | library | specs | specs×8 | 1 | 14 |
+| train | train_nnue.py | library | specs | specs×8 | 1 | 11 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | train | train_syndrome_policy.py | results-cited | RESULTS | RESULTS×1 | — | — |

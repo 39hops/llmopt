@@ -7,10 +7,7 @@ sys.path.insert(0, "."); sys.path.insert(0, "scripts")
 A = torch.load("checkpoints/mathnative_gen6_grown.pt", map_location="cpu")
 B = torch.load("checkpoints/metabolic_live.pt", map_location="cpu")
 
-def ternary(w):
-    s = w.abs().mean(dim=1, keepdim=True).clamp(min=1e-8)
-    return torch.where(w.abs() < 0.5*s, torch.zeros_like(w),
-                       torch.sign(w)*s)
+from llmopt.common.quant import ternary  # noqa: E402
 
 tot_d = tot_w = flips = nz = 0
 rows = []

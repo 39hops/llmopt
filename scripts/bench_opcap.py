@@ -15,12 +15,11 @@ import random
 import signal
 
 import sympy as sp
-import torch
 
 from llmopt.mathgen.problems import _expression
 from llmopt.search.derivation import State, is_solved, successors
 from llmopt.search.engine import MarkovPrior
-from llmopt.search.features import N_FEATURES, featurize
+from llmopt.search.benchkit import load_nnue
 
 X = sp.Symbol("x")
 WALL = 240
@@ -28,36 +27,6 @@ WALL = 240
 
 class _Timeout(BaseException):
     pass
-
-
-class NnueEval(torch.nn.Module):
-    # NOTE: mirrors scripts/train_nnue.py NnueEval (scripts aren't a
-    # package); keep the two definitions identical.
-    def __init__(self):
-        super().__init__()
-        self.net = torch.nn.Sequential(
-            torch.nn.Linear(N_FEATURES, 64), torch.nn.ReLU(),
-            torch.nn.Linear(64, 64), torch.nn.ReLU(),
-            torch.nn.Linear(64, 1),
-        )
-
-    def forward(self, x):
-        return self.net(x).squeeze(-1)
-
-
-def load_nnue(path: str):
-    ck = torch.load(path, weights_only=True, map_location="cpu")
-    net = NnueEval()
-    net.load_state_dict(ck["state_dict"])
-    net.eval()
-    mean, std = ck["mean"], ck["std"]
-
-    def h(state: State) -> float:
-        v = torch.tensor([featurize(state.expr)], dtype=torch.float32)
-        with torch.no_grad():
-            return float(net((v - mean) / std))
-
-    return h
 
 
 def best_first(root, budget, prop, h, cap):

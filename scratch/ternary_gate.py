@@ -9,10 +9,7 @@ from llmopt.train.mathnative import MathTokenizer, build_model
 from bench_step_tokens import _gen_isolated
 from bench_verify_fast import verify_wave
 
-def ternary(w):
-    s = w.abs().mean(dim=1, keepdim=True).clamp(min=1e-8)
-    return torch.where(w.abs() < 0.5*s, torch.zeros_like(w),
-                       torch.sign(w)*s)
+from llmopt.common.quant import ternary  # noqa: E402
 
 sd = torch.load("checkpoints/ternary_nnue_latent.pt",
                 map_location="cpu")

@@ -16,9 +16,9 @@ import signal
 import sympy as sp
 import torch
 
-from llmopt.mathgen.problems import _expression
+from llmopt.search.benchkit import _check, _root
 from llmopt.search.derivation import State, is_solved, successors
-from llmopt.search.features import N_FEATURES, featurize
+from llmopt.search.benchkit import load_nnue
 from llmopt.search.proposer import entropy_k, hf_score_fn, \
     make_scoring_proposer
 from llmopt.train.lora import apply_lora
@@ -36,36 +36,6 @@ INCUMBENT = {("diff", 2, 25): 13, ("diff", 2, 50): 15,
 
 class _Timeout(BaseException):
     pass
-
-
-class NnueEval(torch.nn.Module):
-    # NOTE: mirrors scripts/train_nnue.py NnueEval (scripts aren't a
-    # package); keep the two definitions identical.
-    def __init__(self):
-        super().__init__()
-        self.net = torch.nn.Sequential(
-            torch.nn.Linear(N_FEATURES, 64), torch.nn.ReLU(),
-            torch.nn.Linear(64, 64), torch.nn.ReLU(),
-            torch.nn.Linear(64, 1),
-        )
-
-    def forward(self, x):
-        return self.net(x).squeeze(-1)
-
-
-def load_nnue(path: str):
-    ck = torch.load(path, weights_only=True, map_location="cpu")
-    net = NnueEval()
-    net.load_state_dict(ck["state_dict"])
-    net.eval()
-    mean, std = ck["mean"], ck["std"]
-
-    def h(state: State) -> float:
-        v = torch.tensor([featurize(state.expr)], dtype=torch.float32)
-        with torch.no_grad():
-            return float(net((v - mean) / std))
-
-    return h
 
 
 def load_llm():
@@ -109,22 +79,6 @@ def best_first_adaptive(root, budget, scoring_prop, k_policy, h):
             if nodes >= budget:
                 break
     return None
-
-
-def _root(rng, level, kind):
-    if kind == "diff":
-        f = _expression(rng, level)
-        return sp.Derivative(f, X), sp.diff(f, X)
-    while True:
-        g = sp.simplify(sp.diff(_expression(rng, level), X))
-        if g != 0:
-            return sp.Integral(g, X), g
-
-
-def _check(kind, expr, truth):
-    if kind == "diff":
-        return sp.simplify(expr - truth) == 0
-    return sp.simplify(sp.diff(expr, X) - truth) == 0
 
 
 def main(n: int) -> None:

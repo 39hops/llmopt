@@ -18,8 +18,6 @@ THE ARENA: engine vs the 0.5B step-model, same integral, live.
 Failure autopsy for integration: run the best structural engine (bf + NNUE h + markov top-3) at a GENEROUS budget on int L3/L4, and dump every failure — the root integrand plus the best (lowest-h) state the search died on. Both prior ceiling-movers (euler, i_apart) came from reading one failing problem; this reads all of them. Classification of the dump chooses the next rules; frequencies first, code second.
 
 - `class _Timeout`
-- `class NnueEval` (forward)
-- `load_nnue(path: str)`
 - `markov()`
 - `best_first(root, budget, prop, h)`
 - `main(n: int, budget: int) -> None`
@@ -103,12 +101,8 @@ Best-first (priority-queue) search vs synchronized beam — the skeleton where t
 The record attempt: best-first + NNUE h + entropy-gated 0.5B confidence — the three winning components in one search for the first time. Incumbent to beat: bf-nnue + markov top-3 = 113/120 on these exact cells and seeds (bench_bestfirst_nnue.py). Only the new arm runs; compare row-by-row against the recorded incumbent table. "GPU buys confidence, not choice": the LLM's job here is k, not rank.
 
 - `class _Timeout`
-- `class NnueEval` (forward)
-- `load_nnue(path: str)`
 - `load_llm()`
 - `best_first_adaptive(root, budget, scoring_prop, k_policy, h)`
-- `_root(rng, level, kind)`
-- `_check(kind, expr, truth)`
 - `main(n: int) -> None`
 
 ### scripts/bench_bestfirst_nnue.py
@@ -150,8 +144,6 @@ torch.compile impact benchmark: eager vs compiled vanilla vs compiled+lookup.
 Deconfounder for the hybrid 349/360: markov3 fixed-k3 (the engine.solve default) rerun on the same 24-cell matrix WITH today's new rules. The old markov3 reference (316) predates i_cyclic/i_unprod/ i_ansatz_exp/i_linear_basis/smoothing. If this control lands near 349, the operators explain the record and hybrid confidence adds ~nothing; if it lands well below, the LLM-gated k earns real credit.
 
 - `class _Timeout`
-- `_root(rng, level, kind)`
-- `_check(kind, expr, truth)`
 - `main(n: int) -> None`
 
 ### scripts/bench_decoding.py
@@ -432,8 +424,6 @@ ODE engine rung 1 (the ENGINE-shaped physics rung; generator llmopt/mathgen/odes
 Cheap-simplify budgets (autopsy rung 4 candidate): the remaining int L4 failures are 10/11 WALL timeouts — expression-size economics, not missing operators. Lever: size-cap pruning — children whose count_ops exceeds cap are discarded before their sympy costs are paid. Arms: no cap / 300 / 150. Reports solves AND timeout counts per arm. bf-nnue + markov3 (the champion structural config), int L4, budget 400.
 
 - `class _Timeout`
-- `class NnueEval` (forward)
-- `load_nnue(path: str)`
 - `best_first(root, budget, prop, h, cap)`
 - `_root(rng, level)`
 - `main(n: int, budget: int) -> None`
@@ -537,8 +527,6 @@ Do the timeout campaign's winners COMPOSE? Lazy expansion (+2 solves, timeouts 4
 
 - `class _Timeout`
 - `best_first(root, budget, expand, h, magic)`
-- `_root(rng, level, kind)`
-- `_check(kind, expr, truth)`
 - `main(n: int, budget: int) -> None`
 
 ### scripts/bench_stacked.py
@@ -1114,8 +1102,6 @@ Tabula rasa round 1 (spec: 2026-07-07-tabula-rasa-design.md): the from-scratch l
 - `count_ops_eval(state: State) -> float`
 - `load_tr_proposer()`
 - `random_proposer(seed: str)`
-- `_root(rng, level, kind)`
-- `_check(kind, expr, truth)`
 - `solve_r0(root, seed)`
 - `solve_r1(root, prop)`
 - `path_rows(root, history)`
@@ -1256,7 +1242,6 @@ Validity autopsy: WHERE do the ~38% invalid steps go wrong?
 ### scratch/absorb_1e5.py
 Absorption decider: LR 1e-5 (the pilot's regime), 25-min STE burst on cuda, late layers, band 98M. Counts fp32 updates where w+delta == w (learning lost to rounding). Paired proxy pre/post.
 
-- `ternary(w)`
 - `class TLin` (forward)
 
 ### scratch/adjudicate_zx.py
@@ -1438,7 +1423,6 @@ Symmetry ladder S2 (pre-reg 2026-07-28): complexification control. Double wfloor
 ### scratch/confluence.py
 Metabolic-vs-champion confluence: where did 471 signed rows land? Per-matrix ||dW||, effective rank of delta, top-layer localization, ternary flip census (would the 1.58-bit deployment even change?).
 
-- `ternary(w)`
 
 ### scratch/corner_snap.py
 The compression corner (pre-reg 2026-07-28 night): rational- snap (direct, exact-best p/q, q <= Q) x {dense wfloor d256, circulant-8x substrate}, Q in {8, 16}. Paired gates on one device. Delta-of-deltas reads orthogonality of the bits and sharing compression axes. Snap code inlined from scratch/rational_snap.py (same operator, no subprocess).
@@ -2834,12 +2818,10 @@ TENET W1-S: the feature-surface ladder on the EXISTING W1 population (queued by 
 ### scratch/ternary_control.py
 Deploy-ternarize the NNUE-metabolized latents, honest gate + L9 probe on cuda. Doctrine: gate the DEPLOYED 1.58-bit snapshot.
 
-- `ternary(w)`
 
 ### scratch/ternary_gate.py
 Deploy-ternarize the NNUE-metabolized latents, honest gate + L9 probe on cuda. Doctrine: gate the DEPLOYED 1.58-bit snapshot.
 
-- `ternary(w)`
 
 ### scratch/ternary_session2.py
 Ternary compounding session #2 (Mac, MPS lineage, paired gates): the doctrine-composed organism — STE ternary latents, LATE layers only (8-11), LR 1e-4 cap, ABSOLUTE-anchor tripwire, fp32-vs-fp64 update-absorption instrument riding along. Pre/post MPS gates make it a clean paired delta.
@@ -3389,6 +3371,14 @@ External-slot callbacks for axiom's hybrid engine config.
 - `heurisch(node_sstr: str) -> list[str]`
 - `_equiv_worker(lhs: str, rhs: str, q) -> None`
 - `equivalence(lhs_sstr: str, rhs_sstr: str) -> str`
+
+### llmopt/search/benchkit.py
+Shared bench harness helpers (spec 2026-08-12 §4.2), adopted verbatim from the six identical script copies (bench_control lineage for _root/_check; train_nnue/autopsy_int lineage for NnueEval + load_nnue). Divergent copies stay in place untouched: gen_proposer_data.py (_root without the int arm's simplify loop) and train_nnue.py (single-value _root).
+
+- `_root(rng, level, kind)`
+- `_check(kind, expr, truth)`
+- `class NnueEval` (forward)
+- `load_nnue(path: str)`
 
 ### llmopt/search/derivation.py
 Derivation search: Stockfish-for-math foundations (roadmap #1).

@@ -19,7 +19,7 @@ import sympy as sp
 sys.path.insert(0, "scripts")
 from bench_lazy import lazy_children, make_rankers  # noqa: E402
 from bench_magic import is_dead, load_nnue  # noqa: E402
-from llmopt.mathgen.problems import _expression  # noqa: E402
+from llmopt.search.benchkit import _check, _root  # noqa: E402
 from llmopt.search.derivation import State, is_solved, successors  # noqa: E402
 
 X = sp.Symbol("x")
@@ -52,22 +52,6 @@ def best_first(root, budget, expand, h, magic):
             if nodes >= budget:
                 break
     return None
-
-
-def _root(rng, level, kind):
-    if kind == "diff":
-        f = _expression(rng, level)
-        return sp.Derivative(f, X), sp.diff(f, X)
-    while True:
-        g = sp.simplify(sp.diff(_expression(rng, level), X))
-        if g != 0:
-            return sp.Integral(g, X), g
-
-
-def _check(kind, expr, truth):
-    if kind == "diff":
-        return sp.simplify(expr - truth) == 0
-    return sp.simplify(sp.diff(expr, X) - truth) == 0
 
 
 def main(n: int, budget: int) -> None:
