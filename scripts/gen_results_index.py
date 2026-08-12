@@ -1,8 +1,9 @@
 """Generate/refresh docs/results-index.jsonl from RESULTS.md.
 
 Auto-extracts id/date/title/line/type per entry; PRESERVES any
-hand-curated fields (threads, verdict, amends, superseded_by) from
-the existing index on regeneration (merge by id). Entries whose
+hand-curated fields (threads, verdict, amends, superseded_by,
+links, code_commit) from the existing index on regeneration
+(merge by id). Entries whose
 title marks them as amendments but lack an `amends` link get
 `needs_link: true` for incremental curation.
 
@@ -110,7 +111,8 @@ for idx, ln in enumerate(header_lines):
     e["threads"] = infer_threads(title)
     e["files"] = extract_files(body)
     prev = old.get(eid, {})
-    for k in ("threads", "verdict", "amends", "superseded_by", "links"):
+    for k in ("threads", "verdict", "amends", "superseded_by", "links",
+              "code_commit"):
         if k in prev:
             e[k] = prev[k]
     if "amends" in e:
