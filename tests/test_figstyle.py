@@ -167,3 +167,16 @@ def test_nice_ticks_are_round_numbers():
         __import__("math").log10(step))
     assert round(mantissa, 6) in (1.0, 2.0, 2.5, 5.0), step
     assert lo <= 0.2899 and hi >= 2.2529
+
+
+def test_continuous_magnitude():
+    import matplotlib
+    dark = figstyle.continuous("magnitude", "dark")
+    light = figstyle.continuous("magnitude", "light")
+    assert isinstance(dark, matplotlib.colors.Colormap)
+    assert isinstance(light, matplotlib.colors.Colormap)
+    # per-surface slices differ: dark keeps the luminous top, light
+    # drops the near-white top
+    assert dark(0.9) != light(0.9)
+    with pytest.raises(ValueError):
+        figstyle.continuous("volume", "dark")

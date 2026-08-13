@@ -121,7 +121,6 @@ def render_dot_views(W, out_stem: str, title: str, source_label: str,
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    from matplotlib.colors import LinearSegmentedColormap
 
     from llmopt.figures import figstyle
 
@@ -131,10 +130,7 @@ def render_dot_views(W, out_stem: str, title: str, source_label: str,
     for mode in modes:
         c = figstyle.CHROME[mode]
         plt.rcParams.update(figstyle.rc(mode))
-        ramp = figstyle.SEQUENTIAL
-        if mode == "dark":  # bright end = high magnitude on dark
-            ramp = list(reversed(ramp))
-        cmap = LinearSegmentedColormap.from_list("house-seq", ramp)
+        cmap = figstyle.continuous("magnitude", mode)
 
         fig = plt.figure(figsize=(13.5, 5.4))
         grid = fig.add_gridspec(1, 3, wspace=0.14, left=0.045,

@@ -139,6 +139,33 @@ def sequential(n: int) -> list[str]:
     return [SEQUENTIAL[round(i * step)] for i in range(n)]
 
 
+# Per-surface slice of the inferno ramp for magnitude coloring (the
+# crystal-era look: scratch/crystal_recreate_test.py uses inferno).
+# Dark keeps the luminous top; light drops the near-white/yellow top so
+# high-magnitude dots stay visible on the light surface. Endpoints are
+# frozen in tests/test_figstyle.py once tuned against both surfaces.
+CONTINUOUS_SLICES = {
+    ("magnitude", "dark"): (0.12, 1.0),
+    ("magnitude", "light"): (0.0, 0.82),
+}
+
+
+def continuous(kind: str, mode: str = "light"):
+    """Continuous colormap for a data job. Only kind="magnitude" is
+    defined: an inferno slice, cut per surface (see CONTINUOUS_SLICES).
+    Returns a matplotlib Colormap."""
+    import numpy as np
+    from matplotlib.colors import LinearSegmentedColormap
+
+    key = (kind, mode)
+    if key not in CONTINUOUS_SLICES:
+        raise ValueError(f"no continuous ramp for {kind!r} in {mode!r} mode")
+    start, end = CONTINUOUS_SLICES[key]
+    base = plt.get_cmap("inferno")
+    colors = base(np.linspace(start, end, 256))
+    return LinearSegmentedColormap.from_list(f"house-{kind}-{mode}", colors)
+
+
 # ------------------------------------------------------------ rcParams
 
 
