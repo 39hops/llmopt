@@ -30,6 +30,7 @@ SCENES = {
     "expert_atlas": ("ExpertAtlas", 12.7, False),
     "training_morph": ("TrainingMorph", 8.0, True),
     "crest_race": ("CrestRace", 8.5, True),
+    "phase_portrait": ("PhasePortrait", 17.5, False),
 }
 
 GIF_VF = ("fps=9,scale=560:-1:flags=lanczos,"
