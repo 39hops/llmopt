@@ -4195,3 +4195,51 @@ without re-introducing history).
   already exists) and look for regime structure. Attribution: Artin
   (the frame and the render-the-models ask), 2swap (the visual
   reference), house (breaks + residue).
+
+- **BANKED (2026-08-13): the static figure stack has well-reasoned
+  FORMS but uncomposed COMPOSITIONS — four named repairs (render
+  driver, anim guards, paired-slope form, palette ruling)** (Artin
+  asked for the assessment and for these to be banked; house
+  diagnosis). The mapping: `llmopt/figures/figures.py` (matplotlib,
+  analysis) and `figsvg.py` (hand-emitted SVG, published) ship a
+  FORM CATALOG (gate_bars/curves/ladder/scatter/stat) that answers
+  "which chart", while the animation work of the same day was handed
+  a LAYER GRAMMAR (field/actors/memory/geometry/text/receipt) that
+  answers "what dominates the frame". Every static figure therefore
+  carries uniform ink weight with no foreground/recessive split.
+  Measured anchors (verified in-session, 2026-08-13): (1) NO render
+  driver exists for animations — `scripts/render_gallery.py` and
+  `render_hero_neurons.py` cover statics, the anim render/GIF/poster
+  recipe lives only in `docs/assets/README.md` prose, and a zsh
+  word-splitting bug silently rendered and copied NOTHING in this
+  session's first triplet attempt (caught by reading output, not by
+  a guard); poster timing is hand-computed as `duration - 3.4`,
+  which breaks when any beat length changes. (2) ZERO tests
+  reference the anim pipeline (`grep -rln anim tests/` empty) while
+  statics carry test_asset_links, the gen_readme honesty recount,
+  and the frozen-ramp test; the committed `data/anim/*.npz` bake in
+  `head: aff9247` and cite checkpoint shas nothing re-verifies. (3)
+  `docs/figures.json` routing_crest now carries `seed_pairs`
+  (63->80, 73->82, 63->81, verified against RESULTS.md#L18927) that
+  NO renderer can draw — `gate_track` still emits "mean of 3" rails,
+  so the published figure shows the weakest form of its own
+  evidence. (4) two palettes ship side by side: SERIES_LIGHT/DARK
+  categorical (#2a78d6/#eb6834/#1baf7a) in statics v the inferno
+  magnitude ramp in animations. Honest breaks: the two-renderer
+  split is DELIBERATE and documented (matplotlib for paper-grade
+  vector, SVG for web-grade detail) — this bank does not propose
+  merging them; the Chrome-dependent PNG capture is likewise a named
+  Mac-only choice, not drift; and "uncomposed" is a craft judgement,
+  not a measurement — no reader study backs it. The palette split is
+  DEFENSIBLE on its face (categorical encodes arm identity,
+  continuous encodes magnitude) and the bank asks for an explicit
+  ruling, not a presumed error. Testable residue: (a) a guard that
+  re-hashes every checkpoint cited by a committed npz and fails on
+  mismatch is runnable TODAY and either fires or does not — that is
+  a real bit of information about whether shipped animations match
+  their claimed weights; (b) paired-slope v mean-rails is the one
+  composition claim with a cheap empirical test — show both forms of
+  routing_crest and ask a reader what the evidence is; if the answer
+  does not change, the composition thesis is weaker than claimed.
+  Attribution: Artin (the ask, the banking instruction), house (the
+  diagnosis and the four repairs).
