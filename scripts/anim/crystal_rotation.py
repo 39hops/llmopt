@@ -1,4 +1,4 @@
-"""CrystalRotation flagship: the same 12,288 weight vectors reveal
+"""RETIRED (Artin ruling 2026-08-13): kept as record; assets frozen in docs/assets/archive/2026-08-13/. CrystalRotation: the same 12,288 weight vectors reveal
 different structure under three mathematical views. Cinematic cut:
 open inside the cloud, pull back, ignite a tracked subset over the
 density field, morph PCA -> sphere -> polar with decaying

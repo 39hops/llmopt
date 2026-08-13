@@ -60,7 +60,11 @@ mid-scene frame, the reduced-motion path is poster + MP4 link.
 **[H] historic / frozen pixels** — no surviving script+checkpoint
 pair, or cited by a booked entry as-is. Evidence record: never
 regenerate, never delete without an Artin GO, never point new docs
-at them. Files live under `archive/2026-08-12/`, including
+at them. Files live under `archive/<date>/`. `archive/2026-08-13/` holds the
+retired crystal_rotation triplets (animation retired by Artin ruling
+2026-08-13 — a projection morph of one frozen checkpoint has no
+genuine dynamics; the scene script stays in scripts/anim/ as record).
+`archive/2026-08-12/` includes
 `neurons-19m.png` (the old hero — cited by
 `scratch/crystal_recreate_test.py`; its caption text is superseded,
 which is WHY it is frozen rather than shipped), `neurons-19m-zoom.png`,
