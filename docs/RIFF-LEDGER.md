@@ -4163,3 +4163,35 @@ without re-introducing history).
   fence: engines stay math/physics only, per the lab charter.
   Attribution: Artin (the frame and the multi-engine question),
   Grok (the three-part break), house (the union-ranker residue).
+
+- **BANKED (2026-08-13): training is a double pendulum in momentum
+  space — birth energy is a controlled chaos knob, and the model's
+  weight trajectory is a phase-space object worth rendering
+  directly** (Artin, from 2swap's "Double Pendulums are Chaoticn't";
+  the video is also the adopted visual north star for house
+  animations, storyboard doc 2026-08-13). The mapping / the math: a
+  double pendulum's momentum-space portrait separates ordered
+  (low-energy, quasi-periodic) from chaotic (high-energy) regimes
+  with a visible boundary; training = a trajectory through weight
+  phase space where the "starting speed" (init scale, birth
+  precision class, lr) sets which regime the dynamics explore, and
+  the useful region may sit near the order-chaos boundary. Measured
+  anchors: none direct — nearest house results are init-is-the-
+  address (independent-init merges gate 0/120 x6, REPLICATED n=3;
+  BOARD 08-11) showing init selects a basin the way pendulum initial
+  conditions select an island, and ATTRACTOR-0's single-basin
+  reading; neither measured an order-chaos BOUNDARY. Honest breaks:
+  the pendulum has 2 DOF and a conserved Hamiltonian; SGD is
+  dissipative, stochastic, and ~10^7-dimensional — no conserved
+  energy, no Poincare section without a projection choice, and
+  "higher lr = more chaos" is a loose association, not a measured
+  Lyapunov statement. Chaos here is a metaphor until a divergence
+  rate is actually measured. Testable residue: (1) twin births at
+  epsilon-separated inits across a birth-energy ladder (init scale
+  or lr), measure weight-space divergence rate per step — does a
+  sharp boundary exist in the knob, and does best capability sit
+  near it? (2) render ep0/ep1/final checkpoint trajectories in a
+  fixed projection (the training_morph fixed-basis instrument
+  already exists) and look for regime structure. Attribution: Artin
+  (the frame and the render-the-models ask), 2swap (the visual
+  reference), house (breaks + residue).
