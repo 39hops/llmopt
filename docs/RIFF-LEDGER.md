@@ -4348,3 +4348,40 @@ without re-introducing history).
   flight at bank time) is the ORDER half of the same pincer.
   Attribution: Artin (the ask, the skip frame), house (the
   recurrence break + compression-ladder operationalization).
+
+- **BANKED (2026-08-13): the ENGINE trains the model — build a tree
+  over the weights' phase space and lead the way; "take all the data
+  at once, compute the entire layout"** (Artin, same evening as the
+  n-log-n bank; the sharpened form of it). The frame: training looks
+  like a deterministic path chosen by (init, data); the engine
+  already GIVES us the data; so let the engine compute the
+  destination instead of the model walking there. Measured anchors,
+  and they are strong today: BACKWARD-SCHEDULE-1 (the lr sequence
+  played backwards lands 62/120 vs 64 with the SAME L4=7 dip — the
+  destination barely depends on the path); CAP-V-TRAJ-1 (capability
+  built by ~70% of the walk); init-is-the-address REPLICATED n=3
+  (the init picks the basin); weight-reader 88.4% (function IS
+  readable from weights when permutation-invariance is taught).
+  Honest breaks: (1) no closed form exists for nonconvex deep nets
+  — "all data at once" solves linear models only; SGD is the
+  solver, not overhead; (2) a tree keyed on RAW (weight, magnitude)
+  coordinates indexes gauge garbage — permutations/rescalings
+  preserve the function (the never-score-by-weight-distance
+  doctrine), so any such structure must be keyed on FUNCTION
+  (oracle behavior), not coordinates; (3) the engine already trains
+  the model in the weaker sense — expert iteration is
+  engine-generates-verified-data — so the bank's genuinely new claim
+  is ENDPOINT PREDICTION, not data generation. Testable residue:
+  AMORTIZED-BIRTH at d64 scale, where dozens of booked births
+  exist: learn a predictor (init, diet-id) -> final weights across
+  seed pairs, score the PREDICTED weights by running them against
+  the standard gate (oracle-scored, never weight distance; the
+  weight-reader permutation lesson applies to the target too). A
+  cheaper first rung: predict final FUNCTION only (per-level gate
+  profile) from the init + first-K-step trajectory summary — if
+  even the profile is unpredictable from the early walk, the full
+  endpoint is dead on arrival. Schedule-invariance (today) makes
+  both better-posed: the target is ~f(init, data), one fewer
+  argument than feared. Attribution: Artin (the frame, the tree,
+  the all-data-at-once ask), house (the gauge break + the
+  amortized-birth operationalization).
