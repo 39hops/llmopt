@@ -462,7 +462,7 @@ Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | bench | bench_temp_race.py | UNCITED | — | — | — | — |
 | bench | bench_tree_verify.py | UNCITED | — | — | — | — |
 | bench | bench_triton_kernels.py | UNCITED | — | — | — | 1 |
-| bench | bench_verify_fast.py | library | specs | specs×4 | 46 | 2 |
+| bench | bench_verify_fast.py | library | RESULTS, specs | RESULTS×1, specs×4 | 46 | 2 |
 | bench | bench_vge.py | spec-cited | specs | specs×1 | — | — |
 | bench | bench_weight_anatomy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | bench | bench_zx.py | results-cited | RESULTS | RESULTS×1 | — | — |
