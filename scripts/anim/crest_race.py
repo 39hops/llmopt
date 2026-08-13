@@ -2,7 +2,7 @@
 as zero-anchored rails on black, one seed at a time.
 
 Data: docs/figures.json routing_crest (seed_pairs + control arms) via
-data/anim/crest.npz — numbers never typed here. Each seed's rail runs
+data/anim/crest.npz — values derive from the npz; the +7 bar and seed-1234 scope quote the fence. Each seed's rail runs
 0..120; the full-model fill draws first, then extends to the masked
 value, the paired delta labelled. Unpaired zero controls sit in a
 visually separate muted block. Receipt on its own end card.
@@ -80,7 +80,8 @@ class CrestRace(MovingCameraScene):
         ctl_text = Text(f"unpaired controls (seed 1234):  {ctl}",
                         font="Inter", font_size=16, color=C["muted"]
                         ).move_to([0, -2.6, 0])
-        pooled = Text("pooled +14.7 v a +7 bar, three paired seeds",
+        mean_d = float((ARR["mask"] - ARR["full"]).mean())
+        pooled = Text(f"pooled +{mean_d:.1f} v a +7 bar, three paired seeds",
                       font="Inter", font_size=20, color=C["secondary"]
                       ).move_to([0, -1.95, 0])
         self.play(FadeIn(pooled, run_time=0.5))
@@ -88,10 +89,20 @@ class CrestRace(MovingCameraScene):
         self.wait(1.6)
 
         self.play(*[FadeOut(m) for m in self.mobjects], run_time=0.7)
+        # Full fence, word-wrapped — a receipt must never truncate
+        # its own scope fences.
+        words, lines, cur = META["fence"].split(), [], ""
+        for w in words:
+            trial = f"{cur} {w}".strip()
+            if len(trial) > 72 and cur:
+                lines.append(cur)
+                cur = w
+            else:
+                cur = trial
+        lines.append(cur)
+        lines.append(f"@ {META['head']}")
         fence = VGroup(*[
             Text(line, font="JetBrains Mono", font_size=13,
-                 color=C["muted"])
-            for line in (META["fence"][:70], META["fence"][70:140],
-                         f"@ {META['head']}")]).arrange(DOWN, buff=0.2)
+                 color=C["muted"]) for line in lines]).arrange(DOWN, buff=0.2)
         self.play(FadeIn(fence, run_time=0.5))
         self.wait(2.4)

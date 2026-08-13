@@ -31,7 +31,7 @@ owns only composition, timing, and camera choreography. The existing frozen
 
 **Interfaces:**
 - Produces: `phase_luminance`, `canyon_points`,
-  `perspective_projection`, `deterministic_focus_pair`, and `block_field`.
+  `perspective_projection`, `deterministic_focus_pair`, `block_field`, and `rail_fraction` (canyon_points was cut in review: unused + per-array normalization contradicted the shared-scale contract).
 
 - [x] Write failing tests for shared phase scale, discrete cell geometry,
   stable pairing, dark gutters, and perspective depth.

@@ -24,7 +24,7 @@ this file) are link-checked (`tests/test_asset_links.py`).
 
 **[PUBLISHED]** — carries booked numbers, cited by README/paper.
 Single source of truth is `docs/figures.json`; renderers are
-`llmopt/lab/figsvg.py` (SVG) + `scripts/gen_figures_web.py`
+`llmopt/figures/figsvg.py` (SVG) + `scripts/gen_figures_web.py`
 (SVG -> PNG via headless Chrome, Mac-only). Regenerate, never edit
 pixels. Files: `web/*.{svg,png}` (light + `-dark` pairs).
 
@@ -53,8 +53,8 @@ triplet under `anim/`. Scene data is precomputed from real artifacts
 npz) and scenes (`scripts/anim/`) render numpy-only in `.venv-anim`
 (manim CE; see scratch/manim_feasibility_2026-08-13.md). Regenerable:
 precompute + `manim -qh` + the ffmpeg palette encode. Provenance
-outro frame is part of every scene. Each scene also ships a
-`-light` triplet (`ANIM_MODE=light` at render time); posters are a
+outro frame is part of every scene. Scenes ship a `-light` triplet (`ANIM_MODE=light`) where the
+render_anim registry says so (expert_atlas is dark-only); posters are a
 mid-scene frame, the reduced-motion path is poster + MP4 link.
 
 **[H] historic / frozen pixels** — no surviving script+checkpoint
@@ -70,7 +70,7 @@ which is WHY it is frozen rather than shipped), `neurons-19m-zoom.png`,
 
 - New figures land as [PUBLISHED] (numbers) or [HERO]/[R] (weight
   renders). [H] only grows by freezing, never by authoring.
-- Style for anything new: `llmopt/lab/figstyle.py` (validated
+- Style for anything new: `llmopt/figures/figstyle.py` (validated
   palette, vendored fonts, light+dark CHROME). The old dark-github
   `#0d1117` look in [R]/[H] files is historical; do not imitate it.
 - `figs/<date>/` at repo root is run exhaust from gallery batteries

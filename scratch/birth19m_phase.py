@@ -14,7 +14,7 @@ every MILESTONE_EVERY optimizer steps (not per epoch), and each
 milestone carries {"model", "opt", "step"} — Adam state included.
 
 Milestones land in checkpoints/phase19m/ (untracked, ~227MB each;
-budget ~17 x 227MB = 3.9GB (~14,840 steps projected)). Set MILESTONE_EVERY to tune density;
+budget 18 x 227MB = 4.1GB (15,420 steps, EVERY=900)). Set MILESTONE_EVERY to tune density;
 default aims at ~15 milestones across the run.
 
 Usage: SEED=2 .venv/bin/python scratch/birth19m_phase.py

@@ -15,7 +15,7 @@ under three mathematical views.
 |---|-----|-------|--------|
 | 1 | 0.0-2.5 | INSIDE the PCA cloud, dots nearly edge-to-edge; opening claim "12,288 weight vectors - one model" fades in and OUT | slow drift; camera already moving |
 | 2 | 2.5-5.0 | camera pulls back; the full geometry lands; direct label "PCA - global variation" appears beside the cloud, brief | continuous zoom-out |
-| 3 | 5.0-6.5 | 60 tracked neurons ignite (magnitude ramp + stroke); the other 2,900 dots recede to a quiet density field | opacity crossfade, no text |
+| 3 | 5.0-6.5 | 16 tracked neurons ignite (magnitude ramp + stroke); the other 2,900 dots recede to a quiet density field | opacity crossfade, no text |
 | 4 | 6.5-9.5 | morph PCA -> SPHERE; tracked neurons draw motion trails; label "SPHERE - magnitude removed" briefly near the cloud | correspondence-preserving morph |
 | 5 | 9.5-12.5 | morph SPHERE -> POLAR; trails continue; label "POLAR - phase vs magnitude" | same |
 | 6 | 12.5-15.5 | cloud settles left; two small data-true echoes (PCA, SPHERE) fade in right, tracked neurons highlighted in all three - the composed conclusion; provenance fence, small, 1.2s | settle + compose |
