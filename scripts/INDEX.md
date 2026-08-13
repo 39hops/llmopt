@@ -1324,6 +1324,13 @@ BASIN-1: routing basin radius v usage. CPU. Usage: SEED=1 python scratch/basin_p
 
 - `main()`
 
+### scratch/birth19m_phase.py
+PHASE-PORTRAIT-1 instrument run: a fresh 19M-class birth with STEP-LEVEL milestone saves INCLUDING optimizer state, so a true per-neuron (angle, angular-velocity) phase portrait exists — position from the weights, momentum from Adam's exp_avg, velocity from adjacent milestones. The pendulum riff's residue (RIFF-LEDGER 2026-08-13), instrument-grade.
+
+- `excised_load_rows(*a, **kw)`
+- `capture_build(*a, **kw)`
+- `tee_step(self, *a, **kw)`
+
 ### scratch/birth19m_snaps.py
 Gallery instrument run: a fresh 19M-class birth with PER-EPOCH snapshots, so the 113M-style growth render (plot_neurons --displace, the recovered whisper-zoom instrument) exists for the 19M line as [R]-reproducible (Artin's ask 2026-08-08; the frozen crystal-era files have no surviving pair). Also feeds the calibrated internet-vs-native displacement comparison (qwen_displace_extract.py made the internet pair).
 
