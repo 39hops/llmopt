@@ -8,6 +8,17 @@ Regenerate: `.venv/bin/python scripts/gen_index.py`
 *(no docstring)*
 
 
+### scripts/anim_precompute.py
+Precompute animation scene data (lab venv side).
+
+- `_ramp_stops(n: int=16) -> dict[str, list[str]]`
+- `_chrome() -> dict`
+- `_projections(ckpt: str, key: str='gate.weight') -> dict`
+- `scene_crystal() -> tuple[dict, dict]`
+- `scene_morph() -> tuple[dict, dict]`
+- `scene_crest() -> tuple[dict, dict]`
+- `main() -> None`
+
 ### scripts/arena.py
 THE ARENA: engine vs the 0.5B step-model, same integral, live.
 
@@ -1018,6 +1029,7 @@ Depth anatomy: WHERE in the stack does the rewrite decision form?
 The gallery driver: every [R] render's invocation, recorded.
 
 - `class Entry`
+- `render_compare(e: Entry, outdir: Path) -> list[str]` — Two checkpoints side by side, one projection method each,
 - `render_entry(e: Entry, outdir: Path=OUTDIR) -> list[str]`
 - `main() -> None`
 
