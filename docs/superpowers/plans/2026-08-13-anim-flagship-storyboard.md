@@ -22,20 +22,21 @@ under three mathematical views.
 
 ## Visual layers (all data-derived)
 
-- dot positions: data/anim/crystal.npz (pca/sphere/polar xy from
-  gallery19m_s1.pt, per-axis normalized)
+- projection ENDPOINTS: data/anim/crystal.npz (pca/sphere/polar xy
+  from gallery19m_s1.pt, per-axis normalized) - data-derived
 - color: house magnitude ramp on row-norm rank (npz `order`)
 - density field: the real remaining ~2,900 subsampled neurons at low
   opacity - not a synthetic texture
-- tracked subset: 60 fixed indices (seeded), identity preserved
-  across all three views; trails = their true interpolation paths
-- depth cue: dot radius varies subtly by the neuron's LAYER
-  (12,288 = 8 layers x 1,536, row-order derivable) - true structure,
-  not decoration
+- tracked subset: 16 neurons, deterministic stratified sample (per
+  layer, the 30th and 70th percentile of within-layer magnitude
+  rank; 8 layers x 2) - identities real and preserved across views
+- trails: decaying comet tails between projection endpoints. These
+  are ANIMATION-GENERATED correspondence guides (linear interpolation
+  is a rendering choice), not data - only the endpoints are true
 - outro echoes: the same tracked+background dots re-plotted at the
   other two views' true coordinates
 
-No layer is invented; nothing persistent on screen except the data.
+Endpoints and identities are data; in-between motion is presentation.
 
 ## Honesty constraints carried
 
