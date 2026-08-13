@@ -4424,3 +4424,46 @@ without re-introducing history).
   even d64 cannot climb, the reading dies cheaply. Attribution:
   Artin (the ask, both halves latent in it), house (the two-reading
   split + the d64 probe operationalization).
+
+- **BANKED (2026-08-13): pincer on the LLMUE during training —
+  metabolize while being born; and "the LLMUE shouldn't have a
+  problem being trained backward?"** (Artin, mid-CAP-V-TRAJ-2
+  sweep; explicit revival of the valuation-routed-metabolism bank,
+  2026-07-21). The frame, three threads tied: (1) VALUATION-ROUTED
+  METABOLISM (revived on ask): engine value tables (Markov-prior
+  rule weights, magic hardness, slot-decisive telemetry) composed
+  with the committee rule->neuron map = a per-neuron plasticity
+  mask; the metabolic loop applies it per micro-batch. (2) The
+  same-day lr-floor measurement constrains it: CAP-V-TRAJ-2 (in
+  flight, curve 0/0/1/18/35/48/59 at booking of this bank) shows
+  steps below an lr absorption floor buy NOTHING at birth, and the
+  LLMUE pilot already showed the twin (LR 1e-5 sub-threshold diet:
+  preserved without growing, RESULTS L3174-3179) — so any
+  valuation-routed mask must put its routed neurons ABOVE the floor
+  or it is a null by construction (the starved-judge law, now with
+  a measured mechanism). (3) The new jaw — CONCURRENT PINCER:
+  don't sequence pre-training then metabolism; overlap them —
+  birth runs, and once capability clears the mining floor (the
+  newborn-mines-nothing hazard, fenced in BACKWARD-SCHEDULE-1's
+  pre-reg), the engine's verified exhaust streams INTO the
+  remaining birth diet live. Honest breaks: "LLMUE backward" —
+  BACKWARD-SCHEDULE-1 measured schedule-direction invariance for
+  BIRTH SFT only; nothing is measured about reversing a metabolic
+  schedule, and the metabolic loop has no OneCycle to reverse (its
+  lr is flat-low, which is exactly why the floor bit the pilot) —
+  the transferable claim is only "order matters less than
+  believed", not a license; the concurrent arm changes diet
+  composition mid-run (exposure-share discipline applies — rations
+  for resident grammars); and self-generated rows must pass
+  verified-AND-distinct or the identity-hack returns. Testable
+  residue: OVERLAP-BIRTH-1 — paired arms, same seed/device: (A)
+  standard birth (the booked 64 rebuilt or reused), (B) identical
+  birth except from the first milestone where the model's gate
+  clears ~30/120 (mining becomes possible; the measured takeoff
+  region), a rationed stream of its own oracle-verified exhaust
+  joins the diet for the remaining steps. Bar family:
+  within-sigma = concurrency free (pipeline win, no capability
+  cost); above = the pincer pays; below = self-exhaust dilutes.
+  Attribution: Artin (the concurrent-pincer ask, the backward
+  question, the revival instruction), house (the lr-floor tie-in +
+  the overlap-birth operationalization).
