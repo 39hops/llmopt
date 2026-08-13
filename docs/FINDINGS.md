@@ -1833,3 +1833,14 @@ regime tag on every bullet is the fence.
   only with exposure (3/24 at 0.3x) — schedule-invariant,
   exposure-sensitive. ([VERDICT
   COMP-LADDER-1](RESULTS.md#L28315).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] Training has an LR
+  ABSORPTION FLOOR (~2-4e-5 at 19M/gen4, ~10% of max_lr): the
+  backwards birth's capability curve is DEAD for a full quarter
+  (0/120 through step 2,700, lr <= 2.3e-5), takes off once lr
+  clears ~4e-5, builds to 48/120 without ever needing peak lr
+  (M-STEPS fires), and takes a transient 12-solve dip in the
+  highest-lr era that heals by the endpoint. The LLMUE pilot's
+  preserved-without-growing null (LR 1e-5) is the same floor from
+  the metabolic side. ([VERDICT
+  CAP-V-TRAJ-2](RESULTS.md#L28421).)

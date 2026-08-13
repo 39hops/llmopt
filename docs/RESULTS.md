@@ -28417,3 +28417,62 @@ only). The driver edit is knob-only; its no-op is the unchanged
 default path (phase19m defaults preserved, guarded by the resume
 check skipping all 18 already-gated rows if pointed at the old
 directory).
+
+## VERDICT CAP-V-TRAJ-2: bar 1 M-STEPS FIRES, M-LR-SNAP dead — but the mechanism refines to an LR ABSORPTION FLOOR (~2-4e-5, ~10% of max) below which steps buy nothing, and a transient high-lr dip that heals (2026-08-13, Mac)
+
+Pre-reg above (e459a71, committed before launch). Driver
+scratch/gate_backsched.py (thin sibling of the frozen CAP-V-TRAJ-1
+driver), rjob capvtraj2 rc=0, receipts
+logs/backsched_gate/gates.jsonl (18 rows, force-added below).
+
+MEASURED (solves/120 by step, backwards birth):
+  1:0  900:0  1800:0  2700:0  3600:1  4500:6  5400:18  6300:24
+  7200:35  8100:43  9000:43  9900:38  10800:48  11700:53  12600:41
+  13500:52  14400:56  15300:59   (booked endpoint 62 after 15,420)
+Reversed-sequence lr at the milestones (recomputed from stock
+OneCycle, max 3.0e-4): dead zone lr <= 2.3e-5 (through step 2,700,
+0 solves); first life at 4.1e-5 (step 3,600, 1 solve); ramp at
+6.2e-5 - 1.4e-4 (6 -> 35 across 4,500 - 7,200).
+
+BAR 1 M-STEPS (>= 31 by step 10,800): FIRES — 48, with lr still
+  under max throughout the build. BAR 2 M-LR-SNAP: NO-FIRES (48 at
+  10,800 is nowhere near <= 15). Registered REFUTED-IF did not
+  trigger.
+
+REGISTERED-PRIOR SCORE: the bar-1 pick was right; the step-10,800
+point prediction (30-45) measured 48, just above the band; and the
+prior's SHAPE claim ("a slowed copy of the forward curve") was
+WRONG in two named ways: (1) the curve is NOT a slowed copy — it is
+a dead quarter (0 through 2,700) followed by a takeoff, i.e. the
+pure "steps and data did it" mechanism over-corrects; (2) an
+unregistered transient DIP 48 -> 53 -> 41 -> 52 sits exactly in the
+highest-lr era (steps 11,700-13,500, reversed lr near peak) — the
+morning's "wrecking ball" exists after all, it just HEALS (the
+12,600 -> 15,300 recovery), which is why the endpoint hid it.
+
+Reading (the day's mechanism, assembled): capability needs lr
+ABOVE AN ABSORPTION FLOOR (~2-4e-5 here, ~10% of max_lr) — below
+it, steps buy nothing (a measured quarter of the backwards run was
+dead weight); above it, capability accumulates with steps x data
+and does NOT need the peak; far above it (near-peak lr on organized
+weights), capability takes transient damage that anneals out.
+Direction-invariance (BACKWARD-SCHEDULE-1) now has its mechanism:
+both directions spend most of their steps in the working band, and
+the high-lr damage heals in either order. CROSS-THREAD ANCHOR: the
+LLMUE metabolic pilot measured the twin from the other side —
+LR 1e-5 on a sub-threshold diet PRESERVED WITHOUT GROWING (RESULTS
+L3174-3179); 1e-5 sits below this rung's floor, so the pilot's
+flat heartbeats and the backwards run's dead quarter are one
+phenomenon. Design rule for the revived valuation-routed
+metabolism bank (5b98fde): routed plasticity must clear the floor
+or it is null by construction.
+
+FENCES (carried from pre-reg): n=1, SEED=2 lineage, Mac MPS,
+same-device; milestone deltas <= ~2 are ties, and the 41 dip is 12
+below its neighbor — outside tie noise but single-seed; the floor
+constant (~2-4e-5) is 19M/gen4/AdamW-OneCycle scope, transports as
+"a floor exists", never as the number; lr values are recomputed
+from the stock schedule, not logged per-step (the driver prints
+the sequence's shape at launch, receipt in jobs/backsched1.log).
+Receipt exception: gates.jsonl (18 rows, ~3KB) force-added under
+logs/backsched_gate/, seedslad pattern.
