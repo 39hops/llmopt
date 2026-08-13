@@ -44,3 +44,8 @@ scratch/lean_real_corpus/*.jsonl
 # Parquet lake is regenerable exhaust (scripts/gen_lake.py, 2026-08-11)
 data/lake/
 .coverage
+
+# virtualenvs (lab + animation) and manim render exhaust
+.venv/
+.venv-anim/
+media/
