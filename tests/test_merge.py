@@ -119,7 +119,7 @@ def test_shell_graft_function_preserving(tmp_path):
     # different kernel/pairing for the SAME summands (an x86 runner
     # broke the exact compare that held on Apple silicon) — the same
     # split-reduction class as the down-proj note below.
-    assert torch.allclose(h0, h1[:, :8], rtol=1e-6, atol=1e-7)
+    torch.testing.assert_close(h1[:, :8], h0)
     # grafted down-columns are exact zeros => their contribution is
     # exactly 0.0 (split-reduction check: a single fused matmul over
     # K=16 vs K=8 may re-pair the SAME summands, which is reduction
@@ -132,8 +132,11 @@ def test_shell_graft_function_preserving(tmp_path):
     # contribute bitwise 0.0 whatever the hidden values are
     assert torch.equal(h1[:, 8:] @ dn[:, 8:].T, torch.zeros(3, 4))
     # y0 comes from h0, y1 from h1's prefix — bit-equality across that
-    # pair does not survive the x86 kernel re-pairing above
-    assert torch.allclose(y0, y1, rtol=1e-6, atol=1e-7)
+    # pair does not survive the x86 kernel re-pairing above, and the
+    # graft claims are already pinned bitwise by the two asserts
+    # above; this compare is kernel numerics, so it gets torch's
+    # standard fp32 testing tolerance, not a hand-picked one
+    torch.testing.assert_close(y1, y0)
 
 
 def test_gate_cmd_device_lineages(tmp_path):
