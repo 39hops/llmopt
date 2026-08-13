@@ -2,7 +2,9 @@
 
 Authored by Grok (xAI, Artin relay), landed by Fable with two review
 edits: the unlabeled y=64 reference line removed (no booked meaning);
-transcription asserts moved BEFORE the render.
+transcription asserts moved BEFORE the render. Restyled 2026-08-13 to
+the house figstyle (light+dark pair, style v2 text budget); data and
+checksums unchanged.
 
 Data TRANSCRIBED VERBATIM from:
   VERDICT MOE-GT-1-R4 (seeds 4242/777/90210, 45.3% vs paired full)
@@ -12,6 +14,7 @@ Data TRANSCRIBED VERBATIM from:
 
 No model code here; regenerate:
   python scripts/plot_gt1_crest.py
+  (writes gt1-crest-small-multiples.png light + -dark pair)
 
 Claim shown: masking Qwen3-30B-A3B to top-45.3% math-demand experts
 (58/128 per layer) beats the paired full model on mathgen L1-3 at
@@ -26,14 +29,6 @@ from __future__ import annotations
 
 import subprocess
 from pathlib import Path
-
-BG = "#0d1117"
-FG = "#c9d1d9"
-DIM = "#8b949e"
-FULL_C = "#8b949e"
-MASK_C = "#58a6ff"
-PHYS_C = "#f85149"
-MATH_DELTA_C = "#3fb950"
 
 # R4 descriptive crest + R5 fully registered confirmation (RESULTS)
 MATH_SEEDS = [4242, 777, 90210, 111, 222, 333]
@@ -64,127 +59,92 @@ def _git_head() -> str:
         return "unknown"
 
 
-def main() -> None:
+def render(mode: str) -> Path:
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import numpy as np
 
+    from llmopt.figures import figstyle
+
+    c = figstyle.CHROME[mode]
+    plt.rcParams.update(figstyle.rc(mode))
+    full_c = figstyle.color("full", mode=mode)
+    mask_c = figstyle.color("masked", mode=mode)
+    phys_c = figstyle.color("refuted", mode=mode)
+
     fig, (ax0, ax1) = plt.subplots(
         1, 2, figsize=(14.0, 6.2),
         gridspec_kw={"width_ratios": [1.55, 1.0]},
     )
-    fig.patch.set_facecolor(BG)
-    for ax in (ax0, ax1):
-        ax.set_facecolor(BG)
-        ax.tick_params(colors="#484f58")
-        for s in ax.spines.values():
-            s.set_color("#30363d")
 
     # --- Panel A: six paired seeds, full vs 45.3% math mask ---
     x = np.arange(len(MATH_SEEDS), dtype=float)
     w = 0.36
-    ax0.bar(x - w / 2, MATH_FULL, width=w, color=FULL_C, alpha=0.92,
+    ax0.bar(x - w / 2, MATH_FULL, width=w, color=full_c, alpha=0.92,
             label="full model")
-    ax0.bar(x + w / 2, MATH_MASK, width=w, color=MASK_C, alpha=0.92,
+    ax0.bar(x + w / 2, MATH_MASK, width=w, color=mask_c, alpha=0.92,
             label="top-45.3% math-demand mask")
     for i, (f, m) in enumerate(zip(MATH_FULL, MATH_MASK)):
-        ax0.text(i - w / 2, f + 1.0, str(f), color=FG, ha="center",
-                 fontsize=8, family="monospace")
-        ax0.text(i + w / 2, m + 1.0, str(m), color=FG, ha="center",
-                 fontsize=8, family="monospace")
-        ax0.text(i, max(f, m) + 6.5, f"+{m - f}", color=MATH_DELTA_C,
-                 ha="center", fontsize=8, family="monospace")
+        ax0.text(i, max(f, m) + 3.0, f"+{m - f}", color=mask_c,
+                 ha="center", fontsize=8.5, family="monospace")
     ax0.set_xticks(x)
-    ax0.set_xticklabels(
-        [f"s{s}" for s in MATH_SEEDS],
-        color=FG, fontsize=9, family="monospace",
-    )
-    ax0.set_ylabel("gate solves / 120", color=FG, fontsize=10,
-                   family="monospace")
-    ax0.set_ylim(0, 112)
-    ax0.set_title(
-        "A  math crest — 45.3% keep beats paired full at 6/6 seeds",
-        color=FG, fontsize=11, family="monospace", pad=10, loc="left",
-    )
-    ax0.legend(loc="upper left", facecolor=BG, edgecolor="#30363d",
-               fontsize=8, labelcolor=FG)
-    ax0.text(
-        0.5, -0.14,
-        "each full bar is that seed's own paired baseline (R4 pool v R5 "
-        "pool) · R4 +14/+14/+16 · R5 +17/+9/+18 · pooled +14.7 vs +7 bar",
-        transform=ax0.transAxes, color=DIM, fontsize=7.5,
-        family="monospace", ha="center",
-    )
+    ax0.set_xticklabels([f"s{s}" for s in MATH_SEEDS], fontsize=9)
+    ax0.set_ylabel("gate solves / 120", fontsize=10)
+    ax0.set_ylim(0, 108)
+    ax0.set_title("MATH — mask beats full, 6/6 seeds",
+                  fontsize=11, fontweight=500, pad=10, loc="left")
+    ax0.legend(loc="upper left", fontsize=8.5)
 
     # --- Panel B: domain dissociation (delta vs full) ---
     rng = np.random.default_rng(0)
-    ax1.axhline(0, color="#484f58", lw=0.9)
-    ax1.scatter(
-        rng.normal(0.0, 0.04, size=len(MATH_D)), MATH_D,
-        s=55, color=MATH_DELTA_C, zorder=3, label="mathgen L1-3",
-    )
-    ax1.scatter(
-        rng.normal(1.0, 0.04, size=len(PHYS_D)), PHYS_D,
-        s=55, color=PHYS_C, zorder=3, label="mechanics gate",
-    )
+    ax1.axhline(0, color=c["axis"], lw=0.9)
+    ax1.scatter(rng.normal(0.0, 0.04, size=len(MATH_D)), MATH_D,
+                s=55, color=mask_c, zorder=3, label="mathgen L1-3")
+    ax1.scatter(rng.normal(1.0, 0.04, size=len(PHYS_D)), PHYS_D,
+                s=55, color=phys_c, zorder=3, label="mechanics gate")
     ax1.hlines(
         [sum(MATH_D) / len(MATH_D), sum(PHYS_D) / len(PHYS_D)],
         xmin=[-0.25, 0.75], xmax=[0.25, 1.25],
-        colors=[MATH_DELTA_C, PHYS_C], lw=2.5, zorder=2,
+        colors=[mask_c, phys_c], lw=2.5, zorder=2,
     )
     ax1.text(-0.32, sum(MATH_D) / len(MATH_D),
              f"pooled +{sum(MATH_D) / len(MATH_D):.1f}",
-             color=MATH_DELTA_C, ha="right", va="center", fontsize=9,
+             color=mask_c, ha="right", va="center", fontsize=9,
              family="monospace")
     ax1.text(1.0, sum(PHYS_D) / len(PHYS_D) - 6.5,
              f"pooled {sum(PHYS_D):.0f}",
-             color=PHYS_C, ha="center", fontsize=9,
+             color=phys_c, ha="center", fontsize=9,
              family="monospace")
-    for d in MATH_D:
-        ax1.annotate(f"{d:+d}", (0.0, d), textcoords="offset points",
-                     xytext=(12, 0), color=DIM, fontsize=7,
-                     family="monospace")
-    for d in PHYS_D:
-        ax1.annotate(f"{d:+d}", (1.0, d), textcoords="offset points",
-                     xytext=(12, 0), color=DIM, fontsize=7,
-                     family="monospace")
     ax1.set_xticks([0, 1])
-    ax1.set_xticklabels(
-        ["math\n(6 seeds)", "mechanics\n(3 seeds)"],
-        color=FG, fontsize=9, family="monospace",
-    )
-    ax1.set_ylabel("delta vs paired full (solves)", color=FG,
-                   fontsize=10, family="monospace")
+    ax1.set_xticklabels(["math\n(6 seeds)", "mechanics\n(3 seeds)"],
+                        fontsize=9)
+    ax1.set_ylabel("delta vs paired full (solves)", fontsize=10)
     ax1.set_xlim(-0.85, 1.55)
     ax1.set_ylim(-70, 35)
-    ax1.set_title(
-        "B  domain-specificity — same recipe, opposite sign",
-        color=FG, fontsize=11, family="monospace", pad=10, loc="left",
-    )
-    ax1.legend(loc="lower left", facecolor=BG, edgecolor="#30363d",
-               fontsize=8, labelcolor=FG)
-    ax1.text(
-        0.5, -0.16,
-        "D4-PHYS-B: physics 45.3% top-demand mask · matched recall "
-        "!= capability sign",
-        transform=ax1.transAxes, color=DIM, fontsize=7.5,
-        family="monospace", ha="center",
-    )
+    ax1.set_title("SAME RECIPE — opposite sign", fontsize=11,
+                  fontweight=500, pad=10, loc="left")
+    ax1.legend(loc="lower left", fontsize=8.5)
 
-    head = _git_head()
     fig.text(
         0.01, 0.01,
         "VERDICT MOE-GT-1-R4/R5 + MOE-GT-2-D4-PHYS-B (docs/RESULTS.md) "
         "· Qwen3-30B-A3B-4bit · FORMAT-BOUND, one vehicle · "
-        f"plot_gt1_crest.py @ {head}",
-        color=DIM, fontsize=7, family="monospace",
+        f"plot_gt1_crest.py @ {_git_head()}",
+        color=c["muted"], fontsize=7, family="monospace",
     )
     fig.tight_layout(rect=(0, 0.04, 1, 1))
-    out = Path("docs/assets/gallery/gt1-crest-small-multiples.png")
+    suffix = "" if mode == "light" else "-dark"
+    out = Path(f"docs/assets/gallery/gt1-crest-small-multiples{suffix}.png")
     out.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out, dpi=150, facecolor=BG)
-    print(f"saved {out}")
+    fig.savefig(out, dpi=150, facecolor=c["surface"])
+    plt.close(fig)
+    return out
+
+
+def main() -> None:
+    for mode in ("light", "dark"):
+        print(f"saved {render(mode)}")
 
 
 if __name__ == "__main__":

@@ -37,7 +37,8 @@ median-cut; the renderer writes full RGB to scratch first).
 reconstruction: the script alone reproduces the file (data inline or
 a recorded invocation). `scripts/plot_gt1_crest.py`,
 `scripts/plot_identity_crest.py`. Files live under `gallery/`:
-`gt1-crest-small-multiples.png`, `identity-crest-fresh-seeds.png`.
+`gt1-crest-small-multiples.png`, `identity-crest-fresh-seeds.png`
+(light + `-dark` pairs since the 2026-08-13 restyle).
 `scripts/plot_neurons.py` is the tool for NEW gallery renders — a
 render is only [R] if its exact invocation is recorded (in the script
 or REPRODUCE); otherwise it freezes to [H] on landing. The 2026-08-13
