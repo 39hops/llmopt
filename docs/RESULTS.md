@@ -28100,3 +28100,23 @@ far inside that noise (a re-run at new gate seeds could land either
 side of -0.30 — the bar verdict is exact but the effect size is
 the finding); length/level confound fenced to within-level reads;
 token count barred, chars reported alongside.
+
+## OBSERVATION L4-PLY0-1: the L4 dip is a FIRST-STEP recognition failure — 16/17 failures never emit one valid step (2026-08-13, Mac, desk)
+
+Desk read of the LENGTH-VS-L4-1 receipt (logs/pp_phase19m_final.jsonl,
+committed 04b5eb9; analyzer-free — the chains are in the rows). On
+m015300's 17 L4 failures: 16 died at ply 0 (zero oracle-accepted
+steps across 8-sample waves x up to 12 plies), and the 17th
+(196*sin(14x+6), i=15) pulled the constant out in ply 1 and then
+died — no wandering signature fires anywhere in L4. Contrast: all 7
+L4 solves finish in 1-3 plies, and every solved root is a clean
+f'(g)*fn(g) u-sub surface. Failures include one-step u-subs that
+look trivial ((216x+27)*exp(4x**2+x+3); (-30x**2-4)*sin(5x**3+2x+4)).
+L4 capability at this scale is ALL-OR-NOTHING first-ply pattern
+recognition: the model either sees the substitution whole or
+produces nothing valid at all — the dip is not chain management,
+wandering, or depth exhaustion. Exploratory, n=1 checkpoint, no
+bars; the riff's rung (c) (matched-skeleton pairs) and a
+rejected-sample transcript pass (gate_transcripts.py machinery) are
+the next discriminators. Fences: single seed lineage, MPS, desk
+read of an already-booked receipt.

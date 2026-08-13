@@ -1805,3 +1805,11 @@ regime tag on every bullet is the fence.
   shape family stays under-crystallized relative to its length
   across three lineages (6/24, 8/24, 7/24). ([VERDICT
   LENGTH-VS-L4-1](RESULTS.md#L28050).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] The L4 gate dip is a
+  first-step recognition failure: on m015300, 16/17 L4 failures
+  emit ZERO oracle-valid steps (ply-0 death, no wandering) while
+  all 7 solves finish in 1-3 plies from clean f'(g)*fn(g) surfaces
+  — all-or-nothing first-ply pattern recognition, not chain
+  management or depth exhaustion. ([OBSERVATION
+  L4-PLY0-1](RESULTS.md#L28104).)
