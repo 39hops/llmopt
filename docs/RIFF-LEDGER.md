@@ -4243,3 +4243,40 @@ without re-introducing history).
   does not change, the composition thesis is weaker than claimed.
   Attribution: Artin (the ask, the banking instruction), house (the
   diagnosis and the four repairs).
+
+- **BANKED (2026-08-13): is gate difficulty just character count —
+  and do hard problems compute measurably different internals than
+  easy ones?** (Artin, mid-CAP-V-TRAJ-1 watch). The ask, two halves:
+  (1) maybe level difficulty reduces to integrand LENGTH (a surface
+  variable), not structure; (2) compare the forward pass's actual
+  computed tensors (activations, attention, hidden states) across
+  levels — "what really is different, bit-wise" between an easy and
+  a hard problem inside the model. Measured anchors: the CAP-V-TRAJ-1
+  stream (in flight, unbooked at bank time) shows L4 as the WORST
+  level at every gated milestone (1..7/24, below L5-L7 always) even
+  though L6/L7 are constructed to demand more coordination/nesting —
+  so rank-order of measured difficulty already disagrees with the
+  generator's intended ladder at one level, and SOMETHING other than
+  "more steps = harder" is operating. No activation-space
+  measurement exists yet for the 19M gate lineage; the closest
+  instrument is the watch-it-think flagship (per-token internals
+  recorder, endorsed, unbuilt). Honest breaks: "bit-wise" is not the
+  right granularity — bf16 near-ties make raw bit comparisons noise
+  (the fp16 near-tie non-bug, equivalence.py doctrine); the honest
+  units are activation statistics and per-level solve outcomes, not
+  bits. And length correlates with level by construction, so a raw
+  length-vs-solve regression is confounded; the informative cell is
+  WITHIN-level: does length predict failure inside one level's
+  problem set? Testable residue, cheap to dear: (a) desk-only, free
+  — regress per-problem solve outcome on prompt token length within
+  each level from a per-problem gate sidecar (gate_percase.py
+  machinery exists); if length explains the L4 dip, L4's long
+  product-rule debris strings are the story, not the shape family;
+  (b) one forward pass per gate problem, record per-layer hidden
+  norms + attention entropy, test whether level (or solved-vs-not)
+  is linearly decodable from the summary stats — rides the
+  watch-it-think renderer's capture hook when it lands; (c) the
+  sharp version: paired problems, same skeleton, padded length —
+  does capability drop with length at fixed structure? Attribution:
+  Artin (both halves of the ask), house (the confound note and the
+  three-rung ladder).
