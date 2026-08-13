@@ -1764,3 +1764,12 @@ regime tag on every bullet is the fence.
   number of categories.
   ([VERDICT SOFT-PROMPT-1](RESULTS.md#L27633);
   [AMENDMENT SOFT-PROMPT-1-SAMPLER](RESULTS.md#L27693).)
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search]
+  The fast wave-verifier's old parity ship bar is retired with cause:
+  its 10 "accept flips" are the OLD doit-based oracle falsely
+  rejecting ~8% of corpus-true rows it cannot solve, probed directly
+  (two flipped rows, old oracle False on both); zero flips in the
+  unsound direction, and the fast path runs 31.5x faster (600.4 s ->
+  19.1 s, n=1 CPU receipt). Soundness stays held by the vendored
+  167/167 Phase D replay. ([VERDICT
+  VERIFY-FAST-BAR-RETIRED](RESULTS.md#L27754).)

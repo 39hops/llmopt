@@ -27748,3 +27748,51 @@ have honestly different shas) and neither does a logit comparison
 (they agree exactly). Gate numbers are comparable only across runs
 whose sampler saw the same number of categories. Registered as a
 house fence for any instrument that samples.
+
+---
+
+## 2026-08-13 — VERDICT VERIFY-FAST-BAR-RETIRED: the parity bench's ship bar measured the wrong reference; retired with cause
+
+Seat: Fable 5, Mac. Instrument: scripts/bench_verify_fast.py parity
+bench (verify_wave v the old bench_step_tokens.verify_step oracle),
+battery from data/step_chains.jsonl (120 corpus-true Integral rows +
+coefficient/sign perturbations + 40 garbage), run 2026-08-13, full
+log receipt below.
+
+MEASURED (single run, CPU, Mac):
+  old wall 600.4 s   new wall 19.1 s   -> 31.5x
+  accept flips (new accepts, old rejects): 10
+  reject flips (old accepts, new rejects): 0
+  bar line printed: NO SHIP (0-accept-flips premise violated)
+
+ADJUDICATION — the flips are OLD-oracle false negatives, not fast-path
+unsoundness. Probe: verify_step run directly on two of the flipped
+pairs' own corpus rows (true (cur, nxt) chain steps as emitted):
+  Integral((9*x + 25)/(2*sqrt(3*x + 5)), x) -> old oracle False
+  Integral((2*x + 1)*exp(sin(log(2*x*(x + 1))))... -> old oracle False
+The old path asks sympy to SOLVE the integral (prev.doit(deep=True))
+and rejects whenever sympy cannot; on this battery that is 10/120
+(~8%) of corpus-TRUE rows. The fast path differentiates the
+difference, numeric-screens at 3 generic points (reject-only), and
+pays simplify only for survivors — acceptance stays exact. Zero flips
+in the unsound direction: every perturbed and garbage candidate is
+rejected by both paths.
+
+VERDICT: the SHIP/NO-SHIP bar is RETIRED. Its premise (accept flip =
+unsound) treats the old oracle as ground truth; the old oracle is
+measurably wrong in the conservative direction on its own corpus, so
+the bar can never read SHIP against it. The lever itself shipped long
+ago and is pinned by better instruments: llmopt.lab.verify is the
+canonical body, held by the vendored 167/167 Phase D replay
+(tests/test_lab_verify_gen_battery.py, RESULTS.md#L2871), the
+scaled-candidate reject battery, and the shim-identity guard
+(tests/test_lab_adoption.py). The script stays as the shim + timing
+bench (the 31.5x receipt remains runnable); the bar line is edited to
+report parity classes without a ship verdict, same commit as this
+booking.
+
+FENCES: n=1 timing run, one machine, CPU walls only — the 31.5x is a
+receipt, not a transportable constant. The ~8% old-oracle
+false-negative rate is battery-scoped (Integral rows of
+step_chains.jsonl, seed 0 shuffle); it dies with the old oracle and
+is booked only as the cause of the bar's misread.
