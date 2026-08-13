@@ -10,7 +10,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 OPTIONAL = ("mlx", "triton", "pyarrow", "duckdb", "transformers",
-            "matplotlib", "peft", "datasets")
+            "matplotlib", "peft", "datasets", "pyzx")
 
 MODULES = sorted(
     str(p.relative_to(ROOT)).removesuffix(".py").replace("/", ".")

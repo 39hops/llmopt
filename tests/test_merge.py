@@ -110,8 +110,16 @@ def test_shell_graft_function_preserving(tmp_path):
     x = torch.randn(3, 4, generator=torch.Generator().manual_seed(9))
     h0 = hidden(sd, x)
     h1 = hidden(big, x)
-    # old shells untouched: bit-equal hidden prefix at fp32
-    assert torch.equal(h0, h1[:, :8])
+    # old shells untouched: the copied weight rows are byte-equal...
+    for name in ("gate", "up"):
+        key = f"blocks.0.{name}.weight"
+        assert torch.equal(big[key][:8], sd[key])
+    # ...and the hidden prefix matches to reduction tolerance. Not
+    # bit-equal on every CPU: x @ W.T at N=16 vs N=8 can pick a
+    # different kernel/pairing for the SAME summands (an x86 runner
+    # broke the exact compare that held on Apple silicon) — the same
+    # split-reduction class as the down-proj note below.
+    assert torch.allclose(h0, h1[:, :8], rtol=1e-6, atol=1e-7)
     # grafted down-columns are exact zeros => their contribution is
     # exactly 0.0 (split-reduction check: a single fused matmul over
     # K=16 vs K=8 may re-pair the SAME summands, which is reduction
