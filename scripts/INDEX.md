@@ -2081,6 +2081,12 @@ LEAN kernel-sample builder (provenance repair, 2026-08-07 audit: the frozen 1000
 PHASE 1 of RESULTS-HARDENING (Artin GO 2026-08-07): exclude-union audit of LEGACY diets against the 120-problem forward gate band.
 
 
+### scratch/len_vs_l4.py
+LENGTH-VS-L4-1 desk analysis (pre-reg RESULTS 2026-08-13): read the gate_pp sidecar, compute per-problem prompt token length and root char length, then the pre-registered bars: pooled within-level Spearman rho(token length, solved), per-level length medians, and the within-L4 rho named by REFUTED-IF. Deterministic from the sidecar; stdlib + tokenizer only.
+
+- `spearman(xs, ys)`
+- `main()`
+
 ### scratch/lloydmax_race.py
 The Lloyd-Max codebook race (pre-reg RESULTS 2026-07-25): per-output-channel exact 1-D k-means quantizers on the 19M infix twin, free vs zero-pinned centroids, PTQ-only. Writes one _lm*.pt checkpoint per arm; gates run separately (MPS, to match baselines).
 

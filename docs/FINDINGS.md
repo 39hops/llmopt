@@ -1795,3 +1795,13 @@ regime tag on every bullet is the fence.
   milestone from m001800 on — the generator's intended difficulty
   ladder disagrees with measured difficulty at L4. ([VERDICT
   CAP-V-TRAJ-1](RESULTS.md#L27909).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] At n=1 (phase19m
+  m015300, Mac MPS), prompt LENGTH does not carry the L4 gate dip:
+  L6 problems are 1.4x longer than L4 (median 81.5 vs 57.5 tokens)
+  yet score marginally more (8 vs 7), and the pooled within-level
+  rho(length, solved) = -0.2997 sits a knife-edge inside the -0.30
+  bar (a real but modest length effect, disclosed as such). The L4
+  shape family stays under-crystallized relative to its length
+  across three lineages (6/24, 8/24, 7/24). ([VERDICT
+  LENGTH-VS-L4-1](RESULTS.md#L28050).)

@@ -28046,3 +28046,57 @@ barred). No model rebuild or wrap beyond the state-dict extraction
 the precondition pins. Desk analysis is deterministic from the
 sidecar; wall-kill leaves the sidecar's landed rows (gate_pp
 streams per problem).
+
+## VERDICT LENGTH-VS-L4-1: both bars NO-FIRE — length does not carry the L4 dip; the structural reading survives, with a knife-edge disclosed (2026-08-13, Mac)
+
+Pre-reg above (1585c67, committed before launch). Instrument
+scratch/gate_pp.py on m015300 (["model"] extracted to
+checkpoints/phase19m/m015300_model_only.pt), rjob lenvsl4 rc=0.
+PRECONDITION FIRES EXACTLY: gate_pp per-level dict {3:23, 4:7,
+5:16, 6:8, 7:10} = 64/120 @ 62.01% — identical to the CAP-V-TRAJ-1
+booked dict, so the two instruments are the same gate and
+cross-quoting is legal. Desk analyzer scratch/len_vs_l4.py,
+deterministic from sidecar logs/pp_phase19m_final.jsonl (120 rows,
+24KB incl. full greedy chains — small text receipt, force-added
+under the seedslad pattern so the bars recompute from git alone).
+
+MEASURED (median prompt token length / solves per level):
+  L3: 25.5 / 23   L4: 57.5 / 7   L5: 34.5 / 16   L6: 81.5 / 8
+  L7: 52.0 / 10   (char medians move in lockstep: 35.5 / 73.5 /
+  48.5 / 93.0 / 65.0)
+
+BAR 1 LENGTH-PREDICTS: pooled within-level Spearman rho(token
+  length, solved) = -0.2997 vs bar <= -0.30 — NO-FIRE by 0.0003.
+  KNIFE-EDGE: the bar holds by less than one part in a thousand of
+  its own threshold; the honest reading is "a real but modest
+  within-level length effect exists, almost exactly at the
+  registered line", not "no effect". The bar text governs: NO-FIRE.
+BAR 2 L4-IS-LONGEST: NO-FIRE decisively — L6's median (81.5 tokens)
+  exceeds L4's (57.5); L4 is longer than L5 and L7 but not L6.
+REFUTED-IF clear: within-L4 rho = -0.238 (leg needed <= -0.40).
+
+REGISTERED-PRIOR SCORE: right on both bars, with an asterisk the
+size of bar 1's margin. The prior's stated mechanism for bar 1
+("solved nearly constant within L4 so correlation is
+noise-bounded") was WRONG in detail — the pooled effect is carried
+by all levels, not muted by L4's floor — the right call for a
+partly wrong reason, said plainly.
+
+Reading: length cannot carry the dip. The decisive cell is L6 vs
+L4: L6 problems are 1.4x LONGER (81.5 vs 57.5 median tokens) yet
+score marginally MORE (8 vs 7, a tie under sigma) — if length were
+the axis, L6 would sit below L4, and it does not. The L4 shape
+family (depth-3 compositions, chained u-sub debris) remains
+under-crystallized relative to its length, across three lineages
+now (v1 froze 6/24, v2 8/24, this birth 7/24). The riff's rungs
+(b)/(c) — activation-summary decoding and matched-skeleton padded
+pairs — are the next discriminators; (c) directly tests the
+knife-edge length effect at fixed structure.
+
+FENCES (carried from pre-reg): one checkpoint, one seed lineage,
+Mac MPS, single gate — direction-only, no magnitude transport;
+within-level rho on 24/level is noisy and the knife-edge margin is
+far inside that noise (a re-run at new gate seeds could land either
+side of -0.30 — the bar verdict is exact but the effect size is
+the finding); length/level confound fenced to within-level reads;
+token count barred, chars reported alongside.
