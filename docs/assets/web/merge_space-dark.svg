@@ -1,35 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="510" viewBox="0 0 880 510" role="img">
-<rect width="880" height="510" fill="#0f0f0e"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="491" viewBox="0 0 880 491" role="img">
+<rect width="880" height="491" fill="#0f0f0e"/>
 <text x="34" y="44" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#ffffff">Averaging independently born weights does not degrade a model — it ends it</text>
-<text x="34" y="74" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">All six independent-pair averages gated exactly zero, at every level. Merges inside a shared-init lineage land in the</text>
-<text x="34" y="93" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">parent band.</text>
-<text x="220" y="139" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">birth s1</text>
-<rect x="234" y="127" width="550" height="16" rx="8" fill="#232321"/>
-<rect x="234" y="127" width="55.0" height="16" rx="8" fill="#3987e5"/>
-<text x="796" y="139" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">12<tspan fill="#898781">/120</tspan></text>
-<text x="220" y="185" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">birth s2</text>
-<rect x="234" y="173" width="550" height="16" rx="8" fill="#232321"/>
-<rect x="234" y="173" width="105.4" height="16" rx="8" fill="#3987e5"/>
-<text x="796" y="185" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">23<tspan fill="#898781">/120</tspan></text>
-<text x="220" y="231" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">birth s3</text>
-<rect x="234" y="219" width="550" height="16" rx="8" fill="#232321"/>
-<rect x="234" y="219" width="137.5" height="16" rx="8" fill="#3987e5"/>
-<text x="796" y="231" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">30<tspan fill="#898781">/120</tspan></text>
-<text x="220" y="277" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">birth s4</text>
-<rect x="234" y="265" width="550" height="16" rx="8" fill="#232321"/>
-<rect x="234" y="265" width="128.3" height="16" rx="8" fill="#3987e5"/>
-<text x="796" y="277" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">28<tspan fill="#898781">/120</tspan></text>
-<text x="220" y="323" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">independent merge (×6)</text>
-<rect x="234" y="311" width="550" height="16" rx="8" fill="#232321"/>
-<text x="796" y="323" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#898781">0<tspan fill="#898781">/120</tspan></text>
-<text x="220" y="369" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">same-init merge</text>
-<rect x="234" y="357" width="550" height="16" rx="8" fill="#232321"/>
-<rect x="234" y="357" width="59.6" height="16" rx="8" fill="#199e70"/>
-<text x="796" y="369" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">13<tspan fill="#898781">/120</tspan></text>
-<text x="220" y="415" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">4-way order-twin soup</text>
-<rect x="234" y="403" width="550" height="16" rx="8" fill="#232321"/>
-<rect x="234" y="403" width="64.2" height="16" rx="8" fill="#199e70"/>
-<text x="796" y="415" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">14<tspan fill="#898781">/120</tspan></text>
-<line x1="34" y1="470" x2="846" y2="470" stroke="#232321" stroke-width="1"/>
-<text x="34" y="490" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">VERDICT MERGE-SPACE-1 · RESULTS.md#L26770 (craters, n=1 per cell) · MERGE-SPACE-5 · RESULTS.md#L27158 (same-init holds, n=3 paired seeds) · d64 · RTX 3080</text>
+<text x="34" y="74" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">All six independent-pair averages gated exactly zero; shared-lineage merges land in the parent band.</text>
+<text x="220" y="120" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">birth s1</text>
+<rect x="234" y="108" width="550" height="16" rx="8" fill="#232321"><title>birth s1: 12/120</title></rect>
+<rect x="234" y="108" width="55.0" height="16" rx="8" fill="#3987e5"><title>birth s1: 12/120</title></rect>
+<text x="796" y="120" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">12<tspan fill="#898781">/120</tspan></text>
+<text x="220" y="166" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">birth s2</text>
+<rect x="234" y="154" width="550" height="16" rx="8" fill="#232321"><title>birth s2: 23/120</title></rect>
+<rect x="234" y="154" width="105.4" height="16" rx="8" fill="#3987e5"><title>birth s2: 23/120</title></rect>
+<text x="796" y="166" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">23<tspan fill="#898781">/120</tspan></text>
+<text x="220" y="212" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">birth s3</text>
+<rect x="234" y="200" width="550" height="16" rx="8" fill="#232321"><title>birth s3: 30/120</title></rect>
+<rect x="234" y="200" width="137.5" height="16" rx="8" fill="#3987e5"><title>birth s3: 30/120</title></rect>
+<text x="796" y="212" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">30<tspan fill="#898781">/120</tspan></text>
+<text x="220" y="258" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">birth s4</text>
+<rect x="234" y="246" width="550" height="16" rx="8" fill="#232321"><title>birth s4: 28/120</title></rect>
+<rect x="234" y="246" width="128.3" height="16" rx="8" fill="#3987e5"><title>birth s4: 28/120</title></rect>
+<text x="796" y="258" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">28<tspan fill="#898781">/120</tspan></text>
+<text x="220" y="304" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">independent merge (×6)</text>
+<rect x="234" y="292" width="550" height="16" rx="8" fill="#232321"><title>independent merge (×6): 0/120</title></rect>
+<text x="796" y="304" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#898781">0<tspan fill="#898781">/120</tspan></text>
+<text x="220" y="350" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">same-init merge</text>
+<rect x="234" y="338" width="550" height="16" rx="8" fill="#232321"><title>same-init merge: 13/120</title></rect>
+<rect x="234" y="338" width="59.6" height="16" rx="8" fill="#199e70"><title>same-init merge: 13/120</title></rect>
+<text x="796" y="350" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">13<tspan fill="#898781">/120</tspan></text>
+<text x="220" y="396" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">4-way order-twin soup</text>
+<rect x="234" y="384" width="550" height="16" rx="8" fill="#232321"><title>4-way order-twin soup: 14/120</title></rect>
+<rect x="234" y="384" width="64.2" height="16" rx="8" fill="#199e70"><title>4-way order-twin soup: 14/120</title></rect>
+<text x="796" y="396" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#ffffff">14<tspan fill="#898781">/120</tspan></text>
+<line x1="34" y1="435" x2="846" y2="435" stroke="#232321" stroke-width="1"/>
+<text x="34" y="455" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">VERDICT MERGE-SPACE-1 · RESULTS.md#L26770 (craters, n=1 per cell) · MERGE-SPACE-5 · RESULTS.md#L27158 (same-init holds,</text>
+<text x="34" y="471" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">n=3 paired seeds) · d64 · RTX 3080</text>
 </svg>

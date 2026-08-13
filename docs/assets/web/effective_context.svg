@@ -1,57 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="561" viewBox="0 0 880 561" role="img">
-<rect width="880" height="561" fill="#fcfcfb"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="523" viewBox="0 0 880 523" role="img">
+<rect width="880" height="523" fill="#fcfcfb"/>
 <text x="34" y="44" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#0b0b0b">Deep positions reach back more than a hundred tokens</text>
-<text x="34" y="74" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">Loss at positions past 128 when the model may see only the last k tokens. Every width improves by ~1 nat between k=16 and</text>
-<text x="34" y="93" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">k=128, so the corpus really does carry long-range dependency. The gap BETWEEN widths does not order monotonically in k — it</text>
-<text x="34" y="112" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">is negative at k=8 and narrows again at k=128 — so the registered width-buys-depth bar did not fire.</text>
-<line x1="88" y1="443.0" x2="772" y2="443.0" stroke="#e1e0d9" stroke-width="1"/>
-<text x="76" y="447.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">0</text>
-<line x1="88" y1="343.0" x2="772" y2="343.0" stroke="#e1e0d9" stroke-width="1"/>
-<text x="76" y="347.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">1</text>
-<line x1="88" y1="243.0" x2="772" y2="243.0" stroke="#e1e0d9" stroke-width="1"/>
-<text x="76" y="247.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">2</text>
-<line x1="88" y1="143.0" x2="772" y2="143.0" stroke="#e1e0d9" stroke-width="1"/>
-<text x="76" y="147.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">3</text>
-<text x="88.0" y="469" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">4</text>
-<text x="224.8" y="469" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">8</text>
-<text x="361.6" y="469" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">16</text>
-<text x="498.4" y="469" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">32</text>
-<text x="635.2" y="469" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">64</text>
-<text x="772.0" y="469" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">128</text>
-<polyline points="88.0,217.7 224.8,257.5 361.6,285.3 498.4,303.6 635.2,312.8 772.0,375.6" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="88.0" cy="217.7" r="3.6" fill="#2a78d6"/>
-<circle cx="224.8" cy="257.5" r="3.6" fill="#2a78d6"/>
-<circle cx="361.6" cy="285.3" r="3.6" fill="#2a78d6"/>
-<circle cx="498.4" cy="303.6" r="3.6" fill="#2a78d6"/>
-<circle cx="635.2" cy="312.8" r="3.6" fill="#2a78d6"/>
-<circle cx="772.0" cy="375.6" r="3.6" fill="#2a78d6"/>
-<text x="784" y="367.0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#2a78d6">d64</text>
-<polyline points="88.0,232.1 224.8,253.3 361.6,276.8 498.4,311.9 635.2,333.4 772.0,396.8" fill="none" stroke="#eb6834" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="88.0" cy="232.1" r="3.6" fill="#eb6834"/>
-<circle cx="224.8" cy="253.3" r="3.6" fill="#eb6834"/>
-<circle cx="361.6" cy="276.8" r="3.6" fill="#eb6834"/>
-<circle cx="498.4" cy="311.9" r="3.6" fill="#eb6834"/>
-<circle cx="635.2" cy="333.4" r="3.6" fill="#eb6834"/>
-<circle cx="772.0" cy="396.8" r="3.6" fill="#eb6834"/>
-<text x="784" y="384.0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#eb6834">d128</text>
-<polyline points="88.0,231.8 224.8,252.2 361.6,285.8 498.4,318.7 635.2,357.3 772.0,410.7" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="88.0" cy="231.8" r="3.6" fill="#1baf7a"/>
-<circle cx="224.8" cy="252.2" r="3.6" fill="#1baf7a"/>
-<circle cx="361.6" cy="285.8" r="3.6" fill="#1baf7a"/>
-<circle cx="498.4" cy="318.7" r="3.6" fill="#1baf7a"/>
-<circle cx="635.2" cy="357.3" r="3.6" fill="#1baf7a"/>
-<circle cx="772.0" cy="410.7" r="3.6" fill="#1baf7a"/>
-<text x="784" y="401.0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#1baf7a">d256</text>
-<polyline points="88.0,238.0 224.8,247.0 361.6,291.6 498.4,330.2 635.2,365.5 772.0,414.0" fill="none" stroke="#eda100" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="88.0" cy="238.0" r="3.6" fill="#eda100"/>
-<circle cx="224.8" cy="247.0" r="3.6" fill="#eda100"/>
-<circle cx="361.6" cy="291.6" r="3.6" fill="#eda100"/>
-<circle cx="498.4" cy="330.2" r="3.6" fill="#eda100"/>
-<circle cx="635.2" cy="365.5" r="3.6" fill="#eda100"/>
-<circle cx="772.0" cy="414.0" r="3.6" fill="#eda100"/>
-<text x="784" y="418.0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#eda100">d512</text>
-<text x="430" y="495" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">context the model may see, k (tokens)</text>
-<text transform="translate(16,293) rotate(-90)" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">loss at positions ≥128 (nats)</text>
-<line x1="34" y1="521" x2="846" y2="521" stroke="#e1e0d9" stroke-width="1"/>
-<text x="34" y="541" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">VERDICT KEFF-PROBE-1 · RESULTS.md#L27332 · bar 1 fires, bar 2 does not · 400 fixed rows · Mac CPU · loss only, no gate</text>
+<text x="34" y="74" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">Every width improves ~1 nat between k=16 and k=128; the registered width-buys-depth bar did not fire.</text>
+<line x1="88" y1="405.0" x2="772" y2="405.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="76" y="409.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">0</text>
+<line x1="88" y1="305.0" x2="772" y2="305.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="76" y="309.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">1</text>
+<line x1="88" y1="205.0" x2="772" y2="205.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="76" y="209.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">2</text>
+<line x1="88" y1="105.0" x2="772" y2="105.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="76" y="109.0" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">3</text>
+<text x="88.0" y="431" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">4</text>
+<text x="224.8" y="431" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">8</text>
+<text x="361.6" y="431" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">16</text>
+<text x="498.4" y="431" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">32</text>
+<text x="635.2" y="431" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">64</text>
+<text x="772.0" y="431" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">128</text>
+<polyline points="88.0,179.7 224.8,219.5 361.6,247.3 498.4,265.6 635.2,274.8 772.0,337.6" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="88.0" cy="179.7" r="3.6" fill="#2a78d6"><title>d64 @ 4: 2.2529</title></circle>
+<circle cx="224.8" cy="219.5" r="3.6" fill="#2a78d6"><title>d64 @ 8: 1.8553</title></circle>
+<circle cx="361.6" cy="247.3" r="3.6" fill="#2a78d6"><title>d64 @ 16: 1.577</title></circle>
+<circle cx="498.4" cy="265.6" r="3.6" fill="#2a78d6"><title>d64 @ 32: 1.3943</title></circle>
+<circle cx="635.2" cy="274.8" r="3.6" fill="#2a78d6"><title>d64 @ 64: 1.3021</title></circle>
+<circle cx="772.0" cy="337.6" r="3.6" fill="#2a78d6"><title>d64 @ 128: 0.6742</title></circle>
+<text x="784" y="329.0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#2a78d6">d64</text>
+<polyline points="88.0,194.1 224.8,215.3 361.6,238.8 498.4,273.9 635.2,295.4 772.0,358.8" fill="none" stroke="#eb6834" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="88.0" cy="194.1" r="3.6" fill="#eb6834"><title>d128 @ 4: 2.1089</title></circle>
+<circle cx="224.8" cy="215.3" r="3.6" fill="#eb6834"><title>d128 @ 8: 1.8968</title></circle>
+<circle cx="361.6" cy="238.8" r="3.6" fill="#eb6834"><title>d128 @ 16: 1.6617</title></circle>
+<circle cx="498.4" cy="273.9" r="3.6" fill="#eb6834"><title>d128 @ 32: 1.311</title></circle>
+<circle cx="635.2" cy="295.4" r="3.6" fill="#eb6834"><title>d128 @ 64: 1.0964</title></circle>
+<circle cx="772.0" cy="358.8" r="3.6" fill="#eb6834"><title>d128 @ 128: 0.4617</title></circle>
+<text x="784" y="346.0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#eb6834">d128</text>
+<polyline points="88.0,193.8 224.8,214.2 361.6,247.8 498.4,280.7 635.2,319.3 772.0,372.7" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="88.0" cy="193.8" r="3.6" fill="#1baf7a"><title>d256 @ 4: 2.112</title></circle>
+<circle cx="224.8" cy="214.2" r="3.6" fill="#1baf7a"><title>d256 @ 8: 1.9077</title></circle>
+<circle cx="361.6" cy="247.8" r="3.6" fill="#1baf7a"><title>d256 @ 16: 1.5719</title></circle>
+<circle cx="498.4" cy="280.7" r="3.6" fill="#1baf7a"><title>d256 @ 32: 1.2432</title></circle>
+<circle cx="635.2" cy="319.3" r="3.6" fill="#1baf7a"><title>d256 @ 64: 0.8571</title></circle>
+<circle cx="772.0" cy="372.7" r="3.6" fill="#1baf7a"><title>d256 @ 128: 0.3232</title></circle>
+<text x="784" y="363.0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#1baf7a">d256</text>
+<polyline points="88.0,200.0 224.8,209.0 361.6,253.6 498.4,292.2 635.2,327.5 772.0,376.0" fill="none" stroke="#eda100" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="88.0" cy="200.0" r="3.6" fill="#eda100"><title>d512 @ 4: 2.0495</title></circle>
+<circle cx="224.8" cy="209.0" r="3.6" fill="#eda100"><title>d512 @ 8: 1.96</title></circle>
+<circle cx="361.6" cy="253.6" r="3.6" fill="#eda100"><title>d512 @ 16: 1.5137</title></circle>
+<circle cx="498.4" cy="292.2" r="3.6" fill="#eda100"><title>d512 @ 32: 1.1282</title></circle>
+<circle cx="635.2" cy="327.5" r="3.6" fill="#eda100"><title>d512 @ 64: 0.7748</title></circle>
+<circle cx="772.0" cy="376.0" r="3.6" fill="#eda100"><title>d512 @ 128: 0.2899</title></circle>
+<text x="784" y="380.0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#eda100">d512</text>
+<text x="430" y="457" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">context the model may see, k (tokens)</text>
+<text transform="translate(16,255) rotate(-90)" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">loss at positions ≥128 (nats)</text>
+<line x1="34" y1="483" x2="846" y2="483" stroke="#e1e0d9" stroke-width="1"/>
+<text x="34" y="503" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">VERDICT KEFF-PROBE-1 · RESULTS.md#L27332 · bar 1 fires, bar 2 does not · 400 fixed rows · Mac CPU · loss only, no gate</text>
 </svg>

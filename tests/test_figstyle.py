@@ -12,6 +12,7 @@ FAILED: red↔green ΔE 6.2 under protanopia.
 """
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 import pytest
@@ -142,7 +143,10 @@ def test_every_published_figure_carries_its_fence():
             continue
         assert fig.get("fence"), f"{name} has no provenance fence"
         assert fig.get("title"), f"{name} has no title"
-        assert figsvg._esc(fig["fence"]) in figsvg.render(name)
+        # the fence may wrap onto a second <text> line; compare with
+        # tags stripped and whitespace normalized
+        flat = " ".join(re.sub(r"<[^>]+>", " ", figsvg.render(name)).split())
+        assert " ".join(figsvg._esc(fig["fence"]).split()) in flat
 
 
 def test_gate_tracks_never_exceed_their_denominator():

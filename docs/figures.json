@@ -3,7 +3,7 @@
   "merge_space": {
     "kind": "gate_track",
     "title": "Averaging independently born weights does not degrade a model \u2014 it ends it",
-    "scope": "All six independent-pair averages gated exactly zero, at every level. Merges inside a shared-init lineage land in the parent band.",
+    "scope": "All six independent-pair averages gated exactly zero; shared-lineage merges land in the parent band.",
     "denominator": 120,
     "arms": [
       {
@@ -47,7 +47,7 @@
   "ssm_star": {
     "kind": "gate_track",
     "title": "The house's first state-space model lost on both axes",
-    "scope": "Paired arms: same device, same diet, same seed. The state-space arm also trained 22.6\u00d7 slower. Booked as a loss, like every other result here.",
+    "scope": "Paired arms: same device, diet, seed. The state-space arm also trained 22.6\u00d7 slower. Booked as a loss.",
     "denominator": 120,
     "arms": [
       {
@@ -66,7 +66,7 @@
   "effective_context": {
     "kind": "curves",
     "title": "Deep positions reach back more than a hundred tokens",
-    "scope": "Loss at positions past 128 when the model may see only the last k tokens. Every width improves by ~1 nat between k=16 and k=128, so the corpus really does carry long-range dependency. The gap BETWEEN widths does not order monotonically in k \u2014 it is negative at k=8 and narrows again at k=128 \u2014 so the registered width-buys-depth bar did not fire.",
+    "scope": "Every width improves ~1 nat between k=16 and k=128; the registered width-buys-depth bar did not fire.",
     "x": [
       4,
       8,
@@ -164,7 +164,7 @@
   "routing_crest": {
     "kind": "gate_track",
     "title": "Which experts you keep is the difference between 0 and 81 of 120",
-    "scope": "A resident 30B-class mixture-of-experts, masked to 58 of its 128 experts per layer. Demand-ranked selection beats the paired full model at every seed (80, 82, 81 against 63, 73, 63). At the identical keep fraction, random and anti-demand selection score nothing at all. The effect is selection, not sparsity.",
+    "scope": "Demand-ranked 58/128 masks beat the paired full model at every seed; random and anti-demand at the same keep score zero.",
     "denominator": 120,
     "arms": [
       {
@@ -198,39 +198,39 @@
   "honesty_ledger": {
     "kind": "composition",
     "title": "A fifth of the published record argues against the lab",
-    "scope": "Every claim in FINDINGS carries exactly one maturity tag. Nulls and retractions are published beside the wins, at the same prominence, because a ledger that only records successes cannot be checked.",
+    "scope": "One maturity tag per claim; nulls and retractions published beside the wins at the same prominence.",
     "parts": [
       {
         "label": "Replicated",
-        "value": 37,
+        "value": 38,
         "entity": "champion",
         "note": "holds at n\u22653 paired seeds"
       },
       {
         "label": "Mechanism confirmed",
-        "value": 42,
+        "value": 54,
         "entity": "shared",
         "note": "the cause was isolated"
       },
       {
         "label": "Single seed",
-        "value": 71,
+        "value": 82,
         "entity": "crown",
         "note": "fenced as provisional"
       },
       {
         "label": "Null",
-        "value": 35,
+        "value": 39,
         "entity": "random",
         "note": "the idea did not work"
       },
       {
         "label": "Retracted",
-        "value": 3,
+        "value": 4,
         "entity": "null",
         "note": "we were wrong, in writing"
       }
     ],
-    "fence": "docs/FINDINGS.md \u00b7 188 curated claims \u00b7 recounted from the source at build time"
+    "fence": "docs/FINDINGS.md \u00b7 217 curated claims \u00b7 recounted from the source at build time"
   }
 }

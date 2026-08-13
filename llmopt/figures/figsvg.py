@@ -119,10 +119,27 @@ def _fence(c, w, h, pad_x, text):
     caption someone can crop off."""
     if not text:
         return ""
-    return (f'<line x1="{pad_x}" y1="{h - 40}" x2="{w - pad_x}" '
-            f'y2="{h - 40}" stroke="{c["grid"]}" stroke-width="1"/>\n'
-            f'<text x="{pad_x}" y="{h - 20}" font-family="{MONO}" '
-            f'font-size="{T_FENCE}" fill="{c["muted"]}">{_esc(text)}</text>')
+    # wrap long provenance onto a second line instead of clipping at
+    # the right edge (mono glyphs ≈ 0.62em wide)
+    limit = int((w - 2 * pad_x) / (T_FENCE * 0.62))
+    words, line, lines = text.split(), "", []
+    for word in words:
+        trial = f"{line} {word}".strip()
+        if len(trial) > limit and line:
+            lines.append(line)
+            line = word
+        else:
+            line = trial
+    lines.append(line)
+    lines = lines[:2]  # the fence is a footer, not a paragraph
+    y0 = h - 20 - (len(lines) - 1) * (T_FENCE + 5)
+    out = [f'<line x1="{pad_x}" y1="{y0 - 20}" x2="{w - pad_x}" '
+           f'y2="{y0 - 20}" stroke="{c["grid"]}" stroke-width="1"/>']
+    for i, ln in enumerate(lines):
+        out.append(f'<text x="{pad_x}" y="{y0 + i * (T_FENCE + 5)}" '
+                   f'font-family="{MONO}" font-size="{T_FENCE}" '
+                   f'fill="{c["muted"]}">{_esc(ln)}</text>')
+    return "\n".join(out)
 
 
 def gate_track(spec: dict, mode: str = "light", width: int = 880) -> str:
@@ -149,13 +166,14 @@ def gate_track(spec: dict, mode: str = "light", width: int = 880) -> str:
             f'font-family="{SANS}" font-size="{T_LABEL}" '
             f'fill="{c["secondary"]}">{_esc(arm["label"])}</text>')
         # the whole gate, always drawn — this is what makes zero visible
+        tip = f'<title>{_esc(arm["label"])}: {arm["value"]}/{denom}</title>'
         body.append(
             f'<rect x="{rail_x}" y="{cy + 3}" width="{rail_w}" height="16" '
-            f'rx="8" fill="{c["grid"]}"/>')
+            f'rx="8" fill="{c["grid"]}">{tip}</rect>')
         if fill_w > 0:
             body.append(
                 f'<rect x="{rail_x}" y="{cy + 3}" width="{fill_w:.1f}" '
-                f'height="16" rx="8" fill="{col}"/>')
+                f'height="16" rx="8" fill="{col}">{tip}</rect>')
         # value in mono, always shown: the count is the checksum
         body.append(
             f'<text x="{rail_x + rail_w + 12}" y="{cy + 15}" '
@@ -221,7 +239,9 @@ def curves(spec: dict, mode: str = "light", width: int = 880) -> str:
                     f'stroke-linejoin="round"/>')
         for j, v in enumerate(s["y"]):
             body.append(f'<circle cx="{px(lx[j]):.1f}" cy="{py(v):.1f}" '
-                        f'r="3.6" fill="{col}"/>')
+                        f'r="3.6" fill="{col}">'
+                        f'<title>{_esc(s["label"])} @ {xs[j]}: {v}</title>'
+                        f'</circle>')
         body.append(
             f'<text x="{right + 12}" y="{label_y[i] + 4:.1f}" '
             f'font-family="{SANS}" font-size="{T_LABEL}" font-weight="600" '
