@@ -46,6 +46,30 @@ Endpoints and identities are data; in-between motion is presentation.
 - tracked subset is a fixed seeded draw, not curated
 - provenance outro stays (compressed to one line, 1.2s)
 
+## House animation grammar (adopted 2026-08-13, Artin ruling)
+
+North-star reference: 2swap, "Double Pendulums are Chaoticn't"
+(youtube dtjb2OhEQcU, ~6:27) - principles only, never its imagery:
+full-frame data fields, luminous density with crisp detail, few
+foreground actors over a rich population, decaying temporal trails,
+continuous evolution (no slide transitions), minimal text, quiet
+guides, restrained color, generous holds.
+
+Every llmopt scene uses this layer structure:
+
+- **Field**: the complete population, filling most of the canvas
+- **Actors**: 8-20 highlighted identity-preserving elements
+- **Memory**: fading trajectory/history
+- **Geometry**: understated axes/contours/density/projection structure
+- **Text**: one opening claim at most; short direct labels only when
+  necessary
+- **Receipt**: provenance on an isolated end card - NEVER over live
+  data; posters use the clean composition, never the receipt card
+
+Density glow rule: any glow/bloom must come from the actual point
+density (e.g. the same points drawn wide and faint), never synthetic
+noise or invented fields.
+
 ## Checkpoint
 
 Draft MP4 + poster delivered with this storyboard. On approval:

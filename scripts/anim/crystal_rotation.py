@@ -77,6 +77,13 @@ class CrystalRotation(MovingCameraScene):
         order = ARR["order"][all_idx]
         frame = self.camera.frame
 
+        # Density glow: the SAME background points drawn wide and
+        # faint underneath - luminosity accumulates where the real
+        # point density does, no synthetic field.
+        glow = VGroup(*[
+            Dot([x, y, 0], radius=0.11,
+                color=ramp(META, o, MODE), fill_opacity=0.045)
+            for (x, y), o in zip(views["pca"][:N_BG], order[:N_BG])])
         bg = VGroup(*[
             Dot([x, y, 0], radius=0.030,
                 color=ramp(META, o, MODE), fill_opacity=0.65)
@@ -91,7 +98,7 @@ class CrystalRotation(MovingCameraScene):
                         color=C["secondary"]).to_edge(DOWN, buff=0.45)
 
         # Beat 1 (0-2.5): inside the cloud; claim on a local scrim.
-        self.add(bg, tracked)
+        self.add(glow, bg, tracked)
         frame.scale(0.30).move_to(bg.get_center() + np.array([0.6, 0.3, 0]))
         claim = Text("12,288 weights. Three views.", font="Inter",
                      weight="LIGHT", font_size=34, color=C["primary"])
@@ -131,6 +138,8 @@ class CrystalRotation(MovingCameraScene):
             lab = edge_label(text)
             self.play(
                 *[d.animate.move_to([p[0], p[1], 0])
+                  for d, p in zip(glow, target[:N_BG])],
+                *[d.animate.move_to([p[0], p[1], 0])
                   for d, p in zip(bg, target[:N_BG])],
                 *[d.animate.move_to([p[0], p[1], 0])
                   for d, p in zip(tracked, target[N_BG:])],
@@ -158,14 +167,17 @@ class CrystalRotation(MovingCameraScene):
             echoes.add(grp)
         polar_lab = Text("POLAR", font="Inter", font_size=17,
                          color=C["muted"]).move_to([-2.3, -2.75, 0])
-        cloud = VGroup(bg, tracked)
+        cloud = VGroup(glow, bg, tracked)
         self.play(
             cloud.animate(run_time=1.6).scale(0.62).move_to([-2.3, -0.1, 0]),
             FadeIn(echoes, run_time=1.6),
             FadeIn(polar_lab, run_time=1.6))
-        self.wait(2.0)
+        self.wait(2.7)          # clean composed hold - the poster frame
+        # Receipt: dedicated end card, never over live data.
+        self.play(FadeOut(cloud), FadeOut(echoes), FadeOut(polar_lab),
+                  run_time=0.8)
         fence = Text(f"{META['provenance']} · @ {META['head']}",
-                     font="JetBrains Mono", font_size=12,
-                     color=C["muted"]).to_edge(DOWN, buff=0.18)
-        self.play(FadeIn(fence, run_time=0.5))
-        self.wait(1.2)
+                     font="JetBrains Mono", font_size=13,
+                     color=C["muted"]).move_to([0, 0, 0])
+        self.play(FadeIn(fence, run_time=0.4))
+        self.wait(0.9)
