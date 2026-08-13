@@ -2485,6 +2485,12 @@ One-shot Phase 4.3: delete sys.path.insert bootstrap lines in the UNCITED files 
 One-shot Phase 5 dead-code sweep (report only, no edits): AST walk of llmopt/ (vendor excluded) collecting module-level def/class names, then grep the whole repo (llmopt, scripts, scratch, tests) for references. Prints names with zero references outside their own definition line. Triage is the caller's job — battery-pinned bodies and __getattr__-reached names are NOT safe to delete on this signal alone.
 
 
+### scratch/phase_portrait_precompute.py
+PHASE-PORTRAIT-1 precompute: milestones -> data/anim/phase.npz.
+
+- `gate_rows(sd: dict) -> torch.Tensor`
+- `main() -> None`
+
 ### scratch/phys_probe.py
 Physics rung 1 probe: greedy emission on held-out phys steps (seeds 17-19), sympy-equivalence in t, fork-isolated. No math gate — the physics expert is vocab-41, a separate model class by design. Usage: phys_probe.py <ckpt>
 

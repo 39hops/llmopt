@@ -27796,3 +27796,54 @@ receipt, not a transportable constant. The ~8% old-oracle
 false-negative rate is battery-scoped (Integral rows of
 step_chains.jsonl, seed 0 shuffle); it dies with the old oracle and
 is booked only as the cause of the bar's misread.
+
+## OBSERVATION PHASE-PORTRAIT-1: a 19M birth with step-level milestones + Adam state — per-step weight speed decays ~100x monotonically and the settling is COLLECTIVE (2026-08-13, Mac)
+
+Instrument run per the birth19m_snaps precedent: portrait-only, no
+capability claims, no pre-reg required; ANY capability read of these
+weights needs its own pre-reg. Driver scratch/birth19m_phase.py
+SEED=2 (D2 excision 165,028 -> 164,896 rows, 132 excised; 388
+out-of-language rows skipped; refuse-if-exists; BIRTH_SEED=2), same
+recipe as the 08-08 snap-birth (d384/8L/ffn1536/h6, gen4 diet, 3
+epochs, fast bf16, MPS). Tee: {model, opt, step} every 900 optimizer
+steps -> 18 milestones (steps 1, 900..15300) in checkpoints/phase19m/
+(untracked, 227MB each), each carrying Adam exp_avg/exp_avg_sq — the
+first artifacts in the lab with optimizer state on disk. Wall ~49 min
+at 5.1 it/s, 15,420 steps total, epoch losses 0.4749/0.3841/0.3548
+(ep0 print at 5140 steps; rc=0, receipt jobs/phase19m.log).
+
+MEASURED (scratch/phase_portrait_precompute.py -> data/anim/phase.npz,
+committed; gate-neuron rows, 12,288 = 8 layers x 1536):
+  per-step speed ||dW||_row/step, mean across neurons, by milestone:
+  1.06e-4 -> 1.05e-4 -> 1.02e-4 -> 1.02e-4 -> 9.9e-5 -> 9.4e-5 ->
+  8.7e-5 -> 7.9e-5 -> 6.8e-5 -> 5.7e-5 -> 4.7e-5 -> 3.5e-5 ->
+  2.6e-5 -> 1.9e-5 -> 1.1e-5 -> 5e-6 -> 1e-6 (17 intervals,
+  MONOTONE after the first, ~100x total decay — the OneCycle
+  schedule read directly in weight space).
+  Adam momentum ||exp_avg||_row mean: spikes 8.1e-5 -> 2.19e-4 at
+  milestone 2 then decays on its own slower schedule to 6.3e-5 —
+  finite-difference speed and optimizer momentum are DIFFERENT
+  velocities and the artifacts carry both.
+  The per-milestone speed distribution stays NARROW (the phase-plane
+  band does not fan out): settling is collective, not a fast/slow
+  neuron split — consistent with the grpo3 homogeneity measured
+  earlier today (max/median displacement 2.0 on the 12-cycle GRPO
+  ladder, where total amplitude was ~0.3% of row norm and killed the
+  dense-checkpoint portrait concept).
+
+SHIPPED against this artifact: scripts/anim/phase_portrait.py (the
+(theta, theta-dot) scene, x = angle in the final-milestone whitened-
+PCA basis, y = log10 per-step speed; assets docs/assets/anim/
+phase_portrait.{mp4,gif} + poster, registered in render_anim).
+
+FENCES: n=1 birth, one seed, one machine (MPS bf16) — the decay
+CURVE is schedule-driven by construction and transports only as
+"OneCycle produces monotone weight-space deceleration at this
+scale", not as constants. Speed is a 900-step finite difference;
+Adam exp_avg is the EMA velocity — never conflate the two. The
+pendulum riff's order-chaos boundary remains UNMEASURED: nothing
+here is evidence for or against it (the riff's divergence-ladder
+residue is the instrument for that). Milestones are untracked
+artifacts; phase.npz is the committed derivative. NO gate was run on
+any milestone — capability-vs-trajectory (the "optimal theta-dot"
+question) needs its own pre-reg before anyone gates these files.

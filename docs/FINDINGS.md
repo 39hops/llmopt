@@ -1773,3 +1773,13 @@ regime tag on every bullet is the fence.
   19.1 s, n=1 CPU receipt). Soundness stays held by the vendored
   167/167 Phase D replay. ([VERDICT
   VERIFY-FAST-BAR-RETIRED](RESULTS.md#L27754).)
+
+- [SINGLE-SEED] [ONE VEHICLE] A 19M birth teed every 900 optimizer
+  steps with Adam state on disk shows per-step weight speed decaying
+  ~100x monotonically (1.06e-4 -> 1.0e-6 mean ||dW||/step over
+  15,420 steps) with a NARROW per-milestone speed distribution — the
+  settling is collective, not a fast/slow neuron split, and Adam's
+  exp_avg momentum is a visibly different velocity (spikes early,
+  decays slower). Schedule-driven by construction (OneCycle);
+  portrait-only, no capability read. ([OBSERVATION
+  PHASE-PORTRAIT-1](RESULTS.md#L27800).)

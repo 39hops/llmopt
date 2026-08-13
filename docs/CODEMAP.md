@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 202, library 63, reproduce-pinned 10, results-cited 167, spec-cited 86, cited-but-library 51
+Census: UNCITED 201, library 63, reproduce-pinned 10, results-cited 169, spec-cited 86, cited-but-library 51
 
 ## scratch/
 
@@ -26,7 +26,7 @@ Census: UNCITED 202, library 63, reproduce-pinned 10, results-cited 167, spec-ci
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
 | basin | basin_probe.py | UNCITED | — | — | — | — |
-| birth19m | birth19m_phase.py | UNCITED | — | — | — | — |
+| birth19m | birth19m_phase.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | birth19m | birth19m_snaps.py | UNCITED | — | — | — | 1 |
 | blackhole | blackhole_b0.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | boundary | boundary_or_bulk.py | results-cited | RESULTS | RESULTS×3 | — | — |
@@ -269,6 +269,7 @@ Census: UNCITED 202, library 63, reproduce-pinned 10, results-cited 167, spec-ci
 | pack | pack_rans.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | pack | pack_tiered.py | spec-cited | specs | specs×1 | — | — |
 | paper | paper_figs.py | UNCITED | — | — | — | — |
+| phase | phase_portrait_precompute.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | phase4 | phase4_rewrite.py | spec-cited | specs | specs×1 | — | — |
 | phase4 | phase4_sites.py | spec-cited | specs | specs×3 | — | 1 |
 | phase4 | phase4_unboot.py | UNCITED | — | — | — | — |
