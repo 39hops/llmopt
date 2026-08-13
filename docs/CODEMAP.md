@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-cited 83, cited-but-library 51
+Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-cited 84, cited-but-library 51
 
 ## scratch/
 
@@ -516,6 +516,7 @@ Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | plot | plot_identity_crest.py | spec-cited | specs | specs×2 | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×2 | — | 1 |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| render | render_gallery.py | spec-cited | specs | specs×5 | — | — |
 | render | render_hero_neurons.py | spec-cited | specs | specs×3 | — | 1 |
 | results | results_query.py | spec-cited | specs | specs×15 | — | 2 |
 | rjob | rjob.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
