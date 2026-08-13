@@ -4130,3 +4130,36 @@ without re-introducing history).
   error-rate number and a coverage number, never one alone.
   Attribution: Artin (the frame, twice — raised once before and
   under-credited), house (the two-sigma split and the residue).
+
+- **BANKED (2026-08-13): the Stockfish-NNUE pattern generalizes — a
+  verified engine's scored experience trains a fast learned ranker,
+  and "AGI-shaped" systems may be many such engine+ranker pairs
+  behind a router, not one self-verifying net** (Artin, from a Grok
+  exchange; Grok's counter folded in). The mapping / the math:
+  Stockfish = rules + search + exact-ish eval in ONE closed domain;
+  NNUE = small net distilled from the engine's own scored positions.
+  The lab already instantiates the shape: oracle-verified search,
+  rankers grown from engine traces, engine<->model exchange. Artin's
+  extension: an engine that could price any state/action in the
+  universe would let you train an LLM the same way; and none of
+  Stockfish/lc0/AlphaZero SOLVED chess yet all passed humans — so
+  superhuman-per-domain does not require solving the domain.
+  Measured anchors: none for the AGI claim (none possible here);
+  house anchors for the pattern itself are the engine->ranker rungs
+  and the ZX/math engine lineage in RESULTS. Honest breaks (Grok's,
+  accepted): open action spaces have no closed move set; most
+  domains lack cheap sharp oracles; an LLM imitates many domains but
+  ships no verified moves or global checker — it is a wide prior
+  over traces, not an oracle. The AGI-shaped remainder is exactly
+  the unsolved part: choosing which engine applies, KNOWING when
+  none apply (honest abstention), and acquiring new oracles when
+  the world is not formal. Multi-engine interaction (physics x
+  quantum-circuits x math) is an open interface question: shared
+  state representation vs data-level coupling, and the data-diet
+  question rides on it. Testable residue: house-scale only — when
+  two house engines (e.g. math + ZX) share a training diet, does a
+  single ranker trained on the union beat two specialist rankers at
+  equal parameter budget? That is a rung, not a philosophy. Charter
+  fence: engines stay math/physics only, per the lab charter.
+  Attribution: Artin (the frame and the multi-engine question),
+  Grok (the three-part break), house (the union-ranker residue).
