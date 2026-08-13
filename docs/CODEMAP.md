@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 201, library 63, reproduce-pinned 10, results-cited 170, spec-cited 86, cited-but-library 52
+Census: UNCITED 200, library 63, reproduce-pinned 10, results-cited 172, spec-cited 86, cited-but-library 52
 
 ## scratch/
 
@@ -120,7 +120,7 @@ Census: UNCITED 201, library 63, reproduce-pinned 10, results-cited 170, spec-ci
 | gate | gate_ckpt_cuda.py | UNCITED | — | — | — | 12 |
 | gate | gate_cplx.py | spec-cited | specs | specs×1 | — | 1 |
 | gate | gate_phase19m.py | results-cited | RESULTS | RESULTS×2 | — | — |
-| gate | gate_pp.py | UNCITED | — | — | — | 1 |
+| gate | gate_pp.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | gate | gate_prefix.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | gate | gate_rarity.py | results-cited | RESULTS | RESULTS×1 | — | 10 |
 | gate | gate_regate.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
@@ -178,6 +178,7 @@ Census: UNCITED 201, library 63, reproduce-pinned 10, results-cited 170, spec-ci
 | lean | lean_check.py | reproduce-pinned | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×7, specs×3 | — | — |
 | lean | lean_sample_build.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | legacy | legacy_diet_audit.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| len | len_vs_l4.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | lloydmax | lloydmax_race.py | library | — | — | 1 | — |
 | loss | loss_floor_census.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | lyap | lyap_compare.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
