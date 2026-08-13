@@ -4314,3 +4314,31 @@ without re-introducing history).
   (anneal-then-warm) vs standard, same diet/seed, one birth each.
   Attribution: Artin (the frame and both asks), house (the
   order-inversion operationalization + anchors).
+
+- **BANKED (2026-08-13): "why can't training be n log n — skip a
+  majority of the phases?"** (Artin, watching the phase_portrait
+  animation mid-BACKWARD-SCHEDULE-1). The frame: the settling looks
+  structured, so most of it should be skippable. Honest breaks
+  first: the visible smoothness is schedule-IMPOSED (OneCycle drives
+  the ~100x deceleration — PHASE-PORTRAIT-1's own fence), and SGD is
+  a recurrence — step N needs the weights step N-1 produced, so
+  there is no sublinear jump in the complexity sense; cost is linear
+  in steps walked. The mapping that survives: SKIPPING is
+  impossible, but TRUNCATING/COMPRESSING may be nearly free —
+  measured anchor CAP-V-TRAJ-1: m010800 gates 62/120 vs final 64 (a
+  tie under the sigma fence), so the last ~30% of the trajectory
+  bought ~1-2 solves. Measured anchors: CAP-V-TRAJ-1 (capability
+  leads settling, rho 0.979, cap90 at step 10,800);
+  PHASE-PORTRAIT-1 (monotone collective deceleration). Testable
+  residue: the SCHEDULE-COMPRESSION LADDER — same recipe/seed/diet,
+  OneCycle rescaled to {70%, 50%, 30%} of total_steps (one birth
+  each, ~25-50 min/arm on Mac), standard 120 gate at each endpoint,
+  paired against the booked 64/120. Bars would mirror
+  BACKWARD-SCHEDULE-1's (within-1.5-sigma = compression free at that
+  ratio; > 7 below = the wall found). Distinct from truncated
+  training (stop early on the SAME schedule = never reach low-lr
+  polish) — compression keeps the schedule SHAPE; both arms
+  interesting, name them apart. Related: BACKWARD-SCHEDULE-1 (in
+  flight at bank time) is the ORDER half of the same pincer.
+  Attribution: Artin (the ask, the skip frame), house (the
+  recurrence break + compression-ladder operationalization).
