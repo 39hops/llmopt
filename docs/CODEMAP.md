@@ -393,7 +393,7 @@ Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
 |  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×12 | — | 1 |
-| anim | anim_precompute.py | spec-cited | specs | specs×2 | — | 4 |
+| anim | anim_precompute.py | spec-cited | specs | specs×4 | — | 4 |
 | arena | arena.py | UNCITED | — | — | — | — |
 | autopsy | autopsy_int.py | UNCITED | — | — | — | — |
 | backfill | backfill_code_commit.py | spec-cited | specs | specs×3 | — | — |
@@ -517,7 +517,7 @@ Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | plot | plot_identity_crest.py | spec-cited | specs | specs×2 | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×2 | — | 1 |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| render | render_gallery.py | spec-cited | specs | specs×5 | — | — |
+| render | render_gallery.py | spec-cited | specs | specs×6 | — | — |
 | render | render_hero_neurons.py | spec-cited | specs | specs×3 | — | 1 |
 | results | results_query.py | spec-cited | specs | specs×15 | — | 2 |
 | rjob | rjob.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
