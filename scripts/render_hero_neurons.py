@@ -9,7 +9,7 @@ the checkpoint-in, README-hero-out wrapper.
 Usage:
   .venv/bin/python scripts/render_hero_neurons.py \
       --ckpt checkpoints/gallery19m_s1.pt \
-      --out docs/assets/neurons-19m
+      --out docs/assets/hero/neurons-19m
   (writes <out>-light.png and <out>-dark.png at 300 dpi)
 """
 import argparse

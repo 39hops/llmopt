@@ -1,8 +1,23 @@
 # docs/assets — figure classes and where each comes from
 
-Every image here belongs to exactly one class. Before touching a
-file, find its row; before adding one, pick its class. This is the
+Every image here belongs to exactly one class, and since 2026-08-13
+the directory layout mirrors the classes. Before touching a file,
+find its row; before adding one, pick its class. This is the
 figure-side counterpart of docs/CODEMAP.md's frozen/adopted split.
+
+```
+docs/assets/
+├── README.md
+├── web/                  # [PUBLISHED] — figures.json-sourced pairs
+├── hero/                 # [HERO] — neurons-19m-{light,dark}.png
+├── gallery/              # [R] — regenerable renders
+└── archive/2026-08-12/   # [H] — frozen pixels, moved as-is
+```
+
+`figs/<date>/` at repo root stays separate: run exhaust, never a
+publication surface. Historical docs (handoffs, RESULTS) keep their
+pre-move paths as evidence; only live surfaces (top README, paper,
+this file) are link-checked (`tests/test_asset_links.py`).
 
 ## Classes
 
@@ -14,22 +29,23 @@ pixels. Files: `web/*.{svg,png}` (light + `-dark` pairs).
 
 **[HERO]** — the README front-door render. `scripts/render_hero_neurons.py`
 on a catalogued checkpoint; provenance footer (ckpt sha + repo HEAD)
-is part of the image. Files: `neurons-19m-light.png`,
-`neurons-19m-dark.png`. 256-color quantized on install (Pillow
+is part of the image. Files: `hero/neurons-19m-light.png`,
+`hero/neurons-19m-dark.png`. 256-color quantized on install (Pillow
 median-cut; the renderer writes full RGB to scratch first).
 
 **[R] reproducible gallery** — weight-space renders whose script and
 checkpoint both still exist; regenerable at will.
 `scripts/plot_neurons.py` (pca/sphere/polar/displace),
 `scripts/plot_gt1_crest.py`, `scripts/plot_identity_crest.py`.
-Files include `gt1-crest-small-multiples.png`,
+Files live under `gallery/`: `gt1-crest-small-multiples.png`,
 `identity-crest-fresh-seeds.png`, `neurons-gen6-*`, `neurons-pca-*`,
 the four-diets set, `neurons-113m-growth-*` (gallery pair).
 
 **[H] historic / frozen pixels** — no surviving script+checkpoint
 pair, or cited by a booked entry as-is. Evidence record: never
 regenerate, never delete without an Artin GO, never point new docs
-at them. Files include `neurons-19m.png` (the old hero — cited by
+at them. Files live under `archive/2026-08-12/`, including
+`neurons-19m.png` (the old hero — cited by
 `scratch/crystal_recreate_test.py`; its caption text is superseded,
 which is WHY it is frozen rather than shipped), `neurons-19m-zoom.png`,
 `three-minds-*`, crystal-era renders.

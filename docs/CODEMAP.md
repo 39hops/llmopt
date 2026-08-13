@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-cited 82, cited-but-library 51
+Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-cited 83, cited-but-library 51
 
 ## scratch/
 
@@ -20,6 +20,7 @@ Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | absorb | absorb_1e5.py | UNCITED | — | — | — | — |
 | adjudicate | adjudicate_zx.py | library | — | — | 1 | — |
 | anatomy | anatomy.py | results-cited | RESULTS, specs | RESULTS×5, specs×7 | — | 3 |
+| assets | assets_classify.py | spec-cited | specs | specs×1 | — | — |
 | attractor | attractor_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
@@ -127,7 +128,7 @@ Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | gauge | gauge_distance_d256.py | UNCITED | — | — | — | — |
 | gauge | gauge_m4x.py | UNCITED | — | — | — | — |
 | gauge | gauge_slack_rat.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| gen | gen_lab_overview_pdf.py | UNCITED | — | — | — | — |
+| gen | gen_lab_overview_pdf.py | UNCITED | — | — | — | 1 |
 | gen | gen_lean_corpus.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | gen8 | gen8_pipeline.sh | spec-cited | specs | specs×2 | — | 1 |
 | gen9 | gen9_19m_cuda_control.sh | UNCITED | — | — | — | — |
@@ -513,7 +514,7 @@ Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | moe | moe_router_stats.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 4 |
 | plot | plot_gt1_crest.py | spec-cited | specs | specs×2 | — | — |
 | plot | plot_identity_crest.py | spec-cited | specs | specs×2 | — | — |
-| plot | plot_neurons.py | spec-cited | specs | specs×2 | — | — |
+| plot | plot_neurons.py | spec-cited | specs | specs×2 | — | 1 |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | render | render_hero_neurons.py | spec-cited | specs | specs×3 | — | 1 |
 | results | results_query.py | spec-cited | specs | specs×15 | — | 2 |

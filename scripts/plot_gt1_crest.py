@@ -181,7 +181,7 @@ def main() -> None:
         color=DIM, fontsize=7, family="monospace",
     )
     fig.tight_layout(rect=(0, 0.04, 1, 1))
-    out = Path("docs/assets/gt1-crest-small-multiples.png")
+    out = Path("docs/assets/gallery/gt1-crest-small-multiples.png")
     out.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out, dpi=150, facecolor=BG)
     print(f"saved {out}")

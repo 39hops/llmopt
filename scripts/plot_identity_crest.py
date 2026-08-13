@@ -81,7 +81,7 @@ def main() -> None:
             transform=ax.transAxes, color=DIM, fontsize=7,
             family="monospace")
     fig.tight_layout(rect=(0, 0.045, 1, 1))
-    out = "docs/assets/identity-crest-fresh-seeds.png"
+    out = "docs/assets/gallery/identity-crest-fresh-seeds.png"
     fig.savefig(out, dpi=150, facecolor=BG)
     print(f"saved {out}")
 

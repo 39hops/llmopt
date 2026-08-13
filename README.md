@@ -9,11 +9,11 @@ threshold it can fail, and the failures are published beside the wins.
 
 <picture>
   <source media="(prefers-color-scheme: dark)"
-          srcset="docs/assets/neurons-19m-dark.png">
+          srcset="docs/assets/hero/neurons-19m-dark.png">
   <img alt="Every gate neuron of a math-native 19M model as a dot in
 weight space, three projections of the same matrix rows: PCA, unit-sphere
 stereographic, and phase-vs-magnitude polar. Color is neuron magnitude."
-       src="docs/assets/neurons-19m-light.png">
+       src="docs/assets/hero/neurons-19m-light.png">
 </picture>
 
 That is every gate neuron in a 19M-parameter model born on this lab's

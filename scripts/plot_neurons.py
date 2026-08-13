@@ -15,9 +15,9 @@ crystal layer). Three projection spaces:
 
 Examples:
   python scripts/plot_neurons.py --ckpt checkpoints/mathnative_19m.pt \
-      --d 384 --title "math-native 19M" --out docs/assets/neurons-19m.png
+      --d 384 --title "math-native 19M" --out docs/assets/gallery/neurons-19m.png
   python scripts/plot_neurons.py --ckpt A.pt --compare B.pt \
-      --method sphere --out docs/assets/neurons-a-vs-b.png
+      --method sphere --out docs/assets/gallery/neurons-a-vs-b.png
 
 Provenance (2026-08-08 gallery-hardening pass): every figure gets a
 footer stamp — checkpoint basename + sha256[:8] + the repo HEAD at
