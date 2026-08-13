@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-cited 77, cited-but-library 51
+Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-cited 82, cited-but-library 51
 
 ## scratch/
 
@@ -19,7 +19,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 |---|---|---|---|---|---|---|
 | absorb | absorb_1e5.py | UNCITED | — | — | — | — |
 | adjudicate | adjudicate_zx.py | library | — | — | 1 | — |
-| anatomy | anatomy.py | results-cited | RESULTS, specs | RESULTS×5, specs×5 | — | 3 |
+| anatomy | anatomy.py | results-cited | RESULTS, specs | RESULTS×5, specs×7 | — | 3 |
 | attractor | attractor_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
@@ -57,7 +57,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | confluence | confluence.py | UNCITED | — | — | — | — |
 | corner | corner_snap.py | UNCITED | — | — | — | — |
 | cplx | cplx_chain.sh | UNCITED | — | — | — | — |
-| crystal | crystal_recreate_test.py | spec-cited | specs | specs×1 | — | — |
+| crystal | crystal_recreate_test.py | spec-cited | specs | specs×3 | — | — |
 | d2 | d2_verify.py | UNCITED | — | — | — | 1 |
 | day | day_chain.sh | UNCITED | — | — | — | — |
 | desert | desert_v2.py | spec-cited | specs | specs×1 | — | — |
@@ -230,7 +230,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | night31 | night31_cuda.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | night31 | night31_mac.sh | UNCITED | — | — | — | — |
 | night31b | night31b_cuda.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
-| nineteen | nineteen_m_displace.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| nineteen | nineteen_m_displace.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | oracle | oracle_worker.py | reproduce-pinned | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×2, specs×1 | — | 6 |
 | ozaki | ozaki_2b_bisect.py | UNCITED | — | — | — | — |
 | ozaki | ozaki_2b_check.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -318,7 +318,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | scorer | scorer_s1_battery.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | scorer | scorer_s2_data.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | scorer | scorer_s2_train.py | spec-cited | specs | specs×1 | — | — |
-| seed | seed_audit.py | spec-cited | specs | specs×1 | — | — |
+| seed | seed_audit.py | spec-cited | specs | specs×2 | — | — |
 | seeds | seeds_ladder_0804.sh | UNCITED | — | — | — | — |
 | series | series_probe.py | spec-cited | specs | specs×5 | — | 15 |
 | snap | snap_alloc.py | spec-cited | specs | specs×2 | — | 1 |
@@ -428,7 +428,7 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | bench | bench_interference.py | UNCITED | — | — | — | — |
 | bench | bench_ksweep.py | UNCITED | — | — | — | — |
 | bench | bench_kv_quant_decode.py | UNCITED | — | — | — | 1 |
-| bench | bench_ladder.py | spec-cited | specs | specs×1 | — | — |
+| bench | bench_ladder.py | spec-cited | specs | specs×2 | — | — |
 | bench | bench_lazy.py | library | RESULTS | RESULTS×1 | 1 | — |
 | bench | bench_llm_gating.py | UNCITED | — | — | — | — |
 | bench | bench_lookup_static.py | UNCITED | — | — | — | — |
@@ -489,14 +489,14 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | gen | gen_codemap.py | results-cited | RESULTS, specs | RESULTS×1, specs×21 | — | 1 |
 | gen | gen_dispatch_labels.py | UNCITED | — | — | — | 2 |
 | gen | gen_dispatch_labels_v2.py | UNCITED | — | — | — | — |
-| gen | gen_figures_web.py | UNCITED | — | — | — | — |
+| gen | gen_figures_web.py | spec-cited | specs | specs×1 | — | — |
 | gen | gen_frontier.py | UNCITED | — | — | — | — |
 | gen | gen_index.py | spec-cited | specs | specs×10 | — | 1 |
 | gen | gen_lake.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | gen | gen_magic_labels.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
 | gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | 1 |
-| gen | gen_readme.py | spec-cited | specs | specs×20 | — | 1 |
+| gen | gen_readme.py | spec-cited | specs | specs×24 | — | 1 |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
 | gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 4 |
 | gen | gen_scoreboard.py | UNCITED | — | — | — | — |
@@ -511,11 +511,11 @@ Census: UNCITED 206, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | mine | mine_highways.py | UNCITED | — | — | — | 1 |
 | mine | mine_prior_update.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | moe | moe_router_stats.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 4 |
-| plot | plot_gt1_crest.py | UNCITED | — | — | — | — |
-| plot | plot_identity_crest.py | UNCITED | — | — | — | — |
-| plot | plot_neurons.py | UNCITED | — | — | — | — |
+| plot | plot_gt1_crest.py | spec-cited | specs | specs×2 | — | — |
+| plot | plot_identity_crest.py | spec-cited | specs | specs×2 | — | — |
+| plot | plot_neurons.py | spec-cited | specs | specs×2 | — | — |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| render | render_hero_neurons.py | UNCITED | — | — | — | 1 |
+| render | render_hero_neurons.py | spec-cited | specs | specs×3 | — | 1 |
 | results | results_query.py | spec-cited | specs | specs×15 | — | 2 |
 | rjob | rjob.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | sol | sol_enrich_results.py | library | specs | specs×4 | 1 | — |

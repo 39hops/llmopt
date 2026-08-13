@@ -1264,6 +1264,12 @@ Unified crystal anatomy (2026-07-29 spec: slack-restoration). One env-parameteri
 - `snap(w, q_max)`
 - `truncate(W, r)`
 
+### scratch/assets_classify.py
+Classify every docs/assets/*.png into the figure taxonomy.
+
+- `classify(name: str) -> str`
+- `main() -> None`
+
 ### scratch/attractor_census.py
 Free-running iteration census (PRE-REG ATTRACTOR-0, 2026-08-10).
 
