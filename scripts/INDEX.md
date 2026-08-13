@@ -1025,6 +1025,13 @@ Depth anatomy: WHERE in the stack does the rewrite decision form?
 
 - `main(ckpt: str, d: int, layers: int, ffn: int, heads: int, n: int) -> None`
 
+### scripts/render_anim.py
+Render driver for the animation triplets (banked repair, 2026-08-13).
+
+- `run(cmd: list[str], env: dict | None=None) -> None`
+- `build(stem: str, mode: str) -> None`
+- `main() -> None`
+
 ### scripts/render_gallery.py
 The gallery driver: every [R] render's invocation, recorded.
 

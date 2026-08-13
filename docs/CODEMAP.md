@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-cited 86, cited-but-library 51
+Census: UNCITED 201, library 63, reproduce-pinned 10, results-cited 167, spec-cited 86, cited-but-library 51
 
 ## scratch/
 
@@ -394,7 +394,7 @@ Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
 |  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×12 | — | 1 |
-| anim | anim_precompute.py | spec-cited | specs | specs×4 | — | 3 |
+| anim | anim_precompute.py | spec-cited | specs | specs×4 | — | 2 |
 | arena | arena.py | UNCITED | — | — | — | — |
 | autopsy | autopsy_int.py | UNCITED | — | — | — | — |
 | backfill | backfill_code_commit.py | spec-cited | specs | specs×3 | — | — |
@@ -518,6 +518,7 @@ Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | plot | plot_identity_crest.py | spec-cited | specs | specs×2 | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×2 | — | 1 |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| render | render_anim.py | library | — | — | 1 | — |
 | render | render_gallery.py | spec-cited | specs | specs×6 | — | — |
 | render | render_hero_neurons.py | spec-cited | specs | specs×3 | — | 1 |
 | results | results_query.py | spec-cited | specs | specs×15 | — | 2 |
