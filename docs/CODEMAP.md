@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 200, library 63, reproduce-pinned 10, results-cited 172, spec-cited 86, cited-but-library 52
+Census: UNCITED 200, library 63, reproduce-pinned 10, results-cited 174, spec-cited 86, cited-but-library 52
 
 ## scratch/
 
@@ -26,7 +26,8 @@ Census: UNCITED 200, library 63, reproduce-pinned 10, results-cited 172, spec-ci
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
 | basin | basin_probe.py | UNCITED | — | — | — | — |
-| birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
+| birth19m | birth19m_backsched.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | birth19m | birth19m_snaps.py | UNCITED | — | — | — | 1 |
 | blackhole | blackhole_b0.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | boundary | boundary_or_bulk.py | results-cited | RESULTS | RESULTS×3 | — | — |
@@ -53,6 +54,7 @@ Census: UNCITED 200, library 63, reproduce-pinned 10, results-cited 172, spec-ci
 | ckpt | ckpt_triage_table.py | UNCITED | — | — | — | — |
 | clade | clade_stream_d256.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | closers | closers_chain.sh | UNCITED | — | — | — | — |
+| comp | comp_ladder.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | complex | complex_birth.py | UNCITED | — | — | — | 8 |
 | complex | complex_model.py | library | specs | specs×1 | 6 | 1 |
 | complex | complex_nnue.py | UNCITED | — | — | — | — |
@@ -124,7 +126,7 @@ Census: UNCITED 200, library 63, reproduce-pinned 10, results-cited 172, spec-ci
 | gate | gate_prefix.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | gate | gate_rarity.py | results-cited | RESULTS | RESULTS×1 | — | 10 |
 | gate | gate_regate.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
-| gate | gate_transcripts.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| gate | gate_transcripts.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | gate | gate_v2_bench.sh | UNCITED | — | — | — | — |
 | gate | gate_zx.py | UNCITED | — | — | — | 10 |
 | gatepins | gatepins_freeze.py | spec-cited | specs | specs×5 | — | 1 |
@@ -346,7 +348,7 @@ Census: UNCITED 200, library 63, reproduce-pinned 10, results-cited 172, spec-ci
 | sym45 | sym45_run.sh | UNCITED | — | — | — | — |
 | synonym | synonym_test.py | UNCITED | — | — | — | 1 |
 | tenet | tenet_d1_revgate.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
-| tenet | tenet_d2_revdiet.py | library | RESULTS, specs | RESULTS×1, specs×1 | 16 | — |
+| tenet | tenet_d2_revdiet.py | library | RESULTS, specs | RESULTS×1, specs×1 | 18 | — |
 | tenet | tenet_d3_budget.py | library | specs | specs×1 | 2 | — |
 | tenet | tenet_mult_b32.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | tenet | tenet_mult_census.py | library | RESULTS, specs | RESULTS×1, specs×1 | 1 | — |
@@ -543,7 +545,7 @@ Census: UNCITED 200, library 63, reproduce-pinned 10, results-cited 172, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 54 | 31 |
+| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 56 | 31 |
 | train | train_nnue.py | library | specs | specs×8 | 1 | 12 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |

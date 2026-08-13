@@ -28257,3 +28257,57 @@ two needs a data-replay arm with its own pre-reg; single-seed
 directional fences as in BACKWARD-SCHEDULE-1; wall-kill books
 whichever arms' receipt rows landed (C50 streams before C30
 starts); no booked path is written.
+
+## VERDICT BACKWARD-SCHEDULE-1: bar 2 COMMUTES fires — the schedule played BACKWARDS gates 62/120, within sigma of the standard 64; the house prior (25-50, arrow) was WRONG (2026-08-13, Mac)
+
+Pre-reg above (265af6c, committed before launch). Driver
+scratch/birth19m_backsched.py at e0cf762, rjob backsched1 rc=0,
+receipt jobs/backsched1.log (untracked run exhaust; the gate line
+and epoch losses quoted here from it). No-op precondition PASSED in
+the live log (100/100 lr values element-wise equal to stock
+OneCycle under REVERSE=0). Reversed sequence confirmed at launch:
+starts 1.200e-09, peaks 3.000e-04 at step 14,957 of 15,420, ends
+1.200e-05.
+
+MEASURED: backsched_s2 gate {3:21, 4:7, 5:16, 6:7, 7:11} = 62/120
+@ 56.97% (weights sha c274e5c0f7f24a80). Paired control: the booked
+phase19m m015300 {3:23, 4:7, 5:16, 6:8, 7:10} = 64/120 @ 62.01% —
+same seed, device, diet, recipe; one variable (lr direction).
+Epoch losses 1.2660 / 0.4766 / 0.4204 (standard run: 0.4749 /
+0.3841 / 0.3548) — the backwards run trains "colder" throughout
+and ends warmer, yet lands 2 solves from the control.
+
+BAR 1 ARROW (<= 56): NO-FIRE. BAR 2 COMMUTES (57-71): FIRES —
+62 is inside 1.5 sigma of 64; per REFUTED-IF, the arrow reading
+DIES at n=1 and the bank's "cheap version" residue closes negative.
+
+REGISTERED-PRIOR SCORE: WRONG, and not close — the house predicted
+25-50 with a named mechanism ("largest kicks land last on organized
+weights with no polish phase after"). Measured 62. The mechanism's
+error, stated plainly: the final high-lr kicks did NOT wreck the
+organized weights (per-level dict nearly identical to control —
+L3 -2, L6 -1, L7 +1, L4 EXACTLY 7 again), so either the late
+kicks re-anneal harmlessly at this scale or capability lives in
+structure the lr tail cannot reach. The backwards run also
+replicates the L4=7 dip exactly — the dip is schedule-direction-
+invariant, further evidence for the structural reading
+(L4-PLY0-1).
+
+Reading: at 19M/gen4, OneCycle's direction is a NON-FACTOR two
+solves wide. Combined with CAP-V-TRAJ-1 (capability ~built by 70%
+of the standard run), the schedule looks far less load-bearing
+than the house believed this morning. COMP-LADDER-1 (pre-reg
+de84bcf, in flight at booking) is the shape/length half of the
+same question.
+
+Exploratory exhaust: 18 backwards milestones with Adam state in
+checkpoints/backsched19m/ (untracked, ~4GB) — the backwards phase
+portrait and a backwards capability curve are one precompute + one
+gate sweep away; no bars registered on them here. Disk note: with
+phase19m's 4.1GB these are ~8GB of milestone exhaust pending
+Artin's keep-or-delete (decision 4 now covers both).
+
+FENCES (carried from pre-reg): n=1 per arm, SEED=2, Mac MPS fp32,
+same-device paired read; COMMUTES is a single-seed reading at 1.5
+sigma resolution — a 2-solve true deficit would be invisible here;
+gen4/19M scope only, no transport to larger widths or other diets.

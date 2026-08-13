@@ -1813,3 +1813,12 @@ regime tag on every bullet is the fence.
   — all-or-nothing first-ply pattern recognition, not chain
   management or depth exhaustion. ([OBSERVATION
   L4-PLY0-1](RESULTS.md#L28104).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] OneCycle DIRECTION
+  is a non-factor at 19M/gen4: a birth with the lr sequence played
+  backwards (anneal-first, warm-last; peak at step 14,957/15,420)
+  gates 62/120 vs the standard run's paired 64 — inside 1.5 sigma —
+  and reproduces the L4=7 dip exactly (schedule-direction-invariant,
+  supporting the structural L4 reading). House prior predicted
+  25-50; wrong by ~15 solves. ([VERDICT
+  BACKWARD-SCHEDULE-1](RESULTS.md#L28261).)

@@ -4312,6 +4312,12 @@ without re-introducing history).
   this scale and the pincer jaws are interchangeable; if (A) >> (B),
   the curriculum's arrow is real. Cheap version: reversed OneCycle
   (anneal-then-warm) vs standard, same diet/seed, one birth each.
+  [MEASURED same day: VERDICT BACKWARD-SCHEDULE-1 — the cheap arm
+  ran and the arrow reading DIED at n=1: backwards birth gates
+  62/120 vs standard 64, within sigma; schedule direction is a
+  non-factor at 19M/gen4. The full SFT/GRPO order-inversion arm
+  remains open, with the newborn-mines-nothing hazard fenced in
+  its pre-reg-to-be.]
   Attribution: Artin (the frame and both asks), house (the
   order-inversion operationalization + anchors).
 
