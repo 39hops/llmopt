@@ -22,10 +22,12 @@ LINKEDIN_SIZE = (1200, 627)
 README_WIDTH = 1600
 
 
-def export_profiles(render_png: Path, outdir: Path,
-                    stem: str) -> dict[str, Path]:
+def export_profiles(render_png: Path, outdir: Path, stem: str,
+                    include_source: bool = True) -> dict[str, Path]:
     """Emit the profile set for one full-res render. Returns
-    profile name -> written path."""
+    profile name -> written path. Set include_source=False when the
+    base render already lives at its permanent path (a copy would be
+    a byte-identical duplicate)."""
     from PIL import Image
 
     render_png = Path(render_png)
@@ -52,7 +54,8 @@ def export_profiles(render_png: Path, outdir: Path,
     out["linkedin"] = outdir / f"{stem}-linkedin.png"
     canvas.save(out["linkedin"], optimize=True)
 
-    out["source"] = outdir / f"{stem}-source.png"
-    if render_png.resolve() != out["source"].resolve():
-        shutil.copyfile(render_png, out["source"])
+    if include_source:
+        out["source"] = outdir / f"{stem}-source.png"
+        if render_png.resolve() != out["source"].resolve():
+            shutil.copyfile(render_png, out["source"])
     return out

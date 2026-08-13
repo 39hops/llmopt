@@ -129,7 +129,8 @@ def render_entry(e: Entry, outdir: Path = OUTDIR) -> list[str]:
                         + " · render_gallery.py"))
     for full in outs:
         p = Path(full)
-        export_profiles(p, outdir, p.stem)
+        # the base render IS the source; skip the duplicate copy
+        export_profiles(p, outdir, p.stem, include_source=False)
     return outs
 
 
