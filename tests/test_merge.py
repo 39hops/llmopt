@@ -128,7 +128,12 @@ def test_shell_graft_function_preserving(tmp_path):
     dn = big["blocks.0.down.weight"]
     y1 = h1[:, :8] @ dn[:, :8].T + h1[:, 8:] @ dn[:, 8:].T
     assert torch.equal(dn[:, 8:], torch.zeros(4, 8))
-    assert torch.equal(y0, y1)
+    # the exact-zero claim, asserted directly: grafted columns
+    # contribute bitwise 0.0 whatever the hidden values are
+    assert torch.equal(h1[:, 8:] @ dn[:, 8:].T, torch.zeros(3, 4))
+    # y0 comes from h0, y1 from h1's prefix — bit-equality across that
+    # pair does not survive the x86 kernel re-pairing above
+    assert torch.allclose(y0, y1, rtol=1e-6, atol=1e-7)
 
 
 def test_gate_cmd_device_lineages(tmp_path):
