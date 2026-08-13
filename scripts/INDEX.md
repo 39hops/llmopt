@@ -988,11 +988,13 @@ Measure MoE router domain bias: math prompts vs general prose.
 GT-1 crest small-multiples — the gallery Wanted figure (2026-08-08).
 
 - `_git_head() -> str`
+- `render(mode: str) -> Path`
 - `main() -> None`
 
 ### scripts/plot_identity_crest.py
 The identity-era figure the gallery lacked (2026-08-08 pass).
 
+- `render(mode: str) -> str`
 - `main() -> None`
 
 ### scripts/plot_neurons.py
