@@ -4467,3 +4467,67 @@ without re-introducing history).
   Attribution: Artin (the concurrent-pincer ask, the backward
   question, the revival instruction), house (the lr-floor tie-in +
   the overlap-birth operationalization).
+
+- **BANKED (2026-08-13): "we couldn't repair the internet-trained
+  model because RL never moved the original weights — what if we
+  made the weights LOOSER, let them vary more?"** (Artin, session
+  close, off the lr-floor verdict). The frame: early-lab attempts
+  to repair/steer internet-pretrained models with RL failed to move
+  the base weights; today's CAP-V-TRAJ-2 gives that failure a
+  candidate mechanism — the effective plasticity sat BELOW the
+  absorption floor (the LLMUE pilot's 1e-5 null is the measured
+  twin; RL fine-tuning lrs are conventionally in that sub-floor
+  band precisely to avoid catastrophic forgetting). "Looser
+  weights" = deliberately raising plasticity above the floor for
+  chosen tensors and tolerating transient damage, because the day's
+  other measurement says high-lr damage HEALS (the 12,600 dip
+  recovering by 15,300). Honest breaks: healing was measured
+  DURING a birth with the full diet still streaming — an RL repair
+  has a much thinner data stream, and whether damage heals under
+  RL-only exposure is unmeasured; catastrophic forgetting on an
+  internet model has no oracle-signed immune system (the LLMUE
+  two-tier guard exists only in the closed system); and
+  priors-vs-drag showed the internet model's problem was DRAG, not
+  stiffness — looser weights on a bluffing model may just bluff
+  faster. Testable residue: REPAIR-FLOOR-1 — take the frozen
+  English 0.5B, RL/SFT at three lr tiers (sub-floor ~1e-5,
+  at-floor ~4e-5, above-floor ~1e-4 scaled per-width), same
+  verified diet and gate; bar family: does capability move ONLY
+  above the floor, and does the above-floor arm's transient damage
+  heal or compound? Also feeds the valuation-routed mask (loosen
+  only engine-valued neurons, keep the rest stiff). Attribution:
+  Artin (the loosen-the-weights frame, the repair memory), house
+  (the floor tie-in + the three-tier operationalization).
+
+- **BANKED (2026-08-13): "train on easier questions first until it
+  can't learn anymore, then repeat — would this fix the order, or
+  is order a more fine-grained thing at the weight level?"**
+  (Artin, session close). The frame: plateau-gated curriculum —
+  feed level L until the gate stops moving, then admit L+1, loop.
+  Both halves of his own question banked: the ORDER measured today
+  (BACKWARD-SCHEDULE-1) was the lr schedule's direction, NOT data
+  order — the diet streams all levels shuffled in every arm run
+  today, so data-order curriculum is genuinely untested on the 19M
+  line at birth. Adjacent measured ground: the v2 lineage's
+  "curriculum compounds under RL" (RESULTS L1784 — algebra-enriched
+  pretraining bought 24 GRPO cycles' worth of solves, diet ~20x
+  cheaper than RL) says diet COMPOSITION dominates; whether diet
+  SEQUENCING adds anything on top is the open cell. The lr-floor
+  result sharpens the design: "can't learn anymore" must be read
+  against the floor (a plateau at low lr is the floor, not
+  mastery — plateau detection needs lr held in the working band).
+  Honest breaks: plateau-gated admission is a moving-target
+  schedule (harder to pre-register than fixed arms — the bar must
+  pin the plateau rule's constants in advance); L4's dip warns that
+  the generator's level ladder is not the model's difficulty
+  ladder (L4-PLY0-1), so "easier first" by level number may not be
+  easier first by the model's own ordering — a capability-ordered
+  curriculum (order by measured per-level solve rate) is the
+  sharper arm. Testable residue: CURRICULUM-1 — three matched
+  births: (A) shuffled control (the standard 64), (B) level-ordered
+  L3->L7 with plateau-gated admission (constants pre-registered),
+  (C) capability-ordered by the booked per-level difficulty
+  (L3, L5, L7, L6, L4 — measured easy-to-hard). Same
+  seed/device/total exposure; standard gate. Attribution: Artin
+  (the plateau-curriculum ask and the weight-level-order question),
+  house (the floor-aware plateau rule + the capability-ordered arm).
