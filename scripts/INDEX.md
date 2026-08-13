@@ -1814,6 +1814,11 @@ G5 POLAR (pre-reg 2026-07-29 eve): the predicted BREAK of geometry-blindness. cp
 - `uni_q(W, u)`
 - `main()`
 
+### scratch/gate_backsched.py
+CAP-V-TRAJ-2 driver (pre-reg RESULTS 2026-08-13): the standard 120 gate over the 18 BACKWARD-SCHEDULE-1 milestones. Thin sibling of the frozen CAP-V-TRAJ-1 driver (gate_phase19m.py, results-cited — not edited): imports its bisect_order and repeats its loop against checkpoints/backsched19m/.
+
+- `main()`
+
 ### scratch/gate_batched.py
 Batched gate v2 (2026-07-21): batch ACROSS problems, 8 seeds each — one forward serves K*8 rows instead of 8. Right-padded buffer + attn_mask (model supports it); per-row write positions keep RoPE phases identical to the unbatched path. NOTE: float reduction order changes => near-ties may resolve differently => this is a NEW GATE LINEAGE (re-baseline models of record once). Usage: gate_batched.py <ckpt> <d> <layers> <ffn> <heads> <label> [K]
 

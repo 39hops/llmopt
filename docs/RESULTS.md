@@ -28366,3 +28366,54 @@ with its own pre-reg; single-seed directional fences; 19M/gen4
 scope, no transport of the 0.5x-free constant to other widths or
 diets. Receipt exception: arms.jsonl (2 rows, <1KB) force-added
 under logs/comp_ladder/ so the bars recompute from git alone.
+
+## PRE-REG CAP-V-TRAJ-2: gate the 18 BACKWARDS milestones — did capability build in the low-lr phase (steps did it) or snap in when lr rose (lr did it)? (2026-08-13, Mac)
+
+The "why is direction a non-factor" discriminator (Artin's ask).
+BACKWARD-SCHEDULE-1 booked the endpoint (62/120); its milestone
+exhaust (checkpoints/backsched19m/, 18 {model,opt,step} dicts,
+same tee as phase19m) carries the curve. Two named mechanisms:
+M-STEPS (gradients shrink faster than lr grows — capability
+accumulates through the LOW-lr first two-thirds, lr never
+load-bearing) vs M-LR-SNAP (capability arrives only when lr
+rises, in the last ~third where the reversed sequence climbs to
+max at step 14,957).
+
+INSTRUMENT: scratch/gate_backsched.py — a thin sibling of the
+now-frozen CAP-V-TRAJ-1 driver (gate_phase19m.py is results-cited;
+CODEMAP forbids editing it), importing its bisect_order and
+repeating its loop verbatim against checkpoints/backsched19m/
+(bisection order, streamed jsonl rows, resume-safe).
+Output logs/backsched_gate/gates.jsonl. Standard 120
+gate, Mac MPS, same instrument as every gate today.
+
+BARS (64's cap90 machinery, applied to the backwards curve;
+final = the booked 62):
+1. M-STEPS: the backwards run reaches >= 50% of 62 (>= 31 solves)
+   by step 10,800 (while lr is still below ~1/3 of max in the
+   reversed sequence) — FIRES "steps and data built it, lr was not
+   load-bearing".
+2. M-LR-SNAP: <= 15/120 at step 10,800 AND >= 90% of 62 (>= 55.8)
+   only at or after step 13,500 — FIRES "capability snapped in
+   with the lr rise".
+   (Both bars can NO-FIRE — an intermediate curve books MIXED and
+   the mechanism question stays open; they cannot both fire.)
+REFUTED-IF (of M-STEPS, the house pick): bar 2 fires.
+
+REGISTERED PRIOR (house, on record): bar 1 FIRES — the epoch
+losses already lean this way (0.4766 after the all-low-lr epoch 1
+vs the standard run's 0.4749 after its epoch 0), so the house
+expects the backwards capability curve to look like a slowed copy
+of the forward one, not a late cliff. Predicted step-10,800 gate:
+30-45. Confidence moderate-high.
+
+FENCES: n=1, SEED=2 lineage, Mac MPS, same-device reads;
+milestone-to-milestone deltas <= ~2 are ties (sigma fence); this
+rung reads the BACKWARDS run only — cross-run curve comparisons
+are qualitative (both curves same instrument, but no
+paired-arm bar is registered on the difference); wall-kill leaves
+streamed rows, bars read at >= 12 milestones (else PARTIAL, bar 1
+only). The driver edit is knob-only; its no-op is the unchanged
+default path (phase19m defaults preserved, guarded by the resume
+check skipping all 18 already-gated rows if pointed at the old
+directory).
