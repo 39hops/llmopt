@@ -98,12 +98,12 @@ def rank_scale(mag):
     return order
 
 
+# One tiny descriptor per panel — the README prose beside the image
+# carries the full explanation (style v2 master rule).
 PANELS = [
-    ("pca", "PCA", r"global linear axes  ·  $W V_{1:2}^{\top}$"),
-    ("sphere", "SPHERE",
-     r"directions only, $w_i\,/\,\|w_i\|_2$ — magnitude in color"),
-    ("polar", "POLAR",
-     r"$\arg(\mathrm{PC}_1 + i\,\mathrm{PC}_2)$ vs $\|w_i\|_2$"),
+    ("pca", "PCA", "global axes"),
+    ("sphere", "SPHERE", "directions only"),
+    ("polar", "POLAR", "phase vs magnitude"),
 ]
 
 
@@ -124,7 +124,6 @@ def render_dot_views(W, out_stem: str, title: str, source_label: str,
 
     from llmopt.figures import figstyle
 
-    n, d = W.shape
     order = rank_scale(W.norm(dim=1))
     outs = []
     for mode in modes:
@@ -150,22 +149,18 @@ def render_dot_views(W, out_stem: str, title: str, source_label: str,
                 s.set_visible(True)
                 s.set_color(c["grid"])
             if method == "polar":
-                ax.set_xlabel(
-                    r"$\arg(\mathrm{PC}_1 + i\,\mathrm{PC}_2)$",
-                    fontsize=8.5)
-                ax.set_ylabel(r"neuron magnitude $\|w_i\|_2$",
-                              fontsize=8.5)
+                ax.set_xlabel("phase", fontsize=8.5)
+                ax.set_ylabel("magnitude", fontsize=8.5)
 
-        # Type hierarchy: Light 300 centered display, secondary scope
-        # line, Medium 500 panel names, muted Light eyebrows.
-        fig.text(0.5, 0.945, title, fontsize=19, fontweight=300,
+        # Type hierarchy: Light 300 centered display title, Medium 500
+        # panel names, muted eyebrows. Prose beside the image explains;
+        # the chart carries only the title, one ramp cue, and the fence.
+        fig.text(0.5, 0.93, title, fontsize=19, fontweight=300,
                  color=c["primary"], ha="center")
-        fig.text(0.5, 0.887,
-                 f"each dot one neuron ({source_label}, "
-                 f"{n:,} neurons × {d}-dim) · "
-                 r"color = $\|w_i\|_2$ (rank-scaled)",
-                 fontsize=9.5, fontweight=300, color=c["secondary"],
-                 ha="center")
+        fig.text(0.985, 0.028,
+                 r"low $\leftarrow$ $\|w_i\|$ rank $\rightarrow$ high",
+                 fontsize=8, fontweight=300, color=c["secondary"],
+                 ha="right")
         fig.text(0.045, 0.028, f"{provenance} · @ {_repo_head()}",
                  fontsize=7, color=c["muted"], family="monospace")
 

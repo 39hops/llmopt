@@ -22,8 +22,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--ckpt", required=True)
     ap.add_argument("--key", default="gate.weight")
-    ap.add_argument("--title", default="THE CRYSTAL — weight-space "
-                    "anatomy of a math-native 19M model")
+    ap.add_argument("--title", default="19M gate-neuron geometry")
     ap.add_argument("--out", required=True,
                     help="output stem; writes <out>-light.png and "
                          "<out>-dark.png")

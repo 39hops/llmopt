@@ -180,3 +180,13 @@ def test_continuous_magnitude():
     assert dark(0.9) != light(0.9)
     with pytest.raises(ValueError):
         figstyle.continuous("volume", "dark")
+
+
+def test_continuous_slice_endpoints_frozen():
+    # Tuned against both surfaces for the 2026-08-13 hero render, then
+    # frozen: dark keeps inferno's luminous top, light drops the
+    # near-white top. Changing these re-colors every dot view.
+    assert figstyle.CONTINUOUS_SLICES == {
+        ("magnitude", "dark"): (0.12, 1.0),
+        ("magnitude", "light"): (0.0, 0.82),
+    }
