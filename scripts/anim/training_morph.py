@@ -28,10 +28,14 @@ SPAN = 5.2
 
 
 def _norm(x: np.ndarray, y: np.ndarray) -> np.ndarray:
+    """Per-axis scale: polar's angle/magnitude ranges differ by ~30x;
+    a joint scale flattens the cloud to a line."""
     p = np.stack([x, y], axis=1).astype(np.float64)
     p -= p.mean(0)
-    span = np.percentile(np.abs(p), 99) * 2 or 1.0
-    return p / span * SPAN
+    for a in (0, 1):
+        span = np.percentile(np.abs(p[:, a]), 99) * 2 or 1.0
+        p[:, a] /= span
+    return p * SPAN
 
 
 class TrainingMorph(Scene):

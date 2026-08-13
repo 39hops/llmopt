@@ -11,6 +11,7 @@ docs/assets/
 ├── web/                  # [PUBLISHED] — figures.json-sourced pairs
 ├── hero/                 # [HERO] — neurons-19m-{light,dark}.png
 ├── gallery/              # [R] — regenerable renders
+├── anim/                 # [ANIM] — GIF/MP4/poster triplets
 └── archive/2026-08-12/   # [H] — frozen pixels, moved as-is
 ```
 
@@ -44,6 +45,15 @@ render is only [R] if its exact invocation is recorded (in the script
 or REPRODUCE); otherwise it freezes to [H] on landing. The 2026-08-13
 overhaul reclassified the old plot_neurons set to [H] on exactly that
 test: checkpoints survive, the invocations were never recorded.
+
+**[ANIM] animations** — data-true manim scenes; each ships a
+GIF (README-embeddable, ≤10MB) + MP4 (1080p, LinkedIn) + poster PNG
+triplet under `anim/`. Scene data is precomputed from real artifacts
+(`scripts/anim_precompute.py`: checkpoints -> npz, figures.json ->
+npz) and scenes (`scripts/anim/`) render numpy-only in `.venv-anim`
+(manim CE; see scratch/manim_feasibility_2026-08-13.md). Regenerable:
+precompute + `manim -qh` + the ffmpeg palette encode. Provenance
+outro frame is part of every scene.
 
 **[H] historic / frozen pixels** — no surviving script+checkpoint
 pair, or cited by a booked entry as-is. Evidence record: never
