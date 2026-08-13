@@ -4391,3 +4391,36 @@ without re-introducing history).
   argument than feared. Attribution: Artin (the frame, the tree,
   the all-data-at-once ask), house (the gauge break + the
   amortized-birth operationalization).
+
+- **BANKED (2026-08-13): "stream random inputs and only listen to
+  the engine when the input matrix is correct"** (Artin, asking why
+  schedule direction is a non-factor; his own "not sure" kept).
+  Two readings banked side by side, both attributed as asked. (a)
+  RANDOM DATA, ENGINE FILTER: stream random/self-generated
+  candidate rows, train only on the ones the engine verifies — this
+  already exists and is doctrine (the miner + verified-AND-distinct;
+  expert iteration IS engine-filtered data). If this is the
+  reading, the residue is a DIET-COMPOSITION question: how much
+  random-source exposure can the verified filter launder before
+  quality drops (rations discipline). (b) RANDOM UPDATES, ENGINE
+  ACCEPTANCE — the sharper reading: perturb weights randomly,
+  accept the step only when the oracle/gate approves; gradient-free
+  training with the engine as fitness. Measured anchors: none
+  house-side for (b) — genuinely unrun; adjacent evidence is
+  BACKWARD-SCHEDULE-1 + COMP-LADDER-1 (the gradient path's details
+  matter less than believed, which makes non-gradient paths less
+  crazy) and STAR-PROFILE / MICRO-STAR (tensor-class structure
+  exists that a structured perturbation could exploit). Honest
+  breaks: zeroth-order search pays variance linear in parameter
+  count (19M dims of noise per accepted bit of signal — naive form
+  is hopeless at this scale); the gate is expensive as a fitness
+  call (~68 s), so acceptance must batch or use the cheap proxy
+  tier; and (a)-as-stated is already running doctrine, not a new
+  lever. Testable residue (for (b), the new half): a d64-scale
+  probe on an existing crystal — structured perturbations (one
+  tensor-class at a time, the star-profile axes) accepted by the
+  cheap-tier gate; bar = any measurable climb above the paired
+  no-perturbation control within a fixed fitness-call budget. If
+  even d64 cannot climb, the reading dies cheaply. Attribution:
+  Artin (the ask, both halves latent in it), house (the two-reading
+  split + the d64 probe operationalization).
