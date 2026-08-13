@@ -109,6 +109,21 @@ if sm and "[" not in sm.group(2):
             f"match, so the job would kill itself (bracket one character, "
             f"e.g. '{pat[:2]}[{pat[2]}]{pat[3:]}'). Command: {inner[:200]}")
 
+# Standing OK (Artin 2026-08-12, reaffirmed 2026-08-13 02:02): the
+# ff-only sync + hash assert runs without asking. --ff-only cannot
+# rewrite history and aborts on local divergence; the only redirect
+# tolerated here is to /dev/null. Shape: cd / git pull --ff-only /
+# git rev-parse [| cut] segments joined by &&, nothing else.
+SYNC_SEG = re.compile(
+    r"^[\s(]*(cd\s+[\w~./-]+"
+    r"|git\s+pull(\s+--ff-only)(\s*>?\s*/dev/null(\s+2>&1)?)?"
+    r"|git\s+rev-parse\s+[\w@^~ -]+(\s*\|\s*cut\s+[\w -]+)?"
+    r")\s*$")
+_sync_parts = [s.strip() for s in inner.split("&&") if s.strip()]
+if (any("git pull" in s for s in _sync_parts)
+        and all(SYNC_SEG.match(s) for s in _sync_parts)):
+    out("allow", "wsl.sh run: the standing-OK ff-only sync + hash assert")
+
 CHANGES_STATE = r"""\b(pkill|kill|killall|rm|mv|cp\s+.*\s+~|truncate|
 git\s+(reset|clean|checkout\s+--|stash\s+drop|push|rebase)|
 chmod|chown|systemctl|service|shutdown|reboot|nohup|setsid)\b|>>?\s*[^&|]"""
