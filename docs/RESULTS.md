@@ -28120,3 +28120,74 @@ bars; the riff's rung (c) (matched-skeleton pairs) and a
 rejected-sample transcript pass (gate_transcripts.py machinery) are
 the next discriminators. Fences: single seed lineage, MPS, desk
 read of an already-booked receipt.
+
+## PRE-REG BACKWARD-SCHEDULE-1: play the OneCycle schedule BACKWARDS — does training order have an arrow at this scale? (2026-08-13, Mac)
+
+Artin GO (the "train backwards — not backprop" riff, banked
+e69279d; this is its cheap arm). Hypothesis under test: the
+training schedule's ORDER matters — a birth that anneals first and
+warms last should land materially below the standard curve's 64/120.
+The full order-inversion pair (GRPO-from-birth-then-SFT) is FENCED
+OUT of this rung by a named hazard: GRPO from a newborn mines ~zero
+verified steps (all-invalid waves — no groups to collect), so that
+arm needs its own design (curriculum-staged mining) and its own
+pre-reg.
+
+INSTRUMENT: scratch/birth19m_backsched.py — a NEW driver (the
+frozen birth19m_phase.py family is untouched) that reuses
+train_mathnative.TM exactly as the booked phase driver did (same D2
+excision via gate_band_exprs, refuse-if-exists, BIRTH_SEED=2, same
+d384/8L/ffn1536/h6, gen4 diet, 3 epochs, fp32 Mac MPS) with ONE
+change: torch.optim.lr_scheduler.OneCycleLR is patched to serve the
+stock OneCycle lr sequence REVERSED in time (precompute the
+total_steps lr values on a dummy optimizer, reverse the list, serve
+by step index) — the birth starts at the standard run's final lr
+(~max_lr/1e4), rises along the mirrored cosine to max_lr near the
+end, and drops through the short warmup stub last. Output
+checkpoints/backsched19m/ (own directory, tee {model, opt, step}
+every 900 steps as the phase driver did — the backwards phase
+portrait comes free). Gate: llmopt.lab.gate.gate_checkpoint on the
+final weights, standard 120, MPS — same instrument as CAP-V-TRAJ-1.
+Paired control: the BOOKED phase19m m015300 gate {3:23, 4:7, 5:16,
+6:8, 7:10} = 64/120 (same seed, same device, same diet, same
+recipe; the ONE variable is the lr sequence's direction).
+
+NO-OP PRECONDITION (harness identity): at startup the driver
+asserts, on a dummy 100-step optimizer, that its patched scheduler
+with REVERSE=0 reproduces stock OneCycleLR's lr sequence
+element-wise (exact float equality), and a SMOKE=1 run (2 tiny
+epochs) must exit rc=0 before the real launch. The wrap touches
+ONLY the lr schedule inside training; the gate path is the stock
+gate_checkpoint harness, unwrapped.
+
+BARS:
+1. ARROW: final gate total <= 56 (> 7 solves = 1.5 sigma below the
+   paired 64) FIRES "the schedule has an arrow" (directional,
+   single-seed fence below).
+2. COMMUTES: final gate in [57, 71] (within 1.5 sigma of 64) FIRES
+   "schedule direction is a non-factor at this scale" — and
+   REFUTES the arrow hypothesis at n=1.
+   (>= 72 books SURPRISE-ABOVE, no registered mechanism, would
+   need replication before any claim.)
+
+REFUTED-IF: bar 2 fires — the arrow reading dies at this scale and
+the bank's "cheap version" residue closes negative.
+
+REGISTERED PRIOR (house, on record): bar 1 FIRES, and not close —
+predicted final gate 25-50. Mechanism on record: the standard
+curve's capability is ~90% built by step 10,800 and POLISHED in the
+low-lr tail (CAP-V-TRAJ-1); reversed, the largest weight kicks land
+LAST on already-organized weights with no polish phase after, and
+the early low-lr phase builds slowly from noise. Confidence
+moderate.
+
+FENCES: n=1 per arm, SEED=2, Mac MPS fp32, gen4 diet — same-device
+paired comparison only; a bar-1 fire is DIRECTIONAL at n=1 (the
+resolution law's n>=3 requirement is for deltas UNDER 1.5 sigma;
+this bar is set at the 1.5 sigma line and still books
+single-seed-fenced); loss curves are expected to look pathological
+early (low lr on random weights) — that is the treatment, not a
+crash; wall-kill books NOT-RUN with whatever milestones streamed
+(tee is incremental). Milestones land in a fresh directory; no
+booked path is written. The backwards phase portrait is exploratory
+exhaust — no bars on it here.
