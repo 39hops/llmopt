@@ -27979,3 +27979,70 @@ Receipt exception (seedslad pattern): logs/phase19m_gate/gates.jsonl
 is a small text receipt (18 rows, ~4KB) force-added under logs/ so
 the bars recompute from git alone; the per-milestone weights-sha log
 jobs/capvtraj1.log stays untracked run exhaust.
+
+## PRE-REG LENGTH-VS-L4-1: does prompt LENGTH explain the L4 gate dip, or is it structure? (2026-08-13, Mac)
+
+The CAP-V-TRAJ-1 exploratory rider made measurable (riff e99b4c6,
+residue rung (a)): L4 is strictly the worst gate level at every
+live milestone even though L6/L7 are built for more
+coordination/nesting — and the disagreement is OLD (v1 lineage
+froze at 6/24 L4, v2 held 8/24, RESULTS L1784). Two candidate
+stories: L4's integrand strings are simply LONGER (surface
+variable), or the L4 shape family (depth-3 compositions, chained
+u-sub debris) is structurally under-crystallized. This rung is the
+desk-cheap discriminator.
+
+INSTRUMENT: scratch/gate_pp.py (UNCITED class, run as-is) on the
+CAP-V-TRAJ-1 final milestone checkpoints/phase19m/m015300.pt
+(extract ["model"] to a temp state-dict file first — gate_pp loads
+raw state dicts), d384/8L/ffn1536/h6, Mac MPS, label
+phase19m_final. Sidecar logs/pp_phase19m_final.jsonl: one row per
+problem with root integrand string + solved flag. Desk analysis
+(scratch/len_vs_l4.py, stdlib+tokenizer only): per-problem length =
+(a) characters of the root string, (b) MathTokenizer token count of
+the gate prompt; within-level Spearman rho(length, solved) pooled
+across levels after per-level z-scoring, plus per-level length
+medians.
+
+PRECONDITION (instrument identity): gate_pp's per-level totals on
+m015300 must equal the CAP-V-TRAJ-1 booked dict {3:23, 4:7, 5:16,
+6:8, 7:10} = 64/120 exactly (same seeds, same oracle, same wave
+formula). If they differ, book the mismatch as its own finding and
+read the bars WITHIN gate_pp's own outcomes only (the length
+regression stays valid within-instrument; cross-quoting to
+CAP-V-TRAJ-1 numbers is then fenced off).
+
+BARS:
+1. LENGTH-PREDICTS: pooled within-level Spearman rho(token length,
+   solved) <= -0.30 FIRES "longer problems fail more, within
+   level". (n=120 pooled, 24/level.)
+2. L4-IS-LONGEST: L4's median token length > every one of L5, L6,
+   L7 medians FIRES "L4 strings are the longest of the hard
+   levels".
+Both fire -> the length story is VIABLE for the dip (not proven —
+confound note in fences). Either no-fires -> length cannot carry
+the dip alone; the structural reading survives by elimination.
+
+REFUTED-IF (of the structural reading): bars 1 AND 2 both fire AND
+within-L4 alone rho(length, solved) <= -0.40 — then the dip is
+length-loaded and "the generator's ladder disagrees with measured
+difficulty" reduces to a string-length artifact.
+
+REGISTERED PRIOR (house, on record): length does NOT explain it —
+bar 1 no-fires (|rho| < 0.30; solved is nearly constant within L4
+at 7/24, so any within-L4 correlation is noise-bounded), bar 2
+genuinely uncertain (L4's product-rule debris IS verbose), and the
+structural reading survives. Confidence moderate on bar 1, low on
+bar 2.
+
+FENCES: one checkpoint (m015300), one seed lineage (SEED=2), Mac
+MPS, single gate — direction-only claims, no magnitude transport;
+24 problems/level and 7 L4 solves make within-level rho noisy (the
+bar is set at 0.30 for that reason, and a fire is a flag, not a
+mechanism); length and level are confounded BY CONSTRUCTION across
+levels, so only within-level correlations read; token count is the
+primary length measure (char count reported alongside, never
+barred). No model rebuild or wrap beyond the state-dict extraction
+the precondition pins. Desk analysis is deterministic from the
+sidecar; wall-kill leaves the sidecar's landed rows (gate_pp
+streams per problem).
