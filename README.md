@@ -56,6 +56,20 @@ lineage land in the parent band instead, and that holds at three paired seeds
 even when the two models share no optimizer step and no data order. The basin
 is chosen at initialization; everything after is basin-local.
 
+**The training floor walks down with width — and stops nowhere near the
+corpus limit.**
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/web/loss_floor-dark.png">
+  <img alt="Final-epoch train loss for four widths, d64 through d512, descending from 0.4364 to 0.3478 nats against a corpus-entropy reference line at 0.187." src="docs/assets/web/loss_floor.png">
+</picture>
+
+The floor descends monotonically across an eight-fold width ladder and never
+approaches the corpus entropy at k=32 — the whole ladder buys about one token
+of effective context. Swapping in the opposite inductive bias, a selective
+state-space model, did not cross the wall either, though that arm gated only
+2 of 120 and so is a weak control. The wall appears to belong to the diet.
+
 **Effective context is architecture-bound, and width does not fix it.**
 
 <picture>
@@ -63,14 +77,7 @@ is chosen at initialization; everything after is basin-local.
   <img alt="Loss at positions past 128 as a function of how many trailing tokens the model may see. All four widths improve by about one nat between k=16 and k=128; the gap between widths does not order monotonically in k." src="docs/assets/web/effective_context.png">
 </picture>
 
-The training floor descends monotonically across an eight-fold width ladder
-and never approaches the corpus entropy at k=32 — the whole ladder buys about
-one token of effective context. Swapping in the opposite inductive bias, a
-selective state-space model, did not cross the wall either, though that arm
-gated only 2 of 120 and so is a weak control. The wall appears to belong to
-the diet.
-
-A truncation probe on the same checkpoints then found something the
+A truncation probe on the floor ladder's own checkpoints found something the
 training-loss average could not see: at deep positions every width improves by
 about a nat as context grows from 16 to 128 tokens, so the long-range
 dependency is real. Its *second* registered bar — that wider models separate
