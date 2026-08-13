@@ -1809,6 +1809,12 @@ Batched gate v2 (2026-07-21): batch ACROSS problems, 8 seeds each — one forwar
 Gate a complex-FFN checkpoint (mirror of gate_ckpt.py).
 
 
+### scratch/gate_phase19m.py
+CAP-V-TRAJ-1 driver (pre-reg RESULTS 2026-08-13): standard 120 gate on each of the 18 phase19m milestones. Coarse-first order (endpoints, then bisection) so any prefix of the run still shapes the whole curve; one jsonl row streamed per milestone as it lands.
+
+- `bisect_order(items)` — Endpoints first, then repeated interval midpoints.
+- `main()`
+
 ### scratch/gate_pp.py
 Per-problem gate (step-3 item (d), first cut): the standard chain gate with a jsonl sidecar — per-problem outcome + the full greedy chain + wandering/identity signatures. Same seeds/oracle as gate_eval (results comparable to gate_ckpt numbers).
 
