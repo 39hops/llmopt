@@ -27847,3 +27847,61 @@ residue is the instrument for that). Milestones are untracked
 artifacts; phase.npz is the committed derivative. NO gate was run on
 any milestone — capability-vs-trajectory (the "optimal theta-dot"
 question) needs its own pre-reg before anyone gates these files.
+
+## PRE-REG CAP-V-TRAJ-1: does capability track, lead, or lag the weight-space settling? — gate all 18 phase19m milestones (2026-08-13, Mac)
+
+The rung PHASE-PORTRAIT-1's fence reserves (RESULTS L27848): the
+"optimal theta-dot" question. The trajectory is measured (per-step
+speed 1.06e-4 -> 1.0e-6, monotone, collective); capability along it
+is not. One run, one machine, one instrument.
+
+INSTRUMENT: llmopt.lab.gate.gate_checkpoint on each of the 18
+milestones in checkpoints/phase19m/ (m000001..m015300, step 1 +
+every 900), standard 120 gate (GRPO_MICRO spec: levels 3-7 x 24,
+wave 8, band 9,900,000), stock MathTokenizer (the birth set no
+VOCAB_EXTRA), d384/8L/ffn1536/h6, fp32 eval on Mac MPS. Milestones
+are {model, opt, step} dicts; the driver extracts ["model"] and
+loads strict (no rebuild, no wrap, no patched forward — the sampler
+sees the stock gate_checkpoint harness, so no no-op cell is owed
+beyond strict-load itself). Driver scratch/gate_phase19m.py, streams
+one jsonl row per milestone to logs/phase19m_gate/gates.jsonl AS
+EACH GATE LANDS (wall-kill leaves bookable cells); coarse-first
+order (endpoints, then bisection) so any prefix of the run still
+shapes the whole curve.
+
+BARS:
+1. TRACKS: Spearman rho(step, solves) over all gated milestones
+   >= 0.80 FIRES "capability grows with the trajectory".
+2. SATURATES: max-min solves over the last 6 milestones
+   (m010800..m015300, where speed is already <= 3.5e-5) <= 6
+   solves FIRES "capability flat while the portrait still moves"
+   (6 = 3x the ~±1-2/120 instrument sigma, doctrine bar).
+3. LEADS/LAGS (the theta-dot bar): step_cap90 = first milestone
+   reaching >= 90% of the final milestone's solves; step_speed90 =
+   first milestone where log10 speed has covered >= 90% of its
+   total log-range (= between m013500 and m014400 per the booked
+   curve). step_cap90 < step_speed90 FIRES "capability LEADS the
+   settling"; >= FIRES "capability rides the settling to the end".
+
+REFUTED-IF: >25% of final solves arrive across the last 3
+milestones (speed <= 5e-6) — that kills "capability leads
+settling" outright and books the late-accretion reading. If the
+final milestone gates < 10/120 the curve is below the instrument
+floor and the rung books UNINFORMATIVE-LOW, no bar reads.
+
+REGISTERED PRIOR (house, on record): bars 1 AND 2 AND 3-LEADS all
+fire — solves rise through epoch 1-2, step_cap90 lands in
+7,200-9,900, and the last third is flat within sigma. Final-gate
+total prior: 40-90/120 (weak, wide — no 19M gen4-diet gate exists
+in the ledger to anchor tighter; being wrong here is the point).
+
+FENCES: n=1 birth, SEED=2 only, Mac MPS only — no cross-device
+comparison, no cross-family transport; curve shape is
+schedule-confounded by construction (OneCycle drives both speed and
+capability through step count — this rung measures co-movement, not
+cause). Bars read on gated-milestone count >= 12; below that the
+run books PARTIAL and only bar 1 may read (rho on what landed).
+Solves compare only within this run. Adam state untouched (position
+capability only; a momentum-perturbation rung would be its own
+pre-reg). Milestones stay on disk until this books (Artin's open
+decision 4).
