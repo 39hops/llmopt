@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 202, library 62, reproduce-pinned 10, results-cited 167, spec-cited 85, cited-but-library 51
+Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-cited 86, cited-but-library 51
 
 ## scratch/
 
@@ -21,7 +21,7 @@ Census: UNCITED 202, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | adjudicate | adjudicate_zx.py | library | — | — | 1 | — |
 | anatomy | anatomy.py | results-cited | RESULTS, specs | RESULTS×5, specs×7 | — | 3 |
 | assets | assets_classify.py | spec-cited | specs | specs×1 | — | — |
-| atlas | atlas_precompute.py | UNCITED | — | — | — | 1 |
+| atlas | atlas_precompute.py | spec-cited | specs | specs×1 | — | — |
 | attractor | attractor_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
@@ -83,7 +83,7 @@ Census: UNCITED 202, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | engine | engine_scale_export.py | spec-cited | specs | specs×1 | — | — |
 | ex1 | ex1_swap.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | ex2 | ex2_build.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
-| ex3 | ex3_build.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
+| ex3 | ex3_build.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | exact | exact_twin_d56.py | spec-cited | specs | specs×1 | — | — |
 | exact1 | exact1_small_cells.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | exchange | exchange_test.py | results-cited | RESULTS | RESULTS×1 | — | — |
