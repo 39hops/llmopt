@@ -1324,6 +1324,17 @@ BASIN-1: routing basin radius v usage. CPU. Usage: SEED=1 python scratch/basin_p
 
 - `main()`
 
+### scratch/birth19m_backsched.py
+BACKWARD-SCHEDULE-1 instrument run (pre-reg RESULTS 2026-08-13): the phase19m recipe with ONE variable changed — the OneCycle lr sequence is served REVERSED in time (anneal-first, warm-last). Same D2 excision, BIRTH_SEED, arch, diet, epochs, device as the booked phase19m birth; milestone tee kept so the backwards phase portrait comes free. Paired control is the BOOKED m015300 gate 64/120.
+
+- `_stock_lr_sequence(opt, max_lr, total_steps, pct_start)` — The stock OneCycle per-step lr values, computed on a dummy
+- `class SequenceLR`
+- `patched_onecycle(opt, max_lr, total_steps, pct_start=0.3, **kw)`
+- `_assert_noop()`
+- `excised_load_rows(*a, **kw)`
+- `capture_build(*a, **kw)`
+- `tee_step(self, *a, **kw)`
+
 ### scratch/birth19m_phase.py
 PHASE-PORTRAIT-1 instrument run: a fresh 19M-class birth with STEP-LEVEL milestone saves INCLUDING optimizer state, so a true per-neuron (angle, angular-velocity) phase portrait exists — position from the weights, momentum from Adam's exp_avg, velocity from adjacent milestones. The pendulum riff's residue (RIFF-LEDGER 2026-08-13), instrument-grade.
 
