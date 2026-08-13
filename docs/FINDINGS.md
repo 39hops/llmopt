@@ -1822,3 +1822,14 @@ regime tag on every bullet is the fence.
   supporting the structural L4 reading). House prior predicted
   25-50; wrong by ~15 solves. ([VERDICT
   BACKWARD-SCHEDULE-1](RESULTS.md#L28261).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] Half-schedule
+  training is FREE at 19M/gen4: the full OneCycle shape compressed
+  to 50% of steps gates 60/120 vs the standard 64 (inside 1.5
+  sigma) at half the tokens and wall, and BEATS matched-steps
+  truncation (51) by 9 — the anneal tail's shape, not step count,
+  does the polishing; 30% compression breaks (49). L4 prints 7/24
+  in every full-shape arm across three independent births and drops
+  only with exposure (3/24 at 0.3x) — schedule-invariant,
+  exposure-sensitive. ([VERDICT
+  COMP-LADDER-1](RESULTS.md#L28315).)

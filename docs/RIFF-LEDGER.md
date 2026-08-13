@@ -4346,6 +4346,12 @@ without re-introducing history).
   polish) — compression keeps the schedule SHAPE; both arms
   interesting, name them apart. Related: BACKWARD-SCHEDULE-1 (in
   flight at bank time) is the ORDER half of the same pincer.
+  [MEASURED same day: VERDICT COMP-LADDER-1 — the ladder ran at
+  {0.5, 0.3}: half-schedule is FREE (60/120 vs 64 at half the
+  wall), 0.3x breaks (49), and compression beats matched-steps
+  truncation by 9 — the shape's anneal tail is the load-bearing
+  part. The skip intuition cashes out as: you cannot skip the walk,
+  but half of it was padding at this scale.]
   Attribution: Artin (the ask, the skip frame), house (the
   recurrence break + compression-ladder operationalization).
 

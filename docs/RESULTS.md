@@ -28311,3 +28311,58 @@ FENCES (carried from pre-reg): n=1 per arm, SEED=2, Mac MPS fp32,
 same-device paired read; COMMUTES is a single-seed reading at 1.5
 sigma resolution — a 2-solve true deficit would be invisible here;
 gen4/19M scope only, no transport to larger widths or other diets.
+
+## VERDICT COMP-LADDER-1: bars 1+2 FIRE, bar 3 NO-FIRES — half-schedule training is free (60/120 at half the wall), shape beats truncation by 9, and the wall sits between 30% and 50% (2026-08-13, Mac)
+
+Pre-reg above (de84bcf, committed before launch). Driver
+scratch/comp_ladder.py at c9b64aa, rjob compladder1 rc=0, receipts
+logs/comp_ladder/arms.jsonl (2 rows, force-added below — small text
+receipt, seedslad pattern). No-op precondition PASSED in the live
+log (100/100 lr values element-wise equal to stock at ratio 1.0);
+compressed shape confirmed at launch (C50: peak 3.000e-04 at step
+231 of 7,710, ends 1.200e-09).
+
+MEASURED (both arms, SEED=2, Mac MPS, same-instrument gate):
+  C50 (7,710 steps, 24.4 min train): {3:19, 4:7, 5:16, 6:8, 7:10}
+    = 60/120 @ 53.14% (sums: 60 = 19+7+16+8+10).
+  C30 (4,626 steps, 14.9 min train): {3:17, 4:3, 5:15, 6:6, 7:8}
+    = 49/120 @ 46.14% (sums: 49).
+  Paired references on this page: standard 64/120 (m015300);
+  truncation-at-matched-steps 51/120 (m007200) and 46/120 (m004500).
+
+BAR 1 C50-FREE (>= 57): FIRES — 60 is inside 1.5 sigma of 64 at
+  half the schedule, half the tokens, half the wall.
+BAR 2 SHAPE-BEATS-TRUNCATION (>= 58): FIRES — 60 vs m007200's 51
+  (+9 at matched-ish steps; the 7,710 v 7,200 mismatch was fenced).
+  The anneal-to-floor tail, not step count, does the polishing:
+  truncation stops mid-anneal and pays 9 solves for it.
+BAR 3 C30-FREE (>= 57): NO-FIRES — 49, dead center of the
+  registered 40-52 band. Notably 49 > m004500's truncated 46 at
+  matched-ish steps (same direction as bar 2, below its bar and
+  unregistered — observation only).
+
+REGISTERED-PRIOR SCORE: right on all three bars, and the C50/C30
+point predictions (56-62 / 40-52) both contained their measured
+values. After BACKWARD-SCHEDULE-1's miss this morning, the track
+record's honest reading: the house models the schedule's LENGTH
+well and modeled its DIRECTION badly.
+
+Reading, three-rung day assembled: at 19M/gen4 the schedule's
+DIRECTION is a non-factor (62), its LENGTH is half-free (60 at
+0.5x) with the wall between 0.3x and 0.5x, and what actually costs
+capability is cutting the SHAPE (truncation pays 9 solves at the
+same step count C50 keeps for free). The L4 dip prints 7/24 in
+every full-or-half arm (standard, backwards, C50 — three
+independent births) and drops to 3/24 only at C30: the dip is
+schedule-invariant and exposure-sensitive, exactly what the
+structural reading (L4-PLY0-1) predicts for an
+under-crystallized shape family.
+
+FENCES (carried from pre-reg): n=1 per arm, SEED=2 lineage, Mac
+MPS fp32, same-device paired reads only; compression arms saw
+0.5x/0.3x the tokens — this rung prices "shorter training" as a
+package (shape + exposure), decomposition needs a data-replay arm
+with its own pre-reg; single-seed directional fences; 19M/gen4
+scope, no transport of the 0.5x-free constant to other widths or
+diets. Receipt exception: arms.jsonl (2 rows, <1KB) force-added
+under logs/comp_ladder/ so the bars recompute from git alone.
