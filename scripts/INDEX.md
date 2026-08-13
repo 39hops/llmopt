@@ -1291,6 +1291,11 @@ Classify every docs/assets/*.png into the figure taxonomy.
 - `classify(name: str) -> str`
 - `main() -> None`
 
+### scratch/atlas_precompute.py
+Precompute for the expert-atlas animatic (storyboard 2026-08-13).
+
+- `main() -> None`
+
 ### scratch/attractor_census.py
 Free-running iteration census (PRE-REG ATTRACTOR-0, 2026-08-10).
 
