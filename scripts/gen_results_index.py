@@ -26,6 +26,9 @@ TYPE_RULES = [
 
 
 def slug(title, date):
+    # Date-first headings: drop the leading date so it does not
+    # repeat inside the slug body.
+    title = re.sub(r"^\d{4}-\d{2}-\d{2}\s*[—-]*\s*", "", title)
     s = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
     return f"{date or 'undated'}-{'-'.join(s.split('-')[:6])}"
 
@@ -97,7 +100,9 @@ for idx, ln in enumerate(header_lines):
     body = "\n".join(lines[ln:body_end])
     title = line[3:].strip()
     m = (re.search(r"\((\d{4}-\d{2}-\d{2})", title)
-        or re.search(r";\s*(\d{4}-\d{2}-\d{2})", title))
+        or re.search(r";\s*(\d{4}-\d{2}-\d{2})", title)
+        or re.match(r"(\d{4}-\d{2}-\d{2})\b", title)
+        or re.search(r"\b(\d{4}-\d{2}-\d{2})\b", title))
     date = m.group(1) if m else None
     eid = slug(title, date)
     while eid in seen:
@@ -110,7 +115,9 @@ for idx, ln in enumerate(header_lines):
         e["needs_link"] = True
     e["threads"] = infer_threads(title)
     e["files"] = extract_files(body)
-    prev = old.get(eid, {})
+    # Rows that were undated before the date-first heading pattern
+    # landed keep their curation via the old undated slug.
+    prev = old.get(eid) or old.get(slug(title, None), {})
     for k in ("threads", "verdict", "amends", "superseded_by", "links",
               "code_commit"):
         if k in prev:
