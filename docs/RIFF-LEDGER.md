@@ -4280,3 +4280,37 @@ without re-introducing history).
   does capability drop with length at fixed structure? Attribution:
   Artin (both halves of the ask), house (the confound note and the
   three-rung ladder).
+
+- **BANKED (2026-08-13): training as the star's BIRTH — pre-training
+  and post-training as a pincer onto the model, and the ask "can we
+  train backwards? not backprop"** (Artin, right after CAP-V-TRAJ-1
+  booked). The frame: the star riff (2026-08-09, measured by
+  STAR-PROFILE-1) treats the trained model as stellar structure;
+  this extends it in TIME — training is the collapse/birth event,
+  and pre-training + post-training squeeze the model from two sides
+  the way the temporal-pincer bank (row 22) runs forward and
+  backward LLMs at a proof. "Train backwards" = invert the ORDER of
+  the training program, not the gradient: RL/post-training FIRST
+  from birth, diet SFT after — or a mirrored schedule (OneCycle
+  reversed, cold-to-hot). Measured anchors: CAP-V-TRAJ-1 (capability
+  leads the settling; the schedule tail buys ~1 solve — so the
+  ORDER/schedule of training visibly shapes when capability
+  arrives); v2-GRPO run 1 headline 1 (diet ~20x cheaper per solve
+  than RL on this substrate — the two pincer jaws have measured,
+  unequal price); 45M-GRPO (57 -> 61) and v2 19M (57 -> 60) — both
+  bases climb under RL, modestly. Honest breaks: "backwards" is not
+  time-reversal of SGD (nothing un-integrates a trajectory — the
+  phase portrait is dissipative, ~100x speed decay, PHASE-PORTRAIT-1);
+  the star-birth analogy carries no equations here, unlike the
+  star-profile bank which cashed out in tensor-class sensitivity;
+  and RL-from-birth was already run once (GRPO run 2b lineage
+  started near-birth v1) though never as a REGISTERED order-inversion
+  pair. Testable residue: the order-inversion rung — matched total
+  budget, same diet, same substrate, two arms: (A) SFT-then-GRPO
+  (standard), (B) GRPO-from-birth-then-SFT (backwards), same gate.
+  If (B) lands within sigma of (A), training order is commutative at
+  this scale and the pincer jaws are interchangeable; if (A) >> (B),
+  the curriculum's arrow is real. Cheap version: reversed OneCycle
+  (anneal-then-warm) vs standard, same diet/seed, one birth each.
+  Attribution: Artin (the frame and both asks), house (the
+  order-inversion operationalization + anchors).
