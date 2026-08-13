@@ -1783,3 +1783,15 @@ regime tag on every bullet is the fence.
   decays slower). Schedule-driven by construction (OneCycle);
   portrait-only, no capability read. ([OBSERVATION
   PHASE-PORTRAIT-1](RESULTS.md#L27800).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] At n=1 (the phase19m
+  birth, SEED=2, Mac MPS), capability LEADS weight-space settling:
+  the standard 120 gate over all 18 step-milestones rises 0 -> 64
+  with Spearman rho 0.979 vs step, reaches 90% of final capability
+  at step 10,800 while per-step weight speed is still ~10x above its
+  floor, and the final decade of speed decay (12,600 -> 15,300) buys
+  ~1 solve. Co-movement, not cause (OneCycle drives both).
+  Exploratory rider: L4 is strictly the worst gate level at every
+  milestone from m001800 on — the generator's intended difficulty
+  ladder disagrees with measured difficulty at L4. ([VERDICT
+  CAP-V-TRAJ-1](RESULTS.md#L27909).)

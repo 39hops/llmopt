@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 201, library 63, reproduce-pinned 10, results-cited 169, spec-cited 86, cited-but-library 51
+Census: UNCITED 201, library 63, reproduce-pinned 10, results-cited 170, spec-cited 86, cited-but-library 52
 
 ## scratch/
 
@@ -26,7 +26,7 @@ Census: UNCITED 201, library 63, reproduce-pinned 10, results-cited 169, spec-ci
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
 | basin | basin_probe.py | UNCITED | — | — | — | — |
-| birth19m | birth19m_phase.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
+| birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
 | birth19m | birth19m_snaps.py | UNCITED | — | — | — | 1 |
 | blackhole | blackhole_b0.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | boundary | boundary_or_bulk.py | results-cited | RESULTS | RESULTS×3 | — | — |
@@ -119,6 +119,7 @@ Census: UNCITED 201, library 63, reproduce-pinned 10, results-cited 169, spec-ci
 | gate | gate_ckpt.py | results-cited | RESULTS, specs | RESULTS×3, specs×12 | — | 38 |
 | gate | gate_ckpt_cuda.py | UNCITED | — | — | — | 12 |
 | gate | gate_cplx.py | spec-cited | specs | specs×1 | — | 1 |
+| gate | gate_phase19m.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | gate | gate_pp.py | UNCITED | — | — | — | 1 |
 | gate | gate_prefix.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | gate | gate_rarity.py | results-cited | RESULTS | RESULTS×1 | — | 10 |
@@ -520,7 +521,7 @@ Census: UNCITED 201, library 63, reproduce-pinned 10, results-cited 169, spec-ci
 | plot | plot_identity_crest.py | spec-cited | specs | specs×2 | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×2 | — | 1 |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| render | render_anim.py | library | — | — | 1 | — |
+| render | render_anim.py | library | specs | specs×1 | 1 | — |
 | render | render_gallery.py | spec-cited | specs | specs×6 | — | — |
 | render | render_hero_neurons.py | spec-cited | specs | specs×3 | — | 1 |
 | results | results_query.py | spec-cited | specs | specs×15 | — | 2 |

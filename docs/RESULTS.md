@@ -27905,3 +27905,77 @@ Solves compare only within this run. Adam state untouched (position
 capability only; a momentum-perturbation rung would be its own
 pre-reg). Milestones stay on disk until this books (Artin's open
 decision 4).
+
+## VERDICT CAP-V-TRAJ-1: all three bars FIRE — capability tracks the trajectory, saturates while the portrait still moves, and LEADS the settling (2026-08-13, Mac)
+
+Pre-reg above (same day, committed c5ee1ce before any gate fired;
+receipts confirm ordering: pre-reg 14:47, first gate row 14:48).
+Driver scratch/gate_phase19m.py at 81347b6 (one build_model, then a
+strict ["model"] state load per milestone — the stock gate_checkpoint
+path), rjob capvtraj1 rc=0, receipts logs/phase19m_gate/gates.jsonl
+(18 rows, one per milestone: per-level solves, valid%, wall,
+code_commit 81347b6 on every row) + jobs/capvtraj1.log (a printed
+weights sha per milestone, 18 total; endpoints m000001 c73ca260ae8fb0ae,
+m015300 a3edb6ec5c8e1836). All 18 milestones gated on Mac MPS,
+standard 120 gate, mean 68.4 s/gate, 20.5 min total wall. Gated
+count 18 >= the 12 fence: full booking, all bars read.
+
+MEASURED (solves/120 by step):
+  1:0  900:2  1800:21  2700:30  3600:37  4500:46  5400:55  6300:53
+  7200:51  8100:53  9000:57  9900:57  10800:62  11700:59  12600:63
+  13500:64  14400:64  15300:64
+
+BAR 1 TRACKS: Spearman rho(step, solves) = 0.979 >= 0.80 — FIRES.
+BAR 2 SATURATES: last-6 (m010800..m015300) = {62,59,63,64,64,64},
+  spread 5 <= 6 — FIRES: capability is flat within the 3x-sigma
+  doctrine band while weight speed, already <= 3.5e-5 entering the
+  window, falls 2.6e-5 -> 1e-6 across it (~26x in-window).
+BAR 3 LEADS: step_cap90 = 10,800 (first >= 57.6 = 0.9 x final 64);
+  step_speed90 sits at the last interval of the booked
+  PHASE-PORTRAIT-1 curve (90% of the 2.03-decade log-range needs
+  speed <= 1.6e-6, first reached on the 14,400 -> 15,300 interval;
+  = m014400 labeling intervals by their earlier milestone, m015300
+  by the later — bar fires either way). 10,800 < 14,400 —
+  capability LEADS the settling — FIRES.
+REFUTED-IF clear: last-3-milestone gain = 1 solve = 1.6% of final
+  (bar was >25%). Final gate 64/120 >= 10 floor, bars read.
+
+REGISTERED-PRIOR SCORE: the shape prior (all three bars fire, LEADS)
+was RIGHT. Three honest misses inside it: step_cap90 landed 10,800,
+one milestone ABOVE the registered 7,200-9,900 band (m009900 gated
+57, 0.6 solves under the threshold); the prior said the last third
+would be "flat within sigma" — it is flat within the 3x-sigma BAR
+(spread 5) but NOT within sigma (a 3-solve 10,800 -> 11,700 drop
+sits inside the window); final-gate total 64/120 landed in the
+registered 40-90 band (weak band, said so at registration).
+
+Reading: the last ~30% of the trajectory's bit-steps (12,600 ->
+15,300, where speed decays its final decade) buys ~1 solve. The
+OneCycle tail polishes weights that already carry the capability —
+in phase-portrait terms, the model reaches its solve plateau while
+theta-dot is still an order of magnitude above its floor.
+
+Unregistered observations (exploratory, no bars): (a) L4 is
+strictly the WORST level at every milestone from m001800 onward
+(0..7/24, always below L5-L7; before that the dead milestones tie
+at 0) even though L6/L7 are constructed for more coordination and
+nesting — the generator's intended ladder and measured difficulty
+disagree at L4; riff banked e99b4c6 (length-vs-structure) carries
+the follow-up rungs. (b) TWO non-monotone wobbles above the ±1-2
+instrument sigma: 5400:55 -> 7200:51 (4 solves, mid-schedule) and
+10800:62 -> 11700:59 (3 solves, INSIDE the bar-2 window — the
+largest contributor to its spread of 5); single-seed, unexplained,
+named so a replication can look. (c) Validity climbs 0 -> 62.01%
+with two sub-0.25-point reversals (5,400 -> 6,300 and 14,400 ->
+15,300), both far under sigma.
+
+FENCES (carried from pre-reg): n=1 birth, SEED=2, Mac MPS only —
+co-movement measured, not cause (OneCycle drives both speed and
+capability through step count); solves compare only within this run;
+Adam state untouched; sigma fence: single-gate differences <= ~2
+solves are ties. Milestones stay on disk pending Artin's decision 4
+(this rung's use of them is now complete).
+Receipt exception (seedslad pattern): logs/phase19m_gate/gates.jsonl
+is a small text receipt (18 rows, ~4KB) force-added under logs/ so
+the bars recompute from git alone; the per-milestone weights-sha log
+jobs/capvtraj1.log stays untracked run exhaust.
