@@ -28191,3 +28191,69 @@ crash; wall-kill books NOT-RUN with whatever milestones streamed
 (tee is incremental). Milestones land in a fresh directory; no
 booked path is written. The backwards phase portrait is exploratory
 exhaust — no bars on it here.
+
+## PRE-REG COMP-LADDER-1: compress the OneCycle schedule to 50% and 30% of steps — is shorter training free, and does schedule SHAPE beat truncation? (2026-08-13, Mac)
+
+Artin GO (the n-log-n riff 149a71e made measurable). Skipping is
+impossible (SGD is a recurrence); this rung prices COMPRESSION:
+the full OneCycle shape (warmup, peak, anneal to floor) squeezed
+into fewer steps. The killer comparison comes free: CAP-V-TRAJ-1's
+milestones are TRUNCATION baselines (same steps, schedule cut off
+mid-anneal, no polish) — m007200 gated 51/120, m004500 gated 46.
+Compression at matched steps keeps the polish phase; truncation
+does not. If compression beats truncation at matched steps, the
+schedule's SHAPE carries capability, not just its length.
+
+INSTRUMENT: scratch/comp_ladder.py — the backsched harness pattern
+(same D2 excision, BIRTH_SEED=2, d384/8L/ffn1536/h6, gen4 diet,
+fp32 Mac MPS, refuse-if-exists) with the scheduler patched to a
+stock-SHAPED OneCycle sequence of N = ratio x 15,420 steps
+(ratio 0.5 -> 7,710; ratio 0.3 -> 4,626), and training STOPPED at
+step N by the driver (save final weights, gate, exit) — the model
+sees the first N steps' batches, so the arm trains on FEWER TOKENS
+too (inherent to "train shorter"; fenced below, not a confound to
+control away — token savings IS the product). Two arms sequential,
+C50 then C30, each gated at exit with llmopt.lab.gate.gate_checkpoint
+(standard 120, MPS), one jsonl receipt row per arm streamed to
+logs/comp_ladder/arms.jsonl. Outputs
+checkpoints/gallery19m_comp{50,30}_s2.pt — fresh paths.
+
+SCHEDULING FENCE: launches CHAINED behind the in-flight
+BACKWARD-SCHEDULE-1 job (waits on jobs/backsched1.rc) so the Mac
+never runs two births at once; the chain driver is launched
+explicitly now, not by a watcher.
+
+NO-OP PRECONDITION: at startup the driver asserts its
+sequence-serving scheduler at ratio 1.0 reproduces stock
+OneCycleLR element-wise on a dummy 100-step optimizer (the
+backsched assert, reused). The gate path is stock and unwrapped.
+
+BARS (paired against booked same-instrument numbers on this page):
+1. C50-FREE: C50 final gate >= 57 (within 1.5 sigma = 7 of the
+   booked 64) FIRES "half-schedule training is capability-free at
+   this scale".
+2. SHAPE-BEATS-TRUNCATION: C50 total >= 58 (= m007200's booked 51
+   + 7) FIRES "at matched steps, finishing the schedule beats
+   cutting it" (step mismatch 7,710 vs 7,200 fenced: 7% more steps
+   is inside the claim's resolution, named honestly).
+3. C30-FREE (exploratory tier): C30 >= 57 FIRES "70%-off training
+   is free" (registered as unlikely).
+REFUTED-IF: C50 <= 51 — compression does no better than truncation
+at matched steps; the schedule-shape reading dies and the riff's
+compression residue books negative.
+
+REGISTERED PRIOR (house, on record): bar 1 FIRES (C50 in 56-62 —
+the anneal-to-floor tail does the polishing CAP-V-TRAJ-1 showed the
+standard run doing after step 10,800); bar 2 FIRES (C50 >= 58,
+same mechanism); bar 3 NO-FIRES (C30 in 40-52 — half the tokens of
+C50 and epoch-1 of the standard run only reached ~46-51 at similar
+exposure). Confidence: moderate, low, moderate respectively.
+
+FENCES: n=1 per arm, SEED=2 lineage, Mac MPS fp32, same-device
+paired reads only; compression arms see FEWER TOKENS than the
+control (0.5x / 0.3x) — the rung prices "shorter training" as a
+package (schedule shape + exposure), and any decomposition of the
+two needs a data-replay arm with its own pre-reg; single-seed
+directional fences as in BACKWARD-SCHEDULE-1; wall-kill books
+whichever arms' receipt rows landed (C50 streams before C30
+starts); no booked path is written.
