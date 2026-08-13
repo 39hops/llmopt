@@ -5,7 +5,8 @@ figstyle; this script does the heavy/typed work in the LAB venv and
 writes one .npz per scene under data/anim/ (untracked, regenerable):
 
   crystal  pca/sphere/polar xy + rank order for gallery19m_s1.pt
-  morph    the same projections at ep0 / ep1 / final
+  morph    angle (fixed final-checkpoint basis) + absolute row norm
+           at ep0 / ep1 / final, with per-stage mean norms in meta
   crest    routing_crest arm labels+values from docs/figures.json
 
 Every npz carries a `meta` JSON string: provenance (ckpt sha8s or
@@ -60,34 +61,54 @@ def scene_crystal() -> tuple[dict, dict]:
     ckpt = "checkpoints/gallery19m_s1.pt"
     arrays = _projections(ckpt)
     meta = {"provenance": anatomy.checkpoint_provenance(ckpt),
-            "title": "19M gate-neuron geometry"}
+            "title": "Three views of the same weights"}
     return arrays, meta
 
 
 def scene_morph() -> tuple[dict, dict]:
+    """One FIXED coordinate system across checkpoints: every stage is
+    projected through the FINAL checkpoint's whitened PCA basis, and
+    the y axis is the absolute row norm (no per-stage rescale) — so
+    scale growth between epochs is visible instead of normalized away.
+    Per-stage mean row norm ships in meta as the on-screen statistic."""
+    import torch
     ckpts = {"ep0": "checkpoints/gallery19m_s1_ep0.pt",
              "ep1": "checkpoints/gallery19m_s1_ep1.pt",
              "final": "checkpoints/gallery19m_s1.pt"}
+    Ws = {tag: anatomy.neuron_rows(ckpt)[1] for tag, ckpt in ckpts.items()}
+    mu = Ws["final"].mean(0)
+    _, S, V = torch.linalg.svd(Ws["final"] - mu, full_matrices=False)
     arrays: dict = {}
-    prov = []
+    prov, mean_norm = [], {}
     for tag, ckpt in ckpts.items():
-        pj = _projections(ckpt)
-        for k, v in pj.items():
-            if k != "label":
-                arrays[f"{tag}_{k}"] = v
+        P = ((Ws[tag] - mu) @ V[:2].T) / S[:2].clamp(min=1e-12)
+        ang = torch.complex(P[:, 0], P[:, 1]).angle()
+        mag = Ws[tag].norm(dim=1)
+        arrays[f"{tag}_angle"] = ang.numpy().astype(np.float32)
+        arrays[f"{tag}_mag"] = mag.numpy().astype(np.float32)
+        mean_norm[tag] = float(mag.mean())
         prov.append(f"{tag}={anatomy.checkpoint_provenance(ckpt)}")
     meta = {"provenance": " ".join(prov),
-            "title": "the crystal forming", "stages": list(ckpts)}
+            "title": "the crystal forming", "stages": list(ckpts),
+            "mean_norm": mean_norm,
+            "basis": "final-checkpoint whitened PCA (fixed across stages)"}
     return arrays, meta
 
 
 def scene_crest() -> tuple[dict, dict]:
     spec = json.loads(Path("docs/figures.json").read_text())
     fig = spec["routing_crest"]
+    controls = [a for a in fig["arms"] if a["value"] == 0]
     arrays = {
-        "values": np.array([a["value"] for a in fig["arms"]],
-                           dtype=np.float32),
-        "labels": np.array([a["label"] for a in fig["arms"]]),
+        "seed": np.array([p["seed"] for p in fig["seed_pairs"]],
+                         dtype=np.int32),
+        "full": np.array([p["full"] for p in fig["seed_pairs"]],
+                         dtype=np.float32),
+        "mask": np.array([p["mask"] for p in fig["seed_pairs"]],
+                         dtype=np.float32),
+        "ctl_values": np.array([a["value"] for a in controls],
+                               dtype=np.float32),
+        "ctl_labels": np.array([a["label"] for a in controls]),
     }
     meta = {"provenance": "docs/figures.json routing_crest",
             "title": fig["title"], "denominator": fig["denominator"],

@@ -53,7 +53,9 @@ triplet under `anim/`. Scene data is precomputed from real artifacts
 npz) and scenes (`scripts/anim/`) render numpy-only in `.venv-anim`
 (manim CE; see scratch/manim_feasibility_2026-08-13.md). Regenerable:
 precompute + `manim -qh` + the ffmpeg palette encode. Provenance
-outro frame is part of every scene.
+outro frame is part of every scene. Each scene also ships a
+`-light` triplet (`ANIM_MODE=light` at render time); posters are a
+mid-scene frame, the reduced-motion path is poster + MP4 link.
 
 **[H] historic / frozen pixels** — no surviving script+checkpoint
 pair, or cited by a booked entry as-is. Evidence record: never

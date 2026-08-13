@@ -15,7 +15,7 @@ Precompute animation scene data (lab venv side).
 - `_chrome() -> dict`
 - `_projections(ckpt: str, key: str='gate.weight') -> dict`
 - `scene_crystal() -> tuple[dict, dict]`
-- `scene_morph() -> tuple[dict, dict]`
+- `scene_morph() -> tuple[dict, dict]` — One FIXED coordinate system across checkpoints: every stage is
 - `scene_crest() -> tuple[dict, dict]`
 - `main() -> None`
 

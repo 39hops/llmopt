@@ -193,6 +193,11 @@
         "entity": "independent"
       }
     ],
+    "seed_pairs": [
+      {"seed": 111, "full": 63, "mask": 80},
+      {"seed": 222, "full": 73, "mask": 82},
+      {"seed": 333, "full": 63, "mask": 81}
+    ],
     "fence": "VERDICT MOE-GT-1-R5/R6 \u00b7 RESULTS.md#L18927 \u00b7 masked v full PAIRED at seeds 111/222/333 (+17/+9/+18, pooled +14.7 v a +7 bar); controls at seed 1234, NOT seed-paired to those arms \u00b7 Mac MLX \u00b7 mathgen L1-3"
   },
   "honesty_ledger": {

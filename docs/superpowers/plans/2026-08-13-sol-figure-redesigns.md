@@ -10,6 +10,11 @@ crystal-rotation is then the only likely candidate.**
 
 ## Animations (scripts/anim/)
 
+Items 1-4 EXECUTED 2026-08-13 (same-day session): all three scenes
+redesigned + re-rendered, dark + light triplets in docs/assets/anim/,
+per-seed pairs added to figures.json routing_crest (verified against
+RESULTS.md#L18927).
+
 1. `crystal_rotation` — rename the concept "Three views of the same
    weights" (it is a projection morph, not a rotation); shorten to
    ~6s; visually track a small fixed set of neurons (highlight

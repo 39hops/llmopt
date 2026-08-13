@@ -49,3 +49,10 @@ data/lake/
 .venv/
 .venv-anim/
 media/
+
+# metallicity diets: big generated jsonl untracked (manifest.ref.json is the committed pin)
+data/metallicity/*.jsonl
+data/metallicity/manifest.json
+
+# local session-state tool exhaust
+.no-amnesia/
