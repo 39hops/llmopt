@@ -58,7 +58,7 @@ Census: UNCITED 201, library 62, reproduce-pinned 10, results-cited 167, spec-ci
 | confluence | confluence.py | UNCITED | — | — | — | — |
 | corner | corner_snap.py | UNCITED | — | — | — | — |
 | cplx | cplx_chain.sh | UNCITED | — | — | — | — |
-| crystal | crystal_recreate_test.py | spec-cited | specs | specs×3 | — | — |
+| crystal | crystal_recreate_test.py | spec-cited | specs | specs×3 | — | 1 |
 | d2 | d2_verify.py | UNCITED | — | — | — | 1 |
 | day | day_chain.sh | UNCITED | — | — | — | — |
 | desert | desert_v2.py | spec-cited | specs | specs×1 | — | — |

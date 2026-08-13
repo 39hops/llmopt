@@ -16,17 +16,11 @@ ASSETS = ROOT / "docs" / "assets"
 
 HERO = {"neurons-19m-light.png", "neurons-19m-dark.png"}
 
-# [R] stems enumerated in the assets README (script+checkpoint survive).
+# [R] = regenerable with NO reconstruction: the crest scripts hold
+# their data inline and take no arguments.
 R_PATTERNS = [
     "gt1-crest-*.png",
     "identity-crest-*.png",
-    "neurons-gen6-*.png",
-    "neurons-pca-*.png",
-    "neurons-113m-growth-*.png",
-    # the four-diets set
-    "neurons-phase-density-four-diets.png",
-    "neurons-polar-four-diets.png",
-    "neurons-polar-four-diets-normalized.png",
 ]
 
 # [H] enumerated frozen set: old hero, zoom, three-minds, crystal era.
@@ -39,7 +33,16 @@ H_PATTERNS = [
     # no driver in scripts//scratch/ names these outputs, so there is
     # no script+checkpoint PAIR to regenerate from. Frozen as [H].
     # (gen_lab_overview_pdf.py CONSUMES neurons-qwen-vs-19m.png; a
-    # consumer is not a generator.)
+    # consumer is not a generator.) Task 5 extended the same standard
+    # to the plot_neurons-produced gallery set: script and checkpoints
+    # survive but the exact invocations (ckpt pairs, method, normalize,
+    # titles) were never recorded, so the PAIR is not reproducible.
+    "neurons-gen6-*.png",
+    "neurons-pca-*.png",
+    "neurons-113m-growth-*.png",
+    "neurons-phase-density-four-diets.png",
+    "neurons-polar-four-diets.png",
+    "neurons-polar-four-diets-normalized.png",
     "magic-scatter-*.png",
     "neuron-density-vs-phase.png",
     "neuron-weighting-pr.png",

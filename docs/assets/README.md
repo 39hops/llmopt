@@ -33,13 +33,16 @@ is part of the image. Files: `hero/neurons-19m-light.png`,
 `hero/neurons-19m-dark.png`. 256-color quantized on install (Pillow
 median-cut; the renderer writes full RGB to scratch first).
 
-**[R] reproducible gallery** — weight-space renders whose script and
-checkpoint both still exist; regenerable at will.
-`scripts/plot_neurons.py` (pca/sphere/polar/displace),
-`scripts/plot_gt1_crest.py`, `scripts/plot_identity_crest.py`.
-Files live under `gallery/`: `gt1-crest-small-multiples.png`,
-`identity-crest-fresh-seeds.png`, `neurons-gen6-*`, `neurons-pca-*`,
-the four-diets set, `neurons-113m-growth-*` (gallery pair).
+**[R] reproducible gallery** — figures regenerable with NO
+reconstruction: the script alone reproduces the file (data inline or
+a recorded invocation). `scripts/plot_gt1_crest.py`,
+`scripts/plot_identity_crest.py`. Files live under `gallery/`:
+`gt1-crest-small-multiples.png`, `identity-crest-fresh-seeds.png`.
+`scripts/plot_neurons.py` is the tool for NEW gallery renders — a
+render is only [R] if its exact invocation is recorded (in the script
+or REPRODUCE); otherwise it freezes to [H] on landing. The 2026-08-13
+overhaul reclassified the old plot_neurons set to [H] on exactly that
+test: checkpoints survive, the invocations were never recorded.
 
 **[H] historic / frozen pixels** — no surviving script+checkpoint
 pair, or cited by a booked entry as-is. Evidence record: never
