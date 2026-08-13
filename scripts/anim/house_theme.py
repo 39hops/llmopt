@@ -13,7 +13,26 @@ from pathlib import Path
 
 import numpy as np
 
-DATA = Path(__file__).resolve().parents[2] / "data" / "anim"
+ROOT = Path(__file__).resolve().parents[2]
+DATA = ROOT / "data" / "anim"
+
+
+def register_house_fonts() -> list[str]:
+    """Make the vendored Inter / JetBrains Mono visible to Pango.
+
+    They are not system-installed, so a scene asking for font="Inter"
+    silently falls back to a default face unless the .ttf is registered
+    first. Every scene imports this module, so registering here is what
+    makes the house type actually apply."""
+    try:
+        import manimpango
+    except ImportError:            # non-anim venv (tests, precompute)
+        return []
+    return [f.name for f in sorted((ROOT / "assets" / "fonts").glob("*.ttf"))
+            if manimpango.register_font(str(f.resolve()))]
+
+
+register_house_fonts()
 
 
 def load_scene(name: str):
