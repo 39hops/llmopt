@@ -1449,6 +1449,18 @@ Clade-gated streaming pilot, arm G (pre-reg 2026-07-26).
 
 - `probe_band(band: tuple[int, ...]) -> float` — Verified 1-ply valid fraction on fresh band states.
 
+### scratch/comp_ladder.py
+COMP-LADDER-1 instrument run (pre-reg RESULTS 2026-08-13): the phase19m recipe with the OneCycle schedule COMPRESSED — the full stock shape (warmup, peak, anneal) squeezed into N = RATIO x 15,420 steps, training stopped at step N by this driver (save, gate, exit). The arm trains on fewer tokens too; that is the product being priced, per the pre-reg fence.
+
+- `_stock_lr_sequence(max_lr, total_steps, pct_start)`
+- `class SequenceLR`
+- `patched_onecycle(opt, max_lr, total_steps, pct_start=0.3, **kw)`
+- `_assert_noop()`
+- `excised_load_rows(*a, **kw)`
+- `capture_build(*a, **kw)`
+- `class _Done`
+- `stop_step(self, *a, **kw)`
+
 ### scratch/complex_birth.py
 Complex-FFN birth driver (spec 2026-07-26-complex-zx-program).
 
