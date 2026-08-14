@@ -1335,6 +1335,16 @@ BACKWARD-SCHEDULE-1 instrument run (pre-reg RESULTS 2026-08-13): the phase19m re
 - `capture_build(*a, **kw)`
 - `tee_step(self, *a, **kw)`
 
+### scratch/birth19m_curric.py
+CURRICULUM-1 instrument run (pre-reg RESULTS 2026-08-13): the phase19m recipe with ONE variable changed — the ORDER rows enter the stream. Two treatment arms over the same D2-excised gen4 diet, same BIRTH_SEED=2 init, same stock OneCycle length and shape (steps_total computed exactly as the trainer's nopack branch computes it):
+
+- `load_excised_rows()`
+- `encode_with_levels(rows, tok)` — The trainer's text/encode/filter path with the level tag
+- `stock_epoch_stream(n_enc, ep)`
+- `level_batches(levels, shuffle_key)` — Per-level BS-slices of the (already length-sorted) enc,
+- `assert_noop(enc)` — Capture the REAL trainer epoch-1 stream (shuffle recorder +
+- `main()`
+
 ### scratch/birth19m_phase.py
 PHASE-PORTRAIT-1 instrument run: a fresh 19M-class birth with STEP-LEVEL milestone saves INCLUDING optimizer state, so a true per-neuron (angle, angular-velocity) phase portrait exists — position from the weights, momentum from Adam's exp_avg, velocity from adjacent milestones. The pendulum riff's residue (RIFF-LEDGER 2026-08-13), instrument-grade.
 
