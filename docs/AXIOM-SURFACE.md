@@ -16,11 +16,32 @@ are the stable key.
 ## Python bindings (the in-process surface)
 
 `axiom_sym` — source `bindings/axiom_sym.cpp`, `INTERFACE_VERSION
-= 5`, 16 names pinned in `INTERFACE`:
+= 6` (axiom a53590b + ca052f4, landed 2026-08-14), 18 names pinned
+in `INTERFACE`:
 parse_sstr, diff, canonical, equivalent, equivalent_mod_const,
 verify_edge, dead_mask, dead_reason, predecessors, successors,
 successors_dist, solve, solve_batch, emit_chain, frontier_eval,
-gate_battery.
+gate_battery, PyRand, count_ops.
+
+IV6 additions (house counter-verified 2026-08-14, relay -4):
+- `PyRand(seed_str_or_int)` — bit-exact CPython random.Random twin:
+  random/randint/choice/shuffle/getrandbits. Parity 16 house seeds
+  (string "kind-{level}-{seed}" shapes, 0, negative, >64-bit,
+  10**50) x all methods: 0 fails. LIMIT: getrandbits k>64 raises
+  ValueError (CPython allows any k).
+- `count_ops(expr: Expr) -> int` — sympy-1.14-exact. Takes an Expr,
+  not a string: call `ax.count_ops(ax.parse_sstr(sstr))`. Score
+  BOTH sides on the same sstr (axiom's parse distributes numeric
+  coefficients over sums; pre-print sympy trees show representation
+  drift). House parity 204 exprs incl. exp(-x)*sin(x) fraction
+  shapes: 0 mismatches. Pin sympy 1.14 for any check (1.13 differs
+  on exactly these shapes; house venv is 1.14.0).
+- `predecessors` now returns `{rows, expired}` — the silent-partial
+  defect is FIXED; deadline_ms>0 is safe. Signature takes an Expr
+  (`predecessors(parse_sstr(s), max_candidates=160, deadline_ms=0,
+  use_macros=True)`).
+- Provenance attrs `GIT_SHA` / `BUILD_TIME` baked at compile time
+  on axiom_sym (verified: ca052f4..., 2026-08-14T20:06:00Z).
 
 Semantics that bite (all verified in source):
 - `equivalent`/`equivalent_mod_const` return three-valued strings;
@@ -42,9 +63,8 @@ Semantics that bite (all verified in source):
   `frontier_eval` enumerates UNVERIFIED (verify_p=0.0) and defers
   the oracle to top-k — rows with verified=None are unchecked, drop
   or hard-flag them.
-- `predecessors` accepts deadline_ms but returns a bare list with
-  NO expired flag — a deadline-truncated set is a silent partial.
-  Do not pass deadline_ms>0 until that gains a flag (relay item).
+- `predecessors` (IV6): returns `{rows, expired}`; deadline_ms>0
+  is now safe. (Pre-IV6 silent-partial fence retired 2026-08-14.)
 - Scoped adoption of record (RESULTS L8281): axiom bridge =
   default enumerator for soundness-consumers; house
   derivation.successors stays the semantic reference for house-set
@@ -57,11 +77,12 @@ PROCESS-GLOBAL static — never run two anchors concurrently),
 MultiBirth, MoeBirth. NO INTERFACE_VERSION on this module — no
 version handshake; assert shapes/behavior at arm time instead.
 
-DUAL-.SO HAZARD (verified): repo root carries a Jul 28 build,
-`build-rel/` an Aug 10 build; both answer INTERFACE_VERSION 5 and
-`llmopt/search/axiom_oracle.py` bare-imports whatever sys.path
-finds. Pin `~/code/axiom/build-rel` explicitly and record the .so
-mtime/size in any booking that cites axiom numbers.
+DUAL-.SO HAZARD (downgraded 2026-08-14): repo root still carries a
+Jul 28 IV5 build; `build-rel/` is the Aug 14 IV6 build with baked
+GIT_SHA/BUILD_TIME. Pin `~/code/axiom/build-rel` and record
+GIT_SHA in any booking that cites axiom numbers — provenance is
+now one attr read, mtime/size no longer needed. An import that
+answers IV5 or lacks GIT_SHA grabbed the stale root .so.
 
 ## Rule table
 
@@ -92,10 +113,8 @@ its receipts never sit next to Metal numbers (both labs' fence).
 
 - Lean 4 certificate emitter (`sym/print_lean.hpp`) — machine-
   checkable proofs for EQUIVALENT verdicts, no house consumer yet.
-- `pyrand` — bit-exact CPython random.Random in C++ — lets a C++
-  farm reproduce our string-seeded datasets exactly.
-- count_ops (sympy-exact), RNS/int256/dyadic exact core, fp32limb
-  GEMM + Metal kernels.
+- RNS/int256/dyadic exact core, fp32limb GEMM + Metal kernels.
+  (pyrand and count_ops BOUND at IV6 — see bindings section.)
 - `sym/budget` semantics ANSWERED (relay 2026-08-14-2): cooperative
   thread-local deadline, work_expired throw at polls, conservative
   rejection, never a partial. Bounded modulo poll gaps, not a hard

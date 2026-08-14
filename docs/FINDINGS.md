@@ -1938,3 +1938,13 @@ regime tag on every bullet is the fence.
   owed. The constructive inversion of the order arc: supply the
   foundation, don't reorder it. ([VERDICT
   ATOM-DIET-1](RESULTS.md#L29250).)
+
+- [REPLICATED] Axiom's IV6 bindings land bit-exact against their
+  registered acceptance: PyRand matches CPython 3.12 random.Random
+  element-wise over 16 house seed shapes (string and big-int) and
+  all bound methods, count_ops matches sympy 1.14 on 204/204
+  identical-sstr expressions, predecessors gains its {rows,
+  expired} flag, and compile-time GIT_SHA/BUILD_TIME attrs
+  downgrade the dual-.so hazard to a one-attr check. One envelope
+  limit: getrandbits(k>64) raises where CPython allows any k.
+  ([VERDICT AXIOM-IV6-ACCEPT](RESULTS.md#L29337).)

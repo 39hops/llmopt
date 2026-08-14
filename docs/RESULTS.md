@@ -29333,3 +29333,33 @@ Prereg-auditor pass before booking (no blockers; 9 findings
 verified and adopted, incl. the noop receipt path, the horizon
 mismatch carry-forward, the lineage fence on "record", and the
 restart provenance disclosure).
+
+## VERDICT AXIOM-IV6-ACCEPT: pyrand + count_ops land bit-exact, predecessors fixed, provenance attrs live (2026-08-14, Mac)
+
+Counter-verify of axiom's IV6 batch (their a53590b + ca052f4)
+against the acceptance registered in relay 2026-08-14-3, run on
+their shipped build-rel .so (GIT_SHA
+ca052f48f5c07f7afdc5d325ba3b4ae2a844232b, BUILD_TIME
+2026-08-14T20:06:00Z, INTERFACE_VERSION 6, 18 INTERFACE names).
+
+- **PyRand: PASS.** 16 seeds (house "kind-{level}-{seed}" string
+  shapes, levels 1/3/4/7 x seeds 0/42/71000123; int seeds 0, -5,
+  2**64+3, 10**50) x {200 random(), 50 randint, 50 choice,
+  100-elem shuffle, getrandbits k=1/13/32/64} element-wise
+  identical to CPython 3.12 random.Random; 0 fails. Surface limit:
+  getrandbits(k>64) raises ValueError (CPython allows any k) — no
+  house consumer affected; relayed.
+- **count_ops: PASS.** 204 exprs (their fraction-split regression
+  shapes + 200 seeded depth-3 draws), identical-sstr scoring both
+  sides: 0 mismatches vs house sympy 1.14.0. Call shape:
+  count_ops(parse_sstr(sstr)) — Expr arg, not string.
+- **predecessors: FIXED** — returns {rows, expired}; the
+  deadline_ms>0 fence (relay -1 defect) is retired.
+- **Provenance: GIT_SHA/BUILD_TIME baked.** Dual-.so hazard
+  DOWNGRADED: stale root .so answers IV5 with no GIT_SHA; pin
+  build-rel and quote GIT_SHA in axiom-citing bookings (replaces
+  mtime/size recording).
+
+Fences: interface acceptance, no gate numbers, no cross-device
+claims. Relay 2026-08-14-4 carries this to axiom. AXIOM-SURFACE.md
+updated same commit (IV6 section; two IV5 fences retired).
