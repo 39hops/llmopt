@@ -1,0 +1,1 @@
+{"arm": "rev", "seed": 2, "steps": 15420, "solves": {"3": 15, "4": 3, "5": 9, "6": 5, "7": 5}, "total": 37, "valid_pct": 32.62, "device": "mps", "admit_log": [], "code_commit": "8427340"}

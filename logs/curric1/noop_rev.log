@@ -1,0 +1,8 @@
+[curric] D2 excision: 165028 -> 164896 rows
+[rev] 164490 sequences, vocab 40
+[curric] D2 excision: 165028 -> 164896 rows
+164896 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e']
+skipped 388 out-of-language rows (strict encode; historically silently mangled)
+164490 sequences, vocab 40
+model: 18.9M params on mps [fast: bf16 + token-budget]
+[curric] NO-OP PASS: 100 tuples + epoch length 5140 match the trainer path

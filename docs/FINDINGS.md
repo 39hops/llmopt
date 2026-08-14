@@ -1890,3 +1890,16 @@ regime tag on every bullet is the fence.
   rank-matched 117k reads +28, the top-ranked 452k reads -26) — a
   two-draw direction, no claim. ([OBSERVATION
   EX4-COMPOSITION-1](RESULTS.md#L28840).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] The curriculum
+  mirror arm settles the direction question and unsettles the
+  mechanism: hard-first level-blocked order gates 37/120 v the
+  shuffled control's 64 and easy-first's 54 — order is harmful in
+  BOTH directions, with validity falling in the same order
+  (62.01 to 49.12 to 32.62). Neither registered mechanism bar
+  fired: L3 fell 8 (the lr-placement direction) while L4 stayed
+  at 3/24 despite streaming into the high-lr era (the structural-
+  scar direction), so each candidate explains one tail and
+  neither books. Shuffled interleaving is the measured optimum of
+  the three orders tested on this line. ([VERDICT
+  REV-LADDER-1](RESULTS.md#L28872).)

@@ -28868,3 +28868,76 @@ FENCES: desk-only, deterministic given the committed artifacts;
 the (2) correlation rides exactly two uniform draws and books no
 claim; demand = pooled arm0 counts (the same instrument that
 defined the windows).
+
+## VERDICT REV-LADDER-1: NEITHER MECHANISM BAR FIRES and the secondary is emphatic — hard-first gates 37/120 (-27 v control, -17 v easy-first): L3 15/24 (-8 v control), L4 3/24 (-4 v control, flat v the cap arm), so level-blocked order is harmful in BOTH directions and no registered mechanism clause survives (2026-08-14, Mac)
+
+Against PRE-REG REV-LADDER-1 + AMENDMENT REV-LADDER-1-RECEIPT
+(both 2026-08-14, committed before launch). Instrument: thin
+sibling scratch/birth19m_curric_rev.py (frozen birth19m_curric
+imported; REV_LADDER = exact reversal L8,L4,L6,L7,L5,L3,L2,L1);
+NO-OP precondition PASSED in-process before training (100 tuples
++ epoch length 5,140; receipt logs/curric1/noop_rev.log — a
+post-run slice of jobs/revladder.log lines 1-8, force-added; the
+log's "[fast: bf16]" line belongs to the aborted no-op probe
+only, real training is fp32). 15,420 steps, BIRTH_SEED=2, mps;
+D2 excision 165,028 -> 164,896 in-log; tail truncation fell on
+L1 (4 of 1,147 batches/epoch = 0.35%, as pre-registered).
+Receipt logs/curric1/rev.jsonl (force-added); code_commit
+8427340; gate-printed weights sha ccf34c06ce9ec2cb.
+  control (booked) 64/120 {3:23,4:7,5:16,6:8,7:10} valid 62.01%
+    (m015300, step 15,300 v the arms' 15,420 — the ~0.8% horizon
+    mismatch disclosed at CURRICULUM-1, unpriced; predates
+    sha-printing, no sha exists; code_commit 81347b6)
+  cap (booked)     54/120 {3:21,4:3,5:15,6:7,7:8}  valid 49.12%
+    (sha d23d01e080436401; code_commit 9cb7ad1; carries its own
+    booked ~40% L8-tail cut — the -17 below compares against an
+    anchor with that residual)
+  rev              37/120 {3:15,4:3,5:9,6:5,7:5}   valid 32.62%
+Dict sums verified (15+3+9+5+5 = 37).
+
+BARS:
+- P-LR-PLACEMENT does NOT fire: requires L4 >= 6/24 AND L3 <=
+  20/24. L3 fell to 15 (the placement direction) but L4 read
+  3/24 despite streaming SECOND, into the high-lr era — the
+  conjunct dies on L4.
+- P-ORDER-BLOCKING does NOT fire: requires L4 <= 4/24 (holds, 3)
+  AND L3 >= 22/24 (fails, 15).
+- P-ORDER-HURTS-AGAIN FIRES: 37 <= 57, by 20 solves — level-
+  blocked order is harmful in both directions, and hard-first is
+  17 solves worse than easy-first. Validity falls in the same
+  order (62.01 -> 49.12 -> 32.62).
+- The registered MIXED-CELLS branch triggers on its "neither"
+  clause (no mechanism bar fired): direction booked, no
+  mechanism claim. REFUTED-IF did not trigger (P-ORDER-BLOCKING
+  dead), so the CURRICULUM-1 mechanism READ survives as
+  hypothesis, unconfirmed and unrefuted.
+
+UNREGISTERED RESIDUE (hypothesis language only; no clause here
+licenses a mechanism read): the shape is CONSISTENT WITH
+lr-placement acting on L3 (streamed sixth, into the anneal,
+fell 8) while L4's flatness at 3/24 under high-lr placement is
+CONSISTENT WITH L4-PLY0-1's three-lineage structural scar —
+candidates, not conclusions. A second-order account (hard-first
+spends the warmup/peak absorption window on levels the model
+cannot yet digest, starving both ends) would need a swap-ladder
+arm to discriminate; not registered. rev validity 32.62% sits
+near the oneshot arm's 33.50% class (RESULTS L6484) — noting
+that arm scored 54 solves, so validity class and solve count
+decouple sharply; booked descriptively.
+
+HOUSE PRIOR SCORED: WRONG, third miss in the schedule-mechanics
+family (one hit: compression; misses: direction, order-null, now
+placement) — registered P-LR-PLACEMENT with total 52-58 / L4
+6-10 / L3 18-21; measured 37 / 3 / 15, every point guess outside
+its band. The house models SCHEDULE mechanics well and
+DATA-ORDER mechanics badly; the track record is the instrument.
+
+FENCES: [SINGLE-SEED] [REGIME-SCOPED: house crystals] 19M/gen4,
+BIRTH_SEED=2 only, Mac/mps only, standard 120 gate (levels 3-7;
+L1/L2/L8 train-only); paired against BOOKED anchors on the same
+fp32/mps line, anchor provenance quoted above; -27 and -17 both
+clear the 7-solve single-seed resolution bar, direction language
+beyond this seed needs n>=3; no constant retuned after data.
+Prereg-auditor pass before booking (12 findings verified and
+adopted, incl. the untracked-sha blocker and the anchor-horizon
+disclosure).

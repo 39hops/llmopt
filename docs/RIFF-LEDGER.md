@@ -4538,7 +4538,12 @@ without re-introducing history).
   half remains genuinely UNTESTED: the pinned constants
   (100/300/2%) admitted every level by step 2,600, the pre-named
   "always admits" branch — a slower rule is a new pre-reg. The
-  weight-level-order half of the original question is untouched.]
+  weight-level-order half of the original question is untouched.
+  Next-day mirror (VERDICT REV-LADDER-1): hard-first gates 37 —
+  order is harmful in BOTH directions; shuffled interleaving is
+  the measured optimum of the three orders tested; neither
+  mechanism bar fired (L3 follows lr placement, L4 stays at its
+  structural floor).]
 
 - **BANKED (2026-08-13): novelty IS the volatility — the newest
   data class (fresh operations the model has never seen) is the
