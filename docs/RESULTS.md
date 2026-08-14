@@ -29002,3 +29002,45 @@ travel with any delta against them); 7-solve single-seed
 resolution on the total; per-level cells read against registered
 thresholds only; no constant retuned after data. COST: 1 birth +
 1 gate (~50 min).
+
+## PRE-REG CHECKERS-0: does bounded search beat greedy material on an exact win-in-K oracle — the instrument-transport probe, day-one shape (2026-08-14, 3080/WSL CPU; booked BEFORE any run)
+
+First cell under the games-as-instruments ruling (CLAUDE.md,
+Artin 2026-08-14): checkers admitted as an EXACT-ORACLE
+instrument, never a capability domain. Mirrors the T-count
+day-one shape (which closed to an honest greedy-wins null in one
+day — that outcome is a live branch here too).
+
+INSTRUMENT: scratch/checkers0.py, pure-CPU python. English
+draughts, forced captures, mandatory multi-jump chains,
+promotion ends the move. POSITIONS: 200, drawn by random legal
+playout from the standard start until <= 6 total pieces first
+holds (string seed "checkers0-{i}", dedupe, playout cap 200
+plies). ORACLE (exact, cycle-safe): depth-limited minimax with
+memo — label WIN iff the side to move FORCES a win within K=20
+plies (loss = no legal move), else NOT-WIN-IN-K. The label is
+horizon-exact by construction; no draw adjudication is needed or
+claimed. ARMS, both predicting the binary label:
+  baseline  material sign (man=1, king=2): WIN iff advantage > 0
+  search    the same solver under a HARD 2,000-node budget:
+            WIN iff proved within budget, else NOT
+BARS (200 paired positions, one seed set):
+- P-SEARCH-PAYS fires iff search accuracy >= baseline accuracy
+  + 20 points.
+- P-GREEDY-WINS (the T-count null shape) fires iff |search -
+  baseline| <= 5 points.
+- REFUTED-IF: baseline beats search by > 5 points — bounded
+  search is a NEGATIVE on this instrument, booked plainly.
+- Between (5, 20): direction only, no claim.
+REGISTERED PRIOR (house): P-SEARCH-PAYS fires — point guesses
+search 90-100%, baseline 55-75%. Confidence moderate; the
+T-count day-one precedent is the humility anchor.
+FENCES: [FORMAT-BOUND] instrument-scoped per the charter ruling
+(no capability claim, no game-strength claim); K=20 and the
+2,000-node cap are pinned and CANNOT move after data; single
+position-set seed (n=1 set — a second seed set is the
+replication route); CPU-only, 3080/WSL leg per Artin GO
+2026-08-14 (short CPU job, he is present), receipts pull back
+to logs/checkers0/; the win-in-K label is NOT game-theoretic
+value (a 21-ply forced win labels NOT-WIN-IN-K; the horizon is
+part of the instrument definition). COST: minutes, CPU.
