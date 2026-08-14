@@ -4819,3 +4819,35 @@ without re-introducing history).
   matched node budget is the registered arm shape. Attribution:
   Artin (the ask), house (the already-running-AlphaZero read +
   the multiplicity gate).
+
+- **BANKED (2026-08-14): atomic-op decomposition — "have it learn
+  on an atomic step of the math equation (simplifying, factoring)
+  as well as the steps within the actual equation... atomic as in
+  database atomic"** (Artin). The mapping: two-granularity diet —
+  ATOMS (single rewrite-rule applications, tagged by rule:
+  simplify, factor, u-sub, by-parts, each an indivisible verified
+  transaction) alongside the existing CHAINS (full derivations),
+  so the model learns the operation table AND the composition.
+  Measured anchors: the DECOMPOSITION DISCOUNT is the direct
+  precedent — re-spelling chains as primitive emissions sharply
+  cut the rows needed to learn the measured families (RESULTS
+  L3682, SERIES RUNG 1E); v22's capped one-ply worked examples
+  are a partial atom shard already in the diet; L4-PLY0-1 gives
+  the target: 16/17 L4 failures die at ply 0 emitting nothing —
+  a missing ATOM (the f'(g)*fn(g) recognition), exactly what an
+  atom shard would drill. The ONESHOT result bounds the other
+  end (answers-only loses validity, chains carry error
+  recovery): atoms+chains is the interpolation with both halves.
+  Honest breaks: atom rows widen the exposure-fence surface
+  (every new shard owes the exclude= audit); REV/CURRICULUM-1
+  measured that SEGREGATING data classes in time hurts — atoms
+  must be INTERLEAVED with chains, not phased (shuffled is the
+  measured optimum); the decomposition discount was measured on
+  task families, not on the gate band. Testable residue:
+  ATOM-DIET-1 — farm a rule-tagged atom shard (engine one-ply
+  applications, exclude=-guarded), paired birth stock v
+  stock+atoms interleaved at matched steps, standard gate + the
+  L4 cell v the 6-8/24 band. Attribution: Artin (the
+  two-granularity frame and the database-atomicity language),
+  house (the decomposition-discount anchor + the interleave
+  fence).

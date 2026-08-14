@@ -6,6 +6,13 @@ implementations. See README for the full inventory and measured numbers.
 ## Lab charter — domains (non-negotiable)
 
 **We build engines for MATHEMATICS and PHYSICS. Only.**
+- The two standing engines: the calculus DERIVATION engine
+  (llmopt/search/, oracle = sympy differentiation) and the
+  ZX-CALCULUS T-count engine (quantum circuits, oracle =
+  boundary extraction) — the physics leg, booked to rung 6.
+- Solved combinatorial games (checkers class) are admitted as
+  INSTRUMENTS only (exact-oracle transport tests for house laws;
+  Artin ruling 2026-08-14) — never as capability domains.
 - **No chemistry engines, no biology engines — ever.** No molecule
   generators, no reaction/pathway oracles, no protein anything, no
   wet-lab-relevant capability. This holds regardless of how
