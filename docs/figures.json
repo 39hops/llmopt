@@ -219,7 +219,7 @@
     "parts": [
       {
         "label": "Replicated",
-        "value": 40,
+        "value": 41,
         "entity": "champion",
         "note": "holds at n\u22653 paired seeds"
       },
@@ -248,6 +248,6 @@
         "note": "we were wrong, in writing"
       }
     ],
-    "fence": "docs/FINDINGS.md \u00b7 235 curated claims \u00b7 recounted from the source at build time"
+    "fence": "docs/FINDINGS.md \u00b7 236 curated claims \u00b7 recounted from the source at build time"
   }
 }

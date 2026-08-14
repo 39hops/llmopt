@@ -1,0 +1,4 @@
+{"arm": "stock", "seed": 3, "steps": 15420, "solves": {"3": 24, "4": 6, "5": 15, "6": 8, "7": 11}, "total": 64, "valid_pct": 61.02, "device": "mps", "n_atoms_shard": 0, "atom_rows_per_epoch": [0, 0, 0], "code_commit": "d5b0915"}
+{"arm": "atoms", "seed": 3, "steps": 15420, "solves": {"3": 22, "4": 12, "5": 16, "6": 8, "7": 12}, "total": 70, "valid_pct": 64.4, "device": "mps", "n_atoms_shard": 6000, "atom_rows_per_epoch": [5820, 5706, 5850], "code_commit": "d5b0915"}
+{"arm": "stock", "seed": 4, "steps": 15420, "solves": {"3": 21, "4": 8, "5": 15, "6": 8, "7": 12}, "total": 64, "valid_pct": 62.5, "device": "mps", "n_atoms_shard": 0, "atom_rows_per_epoch": [0, 0, 0], "code_commit": "d5b0915"}
+{"arm": "atoms", "seed": 4, "steps": 15420, "solves": {"3": 23, "4": 12, "5": 14, "6": 9, "7": 12}, "total": 70, "valid_pct": 63.64, "device": "mps", "n_atoms_shard": 6000, "atom_rows_per_epoch": [5820, 5706, 5850], "code_commit": "d5b0915"}

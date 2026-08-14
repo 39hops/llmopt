@@ -1963,3 +1963,16 @@ regime tag on every bullet is the fence.
   (sin^2+cos^2, exp*exp-negative) emit certs that will fail `by
   ring`; Lean itself must stay the final rejector.
   ([VERDICT AXIOM-IV7-ACCEPT](RESULTS.md#L29417).)
+
+- [REPLICATED] [REGIME-SCOPED: specified diet and recipe] The
+  one-ply atom diet's gate lift replicates across birth seeds at
+  matched 15,420-step horizon: paired stock-v-atoms births at
+  seeds 3 and 4 both read 64 v 70 (+6 each, mean +6, zero harms),
+  and the atoms arm's L4 cell reads 12 at every seed tried
+  (12/12/12 over seeds 2-4) while stock L4 wobbles 7/6/8 — the
+  diet pins first-ply recognition, seed-invariantly at this dose.
+  Magnitude is one resolution unit from the 7-solve bar so it
+  stays modest-confidence; direction is positive at every seed
+  with both registered bars firing cleanly (no knife-edge this
+  time). Dose and rule generality still unmeasured.
+  ([VERDICT ATOM-DIET-LADDER-1](RESULTS.md#L29465).)

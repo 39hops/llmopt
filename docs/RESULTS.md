@@ -29461,3 +29461,71 @@ claims. House stays PINNED to build-rel IV6 (ca052f4) for any
 live session; re-pin to build-iv7 is a deliberate act recorded in
 AXIOM-SURFACE.md, never an ambient import. Relay 2026-08-14-6
 carries this + the Lean finding to axiom.
+
+## VERDICT ATOM-DIET-LADDER-1: the atoms fire REPLICATES — +6 at both new seeds, atoms L4=12 at all three seeds tried (2026-08-14, Mac)
+
+Pre-reg L29367 (commit 1820012, committed before launch).
+Instrument: scratch/birth19m_atoms_ladder.py via
+scratch/atomladder1_driver.sh, four serial arms (stock, atoms) x
+BIRTH_SEED {3,4}, ALL at 15,420 steps (matched horizon — removes
+ATOM-DIET-1's disclosed ~0.8% control-horizon confound), mps fp32
+training (the logs' "[fast: bf16]" line belongs to the aborted
+assert_noop probe boot, NOT the trained arms — same trap
+ATOM-DIET-1 disclosed), same frozen 6,000-row shard
+(atom_rows_per_epoch [5820, 5706, 5850], 187 batches/epoch
+truncation — byte-identical dose mechanics to the seed-2 arm),
+standard 120 gate. code_commit d5b0915 on all four receipt rows;
+receipts logs/atomladder1/arms.jsonl (force-added this commit,
+small-text-receipt exception); driver rc=0 via jobs/atomladder.rc.
+No-op precondition PASSED in all four arms (C.assert_noop before
+training), and the stock arms behaved as the no-op leg exactly: 0
+dropped batches, 0 atom rows in stream.
+
+Measured grid (dicts are the checksum; all four sum; gate-printed
+weights shas quoted):
+
+- stock s3: 64/120 {3:24, 4:6, 5:15, 6:8, 7:11} @61.02% sha bf2dc94b1d9712cb
+- atoms s3: 70/120 {3:22, 4:12, 5:16, 6:8, 7:12} @64.40% sha a04690d147dd860a
+- stock s4: 64/120 {3:21, 4:8, 5:15, 6:8, 7:12} @62.50% sha e7984919c7cedfb5
+- atoms s4: 70/120 {3:23, 4:12, 5:14, 6:9, 7:12} @63.64% sha 248eb344461ab4d3
+
+Paired deltas: s3 +6, s4 +6. Mean +6.
+
+**BAR 1 (LIFT-REPLICATES): FIRES.** "atoms_total > stock_total at
+BOTH new seeds AND mean paired delta >= +5": 70 > 64 at both
+seeds; mean +6 >= +5. Not a knife-edge this time — the mean
+clears its threshold by a full solve and the two deltas are
+identical in sign and size.
+**BAR 2 (L4-REPLICATES): FIRES.** atoms L4 = 12 at BOTH new seeds
+(mean 12 >= 10; 12 >= stock 6 at s3 and >= stock 8 at s4). With
+seed 2's 12, the ATOMS arm reads L4 = 12/12/12 across all three
+seeds tried while stock L4 wobbles 7/6/8 — the diet pins the cell.
+**BAR 3 (HARM-AT-SEED): no fire** (harm bar <= 60; measured 70
+both seeds). **REFUTED-IF does not trigger** (mean +6 > 0).
+
+Registered prior: mean delta +4..+7 point +5 — HIT (+6; the
+counted family range-hit before this was SWAP-LADDER-1's total).
+L4 mean 9..11 point 10 — MISS low (measured 12, above range): the
+house underprices the L4 atom effect again, now in replication.
+Family record 2 hits, 8 misses.
+
+Reading: ATOM-DIET-1's fire was NOT seed-2 luck. At matched
+horizon the diet is worth +6 on this gate, and the L4 mechanism —
+one-ply recognition supplied as data — is seed-invariant at this
+dose. Seed-2's +9 carried ~3 solves of seed luck and/or horizon
+mismatch, as the registered regression prior predicted.
+Observation, not a registered test: all three stock arms total
+exactly 64 with different level distributions.
+
+Fences: matched-horizon claims rest on n=2 paired seeds (3, 4) —
+seed 2 is corroboration at an unmatched horizon, per the pre-reg's
+own exclusion; +6 sits within one resolution unit of the 7-solve
+bar, so the MAGNITUDE stays single-seed-grade until a wider
+ladder, while the DIRECTION (positive at every seed tried, zero
+harms) is as solid as this family gets. Single device (mps),
+family-only comparisons; dose and rule generality unmeasured (the
+dose-ladder and rule-ablation rungs own those). Checkpoints
+gallery19m_{stock,atoms}_s{3,4}.pt are exhaust (75.7 MB each,
+302.7 MB total). Mac shared CPU with mac-axiom's granted machine
+time during the run — births mps-bound, contention accepted and
+disclosed, no cross-lab numbers compared.

@@ -4877,3 +4877,12 @@ without re-introducing history).
   knife-edge fires; open residue: n>=3 replication, dose ladder
   (via axiom emit_chain, source=axiom-oneply), rule-ablated
   shards. VERDICT RESULTS.md L29250.
+  [REPLICATED 2026-08-14, same day]: ATOM-DIET-LADDER-1 — paired
+  stock/atoms births at seeds 3 and 4, all arms matched at 15,420
+  steps: +6 at both seeds (64 to 70), atoms L4 = 12 at every seed
+  tried (12/12/12 over seeds 2-4; stock wobbles 7/6/8). Both bars
+  fired cleanly, no knife-edge; house prior HIT the delta range
+  (+4..+7) and missed L4 low again. The n>=3 replication residue
+  above is now CLOSED for direction; still open: dose ladder,
+  rule-ablated shards, magnitude at wider n. VERDICT RESULTS.md
+  L29465.
