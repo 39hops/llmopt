@@ -28593,3 +28593,86 @@ target does not exist on this diet.
 FENCES: [FORMAT-BOUND] desk scan of the diet artifact only; no
 model, no seeds; exact string match on whitespace-stripped forms
 (notation-bound the same way the D2 band audit is).
+
+## VERDICT EX4-UNIF: NEITHER PRIMARY BAR FIRES — over-inclusion is neither general nor cleanly rank-scoped; P-TOP-HARM (sanity) fires at -26 pooled 3/3, one uniform draw books the named DEAD-ZONE reading (+19), the other lands inside the +-10 band (direction only), and the split-draws bar misses by ONE solve (2026-08-13, Mac)
+
+Against PRE-REG EX4-UNIF (L23592) + AMENDMENT EX4-UNIF-RIDERS
+(L23739). Instrument: 15 gates, one 30B load per seed via
+scratch/gt7_run.py (ARMS=ex1_full128,ex3_del_rand0,ex4_del_unif0,
+ex4_del_unif1,ex4_del_top80; N_EVAL=120 SEED in 1001/2002/3003;
+PERPROB=1), new keepsets from scratch/ex4_build.py (frozen
+ex3_build imported, never edited; uniform draws string-seeded
+ex4-unif-0/1 spanning 37/42 layers; top80 = bank-wide top-80 by
+pooled arm0 demand, counts 8,565 down to 4,692, spanning 33
+layers). Receipts logs/ex4/ex4.jsonl (15 rows, all dicts
+sum-verified; 0 oracle timeouts and 0 empty answers in all 1,800
+extractions; distinct answers 118-120 per arm — no
+degenerate-answer collapse). Launch HEAD 213236c (builder at
+4a848af).
+
+ABORT GATE (rider 6): PASSES with ZERO drift — every anchor cell
+reproduces its booked value exactly; the <=1-solve re-gate
+tolerance was never exercised:
+  ex1_full128   59 / 67 / 63  (booked 59/67/63)
+  ex3_del_rand0 70 / 76 / 71  (booked 70/76/71; pooled +28 = the
+                               booked +28, signs 3/3)
+Per-seed cells (paired deltas vs same-seed full), with each arm's
+measured open-loop demand recall booked alongside per the fence:
+  ex4_del_unif0 65 / 72 / 71  deltas +6/+5/+8  pooled +19, 3/3
+                              recall 0.9837 (1.63% demand lost)
+  ex4_del_unif1 58 / 66 / 64  deltas -1/-1/+1  pooled  -1
+                              recall 0.9892 (1.08% demand lost)
+  ex4_del_top80 52 / 57 / 54  deltas -7/-10/-9 pooled -26, 3/3
+                              recall 0.9044 (9.56% demand lost)
+  ex3_del_rand0 recall 0.9753 (2.47% — the EX-ANAT-3 ~2.5% class)
+
+BARS:
+- P-GENERAL-OVERINC does NOT fire: requires >= +21 pooled with 3/3
+  signs for EACH draw separately; unif0 +19 < +21, unif1 -1.
+- P-RANK-SCOPED does NOT fire: requires BOTH uniform draws within
+  +-10 pooled (rider 1: pooled sum) AND the rand0 anchor
+  reproducing +28; the anchor conjunct holds but unif0 +19 is
+  outside the band.
+- P-TOP-HARM (sanity, direction only) FIRES: top80 -26 <= -21,
+  3/3 negative — the demand instrument sees demand where demand
+  is; top80 does NOT also clear +21, so the everything-helps
+  saturation flag stays down. CONFOUND BOOKED WITH THE FIRE: the
+  top80 deletion costs 9.56% of open-loop demand recall — 4-6x
+  every other arm — so its -26 bundles rank-targeting with a much
+  larger raw-demand amputation; the sanity direction stands, the
+  magnitude is not a clean rank effect.
+- P-UNIF-HARM (rider 2) does not fire: no draw <= -9 pooled with
+  3/3 negative.
+- DEAD-ZONE (rider 3, named a priori): unif0 pooled +19 lands
+  strictly inside (+10, +21) — BOOKS PARTIAL-OVERINCLUSION,
+  direction only, no claim, exactly as the rider pre-committed.
+- SPLIT-DRAWS (rider 4): |unif0 - unif1| = |19 - (-1)| = 20 — ONE
+  SOLVE under the >= 21 bar; the draw-variance-dominates reading
+  does not book. KNIFE-EDGE DISCLOSED. Whether draw composition
+  (per-draw overlap with the carrier rank windows) explains the
+  spread is computable at desk from the committed keepsets and is
+  named as the natural next rider, not read here.
+
+READ (direction, nothing beyond the fired bar): deleting 80
+uniform-random experts is not consistently free and not
+consistently harmful — one draw helps at dead-zone magnitude, the
+other sits inside the band — while the rank-MATCHED deletion's
++28 reproduces untouched as the largest effect in the battery.
+The EX-FRESH escape clause closes the way it was written:
+over-inclusion remains claimed AT THE CARRIERS' RANK CLASS ONLY;
+the uniform control neither generalizes it (P-GENERAL dead) nor
+cleanly confines it (P-RANK dead, because one uniform draw can
+itself land in the dead zone).
+
+FENCES: [FORMAT-BOUND] [REGIME-SCOPED: measured deployment
+artifacts]; one vehicle (Qwen3-30B-A3B-4bit), mathgen L1-3,
+paired within-seed within-load; n=3 seeds but the unif0-v-unif1
+contrast is n=2 DRAWS (draw variance priced by exactly two
+samples); per-arm recall costs booked above; prune-for-free
+deployment readings stay lab-scoped. Prereg-auditor pass before
+booking (9 findings verified and adopted, incl. the top80 recall
+confound as a blocker). RECEIPT: logs/ex4/ex4.jsonl (15 rows,
+~5KB) force-added as a small-text receipt per the seedslad
+pattern — it is the only artifact from which the paired deltas
+and recall figures re-derive without a 30B re-gate; the
+per-problem and answers sidecars stay untracked.

@@ -1854,3 +1854,16 @@ regime tag on every bullet is the fence.
   nats/row under any model at any capacity. Plateau detectors must
   trigger on improvement-rate, never absolute loss. ([OBSERVATION
   DIET-AMBIGUITY-1](RESULTS.md#L28562).)
+
+- [NULL] [FORMAT-BOUND]
+  [REGIME-SCOPED: measured deployment artifacts]
+  The uniform-deletion control closes the router over-inclusion
+  question the narrow way: neither primary bar fires — deleting 80
+  uniform-random experts from the 30B bank is neither consistently
+  helpful (+19 and -1 pooled across two independent draws, one in
+  the pre-named dead zone) nor cleanly confined, while the
+  rank-matched deletion's +28 reproduces exactly and top-80-by-
+  demand deletion costs -26 with a booked 9.56% recall confound.
+  Over-inclusion stays claimed at the carriers' rank class only;
+  draw-to-draw spread missed the variance-dominates bar by one
+  solve. ([VERDICT EX4-UNIF](RESULTS.md#L28597).)
