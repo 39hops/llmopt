@@ -59,7 +59,10 @@ def main() -> None:
     tok = MathTokenizer()
 
     def in_language(text: str) -> bool:
-        return tok.decode(tok.encode(text)) == text
+        try:
+            return tok.decode(tok.encode(text)) == text
+        except ValueError:      # encode raises on out-of-vocab chars
+            return False
 
     band = set(gate_band_exprs())
     corpus_curs = {norm(str(r["cur"])) for r in C.load_excised_rows()}
@@ -71,6 +74,15 @@ def main() -> None:
     rules: Counter = Counter()
     counts = {lv: 0 for lv in TARGETS}
     skipped = Counter()
+    if OUT.exists():            # restart-safe: preload prior rows
+        for line in OUT.open():
+            r = json.loads(line)
+            seen.add((r["cur"], r["nxt"]))
+            corpus_curs.add(norm(r["cur"]))
+            counts[r["level"]] += 1
+            rules[r["rule"]] += 1
+        print(f"[atoms] resumed with {sum(counts.values())} prior "
+              f"rows {counts}", flush=True)
     t0 = time.time()
     with OUT.open("a") as f:
         for lv, target in TARGETS.items():
