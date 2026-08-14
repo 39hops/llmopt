@@ -1350,6 +1350,11 @@ REV-LADDER-1 instrument run (pre-reg RESULTS 2026-08-14): the CURRICULUM-1 cap a
 
 - `main()`
 
+### scratch/birth19m_curric_swap.py
+SWAP-LADDER-1 instrument run (pre-reg RESULTS 2026-08-14): the hard-first ladder with ONE swap — L3 and L4 exchange positions: L8,L3,L6,L7,L5,L4,L2,L1. Thin sibling of the frozen birth19m_curric.py (results-cited, not edited): imports its helpers and its assert_noop, which must PASS in-process before training (receipt tee'd by the launcher to logs/curric1/ noop_swap.log). Same BIRTH_SEED=2, 15,420 steps, stock OneCycle, mps; level-pure batches, within-level shuffled, stream truncated to the stock per-epoch count (truncation falls on L1's tail, ~0.3% of that level). Appends arm="swap" to logs/curric1/swap.jsonl (arms.jsonl is a frozen receipt).
+
+- `main()`
+
 ### scratch/birth19m_phase.py
 PHASE-PORTRAIT-1 instrument run: a fresh 19M-class birth with STEP-LEVEL milestone saves INCLUDING optimizer state, so a true per-neuron (angle, angular-velocity) phase portrait exists — position from the weights, momentum from Adam's exp_avg, velocity from adjacent milestones. The pendulum riff's residue (RIFF-LEDGER 2026-08-13), instrument-grade.
 

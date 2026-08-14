@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 175, spec-cited 86, cited-but-library 55
+Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 176, spec-cited 86, cited-but-library 55
 
 ## scratch/
 
@@ -27,8 +27,9 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 175, spec-ci
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
 | basin | basin_probe.py | UNCITED | — | — | — | — |
 | birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
-| birth19m | birth19m_curric.py | library | RESULTS | RESULTS×3 | 1 | — |
-| birth19m | birth19m_curric_rev.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| birth19m | birth19m_curric.py | library | RESULTS | RESULTS×4 | 2 | — |
+| birth19m | birth19m_curric_rev.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
+| birth19m | birth19m_curric_swap.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | birth19m | birth19m_snaps.py | UNCITED | — | — | — | 1 |
 | blackhole | blackhole_b0.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
@@ -549,7 +550,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 175, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 58 | 31 |
+| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 59 | 31 |
 | train | train_nnue.py | library | specs | specs×8 | 1 | 12 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
