@@ -4868,3 +4868,12 @@ without re-introducing history).
   two-granularity frame and the database-atomicity language),
   house (the decomposition-discount anchor + the interleave
   fence).
+  [MEASURED 2026-08-14, same day]: ATOM-DIET-1 ran — BOTH bars
+  fired. 6,000 atoms (2,400 L4) interleaved at 3.5% dose, matched
+  15,420 steps: gate 73/120 v the booked 64, L4 cell 12 v 7 (a
+  19M-lineage record, at the registered threshold exactly). The
+  flooding scar did NOT reproduce at this dose. House prior
+  missed low on both legs (predicted no fire). Single seed,
+  knife-edge fires; open residue: n>=3 replication, dose ladder
+  (via axiom emit_chain, source=axiom-oneply), rule-ablated
+  shards. VERDICT RESULTS.md L29250.

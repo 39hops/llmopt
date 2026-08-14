@@ -1927,3 +1927,14 @@ regime tag on every bullet is the fence.
   PRECEDES a level; the arm still books the third direction of
   order harm (45 v the shuffled 64). ([VERDICT
   SWAP-LADDER-1](RESULTS.md#L29096).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe]
+  Interleaving 6,000 rule-tagged engine one-ply atoms into the
+  stock stream at matched compute lifts the gate 64 to 73 (past
+  the 7-solve resolution) and the L4 cell 7 to 12 — a lineage
+  record, exactly the cell L4-PLY0-1 located as a first-ply
+  recognition deficit. Both bars fired at knife-edge values (73
+  v 72 threshold; 12 at threshold); replication and dose ladder
+  owed. The constructive inversion of the order arc: supply the
+  foundation, don't reorder it. ([VERDICT
+  ATOM-DIET-1](RESULTS.md#L29250).)

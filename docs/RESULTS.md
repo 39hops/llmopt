@@ -29246,3 +29246,90 @@ rung re-scopes; exclusion audit asserted at farm AND at the
 driver; per-level cells read against the registered thresholds
 only; comparison to the booked control only, no cross-device
 reads; no constant retuned after data.
+
+## VERDICT ATOM-DIET-1: BOTH BARS FIRE — 73/120 (+9) and L4 12 at the registered threshold; 6,000 interleaved atoms move the gate past single-seed resolution (2026-08-14, Mac)
+
+Against PRE-REG ATOM-DIET-1 (L29159, committed 7c3f544 before the
+farm fired). Instruments: scratch/farm_atoms.py (forked one-ply
+workers; committed 2c25da2, in_language out-of-vocab fix 9171070,
+rolling-pool scheduler 1f91ca0) and scratch/birth19m_atoms.py
+(thin sibling of the frozen curric driver; 2c25da2). NO-OP
+precondition PASSED in-process (100 tuples + epoch length 5,140
+match the trainer path; receipt logs/atomdiet1/noop.log,
+force-added this commit — the pre-reg's promised path, sliced from
+the job log; the "[fast: bf16 + token-budget]" line in that
+receipt is the no-op PROBE's model, aborted at its first optimizer
+step — the arm itself trained fp32, the lineage's booked
+distinction). steps_total asserted == 15,420; run 15,420 steps,
+2,943 s, mps, BIRTH_SEED=2. Receipt logs/atomdiet1/arms.jsonl
+(force-added this commit); code_commit 052949e; gate-printed
+weights sha b1e2664e66befb89.
+
+SHARD (the one variable): 6,000 engine one-ply atoms, levels
+{4: 2,400, 3: 900, 5: 900, 6: 900, 7: 900}, rule distribution
+booked per the pre-reg: {i_heurisch 2782, i_linear_basis 2298,
+i_sqrt_basis 556, i_unprod 321, i_ansatz_exp 31, i_log_power 7,
+i_const 5}. All 6,000 (cur, nxt) unique, all cur unique, 0
+identity rows, 0 gate-band hits at the driver's re-excision.
+Dose 6,000/170,490 = 3.52% of the augmented stream; per-epoch
+atom exposure 5,820/5,706/5,850 rows (truncation drops 187
+batches/epoch to the stock 5,140). PROVENANCE DISCLOSURE: the
+shard was farmed across a restart (343 rows pre-date the
+in_language fix; the resumed run re-selected identically over the
+replayed band — counts flat at 343 through seed 400 — and all
+6,000 rows encode cleanly in the driver, which independently
+proves the pre-fix rows in-language). The farm skip census's
+corpus-cur 2,611 is inflated by the restart preload (~343
+re-derived rows hit that branch before the dup branch) and must
+not be read as stock-diet overlap.
+
+  control (booked) 64/120 {3:23,4:7,5:16,6:8,7:10} @ 62.01%
+  atoms            73/120 {3:23,4:12,5:17,6:8,7:13} @ 66.81%
+Dict sum verified (23+12+17+8+13 = 73).
+
+BARS:
+- P-ATOM-LIFT FIRES: 73 >= 72 — by ONE solve over the registered
+  threshold (+9 v control, past the 7-solve single-seed
+  resolution). Disclosed knife-edge.
+- P-L4-ATOM FIRES: L4 = 12 >= 12 — AT the registered threshold
+  exactly (control 7). Disclosed knife-edge; one solve either way
+  flips it. 12 is a 19M/gen4-lineage record (booked lineage arms
+  read 7, 7, 3, 3), NOT a house record (the grown lineage has
+  L4=11 at L26429).
+- P-ATOM-HARM guard: not triggered (73 > 56). The one-ply
+  flooding scar does not reproduce at 3.5% dose.
+- REFUTED-IF branch: dead.
+READ (licensed by the fired bars): adding verified atomic
+prerequisites, shuffled into the stream at matched compute, lifts
+capability — the constructive inversion of the order arc
+(foundation is real + interleaving wins => supply the foundation,
+don't reorder it). The L4 cell moves exactly where L4-PLY0-1
+located the deficit (first-ply recognition), on a shard whose
+dominant rules (i_heurisch + i_linear_basis, 85% of atom mass)
+are the u-sub/recognition families. Cell attribution beyond L4 is
+UNREGISTERED residue: L7 +3 and L5 +1 read directionally with the
+foundation account but carry no registered thresholds.
+HOUSE PRIOR SCORED: MISSED LOW ON BOTH LEGS — registered "no
+primary bar fires, total 64-70 (point 67), L4 9-11 (point 10)";
+measured 73 and 12. The registered mechanism (6,000 rows ~2
+orders under k_efold => inside resolution) is INVERTED: the dose
+moved the gate past resolution. Family record now 1 hit, 7
+misses — and this miss is the first in the optimistic direction.
+FENCES: [SINGLE-SEED] BIRTH_SEED=2 only, n=1, no replication —
+both bars fired at knife-edge values (73 v 72; 12 at threshold)
+and the effect is NOT sized by this run; Mac/mps only, 19M/gen4
+lineage; matched to the STOCK RECIPE (15,420 steps) — the booked
+control checkpoint is m015300 at step 15,300, the lineage's
+disclosed ~0.8% horizon mismatch, unpriced here as in the sibling
+bookings; dose pinned at 3.52% (other doses are new pre-regs);
+per-level cells read against registered thresholds only;
+comparison to the booked control only, no cross-device reads; no
+constant retuned. Next discriminators (bank-ready, unregistered):
+n>=3 seed ladder (the fired bars' replication debt), dose ladder
+via the axiom emit_chain bridge, rule-ablated shards (drop
+i_heurisch mass — is the L4 move the recognition rules
+specifically?).
+Prereg-auditor pass before booking (no blockers; 9 findings
+verified and adopted, incl. the noop receipt path, the horizon
+mismatch carry-forward, the lineage fence on "record", and the
+restart provenance disclosure).

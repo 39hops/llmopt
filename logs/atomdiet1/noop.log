@@ -1,0 +1,32 @@
+[curric] D2 excision: 165028 -> 164896 rows
+[atoms] shard data/micromodel_atoms_shard0.jsonl: 6000 rows after in-driver excision
+[atoms] stock 164490 seq, augmented 170490 seq (6000 atoms)
+[curric] D2 excision: 165028 -> 164896 rows
+164896 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e']
+skipped 388 out-of-language rows (strict encode; historically silently mangled)
+164490 sequences, vocab 40
+model: 18.9M params on mps [fast: bf16 + token-budget]
+[curric] NO-OP PASS: 100 tuples + epoch length 5140 match the trainer path
+[atoms] steps_total 15420 (5140/epoch)
+[atoms] ep0: 5140 batches (187 dropped to match stock count), 5820 atom rows in stream
+  step 200/15420 loss 1.026 (4.9 it/s)
+  step 400/15420 loss 0.887 (5.1 it/s)
+  step 600/15420 loss 0.903 (5.1 it/s)
+  step 800/15420 loss 1.034 (5.1 it/s)
+  step 1000/15420 loss 0.487 (5.2 it/s)
+  step 13000/15420 loss 0.466 (5.2 it/s)
+  step 13200/15420 loss 0.389 (5.2 it/s)
+  step 13400/15420 loss 0.368 (5.3 it/s)
+  step 13600/15420 loss 0.314 (5.3 it/s)
+  step 13800/15420 loss 0.226 (5.3 it/s)
+  step 14000/15420 loss 0.482 (5.3 it/s)
+  step 14200/15420 loss 0.338 (5.2 it/s)
+  step 14400/15420 loss 0.341 (5.2 it/s)
+  step 14600/15420 loss 0.460 (5.2 it/s)
+  step 14800/15420 loss 0.171 (5.2 it/s)
+  step 15000/15420 loss 0.287 (5.2 it/s)
+  step 15200/15420 loss 0.546 (5.2 it/s)
+  step 15400/15420 loss 0.417 (5.2 it/s)
+[atoms] saved checkpoints/gallery19m_atoms_s2.pt after 15420 steps (2943s)
+[gate] weights sha b1e2664e66befb89
+[atoms] GATE {3: 23, 4: 12, 5: 17, 6: 8, 7: 13} = 73/120 @ 66.81%
