@@ -4791,6 +4791,15 @@ without re-introducing history).
   difficulty labels are exact. Attribution: Artin (the domain
   ask), house (the checkers-over-chess sharpening + the charter
   flag + the multiplicity tie-in).
+  [MEASURED same day: the charter ruling landed (CLAUDE.md,
+  instruments-only) and CHECKERS-0 ran and BOOKED as the
+  greedy-wins null band (VERDICT CHECKERS-0: search 92.0 v
+  material 88.0 on win-in-20, constant-0 at 90.5 — the accuracy
+  bar, not the domain, was the weak instrument; the T-count
+  precedent above fired exactly as this bank warned, 2-for-2).
+  Still open: CHECKERS-1 (precision/recall bars or larger
+  budget) and every transport question — the domain is admitted
+  and cheap, the first bar design was the casualty.]
 
 - **BANKED (2026-08-14): "why don't we MCTS during training?"**
   (Artin). The mapping: the lab already runs the AlphaZero loop

@@ -1903,3 +1903,15 @@ regime tag on every bullet is the fence.
   neither books. Shuffled interleaving is the measured optimum of
   the three orders tested on this line. ([VERDICT
   REV-LADDER-1](RESULTS.md#L28872).)
+
+- [NULL] [FORMAT-BOUND] The first checkers instrument cell repeats
+  the T-count day-one lesson, now 2-for-2 on new domains: bounded
+  search (2,000 nodes) ties greedy material on a win-in-20
+  classification over 200 six-piece positions (92.0% v 88.0%,
+  inside the registered +-5 null band) — and the anatomy indicts
+  the bar itself: the constant predictor scores 90.5% on the
+  skewed label, above one arm and within 1.5 points of the other,
+  while the arms fail in opposite directions (proof-based search:
+  0 false alarms, 3/19 wins proved in budget; material: 18/19
+  wins seen, 23 false alarms). Instrument-scoped; no game claim.
+  ([VERDICT CHECKERS-0](RESULTS.md#L29048).)

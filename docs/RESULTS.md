@@ -29044,3 +29044,51 @@ replication route); CPU-only, 3080/WSL leg per Artin GO
 to logs/checkers0/; the win-in-K label is NOT game-theoretic
 value (a 21-ply forced win labels NOT-WIN-IN-K; the horizon is
 part of the instrument definition). COST: minutes, CPU.
+
+## VERDICT CHECKERS-0: P-GREEDY-WINS FIRES — the T-count day-one shape repeats on the second instrument-transport probe (search 92.0% v baseline 88.0%, inside the +-5 band); the anatomy indicts the accuracy bar, not the domain (2026-08-14, 3080/WSL CPU)
+
+Against PRE-REG CHECKERS-0 (booked before the run, 7df4240).
+Instrument: scratch/checkers0.py (authored 0a8c002, run at HEAD
+4f51c69 — identical blob; remote HEAD echoed 4f51c69 at the
+pre-launch sync, session log). 200 positions as registered
+(string seeds checkers0-{i}, <= 6 pieces, deduped, one clean
+invocation into an empty receipt file — the driver's resume path
+was never exercised); K=20, budget 2,000 nodes, both pinned and
+unmoved. Receipts logs/checkers0/probe.jsonl (200 rows, streamed
+per-position on the 3080, pulled to the Mac per file-handoff,
+force-added this commit).
+  win-in-20 rate 19/200 | baseline acc 176/200 = 88.0% |
+  search acc 184/200 = 92.0% | delta +4.0 points
+BARS:
+- P-SEARCH-PAYS does NOT fire (needs >= +20; measured +4).
+- P-GREEDY-WINS FIRES: |92.0 - 88.0| = 4.0 <= 5.
+- REFUTED-IF dead (baseline does not beat search).
+ANATOMY (descriptive — the instrument critique the day-one shape
+exists to surface):
+- Constant-0 scores 90.5% (19/200 positives) — ABOVE baseline
+  (88.0) and within 1.5 points of search (92.0): neither
+  registered arm clears the trivial predictor by more than 1.5
+  points. The registered accuracy bar rode a skewed base rate.
+- The arms fail in OPPOSITE directions: search is
+  precision-perfect by structure (tp 3/19, fp 0, fn 16 — a
+  proof-based arm never false-alarms; 105/200 rows exhausted the
+  cap, median nodes at the exhaust marker 2001) v baseline
+  recall-heavy (tp 18/19, fp 23, fn 1 — material sees nearly
+  every win and hallucinates 23).
+- A precision/recall bar pair or a larger budget would separate
+  the arms decisively; NOT registered here — CHECKERS-1 residue
+  if the instrument program continues, not a retune (K and the
+  cap were pinned for this cell and stayed pinned).
+HOUSE PRIOR SCORED: WRONG on the bar (registered P-SEARCH-PAYS)
+and wrong where it matters — the search band contained (92 in
+90-100) but the BASELINE band missed by 13 points (registered
+55-75, measured 88): the house underestimated greedy material on
+a skewed label — the T-count lesson (greedy is strong on random
+instances) repeated on a new domain, now 2-for-2.
+FENCES: [FORMAT-BOUND] instrument-scoped per the charter ruling
+(no capability or game-strength claim); the win-in-K label is
+NOT game-theoretic value (a 21-ply forced win labels
+NOT-WIN-IN-K; the horizon is part of the instrument definition);
+n=1 position-set seed (a second set is the replication route);
+CPU-only 3080/WSL leg (Artin GO 2026-08-14). Prereg-auditor pass
+before booking (7 findings verified and adopted).

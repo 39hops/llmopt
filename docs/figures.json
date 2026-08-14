@@ -237,7 +237,7 @@
       },
       {
         "label": "Null",
-        "value": 40,
+        "value": 41,
         "entity": "random",
         "note": "the idea did not work"
       },
@@ -248,6 +248,6 @@
         "note": "we were wrong, in writing"
       }
     ],
-    "fence": "docs/FINDINGS.md \u00b7 230 curated claims \u00b7 recounted from the source at build time"
+    "fence": "docs/FINDINGS.md \u00b7 231 curated claims \u00b7 recounted from the source at build time"
   }
 }
