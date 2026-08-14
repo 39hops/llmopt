@@ -1324,6 +1324,12 @@ BASIN-1: routing basin radius v usage. CPU. Usage: SEED=1 python scratch/basin_p
 
 - `main()`
 
+### scratch/birth19m_atoms.py
+ATOM-DIET-1 instrument run (pre-reg RESULTS 2026-08-14): the phase19m recipe with ONE variable changed — the atom shard (data/micromodel_atoms_shard0.jsonl, rule-tagged engine one-ply solves) shuffled into the stock stream. Thin sibling of the frozen birth19m_curric.py (results-cited, not edited): imports its helpers and its assert_noop, which must PASS on the STOCK enc in-process before training. Stream = the trainer's own shuffle (stock_epoch_stream) over the AUGMENTED length-sorted enc, truncated per epoch to the STOCK batch count; steps_total pinned to the stock value (asserted == 15,420) so schedule and compute match the booked control (m015300, 64/120) exactly. The driver re-applies the D2 gate-band excision to atom rows (defense in depth) and logs per-epoch atom-batch exposure. BIRTH_SEED=2, fp32, mps, 3 epochs, standard 120 gate. Checkpoint checkpoints/gallery19m_atoms_s2.pt; receipt appended to logs/atomdiet1/arms.jsonl.
+
+- `encode_flagged(rows, tok)` — The trainer's text/encode/filter path (C.encode_with_levels
+- `main()`
+
 ### scratch/birth19m_backsched.py
 BACKWARD-SCHEDULE-1 instrument run (pre-reg RESULTS 2026-08-13): the phase19m recipe with ONE variable changed — the OneCycle lr sequence is served REVERSED in time (anneal-first, warm-last). Same D2 excision, BIRTH_SEED, arch, diet, epochs, device as the booked phase19m birth; milestone tee kept so the backwards phase portrait comes free. Paired control is the BOOKED m015300 gate 64/120.
 
@@ -1766,6 +1772,12 @@ Export the multi-block deterministic-birth reference for axiom's leg: init bytes
 Export the R2b full-birth reference for axiom's C++ leg (relay 2026-08-01-0): init bytes in seed-17 draw order + the reference trajectory digests at the amended contract (SHIFT=12, constant lr 1/1000, 1000 steps). Artifacts land in scratch/detbwd_r2b_ref/ (committed — small). Usage: python scratch/export_r2b_ref.py
 
 - `main()`
+
+### scratch/farm_atoms.py
+ATOM-DIET-1 farm (pre-reg RESULTS 2026-08-14): rule-tagged atom shard — engine one-ply solves, one indivisible verified rewrite per row. Self-contained forked worker (the solve_isolated timebox law; expert_iter_steps stays frozen): make_integrate(level, seed), engine solve budget 200, keep only true one-ply solves (len(history) == 1) with cur AND nxt in-language (tokenizer roundtrip). Guards at farm time: D2 gate-band exclusion on norm(cur)/norm(nxt), corpus-cur dedup against the excised stock diet (no new one-to-many ambiguity), (cur, nxt) dedup within the shard. Rows stream incrementally to data/micromodel_atoms_shard0.jsonl; rule-tag distribution printed.
+
+- `_worker(level: int, seed: int, q) -> None`
+- `main() -> None`
 
 ### scratch/farm_dist_rows.py
 Distribution rows (spec 2026-07-28 rung 3): for each diet cur, enumerate the engine's verified-valid moves (successors: sympy- verified, non-identity by construction), weight by MarkovPrior (rule-name unigram, @site stripped, unseen = 0.5*median — the proposer's own convention), emit ALL of them as weighted rows. Rows STREAM out incrementally (the killed-worker doctrine). sympify here runs on farm-certified diet strings, not model text.
