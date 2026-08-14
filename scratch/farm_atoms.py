@@ -29,7 +29,7 @@ sys.path.insert(0, "scratch")
 SEED_BASE = 71_000_000
 TARGETS = {4: 2400, 3: 900, 5: 900, 6: 900, 7: 900}
 SEED_CAP = 30_000          # per level, honest-starvation stop
-WAVE = 8
+WAVE = 12
 DEADLINE = 60.0
 OUT = Path("data/micromodel_atoms_shard0.jsonl")
 
@@ -86,60 +86,74 @@ def main() -> None:
     t0 = time.time()
     with OUT.open("a") as f:
         for lv, target in TARGETS.items():
+            # rolling pool: WAVE slots always full, per-proc DEADLINE
+            # unchanged (same selection as the wave form; only the
+            # straggler-gates-the-wave scheduling loss removed)
             i = 0
-            while counts[lv] < target and i < SEED_CAP:
-                wave = []
-                for _ in range(WAVE):
-                    if i >= SEED_CAP:
-                        break
+            running: list = []      # (proc, queue, start_time)
+
+            def harvest(got) -> None:
+                if got is None:
+                    skipped["not-oneply"] += 1
+                    return
+                cur, nxt, rule = got
+                if counts[lv] >= target:
+                    return
+                if not (in_language(cur) and in_language(nxt)):
+                    skipped["language"] += 1
+                    return
+                if norm(cur) in band or norm(nxt) in band:
+                    skipped["gate-band"] += 1
+                    return
+                if norm(cur) in corpus_curs:
+                    skipped["corpus-cur"] += 1
+                    return
+                if (cur, nxt) in seen:
+                    skipped["dup"] += 1
+                    return
+                seen.add((cur, nxt))
+                corpus_curs.add(norm(cur))
+                f.write(json.dumps({
+                    "cur": cur, "nxt": nxt, "level": lv,
+                    "rule": rule, "source": "atom-oneply"}) + "\n")
+                f.flush()
+                counts[lv] += 1
+                rules[rule] += 1
+
+            while (counts[lv] < target
+                   and (i < SEED_CAP or running)):
+                while (len(running) < WAVE and i < SEED_CAP
+                       and counts[lv] < target):
                     q = ctx.Queue()
                     pr = ctx.Process(target=_worker,
                                      args=(lv, SEED_BASE + i, q))
                     pr.start()
-                    wave.append((pr, q))
+                    running.append((pr, q, time.time()))
                     i += 1
-                for pr, q in wave:
-                    pr.join(DEADLINE)
+                    if i % 200 == 0:
+                        print(f"L{lv} seed {i}: {counts[lv]}/"
+                              f"{target} ({time.time()-t0:.0f}s)",
+                              flush=True)
+                time.sleep(0.25)
+                still = []
+                for pr, q, ts in running:
                     if pr.is_alive():
-                        pr.kill()
-                        pr.join()
-                        skipped["timeout"] += 1
+                        if time.time() - ts > DEADLINE:
+                            pr.kill()
+                            pr.join()
+                            skipped["timeout"] += 1
+                        else:
+                            still.append((pr, q, ts))
                         continue
                     try:
-                        got = q.get(timeout=10)
+                        harvest(q.get(timeout=10))
                     except Exception:
                         skipped["queue"] += 1
-                        continue
-                    if got is None:
-                        skipped["not-oneply"] += 1
-                        continue
-                    cur, nxt, rule = got
-                    if counts[lv] >= target:
-                        continue
-                    if not (in_language(cur) and in_language(nxt)):
-                        skipped["language"] += 1
-                        continue
-                    if norm(cur) in band or norm(nxt) in band:
-                        skipped["gate-band"] += 1
-                        continue
-                    if norm(cur) in corpus_curs:
-                        skipped["corpus-cur"] += 1
-                        continue
-                    if (cur, nxt) in seen:
-                        skipped["dup"] += 1
-                        continue
-                    seen.add((cur, nxt))
-                    corpus_curs.add(norm(cur))
-                    f.write(json.dumps({
-                        "cur": cur, "nxt": nxt, "level": lv,
-                        "rule": rule,
-                        "source": "atom-oneply"}) + "\n")
-                    f.flush()
-                    counts[lv] += 1
-                    rules[rule] += 1
-                if (i // WAVE) % 25 == 0:
-                    print(f"L{lv} seed {i}: {counts[lv]}/{target} "
-                          f"({time.time()-t0:.0f}s)", flush=True)
+                    pr.join()
+                running = still
+            for pr, q, ts in running:   # target hit: drain slots
+                pr.kill()
+                pr.join()
             print(f"L{lv} DONE: {counts[lv]}/{target} at seed {i}",
                   flush=True)
     print(f"[atoms] total {sum(counts.values())} rows in "
