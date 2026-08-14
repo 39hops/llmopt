@@ -73,10 +73,14 @@ All six 2026-08-11-1 exposures:
   int64-narrow output guard throws on overflow. `sha256` matches
   hashlib.
 
-PIN DISCIPLINE: live house sessions stay pinned to
-`build-rel` (IV6, ca052f4) until a deliberate re-pin to
-`build-iv7` (IV7, 5a8ae70) is recorded here. Never both in one
-process; the GIT_SHA attr is the check.
+PIN DISCIPLINE: the house pin is `~/code/axiom/build-iv7`
+(axiom_sym IV7 + intbirth IV1, GIT_SHA 5a8ae70) — re-pinned
+2026-08-14 after AXIOM-IV7-ACCEPT, the deliberate act this
+paragraph requires. `build-rel` (IV6, ca052f4) remains frozen as
+the artifact the IV6 acceptance cites. Never import both in one
+process; assert the GIT_SHA attr at arm time. The Lean
+`eligible` fence is documented upstream (their doc-only c154ac1):
+eligible = emitted, lean4 kernel = rejector of record.
 
 Semantics that bite (all verified in source):
 - `equivalent`/`equivalent_mod_const` return three-valued strings;
