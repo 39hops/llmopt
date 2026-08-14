@@ -4763,3 +4763,59 @@ without re-introducing history).
   ask, the CPU instinct — validated, the run cost seconds), house
   (the transport-failure measurement + the all-zeros certificate
   catch + the gating).
+
+- **BANKED (2026-08-14): checkers (or chess) as the next engine
+  domain — "wanna try chess? Or even checkers"** (Artin). The
+  mapping: the lab already runs the chess TOOLCHAIN (NNUE eval
+  beat the LLM value head 119 v 115; Stockfish engine+ranker
+  pattern banked; syndrome policy = state-aware opening book);
+  the riff is the domain itself. Checkers is the sharper
+  instrument for house questions: SOLVED (draw, Chinook 2007), so
+  every state has perfect ground truth — a complete oracle, exact
+  difficulty labels, verified-candidate multiplicity everywhere
+  (the thing TENET measured at ~0 on the math diet, so the
+  ranking/pincer program that stalled there has a domain where
+  its precondition holds by construction). Chess adds adversarial
+  depth but no oracle completeness. Honest breaks: CHARTER — the
+  lab line reads "engines for MATHEMATICS and PHYSICS. Only";
+  game engines are benign but outside the letter; Artin owns the
+  amendment, banked here as pending his explicit ruling, no build
+  before it. The T-count precedent also warns: the methodology
+  speed-ran a second domain to an honest greedy-wins null in one
+  day — new domains can close fast and cheap. Testable residue
+  (post-ruling): CHECKERS-0 — endgame-database gate (exact
+  oracle), house engine methodology (best-first + verified
+  pruning + measured-traffic macro promotion), pre-registered
+  bars against a solver baseline; the transport question is
+  whether the gate law and diet-order results reproduce where
+  difficulty labels are exact. Attribution: Artin (the domain
+  ask), house (the checkers-over-chess sharpening + the charter
+  flag + the multiplicity tie-in).
+
+- **BANKED (2026-08-14): "why don't we MCTS during training?"**
+  (Artin). The mapping: the lab already runs the AlphaZero loop
+  with best-first in the search seat — engine searches, oracle
+  verifies, winning paths become diet, diet trains the model —
+  and that loop is the best-measured lever in the house
+  (demonstrations moved the gate where self-practice did not,
+  THE EXCHANGE CONVERTS; diet ~20x cheaper per solve than GRPO,
+  RESULTS L1784 era). What is genuinely not done, two pieces:
+  (1) SEARCH-VISIT SOFT TARGETS — train on where search spent
+  effort, not only the winning path; identical bank to
+  distribution-attached-steps/SOFT-NEXT-1 (2026-08-13), the two
+  asks are one idea. (2) UCT EXPLORATION — skipped for a
+  measured reason: rollout-averaging pays under noisy/adversarial
+  evaluation; the house oracle is exact and best-first + dedup
+  already beat the beam (+12 asynchrony, +21 dedup within
+  best-first), and expert iteration booked its ceiling at one
+  round (operators moved the ceiling, not more self-teaching).
+  Honest breaks: MCTS-during-training pays where
+  verified-candidate MULTIPLICITY exists; TENET measured it at
+  ~0 on this diet and its revival fence requires measuring
+  multiplicity FIRST — which the checkers bank above satisfies
+  by construction (the two riffs compose). Testable residue:
+  none new on the math diet (blocked by the multiplicity fence);
+  on any multiplicity-positive domain, MCTS-v-best-first at
+  matched node budget is the registered arm shape. Attribution:
+  Artin (the ask), house (the already-running-AlphaZero read +
+  the multiplicity gate).
