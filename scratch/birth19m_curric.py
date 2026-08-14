@@ -64,8 +64,11 @@ ADMIT_ORDER = [3, 4, 5, 6, 7, 8]          # arm B admission sequence
 PLATEAU_CHECK, PLATEAU_WIN, PLATEAU_REL = 100, 300, 0.02
 
 
+_STOCK_LOAD = TM.load_rows      # bound before any patching
+
+
 def load_excised_rows():
-    rows = TM.load_rows(True, True, True, True, False, False, None)
+    rows = _STOCK_LOAD(True, True, True, True, False, False, None)
     band = set(gate_band_exprs())
     kept = [r for r in rows
             if norm(str(r.get("cur", ""))) not in band
