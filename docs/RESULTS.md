@@ -29092,3 +29092,66 @@ NOT-WIN-IN-K; the horizon is part of the instrument definition);
 n=1 position-set seed (a second set is the replication route);
 CPU-only 3080/WSL leg (Artin GO 2026-08-14). Prereg-auditor pass
 before booking (7 findings verified and adopted).
+
+## VERDICT SWAP-LADDER-1: P-FOUNDATION FIRES and P-PLACEMENT-L3 does NOT — the house prior inverts: early easy data lifts the levels it PRECEDES (L5+L6+L7 25 v rev's 19 at unchanged positions) while L3's placement bar stays un-fired (17 v the 21 threshold) (2026-08-14, Mac)
+
+Against PRE-REG SWAP-LADDER-1 (e5947c1, committed before
+launch). Instrument: thin sibling scratch/birth19m_curric_swap.py
+(authored bc8315e, run at HEAD 4767c18 — identical blob;
+sed-derived from the frozen rev driver; ladder
+L8,L3,L6,L7,L5,L4,L2,L1 — the registered one-swap); NO-OP
+precondition PASSED in-process (jobs/swapladder.log line 8;
+slice force-added as logs/curric1/noop_swap.log this commit).
+15,420 steps, BIRTH_SEED=2, mps; truncation on L1's tail per the
+driver's construction (log shows the 4-batch/epoch drop; the L1
+attribution is structural — L1 streams last). Receipt
+logs/curric1/swap.jsonl (force-added this commit); code_commit
+4767c18; gate-printed weights sha 1f7dc5d714c51f09.
+  control (booked) 64/120 {3:23,4:7,5:16,6:8,7:10}  L5-7 sum 34
+  cap (booked)     54/120 {3:21,4:3,5:15,6:7,7:8}   L5-7 sum 30
+  rev (booked)     37/120 {3:15,4:3,5:9,6:5,7:5}    L5-7 sum 19
+  swap             45/120 {3:17,4:3,5:10,6:7,7:8}   L5-7 sum 25
+                   valid 39.46%
+Dict sum verified (17+3+10+7+8 = 45).
+BARS:
+- P-FOUNDATION FIRES: L5+L6+L7 = 25 >= 24. L5, L6, L7 kept their
+  rev positions exactly; the only change upstream of them was L3
+  arriving second instead of sixth — early easy data lifts the
+  levels it precedes. A prerequisite effect placement cannot
+  explain.
+- P-PLACEMENT-L3 does NOT fire: L3 = 17 < 21 (up 2 from rev's
+  15; the +2 is far under single-seed resolution and reads only
+  as the threshold call). KNIFE-EDGE DISCLOSED: 17 is exactly
+  the REFUTED-IF threshold value; that branch does not trigger
+  because it requires NEITHER bar to fire and P-FOUNDATION
+  fired — placement is un-fired here, not refuted.
+- P-ORDER-HURTS-3 FIRES: 45 <= 57 — the third direction of
+  order harm books (this arm sits between rev's 37 and cap's 54;
+  every level-blocked arrangement measured has cost solves).
+- The both-fire branch is dead; the outcome is the registered
+  single-bar reading for P-FOUNDATION.
+READ (licensed by the fired bar): what PRECEDES a level moves
+its cell. UNREGISTERED RESIDUE (hypothesis only): the same
+account predicts L3's own weakness — in this ladder L3 trains
+with only L8 behind it, its L1/L2 primitives arriving LAST;
+every LADDER arm where L3 scored >= 21 had L1,L2 first (the
+shuffled control interleaves everything and scores 23). The
+clean discriminator is L1,L2 first with hard levels immediately
+after (L1,L2,L8,L4,L6,L7,L5,L3) — named, not registered.
+HOUSE PRIOR SCORED: INVERTED — registered P-PLACEMENT-L3 fires
++ P-FOUNDATION does not; measured the exact opposite. Point
+guesses: total 44-52 CONTAINED (45); L4 2-5 contained (3); L3
+19-23 missed low (17); L5-7 18-23 missed HIGH (25 — the miss is
+the finding). Family record 1 hit, 5 misses; the run of misses
+is itself an instrument (the house's order intuitions are
+systematically wrong; the bars keep earning their existence).
+FENCES: [SINGLE-SEED] [REGIME-SCOPED: house crystals] 19M/gen4,
+BIRTH_SEED=2 only, Mac/mps only, standard 120 gate (levels 3-7;
+L1/L2/L8 train-only); anchors booked, provenance as quoted at
+REV-LADDER-1 (control horizon mismatch + cap L8-cut travel);
+per-level cells read against registered thresholds only; the
++8 v rev clears the 7-solve resolution, -19 v control and -9 v
+cap likewise read as registered; no constant retuned.
+Prereg-auditor pass before booking (8 findings verified and
+adopted, incl. the missing noop receipt as a blocker and three
+prose overstatements cut).

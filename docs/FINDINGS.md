@@ -1915,3 +1915,15 @@ regime tag on every bullet is the fence.
   0 false alarms, 3/19 wins proved in budget; material: 18/19
   wins seen, 23 false alarms). Instrument-scoped; no game claim.
   ([VERDICT CHECKERS-0](RESULTS.md#L29048).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] The one-swap
+  discriminator inverts the house prior and names the curriculum
+  mechanism: moving L3 from sixth to second in the hard-first
+  ladder lifts L5+L6+L7 from 19 to 25 solves at UNCHANGED
+  positions for those levels (the registered foundation bar
+  fires — early easy data lifts the levels it precedes), while
+  L3's own prime schedule placement leaves its cell below the
+  placement bar (17 v 21 threshold). Order damage follows what
+  PRECEDES a level; the arm still books the third direction of
+  order harm (45 v the shuffled 64). ([VERDICT
+  SWAP-LADDER-1](RESULTS.md#L29096).)

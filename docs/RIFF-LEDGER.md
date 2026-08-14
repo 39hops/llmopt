@@ -4543,7 +4543,15 @@ without re-introducing history).
   order is harmful in BOTH directions; shuffled interleaving is
   the measured optimum of the three orders tested; neither
   mechanism bar fired (L3 follows lr placement, L4 stays at its
-  structural floor).]
+  structural floor). Same-day discriminator (VERDICT
+  SWAP-LADDER-1): the mechanism NAMES ITSELF as FOUNDATION, not
+  placement — one swap (L3 to second) lifts L5+L6+L7 from 19 to
+  25 at unchanged positions while L3's own placement bar stays
+  un-fired; what PRECEDES a level moves its cell. Artin's
+  original "easier first until it can't learn" intuition was
+  half right: prerequisites matter (foundation real), but
+  BLOCKING levels to deliver them costs more than shuffling ever
+  did — interleaved-with-prerequisites is the surviving shape.]
 
 - **BANKED (2026-08-13): novelty IS the volatility — the newest
   data class (fresh operations the model has never seen) is the
