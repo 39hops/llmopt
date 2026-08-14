@@ -1345,6 +1345,11 @@ CURRICULUM-1 instrument run (pre-reg RESULTS 2026-08-13): the phase19m recipe wi
 - `assert_noop(enc)` — Capture the REAL trainer epoch-1 stream (shuffle recorder +
 - `main()`
 
+### scratch/birth19m_curric_rev.py
+REV-LADDER-1 instrument run (pre-reg RESULTS 2026-08-14): the CURRICULUM-1 cap arm with the ladder REVERSED — hard-first L8,L4,L6,L7,L5,L3,L2,L1. Thin sibling of the frozen birth19m_curric.py (results-cited, not edited): imports its helpers and its assert_noop, which must PASS in-process before training (receipt tee'd by the launcher to logs/curric1/ noop_rev.log). Same BIRTH_SEED=2, 15,420 steps, stock OneCycle, mps; level-pure batches, within-level shuffled, stream truncated to the stock per-epoch count (truncation falls on L1's tail, ~0.3% of that level). Appends arm="rev" to logs/curric1/rev.jsonl (arms.jsonl is a frozen receipt).
+
+- `main()`
+
 ### scratch/birth19m_phase.py
 PHASE-PORTRAIT-1 instrument run: a fresh 19M-class birth with STEP-LEVEL milestone saves INCLUDING optimizer state, so a true per-neuron (angle, angular-velocity) phase portrait exists — position from the weights, momentum from Adam's exp_avg, velocity from adjacent milestones. The pendulum riff's residue (RIFF-LEDGER 2026-08-13), instrument-grade.
 
