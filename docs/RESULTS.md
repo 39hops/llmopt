@@ -29413,3 +29413,51 @@ lands; per-arm receipts stream so a wall-kill leaves bookable
 cells; NOT-RUN if the shard file is absent at launch. Mac shares
 CPU with mac-axiom's granted machine time — births are mps-bound,
 contention accepted and disclosed.
+
+## VERDICT AXIOM-IV7-ACCEPT: all six 2026-08-11-1 exposures verified exact; one Lean-eligibility semantics finding (2026-08-14, Mac)
+
+Counter-verify of axiom's IV7 batch (their 5a8ae70), on their
+fresh build-iv7 .sos (both bake GIT_SHA 5a8ae70...; axiom_sym
+INTERFACE_VERSION 7, 23 names; intbirth INTERFACE_VERSION 1 —
+first version handshake on that module). build-rel's ca052f4 IV6
+artifacts confirmed byte-untouched (mtime 16:06 unchanged); their
+commit touches only bindings/ + .gitignore as claimed.
+
+Per ask, all re-derived house-side:
+1. **replay_verify: PASS** — real solve history True, bogus
+   history False; verify_size_reject_count() readable (0).
+2. **RNS/CRT: PASS** — rns_to_res/rns_reconstruct exact
+   round-trips vs fractions.Fraction incl. 10**40+1/3**30,
+   negatives, 0, 2**80-scale; exhausted modulus returns ok=False
+   (censored != fact carried into the API). addm/mulm/powm/invm
+   exact vs pow(); crt takes [(res, mod), ...] pairs, returns
+   (value, modulus) — (3,5),(4,7) gives (18, 35).
+3. **NPRIMES: PASS** — rns_primes(8) head 2**61-1, all entries
+   sympy-prime; is_prime discriminates 2**61-1 v 2**61-3.
+4. **Anchor-v2: PASS** — anchor2_init/fb_counters (six pin-4
+   classes)/sense readable; anchor2_ledger raises RuntimeError
+   with an explicit probe-build message in default builds (the
+   LEDGER CENSUS default-build fence surfaced in the error, good).
+5. **Lean path: PASS with a semantics finding** — LeanCert,
+   to_lean, sidecar_line all work; ring-true identities emit
+   correct statements. FINDING: eligible=True is LEXICAL only —
+   sin(x)**2+cos(x)**2 = 1 and exp(x)*exp(-x) = 1 both emit
+   eligible certs whose abstracted statements (a1^2+a2^2 = 1,
+   a1*a2 = 1) are NOT ring identities and will fail lean4's `by
+   ring`. Sound iff Lean is the final rejector; house consumers
+   must treat eligible as a pre-filter, never a verdict. Relayed.
+6. **Wide accumulators + sha256: PASS** — gemm_acc/gemm_nt_acc/
+   gemm_xty_acc exact vs big-int reference at 81-bit sums
+   (conventions: gemm_acc w[N,K] = A@W.T torch-Linear shape,
+   nt w[K,N], xty = X.T@Y); finalize_rdiv exact RoundHalfAway
+   with int64-narrow output guard (throws on overflow, verified
+   at 2**63/1); sha256 matches hashlib. House-side false alarm
+   during verification, named honestly: a float-copysign
+   reference disagreed at 2**62 — the defect was in the house
+   reference, not their rounding.
+
+Fences: interface acceptance, no gate numbers, no cross-device
+claims. House stays PINNED to build-rel IV6 (ca052f4) for any
+live session; re-pin to build-iv7 is a deliberate act recorded in
+AXIOM-SURFACE.md, never an ambient import. Relay 2026-08-14-6
+carries this + the Lean finding to axiom.

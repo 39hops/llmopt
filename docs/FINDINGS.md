@@ -1948,3 +1948,18 @@ regime tag on every bullet is the fence.
   downgrade the dual-.so hazard to a one-attr check. One envelope
   limit: getrandbits(k>64) raises where CPython allows any k.
   ([VERDICT AXIOM-IV6-ACCEPT](RESULTS.md#L29337).)
+
+- [REPLICATED] Axiom's IV7 batch exposes all six ranked
+  counter-book primitives and every one re-derives exact
+  house-side: replay_verify discriminates real from bogus
+  histories, RNS/CRT round-trips arbitrary-precision rationals
+  against fractions.Fraction with honest ok=False on exhausted
+  moduli, the 61-bit prime ladder regenerates, anchor-v2 counters
+  read out (ledger correctly fenced to probe builds), wide
+  accumulators match big-int references at 81-bit sums with a
+  single RoundHalfAway placement, and sha256 matches hashlib. One
+  semantics finding relayed: LeanCert eligible=True is a lexical
+  pre-filter, not a provability verdict — non-ring identities
+  (sin^2+cos^2, exp*exp-negative) emit certs that will fail `by
+  ring`; Lean itself must stay the final rejector.
+  ([VERDICT AXIOM-IV7-ACCEPT](RESULTS.md#L29417).)

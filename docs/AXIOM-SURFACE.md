@@ -43,6 +43,41 @@ IV6 additions (house counter-verified 2026-08-14, relay -4):
 - Provenance attrs `GIT_SHA` / `BUILD_TIME` baked at compile time
   on axiom_sym (verified: ca052f4..., 2026-08-14T20:06:00Z).
 
+IV7 (axiom 5a8ae70, landed 2026-08-14 in fresh `build-iv7/`;
+house counter-verified same day, VERDICT AXIOM-IV7-ACCEPT):
+axiom_sym goes to 23 names, intbirth gains INTERFACE_VERSION = 1.
+All six 2026-08-11-1 exposures:
+- `replay_verify(root, history, deadline_ms=0)` — the search's own
+  chain verifier; `verify_size_reject_count()` distinguishes size
+  rejects from censoring.
+- RNS/CRT on intbirth: `rns_to_res(num, den, k)` /
+  `rns_reconstruct(num_res, den_res, k)` -> {ok, num, den} with
+  ok=False on exhausted modulus; addm/subm/mulm/powm/invm/res_of,
+  is_prime, factor, modinv; `crt([(res, mod), ...])` -> (value,
+  modulus). All traffic exact Python ints.
+- `rns_primes(k)` — regenerates the pinned deterministic 61-bit
+  basis (head 2**61-1).
+- `anchor2_init(nprimes, prec_bits)`, `anchor2_fb_counters()`,
+  `anchor2_sense()`; `anchor2_ledger()` RAISES in default builds —
+  LEDGER CENSUS needs a -DAX_ANCHOR2_TRACE probe build.
+- Lean: `LeanCert`, `to_lean(lhs, rhs, var='x')`,
+  `sidecar_line(id, cert)`. Pass ORIGINAL sstr text (fractional-pow
+  fence is lexical, pre-parse). FENCE: `eligible=True` is a lexical
+  pre-filter, NOT provability — non-ring identities (sin**2+cos**2,
+  exp(x)*exp(-x)) emit certs that fail `by ring`; lean4 stays the
+  final rejector.
+- `gemm_acc(a, w)` (w is [N,K], computes A@W.T — torch Linear
+  shape), `gemm_nt_acc` (w[K,N]), `gemm_xty_acc` (X.T@Y): exact
+  Python-int outputs, compose exactly across gemms;
+  `finalize_rdiv(acc, d)` places ONE RoundHalfAway rounding,
+  int64-narrow output guard throws on overflow. `sha256` matches
+  hashlib.
+
+PIN DISCIPLINE: live house sessions stay pinned to
+`build-rel` (IV6, ca052f4) until a deliberate re-pin to
+`build-iv7` (IV7, 5a8ae70) is recorded here. Never both in one
+process; the GIT_SHA attr is the check.
+
 Semantics that bite (all verified in source):
 - `equivalent`/`equivalent_mod_const` return three-valued strings;
   UNDECIDED means fall back to sympy, never treat as valid.
