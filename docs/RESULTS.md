@@ -28827,3 +28827,12 @@ fp32/mps line (weights shas quoted at booking); 7-solve
 single-seed resolution on the total, per-level cells read
 against the registered thresholds only; no retune of any
 constant after data. COST: 1 birth + 1 gate (~50 min).
+
+## AMENDMENT REV-LADDER-1-RECEIPT (target: PRE-REG REV-LADDER-1; extends the pre-reg BEFORE it fires, EX4-riders precedent): receipt path corrected to logs/curric1/rev.jsonl (2026-08-14, desk)
+
+The pre-reg directed the arm's receipt row into
+logs/curric1/arms.jsonl — that file was force-added as a FROZEN
+receipt by VERDICT CURRICULUM-1 the day before, and the logs
+doctrine forbids appending a new run into a frozen path. The arm
+(not yet fired) writes logs/curric1/rev.jsonl instead. No other
+change; bars, prior, and fences stand as registered.
