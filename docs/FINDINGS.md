@@ -1867,3 +1867,14 @@ regime tag on every bullet is the fence.
   Over-inclusion stays claimed at the carriers' rank class only;
   draw-to-draw spread missed the variance-dominates bar by one
   solve. ([VERDICT EX4-UNIF](RESULTS.md#L28597).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: house crystals] Data ORDER at
+  birth is not free: a fixed easy-to-hard curriculum (levels
+  blocked in the measured capability order) gates 54/120 v the
+  shuffled control's 64 at matched init and schedule — a 10-solve
+  cost, with validity down 13 points and L4 falling to 3/24, the
+  same value the 0.3x-compression arm produced. The plateau-gated
+  arm read -1 only because its pinned constants admitted every
+  level by step 2,600 (the pre-named "always admits" branch), so
+  it was ~83% a stock stream. Schedule direction commutes; data
+  order does not. ([VERDICT CURRICULUM-1](RESULTS.md#L28680).)

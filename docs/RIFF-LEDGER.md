@@ -4531,6 +4531,14 @@ without re-introducing history).
   seed/device/total exposure; standard gate. Attribution: Artin
   (the plateau-curriculum ask and the weight-level-order question),
   house (the floor-aware plateau rule + the capability-ordered arm).
+  [MEASURED same day (VERDICT CURRICULUM-1): P-ORDER-HURTS fired —
+  the capability-ordered arm cost 10 solves (54 v 64, single
+  seed), so "easier first" by ANY level labeling is measured
+  harmful, not helpful, at birth on this line. The plateau-gated
+  half remains genuinely UNTESTED: the pinned constants
+  (100/300/2%) admitted every level by step 2,600, the pre-named
+  "always admits" branch — a slower rule is a new pre-reg. The
+  weight-level-order half of the original question is untouched.]
 
 - **BANKED (2026-08-13): novelty IS the volatility — the newest
   data class (fresh operations the model has never seen) is the

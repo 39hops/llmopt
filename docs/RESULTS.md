@@ -28676,3 +28676,90 @@ confound as a blocker). RECEIPT: logs/ex4/ex4.jsonl (15 rows,
 pattern — it is the only artifact from which the paired deltas
 and recall figures re-derive without a 30B re-gate; the
 per-problem and answers sidecars stay untracked.
+
+## VERDICT CURRICULUM-1: P-ORDER-HURTS FIRES for the capability-ordered arm — fixed easy-to-hard curriculum costs 10 solves (54 v 64); the plateau-gated arm lands inside the band (63, direction only) because its pinned constants admitted ALL levels by step 2,600 (2026-08-13, Mac)
+
+Against PRE-REG CURRICULUM-1 (L28480). Instrument: the phase19m
+recipe (D2 excision 165,028 -> 164,896 rows in-log), ONE variable
+per arm (row order), driver scratch/birth19m_curric.py at 045c64a.
+NO-OP PRECONDITION passed before launch — 100 packed-batch index
+tuples + epoch length 5,140 match the real trainer path (captured
+by shuffle-recorder + first-optimizer-step abort); receipt
+logs/curric1/noop.log (force-added). Both arms 15,420 optimizer
+steps, BIRTH_SEED=2, mps. Receipts logs/curric1/arms.jsonl (dicts
+sum-verified); code_commit 9cb7ad1 (driver tip 045c64a is its
+parent).
+  A control (booked)  64/120 {3:23,4:7,5:16,6:8,7:10}
+           valid 62.01%  (m015300, step 15,300 — the arms run
+           15,420: a 120-step, ~0.8% horizon mismatch, unpriced)
+  C cap    54/120 {3:21,4:3,5:15,6:7,7:8}  valid 49.12%
+           weights sha d23d01e080436401   delta -10
+  B level  63/120 {3:22,4:7,5:16,6:7,7:11} valid 60.71%
+           weights sha 3a63bdfb39756b8f   delta -1
+
+BARS:
+- P-ORDER-HURTS FIRES: arm cap 54 <= 57. A fixed capability-
+  ordered (easy-to-hard L1,L2,L3,L5,L7,L6,L4,L8) curriculum is
+  WORSE than the shuffled stock stream by 10 solves at matched
+  init and schedule (steps 15,420 v the anchor's 15,300 milestone,
+  disclosed above).
+- P-ORDER-HELPS does not fire (no arm >= 71).
+- P-ORDER-NULL does not fire (cap is outside [58, 70]).
+- L4 SECONDARY: the REGISTERED branch that fires is L4 <= 8/24 in
+  both arms (3 and 7) — the scar books as ORDER-INVARIANT under
+  the bar as written. UNREGISTERED OBSERVATION alongside: cap's
+  3/24 is BELOW the 6-8/24 three-lineage band, a value the bar
+  did not price; it matches COMP-LADDER-1's 3/24 at 0.3x
+  compression numerically, and the interpretation lives in the
+  READ below as hypothesis, not as a bar reading.
+- Validity (descriptive): cap 49.12% v level 60.71% v control
+  62.01% — the ordered arm also emits fewer valid steps.
+
+ARM B READS AS THE NAMED FENCE BRANCH, not as a curriculum null:
+the pinned constants (check every 100 steps, admit when last-300
+loss improves < 2% v prior-300) admitted L3 at step 2,100 and
+every remaining level by step 2,600 — the admission log books
+the rule as "these constants always admit" (the fence named this
+branch a priori). Arm B trained ~83% of its run on the full
+shuffled pool; its -1 is an almost-stock-stream reading, not a
+measurement of plateau-gated curriculum. A slower admission rule
+is a NEW pre-reg, not a retune of this one.
+
+COMPOSITION CONFOUND PRICED (arm C): matching the stock per-epoch
+step count truncates 4 tail batches per epoch, and the ladder
+puts L8 last, so arm C's L8 exposure runs ~12 batches short of
+stock across the run (L8 = 319 rows, train-only). The gate never
+tests L8, but the -10 is order-plus-this-residual, not order
+alone.
+
+READ: data order at birth is NOT free the way schedule direction
+was (BACKWARD-SCHEDULE-1's 62). Level-blocked ordering costs real
+solves and validity. Mechanism candidate consistent with the LR
+floor (hypothesis, no bar fired on it): whatever streams last
+meets the anneal tail's dying lr — the absorption window is
+spent — so trailing levels train sub-floor and order converts to
+per-level effective-lr placement; cap's L4 (streamed seventh of
+eight) reading 3/24, the same value as the 0.3x-compression arm,
+is the observation that motivates it. Direct test is a
+reversed-ladder (hard-first) arm or ANSWER-FIRST-1 — named as
+residue, not registered.
+
+HOUSE PRIOR SCORED: WRONG on arm C (registered P-ORDER-NULL;
+measured HURTS by 10 — second miss in the "mechanics are
+indifferent" family after the direction prior); RIGHT on arm B's
+band (registered null-to-mildly-negative; measured -1) though for
+the wrong reason (expected exposure starvation; measured cause is
+instant admission). "L4 unmoved in both" was wrong for arm C.
+
+FENCES: [SINGLE-SEED] [REGIME-SCOPED: house crystals] 19M/gen4,
+BIRTH_SEED=2 only, Mac/mps only; gate = the standard 120, levels
+3-7 only (L1/L2/L8 train-only); the -10 clears the 7-solve
+single-seed resolution bar but direction language beyond this
+seed needs the n>=3 ladder; arm B's reading is constants-scoped;
+control is the BOOKED anchor, not re-gated (deterministic-gate
+law; both new arms' gate-printed shas quoted above, fp32/mps
+line). Prereg-auditor pass before booking (6 findings verified
+and adopted, incl. the L4 branch misbooking as a blocker).
+RECEIPTS: logs/curric1/arms.jsonl (2 rows) + noop.log force-added
+per the seedslad pattern — they carry the admission log and the
+precondition assert from which the branch readings re-derive.
