@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 179, spec-cited 86, cited-but-library 55
+Census: UNCITED 201, library 66, reproduce-pinned 10, results-cited 180, spec-cited 86, cited-but-library 55
 
 ## scratch/
 
@@ -22,13 +22,15 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 179, spec-ci
 | anatomy | anatomy.py | results-cited | RESULTS, specs | RESULTS×5, specs×7 | — | 3 |
 | assets | assets_classify.py | spec-cited | specs | specs×1 | — | — |
 | atlas | atlas_precompute.py | spec-cited | specs | specs×1 | — | — |
+| atomladder1 | atomladder1_driver.sh | UNCITED | — | — | — | — |
 | attractor | attractor_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
 | basin | basin_probe.py | UNCITED | — | — | — | — |
-| birth19m | birth19m_atoms.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| birth19m | birth19m_atoms.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | 1 |
+| birth19m | birth19m_atoms_ladder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
-| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 4 | — |
+| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 5 | — |
 | birth19m | birth19m_curric_rev.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
 | birth19m | birth19m_curric_swap.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
@@ -99,7 +101,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 179, spec-ci
 | export | export_axnn.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | export | export_mb_ref.py | UNCITED | — | — | — | — |
 | export | export_r2b_ref.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| farm | farm_atoms.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| farm | farm_atoms.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
 | farm | farm_dist_rows.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
 | farmer | farmer_probe.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | fig | fig_magic_scatter.py | spec-cited | specs | specs×1 | — | — |
@@ -356,7 +358,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 179, spec-ci
 | sym45 | sym45_run.sh | UNCITED | — | — | — | — |
 | synonym | synonym_test.py | UNCITED | — | — | — | 1 |
 | tenet | tenet_d1_revgate.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
-| tenet | tenet_d2_revdiet.py | library | RESULTS, specs | RESULTS×1, specs×1 | 21 | — |
+| tenet | tenet_d2_revdiet.py | library | RESULTS, specs | RESULTS×1, specs×1 | 22 | — |
 | tenet | tenet_d3_budget.py | library | specs | specs×1 | 2 | — |
 | tenet | tenet_mult_b32.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | tenet | tenet_mult_census.py | library | RESULTS, specs | RESULTS×1, specs×1 | 1 | — |
@@ -553,7 +555,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 179, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 60 | 31 |
+| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 61 | 31 |
 | train | train_nnue.py | library | specs | specs×8 | 1 | 12 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |

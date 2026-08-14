@@ -1330,6 +1330,12 @@ ATOM-DIET-1 instrument run (pre-reg RESULTS 2026-08-14): the phase19m recipe wit
 - `encode_flagged(rows, tok)` — The trainer's text/encode/filter path (C.encode_with_levels
 - `main()`
 
+### scratch/birth19m_atoms_ladder.py
+ATOM-DIET-LADDER-1 instrument (pre-reg RESULTS 2026-08-14): paired stock/atoms births at matched 15,420-step horizon. Sibling of the frozen birth19m_atoms.py (results-cited, not edited) with SEED and ARM lifted to envs; the recipe, dose mechanics, no-op precondition, and gate are otherwise verbatim. ARM=stock trains the plain stock enc (the true matched-horizon control the original comparison lacked); ARM=atoms interleaves the frozen shard data/micromodel_atoms_shard0.jsonl via stock_epoch_stream over the augmented enc, truncated per epoch to the stock batch count. Checkpoint checkpoints/gallery19m_{ARM}_s{SEED}.pt; receipt appended to logs/atomladder1/arms.jsonl.
+
+- `encode_flagged(rows, tok)` — The trainer's text/encode/filter path (C.encode_with_levels
+- `main()`
+
 ### scratch/birth19m_backsched.py
 BACKWARD-SCHEDULE-1 instrument run (pre-reg RESULTS 2026-08-13): the phase19m recipe with ONE variable changed — the OneCycle lr sequence is served REVERSED in time (anneal-first, warm-last). Same D2 excision, BIRTH_SEED, arch, diet, epochs, device as the booked phase19m birth; milestone tee kept so the backwards phase portrait comes free. Paired control is the BOOKED m015300 gate 64/120.
 
