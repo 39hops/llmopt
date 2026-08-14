@@ -1444,6 +1444,22 @@ CHAIN-CARRY ABLATION (Artin's carry hypothesis, spec'd 2026-07-21): same content
 *(no docstring)*
 
 
+### scratch/checkers0.py
+CHECKERS-0 instrument (pre-reg RESULTS 2026-08-14): bounded search v greedy material on an exact win-in-K oracle. English draughts, forced captures, mandatory multi-jump chains, promotion ends the move. Pure CPU, no deps beyond stdlib.
+
+- `start_board()`
+- `dirs(piece)`
+- `on(r, c)`
+- `_promote(piece, r)`
+- `_capture_chains(bd, pos, piece, side)` — All maximal-continuation capture chains from pos. Each chain
+- `legal_moves(bd, side)` — List of successor boards. Captures mandatory.
+- `key(bd, side)`
+- `solve(bd, side, depth, memo, counter, budget)` — 1 iff side to move forces a win within depth plies.
+- `class _Budget`
+- `material(bd, side)`
+- `draw_positions()`
+- `main()`
+
 ### scratch/churn_judge_eval.py
 CHURN-JUDGE-1 fit/eval (committed so the booked verdict is re-derivable — it was a desk computation on 2026-08-04).
 

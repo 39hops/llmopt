@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 176, spec-cited 86, cited-but-library 55
+Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 177, spec-cited 86, cited-but-library 55
 
 ## scratch/
 
@@ -51,6 +51,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 176, spec-ci
 | ceiling | ceiling_probe_cuda.py | UNCITED | — | — | — | — |
 | chain | chain_carry.py | UNCITED | — | — | — | 1 |
 | champ | champ_cuda_probe.py | UNCITED | — | — | — | — |
+| checkers0 | checkers0.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | churn | churn_judge_eval.py | reproduce-pinned | REPRODUCE | REPRODUCE×2 | — | — |
 | ckpt | ckpt_delete_pass.py | UNCITED | — | — | — | — |
 | ckpt | ckpt_inventory.py | spec-cited | specs | specs×2 | — | 1 |
