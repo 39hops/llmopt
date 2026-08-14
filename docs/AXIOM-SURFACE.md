@@ -95,7 +95,13 @@ its receipts never sit next to Metal numbers (both labs' fence).
 - `pyrand` — bit-exact CPython random.Random in C++ — lets a C++
   farm reproduce our string-seeded datasets exactly.
 - count_ops (sympy-exact), RNS/int256/dyadic exact core, fp32limb
-  GEMM + Metal kernels, `sym/budget` cooperative timebox.
+  GEMM + Metal kernels.
+- `sym/budget` semantics ANSWERED (relay 2026-08-14-2): cooperative
+  thread-local deadline, work_expired throw at polls, conservative
+  rejection, never a partial. Bounded modulo poll gaps, not a hard
+  OS wall. House policy: bridge calls in-process for desk/gate use;
+  farm loops keep the fork wall; overshoots past ~one poll stride
+  are bug reports to axiom.
 
 ## Cross-lab obligations (checked 2026-08-14: none open)
 
