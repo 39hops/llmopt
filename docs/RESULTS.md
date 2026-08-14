@@ -28941,3 +28941,64 @@ beyond this seed needs n>=3; no constant retuned after data.
 Prereg-auditor pass before booking (12 findings verified and
 adopted, incl. the untracked-sha blocker and the anchor-horizon
 disclosure).
+
+## PRE-REG SWAP-LADDER-1: one swap discriminates placement from foundation — the hard-first ladder with L3 and L4 exchanged (2026-08-14, Mac; booked BEFORE the arm fires)
+
+VERDICT REV-LADDER-1 (L28872) left two live candidates for the
+order damage: LR-PLACEMENT (a level's cell tracks where it sits
+in the schedule) and FOUNDATION (early hard data wastes the
+high-lr window because prerequisites are missing, starving
+everything downstream). The cheapest discriminator changes ONE
+thing: in the hard-first ladder, L3 and L4 exchange positions —
+L8,L3,L6,L7,L5,L4,L2,L1. L3 (the easiest gated level, 23/24 in
+control, 15/24 when annealed-late) now streams second, into the
+high-lr era; L5,L6,L7 KEEP their rev positions, so any recovery
+in those cells cannot come from their own placement.
+
+INSTRUMENT: identical to REV-LADDER-1 in every respect except
+the ladder. Thin sibling scratch/birth19m_curric_swap.py
+(birth19m_curric.py and birth19m_curric_rev.py are both
+results-cited frozen; the sibling imports the frozen helpers and
+assert_noop, which must PASS in-process before training; noop
+receipt = job-log slice force-added as
+logs/curric1/noop_swap.log, the rev provenance pattern).
+BIRTH_SEED=2, 15,420 steps, stock OneCycle, mps; level-pure
+within-level-shuffled batches ("curric-swap-{ep}-L{l}" seeds);
+truncation again falls on L1's tail (~0.35%). Receipt
+logs/curric1/swap.jsonl, arm="swap".
+
+ANCHORS (all booked, fp32/mps line): control 64
+{3:23,4:7,5:16,6:8,7:10}; cap 54 {3:21,4:3,5:15,6:7,7:8}; rev 37
+{3:15,4:3,5:9,6:5,7:5} — rev's L5+L6+L7 sum = 19, cap's = 30,
+control's = 34.
+
+BARS (single seed; per-level cells read against these thresholds
+only):
+- P-PLACEMENT-L3 fires iff L3 >= 21/24. Early placement recovers
+  the level that late placement lost (15 -> near control's 23):
+  a level's cell tracks its OWN schedule position.
+- P-FOUNDATION fires iff L5+L6+L7 >= 24 (rev's 19 + 5, halfway
+  to cap's 30, at UNCHANGED positions for those levels): early
+  easy data lifts the levels it precedes — a prerequisite
+  effect placement cannot explain.
+- Both fire: the mechanisms compose (each real, each partial).
+- NEITHER fires with L3 <= 17: blocking-per-se dominates — a
+  level-pure stream damages regardless of arrangement; the
+  placement candidate dies for L3 (this is the REFUTED-IF).
+- P-ORDER-HURTS-3 (secondary): total <= 57 books the third
+  direction of order harm.
+- Any other combination: direction booked, no claim.
+
+REGISTERED PRIOR (house, low confidence — this family is 1 hit
+4 misses): P-PLACEMENT-L3 fires, P-FOUNDATION does not; point
+guesses total 44-52, L3 19-23, L5+L6+L7 18-23, L4 2-5.
+
+FENCES: [SINGLE-SEED] [REGIME-SCOPED: house crystals] 19M/gen4,
+BIRTH_SEED=2 only, Mac/mps only, standard 120 gate (levels 3-7;
+L1/L2/L8 train-only); paired against BOOKED anchors on the same
+fp32/mps line, anchor provenance as quoted at REV-LADDER-1
+(control's 15,300-step horizon mismatch and cap's L8-tail cut
+travel with any delta against them); 7-solve single-seed
+resolution on the total; per-level cells read against registered
+thresholds only; no constant retuned after data. COST: 1 birth +
+1 gate (~50 min).
