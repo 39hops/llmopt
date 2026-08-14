@@ -28476,3 +28476,85 @@ from the stock schedule, not logged per-step (the driver prints
 the sequence's shape at launch, receipt in jobs/backsched1.log).
 Receipt exception: gates.jsonl (18 rows, ~3KB) force-added under
 logs/backsched_gate/, seedslad pattern.
+
+## PRE-REG CURRICULUM-1: does data ORDER at birth move the gate — level-ascending plateau-gated vs capability-ordered curriculum vs the booked shuffled control (2026-08-13, Mac; booked BEFORE any arm fires)
+
+The banked plateau-gated-curriculum riff's residue (RIFF-LEDGER
+2026-08-13, Artin). BACKWARD-SCHEDULE-1 nulled the LR schedule's
+DIRECTION; the diet streamed all levels shuffled in every arm run
+that day, so data-order curriculum is genuinely untested on the
+19M line at birth. Adjacent measured ground: diet COMPOSITION
+dominates (v2 lineage, RESULTS L1784); whether SEQUENCING adds
+anything on top is this cell.
+
+INSTRUMENT: the phase19m recipe exactly (d384/8L/ffn1536/h6, gen4
+diet with D2 excision, BIRTH_SEED=2, 3-epoch exposure = 15,420
+optimizer steps, stock OneCycle shape and peak, Mac) with ONE
+variable changed per arm: the ORDER rows enter the stream. New
+driver scratch/birth19m_curric.py (thin sibling; frozen
+birth19m_phase.py imported/copied-pattern, never edited). No
+milestone tee (final checkpoint only; the milestone question is
+CAP-V-TRAJ-1's, already banked). Diet level census, booked here as
+the instrument's composition: L1 36,678 / L2 49,295 / L3 27,525 /
+L4 17,151 / L5 21,409 / L6 5,508 / L7 7,143 / L8 319.
+
+ARMS (control is the BOOKED stock birth, not re-run):
+  A  control      gallery19m_phase_s2 final gate 64/120
+                  {3:23,4:7,5:16,6:8,7:10} (CAP-V-TRAJ-1 anchor)
+  B  cur_level    level-ascending plateau-gated admission.
+                  Admitted pool starts {L1,L2}; levels admitted in
+                  number order 3,4,5,6,7,8. Plateau rule (constants
+                  pinned NOW): every 100 steps, if mean loss of the
+                  last 300 steps improves < 2% relative vs the
+                  prior 300-step window, admit the next level.
+                  Stream = shuffled admitted pool, epoch-cycled;
+                  total steps fixed at stock 15,420; stock OneCycle
+                  regardless of admission state. Admission steps
+                  logged (they are the finding's shape).
+  C  cur_cap     capability-ordered fixed curriculum: each epoch
+                  streams levels in the measured easy-to-hard order
+                  L1,L2,L3,L5,L7,L6,L4,L8 (solve rates 23/16/10/8/7
+                  of 24 at the anchor for L3-L7), shuffled WITHIN
+                  level, no gating.
+Both arms: same total optimizer steps as stock (15,420), same
+BIRTH_SEED=2 init, same device, standard 120 gate at final.
+
+NO-OP PRECONDITION (rung law): the driver's order hook run in
+CURRICULUM=off mode must reproduce the stock epoch-1 batch stream
+EXACTLY (first 100 packed-batch index tuples equal to the frozen
+stock path, asserted in-log) before any treatment arm fires.
+
+BARS (single seed; resolution law: |delta| < 7 solves is inside
+the 1.5-sigma band and books direction-only):
+- P-ORDER-HELPS fires iff an arm gates >= 71/120 (>= +7 vs 64).
+- P-ORDER-HURTS fires iff an arm gates <= 57/120 (<= -7).
+- P-ORDER-NULL fires iff BOTH arms land in [58, 70] — order is a
+  non-factor at single-seed resolution, matching the direction
+  null.
+- L4 SECONDARY (descriptive, no claim): L4 >= 12/24 in any arm
+  books an L4-REPAIR signal (booked band is 6-8/24 across three
+  lineages); L4 <= 8/24 books the scar as order-invariant too.
+REFUTED-IF: P-ORDER-NULL fires — "easier first fixes the order"
+dies at birth-time on this line (weight-level order remains open,
+explicitly not tested here).
+
+REGISTERED PRIOR (house, on the record): P-ORDER-NULL for arm C
+(the schedule-direction null + composition-dominates both point
+at order-indifference); arm B null-to-mildly-negative (plateau
+gating starves late levels of exposure share; L6/L7 rations
+shrink); L4 unmoved in both (the scar is structural, L4-PLY0-1).
+House track record note: the direction prior missed by ~15 solves
+yesterday; this prior is the same "mechanics are indifferent"
+family and is falsifiable the same way.
+
+FENCES: [SINGLE-SEED] [REGIME-SCOPED: house crystals, 19M/gen4]
+Mac/mps only, never compared cross-device; BIRTH_SEED=2 only —
+any claim needs the n>=3 ladder before direction language;
+plateau constants (100/300/2%) are pinned above and CANNOT be
+retuned after data — a mis-tuned plateau books as the finding
+"these constants never/always admit", not as a re-run; arm B's
+exposure SHARE per level necessarily differs from stock (that is
+the treatment, priced by the admission log); gate = the standard
+120, levels 3-7 only (L1/L2/L8 train-only). COST: 2 births + 2
+gates, one Mac window each; QUEUED — fires on Artin GO after the
+EX4-UNIF window frees.
