@@ -1878,3 +1878,15 @@ regime tag on every bullet is the fence.
   level by step 2,600 (the pre-named "always admits" branch), so
   it was ~83% a stock stream. Schedule direction commutes; data
   order does not. ([VERDICT CURRICULUM-1](RESULTS.md#L28680).)
+
+- [MECHANISM-CONFIRMED] [FORMAT-BOUND]
+  [REGIME-SCOPED: measured deployment artifacts]
+  The uniform-draw split in the EX4 battery is not carrier-class
+  contamination: both draws overlap the carriers' rank windows
+  near-identically (16 v 18 of 1,080 slots, desk-deterministic),
+  eliminating that candidate; the draws separate instead on summed
+  demand deleted, and battery-wide the demand-vs-gate shape is
+  non-monotone (51k demand deleted reads -1, 77k reads +19, the
+  rank-matched 117k reads +28, the top-ranked 452k reads -26) — a
+  two-draw direction, no claim. ([OBSERVATION
+  EX4-COMPOSITION-1](RESULTS.md#L28840).)

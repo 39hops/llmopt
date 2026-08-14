@@ -28836,3 +28836,35 @@ receipt by VERDICT CURRICULUM-1 the day before, and the logs
 doctrine forbids appending a new run into a frozen path. The arm
 (not yet fired) writes logs/curric1/rev.jsonl instead. No other
 change; bars, prior, and fences stand as registered.
+
+## OBSERVATION EX4-COMPOSITION-1: the carrier-window-overlap explanation for the uniform-draw split is ELIMINATED at desk — the draws hit the windows near-identically (16 v 18 of 1,080 slots); what separates them is summed demand deleted, and the battery-wide demand-vs-effect shape is non-monotone (2026-08-14, desk)
+
+The natural rider named in VERDICT EX4-UNIF (L28597), computed
+from the committed keepsets and the frozen pooled demand counts —
+deterministic desk arithmetic, no gates. Carrier windows = the
+exact ex3_build rand-draw definition (per carrier, the +-8
+in-layer demand-rank window): union 1,080 slots, 17.6% of the
+48x128 bank.
+  arm            in-window  carriers-hit  summed-demand  med-rank
+  ex4_del_unif0     16          0             76,893        59
+  ex4_del_unif1     18          1             50,973        66
+  ex3_del_rand0     80          0            116,783        29
+  ex4_del_top80     22          2            451,932         1
+READS:
+(1) ELIMINATION (deterministic): unif0 (+19) and unif1 (-1)
+    overlap the carrier rank windows near-identically — the
+    "helpful draw happened to hit the carriers' class" candidate
+    is dead. (rand0 is 80/80 in-window BY CONSTRUCTION — its
+    draw rule samples inside the windows; the column is the
+    checksum that the window definition reproduces.)
+(2) DIRECTION ONLY (n=2 draws, no bar): the draws separate on
+    summed demand deleted — the +19 draw removed 1.5x more
+    demand than the -1 draw. Across the battery the shape is
+    non-monotone: 51k demand deleted -> -1, 77k -> +19,
+    117k (rank-matched) -> +28, 452k (top-ranked) -> -26. A
+    demand-dose ladder at fixed rank class would make this a
+    bar; not registered here.
+FENCES: desk-only, deterministic given the committed artifacts;
+the (2) correlation rides exactly two uniform draws and books no
+claim; demand = pooled arm0 counts (the same instrument that
+defined the windows).
