@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 200, library 64, reproduce-pinned 10, results-cited 174, spec-cited 86, cited-but-library 53
+Census: UNCITED 200, library 65, reproduce-pinned 10, results-cited 174, spec-cited 86, cited-but-library 54
 
 ## scratch/
 
@@ -26,7 +26,7 @@ Census: UNCITED 200, library 64, reproduce-pinned 10, results-cited 174, spec-ci
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
 | basin | basin_probe.py | UNCITED | — | — | — | — |
-| birth19m | birth19m_backsched.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
 | birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | birth19m | birth19m_snaps.py | UNCITED | — | — | — | 1 |
 | blackhole | blackhole_b0.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
@@ -54,7 +54,7 @@ Census: UNCITED 200, library 64, reproduce-pinned 10, results-cited 174, spec-ci
 | ckpt | ckpt_triage_table.py | UNCITED | — | — | — | — |
 | clade | clade_stream_d256.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | closers | closers_chain.sh | UNCITED | — | — | — | — |
-| comp | comp_ladder.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| comp | comp_ladder.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | complex | complex_birth.py | UNCITED | — | — | — | 8 |
 | complex | complex_model.py | library | specs | specs×1 | 6 | 1 |
 | complex | complex_nnue.py | UNCITED | — | — | — | — |
@@ -86,7 +86,8 @@ Census: UNCITED 200, library 64, reproduce-pinned 10, results-cited 174, spec-ci
 | engine | engine_scale_export.py | spec-cited | specs | specs×1 | — | — |
 | ex1 | ex1_swap.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | ex2 | ex2_build.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
-| ex3 | ex3_build.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
+| ex3 | ex3_build.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 |
+| ex4 | ex4_build.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | exact | exact_twin_d56.py | spec-cited | specs | specs×1 | — | — |
 | exact1 | exact1_small_cells.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | exchange | exchange_test.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -117,13 +118,13 @@ Census: UNCITED 200, library 64, reproduce-pinned 10, results-cited 174, spec-ci
 | g19 | g19_probes_fix.sh | UNCITED | — | — | — | — |
 | g19 | g19_sigma_cuda.sh | UNCITED | — | — | — | — |
 | g5 | g5_polar.py | UNCITED | — | — | — | — |
-| gate | gate_backsched.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| gate | gate_backsched.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
 | gate | gate_batched.py | UNCITED | — | — | — | 3 |
 | gate | gate_ckpt.py | results-cited | RESULTS, specs | RESULTS×3, specs×12 | — | 38 |
 | gate | gate_ckpt_cuda.py | UNCITED | — | — | — | 12 |
 | gate | gate_cplx.py | spec-cited | specs | specs×1 | — | 1 |
-| gate | gate_phase19m.py | library | RESULTS | RESULTS×3 | 1 | — |
-| gate | gate_pp.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| gate | gate_phase19m.py | library | RESULTS, specs | RESULTS×3, specs×2 | 1 | — |
+| gate | gate_pp.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | gate | gate_prefix.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | gate | gate_rarity.py | results-cited | RESULTS | RESULTS×1 | — | 10 |
 | gate | gate_regate.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
@@ -181,7 +182,7 @@ Census: UNCITED 200, library 64, reproduce-pinned 10, results-cited 174, spec-ci
 | lean | lean_check.py | reproduce-pinned | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×7, specs×3 | — | — |
 | lean | lean_sample_build.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | legacy | legacy_diet_audit.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| len | len_vs_l4.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| len | len_vs_l4.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | lloydmax | lloydmax_race.py | library | — | — | 1 | — |
 | loss | loss_floor_census.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | lyap | lyap_compare.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |

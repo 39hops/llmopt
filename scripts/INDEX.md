@@ -1689,6 +1689,13 @@ EX-ANAT-3 subject builder (provenance repair, 2026-08-07 review: the cited keep-
 - `emit(name, obj)`
 - `main()`
 
+### scratch/ex4_build.py
+EX4-UNIF subject builder (PRE-REG EX4-UNIF, RESULTS L23592; ex3_build.py is results-cited/frozen — imported, never edited).
+
+- `del_set(deleted)`
+- `report(name, deleted)`
+- `main()`
+
 ### scratch/exact1_small_cells.py
 EXACT1-SMALL: d8/d16 ladder+anchor cells on axiom's ENGINE-EXACT-1.
 
