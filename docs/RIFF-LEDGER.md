@@ -4531,3 +4531,95 @@ without re-introducing history).
   seed/device/total exposure; standard gate. Attribution: Artin
   (the plateau-curriculum ask and the weight-level-order question),
   house (the floor-aware plateau rule + the capability-ordered arm).
+
+- **BANKED (2026-08-13): novelty IS the volatility — the newest
+  data class (fresh operations the model has never seen) is the
+  most volatile TO the model, and that volatility is what causes
+  learning** (Artin, extending his own volatility-drag bank of
+  2026-08-12). The mapping / the math: per-row gradient magnitude
+  is largest where the model is most wrong; a "new operation"
+  class (addition when the model knows none, division when it
+  knows the other three) is maximally surprising, so it dominates
+  the parameter update — volatility drag's sigma stops being only
+  a tax and becomes the learning signal itself. The two-sigma
+  split from the parent bank sharpens into a three-way: error
+  variance (tax, cut), support variance (coverage, keep), and
+  NOVELTY variance (the model-relative kind — the same row's
+  volatility DECAYS as the model learns it, so it is a property of
+  the (data, model) pair, not the data alone). Measured anchors:
+  none direct; nearest booked ground is the LR absorption floor
+  (VERDICT CAP-V-TRAJ-2 — updates below the floor buy nothing
+  regardless of the data's novelty, so novelty can only pay
+  through the lr window) and the exposure-share doctrine (diet
+  rations). Honest breaks: per-row loss is the obvious novelty
+  proxy and it also selects label ERRORS (the highest-loss rows in
+  any real diet are the wrong ones — the two sigmas collide in one
+  statistic); a novelty-weighted sampler with no error control
+  re-derives the GRPO reward-hack shape. Testable residue:
+  NOVELTY-SAMPLER-1 — same diet, same budget, arm A stock
+  shuffled, arm B samples rows proportional to current per-row
+  loss (recomputed every N steps), verified-only diet so the error
+  sigma is pinned near zero; gate at equal steps. Attribution:
+  Artin (the frame both times), house (the three-sigma split + the
+  error-collision break).
+
+- **BANKED (2026-08-13): steps could carry their DISTRIBUTION
+  attached — a training row whose target is the set of valid next
+  steps, not one sampled member** (Artin: "can't the steps
+  themselves have their distribution attached to them too? We got
+  to play around with the data more"). The mapping / the math:
+  DIET-AMBIGUITY-1 (booked same day) measures the gen4 diet as
+  one-to-many — 15.7% of rows share a prompt with other valid
+  answers, CE floor >= 0.174 nats/row against one-hot targets.
+  The floor exists BECAUSE the farm samples one member of the
+  valid-next-step set per row; attaching the distribution (soft
+  targets over all banked valid nxt for that cur, engine-weighted
+  or uniform) makes the training target the true conditional and
+  deletes the floor without deleting the branching. This is
+  soft-label distillation where the teacher is the ENGINE's
+  enumeration, not a bigger model. Measured anchors:
+  DIET-AMBIGUITY-1 (the floor + the 4,356-cur conflict census =
+  the exact rows a distribution-attached diet would change).
+  Honest breaks: only 15.7% of rows are touched — the effect size
+  is capped by that share; the engine does not enumerate ALL valid
+  rewrites (only banked ones), so the "distribution" is itself a
+  sample and the floor shrinks rather than dies; multi-target CE
+  changes the sampler's calibration at decode time (the model
+  learns to spread mass — gate impact could go either way).
+  Testable residue: SOFT-NEXT-1 — rebuild the conflicted 15.7% as
+  distribution rows (same support, soft targets), paired birth vs
+  stock, standard gate + the loss floor read against the 0.174
+  prediction. Attribution: Artin (the ask), house (the
+  DIET-AMBIGUITY-1 measurement + the engine-as-teacher framing).
+
+- **BANKED (2026-08-13): loss-bottom-gated dynamic lr ("lr doesn't
+  move until loss has bottomed out on the epoch") — and the
+  limiting joke arm, infinite lr + spam rows** (Artin). The
+  mapping / the math: hold each lr value until the loss stops
+  improving at that lr, then step down — schedule-by-measurement
+  instead of schedule-by-clock (ReduceLROnPlateau's shape, but
+  gated on the ABSORPTION story: a plateau at lr L means L's
+  capability has been absorbed; the LR floor says stop stepping
+  before ~2-4e-5 because below it steps buy nothing). Measured
+  anchors: COMP-LADDER-1 (shape load-bearing, clock-compression
+  free to 0.5x — a measurement-gated schedule is the natural next
+  rung past fixed-shape compression); CAP-V-TRAJ-2 (the floor +
+  transient high-lr damage that heals — so holding HIGH lr longer
+  is not obviously safe OR obviously harmful, it is the open
+  cell); DIET-AMBIGUITY-1 (the detector MUST be improvement-rate
+  based — absolute loss ~ 0 does not exist on this diet, floor >=
+  0.174 nats/row). The infinite-lr limit is measured-adjacent too:
+  near-peak lr already costs a transient 12-solve dip at 3e-4;
+  divergence sits somewhere above; grad-clip 1.0 is the only
+  guard. Honest breaks: plateau-hold at PEAK lr risks the
+  edge-of-stability regime where the dip may not heal (the healing
+  was measured on a schedule that MOVED ON); "infinite lr" with
+  clipping degenerates to sign-SGD with step size = clip/norm —
+  a different optimizer, not a bigger lr. Testable residue:
+  SCHED-PLATEAU-1 — arm A stock OneCycle, arm B lr ladder
+  {3e-4, 1e-4, 4e-5} each held until improvement-rate < pinned
+  epsilon, stop at the floor; equal total steps; gate both.
+  LR-CEILING-1 (cheap, joke-priced): short births at 1e-3/3e-3/
+  1e-2, book where divergence actually starts. Attribution: Artin
+  (both asks, including the joke), house (the absorption framing +
+  the floor/ambiguity fences).

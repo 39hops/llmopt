@@ -28558,3 +28558,38 @@ the treatment, priced by the admission log); gate = the standard
 120, levels 3-7 only (L1/L2/L8 train-only). COST: 2 births + 2
 gates, one Mac window each; QUEUED — fires on Artin GO after the
 EX4-UNIF window frees.
+
+## OBSERVATION DIET-AMBIGUITY-1: zero training loss is unreachable on the gen4 diet BY CONSTRUCTION — 15.7% of rows share a prompt with at least one other distinct valid answer; irreducible CE >= 0.174 nats/row (2026-08-13, desk)
+
+Prompted by Artin's "we still haven't trained a model ending with
+0 training loss — that might be it." Desk scan (inline, exact
+arithmetic, no model): the full gen4 composition (chains +
+step_chains + algebra + calc_l4 + v22 shards + gen4 sidecar),
+whitespace-stripped cur/nxt, identity rows excluded exactly as the
+trainer's diet gate does:
+  165,028 rows | 116,784 distinct cur
+  4,356 conflicted curs (cur maps to >= 2 distinct nxt) covering
+  25,916 rows = 15.7% of the diet
+  dataset-weighted entropy of nxt|cur = 0.1738 nats/row
+READ: the diet is a ONE-TO-MANY function — a derivation state has
+several valid next rewrites, and the farm banks more than one.
+Cross-entropy against one-hot targets therefore has a floor >=
+0.174 nats/row no matter the capacity or schedule: "0 training
+loss" is not a training deficiency on this diet, it is
+arithmetically impossible. This is the ambiguity class the data-
+hygiene doctrine already prices qualitatively (underdetermined
+rows train hallucination — but these rows are DETERMINABLE, just
+multi-valid; the branching factor of derivations, not label
+error). BOUNDS HONESTY: 0.1738 is a LOWER bound on the whole-
+answer level (token-level ambiguity inside answers adds more);
+scan is pre-D2-excision (excision removes ~2k rows, shifts the
+number by < 0.01 nats — not re-run); nats-per-ROW, not per-token
+(the trainer's printed loss is per-token mean, so the visible
+floor depends on answer-length mix and lands well below 0.17).
+CONSEQUENCE for the "loss-bottomed" family of schedule riffs
+(banked this session): any plateau/bottom detector must trigger
+on IMPROVEMENT-RATE, never on absolute loss ~ 0 — the absolute
+target does not exist on this diet.
+FENCES: [FORMAT-BOUND] desk scan of the diet artifact only; no
+model, no seeds; exact string match on whitespace-stripped forms
+(notation-bound the same way the D2 band audit is).

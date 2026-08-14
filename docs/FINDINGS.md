@@ -1844,3 +1844,13 @@ regime tag on every bullet is the fence.
   preserved-without-growing null (LR 1e-5) is the same floor from
   the metabolic side. ([VERDICT
   CAP-V-TRAJ-2](RESULTS.md#L28421).)
+
+- [MECHANISM-CONFIRMED] [FORMAT-BOUND]
+  [REGIME-SCOPED: specified diet and recipe]
+  Zero training loss is arithmetically impossible
+  on the gen4 diet: it is a one-to-many function — 4,356 prompts
+  map to >= 2 distinct valid next steps (25,916 rows, 15.7% of the
+  diet), putting an irreducible cross-entropy floor of >= 0.174
+  nats/row under any model at any capacity. Plateau detectors must
+  trigger on improvement-rate, never absolute loss. ([OBSERVATION
+  DIET-AMBIGUITY-1](RESULTS.md#L28562).)
