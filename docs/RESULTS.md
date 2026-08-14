@@ -28763,3 +28763,67 @@ and adopted, incl. the L4 branch misbooking as a blocker).
 RECEIPTS: logs/curric1/arms.jsonl (2 rows) + noop.log force-added
 per the seedslad pattern — they carry the admission log and the
 precondition assert from which the branch readings re-derive.
+
+## PRE-REG REV-LADDER-1: does the curriculum damage follow LR PLACEMENT or ORDER-BLOCKING — the reversed (hard-first) ladder arm (2026-08-14, Mac; booked BEFORE the arm fires)
+
+VERDICT CURRICULUM-1 (L28680) fired P-ORDER-HURTS (-10) and left
+one mechanism hypothesis unfired: order converts to per-level
+effective-lr placement — whatever streams LAST meets the anneal
+tail's dying lr (sub-floor, CAP-V-TRAJ-2's absorption window
+spent), so late levels under-train. The single cheapest
+discriminator is the MIRROR arm: reverse the ladder so the levels
+that streamed last now stream first.
+
+INSTRUMENT: identical to CURRICULUM-1 arm cap in every respect
+except the ladder reversed: L8,L4,L6,L7,L5,L3,L2,L1 (hard-first
+by the same measured ordering). Thin sibling driver
+scratch/birth19m_curric_rev.py — birth19m_curric.py is now
+results-cited FROZEN; the sibling imports its helpers
+(load_excised_rows, encode_with_levels, level_batches) and its
+assert_noop, which MUST pass in-process before training (same
+precondition, fresh receipt logs/curric1/noop_rev.log). Same
+BIRTH_SEED=2, 15,420 steps, stock OneCycle, mps; batches
+level-pure, within-level shuffled ("curric-rev-{ep}-L{l}" string
+seeds); stream truncated to the stock per-epoch count — the
+truncation now falls on L1's tail (~12 of ~3,440 L1 batches,
+~0.3% of that level, v the 40% L8 cut in arm cap: the
+composition confound shrinks to negligible in this arm, priced
+here). Receipt row appends to logs/curric1/arms.jsonl with
+arm="rev".
+
+ANCHORS: control 64/120 {3:23,4:7,5:16,6:8,7:10} (booked, not
+re-gated); arm cap 54/120 {3:21,4:3,5:15,6:7,7:8} (booked).
+
+BARS (single seed; the L3/L4 cells are the discriminator, the
+total is the replication read):
+- P-LR-PLACEMENT fires iff L4 >= 6/24 (back in the 6-8 band or
+  above, now streamed second = high-lr era) AND L3 <= 20/24
+  (down >= 3 from 23, now streamed sixth of eight into the
+  anneal). Reading: damage follows WHERE a level sits in the lr
+  schedule.
+- P-ORDER-BLOCKING fires iff L4 <= 4/24 AND L3 >= 22/24 — the
+  same per-level shape as easy-first despite the mirror: damage
+  is caused by level-blocking per se (interference/forgetting
+  class), not lr placement.
+- P-ORDER-HURTS-AGAIN (secondary): total <= 57 replicates
+  "order is harmful in both directions" (the direction-free
+  analogue of BACKWARD-SCHEDULE-1's commute, on the data axis).
+- Mixed cells (L4 = 5, or both tails move, or neither):
+  direction booked, no claim (between-band discipline).
+REFUTED-IF (for the lr-placement hypothesis): P-ORDER-BLOCKING
+fires — the mechanism READ in CURRICULUM-1 dies and the bank is
+amended in place.
+
+REGISTERED PRIOR (house, on the record): P-LR-PLACEMENT fires —
+point guesses total 52-58, L4 6-10, L3 18-21. Confidence
+moderate; this is the third prior in the schedule-mechanics
+family after one hit (compression) and two misses (direction,
+order-null).
+
+FENCES: [SINGLE-SEED] [REGIME-SCOPED: house crystals] 19M/gen4,
+BIRTH_SEED=2, Mac/mps, standard 120 gate (levels 3-7; L1/L2/L8
+train-only); paired against BOOKED anchors on the same
+fp32/mps line (weights shas quoted at booking); 7-solve
+single-seed resolution on the total, per-level cells read
+against the registered thresholds only; no retune of any
+constant after data. COST: 1 birth + 1 gate (~50 min).
