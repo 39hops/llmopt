@@ -1,0 +1,106 @@
+# AXIOM-SURFACE — the house-side map of what axiom already ships
+
+Standing rule (Artin, 2026-08-14): use axiom whenever the machinery
+exists there. Order of operations for any engine-shaped need:
+(1) this surface, (2) grep docs/superpowers/relay/ and RESULTS for
+delivered or adopted primitives, (3) only a true gap earns a relay
+ask. Origin incident: the 2026-08-14 atom farm rebuilt one-ply
+emission in sympy while `emit_chain` (source tag `axiom-oneply`)
+sat bound on the Mac; relay 2026-08-14-0 carries the correction.
+
+Surveyed 2026-08-14 (two read-only Opus passes, anchors verified by
+the session model). Axiom checkout: `~/code/axiom` (Mac). Line
+anchors refer to that repo and drift with their HEAD; symbol names
+are the stable key.
+
+## Python bindings (the in-process surface)
+
+`axiom_sym` — source `bindings/axiom_sym.cpp`, `INTERFACE_VERSION
+= 5`, 16 names pinned in `INTERFACE`:
+parse_sstr, diff, canonical, equivalent, equivalent_mod_const,
+verify_edge, dead_mask, dead_reason, predecessors, successors,
+successors_dist, solve, solve_batch, emit_chain, frontier_eval,
+gate_battery.
+
+Semantics that bite (all verified in source):
+- `equivalent`/`equivalent_mod_const` return three-valued strings;
+  UNDECIDED means fall back to sympy, never treat as valid.
+- `solve`, `solve_batch`, `successors`, `successors_dist` carry an
+  `expired` flag: censored != fact, never fossilize a censored
+  solved=False (E4 amendment doctrine, in the binding docstrings).
+- `solve_batch` PLY SEMANTICS: plies == len(history) INCLUDING
+  whole-expression algebra moves (cancel/expand/subs_eval);
+  house carrier-rewrite count = plies minus those. PARITY FENCE in
+  the docstring: E4 FAILED — labels live under engine=axiom
+  permanently; the two label families never mix.
+- `emit_chain` returns farm_v22-shaped rows {cur,nxt,level,source,
+  hints,think}; source is `axiom-oneply` for 1-step solves,
+  `axiom-chain` otherwise; every pair re-verified via verify_edge,
+  rejects counted in dropped_pairs, replay_ok=False roots skipped.
+  THIS IS THE ATOM EMITTER.
+- `successors` children are verify_edge-certified (verify_p=1.0);
+  `frontier_eval` enumerates UNVERIFIED (verify_p=0.0) and defers
+  the oracle to top-k — rows with verified=None are unchecked, drop
+  or hard-flag them.
+- `predecessors` accepts deadline_ms but returns a bare list with
+  NO expired flag — a deadline-truncated set is a silent partial.
+  Do not pass deadline_ms>0 until that gains a flag (relay item).
+- Scoped adoption of record (RESULTS L8281): axiom bridge =
+  default enumerator for soundness-consumers; house
+  derivation.successors stays the semantic reference for house-set
+  replication; sympy stays oracle-of-record at final verification.
+
+`intbirth` — source `bindings/intbirth.cpp`: int_gemm/_nt/_xty,
+rdiv, Block (fwd/bwd/body/moe/rms/softmax_rows), AdamW (params
+mutated IN PLACE), FullBirth, ExactAnchor (bit ceiling is a
+PROCESS-GLOBAL static — never run two anchors concurrently),
+MultiBirth, MoeBirth. NO INTERFACE_VERSION on this module — no
+version handshake; assert shapes/behavior at arm time instead.
+
+DUAL-.SO HAZARD (verified): repo root carries a Jul 28 build,
+`build-rel/` an Aug 10 build; both answer INTERFACE_VERSION 5 and
+`llmopt/search/axiom_oracle.py` bare-imports whatever sys.path
+finds. Pin `~/code/axiom/build-rel` explicitly and record the .so
+mtime/size in any booking that cites axiom numbers.
+
+## Rule table
+
+`default_rules()` in `src/search/rules.cpp` (+rules2/rules3): core
+d_* rules; integral tranche i_const, i_power, i_sum,
+i_const_factor, i_table, i_usub, i_parts, i_apart, i_log_power,
+i_transcend_div, i_inverse_trig, i_sqrt_basis, i_cyclic, i_unprod,
+i_ansatz_exp, i_linear_basis; algebra cancel/expand/subs_eval.
+`i_heurisch` is NOT native — injected per-call as an external
+Python slot by solve/emit_chain.
+
+## CLI tools (build-rel/, flat — bin/ is an empty trap)
+
+axiom-oracle (JSONL parity/verdict harness), axiom-qual-gate,
+axiom-chain-emit (farm-shard chain emission with hints/think),
+axiom-inverse-gate, axiom-boards, axiom-ode-sample,
+axiom-series-sample, axiom-series-chain, axiom-poly-chain,
+axiom-phys-chain, axiom-zx-chain, axiom-nt-chain,
+axiom-nt-callspan, axiom-nn-logits, axiom-nn-exact,
+axiom-nn-greedy, axiom-nn-moe-greedy, ax_bench, ax_tests.
+Out-of-CMake rigs: tools/fp32limb (Metal exact-arithmetic rig +
+receipts), tools/exact_anchor, tools/engine_scale (names our
+RESULTS L22317 pre-reg), tools/int_adamw, tools/fx_v2, tools/fx_v3,
+tools/moe_merge. cuda/rns_chain.cu builds standalone (sm_86);
+its receipts never sit next to Metal numbers (both labs' fence).
+
+## Capabilities with NO python binding (relay-ask candidates)
+
+- Lean 4 certificate emitter (`sym/print_lean.hpp`) — machine-
+  checkable proofs for EQUIVALENT verdicts, no house consumer yet.
+- `pyrand` — bit-exact CPython random.Random in C++ — lets a C++
+  farm reproduce our string-seeded datasets exactly.
+- count_ops (sympy-exact), RNS/int256/dyadic exact core, fp32limb
+  GEMM + Metal kernels, `sym/budget` cooperative timebox.
+
+## Cross-lab obligations (checked 2026-08-14: none open)
+
+Axiom's specs list three waits on llmopt; all were delivered:
+64 ref-side rows adjudicated (RESULTS L2576), successors sample
+band pinned + acceptance run (RESULTS L8232/L8281), Fourier
+verdict relayed (relay 2026-07-27-2). Their spec text is stale,
+not our debt — say so in the next relay.
