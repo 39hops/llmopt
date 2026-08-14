@@ -4710,3 +4710,43 @@ without re-introducing history).
   L4 cell v the 6-8/24 band. Attribution: Artin (idea and the
   disinterest, both banked), house (the recognition-dense
   sharpening).
+
+- **BANKED (2026-08-13): MAGIC-CURRICULUM — sort the diet by the
+  magic estimator's deterministic per-row hardness and feed it in
+  that order** (Artin: "wouldn't it just tell us exactly how to
+  sort the data?"; house: the ordering tie-in). The mapping:
+  CURRICULUM-1's arms order by generator level, and L4-PLY0-1
+  proved the generator's ladder is not the model's ladder; the
+  estimator offers a continuous, engine-relative, reproducible
+  (string-seeded, deterministic given engine version + budget)
+  difficulty scalar per row — a third ordering candidate that is
+  neither the generator's labels nor the model's own solve rate.
+  Measured anchors, including the same-day probe: (1) the
+  estimator's pedigree — held-out rho 0.855 v count_ops 0.342,
+  structure-not-size carries hardness (RESULTS L531); (2) the
+  TRANSPORT FAILURE measured at bank time: v7 scored 300 diet
+  rows/level in seconds on CPU with zero parse failures, but its
+  cost head saturates to 1e5-class values on the diet's expression
+  distribution (trained range ~0-8 log-nodes; adjacent-level
+  medians 8 v 519,055) — the search-generator L1-L5 training
+  distribution does not cover mathgen chain states, so the
+  resulting order [6,4,7,3,5] is extrapolation noise, not an
+  instrument reading. (3) The binary Liouville bit is all-zeros on
+  this diet BY CONSTRUCTION (every integrand is elementary — the
+  generator differentiates a drawn F), so the certificate sorts
+  nothing here. Honest breaks: hardness labels are
+  engine-relative (they drift as rules land) and the estimator's
+  own Bayes-floor finding says the 20 features carry ~99% of
+  explainable variance — a relabeled head is cheap but the
+  ceiling is already known. Testable residue: MAGIC-DIET-LABELS-1
+  — gen_magic_labels pointed at diet chain roots (fork-isolated,
+  budget fixed, CPU farm, sample first per /probe), retrain the
+  head, THEN the ordering probe: does estimator order reproduce
+  the model's measured [3,5,7,6,4]? If yes, MAGIC-CURRICULUM-1
+  becomes a CURRICULUM-1 arm with continuous ordering. GATED
+  behind CURRICULUM-1's verdict: if order is a null lever at
+  birth, the sort is moot for training (stays alive as a
+  difficulty instrument regardless). Attribution: Artin (the sort
+  ask, the CPU instinct — validated, the run cost seconds), house
+  (the transport-failure measurement + the all-zeros certificate
+  catch + the gating).
