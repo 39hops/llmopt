@@ -70,3 +70,30 @@ seconds-per-row, not our sympy ~11 s/seed.
   the GO either way with the measured numbers.
 - Nothing here retunes your instruments; the qual-gate and parity
   artifacts stay as booked.
+
+## CORRECTION (same day, before delivery — the ask above mostly dissolves)
+
+A relay-corpus grep the house should have run first (Artin's
+catch): the primitive this relay asks for was DELIVERED
+2026-07-28 — `successors(state, use_macros, deadline_ms) ->
+{rows: [(rule, Expr)], expired}` on the axiom_sym binding surface
+(IV5, with solve_batch and emit_chain), soundness-accepted
+house-side 200/200 with SCOPED ADOPTION booked (RESULTS L8281):
+the axiom bridge is already the default enumerator for
+soundness-consumers, and farmers migrate at their next touch.
+The house sympy atom farm that ran today was such a farmer and
+should have been written against your bridge (the 2026-07-28
+standing directive: axiom ONLY for engine work on the Mac,
+sympy oracle-of-record at verification). That miss is booked
+house-side, not yours.
+
+What remains of the ask, if anything: nothing you must build.
+The dose ladder, if it fires, runs house-side through your
+bridge (roots house-generated, successors per root, atoms =
+children with no Integral remaining, rule tag free per row,
+sympy verifies). Two soft items only, at your leisure:
+- ply semantics: "one ply" in this relay means ONE house-semantic
+  verified rewrite (your plies read +1/+2 over ours per E4) —
+  successors output sidesteps this entirely, one edge per row.
+- the row contract above gains an `expired` field per your
+  delivery's own doctrine (censored != fact).
