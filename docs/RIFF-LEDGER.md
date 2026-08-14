@@ -4591,6 +4591,23 @@ without re-introducing history).
   stock, standard gate + the loss floor read against the 0.174
   prediction. Attribution: Artin (the ask), house (the
   DIET-AMBIGUITY-1 measurement + the engine-as-teacher framing).
+  [PRIOR-ART AMENDMENT, same day: the ledger already holds an
+  adjacent NULL — DISTRIBUTION ROWS 3-ARM (RESULTS L8078, with
+  MASS-ON-VALID L7976): a matched-dose distribution-row arm was
+  not a capability lever, because pick-trained valid-set
+  distributions were ALREADY near-deterministic. The distinction
+  that keeps SOFT-NEXT-1 alive: that cell softened rows whose
+  targets were nearly unique; this one targets the measured
+  4,356-cur conflict set, where the conditional is genuinely
+  multi-modal (the 0.174-nat mass). The null narrows the
+  prediction — any gate win must come from the conflicted subset
+  or it will not come at all; the LOSS floor read is the primary
+  bar, the gate secondary. LOSS-FLOOR-1 (L26376) is the other
+  owed citation: the corpus-ambiguity half of the trained floor
+  (0.175 nats given full prefix, ratio 0.502) was already
+  measured on the warm diet by a different method — the
+  DIET-AMBIGUITY-1 row-level census is its gen4/row-level
+  cousin, not a first measurement.]
 
 - **BANKED (2026-08-13): loss-bottom-gated dynamic lr ("lr doesn't
   move until loss has bottomed out on the epoch") — and the
@@ -4623,3 +4640,73 @@ without re-introducing history).
   1e-2, book where divergence actually starts. Attribution: Artin
   (both asks, including the joke), house (the absorption framing +
   the floor/ambiguity fences).
+
+- **BANKED (2026-08-13): "have the model only see question and
+  answer — see if the weights are similar to the step-trained
+  19M"** (Artin). Mostly ALREADY MEASURED, banked as the pointer
+  plus the open residue. Measured anchors: the ONESHOT SURPRISE
+  (RESULTS L6495) — root-to-answer-only FROM BIRTH, one pass,
+  gates 54/120 v the pairs arm's 57, including deep levels (L6 8,
+  L7 10), REFUTING the house's <= 40 pre-registration; the chain
+  format's measured product is VALIDITY (error recovery — oneshot
+  validity 33.5%, worst of the battery), not raw solves. And
+  SOL-GRAVMOE-AO1 (L15101): answer-only LOSS ALLOCATION on an
+  existing step-trained model is a strong-direction null (capability
+  fell, format intact) — answer-only DIET from birth and
+  answer-only LOSS on a chain diet are opposite-sign cells.
+  The weights half of the ask has a measured correction: NO tested
+  weight-distance lens recovers functional distance (gauge-aligned
+  distance null, JOINT-PERM closure — distances track ancestry, not
+  function), so "are the weights similar" is answered by RUNNING
+  both, never by comparing tensors. Honest breaks: oneshot was
+  d256/1-pass-era; no 19M/gen4/3-epoch oneshot cell exists.
+  Testable residue: ONESHOT-19M-1 — the phase19m recipe on an
+  answers-only rewrite of the same diet (cur = root, nxt = final),
+  matched steps; gate + per-level + validity v the booked 64; the
+  "similarity" read is function-space (per-level profile + the
+  L4 cell), per doctrine. Attribution: Artin (the ask), house (the
+  prior-art census + the function-space correction).
+
+- **BANKED (2026-08-13): "memorize the answer first, then build
+  the steps/weights off it"** (Artin) — answer-first two-phase
+  diet: phase 1 root-to-answer pairs, phase 2 full chains, one
+  birth. The mapping: backward-chaining curriculum — plant the
+  target attractor, then grow the path structure toward it.
+  Measured anchors: oneshot buys solves without validity and
+  chains buy validity (L6495 — the two phases would supply
+  complementary halves); TENET measured backward EMISSION as
+  prompt-local (24/120 post-step v 1/120 control) but never tested
+  answer-first ORDERING of a forward diet; CURRICULUM-1 (pre-reg
+  this session) tests level order, not target-first order — this
+  is a third, orthogonal ordering axis. Honest breaks: phase-1
+  memorization at 19M scale may just be absorbed and overwritten
+  (the LR floor says early-phase content trains at sub-peak lr —
+  whether it SURVIVES phase 2 is exactly the open question);
+  the answer distribution of gen4 is engine-shaped, so phase 1 is
+  cheap to build from existing rows (no new farming). Testable
+  residue: ANSWER-FIRST-1 — a CURRICULUM-1-shaped arm (same
+  harness, same no-op precondition) with phase 1 = answers-only
+  rows for the first K steps, K pre-registered; gate v 64.
+  Attribution: Artin (the frame), house (the two-phase
+  operationalization + the survival question).
+
+- **BANKED (2026-08-13): factoring-targeted diet for the L4 scar
+  — "could train it on more factoring questions (rather not,
+  not as interesting)"** (Artin, half-retracted at bank time; his
+  own preference booked with it). Measured anchors: diet
+  COMPOSITION dominates (v2 algebra substrate bought 24 GRPO
+  cycles of solves, L1784); the v22 shard IS the precedent — an
+  autopsy-aimed shard built from measured failure modes; L4's dip
+  is exposure-SENSITIVE (3/24 at 0.3x compression v 6-8/24 full)
+  and its mechanism is ply-0 recognition failure (L4-PLY0-1), so
+  a recognition-dense L4 shard (first-ply-only worked examples of
+  the f'(g)*fn(g) family) is the mechanism-matched dose, not just
+  "more L4". Honest breaks: it is a composition lever, already the
+  best-measured lever class in the lab — high odds of working,
+  low information yield (Artin's instinct); it also widens the
+  exposure-fence surface (every targeted shard needs the
+  exclude= guard audit). Testable residue: L4-DIET-1 — +N
+  first-ply L4 recognition rows (exclude=-guarded), paired birth,
+  L4 cell v the 6-8/24 band. Attribution: Artin (idea and the
+  disinterest, both banked), house (the recognition-dense
+  sharpening).
