@@ -29363,3 +29363,53 @@ ca052f48f5c07f7afdc5d325ba3b4ae2a844232b, BUILD_TIME
 Fences: interface acceptance, no gate numbers, no cross-device
 claims. Relay 2026-08-14-4 carries this to axiom. AXIOM-SURFACE.md
 updated same commit (IV6 section; two IV5 fences retired).
+
+## PRE-REG ATOM-DIET-LADDER-1: does the atoms fire replicate across birth seeds at matched horizon? (2026-08-14, Mac)
+
+Both ATOM-DIET-1 bars fired at knife-edge (73 v 72 threshold; L4 12
+at threshold), single seed, with a disclosed ~0.8% control-horizon
+mismatch (control m015300 ran 15,300 steps v arm 15,420). This rung
+buys the error bar and removes the horizon confound in one design.
+
+**Instrument**: scratch/birth19m_atoms_ladder.py (sibling of frozen
+birth19m_atoms.py — same recipe verbatim, SEED and ARM lifted to
+envs, unique output paths). Four arms, serial, Mac/mps, fp32:
+(ARM=stock, ARM=atoms) x BIRTH_SEED in {3, 4}. Both arms run
+EXACTLY 15,420 steps (stock-pinned OneCycle; atoms arm = the same
+6,000-row shard data/micromodel_atoms_shard0.jsonl interleaved via
+stock_epoch_stream over the augmented enc, truncated to stock batch
+count per epoch — byte-identical dose mechanics to ATOM-DIET-1).
+Checkpoints checkpoints/gallery19m_{stock,atoms}_s{3,4}.pt;
+receipts logs/atomladder1/arms.jsonl (streamed per arm). Standard
+120 gate via llmopt.lab.gate.gate_eval.
+
+**No-op precondition**: C.assert_noop(enc_stock) must pass in each
+arm before training (same guard the frozen driver carried); the
+stock arms ARE the no-op leg of the augmentation path (atom rows
+excised, stream reduces to the stock recipe).
+
+**BARS** (paired within seed, seeds 3 and 4 only; seed 2 excluded
+from bars for its horizon mismatch):
+1. LIFT-REPLICATES fires iff atoms_total > stock_total at BOTH new
+   seeds AND mean paired delta >= +5.
+2. L4-REPLICATES fires iff mean atoms L4 across seeds 3,4 >= 10 AND
+   atoms L4 >= stock L4 at both seeds.
+3. HARM-AT-SEED books iff any seed has atoms_total <= stock_total
+   minus 4.
+
+**REFUTED-IF**: mean paired delta across seeds 3,4 <= 0 — the
+ATOM-DIET-1 fire books as seed-2 luck and the diet claim drops to
+NOT-REPLICATED.
+
+**REGISTERED PRIOR**: knife-edge fires regress; house predicts mean
+paired delta +4 to +7 (point +5, i.e. bar 1 is a coin flip on the
+>=+5 clause), mean atoms L4 9 to 11 (point 10, under the seed-2
+record 12). Family record 1 hit, 7 misses.
+
+**FENCES**: single device (mps), fp32, no cross-device claims; same
+frozen shard (never regenerated — 71M band SPENT); n=2 new seeds so
+pooled claims stay [SINGLE-SEED]-adjacent until a third paired seed
+lands; per-arm receipts stream so a wall-kill leaves bookable
+cells; NOT-RUN if the shard file is absent at launch. Mac shares
+CPU with mac-axiom's granted machine time — births are mps-bound,
+contention accepted and disclosed.
