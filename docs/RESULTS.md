@@ -29155,3 +29155,94 @@ cap likewise read as registered; no constant retuned.
 Prereg-auditor pass before booking (8 findings verified and
 adopted, incl. the missing noop receipt as a blocker and three
 prose overstatements cut).
+
+## PRE-REG ATOM-DIET-1: does a rule-tagged atom shard, interleaved at matched steps, lift the gate — and the L4 cell specifically? (2026-08-14, Mac)
+
+Artin GO (post-handoff pick; the constructive inversion of the
+order arc). Bank: RIFF-LEDGER atomic-op decomposition (2026-08-14,
+Artin's database-atomicity frame). Anchors: the decomposition
+discount (~10x per-row for primitives, RESULTS L3682); L4-PLY0-1
+(16/17 L4 failures emit nothing at ply 0 — the missing piece is a
+single-step recognition atom, L28104); CURRICULUM-1/REV/SWAP
+(blocked orders cost 10-27 solves in every direction; shuffled
+interleaving is the measured optimum). Hypothesis: ADDING atoms —
+engine one-ply solves, one indivisible verified rewrite each,
+tagged by rule — interleaved into the stock stream at matched
+compute lifts capability, concentrated at L4.
+
+INSTRUMENT, two parts:
+1. FARM scratch/farm_atoms.py (new): self-contained forked worker
+   (the solve_isolated timebox law; EIS frozen, not edited) —
+   make_integrate(level, seed), engine solve budget 200, KEEP only
+   true one-ply solves (len(history) == 1), both cur and nxt
+   in-language (tokenizer roundtrip), rule = history[0] label
+   prefix. Seed band 71,000,000 (fresh; 8.5M/44M/45M/65M/66M/67M/
+   88M in use). Levels 3-7, per-level targets L4 2,400 and 900
+   each for L3/L5/L6/L7 (target total 6,000). Guards at farm time:
+   (a) D2 gate-band exclusion — norm(cur) and norm(nxt) not in
+   gate_band_exprs(); (b) corpus-cur dedup — norm(cur) not in the
+   excised stock diet's cur-set (no new one-to-many ambiguity,
+   DIET-AMBIGUITY-1); (c) (cur, nxt) dedup within the shard. Rows
+   STREAM to data/micromodel_atoms_shard0.jsonl incrementally
+   (fields cur, nxt, level, rule, source="atom-oneply"); rule-tag
+   distribution printed and booked.
+2. BIRTH scratch/birth19m_atoms.py (thin sibling of the frozen
+   birth19m_curric.py, the rev/swap pattern — imports helpers +
+   assert_noop, edits nothing frozen): stock D2-excised gen4 rows
+   + the atom shard (driver re-applies the D2 excision to atoms,
+   defense in depth), one shared length-sorted encode (the
+   trainer's exact text template; atoms carry is_atom flags),
+   per-epoch stream = the trainer's own shuffle
+   (stock_epoch_stream over the AUGMENTED enc), TRUNCATED to the
+   stock per-epoch batch count; steps_total pinned to the STOCK
+   value (asserted == 15,420) so schedule and compute match the
+   booked control exactly. BIRTH_SEED=2, d384/8L/ffn1536/h6, fp32,
+   mps, 3 epochs, OneCycle max_lr 3e-4 pct_start 0.03, standard
+   120 gate via llmopt.lab.gate.gate_eval. Checkpoint
+   checkpoints/gallery19m_atoms_s2.pt (refuse-if-exists); receipt
+   appended to logs/atomdiet1/arms.jsonl with per-epoch atom-batch
+   exposure counts.
+
+PAIRED CONTROL: the booked phase19m m015300 gate 64/120
+{3:23, 4:7, 5:16, 6:8, 7:10} — same seed, device, recipe, steps;
+the ONE variable is ~6,000 atom rows shuffled into the stream
+(displacing an equal number of random stock rows via truncation,
+~3.5% exposure share).
+
+NO-OP PRECONDITION: C.assert_noop on the STOCK enc must pass
+in-process before training (the driver's zero-atom stream equals
+the real trainer's epoch-1 stream tuple-for-tuple), and the
+steps_total == 15,420 assertion must hold. Receipt tee'd to
+logs/atomdiet1/noop.log.
+
+BARS (all vs the booked control, registered thresholds only):
+1. P-ATOM-LIFT FIRES: total >= 72 (clears the 7-solve single-seed
+   resolution above 64).
+2. P-L4-ATOM FIRES: L4 cell >= 12 (control 7; no arm this lineage
+   has exceeded 7 — the recognition-atom mechanism claim).
+3. P-ATOM-HARM (guard) books: total <= 56 (the one-ply flooding
+   scar reproduced at ~3.5% dose).
+4. Anything else books NULL-AT-DOSE: atoms at ~3.5% neither help
+   nor harm past resolution; residue = a registered dose ladder,
+   not a retune of this arm.
+
+REFUTED-IF: total <= 64 AND L4 <= 8 — the atom hypothesis adds
+nothing at this dose; the bank's residue closes negative at this
+n=1 dose point (the dose ladder remains open but owes a new
+pre-reg).
+
+REGISTERED PRIOR (house, on record; family record 1 hit 6 misses):
+NO primary bar fires — total 64-70 (point guess 67), L4 up but
+short of threshold at 9-11 (point guess 10). Mechanism on record:
+6,000 rows is ~2 orders under the primitive k_efold budget
+(~1,900-2,400 rows PER KIND, and the L4 surface spans many
+skeletons), so the dose moves the cell inside resolution, not
+past it.
+
+FENCES: [SINGLE-SEED] BIRTH_SEED=2 only, Mac/mps only, 19M/gen4
+lineage, matched 15,420 steps; dose pinned — if the farm lands
+< 4,000 atoms inside its wall the birth books NOT-RUN and the
+rung re-scopes; exclusion audit asserted at farm AND at the
+driver; per-level cells read against the registered thresholds
+only; comparison to the booked control only, no cross-device
+reads; no constant retuned after data.
