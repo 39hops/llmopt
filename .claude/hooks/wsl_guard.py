@@ -77,6 +77,21 @@ if verb in ("check", "tail", "clean-marker", "mkdir"):
 if verb == "kill":
     out("ask", f"wsl.sh kill — pattern: {rest[:80]}")
 
+# Standing OK (Artin 2026-08-15, overnight-autonomy session): a
+# launch of a git-tracked driver with its log and marker both under
+# logs/ is the reviewed shape — the driver text was seen at commit
+# time, and the launch itself creates only a log, a marker, and the
+# job. Anything fancier (inline commands, paths outside logs/)
+# still asks.
+if verb == "launch" and _bare:
+    lm = re.match(r"""\s*(?:"bash\s+(scratch/[\w-]+\.sh)"
+                  |'bash\s+(scratch/[\w-]+\.sh)')\s+
+                  (logs/[\w./-]+)\s+(logs/[\w./-]+)\s*$""",
+                  rest, re.X)
+    if lm:
+        out("allow", f"wsl.sh launch of tracked driver "
+            f"{lm.group(1) or lm.group(2)} with log+marker under logs/")
+
 # the inner command: first quoted argument
 pm = re.match(r'\s*"((?:[^"\\]|\\.)*)"|\s*\'([^\']*)\'', rest, re.S)
 inner = (pm.group(1) or pm.group(2)) if pm else rest
@@ -133,9 +148,14 @@ if verb == "launch" or re.search(CHANGES_STATE, inner, re.X):
 
 READS_ONLY = re.compile(
     r"^[\s(]*((ls|tail|head|cat|wc|grep|pgrep|test|df|du|md5sum|"
-    r"sha256sum|echo|pwd|which|stat|find|sleep)\b|git\s+"
-    r"(status|log|rev-parse|fetch|diff|show)\b)")
-parts = re.split(r"&&|\|\||;", inner)
+    r"sha256sum|echo|pwd|which|stat|find|sleep|cd|nvidia-smi|free|"
+    r"uptime|nproc|date|hostname)\b|git\s+"
+    r"(status|log|rev-parse|fetch|diff|show)\b|"
+    r"mkdir\s+-p\s+(~/code/llmopt/)?logs/)")
+# a /dev/null redirect discards output; it cannot change the box, so
+# strip it before the state-change and read-only checks see it
+inner_clean = re.sub(r">\s*/dev/null(\s+2>&1)?|2>&1", " ", inner)
+parts = re.split(r"&&|\|\||;", inner_clean)
 # `ls $(...)` looks like a read but runs whatever is in the
 # substitution, so it never takes the allow path
 if re.search(r"\$\(|`", inner):
