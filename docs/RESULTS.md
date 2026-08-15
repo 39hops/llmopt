@@ -29981,3 +29981,51 @@ mislabeled field); derived shards are selections (71M band stays
 spent); checkpoints gallery19m_{noheur,ctrl3218}_s3.pt exhaust
 (75.7 MB each). Next hardening step if taken: seeds 4/5 paired
 arms, same shards, same horizon.
+
+## AMENDMENT SOFT-SPEED-1-PRECONDITION (target: PRE-REG SOFT-SPEED-1 L29844): the bit-exact reproduction precondition was UNACHIEVABLE — mps training is run-level nondeterministic at fixed seed; comparison re-based to the in-run control BEFORE the soft arm's gate exists (2026-08-15, Mac)
+
+Timing fence: booked while the soft arm sits at ~step 1,200/13,422
+(no soft gate reading exists; the control reading exists and is
+quoted). This amendment changes the PRECONDITION, not the bars.
+
+Measured: the control arm through the new driver landed 62/120
+{3:21, 4:8, 5:15, 6:7, 7:11} @59.27%, weights sha 5660d3ab508e872e
+— NOT the booked stock s3 cell 64/120 {3:24, 4:6, 5:15, 6:8, 7:11}
+sha bf2dc94b1d9712cb (L29465). Diagnosis, receipt in-line: a
+20-step paired determinism probe (same process, same seed, same
+batches, ladder loss path verbatim, mps fp32) produced DIFFERENT
+weight hashes on consecutive runs (be08faf349a2d682 v
+2a608836807668b3). Mac mps fp32 TRAINING is not bit-reproducible
+across runs at fixed seed (atomics-order class, e.g. embedding
+backward). The registered precondition demanded cross-RUN bit
+identity, which this substrate cannot deliver — an
+instrument-design error in the pre-reg, not a harness defect in
+the driver. The 62 v 64 gap (2 solves) is within run-to-run noise
+and carries no signal about the driver.
+
+Consequences:
+1. The identity precondition is RETIRED for this rung. The
+   comparison bars were ALREADY relative to the in-run control
+   (QUALITY-HOLDS: soft_total >= control_total - 4; REFUTED-IF:
+   soft_total <= control_total - 7); they now bind against
+   control = 62: QUALITY-HOLDS fires iff soft >= 58; REFUTED-IF
+   fires iff soft <= 55. SPEED bar unchanged (soft steps_total
+   13,422 <= 13,878 already satisfied on the deterministic half;
+   wall-clock half pending).
+2. STANDING FENCE, all Mac bookings: same-seed mps birth
+   reproducibility is RUN-LEVEL STOCHASTIC. Paired arms within
+   one registered family remain valid (same substrate noise both
+   arms); cross-RUN weight-sha identity must never be a
+   precondition or a comparison basis on mps. (The ladder's three
+   stock-64 readings at three seeds were three runs — the "all
+   exactly 64" observation at L29517 now reads as coincidence
+   plus small noise, consistent with this control's 62.)
+3. Receipts defect disclosed: the driver appends receipt rows in
+   SMOKE mode too; logs/softspeed1/arms.jsonl carries two smoke
+   rows (steps=3) ahead of the real rows. Identifiable and
+   harmless; real rows carry steps 15,420 / 13,422.
+
+Fences: the determinism probe is 20 steps n=1 pair — sufficient to
+prove NON-determinism (one counterexample), silent on magnitude
+at 15,420 steps; the 2-solve control gap is the only end-to-end
+magnitude datum this session. Single seed, mps fp32, Mac family.
