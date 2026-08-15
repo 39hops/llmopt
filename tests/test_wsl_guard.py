@@ -72,7 +72,13 @@ DECISIONS = [
     ("ask", 'scratch/wsl.sh run "ls $(touch /tmp/side_effect)"'),
     ("ask", 'scratch/wsl.sh run "ls `hostname`"'),
     # no rule covers it: show rather than guess
-    ("ask", "scratch/wsl.sh run 'nvidia-smi'"),
+    # greenlisted 2026-08-15 (Artin's overnight-autonomy ask):
+    # nvidia-smi reads GPU state only
+    ("allow", "scratch/wsl.sh run 'nvidia-smi'"),
+    ("allow", "scratch/wsl.sh launch 'bash scratch/x_driver.sh' "
+              "logs/x/driver.log logs/x.DONE"),
+    ("ask", "scratch/wsl.sh launch 'rm -rf ~/code' "
+            "logs/x/driver.log logs/x.DONE"),
     # unrecoverable — refuse outright
     ("deny", "scratch/wsl.sh run 'rm -rf ~'"),
     ("deny", "scratch/wsl.sh run 'git push --force origin main'"),

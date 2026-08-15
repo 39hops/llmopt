@@ -1,0 +1,2 @@
+{"arm": "control", "seed": 2, "steps": 15420, "solves": {"3": 22, "4": 7, "5": 16, "6": 8, "7": 11}, "total": 64, "valid_pct": 61.81, "device": "cuda", "bf16": true, "census_curs": 4347, "n_soft_rows": 25574, "valid_set_mass": 0.6327, "cal_sample": 500, "code_commit": "87ef574"}
+{"arm": "soft", "seed": 2, "steps": 15420, "solves": {"3": 22, "4": 6, "5": 15, "6": 7, "7": 11}, "total": 61, "valid_pct": 61.5, "device": "cuda", "bf16": true, "census_curs": 4347, "n_soft_rows": 25574, "valid_set_mass": 0.636, "cal_sample": 500, "code_commit": "87ef574"}

@@ -1,0 +1,8 @@
+[curric] D2 excision: 165028 -> 164896 rows
+[softnext] census: 4347 conflicted curs (booked 4356), soft rows 25574
+[curric] D2 excision: 165028 -> 164896 rows
+[curric] NO-OP PASS: 100 tuples + epoch length 5140 match the trainer path
+[softnext] arm=control dev=cuda bf16=True steps_total 15420
+[softnext] saved checkpoints/gallery19m_softnext_control_s2.pt after 15420 steps (490s), soft positions touched 0
+[gate] weights sha b951fa587499c70b
+[softnext] GATE arm=control {3: 22, 4: 7, 5: 16, 6: 8, 7: 11} = 64/120 @ 61.81% | valid_set_mass 0.6327

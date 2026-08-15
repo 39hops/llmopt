@@ -1,0 +1,12 @@
+[curric] D2 excision: 165028 -> 164896 rows
+[softnext] census: 4347 conflicted curs (booked 4356), soft rows 25574
+[curric] D2 excision: 165028 -> 164896 rows
+164896 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e']
+skipped 388 out-of-language rows (strict encode; historically silently mangled)
+164490 sequences, vocab 40
+model: 18.9M params on cuda [fast: bf16 + token-budget]
+[curric] NO-OP PASS: 100 tuples + epoch length 5140 match the trainer path
+[softnext] arm=soft dev=cuda bf16=True steps_total 15420
+[softnext] saved checkpoints/gallery19m_softnext_soft_s2.pt after 15420 steps (536s), soft positions touched 104640
+[gate] weights sha f41ccc02c180476e
+[softnext] GATE arm=soft {3: 22, 4: 6, 5: 15, 6: 7, 7: 11} = 61/120 @ 61.50% | valid_set_mass 0.6360

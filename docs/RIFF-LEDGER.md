@@ -4610,7 +4610,13 @@ without re-introducing history).
   Testable residue: SOFT-NEXT-1 — rebuild the conflicted 15.7% as
   distribution rows (same support, soft targets), paired birth vs
   stock, standard gate + the loss floor read against the 0.174
-  prediction. Attribution: Artin (the ask), house (the
+  prediction. [RUN AND REFUTED 2026-08-15: trie soft targets at
+  branch tokens moved neither calibration (+0.0033 v +0.05 bar)
+  nor the gate (within noise) — the model already parks 63% of
+  its mass on valid-answer sets under one-hot training. DEAD at
+  this recipe; revival condition = a recipe where branch-token
+  gradient variance is demonstrably binding. VERDICT RESULTS.md
+  L29733.] Attribution: Artin (the ask), house (the
   DIET-AMBIGUITY-1 measurement + the engine-as-teacher framing).
   [PRIOR-ART AMENDMENT, same day: the ledger already holds an
   adjacent NULL — DISTRIBUTION ROWS 3-ARM (RESULTS L8078, with
@@ -4886,6 +4892,14 @@ without re-introducing history).
   above is now CLOSED for direction; still open: dose ladder,
   rule-ablated shards, magnitude at wider n. VERDICT RESULTS.md
   L29465.
+  [MEASURED 2026-08-15, dose ladder]: EMITTER-DIVERGES — the
+  effect does NOT transport to axiom-emitted atoms at matched
+  dose (66 v 70, L4 7 v 12); within the axiom family the response
+  is monotone 64/66/72 through ~6.3% exposure, no flooding scar.
+  The bank's "one-ply atoms teach recognition" claim is now
+  SHARD-FAMILY-SCOPED: rule mix / answer forms / censoring carry
+  a large share. Open: rule-ablated shards (i_heurisch mass
+  first). VERDICT RESULTS.md L29662.
 
 - **BANKED (2026-08-15): teach the basics before calculus — a
   pre-calculus atom tier** (Artin: "shouldn't we also teach it the

@@ -29658,3 +29658,136 @@ path untouched; the control arm IS the recipe reference); gate
 numbers quote gate-printed weights sha; cross-device claims
 forbidden as always. If the 3080 window closes mid-run, receipts
 already streamed book as partial (arm-level granularity).
+
+## VERDICT ATOM-DOSE-LADDER-1: EMITTER-DIVERGES at matched dose, monotone response 64/66/72 with no flooding scar through 7%; axiom rows carry less L4 per row (2026-08-15, Mac)
+
+Pre-reg L29533 (commit a783088, before the farm fired). Farm:
+scratch/farm_atoms_axiom.py completed 12,000/12,000 rows exactly on
+per-level targets {4:4800, 3:1800, 5:1800, 6:1800, 7:1800} in
+12,690s = 3.5h (3,419/hr, rolling pool; axiom build-iv7 GIT_SHA
+5a8ae70 asserted in-worker — an assert, not logged; every kept pair
+sympy re-verified on top of verify_edge), shard
+data/micromodel_atoms_axiom_shard0.jsonl (untracked evidence; seed
+band 72M now SPENT). Births: scratch/birth19m_atoms_dose.py via
+scratch/atomdose1_driver.sh, three serial arms, BIRTH_SEED 3,
+15,420 steps each, mps fp32, nested string-seeded dose subsets
+(random.Random("dose-ladder-1"), smaller dose = strict prefix).
+Receipts logs/atomdose1/arms.jsonl (force-added this commit);
+driver rc=0; NO-OP PASS in all three logs. Launch HEAD 2b5eb2f;
+receipt code_commit stamps are END-OF-ARM HEADs (4a72115, 4a72115,
+3c4bb71 — the session advanced mid-family); the instrument diff
+2b5eb2f..3c4bb71 over farm/birth/driver/llmopt is EMPTY, so all
+arms ran identical code.
+
+Measured (dicts are the checksum; comparators stock s3 = 64
+{3:24,4:6,5:15,6:8,7:11} and atoms-sympy s3 = 70, both booked
+L29465, same seed and horizon):
+
+- dose1  (1,700):  64/120 {3:22, 4:7,  5:16, 6:7, 7:12} @61.58% sha 6d5bfd30e2bf1a6c
+- dose3p5 (6,000): 66/120 {3:22, 4:7,  5:17, 6:7, 7:13} @63.77% sha dc9f405a19419167
+- dose7 (12,000):  72/120 {3:23, 4:11, 5:17, 6:8, 7:13} @61.66% sha f40f771cc136fcc8
+
+EXPOSURE DISCLOSURE (dose-dependent truncation, the comparator
+verdict's 187-batch mechanic): per-epoch atom exposure was 99.96%
+of nominal at dose1, 96.3% at dose3p5, 93.2% at dose7 — the
+nominal 1/3.5/7% ladder is a 1.0/3.4/6.3% exposure ladder.
+
+**BAR 1 (EMITTER-TIE): NO-FIRE — EMITTER-DIVERGES books.**
+"|A2_total - 70| <= 3": |66 - 70| = 4. At matched dose, seed,
+horizon, and interleave mechanics, axiom atoms deliver +2 where
+sympy atoms delivered +6, and the L4 cell reads 7 (one above the
+stock 6, five under the sympy shard's 12). Per the pre-reg, A1/A3
+dose readings are fenced to the AXIOM-EMITTER FAMILY only.
+**BAR 2 (LOW-HOLDS): NO-FIRE** ("A1_total >= 67": 64).
+**BAR 3 (HIGH-NO-SCAR): FIRES** ("A3_total >= 68; A3_total <= 63
+books FLOOD-AT-7": 72 >= 68, flood branch untriggered).
+**BAR 4 (L4-DOSE): NO-FIRE** ("A2 and A3 L4 >= 10 each AND A1 L4
+>= 8": A2 = 7, A1 = 7; A3's 11 alone is not the bar).
+**REFUTED-IF does not trigger** (requires all three <= 64; A2 = 66
+already breaks it).
+
+Registered prior: 1 hit in 6 legs (A3 L4 = 11 in 11-12); A1/A2
+totals and L4 optimistic, A3 total pessimistic (72 above 67-71).
+Family record 3 hits, 13 misses.
+
+Reading. Within the axiom family the dose response is monotone
+(64 -> 66 -> 72) with no flooding scar through ~6.3% exposure.
+Across emitters, per-row worth: TOTAL +8/12,000 v +6/6,000 =
+~0.67x per axiom row (~0.69x exposure-adjusted) — 12,000 axiom
+rows bought MORE total than 6,000 sympy rows, at half the per-row
+rate; L4 +5/12,000 v +6/6,000 = ~0.42x per row. INDICATIVE ONLY:
+these rates rest on 2-solve differences at n=1 seed, under the
+7-solve resolution law — the booked FACT is the bar pattern
+(tie missed at 4, monotone family curve), not the rate decimals.
+HYPOTHESIS for the rule-ablation rung, not a measurement: the L4
+gap tracks rule mix first (the sympy shard was 46% i_heurisch —
+2,782/6,000, booked in VERDICT ATOM-DIET-1's shard stats L29250
+block), answer canonicalization second, censoring class third.
+
+Fences: single seed (3), dose SHAPE only, single device (mps),
+matched horizon; L4 farm wall 8s censoring disclosed at pre-reg
+(censored != fact); Mac shared CPU with mac-axiom machine time —
+births mps-bound, disclosed; checkpoints
+gallery19m_dose{1,3p5,7}_s3.pt exhaust (75.7 MB each).
+
+## VERDICT SOFT-NEXT-1: REFUTED at this recipe — branch-distribution targets moved neither calibration (+0.0033 v the +0.05 bar) nor the gate (-3, below instrument resolution) (2026-08-15, 3080)
+
+Pre-reg L29605 (commit 2545cd6, before launch). Instrument:
+scratch/birth19m_softnext.py via scratch/softnext1_driver.sh on
+the 3080, two serial arms, BIRTH_SEED 2, 15,420 steps, cuda bf16
+autocast — the first entries of the NEW 3080-bf16 gate family
+(never compared to Mac/fp32 numbers). Receipt code_commit 87ef574
+both rows. Driver assertions all passed in both arms (pulled arm
+logs, force-added this commit alongside arms.jsonl): pre-excision
+165,028 exact; in-driver census 4,347 conflicted curs v booked
+4,356 = 0.21% drift, inside the 1% band (booked scan was
+pre-D2-excision per DIET-AMBIGUITY-1's own fence; the driver
+censuses the post-excision diet); 25,574 soft rows;
+C.assert_noop passed (the driver runs it although the pre-reg
+deemed it not-applicable). DONE marker fired on the 3080
+(logs/softnext1.DONE lives there; receipts pulled to the Mac).
+
+Measured (dicts are the checksum):
+
+- control: 64/120 {3:22, 4:7, 5:16, 6:8, 7:11} @61.81%
+  valid_set_mass 0.6327 (500-cur sample) sha b951fa587499c70b
+- soft:    61/120 {3:22, 4:6, 5:15, 6:7, 7:11} @61.50%
+  valid_set_mass 0.6360 (same sample)    sha f41ccc02c180476e
+
+**BAR 1 (SOFT-CAL): NO-FIRE.** "SOFT-CAL fires iff soft valid-set
+mass >= control + 0.05 (absolute)": 0.6360 - 0.6327 = +0.0033, an
+order of magnitude short.
+**BAR 2 (GATE-SAFE): FIRES.** "|soft_total - control_total| <= 4":
+|61 - 64| = 3. Neither SOFT-HARM (<= 59) nor SOFT-LIFT (>= 69)
+books. The -3 itself is BELOW the 7-solve instrument resolution —
+a within-noise reading, not a measured decline.
+**REFUTED-IF TRIGGERS**: SOFT-CAL missed AND 61 <= 64. The
+SOFT-NEXT residue books DEAD at this recipe.
+
+Registered prior: 0 hits in 2 legs (gate delta -3 v -2..+4, missed
+by one; mass +0.0033 v +0.03..+0.10). Family record 3 hits, 15
+misses (predecessor: VERDICT ATOM-DOSE-LADDER-1, booked
+immediately above, 3 hits 13 misses).
+
+Reading. The model ALREADY concentrates 63% of its teacher-forced
+mass on the valid-answer set of conflicted prompts after one-hot
+training (control 0.6327). Interpretation (unmeasured): separate
+one-hot rows average into the branch distribution in expectation,
+so the trie targets could only have removed gradient variance at
+branch tokens, and at 19M/15,420 steps that variance was not the
+binding constraint on either observable. The 0.174-nat floor is
+real (DIET-AMBIGUITY-1 L28562) but it is a property of the loss
+METRIC, not a capability tax this intervention recovers. Scope:
+one seed, one softness dose, one recipe — REFUTED-AT-RECIPE, not
+an impossibility proof; revival condition = a recipe where
+branch-token variance is demonstrably binding (much smaller data,
+or RL where the reference policy's spread matters).
+
+Fences: 3080-bf16 family stands alone (bf16 + device both differ
+from every Mac booking; the control's 64 equalling Mac stock
+readings is a coincidence and no cross-device claim rides on it);
+single seed n=1, direction-grade only; valid-set-mass probe is
+teacher-forced sequence probability (greedy-decode behavior is the
+gate's job); gate-printed weights shas quoted above from the
+pulled arm logs; checkpoints remain on the 3080
+(checkpoints/gallery19m_softnext_{control,soft}_s2.pt).

@@ -1976,3 +1976,26 @@ regime tag on every bullet is the fence.
   with both registered bars firing cleanly (no knife-edge this
   time). Dose and rule generality still unmeasured.
   ([VERDICT ATOM-DIET-LADDER-1](RESULTS.md#L29465).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe] The
+  one-ply atom effect does not transport across emitters at
+  matched dose: axiom-emitted atoms (IV7 emit_chain, sympy
+  re-verified) deliver +2 and a stock-level L4 where sympy-emitted
+  atoms delivered +6 and L4 12, at identical dose, seed, horizon,
+  and interleave mechanics — the registered emitter-tie bar missed
+  and EMITTER-DIVERGES booked. Within the axiom family the dose
+  response is monotone (64/66/72 at 1/3.5/7% nominal) with no
+  flooding scar; WHAT the atoms are (rule mix, answer forms,
+  survivor censoring) carries a large share of the effect, and the
+  rule-ablation rung inherits a ranked hypothesis list.
+  ([VERDICT ATOM-DOSE-LADDER-1](RESULTS.md#L29662).)
+
+- [NULL] Attaching the branch distribution to the diet's 15.7%
+  conflicted rows (trie soft targets at branch tokens, same rows
+  and compute) moved nothing at 19M: valid-set mass +0.0033
+  against a +0.05 bar and a within-noise gate reading — the
+  pre-registered REFUTED-IF triggered. The model already parks 63%
+  of its teacher-forced mass on the valid-answer sets after plain
+  one-hot training, so the ambiguity floor is a loss-metric
+  property, not a recoverable capability tax at this recipe.
+  ([VERDICT SOFT-NEXT-1](RESULTS.md#L29733).)
