@@ -4886,3 +4886,29 @@ without re-introducing history).
   above is now CLOSED for direction; still open: dose ladder,
   rule-ablated shards, magnitude at wider n. VERDICT RESULTS.md
   L29465.
+
+- **BANKED (2026-08-15): teach the basics before calculus — a
+  pre-calculus atom tier** (Artin: "shouldn't we also teach it the
+  basics?"). The mapping: the stock diet teaches arithmetic and
+  algebra only IMPLICITLY (coefficient math rides inside
+  integration steps; no row ever states 16/2=8 or
+  (x+1)**2 = x**2+2*x+1 on its own). The atom-diet arc measured
+  that foundation supplied AS DATA beats foundation left implicit
+  (ATOM-DIET-1 L29250, replicated L29465) — this riff extends the
+  same move DOWN the stack: one-ply arithmetic/algebra atoms
+  (subs_eval, cancel, expand — all NATIVE axiom rules, so the
+  IV7 emit_chain farm covers it with zero new machinery) at a
+  capped dose. Measured anchors: the L4 one-ply diet +6 at 3.5%
+  dose, L4 cell 12/12/12; dose ladder in flight (L29533).
+  Honest breaks: the 120 gate has no L1/L2 cells, so "basics
+  improved" has no direct gate readout — nearest observables are
+  valid% (syntax/arithmetic slips) and the L3 cell; and the
+  decomposition discount could point the OTHER way here
+  (arithmetic may already be saturated by implicit exposure —
+  the diet share doctrine warns against spending rations on it).
+  Testable residue: BASICS-DIET rung — farm algebra/arithmetic
+  one-ply atoms via axiom's native rules, interleave at <=2%
+  dose beside the calculus atoms, bars on valid% and L3 with a
+  no-harm guard on the total; runs after the dose ladder prices
+  dose headroom. Attribution: Artin (the ask), house (the
+  axiom-native farm route + observable choice).
