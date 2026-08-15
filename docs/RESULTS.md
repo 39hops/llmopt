@@ -29912,3 +29912,72 @@ Valid-set-mass probe rides along as an unregistered observable
 values). Wall-clock measured on a Mac also running mac-axiom desk
 work — contention noted if present. NOT launched before
 RULE-ABLATE-1's marker (one birth at a time on the Mac).
+
+## VERDICT RULE-ABLATE-1: RULE-CARRIER fires at knife-edge — removing i_heurisch rows costs exactly the 3-L4-solve bar, single seed, direction-grade only (2026-08-15, Mac)
+
+Pre-reg L29795 (commit 5da3ba7, committed 11:12:53, first arm
+launched 11:13:41). Instrument: derived shards from
+scratch/make_ruleablate_shards.py (selection only, frozen source
+untouched), births scratch/birth19m_atoms_rule.py via
+scratch/ruleablate1_driver.sh, two serial arms, BIRTH_SEED 3,
+15,420 steps, mps fp32. Receipts logs/ruleablate1/arms.jsonl
+(force-added this commit); driver rc=0.
+
+Measured (dicts are the checksum; comparators stock s3 = 64 and
+atoms-sympy-6k s3 = 70, both L29465, same seed/horizon/device):
+
+- noheur   (3,218): 68/120 {3:22, 4:8,  5:16, 6:9, 7:13} @62.64% sha 0f24250164f64be1
+- ctrl3218 (3,218): 72/120 {3:22, 4:11, 5:16, 6:9, 7:14} @65.00% sha 33d6dcf9e9d47515
+
+**BAR 1 (RULE-CARRIER): FIRES, AT EXACTLY THE BAR.** ctrl_L4 -
+noheur_L4 = 11 - 8 = 3 >= 3. Knife-edge: the delta equals the
+threshold. And it fired AGAINST the level-mix gradient — noheur is
+the L4-RICHER shard (43.85% v 38.81% measured) and still lost the
+L4 cell, which per the pre-registered fence strengthens the
+carrier reading.
+**BAR 2 (HALF-DOSE-HOLDS): FIRES.** ctrl 72 >= 67 — and 72 sits
+ABOVE the full 6,000-row shard's 70: 3,218 random sympy atom rows
+bought at least what 6,000 did at this seed (label note: "half
+dose" is 53.6%, and ctrl retains 1,466 heurisch rows, 45.6% of
+itself).
+**BAR 3 (HARM-GUARD): no fire** (min arm 68 > 60). **REFUTED-IF
+does not trigger** (8 < 11).
+
+Registered prior: 2 hits in 4 legs — both L4 points HIT (ctrl 11
+in 9-11, noheur 8 in 6-8), both totals MISSED low (72 v 66-69, 68
+v 64-67). Family record 5 hits, 17 misses.
+
+Reading: the suspect ranking from ATOM-DOSE-LADDER-1 (L29662)
+survives its first direct test — heurisch-derived rows carry L4
+content the other rules do not, at matched dose and matched
+horizon. But the claim stays DIRECTION-GRADE: single seed, 3-solve
+delta on a 24-problem sub-scale, exactly at the pre-registered
+bar; the resolution law wants n>=3 paired seeds before "heurisch
+content IS the L4 carrier" hardens. Meanwhile noheur 68 > stock 64
+says the non-heurisch remainder still lifts the total — the
+carrier story is about the L4 CELL, not the whole atom effect.
+
+CORRECTIONS booked with the verdict (auditor findings, verified):
+(1) both receipt rows carry "emitter": "axiom-iv7-5a8ae70" —
+FALSE, inherited verbatim from the dose driver's hardcoded field
+(scratch/birth19m_atoms_rule.py:166); this run births off the
+SYMPY shard splits. The field is mislabeled in the evidence
+record; nothing numeric rides on it, and any receipts query
+filtering by emitter must exclude/correct these two rows. (2) The
+pre-reg's ctrl mix estimate "~40%" books as measured 38.81%. (3)
+The disclosed confound understated: the ablation shifts EVERY
+level, not just L4 — noheur/ctrl by level: L3 665/487, L4
+1411/1249, L5 432/501, L6 163/466 (2.9x L6 starvation), L7
+547/515. L6 tied 9/9 regardless. (4) The pre-reg said "sample";
+the shipped script is shuffle-then-truncate
+(random.Random("rule-ablate-1").shuffle -> [:3218]) — same
+uniformity, DIFFERENT draw; re-derivations must use the shuffle
+form (the on-disk shards reproduce bit-exactly from it, auditor
+re-ran the selection).
+
+Fences: single seed (3), single device (mps fp32), matched
+15,420-step horizon, sympy-emitter family only (despite the
+mislabeled field); derived shards are selections (71M band stays
+spent); checkpoints gallery19m_{noheur,ctrl3218}_s3.pt exhaust
+(75.7 MB each). Next hardening step if taken: seeds 4/5 paired
+arms, same shards, same horizon.

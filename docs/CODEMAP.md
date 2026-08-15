@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 189, spec-cited 86, cited-but-library 55
+Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 191, spec-cited 86, cited-but-library 55
 
 ## scratch/
 
@@ -22,23 +22,24 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 189, spec-ci
 | anatomy | anatomy.py | results-cited | RESULTS, specs | RESULTS×5, specs×7 | — | 3 |
 | assets | assets_classify.py | spec-cited | specs | specs×1 | — | — |
 | atlas | atlas_precompute.py | spec-cited | specs | specs×1 | — | — |
-| atomdose1 | atomdose1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | atomladder1 | atomladder1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | attractor | attractor_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
 | basin | basin_probe.py | UNCITED | — | — | — | — |
 | birth19m | birth19m_atoms.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | 1 |
-| birth19m | birth19m_atoms_dose.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
+| birth19m | birth19m_atoms_dose.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | birth19m | birth19m_atoms_ladder.py | results-cited | RESULTS | RESULTS×2 | — | 3 |
-| birth19m | birth19m_atoms_rule.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| birth19m | birth19m_atoms_rule.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
 | birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
-| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 9 | — |
+| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 10 | — |
 | birth19m | birth19m_curric_rev.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
 | birth19m | birth19m_curric_swap.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | birth19m | birth19m_snaps.py | UNCITED | — | — | — | 1 |
-| birth19m | birth19m_softnext.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| birth19m | birth19m_softnext.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
+| birth19m | birth19m_softspeed.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | blackhole | blackhole_b0.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | boundary | boundary_or_bulk.py | results-cited | RESULTS | RESULTS×3 | — | — |
 | brute | brute_arms_0801.sh | UNCITED | — | — | — | — |
@@ -106,7 +107,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 189, spec-ci
 | export | export_mb_ref.py | UNCITED | — | — | — | — |
 | export | export_r2b_ref.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | farm | farm_atoms.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 1 |
-| farm | farm_atoms_axiom.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| farm | farm_atoms_axiom.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | farm | farm_dist_rows.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
 | farmer | farmer_probe.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | fig | fig_magic_scatter.py | spec-cited | specs | specs×1 | — | — |
@@ -202,7 +203,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 189, spec-ci
 | lyapunov | lyapunov_birth.sh | UNCITED | — | — | — | — |
 | mac | mac_day_chain.sh | UNCITED | — | — | — | — |
 | make | make_altpairs.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| make | make_ruleablate_shards.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| make | make_ruleablate_shards.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | make | make_union_diet.py | UNCITED | — | — | — | 1 |
 | margin | margin_by_level.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | margin | margin_by_ply.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -334,7 +335,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 189, spec-ci
 | rot | rot_convert.py | spec-cited | specs | specs×1 | — | — |
 | rot | rot_snap_anatomy.py | UNCITED | — | — | — | — |
 | rotinstr | rotinstr_control.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| ruleablate1 | ruleablate1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| ruleablate1 | ruleablate1_driver.sh | results-cited | RESULTS | RESULTS×2 | — | — |
 | run | run_snap_gates.sh | spec-cited | specs | specs×1 | — | — |
 | run | run_snap_knee.sh | UNCITED | — | — | — | — |
 | saturation | saturation_s2.py | results-cited | RESULTS | RESULTS×2 | — | — |
@@ -348,10 +349,11 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 189, spec-ci
 | series | series_probe.py | spec-cited | specs | specs×5 | — | 15 |
 | snap | snap_alloc.py | spec-cited | specs | specs×2 | — | 1 |
 | snap | snap_anatomy.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| softnext1 | softnext1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| softnext1 | softnext1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | softprompt | softprompt_sampler_probe.py | spec-cited | specs | specs×1 | — | — |
 | softprompt1 | softprompt1.py | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | 3 |
 | softprompt1 | softprompt1.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| softspeed1 | softspeed1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | soup | soup_gate.py | spec-cited | specs | specs×1 | — | 1 |
 | ssm | ssm_star.py | library | RESULTS | RESULTS×1 | 1 | 1 |
 | ssm | ssm_star1.sh | UNCITED | — | — | — | — |
@@ -563,7 +565,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 189, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 64 | 31 |
+| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 65 | 31 |
 | train | train_nnue.py | library | specs | specs×8 | 1 | 12 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |

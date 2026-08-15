@@ -4900,6 +4900,15 @@ without re-introducing history).
   SHARD-FAMILY-SCOPED: rule mix / answer forms / censoring carry
   a large share. Open: rule-ablated shards (i_heurisch mass
   first). VERDICT RESULTS.md L29662.
+  [MEASURED 2026-08-15, rule ablation]: the suspect ranking's head
+  survives its first test — RULE-CARRIER fires at exactly the
+  3-L4-solve bar (noheur L4 8 v ctrl 11), against the level-mix
+  gradient, single seed, direction-grade. The non-heurisch
+  remainder still lifts the total (68 v stock 64): heurisch mass
+  is the L4-CELL story, not the whole atom effect. Rider: 3,218
+  random rows = 72, at/above the 6,000-row shard's 70. Open:
+  seeds 4/5 to harden; answer-form and censoring suspects untested.
+  VERDICT RESULTS.md L29916.
 
 - **BANKED (2026-08-15): teach the basics before calculus — a
   pre-calculus atom tier** (Artin: "shouldn't we also teach it the

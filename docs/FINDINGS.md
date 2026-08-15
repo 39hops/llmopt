@@ -1999,3 +1999,17 @@ regime tag on every bullet is the fence.
   one-hot training, so the ambiguity floor is a loss-metric
   property, not a recoverable capability tax at this recipe.
   ([VERDICT SOFT-NEXT-1](RESULTS.md#L29733).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe] The
+  heurisch-ablation test of the emitter-divergence suspect list
+  fires its carrier bar at exactly the threshold: removing the
+  2,782 i_heurisch rows from the frozen sympy atom shard costs 3
+  L4 solves against a dose-matched random control (L4 8 v 11, 68
+  v 72 total), and the fire lands AGAINST the level-mix gradient
+  (the ablated shard is the L4-richer one, 43.85% v 38.81%).
+  Direction-grade only: one seed, knife-edge delta on a
+  24-problem sub-scale. Rider: 3,218 random sympy rows read 72 —
+  at or above the full 6,000-row shard's 70 at this seed.
+  Receipt caveat: both receipt rows mislabel the emitter field
+  (hardcode inherited from the dose driver); corrections booked
+  in the verdict. ([VERDICT RULE-ABLATE-1](RESULTS.md#L29916).)
