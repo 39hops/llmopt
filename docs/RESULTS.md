@@ -29840,3 +29840,75 @@ derived shards are selections, never regenerations (71M band
 stays spent); driver sibling reused-not-edited pattern per the
 frozen-family doctrine; receipts stream per arm; Mac may share
 CPU with mac-axiom, births mps-bound, disclosed.
+
+## PRE-REG SOFT-SPEED-1: does collapsing conflicted rows into weighted soft rows keep the gate while cutting ~13% of training steps? (2026-08-15, Mac)
+
+The SOFT-NEXT-1 refutation (L29733) showed target form is gate- and
+calibration-neutral at this recipe: separate one-hot rows average
+into the branch distribution in expectation. Artin's lever: if it's
+the same, collapse them and pocket the compute. Bank: RIFF-LEDGER
+SOFT-SPEED-1 (2026-08-15).
+
+Instrument: scratch/birth19m_softspeed.py via
+scratch/softspeed1_driver.sh, Mac mps fp32, BIRTH_SEED 3, two
+serial arms, launch chained after RULE-ABLATE-1's marker:
+
+- control: the stock recipe verbatim (one-hot CE, full excised
+  diet, matched to the frozen ladder path) — must REPRODUCE the
+  booked stock s3 cell exactly (see precondition).
+- soft-collapsed: each conflicted cur group (>= 2 distinct nxt)
+  replaced by ONE row: representative = the highest-weight answer
+  (ties broken lexically), soft targets = the group's empirical
+  next-token distribution over shared-prefix positions (the frozen
+  SOFT-NEXT trie construction), one-hot past divergence, and the
+  row's answer-region loss weighted by the group's row count so
+  per-epoch expected gradient mass at branch positions matches the
+  uncollapsed diet. Unconflicted rows untouched. MATCHED EPOCHS
+  (EPOCHS=3), so steps_total drops with the diet;
+  OneCycleLR total_steps rescales to the soft arm's own count.
+
+Desk census (this commit, deterministic from the frozen diet):
+164,896 excised rows; 4,347 conflicted groups holding 25,852 rows;
+collapsed diet 143,391 (13.04% cut); row-level step arithmetic
+15,459 -> 13,440 (enc-level counts, the driver's own, will sit
+slightly lower: control pins to the booked 15,420).
+
+BARS:
+1. SPEED: soft arm steps_total <= 13,878 (= 0.90 x 15,420) AND
+   measured train wall-clock saved >= 10% v the control arm.
+2. QUALITY-HOLDS: soft_total >= control_total - 4 (within the
+   resolution band on the 120 gate).
+
+REFUTED-IF: soft_total <= control_total - 7 — a >= 1.5-sigma harm
+means the collapse is NOT lossless at this recipe and the lever
+books dead in this form.
+
+NO-OP PRECONDITION: the control arm through the NEW driver must
+reproduce the booked stock s3 cell EXACTLY — 64/120
+{3:24, 4:6, 5:15, 6:8, 7:11}, weights sha bf2dc94b1d9712cb
+(L29465). Any deviation books NOT-RUN for the comparison: the
+harness moved before the treatment existed (the SOFT-PROMPT-1
+lesson).
+
+NOT-RUN guards: pre-excision row count must equal 165,028;
+conflict census within 1% of 4,347 groups / 25,852 conflicted
+rows; collapsed diet within 1% of 143,391.
+
+REGISTERED PRIOR: precondition passes; soft arm lands within +-2
+of control (i.e. 62-66); steps saved ~13%, wall-clock saved
+~11-13% (per-step cost slightly higher from the soft corrections).
+Family record 3 hits, 15 misses, plus RULE-ABLATE-1's 4 legs
+unresolved at registration.
+
+FENCES: single seed (3), single device (mps fp32) — Mac-family
+numbers only, never compared to the 3080-bf16 softnext family
+(the control 64s would collide numerically; they are different
+instruments). Matched-EPOCH not matched-step: the comparison is
+speed-at-equal-quality, one composite lever (diet collapse +
+schedule rescale), not a one-variable isolation — a QUALITY-HOLDS
+fire says the LEVER is safe, not that collapse alone is inert.
+Valid-set-mass probe rides along as an unregistered observable
+(first Mac-fp32 entries of that probe; not comparable to 3080
+values). Wall-clock measured on a Mac also running mac-axiom desk
+work — contention noted if present. NOT launched before
+RULE-ABLATE-1's marker (one birth at a time on the Mac).
