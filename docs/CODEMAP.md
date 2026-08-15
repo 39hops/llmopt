@@ -31,7 +31,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 191, spec-ci
 | birth19m | birth19m_atoms.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | 1 |
 | birth19m | birth19m_atoms_dose.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | birth19m | birth19m_atoms_ladder.py | results-cited | RESULTS | RESULTS×2 | — | 3 |
-| birth19m | birth19m_atoms_rule.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
+| birth19m | birth19m_atoms_rule.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
 | birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
 | birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 10 | — |
 | birth19m | birth19m_curric_rev.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
@@ -39,7 +39,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 191, spec-ci
 | birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | birth19m | birth19m_snaps.py | UNCITED | — | — | — | 1 |
 | birth19m | birth19m_softnext.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
-| birth19m | birth19m_softspeed.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| birth19m | birth19m_softspeed.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 1 |
 | blackhole | blackhole_b0.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | boundary | boundary_or_bulk.py | results-cited | RESULTS | RESULTS×3 | — | — |
 | brute | brute_arms_0801.sh | UNCITED | — | — | — | — |
@@ -203,7 +203,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 191, spec-ci
 | lyapunov | lyapunov_birth.sh | UNCITED | — | — | — | — |
 | mac | mac_day_chain.sh | UNCITED | — | — | — | — |
 | make | make_altpairs.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| make | make_ruleablate_shards.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
+| make | make_ruleablate_shards.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
 | make | make_union_diet.py | UNCITED | — | — | — | 1 |
 | margin | margin_by_level.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | margin | margin_by_ply.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -335,7 +335,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 191, spec-ci
 | rot | rot_convert.py | spec-cited | specs | specs×1 | — | — |
 | rot | rot_snap_anatomy.py | UNCITED | — | — | — | — |
 | rotinstr | rotinstr_control.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| ruleablate1 | ruleablate1_driver.sh | results-cited | RESULTS | RESULTS×2 | — | — |
+| ruleablate1 | ruleablate1_driver.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | run | run_snap_gates.sh | spec-cited | specs | specs×1 | — | — |
 | run | run_snap_knee.sh | UNCITED | — | — | — | — |
 | saturation | saturation_s2.py | results-cited | RESULTS | RESULTS×2 | — | — |
@@ -353,7 +353,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 191, spec-ci
 | softprompt | softprompt_sampler_probe.py | spec-cited | specs | specs×1 | — | — |
 | softprompt1 | softprompt1.py | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | 3 |
 | softprompt1 | softprompt1.sh | results-cited | RESULTS | RESULTS×1 | — | — |
-| softspeed1 | softspeed1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| softspeed1 | softspeed1_driver.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | soup | soup_gate.py | spec-cited | specs | specs×1 | — | 1 |
 | ssm | ssm_star.py | library | RESULTS | RESULTS×1 | 1 | 1 |
 | ssm | ssm_star1.sh | UNCITED | — | — | — | — |
