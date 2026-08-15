@@ -4919,3 +4919,31 @@ without re-introducing history).
   no-harm guard on the total; runs after the dose ladder prices
   dose headroom. Attribution: Artin (the ask), house (the
   axiom-native farm route + observable choice).
+
+- **BANKED (2026-08-15): FFT the engine's signals into weights?**
+  (Artin: "can we convert the signals the math engine is giving
+  into weights? No clue"). The mapping candidates, ranked by how
+  hard they hit the gauge wall: (a) direct signal-to-weight
+  synthesis (hypernetwork off engine traces) — fights neuron-
+  permutation gauge freedom head-on; the never-score-weights-by-
+  distance doctrine (measured basis: 2026-07-06 weight-reader
+  ablation, permutation-augmentation 88.4% beat canonical sorting
+  82.4%) says any target IN weight coordinates is the wrong
+  target; (b) spectral features of engine SEARCH signals
+  (rule-fire sequences, solve traces as time series; FFT as the
+  featurizer) fed as training data or curriculum weights —
+  unexplored, gauge-safe because it stays in function/data space;
+  (c) the already-banked weight-FFT euler read (spectra as an
+  ANALYSIS instrument) — alive in the complex-alphabet prologue.
+  Measured anchors: weight-reader 80.8-88.4% (weights->function,
+  the legal direction); none for (a)/(b). Honest breaks: (a) is
+  probably dead on arrival per the gauge doctrine unless posed as
+  function-space distillation, which is what engine-emitted
+  training rows ALREADY are; (b) has no oracle for "the spectrum
+  mattered" yet — needs a falsifiable observable before it earns
+  a rung. Testable residue: SPECTRAL-CURRICULUM-0 (desk, zero
+  births): FFT the per-rule fire-rate series over the corpus
+  ordering; if the spectrum separates levels or predicts the
+  known-hard cells (L4 recognition), a curriculum-weighting rung
+  is specifiable. Attribution: Artin (the ask), house (the gauge
+  fence + the b/c split).
