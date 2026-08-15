@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 191, spec-cited 86, cited-but-library 55
+Census: UNCITED 200, library 67, reproduce-pinned 10, results-cited 192, spec-cited 86, cited-but-library 56
 
 ## scratch/
 
@@ -31,9 +31,9 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 191, spec-ci
 | birth19m | birth19m_atoms.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | 1 |
 | birth19m | birth19m_atoms_dose.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | birth19m | birth19m_atoms_ladder.py | results-cited | RESULTS | RESULTS×2 | — | 3 |
-| birth19m | birth19m_atoms_rule.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
+| birth19m | birth19m_atoms_rule.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
-| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 10 | — |
+| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 11 | — |
 | birth19m | birth19m_curric_rev.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
 | birth19m | birth19m_curric_swap.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
@@ -157,6 +157,8 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 191, spec-ci
 | gen9 | gen9_45m_probes.sh | UNCITED | — | — | — | — |
 | gen9 | gen9_pipeline.sh | spec-cited | specs | specs×2 | — | 1 |
 | genpins | genpins_freeze.py | UNCITED | — | — | — | 1 |
+| gradmap0 | gradmap0_probe.py | library | RESULTS | RESULTS×1 | 1 | — |
+| gradmap0 | gradmap0_rd2.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | graph | graph_mod_sigma.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | graph | graph_modularity_gen8.py | library | — | — | 1 | — |
 | grav | grav_posthoc.py | UNCITED | — | — | — | — |
@@ -368,7 +370,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 191, spec-ci
 | sym45 | sym45_run.sh | UNCITED | — | — | — | — |
 | synonym | synonym_test.py | UNCITED | — | — | — | 1 |
 | tenet | tenet_d1_revgate.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
-| tenet | tenet_d2_revdiet.py | library | RESULTS, specs | RESULTS×1, specs×1 | 25 | — |
+| tenet | tenet_d2_revdiet.py | library | RESULTS, specs | RESULTS×1, specs×1 | 26 | — |
 | tenet | tenet_d3_budget.py | library | specs | specs×1 | 2 | — |
 | tenet | tenet_mult_b32.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | tenet | tenet_mult_census.py | library | RESULTS, specs | RESULTS×1, specs×1 | 1 | — |
@@ -565,7 +567,7 @@ Census: UNCITED 200, library 66, reproduce-pinned 10, results-cited 191, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 65 | 31 |
+| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 66 | 31 |
 | train | train_nnue.py | library | specs | specs×8 | 1 | 12 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |

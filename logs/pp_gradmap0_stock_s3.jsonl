@@ -1,0 +1,120 @@
+{"level": 3, "i": 0, "root": "Integral(24*x**2 - 7, x)", "solved": true, "plies": 3, "chain": ["Integral(-7, x) + Integral(24*x**2, x)", "-7*x + Integral(24*x**2, x)", "SOLVED"], "wander": true}
+{"level": 3, "i": 1, "root": "Integral(8*x*sin(x) - 8*cos(x), x)", "solved": true, "plies": 3, "chain": ["Integral(0, x) + Integral(8*x*sin(x) - 8*cos(x), x)", "Integral(8*x*sin(x) - 8*cos(x), x) + 8", "SOLVED"], "wander": true}
+{"level": 3, "i": 2, "root": "Integral(6*x*exp(3*x**2 + 1), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 3, "i": 3, "root": "Integral((15*x**2 + 2)*exp(5*x**3 + 2*x + 2), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 3, "i": 4, "root": "Integral(-5*cos(x) - 35/x, x)", "solved": true, "plies": 3, "chain": ["Integral(-35/x, x) + Integral(-5*cos(x), x)", "-5*sin(x) + Integral(-35/x, x)", "SOLVED"], "wander": true}
+{"level": 3, "i": 5, "root": "Integral(-3*exp(3 - 3*x), x)", "solved": true, "plies": 2, "chain": ["-3*Integral(exp(3 - 3*x), x)", "SOLVED"], "wander": false}
+{"level": 3, "i": 6, "root": "Integral(40*x**5*cos(x) + 200*x**4*sin(x) + 4*exp(x), x)", "solved": true, "plies": 3, "chain": ["Integral(40*x**5*cos(x) + 200*x**4*sin(x), x) + Integral(4*exp(x), x)", "4*exp(x) + Integral(40*x**5*cos(x) + 200*x**4*sin(x), x)", "SOLVED"], "wander": true}
+{"level": 3, "i": 7, "root": "Integral(-6*sin(6*x + 1), x)", "solved": true, "plies": 2, "chain": ["6*Integral(-sin(6*x + 1), x)", "SOLVED"], "wander": false}
+{"level": 3, "i": 8, "root": "Integral(54*x*cos(x) + 54*sin(x), x)", "solved": true, "plies": 3, "chain": ["Integral(0, x) + Integral(54*x*cos(x) + 54*sin(x), x)", "Integral(54*x*cos(x) + 54*sin(x), x) + 1", "SOLVED"], "wander": true}
+{"level": 3, "i": 9, "root": "Integral(45*x**2*log(x) + 15*x**2 + 6, x)", "solved": true, "plies": 3, "chain": ["Integral(6, x) + Integral(45*x**2*log(x) + 15*x**2, x)", "6*x + Integral(45*x**2*log(x) + 15*x**2, x)", "SOLVED"], "wander": true}
+{"level": 3, "i": 10, "root": "Integral(70*x, x)", "solved": true, "plies": 3, "chain": ["Integral(0, x) + Integral(70*x, x)", "Integral(70*x, x) + 1", "SOLVED"], "wander": true}
+{"level": 3, "i": 11, "root": "Integral(8*x*sin(x) - 8*cos(x), x)", "solved": true, "plies": 3, "chain": ["Integral(0, x) + Integral(8*x*sin(x) - 8*cos(x), x)", "Integral(8*x*sin(x) - 8*cos(x), x) + 6", "SOLVED"], "wander": true}
+{"level": 3, "i": 12, "root": "Integral(-56*sin(2*x), x)", "solved": true, "plies": 2, "chain": ["56*Integral(-sin(2*x), x)", "SOLVED"], "wander": false}
+{"level": 3, "i": 13, "root": "Integral((3*x**2 - 4)*cos(x**3 - 4*x + 5), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 3, "i": 14, "root": "Integral(-28*x*sin(x) + 28*cos(x), x)", "solved": true, "plies": 2, "chain": ["28*sin(x) + Integral(-28*x*sin(x), x)", "SOLVED"], "wander": false}
+{"level": 3, "i": 15, "root": "Integral(56*x*cos(x) + 6*x + 56*sin(x), x)", "solved": true, "plies": 3, "chain": ["Integral(6*x, x) + Integral(56*x*cos(x) + 56*sin(x), x)", "3*x**2 + Integral(56*x*cos(x) + 56*sin(x), x)", "SOLVED"], "wander": true}
+{"level": 3, "i": 16, "root": "Integral(-21*x**2 - 24*exp(2*x), x)", "solved": true, "plies": 3, "chain": ["Integral(-21*x**2, x) + Integral(-24*exp(2*x), x)", "-12*exp(2*x) + Integral(-21*x**2, x)", "SOLVED"], "wander": true}
+{"level": 3, "i": 17, "root": "Integral(-45*x*exp(x) - 45*exp(x) + 9, x)", "solved": true, "plies": 3, "chain": ["Integral(9, x) + Integral(-45*x*exp(x) - 45*exp(x), x)", "9*x + Integral(-45*x*exp(x) - 45*exp(x), x)", "SOLVED"], "wander": true}
+{"level": 3, "i": 18, "root": "Integral((4*x - 2)*cos(2*x**2 - 2*x + 2), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 3, "i": 19, "root": "Integral(12*x + 14*cos(x), x)", "solved": true, "plies": 3, "chain": ["Integral(12*x, x) + Integral(14*cos(x), x)", "6*x**2 + Integral(14*cos(x), x)", "SOLVED"], "wander": true}
+{"level": 3, "i": 20, "root": "Integral(90*x**4 + 9, x)", "solved": true, "plies": 3, "chain": ["Integral(9, x) + Integral(90*x**4, x)", "9*x + Integral(90*x**4, x)", "SOLVED"], "wander": true}
+{"level": 3, "i": 21, "root": "Integral((8*x - 1)*exp(4*x**2 - x + 1), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 3, "i": 22, "root": "Integral((3*x**2 - 1)*exp(x*(x**2 - 1)), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 3, "i": 23, "root": "Integral(56*sqrt(2)*exp(x)*sin(x + pi/4), x)", "solved": true, "plies": 3, "chain": ["Integral(0, x) + Integral(56*exp(x)*sin(x) + 56*exp(x)*cos(x), x)", "Integral(56*exp(x)*sin(x) + 56*exp(x)*cos(x), x) + 7", "SOLVED"], "wander": true}
+{"level": 4, "i": 0, "root": "Integral(2*(3*x*cos(x**3 + 2*x + 2) - (3*x**2 + 2)**2*sin(x**3 + 2*x + 2))*cos(x**3 + 2*x + 2), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 1, "root": "Integral(3*(4*x + 7*cos(7*x) + 3)*cos(2*x**2 + 3*x + sin(7*x) + 4) - 200*exp(x)*sin(8*x + 2) + 25*exp(x)*cos(8*x + 2), x)", "solved": true, "plies": 3, "chain": ["Integral(3*(4*x + 7*cos(7*x) + 3)*cos(2*x**2 + 3*x + sin(7*x) + 4), x) + Integral(-200*exp(x)*sin(8*x + 2) + 25*exp(x)*cos(8*x + 2), x)", "3*sin(2*x**2 + 3*x + sin(7*x) + 4) + Integral(-200*exp(x)*sin(8*x + 2) + 25*exp(x)*cos(8*x + 2), x)", "SOLVED"], "wander": true}
+{"level": 4, "i": 2, "root": "Integral((48*sqrt(x)*(3*x*cos(2*x**3 - 2*x + 4) - (3*x**2 - 1)**2*sin(2*x**3 - 2*x + 4)) - (14*sqrt(x) + sqrt(6))*sin(sqrt(6)*sqrt(x) + 7*x + 3))/(2*sqrt(x)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 3, "root": "Integral(28*x**3*(10*x + 3)*exp(5*x**2 + 3*x + 3) + 84*x**2*exp(5*x**2 + 3*x + 3) + 216*(2*x + 1)**2*exp(12*x**2 + 12*x + 16) + 36*exp(12*x**2 + 12*x + 16), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 4, "root": "Integral((24*x - 24*sin(6*x) + 16)*exp(3*x**2 + 4*x + cos(6*x)), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 4, "i": 5, "root": "Integral(24*(4*x + 1)**2*cos(4*x**2 + 2*x + 3) + 48*sin(4*x**2 + 2*x + 3), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 6, "root": "Integral(36*x*(x + 2)*sin(x**2 + 4*x + 1) - 18*cos(x**2 + 4*x + 1), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 4, "i": 7, "root": "Integral(6*(24*x**2*cos(3*x**2 + 1) + sin(3*x**2 + 1))*sin(3*x**2 + 1)**3, x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 4, "i": 8, "root": "Integral(10*(3*x*sin(x**3 - 2*x + 2) + (3*x**2 - 2)**2*cos(x**3 - 2*x + 2))*sin(x**3 - 2*x + 2), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 9, "root": "Integral((216*x + 27)*exp(4*x**2 + x + 3), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 10, "root": "Integral(45*x*(x*sin(x + 5) - 2*cos(x + 5)), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 4, "i": 11, "root": "Integral((60*x + 24*cos(4*x) + 6)*exp(5*x**2 + x + sin(4*x)), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 4, "i": 12, "root": "Integral((-6*x - 3)*sin(x)*sin(3*x*(x + 1)) + (48*x**2 + 56*cos(7*x))*exp(2*x**3 + sin(7*x) + 5) + cos(x)*cos(3*x*(x + 1)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 13, "root": "Integral(10*((8*x - 1)**2*cos(4*x**2 - x + 5) + 4*sin(4*x**2 - x + 5))*sin(4*x**2 - x + 5), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 14, "root": "Integral(4*(2*sqrt(x) + 3)*cos(3*sqrt(x) + x)/sqrt(x), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 15, "root": "Integral(196*sin(14*x + 6), x)", "solved": false, "plies": 1, "chain": ["196*Integral(sin(14*x + 6), x)"], "wander": false}
+{"level": 4, "i": 16, "root": "Integral(7*((3 - 9*x**2)*cos(x) + sin(x))*exp(3*x**3 - 3*x + 5), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 17, "root": "Integral(12*(2*x*(3*(5*x + 2)*log(x)*cos(5*x**2 + 4*x + 5) + 4*exp(8*x)) + 3*sin(5*x**2 + 4*x + 5))/x, x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 18, "root": "Integral((240*x - 80)*exp(3*x**2 - 2*x + 4) + 7*cos(x), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 19, "root": "Integral(2*(2*sqrt(x) - 3)*sin(3*sqrt(x) - x + 5)/sqrt(x), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 20, "root": "Integral((6*sqrt(x)*(15*x*sin(5*x**3 - 2*x + 4) + (15*x**2 - 2)**2*cos(5*x**3 - 2*x + 4))*sin(5*x**3 - 2*x + 4) + 3*(sqrt(x)*(-72*x**2 - 24) - 9)*sin(3*sqrt(x) + 4*x**3 + 4*x + 5)/2)/sqrt(x), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 21, "root": "Integral(-2*(sin(2*x) + 2*cos(2*x))*exp(x), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 22, "root": "Integral((-30*x**2 - 4)*sin(5*x**3 + 2*x + 4), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 4, "i": 23, "root": "Integral((3*sqrt(x)*(70*x*cos(5*x**3 + 3*x + 1) - 21*(5*x**2 + 1)**2*sin(5*x**3 + 3*x + 1)) + 3*(sqrt(x)*(2 - 3*x**2) - sqrt(2))*sin(2*sqrt(2)*sqrt(x) + x**3 - 2*x + 5))/sqrt(x), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 5, "i": 0, "root": "Integral((108*x**5 + 72*x**3 + 54*x**2 + 9*x + 9)/sqrt(2*x**3 + x), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 5, "i": 1, "root": "Integral(3 + 6/sqrt(1 - 4*x**2), x)", "solved": true, "plies": 3, "chain": ["Integral(3, x) + Integral(6/sqrt(1 - 4*x**2), x)", "3*x + Integral(6/sqrt(1 - 4*x**2), x)", "SOLVED"], "wander": true}
+{"level": 5, "i": 2, "root": "Integral(6*log(4*x) + 6, x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 5, "i": 3, "root": "Integral(((9*x**2 + 1)*(8*log(5*x) + 11) + 6)/(9*x**2 + 1), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 5, "i": 4, "root": "Integral(9*sqrt(3)*(24*x**4 - 21*x**3 + 14*x**2 + 7*x - 4)/(2*sqrt(x**2 - x + 1)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 5, "i": 5, "root": "Integral(6*(16*x**2 - 14*x + 13)/sqrt(2*x**2 - 3*x + 4), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 5, "i": 6, "root": "Integral(18*x**2*log(5*x)**2 + 12*x**2*log(5*x) - 9*exp(x)*sin(3*x) + 3*exp(x)*cos(3*x), x)", "solved": true, "plies": 3, "chain": ["Integral(18*x**2*log(5*x)**2 + 12*x**2*log(5*x), x) + Integral(-9*exp(x)*sin(3*x) + 3*exp(x)*cos(3*x), x)", "3*exp(x)*cos(3*x) + Integral(18*x**2*log(5*x)**2 + 12*x**2*log(5*x), x)", "SOLVED"], "wander": true}
+{"level": 5, "i": 7, "root": "Integral((20*x**2 + 21)/(4*x**2 + 1), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 5, "i": 8, "root": "Integral(3 + 4/sqrt(1 - x**2), x)", "solved": true, "plies": 3, "chain": ["Integral(3, x) + Integral(4/sqrt(1 - x**2), x)", "3*x + Integral(4/sqrt(1 - x**2), x)", "SOLVED"], "wander": true}
+{"level": 5, "i": 9, "root": "Integral(4*exp(x)*sin(3*x) + 12*exp(x)*cos(3*x) + 3 + 12/sqrt(1 - 9*x**2), x)", "solved": true, "plies": 4, "chain": ["Integral(3, x) + Integral(12/sqrt(1 - 9*x**2), x) + Integral(4*exp(x)*sin(3*x) + 12*exp(x)*cos(3*x), x)", "3*x + Integral(12/sqrt(1 - 9*x**2), x) + Integral(4*exp(x)*sin(3*x) + 12*exp(x)*cos(3*x), x)", "3*x + 4*asin(3*x) + Integral(4*exp(x)*sin(3*x) + 12*exp(x)*cos(3*x), x)", "SOLVED"], "wander": true}
+{"level": 5, "i": 10, "root": "Integral(sqrt(3)*(48*x + 56)/sqrt(2*x + 1), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 5, "i": 11, "root": "Integral(5 + 18/sqrt(1 - 4*x**2), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 5, "i": 12, "root": "Integral(((x**2 + 1)*(16*x*log(x) + 8*x + 3) + 2)/(x**2 + 1), x)", "solved": true, "plies": 4, "chain": ["Integral(3, x) + Integral(2/(x**2 + 1), x) + Integral(16*x*log(x) + 8*x, x)", "2*atan(x) + Integral(3, x) + Integral(16*x*log(x) + 8*x, x)", "3*x + 2*atan(x) + Integral(16*x*log(x) + 8*x, x)", "SOLVED"], "wander": true}
+{"level": 5, "i": 13, "root": "Integral(7*log(3*x) + 7, x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 5, "i": 14, "root": "Integral((45*x**2 + 8)/(9*x**2 + 1), x)", "solved": true, "plies": 3, "chain": ["Integral(5, x) + Integral(3/(9*x**2 + 1), x)", "5*x + Integral(3/(9*x**2 + 1), x)", "SOLVED"], "wander": true}
+{"level": 5, "i": 15, "root": "Integral(7*(50*x**3 + 6*x**2 - 45*x + 7)/(2*sqrt(2*x**3 - 3*x + 1)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 5, "i": 16, "root": "Integral(27*x**2*log(2*x) + 9*x**2 + 36*exp(4*x)*sin(3*x) + 27*exp(4*x)*cos(3*x), x)", "solved": true, "plies": 3, "chain": ["Integral(27*x**2*log(2*x) + 9*x**2, x) + Integral(36*exp(4*x)*sin(3*x) + 27*exp(4*x)*cos(3*x), x)", "9*x**3*log(2*x) + Integral(36*exp(4*x)*sin(3*x) + 27*exp(4*x)*cos(3*x), x)", "SOLVED"], "wander": true}
+{"level": 5, "i": 17, "root": "Integral((-32*sin(4*x) + 24*cos(4*x))*exp(3*x), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 5, "i": 18, "root": "Integral((4*sin(3*x) + 3*cos(3*x))*exp(4*x), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 5, "i": 19, "root": "Integral(x**2*(15*log(5*x) + 5), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 5, "i": 20, "root": "Integral(4*(200*x**3 + 75*x**2 + 16)/sqrt(5*x**3 + 1), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 5, "i": 21, "root": "Integral(1 + 18/sqrt(1 - 4*x**2), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 5, "i": 22, "root": "Integral(-5*exp(2*x)*sin(x) + 10*exp(2*x)*cos(x) + 3 + 6/sqrt(1 - 9*x**2), x)", "solved": false, "plies": 1, "chain": ["3*x + 5*exp(2*x)*cos(x) + Integral(6/sqrt(1 - 9*x**2), x)"], "wander": false}
+{"level": 5, "i": 23, "root": "Integral(2*log(4*x) + 2, x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 6, "i": 0, "root": "Integral(2*(3*x**4 + 24*x**3 + 54*x**2 + 47*x + 13)/(x**4 + 8*x**3 + 22*x**2 + 24*x + 9), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 1, "root": "Integral((-(2*x - 5)*(10*x - 1) + 4*((4 - 8*x)*sin(2*x*(x - 1)) - sqrt(5*x**2 - x + 2))*sqrt(5*x**2 - x + 2))/(2*sqrt(5*x**2 - x + 2)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 2, "root": "Integral((4*x + 1)*cos(2*x**2 + x + 1), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 6, "i": 3, "root": "Integral((16*x**4 - 16*x**3 + 34*x**2 - 4*x + 15)/(2*(4*x**4 - 4*x**3 + 9*x**2 - 4*x + 4)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 4, "root": "Integral(-8*exp(4*x)*sin(4*x) + 8*exp(4*x)*cos(4*x) - 16*exp(3*x)*sin(4*x) + 12*exp(3*x)*cos(4*x) + 5*log(2*x) + 5, x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 5, "root": "Integral((9*x*(4*x + 3)*(15*x**2 - 2) + 2*(9*(8*x + 3)*sqrt(5*x**3 - 2*x + 3) + (32*x - 4)*cos(4*x**2 - x + 2))*sqrt(5*x**3 - 2*x + 3))/(2*sqrt(5*x**3 - 2*x + 3)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 6, "root": "Integral(2*x*(-2*x*log(3*x)*sin(2*x) + 2*log(3*x)*cos(2*x) + cos(2*x)), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 6, "i": 7, "root": "Integral(6*x*log(5*x)**2 + 6*x*log(5*x) + 10 + 3/(9*x**2 + 1) + 18/sqrt(1 - 9*x**2), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 8, "root": "Integral(2*(30*x + 6)*cos(5*x**2 + 2*x + 3) + 2*log(3*x) + 2, x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 6, "i": 9, "root": "Integral(9*x**2*log(x) + 3*x**2 + 18*sqrt(2)*exp(3*x)*cos(3*x + pi/4) + 8*log(x)**2 + 16*log(x) + log(19775390625)*log(x) + 2*log(3)**2 + 6*log(5)**2 + log(19775390625), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 10, "root": "Integral((24*x + 6)*cos(2*x**2 + x + 2), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 6, "i": 11, "root": "Integral((sqrt(3 - x)*(9*x**2 + 1)*(24*x**2*log(2*x)**2 + 16*x**2*log(2*x) + 48*x*sqrt(3 - x) + 3) + 9*sqrt(3 - x) - 4*(3*x**2 + 4)*(9*x**2 + 1))/(sqrt(3 - x)*(9*x**2 + 1)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 12, "root": "Integral(12*x*log(x)*cos(3*x) + 4*log(x)*sin(3*x) + 4*sin(3*x), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 6, "i": 13, "root": "Integral(2*(21*x**4 + 56*x**3 + 59*x**2 + 20*x + 2)/(9*x**4 + 24*x**3 + 28*x**2 + 16*x + 4), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 14, "root": "Integral((50*x - 5)*cos(x*(5*x - 1)) + 4*exp(4*x)*sin(3*x) + 3*exp(4*x)*cos(3*x), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 15, "root": "Integral((24*x + 18)*cos(2*x**2 + 3*x + 1), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 6, "i": 16, "root": "Integral(4*(4*x**4 + 16*x**3 + 34*x**2 + 19*x + 9)/(4*x**4 + 16*x**3 + 36*x**2 + 40*x + 25), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 17, "root": "Integral(15*x**3/(2*sqrt(5*x + 4)) + 9*x**2*sqrt(5*x + 4) + 3*exp(x)*sin(2*x) + 6*exp(x)*cos(2*x) + 2 + 25/(2*sqrt(5*x + 4)) + 4/sqrt(1 - 4*x**2), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 18, "root": "Integral((40*x + 20)*cos(4*x**2 + 4*x + 5), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 6, "i": 19, "root": "Integral((3*sqrt(2 - x)*(x**2 + 1)*(3*x**2 + 2)*(x**3 + 2)/2 + sqrt(2 - x)*(x**2 + 1)*sqrt(x**3 + 2*x + 2)*(9*x**2*sqrt(x**3 + 2*x + 2) + sqrt(2 - x)*(84*x**2 - 21) + 4*exp(4*x)*sin(4*x) + 4*exp(4*x)*cos(4*x) + 5) + sqrt(2 - x)*sqrt(x**3 + 2*x + 2) + 7*(x**2 + 1)*(-4*x**3 + 3*x - 4)*sqrt(x**3 + 2*x + 2)/2)/(sqrt(2 - x)*(x**2 + 1)*sqrt(x**3 + 2*x + 2)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 20, "root": "Integral((22*x**4 - 22*x**3 + 118*x**2 - 70*x + 135)/(4*x**4 - 4*x**3 + 21*x**2 - 10*x + 25), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 21, "root": "Integral(2*((x**2 + 1)*(18*exp(4*x)*sin(2*x) + 9*exp(4*x)*cos(2*x) + 4) + 2)/(x**2 + 1), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 22, "root": "Integral(2*x*(70*x**3 + 25*x + 3*sqrt(4*x**3 + 2*x + 5)*exp(x**2 + 2) + 50)/sqrt(4*x**3 + 2*x + 5), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 6, "i": 23, "root": "Integral((16*x + 2)*exp(4*x**2 + x + 3), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 7, "i": 0, "root": "Integral(-4*log(x)*sin(2*x) + 2*cos(2*x)/x, x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 7, "i": 1, "root": "Integral(4*x*(3*x*cos(3*x) + 2)*exp(sin(3*x)), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 7, "i": 2, "root": "Integral(6*(x + 1)*cos(log(x**2 + 2*x + 4))/(x**2 + 2*x + 4), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 7, "i": 3, "root": "Integral(2*(3*x*(2*x + 1)*(-2*x*log(3*x)*sin(2*x) + 2*log(3*x)*cos(2*x) + cos(2*x))*log(2*x + 1) + 5)/((2*x + 1)*log(2*x + 1)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 7, "i": 4, "root": "Integral(12*sqrt(x**2)/x, x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 7, "i": 5, "root": "Integral((147*x**3 + 147*x + 6*sqrt(7*x + 2)*(9*x**2*log(5*x)**2 + 6*x**2*log(5*x) + 7*sqrt(7*x + 2)*(3*x**2 + 1) + 3*log(3*x)**2 + 6*log(3*x) - sin(sin(x))*cos(x)) + 245)/(2*sqrt(7*x + 2)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 7, "i": 6, "root": "Integral(3*sqrt(x + 1)/2, x)", "solved": false, "plies": 2, "chain": ["Integral(0, x) + Integral(3/2*sqrt(x + 1), x)", "Integral(3/2*sqrt(x + 1), x) + 4"], "wander": true}
+{"level": 7, "i": 7, "root": "Integral(5*(3*(x - 3)*log(3 - x) + (9*x**2 + 1)*atan(3*x))/((x - 3)*(9*x**2 + 1)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 7, "i": 8, "root": "Integral(48*x + 24, x)", "solved": true, "plies": 3, "chain": ["Integral(24, x) + Integral(48*x, x)", "24*x + Integral(48*x, x)", "SOLVED"], "wander": true}
+{"level": 7, "i": 9, "root": "Integral(2*((8*x + 1)*(4*x**2 + 1)*atan(2*x) + 2*(4*x**2 + x + 1)*log(4*x**2 + x + 1))/((4*x**2 + 1)*(4*x**2 + x + 1)), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 7, "i": 10, "root": "Integral(4*(2*x**2*log(3*x) + (x**2 + 1)*log(3*x**2 + 3)*log(log(3*x**2 + 3)))/(x*(x**2 + 1)*log(3*x**2 + 3)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 7, "i": 11, "root": "Integral(-12*sin(4*x), x)", "solved": true, "plies": 2, "chain": ["12*Integral(-sin(4*x), x)", "SOLVED"], "wander": false}
+{"level": 7, "i": 12, "root": "Integral(3*((5*x + 4)*log(5*x + 4) + 5*(x**2 + 1)*atan(x))/((5*x + 4)*(x**2 + 1)), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 7, "i": 13, "root": "Integral(6*(4*x + 1)*cos(log(2*x**2 + x + 3))/(2*x**2 + x + 3), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 7, "i": 14, "root": "Integral((150*x**6 - 460*x**5 + 660*x**4 - 543*x**3 + 512*x**2 - 244*x + 72)/(25*x**6 - 85*x**5 + 126*x**4 - 97*x**3 + 79*x**2 - 24*x + 12), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 7, "i": 15, "root": "Integral((sqrt(x)*(4*x - 6) + sqrt(x)*(x**2 - 3*x + 4)*(sqrt(3)*sqrt(x)*(90*x**2 - 12) + 5*exp(x)*sin(4*x) + 20*exp(x)*cos(4*x) + 6*log(3*x)**2 + 12*log(3*x)) + 3*sqrt(3)*(x**2 - 3*x + 4)*(5*x**3 - 2*x + 4))/(sqrt(x)*(x**2 - 3*x + 4)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 7, "i": 16, "root": "Integral(-4*(2*x + 4)*sin(x**2 + 4*x + 2) + 4*(8*x - 2)/((4*x**2 - 2*x + 2)*log(4*x**2 - 2*x + 2)) + 1 + 12/(4*x**2 + 1), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 7, "i": 17, "root": "Integral(-3*tan(3*x), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 7, "i": 18, "root": "Integral(-5*tan(x), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 7, "i": 19, "root": "Integral(4*(x*log(x)*cos(x) + 1)*exp(sin(x))/x, x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 7, "i": 20, "root": "Integral(36*x*sqrt(3*x**2 + 2), x)", "solved": false, "plies": 0, "chain": [], "wander": false}
+{"level": 7, "i": 21, "root": "Integral(4*log(x)*sin(x)*sin(cos(x)) + 4*cos(cos(x))/x, x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 7, "i": 22, "root": "Integral((3*(x + 2)*log(x + 2) + (9*x**2 + 1)*atan(3*x))/((x + 2)*(9*x**2 + 1)), x)", "solved": true, "plies": 1, "chain": ["SOLVED"], "wander": false}
+{"level": 7, "i": 23, "root": "Integral(4*(3*x*(4*x**2 + 1)*atan(2*x) + (3*x**2 + 4)*log(3*x**2 + 4))/((3*x**2 + 4)*(4*x**2 + 1)), x)", "solved": false, "plies": 0, "chain": [], "wander": false}

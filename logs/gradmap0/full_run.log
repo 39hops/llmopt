@@ -1,0 +1,41 @@
+[curric] D2 excision: 165028 -> 164896 rows
+[fam] heur: 2782 rows -> 2782 seq
+[fam] noheur: 3218 rows -> 3218 seq
+[fam] sympy6k: 6000 rows -> 6000 seq
+[fam] axiom6k: 6000 rows -> 6000 seq
+[fam] stock: 6000 rows -> 5992 seq
+[fam] L3: 2000 rows -> 2000 seq
+[fam] L4: 2000 rows -> 1956 seq
+[fam] L5: 2000 rows -> 2000 seq
+[fam] L6: 2000 rows -> 1993 seq
+[fam] L7: 2000 rows -> 2000 seq
+[col] F3: 0 failures
+[col] F4: 18 failures
+[col] F5: 9 failures
+[col] F6: 16 failures
+[col] F7: 13 failures
+[model] 18911616 params, groups {'early': 9440256, 'late': 9440256, 'emb': 15360, 'other': 15744}
+[vproxy] 50 batches, 62s
+[sig] heur: 86 batches, repeat_cos 1.000000 (emb 1.000000), 273s
+[sig] noheur: 100 batches, repeat_cos 1.000000 (emb 1.000000), 306s
+[sig] sympy6k: 187 batches, repeat_cos 1.000000 (emb 1.000000), 372s
+[sig] axiom6k: 187 batches, repeat_cos 1.000000 (emb 1.000000), 437s
+[sig] stock: 187 batches, repeat_cos 1.000000 (emb 1.000000), 494s
+[sig] L3: 62 batches, repeat_cos 1.000000 (emb 1.000000), 513s
+[sig] L4: 61 batches, repeat_cos 1.000000 (emb 1.000000), 550s
+[sig] L5: 62 batches, repeat_cos 1.000000 (emb 1.000000), 571s
+[sig] L6: 62 batches, repeat_cos 1.000000 (emb 1.000000), 596s
+[sig] L7: 62 batches, repeat_cos 1.000000 (emb 1.000000), 611s
+[sig] F4: 1 batches, repeat_cos 1.000000 (emb 1.000000), 612s
+[sig] F5: 1 batches, repeat_cos 1.000000 (emb 1.000000), 612s
+[sig] F6: 1 batches, repeat_cos 1.000000 (emb 1.000000), 614s
+[sig] F7: 1 batches, repeat_cos 1.000000 (emb 1.000000), 614s
+[m5] heur: n=512 within=9.590028e-02, 651s
+[m5] noheur: n=512 within=6.670929e-02, 678s
+[m5] sympy6k: n=512 within=6.429684e-02, 705s
+[m5] ctrl3218: n=512 within=6.171194e-02, 736s
+[dose] dose1: |g|=3.232344e-01
+[dose] dose3p5: |g|=2.707426e-01
+[dose] dose7: |g|=2.525316e-01
+python(80101) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+[done] receipt -> logs/gradmap0/signatures.jsonl, wall 837.3s

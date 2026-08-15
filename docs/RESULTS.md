@@ -30123,3 +30123,135 @@ matched-EPOCH composite lever (diet collapse + schedule rescale,
 not one-variable); valid-set-mass rode as unregistered observable
 (0.6255 v 0.6180, first Mac-fp32 entries, no claim);
 checkpoints gallery19m_softspeed_{control,soft}_s3.pt exhaust.
+
+## VERDICT GRAD-MAP-0: retrodiction gate FAILS on R2 — gradient atlas dead in this metric set; RD2 falsifier fires, rider-grade (2026-08-15, Mac)
+
+Pre-reg: docs/superpowers/specs/2026-08-15-grad-map-0.md, amended
+pre-look at 475a6f3 (16:59:54; R1 rebased to matched-dose dose3p5,
+metric-2 proxy pinned — no atlas checkpoint carries optimizer
+state, failure columns rebased to stock_s3's own gate, R3 demoted
+to rider, riders RD1-RD4 pre-declared). Every receipt postdates
+the amendment (sidecar 17:01, matrix 17:30). Driver:
+scratch/gradmap0_probe.py (last changed ba4539b; receipt stamps
+code_commit adf6394 = HEAD at run time, and the ba4539b..adf6394
+diff does not touch the driver). RD2 completion pass:
+scratch/gradmap0_rd2.py (1336ddb; its first, provenance-bare row
+was stripped pre-booking on the receipt-auditor's finding and the
+pass re-run — numbers reproduced to ~2e-12). Receipts
+logs/gradmap0/signatures.jsonl (2 rows) + full_run.log + sidecar
+logs/pp_gradmap0_stock_s3.jsonl, force-added this commit
+(small-text-receipt exception; 23KB/2KB/23KB); smoke rows live
+only in untracked logs/gradmap0/smoke.jsonl — zero smoke rows in
+the real file. /probe cost triage ran (smoke wall 91s -> full wall
+837.3s, in estimate). Mac mps fp32, fp64 metric arithmetic, raw
+unclipped gradients.
+
+Instrument anchor: the sidecar's gate reproduces the booked stock
+s3 cell to the digit — {3:24, 4:6, 5:15, 6:8, 7:11} = 64/120
+(v L29487; that booking's gate-printed weights sha
+bf2dc94b1d9712cb hashes loaded tensors, this receipt's
+747f1d143f5f40eb is a file digest — different schemes, and the
+5/5 cell identity is the provenance evidence). Signature
+checkpoint stock_s3; F4 = its own 18 L4 failures; F3 is EMPTY
+(stock solves 24/24 at L3) so columns are F4-F7.
+
+Measured, gate legs (blind: the matrix was written to the receipt
+before any comparison against the booked targets):
+
+- **R1 (sympy6k v axiom6k on F4): PASSES on 4 of 5 frozen
+  metrics** — every cosine variant: raw 0.30053 v 0.10604,
+  precond 0.15320 v 0.05972, late 0.16308 v 0.06304, early
+  0.16343 v 0.06103 (cos_early is a driver-time extension of
+  metric 6, in the code before any signature existed). Metric 4
+  (projection) INVERTS: 0.07743 v 0.14737, as does its layer
+  variant proj_late (0.01985 v 0.05159). Post-look reading, not a
+  registered exemption: projection = norm x cosine, and the axiom
+  family's mean-gradient norm at stock is 1.3853 v sympy's 0.2571
+  (5.4x, off-distribution scale); the spec's scale-context fence
+  is written for metric 3, not metric 4.
+- **R2 (i_heurisch v noheur remainder on F4): FAILS on all four
+  cosine metrics by 0.043-0.067** — raw 0.24446 v 0.28736,
+  precond 0.10146 v 0.16920, late 0.10931 v 0.17785, early
+  0.11271 v 0.17814 — and projection is a tie (0.07726 v
+  0.07778), ranking i_heurisch above the remainder on nothing.
+- **GATE (R1 AND R2): FAILS.** Per the pre-registration:
+  instrument dead in this metric set; a new metric set is a new
+  pre-registration.
+
+Riders (all pre-declared at 475a6f3, rider-grade):
+
+- **R3 direction MISS**: cross-redundancy heur->noheur 0.04484 <
+  within-noheur 0.06671 — the dropped mass is NOT more redundant
+  with the kept mass than the kept mass with itself. Observed (no
+  claim): i_heurisch is the most internally redundant family
+  measured (within 0.09590 v 0.06171-0.06671 for
+  noheur/sympy6k/ctrl3218; n=512 string-seeded samples each).
+- **RD1 observation** (no pre-committed direction): axiom-family
+  gradient norm at the dose checkpoints falls monotonically
+  0.32323 / 0.27074 / 0.25253 (dose1/dose3p5/dose7) — the
+  absorption direction, consistent with the booked 64/66/72
+  curve.
+- **RD2 falsifier FIRES — against the atlas.** noheur v ctrl3218
+  on the F6 column: 0.16467 v 0.25893, a 0.094 cosine gap (larger
+  than the R2 gap, 0.043) between two families whose booked L6
+  gate cells TIED 9/9 — and noheur is the family with 2.9x FEWER
+  L6 rows (163 v 466), so the gap tracks shard composition. On F4
+  the same pair reads 0.29447 v 0.28736: direction RIGHT (ctrl L4
+  11 > noheur 8) but the gap (0.007) is an order of magnitude
+  under the F6 gap where the gate tied. The atlas's magnitudes
+  track composition, not the gate.
+- **RD3**: no layerwise concentration either way (late ~ early
+  everywhere; sympy6k F4 0.16308 late v 0.16343 early) — the
+  transfer signal is layer-diffuse; neither reading of the
+  L4-PLY0-1 recognition story fires.
+- **RD4**: the no-gradient surface-kNN baseline gets R1 WRONG
+  (axiom 0.62912 > sympy 0.60780 on F4) where the cosine metrics
+  got it right — on the leg R1's cosine majority passed, the
+  gradient machinery added signal the surface baseline lacks
+  (hedged by R1's own metric-4 inversion above). Both instruments
+  fail R2 in the same direction.
+
+Unregistered observed structure (observation, no claim):
+level-slice diagonal affinity — the L4 training slice's top
+column is F4 (0.24285, v F5 0.18808 / F6 0.09116 / F7 0.07826) —
+and the stock family is near-orthogonal to every failure column
+at its own checkpoint (cos -0.07..-0.02, norm 0.0205, 12-15x
+below the sympy-emitter atom families and 67x below axiom6k,
+whose off-distribution scale is discussed above): convergence
+appearing exactly as the registered scale context predicted.
+Sequence-cap row drops disclosed: stock 6000->5992 seq, L4
+2000->1956, L6 2000->1993 (cap 512).
+
+Instrument integrity: same-process repeat cosine reads 1.000000
+global AND per parameter group (embedding included) for all 14
+signatures (~1e-13 residuals); a cross-process spot-check
+reproduced noheur:F4 to ~2e-12 (RD2 pass v main pass).
+Forward/backward-only appears reproducible on mps at this scale —
+an observation beside the standing nondeterminism fence, which
+binds TRAINING (optimizer steps), not signature computation; the
+fence is unchanged.
+
+Reading. R2's ground truth is itself an unresolved single-seed
+3-solve knife-edge on a 24-problem sub-scale (direction-grade,
+L29916), so a failure to retrodict it would be weak evidence on
+its own. The RD2 falsifier firing is the stronger datum —
+rider-grade, single seed, single device — and it points the same
+way: the atlas ranks by composition, not worth. The pre-named
+innocent-fail priors stand as context (end-of-training gradients
+where SWAP-LADDER-1 showed worth is sequential; the CAP-V-TRAJ-2
+absorption floor means the training that produced the booked
+effects no longer operates at these checkpoints) — the null is
+scoped to END-OF-TRAINING gradient signatures in this metric set,
+not to gradient methods generally.
+
+Consequences: BASICS-DIET runs UNSHAPED (payloads P1/P2 void);
+MIXER-1 stays parked (its ordering required a live atlas); the
+GPT-nine bank item (1) takes the null with the R1/RD4 credit
+line.
+
+Fences: single lineage (BIRTH_SEED=3 gallery family), single
+device (Mac mps fp32), desk instrument, end-of-training
+signatures only, m5 on 512-row string-seeded samples,
+stratified-by-level m5 NOT implemented (disclosed shortfall from
+the amended spec's R3 wording), failure-column teacher-forced
+targets are answer-as-final-step proxies (registered disclosure).

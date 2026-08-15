@@ -2037,3 +2037,20 @@ regime tag on every bullet is the fence.
   future tree-shaped data (search trajectories, rollouts) where
   shared prefixes dominate the sequence.
   ([OBSERVATION TREE-CENSUS-0](RESULTS.md#L30033).)
+
+- [NULL] [REGIME-SCOPED: specified diet and recipe]
+  The gradient/data-worth atlas (end-of-training signatures,
+  frozen 7-metric set) fails its
+  pre-registered retrodiction gate: no metric ranks i_heurisch
+  above the non-heurisch remainder on the L4-failure column (raw
+  cosine 0.244 v 0.287; the R1 sympy-v-axiom leg passes 4 of 5
+  metrics), and the pre-declared L6 falsifier fires against the
+  atlas — a 0.094 cosine gap between families whose L6 gate cells
+  tied 9/9, tracking a 2.9x shard-composition difference. The
+  atlas ranks by composition, not capability-worth; instrument
+  dead in this metric set, BASICS-DIET runs unshaped. Riders: the
+  no-gradient surface-kNN control gets the passing leg WRONG
+  (gradient cosine added real signal there); i_heurisch is the
+  most internally redundant family measured; forward/backward mps
+  signatures repeat at 1.000000 same-process.
+  ([VERDICT GRAD-MAP-0](RESULTS.md#L30127).)

@@ -5085,7 +5085,13 @@ without re-introducing history).
   (must blindly recover sympy>axiom-for-L4, heurisch>remainder-
   for-L4 before it earns a birth) — ADOPTED as next desk
   instrument; the retrodiction gate is exactly the house
-  instrument-first method. (2) TREE-TRAIN-0 shared-prefix exact
+  instrument-first method. [MEASURED 2026-08-15: the gate FAILED
+  on R2 — no metric ranks i_heurisch above the remainder, and the
+  pre-declared L6 falsifier fired (the atlas tracks shard
+  composition, not worth); R1 passed 4/5 metrics and the gradient
+  cosine beat the surface-kNN control on that leg, the credit
+  line. Instrument dead in this metric set; VERDICT GRAD-MAP-0,
+  RESULTS L30127. The gate did precisely what it was built for.] (2) TREE-TRAIN-0 shared-prefix exact
   training — census first: conflicted rows share PROMPT prefixes
   within 4,347 groups only, so the FLOP ceiling may be small at
   19M; the zero-cost prefix-duplication census prices it before
@@ -5154,7 +5160,10 @@ without re-introducing history).
   breaks: atlas signatures are end-of-training gradients (worth-
   during proxied by worth-at-end, disclosed in spec); the
   compute-curve flagship needs the policy rung to exist first.
-  Testable residue: GRAD-MAP-0 retrodiction gate (R1-R3);
+  Testable residue: GRAD-MAP-0 retrodiction gate (R1-R3)
+  [DISCHARGED 2026-08-15: gate FAILED on R2, VERDICT GRAD-MAP-0
+  L30127 — the DATA-SCIENCE program's atlas leg is dead in this
+  metric set; basics-diet runs unshaped, MIXER-1 stays parked];
   RULE-POLICY-0 rung 0 = label coverage census (what fraction of
   chain rows admit a recoverable (rule, site) label). Attribution:
   GPT seat (refinements), Artin (relay), house (execution,
