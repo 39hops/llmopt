@@ -4902,10 +4902,17 @@ without re-introducing history).
   dose, L4 cell 12/12/12; dose ladder in flight (L29533).
   Honest breaks: the 120 gate has no L1/L2 cells, so "basics
   improved" has no direct gate readout — nearest observables are
-  valid% (syntax/arithmetic slips) and the L3 cell; and the
-  decomposition discount could point the OTHER way here
-  (arithmetic may already be saturated by implicit exposure —
-  the diet share doctrine warns against spending rations on it).
+  valid% (syntax/arithmetic slips) and the L3 cell.
+  [AMENDED 2026-08-15, Artin's catch]: the "may already be
+  saturated implicitly" caveat originally written here UNDERSOLD a
+  booked prior — Series rung 1c (RESULTS L3444, 2026-07-22)
+  measured exactly this move in the series grammar: arithmetic
+  with operands SPELLED OUT trained to 67.0% held-out vs 15-16%
+  implicit (~4.3x, separable 63/63). Explicit basics beat implicit
+  where tried. The surviving open question is transfer and rations:
+  1c's series rows cost a -2 gate dent (~2 integral solves at 19M
+  regardless of volume), so basics atoms must price their diet
+  share against that measured capacity cost.
   Testable residue: BASICS-DIET rung — farm algebra/arithmetic
   one-ply atoms via axiom's native rules, interleave at <=2%
   dose beside the calculus atoms, bars on valid% and L3 with a
