@@ -4961,3 +4961,45 @@ without re-introducing history).
   known-hard cells (L4 recognition), a curriculum-weighting rung
   is specifiable. Attribution: Artin (the ask), house (the gauge
   fence + the b/c split).
+
+- **BANKED (2026-08-15): if one-hot rows average into the branch
+  distribution anyway, collapse them and pocket the compute**
+  (Artin, off the SOFT-NEXT-1 refutation: "if it's the same, why
+  don't we try to use it to speed up training??"). The mapping:
+  the diet's 25,916 conflicted rows carry ~4,347 rows of distinct
+  information; replacing each conflict group with ONE soft-target
+  row shrinks the diet ~13% at theoretically identical training
+  signal — a lossless-in-expectation speed lever, exactly the
+  house speed-defaults class. Measured anchors: SOFT-NEXT-1
+  (L29733) showed target form is gate-neutral AND
+  calibration-neutral at this recipe — the equivalence the trick
+  needs. Honest breaks: "identical in expectation" is not
+  identical in dynamics (fewer gradient samples on conflicted
+  prompts; epoch length changes every schedule interaction);
+  matched-EPOCH comparison changes total steps, so the schedule
+  must rescale (OneCycle total_steps drops ~13%) — the comparison
+  is speed-at-equal-quality, not one-variable. Testable residue:
+  SOFT-SPEED-1 — dedup-to-soft-rows arm v stock, matched epochs,
+  bars: gate within resolution of stock AND wall-clock/steps
+  saved >= 10%. Attribution: Artin (the lever), house (the 13%
+  arithmetic + schedule fence).
+
+- **BANKED (2026-08-15): bigger distributions — hints filled and
+  SOLUTION-NEXT targets** (Artin: "what if we give it hints and
+  they are SOLUTION-NEXT, bigger/more distributions?"). The
+  mapping: SOFT-NEXT-1 varied only target SHARPNESS on a fixed
+  row schema; this riff varies what the distribution is OVER —
+  (a) hints populated (the farm's hint/think fields, today always
+  "none" in training rows) as conditioning, (b) full-solution
+  targets (cur -> complete antiderivative, skipping intermediate
+  plies) beside step targets, (c) distributions over SOLUTIONS
+  not steps (multiple valid full answers). Measured anchors: the
+  refuted SOFT-NEXT-1 is the prior (sharpness alone: nothing);
+  hint-carrying rows exist in farm_v22 shards untrained-on.
+  Honest breaks: hints at train time without hints at gate time
+  is a train/test format shift (FORMAT-BOUND hazard); full-
+  solution rows change the difficulty distribution wholesale — a
+  diet redesign, not a target tweak, priced as its own program.
+  Testable residue: HINT-DIET-0 (desk first: census what hint
+  content exists in the frozen shards before any rung).
+  Attribution: Artin (both asks), house (the format-shift fence).
