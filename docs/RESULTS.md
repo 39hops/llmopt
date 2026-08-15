@@ -29601,3 +29601,60 @@ rescale to what landed, disclosed); no-op precondition per arm as
 in the ladder. Mac may share CPU with mac-axiom machine time —
 births mps-bound, disclosed. Seed band 72M is SPENT on farm
 completion regardless of verdict.
+
+## PRE-REG SOFT-NEXT-1: does attaching the branch distribution to conflicted rows change calibration or the gate? (2026-08-15, 3080)
+
+DIET-AMBIGUITY-1 (L28562) measured the diet as one-to-many: 4,356
+conflicted curs covering 25,916 rows (15.7%), irreducible one-hot
+CE >= 0.174 nats/row. This rung tests the banked SOFT-NEXT residue
+(RIFF atomic-op neighborhood; Artin's distribution-over-answers
+ask, 2026-08-15): same support, soft targets — no new rows, no new
+enumeration, ONE variable = target sharpness at branch tokens.
+
+**Instrument**: scratch/birth19m_softnext.py on the 3080 (Artin
+opened the window; overnight scope). Two serial arms, BIRTH_SEED 2,
+15,420 steps, cuda bf16 autocast (speed default — this starts a NEW
+3080-bf16 gate family; its numbers are never compared to Mac/fp32
+families):
+- control: the stock gen4 diet exactly as the frozen curric loader
+  serves it (one-hot CE).
+- soft: identical rows, batches, and step count; for each
+  conflicted cur group, a token-level prefix trie over its distinct
+  answers replaces one-hot targets on SHARED-PREFIX positions with
+  the empirical next-token distribution (weights = row counts);
+  after a row's path leaves the shared trie, targets are one-hot as
+  before. Unconflicted rows are untouched.
+Post-train probe, identical for both arms: valid-set mass = mean
+over a string-seeded 500-cur conflicted sample
+(random.Random("softnext-cal-1")) of the total teacher-forced
+probability the model assigns to the SET of that cur's distinct
+valid answers. Receipts logs/softnext1/arms.jsonl (streamed);
+checkpoints checkpoints/gallery19m_softnext_{control,soft}_s2.pt.
+
+**BARS**:
+1. SOFT-CAL fires iff soft valid-set mass >= control + 0.05
+   (absolute).
+2. GATE-SAFE fires iff |soft_total - control_total| <= 4 on the
+   120 gate; soft_total <= control - 5 books SOFT-HARM;
+   soft_total >= control + 5 books SOFT-LIFT.
+
+**REFUTED-IF**: SOFT-CAL misses AND soft_total <= control_total —
+the distribution attachment moved neither calibration nor the gate
+and the residue books dead at this recipe.
+
+**REGISTERED PRIOR**: deltas only (the control's absolute reading
+is a new family — no house prior): gate delta -2..+4 point +1
+(greedy decode blunts branch-token mass shifts); valid-set mass
+gain +0.03..+0.10 point +0.06. Family record 2 hits, 8 misses.
+
+**FENCES**: 3080-only family, bf16 autocast, single seed n=1 —
+direction-grade only; data identity guards: driver asserts the
+pre-excision row count equals the booked 165,028 AND recomputes
+the conflict census in-driver, requiring 4,356 curs within 1%,
+else NOT-RUN (the two checkouts must be serving the same diet);
+matched 15,420-step horizon both arms; no-op precondition not
+applicable (no model-wrapping — the loss TARGET changes, weights
+path untouched; the control arm IS the recipe reference); gate
+numbers quote gate-printed weights sha; cross-device claims
+forbidden as always. If the 3080 window closes mid-run, receipts
+already streamed book as partial (arm-level granularity).
