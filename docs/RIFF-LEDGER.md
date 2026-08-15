@@ -5049,3 +5049,63 @@ without re-introducing history).
   census. Attribution: Artin (both asks, the b-tree image), house
   (variance formalization, the 1c anchor, the conflict-density
   fence).
+
+- **BANKED (2026-08-15): the GPT nine — external seat's post-RULE-ABLATE
+  program proposal** (GPT via Artin relay; house line-verified the
+  ledger claims before banking). Claims checked: L4-PLY0-1 16/17
+  ply-0 recognition failures TRUE (L28104); size-Phi shaping NULL
+  with distance-to-solved Phi pre-registered-unrun TRUE
+  (L3257-3265, rung 2b); 95 skip-pairs in corpus TRUE (L1264) and
+  skip-pairs ALSO already ran as a FORMAT LADDER cell (L6458) —
+  their "no clean isolated skip-distance experiment" needs that
+  cite, though a dose-matched jump-distance continuum at the 19M
+  recipe is genuinely unrun; easy-first 54 / hard-first 37 v
+  shuffled 64 TRUE (FINDINGS L1896); SOFT-SPEED = data
+  compression not shared execution TRUE. External papers (LESS
+  2402.04333, Tree Training 2511.00413, DeepSeek-Prover-V2
+  2504.21801, DoGE 2310.15393) are claims-as-published, unverified
+  house-side. The nine, with house dispositions:
+  (1) GRAD-MAP-0 gradient/data-worth atlas, retrodiction-gated
+  (must blindly recover sympy>axiom-for-L4, heurisch>remainder-
+  for-L4 before it earns a birth) — ADOPTED as next desk
+  instrument; the retrodiction gate is exactly the house
+  instrument-first method. (2) TREE-TRAIN-0 shared-prefix exact
+  training — census first: conflicted rows share PROMPT prefixes
+  within 4,347 groups only, so the FLOP ceiling may be small at
+  19M; the zero-cost prefix-duplication census prices it before
+  any implementation. (3) RULE-POLICY-0 action-native policy
+  (rule_id, site, args -> deterministic executor) — the deepest
+  bet; aligns with L4-PLY0-1 (recognition, not serialization, is
+  the failure) and the watch-it-think flagship; atom rows carry
+  single-rule tags as free labels; format-shift hazard: a policy
+  head needs its OWN gate (first-action accuracy, executor
+  validity) before comparison to string gates. (4) cost-to-go
+  value head, supervised-ranking BEFORE any GRPO — revives the
+  registered-unrun rung 2b (distance-to-solved Phi) in
+  value-head form; consistent with the magic-estimator law
+  (prediction pays where variance lives). (5) skip-distance
+  ladder 1-ply -> chain -> k=2/3/4 -> full-solution at matched
+  dose — legit with the format-ladder cite; U-shape prior is
+  theirs. (6) MIXER-1 learned diet controller (DoGE-style) —
+  PARKED behind (1): a controller is many variables at once; the
+  atlas must exist first, and paired-arm discipline wants the
+  controller's choices replayed as static diets. (7)
+  EXPERT-INTERACTION-0 Hadamard/factorial expert-mask design with
+  pairwise interaction recovery — strong instrument idea for the
+  MoE crest thread, 30B/3080 territory, own machine budget, Artin
+  GO. (8) BASICS-DIET as small-dose transfer test — already
+  queued (1c anchor); their framing (substrate transfer, not
+  can-it-learn) adopted. (9) DEMOTE hint-diet in favor of
+  auxiliary targets (rule id / subgoal / cost-to-go) — agrees
+  with the standing format-shift fence on HINT-DIET-0; the
+  auxiliary-target version merges into (3)/(4). Their three bets:
+  atlas->learned-diet, tree training, action-native policy +
+  cost-to-go. House ordering after SOFT-SPEED books: GRAD-MAP-0
+  desk + TREE-TRAIN census desk, then basics-diet birth;
+  RULE-ABLATE seeds 4/5 deferred (direction-grade suffices while
+  cheaper levers exist) — concurs with their sequencing.
+  Testable residue: the retrodiction gate on GRAD-MAP-0 is
+  immediately falsifiable; the prefix census is a one-number
+  answer (duplicated-prefix token fraction). Attribution: GPT
+  seat (the program), Artin (the relay + the ask), house
+  (verification, dispositions, fences).
