@@ -29529,3 +29529,75 @@ gallery19m_{stock,atoms}_s{3,4}.pt are exhaust (75.7 MB each,
 302.7 MB total). Mac shared CPU with mac-axiom's granted machine
 time during the run — births mps-bound, contention accepted and
 disclosed, no cross-lab numbers compared.
+
+## PRE-REG ATOM-DOSE-LADDER-1: dose-response of the one-ply atom diet, on axiom-emitted shards (2026-08-14, Mac)
+
+ATOM-DIET-LADDER-1 replicated +6 at the single 3.5% dose. This rung
+buys the dose curve (Artin GO, autonomous overnight scope), and per
+the axiom-first law the new shards come from axiom's emit_chain —
+with a registered emitter-tie arm so the dose curve and the emitter
+switch are never confounded silently.
+
+**Farm instrument**: scratch/farm_atoms_axiom.py — forked workers
+(rolling pool, per-level fork walls; L4 wall 8s because band-72M
+L4 heurisch is bimodal ~0.3s-or-livelock, censoring the same hang
+class a 60s wall would), axiom build-iv7 PINNED (INTERFACE_VERSION
+7, GIT_SHA 5a8ae70 asserted in-worker), emit_chain with the
+in-process elementary-only heurisch slot, keep = single-row
+source=axiom-oneply, then sympy re-verification (diff of nxt minus
+integrand simplifies to 0) as oracle-of-record on top of axiom's
+verify_edge. Guards carried from the frozen sympy farmer:
+in_language, D2 gate-band excision, corpus-cur dedup, (cur,nxt)
+dedup. Seed band 72M (71M is SPENT). Targets {4:4800, 3:1800,
+5:1800, 6:1800, 7:1800} = 12,000 rows to
+data/micromodel_atoms_axiom_shard0.jsonl. NESTED DOSES: each dose
+takes the first N rows of the string-seeded shuffle
+random.Random("dose-ladder-1").shuffle, so smaller doses are strict
+subsets of larger — composition-controlled by construction.
+NOTE: axiom rows carry hint-SETS in their rule field (a list),
+not the sympy farmer's single applied-rule tag; the two rule
+taxonomies never mix in analysis.
+
+**Birth arms** (scratch/birth19m_atoms_dose.py, thin sibling of the
+frozen ladder driver — SHARD/NROWS/LABEL lifted to envs; recipe,
+dose mechanics, no-op precondition, gate all verbatim): three
+serial arms, all BIRTH_SEED 3, all 15,420 steps, mps fp32:
+- A1 dose~1%: first 1,700 rows.
+- A2 dose~3.5%: first 6,000 rows (the emitter-tie point).
+- A3 dose~7%: all 12,000 rows.
+Comparators, same seed and horizon, booked this session: stock s3
+= 64 {3:24,4:6,5:15,6:8,7:11} and atoms-sympy s3 = 70
+{3:22,4:12,5:16,6:8,7:12}. Receipts logs/atomdose1/arms.jsonl,
+checkpoints checkpoints/gallery19m_dose{1,3p5,7}_s3.pt.
+
+**BARS**:
+1. EMITTER-TIE fires iff |A2_total - 70| <= 3; else
+   EMITTER-DIVERGES books and A1/A3 dose readings are fenced to
+   the axiom-emitter family only.
+2. LOW-HOLDS fires iff A1_total >= 67.
+3. HIGH-NO-SCAR fires iff A3_total >= 68; A3_total <= 63 books
+   FLOOD-AT-7 (the v22 scar reappearing).
+4. L4-DOSE fires iff A2 and A3 L4 >= 10 each AND A1 L4 >= 8.
+
+**REFUTED-IF**: A1, A2, A3 all <= 64 — the replicated 3.5% fire
+does not survive the axiom emitter at any dose; the diet claim
+falls back to the sympy-shard family only.
+
+**REGISTERED PRIOR**: A1 66-68 point 67 (sublinear low end), A2
+68-71 point 70 (tie), A3 67-71 point 69 (mild flooding discount at
+7%, no scar), L4: A1 9-11 point 10, A2 11-12 point 12, A3 11-12
+point 12. Family record 2 hits, 8 misses.
+
+**FENCES**: single seed (3) — this rung buys dose SHAPE, not
+magnitude error bars (direction is anchored by ATOM-DIET-LADDER-1
+at n=2 matched + seed-2 corroboration); single device (mps),
+family-only comparisons at matched 15,420-step horizon; the L4 8s
+wall censors slow-heurisch problems out of the shard (same
+censored class as the frozen shard's 60s wall, boundary moved —
+disclosed, and censored != fact); axiom emitter provenance: any
+booking quotes GIT_SHA 5a8ae70; farm books NOT-RUN for any level
+short of target by >10% after a 3h wall (partial shard, doses
+rescale to what landed, disclosed); no-op precondition per arm as
+in the ladder. Mac may share CPU with mac-axiom machine time —
+births mps-bound, disclosed. Seed band 72M is SPENT on farm
+completion regardless of verdict.
