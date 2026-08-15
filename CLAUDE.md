@@ -214,6 +214,14 @@ the two and should be reconciled here in the same session.
   newest handoff/spec + RESULTS tail.
 - Task holds are explicit: queued work marked [HOLD] runs only on
   Artin's GO, never on inference from context.
+- **Mac mps float training is RUN-LEVEL NONDETERMINISTIC at fixed
+  seed** (measured 2026-08-15: paired 20-step probe, same script,
+  same seed, same batches, different weight digests). Never write
+  a cross-run bit-exact reproduction precondition into a Mac
+  pre-reg, and never compare weight shas across runs on mps;
+  in-run paired arms are the valid shape (both arms see the same
+  substrate noise). This killed a registered precondition
+  mid-rung — AMENDMENT SOFT-SPEED-1-PRECONDITION.
 - Instrument fences travel with instruments: CE-400 is
   format-BOUND (valid within matched-format comparisons only);
   sigma never transports across devices/widths; probe scripts pin

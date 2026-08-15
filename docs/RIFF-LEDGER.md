@@ -4899,7 +4899,10 @@ without re-introducing history).
   The bank's "one-ply atoms teach recognition" claim is now
   SHARD-FAMILY-SCOPED: rule mix / answer forms / censoring carry
   a large share. Open: rule-ablated shards (i_heurisch mass
-  first). VERDICT RESULTS.md L29662.
+  first). VERDICT RESULTS.md L29662. Cross-ref: the hardening
+  rung (seeds 4/5) and the two untested suspects (answer
+  canonicalization, survivor censoring) have their own bank,
+  same day.
   [MEASURED 2026-08-15, rule ablation]: the suspect ranking's head
   survives its first test — RULE-CARRIER fires at exactly the
   3-L4-solve bar (noheur L4 8 v ctrl 11), against the level-mix
@@ -5052,10 +5055,14 @@ without re-introducing history).
   prefixes within one cur only, never across curs, and no
   hierarchical structure above the branch token exists in the
   loss; "consistent gradient" is variance reduction, not a new
-  signal. Testable residue: SOFT-SPEED-1 is LIVE (pre-reg
-  be3b8e4) and its QUALITY-HOLDS bar is exactly this frame's
-  prediction; the chain-diet combination waits on the basics-diet
-  census. Attribution: Artin (both asks, the b-tree image), house
+  signal. Testable residue: SOFT-SPEED-1 RAN the same day and the
+  frame's pre-registered call was CORRECT — QUALITY-HOLDS fired
+  as non-inferiority (soft 64 v control 62, inside run noise),
+  not as a gain, exactly as "neutral-at-fewer-steps, not better"
+  predicted; the variance-reduction reading survives and the
+  b-tree depth-1 break stands (VERDICT RESULTS.md L30064). Still
+  open: the chain-diet combination, which waits on the
+  basics-diet census. Attribution: Artin (both asks, the b-tree image), house
   (variance formalization, the 1c anchor, the conflict-density
   fence).
 
@@ -5199,3 +5206,49 @@ without re-introducing history).
   inference need hints at train, the HINT-DIET lesson).
   Attribution: Artin (the ask), house (mapping to standing banks,
   the kNN residue).
+
+- **BANKED (2026-08-15): SOFT-SPEED-1b — the 9.84% is Python, not
+  physics** (house, off the SOFT-SPEED-1 knife-edge miss). The
+  measurement: the collapse cut 12.96% of steps but only 9.84% of
+  wall-clock, because the per-batch Python loop over 15,105 soft
+  positions raised per-step cost +3.58% (0.18349 -> 0.19005
+  s/step, VERDICT L30064). Two untested implementations recover
+  the gap: (a) VECTORIZE — precompute per-row (position, token,
+  prob) index tensors once, gather logp with a single
+  scatter/index op per batch instead of a Python double loop; (b)
+  DROP the soft targets entirely and keep only the WEIGHTED
+  REPRESENTATIVE row (one-hot, count-weighted) — SOFT-NEXT-1
+  already refuted soft targets as a quality lever at this recipe,
+  so (b) tests whether the collapse's value was ever in the
+  distribution or purely in the deduplication. Measured anchors:
+  SOFT-SPEED-1 quality non-inferiority (64 v 62), SOFT-NEXT-1
+  refutation (L29733). Honest breaks: (b) changes the arm's
+  semantics, so it is a NEW registered arm, not a re-run; both
+  need the mps-nondeterminism fence (in-run paired control, no
+  cross-run identity). Testable residue: SOFT-SPEED-1b, bars =
+  quality within resolution of an in-run control AND wall-clock
+  saved >= 10%; arm (b) additionally answers "distribution or
+  dedup?" for free. Attribution: Artin (the original lever),
+  house (the overhead measurement and the two fixes).
+
+- **BANKED (2026-08-15): RULE-ABLATE hardening and the rest of the
+  suspect list** (house, off RULE-ABLATE-1's knife-edge fire). The
+  carrier bar fired at exactly its threshold on one seed, so the
+  claim "i_heurisch content carries the L4 cell" is
+  DIRECTION-GRADE. Hardening rung: seeds 4/5 paired arms, same two
+  derived shards, same horizon, mean paired delta >= 3 as the bar
+  (the ladder's replication shape). Cost ~2h per seed pair on the
+  Mac, no farm. The dose ladder's suspect list had THREE entries
+  and only the first is now tested: rule mix (TESTED, fires),
+  answer canonicalization (UNTESTED — do the two emitters
+  serialize the same mathematical answer differently, and does
+  normalizing kill the divergence?), survivor censoring (UNTESTED
+  — the axiom farm's 8s L4 wall censored a bimodal-heurisch band;
+  the sympy shard has no equivalent wall). Honest breaks: the
+  ablation confounds level mix at every level (L6 starved 2.9x),
+  so a seeds-4/5 replication inherits that confound; a clean
+  rule-only test needs level-stratified shards, which shrinks the
+  usable row pool. Testable residue: RULE-ABLATE-2 (seeds 4/5),
+  ANSWER-FORM-0 (desk: diff the two emitters' serializations of
+  the same integrand), CENSOR-0 (desk: what the 8s wall removed).
+  Attribution: house.

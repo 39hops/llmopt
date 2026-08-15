@@ -1,8 +1,8 @@
 {
-  "_": "Single source for every published figure. Each number is transcribed from the RESULTS verdict named in its `source`, and both renderers (llmopt/lab/figures.py for paper SVG, llmopt/lab/figsvg.py for web) read THIS file \u2014 so a corrected number cannot survive in one renderer and not the other. Re-run scripts/gen_readme_figures.py and scripts/gen_figures_web.py after any amendment.",
+  "_": "Single source for every published figure. Each number is transcribed from the RESULTS verdict named in its `source`, and both renderers (llmopt/lab/figures.py for paper SVG, llmopt/lab/figsvg.py for web) read THIS file — so a corrected number cannot survive in one renderer and not the other. Re-run scripts/gen_readme_figures.py and scripts/gen_figures_web.py after any amendment.",
   "merge_space": {
     "kind": "gate_track",
-    "title": "Averaging independently born weights does not degrade a model \u2014 it ends it",
+    "title": "Averaging independently born weights does not degrade a model — it ends it",
     "scope": "All six independent-pair averages gated exactly zero; shared-lineage merges land in the parent band.",
     "denominator": 120,
     "arms": [
@@ -27,7 +27,7 @@
         "entity": "champion"
       },
       {
-        "label": "independent merge (\u00d76)",
+        "label": "independent merge (×6)",
         "value": 0,
         "entity": "independent"
       },
@@ -42,12 +42,12 @@
         "entity": "soup"
       }
     ],
-    "fence": "VERDICT MERGE-SPACE-1 \u00b7 RESULTS.md#L26770 (craters, n=1 per cell) \u00b7 MERGE-SPACE-5 \u00b7 RESULTS.md#L27158 (same-init holds, n=3 paired seeds) \u00b7 d64 \u00b7 RTX 3080"
+    "fence": "VERDICT MERGE-SPACE-1 · RESULTS.md#L26770 (craters, n=1 per cell) · MERGE-SPACE-5 · RESULTS.md#L27158 (same-init holds, n=3 paired seeds) · d64 · RTX 3080"
   },
   "ssm_star": {
     "kind": "gate_track",
     "title": "The house's first state-space model lost on both axes",
-    "scope": "Paired arms: same device, diet, seed. The state-space arm also trained 22.6\u00d7 slower. Booked as a loss.",
+    "scope": "Paired arms: same device, diet, seed. The state-space arm also trained 22.6× slower. Booked as a loss.",
     "denominator": 120,
     "arms": [
       {
@@ -61,7 +61,7 @@
         "entity": "ssm"
       }
     ],
-    "fence": "VERDICT SSM-STAR-1 \u00b7 RESULTS.md#L27282 \u00b7 d64 \u00b7 RTX 3080 \u00b7 n=1"
+    "fence": "VERDICT SSM-STAR-1 · RESULTS.md#L27282 · d64 · RTX 3080 · n=1"
   },
   "effective_context": {
     "kind": "curves",
@@ -76,7 +76,7 @@
       128
     ],
     "xlabel": "context the model may see, k (tokens)",
-    "ylabel": "loss at positions \u2265128 (nats)",
+    "ylabel": "loss at positions ≥128 (nats)",
     "logx": true,
     "series": [
       {
@@ -128,11 +128,11 @@
         ]
       }
     ],
-    "fence": "VERDICT KEFF-PROBE-1 \u00b7 RESULTS.md#L27332 \u00b7 bar 1 fires, bar 2 does not \u00b7 400 fixed rows \u00b7 Mac CPU \u00b7 loss only, no gate"
+    "fence": "VERDICT KEFF-PROBE-1 · RESULTS.md#L27332 · bar 1 fires, bar 2 does not · 400 fixed rows · Mac CPU · loss only, no gate"
   },
   "loss_floor": {
     "kind": "ladder",
-    "title": "The training floor walks down with width \u2014 and stops nowhere near the corpus limit",
+    "title": "The training floor walks down with width — and stops nowhere near the corpus limit",
     "scope": "Fresh births on one warm diet, fp32. Eight times the width buys roughly one token of effective context.",
     "xlabel": "model width",
     "ylabel": "final-epoch train loss (nats)",
@@ -155,11 +155,11 @@
       }
     ],
     "reference": {
-      "label": "corpus entropy at k=32 \u00b7 H = 0.187",
+      "label": "corpus entropy at k=32 · H = 0.187",
       "value": 0.187
     },
     "entity": "champion",
-    "fence": "VERDICT FLOOR-HK-1 \u00b7 RESULTS.md#L27055 \u00b7 Mac \u00b7 n=1"
+    "fence": "VERDICT FLOOR-HK-1 · RESULTS.md#L27055 · Mac · n=1"
   },
   "routing_crest": {
     "kind": "gate_track",
@@ -210,7 +210,7 @@
         "mask": 81
       }
     ],
-    "fence": "VERDICT MOE-GT-1-R5/R6 \u00b7 RESULTS.md#L18927 \u00b7 masked v full PAIRED at seeds 111/222/333 (+17/+9/+18, pooled +14.7 v a +7 bar); controls at seed 1234, NOT seed-paired to those arms \u00b7 Mac MLX \u00b7 mathgen L1-3"
+    "fence": "VERDICT MOE-GT-1-R5/R6 · RESULTS.md#L18927 · masked v full PAIRED at seeds 111/222/333 (+17/+9/+18, pooled +14.7 v a +7 bar); controls at seed 1234, NOT seed-paired to those arms · Mac MLX · mathgen L1-3"
   },
   "honesty_ledger": {
     "kind": "composition",
@@ -221,7 +221,7 @@
         "label": "Replicated",
         "value": 41,
         "entity": "champion",
-        "note": "holds at n\u22653 paired seeds"
+        "note": "holds at n≥3 paired seeds"
       },
       {
         "label": "Mechanism confirmed",
@@ -231,13 +231,13 @@
       },
       {
         "label": "Single seed",
-        "value": 94,
+        "value": 96,
         "entity": "crown",
         "note": "fenced as provisional"
       },
       {
         "label": "Null",
-        "value": 42,
+        "value": 43,
         "entity": "random",
         "note": "the idea did not work"
       },
@@ -248,6 +248,6 @@
         "note": "we were wrong, in writing"
       }
     ],
-    "fence": "docs/FINDINGS.md \u00b7 238 curated claims \u00b7 recounted from the source at build time"
+    "fence": "docs/FINDINGS.md · 241 curated claims · recounted from the source at build time"
   }
 }

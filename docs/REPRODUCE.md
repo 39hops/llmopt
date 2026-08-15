@@ -35,6 +35,15 @@ PASS gravmoe-rb1 c6766da235cf0b76be20035b893cb41fd0a2f8dbbc6339c96e8527ce2cb3f65
 committed pin exactly. It is trajectory-exact determinism evidence. It is not
 symbolic correctness evidence, and it is not a capability score.
 
+The determinism this reproduction certifies belongs to the pinned integer and
+CPU float paths it replays. It does not extend to ordinary float training on
+Apple-silicon MPS, which is run-level nondeterministic at fixed seed: a paired
+20-step probe on 2026-08-15 produced different weight digests across two
+consecutive runs of the same script, same seed, same batches
+([AMENDMENT SOFT-SPEED-1-PRECONDITION](RESULTS.md#L29985)). Experiments on
+that substrate compare arms within one run and never assert cross-run weight
+identity.
+
 ## What a fresh clone contains
 
 Repository commit `4ef9cd511369023d69db7332aebf36517de62951` made the
