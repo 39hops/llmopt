@@ -889,6 +889,7 @@ Rewrite generated regions in README.md from ledger truth.
 
 - `counts() -> dict[str, int]`
 - `render() -> str`
+- `render_figure(fig_text: str) -> str` — Rewrite the honesty_ledger part values and the claim count in
 - `main() -> int`
 
 ### scripts/gen_regret_labels.py

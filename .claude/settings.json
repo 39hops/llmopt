@@ -32,13 +32,13 @@
     ],
     "PostToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": "Edit|Write|Bash",
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; case \"$f\" in */docs/RESULTS.md) .venv/bin/python scripts/gen_results_index.py 2>/dev/null; .venv/bin/python .claude/hooks/findings_headroom.py;; */scratch/*.py|*/scripts/*.py) .venv/bin/python scripts/gen_index.py 2>/dev/null; echo 'INDEX regenerated. If this file is NEW: commit it, then rerun gen_codemap.py (tracked files only) or the suite goes red.';; esac; } || true",
-            "timeout": 60,
-            "statusMessage": "Regenerating results index"
+            "command": ".venv/bin/python .claude/hooks/ledger_regen.py",
+            "timeout": 120,
+            "statusMessage": "Regenerating ledger surfaces"
           }
         ]
       }

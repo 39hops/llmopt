@@ -38,6 +38,15 @@ implementations. See README for the full inventory and measured numbers.
   session makes the edits and is accountable for verifying them.
   The bar did not move with the rule: pytest green, claims checked
   against the source, no booking on an unverified number.
+- **Auditor agents, spawned before a booking**: `prereg-auditor`
+  (verdict v pre-registration: bar text, dict sums, fences,
+  resolution law) and `receipt-auditor` (the receipt ROWS
+  themselves: provenance fields inherited from a copied sibling
+  driver, smoke rows in a real receipt file, writes into frozen
+  receipt paths). They fail independently — a row can carry a
+  perfect gate dict and a false emitter field, which is exactly
+  what happened on 2026-08-15. Run receipt-auditor on any NEW or
+  COPIED driver's first real receipts.
 - **Sub-agents: review by default, MAY WRITE when directed** (Artin,
   2026-08-11 — the read-only default is a habit, not a safety
   property). Reviewers (sanctioned 2026-07-24, standing since
@@ -167,6 +176,7 @@ earned it):
 | `/riff` | bank an idea in RIFF-LEDGER, or correct a bank in place |
 | `/labstatus` | one-shot sweep of both machines, unbooked results first |
 | `/probe` | measurement-cost triage before any multi-hour run |
+| `/desk` | zero-cost census: price a rung by counting before running it |
 | `/relay` | house -> axiom relay |
 | `/counterbook` | recompute axiom's numbers from their artifacts |
 | `/handoff` | session close: handoff file, BOARD repoint, suite, push |
