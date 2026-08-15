@@ -1386,6 +1386,12 @@ Gallery instrument run: a fresh 19M-class birth with PER-EPOCH snapshots, so the
 - `excised_load_rows(*a, **kw)`
 - `tee_save(obj, f, *a, **kw)`
 
+### scratch/birth19m_softnext.py
+SOFT-NEXT-1 instrument (pre-reg RESULTS 2026-08-15): branch distributions attached to conflicted rows. Two arms (ARM env: control | soft), BIRTH_SEED 2, 15,420 steps, cuda bf16 autocast (falls back mps/cpu for smoke tests). Same rows, batches, and step count in both arms — the ONE variable is the training target at branch tokens:
+
+- `build_conflict_tries(rows, tok)` — Group diet rows by whitespace-stripped cur; for groups with
+- `main()`
+
 ### scratch/blackhole_b0.py
 BLACK HOLE MoEs B0+B1+B2 (pre-reg 2026-07-29 close): capacity atlas + dial-routed streaming pack + function-space spot check of Qwen3-30B-A3B. One shard on disk at a time (download -> process -> DELETE — the C7 OOM lesson, applied to disk). Zero calibration. Atlas rows to logs/blackhole_atlas.jsonl; packed parts to checkpoints/blackhole_q3_parts/ (codes npz per shard). Env: START/END shard 1-indexed bounds. __main__-guarded.
 

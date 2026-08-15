@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 201, library 66, reproduce-pinned 10, results-cited 183, spec-cited 86, cited-but-library 55
+Census: UNCITED 202, library 66, reproduce-pinned 10, results-cited 184, spec-cited 86, cited-but-library 55
 
 ## scratch/
 
@@ -32,11 +32,12 @@ Census: UNCITED 201, library 66, reproduce-pinned 10, results-cited 183, spec-ci
 | birth19m | birth19m_atoms_dose.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | birth19m | birth19m_atoms_ladder.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
 | birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
-| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 7 | — |
+| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 8 | — |
 | birth19m | birth19m_curric_rev.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
 | birth19m | birth19m_curric_swap.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | birth19m | birth19m_snaps.py | UNCITED | — | — | — | 1 |
+| birth19m | birth19m_softnext.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | blackhole | blackhole_b0.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | boundary | boundary_or_bulk.py | results-cited | RESULTS | RESULTS×3 | — | — |
 | brute | brute_arms_0801.sh | UNCITED | — | — | — | — |
@@ -344,6 +345,7 @@ Census: UNCITED 201, library 66, reproduce-pinned 10, results-cited 183, spec-ci
 | series | series_probe.py | spec-cited | specs | specs×5 | — | 15 |
 | snap | snap_alloc.py | spec-cited | specs | specs×2 | — | 1 |
 | snap | snap_anatomy.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| softnext1 | softnext1_driver.sh | UNCITED | — | — | — | — |
 | softprompt | softprompt_sampler_probe.py | spec-cited | specs | specs×1 | — | — |
 | softprompt1 | softprompt1.py | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | 3 |
 | softprompt1 | softprompt1.sh | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -558,7 +560,7 @@ Census: UNCITED 201, library 66, reproduce-pinned 10, results-cited 183, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 62 | 31 |
+| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 63 | 31 |
 | train | train_nnue.py | library | specs | specs×8 | 1 | 12 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
