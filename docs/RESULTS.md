@@ -29791,3 +29791,52 @@ teacher-forced sequence probability (greedy-decode behavior is the
 gate's job); gate-printed weights shas quoted above from the
 pulled arm logs; checkpoints remain on the 3080
 (checkpoints/gallery19m_softnext_{control,soft}_s2.pt).
+
+## PRE-REG RULE-ABLATE-1: is i_heurisch content the L4 carrier in the sympy atom shard? (2026-08-15, Mac)
+
+ATOM-DOSE-LADDER-1 (L29662) booked EMITTER-DIVERGES with rule mix
+as suspect #1 for the L4 gap. This rung ablates the suspect
+directly, zero farming: the frozen sympy shard
+data/micromodel_atoms_shard0.jsonl splits by its own rule tags —
+2,782 i_heurisch rows v 3,218 others (which hold 1,411 of the
+2,400 L4 rows).
+
+**Instrument**: two DERIVED shards, written once by
+scratch/make_ruleablate_shards.py from the frozen source (selection
+only, source untouched, seed band untouched):
+- noheur: all 3,218 non-i_heurisch rows.
+- ctrl: random.Random("rule-ablate-1") sample of 3,218 rows from
+  the full 6,000 (dose-matched control carrying the shard's own
+  rule mix).
+Births: scratch/birth19m_atoms_rule.py (thin sibling of the frozen
+dose driver — RECEIPTS path and checkpoint naming parameterized so
+nothing appends into the frozen logs/atomdose1/ receipts;
+otherwise verbatim) via scratch/ruleablate1_driver.sh, two serial
+arms, BIRTH_SEED 3, 15,420 steps, mps fp32, full-shard NROWS.
+Receipts logs/ruleablate1/arms.jsonl; checkpoints
+checkpoints/gallery19m_{noheur,ctrl3218}_s3.pt. Comparators (same
+seed, horizon, device): stock s3 = 64, atoms-sympy s3 = 70 at
+6,000 rows (both L29465).
+
+**BARS**:
+1. RULE-CARRIER fires iff ctrl_L4 - noheur_L4 >= 3.
+2. HALF-DOSE-HOLDS fires iff ctrl_total >= 67.
+3. HARM-GUARD: either arm <= 60 books HARM-AT-ARM.
+
+**REFUTED-IF**: noheur_L4 >= ctrl_L4 — heurisch mass is NOT the
+L4 carrier and the suspect ranking loses its head.
+
+**REGISTERED PRIOR**: ctrl total 66-69 point 68, ctrl L4 9-11
+point 10; noheur total 64-67 point 66, noheur L4 6-8 point 7.
+Family record 3 hits, 15 misses.
+
+**FENCES**: single seed (3), single device (mps), matched
+15,420-step horizon, sympy-emitter family only; DISCLOSED
+CONFOUND: the ablation shifts level mix (noheur 43.8% L4 v ctrl
+~40% — the rule variable is not perfectly isolated from the level
+variable; a fire on BAR 1 despite noheur's L4-RICHER mix
+strengthens the carrier reading, the reverse weakens it);
+derived shards are selections, never regenerations (71M band
+stays spent); driver sibling reused-not-edited pattern per the
+frozen-family doctrine; receipts stream per arm; Mac may share
+CPU with mac-axiom, births mps-bound, disclosed.
