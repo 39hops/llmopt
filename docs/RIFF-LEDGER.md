@@ -5003,3 +5003,40 @@ without re-introducing history).
   Testable residue: HINT-DIET-0 (desk first: census what hint
   content exists in the frozen shards before any rung).
   Attribution: Artin (both asks), house (the format-shift fence).
+
+- **BANKED (2026-08-15): collapsed soft rows x algorithmic
+  (decomposed-arithmetic) training — and the collapse as a MORE
+  CONSISTENT GRADIENT, b-tree-like** (Artin, mid SOFT-SPEED-1
+  registration: "what if the collapsed steps with the algorithmic
+  training? ... the collapsed steps maybe flow into each other
+  like a b-tree or a more consistent gradient?"). Two claims in
+  one riff. (1) REVIVE ALGORITHMIC TRAINING: Series rung 1c
+  (RESULTS L3444) is the anchor — decomposed arithmetic chains
+  trained 67.0% held-out v 15-16% single-hop (~4.3x), at a 358-step
+  probe, i.e. strong AND cheap; already the queued basics-diet
+  pre-reg (handoff 2026-08-15-0 next-session item 4). Combining:
+  a collapsed-soft-row treatment OVER a 1c-style chain diet —
+  chain steps are near-deterministic (few conflicted curs), so
+  the measured combination question is whether collapse generality
+  holds where conflict density differs by an order of magnitude.
+  Desk check first: conflict census on the chain shard before any
+  rung. (2) THE GRADIENT-CONSISTENCY FRAME: a conflict group under
+  one-hot delivers k contradictory pulls at branch tokens across
+  an epoch (mean = the distribution, variance high); the collapsed
+  soft row delivers the mean in ONE sample — same expectation,
+  lower gradient variance at branch positions, which IS the
+  b-tree picture (shared prefix = shared internal node trained
+  once, coherently). Measured anchors: SOFT-NEXT-1 (L29733) says
+  at 19M/15,420 steps that variance was NOT the binding constraint
+  (calibration already 63%, gate unmoved) — so the frame predicts
+  SOFT-SPEED-1 lands neutral-at-fewer-steps, not better. Honest
+  breaks: the b-tree analogy stops at depth 1 — the trie shares
+  prefixes within one cur only, never across curs, and no
+  hierarchical structure above the branch token exists in the
+  loss; "consistent gradient" is variance reduction, not a new
+  signal. Testable residue: SOFT-SPEED-1 is LIVE (pre-reg
+  be3b8e4) and its QUALITY-HOLDS bar is exactly this frame's
+  prediction; the chain-diet combination waits on the basics-diet
+  census. Attribution: Artin (both asks, the b-tree image), house
+  (variance formalization, the 1c anchor, the conflict-density
+  fence).
