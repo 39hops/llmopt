@@ -1342,6 +1342,12 @@ ATOM-DIET-LADDER-1 instrument (pre-reg RESULTS 2026-08-14): paired stock/atoms b
 - `encode_flagged(rows, tok)` — The trainer's text/encode/filter path (C.encode_with_levels
 - `main()`
 
+### scratch/birth19m_atoms_rule.py
+RULE-ABLATE-1 instrument (thin sibling of the frozen dose driver; RECEIPTS repointed to logs/ruleablate1/ so nothing appends into frozen receipts). Original docstring follows.
+
+- `encode_flagged(rows, tok)` — The trainer's text/encode/filter path (C.encode_with_levels
+- `main()`
+
 ### scratch/birth19m_backsched.py
 BACKWARD-SCHEDULE-1 instrument run (pre-reg RESULTS 2026-08-13): the phase19m recipe with ONE variable changed — the OneCycle lr sequence is served REVERSED in time (anneal-first, warm-last). Same D2 excision, BIRTH_SEED, arch, diet, epochs, device as the booked phase19m birth; milestone tee kept so the backwards phase portrait comes free. Paired control is the BOOKED m015300 gate 64/120.
 
@@ -2218,6 +2224,10 @@ Atlas-2 Lyapunov leg: function-space divergence between twin births. Observable 
 Farm verified ALTERNATIVE successors for a sample of corpus states (the distribution-rows bank, forward edition; motivated by the 2026-07-26 distribution readout: crystals put ZERO mass on equally-valid non-canonical moves). For each sampled unique cur, enumerate successors() (verified, non-identity) and keep children NOT already in the corpus as a nxt for that cur. Fork workers stream rows to shard files (killed-worker doctrine: partial shards survive the wall).
 
 - `worker(idx, my_keys)`
+
+### scratch/make_ruleablate_shards.py
+RULE-ABLATE-1 shard derivation (pre-reg RESULTS 2026-08-15): selection-only split of the frozen sympy atom shard. Writes data/micromodel_atoms_noheur.jsonl (all non-i_heurisch rows) and data/micromodel_atoms_ctrl3218.jsonl (string-seeded random sample of equal size from the full shard). The frozen source is read, never modified; no new generation, no seed-band spend.
+
 
 ### scratch/make_union_diet.py
 Build the math+ZX union diet (next-session-2 item 1): gen-4 math rows + zx_farm1_train, one jsonl. Shares are organic (~133k math / ~97k ZX = 58/42); ZX provenance keys (kind, site) kept. Output: data/union_math_zx.jsonl
