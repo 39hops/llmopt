@@ -5109,3 +5109,84 @@ without re-introducing history).
   answer (duplicated-prefix token fraction). Attribution: GPT
   seat (the program), Artin (the relay + the ask), house
   (verification, dispositions, fences).
+
+- **BANKED (2026-08-15): GPT-nine round 2 — refinements adopted into
+  the two merged programs** (GPT seat via Artin; house executed the
+  free parts same session). Adopted: (a) FLOP-weighted tree census,
+  not token-only — RUN: TREE-CENSUS-0 booked, 4.48% linear / 1.91%
+  attention ceiling, rung DEAD at 19M, idea survives for
+  rollout-shaped future data. (b) GRAD-MAP metric set pre-registered
+  BEFORE retrodiction (no invent-a-statistic) — spec written,
+  docs/superpowers/specs/2026-08-15-grad-map-0.md, incl. their
+  random-3218-must-be-explained test as gate R3. (c) GRAD-MAP used
+  PROSPECTIVELY on basics-diet (atlas predicts which basics
+  transfer, birth tests the prediction) — spec payload P1. (d)
+  RULE-POLICY keeps BOTH gate families: representation-native
+  diagnostics (rule/site/legal/executor/first-action) AND the same
+  120-problem end-to-end gate through policy->executor loop, budget
+  fenced — comparability preserved. (e) policy + value as two heads
+  of one solver (pi(a|s) + V(s)); value target named honestly
+  (engine_distance_to_solved / verified_remaining_depth, never
+  "exact cost-to-go" without a shortest-path proof). (f) controller
+  = experimental-design generator (frozen replayable diets), their
+  endorsement of the house static-replay fence. Two merged
+  programs: DATA-SCIENCE (grad atlas -> interaction graph ->
+  prospective basics -> gradient-selected shard -> static learned
+  mixture) and REASONING-ARCH (rule policy -> executor ->
+  value/distance head -> bounded search -> watch-it-think
+  compute curve, x-axis = oracle-valid transitions). Honest
+  breaks: atlas signatures are end-of-training gradients (worth-
+  during proxied by worth-at-end, disclosed in spec); the
+  compute-curve flagship needs the policy rung to exist first.
+  Testable residue: GRAD-MAP-0 retrodiction gate (R1-R3);
+  RULE-POLICY-0 rung 0 = label coverage census (what fraction of
+  chain rows admit a recoverable (rule, site) label). Attribution:
+  GPT seat (refinements), Artin (relay), house (execution,
+  fences).
+
+- **BANKED (2026-08-15): "LaTeX routes to the math weights" — input
+  format as a routing key into weight subsets** (Artin: models feel
+  like a graph database; only certain inputs activate certain weight
+  subsets; math examples in LaTeX seem to reach the math weights).
+  The mapping: for MoE this is LITERALLY the router (our MoE-anatomy
+  arc measured demand-selected expert subsets beating full width;
+  the verbal-coverage 0.755 Spearman bank says a verbal/carrier
+  population mediates routing); for dense models the analog is
+  superposed subnetworks selected by input statistics — format is
+  part of the key. Measured anchors, house-side: CE-400 is
+  format-BOUND (the instrument fence measured format changing what
+  a probe reads); the call-span hint arms showed one template atom
+  change flipping tokenizability; SWAP-LADDER/diet work shows
+  position-invariant content effects — content v format separable.
+  Honest breaks: "graph database" overstates addressability — no
+  key->weight lookup exists in a dense net, only soft feature
+  routing; and OUR 19M has ONE format (no LaTeX/plain contrast
+  exists in-lab, sstr only). Testable residue (cheap, in-family):
+  same math content in two surface formats (sstr v a second
+  serialization) at matched dose — does the gate move? A dead
+  result kills format-as-routing at 19M; a live one opens
+  format-ensembling. Attribution: Artin (the frame), house
+  (anchors, breaks).
+
+- **BANKED (2026-08-15): vector database for model organization**
+  (Artin: "can't we use a vector database to improve the
+  organization of our models?"). Nearest standing structures: (1)
+  the MAGIC MATH BOARDS bank (2026-07-19) — persistent
+  (rule, node-hash) memo tables = exact-match retrieval, already
+  banked as the engine-side lookup; (2) the B-tree/hierarchical-VQ
+  bank (2026-08-03) — weights as paths through shared codebooks =
+  a vector index OVER weights; (3) kNN-LM-style retrieval at
+  inference (nearest verified (cur, nxt) pairs as a non-parametric
+  memory beside the 19M policy) — NOT yet banked anywhere, the
+  genuinely new residue here. Honest breaks: a vector DB improves
+  RETRIEVAL, not weight organization per se — the house law
+  "never score weights by weight distance" applies doubly to
+  indexing weights by embedding distance; and exact-match memo
+  (boards) beats approximate-nearest for our oracle-gated setting
+  wherever it applies. Testable residue: kNN over the verified
+  corpus at gate time (retrieve top-k similar curs, expose their
+  nxts as context) — a RETRIEVAL-GATE-0 desk probe on existing
+  checkpoints prices it; format-shift fence applies (hints at
+  inference need hints at train, the HINT-DIET lesson).
+  Attribution: Artin (the ask), house (mapping to standing banks,
+  the kNN residue).

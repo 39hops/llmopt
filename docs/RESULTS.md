@@ -30029,3 +30029,34 @@ Fences: the determinism probe is 20 steps n=1 pair — sufficient to
 prove NON-determinism (one counterexample), silent on magnitude
 at 15,420 steps; the 2-solve control gap is the only end-to-end
 magnitude datum this session. Single seed, mps fp32, Mac family.
+
+## OBSERVATION TREE-CENSUS-0: shared-prefix training has a 4.48% FLOP ceiling on the stock diet — the tree-training rung dies at 19M before implementation (2026-08-15, Mac, desk)
+
+Question (GPT seat proposal via Artin, banked in the GPT-nine riff):
+would exact shared-prefix reuse (compute each conflict group's
+common "Current: ...\nHints: none\n" prefix once, forward and
+backward, keep every branch's loss) pay enough to implement?
+Census, zero training: over the excised diet (164,896 rows,
+10,668,959 encoded tokens), 4,274 conflict groups with >= 2
+encodable sequences hold 25,588 rows; computing each group's
+prefix once and reusing it k-1 times saves 478,181 token-forwards
+= 4.48% of tokens = 4.48% of token-linear FLOPs, and 1.91% of
+attention FLOPs (prefix self-attention only; cross-attention from
+suffix to prefix must still run per branch). Backward reuse
+scales the same ratios.
+
+Verdict on the rung: NOT WORTH IMPLEMENTING at this substrate —
+the ceiling sits under 5% before any implementation loss, v the
+~10-20% threshold that would justify the machinery (the cited
+Tree Training paper's 3.9x lives in agentic-rollout workloads
+where branches share LONG generation prefixes; our prompts are
+short and our branches are the whole answer). The idea survives
+for future tree-shaped data: engine search trajectories and
+GRPO-style rollouts branch mid-generation, where the shared
+prefix is most of the sequence. Numbers differ slightly from the
+soft-collapse census (4,274 groups here v 4,347) because this
+census requires >= 2 ENCODABLE sequences per group.
+
+Fences: desk arithmetic, no training; FLOP model is
+token-proportional linear + L^2 attention, ignores kernel/
+batching constants; fwd+bwd assumed proportional.
