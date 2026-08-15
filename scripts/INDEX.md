@@ -1398,6 +1398,14 @@ SOFT-NEXT-1 instrument (pre-reg RESULTS 2026-08-15): branch distributions attach
 - `build_conflict_tries(rows, tok)` — Group diet rows by whitespace-stripped cur; for groups with
 - `main()`
 
+### scratch/birth19m_softspeed.py
+SOFT-SPEED-1 instrument (pre-reg RESULTS 2026-08-15, commit be3b8e4): collapse each conflicted cur group (>= 2 distinct nxt in the excised diet) into ONE soft-target row and train MATCHED EPOCHS, so the ~13% diet cut becomes a ~13% step cut. Two arms (ARM env):
+
+- `conflict_groups(rows)` — cur-key -> list of row indices, conflicted keys only.
+- `collapse(rows, tok)` — -> (soft_rows, weight_of, soft_targets_of, n_conf_rows)
+- `encode_indexed(rows, tok)` — encode_with_levels' text/filter path with the source row
+- `main()`
+
 ### scratch/blackhole_b0.py
 BLACK HOLE MoEs B0+B1+B2 (pre-reg 2026-07-29 close): capacity atlas + dial-routed streaming pack + function-space spot check of Qwen3-30B-A3B. One shard on disk at a time (download -> process -> DELETE — the C7 OOM lesson, applied to disk). Zero calibration. Atlas rows to logs/blackhole_atlas.jsonl; packed parts to checkpoints/blackhole_q3_parts/ (codes npz per shard). Env: START/END shard 1-indexed bounds. __main__-guarded.
 
