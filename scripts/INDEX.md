@@ -2008,6 +2008,22 @@ Generator for the Lean-tier smoke corpus (2026-08-03).
 One-shot freeze helper for tests/test_lab_verify_gen_battery.py: prints sp.sstr of _gen_isolated problems on the pin grid, to be pasted into GEN_PINS as frozen literals (string-seed house law makes them stable across processes/machines).
 
 
+### scratch/gradmap0_probe.py
+GRAD-MAP-0 desk probe — gradient/data-worth atlas signatures.
+
+- `sha16(path)`
+- `load_model(ckpt_path, tok)`
+- `encode_rows(rows, tok)` — The trainer's text/encode/filter path, verbatim format.
+- `batches(enc, bs=BS)`
+- `backward_on(model, tok, batch)` — Loss path copied from the frozen sibling; backward only.
+- `flat_grad(model)`
+- `group_slices(model)` — Parameter-group index slices over the sorted-name flat vector.
+- `group_vec(vec, spans)`
+- `cos(a, b)`
+- `mean_grad(model, tok, enc, label, max_batches=None)`
+- `per_row_stats(model, tok, enc, sample_key)` — Metric 5 via the streaming identity: within-family mean pairwise
+- `main()`
+
 ### scratch/graph_mod_sigma.py
 A2 (revival-sweep Tier A, 2026-07-31): graph-modularity Q dispersion on the three same-diet wfloor_d256 seed births — the "free sigma" the 07-26 NULL entry named but never ran. The +0.030 dQ verdict was a BAR-based null with unmeasured dispersion; this cell measures it and re-adjudicates. CPU, minutes. Usage: python scratch/graph_mod_sigma.py
 
