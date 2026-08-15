@@ -4992,6 +4992,15 @@ without re-introducing history).
   bars: gate within resolution of stock AND wall-clock/steps
   saved >= 10%. Attribution: Artin (the lever), house (the 13%
   arithmetic + schedule fence).
+  [MEASURED 2026-08-15]: RUN. QUALITY-HOLDS fired (64 v control
+  62, non-inferiority, within run noise); SPEED missed at
+  knife-edge (steps -12.96% but wall-clock -9.84% v the 10% bar —
+  Python soft-correction overhead +3.58%/step ate a quarter of
+  the win). The lever is REAL at step level; the implementation
+  gives part back. Open: -1b with vectorized corrections or
+  weighted-representative-only rows. Side finding with its own
+  standing fence: mps training is run-level nondeterministic at
+  fixed seed (AMENDMENT L29985). VERDICT RESULTS.md L30064.
 
 - **BANKED (2026-08-15): bigger distributions — hints filled and
   SOLUTION-NEXT targets** (Artin: "what if we give it hints and

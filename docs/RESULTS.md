@@ -30060,3 +30060,66 @@ census requires >= 2 ENCODABLE sequences per group.
 Fences: desk arithmetic, no training; FLOP model is
 token-proportional linear + L^2 attention, ignores kernel/
 batching constants; fwd+bwd assumed proportional.
+
+## VERDICT SOFT-SPEED-1: QUALITY-HOLDS fires, SPEED misses at knife-edge — the collapse costs no solves and cuts 12.96% of steps, but per-step overhead leaves wall-clock at 9.84% v the 10% bar (2026-08-15, Mac)
+
+Pre-reg L29844 (be3b8e4, before launch), amended by
+SOFT-SPEED-1-PRECONDITION (c1badb6, committed 13:55:35 — after the
+control gate existed, before the soft gate line was written ~14:32;
+the amendment's "~step 1,200" was the drafting-time reading, the
+commit-time step was nearer 2,500-3,000; either way no soft gate
+existed). Instrument: scratch/birth19m_softspeed.py via
+scratch/softspeed1_driver.sh, two serial arms, BIRTH_SEED 3, mps
+fp32 (the "[fast: bf16]" line in both logs is assert_noop's PROBE
+model, not the training loop — training is plain fp32). Receipts
+logs/softspeed1/arms.jsonl + both arm logs force-added this commit
+(small-text-receipt exception); first two receipt rows are smoke
+rows (steps=3), disclosed at the amendment.
+
+Measured (dicts are the checksum):
+
+- control: 62/120 {3:21, 4:8, 5:15, 6:7, 7:11} @59.27%, 15,420
+  steps, 2,829.4s, mass 0.6255, sha 5660d3ab508e872e
+- soft:    64/120 {3:21, 4:8, 5:14, 6:9, 7:12} @58.88%, 13,422
+  steps, 2,550.9s, mass 0.6180, sha b3138422c87a5236
+
+**BAR 1 (SPEED): NO-FIRE, at knife-edge.** Steps conjunct passes
+(13,422 <= 13,878; 12.96% cut) but wall-clock saved = 9.84% <
+10%, and the bar is an AND. Mechanism, booked because the prior
+predicted it: per-step cost rose +3.58% (0.18349 -> 0.19005
+s/step) from the Python soft-correction loop (15,105 soft
+positions), eating a quarter of the step savings. Mac shared with
+desk work per the registered contention caveat.
+**BAR 2 (QUALITY-HOLDS): FIRES.** soft 64 >= 58 (= control 62 -
+4). Non-inferiority ONLY: the +2 delta is far under resolution,
+and this session's own nondeterminism receipt (booked control 64
+v this control 62, same seed) shows 2 solves is run noise. The
+collapse did not cost solves at this seed; it did not "help".
+**REFUTED-IF does not trigger** (64 > 55).
+
+Registered prior: 2 hits in 4 legs (soft within +-2 HIT; steps
+~13% HIT; precondition MISS — counted a miss though the
+amendment retired it; wall-clock 11-13% MISS at 9.84%). Family
+record 7 hits, 19 misses.
+
+Run-detail corrections (auditor, verified): collapsed diet
+MEASURED 143,571 (pre-reg desk pin 143,391; +0.126%, inside the
+1% guard — encode-degenerate groups keep their rows), 143,183
+sequences trained after the out-of-language drop; n_soft_rows =
+4,267 v 4,347 groups — 80 groups (1.8%) lost their
+representative to encoding and trained as plain rows, a disclosed
+shortfall from "every group collapsed".
+
+Reading: Artin's lever survives at the step level — 13% of the
+diet was redundant in expectation and removing it cost nothing at
+this seed — but the shipped implementation gives back a quarter
+of the win in Python overhead. The overhead is implementation,
+not mechanism (vectorizing the soft-correction gather, or
+dropping soft targets entirely and keeping only the weighted
+representative, are both untested); a -1b rung needs its own
+pre-reg. Fences: single seed, single device (mps fp32),
+Mac-family numbers only (never the 3080-bf16 softnext family);
+matched-EPOCH composite lever (diet collapse + schedule rescale,
+not one-variable); valid-set-mass rode as unregistered observable
+(0.6255 v 0.6180, first Mac-fp32 entries, no claim);
+checkpoints gallery19m_softspeed_{control,soft}_s3.pt exhaust.

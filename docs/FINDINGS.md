@@ -2013,3 +2013,27 @@ regime tag on every bullet is the fence.
   Receipt caveat: both receipt rows mislabel the emitter field
   (hardcode inherited from the dose driver); corrections booked
   in the verdict. ([VERDICT RULE-ABLATE-1](RESULTS.md#L29916).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe]
+  Collapsing the 25,852 conflicted rows into one weighted
+  soft-target row per group (13% diet cut, matched epochs) holds
+  the gate as a non-inferiority result (soft 64 v control 62,
+  within run noise) while cutting 12.96% of steps — but the
+  Python soft-correction loop adds +3.58% per step, so wall-clock
+  saved lands 9.84% and the pre-registered 10% AND-bar NO-FIREs
+  at knife-edge. Rider with a standing fence attached: mps fp32
+  training is run-level NONDETERMINISTIC at fixed seed (paired
+  20-step probe, different weight hashes), so cross-RUN weight-sha
+  identity is never again a precondition on Mac; paired in-run
+  arms remain valid. ([VERDICT SOFT-SPEED-1](RESULTS.md#L30064);
+  amendment L29985.)
+
+- [NULL] [REGIME-SCOPED: specified diet and recipe]
+  Shared-prefix (tree) training has no room on the stock diet: an
+  exact census puts the reuse ceiling at 4.48% of token-linear
+  FLOPs and 1.91% of attention FLOPs (4,274 conflict groups,
+  25,588 rows, prompts short and branches whole-answer) — the
+  rung dies before implementation, and the idea is parked for
+  future tree-shaped data (search trajectories, rollouts) where
+  shared prefixes dominate the sequence.
+  ([OBSERVATION TREE-CENSUS-0](RESULTS.md#L30033).)
