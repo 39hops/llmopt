@@ -1330,6 +1330,12 @@ ATOM-DIET-1 instrument run (pre-reg RESULTS 2026-08-14): the phase19m recipe wit
 - `encode_flagged(rows, tok)` — The trainer's text/encode/filter path (C.encode_with_levels
 - `main()`
 
+### scratch/birth19m_atoms_dose.py
+ATOM-DOSE-LADDER-1 instrument (pre-reg RESULTS 2026-08-14): dose arm births off the axiom-emitted shard. Thin sibling of the frozen birth19m_atoms_ladder.py (results-cited, not edited) with SHARD, NROWS, and LABEL lifted to envs; recipe, dose mechanics, no-op precondition, and gate verbatim. The arm takes the first NROWS rows of the string-seeded shuffle random.Random("dose-ladder-1") over the shard (nested doses: smaller N is a strict subset of larger). BIRTH_SEED via SEED env. Checkpoint checkpoints/gallery19m_{LABEL}_s{SEED}.pt; receipt appended to logs/atomdose1/arms.jsonl.
+
+- `encode_flagged(rows, tok)` — The trainer's text/encode/filter path (C.encode_with_levels
+- `main()`
+
 ### scratch/birth19m_atoms_ladder.py
 ATOM-DIET-LADDER-1 instrument (pre-reg RESULTS 2026-08-14): paired stock/atoms births at matched 15,420-step horizon. Sibling of the frozen birth19m_atoms.py (results-cited, not edited) with SEED and ARM lifted to envs; the recipe, dose mechanics, no-op precondition, and gate are otherwise verbatim. ARM=stock trains the plain stock enc (the true matched-horizon control the original comparison lacked); ARM=atoms interleaves the frozen shard data/micromodel_atoms_shard0.jsonl via stock_epoch_stream over the augmented enc, truncated per epoch to the stock batch count. Checkpoint checkpoints/gallery19m_{ARM}_s{SEED}.pt; receipt appended to logs/atomladder1/arms.jsonl.
 
@@ -1781,6 +1787,12 @@ Export the R2b full-birth reference for axiom's C++ leg (relay 2026-08-01-0): in
 
 ### scratch/farm_atoms.py
 ATOM-DIET-1 farm (pre-reg RESULTS 2026-08-14): rule-tagged atom shard — engine one-ply solves, one indivisible verified rewrite per row. Self-contained forked worker (the solve_isolated timebox law; expert_iter_steps stays frozen): make_integrate(level, seed), engine solve budget 200, keep only true one-ply solves (len(history) == 1) with cur AND nxt in-language (tokenizer roundtrip). Guards at farm time: D2 gate-band exclusion on norm(cur)/norm(nxt), corpus-cur dedup against the excised stock diet (no new one-to-many ambiguity), (cur, nxt) dedup within the shard. Rows stream incrementally to data/micromodel_atoms_shard0.jsonl; rule-tag distribution printed.
+
+- `_worker(level: int, seed: int, q) -> None`
+- `main() -> None`
+
+### scratch/farm_atoms_axiom.py
+ATOM-DOSE-LADDER-1 farm (pre-reg RESULTS 2026-08-14): rule-tagged one-ply atoms emitted by the AXIOM engine (axiom-first law; the sympy farmer scratch/farm_atoms.py is frozen evidence and this is its bridge-native successor, not a fork of it). Seed band 72M — band 71M is SPENT by the frozen shard0.
 
 - `_worker(level: int, seed: int, q) -> None`
 - `main() -> None`
