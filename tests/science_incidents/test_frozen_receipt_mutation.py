@@ -68,7 +68,10 @@ def test_cited_but_absent_receipts_do_not_grow():
     driver logs never force-added). This ratchets that count so new
     bookings cannot cite evidence they never committed.
     """
-    absent = [k for k, v in _locked().items() if not v.get("exists")]
+    # prereg-declared paths whose run has not fired yet are PENDING,
+    # not backlog — the ratchet is for prose citations without evidence
+    absent = [k for k, v in _locked().items()
+              if not v.get("exists") and v.get("source") != "prereg"]
     assert len(absent) <= 7, (
         f"{len(absent)} cited receipts are missing (ratchet 7). A new "
         "booking must commit the receipt it cites:\n  "

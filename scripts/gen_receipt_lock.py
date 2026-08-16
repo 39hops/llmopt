@@ -51,24 +51,29 @@ def sha256(p: Path) -> str:
     return h.hexdigest()
 
 
-def cited_paths() -> list[str]:
-    cited = {m.group(0) for m in CITE.finditer(RESULTS.read_text())}
-    # STRUCTURED receipt references: docs/preregs/*.json declare the
-    # exact paths their run writes. This closes the bare-filename gap
-    # (a receipt cited in prose without its path prefix is invisible
-    # to the regex above; a declared path is machine-readable by
-    # construction).
+def cited_paths() -> dict[str, str]:
+    """path -> source. "results" = cited in RESULTS.md prose (absence
+    is the booked-without-evidence backlog, ratcheted). "prereg" =
+    declared by docs/preregs/*.json (structured receipt references —
+    closes the bare-filename gap); a declared path may legitimately
+    not exist yet (PENDING, the run has not fired) and is not
+    ratcheted, but once it exists its sha is locked like any other."""
+    out = {m.group(0): "results" for m in CITE.finditer(RESULTS.read_text())}
     for prereg in sorted((ROOT / "docs" / "preregs").glob("*.json")):
-        cited.update(json.loads(prereg.read_text()).get("receipts", []))
-    return sorted(cited)
+        for rel in json.loads(prereg.read_text()).get("receipts", []):
+            out.setdefault(rel, "prereg")
+    return out
 
 
 def build() -> dict:
     out = {}
-    for rel in cited_paths():
+    for rel, src in sorted(cited_paths().items()):
         p = ROOT / rel
-        out[rel] = ({"exists": True, "sha256": sha256(p), "bytes": p.stat().st_size}
-                    if p.is_file() else {"exists": False})
+        rec = ({"exists": True, "sha256": sha256(p),
+                "bytes": p.stat().st_size}
+               if p.is_file() else {"exists": False})
+        rec["source"] = src
+        out[rel] = rec
     return out
 
 
@@ -103,8 +108,13 @@ def main() -> int:
         payload["_last_accept"] = {"reason": a.accept, "paths": changed}
     LOCK.write_text(json.dumps(payload, indent=1, sort_keys=True) + "\n")
     live = sum(1 for v in fresh.values() if v.get("exists"))
+    backlog = sum(1 for v in fresh.values()
+                  if not v.get("exists") and v.get("source") == "results")
+    pending = sum(1 for v in fresh.values()
+                  if not v.get("exists") and v.get("source") == "prereg")
     print(f"{len(fresh)} cited receipt paths -> {LOCK.relative_to(ROOT)} "
-          f"({live} present, {len(fresh) - live} cited-but-absent)")
+          f"({live} present, {backlog} cited-but-absent, "
+          f"{pending} prereg-pending)")
     if changed:
         print(f"ACCEPTED {len(changed)} changed: {a.accept}")
     return 0

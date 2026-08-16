@@ -1,0 +1,58 @@
+{
+  "name": "STREAM-WDISTILL-0S",
+  "note": "Executable projection of the booked prose pre-reg (RESULTS L31503) and its four pre-look amendments (-0S-DESIGN, -0S-CONTROL, -0S-SPEC, -0S-METRIC). Written at driver-build time, BEFORE the run fired; the prose entry remains the registration of record. BAR 3 carries a conjunct the scalar bar cannot express: natural W32 must ALSO beat each of the three shuffled twins individually — the driver reports all three and the verdict checks the conjunct explicitly.",
+  "results_id": "2026-08-16-pre-reg-stream-wdistill-0s-does",
+  "registered": "2026-08-16",
+  "machine": "mac",
+  "arms": {
+    "S1-T": {"description": "ternary max-anchored {-1,0,+1}, block 128, E8M0 round-up scale — the true minimal repair of EXEC1 arm A"},
+    "S1-U4": {"description": "4-level uniform mid-rise {-1,-1/3,+1/3,+1}, nearest, ties away from zero, same block/scale"},
+    "S2": {"description": "globally optimal 4-level scalar on the frozen 4096-bin empirical discretization (exact DP over (count,sum,sumsq), fp16-representable levels), per projection, same block/scale"},
+    "W4": {"description": "residual VQ width 4, K=256, 1 stage, per-projection Lloyd-trained codebook, 2.000 index bpw"},
+    "W8": {"description": "residual VQ width 8, K=256, 2 stages, 2.000 index bpw"},
+    "W32": {"description": "residual VQ width 32, K=256, 8 stages, 2.000 index bpw"},
+    "W32-shuf": {"description": "three frozen locality-destroying twins of W32 (shuffle seeds 20260816/17/18, independent per-block permutations, each with its OWN codebook trained on its shuffled sample)"},
+    "S-best": {"description": "derived: argmin pooled operator error over {S1-T, S1-U4, S2} — the best realizable scalar"}
+  },
+  "bars": [
+    {
+      "id": 1,
+      "name": "VQ-SURVIVES",
+      "metric": "operator_rel_gain",
+      "population": "experts:0:256",
+      "aggregation": "pooled_ratio",
+      "direction": "above",
+      "value": 0.10,
+      "arms": ["W32", "S-best"],
+      "description": "(S_best - W32)/S_best pooled operator error >= 10%: the EXEC1 VQ advantage survives a fair scalar baseline"
+    },
+    {
+      "id": 2,
+      "name": "VECTOR-STRUCTURE-PAYS",
+      "metric": "operator_rel_gain",
+      "population": "experts:0:256",
+      "aggregation": "pooled_ratio",
+      "direction": "above",
+      "value": 0.10,
+      "arms": ["W4", "S2"],
+      "description": "(S2 - W4)/S2 pooled operator error >= 10% at exactly 2.000 index bpw both sides: multidimensional coding pays over the optimal scalar"
+    },
+    {
+      "id": 3,
+      "name": "LOCALITY-IS-REAL",
+      "metric": "operator_rel_gain",
+      "population": "experts:0:256",
+      "aggregation": "pooled_ratio",
+      "direction": "above",
+      "value": 0.05,
+      "arms": ["W32", "W32-shuf"],
+      "description": "(mean_shuffled - natural)/mean_shuffled pooled operator error >= 5%, AND natural beats all three twins individually (conjunct checked in the verdict); if it does not fire, 'locally highly compressible' is not used at all"
+    }
+  ],
+  "receipts": [
+    "logs/streamwd/pass0s_B1.jsonl",
+    "logs/streamwd/run_0s.log"
+  ],
+  "refuted_if": "The best realizable scalar lands within 5% of W32 on pooled operator error — the EXEC1 headline was an artifact of a weak (ternary, over-budget) scalar arm and the 'VQ wins' reading is withdrawn.",
+  "registered_prior": "House: BAR 1 MISSES and BAR 2 MISSES — the fair scalar baseline closes most of the 0.350-v-0.770 gap (confidence medium-high on BAR 1 missing, medium on BAR 2). The rate-distortion justification for this prior was RETRACTED in -0S-DESIGN (3); the prediction stands as empirical. No registered prior on BAR 3."
+  }

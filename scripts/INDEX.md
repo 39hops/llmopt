@@ -920,7 +920,7 @@ Rewrite generated regions in README.md from ledger truth.
 Content-address every receipt path a booked entry cites.
 
 - `sha256(p: Path) -> str`
-- `cited_paths() -> list[str]`
+- `cited_paths() -> dict[str, str]` — path -> source. "results" = cited in RESULTS.md prose (absence
 - `build() -> dict`
 - `main() -> int`
 
@@ -3015,6 +3015,17 @@ STREAM-WDISTILL-0 (pre-reg RESULTS 2026-08-16, L30921).
 - `revision()` — The checkpoint revision actually being read (provenance, derived).
 - `header(shard)` — (name -> entry) for one shard, from its safetensors header only.
 - `is_routed_layer(name, layer)`
+- `main()`
+
+### scratch/stream_wdistill0s.py
+STREAM-WDISTILL-0S: fair scalar baseline + width decomposition (pre-reg RESULTS L31503; amendments -0S-DESIGN, -0S-CONTROL, -0S-SPEC, -0S-METRIC; executable projection docs/preregs/stream-wdistill-0s.json).
+
+- `e8m0_scale(Wb)` — Per-block exponent-only scale, ROUND UP (pinned -0S-DESIGN (4)):
+- `blocks(W)`
+- `nearest_level(Wn, levels)` — Nearest level, ties AWAY FROM ZERO (pinned -0S-SPEC (4)):
+- `s2_levels_dp(count, ssum, ssq)` — Exact optimal 4-level scalar quantizer on the frozen binning.
+- `block_perms(shuf_seed, proj_idx, expert, n_blocks, inverse=False)` — Independent permutation per block (-0S-SPEC (2)): one seeded
+- `apply_perm(Wn_blocks, P)`
 - `main()`
 
 ### scratch/stream_wdistill1.py
