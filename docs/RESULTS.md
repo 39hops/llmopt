@@ -30425,3 +30425,42 @@ improved" has no direct gate readout — BAR 1 is a PROBE bar by
 necessity, and the probe is temperature-0.7 pass@k, not greedy.
 (3) Dose is capped at 1.8%: a NO-FIRE on BAR 1 is scoped to this
 ration and does not retire the idea at larger dose.
+
+## AMENDMENT BASICS-DIET-1-SHARD: the farmed arithmetic shard is 2,545 rows (1.54% dose), not 3,000 — honest starvation in three families, plus the exclude= holdout guard the pre-reg did not name (2026-08-15, Mac, pre-run)
+
+Amends PRE-REG BASICS-DIET-1 (L30355). Booked BEFORE any birth
+fires; nothing has trained on this shard.
+
+(1) HOLDOUT GUARD, added. The pre-reg registered BAR 1 against
+scratch/basics_probe0.py's held-out arithmetic arm but named only
+a fresh string-seed band as the separation. That is exactly the
+guard the house has been bitten by twice (the mathgen L1/L2 43%
+eval-in-train incident; the ladder pick() 4-body space), and the
+first farm run proved it here: at the probe's operand ranges the
+mul family has only 242 distinct pairs and the farm exhausted the
+space outright (242/700 kept after 40,000 seeds), so every probe
+item would have been a training row. Two fixes, both in
+scratch/farm_arith.py before any row was kept: operand ranges
+WIDENED past the probe's (mul to +-24x24, div to 15x24, divred to
+60/{2..12}, pow to 15), and an explicit exclude= set — every
+normalized `cur` from all three probe arms (2,264 prompts) is
+refused at farm time. Verified after farming: probe-cur INTERSECT
+shard-cur = 0 across 2,545 distinct prompts.
+
+(2) SHARD SIZE, measured. Target 3,000; farmed 2,545 = 1.543% of
+the 164,896-row excised diet (still inside the bank's <=2%
+ration, so no bar moves). Per family, with honest starvation
+disclosed: mul 700/700, divred 600/600, numsum 700/700, div
+537/700 (space is 14 divisors x 46 quotients minus the holdout),
+pow 8/14 (squares 2..15 is a 14-item space and the probe holds
+out 6). The pow family is negligible at 8 rows and is retained
+only for coverage; no claim will rest on it. Drops:
+119,432 probe-holdout, 281,342 within-shard duplicates, zero
+band or corpus-cur collisions.
+
+(3) Consequence for BAR 1's reading: because the arithmetic
+generator space is genuinely small, a BAR 1 fire means the model
+learned the OPERATION at held-out operands, which is the intended
+claim — but the operand ranges are narrow (|a| <= 60), so the
+claim is scoped to small-integer arithmetic and does not
+generalize to multi-digit. Named now, not after the number.
