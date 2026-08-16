@@ -59,8 +59,16 @@ VQ_WALL_S = {"B1": 2700.0, "B2": 1350.0}[BUDGET_NAME]
 PROBE_N, PROBE_ITERS = 64, 30                # operator probes; power iters
 RSVD_VERIFY_N = 8                            # frozen subset for the rSVD check
 PROJS = ("w1", "w3", "w2")
-OUT = f"logs/streamwd/pass12_{BUDGET_NAME}{'_smoke' if SMOKE else ''}.jsonl"
+RUN_TAG = os.environ.get("RUN_TAG", "")   # a re-run MUST tag itself:
+# writing a second execution into a path a booked entry cites is the
+# frozen-receipt violation, and a manual rename defeats the guard below.
+OUT = (f"logs/streamwd/pass12_{BUDGET_NAME}"
+       f"{'_smoke' if SMOKE else ''}{RUN_TAG}.jsonl")
 
+# captured at IMPORT so the field names the commit the run STARTED at,
+# not whatever HEAD drifted to while it ran (receipt-auditor S3).
+CODE_COMMIT = __import__("subprocess").check_output(
+    ["git", "rev-parse", "--short", "HEAD"]).decode().strip()
 rng_global = np.random.default_rng(SEED)
 
 
@@ -475,10 +483,12 @@ def main():
                       "vq_K": VQ_K, "vq_sample": VQ_SAMPLE,
                       "vq_lloyd_iters": VQ_LLOYD_ITERS,
                       "armD_solver": "exact_eigh"},
-           "code_commit": subprocess.check_output(
-               ["git", "rev-parse", "--short", "HEAD"]).decode().strip(),
+           "code_commit": CODE_COMMIT,
            "rsvd_max_dev": (max(rsvd_dev) if rsvd_dev else None),
            "rsvd_verify_n": RSVD_VERIFY_N,
+           "rsvd_role": "descriptive_exact_vs_randomized",
+           "rsvd_gating": False,
+           "rsvd_experts": list(range(min(RSVD_VERIFY_N, N_EXPERTS))),
            "vq_stages_done": stages_done, "vq_target": VQ_STAGES,
            "vq_bar2_eligible": stages_done == VQ_STAGES,
            "frob": {a: (acc[a]["se"] / acc[a]["n2"]) ** 0.5
