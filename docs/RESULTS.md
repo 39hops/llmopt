@@ -30652,3 +30652,30 @@ greedy; smoke runs write to their own paths (smoke.jsonl,
 *_smoke.pt) with unconditional refuse-guards (92a1e3e class). If
 the wall kills an arm, the rung books NOT-RUN for that arm, never
 a partial comparison.
+
+## RIDER XTERM-DIET-1-DECOMP: the BAR-1 decomposition, registered before the treatment probe runs (2026-08-16, Mac)
+
+Named while the xterm arm is mid-training (control probe complete,
+treatment probe NOT yet run; treatment gate not yet emitted — the
+arm's log tail at registration is quoted in the booking commit).
+Interpretation-only rider on PRE-REG L30565; BAR 1 stands
+unchanged.
+
+The house correction adopted into the 2026-08-16 GPT bank cuts
+both ways: a correct-products intermediate emission escapes the
+ends-right-middle-wrong counter (sympify evaluates its middle
+coefficient) without the model having evaluated anything. So at
+booking, BAR 1's measured gain is REPORTED decomposed:
+
+  W = ends-right-middle-wrong (the registered BAR 1 counter)
+  I = intermediate_form (correct-but-unevaluated first samples)
+  evaluated repair       = W_control - (W_xterm + I_xterm)
+  intermediate diversion = I_xterm
+
+with W_control = 80, I_control = 0 (measured, probe row 1 of
+logs/xtermdiet1/probe.jsonl). Descriptive only — never a
+substitute for the registered bar, never a causal estimator (the
+category flows have edge cases). The headline sentence of the
+verdict must state both components whenever I_xterm > 5.
+Attribution: GPT seat (the decomposition), house (the deflation
+correction it formalizes).

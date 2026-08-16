@@ -5358,3 +5358,19 @@ without re-introducing history).
   Testable residue: XTERM-DIET-2 (the xstep-only arm, one birth);
   the chain-scored two-step probe. Attribution: GPT seat (all
   three frames), house (BAR-1 deflation correction, verification).
+
+  AMENDMENT (2026-08-16, same day): GPT seat's follow-up refines
+  item (3) — "interface" must not collapse to string format. Three
+  coordinates: (state representation, requested transition,
+  supervision grain). BASICS moved state representation; XTERM
+  moves representation AND supervision grain; atoms moved
+  transition decomposition to one-ply; skip pairs move transition
+  distance. The general form: COMPETENCE IS LOCAL IN TRANSITION
+  SPACE — format-as-routing is one projection of it, and the
+  transfer-v-representation-distance curve (standalone-X /
+  numsum-partial / xstep-? edges) is the measurable object. The
+  W+I decomposition is now REGISTERED pre-look as RIDER
+  XTERM-DIET-1-DECOMP (RESULTS, this date) — promoted from bank
+  note to on-the-record rider while the treatment probe had not
+  run. Attribution: GPT seat (frame + rider ask), house
+  (registration timing + the control anchors W=80, I=0).
