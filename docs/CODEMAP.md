@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 204, library 70, reproduce-pinned 10, results-cited 202, spec-cited 86, cited-but-library 59
+Census: UNCITED 205, library 70, reproduce-pinned 10, results-cited 202, spec-cited 86, cited-but-library 59
 
 ## scratch/
 
@@ -436,6 +436,7 @@ Census: UNCITED 204, library 70, reproduce-pinned 10, results-cited 202, spec-ci
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
 |  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×12 | — | 1 |
+| adjudicate | adjudicate.py | UNCITED | — | — | — | — |
 | anchor | anchor_guard.py | UNCITED | — | — | — | 1 |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | 2 |
 | arena | arena.py | UNCITED | — | — | — | — |
