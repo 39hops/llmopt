@@ -30561,3 +30561,94 @@ family only (same vocab, same sampler category count). The
 transfer-flat rider is n=1 and dose-scoped: 2,545 rows for one
 epoch-schedule may simply be under the transfer threshold —
 named, untested.
+
+## PRE-REG XTERM-DIET-1: does stating the cross-term computation AS ITS OWN STEP INSIDE the expand format fix the counted failure mode that standalone arithmetic could not touch? (2026-08-16, Mac)
+
+The question BASICS-DIET-1 left: the model multiplies standalone at
+61.67% pass@8 yet still misses a*d + b*c inside (ax+b)(cx+d) at the
+control rate (L30467, transfer rider FLAT). The format-as-routing
+frame predicts competence follows FORMAT, so stating the same
+computation IN the algebra format should move it where the
+standalone shard did not. This is also the direct fix test for
+BASICS-CENSUS-0's counted failure mode (68-76% of expand misses =
+ends right, cross term wrong, L30259) and the in-format face of the
+decomposition discount (L3682).
+
+INSTRUMENT. 19M decoder, BIRTH_SEED=3, Mac mps fp32, matched
+horizon 15,420 steps, paired SERIAL in-run arms (the valid mps
+shape, AMENDMENT SOFT-SPEED-1-PRECONDITION):
+- control: stock excised diet + 6,000 sympy atoms — the exact
+  BASICS-DIET-1 control recipe (booked 70/120, expand pass@8
+  23.33, cross-term-wrong 79/108 at L30467; those are ANCHORS,
+  not this run's comparators — all bars compare against the
+  IN-RUN control arm).
+- xterm: control + the cross-term shard (~2,600 rows, ~1.6%
+  dose), two families in the ALGEBRA format, exact by
+  construction, farmed by scratch/farm_xterm.py (sibling of the
+  frozen farm_arith.py):
+  * xexp: cur = unevaluated (ax+b)(cx+d) product, nxt = the
+    intermediate with ends evaluated and the cross term stated as
+    literal products, e.g. 15*x**2 + (3*4 + 2*5)*x + 8. States
+    the decomposition.
+  * xstep: cur = that intermediate form, nxt = the fully
+    evaluated polynomial. States the arithmetic INSIDE the
+    polynomial format — the money family.
+  Operands |a|,|b|,|c|,|d| <= 24 (the arith-shard class; claim
+  stays scoped to small integers).
+DATA CONTRACT (house vocabulary, adopted 2026-08-16): row GRAIN =
+one rewrite step (cur -> nxt); LABEL TIMING = nxt computable at
+emit time by integer arithmetic/expand, no future join; SPLIT
+POLICY = fresh string-seed band "xterm-v1-<family>-<i>" AND
+exclude= of every probe cur by norm AND D2 gate-band excision AND
+corpus-cur dedup — a seed band alone never separates a small
+generator space (L30429). Verify probe-cur INTERSECT shard-cur = 0
+before launch; book the count.
+NAMED AMBIGUITY, registered not discovered: xexp gives the product
+shape a SECOND valid continuation (diet expand rows go product ->
+final in one step). This one-to-many is the mechanism under test —
+teaching the optional decomposed route — and it joins the diet's
+existing 15.7% conflicted mass (L28562). Loss comparisons across
+arms are void for this reason; capability bars only.
+
+PROBE. scratch/xterm_probe.py, sibling of the frozen
+basics_probe0.py: same three arms, same seeds, same
+sample_wave_lp T=0.7 N=120 B=8, same oracle (sympy exact
+equality), PLUS a canonical-form counter — a prediction counts as
+FULLY-EVALUATED only if norm(pred) == norm(sstr(sympify(pred))),
+because sympify silently evaluates (3*4 + 2*5) and would otherwise
+score an intermediate-form emission as done arithmetic.
+Intermediate-form corrects are counted and reported separately,
+never inside a bar.
+
+BARS (all against the in-run control arm, fully-evaluated scoring):
+1. XTERM-FIXES: the xterm arm's cross-term-wrong miss count on the
+   expand structural diagnostic is at least 20 BELOW the in-run
+   control's (control class ~72-79/108; 20 is ~4x the binomial
+   sigma at this N).
+2. EXPAND-MOVES: xterm arm expand pass@8 >= control expand pass@8
+   + 10.0 points (control class ~23%).
+3. NO-HARM: xterm gate total >= control total - 4 (the
+   BASICS-DIET-1 shape).
+REFUTED-IF: cross-term-wrong within 8 of control AND expand pass@8
+within 5 points of control -> stating the step inside the format
+does not teach it either; format-locality holds even against
+in-format statement, and the cross-term deficit is not a
+data-statement problem at this dose.
+
+REGISTERED PRIOR (house, on the record): BAR 1 FIRES (the
+stated-step law is 3-for-3: decomposition discount, atom diet,
+arith shard); BAR 2 KNIFE-EDGE OR MISSES (killing the cross-term
+mode caps the recoverable expand gain — other miss modes hold
+~25-30% of misses); BAR 3 FIRES (dent 0 to -3). Confidence: BAR 1
+medium-high, BAR 2 genuinely uncertain, BAR 3 high.
+
+FENCES. Single seed (BIRTH_SEED=3), single device (Mac mps fp32),
+in-run paired arms only — no cross-run weight identity ever
+(standing mps fence); gate totals comparable within this family
+only (same vocab, same sampler category count); arithmetic scope
+small-integer operands; the xexp ambiguity voids loss-level
+comparisons; probe is T=0.7 pass@k under the gate sampler, not
+greedy; smoke runs write to their own paths (smoke.jsonl,
+*_smoke.pt) with unconditional refuse-guards (92a1e3e class). If
+the wall kills an arm, the rung books NOT-RUN for that arm, never
+a partial comparison.
