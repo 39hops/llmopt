@@ -31149,3 +31149,102 @@ argument, the router-as-prior-only fence (AMENDMENT FINAL-0803
 retracted the causal reading), the weight-space-only scope, and
 the rule that a probe-based error column is
 comparative-at-matched-bytes only (L11058).
+
+## AMENDMENT STREAM-WDISTILL-0-CONTRACT (amends PRE-REG STREAM-WDISTILL-0 L30921 and AMENDMENT -BUDGET L31031): byte admissibility relaxed to <= B, the capacity-meter justification for B1 is RETRACTED, the per-arm hyperparameter/search contract is frozen, and BAR 3's semantics are corrected (2026-08-16, Mac)
+
+Artin's four riders, pre-PASS-1. Nothing has read a weight byte.
+
+(1) BYTE ADMISSIBILITY RELAXED. The -BUDGET window
+[0.99B, 1.00B] is replaced by REALIZED BYTES <= B, with the
+budget SLACK (B - realized, and realized/B) reported per arm.
+Reason, adopted: underspending is Pareto-BETTER, not cheating —
+an arm that reaches lower error with fewer bytes has won more
+decisively, and the old window would have disqualified exactly
+that outcome. Overspending still disqualifies the row.
+
+(2) THE B1 JUSTIFICATION IS RETRACTED; B1 ITSELF STANDS.
+-BUDGET argued B1 = half-vendor because BLACKHOLE's capacity
+meter put large-expert classes near M ~ 2.0-2.33, "the measured
+neighbourhood where these tensors stop being trivially
+compressible". That is a CATEGORY ERROR and is withdrawn. The
+meter returns M = span_bits - code_entropy at a FIXED per-row
+step of sigma/2 (scratch/capacity_meter.py:2,22-33): it measures
+distributional headroom under one quantizer, NOT a bitrate knee
+and NOT an achievable bits/weight. M ~ 2 licenses no claim about
+where compression gets hard. B1 = half the vendor payload
+(1,711,276,032 B = 2.1250 bits/weight incl. every overhead) is
+retained on the honest ground that it is a CLEAN 2x COMPRESSION
+CHALLENGE chosen a priori, with no empirical claim attached. B2 =
+quarter payload is unchanged, same footing.
+
+(3) HYPERPARAMETER AND SEARCH CONTRACT, FROZEN NOW — every value
+below is fixed before any weight byte is read, so no arm can be
+tuned after seeing its own error. Deviations are permitted only
+by declaring them in the receipt row, and a declared deviation is
+itself booked as a finding.
+  ARM A (scalar). Family: symmetric max-anchored uniform, per-block
+  scale, block size 128 ALONG THE PACKED AXIS, 2-bit codes, fp16
+  scale = 2 + 16/128 = 2.1250 bits/weight, exactly B1. No family
+  search; no block-size search.
+  ARM B (hierarchical VQ). RESIDUAL (multi-stage) VQ. At B1: vector
+  width 8, 2 stages, K = 256 per stage -> 2.000 bits/weight (slack
+  reported per (1)). At B2: width 16, 2 stages, K = 256 -> 1.000.
+  Codebook training sample 2**20 vectors drawn with seed 20260816,
+  Lloyd/k-means, 25 iterations, k-means++ init at the same seed.
+  Codebooks fp16, counted once; indices ceil(log2 K) = 8 bits packed.
+  NOTE, booked in advance: the banked tree form specified 32-weight
+  vectors (RIFF ~L2255); 32-wide is UNREACHABLE at these budgets
+  (s*log2(K)/32 = 2.125 needs s*log2(K) = 68), so the banked width
+  belongs to a much lower bitrate. The deviation is registered here,
+  not discovered later.
+  ARM C (shared basis). Cin = SUM_e (W1_e^T W1_e + W3_e^T W3_e),
+  Cout = SUM_e W2_e W2_e^T, both [4096,4096]; EXACT symmetric
+  eigendecomposition (no randomization needed at this size);
+  Vin/Vout = top-r eigenvectors, fp16, counted once. Coefficients
+  int8 with per-row fp16 scales. Rank is DETERMINED BY THE BUDGET,
+  not searched: bytes(r) = 1,589,760 r + 2,097,152, so r_C = 1075
+  at B1 (the largest r with bytes <= B1).
+  ARM D (per-expert SVD) — the EXACT PRIVATE-BASIS ANALOGUE OF C.
+  Identical factor dtypes, identical per-row fp16 scale scheme,
+  identical rank-selection rule; the ONLY difference is that each
+  expert carries its own bases instead of sharing them. bytes(r) =
+  4,718,592 r + 9,437,184, so r_D = 360 at B1. That C reaches rank
+  1075 where D reaches 360 at the same bytes IS the sharing
+  advantage under test, and the arithmetic is fixed here so it is
+  not a post-hoc knob. If randomized SVD is used for D's 768
+  factorizations, it is VERIFIED against exact SVD on a frozen
+  8-expert subset (seed 20260816) and the max relative spectral
+  deviation is reported; > 1e-3 fails the arm rather than being
+  absorbed.
+  ARM E (hidden-axis shared basis, gauge control). Same machinery
+  as C with the Gram matrices taken on the HIDDEN axis
+  ([2048,2048]), shared basis fp16 counted once, same coefficient
+  dtypes. Budget-determined rank r_E ~ 543 at B1.
+  ALL ARMS: no per-arm early stopping, no re-tuning, one shot each.
+
+(4) BAR 3 SEMANTICS CORRECTED. The old wording said a tie or
+inversion "falsifies the gauge reasoning". It does not, and cannot:
+the expert-local permutation gauge on hidden coordinates is a
+MATHEMATICAL PROPERTY of the architecture and no compression race
+can refute it. What BAR 3 tests is the COMPRESSION PREDICTION
+DERIVED FROM the gauge — that a hidden-axis shared basis therefore
+compresses worse. A tie or inversion refutes THAT INFERENCE
+(gauge -> incompressibility) and nothing more.
+  NEW NAMED CONFOUND, registered rather than discovered: arms C and
+  E are matched on BYTES, not on rank or on fraction-of-achievable
+  rank, and the two axes differ in size (4096 residual v 2048
+  hidden). C reaches ~52% of its achievable rank at B1 where E
+  reaches ~27%. So part of any C-over-E gap is GEOMETRY, not gauge,
+  and BAR 3 firing is therefore consistent with the gauge
+  prediction without isolating it. A rank-matched (byte-unmatched)
+  side reading is reported as a descriptive rider to expose the
+  split; it carries no bar.
+
+(5) METRICS EXTENDED. Add SPECTRAL-NORM relative error
+||What - W||_2 / ||W||_2 per projection and pooled, because seeded
+Gaussian operator error asymptotically TRACKS Frobenius for
+isotropic probes and therefore adds little independent
+information — the spectral norm is the one that reports worst-case
+directional damage. Frobenius, seeded operator error, and spectral
+norm are all reported; BAR 1 stays on pooled Frobenius and BAR 2
+stays on seeded operator error as registered, so no bar moves.
