@@ -5679,3 +5679,43 @@ without re-introducing history).
   any class that has graduated. Attribution: GPT seat (the whole
   program and the graduation rule), Artin (the relay), house
   (state-of-play verification, ordering).
+
+  AMENDMENT (2026-08-16, same day, GPT seat — a correction the
+  house earned): the bank above VIOLATES ITS OWN GRADUATION RULE
+  in the sentence that orders the work. It calls item (4)
+  "a CLAUDE.md law that costs nothing", but a CLAUDE.md law is a
+  model instruction — exactly the human/checklist-level defence
+  the program exists to move beyond — so it cannot count as
+  graduation. Two states are now distinguished, and the
+  distinction is itself part of the machinery:
+    PROMOTED   the class is a documented house law
+    GRADUATED  the class has an EXECUTABLE INVARIANT that refuses
+               it, AND a regression fixture reproducing the
+               original failure
+An incident table carries the status per class, e.g.
+    incident_class            law  invariant  regression  status
+    mean_of_ratios            yes  no         pending     PROMOTED
+    fp32_billed_fp16          yes  pending    pending     PROMOTED
+    moving_revision_literal    yes  pending    pending     PROMOTED
+    wrong_metric_population   yes  pending    pending     PROMOTED
+    ternary_in_2bit_field     yes  pending    pending     PROMOTED
+    unserialized_arm          yes  pending    pending     PROMOTED
+    over_budget_comparator    yes  pending    pending     PROMOTED
+    false_only_contrast       yes  pending    pending     PROMOTED
+    smoke_row_in_real_receipt yes  yes        yes         GRADUATED
+    inherited_emitter_label   yes  partial    pending     PARTIAL
+Only the smoke class is genuinely graduated today (the
+2026-08-15 CLAUDE.md rule plus .claude/hooks/smoke_guard.py plus
+its verified both-directions test). Everything this episode
+produced is PROMOTED at best. That is the honest starting state,
+and it makes the program's own success metric — blocker
+recurrence going to zero for a GRADUATED class — measurable
+rather than aspirational, because a class that recurs while
+merely PROMOTED is evidence for the program, not against it.
+House ordering updated accordingly: build tests/science_incidents/
+FIRST (it is the regression half of every future graduation and
+the corpus already exists), then the executable invariants in
+value order (artifact closure, typed metrics/populations, the
+blind adjudicator). Attribution: GPT seat (the PROMOTED-v-
+GRADUATED distinction and the catch), house (adoption, the
+honest status column).

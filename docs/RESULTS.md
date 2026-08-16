@@ -31723,3 +31723,77 @@ measured twice that aggregate lenses lie; a control that destroys
 only the claimed variable is the cheapest defence.
 
 Everything else in the pre-reg and -0S-DESIGN stands.
+
+## AMENDMENT STREAM-WDISTILL-0S-SPEC (amends PRE-REG STREAM-WDISTILL-0S, -0S-DESIGN, -0S-CONTROL): S2's optimality is scoped to its discretization and made true of the STORED decoder, the shuffle is re-keyed per block with its own codebook, BAR 3 gets three frozen realizations, and S1-U4's alphabet is pinned to the level (2026-08-16, Mac)
+
+Four pre-look tightenings (GPT seat). No weight byte read by this
+rung. Two of them correct sentences the house wrote in the two
+preceding amendments.
+
+(1) "OPTIMAL" IS SCOPED, AND MADE TRUE OF THE DECODER THAT SHIPS.
+-0S-CONTROL said S2 "may therefore be described as OPTIMAL" while
+in the same paragraph admitting a binning approximation — an
+internal contradiction. Exact DP over 4,096 bins is globally
+optimal for the DISCRETIZED problem, not for the ~10**6 sample
+values. Corrected wording, to be used verbatim in the verdict:
+"globally optimal 4-level scalar quantizer on the frozen
+4,096-bin empirical discretization". Two implementation changes
+make that scope as tight as it can be:
+  (a) each bin stores (count, sum, sumsq) and interval cost is
+      computed from those primitives, NOT by treating bin centres
+      as the data — so the ONLY residual approximation is that a
+      decision boundary cannot split a bin;
+  (b) the DP cost uses the NEAREST REPRESENTABLE fp16 level for
+      each interval, since fp16 is what the artifact stores — so
+      the optimum is optimal FOR THE STORED DECODER rather than
+      for an unrepresentable idealisation.
+House note: (a) is the "book primitives, derive summaries" law
+applied inside an algorithm — interval SSE falls out of
+(count, sum, sumsq) exactly.
+
+(2) THE SHUFFLE IS PER-BLOCK AND CARRIES ITS OWN CODEBOOK. -0S-
+CONTROL's "a FIXED SEEDED permutation" within each block is
+ambiguous and, on the reading where one 128-position permutation
+is reused for every block, systematic positional relationships
+survive it. Pinned: an INDEPENDENT permutation per block,
+pi_b = Permutation(hash(seed, projection, expert, block)), fully
+reproducible from seed 20260816.
+SECOND, and it is a real confound the earlier text left open:
+each shuffled twin TRAINS ITS OWN CODEBOOK on the shuffled
+training sample under the identical recipe. Scoring shuffled
+vectors with the natural codebook would conflate locality
+destruction with codebook distribution shift, and would have
+biased the control toward firing.
+
+(3) BAR 3 GETS THREE FROZEN REALIZATIONS. One permutation tests
+"better than THIS regrouping"; the claim wants "better than
+regrouping". Pinned: three frozen shuffle seeds (20260816,
+20260817, 20260818), each with its own per-block permutations and
+its own trained codebook. BAR 3 LOCALITY-IS-REAL restated:
+natural W32 beats the MEAN shuffled operator error by >= 5%
+relative AND is better than all three individually. Permutation
+variance across the three is reported. If cost forces a single
+realization the bar still stands, and the verdict must then read
+"against one frozen locality-destroying permutation" — never the
+unqualified phrasing.
+
+(4) S1-U4's ALPHABET IS PINNED TO THE LEVEL. "Genuine 4-level
+uniform max-anchored" is exactly as underspecified as "2-bit
+scalar" was, and that underspecification is what produced the
+ternary defect. Pinned now: after max-anchored normalization the
+reconstruction alphabet is the symmetric mid-rise grid
+  {-1, -1/3, +1/3, +1} x scale
+(no zero level; all four codes used); encoding is nearest-level
+with ties resolved AWAY FROM ZERO; values are clipped to
+[-1, +1] x scale by construction of the max anchor; codes are
+stored as uint2 with the mapping 0->-1, 1->-1/3, 2->+1/3, 3->+1.
+S1-T's alphabet is likewise pinned as {-1, 0, +1} x scale stored
+in the same uint2 field, three of four codes used — its wasted
+code space is the quantity S1-T -> S1-U4 measures.
+
+The resulting ladder, each step isolating one thing:
+  S1-T -> S1-U4   wasted code space (ternary in a 2-bit field)
+  S1-U4 -> S2     scalar cell design at a fixed alphabet size
+  S2 -> W4        multidimensional coding at the same index rate
+  W4 -> W8 -> W32 whether the useful interaction scale keeps growing
+  W32 -> W32-shuf whether the gain is tied to the NATIVE arrangement
