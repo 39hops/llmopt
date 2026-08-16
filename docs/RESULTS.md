@@ -31904,3 +31904,228 @@ the evidence did not carry (efficacy -> reliability -> this
 episode). Booked as an instance of the pattern rather than an
 embarrassment: claims shrink toward what was measured, and the
 ledger keeps every step.
+
+## VERDICT STREAM-WDISTILL-0-AUDIT-REPAIR: BAR 1 NO-FIRE and BAR 3 FIRES on an artifact-faithful re-execution — a shared residual basis buys 0.37% over private bases where the bar wanted 10%, and every low-rank arm loses to 2-bit scalar rounding; BAR 2 stays UNRESOLVED with arm A measured 19 bytes over budget (2026-08-16, Mac)
+
+Post-look audit-repair of the execution invalidated at OBSERVATION
+-EXEC1 (L31394), run under AMENDMENT -REPAIR-SCOPE (L31480): BAR 1
+and BAR 3 are adjudicable because they failed on MEASUREMENT
+defects; BAR 2 is not, because arm A fails STRUCTURALLY. No
+hyperparameter was changed for any reason connected to an arm's
+performance. Driver scratch/stream_wdistill1.py; the code that RAN
+is 65ca4a8 (the row's code_commit reads eab634c because git_sha
+was sampled at receipt-write time while docs commits landed
+mid-run; `git diff 65ca4a8..eab634c --stat` touches
+RESULTS/FINDINGS/RIFF/index ONLY, no instrument file, and the
+driver is byte-identical across that range — disclosed, and fixed
+forward by capturing CODE_COMMIT at import). Receipts
+logs/streamwd/pass12_B1_repair.jsonl + run_B1_repair.log;
+revision pinned IN THE FETCH URL (/resolve/<sha>), so the
+provenance field is true by construction rather than asserted.
+Wall 6384.6 s, 256 experts, 6528 MiB fetched over two passes = 2x
+the PASS-0 payload to the byte, disk residence O(one expert),
+ZERO teacher forwards and ZERO calibration data throughout.
+
+RECEIPT-PATH INCIDENT, disclosed because the house committed it:
+the repair was launched after MANUALLY RENAMING the EXEC1 receipt,
+which defeated the driver's refuse-if-exists guard and left the
+booked EXEC1 citation resolving to the repair's row. Caught by
+BOTH auditors independently. Fixed at 603c712 before booking: the
+cited paths hold their booked content again, the repair sits at
+its own path, and OUT is now RUN_TAG-parameterized so a re-run
+cannot target a cited path. This is the logs-doctrine rule ("never
+append a new run into a path a booked verdict cites as frozen")
+violated by the very rung that was repairing a provenance defect.
+
+MEASURED. Byte admissibility (measured by dry-run serialization of
+the declared formats, not formula; budget B1 = 1,711,276,032 B):
+  A 1,711,276,051  OVER by 19 B  <-- INADMISSIBLE
+  B 1,611,005,982  ok, slack 100,270,050 B = 5.86%
+  C 1,711,089,180  ok, slack 0.011%
+  D 1,709,330,459  ok, slack 0.114%
+  E 1,708,921,883  ok, slack 0.138%
+The 19 B is exactly the serialization manifest (8-byte length
+prefix + the 11-byte {"arm":"A"} header), confirming EMPIRICALLY
+the pre-look structural argument that arm A's frozen format
+(2 + 16/128 = 2.1250 bpw x 6,442,450,944 = exactly B1) cannot fit
+inside B1 once the container is counted.
+Ranks C 1075 / D 296 / E 541, matching the -ARITH pre-look
+estimates exactly. Arm D on EXACT eigh. VQ 8/8 stages in 194 s
+against a 2700 s wall, so BAR-2 eligibility was never chosen by
+runtime (the CENSOR-0 guard did not bind).
+Pooled Frobenius, all 256 experts:
+  A 0.769528 | B 0.350092 | C 0.810601 | D 0.813590 | E 0.847409
+
+**BAR 1 (SHARING-PAYS): NO-FIRE, and decisively.** (D - C)/D =
+0.3674% against a 10% bar — C beats D at all, by 27x less than the
+bar demanded. Clean this time: exact solver, fp16-faithful decode
+(the basis is rounded BEFORE it is used to encode AND decode), both
+arms admissible. Amortization does NOT overwhelm the per-expert
+penalty: buying 3.6x the rank (1075 v 296) by sharing one basis
+across 256 experts is worth 0.37%.
+**BAR 2: UNRESOLVED**, as -REPAIR-SCOPE required. A contrast with
+an inadmissible comparator is inadmissible whatever the other
+side's status, so arm B's admissibility does not rescue it. Arm
+B's 0.350092 is DESCRIPTIVE: the winner measured against no
+admissible opponent at this budget, at a 5.86% underspend.
+**BAR 3 (GAUGE-CONTROL): FIRES.** E 0.847409 > C 0.810601, +4.54%
+relative. Per -CONTRACT (4) this supports the COMPRESSION
+PREDICTION DERIVED FROM the gauge, never the gauge itself, which
+no race can touch. It is clean because -ARITH (3) WITHDREW the
+geometry confound on the corrected denominators: C uses
+1075/4096 = 26.25% of its span, E 541/2048 = 26.42% — the arms are
+near fraction-matched, so the gap is not a geometry artifact.
+**REFUTED-IF: not evaluable** (BAR 2 unresolved).
+
+THE REPAIR DELTA, pooled Frobenius only (-DELTAS bars operator and
+spectral from cross-run differencing: EXEC1 measured those at
+expert 0, the repair layer-pooled over 256, so a difference would
+measure the population change):
+  A  exactly 0.0        C  +6.5e-9    E  +4.0e-9
+  B  +1.0e-4            D  -2.86e-3
+FINDING, with fences: **the fp32-decoded-while-fp16-billed
+contract defect was REAL and PROCEDURALLY SERIOUS, and its
+numerical effect on the arms the bars rest on is below 1e-8.**
+Fences, all four required: (i) pooled Frobenius only, not
+established for operator or spectral; (ii) negligible IN KIND only
+for the projection arms C and E, where a rounded basis enters
+reconstruction bilinearly through a near-stationary subspace —
+arm B's +1.0e-4 is small in magnitude but is a DIFFERENT DISCRETE
+ENCODING TRAJECTORY (a rounded centroid can flip argmin_k and
+every later residual differs), so its defect was structurally
+load-bearing even though it cost little; (iii) one layer, one
+model, n=1, at these ranks and this budget — a spikier spectrum
+would give basis rounding more leverage; (iv) DIRECTION: -EXEC1
+recorded that the defect ran in a direction FAVOURABLE to the
+low-rank arms, and the repair now measures that favour at <1e-8,
+so EXEC1's NO-FIRE direction was never at risk. The audit was
+right to invalidate on procedure and right that the science did
+not move.
+Two corrections to the house's own draft reading, both adopted:
+arm A's exactly-zero delta is VACUOUS as evidence about the defect
+(arm A never touches a basis or codebook) and is reported instead
+as a DETERMINISM CONTROL establishing the two runs are
+bit-reproducible on an untouched arm — which is what makes the
+C/E ~1e-9 deltas signal rather than run noise; and D's -2.86e-3 is
+NOT decomposed into its two simultaneous changes (basis precision
+AND exact-vs-randomized solver), per -DELTAS-2. The mechanistic
+argument that it is solver-dominated (precision alone moved C and
+E by <1e-8) is stated as an argument, not a measurement; no
+control was run.
+
+INSTRUMENT FINDING, and it bears on the next rung: **the seeded
+isotropic-probe operator metric carries ZERO independent
+information about pooled Frobenius.** For isotropic Gaussian X,
+E||X D^T||_F^2 = PROBE_N * ||D||_F^2, so the pooled ratio
+sqrt(sum num / sum den) is a Monte-Carlo ESTIMATOR OF THE
+FROBENIUS RATIO ITSELF, with the probe count setting only its
+variance. Measured agreement between operator_layer and frob:
+A 9.2e-5, B 3.6e-5, C 9.4e-5, D 9.6e-5, E 5.0e-5 relative — that
+is the MC noise at 64 probes pooled over 768 tensors. -CONTRACT (5)
+predicted this ("adds little independent information") and added
+spectral norm for the reason; the repair measures the prediction
+at 1e-4. Reporting operator as a third independent metric would be
+three columns and two pieces of information.
+
+DESCRIPTIVE OBSERVATION, explicitly NOT a re-reading of BAR 1: the
+spectral and Frobenius orderings INVERT. On the mean per-expert
+spectral ratio D beats C on all three projections (w1 0.356 v
+0.556, w3 0.580 v 0.725, w2 0.462 v 0.669) while being worse on
+pooled Frobenius. The mechanism is Eckart-Young: each expert's
+private rank-296 basis is optimal FOR THAT EXPERT, so it removes
+that expert's leading singular directions and leaves a small
+dominant residual, while C's shared rank-1075 subspace is aligned
+to no single expert and spreads more total energy while retaining
+a larger top direction. Private bases win worst-case-directional;
+the shared basis wins total-energy-per-byte. This may NOT soften
+BAR 1, for three reasons booked here so the temptation is closed:
+BAR 1 is REGISTERED on pooled Frobenius and re-reading it on a
+metric chosen after the data landed is bar-rewording (the tell is
+the asymmetry — the move would be unavailable had spectral
+favoured C); the spectral column is the weakest instrument in the
+receipt, a MEAN OF RATIOS estimated by fixed-30-iteration power
+iteration whose convergence depends on the spectral gap and is
+therefore BIASED IN A WAY CORRELATED WITH THE COMPARED QUANTITY
+(C's residual is near-isotropic, D's is not) in an unknown
+direction; and the confound is RANK, not sharing (1075 v 296).
+The registered instrument that separates them — the C@296 v D@296
+rank-matched rider — WAS NOT RUN (booked below).
+
+NOT-RUN, booked rather than allowed to vanish: the rank-matched
+C@296 v D@296 descriptive rider registered at -ARITH (2) and
+reaffirmed at -READING (1) was never computed; the driver
+reconstructs C only at rC. It carries no bar, but it is the
+cheapest thing that would separate "private bases align to
+dominant directions" from "D simply has 3.6x fewer directions to
+spread across", and it is now the named follow-up.
+
+Corrections to reporting adopted from the audit: the column
+labelled spectral_pooled is a MEAN OF PER-EXPERT RATIOS, not a
+pooled ratio — it is renamed as such wherever quoted, because
+mean-of-ratios is the exact aggregation class -EXEC1 named and
+-DELTAS booked as recurring, and this is its third appearance in
+this thread; rsvd_max_dev 0.0243 remains in the row but is
+DESCRIPTIVE (exact-vs-randomized subspace delta) and gates
+nothing, since arm D ran on exact eigh — the driver now records
+rsvd_role/rsvd_gating explicitly; and the five byte figures are
+measured serialized sizes OF THE DECLARED FORMAT via dry-run
+serialization, not artifacts written to disk.
+
+READING. Low-rank factorization of a frontier MoE expert layer,
+derived from streamed weights with no teacher inference, is a
+decisive loser at 2x compression: every low-rank arm (C 0.811,
+D 0.814, E 0.847) is worse than plain 2-bit scalar rounding
+(0.770) — and worse than an arm that is itself INADMISSIBLE and
+known to waste a quarter of its code space on a ternary alphabet.
+Sharing a basis across 256 experts buys 0.37% over private bases
+at matched bytes. This is the house's own rank floor — "bits are
+redundant, dimensions are sacred" (L2180) — reappearing on a
+frontier artifact: these matrices are near-isotropic, so no basis
+of any kind buys much. The same near-isotropy independently broke
+the randomized solver at 0.0243, which is the same fact measured
+a second way. What survives is the LOCAL-STRUCTURE hypothesis, and
+it is exactly what STREAM-WDISTILL-0S is registered to test
+against a fair scalar baseline.
+
+FENCES. One layer (22), one model, one budget (B1), n=1, Mac,
+weight space only; NO functional or capability claim is made or
+licensed — nothing here says a compressed expert would work, only
+how well its weights are reconstructed. Probe-based columns are
+comparative-at-matched-bytes only (L11058). Arm A is inadmissible
+and its 0.769528 is descriptive; arm B's 0.350092 is descriptive
+with a 5.86% underspend. BAR 3 supports the compression
+prediction derived from the gauge, never the gauge. The
+spectral-inversion observation is descriptive and post-look.
+
+## AMENDMENT STREAM-WDISTILL-0S-METRIC (amends PRE-REG STREAM-WDISTILL-0S): all three of 0S's bars are registered on seeded operator error, which the repair just measured to be a Monte-Carlo estimator OF pooled Frobenius — the bars are Frobenius bars and are knowingly kept as such (2026-08-16, Mac)
+
+Pre-look on 0S, off the audit-repair instrument finding
+(VERDICT -AUDIT-REPAIR L31908). 0S registers BAR 1
+(VQ-SURVIVES), BAR 2 (VECTOR-STRUCTURE-PAYS) and BAR 3
+(LOCALITY-IS-REAL) all on POOLED OPERATOR ERROR. The repair
+established that for isotropic Gaussian probes
+E||X D^T||_F^2 = PROBE_N * ||D||_F^2, so the pooled operator
+ratio ESTIMATES the pooled Frobenius ratio, measured agreement
+3.6e-5 to 9.6e-5 relative across all five arms. 0S's three bars
+are therefore Frobenius bars carrying extra Monte-Carlo variance.
+DECISION, made before the run and stated so it is a choice rather
+than a discovery: the bars STAY on pooled operator error as
+registered — moving them post-registration would be worse than
+the redundancy — but three consequences are booked now.
+  (a) The operator column in 0S is NOT an independent check on
+      its Frobenius column. Reporting both as separate evidence
+      would be three columns and two facts.
+  (b) SPECTRAL is the only metric in 0S carrying information
+      independent of Frobenius, so it is the one to watch for
+      arm orderings that disagree — as they did in the repair,
+      where private bases beat the shared basis on spectral while
+      losing on Frobenius.
+  (c) The 0S spectral column must be POOLED, not a mean of
+      per-expert ratios. The repair's spectral was a mean of
+      ratios — the third appearance of that aggregation class in
+      this thread — and 0S will not repeat it: spectral is
+      reported with its across-expert spread, and any
+      power-iteration estimate states its iteration count and is
+      checked for convergence, because power iteration's bias
+      depends on the spectral gap and is therefore correlated
+      with exactly the property the arms differ in.
