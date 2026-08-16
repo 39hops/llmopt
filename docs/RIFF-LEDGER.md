@@ -5965,3 +5965,46 @@ honest status column).
   many point mid-entry DELIBERATELY; they stay as written. Bare
   non-link anchors (3 across the repo) remain outside the id
   channel, covered by the heading test only.
+
+  AMENDMENT 8 (2026-08-16): ITEM 4 SHIPPED — machine-readable
+  prereg/bar schema + deterministic adjudicator. The PROMOTED law
+  (bar_adjudicable = measurement_valid AND arms admissible AND
+  contrast admissible) is now executable, which is the graduation
+  bar the schema design itself was held to.
+    llmopt/lab/prereg.py — schema validator (unknown/typoed keys
+    REFUSED loudly; refuted_if and registered_prior REQUIRED;
+    every bar names declared arms and a numeric value already on
+    the page) and adjudicate_prereg(): per bar exactly one of
+    FIRE / NO-FIRE / UNRESOLVED with the reason chain. Two failure
+    shapes kept apart BY TYPE: UNRESOLVED is a bookable scientific
+    outcome (inadmissible arm, not-run, invalid measurement);
+    MetricContractError is a pipeline bug (measurement is not the
+    registered quantity — wrong metric/population/aggregation) and
+    never books. Numeric comparison delegates to
+    llmopt.lab.metrics.adjudicate, so the wrong_metric_population
+    incident guard is the same code path.
+    scripts/adjudicate.py — CLI; exit 0 only if every bar reached
+    FIRE/NO-FIRE, exit 2 on any UNRESOLVED.
+    docs/preregs/stream-wdistill-0.json — FIRST FIXTURE, marked
+    RETROSPECTIVE in-file (written after receipts; not a pre-reg).
+    tests/test_prereg_schema.py re-derives the booked audit-repair
+    verdict from the booked numbers: BAR 1 NO-FIRE (0.3674% v
+    10%), BAR 2 UNRESOLVED (arm A inadmissible, 19 bytes over B1),
+    BAR 3 FIRE (+4.54%) — adjudicator and ledger must agree or the
+    suite goes red. Plus: invalid measurement unresolves every
+    bar; missing measurement books "not-run"; the ORIGINAL
+    incident (layer bar handed an expert:0 number) raises instead
+    of adjudicating.
+    STRUCTURED RECEIPT REFERENCES land here too: the prereg's
+    receipts list feeds scripts/gen_receipt_lock.py (lock grew
+    78 to 80 paths; run_B1.log — the bare-filename gap from
+    AMENDMENT 6 — is now content-addressed). Item 2's known gap
+    CLOSED for any thread that ships a prereg JSON.
+    .claude/skills/adjudicate/SKILL.md — the /adjudicate ritual:
+    JSON at pre-reg time (same commit as the prose entry, which
+    remains the registration of record), observations at verdict
+    time, book the tool's per-bar lines verbatim; prose may add
+    reading but may not overrule an outcome.
+  Suite green 879 passed. Item (5), claim-linter, now has its
+  machine-checkable objects: bars, arms, admissibility reasons,
+  populations — the precondition Artin set for building it.

@@ -8,6 +8,11 @@ Regenerate: `.venv/bin/python scripts/gen_index.py`
 *(no docstring)*
 
 
+### scripts/adjudicate.py
+Deterministic bar adjudication from a machine-readable pre-reg.
+
+- `main() -> int`
+
 ### scripts/anchor_guard.py
 Stable-ID citations for RESULTS.md anchors (the anchor transition).
 
@@ -3543,6 +3548,16 @@ lab.oracle — the boxed oracle, v3.2 lineage (spec 2026-08-05-llmopt-lab-extrac
 Standalone oracle worker for timeboxed p.check (MOE-GT-6 v3). CANONICAL BODY since 2026-08-12 (Phase 3 module 2); scratch/oracle_worker.py is a re-export shim kept as the by-path entry point. Originally adopted from that file. Behavior guarded by tests/test_lab_oracle.py (shim identity + typed failure paths).
 
 - `main()`
+
+### llmopt/lab/prereg.py
+Machine-readable pre-registration: bars a program can adjudicate.
+
+- `class PreregSchemaError`
+- `class BarOutcome`
+- `_require(cond: bool, msg: str) -> None`
+- `validate(doc: dict) -> dict` — Validate a pre-reg document; returns it unchanged on success.
+- `load(path: str | Path) -> dict`
+- `adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]` — Deterministic adjudication of every bar against observations.
 
 ### llmopt/lab/runfiles.py
 Moved to llmopt.runs.runfiles (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).

@@ -1,0 +1,57 @@
+{
+  "name": "STREAM-WDISTILL-0",
+  "note": "RETROSPECTIVE ENCODING of the booked prose pre-reg and its audit-repair verdict (2026-08-16-verdict-stream-wdistill-0-audit-repair), built as the schema's first regression fixture. This document was written AFTER the receipts existed and is not itself a pre-registration.",
+  "results_id": "2026-08-16-pre-reg-stream-wdistill-0-can",
+  "registered": "2026-08-16",
+  "machine": "mac",
+  "arms": {
+    "A": {"description": "2-bit scalar quantization baseline"},
+    "B": {"description": "residual VQ, all 8 registered B1 stages"},
+    "C": {"description": "shared residual basis (Cin/Cout joint accumulation), rank 1075"},
+    "D": {"description": "per-expert private basis, C's exact analogue, rank 296"},
+    "E": {"description": "hidden-axis gauge control"}
+  },
+  "bars": [
+    {
+      "id": 1,
+      "name": "SHARING-PAYS",
+      "metric": "frobenius_rel_gain",
+      "population": "experts:0:256",
+      "aggregation": "pooled_ratio",
+      "direction": "above",
+      "value": 0.10,
+      "arms": ["C", "D"],
+      "description": "(D - C)/D pooled Frobenius: shared basis beats private by >= 10% at equal byte budget"
+    },
+    {
+      "id": 2,
+      "name": "SCALAR-BEATEN",
+      "metric": "frobenius_rel_gain",
+      "population": "experts:0:256",
+      "aggregation": "pooled_ratio",
+      "direction": "above",
+      "value": 0.0,
+      "arms": ["A", "B"],
+      "description": "VQ beats matched-byte scalar; requires an ADMISSIBLE (within-budget) scalar serialization"
+    },
+    {
+      "id": 3,
+      "name": "GAUGE-CONTROL",
+      "metric": "frobenius_rel_penalty",
+      "population": "experts:0:256",
+      "aggregation": "pooled_ratio",
+      "direction": "above",
+      "value": 0.0,
+      "arms": ["E", "C"],
+      "description": "(E - C)/C pooled Frobenius: destroying the residual coordinate alignment costs error, supporting the compression prediction derived from the gauge (not the gauge itself)"
+    }
+  ],
+  "receipts": [
+    "logs/streamwd/pass12_B1.jsonl",
+    "logs/streamwd/pass12_B1_repair.jsonl",
+    "logs/streamwd/run_B1.log",
+    "logs/streamwd/run_B1_repair.log"
+  ],
+  "refuted_if": "C fails to beat D by the registered margin at matched bytes (BAR 1 NO-FIRE) — sharing does not pay on this layer; measured outcome of the audit-repair.",
+  "registered_prior": "House predicted BAR 1 FIRES (cross-expert sharing pays at 3.6x rank); measured 0.3674% vs the 10% bar — prior was wrong, booked."
+}

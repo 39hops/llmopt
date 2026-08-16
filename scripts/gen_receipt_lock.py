@@ -52,8 +52,15 @@ def sha256(p: Path) -> str:
 
 
 def cited_paths() -> list[str]:
-    text = RESULTS.read_text()
-    return sorted({m.group(0) for m in CITE.finditer(text)})
+    cited = {m.group(0) for m in CITE.finditer(RESULTS.read_text())}
+    # STRUCTURED receipt references: docs/preregs/*.json declare the
+    # exact paths their run writes. This closes the bare-filename gap
+    # (a receipt cited in prose without its path prefix is invisible
+    # to the regex above; a declared path is machine-readable by
+    # construction).
+    for prereg in sorted((ROOT / "docs" / "preregs").glob("*.json")):
+        cited.update(json.loads(prereg.read_text()).get("receipts", []))
+    return sorted(cited)
 
 
 def build() -> dict:
