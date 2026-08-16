@@ -5126,7 +5126,19 @@ without re-introducing history).
   EXPERT-INTERACTION-0 Hadamard/factorial expert-mask design with
   pairwise interaction recovery — strong instrument idea for the
   MoE crest thread, 30B/3080 territory, own machine budget, Artin
-  GO. (8) BASICS-DIET as small-dose transfer test — already
+  GO. [CORRECTION 2026-08-16: "3080 territory" is WRONG and was
+  never measured — every MoE masking gate in this lab (MOE-GT-1
+  through GT-7, all EX-ANAT-*, EX-FRESH) ran on the MAC, on a
+  16GB 4-bit MLX Qwen3-30B-A3B artifact fully resident in 36GB
+  unified memory. No 30B model has EVER been loaded on the 3080's
+  10GB VRAM. The two other large-model paths are also Mac and
+  also not counter-examples: BLACKHOLE B0 streamed 16 shards
+  desk-only with NO inference at all, and V4-F1d ran a 304B at
+  6.25% expert residency with fetch-on-miss (~20GB of Metal
+  allocations, 0.100 tok/s). Consequence for the design pass:
+  this rung COMPETES WITH the math-native thread for the Mac, it
+  is not a parallel 3080 track, and it should be budgeted as Mac
+  hours.] (8) BASICS-DIET as small-dose transfer test — already
   queued (1c anchor); their framing (substrate transfer, not
   can-it-learn) adopted. (9) DEMOTE hint-diet in favor of
   auxiliary targets (rule id / subgoal / cost-to-go) — agrees
