@@ -5318,6 +5318,57 @@ without re-introducing history).
   has been pointing at twice now. Attribution: Artin (the video +
   the compare ask), house (fact-check + mapping).
 
+  CORRECTION (2026-08-16, GPT seat round 3; house verified both
+  points against the sources before adopting). TWO defects in the
+  bank above.
+  (a) Item (1) is TOO DISMISSIVE AS WRITTEN. Sweeping the whole
+  "too big too early" theme into the 2022-23 claims-that-dissolved
+  bucket mis-files XLSSC 122, which is newer, LENSING-based (not
+  photometric-mass-based, so the revision mechanism that softened
+  the 2022-23 claims does not apply to it), and carries a
+  genuinely unusual concentration c = 6.3 +- 0.5. The honest
+  statement is "an interesting high-concentration tail that may
+  imply faster assembly", not "the tension dissolved". The
+  ANALOGY is unaffected — the epistemic mapping was never about
+  which claims survived — but the astronomy summary inside it was
+  wrong and is retracted as stated. HOUSE COUNTER-NOTE on the
+  correction itself (verified, and it is the same lesson one
+  level down): the 2026 weak-lensing follow-up (ApJL
+  10.3847/2041-8213/ae447a) does NOT independently re-measure
+  that concentration — its c200c = 6.3 +- 0.4 is IMPLIED by
+  fitting the weak-lensing mass through a published c-M relation,
+  from the same group, so it is a derived quantity agreeing with
+  a model assumption, not a second instrument agreeing with the
+  first. What the WL paper does add independently is MERGER
+  evidence (common mass/X-ray/ICL/radio elongation, ~100-117 kpc
+  SZ-peak offset, TNG-Cluster comparison favouring a post-merger
+  state) — a dynamical-state confound that itself bears on how a
+  concentration should be read. The authors' own framing is
+  motivation-to-test ("could provide a stringent test of
+  halo-structure prescriptions within LambdaCDM"), never
+  falsification. Two numbers that agree are not two measurements
+  — the house version of this is the standing rule that a
+  weights-sha and a logit comparison can both agree while the
+  sampler has already changed the reading
+  (SOFT-PROMPT-1-SAMPLER).
+  (b) The AREA-LAW residue was banked as if UNATTEMPTED. It is
+  not: PRE-REG + VERDICT boundary-or-bulk (RESULTS L4513/L4527,
+  2026-07-25) already ran the boundary-v-volume ordering test on
+  the measured grid, and its clause 2 is a STANDING FENCE this
+  bank should have cited — volume fails because it ignores the
+  bit-dependent W* (a FEEDING mechanism), and "No boundary
+  measure kept order where volume failed (width-only measures
+  silent-not-correct; honest null)", with the explicit
+  instruction "do NOT cite this as 'boundary won.'" So bulk
+  failing is NOT evidence for boundary, and the video cannot
+  upgrade the residue's evidentiary status. Any revived area-law
+  probe therefore owes a PRE-DECLARED candidate boundary measure
+  (e.g. residual-stream interface tensors v FFN bulk) that must
+  predict removal damage WHERE PARAMETER VOLUME DOES NOT — the
+  same bar the 07-25 rung set and no measure has yet cleared.
+  Attribution: GPT seat (both catches), house (verification, the
+  07-25 fence text).
+
 - **BANKED (2026-08-16): the XTERM mechanism ladder, the
   intermediate-as-policy read, and transition-interface attachment**
   (GPT seat, reviewing 5332bf5..dc73020; house verified every
@@ -5401,3 +5452,118 @@ without re-introducing history).
   (normalize axiom nxt through sstr(sympify()) at farm time,
   re-run the dose comparison at matched dose — the emitter-tie
   bar retests with the dialect removed).
+
+- **BANKED (2026-08-16): the selection-function frame — five items
+  off the cosmology round-3 review** (GPT seat; house verified
+  every ledger claim and both design objections before banking).
+  The review's organizing insight, adopted: the video's real
+  transferable content is not black-hole cosmology, it is SURVEY
+  SCIENCE — what an observer sees is the underlying population
+  AFTER brightness limits, instrument response, classification,
+  geometry and censoring. The house measured that exact structure
+  in miniature overnight, which is why the frame earns a bank
+  rather than a metaphor.
+
+  (1) OBSERVATION/SELECTION CONTRACT — the proposed extension to
+  the data-contract vocabulary (adopted 2026-08-16 from ECC
+  mle-workflow: row grain / label timing / split policy). The
+  added clause: an observed diet is never the generator, it is
+  generator o representation-transform o survival/censor o
+  scorer. Every farm should emit, automatically: attempted ->
+  emitted survival by rule and level, wall-time distribution,
+  raw-v-canonical answer-form distribution, and output length.
+  Measured anchors, both from the same night: ANSWER-FORM-0
+  (representation transform — 75.5% formdiff at math-disagreement
+  0) and CENSOR-0 (survival function — a real 15.2% solvable band
+  removed by an 8s wall, discovered only after the shard trained
+  a booked rung). CENSOR-0 found a hidden selection function
+  AFTER the fact; the contract's purpose is to make that
+  impossible going forward. Testable residue: a farm-preamble
+  helper in llmopt/lab/ that emits the four distributions, plus
+  the retro-application of it to the shipped shards.
+
+  (2) ATOM-NORM, REDESIGNED — the review's strongest design catch,
+  adopted over the house handoff's own wording. The handoff put
+  normalization AND a raised L4 wall in one next-step; those are
+  now TWO INDEPENDENTLY MEASURED suspects and changing both
+  together destroys attribution. Corrected design: derive a
+  NORMALIZED TWIN from the FROZEN axiom shard (nxt =
+  sstr(sympify(nxt)), same cur, same rows, same rules, same
+  censored population, same dose — do not regenerate the
+  mathematical sample), and run ONE serial Mac family of three
+  arms: sympy / axiom-raw / axiom-normalized. Discriminator: if
+  normalized closes the L4-and-gate gap while raw reproduces it,
+  answer dialect is CAUSAL; if normalized changes emitted style
+  while capability stays put, dialect was only a TRACER. The
+  wall gets its own separate CENSOR rung, wall unchanged here.
+  Rider named at design time: emitted-dialect measurement on the
+  probe, so the tracer reading is available either way.
+
+  (3) DIALECT-TRACER-0 — a new instrument, off the MoM-z14
+  abundance-ratio analogy (astronomers read present composition
+  as a historical tracer of prior processing). The house now owns
+  two semantically neutral textual "isotopes" of the same
+  mathematics: sympy dialect and axiom dialect. Design: identical
+  mathematical content in two serialization conventions, train
+  controlled mixtures (0/25/50/75/100%), ask whether HELD-OUT
+  EMISSION DIALECT tracks the training mixture while capability
+  stays fixed. If it does, the lab gains a NON-INVASIVE
+  PROVENANCE TRACER for data influence — read functionally, by
+  running the weights, which is the house-legal direction (the
+  standing never-score-by-weight-distance law, and the closed
+  weight-reader arc TENET-W1/W1-R where direction was invisible
+  to every weight lens and loud in function). Honest break: a
+  tracer measures INFLUENCE-ON-STYLE, never influence-on-
+  capability; conflating them would repeat the marker-v-mechanism
+  error this same review names.
+
+  (4) STATE-SUFFICIENCY-0 (a.k.a. MARKOV-CLOSURE-0) — a desk rung
+  the review places BEFORE any policy birth, and the house
+  agrees: RULE-POLICY-0-CENSUS's most consequential finding may
+  not be the 47.58% label number but the HIDDEN-HISTORY class it
+  named (Integral(0, x) -> "+ 4": the target carries information
+  inherited from chain context and is not computable from cur
+  alone). Ask, by counting: P(next state determined | Current
+  only) v Current + previous state v Current + chain metadata.
+  Why it blocks: a policy pi(a|s) cannot learn a clean action map
+  if s is not a sufficient state, so this prices the policy rung's
+  premise before a birth is spent. Ties to the determinability
+  law (underdetermined rows train confident guessing, L3401) —
+  and would be its first sighting IN THE STATE REPRESENTATION
+  rather than in the label.
+
+  (5) TRAINING AGE != EFFECTIVE CAPABILITY AGE — offered as
+  THEORY SYNTHESIS, not new evidence, and banked that way. The
+  astronomy lesson from XLSSC 122 / MoM-z14 is that observed
+  maturity constrains the ASSEMBLY RATE, not the clock. The house
+  already owns four measured rows saying step count is a poor
+  proxy for effective capability age: warm birth changes
+  time-to-capability but not the endpoint (L2469); the
+  decomposition discount is ~10x per row with primitives
+  saturating where chains asymptote below (L3682); one-ply atoms
+  buy a replicated +6 at 3.5% dose (L29465); and capability LEADS
+  weight-space settling, 90% of final gate at step 10,800 of
+  15,420 (CAP-V-TRAJ-1, L27909). Candidate law: effective age =
+  accumulated USEFUL exposure, not raw steps. NOT written into
+  THEORY yet — a THEORY row owes a published lineage citation
+  alongside its measured basis, and the lineage for this one is
+  unidentified. That is the residue.
+
+  Honest breaks (house): (1) is a discipline, not a result — it
+  cannot be "fired", only adopted; (3) and (4) are unpriced in
+  wall-clock; (5) risks being a restatement of the ladder law in
+  new coordinates, and must not be booked as a discovery.
+  Verified astronomy figures behind the frame (house web pass,
+  for anyone re-deriving the analogy): MoM-z14's bright z~14-15
+  number density is 182 (+329/-105) x pre-JWST consensus models
+  (arXiv:2505.11263, abstract) — the ">100x" is real and carries
+  a large asymmetric error; and arXiv:2509.07695 does accommodate
+  MoM-z14's mass in the Renaissance suite while GS-z14 "remains
+  an outlier even after accounting for cosmic variance", so the
+  early-maturity tension is object-specific rather than
+  population-wide — which is precisely the shape of the house's
+  own single-cell-v-family readings.
+  Attribution: GPT seat (all five, and the ATOM-NORM attribution
+  catch), Artin (the relay), house (verification of the four
+  measured anchors in (5), the 07-25 boundary fence, the
+  weak-lensing counter-note, adoption).
