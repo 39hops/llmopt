@@ -5281,3 +5281,39 @@ without re-introducing history).
   ANSWER-FORM-0 (desk: diff the two emitters' serializations of
   the same integrand), CENSOR-0 (desk: what the 8s wall removed).
   Attribution: house.
+
+- **BANKED (2026-08-16): the cosmology cross-check — the video's
+  three anomalies against the lab's measured analogs** (Artin
+  brought the video; house fact-checked and mapped). A pop-science
+  video (JWST early galaxies, galaxy-spin asymmetry, black-hole
+  cosmology) fact-checked against the literature, then read
+  against the house ledger. The mapping, one line each:
+  (1) "structure too big too early" v the ignition ladder — the
+  2022-23 impossible-galaxy claims largely dissolved under revised
+  masses (AGN contamination, bursty star formation; residual
+  tension is a star-formation-efficiency parameter, not a ΛCDM
+  break), the same shape as the house's loss-v-gate dissociation
+  (GRAVMOE-GATE) and METALLICITY-1: apparent early capability is
+  an instrument/assumption artifact until the oracle gate says
+  otherwise, and ignition tracks diet QUALITY (verification
+  grade), not exposure mass. (2) spin asymmetry (Shamir, MNRAS
+  538:76, ~3.4 sigma, disputed; his own leading explanation is a
+  Doppler selection bias) v SYMMETRY LADDER S1 + TIER-A A2+A3:
+  the house found NO spontaneous rotational structure in the
+  weight basis, then fenced the null as instrument-blind to a
+  confirmed activation clock — both fields hold a real alignment
+  signal hostage to lens selection effects; SGD ACCEPTS imposed
+  symmetry (ROTATIONAL SNAP R3) but was never observed to choose
+  it. (3) Poplawski torsion bounce (real Einstein-Cartan
+  literature, fringe as cosmology) — already banked 2026-07-29 as
+  the white-hole riff; no update to the physics claim. Measured
+  anchors: GRAVMOE-GATE L14470, METALLICITY-1 L27523, S1 L8665,
+  A2+A3 L12814, R3 L8610, B0 atlas L11044. Honest breaks: the
+  mapping is epistemic (how anomalies resolve under better
+  instruments), never mechanistic — no physics claim, standing
+  concepts-as-methods fence. Testable residue: none NEW — the
+  cross-check re-surfaces the 07-29 AREA-LAW PROBE (removable
+  information v interface-v-bulk measure, desk-able against the
+  existing deletion/snap ledger) as the one instrument this frame
+  has been pointing at twice now. Attribution: Artin (the video +
+  the compare ask), house (fact-check + mapping).
