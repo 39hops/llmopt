@@ -31248,3 +31248,91 @@ information — the spectral norm is the one that reports worst-case
 directional damage. Frobenius, seeded operator error, and spectral
 norm are all reported; BAR 1 stays on pooled Frobenius and BAR 2
 stays on seeded operator error as registered, so no bar moves.
+
+## AMENDMENT STREAM-WDISTILL-0-ARITH (amends PRE-REG L30921, AMENDMENT -BUDGET L31031, AMENDMENT -CONTRACT L31106): the width-32 unreachability claim is RETRACTED, arm D is redefined as C's true private-basis analogue (r_D 360 -> 296), the C/E geometry confound is WITHDRAWN, and rank selection moves to measured serialized size (2026-08-16, Mac)
+
+Artin's three arithmetic corrections, pre-look. Every one verified
+independently in-house before adoption; all three hold, and two of
+them overturn house claims booked hours earlier. Still no weight
+byte read.
+
+(1) WIDTH-32 VQ IS NOT UNREACHABLE — the -CONTRACT claim is
+RETRACTED. That entry argued 32-wide vectors need
+s*log2(K) = 68 and are therefore off the table at B1. The
+argument silently held STAGES FIXED AT 2 and solved for K. Stages
+are free, and once (1) of -CONTRACT relaxed admissibility to
+bytes <= B the exact-rate equation stopped binding at all.
+VERIFIED: width 32, K = 256, 8 stages = 2.000 bits/weight,
+1,610,743,808 B <= B1 (slack 100,532,224); at B2, 4 stages =
+1.000 bits/weight, 805,371,904 B <= B2 (slack 50,266,112). The
+BANKED width-32 hypothesis (RIFF ~L2255) is therefore PRESERVED
+and arm B keeps it. Per Artin's instruction the training recipe,
+not the width, absorbs the cost — pinned now rather than after:
+  vector width 32, K = 256, residual (multi-stage) VQ
+  B1 = 8 stages, B2 = 4 stages
+  training sample 2**20 vectors, seed 20260816
+  k-means++ init seeded on a 2**16 SUBSAMPLE (full k-means++ over
+    2**20 is O(N*K) sequential and is the expensive part)
+  15 Lloyd iterations per stage (declared now, down from the
+    -CONTRACT 25, on cost grounds and not on results)
+  torch float32; codebooks fp16 counted once; indices 8 bits packed
+  If a stage exceeds a stated wall, the arm books with the stage
+  count REACHED and the shortfall disclosed — it never silently
+  changes width.
+
+(2) ARM D REDEFINED; ITS RANK AND BYTE FORMULA WERE BOTH WRONG.
+-CONTRACT called D "the exact private-basis analogue of C" and
+then costed it as THREE independent per-expert SVDs (768
+decompositions). That contradicts C's own structure: C pools W1
+and W3 into ONE input Gram (Cin) and W2 into one output Gram
+(Cout). The faithful private analogue therefore gives each expert
+ONE V_in,e shared by W1_e and W3_e and ONE V_out,e for W2_e —
+512 decompositions, not 768. With C's exact dtypes and per-row
+fp16 scale scheme:
+  B_D(r) = 5,767,680 r + 2,097,152   (verified in-house)
+  r_D = 296 at B1 (1,709,330,432 B), NOT the booked 360.
+The booked 360 is retracted. The sharing contrast is therefore
+r_C = 1075 v r_D = 296 at identical bytes — a larger gap than the
+erroneous figure implied, and it now compares like with like.
+ADDED per Artin, descriptive, no bar: a RANK-MATCHED reading
+C@r=296 v D@r=296, reported alongside the matched-byte
+comparison. Matched bytes asks "does sharing buy capability per
+byte"; matched rank asks "is a pooled basis better than a private
+one at equal rank". They are different questions and both are
+cheap once the pass exists.
+
+(3) THE C/E GEOMETRY CONFOUND IS WITHDRAWN — it used the wrong
+denominator. -CONTRACT registered that C reaches ~52% of
+achievable rank where E reaches ~27%, and warned that part of any
+C-over-E gap is geometry rather than gauge. The 52% divided
+r_C by 2048, the rank of a single W1. But C's basis is POOLED
+over 256 experts x 2 matrices, and the pooled residual Gram spans
+the full 4096-dimensional residual space, so 4096 is the
+denominator. VERIFIED: C = 1075/4096 = 26.25%, E = 541/2048 =
+26.42% (r_E corrected from ~543 to 541). The two arms are
+NEARLY FRACTION-MATCHED ALREADY, the named confound does not
+exist, and BAR 3 is cleaner than -CONTRACT claimed. The
+rank-matched side reading registered there is retained as a free
+descriptive rider, not as a confound control.
+
+(4) RANK SELECTION MOVES TO MEASURED SERIALIZED SIZE. C@1075
+leaves only 186,880 B of slack — 0.011% of B1 — so any
+unaccounted serialization overhead (container header, shape or
+dtype tables, alignment padding) can push a compliant-on-paper
+arm over budget. Hand arithmetic is therefore no longer
+authoritative. The artifact container is pinned now: raw
+little-endian buffers concatenated in a declared fixed order,
+preceded by one JSON manifest whose byte length is COUNTED in the
+budget. The driver computes the exact serialized size for
+candidate r by dry-run serialization, selects the largest r whose
+true size is <= B, and ASSERTS the written artifact's on-disk
+size <= B before any error is scored. The ranks quoted above
+(1075 / 296 / 541) are PRE-LOOK ESTIMATES from the analytic
+formulas; the driver's measured selection governs, and any
+divergence is booked.
+
+Everything else stands: bytes <= B with slack reported, B1 as an
+a priori 2x challenge with no capacity-meter justification, the
+frozen per-arm contract, BAR 3 scoped to the compression
+prediction rather than the mathematical gauge, and Frobenius +
+seeded operator + spectral-norm reporting.
