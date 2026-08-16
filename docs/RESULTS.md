@@ -31336,3 +31336,57 @@ a priori 2x challenge with no capacity-meter justification, the
 frozen per-arm contract, BAR 3 scoped to the compression
 prediction rather than the mathematical gauge, and Frobenius +
 seeded operator + spectral-norm reporting.
+
+## AMENDMENT STREAM-WDISTILL-0-READING (amends AMENDMENT -ARITH L31182 and PRE-REG L30921): the matched-rank side reading measures the PENALTY of sharing (its direction is determined a priori, not discovered), and arm B must complete all registered VQ stages to enter BAR 2 — wall pinned, codebook scope pinned (2026-08-16, Mac)
+
+Artin's two final riders, pre-look. No weight byte read.
+
+(1) C@296 v D@296 IS A PENALTY MEASUREMENT, NOT A CONTEST.
+-ARITH introduced the rank-matched rider as asking "is a pooled
+basis better than a private one at equal rank". That framing is
+wrong and is corrected here BEFORE the numbers exist, so a
+foregone conclusion is never reported as a finding. At FIXED
+RANK the private-basis problem is strictly LESS CONSTRAINED:
+each expert's own top-r subspace is the optimal rank-r
+approximation for that expert (Eckart-Young), while C forces
+every expert through one shared subspace. So D <= C in
+reconstruction error at equal rank BY CONSTRUCTION, up only to
+int8 coefficient rounding. The rider therefore measures the
+MAGNITUDE of the sharing penalty; its SIGN is known in advance
+and its "discovery" would be an artifact, not a result.
+  The registered matched-BYTE test is where the real question
+  lives: C@~1075 v D@~296 asks whether AMORTIZATION (one basis
+  over 256 experts, buying 3.6x the rank at the same bytes)
+  OVERWHELMS the per-expert penalty that (1) guarantees. BAR 1
+  is unchanged and remains the only bar on this contrast.
+
+(2) ARM B MUST COMPLETE ITS REGISTERED STAGES TO ENTER BAR 2.
+A residual-VQ artifact truncated at s stages is a DIFFERENT RATE
+(s*8/32 bits/weight), so letting a wall decide s lets runtime
+silently choose the arm's operating point — the CENSOR-0 class
+exactly, where an 8s wall chose a shard's composition and the
+choice only surfaced afterwards. Registered rule:
+  arm B enters BAR 2 only at 8 of 8 stages at B1 (4 of 4 at B2);
+  a wallkill books the partial artifact DESCRIPTIVELY, with its
+  realized stage count and rate stated, and is NOT-RUN for the
+  registered race. It is never scored against A, C, D or E.
+  NUMERICAL WALL, pinned now: 2,700 s (45 min) wall-clock for the
+  complete codebook-training phase, all stages, at B1; 1,350 s at
+  B2. Per-stage elapsed time is logged so a near-miss is visible
+  rather than inferred. The wall is on TRAINING; the PASS-2
+  encode is separately reported and is not a race gate.
+
+(3) VQ CODEBOOK SCOPE: PER-PROJECTION, pinned now. Arm B trains a
+separate stage-codebook stack for w1, w3 and w2 — pooled across
+all 256 experts within a projection, not across projections.
+Grounds, both measured and both pre-existing: pooling ACROSS
+EXPERTS is supported (the pooled-table result, mean
+KL(expert||pooled) = 0.00075 bits/param, L15789), while
+projections are measured to DIFFER (BLACKHOLE B0's expert split,
+up_proj 1.93 v gate/down 2.93, L11044). The alternative not
+chosen is a single layer-global stack. Cost is negligible either
+way and is counted regardless: 3 projections x 8 stages x 256 x
+32 x fp16 = 393,216 B = 0.023% of B1, inside arm B's ~100 MB of
+slack.
+
+Everything else stands.
