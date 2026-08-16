@@ -30917,3 +30917,138 @@ the exact shipped shard's survivors; wall-clock classes measured
 under interactive-idle Mac load, single pass; the AF error/
 wallkill tax (29/300) is disclosed and excluded from the
 co-solved denominator.
+
+## PRE-REG STREAM-WDISTILL-0: can a smaller representation of ONE frontier expert layer be derived from streamed weights alone — zero teacher forwards, zero calibration data — and does SHARING structure across experts beat treating each expert alone at exactly matched artifact bytes? (2026-08-16, Mac)
+
+The idea (Artin, off the v4flash cache deletion; GPT seat sharpened
+the framing; house verified the archaeology). The streaming half is
+already booked: BLACKHOLE B0 metered 30.2B params by
+download -> process -> delete in 136.6 min with zero calibration
+data (L11036). What has NEVER been run is deriving a smaller
+PARAMETERIZATION of one existing trained teacher from those
+streamed weights.
+
+WHAT THIS IS NOT, stated because the archaeology first got it
+wrong. This is not weight-space MERGING: MERGE-SPACE-1..5 tested
+(theta_A + theta_B)/2 for SEPARATELY BORN models and found 0/120
+(L26770), with shared init as the precondition (L26947, L27158).
+Here there is one teacher and one basin; nothing independent is
+combined. It is also not a weight-READER task: TENET-W1/W1-S/W1-R
+(L21140, L21574, L21901) asked whether a FUNCTIONAL property is
+decodable from weight features and found chance across six
+surfaces. Here the supervision target is the teacher's own weights,
+optimized directly. Neither result binds this rung; both were
+misapplied to it in draft and the correction is booked here.
+
+INSTRUMENT. DeepSeek-V4-Flash-0731, ONE routed expert layer
+(layer 22 — chosen for continuity: V4-RUNG-R and V4-RUNG-2B both
+characterized it), 256 experts, 25.17M params/expert (RECEIPT
+V4-CENSUS, L16816). Gated FFN per expert: W1 (gate) and W3 (up),
+both [d_ff, d_model]; W2 (down), [d_model, d_ff]. Exact dims are
+READ FROM THE SHARD HEADERS at run time and booked in the receipt,
+never hardcoded (derived-provenance rule).
+
+EPHEMERAL STREAMING, the new capability. Driver
+scratch/stream_wdistill0.py, a NEW sibling — the byte-range
+fetchers scratch/v4flash_f1c.py / f1d.py are CODEMAP-frozen and are
+not edited; their index/manifest logic is the reference. The
+composition that does not currently exist anywhere in-tree
+(llmopt/lab/shards.py is CACHE-streaming and its docstring says
+"it does not fetch"):
+  PASS 0  fetch shard headers only; build the tensor byte-range map
+  PASS 1  range-fetch one expert projection -> dequantize ->
+          update sufficient statistics -> DISCARD the raw tensor
+  solve   the shared representation from the statistics
+  PASS 2  range-fetch again -> project/encode -> write the compact
+          student tensor -> DISCARD
+  finish  only the compact artifact remains; zero raw cache
+Disk residence stays O(one expert) (~13 MB) throughout; network
+transfer is ~3.4 GB/pass for this layer. ZERO teacher forward
+passes, ZERO calibration data, at every step of every arm.
+
+SHARED-BASIS MECHANICS (Artin's specification, verbatim intent).
+Accumulate JOINTLY over the expert population, both in
+RESIDUAL coordinates:
+    Cin  = SUM_e ( W1_e^T W1_e  +  W3_e^T W3_e )    [d_model x d_model]
+    Cout = SUM_e ( W2_e W2_e^T )                    [d_model x d_model]
+Take separate shared bases Vin, Vout as the top-r eigenspaces.
+Encode B1_e = W1_e Vin, B3_e = W3_e Vin, B2_e = Vout^T W2_e;
+reconstruct W1hat_e = B1_e Vin^T and so on. Cin pools gate and up
+because both read the same residual stream; Cout is the write side.
+
+THE GAUGE ARGUMENT, stated precisely (Artin's tightening, adopted
+over the draft's looser version). Residual coordinates are GLOBALLY
+ANCHORED — every expert in the layer reads from and writes to the
+same residual stream, so a residual-side basis is shared by
+construction. Hidden coordinates carry an EXPERT-LOCAL PERMUTATION
+GAUGE, so a hidden-axis basis is a NEGATIVE CONTROL that should
+fail on gauge grounds alone. Its failing is therefore NOT evidence
+that residual space must be low-rank, and its succeeding would
+falsify the gauge reasoning rather than support the method. This is
+the axis on which V4-RUNG-2B already measured failure: Hungarian
+unit alignment bought 0.021 bits/param against a 0.2 bar (L16033).
+PRIOR ONLY, not evidence: V4-RUNG-R saw all 32,640 layer-22
+gate-key pairs positively aligned with a common direction — but
+AMENDMENT FINAL-0803 (L17024) RETRACTED that entry's causal
+reading, so it motivates the hypothesis and licenses nothing.
+
+ARMS, raced at EXACTLY MATCHED ARTIFACT BYTES (the byte budget is
+the vendor's own packed-fp4 size for this layer, measured in PASS 0
+and pinned before any arm is built; each arm's rank / codebook size
+is tuned to hit that budget exactly, and the realized byte count is
+booked per arm):
+  A. scalar quantization        — the baseline the vendor ships
+  B. hierarchical VQ            — the banked tree form (RIFF ~L2255)
+  C. shared basis               — Cin/Cout above, residual axes
+  D. per-expert SVD             — the CONTROL that isolates SHARING:
+                                  same low-rank family, no pooling
+  E. hidden-axis shared basis   — the GAUGE NEGATIVE CONTROL
+
+METRICS (rung 0 is weight-space only):
+  relative Frobenius ||What - W||_F / ||W||_F, per projection and
+  pooled; SEEDED LINEAR-OPERATOR ERROR ||X(What-W)^T|| / ||X W^T||
+  over fixed-seed Gaussian probes (seed and probe count pinned in
+  the driver, reported with the row); realized bits/weight; exact
+  artifact bytes. OPTIONAL SUB-ARM 0B: a synthetic isolated-expert
+  forward — one expert's gated FFN evaluated on synthetic input.
+  That is still zero teacher inference and zero calibration data:
+  no model is assembled and no real activations are used.
+
+BARS:
+1. SHARING-PAYS: arm C's pooled relative Frobenius error is at
+   least 10% lower (relative) than arm D's at matched bytes. This
+   is the whole hypothesis — if pooling across the expert
+   population buys nothing over per-expert low-rank, there is no
+   exploitable shared structure at this layer.
+2. BEATS-SCALAR: the better of arms B and C beats arm A on seeded
+   operator error at matched bytes by at least 10% relative.
+3. GAUGE-CONTROL: arm E is WORSE than arm C on pooled Frobenius.
+   A tie or an inversion falsifies the gauge reasoning and the
+   residual/hidden framing is withdrawn rather than defended.
+REFUTED-IF: BAR 1 and BAR 2 both fail — no representation derived
+from streamed weights alone beats the vendor's scalar packing or
+its own per-expert control at this layer, and STREAM-WDISTILL-1
+(the functional gate) does not fire.
+
+REGISTERED PRIOR (house, on the record). BAR 1 FIRES, medium
+confidence: the experts read one residual stream, so a shared input
+subspace is geometrically motivated, but 256 experts may span it
+fully. BAR 2 MISSES, low-medium confidence: the vendor's fp4 is
+strong at its own byte budget and low-rank methods pay a heavy
+index/scale tax. BAR 3 FIRES, high confidence — this is a gauge
+argument, not an empirical guess. Artin's prior is recorded
+separately if he states one.
+
+FENCES. One layer, one model, n=1 — a layer is not the model, and
+nothing here licenses a claim about V4-Flash as a whole. WEIGHT
+SPACE ONLY: per the BLACKHOLE amendment (L11058) a probe-based
+error column is COMPARATIVE-AT-MATCHED-BYTES ONLY and is never a
+quality readout, which is exactly why every bar here is a
+matched-byte comparison and no bar is an absolute error threshold.
+No functional or capability claim is made or licensed by rung 0;
+STREAM-WDISTILL-1 is where behavior gets gated, and it fires only
+on a rung-0 pass. Network-fetched vendor weights are the input, so
+the run books the shard revision it fetched. The 0B sub-arm uses
+synthetic input and therefore reports operator behavior, not
+capability. Dequantization correctness rides on the frozen exact
+MXFP4 path (llmopt/lab/shards.dequant, dual-copy guarded).
