@@ -3509,6 +3509,15 @@ Merge API over house .pt state dicts — average / task_vector / shell_graft.
 - `shell_graft(small: str, large_arch: dict, out: str, *, seed: int=6, arch: dict | None=None, label: str | None=None) -> dict` — Grow `small` into large_arch's FFN shells function-preservingly.
 - `gate_cmd(row: dict, device: str) -> str` — Return (never run) the shell command for the standing 120-problem
 
+### llmopt/lab/metrics.py
+Typed metrics: a number that knows what population it describes.
+
+- `class MetricContractError`
+- `class Metric` (relative_to)
+- `class DescriptiveContrast`
+- `cross_population_difference(a: Metric, b: Metric, purpose: str) -> DescriptiveContrast` — Difference two metrics ACROSS populations, descriptively.
+- `adjudicate(observed, bar_value: float, direction: str='below', required_population: str | None=None) -> str` — FIRE / NO-FIRE for a registered bar. Refuses non-evidence.
+
 ### llmopt/lab/oracle.py
 lab.oracle — the boxed oracle, v3.2 lineage (spec 2026-08-05-llmopt-lab-extraction module 1). Parent side of the subprocess line-server in lab/oracle_worker.py; behavior ported line-for-line from scratch/moe_gt1_arm2.check_isolated (which stays frozen — booked verdicts cite it).
 

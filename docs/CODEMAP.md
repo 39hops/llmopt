@@ -371,7 +371,7 @@ Census: UNCITED 202, library 70, reproduce-pinned 10, results-cited 202, spec-ci
 | stability | stability_atlas.sh | UNCITED | — | — | — | — |
 | star | star_profile.py | results-cited | RESULTS | RESULTS×3 | — | — |
 | stream | stream_wdistill0.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
-| stream | stream_wdistill1.py | library | RESULTS | RESULTS×3 | 1 | — |
+| stream | stream_wdistill1.py | library | RESULTS | RESULTS×4 | 1 | — |
 | streaming | streaming_birth_d256.py | library | RESULTS | RESULTS×3 | 1 | — |
 | streamwd | streamwd_complete.py | UNCITED | — | — | — | — |
 | successors | successors_acceptance.py | results-cited | RESULTS | RESULTS×1 | — | — |

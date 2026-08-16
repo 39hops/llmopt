@@ -5854,3 +5854,53 @@ honest status column).
   raw adjacency, the compressible covariance lives in a SEMANTIC
   ARCHITECTURAL coordinate, which is a much stronger statement
   than "W32 beats shuffled". Attribution: GPT seat.
+
+  AMENDMENT 5 (2026-08-16): FIRST REAL GRADUATION, and an audit
+  correction to the bank's own accounting. Built per Artin's
+  ordering (science-incident harness + first invariant together,
+  chosen as wrong_metric_population because it exercises the new
+  contrast object):
+    llmopt/lab/metrics.py — typed Metric carrying semantic type,
+    population, aggregation, unit and provenance; arithmetic
+    REFUSES across mismatched population/aggregation/identity with
+    a reason code from the incident vocabulary; the escape hatch
+    cross_population_difference() returns a DISTINCT TYPE,
+    DescriptiveContrast(adjudicable=False), which adjudicate()
+    refuses structurally. You may look at apples versus oranges;
+    you may not launder the look into bar evidence.
+    tests/science_incidents/ — the harness, with
+    test_wrong_metric_population.py reproducing the REAL failure
+    (EXEC1 operator at expert:0 = 0.7657 v repair at
+    experts:0:256 = 0.769457) across all three registered
+    directions, plus the aggregation class (pooled v
+    mean-of-ratios), plus the bar-population defect that was
+    BAR 2's actual fault, plus a NEGATIVE CONTROL asserting that a
+    same-population comparison still WORKS — without which an
+    invariant that refused everything would pass every other test.
+    Six tests, suite green at 866 passed.
+  GRADUATED today: wrong_metric_population,
+  metric_aggregation_mismatch, contrast_not_adjudicable (all
+  llmopt/lab/metrics.py), joining smoke_row_in_real_receipt. The
+  status table lives in tests/science_incidents/README.md so it is
+  derived from the suite rather than asserted here.
+  AUDIT CORRECTION to this bank's own claims (GPT seat, verified):
+  the recommendation report said "six hooks"; six hook FILES exist
+  but the checked-in settings.json wires five commands. The
+  half-right finding is the useful one — findings_headroom.py is
+  NOT a registered hook entry, yet it IS invoked by
+  ledger_regen.py:67, so the invariant runs. NEITHER INVENTORY IS
+  AUTHORITATIVE: counting files overcounts, counting settings
+  entries undercounts, and "is this invariant live?" is not
+  observable from either surface. Recorded because it is precisely
+  the artifact-exists-v-invariant-active distinction the
+  PROMOTED/GRADUATED vocabulary was built to make, found in the
+  bank's own reporting.
+  Remaining order (Artin): (2) receipt immutability — hook as
+  mitigation PLUS content-addressed CI invariant and its
+  historical fixture; (3) internal citation migration, anchor_guard
+  as a TRANSITION toward stable entry IDs rather than perpetual
+  line-number repair (measured: 34 of 123 internal L#### refs, 28%,
+  no longer land on a heading); (4) machine-readable prereg/bar
+  schema feeding a deterministic /adjudicate; (5) claim-linter LAST,
+  once the schema gives "matched"/"only"/"independent" actual
+  machine-checkable objects to interrogate rather than prose.
