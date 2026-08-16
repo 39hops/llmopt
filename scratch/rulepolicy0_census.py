@@ -86,7 +86,8 @@ def main():
         if key not in seen:
             seen.add(key)
             pool.append((str(r["cur"]), str(r["nxt"]),
-                         int(r.get("level", -1))))
+                         int(r.get("level", -1)),
+                         str(r.get("think") or "?")))
     random.Random(SHUF_SEED).shuffle(pool)
     print(f"unique (cur,nxt) rows: {len(pool)}; censusing {N_ROWS}",
           flush=True)
@@ -96,7 +97,8 @@ def main():
     cls_all = Counter()
     cls_lv = {}
     t0 = time.time()
-    for k, (cur, nxt, lv) in enumerate(pool[:N_ROWS]):
+    cls_think = {}
+    for k, (cur, nxt, lv, think) in enumerate(pool[:N_ROWS]):
         try:
             target = canon(nxt)
             expr = sp.sympify(cur)
@@ -106,13 +108,15 @@ def main():
             cls = ("unique" if len(rules) == 1 else
                    "ambiguous" if rules else "unreachable")
             rec = {"cur": cur, "nxt": nxt, "level": lv, "cls": cls,
-                   "rules": rules, "n_succ": len(moves)}
+                   "think": think, "rules": rules,
+                   "n_succ": len(moves)}
         except Exception as e:
             cls = "unscored"
-            rec = {"cur": cur, "nxt": nxt, "level": lv,
-                   "cls": cls, "err": type(e).__name__}
+            rec = {"cur": cur, "nxt": nxt, "level": lv, "cls": cls,
+                   "think": think, "err": type(e).__name__}
         cls_all[cls] += 1
         cls_lv.setdefault(lv, Counter())[cls] += 1
+        cls_think.setdefault(think, Counter())[cls] += 1
         out.write(json.dumps(rec) + "\n")
         if (k + 1) % 200 == 0:
             out.flush()
@@ -131,6 +135,12 @@ def main():
         u = d["unique"]
         print(f"[census] L{lv}: {dict(d)} unique "
               f"{100*u/max(s,1):.1f}%", flush=True)
+    for th, d in sorted(cls_think.items(),
+                        key=lambda p: -sum(p[1].values())):
+        s = sum(v for c, v in d.items() if c != "unscored")
+        u = d["unique"]
+        print(f"[census] think={th!r}: n={sum(d.values())} unique "
+              f"{100*u/max(s,1):.1f}% {dict(d)}", flush=True)
     print(f"[census] wall {time.time()-t0:.0f}s", flush=True)
 
 
