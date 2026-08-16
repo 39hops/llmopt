@@ -8,6 +8,13 @@ Regenerate: `.venv/bin/python scripts/gen_index.py`
 *(no docstring)*
 
 
+### scripts/anchor_guard.py
+Stable-ID citations for RESULTS.md anchors (the anchor transition).
+
+- `load_index() -> tuple[dict[int, str], dict[str, int]]`
+- `target_files() -> list[pathlib.Path]`
+- `main() -> int`
+
 ### scripts/anim_precompute.py
 Precompute animation scene data (lab venv side).
 

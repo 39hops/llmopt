@@ -78,7 +78,7 @@ or capability evidence. Every `n=1` result below remains fenced as `n=1`.
   reproduction walkthrough`, file `docs/REPRODUCE.md`. The fresh-worktree RB1
   receipt is a full-digest PASS in 83.9 seconds at
   `/tmp/llmopt-task9-rb1.log`; the separate house-booked receipt is 81.7
-  seconds under [VERDICT SOL-ADOPTION-1](../RESULTS.md#L15081) at ledger commit
+  seconds under [VERDICT SOL-ADOPTION-1](../RESULTS.md#L15081 "id:2026-08-01-verdict-sol-adoption-1-the-sol") at ledger commit
   `0dea97283d4a270c4f8b2b1ad48adcf01b42e5f8`. Final-review commit
   `87880035810dd3cece3bf0980181cbd027135d0b`, subject `docs: disclose
   verifier publication limit`, states that the verified axiom revision is 21
@@ -132,9 +132,9 @@ general law.
   `logs/sol/present_artifact_<arm>.log` (RB1 uses
   `logs/sol/present_reproduce_rb1.log`) and
   `logs/sol/present_default_<arm>.log`. The booked device and lab closes are
-  [VERDICT GRAVMOE-P4-DEVICE](../RESULTS.md#L14889), ledger commit
+  [VERDICT GRAVMOE-P4-DEVICE](../RESULTS.md#L14889 "id:2026-08-01-verdict-gravmoe-p4-device-the-entire"), ledger commit
   `b9372e967ab7269afd06fa52027ce19450ca4d95`, and
-  [VERDICT GRAVMOE-P4-LAB](../RESULTS.md#L15015), ledger commit
+  [VERDICT GRAVMOE-P4-LAB](../RESULTS.md#L15015 "id:2026-08-01-verdict-gravmoe-p4-lab-the-gravmoe"), ledger commit
   `94e29cd61ef3b0cfbe44f5848185053bcb9bdb87`. Two labs means independent
   Python/C++ code paths under one human operator, not independent investigators.
 - **Confidence.** High for exact replay of the registered trajectory; no claim
@@ -150,8 +150,8 @@ general law.
   near-Gaussian code entropy reproduced across `n=3` paired d64h8 births; the
   weak width-floor births are the explicit exception. This is not a universal
   quantization rule.
-- **Evidence.** [C1 AT n=3 VERDICT](../RESULTS.md#L11232) and
-  [PACKED CRYSTAL C0+C1 VERDICT](../RESULTS.md#L10406); the latter entered in
+- **Evidence.** [C1 AT n=3 VERDICT](../RESULTS.md#L11232 "id:2026-07-30-c1-at-n-3-verdict-h8") and
+  [PACKED CRYSTAL C0+C1 VERDICT](../RESULTS.md#L10406 "id:2026-07-29-packed-crystal-c0-c1-verdict-zero"); the latter entered in
   commit `08f567cada68f5847d1975c54b842e029b4f1722`. The controlled summary is
   in [FINDINGS](../FINDINGS.md#the-packed-crystal-boundary).
 - **Confidence.** High for the registered `n=3` paired house-crystal cells;
@@ -167,7 +167,7 @@ general law.
   sigma allocation was 33 times worse than HQQ; per-row sigma did not rescue
   it, while a causal sigma/8 arm recovered part of the gap. This remains one
   model, one device, and `n=1`, not a law about pretrained dense models.
-- **Evidence.** [PACKED CRYSTAL C6 VERDICT](../RESULTS.md#L10676), entered in
+- **Evidence.** [PACKED CRYSTAL C6 VERDICT](../RESULTS.md#L10676 "id:2026-07-29-packed-crystal-c6-verdict-the-falsifier"), entered in
   commit `a5dbf0e652ff34a486ddc6bc0120f34f9d008cb4`, plus the adjacent C6b/C6c
   units in [FINDINGS](../FINDINGS.md#the-packed-crystal-boundary).
 - **Confidence.** High for that exact `n=1` cell; low for model-family or
@@ -183,9 +183,9 @@ general law.
   NVIDIA devices, while floating logits could differ even when greedy streams
   matched. This covers the registered integer battery, not a full integer
   end-to-end decoder.
-- **Evidence.** [PACKED CRYSTAL C4 VERDICT](../RESULTS.md#L10657), entered in
+- **Evidence.** [PACKED CRYSTAL C4 VERDICT](../RESULTS.md#L10657 "id:2026-07-29-packed-crystal-c4-verdict-claim-3"), entered in
   commit `3155d402d9dd30eab23b161b9c6608bda04ff8e1`, and
-  [R-PASS VERDICT](../RESULTS.md#L10838), entered in commit
+  [R-PASS VERDICT](../RESULTS.md#L10838 "id:2026-07-29-r-pass-verdict-the-c-series"), entered in commit
   `6f01ef2b3ff5bbdcd31c5623ac7fe319ce416f35`.
 - **Confidence.** High for the registered shapes, artifacts, and two-device
   route; no broader kernel or decoder claim.
@@ -201,8 +201,8 @@ general law.
   capability advantage did not transport: on `n=3` paired CUDA seeds the
   gravmoe and baseline means tied. Merge-free transport and capability remain
   separate claims.
-- **Evidence.** [VERDICT MERGE-CUDA](../RESULTS.md#L12679) and
-  [VERDICT CUDA SEED LADDER](../RESULTS.md#L13286), summarized with their
+- **Evidence.** [VERDICT MERGE-CUDA](../RESULTS.md#L12679 "id:2026-07-31-verdict-merge-cuda-merge-free-goes") and
+  [VERDICT CUDA SEED LADDER](../RESULTS.md#L13286 "id:2026-07-31-verdict-cuda-seed-ladder-the-gravmoe"), summarized with their
   replication and null tags in
   [FINDINGS](../FINDINGS.md#moe-mechanisms-and-the-scaffold-correction).
 - **Confidence.** High for the registered paired/device cells; low for other
@@ -368,7 +368,7 @@ PASS gravmoe-rb1 c6766da235cf0b76be20035b893cb41fd0a2f8dbbc6339c96e8527ce2cb3f65
 ```
 
 The house-booked 81.7-second receipt is distinct and belongs to
-[VERDICT SOL-ADOPTION-1](../RESULTS.md#L15081) at
+[VERDICT SOL-ADOPTION-1](../RESULTS.md#L15081 "id:2026-08-01-verdict-sol-adoption-1-the-sol") at
 `0dea97283d4a270c4f8b2b1ad48adcf01b42e5f8`.
 
 ### Reused Task 1-5 all-arm receipts

@@ -55,7 +55,7 @@ decline or a booked verdict. [Grok external-paper-review entry](RIFF-LEDGER.md#L
 The house adopted Sol's RMS primitive work, one-command pinned reproduction,
 maturity views, and the answer-only null only after line-by-line review and
 independent runs. The verdict also keeps maturity labels that are inferred
-heuristics as proposals until individually promoted. [VERDICT SOL-ADOPTION-1](RESULTS.md#L15081)
+heuristics as proposals until individually promoted. [VERDICT SOL-ADOPTION-1](RESULTS.md#L15081 "id:2026-08-01-verdict-sol-adoption-1-the-sol")
 
 ## Presentation follow-through — PROPOSED ON `sol/present-1`
 
@@ -66,4 +66,4 @@ Qwen2.5-0.5B boundary, and a start-here [reproduction path](REPRODUCE.md).
 These documentation changes make the adopted reproduction easier to find and
 keep its fences visible; they do not adopt the branch as house work or widen
 any result. The adoption entry's branch protocol is the applicable status
-boundary. [VERDICT SOL-ADOPTION-1](RESULTS.md#L15081)
+boundary. [VERDICT SOL-ADOPTION-1](RESULTS.md#L15081 "id:2026-08-01-verdict-sol-adoption-1-the-sol")

@@ -40,7 +40,7 @@ CPU float paths it replays. It does not extend to ordinary float training on
 Apple-silicon MPS, which is run-level nondeterministic at fixed seed: a paired
 20-step probe on 2026-08-15 produced different weight digests across two
 consecutive runs of the same script, same seed, same batches
-([AMENDMENT SOFT-SPEED-1-PRECONDITION](RESULTS.md#L29985)). Experiments on
+([AMENDMENT SOFT-SPEED-1-PRECONDITION](RESULTS.md#L29985 "id:2026-08-15-amendment-soft-speed-1-precondition-target")). Experiments on
 that substrate compare arms within one run and never assert cross-run weight
 identity.
 
@@ -101,9 +101,9 @@ paths under one human operator, not independent investigators. 2 devices means
 two machines with different CPU architectures — Apple silicon arm64 and
 x86-64 — and both legs execute on CPU: the battery carries no device
 placement, so this is narrower than the MPS-to-CUDA GPU transport established
-by [P3 VERDICT](RESULTS.md#L11357) and [PACKED CRYSTAL C4
-VERDICT](RESULTS.md#L10657). Integer execution does not require CPU; see
-[AMENDMENT P4-DEVICE-SCOPE](RESULTS.md#L15160). The close
+by [P3 VERDICT](RESULTS.md#L11357 "id:2026-07-30-p3-verdict-the-deterministic-decode-lands") and [PACKED CRYSTAL C4
+VERDICT](RESULTS.md#L10657 "id:2026-07-29-packed-crystal-c4-verdict-claim-3"). Integer execution does not require CPU; see
+[AMENDMENT P4-DEVICE-SCOPE](RESULTS.md#L15160 "id:2026-08-02-amendment-p4-device-scope-amends-verdict"). The close
 establishes exact transport of the registered trajectory; it does not enlarge
 the correctness or capability claim.
 
@@ -117,7 +117,7 @@ its `r2b_tables.bin` are fetchable from origin, and the reference artifacts it
 consumes are in `scratch/detbwd_gmoe_ref/` here. An outside reader can run the
 cross-lab leg rather than only read its receipt. What stays true is the
 authorship caveat above — two sessions, one operator — not a reachability
-limit ([AMENDMENT AXIOM-PUBLICATION](RESULTS.md#L15283)).
+limit ([AMENDMENT AXIOM-PUBLICATION](RESULTS.md#L15283 "id:2026-08-02-amendment-axiom-publication-amends-verdict-gravmoe")).
 
 Its interface from `tools/int_adamw` is:
 
@@ -264,8 +264,8 @@ substrate" alternative it could not exclude has since been excluded by
 arms: the core is symbolic (the proofs coalition contains 0.901 of it,
 plain prose 0.250), and the shared-system-prompt confound is priced at
 0.05-0.10 Jaccard — too small to generate the branch separation
-([VERDICT MOE-GT-3](RESULTS.md#L19852); [VERDICT
-MOE-GT-4b](RESULTS.md#L20111)).
+([VERDICT MOE-GT-3](RESULTS.md#L19852 "id:2026-08-05-verdict-moe-gt-3-the-core"); [VERDICT
+MOE-GT-4b](RESULTS.md#L20111 "id:2026-08-05-verdict-moe-gt-4b-the-branch")).
 
 ### The register split and the recall shoulder (MOE-GT-3 through GT-5c)
 
@@ -278,7 +278,7 @@ trajectories and re-derives every GT-3 number that was originally a desk
 calculation, to a uniform ±0.006 of the booked values (containment
 proofs 0.8987 vs booked 0.901, prose 0.2453 vs 0.250) — treat the
 ±0.006 as an unexplained desk-calc discrepancy, not drift ([AMENDMENT
-MOE-GT-4-REVIEW](RESULTS.md#L20006), item 6).
+MOE-GT-4-REVIEW](RESULTS.md#L20006 "id:2026-08-05-amendment-moe-gt-4-review-corrected"), item 6).
 
 The mask arms reuse D3's instrument, `scratch/moe_gt1_arm2.py`, through
 `KEEPSET=`. Keep-set builders are committed: `scratch/gt5_union_keep.py`
@@ -304,7 +304,7 @@ simplify balloons gigabytes and gets the 17GB resident driver
 jetsam-killed. Never fork a Metal-resident driver; Darwin
 `RLIMIT_AS`/`RLIMIT_DATA` are verified no-ops. Timeouts and crashes are
 conservative rejects, always printed and counted ([AMENDMENT
-MOE-GT-6-ORACLE-BOX-3](RESULTS.md#L20703)).
+MOE-GT-6-ORACLE-BOX-3](RESULTS.md#L20703 "id:2026-08-05-amendment-moe-gt-6-oracle-box-b-b")).
 
 ### The Lean certificate kernel check
 
@@ -316,7 +316,7 @@ load-bearing, not cosmetic: Lean aborts a file at ~100 diagnostics and
 in-file `set_option maxErrors` does not lift it, so an unchunked
 single-file check silently truncates while looking complete — this bit
 the check twice before the fix ([VERDICT
-LEAN-KERNEL-SAMPLE](RESULTS.md#L20365)).
+LEAN-KERNEL-SAMPLE](RESULTS.md#L20365 "id:2026-08-05-verdict-lean-kernel-sample-registered-1000")).
 
 The 120-gate sigma of about 5 solves is a *mathgen* number;
 the physics and code gates' dispersion is unmeasured, so no delta

@@ -5939,3 +5939,29 @@ honest status column).
   ordinary words, so the fix is STRUCTURED RECEIPT REFERENCES,
   which is the concrete argument for item (4) rather than a defect
   to hide. Suite green 870 passed.
+
+  AMENDMENT 7 (2026-08-16): ITEM 3 SHIPPED — internal citation
+  migration to STABLE ENTRY IDS, the transition Artin specified
+  rather than a perpetual line-number repair loop. Design: DUAL
+  CITE. scripts/anchor_guard.py rewrites every link-form anchor
+  Title -> RESULTS.md#L74 to the same link carrying
+  "id:<results-index entry id>" as its markdown link title — the
+  clickable line anchor survives, the id rides in the markdown
+  link title, and the id (results-index.jsonl, append-stable) is
+  now the source of truth while the line number is a repairable
+  cache. Modes: report / --migrate (adds ids; refuses to guess on
+  an anchor that matches no index heading) / --repair (recomputes
+  L from id; exits nonzero on an id the index lacks). Migration
+  ran inside its window: all 388 link-form anchors landed exactly
+  on index heading lines (the existing heading test enforced
+  this), so the line-to-id mapping was unambiguous — 388 migrated,
+  0 unresolved, idempotent on re-run, --repair a no-op after.
+  tests/test_docs_integrity.py::test_anchor_id_coverage_and_sync
+  ratchets id-less link anchors at 0, requires every cited id to
+  exist in the index, and requires the cached line to match the
+  index (fix = --repair, never by hand). SCOPE: docs/RESULTS.md
+  itself untouched — append-only ledger, its internal L#### refs
+  (the measured 34/123 mid-entry pointers) are historical text and
+  many point mid-entry DELIBERATELY; they stay as written. Bare
+  non-link anchors (3 across the repo) remain outside the id
+  channel, covered by the heading test only.

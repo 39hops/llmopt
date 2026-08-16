@@ -9,122 +9,122 @@ maturity tag. Retractions/nulls remain visible. Scope omission never broadens a 
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] At n=1 held-out battery, the
   string-seeded, oracle-verified engine reached 360/360; this closes that
   benchmark, not calculus in general. ([360/360 — THE BENCHMARK IS
-  SOLVED](RESULTS.md#L99).)
+  SOLVED](RESULTS.md#L99 "id:undated-360-360-the-benchmark-is-solved").)
 - [REPLICATED] [REGIME-SCOPED: calculus search] At fixed wall time, cheaper
   verified nodes repeatedly converted into more solves across n=15 matched
   cells per budget; the routed engine then strictly dominated both pure arms.
-  ([The racing arc](RESULTS.md#L74); [The router: strict dominance,
-  adopted](RESULTS.md#L910).)
+  ([The racing arc](RESULTS.md#L74 "id:undated-the-racing-arc-all-same-held"); [The router: strict dominance,
+  adopted](RESULTS.md#L910 "id:undated-the-router-strict-dominance-adopted-verified").)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] At n=1 fixed battery, the
   bigram supplied move grammar; model confidence was distinct and width partly
-  substituted for it. ([The component taxonomy](RESULTS.md#L234).)
+  substituted for it. ([The component taxonomy](RESULTS.md#L234 "id:undated-the-component-taxonomy-what-actually-carries").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Expert-iteration
   arms from mature and tabula-rasa starts both reached their operator-closure
   ceiling in one round; adding operators, rather than more self-teaching,
-  moved that ceiling. ([The limit-of-self-teaching answer](RESULTS.md#L256).)
+  moved that ceiling. ([The limit-of-self-teaching answer](RESULTS.md#L256 "id:undated-the-limit-of-self-teaching-answer").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] A causal prune arm
   using Liouville's non-elementarity certificate removed dead branches with
   zero observed false positives inside the engine's operator closure.
-  ([The magic estimator](RESULTS.md#L531).)
+  ([The magic estimator](RESULTS.md#L531 "id:2026-07-09-the-magic-estimator-2026-07-09").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] In the causal autopsy
   ladder, the linear-basis arm subsumed earlier rules and moved the L4 ceiling.
-  ([The autopsy ladder](RESULTS.md#L151).)
+  ([The autopsy ladder](RESULTS.md#L151 "id:undated-the-autopsy-ladder-failure-census-operator").)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] At n=1 recorded policy ladder,
   DAgger recovered diagnosed L5 misses but stayed below its Markov teacher and
   lost the wall-time win, so Markov kept production at that rung. ([Syndrome
-  policy v2 + DAgger round 2](RESULTS.md#L852).)
+  policy v2 + DAgger round 2](RESULTS.md#L852 "id:2026-07-10-syndrome-policy-v2-dagger-round-2").)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] At n=1 battery, the hybrid
   engine beat its SymPy subcontractor through the measured upper levels while
   retaining SymPy as judge; this is a battery result, not a general CAS rank.
-  ([The L6 evening](RESULTS.md#L1005); [L5 CLOSED at 100%; L7
-  56/60](RESULTS.md#L1036).)
+  ([The L6 evening](RESULTS.md#L1005 "id:2026-07-11-the-l6-evening-engine-36-59"); [L5 CLOSED at 100%; L7
+  56/60](RESULTS.md#L1036 "id:2026-07-11-l5-closed-at-100-l7-56").)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] At n=1 held-out battery, four
   days of measure-everything iteration moved the full stack from 265/360 to
   360/360, with every step a named, measured component (search wisdom,
   autopsy-derived operators, a 1835-era pruning theorem); the same
   methodology speed-ran a second domain (T-count minimization) to an honest
   greedy-wins null in one day. ([The one-paragraph
-  version](RESULTS.md#L55).)
+  version](RESULTS.md#L55 "id:undated-the-one-paragraph-version").)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] At n=1 held-out battery, the
   full stack (best-first frontier, NNUE eval, Markov ranking, entropy-gated
   0.5B confidence, Liouville pruning) reached 356/360, with the sole holdout
   budget-invariant across four budgets — a capability miss, not a search
-  miss. ([THE RECORD: 356/360](RESULTS.md#L114).)
+  miss. ([THE RECORD: 356/360](RESULTS.md#L114 "id:undated-the-record-356-360-98-9").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Racing the dict
   ranker against LLM-gated confidence on the same 24 cells isolated the
   confidence premium at +15 solves on top of identical ranking and rules
   (349 v 334), the largest confidence premium measured, and confirmed at
-  n=30 (694/720). ([The hybrid record](RESULTS.md#L127).)
+  n=30 (694/720). ([The hybrid record](RESULTS.md#L127 "id:undated-the-hybrid-record-349-360-96").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] The failure-census
   autopsy ladder (dump every failure, classify, implement the top family,
   repeat) moved L3/L4 solve rate rung by rung from a fixed baseline, the
   same industrialized-reading method that had earlier produced the euler and
-  i_apart movers by hand. ([The autopsy ladder](RESULTS.md#L127).)
+  i_apart movers by hand. ([The autopsy ladder](RESULTS.md#L127 "id:undated-the-hybrid-record-349-360-96").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] An asynchronous
   best-first frontier strictly beat the depth-synchronized beam at equal
   node budgets (104-113 v 91-93 across variants), and with the frontier
   finally asynchronous, greedy (g=0) beat Dijkstra-weighted variants — path
   length is not worth trading nodes for when any solution is a verified
-  proof. ([Best-first beats the beam](RESULTS.md#L191).)
+  proof. ([Best-first beats the beam](RESULTS.md#L191 "id:undated-best-first-beats-the-beam-dijkstra").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Decomposing the
   best-first win against a shared transposition table showed asynchrony
   worth +12 solves given dedup and dedup worth +21 within best-first — the
   frontier re-treads commuting rewrite orders far more than a synchronized
-  ply does. ([Best-first beats the beam](RESULTS.md#L191).)
+  ply does. ([Best-first beats the beam](RESULTS.md#L191 "id:undated-best-first-beats-the-beam-dijkstra").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Verifying integral
   edges by differentiating the difference instead of calling `doit()`, and a
   timeboxed expand-then-numeric-screen simplify-as-zero ladder that rejects
   Integral/Subs residues, were both required to keep the oracle's search-time
   cost bounded; probe timeouts had to catch `BaseException` because broad
-  `except` swallowed the alarm. ([Engineering findings](RESULTS.md#L289).)
+  `except` swallowed the alarm. ([Engineering findings](RESULTS.md#L289 "id:undated-engineering-findings-each-measured-each-guarded").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Macro promotion by
   measured winning-path traffic beat promotion by textbook convention: a
   mined rule covering 14.8% of winning-path traffic paid +12 solves while
   the textbook quotient rule, at zero traffic, never fired.
-  ([Engineering findings](RESULTS.md#L289).)
+  ([Engineering findings](RESULTS.md#L289 "id:undated-engineering-findings-each-measured-each-guarded").)
 - [NULL] [REGIME-SCOPED: calculus search] Re-mining the move prior from
   mixed-quality paths dropped the control from 334 to 300 when 41% of the
   harvest came from random-search wins; a prior inherits the policy quality
   of the paths it is mined from, not just their verified correctness, so
   re-mining only pays when the harvesting engine is at least as strong as
-  the prior's current user. ([The experiment ledger](RESULTS.md#L289).)
+  the prior's current user. ([The experiment ledger](RESULTS.md#L289 "id:undated-engineering-findings-each-measured-each-guarded").)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] A fused one-trunk, two-head
   architecture with a value head reading the 0.5B's hidden state lost
   honestly to the hand-featured NNUE eval (115 v 119) while the trunk stayed
   frozen under ranking-tuned LoRA; joint value-LoRA training (v2) then beat
   the hand features offline (rho +0.966) and won the frontier cell 10 v 9.
-  ([The experiment ledger](RESULTS.md#L306).)
+  ([The experiment ledger](RESULTS.md#L306 "id:undated-the-experiment-ledger-wins-nulls-and").)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] Porting the search-engine
   methodology to T-count minimization (ZX-calculus rewrites, boundary-oracle
   verification) found the pre-registered bar (search beats greedy full_reduce
   by >=20%) FAILED honestly on random circuits — 0 wins, 30/30 exact ties —
   consistent with the literature that full_reduce is near-optimal on random
   rather than structured circuits. ([T-count engine, day
-  one](RESULTS.md#L448).)
+  one](RESULTS.md#L448 "id:undated-t-count-engine-day-one-rungs").)
 - [MECHANISM-CONFIRMED] A T-count claimed by scoring an unextractable ZX
   diagram is fiction: safe rewrites preserve semantics but can destroy
   GFLOW, so about half a race's tempting low T-count "descents" corresponded
   to no real circuit; the eval must score the T-count of the EXTRACTED
   circuit, or the move set must be GFLOW-preserving. ([T-count engine, day
-  one](RESULTS.md#L448).)
+  one](RESULTS.md#L448 "id:undated-t-count-engine-day-one-rungs").)
 - [REPLICATED] [REGIME-SCOPED: Qwen2.5-0.5B] A frozen-trunk value-head probe
   sweep across 24 layers peaked at 83% depth rather than the last hidden
   state (L20 +0.873 v last +0.858), replicating the global-workspace paper's
   geography at three fresh splits (L20 winning all three); a jointly-trained
   value-LoRA at the same probe point then matched the last-layer arm,
   showing the geography constrains frozen probes, not trained
-  representations. ([Middle-layer value probe](RESULTS.md#L703).)
+  representations. ([Middle-layer value probe](RESULTS.md#L703 "id:2026-07-09-middle-layer-value-probe-2026-07").)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] Sub-term probing pinned the
   frontier-mined failure census to two missing rule shapes; adding both
   moved same-seed L5 from 42% to 89.6% (223/249), a ~+12-point gain from two
-  measured rules. ([Frontier rule gaps -> two rules](RESULTS.md#L703).)
+  measured rules. ([Frontier rule gaps -> two rules](RESULTS.md#L703 "id:2026-07-09-middle-layer-value-probe-2026-07").)
 - [RETRACTED] [REGIME-SCOPED: calculus search] Re-mining the move prior after
   the two new rules landed, on the theory that unseen-rule smoothing was
   guillotining them, regressed L5 from 89.6% to 73.1% on both a general and
   a 3x-weighted harvest — diluting winning bigrams costs more than new-rule
   mass gains, the second measured prior-mining regression; the fixed 0.01
   median smoothing was already sufficient. ([Frontier rule gaps -> two
-  rules](RESULTS.md#L726).)
+  rules](RESULTS.md#L726 "id:2026-07-10-frontier-rule-gaps-two-rules-2026").)
 - [NULL] [DEVICE-SCOPED] At draft:target cost ratio ~1:3 (Qwen2.5 0.5B draft,
   1.5B target, 3080), entropy-adaptive speculative decoding's acceptance
   signal was real (prose 0.47->0.69, code 0.79->0.90) and target passes
@@ -133,32 +133,32 @@ maturity tag. Retractions/nulls remain visible. Scope omission never broadens a 
   measured pass-halving converts to wall-time only at draft:target cost
   <= ~1:10. Entropy must be computed in float32 — fp16 underflow silently
   degenerated the gate to fixed k_max in 771 passes. ([Entropy-adaptive
-  speculative decoding](RESULTS.md#L762).)
+  speculative decoding](RESULTS.md#L762 "id:2026-07-10-entropy-adaptive-speculative-decoding-2026-07").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Replacing a `.doit()`
   verify call (which legally re-invoked sympy's own heurisch integrator) with
   `doit(integrals=False)` cut node cost enough to widen the beam 2->3 at the
   same budget, taking same-seed L5 from 223 to 238/249 (95.6%) at 3.5x less
-  wall. ([Node-cost round 2](RESULTS.md#L807).)
+  wall. ([Node-cost round 2](RESULTS.md#L807 "id:2026-07-10-node-cost-round-2-2026-07").)
 - [NULL] [REGIME-SCOPED: calculus search] Widening the move-proposal layer to
   k=4 was a decisive NO-ADOPT (210/249 v the 238 bar): it spent the fixed
   node budget faster by cutting search depth, and it never reached the
   target rank-5/6 move anyway — proposal-layer width mostly re-covers what
   top-3 already had, unlike selection-layer width. ([propose_k=4: decisive
-  null](RESULTS.md#L828).)
+  null](RESULTS.md#L828 "id:2026-07-10-propose-k-4-decisive-null-two").)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] The syndrome policy (DAgger,
   state-aware move ranking) was ADOPTED into production after a
   fresh-100 tie/win race (98/96 solves at 36% less wall than Markov) and a
   fresh-80 exact tie (76/76) closed the 2-problem curated-gate deficit as
   benchmark-specific rather than a capability gap; Markov remains the
   fallback and the wall-time choice for deep-L5 batch work. ([The brain
-  races, concluded](RESULTS.md#L879).)
+  races, concluded](RESULTS.md#L879 "id:2026-07-10-the-brain-races-concluded-policy-adopted").)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] New coordination (L6) and
   nesting (L7) generator levels found the engine held up better than
   sympy's heurisch as depth grew (L6 60% v sympy 93%; L7 60% v sympy 70%,
   a 23-point sympy drop the engine did not share), with three money
   problems the engine solved and sympy failed, certified by sympy's own
   differentiator. ([L6/L7 and the engine-vs-sympy
-  probe](RESULTS.md#L974).)
+  probe](RESULTS.md#L974 "id:2026-07-11-l6-l7-and-the-engine-vs").)
 - [SINGLE-SEED] [REGIME-SCOPED: Qwen2.5-0.5B] A 128-unit probe on the
   calculus-LoRA 0.5B's layer-20 hidden state, read mid-generation,
   predicted eventual sympy-correctness at AUC 0.914 on 2,760 trace states
@@ -166,13 +166,13 @@ maturity tag. Retractions/nulls remain visible. Scope omission never broadens a 
   built on that signal then lost decisively to best-of-N at equal token
   spend (greedy 85, best-of-N 100, regret-abort 78 of 150): the signal was
   real but an uncalibrated early-abort threshold killed traces before
-  their fate had formed. ([The regret probe](RESULTS.md#L1060).)
+  their fate had formed. ([The regret probe](RESULTS.md#L1060 "id:2026-07-11-the-regret-probe-trace-fate-is").)
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] A new L8 generator level,
   built from measured L6/L7 failure modes rather than imagination, probed
   at 30/40 (75%, all ten misses genuine solve failures, not hangs); a
   same-day autopsy of two missing orbitals (sqrt*log ansatz, trig(log)
   admission) closed most of the gap to 37/40. ([L8: the frontier reopened
-  from the residue](RESULTS.md#L1131).)
+  from the residue](RESULTS.md#L1131 "id:2026-07-11-l8-the-frontier-reopened-from-the").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: Qwen2.5-0.5B] Racing three 4-bit
   quantization schemes on real Qwen2.5-0.5B weights and real captured
   activations in function space (mean GEMV relative error) found the
@@ -182,13 +182,13 @@ maturity tag. Retractions/nulls remain visible. Scope omission never broadens a 
   weights had ranked uniform first, because synthetic weights lack the
   outlier channels real transformers carry and activation-awareness
   protects — weight-space and function-space rankings disagreed in both
-  rounds. ([Three-lane 4-bit quantization race](RESULTS.md#L1163).)
+  rounds. ([Three-lane 4-bit quantization race](RESULTS.md#L1163 "id:2026-07-11-three-lane-4-bit-quantization-race").)
 - [MECHANISM-CONFIRMED] [DEVICE-SCOPED] A fused int4 dequant-GEMV Metal
   kernel (packed nibbles, awq_lite scales folded in at pack time) reached
   1.11x mx.quantized_matmul at D=4096 (2.80x over fp16) but only 0.72x at
   D=896, where small decode shapes are launch/overhead-bound rather than
   bandwidth-bound. ([Fused int4 dequant-GEMV Metal
-  kernel](RESULTS.md#L1185).)
+  kernel](RESULTS.md#L1185 "id:2026-07-11-fused-int4-dequant-gemv-metal-kernel").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] Engine-level regret
   (abort a search reading doom from per-ply beam features, AUC 0.760) FAILED
   its pre-registered bar (zero solve loss + >=25% wall cut) — two stubborn
@@ -196,85 +196,85 @@ maturity tag. Retractions/nulls remain visible. Scope omission never broadens a 
   the FA-Law-native metric was a blowout (176 v 82 solves in the same
   1888s, 2.1x, stable across budgets): regret trades 2.4% completeness for
   2.1x throughput, so adoption is workload-dependent and it is not wired
-  into `solve()` by default. ([Engine-level regret](RESULTS.md#L1203).)
+  into `solve()` by default. ([Engine-level regret](RESULTS.md#L1203 "id:2026-07-12-engine-level-regret-the-thesis-pays").)
 - [NULL] [REGIME-SCOPED: calculus search] A fresh L3-L8 dispatcher retrain
   (v4, 275 post-orbital disagreement rows) was NO-ADOPT against the v3
   incumbent (110 v 112 solves, fourth appearance of the starved-judge
   pattern): as engine rules cover more of the space one-ply, the arms
   converge and brain choice matters less; the currency rule softened to
   retrain only when the world changes AND the arms still disagree enough to
-  route. ([Dispatcher v4: NO-ADOPT](RESULTS.md#L1228).)
+  route. ([Dispatcher v4: NO-ADOPT](RESULTS.md#L1228 "id:2026-07-12-dispatcher-v4-no-adopt-2026-07").)
 
 ## The micro-model program
 
 - [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: closed-system math] At n=1
   comparison, the from-scratch 19M decoder exceeded the pretrained 0.5B arm on
   the oracle gate; these were the two sides of the original comparison, not a
-  reproduction route. ([Micro-model phase 2 + 0.5B run 3d](RESULTS.md#L1682).)
+  reproduction route. ([Micro-model phase 2 + 0.5B run 3d](RESULTS.md#L1682 "id:2026-07-15-micro-model-phase-2-0-5b").)
 - [MECHANISM-CONFIRMED] [TEACHER-FORCED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] Paired packing, diet, and integer
   training-contract arms produced favorable teacher-forced loss alongside
   free-run capability holes. Loss is therefore not a capability score across
   changed contracts; capability claims require the oracle gate. ([VERDICT
-  GRAVMOE-GATE](RESULTS.md#L14470).)
+  GRAVMOE-GATE](RESULTS.md#L14470 "id:2026-08-01-verdict-gravmoe-gate-loss-said-learning").)
 - [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe]
   At n=1, warm growth on the verified chain corpus beat rebirth at matched
   epochs; the result is a recipe-and-corpus observation, not a universal
-  lineage law. ([GEN-6 GROWN](RESULTS.md#L2845).)
+  lineage law. ([GEN-6 GROWN](RESULTS.md#L2845 "id:2026-07-19-gen-6-grown-76-120-growth").)
 - [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe]
   At n=1 per width, the gen-4 chain corpus had a finite useful width band and
   degraded under token-per-width starvation; this does not define a natural
   width for other grammars or doses. ([THE WIDTH FLOOR: W_min ~
-  8.4M](RESULTS.md#L4470); [113M fp32 capacity re-ask](RESULTS.md#L2345).)
+  8.4M](RESULTS.md#L4470 "id:2026-07-25-the-width-floor-w-min-8"); [113M fp32 capacity re-ask](RESULTS.md#L2345 "id:2026-07-18-113m-fp32-capacity-re-ask-tokens").)
 - [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: closed-system math] At n=1,
   the fitted corpus-signature × width equation predicted the held-out house
   battery; it remains a measured battery model, not a general scaling law.
-  ([The closed-system equation, v0](RESULTS.md#L2677).)
+  ([The closed-system equation, v0](RESULTS.md#L2677 "id:2026-07-19-the-closed-system-equation-v0-2026").)
 - [SINGLE-SEED] [REGIME-SCOPED: closed-system math] At n=1 corpus analysis,
   rule-bigram clustering grouped techniques rather than difficulty levels and
-  isolated the ansatz clade. ([The math phylogeny](RESULTS.md#L2098).)
+  isolated the ansatz clade. ([The math phylogeny](RESULTS.md#L2098 "id:2026-07-17-the-math-phylogeny-technique-lineages-not").)
 - [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: closed-system math] At n=1
   gzip-NCD corpus analysis, a separate lens isolated L4's dialect; this is a
-  corroborating read, not implementation replication. ([Compression phylogeny](RESULTS.md#L2116).)
+  corroborating read, not implementation replication. ([Compression phylogeny](RESULTS.md#L2116 "id:2026-07-17-compression-phylogeny-two-lenses-one-crater").)
 
 ## Capacity fence for crystals and packing
 
 Capacity, maximum-entropy, and sigma-pack statements below are at-capacity
 house-crystal results unless a verdict transports them. The Qwen2.5-0.5B C6
 chain is the boundary, not a web-trained dense-model law. ([PACKED CRYSTAL C6
-VERDICT](RESULTS.md#L10676).)
+VERDICT](RESULTS.md#L10676 "id:2026-07-29-packed-crystal-c6-verdict-the-falsifier").)
 
 ## The crystal laws
 
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] At n=1 registered RL-climb
   analysis, small near-uniform low-rank deltas and almost unchanged intermediate
-  CKA supported a policy-preference edit. ([Weight anatomy](RESULTS.md#L1625).)
+  CKA supported a policy-preference edit. ([Weight anatomy](RESULTS.md#L1625 "id:2026-07-15-weight-anatomy-the-closed-system-signature").)
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] At n=1 graph-anatomy census
   across six measured minds, low clustering plus connectivity supported the
-  expander-topology read; this is not implementation replication. ([Graph anatomy](RESULTS.md#L2299).)
+  expander-topology read; this is not implementation replication. ([Graph anatomy](RESULTS.md#L2299 "id:2026-07-17-graph-anatomy-the-crystal-is-an").)
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] At n=1 examined crystal,
   family-selective committees were informative but not necessary: deleting
   or reading the committee supported a holographic, preference-not-dependency
-  interpretation. ([Definition neurons](RESULTS.md#L2266); [The free router
-  works](RESULTS.md#L2329).)
+  interpretation. ([Definition neurons](RESULTS.md#L2266 "id:2026-07-17-definition-neurons-locatable-preferences-no-dependencies"); [The free router
+  works](RESULTS.md#L2329 "id:2026-07-17-the-free-router-works-and-the").)
 - [REPLICATED] [REGIME-SCOPED: house crystals] Committee membership changed
   while selectivity statistics persisted across three births and continued
   training; those births are the replication route, not evidence for a
-  universal neuron law. ([Neuron biography](RESULTS.md#L2443).)
+  universal neuron law. ([Neuron biography](RESULTS.md#L2443 "id:2026-07-18-neuron-biography-the-lottery-is-redrawn").)
 - [NULL] [REGIME-SCOPED: house crystals] No tested gauge- or
   permutation-aligned weight-distance lens recovered functional distance;
   the measured distances tracked ancestry instead. ([Gauge-aligned
-  distance](RESULTS.md#L5746); [JOINT-PERM CLOSURE](RESULTS.md#L6163).)
+  distance](RESULTS.md#L5746 "id:2026-07-26-gauge-aligned-distance-all-three-predictions"); [JOINT-PERM CLOSURE](RESULTS.md#L6163 "id:2026-07-26-joint-perm-closure-kill-condition-fires").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: house crystals] Causal quantization
   and rank-cut arms separated the axes: the tested crystals tolerated fewer
   bits but not deleted dimensions, while the latent smooth object survived
   alphabet projection. ([The alphabet is a lens, not an
-  attractor](RESULTS.md#L2505); [The rank floor](RESULTS.md#L2180).)
+  attractor](RESULTS.md#L2505 "id:2026-07-18-the-alphabet-is-a-lens-not"); [The rank floor](RESULTS.md#L2180 "id:2026-07-17-the-rank-floor-bits-are-redundant").)
 - [MECHANISM-CONFIRMED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] A calculated warm-initialization
   arm advanced the gate early, then converged toward the same measured
   ceiling; initialization changed time-to-capability, not the endpoint.
-  ([Warm birth](RESULTS.md#L2469).)
+  ([Warm birth](RESULTS.md#L2469 "id:2026-07-18-warm-birth-the-calculated-init-pays").)
 
 ## Alphabets and precision
 
@@ -282,56 +282,56 @@ VERDICT](RESULTS.md#L10676).)
   parity was reproduced through independent continuation and warm-growth
   implementations; the claim is parity for these house math crystals, not
   for arbitrary models. ([Extended-training night: ternary reaches
-  parity](RESULTS.md#L2397); [GROWN-MERGED](RESULTS.md#L3643).)
+  parity](RESULTS.md#L2397 "id:2026-07-18-extended-training-night-ternary-reaches-parity"); [GROWN-MERGED](RESULTS.md#L3643 "id:2026-07-23-grown-merged-75-120-statistical-crown").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe]
   The "+7 ternary crossover at d768" dissolves on a clean instrument:
   n=3 same-device, same-diet paired seeds read t-fp32 deltas of
   -2/+1/-3 (pooled -4, inside the |<=5| null bar) — the original
   boundary-grid point was carried by its cross-device and diet-path
   confounds; ternary and fp32 are gate-indistinguishable at d768.
-  ([VERDICT REVIVE-D768-CROSSOVER](RESULTS.md#L23643).)
+  ([VERDICT REVIVE-D768-CROSSOVER](RESULTS.md#L23643 "id:2026-08-09-verdict-revive-d768-crossover-p-crossover").)
 - [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe]
   At n=1 per alphabet arm, the matched tournament favored the measured
   multi-level codebook, while the later S4 arm narrowed the role of zero.
-  ([The alphabet tournament](RESULTS.md#L2935); [BORN-S4](RESULTS.md#L5896).)
+  ([The alphabet tournament](RESULTS.md#L2935 "id:2026-07-20-the-alphabet-tournament-real-valued-bracket"); [BORN-S4](RESULTS.md#L5896 "id:2026-07-26-born-s4-58-120-57-17").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] Complex or rotational
   interiors did not improve the tested math, ZX, NNUE, or weight-FFT lenses;
   these are repeated scoped nulls, not a theorem about complex networks.
-  ([Complex NNUE: NULL](RESULTS.md#L5967); [THE ZX COLUMN
-  COMPLETES](RESULTS.md#L6652); [Weight-FFT euler read:
-  NULL](RESULTS.md#L6098).)
+  ([Complex NNUE: NULL](RESULTS.md#L5967 "id:2026-07-26-complex-nnue-null-as-pre-registered"); [THE ZX COLUMN
+  COMPLETES](RESULTS.md#L6652 "id:2026-07-26-the-zx-column-completes-alphabet-follows"); [Weight-FFT euler read:
+  NULL](RESULTS.md#L6098 "id:2026-07-26-weight-fft-euler-read-null-for").)
 - [REPLICATED] [DEVICE-SCOPED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] Above the
   measured instrument sigma, the birth-precision bracket reproduced on Apple
   and NVIDIA devices; below that fence, the ledger does not claim closure.
-  ([scope fence + named retest condition](RESULTS.md#L7226).)
+  ([scope fence + named retest condition](RESULTS.md#L7226 "id:2026-07-27-amendment-targets-precision-doctrine-closure-2026").)
 
 ## The exact stack
 
 - [MECHANISM-CONFIRMED] [DEVICE-SCOPED]
   [REGIME-SCOPED: measured deployment artifacts] On NVIDIA tensor cores, the
   block-aligned integer-slicing arm removed accumulation rounding and
-  reproduced big-integer products exactly. ([Ozaki 2a-v3](RESULTS.md#L3969).)
+  reproduced big-integer products exactly. ([Ozaki 2a-v3](RESULTS.md#L3969 "id:2026-07-23-ozaki-2a-v3-zero-rounding-gpu").)
 - [SINGLE-SEED] [DEVICE-SCOPED]
   [REGIME-SCOPED: measured deployment artifacts] At n=1 NVIDIA benchmark,
   stay-in-RNS deferred carries and crossed the measured fp64 chain cost; it is
-  an implementation result, not a capability gain. ([Ozaki v5](RESULTS.md#L4019).)
+  an implementation result, not a capability gain. ([Ozaki v5](RESULTS.md#L4019 "id:2026-07-23-ozaki-v5-the-stay-in-rns").)
 - [REPLICATED] [DEVICE-SCOPED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] Rational-snap
   parity reproduced on two crystals and Apple/NVIDIA device routes, while the
   sensitivity knee differed by crystal. ([RATIONAL-SNAP
-  VERDICT](RESULTS.md#L7613); [QUICK EXACT BATTERY
-  VERDICT](RESULTS.md#L7819).)
+  VERDICT](RESULTS.md#L7613 "id:2026-07-27-rational-snap-verdict-the-crystal-has"); [QUICK EXACT BATTERY
+  VERDICT](RESULTS.md#L7819 "id:2026-07-27-quick-exact-battery-verdict-integer-twin").)
 - [REPLICATED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] Integer-twin parity was
   reproduced on independent crystal/checkpoint implementations; a shared
   denominator made the tested forward an integer GEMM. ([QUICK EXACT BATTERY
-  VERDICT](RESULTS.md#L7819).)
+  VERDICT](RESULTS.md#L7819 "id:2026-07-27-quick-exact-battery-verdict-integer-twin").)
 - [MECHANISM-CONFIRMED] [TEACHER-FORCED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] A
   causal snap arm localized gate damage to pre-existing near-tie decisions
   amplified by decode horizon, rather than to bulk weight error.
-  ([SNAP-ANATOMY VERDICT](RESULTS.md#L7699).)
+  ([SNAP-ANATOMY VERDICT](RESULTS.md#L7699 "id:2026-07-27-snap-anatomy-verdict-the-sensitivity-wall").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe]
   Born-rational training carried no resolved capability premium across the
   tested two-seed pair; the first apparent win demoted to parity.
-  ([BORN-RATIONAL SEED-2](RESULTS.md#L7847).)
+  ([BORN-RATIONAL SEED-2](RESULTS.md#L7847 "id:2026-07-28-born-rational-seed-2-2-the").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery]
   Rounding error in the exact-integer engine separates into two
   independent regimes, and the precision arms are the causal test:
@@ -349,9 +349,9 @@ VERDICT](RESULTS.md#L10676).)
   Both unseen cells fired all three registered bars, but two cells
   share one implementation and one device, so this is a mechanism
   reading and not a replication route. ([VERDICT
-  EXACT1-SMALL](RESULTS.md#L23852); [AMENDMENT
-  EXACT1-SMALL-EXPONENT](RESULTS.md#L23910); [AMENDMENT
-  EXACT1-SMALL-EXPONENT-2](RESULTS.md#L23948).)
+  EXACT1-SMALL](RESULTS.md#L23852 "id:2026-08-09-verdict-exact1-small-3-3-bars"); [AMENDMENT
+  EXACT1-SMALL-EXPONENT](RESULTS.md#L23910 "id:2026-08-10-amendment-exact1-small-exponent-the-two"); [AMENDMENT
+  EXACT1-SMALL-EXPONENT-2](RESULTS.md#L23948 "id:2026-08-10-amendment-exact1-small-exponent-2-the").)
 - [SINGLE-SEED] [REGIME-SCOPED: deterministic integer battery] The
   frozen-carry floor accumulates linearly in steps and grows with
   model width while staying independent of ring precision: the
@@ -362,7 +362,7 @@ VERDICT](RESULTS.md#L10676).)
   than width itself. One run per width and not pre-registered, so
   this is a descriptive read; its value is that the carry-ladder arm
   of the next engine pre-registration now has a measured curve to
-  beat rather than a guess. ([VERDICT EXACT1-SMALL](RESULTS.md#L23852).)
+  beat rather than a guess. ([VERDICT EXACT1-SMALL](RESULTS.md#L23852 "id:2026-08-09-verdict-exact1-small-3-3-bars").)
 - [SINGLE-SEED] [REGIME-SCOPED: deterministic integer battery] Exact
   rational arithmetic is a cost wall rather than a correctness one.
   The d8 anchor took 3.9 s for step 1 and 3,335 s for step 2, a
@@ -374,8 +374,8 @@ VERDICT](RESULTS.md#L10676).)
   because the machine carried interactive load during part of the
   window. The abandonment is itself the horizon measurement that the
   follow-on gcd-free design is registered against. ([VERDICT
-  EXACT1-SMALL](RESULTS.md#L23852); [PRE-REG
-  ANCHOR-V2](RESULTS.md#L23791).)
+  EXACT1-SMALL](RESULTS.md#L23852 "id:2026-08-09-verdict-exact1-small-3-3-bars"); [PRE-REG
+  ANCHOR-V2](RESULTS.md#L23791 "id:2026-08-09-pre-reg-anchor-v2-the-gcd").)
 - [NULL] [REGIME-SCOPED: deterministic integer battery] The structural-tie
   reading of the anchor's near-tie class is refuted for the ambient
   population: across 5,490 censused events the small integer |r| tracks the
@@ -387,8 +387,8 @@ VERDICT](RESULTS.md#L10676).)
   through gemm contractions). The step-9 site's own hypothesis stays
   unreached inference; the census dies at the wall it measures, so all
   counts are lower bounds. ([COUNTER-BOOK
-  COFACTOR-GATE](RESULTS.md#L24379); [VERDICT
-  COFACTOR-CENSUS](RESULTS.md#L24452).)
+  COFACTOR-GATE](RESULTS.md#L24379 "id:2026-08-10-counter-book-cofactor-gate-the-not"); [VERDICT
+  COFACTOR-CENSUS](RESULTS.md#L24452 "id:2026-08-10-verdict-cofactor-census-the-r-refutation").)
 - [MECHANISM-CONFIRMED] [DEVICE-SCOPED]
   [REGIME-SCOPED: measured deployment artifacts] The fp32-limb exact GEMM
   oracle (the MPS KEY finally implemented: s=7 slices, block 32, budget
@@ -400,20 +400,20 @@ VERDICT](RESULTS.md#L10676).)
   flush-to-zero contract rather than a silent cap. A compile probe settled
   a banked question for free: M-series exposes no integer simdgroup MMA,
   making fp32-limb the only MMA-reaching exact path on Metal.
-  ([COUNTER-BOOK FP32LIMB-R1](RESULTS.md#L24981).) The Metal build phase
+  ([COUNTER-BOOK FP32LIMB-R1](RESULTS.md#L24981 "id:2026-08-10-counter-book-fp32limb-r1-p-envelope").) The Metal build phase
   settled the hardware question by compile probe — simdgroup_matrix over
   int fails while the float control compiles, so M-series exposes no
   integer simdgroup MMA and the banked int8-MMA Metal port is superseded,
   not deferred; the fast-math pin is runtime-checkable (MTLMathModeSafe)
   and the dispatch interlock was verified refusing without its flag.
-  ([RECEIPT FP32LIMB-R2R3-BUILT](RESULTS.md#L25050).) The dispatched
+  ([RECEIPT FP32LIMB-R2R3-BUILT](RESULTS.md#L25050 "id:2026-08-10-receipt-fp32limb-r2r3-built-the-cpu").) The dispatched
   battery is GREEN: FTZ-PRESENT on device (range restriction required,
   as the envelope's flush-to-zero clause anticipated), bit-identical to
   the CPU oracle across three seeds, and the wall bar passed by an
   order of magnitude — exact fp32-limb GEMM at 0.120x cpu_fp64 and the
   int64-accumulator at 0.004x: the first exact GEMM on Metal is a
   speedup, not a tax.
-  ([COUNTER-BOOK FP32LIMB-R2R3-GPU](RESULTS.md#L26138).)
+  ([COUNTER-BOOK FP32LIMB-R2R3-GPU](RESULTS.md#L26138 "id:2026-08-10-counter-book-fp32limb-r2r3-gpu-the").)
 - [NULL] [DEVICE-SCOPED] [REGIME-SCOPED: measured deployment artifacts]
   The naive-portable RNS chain shape has no break-even depth: a scalar
   mulmod-ladder implementation (toolchain-forced — the box's MSVC has no
@@ -425,8 +425,8 @@ VERDICT](RESULTS.md#L10676).)
   after the collision rebase, and the booked tensor-core break-even law
   is untested by this run — its counter-book is a Montgomery/tensor-core
   reimplementation. The fused-kernel promotion correctly did not trigger.
-  ([COUNTER-BOOK RNSCHAIN-C1](RESULTS.md#L25193); [VERDICT
-  RNSCHAIN-C2C3](RESULTS.md#L25338).)
+  ([COUNTER-BOOK RNSCHAIN-C1](RESULTS.md#L25193 "id:2026-08-10-counter-book-rnschain-c1-chain-oracle"); [VERDICT
+  RNSCHAIN-C2C3](RESULTS.md#L25338 "id:2026-08-10-verdict-rnschain-c2c3-c1-re-receipt").)
 - [MECHANISM-CONFIRMED] [DEVICE-SCOPED]
   [REGIME-SCOPED: deterministic integer battery] (d64 12-step anchor
   cell.) Closed-loop precision scheduling works: a proportional
@@ -458,9 +458,9 @@ VERDICT](RESULTS.md#L10676).)
   co-factor/witness line re-elevates as a denominator-ledger design
   gate. The ring is measured as both the cost floor and the
   feasibility ceiling.
-  ([VERDICT FUNNEL-PREC](RESULTS.md#L25451); [VERDICT
-  STEP9-CLIFF-SIZE](RESULTS.md#L26105); [COUNTER-BOOK
-  NPRIMES-LADDER](RESULTS.md#L26450).)
+  ([VERDICT FUNNEL-PREC](RESULTS.md#L25451 "id:2026-08-10-verdict-funnel-prec-closed-loop-precision"); [VERDICT
+  STEP9-CLIFF-SIZE](RESULTS.md#L26105 "id:2026-08-10-verdict-step9-cliff-size-counter-booked"); [COUNTER-BOOK
+  NPRIMES-LADDER](RESULTS.md#L26450 "id:2026-08-11-verdict-nprimes-ladder-counter-book-p").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [REGIME-SCOPED: house crystals]
   Post-hoc ternary is NOT where trained tolerance lives: quantizing
   the fp-trained d256 crystal one tensor class at a time, the output
@@ -479,9 +479,9 @@ VERDICT](RESULTS.md#L10676).)
   profile by nothing measurable (retention fractions match the
   control within 4 percentage points per class): the
   symmetry and alphabet compression axes are orthogonal tolls.
-  ([VERDICT STAR-PROFILE-1](RESULTS.md#L25772); [VERDICT
-  STAR-PROFILE-2](RESULTS.md#L25979); [VERDICT
-  ROT-X-TERNARY](RESULTS.md#L26031).)
+  ([VERDICT STAR-PROFILE-1](RESULTS.md#L25772 "id:2026-08-10-verdict-star-profile-1-p-gradient"); [VERDICT
+  STAR-PROFILE-2](RESULTS.md#L25979 "id:2026-08-10-verdict-star-profile-2-p-surface"); [VERDICT
+  ROT-X-TERNARY](RESULTS.md#L26031 "id:2026-08-10-verdict-rot-x-ternary-p-independent").)
 - [MECHANISM-CONFIRMED] [DEVICE-SCOPED] [REGIME-SCOPED: house crystals]
   The crown tie was birth luck: n=3 fresh paired births resolve the
   production crown to the champion fp32 grow-inherit line (+9/+11/+12
@@ -508,10 +508,10 @@ VERDICT](RESULTS.md#L10676).)
   at the >=10 bar on a single seed, so the ignition LOCATION carries
   a single-seed fence while the d48->d64 tripling is >4 sigma), and
   "births take hours" is a size property, not a pipeline property.
-  ([VERDICT REVIVE-CROWN-TIE-BIRTHS](RESULTS.md#L26066); [VERDICT
-  SATURATION-1](RESULTS.md#L26259); [VERDICT
-  SATURATION-1-CELL-B](RESULTS.md#L26420); [VERDICT
-  MICRO-STAR-1](RESULTS.md#L26301).)
+  ([VERDICT REVIVE-CROWN-TIE-BIRTHS](RESULTS.md#L26066 "id:2026-08-10-verdict-revive-crown-tie-births-p"); [VERDICT
+  SATURATION-1](RESULTS.md#L26259 "id:2026-08-11-verdict-saturation-1-cell-a-p"); [VERDICT
+  SATURATION-1-CELL-B](RESULTS.md#L26420 "id:2026-08-11-verdict-saturation-1-cell-b-p"); [VERDICT
+  MICRO-STAR-1](RESULTS.md#L26301 "id:2026-08-11-verdict-micro-star-1-both-bars").)
 
 ## Data, diet, and federation
 
@@ -532,17 +532,17 @@ VERDICT](RESULTS.md#L10676).)
   LOSS-FLOOR-1-ARCH — a bigger star than first booked, same floor) — an effective-context instrument, and a
   candidate quantitative face for the width ladder (does the floor
   walk down the H_k curve as width grows?).
-  ([VERDICT LOSS-FLOOR-1](RESULTS.md#L26376).)
+  ([VERDICT LOSS-FLOOR-1](RESULTS.md#L26376 "id:2026-08-11-verdict-loss-floor-1-mixed-at").)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [TEACHER-FORCED]
   [REGIME-SCOPED: specified diet and recipe] A causal row-format arm changed
   determinability while holding the task family fixed; underdetermined rows
   trained confident guessing rather than the intended map. ([Series rung 1:
-  form learned instantly, task was ill-posed](RESULTS.md#L3401).)
+  form learned instantly, task was ill-posed](RESULTS.md#L3401 "id:2026-07-22-series-rung-1-form-learned-instantly").)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] Causal re-spelling arms replaced
   chains with primitive emissions and sharply reduced the rows needed to
   learn the measured task families. ([The decomposition
-  discount](RESULTS.md#L3682); [SERIES RUNG 1E](RESULTS.md#L3758).)
+  discount](RESULTS.md#L3682 "id:2026-07-23-the-decomposition-discount-10x-measured-2026"); [SERIES RUNG 1E](RESULTS.md#L3758 "id:2026-07-23-series-rung-1e-98-0-the").)
 - [NULL] [TEACHER-FORCED] [REGIME-SCOPED: house crystals] Greedy decision
   margins do not track problem hardness: on the d256 control crystal over a
   fresh seven-level band, the per-level median minimum margin correlates at
@@ -558,8 +558,8 @@ VERDICT](RESULTS.md#L10676).)
   signature), so tight decisions are a rare (~0.1% of tokens),
   hardness-uncorrelated, depth-uncorrelated population and the ceiling-swap
   theory's inference-side legs are both closed at this scale.
-  ([VERDICT DATA-CEIL-0A](RESULTS.md#L24602); [VERDICT
-  DATA-CEIL-0B](RESULTS.md#L24698).)
+  ([VERDICT DATA-CEIL-0A](RESULTS.md#L24602 "id:2026-08-10-verdict-data-ceil-0a-p-margin"); [VERDICT
+  DATA-CEIL-0B](RESULTS.md#L24698 "id:2026-08-10-verdict-data-ceil-0b-fork-only").)
 - [MECHANISM-CONFIRMED] [TEACHER-FORCED] [REGIME-SCOPED: house crystals]
   Near-tie decisions are data-ambiguity sites: on the d256 control crystal
   over 3,995 censused diet states, median minimum margin compresses
@@ -577,8 +577,8 @@ VERDICT](RESULTS.md#L10676).)
   bucket (~2x median, up to ~3.8x at the choice-free bucket) at a
   compressed absolute scale, so the law is the gradient, capability sets
   the scale. A theory row still waits on a second domain.
-  ([VERDICT DATA-CEIL-0C](RESULTS.md#L24793); [VERDICT
-  DATA-CEIL-0C-R](RESULTS.md#L24849).)
+  ([VERDICT DATA-CEIL-0C](RESULTS.md#L24793 "id:2026-08-10-verdict-data-ceil-0c-p-ambiguity"); [VERDICT
+  DATA-CEIL-0C-R](RESULTS.md#L24849 "id:2026-08-10-verdict-data-ceil-0c-r-the").)
 - [MECHANISM-CONFIRMED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals]
   The free-running greedy map has exactly one basin: all 198 censused
   trajectories absorb into answer-form (zero fixed points, cycles, or
@@ -596,31 +596,31 @@ VERDICT](RESULTS.md#L10676).)
   confidence is NOT the ambiguity law: median n_succ 7 v 7 at
   absorbing v transit states while the margin gap replicates (2.31 v
   0.88) — separate mechanisms, honest null on the join.
-  ([VERDICT ATTRACTOR-0](RESULTS.md#L25286); [VERDICT
-  ATTRACTOR-0B-JOIN](RESULTS.md#L25692).)
+  ([VERDICT ATTRACTOR-0](RESULTS.md#L25286 "id:2026-08-10-verdict-attractor-0-the-raw-map"); [VERDICT
+  ATTRACTOR-0B-JOIN](RESULTS.md#L25692 "id:2026-08-10-verdict-attractor-0b-join-answer-form").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] No
   spontaneous transfer resolved in the tested bridge/desert cells; this does
   not support the former universal claim that nothing transfers.
-  ([Desert test v2](RESULTS.md#L4383).)
+  ([Desert test v2](RESULTS.md#L4383 "id:2026-07-24-desert-test-v2-no-spontaneous-composition").)
 - [MECHANISM-CONFIRMED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] A paired federation-diet arm
   showed that exposure share redistributes resident capability; content alone
-  did not identify a winner. ([GEN-9 A/B VERDICT](RESULTS.md#L4283).)
+  did not identify a winner. ([GEN-9 A/B VERDICT](RESULTS.md#L4283 "id:2026-07-24-gen-9-a-b-verdict-redistribution").)
 - [SINGLE-SEED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] At n=1, one model held the five
   tested grammars simultaneously; this is a gen-8 diet result, not a general
-  federation law. ([GEN-8](RESULTS.md#L4127).)
+  federation law. ([GEN-8](RESULTS.md#L4127 "id:2026-07-24-gen-8-the-everything-crystal-all").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] Width
   did not improve the tested token-light primitive federation.
-  ([45M UNION RE-ASK](RESULTS.md#L4414).)
+  ([45M UNION RE-ASK](RESULTS.md#L4414 "id:2026-07-24-45m-union-re-ask-width-does").)
 - [REPLICATED] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe]
   The ZX graph-language birth cleared parsing and capability checks across
   n=3 seeds; the paired seed ladder is the replication route.
-  ([ZX SEED-3](RESULTS.md#L7416).)
+  ([ZX SEED-3](RESULTS.md#L7416 "id:2026-07-27-zx-seed-3-34-120-the").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] At the
   tested ZX recipe, the wider arm remained inside the n=3 seed fence; width
   was not a resolved lever in that regime. ([45M UNION
-  VERDICT](RESULTS.md#L7740); [ZX SEED-3](RESULTS.md#L7416).)
+  VERDICT](RESULTS.md#L7740 "id:2026-07-27-45m-union-verdict-math-65-union"); [ZX SEED-3](RESULTS.md#L7416 "id:2026-07-27-zx-seed-3-34-120-the").)
 
 ## Learning dynamics
 
@@ -628,26 +628,26 @@ VERDICT](RESULTS.md#L10676).)
   [REGIME-SCOPED: specified diet and recipe] The packing hole reproduced at
   two widths through an independent CUDA substrate leg; matched-step controls
   located the damage in batch/context composition rather than precision.
-  ([d256 SUBSTRATE GATE CLEARS](RESULTS.md#L5321); [AMENDMENTS: the
-  matched-steps accident separates the packing bundle](RESULTS.md#L5400).)
+  ([d256 SUBSTRATE GATE CLEARS](RESULTS.md#L5321 "id:2026-07-26-d256-substrate-gate-clears-and-packing"); [AMENDMENTS: the
+  matched-steps accident separates the packing bundle](RESULTS.md#L5400 "id:2026-07-26-amendments-the-matched-steps-accident-separates").)
 - [SINGLE-SEED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] At n=1 streaming 2×2, revisits,
   cooldown, and batch diversity separated; the result remains one recipe
-  cell. ([STREAMING CLOSES](RESULTS.md#L5549).)
+  cell. ([STREAMING CLOSES](RESULTS.md#L5549 "id:2026-07-26-streaming-closes-the-2x2-completes-epoch").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: closed-system math] A verified-RL
   causal arm moved output policy with little representation change; the mined
   corpus, not the final RL weights, carried the durable transferable product.
-  ([GRPO run 2b](RESULTS.md#L1594).)
+  ([GRPO run 2b](RESULTS.md#L1594 "id:2026-07-15-grpo-run-2b-the-hill-climbing").)
 - [MECHANISM-CONFIRMED] [FREE-RUN-GATED]
   [REGIME-SCOPED: calculus search] Injecting engine demonstrations moved the
   model gate where self-practice did not, and model-discovered walls improved
   the engine in the reverse arm. ([THE EXCHANGE
-  CONVERTS](RESULTS.md#L3916); [The exchange is bidirectional IN
-  FACT](RESULTS.md#L3883).)
+  CONVERTS](RESULTS.md#L3916 "id:2026-07-23-the-exchange-converts-2-12-6"); [The exchange is bidirectional IN
+  FACT](RESULTS.md#L3883 "id:2026-07-23-the-exchange-is-bidirectional-in-fact").)
 - [REPLICATED] [REGIME-SCOPED: specified diet and recipe]
   Sub-ULP recovery in fp64-master metabolism was reproduced by an independent
   paired-arm implementation; the short run established committed updates, not
-  a capability premium. ([Metabolic v3 paired arms](RESULTS.md#L3711).)
+  a capability premium. ([Metabolic v3 paired arms](RESULTS.md#L3711 "id:2026-07-23-metabolic-v3-paired-arms-the-ceiling").)
 
 ## Independent implementation and methodology
 
@@ -668,7 +668,7 @@ VERDICT](RESULTS.md#L10676).)
   booked entry (d256 -> d512, the catalog's own data was the
   cross-check), a wrong params column, and a fence-bypass class in
   book.py's first cut — all amended same-day.
-  ([VERDICT REFACTOR-NIGHT-1](RESULTS.md#L26536).)
+  ([VERDICT REFACTOR-NIGHT-1](RESULTS.md#L26536 "id:2026-08-11-verdict-refactor-night-1-catalog-lake").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: closed-system math] A string-seeded
   1000-cert sample of the cross-lab Lean certificate corpus missed its
@@ -679,8 +679,8 @@ VERDICT](RESULTS.md#L10676).)
   atom-split statements, and 4 rewriting failures. The sample is 1000
   of 21,914 rows; the corrected compile rate for a re-emitted sidecar
   is a prediction, not a measurement. ([VERDICT
-  LEAN-KERNEL-SAMPLE](RESULTS.md#L20365); [AMENDMENT
-  LEAN-KERNEL-SAMPLE-2](RESULTS.md#L20492).)
+  LEAN-KERNEL-SAMPLE](RESULTS.md#L20365 "id:2026-08-05-verdict-lean-kernel-sample-registered-1000"); [AMENDMENT
+  LEAN-KERNEL-SAMPLE-2](RESULTS.md#L20492 "id:2026-08-05-amendment-lean-kernel-sample-2-0").)
 - [RETRACTED] [REGIME-SCOPED: closed-system math] The "0 false
   statements in 1000" reading is withdrawn as stated: 0 false raw
   equalities stands, but 7 of 1000 emitted generalized statements are
@@ -689,7 +689,7 @@ VERDICT](RESULTS.md#L10676).)
   The class now has its own counter, "unprovable-by-design
   (atom-split)"; 2 of the 7 carry no division, so it is not a
   division-specific defect. ([AMENDMENT
-  LEAN-KERNEL-SAMPLE-2](RESULTS.md#L20492).)
+  LEAN-KERNEL-SAMPLE-2](RESULTS.md#L20492 "id:2026-08-05-amendment-lean-kernel-sample-2-0").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: closed-system math] A single
   unreproduced test flake, relayed as courtesy rather than dropped,
   resolved into two real defects in the independent implementation: a
@@ -699,8 +699,8 @@ VERDICT](RESULTS.md#L10676).)
   Determinism claims for that search are now scoped "modulo observed
   budget expiry" on both ledgers. House verification is diff
   inspection, a rebuild, and a 10x rerun; the stress receipts are the
-  other lab's. ([VERDICT BEAM-FLAKE-ROOT-CAUSE](RESULTS.md#L20539);
-  [VERDICT LEAN-EMITTER-FIX](RESULTS.md#L20462).)
+  other lab's. ([VERDICT BEAM-FLAKE-ROOT-CAUSE](RESULTS.md#L20539 "id:2026-08-05-verdict-beam-flake-root-cause-the");
+  [VERDICT LEAN-EMITTER-FIX](RESULTS.md#L20462 "id:2026-08-05-verdict-lean-emitter-fix-axiom-s").)
 - [REPLICATED] [REGIME-SCOPED: closed-system math] The cross-lab
   Lean certificate corpus closes at kernel scale with a CLOSED
   failure taxonomy: under the fixed emitter, 21,614 of 21,914
@@ -717,9 +717,9 @@ VERDICT](RESULTS.md#L10676).)
   since reconciled against axiom's independent count at the same 222
   and 78. The frozen id list and the labeled taxonomy are committed
   as small-text receipts, so the census is re-derivable without
-  re-running the kernel pass. ([VERDICT LEAN-SAMPLE-V2](RESULTS.md#L22407); [VERDICT
-  LEAN-FULL-V2](RESULTS.md#L22493); [RECEIPT
-  LEAN-300-LABELS](RESULTS.md#L23777).)
+  re-running the kernel pass. ([VERDICT LEAN-SAMPLE-V2](RESULTS.md#L22407 "id:2026-08-07-verdict-lean-sample-v2-p-emitter"); [VERDICT
+  LEAN-FULL-V2](RESULTS.md#L22493 "id:2026-08-07-verdict-lean-full-v2-p-corpus"); [RECEIPT
+  LEAN-300-LABELS](RESULTS.md#L23777 "id:2026-08-09-receipt-lean-300-labels-target-verdicts").)
 - [REPLICATED] [REGIME-SCOPED: house crystals] The hardening sweep
   converts pre-doctrine point estimates into replicated laws and
   scoped fences without retracting any paired claim: the
@@ -736,16 +736,16 @@ VERDICT](RESULTS.md#L10676).)
   replicates at three soft-routing seeds (correlations
   0.0096/0.0071/0.0062, all in the init-default class), with the
   excision bridge pricing the mandated diet cleanup at zero.
-  ([VERDICT HARDENING-P1](RESULTS.md#L22585); [VERDICT
-  HARDENING-P2](RESULTS.md#L22658); [VERDICT
-  HARDENING-P3-R5](RESULTS.md#L22718).)
+  ([VERDICT HARDENING-P1](RESULTS.md#L22585 "id:2026-08-07-verdict-hardening-p1-the-exclude-union"); [VERDICT
+  HARDENING-P2](RESULTS.md#L22658 "id:2026-08-07-verdict-hardening-p2-both-cells-fire"); [VERDICT
+  HARDENING-P3-R5](RESULTS.md#L22718 "id:2026-08-08-verdict-hardening-p3-r5-p-init").)
 - [REPLICATED] [REGIME-SCOPED: house crystals] The ZX
   scale-lever null is seed-hardened: three same-recipe 45M union
   births score 36/34/32 on the ZX gate (mean 34.0, straddling the
   19M seed-fence mean 32.7), so the original n=1 read of 36 was
   ordinary seed noise and 2.4x capacity buys nothing on the graph
   grammar; the roots-of-unity reopening stays un-fired.
-  ([VERDICT HARDENING-P4-2](RESULTS.md#L23459).)
+  ([VERDICT HARDENING-P4-2](RESULTS.md#L23459 "id:2026-08-08-verdict-hardening-p4-2-p-null").)
 - [REPLICATED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: house crystals] The frozen Phase-3 list completes
   with one real cost and one tie, both at n=3 paired seeds on the
@@ -760,9 +760,9 @@ VERDICT](RESULTS.md#L10676).)
   registered and is booked as such. Separately, dose-fed ternary
   TIES fp32 at 19M and d384: deltas -1, 0 and -2 for a pooled -3,
   inside the tie band. ([VERDICT
-  HARDENING-P3-R7](RESULTS.md#L23168); [AMENDMENT
-  HARDENING-P3-R7-ARM](RESULTS.md#L23383); [VERDICT
-  HARDENING-P3-R9](RESULTS.md#L23251).)
+  HARDENING-P3-R7](RESULTS.md#L23168 "id:2026-08-08-verdict-hardening-p3-r7-p-toll"); [AMENDMENT
+  HARDENING-P3-R7-ARM](RESULTS.md#L23383 "id:2026-08-08-amendment-hardening-p3-r7-arm-the"); [VERDICT
+  HARDENING-P3-R9](RESULTS.md#L23251 "id:2026-08-08-verdict-hardening-p3-r9-p-parity").)
 - [NULL] [REGIME-SCOPED: closed-system math] The peeling probe's
   null HARDENS rather than dissolving: the registered suspicion was
   that mid-chain states were out of distribution, so the probe was
@@ -770,7 +770,7 @@ VERDICT](RESULTS.md#L10676).)
   valid predecessor in band. Per-candidate validity came out LOWER,
   at 4.3 and 5.0 percent against the original 11 percent, so the
   distribution-artifact explanation is refuted for that row.
-  ([VERDICT HARDENING-P4-1](RESULTS.md#L23197).)
+  ([VERDICT HARDENING-P4-1](RESULTS.md#L23197 "id:2026-08-08-verdict-hardening-p4-1-p-null").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: house crystals] On one 19M
   vehicle, over-coarse quantization is deletion rather than
   perturbation: snapping a 19M model's weights to
@@ -779,8 +779,8 @@ VERDICT](RESULTS.md#L10676).)
   survival threshold; the mid gate keeps a single 1/4), which is
   why the booked Q=4 gate is 0/120 while the denominator-64 snap
   ties its control exactly.
-  ([OBSERVATION Q4-DELETION-RENDER](RESULTS.md#L23428);
-  [RATIONAL-SNAP VERDICT](RESULTS.md#L7613).)
+  ([OBSERVATION Q4-DELETION-RENDER](RESULTS.md#L23428 "id:2026-08-08-observation-q4-deletion-render-the-rational");
+  [RATIONAL-SNAP VERDICT](RESULTS.md#L7613 "id:2026-07-27-rational-snap-verdict-the-crystal-has").)
 - [REPLICATED] [REGIME-SCOPED: house crystals] The sprint's second
   wave lifts two more n=1 fences and books two honest betweens: the
   ffn-slack anatomy endpoints replicate on their cuda line (pooled
@@ -798,12 +798,12 @@ VERDICT](RESULTS.md#L10676).)
   between bars), and the kernel survey closes with no kernel-day
   needed: torch's int64 matmul is bit-identical to the order-free
   sum and the speed riders attach to the plateau-break and MPS-leg
-  rungs. ([VERDICT HARDENING-P3-R6](RESULTS.md#L22768); [VERDICT
-  HARDENING-P3-R3](RESULTS.md#L22867); [VERDICT
-  HARDENING-P3-R4](RESULTS.md#L22985); [VERDICT
-  HARDENING-P3-R2](RESULTS.md#L23044); [VERDICT
-  REVIVE-METAB-LATE](RESULTS.md#L22898); [OBSERVATION
-  KERNEL-SPEED-SURVEY](RESULTS.md#L22947).)
+  rungs. ([VERDICT HARDENING-P3-R6](RESULTS.md#L22768 "id:2026-08-08-verdict-hardening-p3-r6-falloff-flip"); [VERDICT
+  HARDENING-P3-R3](RESULTS.md#L22867 "id:2026-08-08-verdict-hardening-p3-r3-p-slack"); [VERDICT
+  HARDENING-P3-R4](RESULTS.md#L22985 "id:2026-08-08-verdict-hardening-p3-r4-p-cooldown"); [VERDICT
+  HARDENING-P3-R2](RESULTS.md#L23044 "id:2026-08-08-verdict-hardening-p3-r2-neither-bar"); [VERDICT
+  REVIVE-METAB-LATE](RESULTS.md#L22898 "id:2026-08-08-verdict-revive-metab-late-neither-bar"); [OBSERVATION
+  KERNEL-SPEED-SURVEY](RESULTS.md#L22947 "id:2026-08-08-observation-kernel-speed-survey-no-queued").)
 - [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe] The
   reverse model's verified-candidate choice surface is real but
   thin, and the thinness is mostly a MODEL property: at eight
@@ -817,10 +817,10 @@ VERDICT](RESULTS.md#L10676).)
   schedule, leaving joint scaling as the named lever — joint
   scaling subsequently ran and did NOT convert; the measured
   binder at horizon is the optimizer schedule ([VERDICT
-  ENGINE-SCALE-1](RESULTS.md#L23673)).
-  ([VERDICT MULT-0](RESULTS.md#L22196); [VERDICT
-  MULT-0-B32](RESULTS.md#L22522); [VERDICT
-  P-CAPACITY-2](RESULTS.md#L22163).)
+  ENGINE-SCALE-1](RESULTS.md#L23673 "id:2026-08-09-verdict-engine-scale-1-neither-bar")).
+  ([VERDICT MULT-0](RESULTS.md#L22196 "id:2026-08-07-verdict-mult-0-p-starved-fires"); [VERDICT
+  MULT-0-B32](RESULTS.md#L22522 "id:2026-08-07-verdict-mult-0-b32-unresolved-as"); [VERDICT
+  P-CAPACITY-2](RESULTS.md#L22163 "id:2026-08-07-verdict-p-capacity-2-does-not").)
 - [SINGLE-SEED] [REGIME-SCOPED: toy weight-space subjects] A
   796,550-parameter neuron-token transformer classifies the function
   family of 1-16-16-1 tanh subject MLPs from raw weights at 80.8%
@@ -830,7 +830,7 @@ VERDICT](RESULTS.md#L10676).)
   seed, one subject architecture, toy scale; the gate is
   classification only, and no run-the-weights gate exists for
   weight-space generation. ([VERDICT
-  WEIGHT-READER-0](RESULTS.md#L20747).)
+  WEIGHT-READER-0](RESULTS.md#L20747 "id:2026-08-05-verdict-weight-reader-0-back-booked").)
 - [NULL] [REGIME-SCOPED: toy weight-space subjects] The
   forward-trained weight reader does not recognize inverse twins:
   0.139 accuracy against the 16.7% chance floor over 345 eligible
@@ -842,7 +842,7 @@ VERDICT](RESULTS.md#L10676).)
   subsequently REFUTED three protocols deep; see the weight-reader
   closure bullet.
   Function-inverse analogy probe — it transfers a question, never a
-  conclusion. ([VERDICT TENET-W0](RESULTS.md#L20876).)
+  conclusion. ([VERDICT TENET-W0](RESULTS.md#L20876 "id:2026-08-05-verdict-tenet-w0-the-null-fires").)
 - [SINGLE-SEED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] Backward emission at
   micro scale is prompt-distribution-local — null on the chain-start
@@ -854,8 +854,8 @@ VERDICT](RESULTS.md#L10676).)
   prompt shapes it only ever saw as targets, and emits real
   predecessors one step in. L4 reads 0/24 while L3 and L5 score —
   a non-monotone level-local hole, named and open. ([VERDICT
-  TENET-R0-REV](RESULTS.md#L20984); [VERDICT
-  TENET-R0-REV-B](RESULTS.md#L21081).)
+  TENET-R0-REV](RESULTS.md#L20984 "id:2026-08-06-verdict-tenet-r0-rev-the-null"); [VERDICT
+  TENET-R0-REV-B](RESULTS.md#L21081 "id:2026-08-06-verdict-tenet-r0-rev-b-backward").)
 - [NULL] [REGIME-SCOPED: toy weight-space subjects] Direction is not
   readable from crystal FFN gate weights: over 50 forward/reverse
   birth pairs a neuron-token reader scores exact chance on held-out
@@ -867,8 +867,8 @@ VERDICT](RESULTS.md#L10676).)
   differ 24-to-1 on the reverse gate. Direction lives in function,
   not sampled gate geometry, at this scale and feature choice.
   Gate tensors only; one classifier seed; 2-epoch births.
-  ([VERDICT TENET-W1](RESULTS.md#L21140); control rider
-  [RESULTS.md#L21169](RESULTS.md#L21169).)
+  ([VERDICT TENET-W1](RESULTS.md#L21140 "id:2026-08-06-verdict-tenet-w1-the-null-fires"); control rider
+  [RESULTS.md#L21169](RESULTS.md#L21169 "id:2026-08-06-rider-on-verdict-tenet-w1-the").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe]
   TENET closes: backward emission exists and is prompt-local, and
   the closed-loop pincer does not bind at this scale because
@@ -883,7 +883,7 @@ VERDICT](RESULTS.md#L10676).)
   measures verified-candidate multiplicity FIRST — at multiplicity
   ~0 a ranking arm is invalid, not negative. Second bar failure
   (R8 under a broken fence, this under a working one); one seed
-  pair. ([VERDICT TENET-R1B-MICRO](RESULTS.md#L21236).)
+  pair. ([VERDICT TENET-R1B-MICRO](RESULTS.md#L21236 "id:2026-08-06-verdict-tenet-r1b-micro-the-bar").)
 
 Where axiom is the replication route below, it means an independent
 implementation in another language and runtime, sharing no code with what it
@@ -897,23 +897,23 @@ sessions under one operator, not independent investigators. Read
 - [REPLICATED] [REGIME-SCOPED: closed-system math] House and axiom oracles
   independently adjudicated the same symbolic rows and exposed errors on both
   sides; the independent implementation is the replication route.
-  ([Axiom Phase B adjudicated](RESULTS.md#L2608); [Qualification:
-  443/480](RESULTS.md#L2994).)
+  ([Axiom Phase B adjudicated](RESULTS.md#L2608 "id:2026-07-18-axiom-phase-b-adjudicated-the-generator"); [Qualification:
+  443/480](RESULTS.md#L2994 "id:2026-07-20-qualification-443-480-at-5x-sympy").)
 - [REPLICATED] [DEVICE-SCOPED]
   [REGIME-SCOPED: deterministic integer battery] The exact decode reproduced
   across Apple/NVIDIA devices and the independent axiom implementation, with
   byte-pinned inputs and zero-tolerance output comparison. ([E3
-  VERDICT](RESULTS.md#L9907); [FX-V1-H VERDICT](RESULTS.md#L11468).)
+  VERDICT](RESULTS.md#L9907 "id:2026-07-29-e3-verdict-pass-50-50-the"); [FX-V1-H VERDICT](RESULTS.md#L11468 "id:2026-07-30-fx-v1-h-verdict-cross-lab").)
 - [REPLICATED] Paired controls repeatedly overturned attractive headlines and
   found instrument faults; independent strict-encoding and cross-repo E4
   audit routes are named examples rather than a numeric incident count.
-  ([The 388 mangled rows](RESULTS.md#L4453); [E4 AUDIT
-  CLOSE-OUT](RESULTS.md#L7492).)
+  ([The 388 mangled rows](RESULTS.md#L4453 "id:2026-07-25-the-388-mangled-rows-strict-encode"); [E4 AUDIT
+  CLOSE-OUT](RESULTS.md#L7492 "id:2026-07-27-e4-audit-close-out-axiom-s").)
 - [REPLICATED] [DEVICE-SCOPED] [FREE-RUN-GATED] Gate and probe differences
   reproduced across Apple and NVIDIA devices, establishing that device is
   part of the instrument and cross-device scores cannot be compared raw.
-  ([L9 probes are device-dependent at 2x](RESULTS.md#L3213); [VERDICT
-  NIGHT-31-CUDA](RESULTS.md#L12697).)
+  ([L9 probes are device-dependent at 2x](RESULTS.md#L3213 "id:2026-07-21-l9-probes-are-device-dependent-at"); [VERDICT
+  NIGHT-31-CUDA](RESULTS.md#L12697 "id:2026-07-31-verdict-night-31-cuda-controls-the").)
 
 ## Calibration and generation
 
@@ -921,16 +921,16 @@ sessions under one operator, not independent investigators. Read
   Controlled snap interventions across six house crystals showed that
   flips-per-token predicts gate damage; the causal arm is the applied snap,
   not a post-hoc story. ([CALIBRATION PROBE R1
-  VERDICT](RESULTS.md#L7943).)
+  VERDICT](RESULTS.md#L7943 "id:2026-07-28-calibration-probe-r1-verdict-pass-flips").)
 - [NULL] [TEACHER-FORCED] [REGIME-SCOPED: specified diet and recipe]
   Pick-trained valid-set distributions were already near-deterministic, and a
   matched-dose distribution-row arm did not become a capability lever.
-  ([MASS-ON-VALID VERDICT](RESULTS.md#L7976); [DISTRIBUTION ROWS 3-ARM
-  VERDICT](RESULTS.md#L8078).)
+  ([MASS-ON-VALID VERDICT](RESULTS.md#L7976 "id:2026-07-28-mass-on-valid-verdict-valid-mass"); [DISTRIBUTION ROWS 3-ARM
+  VERDICT](RESULTS.md#L8078 "id:2026-07-28-distribution-rows-3-arm-verdict-parity").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
   Judge-collapsed decoding did not improve the tested generation battery;
   near ties were too scarce for the intervention to act.
-  ([JUDGE-COLLAPSED DECODING VERDICT](RESULTS.md#L8146).)
+  ([JUDGE-COLLAPSED DECODING VERDICT](RESULTS.md#L8146 "id:2026-07-28-judge-collapsed-decoding-verdict-null-by").)
 
 ## Exact tails, optimizer nulls, and symmetry
 
@@ -938,44 +938,44 @@ sessions under one operator, not independent investigators. Read
   [REGIME-SCOPED: deterministic integer battery] On the measured Apple/NVIDIA
   endpoint pair, the exact-vs-fp64 causal arm localized all differences to
   latent last-bit casts and found no deployed sign-cell change. ([NIGHT-28
-  STAGE 1](RESULTS.md#L8247).)
+  STAGE 1](RESULTS.md#L8247 "id:2026-07-28-night-28-stage-1-d2-endpoints").)
 - [NULL] [REGIME-SCOPED: closed-system math] Independent successor
   implementations were sound on the accepted sample, but exact set parity did
   not resolve because their normal forms differ; adoption is scoped to
   soundness, not identical enumeration. ([SUCCESSORS-BRIDGE
-  ACCEPTANCE](RESULTS.md#L8281).)
+  ACCEPTANCE](RESULTS.md#L8281 "id:2026-07-28-successors-bridge-acceptance-soundness-pass-200").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] Muon
   remained gate-toxic at every tested schedule; the null stands without the
   withdrawn CE-dissociation story. ([MUON @ 3EP STANDARD
-  SCHEDULE](RESULTS.md#L8311).)
+  SCHEDULE](RESULTS.md#L8311 "id:2026-07-28-muon-3ep-standard-schedule-43-120").)
 - [RETRACTED] [TEACHER-FORCED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] The fixed-instrument Muon
   CE/gate-dissociation reading is retracted because CE tracked the gate on that
-  instrument. ([CE-GATE STUDY](RESULTS.md#L6414).)
+  instrument. ([CE-GATE STUDY](RESULTS.md#L6414 "id:2026-07-26-ce-gate-study-my-hypothesis-fails").)
 - [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] At n=1 per
   group cell, dense gates retrofitted into the tested complex, quaternion, Z2,
   and C8 commutants with bounded toll; this is a retrofit ladder, not a
-  universal symmetry law. ([ROTATIONAL SNAP R3](RESULTS.md#L8610); [SYMMETRY
-  LADDER S4 + S3](RESULTS.md#L8733).)
+  universal symmetry law. ([ROTATIONAL SNAP R3](RESULTS.md#L8610 "id:2026-07-28-rotational-snap-r3-verdict-the-conversion"); [SYMMETRY
+  LADDER S4 + S3](RESULTS.md#L8733 "id:2026-07-28-symmetry-ladder-s4-s3-verdict-z2").)
 - [NULL] [REGIME-SCOPED: house crystals] No spontaneous commutant structure
   appeared in the tested dense crystal before intervention — a WEIGHT-BASIS
   statement only: the rotation lenses were later shown blind to a confirmed
   activation clock, so representation-level symmetry is unmeasured by this
   instrument. ([SYMMETRY LADDER
-  S1 CELL 1 VERDICT](RESULTS.md#L8665); [VERDICT TIER-A
-  A2+A3](RESULTS.md#L12814).)
+  S1 CELL 1 VERDICT](RESULTS.md#L8665 "id:2026-07-28-symmetry-ladder-s1-cell-1-verdict"); [VERDICT TIER-A
+  A2+A3](RESULTS.md#L12814 "id:2026-07-31-verdict-tier-a-a2-a3-a").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: house crystals] Projection followed
   by a warm-training arm kept the imposed commutant locally stable, showing
   that SGD accepted imposed symmetry even though it had not selected it.
-  ([ROTATIONAL SNAP R3 VERDICT](RESULTS.md#L8610).)
+  ([ROTATIONAL SNAP R3 VERDICT](RESULTS.md#L8610 "id:2026-07-28-rotational-snap-r3-verdict-the-conversion").)
 - [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] At n=1, Z2
   and C8 cuts with the same deleted mass produced different gate damage;
   functional direction, not mass fraction alone, controlled the result.
-  ([SYMMETRY LADDER S4 + S3 VERDICT](RESULTS.md#L8733).)
+  ([SYMMETRY LADDER S4 + S3 VERDICT](RESULTS.md#L8733 "id:2026-07-28-symmetry-ladder-s4-s3-verdict-z2").)
 - [MECHANISM-CONFIRMED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] A
   doubled-width causal construction enforced exact rotational symmetry and
   preserved the measured gate, separating existence from at-width toll.
-  ([SYMMETRY LADDER S2 VERDICT](RESULTS.md#L8786).)
+  ([SYMMETRY LADDER S2 VERDICT](RESULTS.md#L8786 "id:2026-07-28-symmetry-ladder-s2-verdict-exactly-65").)
 
 ## Chaos, EMA, and nested crystals
 
@@ -983,27 +983,27 @@ sessions under one operator, not independent investigators. Read
   [REGIME-SCOPED: specified diet and recipe] At n=1 NVIDIA perturbation grid,
   trajectories mixed strongly while capability stayed on the same measured
   shell; the claim is device-and-recipe scoped. ([ATLAS-2 LYAPUNOV
-  VERDICT](RESULTS.md#L9009).)
+  VERDICT](RESULTS.md#L9009 "id:2026-07-28-atlas-2-lyapunov-verdict-chaotic-mixing").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FORMAT-BOUND] [TEACHER-FORCED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] At n=1 under the tested simple
   NVIDIA schedules, EMA contracted format-bound disagreement and improved the gate.
-  ([NIGHT-28b VERDICT](RESULTS.md#L9135).)
+  ([NIGHT-28b VERDICT](RESULTS.md#L9135 "id:2026-07-28-night-28b-verdict-ema-tames-the").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] Under
   the production schedule, EMA was redundant and was not adopted as the
-  default. ([A0 VERDICT](RESULTS.md#L9246).)
+  default. ([A0 VERDICT](RESULTS.md#L9246 "id:2026-07-29-a0-verdict-ema-is-redundant-under").)
 - [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] At n=1, a
   joint-loss matryoshka tensor carried dense and circulant tiers; nesting
   across unlike compression axes still consumed measured slack. ([MATRYOSHKA
-  RUNG 1 VERDICT](RESULTS.md#L9087).)
+  RUNG 1 VERDICT](RESULTS.md#L9087 "id:2026-07-28-matryoshka-rung-1-verdict-the-nested").)
 - [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] At n=1 C8
   reconstruction, capability accumulated with retained spectral mass; this is
   one crystal's frequency-axis anatomy. ([SYMMETRY SPECTRUM
-  VERDICT](RESULTS.md#L9200).)
+  VERDICT](RESULTS.md#L9200 "id:2026-07-29-symmetry-spectrum-verdict-capability-accumulates-linearly").)
 - [SINGLE-SEED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] At n=1 per grammar-scale cell,
   the C8 sharing toll stayed stable on math but grew on ZX; the result is bound
   to the tested diets and recipes. ([C8-RETROFIT AT 45M
-  VERDICT](RESULTS.md#L9113).)
+  VERDICT](RESULTS.md#L9113 "id:2026-07-28-c8-retrofit-at-45m-verdict-the").)
 
 ## The slack atlas and escalation engine
 
@@ -1011,39 +1011,39 @@ sessions under one operator, not independent investigators. Read
   [REGIME-SCOPED: specified diet and recipe] The d56 width floor tied d64 on
   n=3 paired NVIDIA seeds and agreed with the independently measured Apple
   line; that paired seed-and-device route is the replication. ([NIGHT-29
-  VERDICT 1](RESULTS.md#L9414).)
+  VERDICT 1](RESULTS.md#L9414 "id:2026-07-29-night-29-verdict-1-the-width").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] At n=1 NVIDIA recipe, the FFN arm
   remained flat over the measured range; it does not establish global FFN
-  irrelevance. ([NIGHT-29 VERDICT 2](RESULTS.md#L9425).)
+  irrelevance. ([NIGHT-29 VERDICT 2](RESULTS.md#L9425 "id:2026-07-29-night-29-verdict-2-ffn-is").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] At n=1 Apple depth ladder, the
   tested depths tied; depth remains a one-cell flat. ([DEPTH LADDER
-  VERDICT](RESULTS.md#L10135).)
+  VERDICT](RESULTS.md#L10135 "id:2026-07-29-depth-ladder-verdict-depth-is-slack").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] At n=1 NVIDIA dose ladder,
   quarter-cuts were flat; the finding is limited to that diet and recipe.
-  ([LEG C VERDICT](RESULTS.md#L10160).)
+  ([LEG C VERDICT](RESULTS.md#L10160 "id:2026-07-29-leg-c-verdict-the-marginal-value").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: house crystals] Controlled snap
   sweeps collapsed within each crystal only after adding a per-crystal
   fragility term; a single geometry-only curve was rejected. ([DISTORTION
-  COLLAPSE VERDICT](RESULTS.md#L10306).)
+  COLLAPSE VERDICT](RESULTS.md#L10306 "id:2026-07-29-distortion-collapse-verdict-one-curve-per").)
 - [MECHANISM-CONFIRMED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals]
   Causal single-head deletion arms found a sparse set of load-bearing
   layer/head cells rather than uniform head essentiality. ([HEAD AUTOPSY
-  VERDICT](RESULTS.md#L10356).)
+  VERDICT](RESULTS.md#L10356 "id:2026-07-29-head-autopsy-verdict-essentiality-is-cell").)
 - [SINGLE-SEED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: specified diet and recipe] At n=1, immediate-step call spans
   improved the measured gate while end-value spans did not; delegation is
   step-local in this format. ([STEP-LOCAL CALL-SPAN
-  VERDICT](RESULTS.md#L9998).)
+  VERDICT](RESULTS.md#L9998 "id:2026-07-29-step-local-call-span-verdict-delegation").)
 - [SINGLE-SEED] [FREE-RUN-GATED] [REGIME-SCOPED: house crystals] At n=1
   decode battery, tier retry beat the same tensor's dense-only policy; this is
   a controller result for one matryoshka artifact. ([ESCALATION POLICY
-  VERDICT](RESULTS.md#L10034).)
+  VERDICT](RESULTS.md#L10034 "id:2026-07-29-escalation-policy-verdict-the-ladder-beats").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: specified diet and recipe] The
   reverse model learned inversion but did not produce resolved novel farming
-  yield under the tested recipe. ([FARMER PROBE VERDICT](RESULTS.md#L10091).)
+  yield under the tested recipe. ([FARMER PROBE VERDICT](RESULTS.md#L10091 "id:2026-07-29-farmer-probe-verdict-the-reverse-model").)
 
 ## The packed-crystal boundary
 
@@ -1051,38 +1051,38 @@ sessions under one operator, not independent investigators. Read
   [REGIME-SCOPED: at-capacity house crystals] Sigma-pack gate parity and
   near-Gaussian code entropy reproduced across n=3 paired d64h8 births; the
   weak width-floor births are the explicit exception. ([C1 AT n=3
-  VERDICT](RESULTS.md#L11232); [PACKED CRYSTAL C0+C1
-  VERDICT](RESULTS.md#L10406).)
+  VERDICT](RESULTS.md#L11232 "id:2026-07-30-c1-at-n-3-verdict-h8"); [PACKED CRYSTAL C0+C1
+  VERDICT](RESULTS.md#L10406 "id:2026-07-29-packed-crystal-c0-c1-verdict-zero").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: at-capacity house crystals] On the
   matched-bit d64h8 crystal, GPTQ, AWQ, and HQQ did not separate from the
   closed-form calibration-free pack. ([PACKED CRYSTAL C3
-  VERDICT](RESULTS.md#L10458).)
+  VERDICT](RESULTS.md#L10458 "id:2026-07-29-packed-crystal-c3-verdict-nothing-beats").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] At n=1 Apple kernel
   benchmark, the bit-packed format executed directly and beat the byte-aligned
   kernel; this is a measured shape/device result. ([PACKED CRYSTAL C2b
-  VERDICT](RESULTS.md#L10587).)
+  VERDICT](RESULTS.md#L10587 "id:2026-07-29-packed-crystal-c2b-verdict-the-disk").)
 - [REPLICATED] [DEVICE-SCOPED]
   [REGIME-SCOPED: deterministic integer battery] Integer-forward hashes
   reproduced across independent Apple and NVIDIA devices; floating logits
   differed even when greedy streams matched. ([PACKED CRYSTAL C4
-  VERDICT](RESULTS.md#L10657).)
+  VERDICT](RESULTS.md#L10657 "id:2026-07-29-packed-crystal-c4-verdict-claim-3").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [TEACHER-FORCED] [REGIME-SCOPED: Qwen2.5-0.5B] At n=1 NVIDIA
   model, per-tensor sigma allocation was 33× worse than HQQ: the house-crystal
   packing law did not transport unchanged. ([PACKED CRYSTAL C6
-  VERDICT](RESULTS.md#L10676).)
+  VERDICT](RESULTS.md#L10676 "id:2026-07-29-packed-crystal-c6-verdict-the-falsifier").)
 - [NULL] [DEVICE-SCOPED] [TEACHER-FORCED] [REGIME-SCOPED: Qwen2.5-0.5B] On that NVIDIA model,
   per-row sigma allocation did not rescue the failure. ([PACKED CRYSTAL C6b
-  VERDICT](RESULTS.md#L10709).)
+  VERDICT](RESULTS.md#L10709 "id:2026-07-29-packed-crystal-c6b-verdict-per-row").)
 - [MECHANISM-CONFIRMED] [DEVICE-SCOPED] [TEACHER-FORCED] [REGIME-SCOPED: Qwen2.5-0.5B] On
   that NVIDIA model, the causal sigma/8 arm recovered 11.6×, while
   max-anchored grids still won; the intervention locates the boundary in the
   heavy-tail knee rather than row granularity. ([PACKED CRYSTAL C6c
-  VERDICT](RESULTS.md#L10736).)
+  VERDICT](RESULTS.md#L10736 "id:2026-07-29-packed-crystal-c6c-verdict-the-sigma").)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] At n=1 nested
   artifact, tiered bytes reduced escalation cost but the joint-STE parent did
   not inherit the zero-tax pack. ([PACKED CRYSTAL C5
-  VERDICT](RESULTS.md#L10529).)
+  VERDICT](RESULTS.md#L10529 "id:2026-07-29-packed-crystal-c5-verdict-the-nested").)
 
 ## Deployment artifacts and the capacity meter
 
@@ -1094,23 +1094,23 @@ sessions under one operator, not independent investigators. Read
   standard libraries: the pinned Q32/Q64 rung digests reproduce under
   clang/libc++ and gcc/libstdc++ after the fixture RNG (not the engine)
   was caught as stdlib-dependent and re-pinned, receipts four
-  reproductions deep. ([P3 VERDICT](RESULTS.md#L11357);
-  [COUNTER-BOOK ENGINE-EXACT-1-RECEIPT](RESULTS.md#L23486);
-  [AMENDMENT ENGINE-EXACT-1-DIGESTS](RESULTS.md#L23566).)
+  reproductions deep. ([P3 VERDICT](RESULTS.md#L11357 "id:2026-07-30-p3-verdict-the-deterministic-decode-lands");
+  [COUNTER-BOOK ENGINE-EXACT-1-RECEIPT](RESULTS.md#L23486 "id:2026-08-09-counter-book-engine-exact-1-receipt");
+  [AMENDMENT ENGINE-EXACT-1-DIGESTS](RESULTS.md#L23566 "id:2026-08-09-amendment-engine-exact-1-digests-target").)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] At n=1 packing
   pass, rANS converted the measured entropy bound into real lossless bytes for
   the sampled house crystals and one production MoE artifact. ([P6-v2
-  VERDICT](RESULTS.md#L11297).)
+  VERDICT](RESULTS.md#L11297 "id:2026-07-30-p6-v2-verdict-the-entropy-bound").)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] At n=1
   artifact census, the capacity meter ordered the measured house groups and
   sampled MoE experts; this is an empirical allocator predicate, not a
-  universal codec law. ([CAPACITY METER VERDICT](RESULTS.md#L10808);
-  [EXPERT-SCALE VERDICT](RESULTS.md#L10995).)
+  universal codec law. ([CAPACITY METER VERDICT](RESULTS.md#L10808 "id:2026-07-29-capacity-meter-verdict-the-allocator-predicate");
+  [EXPERT-SCALE VERDICT](RESULTS.md#L10995 "id:2026-07-29-expert-scale-verdict-artin-s-prediction").)
 - [NULL] [DEVICE-SCOPED] [TEACHER-FORCED] [REGIME-SCOPED: measured deployment artifacts] On
   the measured Apple OLMoE KL/perplexity arms and the Qwen boundary, the
   house-crystal zero-tax allocator did not transport; calibrated/max-anchored
-  methods retained an advantage. ([C7 VERDICT](RESULTS.md#L10895); [N2
-  VERDICT](RESULTS.md#L11133).)
+  methods retained an advantage. ([C7 VERDICT](RESULTS.md#L10895 "id:2026-07-29-c7-verdict-strong-form-transport-fails"); [N2
+  VERDICT](RESULTS.md#L11133 "id:2026-07-30-n2-verdict-dial-pack-recovers-3").)
 
 ## MoE mechanisms and the scaffold correction
 
@@ -1118,31 +1118,31 @@ sessions under one operator, not independent investigators. Read
   [REGIME-SCOPED: measured deployment artifacts] A shipped Kimi-K3 expert
   forward hash-locked across three independent CPU, Apple, and NVIDIA backend
   implementations; those backends are the replication route. ([K3-D1
-  VERDICT](RESULTS.md#L11433); [K3-D2 VERDICT](RESULTS.md#L11513).)
+  VERDICT](RESULTS.md#L11433 "id:2026-07-30-k3-d1-verdict-one-expert-out"); [K3-D2 VERDICT](RESULTS.md#L11513 "id:2026-07-30-k3-d2-verdict-full-expert-chain").)
 - [REPLICATED] [DEVICE-SCOPED]
   [REGIME-SCOPED: deterministic integer battery] Axiom independently
   implemented the full deterministic decode and reproduced both house hashes
-  across four backends. ([FX-V1-H VERDICT](RESULTS.md#L11468).)
+  across four backends. ([FX-V1-H VERDICT](RESULTS.md#L11468 "id:2026-07-30-fx-v1-h-verdict-cross-lab").)
 - [NULL] [DEVICE-SCOPED] [TEACHER-FORCED] [REGIME-SCOPED: tested MoE recipes]
   On two Apple seeds, ablations were unscreened and amplified with depth;
-  router-distance bins restored no lawful field. ([GRAV-1 VERDICT](RESULTS.md#L11686);
-  [GRAV-1b VERDICT](RESULTS.md#L11846).)
+  router-distance bins restored no lawful field. ([GRAV-1 VERDICT](RESULTS.md#L11686 "id:2026-07-30-grav-1-verdict-no-gravity-influence");
+  [GRAV-1b VERDICT](RESULTS.md#L11846 "id:2026-07-30-grav-1b-verdict-not-lawful-in").)
 - [MECHANISM-CONFIRMED] [DEVICE-SCOPED] [TEACHER-FORCED] [FREE-RUN-GATED]
   [REGIME-SCOPED: tested MoE recipes] In one paired Apple cell (n=1), the causal
   contractivity arm flattened epsilon-kick propagation at near-zero gate toll.
-  ([GRAV-2 VERDICT](RESULTS.md#L11866).)
+  ([GRAV-2 VERDICT](RESULTS.md#L11866 "id:2026-07-30-grav-2-verdict-spacetime-is-trainable").)
 - [REPLICATED] [TEACHER-FORCED] [REGIME-SCOPED: specified diet and recipe]
   Calibration quality and error detection reproduced on the original crystal
   and two fresh paired births; those n=3 births are the route. ([CAL-DK-1
-  VERDICT](RESULTS.md#L11744); [GRAV-2 VERDICT](RESULTS.md#L11866).)
+  VERDICT](RESULTS.md#L11744 "id:2026-07-30-cal-dk-1-verdict-no-dunning"); [GRAV-2 VERDICT](RESULTS.md#L11866 "id:2026-07-30-grav-2-verdict-spacetime-is-trainable").)
 - [MECHANISM-CONFIRMED] [TEACHER-FORCED]
   [REGIME-SCOPED: specified diet and recipe] Target-corruption arms moved
   calibration monotonically toward doubt, establishing diet dilution as the
-  cause in the tested recipe. ([CAL-DK-2 VERDICT](RESULTS.md#L11922).)
+  cause in the tested recipe. ([CAL-DK-2 VERDICT](RESULTS.md#L11922 "id:2026-07-30-cal-dk-2-verdict-dilution-breaks").)
 - [NULL] [REGIME-SCOPED: tested MoE recipes] Neither balance-loss nor
   soft-routing causal arms explained expert decorrelation in the tested MoE
-  recipes. ([UMOE-1 VERDICT](RESULTS.md#L11592); [UMOE-2
-  VERDICT](RESULTS.md#L11896).)
+  recipes. ([UMOE-1 VERDICT](RESULTS.md#L11592 "id:2026-07-30-umoe-1-verdict-the-split-law"); [UMOE-2
+  VERDICT](RESULTS.md#L11896 "id:2026-07-30-umoe-2-verdict-soft-routing-does").)
 ### Frontier deploy instruments (V4-Flash)
 
 Systems results on a shipped 304B artifact — deploy/decode
@@ -1156,20 +1156,20 @@ regime tag on every bullet is the fence.
   the weights independently, and the decode was checked against the vendor's
   own dtype semantics. One expert, one layer, one model: replication is of the
   integer-exactness route, not MoE integer exactness in general. ([VERDICT
-  V4-RUNG-A](RESULTS.md#L15884); the NVIDIA leg is a rider —
-  [RIDER V4-RUNG-A](RESULTS.md#L15933).)
+  V4-RUNG-A](RESULTS.md#L15884 "id:2026-08-02-verdict-v4-rung-a-a-deepseek"); the NVIDIA leg is a rider —
+  [RIDER V4-RUNG-A](RESULTS.md#L15933 "id:2026-08-02-rider-on-verdict-v4-rung-a").)
 - [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
   A frontier 304B MoE's shipped 4-bit expert codes carry 3.865 bits of entropy,
   and their 8-bit power-of-two block scales carry 0.964 — so the scale stream
   is 5.9% of the bytes but 62% of the losslessly recoverable headroom, on a
-  3-layer sample. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
+  3-layer sample. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776 "id:2026-08-02-verdict-v4-rung-0-1-all").)
 - [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
   The shared component a gravity decomposition looks for is present in a
   frontier MoE's ROUTER GEOMETRY, not its weights: at layer 22 all 32,640
   gate-key pairs are positively aligned and every key shares a common
   direction, while pairs closest in routing space show no more weight
   structure than random ones. ([VERDICT V4-RUNG-R +
-  2B-ROUTER](RESULTS.md#L16183); qualified below.)
+  2B-ROUTER](RESULTS.md#L16183 "id:2026-08-02-verdict-v4-rung-r-2b-router"); qualified below.)
 - [NULL] [REGIME-SCOPED: measured deployment artifacts]
   An attempt to measure a frontier MoE's router input by inverting its trained
   load-balancing bias FAILED its registered predictions: a shuffled-bias null
@@ -1177,33 +1177,33 @@ regime tag on every bullet is the fence.
   property of the key geometry and the synthetic input family, not of the
   balancer. The shared direction's share of top-6 selection is bounded to
   7-21% under that family and remains unlocated. ([AMENDMENT
-  FINAL-0803](RESULTS.md#L17024); [VERDICT V4-RUNG-D2](RESULTS.md#L16937).)
+  FINAL-0803](RESULTS.md#L17024 "id:2026-08-03-amendment-final-0803-amends-verdict-v4"); [VERDICT V4-RUNG-D2](RESULTS.md#L16937 "id:2026-08-03-verdict-v4-rung-d2-prediction-1").)
 - [SINGLE-SEED] [FORMAT-BOUND] [REGIME-SCOPED: measured deployment artifacts]
   Entropy-coding a frontier MoE's shipped 4-bit experts yields an archive,
   not a runtime: the byte-lossless form saves 8.3% and decodes at 38 MB/s
   single-threaded, 131x under the pipe a streaming design assumes and 90 s
   per token of pure decode for a 43-layer, 6-expert route. ([VERDICT
-  V4-RUNG-D + S0](RESULTS.md#L16483); traffic corrected in [AMENDMENT
-  RUNGD-0803](RESULTS.md#L16608).)
+  V4-RUNG-D + S0](RESULTS.md#L16483 "id:2026-08-03-verdict-v4-rung-d-s0-the"); traffic corrected in [AMENDMENT
+  RUNGD-0803](RESULTS.md#L16608 "id:2026-08-03-amendment-rungd-0803-amends-verdict-v4").)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
   A 304B checkpoint's own parameter census overturned the reason it cannot
   be run locally: the always-on dense path is 9.4 GB, not the 27 GB a
   subtraction implied, because 19 of those "dense" billions are three
   multi-token-prediction blocks each holding a full 256-expert layer.
-  ([RECEIPT V4-CENSUS](RESULTS.md#L16816).)
+  ([RECEIPT V4-CENSUS](RESULTS.md#L16816 "id:2026-08-03-receipt-v4-census-the-27b-dense").)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
   A 304B frontier MoE's entire GPU dependency is six kernels, and a
   pure-torch twin of them passes oracle acceptance on cpu and mps — the
   fp4 decode bit-identical to the certified decoder, every gemm within
   1/128 of an exact fp64 reference on real shipped weights. ([VERDICT
-  V4-F1a](RESULTS.md#L17263).)
+  V4-F1a](RESULTS.md#L17263 "id:2026-08-03-verdict-v4-f1a-the-kernel-twin").)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
   Under RANDOM weights an untrained 3-layer boot of the same model
   amplifies cross-device bf16 noise ~3x per layer (0.12 to 0.56) while
   each kernel individually sits at 4e-3 — and with TRAINED weights the
   same comparison collapses to ~2e-3 per layer, so end-to-end tolerance
   bars belong to trained networks only. ([VERDICT
-  V4-F1b](RESULTS.md#L17303); [VERDICT V4-F1c](RESULTS.md#L17360).)
+  V4-F1b](RESULTS.md#L17303 "id:2026-08-03-verdict-v4-f1b-the-vendor-s"); [VERDICT V4-F1c](RESULTS.md#L17360 "id:2026-08-03-verdict-v4-f1c-real-v4-flash").)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
   DeepSeek-V4-Flash generated tokens on a 36 GB Mac — vendor code
   unmodified over the kernel twin, 7.13% of routed experts resident
@@ -1212,53 +1212,53 @@ regime tag on every bullet is the fence.
   masking done by one write into the aux-loss-free bias — and what
   survives 92.9% expert amputation is fluent CONTEXT-COPYING: the output
   is a pure prompt-echo loop, logged verbatim, no capability claimed.
-  ([VERDICT V4-F1d](RESULTS.md#L17401).)
+  ([VERDICT V4-F1d](RESULTS.md#L17401 "id:2026-08-03-verdict-v4-f1d-deepseek-v4-flash").)
 - [NULL] [REGIME-SCOPED: measured deployment artifacts]
   Neither making the biggest weights fast (bf16-dequanting the 40x-larger
   dense path: no measurable gain) nor caching the hot ones (774-tensor
   per-token working set thrashed any affordable cap, 5x slower) moved a
   compute-bound MoE decode; making the hot OP cheap did — a [256,2]
   pair-LUT unpack bought 2.2x at zero memory. ([VERDICT
-  V4-F1e](RESULTS.md#L17578).)
+  V4-F1e](RESULTS.md#L17578 "id:2026-08-03-verdict-v4-f1e-2-2x-from").)
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
   Bit-exact batching of the per-layer expert calls (equivalence gate
   0.00e+00 — reproducing the vendor's three per-projection bf16 roundings
   was the contract) bought only 1.22x more, so neither launches nor
   batching bound the decode: the wall is unpack VOLUME per token, which
   only multi-token verification can amortize. ([VERDICT V4-F1e
-  ARM5](RESULTS.md#L17674); corrections in [AMENDMENT
-  F1-REVIEW](RESULTS.md#L17713).)
+  ARM5](RESULTS.md#L17674 "id:2026-08-03-verdict-v4-f1e-arm5-bit-exact"); corrections in [AMENDMENT
+  F1-REVIEW](RESULTS.md#L17713 "id:2026-08-03-amendment-f1-review-amends-verdicts-v4").)
 - [NULL] [FORMAT-BOUND] [REGIME-SCOPED: tested MoE recipes]
   Experts in a 256-expert frontier layer are statistically identical yet
   individually unmatchable: sorted hidden-unit norm profiles agree to 7%, while
   pairing a unit with its counterpart is indistinguishable from pairing it at
   random, so aligning by permutation before differencing buys 0.02 bits/param
-  against a 0.2 bar. ([VERDICT V4-RUNG-2B](RESULTS.md#L16033).)
+  against a 0.2 bar. ([VERDICT V4-RUNG-2B](RESULTS.md#L16033 "id:2026-08-02-verdict-v4-rung-2b-n3-survives").)
 - [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts]
   The sign bit of a symmetric 4-bit weight code is incompressible to five
   decimals (1.00000 bits on all 27 tensors, against a 0.9995 bar), so the
-  coding margin sits in the magnitude alphabet. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776).)
+  coding margin sits in the magnitude alphabet. ([VERDICT V4-RUNG-0/1](RESULTS.md#L15776 "id:2026-08-02-verdict-v4-rung-0-1-all").)
 - [REPLICATED] [TEACHER-FORCED] [REGIME-SCOPED: deterministic integer battery]
   Consensus pull between experts buys mergeability monotonically: merge damage
   falls with dose and reaches exactly zero at full pull, where experts collapse
   to bit-identical agreement, at all three paired init draws. ([VERDICT
-  DIET-COND-SEED](RESULTS.md#L15615).)
+  DIET-COND-SEED](RESULTS.md#L15615 "id:2026-08-02-verdict-diet-cond-seed-the-interior").)
 - [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: deterministic integer battery]
   The best dose is interior at every draw, but its location is not stable: the
   optimum sits at 1/4 for one draw and 1/16 for two others, and the 1/4 dose is
   worse than no gravity at both of the latter, so no dose is recommended.
-  ([VERDICT DIET-COND-SEED](RESULTS.md#L15615).)
+  ([VERDICT DIET-COND-SEED](RESULTS.md#L15615 "id:2026-08-02-verdict-diet-cond-seed-the-interior").)
 - [REPLICATED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: tested MoE recipes] Hebbian-coupled experts merged to one
   dense expert with zero-mean bounded gate cost across n=3 Mac seeds and an
   independent CUDA birth; paired seeds plus device transport are the route.
-  ([VERDICT MERGE-CUDA](RESULTS.md#L12679).)
+  ([VERDICT MERGE-CUDA](RESULTS.md#L12679 "id:2026-07-31-verdict-merge-cuda-merge-free-goes").)
 - [NULL] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: tested MoE recipes] The stale scaffold capability advantage
   did not transport: on n=3 paired CUDA seeds, gravmoe and baseline means tied
   at 50.7 versus 50.7. The retained recipe is merge-free and
-  capability-neutral. ([VERDICT CUDA SEED LADDER](RESULTS.md#L13286).)
+  capability-neutral. ([VERDICT CUDA SEED LADDER](RESULTS.md#L13286 "id:2026-07-31-verdict-cuda-seed-ladder-the-gravmoe").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: house crystals] At d64 micro scale, the average of
   independently born weights is not a worse model, it is not a model: all
@@ -1267,26 +1267,26 @@ regime tag on every bullet is the fence.
   merge landed inside the 12-15 parent band and the task-vector child
   cratered to 1/120. Four identical-recipe births spanned 12-30/120 — the
   d64 seed lever dwarfs every diet and schedule lever measured at this
-  scale. ([VERDICT MERGE-SPACE-1](RESULTS.md#L26770).)
+  scale. ([VERDICT MERGE-SPACE-1](RESULTS.md#L26770 "id:2026-08-11-verdict-merge-space-1-r1-independent").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: house crystals] At d64 micro scale, two three-epoch
   trainings that never shared an optimizer step still merged inside the
   parent band when they shared initialization (and epoch-seeded data order —
   the named fence): the basin is chosen at birth, not by the trajectory.
-  ([VERDICT MERGE-SPACE-2](RESULTS.md#L26866).)
+  ([VERDICT MERGE-SPACE-2](RESULTS.md#L26866 "id:2026-08-11-verdict-merge-space-2-r2-p").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: house crystals] The deconfound closed the chain: with data
   order made independent (ORDER_SEED fork), the same-init merge still landed
   in-band — in fact at the top of it. Shared initialization alone keeps two
   never-synchronized d64 trainings mergeable; order moved the gate by one
-  solve, init is the address. ([VERDICT MERGE-SPACE-3](RESULTS.md#L26947).)
+  solve, init is the address. ([VERDICT MERGE-SPACE-3](RESULTS.md#L26947 "id:2026-08-11-verdict-merge-space-3-r2b-p").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: house crystals] Souping four order twins is free but not
   profitable: the uniform 4-way soup gated exactly at the family max (14),
   nowhere near the +7 profit bar. The greedy-soup effect at d64 is
   damage-free flattening onto the best member, not lift; a byte-identical
   rerun of one inner merge doubled as a merge-determinism receipt.
-  ([VERDICT MERGE-SPACE-4](RESULTS.md#L27013).)
+  ([VERDICT MERGE-SPACE-4](RESULTS.md#L27013 "id:2026-08-11-verdict-merge-space-4-r2c-soup").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: house crystals] The loss floor walks down monotonically
   across a fresh 8x width ladder (0.4364 to 0.3478, d64 to d512) but never
@@ -1294,14 +1294,14 @@ regime tag on every bullet is the fence.
   of effective context past the 16-gram wall. Width sets the floor —
   a fresh d512 landed on the grown crown's reference line — while gate
   capability saturates in width long before the floor does.
-  ([VERDICT FLOOR-HK-1](RESULTS.md#L27055).)
+  ([VERDICT FLOOR-HK-1](RESULTS.md#L27055 "id:2026-08-11-verdict-floor-hk-1-r3-both").)
 - [REPLICATED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: house crystals] Init-is-the-address, replicated: at n=3
   paired seeds spanning the family's 11-31 capability range, every
   same-init independent-order merge landed in the parent band and none
   cratered, while every independent-init merge in the same family had gated
   exactly zero. Merges flatten onto the better pair member at every seed.
-  ([VERDICT MERGE-SPACE-5](RESULTS.md#L27158).)
+  ([VERDICT MERGE-SPACE-5](RESULTS.md#L27158 "id:2026-08-11-verdict-merge-space-5-r2d-p").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: house crystals] Substituting a minimal selective state-space
   block for attention at d64 lost on both axes against its paired twin — floor
@@ -1310,7 +1310,7 @@ regime tag on every bullet is the fence.
   survives the opposite inductive bias, so it belongs to the diet rather than
   to attention. The arm is near non-functional at this scale, so it licenses
   nothing about state-space models generally.
-  ([VERDICT SSM-STAR-1](RESULTS.md#L27282).)
+  ([VERDICT SSM-STAR-1](RESULTS.md#L27282 "id:2026-08-11-verdict-ssm-star-1-the-house").)
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] A truncation probe on trained
   checkpoints — no retraining — found that deep positions do exploit long
   context: at every one of four widths, loss at positions past 128 falls by
@@ -1320,11 +1320,11 @@ regime tag on every bullet is the fence.
   bar, that wider models separate further as context grows, did NOT fire: the
   width gap is negative at k=8 and narrows again at k=128, so it does not
   order monotonically in k. One diet, one probe, loss only, no gate.
-  ([VERDICT KEFF-PROBE-1](RESULTS.md#L27332).)
+  ([VERDICT KEFF-PROBE-1](RESULTS.md#L27332 "id:2026-08-11-verdict-keff-probe-1-bar-1").)
 - [SINGLE-SEED] [TEACHER-FORCED] [REGIME-SCOPED: closed-system math] At n=1 activation probe,
   a small population of digit-periodic neurons showed partial Fourier
   character; this is an in-vivo sighting, not a general representation law.
-  ([FOURIER-1 VERDICT](RESULTS.md#L12096).)
+  ([FOURIER-1 VERDICT](RESULTS.md#L12096 "id:2026-07-30-fourier-1-verdict-amended-instrument-a").)
 
 ## The routing crest and domain coalitions
 
@@ -1337,23 +1337,23 @@ regime tag on every bullet is the fence.
   against a registered +7 bar. Six paired seeds are the replication
   route; the claim is a gate claim on one vehicle, one keep rule, and
   mathgen L1-3, not a general quality claim, and the text/coherence
-  dissociation still applies. ([VERDICT MOE-GT-1-R4](RESULTS.md#L18861);
-  [VERDICT MOE-GT-1-R5](RESULTS.md#L18927).)
+  dissociation still applies. ([VERDICT MOE-GT-1-R4](RESULTS.md#L18861 "id:2026-08-04-verdict-moe-gt-1-r4-the");
+  [VERDICT MOE-GT-1-R5](RESULTS.md#L18927 "id:2026-08-04-verdict-moe-gt-1-r5-confirmed").)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] The effect is
   selection, not sparsity: at the identical 45.3% keep fraction, two
   random masks and one anti-demand mask each scored 0/120, so WHICH
   experts are kept is the difference between 0 and 82 of 120. Generic
   sparsity contributed nothing measurable at that fraction. ([VERDICT
-  MOE-GT-1-R6](RESULTS.md#L19108).)
+  MOE-GT-1-R6](RESULTS.md#L19108 "id:2026-08-04-verdict-moe-gt-1-r6-the").)
 - [SINGLE-SEED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] At one unspent seed the
   argmax over masked fractions stayed at 45.3% (82/120 against a paired
   full model's 60), so the interior peak's LOCATION did not move the way
   the diet-dose optimum did; the 45.3-versus-50 margin of 7 on that seed
   is about 1.5 sigma on the 120-prompt gate and is not resolved by
-  it. ([VERDICT MOE-GT-2-D1](RESULTS.md#L19225); [VERDICT
-  DIET-COND-SEED](RESULTS.md#L15615).)
+  it. ([VERDICT MOE-GT-2-D1](RESULTS.md#L19225 "id:2026-08-04-verdict-moe-gt-2-d1-crest"); [VERDICT
+  DIET-COND-SEED](RESULTS.md#L15615 "id:2026-08-02-verdict-diet-cond-seed-the-interior").)
 - [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] The deployed router is
   domain-organized: decode-only expert coalitions at 45.3% keep have
@@ -1364,9 +1364,9 @@ regime tag on every bullet is the fence.
   prompt-token overlap (0.329 mathematics-mechanics versus 0.097
   mathematics-code). One seed per domain; tie-filled keep-set boundaries
   make every cross-domain Jaccard an upper bound. ([VERDICT
-  MOE-GT-2-D2](RESULTS.md#L19254); [VERDICT MOE-GT-2-D3](RESULTS.md#L19294);
+  MOE-GT-2-D2](RESULTS.md#L19254 "id:2026-08-04-verdict-moe-gt-2-d2-the"); [VERDICT MOE-GT-2-D3](RESULTS.md#L19294 "id:2026-08-04-verdict-moe-gt-2-d3-the");
   numbers corrected for the prompt-tail phase bug in [AMENDMENT
-  GT2-REVIEW-2](RESULTS.md#L19648).)
+  GT2-REVIEW-2](RESULTS.md#L19648 "id:2026-08-04-amendment-gt2-review-2-three-seat").)
 - [NULL] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] The beats-full crest did
   not transport to mechanics under either mask recipe: the decode-built
@@ -1375,9 +1375,9 @@ regime tag on every bullet is the fence.
   signs 3/3. The mechanics baselines spread 24-42 of 120 across seeds, so
   that arm was underpowered to resolve +7 in EITHER direction; the
   registered rescue prediction nonetheless inverted far outside any noise
-  reading. ([VERDICT MOE-GT-2-D4-PHYS](RESULTS.md#L19340); [VERDICT
-  MOE-GT-2-D4-PHYS-B](RESULTS.md#L19528); power fence in [AMENDMENT
-  GT2-REVIEW](RESULTS.md#L19417).)
+  reading. ([VERDICT MOE-GT-2-D4-PHYS](RESULTS.md#L19340 "id:2026-08-04-verdict-moe-gt-2-d4-phys"); [VERDICT
+  MOE-GT-2-D4-PHYS-B](RESULTS.md#L19528 "id:2026-08-04-verdict-moe-gt-2-d4-phys-b"); power fence in [AMENDMENT
+  GT2-REVIEW](RESULTS.md#L19417 "id:2026-08-04-amendment-gt2-review-reviewer-pass-on").)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] Coverage and recall do
   not predict the SIGN of masking's capability effect. On matched
@@ -1387,9 +1387,9 @@ regime tag on every bullet is the fence.
   coverage 0.8908 versus 0.8811 — while mathematics gained +14.7 and
   mechanics lost -59. Exclusion mass is therefore killed as a sufficient
   mechanism, and what the excluded experts COMPUTE is the remaining
-  variable. ([VERDICT MOE-GT-2-D4-PHYS-B](RESULTS.md#L19528); confound
-  removal measured in [AMENDMENT GT2-REVIEW-2](RESULTS.md#L19648);
-  exclusion axis in [AMENDMENT GT2-EXCLUSION](RESULTS.md#L19482).)
+  variable. ([VERDICT MOE-GT-2-D4-PHYS-B](RESULTS.md#L19528 "id:2026-08-04-verdict-moe-gt-2-d4-phys-b"); confound
+  removal measured in [AMENDMENT GT2-REVIEW-2](RESULTS.md#L19648 "id:2026-08-04-amendment-gt2-review-2-three-seat");
+  exclusion axis in [AMENDMENT GT2-EXCLUSION](RESULTS.md#L19482 "id:2026-08-04-amendment-gt2-exclusion-the-transport-null").)
 - [SINGLE-SEED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] Cross-domain masks
   degrade severely without dying: a mathematics mask on the code gate
@@ -1401,8 +1401,8 @@ regime tag on every bullet is the fence.
   were never sampled, so no curve shape is claimed, and the surviving
   code rung under the mathematics mask was a lenient-checker artifact,
   leaving functional-versus-topical UNRESOLVED. ([VERDICT
-  MOE-GT-2-D4-CROSS](RESULTS.md#L19378); both demotions booked in
-  [AMENDMENT GT2-REVIEW](RESULTS.md#L19417).)
+  MOE-GT-2-D4-CROSS](RESULTS.md#L19378 "id:2026-08-04-verdict-moe-gt-2-d4-cross"); both demotions booked in
+  [AMENDMENT GT2-REVIEW](RESULTS.md#L19417 "id:2026-08-04-amendment-gt2-review-reviewer-pass-on").)
 - [SINGLE-SEED] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] A judge built only from
   readouts available at decision time — per-problem closed-loop recall,
@@ -1414,8 +1414,8 @@ regime tag on every bullet is the fence.
   missed: at the single registered budget the judge recovered 31 solves
   against 36 needed, a 4.25-solve gap inside the 120-prompt fence,
   while sitting about 2.1 standard deviations above random escalation.
-  ([VERDICT CHURN-JUDGE-1](RESULTS.md#L19614); interpretation corrected
-  in [AMENDMENT GT2-REVIEW-2](RESULTS.md#L19648).)
+  ([VERDICT CHURN-JUDGE-1](RESULTS.md#L19614 "id:2026-08-04-verdict-churn-judge-1-auc-bar"); interpretation corrected
+  in [AMENDMENT GT2-REVIEW-2](RESULTS.md#L19648 "id:2026-08-04-amendment-gt2-review-2-three-seat").)
 - [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] The three measured
   coalitions share a core of 37.1 of 58 experts per layer against an
@@ -1428,8 +1428,8 @@ regime tag on every bullet is the fence.
   since run and killed that reading: the core is symbolic (proofs
   coalition contains 0.90 of it, plain prose 0.25, with prose routing
   through a nearly different expert population at 0.16-0.19 Jaccard).
-  ([OBSERVATION GT2-CORE-0](RESULTS.md#L19718); [VERDICT
-  MOE-GT-3](RESULTS.md#L19852).)
+  ([OBSERVATION GT2-CORE-0](RESULTS.md#L19718 "id:2026-08-04-observation-gt2-core-0-a-three"); [VERDICT
+  MOE-GT-3](RESULTS.md#L19852 "id:2026-08-05-verdict-moe-gt-3-the-core").)
 - [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] A
   second verbal corpus showed the verbal side is its own branch with its
@@ -1443,10 +1443,10 @@ regime tag on every bullet is the fence.
   sufficient — and what restores capability above it requires
   verbal-branch residents (necessary, not sufficient; the recall
   reading is corrected in the bullets below).
-  ([OBSERVATION GT2-CORE-0](RESULTS.md#L19718); [VERDICT
-  MOE-GT-3](RESULTS.md#L19852); [VERDICT MOE-GT-4](RESULTS.md#L19953)
-  as corrected by [AMENDMENT MOE-GT-4-REVIEW](RESULTS.md#L20006);
-  [VERDICT MOE-GT-4b](RESULTS.md#L20111).)
+  ([OBSERVATION GT2-CORE-0](RESULTS.md#L19718 "id:2026-08-04-observation-gt2-core-0-a-three"); [VERDICT
+  MOE-GT-3](RESULTS.md#L19852 "id:2026-08-05-verdict-moe-gt-3-the-core"); [VERDICT MOE-GT-4](RESULTS.md#L19953 "id:2026-08-05-verdict-moe-gt-4-the-verbal")
+  as corrected by [AMENDMENT MOE-GT-4-REVIEW](RESULTS.md#L20006 "id:2026-08-05-amendment-moe-gt-4-review-corrected");
+  [VERDICT MOE-GT-4b](RESULTS.md#L20111 "id:2026-08-05-verdict-moe-gt-4b-the-branch").)
 - [REPLICATED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] A structural 61.1% mask
   built as the union of the two branch cores loses to the paired full
@@ -1455,9 +1455,9 @@ regime tag on every bullet is the fence.
   registered 5-15 band, so the first seed's 86% of full capability
   became 66% and 70% at fresh seeds (pooled 73.6%). Which experts are
   kept still costs real capability at 61% keep when the identity is
-  wrong. ([VERDICT MOE-GT-5](RESULTS.md#L20179); [VERDICT
-  MOE-GT-5b](RESULTS.md#L20267); ranges per [AMENDMENT
-  DAY-CONSOLIDATION-0805](RESULTS.md#L20575).)
+  wrong. ([VERDICT MOE-GT-5](RESULTS.md#L20179 "id:2026-08-05-verdict-moe-gt-5-neither-prediction"); [VERDICT
+  MOE-GT-5b](RESULTS.md#L20267 "id:2026-08-05-verdict-moe-gt-5b-the-union"); ranges per [AMENDMENT
+  DAY-CONSOLIDATION-0805](RESULTS.md#L20575 "id:2026-08-05-amendment-day-consolidation-0805-two-numeric").)
 - [RETRACTED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] Above the symbolic
   core, what restores capability is demand recall, not expert class:
@@ -1474,9 +1474,9 @@ regime tag on every bullet is the fence.
   Fences of the retracted reading: one seed, three draws; the union
   mask's edge over the random band's mean is inside the draw spread
   and unresolved; the registered per-answer degeneracy count was not
-  collected. ([VERDICT MOE-GT-5c](RESULTS.md#L20414); [AMENDMENT
-  MOE-GT-5c-SCOPE](RESULTS.md#L20860); [VERDICT
-  MOE-GT-6](RESULTS.md#L20793).)
+  collected. ([VERDICT MOE-GT-5c](RESULTS.md#L20414 "id:2026-08-05-verdict-moe-gt-5c-random-fill"); [AMENDMENT
+  MOE-GT-5c-SCOPE](RESULTS.md#L20860 "id:2026-08-05-amendment-moe-gt-5c-scope-the"); [VERDICT
+  MOE-GT-6](RESULTS.md#L20793 "id:2026-08-05-verdict-moe-gt-6-the-recall").)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] Verbal-branch
   experts are necessary for resurrecting masked mathematics
@@ -1495,8 +1495,8 @@ regime tag on every bullet is the fence.
   recall 0.53) carry no causal claim beyond the registered
   exclusion contrast; the original desk Spearmans are demoted to
   unverified and the committed script is the lens authority.
-  ([VERDICT MOE-GT-6](RESULTS.md#L20793); [AMENDMENT
-  MOE-GT-6-LENSES](RESULTS.md#L21269).)
+  ([VERDICT MOE-GT-6](RESULTS.md#L20793 "id:2026-08-05-verdict-moe-gt-6-the-recall"); [AMENDMENT
+  MOE-GT-6-LENSES](RESULTS.md#L21269 "id:2026-08-06-amendment-moe-gt-6-lenses-the").)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] Expert IDENTITY, not
   any aggregate property of the keep-set, determines masked
@@ -1514,8 +1514,8 @@ regime tag on every bullet is the fence.
   collapse (59-113 distinct of 120 on sub-20 arms against 118-120
   elsewhere) and is descriptive this rung. One gate seed, two draws
   per bin, tie-fill upper bounds travel.
-  ([PRE-REG MOE-GT-7](RESULTS.md#L21304); [VERDICT
-  MOE-GT-7](RESULTS.md#L21521).)
+  ([PRE-REG MOE-GT-7](RESULTS.md#L21304 "id:2026-08-06-pre-reg-moe-gt-7-the"); [VERDICT
+  MOE-GT-7](RESULTS.md#L21521 "id:2026-08-06-verdict-moe-gt-7-p-null").)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] Capability FOLLOWS
   a named expert-identity set under pinned aggregates: a symmetric,
@@ -1530,12 +1530,12 @@ regime tag on every bullet is the fence.
   loudly, not claimed: one swapped high draw rose to 77, above the
   paired full model's 64; the direction later held at 3/3 gate seeds
   (pooled +30) WITHOUT licensing a beats-full claim — see the carrier
-  bullet ([VERDICT EX1-C30-REPL](RESULTS.md#L22007); [VERDICT
-  EX1-C30-REPL-3](RESULTS.md#L22034)). One gate
+  bullet ([VERDICT EX1-C30-REPL](RESULTS.md#L22007 "id:2026-08-07-verdict-ex1-c30-repl-p-third"); [VERDICT
+  EX1-C30-REPL-3](RESULTS.md#L22034 "id:2026-08-07-verdict-ex1-c30-repl-3-unresolved")). One gate
   seed; swapped sets derived from the frozen coverage-ladder draws;
   the bisection ladder (k=2, k=1) is the registered follow-up.
-  ([PRE-REG EX-ANAT-1](RESULTS.md#L21603); [VERDICT
-  EX-ANAT-1](RESULTS.md#L21639).)
+  ([PRE-REG EX-ANAT-1](RESULTS.md#L21603 "id:2026-08-06-pre-reg-ex-anat-1-the"); [VERDICT
+  EX-ANAT-1](RESULTS.md#L21639 "id:2026-08-06-verdict-ex-anat-1-p-follow").)
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] The carrier
   mechanism decomposes: named top-demand exclusive experts are
@@ -1556,11 +1556,11 @@ regime tag on every bullet is the fence.
   (64/60/73), so mask-versus-full comparisons stay paired per
   seed. One gate seed for the arm batteries; the symmetric-swap
   claim localizes to the k=4 exchange.
-  ([VERDICT EX-ANAT-1B](RESULTS.md#L21704); [VERDICT
-  EX-ANAT-2](RESULTS.md#L21943); [VERDICT
-  EX1-C30-REPL](RESULTS.md#L22007); [VERDICT
-  EX1-C30-REPL-3](RESULTS.md#L22034); [DESK
-  R-EMISSION-0](RESULTS.md#L21850).)
+  ([VERDICT EX-ANAT-1B](RESULTS.md#L21704 "id:2026-08-06-verdict-ex-anat-1b-p-follow"); [VERDICT
+  EX-ANAT-2](RESULTS.md#L21943 "id:2026-08-07-verdict-ex-anat-2-p-portable"); [VERDICT
+  EX1-C30-REPL](RESULTS.md#L22007 "id:2026-08-07-verdict-ex1-c30-repl-p-third"); [VERDICT
+  EX1-C30-REPL-3](RESULTS.md#L22034 "id:2026-08-07-verdict-ex1-c30-repl-3-unresolved"); [DESK
+  R-EMISSION-0](RESULTS.md#L21850 "id:2026-08-07-desk-r-emission-0-emission-and").)
 - [REPLICATED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] Two crest claims
   book at three fresh paired gate seeds each (the discovery pool
@@ -1590,9 +1590,9 @@ regime tag on every bullet is the fence.
   before any "generally over-inclusive" reading. Scope: one
   vehicle, mathgen L1-3, drift finding scoped
   to the carriers' rank class.
-  ([VERDICT EX-ANAT-3](RESULTS.md#L22353); [DESK
-  EX-ANAT-3-0](RESULTS.md#L22128); [VERDICT
-  EX-FRESH](RESULTS.md#L22454).)
+  ([VERDICT EX-ANAT-3](RESULTS.md#L22353 "id:2026-08-07-verdict-ex-anat-3-neither-bar"); [DESK
+  EX-ANAT-3-0](RESULTS.md#L22128 "id:2026-08-07-desk-ex-anat-3-0-the"); [VERDICT
+  EX-FRESH](RESULTS.md#L22454 "id:2026-08-07-verdict-ex-fresh-both-crest-claims").)
 - [NULL] [REGIME-SCOPED: toy weight-space subjects] Training
   DIRECTION (forward versus reverse curriculum) is invisible to
   weight readers across every inspected representation while
@@ -1604,8 +1604,8 @@ regime tag on every bullet is the fence.
   trained-versus-random at ceiling. Weight-reader mining is closed
   pending a hypothesis that names why a new feature family could
   see composition order where the alignment cross-Gram cannot.
-  ([VERDICT TENET-W1-S](RESULTS.md#L21574); [VERDICT
-  TENET-W1-R](RESULTS.md#L21901).)
+  ([VERDICT TENET-W1-S](RESULTS.md#L21574 "id:2026-08-06-verdict-tenet-w1-s-all-four"); [VERDICT
+  TENET-W1-R](RESULTS.md#L21901 "id:2026-08-07-verdict-tenet-w1-r-both-arms").)
 - [REPLICATED] [REGIME-SCOPED: deterministic integer battery] The
   deterministic integer birth is device-free at full scale: the
   1000-step multi-block anatomy and the real-diet bridge replay
@@ -1613,7 +1613,7 @@ regime tag on every bullet is the fence.
   losses, both final trajectory shas, the 15,909-to-12,518 plateau
   to the token; both machine legs execute on CPU — the same scope
   as the earlier device fence).
-  ([VERDICT LOCKSTEP-A1/A2](RESULTS.md#L21460).)
+  ([VERDICT LOCKSTEP-A1/A2](RESULTS.md#L21460 "id:2026-08-06-verdict-lockstep-a1-a2-pass-on").)
 - [SINGLE-SEED] [REGIME-SCOPED: deterministic integer battery] The
   real-diet plateau is mechanistically bracketed, single runs:
   constant learning rate REGRESSES at long horizons (12,518 to
@@ -1627,9 +1627,9 @@ regime tag on every bullet is the fence.
   windows moved the top corner toward the bar — joint scaling did
   not convert; the next lever is a decay ladder. Loss-level only,
   no capability reading attaches. ([VERDICT
-  PLATEAU-BREAK](RESULTS.md#L21874); [VERDICT
-  P-STEP-BOUND-2](RESULTS.md#L21920); [VERDICT
-  ENGINE-SCALE-1](RESULTS.md#L23673).)
+  PLATEAU-BREAK](RESULTS.md#L21874 "id:2026-08-07-verdict-plateau-break-unresolved-as-registered"); [VERDICT
+  P-STEP-BOUND-2](RESULTS.md#L21920 "id:2026-08-07-verdict-p-step-bound-2-the"); [VERDICT
+  ENGINE-SCALE-1](RESULTS.md#L23673 "id:2026-08-09-verdict-engine-scale-1-neither-bar").)
 - [SINGLE-SEED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts] With the full router
   available, mathematics routes 2.7%
@@ -1639,7 +1639,7 @@ regime tag on every bullet is the fence.
   appears only once the symbolic extensions are removed. One decode
   trajectory; tie-fill upper bounds; recall shares are not comparable
   across demand-log axes. ([OBSERVATION
-  GT-VERBAL-SHARE](RESULTS.md#L20298).)
+  GT-VERBAL-SHARE](RESULTS.md#L20298 "id:2026-08-05-observation-gt-verbal-share-when-free").)
 
 ## The clock-placement and deterministic-birth close
 
@@ -1647,88 +1647,88 @@ regime tag on every bullet is the fence.
   [REGIME-SCOPED: specified diet and recipe] On Apple training runs, causal
   wide-Mod and digit-sum diet arms separated single-pass competence from
   external rewrite competence: clocks marked where the computation ran, not
-  whether the task was solved. ([VERDICT FOURIER-2b](RESULTS.md#L12620);
-  [VERDICT FOURIER-3](RESULTS.md#L12750).)
+  whether the task was solved. ([VERDICT FOURIER-2b](RESULTS.md#L12620 "id:2026-07-31-verdict-fourier-2b-clocks-follow-competence");
+  [VERDICT FOURIER-3](RESULTS.md#L12750 "id:2026-07-31-verdict-fourier-3-the-algorithm-substitutes").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [FREE-RUN-GATED]
   [REGIME-SCOPED: deterministic integer battery] At n=1 NVIDIA control cell,
   the 120-prompt house gate could not resolve deltas below about five solves;
   this is a house methods fence, not a universal sampling theorem. ([VERDICT
-  NIGHT-31-CUDA](RESULTS.md#L12697).)
+  NIGHT-31-CUDA](RESULTS.md#L12697 "id:2026-07-31-verdict-night-31-cuda-controls-the").)
 - [REPLICATED] [DEVICE-SCOPED]
   [REGIME-SCOPED: deterministic integer battery] A 200-step integer training
   trajectory reproduced across Apple CPU, NVIDIA CUDA, and the independent
   axiom C++ implementation; independent devices and implementation are the
-  route. ([VERDICT DETERMINISTIC-BIRTH R2](RESULTS.md#L13255); [RECEIPT R2 C++
-  LEG](RESULTS.md#L13502).)
+  route. ([VERDICT DETERMINISTIC-BIRTH R2](RESULTS.md#L13255 "id:2026-07-31-verdict-deterministic-birth-r2-mini-a"); [RECEIPT R2 C++
+  LEG](RESULTS.md#L13502 "id:2026-07-31-receipt-r2-c-leg-axiom-the").)
 - [REPLICATED] [REGIME-SCOPED: deterministic integer battery] All sixteen
   pinned gravmoe trajectory hashes reproduced on a second machine; the route
   is an independent machine with a different CPU architecture, and both legs
   ran on CPU, so this is narrower than GPU transport. ([VERDICT
-  GRAVMOE-P4-DEVICE](RESULTS.md#L14889); [AMENDMENT
-  P4-DEVICE-SCOPE](RESULTS.md#L15160).)
+  GRAVMOE-P4-DEVICE](RESULTS.md#L14889 "id:2026-08-01-verdict-gravmoe-p4-device-the-entire"); [AMENDMENT
+  P4-DEVICE-SCOPE](RESULTS.md#L15160 "id:2026-08-02-amendment-p4-device-scope-amends-verdict").)
 - [REPLICATED] [REGIME-SCOPED: deterministic integer battery] Ten of those
   same pinned hashes reproduced inside axiom's independent C++ engine after
   one rounding-placement fix; the route is an independent implementation.
-  ([VERDICT GRAVMOE-P4-LAB](RESULTS.md#L15015).)
+  ([VERDICT GRAVMOE-P4-LAB](RESULTS.md#L15015 "id:2026-08-01-verdict-gravmoe-p4-lab-the-gravmoe").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery] A
   reduce-to-one-expert parity gate cannot see the gate-backward rounding
   placement it was trusted to cover: the folded and pre-rounded forms are
   equal whenever a single expert routes, so only the cross-implementation
   hash pins could expose the defect. ([VERDICT
-  GRAVMOE-P4-LAB](RESULTS.md#L15015).)
+  GRAVMOE-P4-LAB](RESULTS.md#L15015 "id:2026-08-01-verdict-gravmoe-p4-lab-the-gravmoe").)
 - [SINGLE-SEED] [REGIME-SCOPED: deterministic integer battery] At one seed
   and shape pair, every integer primitive in the battery's forward and
   backward chain returned bit-identical results on Apple MPS and on NVIDIA
   CUDA against CPU; this covers primitives only, and no pinned trajectory has
   been run on a GPU. ([RIDER on AMENDMENT
-  P4-DEVICE-SCOPE](RESULTS.md#L15210).)
+  P4-DEVICE-SCOPE](RESULTS.md#L15210 "id:2026-08-02-rider-on-amendment-p4-device-scope").)
 - [SINGLE-SEED] [TEACHER-FORCED]
   [REGIME-SCOPED: deterministic integer battery]
   At n=1 seed and window set, softening only the query and key draws cut
   battery loss from 8883 to 2496; the earlier arm's booked 73% increase
   belonged to four other matrix families softened with them, retiring the
-  peaked-attention reading. ([VERDICT QK-RESCOPE](RESULTS.md#L14658).)
+  peaked-attention reading. ([VERDICT QK-RESCOPE](RESULTS.md#L14658 "id:2026-08-01-verdict-qk-rescope-amends-verdict-qk").)
 - [REPLICATED] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
   Against a COND-only control on this diet, the softer query/key draw lifted
   TRAIN free-run solves from zero to two or three of eight at all three paired
   init draws on one device, while HELD-OUT solves stayed at zero throughout.
   That is a train-side gain at a low absolute level under one diet, not free-run
-  capability. ([VERDICT QK-SEED3](RESULTS.md#L15462).)
+  capability. ([VERDICT QK-SEED3](RESULTS.md#L15462 "id:2026-08-02-verdict-qk-seed3-three-paired-init").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery]
   What that initialization removes is measurable before training: the share of
   zero attention probabilities at birth is about 0.89 without it and exactly
   zero with it at all three draws, so the train-side gain tracks the diagnostic
   rather than the seed. It leaves the held-out gap untouched, which the
-  exposure-bias cells attribute to diet width. ([VERDICT QK-SEED3](RESULTS.md#L15462).)
+  exposure-bias cells attribute to diet width. ([VERDICT QK-SEED3](RESULTS.md#L15462 "id:2026-08-02-verdict-qk-seed3-three-paired-init").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
   One-step scheduled sampling halved free-run token accuracy, 56 to 22 of
   140, and doubled teacher-forced loss, so the registered exposure-bias
   treatment missed its bar at this scale. ([NULL
-  GRAVMOE-SS](RESULTS.md#L14703).)
+  GRAVMOE-SS](RESULTS.md#L14703 "id:2026-08-01-null-gravmoe-ss-one-step-scheduled").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
   Four times the training steps and four times the parameters both failed to
   convert: the 825,984-parameter arm solved zero of eight where the
   208,192-parameter baseline solved two, so at this diet the residual
   free-run gap is neither compute nor capacity. ([VERDICT GRAVMOE-BRUTE,
-  closing](RESULTS.md#L14986); [leg 1](RESULTS.md#L14856).)
+  closing](RESULTS.md#L14986 "id:2026-08-01-verdict-gravmoe-brute-closing-brute-does"); [leg 1](RESULTS.md#L14856 "id:2026-08-01-verdict-gravmoe-brute-leg-1-neither").)
 - [NULL] [FREE-RUN-GATED] [REGIME-SCOPED: deterministic integer battery]
   Masking the loss to the answer region removed the solves as well, two of
   eight to zero of eight, while format diagnostics stayed intact —
   parseability flat and termination improved — so the registered
   format-failure branch did not apply and the loss was capability, not
-  formatting. ([VERDICT SOL-ADOPTION-1](RESULTS.md#L15081).)
+  formatting. ([VERDICT SOL-ADOPTION-1](RESULTS.md#L15081 "id:2026-08-01-verdict-sol-adoption-1-the-sol").)
 - [MECHANISM-CONFIRMED] [TEACHER-FORCED]
   [REGIME-SCOPED: deterministic integer battery]
   A paired 8000-step arm diverged at constant learning rate
   and stayed bounded under integer decay, with both arms bit-identical until
   the first decay point; long integer runs measure the schedule unless decay
-  is present. ([VERDICT GRAVMOE-BRUTE-B/C](RESULTS.md#L14936).)
+  is present. ([VERDICT GRAVMOE-BRUTE-B/C](RESULTS.md#L14936 "id:2026-08-01-verdict-gravmoe-brute-b-c-partial").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: deterministic integer battery] The
   activation clamp was an integer overflow guard for the norm's mean-square
   scaling, and the crash a raised clamp produced was an evaluation-order
   artifact: factoring the scale exactly removed it with every pinned
-  trajectory unchanged. ([VERDICT GRAVMOE-BRUTE-B/C](RESULTS.md#L14936);
-  [AMENDMENT RMS-HEADROOM](RESULTS.md#L15053).)
+  trajectory unchanged. ([VERDICT GRAVMOE-BRUTE-B/C](RESULTS.md#L14936 "id:2026-08-01-verdict-gravmoe-brute-b-c-partial");
+  [AMENDMENT RMS-HEADROOM](RESULTS.md#L15053 "id:2026-08-01-amendment-rms-headroom-amends-verdict-gravmoe").)
 
 ## The ignition ladder and diet refinement
 
@@ -1742,12 +1742,12 @@ regime tag on every bullet is the fence.
   is resolved — the two degraded grades tie off the ladder, leaving
   pollution versus duplication untested, and the width 56 itself is
   threshold-fragile at a single seed.
-  ([VERDICT METALLICITY-1](RESULTS.md#L27523).)
+  ([VERDICT METALLICITY-1](RESULTS.md#L27523 "id:2026-08-11-verdict-metallicity-1-p-metallicity-fires").)
 - [SINGLE-SEED] [DEVICE-SCOPED] [REGIME-SCOPED: specified diet and recipe]
   A freshly born architecture twin gated between the pre-registered bars,
   narrowing the growth premium to a few solves — under the resolution floor
   at one seed, so the premium is neither confirmed nor refuted by this cell.
-  ([VERDICT GROW-DECOMP-1](RESULTS.md#L27494).)
+  ([VERDICT GROW-DECOMP-1](RESULTS.md#L27494 "id:2026-08-11-verdict-grow-decomp-1-r5-cell").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: specified diet and recipe]
   Widening the logit vector changes sampled gate numbers even when the
   model is bit-identical. A virtual-token harness rebuilt at a wider
@@ -1762,8 +1762,8 @@ regime tag on every bullet is the fence.
   Neither a weights hash nor a logit comparison detects this, so gate
   numbers are comparable only across runs whose sampler saw the same
   number of categories.
-  ([VERDICT SOFT-PROMPT-1](RESULTS.md#L27633);
-  [AMENDMENT SOFT-PROMPT-1-SAMPLER](RESULTS.md#L27693).)
+  ([VERDICT SOFT-PROMPT-1](RESULTS.md#L27633 "id:2026-08-11-verdict-soft-prompt-1-instrument-invalid");
+  [AMENDMENT SOFT-PROMPT-1-SAMPLER](RESULTS.md#L27693 "id:2026-08-12-amendment-soft-prompt-1-sampler-the").)
 - [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search]
   The fast wave-verifier's old parity ship bar is retired with cause:
   its 10 "accept flips" are the OLD doit-based oracle falsely
@@ -1772,7 +1772,7 @@ regime tag on every bullet is the fence.
   unsound direction, and the fast path runs 31.5x faster (600.4 s ->
   19.1 s, n=1 CPU receipt). Soundness stays held by the vendored
   167/167 Phase D replay. ([VERDICT
-  VERIFY-FAST-BAR-RETIRED](RESULTS.md#L27754).)
+  VERIFY-FAST-BAR-RETIRED](RESULTS.md#L27754 "id:2026-08-13-verdict-verify-fast-bar-retired-the").)
 
 - [SINGLE-SEED] [ONE VEHICLE] A 19M birth teed every 900 optimizer
   steps with Adam state on disk shows per-step weight speed decaying
@@ -1782,7 +1782,7 @@ regime tag on every bullet is the fence.
   exp_avg momentum is a visibly different velocity (spikes early,
   decays slower). Schedule-driven by construction (OneCycle);
   portrait-only, no capability read. ([OBSERVATION
-  PHASE-PORTRAIT-1](RESULTS.md#L27800).)
+  PHASE-PORTRAIT-1](RESULTS.md#L27800 "id:2026-08-13-observation-phase-portrait-1-a-19m").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] At n=1 (the phase19m
   birth, SEED=2, Mac MPS), capability LEADS weight-space settling:
@@ -1794,7 +1794,7 @@ regime tag on every bullet is the fence.
   Exploratory rider: L4 is strictly the worst gate level at every
   milestone from m001800 on — the generator's intended difficulty
   ladder disagrees with measured difficulty at L4. ([VERDICT
-  CAP-V-TRAJ-1](RESULTS.md#L27909).)
+  CAP-V-TRAJ-1](RESULTS.md#L27909 "id:2026-08-13-verdict-cap-v-traj-1-all").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] At n=1 (phase19m
   m015300, Mac MPS), prompt LENGTH does not carry the L4 gate dip:
@@ -1804,7 +1804,7 @@ regime tag on every bullet is the fence.
   bar (a real but modest length effect, disclosed as such). The L4
   shape family stays under-crystallized relative to its length
   across three lineages (6/24, 8/24, 7/24). ([VERDICT
-  LENGTH-VS-L4-1](RESULTS.md#L28050).)
+  LENGTH-VS-L4-1](RESULTS.md#L28050 "id:2026-08-13-verdict-length-vs-l4-1-both").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] The L4 gate dip is a
   first-step recognition failure: on m015300, 16/17 L4 failures
@@ -1812,7 +1812,7 @@ regime tag on every bullet is the fence.
   all 7 solves finish in 1-3 plies from clean f'(g)*fn(g) surfaces
   — all-or-nothing first-ply pattern recognition, not chain
   management or depth exhaustion. ([OBSERVATION
-  L4-PLY0-1](RESULTS.md#L28104).)
+  L4-PLY0-1](RESULTS.md#L28104 "id:2026-08-13-observation-l4-ply0-1-the-l4").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] OneCycle DIRECTION
   is a non-factor at 19M/gen4: a birth with the lr sequence played
@@ -1821,7 +1821,7 @@ regime tag on every bullet is the fence.
   and reproduces the L4=7 dip exactly (schedule-direction-invariant,
   supporting the structural L4 reading). House prior predicted
   25-50; wrong by ~15 solves. ([VERDICT
-  BACKWARD-SCHEDULE-1](RESULTS.md#L28261).)
+  BACKWARD-SCHEDULE-1](RESULTS.md#L28261 "id:2026-08-13-verdict-backward-schedule-1-bar-2").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] Half-schedule
   training is FREE at 19M/gen4: the full OneCycle shape compressed
@@ -1832,7 +1832,7 @@ regime tag on every bullet is the fence.
   in every full-shape arm across three independent births and drops
   only with exposure (3/24 at 0.3x) — schedule-invariant,
   exposure-sensitive. ([VERDICT
-  COMP-LADDER-1](RESULTS.md#L28315).)
+  COMP-LADDER-1](RESULTS.md#L28315 "id:2026-08-13-verdict-comp-ladder-1-bars-1").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] Training has an LR
   ABSORPTION FLOOR (~2-4e-5 at 19M/gen4, ~10% of max_lr): the
@@ -1843,7 +1843,7 @@ regime tag on every bullet is the fence.
   highest-lr era that heals by the endpoint. The LLMUE pilot's
   preserved-without-growing null (LR 1e-5) is the same floor from
   the metabolic side. ([VERDICT
-  CAP-V-TRAJ-2](RESULTS.md#L28421).)
+  CAP-V-TRAJ-2](RESULTS.md#L28421 "id:2026-08-13-verdict-cap-v-traj-2-bar").)
 
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND]
   [REGIME-SCOPED: specified diet and recipe]
@@ -1853,7 +1853,7 @@ regime tag on every bullet is the fence.
   diet), putting an irreducible cross-entropy floor of >= 0.174
   nats/row under any model at any capacity. Plateau detectors must
   trigger on improvement-rate, never absolute loss. ([OBSERVATION
-  DIET-AMBIGUITY-1](RESULTS.md#L28562).)
+  DIET-AMBIGUITY-1](RESULTS.md#L28562 "id:2026-08-13-observation-diet-ambiguity-1-zero-training").)
 
 - [NULL] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts]
@@ -1866,7 +1866,7 @@ regime tag on every bullet is the fence.
   demand deletion costs -26 with a booked 9.56% recall confound.
   Over-inclusion stays claimed at the carriers' rank class only;
   draw-to-draw spread missed the variance-dominates bar by one
-  solve. ([VERDICT EX4-UNIF](RESULTS.md#L28597).)
+  solve. ([VERDICT EX4-UNIF](RESULTS.md#L28597 "id:2026-08-13-verdict-ex4-unif-neither-primary-bar").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] Data ORDER at
   birth is not free: a fixed easy-to-hard curriculum (levels
@@ -1877,7 +1877,7 @@ regime tag on every bullet is the fence.
   arm read -1 only because its pinned constants admitted every
   level by step 2,600 (the pre-named "always admits" branch), so
   it was ~83% a stock stream. Schedule direction commutes; data
-  order does not. ([VERDICT CURRICULUM-1](RESULTS.md#L28680).)
+  order does not. ([VERDICT CURRICULUM-1](RESULTS.md#L28680 "id:2026-08-13-verdict-curriculum-1-p-order-hurts").)
 
 - [MECHANISM-CONFIRMED] [FORMAT-BOUND]
   [REGIME-SCOPED: measured deployment artifacts]
@@ -1889,7 +1889,7 @@ regime tag on every bullet is the fence.
   non-monotone (51k demand deleted reads -1, 77k reads +19, the
   rank-matched 117k reads +28, the top-ranked 452k reads -26) — a
   two-draw direction, no claim. ([OBSERVATION
-  EX4-COMPOSITION-1](RESULTS.md#L28840).)
+  EX4-COMPOSITION-1](RESULTS.md#L28840 "id:2026-08-14-observation-ex4-composition-1-the-carrier").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] The curriculum
   mirror arm settles the direction question and unsettles the
@@ -1902,7 +1902,7 @@ regime tag on every bullet is the fence.
   scar direction), so each candidate explains one tail and
   neither books. Shuffled interleaving is the measured optimum of
   the three orders tested on this line. ([VERDICT
-  REV-LADDER-1](RESULTS.md#L28872).)
+  REV-LADDER-1](RESULTS.md#L28872 "id:2026-08-14-verdict-rev-ladder-1-neither-mechanism").)
 
 - [NULL] [FORMAT-BOUND] The first checkers instrument cell repeats
   the T-count day-one lesson, now 2-for-2 on new domains: bounded
@@ -1914,7 +1914,7 @@ regime tag on every bullet is the fence.
   while the arms fail in opposite directions (proof-based search:
   0 false alarms, 3/19 wins proved in budget; material: 18/19
   wins seen, 23 false alarms). Instrument-scoped; no game claim.
-  ([VERDICT CHECKERS-0](RESULTS.md#L29048).)
+  ([VERDICT CHECKERS-0](RESULTS.md#L29048 "id:2026-08-14-verdict-checkers-0-p-greedy-wins").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: house crystals] The one-swap
   discriminator inverts the house prior and names the curriculum
@@ -1926,7 +1926,7 @@ regime tag on every bullet is the fence.
   placement bar (17 v 21 threshold). Order damage follows what
   PRECEDES a level; the arm still books the third direction of
   order harm (45 v the shuffled 64). ([VERDICT
-  SWAP-LADDER-1](RESULTS.md#L29096).)
+  SWAP-LADDER-1](RESULTS.md#L29096 "id:2026-08-14-verdict-swap-ladder-1-p-foundation").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe]
   Interleaving 6,000 rule-tagged engine one-ply atoms into the
@@ -1937,7 +1937,7 @@ regime tag on every bullet is the fence.
   v 72 threshold; 12 at threshold); replication and dose ladder
   owed. The constructive inversion of the order arc: supply the
   foundation, don't reorder it. ([VERDICT
-  ATOM-DIET-1](RESULTS.md#L29250).)
+  ATOM-DIET-1](RESULTS.md#L29250 "id:2026-08-14-verdict-atom-diet-1-both-bars").)
 
 - [REPLICATED] Axiom's IV6 bindings land bit-exact against their
   registered acceptance: PyRand matches CPython 3.12 random.Random
@@ -1947,7 +1947,7 @@ regime tag on every bullet is the fence.
   expired} flag, and compile-time GIT_SHA/BUILD_TIME attrs
   downgrade the dual-.so hazard to a one-attr check. One envelope
   limit: getrandbits(k>64) raises where CPython allows any k.
-  ([VERDICT AXIOM-IV6-ACCEPT](RESULTS.md#L29337).)
+  ([VERDICT AXIOM-IV6-ACCEPT](RESULTS.md#L29337 "id:2026-08-14-verdict-axiom-iv6-accept-pyrand-count").)
 
 - [REPLICATED] Axiom's IV7 batch exposes all six ranked
   counter-book primitives and every one re-derives exact
@@ -1962,7 +1962,7 @@ regime tag on every bullet is the fence.
   pre-filter, not a provability verdict — non-ring identities
   (sin^2+cos^2, exp*exp-negative) emit certs that will fail `by
   ring`; Lean itself must stay the final rejector.
-  ([VERDICT AXIOM-IV7-ACCEPT](RESULTS.md#L29417).)
+  ([VERDICT AXIOM-IV7-ACCEPT](RESULTS.md#L29417 "id:2026-08-14-verdict-axiom-iv7-accept-all-six").)
 
 - [REPLICATED] [REGIME-SCOPED: specified diet and recipe] The
   one-ply atom diet's gate lift replicates across birth seeds at
@@ -1975,7 +1975,7 @@ regime tag on every bullet is the fence.
   stays modest-confidence; direction is positive at every seed
   with both registered bars firing cleanly (no knife-edge this
   time). Dose and rule generality still unmeasured.
-  ([VERDICT ATOM-DIET-LADDER-1](RESULTS.md#L29465).)
+  ([VERDICT ATOM-DIET-LADDER-1](RESULTS.md#L29465 "id:2026-08-14-verdict-atom-diet-ladder-1-the").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe] The
   one-ply atom effect does not transport across emitters at
@@ -1988,7 +1988,7 @@ regime tag on every bullet is the fence.
   flooding scar; WHAT the atoms are (rule mix, answer forms,
   survivor censoring) carries a large share of the effect, and the
   rule-ablation rung inherits a ranked hypothesis list.
-  ([VERDICT ATOM-DOSE-LADDER-1](RESULTS.md#L29662).)
+  ([VERDICT ATOM-DOSE-LADDER-1](RESULTS.md#L29662 "id:2026-08-15-verdict-atom-dose-ladder-1-emitter").)
 
 - [NULL] Attaching the branch distribution to the diet's 15.7%
   conflicted rows (trie soft targets at branch tokens, same rows
@@ -1998,7 +1998,7 @@ regime tag on every bullet is the fence.
   of its teacher-forced mass on the valid-answer sets after plain
   one-hot training, so the ambiguity floor is a loss-metric
   property, not a recoverable capability tax at this recipe.
-  ([VERDICT SOFT-NEXT-1](RESULTS.md#L29733).)
+  ([VERDICT SOFT-NEXT-1](RESULTS.md#L29733 "id:2026-08-15-verdict-soft-next-1-refuted-at").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe] The
   heurisch-ablation test of the emitter-divergence suspect list
@@ -2012,7 +2012,7 @@ regime tag on every bullet is the fence.
   at or above the full 6,000-row shard's 70 at this seed.
   Receipt caveat: both receipt rows mislabel the emitter field
   (hardcode inherited from the dose driver); corrections booked
-  in the verdict. ([VERDICT RULE-ABLATE-1](RESULTS.md#L29916).)
+  in the verdict. ([VERDICT RULE-ABLATE-1](RESULTS.md#L29916 "id:2026-08-15-verdict-rule-ablate-1-rule-carrier").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe]
   Collapsing the 25,852 conflicted rows into one weighted
@@ -2025,7 +2025,7 @@ regime tag on every bullet is the fence.
   training is run-level NONDETERMINISTIC at fixed seed (paired
   20-step probe, different weight hashes), so cross-RUN weight-sha
   identity is never again a precondition on Mac; paired in-run
-  arms remain valid. ([VERDICT SOFT-SPEED-1](RESULTS.md#L30064);
+  arms remain valid. ([VERDICT SOFT-SPEED-1](RESULTS.md#L30064 "id:2026-08-15-verdict-soft-speed-1-quality-holds");
   amendment L29985.)
 
 - [NULL] [REGIME-SCOPED: specified diet and recipe]
@@ -2036,7 +2036,7 @@ regime tag on every bullet is the fence.
   rung dies before implementation, and the idea is parked for
   future tree-shaped data (search trajectories, rollouts) where
   shared prefixes dominate the sequence.
-  ([OBSERVATION TREE-CENSUS-0](RESULTS.md#L30033).)
+  ([OBSERVATION TREE-CENSUS-0](RESULTS.md#L30033 "id:2026-08-15-observation-tree-census-0-shared-prefix").)
 
 - [NULL] [REGIME-SCOPED: specified diet and recipe]
   The gradient/data-worth atlas (end-of-training signatures,
@@ -2053,7 +2053,7 @@ regime tag on every bullet is the fence.
   (gradient cosine added real signal there); i_heurisch is the
   most internally redundant family measured; forward/backward mps
   signatures repeat at 1.000000 same-process.
-  ([VERDICT GRAD-MAP-0](RESULTS.md#L30127).)
+  ([VERDICT GRAD-MAP-0](RESULTS.md#L30127 "id:2026-08-15-verdict-grad-map-0-retrodiction-gate").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe]
   The stock diet already states algebra explicitly — 29,988 bare
@@ -2068,7 +2068,7 @@ regime tag on every bullet is the fence.
   term wrong — the one coefficient that requires arithmetic
   rather than copying. Basics rungs should target arithmetic, not
   algebra.
-  ([OBSERVATION BASICS-CENSUS-0](RESULTS.md#L30259).)
+  ([OBSERVATION BASICS-CENSUS-0](RESULTS.md#L30259 "id:2026-08-15-observation-basics-census-0-basics-probe").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe]
   2,545 one-ply arithmetic rows at 1.54% dose lift standalone
@@ -2081,7 +2081,7 @@ regime tag on every bullet is the fence.
   format distance, not by operation: arithmetic competence is
   format-local at this dose, the first measured datum for the
   format-as-routing frame. Scoped to small-integer operands.
-  ([VERDICT BASICS-DIET-1](RESULTS.md#L30467).)
+  ([VERDICT BASICS-DIET-1](RESULTS.md#L30467 "id:2026-08-15-verdict-basics-diet-1-both-bars").)
 
 - [NULL] [REGIME-SCOPED: specified diet and recipe] Stating the
   cross-term computation as its own step INSIDE the expand format
@@ -2096,7 +2096,7 @@ regime tag on every bullet is the fence.
   arm, both sides of the format edge are now measured and the
   failure survives both — the live variables narrow to
   supervision grain and dose. Gate no-harm holds (70 v 72, inside
-  run noise). ([VERDICT XTERM-DIET-1](RESULTS.md#L30682); [RIDER XTERM-DIET-1-DECOMP](RESULTS.md#L30656).)
+  run noise). ([VERDICT XTERM-DIET-1](RESULTS.md#L30682 "id:2026-08-16-verdict-xterm-diet-1-both-primary"); [RIDER XTERM-DIET-1-DECOMP](RESULTS.md#L30656 "id:2026-08-16-rider-xterm-diet-1-decomp-the").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe] Engine
   successors can recover an action label for only 47.58% of stock
@@ -2112,7 +2112,7 @@ regime tag on every bullet is the fence.
   from cur alone — a label-timing violation inside the stock
   diet. Counts are lower bounds (canonical-string match; sample
   sigma ~0.8 points puts 47.58 v 50 in the threshold region).
-  ([OBSERVATION RULE-POLICY-0-CENSUS](RESULTS.md#L30806).)
+  ([OBSERVATION RULE-POLICY-0-CENSUS](RESULTS.md#L30806 "id:2026-08-16-observation-rule-policy-0-census-engine").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe] The
   emitter divergence has two named, countable mechanisms: on the
@@ -2126,7 +2126,7 @@ regime tag on every bullet is the fence.
   construction. Both desk thresholds were committed pre-count; a
   farm-time normalization pass is priced as the ATOM-NORM arm.
   Sample-scoped; censored-band composition unmeasured.
-  ([OBSERVATION ANSWER-FORM-0 + CENSOR-0](RESULTS.md#L30869).)
+  ([OBSERVATION ANSWER-FORM-0 + CENSOR-0](RESULTS.md#L30869 "id:2026-08-16-observation-answer-form-0-censor-0").)
 
 - [RETRACTED] [REGIME-SCOPED: measured deployment artifacts] A frontier
   MoE expert layer (V4-Flash layer 22, 256 experts, 6.44B weights)
@@ -2147,8 +2147,8 @@ regime tag on every bullet is the fence.
   paid for and still lost. Repairing the measurement cannot
   rescue the scalar bar, because that arm is structurally
   inadmissible rather than mis-measured.
-  ([OBSERVATION STREAM-WDISTILL-0-EXEC1](RESULTS.md#L31394);
-  [AMENDMENT -REPAIR-SCOPE](RESULTS.md#L31480).)
+  ([OBSERVATION STREAM-WDISTILL-0-EXEC1](RESULTS.md#L31394 "id:2026-08-16-observation-stream-wdistill-0-exec1-the");
+  [AMENDMENT -REPAIR-SCOPE](RESULTS.md#L31480 "id:2026-08-16-amendment-stream-wdistill-0-repair-scope").)
 
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
   Low-rank factorization of a frontier MoE expert layer, derived
@@ -2177,6 +2177,6 @@ regime tag on every bullet is the fence.
   reference (19 bytes over, so that comparison is DESCRIPTIVE and
   the registered scalar bar is UNRESOLVED). Weight space only, one
   layer, n=1, no capability claim.
-  ([VERDICT STREAM-WDISTILL-0-AUDIT-REPAIR](RESULTS.md#L31908);
-  [AMENDMENT -READING-2](RESULTS.md#L32133);
-  [AMENDMENT -READING-3](RESULTS.md#L32229).)
+  ([VERDICT STREAM-WDISTILL-0-AUDIT-REPAIR](RESULTS.md#L31908 "id:2026-08-16-verdict-stream-wdistill-0-audit-repair");
+  [AMENDMENT -READING-2](RESULTS.md#L32133 "id:2026-08-16-amendment-stream-wdistill-0-reading-2");
+  [AMENDMENT -READING-3](RESULTS.md#L32229 "id:2026-08-16-amendment-stream-wdistill-0-reading-3").)

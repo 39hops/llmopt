@@ -92,6 +92,41 @@ def test_results_anchors_land_on_entry_headings():
         "edited mid-file, or the anchors drifted:\n  " + "\n  ".join(broken))
 
 
+def test_anchor_id_coverage_and_sync():
+    """The stable-id transition (2026-08-16): dual-cite anchors.
+
+    Every LINK-FORM citation ``[T](RESULTS.md#L<n> "id:<entry-id>")``
+    must carry an id (migrated by scripts/anchor_guard.py --migrate,
+    ratchet 0), the id must exist in results-index.jsonl, and the
+    cached line number must match the index (fix drift with
+    anchor_guard.py --repair, never by hand). Bare-text anchors
+    (currently 3) are outside link form and stay covered by the
+    heading test above only.
+    """
+    by_id = {json.loads(r)["id"]: json.loads(r)["line"]
+             for r in INDEX.open()}
+    link = re.compile(
+        r"\([A-Za-z0-9_./\-]*?RESULTS\.md#L(\d+)"
+        r"(?:\s+\"id:([a-z0-9\-]+)\")?\)")
+    idless, problems = [], []
+    for path in list(ROOT.glob("*.md")) + list((ROOT / "docs").rglob("*.md")):
+        if path.name == "RESULTS.md":
+            continue
+        rel = path.relative_to(ROOT)
+        for num, eid in link.findall(path.read_text()):
+            if not eid:
+                idless.append(f"{rel}: L{num}")
+            elif eid not in by_id:
+                problems.append(f"{rel}: id:{eid} not in index")
+            elif by_id[eid] != int(num):
+                problems.append(f"{rel}: id:{eid} cached L{num}, index "
+                                f"says L{by_id[eid]} — run "
+                                "anchor_guard.py --repair")
+    assert not idless, ("id-less link anchors (run anchor_guard.py "
+                        "--migrate):\n  " + "\n  ".join(idless))
+    assert not problems, "anchor id sync:\n  " + "\n  ".join(problems)
+
+
 def test_findings_tag_grammar():
     """One maturity tag per claim, and no tag outside the glossary.
 
