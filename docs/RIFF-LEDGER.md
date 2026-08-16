@@ -4945,6 +4945,17 @@ without re-introducing history).
   no-harm guard on the total; runs after the dose ladder prices
   dose headroom. Attribution: Artin (the ask), house (the
   axiom-native farm route + observable choice).
+  [MEASURED 2026-08-15, rescoped then run same day: the census
+  (RESULTS L30259) found the premise half wrong — algebra is
+  already 18.2% of diet rows; only ARITHMETIC is absent (12
+  incidental rows). The rescoped rung ran as BASICS-DIET-1
+  (L30467): BOTH BARS FIRE — 2,545 arithmetic rows at 1.54% dose
+  lift standalone arithmetic 1.67% -> 61.67% pass@8 at a -2
+  dent inside run noise. Artin's ask survives measured, with the
+  precision that the diet teaches what it STATES: transfer into
+  the algebra format was flat (the format-locality rider, banked
+  under format-as-routing). Follow-ups banked in the verdict:
+  mixed-format rows, cross-term-decomposed expand, dose ladder.]
 
 - **BANKED (2026-08-15): FFT the engine's signals into weights?**
   (Artin: "can we convert the signals the math engine is giving
@@ -5191,7 +5202,16 @@ without re-introducing history).
   serialization) at matched dose — does the gate move? A dead
   result kills format-as-routing at 19M; a live one opens
   format-ensembling. Attribution: Artin (the frame), house
-  (anchors, breaks).
+  (anchors, breaks). [MEASURED 2026-08-15, first in-family datum:
+  BASICS-DIET-1 (RESULTS L30467) put the SAME operation in two
+  formats — standalone arithmetic rows lifted standalone
+  arithmetic 1.67% -> 61.67% pass@8 while the identical
+  cross-term arithmetic inside (ax+b)(cx+d) stayed at the control
+  rate, and a near-format arm moved partway (17.5 -> 26.67).
+  Competence radiated by FORMAT DISTANCE, not by operation —
+  the frame's direction, measured at n=1, single seed, 1.54%
+  dose; the two-serialization residue above remains the clean
+  test.]
 
 - **BANKED (2026-08-15): vector database for model organization**
   (Artin: "can't we use a vector database to improve the

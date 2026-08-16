@@ -30464,3 +30464,100 @@ learned the OPERATION at held-out operands, which is the intended
 claim — but the operand ranges are narrow (|a| <= 60), so the
 claim is scoped to small-integer arithmetic and does not
 generalize to multi-digit. Named now, not after the number.
+## VERDICT BASICS-DIET-1: BOTH BARS FIRE — 2,545 arithmetic rows (1.54% dose) lift standalone arithmetic 1.67% -> 61.67% pass@8 at a -2 gate dent; the transfer rider is FLAT: the same arithmetic inside the algebra format does not move (2026-08-15, Mac)
+
+Pre-reg L30355 (1ebf7bc, before the farm ran), amended pre-run
+L30429 (a330323: exclude= holdout guard after the first farm
+exhausted the probe's operand space; shard 2,545 rows, not 3,000;
+probe-cur INTERSECT shard-cur = 0 verified). Drivers:
+scratch/birth19m_arith.py + scratch/basicsdiet1_driver.sh
+(3aed609 = the code that ran, stamped in both receipt rows; one
+post-run pre-booking edit at 92a1e3e gives smoke runs their own
+checkpoint path on the receipt-auditor's finding — the training
+path is untouched). Sibling of the frozen birth19m_atoms_rule.py,
+which hardcoded a false emitter field; this driver derives every
+provenance field and carries no emitter at all (auditor-verified).
+Guard disclosure
+(prereg-auditor finding, adopted): the smoke run wrote its 3-step
+checkpoint to the REAL arith path and was removed by a manual
+delete before launch — refuse-if-exists protected only the
+control arm this run; the arith arm's freshness is evidenced by
+its opening loss (~1.02), full 15,420-step stream, and ckpt
+mtime instead. The 92a1e3e fix gives smoke its own path so the
+guard is unconditional for every future run. Probe:
+scratch/basics_probe0.py (committed pre-launch, same probe that
+measured the floor). Receipts logs/basicsdiet1/arms.jsonl (2 rows;
+smoke rows in separate smoke.jsonl) + both arm logs +
+logs/basics/probe0.jsonl rows 4-5, force-added this commit
+(small-text-receipt exception). Paired serial arms, one variable
+(the arithmetic shard), BIRTH_SEED=3, mps fp32, matched horizon
+15,420 steps both arms (training 2,839s control / 2,821s arith; 2,939s / 2,914s with the gate).
+
+Measured (dicts are the checksum):
+
+- control (stock + 6,000 sympy atoms): 70/120
+  {3:23, 4:11, 5:15, 6:8, 7:13} valid 62.79%, 15,420 steps
+- arith (same + 2,545 arithmetic rows): 68/120
+  {3:23, 4:10, 5:14, 6:9, 7:12} valid 61.41%, 15,420 steps
+
+Control replication note: the control's 70 total reproduces the
+booked atoms-sympy s3 = 70 (measured row L29486) exactly; its L4 cell reads 11
+v the booked 12 — one solve of same-seed cross-run mps spread,
+consistent with AMENDMENT SOFT-SPEED-1-PRECONDITION.
+
+Probe, both arms, same held-out items (N=120/arm, wave B=8, T=0.7,
+oracle-verified sympy exact equality):
+
+- arith arm:   arith 34.17% pass@1 / 61.67% pass@8;
+               expand 10.0/22.5; numsum 4.17/26.67
+- control arm: arith 0.0 pass@1 / 1.67 pass@8;
+               expand 10.0/23.33; numsum 4.17/17.5
+
+**BAR 1 (ARITH-LEARNS): FIRES.** 61.67% >= 40% against a
+control floor of 1.67% pass@8 (1.67-3.33% across the three
+pre-birth checkpoints, L30259). Scope from the amendment: the
+claim is the OPERATION at held-out small-integer operands
+(|a| <= 60), not multi-digit arithmetic.
+**BAR 2 (NO-HARM): FIRES.** 68 >= 66 (control 70 - 4). The dent
+is -2, exactly the 1c-measured series dent class.
+**REFUTED-IF does not trigger** (68 > 62).
+**BAR 3 (TRANSFER rider, registered no-claim): FLAT on the
+resident family.** expand pass@8 22.5 v control 23.33; cross-term
+failure count 72/108 v 79/108 misses (ends-right-middle-wrong).
+The model that now does a*b standalone at 61.67% still cannot do
+a*d + b*c inside (ax+b)(cx+d) any better than control. The
+near-format numsum arm DID move (17.5 -> 26.67 pass@8), so the
+learning radiates by FORMAT DISTANCE, not by operation: the
+arithmetic circuit the shard built is format-local at this dose
+and horizon. Rider-grade, single seed; but it is the
+discriminating outcome the format-as-routing bank named — the
+same operation, present in two formats, moves in one.
+
+Registered prior: 2 hits (BAR 1 fire; BAR 2 fire, dent 0..-3
+predicted, -2 measured), 1 miss (predicted a small positive on
+expand pass@8; measured flat). Family record 9 hits, 20 misses.
+
+Reading. The ladder law's cleanest cell yet: stating an operation
+as data moves that operation from floor to 61.67% at 1.5% diet
+share and ~zero capability cost — but stating it in ONE format
+buys competence in THAT format. The 18.2% of diet rows already
+spent on algebra did not teach the arithmetic inside algebra
+(L30259's cross-term census), and the new arithmetic rows did not
+transfer INTO algebra either. Whatever carries competence across
+surface formats, it is not co-presence in one diet at this scale.
+Next-rung candidates banked, not registered: mixed-format
+arithmetic rows (the same fact stated inside an expand context);
+a cross-term-decomposed expand family (state a*d + b*c as its own
+step); dose/horizon ladder on the transfer rider.
+
+Fences: single seed (BIRTH_SEED=3), single device (Mac mps fp32),
+paired in-run arms (the valid mps shape) with totals differing by
+2 = the measured same-seed run-noise class, so the -2 dent is
+direction-unresolved (it is booked as clearing the bar, not as a
+measured cost); probe is T=0.7 pass@k under the gate's own
+sampler, not greedy; arithmetic claim scoped to small-integer
+operands per the amendment; gate numbers comparable within this
+family only (same vocab, same sampler category count). The
+transfer-flat rider is n=1 and dose-scoped: 2,545 rows for one
+epoch-schedule may simply be under the transfer threshold —
+named, untested.

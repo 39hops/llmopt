@@ -2069,3 +2069,16 @@ regime tag on every bullet is the fence.
   rather than copying. Basics rungs should target arithmetic, not
   algebra.
   ([OBSERVATION BASICS-CENSUS-0](RESULTS.md#L30259).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe]
+  2,545 one-ply arithmetic rows at 1.54% dose lift standalone
+  arithmetic from a 1.67% floor to 61.67% pass@8 (34.17% pass@1
+  from zero) at a -2 gate dent that is inside same-seed run noise
+  — but the transfer rider is FLAT: the model that now multiplies
+  standalone still misses the cross term inside (ax+b)(cx+d) at
+  the control rate (72/108 v 79/108), while the near-format
+  numeric-sum arm rises 17.5 to 26.67. Learning radiated by
+  format distance, not by operation: arithmetic competence is
+  format-local at this dose, the first measured datum for the
+  format-as-routing frame. Scoped to small-integer operands.
+  ([VERDICT BASICS-DIET-1](RESULTS.md#L30467).)
