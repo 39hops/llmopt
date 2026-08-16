@@ -1,0 +1,171 @@
+[slow-fire] i_heurisch 20 ops 2.09919s
+[slow-fire] i_heurisch 18 ops 2.12186s
+[slow-fire] i_heurisch 22 ops 8.04885s
+  [af] 50 done
+  [af] 50 done
+  [af] 50 done
+[slow-verify] 45 ops 2.31917s
+[slow-fire] i_heurisch 12 ops 4.95878s
+[slow-fire] i_heurisch 22 ops 6.95228s
+[slow-verify] 45 ops 2.36269s
+[slow-verify] 45 ops 2.12526s
+[slow-fire] i_heurisch 32 ops 20.9806s
+[slow-fire] i_heurisch 12 ops 2.13761s
+[slow-fire] i_heurisch 18 ops 21.8861s
+[slow-fire] i_heurisch 17 ops 3.96323s
+[slow-fire] i_heurisch 19 ops 2.12269s
+  [af] 100 done
+[slow-fire] i_heurisch 20 ops 2.46965s
+[slow-fire] i_heurisch 33 ops 19.3153s
+[slow-fire] i_heurisch 72 ops 6.39403s
+  [af] 125 done
+[slow-fire] i_heurisch 20 ops 2.05881s
+[slow-fire] i_usub 131 ops 8.0272s
+[slow-fire] i_unprod 89 ops 4.38596s
+[slow-fire] i_heurisch 24 ops 4.86351s
+[slow-fire] i_heurisch 23 ops 44.0905s
+[slow-fire] i_heurisch 33 ops 42.6447s
+[slow-fire] i_heurisch 22 ops 17.167s
+[slow-fire] i_heurisch 31 ops 2.83866s
+  [af] 250 done
+[slow-fire] i_heurisch 22 ops 22.3978s
+[slow-verify] 22 ops 3.02613s
+[slow-fire] i_heurisch 31 ops 2.68776s
+[slow-verify] 22 ops 3.01247s
+  [af] 275 done
+[slow-fire] i_heurisch 19 ops 19.5528s
+[slow-verify] 53 ops 3.00847s
+[slow-fire] i_heurisch 23 ops 30.9472s
+[slow-fire] i_heurisch 74 ops 34.8864s
+[slow-fire] i_heurisch 29 ops 35.3944s
+[slow-fire] i_heurisch 66 ops 9.24078s
+[slow-fire] i_usub 95 ops 2.48796s
+  [af] 300 done
+[af] {'error': 18, 'formdiff': 197, 'identical': 64, 'axiom_no_emit': 10, 'wallkill': 11} co-solved=261 formdiff=75.48% (147s)
+[slow-fire] i_heurisch 14 ops 2.87652s
+[slow-fire] i_heurisch 30 ops 2.02874s
+[slow-fire] i_heurisch 40 ops 3.34241s
+[slow-fire] i_heurisch 19 ops 5.57288s
+[slow-fire] i_heurisch 39 ops 2.15832s
+[slow-fire] i_heurisch 20 ops 8.34281s
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+[slow-fire] i_heurisch 16 ops 14.7186s
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+[slow-fire] i_heurisch 17 ops 10.2756s
+  [c] 25 done
+[slow-fire] i_heurisch 34 ops 13.7768s
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+  [c] 25 done
+[slow-fire] i_heurisch 32 ops 12.6529s
+[slow-fire] i_heurisch 18 ops 26.3114s
+[slow-fire] i_heurisch 43 ops 33.6678s
+[slow-fire] i_heurisch 35 ops 13.9574s
+[slow-fire] i_heurisch 50 ops 11.9807s
+[slow-fire] i_heurisch 37 ops 26.2932s
+[slow-fire] i_heurisch 16 ops 3.11922s
+[slow-fire] i_heurisch 34 ops 2.13817s
+[slow-fire] i_heurisch 26 ops 3.00672s
+[slow-fire] i_heurisch 28 ops 11.0377s
+[slow-fire] i_heurisch 13 ops 5.97745s
+[slow-fire] i_heurisch 46 ops 13.5851s
+[slow-fire] i_heurisch 17 ops 2.06169s
+[slow-fire] i_heurisch 62 ops 13.7647s
+  [c] 50 done
+[slow-fire] i_heurisch 13 ops 4.1313s
+[slow-fire] i_heurisch 33 ops 29.9959s
+[slow-fire] i_heurisch 27 ops 14.4499s
+[slow-fire] i_heurisch 18 ops 19.0567s
+[slow-fire] i_heurisch 12 ops 2.14295s
+[slow-fire] i_heurisch 36 ops 13.3146s
+[slow-fire] i_heurisch 16 ops 5.0338s
+[slow-fire] i_heurisch 33 ops 27.8763s
+[slow-fire] i_heurisch 16 ops 3.55238s
+[slow-fire] i_heurisch 10 ops 13.1112s
+[slow-fire] i_heurisch 17 ops 11.9675s
+[slow-fire] i_heurisch 35 ops 2.19388s
+  [c] 75 done
+  [c] 75 done
+  [c] 75 done
+  [c] 75 done
+  [c] 75 done
+  [c] 75 done
+[slow-fire] i_heurisch 34 ops 12.3126s
+  [c] 75 done
+  [c] 75 done
+  [c] 75 done
+  [c] 75 done
+  [c] 75 done
+[slow-fire] i_heurisch 12 ops 30.2111s
+[slow-fire] i_heurisch 23 ops 11.978s
+[slow-fire] i_heurisch 43 ops 13.7021s
+[slow-fire] i_heurisch 18 ops 9.38799s
+  [c] 100 done
+[slow-fire] i_heurisch 48 ops 2.86904s
+[slow-fire] i_heurisch 12 ops 9.24784s
+[slow-fire] i_heurisch 11 ops 2.57637s
+[slow-fire] i_heurisch 34 ops 9.20799s
+[slow-fire] i_heurisch 19 ops 7.14676s
+  [c] 125 done
+[slow-fire] i_heurisch 17 ops 2.23984s
+[slow-fire] i_heurisch 27 ops 3.14215s
+[slow-fire] i_heurisch 17 ops 5.76349s
+[slow-fire] i_heurisch 17 ops 23.0111s
+[slow-fire] i_heurisch 47 ops 13.7812s
+[slow-fire] i_heurisch 17 ops 2.04658s
+  [c] 150 done
+  [c] 150 done
+  [c] 150 done
+  [c] 150 done
+  [c] 150 done
+  [c] 150 done
+[slow-fire] i_heurisch 27 ops 27.4133s
+[slow-fire] i_heurisch 16 ops 3.11728s
+[slow-fire] i_heurisch 35 ops 18.0132s
+[slow-fire] i_heurisch 26 ops 25.3046s
+[slow-fire] i_heurisch 16 ops 3.09286s
+[slow-fire] i_heurisch 34 ops 13.9614s
+[slow-fire] i_heurisch 16 ops 20.4969s
+[slow-fire] i_heurisch 18 ops 27.3398s
+[slow-fire] i_heurisch 23 ops 23.9746s
+  [c] 175 done
+[slow-fire] i_heurisch 40 ops 18.5768s
+[slow-fire] i_heurisch 35 ops 15.8216s
+[slow-fire] i_heurisch 18 ops 29.4457s
+[slow-fire] i_heurisch 15 ops 3.12784s
+[slow-fire] i_heurisch 16 ops 3.33261s
+[slow-fire] i_heurisch 30 ops 25.6776s
+  [c] 200 done
+[c] successes=112 fast(<8s)=95 censored(8-60s)=17 (15.18% of successes) hang/fail=88 (493s)

@@ -5389,3 +5389,15 @@ without re-introducing history).
   dose are the live coordinates. The transfer-v-distance curve
   gains a third measured edge: in-format statement, ~zero
   transfer at this dose.
+
+  AMENDMENT to the RULE-ABLATE bank (2026-08-16): both untested
+  suspect-list entries are now MEASURED and both fire —
+  answer-form divergence 75.5% formdiff on co-solved integrands
+  (OBSERVATION L30869; the mechanism is a serialization dialect,
+  math disagreement 0) and survivor censoring real at 15.2% of L4
+  successes in the 8-60s band (bimodality claim refuted as
+  stated). The suspect list is now 3-for-3 measured: rule mix
+  (RULE-ABLATE-1), answer form, censoring. Residue: ATOM-NORM
+  (normalize axiom nxt through sstr(sympify()) at farm time,
+  re-run the dose comparison at matched dose — the emitter-tie
+  bar retests with the dialect removed).

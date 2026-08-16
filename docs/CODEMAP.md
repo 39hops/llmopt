@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 200, spec-cited 86, cited-but-library 58
+Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 201, spec-cited 86, cited-but-library 58
 
 ## scratch/
 
@@ -20,6 +20,7 @@ Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 200, spec-ci
 | absorb | absorb_1e5.py | UNCITED | — | — | — | — |
 | adjudicate | adjudicate_zx.py | library | — | — | 1 | — |
 | anatomy | anatomy.py | results-cited | RESULTS, specs | RESULTS×5, specs×7 | — | 3 |
+| answerform0 | answerform0_censor0.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | assets | assets_classify.py | spec-cited | specs | specs×1 | — | — |
 | atlas | atlas_precompute.py | spec-cited | specs | specs×1 | — | — |
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
@@ -113,7 +114,7 @@ Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 200, spec-ci
 | export | export_r2b_ref.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | farm | farm_arith.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
 | farm | farm_atoms.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 1 |
-| farm | farm_atoms_axiom.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
+| farm | farm_atoms_axiom.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | farm | farm_dist_rows.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
 | farm | farm_xterm.py | results-cited | RESULTS | RESULTS×3 | — | — |
 | farmer | farmer_probe.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |

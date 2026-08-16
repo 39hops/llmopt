@@ -1293,6 +1293,15 @@ Unified crystal anatomy (2026-07-29 spec: slack-restoration). One env-parameteri
 - `snap(w, q_max)`
 - `truncate(W, r)`
 
+### scratch/answerform0_censor0.py
+ANSWER-FORM-0 + CENSOR-0 — the two desk residues of the EMITTER-DIVERGES suspect list (RULE-ABLATE bank, RIFF-LEDGER L5281; ATOM-DOSE-LADDER-1 L29662).
+
+- `_heur_slot(sp)` — The in-process sympy heurisch slot, verbatim from the frozen
+- `_af_worker(cur, nxt_sympy, level, q)`
+- `_c_worker(seed, q)`
+- `rolling(jobs, worker, wall_s, out_path, tag)` — Spawn-per-job rolling pool; kill at wall; stream rows.
+- `main()`
+
 ### scratch/assets_classify.py
 Classify every docs/assets/*.png into the figure taxonomy.
 

@@ -1,0 +1,8 @@
+{"seed": 91700005, "ok": true, "wall_s": 0.17}
+{"seed": 91700003, "ok": true, "wall_s": 0.48}
+{"seed": 91700001, "ok": true, "wall_s": 0.34}
+{"seed": 91700006, "ok": true, "wall_s": 3.92}
+{"seed": 91700000, "ok": false, "wall_s": 6.02}
+{"seed": 91700002, "ok": false, "wall_s": 7.35}
+{"seed": 91700004, "ok": true, "wall_s": 37.77}
+{"cls": "wallkill", "ok": false, "wall_s": 60, "args0": "91700007"}

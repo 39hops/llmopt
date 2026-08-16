@@ -2113,3 +2113,17 @@ regime tag on every bullet is the fence.
   diet. Counts are lower bounds (canonical-string match; sample
   sigma ~0.8 points puts 47.58 v 50 in the threshold region).
   ([OBSERVATION RULE-POLICY-0-CENSUS](RESULTS.md#L30806).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe] The
+  emitter divergence has two named, countable mechanisms: on the
+  same integrands the two emitters serialize the same mathematics
+  differently 75.5% of the time (axiom's ascending-degree order,
+  parenthesized unary minus, **-1 for division — a different
+  answer dialect; math disagreement 0/261), and the axiom farm's
+  8s L4 wall censored a real solvable band, 15.2% of successes
+  spread across 8-59s with no gap, refuting the recorded
+  bimodality claim — the shard's L4 rule mix is speed-biased by
+  construction. Both desk thresholds were committed pre-count; a
+  farm-time normalization pass is priced as the ATOM-NORM arm.
+  Sample-scoped; censored-band composition unmeasured.
+  ([OBSERVATION ANSWER-FORM-0 + CENSOR-0](RESULTS.md#L30869).)

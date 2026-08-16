@@ -1,0 +1,12 @@
+{"cur": "Integral(972*exp(18*x), x)", "cls": "identical", "nxt_sympy": "54*exp(18*x)", "nxt_axiom": "54*exp(18*x)", "wall_s": 0.04}
+{"cur": "Integral((2*x + 3)*exp(x**2 + 3*x + 3) + 2*log(4*x)**2 + 4*log(4*x), x)", "cls": "identical", "nxt_sympy": "2*x*log(4*x)**2 + exp(x**2 + 3*x + 3)", "nxt_axiom": "2*x*log(4*x)**2 + exp(3*x + x**2 + 3)", "wall_s": 0.17}
+{"cur": "Integral((12 - 180*x**2)*sin(5*x**3 - x), x)", "cls": "identical", "nxt_sympy": "12*cos(5*x**3 - x)", "nxt_axiom": "12*cos(-x + 5*x**3)", "wall_s": 0.23}
+{"cur": "Integral((9*x - 3)*sqrt(3*x**2 - 2*x + 3), x)", "cls": "identical", "nxt_sympy": "(3*x**2 - 2*x + 3)**(3/2)", "nxt_axiom": "((-2)*x + 3*x**2 + 3)*sqrt((-2)*x + 3*x**2 + 3)", "wall_s": 0.12}
+{"cur": "Integral(72*x**2 + 9*cos(x), x)", "cls": "identical", "nxt_sympy": "24*x**3 + 9*sin(x)", "nxt_axiom": "9*sin(x) + 24*x**3", "wall_s": 0.06}
+{"cur": "Integral(-525*sin(5*x + 2)*cos(5*x + 2)**2, x)", "cls": "identical", "nxt_sympy": "35*cos(5*x + 2)**3", "nxt_axiom": "35*cos(5*x + 2)**3", "wall_s": 0.22}
+{"cur": "Integral(20*exp(4*x)*sin(x) + 5*exp(4*x)*cos(x) + 1 + 10/sqrt(1 - 4*x**2), x)", "cls": "identical", "nxt_sympy": "x + 5*exp(4*x)*sin(x) + 5*asin(2*x)", "nxt_axiom": "x + 5*asin(2*x) + 5*exp(4*x)*sin(x)", "wall_s": 0.23}
+{"cur": "Integral(6*log(x)**2 + 12*log(x) + 9 + 2/sqrt(1 - x**2) + 10/sqrt(1 - 4*x**2) + 27/sqrt(1 - 9*x**2), x)", "cls": "identical", "nxt_sympy": "6*x*log(x)**2 + 9*x + 2*asin(x) + 5*asin(2*x) + 9*asin(3*x)", "nxt_axiom": "2*asin(x) + 5*asin(2*x) + 6*x*log(x)**2 + 9*x + 9*asin(3*x)", "wall_s": 0.3}
+{"cur": "Integral(27*sqrt(3*x + 4)/2, x)", "cls": "identical", "nxt_sympy": "3*(3*x + 4)**(3/2)", "nxt_axiom": "3*(3*x + 4)**(3/2)", "wall_s": 0.03}
+{"cur": "Integral(((2*x - 1)*(9*x**2 + 1)*atan(3*x) + 3*(x**2 - x + 4)*log(x**2 - x + 4))/((9*x**2 + 1)*(x**2 - x + 4)), x)", "cls": "identical", "nxt_sympy": "log(x**2 - x + 4)*atan(3*x)", "nxt_axiom": "atan(3*x)*log(-x + x**2 + 4)", "wall_s": 45.78}
+{"cur": "Integral((x**(3/2)*sqrt(1 - x**2)*(sqrt(7)*sqrt(x)*(12*x - 2) + 18*x**2*log(4*x) + 6*x**2 + 18*exp(3*x)*sin(2*x) + 12*exp(3*x)*cos(2*x) + 5) + 8*x**(3/2) + 4*sqrt(x)*sqrt(1 - x**2) + x*sqrt(7 - 7*x**2)*(3*x**2 - x + 4))/(x**(3/2)*sqrt(1 - x**2)), x)", "cls": "axiom_no_emit", "wall_s": 45.63}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(4*(3*x*(3*x - 1)*log(x*(3*x - 1)) + (6*x - 1)*(9*x*"}

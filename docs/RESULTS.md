@@ -30865,3 +30865,55 @@ token-weighted; canonical-string match undercounts unique if the
 engine serializes an equivalent child differently (class (c));
 deterministic census, scoped to the exact artifact
 (load_excised_rows, 164,896 rows, D2-excised).
+
+## OBSERVATION ANSWER-FORM-0 + CENSOR-0: both emitter-divergence desk residues fire — the two emitters serialize the same answer differently on 75.5% of co-solved integrands (a different answer DIALECT, not different math), and the L4 8s wall censored a real solvable band (15.2% of successes), refuting the bimodality claim as stated (2026-08-16, Mac)
+
+Desk pair, /desk shape: thresholds committed BEFORE the count
+(script scratch/answerform0_censor0.py; ANSWER-FORM SUSPECT-LIVE
+at formdiff >= 30% / CLEAR < 10%; CENSOR WALL-BIASED at
+censored-band >= 10% of successes / BIMODAL-CONFIRMED < 2%). One
+pre-count method fix committed before the run: RAW-string
+comparison first, because the model trains on the raw emitted
+text (the canonical compare only separates form from math).
+Fork-isolated workers throughout, rows streamed. Receipts
+logs/emitterdiv/answerform0.jsonl + censor0.jsonl + run.log
+(+ the N=12/8 smokes in *_smoke.jsonl, moved off the real paths
+before the run), force-added this commit.
+
+ANSWER-FORM-0 (N=300 sympy-shard rows re-emitted through axiom
+emit_chain with the farm's heurisch slot, same integrand both
+emitters): co-solved 261 — identical raw 64, formdiff 197
+(**75.48%**), disagree 0; taxed: axiom_no_emit 10, wallkill 11,
+error 18 (all TypeError, worker-side parse class).
+**SUSPECT-LIVE fires.** The mechanism, from the rows: axiom
+serializes ascending-degree term order (-x + 4*x**2 + 2 v sympy's
+4*x**2 - x + 2), parenthesized unary minus ((-14)*x), and **-1
+for division — a systematically different answer dialect at
+identical mathematics (disagree = 0 is the honest control: the
+emitters never differ on the MATH in this sample). The axiom atom
+shard therefore trains answer text drawn from a different
+serialization distribution than the resident diet, a named,
+countable mechanism for EMITTER-DIVERGES (L29662) that a
+normalization pass (re-serialize axiom nxt through
+sstr(sympify()) at farm time) removes mechanically — priced as a
+farm-time one-liner, banked as the ATOM-NORM arm.
+
+CENSOR-0 (N=200 fresh L4 seeds, 91.7M band, 60s wall, farm
+heurisch slot): successes 112 — fast (<8s) 95, censored-band
+(8-60s) 17 = **15.18% of successes**; hang/fail 88.
+**WALL-BIASED fires.** The censored walls spread across the whole
+band (8.45 to 59.0s, no gap), so the farm's "bimodal: ~0.3s or
+live-locked" claim is refuted AS STATED: the 8s wall removed a
+real solvable ~15% whose composition (rule mix, answer size) is
+UNMEASURED here — the shard's L4 rule mix is speed-biased by
+construction, the second named EMITTER-DIVERGES mechanism.
+
+Fences: sample-scoped (300 of 6,000 sympy rows; 200 fresh L4
+seeds — binomial sigma ~2.7 points on the 75.5, ~3.4 on the 15.2:
+both fire far outside it); the censored band's composition is a
+named unmeasured; CENSOR-0's seed band is FRESH (never farmed),
+so the 15.2% characterizes the generator-space wall class, not
+the exact shipped shard's survivors; wall-clock classes measured
+under interactive-idle Mac load, single pass; the AF error/
+wallkill tax (29/300) is disclosed and excluded from the
+co-solved denominator.

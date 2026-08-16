@@ -1,0 +1,300 @@
+{"cur": "Integral((48*cos(x) + 7)*sin(x), x)", "cls": "error", "err": "TypeError", "wall_s": 0.13}
+{"cur": "Integral((8*x - 1)*exp(4*x**2 - x + 2), x)", "cls": "formdiff", "nxt_sympy": "exp(4*x**2 - x + 2)", "nxt_axiom": "exp(-x + 4*x**2 + 2)", "wall_s": 0.1}
+{"cur": "Integral(8*x*log(x) + 4*x + 8*sqrt(2)*exp(x)*cos(x + pi/4), x)", "cls": "error", "err": "TypeError", "wall_s": 0.18}
+{"cur": "Integral((6*x + 4)*exp(3*x**2 + 4*x + 5), x)", "cls": "identical", "nxt_sympy": "exp(3*x**2 + 4*x + 5)", "nxt_axiom": "exp(3*x**2 + 4*x + 5)", "wall_s": 0.1}
+{"cur": "Integral(96*sin(2*x + 4)**3*cos(2*x + 4), x)", "cls": "identical", "nxt_sympy": "12*sin(2*x + 4)**4", "nxt_axiom": "12*sin(2*x + 4)**4", "wall_s": 0.29}
+{"cur": "Integral(-35*x*sin(7*x + 2) + 5*cos(7*x + 2), x)", "cls": "identical", "nxt_sympy": "5*x*cos(7*x + 2)", "nxt_axiom": "5*x*cos(7*x + 2)", "wall_s": 0.18}
+{"cur": "Integral(32*sin(2*x + 2)**3*cos(2*x + 2), x)", "cls": "identical", "nxt_sympy": "4*sin(2*x + 2)**4", "nxt_axiom": "4*sin(2*x + 2)**4", "wall_s": 0.26}
+{"cur": "Integral((9*x**4 + 18*x**3 + 95*x**2 + 28*x + 66)/(x**4 + 2*x**3 + 9*x**2 + 8*x + 16), x)", "cls": "formdiff", "nxt_sympy": "9*x + (22 - 14*x)/(x**2 + x + 4)", "nxt_axiom": "9*x + ((-14)*x + 22)*(x + x**2 + 4)**-1", "wall_s": 0.34}
+{"cur": "Integral(4*(x*(4*x - 3)*log(4*x) + (2*x**2 - 3*x + 4)*log(2*x**2 - 3*x + 4))/(x*(2*x**2 - 3*x + 4)), x)", "cls": "formdiff", "nxt_sympy": "4*log(4*x)*log(2*x**2 - 3*x + 4)", "nxt_axiom": "4*log((-3)*x + 2*x**2 + 4)*log(4*x)", "wall_s": 0.58}
+{"cur": "Integral(81*x**8, x)", "cls": "identical", "nxt_sympy": "9*x**9", "nxt_axiom": "9*x**9", "wall_s": 0.02}
+{"cur": "Integral(6*(7*x**3 - 3*x + 1)/sqrt(x), x)", "cls": "formdiff", "nxt_sympy": "sqrt(x)*(12*x**3 - 12*x + 12)", "nxt_axiom": "((-12)*x + 12*x**3 + 12)*sqrt(x)", "wall_s": 0.11}
+{"cur": "Integral((8*x - 4)*cos(x**2 - x + 2), x)", "cls": "formdiff", "nxt_sympy": "4*sin(x**2 - x + 2)", "nxt_axiom": "4*sin(-x + x**2 + 2)", "wall_s": 0.12}
+{"cur": "Integral(4*(x*(2*x - 3)*log(x) + 1)*exp(x**2 - 3*x + 1)/x, x)", "cls": "formdiff", "nxt_sympy": "4*exp(x**2 - 3*x + 1)*log(x)", "nxt_axiom": "4*exp((-3)*x + x**2 + 1)*log(x)", "wall_s": 0.2}
+{"cur": "Integral(12*x**2 + 18*log(x) + 18, x)", "cls": "identical", "nxt_sympy": "4*x**3 + 18*x*log(x)", "nxt_axiom": "4*x**3 + 18*x*log(x)", "wall_s": 0.05}
+{"cur": "Integral(18*x*log(4*x) + 9*x + 6*log(4*x) + 6 + 3/x, x)", "cls": "formdiff", "nxt_sympy": "(9*x**2 + 6*x)*log(4*x) + 3*log(x)", "nxt_axiom": "3*log(x) + (6*x + 9*x**2)*log(4*x)", "wall_s": 0.09}
+{"cur": "Integral((144*x + 32*(9*x**2 - 4)**2)*exp(12*x**3 - 16*x + 4), x)", "cls": "formdiff", "nxt_sympy": "(72*x**2 - 32)*exp(12*x**3 - 16*x + 4)", "nxt_axiom": "(72*x**2 - 32)*exp((-16)*x + 12*x**3 + 4)", "wall_s": 0.13}
+{"cur": "Integral(54*x**2*(x*(8*x - 1) + 3)*exp(4*x**2 - x + 1), x)", "cls": "formdiff", "nxt_sympy": "54*x**3*exp(4*x**2 - x + 1)", "nxt_axiom": "54*x**3*exp(-x + 4*x**2 + 1)", "wall_s": 0.09}
+{"cur": "Integral(24*x*sin(2*x**3 - x + 3) + 2*(6*x**2 - 1)**2*cos(2*x**3 - x + 3), x)", "cls": "formdiff", "nxt_sympy": "(12*x**2 - 2)*sin(2*x**3 - x + 3)", "nxt_axiom": "(12*x**2 - 2)*sin(-x + 2*x**3 + 3)", "wall_s": 1.43}
+{"cur": "Integral(300*exp(10*x + 8), x)", "cls": "identical", "nxt_sympy": "30*exp(10*x + 8)", "nxt_axiom": "30*exp(10*x + 8)", "wall_s": 0.05}
+{"cur": "Integral(42*x*cos(3*x + 3) + 14*sin(3*x + 3), x)", "cls": "error", "err": "TypeError", "wall_s": 0.11}
+{"cur": "Integral(-8*(5*x + 1)*sin(5*x**2 + 2*x + 3) + 16*exp(4*x)*sin(x) + 4*exp(4*x)*cos(x), x)", "cls": "formdiff", "nxt_sympy": "4*exp(4*x)*sin(x) + 4*cos(5*x**2 + 2*x + 3)", "nxt_axiom": "4*cos(2*x + 5*x**2 + 3) + 4*exp(4*x)*sin(x)", "wall_s": 0.31}
+{"cur": "Integral(-144*sin(6*x), x)", "cls": "identical", "nxt_sympy": "24*cos(6*x)", "nxt_axiom": "24*cos(6*x)", "wall_s": 0.05}
+{"cur": "Integral(16*x*(-x*sin(x) + 2*cos(x)), x)", "cls": "identical", "nxt_sympy": "16*x**2*cos(x)", "nxt_axiom": "16*x**2*cos(x)", "wall_s": 0.1}
+{"cur": "Integral(6*(12*x**4 + 21*x**3 + 20*x**2 + 4*x + 3)/sqrt(x**2 + 2*x + 2), x)", "cls": "formdiff", "nxt_sympy": "sqrt(x**2 + 2*x + 2)*(18*x**3 + 6*x + 6)", "nxt_axiom": "(6*x + 18*x**3 + 6)*sqrt(2*x + x**2 + 2)", "wall_s": 0.51}
+{"cur": "Integral(sqrt(2)*(2*x - 1)/sqrt(x**2 - x + 2), x)", "cls": "formdiff", "nxt_sympy": "2*sqrt(2)*sqrt(x**2 - x + 2)", "nxt_axiom": "2*sqrt(2)*sqrt(-x + x**2 + 2)", "wall_s": 0.11}
+{"cur": "Integral(-20*sin(4*x + 2), x)", "cls": "identical", "nxt_sympy": "5*cos(4*x + 2)", "nxt_axiom": "5*cos(4*x + 2)", "wall_s": 0.08}
+{"cur": "Integral(21*x**2*log(x) + 7*x**2 + x**2*log(10460353203) + 4*x*log(x)**2 + 4*x*log(x) + x*log(65536)*log(x) + x*log(256) + 16*x*log(2)**2 + 4*sqrt(2)*exp(2*x)*sin(2*x + pi/4) + 5 + 18/sqrt(1 - 9*x**2), x)", "cls": "error", "err": "TypeError", "wall_s": 0.45}
+{"cur": "Integral(-81*exp(x), x)", "cls": "formdiff", "nxt_sympy": "-81*exp(x)", "nxt_axiom": "(-81)*exp(x)", "wall_s": 0.05}
+{"cur": "Integral(-60*x**3*log(x) - 15*x**3 - 3, x)", "cls": "formdiff", "nxt_sympy": "-15*x**4*log(x) - 3*x", "nxt_axiom": "(-15)*x**4*log(x) - 3*x", "wall_s": 0.07}
+{"cur": "Integral(7*(6*x*log(x)*cos(x) + 6*sin(x) + 1)/x, x)", "cls": "formdiff", "nxt_sympy": "42*log(x)*sin(x) + 7*log(x)", "nxt_axiom": "7*log(x) + 42*log(x)*sin(x)", "wall_s": 0.44}
+{"cur": "Integral(48*x*log(3*x) + 24*x - 12*log(3*x) - 12 + 18/x, x)", "cls": "formdiff", "nxt_sympy": "(24*x**2 - 12*x)*log(3*x) + 18*log(x)", "nxt_axiom": "18*log(x) + ((-12)*x + 24*x**2)*log(3*x)", "wall_s": 0.1}
+{"cur": "Integral(42*x*(-6*x**3*sin(x**3 + 1) + cos(x**3 + 1))*cos(x**3 + 1)**3, x)", "cls": "identical", "nxt_sympy": "21*x**2*cos(x**3 + 1)**4", "nxt_axiom": "21*x**2*cos(x**3 + 1)**4", "wall_s": 0.96}
+{"cur": "Integral(8*x + 2*(8*x - 1)*log(2*x) - 2, x)", "cls": "formdiff", "nxt_sympy": "(8*x**2 - 2*x)*log(2*x)", "nxt_axiom": "((-2)*x + 8*x**2)*log(2*x)", "wall_s": 0.09}
+{"cur": "Integral((50*x**4 + 20*x**3 + 31*x**2 - 38*x - 4)/(25*x**4 + 10*x**3 + 11*x**2 + 2*x + 1), x)", "cls": "formdiff", "nxt_sympy": "2*x + (21 - 9*x)/(25*x**2 + 5*x + 5)", "nxt_axiom": "2*x + ((-9)*x + 21)*(5*x + 25*x**2 + 5)**-1", "wall_s": 0.69}
+{"cur": "Integral(-2*exp(4*x)*sin(2*x) + 4*exp(4*x)*cos(2*x) + 2 + 4/sqrt(1 - x**2), x)", "cls": "formdiff", "nxt_sympy": "2*x + exp(4*x)*cos(2*x) + 4*asin(x)", "nxt_axiom": "2*x + 4*asin(x) + cos(2*x)*exp(4*x)", "wall_s": 0.34}
+{"cur": "Integral(-50*x*log(x) - 25*x - 4*sin(x), x)", "cls": "formdiff", "nxt_sympy": "-25*x**2*log(x) + 4*cos(x)", "nxt_axiom": "(-25)*x**2*log(x) + 4*cos(x)", "wall_s": 0.17}
+{"cur": "Integral(12*x*(5*x + 2)*sin(5*x**2 + 4*x + 3) - 6*cos(5*x**2 + 4*x + 3), x)", "cls": "formdiff", "nxt_sympy": "-6*x*cos(5*x**2 + 4*x + 3)", "nxt_axiom": "(-6)*x*cos(4*x + 5*x**2 + 3)", "wall_s": 4.25}
+{"cur": "Integral(4*(8*x - 1)**2*cos(4*x**2 - x + 4) + 32*sin(4*x**2 - x + 4), x)", "cls": "formdiff", "nxt_sympy": "(32*x - 4)*sin(4*x**2 - x + 4)", "nxt_axiom": "(32*x - 4)*sin(-x + 4*x**2 + 4)", "wall_s": 4.12}
+{"cur": "Integral(3*sqrt(2*x + 1), x)", "cls": "identical", "nxt_sympy": "(2*x + 1)**(3/2)", "nxt_axiom": "(2*x + 1)**(3/2)", "wall_s": 0.05}
+{"cur": "Integral((6*x + 3)*sqrt(2*x**2 + 2*x + 4), x)", "cls": "formdiff", "nxt_sympy": "(2*x**2 + 2*x + 4)**(3/2)", "nxt_axiom": "(2*x + 2*x**2 + 4)*sqrt(2*x + 2*x**2 + 4)", "wall_s": 0.17}
+{"cur": "Integral(20*x**3*(-x*(2*x + 1)*sin(4*x**2 + 4*x + 4) + cos(4*x**2 + 4*x + 4)), x)", "cls": "formdiff", "nxt_sympy": "5*x**4*cos(4*x**2 + 4*x + 4)", "nxt_axiom": "5*x**4*cos(4*x + 4*x**2 + 4)", "wall_s": 0.56}
+{"cur": "Integral(36*x**3*(-x - 1)*exp(4*x + 4), x)", "cls": "formdiff", "nxt_sympy": "-9*x**4*exp(4*x + 4)", "nxt_axiom": "(-9)*x**4*exp(4*x + 4)", "wall_s": 0.1}
+{"cur": "Integral(3/sqrt(2*x + 3), x)", "cls": "identical", "nxt_sympy": "3*sqrt(2*x + 3)", "nxt_axiom": "3*sqrt(2*x + 3)", "wall_s": 0.05}
+{"cur": "Integral(-48*x**2*sin(x**2) + 96*sin(4*x + 5)**2*cos(4*x + 5) + 24*cos(x**2), x)", "cls": "formdiff", "nxt_sympy": "24*x*cos(x**2) + 8*sin(4*x + 5)**3", "nxt_axiom": "8*sin(4*x + 5)**3 + 24*x*cos(x**2)", "wall_s": 1.14}
+{"cur": "Integral(9*log(2*x) + 10 + 12/sqrt(1 - 4*x**2), x)", "cls": "formdiff", "nxt_sympy": "9*x*log(2*x) + x + 6*asin(2*x)", "nxt_axiom": "x + 6*asin(2*x) + 9*x*log(2*x)", "wall_s": 0.13}
+{"cur": "Integral(10*x*cos(x**2 + 5), x)", "cls": "identical", "nxt_sympy": "5*sin(x**2 + 5)", "nxt_axiom": "5*sin(x**2 + 5)", "wall_s": 0.11}
+{"cur": "Integral((45*x**4 + 54*x**3 + 31*x**2 - 24*x - 8)/(25*x**4 + 30*x**3 + 19*x**2 + 6*x + 1), x)", "cls": "formdiff", "nxt_sympy": "9*x/5 + (16*x + 87)/(125*x**2 + 75*x + 25)", "nxt_axiom": "9/5*x + (16*x + 87)*(75*x + 125*x**2 + 25)**-1", "wall_s": 0.61}
+{"cur": "Integral(28*(-(4*x - 1)**2*sin(2*x**2 - x + 3) + cos(2*x**2 - x + 3))*cos(2*x**2 - x + 3)**3, x)", "cls": "formdiff", "nxt_sympy": "28*x*cos(2*x**2 - x + 3)**4 - 7*cos(2*x**2 - x + 3)**4", "nxt_axiom": "(-7)*cos(-x + 2*x**2 + 3)**4 + 28*x*cos(-x + 2*x**2 + 3)**4", "wall_s": 1.21}
+{"cur": "Integral(72*x*cos(3*x**3 + 4*x + 2) - 4*(9*x**2 + 4)**2*sin(3*x**3 + 4*x + 2), x)", "cls": "formdiff", "nxt_sympy": "-(-36*x**2 - 16)*cos(3*x**3 + 4*x + 2)", "nxt_axiom": "-((-36)*x**2 - 16)*cos(3*x**3 + 4*x + 2)", "wall_s": 2.07}
+{"cur": "Integral(2*x*(6*x - 1)*sin(x*(3*x - 1)) - 2*cos(x*(3*x - 1)), x)", "cls": "error", "err": "TypeError", "wall_s": 0.36}
+{"cur": "Integral(18*exp(2 - x), x)", "cls": "formdiff", "nxt_sympy": "-18*exp(2 - x)", "nxt_axiom": "(-18)*exp(-x + 2)", "wall_s": 0.08}
+{"cur": "Integral(36*(6*x + (6*x**2 + 1)**2)*exp(4*x**3 + 2*x + 2), x)", "cls": "formdiff", "nxt_sympy": "(108*x**2 + 18)*exp(4*x**3 + 2*x + 2)", "nxt_axiom": "(108*x**2 + 18)*exp(2*x + 4*x**3 + 2)", "wall_s": 0.13}
+{"cur": "Integral(243*x**8, x)", "cls": "identical", "nxt_sympy": "27*x**9", "nxt_axiom": "27*x**9", "wall_s": 0.04}
+{"cur": "Integral(sqrt(2)*(35*x**4 - 50*x**3 + 55*x**2 - 10*x - 10)/sqrt(x**3 + x + 1), x)", "cls": "axiom_no_emit", "wall_s": 2.54}
+{"cur": "Integral(4*((6*x**2 + 1)*cos(2*x**3 + x + 1) + sin(2*x**3 + x + 1))*exp(x), x)", "cls": "formdiff", "nxt_sympy": "4*exp(x)*sin(2*x**3 + x + 1)", "nxt_axiom": "4*exp(x)*sin(x + 2*x**3 + 1)", "wall_s": 0.51}
+{"cur": "Integral(-7*sin(x) - 12*cos(2*x), x)", "cls": "formdiff", "nxt_sympy": "-6*sin(2*x) + 7*cos(x)", "nxt_axiom": "(-6)*sin(2*x) + 7*cos(x)", "wall_s": 0.09}
+{"cur": "Integral((24 - 72*sin(9*x))*exp(3*x + cos(9*x)), x)", "cls": "axiom_no_emit", "wall_s": 1.34}
+{"cur": "Integral(-14*log(2*x)*sin(7*x) + 2*cos(7*x)/x, x)", "cls": "error", "err": "TypeError", "wall_s": 9.01}
+{"cur": "Integral((-48*(5*x - 2)**2*sin(x*(5*x - 4)) + 40*cos(x*(5*x - 4)))*cos(x*(5*x - 4))**2, x)", "cls": "formdiff", "nxt_sympy": "40*x*cos(5*x**2 - 4*x)**3 - 16*cos(5*x**2 - 4*x)**3", "nxt_axiom": "(-16)*cos((-4)*x + 5*x**2)**3 + 40*x*cos((-4)*x + 5*x**2)**3", "wall_s": 14.91}
+{"cur": "Integral(-(sqrt(x)*(12*x**2 + 1) + 1)*sin(2*sqrt(x) + 4*x**3 + x + 4)/sqrt(x), x)", "cls": "formdiff", "nxt_sympy": "cos(2*sqrt(x) + 4*x**3 + x + 4)", "nxt_axiom": "cos(x + 2*sqrt(x) + 4*x**3 + 4)", "wall_s": 1.83}
+{"cur": "Integral((80*x - 20)*exp(2*x*(2*x - 1)), x)", "cls": "error", "err": "TypeError", "wall_s": 0.09}
+{"cur": "Integral(36*x*cos(x*(x**2 + 2)) + (-75*x**2 - 10)*exp(5*x**3 + 3*x + 1) - 6*(3*x**2 + 2)**2*sin(x*(x**2 + 2)) - 5*exp(5*x**3 + 3*x + 1), x)", "cls": "error", "err": "TypeError", "wall_s": 2.53}
+{"cur": "Integral((sqrt(1 - 9*x**2)*((6*x - 3)*cos(3*x**2 - 3*x + 2) + 2) + 15)/sqrt(1 - 9*x**2), x)", "cls": "formdiff", "nxt_sympy": "2*x + sin(3*x**2 - 3*x + 2) + 5*asin(3*x)", "nxt_axiom": "2*x + 5*asin(3*x) + sin((-3)*x + 3*x**2 + 2)", "wall_s": 0.48}
+{"cur": "Integral((55*x**4 + 44*x**3 + 49*x**2 + 16*x + 10)/(25*x**4 + 20*x**3 + 24*x**2 + 8*x + 4), x)", "cls": "formdiff", "nxt_sympy": "11*x/5 + (19*x + 4)/(125*x**2 + 50*x + 50)", "nxt_axiom": "11/5*x + (19*x + 4)*(50*x + 125*x**2 + 50)**-1", "wall_s": 0.62}
+{"cur": "Integral((24*(5*x - 2)**2*cos(x*(5*x - 4)) + 20*sin(x*(5*x - 4)))*sin(x*(5*x - 4))**2, x)", "cls": "formdiff", "nxt_sympy": "20*x*sin(5*x**2 - 4*x)**3 - 8*sin(5*x**2 - 4*x)**3", "nxt_axiom": "(-8)*sin((-4)*x + 5*x**2)**3 + 20*x*sin((-4)*x + 5*x**2)**3", "wall_s": 12.63}
+{"cur": "Integral(36*x*sin(3*x**3 - 4*x + 1) + 2*(9*x**2 - 4)**2*cos(3*x**3 - 4*x + 1), x)", "cls": "formdiff", "nxt_sympy": "(18*x**2 - 8)*sin(3*x**3 - 4*x + 1)", "nxt_axiom": "(18*x**2 - 8)*sin((-4)*x + 3*x**3 + 1)", "wall_s": 1.81}
+{"cur": "Integral(-36*x + cos(x), x)", "cls": "formdiff", "nxt_sympy": "-18*x**2 + sin(x)", "nxt_axiom": "(-18)*x**2 + sin(x)", "wall_s": 0.05}
+{"cur": "Integral(2*(10*x + 1)*cos(x*(5*x + 1)) + 2*log(x) + 2, x)", "cls": "formdiff", "nxt_sympy": "2*x*log(x) + 2*sin(5*x**2 + x)", "nxt_axiom": "2*x*log(x) + 2*sin(x + 5*x**2)", "wall_s": 0.82}
+{"cur": "Integral(14*(9*x*cos(3*x**3 + 2*x + 4) - (9*x**2 + 2)**2*sin(3*x**3 + 2*x + 4))*cos(3*x**3 + 2*x + 4), x)", "cls": "formdiff", "nxt_sympy": "63*x**2*cos(3*x**3 + 2*x + 4)**2 + 14*cos(3*x**3 + 2*x + 4)**2", "nxt_axiom": "14*cos(2*x + 3*x**3 + 4)**2 + 63*x**2*cos(2*x + 3*x**3 + 4)**2", "wall_s": 0.69}
+{"cur": "Integral(4*(6*(x - 2)**2*cos(x**2 - 4*x + 5) + sin(x**2 - 4*x + 5))*sin(x**2 - 4*x + 5)**2, x)", "cls": "formdiff", "nxt_sympy": "4*x*sin(x**2 - 4*x + 5)**3 - 8*sin(x**2 - 4*x + 5)**3", "nxt_axiom": "(-8)*sin((-4)*x + x**2 + 5)**3 + 4*x*sin((-4)*x + x**2 + 5)**3", "wall_s": 0.53}
+{"cur": "Integral(64*((4*x - 1)**2*cos(4*x**2 - 2*x + 5) + sin(4*x**2 - 2*x + 5))*sin(4*x**2 - 2*x + 5), x)", "cls": "formdiff", "nxt_sympy": "64*x*sin(4*x**2 - 2*x + 5)**2 + 16*cos(4*x**2 - 2*x + 5)**2", "nxt_axiom": "16*cos((-2)*x + 4*x**2 + 5)**2 + 64*x*sin((-2)*x + 4*x**2 + 5)**2", "wall_s": 0.42}
+{"cur": "Integral(4*x*log(4*x)**2 + 4*x*log(4*x) + 20*exp(4*x)*sin(4*x) + 20*exp(4*x)*cos(4*x), x)", "cls": "identical", "nxt_sympy": "2*x**2*log(4*x)**2 + 5*exp(4*x)*sin(4*x)", "nxt_axiom": "2*x**2*log(4*x)**2 + 5*exp(4*x)*sin(4*x)", "wall_s": 0.32}
+{"cur": "Integral(6*(x + 1)/sqrt(x**2 + 2*x + 1), x)", "cls": "formdiff", "nxt_sympy": "6*sqrt(x**2 + 2*x + 1)", "nxt_axiom": "6*sqrt(2*x + x**2 + 1)", "wall_s": 0.09}
+{"cur": "Integral(1728*sin(8*x)**2*cos(8*x), x)", "cls": "identical", "nxt_sympy": "72*sin(8*x)**3", "nxt_axiom": "72*sin(8*x)**3", "wall_s": 0.12}
+{"cur": "Integral((96*x*cos(4*x**3 + 2*x + 3) - 64*(6*x**2 + 1)**2*sin(4*x**3 + 2*x + 3))*cos(4*x**3 + 2*x + 3)**3, x)", "cls": "formdiff", "nxt_sympy": "48*x**2*cos(4*x**3 + 2*x + 3)**4 + 8*cos(4*x**3 + 2*x + 3)**4", "nxt_axiom": "8*cos(2*x + 4*x**3 + 3)**4 + 48*x**2*cos(2*x + 4*x**3 + 3)**4", "wall_s": 1.52}
+{"cur": "Integral(2*((4*x**2 + 1)*(3*x*log(x)**2 + 3*x*log(x) + 1) + 9)/(4*x**2 + 1), x)", "cls": "formdiff", "nxt_sympy": "3*x**2*log(x)**2 + 2*x + 9*atan(2*x)", "nxt_axiom": "2*x + 3*x**2*log(x)**2 + 9*atan(2*x)", "wall_s": 0.23}
+{"cur": "Integral(108*exp(2*x + 5), x)", "cls": "identical", "nxt_sympy": "54*exp(2*x + 5)", "nxt_axiom": "54*exp(2*x + 5)", "wall_s": 0.05}
+{"cur": "Integral(36*sin(6*x + 2), x)", "cls": "formdiff", "nxt_sympy": "-6*cos(6*x + 2)", "nxt_axiom": "(-6)*cos(6*x + 2)", "wall_s": 0.08}
+{"cur": "Integral((8*sqrt(x) + sqrt(6))*cos(sqrt(6)*sqrt(x) + 4*x + 1)/sqrt(x), x)", "cls": "formdiff", "nxt_sympy": "2*sin(sqrt(6)*sqrt(x) + 4*x + 1)", "nxt_axiom": "2*sin(4*x + sqrt(6)*sqrt(x) + 1)", "wall_s": 0.22}
+{"cur": "Integral(14*(2*sin(x) + cos(x))*exp(2*x + 5), x)", "cls": "error", "err": "TypeError", "wall_s": 0.2}
+{"cur": "Integral(2*x*log(x) + x + 5*log(2*x)**2 + 10*log(2*x) + 4*log(5*x) + 4, x)", "cls": "axiom_no_emit", "wall_s": 0.46}
+{"cur": "Integral(30*x*cos(3*x**2 + 1), x)", "cls": "identical", "nxt_sympy": "5*sin(3*x**2 + 1)", "nxt_axiom": "5*sin(3*x**2 + 1)", "wall_s": 0.11}
+{"cur": "Integral((-(8*x + 3)*(2*x**3 + 4*x + 3) + 2*(3*x**2 + 2)*(4*x**2 + 3*x + 2) + ((8*x - 2)*cos(4*x**2 - 2*x + 2) + 1)*(4*x**2 + 3*x + 2)**2)/(4*x**2 + 3*x + 2)**2, x)", "cls": "formdiff", "nxt_sympy": "24*x**3/(16*x**2 + 12*x + 8) + 16*x**2*sin(4*x**2 - 2*x + 2)/(16*x**2 + 12*x + 8) + 12*x*sin(4*x**2 - 2*x + 2)/(16*x**2 + 12*x + 8) + 15*x/(16*x**2 + 12*x + 8) + 8*sin(4*x**2 - 2*x + 2)/(16*x**2 + 12*x + 8) + 6/(16*x**2 + 12*x + 8)", "nxt_axiom": "6*(12*x + 16*x**2 + 8)**-1 + 8*(12*x + 16*x**2 + 8)**-1*sin((-2)*x + 4*x**2 + 2) + 12*x*(12*x + 16*x**2 + 8)**-1*sin((-2)*x + 4*x**2 + 2) + 15*x*(12*x + 16*x**2 + 8)**-1 + 16*x**2*(12*x + 16*x**2 + 8)**-1*sin((-2)*x + 4*x**2 + 2) + 24*x**3*(12*x + 16*x**2 + 8)**-1", "wall_s": 17.48}
+{"cur": "Integral((72*x + 48*(6*x**2 - 1)**2)*exp(16*x**3 - 8*x + 8), x)", "cls": "formdiff", "nxt_sympy": "(36*x**2 - 6)*exp(16*x**3 - 8*x + 8)", "nxt_axiom": "(36*x**2 - 6)*exp((-8)*x + 16*x**3 + 8)", "wall_s": 0.15}
+{"cur": "Integral(16*(x + 1)*exp(2*x**2 + 4*x + 3), x)", "cls": "identical", "nxt_sympy": "4*exp(2*x**2 + 4*x + 3)", "nxt_axiom": "4*exp(2*x**2 + 4*x + 3)", "wall_s": 0.09}
+{"cur": "Integral(-(4*x + cos(x))*sin(2*x**2 + sin(x) + 3), x)", "cls": "identical", "nxt_sympy": "cos(2*x**2 + sin(x) + 3)", "nxt_axiom": "cos(2*x**2 + sin(x) + 3)", "wall_s": 4.22}
+{"cur": "Integral((-2*(x + 1)*(2*x**3 - 2*x + 3) + 2*(3*x**2 - 1)*(x**2 + 2*x + 5) + (5*exp(x + 1) + 3)*(x**2 + 2*x + 5)**2)/(x**2 + 2*x + 5)**2, x)", "cls": "formdiff", "nxt_sympy": "5*x + (23 - 4*x)/(x**2 + 2*x + 5) + 5*exp(x + 1)", "nxt_axiom": "5*x + 5*exp(x + 1) + ((-4)*x + 23)*(2*x + x**2 + 5)**-1", "wall_s": 6.49}
+{"cur": "Integral((6*x**3 + 36*x**2 + 9*x + 4)/(x**3 + 6*x**2 + 12*x + 8), x)", "cls": "formdiff", "nxt_sympy": "6*x + (63*x + 85)/(x**2 + 4*x + 4)", "nxt_axiom": "6*x + (63*x + 85)*(4*x + x**2 + 4)**-1", "wall_s": 0.16}
+{"cur": "Integral(56*x**4*(x*cos(x) + 5*sin(x)), x)", "cls": "identical", "nxt_sympy": "56*x**5*sin(x)", "nxt_axiom": "56*x**5*sin(x)", "wall_s": 0.33}
+{"cur": "Integral(24*((15*x**2 - 2)*sin(x) + cos(x))*exp(5*x**3 - 2*x + 5), x)", "cls": "error", "err": "TypeError", "wall_s": 6.75}
+{"cur": "Integral(-16*(x - 1)**2*sin(2*x**2 - 4*x + 4) + 4*cos(2*x**2 - 4*x + 4), x)", "cls": "formdiff", "nxt_sympy": "-(4 - 4*x)*cos(2*x**2 - 4*x + 4)", "nxt_axiom": "-((-4)*x + 4)*cos((-4)*x + 2*x**2 + 4)", "wall_s": 3.94}
+{"cur": "Integral(7*(sqrt(x)*(24*x**2 + 8) + sqrt(3))*cos(sqrt(3)*sqrt(x) + 4*x**3 + 4*x + 3)/(2*sqrt(x)), x)", "cls": "formdiff", "nxt_sympy": "7*sin(sqrt(3)*sqrt(x) + 4*x**3 + 4*x + 3)", "nxt_axiom": "7*sin(4*x + 4*x**3 + sqrt(3)*sqrt(x) + 3)", "wall_s": 2.79}
+{"cur": "Integral(4*x*log(5*x) + 34*x - 6*exp(3*x)*sin(x) + 18*exp(3*x)*cos(x) + 1 + 4/sqrt(1 - x**2), x)", "cls": "formdiff", "nxt_sympy": "2*x**2*log(5*x) + 16*x**2 + x + 6*exp(3*x)*cos(x) + 4*asin(x)", "nxt_axiom": "x + 2*x**2*log(5*x) + 4*asin(x) + 6*cos(x)*exp(3*x) + 16*x**2", "wall_s": 0.37}
+{"cur": "Integral(-84*x*sin(6*x + 1) + 14*cos(6*x + 1), x)", "cls": "identical", "nxt_sympy": "14*x*cos(6*x + 1)", "nxt_axiom": "14*x*cos(6*x + 1)", "wall_s": 0.13}
+{"cur": "Integral(32*exp(x), x)", "cls": "identical", "nxt_sympy": "32*exp(x)", "nxt_axiom": "32*exp(x)", "wall_s": 0.05}
+{"cur": "Integral(12*(2*x*cos(2*x**3 + 3*x + 5) - 3*(2*x**2 + 1)**2*sin(2*x**3 + 3*x + 5))*cos(2*x**3 + 3*x + 5), x)", "cls": "formdiff", "nxt_sympy": "12*x**2*cos(2*x**3 + 3*x + 5)**2 + 6*cos(2*x**3 + 3*x + 5)**2", "nxt_axiom": "6*cos(2*x**3 + 3*x + 5)**2 + 12*x**2*cos(2*x**3 + 3*x + 5)**2", "wall_s": 0.68}
+{"cur": "Integral(25*(2*x*(5*x + 2)*log(x)*sin(5*x**2 + 4*x + 3) - cos(5*x**2 + 4*x + 3))/x, x)", "cls": "formdiff", "nxt_sympy": "-25*log(x)*cos(5*x**2 + 4*x + 3)", "nxt_axiom": "(-25)*cos(4*x + 5*x**2 + 3)*log(x)", "wall_s": 1.04}
+{"cur": "Integral((25 - 9*x)/sqrt(5 - x), x)", "cls": "formdiff", "nxt_sympy": "sqrt(5 - x)*(6*x + 10)", "nxt_axiom": "(6*x + 10)*sqrt(-x + 5)", "wall_s": 0.58}
+{"cur": "Integral(7*(6*x**3 + 11*x**2 + 12*x + 38)/(2*sqrt(x**2 - x + 5)), x)", "cls": "formdiff", "nxt_sympy": "sqrt(x**2 - x + 5)*(7*x**2 + 28*x + 14)", "nxt_axiom": "(7*x**2 + 28*x + 14)*sqrt(-x + x**2 + 5)", "wall_s": 0.43}
+{"cur": "Integral(448*exp(8*x + 1), x)", "cls": "identical", "nxt_sympy": "56*exp(8*x + 1)", "nxt_axiom": "56*exp(8*x + 1)", "wall_s": 0.06}
+{"cur": "Integral(3*(10*x**4 + 16*x**3 + 9*x**2 - 8*x - 2)/(25*x**4 + 40*x**3 + 36*x**2 + 16*x + 4), x)", "cls": "formdiff", "nxt_sympy": "6*x/5 + (81*x + 108)/(125*x**2 + 100*x + 50)", "nxt_axiom": "6/5*x + (81*x + 108)*(100*x + 125*x**2 + 50)**-1", "wall_s": 0.63}
+{"cur": "Integral(((9*x**2 + 1)*(7*exp(x)*sin(3*x) + 21*exp(x)*cos(3*x) + 3) + 15)/(9*x**2 + 1), x)", "cls": "formdiff", "nxt_sympy": "3*x + 7*exp(x)*sin(3*x) + 5*atan(3*x)", "nxt_axiom": "3*x + 5*atan(3*x) + 7*exp(x)*sin(3*x)", "wall_s": 0.69}
+{"cur": "Integral(4*(8*x**4 + 16*x**3 + 28*x**2 + 17*x + 11)/(16*x**4 + 32*x**3 + 56*x**2 + 40*x + 25), x)", "cls": "formdiff", "nxt_sympy": "2*x + 3/(8*x**2 + 8*x + 10)", "nxt_axiom": "2*x + 3*(8*x + 8*x**2 + 10)**-1", "wall_s": 0.54}
+{"cur": "Integral(9*(2*x**2 + 2*x + 1)/sqrt(x**2 + 1), x)", "cls": "identical", "nxt_sympy": "(9*x + 18)*sqrt(x**2 + 1)", "nxt_axiom": "(9*x + 18)*sqrt(x**2 + 1)", "wall_s": 0.12}
+{"cur": "Integral((x*(18*log(x) - 5)*sin(x) - 18*cos(x))/x, x)", "cls": "formdiff", "nxt_sympy": "-18*log(x)*cos(x) + 5*cos(x)", "nxt_axiom": "(-18)*cos(x)*log(x) + 5*cos(x)", "wall_s": 0.44}
+{"cur": "Integral(-245*x*cos(7*x + 4) - 35*sin(7*x + 4), x)", "cls": "formdiff", "nxt_sympy": "-35*x*sin(7*x + 4)", "nxt_axiom": "(-35)*x*sin(7*x + 4)", "wall_s": 0.12}
+{"cur": "Integral(5*(2*x + (2*x - 1)*log(1 - 2*x)*log(log(1 - 2*x)))/((2*x - 1)*log(1 - 2*x)), x)", "cls": "formdiff", "nxt_sympy": "5*x*log(log(1 - 2*x))", "nxt_axiom": "5*x*log(log((-2)*x + 1))", "wall_s": 0.34}
+{"cur": "Integral(12*x - 3/x, x)", "cls": "formdiff", "nxt_sympy": "6*x**2 - 3*log(x)", "nxt_axiom": "(-3)*log(x) + 6*x**2", "wall_s": 0.05}
+{"cur": "Integral((3 - 12*x**2)*sin(4*x**3 - 3*x + 2), x)", "cls": "formdiff", "nxt_sympy": "cos(4*x**3 - 3*x + 2)", "nxt_axiom": "cos((-3)*x + 4*x**3 + 2)", "wall_s": 0.22}
+{"cur": "Integral((9*x**2 - 3)*cos(3*x**3 - 3*x + 5), x)", "cls": "formdiff", "nxt_sympy": "sin(3*x**3 - 3*x + 5)", "nxt_axiom": "sin((-3)*x + 3*x**3 + 5)", "wall_s": 0.22}
+{"cur": "Integral(12*x*cos(x**2 + 4) + 27*exp(3*x)*sin(4*x) + 36*exp(3*x)*cos(4*x), x)", "cls": "formdiff", "nxt_sympy": "9*exp(3*x)*sin(4*x) + 6*sin(x**2 + 4)", "nxt_axiom": "6*sin(x**2 + 4) + 9*exp(3*x)*sin(4*x)", "wall_s": 0.26}
+{"cur": "Integral(1764*sin(7*x + 2)**3*cos(7*x + 2), x)", "cls": "identical", "nxt_sympy": "63*sin(7*x + 2)**4", "nxt_axiom": "63*sin(7*x + 2)**4", "wall_s": 0.25}
+{"cur": "Integral(25*((9*x**2 - 4)*cos(3*x**3 - 4*x + 2) + sin(3*x**3 - 4*x + 2))*exp(x), x)", "cls": "formdiff", "nxt_sympy": "25*exp(x)*sin(3*x**3 - 4*x + 2)", "nxt_axiom": "25*exp(x)*sin((-4)*x + 3*x**3 + 2)", "wall_s": 0.54}
+{"cur": "Integral(x**2*(-90*x*sin(5*x) + 54*cos(5*x)), x)", "cls": "identical", "nxt_sympy": "18*x**3*cos(5*x)", "nxt_axiom": "18*x**3*cos(5*x)", "wall_s": 0.19}
+{"cur": "Integral(42 - 25*x**4, x)", "cls": "formdiff", "nxt_sympy": "-5*x**5 + 42*x", "nxt_axiom": "(-5)*x**5 + 42*x", "wall_s": 0.03}
+{"cur": "Integral(14*x*(5*x + 2)*cos(5*x**2 + 4*x + 1) + 7*sin(5*x**2 + 4*x + 1), x)", "cls": "formdiff", "nxt_sympy": "7*x*sin(5*x**2 + 4*x + 1)", "nxt_axiom": "7*x*sin(4*x + 5*x**2 + 1)", "wall_s": 4.57}
+{"cur": "Integral(14*(9*x**2*sin(3*x**3 + 2) - cos(3*x**3 + 2))*exp(x), x)", "cls": "formdiff", "nxt_sympy": "-14*exp(x)*cos(3*x**3 + 2)", "nxt_axiom": "(-14)*cos(3*x**3 + 2)*exp(x)", "wall_s": 0.44}
+{"cur": "Integral(2*(3*x*log(x**2) + 2*(9*x**2 + 1)*atan(3*x))/(x*(9*x**2 + 1)), x)", "cls": "formdiff", "nxt_sympy": "2*log(x**2)*atan(3*x)", "nxt_axiom": "2*atan(3*x)*log(x**2)", "wall_s": 41.1}
+{"cur": "Integral(24*sqrt(2)*exp(3*x)*cos(3*x + pi/4) + 1 + 8/sqrt(1 - x**2), x)", "cls": "error", "err": "TypeError", "wall_s": 0.18}
+{"cur": "Integral(4*(2*x*exp(2*x + 2)*log(3*x) + exp(2*x + 2))/x, x)", "cls": "identical", "nxt_sympy": "4*exp(2*x + 2)*log(3*x)", "nxt_axiom": "4*exp(2*x + 2)*log(3*x)", "wall_s": 0.18}
+{"cur": "Integral(2*(-2*sqrt(x) + sqrt(7))*cos(sqrt(7)*sqrt(x) - x + 2)/sqrt(x), x)", "cls": "formdiff", "nxt_sympy": "4*sin(sqrt(7)*sqrt(x) - x + 2)", "nxt_axiom": "4*sin(-x + sqrt(7)*sqrt(x) + 2)", "wall_s": 0.23}
+{"cur": "Integral((12*sqrt(x) + sqrt(6))*cos(sqrt(6)*sqrt(x) + 6*x)/(2*sqrt(x)), x)", "cls": "formdiff", "nxt_sympy": "sin(sqrt(6)*sqrt(x) + 6*x)", "nxt_axiom": "sin(6*x + sqrt(6)*sqrt(x))", "wall_s": 0.22}
+{"cur": "Integral((16*x + 12)*cos(2*x**2 + 3*x + 3), x)", "cls": "identical", "nxt_sympy": "4*sin(2*x**2 + 3*x + 3)", "nxt_axiom": "4*sin(2*x**2 + 3*x + 3)", "wall_s": 0.17}
+{"cur": "Integral(10*(3*x*cos(x**3 - 4*x + 4) - (3*x**2 - 4)**2*sin(x**3 - 4*x + 4))*cos(x**3 - 4*x + 4), x)", "cls": "formdiff", "nxt_sympy": "15*x**2*cos(x**3 - 4*x + 4)**2 - 20*cos(x**3 - 4*x + 4)**2", "nxt_axiom": "(-20)*cos((-4)*x + x**3 + 4)**2 + 15*x**2*cos((-4)*x + x**3 + 4)**2", "wall_s": 0.65}
+{"cur": "Integral(6*(2 - x)/sqrt(5 - x), x)", "cls": "formdiff", "nxt_sympy": "sqrt(5 - x)*(4*x + 16)", "nxt_axiom": "(4*x + 16)*sqrt(-x + 5)", "wall_s": 0.57}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(4*(6*x + 2*sqrt(3*x + 2)*(3*x*exp(2*x**2 + 1) + 2*s"}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(3*(3*x*log(-2*x) + (9*x**2 + 1)*atan(3*x))/(x*(9*x*"}
+{"cur": "Integral((-144*x - 24)*sin(3*x**2 + x + 5), x)", "cls": "formdiff", "nxt_sympy": "24*cos(3*x**2 + x + 5)", "nxt_axiom": "24*cos(x + 3*x**2 + 5)", "wall_s": 0.14}
+{"cur": "Integral((8*x + 12)*cos(x**2 + 3*x + 4), x)", "cls": "formdiff", "nxt_sympy": "4*sin(x**2 + 3*x + 4)", "nxt_axiom": "4*sin(3*x + x**2 + 4)", "wall_s": 0.14}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(3*(2*x*(2*x - 1)*log(2*x*(2*x - 1)) + (4*x - 1)*(4*"}
+{"cur": "Integral(12*(3*x*sin(x**3 + 4*x + 3) + (3*x**2 + 4)**2*cos(x**3 + 4*x + 3))*sin(x**3 + 4*x + 3), x)", "cls": "formdiff", "nxt_sympy": "18*x**2*sin(x**3 + 4*x + 3)**2 - 24*cos(x**3 + 4*x + 3)**2", "nxt_axiom": "(-24)*cos(4*x + x**3 + 3)**2 + 18*x**2*sin(4*x + x**3 + 3)**2", "wall_s": 0.62}
+{"cur": "Integral(63*cos(x - 1)/2 - 189*cos(3*x - 1)/2, x)", "cls": "formdiff", "nxt_sympy": "63*sin(x - 1)/2 - 63*sin(3*x - 1)/2", "nxt_axiom": "(-63/2)*sin(3*x - 1) + 63/2*sin(x - 1)", "wall_s": 0.13}
+{"cur": "Integral(64*x**2*sin(2*x**2)**3*cos(2*x**2) + 180*exp(5*x + 4)*sin(x) + 36*exp(5*x + 4)*cos(x) + 4*sin(2*x**2)**4, x)", "cls": "error", "err": "TypeError", "wall_s": 1.93}
+{"cur": "Integral((12*x - 12)*cos(x**2 - 2*x + 4), x)", "cls": "formdiff", "nxt_sympy": "6*sin(x**2 - 2*x + 4)", "nxt_axiom": "6*sin((-2)*x + x**2 + 4)", "wall_s": 0.14}
+{"cur": "Integral((10*x + 4)*exp(5*x**2 + 4*x + 1), x)", "cls": "formdiff", "nxt_sympy": "exp(5*x**2 + 4*x + 1)", "nxt_axiom": "exp(4*x + 5*x**2 + 1)", "wall_s": 0.08}
+{"cur": "Integral(27*sin(3*x + 5)**2*cos(3*x + 5), x)", "cls": "identical", "nxt_sympy": "3*sin(3*x + 5)**3", "nxt_axiom": "3*sin(3*x + 5)**3", "wall_s": 0.22}
+{"cur": "Integral(-30*x*sin(5*x**2 + 3) + 4*sqrt(2)*exp(2*x)*sin(2*x + pi/4), x)", "cls": "error", "err": "TypeError", "wall_s": 0.21}
+{"cur": "Integral((8*(x - 1)*sqrt(2*x**2 + 4*x + 3)*(x**3 - x + 1) + 4*(x + 1)*(3*x + 2)*sqrt(2*x**2 - 4*x + 3) + sqrt(2*x**2 - 4*x + 3)*sqrt(2*x**2 + 4*x + 3)*(10*x*log(x) + 5*x + (12*x**2 - 4)*sqrt(2*x**2 - 4*x + 3) + 6*sqrt(2*x**2 + 4*x + 3)))/(sqrt(2*x**2 - 4*x + 3)*sqrt(2*x**2 + 4*x + 3)), x)", "cls": "axiom_no_emit", "wall_s": 17.27}
+{"cur": "Integral(5*(-x*(4*x - 3)*log(x)*sin(2*x**2 - 3*x + 3) + cos(2*x**2 - 3*x + 3))/x, x)", "cls": "formdiff", "nxt_sympy": "5*log(x)*cos(2*x**2 - 3*x + 3)", "nxt_axiom": "5*cos((-3)*x + 2*x**2 + 3)*log(x)", "wall_s": 1.06}
+{"cur": "Integral(-3*tan(x), x)", "cls": "identical", "nxt_sympy": "3*log(cos(x))", "nxt_axiom": "3*log(cos(x))", "wall_s": 0.04}
+{"cur": "Integral(6*x**2*log(2*x) + 2*x**2 - 4*(2*x + 2)*sin(log(x**2 + 2*x + 2))/(x**2 + 2*x + 2) + 12*exp(4*x)*sin(3*x) + 9*exp(4*x)*cos(3*x) + 9 + 24/sqrt(1 - 4*x**2) + 21/sqrt(1 - 9*x**2), x)", "cls": "formdiff", "nxt_sympy": "2*x**3*log(2*x) + 9*x + 3*exp(4*x)*sin(3*x) + 4*cos(log(x**2 + 2*x + 2)) + 12*asin(2*x) + 7*asin(3*x)", "nxt_axiom": "2*x**3*log(2*x) + 3*exp(4*x)*sin(3*x) + 4*cos(log(2*x + x**2 + 2)) + 7*asin(3*x) + 9*x + 12*asin(2*x)", "wall_s": 2.08}
+{"cur": "Integral(10*x*log(x) + 5*x - 8*exp(x)*sin(2*x) + 4*exp(x)*cos(2*x), x)", "cls": "formdiff", "nxt_sympy": "5*x**2*log(x) + 4*exp(x)*cos(2*x)", "nxt_axiom": "4*cos(2*x)*exp(x) + 5*x**2*log(x)", "wall_s": 0.27}
+{"cur": "Integral(4*(5*x + 2)**2*cos(5*x**2 + 4*x + 3) + 10*sin(5*x**2 + 4*x + 3), x)", "cls": "formdiff", "nxt_sympy": "(10*x + 4)*sin(5*x**2 + 4*x + 3)", "nxt_axiom": "(10*x + 4)*sin(4*x + 5*x**2 + 3)", "wall_s": 3.81}
+{"cur": "Integral(96*exp(6*x + 3), x)", "cls": "identical", "nxt_sympy": "16*exp(6*x + 3)", "nxt_axiom": "16*exp(6*x + 3)", "wall_s": 0.05}
+{"cur": "Integral(120*x**2, x)", "cls": "identical", "nxt_sympy": "40*x**3", "nxt_axiom": "40*x**3", "wall_s": 0.03}
+{"cur": "Integral(-1152*sin(6*x)*cos(6*x)**3, x)", "cls": "identical", "nxt_sympy": "48*cos(6*x)**4", "nxt_axiom": "48*cos(6*x)**4", "wall_s": 0.14}
+{"cur": "Integral(60*exp(2*x), x)", "cls": "identical", "nxt_sympy": "30*exp(2*x)", "nxt_axiom": "30*exp(2*x)", "wall_s": 0.05}
+{"cur": "Integral(2 + 8/(x + 2)**2, x)", "cls": "formdiff", "nxt_sympy": "2*x - 8/(x + 2)", "nxt_axiom": "(-8)*(x + 2)**-1 + 2*x", "wall_s": 0.08}
+{"cur": "Integral(8*(x*(3*x**2 - 2) + 1)*exp(x**3 - 2*x + 5), x)", "cls": "formdiff", "nxt_sympy": "8*x*exp(x**3 - 2*x + 5)", "nxt_axiom": "8*x*exp((-2)*x + x**3 + 5)", "wall_s": 0.09}
+{"cur": "Integral(18*(3*x*(5*x**2 + 1)*log(x)*sin(5*x**3 + 3*x + 4) - cos(5*x**3 + 3*x + 4))/x, x)", "cls": "formdiff", "nxt_sympy": "-18*log(x)*cos(5*x**3 + 3*x + 4)", "nxt_axiom": "(-18)*cos(3*x + 5*x**3 + 4)*log(x)", "wall_s": 1.87}
+{"cur": "Integral(72 - 6*sin(x), x)", "cls": "formdiff", "nxt_sympy": "72*x + 6*cos(x)", "nxt_axiom": "6*cos(x) + 72*x", "wall_s": 0.05}
+{"cur": "Integral(21*x**2*log(3*x) + 7*x**2 + 2 + 9/sqrt(1 - 9*x**2), x)", "cls": "formdiff", "nxt_sympy": "7*x**3*log(3*x) + 2*x + 3*asin(3*x)", "nxt_axiom": "2*x + 3*asin(3*x) + 7*x**3*log(3*x)", "wall_s": 0.14}
+{"cur": "Integral(-45*cos(2*x), x)", "cls": "formdiff", "nxt_sympy": "-45*sin(2*x)/2", "nxt_axiom": "(-45/2)*sin(2*x)", "wall_s": 0.06}
+{"cur": "Integral((-16*x - 4)*sin(2*x*(2*x + 1)), x)", "cls": "formdiff", "nxt_sympy": "2*cos(4*x**2 + 2*x)", "nxt_axiom": "2*cos(2*x + 4*x**2)", "wall_s": 0.74}
+{"cur": "Integral(9*(27*x**5 + 11*x**3 + 63*x**2 - 6*x - 9)/(2*sqrt(x**3 + x + 3)), x)", "cls": "formdiff", "nxt_sympy": "sqrt(x**3 + x + 3)*(27*x**3 - 18*x + 27)", "nxt_axiom": "((-18)*x + 27*x**3 + 27)*sqrt(x + x**3 + 3)", "wall_s": 1.26}
+{"cur": "Integral(144*x**8, x)", "cls": "identical", "nxt_sympy": "16*x**9", "nxt_axiom": "16*x**9", "wall_s": 0.03}
+{"cur": "Integral(((18*x**2 + 2)*(-4*exp(x)*sin(4*x) + exp(x)*cos(4*x) + 1) + 27)/(9*x**2 + 1), x)", "cls": "formdiff", "nxt_sympy": "2*x + 2*exp(x)*cos(4*x) + 9*atan(3*x)", "nxt_axiom": "2*x + 2*cos(4*x)*exp(x) + 9*atan(3*x)", "wall_s": 0.66}
+{"cur": "Integral((sqrt(1 - x**2)*((6*x + 4)*cos(3*x**2 + 4*x + 2) + 1) + 9)/sqrt(1 - x**2), x)", "cls": "formdiff", "nxt_sympy": "x + sin(3*x**2 + 4*x + 2) + 9*asin(x)", "nxt_axiom": "x + 9*asin(x) + sin(3*x**2 + 4*x + 2)", "wall_s": 0.47}
+{"cur": "Integral(5*(-25*x**2 + 46*x - 12)/(2*sqrt(2 - x)), x)", "cls": "formdiff", "nxt_sympy": "sqrt(2 - x)*(25*x**2 - 10*x + 20)", "nxt_axiom": "((-10)*x + 25*x**2 + 20)*sqrt(-x + 2)", "wall_s": 0.5}
+{"cur": "Integral(49*((10*x + 1)*cos(5*x**2 + x + 5) + sin(5*x**2 + x + 5))*exp(x), x)", "cls": "formdiff", "nxt_sympy": "49*exp(x)*sin(5*x**2 + x + 5)", "nxt_axiom": "49*exp(x)*sin(x + 5*x**2 + 5)", "wall_s": 0.29}
+{"cur": "Integral((18*cos(3*x) + 30)*exp(5*x + sin(3*x) + 4), x)", "cls": "axiom_no_emit", "wall_s": 3.66}
+{"cur": "Integral(36*(3*(2*x + 1)**2*cos(3*x**2 + 3*x + 3) + sin(3*x**2 + 3*x + 3))*sin(3*x**2 + 3*x + 3), x)", "cls": "formdiff", "nxt_sympy": "36*x*sin(3*x**2 + 3*x + 3)**2 - 18*cos(3*x**2 + 3*x + 3)**2", "nxt_axiom": "(-18)*cos(3*x + 3*x**2 + 3)**2 + 36*x*sin(3*x + 3*x**2 + 3)**2", "wall_s": 0.39}
+{"cur": "Integral(8*(3*x*cos(2*x**3 - x + 3) - (6*x**2 - 1)**2*sin(2*x**3 - x + 3))*cos(2*x**3 - x + 3)**3, x)", "cls": "formdiff", "nxt_sympy": "12*x**2*cos(2*x**3 - x + 3)**4 - 2*cos(2*x**3 - x + 3)**4", "nxt_axiom": "(-2)*cos(-x + 2*x**3 + 3)**4 + 12*x**2*cos(-x + 2*x**3 + 3)**4", "wall_s": 1.52}
+{"cur": "Integral(-36*x*(4*x**2 + 1)*sin(4*x**3 + 3*x + 4) - (10*x - 1)**2*sin(5*x**2 - x + 1) + 10*cos(5*x**2 - x + 1) + 12*cos(4*x**3 + 3*x + 4), x)", "cls": "formdiff", "nxt_sympy": "10*x*cos(5*x**2 - x + 1) + 12*x*cos(4*x**3 + 3*x + 4) - cos(5*x**2 - x + 1)", "nxt_axiom": "-cos(-x + 5*x**2 + 1) + 10*x*cos(-x + 5*x**2 + 1) + 12*x*cos(3*x + 4*x**3 + 4)", "wall_s": 0.74}
+{"cur": "Integral(8*exp(2*x)*sin(x) + 4*exp(2*x)*cos(x) + 3 + 2/sqrt(1 - 4*x**2), x)", "cls": "identical", "nxt_sympy": "3*x + 4*exp(2*x)*sin(x) + asin(2*x)", "nxt_axiom": "3*x + 4*exp(2*x)*sin(x) + asin(2*x)", "wall_s": 0.21}
+{"cur": "Integral(((x**2 + 1)*(-(2*x + 3)*sin(x**2 + 3*x + 1) + 2*log(5*x)**2 + 4*log(5*x) + 4) + 4)/(x**2 + 1), x)", "cls": "axiom_no_emit", "wall_s": 14.23}
+{"cur": "Integral(14*x*(x*(2*x + 1)*sin(x**2 + x + 1) - 2*cos(x**2 + x + 1)), x)", "cls": "formdiff", "nxt_sympy": "-14*x**2*cos(x**2 + x + 1)", "nxt_axiom": "(-14)*x**2*cos(x + x**2 + 1)", "wall_s": 0.23}
+{"cur": "Integral((16*x - 16)*cos(x*(x - 2)), x)", "cls": "identical", "nxt_sympy": "8*sin(x*(x - 2))", "nxt_axiom": "8*sin(x*(x - 2))", "wall_s": 0.73}
+{"cur": "Integral((96*x + 24)*exp(4*x), x)", "cls": "identical", "nxt_sympy": "24*x*exp(4*x)", "nxt_axiom": "24*x*exp(4*x)", "wall_s": 0.07}
+{"cur": "Integral(-2*x**2/(4*x**2 - 2*x + 1)**2 + 10*x/(4*x**2 - 2*x + 1)**2 + 3*exp(sin(x))*cos(x) + 1 - 2/(4*x**2 - 2*x + 1)**2, x)", "cls": "formdiff", "nxt_sympy": "x - 2*(-2*x - 1)/(96*x**2 - 48*x + 24) + 10*(x - 1)/(24*x**2 - 12*x + 6) - 2*(4*x - 1)/(24*x**2 - 12*x + 6) + 3*exp(sin(x))", "nxt_axiom": "x - ((-4)*x - 2)*((-48)*x + 96*x**2 + 24)**-1 - (8*x - 2)*((-12)*x + 24*x**2 + 6)**-1 + 3*exp(sin(x)) + (10*x - 10)*((-12)*x + 24*x**2 + 6)**-1", "wall_s": 1.28}
+{"cur": "Integral(192*x*sin(4*x**3 - 2*x + 3) + 32*(6*x**2 - 1)**2*cos(4*x**3 - 2*x + 3), x)", "cls": "formdiff", "nxt_sympy": "(96*x**2 - 16)*sin(4*x**3 - 2*x + 3)", "nxt_axiom": "(96*x**2 - 16)*sin((-2)*x + 4*x**3 + 3)", "wall_s": 1.84}
+{"cur": "Integral(9*exp(3*x + 9), x)", "cls": "identical", "nxt_sympy": "3*exp(3*x + 9)", "nxt_axiom": "3*exp(3*x + 9)", "wall_s": 0.06}
+{"cur": "Integral(6*x**2*log(x)**2 + 4*x**2*log(x) + 15*x**2*log(2*x) + 5*x**2 - 14*exp(3*x)*sin(2*x) + 21*exp(3*x)*cos(2*x) + 7*log(3*x) + 7, x)", "cls": "formdiff", "nxt_sympy": "2*x**3*log(x)**2 + 5*x**3*log(2*x) + 7*x*log(3*x) + 7*exp(3*x)*cos(2*x)", "nxt_axiom": "2*x**3*log(x)**2 + 5*x**3*log(2*x) + 7*x*log(3*x) + 7*cos(2*x)*exp(3*x)", "wall_s": 0.65}
+{"cur": "Integral(3*(90*x**5 + 22*x**3 + 123*x**2 - 12*x + 6)/sqrt(5*x**3 - 2*x + 4), x)", "cls": "formdiff", "nxt_sympy": "sqrt(5*x**3 - 2*x + 4)*(12*x**3 + 12*x + 30)", "nxt_axiom": "(12*x + 12*x**3 + 30)*sqrt((-2)*x + 5*x**3 + 4)", "wall_s": 1.61}
+{"cur": "Integral(72*sin(2*x - 2)**2*cos(2*x - 2), x)", "cls": "identical", "nxt_sympy": "12*sin(2*x - 2)**3", "nxt_axiom": "12*sin(2*x - 2)**3", "wall_s": 0.21}
+{"cur": "Integral((5*x**4 + 40*x**3 + 56*x**2 + 24*x - 4)/(x**4 + 8*x**3 + 20*x**2 + 16*x + 4), x)", "cls": "formdiff", "nxt_sympy": "5*x + (44*x + 28)/(x**2 + 4*x + 2)", "nxt_axiom": "5*x + (44*x + 28)*(4*x + x**2 + 2)**-1", "wall_s": 0.3}
+{"cur": "Integral(15*exp(3*x)*sin(4*x) + 20*exp(3*x)*cos(4*x) + 1 + 3/sqrt(1 - 9*x**2), x)", "cls": "identical", "nxt_sympy": "x + 5*exp(3*x)*sin(4*x) + asin(3*x)", "nxt_axiom": "x + 5*exp(3*x)*sin(4*x) + asin(3*x)", "wall_s": 0.23}
+{"cur": "Integral((48*(5*x - 2)**2*cos(5*x**2 - 4*x + 2) + 30*sin(5*x**2 - 4*x + 2))*sin(5*x**2 - 4*x + 2)**3, x)", "cls": "formdiff", "nxt_sympy": "30*x*sin(5*x**2 - 4*x + 2)**4 - 12*sin(5*x**2 - 4*x + 2)**4", "nxt_axiom": "(-12)*sin((-4)*x + 5*x**2 + 2)**4 + 30*x*sin((-4)*x + 5*x**2 + 2)**4", "wall_s": 0.76}
+{"cur": "Integral(sqrt(2)*(48*x**4 - 42*x**3 + 48*x**2 - 12*x - 12)/sqrt(x*(x - 1)), x)", "cls": "formdiff", "nxt_sympy": "sqrt(2)*sqrt(x**2 - x)*(12*x**3 + 24*x + 24)", "nxt_axiom": "(12*x**3 + 24*x + 24)*sqrt(2)*sqrt(-x + x**2)", "wall_s": 1.64}
+{"cur": "Integral((24*(2*x + 3)**2*cos(x**2 + 3*x + 4) + 16*sin(x**2 + 3*x + 4))*sin(x**2 + 3*x + 4)**2, x)", "cls": "formdiff", "nxt_sympy": "16*x*sin(x**2 + 3*x + 4)**3 + 24*sin(x**2 + 3*x + 4)**3", "nxt_axiom": "16*x*sin(3*x + x**2 + 4)**3 + 24*sin(3*x + x**2 + 4)**3", "wall_s": 0.53}
+{"cur": "Integral((9*x**3 - 54*x**2 + 61*x - 48)/(x**3 - 6*x**2 + 12*x - 8), x)", "cls": "formdiff", "nxt_sympy": "9*x + (47*x - 59)/(x**2 - 4*x + 4)", "nxt_axiom": "9*x + (47*x - 59)*((-4)*x + x**2 + 4)**-1", "wall_s": 0.17}
+{"cur": "Integral(58*cos(x), x)", "cls": "identical", "nxt_sympy": "58*sin(x)", "nxt_axiom": "58*sin(x)", "wall_s": 0.04}
+{"cur": "Integral((12*x + 4)*exp(3*x**2 + 2*x + 5), x)", "cls": "formdiff", "nxt_sympy": "2*exp(3*x**2 + 2*x + 5)", "nxt_axiom": "2*exp(2*x + 3*x**2 + 5)", "wall_s": 0.09}
+{"cur": "Integral((4*x*(2*x - 1)*log(3*x) + 4*(x**2 - x + 1)*log(2*x**2 - 2*x + 2))/(x*(x**2 - x + 1)), x)", "cls": "formdiff", "nxt_sympy": "4*log(3*x)*log(2*x**2 - 2*x + 2)", "nxt_axiom": "4*log((-2)*x + 2*x**2 + 2)*log(3*x)", "wall_s": 0.57}
+{"cur": "Integral(28*x**3 + 6*x*cos(x) + 6*sin(x), x)", "cls": "formdiff", "nxt_sympy": "7*x**4 + 6*x*sin(x)", "nxt_axiom": "6*x*sin(x) + 7*x**4", "wall_s": 0.1}
+{"cur": "Integral(-3*sin(x)*cos(cos(x)), x)", "cls": "identical", "nxt_sympy": "3*sin(cos(x))", "nxt_axiom": "3*sin(cos(x))", "wall_s": 0.19}
+{"cur": "Integral(6*x**2*log(5*x) + 2*x**2 - 16*exp(x)*sin(2*x) + 8*exp(x)*cos(2*x), x)", "cls": "formdiff", "nxt_sympy": "2*x**3*log(5*x) + 8*exp(x)*cos(2*x)", "nxt_axiom": "2*x**3*log(5*x) + 8*cos(2*x)*exp(x)", "wall_s": 0.37}
+{"cur": "Integral((18*x*sin(3*x**3 - 4*x + 4) + 4*(9*x**2 - 4)**2*cos(3*x**3 - 4*x + 4))*sin(3*x**3 - 4*x + 4)**3, x)", "cls": "formdiff", "nxt_sympy": "9*x**2*sin(3*x**3 - 4*x + 4)**4 - 4*sin(3*x**3 - 4*x + 4)**4", "nxt_axiom": "(-4)*sin((-4)*x + 3*x**3 + 4)**4 + 9*x**2*sin((-4)*x + 3*x**3 + 4)**4", "wall_s": 1.29}
+{"cur": "Integral(-3*exp(4*x)*sin(x) + 12*exp(4*x)*cos(x) + 4 + 16/sqrt(1 - 4*x**2), x)", "cls": "formdiff", "nxt_sympy": "4*x + 3*exp(4*x)*cos(x) + 8*asin(2*x)", "nxt_axiom": "3*cos(x)*exp(4*x) + 4*x + 8*asin(2*x)", "wall_s": 0.2}
+{"cur": "Integral(2*x*log(5*x) + x + 4 + 3/sqrt(1 - 9*x**2), x)", "cls": "formdiff", "nxt_sympy": "x**2*log(5*x) + 4*x + asin(3*x)", "nxt_axiom": "4*x + x**2*log(5*x) + asin(3*x)", "wall_s": 0.15}
+{"cur": "Integral(36*(x*(8*x + 1)*log(x)*cos(4*x**2 + x + 3) + sin(4*x**2 + x + 3))/x, x)", "cls": "formdiff", "nxt_sympy": "36*log(x)*sin(4*x**2 + x + 3)", "nxt_axiom": "36*log(x)*sin(x + 4*x**2 + 3)", "wall_s": 1.02}
+{"cur": "Integral((21*x**4 - 14*x**3 + 46*x**2 - 28*x + 2)/(9*x**4 - 6*x**3 + 13*x**2 - 4*x + 4), x)", "cls": "formdiff", "nxt_sympy": "7*x/3 + (28 - 47*x)/(27*x**2 - 9*x + 18)", "nxt_axiom": "7/3*x + ((-47)*x + 28)*((-9)*x + 27*x**2 + 18)**-1", "wall_s": 0.6}
+{"cur": "Integral(2*(15*x**4 + 40*x**3 + 36*x**2 + 6*x - 3)/(9*x**4 + 24*x**3 + 22*x**2 + 8*x + 1), x)", "cls": "formdiff", "nxt_sympy": "10*x/3 + (4*x + 22)/(27*x**2 + 36*x + 9)", "nxt_axiom": "10/3*x + (4*x + 22)*(27*x**2 + 36*x + 9)**-1", "wall_s": 0.56}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(2*(3*(5*x + 2)*log(5*x + 2) + 5*(9*x**2 + 1)*atan(3"}
+{"cur": "Integral(-9*(2*x + 3)**2*sin(x*(x + 3)) + 18*cos(x*(x + 3)), x)", "cls": "formdiff", "nxt_sympy": "-(-18*x - 27)*cos(x*(x + 3))", "nxt_axiom": "-((-18)*x - 27)*cos(x*(x + 3))", "wall_s": 0.32}
+{"cur": "Integral(x**2*(504*x + 216)*exp(7*x + 1), x)", "cls": "identical", "nxt_sympy": "72*x**3*exp(7*x + 1)", "nxt_axiom": "72*x**3*exp(7*x + 1)", "wall_s": 0.1}
+{"cur": "Integral((12*x - 6)*sqrt(2*x**2 - 2*x + 4), x)", "cls": "formdiff", "nxt_sympy": "sqrt(2*x**2 - 2*x + 4)*(4*x**2 - 4*x + 8)", "nxt_axiom": "((-4)*x + 4*x**2 + 8)*sqrt((-2)*x + 2*x**2 + 4)", "wall_s": 0.19}
+{"cur": "Integral(2*(-20*x - 10)*sin(4*x**2 + 4*x + 4) + 18*exp(3*x)*sin(2*x) + 12*exp(3*x)*cos(2*x), x)", "cls": "formdiff", "nxt_sympy": "6*exp(3*x)*sin(2*x) + 5*cos(4*x**2 + 4*x + 4)", "nxt_axiom": "5*cos(4*x + 4*x**2 + 4) + 6*exp(3*x)*sin(2*x)", "wall_s": 0.37}
+{"cur": "Integral(24*(-16*x**2*sin(2*x**2 + 1) + cos(2*x**2 + 1))*cos(2*x**2 + 1)**3, x)", "cls": "identical", "nxt_sympy": "24*x*cos(2*x**2 + 1)**4", "nxt_axiom": "24*x*cos(2*x**2 + 1)**4", "wall_s": 0.58}
+{"cur": "Integral(2*(135*x**5 + 135*x**3 + 159*x**2 + 18*x + 23)/sqrt(3*x**3 + 3*x + 5), x)", "cls": "formdiff", "nxt_sympy": "sqrt(3*x**3 + 3*x + 5)*(20*x**3 + 8*x + 4)", "nxt_axiom": "(8*x + 20*x**3 + 4)*sqrt(3*x + 3*x**3 + 5)", "wall_s": 1.62}
+{"cur": "Integral((-72*x**5 - 360*x**4 + 6)*exp(x), x)", "cls": "formdiff", "nxt_sympy": "(6 - 72*x**5)*exp(x)", "nxt_axiom": "((-72)*x**5 + 6)*exp(x)", "wall_s": 0.08}
+{"cur": "Integral(-245*sin(14*x + 4), x)", "cls": "formdiff", "nxt_sympy": "35*cos(14*x + 4)/2", "nxt_axiom": "35/2*cos(14*x + 4)", "wall_s": 0.1}
+{"cur": "Integral(24*x*sin(x*(x**2 + 3)) + 36*(x**2 + 1)**2*cos(x*(x**2 + 3)), x)", "cls": "identical", "nxt_sympy": "(12*x**2 + 12)*sin(x*(x**2 + 3))", "nxt_axiom": "(12*x**2 + 12)*sin(x*(x**2 + 3))", "wall_s": 1.08}
+{"cur": "Integral(12*x**2*log(3*x)**2 + 8*x**2*log(3*x) - 12*exp(3*x)*sin(2*x) + 18*exp(3*x)*cos(2*x), x)", "cls": "formdiff", "nxt_sympy": "4*x**3*log(3*x)**2 + 6*exp(3*x)*cos(2*x)", "nxt_axiom": "4*x**3*log(3*x)**2 + 6*cos(2*x)*exp(3*x)", "wall_s": 0.37}
+{"cur": "Integral((4*x + 2)*exp(x**2 + x + 5), x)", "cls": "formdiff", "nxt_sympy": "2*exp(x**2 + x + 5)", "nxt_axiom": "2*exp(x + x**2 + 5)", "wall_s": 0.07}
+{"cur": "Integral((8*x + 12)*cos(x**2 + 3*x + 2), x)", "cls": "formdiff", "nxt_sympy": "4*sin(x**2 + 3*x + 2)", "nxt_axiom": "4*sin(3*x + x**2 + 2)", "wall_s": 0.14}
+{"cur": "Integral(x**4*(-729*x - 405)*exp(9*x + 4), x)", "cls": "formdiff", "nxt_sympy": "-81*x**5*exp(9*x + 4)", "nxt_axiom": "(-81)*x**5*exp(9*x + 4)", "wall_s": 0.09}
+{"cur": "Integral((-72*x - 18)*cos(2*x**2 + x + 2), x)", "cls": "formdiff", "nxt_sympy": "-18*sin(2*x**2 + x + 2)", "nxt_axiom": "(-18)*sin(x + 2*x**2 + 2)", "wall_s": 0.15}
+{"cur": "Integral((5*x**4 + 10*x**3 + 43*x**2 + 16*x + 14)/(x**4 + 2*x**3 + 7*x**2 + 6*x + 9), x)", "cls": "formdiff", "nxt_sympy": "5*x + (7 - 8*x)/(x**2 + x + 3)", "nxt_axiom": "5*x + ((-8)*x + 7)*(x + x**2 + 3)**-1", "wall_s": 0.28}
+{"cur": "Integral(90*x*sin(3*x**3 + x + 5) + 5*(9*x**2 + 1)**2*cos(3*x**3 + x + 5), x)", "cls": "formdiff", "nxt_sympy": "(45*x**2 + 5)*sin(3*x**3 + x + 5)", "nxt_axiom": "(45*x**2 + 5)*sin(x + 3*x**3 + 5)", "wall_s": 1.7}
+{"cur": "Integral(5*x*(9*x**2 + 1)*cos(3*x**3 + x) + 5*sin(3*x**3 + x), x)", "cls": "formdiff", "nxt_sympy": "5*x*sin(3*x**3 + x)", "nxt_axiom": "5*x*sin(x + 3*x**3)", "wall_s": 0.3}
+{"cur": "Integral(16*(3*x + (6*x**2 - 1)**2)*exp(8*x**3 - 4*x + 8), x)", "cls": "formdiff", "nxt_sympy": "(24*x**2 - 4)*exp(8*x**3 - 4*x + 8)", "nxt_axiom": "(24*x**2 - 4)*exp((-4)*x + 8*x**3 + 8)", "wall_s": 0.13}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(5*(2*(x + 1)*(9*x**2 + 1)*atan(3*x) + 3*(x**2 + 2*x"}
+{"cur": "Integral(-3*sin(3*x + 5), x)", "cls": "identical", "nxt_sympy": "cos(3*x + 5)", "nxt_axiom": "cos(3*x + 5)", "wall_s": 0.09}
+{"cur": "Integral((24*x - 12)*cos(3*x**2 - 3*x + 2), x)", "cls": "formdiff", "nxt_sympy": "4*sin(3*x**2 - 3*x + 2)", "nxt_axiom": "4*sin((-3)*x + 3*x**2 + 2)", "wall_s": 0.15}
+{"cur": "Integral(45*sqrt(5)*sqrt(x)/2, x)", "cls": "formdiff", "nxt_sympy": "15*sqrt(5)*x**(3/2)", "nxt_axiom": "15*x**(3/2)*sqrt(5)", "wall_s": 0.03}
+{"cur": "Integral(39*exp(x), x)", "cls": "identical", "nxt_sympy": "39*exp(x)", "nxt_axiom": "39*exp(x)", "wall_s": 0.04}
+{"cur": "Integral(-8*x*sin(x**2 + 1), x)", "cls": "identical", "nxt_sympy": "4*cos(x**2 + 1)", "nxt_axiom": "4*cos(x**2 + 1)", "wall_s": 0.09}
+{"cur": "Integral((30*x + 5)*cos(3*x**2 + x + 4), x)", "cls": "formdiff", "nxt_sympy": "5*sin(3*x**2 + x + 4)", "nxt_axiom": "5*sin(x + 3*x**2 + 4)", "wall_s": 0.13}
+{"cur": "Integral((25*x**2 + 71*x - 21)/(2*sqrt(x + 4)), x)", "cls": "formdiff", "nxt_sympy": "sqrt(x + 4)*(5*x**2 - 3*x + 3)", "nxt_axiom": "((-3)*x + 5*x**2 + 3)*sqrt(x + 4)", "wall_s": 0.46}
+{"cur": "Integral(x**3*(-216*x*sin(3*x - 3) + 288*cos(3*x - 3)), x)", "cls": "identical", "nxt_sympy": "72*x**4*cos(3*x - 3)", "nxt_axiom": "72*x**4*cos(3*x - 3)", "wall_s": 0.27}
+{"cur": "Integral(27*x**2*log(5*x) + 9*x**2 - 10*exp(3*x)*sin(2*x) + 15*exp(3*x)*cos(2*x), x)", "cls": "formdiff", "nxt_sympy": "9*x**3*log(5*x) + 5*exp(3*x)*cos(2*x)", "nxt_axiom": "5*cos(2*x)*exp(3*x) + 9*x**3*log(5*x)", "wall_s": 0.41}
+{"cur": "Integral(-28*exp(3*x)*sin(4*x) + 21*exp(3*x)*cos(4*x) + 3 + 8/sqrt(1 - x**2), x)", "cls": "formdiff", "nxt_sympy": "3*x + 7*exp(3*x)*cos(4*x) + 8*asin(x)", "nxt_axiom": "3*x + 7*cos(4*x)*exp(3*x) + 8*asin(x)", "wall_s": 0.23}
+{"cur": "Integral((1 - 15*x**2)*sin(5*x**3 - x + 3), x)", "cls": "formdiff", "nxt_sympy": "cos(5*x**3 - x + 3)", "nxt_axiom": "cos(-x + 5*x**3 + 3)", "wall_s": 0.21}
+{"cur": "Integral(sqrt(2)*(112*x**4 - 40*x**3 - 112*x**2 + 176*x - 64)/sqrt(x**3 - 2*x + 2), x)", "cls": "axiom_no_emit", "wall_s": 2.68}
+{"cur": "Integral(6*cos(3*x)*cos(sin(3*x)), x)", "cls": "identical", "nxt_sympy": "2*sin(sin(3*x))", "nxt_axiom": "2*sin(sin(3*x))", "wall_s": 2.19}
+{"cur": "Integral((24*x - 8)*cos(x*(3*x - 2)), x)", "cls": "identical", "nxt_sympy": "4*sin(x*(3*x - 2))", "nxt_axiom": "4*sin(x*(3*x - 2))", "wall_s": 0.78}
+{"cur": "Integral(-8*(sqrt(x)*(6*x + 3) + 1)*sin(2*sqrt(x) + 3*x**2 + 3*x + 1)/sqrt(x), x)", "cls": "formdiff", "nxt_sympy": "8*cos(2*sqrt(x) + 3*x**2 + 3*x + 1)", "nxt_axiom": "8*cos(2*sqrt(x) + 3*x + 3*x**2 + 1)", "wall_s": 0.47}
+{"cur": "Integral((12*x + 6)*exp(3*x**2 + 3*x + 4), x)", "cls": "formdiff", "nxt_sympy": "2*exp(3*x**2 + 3*x + 4)", "nxt_axiom": "2*exp(3*x + 3*x**2 + 4)", "wall_s": 0.09}
+{"cur": "Integral((300*x + 60)*exp(5*x**2 + 2*x + 2), x)", "cls": "formdiff", "nxt_sympy": "30*exp(5*x**2 + 2*x + 2)", "nxt_axiom": "30*exp(2*x + 5*x**2 + 2)", "wall_s": 0.09}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(12*((x - 1)*(4*x**2 + 1)*atan(2*x) + (x**2 - 2*x + "}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(5*(15*x**2 - sin(x))*exp(5*x**3 + cos(x) + 2), x)"}
+{"cur": "Integral(18*x*log(4*x) + 9*x - 20*exp(4*x)*sin(4*x) + 20*exp(4*x)*cos(4*x), x)", "cls": "formdiff", "nxt_sympy": "9*x**2*log(4*x) + 5*exp(4*x)*cos(4*x)", "nxt_axiom": "5*cos(4*x)*exp(4*x) + 9*x**2*log(4*x)", "wall_s": 0.34}
+{"cur": "Integral(6*(-(2*x - 3)**2*sin(x**2 - 3*x + 4) + cos(x**2 - 3*x + 4))*cos(x**2 - 3*x + 4), x)", "cls": "formdiff", "nxt_sympy": "6*x*cos(x**2 - 3*x + 4)**2 - 9*cos(x**2 - 3*x + 4)**2", "nxt_axiom": "(-9)*cos((-3)*x + x**2 + 4)**2 + 6*x*cos((-3)*x + x**2 + 4)**2", "wall_s": 0.36}
+{"cur": "Integral(((4*x**2 + 1)*((50*x - 5)*exp(5*x**2 - x + 2) + 3) + 4)/(4*x**2 + 1), x)", "cls": "formdiff", "nxt_sympy": "3*x + 5*exp(5*x**2 - x + 2) + 2*atan(2*x)", "nxt_axiom": "2*atan(2*x) + 3*x + 5*exp(-x + 5*x**2 + 2)", "wall_s": 0.27}
+{"cur": "Integral(216*sin(12*x + 8), x)", "cls": "formdiff", "nxt_sympy": "-18*cos(12*x + 8)", "nxt_axiom": "(-18)*cos(12*x + 8)", "wall_s": 0.1}
+{"cur": "Integral(6*(6*x**2 + 3*x + 5)/sqrt(3*x**2 + 2*x + 5), x)", "cls": "formdiff", "nxt_sympy": "6*x*sqrt(3*x**2 + 2*x + 5)", "nxt_axiom": "6*x*sqrt(2*x + 3*x**2 + 5)", "wall_s": 0.34}
+{"cur": "Integral(4*x*log(x) + 2*x + x*log(256) - 8*exp(4*x)*sin(x) + 32*exp(4*x)*cos(x) + 6*exp(2*x)*sin(3*x) + 9*exp(2*x)*cos(3*x) + 9*sqrt(2)*exp(x)*sin(x + pi/4) + 4 + 6/sqrt(1 - 4*x**2), x)", "cls": "error", "err": "TypeError", "wall_s": 0.65}
+{"cur": "Integral(9*(25*x**3 + 30*x**2 - 6*x - 4)/(2*sqrt(x*(5*x**2 - 2))), x)", "cls": "formdiff", "nxt_sympy": "sqrt(x*(5*x**2 - 2))*(9*x + 18)", "nxt_axiom": "(9*x + 18)*sqrt(x*(5*x**2 - 2))", "wall_s": 2.86}
+{"cur": "Integral(96*x*cos(4*x**3 + 3*x + 1) - 36*(4*x**2 + 1)**2*sin(4*x**3 + 3*x + 1), x)", "cls": "formdiff", "nxt_sympy": "-(-48*x**2 - 12)*cos(4*x**3 + 3*x + 1)", "nxt_axiom": "-((-48)*x**2 - 12)*cos(3*x + 4*x**3 + 1)", "wall_s": 1.62}
+{"cur": "Integral(200*cos(5*x + 5), x)", "cls": "identical", "nxt_sympy": "40*sin(5*x + 5)", "nxt_axiom": "40*sin(5*x + 5)", "wall_s": 0.09}
+{"cur": "Integral(30*x*exp(20*x**3 - 4*x + 8) + 2*(12 - 96*x)*sin(4*x**2 - x + 5) + 4*(15*x**2 - 1)**2*exp(20*x**3 - 4*x + 8), x)", "cls": "error", "err": "TypeError", "wall_s": 5.17}
+{"cur": "Integral(9*(6*x*sin(3*x**3 - 2*x + 1) + (9*x**2 - 2)**2*cos(3*x**3 - 2*x + 1))*sin(3*x**3 - 2*x + 1)**2, x)", "cls": "formdiff", "nxt_sympy": "27*x**2*sin(3*x**3 - 2*x + 1)**3 - 6*sin(3*x**3 - 2*x + 1)**3", "nxt_axiom": "(-6)*sin((-2)*x + 3*x**3 + 1)**3 + 27*x**2*sin((-2)*x + 3*x**3 + 1)**3", "wall_s": 1.0}
+{"cur": "Integral((5*x**3 - 3*x + 8)/sqrt(x**3 - x + 4), x)", "cls": "formdiff", "nxt_sympy": "2*x*sqrt(x**3 - x + 4)", "nxt_axiom": "2*x*sqrt(-x + x**3 + 4)", "wall_s": 0.83}
+{"cur": "Integral(-6*exp(4*x)*sin(2*x) + 12*exp(4*x)*cos(2*x) + 2 + 27/sqrt(1 - 9*x**2), x)", "cls": "formdiff", "nxt_sympy": "2*x + 3*exp(4*x)*cos(2*x) + 9*asin(3*x)", "nxt_axiom": "2*x + 3*cos(2*x)*exp(4*x) + 9*asin(3*x)", "wall_s": 0.22}
+{"cur": "Integral((60*x - 6)*exp(5*x**2 - x + 1), x)", "cls": "formdiff", "nxt_sympy": "6*exp(5*x**2 - x + 1)", "nxt_axiom": "6*exp(-x + 5*x**2 + 1)", "wall_s": 0.08}
+{"cur": "Integral(6*(3*x + 1)/sqrt(3*x**2 + 2*x + 1), x)", "cls": "formdiff", "nxt_sympy": "6*sqrt(3*x**2 + 2*x + 1)", "nxt_axiom": "6*sqrt(2*x + 3*x**2 + 1)", "wall_s": 0.08}
+{"cur": "Integral(20*(x + 1)*exp(2*x*(x + 2)) - 3*sin(sin(3*x))*cos(3*x), x)", "cls": "identical", "nxt_sympy": "5*exp(2*x*(x + 2)) + cos(sin(3*x))", "nxt_axiom": "5*exp(2*x*(x + 2)) + cos(sin(3*x))", "wall_s": 2.32}
+{"cur": "Integral(6*(1 - 2*x)*sin(x**2 - x + 3) + (48*x + 24)*exp(4*x**2 + 4*x + 2), x)", "cls": "formdiff", "nxt_sympy": "6*exp(4*x**2 + 4*x + 2) + 6*cos(x**2 - x + 3)", "nxt_axiom": "6*cos(-x + x**2 + 3) + 6*exp(4*x + 4*x**2 + 2)", "wall_s": 0.23}
+{"cur": "Integral(32*exp(4*x)*sin(x) + 8*exp(4*x)*cos(x) + 3*exp(3*x)*sin(x) + exp(3*x)*cos(x) + 1 + 16/sqrt(1 - 4*x**2), x)", "cls": "formdiff", "nxt_sympy": "x + 8*exp(4*x)*sin(x) + exp(3*x)*sin(x) + 8*asin(2*x)", "nxt_axiom": "x + 8*asin(2*x) + 8*exp(4*x)*sin(x) + exp(3*x)*sin(x)", "wall_s": 0.27}
+{"cur": "Integral(9*x**2*log(2*x) + 3*x**2 + 6*exp(3*x)*sin(4*x) + 8*exp(3*x)*cos(4*x), x)", "cls": "formdiff", "nxt_sympy": "3*x**3*log(2*x) + 2*exp(3*x)*sin(4*x)", "nxt_axiom": "2*exp(3*x)*sin(4*x) + 3*x**3*log(2*x)", "wall_s": 0.36}
+{"cur": "Integral(2*(8*x**4 - 12*x**3 + 13*x**2 - 24*x + 20)/(16*x**4 - 24*x**3 + 41*x**2 - 24*x + 16), x)", "cls": "formdiff", "nxt_sympy": "x + (15*x + 12)/(16*x**2 - 12*x + 16)", "nxt_axiom": "x + (15*x + 12)*((-12)*x + 16*x**2 + 16)**-1", "wall_s": 0.56}
+{"cur": "Integral((4*x**4 + 19*x**2 + 10*x + 10)/(2*(x**4 + 4*x**2 + 4)), x)", "cls": "formdiff", "nxt_sympy": "2*x + (-3*x - 5)/(2*x**2 + 4)", "nxt_axiom": "2*x + ((-3)*x - 5)*(2*x**2 + 4)**-1", "wall_s": 0.15}
+{"cur": "Integral(2*(8*sqrt(x) + sqrt(7))*exp(sqrt(7)*sqrt(x) + 4*x)/sqrt(x), x)", "cls": "axiom_no_emit", "wall_s": 0.99}
+{"cur": "Integral(-8*sin(x) + 90*log(x)/x, x)", "cls": "formdiff", "nxt_sympy": "45*log(x)**2 + 8*cos(x)", "nxt_axiom": "8*cos(x) + 45*log(x)**2", "wall_s": 0.09}
+{"cur": "Integral(2*(-2*sqrt(x) + sqrt(3))*cos(sqrt(3)*sqrt(x) - x)/sqrt(x), x)", "cls": "formdiff", "nxt_sympy": "4*sin(sqrt(3)*sqrt(x) - x)", "nxt_axiom": "4*sin(-x + sqrt(3)*sqrt(x))", "wall_s": 0.23}
+{"cur": "Integral(4*(10*x**3 + 15*x**2 - 6*x + 15)/sqrt(x**3 - x + 5), x)", "cls": "formdiff", "nxt_sympy": "(16*x + 40)*sqrt(x**3 - x + 5)", "nxt_axiom": "(16*x + 40)*sqrt(-x + x**3 + 5)", "wall_s": 1.0}
+{"cur": "Integral((33*x**4 - 22*x**3 + 93*x**2 - 42*x + 59)/(9*x**4 - 6*x**3 + 25*x**2 - 8*x + 16), x)", "cls": "formdiff", "nxt_sympy": "11*x/3 + (19 - 4*x)/(27*x**2 - 9*x + 36)", "nxt_axiom": "11/3*x + ((-4)*x + 19)*((-9)*x + 27*x**2 + 36)**-1", "wall_s": 0.61}
+{"cur": "Integral(6*cos(x) + 56*log(x)/x, x)", "cls": "formdiff", "nxt_sympy": "28*log(x)**2 + 6*sin(x)", "nxt_axiom": "6*sin(x) + 28*log(x)**2", "wall_s": 0.08}
+{"cur": "Integral(25*sin(10*x), x)", "cls": "formdiff", "nxt_sympy": "-5*cos(10*x)/2", "nxt_axiom": "(-5/2)*cos(10*x)", "wall_s": 0.05}
+{"cur": "Integral((162*x**2*log(x) + 27)*exp(3*x**2 + 3)/x, x)", "cls": "identical", "nxt_sympy": "27*exp(3*x**2 + 3)*log(x)", "nxt_axiom": "27*exp(3*x**2 + 3)*log(x)", "wall_s": 0.19}
+{"cur": "Integral(12*x*(x*(8*x + 1)*cos(4*x**2 + x + 3) + 2*sin(4*x**2 + x + 3)), x)", "cls": "formdiff", "nxt_sympy": "12*x**2*sin(4*x**2 + x + 3)", "nxt_axiom": "12*x**2*sin(x + 4*x**2 + 3)", "wall_s": 0.25}
+{"cur": "Integral((2*(9*x**2 + 1)*((5*x + 1)*exp(5*x**2 + 2*x + 1) + 4*log(3*x) + 5) + 9)/(9*x**2 + 1), x)", "cls": "formdiff", "nxt_sympy": "8*x*log(3*x) + 2*x + exp(5*x**2 + 2*x + 1) + 3*atan(3*x)", "nxt_axiom": "2*x + 3*atan(3*x) + 8*x*log(3*x) + exp(2*x + 5*x**2 + 1)", "wall_s": 0.63}
+{"cur": "Integral(x**4*(84*x*(3*x**2 - 1)*cos(2*x**3 - 2*x + 3) + 210*sin(2*x**3 - 2*x + 3)), x)", "cls": "formdiff", "nxt_sympy": "42*x**5*sin(2*x**3 - 2*x + 3)", "nxt_axiom": "42*x**5*sin((-2)*x + 2*x**3 + 3)", "wall_s": 0.9}
+{"cur": "Integral(3*(63*x + 37)/sqrt(7*x + 5), x)", "cls": "formdiff", "nxt_sympy": "sqrt(7*x + 5)*(18*x + 6)", "nxt_axiom": "(18*x + 6)*sqrt(7*x + 5)", "wall_s": 0.53}
+{"cur": "Integral((10*x - 1)*cos(5*x**2 - x + 1), x)", "cls": "formdiff", "nxt_sympy": "sin(5*x**2 - x + 1)", "nxt_axiom": "sin(-x + 5*x**2 + 1)", "wall_s": 0.16}
+{"cur": "Integral(9*x*(5*x**2 + 1)*sin(5*x**3 + 3*x + 5) - 3*cos(5*x**3 + 3*x + 5), x)", "cls": "formdiff", "nxt_sympy": "-3*x*cos(5*x**3 + 3*x + 5)", "nxt_axiom": "(-3)*x*cos(3*x + 5*x**3 + 5)", "wall_s": 0.33}
+{"cur": "Integral((18*sqrt(x) + sqrt(5))*cos(sqrt(5)*sqrt(x) + 9*x)/sqrt(x), x)", "cls": "formdiff", "nxt_sympy": "2*sin(sqrt(5)*sqrt(x) + 9*x)", "nxt_axiom": "2*sin(9*x + sqrt(5)*sqrt(x))", "wall_s": 0.2}
+{"cur": "Integral(-cos(x - 4), x)", "cls": "identical", "nxt_sympy": "-sin(x - 4)", "nxt_axiom": "-sin(x - 4)", "wall_s": 0.07}
+{"cur": "Integral((4 - 9*x**2)*sin(3*x**3 - 4*x + 4), x)", "cls": "formdiff", "nxt_sympy": "cos(3*x**3 - 4*x + 4)", "nxt_axiom": "cos((-4)*x + 3*x**3 + 4)", "wall_s": 0.21}
+{"cur": "Integral((48*x**2 + 8)*exp(3*x**2), x)", "cls": "identical", "nxt_sympy": "8*x*exp(3*x**2)", "nxt_axiom": "8*x*exp(3*x**2)", "wall_s": 0.07}
+{"cur": "Integral(441*sin(7*x + 2)**2*cos(7*x + 2), x)", "cls": "identical", "nxt_sympy": "21*sin(7*x + 2)**3", "nxt_axiom": "21*sin(7*x + 2)**3", "wall_s": 0.22}
+{"cur": "Integral(4*sqrt(2)*exp(x)*sin(x + pi/4) + 9*log(x)**2 + 18*log(x) + log(3814697265625)*log(x) + 9*log(5)**2 + log(3814697265625), x)", "cls": "error", "err": "TypeError", "wall_s": 0.21}
+{"cur": "Integral(-(sqrt(x)*(24*x**2 + 8) + sqrt(3))*sin(sqrt(3)*sqrt(x) + 4*x**3 + 4*x + 5)/sqrt(x), x)", "cls": "formdiff", "nxt_sympy": "2*cos(sqrt(3)*sqrt(x) + 4*x**3 + 4*x + 5)", "nxt_axiom": "2*cos(4*x + 4*x**3 + sqrt(3)*sqrt(x) + 5)", "wall_s": 3.33}
+{"cur": "Integral((2*x**4 + 4*x**3 + 24*x**2 + 30*x + 45)/(x**4 + 2*x**3 + 11*x**2 + 10*x + 25), x)", "cls": "formdiff", "nxt_sympy": "2*x + (-2*x - 5)/(x**2 + x + 5)", "nxt_axiom": "2*x + ((-2)*x - 5)*(x + x**2 + 5)**-1", "wall_s": 0.29}
+{"cur": "Integral(96*x*exp(8*x**3 - 8*x + 16) + 8*x*cos(x + 3) + 128*(3*x**2 - 1)**2*exp(8*x**3 - 8*x + 16) + 8*sin(x + 3), x)", "cls": "error", "err": "TypeError", "wall_s": 4.75}
+{"cur": "Integral(12*x*(25*x + 4)/sqrt(5*x + 1), x)", "cls": "identical", "nxt_sympy": "24*x**2*sqrt(5*x + 1)", "nxt_axiom": "24*x**2*sqrt(5*x + 1)", "wall_s": 0.42}
+{"cur": "Integral(-32*log(x) - 35, x)", "cls": "formdiff", "nxt_sympy": "-32*x*log(x) - 3*x", "nxt_axiom": "(-32)*x*log(x) - 3*x", "wall_s": 0.06}
+{"cur": "Integral(16*(-2*x*(3*x**2 - 1)*log(x)*sin(2*x*(x**2 - 1)) + cos(2*x*(x**2 - 1)))/x, x)", "cls": "formdiff", "nxt_sympy": "16*log(x)*cos(2*x**3 - 2*x)", "nxt_axiom": "16*cos((-2)*x + 2*x**3)*log(x)", "wall_s": 31.42}
+{"cur": "Integral(40*sqrt(x + 5) + 4 + 27/(9*x**2 + 1) + 7/(x**2 + 1) + 4*(5*x + 2)/sqrt(x + 5), x)", "cls": "axiom_no_emit", "wall_s": 7.6}
+{"cur": "Integral(18*(-(2*x + 1)**2*sin(x**2 + x + 1) + cos(x**2 + x + 1))*cos(x**2 + x + 1), x)", "cls": "formdiff", "nxt_sympy": "18*x*cos(x**2 + x + 1)**2 + 9*cos(x**2 + x + 1)**2", "nxt_axiom": "9*cos(x + x**2 + 1)**2 + 18*x*cos(x + x**2 + 1)**2", "wall_s": 0.28}
+{"cur": "Integral(-3*(sqrt(x)*(8*x + 4) + sqrt(2))*sin(sqrt(2)*sqrt(x) + 2*x**2 + 2*x + 2)/(2*sqrt(x)), x)", "cls": "formdiff", "nxt_sympy": "3*cos(sqrt(2)*sqrt(x) + 2*x**2 + 2*x + 2)", "nxt_axiom": "3*cos(2*x + 2*x**2 + sqrt(2)*sqrt(x) + 2)", "wall_s": 0.81}
+{"cur": "Integral(972*exp(18*x), x)", "cls": "identical", "nxt_sympy": "54*exp(18*x)", "nxt_axiom": "54*exp(18*x)", "wall_s": 0.05}
+{"cur": "Integral(6*log(x)**2 + 12*log(x) + 9 + 2/sqrt(1 - x**2) + 10/sqrt(1 - 4*x**2) + 27/sqrt(1 - 9*x**2), x)", "cls": "formdiff", "nxt_sympy": "6*x*log(x)**2 + 9*x + 2*asin(x) + 5*asin(2*x) + 9*asin(3*x)", "nxt_axiom": "2*asin(x) + 5*asin(2*x) + 6*x*log(x)**2 + 9*x + 9*asin(3*x)", "wall_s": 0.29}
+{"cur": "Integral(3*(-25*x**3 + 25*x**2 - 2)/sqrt(5*x**3 + 1), x)", "cls": "formdiff", "nxt_sympy": "(10 - 6*x)*sqrt(5*x**3 + 1)", "nxt_axiom": "((-6)*x + 10)*sqrt(5*x**3 + 1)", "wall_s": 1.09}
+{"cur": "Integral((2*x + 3)*exp(x**2 + 3*x + 3) + 2*log(4*x)**2 + 4*log(4*x), x)", "cls": "formdiff", "nxt_sympy": "2*x*log(4*x)**2 + exp(x**2 + 3*x + 3)", "nxt_axiom": "2*x*log(4*x)**2 + exp(3*x + x**2 + 3)", "wall_s": 0.18}
+{"cur": "Integral((12 - 180*x**2)*sin(5*x**3 - x), x)", "cls": "formdiff", "nxt_sympy": "12*cos(5*x**3 - x)", "nxt_axiom": "12*cos(-x + 5*x**3)", "wall_s": 0.19}
+{"cur": "Integral((9*x - 3)*sqrt(3*x**2 - 2*x + 3), x)", "cls": "formdiff", "nxt_sympy": "(3*x**2 - 2*x + 3)**(3/2)", "nxt_axiom": "((-2)*x + 3*x**2 + 3)*sqrt((-2)*x + 3*x**2 + 3)", "wall_s": 0.12}
+{"cur": "Integral(72*x**2 + 9*cos(x), x)", "cls": "formdiff", "nxt_sympy": "24*x**3 + 9*sin(x)", "nxt_axiom": "9*sin(x) + 24*x**3", "wall_s": 0.06}
+{"cur": "Integral(-525*sin(5*x + 2)*cos(5*x + 2)**2, x)", "cls": "identical", "nxt_sympy": "35*cos(5*x + 2)**3", "nxt_axiom": "35*cos(5*x + 2)**3", "wall_s": 0.21}
+{"cur": "Integral(20*exp(4*x)*sin(x) + 5*exp(4*x)*cos(x) + 1 + 10/sqrt(1 - 4*x**2), x)", "cls": "formdiff", "nxt_sympy": "x + 5*exp(4*x)*sin(x) + 5*asin(2*x)", "nxt_axiom": "x + 5*asin(2*x) + 5*exp(4*x)*sin(x)", "wall_s": 0.2}
+{"cur": "Integral(27*sqrt(3*x + 4)/2, x)", "cls": "identical", "nxt_sympy": "3*(3*x + 4)**(3/2)", "nxt_axiom": "3*(3*x + 4)**(3/2)", "wall_s": 0.05}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(4*((4*x + 3)*(x**2 + 1)*atan(x) + (2*x**2 + 3*x + 1"}
+{"cur": "Integral((-48*(5*x + 2)**2*sin(x*(5*x + 4)) + 30*cos(x*(5*x + 4)))*cos(x*(5*x + 4))**3, x)", "cls": "formdiff", "nxt_sympy": "30*x*cos(5*x**2 + 4*x)**4 + 12*cos(5*x**2 + 4*x)**4", "nxt_axiom": "12*cos(4*x + 5*x**2)**4 + 30*x*cos(4*x + 5*x**2)**4", "wall_s": 42.77}
+{"cur": "Integral(8*(x*log(3*x**2) + (4*x**2 + 1)*atan(2*x))/(x*(4*x**2 + 1)), x)", "cls": "error", "err": "TypeError", "wall_s": 35.12}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(((9*x**2 + 1)*(2*x*log(5*x)**2 + 2*x*log(5*x) + 5*l"}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(5*(2*(5*x + 1)*log(5*x + 1) + 5*(4*x**2 + 1)*atan(2"}
+{"cur": "Integral((x**(3/2)*sqrt(1 - x**2)*(sqrt(7)*sqrt(x)*(12*x - 2) + 18*x**2*log(4*x) + 6*x**2 + 18*exp(3*x)*sin(2*x) + 12*exp(3*x)*cos(2*x) + 5) + 8*x**(3/2) + 4*sqrt(x)*sqrt(1 - x**2) + x*sqrt(7 - 7*x**2)*(3*x**2 - x + 4))/(x**(3/2)*sqrt(1 - x**2)), x)", "cls": "axiom_no_emit", "wall_s": 47.16}
+{"cls": "wallkill", "ok": false, "wall_s": 50, "args0": "Integral(4*(3*x*(3*x - 1)*log(x*(3*x - 1)) + (6*x - 1)*(9*x*"}
+{"cur": "Integral(((2*x - 1)*(9*x**2 + 1)*atan(3*x) + 3*(x**2 - x + 4)*log(x**2 - x + 4))/((9*x**2 + 1)*(x**2 - x + 4)), x)", "cls": "formdiff", "nxt_sympy": "log(x**2 - x + 4)*atan(3*x)", "nxt_axiom": "atan(3*x)*log(-x + x**2 + 4)", "wall_s": 49.52}
