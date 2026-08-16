@@ -30255,3 +30255,173 @@ signatures only, m5 on 512-row string-seeded samples,
 stratified-by-level m5 NOT implemented (disclosed shortfall from
 the amended spec's R3 wording), failure-column teacher-forced
 targets are answer-as-final-step proxies (registered disclosure).
+
+## OBSERVATION BASICS-CENSUS-0 + BASICS-PROBE-0: the diet already teaches algebra explicitly (18% of rows) but arithmetic essentially never (12 incidental rows); the model has the algebraic FORM and fails the one coefficient that needs arithmetic (2026-08-15, Mac, desk)
+
+Prices the BASICS-DIET bank (RIFF-LEDGER 4916), whose premise is
+that the stock diet teaches arithmetic and algebra only
+IMPLICITLY. Thresholds named BEFORE counting (census) and before
+the first probe number, and both are quoted below with the branch
+they selected. Zero training cost; instruments
+scratch/basics_census0.py and scratch/basics_probe0.py, receipt
+logs/basics/probe0.jsonl (3 rows, force-added).
+
+**CENSUS.** Artifact: birth19m_curric.load_excised_rows() =
+164,896 D2-excised rows, 164,508 encodable, 10,681,132 tokens
+under the default MathTokenizer (vocab 40, VOCAB_EXTRA unset).
+Pre-named branches: KILL-AS-BANKED if BOTH arithmetic and algebra
+are already present above ~2% of rows; PROMOTE-SCOPED if exactly
+one is present at scale and the other is under ~0.5%;
+PROMOTE-AS-BANKED if both are under ~0.5%.
+
+By structure (Integral/Derivative-wrapped v bare expression):
+
+- calculus (wrapped):            134,508 rows  81.76%  78.67% tok
+- algebra explicit (bare symb):   29,988 rows  18.23%  21.32% tok
+- arithmetic explicit (bare num):     12 rows   0.01%   0.00% tok
+
+The algebra mass is five NAMED families at exactly 6,000 rows
+each — algebra-{expand,factor,collect,cancel,prodpoly}, 3.65% of
+rows apiece — i.e. the bank's own example, (x+1)**2 stated as its
+own row, is in the diet 6,000 times. **The premise is FALSE for
+algebra and TRUE for arithmetic**, so the census selects
+PROMOTE-SCOPED: the rung lives, rescoped to arithmetic. Audit of
+all 12 bare-numeric rows: every one is an incidental
+algebra-collect draw whose x-terms cancelled (e.g.
+'-8 - 1 + 0 + 7 + 7' -> '5'), all purely additive — there is no
+arithmetic FAMILY, and zero instances of the bank's other example
+(a division, 16/2 -> 8). The `coeff` source (1,195 rows) is
+Integral-wrapped calculus, not arithmetic.
+
+**PROBE.** Three arms x 120 held-out items x wave B=8 at three
+frozen checkpoints, oracle-verified (sympy exact equality on
+parsed predictions, no simplify, never string match). Arms:
+expand = RESIDENT family (6,000 rows in diet, held-out seed band),
+arith = ABSENT family (the coefficient arithmetic calculus steps
+perform: a*b, exact division, fraction reduction, squares),
+numsum = NEAR-FORMAT (the exact shape of the 12 incidental rows).
+Pre-named branches: KILL if arith pass@1 >= 50%; PROMOTE if arith
+pass@1 <= 20% WHILE resident expand >= 50%; else RESHAPE.
+
+pass@1 / pass@8, by checkpoint:
+
+- stock_s3:  expand 9.17/20.00, arith 0.00/1.67, numsum 4.17/15.00
+- atoms_s3:  expand 10.83/22.50, arith 0.00/3.33, numsum 5.00/17.50
+- dose7_s3:  expand 7.50/20.83, arith 0.83/2.50, numsum 2.50/8.33
+
+**Branch selected: RESHAPE, not the pre-named PROMOTE.** Arith
+clears its leg at a floor (0.00/0.00/0.83% pass@1, 1.67-3.33%
+pass@8 — the weakest observable measured, and 3/3 checkpoints
+agree), but the resident-family sanity arm does NOT clear its 50%
+floor: expand reads 7.5-10.8% pass@1. So this probe cannot claim
+"a gap on a family the diet teaches well"; the honest reading is
+that the diet's algebra families are themselves weakly learned,
+and arithmetic sits at a floor beneath them.
+
+**Mechanism, counted (the day's finding).** Of the expand misses,
+the polynomial FORM survives and one coefficient breaks:
+stock 83/109 misses (76%) have the x**2 AND constant coefficients
+RIGHT with the middle (cross) term WRONG; atoms 79/107 (74%);
+dose7 75/111 (68%). The cross term is the only coefficient
+requiring real arithmetic (a*d + b*c: two products and a sum) —
+the ends are single products the model copies. Example (stock):
+(-3*x - 6)*(4*x - 5) -> '-12*x**2 - 39*x + 30' v truth
+'-12*x**2 - 9*x + 30'. The failure is not algebraic structure; it
+is arithmetic inside the structure.
+
+Reading. The rung survives, rescoped and re-motivated: not "teach
+the basics because they are absent" (algebra is present at 18% of
+rows) but "teach ARITHMETIC because it is absent at 0.01% of rows,
+reads at a floor on 3/3 checkpoints, and is the counted failure
+site inside the algebra family the diet already pays 18% of its
+rows for". The 1c anchor (RESULTS L3444: explicit decomposed
+arithmetic 67.0% held-out v 15-16% implicit, ~4.3x, with a ~2
+integral-solve dent) is the closest measured prior and predicts
+the fix works.
+
+Fences: census is deterministic and scoped to the named artifact
+and tokenizer; classification is by source tag plus structure, not
+semantic judgement. Probe numbers are pass@k under the house wave
+sampler at temperature 0.7 (sample_wave_lp, the gate's own path),
+NOT greedy — pass@1 is a sampled draw and pass@8 is the
+house-comparable figure. Held-out means a fresh string-seed band
+("basics-probe0-*") disjoint from farm_algebra's "algebra-v2-*";
+no exclude=-style expression-level check was run against the
+shard, so a coincidental expression collision is possible and
+unmeasured. Single device (Mac), single lineage (BIRTH_SEED=3
+gallery family). The structural diagnostic parses the FIRST
+sampled text only.
+
+## PRE-REG BASICS-DIET-1: do explicit one-ply ARITHMETIC rows lift arithmetic off its floor, and what do they cost the integral gate? (2026-08-15, Mac, pre-run)
+
+Registered BEFORE the farm runs and before any birth. Rescoped
+from the banked form by BASICS-CENSUS-0 (L30259): the bank's
+"teach the basics" targets algebra, which the diet already states
+on 29,988 rows (18.2%); the absent kind is ARITHMETIC (12
+incidental rows, 0.01%, no division), which reads at a floor on
+3/3 frozen checkpoints and is the counted failure site inside the
+resident expand family (68-76% of misses = ends right, cross term
+wrong).
+
+DESIGN. Paired in-run arms, one variable, same process, same seed,
+same horizon (the mps-nondeterminism fence: in-run pairs only,
+never a cross-run weight comparison):
+
+- CONTROL: stock excised diet + the 6,000-row sympy calculus atom
+  shard (data/micromodel_atoms_shard0.jsonl) — i.e. the booked
+  atoms arm re-run in this family, NOT the L29465 number reused.
+- ARITH:   the same, plus 3,000 one-ply arithmetic rows
+  interleaved (~1.8% of the 164,896-row diet, honoring the bank's
+  <=2% ration).
+
+BIRTH_SEED=3, mps fp32, matched steps/horizon, refuse-if-exists on
+both checkpoints, receipts to logs/basicsdiet1/ (new path; smoke
+rows to a separate file; provenance fields DERIVED, never literal).
+
+THE ARITHMETIC SHARD (farmed before the birth, own commit):
+sibling farm, scratch/farm_arith.py — never an edit to the frozen
+scripts/farm_algebra.py. Families, all one-ply and exact by
+construction (integer/Rational arithmetic only, no simplify, no
+sympy timebox exposure): mul (a*b), div (exact quotient), divred
+(reduced fraction), pow (small square), and additive chains in the
+numsum shape. Stable string seeds ("arith-v1-<family>-<i>"), D2
+gate-band exclusion on norm(cur)/norm(nxt), corpus-cur dedup
+against the excised diet, (cur,nxt) dedup within the shard,
+tokenizer roundtrip required. Rows stream incrementally.
+
+BARS, pre-registered:
+
+- **BAR 1 (ARITH-LEARNS), primary**: the ARITH arm's held-out
+  arithmetic pass@8 (scratch/basics_probe0.py, arith arm, N=120,
+  B=8, same probe seeds) reads >= 40%, against a measured control
+  floor of 1.67-3.33%. Justification for the level: series rung 1c
+  (L3444) moved implicit 15-16% to explicit 67.0% at far larger
+  volume; 40% at 1.8% dose is a deliberately conservative fire
+  line. NO-FIRE below 40%; the probe's own arms are the checksum.
+- **BAR 2 (NO-HARM), guard**: ARITH gate total >= CONTROL gate
+  total - 4 (the 1c-measured series dent was -2; +2 covers the
+  measured same-seed run noise). Gate dicts book, not totals.
+- **BAR 3 (TRANSFER), rider only, no claim either way**: the
+  resident expand arm's pass@8 and the L3 gate cell. Direction
+  only — a transfer READING at n=1 cannot resolve under the
+  7-solve law.
+- **REFUTED-IF**: ARITH gate total < CONTROL - 8, i.e. the
+  arithmetic rows cost more than the atom shard bought (+6 at
+  L29250). That would say the format-shift cost exceeds the
+  capability gain at this dose.
+
+PRIOR (registered, house record 7 hits/19 misses): BAR 1 FIRES
+(the 1c anchor is direct and the floor is near-zero, so almost
+any real learning clears 40%); BAR 2 FIRES but tight — expect a
+dent of 0 to -3; BAR 3 shows a small positive on expand pass@8
+and nothing resolvable on L3.
+
+NAMED HAZARDS: (1) FORMAT SHIFT — bare-numeric prompts are a new
+surface (12 rows in 165k today), so BAR 1 partly measures format
+acquisition, not arithmetic competence alone; the numsum arm is
+the near-format control that separates them and must be read
+beside it. (2) The 120 gate has NO L1/L2 cells, so "basics
+improved" has no direct gate readout — BAR 1 is a PROBE bar by
+necessity, and the probe is temperature-0.7 pass@k, not greedy.
+(3) Dose is capped at 1.8%: a NO-FIRE on BAR 1 is scoped to this
+ration and does not retire the idea at larger dose.

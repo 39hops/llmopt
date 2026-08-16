@@ -2054,3 +2054,18 @@ regime tag on every bullet is the fence.
   most internally redundant family measured; forward/backward mps
   signatures repeat at 1.000000 same-process.
   ([VERDICT GRAD-MAP-0](RESULTS.md#L30127).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe]
+  The stock diet already states algebra explicitly — 29,988 bare
+  symbolic rows, 18.2% of rows and 21.3% of tokens, five named
+  families at 6,000 rows each — while arithmetic appears on 12
+  incidental rows (0.01%), none of them a division. Held-out
+  probing at three frozen checkpoints puts arithmetic at a floor
+  (0.00-0.83% pass@1, 1.7-3.3% pass@8) beneath a resident algebra
+  family that is itself weak (7.5-10.8% pass@1), and the counted
+  failure mode names the mechanism: 68-76% of expand misses carry
+  the correct x**2 and constant coefficients with only the cross
+  term wrong — the one coefficient that requires arithmetic
+  rather than copying. Basics rungs should target arithmetic, not
+  algebra.
+  ([OBSERVATION BASICS-CENSUS-0](RESULTS.md#L30259).)
