@@ -32225,3 +32225,88 @@ near-tie at matched BYTES is explained as 3.6x extra shared rank
 merely compensating for lost expert-specific alignment, and
 "private alignment gain >> shared-basis alignment" books as a
 measured statement rather than an interpretation.
+
+## AMENDMENT STREAM-WDISTILL-0-READING-3 (amends AMENDMENT -READING-2 L32133): the D-v-C efficiency gap is CONFOUNDED BY RANK POSITION and does not measure misalignment; E's 1.067x is not "indistinguishable" and is not independent; and the capture statistic is a PROXY with a measured bound (2026-08-16, Mac)
+
+Three post-look corrections (GPT seat). -READING-2 correctly
+killed "near-isotropic" and then overreached on what replaced it.
+Each correction below is checked by computation, not argument.
+
+(1) THE MISALIGNMENT INFERENCE IS DOWNGRADED. -READING-2 wrote
+"D exploits 3.58x more structure per stored direction than C" and
+"the reason is MISALIGNMENT rather than a lack of structure". The
+efficiency statistic eta(r) = captured(r) / (r/d) is STRONGLY
+RANK-DEPENDENT for any non-flat spectrum, so comparing D at
+r=296 against C at r=1075 confounds rank POSITION with coordinate
+ALIGNMENT. Demonstrated on a single matrix with a 1/i eigenvalue
+spectrum and NO coordinate change anywhere:
+    eta(296)  = 9.753x
+    eta(1075) = 3.237x     ratio 3.01x
+That 3.01x arises with zero misalignment, and is the same order as
+the 3.58x -READING-2 attributed to misalignment. The comparison
+therefore identifies nothing on its own.
+WHAT SURVIVES, and it is enough to keep the earlier retraction:
+D's 4.678x at r=296 refutes NEAR-ISOTROPY outright, because a
+genuinely flat spectrum gives eta = 1.0 at EVERY rank. So
+"individual expert matrices lack preferred directions" stays
+dead. What is now claimed, and no more:
+  individual experts contain substantial low-rank directional
+  structure, while the matched-byte shared basis extracts little
+  additional Frobenius benefit despite 3.6x more rank — CONSISTENT
+  WITH cross-expert misalignment, which is the LEADING
+  EXPLANATION and is NOT yet measured.
+The FINDINGS phrasing "the reason is MISALIGNMENT rather than a
+lack of structure" is corrected accordingly: lack of structure is
+REFUTED; misalignment is the leading candidate.
+This makes C@296 v D@296 decisive rather than merely valuable: at
+EQUAL RANK the random denominator is identical (296/4096) and the
+rank-position confound vanishes entirely.
+
+(2) E's 1.067x IS NARROWED TWICE. -READING-2 called it
+"statistically indistinguishable from a random subspace" and
+"independent support" for the gauge argument. Both are wrong.
+No sampling distribution was computed — no random-subspace
+realizations, no interval, no analytic variance — and for an
+anisotropic covariance the variance of random-subspace capture
+itself depends on the spectrum, so numeric closeness to 1.0 is
+not a test. Corrected wording: E's capture efficiency is CLOSE TO
+the uniform-random expectation (1.067x), CONSISTENT WITH the
+gauge prediction that a globally shared hidden basis finds little
+exploitable structure.
+And it is not INDEPENDENT: E IS the registered gauge-control arm —
+same arm, same weights, same execution, same intervention. The
+capture statistic is unregistered and post-hoc, so this is
+CONVERGENT DESCRIPTIVE support from a second statistic on the
+same arm, never independent evidence. -READING-2's "from an arm
+registered for another purpose" was simply false and is
+withdrawn.
+
+(3) THE CAPTURE STATISTIC IS A PROXY, WITH A MEASURED BOUND.
+captured = 1 - relative_frobenius^2 is exact only for an
+ORTHOGONAL projector. The driver rounds bases through fp16 before
+use, so V^T V != I exactly and the Pythagorean identity is
+approximate. Measured at the exact production shapes on
+fp16-rounded orthonormal bases:
+    d=4096 r=1075   max|V^T V - I| 3.92e-5   ||.||_F/sqrt(r) 1.51e-4
+    d=4096 r=296    max|V^T V - I| 3.96e-5   ||.||_F/sqrt(r) 7.92e-5
+    d=2048 r=541    max|V^T V - I| 5.10e-5   ||.||_F/sqrt(r) 1.51e-4
+So the identity holds to ~1e-4 relative — far below every effect
+discussed — and the numbers stand. But the quantity is named
+CAPTURE PROXY wherever quoted, with this bound, rather than
+presented as an exact energy fraction. The exact form for future
+rungs is ||V^T W||_F^2 / ||W||_F^2 computed directly, or an
+asserted orthonormality tolerance.
+
+FOLLOW-UP, upgraded to a two-step mechanistic closure. Step one is
+the already-registered C@296 v D@296 rank-matched rider, which
+removes the rank confound. Step two, newly named: a SUBSPACE-
+OVERLAP CENSUS measuring the proposed mechanism DIRECTLY instead
+of inferring it from compression — for each expert's private
+basis V_e and the shared basis V_s at matched r=296, the
+normalized overlap ||V_e^T V_s||_F^2 / r, plus the pairwise
+||V_e^T V_j||_F^2 / r across experts. Strong private eigenspaces
+with LOW mutual overlap would be misalignment measured rather
+than inferred. If both steps land, the law to be booked is
+"anisotropy is expert-local; alignment is not" — sharper than the
+rank floor it would refine, and a parameter-geometry echo of the
+lab's transition-space locality results.

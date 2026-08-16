@@ -2154,21 +2154,29 @@ regime tag on every bullet is the fence.
   Low-rank factorization of a frontier MoE expert layer, derived
   from streamed weights alone (zero teacher forwards, zero
   calibration data, disk residence one expert), does not pay at 2x
-  compression, and the reason is MISALIGNMENT rather than a lack of
-  structure. Sharing one basis across 256 experts buys 3.6x the
+  compression, and a LACK OF LOW-RANK STRUCTURE is not the reason. Sharing one basis across 256 experts buys 3.6x the
   rank (1075 v 296) for 0.37% less pooled Frobenius error against
   a registered 10% bar. But capture efficiency against a
   uniform-random subspace of equal rank in the same ambient space
-  reads 4.678x for PRIVATE per-expert bases, 1.307x for the SHARED
-  basis, and 1.067x for the permutation-gauged hidden axis: the
-  experts are individually strongly anisotropic, their useful
-  directions are poorly aligned ACROSS experts, and a shared
-  hidden basis is indistinguishable from random — the last being
-  independent support for the expert-local gauge argument from an
-  arm registered for another purpose. Every low-rank arm has
+  reads 4.678x for PRIVATE per-expert bases at rank 296 — a flat
+  spectrum would give 1.0 at every rank, so the experts are
+  individually anisotropic. Cross-expert MISALIGNMENT is the
+  leading explanation for why sharing then pays so little, but it
+  is NOT yet measured: the efficiency statistic is rank-dependent
+  (on one fixed spectrum with no coordinate change it falls 9.75x
+  to 3.24x between those two ranks), so the shared basis's 1.307x
+  at rank 1075 is confounded. The rank-matched C@296 v D@296
+  reading, registered and unrun, is what separates them. The
+  gauge-control arm's 1.067x is close to the uniform-random
+  expectation, consistent with the gauge prediction, and is a
+  convergent post-hoc statistic on that same arm rather than
+  independent evidence. Capture figures are a PROXY
+  (1 - rel_frobenius^2, exact only for an orthogonal projector;
+  fp16 bases hold it to ~1e-4). Every low-rank arm has
   higher error than an inadmissible near-budget 2-bit scalar
   reference (19 bytes over, so that comparison is DESCRIPTIVE and
   the registered scalar bar is UNRESOLVED). Weight space only, one
   layer, n=1, no capability claim.
   ([VERDICT STREAM-WDISTILL-0-AUDIT-REPAIR](RESULTS.md#L31908);
-  [AMENDMENT -READING-2](RESULTS.md#L32133).)
+  [AMENDMENT -READING-2](RESULTS.md#L32133);
+  [AMENDMENT -READING-3](RESULTS.md#L32229).)
