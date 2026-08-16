@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 199, spec-cited 86, cited-but-library 58
+Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 200, spec-cited 86, cited-but-library 58
 
 ## scratch/
 
@@ -37,7 +37,7 @@ Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 199, spec-ci
 | birth19m | birth19m_atoms_ladder.py | results-cited | RESULTS | RESULTS×2 | — | 3 |
 | birth19m | birth19m_atoms_rule.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 3 |
 | birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
-| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 16 | — |
+| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 17 | — |
 | birth19m | birth19m_curric_rev.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
 | birth19m | birth19m_curric_swap.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
@@ -92,7 +92,7 @@ Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 199, spec-ci
 | detbwd | detbwd_r2_adamw.py | library | RESULTS | RESULTS×4 | 2 | — |
 | detbwd | detbwd_r2b.py | library | RESULTS, specs | RESULTS×2, specs×2 | 6 | — |
 | detbwd | detbwd_r3_qw.py | library | RESULTS | RESULTS×1 | 5 | — |
-| determinability | determinability_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| determinability | determinability_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | distortion | distortion_collapse.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | dual | dual_probe.py | UNCITED | — | — | — | — |
 | duo | duo_mine.py | UNCITED | — | — | — | — |
@@ -345,6 +345,7 @@ Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 199, spec-ci
 | rot | rot_snap_anatomy.py | UNCITED | — | — | — | — |
 | rotinstr | rotinstr_control.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | ruleablate1 | ruleablate1_driver.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
+| rulepolicy0 | rulepolicy0_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | run | run_snap_gates.sh | spec-cited | specs | specs×1 | — | — |
 | run | run_snap_knee.sh | UNCITED | — | — | — | — |
 | saturation | saturation_s2.py | results-cited | RESULTS | RESULTS×2 | — | — |

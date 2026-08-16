@@ -2869,6 +2869,13 @@ A3 (revival-sweep Tier A, 2026-07-31): rotation-instrument POSITIVE CONTROL. Run
 - `anti_mass(W, Jo, Ji)`
 - `main()`
 
+### scratch/rulepolicy0_census.py
+RULE-POLICY-0 rung 0 — label-coverage census (/desk shape).
+
+- `enumerate_moves(cur, expr)` — -> [(rule_name, child_sstr)]; axiom bridge (deadline-walled,
+- `canon(s)`
+- `main()`
+
 ### scratch/saturation_s2.py
 SATURATION-1 cell (a): +1 warm epoch at fixed food on a COPY of the grown-s2 champion (PRE-REG SATURATION-1). Crown artifact frozen; this trains checkpoints/sat_s2.pt (epochs=4 resumes the 3-ep state one epoch). Then the standard gate, dict printed. Usage: .venv/bin/python scratch/saturation_s2.py
 

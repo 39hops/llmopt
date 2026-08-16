@@ -2097,3 +2097,19 @@ regime tag on every bullet is the fence.
   failure survives both — the live variables narrow to
   supervision grain and dose. Gate no-harm holds (70 v 72, inside
   run noise). ([VERDICT XTERM-DIET-1](RESULTS.md#L30682); [RIDER XTERM-DIET-1-DECOMP](RESULTS.md#L30656).)
+
+- [SINGLE-SEED] [REGIME-SCOPED: specified diet and recipe] Engine
+  successors can recover an action label for only 47.58% of stock
+  diet rows (4,000-row census, thresholds committed pre-count) —
+  the engine-only free-labels premise dies at a knife-edge KILL —
+  but the four non-expand algebra families sit at 0-13% solely
+  because their ops are outside the engine's move vocabulary
+  while carrying their labels verbatim in the think field; the
+  union lifts coverage to 65.8%, pricing the policy rung as a
+  re-emission pass. Anatomy names a hard floor: some rows
+  materialize integration constants from chain context
+  (Integral(0, x) -> "+ 4"), so their labels are not computable
+  from cur alone — a label-timing violation inside the stock
+  diet. Counts are lower bounds (canonical-string match; sample
+  sigma ~0.8 points puts 47.58 v 50 in the threshold region).
+  ([OBSERVATION RULE-POLICY-0-CENSUS](RESULTS.md#L30806).)

@@ -30802,3 +30802,66 @@ resolution law's single-seed band — the BAR 1 +11 inversion is
 ~2.3 sigma on its own count and books as direction-grade, not
 resolved; the xexp ambiguity voids loss-level comparisons (none
 are quoted).
+
+## OBSERVATION RULE-POLICY-0-CENSUS: engine-recoverable action labels cover 47.58% of diet rows — the pre-named KILL bar (<50%) fires at a knife-edge, and the by-family decomposition relocates the rung: the algebra families carry their labels in the think field already, lifting union coverage to 65.8% = the RESHAPE band (2026-08-16, Mac)
+
+Desk census, /desk shape: thresholds committed BEFORE the count
+(757f953 — PROMOTE >=80% unique / RESHAPE 50-80 / KILL <50; the
+registered method is ENGINE recovery via successors). Script
+scratch/rulepolicy0_census.py; sample 4,000 of 124,916 unique
+(cur, nxt) rows from the excised stock diet, string-seeded
+shuffle (91.6M band), axiom_sym.successors (AXIOM-FIRST,
+10s deadline) with house successors fallback, match = normalized
+sstr(sympify()) equality. Receipts logs/rulepolicy0/census.jsonl
+(4,000 rows) + census_run.log + census_smoke.jsonl (the N=200
+smoke, moved off the real path before the run), force-added this
+commit.
+
+Measured (row-weighted, scored = 4,000, unscored 0):
+
+- unique 1,903 (47.58%) | ambiguous 1 (0.03%) |
+  unreachable 2,096 (52.40%)
+- by level: L1 28.5% unique, L2 59.8, L3 42.0, L4 37.0, L5 64.4,
+  L6 64.8, L7 68.3 (L8 n=9)
+- by family (think tag): expand 100% unique (n=217); collect 0%
+  (209), factor 0% (182), prodpoly 0% (172), cancel 13% (192) —
+  the four non-expand algebra families are OUTSIDE the engine's
+  move vocabulary; engine-emitted 'solve the leading unsolved
+  term' rows are only 58.6% unique (1,072/1,829, 756
+  unreachable); 'split the integral term by term' 43.3%;
+  untagged '?' rows 52.1%.
+
+**THRESHOLD: KILL fires, knife-edge (47.58 v 50), on the
+registered engine-only method.** The free-labels-from-the-diet
+premise dies AS STATED: engine successors alone cannot label half
+the diet.
+
+**Rider (descriptive, method extension named post-count and
+labeled as such): the algebra families already carry their rule
+label verbatim in the think field.** Counting those four families'
+unreachable rows as think-labeled lifts union coverage to
+(1,903 + 730)/4,000 = 65.83% — the RESHAPE band. The honest
+reshape: a policy-label emitter = engine successors UNION the
+five algebra ops UNION the atom shard's existing rule tags,
+which prices rung 1 as a re-emission pass, not a new corpus.
+
+Unreachable-class anatomy (three named classes, examples in the
+receipt rows): (a) the emitter solved a NON-LEADING term where
+the successor set offers the leading one; (b) integration
+constants materialized from chain context — e.g. Integral(0, x)
+-> "+ 4": the label is NOT COMPUTABLE FROM cur ALONE, a
+label-timing violation living inside the stock diet (the
+data-contract vocabulary's first in-corpus sighting); (c) a
+residual serialization/action-form mismatch class, undiagnosed.
+All census counts are therefore LOWER BOUNDS on recoverability
+under richer action sets; (b) is a hard floor no action set
+recovers.
+
+Fences: sample 4,000 of 124,916 (binomial sigma ~0.8 points at
+these fractions — the 47.58 v 50 knife-edge is INSIDE ~3 sigma
+and books as threshold-region, not resolved KILL; the
+family-level 0%/100% cells are far outside it); row-weighted, not
+token-weighted; canonical-string match undercounts unique if the
+engine serializes an equivalent child differently (class (c));
+deterministic census, scoped to the exact artifact
+(load_excised_rows, 164,896 rows, D2-excised).

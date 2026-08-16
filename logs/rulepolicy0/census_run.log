@@ -1,0 +1,90 @@
+[curric] D2 excision: 165028 -> 164896 rows
+unique (cur,nxt) rows: 124916; censusing 4000
+  200/4000 {'unique': 98, 'unreachable': 102} (2s)
+  400/4000 {'unique': 189, 'unreachable': 211} (4s)
+  600/4000 {'unique': 275, 'unreachable': 325} (7s)
+  800/4000 {'unique': 371, 'unreachable': 429} (10s)
+  1000/4000 {'unique': 470, 'unreachable': 530} (13s)
+  1200/4000 {'unique': 565, 'unreachable': 635} (18s)
+  1400/4000 {'unique': 667, 'unreachable': 733} (25s)
+  1600/4000 {'unique': 767, 'unreachable': 833} (27s)
+[slow-verify] 50 ops 2.46162s
+  1800/4000 {'unique': 857, 'unreachable': 943} (33s)
+[slow-fire] i_linear_basis 69 ops 8.07623s
+  2000/4000 {'unique': 944, 'unreachable': 1055, 'ambiguous': 1} (45s)
+  2200/4000 {'unique': 1039, 'unreachable': 1160, 'ambiguous': 1} (48s)
+  2400/4000 {'unique': 1139, 'unreachable': 1260, 'ambiguous': 1} (52s)
+  2600/4000 {'unique': 1236, 'unreachable': 1363, 'ambiguous': 1} (55s)
+[slow-fire] i_ansatz_exp 109 ops 8.00114s
+[slow-fire] i_linear_basis 109 ops 8.08685s
+[slow-fire] i_linear_basis 84 ops 8.16761s
+  2800/4000 {'unique': 1329, 'unreachable': 1470, 'ambiguous': 1} (86s)
+  3000/4000 {'unique': 1416, 'unreachable': 1583, 'ambiguous': 1} (88s)
+  3200/4000 {'unique': 1505, 'unreachable': 1694, 'ambiguous': 1} (91s)
+[slow-fire] i_linear_basis 54 ops 3.00374s
+  3400/4000 {'unique': 1610, 'unreachable': 1789, 'ambiguous': 1} (99s)
+  3600/4000 {'unique': 1716, 'unreachable': 1883, 'ambiguous': 1} (101s)
+  3800/4000 {'unique': 1812, 'unreachable': 1987, 'ambiguous': 1} (105s)
+  4000/4000 {'unique': 1903, 'unreachable': 2096, 'ambiguous': 1} (108s)
+[census] TOTAL {'unique': 1903, 'unreachable': 2096, 'ambiguous': 1} scored=4000
+[census] unique: 1903 (47.58% of scored)
+[census] ambiguous: 1 (0.03% of scored)
+[census] unreachable: 2096 (52.40% of scored)
+[census] L1: {'unique': 249, 'unreachable': 625} unique 28.5%
+[census] L2: {'unique': 831, 'unreachable': 559} unique 59.8%
+[census] L3: {'unreachable': 444, 'unique': 322} unique 42.0%
+[census] L4: {'unreachable': 284, 'unique': 167} unique 37.0%
+[census] L5: {'unique': 242, 'unreachable': 134} unique 64.4%
+[census] L6: {'unreachable': 25, 'unique': 46} unique 64.8%
+[census] L7: {'unreachable': 20, 'unique': 43} unique 68.3%
+[census] L8: {'unique': 3, 'ambiguous': 1, 'unreachable': 5} unique 33.3%
+[census] think='solve the leading unsolved term': n=1829 unique 58.6% {'unique': 1072, 'unreachable': 756, 'ambiguous': 1}
+[census] think='split the integral term by term': n=633 unique 43.3% {'unique': 274, 'unreachable': 359}
+[census] think='?': n=516 unique 52.1% {'unreachable': 247, 'unique': 269}
+[census] think='expand the product': n=217 unique 100.0% {'unique': 217}
+[census] think='collect like terms': n=209 unique 0.0% {'unreachable': 209}
+[census] think='cancel the shared factor': n=192 unique 13.0% {'unreachable': 167, 'unique': 25}
+[census] think='factor the polynomial': n=182 unique 0.0% {'unreachable': 182}
+[census] think='expand the polynomial factor, keep the composition': n=172 unique 0.0% {'unreachable': 172}
+[census] think='pull out the constant factor 3': n=4 unique 50.0% {'unreachable': 2, 'unique': 2}
+[census] think='pull out the constant factor 6': n=4 unique 75.0% {'unique': 3, 'unreachable': 1}
+[census] think='pull out the constant factor 9': n=3 unique 66.7% {'unique': 2, 'unreachable': 1}
+[census] think='antiderivative divided by -3, keep the factor 6': n=2 unique 100.0% {'unique': 2}
+[census] think='antiderivative of exp, then divide by the inner coefficient -7: 9/-7 = -9/7': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative divided by 7, keep the factor -6': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative divided by 2, keep the factor -3': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative divided by -2, keep the factor 6': n=1 unique 100.0% {'unique': 1}
+[census] think="ansatz A(x)*sqrt(2*x + 1) with polynomial A; match 2*A'*P + A*P' = 2*f*sqrt(P) in the poly ring": n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative divided by 2, keep the factor 2': n=1 unique 100.0% {'unique': 1}
+[census] think='ansatz sum of c_ij * x^j * m_i over basis {cos(2*x**2 + 2), cos(2*x**2 + 2)**2, cos(2*x**2 + 2)**3, cos(2*x**2 + 2)**4, sin(2*x**2 + 2), sin(2*x**2 + 2)*cos(2*x**2 + 2), sin(2*x**2 + 2)*cos(2*x**2 + 2)**2, sin(2*x**2 + 2)*cos(2*x**2 + 2)**3, ...}; differentiate and equate coefficients': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of exp, then divide by the inner coefficient -5: 12/-5 = -12/5': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative divided by -4, keep the factor -9': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative divided by 3, keep the factor -9': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative divided by 2, keep the factor 3': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of sin, then divide by the inner coefficient -6: 1/-6 = -1/6': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of exp, then divide by the inner coefficient 6: -3/6 = -1/2': n=1 unique 100.0% {'unique': 1}
+[census] think='ansatz sum of c_ij * x^j * m_i over basis {cos(4*x), cos(4*x)**2, sin(4*x), sin(4*x)*cos(4*x), sin(4*x)**2, exp(4*x), exp(4*x)*sin(4*x), exp(4*x)*cos(4*x), ...}; differentiate and equate coefficients': n=1 unique 100.0% {'unique': 1}
+[census] think='ansatz sum of c_ij * x^j * m_i over basis {cos(10*x + 10), cos(10*x + 10)**2, sin(10*x + 10), sin(10*x + 10)*cos(10*x + 10), sin(10*x + 10)**2, 1}; differentiate and equate coefficients': n=1 unique 100.0% {'unique': 1}
+[census] think='ansatz sum of c_ij * x^j * m_i over basis {cos(6*x + 5), cos(6*x + 5)**2, sin(6*x + 5), sin(6*x + 5)*cos(6*x + 5), sin(6*x + 5)**2, exp(x), exp(x)*sin(6*x + 5), exp(x)*cos(6*x + 5), ...}; differentiate and equate coefficients': n=1 unique 100.0% {'unique': 1}
+[census] think='ansatz sum of c_ij * x^j * m_i over basis {cos(4*x**3 - 4*x), cos(4*x**3 - 4*x)**2, sin(4*x**3 - 4*x), sin(4*x**3 - 4*x)*cos(4*x**3 - 4*x), sin(4*x**3 - 4*x)**2, 1}; differentiate and equate coefficients': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative divided by 6, keep the factor 2': n=1 unique 100.0% {'unique': 1}
+[census] think='ansatz sum of c_ij * x^j * m_i over basis {cos(4*x**3 + 2*x + 3), cos(4*x**3 + 2*x + 3)**2, sin(4*x**3 + 2*x + 3), sin(4*x**3 + 2*x + 3)*cos(4*x**3 + 2*x + 3), sin(4*x**3 + 2*x + 3)**2, 1}; differentiate and equate coefficients': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of exp, then divide by the inner coefficient 5: 6/5 = 6/5': n=1 unique 100.0% {'unique': 1}
+[census] think='ansatz sum of c_ij * x^j * m_i over basis {cos(x**2 - x + 3), cos(x**2 - x + 3)**2, sin(x**2 - x + 3), sin(x**2 - x + 3)*cos(x**2 - x + 3), sin(x**2 - x + 3)**2, 1}; differentiate and equate coefficients': n=1 unique 100.0% {'unique': 1}
+[census] think="ansatz A(x)*sqrt(5*x + 4) with polynomial A; match 2*A'*P + A*P' = 2*f*sqrt(P) in the poly ring": n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of exp, then divide by the inner coefficient 9: 2/9 = 2/9': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative divided by -3, keep the factor -3': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative divided by 5, keep the factor 9': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of cos, then divide by the inner coefficient 9: 2/9 = 2/9': n=1 unique 100.0% {'unique': 1}
+[census] think='pull out the constant factor -6': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of sin, then divide by the inner coefficient -7: 6/-7 = -6/7': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of cos, then divide by the inner coefficient 7: 9/7 = 9/7': n=1 unique 100.0% {'unique': 1}
+[census] think='ansatz sum of c_ij * x^j * m_i over basis {cos(3*x**3 + x + 3), cos(3*x**3 + x + 3)**2, sin(3*x**3 + x + 3), sin(3*x**3 + x + 3)*cos(3*x**3 + x + 3), sin(3*x**3 + x + 3)**2, log(x), log(x)*sin(3*x**3 + x + 3), log(x)*cos(3*x**3 + x + 3), ...}; differentiate and equate coefficients': n=1 unique 100.0% {'unique': 1}
+[census] think='ansatz sum of c_ij * x^j * m_i over basis {cos(2*x**3 + 2*x), cos(2*x**3 + 2*x)**2, cos(2*x**3 + 2*x)**3, cos(2*x**3 + 2*x)**4, sin(2*x**3 + 2*x), sin(2*x**3 + 2*x)*cos(2*x**3 + 2*x), sin(2*x**3 + 2*x)*cos(2*x**3 + 2*x)**2, sin(2*x**3 + 2*x)*cos(2*x**3 + 2*x)**3, ...}; differentiate and equate coefficients': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of cos, then divide by the inner coefficient 6: -3/6 = -1/2': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of exp, then divide by the inner coefficient -2: 2/-2 = -1': n=1 unique 100.0% {'unique': 1}
+[census] think='ansatz sum of c_ij * x^j * m_i over basis {cos(x**2 + 3*x + 1), cos(x**2 + 3*x + 1)**2, sin(x**2 + 3*x + 1), sin(x**2 + 3*x + 1)*cos(x**2 + 3*x + 1), sin(x**2 + 3*x + 1)**2, 1}; differentiate and equate coefficients': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of cos, then divide by the inner coefficient -9: 12/-9 = -4/3': n=1 unique 100.0% {'unique': 1}
+[census] think='ansatz sum of c_ij * x^j * m_i over basis {cos(3*x**2 + x + 2), cos(3*x**2 + x + 2)**2, sin(3*x**2 + x + 2), sin(3*x**2 + x + 2)*cos(3*x**2 + x + 2), sin(3*x**2 + x + 2)**2, 1}; differentiate and equate coefficients': n=1 unique 100.0% {'unique': 1}
+[census] think='antiderivative of cos, then divide by the inner coefficient -3: 2/-3 = -2/3': n=1 unique 100.0% {'unique': 1}
+[census] wall 108s
