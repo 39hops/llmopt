@@ -2992,11 +2992,35 @@ STREAM-WDISTILL-0 (pre-reg RESULTS 2026-08-16, L30921).
 - `is_routed_layer(name, layer)`
 - `main()`
 
+### scratch/stream_wdistill1.py
+STREAM-WDISTILL-0 PASS 1 + PASS 2 (pre-reg RESULTS L30921; amendments -BUDGET L31031, -CONTRACT L31106, -ARITH L31182, -READING).
+
+- `_get(url, lo=None, hi=None, tries=4)`
+- `manifest()`
+- `stream_expert(e, proj)` — Range-fetch + exact dequant -> fp32 [out, in]. Nothing cached.
+- `ser_bytes(parts, meta)` — Exact artifact size: JSON manifest (counted) + raw LE buffers.
+- `pick_rank(bytes_of_r, B, hi)` — Largest r whose MEASURED serialized size is <= B (dry-run).
+- `q_int8_rows(M)` — int8 + per-row fp16 scale (the frozen coefficient dtype).
+- `deq_int8_rows(q, s)`
+- `spectral_ratio(D, W, seed)` — ||D||_2 / ||W||_2 by seeded power iteration (fixed iters).
+- `op_parts(D, W, seed)` — Seeded isotropic-probe operator error, returned as (num2, den2)
+- `kmeans(V, K, seed, iters)`
+- `assign(V, C, chunk=1 << 16)`
+- `main()`
+
 ### scratch/streaming_birth_d256.py
 Streaming-birth A/B, arm S (RIFF-LEDGER 2026-07-24 "Streaming birth").
 
 - `template_refresh(model)`
 - `ns5(G, steps=5)`
+
+### scratch/streamwd_complete.py
+STREAM-WDISTILL-0 completion pass — closes the two receipt-auditor BLOCKERs on logs/streamwd/pass12_B1.jsonl before booking.
+
+- `live_revision()`
+- `bytes_A()` — 2-bit codes + fp16 per-block scale, block 128 on the packed axis.
+- `bytes_B(stages)` — Per-projection residual VQ: 8-bit indices per 32-weight vector
+- `main()`
 
 ### scratch/successors_acceptance.py
 Successors-bridge acceptance (house side; axiom spec 2026-07-27-successors-bridge, relay -28-2). 500 string-seeded gen-4-band roots (L1-L8), house derivation.successors vs axiom_sym.successors, E4-taxonomy decomposition: - MATCH: child sets equal (sympy-srepr normalized) - HOUSE_ONLY / AXIOM_ONLY children (named, sampled) - I-FENCE: complex-carrier states skipped (axiom domain fence) - EXPIRED: axiom deadline states (censored, never counted false) Soundness leg: every axiom-only child re-verified on the HOUSE oracle (verify_edge) — axiom emissions must never fail it. Throughput logged both sides.

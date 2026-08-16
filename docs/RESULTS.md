@@ -31390,3 +31390,89 @@ way and is counted regardless: 3 projections x 8 stages x 256 x
 slack.
 
 Everything else stands.
+
+## OBSERVATION STREAM-WDISTILL-0-EXEC1: the first execution is INVALID FOR BAR SCORING — three audit blockers, one of them scientifically load-bearing; all three bars book UNRESOLVED and the provisional table is preserved (2026-08-16, Mac)
+
+Two independent auditors ran on the B1 receipt before booking and
+found different blockers; the prereg-auditor caught the one that can
+move the science. The house adopts the strict reading (GPT seat
+concurring): this execution is a PROVISIONAL OBSERVATION, not a
+verdict, and no bar is scored from it.
+
+MEASURED, preserved (logs/streamwd/pass12_B1.jsonl, run_B1.log;
+driver at 71a069b; wall 3394.5 s; ranks C 1075 / D 296 / E 541
+exactly matching the -ARITH pre-look estimates; VQ 8/8 stages in
+197 s under the 2700 s wall; PASS 1 fetched 3264 MiB = the PASS-0
+payload to the byte, PASS 2 the same again, disk residence
+O(one expert)):
+  pooled Frobenius   A 0.7695  B 0.3500  C 0.8106  D 0.8164  E 0.8474
+  operator (expert 0) A 0.7657  B 0.3474  C 0.8338  D 0.8482  E 0.8516
+This table is retained because the signal is large enough to
+motivate the repair, not because it is admissible.
+
+THE THREE BLOCKERS.
+(1) PROVENANCE — the RULE-ABLATE class, again. The driver carried
+`REVISION = "7872f01b..."` with the comment "PASS 0, asserted" and
+asserted it nowhere, while every fetch resolved the MOVING pointer
+/resolve/main. The frozen PASS-0 sibling HAD the derived
+`revision()` and the copy dropped it — a derived field replaced by
+a literal.
+(2) BYTE ACCOUNTING — arms A and B were never serialized. C/D/E
+were rank-shrunk against measured `ser_bytes`; A and B were
+formula-budgeted only, and BAR 2 is a matched-byte comparison
+between exactly those two arms. Worse, arm A's FROZEN format is
+2 + 16/128 = 2.1250 bits/weight x 6,442,450,944 = 1,711,276,032 B
+= EXACTLY B1, so once the counted manifest is added arm A is
+strictly OVER budget and is disqualified under -CONTRACT (1). The
+frozen format is not realizable inside B1; that is a contract
+defect discovered at execution, and it cannot be tuned away
+post-look.
+(3) DTYPE — the load-bearing one. Every arm except A was SCORED
+with a decoder more precise than the artifact it was CHARGED for:
+`topvec`/`topvec_rand` returned fp32 bases and `kmeans` returned
+fp32 codebooks, while -BUDGET CHANGE 3 declares both fp16. For
+residual VQ this is worse than a rescoring error: stages 2-8 were
+trained against residuals produced by codebooks the artifact does
+not contain, so arm B must be RETRAINED artifact-faithfully, not
+merely re-scored.
+Plus: BAR 2 was registered on operator error for the layer but
+computed at expert 0 only (n=1 of 256), and as a mean of ratios
+rather than pooled sums.
+
+CONSEQUENCE — ALL THREE BARS UNRESOLVED.
+  BAR 1: its comparator (arm D) failed the -CONTRACT verification
+  clause at rsvd_max_dev 0.0243, 24x the 1e-3 fail threshold, and
+  both arms were fp32-decoded. Bounding the solver bias does put
+  the corrected margin at ~0.09% against a 10% bar (the correction
+  moves AGAINST C), so the NO-FIRE DIRECTION is not in doubt — but
+  direction is not a score.
+  BAR 2: both its arms unserialized, its baseline over budget, its
+  winner trained with unavailable fp32 codebooks, its metric
+  single-expert.
+  BAR 3: both its arms fp32-decoded while fp16-billed.
+REFUTED-IF is not evaluated.
+
+WHAT THE PROVISIONAL TABLE STILL SUPPORTS, as prior and not
+result: the precision defect ran in a KNOWN direction for the
+low-rank arms — C, D and E were given more precision than they
+paid for and still lost to 2-bit scalar rounding. So the low-rank
+failure was observed under conditions FAVOURABLE to low rank. Arm
+B was likewise favoured, so its magnitude needs remeasurement;
+for fp16 centroid rounding alone to erase a 0.350-v-0.770 gap
+would be surprising, but that is a prior.
+
+REGISTERED REPAIR, named before it runs: STREAM-WDISTILL-0-AUDIT-
+REPAIR, a mechanically forced artifact-faithful re-execution. NO
+hyperparameter is changed for any reason connected to an arm's
+performance. Fixes: fetches pinned to /resolve/<sha> so the
+revision claim is true by construction rather than checked; arms A
+and B serialized through the same ser_bytes path with realized
+bytes and within-budget booked per arm; every basis and codebook
+rounded to fp16 BEFORE it is used to assign, form residuals, or
+reconstruct; arm D switched to EXACT eigh (measured 5.8 s per
+4096x4096, 512 of them = 49 min) which retires the failed
+randomized clause outright; operator error pooled by summed
+numerator/denominator over all 256 experts. The repair is
+POST-LOOK by construction — the first table has been seen and
+that cannot be undone — and is booked as an audit-repair
+execution, never as the original pre-registration undisturbed.

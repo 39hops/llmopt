@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 201, library 69, reproduce-pinned 10, results-cited 202, spec-cited 86, cited-but-library 58
+Census: UNCITED 202, library 70, reproduce-pinned 10, results-cited 202, spec-cited 86, cited-but-library 58
 
 ## scratch/
 
@@ -59,7 +59,7 @@ Census: UNCITED 201, library 69, reproduce-pinned 10, results-cited 202, spec-ci
 | calib | calib_probe.py | library | RESULTS, specs | RESULTS×1, specs×11 | 1 | 2 |
 | calib | calib_snap_gates.sh | spec-cited | specs | specs×5 | — | — |
 | callspan | callspan_arms.py | UNCITED | — | — | — | — |
-| capacity | capacity_meter.py | library | RESULTS, specs | RESULTS×1, specs×2 | 3 | 1 |
+| capacity | capacity_meter.py | library | RESULTS, specs | RESULTS×2, specs×2 | 3 | 1 |
 | ce | ce_gate_study.py | spec-cited | specs | specs×2 | — | — |
 | ce400 | ce400.py | UNCITED | — | — | — | 2 |
 | ceiling | ceiling_probe_cuda.py | UNCITED | — | — | — | — |
@@ -370,8 +370,10 @@ Census: UNCITED 201, library 69, reproduce-pinned 10, results-cited 202, spec-ci
 | ssm | ssm_star1.sh | UNCITED | — | — | — | — |
 | stability | stability_atlas.sh | UNCITED | — | — | — | — |
 | star | star_profile.py | results-cited | RESULTS | RESULTS×3 | — | — |
-| stream | stream_wdistill0.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| stream | stream_wdistill0.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| stream | stream_wdistill1.py | library | — | — | 1 | — |
 | streaming | streaming_birth_d256.py | library | RESULTS | RESULTS×3 | 1 | — |
+| streamwd | streamwd_complete.py | UNCITED | — | — | — | — |
 | successors | successors_acceptance.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | sym | sym_birth.py | library | RESULTS, specs | RESULTS×1, specs×3 | 1 | 8 |
 | sym | sym_convert.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |

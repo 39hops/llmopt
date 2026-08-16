@@ -35,10 +35,10 @@ sys.path.insert(0, "scratch")
 from llmopt.lab.shards import dequant  # noqa: E402  (frozen exact MXFP4)
 
 MODEL = "deepseek-ai/DeepSeek-V4-Flash-0731"
-REPO = f"https://huggingface.co/{MODEL}/resolve/main"
+REVISION = "7872f01b1d1fe23eabc4c98b48bffcef5a386062"  # PASS 0
+REPO = f"https://huggingface.co/{MODEL}/resolve/{REVISION}"
 SHARD = "model-00024-of-00048.safetensors"
 LAYER = 22
-REVISION = "7872f01b1d1fe23eabc4c98b48bffcef5a386062"   # PASS 0, asserted
 
 SMOKE = os.environ.get("SMOKE", "0") == "1"
 N_EXPERTS = int(os.environ.get("N_EXPERTS", "4" if SMOKE else "256"))
@@ -174,11 +174,14 @@ def spectral_ratio(D, W, seed):
     return top(D) / max(top(W), 1e-30)
 
 
-def op_ratio(D, W, seed):
-    """Seeded isotropic-probe operator error ||XD^T||/||XW^T||."""
+def op_parts(D, W, seed):
+    """Seeded isotropic-probe operator error, returned as (num2, den2)
+    so the LAYER figure pools sums rather than averaging ratios. The
+    same seeded X serves every arm within a tensor."""
     r = np.random.default_rng(seed)
     X = r.standard_normal((PROBE_N, W.shape[1])).astype(np.float32)
-    return float(np.linalg.norm(X @ D.T) / max(np.linalg.norm(X @ W.T), 1e-30))
+    return (float(np.linalg.norm(X @ D.T) ** 2),
+            float(np.linalg.norm(X @ W.T) ** 2))
 
 
 # ------------------------------------------------------------------ vq
@@ -201,7 +204,8 @@ def kmeans(V, K, seed, iters):
         np.add.at(S, a, V)
         nz = cnt > 0
         C[nz] = S[nz] / cnt[nz, None]
-    return C
+    # codebooks are charged at fp16; decode from the stored values
+    return C.astype(np.float16).astype(np.float32)
 
 
 def assign(V, C, chunk=1 << 16):
@@ -216,6 +220,8 @@ def assign(V, C, chunk=1 << 16):
 
 def main():
     os.makedirs("logs/streamwd", exist_ok=True)
+    if os.path.exists(OUT):
+        raise SystemExit(f"REFUSING: {OUT} exists")
     t0 = time.time()
     print(f"[wd1] budget {BUDGET_NAME} = {BUDGET:,} B | experts "
           f"{N_EXPERTS} | smoke {SMOKE}", flush=True)
@@ -255,7 +261,10 @@ def main():
     def topvec(G, r):
         """Exact: full symmetric eigendecomposition, top-r."""
         w, V = np.linalg.eigh(G)
-        return np.ascontiguousarray(V[:, ::-1][:, :r]).astype(np.float32)
+        V = np.ascontiguousarray(V[:, ::-1][:, :r])
+        # fp16 is the CHARGED dtype: round the basis to what the
+        # artifact actually stores, then compute in fp32.
+        return V.astype(np.float16).astype(np.float32)
 
     def topvec_rand(G, r, seed, oversample=64, power=4):
         """Randomized top-r for a PSD Gram. Used only for arm D's 512
@@ -274,8 +283,8 @@ def main():
         Q, _ = np.linalg.qr(Y)
         T = Q.T @ G @ Q
         w, U = np.linalg.eigh(T)
-        V = Q @ U[:, ::-1][:, :r]
-        return np.ascontiguousarray(V).astype(np.float32)
+        V = np.ascontiguousarray(Q @ U[:, ::-1][:, :r])
+        return V.astype(np.float16).astype(np.float32)
 
     def subspace_dev(Ve, Va, G):
         """Relative captured-energy deviation between two r-subspaces."""
@@ -320,6 +329,24 @@ def main():
                       np.zeros((r, 1), np.float16),
                       np.zeros((D_MODEL, 1), np.float16)]
         return ser_bytes(parts, {"arm": "E", "r": r})
+
+    def bytes_A():
+        parts = []
+        for _ in range(N_EXPERTS):
+            for rows, cols in ((D_FF, D_MODEL), (D_FF, D_MODEL),
+                               (D_MODEL, D_FF)):
+                parts.append(np.zeros(rows * cols * SCALAR_BITS // 8,
+                                      np.uint8))
+                parts.append(np.zeros((rows, cols // SCALAR_BLOCK),
+                                      np.float16))
+        return ser_bytes(parts, {"arm": "A"})
+
+    def bytes_B(stages):
+        parts = [np.zeros((stages, VQ_K, VQ_WIDTH), np.float16)
+                 for _ in PROJS]
+        n_el = N_EXPERTS * 3 * D_FF * D_MODEL
+        parts.append(np.zeros(n_el // VQ_WIDTH * stages, np.uint8))
+        return ser_bytes(parts, {"arm": "B", "stages": stages})
 
     rC = pick_rank(bytes_C, BUDGET, D_MODEL)
     rD = pick_rank(bytes_D, BUDGET, D_FF)
@@ -390,14 +417,16 @@ def main():
         # all three projections together: arm D's private input basis is
         # JOINT over W1 and W3 (the faithful analogue of C's pooled Cin).
         Ws = {p: stream_expert(e, p) for p in PROJS}
-        # --- arm D: per-expert bases, exact eigh of the expert's own Grams
+        # --- arm D: per-expert bases, EXACT eigh of the expert's own
+        # Grams (the randomized path failed its 1e-3 verification at
+        # 0.0243 on the B1 run: a near-isotropic spectrum has no gap
+        # for power iteration to exploit, which is the finding itself)
         gin = (Ws["w1"].T @ Ws["w1"] + Ws["w3"].T @ Ws["w3"]).astype(np.float64)
         gout = (Ws["w2"] @ Ws["w2"].T).astype(np.float64)
-        Vin_e = topvec_rand(gin, rD, SEED + 31 * e)
-        Vout_e = topvec_rand(gout, rD, SEED + 37 * e)
-        if e < RSVD_VERIFY_N:      # frozen subset, contract clause
-            rsvd_dev.append(subspace_dev(topvec(gin, rD), Vin_e, gin))
-            rsvd_dev.append(subspace_dev(topvec(gout, rD), Vout_e, gout))
+        Vin_e, Vout_e = topvec(gin, rD), topvec(gout, rD)
+        if e < RSVD_VERIFY_N:   # kept: exact-v-randomized delta, descriptive
+            rsvd_dev.append(subspace_dev(
+                Vin_e, topvec_rand(gin, rD, SEED + 31 * e), gin))
         for p, W in Ws.items():
             recon = {"A": scalarA(W)}
             if stages_done:
@@ -414,28 +443,56 @@ def main():
                 Dm = R - W
                 acc[a]["se"] += float((Dm ** 2).sum())
                 acc[a]["n2"] += float((W ** 2).sum())
-                if e == 0:
-                    spec[a][p] = spectral_ratio(Dm, W, SEED + 13)
-                    opr[a][p] = op_ratio(Dm, W, SEED + 17)
+                spec[a].setdefault(p, []).append(
+                    spectral_ratio(Dm, W, SEED + 13))
+                n2, d2 = op_parts(Dm, W, SEED + 17)
+                q = opr[a].setdefault(p, [0.0, 0.0])
+                q[0] += n2
+                q[1] += d2
             del recon
         del Ws, gin, gout, Vin_e, Vout_e
         if (e + 1) % 8 == 0 or e + 1 == N_EXPERTS:
             print(f"  [pass2] {e+1}/{N_EXPERTS} "
                   f"({time.time()-t_p2:.0f}s)", flush=True)
 
+    bA, bB = bytes_A(), bytes_B(stages_done or VQ_STAGES)
+    ab = {"A": bA, "B": bB, "C": bytes_C(rC), "D": bytes_D(rD),
+          "E": bytes_E(rE)}
+    for a, v in ab.items():
+        print(f"[wd1] arm {a} bytes {v:,} <= {BUDGET:,} ? {v <= BUDGET}",
+              flush=True)
+    import subprocess
     row = {"budget": BUDGET_NAME, "budget_bytes": BUDGET, "smoke": SMOKE,
            "n_experts": N_EXPERTS, "revision": REVISION,
            "ranks": {"C": rC, "D": rD, "E": rE},
-           "arm_bytes": {"C": bytes_C(rC), "D": bytes_D(rD),
-                         "E": bytes_E(rE)},
+           "arm_bytes": ab,
+           "arm_within_budget": {a: bool(v <= BUDGET) for a, v in ab.items()},
+           "bits_per_weight": {a: 8 * v / (N_EXPERTS * 3 * D_FF * D_MODEL)
+                               for a, v in ab.items()},
+           "config": {"model": MODEL, "shard": SHARD, "layer": LAYER,
+                      "seed": SEED, "scalar_bits": SCALAR_BITS,
+                      "scalar_block": SCALAR_BLOCK, "vq_width": VQ_WIDTH,
+                      "vq_K": VQ_K, "vq_sample": VQ_SAMPLE,
+                      "vq_lloyd_iters": VQ_LLOYD_ITERS,
+                      "armD_solver": "exact_eigh"},
+           "code_commit": subprocess.check_output(
+               ["git", "rev-parse", "--short", "HEAD"]).decode().strip(),
            "rsvd_max_dev": (max(rsvd_dev) if rsvd_dev else None),
            "rsvd_verify_n": RSVD_VERIFY_N,
            "vq_stages_done": stages_done, "vq_target": VQ_STAGES,
            "vq_bar2_eligible": stages_done == VQ_STAGES,
            "frob": {a: (acc[a]["se"] / acc[a]["n2"]) ** 0.5
                     for a in acc if acc[a]["n2"]},
-           "spectral_e0": {a: v for a, v in spec.items() if v},
-           "operator_e0": {a: v for a, v in opr.items() if v},
+           "spectral_pooled": {a: {p: float(np.mean(x)) for p, x in v.items()}
+                               for a, v in spec.items() if v},
+           "operator_pooled": {
+               a: {p: (v[p][0] / max(v[p][1], 1e-30)) ** 0.5 for p in v}
+               for a, v in opr.items() if v},
+           "operator_layer": {
+               a: (sum(x[0] for x in v.values())
+                   / max(sum(x[1] for x in v.values()), 1e-30)) ** 0.5
+               for a, v in opr.items() if v},
+           "metrics_n_experts": N_EXPERTS,
            "fetched_MiB": round(FETCHED[0] / 2 ** 20, 1),
            "pass1_s": round(p1_wall, 1),
            "wall_s": round(time.time() - t0, 1)}
