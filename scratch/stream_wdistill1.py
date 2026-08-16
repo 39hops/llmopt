@@ -57,6 +57,7 @@ VQ_KMEANSPP_SUB = 1 << 16
 VQ_LLOYD_ITERS = 15
 VQ_WALL_S = {"B1": 2700.0, "B2": 1350.0}[BUDGET_NAME]
 PROBE_N, PROBE_ITERS = 64, 30                # operator probes; power iters
+RSVD_VERIFY_N = 8                            # frozen subset for the rSVD check
 PROJS = ("w1", "w3", "w2")
 OUT = f"logs/streamwd/pass12_{BUDGET_NAME}{'_smoke' if SMOKE else ''}.jsonl"
 
@@ -252,8 +253,35 @@ def main():
 
     # ----------------------------------------------------------- SOLVE
     def topvec(G, r):
+        """Exact: full symmetric eigendecomposition, top-r."""
         w, V = np.linalg.eigh(G)
         return np.ascontiguousarray(V[:, ::-1][:, :r]).astype(np.float32)
+
+    def topvec_rand(G, r, seed, oversample=64, power=4):
+        """Randomized top-r for a PSD Gram. Used only for arm D's 512
+        per-expert decompositions (exact eigh there is hours); verified
+        against topvec() on the frozen 8-expert subset below, per the
+        -CONTRACT clause. Solver strength (oversample/power) was raised
+        from 32/2 to 64/4 BEFORE the real run on the smoke's SOLVER-
+        ACCURACY reading (0.0062 at the degenerate rank 2048-of-4096),
+        never on any arm's error; disclosed in the verdict."""
+        rg = np.random.default_rng(seed)
+        n = G.shape[0]
+        Om = rg.standard_normal((n, min(r + oversample, n))).astype(np.float64)
+        Y = G @ Om
+        for _ in range(power):
+            Y = G @ Y
+        Q, _ = np.linalg.qr(Y)
+        T = Q.T @ G @ Q
+        w, U = np.linalg.eigh(T)
+        V = Q @ U[:, ::-1][:, :r]
+        return np.ascontiguousarray(V).astype(np.float32)
+
+    def subspace_dev(Ve, Va, G):
+        """Relative captured-energy deviation between two r-subspaces."""
+        ea = float(np.trace(Va.T @ (G @ Va)))
+        ee = float(np.trace(Ve.T @ (G @ Ve)))
+        return abs(ee - ea) / max(abs(ee), 1e-30)
 
     # arm C rank by MEASURED serialized size
     def bytes_C(r):
@@ -329,6 +357,7 @@ def main():
 
     # ---------------------------------------------------------- PASS 2
     ARMS = "ABCDE"
+    rsvd_dev = []
     acc = {a: {"se": 0.0, "n2": 0.0} for a in ARMS}
     spec, opr = {a: {} for a in ARMS}, {a: {} for a in ARMS}
     t_p2 = time.time()
@@ -364,7 +393,11 @@ def main():
         # --- arm D: per-expert bases, exact eigh of the expert's own Grams
         gin = (Ws["w1"].T @ Ws["w1"] + Ws["w3"].T @ Ws["w3"]).astype(np.float64)
         gout = (Ws["w2"] @ Ws["w2"].T).astype(np.float64)
-        Vin_e, Vout_e = topvec(gin, rD), topvec(gout, rD)
+        Vin_e = topvec_rand(gin, rD, SEED + 31 * e)
+        Vout_e = topvec_rand(gout, rD, SEED + 37 * e)
+        if e < RSVD_VERIFY_N:      # frozen subset, contract clause
+            rsvd_dev.append(subspace_dev(topvec(gin, rD), Vin_e, gin))
+            rsvd_dev.append(subspace_dev(topvec(gout, rD), Vout_e, gout))
         for p, W in Ws.items():
             recon = {"A": scalarA(W)}
             if stages_done:
@@ -372,7 +405,7 @@ def main():
             if p in ("w1", "w3"):
                 recon["C"] = proj_rows(W, Vin)
                 recon["D"] = proj_rows(W, Vin_e)
-                recon["E"] = proj_cols(W.T, Uh).T
+                recon["E"] = proj_cols(W, Uh)
             else:
                 recon["C"] = proj_cols(W, Vout)
                 recon["D"] = proj_cols(W, Vout_e)
@@ -395,6 +428,8 @@ def main():
            "ranks": {"C": rC, "D": rD, "E": rE},
            "arm_bytes": {"C": bytes_C(rC), "D": bytes_D(rD),
                          "E": bytes_E(rE)},
+           "rsvd_max_dev": (max(rsvd_dev) if rsvd_dev else None),
+           "rsvd_verify_n": RSVD_VERIFY_N,
            "vq_stages_done": stages_done, "vq_target": VQ_STAGES,
            "vq_bar2_eligible": stages_done == VQ_STAGES,
            "frob": {a: (acc[a]["se"] / acc[a]["n2"]) ** 0.5
