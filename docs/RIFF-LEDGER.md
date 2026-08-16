@@ -6041,3 +6041,34 @@ honest status column).
   the incident class shipped seven times in one day; false
   positives are resolved in the booking text, not by weakening
   the rule. All five automation items now SHIPPED.
+
+- **BANKED (2026-08-16): Qwen3.8-27B as the dense no-router control
+  and small-frontier subject for streaming/weight-space rungs**
+  (Artin: the ask and the model pick — "very good model for its
+  size"; house: the slotting).
+  The mapping: Alibaba Tongyi Lab dense multimodal 27.8B, released
+  2026-08-14, Apache 2.0, 262k context, weights stated for HF/
+  ModelScope. Takes the slot previously penciled for
+  Muse-Glimmer-30B (never banked in this ledger, memory-only):
+  no-router DENSE control for MoE-anatomy comparisons, plus a
+  candidate subject for weight-only streaming rungs (the
+  STREAM-WDISTILL method minus the expert-sharing bars — a dense
+  FFN has no expert axis, so arms C/D/E do not transfer; scalar/VQ
+  arms A/B and the streaming harness do).
+  Measured anchors: NONE in this lab yet. External benchmark claims
+  (Terminal-Bench 2.1 73.0, OSWorld-Verified 84.3, "surpasses
+  larger models") are VENDOR/BLOG numbers, unverified here — the
+  house has measured nothing on this model.
+  Honest breaks: one source claims the 27B open weights were
+  DELAYED relative to the Max release — verify the actual HF repo
+  exists and shas match the model card BEFORE any rung pins it.
+  27.8B bf16 is ~56GB, over the Mac's 36GB for full residency —
+  layer-streaming or quantized residency only, and the
+  one-resident-30B-class rule applies beside any live job.
+  Testable residue: (1) dense-control cell in any MoE-anatomy
+  rung: does the routed layer's structure claim survive against a
+  dense FFN of matched scale? (2) STREAM-WDISTILL-class A/B arms
+  on its FFN blocks at matched bytes. (3) drafter/distill target
+  for spec-decoding on Mac (36GB fits streamed or 4-bit).
+  Attribution: Artin (model pick, banking ask), house (fit
+  analysis, fences).
