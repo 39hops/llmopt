@@ -727,6 +727,11 @@ ckpt_manifest.py — checkpoint manifest for the curated tree.
 - `scan(base)`
 - `main()`
 
+### scripts/claim_lint.py
+Lint DRAFT verdict/analysis prose before it books.
+
+- `main() -> int`
+
 ### scripts/consolidate_mathnative.py
 Self-distillation consolidation (post-climb strategy item B).
 
@@ -3453,6 +3458,13 @@ catalog.py — model-checkpoint catalog rows (logs-doctrine EXHAUST).
 - `read_arch(path: str)` — House-format arch from state-dict shapes; None otherwise.
 - `parent_ids(name: str, siblings) -> list` — Filename-lineage parents (basenames) present in `siblings`.
 - `scan_checkpoint(path: str, repo_root: str, cited_names, siblings=None, want_sha: bool=True, want_arch: bool=True) -> dict`
+
+### llmopt/lab/claimlint.py
+Claim linter: prose verdict language checked against machine objects.
+
+- `class Finding`
+- `_deny_rules() -> list[dict]`
+- `lint_text(text: str, outcomes: list | None=None) -> list[Finding]` — Lint prose. `outcomes` is an optional list of BarOutcome from
 
 ### llmopt/lab/config.py
 lab.config — typed env-var config for arm drivers (spec 2026-08-05-llmopt-lab-extraction module 2). Kills the typo-takes-default class: 237 bare os.environ.get sites across 65+ scratch files meant a misspelled knob silently ran the WRONG EXPERIMENT with a clean exit. Here the contract is loud both ways:

@@ -6008,3 +6008,36 @@ honest status column).
   Suite green 879 passed. Item (5), claim-linter, now has its
   machine-checkable objects: bars, arms, admissibility reasons,
   populations — the precondition Artin set for building it.
+
+  AMENDMENT 9 (2026-08-16): ITEM 5 SHIPPED — claim linter, built
+  LAST per Artin's ordering, conditional on item 4's objects.
+  Three layers (llmopt/lab/claimlint.py + scripts/claim_lint.py):
+    (1) DENY REGISTRY docs/claims.deny.json — superseded readings,
+    append-only provenance, each pattern carrying its refuting
+    entry id: near-isotropic; misalignment-is-the-reason;
+    statistically-indistinguishable; independent gauge evidence;
+    matched-bytes scalar; Lloyd-optimal; Nx-more-structure;
+    RUN_TAG-as-graduation. ERROR on match.
+    (2) OVERCLAIM WORDS — context-free phrases carrying proof
+    obligations the linter cannot see (differ-only-in,
+    statistically-significant, independently-verifies, proves,
+    exactly-captured). WARN naming the obligation and incident.
+    (3) ADJUDICATION CHECKS (--prereg/--obs) — the strong layer:
+    ERROR when a fire/no-fire sentence contradicts the
+    deterministic adjudicator, when any verdict sentence targets
+    an UNRESOLVED bar, when contest wording (matched/winner/
+    loses/beats) appears while an UNRESOLVED bar is in scope, and
+    when prose names a bar the pre-reg lacks.
+  Regression corpus = the REAL seven shipped overclaim sentences
+  from STREAM-WDISTILL-0 (tests/test_claim_lint.py, incident class
+  prose_overclaims_object): every one caught; the booked corrected
+  reading lints CLEAN as the negative control; the correct
+  BAR 1 NO-FIRE / BAR 3 FIRES / BAR 2-descriptive verdict text
+  passes layer 3 with zero errors. /book now runs the linter as
+  step 0 on every draft; reading corrections add their dead phrase
+  to the registry in the same commit. KNOWN LIMIT, stated: the
+  contest-word rule is scope-coarse (any contest word while any
+  bar is UNRESOLVED) — precision over recall was rejected because
+  the incident class shipped seven times in one day; false
+  positives are resolved in the booking text, not by weakening
+  the rule. All five automation items now SHIPPED.

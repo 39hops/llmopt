@@ -8,6 +8,18 @@ description: Book a verdict/pre-reg/amendment into RESULTS.md the house way - ap
 Given the entry text (from the conversation) and its thread/link
 metadata, perform ALL of these steps in order:
 
+0. **Lint the draft FIRST** (2026-08-16, the STREAM-WDISTILL
+   overclaim corpus): write the entry text to the scratchpad and run
+   `.venv/bin/python scripts/claim_lint.py <draft>` — with
+   `--prereg docs/preregs/<name>.json --obs <observations.json>`
+   when the rung has a machine-readable pre-reg. ERRORs block:
+   superseded readings (docs/claims.deny.json), fire/no-fire prose
+   contradicting the adjudicator, verdict or contest wording on an
+   UNRESOLVED bar. WARNs carry proof obligations — resolve each by
+   narrowing the claim or stating the evidence, not by deleting the
+   word. Lint DRAFTS only; never run it over historical RESULTS text.
+   When a booking is a READING CORRECTION, add the dead phrase to
+   claims.deny.json in the same commit.
 1. **Append** the entry to `docs/RESULTS.md` — it is 27k lines, so
    append with a `cat >> ... << 'EOF'` heredoc, never Read-then-Write.
    Append-only: corrections are new `AMENDMENT` entries naming their
