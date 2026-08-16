@@ -2127,3 +2127,25 @@ regime tag on every bullet is the fence.
   farm-time normalization pass is priced as the ATOM-NORM arm.
   Sample-scoped; censored-band composition unmeasured.
   ([OBSERVATION ANSWER-FORM-0 + CENSOR-0](RESULTS.md#L30869).)
+
+- [NULL] [REGIME-SCOPED: measured deployment artifacts] A frontier
+  MoE expert layer (V4-Flash layer 22, 256 experts, 6.44B weights)
+  was compressed from STREAMED WEIGHTS ALONE — ephemeral
+  byte-range fetch, disk residence one expert, zero teacher
+  forward passes and zero calibration data — but the first
+  execution scores NOTHING: two independent auditors found three
+  blockers (a revision literal asserted nowhere while fetches
+  resolved a moving pointer; two of five arms never serialized,
+  with the scalar baseline over budget by its own frozen format;
+  and every arm but one decoded at fp32 while billed fp16, which
+  for residual VQ means later stages trained on residuals the
+  artifact cannot reproduce), so all three registered bars book
+  UNRESOLVED. The provisional table is retained as prior only
+  (width-32 VQ 0.350 pooled Frobenius v 2-bit scalar 0.770 v
+  low-rank 0.81-0.85), with the direction of the precision defect
+  named: the low-rank arms were given more precision than they
+  paid for and still lost. Repairing the measurement cannot
+  rescue the scalar bar, because that arm is structurally
+  inadmissible rather than mis-measured.
+  ([OBSERVATION STREAM-WDISTILL-0-EXEC1](RESULTS.md#L31394);
+  [AMENDMENT -REPAIR-SCOPE](RESULTS.md#L31480).)
