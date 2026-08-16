@@ -15,6 +15,12 @@
             "command": ".venv/bin/python .claude/hooks/pytest_gate_guard.py",
             "timeout": 10,
             "statusMessage": "Checking pytest-gated commit shape"
+          },
+          {
+            "type": "command",
+            "command": ".venv/bin/python .claude/hooks/receipt_freeze.py",
+            "timeout": 10,
+            "statusMessage": "Checking booked-receipt immutability"
           }
         ]
       },

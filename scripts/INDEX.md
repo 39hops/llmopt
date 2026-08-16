@@ -899,6 +899,14 @@ Rewrite generated regions in README.md from ledger truth.
 - `render_figure(fig_text: str) -> str` — Rewrite the honesty_ledger part values and the claim count in
 - `main() -> int`
 
+### scripts/gen_receipt_lock.py
+Content-address every receipt path a booked entry cites.
+
+- `sha256(p: Path) -> str`
+- `cited_paths() -> list[str]`
+- `build() -> dict`
+- `main() -> int`
+
 ### scripts/gen_regret_labels.py
 Regret/corrective labels (DAgger-style, Artin's 'make it regret the wrong node' — hindsight credit assignment made mechanical).
 

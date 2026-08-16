@@ -5904,3 +5904,38 @@ honest status column).
   schema feeding a deterministic /adjudicate; (5) claim-linter LAST,
   once the schema gives "matched"/"only"/"independent" actual
   machine-checkable objects to interrogate rather than prose.
+
+  AMENDMENT 6 (2026-08-16): ITEM 2 SHIPPED — receipt immutability,
+  mitigation AND invariant AND historical fixture, per Artin's
+  ordering. Three parts:
+    scripts/gen_receipt_lock.py -> docs/receipts.lock.json —
+    content-addresses every receipt path cited by RESULTS.md.
+    First build: 78 cited paths, 71 present and sha256'd, 7
+    CITED-BUT-ABSENT (older merge_space/microstar driver logs
+    never force-added — a pre-existing backlog surfaced by the
+    lock, now ratcheted so no new booking can cite evidence it
+    did not commit). Changing an already-locked sha REFUSES
+    without --accept "reason", so a legitimate change lands in a
+    reviewable diff instead of happening silently.
+    tests/science_incidents/test_frozen_receipt_mutation.py — the
+    live invariant (every locked sha still matches), the absent-
+    citation ratchet, the HISTORICAL fixture reproducing the exact
+    2026-08-16 manoeuvre (rename the cited receipt aside, rerun
+    into the freed canonical path, citation silently resolves to
+    the wrong run), and a negative control so an always-failing
+    check cannot pass.
+    .claude/hooks/receipt_freeze.py — PreToolUse Bash mitigation,
+    DENY not ask. Verified six directions: mv on a cited receipt
+    DENY, append to one DENY (the doctrine names APPEND
+    explicitly), redirect INTO one DENY, reading one ALLOW,
+    redirecting output ELSEWHERE while reading one ALLOW, mv on an
+    uncited path ALLOW. Wired into settings.json.
+  GRADUATED: frozen_receipt_mutation, cited_receipt_never_committed.
+  KNOWN GAP, recorded rather than papered over: citations are
+  scraped from PROSE, so a receipt cited as a bare filename is
+  invisible to both lock and hook — RESULTS L31402 cites
+  "logs/streamwd/pass12_B1.jsonl, run_B1.log" and the second is
+  unprotected. A bare-filename matcher would false-positive on
+  ordinary words, so the fix is STRUCTURED RECEIPT REFERENCES,
+  which is the concrete argument for item (4) rather than a defect
+  to hide. Suite green 870 passed.

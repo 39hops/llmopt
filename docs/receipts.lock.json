@@ -1,0 +1,381 @@
+{
+ "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "receipts": {
+  "logs/archive/ceiling_probe.log": {
+   "bytes": 3176,
+   "exists": true,
+   "sha256": "d9fef74c51d19546e3930a3bf39f63684980202d73a1c65193a11d90218e76bd"
+  },
+  "logs/atomdiet1/arms.jsonl": {
+   "bytes": 242,
+   "exists": true,
+   "sha256": "7ea356c93a89605f97170b8a27805da3cfc2b43b54de647c14a2375d695fcee4"
+  },
+  "logs/atomdiet1/noop.log": {
+   "bytes": 1595,
+   "exists": true,
+   "sha256": "ad0be11a89e454c1c5ce03c4b8a11fa5e6515b3cc86c16a5962561081668acf7"
+  },
+  "logs/atomdose1/arms.jsonl": {
+   "bytes": 1028,
+   "exists": true,
+   "sha256": "47d378b23bc886bc0cec60bb4335ea7908c2ce86fff3f4696bb05d490fac489a"
+  },
+  "logs/atomladder1/arms.jsonl": {
+   "bytes": 940,
+   "exists": true,
+   "sha256": "5bb82f381effc8e8388d7cd8e199c068a8f8be404ece77db81b6b0c097efc2a9"
+  },
+  "logs/backsched_gate/gates.jsonl": {
+   "bytes": 3266,
+   "exists": true,
+   "sha256": "572792651194b9a746911bbd25c741621c76d872bc83ddd053be753ee57b3a82"
+  },
+  "logs/basics/probe0.jsonl": {
+   "bytes": 8051,
+   "exists": true,
+   "sha256": "5c822712c6e46ebc11e9430eec6b92d16090167e3663a2a80af6730634d296bb"
+  },
+  "logs/basicsdiet1/arms.jsonl": {
+   "bytes": 1165,
+   "exists": true,
+   "sha256": "8d1dfe657f5dd9f8e71fcc9a62297423bfc05f452db59f97d1f2245a865fbc23"
+  },
+  "logs/checkers0/probe.jsonl": {
+   "bytes": 18091,
+   "exists": true,
+   "sha256": "ecbc8935f19aa8b660415faceba25ee36974b80091665013fb57695a0e90af95"
+  },
+  "logs/comp_ladder/arms.jsonl": {
+   "bytes": 376,
+   "exists": true,
+   "sha256": "fba2d30fd1d37d6cd685e5f10b2f21774f1b2617277f78a165b4b6fbe7ab140f"
+  },
+  "logs/curric1/arms.jsonl": {
+   "bytes": 739,
+   "exists": true,
+   "sha256": "820ff98ac56aae80c772bfc6f83183534dfd15d861744aa4459a7ae7da414b58"
+  },
+  "logs/curric1/noop.log": {
+   "bytes": 454,
+   "exists": true,
+   "sha256": "ac98ee5a77edb5f3b043c2500d1726b858d180f3691ed949940969966efcdf1b"
+  },
+  "logs/curric1/noop_rev.log": {
+   "bytes": 451,
+   "exists": true,
+   "sha256": "f6bae87b30fbd4474cfba11df112d30abb14c3b8568b90d3f5a85dbecac5320d"
+  },
+  "logs/curric1/noop_swap.log": {
+   "bytes": 452,
+   "exists": true,
+   "sha256": "04c30d905129b116d40013f19303191ddb876862dd5479938cdd5d2616b4becc"
+  },
+  "logs/curric1/rev.jsonl": {
+   "bytes": 188,
+   "exists": true,
+   "sha256": "2679db566c633f9ce15de74aaacf5513936e13bc8c20bad7805c26fdf01dd6ae"
+  },
+  "logs/curric1/swap.jsonl": {
+   "bytes": 190,
+   "exists": true,
+   "sha256": "08e2cb64a67b01b50a79d7fa8cc71cc70d23e3bdb941d760194bd29ff48734a9"
+  },
+  "logs/data_ceil/attractor_census2_d256.jsonl": {
+   "bytes": 119612,
+   "exists": true,
+   "sha256": "f27d528e55ea9422db1d21cc24d204ee030d0691aeb68de1c3094741b5717b31"
+  },
+  "logs/data_ceil/attractor_census_d256.jsonl": {
+   "bytes": 23595,
+   "exists": true,
+   "sha256": "5488cd06964bd17cd03a09fbe0df62541ab479c2e9d3871e16f81b6d9e920162"
+  },
+  "logs/data_ceil/determinability_gen4.jsonl": {
+   "bytes": 388903,
+   "exists": true,
+   "sha256": "a921f8ec6f2cccfe276d2d53bca8028d3939eb3017077e85feccf5e97a772a1c"
+  },
+  "logs/data_ceil/margin_vs_branching_d128.jsonl": {
+   "bytes": 476299,
+   "exists": true,
+   "sha256": "150c2f428b63332b3aed339847bc8395c03872ed7c8e9dfd403b20fdea077886"
+  },
+  "logs/data_ceil/margin_vs_branching_d256.jsonl": {
+   "bytes": 476331,
+   "exists": true,
+   "sha256": "7a52daa471ad9fa0d99347b248b758fa61460093aefa5a82201e1f0daf39ea7d"
+  },
+  "logs/data_ceil/margins_by_ply_d256.jsonl": {
+   "bytes": 75444,
+   "exists": true,
+   "sha256": "f0866696c6bb25764dad1b4db012a1565908ea7f624b9e724a4ac1cc7da46653"
+  },
+  "logs/data_ceil/margins_d256_L1-7.jsonl": {
+   "bytes": 94514,
+   "exists": true,
+   "sha256": "bb0d7fa99db0dc926641ccc7cc754e43b96061274d56368275e8790ffa8508a6"
+  },
+  "logs/emitterdiv/answerform0.jsonl": {
+   "bytes": 59795,
+   "exists": true,
+   "sha256": "9a8af314b7163ba22d0c65b370c6ecbd403dbc33c433d21516c302217337eb5d"
+  },
+  "logs/ex1/ex1b.jsonl": {
+   "bytes": 7185,
+   "exists": true,
+   "sha256": "e741ab78db84b9e6033c53adb1e1618b016212e2436c799e623c1c1526342439"
+  },
+  "logs/ex1/ex1repl.jsonl": {
+   "bytes": 1217,
+   "exists": true,
+   "sha256": "4a39b7b9e527bc8e79ba44bba1ed7c92f67e0958f1a1b4913344308c979ce9ec"
+  },
+  "logs/ex1/ex1repl3.jsonl": {
+   "bytes": 1215,
+   "exists": true,
+   "sha256": "4ab637f5d509e03c2f593da56504c01144e8d0e64b6f56da96bab3db32500af6"
+  },
+  "logs/ex2/ex2.jsonl": {
+   "bytes": 14402,
+   "exists": true,
+   "sha256": "fb91c95f468bb7cc2d16b174e686121669dc0a231a4713e94c0b9f9a41501122"
+  },
+  "logs/ex3/ex3.jsonl": {
+   "bytes": 2508,
+   "exists": true,
+   "sha256": "cd0be59dfc4dfbe68ab781d925fc10130a199a93d9f9b425fa838182a566f3b4"
+  },
+  "logs/ex3/fresh.jsonl": {
+   "bytes": 7548,
+   "exists": true,
+   "sha256": "8ff8d18a7aa14a2b7cdfa8cebeb404129b1553b4e762534bd313646f3f60b9d3"
+  },
+  "logs/ex4/ex4.jsonl": {
+   "bytes": 9710,
+   "exists": true,
+   "sha256": "35eace6dd6c0272ba6aa90ec9f10e11428d391a44253bba158f0b92188a28217"
+  },
+  "logs/funnel_wall/prec_sweep_step1_d64.log": {
+   "bytes": 607,
+   "exists": true,
+   "sha256": "26c1b3b950c41092f44d5ad8100a7a266eb18fc1534489ad3860fe4316bace32"
+  },
+  "logs/gradmap0/signatures.jsonl": {
+   "bytes": 23470,
+   "exists": true,
+   "sha256": "fd0fade35f149d22f2a1a39671fad800f90fc1ca57ba05b9e6b27e28fd0b9c0c"
+  },
+  "logs/gradmap0/smoke.jsonl": {
+   "bytes": 45848,
+   "exists": true,
+   "sha256": "fe68d2d4584b6786224d67d2d57eb329f404e5116996c00ffcdd02de6cf8e3cc"
+  },
+  "logs/gt7/gt7.jsonl": {
+   "bytes": 6029,
+   "exists": true,
+   "sha256": "86a5b80edd88b42f57db9127e7a60e86f9345f873b65cd481097a68ac16804eb"
+  },
+  "logs/lean/leanfull_v2.log": {
+   "bytes": 43588,
+   "exists": true,
+   "sha256": "dafc1a42e91993d10bbdb5500ca7bc2a9d375a467461cb6ccfac80273ca5a488"
+  },
+  "logs/lean/leanv2_sample.log": {
+   "bytes": 2982,
+   "exists": true,
+   "sha256": "b173a11a2280024c5190fd7b265f90aa603b4792f396cf6b1e5cb42de8130888"
+  },
+  "logs/merge_space1/driver.log": {
+   "exists": false
+  },
+  "logs/merge_space2/driver.log": {
+   "exists": false
+  },
+  "logs/merge_space3/driver.log": {
+   "exists": false
+  },
+  "logs/merge_space4/driver.log": {
+   "exists": false
+  },
+  "logs/merge_space5/driver.log": {
+   "exists": false
+  },
+  "logs/microstar/microstar_run.log": {
+   "exists": false
+  },
+  "logs/mult0/rev_b32.jsonl": {
+   "bytes": 5680,
+   "exists": true,
+   "sha256": "cbda36b1b7b743f051c682927b121674f9bea0d9c45d8a9b6cc0ec8d536aafc7"
+  },
+  "logs/opus/f1e_prof2.log": {
+   "bytes": 730,
+   "exists": true,
+   "sha256": "7b3a6b12d9265fef26604d189033b002846f49b2083764277f5803306f5fc78c"
+  },
+  "logs/opus/gt2_code_traj.jsonl": {
+   "bytes": 130365753,
+   "exists": true,
+   "sha256": "6084fe7971eaefa0b47b0001fcd9d6ae4a1dec22f014902a84a853d5759a6d23"
+  },
+  "logs/opus/gt2_phys_traj.jsonl": {
+   "bytes": 167034804,
+   "exists": true,
+   "sha256": "7854050d2a3300b1516c6babd7b92be23ad1c89ac1244806575eb841ea855623"
+  },
+  "logs/opus/gt4_dialog_traj.jsonl": {
+   "bytes": 119060000,
+   "exists": true,
+   "sha256": "e4bd7c13600ecc97d84d7b6c07bac223dd52bfe2d7e289a477b7021dbe05c49a"
+  },
+  "logs/opus/gt4b_dialog_mathsys_traj.jsonl": {
+   "bytes": 117065092,
+   "exists": true,
+   "sha256": "2a5a5c2a5f0a82f881f08313947b45df16b34cbb56428e8f686ecb0b3f626b69"
+  },
+  "logs/opus/moe_gt1.jsonl": {
+   "bytes": 45993,
+   "exists": true,
+   "sha256": "9188274ed5b8d5715c849c05b393c2f6628cb5d390836728c20a5fa91b04e263"
+  },
+  "logs/opus/moe_gt1_perprob.jsonl": {
+   "bytes": 449191,
+   "exists": true,
+   "sha256": "9033d02cbdebc7036c12a8ff5f7ce689539598edf9a614b47142d7c10a78adca"
+  },
+  "logs/opus/moe_gt1_traj.jsonl": {
+   "bytes": 63259396,
+   "exists": true,
+   "sha256": "7b658161437b13a744b638542849f72611450de2dc83a9f225d07ccb4ae2d7e4"
+  },
+  "logs/opus/moe_gt1_traj_v2.jsonl": {
+   "bytes": 128717763,
+   "exists": true,
+   "sha256": "6dbd4d198097d7c9b3ff334e72d3fc8c839d668988212ca5898e5de20df06912"
+  },
+  "logs/opus/s23_cond.log": {
+   "bytes": 1824,
+   "exists": true,
+   "sha256": "6557d0a0e3af43e52610c2cc8bb5de4c192cfc769a73a7b75dbba6d954487df5"
+  },
+  "logs/opus/v4_census.jsonl": {
+   "bytes": 6991,
+   "exists": true,
+   "sha256": "0c43154d4defbad3d39a93ad5a236c71ec36059f4fccb3e72537aae202578447"
+  },
+  "logs/opus/v4_f1d.jsonl": {
+   "bytes": 115419,
+   "exists": true,
+   "sha256": "2b1d0b6b0697f0fc93f55a0886564684393829708783c8d8aba6f2b863afe85d"
+  },
+  "logs/opus/v4_router.jsonl": {
+   "bytes": 1816,
+   "exists": true,
+   "sha256": "12fad57f9702eb88638903ac92d36392d9e7f59077ec5cb26b885524f410cc34"
+  },
+  "logs/opus/v4_rung0.jsonl": {
+   "bytes": 20541,
+   "exists": true,
+   "sha256": "d1f3777c69207baa483c8b98b25672ed4cb7fe7cd022327c996f6b7800dae223"
+  },
+  "logs/opus/v4_rung2b.jsonl": {
+   "bytes": 2213,
+   "exists": true,
+   "sha256": "38ea8a181a7828f7853097316dc770111cc7b3415a190529dd2bacd0ba0d0829"
+  },
+  "logs/opus/v4_rungd.jsonl": {
+   "bytes": 73274,
+   "exists": true,
+   "sha256": "fb1c7d6a903496af89cf2defde5f56d9faf5c5177ad61fbf99dbb12517604b29"
+  },
+  "logs/opus/v4_rungd2.jsonl": {
+   "bytes": 15506,
+   "exists": true,
+   "sha256": "5f4024c07c260e8c18438ba9c019885cb79ebb0fd1dcae829b564543a312eea3"
+  },
+  "logs/opus/v4_s0.jsonl": {
+   "bytes": 3207,
+   "exists": true,
+   "sha256": "6271c12502a811880f6c14d4150caa824b0fbcaeafd625a24a8259b5837814ab"
+  },
+  "logs/phase19m_gate/gates.jsonl": {
+   "bytes": 3290,
+   "exists": true,
+   "sha256": "343ee3f653e4df6aadc64eaaea0f95ab9d79a4e96c205e2b4ad86317d86d765d"
+  },
+  "logs/pincer/labels_v2.jsonl": {
+   "exists": false
+  },
+  "logs/refactor-2026-08-11/run.marker.json": {
+   "bytes": 361,
+   "exists": true,
+   "sha256": "8b855012be5bdd9406f8b02606b2ae092588824ed6bfb2e202521c06c146f3ca"
+  },
+  "logs/revive/crown_gates.log": {
+   "bytes": 596,
+   "exists": true,
+   "sha256": "1c6bb1f0e41cbd5abf5c9ad7c473a213be4f4aa3e5d10663a4b298a1b9f3945a"
+  },
+  "logs/ruleablate1/arms.jsonl": {
+   "bytes": 674,
+   "exists": true,
+   "sha256": "5c1f28c501b1263bb650205f1535dd6ee7bd220b88af2a3780d758d278de14cd"
+  },
+  "logs/rulepolicy0/census.jsonl": {
+   "bytes": 893328,
+   "exists": true,
+   "sha256": "59fa4dd824ec56cabd28069f796e418dface250d9860747ddf5ed81140838088"
+  },
+  "logs/softnext1/arms.jsonl": {
+   "bytes": 555,
+   "exists": true,
+   "sha256": "c7d68e203575b5db6f4f91c427c8ac3ab9e5ef5e57ad442dad52dc519c5346ff"
+  },
+  "logs/softspeed1/arms.jsonl": {
+   "bytes": 1199,
+   "exists": true,
+   "sha256": "72b45ff6eeff3510ca47c81aee70e52ac91e4b6a3956aefe93f7ad60e1871c2c"
+  },
+  "logs/star_profile/rotx_ternary.jsonl": {
+   "bytes": 1088,
+   "exists": true,
+   "sha256": "e615d0e37e9884ce008b2cecb878d9b166f1ef6de4f74ca2f4798eb07ff41923"
+  },
+  "logs/star_profile/star_profile_d256.jsonl": {
+   "bytes": 1161,
+   "exists": true,
+   "sha256": "d0ad0caf5b06baef6b528fad199fc5feadd3ea41acf3b4dc6f60f5ea36589ac5"
+  },
+  "logs/star_profile/star_profile_width.jsonl": {
+   "bytes": 4457,
+   "exists": true,
+   "sha256": "a8e2ecf49163bc29fbb22b0a03899c6c28108d3d6ebbab4d134289c2a15172d8"
+  },
+  "logs/streamwd/pass0.jsonl": {
+   "bytes": 1210,
+   "exists": true,
+   "sha256": "01c5535bf62ae0c9f0c6e2f3f41974a630c78ba9a373d81dced338ea99a12122"
+  },
+  "logs/streamwd/pass12_B1.jsonl": {
+   "bytes": 1450,
+   "exists": true,
+   "sha256": "cc4fcbca3ca1b819f12d89a27adab6cf3117823d2b2b41ff2caadb8ffadba712"
+  },
+  "logs/streamwd/pass12_B1_repair.jsonl": {
+   "bytes": 2180,
+   "exists": true,
+   "sha256": "d52e11a2e82e5dd95c64d2f1ad774bbef9305184e0e528a1437ceff087f2ff4e"
+  },
+  "logs/xtermdiet1/arms.jsonl": {
+   "bytes": 1163,
+   "exists": true,
+   "sha256": "8f68c9c61a3cc230d99d2efc1c0c92d0aab7d6d77135b97f30a479fdd8b1b10e"
+  },
+  "logs/xtermdiet1/probe.jsonl": {
+   "bytes": 3645,
+   "exists": true,
+   "sha256": "ffbd12d041e8a4543519805dfe186dbe0a8acc5030afcc6d205077907124c1b1"
+  }
+ }
+}

@@ -18,13 +18,14 @@ table below is derived from the suite rather than claimed.
 | wrong_metric_population | yes | `llmopt/lab/metrics.py` | yes | GRADUATED |
 | metric_aggregation_mismatch | yes | `llmopt/lab/metrics.py` | yes | GRADUATED |
 | contrast_not_adjudicable | yes | `llmopt/lab/metrics.py` | yes | GRADUATED |
-| frozen_receipt_mutation | yes | pending | pending | PROMOTED |
+| frozen_receipt_mutation | yes | `docs/receipts.lock.json` + `receipt_freeze.py` | yes | GRADUATED |
 | fp32_billed_fp16 | yes | pending | pending | PROMOTED |
 | unserialized_arm | yes | pending | pending | PROMOTED |
 | over_budget_comparator | yes | pending | pending | PROMOTED |
 | moving_revision_literal | yes | partial (sha-pinned URL) | pending | PARTIAL |
 | ternary_in_2bit_field | yes | pending | pending | PROMOTED |
 | false_only_contrast | yes | pending | pending | PROMOTED |
+| cited_receipt_never_committed | yes | receipt-lock ratchet (7) | yes | GRADUATED |
 | stale_results_anchor | yes | `tests/test_docs_integrity.py` | n/a (post-hoc) | PARTIAL |
 | inherited_emitter_label | yes | partial | pending | PARTIAL |
 
@@ -39,3 +40,14 @@ hook files overcounts (`findings_headroom.py` is not a registered
 hook), and counting `settings.json` entries undercounts (it is
 invoked by `ledger_regen.py`). Status above tracks the invariant,
 not the file.
+
+## Known gap in the receipt lock (recorded, not patched)
+
+Citations are scraped from prose, so a receipt cited as a **bare
+filename** is invisible to both the lock and `receipt_freeze.py`.
+RESULTS L31402 cites `"logs/streamwd/pass12_B1.jsonl, run_B1.log"` —
+the second has no path prefix and is therefore unprotected. A
+bare-filename matcher would false-positive on ordinary prose, so
+the real fix is **structured receipt references** (the
+machine-readable pre-reg work), not a better regex. This is the
+concrete argument for that item rather than a defect to hide.
