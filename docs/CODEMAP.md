@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 201, spec-cited 86, cited-but-library 58
+Census: UNCITED 201, library 69, reproduce-pinned 10, results-cited 201, spec-cited 86, cited-but-library 58
 
 ## scratch/
 
@@ -20,7 +20,7 @@ Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 201, spec-ci
 | absorb | absorb_1e5.py | UNCITED | — | — | — | — |
 | adjudicate | adjudicate_zx.py | library | — | — | 1 | — |
 | anatomy | anatomy.py | results-cited | RESULTS, specs | RESULTS×5, specs×7 | — | 3 |
-| answerform0 | answerform0_censor0.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| answerform0 | answerform0_censor0.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | assets | assets_classify.py | spec-cited | specs | specs×1 | — | — |
 | atlas | atlas_precompute.py | spec-cited | specs | specs×1 | — | — |
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
@@ -45,7 +45,7 @@ Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 201, spec-ci
 | birth19m | birth19m_snaps.py | UNCITED | — | — | — | 1 |
 | birth19m | birth19m_softnext.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | birth19m | birth19m_softspeed.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 1 |
-| birth19m | birth19m_xterm.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| birth19m | birth19m_xterm.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | blackhole | blackhole_b0.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | boundary | boundary_or_bulk.py | results-cited | RESULTS | RESULTS×3 | — | — |
 | brute | brute_arms_0801.sh | UNCITED | — | — | — | — |
@@ -116,7 +116,7 @@ Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 201, spec-ci
 | farm | farm_atoms.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 1 |
 | farm | farm_atoms_axiom.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | farm | farm_dist_rows.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
-| farm | farm_xterm.py | results-cited | RESULTS | RESULTS×3 | — | — |
+| farm | farm_xterm.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — |
 | farmer | farmer_probe.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | fig | fig_magic_scatter.py | spec-cited | specs | specs×1 | — | — |
 | fixed | fixed_q_snap.py | UNCITED | — | — | — | 1 |
@@ -346,7 +346,7 @@ Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 201, spec-ci
 | rot | rot_snap_anatomy.py | UNCITED | — | — | — | — |
 | rotinstr | rotinstr_control.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | ruleablate1 | ruleablate1_driver.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
-| rulepolicy0 | rulepolicy0_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| rulepolicy0 | rulepolicy0_census.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | run | run_snap_gates.sh | spec-cited | specs | specs×1 | — | — |
 | run | run_snap_knee.sh | UNCITED | — | — | — | — |
 | saturation | saturation_s2.py | results-cited | RESULTS | RESULTS×2 | — | — |
@@ -420,8 +420,8 @@ Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 201, spec-ci
 | weight | weight_fft_euler.py | UNCITED | — | — | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | wsl | wsl.sh | results-cited | RESULTS, specs | RESULTS×10, specs×20 | — | 4 |
-| xterm | xterm_probe.py | library | RESULTS | RESULTS×2 | 1 | 1 |
-| xtermdiet1 | xtermdiet1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| xterm | xterm_probe.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 |
+| xtermdiet1 | xtermdiet1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | z1 | z1_gate.sh | UNCITED | — | — | — | — |
 | z1s | z1s_hot_watcher.sh | UNCITED | — | — | — | — |
 | zx | zx_chain.sh | UNCITED | — | — | — | — |
@@ -514,6 +514,7 @@ Census: UNCITED 200, library 69, reproduce-pinned 10, results-cited 201, spec-ci
 | book | book.py | library | RESULTS, specs | RESULTS×4, specs×3 | 1 | — |
 | build | build_gen7_diet.py | UNCITED | — | — | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs | specs×8 | — | — |
+| cite | cite_lookup.py | UNCITED | — | — | — | — |
 | ckpt | ckpt_manifest.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | consolidate | consolidate_mathnative.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | control | control_round.py | UNCITED | — | — | — | — |
