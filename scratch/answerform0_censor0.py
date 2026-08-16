@@ -98,12 +98,17 @@ def _af_worker(cur, nxt_sympy, level, q):
                    "wall_s": round(time.time() - t0, 2)})
             return
         nxt_ax = rows[0]["nxt"]
+        # RAW strings first: the model trains on the raw emitted
+        # text, so raw divergence IS the answer-form question; the
+        # canonical compare only separates form from math.
+        raw_a = str(nxt_ax).replace(" ", "")
+        raw_b = str(nxt_sympy).replace(" ", "")
         a = sp.sstr(sp.sympify(nxt_ax)).replace(" ", "")
         b = sp.sstr(sp.sympify(nxt_sympy)).replace(" ", "")
-        if a == b:
+        if raw_a == raw_b:
             cls = "identical"
-        elif ax.equivalent_mod_const(ax.parse_sstr(nxt_ax),
-                                     ax.parse_sstr(nxt_sympy)):
+        elif a == b or ax.equivalent_mod_const(
+                ax.parse_sstr(nxt_ax), ax.parse_sstr(nxt_sympy)):
             cls = "formdiff"
         else:
             cls = "disagree"
