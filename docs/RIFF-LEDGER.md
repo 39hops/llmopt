@@ -5579,3 +5579,103 @@ without re-introducing history).
   catch), Artin (the relay), house (verification of the four
   measured anchors in (5), the 07-25 boundary fence, the
   weak-lensing counter-note, adoption).
+
+- **BANKED (2026-08-16): the scientific-hardening program — make every
+  auditor BLOCKER a repository invariant** (GPT seat, off the
+  STREAM-WDISTILL audit episode; house verified the state-of-play
+  claims). The overarching rule, adopted as the organizing
+  principle: **every BLOCKER an auditor ever finds graduates TWICE
+  — once into a machine-enforced invariant, and once into a
+  regression fixture reproducing the original failure.** The
+  diagnosis is correct and checkable: the lab's protections
+  currently live mostly as AGENT INSTRUCTIONS (the prereg-auditor
+  and receipt-auditor checklists) rather than as things the repo
+  refuses to do; scripts/book.py mechanizes only a subset (killed
+  runs, dict sums, sha-less gates, unfenced sub-sigma n=1), and
+  its tests already show the right philosophy — past failures as
+  permanent regression cases.
+  TEN PROPOSALS, banked in the seat's order:
+  (1) MACHINE-READABLE PRE-REGS — experiment.yaml alongside the
+  prose, authoritative for arms/configs/metrics/populations/
+  aggregation/bars/refuted-if/scope/seeds/budget; a contrast_check
+  diffs two arms so a bar claiming "only X differs" is REFUSED
+  before a weight byte is read. Would have caught the S2-v-W32
+  false width isolation mechanically.
+  (2) ORTHOGONAL CLAIM STATES — split today's single maturity tag
+  into validity (valid/retracted/superseded/unresolved) x outcome
+  (positive/null/mixed/not-adjudicated) x maturity (single-seed/
+  replicated/mechanism-confirmed/exact). The measured motivation:
+  EXEC1 had to be tagged RETRACTED because the vocabulary
+  (RETRACTED, NULL, MECHANISM-CONFIRMED, REPLICATED, SINGLE-SEED)
+  has no way to say "valid question, invalid execution".
+  (3) TYPED METRICS — a metric carries semantic type, unit,
+  POPULATION, aggregation, dtype and provenance, so an
+  expert:0 number cannot satisfy a bar registered for
+  layer:all_experts, and an entropy_gap cannot be read as
+  bits_per_weight. Would have caught BOTH the expert-0 BAR 2
+  defect and the capacity-meter category error.
+  (4) BOOK PRIMITIVES, DERIVE SUMMARIES — never store a ratio,
+  percentage, mean or rate as the only evidence: percentage ->
+  (count, n); ratio -> (num, den); mean -> (sum, n, sum_sq);
+  bpw -> (artifact_bytes, weight_count). The adjudicator computes
+  the published number, so a mean-of-ratios error becomes
+  impossible. This is the gate-dict checksum law generalized.
+  (5) ARTIFACT CLOSURE BY INTERFACE — for representation work the
+  scorer accepts ONLY the decoded artifact, never the encoder's
+  working floats, and the budget comes from real serialized bytes.
+  Structurally eliminates fp32-decoded-while-fp16-billed and
+  never-serialized arms instead of hoping an auditor notices.
+  (6) BLIND DETERMINISTIC ADJUDICATOR between running and prose:
+  locked pre-reg + raw receipts in, FIRE/NO-FIRE/UNRESOLVED per
+  bar out, with arithmetic — and it never sees the draft verdict.
+  The prereg-auditor's job then becomes proving the narrative
+  matches an independent adjudication, which removes anchoring.
+  (7) SCIENTIFIC-LANGUAGE LINTER with claim semantics: only,
+  matched, optimal, exact, best, wins, refuted, isotropic, local
+  structure, causes/mechanism, law/generalizes — each carrying a
+  machine-checkable obligation, defined in a
+  docs/SCIENTIFIC_STYLE.md. It would have flagged "Lloyd-optimal"
+  live.
+  (8) tests/science_incidents/ — every historical incident as an
+  adversarial fixture with minimal prereg/config/receipt/verdict
+  inputs and the expected refusal: inherited emitter label,
+  moving-revision literal, smoke rows in a real receipt,
+  over-budget comparator, omitted serializer metadata,
+  fp32-billed-fp16, wrong metric population, ternary-in-a-2-bit-
+  field, false "only" contrast, wrong theorem scope, sub-sigma
+  direction, stale downstream claim.
+  (9) EXPERIMENT LIFECYCLE SEAL — DRAFT -> PREREG_LOCKED ->
+  RUNNING -> RUN_COMPLETE -> AUDIT_PENDING -> ADJUDICATED ->
+  BOOKED, with hashes of pre-reg + driver stored before
+  observation and auditor sign-off bound to receipt/draft hashes,
+  so a post-look amendment MUST create a new lineage node. Makes
+  the EXEC1 -> AUDIT-REPAIR split unavoidable rather than a matter
+  of discipline.
+  (10) EVIDENCE-GRAPH STALENESS — extend results-index links into
+  a dependency graph; when a claim is retracted or materially
+  amended, CI walks downstream references in FINDINGS, THEORY,
+  README, RIFF and live pre-regs and marks them
+  STALE_UNTIL_REVIEWED. Turns the lab's periodic manual
+  claims-audit passes into continuous checking.
+  DIVISION OF LABOUR, adopted: keep the specialist agents, narrow
+  their remit — machines catch what can be stated as an invariant;
+  auditors attack the scientific INTERPRETATION that machines
+  cannot understand (does this intervention identify the claimed
+  mechanism? what confound is unmeasured? does the negative
+  control separate the preferred reading from the strongest
+  alternative?).
+  Honest breaks: (1),(2),(3),(9),(10) are real engineering, not
+  afternoons, and each adds ceremony that must earn its cost on a
+  lab this size; the seat's framing that "failures of scientific
+  process are software bugs" is the load-bearing claim and it is a
+  METHODOLOGICAL bet, unmeasured. House ordering by
+  value-per-hour: (4) is a CLAUDE.md law that costs nothing and
+  closes the mean-of-ratios class today; (8) is incremental and
+  starts paying on the first reuse; (5) is the one that would have
+  killed the biggest blocker of this episode; (6) removes the
+  anchoring the house has now demonstrated twice. Testable
+  residue: none of this is an experiment — it is instrumentation,
+  and its success measure is BLOCKER RECURRENCE going to zero for
+  any class that has graduated. Attribution: GPT seat (the whole
+  program and the graduation rule), Artin (the relay), house
+  (state-of-play verification, ordering).

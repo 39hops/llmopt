@@ -31659,3 +31659,67 @@ code limit. Applied identically to every arm that carries an
 E8M0 scale, so no arm gains from the choice.
 
 Everything else in the pre-reg stands.
+
+## AMENDMENT STREAM-WDISTILL-0S-CONTROL (amends PRE-REG STREAM-WDISTILL-0S and AMENDMENT -0S-DESIGN): S2 becomes an EXACT global 1-D quantizer, the rate claim is restated as index+scale payload, and a locality-destroying shuffled control is added — without it "local structure" is unlicensed (2026-08-16, Mac)
+
+Three pre-look corrections (GPT seat). No weight byte read by this
+rung.
+
+(1) "LLOYD-OPTIMAL" WAS AN OVERCLAIM; S2 IS UPGRADED RATHER THAN
+RENAMED. k-means++ plus 15 Lloyd iterations yields a
+LLOYD-TRAINED codebook converged to a LOCAL optimum, not a
+certified global one — so W4 could have beaten S2 partly because
+S2 landed in a worse basin, which would silently corrupt the
+scalar-v-vector step that BAR 2 now rests on. Since the 1-D case
+admits an exact solution, S2 is upgraded: the seeded sample is
+histogrammed at 4,096 equal-width bins and the K=4 reconstruction
+levels are solved by DYNAMIC PROGRAMMING over the bin sequence
+(the exact optimal-1-D-quantizer DP; contiguity of optimal cells
+in one dimension is what makes it exact). The residual
+approximation is the binning resolution ALONE, which is reported.
+S2 may therefore be described as OPTIMAL; the vector arms remain
+Lloyd-TRAINED and are described that way, and the asymmetry is
+deliberate and disclosed — it can only HANDICAP the vector arms,
+which is the conservative direction for BAR 2.
+
+(2) THE RATE CLAIM IS RESTATED. "All coded arms land at 2.0625
+bits/weight" is true of the INDEX + SCALE PAYLOAD only. Codebooks
+and the counted manifest sit on top, they differ by arm (W32
+alone carries 393,216 B of fp16 codebooks before the manifest),
+so realized artifact rates are slightly above 2.0625 and are NOT
+identical across arms. Booked as: 2.0625 bits/weight index+scale
+payload, with EXACT realized artifact bytes reported per arm
+including codebooks and metadata, and admissibility judged on the
+realized bytes as always.
+
+(3) THE LOCALITY CONTROL — the scientifically load-bearing
+addition. W4 beating S2 would NOT establish local dependence in
+the weights: vector quantization beats scalar quantization even
+on INDEPENDENT dimensions, purely from multidimensional cell
+geometry (the granular/space-filling gain). So the pre-reg's
+reading that "S2 >> W4 means joint local structure exists at
+width 4" is unlicensed as written and is withdrawn.
+REGISTERED CONTROL, added now: for each vector arm W4/W8/W32, a
+SHUFFLED twin. Within each 128-weight normalization block a FIXED
+SEEDED permutation (seed 20260816) is applied before vectors are
+formed; the arm encodes, decodes, inverse-permutes, and is scored
+against the ORIGINAL tensor. Marginal distribution, scale blocks,
+bitrate, codebook budget and every value are identical — ONLY the
+grouping is destroyed. Reading:
+  E_shuffled ~= E_natural  -> the advantage is generic vector /
+      shaping geometry, and NO claim about weight locality is made
+  E_natural  <  E_shuffled -> adjacent-weight structure is real
+      and compressible, which is what licenses "locally
+      compressible"
+NEW BAR 3 LOCALITY-IS-REAL: natural W32 beats shuffled W32 by
+>= 5% relative on pooled operator error. If it does not fire, the
+phrase "locally highly compressible" is not used in the verdict at
+all, whatever the vector-v-scalar outcome.
+HOUSE NOTE, adopted as a standing habit: this is the same class as
+the GRAD-MAP-0 surface-kNN control and the MOE-GT-1-R6 random-mask
+control — an intervention that reproduces every aggregate property
+of the treatment except the one the claim names. The lab has
+measured twice that aggregate lenses lie; a control that destroys
+only the claimed variable is the cheapest defence.
+
+Everything else in the pre-reg and -0S-DESIGN stands.
