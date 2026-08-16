@@ -43,6 +43,12 @@ import train_mathnative as TM  # noqa: E402
 from llmopt.lab.hash import git_sha  # noqa: E402
 from tenet_d2_revdiet import gate_band_exprs, norm  # noqa: E402
 
+# Captured at import so the receipt names the code that RAN, not
+# whatever HEAD is at receipt-write time (receipt-auditor finding,
+# XTERM-DIET-1: a docs-only commit landed mid-run and the write-time
+# sha recorded drift that did not exist in the executed code).
+CODE_COMMIT = git_sha(short=True)
+
 EPOCHS, BS = C.EPOCHS, C.BS
 RECEIPTS = Path("logs/xtermdiet1/"
                 + ("smoke.jsonl" if SMOKE else "arms.jsonl"))
@@ -169,7 +175,7 @@ def main():
                       if n},
            "extra_rows_encoded": n_by_src,
            "extra_rows_per_epoch": exposure,
-           "ckpt": str(OUT), "code_commit": git_sha(short=True),
+           "ckpt": str(OUT), "code_commit": CODE_COMMIT,
            "wall_s": round(time.time() - t0, 1)}
     with RECEIPTS.open("a") as f:
         f.write(json.dumps(row) + "\n")

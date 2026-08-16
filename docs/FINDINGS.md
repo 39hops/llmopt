@@ -2082,3 +2082,18 @@ regime tag on every bullet is the fence.
   format-local at this dose, the first measured datum for the
   format-as-routing frame. Scoped to small-integer operands.
   ([VERDICT BASICS-DIET-1](RESULTS.md#L30467).)
+
+- [NULL] [REGIME-SCOPED: specified diet and recipe] Stating the
+  cross-term computation as its own step INSIDE the expand format
+  (2,600 xexp/xstep rows, 1.6% dose) does not install it either:
+  cross-term repair is zero (conditional ends-right-middle-wrong
+  87.9% control v 89.2% treatment, flat; the raw +11 is a
+  denominator effect), expand pass@8 moves +2.5 points against a
+  +10 bar, the decomposed route is NEVER emitted on expand
+  (intermediate-form 0), and the only behavioral change is
+  unevaluated-product emission leaking into bare arithmetic
+  (canonical arith 2.5% -> 0%). With BASICS-DIET-1's standalone
+  arm, both sides of the format edge are now measured and the
+  failure survives both — the live variables narrow to
+  supervision grain and dose. Gate no-harm holds (70 v 72, inside
+  run noise). ([VERDICT XTERM-DIET-1](RESULTS.md#L30682); [RIDER XTERM-DIET-1-DECOMP](RESULTS.md#L30656).)

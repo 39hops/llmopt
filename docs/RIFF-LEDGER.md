@@ -5374,3 +5374,18 @@ without re-introducing history).
   note to on-the-record rider while the treatment probe had not
   run. Attribution: GPT seat (frame + rider ask), house
   (registration timing + the control anchors W=80, I=0).
+
+  AMENDMENT 2 (2026-08-16, hours later): XTERM-DIET-1 booked BOTH
+  PRIMARY BARS NO-FIRE (L30682) — the measured datum lands on the
+  bank's open edge and against the house prior: in-format
+  decomposed statement does not install the cross term at 1.6%
+  dose, the decomposed route is never expressed (I=0), and the
+  xstep surface (emit products) was learned without its content
+  (evaluate them). Item (2)'s two-step probe is DEAD AS MOTIVATED
+  (no intermediates to complete); item (1)'s xstep-only ladder is
+  coherent but unlaunched off a null; item (3) survives with its
+  coordinates re-weighted — state representation is now measured
+  on both sides and insufficient ALONE; supervision grain and
+  dose are the live coordinates. The transfer-v-distance curve
+  gains a third measured edge: in-format statement, ~zero
+  transfer at this dose.

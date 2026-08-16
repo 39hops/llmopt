@@ -30679,3 +30679,126 @@ category flows have edge cases). The headline sentence of the
 verdict must state both components whenever I_xterm > 5.
 Attribution: GPT seat (the decomposition), house (the deflation
 correction it formalizes).
+## VERDICT XTERM-DIET-1: BOTH PRIMARY BARS NO-FIRE — stating the cross-term computation as its own step INSIDE the expand format does not fix it either; the decomposed route is never taken on expand (I=0), and the only behavioral change lands as unevaluated emission on bare arithmetic (2026-08-16, Mac)
+
+Pre-reg L30565 (12cdc3b, before the farm ran); rider L30656
+(8dccbdd, registered mid-run with the treatment at step 6,200 and
+its probe unrun). Drivers scratch/birth19m_xterm.py +
+scratch/xtermdiet1_driver.sh; farm scratch/farm_xterm.py (2,600
+rows, probe-cur INTERSECT shard-cur = 0 asserted in-run); probe
+scratch/xterm_probe.py (canonical-form scoring, committed
+pre-launch at dc73020). Paired serial in-run arms, BIRTH_SEED=3,
+Mac mps fp32, matched 15,420 steps; gate weights shas
+7ddd0da82f31ae21 (control) / 7c26fb7b3bc09bef (xterm) — distinct
+checkpoints proven, and per the standing mps fence these shas are
+never compared across runs. Receipt-auditor findings, adopted:
+the xterm row's code_commit field reads 8dccbdd but the code that
+EXECUTED was dc73020 — git_sha() was called at receipt-write time
+and a docs-only commit (RESULTS/RIFF-LEDGER/results-index, zero
+code paths, --stat verified) landed mid-run; both arms ran
+identical dc73020 code. Fixed post-run pre-booking in the same
+disclosed-edit class as 92a1e3e: the driver now captures
+CODE_COMMIT at import. Also disclosed: the arm logs' "fast: bf16"
+banner is a borrowed build_model print — the driver's own loop
+has no autocast and the receipt dtype torch.float32 is the true
+record. The pre-reg's "book the count" for the exclude= guard:
+probe-cur INTERSECT shard-cur = 0 was asserted in-process by
+farm_xterm.py and survives as the dc73020 commit message and the
+farm's assert (no separate farm log was kept; the assert would
+have killed the farm on any overlap).
+Receipts logs/xtermdiet1/arms.jsonl (2 rows; smoke rows isolated
+in smoke.jsonl, smoke checkpoints used the _smoke suffix and were
+deleted pre-launch) + probe.jsonl (2 rows) + arm/probe logs,
+force-added this commit (small-text-receipt exception).
+
+Measured (dicts are the checksum):
+
+- control (stock + 6,000 sympy atoms): 72/120
+  {3:22, 4:12, 5:16, 6:9, 7:13} valid 63.93%, 15,420 steps
+- xterm (same + 2,600 xexp/xstep rows): 70/120
+  {3:24, 4:11, 5:15, 6:8, 7:12} valid 64.14%, 15,420 steps
+
+Probe, canonical (fully-evaluated) scoring, N=120/arm, B=8, T=0.7:
+
+- control: expand 9.17/20.83 pass@1/@8; arith 0.83/2.5;
+  numsum 2.5/13.33; struct misses 109, deg2_ok 91, const_ok 96,
+  ends-right-middle-wrong 80, intermediate_form 0
+- xterm:   expand 10.0/23.33; arith 0.0/0.0; numsum 2.5/10.0;
+  struct misses 108, deg2_ok 102, const_ok 97,
+  ends-right-middle-wrong 91, intermediate_form 0
+
+**BAR 1 (XTERM-FIXES): NO-FIRE.** Cross-term-wrong reads 91/108 v
+control 80/109 — the bar needed >=20 BELOW; the raw count moved 11
+ABOVE. The raw +11 is largely a DENOMINATOR effect (auditor
+finding, house-verified): conditional on ends-right, middle-wrong
+is 80/91 = 87.9% control v 91/102 = 89.2% xterm — FLAT. deg2_ok
+rose 91 -> 102 and const_ok 96 -> 97 among misses: the arm got
+the ends more right and funneled misses into the cross-term
+class. So the honest reading is NO REPAIR, not damage. The rider
+decomposition (W_control - (W_xterm + I_xterm)) = 80 - 91 = -11
+raw; none of the movement is intermediate diversion (I_xterm = 0,
+the expand_struct intermediate_form field — distinct from the
+arith arm's passk_intermediate_only counter, kept separate
+below).
+**BAR 2 (EXPAND-MOVES): NO-FIRE.** 23.33 v 20.83 pass@8: +2.5
+points against the +10 bar. Canonical == any-form on expand in
+BOTH arms (25/25, 28/28) — the canonical-strictness caveat is
+empirically quiet here.
+**BAR 3 (NO-HARM): FIRES.** 70 >= 68 (control 72 - 4). The -2 is
+far under the resolution law's ~7-solve single-seed threshold: a
+no-harm bar satisfied by a null, with NO direction claimed on the
+gate in either arm's favor. Anchor-collision flag for future
+readers: this run's xterm arm reads 70/120 and expand pass@8
+23.33 — numerically identical to the BASICS-DIET-1 anchors quoted
+in the pre-reg's instrument paragraph, which are a DIFFERENT
+run's numbers and are never comparators here (mps cross-run
+noise); the coincidence is noted so nobody conflates them.
+**REFUTED-IF: does not literally trigger, on a technicality
+booked openly.** The clause required cross-term-wrong within 8 of
+control; it moved 11 in the WRONG direction, outside the clause's
+window on the wrong side. The hypothesis the clause encoded — that
+in-format statement teaches the step at this dose — is refuted a
+fortiori; the clause text was written for "no change" and did not
+anticipate "worse".
+
+Phenotype riders (the branch decider, all descriptive):
+- I_xterm = 0 on expand: the model NEVER takes the decomposed
+  route at the tested sampling — the xexp family's second
+  continuation was trained at ~1.6% dose and is not expressed.
+- The one behavioral change is on BARE arithmetic: the xterm
+  arm's canonical arith collapsed to 0/0 pass@1/@8 (control 1/3)
+  while any-form pass@8 reads 5, ALL of them intermediate-only
+  (passk_intermediate_only 5 v control's 3) — the shard
+  taught "emit unevaluated products" as a surface habit that
+  leaks into the standalone format, and evaluation appears
+  nowhere. The near-format numsum arm read 16 -> 12 pass@8
+  (direction-unresolved at this N).
+
+Registered prior: 1 miss (BAR 1 predicted fire at medium-high —
+measured no-repair), 2 hits (BAR 2 predicted knife-edge-or-miss;
+BAR 3 predicted fire). Family record: 11 hits, 21 misses.
+
+Reading. The format-as-routing frame predicted in-format statement
+would move the cross term; it did not — at this dose and horizon,
+NEITHER standalone statement (BASICS-DIET-1) nor in-format
+decomposed statement (this rung) installs the arithmetic inside
+expand. The transition-space locality bank's sharpest available
+edge is now measured on both sides and the failure survives both,
+which narrows the live hypotheses to supervision GRAIN and dose:
+the xstep family supervised intermediate -> final as one hop, and
+the model learned its surface (emit products) without its content
+(evaluate them). The two banked follow-ups stand rescoped:
+XTERM-2STEP-0 is DEAD AS MOTIVATED (I=0 on expand — there is no
+emitted intermediate to complete); the xstep-only discriminator
+(XTERM-DIET-2) remains coherent but is NOT launched off this
+null without a new motivation — the phenotype branch books the
+desk pivot (RULE-POLICY-0 census, ANSWER-FORM-0, CENSOR-0).
+
+Fences: single seed (BIRTH_SEED=3), single device (Mac mps fp32),
+in-run paired arms (mps fence); gate family-comparable only; probe
+T=0.7 pass@k under the gate sampler; small-integer operands; the
+gate deltas here (-2) and most probe deltas are inside the
+resolution law's single-seed band — the BAR 1 +11 inversion is
+~2.3 sigma on its own count and books as direction-grade, not
+resolved; the xexp ambiguity voids loss-level comparisons (none
+are quoted).
