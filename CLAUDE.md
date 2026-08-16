@@ -292,7 +292,17 @@ the two and should be reconciled here in the same session.
 - **Data hygiene**: exclude=-guarded splits; underdetermined rows
   train hallucination (audit for determinability, not just
   correctness); diet exposure SHARE matters (rations for resident
-  grammars when the corpus grows).
+  grammars when the corpus grows). DATA-CONTRACT vocabulary
+  (adopted 2026-08-16 from ECC mle-workflow, mapped to house
+  incidents): before any farm/split, state the row GRAIN (what one
+  row is), the LABEL TIMING (was the target computable at emit
+  time, or does it join future information), and the SPLIT POLICY
+  (what property separates train from eval — a seed band alone
+  never suffices in a small generator space). "Random split leaks
+  future data" is the generic form of both booked contamination
+  incidents and the BASICS-DIET-1 farm catch (242/242 mul pairs
+  exhausted = probe items in train). A test that was never RUN is
+  not a failing test — RED means executed and observed failing.
 
 ## Practical
 
