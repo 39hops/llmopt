@@ -31584,3 +31584,78 @@ differs from EXEC1's arm A (2.0625 v 2.1250 bits/weight) so the
 two are NOT directly comparable and EXEC1's arm-A number is never
 quoted beside these; the width ladder shares one execution so
 cross-arm comparisons are within-run.
+
+## AMENDMENT STREAM-WDISTILL-0S-DESIGN (amends PRE-REG STREAM-WDISTILL-0S): the width bar did not isolate width, the repaired scalar arm was TERNARY not 4-level, the rate-distortion rationale is retracted, and the E8M0 rounding rule is pinned (2026-08-16, Mac)
+
+Four pre-look corrections (GPT seat; house verified the two that
+are claims about our own code). No weight byte has been read by
+this rung.
+
+(1) "WIDTH-IS-THE-LEVER" DID NOT ISOLATE WIDTH. The pre-reg
+claimed S2 and W32 "differ ONLY in vector width". They differ in
+dimension, codebook cardinality, stage count, single-stage v
+additive-residual coding, AND scale mechanism. Corrected, with
+the arithmetic that forces it: at a fixed index rate
+R = s*log2(K)/w, a SINGLE-stage code at R = 2 has K = 2**(2w), so
+cardinality is DETERMINED by width and the two can never be
+varied independently. The clean contrast already in the ladder is
+  S2 (w=1, K=4, s=1)  v  W4 (w=4, K=256, s=1)
+both single-stage Lloyd quantizers at exactly 2.000 index
+bits/weight. BAR 2 is renamed and rebased onto that pair:
+  BAR 2 VECTOR-STRUCTURE-PAYS: W4 beats S2 by >= 10% relative on
+  pooled operator error.
+W8 (w=8, s=2) and W32 (w=32, s=8) keep K = 256 and become the
+RATE-CONTROLLED REFINEMENT LADDER (4,1) -> (8,2) -> (32,8), all
+at 2.000 index bpw, reported as a dose curve with no bar. The
+W32-v-S2 comparison survives only as a descriptive
+VECTOR-CODE-PAYS reading, explicitly NOT a width isolation.
+SCALE CONFOUND, closed rather than disclosed: every codebook arm
+(S2, W4, W8, W32) now carries the SAME per-block fp8 E8M0
+normalization at block 128, counted in its byte budget, so the
+S2-v-W4 step really is dimensional. All coded arms therefore land
+at 2 + 8/128 = 2.0625 bits/weight = 1,660,944,384 B, ~50 MB inside
+B1, with slack reported.
+
+(2) THE REPAIRED SCALAR ARM WAS TERNARY, AND SO WAS EXEC1's ARM A.
+Verified in-house against the executed code
+(scratch/stream_wdistill1.py: `lim = 2 ** (SCALAR_BITS - 1) - 1`
+= 1): the reconstruction alphabet was {-1, 0, +1} — THREE levels
+stored in a 2-bit field, wasting a quarter of the code space.
+This is booked as a correction to the EXEC1 record: its
+"scalar 0.770" is not a 4-level scalar quantizer's number and was
+never described as one. The scalar family is therefore split so
+the gain is attributable rather than lumped:
+  S1-T   ternary max-anchored, block 128, fp8 scale — the TRUE
+         minimal repair of arm A (scale dtype only)
+  S1-U4  genuine 4-level uniform max-anchored, same block/scale
+  S2     Lloyd-optimal 4-level scalar, same block/scale
+giving the full decomposition
+  ternary -> uniform-4 -> Lloyd-4 -> vector(4) -> (8) -> (32),
+which localizes exactly which step buys what.
+
+(3) THE RATE-DISTORTION RATIONALE IS RETRACTED. The pre-reg's
+prior argued that "classical rate-distortion bounds the pure
+space-filling gain of vector quantization at ~0.254 bits/sample,
+far too small to explain a 0.35-v-0.77 gap". That figure is the
+HIGH-RESOLUTION ASYMPTOTIC gap between optimal scalar
+quantization and the Shannon lower bound for a MEMORYLESS source
+as D -> 0. It is not an upper bound on achievable VQ gain at a
+finite 2-bit rate over structured, possibly dependent, real
+learned weight blocks — precisely the regime here. Replaced by:
+high-rate theory suggests the pure shaping gain is modest for
+memoryless smooth sources, but that figure is NOT a bound in this
+regime, so the scalar-closes-the-gap prediction is EMPIRICAL and
+not theoretically forced. The PREDICTION is unchanged and still
+registered against the house; only its justification is
+withdrawn.
+
+(4) E8M0 ROUNDING RULE PINNED. An exponent-only scale needs an
+exact real-to-power-of-two rule and it is not an implementation
+detail: rounding up coarsens the step but guarantees the block
+maximum is representable, rounding to nearest minimizes scale
+error but can clip. PINNED: exponent = ceil(log2(desired_scale)),
+i.e. ROUND UP, so max-anchored arms never overload beyond their
+code limit. Applied identically to every arm that carries an
+E8M0 scale, so no arm gains from the choice.
+
+Everything else in the pre-reg stands.

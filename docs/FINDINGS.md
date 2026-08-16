@@ -2128,7 +2128,7 @@ regime tag on every bullet is the fence.
   Sample-scoped; censored-band composition unmeasured.
   ([OBSERVATION ANSWER-FORM-0 + CENSOR-0](RESULTS.md#L30869).)
 
-- [NULL] [REGIME-SCOPED: measured deployment artifacts] A frontier
+- [RETRACTED] [REGIME-SCOPED: measured deployment artifacts] A frontier
   MoE expert layer (V4-Flash layer 22, 256 experts, 6.44B weights)
   was compressed from STREAMED WEIGHTS ALONE — ephemeral
   byte-range fetch, disk residence one expert, zero teacher
