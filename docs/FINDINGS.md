@@ -2153,23 +2153,22 @@ regime tag on every bullet is the fence.
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
   Low-rank factorization of a frontier MoE expert layer, derived
   from streamed weights alone (zero teacher forwards, zero
-  calibration data, disk residence one expert), is a decisive
-  loser at 2x compression: at matched serialized bytes every
-  low-rank arm — shared residual basis 0.811, private per-expert
-  bases 0.814, hidden-axis gauge control 0.847 pooled relative
-  Frobenius — is worse than plain 2-bit scalar rounding at 0.770.
-  Sharing one basis across 256 experts buys 3.6x the rank (1075 v
-  296) and only 0.37% less error, against a registered 10% bar,
-  so amortization does not overwhelm the per-expert penalty. The
-  gauge control fires as predicted (hidden-axis worse than
-  residual-axis, near fraction-matched at 26.25% v 26.42% of
-  span), supporting the compression prediction derived from the
-  permutation gauge and not the gauge itself. This is the house
-  rank floor on a frontier artifact: these matrices are
-  near-isotropic, which independently broke a randomized
-  eigensolver at 24x its verification threshold. Weight space
-  only, no capability claim; the scalar comparator is
-  inadmissible (19 bytes over budget) so the scalar bar is
-  UNRESOLVED, and vector quantization's 0.350 is descriptive
-  pending a fair scalar baseline.
-  ([VERDICT STREAM-WDISTILL-0-AUDIT-REPAIR](RESULTS.md#L31908).)
+  calibration data, disk residence one expert), does not pay at 2x
+  compression, and the reason is MISALIGNMENT rather than a lack of
+  structure. Sharing one basis across 256 experts buys 3.6x the
+  rank (1075 v 296) for 0.37% less pooled Frobenius error against
+  a registered 10% bar. But capture efficiency against a
+  uniform-random subspace of equal rank in the same ambient space
+  reads 4.678x for PRIVATE per-expert bases, 1.307x for the SHARED
+  basis, and 1.067x for the permutation-gauged hidden axis: the
+  experts are individually strongly anisotropic, their useful
+  directions are poorly aligned ACROSS experts, and a shared
+  hidden basis is indistinguishable from random — the last being
+  independent support for the expert-local gauge argument from an
+  arm registered for another purpose. Every low-rank arm has
+  higher error than an inadmissible near-budget 2-bit scalar
+  reference (19 bytes over, so that comparison is DESCRIPTIVE and
+  the registered scalar bar is UNRESOLVED). Weight space only, one
+  layer, n=1, no capability claim.
+  ([VERDICT STREAM-WDISTILL-0-AUDIT-REPAIR](RESULTS.md#L31908);
+  [AMENDMENT -READING-2](RESULTS.md#L32133).)

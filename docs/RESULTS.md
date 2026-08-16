@@ -32129,3 +32129,99 @@ the redundancy — but three consequences are booked now.
       checked for convergence, because power iteration's bias
       depends on the spectral gap and is therefore correlated
       with exactly the property the arms differ in.
+
+## AMENDMENT STREAM-WDISTILL-0-READING-2 (amends VERDICT -AUDIT-REPAIR L31908): the "near-isotropic" reading is REFUTED BY THE VERDICT'S OWN NUMBERS — experts are individually anisotropic and their directions are MISALIGNED across experts; plus three scope corrections (2026-08-16, Mac)
+
+Four post-look corrections (GPT seat; the house computed the
+supporting quantity and it overturns a reading the house booked
+90 minutes earlier). No new run — every number below is derived
+from the booked verdict's own figures.
+
+(1) "NEAR-ISOTROPIC" IS WRONG AND IS WITHDRAWN. The verdict read
+the low-rank collapse as "these matrices are near-isotropic, so
+no basis of any kind buys much". Their own numbers refute it.
+CAPTURE EFFICIENCY = (energy captured) / (energy a UNIFORM RANDOM
+subspace of the same rank in the same ambient space would
+capture), where captured = 1 - relative_frobenius^2 and the
+random baseline is r/ambient. C and D both choose subspaces of
+the 4096-dim RESIDUAL space; E chooses in the 2048-dim hidden
+space:
+  D  private residual basis  captured 0.33807, baseline 296/4096
+     = 0.07227 -> efficiency 4.678x
+  C  shared  residual basis  captured 0.34293, baseline 1075/4096
+     = 0.26245 -> efficiency 1.307x
+  E  shared  hidden   basis  captured 0.28190, baseline 541/2048
+     = 0.26416 -> efficiency 1.067x
+If the expert matrices were near-isotropic every ratio would sit
+near 1.0. D reads 4.678x. INDIVIDUAL EXPERTS ARE STRONGLY
+ANISOTROPIC — a private basis buys 4.7x what random directions
+would, and reaches D's near-parity with C using 27.5% of C's
+rank. What is diffuse is the CROSS-EXPERT SHARED covariance
+(1.307x), not the matrices.
+CORRECTED READING: the useful directions exist per expert but are
+POORLY ALIGNED ACROSS EXPERTS, so a common basis must cover
+mutually rotated structures and its extra rank mostly buys back
+what misalignment costs. That single mechanism explains all three
+observations at once — sharing buys 3.6x rank for 0.37% error,
+private bases dominate spectrally, and the pooled covariance
+still looks flat.
+THIRD-WAY CONSISTENCY, unplanned and worth the ink: arm E, the
+gauge control, reads 1.067x — statistically indistinguishable
+from a random subspace. That is EXACTLY what an expert-local
+permutation gauge predicts for a SHARED hidden basis, and it is
+independent support for the gauge argument arriving from an
+arm registered for a different purpose. The house reading that
+"D exploits 3.58x more structure per stored direction than C" is
+the compact form.
+
+(2) THE RANDOMIZED-SOLVER FAILURE DOES NOT INDEPENDENTLY DIAGNOSE
+THE SPECTRUM. The verdict said the near-isotropy "independently
+broke the randomized solver at 0.0243 — the same fact measured a
+second way". Withdrawn. The implementation forms G^(q+1) Omega
+and QR-orthogonalizes ONLY AFTER all power applications
+(scratch/stream_wdistill1.py topvec_rand), which is a valid sketch
+but numerically weaker than reorthogonalized subspace iteration,
+so 0.0243 is CONSISTENT WITH a hard spectrum without uniquely
+diagnosing one. No eigenspectrum-flatness statistic was booked.
+The claim is reduced to: the randomized path failed its
+verification clause, cause not isolated.
+
+(3) THE SCALAR CONTRAST MAY NOT USE ADJUDICATION LANGUAGE. The
+verdict headline and the FINDINGS bullet said every low-rank arm
+"loses to" 2-bit scalar rounding "at matched bytes". Arm A is 19
+bytes OVER budget and BAR 2 is UNRESOLVED, so that contrast is
+inadmissible by the house's own contrast-admissibility doctrine —
+19 bytes on a 1.7 GB artifact is scientifically negligible and
+that is exactly the point: negligible does not waive a frozen
+contract. Corrected phrasing, to be used wherever this is quoted:
+  every low-rank arm has HIGHER pooled Frobenius error than the
+  INADMISSIBLE near-budget scalar reference; the registered
+  scalar comparison remains UNRESOLVED.
+"Loses" and "matched bytes" are struck for the C/D/E-v-A contrast.
+It stands as a useful DESCRIPTIVE contrast and nothing more —
+the first real application of contrast_admissible to the house's
+own prose.
+
+(4) THE FROZEN-RECEIPT FIX IS A MITIGATION, NOT A GRADUATION. The
+verdict said OUT is now RUN_TAG-parameterized "so a re-run cannot
+target a cited path". Too strong: RUN_TAG defaults to "", so the
+exact maneuver that caused the incident still works — remove or
+rename the cited receipt, leave the tag empty, re-run, and the
+canonical path is free again. The driver's own comment concedes
+that a manual rename defeats the guard. Status: PROMOTED, not
+GRADUATED. The structural fix, named for the hardening program:
+no mutable canonical receipt path at all — every execution writes
+a content-addressed path (logs/<rung>/<code_sha>/<run_id>.jsonl),
+booked entries cite that immutable object, and CI refuses
+modification or deletion of any receipt path referenced by
+results-index.jsonl. That would be the invariant; 603c712 is not.
+
+CONSEQUENCE FOR THE NEXT RUNG, and it is now the highest-value
+cheap measurement in the thread: the NOT-RUN rank-matched rider
+C@296 v D@296 is elevated. Under the corrected reading it is no
+longer a tidy-up — it directly tests the misalignment mechanism.
+If D@296 also beats C@296 in FROBENIUS at equal rank, then BAR 1's
+near-tie at matched BYTES is explained as 3.6x extra shared rank
+merely compensating for lost expert-specific alignment, and
+"private alignment gain >> shared-basis alignment" books as a
+measured statement rather than an interpretation.
