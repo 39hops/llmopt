@@ -701,6 +701,13 @@ HCE calibration: does hce(state) predict solvability? (spec: 2026-07-06-hce-cali
 - `probe(state: State) -> tuple[int | None, bool, bool]` — (nodes-to-solve or None, solved@small, timed_out).
 - `main(levels: list[int], per_level: int, max_states: int, kind: str) -> None`
 
+### scripts/cite_lookup.py
+Fetch arXiv METADATA ONLY for a THEORY.md lineage citation.
+
+- `_clean(s: str | None, cap: int=FIELD_CAP) -> str`
+- `fetch(query: str, by_id: bool) -> list[dict]`
+- `main() -> int`
+
 ### scripts/ckpt_manifest.py
 ckpt_manifest.py — checkpoint manifest for the curated tree.
 

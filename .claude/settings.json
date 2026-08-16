@@ -26,6 +26,12 @@
             "command": ".venv/bin/python .claude/hooks/codemap_guard.py",
             "timeout": 15,
             "statusMessage": "Checking CODEMAP class"
+          },
+          {
+            "type": "command",
+            "command": ".venv/bin/python .claude/hooks/smoke_guard.py",
+            "timeout": 15,
+            "statusMessage": "Checking smoke path isolation"
           }
         ]
       }
