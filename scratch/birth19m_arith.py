@@ -33,8 +33,9 @@ ARITH_SHARD = Path("data/micromodel_arith_shard0.jsonl")
 
 os.environ["ARM"] = "off"       # frozen module import side-effects only
 os.environ["BIRTH_SEED"] = str(SEED)
-OUT = Path(f"checkpoints/gallery19m_basics{ARM_NAME}_s{SEED}.pt")
-if OUT.exists() and not SMOKE:
+OUT = Path(f"checkpoints/gallery19m_basics{ARM_NAME}_s{SEED}"
+           + ("_smoke" if SMOKE else "") + ".pt")
+if OUT.exists():
     raise SystemExit(f"REFUSING: {OUT} exists")
 
 import torch  # noqa: E402
