@@ -31887,3 +31887,20 @@ what was actually intervened on:
   A     measured but INADMISSIBLE (over budget by its frozen
         format); its error is descriptive and never participates
         in the registered race.
+
+## AMENDMENT STREAM-WDISTILL-0-DELTAS-3 (amends AMENDMENT -0-DELTAS-2 L31693): "does not RELIABLY prevent" is still a population-level claim; narrowed to the single observed episode (2026-08-16, Mac)
+
+-0-DELTAS-2 replaced one overclaim with a smaller one. Its
+corrected text reads "evidence that PROMOTION/DOCUMENTATION ALONE
+does not reliably prevent recurrence" — but "reliably" is a
+statement about repeated trials and no trials were run. What was
+actually observed is a single recurrence in a single episode.
+Narrowed, and this wording is final:
+  evidence that promotion/documentation alone DID NOT PREVENT
+  RECURRENCE OF THIS INCIDENT CLASS IN THIS EPISODE, which
+  strengthens the motivation for TESTING executable graduation.
+Third pass on the same sentence; each pass removed a quantifier
+the evidence did not carry (efficacy -> reliability -> this
+episode). Booked as an instance of the pattern rather than an
+embarrassment: claims shrink toward what was measured, and the
+ledger keeps every step.

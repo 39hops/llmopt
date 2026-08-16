@@ -5783,3 +5783,74 @@ honest status column).
   must refuse unless the caller explicitly requests a
   cross-population operation and labels it descriptive.
   Attribution: GPT seat.
+
+  AMENDMENT 4 (2026-08-16, GPT seat — the deepest correction of
+  the episode, and it invalidates the schema's own sufficiency).
+  (a) CONTRAST ADMISSIBILITY MUST BE FIRST-CLASS. The nucleus so
+  far was measurement_valid x arm_admissible, and that pair
+  CANNOT express the wrong-metric-population class — the very
+  class nominated as the first graduation. Population
+  compatibility is not a property of either observation or either
+  arm; it is a RELATION BETWEEN THE TWO THINGS BEING CONTRASTED.
+  The proof is in this repo: EXEC1's operator metric over
+  population expert:0 is valid, the repair's over experts:0:256
+  is valid, both producing arms are admissible, and their
+  DIFFERENCE is still inadmissible as a repair delta. So the
+  nucleus gains a fourth object and the derived rule becomes
+      bar_adjudicable = all required observations valid
+                        AND all required arms admissible
+                        AND all required CONTRASTS admissible
+  computed, never asserted.
+  (b) STATE VOCABULARIES ARE SEMANTICALLY TYPED, not one shared
+  enum: measurement_status {pending|valid|invalid|not_applicable},
+  arm_status {pending|admissible|inadmissible|not_applicable},
+  contrast_status {pending|admissible|inadmissible|
+  not_applicable}, adjudication_status {pending|adjudicable|
+  refused|not_applicable}, outcome {pending|fire|no_fire|
+  unresolved|not_applicable}. EXEC1 is why they must never share
+  a boolean: it simultaneously held valid measurements, invalid
+  contrasts, unresolved bars and useful diagnostics, and
+  `measurement_valid=false` must never be confusable with
+  `outcome=no_fire`.
+  (c) REASONS NEST UNDER THEIR SUBJECT. A flat reasons list makes
+  the machine parse English prefixes to learn that
+  `baseline_over_budget` means arm A. Reasons attach to the arm or
+  the contrast they belong to, so "which arm broke admissibility
+  and why" is answerable FROM THE DATA STRUCTURE rather than by
+  convention.
+  (d) ARM ADMISSIBILITY != MEASUREMENT VALIDITY FOR THAT ARM. Arm
+  B was a conceptually admissible candidate whose EXEC1
+  measurement was invalid (decoded at unavailable precision).
+  Collapsing those into one "B good/bad" loses exactly the
+  distinction this episode was about.
+  (e) THE TYPED-METRIC ESCAPE HATCH RETURNS A DISTINCT TYPE, not a
+  labelled metric: cross_population_difference(a, b,
+  purpose="descriptive") -> DescriptiveContrast(adjudicable=False),
+  so the bar adjudicator REFUSES it structurally. The guarantee
+  is compositional — you may deliberately look at apples versus
+  oranges; you may not accidentally turn that look into evidence
+  for a registered bar. The regression fixture tests all THREE
+  directions: mismatched subtraction refuses; explicit descriptive
+  contrast succeeds; descriptive contrast handed to the
+  adjudicator refuses.
+  (f) THE SUCCESS METRIC IS A RATE, NOT A COUNT. Raw recurrence
+  misleads because classes get different numbers of opportunities.
+  Measure escaped_incidents / opportunities_to_violate, WITHIN
+  class, before v after graduation — and track REFUSALS as
+  positive evidence, since "attempted 17, refused 17, escaped 0"
+  is far more informative than an absence of recurrence.
+  (g) HOUSE NOTE ON THIS BANK'S OWN STATUS, and it is recursive:
+  everything above is DOCUMENTATION. The schema DESIGN is banked
+  and upgraded; the schema is NOT implemented and nothing in the
+  repo enforces it. Saying "the schema is now upgraded" would
+  commit the PROMOTED-v-GRADUATED error inside the paragraph
+  defining PROMOTED-v-GRADUATED. Status: PROMOTED.
+  (h) LOCALITY LADDER DESIGN CONDITION, for the BAR-3 follow-up:
+  every rung (random / native contiguous / row-column / neuron /
+  gate-up pair) gets the same rate and byte accounting AND ITS OWN
+  TRAINED CODEBOOK after its grouping transform — otherwise the
+  measurement is whether one codebook happened to suit another
+  representation, not grouping quality. If gate/up pairing beats
+  raw adjacency, the compressible covariance lives in a SEMANTIC
+  ARCHITECTURAL coordinate, which is a much stronger statement
+  than "W32 beats shuffled". Attribution: GPT seat.
