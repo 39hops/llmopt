@@ -5736,3 +5736,50 @@ honest status column).
   cheapest concrete piece of proposal (2)/(3) and the natural
   first field of a machine-readable pre-reg. Attribution: GPT
   seat.
+
+  AMENDMENT 3 (2026-08-16, GPT seat): the bar schema in AMENDMENT
+  2 is upgraded before it graduates into code — booleans and
+  run-level scope are both wrong. EXEC1 is the proof: the run was
+  not uniformly invalid (its pooled Frobenius produced usable
+  diagnostic observations), and its three bars broke for
+  DIFFERENT reasons with DIFFERENT arms at fault. The nucleus is
+  therefore BAR-SCOPED, ARM-EXPLICIT, REASON-CODED, and
+  MULTI-STATE (pending | true | false | not_applicable — a bar
+  awaiting its receipt and auditors is `pending`, not `false`;
+  a diagnostic with no comparator is `not_applicable`):
+      bars:
+        BAR1:
+          measurement_valid: false
+          arms: {C: admissible, D: admissible}
+          bar_adjudicable: false
+          reasons: [billed_fp16_decoded_fp32,
+                    comparator_solver_failed_validation]
+        BAR2:
+          measurement_valid: false
+          arms: {A: inadmissible, B: admissible}
+          bar_adjudicable: false
+          reasons: [baseline_over_budget, baseline_not_serialized,
+                    candidate_not_serialized,
+                    candidate_decoder_precision_mismatch,
+                    metric_population_mismatch]
+        BAR3:
+          measurement_valid: false
+          arms: {C: admissible, E: admissible}
+          bar_adjudicable: false
+          reasons: [billed_fp16_decoded_fp32]
+  with bar_adjudicable = measurement_valid AND (all required arms
+  admissible), computed rather than asserted. The reason codes are
+  the same strings the incident table keys on, so a bar refusal
+  and its regression fixture share one vocabulary. Why it matters
+  beyond tidiness: six months on this answers WHICH ARM broke
+  admissibility and WHY without reconstructing prose.
+  Also banked, from the same reading: the wrong-metric-population
+  class has now been observed TWICE, and the second time in
+  ANALYSIS PROSE rather than tensor code — a repository can
+  execute every float operation correctly and still difference
+  two numbers from different populations. That makes it the
+  natural FIRST fixture for typed metrics: a typed subtraction
+  where population "expert:0" and population "experts:0:256"
+  must refuse unless the caller explicitly requests a
+  cross-population operation and labels it descriptive.
+  Attribution: GPT seat.

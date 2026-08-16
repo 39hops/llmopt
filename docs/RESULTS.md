@@ -31846,3 +31846,44 @@ adjacency is the UNIQUE relevant coordinate system; a structured
 regrouping by row/column semantics, neuron identity, or gate/up
 pairing could do better, and that is a named future direction
 rather than an implied claim.
+
+## AMENDMENT STREAM-WDISTILL-0-DELTAS-2 (amends AMENDMENT -0-DELTAS L31626): the recurrence claim is an OVERCLAIM and is corrected in place, and the repair-delta nomenclature is pinned so the table cannot become an unearned causal decomposition (2026-08-16, Mac)
+
+(1) THE RECURRENCE CLAIM IS CORRECTED. -0-DELTAS said the
+wrong-metric-population class recurring hours after being banked
+"is evidence FOR the graduation program, exactly of the kind its
+success metric names". That is too strong and is withdrawn: the
+class has NOT been graduated, so nothing here can be evidence
+that graduation works. The exact supported claim, to be used
+instead:
+  evidence that PROMOTION/DOCUMENTATION ALONE does not reliably
+  prevent recurrence, which strengthens the MOTIVATION for
+  executable graduation.
+The program's actual success evidence remains the comparison it
+named — recurrence rate under PROMOTED versus under GRADUATED —
+and that comparison cannot begin until a class is graduated.
+Booked as a house overclaim caught by a reader, in the same
+register as the class it is about: an efficacy claim was made
+where only an insufficiency-of-the-alternative claim was
+supported.
+
+(2) REPAIR-DELTA NOMENCLATURE, pinned before the receipt is read
+so the table cannot quietly become a causal decomposition beyond
+what was actually intervened on:
+  C, E  ONE defect class changed (fp16 artifact-faithful bases).
+        These are the CLEAN repair deltas and may be described as
+        pricing that defect.
+  D     TWO changes (basis precision AND approximate rSVD ->
+        exact eigh). The delta is NOT decomposable into its two
+        causes without a further control, and no such
+        decomposition is claimed.
+  B     NOT "the effect of fp16 rounding". Residual VQ is
+        discrete: rounding a centroid can flip
+        argmin_k ||r_s - C_s,k||^2, and once an assignment flips
+        every later residual r_{s+1} = r_s - C_s,a_s differs, so
+        EXEC1 and the repair are two DIFFERENT discrete encoding
+        trajectories, not one code plus reconstruction noise.
+        Named: the ARTIFACT-FAITHFUL VQ REPAIR DELTA.
+  A     measured but INADMISSIBLE (over budget by its frozen
+        format); its error is descriptive and never participates
+        in the registered race.
