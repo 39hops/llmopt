@@ -2983,6 +2983,15 @@ Tensor-class ternary sensitivity profile (PRE-REG STAR-PROFILE-1, 2026-08-10). S
 - `ternary(w)` — absmean ternary — row-scale for 2D (train_ternary.py's form),
 - `main()`
 
+### scratch/stream_wdistill0.py
+STREAM-WDISTILL-0 (pre-reg RESULTS 2026-08-16, L30921).
+
+- `_get(url, lo=None, hi=None)`
+- `revision()` — The checkpoint revision actually being read (provenance, derived).
+- `header(shard)` — (name -> entry) for one shard, from its safetensors header only.
+- `is_routed_layer(name, layer)`
+- `main()`
+
 ### scratch/streaming_birth_d256.py
 Streaming-birth A/B, arm S (RIFF-LEDGER 2026-07-24 "Streaming birth").
 

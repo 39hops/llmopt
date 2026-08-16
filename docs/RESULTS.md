@@ -31052,3 +31052,100 @@ the run books the shard revision it fetched. The 0B sub-arm uses
 synthetic input and therefore reports operator behavior, not
 capability. Dequantization correctness rides on the frozen exact
 MXFP4 path (llmopt/lab/shards.dequant, dual-copy guarded).
+
+## AMENDMENT STREAM-WDISTILL-0-BUDGET (amends PRE-REG STREAM-WDISTILL-0, L30921): the released FP4 artifact cannot be both the reconstruction target and a nonzero-error baseline — the race moves to a budget strictly below the vendor payload, and the byte-accounting contract is frozen before PASS 1 (2026-08-16, Mac)
+
+Artin's catch, pre-build and pre-PASS-1. The pre-reg pinned the
+race budget at "the vendor's own packed-fp4 size for this layer".
+That is incoherent: the reconstruction TARGET W is the exact
+DEQUANTIZED fp4 tensor (the real values the model computes with),
+so at the vendor's own byte budget a scalar re-quantizer can
+reproduce the fp4 grid essentially exactly and arm A's error goes
+to ~0. Target and baseline collapse into the same object and BAR 2
+becomes unfalsifiable. Amended below; no measurement has run
+against the old text (PASS 0 is headers-only and budget-free).
+
+PASS 0 MEASURED (scratch/stream_wdistill0.py, headers only, 1.5 MiB
+read, ZERO weight bytes, wall 8.6 s; receipt logs/streamwd/pass0.jsonl):
+  model      deepseek-ai/DeepSeek-V4-Flash-0731
+  revision   7872f01b1d1fe23eabc4c98b48bffcef5a386062
+             (lastModified 2026-08-01T03:07:41Z)
+  layer 22   256 experts, ids 0..255, ALL in a single shard
+             model-00024-of-00048.safetensors (1,536 tensors)
+  dims       d_model 4096 (residual), d_ff 2048 (hidden per expert)
+             w1 [2048,4096] gate, w3 [2048,4096] up, w2 [4096,2048] down
+             (logical shapes; on disk I8 carries TWO fp4 codes/byte)
+  scales     F8_E8M0, block size 32 along the packed axis
+             w1/w3.scale [2048,128], w2.scale [4096,64]
+  payload    WEIGHT 3072 MiB + SCALE 192 MiB (5.88%)
+             TOTAL 3264 MiB = 3,422,552,064 B
+  per expert 3 x 2048 x 4096 = 25,165,824 params (= the V4-CENSUS
+             25.17M, independently reproduced from headers)
+  layer      6,442,450,944 weight elements
+  vendor     4.2500 bits/weight INCLUDING scales (4 bits of code +
+             8 scale bits per 32 weights = 0.25)
+Dimensional check on the registered mechanics, now confirmed
+against real shapes: w1^T w1 and w3^T w3 are [4096,4096]; w2 w2^T
+is [4096,4096]. Cin and Cout are both residual-coordinate
+Gram matrices of the same size, as specified.
+
+CHANGE 1 — TARGET AND BASELINE SEPARATED.
+  TARGET W: the exact dequantized fp4 tensor, produced by the
+  frozen MXFP4 path (llmopt/lab/shards.dequant, dual-copy guarded).
+  This is ground truth BY DEFINITION for every arm; the vendor's
+  packing is not itself an arm and is never scored.
+  BASELINE arm A: the best scalar quantization OF THAT TARGET at
+  the reduced budget below. It now carries genuine nonzero error
+  and cannot be the identity map.
+
+CHANGE 2 — THE BUDGET IS STRICTLY BELOW THE VENDOR PAYLOAD.
+  PRIMARY BUDGET B1 = 1/2 the measured vendor payload =
+  1,711,276,032 B = 2.1250 bits/weight including every overhead.
+  SECONDARY BUDGET B2 = 1/4 = 855,638,016 B = 1.0625 bits/weight,
+  run only if B1 completes cheaply (it turns one point into a
+  curve; skipping it books as NOT-RUN, never as a failure).
+  Rationale, stated in advance: BLACKHOLE B0's capacity meter put
+  large-expert classes near M ~ 2.0-2.33 (V3 ~45M/expert 2.33, K2
+  ~40M 2.01, L11058), so ~2 bits/weight is the measured
+  neighbourhood where these tensors stop being trivially
+  compressible — the interesting side of the vendor's 4.25.
+  No arm can be the identity at either budget.
+
+CHANGE 3 — BYTE-ACCOUNTING CONTRACT, FROZEN NOW (before PASS 1,
+so no arm can be tuned into a favourable accounting after seeing
+its error). An arm's ARTIFACT BYTES are everything required to
+reconstruct W_hat for all 256 experts, with nothing exempt:
+  - codes / coefficients, at their declared dtype
+  - ALL scales, zero-points, and per-row or per-block metadata
+  - codebooks and shared bases, counted ONCE for the layer and
+    reported separately as the amortized term
+  - VQ assignment indices at ceil(log2 K) bits, bit-packed
+  - any index, offset, or shape table the decoder needs
+DECLARED DTYPES (an arm may deviate only by declaring it in its
+receipt row, and the deviation is then part of its byte count):
+  shared bases Vin/Vout           float16
+  low-rank coefficients           int8 + per-row float16 scale
+  VQ codebooks                    float16
+  VQ indices                      ceil(log2 K) bits, packed
+  scalar-quantization codes        declared per arm; scales float16
+REALIZED BYTES must land in [0.99*B, 1.00*B] — an arm may not win
+by underspending, and overspending disqualifies the row. The
+realized count is computed by the driver from the artifact it
+actually wrote, never from a formula, and is booked per arm.
+
+CHANGE 4 — BARS RESTATED against the amended budget. BAR 1
+(SHARING-PAYS: arm C's pooled relative Frobenius at least 10%
+below arm D's) and BAR 3 (GAUGE-CONTROL: arm E worse than arm C)
+are unchanged in substance — both are within-race comparisons at
+matched bytes and were never anchored to the vendor. BAR 2 is
+restated: the better of arms B and C beats arm A on seeded
+operator error by at least 10% relative AT BUDGET B1. REFUTED-IF
+is unchanged: BAR 1 and BAR 2 both failing means no streamed-weight
+representation beats scalar packing or its own per-expert control
+at this layer, and STREAM-WDISTILL-1 does not fire.
+
+Everything else in the pre-reg stands, including the gauge
+argument, the router-as-prior-only fence (AMENDMENT FINAL-0803
+retracted the causal reading), the weight-space-only scope, and
+the rule that a probe-based error column is
+comparative-at-matched-bytes only (L11058).

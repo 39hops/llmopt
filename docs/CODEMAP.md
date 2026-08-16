@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 201, library 69, reproduce-pinned 10, results-cited 201, spec-cited 86, cited-but-library 58
+Census: UNCITED 201, library 69, reproduce-pinned 10, results-cited 202, spec-cited 86, cited-but-library 58
 
 ## scratch/
 
@@ -370,6 +370,7 @@ Census: UNCITED 201, library 69, reproduce-pinned 10, results-cited 201, spec-ci
 | ssm | ssm_star1.sh | UNCITED | — | — | — | — |
 | stability | stability_atlas.sh | UNCITED | — | — | — | — |
 | star | star_profile.py | results-cited | RESULTS | RESULTS×3 | — | — |
+| stream | stream_wdistill0.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | streaming | streaming_birth_d256.py | library | RESULTS | RESULTS×3 | 1 | — |
 | successors | successors_acceptance.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | sym | sym_birth.py | library | RESULTS, specs | RESULTS×1, specs×3 | 1 | 8 |
@@ -399,16 +400,16 @@ Census: UNCITED 201, library 69, reproduce-pinned 10, results-cited 201, spec-ci
 | tuesday | tuesday_night.sh | UNCITED | — | — | — | — |
 | umoe | umoe_conserve.py | library | RESULTS | RESULTS×2 | 9 | 3 |
 | v4flash | v4flash_anatomy.py | UNCITED | — | — | — | — |
-| v4flash | v4flash_census.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| v4flash | v4flash_census.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | v4flash | v4flash_f1b.py | library | RESULTS | RESULTS×1 | 2 | — |
-| v4flash | v4flash_f1c.py | library | RESULTS | RESULTS×1 | 1 | — |
+| v4flash | v4flash_f1c.py | library | RESULTS | RESULTS×2 | 1 | 1 |
 | v4flash | v4flash_f1d.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | — |
 | v4flash | v4flash_header.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | v4flash | v4flash_router.py | library | RESULTS, specs | RESULTS×1, specs×1 | 3 | — |
 | v4flash | v4flash_rung0.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | v4flash | v4flash_rung2b.py | library | RESULTS, specs | RESULTS×1, specs×2 | 1 | — |
 | v4flash | v4flash_rung2b_router.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| v4flash | v4flash_rungA.py | library | RESULTS, specs | RESULTS×2, specs×3 | 8 | — |
+| v4flash | v4flash_rungA.py | library | RESULTS, specs | RESULTS×2, specs×3 | 8 | 1 |
 | v4flash | v4flash_rungd.py | library | RESULTS | RESULTS×3 | 1 | — |
 | v4flash | v4flash_rungd2.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | v4flash | v4flash_s0.py | results-cited | RESULTS | RESULTS×3 | — | — |
