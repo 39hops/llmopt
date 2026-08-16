@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 202, library 70, reproduce-pinned 10, results-cited 202, spec-cited 86, cited-but-library 59
+Census: UNCITED 204, library 70, reproduce-pinned 10, results-cited 202, spec-cited 86, cited-but-library 59
 
 ## scratch/
 
@@ -436,6 +436,7 @@ Census: UNCITED 202, library 70, reproduce-pinned 10, results-cited 202, spec-ci
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
 |  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×12 | — | 1 |
+| anchor | anchor_guard.py | UNCITED | — | — | — | 1 |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | 2 |
 | arena | arena.py | UNCITED | — | — | — | — |
 | autopsy | autopsy_int.py | UNCITED | — | — | — | — |
@@ -543,6 +544,7 @@ Census: UNCITED 202, library 70, reproduce-pinned 10, results-cited 202, spec-ci
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
 | gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | 1 |
 | gen | gen_readme.py | spec-cited | specs | specs×24 | — | 1 |
+| gen | gen_receipt_lock.py | UNCITED | — | — | — | 1 |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
 | gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 4 |
 | gen | gen_scoreboard.py | UNCITED | — | — | — | — |
