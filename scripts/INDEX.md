@@ -1320,9 +1320,31 @@ Free-running census, THROUGH answer-form + n_succ join (PRE-REG ATTRACTOR-0B-JOI
 - `norm(s)`
 - `main()`
 
+### scratch/basics_census0.py
+BASICS-CENSUS-0 — how much EXPLICIT arithmetic/algebra the stock diet already states on its own rows (desk census, no model).
+
+- `main()`
+
+### scratch/basics_probe0.py
+BASICS-PROBE-0 — does the 19M already do arithmetic without ever being shown an arithmetic row? (desk probe, frozen checkpoint)
+
+- `_poly(rng, deg, cmax=9)`
+- `gen_expand(i)` — Resident family, farm_algebra's level-1 expand shape, held-out
+- `gen_arith(i)` — Absent family: the coefficient arithmetic calculus performs.
+- `gen_numsum(i)` — Near-format: the shape of the 12 incidental diet rows.
+- `correct(pred, truth)` — Oracle equality: parse and compare exactly. No simplify.
+- `main()`
+
 ### scratch/basin_probe.py
 BASIN-1: routing basin radius v usage. CPU. Usage: SEED=1 python scratch/basin_probe.py
 
+- `main()`
+
+### scratch/birth19m_arith.py
+BASICS-DIET-1 birth driver (pre-reg RESULTS L30355, amended L30429): stock diet + 6,000 sympy calculus atoms, with or without the 2,545-row arithmetic shard.
+
+- `encode_flagged(rows, tok)` — C.encode_with_levels verbatim, carrying the source tag.
+- `load_shard(path, band)`
 - `main()`
 
 ### scratch/birth19m_atoms.py
@@ -1405,6 +1427,13 @@ SOFT-SPEED-1 instrument (pre-reg RESULTS 2026-08-15, commit be3b8e4): collapse e
 - `conflict_groups(rows)` — cur-key -> list of row indices, conflicted keys only.
 - `collapse(rows, tok)` — -> (soft_rows, weight_of, soft_targets_of, n_conf_rows)
 - `encode_indexed(rows, tok)` — encode_with_levels' text/filter path with the source row
+- `main()`
+
+### scratch/birth19m_xterm.py
+XTERM-DIET-1 birth driver (pre-reg RESULTS 2026-08-16, L30565): stock diet + 6,000 sympy calculus atoms, with or without the cross-term-decomposed expand shard.
+
+- `encode_flagged(rows, tok)` — C.encode_with_levels verbatim, carrying the source tag.
+- `load_shard(path, band)`
 - `main()`
 
 ### scratch/blackhole_b0.py
@@ -1806,6 +1835,12 @@ Export the R2b full-birth reference for axiom's C++ leg (relay 2026-08-01-0): in
 
 - `main()`
 
+### scratch/farm_arith.py
+BASICS-DIET-1 farm: the one-ply ARITHMETIC shard (pre-reg RESULTS 2026-08-15, L30355). Sibling of the frozen scripts/farm_algebra.py — never an edit to it.
+
+- `gen(family, i)` — One row: (cur, nxt, level, think). Exact by construction.
+- `main()`
+
 ### scratch/farm_atoms.py
 ATOM-DIET-1 farm (pre-reg RESULTS 2026-08-14): rule-tagged atom shard — engine one-ply solves, one indivisible verified rewrite per row. Self-contained forked worker (the solve_isolated timebox law; expert_iter_steps stays frozen): make_integrate(level, seed), engine solve budget 200, keep only true one-ply solves (len(history) == 1) with cur AND nxt in-language (tokenizer roundtrip). Guards at farm time: D2 gate-band exclusion on norm(cur)/norm(nxt), corpus-cur dedup against the excised stock diet (no new one-to-many ambiguity), (cur, nxt) dedup within the shard. Rows stream incrementally to data/micromodel_atoms_shard0.jsonl; rule-tag distribution printed.
 
@@ -1822,6 +1857,14 @@ ATOM-DOSE-LADDER-1 farm (pre-reg RESULTS 2026-08-14): rule-tagged one-ply atoms 
 Distribution rows (spec 2026-07-28 rung 3): for each diet cur, enumerate the engine's verified-valid moves (successors: sympy- verified, non-identity by construction), weight by MarkovPrior (rule-name unigram, @site stripped, unseen = 0.5*median — the proposer's own convention), emit ALL of them as weighted rows. Rows STREAM out incrementally (the killed-worker doctrine). sympify here runs on farm-certified diet strings, not model text.
 
 - `enumerate_moves(cur, expr)` — -> [(rule_name, child_sstr)]; axiom bridge (deadline-walled,
+
+### scratch/farm_xterm.py
+XTERM-DIET-1 farm: the cross-term-decomposed expand shard (pre-reg RESULTS 2026-08-16, L30565). Sibling of the frozen scratch/farm_arith.py — never an edit to it.
+
+- `_parts(rng)`
+- `_inter(a, b, c, d)` — Intermediate text: ends evaluated, cross term literal.
+- `gen(family, i)` — One row: (cur, nxt, level, think). Exact by construction.
+- `main()`
 
 ### scratch/farmer_probe.py
 FARMER PROBE (pre-reg 2026-07-29: escalation-engine cell 6, Artin's reverse-self-learner riff). A full-reverse d64 birth (sym_birth REV=2, SKIP_GATE) plays farmer: sample predecessor candidates for NOVEL band expressions (gate-band + 50k offset, disjoint from the gate), verify each by FORWARD rule application (fork-boxed verify_wave: cand -> seed must be a valid step), and score verified-distinct-NOVEL yield per 1000 samples + wall time. Novel = candidate absent from the entire gen-4 corpus (cur+nxt). Usage: CKPT=checkpoints/sym_birth_dense_revfarm_ema.pt        .venv/bin/python scratch/farmer_probe.py
@@ -2023,6 +2066,10 @@ GRAD-MAP-0 desk probe — gradient/data-worth atlas signatures.
 - `mean_grad(model, tok, enc, label, max_batches=None)`
 - `per_row_stats(model, tok, enc, sample_key)` — Metric 5 via the streaming identity: within-family mean pairwise
 - `main()`
+
+### scratch/gradmap0_rd2.py
+GRAD-MAP-0 RD2 completion pass — ctrl3218 v noheur signatures at stock_s3 against the F4/F6 failure columns (the pre-declared L6 falsifier rider, spec 2026-08-15 amended 475a6f3). Companion to scratch/gradmap0_probe.py; imports its functions, writes a fully provenanced row to the same receipt file.
+
 
 ### scratch/graph_mod_sigma.py
 A2 (revival-sweep Tier A, 2026-07-31): graph-modularity Q dispersion on the three same-diet wfloor_d256 seed births — the "free sigma" the 07-26 NULL entry named but never ran. The +0.030 dQ verdict was a BAR-based null with unmeasured dispersion; this cell measures it and re-adjudicates. CPU, minutes. Usage: python scratch/graph_mod_sigma.py
@@ -3264,6 +3311,13 @@ Weight-FFT euler read (pre-reg 2026-07-26, RESULTS.md).
 - `ks_uniform(theta)`
 - `phase_stat(W)`
 - `fft_stat(W)`
+
+### scratch/xterm_probe.py
+XTERM-DIET-1 probe — sibling of the frozen basics_probe0.py (pre-reg RESULTS 2026-08-16, L30565). Same three arms, same seeds, same sampler, same oracle, PLUS the canonical-form counter the pre-reg pins: sympify silently evaluates (3*4 + 2*5), so a prediction counts as FULLY-EVALUATED only if its text is already sympy-canonical (norm(pred) == norm(sstr(sympify(pred)))). Intermediate-form corrects are counted separately, never inside a bar. All BAR scoring is on the fully-evaluated counts.
+
+- `_n(s)`
+- `fully_evaluated(pred)` — True iff pred's TEXT is already sympy-canonical — an
+- `main()`
 
 ## llmopt/
 
