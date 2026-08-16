@@ -47,6 +47,15 @@ implementations. See README for the full inventory and measured numbers.
   perfect gate dict and a false emitter field, which is exactly
   what happened on 2026-08-15. Run receipt-auditor on any NEW or
   COPIED driver's first real receipts.
+- **Smoke runs are path-isolated**: SMOKE mode writes receipts
+  AND checkpoints to its own paths (smoke.jsonl, *_smoke.pt) and
+  refuse-if-exists guards stay unconditional — a smoke artifact
+  on a real path cost a manual delete and an auditor blocker
+  (2026-08-15, twice).
+- **Receipt provenance is DERIVED, never a literal**: emitter,
+  shard, checkpoint, sha come from the artifacts the run actually
+  opened. A hardcoded field inherited from a copied sibling
+  booked a false emitter into frozen receipts (RULE-ABLATE-1).
 - **Sub-agents: review by default, MAY WRITE when directed** (Artin,
   2026-08-11 — the read-only default is a habit, not a safety
   property). Reviewers (sanctioned 2026-07-24, standing since
