@@ -5317,3 +5317,44 @@ without re-introducing history).
   existing deletion/snap ledger) as the one instrument this frame
   has been pointing at twice now. Attribution: Artin (the video +
   the compare ask), house (fact-check + mapping).
+
+- **BANKED (2026-08-16): the XTERM mechanism ladder, the
+  intermediate-as-policy read, and transition-interface attachment**
+  (GPT seat, reviewing 5332bf5..dc73020; house verified every
+  ledger claim in the review before banking). Three items off the
+  live XTERM-DIET-1 rung:
+  (1) MECHANISM LADDER: a firing XTERM-DIET-1 confirms the
+  intervention, not the mechanism — xexp (decomposition stated) and
+  xstep (arithmetic in-format) are confounded by design. The ladder
+  is control / xexp-only / xstep-only / both; xstep-only is the
+  discriminator: if intermediate->final training alone moves the
+  ORIGINAL product->final probe, competence attached to the
+  representational neighborhood (format-as-routing); if xexp is
+  required, the story is decomposition/state scaffolding.
+  (2) INTERMEDIATE EMISSIONS AS ACCIDENTAL POLICY: the registered
+  most-informative outcome is BAR 1 fires + BAR 2 misses +
+  intermediate_form rises — training fixed the defect while the
+  one-step interface misaligned with what the model wants to emit.
+  Follow-on writes itself: feed the emitted intermediate back as
+  the next Current: state and score the two-step chain (the first
+  concrete bridge from births to verified multi-step execution;
+  ties to the RULE-POLICY bank).
+  (3) TRANSITION-INTERFACE ATTACHMENT, the generalization:
+  capabilities may attach to state-transition interfaces rather
+  than becoming globally callable subroutines. Anchors: atoms fix
+  L4 first-ply recognition specifically (L29250, L29465),
+  arithmetic learned at 61.67% stays format-local (L30467), numsum
+  half-moves by proximity, i_heurisch carries L4 worth invisible
+  to gradient metrics (L29916, L30127).
+  Honest breaks: house correction adopted INTO the bank — the GPT
+  claim that intermediate emissions cannot flatter BAR 1 is wrong
+  one-way: a correct-products intermediate parses with the mid
+  coefficient right and so deflates the cross-term-wrong counter
+  without any evaluation; a BAR 1 fire with a large
+  intermediate_form count books as composite (the probe's counter
+  plus the control's measured 0 make it separable). The
+  canonical-form strictness caveat is registered but empirically
+  quiet at control (canonical == any-form on expand, 25 v 25).
+  Testable residue: XTERM-DIET-2 (the xstep-only arm, one birth);
+  the chain-scored two-step probe. Attribution: GPT seat (all
+  three frames), house (BAR-1 deflation correction, verification).
