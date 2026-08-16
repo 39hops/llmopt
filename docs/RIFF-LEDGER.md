@@ -5719,3 +5719,20 @@ value order (artifact closure, typed metrics/populations, the
 blind adjudicator). Attribution: GPT seat (the PROMOTED-v-
 GRADUATED distinction and the catch), house (adoption, the
 honest status column).
+
+  AMENDMENT 2 (2026-08-16, GPT seat): the episode's most reusable
+  lesson gets a schema. MEASUREMENT VALIDITY and COMPARISON
+  ADMISSIBILITY are different predicates, and EXEC1 failed both
+  in different ways for different reasons. Every bar should
+  eventually carry:
+      measurement_valid : true/false
+      arms_admissible   : true/false
+      bar_adjudicable   : measurement_valid AND arms_admissible
+  Read against this episode: EXEC1 books false/false/false; the
+  repair's BAR 2 books true/false/false (the measurement is fixed,
+  arm A is still structurally over budget); BARs 1 and 3 after a
+  clean repair book true/true/true. The whole debugging arc
+  collapses into that one three-field record, which is the
+  cheapest concrete piece of proposal (2)/(3) and the natural
+  first field of a machine-readable pre-reg. Attribution: GPT
+  seat.

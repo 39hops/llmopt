@@ -31797,3 +31797,52 @@ The resulting ladder, each step isolating one thing:
   S2 -> W4        multidimensional coding at the same index rate
   W4 -> W8 -> W32 whether the useful interaction scale keeps growing
   W32 -> W32-shuf whether the gain is tied to the NATIVE arrangement
+
+## AMENDMENT STREAM-WDISTILL-0-DELTAS (amends OBSERVATION -EXEC1 and PRE-REG -0S): EXEC1-to-repair deltas are apples-to-apples for POOLED FROBENIUS ONLY — operator and spectral changed population and aggregation between runs — and BAR 3's locality language is scoped to its three realizations (2026-08-16, Mac)
+
+Two pre-look corrections (GPT seat). Booked before the repair
+receipt is read.
+
+(1) CROSS-RUN DIAGNOSTIC COMPARABILITY. The house proposed a
+delta table (C_repair - C_exec1, D_repair - D_exec1, etc.) to
+price what each fix changed. Two of its four rows are invalid as
+stated, and the reason is a POPULATION change rather than a
+repair effect:
+  pooled Frobenius   COMPARABLE — both runs pool all 256 experts,
+                     so the delta isolates the fix
+  operator error     NOT COMPARABLE — EXEC1 computed it at
+                     EXPERT 0 ONLY (n=1 of 256); the repair pools
+                     summed numerator/denominator over all 256.
+                     Differencing them measures the population
+                     change, not the repair.
+  spectral error     NOT COMPARABLE — EXEC1 was likewise expert-0
+                     scoped and the repair changed aggregation.
+The verdict's delta analysis is therefore restricted to pooled
+Frobenius, and the operator/spectral columns are reported as
+REPAIR-RUN VALUES ONLY with no EXEC1 counterpart quoted beside
+them.
+HOUSE NOTE, worth the ink: this IS the wrong-metric-population
+class, the same one that produced EXEC1's BAR 2 defect. It was
+banked hours earlier as PROMOTED-not-GRADUATED (a documented law
+with no executable invariant), and it recurred immediately — in
+the house's own analysis plan, caught by a reader rather than by
+the repo. That is evidence FOR the graduation program, exactly of
+the kind its success metric names.
+
+(2) BAR 3's LANGUAGE IS SCOPED TO ITS REALIZATIONS. Three
+independently seeded shuffles are much stronger than one, but
+they do not license "arbitrary" or class-wide phrasing. Pinned
+wording for the verdict, if BAR 3 fires:
+  "native W32 grouping beats three independently seeded
+   locality-destroying regroupings, including their mean by
+   >= 5%"
+and the claim it supports is
+  "the native local arrangement contains compressible dependence
+   detectable by W32 coding at this rate"
+NOT "V4 weights are locally highly compressible" — one layer, one
+model, one run, and the fences travel. Registered in advance:
+beating randomized regroupings does NOT establish that physical
+adjacency is the UNIQUE relevant coordinate system; a structured
+regrouping by row/column semantics, neuron identity, or gate/up
+pairing could do better, and that is a named future direction
+rather than an implied claim.
