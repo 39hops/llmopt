@@ -31476,3 +31476,111 @@ numerator/denominator over all 256 experts. The repair is
 POST-LOOK by construction — the first table has been seen and
 that cannot be undone — and is booked as an audit-repair
 execution, never as the original pre-registration undisturbed.
+
+## AMENDMENT STREAM-WDISTILL-0-REPAIR-SCOPE (amends OBSERVATION -EXEC1 and PRE-REG L30921): the audit-repair can adjudicate BAR 1 and BAR 3 but NOT BAR 2 — the pre-registered scalar arm is structurally over-budget, not mis-measured (2026-08-16, Mac)
+
+Artin's adjudication, booked while the repair is still running and
+before any repaired number exists. -EXEC1 registered the repair as
+if fixing the measurement would restore all three bars. It does
+not, and the distinction matters:
+  BAR 1 and BAR 3 failed EXEC1 on MEASUREMENT defects (fp32
+  decoders billed as fp16; a randomized solver that failed its own
+  verification clause). The repair fixes exactly those, so both
+  bars are ADJUDICABLE from the repaired run.
+  BAR 2 failed on a STRUCTURAL defect. Arm A's frozen format is
+  2 + 16/128 = 2.1250 bits/weight over 6,442,450,944 weights =
+  1,711,276,032 B = EXACTLY B1, so under -ARITH (4)'s counted-
+  container rule it is over budget by construction. No measurement
+  fixes that, and the format cannot be altered post-look without
+  becoming a tune. BAR 2 therefore books UNRESOLVED IN THE REPAIR
+  TOO, and arm A's repaired numbers are reported with its
+  over-budget status stated, never as a scored baseline.
+  Arm B's repaired (artifact-faithful) performance is reported
+  DESCRIPTIVELY — a measurement of the winner with no admissible
+  opponent at this budget, not a claim that it beats scalar
+  packing.
+
+## PRE-REG STREAM-WDISTILL-0S: does the VQ advantage survive a FAIR scalar baseline — and if it does, is the lever vector WIDTH or merely codebook design? (2026-08-16, Mac)
+
+Registered because EXEC1's headline (width-32 VQ 0.350 v scalar
+0.770 pooled Frobenius) rests on a scalar arm that is both
+over-budget and, on inspection, a weak form of scalar
+quantization. A win over an inadmissible strawman is not a
+result. This rung supplies the admissible opponent and, in the
+same pass, decomposes the advantage.
+
+INSTRUMENT. Identical to STREAM-WDISTILL-0: V4-Flash layer 22,
+256 experts, revision 7872f01b..., fetches pinned to
+/resolve/<sha>, ephemeral two-pass streaming, zero teacher
+forwards, zero calibration data. Same measured-serialization byte
+accounting, same fp16/int8 declared dtypes bounding the DECODER,
+same budget B1 = 1,711,276,032 B with admissibility bytes <= B and
+slack reported. Driver: a sibling of scratch/stream_wdistill1.py.
+
+ARMS, all genuinely realizable at <= B1 (each verified by dry-run
+serialization BEFORE the run, and the realized bytes booked):
+  S1  uniform max-anchored 2-bit, block 128, E8M0/fp8 scale
+      = 2 + 8/128 = 2.0625 bits/weight. This is the registered
+      arm A repaired into admissibility by the MINIMAL change
+      that makes it fit: the scale dtype drops fp16 -> fp8,
+      matching the vendor's own E8M0 convention. Block size is
+      NOT changed (that would coarsen the quantizer and flatter
+      the VQ arms).
+  S2  Lloyd-optimal 1-D codebook, 2-bit, block 128, fp8 scale,
+      trained on the same seeded sample as the VQ arms. This is
+      literally VQ AT WIDTH 1 and is the strong scalar baseline
+      that S1 is not.
+  W4, W8  residual VQ at vector width 4 and 8, stages set to land
+      <= B1 at K=256, same training recipe.
+  W32 residual VQ at width 32, 8 stages, K=256 — the EXEC1 winner,
+      re-run here so every arm shares one execution.
+The width ladder {1, 4, 8, 32} is the decomposition: S2 and W32
+differ ONLY in vector width, at matched bytes and matched
+codebook training.
+
+FROZEN RECIPE (before any weight byte): seed 20260816; codebook
+sample 2**20 vectors per projection; k-means++ init on a 2**16
+subsample; 15 Lloyd iterations; codebooks per-projection, fp16,
+counted once; indices ceil(log2 K) bits packed; every codebook
+rounded to fp16 BEFORE it is used to assign, form residuals, or
+reconstruct (the EXEC1 blocker (3) lesson, applied at design
+time). Wall 2700 s for the complete codebook-training phase.
+
+METRICS. Pooled Frobenius over all 256 experts; operator error
+POOLED BY SUMMED NUMERATOR/DENOMINATOR over all experts (not a
+mean of ratios, and not expert 0 alone — both EXEC1 defects);
+spectral-norm error; realized bytes and slack per arm.
+
+BARS:
+1. VQ-SURVIVES: W32 beats the BEST realizable scalar
+   (min over S1, S2) on pooled operator error by >= 10% relative
+   at <= B1.
+2. WIDTH-IS-THE-LEVER: W32 beats S2 (width 1) by >= 10% relative
+   on pooled operator error — i.e. the advantage is vector width,
+   not codebook optimality.
+REFUTED-IF: the best realizable scalar lands within 5% of W32 —
+the EXEC1 headline was an artifact of a weak scalar arm, and the
+"VQ wins" reading is withdrawn.
+
+REGISTERED PRIOR (house, on the record, and it CONTRADICTS the
+EXEC1 headline). BAR 1 MISSES and BAR 2 MISSES; I expect the
+fair scalar baseline to close MOST of the 0.350-v-0.770 gap.
+Reason, stated in advance: uniform MAX-ANCHORED quantization at
+2 bits is pathological on near-Gaussian data — the scale is set
+by the block maximum, so with only four levels the bulk of the
+mass collapses into two central bins. A Lloyd-optimal 1-D
+codebook at the same rate should recover most of that loss
+without any vector structure at all. Classical rate-distortion
+also bounds the pure space-filling gain of vector quantization at
+~0.254 bits/sample, which is far too small to explain a 0.35-v-
+0.77 gap. If that reasoning is right, EXEC1's apparent VQ triumph
+was mostly an indictment of arm A. Confidence: medium-high on
+BAR 1 missing, medium on BAR 2 missing.
+
+FENCES. One layer, one model, n=1, weight space only; no
+functional or capability claim; probe-based error columns are
+comparative-at-matched-bytes only (L11058); arm A/S1's rate
+differs from EXEC1's arm A (2.0625 v 2.1250 bits/weight) so the
+two are NOT directly comparable and EXEC1's arm-A number is never
+quoted beside these; the width ladder shares one execution so
+cross-arm comparisons are within-run.
