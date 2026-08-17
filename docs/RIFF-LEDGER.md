@@ -6399,3 +6399,40 @@ honest status column).
   carrier-expert pattern at 27B scale.
   Attribution: GPT seat (the synthesis), Artin (relay + standing
   ask to mine FINDINGS), house (anchor verification, fences).
+
+- **BANKED (2026-08-17): the weight-reader as a compression
+  ALLOCATOR — teach the model that reads weights to predict where
+  precision matters** (Artin's ask "can't our model that reads
+  model weights help compress? teach it to optimize weights?").
+  The mapping: the lab owns a measured result that raw weights are
+  READABLE (2026-07-06 weight-reader: 80.8% raw, 88.4% with
+  permutation augmentation — teach invariance, don't impose it).
+  Compression's binding open problem after the family probe is
+  ALLOCATION: weight space is codec-homogeneous, so no weight
+  statistic names the functionally sensitive family — but that is
+  a statement about the SIMPLE statistics we tried (mass, op
+  error), not about all functions of the weights. A trained reader
+  could learn the map (tensor/row features) -> (measured
+  functional damage) that hand statistics miss; identity-beats-
+  aggregates predicts the signal lives in specific rows/heads, and
+  a reader is exactly the instrument class that can see identity.
+  Two grades: (1) ALLOCATOR — predict per-tensor/per-row rate
+  sensitivity, spend bits where the reader says; (2) OPTIMIZER —
+  propose weight EDITS (rotation/gauge moves) that improve
+  codability at fixed function, verified by the no-op gate + the
+  frozen eval, never by weight distance (the house law).
+  Honest breaks: the training LABELS are function-space damage
+  measurements, which are exactly what is scarce — MODEL-1 + the
+  D/E recomposition produce the FIRST labeled examples, and n will
+  be tiny for a long time; a reader trained on weight-space error
+  learns the wrong target by construction (never-score-by-weight-
+  distance); charter-clean (math engines) but compute-priced like
+  any training rung.
+  Testable residue: after MODEL-1 books, the margin-stratified
+  flip data + per-family attributions become the first label set;
+  a desk-grade probe (frozen features -> predict which family the
+  tree promoted, leave-one-out) prices the idea before any
+  training run. Fires only after the A/B/C curve; compression
+  freeze holds.
+  Attribution: Artin (the ask, and the reader-to-compressor
+  bridge), house (grading, label-scarcity break, lineage anchors).
