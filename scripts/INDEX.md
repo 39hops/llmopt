@@ -2864,6 +2864,15 @@ CUDA leg rung 0: toolchain + VRAM budget receipt (3080/WSL).
 - `add_kernel(x_ptr, y_ptr, o_ptr, n, BLOCK: tl.constexpr)`
 - `main() -> int`
 
+### scratch/qwen_cuda_rung1.py
+CUDA leg rung 1: single-tensor w4 decode on device, bit-exact parity against the canonical decoder (llmopt.lab.qcodec.dec_w4).
+
+- `w4_decode_kernel(idx_ptr, cb_ptr, scale_ptr, out_ptr, n, BLK: tl.constexpr)` — One program per 128-element block: out[i] = fp32(cb[idx, lane])
+- `gpu_dec_w4(buf: bytes, shape) -> np.ndarray`
+- `_payload(R, C, seed=3, exp_lo=120, exp_hi=132)`
+- `_edge_payload(R, C, exp_val)`
+- `main() -> int`
+
 ### scratch/qwen_displace_extract.py
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
 
