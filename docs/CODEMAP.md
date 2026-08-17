@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 204, library 71, reproduce-pinned 10, results-cited 208, spec-cited 86, cited-but-library 59
+Census: UNCITED 205, library 71, reproduce-pinned 10, results-cited 208, spec-cited 86, cited-but-library 59
 
 ## scratch/
 
@@ -333,8 +333,9 @@ Census: UNCITED 204, library 71, reproduce-pinned 10, results-cited 208, spec-ci
 | quat | quat_commutant.py | library | RESULTS, specs | RESULTS×1, specs×1 | 1 | — |
 | quat | quat_convert.py | library | RESULTS, specs | RESULTS×1, specs×1 | 1 | — |
 | quick | quick_exact_3080.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| qwen | qwen_census_night.sh | UNCITED | — | — | — | — |
 | qwen | qwen_displace_extract.py | UNCITED | — | — | — | 1 |
-| qwen | qwen_stream_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| qwen | qwen_stream_probe.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | rank | rank_read.py | spec-cited | specs | specs×2 | — | 1 |
 | rat | rat_deploy.py | results-cited | RESULTS, specs | RESULTS×1, specs×5 | — | 3 |
 | rat | rat_repair.py | UNCITED | — | — | — | 1 |
