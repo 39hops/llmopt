@@ -2248,3 +2248,16 @@ regime tag on every bullet is the fence.
   (W4 best, wider worse) is depth-stable 4/4 sampled Qwen layers.
   Descriptive, rankings and mass fractions only.
   ([OBSERVATION QWEN-FFN-CENSUS-0](RESULTS.md#L32655 "id:2026-08-17-observation-qwen-ffn-census-0-the").)
+
+- [SINGLE-SEED] [DEVICE-SCOPED]
+  [REGIME-SCOPED: measured deployment artifacts]
+  Qwen3.8-27B weight space is codec-homogeneous: all nine
+  representative tensors across linear-attention, full-attention,
+  embeddings, and LM head reproduce the FFN pattern (W4 beats the
+  optimal scalar by ~11-12% at 2 bits; 4 bits cuts error ~3.2x;
+  16-level DP scalar edges stacked VQ at 4 bits on every tensor) —
+  no fragile family exists in weight space, so the whole-model rate
+  table is a pure allocation decision that only the frozen
+  functional eval can refine. Descriptive, one layer per attention
+  family, weight space only.
+  ([OBSERVATION QWEN-FAMILY-PROBE-0](RESULTS.md#L32729 "id:2026-08-17-observation-qwen-family-probe-0-weight").)

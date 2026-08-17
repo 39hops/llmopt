@@ -32725,3 +32725,50 @@ is UNMEASURED and stays open until the first inference receipt.
 The 8.9 GiB worst-case allocation is storage-feasible, not
 demonstrated-runnable. The 7.5-8 GiB engineering target stands
 precisely to leave that unproven margin.
+
+## OBSERVATION QWEN-FAMILY-PROBE-0: weight space is codec-HOMOGENEOUS across every family — all nine representative tensors show the FFN pattern, no fragile family exists at any probed rate, and 4-bit scalars edge 4-bit vectors everywhere (2026-08-17, 3080/WSL, descriptive)
+
+Bridge closer (receipt logs/qwenprobe/family.jsonl, 9 tensors,
+213 s, code_commit 1918e49; driver scratch/qwen_family_probe.py,
+per-tensor codecs, row-chunked two-pass so the 1.27B-param
+embed/head tensors fit VRAM). Rate ladder per tensor: S2@2.0625,
+W4@2.0625, S16@4.0625 (16-level DP), W4x2@4.0625. Pooled operator
+error:
+
+  family       tensor                        S2@2   W4@2  S16@4  W4x2@4
+  linear_attn  L33 in_proj_qkv 10240x5120  .3695  .3270  .1043  .1095
+  linear_attn  L33 in_proj_z    6144x5120  .3667  .3300  .1058  .1112
+  linear_attn  L33 out_proj     5120x6144  .3651  .3254  .1030  .1093
+  full_attn    L3  q_proj      12288x5120  .3797  .3353  .1068  .1134
+  full_attn    L3  k_proj       1024x5120  .3714  .3276  .1055  .1104
+  full_attn    L3  v_proj       1024x5120  .3723  .3295  .1037  .1100
+  full_attn    L3  o_proj       5120x6144  .3585  .3207  .1015  .1069
+  embeddings   embed_tokens   248320x5120  .3725  .3335  .1063  .1118
+  lm_head      lm_head        248320x5120  .3789  .3373  .1088  .1144
+
+READINGS. (1) HOMOGENEITY: every family, including the 20%
+linear_attn unknown and the semantically-different embed/head,
+reproduces the FFN pattern within a few percent — same near-zero
+mass (80-84% within |w|<1/3), same W4-over-S2 margin at 2 bits
+(~11-12% relative), same 3.1-3.2x error drop from 2 to 4 bits.
+NO family is catastrophic at any probed rate; the stop condition's
+escape clause does not trigger, and the bridge is COMPLETE.
+(2) THE VECTOR ADVANTAGE IS A 2-BIT PHENOMENON: at 4 bits the
+16-level DP scalar beats the 2-stage W4 stack on all nine tensors
+(by 4-5% relative) — consistent with the 0S width-ladder story
+(residual stages spend bits worse than direct quantization once
+rate is available). Consequence: 4-bit fallback tensors use
+S16-DP, not stacked VQ.
+(3) The 2b-v-4b question is now a pure ALLOCATION decision on
+measured curves: uniform 2.0625 everywhere = 6.56 GiB at op-error
+~0.33 per family; any family promoted to 4 bits pays its census
+share (linear_attn +1.34 GiB, embed+head +0.63 GiB, full_attn
++0.40 GiB) and buys ~3.2x lower weight-space error there. Which
+families NEED it is a FUNCTIONAL question the frozen MODEL-1 eval
+answers, not a weight-space one — weight space has no fragile
+family to point at.
+FENCES. Descriptive; one representative layer per attention
+family (L33 linear, L3 full), n=1, weight space only; operator
+metric estimates Frobenius as everywhere in this thread; small
+role-table tensors (A_log, dt_bias, conv1d, norms) are
+passthrough by registered role and were not probed.
