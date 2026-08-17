@@ -37,3 +37,41 @@ greedy decoding unless a metric says otherwise.
   set (prompts_v2) that books separately.
 - Every reported number carries the artifact hash and the eval
   commit.
+
+## Teacher-baseline procedure (frozen with the eval, added 2026-08-17
+## pre-artifact — the vendor model cannot run in the 10GB target env)
+
+Reference logits are produced ONCE by a deliberately slow
+layer-streaming CPU pass of the VENDOR artifact (revision 1d4bf0f2,
+bf16 decoded to fp32 per layer, bounded residency — the same
+streaming machinery as the compressor, run uncompressed), over
+exactly: corpus.txt token positions, every prefixes.jsonl position,
+and the prompts.jsonl greedy rollouts. The resulting logit/token
+records are hashed and LOCKED as the immutable teacher; every later
+comparison (compressed CPU reference, Metal W4, CUDA W4) scores
+against these frozen records, never against a re-run vendor pass.
+One baseline, computed once, at whatever wall-clock it costs.
+
+## Runtime ladder the scores attach to (registered order)
+  QWEN-RUNTIME-0R  portable slow CPU decode reference (mmap the
+                   artifact, decode per-op, release) — the
+                   "does it talk" oracle
+  Metal direct-W4  primary Mac performance leg (unified memory;
+                   llmopt/kernels/metal.py lineage, NOT a new
+                   MLX/torch-mps prototype stack)
+  CUDA direct-W4   primary 3080 performance leg (hard 10GB
+                   residency)
+Per-backend reporting: tok/s, peak RSS/VRAM, and EFFECTIVE
+COMPRESSED-WEIGHT BANDWIDTH = compressed bytes touched per token x
+tokens/s — separates memory-bound from lookup-bound from
+implementation-bound.
+Numerical-backend rule: default arithmetic is W4 + ordinary fp32
+accumulation everywhere; the compression error floor (~0.34
+relative weight-space) dwarfs rounding. Precision escalation only
+if a backend's KL materially diverges from the CPU reference —
+then the EXISTING exactness lineage applies (higher accumulator ->
+exact integer carrier -> tiled exact_gemm / fp32-limb Metal), as
+oracle and repair, never as baseline. No new precision science
+rung: Ozaki-class exactness is CLOSED on CUDA; its Metal leg
+(tiling/fp32-limb) is the one legitimate build, and only when this
+runtime gives it a real consumer.
