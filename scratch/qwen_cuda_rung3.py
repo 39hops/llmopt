@@ -427,6 +427,32 @@ def main():
         rec["argmax_agree"] = agree
         rec["cpu_top1_margin"] = margin
 
+    if N_NEW > 0:
+        # KV-cached greedy generation on the cuda lane (rung 4
+        # smoke): weights already resident; per-token wall includes
+        # per-layer decode (kernel_form unchanged). Prefill+decode
+        # reported separately per the registered protocol.
+        if CPU_REF:
+            del model_c
+        model, trav, _ = build("cuda")
+        torch.cuda.synchronize()
+        tg = time.time()
+        out_ids = model.generate(
+            input_ids=ids.cuda(), max_new_tokens=N_NEW,
+            do_sample=False, use_cache=True,
+            pad_token_id=tok.eos_token_id)
+        torch.cuda.synchronize()
+        wall = time.time() - tg
+        gen = out_ids[0][ids.shape[1]:]
+        txt = tok.decode(gen, skip_special_tokens=True)
+        print(f"[r3] gen {len(gen)} tokens in {wall:.1f}s "
+              f"({wall/max(len(gen),1):.2f}s/tok)", flush=True)
+        print("[r3] OUTPUT:", txt, flush=True)
+        rec["gen"] = {"n_new": int(len(gen)),
+                      "wall_s": round(wall, 2),
+                      "s_per_tok": round(wall / max(len(gen), 1), 3),
+                      "output": txt}
+
     with open(OUT, "x") as f:
         json.dump(rec, f, indent=1)
         f.write("\n")
