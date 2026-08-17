@@ -3058,6 +3058,24 @@ STREAM-WDISTILL-0 completion pass — closes the two receipt-auditor BLOCKERs on
 - `bytes_B(stages)` — Per-projection residual VQ: 8-bit indices per 32-weight vector
 - `main()`
 
+### scratch/streamwd_v2.py
+STREAM-WDISTILL harness v2 — SPEED PROTOTYPE (shard cache + GPU).
+
+- `shard_path() -> str`
+- `ensure_shard() -> str`
+- `manifest()`
+- `stream_expert(e, proj)`
+- `T(x)`
+- `e8m0_scale_t(Wb)`
+- `nearest_level_t(Wn, levels)`
+- `assign_t(V, C, chunk=1 << 18)`
+- `kmeans_t(Vn, K, seed, iters)` — v1's kmeans (kmeans++ subsample init + Lloyd + fp16 rounding),
+- `vq_recon_t(Vv, stack)`
+- `block_perms(shuf_seed, proj_idx, expert, n_blocks, inverse=False)`
+- `spectral_ratio_t(D, W, seed)`
+- `op_parts_t(D, W, seed)`
+- `main()`
+
 ### scratch/successors_acceptance.py
 Successors-bridge acceptance (house side; axiom spec 2026-07-27-successors-bridge, relay -28-2). 500 string-seeded gen-4-band roots (L1-L8), house derivation.successors vs axiom_sym.successors, E4-taxonomy decomposition: - MATCH: child sets equal (sympy-srepr normalized) - HOUSE_ONLY / AXIOM_ONLY children (named, sampled) - I-FENCE: complex-carrier states skipped (axiom domain fence) - EXPIRED: axiom deadline states (censored, never counted false) Soundness leg: every axiom-only child re-verified on the HOUSE oracle (verify_edge) — axiom emissions must never fail it. Throughput logged both sides.
 
