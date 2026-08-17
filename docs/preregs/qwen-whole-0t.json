@@ -1,0 +1,58 @@
+{
+  "name": "QWEN-WHOLE-0T",
+  "note": "Executable projection of PRE-REG QWEN-WHOLE-0T (RESULTS L32776), same commit, registered BEFORE the compiler driver exists. Rate table B frozen by Artin 2026-08-17 04:02 from measured bridge-probe curves. Compiler-correctness rung only; MODEL-1 owns every functional question.",
+  "results_id": "2026-08-17-pre-reg-qwen-whole-0t-the",
+  "registered": "2026-08-17",
+  "machine": "wsl",
+  "arms": {
+    "compiler": {"description": "the single arm: scratch/qwen_whole0t.py per-shard transactional compression of Qwen/Qwen3.8-27B@1d4bf0f2 under rate table B (FFN+attn projections W4@2.0625 per-tensor; embed+head S16@4.0625 per-tensor; small/special tensors passthrough bf16; vision and MTP excluded by named scope)"}
+  },
+  "bars": [
+    {
+      "id": 1,
+      "name": "CONSERVATION",
+      "metric": "conservation_violations",
+      "population": "tensors:all_source_keys",
+      "aggregation": "count",
+      "direction": "below",
+      "value": 0.5,
+      "arms": ["compiler"],
+      "description": "every source tensor key lands in exactly one of {compressed, passthrough, excluded-by-scope}; zero unknown, dropped, or duplicate keys, per shard and globally"
+    },
+    {
+      "id": 2,
+      "name": "BUDGET",
+      "metric": "artifact_bytes",
+      "population": "artifact:total",
+      "aggregation": "sum",
+      "direction": "below",
+      "value": 8053063680,
+      "arms": ["compiler"],
+      "description": "total artifact bytes (payload + E8M0 scales + codebooks/alphabets + manifest) <= 7.5 GiB; table B predicts ~7.19 GiB plus overheads"
+    },
+    {
+      "id": 3,
+      "name": "FIDELITY-SANITY",
+      "metric": "op_error_family_max_ratio",
+      "population": "families:coded",
+      "aggregation": "max_over_families",
+      "direction": "below",
+      "value": 1.15,
+      "arms": ["compiler"],
+      "conjuncts": [
+        {"measurement": "3:ffn", "direction": "below", "value": 0.40},
+        {"measurement": "3:linear_attn", "direction": "below", "value": 0.38},
+        {"measurement": "3:full_attn", "direction": "below", "value": 0.39},
+        {"measurement": "3:io", "direction": "below", "value": 0.13}
+      ],
+      "description": "compiler-bug tripwire: pooled per-family reconstruction op-error within 1.15x of the bridge-probe values (ffn 0.40, linear_attn 0.38, full_attn 0.39, embed+head 0.13); passing is NOT a quality claim"
+    }
+  ],
+  "receipts": [
+    "logs/qwenwhole/compile.jsonl",
+    "logs/qwenwhole/compile.log"
+  ],
+  "refuted_if": "BAR 1 fails or the artifact exceeds 8 GiB: the bounded-compiler claim is false at rate table B and the whole-model program re-plans before MODEL-1.",
+  "refuted_if_predicate": {"measurement": "refuted:artifact_bytes", "direction": "above", "value": 8589934592},
+  "registered_prior": "House: all three bars FIRE. High confidence on 1 and 3 (the probes measured exactly these codecs on representative tensors of every family), medium-high on 2 (codebook/manifest overheads estimated, not measured)."
+}

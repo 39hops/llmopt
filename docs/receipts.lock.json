@@ -401,6 +401,14 @@
    "sha256": "67633085fabc592e50141ff386ab7b166685fd647ef8c9fcee2af99bd80eaba7",
    "source": "results"
   },
+  "logs/qwenwhole/compile.jsonl": {
+   "exists": false,
+   "source": "results"
+  },
+  "logs/qwenwhole/compile.log": {
+   "exists": false,
+   "source": "results"
+  },
   "logs/refactor-2026-08-11/run.marker.json": {
    "bytes": 361,
    "exists": true,

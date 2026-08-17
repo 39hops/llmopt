@@ -32772,3 +32772,70 @@ family (L33 linear, L3 full), n=1, weight space only; operator
 metric estimates Frobenius as everywhere in this thread; small
 role-table tensors (A_log, dt_bias, conv1d, norms) are
 passthrough by registered role and were not probed.
+
+## PRE-REG QWEN-WHOLE-0T: the bounded-residency compression compiler — stream all 18 vendor shards, emit one complete compressed text-language artifact under rate table B, with an exact tensor conservation law (2026-08-17, 3080/WSL)
+
+Registered BEFORE the compiler exists (no driver is written at
+registration time). Executable projection
+docs/preregs/qwen-whole-0t.json, same commit.
+
+INSTRUMENT. scratch/qwen_whole0t.py (to be built): per-SOURCE-shard
+transactions on the 3080/WSL —
+  download source shard -> verify size/sha -> parse complete key
+  set -> classify every tensor by ROLE TABLE -> encode or
+  passthrough -> write output shard .part -> conservation check ->
+  hash -> atomic rename -> append immutable per-shard receipt row
+  -> delete source shard (KEEP_SOURCE=1 is a debugging mode and
+  never the registered evidence path).
+Restartable at shard boundaries: a verified output shard + receipt
+is skipped on re-run. Subject: Qwen/Qwen3.8-27B revision 1d4bf0f2
+(pinned; every fetch through /resolve/<sha>).
+
+RATE TABLE B (Artin, 2026-08-17 04:02, frozen from the measured
+probe curves; no rate may change after receipts exist):
+  ffn projections (gate/up/down)      W4@2.0625  per-tensor codebook
+  linear_attn projections (qkv/z/out) W4@2.0625  per-tensor codebook
+  full_attn projections (q/k/v/o)     W4@2.0625  per-tensor codebook
+  embed_tokens, lm_head               S16@4.0625 per-tensor DP alphabet
+  norms, A_log, dt_bias, conv1d, and every tensor under 1M params
+                                      PASSTHROUGH native bf16
+  vision tower (model.visual.*)       EXCLUDED by named scope
+  MTP module (mtp.*)                  EXCLUDED by named scope
+All coded tensors: per-block-128 E8M0 round-up scales (1 B/block),
+W4 = K=256 width-4 Lloyd (2^20 per-tensor sample, 15 iters, seed
+20260816 + crc32(tensor)), S16 = 16-level DP on the tensor's own
+frozen 4096-bin histogram, 4-bit codes packed two per byte,
+codebooks/alphabets fp16 and counted in the artifact bytes.
+
+BARS (adjudicated by the machine path; observations from the
+compile receipt via a registered adapter):
+1. CONSERVATION: zero violations — every source tensor key lands
+   in exactly one of {compressed, passthrough, excluded-by-scope};
+   no unknown, dropped, or duplicate keys, checked per shard and
+   globally. FIRE = violations == 0.
+2. BUDGET: total artifact bytes (payload + scales + codebooks +
+   manifest) <= 8,053,063,680 B (7.5 GiB). Table B predicts
+   ~7.19 GiB + overheads.
+3. FIDELITY-SANITY (compiler-bug tripwire, not a quality claim):
+   pooled per-family reconstruction op-error within 1.15x of the
+   bridge-probe values — ffn <= 0.40, linear_attn <= 0.38,
+   full_attn <= 0.39, embed+head <= 0.13. A compiler that encodes
+   wrongly shows here; a compiler that encodes as probed passes.
+REFUTED-IF: BAR 1 fails, or the artifact exceeds 8 GiB — the
+bounded-compiler claim of the whole-model program is then false at
+this rate table and the program re-plans before MODEL-1.
+REGISTERED PRIOR (house): all three bars FIRE. Confidence high on
+1 and 3 (the probes measured exactly these codecs), medium-high on
+2 (overheads estimated, not measured).
+FENCES. Compiler-correctness rung ONLY: no functional or
+capability claim of any kind — the artifact's ability to TALK is
+MODEL-1's question, scored against the frozen
+evals/qwen_model1/ payload and never against numbers from this
+rung. Weight-space errors here are the probe metric (operator =
+Frobenius estimator). One revision, one rate table; a different
+table is a new rung. Disk: peak transient = one source shard
+(~3.7 GiB) + artifact-so-far; delete-after-compress is the
+registered mode. Receipts: logs/qwenwhole/compile.jsonl (one row
+per shard + one summary row), logs/qwenwhole/compile.log. The
+artifact itself stays untracked (file-handoff convention);
+its sha256 books in the receipt.
