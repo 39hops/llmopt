@@ -33647,3 +33647,47 @@ launch overhead, small-shape bandwidth, attention/norm work, KV
 traffic, and the lm_head are all outside the arithmetic. 10-15
 tok/s from the first fused tower books as a success against the
 0.41 s/tok baseline, not a miss against 25.
+
+## OBSERVATION QWEN-CUDA-RUNG4: fused tower — 8.8 tok/s (0.113 s/tok), decode phase touches only compressed bytes; the QM repetition loop reproduces exactly on the fused backend (2026-08-17, 3080/WSL)
+
+The rung-2 fused GEMV propagated to the whole tower
+(kernel_form: fused). Module surgery, not hooks: all 400 w4
+Linears in the 64 layers replaced by FusedW4Linear (single-row
+decode step = fused decode+GEMV with in-kernel bit-construction
+scales; multi-row prefill = transient chunked decode+matmul,
+freed); norms/convs/other raw params decode once and stay resident
+fp32; embed CPU-compressed row gather; lm_head fused at the LAST
+position only. In-process gates before the artifact is touched:
+7-fixture decode set bit-exact AND fused-GEMV parity <= 1e-5 rel v
+float64 on the same fixtures (measured pass; bar registered in the
+driver docstring at commit b6086ff).
+
+MEASURED (logs/qwencuda/rung4_forward1.json, code_commit 907c9df):
+build 11s, forward1 0.93s (v 1.6s rung 3), 32 KV-cached greedy
+tokens at 0.113 s/tok = 8.82 tok/s (v 0.41 s/tok rung 3, 3.6x);
+top-5 logits IDENTICAL to rung 3 and to the CPU reference receipt
+(same values to 3 decimals, same order, top-1 margin 3.33).
+Against the registered extrapolation (25 tok/s at rung-2
+efficiency): 8.8 lands in the amendment's stated 10-15 success
+band's neighborhood — the residual gap is launch overhead
+(~400 kernel launches/token plus norms/attention/KV) and
+small-shape bandwidth, both named in the amendment before this
+run.
+
+LOOP REPRODUCTION (logs/qwencuda/rung4_qm700.json): the 700-token
+QM prompt degrades into the SAME repetition cycle on the fused
+backend at 9.76 tok/s — same phrasing, same never-reaching
+P(0)=3/4. Two independent CUDA implementations (materialize-dense
+and fused-GEMV) with different accumulation orders produce the
+same long-horizon failure: the candidate failure is a property of
+ARTIFACT A, not of either backend. Teacher-side adjudication
+unchanged (registered in AMENDMENT -SCOPE).
+
+FENCES: descriptive; chat reads gate nothing; single prompt,
+greedy, no repetition penalty; tok/s single-run (rung-2 50-rep
+protocol still the template for any booked speed claim); B/C
+still refused at io (S16 GPU path unbuilt).
+
+Receipts (explicit full paths, force-added BEFORE this lock
+regen): logs/qwencuda/rung4_forward1.json,
+logs/qwencuda/rung4_qm700.json.

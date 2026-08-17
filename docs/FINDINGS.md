@@ -2323,3 +2323,11 @@ regime tag on every bullet is the fence.
   the greedy-loop confound named (MODEL-1, not chat reads, will
   adjudicate). ([OBSERVATION
   QWEN-CUDA-LADDER-0](RESULTS.md#L33515 "id:2026-08-17-observation-qwen-cuda-ladder-0-rungs").)
+- [SINGLE-SEED] [DEVICE-SCOPED: 3080/WSL] The fused CUDA tower
+  (FusedW4Linear surgery, decode phase touches only compressed bytes)
+  runs artifact A at 8.8 tok/s v 0.41 s/tok for materialize-then-dense,
+  with top-5 logits identical to both the rung-3 backend and the CPU
+  reference; the 700-token QM repetition loop reproduces exactly across
+  both CUDA implementations, so the candidate long-horizon failure
+  belongs to the artifact, not a backend. ([OBSERVATION
+  QWEN-CUDA-RUNG4](RESULTS.md#L33651 "id:2026-08-17-observation-qwen-cuda-rung4-fused-tower").)

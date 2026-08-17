@@ -483,6 +483,20 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwencuda/rung4_forward1.json": {
+   "bytes": 926,
+   "exists": true,
+   "sha256": "a6d078248249f29b2ea5f72d5c2cd9bb1683b66563db78e1d948c51a24a42a12",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwencuda/rung4_qm700.json": {
+   "bytes": 2724,
+   "exists": true,
+   "sha256": "e255cf2e944602e18b7307dd7300e7b80b190f436342bfcab751926d95d8cf21",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwenprobe/L32.jsonl": {
    "bytes": 901,
    "exists": true,

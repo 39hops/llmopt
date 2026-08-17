@@ -1,0 +1,35 @@
+{
+ "rung": 4,
+ "code_commit": "5d7680a",
+ "device_actual": "NVIDIA GeForce RTX 3080",
+ "torch_version": "2.13.0+cu130",
+ "triton_version": "3.7.1",
+ "wsl": true,
+ "artifact": "A",
+ "prompt": "The capital of France is",
+ "seq_len": 57,
+ "kernel_form": "fused",
+ "n_fused_linears": 400,
+ "logits_positions": "last_only",
+ "attn_exec": {
+  "linear_attn": 1584,
+  "full_attn": 528
+ },
+ "vram_free_at_start_bytes": 9509535744,
+ "forward1_s": 0.935,
+ "top1_id": 760,
+ "top1_margin": 3.328420639038086,
+ "env": {
+  "TORCH_DISABLE_NATIVE_JIT": "1",
+  "PYTORCH_CUDA_ALLOC_CONF": null
+ },
+ "gen": {
+  "n_new": 32,
+  "wall_s": 3.63,
+  "s_per_tok": 0.1133,
+  "tok_s": 8.82,
+  "output": "The user is asking a factual question: \"The capital of France is...\" This is a straightforward general knowledge question. The capital of France is Paris. I should"
+ },
+ "vram_peak_alloc_bytes": 7429961216,
+ "vram_peak_reserved_bytes": 7916748800
+}
