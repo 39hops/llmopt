@@ -100,14 +100,46 @@ def build():
             return "model.language_model." + nm[len("model."):]
         return nm
 
+    # RESIDENT SET, memory-shaped for a 13GB host (first peek
+    # OOM'd holding embed+lm_head fp32 = ~9.5 GiB): decoded W4/S16
+    # values are fp16_codebook * 2^k, so an fp16 resident copy is
+    # BIT-LOSSLESS (power-of-two scale moves only the exponent;
+    # scale range asserted). embed gathers fp16 rows and casts
+    # fp32 at lookup; lm_head matmuls in fp32 per row-chunk. Same
+    # decoded weights, same function, ~5.5GB peak.
     layer_pref = "model.layers."
     for nm, _ in list(model.named_parameters()):
         if nm.startswith(layer_pref):
+            continue
+        if nm in ("model.embed_tokens.weight", "lm_head.weight"):
             continue
         mod = model.get_submodule(nm.rsplit(".", 1)[0])
         setattr(mod, nm.rsplit(".", 1)[1],
                 torch.nn.Parameter(decode(shard_key(nm)),
                                    requires_grad=False))
+
+    def dec16(key):
+        e = MAN[key]
+        exps = np.frombuffer(_payload(e), np.uint8,
+                             (e["shape"][0] * e["shape"][1]) // 128, 0)
+        assert exps.max() < 127 + 15, "scale would overflow fp16"
+        return decode(key).to(torch.float16)
+
+    emb16 = dec16("model.language_model.embed_tokens.weight")
+    head16 = dec16("lm_head.weight")
+
+    def emb_fwd(input_ids):
+        return torch.nn.functional.embedding(input_ids, emb16).float()
+
+    model.model.embed_tokens.forward = emb_fwd
+
+    def head_fwd(x):
+        outs = []
+        for lo in range(0, head16.shape[0], 16384):
+            outs.append(x @ head16[lo:lo + 16384].float().T)
+        return torch.cat(outs, -1)
+
+    model.lm_head.forward = head_fwd
     meta_bufs = [nm for nm, b in model.named_buffers() if b.is_meta]
     if meta_bufs:
         raise SystemExit(f"REFUSING: meta buffers: {meta_bufs[:4]}")
