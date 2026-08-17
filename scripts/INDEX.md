@@ -2893,8 +2893,10 @@ CUDA leg rungs 3+4: artifact A resident in VRAM, per-layer GPU decode, full-towe
 CUDA leg rung 4: FUSED tower — every w4 Linear executes as a fused decode+GEMV from the resident compressed payload; no fp32 weight materialization in the decode phase.
 
 - `w4_decode_kernel(idx_ptr, cb_ptr, exp_ptr, out_ptr, n, BLK: tl.constexpr)`
+- `s16_gemv_kernel(code_ptr, lv_ptr, exp_ptr, x_ptr, y_ptr, C, BLK_C: tl.constexpr)` — s16 fused GEMV: HIGH nibble = EVEN element (qcodec
 - `w4_gemv_kernel(idx_ptr, cb_ptr, exp_ptr, x_ptr, y_ptr, C, BLK_C: tl.constexpr)` — One program per output row, fused decode+dot, fp32 acc.
 - `class W4Gpu` (decode_rows, gemv)
+- `class S16Gpu` (gemv)
 - `class FusedW4Linear` (forward)
 - `_gates()`
 - `build()`
@@ -3739,6 +3741,7 @@ Canonical WHOLE-0T payload decoders (the one shared decode path).
 Optimized WHOLE-0T decoders, parity-fixtured against qcodec.
 
 - `class W4Rows` (rows)
+- `class S16Rows` (rows)
 
 ### llmopt/lab/qrope.py
 RoPE value oracle — exact expectations, no thresholds.

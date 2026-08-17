@@ -56,7 +56,8 @@ torch.set_num_threads(os.cpu_count())
 sys.path.insert(0, os.path.dirname(os.path.dirname(
     os.path.abspath(__file__))))
 from llmopt.lab import qartifact, qrope  # noqa: E402
-from llmopt.lab.qcodec import BLOCK, dec_w4, decode_entry  # noqa: E402
+from llmopt.lab.qcodec import (BLOCK, dec_s16, dec_w4,  # noqa: E402
+                               decode_entry)
 
 SUB127 = tl.constexpr(5.877471754111438e-39)  # exact fp32 2^-127
 
@@ -74,6 +75,31 @@ def w4_decode_kernel(idx_ptr, cb_ptr, exp_ptr, out_ptr, n,
     val = tl.load(cb_ptr + byte.to(tl.int32) * 4 + offs % 4,
                   mask=m, other=0.0).to(tl.float32)
     tl.store(out_ptr + offs, val * s, mask=m)
+
+
+@triton.jit
+def s16_gemv_kernel(code_ptr, lv_ptr, exp_ptr, x_ptr, y_ptr, C,
+                    BLK_C: tl.constexpr):
+    """s16 fused GEMV: HIGH nibble = EVEN element (qcodec
+    convention — opposite of GPTQ); scale by bit-construction."""
+    r = tl.program_id(0)
+    acc = tl.zeros((BLK_C,), tl.float32)
+    for c0 in range(0, C, BLK_C):
+        offs = c0 + tl.arange(0, BLK_C)
+        m = offs < C
+        flat = r * C + offs
+        e = tl.load(exp_ptr + flat // 128, mask=m,
+                    other=127).to(tl.int32)
+        s = tl.where(e == 0, SUB127,
+                     (e << 23).to(tl.float32, bitcast=True))
+        byte = tl.load(code_ptr + flat // 2, mask=m,
+                       other=0).to(tl.int32)
+        nib = tl.where(offs % 2 == 0, byte >> 4, byte & 0xF)
+        val = tl.load(lv_ptr + nib, mask=m,
+                      other=0.0).to(tl.float32)
+        x = tl.load(x_ptr + offs, mask=m, other=0.0)
+        acc += val * s * x
+    tl.store(y_ptr + r, tl.sum(acc, 0))
 
 
 @triton.jit
@@ -126,6 +152,30 @@ class W4Gpu:
         y = torch.empty(R, dtype=torch.float32, device="cuda")
         w4_gemv_kernel[(R,)](self.idx, self.cb, self.exps,
                              x.contiguous(), y, C, BLK_C=512)
+        return y
+
+
+class S16Gpu:
+    """One s16 payload resident on device. GEMV-only (io use); the
+    prefill path decodes rows via S16Rows on CPU."""
+
+    def __init__(self, buf: bytes, shape):
+        n = int(np.prod(shape))
+        nb = n // BLOCK
+        self.shape = list(shape)
+        self.exps = torch.from_numpy(
+            np.frombuffer(buf, np.uint8, nb, 0).copy()).cuda()
+        self.lv = torch.from_numpy(
+            np.frombuffer(buf, np.float16, 16, nb).copy()).cuda()
+        self.codes = torch.from_numpy(
+            np.frombuffer(buf, np.uint8, n // 2,
+                          nb + 32).copy()).cuda()
+
+    def gemv(self, x):
+        R, C = self.shape
+        y = torch.empty(R, dtype=torch.float32, device="cuda")
+        s16_gemv_kernel[(R,)](self.codes, self.lv, self.exps,
+                              x.contiguous(), y, C, BLK_C=512)
         return y
 
 
@@ -189,8 +239,32 @@ def _gates():
         rel = float(np.abs(y - r64).max() / denom)
         if rel > 1e-5:
             raise SystemExit(f"GEMV PARITY FAIL: {name} rel={rel:.3e}")
-    print(f"[r4] gates: {len(cases)} decode bit-exact + gemv <=1e-5",
-          flush=True)
+    # s16 GEMV gate (io path for B/C): same shapes + exp edges
+    n_s16 = 0
+    for R, C in ((8, 256), (16, 128), (5, 640)):
+        for ev in (None, 0, 127, 254):
+            nb = R * C // BLOCK
+            exps = (rng.integers(120, 132, nb, dtype=np.uint8)
+                    if ev is None else np.full(nb, ev, np.uint8))
+            buf = (exps.tobytes()
+                   + (rng.standard_normal(16) * 0.3)
+                   .astype(np.float16).tobytes()
+                   + rng.integers(0, 256, R * C // 2,
+                                  dtype=np.uint8).tobytes())
+            ref = dec_s16(buf, [R, C])
+            x = np.random.default_rng(29).standard_normal(
+                C).astype(np.float32)
+            y = S16Gpu(buf, [R, C]).gemv(
+                torch.from_numpy(x).cuda()).cpu().numpy()
+            r64 = ref.astype(np.float64) @ x.astype(np.float64)
+            denom = max(1e-30, float(np.abs(r64).max()))
+            rel = float(np.abs(y - r64).max() / denom)
+            if rel > 1e-5:
+                raise SystemExit(f"S16 GEMV FAIL {R}x{C} exp={ev} "
+                                 f"rel={rel:.3e}")
+            n_s16 += 1
+    print(f"[r4] gates: {len(cases)} w4 decode bit-exact + gemv "
+          f"<=1e-5; {n_s16} s16 gemv <=1e-5", flush=True)
 
 
 def build():
@@ -263,13 +337,17 @@ def build():
         setattr(mod, nm.rsplit(".", 1)[1], torch.nn.Parameter(
             cpu_decode(shard_key(nm)).cuda(), requires_grad=False))
 
+    # io codec dispatch: w4 (artifact A) or s16 (B/C). Any other
+    # codec refuses — never reinterpret bytes (the B incident).
+    from llmopt.lab.qcodec_fast import S16Rows
     ee = man["model.language_model.embed_tokens.weight"]
     he = man["lm_head.weight"]
+    io_rows = {"w4": W4Rows, "s16": S16Rows}
     for _nm, _e in (("embed_tokens", ee), ("lm_head", he)):
-        if _e["codec"] != "w4":
+        if _e["codec"] not in io_rows:
             raise SystemExit(f"REFUSING: {_nm} codec {_e['codec']!r}"
-                             " — w4 io only")
-    emb = W4Rows(payload(ee), ee["shape"])
+                             " — w4/s16 io only")
+    emb = io_rows[ee["codec"]](payload(ee), ee["shape"])
 
     def emb_fwd(input_ids):
         flat = input_ids.reshape(-1)
@@ -279,12 +357,24 @@ def build():
         return out.reshape(*input_ids.shape, emb.C).cuda()
 
     model.model.embed_tokens.forward = emb_fwd
-    head = FusedW4Linear(W4Gpu(payload(he), he["shape"]))
+    if he["codec"] == "w4":
+        head = FusedW4Linear(W4Gpu(payload(he), he["shape"]))
 
-    def head_fwd(x):
-        if x.dim() == 3 and x.shape[1] > 1:
-            x = x[:, -1:]              # last position only
-        return head(x)
+        def head_fwd(x):
+            if x.dim() == 3 and x.shape[1] > 1:
+                x = x[:, -1:]          # last position only
+            return head(x)
+    else:                               # s16: GEMV-only head
+        head_pay = S16Gpu(payload(he), he["shape"])
+
+        def head_fwd(x):
+            if x.dim() == 3 and x.shape[1] > 1:
+                x = x[:, -1:]          # last position only
+            lead = x.shape[:-1]
+            flat = x.reshape(-1, x.shape[-1])
+            assert flat.shape[0] == 1, "s16 head is GEMV-only"
+            y = head_pay.gemv(flat[0].float())
+            return y.reshape(*lead, -1).to(x.dtype)
 
     model.lm_head.forward = head_fwd
 

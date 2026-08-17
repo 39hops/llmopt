@@ -186,6 +186,46 @@ def test_w4rows_parity_against_canonical():
                                           full[lo:hi], err_msg=f"{R}x{C} [{lo},{hi})")
 
 
+def _s16_payload(R, C, seed=5):
+    rng = np.random.default_rng(seed)
+    nb = R * C // 128
+    exps = rng.integers(120, 132, nb, dtype=np.uint8)
+    lv = (rng.standard_normal(16) * 0.3).astype(np.float16)
+    codes = rng.integers(0, 256, R * C // 2, dtype=np.uint8)
+    return exps.tobytes() + lv.tobytes() + codes.tobytes()
+
+
+def test_s16rows_parity_against_canonical():
+    """S16Rows v qcodec.dec_s16, same slice battery as W4Rows —
+    the nibble convention (HIGH = even) is the specific bug this
+    fixture exists to catch."""
+    from llmopt.lab.qcodec_fast import S16Rows
+    rng = np.random.default_rng(13)
+    for R, C in ((8, 256), (16, 128), (5, 640), (32, 512)):
+        buf = _s16_payload(R, C)
+        full = dec_s16(buf, [R, C])
+        v = S16Rows(buf, [R, C])
+        slices = [(0, 1), (R // 2, R // 2 + 1), (R - 1, R),
+                  (0, R), (1, R - 1)]
+        slices += [tuple(sorted(rng.choice(R, 2, replace=False)))
+                   for _ in range(4)]
+        for lo, hi in slices:
+            if lo == hi:
+                hi = lo + 1
+            np.testing.assert_array_equal(
+                v.rows(lo, hi), full[lo:hi],
+                err_msg=f"{R}x{C} [{lo},{hi})")
+
+
+def test_s16rows_refuses_bad_ranges():
+    from llmopt.lab.qcodec_fast import S16Rows
+    v = S16Rows(_s16_payload(4, 128), [4, 128])
+    with pytest.raises(ValueError):
+        v.rows(0, 5)
+    with pytest.raises(ValueError):
+        S16Rows(b"", [4, 130])       # C % 128 != 0
+
+
 def test_w4rows_refuses_bad_ranges():
     from llmopt.lab.qcodec_fast import W4Rows
     v = W4Rows(_w4_payload(4, 128), [4, 128])

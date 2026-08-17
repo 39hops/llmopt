@@ -10,6 +10,10 @@ same oracle. Codec semantics never hide inside a runtime.
 W4Rows: row-sliced decode of a w4 payload without materializing
 the tensor — blocks align to rows (C/128 blocks and C/4 index
 bytes per row), so any [lo, hi) row range decodes independently.
+S16Rows: the same contract for s16 payloads (C/128 blocks and C/2
+code bytes per row; HIGH nibble = EVEN element, the qcodec
+convention) — the io path for artifacts whose embed/lm_head are
+S16 (B/C).
 """
 from __future__ import annotations
 
@@ -39,4 +43,31 @@ class W4Rows:
                      .astype(np.int32) - 127).astype(np.float32)
         ix = self.idx[lo * self.C // 4:hi * self.C // 4]
         Wn = self.cb[ix].reshape(-1, BLOCK)
+        return (Wn * sc[:, None]).reshape(hi - lo, self.C)
+
+
+class S16Rows:
+    def __init__(self, buf: bytes, shape):
+        self.R, self.C = shape
+        if self.C % BLOCK or self.C % 2:
+            raise ValueError(f"invalid s16 row width {self.C}")
+        nb = (self.R * self.C) // BLOCK
+        self.exps = np.frombuffer(buf, np.uint8, nb, 0)
+        self.lv = np.frombuffer(buf, np.float16, 16, nb) \
+            .astype(np.float32)
+        self.codes = np.frombuffer(buf, np.uint8,
+                                   (self.R * self.C) // 2, nb + 32)
+
+    def rows(self, lo: int, hi: int) -> np.ndarray:
+        if not (0 <= lo < hi <= self.R):
+            raise ValueError(f"row range [{lo},{hi}) outside "
+                             f"[0,{self.R})")
+        bpr = self.C // BLOCK
+        sc = np.exp2(self.exps[lo * bpr:hi * bpr]
+                     .astype(np.int32) - 127).astype(np.float32)
+        cd = self.codes[lo * self.C // 2:hi * self.C // 2]
+        c = np.empty(cd.shape[0] * 2, np.uint8)
+        c[0::2] = cd >> 4            # HIGH nibble = even element
+        c[1::2] = cd & 0xF
+        Wn = self.lv[c].reshape(-1, BLOCK)
         return (Wn * sc[:, None]).reshape(hi - lo, self.C)
