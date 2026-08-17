@@ -1028,6 +1028,12 @@ Measure MoE router domain bias: math prompts vs general prose.
 - `run_corpus(model, tok, prompts, stats, state)`
 - `main() -> None`
 
+### scripts/obs_from_receipt_0s.py
+0S receipt -> typed observations, with no hand transcription.
+
+- `observations(row: dict) -> dict`
+- `main() -> int`
+
 ### scripts/plot_gt1_crest.py
 GT-1 crest small-multiples — the gallery Wanted figure (2026-08-08).
 

@@ -1,6 +1,6 @@
 {
   "name": "STREAM-WDISTILL-0S",
-  "note": "Executable projection of the booked prose pre-reg (RESULTS L31503) and its four pre-look amendments (-0S-DESIGN, -0S-CONTROL, -0S-SPEC, -0S-METRIC). Written at driver-build time, BEFORE the run fired; the prose entry remains the registration of record. BAR 3 carries a conjunct the scalar bar cannot express: natural W32 must ALSO beat each of the three shuffled twins individually — the driver reports all three and the verdict checks the conjunct explicitly.",
+  "note": "Executable projection of the booked prose pre-reg (RESULTS L31503) and its four pre-look amendments (-0S-DESIGN, -0S-CONTROL, -0S-SPEC, -0S-METRIC). Written at driver-build time, BEFORE the run fired; the prose entry remains the registration of record. BAR 3's all-three conjunct became executable via the schema's conjuncts field (added pre-look, 2026-08-16, before the run's receipt was read).",
   "results_id": "2026-08-16-pre-reg-stream-wdistill-0s-does",
   "registered": "2026-08-16",
   "machine": "mac",
@@ -46,7 +46,12 @@
       "direction": "above",
       "value": 0.05,
       "arms": ["W32", "W32-shuf"],
-      "description": "(mean_shuffled - natural)/mean_shuffled pooled operator error >= 5%, AND natural beats all three twins individually (conjunct checked in the verdict); if it does not fire, 'locally highly compressible' is not used at all"
+      "conjuncts": [
+        {"measurement": "3:twin20260816", "direction": "above", "value": 0.0},
+        {"measurement": "3:twin20260817", "direction": "above", "value": 0.0},
+        {"measurement": "3:twin20260818", "direction": "above", "value": 0.0}
+      ],
+      "description": "(mean_shuffled - natural)/mean_shuffled pooled operator error >= 5%, AND natural beats each of the three twins individually (the three conjunct measurements are per-twin relative gains, each required above 0); if it does not fire, 'locally highly compressible' is not used at all"
     }
   ],
   "receipts": [

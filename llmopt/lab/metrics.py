@@ -40,6 +40,7 @@ POPULATION_MISMATCH = "metric_population_mismatch"
 AGGREGATION_MISMATCH = "metric_aggregation_mismatch"
 METRIC_MISMATCH = "metric_identity_mismatch"
 NOT_ADJUDICABLE = "contrast_not_adjudicable"
+UNIT_MISMATCH = "metric_unit_mismatch"
 
 
 class MetricContractError(TypeError):
@@ -92,6 +93,9 @@ class Metric:
             raise MetricContractError(
                 AGGREGATION_MISMATCH,
                 f"{self.aggregation!r} v {other.aggregation!r}")
+        if self.unit != other.unit:
+            raise MetricContractError(
+                UNIT_MISMATCH, f"{self.unit!r} v {other.unit!r}")
 
     def __sub__(self, other: "Metric") -> "Metric":
         self._require_comparable(other)

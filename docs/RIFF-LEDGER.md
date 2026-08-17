@@ -6072,3 +6072,56 @@ honest status column).
   for spec-decoding on Mac (36GB fits streamed or 4-bit).
   Attribution: Artin (model pick, banking ask), house (fit
   analysis, fences).
+
+  AMENDMENT 10 (2026-08-16): EXTERNAL-REVIEW ADOPTION PASS on the
+  five shipped items, with TWO DOWNGRADES the house verifies and
+  accepts (GPT seat; every finding checked against the source
+  before adoption, per standing rule).
+  DOWNGRADE 1: AMENDMENT 8's "the law is now executable" was an
+  overclaim — adjudicate_prereg() had measurement validity, arm
+  admissibility, and the METRIC CONTRACT, but no first-class
+  CONTRAST object: two individually admissible arms could still
+  form a defective relation (dose mismatch, unpaired seeds, byte-
+  convention mismatch) invisibly. Corrected claim: measurement +
+  arm + metric-contract adjudication was executable; contrast
+  status was PARTIAL. Closed in the same pass: observations now
+  carry contrasts:{bar: {admissible, reason}} gating adjudication,
+  and bars carry optional CONJUNCTS (compound predicates), which
+  made 0S BAR 3's "beats the mean AND all three twins" fully
+  executable — the conjunct the 0S JSON had disclosed as
+  manual-check-only. Regression tests for both.
+  DOWNGRADE 2: cited_receipt_never_committed was GRADUATED on a
+  COUNT ratchet (<= 7 absent) — recovering one legacy file would
+  free a slot a new booking could spend on new uncommitted
+  evidence. Now an IDENTITY ratchet (the exact seven legacy paths
+  pinned; shrinking welcome, substitution refused) plus a COVERAGE
+  test (lock keys must equal the recomputed citation set — nothing
+  regenerated the lock on new citations before) and ledger_regen
+  now regenerates the lock on RESULTS/prereg changes. Status
+  restored to GRADUATED with those three pieces landed.
+  ALSO ADOPTED, same pass: (a) metric_unit_mismatch — Metric
+  carried unit but never compared it, bytes could difference
+  against seconds; (b) receipt-to-observations ADAPTER for 0S
+  (scripts/obs_from_receipt_0s.py, committed BEFORE the 0S receipt
+  existed): locked receipt -> typed observations -> adjudicator
+  with no hand transcription, refusing smoke rows, partial
+  populations, and WALLED arms (a partially trained VQ stack
+  produces an ordinary-looking number; the adapter makes the
+  logical arm inadmissible structurally); (c) claims.deny.json
+  provenance fixes — two superseded_by ids pointed at the
+  amendment that INTRODUCED the phrase (-READING-2) rather than
+  the one that withdrew it (-READING-3), now tested against the
+  index; (d) deny rules gained SCOPE regexes — "statistically
+  indistinguishable" is not globally invalid science, it is
+  invalid for this thread's corrected reading; scopeless rules
+  stay global; (e) claim lint moved INSIDE scripts/book.py as a
+  booking refusal, not just the /book ritual; (f) v2 qualification
+  tolerance pinned PRE-LOOK (f1e0da8, 20:55 EDT, before the full
+  v2 receipt landed at ~21:03): per-arm 5e-3 relative on
+  operator_layer, 1e-6 for deterministic scalar arms, with v2's
+  CUDA nondeterminism sources (index_add_, weighted bincount)
+  named for the promotion gate.
+  NOT adopted yet, named openly: v2 in-code correctness gate /
+  shard sha / code_commit / unique output paths (prototype stays
+  fenced as descriptive); evidence-graph staleness layer (banked);
+  strict observation-schema validation beyond the contract checks.

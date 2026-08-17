@@ -98,3 +98,15 @@ def test_the_invariant_is_not_merely_refusing_everything():
     assert adjudicate(Metric(b.relative_to(a), "frobenius_rel_gain",
                              "experts:0:256", "pooled_ratio"),
                       bar_value=0.10, direction="above") == "NO-FIRE"
+
+
+def test_unit_mismatch_is_refused():
+    """Adopted 2026-08-16 (external review): unit was carried but
+    never compared, so bytes could difference against seconds if the
+    other three fields matched."""
+    from llmopt.lab.metrics import UNIT_MISMATCH
+    a = Metric(1.0, "wall", "run:0", "sum", unit="seconds")
+    b = Metric(1.0, "wall", "run:0", "sum", unit="bytes")
+    with pytest.raises(MetricContractError) as e:
+        _ = a - b
+    assert e.value.reason == UNIT_MISMATCH

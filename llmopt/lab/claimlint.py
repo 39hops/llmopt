@@ -100,6 +100,13 @@ def lint_text(text: str, outcomes: list | None = None) -> list[Finding]:
 
     for rule in _deny_rules():
         rx = re.compile(rule["pattern"], re.I)
+        # thread-scoped rules fire only on drafts about that thread —
+        # "statistically indistinguishable" is not globally invalid
+        # science, it is invalid for THIS corrected reading (external
+        # review 2026-08-16). Scopeless rules stay global.
+        scope = rule.get("scope")
+        if scope and not re.search(scope, text, re.I):
+            continue
         for i, ln in enumerate(lines, 1):
             m = rx.search(ln)
             if m:

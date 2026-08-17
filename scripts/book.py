@@ -241,6 +241,17 @@ def main(argv: list[str] | None = None) -> int:
 
     marker = validate_marker(Path(a.marker))
     entry = Path(a.entry).read_text()
+    # claim lint is a booking invariant, not just the /book ritual
+    # (external review 2026-08-16: the programmatic path bypassed it)
+    from llmopt.lab.claimlint import lint_text
+    errors = [f for f in lint_text(entry) if f.severity == "ERROR"]
+    if errors:
+        for f in errors:
+            print(f"CLAIM-LINT ERROR L{f.line} [{f.rule}] "
+                  f"{f.excerpt!r}: {f.message}")
+        raise Refusal(
+            f"{len(errors)} claim-lint error(s) — superseded readings "
+            "cannot re-enter the ledger; fix the draft")
     validate_gate_checksum(entry, marker)
     validate_weights_sha(entry, marker)
     validate_statistical_fence(entry, marker, a.entry_type,

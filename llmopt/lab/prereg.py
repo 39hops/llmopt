@@ -55,7 +55,15 @@ Observations document:
   measurements       {str(bar_id): {"value", "metric", "population",
                                     "aggregation", "provenance"?}}
                      a bar with no measurement books UNRESOLVED
-                     with reason "not-run".
+                     with reason "not-run". Conjunct predicates read
+                     their own keys (e.g. "3:twin20260817").
+  contrasts          OPTIONAL {str(bar_id): {"admissible": bool,
+                     "reason"?: str}} — the RELATIONAL admissibility
+                     the arm gates cannot see (dose mismatch, unpaired
+                     seeds, byte-convention mismatch). Absent entry =
+                     no registered relational defect. Added 2026-08-16
+                     (external review): both arms can be individually
+                     admissible while the CONTRAST is not.
 """
 from __future__ import annotations
 
@@ -78,7 +86,14 @@ PREREG_KEYS = {"name", "results_id", "registered", "machine", "arms",
 # note — a pre-reg written after receipts exist is not a pre-reg.
 REQUIRED_KEYS = PREREG_KEYS - {"note"}
 BAR_KEYS = {"id", "name", "metric", "population", "aggregation",
-            "direction", "value", "arms", "description"}
+            "direction", "value", "arms", "description", "conjuncts"}
+# conjuncts (optional): additional predicates that must ALL hold for
+# the bar to FIRE, each {"measurement": <obs key>, "direction",
+# "value"} sharing the bar's metric contract. Added 2026-08-16
+# (external review): BAR 3-class bars ("beats the mean AND all three
+# twins") were not expressible as one scalar comparison, so "per bar
+# exactly one deterministic outcome" was not yet true of all
+# registered house bars.
 
 
 class PreregSchemaError(ValueError):
@@ -127,7 +142,7 @@ def validate(doc: dict) -> dict:
         unknown = set(bar) - BAR_KEYS
         _require(not unknown,
                  f"bar {bar.get('id')}: unknown keys {sorted(unknown)}")
-        missing = (BAR_KEYS - {"description"}) - set(bar)
+        missing = (BAR_KEYS - {"description", "conjuncts"}) - set(bar)
         _require(not missing,
                  f"bar {bar.get('id')}: missing keys {sorted(missing)}")
         _require(bar["id"] not in seen_ids, f"duplicate bar id {bar['id']}")
@@ -142,6 +157,13 @@ def validate(doc: dict) -> dict:
         for a in bar["arms"]:
             _require(a in doc["arms"],
                      f"bar {bar['id']}: arm {a!r} not declared in arms")
+        for cj in bar.get("conjuncts", []):
+            _require(set(cj) == {"measurement", "direction", "value"},
+                     f"bar {bar['id']}: conjunct keys {sorted(cj)}")
+            _require(cj["direction"] in DIRECTIONS,
+                     f"bar {bar['id']}: conjunct direction")
+            _require(isinstance(cj["value"], (int, float)),
+                     f"bar {bar['id']}: conjunct value must be numeric")
     return doc
 
 
@@ -155,9 +177,11 @@ def adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]:
     The law, executed in order per bar:
       1. measurement_valid False        -> UNRESOLVED (its reason)
       2. any named arm inadmissible     -> UNRESOLVED (arm reasons)
-      3. measurement absent             -> UNRESOLVED "not-run"
-      4. measurement contract mismatch  -> raise MetricContractError
-      5. metrics.adjudicate             -> FIRE | NO-FIRE
+      3. contrast marked inadmissible   -> UNRESOLVED (its reason)
+      4. measurement absent             -> UNRESOLVED "not-run"
+      5. measurement contract mismatch  -> raise MetricContractError
+      6. metrics.adjudicate on the bar AND every conjunct
+                                        -> FIRE only if all hold
     """
     validate(prereg)
     outcomes = []
@@ -174,6 +198,10 @@ def adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]:
             elif not st.get("admissible", False):
                 reasons.append(f"arm:{a}: inadmissible: "
                                + st.get("reason", "unstated"))
+        con = obs.get("contrasts", {}).get(str(bar["id"]))
+        if con is not None and not con.get("admissible", False):
+            reasons.append("contrast: inadmissible: "
+                           + con.get("reason", "unstated"))
         m = obs.get("measurements", {}).get(str(bar["id"]))
         if m is None and not reasons:
             reasons.append("not-run")
@@ -197,5 +225,30 @@ def adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]:
         verdict = adjudicate(metric, bar_value=float(bar["value"]),
                              direction=bar["direction"],
                              required_population=bar["population"])
-        outcomes.append(BarOutcome(bar["id"], bar["name"], verdict, ()))
+        for cj in bar.get("conjuncts", []):
+            cm = obs.get("measurements", {}).get(cj["measurement"])
+            if cm is None:
+                outcomes.append(BarOutcome(
+                    bar["id"], bar["name"], "UNRESOLVED",
+                    (f"conjunct {cj['measurement']}: not-run",)))
+                break
+            for key in ("metric", "population", "aggregation"):
+                if cm[key] != bar[key]:
+                    raise MetricContractError(
+                        f"metric_{key}_mismatch",
+                        f"bar {bar['id']} conjunct {cj['measurement']}")
+            cv = adjudicate(
+                Metric(float(cm["value"]), cm["metric"],
+                       cm["population"], cm["aggregation"],
+                       provenance=cm.get("provenance", "")),
+                bar_value=float(cj["value"]),
+                direction=cj["direction"],
+                required_population=bar["population"])
+            if cv == "NO-FIRE":
+                verdict = "NO-FIRE"
+        else:
+            outcomes.append(BarOutcome(bar["id"], bar["name"],
+                                       verdict, ()))
+            continue
+        continue
     return outcomes

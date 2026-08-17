@@ -17,6 +17,7 @@ Two halves, per the graduation rule:
 """
 import hashlib
 import json
+import sys
 from pathlib import Path
 
 import pytest
@@ -61,21 +62,54 @@ def test_locked_receipts_are_unchanged():
         "new run belongs at a new path:\n  " + "\n  ".join(drift))
 
 
-def test_cited_but_absent_receipts_do_not_grow():
-    """Cited paths that do not exist are a pre-existing backlog.
+# The exact legacy identities absent when the lock was first built
+# (older driver logs never force-added). An IDENTITY ratchet, not a
+# count (external-review adoption 2026-08-16): with a count alone,
+# recovering one legacy file would free a slot a NEW booking could
+# silently spend on new uncommitted evidence.
+LEGACY_ABSENT = {
+    "logs/merge_space1/driver.log", "logs/merge_space2/driver.log",
+    "logs/merge_space3/driver.log", "logs/merge_space4/driver.log",
+    "logs/merge_space5/driver.log", "logs/microstar/microstar_run.log",
+    "logs/pincer/labels_v2.jsonl",
+}
 
-    Seven were already absent when the lock was first built (older
-    driver logs never force-added). This ratchets that count so new
-    bookings cannot cite evidence they never committed.
+
+def test_cited_but_absent_receipts_are_only_the_legacy_set():
+    """No NEW booking may cite evidence it never committed.
+
+    prereg-declared paths whose run has not fired are PENDING, not
+    backlog. Everything else absent must be in the pinned legacy set;
+    shrinking the set is welcome, substituting into it is not.
     """
-    # prereg-declared paths whose run has not fired yet are PENDING,
-    # not backlog — the ratchet is for prose citations without evidence
-    absent = [k for k, v in _locked().items()
-              if not v.get("exists") and v.get("source") != "prereg"]
-    assert len(absent) <= 7, (
-        f"{len(absent)} cited receipts are missing (ratchet 7). A new "
-        "booking must commit the receipt it cites:\n  "
-        + "\n  ".join(sorted(absent)))
+    absent = {k for k, v in _locked().items()
+              if not v.get("exists") and v.get("source") != "prereg"}
+    new = absent - LEGACY_ABSENT
+    assert not new, (
+        "booking(s) cite receipts that were never committed (and are "
+        "not the pinned legacy backlog):\n  " + "\n  ".join(sorted(new)))
+
+
+def test_lock_covers_every_current_citation():
+    """The lock must KNOW about every cited/declared path.
+
+    Coverage hole named by external review 2026-08-16: nothing
+    regenerated the lock on new citations, so a new receipt citation
+    could exist that the lock never learned about. Fix: this test
+    recomputes the citation set and requires lock keys to match.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import gen_receipt_lock as g
+    cited = set(g.cited_paths())
+    lock_keys = set(_locked())
+    missing = cited - lock_keys
+    stale = lock_keys - cited
+    assert not missing, (
+        "cited paths the lock has never seen — run "
+        "scripts/gen_receipt_lock.py:\n  " + "\n  ".join(sorted(missing)))
+    assert not stale, (
+        "lock entries no longer cited anywhere — regenerate the lock:"
+        "\n  " + "\n  ".join(sorted(stale)))
 
 
 def test_the_original_manoeuvre_is_caught(tmp_path):

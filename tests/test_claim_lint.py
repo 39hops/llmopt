@@ -42,7 +42,11 @@ INCIDENT_SENTENCES = [
 
 @pytest.mark.parametrize("sentence", INCIDENT_SENTENCES)
 def test_every_shipped_overclaim_is_caught(sentence):
-    assert lint_text(sentence), f"linter missed: {sentence!r}"
+    """Each sentence is linted inside a thread-scoped draft, as the
+    originals appeared: every shipped overclaim sat in prose that
+    named STREAM-WDISTILL (scoped deny rules key on that context)."""
+    draft = f"STREAM-WDISTILL analysis note.\n{sentence}"
+    assert lint_text(draft), f"linter missed: {sentence!r}"
 
 
 def test_corrected_wording_passes():
@@ -91,3 +95,27 @@ def test_unknown_bar_number_errors():
     outcomes = adjudicate_prereg(load(PREREG), OBS)
     f = lint_text("BAR 7 fires decisively.", outcomes)
     assert any(x.rule == "unknown-bar" for x in f)
+
+
+def test_deny_registry_provenance_resolves():
+    """Every superseded_by must be a real results-index id (external
+    review caught two rules pointing at the amendment that INTRODUCED
+    the phrase rather than the one that withdrew it)."""
+    import json
+    ids = {json.loads(l)["id"]
+           for l in open(ROOT / "docs" / "results-index.jsonl")}
+    reg = json.loads((ROOT / "docs" / "claims.deny.json").read_text())
+    bad = [r["pattern"] for r in reg["deny"]
+           if r["superseded_by"] not in ids]
+    assert not bad, f"unresolvable superseded_by for: {bad}"
+
+
+def test_scoped_rule_does_not_fire_off_thread():
+    """'statistically indistinguishable' in an unrelated properly
+    powered study must not ERROR; in a stream-wdistill draft it must."""
+    off = ("The two samplers are statistically indistinguishable "
+           "at n=2000 paired seeds on the integer battery.")
+    assert not [f for f in lint_text(off) if f.rule == "superseded-reading"]
+    on = ("In the stream-wdistill capture analysis the twins are "
+          "statistically indistinguishable.")
+    assert [f for f in lint_text(on) if f.rule == "superseded-reading"]

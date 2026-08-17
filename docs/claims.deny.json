@@ -1,45 +1,50 @@
 {
-  "_doc": "Superseded readings — do not resurrect. Each entry is a regex the claim linter (llmopt/lab/claimlint.py) refuses in NEW verdict/analysis prose, with the booked correction that killed it. Add entries when a reading correction books; never delete one (the registry is provenance, like RIFF-LEDGER). Historical ledger text is NOT linted — only new drafts.",
-  "deny": [
-    {
-      "pattern": "near-isotropic",
-      "reason": "Refuted by own data: private D at r=296 captures 4.678x the random baseline — individual experts are substantially anisotropic.",
-      "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3"
-    },
-    {
-      "pattern": "misalignment is the (reason|cause|explanation)",
-      "reason": "Misalignment is the leading CANDIDATE, not measured. Efficiency at different ranks does not measure alignment (synthetic 1/i spectrum with no coordinate change reproduces a ~3x efficiency gap). Pending the C@296-v-D@296 rider and the overlap census.",
-      "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3"
-    },
-    {
-      "pattern": "statistically indistinguishable",
-      "reason": "No distribution was measured. E's 1.067x capture proxy is 'close to random expectation', nothing stronger.",
-      "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-2"
-    },
-    {
-      "pattern": "independent (gauge )?(evidence|support|confirmation)",
-      "reason": "E IS the registered gauge-control arm — convergent post-hoc evidence from the same arm, never independent. Independence requires a distinct registered source.",
-      "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-2"
-    },
-    {
-      "pattern": "matched[- ]bytes? scalar|scalar.{0,40}matched[- ]bytes?",
-      "reason": "No admissible scalar contrast exists in STREAM-WDISTILL-0: arm A serialized 19 bytes over B1. Scalar wording stays descriptive — never 'matched bytes', 'winner', or 'loses'.",
-      "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair"
-    },
-    {
-      "pattern": "Lloyd-optimal",
-      "reason": "Booked overclaim: the k-means stage is Lloyd-ITERATED, not optimal; no optimality certificate exists.",
-      "superseded_by": "2026-08-16-amendment-stream-wdistill-0-deltas-2"
-    },
-    {
-      "pattern": "exploits? \\d[\\d.]*x more structure",
-      "reason": "Efficiency ratios at different ranks carry a rank-position confound; a structure multiple between arms at unequal rank is not a measured quantity.",
-      "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3"
-    },
-    {
-      "pattern": "RUN_TAG.{0,60}(graduat|invariant)",
-      "reason": "RUN_TAG is a mitigation only. The frozen-receipt invariant is the content-addressed lock (docs/receipts.lock.json) plus CI refusal.",
-      "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair"
-    }
-  ]
+ "_doc": "Superseded readings \u2014 do not resurrect. Each entry is a regex the claim linter (llmopt/lab/claimlint.py) refuses in NEW verdict/analysis prose, with the booked correction that killed it. Add entries when a reading correction books; never delete one (the registry is provenance, like RIFF-LEDGER). Historical ledger text is NOT linted \u2014 only new drafts. Optional per-rule 'scope': a regex; the rule fires as ERROR only when the draft matches it (thread-scoped readings); scopeless rules are global.",
+ "deny": [
+  {
+   "pattern": "near-isotropic",
+   "reason": "Refuted by own data: private D at r=296 captures 4.678x the random baseline \u2014 individual experts are substantially anisotropic.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-2",
+   "scope": "stream[- ]?wdistill|expert|V4"
+  },
+  {
+   "pattern": "misalignment is the (reason|cause|explanation)",
+   "reason": "Misalignment is the leading CANDIDATE, not measured. Efficiency at different ranks does not measure alignment (synthetic 1/i spectrum with no coordinate change reproduces a ~3x efficiency gap). Pending the C@296-v-D@296 rider and the overlap census.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
+   "scope": "stream[- ]?wdistill|expert|V4"
+  },
+  {
+   "pattern": "statistically indistinguishable",
+   "reason": "No distribution was measured. E's 1.067x capture proxy is 'close to random expectation', nothing stronger.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
+   "scope": "stream[- ]?wdistill|gauge|capture|subspace"
+  },
+  {
+   "pattern": "independent (gauge )?(evidence|support|confirmation)",
+   "reason": "E IS the registered gauge-control arm \u2014 convergent post-hoc evidence from the same arm, never independent. Independence requires a distinct registered source.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
+   "scope": "stream[- ]?wdistill|gauge|arm E"
+  },
+  {
+   "pattern": "matched[- ]bytes? scalar|scalar.{0,40}matched[- ]bytes?",
+   "reason": "No admissible scalar contrast exists in STREAM-WDISTILL-0: arm A serialized 19 bytes over B1. Scalar wording stays descriptive \u2014 never 'matched bytes', 'winner', or 'loses'.",
+   "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair",
+   "scope": "stream[- ]?wdistill|B1|arm A"
+  },
+  {
+   "pattern": "Lloyd-optimal",
+   "reason": "Booked overclaim: the k-means stage is Lloyd-ITERATED, not optimal; no optimality certificate exists.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-deltas-2"
+  },
+  {
+   "pattern": "exploits? \\d[\\d.]*x more structure",
+   "reason": "Efficiency ratios at different ranks carry a rank-position confound; a structure multiple between arms at unequal rank is not a measured quantity.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3"
+  },
+  {
+   "pattern": "RUN_TAG.{0,60}(graduat|invariant)",
+   "reason": "RUN_TAG is a mitigation only. The frozen-receipt invariant is the content-addressed lock (docs/receipts.lock.json) plus CI refusal.",
+   "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair"
+  }
+ ]
 }

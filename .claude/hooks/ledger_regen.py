@@ -64,9 +64,17 @@ def main() -> None:
     notes = []
     if "docs/RESULTS.md" in subject:
         run("scripts/gen_results_index.py")
+        # a new booking may cite new receipt paths — the lock must
+        # learn them (coverage hole, external review 2026-08-16);
+        # gen_receipt_lock refuses changed shas on its own
+        run("scripts/gen_receipt_lock.py")
         head = run(".claude/hooks/findings_headroom.py")
-        notes.append("results-index regenerated."
+        notes.append("results-index + receipt lock regenerated."
                      + (f" {head}" if head else ""))
+    if "docs/preregs/" in subject:
+        run("scripts/gen_receipt_lock.py")
+        notes.append("receipt lock regenerated for prereg-declared "
+                     "receipts.")
     if "docs/FINDINGS.md" in subject:
         run("scripts/gen_readme.py")
         notes.append("README + figures.json honesty ledger regenerated "
