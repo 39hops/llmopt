@@ -73,6 +73,16 @@ Requirements the harness encodes, learned the hard way:
   booked verdict cites.
 - Write receipts under `logs/<rung>/`, one file per arm.
 
+## 3.5 Qualify the software (`/qualify`) — BEFORE launch
+
+If the driver is new or copy-modified and the run costs >10 min,
+>1 GiB, or a full model sweep: run the `/qualify` ladder first
+(static checks -> golden fixtures -> parity -> resource preflight
+-> mechanism-complete smoke). A run must never be the first test
+of its own code — three launches died this way on 2026-08-17
+alone. Full suite green (redirected rc, never piped) and
+generated docs current are part of "qualified".
+
 ## 4. Launch — the signatures that bite
 
 Record `git rev-parse HEAD` at launch; it becomes the entry's
