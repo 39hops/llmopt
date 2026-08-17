@@ -476,6 +476,20 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwenruntime/gen2_A.log": {
+   "bytes": 1274,
+   "exists": true,
+   "sha256": "8849f76ef0e8699e21b347a4a59befb42616fe324054f5172a432438d97fec79",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenruntime/gen32_A.log": {
+   "bytes": 1778,
+   "exists": true,
+   "sha256": "e462184d6c1f5ef0a9c62bf459562451dd6e53e379159b6a6d0af76f6445866b",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwenwhole/compile.jsonl": {
    "bytes": 7479,
    "exists": true,

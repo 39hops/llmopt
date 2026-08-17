@@ -22,7 +22,8 @@ it for the full arc). This is a deliberate compact point.
   seats): scripts/check_source.sh = the single definition of
   source-green (CI + /qualify both consume it; wheel/core-deps are
   separate CI jobs); llmopt/lab/{qcodec,qcodec_fast,qartifact,
-  qrope}; ~40 regression tests; /qualify + /rung wiring;
+  qrope}; 24 regression tests (measured, --collect-only); /qualify
+  + /rung wiring;
   producer-consumer rule; clean-worktree ritual.
 - qrope saga (three consecutive fail-closed guard bugs, all
   caught pre-run): value oracle now takes theta/dim from the

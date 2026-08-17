@@ -33486,3 +33486,28 @@ corpus frequency and the floor of what compression can damage —
 the receipt proves the pipeline RECONSTRUCTS AND EXECUTES; it
 cannot speak to retention AT ALL, not even weakly. Fluency is not
 fidelity, and this prompt is the easiest possible case.
+
+## AMENDMENT QWEN-RUNTIME-0R-SMOKE-LOCK: gen2/gen32 receipts were cited bare and never locked (2026-08-17, mac)
+
+Target: OBSERVATION QWEN-RUNTIME-0R-SMOKE (and its -PROVENANCE
+amendment). Two of the three milestone receipts were git-tracked but
+ABSENT from docs/receipts.lock.json: the ladder section cited them as
+bare filenames under a directory header ("LADDER RECEIPTS
+(logs/qwenruntime/): ... gen2_A.log ... gen32_A.log"), and the lock
+generator's citation regex requires a full logs/<dir>/<file.ext>
+path. Only forward1_A.log carried one. Same incident class as the
+already-booked brace-shorthand catch (commit e3cd2a3); found by the
+pre-compact reviewer sweep (Opus seat), verified by direct grep of
+the lock.
+
+Explicit citations, for the lock: logs/qwenruntime/forward1_A.log,
+logs/qwenruntime/gen2_A.log, logs/qwenruntime/gen32_A.log.
+
+Also corrected in the same commit: handoff -3 and BOARD claimed "~40
+regression tests" for the qualification layer; measured count is 24
+(pytest --collect-only on test_qwen_codec.py + test_qwen_qualify.py,
+9 + 15, no parametrize). The prior handoff's "~25" was accurate.
+
+Standing rule (already the e3cd2a3 lesson, now twice-earned): every
+receipt citation in a RESULTS entry is a FULL path from repo root —
+never a directory header plus bare filenames, never brace shorthand.
