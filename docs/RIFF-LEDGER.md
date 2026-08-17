@@ -6306,3 +6306,32 @@ honest status column).
   Attribution: Artin (the force-consistency question), grok seat
   (the phrasing that surfaced it), house (gauge formalization,
   anchors, fences).
+
+  CORRECTION (2026-08-17, same day, GPT seat review — adopted
+  before any rotation work exists): three fences replace the
+  original wording. (1) "function bit-identical" is retracted —
+  WR then R^-1 x is ALGEBRAICALLY equivalent in real arithmetic
+  and generally NOT bit-identical in floating point (changed
+  multiply/add order and operand representations); the no-op gate
+  is a registered numerical TOLERANCE pre-quantization, not a
+  bit-identity. (2) Rotations push through ELIGIBLE linear-linear
+  interfaces only — generic R does not commute through elementwise
+  nonlinearities, RMSNorm in arbitrary bases, gating products,
+  attention structure, or linear-attention state; Qwen's tower is
+  not a chain of dense matrices. (3) "Free" means ZERO TRAINING
+  COST only — some rotations fold offline into weights, others
+  need an online activation transform whose runtime cost depends
+  on placement and fusion (a per-token 5120-wide rotation could
+  eat the codec win in a direct-W4 kernel). Also NARROWED: the V4
+  claim "the vendor QAT pipeline SHAPED that weight space" is
+  causal attribution beyond the receipt — pre-MXFP4 V4 weights
+  were never measured, so training, the MXFP4 transform itself,
+  or both could produce the 64% v 80-84% shift. V4 remains an
+  existence proof that the STORED REPRESENTATION presented to a
+  codec can differ radically; the cause is unresolved. Additional
+  measured targets when ROTATE-THEN-CODE fires: block-max/exponent
+  distribution pre/post (rotation moves the E8M0 scale
+  distribution independently of codebook geometry — two separate
+  payoff channels), plus scalar AND vector distortion, realized
+  bytes, the tolerance no-op, MODEL-1, and unfolded-transform
+  runtime cost.
