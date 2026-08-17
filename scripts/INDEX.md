@@ -2879,6 +2879,16 @@ CUDA leg rung 2: one fused w4 decode+GEMV on a real projection.
 - `w4_gemv_kernel(idx_ptr, cb_ptr, scale_ptr, x_ptr, y_ptr, C, nb_row, BLK_C: tl.constexpr)` — One program per output row: decode the row's w4 blocks in
 - `main() -> int`
 
+### scratch/qwen_cuda_rung3.py
+CUDA leg rungs 3+4: artifact A resident in VRAM, per-layer GPU decode, full-tower forward — per-layer hidden-state error and backend-agreement KL against the CPU reference computed in the SAME process.
+
+- `w4_decode_kernel(idx_ptr, cb_ptr, exp_ptr, out_ptr, n, BLK: tl.constexpr)`
+- `class W4Gpu` (decode)
+- `_fixture_gate()` — rung-1 parity set re-run against THIS kernel (in-kernel
+- `build(device: str)` — Meta model + per-layer decode hooks. device='cpu' is the
+- `forward1(model, ids, device)`
+- `main()`
+
 ### scratch/qwen_displace_extract.py
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
 
