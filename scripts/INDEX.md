@@ -2889,6 +2889,17 @@ CUDA leg rungs 3+4: artifact A resident in VRAM, per-layer GPU decode, full-towe
 - `forward1(model, ids, device)`
 - `main()`
 
+### scratch/qwen_cuda_rung4.py
+CUDA leg rung 4: FUSED tower — every w4 Linear executes as a fused decode+GEMV from the resident compressed payload; no fp32 weight materialization in the decode phase.
+
+- `w4_decode_kernel(idx_ptr, cb_ptr, exp_ptr, out_ptr, n, BLK: tl.constexpr)`
+- `w4_gemv_kernel(idx_ptr, cb_ptr, exp_ptr, x_ptr, y_ptr, C, BLK_C: tl.constexpr)` — One program per output row, fused decode+dot, fp32 acc.
+- `class W4Gpu` (decode_rows, gemv)
+- `class FusedW4Linear` (forward)
+- `_gates()`
+- `build()`
+- `main()`
+
 ### scratch/qwen_displace_extract.py
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
 
