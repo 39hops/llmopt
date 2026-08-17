@@ -31,12 +31,39 @@ from llmopt.lab.qcodec import decode_entry, expected_len  # noqa: E402
 ART = os.path.expanduser(os.environ.get("ART_DIR", "~/qwen_whole0t/A"))
 
 
+VENDOR_INDEX = os.path.expanduser(os.environ.get(
+    "VENDOR_INDEX", "~/qwen_vendor/model.safetensors.index.json"))
+
+
+def _no_dup_pairs(pairs):
+    d = {}
+    for k, v in pairs:
+        if k in d:
+            raise SystemExit(f"QUALIFY FAILED: duplicate manifest key {k}")
+        d[k] = v
+    return d
+
+
 def main():
-    man = json.load(open(os.path.join(ART, "manifest.json")))
+    man = json.load(open(os.path.join(ART, "manifest.json")),
+                    object_pairs_hook=_no_dup_pairs)
     print(f"[q] {ART}: {len(man)} keys")
     fails = []
 
-    # rung 1 — static
+    # rung 1a — EXACT key conservation v the pinned vendor index
+    expected = set(json.load(open(VENDOR_INDEX))["weight_map"])
+    got = set(man)
+    missing = sorted(expected - got)
+    extra = sorted(got - expected)
+    if missing:
+        fails.append(f"missing {len(missing)} keys: {missing[:3]}")
+    if extra:
+        fails.append(f"extra {len(extra)} keys: {extra[:3]}")
+    print(f"[q] rung1a conservation: expected {len(expected)} = "
+          f"manifest {len(got)}, missing {len(missing)}, "
+          f"extra {len(extra)}")
+
+    # rung 1b — static structure
     by_shard = {}
     counts = {"w4": 0, "s16": 0, "raw": 0, "excluded": 0}
     for name, e in man.items():
@@ -48,7 +75,7 @@ def main():
         if codec == "excluded":
             continue
         exp = expected_len(codec, e["shape"])
-        if codec != "raw" and e["len"] != exp:
+        if e["len"] != exp:
             fails.append(f"{name}: len {e['len']} != expected {exp}")
         by_shard.setdefault(e["shard"], []).append(
             (e["off"], e["off"] + e["len"], name))
@@ -97,9 +124,31 @@ def main():
     if layer_tot:
         biggest_layer = max(layer_tot.values())
     est = n_io * 2 + biggest_layer * 4 * 2 + 2 * 2 ** 30
-    print(f"[q] preflight: io fp16 {n_io*2/2**30:.2f} GiB + "
-          f"layer fp32 x2 {biggest_layer*8/2**30:.2f} GiB + 2 GiB "
-          f"overhead = {est/2**30:.2f} GiB peak estimate")
+    avail = None
+    try:
+        for line in open("/proc/meminfo"):
+            if line.startswith("MemAvailable"):
+                avail = int(line.split()[1]) * 1024
+    except OSError:                        # macOS
+        import subprocess
+        try:
+            free = subprocess.check_output(["vm_stat"]).decode()
+            page = 16384
+            n = sum(int(l.split()[-1].rstrip("."))
+                    for l in free.splitlines()
+                    if l.startswith(("Pages free", "Pages inactive")))
+            avail = n * page
+        except Exception:
+            pass
+    frac = est / avail if avail else float("nan")
+    print(f"[q] preflight: est peak {est/2**30:.2f} GiB v available "
+          f"{(avail or 0)/2**30:.2f} GiB (fraction {frac:.2f}, "
+          f"limit 0.80)")
+    if avail is None:
+        fails.append("preflight: available memory undiscoverable")
+    elif est > 0.8 * avail:
+        fails.append(f"preflight REFUSE: est {est/2**30:.2f} GiB > "
+                     f"0.8 x available {avail/2**30:.2f} GiB")
 
     if fails:
         for f_ in fails[:10]:

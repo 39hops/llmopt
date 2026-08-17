@@ -119,11 +119,17 @@ def build():
                                    requires_grad=False))
 
     def dec16(key):
-        e = MAN[key]
-        exps = np.frombuffer(_payload(e), np.uint8,
-                             (e["shape"][0] * e["shape"][1]) // 128, 0)
-        assert exps.max() < 127 + 15, "scale would overflow fp16"
-        return decode(key).to(torch.float16)
+        # fp16 residency must be PROVEN lossless on the actual
+        # tensor, not argued from representability: exact
+        # fp32 -> fp16 -> fp32 round-trip equality is the oracle.
+        # On failure the storage is fp16-APPROXIMATED and says so.
+        W32 = decode(key)
+        W16 = W32.to(torch.float16)
+        if not torch.equal(W32, W16.float()):
+            bad = int((W32 != W16.float()).sum())
+            print(f"[0r] NOTE {key}: fp16 residency APPROXIMATE, "
+                  f"{bad}/{W32.numel()} entries change", flush=True)
+        return W16
 
     emb16 = dec16("model.language_model.embed_tokens.weight")
     head16 = dec16("lm_head.weight")
@@ -186,6 +192,22 @@ def main():
             [{"role": "user", "content": PROMPT}],
             tokenize=False, add_generation_prompt=True)
     ids = tok(text, return_tensors="pt")
+    if os.environ.get("MODE") == "forward1":
+        # ladder rung 4: ONE full-tower forward, no generation
+        t = time.time()
+        out = model(input_ids=ids["input_ids"], use_cache=False)
+        lg = out.logits[0, -1].float()
+        assert torch.isfinite(lg).all(), "non-finite logits"
+        top = torch.topk(lg, 5)
+        print(f"[0r] forward1 {time.time()-t:.0f}s | vocab "
+              f"{lg.shape[-1]} | top5:", flush=True)
+        for v, i in zip(top.values.tolist(), top.indices.tolist()):
+            print(f"[0r]   {v:8.3f}  {tok.decode([i])!r}", flush=True)
+        import resource
+        print(f"[0r] peak RSS "
+              f"{resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/2**20:.2f}"
+              f" GiB", flush=True)
+        return
     t = time.time()
     out = model.generate(**ids, max_new_tokens=N_NEW, do_sample=False,
                          use_cache=True, pad_token_id=tok.eos_token_id)

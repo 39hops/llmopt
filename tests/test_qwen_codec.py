@@ -91,6 +91,27 @@ def test_decode_entry_dispatch_and_length_guard():
         dec_w4(b"\x00" * 100, [1, 128])   # wrong length must refuse
 
 
+def test_golden_payloads_from_frozen_compiler():
+    """MANDATORY parity: payloads produced ONCE by the frozen
+    compiler (tests/fixtures/, committed bytes) decode through the
+    canonical module to the compiler's own self-reported squared
+    error. No torch, no skip — this is the non-optional form of
+    the compiler<->decoder meeting."""
+    import hashlib
+    import json
+    import os
+    fx = os.path.join(os.path.dirname(__file__), "fixtures")
+    W = np.load(os.path.join(fx, "qcodec_src.npy"))
+    exp = json.load(open(os.path.join(fx, "qcodec_expected.json")))
+    for name, dec in (("w4", dec_w4), ("s16", dec_s16)):
+        buf = open(os.path.join(fx, f"qcodec_{name}.bin"), "rb").read()
+        assert hashlib.sha256(buf).hexdigest() == exp[name]["sha256"]
+        assert len(buf) == exp[name]["len"] == expected_len(name, W.shape)
+        R = dec(buf, W.shape)
+        got = float(((R - W) ** 2).sum())
+        assert abs(got - exp[name]["se"]) / exp[name]["se"] < 1e-5
+
+
 def test_roundtrip_against_compiler_encoders():
     """The independent implementations meet on a tiny tensor HERE,
     not inside a 27B run: compiler enc_w4/enc_s16 (scratch, frozen)
