@@ -63,6 +63,15 @@ model sweep may be the FIRST test of new or copy-modified code.
 - "Green" means the FULL suite (CI's run), not the focused subset
   you just wrote. The oracle for repository state is the whole
   suite; a focused pass is a development convenience.
+- **CLEAN-WORKTREE CHECK before any status report** (fourth
+  stale-CODEMAP round earned this): run the CI commands in a
+  detached worktree and diff — eight seconds, catches stale
+  generated docs and locked-but-absent receipts before a report
+  claims green:
+  `git worktree add /tmp/llmopt-clean HEAD && cd /tmp/llmopt-clean
+  && python scripts/gen_index.py && python scripts/gen_codemap.py
+  && python scripts/gen_results_index.py && git diff --quiet
+  && python -m pytest -q` (then `git worktree remove`).
 - **PRODUCER-CONSUMER RULE** (three-model review, 2026-08-17): a
   change to a data structure, a format, or an invariant names the
   code that READS it in the same commit, or it is half a fix. The
