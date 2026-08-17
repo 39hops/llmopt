@@ -225,28 +225,39 @@ def main():
     enc = tok(texts, padding=True, padding_side="left", return_tensors="pt")
     ids, mask = enc["input_ids"], enc["attention_mask"]
     eos = tok.eos_token_id
-    done = torch.zeros(len(prows), dtype=torch.bool)
-    steps, step_logits = [], []
-    for step in range(MAX_NEW):
-        t = time.time()
-        out = model(input_ids=ids, attention_mask=mask, use_cache=False)
-        lg = out.logits[:, -1, :]
-        nxt = lg.argmax(-1)
-        nxt[done] = eos
-        step_logits.append(lg.to(torch.float16).numpy())
-        steps.append(nxt.tolist())
-        done |= nxt.eq(eos)
-        ids = torch.cat([ids, nxt[:, None]], 1)
-        mask = torch.cat([mask, torch.ones_like(nxt[:, None])], 1)
-        print(f"[tp] step {step+1}/{MAX_NEW} done={int(done.sum())}"
-              f"/{len(prows)} {time.time()-t:.0f}s", flush=True)
-        if bool(done.all()):
-            break
-    rl = np.stack(step_logits)          # [steps, B, V]
+    # KV-cached greedy through the vendor generate path (v2b lesson:
+    # use_cache=False re-ran the full growing batch each step — 750s
+    # /step, a 2-day rollout; with cache each step is one weight
+    # sweep over the new tokens only)
+    t = time.time()
+    plen = ids.shape[1]
+
+    class StepClock:
+        def __init__(self):
+            self.n, self.t = 0, time.time()
+
+        def __call__(self, input_ids, scores, **kw):
+            self.n += 1
+            if self.n % 8 == 0:
+                print(f"[tp] step {self.n}/{MAX_NEW} "
+                      f"{time.time()-self.t:.0f}s", flush=True)
+                self.t = time.time()
+            return False
+
+    gen = model.generate(
+        input_ids=ids, attention_mask=mask, max_new_tokens=MAX_NEW,
+        do_sample=False, use_cache=True, output_scores=True,
+        return_dict_in_generate=True, pad_token_id=eos,
+        stopping_criteria=None,
+        eos_token_id=eos)
+    print(f"[tp] rollout {gen.sequences.shape[1]-plen} steps "
+          f"{time.time()-t:.0f}s", flush=True)
+    rl = np.stack([s.to(torch.float16).numpy() for s in gen.scores])
     np.save(os.path.join(OUT, "rollout_logits.npy"), rl)
+    seq = gen.sequences[:, plen:]
     rollout_rows = []
     for b, r in enumerate(prows):
-        toks = [s[b] for s in steps]
+        toks = seq[b].tolist()
         if eos in toks:
             toks = toks[:toks.index(eos) + 1]
         rollout_rows.append({"prompt": r["prompt"],
@@ -258,7 +269,7 @@ def main():
         for row in rollout_rows:
             f.write(json.dumps(row) + "\n")
     man["records"]["rollouts"] = {"n_prompts": len(prows),
-                                  "steps": len(steps),
+                                  "steps": int(rl.shape[0]),
                                   "shape": list(rl.shape),
                                   "sha256": sha(rl)}
     # TRAVERSAL GATE: refuse the lock unless every layer ran and
