@@ -33095,3 +33095,58 @@ v1 RoPE bug through, now visible in-band. This is the -ROPE
 amendment's graduated invariant made executable: a teacher that
 claims to certify the full text tower cannot lock without having
 traversed every registered layer family.
+
+## PRE-REG QWEN-MODEL1-TREE: the conditional decision tree for A v B v C — triggers defined numerically BEFORE any MODEL-1 score exists; follow-ups are byte-RECOMPOSITIONS of already-frozen payloads, never recompressions (2026-08-17, mac)
+
+Registered before the teacher baseline has locked and before any
+functional score of any artifact exists. Purpose: remove
+post-result discretion from the follow-up choice (GPT seat's
+framing, relayed by Artin 13:22; recomposition feasibility
+verified against the WHOLE-0T receipt in-house).
+
+METRIC BASIS (frozen MODEL-1 quantitative core only; chat reads
+never gate): X_arm = CE_arm - CE_teacher on corpus.txt (mean
+per-position excess cross-entropy), and K_arm = mean full-softmax
+KL v teacher over all prefixes.jsonl positions. Both computed
+against the LOCKED teacher records.
+DEFINITION "materially improves": arm Y materially improves over
+arm Z iff (X_Z - X_Y) >= 0.20 * X_Z AND (K_Z - K_Y) >= 0.20 * K_Z
+(conjunction; both metrics, both relative 20%). If X_Z <= 0
+(artifact at/below teacher CE — degenerate), the trigger books
+UNRESOLVED and the tree stops for human review.
+TRIGGERS (fire at MODEL-1 booking, mechanically):
+T1. If B materially improves over A AND C does NOT materially
+    improve over B: fire QWEN-IO-SPLIT-1 — construct
+      D = A everywhere + B's embed_tokens shard (00003)
+      E = A everywhere + B's lm_head shard (00018)
+    exclusively from already-frozen A/B payload bytes. No Lloyd or
+    DP retraining, no rate changes, no recompression. Readings:
+    D~B,E~A -> input embedding geometry sensitive; D~A,E~B ->
+    output logit geometry sensitive; both intermediate -> both
+    matter; neither recovers B -> jointly required precision.
+    Feasibility is a receipt fact: A==B on the 16 non-io shards,
+    shard 00003 holds embed_tokens alone (n_tensors=1), shard
+    00018's payload is lm_head alone (its other 15 keys are
+    MTP-excluded, zero payload).
+T2. If C materially improves over B: fire attention attribution —
+    recomposition ladder from frozen B/C bytes; attention tensors
+    span many shards, so this leg composes at KEY level (container
+    rebuild from both manifests), registered as its own rung with
+    its own conservation law before anything scores.
+T3. If neither T1 nor T2 fires (A~B~C on the core): W4-everywhere
+    is the runtime target at 6.50 GiB; no follow-up compression
+    rung fires; the thread moves wholly to RUNTIME legs.
+RULES. D/E (and any T2 composite) get regenerated manifests +
+canonical whole-artifact digests (the -PROTOCOL amendment's
+ordered per-shard sha chain) and a conservation check BEFORE
+scoring; each recomposition books its own PRE-REG naming source
+shas on both sides. MODEL-1 scores for D/E use the same frozen
+eval + teacher; no prompt may change. The compression side is
+FROZEN until A/B/C speak: no new probe, no new rate table, no
+codec work ahead of the curve (standing order, this entry).
+REGISTERED PRIOR (house, on the record): the curve lands in the
+T1 branch — B materially improves over A (io is the sensitive
+surface at 2 bits; the 0S/Qwen scalar-mass evidence says stored
+io distributions are the least W4-friendly), C adds little over B
+(attention W4 at 0.33 op error transported cleanly everywhere we
+probed). Confidence medium.

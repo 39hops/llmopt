@@ -6282,3 +6282,29 @@ honest status column).
   consumer.
   Attribution: Artin (MPS/CPU direction), GPT seat (program +
   self-correction), house (ledger verification, fences).
+
+- **BANKED (2026-08-17): follow-ups to a multi-arm compile are byte
+  RECOMPOSITIONS, not recompressions — and the decision tree fires
+  on pre-committed numeric triggers, not on reading the scores**
+  (GPT seat, relayed by Artin; house verified feasibility).
+  The mapping: because WHOLE-0T's three rate tables compiled in ONE
+  pass with shared encoders, the alternative encodings of every
+  family already exist on disk; an io-attribution experiment (D =
+  A + B's embed shard, E = A + B's lm_head shard) is a one-file
+  swap with a merged manifest — zero new quantization randomness,
+  treatment isolated at the byte level.
+  Measured anchors: WHOLE-0T receipt sha pattern (A==B on 16
+  shards; shard 00003 = embed alone; shard 00018 payload = lm_head
+  alone, 15 MTP keys excluded at zero payload).
+  Honest breaks: attention attribution does NOT get the simple
+  version — attn tensors span many shards, so the B/C leg needs
+  key-level container rebuilds with its own conservation law;
+  and rope_calls>0 in the teacher gate proves module EXECUTION,
+  not mathematical dependence of outputs on cos/sin — accepted as
+  sufficient for this incident class, no dependency tracer unless
+  a new problem appears.
+  Testable residue: PRE-REG QWEN-MODEL1-TREE (T1/T2/T3 triggers,
+  20% relative CE+KL conjunction, registered before any score).
+  Attribution: GPT seat (recomposition + pre-committed triggers),
+  Artin (relay + teacher-traversal push), house (receipt
+  verification, trigger arithmetic, registration).
