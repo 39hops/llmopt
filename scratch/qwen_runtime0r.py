@@ -53,36 +53,18 @@ def _payload(e):
 
 
 def decode(name):
+    """SINGLE decode path: llmopt.lab.qcodec (the canonical module
+    shared with the sidecar and scorer; golden fixtures in
+    tests/test_qwen_codec.py). No local decode logic lives here."""
+    import sys
+    sys.path.insert(0, os.path.dirname(os.path.dirname(
+        os.path.abspath(__file__))))
+    from llmopt.lab.qcodec import decode_entry
     e = MAN[name]
-    codec = e["codec"]
-    if codec == "excluded":
+    if e["codec"] == "excluded":
         raise SystemExit(f"REFUSING: excluded tensor requested: {name}")
-    shape = e["shape"]
-    n = 1
-    for d in shape:
-        n *= d
-    buf = _payload(e)
-    if codec == "raw":
-        u16 = np.frombuffer(buf, np.uint16)
-        W = (u16.astype(np.uint32) << 16).view(np.float32).reshape(shape)
-        return torch.from_numpy(W.copy())
-    nb = n // 128
-    exps = np.frombuffer(buf, np.uint8, nb, 0).astype(np.int32)
-    scale = np.exp2(exps - 127).astype(np.float32)
-    if codec == "w4":
-        cb = np.frombuffer(buf, np.float16, 256 * 4, nb).reshape(256, 4)
-        idx = np.frombuffer(buf, np.uint8, n // 4, nb + 2048)
-        Wn = cb.astype(np.float32)[idx].reshape(nb, 128)
-    elif codec == "s16":
-        lv = np.frombuffer(buf, np.float16, 16, nb).astype(np.float32)
-        codes = np.frombuffer(buf, np.uint8, n // 2, nb + 32)
-        c = np.empty(n, np.uint8)
-        c[0::2] = codes >> 4
-        c[1::2] = codes & 0xF
-        Wn = lv[c].reshape(nb, 128)
-    else:
-        raise SystemExit(f"unknown codec {codec}")
-    return torch.from_numpy((Wn * scale[:, None]).reshape(shape))
+    W = decode_entry(_payload(e), e)
+    return torch.from_numpy(np.ascontiguousarray(W))
 
 
 def build():
@@ -101,12 +83,12 @@ def build():
         return nm
 
     # RESIDENT SET, memory-shaped for a 13GB host (first peek
-    # OOM'd holding embed+lm_head fp32 = ~9.5 GiB): decoded W4/S16
-    # values are fp16_codebook * 2^k, so an fp16 resident copy is
-    # BIT-LOSSLESS (power-of-two scale moves only the exponent;
-    # scale range asserted). embed gathers fp16 rows and casts
-    # fp32 at lookup; lm_head matmuls in fp32 per row-chunk. Same
-    # decoded weights, same function, ~5.5GB peak.
+    # OOM'd holding embed+lm_head fp32 = ~9.5 GiB): io tensors are
+    # held fp16 ONLY when the exact fp32->fp16->fp32 round-trip
+    # oracle passes on the actual tensor (dec16 below REFUSES
+    # otherwise — a correctness reference must never run on
+    # silently altered weights). embed gathers fp16 rows and casts
+    # fp32 at lookup; lm_head matmuls in fp32 per row-chunk.
     layer_pref = "model.layers."
     for nm, _ in list(model.named_parameters()):
         if nm.startswith(layer_pref):
@@ -127,8 +109,10 @@ def build():
         W16 = W32.to(torch.float16)
         if not torch.equal(W32, W16.float()):
             bad = int((W32 != W16.float()).sum())
-            print(f"[0r] NOTE {key}: fp16 residency APPROXIMATE, "
-                  f"{bad}/{W32.numel()} entries change", flush=True)
+            raise SystemExit(
+                f"REFUSING: fp16 residency NOT lossless for {key} "
+                f"({bad}/{W32.numel()} entries change) — a reference "
+                f"runtime never runs on altered weights")
         return W16
 
     emb16 = dec16("model.language_model.embed_tokens.weight")
@@ -174,17 +158,37 @@ def build():
                 p.to("meta"), requires_grad=False)
         return output
 
+    # traversal census (QWEN-TEACHER-0-TRAVERSAL pattern, reused
+    # not reinvented): forward1 asserts 64/48/16 + rope like the
+    # teacher's lock gate — a smoke must prove mechanism execution
+    trav = {"layer_calls": [0] * len(layers), "rope_calls": 0,
+            "families": ["full_attn" if hasattr(l, "self_attn")
+                         else "linear_attn" for l in layers]}
+
+    def count_layer(i):
+        def h(module, args, kwargs):
+            trav["layer_calls"][i] += 1
+            return None
+        return h
+
+    def count_rope(module, args, kwargs):
+        trav["rope_calls"] += 1
+        return None
+
+    model.model.rotary_emb.register_forward_pre_hook(
+        count_rope, with_kwargs=True)
     for i, lyr in enumerate(layers):
+        lyr.register_forward_pre_hook(count_layer(i), with_kwargs=True)
         lyr.register_forward_pre_hook(make_pre(i), with_kwargs=True)
         lyr.register_forward_hook(post, with_kwargs=True)
-    return model
+    return model, trav
 
 
 def main():
     from transformers import AutoTokenizer
     t0 = time.time()
     tok = AutoTokenizer.from_pretrained(VDIR)
-    model = build()
+    model, trav = build()
     print(f"[0r] built from {ART} in {time.time()-t0:.0f}s", flush=True)
     text = PROMPT
     if CHAT:
@@ -193,20 +197,33 @@ def main():
             tokenize=False, add_generation_prompt=True)
     ids = tok(text, return_tensors="pt")
     if os.environ.get("MODE") == "forward1":
-        # ladder rung 4: ONE full-tower forward, no generation
+        # ladder rung 4: ONE full-tower forward, mechanism-complete
         t = time.time()
         out = model(input_ids=ids["input_ids"], use_cache=False)
         lg = out.logits[0, -1].float()
         assert torch.isfinite(lg).all(), "non-finite logits"
+        calls = trav["layer_calls"]
+        fams = trav["families"]
+        n_lin = sum(1 for i, f in enumerate(fams)
+                    if f == "linear_attn" and calls[i] > 0)
+        n_full = sum(1 for i, f in enumerate(fams)
+                     if f == "full_attn" and calls[i] > 0)
+        assert (len(calls), n_lin, n_full) == (64, 48, 16), \
+            f"traversal {len(calls)}/{n_lin}/{n_full} != 64/48/16"
+        assert trav["rope_calls"] >= n_full, "rope under-called"
+        assert min(calls) > 0, "idle layer"
         top = torch.topk(lg, 5)
         print(f"[0r] forward1 {time.time()-t:.0f}s | vocab "
-              f"{lg.shape[-1]} | top5:", flush=True)
+              f"{lg.shape[-1]} | traversal 64/{n_lin}/{n_full} "
+              f"rope={trav['rope_calls']} | top5:", flush=True)
         for v, i in zip(top.values.tolist(), top.indices.tolist()):
             print(f"[0r]   {v:8.3f}  {tok.decode([i])!r}", flush=True)
         import resource
-        print(f"[0r] peak RSS "
-              f"{resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/2**20:.2f}"
-              f" GiB", flush=True)
+        import sys as _s
+        rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+        rss_b = rss if _s.platform == "darwin" else rss * 1024
+        print(f"[0r] peak RSS {rss_b/2**30:.2f} GiB (observed, v "
+              f"qualifier estimate)", flush=True)
         return
     t = time.time()
     out = model.generate(**ids, max_new_tokens=N_NEW, do_sample=False,

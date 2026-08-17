@@ -1,0 +1,1 @@
+{"kind": "refactor-workflow", "rc": 0, "wall_s": 594.3, "git_sha": "b85ac82", "argv": ["-"], "artifacts": ["llmopt/lab/catalog.py", "llmopt/lab/merge.py", "llmopt/lab/lake.py", "scripts/book.py", "llmopt/lab/runlog.py", "llmopt/backends/intbirth_native.py", "llmopt/vendor/axiom/", "scripts/log_hygiene.py"], "ts": 1786435417, "agents": 14, "tests_after": 595}

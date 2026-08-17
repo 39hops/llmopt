@@ -33,6 +33,7 @@ import argparse
 import hashlib
 import json
 import re
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -89,6 +90,15 @@ def build() -> dict:
         else:
             rec = {"exists": True, "sha256": sha256(p),
                    "bytes": p.stat().st_size}
+            # trackedness is part of the record: exists=true for a
+            # file only one machine holds is not evidence-in-repo.
+            # Small text receipts get force-added (logs doctrine);
+            # large streams stay machine-local and say so.
+            r = subprocess.run(["git", "ls-files", "--error-unmatch",
+                                rel], cwd=ROOT, capture_output=True)
+            rec["tracked"] = r.returncode == 0
+            if not rec["tracked"]:
+                rec["local_only"] = True
         rec["source"] = src
         out[rel] = rec
     return out

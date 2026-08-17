@@ -1,0 +1,15 @@
+[f1d] K=16 dev=mps prompt 9 tokens: 'The three most important ideas in computer science are'
+[f1d] constructed 1s rss 0.5 GB
+[f1d] dense 200 tensors, rss 2.5 GB
+[f1d] dense 400 tensors, rss 3.1 GB
+[f1d] dense 600 tensors, rss 3.6 GB
+[f1d] dense 1000 tensors, rss 3.8 GB
+[f1d] dense 1200 tensors, rss 3.9 GB
+[f1d] dense loaded: 1521 tensors, 13s, rss 5.3 GB
+[f1d] layer 10 residents loaded, rss 5.3 GB
+[f1d] layer 20 residents loaded, rss 5.3 GB
+[f1d] layer 30 residents loaded, rss 5.3 GB
+[f1d] layer 40 residents loaded, rss 5.3 GB
+[f1d] BATCH equivalence rel-L2 0.00e+00 (PASS <=1e-3)
+[f1d] residents 785 experts (10.5 GB packed) | load total 29s | rss 5.3 GB
+[prof] per-token 8381 ms | attn 955 ms | ffn 6924 ms | other 502 ms

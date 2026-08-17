@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 205, library 71, reproduce-pinned 10, results-cited 212, spec-cited 86, cited-but-library 59
+Census: UNCITED 206, library 71, reproduce-pinned 10, results-cited 213, spec-cited 86, cited-but-library 59
 
 ## scratch/
 
@@ -336,9 +336,11 @@ Census: UNCITED 205, library 71, reproduce-pinned 10, results-cited 212, spec-ci
 | qwen | qwen_census_night.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_displace_extract.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_family_probe.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| qwen | qwen_qualify.py | UNCITED | — | — | — | — |
+| qwen | qwen_runtime0r.py | UNCITED | — | — | — | — |
 | qwen | qwen_stream_probe.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
 | qwen | qwen_teacher_pass.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| qwen | qwen_whole0t.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| qwen | qwen_whole0t.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 3 |
 | rank | rank_read.py | spec-cited | specs | specs×2 | — | 1 |
 | rat | rat_deploy.py | results-cited | RESULTS, specs | RESULTS×1, specs×5 | — | 3 |
 | rat | rat_repair.py | UNCITED | — | — | — | 1 |
@@ -444,7 +446,7 @@ Census: UNCITED 205, library 71, reproduce-pinned 10, results-cited 212, spec-ci
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
 |  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×12 | — | 1 |
-| adjudicate | adjudicate.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| adjudicate | adjudicate.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | anchor | anchor_guard.py | UNCITED | — | — | — | 1 |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | 2 |
 | arena | arena.py | UNCITED | — | — | — | — |
@@ -570,7 +572,7 @@ Census: UNCITED 205, library 71, reproduce-pinned 10, results-cited 212, spec-ci
 | mine | mine_prior_update.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | moe | moe_router_stats.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 4 |
 | obs | obs_from_receipt_0s.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
-| obs | obs_from_receipt_0t.py | UNCITED | — | — | — | — |
+| obs | obs_from_receipt_0t.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | plot | plot_gt1_crest.py | spec-cited | specs | specs×2 | — | — |
 | plot | plot_identity_crest.py | spec-cited | specs | specs×2 | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×2 | — | 1 |

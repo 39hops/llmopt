@@ -2869,6 +2869,20 @@ QWEN-FAMILY-PROBE-0: cheapest acceptable RATE per non-FFN family.
 - `probe_tensor(fam, name)` — Two passes over row-chunks so 1.27B-param tensors fit VRAM:
 - `main()`
 
+### scratch/qwen_qualify.py
+Artifact qualification ladder, rungs 1-3 (static, seconds each).
+
+- `_no_dup_pairs(pairs)`
+- `main()`
+
+### scratch/qwen_runtime0r.py
+QWEN-RUNTIME-0R minimal CPU reference: decode a WHOLE-0T artifact per layer and generate.
+
+- `_payload(e)`
+- `decode(name)` — SINGLE decode path: llmopt.lab.qcodec (the canonical module
+- `build()`
+- `main()`
+
 ### scratch/qwen_stream_probe.py
 QWEN-STREAM-PROBE-0: does the 0S codec ranking transport to a DENSE model's FFN? Descriptive, single layer, 3080.
 
@@ -3654,6 +3668,17 @@ Machine-readable pre-registration: bars a program can adjudicate.
 - `load(path: str | Path) -> dict`
 - `adjudicate_refutation(prereg: dict, obs: dict) -> str | None` — Score the structured refutation clause, if the pre-reg has one.
 - `adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]` — Deterministic adjudication of every bar against observations.
+
+### llmopt/lab/qcodec.py
+Canonical WHOLE-0T payload decoders (the one shared decode path).
+
+- `expected_len(codec: str, shape) -> int`
+- `dec_raw(buf: bytes, shape, dtype: str) -> np.ndarray`
+- `_scales(buf: bytes, nb: int) -> np.ndarray`
+- `_shape_contract(codec, shape)`
+- `dec_w4(buf: bytes, shape) -> np.ndarray`
+- `dec_s16(buf: bytes, shape) -> np.ndarray`
+- `decode_entry(buf: bytes, entry: dict) -> np.ndarray` — Decode one manifest entry {codec, shape, dtype?}.
 
 ### llmopt/lab/runfiles.py
 Moved to llmopt.runs.runfiles (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).

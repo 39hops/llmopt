@@ -44,12 +44,14 @@ def expected_len(codec: str, shape) -> int:
     raise ValueError(f"unknown codec {codec!r}")
 
 
-def dec_raw(buf: bytes, shape, dtype: str = "BF16") -> np.ndarray:
+def dec_raw(buf: bytes, shape, dtype: str) -> np.ndarray:
     u16 = np.frombuffer(buf, np.uint16)
     if dtype == "BF16":
         return ((u16.astype(np.uint32) << 16).view(np.float32)
                 .reshape(shape))
-    return u16.view(np.float16).astype(np.float32).reshape(shape)
+    if dtype == "F16":
+        return u16.view(np.float16).astype(np.float32).reshape(shape)
+    raise ValueError(f"unknown raw dtype {dtype!r} — refusing to guess")
 
 
 def _scales(buf: bytes, nb: int) -> np.ndarray:
@@ -57,10 +59,19 @@ def _scales(buf: bytes, nb: int) -> np.ndarray:
     return np.exp2(exps - 127).astype(np.float32)
 
 
-def dec_w4(buf: bytes, shape) -> np.ndarray:
+def _shape_contract(codec, shape):
     n = 1
     for d in shape:
         n *= d
+    if len(shape) != 2 or n % BLOCK or (codec == "w4" and n % 4) \
+            or (codec == "s16" and n % 2):
+        raise ValueError(f"invalid WHOLE-0T record shape {shape} "
+                         f"for {codec}")
+    return n
+
+
+def dec_w4(buf: bytes, shape) -> np.ndarray:
+    n = _shape_contract("w4", shape)
     nb = n // BLOCK
     assert len(buf) == expected_len("w4", shape), \
         f"w4 payload {len(buf)} != {expected_len('w4', shape)}"
@@ -72,9 +83,7 @@ def dec_w4(buf: bytes, shape) -> np.ndarray:
 
 
 def dec_s16(buf: bytes, shape) -> np.ndarray:
-    n = 1
-    for d in shape:
-        n *= d
+    n = _shape_contract("s16", shape)
     nb = n // BLOCK
     assert len(buf) == expected_len("s16", shape), \
         f"s16 payload {len(buf)} != {expected_len('s16', shape)}"
@@ -94,7 +103,9 @@ def decode_entry(buf: bytes, entry: dict) -> np.ndarray:
     if codec == "excluded":
         raise ValueError("excluded tensor has no payload")
     if codec == "raw":
-        return dec_raw(buf, entry["shape"], entry.get("dtype", "BF16"))
+        if "dtype" not in entry:
+            raise ValueError("raw entry missing dtype — refusing default")
+        return dec_raw(buf, entry["shape"], entry["dtype"])
     if codec == "w4":
         return dec_w4(buf, entry["shape"])
     if codec == "s16":

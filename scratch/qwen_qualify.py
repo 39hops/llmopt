@@ -45,13 +45,52 @@ def _no_dup_pairs(pairs):
 
 
 def main():
+    fails = []
+    # rung 0 — IDENTITY: regenerate the digest chain from the files
+    # on disk and compare against the committed chain (transfer
+    # rule: a corruption preserving offsets/lengths/finiteness
+    # passes every later rung; this one catches it)
+    import hashlib
+    arm = os.path.basename(ART.rstrip("/"))
+    chain_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                              "..", "logs", "qwenwhole",
+                              f"artifact_digest_{arm}.txt")
+    if os.path.exists(chain_path):
+        want = {l.split()[1]: l.split()[0]
+                for l in open(chain_path) if l.strip()}
+        for fname, sha in sorted(want.items()):
+            p = os.path.join(ART, fname)
+            got = hashlib.sha256(open(p, "rb").read()).hexdigest() \
+                if os.path.exists(p) else "ABSENT"
+            if got != sha:
+                fails.append(f"digest mismatch {fname}: {got[:12]} "
+                             f"!= {sha[:12]}")
+        print(f"[q] rung0 identity: {len(want)} files v committed "
+              f"chain, {len(fails)} mismatches")
+        if fails:
+            for f_ in fails[:5]:
+                print(f"[q] FAIL {f_}")
+            raise SystemExit("QUALIFY FAILED at rung 0 (identity)")
+    else:
+        print(f"[q] rung0 SKIP: no committed chain for arm {arm!r} "
+              f"(non-A/B/C artifact)")
+
     man = json.load(open(os.path.join(ART, "manifest.json")),
                     object_pairs_hook=_no_dup_pairs)
     print(f"[q] {ART}: {len(man)} keys")
-    fails = []
 
     # rung 1a — EXACT key conservation v the pinned vendor index
-    expected = set(json.load(open(VENDOR_INDEX))["weight_map"])
+    # (same duplicate-refusing parse; sha pinned to rev 1d4bf0f2)
+    VENDOR_INDEX_SHA = ("77042094076611b69791a610065f28b7013b8c62"
+                        "1795fa86ddccc8bac7d1b9df")
+    ib = open(VENDOR_INDEX, "rb").read()
+    got_sha = __import__("hashlib").sha256(ib).hexdigest()
+    if got_sha != VENDOR_INDEX_SHA:
+        fails.append(f"vendor index sha {got_sha[:12]} != pinned "
+                     f"{VENDOR_INDEX_SHA[:12]}")
+    expected = set(json.loads(ib.decode(),
+                              object_pairs_hook=_no_dup_pairs)
+                   ["weight_map"])
     got = set(man)
     missing = sorted(expected - got)
     extra = sorted(got - expected)
@@ -84,11 +123,13 @@ def main():
         fsize = os.path.getsize(os.path.join(ART, sh + ".bin"))
         prev_end = 0
         for off, end, name in spans:
-            if off < prev_end:
-                fails.append(f"{sh}: {name} overlaps previous span")
+            if off != prev_end:               # exact cover: no gaps,
+                fails.append(f"{sh}: {name} at {off}, expected "
+                             f"{prev_end} (gap or overlap)")
             prev_end = end
-        if prev_end > fsize:
-            fails.append(f"{sh}: spans exceed file size")
+        if prev_end != fsize:                 # no trailing bytes
+            fails.append(f"{sh}: spans end {prev_end} != file "
+                         f"size {fsize}")
     print(f"[q] rung1 census {counts}, {len(by_shard)} shards")
 
     # rung 3 — smallest coded tensor per codec, decoded for real
@@ -133,7 +174,9 @@ def main():
         import subprocess
         try:
             free = subprocess.check_output(["vm_stat"]).decode()
-            page = 16384
+            import re as _re
+            m = _re.search(r"page size of (\d+)", free)
+            page = int(m.group(1)) if m else 16384
             n = sum(int(l.split()[-1].rstrip("."))
                     for l in free.splitlines()
                     if l.startswith(("Pages free", "Pages inactive")))
