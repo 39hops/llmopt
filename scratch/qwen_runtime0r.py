@@ -280,6 +280,10 @@ def build():
 def main():
     from transformers import AutoTokenizer
     t0 = time.time()
+    print("[0r] code_commit "
+          + __import__("subprocess").check_output(
+              ["git", "rev-parse", "--short", "HEAD"]).decode().strip(),
+          flush=True)
     tok = AutoTokenizer.from_pretrained(VDIR)
     model, trav = build()
     print(f"[0r] built from {ART} in {time.time()-t0:.0f}s", flush=True)

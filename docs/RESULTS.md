@@ -33468,3 +33468,21 @@ until then no run is claimed to have passed qrope, including
 teacher v2d (frozen on the older call-count gate, prereg-tied to
 0ca4151). Receipts force-added and locked; runtime code_commit
 range for the three receipts: a943494..6c4a431.
+
+## AMENDMENT QWEN-RUNTIME-0R-SMOKE-PROVENANCE (amends OBSERVATION QWEN-RUNTIME-0R-SMOKE): the producing code is unrecorded in the milestone receipts, and the prompt is the easiest possible case (2026-08-17, mac)
+
+Opus seat, same day, both adopted. (1) PROVENANCE: none of the
+three receipts (forward1_A, gen2_A, gen32_A) carries a
+code_commit, and gen32_A.log's own stderr proves it was produced
+by RETIRED code (the .mean() rope statistic without the seq
+guard, deleted at 4fcf4d4's successor — the log's warning line
+cites source that no longer exists at HEAD). The booked "runtime
+code_commit range a943494..6c4a431" is an inference from
+timeline, not a recorded fact. The runtime now prints code_commit
+at every entry; gen32 re-runs once at HEAD when the box frees —
+nothing restarts for this. (2) DIFFICULTY FENCE, added to the
+record: "The capital of France is" sits near the ceiling of
+corpus frequency and the floor of what compression can damage —
+the receipt proves the pipeline RECONSTRUCTS AND EXECUTES; it
+cannot speak to retention AT ALL, not even weakly. Fluency is not
+fidelity, and this prompt is the easiest possible case.
