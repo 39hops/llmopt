@@ -1,0 +1,5 @@
+# canonical whole-artifact digests (AMENDMENT QWEN-WHOLE-0T-PROTOCOL rule 5)
+# sha256 of per-arm digest files (sorted per-shard sha256 chains), computed on the producing WSL box 2026-08-17
+A 1456f30af702210137a7b69804314a0d76483c984c3d6cd6a06d4a84f183b421
+B d1f2d617f63d63e277c006328b18367a80dd95f0ff5a75f1ecce109406a3d5fa
+C de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc
