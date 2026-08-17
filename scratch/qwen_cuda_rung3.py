@@ -190,10 +190,18 @@ def build(device: str):
             cpu_decode(shard_key(nm)).to(device),
             requires_grad=False))
 
-    emb = W4Rows(payload(man["model.language_model."
-                             "embed_tokens.weight"]),
-                 man["model.language_model.embed_tokens.weight"]
-                 ["shape"])
+    # io codec gate: this driver implements a w4 GPU/row path ONLY.
+    # S16 io (artifacts B/C) decoded here as w4 produced non-finite
+    # logits (measured 2026-08-17) — refuse, never reinterpret.
+    ee = man["model.language_model.embed_tokens.weight"]
+    he_chk = man["lm_head.weight"]
+    for _nm, _e in (("embed_tokens", ee), ("lm_head", he_chk)):
+        if _e["codec"] != "w4":
+            raise SystemExit(
+                f"REFUSING: {_nm} codec {_e['codec']!r} — this "
+                f"driver supports w4 io only (S16 GPU path not "
+                f"built; artifacts B/C need it)")
+    emb = W4Rows(payload(ee), ee["shape"])
 
     def emb_fwd(input_ids):
         flat = input_ids.reshape(-1)
