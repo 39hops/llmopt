@@ -32896,3 +32896,37 @@ only; no new codec measurement.
 **Verdict**: PASS. v2 (shard-cache + two-pass) is promoted: the Qwen whole-model compilers already import its loader lineage, and future 0S-family runs use v2 as the default harness. v1 receipts stay the evidence record for booked 0S numbers.
 
 **Fences**: one layer, one shard, V4-flash only; the tolerance bound is the pre-look qualification bound, not a new registration; wall 6772s on Mac CPU is descriptive (v2's speed claim lives in the qualification entry at 7.45x harness-level, CUDA). Receipts: `logs/streamwd/v2census_L22.jsonl` (v2), `logs/streamwd/v2gate_mac.log`, v1 baseline `logs/streamwd/pass0s_B1.jsonl`.
+
+## PRE-REG QWEN-TEACHER-0: the one-time locked teacher-logit baseline — layer-streaming CPU pass of vendor Qwen3.8-27B over the frozen MODEL-1 payload (2026-08-17, mac)
+
+Executes the teacher-baseline procedure frozen in
+evals/qwen_model1/SPEC.md (committed pre-artifact, 2026-08-17).
+This entry registers the EXECUTION, not new bars: the pass is a
+baseline computation, and its only claim is procedural.
+
+INSTRUMENT. scratch/qwen_teacher_pass.py in .venv_teacher
+(transformers 5.15.0, torch 2.13.0 CPU — the lab venv pins
+transformers<5 for mlx-lm and does not know model_type qwen3_5).
+Vendor shards at revision 1d4bf0f2 downloaded whole to
+~/qwen_vendor (untracked). Model built on the meta device; decoder
+layers materialize per forward via pre/post hooks reading the
+mmap'd shards (bf16 -> fp32), embeddings/lm_head/norms/small
+resident fp32. Vendor forward code untouched; use_cache=False
+everywhere (each rollout step re-streams all 64 layers — slow is
+accepted; batched prompts share each weight sweep).
+OUTPUTS. logs/qwenteacher/: corpus_logits.npy, prefix_logits.npy,
+rollout_logits.npy (fp16), rollout_tokens.jsonl,
+teacher_manifest.json carrying sha256 of every record. The
+manifest existing REFUSES a re-run: one baseline, computed once.
+LOCK RULE. After the manifest books, the teacher records are
+immutable; every backend (compressed CPU reference, Metal W4,
+CUDA W4) scores against them. A re-computed teacher is a NEW
+versioned baseline and books separately.
+FENCES. No capability claim; greedy only; fp32 accumulate; smoke
+mode writes to _smoke paths and can never be evidence. Rollout
+logits are recorded at each generated position only (prefill
+logits for prompts are not part of the locked payload — prefixes
+cover the teacher-forced case). Machine: Mac CPU; the pass is a
+baseline, not a gate, so no cross-device comparison arises.
+REGISTERED PRIOR. None — procedural rung; the only failure mode
+is the harness (OOM, wrong wrapper path), which books as NOT-RUN.
