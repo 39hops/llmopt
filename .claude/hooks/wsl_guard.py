@@ -91,6 +91,23 @@ if verb == "launch" and _bare:
     if lm:
         out("allow", f"wsl.sh launch of tracked driver "
             f"{lm.group(1) or lm.group(2)} with log+marker under logs/")
+    # Standing OK (Artin 2026-08-16, overnight 3080 grant): python
+    # drivers in the same reviewed shape — optional `cd ~/code/llmopt
+    # &&` prefix and NAME=value env assignments, then the repo venv
+    # running a tracked scratch/ script, log+marker under logs/.
+    # The driver text was seen at commit time; env values are limited
+    # to safe word characters so no command can hide in one.
+    pm = re.match(r"""\s*'
+                  (?:cd\s+~/code/llmopt\s+&&\s+)?
+                  (?:[A-Z][A-Z0-9_]*=[\w./~-]*\s+)*
+                  \.venv/bin/python\s+(?:-u\s+)?(scratch/[\w-]+\.py)
+                  (?:\s+[\w./=-]+)*'\s+
+                  (logs/[\w./-]+)\s+(logs/[\w./-]+)\s*$""",
+                  rest, re.X)
+    if pm:
+        out("allow", f"wsl.sh launch of tracked python driver "
+            f"{pm.group(1)} with log+marker under logs/ (overnight "
+            "standing OK, 2026-08-16)")
 
 # the inner command: first quoted argument
 pm = re.match(r'\s*"((?:[^"\\]|\\.)*)"|\s*\'([^\']*)\'', rest, re.S)

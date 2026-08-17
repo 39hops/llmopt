@@ -55,13 +55,16 @@ from llmopt.lab.shards import dequant  # noqa: E402
 MODEL = "deepseek-ai/DeepSeek-V4-Flash-0731"
 REVISION = "7872f01b1d1fe23eabc4c98b48bffcef5a386062"
 REPO = f"https://huggingface.co/{MODEL}/resolve/{REVISION}"
-SHARD = "model-00024-of-00048.safetensors"
-LAYER = 22
+LAYER = int(os.environ.get("LAYER", "22"))
+SHARD = None                     # resolved from the official index
 
 SMOKE = os.environ.get("SMOKE", "0") == "1"
 N_EXPERTS = int(os.environ.get("N_EXPERTS", "4" if SMOKE else "256"))
 CACHE_DIR = os.path.expanduser(os.environ.get("SHARD_CACHE", "~/shards"))
-OUT = (f"logs/streamwd/v2proto{'_smoke' if SMOKE else ''}.jsonl")
+OUT = (f"logs/streamwd/v2census_L{LAYER}"
+       f"{'_smoke' if SMOKE else ''}.jsonl"
+       if "LAYER" in os.environ else
+       f"logs/streamwd/v2proto{'_smoke' if SMOKE else ''}.jsonl")
 
 # v1 contract constants (verbatim from stream_wdistill0s.py)
 SEED = 20260816
@@ -80,16 +83,41 @@ PROJS = ("w1", "w3", "w2")
 
 
 # ------------------------------------------------------- shard cache
+def resolve_shard() -> str:
+    """The shard holding LAYER's routed experts, from the official
+    safetensors index (never guessed from filename arithmetic).
+    Refuses if the layer's expert tensors span multiple shards."""
+    global SHARD
+    if SHARD:
+        return SHARD
+    os.makedirs(CACHE_DIR, exist_ok=True)
+    ip = os.path.join(CACHE_DIR, f"{REVISION[:12]}_index.json")
+    if not os.path.exists(ip):
+        req = urllib.request.Request(
+            f"{REPO}/model.safetensors.index.json",
+            headers={"User-Agent": "llmopt-streamwd-v2 (research)"})
+        with urllib.request.urlopen(req, timeout=120) as r:
+            open(ip, "wb").write(r.read())
+    wm = json.load(open(ip))["weight_map"]
+    shards = {v for k, v in wm.items()
+              if f"layers.{LAYER}.ffn.experts." in k}
+    if len(shards) != 1:
+        raise SystemExit(f"REFUSING: layer {LAYER} experts span "
+                         f"{sorted(shards)}")
+    SHARD = shards.pop()
+    return SHARD
+
+
 def shard_path() -> str:
     os.makedirs(CACHE_DIR, exist_ok=True)
-    return os.path.join(CACHE_DIR, f"{REVISION[:12]}_{SHARD}")
+    return os.path.join(CACHE_DIR, f"{REVISION[:12]}_{resolve_shard()}")
 
 
 def ensure_shard() -> str:
     p = shard_path()
     if os.path.exists(p) and os.path.getsize(p) > 0:
         return p
-    url = f"{REPO}/{SHARD}"
+    url = f"{REPO}/{resolve_shard()}"
     req = urllib.request.Request(
         url, headers={"User-Agent": "llmopt-streamwd-v2 (research)"})
     tok = os.environ.get("HF_TOKEN", "")
@@ -99,7 +127,7 @@ def ensure_shard() -> str:
             tok = open(tf).read().strip()
     if tok:
         req.add_header("Authorization", f"Bearer {tok}")
-    print(f"[v2] downloading {SHARD} -> {p} "
+    print(f"[v2] downloading {resolve_shard()} -> {p} "
           f"(auth={'yes' if tok else 'no'})", flush=True)
     t = time.time()
     tmp = p + ".part"
@@ -382,7 +410,11 @@ def main():
                   flush=True)
     p2 = time.time() - t2
 
+    code_commit = __import__("subprocess").check_output(
+        ["git", "rev-parse", "--short", "HEAD"]).decode().strip()
     row = {"proto": "streamwd_v2", "device": DEV, "smoke": SMOKE,
+           "layer": LAYER, "shard": resolve_shard(),
+           "code_commit": code_commit,
            "n_experts": N_EXPERTS, "revision": REVISION,
            "s2_levels": {p: v.tolist() for p, v in s2lv.items()},
            "frob": {a: (acc[a][0] / acc[a][1]) ** 0.5 for a in ARMS},
