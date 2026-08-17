@@ -204,7 +204,8 @@ def main():
     t0 = time.time()
     print(f"[qp] {MODEL}@{REVISION[:8]} layer {LAYER} dev {DEV} "
           f"smoke {SMOKE}", flush=True)
-    names = [f"model.layers.{LAYER}.mlp.{p}.weight" for p in PROJS]
+    names = [f"model.language_model.layers.{LAYER}.mlp.{p}.weight"
+             for p in PROJS]
     Ws = {}
     for p, n in zip(PROJS, names):
         W = load_tensor(n)
