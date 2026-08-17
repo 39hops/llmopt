@@ -63,3 +63,12 @@ model sweep may be the FIRST test of new or copy-modified code.
 - "Green" means the FULL suite (CI's run), not the focused subset
   you just wrote. The oracle for repository state is the whole
   suite; a focused pass is a development convenience.
+- **PRODUCER-CONSUMER RULE** (three-model review, 2026-08-17): a
+  change to a data structure, a format, or an invariant names the
+  code that READS it in the same commit, or it is half a fix. The
+  lock gained local_only and the test didn't read it; the decoder
+  was unified and nothing asserted it stays unified; a receipt
+  printed "v estimate" with no estimate crossing the boundary —
+  same shape, three times in one day. And distinguish three states
+  in every status report: the code does X / a test enforces X / a
+  document claims X. Only the middle one is green.

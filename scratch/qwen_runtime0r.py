@@ -39,7 +39,24 @@ CHAT = os.environ.get("CHAT", "1") == "1"
 torch.set_grad_enabled(False)
 torch.set_num_threads(os.cpu_count())
 
-MAN = json.load(open(os.path.join(ART, "manifest.json")))
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(
+    os.path.abspath(__file__))))
+from llmopt.lab import qartifact  # noqa: E402
+
+# the manifest DOES NOT EXIST here until qualification returns —
+# rung 0 identity, conservation, spans, spot decode, preflight all
+# run first (llmopt/lab/qartifact.py; consumers never parse raw)
+_arm = os.path.basename(ART.rstrip("/"))
+_chain = os.path.join(os.path.dirname(os.path.dirname(
+    os.path.abspath(__file__))), "logs", "qwenwhole",
+    f"artifact_digest_{_arm}.txt")
+_q = qartifact.qualify_artifact(ART, VDIR + "/model.safetensors.index.json",
+                                _chain if os.path.exists(_chain) else None,
+                                allow_unchained=not os.path.exists(_chain))
+MAN = _q["manifest"]
+QREPORT = _q["report"]
+print(f"[0r] qualified: {QREPORT}", flush=True)
 _handles = {}
 
 
@@ -190,7 +207,26 @@ def build():
     # teacher's lock gate — a smoke must prove mechanism execution
     trav = {"layer_calls": [0] * len(layers), "rope_calls": 0,
             "families": ["full_attn" if hasattr(l, "self_attn")
-                         else "linear_attn" for l in layers]}
+                         else "linear_attn" for l in layers],
+            "attn_exec": {"linear_attn": 0, "full_attn": 0}}
+
+    # EXECUTED census, not structural: the counter sits on each
+    # attention module's own forward (teacher-traversal amendment
+    # distinction — a structural map can be 48/16 while a family
+    # never runs)
+    def count_attn(fam):
+        def h(module, args, kwargs):
+            trav["attn_exec"][fam] += 1
+            return None
+        return h
+
+    for lyr in layers:
+        if hasattr(lyr, "self_attn"):
+            lyr.self_attn.register_forward_pre_hook(
+                count_attn("full_attn"), with_kwargs=True)
+        else:
+            lyr.linear_attn.register_forward_pre_hook(
+                count_attn("linear_attn"), with_kwargs=True)
 
     def count_layer(i):
         def h(module, args, kwargs):
@@ -237,11 +273,19 @@ def main():
                      if f == "full_attn" and calls[i] > 0)
         assert (len(calls), n_lin, n_full) == (64, 48, 16), \
             f"traversal {len(calls)}/{n_lin}/{n_full} != 64/48/16"
-        assert trav["rope_calls"] >= n_full, "rope under-called"
+        assert trav["attn_exec"]["linear_attn"] >= 48 \
+            and trav["attn_exec"]["full_attn"] >= 16, \
+            f"attention EXECUTION census {trav['attn_exec']}"
+        # rotary_emb runs ONCE per model forward (shared position
+        # embeddings), not per layer — measured: teacher smoke
+        # logged rope_calls=15 over 15 forwards
+        assert trav["rope_calls"] >= 1, "rope never called"
         assert min(calls) > 0, "idle layer"
         top = torch.topk(lg, 5)
         print(f"[0r] forward1 {time.time()-t:.0f}s | vocab "
               f"{lg.shape[-1]} | traversal 64/{n_lin}/{n_full} "
+              f"attn-exec lin={trav['attn_exec']['linear_attn']} "
+              f"full={trav['attn_exec']['full_attn']} "
               f"rope={trav['rope_calls']} | top5:", flush=True)
         for v, i in zip(top.values.tolist(), top.indices.tolist()):
             print(f"[0r]   {v:8.3f}  {tok.decode([i])!r}", flush=True)
@@ -249,8 +293,23 @@ def main():
         import sys as _s
         rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
         rss_b = rss if _s.platform == "darwin" else rss * 1024
-        print(f"[0r] peak RSS {rss_b/2**30:.2f} GiB (observed, v "
-              f"qualifier estimate)", flush=True)
+        est = qartifact.estimate_runtime_peak(MAN)
+        receipt = {"artifact": ART, "device_actual": "cpu",
+                   "resident_dtype": "compressed+fp32",
+                   "estimated_peak_bytes": est,
+                   "observed_peak_bytes": rss_b,
+                   "observed_over_estimate": round(rss_b / est, 3),
+                   "layers": len(calls), "linear_attn": n_lin,
+                   "full_attn": n_full,
+                   "attn_exec": trav["attn_exec"],
+                   "rope_calls": trav["rope_calls"],
+                   "forward_s": round(time.time() - t, 1)}
+        os.makedirs("logs/qwenruntime", exist_ok=True)
+        with open("logs/qwenruntime/forward1_receipt.json", "w") as f:
+            f.write(json.dumps(receipt) + "\n")
+        print(f"[0r] peak RSS {rss_b/2**30:.2f} GiB observed v "
+              f"{est/2**30:.2f} GiB estimated "
+              f"(ratio {rss_b/est:.2f}) -> receipt", flush=True)
         return
     t = time.time()
     out = model.generate(**ids, max_new_tokens=N_NEW, do_sample=False,

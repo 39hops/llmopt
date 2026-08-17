@@ -17,6 +17,7 @@ Two halves, per the graduation rule:
 """
 import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -49,14 +50,35 @@ def test_locked_receipts_are_unchanged():
     reviewable diff.
     """
     drift = []
+    unverifiable = []
     for rel, rec in _locked().items():
         if not rec.get("exists") or "sha256" not in rec:
             continue          # prereg-pending: run may still be writing
         p = ROOT / rel
+        if rec.get("local_only"):
+            # machine-local evidence (large streams over the logs
+            # doctrine line): verify where present; on the evidence
+            # host (LLMOPT_FULL=1) absence IS failure; in a clean
+            # clone it is reported, never silently green
+            assert rec.get("tracked") is False, \
+                f"{rel}: local_only but tracked — reclassify"
+            if p.is_file():
+                if _sha(p) != rec["sha256"]:
+                    drift.append(f"{rel}: CONTENT CHANGED (local)")
+            elif os.environ.get("LLMOPT_FULL") == "1":
+                drift.append(f"{rel}: local-only evidence ABSENT on "
+                             f"the evidence host")
+            else:
+                unverifiable.append(rel)
+            continue
         if not p.is_file():
             drift.append(f"{rel}: VANISHED since it was locked")
         elif _sha(p) != rec["sha256"]:
             drift.append(f"{rel}: CONTENT CHANGED since it was locked")
+    if unverifiable:
+        print(f"[receipt-lock] {len(unverifiable)} local-only "
+              f"receipts unverifiable in this checkout: "
+              f"{unverifiable}")
     assert not drift, (
         "booked receipts mutated — a booked receipt is evidence, and a "
         "new run belongs at a new path:\n  " + "\n  ".join(drift))

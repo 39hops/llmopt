@@ -2870,9 +2870,8 @@ QWEN-FAMILY-PROBE-0: cheapest acceptable RATE per non-FFN family.
 - `main()`
 
 ### scratch/qwen_qualify.py
-Artifact qualification ladder, rungs 1-3 (static, seconds each).
+Thin CLI over llmopt.lab.qartifact — the qualification ladder.
 
-- `_no_dup_pairs(pairs)`
 - `main()`
 
 ### scratch/qwen_runtime0r.py
@@ -3668,6 +3667,20 @@ Machine-readable pre-registration: bars a program can adjudicate.
 - `load(path: str | Path) -> dict`
 - `adjudicate_refutation(prereg: dict, obs: dict) -> str | None` — Score the structured refutation clause, if the pre-reg has one.
 - `adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]` — Deterministic adjudication of every bar against observations.
+
+### llmopt/lab/qartifact.py
+WHOLE-0T artifact qualification as a LIBRARY, not a workflow.
+
+- `class QualifyError`
+- `_no_dup_pairs(pairs)`
+- `_sha(path)`
+- `verify_chain(art_dir: str, chain_path: str | None, allow_unchained: bool=False) -> dict` — Rung 0. Returns {'checked': n} or raises.
+- `load_index(vendor_index: str) -> set`
+- `estimate_runtime_peak(man: dict) -> int` — Shared cost model for the CPU reference runtime: compressed
+- `available_memory() -> int | None`
+- `resource_preflight(man: dict) -> dict`
+- `qualify_artifact(art_dir: str, vendor_index: str, chain_path: str | None=None, allow_unchained: bool=False, preflight: bool=True) -> dict` — Full ladder; returns the manifest + a report dict. The ONLY
+- `load_manifest_verified(art_dir: str, vendor_index: str, chain_path: str | None=None, **kw) -> dict`
 
 ### llmopt/lab/qcodec.py
 Canonical WHOLE-0T payload decoders (the one shared decode path).
