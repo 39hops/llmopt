@@ -32839,3 +32839,31 @@ registered mode. Receipts: logs/qwenwhole/compile.jsonl (one row
 per shard + one summary row), logs/qwenwhole/compile.log. The
 artifact itself stays untracked (file-handoff convention);
 its sha256 books in the receipt.
+
+## AMENDMENT QWEN-WHOLE-0T-ARMS (amends PRE-REG QWEN-WHOLE-0T L32776): compile ALL THREE rate tables — A, B, C become arms of one pass, and the allocation decision moves from a choice to a MODEL-1 measurement (2026-08-17, pre-build)
+
+Artin, 04:07: "Why don't we just try all of them?" Adopted before
+any driver code exists. The compiler emits THREE artifacts in one
+streaming pass (each tensor encodes at most twice — W4@2.0625 and
+its table-appropriate 4-bit codec — and the containers share the
+work):
+  A uniform-2       every coded tensor W4@2.0625      pred ~6.6 GiB
+  B guarded-io      A + embed/head at S16@4.0625      pred ~7.2 GiB
+  C conservative    B + all attn projections S16@4    pred ~8.9 GiB
+(C's attention 4-bit codec is S16-DP, per the family-probe result
+that 16-level scalars edge stacked VQ at 4 bits.)
+BARS RESTATED for three arms, same law: BAR 1 CONSERVATION must
+hold for EVERY artifact (max violations over arms == 0); BAR 2
+BUDGET binds per table — A <= 7.0 GiB, B <= 7.5 GiB, C <= 9.5 GiB
+(C is storage-feasible by census; its RUNTIME viability on the
+10GB card is explicitly out of scope here); BAR 3 FIDELITY-SANITY
+per family per arm at the probe-derived tripwires (4-bit families
+<= 0.13). REFUTED-IF unchanged in spirit: any conservation
+violation, or artifact A or B exceeding 8 GiB, refutes the
+bounded-compiler claim (C exceeding its bar books as C's failure,
+not the program's). PRIOR unchanged: all bars fire, now over
+three arms. MODEL-1 gains the real payoff: the SAME frozen eval
+scored on A v B v C = the first measured
+functional-quality-vs-bytes curve, replacing the allocation
+guess. Disk: three artifacts ~23 GiB total + one transient source
+shard, inside the 3080's ~200 GB.

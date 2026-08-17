@@ -1,11 +1,19 @@
 {
   "name": "QWEN-WHOLE-0T",
-  "note": "Executable projection of PRE-REG QWEN-WHOLE-0T (RESULTS L32776), same commit, registered BEFORE the compiler driver exists. Rate table B frozen by Artin 2026-08-17 04:02 from measured bridge-probe curves. Compiler-correctness rung only; MODEL-1 owns every functional question.",
+  "note": "Executable projection of PRE-REG QWEN-WHOLE-0T (RESULTS L32776), same commit, registered BEFORE the compiler driver exists. Rate table B frozen by Artin 2026-08-17 04:02 from measured bridge-probe curves. Compiler-correctness rung only; MODEL-1 owns every functional question. AMENDED pre-build (-0T-ARMS, Artin 04:07): all three rate tables compile as arms A/B/C in one pass; MODEL-1 measures the allocation.",
   "results_id": "2026-08-17-pre-reg-qwen-whole-0t-the",
   "registered": "2026-08-17",
   "machine": "wsl",
   "arms": {
-    "compiler": {"description": "the single arm: scratch/qwen_whole0t.py per-shard transactional compression of Qwen/Qwen3.8-27B@1d4bf0f2 under rate table B (FFN+attn projections W4@2.0625 per-tensor; embed+head S16@4.0625 per-tensor; small/special tensors passthrough bf16; vision and MTP excluded by named scope)"}
+    "A": {
+      "description": "uniform-2: every coded tensor W4@2.0625; vision+MTP excluded; small/special passthrough"
+    },
+    "B": {
+      "description": "guarded-io: A plus embed_tokens and lm_head at S16@4.0625"
+    },
+    "C": {
+      "description": "conservative: B plus all attention projections (linear qkv/z/out, full q/k/v/o) at S16@4.0625"
+    }
   },
   "bars": [
     {
@@ -13,11 +21,15 @@
       "name": "CONSERVATION",
       "metric": "conservation_violations",
       "population": "tensors:all_source_keys",
-      "aggregation": "count",
+      "aggregation": "max_over_arms",
       "direction": "below",
       "value": 0.5,
-      "arms": ["compiler"],
-      "description": "every source tensor key lands in exactly one of {compressed, passthrough, excluded-by-scope}; zero unknown, dropped, or duplicate keys, per shard and globally"
+      "arms": [
+        "A",
+        "B",
+        "C"
+      ],
+      "description": "zero unknown/dropped/duplicate keys in every artifact"
     },
     {
       "id": 2,
@@ -27,8 +39,22 @@
       "aggregation": "sum",
       "direction": "below",
       "value": 8053063680,
-      "arms": ["compiler"],
-      "description": "total artifact bytes (payload + E8M0 scales + codebooks/alphabets + manifest) <= 7.5 GiB; table B predicts ~7.19 GiB plus overheads"
+      "arms": [
+        "B"
+      ],
+      "conjuncts": [
+        {
+          "measurement": "2:A",
+          "direction": "below",
+          "value": 7516192768
+        },
+        {
+          "measurement": "2:C",
+          "direction": "below",
+          "value": 10200547328
+        }
+      ],
+      "description": "B <= 7.5 GiB primary; conjuncts A <= 7.0 GiB, C <= 9.5 GiB"
     },
     {
       "id": 3,
@@ -38,14 +64,39 @@
       "aggregation": "max_over_families",
       "direction": "below",
       "value": 1.15,
-      "arms": ["compiler"],
-      "conjuncts": [
-        {"measurement": "3:ffn", "direction": "below", "value": 0.40},
-        {"measurement": "3:linear_attn", "direction": "below", "value": 0.38},
-        {"measurement": "3:full_attn", "direction": "below", "value": 0.39},
-        {"measurement": "3:io", "direction": "below", "value": 0.13}
+      "arms": [
+        "A",
+        "B",
+        "C"
       ],
-      "description": "compiler-bug tripwire: pooled per-family reconstruction op-error within 1.15x of the bridge-probe values (ffn 0.40, linear_attn 0.38, full_attn 0.39, embed+head 0.13); passing is NOT a quality claim"
+      "conjuncts": [
+        {
+          "measurement": "3:ffn",
+          "direction": "below",
+          "value": 0.4
+        },
+        {
+          "measurement": "3:linear_attn_w4",
+          "direction": "below",
+          "value": 0.38
+        },
+        {
+          "measurement": "3:full_attn_w4",
+          "direction": "below",
+          "value": 0.39
+        },
+        {
+          "measurement": "3:io_s16",
+          "direction": "below",
+          "value": 0.13
+        },
+        {
+          "measurement": "3:attn_s16",
+          "direction": "below",
+          "value": 0.13
+        }
+      ],
+      "description": "per-family tripwires at 1.15x the bridge-probe values, both codec placements"
     }
   ],
   "receipts": [
@@ -53,6 +104,10 @@
     "logs/qwenwhole/compile.log"
   ],
   "refuted_if": "BAR 1 fails or the artifact exceeds 8 GiB: the bounded-compiler claim is false at rate table B and the whole-model program re-plans before MODEL-1.",
-  "refuted_if_predicate": {"measurement": "refuted:artifact_bytes", "direction": "above", "value": 8589934592},
+  "refuted_if_predicate": {
+    "measurement": "refuted:artifact_bytes",
+    "direction": "above",
+    "value": 8589934592
+  },
   "registered_prior": "House: all three bars FIRE. High confidence on 1 and 3 (the probes measured exactly these codecs on representative tensors of every family), medium-high on 2 (codebook/manifest overheads estimated, not measured)."
 }
