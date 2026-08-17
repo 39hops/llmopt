@@ -2301,3 +2301,14 @@ regime tag on every bullet is the fence.
   are not oracles; the reference runtime now refuses non-identical
   residency and keeps io compressed with exact on-demand decode.
   ([OBSERVATION QWEN-RUNTIME-0R-FP16-RETRACTION](RESULTS.md#L33396 "id:2026-08-17-observation-qwen-runtime-0r-fp16-retraction").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  A 27B model compressed to 6.50 GiB (uniform width-4 VQ at
+  2.0625 bpw) reconstructs into an executing language model: full
+  64-layer hybrid tower, execution-proven traversal, and a
+  coherent factually-correct 32-token reasoning trace ("The
+  answer is Paris") through a qualification-gated CPU reference
+  decode. Sanity smoke only — fluency is not fidelity, no quality
+  metric claimed; the teacher-forced MODEL-1 core remains the
+  only functional instrument.
+  ([OBSERVATION QWEN-RUNTIME-0R-SMOKE](RESULTS.md#L33429 "id:2026-08-17-observation-qwen-runtime-0r-smoke-first").)

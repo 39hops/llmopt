@@ -33425,3 +33425,46 @@ are not oracles. Receipts: forward1 refusal at commit 89b86dd's
 successor run (logs/qwenruntime/forward1_A.log lineage), fix at
 commit a943494. Weight-space observation only; no functional
 claim.
+
+## OBSERVATION QWEN-RUNTIME-0R-SMOKE: first end-to-end generation from a WHOLE-0T compressed artifact — 6.50 GiB artifact A reconstructs, executes the full 64/48/16 tower, and produces a coherent, factually correct 32-token reasoning trace; descriptive only, NO MODEL-1 claim (2026-08-17, wsl)
+
+The moment the compression work became an executable language
+model rather than an error metric. RUNTIME-0R (portable CPU
+reference, llmopt.lab.qcodec/qcodec_fast decode paths, full
+qualification ladder ahead of every execution) on artifact A
+(uniform W4@2.0625, canonical digest verified, 3080-host CPU):
+
+LADDER RECEIPTS (logs/qwenruntime/):
+- forward1_A.log: one full-tower forward 122s, vocab 248320,
+  traversal 64/48/16 with EXECUTED attention census, finite
+  logits, top5 = 'The' 21.13 / 'Thinking' 17.80 / 'User' 15.94 /
+  'Let' 14.52 / '用户' 14.36 — a plausible chat-templated
+  thinking-model opening. Peak RSS 3.27 GiB observed v 5.47 GiB
+  estimated (preflight conservative 1.67x; calibration datum).
+- gen2_A.log: two KV-cached greedy tokens, "The user", 243s.
+- gen32_A.log: 32 greedy tokens at 117.3s/tok, VERBATIM:
+    PROMPT: The capital of France is
+    OUTPUT: The user is asking a factual question: "The capital
+    of France is". This is a straightforward geography question.
+    The answer is Paris. I should provide a concise
+  Grammatical, on-topic, factually correct ("The answer is
+  Paris"), correct thinking-register behavior for the
+  chat-templated prompt. No repetition loop, no vocabulary-tail
+  garbage, no prompt-echo (the trace TRANSFORMS the prompt).
+
+FENCES. Descriptive sanity smoke ONLY — the prompt is NOT from
+the frozen MODEL-1 payload, no quality metric is claimed, and per
+the standing frame this changes NOTHING about the open
+compression question: fluency does not measure fidelity, and the
+booked CE-capability dissociations forbid reading eloquence as
+preservation. MODEL-1 (teacher-forced X/K v the locked teacher)
+remains the only instrument. Wall-clock is the deliberately naive
+decode-per-layer-per-token reference (fp32 CPU, no cache of
+decoded weights) — it prices NOTHING about the Metal/CUDA W4
+legs. The gen32 run predates the qrope value oracle (its log
+shows the retired std-statistic warning); forward1 re-runs with
+the oracle when the sidecar cycle next touches the machine —
+until then no run is claimed to have passed qrope, including
+teacher v2d (frozen on the older call-count gate, prereg-tied to
+0ca4151). Receipts force-added and locked; runtime code_commit
+range for the three receipts: a943494..6c4a431.
