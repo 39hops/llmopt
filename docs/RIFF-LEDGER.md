@@ -6335,3 +6335,36 @@ honest status column).
   payoff channels), plus scalar AND vector distortion, realized
   bytes, the tolerance no-op, MODEL-1, and unfolded-transform
   runtime cost.
+
+- **BANKED (2026-08-17): RESIDENT-DRAFT, STREAMED-VERIFY — the
+  compressed artifact accelerates its own teacher** (Artin's ask
+  "surely there is something... a smaller compact model in RAM that
+  queries/decodes the weights"; house formalization).
+  The mapping: a teacher-class rollout is autoregressive — 1 token
+  per full 52GB weight sweep. Speculative decoding with the
+  RESIDENT compressed artifact (A, 6.5GB, RAM-speed) as draft and
+  the STREAMED vendor as verifier checks k drafted tokens per
+  sweep. Greedy spec decoding is TOKEN-IDENTICAL to the target by
+  verification (the house equivalence law, llmopt/eval/), so an
+  UNTRUSTED draft still yields exact vendor tokens — the
+  chicken-and-egg of using the unscored artifact to speed its own
+  judge is broken by exactness: acceptance rate prices speed,
+  never correctness. Marries two standing threads (spec-decoding =
+  gate law; streamed compression).
+  Measured anchors: none for the pair; components measured
+  separately (teacher sweep ~57s at 24-batch; entropy-adaptive
+  draft length banked in the spec-decoding thread).
+  Honest breaks: teacher-FORCED scoring (corpus/prefixes) gains
+  nothing — it already processes all positions in one sweep; the
+  win is rollout-only. Draft quality unknown until MODEL-1 (an
+  artifact that can't talk drafts at ~0% acceptance and the sweep
+  count degrades to baseline, never below). Not applied to the
+  live v2d run — a fifth restart to build draft infra for a
+  one-time pass loses more wall than it saves.
+  Testable residue: when any SECOND teacher-class pass is needed
+  (prompts_v2, a new revision, the family-attribution re-run), the
+  vendor pass runs resident-draft/streamed-verify and books
+  acceptance rate + realized sweeps/token v the 1.0 baseline.
+  Attribution: Artin (the ask, and the "we have something in this
+  repo" instinct — correct), house (the spec-decoding
+  identification, exactness argument, fences).
