@@ -1034,6 +1034,13 @@ Measure MoE router domain bias: math prompts vs general prose.
 - `observations(row: dict) -> dict`
 - `main() -> int`
 
+### scripts/obs_from_receipt_0t.py
+QWEN-WHOLE-0T compile receipt -> typed observations.
+
+- `probe_baselines() -> dict` — Worst-case pooled op per family:codec from the probe receipts.
+- `observations(summary: dict) -> dict`
+- `main() -> int`
+
 ### scripts/plot_gt1_crest.py
 GT-1 crest small-multiples — the gallery Wanted figure (2026-08-08).
 
@@ -2878,6 +2885,13 @@ QWEN-STREAM-PROBE-0: does the 0S codec ranking transport to a DENSE model's FFN?
 - `vq(Vv, st)`
 - `perms(seed, pi, nb, inverse=False)`
 - `op_parts(D, W, seed)`
+- `main()`
+
+### scratch/qwen_teacher_pass.py
+QWEN-MODEL-1 teacher-baseline pass (frozen procedure, SPEC.md).
+
+- `build_streamed_model()`
+- `sha(a: np.ndarray) -> str`
 - `main()`
 
 ### scratch/qwen_whole0t.py
