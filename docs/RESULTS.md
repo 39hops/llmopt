@@ -32886,3 +32886,13 @@ The alphabet result is a property of the STORED distribution
 the booked per-tensor S2-DP rule. FENCES: desk arithmetic on 8 of
 256 experts one layer (V4) v 9 tensors (Qwen); mass fractions
 only; no new codec measurement.
+
+## VERDICT STREAMWD-V2-MAC-GATE: same-device promotion gate PASSES — v2 on Mac CPU reproduces the v1 L22 receipt within tolerance on all 11 arms; streamwd_v2 is PROMOTED as the harness for the Qwen compilers (2026-08-17, mac)
+
+**Gate**: the same-device requirement left open by STREAMWD-V2-QUALIFICATION (cross-device runs cannot separate harness drift from device drift). v2 full run, Mac CPU, layer 22 (shard model-00024-of-00048, V4-flash rev 7872f01b), 256 experts, code_commit 3e5b9af, compared arm-by-arm against the v1 Mac receipt `logs/streamwd/pass0s_B1.jsonl` (code_commit dae9a31). Tolerance inherited from the qualification pre-look bound: relative |v1-v2|/v1 on pooled operator error <= 5e-3 per arm.
+
+**Measured (rel diff per arm)**: S1-T 2.6e-9, S1-U4 6.0e-11, S2 8.0e-10, W4 1.5e-9, W4-shuf 1.4e-9, W8 1.4e-4, W8-shuf 5.7e-4 (worst), W32 2.4e-4, W32-shuf16/17/18 5.3e-5/5.8e-5/4.3e-5. All 11 arms inside the bound; worst arm 8.7x inside. Structure of the residual is the expected one: deterministic paths (scalar quantizers, single-stage W4 codebook) agree at 1e-9 (accumulation-order-level), multi-stage Lloyd arms (W8, W32) sit at 1e-4 from iteration-order nondeterminism — same signature as the cross-device qualification, same arms.
+
+**Verdict**: PASS. v2 (shard-cache + two-pass) is promoted: the Qwen whole-model compilers already import its loader lineage, and future 0S-family runs use v2 as the default harness. v1 receipts stay the evidence record for booked 0S numbers.
+
+**Fences**: one layer, one shard, V4-flash only; the tolerance bound is the pre-look qualification bound, not a new registration; wall 6772s on Mac CPU is descriptive (v2's speed claim lives in the qualification entry at 7.45x harness-level, CUDA). Receipts: `logs/streamwd/v2census_L22.jsonl` (v2), `logs/streamwd/v2gate_mac.log`, v1 baseline `logs/streamwd/pass0s_B1.jsonl`.

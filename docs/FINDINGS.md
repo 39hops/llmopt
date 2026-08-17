@@ -2271,3 +2271,12 @@ regime tag on every bullet is the fence.
   re-derived per tensor (S2-DP). Desk census, 8 experts v 9
   tensors, mass fractions only.
   ([OBSERVATION SCALAR-MASS-CENSUS-0](RESULTS.md#L32871 "id:2026-08-17-observation-scalar-mass-census-0-the").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  The v2 streaming harness (shard-cache + two-pass) reproduces the
+  v1 evidence receipt on the same device within 5.7e-4 worst-arm
+  relative operator error (deterministic arms at 1e-9); v2 is
+  promoted as the default harness and the Qwen compilers' loader
+  lineage. One layer, one model; v1 receipts remain the evidence
+  record for booked 0S numbers.
+  ([VERDICT STREAMWD-V2-MAC-GATE](RESULTS.md#L32890 "id:2026-08-17-verdict-streamwd-v2-mac-gate-same").)
