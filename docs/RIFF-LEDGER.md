@@ -6456,3 +6456,22 @@ honest status column).
   transports as "teach known symmetries," not the toy MLP's neuron
   permutations — transformer row/head permutations are symmetries
   only with the coupled transformation elsewhere.
+
+- **BANKED (2026-08-17): the Eddington-throttle riff gained an
+  observational instance — JWST black-hole-star candidates**
+  (Artin's ask "star and black hole... super massive
+  black-hole-suns, how is this not similar?"; house verification
+  of the mapping). The 2026-era JWST "little red dot" objects are
+  hypothesized as supermassive black holes inside dense gas
+  envelopes shining star-like — a configuration stable exactly
+  because radiation pressure balances gravity at the Eddington
+  limit: consumption self-gates, which is the banked row-25 frame
+  ("the universe runs a dispatcher too") now with a candidate
+  photograph. Honest breaks: the BH* interpretation is a live
+  hypothesis, not consensus; the gravitational-lensing side (mass
+  curves spacetime, light follows geodesics) has NO lab mapping
+  and is not claimed to; no physics rung fires — the lab's physics
+  leg remains ZX-calculus. Testable residue: none for us —
+  astronomy's to test. Attribution: Artin (the ask, twice — the
+  original throttle question and this instantiation), house
+  (Eddington mapping both times).
