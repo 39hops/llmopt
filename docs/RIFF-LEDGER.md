@@ -6157,10 +6157,16 @@ honest status column).
   a runnable one (decode-on-demand runtime, offline dequant, or
   compressed-domain kernels — the axiom C++ leg's natural target:
   y = C(W)x without reconstructing W).
-  Testable residue: CENSUS-0's registered kill/promote; the
-  conservation law as a WHOLE-0 bar; MODEL-1's exact greedy-token
-  agreement against the vendor artifact (the house's own equivalence
-  oracle applied to its own compression).
+  Testable residue: CENSUS-0's registered kill/promote — MEASURED
+  SAME NIGHT (OBSERVATION 2026-08-17: PROMOTE fired, ranking stable
+  at all five depths, W4-class coding leads; v2-descriptive class);
+  the conservation law as a WHOLE-0 bar; MODEL-1's exact
+  greedy-token agreement against the vendor artifact (the house's
+  own equivalence oracle applied to its own compression). NOTE the
+  0S verdict booked the same night NARROWS the codec choice: W32
+  residual stacking is refuted at this rate (indistinguishable from
+  the optimal scalar), so WHOLE-0's expert codec is W4-class, not
+  the EXEC1-era W32.
   Attribution: Artin (ask, GO, machines), GPT seat (program
   decomposition, family taxonomy, conservation law), house
   (census design, fences, drivers).
