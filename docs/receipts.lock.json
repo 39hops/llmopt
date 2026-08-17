@@ -1,9 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [],
-  "reason": "record trackedness: 15 small receipts force-added, 6 large traj streams marked local_only"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -472,6 +468,10 @@
    "sha256": "67633085fabc592e50141ff386ab7b166685fd647ef8c9fcee2af99bd80eaba7",
    "source": "results",
    "tracked": true
+  },
+  "logs/qwenruntime/forward1_A.log": {
+   "exists": false,
+   "source": "results"
   },
   "logs/qwenwhole/compile.jsonl": {
    "bytes": 7479,

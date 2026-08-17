@@ -238,6 +238,17 @@ def build():
         trav["rope_calls"] += 1
         return None
 
+    # VALUE oracle on the rope path (the counter alone passes the
+    # exact zeroed-inv_freq incident it exists for): capture the
+    # emitted cos/sin and require positional variation
+    def capture_rope(module, args, kwargs, output):
+        cos = output[0] if isinstance(output, tuple) else output
+        trav["rope_cos_std"] = float(cos.float().std(dim=-2).mean())
+        return output
+
+    model.model.rotary_emb.register_forward_hook(
+        capture_rope, with_kwargs=True)
+
     model.model.rotary_emb.register_forward_pre_hook(
         count_rope, with_kwargs=True)
     for i, lyr in enumerate(layers):
@@ -278,8 +289,13 @@ def main():
             f"attention EXECUTION census {trav['attn_exec']}"
         # rotary_emb runs ONCE per model forward (shared position
         # embeddings), not per layer — measured: teacher smoke
-        # logged rope_calls=15 over 15 forwards
+        # logged rope_calls=15 over 15 forwards. The VALUE oracle
+        # is the real guard: constant cos across positions is
+        # exactly what zeroed inv_freq produces, at rope_calls=1
         assert trav["rope_calls"] >= 1, "rope never called"
+        assert trav.get("rope_cos_std", 0.0) > 1e-4, \
+            f"rope cos constant across positions " \
+            f"(std={trav.get('rope_cos_std')}) — inv_freq degenerate"
         assert min(calls) > 0, "idle layer"
         top = torch.topk(lg, 5)
         print(f"[0r] forward1 {time.time()-t:.0f}s | vocab "

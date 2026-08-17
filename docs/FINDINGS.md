@@ -2291,3 +2291,13 @@ regime tag on every bullet is the fence.
   probes priced the whole model correctly. Compiler-correctness
   only; whether any artifact talks is MODEL-1's question.
   ([VERDICT QWEN-WHOLE-0T](RESULTS.md#L32933 "id:2026-08-17-verdict-qwen-whole-0t-all-three").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  A "bit-lossless fp16 residency" claim — argued correctly from
+  representability for normal floats — was killed by its own
+  round-trip oracle on real weights: 0.045% of a 27B model's
+  embedding entries (569,841 of 1.27B) sit in the fp16 subnormal
+  tail and change under fp32-fp16-fp32. Representability arguments
+  are not oracles; the reference runtime now refuses non-identical
+  residency and keeps io compressed with exact on-demand decode.
+  ([OBSERVATION QWEN-RUNTIME-0R-FP16-RETRACTION](RESULTS.md#L33396 "id:2026-08-17-observation-qwen-runtime-0r-fp16-retraction").)

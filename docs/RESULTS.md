@@ -33392,3 +33392,36 @@ recovery fractions are reported RAW AND UNCLAMPED — rec > 1
 rec < 0 (repair harms) are scientifically meaningful outcomes and
 book as measured. Prereg refinement is CLOSED here by mutual
 agreement; the next review target is the sidecar and scorer CODE.
+
+## OBSERVATION QWEN-RUNTIME-0R-FP16-RETRACTION: the round-trip oracle killed a "bit-lossless" claim on real weights within hours of being installed — 569,841 of 1.27B embed entries live in the fp16 subnormal tail (2026-08-17, wsl)
+
+The runtime reference briefly held decoded io tensors resident in
+fp16 under the claim: decoded W4 values are fp16_codebook x 2^k,
+and a power-of-two scale moves only the exponent, so fp16 storage
+is bit-lossless. The external review (GPT seat) demanded the claim
+be demoted to an ORACLE — exact fp32 -> fp16 -> fp32 round-trip
+equality on the actual tensors — and a second review round
+(Opus seat) demanded the oracle REFUSE rather than warn.
+
+MEASURED: on artifact A's embed_tokens (1,271,398,400 entries),
+the oracle FIRED — 569,841 entries (~0.045%) change under fp16
+round-trip. Mechanism: the representability argument is true for
+NORMAL fp16 values and silently false in the subnormal tail —
+small codebook entries x sub-1 block scales land below the fp16
+normal minimum (~6.1e-5) and lose mantissa bits. No spot check
+would have found 0.045%; torch.equal on the full tensor found it
+in seconds. The runtime REFUSED, and the fallback is strictly
+better: io tensors stay COMPRESSED in RAM (~650MB each) with
+exact fp32 row-decode on demand (W4Rows + its own
+row-v-canonical-decode equality oracle), dropping peak residency
+below the fp16 plan's.
+
+WHY BOOKED: this is the qualification arc's strongest evidence —
+a false claim written as a code comment ("bit-lossless") survived
+one review round as prose and died the moment it became an
+executable oracle on real weights. The house law it instantiates:
+nothing counts until an oracle agrees; representability arguments
+are not oracles. Receipts: forward1 refusal at commit 89b86dd's
+successor run (logs/qwenruntime/forward1_A.log lineage), fix at
+commit a943494. Weight-space observation only; no functional
+claim.

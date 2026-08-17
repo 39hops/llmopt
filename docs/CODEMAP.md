@@ -336,8 +336,8 @@ Census: UNCITED 206, library 71, reproduce-pinned 10, results-cited 213, spec-ci
 | qwen | qwen_census_night.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_displace_extract.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_family_probe.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| qwen | qwen_qualify.py | UNCITED | — | — | — | — |
-| qwen | qwen_runtime0r.py | UNCITED | — | — | — | — |
+| qwen | qwen_qualify.py | UNCITED | — | — | — | 1 |
+| qwen | qwen_runtime0r.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_stream_probe.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
 | qwen | qwen_teacher_pass.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_whole0t.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 3 |
