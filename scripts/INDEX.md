@@ -2855,6 +2855,24 @@ Symmetry ladder S1 cells 2-3 (pre-reg 2026-07-28): project the wfloor d256 gates
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
 
 
+### scratch/qwen_stream_probe.py
+QWEN-STREAM-PROBE-0: does the 0S codec ranking transport to a DENSE model's FFN? Descriptive, single layer, 3080.
+
+- `_tok()`
+- `_get(url, out=None)`
+- `ensure(fname)`
+- `load_tensor(name)`
+- `T(x)`
+- `e8m0(Wb)`
+- `nearest(Wn, lv)`
+- `assign(V, C, chunk=1 << 18)`
+- `kmeans(Vn, seed)`
+- `stack_train(Vn, stages, tag)`
+- `vq(Vv, st)`
+- `perms(seed, pi, nb, inverse=False)`
+- `op_parts(D, W, seed)`
+- `main()`
+
 ### scratch/rank_read.py
 Rank read (pre-reg 2026-07-29: attention anatomy 1b). SVD of all qkv/o weights of the d56 EMA crystal: singular-value decay, then truncation gates at rank r in {48,32,24,16}. Desk only, MPS.
 

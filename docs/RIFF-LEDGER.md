@@ -6055,13 +6055,18 @@ honest status column).
   STREAM-WDISTILL method minus the expert-sharing bars — a dense
   FFN has no expert axis, so arms C/D/E do not transfer; scalar/VQ
   arms A/B and the streaming harness do).
-  Measured anchors: NONE in this lab yet. External benchmark claims
-  (Terminal-Bench 2.1 73.0, OSWorld-Verified 84.3, "surpasses
-  larger models") are VENDOR/BLOG numbers, unverified here — the
-  house has measured nothing on this model.
-  Honest breaks: one source claims the 27B open weights were
-  DELAYED relative to the Max release — verify the actual HF repo
-  exists and shas match the model card BEFORE any rung pins it.
+  Measured anchors (updated 2026-08-17): OBSERVATION
+  QWEN-STREAM-PROBE-0 — first house measurement. W4 beats the
+  DP-optimal scalar by 14.3% on layer 32's dense FFN; width
+  inversion and locality null transport from V4; scalar ladder
+  inverts (ternary beats uniform-4, cause unmeasured). External
+  benchmark claims remain VENDOR/BLOG numbers, unverified.
+  Honest breaks: the weights-availability fence is RESOLVED —
+  Qwen/Qwen3.8-27B public, safetensors, Apache-2.0, revision
+  1d4bf0f2 pinned in the probe driver; the "27B delayed" source
+  was wrong. Tensor naming carries a multimodal wrapper
+  (model.language_model.layers.*), and the tower mixes linear_attn
+  with standard attention — the attention family is NOT plain.
   27.8B bf16 is ~56GB, over the Mac's 36GB for full residency —
   layer-streaming or quantized residency only, and the
   one-resident-30B-class rule applies beside any live job.

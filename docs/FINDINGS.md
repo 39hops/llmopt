@@ -2214,3 +2214,14 @@ regime tag on every bullet is the fence.
   comparison). Cross-device qualification only; the same-device
   promotion gate remains unrun.
   ([OBSERVATION STREAMWD-V2-QUALIFICATION](RESULTS.md#L32527 "id:2026-08-17-observation-streamwd-v2-qualification-full-256").)
+
+- [SINGLE-SEED] [DEVICE-SCOPED]
+  [REGIME-SCOPED: measured deployment artifacts]
+  The width-4 vector-coding advantage is not a V4-expert artifact:
+  on Qwen3.8-27B's dense bf16 FFN (layer 32 of 64) W4 beats the
+  DP-optimal 4-level scalar by 14.3% relative, the rate-matched
+  width inversion and the locality null both transport — while the
+  scalar ladder INVERTS (ternary beats 4-level uniform, reverse of
+  V4; cause unmeasured). Descriptive, one layer, one model,
+  rankings only.
+  ([OBSERVATION QWEN-STREAM-PROBE-0](RESULTS.md#L32578 "id:2026-08-17-observation-qwen-stream-probe-0-the").)

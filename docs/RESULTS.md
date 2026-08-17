@@ -32574,3 +32574,43 @@ greedy residual stages) — width, codebook adequacy, stage
 greediness, and sample sparsity move together along the ladder,
 so "width hurts" as a recipe-free law is not licensed; "the
 rate-matched width ladder is inverted under this recipe" is.
+
+## OBSERVATION QWEN-STREAM-PROBE-0: the 0S codec ranking TRANSPORTS to a dense frontier FFN — W4 beats the optimal scalar by 14.3% on Qwen3.8-27B layer 32, width inversion and locality-null transport, and the SCALAR ladder inverts (2026-08-17, 3080/WSL, descriptive)
+
+First house measurement on Qwen3.8-27B (released 2026-08-14;
+weights-availability fence from the RIFF bank RESOLVED: repo
+Qwen/Qwen3.8-27B is public, safetensors, Apache-2.0, revision
+pinned 1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0 — the "27B
+delayed" claim is dead). Receipt logs/qwenprobe/L32.jsonl, driver
+scratch/qwen_stream_probe.py, wall 77 s on the shard cache.
+
+Dense FFN, layer 32 of 64 (gate/up/down, 5120x17408, bf16,
+multimodal language_model tower). The 0S recipe verbatim where it
+transports (E8M0 round-up block 128, S1-T/S1-U4/S2-DP scalars,
+W4/W8/W32 at 2.000 index bpw, one shuffled twin seed for W4 and
+W32); no expert axis exists, so nothing sharing-related is
+touched. Pooled operator error over the three projections:
+
+  S1-T   0.90943      S1-U4  0.98305      S2   0.40261
+  W4     0.34509      W8     0.36751      W32  0.38589
+  W4-shuf 0.34473     W32-shuf 0.38607
+
+TRANSPORTS (ranking read only, never the values): (1) W4 beats
+the DP-optimal scalar by 14.3% relative (V4 layer ladder: 13.3%)
+— the vector-structure result is not a V4-expert artifact; (2)
+the rate-matched width ladder inverts the same way (W4 < W8 <
+W32 in error); (3) shuffled twins are indistinguishable from
+natural at both widths — no adjacency-locality signal here
+either. (4) NEW, does NOT transport: the scalar ladder INVERTS —
+ternary (0.909) beats 4-level uniform (0.983) on these bf16
+dense weights, the reverse of V4's 0.800 -> 0.659 step. A
+zero-level buys more than a fourth level on this distribution;
+cause unmeasured (tail shape under max-anchored block
+normalization is the obvious candidate, unverified).
+
+FENCES. Descriptive class throughout: one layer (32) of 64, one
+model, one revision, n=1, weight space only, no functional claim;
+3080/cuda with the v2-lineage nondeterminism caveats; NUMBERS are
+never compared against any V4 receipt (different model, device,
+tensor shapes) — only orderings are discussed; smoke row is
+path-isolated (L32_smoke.jsonl, sliced tensors, never evidence).

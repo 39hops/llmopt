@@ -371,6 +371,12 @@
    "exists": false,
    "source": "results"
   },
+  "logs/qwenprobe/L32.jsonl": {
+   "bytes": 901,
+   "exists": true,
+   "sha256": "591aeea3ec4aebb0bff33f83a824a65fca313ccbe2f5dc0a56d25ae42a40b676",
+   "source": "results"
+  },
   "logs/refactor-2026-08-11/run.marker.json": {
    "bytes": 361,
    "exists": true,
