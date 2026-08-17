@@ -51,9 +51,13 @@ _arm = os.path.basename(ART.rstrip("/"))
 _chain = os.path.join(os.path.dirname(os.path.dirname(
     os.path.abspath(__file__))), "logs", "qwenwhole",
     f"artifact_digest_{_arm}.txt")
-_q = qartifact.qualify_artifact(ART, VDIR + "/model.safetensors.index.json",
-                                _chain if os.path.exists(_chain) else None,
-                                allow_unchained=not os.path.exists(_chain))
+# identity override is an EXPLICIT operator choice, never derived
+# from the filesystem (fail-open by directory name was the hole:
+# a renamed/copied artifact qualified with no identity proof)
+_q = qartifact.qualify_artifact(
+    ART, VDIR + "/model.safetensors.index.json",
+    _chain if os.path.exists(_chain) else None,
+    allow_unchained=os.environ.get("ALLOW_UNCHAINED") == "1")
 MAN = _q["manifest"]
 QREPORT = _q["report"]
 print(f"[0r] qualified: {QREPORT}", flush=True)
@@ -123,45 +127,25 @@ def build():
     # fall in the fp16 subnormal tail and change; measured
     # 2026-08-17). Row slicing is exact because blocks align to
     # rows: C columns = C/128 blocks/row, C/4 w4 index bytes/row.
-    class W4Rows:
-        def __init__(self, key):
-            e = MAN[key]
-            assert e["codec"] == "w4", f"{key} not w4"
-            self.R, self.C = e["shape"]
-            buf = _payload(e)
-            nb = (self.R * self.C) // 128
-            self.exps = np.frombuffer(buf, np.uint8, nb, 0)
-            self.cb = np.frombuffer(buf, np.float16, 1024, nb) \
-                .reshape(256, 4).astype(np.float32)
-            self.idx = np.frombuffer(buf, np.uint8,
-                                     (self.R * self.C) // 4, nb + 2048)
+    # W4Rows lives in llmopt.lab.qcodec_fast with mandatory parity
+    # fixtures against the canonical decoder (first/middle/last,
+    # random slices — tests/test_qwen_qualify.py); codec semantics
+    # never hide in a runtime
+    from llmopt.lab.qcodec_fast import W4Rows
 
-        def rows(self, lo, hi):
-            bpr = self.C // 128
-            sc = np.exp2(self.exps[lo * bpr:hi * bpr]
-                         .astype(np.int32) - 127).astype(np.float32)
-            ix = self.idx[lo * self.C // 4:hi * self.C // 4]
-            Wn = self.cb[ix].reshape(-1, 128)
-            return torch.from_numpy(
-                (Wn * sc[:, None]).reshape(hi - lo, self.C))
+    def w4rows(key):
+        e = MAN[key]
+        assert e["codec"] == "w4", f"{key} not w4"
+        return W4Rows(_payload(e), e["shape"])
 
-    # row-decoder exactness oracle: full canonical decode of the
-    # smallest w4 tensor must equal its own row-sliced decode
-    probe_key = min((k for k, e in MAN.items() if e["codec"] == "w4"),
-                    key=lambda k: MAN[k]["shape"][0] * MAN[k]["shape"][1])
-    pv = W4Rows(probe_key)
-    if not torch.equal(decode(probe_key), pv.rows(0, pv.R)):
-        raise SystemExit("REFUSING: W4Rows disagrees with canonical "
-                         f"decode on {probe_key}")
-
-    emb = W4Rows("model.language_model.embed_tokens.weight")
-    head = W4Rows("lm_head.weight")
+    emb = w4rows("model.language_model.embed_tokens.weight")
+    head = w4rows("lm_head.weight")
 
     def emb_fwd(input_ids):
         flat = input_ids.reshape(-1)
         out = torch.empty(flat.shape[0], emb.C)
         for j, t in enumerate(flat.tolist()):
-            out[j] = emb.rows(t, t + 1)[0]
+            out[j] = torch.from_numpy(emb.rows(t, t + 1)[0])
         return out.reshape(*input_ids.shape, emb.C)
 
     model.model.embed_tokens.forward = emb_fwd
@@ -170,7 +154,7 @@ def build():
         outs = []
         for lo in range(0, head.R, 16384):
             hi = min(lo + 16384, head.R)
-            outs.append(x @ head.rows(lo, hi).T)
+            outs.append(x @ torch.from_numpy(head.rows(lo, hi)).T)
         return torch.cat(outs, -1)
 
     model.lm_head.forward = head_fwd
@@ -241,16 +225,24 @@ def build():
     # VALUE oracle on the rope path (the counter alone passes the
     # exact zeroed-inv_freq incident it exists for): capture the
     # emitted cos/sin and require positional variation
+    # VALUE oracle, no thresholds (llmopt.lab.qrope — the std
+    # statistic refused HEALTHY models: RoPE's slowest band at
+    # large theta has positional std ~1e-11): inv_freq compared
+    # element-wise against the pinned config at build; emitted
+    # cos/sin captured and compared to exact expectations at
+    # fixed positions in forward1
+    from llmopt.lab import qrope
+    _theta = float(cfg.text_config.rope_theta)
+    _hd = model.model.rotary_emb.inv_freq.shape[0] * 2
+    qrope.check_inv_freq(model.model.rotary_emb.inv_freq.numpy(),
+                         _theta, _hd)
+    trav["rope_theta"] = _theta
+    trav["rope_dim"] = _hd
+
     def capture_rope(module, args, kwargs, output):
-        cos = output[0] if isinstance(output, tuple) else output
-        # only positions>=2 carry signal (unbiased std at n=1 is
-        # NaN — cached decode steps are seq_len=1); MIN over the
-        # feature dim (mean passes a half-zeroed inv_freq, measured
-        # 0.497 v 0.000); running minimum so every forward counts
-        if cos.shape[-2] >= 2:
-            v = float(cos.float().std(dim=-2).min())
-            prev = trav.get("rope_cos_std")
-            trav["rope_cos_std"] = v if prev is None else min(prev, v)
+        if isinstance(output, tuple) and len(output) >= 2:
+            trav["rope_emitted"] = (output[0].detach().float().numpy(),
+                                    output[1].detach().float().numpy())
         return output
 
     model.model.rotary_emb.register_forward_hook(
@@ -296,13 +288,12 @@ def main():
             f"attention EXECUTION census {trav['attn_exec']}"
         # rotary_emb runs ONCE per model forward (shared position
         # embeddings), not per layer — measured: teacher smoke
-        # logged rope_calls=15 over 15 forwards. The VALUE oracle
-        # is the real guard: constant cos across positions is
-        # exactly what zeroed inv_freq produces, at rope_calls=1
+        # logged rope_calls=15 over 15 forwards
         assert trav["rope_calls"] >= 1, "rope never called"
-        assert trav.get("rope_cos_std", 0.0) > 1e-4, \
-            f"rope cos constant across positions " \
-            f"(std={trav.get('rope_cos_std')}) — inv_freq degenerate"
+        assert "rope_emitted" in trav, "rope output never captured"
+        from llmopt.lab import qrope as _qr
+        _qr.check_cos_sin(*trav["rope_emitted"], trav["rope_theta"],
+                          trav["rope_dim"])
         assert min(calls) > 0, "idle layer"
         top = torch.topk(lg, 5)
         print(f"[0r] forward1 {time.time()-t:.0f}s | vocab "
@@ -326,6 +317,10 @@ def main():
                    "full_attn": n_full,
                    "attn_exec": trav["attn_exec"],
                    "rope_calls": trav["rope_calls"],
+                   "rope_oracle": "pass",
+                   "code_commit": __import__("subprocess")
+                   .check_output(["git", "rev-parse", "--short",
+                                  "HEAD"]).decode().strip(),
                    "forward_s": round(time.time() - t, 1)}
         os.makedirs("logs/qwenruntime", exist_ok=True)
         with open("logs/qwenruntime/forward1_receipt.json", "w") as f:

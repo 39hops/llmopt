@@ -151,3 +151,82 @@ def test_lock_reads_local_only_class():
         "test_frozen_receipt_mutation.py")).read()
     assert 'rec.get("local_only")' in src
     assert "LLMOPT_FULL" in src
+
+
+# --------------------------------------- optimized-decoder parity
+def _w4_payload(R, C, seed=3):
+    """Compiler-layout w4 payload from random data (pure numpy)."""
+    rng = np.random.default_rng(seed)
+    nb = R * C // 128
+    exps = rng.integers(120, 132, nb, dtype=np.uint8)
+    cb = (rng.standard_normal((256, 4)) * 0.3).astype(np.float16)
+    idx = rng.integers(0, 256, R * C // 4, dtype=np.uint8)
+    return exps.tobytes() + cb.tobytes() + idx.tobytes()
+
+
+def test_w4rows_parity_against_canonical():
+    """W4Rows (optimized) v qcodec.dec_w4 (canonical): first,
+    middle, last, single-row, multi-row, random slices, several
+    widths — the offset arithmetic rows() exists for is exercised
+    at nonzero lo (the previous oracle only ever tested lo=0)."""
+    from llmopt.lab.qcodec_fast import W4Rows
+    rng = np.random.default_rng(11)
+    for R, C in ((8, 256), (16, 128), (5, 640), (32, 512)):
+        buf = _w4_payload(R, C)
+        full = dec_w4(buf, [R, C])
+        v = W4Rows(buf, [R, C])
+        slices = [(0, 1), (R // 2, R // 2 + 1), (R - 1, R),
+                  (0, R), (1, R - 1)]
+        slices += [tuple(sorted(rng.choice(R, 2, replace=False)))
+                   for _ in range(4)]
+        for lo, hi in slices:
+            if lo == hi:
+                hi = lo + 1
+            np.testing.assert_array_equal(v.rows(lo, hi),
+                                          full[lo:hi], err_msg=f"{R}x{C} [{lo},{hi})")
+
+
+def test_w4rows_refuses_bad_ranges():
+    from llmopt.lab.qcodec_fast import W4Rows
+    v = W4Rows(_w4_payload(4, 128), [4, 128])
+    with pytest.raises(ValueError):
+        v.rows(2, 2)
+    with pytest.raises(ValueError):
+        v.rows(0, 5)
+
+
+# ------------------------------------------------ rope value oracle
+def test_rope_oracle_passes_healthy():
+    from llmopt.lab import qrope
+    theta, dim = 5e6, 128
+    inv = qrope.expected_inv_freq(theta, dim)
+    qrope.check_inv_freq(inv, theta, dim)
+    pos = qrope.POSITIONS
+    ang = pos[:, None] * inv[None, :]
+    cos = np.concatenate([np.cos(ang), np.cos(ang)], -1)
+    sin = np.concatenate([np.sin(ang), np.sin(ang)], -1)
+    qrope.check_cos_sin(cos, sin, theta, dim)
+
+
+def test_rope_oracle_catches_all_four_corruptions():
+    from llmopt.lab import qrope
+    theta, dim = 1e6, 128
+    good = qrope.expected_inv_freq(theta, dim)
+    corruptions = {
+        "all-zero": np.zeros_like(good),
+        "half-zero": np.where(np.arange(len(good)) < len(good) // 2,
+                              good, 0.0),
+        "one-wrong": np.concatenate([good[:5], [good[5] * 3],
+                                     good[6:]]),
+        "wrong-order": good[::-1].copy(),
+    }
+    for name, bad in corruptions.items():
+        with pytest.raises(SystemExit, match="ROPE ORACLE"):
+            qrope.check_inv_freq(bad, theta, dim)
+    # and through the emitted cos/sin path too
+    pos = qrope.POSITIONS
+    ang = pos[:, None] * corruptions["all-zero"][None, :]
+    cos = np.concatenate([np.cos(ang), np.cos(ang)], -1)
+    sin = np.concatenate([np.sin(ang), np.sin(ang)], -1)
+    with pytest.raises(SystemExit, match="ROPE ORACLE"):
+        qrope.check_cos_sin(cos, sin, theta, dim)

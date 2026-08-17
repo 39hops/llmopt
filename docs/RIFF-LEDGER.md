@@ -6436,3 +6436,23 @@ honest status column).
   freeze holds.
   Attribution: Artin (the ask, and the reader-to-compressor
   bridge), house (grading, label-scarcity break, lineage anchors).
+  EXTENSION (2026-08-17, same day, GPT+Opus seats): the LABEL
+  FACTORY replaces the starved desk probe. "Predict which family
+  the tree promoted, leave-one-out" is ~3 labels and prices
+  nothing. Instead, after A/B/C books: single-tensor recomposition
+  B_i = B + C's precision on attention tensor i (and C_-i for
+  necessity), per layer/projection, measuring dX, dK,
+  d(large-margin flips), d(bytes) — hundreds of labels of the form
+  "what did these specific bytes buy in function space," at zero
+  recompression cost because both encodings of every tensor
+  already exist on disk. MODEL-1 turns from judge into label
+  generator. Two fences: (1) NON-ADDITIVITY — identity-beats-
+  aggregates predicts singleton repairs will not sum; hold out
+  random SUBSETS from the start and price composition error before
+  any allocator claim. (2) JUDGE CONTAMINATION — any optimizer
+  phase searches against a DEVELOPMENT eval and books against an
+  untouched final MODEL-1 (the EX1-C30 discovery-contamination
+  precedent, clean-3-fresh-seed protocol). Permutation-augmentation
+  transports as "teach known symmetries," not the toy MLP's neuron
+  permutations — transformer row/head permutations are symmetries
+  only with the coupled transformation elsewhere.

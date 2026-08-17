@@ -3693,6 +3693,18 @@ Canonical WHOLE-0T payload decoders (the one shared decode path).
 - `dec_s16(buf: bytes, shape) -> np.ndarray`
 - `decode_entry(buf: bytes, entry: dict) -> np.ndarray` — Decode one manifest entry {codec, shape, dtype?}.
 
+### llmopt/lab/qcodec_fast.py
+Optimized WHOLE-0T decoders, parity-fixtured against qcodec.
+
+- `class W4Rows` (rows)
+
+### llmopt/lab/qrope.py
+RoPE value oracle — exact expectations, no thresholds.
+
+- `expected_inv_freq(theta: float, dim: int) -> np.ndarray`
+- `check_inv_freq(actual, theta: float, dim: int, rtol: float=1e-05) -> None`
+- `check_cos_sin(cos, sin, theta: float, dim: int, positions=POSITIONS, rtol: float=0.0001) -> None` — cos/sin: [..., n_pos, dim] as emitted by the rotary module
+
 ### llmopt/lab/runfiles.py
 Moved to llmopt.runs.runfiles (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 

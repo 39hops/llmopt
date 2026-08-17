@@ -38,8 +38,10 @@ jobs:
           # build over the top of them
           pip install -e . --no-deps
           pip install ruff
-      - name: pytest
-        run: pytest tests/ -q --cov=llmopt --cov-report=
+      - name: check_all (the single definition of green)
+        # scripts/check_all.sh is the producer; this job and the
+        # /qualify clean-worktree ritual are both consumers
+        run: bash scripts/check_all.sh
       - name: coverage by subpackage
         # numbers first, ratchets later: no threshold gate, just a
         # per-subpackage table so lab at 20/20 test files and search
@@ -50,12 +52,6 @@ jobs:
               | tail -1 | sed "s|^TOTAL|$pkg|"
           done
           coverage report | tail -1
-      - name: lint (enforced tier)
-        run: ruff check llmopt tests scripts
-      - name: lint (scratch, report only)
-        run: ruff check scratch --exit-zero
-      - name: generated README in sync
-        run: python scripts/gen_readme.py --check
 
   wheel:
     # An installed wheel is not a source checkout: scratch/, docs/, and

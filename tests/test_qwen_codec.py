@@ -117,7 +117,7 @@ def test_roundtrip_against_compiler_encoders():
     not inside a 27B run: compiler enc_w4/enc_s16 (scratch, frozen)
     -> canonical decode -> must equal the compiler's own
     reconstruction error against the source."""
-    torch = pytest.importorskip("torch")
+    pytest.importorskip("torch")
     import importlib.util
     import sys
     sys.path.insert(0, ".")
