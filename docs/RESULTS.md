@@ -33339,3 +33339,40 @@ code_commit 0ca4151 (verified in-repo: the driver is byte-
 identical 0ca4151..HEAD and later commits touched docs only). Any
 other commit in the manifest books the run as produced by an
 unknown executable and refuses the lock's use.
+
+## AMENDMENT QWEN-MODEL1-TREE-PINS (amends AMENDMENT QWEN-MODEL1-TREE-PRIORS): three executable pins — the D>E adjudication metric, frozen margin bins, and the sidecar logit tolerance defined (2026-08-17, mac)
+
+Artin, 14:39. All three registered before any artifact scores and
+before the teacher locks.
+
+(1) D>E ADJUDICATION METRIC. Recovery fraction on the corpus
+excess-CE axis, CPU leg only:
+  rec(Y) = (X_A - X_Y) / (X_A - X_B), Y in {D, E}
+(rec(A)=0, rec(B)=1 by construction). The historical prediction
+FIRES iff rec(D) - rec(E) > 0 on X AND the same sign holds for
+the K analogue rec_K(Y) = (K_A - K_Y)/(K_A - K_B), AND
+|X_E - X_D| > 5x fp16_record_sensitivity_floor. Ties or
+sub-floor separations book UNRESOLVED. Denominator guard: the
+metric is defined only when T1 fired (X_A - X_B already passed
+the material-improvement conjunction), so the denominator is
+bounded away from zero by construction.
+(2) MARGIN BINS, frozen now. Teacher margin m = (top1 - top2)
+logit gap computed from the LOCKED fp16 records after fp32
+upcast, over the live vocab, at every scored position. Fixed
+edges (nats of logit gap):
+  [0, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0, 2.0, 5.0, inf]
+The 0.02 lower edge is the house fp16 near-tie convention. The
+per-bin position COUNTS are a teacher-only quantity: they book
+once with the teacher manifest sidecar, before any arm scores,
+and every arm's flip rates report against those frozen counts.
+Bins with fewer than 30 positions report raw counts and carry no
+directional claim (small-n fence).
+(3) SIDECAR LOGIT TOLERANCE, defined. For the cached-v-uncached
+gate: at every generated position t and batch row b, after fp32
+upcast, over the live vocab,
+  ||l_nc(b,t) - l_c(b,t)||_2 / ||l_nc(b,t)||_2 <= 5e-3
+where l_nc is the no-cache reference. The gate quantity is the
+MAX over all (b, t); the receipt books the max and the per-token
+values. Token equality is checked independently and first — a
+token mismatch fails the gate regardless of norms (exactness is
+the primary bar; the norm bound only qualifies the numeric path).
