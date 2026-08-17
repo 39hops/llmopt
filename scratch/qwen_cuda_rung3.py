@@ -59,7 +59,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(
 from llmopt.lab import qartifact, qrope  # noqa: E402
 from llmopt.lab.qcodec import BLOCK, dec_w4, decode_entry  # noqa: E402
 
-SUBNORMAL_2_M127 = 5.877471754111438e-39  # exact fp32 2^-127
+SUBNORMAL_2_M127 = tl.constexpr(5.877471754111438e-39)  # fp32 2^-127
 
 
 @triton.jit
