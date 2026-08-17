@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 208, library 70, reproduce-pinned 10, results-cited 202, spec-cited 86, cited-but-library 59
+Census: UNCITED 208, library 71, reproduce-pinned 10, results-cited 202, spec-cited 86, cited-but-library 59
 
 ## scratch/
 
@@ -548,7 +548,7 @@ Census: UNCITED 208, library 70, reproduce-pinned 10, results-cited 202, spec-ci
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
 | gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | 1 |
 | gen | gen_readme.py | spec-cited | specs | specs×24 | — | 1 |
-| gen | gen_receipt_lock.py | UNCITED | — | — | — | 1 |
+| gen | gen_receipt_lock.py | library | — | — | 1 | — |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
 | gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 4 |
 | gen | gen_scoreboard.py | UNCITED | — | — | — | — |
@@ -563,6 +563,7 @@ Census: UNCITED 208, library 70, reproduce-pinned 10, results-cited 202, spec-ci
 | mine | mine_highways.py | UNCITED | — | — | — | 1 |
 | mine | mine_prior_update.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | moe | moe_router_stats.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 4 |
+| obs | obs_from_receipt_0s.py | UNCITED | — | — | — | 1 |
 | plot | plot_gt1_crest.py | spec-cited | specs | specs×2 | — | — |
 | plot | plot_identity_crest.py | spec-cited | specs | specs×2 | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×2 | — | 1 |
