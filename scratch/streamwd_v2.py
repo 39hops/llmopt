@@ -93,6 +93,10 @@ def ensure_shard() -> str:
     req = urllib.request.Request(
         url, headers={"User-Agent": "llmopt-streamwd-v2 (research)"})
     tok = os.environ.get("HF_TOKEN", "")
+    if not tok:                     # standard hf CLI token file
+        tf = os.path.expanduser("~/.cache/huggingface/token")
+        if os.path.exists(tf):
+            tok = open(tf).read().strip()
     if tok:
         req.add_header("Authorization", f"Bearer {tok}")
     print(f"[v2] downloading {SHARD} -> {p} "
