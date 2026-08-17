@@ -288,8 +288,11 @@ def build():
 
     model.lm_head.forward = head_fwd
 
+    # embed/lm_head params stay meta by design — their forwards are
+    # overridden to compressed-resident paths above
     meta_left = [nm for nm, p in model.named_parameters()
-                 if p.is_meta]
+                 if p.is_meta and nm not in (
+                     "model.embed_tokens.weight", "lm_head.weight")]
     if meta_left:
         raise SystemExit(f"REFUSING: meta params left: {meta_left[:4]}")
     meta_bufs = [nm for nm, b in model.named_buffers() if b.is_meta]
