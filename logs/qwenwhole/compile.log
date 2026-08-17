@@ -1,0 +1,42 @@
+[w0t] 18 shards | arms ('A', 'B', 'C') | smoke False | resume-skip 0
+[w0t] model-00001-of-00018.safetensors done 87s (source deleted)
+[qp] downloading model-00002-of-00018.safetensors
+[qp] cached 2.83 GiB in 38s
+[w0t] model-00002-of-00018.safetensors done 125s (source deleted)
+[w0t] model-00003-of-00018.safetensors done 2576s (source deleted)
+[qp] downloading model-00004-of-00018.safetensors
+[qp] cached 3.72 GiB in 100s
+[w0t] model-00004-of-00018.safetensors done 218s (source deleted)
+[w0t] model-00005-of-00018.safetensors done 62s (source deleted)
+[qp] downloading model-00006-of-00018.safetensors
+[qp] cached 3.71 GiB in 95s
+[w0t] model-00006-of-00018.safetensors done 208s (source deleted)
+[qp] downloading model-00007-of-00018.safetensors
+[qp] cached 1.96 GiB in 27s
+[w0t] model-00007-of-00018.safetensors done 80s (source deleted)
+[qp] downloading model-00008-of-00018.safetensors
+[qp] cached 3.71 GiB in 95s
+[w0t] model-00008-of-00018.safetensors done 221s (source deleted)
+[qp] downloading model-00009-of-00018.safetensors
+[qp] cached 1.96 GiB in 26s
+[w0t] model-00009-of-00018.safetensors done 80s (source deleted)
+[w0t] model-00010-of-00018.safetensors done 129s (source deleted)
+[qp] downloading model-00011-of-00018.safetensors
+[qp] cached 1.96 GiB in 26s
+[w0t] model-00011-of-00018.safetensors done 79s (source deleted)
+[qp] downloading model-00012-of-00018.safetensors
+[qp] cached 3.71 GiB in 100s
+[w0t] model-00012-of-00018.safetensors done 233s (source deleted)
+[qp] downloading model-00013-of-00018.safetensors
+[qp] cached 1.96 GiB in 27s
+[w0t] model-00013-of-00018.safetensors done 80s (source deleted)
+[w0t] model-00014-of-00018.safetensors done 127s (source deleted)
+[qp] downloading model-00015-of-00018.safetensors
+[qp] cached 1.96 GiB in 21s
+[w0t] model-00015-of-00018.safetensors done 74s (source deleted)
+[w0t] model-00016-of-00018.safetensors done 133s (source deleted)
+[qp] downloading model-00017-of-00018.safetensors
+[qp] cached 1.96 GiB in 21s
+[w0t] model-00017-of-00018.safetensors done 74s (source deleted)
+[w0t] model-00018-of-00018.safetensors done 2631s (source deleted)
+[w0t] DONE viol=0 bytes={'A': 6.5, 'B': 7.09, 'C': 8.77} wall 7218s

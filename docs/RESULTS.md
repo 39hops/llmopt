@@ -32930,3 +32930,82 @@ cover the teacher-forced case). Machine: Mac CPU; the pass is a
 baseline, not a gate, so no cross-device comparison arises.
 REGISTERED PRIOR. None — procedural rung; the only failure mode
 is the harness (OOM, wrong wrapper path), which books as NOT-RUN.
+## VERDICT QWEN-WHOLE-0T: ALL THREE BARS FIRE — the bounded transactional compiler emits three complete text-language artifacts (A 6.50 / B 7.09 / C 8.77 GiB) with zero conservation violations and per-family fidelity at 1.00x the probe values; NOT-REFUTED (2026-08-17, 3080/WSL)
+
+Registered prior (all three bars fire): HIT, all three. Adjudicated
+by the closed machine path: `logs/qwenwhole/compile.jsonl` ->
+`scripts/obs_from_receipt_0t.py` -> `scripts/adjudicate.py
+docs/preregs/qwen-whole-0t.json`. Both auditors ran pre-booking
+(prereg-auditor: no blocker; receipt-auditor: see notes folded in).
+
+BAR 1 CONSERVATION: FIRE. conservation_violations = 0 over all
+three arms; 1199 source keys = 402 compressed + 449 passthrough +
+348 excluded-by-scope (vision+MTP), checked per shard and globally.
+
+BAR 2 BUDGET: FIRE. Realized artifact bytes (payload + scales +
+codebooks + manifest): A 6,980,853,742 (6.501 GiB, bar 7.0);
+B 7,616,548,896 (7.093 GiB, bar 7.5, primary); C 9,419,679,034
+(8.773 GiB, bar 9.5). Pre-run predictions ~6.6 / ~7.19 / ~8.9 —
+all three tracked within 1.5%.
+
+BAR 3 FIDELITY-SANITY: FIRE. Max over coded family:codec groups of
+measured/probe pooled op error = 1.0004 (bar 1.15); every group at
+0.97-1.00x its probe value — the compiler encodes exactly as
+probed. Absolute pooled ops (the conjunct rows are these absolute
+values, in op-error units, not ratios): ffn:w4 0.3439 (<=0.40),
+linear_attn:w4 0.3240 (<=0.38), full_attn:w4 0.3300 (<=0.39),
+io_s16 0.1088 (<=0.13), attn_s16 0.1058 (<=0.13). The registered
+conjunct tripwires were rounded UP from 1.15x probe (io 0.1252 ->
+0.13, attn 0.1228 -> 0.13, ~4-6% looser); registered before the
+run, and the strict 1.15x ratio form passes independently at
+1.0004, so nothing was softened by the rounding.
+
+REFUTED-IF: NOT-REFUTED (B 7.62e9 < 8.59e9). The JSON predicate
+encodes arm B only; the amendment prose says "A or B" — B strictly
+dominates A on bytes at every rate table by construction (B = A
+plus larger io codecs), so the single-arm predicate is equivalent
+here. Noted for the projection's record.
+
+RECEIPT PROVENANCE. code_commit a52db70 uniform across all 19
+rows; revision 1d4bf0f2 pinned; sha structure internally coherent
+(A==B on the 16 shards carrying no io tensor, A!=B exactly on the
+embed_tokens and lm_head shards, B==C there and B!=C elsewhere —
+precisely the rate-table difference). Receipt pulled from the WSL
+producer byte-identical (sha256 verified). BAR-3 denominators are
+receipt-derived (depth census L8/32/48/56 for ffn — binding L32
+row carries probe commit b8ca553, verified to differ from its
+siblings' f4857bb by added diagnostics only, no codec change —
+and family.jsonl for the non-FFN groups), never read from the
+pre-reg thresholds.
+
+FENCES (verbatim from registration). Compiler-correctness rung
+ONLY: no functional or capability claim of any kind — whether any
+artifact TALKS is MODEL-1's question, scored against the frozen
+evals/qwen_model1/ payload. Weight-space errors here use the
+operator = Frobenius estimator probe metric. One revision, one
+rate-table set; delete-after-compress was the registered mode and
+ran (all 18 sources deleted); C's runtime viability on the 10GB
+card is explicitly out of scope. Artifacts untracked at
+~/qwen_whole0t/{A,B,C}/ on the WSL box (file-handoff convention);
+per-shard sha256 booked in the receipt rows. Wall 7218s
+(two slow shards at ~2600s are the io-shard S16 DP + the
+histogram pass on 1.27B-param tensors).
+
+KNOWN PROVENANCE LIMITATIONS (receipt-auditor, disclosed at
+booking; the driver is frozen-as-record, so fixes belong to a
+future registered re-run, not an in-place edit):
+(1) no SOURCE-shard sha was recorded and delete-after-compress ran,
+so the tie from compressed bytes back to revision 1d4bf0f2 rests on
+the revision-pinned download URL, not a recorded input hash;
+(2) SEED (20260816, in the frozen driver source at a52db70) and
+device are not fields in the receipt rows — family_errors are
+seed/device-dependent and reproduce only from the driver source;
+(3) the driver docstring claims a sha-verified resume but the code
+skips on receipt row alone (resume-skip was 0 this run — never
+exercised); (4) a RESUMED run's summary row would describe only the
+un-skipped subset (counts/arm_bytes/family_errors) with no marker —
+this run was single-pass, but any restart must recompute the
+summary from scratch or mark it partial. Receipt/log byte-identity
+Mac v WSL sha-verified; per-shard n_tensors matches the vendor
+index exactly (auditor recomputation).
+

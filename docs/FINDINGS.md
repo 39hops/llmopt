@@ -2280,3 +2280,14 @@ regime tag on every bullet is the fence.
   lineage. One layer, one model; v1 receipts remain the evidence
   record for booked 0S numbers.
   ([VERDICT STREAMWD-V2-MAC-GATE](RESULTS.md#L32890 "id:2026-08-17-verdict-streamwd-v2-mac-gate-same").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  A bounded transactional compiler (one source shard resident,
+  delete-after-compress, exact key-conservation law) emits three
+  complete compressed text-language artifacts of a 27B multimodal
+  model on a 10GB-card host: A 6.50 / B 7.09 / C 8.77 GiB, zero
+  conservation violations over 1199 keys, and every family's
+  pooled op error at 0.97-1.00x its probe-predicted value — the
+  probes priced the whole model correctly. Compiler-correctness
+  only; whether any artifact talks is MODEL-1's question.
+  ([VERDICT QWEN-WHOLE-0T](RESULTS.md#L32933 "id:2026-08-17-verdict-qwen-whole-0t-all-three").)

@@ -402,12 +402,16 @@
    "source": "results"
   },
   "logs/qwenwhole/compile.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 7479,
+   "exists": true,
+   "sha256": "b2114df4fce54c108ad10d03b7185574c2bf9d01bb234fb421c7455d4096625f",
+   "source": "results"
   },
   "logs/qwenwhole/compile.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2179,
+   "exists": true,
+   "sha256": "b57cb360dc2a6538725b31a229a3167bf4dcfa6114ae3c9a659e6d065dc55a00",
+   "source": "results"
   },
   "logs/refactor-2026-08-11/run.marker.json": {
    "bytes": 361,
@@ -502,6 +506,18 @@
    "exists": true,
    "pending": true,
    "source": "prereg"
+  },
+  "logs/streamwd/v2census_L22.jsonl": {
+   "bytes": 2481,
+   "exists": true,
+   "sha256": "8b373836b59008ba801580a7c82154325e93de60f9371fe21ff9523cee696498",
+   "source": "results"
+  },
+  "logs/streamwd/v2gate_mac.log": {
+   "bytes": 1498,
+   "exists": true,
+   "sha256": "39b04a6884d5058d4ece561496d66ae527a85faad95500a7bb750220ea6e0966",
+   "source": "results"
   },
   "logs/streamwd/v2proto.jsonl": {
    "bytes": 2392,
