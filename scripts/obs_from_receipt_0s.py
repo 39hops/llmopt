@@ -88,6 +88,10 @@ def observations(row: dict) -> dict:
                   provenance=f"(mean_shuf {mean_twin:.6f} - W32 "
                              f"{op['W32']:.6f})/mean_shuf"),
     }
+    meas["refuted:scalar_within"] = dict(
+        M, value=abs(op[sbest_name] - op["W32"]) / op["W32"],
+        provenance=f"|S_best {op[sbest_name]:.6f} - W32 "
+                   f"{op['W32']:.6f}|/W32 (refutation clause)")
     for s, t in zip(TWIN_SEEDS, twins):
         meas[f"3:twin{s}"] = dict(
             M, value=(t - op["W32"]) / t,

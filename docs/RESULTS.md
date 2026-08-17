@@ -32523,3 +32523,54 @@ justified with W4-class coding as the leading expert codec.
 FENCES: v2-descriptive throughout; one model/revision; n=1 per
 layer; five of 43 layers sampled; weight space only; the promote
 clause licenses BUILDING WHOLE-0, not any claim about it.
+
+## OBSERVATION STREAMWD-V2-QUALIFICATION: full 256-expert cross-device qualification PASSES against the pre-look tolerance — worst VQ arm 13x inside the bound, scalars 300x inside; harness-level speedup corrected to 7.45x (2026-08-17, Mac v CUDA, descriptive)
+
+Both full receipts now exist (Mac logs/streamwd/pass0s_B1.jsonl,
+CUDA logs/streamwd/v2proto.jsonl), scored against the tolerance
+pinned PRE-LOOK at f1e0da8 (20:55 EDT, before the full v2 receipt
+landed):
+  worst scalar-arm relative disagreement  S1-T  3.03e-9  (bound
+    1e-6: PASS, ~300x inside)
+  worst VQ-arm relative disagreement      W8    3.85e-4  (bound
+    5e-3: PASS, ~13x inside)
+across all 11 operator_layer arms. The cross-device
+QUALIFICATION registered in that spec therefore PASSES in full.
+This does NOT satisfy the separate same-device promotion gate
+(unrun) and remains descriptive; no cross-device number enters a
+bar.
+RECORD CORRECTION: the handoff and BOARD quoted "7.7x" carried
+from the pre-receipt ETA. Measured harness-level ratio is
+11865.9 s / 1592.0 s = 7.45x — HARNESS-level (shard cache + CUDA
++ implementation changes bundled), never a device comparison.
+PRIOR-ACCOUNTING MARKER, for any future calibration statistic:
+the 0S BAR 2 prior miss is tagged TARGET-REBASED — the prior
+sentence predates -0S-DESIGN (1)'s rebase of BAR 2's identity
+(W32-v-S2 -> W4-v-S2). Mechanically scored: miss, and it stays a
+miss; but it is not a cleanly aligned forecast datapoint and must
+not enter a hits/misses tally unmarked.
+
+## AMENDMENT STREAM-WDISTILL-CENSUS-0-READING (amends OBSERVATION -CENSUS-0 L32485): two sentences narrowed to what five depth points can carry (2026-08-17, Mac)
+
+Pre-WHOLE-0 corrections (GPT seat; house verified both against
+the receipts).
+(1) "late-layer experts carry more per-block structure the 2-bit
+budget cannot hold" OVERCLAIMS. Measured: L42 has higher
+normalized reconstruction error across every tested codec while
+preserving the codec ordering. "More structure" is not uniquely
+identified — distributional shape, tails, block-normalization
+behavior, correlations, and quantizer mismatch are unseparated
+candidates. Corrected reading: L42 is uniformly HARDER FOR THIS
+CODEC FAMILY; the cause is unmeasured.
+(2) "a property of the expert family across depth" is stronger
+than five of 43 sampled layers warrant. Corrected: depth-stable
+at all five sampled depths, i.e. NOT OBVIOUSLY L22-SPECIFIC —
+which is exactly what the registered PROMOTE clause needed
+(licenses attempting one global W4-class recipe), and no more.
+Also narrowed for the record, from the 0S verdict's dose-curve
+sentence: the width-ladder inversion is measured UNDER THE
+REGISTERED RECIPE (K=256, 2^20 sample, 15 Lloyd iterations,
+greedy residual stages) — width, codebook adequacy, stage
+greediness, and sample sparsity move together along the ladder,
+so "width hurts" as a recipe-free law is not licensed; "the
+rate-matched width ladder is inverted under this recipe" is.

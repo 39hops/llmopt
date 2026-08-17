@@ -46,7 +46,14 @@ must fail loudly, not vanish):
                     "aggregation", "direction", "value",
                     "arms": [names], "description"?}]
   receipts        [repo-relative path str] — paths the run WILL write
-  refuted_if      prose, required (falsifiability is not optional)
+  refuted_if      prose, required (falsifiability is not optional).
+                  MAY additionally be structured: when the document
+                  carries "refuted_if_predicate" ({"measurement",
+                  "direction", "value"} reading an observations key,
+                  same shape as a bar conjunct), the adjudicator
+                  scores the refutation clause too — added
+                  2026-08-17 (external review: REFUTED-IF was the
+                  one consequential sentence still hand-computed).
   registered_prior prose, required
 
 Observations document:
@@ -80,11 +87,11 @@ _DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 PREREG_KEYS = {"name", "results_id", "registered", "machine", "arms",
                "bars", "receipts", "refuted_if", "registered_prior",
-               "note"}
+               "note", "refuted_if_predicate"}
 # note is OPTIONAL prose; every other top-level key is required. A
 # retrospective encoding of an already-booked verdict MUST say so in
 # note — a pre-reg written after receipts exist is not a pre-reg.
-REQUIRED_KEYS = PREREG_KEYS - {"note"}
+REQUIRED_KEYS = PREREG_KEYS - {"note", "refuted_if_predicate"}
 BAR_KEYS = {"id", "name", "metric", "population", "aggregation",
             "direction", "value", "arms", "description", "conjuncts"}
 # conjuncts (optional): additional predicates that must ALL hold for
@@ -128,6 +135,14 @@ def validate(doc: dict) -> dict:
     _require(bool(doc["refuted_if"]),
              "refuted_if is empty — an unfalsifiable rung is not a rung")
     _require(bool(doc["registered_prior"]), "registered_prior is empty")
+    rp = doc.get("refuted_if_predicate")
+    if rp is not None:
+        _require(set(rp) == {"measurement", "direction", "value"},
+                 f"refuted_if_predicate keys {sorted(rp)}")
+        _require(rp["direction"] in DIRECTIONS,
+                 "refuted_if_predicate direction")
+        _require(isinstance(rp["value"], (int, float)),
+                 "refuted_if_predicate value must be numeric")
     _require(bool(isinstance(doc["arms"], dict) and doc["arms"]),
              "arms must be a non-empty object")
     _require(isinstance(doc["receipts"], list),
@@ -169,6 +184,26 @@ def validate(doc: dict) -> dict:
 
 def load(path: str | Path) -> dict:
     return validate(json.loads(Path(path).read_text()))
+
+
+def adjudicate_refutation(prereg: dict, obs: dict) -> str | None:
+    """Score the structured refutation clause, if the pre-reg has one.
+
+    Returns "REFUTED" / "NOT-REFUTED", or None when the document
+    carries only prose refuted_if (hand adjudication, disclosed) or
+    the named measurement is absent. Contract mismatches raise, as
+    everywhere else."""
+    rp = prereg.get("refuted_if_predicate")
+    if rp is None:
+        return None
+    m = obs.get("measurements", {}).get(rp["measurement"])
+    if m is None:
+        return None
+    metric = Metric(float(m["value"]), m["metric"], m["population"],
+                    m["aggregation"], provenance=m.get("provenance", ""))
+    v = adjudicate(metric, bar_value=float(rp["value"]),
+                   direction=rp["direction"])
+    return "REFUTED" if v == "FIRE" else "NOT-REFUTED"
 
 
 def adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]:

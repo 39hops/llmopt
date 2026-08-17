@@ -217,3 +217,15 @@ def test_adapter_derivations_feed_a_clean_adjudication():
     assert out[2].outcome == "FIRE"          # W4 beats S2 by 13% here
     assert out[3].outcome == "NO-FIRE"
     assert "S_best=S2" in obs["measurements"]["1"]["provenance"]
+
+
+def test_refutation_clause_is_machine_scored():
+    """Added 2026-08-17: REFUTED-IF was the one consequential
+    sentence still hand-computed. The 0S booked refutation
+    (0.035% v 5%) must now reproduce mechanically."""
+    from llmopt.lab.prereg import adjudicate_refutation
+    obs = _adapter().observations(_row())
+    assert adjudicate_refutation(_prereg_0s(), obs) == "REFUTED"
+    # counterfactual: a 10% gap must not refute
+    obs["measurements"]["refuted:scalar_within"]["value"] = 0.10
+    assert adjudicate_refutation(_prereg_0s(), obs) == "NOT-REFUTED"

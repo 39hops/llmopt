@@ -2203,3 +2203,14 @@ regime tag on every bullet is the fence.
   prototype instrument, descriptive class, one model/revision;
   licenses building the whole-model pass, claims nothing about it.
   ([OBSERVATION STREAM-WDISTILL-CENSUS-0](RESULTS.md#L32485 "id:2026-08-17-observation-stream-wdistill-census-0-registered").)
+
+- [SINGLE-SEED] [DEVICE-SCOPED]
+  [REGIME-SCOPED: measured deployment artifacts]
+  The GPU streaming harness reproduces the Mac instrument at full
+  population: across all 11 arms on 256 experts, worst VQ-arm
+  disagreement 3.85e-4 relative (13x inside the pre-look bound),
+  worst scalar 3.03e-9, at a 7.45x harness-level wall-clock ratio
+  (shard cache + CUDA + implementation bundled, never a device
+  comparison). Cross-device qualification only; the same-device
+  promotion gate remains unrun.
+  ([OBSERVATION STREAMWD-V2-QUALIFICATION](RESULTS.md#L32527 "id:2026-08-17-observation-streamwd-v2-qualification-full-256").)

@@ -23,7 +23,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from llmopt.lab.prereg import adjudicate_prereg, load  # noqa: E402
+from llmopt.lab.prereg import (adjudicate_prereg,  # noqa: E402
+                               adjudicate_refutation, load)
 
 
 def main() -> int:
@@ -33,6 +34,9 @@ def main() -> int:
     a = ap.parse_args()
     prereg = load(a.prereg)
     obs = json.loads(Path(a.observations).read_text())
+    r = adjudicate_refutation(prereg, obs)
+    if r is not None:
+        print(f"REFUTED-IF: {r}")
     unresolved = 0
     for o in adjudicate_prereg(prereg, obs):
         line = f"BAR {o.bar_id} {o.bar_name}: {o.outcome}"

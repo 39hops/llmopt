@@ -3605,6 +3605,7 @@ Machine-readable pre-registration: bars a program can adjudicate.
 - `_require(cond: bool, msg: str) -> None`
 - `validate(doc: dict) -> dict` — Validate a pre-reg document; returns it unchanged on success.
 - `load(path: str | Path) -> dict`
+- `adjudicate_refutation(prereg: dict, obs: dict) -> str | None` — Score the structured refutation clause, if the pre-reg has one.
 - `adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]` — Deterministic adjudication of every bar against observations.
 
 ### llmopt/lab/runfiles.py
