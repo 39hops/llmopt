@@ -32651,3 +32651,39 @@ their own rate decision.
 FENCES: parameter/byte arithmetic only, no compression measured
 here; dtype map from headers (bf16 dominant); the FLOP/latency
 question is untouched; census is exact for THIS revision.
+
+## OBSERVATION QWEN-FFN-CENSUS-0: the codec ordering is depth-stable on the dense tower too (4/4 layers), and the scalar inversion is DIAGNOSED — 80% of normalized mass sits below 1/3 and uniform-4 has no zero level (2026-08-17, 3080/WSL, descriptive)
+
+Receipts logs/qwenprobe/L{8,48,56}.jsonl (chain
+scratch/qwen_census_night.sh) + L32.jsonl. Pooled operator error:
+
+   L   S1-T    S1-U4   S2      W4      W8      W32
+   8   0.8917  0.9370  0.4027  0.3448  0.3693  0.3900
+  32   0.9094  0.9830  0.4026  0.3451  0.3675  0.3859
+  48   0.9116  0.9860  0.4023  0.3441  0.3669  0.3848
+  56   0.9251  0.9691  0.3946  0.3417  0.3632  0.3800
+
+(1) W4 < S2 AND W4 < W8 < W32 at all four sampled depths of 64 —
+the GPT-seat stop-rule fires: FFN probing on this model is DONE;
+W4-class is the working FFN codec for QWEN-WHOLE-0T. Remarkably
+flat across depth (S2 within 0.008, W4 within 0.003) — no L42-like
+hard layer in this sample.
+(2) SCALAR INVERSION DIAGNOSED (the -0S ladder's ternary < U4
+reversal): per the new scalar_diag fields (L8/48/56; L32 predates
+them), 80-83% of E8M0-normalized mass lies within |w| < 1/3 and
+32-35% within |w| < 0.1. Ternary assigns 92-94% of weights to its
+ZERO level; uniform-4 HAS no zero and forces that mass to +-1/3
+(97-98% of its assignments land on the inner pair). The DP-optimal
+alphabet independently places two near-zero levels (+-0.119 to
++-0.124, outer +-0.44) — the optimizer's own vote for the same
+mechanism. Reading: under max-anchored round-up block scaling,
+these bf16 dense weights are strongly zero-concentrated, so a
+zero level is worth more than a fourth level. V4's MXFP4-dequant
+experts were not (U4 beat ternary by 17.7% there) — alphabet
+choice is DISTRIBUTION-BOUND and must be re-derived per weight
+family, which S2's DP does automatically. Consequence for
+WHOLE-0T: any scalar-fallback family uses S2-DP, never a fixed
+alphabet.
+FENCES: descriptive; 4 of 64 layers, one model/revision, n=1,
+weight space only, rankings and mass fractions only; L32 lacks
+scalar_diag (driver gained it after L32 booked).

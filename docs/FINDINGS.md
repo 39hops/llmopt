@@ -2235,3 +2235,16 @@ regime tag on every bullet is the fence.
   (20.0%, no codec measurement). Exact shard-header census, one
   revision, bytes only, no compression or latency measured.
   ([OBSERVATION QWEN-BYTE-CENSUS-0](RESULTS.md#L32618 "id:2026-08-17-observation-qwen-byte-census-0-exact").)
+
+- [SINGLE-SEED] [DEVICE-SCOPED]
+  [REGIME-SCOPED: measured deployment artifacts]
+  Scalar alphabet choice is distribution-bound and the DP re-derives
+  it automatically: Qwen's dense bf16 weights are zero-concentrated
+  under max-anchored block scaling (80%+ of normalized mass below
+  1/3; ternary parks 92-94% on its zero level) so ternary beats
+  4-level uniform there, while V4's dequantized experts show the
+  reverse — and the DP-optimal 4-level alphabet votes for the
+  mechanism by placing two near-zero levels itself. Codec ordering
+  (W4 best, wider worse) is depth-stable 4/4 sampled Qwen layers.
+  Descriptive, rankings and mass fractions only.
+  ([OBSERVATION QWEN-FFN-CENSUS-0](RESULTS.md#L32655 "id:2026-08-17-observation-qwen-ffn-census-0-the").)
