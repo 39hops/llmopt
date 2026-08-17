@@ -59,9 +59,17 @@ def cited_paths() -> dict[str, str]:
     not exist yet (PENDING, the run has not fired) and is not
     ratcheted, but once it exists its sha is locked like any other."""
     out = {m.group(0): "results" for m in CITE.finditer(RESULTS.read_text())}
+    # prereg-DECLARED paths win the pending classification while the
+    # file does not exist, even when the registration prose also
+    # names them (a pre-reg legitimately cites paths its run WILL
+    # write; the absence ratchet must not fire on those, and the
+    # sha freeze arrives with the verdict booking).
     for prereg in sorted((ROOT / "docs" / "preregs").glob("*.json")):
         for rel in json.loads(prereg.read_text()).get("receipts", []):
-            out.setdefault(rel, "prereg")
+            if not (ROOT / rel).is_file():
+                out[rel] = "prereg"
+            else:
+                out.setdefault(rel, "prereg")
     return out
 
 

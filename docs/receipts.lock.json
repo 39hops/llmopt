@@ -403,11 +403,11 @@
   },
   "logs/qwenwhole/compile.jsonl": {
    "exists": false,
-   "source": "results"
+   "source": "prereg"
   },
   "logs/qwenwhole/compile.log": {
    "exists": false,
-   "source": "results"
+   "source": "prereg"
   },
   "logs/refactor-2026-08-11/run.marker.json": {
    "bytes": 361,
