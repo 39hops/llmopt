@@ -33150,3 +33150,61 @@ surface at 2 bits; the 0S/Qwen scalar-mass evidence says stored
 io distributions are the least W4-friendly), C adds little over B
 (attention W4 at 0.33 op error transported cleanly everywhere we
 probed). Confidence medium.
+
+## AMENDMENT QWEN-MODEL1-TREE-LOGIC (amends PRE-REG QWEN-MODEL1-TREE): two logic holes closed and the T1 prior's rationale corrected — all BEFORE any MODEL-1 score exists (2026-08-17, mac)
+
+GPT seat review (relayed by Artin 13:25), every numeric claim
+verified against the receipts in-house before adoption. The
+trigger arithmetic (20% relative CE+KL conjunction) is unchanged.
+
+(1) COMPOSITION HOLE CLOSED. T3 previously meant "neither T1 nor
+T2 fired" and the prose equated that with A~B~C. False under
+pairwise thresholds: two 19% steps compound to 34.4% (0.81^2 =
+0.6561), two 15% steps to 27.8% — C can be materially better than
+A while neither step crosses 20%. T3 now requires ALL of: B does
+not materially improve A, C does not materially improve B, AND C
+does not materially improve A (the direct cumulative comparison).
+If only the cumulative A-v-C comparison fires, a NEW branch T4
+books: "C is functionally worth the aggregate extra rate though
+no single family promotion crossed the threshold" — the
+allocation question stays OPEN rather than falsely declaring
+parity; no automatic follow-up compression rung fires from T4.
+(2) ANOMALY GATE ADDED, ahead of T1-T3. The tree previously
+detected only benefits of added precision. New first check: if B
+is materially WORSE than A, or C materially worse than B (same
+20% conjunction, reversed direction, either or both metrics), the
+tree books NONMONOTONIC/UNRESOLVED and STOPS for review — a large
+degradation from added precision is an instrument alarm (scoring
+harness, transfer corruption, container bug), not a bookable
+allocation result. Same-conjunction symmetry chosen deliberately;
+no house convention existed for a "worse" threshold.
+(3) T1 PRIOR RATIONALE CORRECTED. The registered prior claimed
+"io is the sensitive surface at 2 bits; the 0S/Qwen scalar-mass
+evidence says stored io distributions are the least W4-friendly."
+The family receipt says otherwise: W4@2 ops — lm_head 0.3373,
+embeddings 0.3335, full_attn q 0.3353, linear_attn 0.3254-0.3300,
+whole-model ffn 0.3439 (the actual worst); central mass — lm_head
+83.9%, embed 82.4%, linear in_proj_z 84.45% (the actual highest).
+Weight space is codec-HOMOGENEOUS across families and cannot name
+the sensitive one — which was the family probe's own finding. The
+T1 PREDICTION stands, but on SEMANTIC-ROLE grounds only:
+embeddings and lm_head directly define input/output token
+geometry and may be more functionally sensitive at similar
+reconstruction error, while attention's W4 distortion transported
+consistently in the bridge. The scalar-mass census distinguished
+MODELS (V4 v Qwen stored distributions), never io v other
+families within Qwen; citing it for io fragility was a
+misattribution, corrected here before any score could flatter it.
+(4) TERMINOLOGY. D/E isolates PRECISION ALLOCATED TO embed_tokens
+v lm_head — the causal surface claim. "Input geometry v output
+logit geometry" is interpretation layered on top (tied or coupled
+representations propagate effects everywhere) and is demoted to
+discussion language, never a booked conclusion.
+FINAL TREE (order of evaluation at MODEL-1 booking):
+  0. anomaly gate: any material degradation up-rate ->
+     NONMONOTONIC/UNRESOLVED, stop.
+  1. B mat.> A and C not mat.> B -> T1 io attribution (D/E).
+  2. C mat.> B -> T2 attention attribution.
+  3. C mat.> A cumulatively, no single step fired -> T4
+     cumulative-rate branch, allocation stays open, review.
+  4. else -> T3: functional parity, A is the runtime target.
