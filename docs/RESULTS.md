@@ -33376,3 +33376,19 @@ MAX over all (b, t); the receipt books the max and the per-token
 values. Token equality is checked independently and first — a
 token mismatch fails the gate regardless of norms (exactness is
 the primary bar; the norm bound only qualifies the numeric path).
+
+## AMENDMENT QWEN-MODEL1-TREE-KFENCE (amends AMENDMENT QWEN-MODEL1-TREE-PINS): the K-side D/E separation gets its own sensitivity fence — the CE+KL conjunction stays symmetric all the way down; recovery fractions stay raw and unclamped (2026-08-17, mac)
+
+GPT seat, adopted: the D>E prediction previously required only the
+SIGN of the K analogue, so numerical dust on K could corroborate a
+resolved X separation. Fixed symmetric (option 1): the prediction
+fires iff rec_X(D) > rec_X(E) with |X_D - X_E| > 5x f_X AND
+rec_K(D) > rec_K(E) with |K_D - K_E| > 5x f_K, where f_K
+(fp16_record_sensitivity_floor_K) is derived by the same +-1ulp
+teacher-record perturbation procedure applied to the K pipeline.
+Either side unresolved -> UNRESOLVED, never a fire. Also pinned:
+recovery fractions are reported RAW AND UNCLAMPED — rec > 1
+(single repair beats the pair: nonmonotonic interaction) and
+rec < 0 (repair harms) are scientifically meaningful outcomes and
+book as measured. Prereg refinement is CLOSED here by mutual
+agreement; the next review target is the sidecar and scorer CODE.
