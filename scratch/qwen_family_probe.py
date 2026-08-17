@@ -98,55 +98,82 @@ def dp_levels(count, ssum, ssq, K):
     return np.array(sorted(levels), np.float32)
 
 
+CHUNK_ROWS = 8192
+
+
 def probe_tensor(fam, name):
+    """Two passes over row-chunks so 1.27B-param tensors fit VRAM:
+    pass A builds the histogram + a proportional codebook sample,
+    pass B encodes and accumulates frob/operator parts per chunk
+    (operator sums are chunk-additive: X @ D.T column blocks)."""
     W = qp.load_tensor(name)
     if SMOKE:
         W = W[:max(W.shape[0] // 32, 8)]
-    Wt = qp.T(W)
-    Wb = Wt.reshape(Wt.shape[0], -1, BLOCK)
-    sc = qp.e8m0(Wb)
-    Wn = Wb / sc
-    nb = Wn.shape[0] * Wn.shape[1]
-    flat = Wn.reshape(-1)
-
-    # scalar alphabets from this tensor's own histogram
-    edges = qp.T(np.linspace(-1, 1, 4096 + 1).astype(np.float32))
-    bi = torch.clamp(torch.bucketize(flat, edges, right=True) - 1, 0, 4095)
-    h = [torch.bincount(bi, minlength=4096).double().cpu().numpy(),
-         torch.bincount(bi, weights=flat.double(),
-                        minlength=4096).cpu().numpy(),
-         torch.bincount(bi, weights=flat.double() ** 2,
-                        minlength=4096).cpu().numpy()]
-    lv4 = qp.T(dp_levels(*h, 4))
-    lv16 = qp.T(dp_levels(*h, 16))
-
-    # vector codebooks on this tensor's own sample
-    v = Wn.reshape(-1, 4)
+    rows = W.shape[0]
     r = np.random.default_rng(SEED + zlib.crc32(name.encode()) % 99991)
-    idx = qp.T(r.choice(len(v), min(1 << 20, len(v)), replace=False))
-    stack2 = qp.stack_train(v[idx], 2, f"{name}/w4x2")
+    hist = [np.zeros(4096, np.float64) for _ in range(3)]
+    edges = qp.T(np.linspace(-1, 1, 4096 + 1).astype(np.float32))
+    samples, n_all, mass033 = [], 0, 0
+    per_chunk = max(1, (1 << 20) // max(rows // CHUNK_ROWS + 1, 1))
+    for lo in range(0, rows, CHUNK_ROWS):
+        Wc = qp.T(W[lo:lo + CHUNK_ROWS])
+        Wb = Wc.reshape(Wc.shape[0], -1, BLOCK)
+        Wn = Wb / qp.e8m0(Wb)
+        flat = Wn.reshape(-1)
+        bi = torch.clamp(torch.bucketize(flat, edges, right=True) - 1,
+                         0, 4095)
+        hist[0] += torch.bincount(bi, minlength=4096).double().cpu().numpy()
+        hist[1] += torch.bincount(bi, weights=flat.double(),
+                                  minlength=4096).cpu().numpy()
+        hist[2] += torch.bincount(bi, weights=flat.double() ** 2,
+                                  minlength=4096).cpu().numpy()
+        mass033 += int((flat.abs() < 1 / 3).sum())
+        n_all += flat.numel()
+        v = Wn.reshape(-1, 4)
+        take = min(per_chunk, len(v))
+        samples.append(v[qp.T(r.choice(len(v), take, replace=False))]
+                       .cpu().numpy())
+        del Wc, Wb, Wn, flat
+    lv4 = qp.T(dp_levels(*hist, 4))
+    lv16 = qp.T(dp_levels(*hist, 16))
+    samp = qp.T(np.concatenate(samples)[:1 << 20])
+    stack2 = qp.stack_train(samp, 2, f"{name}/w4x2")
     stack1 = stack2[:1]
+    del samp, samples
 
-    out = {}
-    recon = {
-        "S2@2": qp.nearest(Wn, lv4),
-        "S16@4": qp.nearest(Wn, lv16),
-        "W4@2": qp.vq(v, stack1).reshape(Wn.shape),
-        "W4x2@4": qp.vq(v, stack2).reshape(Wn.shape),
-    }
-    for a, Rn in recon.items():
-        R = (Rn * sc).reshape(Wt.shape)
-        Dm = R - Wt
-        frob = (float((Dm ** 2).sum()) / float((Wt ** 2).sum())) ** 0.5
-        n2, d2 = qp.op_parts(Dm, Wt, SEED + 17)
-        out[a] = {"frob": frob, "op": (n2 / max(d2, 1e-30)) ** 0.5}
-    del Wt, Wb, Wn, recon
-    torch.cuda.empty_cache() if DEV == "cuda" else None
+    ARMS = ("S2@2", "S16@4", "W4@2", "W4x2@4")
+    se = {a: 0.0 for a in ARMS}
+    n2s = {a: 0.0 for a in ARMS}
+    wsum = 0.0
+    d2s = 0.0
+    for lo in range(0, rows, CHUNK_ROWS):
+        Wc = qp.T(W[lo:lo + CHUNK_ROWS])
+        Wb = Wc.reshape(Wc.shape[0], -1, BLOCK)
+        sc = qp.e8m0(Wb)
+        Wn = Wb / sc
+        v = Wn.reshape(-1, 4)
+        recon = {"S2@2": qp.nearest(Wn, lv4),
+                 "S16@4": qp.nearest(Wn, lv16),
+                 "W4@2": qp.vq(v, stack1).reshape(Wn.shape),
+                 "W4x2@4": qp.vq(v, stack2).reshape(Wn.shape)}
+        wsum += float((Wc ** 2).sum())
+        _, dd = qp.op_parts(torch.zeros_like(Wc), Wc, SEED + 17)
+        d2s += dd
+        for a, Rn in recon.items():
+            R = (Rn * sc).reshape(Wc.shape)
+            Dm = R - Wc
+            se[a] += float((Dm ** 2).sum())
+            nn, _ = qp.op_parts(Dm, Wc, SEED + 17)
+            n2s[a] += nn
+        del Wc, Wb, Wn, recon
+        if DEV == "cuda":
+            torch.cuda.empty_cache()
+    out = {a: {"frob": (se[a] / wsum) ** 0.5,
+               "op": (n2s[a] / max(d2s, 1e-30)) ** 0.5} for a in ARMS}
     return {"family": fam, "tensor": name.split("language_model.")[-1],
             "shape": list(W.shape), "arms": out,
             "s2_levels": [float(x) for x in lv4.cpu()],
-            "mass_within_0p33": float((flat.abs() < 1 / 3).sum())
-            / flat.numel()}
+            "mass_within_0p33": mass033 / n_all}
 
 
 def main():
