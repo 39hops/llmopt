@@ -470,8 +470,11 @@
    "tracked": true
   },
   "logs/qwenruntime/forward1_A.log": {
-   "exists": false,
-   "source": "results"
+   "bytes": 973,
+   "exists": true,
+   "sha256": "10d5eabb57e21a105b30b750eb4e57e57d429f9f2bfa15f1ae839c2b15ac99b7",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenwhole/compile.jsonl": {
    "bytes": 7479,

@@ -243,7 +243,14 @@ def build():
     # emitted cos/sin and require positional variation
     def capture_rope(module, args, kwargs, output):
         cos = output[0] if isinstance(output, tuple) else output
-        trav["rope_cos_std"] = float(cos.float().std(dim=-2).mean())
+        # only positions>=2 carry signal (unbiased std at n=1 is
+        # NaN — cached decode steps are seq_len=1); MIN over the
+        # feature dim (mean passes a half-zeroed inv_freq, measured
+        # 0.497 v 0.000); running minimum so every forward counts
+        if cos.shape[-2] >= 2:
+            v = float(cos.float().std(dim=-2).min())
+            prev = trav.get("rope_cos_std")
+            trav["rope_cos_std"] = v if prev is None else min(prev, v)
         return output
 
     model.model.rotary_emb.register_forward_hook(

@@ -1,0 +1,11 @@
+[0r] qualified: {'art_dir': '/home/a/qwen_whole0t/A', 'rung0': {'checked': 19, 'unchained': False}, 'conservation': {'keys': 1199}, 'census': {'w4': 402, 's16': 0, 'raw': 449, 'excluded': 348}, 'preflight': {'estimated_peak_bytes': 5869238016, 'available_bytes': 13458075648, 'safety_fraction': 0.8}}
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[0r] built from /home/a/qwen_whole0t/A in 1s
+[0r] forward1 122s | vocab 248320 | traversal 64/48/16 attn-exec lin=48 full=16 rope=1 | top5:
+[0r]     21.129  'The'
+[0r]     17.801  'Thinking'
+[0r]     15.936  'User'
+[0r]     14.519  'Let'
+[0r]     14.357  '用户'
+[0r] peak RSS 3.27 GiB observed v 5.47 GiB estimated (ratio 0.60) -> receipt
