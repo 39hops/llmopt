@@ -6175,3 +6175,44 @@ honest status column).
   Attribution: Artin (ask, GO, machines), GPT seat (program
   decomposition, family taxonomy, conservation law), house
   (census design, fences, drivers).
+
+- **BANKED (2026-08-17): model entropy is a MEASURABLE — the
+  rate-distortion ladder as a weight-entropy instrument, and the
+  Qwen-first runnable-artifact program** (Artin: the "dense,
+  entropic, blackhole-like" intuition and the Qwen-first ask; GPT
+  seat: the bridge-rung program and the compressed-domain GEMV
+  design; house: the literalization and fences).
+  The mapping: "how entropic is a model" has a non-metaphorical
+  form — the error-vs-bits curve of a fixed codec family IS a
+  distortion-rate point set, i.e. an operational entropy estimate
+  of the weight distribution. Tonight's ladders are exactly that
+  instrument; cross-model comparisons of the CURVES (never raw
+  errors) are the legal form. Related banked instrument: the
+  area-law desk probe. HONEST BREAK, stated hard: no link to
+  gravitational physics is claimed — black-hole language stays
+  metaphor; Poplawski-class bounce cosmology (the "gateway"
+  hypothesis) is published, coherent, and untestable from inside,
+  and none of the lab's star/gravity/blackhole-NAMED rungs touch
+  it. Charter note: horizon/area-law MATHEMATICS as analysis
+  frames = methods, welcome; physics claims = not ours to make.
+  The program (adopted from GPT seat, Artin GO direction):
+  v2 promotion gate -> Qwen bridge rung (light FFN depth census;
+  desk byte-census by tensor family solving a <=7.5-8 GiB weight
+  budget for the 10GB 3080; one representative probe each for
+  linear-attn / full-attn / embeddings / LM head; scalar-inversion
+  diagnosis via S2 levels + cell occupancy) -> QWEN-WHOLE-0T
+  (text tower only, vision excluded, bounded delete-after-compress
+  transactions, conservation law) -> SLOW reference decode +
+  frozen functional battery (greedy agreement, KL, perplexity,
+  small task set, readable chat) BEFORE any fast kernel ->
+  QWEN-RUNTIME-1: compressed-domain W4 GEMV (256-codeword LUT dot
+  products, uint8 indices, E8M0 scales — never materialize fp16
+  weights; the axiom C++ leg's y = C(W)x target). V4 WHOLE-0
+  returns after, as the compiler-correctness rung.
+  Testable residue: (1) FFN ordering stability across Qwen depth;
+  (2) whether the FFN codec destroys attention/embeddings; (3)
+  greedy agreement of a ~2-bpw 27B on a 10GB card; (4) the
+  entropy-curve comparison V4-experts v Qwen-dense as the first
+  cross-model rate-distortion reading.
+  Attribution: Artin (ask, framing, GO), GPT seat (program), house
+  (fences, instruments).

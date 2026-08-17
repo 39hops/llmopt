@@ -279,6 +279,20 @@ def main():
         del recon
         print(f"[qp] scored {p}", flush=True)
 
+    diag = {}
+    for p_ in PROJS:
+        Wn, _ = norm[p_]
+        flat = Wn.reshape(-1)
+        n = flat.numel()
+        diag[p_] = {
+            "s2_levels": [float(x) for x in s2lv[p_].cpu()],
+            "mass_within_0p1": float((flat.abs() < 0.1).sum()) / n,
+            "mass_within_0p33": float((flat.abs() < 1/3).sum()) / n,
+            "t_zero_occupancy": float(
+                (nearest(Wn, T(LT)) == 0).float().mean()),
+            "u4_inner_occupancy": float(
+                (nearest(Wn, T(LU4)).abs() < 0.5).float().mean()),
+        }
     row = {"probe": "qwen-stream-probe-0", "model": MODEL,
            "revision": REVISION, "layer": LAYER, "smoke": SMOKE,
            "device": DEV,
@@ -290,6 +304,7 @@ def main():
            "frob": {a: (acc[a][0] / acc[a][1]) ** 0.5 for a in ARMS},
            "operator_layer": {a: (opr[a][0] / max(opr[a][1], 1e-30)) ** 0.5
                               for a in ARMS},
+           "scalar_diag": diag,
            "wall_s": round(time.time() - t0, 1)}
     with open(OUT, "a") as f:
         f.write(json.dumps(row) + "\n")
