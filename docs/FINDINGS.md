@@ -2225,3 +2225,13 @@ regime tag on every bullet is the fence.
   V4; cause unmeasured). Descriptive, one layer, one model,
   rankings only.
   ([OBSERVATION QWEN-STREAM-PROBE-0](RESULTS.md#L32578 "id:2026-08-17-observation-qwen-stream-probe-0-the").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  Qwen3.8-27B's weight budget closes on a 10GB card: FFN — the
+  family where width-4 VQ is measured — is 61.6% of all 27.8B
+  parameters, text-only at the 2.0625 bpw payload rate is
+  6.56 GiB, and even doubling every non-FFN family's rate lands
+  ~8.9 GiB. The binding unknown is the linear-attention family
+  (20.0%, no codec measurement). Exact shard-header census, one
+  revision, bytes only, no compression or latency measured.
+  ([OBSERVATION QWEN-BYTE-CENSUS-0](RESULTS.md#L32618 "id:2026-08-17-observation-qwen-byte-census-0-exact").)

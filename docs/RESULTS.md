@@ -32614,3 +32614,40 @@ model, one revision, n=1, weight space only, no functional claim;
 never compared against any V4 receipt (different model, device,
 tensor shapes) — only orderings are discussed; smoke row is
 path-isolated (L32_smoke.jsonl, sliced tensors, never evidence).
+
+## OBSERVATION QWEN-BYTE-CENSUS-0: exact per-family parameter census from shard headers — FFN is 61.6% of the model, text-only at the W4 payload rate is 6.56 GiB, and the 10GB-3080 budget closes with headroom (2026-08-17, desk)
+
+Desk census (the /desk discipline: derived from the real artifact
+— all 18 shard headers of Qwen/Qwen3.8-27B at pinned revision
+1d4bf0f2, every tensor's shape and dtype read exactly; no model in
+the loop). Threshold named before counting: the bridge needs
+text-tower weights <= 7.5-8 GiB resident for the 10GB 3080.
+
+  family        params           %     native GiB   @2.0625bpw
+  ffn           17,112,760,320  61.6%      31.88        4.11
+  linear_attn    5,562,051,072  20.0%      10.36        1.34
+  full_attn      1,677,729,792   6.0%       3.13        0.40
+  embeddings     1,271,398,400   4.6%       2.37        0.31
+  lm_head        1,271,398,400   4.6%       2.37        0.31
+  vision           460,730,096   1.7%       0.86        0.11
+  mtp              424,699,392   1.5%       0.79        0.10
+  norms_small          660,480   0.0%       0.00        0.00
+  TOTAL         27,781,427,952             51.75        6.67
+
+READINGS. (1) The family the codec is PROVEN on (FFN, W4 at
+14.3% over the optimal scalar on L32) is 61.6% of all parameters
+— the whole-model outcome is dominated by the already-measured
+case. (2) Text-only (vision excluded per the QWEN-WHOLE-0T scope)
+at a uniform 2.0625 bpw payload = 6.56 GiB. Worst realistic
+allocation — every non-FFN family at DOUBLE the rate (4 bpw:
+attn + embeddings + head + mtp = 10.2B params -> 4.75 GiB) plus
+FFN at 2.0625 (4.11 GiB) plus norms native — lands ~8.9 GiB;
+attn at 3 bpw lands ~7.6 GiB. The <=7.5-8 GiB target is
+REACHABLE and the binding question is the linear_attn family
+(20.0%, structurally mamba-like, no codec measurement yet) —
+exactly the bridge probe registered next. (3) Untied vocab is
+248,320 x 5120 twice: embeddings + head are 9.2% together, worth
+their own rate decision.
+FENCES: parameter/byte arithmetic only, no compression measured
+here; dtype map from headers (bf16 dominant); the FLOP/latency
+question is untouched; census is exact for THIS revision.
