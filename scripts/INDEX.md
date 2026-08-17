@@ -2858,6 +2858,12 @@ Symmetry ladder S1 cell 1 (pre-reg 2026-07-28): quaternionic anti-commutant mass
 Symmetry ladder S1 cells 2-3 (pre-reg 2026-07-28): project the wfloor d256 gates onto the quaternionic commutant (deletes 75% of gate mass), gate the projected init, then warm-train 1 epoch. Arm a: lambda=0; arm b: commutation penalty summed over I,J,K, ramped 0.1->1.0. R3 recipe verbatim otherwise. Usage: ARM=a|b python scratch/quat_convert.py
 
 
+### scratch/qwen_cuda_rung0.py
+CUDA leg rung 0: toolchain + VRAM budget receipt (3080/WSL).
+
+- `add_kernel(x_ptr, y_ptr, o_ptr, n, BLOCK: tl.constexpr)`
+- `main() -> int`
+
 ### scratch/qwen_displace_extract.py
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
 
