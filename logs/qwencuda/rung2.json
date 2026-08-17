@@ -1,0 +1,33 @@
+{
+ "rung": 2,
+ "code_commit": "a5158e2",
+ "device_actual": "NVIDIA GeForce RTX 3080",
+ "artifact": "A",
+ "tensor": "model.language_model.layers.33.linear_attn.in_proj_qkv.weight",
+ "shape": [
+  10240,
+  5120
+ ],
+ "kernel_form": "fused",
+ "expanded_operand_bytes": 0,
+ "compressed_payload_bytes": 13518848,
+ "parity": {
+  "rel_err_gpu_vs_f64": 1.3817027268817505e-07,
+  "rel_err_mv32_vs_f64": 4.3577098914072847e-07,
+  "bar": 1e-05,
+  "passed": true
+ },
+ "timing": {
+  "warmup": 10,
+  "reps": 50,
+  "median_s": 7.680000364780426e-05,
+  "p10_s": 7.680000364780426e-05,
+  "p90_s": 7.782399654388428e-05,
+  "effective_compressed_bw_GBs": 176.02665830584903,
+  "resident_fp32_mv_median_s": 0.0002957600057125092
+ },
+ "env": {
+  "TORCH_DISABLE_NATIVE_JIT": "1",
+  "PYTORCH_CUDA_ALLOC_CONF": null
+ }
+}
