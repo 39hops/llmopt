@@ -336,7 +336,7 @@ Census: UNCITED 205, library 71, reproduce-pinned 10, results-cited 213, spec-ci
 | qwen | qwen_census_night.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_displace_extract.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_family_probe.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| qwen | qwen_qualify.py | spec-cited | specs | specs×1 | — | 2 |
+| qwen | qwen_qualify.py | spec-cited | specs | specs×1 | — | 4 |
 | qwen | qwen_runtime0r.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_stream_probe.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
 | qwen | qwen_teacher_pass.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -545,20 +545,20 @@ Census: UNCITED 205, library 71, reproduce-pinned 10, results-cited 213, spec-ci
 | farm | farm_v22.py | UNCITED | — | — | — | 1 |
 | figlib | figlib.py | spec-cited | specs | specs×1 | — | — |
 | gen | gen_catalog.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
-| gen | gen_codemap.py | results-cited | RESULTS, specs | RESULTS×1, specs×21 | — | 1 |
+| gen | gen_codemap.py | results-cited | RESULTS, specs | RESULTS×1, specs×21 | — | 2 |
 | gen | gen_dispatch_labels.py | UNCITED | — | — | — | 2 |
 | gen | gen_dispatch_labels_v2.py | UNCITED | — | — | — | — |
 | gen | gen_figures_web.py | spec-cited | specs | specs×1 | — | — |
 | gen | gen_frontier.py | UNCITED | — | — | — | — |
-| gen | gen_index.py | spec-cited | specs | specs×10 | — | 1 |
+| gen | gen_index.py | spec-cited | specs | specs×10 | — | 2 |
 | gen | gen_lake.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | gen | gen_magic_labels.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
 | gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | 1 |
-| gen | gen_readme.py | spec-cited | specs | specs×24 | — | 1 |
+| gen | gen_readme.py | spec-cited | specs | specs×24 | — | 2 |
 | gen | gen_receipt_lock.py | library | — | — | 1 | — |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
-| gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 4 |
+| gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 5 |
 | gen | gen_scoreboard.py | UNCITED | — | — | — | — |
 | gen | gen_syndrome_labels.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | grow | grow_mathnative.py | library | specs | specs×1 | 1 | 1 |

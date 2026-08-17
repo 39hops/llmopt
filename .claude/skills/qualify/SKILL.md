@@ -64,11 +64,10 @@ model sweep may be the FIRST test of new or copy-modified code.
   you just wrote. The oracle for repository state is the whole
   suite; a focused pass is a development convenience.
 - **CLEAN-WORKTREE CHECK before any status report**: run THE
-  single definition of green (scripts/check_all.sh — the same
-  script CI runs; never a hand-copied subset) in a detached
+  single definition of green (scripts/check_source.sh — the same script CI's tests job runs; wheel + core-deps are separate CI jobs it does not cover; never a hand-copied subset) in a detached
   worktree:
   `git worktree add /tmp/llmopt-clean HEAD && cd /tmp/llmopt-clean
-  && bash scripts/check_all.sh` (then `git worktree remove`).
+  && bash scripts/check_source.sh` (then `git worktree remove`).
 - **PRODUCER-CONSUMER RULE** (three-model review, 2026-08-17): a
   change to a data structure, a format, or an invariant names the
   code that READS it in the same commit, or it is half a fix. The

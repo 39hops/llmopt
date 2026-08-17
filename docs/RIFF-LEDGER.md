@@ -6472,6 +6472,29 @@ honest status column).
   curves spacetime, light follows geodesics) has NO lab mapping
   and is not claimed to; no physics rung fires — the lab's physics
   leg remains ZX-calculus. Testable residue: none for us —
-  astronomy's to test. Attribution: Artin (the ask, twice — the
+  astronomy's to test.
+  FENCES (Opus seat, verified citation: Rusakov, Watson et al.,
+  Nature 649, 574-579, 2026-01-14): that paper's measured MECHANISM
+  is electron-scattering broadening in dense ionized cocoons at
+  1e5-7 solar masses — the Eddington-balance STABILITY framing
+  belongs to the envelope models, not the observation; and the
+  little-red-dot population is actively contested (a 2026-07 ApJ
+  paper reframes it again). The bank is "a live thread whose
+  TOPOLOGY instantiates the riff", never a confirmation.
+  Attribution: Artin (the ask, twice — the
   original throttle question and this instantiation), house
   (Eddington mapping both times).
+  EXTENSION 2 (2026-08-17, GPT+Opus seats, same day): (a) LABELS
+  are the scarcity, so the factory goes HIERARCHICAL — a cheap
+  frozen prefix/margin micro-battery across EVERY singleton B_i,
+  stratified by apparent impact and family/layer with random
+  negatives kept, full X/K corpus evaluations spent only on a
+  PREREGISTERED subset, and the cheap-diagnostic-predicts-full-
+  damage calibration measured BEFORE expanding. (b) Hold out whole
+  LAYERS, not just random tensors — leave-one-layer-out is the
+  only test separating a learned identity table ("layer 43's
+  o_proj matters") from a transferable allocator. (c) Score
+  recovery PER MARGINAL BYTE (dX/db, dK/db), not raw sensitivity —
+  the real problem is constrained rate-distortion, and a tensor
+  that helps a lot for many bytes can lose to one that helps less
+  for almost none.

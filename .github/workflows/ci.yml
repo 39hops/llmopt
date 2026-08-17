@@ -39,9 +39,9 @@ jobs:
           pip install -e . --no-deps
           pip install ruff
       - name: check_all (the single definition of green)
-        # scripts/check_all.sh is the producer; this job and the
+        # scripts/check_source.sh is the producer; this job and the
         # /qualify clean-worktree ritual are both consumers
-        run: bash scripts/check_all.sh
+        run: bash scripts/check_source.sh
       - name: coverage by subpackage
         # numbers first, ratchets later: no threshold gate, just a
         # per-subpackage table so lab at 20/20 test files and search

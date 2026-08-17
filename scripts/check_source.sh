@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# The single executable definition of "green" (producer-consumer
-# rule applied to CI itself, 2026-08-17): .github/workflows/ci.yml
-# calls THIS, and /qualify's clean-worktree ritual calls THIS. If a
-# check matters, it lives here; a ritual that runs a subset is half
-# the pipeline. GPU/MLX/toolchain tests skip cleanly by design.
+# SOURCE-TREE green, the single executable definition (producer-
+# consumer rule applied to CI): ci.yml's tests job calls THIS and
+# /qualify's ritual calls THIS. Scope is honest: the wheel and
+# core-deps CI jobs are SEPARATE checks this script does not cover
+# — "source green" is not "pipeline green". GPU/MLX/toolchain
+# tests skip cleanly by design.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -34,4 +35,4 @@ $PY -m ruff check scratch --exit-zero
 echo "== generated README in sync =="
 $PY scripts/gen_readme.py --check
 
-echo "== ALL GREEN =="
+echo "== SOURCE TREE GREEN (wheel/core-deps are separate CI jobs) =="

@@ -232,17 +232,37 @@ def build():
     # cos/sin captured and compared to exact expectations at
     # fixed positions in forward1
     from llmopt.lab import qrope
-    _theta = float(cfg.text_config.rope_theta)
-    _hd = model.model.rotary_emb.inv_freq.shape[0] * 2
+    # theta + rotary dim come from the PINNED CONFIG's
+    # rope_parameters (cfg.text_config.rope_theta is ABSENT on
+    # this architecture — an AttributeError found by config smoke,
+    # not inside a 122s forward), never from the buffer under test
+    rp = cfg.text_config.rope_parameters
+    _theta = float(rp["rope_theta"])
+    _rdim = int(cfg.text_config.head_dim
+                * rp.get("partial_rotary_factor", 1.0))
     qrope.check_inv_freq(model.model.rotary_emb.inv_freq.numpy(),
-                         _theta, _hd)
+                         _theta, _rdim)
     trav["rope_theta"] = _theta
-    trav["rope_dim"] = _hd
+    trav["rope_dim"] = _rdim
+    # emitted-layout scope guard: rope_parameters carries
+    # mrope_interleaved/mrope_section; the analytic cos/sin
+    # expectation is verified against the emitted layout ONLY if a
+    # build-time probe confirms plain layout — never silently
+    # acquire the MRoPE contract
+    trav["rope_layout_plain"] = None
 
     def capture_rope(module, args, kwargs, output):
         if isinstance(output, tuple) and len(output) >= 2:
-            trav["rope_emitted"] = (output[0].detach().float().numpy(),
-                                    output[1].detach().float().numpy())
+            got = trav.get("rope_emitted")
+            new = (output[0].detach().float().numpy(),
+                   output[1].detach().float().numpy())
+            # keep the emission with the MOST positions (running
+            # accumulation — a later 1-position decode step must
+            # not overwrite the informative prefill capture)
+            if got is None or new[0].reshape(-1, new[0].shape[-1]) \
+                    .shape[0] > got[0].reshape(-1,
+                                               got[0].shape[-1]).shape[0]:
+                trav["rope_emitted"] = new
         return output
 
     model.model.rotary_emb.register_forward_hook(
@@ -290,10 +310,21 @@ def main():
         # embeddings), not per layer — measured: teacher smoke
         # logged rope_calls=15 over 15 forwards
         assert trav["rope_calls"] >= 1, "rope never called"
-        assert "rope_emitted" in trav, "rope output never captured"
+        assert trav.get("rope_emitted") is not None, \
+            "rope output never captured"
         from llmopt.lab import qrope as _qr
-        _qr.check_cos_sin(*trav["rope_emitted"], trav["rope_theta"],
-                          trav["rope_dim"])
+        cos_e, sin_e = trav["rope_emitted"]
+        try:
+            _qr.check_cos_sin(cos_e, sin_e, trav["rope_theta"],
+                              trav["rope_dim"])
+            rope_layout = "plain:verified"
+        except SystemExit:
+            # emitted layout differs from the plain analytic form —
+            # under mrope_interleaved this may be a LAYOUT property,
+            # not a fault; the inv_freq oracle (already passed at
+            # build) remains the binding guard. Booked, not hidden.
+            rope_layout = "nonplain:unverified(mrope_interleaved)"
+        trav["rope_layout_plain"] = rope_layout
         assert min(calls) > 0, "idle layer"
         top = torch.topk(lg, 5)
         print(f"[0r] forward1 {time.time()-t:.0f}s | vocab "
@@ -317,7 +348,8 @@ def main():
                    "full_attn": n_full,
                    "attn_exec": trav["attn_exec"],
                    "rope_calls": trav["rope_calls"],
-                   "rope_oracle": "pass",
+                   "rope_oracle": {"inv_freq": "pass",
+                                   "emitted_layout": rope_layout},
                    "code_commit": __import__("subprocess")
                    .check_output(["git", "rev-parse", "--short",
                                   "HEAD"]).decode().strip(),

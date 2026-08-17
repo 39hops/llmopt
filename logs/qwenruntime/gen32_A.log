@@ -1,0 +1,11 @@
+[0r] qualified: {'art_dir': '/home/a/qwen_whole0t/A', 'rung0': {'checked': 19, 'unchained': False}, 'conservation': {'keys': 1199}, 'census': {'w4': 402, 's16': 0, 'raw': 449, 'excluded': 348}, 'preflight': {'estimated_peak_bytes': 5869238016, 'available_bytes': 13471633408, 'safety_fraction': 0.8}}
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[0r] built from /home/a/qwen_whole0t/A in 1s
+/home/a/code/llmopt/.venv/lib/python3.12/site-packages/transformers/generation/utils.py:2613: UserWarning: You are calling .generate() with the `input_ids` being on a device type different than your model's device. `input_ids` is on cpu, whereas the model is on meta. You may experience unexpected behaviors or slower generation. Please make sure that you have put `input_ids` to the correct device by calling for example input_ids = input_ids.to('meta') before running `.generate()`.
+  warnings.warn(
+/home/a/code/llmopt/scratch/qwen_runtime0r.py:246: UserWarning: std(): degrees of freedom is <= 0. Correction should be strictly less than the reduction factor (input numel divided by output numel). (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/ReduceOps.cpp:1861.)
+  trav["rope_cos_std"] = float(cos.float().std(dim=-2).mean())
+[0r] 32 tokens in 3752s (117.3s/tok)
+[0r] PROMPT: The capital of France is
+[0r] OUTPUT: The user is asking a factual question: "The capital of France is". This is a straightforward geography question. The answer is Paris. I should provide a concise
