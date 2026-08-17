@@ -433,8 +433,13 @@ def main():
         # per-layer decode (kernel_form unchanged). Prefill+decode
         # reported separately per the registered protocol.
         if CPU_REF:
+            # the cuda model was torn down for the reference lane;
+            # rebuild it (payloads re-upload, ~2s)
             del model_c
-        model, trav, _ = build("cuda")
+            model, trav, _ = build("cuda")
+        # else: REUSE the live cuda model — a second build would
+        # double the resident payloads (~13 GiB) and drive WSL into
+        # host-memory oversubscription (measured: gen hung >10 min)
         torch.cuda.synchronize()
         tg = time.time()
         out_ids = model.generate(
