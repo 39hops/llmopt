@@ -69,9 +69,18 @@ def build() -> dict:
     out = {}
     for rel, src in sorted(cited_paths().items()):
         p = ROOT / rel
-        rec = ({"exists": True, "sha256": sha256(p),
-                "bytes": p.stat().st_size}
-               if p.is_file() else {"exists": False})
+        if not p.is_file():
+            rec = {"exists": False}
+        elif src == "prereg":
+            # a prereg-DECLARED receipt whose run may still be
+            # WRITING: record presence, do not freeze bytes — the sha
+            # locks when the booking makes the path results-cited
+            # (caught live 2026-08-16: the lock sha'd run_0s.log
+            # mid-run and the invariant fired on the growing file)
+            rec = {"exists": True, "pending": True}
+        else:
+            rec = {"exists": True, "sha256": sha256(p),
+                   "bytes": p.stat().st_size}
         rec["source"] = src
         out[rel] = rec
     return out
@@ -89,7 +98,9 @@ def main() -> int:
 
     changed = [k for k, v in fresh.items()
                if k in old and old[k].get("exists")
-               and (not v.get("exists") or v.get("sha256") != old[k].get("sha256"))]
+               and old[k].get("sha256")
+               and (not v.get("exists")
+                    or v.get("sha256") != old[k].get("sha256"))]
     if changed and not a.accept:
         print("REFUSING: locked receipts changed or vanished — a NEW run "
               "belongs at a NEW path.\n  " + "\n  ".join(changed))

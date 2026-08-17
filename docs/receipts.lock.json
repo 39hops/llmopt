@@ -448,19 +448,18 @@
    "source": "results"
   },
   "logs/streamwd/run_0s.log": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/streamwd/run_B1.log": {
-   "bytes": 2585,
    "exists": true,
-   "sha256": "5bd105fe521528fc520c9902b5004cfd93928ac7619b882beb4beba170e15550",
+   "pending": true,
    "source": "prereg"
   },
   "logs/streamwd/run_B1_repair.log": {
-   "bytes": 2874,
    "exists": true,
-   "sha256": "3444d877702ef86407ee5efe03a563c1688fe6d006f759f7e178e0bfd313ead2",
+   "pending": true,
    "source": "prereg"
   },
   "logs/xtermdiet1/arms.jsonl": {

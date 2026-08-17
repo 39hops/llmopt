@@ -33,12 +33,26 @@ the law as code:
    `scripts/gen_receipt_lock.py` directly — no prose scraping, so
    bare filenames cannot slip through (the known item-2 gap).
 
-3. **At verdict time**: write the observations JSON (measurement
-   validity + per-arm admissibility WITH reasons + measured metrics)
-   and run
+3. **At verdict time — NEVER hand-write observations when a
+   receipt adapter exists.** For 0S the closed path is:
 
+       .venv/bin/python scripts/obs_from_receipt_0s.py \
+           logs/streamwd/pass0s_B1.jsonl > obs.json
        .venv/bin/python scripts/adjudicate.py \
-           docs/preregs/<name>.json <observations.json>
+           docs/preregs/stream-wdistill-0s.json obs.json
+
+   The adapter derives every measurement (S-best selection, all
+   relative gains, the BAR 3 twin conjuncts) from the receipt row in
+   committed code, refuses smoke rows / partial populations / WALLED
+   arms, and emits FAIL-CLOSED contrast statuses. New rungs write
+   their own adapter alongside the driver, before the run fires.
+   Hand-authored observations are for rungs with no adapter only —
+   that seam is where transcription errors live.
+   Observations may carry `contrasts` ({bar: {admissible, reason}})
+   for RELATIONAL defects neither arm owns, and bars may declare
+   `conjuncts` (compound predicates that must all hold to FIRE —
+   BAR 3's "beats the mean AND all three twins" is expressed this
+   way, not checked manually).
 
    Exit 0 = every bar FIRE/NO-FIRE. Exit 2 = at least one
    UNRESOLVED (book it honestly with its reason chain). A

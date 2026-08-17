@@ -60,7 +60,13 @@ def observations(row: dict) -> dict:
         if not ok:
             rec.update(admissible=False,
                        reason=f"{a} over budget at realized bytes")
-        if a in walled or any(w.startswith(a) for w in walled):
+        # EXACT membership only (pre-look fix, external review
+        # 2026-08-16): tag.split("/")[0] already IS the physical arm
+        # name, and a prefix test made a walled W32-shuf twin poison
+        # natural W32 — conservative, but it erases an evaluable
+        # outcome. The three twins still collapse into the W32-shuf
+        # logical arm through the shared rec above.
+        if a in walled:
             rec.update(admissible=False,
                        reason=f"{a} codebook walled: partial stack")
     op = row["operator_layer"]
@@ -86,7 +92,16 @@ def observations(row: dict) -> dict:
         meas[f"3:twin{s}"] = dict(
             M, value=(t - op["W32"]) / t,
             provenance=f"(twin{s} {t:.6f} - W32 {op['W32']:.6f})/twin")
+    # contrasts FAIL-CLOSED: every bar gets an explicit status; the
+    # adjudicator treats an absent entry as no-registered-defect, so
+    # the adapter states admissibility positively instead of by
+    # omission (external review: absence should not mean success).
+    contrasts = {b: {"admissible": True,
+                     "reason": "same run, same byte convention, "
+                               "same seeded probes"}
+                 for b in ("1", "2", "3")}
     return {"measurement_valid": True, "arms": arms,
+            "contrasts": contrasts,
             "measurements": meas,
             "receipt": {"code_commit": row.get("code_commit"),
                         "revision": row.get("revision"),

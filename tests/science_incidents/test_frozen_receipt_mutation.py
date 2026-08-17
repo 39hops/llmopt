@@ -50,8 +50,8 @@ def test_locked_receipts_are_unchanged():
     """
     drift = []
     for rel, rec in _locked().items():
-        if not rec.get("exists"):
-            continue
+        if not rec.get("exists") or "sha256" not in rec:
+            continue          # prereg-pending: run may still be writing
         p = ROOT / rel
         if not p.is_file():
             drift.append(f"{rel}: VANISHED since it was locked")

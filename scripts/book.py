@@ -236,15 +236,33 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--links", default="",
                     help="comma-separated related entry ids")
     ap.add_argument("--fence-acknowledged", action="store_true")
+    ap.add_argument("--prereg", default=None,
+                    help="docs/preregs/<name>.json — REQUIRED for a "
+                         "verdict on a machine-preregistered rung; arms "
+                         "the adjudication-aware claim lint")
+    ap.add_argument("--obs", default=None,
+                    help="observations JSON (with --prereg; prefer a "
+                         "receipt adapter's output over hand-authoring)")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args(argv)
 
     marker = validate_marker(Path(a.marker))
     entry = Path(a.entry).read_text()
     # claim lint is a booking invariant, not just the /book ritual
-    # (external review 2026-08-16: the programmatic path bypassed it)
+    # (external review 2026-08-16: the programmatic path bypassed it,
+    # and without --prereg/--obs only the weak layers ran — prose
+    # could still contradict the adjudicator)
     from llmopt.lab.claimlint import lint_text
-    errors = [f for f in lint_text(entry) if f.severity == "ERROR"]
+    outcomes = None
+    if a.prereg:
+        if not a.obs:
+            raise Refusal("--prereg requires --obs")
+        import json as _json
+        from llmopt.lab.prereg import adjudicate_prereg, load as _load
+        outcomes = adjudicate_prereg(
+            _load(a.prereg), _json.loads(Path(a.obs).read_text()))
+    errors = [f for f in lint_text(entry, outcomes)
+              if f.severity == "ERROR"]
     if errors:
         for f in errors:
             print(f"CLAIM-LINT ERROR L{f.line} [{f.rule}] "

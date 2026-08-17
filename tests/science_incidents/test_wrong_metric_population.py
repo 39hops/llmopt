@@ -110,3 +110,13 @@ def test_unit_mismatch_is_refused():
     with pytest.raises(MetricContractError) as e:
         _ = a - b
     assert e.value.reason == UNIT_MISMATCH
+
+
+def test_descriptive_escape_hatch_still_requires_units():
+    """The hatch relaxes population, never dimension."""
+    from llmopt.lab.metrics import UNIT_MISMATCH
+    a = Metric(1.0, "wall", "run:0", "sum", unit="seconds")
+    b = Metric(1.0, "wall", "run:1", "sum", unit="bytes")
+    with pytest.raises(MetricContractError) as e:
+        cross_population_difference(a, b, purpose="descriptive")
+    assert e.value.reason == UNIT_MISMATCH

@@ -25,7 +25,7 @@ table below is derived from the suite rather than claimed.
 | moving_revision_literal | yes | partial (sha-pinned URL) | pending | PARTIAL |
 | ternary_in_2bit_field | yes | pending | pending | PROMOTED |
 | false_only_contrast | yes | pending | pending | PROMOTED |
-| cited_receipt_never_committed | yes | receipt-lock ratchet (7) | yes | GRADUATED |
+| cited_receipt_never_committed | yes | identity ratchet (7 pinned legacy paths) + lock-coverage equality | yes | GRADUATED |
 | stale_results_anchor | yes | `tests/test_docs_integrity.py` | n/a (post-hoc) | PARTIAL |
 | inherited_emitter_label | yes | partial | pending | PARTIAL |
 
@@ -41,13 +41,16 @@ hook), and counting `settings.json` entries undercounts (it is
 invoked by `ledger_regen.py`). Status above tracks the invariant,
 not the file.
 
-## Known gap in the receipt lock (recorded, not patched)
+## Receipt-lock lineage note (kept for provenance)
 
-Citations are scraped from prose, so a receipt cited as a **bare
-filename** is invisible to both the lock and `receipt_freeze.py`.
-RESULTS L31402 cites `"logs/streamwd/pass12_B1.jsonl, run_B1.log"` —
-the second has no path prefix and is therefore unprotected. A
-bare-filename matcher would false-positive on ordinary prose, so
-the real fix is **structured receipt references** (the
-machine-readable pre-reg work), not a better regex. This is the
-concrete argument for that item rather than a defect to hide.
+The lock originally scraped citations from prose only, so a receipt
+cited as a **bare filename** (RESULTS L31402's `run_B1.log`) was
+invisible to it. That gap CLOSED 2026-08-16 when structured receipt
+references landed: `docs/preregs/*.json` declare exact paths and
+feed the same lock, and `run_B1.log` is now content-addressed. The
+count ratchet was likewise upgraded to an IDENTITY ratchet (the
+seven legacy absent paths pinned by name) plus a coverage test
+(lock keys must equal the recomputed citation set). Prereg-declared
+receipts stay PENDING (existence only) until their booking makes
+them results-cited — the sha freezes at booking, never while a run
+is still writing the file.

@@ -143,6 +143,11 @@ def cross_population_difference(a: Metric, b: Metric,
     if a.metric != b.metric:
         raise MetricContractError(
             METRIC_MISMATCH, f"{a.metric!r} v {b.metric!r}")
+    if a.unit != b.unit:
+        # the escape hatch relaxes POPULATION, not dimension —
+        # seconds minus bytes is nonsense even descriptively
+        raise MetricContractError(
+            UNIT_MISMATCH, f"{a.unit!r} v {b.unit!r}")
     return DescriptiveContrast(a.value - b.value, a, b, purpose)
 
 
