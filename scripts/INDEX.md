@@ -2880,6 +2880,14 @@ QWEN-STREAM-PROBE-0: does the 0S codec ranking transport to a DENSE model's FFN?
 - `op_parts(D, W, seed)`
 - `main()`
 
+### scratch/qwen_whole0t.py
+QWEN-WHOLE-0T compiler (PRE-REG RESULTS L32776 + -0T-ARMS).
+
+- `classify(name, shape)` — -> (family, {arm: codec}) per the frozen role/rate tables.
+- `enc_w4(W, name)` — Per-tensor W4: returns (payload bytes, recon fn parts, meta).
+- `enc_s16(W, name)`
+- `main()`
+
 ### scratch/rank_read.py
 Rank read (pre-reg 2026-07-29: attention anatomy 1b). SVD of all qkv/o weights of the d56 EMA crystal: singular-value decay, then truncation gates at rank r in {48,32,24,16}. Desk only, MPS.
 

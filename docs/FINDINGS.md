@@ -2261,3 +2261,13 @@ regime tag on every bullet is the fence.
   functional eval can refine. Descriptive, one layer per attention
   family, weight space only.
   ([OBSERVATION QWEN-FAMILY-PROBE-0](RESULTS.md#L32729 "id:2026-08-17-observation-qwen-family-probe-0-weight").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts]
+  The scalar-alphabet flip between models is a stored-distribution
+  effect, measured on both sides: V4's dequantized-MXFP4 experts
+  hold 64% of block-normalized mass below 1/3 (17.7% below 0.1)
+  where Qwen's raw bf16 holds 80-84% (32-35%) — vendor
+  quantization shapes what a fixed alphabet sees, so alphabets are
+  re-derived per tensor (S2-DP). Desk census, 8 experts v 9
+  tensors, mass fractions only.
+  ([OBSERVATION SCALAR-MASS-CENSUS-0](RESULTS.md#L32871 "id:2026-08-17-observation-scalar-mass-census-0-the").)

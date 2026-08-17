@@ -32867,3 +32867,22 @@ scored on A v B v C = the first measured
 functional-quality-vs-bytes curve, replacing the allocation
 guess. Disk: three artifacts ~23 GiB total + one transient source
 shard, inside the 3080's ~200 GB.
+
+## OBSERVATION SCALAR-MASS-CENSUS-0: the scalar-ladder flip is a storage-format distribution effect, now measured on BOTH sides — V4's dequantized MXFP4 experts hold 64% of normalized mass below 1/3 where Qwen's raw bf16 holds 80-84% (2026-08-17, Mac, desk)
+
+Closing datum for the QWEN-FFN-CENSUS-0 mechanism (Artin GO
+04:18). Same E8M0 round-up block-128 normalization on both sides.
+V4-Flash layer 22, experts 0-7, all three projections (24 tensors,
+201.3M weights, dequantized MXFP4, computed from the Mac-cached
+pinned shard):
+  mass |w| < 1/3 : 0.641     Qwen (bf16, 9 tensors): 0.80-0.84
+  mass |w| < 0.1 : 0.177     Qwen: 0.32-0.35
+Reading: Qwen's raw-bf16 blocks carry roughly TWICE the near-zero
+concentration; V4's vendor FP4 grid parks ~36% of mass at or
+beyond 1/3 of block max — exactly where uniform-4's +-1/3/+-1
+levels sit, which is why U4 beat ternary there and loses on Qwen.
+The alphabet result is a property of the STORED distribution
+(vendor quantization included), not of architecture — supporting
+the booked per-tensor S2-DP rule. FENCES: desk arithmetic on 8 of
+256 experts one layer (V4) v 9 tensors (Qwen); mass fractions
+only; no new codec measurement.
