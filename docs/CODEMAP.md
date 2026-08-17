@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 205, library 71, reproduce-pinned 10, results-cited 213, spec-cited 87, cited-but-library 59
+Census: UNCITED 206, library 71, reproduce-pinned 10, results-cited 214, spec-cited 86, cited-but-library 59
 
 ## scratch/
 
@@ -334,9 +334,10 @@ Census: UNCITED 205, library 71, reproduce-pinned 10, results-cited 213, spec-ci
 | quat | quat_convert.py | library | RESULTS, specs | RESULTS×1, specs×1 | 1 | — |
 | quick | quick_exact_3080.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | qwen | qwen_census_night.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| qwen | qwen_cuda_rung0.py | UNCITED | — | — | — | — |
 | qwen | qwen_displace_extract.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_family_probe.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| qwen | qwen_qualify.py | spec-cited | specs | specs×1 | — | 4 |
+| qwen | qwen_qualify.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 4 |
 | qwen | qwen_runtime0r.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_stream_probe.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
 | qwen | qwen_teacher_pass.py | results-cited | RESULTS | RESULTS×1 | — | — |

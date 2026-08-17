@@ -1,0 +1,20 @@
+{
+ "rung": 0,
+ "code_commit": "eb386df",
+ "device_actual": "NVIDIA GeForce RTX 3080",
+ "driver_capability": [
+  8,
+  6
+ ],
+ "torch_version": "2.13.0+cu130",
+ "cuda_version": "13.0",
+ "triton_version": "3.7.1",
+ "wsl": true,
+ "vram_total_bytes": 10736893952,
+ "vram_free_at_start_bytes": 9511632896,
+ "triton_add_bit_exact": true,
+ "env": {
+  "TORCH_DISABLE_NATIVE_JIT": "1",
+  "PYTORCH_CUDA_ALLOC_CONF": null
+ }
+}
