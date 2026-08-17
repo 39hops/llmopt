@@ -100,33 +100,60 @@ def build():
                 torch.nn.Parameter(decode(shard_key(nm)),
                                    requires_grad=False))
 
-    def dec16(key):
-        # fp16 residency must be PROVEN lossless on the actual
-        # tensor, not argued from representability: exact
-        # fp32 -> fp16 -> fp32 round-trip equality is the oracle.
-        # On failure the storage is fp16-APPROXIMATED and says so.
-        W32 = decode(key)
-        W16 = W32.to(torch.float16)
-        if not torch.equal(W32, W16.float()):
-            bad = int((W32 != W16.float()).sum())
-            raise SystemExit(
-                f"REFUSING: fp16 residency NOT lossless for {key} "
-                f"({bad}/{W32.numel()} entries change) — a reference "
-                f"runtime never runs on altered weights")
-        return W16
+    # io tensors stay COMPRESSED in RAM (~650MB each) and decode
+    # ROWS on demand in exact fp32 — the fp16-residency shortcut
+    # was REFUSED by its own oracle (569841/1.27B embed entries
+    # fall in the fp16 subnormal tail and change; measured
+    # 2026-08-17). Row slicing is exact because blocks align to
+    # rows: C columns = C/128 blocks/row, C/4 w4 index bytes/row.
+    class W4Rows:
+        def __init__(self, key):
+            e = MAN[key]
+            assert e["codec"] == "w4", f"{key} not w4"
+            self.R, self.C = e["shape"]
+            buf = _payload(e)
+            nb = (self.R * self.C) // 128
+            self.exps = np.frombuffer(buf, np.uint8, nb, 0)
+            self.cb = np.frombuffer(buf, np.float16, 1024, nb) \
+                .reshape(256, 4).astype(np.float32)
+            self.idx = np.frombuffer(buf, np.uint8,
+                                     (self.R * self.C) // 4, nb + 2048)
 
-    emb16 = dec16("model.language_model.embed_tokens.weight")
-    head16 = dec16("lm_head.weight")
+        def rows(self, lo, hi):
+            bpr = self.C // 128
+            sc = np.exp2(self.exps[lo * bpr:hi * bpr]
+                         .astype(np.int32) - 127).astype(np.float32)
+            ix = self.idx[lo * self.C // 4:hi * self.C // 4]
+            Wn = self.cb[ix].reshape(-1, 128)
+            return torch.from_numpy(
+                (Wn * sc[:, None]).reshape(hi - lo, self.C))
+
+    # row-decoder exactness oracle: full canonical decode of the
+    # smallest w4 tensor must equal its own row-sliced decode
+    probe_key = min((k for k, e in MAN.items() if e["codec"] == "w4"),
+                    key=lambda k: MAN[k]["shape"][0] * MAN[k]["shape"][1])
+    pv = W4Rows(probe_key)
+    if not torch.equal(decode(probe_key), pv.rows(0, pv.R)):
+        raise SystemExit("REFUSING: W4Rows disagrees with canonical "
+                         f"decode on {probe_key}")
+
+    emb = W4Rows("model.language_model.embed_tokens.weight")
+    head = W4Rows("lm_head.weight")
 
     def emb_fwd(input_ids):
-        return torch.nn.functional.embedding(input_ids, emb16).float()
+        flat = input_ids.reshape(-1)
+        out = torch.empty(flat.shape[0], emb.C)
+        for j, t in enumerate(flat.tolist()):
+            out[j] = emb.rows(t, t + 1)[0]
+        return out.reshape(*input_ids.shape, emb.C)
 
     model.model.embed_tokens.forward = emb_fwd
 
     def head_fwd(x):
         outs = []
-        for lo in range(0, head16.shape[0], 16384):
-            outs.append(x @ head16[lo:lo + 16384].float().T)
+        for lo in range(0, head.R, 16384):
+            hi = min(lo + 16384, head.R)
+            outs.append(x @ head.rows(lo, hi).T)
         return torch.cat(outs, -1)
 
     model.lm_head.forward = head_fwd
