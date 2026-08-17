@@ -108,6 +108,7 @@ def build_streamed_model():
     iv = model.model.rotary_emb.inv_freq
     if float(iv.abs().sum()) == 0.0:
         raise SystemExit("REFUSING: rotary inv_freq is all-zero")
+    globals()["_INV_FREQ_ABS_SUM"] = float(iv.abs().sum())
     layers = model.model.layers
 
     def make_pre(i):
@@ -176,7 +177,20 @@ def main():
     model, trav = build_streamed_model()
     commit = subprocess.check_output(
         ["git", "rev-parse", "--short", "HEAD"]).decode().strip()
+
+    def fsha(p):
+        return hashlib.sha256(open(p, "rb").read()).hexdigest()
+
+    # input digests as receipt FIELDS (-PROTOCOL rule 4): the eval
+    # payload and the vendor shard index the pass actually opened
     man = {"revision": REVISION, "code_commit": commit, "smoke": SMOKE,
+           "inputs": {
+               "corpus_sha256": fsha(os.path.join(EV, "corpus.txt")),
+               "prefixes_sha256": fsha(os.path.join(EV, "prefixes.jsonl")),
+               "prompts_sha256": fsha(os.path.join(EV, "prompts.jsonl")),
+               "shard_index_sha256": fsha(os.path.join(
+                   VDIR, "model.safetensors.index.json")),
+               "inv_freq_abs_sum": globals().get("_INV_FREQ_ABS_SUM")},
            "records": {}}
 
     def fwd(ids):
@@ -260,24 +274,35 @@ def main():
         toks = seq[b].tolist()
         if eos in toks:
             toks = toks[:toks.index(eos) + 1]
-        rollout_rows.append({"prompt": r["prompt"],
-                             "category": r.get("category"),
+        rollout_rows.append({"prompt": r["prompt"], "id": r["id"],
+                             "category": r["cat"],
                              "tokens": toks,
                              "text": tok.decode(toks,
                                                 skip_special_tokens=True)})
     with open(os.path.join(OUT, "rollout_tokens.jsonl"), "w") as f:
         for row in rollout_rows:
             f.write(json.dumps(row) + "\n")
-    man["records"]["rollouts"] = {"n_prompts": len(prows),
-                                  "steps": int(rl.shape[0]),
-                                  "shape": list(rl.shape),
-                                  "sha256": sha(rl)}
+    # the full batch context (B1, scorer scout): rollout logits are a
+    # function of the exact padded batch — record it so the arm can
+    # replay the identical batch and so post-EOS steps are maskable
+    man["records"]["rollouts"] = {
+        "n_prompts": len(prows), "steps": int(rl.shape[0]),
+        "shape": list(rl.shape), "sha256": sha(rl),
+        "prompt_ids": [r["id"] for r in prows],
+        "input_ids": enc["input_ids"].tolist(),
+        "attention_mask": enc["attention_mask"].tolist(),
+        "gen_lengths": [len(row["tokens"]) for row in rollout_rows],
+        "padding_side": "left"}
     # TRAVERSAL GATE: refuse the lock unless every layer ran and
     # every registered family (incl. the RoPE path) was exercised
     calls = trav["layer_calls"]
     fams = trav["families"]
-    n_lin = sum(1 for f in fams if f == "linear_attn")
-    n_full = sum(1 for f in fams if f == "full_attn")
+    # EXECUTED census: family membership AND a nonzero call count
+    # (a structural count alone would assert execution it never saw)
+    n_lin = sum(1 for i, f in enumerate(fams)
+                if f == "linear_attn" and calls[i] > 0)
+    n_full = sum(1 for i, f in enumerate(fams)
+                 if f == "full_attn" and calls[i] > 0)
     idle = [i for i, c in enumerate(calls) if c == 0]
     if idle:
         raise SystemExit(f"REFUSING LOCK: layers never executed: "
@@ -285,8 +310,9 @@ def main():
     if not SMOKE and (n_lin, n_full) != (48, 16):
         raise SystemExit(f"REFUSING LOCK: family census "
                          f"lin={n_lin} full={n_full}, expected 48/16")
-    if trav["rope_calls"] == 0:
-        raise SystemExit("REFUSING LOCK: rotary path never called")
+    if trav["rope_calls"] < max(n_full, 1):
+        raise SystemExit(f"REFUSING LOCK: rope_calls "
+                         f"{trav['rope_calls']} < full-attn count")
     man["traversal"] = {
         "layers_executed": len(calls),
         "linear_attn_layers_executed": n_lin,
