@@ -6236,3 +6236,49 @@ honest status column).
   explicit in the WHOLE-0T pre-reg, never a silent drop.
   Attribution: Artin (ask, framing, GO), GPT seat (program), house
   (fences, instruments).
+
+- **BANKED (2026-08-17): the Qwen runtime program — CPU reference
+  oracle, Metal direct-W4 as the Mac leg, CUDA direct-W4 as the
+  3080 leg, and precision-as-escalation reusing the closed Ozaki
+  lineage** (Artin: the MPS ask and CPU interest; GPT seat: the
+  three-path ladder, the teacher-baseline freeze catch, and the
+  no-new-Ozaki correction after the house pointed at the closed
+  work; house: verification against the ledger).
+  The mapping: three execution paths against one ~7.x GiB
+  compressed artifact — QWEN-RUNTIME-0R (slow portable CPU decode,
+  the does-it-talk oracle), Metal direct-W4 GEMV (36GB unified
+  memory, llmopt/kernels/metal.py lineage), CUDA direct-W4 (hard
+  10GB residency). Oracle ladder: each faster backend scores
+  against the frozen CPU reference, all against ONE immutable
+  teacher-logit baseline produced by a single streamed vendor CPU
+  pass (procedure frozen in evals/qwen_model1/SPEC.md before any
+  artifact exists — without it MODEL-1 would freeze a KL test it
+  cannot compute on the target hardware). Headline metric beyond
+  tok/s: effective compressed-weight bandwidth (bytes touched/token
+  x tok/s).
+  Measured anchors: Ozaki/exactness lineage CLOSED on CUDA
+  (scratch/ozaki_* family; int8-sliced exact beats native fp64 —
+  CLAUDE.md precision doctrine); Metal side: exact integer carrier
+  proven, exact_gemm correctness built with NO Mac wall number,
+  fp32-limb Metal GEMM NOT BUILT, M-series exposes no integer
+  simdgroup MMA (RIFF fp32-limb bank, 2026-08-10).
+  Honest breaks: W4 inference does NOT want exact arithmetic as
+  baseline — the compression error (~0.34 relative weight-space)
+  dominates fp32 rounding by orders of magnitude, so exactness is
+  an ESCALATION/ORACLE tool (backend-KL divergence triggers the
+  ladder: higher accumulator -> exact carrier -> tiled
+  exact_gemm/fp32-limb), per the standing doctrine that exact
+  arithmetic is a speed/determinism lever, not capability. The
+  Ozaki-W4 "synthesis" (codebooks in integer-carrier-friendly
+  form) is a named idea with zero measurement, parked until the
+  model talks. Hybrid CPU+GPU offload for a 10GB overflow: never
+  auto-offload per-token weight traffic over PCIe; profile
+  embeddings and LM head independently (head is a full matmul per
+  token, "same shape as embeddings" is not a placement argument).
+  Testable residue: (1) RUNTIME-0R coherent-generation YES/NO;
+  (2) per-backend KL v the CPU reference (the escalation trigger);
+  (3) effective-bandwidth comparison Mac-Metal v 3080-CUDA on one
+  format; (4) the banked Metal exact leg finally getting its
+  consumer.
+  Attribution: Artin (MPS/CPU direction), GPT seat (program +
+  self-correction), house (ledger verification, fences).
