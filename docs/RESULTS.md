@@ -33273,3 +33273,69 @@ tree measurement (chat reads never gate). Plus a round-trip codec
 fixture: re-encode one tensor from vendor bytes with the frozen
 encoders, decode, assert payload bit-identity — catches nibble
 order, codebook offset, and exponent-bias bugs at zero model cost.
+
+## AMENDMENT QWEN-MODEL1-TREE-PRIORS (amends PRE-REG QWEN-MODEL1-TREE): historical priors registered prospectively (D>E from STAR-PROFILE; T1 confidence lowered), CE-fidelity wording law, two metric-amendment narrowings, the margin-stratified flip diagnostic, and the cached-rollout sidecar gate (2026-08-17, mac)
+
+GPT seat FINDINGS sweep (relayed by Artin 14:36), verified against
+the ledger in-house. All registered BEFORE the teacher locks and
+before any scorer code exists.
+
+(1) HISTORICAL D/E PREDICTION, made prospective: STAR-PROFILE-1/2
+(house crystals, RESULTS L25772/L25979) measured post-hoc
+ternarization anatomy — output head + norms FREE, input embedding
+-27 of 65 solves at the same parameter share, attention ~4x FFN
+per-param fragility across the width ladder. Registered now, before
+any D/E artifact exists: IF T1 fires, the historical prior predicts
+D (embed repaired) > E (head repaired) in functional recovery.
+Fences: house crystals, ternary not W4, d64-d512 not 27B —
+directional prior only, transported as a PREDICTION to be scored,
+never as evidence.
+(2) T1 PRIOR CONFIDENCE LOWERED medium -> weak/medium: the same
+anatomy is a measured case of weight-space homogeneity coexisting
+with FUNCTIONAL heterogeneity (attention 4x FFN fragility that no
+weight metric predicted) — which weakens "C adds little" for the
+same reason it supports the D/E split. C winning would rhyme with
+lab history, not surprise it.
+(3) WORDING LAW for any tree booking: MODEL-1's core is
+teacher-DISTRIBUTION fidelity (excess CE + forward KL). The width
+ladder measured CE improving monotonically after gate capability
+saturated (LOSS-FLOOR lineage), so a T1/T2 fire books as "extra
+precision materially improves teacher-distribution fidelity" —
+never auto-promoted to "improves capability". The free-generation
+sanity read stays a read.
+(4) TWO NARROWINGS of -TREE-METRIC: (a) "reverse KL is
+systematically smaller for a quantized student" is RETRACTED — no
+such theorem; either direction can be larger. The registered
+rationale for forward KL stands on the correct ground: it weights
+errors by teacher probability mass, the desired asymmetry for
+fidelity. Direction pin unchanged. (b) The trigger floor field is
+renamed fp16_record_sensitivity_floor: the +-1ulp re-quantization
+is a sensitivity envelope around the stored record, not a
+measurement of the discarded fp32 rounding error (the fp32 logits
+no longer exist). The 5x fence is unchanged.
+(5) MARGIN-STRATIFIED FLIP DIAGNOSTIC, required of the scorer:
+report P(artifact top-1 != teacher top-1 | teacher top1-top2
+margin), binned, with category/position stratification. Lineage:
+the snap/calibration arc booked flips-per-token as the causal
+damage predictor and near-ties as the vulnerable population
+(RESULTS L7699/L7943, DATA-CEIL L24602). Reading: flips confined
+to near-tie bins = codec perturbs decision boundaries; large-margin
+flips = bulk representational damage; if B repairs large-margin
+flips specifically, the io sensitivity gains a mechanism.
+(6) CACHED-ROLLOUT SIDECAR GATE, registered as the acceptance
+condition for the teacher's ROLLOUT record (corpus/prefix records
+are cache-independent): after v2d locks, an independent sidecar
+runs no-cache v cached greedy on the FULL 64-layer tower, 2-4
+generated tokens, same prompt/batch/padding, requiring exact
+greedy token equality, logits within a registered tolerance
+(5e-3 relative, the streaming-harness envelope class), and the
+48/16 traversal census in both paths. The 2-layer smoke is
+explicitly disqualified as the vehicle (measured blind: it holds
+zero full-attention layers). If the sidecar fails, the rollout
+record (only) is quarantined and re-produced; the lock rule then
+applies to the corrected record as a versioned baseline.
+(7) MANIFEST EXECUTABLE CHECK: the v2d manifest must carry
+code_commit 0ca4151 (verified in-repo: the driver is byte-
+identical 0ca4151..HEAD and later commits touched docs only). Any
+other commit in the manifest books the run as produced by an
+unknown executable and refuses the lock's use.

@@ -6368,3 +6368,34 @@ honest status column).
   Attribution: Artin (the ask, and the "we have something in this
   repo" instinct — correct), house (the spec-decoding
   identification, exactness argument, fences).
+  CORRECTION (2026-08-17, same day, GPT seat): "degrades to
+  baseline, never below" holds for TARGET SWEEPS/TOKEN only —
+  end-to-end wall can lose, and the lab measured exactly that in
+  the spec-decoding thread (target passes nearly halved, acceptance
+  up, wall still lost to ~40% added draft work). The residue's
+  booking requirements gain a third mandatory number: acceptance
+  rate, target sweeps/token, AND end-to-end wall/token, separately.
+
+- **BANKED (2026-08-17): identity beats aggregates — the lab-wide
+  meta-law** (GPT seat synthesis from the full FINDINGS corpus,
+  relayed by Artin; house verification of the cited anchors).
+  The mapping: equal mass/rate/coverage does not imply equal
+  functional information. Instances already booked: MoE carrier
+  experts (aggregate recall/coverage lenses failed; swapping a
+  small NAMED expert population moved dozens of solves), dense
+  head cells (specific cells load-bearing, identities change
+  across births), atom-diet composition (rule/emitter identity
+  over dose), STAR-PROFILE (weight-homogeneous families,
+  4x-different functional fragility), and the Qwen family probe's
+  own conclusion (codec-homogeneous weight space cannot name the
+  sensitive family).
+  Honest breaks: a meta-law is a lens, not a result — it predicts
+  nothing quantitative; each instance carries its own regime tags
+  and none transports numbers to the others.
+  Testable residue: if MODEL-1's C-branch fires, "attention needs
+  4 bits" is predicted to be TOO COARSE — the follow-up
+  recomposition should find a small subset of attention
+  projections/layers carrying most of the extra-rate value, the
+  carrier-expert pattern at 27B scale.
+  Attribution: GPT seat (the synthesis), Artin (relay + standing
+  ask to mine FINDINGS), house (anchor verification, fences).
