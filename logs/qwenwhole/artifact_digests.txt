@@ -1,7 +1,9 @@
 # canonical whole-artifact digests (AMENDMENT QWEN-WHOLE-0T-PROTOCOL rule 5)
 # top-level digest = sha256 of the per-arm chain file artifact_digest_<arm>.txt
 # canonicalization (run in ~/qwen_whole0t/<arm>/ on the producing machine):
-#   ls *.bin manifest.json | sort | xargs sha256sum > digest_<arm>.txt
+#   ls *.bin manifest.json | sort | xargs sha256sum > artifact_digest_<arm>.txt
+#   (produced on WSL as digest_<arm>.txt, committed here under the
+#    artifact_digest_<arm>.txt name; contents byte-identical, sha-verified)
 # (LC_ALL byte sort; 19 rows/arm = 18 shard bins + manifest.json; chain files
 #  committed alongside, so receivers regenerate the chain from received bytes
 #  and compare the final hash with no untracked intermediate)
