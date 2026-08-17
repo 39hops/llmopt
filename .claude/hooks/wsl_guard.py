@@ -83,7 +83,7 @@ if verb == "kill":
 # time, and the launch itself creates only a log, a marker, and the
 # job. Anything fancier (inline commands, paths outside logs/)
 # still asks.
-if verb == "launch" and _bare:
+if verb == "launch":
     lm = re.match(r"""\s*(?:"bash\s+(scratch/[\w-]+\.sh)"
                   |'bash\s+(scratch/[\w-]+\.sh)')\s+
                   (logs/[\w./-]+)\s+(logs/[\w./-]+)\s*$""",
@@ -108,6 +108,22 @@ if verb == "launch" and _bare:
         out("allow", f"wsl.sh launch of tracked python driver "
             f"{pm.group(1)} with log+marker under logs/ (overnight "
             "standing OK, 2026-08-16)")
+
+# Same standing OK for the run verb: the identical tracked-python
+# shape executed in the foreground (smokes, short probes). The regex
+# anchors the WHOLE argument and admits && only as the literal
+# `cd ~/code/llmopt &&` prefix, so it is stricter than _bare; any
+# pipe/redirect/other chaining fails the match and falls through.
+if verb == "run":
+    rm_ = re.match(r"""\s*'
+                   (?:cd\s+~/code/llmopt\s+&&\s+)?
+                   (?:[A-Z][A-Z0-9_]*=[\w./~-]*\s+)*
+                   \.venv/bin/python\s+(?:-u\s+)?(scratch/[\w-]+\.py)
+                   (?:\s+[\w./=-]+)*'\s*$""",
+                   rest, re.X)
+    if rm_:
+        out("allow", f"wsl.sh run of tracked python driver "
+            f"{rm_.group(1)} (overnight standing OK, 2026-08-16)")
 
 # the inner command: first quoted argument
 pm = re.match(r'\s*"((?:[^"\\]|\\.)*)"|\s*\'([^\']*)\'', rest, re.S)
