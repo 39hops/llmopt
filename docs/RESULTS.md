@@ -32368,3 +32368,158 @@ above; receipts land on the 3080 and pull back to the Mac for
 booking; smoke receipts (v2census_L2_smoke.jsonl) are never
 evidence. If the chain dies mid-run, completed layers book and
 missing layers book NOT-RUN.
+
+## VERDICT STREAM-WDISTILL-0S: BAR 1 NO-FIRE, BAR 2 FIRES, BAR 3 NO-FIRE — the EXEC1 headline dies to a fair scalar (REFUTED-IF triggers at 0.035% v 5%), vector structure pays 13.3% at width 4, and the width ladder is inverted (2026-08-16, Mac)
+
+Adjudicated by the closed path registered this date: receipt ->
+scripts/obs_from_receipt_0s.py -> scripts/adjudicate.py, no hand
+transcription. The adjudicator's lines, verbatim:
+
+  BAR 1 VQ-SURVIVES: NO-FIRE
+  BAR 2 VECTOR-STRUCTURE-PAYS: FIRE
+  BAR 3 LOCALITY-IS-REAL: NO-FIRE
+
+Receipt logs/streamwd/pass0s_B1.jsonl (Mac, 256 experts, wall
+11866 s, code_commit dae9a31, revision 7872f01b, all 11 arms
+within B1 at realized bytes — W32 slack 47.6 MiB reported per the
+registered metrics list — codebook phase 906 s under the 2700 s
+wall, no walled arms; run log logs/streamwd/run_0s.log).
+
+THE LADDER (pooled operator error over 256 experts; per -0S-METRIC
+this estimates pooled Frobenius, the two columns are ONE estimator
+family and are never quoted as corroborating each other; measured
+operator-v-Frobenius disagreement in this receipt reaches 4.1e-4
+relative, which is the resolution floor every reading below
+respects):
+
+  S1-T   0.799746   ternary max-anchored (the minimal repair of
+                    EXEC1's arm A: fp8 scale only)
+  S1-U4  0.658509   4-level uniform mid-rise: filling the ternary
+                    arm's wasted code space buys 17.7% relative
+  S2     0.377630   the globally optimal 4-level scalar quantizer
+                    on the frozen 4,096-bin empirical
+                    discretization (registered verbatim wording):
+                    scalar cell design buys another 42.7%
+  W4     0.327518   width-4 VQ at the same 2.000 index bpw: vector
+                    coding buys 13.3% more   <- BAR 2 FIRES
+  W8     0.357037   worse than W4 by 9.0%
+  W32    0.377761   worse than W8; INDISTINGUISHABLE from S2 at
+                    this resolution (delta -3.5e-4, same order as
+                    the metric noise; no direction claimed)
+
+The registered dose curve (4,1)->(8,2)->(32,8) is therefore
+INVERTED: error rises monotonically with width at fixed index
+rate, and the EXEC1 winner (W32) is the WORST vector arm. Stacking
+residual stages to buy width costs more than width returns.
+
+BAR 1 AND THE REGISTERED REFUTED-IF (hand-computed — the
+adjudicator scores bars, not the refuted_if clause):
+|S_best - W32|/W32 = 0.035%, far inside the registered 5%
+refutation threshold. The EXEC1 headline (width-32 VQ 0.350 v
+scalar 0.770) is confirmed to have been an artifact of a weak,
+inadmissible scalar arm, and the EXEC1-era "VQ wins at width 32"
+reading is WITHDRAWN as registered.
+
+THE PRIOR, scored against the bars AS REGISTERED AT RUN TIME
+(prereg-auditor B1): the house predicted BAR 1 MISSES (correct)
+and BAR 2 MISSES (WRONG — it fired at 13.3% against a 10% bar).
+Stated plainly: BAR 2's identity was rebased by -0S-DESIGN (1)
+from W32-v-S2 to W4-v-S2 BEFORE the run; under the retired
+width-32 form the contrast would have read MISS (-0.03%), under
+the registered-of-record form it FIRES. The prior sentence
+predates the rebase and was never restated; it is scored against
+the bar of record and books half wrong.
+
+BAR 3, in the registered wording rule: natural W32 and its three
+locality-destroying regroupings are INDISTINGUISHABLE at this
+resolution — per-twin operator deltas -5.0e-5 to -9.1e-5, with the
+Frobenius column flipping sign on one twin (+1.2e-5), so no
+direction is claimed in either metric. Permutation variance across
+the three realizations is 5.0e-5 to 9.1e-5, itself below the
+metric noise. No locality claim is made in either direction, and
+the phrase barred by -0S-CONTROL for a non-firing BAR 3 appears
+nowhere in this entry.
+
+MECHANISM READING, scoped. Shuffled W4 is likewise
+indistinguishable from natural W4 (delta 1.4e-4), so the width-4
+gain is consistent with GENERIC multidimensional cell geometry
+rather than adjacent-weight dependence. Registered asymmetry
+disclosed both ways (-0S-SPEC (1)): S2 is exactly solved while the
+vector arms are Lloyd-trained only, so BAR 2's fire is if anything
+conservative, and BAR 1's NO-FIRE is if anything favourable to
+the scalar side.
+
+REGISTERED SPECTRAL REQUIREMENT UNMET (prereg-auditor S1, booked
+honestly): -0S-METRIC (c) required 0S's spectral column POOLED
+with across-expert spread and a stated power-iteration count. The
+receipt carries spectral_mean_of_ratios_DESCRIPTIVE — a mean of
+per-expert ratios, no spread, no iteration count. The field name
+is honest and the column is used as evidence for NOTHING in this
+entry. One descriptive oddity recorded for the follow-on: S1-U4's
+spectral ratios sit ABOVE 1.0 (1.51/2.44/2.10 by projection) while
+its Frobenius beats S1-T — the mid-rise arm concentrates its error
+in a dominant direction. Carrying the pooled-spectral obligation
+forward is the follow-on rung's burden.
+
+FENCES. One layer (22), one model, one revision, n=1, weight space
+only, no functional or capability claim; probe error columns are
+comparative-at-matched-bytes only (L11058); the EXEC1 arm-A number
+(2.125 bpw, ternary) is never quoted beside this ladder; the width
+ladder shares one execution so all cross-arm comparisons are
+within-run; Mac run — no comparison against any CUDA figure;
+scalar results transfer only within the E8M0 round-up block-128
+convention all arms shared (config confirms E8M0_round_up).
+
+DISCLOSURE (receipt-auditor, adopted): commit 4f88f14 (21:11,
+inside the run window 20:07-23:25) edited the pre-reg JSON to
+mechanize BAR 3's already-registered all-three-twins conjunct into
+the schema's conjuncts field. No bar value, direction, arm,
+population, or refuted-if changed, and the receipt did not exist
+until 23:25, so the edit was pre-look. Auditors: receipt-auditor
+CLEAN (its missing-refuse-guard note is a false positive — the
+driver refuses at main() entry, stream_wdistill0s.py:167);
+prereg-auditor's three blockers are incorporated above (prior
+scored against the bar of record; BAR 1 and BAR 3 readings held to
+the measured resolution floor; no sub-noise direction claimed).
+
+## OBSERVATION STREAM-WDISTILL-CENSUS-0: registered PROMOTE — the layer-22 codec ranking holds at all five depth points {2,12,22,33,42}; late layers are uniformly harder but identically ordered (2026-08-17, 3080/WSL, v2-descriptive)
+
+Registered PROMOTE outcome: Q1 (ranking stability) AND Q2 (scalar
+ladder) hold at ALL FIVE depth points. House prior right.
+
+Receipts logs/streamwd/v2census_L{2,12,33,42}.jsonl (chain
+scratch/census_night.sh, 3080/WSL cuda, each 256 experts,
+non-smoke) plus the existing layer-22 v2 full row
+(logs/streamwd/v2proto.jsonl). EVIDENCE CLASS as registered: v2 is
+a prototype instrument, so every number here is DESCRIPTIVE — this
+books as an OBSERVATION, enters no registered bar, and is never
+compared against the Mac v1 receipts.
+
+Pooled operator error by depth (v2, same device, same harness):
+
+  L    S1-T    S1-U4   S2      W4      W8      W32     max twin dev
+   2   0.7889  0.6530  0.3775  0.3277  0.3576  0.3792  7.9e-05
+  12   0.7921  0.6390  0.3716  0.3240  0.3523  0.3730  2.1e-04
+  22   0.7997  0.6585  0.3776  0.3275  0.3572  0.3778  6.8e-05
+  33   0.7916  0.6524  0.3769  0.3279  0.3569  0.3783  2.1e-04
+  42   0.8362  0.7375  0.3977  0.3364  0.3672  0.3882  2.5e-04
+
+Q1 at every layer: W4 < S2, W32 > W4, and all three W32 shuffled
+twins within 1% relative of natural (measured max 2.5e-04 — forty
+times inside the threshold). Q2 at every layer:
+S1-T > S1-U4 > S2. The codec ranking measured at layer 22 is a
+property of the expert family across depth, not a depth-local
+accident, on this model at this revision.
+
+The one depth effect: layer 42 is uniformly harder (every arm's
+error higher; S2 0.3977 v the 0.372-0.378 band of earlier layers)
+while preserving the ordering — late-layer experts carry more
+per-block structure the 2-bit budget cannot hold, but the same
+codec choice remains best.
+
+CONSEQUENCE per the registered promote clause: WHOLE-0 (all-layer
+streaming compression with conservation-law accounting) is
+justified with W4-class coding as the leading expert codec.
+FENCES: v2-descriptive throughout; one model/revision; n=1 per
+layer; five of 43 layers sampled; weight space only; the promote
+clause licenses BUILDING WHOLE-0, not any claim about it.

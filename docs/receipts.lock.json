@@ -432,8 +432,10 @@
    "source": "results"
   },
   "logs/streamwd/pass0s_B1.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3542,
+   "exists": true,
+   "sha256": "5feae218b63a49f801509b6fb1b6c7d02bc84fb948189546fb6384e916e1971a",
+   "source": "results"
   },
   "logs/streamwd/pass12_B1.jsonl": {
    "bytes": 1450,
@@ -448,9 +450,10 @@
    "source": "results"
   },
   "logs/streamwd/run_0s.log": {
+   "bytes": 7527,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "85bcea4ec5c8b7d801c992ac8317d2b3391a8ad44160e03c7e868e54c77e0547",
+   "source": "results"
   },
   "logs/streamwd/run_B1.log": {
    "exists": true,
@@ -461,6 +464,12 @@
    "exists": true,
    "pending": true,
    "source": "prereg"
+  },
+  "logs/streamwd/v2proto.jsonl": {
+   "bytes": 2392,
+   "exists": true,
+   "sha256": "bf5498e0e68f2268b661a917f2671741fb195b34aa3ca4b5680e9b281f89dec1",
+   "source": "results"
   },
   "logs/xtermdiet1/arms.jsonl": {
    "bytes": 1163,

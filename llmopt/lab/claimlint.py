@@ -73,7 +73,7 @@ OVERCLAIM = [
 
 # Layer 3 vocab.
 FIRE_CLAIM = re.compile(
-    r"\bBAR\s*(\d+)\b[^.\n]{0,80}?\b(NO[- ]FIRE|FIRES?|FIRED)\b", re.I)
+    r"\bBAR\s*(\d+)\b[^.\n]{0,80}?\b(NON?[- ]FIRE\w*|FIRES?|FIRED)\b", re.I)
 CONTEST = re.compile(
     r"\b(matched[- ]bytes?|winner|wins|loses?|lost|beats?|beaten)\b", re.I)
 

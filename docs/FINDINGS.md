@@ -2180,3 +2180,26 @@ regime tag on every bullet is the fence.
   ([VERDICT STREAM-WDISTILL-0-AUDIT-REPAIR](RESULTS.md#L31908 "id:2026-08-16-verdict-stream-wdistill-0-audit-repair");
   [AMENDMENT -READING-2](RESULTS.md#L32133 "id:2026-08-16-amendment-stream-wdistill-0-reading-2");
   [AMENDMENT -READING-3](RESULTS.md#L32229 "id:2026-08-16-amendment-stream-wdistill-0-reading-3").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] A fair
+  scalar baseline erases the apparent width-32 VQ advantage on the
+  V4-Flash layer-22 experts, and the ladder attributes the whole
+  EXEC1 gap: ternary-in-a-2-bit-field wastes 17.7%, scalar cell
+  design buys 42.7%, and vector coding at width 4 buys a further
+  13.3% (BAR 2 fires) while wider residual stacks give it all back —
+  W32 is indistinguishable from the globally optimal 4-level scalar
+  (REFUTED-IF triggers; no locality signal at this rate, natural v
+  shuffled indistinguishable). Weight space only, one layer, E8M0
+  block-128 convention.
+  ([VERDICT STREAM-WDISTILL-0S](RESULTS.md#L32372 "id:2026-08-16-verdict-stream-wdistill-0s-bar-1").)
+
+- [SINGLE-SEED] [DEVICE-SCOPED]
+  [REGIME-SCOPED: measured deployment artifacts]
+  The expert-codec ranking measured at V4-Flash layer 22
+  is depth-stable: at all five sampled depths {2,12,22,33,42} of 43,
+  width-4 VQ beats the optimal scalar, wider stacks lose it back,
+  and shuffled twins sit within 2.5e-4 of natural — while layer 42
+  is uniformly harder to compress under the same ordering. v2
+  prototype instrument, descriptive class, one model/revision;
+  licenses building the whole-model pass, claims nothing about it.
+  ([OBSERVATION STREAM-WDISTILL-CENSUS-0](RESULTS.md#L32485 "id:2026-08-17-observation-stream-wdistill-census-0-registered").)
