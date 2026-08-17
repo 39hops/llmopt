@@ -33208,3 +33208,68 @@ FINAL TREE (order of evaluation at MODEL-1 booking):
   3. C mat.> A cumulatively, no single step fired -> T4
      cumulative-rate branch, allocation stays open, review.
   4. else -> T3: functional parity, A is the runtime target.
+
+## AMENDMENT QWEN-MODEL1-TREE-METRIC (amends PRE-REG QWEN-MODEL1-TREE): the tree's X and K pinned to executable definitions — direction, vocab support, aggregation, an absolute noise floor under the 20% triggers, a uniform-damage instrument alarm, and the device rule (2026-08-17, mac)
+
+Adopted from the Opus scorer-scout review (spawned on Artin's GO),
+before the teacher locks and before any scorer code exists. The
+20% relative conjunction is unchanged; these pin what it applies TO.
+
+(1) DIRECTION: K uses KL(teacher || arm) — forward KL, mass where
+the teacher puts it. Reverse KL is mode-seeking and systematically
+smaller for a quantized student; the 20% trigger is
+direction-sensitive, so the direction is part of the registration.
+(2) SUPPORT: X and K are computed over the TOKENIZER LIVE VOCAB
+(the tokenizer's true size), with full-logit-width values reported
+as a secondary diagnostic only. Dead padded lm_head rows are
+untrained garbage whose W4/S16 damage inflates KL with zero
+functional meaning — and lands exactly on the tensor the T1 D/E
+split attributes, so scoring them would fabricate the registered
+prior. Scorer asserts vendor and arm logit widths are identical
+before any K; a mismatch masks to live vocab and books the mask.
+(3) ALIGNMENT + AGGREGATION: logits[:-1] v ids[1:], P-1 terms;
+corpus X is position-pooled; prefix K is position-pooled across
+all prefixes (long prefixes weigh more; stated, accepted).
+Admissibility precondition: CE_teacher recomputed FROM THE LOCKED
+RECORDS on this alignment must land in single-digit nats — the
+misaligned pairing sits near log(V) ~ 12.4 and books
+INSTRUMENT-ALARM, never a score.
+(4) ABSOLUTE FLOOR UNDER THE TRIGGERS: teacher records are fp16;
+X inherits their quantization. Every trigger now requires BOTH
+the 20% relative condition AND (X_Z - X_Y) > 5x the empirically
+estimated fp16 record noise floor (fp16_noise_floor_nats, a
+mandatory receipt field, estimated by re-quantization of the
+teacher logits under +-1ulp perturbation). A trigger inside the
+floor books UNRESOLVED with the floor quoted.
+(5) UNIFORM-DAMAGE ALARM: the -LOGIC anomaly gate catches
+non-monotonic damage only; a shared W4 decode bug damages ALL
+arms equally and would masquerade as T3 "parity — A wins". New
+precondition: if X_A > 1.0 nat, book INSTRUMENT-ALARM and stop —
+no tree branch may fire on a catastrophically damaged best arm.
+(6) DEVICE RULE (resolves a live contradiction): the TEACHER-0
+registration waived cross-device concerns because the teacher "is
+a baseline, not a gate" — but the TREE made teacher-relative X/K
+gate-bearing. Resolution: X and K for the tree are computed on
+the Mac CPU reference leg ONLY (same machine class as the locked
+teacher). Metal/CUDA runtime legs report backend-agreement KL
+against the CPU reference decode — never tree quantities. The
+scorer REFUSES to emit a tree measurement with device != cpu.
+(7) COMPUTE HYGIENE (booked lineage): log-softmax and KL
+reductions in fp32 minimum (fp16 underflow silently degenerated
+an entropy gate once, 771 passes; RESULTS L762 lineage);
+max-subtraction before exp; NaN/inf positions are REFUSALS, not
+drops (silent drops change the population).
+(8) SCORER REFUSE-LIST (fail-closed, in the driver): smoke
+teacher records or any _smoke path; teacher record whose
+recomputed sha mismatches the manifest; manifest without the
+traversal block or with full_attn executed != 16, lin != 48, or
+rope_calls < 16; anything under logs/quarantine/; artifact whose
+canonical digest is unverified on the scoring machine; artifact
+manifest failing key-set-equality conservation; a second teacher
+manifest anywhere (re-runs book as new versioned baselines);
+re-tokenization drift (re-encoding corpus.txt must reproduce the
+locked token list exactly); free-generation numbers feeding any
+tree measurement (chat reads never gate). Plus a round-trip codec
+fixture: re-encode one tensor from vendor bytes with the frozen
+encoders, decode, assert payload bit-identity — catches nibble
+order, codebook offset, and exponent-bias bugs at zero model cost.
