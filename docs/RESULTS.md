@@ -32310,3 +32310,61 @@ than inferred. If both steps land, the law to be booked is
 "anisotropy is expert-local; alignment is not" — sharper than the
 rank floor it would refine, and a parameter-geometry echo of the
 lab's transition-space locality results.
+
+## PRE-REG STREAM-WDISTILL-CENSUS-0: does layer 22's codec ranking generalize across depth — five MoE layers through the v2 apparatus (2026-08-16, 3080/WSL)
+
+Registered while the chain's FIRST receipt is being computed and
+before ANY census number has been read (L2 full pass launched
+21:19 EDT; this entry committed before its receipt file exists).
+
+MOTIVE. The three-rung whole-model program (RIFF bank, this date):
+LAYER-CENSUS -> WHOLE-0 -> MODEL-1. A model-wide expert recipe is
+dead on arrival if the codec ranking measured at layer 22 is a
+depth-local accident. Cheapest decisive first.
+
+INSTRUMENT. streamwd_v2.py at commit 8962cee-lineage: the SPEED
+PROTOTYPE, cuda, shard-cached, layer-parameterized via the official
+safetensors index (refuses multi-shard layers). SAME seeds, arms,
+byte conventions as 0S's registered ladder: S1-T, S1-U4, S2(DP),
+W4, W8, W32, W4/W8-shuf x1, W32-shuf x3. EVIDENCE CLASS FENCE,
+stated up front: v2 is NOT a promoted instrument (no same-device
+v1 reproduction yet; CUDA index_add_/bincount nondeterminism
+unmeasured), so every census number is DESCRIPTIVE and the verdict
+books as an OBSERVATION. No census number may be compared against
+the Mac v1 receipts (cross-device) or enter a registered 0S bar.
+Within-census comparisons are same-device, same-harness, and
+therefore internally coherent.
+
+LAYERS. {2, 12, 33, 42} run tonight (scratch/census_night.sh,
+sequential, one receipt per layer at
+logs/streamwd/v2census_L<L>.jsonl); layer 22 = the existing full
+v2proto.jsonl row completes five depth points of 43.
+
+REGISTERED QUESTION with thresholds named BEFORE counting (the
+/desk discipline):
+  Q1 RANKING-STABLE: at EVERY census layer, on pooled operator
+     error: W4 < S2 (vector helps at width 4) AND W32 > W4 (wide
+     residual stacks hurt relative to W4) AND the three W32
+     shuffled twins lie within 1% relative of natural W32
+     (no locality signal at this rate).
+  Q2 SCALAR-LADDER-STABLE: S1-T > S1-U4 > S2 at every layer.
+  KILL: any census layer breaks Q1 -> a single global expert
+     recipe is dead; the program forks to per-depth recipes and
+     the candidate law "anisotropy is expert-local" must be
+     re-examined per depth before WHOLE-0.
+  PROMOTE: Q1 AND Q2 hold at all five -> WHOLE-0 (all-layer
+     streaming compression, conservation-law accounting) is
+     justified with W4-class coding as the leading expert codec.
+
+REGISTERED PRIOR (house): Q1 and Q2 both HOLD at all five points —
+the L2 SMOKE (4 experts, seen before this entry; disclosed) showed
+the same ordering as L22, and the mechanism (per-block E8M0 +
+marginal shape) is not obviously depth-dependent. Confidence
+medium-high.
+
+FENCES. One model, one revision (7872f01b), n=1 per layer, weight
+space only, no functional claim; v2-descriptive evidence class per
+above; receipts land on the 3080 and pull back to the Mac for
+booking; smoke receipts (v2census_L2_smoke.jsonl) are never
+evidence. If the chain dies mid-run, completed layers book and
+missing layers book NOT-RUN.

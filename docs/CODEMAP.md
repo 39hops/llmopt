@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 208, library 71, reproduce-pinned 10, results-cited 202, spec-cited 86, cited-but-library 59
+Census: UNCITED 207, library 71, reproduce-pinned 10, results-cited 204, spec-cited 86, cited-but-library 59
 
 ## scratch/
 
@@ -63,6 +63,7 @@ Census: UNCITED 208, library 71, reproduce-pinned 10, results-cited 202, spec-ci
 | ce | ce_gate_study.py | spec-cited | specs | specs×2 | — | — |
 | ce400 | ce400.py | UNCITED | — | — | — | 2 |
 | ceiling | ceiling_probe_cuda.py | UNCITED | — | — | — | — |
+| census | census_night.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | chain | chain_carry.py | UNCITED | — | — | — | 1 |
 | champ | champ_cuda_probe.py | UNCITED | — | — | — | — |
 | checkers0 | checkers0.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
@@ -375,7 +376,7 @@ Census: UNCITED 208, library 71, reproduce-pinned 10, results-cited 202, spec-ci
 | stream | stream_wdistill1.py | library | RESULTS | RESULTS×4 | 2 | 1 |
 | streaming | streaming_birth_d256.py | library | RESULTS | RESULTS×3 | 1 | — |
 | streamwd | streamwd_complete.py | UNCITED | — | — | — | — |
-| streamwd | streamwd_v2.py | UNCITED | — | — | — | — |
+| streamwd | streamwd_v2.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | successors | successors_acceptance.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | sym | sym_birth.py | library | RESULTS, specs | RESULTS×1, specs×3 | 1 | 8 |
 | sym | sym_convert.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |

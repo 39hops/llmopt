@@ -6125,3 +6125,42 @@ honest status column).
   shard sha / code_commit / unique output paths (prototype stays
   fenced as descriptive); evidence-graph staleness layer (banked);
   strict observation-schema validation beyond the contract checks.
+
+- **BANKED (2026-08-16): the whole-model STREAM-WDISTILL program —
+  LAYER-CENSUS, then WHOLE-0 (the streaming compression compiler),
+  then MODEL-1 (the runnable artifact)** (GPT seat: the decomposition
+  and the "stop calling it distillation" correction; Artin: the
+  original stream-and-compress-without-inference ask and the GO;
+  house: fences and the census pre-reg).
+  The mapping: the layer-22 rung was instrument validation, not the
+  destination. Three rungs upward: CENSUS-0 (does the codec ranking
+  generalize across depth — PRE-REG booked this date, chain running),
+  WHOLE-0 (stream all 43 MoE layers' routed experts shard-by-shard,
+  bounded residency, emit a compressed artifact; compiler-correctness
+  rung with a CONSERVATION LAW — source tensor keys = compressed
+  union explicitly-passthrough, zero silently dropped), MODEL-1 (a
+  runnable checkpoint; the first rung in this family that needs
+  model forwards — logits/KL, perplexity, greedy-token agreement,
+  routing shifts; connects weight-space error to function-space
+  error to capability error). Heterogeneous codec by family: routed
+  experts (this machinery), shared expert (own family), attention
+  (own rung — the architecture carries low-rank/compressed attention
+  structure), embeddings/head (separately budgeted), norms/router/
+  small tensors (passthrough at native precision). DSpark module:
+  preserve or declare excluded, never silently drop.
+  Measured anchors: v2 full layer 26.5 min on the 3080 (7.7x Mac
+  v1); 167 GB / 48 shards official artifact; one shard per MoE layer
+  (index-verified for L2/5/12/22/33/40/42).
+  Honest breaks: weight-space compression is NOT behavioral
+  distillation — no path from here to a different-architecture
+  student without teacher forwards; a compressed artifact is not yet
+  a runnable one (decode-on-demand runtime, offline dequant, or
+  compressed-domain kernels — the axiom C++ leg's natural target:
+  y = C(W)x without reconstructing W).
+  Testable residue: CENSUS-0's registered kill/promote; the
+  conservation law as a WHOLE-0 bar; MODEL-1's exact greedy-token
+  agreement against the vendor artifact (the house's own equivalence
+  oracle applied to its own compression).
+  Attribution: Artin (ask, GO, machines), GPT seat (program
+  decomposition, family taxonomy, conservation law), house
+  (census design, fences, drivers).

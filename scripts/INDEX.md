@@ -3067,6 +3067,7 @@ STREAM-WDISTILL-0 completion pass — closes the two receipt-auditor BLOCKERs on
 ### scratch/streamwd_v2.py
 STREAM-WDISTILL harness v2 — SPEED PROTOTYPE (shard cache + GPU).
 
+- `resolve_shard() -> str` — The shard holding LAYER's routed experts, from the official
 - `shard_path() -> str`
 - `ensure_shard() -> str`
 - `manifest()`
