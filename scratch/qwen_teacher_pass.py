@@ -135,10 +135,30 @@ def build_streamed_model():
                 p.to("meta"), requires_grad=False)
         return output
 
+    # TRAVERSAL PROOF (incident: v1's zeroed-RoPE bug escaped smoke
+    # because the sliced model never reached a consuming layer —
+    # the receipt must PROVE every registered layer family ran):
+    trav = {"layer_calls": [0] * len(layers), "rope_calls": 0,
+            "families": ["full_attn" if hasattr(l, "self_attn")
+                         else "linear_attn" for l in layers]}
+
+    def count_layer(i):
+        def h(module, args, kwargs):
+            trav["layer_calls"][i] += 1
+            return None
+        return h
+
+    def count_rope(module, args, kwargs):
+        trav["rope_calls"] += 1
+        return None
+
+    model.model.rotary_emb.register_forward_pre_hook(
+        count_rope, with_kwargs=True)
     for i, lyr in enumerate(layers):
+        lyr.register_forward_pre_hook(count_layer(i), with_kwargs=True)
         lyr.register_forward_pre_hook(make_pre(i), with_kwargs=True)
         lyr.register_forward_hook(post, with_kwargs=True)
-    return model
+    return model, trav
 
 
 def sha(a: np.ndarray) -> str:
@@ -153,7 +173,7 @@ def main():
         raise SystemExit(f"REFUSING: {man_path} exists (teacher is locked)")
     t0 = time.time()
     tok = AutoTokenizer.from_pretrained(VDIR)
-    model = build_streamed_model()
+    model, trav = build_streamed_model()
     commit = subprocess.check_output(
         ["git", "rev-parse", "--short", "HEAD"]).decode().strip()
     man = {"revision": REVISION, "code_commit": commit, "smoke": SMOKE,
@@ -241,6 +261,26 @@ def main():
                                   "steps": len(steps),
                                   "shape": list(rl.shape),
                                   "sha256": sha(rl)}
+    # TRAVERSAL GATE: refuse the lock unless every layer ran and
+    # every registered family (incl. the RoPE path) was exercised
+    calls = trav["layer_calls"]
+    fams = trav["families"]
+    n_lin = sum(1 for f in fams if f == "linear_attn")
+    n_full = sum(1 for f in fams if f == "full_attn")
+    idle = [i for i, c in enumerate(calls) if c == 0]
+    if idle:
+        raise SystemExit(f"REFUSING LOCK: layers never executed: "
+                         f"{idle[:8]}")
+    if not SMOKE and (n_lin, n_full) != (48, 16):
+        raise SystemExit(f"REFUSING LOCK: family census "
+                         f"lin={n_lin} full={n_full}, expected 48/16")
+    if trav["rope_calls"] == 0:
+        raise SystemExit("REFUSING LOCK: rotary path never called")
+    man["traversal"] = {
+        "layers_executed": len(calls),
+        "linear_attn_layers_executed": n_lin,
+        "full_attn_layers_executed": n_full,
+        "min_layer_calls": min(calls), "rope_calls": trav["rope_calls"]}
     man["wall_s"] = round(time.time() - t0, 1)
     with open(man_path, "w") as f:
         f.write(json.dumps(man) + "\n")

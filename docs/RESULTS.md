@@ -33079,3 +33079,19 @@ BAR 1 STANDS for this single-pass run: parsed per-shard tensor
 counts total 1199 = expected keys, global missing = 0, class
 counts sum to 1199. Successor compilers must enforce set equality
 + duplicate detection explicitly rather than by count arithmetic.
+
+## AMENDMENT QWEN-TEACHER-0-TRAVERSAL (amends PRE-REG QWEN-TEACHER-0): the teacher receipt must PROVE layer-family traversal — lock refused unless all 64 layers, the 48/16 linear/full family census, and the RoPE path all executed (2026-08-17, mac)
+
+Adopted from the GPT review seat (relayed by Artin, 13:17) before
+the v2 full pass locked; v2 relaunched with the gate in (cost: ~15
+min of a dead run). Mechanism: forward-hook counters per layer +
+on the rotary module; manifest gains a machine-readable traversal
+block (layers_executed, linear/full family counts, min_layer_calls,
+rope_calls) and manifest WRITING refuses if any layer index never
+ran, the non-smoke family census is not 48/16, or rope_calls == 0.
+Verification: the 2-layer smoke's own manifest now reads
+full_attn_layers_executed = 0 — the exact blindness that let the
+v1 RoPE bug through, now visible in-band. This is the -ROPE
+amendment's graduated invariant made executable: a teacher that
+claims to certify the full text tower cannot lock without having
+traversed every registered layer family.
