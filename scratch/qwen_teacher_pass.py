@@ -40,7 +40,7 @@ import torch
 SMOKE = os.environ.get("SMOKE", "0") == "1"
 SUF = "_smoke" if SMOKE else ""
 VDIR = os.path.expanduser("~/qwen_vendor")
-OUT = f"logs/qwenteacher{SUF}"
+OUT = f"logs/qwenteacher_v2{SUF}"       # v1 quarantined (zeroed RoPE)
 EV = "evals/qwen_model1"
 REVISION = "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
 MAX_NEW = 8 if SMOKE else 256
@@ -50,14 +50,22 @@ torch.set_num_threads(os.cpu_count())
 
 
 def build_streamed_model():
+    from accelerate import init_empty_weights
     from safetensors import safe_open
     from transformers import AutoConfig, AutoModelForCausalLM
 
     cfg = AutoConfig.from_pretrained(VDIR)
     if SMOKE:
         cfg.text_config.num_hidden_layers = 2
-    with torch.device("meta"):
-        model = AutoModelForCausalLM.from_config(cfg, torch_dtype=torch.float32)
+    # init_empty_weights with include_buffers=False (the default):
+    # parameters land on meta, BUFFERS ARE COMPUTED FOR REAL by each
+    # module's init. v1 of this driver built under
+    # torch.device("meta") and zero-filled every meta buffer, which
+    # silenced RoPE's inv_freq — non-vendor logits, caught before
+    # any lock was used (v1 outputs quarantined).
+    with init_empty_weights(include_buffers=False):
+        model = AutoModelForCausalLM.from_config(cfg,
+                                                 torch_dtype=torch.float32)
     model.eval()
 
     idx = json.load(open(os.path.join(VDIR, "model.safetensors.index.json")))
@@ -71,35 +79,42 @@ def build_streamed_model():
                                     framework="pt", device="cpu")
         return handles[sh].get_tensor(name).float()
 
-    # resident set: everything except decoder layers (embed, head,
-    # final norm, small/special) — and reject vision/mtp params the
-    # text config never instantiates
-    layer_pref = "model.language_model.layers."
-    resident, streamed_layers = [], set()
+    # AutoModelForCausalLM builds the TEXT tower only, so module
+    # names lack the multimodal wrapper's "language_model." segment;
+    # shard keys carry it (lm_head is top-level both sides)
+    def shard_key(name):
+        if name.startswith("model."):
+            return "model.language_model." + name[len("model."):]
+        return name
+
+    layer_pref = "model.layers."
+    resident = []
     for name, _ in model.named_parameters():
-        if name.startswith(layer_pref):
-            streamed_layers.add(int(name[len(layer_pref):].split(".")[0]))
-        else:
+        if not name.startswith(layer_pref):
             resident.append(name)
     for name in resident:
-        if name not in wmap:
+        if shard_key(name) not in wmap:
             raise SystemExit(f"resident param missing from shards: {name}")
         mod = model.get_submodule(name.rsplit(".", 1)[0])
         setattr(mod, name.rsplit(".", 1)[1],
-                torch.nn.Parameter(get(name), requires_grad=False))
-    # buffers (rotary inv_freq etc.) materialize from their initializers
-    for name, buf in model.named_buffers():
-        if buf.is_meta:
-            mod = model.get_submodule(name.rsplit(".", 1)[0])
-            mod._buffers[name.rsplit(".", 1)[1]] = torch.zeros(
-                buf.shape, dtype=buf.dtype)
-    layers = model.model.language_model.layers
+                torch.nn.Parameter(get(shard_key(name)),
+                                   requires_grad=False))
+    # FAIL-CLOSED: no meta buffer may survive to a forward pass —
+    # a silently-defaulted buffer produces non-vendor logits
+    meta_bufs = [n for n, b in model.named_buffers() if b.is_meta]
+    if meta_bufs:
+        raise SystemExit(f"REFUSING: meta buffers after build: "
+                         f"{meta_bufs[:5]}")
+    iv = model.model.rotary_emb.inv_freq
+    if float(iv.abs().sum()) == 0.0:
+        raise SystemExit("REFUSING: rotary inv_freq is all-zero")
+    layers = model.model.layers
 
     def make_pre(i):
         def pre(module, args, kwargs):
             sd = {}
             for n, p in module.named_parameters():
-                full = f"{layer_pref}{i}.{n}"
+                full = f"model.language_model.layers.{i}.{n}"
                 sd[n] = get(full)
             module._load_from_state_dict_shim = None
             for n, t in sd.items():

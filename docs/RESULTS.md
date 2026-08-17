@@ -33009,3 +33009,73 @@ summary from scratch or mark it partial. Receipt/log byte-identity
 Mac v WSL sha-verified; per-shard n_tensors matches the vendor
 index exactly (auditor recomputation).
 
+
+## AMENDMENT QWEN-TEACHER-0-ROPE (amends PRE-REG QWEN-TEACHER-0): v1 teacher pass INVALIDATED before any lock was consumed — the meta-device build zero-filled RoPE inv_freq, producing non-vendor logits in the 16 full-attention layers; driver corrected fail-closed, outputs quarantined, v2 re-registered at new paths (2026-08-17, mac)
+
+External catch (Artin's review seat, 2026-08-17 13:02), verified
+in-house before acting: under `torch.device("meta")` the model's
+`model.rotary_emb.inv_freq` buffer (nonpersistent, absent from
+shards by design) lands on meta, and v1's "materialize from
+initializers" loop replaced every meta buffer with ZEROS —
+inv_freq=0 means cos=1/sin=0, RoPE silently off. Empirical
+verification: (a) meta-buffer census confirms exactly
+inv_freq/original_inv_freq meta under the v1 build; (b) v1 and v2
+2-layer smoke logits are bit-IDENTICAL — expected, layers 0-1 are
+linear-attention and never consume RoPE, which is why the smoke
+could not catch this — the poisoned surface was the 16
+full-attention layers of the full pass only.
+ACTIONS. Running v1 full pass KILLED mid-rollout (rc 143; corpus +
+prefix records had been written, no lock consumed by any scorer);
+all v1 outputs quarantined at logs/quarantine/qwenteacher_v1_invalid/
+(and _smoke_). Driver corrected: accelerate init_empty_weights
+(include_buffers=False — buffers computed for real), plus two
+fail-closed guards (REFUSE on any surviving meta buffer; REFUSE on
+all-zero inv_freq). v2 writes to logs/qwenteacher_v2/ — the v1
+path is dead, never reused. The PRE-REG's lock rule now binds the
+v2 manifest; v1 never became a baseline.
+LESSON (transports): a NO-OP precondition for a wrapped/rebuilt
+model must include BUFFERS, not just parameters — bit-identical
+weights with a defaulted buffer is exactly the harness-off-before-
+treatment class the /rung skill fences (SOFT-PROMPT-1 lineage).
+Smoke slices that drop the consuming layer class cannot see a
+buffer fault; the fail-closed census is the guard that scales.
+
+## AMENDMENT QWEN-WHOLE-0T-PROTOCOL (amends VERDICT QWEN-WHOLE-0T): five follow-up protocol corrections from the post-booking review — verdict numbers stand, no recompression needed; BAR 1 stands for the single-pass run (2026-08-17, mac)
+
+Adopted from Artin's review seat, 2026-08-17. The verdict's
+measured numbers are untouched; these correct the record's CLAIMS
+and the protocol for successor runs.
+(1) SHARED-CODEC DEPENDENCY NOT ACTUALLY SATISFIED: the v2
+promotion gate booked "the Qwen compilers already import its
+loader lineage" — true for the LOADER only. The compilers carry
+their own encoder implementations (enc_w4/enc_s16 in
+qwen_whole0t.py, trained per-tensor); no shared codec MODULE
+exists yet. The promotion's shared-codec clause is downgraded to
+loader-lineage; a real llmopt/lab/ codec module remains the
+adoption condition for the next registered compiler run.
+(2) WORDING: "encodes exactly as probed" overstates — the correct
+claim is "reproduces the probe DISTORTION under the same recipe"
+(ratio 0.97-1.00x on pooled op error). Different tensors, same
+recipe, same distortion statistics; not a bitwise or per-tensor
+identity.
+(3) RESUME HAZARD WIDENED: a resumed run rewrites manifest.json
+with only newly-processed keys — a PARTIAL MANIFEST, not just a
+partial summary row. The conservation check would catch the
+manifest at the next full accounting, but the hazard graduates
+from a disclosed note to an INVARIANT: any successor compiler must
+rebuild manifests from all receipted shards (or refuse resume),
+with a regression fixture exercising resume-then-summarize.
+(4) CLASSIFICATION: the missing source-shard sha is a PREREG
+TRANSACTION-STEP INCIDENT, not a driver nit — the registered
+transaction named "verify size/sha" as a step and the driver
+recorded no input hash; successor preregs must carry the input
+digest as a receipt FIELD, not a prose step.
+(5) TRANSFER RULE: before artifact B (or any arm) copies to the
+Mac for MODEL-1, lock manifest.json + a canonical whole-artifact
+digest (ordered per-shard sha256 chain) on the producing machine
+and verify on the receiving one; scoring runs only against a
+digest-verified copy.
+BAR 1 STANDS for this single-pass run: parsed per-shard tensor
+counts total 1199 = expected keys, global missing = 0, class
+counts sum to 1199. Successor compilers must enforce set equality
++ duplicate detection explicitly rather than by count arithmetic.
