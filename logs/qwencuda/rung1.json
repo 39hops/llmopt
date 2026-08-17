@@ -1,0 +1,54 @@
+{
+ "rung": 1,
+ "code_commit": "8755ad9",
+ "device_actual": "NVIDIA GeForce RTX 3080",
+ "torch_version": "2.13.0+cu130",
+ "triton_version": "3.7.1",
+ "artifact": "A",
+ "fixtures": [
+  {
+   "case": "random-8x256",
+   "bit_exact": true
+  },
+  {
+   "case": "random-16x128",
+   "bit_exact": true
+  },
+  {
+   "case": "random-5x640",
+   "bit_exact": true
+  },
+  {
+   "case": "random-32x512",
+   "bit_exact": true
+  },
+  {
+   "case": "exp-0",
+   "bit_exact": true
+  },
+  {
+   "case": "exp-127",
+   "bit_exact": true
+  },
+  {
+   "case": "exp-255",
+   "bit_exact": true
+  }
+ ],
+ "real_tensor": {
+  "tensor": "model.language_model.layers.33.linear_attn.in_proj_qkv.weight",
+  "bit_exact": true,
+  "shape": [
+   10240,
+   5120
+  ],
+  "payload_bytes": 13518848
+ },
+ "parity_tolerance": 0,
+ "passed": true,
+ "env": {
+  "TORCH_DISABLE_NATIVE_JIT": "1",
+  "PYTORCH_CUDA_ALLOC_CONF": null,
+  "ALLOW_UNCHAINED": null
+ }
+}
