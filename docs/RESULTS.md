@@ -33609,3 +33609,41 @@ logs/qwencuda/rung0.json, logs/qwencuda/rung1.json,
 logs/qwencuda/rung2.json, logs/qwencuda/rung3_forward1.json,
 logs/qwencuda/rung3_gen32.json, logs/qwencuda/gen_qm1.json,
 logs/qwencuda/gen_qm2.json.
+
+## AMENDMENT QWEN-CUDA-LADDER-0-SCOPE: retitle the crack, scope C's death, lock trackedness (2026-08-17, mac)
+
+Target: OBSERVATION QWEN-CUDA-LADDER-0. Three narrowings from the
+GPT review seat, house-verified:
+
+1. "First function-space crack" overstates its own evidence —
+   function-space implies a comparison against the uncompressed
+   function, which does not exist for this prompt yet. Retitled:
+   FIRST CANDIDATE LONG-HORIZON BEHAVIORAL FAILURE in A. The
+   adjudicating experiment is registered by name: same prompt +
+   template + greedy on the pinned teacher; teacher completes
+   while A loops = compression-induced divergence candidate;
+   teacher loops too = no evidence against A. B under identical
+   decoding is the io-precision rider (connects to tree prior T1).
+
+2. "C is dead on this card" is scoped: C CANNOT FIT UNDER RUNG
+   3'S residency/execution plan (all layer payloads resident +
+   per-layer fp32 materialization). A fused runtime with no
+   expanded operand changes the memory equation; the peak-VRAM
+   oracle re-runs when that runtime exists and THAT decides C.
+   Ditto B "should fit": 7.09 GiB payload v 8.86 free with S16 io
+   residency + KV unpriced — the preflight proves it, not the
+   subtraction.
+
+3. Lock ordering bug, fixed this commit: the ladder receipts were
+   force-added in the booking commit AFTER the lock regenerated,
+   so the lock recorded the four newest receipts local_only
+   despite being tracked. Lock regenerated; local_only now names
+   only the six large machine-local streams. Standing order for
+   /book: force-add receipts BEFORE regenerating the lock.
+
+The ~25 tok/s figure is registered as a COMPRESSED-BYTE-THROUGHPUT
+EXTRAPOLATION AT MEASURED RUNG-2 EFFICIENCY, not a forecast:
+launch overhead, small-shape bandwidth, attention/norm work, KV
+traffic, and the lm_head are all outside the arithmetic. 10-15
+tok/s from the first fused tower books as a success against the
+0.41 s/tok baseline, not a miss against 25.

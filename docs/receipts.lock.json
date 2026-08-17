@@ -437,18 +437,16 @@
   "logs/qwencuda/gen_qm1.json": {
    "bytes": 1430,
    "exists": true,
-   "local_only": true,
    "sha256": "d41c6d97ae91a262e8e628282eb03c09fc5a3d6654aca0e6f73ee19d74134b51",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwencuda/gen_qm2.json": {
    "bytes": 2786,
    "exists": true,
-   "local_only": true,
    "sha256": "520fed705ea508b0b5623d192e2525dd6a4c9acbbba4975e3ca5b4bb527d0db0",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwencuda/rung0.json": {
    "bytes": 414,
@@ -474,18 +472,16 @@
   "logs/qwencuda/rung3_forward1.json": {
    "bytes": 1876,
    "exists": true,
-   "local_only": true,
    "sha256": "1a25d4edccfd90a1d053b03ab279dc0dcbf26ee5c9c9c37775d6905caedfd97e",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwencuda/rung3_gen32.json": {
    "bytes": 987,
    "exists": true,
-   "local_only": true,
    "sha256": "8e7ee37f47e708fe860e60f9b12a0af9d19ba209b2a9ab0f2dabeffc1d4a3472",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwenprobe/L32.jsonl": {
    "bytes": 901,
