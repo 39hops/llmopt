@@ -144,7 +144,12 @@ def ensure_shard() -> str:
                 print(f"  [dl] {got/2**30:.1f}/{total/2**30:.1f} GiB "
                       f"({got/max(time.time()-t,1e-9)/2**20:.0f} MiB/s)",
                       flush=True)
-    os.replace(tmp, p)
+    try:
+        os.replace(tmp, p)
+    except FileNotFoundError:
+        # concurrent downloader won the replace; accept its file
+        if not os.path.exists(p):
+            raise
     print(f"[v2] shard cached in {time.time()-t:.0f}s "
           f"({os.path.getsize(p)/2**30:.2f} GiB)", flush=True)
     return p
