@@ -32687,3 +32687,14 @@ alphabet.
 FENCES: descriptive; 4 of 64 layers, one model/revision, n=1,
 weight space only, rankings and mass fractions only; L32 lacks
 scalar_diag (driver gained it after L32 booked).
+
+## AMENDMENT QWEN-FFN-CENSUS-0-RECEIPTS (amends OBSERVATION -FFN-CENSUS-0 L32655): receipt paths written explicitly — brace shorthand is invisible to the citation lock (2026-08-17, Mac)
+
+The parent cited its receipts as "logs/qwenprobe/L{8,48,56}.jsonl",
+which the receipt-lock citation regex cannot parse (the
+bare-filename gap's cousin, caught by the lock count not moving).
+Explicit, for the lock: logs/qwenprobe/L8.jsonl,
+logs/qwenprobe/L48.jsonl, logs/qwenprobe/L56.jsonl (plus
+logs/qwenprobe/L32.jsonl already locked). House note: shorthand
+never again in a receipt citation; the structured prereg receipts
+field remains the real fix.
