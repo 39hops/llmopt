@@ -2312,3 +2312,14 @@ regime tag on every bullet is the fence.
   metric claimed; the teacher-forced MODEL-1 core remains the
   only functional instrument.
   ([OBSERVATION QWEN-RUNTIME-0R-SMOKE](RESULTS.md#L33429 "id:2026-08-17-observation-qwen-runtime-0r-smoke-first").)
+- [SINGLE-SEED] [DEVICE-SCOPED: 3080/WSL] The CUDA
+  runtime ladder (rungs 0-3) is green with bit-exact decode parity at
+  every rung: artifact A fully VRAM-resident (6.6 GiB u8), full
+  64-layer forward 1.6s (v 128s same-process CPU reference, per-layer
+  hidden rel err max 6e-6, backend KL 4.2e-8), 32 coherent greedy
+  tokens at 0.41s/tok; free VRAM measured 8.86-9.51 GiB so artifact C
+  (8.77 GiB) cannot run on this card; on a 700-token QM prompt A
+  degrades into a repetition loop — first function-space crack, with
+  the greedy-loop confound named (MODEL-1, not chat reads, will
+  adjudicate). ([OBSERVATION
+  QWEN-CUDA-LADDER-0](RESULTS.md#L33515 "id:2026-08-17-observation-qwen-cuda-ladder-0-rungs").)

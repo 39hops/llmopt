@@ -33511,3 +33511,101 @@ regression tests" for the qualification layer; measured count is 24
 Standing rule (already the e3cd2a3 lesson, now twice-earned): every
 receipt citation in a RESULTS entry is a FULL path from repo root —
 never a directory header plus bare filenames, never brace shorthand.
+
+## OBSERVATION QWEN-CUDA-LADDER-0: rungs 0-3 green — artifact A resident on the 3080, full tower 1.6s forward, 0.41s/tok generation; first function-space crack (repetition loop) on a harder prompt (2026-08-17, 3080/WSL)
+
+The registered CUDA leg, climbed by the reviewer-shaped ladder
+(design pre-review adopted 2026-08-17: rung 0 toolchain, rung 1
+decode parity, rung 2 fused GEMV, rung 3 tower). Every rung is a
+receipt with derived provenance. DESCRIPTIVE ONLY: no tree
+quantities on this device (device rule); chat reads never gate.
+
+RUNG 0 (logs/qwencuda/rung0.json, code_commit eb386df): Triton
+3.7.1 compiles and runs on the WSL venv (no host C compiler
+needed), add kernel bit-exact. Free VRAM MEASURED 8.86-9.51 GiB of
+10.0 (compositor variance) — artifact C (8.773 GiB) does not fit
+this card before any KV/activations exist; the "~1.2GB headroom"
+in handoff -3 used the 10.0 total as denominator and is retired by
+this measurement. A (6.501) leaves ~2.4-3.0 GiB.
+
+RUNG 1 (logs/qwencuda/rung1.json, code_commit 8755ad9): Triton
+VQ2 decode kernel (the "W4" payload is a 2-bit VECTOR quantizer —
+u8 index selects an fp16 row-of-4; reviewer catch, arithmetic
+closes: 2.0625 bits x 27e9 / 8 = 6.48 GiB v booked 6.501)
+BIT-EXACT (tolerance 0) v qcodec.dec_w4 on 7 fixtures incl. exp
+0/127/255 edges, and on the real L33 in_proj_qkv 10240x5120
+(13.5MB payload) from the QUALIFIED artifact. Scales precomputed
+host-side with the canonical np.exp2 — no device exp2 in the
+parity surface.
+
+RUNG 2 (logs/qwencuda/rung2.json): fused decode+GEMV (zero weight
+bytes materialized to DRAM), rel err 1.38e-7 v float64 reference
+(fp32 torch.mv itself: 4.36e-7 — the fused kernel is TIGHTER),
+median 76.8us for the 13.5MB payload = 176 GB/s effective
+compressed bandwidth; 3.9x faster than resident-fp32 torch.mv
+(296us) because compressed reads are 15.6x less DRAM traffic.
+Registered protocol: 10 warmup, 50 reps, cuda events, p10/p90 in
+receipt. Ceiling arithmetic: memory-bound limit ~109 tok/s at
+vendor ~760 GB/s; this kernel is ~4x off ceiling (lookup-bound).
+
+RUNG 3 (logs/qwencuda/rung3_forward1.json, code_commit ab40e0d):
+all 64 layers' payloads VRAM-resident as u8 (~6.6 GiB incl.
+lm_head; uploaded in 2s), per-layer Triton decode to fp32 in a
+pre-hook, freed post-layer; scales rebuilt IN-KERNEL by exponent
+bit-construction ((e<<23) bitcast, e=0 subnormal special-cased,
+e=255 = inf free) — the 7-fixture parity gate re-runs in-process
+against this kernel and passed bit-exact (the exp-0 subnormal
+SURVIVES; no flush). Full tower forward 1.6s v 128s CPU reference
+in the SAME process (same prompt, same qualification): per-layer
+hidden-state rel err max 6.03e-6 / median 1.62e-6 (v the ~2e-3
+trained-network envelope, V4-F1b), backend_agreement_kl_vs_cpu_ref
+4.21e-8, argmax agrees at CPU top-1 margin 3.33 (not a near-tie).
+Peak alloc 7.89 GiB / reserved 8.44. lm_head logits LAST POSITION
+ONLY (fp32 full-prefill logits at vocab 248320 would not fit —
+reviewer B4).
+
+GENERATION (logs/qwencuda/rung3_gen32.json): 32 KV-cached greedy
+tokens in 13.1s = 0.41s/tok, coherent, same Paris-answer shape as
+the CPU milestone. NOT a booked speed comparison v the 117.3s/tok
+CPU reference (different device, different regime — that number
+was the deliberately naive streaming reference and is not a
+denominator). Incident during bring-up, fixed same session: the
+gen branch rebuilt a second cuda model with the first still
+resident (~13 GiB) and WSL oversubscription hung >10 min silently
+— the fix reuses the live model; lesson matches the
+one-resident-30B rule, GPU edition.
+
+HARDER-PROMPT COLOR (logs/qwencuda/gen_qm1.json,
+logs/qwencuda/gen_qm2.json; descriptive, n=1 prompt, no gate): QM
+phase-plus-Hadamard question. At 200 tokens A sets up the problem
+correctly (amplitudes, phase, H matrix) and runs out of budget; at
+700 tokens it DEGRADES INTO A REPETITION LOOP ("So the state is
+... Let me think about this differently ..." cycling, never
+reaching P(0) = (1+cos pi/3)/2 = 3/4). First function-space crack
+observed in artifact A. CONFOUND, named: greedy decoding loops
+healthy models too; A-alone cannot separate 2-bit damage from
+greedy repetition. The teacher rollout (running, Mac) and MODEL-1
+X/K on the corpus are the instruments that separate them; this
+observation gates nothing.
+
+ARTIFACT B ATTEMPT: refused correctly downstream — B's io tensors
+are S16 and the driver's io path parsed them as w4 (garbage io,
+non-finite logits; the fail-closed finite-logits assert caught
+it). Driver now REFUSES non-w4 io explicitly (commit at HEAD); an
+S16 GPU path is a named future rung (reviewer S3 deferred it —
+correctly, as it turned out, minus the missing refusal).
+
+FENCES: single prompt family, greedy only, no repetition penalty;
+tok/s figures are single-run engineering measurements on a WSL box
+sharing the GPU with a desktop (spread unreported at tower scale —
+rung 2's 50-rep protocol is the template for any booked speed
+claim); per-layer decode materializes ~27 GB fp32 per token
+(kernel_form per_layer_decode_then_dense) — the fused-GEMV decode
+path (rung 2's kernel per projection) is the registered next lever
+toward the ~25 tok/s projection and remains unbuilt.
+
+Receipts (explicit full paths, all locked this commit):
+logs/qwencuda/rung0.json, logs/qwencuda/rung1.json,
+logs/qwencuda/rung2.json, logs/qwencuda/rung3_forward1.json,
+logs/qwencuda/rung3_gen32.json, logs/qwencuda/gen_qm1.json,
+logs/qwencuda/gen_qm2.json.

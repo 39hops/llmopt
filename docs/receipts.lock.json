@@ -434,6 +434,59 @@
    "exists": false,
    "source": "results"
   },
+  "logs/qwencuda/gen_qm1.json": {
+   "bytes": 1430,
+   "exists": true,
+   "local_only": true,
+   "sha256": "d41c6d97ae91a262e8e628282eb03c09fc5a3d6654aca0e6f73ee19d74134b51",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/qwencuda/gen_qm2.json": {
+   "bytes": 2786,
+   "exists": true,
+   "local_only": true,
+   "sha256": "520fed705ea508b0b5623d192e2525dd6a4c9acbbba4975e3ca5b4bb527d0db0",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/qwencuda/rung0.json": {
+   "bytes": 414,
+   "exists": true,
+   "sha256": "867153f1ac3546acbf2a250b557ce856b1745d879eb8dd5cad75426a7187f2dd",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwencuda/rung1.json": {
+   "bytes": 904,
+   "exists": true,
+   "sha256": "ff8155c2748f072cfb339d94eb00d233fe538e35968c280f1b01bfdf81e4ae57",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwencuda/rung2.json": {
+   "bytes": 795,
+   "exists": true,
+   "sha256": "3e0c816c168da52c284af04f97cf9a11c22de361a826e400c34a985f078a48f8",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwencuda/rung3_forward1.json": {
+   "bytes": 1876,
+   "exists": true,
+   "local_only": true,
+   "sha256": "1a25d4edccfd90a1d053b03ab279dc0dcbf26ee5c9c9c37775d6905caedfd97e",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/qwencuda/rung3_gen32.json": {
+   "bytes": 987,
+   "exists": true,
+   "local_only": true,
+   "sha256": "8e7ee37f47e708fe860e60f9b12a0af9d19ba209b2a9ab0f2dabeffc1d4a3472",
+   "source": "results",
+   "tracked": false
+  },
   "logs/qwenprobe/L32.jsonl": {
    "bytes": 901,
    "exists": true,
