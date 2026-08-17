@@ -1,0 +1,32 @@
+The measurement of information content in a signal, formalized by
+Shannon, connects the probability of a symbol to the number of bits
+required to encode it. Rare events carry more information than
+common ones, and the entropy of a source is the expected
+information per symbol. Compression algorithms approach this bound
+by assigning shorter codes to frequent patterns.
+
+def merge_sorted(a, b):
+    out = []
+    i = j = 0
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            out.append(a[i]); i += 1
+        else:
+            out.append(b[j]); j += 1
+    return out + a[i:] + b[j:]
+
+The Treaty of Westphalia in 1648 is often cited as the origin of
+the modern state system, establishing principles of territorial
+sovereignty that shaped international law for centuries. Historians
+debate how sharp the break actually was, noting that overlapping
+authorities persisted long after.
+
+If f(x) = x^2 e^x, then f'(x) = 2x e^x + x^2 e^x = x e^x (2 + x),
+so the critical points satisfy x = 0 or x = -2. The second
+derivative test distinguishes the local minimum at x = 0 from the
+local maximum at x = -2.
+
+She packed the last of the equipment into the canoe as the mist
+lifted off the river, and for a moment the only sound was water
+against the hull. Whatever waited upstream had waited a long time
+already; another hour would not change it.

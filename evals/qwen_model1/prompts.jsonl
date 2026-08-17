@@ -1,0 +1,24 @@
+{"id": "chat-1", "cat": "chat", "prompt": "Explain why binary search is O(log n)."}
+{"id": "chat-2", "cat": "chat", "prompt": "What are the tradeoffs between renting and buying a home?"}
+{"id": "chat-3", "cat": "chat", "prompt": "Summarize how a refrigerator works in three sentences."}
+{"id": "chat-4", "cat": "chat", "prompt": "Write a short, polite email declining a meeting invitation."}
+{"id": "math-1", "cat": "math", "prompt": "Compute 47 * 83 step by step."}
+{"id": "math-2", "cat": "math", "prompt": "Expand and simplify (2x + 3)(x - 5)."}
+{"id": "math-3", "cat": "math", "prompt": "A train travels 240 km in 3 hours. How long will 400 km take at the same speed?"}
+{"id": "math-4", "cat": "math", "prompt": "What is the derivative of x^3 * sin(x)?"}
+{"id": "code-1", "cat": "code", "prompt": "Write a Python function that returns the n-th Fibonacci number iteratively."}
+{"id": "code-2", "cat": "code", "prompt": "Find the bug: def mean(xs): return sum(xs) / len(xs) if xs else 0. What happens for xs = []? Explain."}
+{"id": "code-3", "cat": "code", "prompt": "Write a SQL query that returns the three most recent orders per customer."}
+{"id": "code-4", "cat": "code", "prompt": "Explain the difference between a mutex and a semaphore with a short code sketch."}
+{"id": "reason-1", "cat": "reasoning", "prompt": "Alice is taller than Bob. Carol is shorter than Bob. Dana is taller than Alice. Order them by height."}
+{"id": "reason-2", "cat": "reasoning", "prompt": "If all bloops are razzies and some razzies are lazzies, can we conclude some bloops are lazzies? Explain."}
+{"id": "reason-3", "cat": "reasoning", "prompt": "You have a 3-liter jug and a 5-liter jug. Measure exactly 4 liters. Give the steps."}
+{"id": "reason-4", "cat": "reasoning", "prompt": "Why can't a chess bishop ever change square color? One paragraph."}
+{"id": "know-1", "cat": "knowledge", "prompt": "What causes seasons on Earth?"}
+{"id": "know-2", "cat": "knowledge", "prompt": "Name the four fundamental forces of physics and one sentence each."}
+{"id": "know-3", "cat": "knowledge", "prompt": "What is the difference between RAM and disk storage?"}
+{"id": "know-4", "cat": "knowledge", "prompt": "Who wrote 'One Hundred Years of Solitude' and what genre is it associated with?"}
+{"id": "long-1", "cat": "long", "prompt": "Write a 200-word story about a lighthouse keeper who discovers something unusual in the fog."}
+{"id": "long-2", "cat": "long", "prompt": "Draft a step-by-step beginner's guide to making bread, at least 10 steps."}
+{"id": "edge-1", "cat": "degeneration", "prompt": "Repeat the word 'sea' exactly five times, then stop."}
+{"id": "edge-2", "cat": "degeneration", "prompt": "Reply with exactly one word: what color is a stop sign?"}
