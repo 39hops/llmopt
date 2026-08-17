@@ -32698,3 +32698,30 @@ logs/qwenprobe/L48.jsonl, logs/qwenprobe/L56.jsonl (plus
 logs/qwenprobe/L32.jsonl already locked). House note: shorthand
 never again in a receipt citation; the structured prereg receipts
 field remains the real fix.
+
+## AMENDMENT QWEN-CENSUS-WORDING (amends OBSERVATION QWEN-FFN-CENSUS-0 L32655 and OBSERVATION QWEN-BYTE-CENSUS-0 L32618): the scalar mechanism is a central-gap effect, not strictly a zero-level effect, and the census closes the WEIGHT budget, not the runtime budget (2026-08-17, Mac)
+
+Two wording narrowings (GPT seat; house verified both against the
+receipts before adopting).
+(1) -FFN-CENSUS-0 said "a zero level is worth more than a fourth
+level." S2's own DP alphabet REFUTES the strict form: the optimal
+4-level scalar does not choose zero — it chooses two near-zero
+levels (+-0.119 to +-0.124). The measured defect is U4's CENTRAL
+GAP: mid-rise {-1,-1/3,+1/3,+1} has no level between -1/3 and
++1/3 while 80-83% of normalized mass lives there. Corrected
+reading: Qwen's zero-concentrated blocks need FINER CENTRAL
+reconstruction levels than fixed mid-rise U4 provides; ternary
+wins over U4 by having A central level, and S2 wins over both by
+having two better-placed ones. The adopted rule is unchanged
+(scalar fallback = S2-DP, alphabets are distribution-bound).
+Named rider, not blocking WHOLE-0T: fraction of the U4-minus-T
+error difference attributable to |w| < 1/3.
+(2) -BYTE-CENSUS-0's "the 10GB-3080 budget closes with headroom"
+overclaims scope. What the census proves: the WEIGHT-PAYLOAD
+budget closes (text-only 6.56 GiB uniform; ~7.2-7.8 GiB with
+linear-attn at 3-4 bpw). Runtime residency — KV/state caches,
+activations, CUDA workspaces, codebook tables, kernel scratch —
+is UNMEASURED and stays open until the first inference receipt.
+The 8.9 GiB worst-case allocation is storage-feasible, not
+demonstrated-runnable. The 7.5-8 GiB engineering target stands
+precisely to leave that unproven margin.

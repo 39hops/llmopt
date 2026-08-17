@@ -6209,10 +6209,30 @@ honest status column).
   products, uint8 indices, E8M0 scales — never materialize fp16
   weights; the axiom C++ leg's y = C(W)x target). V4 WHOLE-0
   returns after, as the compiler-correctness rung.
-  Testable residue: (1) FFN ordering stability across Qwen depth;
-  (2) whether the FFN codec destroys attention/embeddings; (3)
-  greedy agreement of a ~2-bpw 27B on a 10GB card; (4) the
-  entropy-curve comparison V4-experts v Qwen-dense as the first
-  cross-model rate-distortion reading.
+  Testable residue: (1) FFN ordering stability across Qwen depth —
+  MEASURED SAME NIGHT (QWEN-FFN-CENSUS-0: stable 4/4, stop-rule
+  fired); (2) whether the FFN codec destroys attention/embeddings
+  — open, and UPGRADED per the 02:39 refinement: the family probes
+  are RATE probes (S2@2b, W4@2b, ~4b reference each) answering
+  "cheapest acceptable rate", not codec-only; linear_attn (20%)
+  first and classified by TENSOR ROLE (projections v state/conv/
+  gating vectors — small numerically-special tensors passthrough,
+  the compiler operates on a role table, never family==codec); (3)
+  greedy agreement of a ~2-bpw 27B on a 10GB card — eval FROZEN
+  pre-artifact 2026-08-17 (evals/qwen_model1/, teacher-forced
+  core, no-retuning rule); (4) the entropy-curve comparison
+  V4-experts v Qwen-dense. ADOPTED STOP CONDITION (GPT seat,
+  verbatim intent): after the four non-FFN family probes, no
+  further weight-anatomy experiment may block QWEN-WHOLE-0T
+  unless a probe shows catastrophic reconstruction at every
+  budget-compatible rate — the program is now optimized for
+  reaching "coherent generation YES/NO on the 3080", not for
+  compression science without end. DEPENDENCY NOTE: the promotion
+  gate must bless a SHARED codec module that the Qwen compressor
+  imports — promoting streamwd_v2.py while qwen_whole copies the
+  old kmeans would recreate the dual-copy seam; codebook creation
+  records source tensor hash, seed, codec params, codebook hash,
+  realized bytes, code commit. MTP (1.5%) scope decision is
+  explicit in the WHOLE-0T pre-reg, never a silent drop.
   Attribution: Artin (ask, framing, GO), GPT seat (program), house
   (fences, instruments).
