@@ -34216,3 +34216,47 @@ prereg-auditor NO BLOCKERS (six should-fixes adopted here or in
 code); receipt-auditor NO BLOCKERS (four should-fixes adopted:
 chain sha now a scorer receipt field, recomposer alt-root
 isolation, disclosures (c)/(d)).
+## OBSERVATION QWEN-EFFORT-0: the vendor effort knob is a SYSTEM-TEXT instruction that reliably modulates deliberation dose (0 -> ~1024 -> ~1312 think tokens) while accuracy sits at CEILING on this item class — every miss is truncation-adjacent (2026-08-18, mac)
+
+Overnight probe on the EXTERNAL mlx q4 conversion of the pinned
+vendor checkpoint (mlx_lm convert, 4.501 bits/weight, ~15GB —
+which itself PASSES the deferred external-runtime smoke: mlx-lm
+0.31.3 carries qwen3_5, converts, loads, generates). FENCES:
+external artifact, NOT a house arm; free-generation chat reads —
+COLOR, gates nothing; single seed, greedy; 30 items/cell.
+Driver scratch/qwen_effort_probe.py (c060b05), rows streamed.
+
+MECHANISM FIRST: the template's reasoning_effort in {low, medium,
+xhigh} injects a literal system sentence ("Reasoning effort is
+set to xhigh. Please think carefully...") — a learned-policy
+address, not an architectural budget; enable_thinking=False
+suppresses the think block entirely.
+
+MEASURED (30 string-seeded sympy items — second derivatives of
+product/composition nests, exp-polynomial antiderivatives,
+quartic expansions; sympy symbolic-equivalence scoring, int
+family modulo additive constant; MAX_TOK 3072):
+
+  cell     correct  mean think tok  truncated  mean wall
+  nothink  30/30    0               0          193.0s
+  low      27/30    1023.6          3          173.6s
+  medium   30/30    1032.1          0          168.8s
+  xhigh    29/30    1311.8          1          168.0s
+
+READINGS (all fenced as above): (1) the knob is REAL on the dose
+axis — think-token mass steps 0 -> ~1024 -> ~1312 monotonically
+low->xhigh (low ~= medium; the vocabulary has three levels but
+measured two dose plateaus on this set). (2) accuracy is at
+CEILING for a 27B on this difficulty: every one of the 4 misses
+in 120 rows is a truncation casualty (3 of low's misses and
+xhigh's 1 miss are exactly its truncated rows) — no evidence
+effort moves CORRECTNESS here; discriminating items would need
+to be harder or the model damaged. (3) nothink is NOT cheaper in
+wall time (193s v 168-174s): with thinking suppressed the model
+writes its working into the visible answer instead.
+Receipts: logs/qweneffort/rows.jsonl + summary.json (small text,
+force-added). Follow-up armed the same morning: the identical
+item set through house arms B and C on the CUDA runtime
+(QWEN-EFFORT-QUANT-0, scratch/qwen_effort_quant.py, in flight on
+the 3080) — does compression damage the deliberation loop before
+the answers.

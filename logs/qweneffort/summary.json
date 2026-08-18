@@ -1,0 +1,37 @@
+{
+ "model": "/Users/artin/qwen_mlx_q4",
+ "n_items": 30,
+ "max_tok": 3072,
+ "code_commit": "c060b05",
+ "wall_total_s": 21103.7,
+ "cells": {
+  "nothink": {
+   "n": 30,
+   "correct": 30,
+   "truncated": 0,
+   "mean_think_tokens": 0.0,
+   "mean_wall_s": 193.0
+  },
+  "low": {
+   "n": 30,
+   "correct": 27,
+   "truncated": 3,
+   "mean_think_tokens": 1023.6,
+   "mean_wall_s": 173.6
+  },
+  "medium": {
+   "n": 30,
+   "correct": 30,
+   "truncated": 0,
+   "mean_think_tokens": 1032.1,
+   "mean_wall_s": 168.8
+  },
+  "xhigh": {
+   "n": 30,
+   "correct": 29,
+   "truncated": 1,
+   "mean_think_tokens": 1311.8,
+   "mean_wall_s": 168.0
+  }
+ }
+}
