@@ -34867,3 +34867,40 @@ No verdict changes; three readings narrow, two riders land.
 Receipts force-added: logs/qwenrouter/rk_rider.json,
 logs/qwencapacity/meter27b_r3.json.
 
+## AMENDMENT QWEN-NARROWING-POSTSCRIPT (amends AMENDMENT QWEN-RK+IO-ATTRIB+CAPACITY-NARROWING): mass-capture v faithfulness vocabulary, random-zeroed Q_mass rider, io inversion wording, dirty-flag disclosure (2026-08-18, mac)
+
+Review seat: GPT second pass, verified in-house. No verdicts or
+numbers change; vocabulary tightens and one derived column lands.
+
+1) RK vocabulary: teacher self top-k mass 0.27-0.36 is the
+   MASS-CAPTURE ceiling for any same-k selector, not a
+   "faithfulness ceiling" — set identity and intrinsic sparsity
+   are separate questions and only mass capture was measured.
+   The raw arm-over-random mass advantage is 1.89-3.56x per layer
+   (not a uniform "2-3x"); the safe sentence is "consistently
+   above random".
+2) Q_mass rider (derived from booked rk_rider.json values, no
+   recompute): Q_mass = (R_A - k/C)/(R_T - k/C), zeroed at random
+   unlike the plain ratio: L0 0.500, L21 0.269, L42 0.357,
+   L11 0.214, L32 0.259, L55 0.543. Same story as Q_recon
+   (0.29-0.70): real selection signal, far from the heuristic
+   reference.
+3) IO wording: the top1/K inversion books as a DISTRIBUTIONAL-LOSS
+   v ARGMAX-RANKING inversion; margin structure was not analyzed,
+   so no decision-boundary mechanism is claimed.
+4) Dirty flags, disclosed rather than rediscovered:
+   rk_rider.json (code_commit aaf4025) and meter27b_r3.json
+   (bab17be) both record tree_dirty=true. The dirt in both cases
+   was the session's pending doc-regeneration files (receipts
+   lock, INDEX, README) between a booking commit and its chore
+   regen commit; both producer scripts were committed at their
+   recorded shas and their blobs are unchanged at HEAD.
+5) LBAND live-run provenance wrinkle, pre-disclosed: the six
+   composes launched on the 3080 at checkout 9e62edf;
+   qwen_recompose.py records HEAD at receipt-write time, so
+   compose receipts may name a later commit than the loaded
+   producer. Verified: the producer blob f3426f2e is byte-
+   identical at 29d6b90, 9e62edf, and current HEAD, so any
+   commit drift is label-only. Future long drivers should capture
+   start_commit + producer blob sha at process entry.
+
