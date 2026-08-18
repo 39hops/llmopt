@@ -283,8 +283,11 @@ review).
   per-forward stochastic-rounding arm is a SEPARATE lever, booked
   negative n=1 with named confounds — P4 revival slot); fp64 masters are the FINAL capability rung
   for online learning (exact-vs-fp64 measured bit-identical);
-  exact arithmetic is a SPEED/DETERMINISM lever (int8-sliced beats
-  native fp64 — scratch/ozaki_*). SCOPE (per AMENDMENT RESULTS
+  exact arithmetic is an ACCURACY-PER-WALL lever, not a free
+  speedup (corrected 2026-08-18 v receipts: int8-sliced EXACT runs
+  1.07-1.35x native fp64's wall at 4.5x its accuracy; only the
+  APPROXIMATE triangular<5 arm beats fp64's wall, and RNS chains
+  break even past ~6 layers — scratch/ozaki_*, RESULTS L3934-4112). SCOPE (per AMENDMENT RESULTS
   L7226): the closure holds ABOVE INSTRUMENT SIGMA (~±1-2
   solves/120), and carries ONE named retest slot — exact-mode
   gate v rounded gate, same weights, when exact inference lands.
