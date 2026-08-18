@@ -2951,6 +2951,11 @@ QWEN-MODEL-1 teacher-baseline pass (frozen procedure, SPEC.md).
 - `sha(a: np.ndarray) -> str`
 - `main()`
 
+### scratch/qwen_teacher_sidecar.py
+Teacher v2d SIDECAR: cached-v-uncached gate on the locked rollout record (AMENDMENT QWEN-MODEL1-TREE-PINS item 3).
+
+- `main() -> int`
+
 ### scratch/qwen_whole0t.py
 QWEN-WHOLE-0T compiler (PRE-REG RESULTS L32776 + -0T-ARMS).
 
