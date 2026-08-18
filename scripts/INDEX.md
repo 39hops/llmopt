@@ -2866,6 +2866,14 @@ Symmetry ladder S1 cell 1 (pre-reg 2026-07-28): quaternionic anti-commutant mass
 Symmetry ladder S1 cells 2-3 (pre-reg 2026-07-28): project the wfloor d256 gates onto the quaternionic commutant (deletes 75% of gate mass), gate the projected init, then warm-train 1 epoch. Arm a: lambda=0; arm b: commutation penalty summed over I,J,K, ramped 0.1->1.0. R3 recipe verbatim otherwise. Usage: ARM=a|b python scratch/quat_convert.py
 
 
+### scratch/qwen_attrib_adjudicate.py
+QWEN-ATTN-ATTRIB-1 observations builder + deterministic reading.
+
+- `_m(value, metric, population, aggregation, provenance='')`
+- `build_observations(rc: dict, comp: dict) -> dict` — rc: {arm: score receipt} for B,C,F,L,Q; comp: {arm: compose
+- `resolution(outcomes: dict, meas: dict) -> tuple`
+- `main()`
+
 ### scratch/qwen_cuda_rung0.py
 CUDA leg rung 0: toolchain + VRAM budget receipt (3080/WSL).
 
