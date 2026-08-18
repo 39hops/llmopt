@@ -236,6 +236,9 @@ def main():
         raise SystemExit(f"REFUSING: no digest chain {chain}")
     q = qartifact.qualify_artifact(
         art, os.path.join(vdir, "model.safetensors.index.json"), chain)
+    # the exact chain the qualification bound to, in the receipt
+    # (receipt-audit adoption: rung0 recorded only checked/unchained)
+    q["report"]["chain_sha256"] = fsha(chain)
     MAN = q["manifest"]
     print(f"[m1] qualified {arm}: {q['report']}", flush=True)
 

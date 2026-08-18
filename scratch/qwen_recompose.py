@@ -166,7 +166,11 @@ def main():
     chain_rows += [(_sha(os.path.join(out, s + ".bin")), s + ".bin")
                    for s in shards]
     chain_txt = "".join(f"{sha}  {fn}\n" for sha, fn in chain_rows)
-    chain_path = f"logs/qwenwhole/artifact_digest_{name}.txt"
+    # smoke/alt-root isolation (receipt-audit adoption): a run
+    # against a non-default root writes suffix-isolated chain and
+    # receipt paths, never the real ones
+    suf = "" if root == os.path.expanduser("~/qwen_whole0t") else "_alt"
+    chain_path = f"logs/qwenwhole/artifact_digest_{name}{suf}.txt"
     os.makedirs("logs/qwenwhole", exist_ok=True)
     for p in (os.path.join(out, f"digest_{name}.txt"), chain_path):
         if os.path.exists(p):
@@ -180,7 +184,7 @@ def main():
           flush=True)
 
     os.makedirs("logs/qwenattrib", exist_ok=True)
-    rcpt_path = f"logs/qwenattrib/compose_{name}.json"
+    rcpt_path = f"logs/qwenattrib/compose_{name}{suf}.json"
     if os.path.exists(rcpt_path):
         raise SystemExit(f"REFUSING: {rcpt_path} exists")
     rcpt = {

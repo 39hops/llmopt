@@ -70,8 +70,14 @@ def build_observations(rc: dict, comp: dict) -> dict:
 
     X = {a: rc[a]["X"] for a in rc}
     K = {a: rc[a]["K"] for a in rc}
-    f_X = max(rc[a]["f_X"] for a in rc)
-    f_K = max(rc[a]["f_K"] for a in rc)
+    # per-CONTRAST floors (registered "max over the arms compared";
+    # the first emission used a global max over all five receipts —
+    # conservative on the dominance bars, wider on the bracket —
+    # booked as a disclosure in the ATTN-ATTRIB-1 verdict)
+    f_X = max(rc[a]["f_X"] for a in ("B", "C", "F", "L"))
+    f_K = max(rc[a]["f_K"] for a in ("B", "C", "F", "L"))
+    f_X_iso = max(rc[a]["f_X"] for a in ("B", "Q"))
+    f_K_iso = max(rc[a]["f_K"] for a in ("B", "Q"))
     meas, contrasts = {}, {}
 
     viol = 0
@@ -99,10 +105,10 @@ def build_observations(rc: dict, comp: dict) -> dict:
                        "ratio", "")
         meas["6"] = _m(abs(RXF + RXL - 1), "interaction_abs_x",
                        "positions:corpus", "mean", "")
-        meas["10"] = _m((X["Q"] - X["B"]) / f_X,
+        meas["10"] = _m((X["Q"] - X["B"]) / f_X_iso,
                         "iso_x_gap_floor_multiple_io",
                         "positions:corpus", "ratio", "")
-        meas["11"] = _m((X["B"] - X["Q"]) / f_X,
+        meas["11"] = _m((X["B"] - X["Q"]) / f_X_iso,
                         "iso_x_gap_floor_multiple_attn",
                         "positions:corpus", "ratio", "")
     if dK <= 0:
@@ -119,10 +125,10 @@ def build_observations(rc: dict, comp: dict) -> dict:
                        "ratio", "")
         meas["7"] = _m(abs(RKF + RKL - 1), "interaction_abs_k",
                        "positions:prefixes", "mean", "")
-        meas["8"] = _m((K["Q"] - K["B"]) / f_K,
+        meas["8"] = _m((K["Q"] - K["B"]) / f_K_iso,
                        "iso_k_gap_floor_multiple_io",
                        "positions:prefixes", "ratio", "")
-        meas["9"] = _m((K["B"] - K["Q"]) / f_K,
+        meas["9"] = _m((K["B"] - K["Q"]) / f_K_iso,
                        "iso_k_gap_floor_multiple_attn",
                        "positions:prefixes", "ratio", "")
 

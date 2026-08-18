@@ -437,18 +437,16 @@
   "logs/qwenattrib/attrib_observations.json": {
    "bytes": 3455,
    "exists": true,
-   "local_only": true,
    "sha256": "9907495c0fd617a0d667f9877c327aa5b46a6e93b58b3f0697a4e28b0fcc5e0e",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwenattrib/attrib_verdict.txt": {
    "bytes": 405,
    "exists": true,
-   "local_only": true,
    "sha256": "e6682246aeac58d13d49efb4b916d9b6d809f0abf766d8f6c309d065f3b5d2d2",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwenattrib/compose_F.json": {
    "exists": true,
