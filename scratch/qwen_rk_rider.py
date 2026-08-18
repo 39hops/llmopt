@@ -40,8 +40,7 @@ def main():
         c = d["per_layer"][str(li)]["ks"][str(K)]
         zt = np.load(os.path.join(OUT, f"z_vendor_L{li}.npy"))
         zsha = hashlib.sha256(zt.tobytes()).hexdigest()
-        rec = next(s for s in meta["z_sha256"]
-                   if s["layer"] == li)["sha256"]
+        rec = meta["z_sha256"][f"z_vendor_L{li}"]
         if zsha != rec:
             raise SystemExit(f"REFUSING: z_vendor_L{li} sha mismatch")
         a = np.abs(zt.astype(np.float64))
