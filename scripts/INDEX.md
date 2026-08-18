@@ -2874,6 +2874,12 @@ QWEN-ATTN-ATTRIB-1 observations builder + deterministic reading.
 - `resolution(outcomes: dict, meas: dict) -> tuple`
 - `main()`
 
+### scratch/qwen_capacity27b.py
+QWEN-CAPACITY-METER-1: the 27B cell — M = span_bits - code_entropy per family x projection on the PINNED vendor checkpoint, streaming.
+
+- `group_of(name)`
+- `main()`
+
 ### scratch/qwen_cuda_rung0.py
 CUDA leg rung 0: toolchain + VRAM budget receipt (3080/WSL).
 
@@ -2943,6 +2949,14 @@ QWEN-FAMILY-PROBE-0: cheapest acceptable RATE per non-FFN family.
 - `probe_tensor(fam, name)` — Two passes over row-chunks so 1.27B-param tensors fit VRAM:
 - `main()`
 
+### scratch/qwen_ioattrib_adjudicate.py
+QWEN-IO-ATTRIB-1 observations builder + registered resolution.
+
+- `_m(value, metric, population, aggregation, provenance='')`
+- `build_observations(rc: dict, comp: dict) -> dict`
+- `resolution(outcomes: dict, meas: dict) -> tuple`
+- `main()`
+
 ### scratch/qwen_margin_census.py
 Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-only per-bin position counts, booked once with the teacher lock, before any arm scores.
 
@@ -2975,9 +2989,19 @@ Thin CLI over llmopt.lab.qartifact — the qualification ladder.
 ### scratch/qwen_recompose.py
 QWEN-ATTN-ATTRIB-1 recomposer: build arm F/L/Q as a KEY-LEVEL byte recomposition of two frozen WHOLE-0T artifacts (PRE-REG QWEN-ATTN-ATTRIB-1; the MODEL1-TREE recomposition rules ride: no Lloyd, no DP retraining, no recompression — every payload byte is copied from an already-frozen artifact).
 
-- `promoted_keys(base_man: dict, donor_man: dict, mark: str) -> list` — Keys the donor holds at a different codec than the base AND
+- `promoted_keys(base_man: dict, donor_man: dict, mark: str, layers=None) -> list` — Keys the donor holds at a different codec than the base AND
 - `compose(base_man: dict, donor_man: dict, promote: set, read_base, read_donor, write_shard) -> dict` — Pure core: returns the new manifest. read_*(entry) -> bytes;
 - `_sha(p)`
+- `main()`
+
+### scratch/qwen_rk_census.py
+QWEN-RK-CENSUS-0: is the 2-bit artifact a faithful ROUTER?
+
+- `frozen_token_lists()`
+- `capture(build_model, tag)` — Run the frozen sequences through a model, capturing down_proj
+- `build_vendor()`
+- `build_arm()`
+- `analyze()`
 - `main()`
 
 ### scratch/qwen_runtime0r.py
