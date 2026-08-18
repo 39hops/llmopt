@@ -6519,3 +6519,20 @@ honest status column).
   Honest breaks: MoE-style routing has a discrete gate to read; a dense tower has none, so "routes to" must be OPERATIONALIZED (top activation mass? largest |contribution|? attention concentration?) before anything is testable; contextual-sparsity papers show FFN activations are predictable from the PREVIOUS layer, but they predict the SAME model's sparsity, not a quantized proxy's fidelity to it; streaming fp16 rows per token re-introduces exactly the PCIe/decode traffic the resident design eliminated — the riff pays off only if the hot set is small AND stable across steps.
   Testable residue: desk-able census on receipts we can already produce — run A and the CPU reference on the same prompt, rank FFN rows by activation mass in each, measure overlap@k of the hot sets; high overlap = the 2-bit model is a faithful router and the hybrid artifact is buildable, low overlap = the riff dies for free. /desk shape, zero training.
   Attribution: Artin (the routing ask + double-double memory), house (operationalization, anchors, breaks).
+
+  CORRECTION (2026-08-17, same day, GPT seat + house verification):
+  the kill-test as first banked compared A against "the CPU
+  reference" — but the CPU reference IS artifact A decoded through
+  qcodec (backend KL 4.2e-8), so hot-set overlap between them is
+  another backend parity test, not a router test. The comparison
+  that answers the question is COMPRESSED A v PINNED VENDOR TEACHER
+  on teacher-forced common prefixes (same input_ids, same
+  positions). Also corrected: the routed unit is not an "FFN row"
+  but the coupled intermediate channel i = (gate_proj row i,
+  up_proj row i, down_proj COLUMN i), with hot signal z_i =
+  act(W_gate_i h) * (W_up_i h); score both Jaccard overlap@k of
+  top-|z| sets AND the teacher-mass-captured fraction R_k =
+  sum_{i in TopK_A} |z_i^T| / sum_i |z_i^T| — R_k is the decisive
+  number (identity can differ while captured mass stays high; the
+  hybrid works iff R_k is high). Kill bar unchanged in spirit:
+  low R_k kills the riff for free.
