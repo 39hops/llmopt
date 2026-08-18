@@ -37,6 +37,14 @@ THE ARENA: engine vs the 0.5B step-model, same integral, live.
 - `engine_lane(level: int, seed: int, q: 'mp.Queue') -> None`
 - `main() -> None`
 
+### scripts/arena_qwen.py
+ARTIFACT ARENA: two compressed towers, one prompt, side by side.
+
+- `load(path: str) -> dict`
+- `run_pair(prompt: str, n_new: int) -> tuple[str, str]` — Fire a fresh paired run on the 3080 (one wsl.sh call, both
+- `render(lpath: str, rpath: str) -> None`
+- `main() -> None`
+
 ### scripts/autopsy_int.py
 Failure autopsy for integration: run the best structural engine (bf + NNUE h + markov top-3) at a GENEROUS budget on int L3/L4, and dump every failure — the root integrand plus the best (lowest-h) state the search died on. Both prior ceiling-movers (euler, i_apart) came from reading one failing problem; this reads all of them. Classification of the dump chooses the next rules; frequencies first, code second.
 
