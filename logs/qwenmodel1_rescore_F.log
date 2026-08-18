@@ -1,0 +1,31 @@
+[m1] qualified F: {'art_dir': '/Users/artin/qwen_whole0t/F', 'rung0': {'checked': 19, 'unchained': False}, 'conservation': {'keys': 1199}, 'census': {'w4': 336, 's16': 66, 'raw': 449, 'excluded': 348}, 'preflight': {'estimated_peak_bytes': 6504933184, 'available_bytes': 19163414528, 'safety_fraction': 0.8}, 'chain_sha256': '4db146b51e7e7610cfb7198f2236aa2948828b31f42d0f3c24424eab36f9b394'}
+[m1] decode fixture: {'model.language_model.layers.0.linear_attn.in_proj_z.weight': {'codec': 'w4', 'rel_l2_vs_vendor': 0.3222770392894745}, 'lm_head.weight': {'codec': 's16', 'rel_l2_vs_vendor': 0.10768256336450577}}
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[m1] corpus forward 78s
+[m1] CE_teacher 1.0640 CE_F 1.5845 X_F 0.52050 f_X 3.66e-05
+[m1] prefix 0 len 14 forward 63s
+[m1] prefix 1 len 9 forward 63s
+[m1] prefix 2 len 29 forward 63s
+[m1] prefix 3 len 13 forward 63s
+[m1] prefix 4 len 17 forward 63s
+[m1] prefix 5 len 16 forward 63s
+[m1] K_F 0.26381 f_K 9.46e-06
+[m1] corpus bin [0.0,0.02) n=1 flips=1 [small-n: raw counts only]
+[m1] corpus bin [0.02,0.05) n=5 flips=3 [small-n: raw counts only]
+[m1] corpus bin [0.05,0.1) n=5 flips=2 [small-n: raw counts only]
+[m1] corpus bin [0.1,0.2) n=8 flips=5 [small-n: raw counts only]
+[m1] corpus bin [0.2,0.5) n=30 flips=21
+[m1] corpus bin [0.5,1.0) n=51 flips=31
+[m1] corpus bin [1.0,2.0) n=46 flips=23
+[m1] corpus bin [2.0,5.0) n=85 flips=12
+[m1] corpus bin [5.0,inf) n=125 flips=2
+[m1] prefixes bin [0.0,0.02) n=3 flips=2 [small-n: raw counts only]
+[m1] prefixes bin [0.02,0.05) n=2 flips=2 [small-n: raw counts only]
+[m1] prefixes bin [0.05,0.1) n=2 flips=1 [small-n: raw counts only]
+[m1] prefixes bin [0.1,0.2) n=3 flips=1 [small-n: raw counts only]
+[m1] prefixes bin [0.2,0.5) n=10 flips=6 [small-n: raw counts only]
+[m1] prefixes bin [0.5,1.0) n=15 flips=4 [small-n: raw counts only]
+[m1] prefixes bin [1.0,2.0) n=16 flips=2 [small-n: raw counts only]
+[m1] prefixes bin [2.0,5.0) n=29 flips=2 [small-n: raw counts only]
+[m1] prefixes bin [5.0,inf) n=18 flips=1 [small-n: raw counts only]
+[m1] receipt -> logs/qwenmodel1/score_F_rescore.json wall 472.7s

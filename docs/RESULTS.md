@@ -35041,3 +35041,44 @@ fences — point readings, numerical floors only, arm contrasts.
    assumption retires for F-conditional arms in FUTURE preregs
    (never retroactively).
 
+## AMENDMENT QWEN-LBAND-1-DIAGNOSIS-A (amends OBSERVATION QWEN-LBAND-1-DIAGNOSIS): diagnosis step (a) closes — pair rescore of F and FLl at one producer commit reproduces X and K BIT-IDENTICALLY, the interference cell is real; corpus-likelihood-interference rider; BLe promoted to standing reference arm (2026-08-18, mac)
+
+1) SAME-COMMIT PAIR RESCORE (Artin GO; the alarm cell's only
+   untested provenance axis, run as a scorer-repeatability check):
+   scorer gained RESCORE=1 (writes score_<ARM>_rescore.json with
+   an explicit rescore flag; frozen receipts never opened) —
+   commit 74c8785, the single producer commit for BOTH legs. F
+   and FLl re-pulled from the 3080 and rescored on Mac CPU:
+   X and K reproduce to the LAST BIT for both arms
+   (F X 0.5205010927831475, FLl X 0.5242153552962903, deltas
+   exactly 0.0; K same; top1 tables identical). The rescored F's
+   qualification chain equals the frozen artifact_digest_F sha
+   (4db146b5..), closing the gap that the original F receipt
+   predates the chain field. The 0.0037-nat FLl-over-F cell
+   SURVIVES same-commit remeasurement: measured interference,
+   scorer fully repeatable on this substrate, provenance closed.
+2) CORPUS-LIKELIHOOD-INTERFERENCE RIDER (from booked receipts,
+   GPT catch verified): FLl's corpus X worsens (+0.0037 nats over
+   F) while its corpus teacher-top1 IMPROVES 71.91% -> 73.03%,
+   and prefix K (0.2638 -> 0.2237) and prefix top1 (78.57% ->
+   79.59%) both improve. The alarm is corpus TARGET-LIKELIHOOD
+   interference, not global degradation — the late band shifts
+   probability mass off the teacher's corpus tokens without
+   hurting argmax agreement anywhere. Point readings, no
+   sampling fence; distributional-loss v argmax wording per the
+   narrowing amendment.
+3) BLe RULING (Artin): standing REFERENCE ARM in the next
+   registered allocation ladder — it beats F on X, K, corpus
+   top1, prefix top1, and both per-byte utilities at near-iso
+   spend (+18%). NOT a deployment default: promotion requires a
+   cheap runtime/free-generation screen first (the EFFORT-QUANT
+   lesson — teacher-forced wins do not certify generation).
+4) FUTURE-PREREG RULE (forward-only, never retroactive): machine
+   preregs from here encode alarm -> refutation precedence in the
+   registered JSON (an explicit field the adjudicator reads),
+   not in adjudicator code alone. LBAND-1's registration stands
+   as booked with its disclosure.
+
+Receipts (force-added): logs/qwenmodel1/score_F_rescore.json,
+score_FLl_rescore.json, logs/qwenmodel1_rescore_{F,FLl}.log.
+

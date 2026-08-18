@@ -722,6 +722,13 @@
    "pending": true,
    "source": "prereg"
   },
+  "logs/qwenmodel1/score_F_rescore.json": {
+   "bytes": 1799,
+   "exists": true,
+   "sha256": "e00c324ab4dd8ff08992317b27d3595d47f89d1f54cdc7a6bb0bd2d3b5e35fd1",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwenmodel1/score_L.json": {
    "exists": true,
    "pending": true,
