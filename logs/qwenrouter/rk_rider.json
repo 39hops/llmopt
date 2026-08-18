@@ -1,0 +1,51 @@
+{
+ "gate": "QWEN-RK-CENSUS-0 rider (descriptive)",
+ "k": 1024,
+ "per_layer": {
+  "0": {
+   "r_k_arm": 0.2091,
+   "r_k_teacher_topk_selfmass": 0.3595,
+   "r_k_arm_over_teacher": 0.5817,
+   "r_k_random_expectation": 0.0588,
+   "q_recon_vs_topz_heuristic": 0.7019
+  },
+  "21": {
+   "r_k_arm": 0.1186,
+   "r_k_teacher_topk_selfmass": 0.281,
+   "r_k_arm_over_teacher": 0.4221,
+   "r_k_random_expectation": 0.0588,
+   "q_recon_vs_topz_heuristic": 0.3778
+  },
+  "42": {
+   "r_k_arm": 0.1394,
+   "r_k_teacher_topk_selfmass": 0.2847,
+   "r_k_arm_over_teacher": 0.4897,
+   "r_k_random_expectation": 0.0588,
+   "q_recon_vs_topz_heuristic": 0.4582
+  },
+  "11": {
+   "r_k_arm": 0.1109,
+   "r_k_teacher_topk_selfmass": 0.3026,
+   "r_k_arm_over_teacher": 0.3665,
+   "r_k_random_expectation": 0.0588,
+   "q_recon_vs_topz_heuristic": 0.3134
+  },
+  "32": {
+   "r_k_arm": 0.113,
+   "r_k_teacher_topk_selfmass": 0.2683,
+   "r_k_arm_over_teacher": 0.4212,
+   "r_k_random_expectation": 0.0588,
+   "q_recon_vs_topz_heuristic": 0.2852
+  },
+  "55": {
+   "r_k_arm": 0.199,
+   "r_k_teacher_topk_selfmass": 0.3171,
+   "r_k_arm_over_teacher": 0.6275,
+   "r_k_random_expectation": 0.0588,
+   "q_recon_vs_topz_heuristic": 0.6448
+  }
+ },
+ "census_receipt_sha256": "ebc2aa06d371763cea9c07f5f9620c04a0c27f74fbd68515b6a4940c346724a6",
+ "code_commit": "aaf4025",
+ "tree_dirty": true
+}

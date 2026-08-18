@@ -45,6 +45,18 @@
    "pattern": "RUN_TAG.{0,60}(graduat|invariant)",
    "reason": "RUN_TAG is a mitigation only. The frozen-receipt invariant is the content-addressed lock (docs/receipts.lock.json) plus CI refusal.",
    "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair"
+  },
+  {
+   "pattern": "even with perfect selection|exact (subset )?optim(um|al) selection",
+   "reason": "RK-CENSUS reconstruction references are HEURISTIC selections (teacher-top-|z|, contribution-ranked), not exact subset optima; the exact optimum is unmeasured.",
+   "superseded_by": "2026-08-18-amendment-qwen-rk-io-attrib-capacity",
+   "scope": "rk|router|top-k|recon"
+  },
+  {
+   "pattern": "embed carries (the )?CE|head carries (the )?KL",
+   "reason": "X is measured on the corpus surface and K on prefixes; the io split confounds metric with evaluation surface. Say corpus-X / prefix-K recovery.",
+   "superseded_by": "2026-08-18-amendment-qwen-rk-io-attrib-capacity",
+   "scope": "io[- ]?attrib|embed|lm_head"
   }
  ]
 }

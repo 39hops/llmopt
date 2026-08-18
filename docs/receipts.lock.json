@@ -533,6 +533,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwencapacity/meter27b_r3.json": {
+   "bytes": 4854,
+   "exists": true,
+   "sha256": "f0dc1c12cc57b0061d9f1a7d52ea1a999faa9176d4cc2cd8f0b733629138adf2",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwencuda/gen_qm1.json": {
    "bytes": 1430,
    "exists": true,
@@ -763,6 +770,13 @@
    "bytes": 6114,
    "exists": true,
    "sha256": "ebc2aa06d371763cea9c07f5f9620c04a0c27f74fbd68515b6a4940c346724a6",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenrouter/rk_rider.json": {
+   "bytes": 1349,
+   "exists": true,
+   "sha256": "ddc8188fc5d3e24226258a14eab132dd79091363b802fa578c815d49913b391b",
    "source": "results",
    "tracked": true
   },

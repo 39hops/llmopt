@@ -34796,3 +34796,74 @@ logs/qwenrouter_vendor.log, logs/qwenrouter_arm.log (the arm
 log is the chain-qualification evidence). z arrays (190 MiB/leg)
 stay untracked, regenerate-don't-download.
 
+## AMENDMENT QWEN-RK+IO-ATTRIB+CAPACITY-NARROWING (amends VERDICT QWEN-RK-CENSUS-0, VERDICT QWEN-IO-ATTRIB-1, OBSERVATION QWEN-CAPACITY-METER-1): oracle wording narrowed to heuristic + router-efficiency rider added; io mechanism re-fenced to its evaluation surfaces; capacity receipt field bug fixed and the band depth ordering verified sampling-stable (2026-08-18, mac)
+
+Review seat: GPT catches, each verified in-house before adoption.
+No verdict changes; three readings narrow, two riders land.
+
+1) RK-CENSUS-0 (verdict REFUTED stands untouched).
+- WORDING NARROWED: the booked compressibility sentence treats
+  the reconstruction reference as a selection optimum. It is not:
+  teacher-top-|z| and contribution-ranked are HEURISTIC
+  selections (the entry's own disclosure says so), not exact
+  subset optima; the exact optimal subset is unmeasured.
+  Corrected reading: NEITHER TEACHER-SIDE HEURISTIC is strongly
+  top-k reconstructive at k=1024 (32-63% residual error).
+- ROUTER-EFFICIENCY RIDER (descriptive, never a gate):
+  scratch/qwen_rk_rider.py -> logs/qwenrouter/rk_rider.json
+  (committed producer; verifies vendor z shas against the capture
+  sidecar before computing). Two normalizations at k=1024:
+  teacher's own top-1024 |z| mass R_k_teacher = 0.27-0.36 per
+  layer, so the FAITHFULNESS CEILING for any same-k selector is
+  itself low — intrinsic non-sparsity dominates the small R_k.
+  Normalized selection quality R_k(arm)/R_k_teacher = 0.37-0.63
+  v the random expectation k/C = 0.059 (0.16-0.22 normalized);
+  Q_recon = (E_random - E_arm)/(E_random - E_topz) = 0.29-0.70.
+  Reading: A carries REAL routing information (2-3x random on
+  every normalization) but not enough absolute faithfulness —
+  "not faithful enough" and "no routing information" are
+  different claims and only the first is booked.
+- Living-doc fix (RIFF-LEDGER, same-day edit): the resident-draft
+  bank now states the two prerequisites failed INDEPENDENTLY
+  (A the router screen, B the free-generation screen) and that
+  speculative acceptance rate itself was never measured.
+
+2) IO-ATTRIB-1 (verdict MIXED/UNRESOLVED stands untouched).
+- MECHANISM RE-FENCED: X is measured on the CORPUS surface and K
+  on the PREFIX surface, so the booked one-metric-per-end slogan
+  confounds metric with evaluation surface. Corrected reading:
+  embed carries CORPUS-X recovery; head carries PREFIX-K
+  recovery. Same-surface cross-metrics would be needed before
+  any metric-specific mechanism claim; none is made.
+- TOP1 RIDER (from the booked score receipts, no rerun): D's
+  prefix top1 agreement 74.49% EXCEEDS E's 72.45% even though E
+  has the far better prefix K; on corpus E's top1 62.92% edges
+  D's 62.64% while D has the better corpus CE. The split is a
+  probability-distribution v decision-boundary effect, not an
+  input-v-output slogan; banked as a future same-surface sidecar
+  question, not run now.
+
+3) CAPACITY-METER (r2 numbers stand; provenance field corrected).
+- RECEIPT BUG: meter27b_r2.json records shard_index_sha256 = 48.
+  In scratch/qwen_capacity27b.py the variable holding the index
+  sha was reused for the per-group tensor count before the
+  receipt write; the sha CHECK itself ran first against the
+  locked value, so the run was gated correctly and every numeric
+  reading is unaffected — the receipt FIELD is malformed. Fixed
+  (idx_sha) in the driver; r3 receipt records the true sha
+  (77042094...). The r2 field stays as-is on disk (frozen
+  receipt), corrected by this amendment.
+- BAND-M SAMPLING STABILITY (r3, logs/qwencapacity/
+  meter27b_r3.json, wall 56s): aggregate band M computed at
+  nested 1024/512/256 row samples. The late-heavy band ordering
+  (early < mid < late) HOLDS at all three sizes in all nine
+  projection columns (out/qkv/z x 3 bands); absolute M drifts
+  down with smaller samples (span statistic, 0.1-0.4 bits) but
+  no ordering flip anywhere. The within-projection late-heavy
+  depth gradient may therefore stand as a QUALITATIVE prospective
+  note for LBAND-1 (ordering only, never magnitudes); it is not
+  registered as a scored prediction.
+
+Receipts force-added: logs/qwenrouter/rk_rider.json,
+logs/qwencapacity/meter27b_r3.json.
+
