@@ -78,7 +78,8 @@ def group_of(name):
 def main():
     from safetensors import safe_open
     os.makedirs(OUT, exist_ok=True)
-    rcpt_path = os.path.join(OUT, "meter27b_r2.json")
+    rcpt_path = os.path.join(
+        OUT, os.environ.get("RCPT_NAME", "meter27b_r2.json"))
     if os.path.exists(rcpt_path):
         raise SystemExit(f"REFUSING: {rcpt_path} exists")
     idx_path = os.path.join(VDIR, "model.safetensors.index.json")
@@ -112,6 +113,7 @@ def main():
             m_quar, _ = cm.meter(W[rows[::4]].float())
             drift = max(abs(m - m_half), abs(m - m_quar))
         else:
+            m_half = m_quar = m
             drift = 0.0
         n = len(rows) * W.shape[1]
         keys = [g]
@@ -121,8 +123,15 @@ def main():
             keys.append(f"{g}:band{band}")
         for key in keys:
             a = agg.setdefault(key, {"wm": 0.0, "wk": 0.0, "n": 0,
-                                     "tensors": 0, "max_drift": 0.0})
+                                     "tensors": 0, "max_drift": 0.0,
+                                     "wm_half": 0.0, "wm_quar": 0.0})
             a["wm"] += m * n
+            # aggregate-band stability: the same nested half/quarter
+            # meters aggregate n-weighted, so band-level M is
+            # readable at three nested sample sizes, not only the
+            # per-tensor drift maximum
+            a["wm_half"] += m_half * n
+            a["wm_quar"] += m_quar * n
             a["wk"] += k * n
             a["n"] += n
             a["tensors"] += 1
@@ -138,6 +147,8 @@ def main():
             raise SystemExit(f"REFUSING: group {g} matched {got} "
                              f"tensors, tower has {exp}")
     groups = {key: {"M_bits": round(a["wm"] / a["n"], 3),
+                    "M_bits_half_rows": round(a["wm_half"] / a["n"], 3),
+                    "M_bits_quarter_rows": round(a["wm_quar"] / a["n"], 3),
                     "kurtosis": round(a["wk"] / a["n"], 2),
                     "tensors": a["tensors"],
                     "sampled_params_M": round(a["n"] / 1e6, 1),
