@@ -1,0 +1,159 @@
+{
+ "gate": "QWEN-CAPACITY-METER-1 (diagnostic, never allocator)",
+ "vendor_dir": "/Users/artin/qwen_vendor",
+ "shard_index_sha256": 48,
+ "max_rows_sampled": 1024,
+ "groups": {
+  "ffn:down": {
+   "M_bits": 3.763,
+   "kurtosis": 4.48,
+   "tensors": 64,
+   "sampled_params_M": 1140.9,
+   "sampled_M_max_drift_bits": 1.002
+  },
+  "ffn:gate": {
+   "M_bits": 3.028,
+   "kurtosis": 3.33,
+   "tensors": 64,
+   "sampled_params_M": 335.5,
+   "sampled_M_max_drift_bits": 2.001
+  },
+  "ffn:up": {
+   "M_bits": 2.747,
+   "kurtosis": 3.16,
+   "tensors": 64,
+   "sampled_params_M": 335.5,
+   "sampled_M_max_drift_bits": 1.0
+  },
+  "full_attn:k": {
+   "M_bits": 3.948,
+   "kurtosis": 5.12,
+   "tensors": 16,
+   "sampled_params_M": 83.9,
+   "sampled_M_max_drift_bits": 1.002
+  },
+  "full_attn:o": {
+   "M_bits": 3.312,
+   "kurtosis": 4.49,
+   "tensors": 16,
+   "sampled_params_M": 100.7,
+   "sampled_M_max_drift_bits": 1.004
+  },
+  "full_attn:q": {
+   "M_bits": 3.059,
+   "kurtosis": 3.8,
+   "tensors": 16,
+   "sampled_params_M": 83.9,
+   "sampled_M_max_drift_bits": 1.0
+  },
+  "full_attn:v": {
+   "M_bits": 3.818,
+   "kurtosis": 4.58,
+   "tensors": 16,
+   "sampled_params_M": 83.9,
+   "sampled_M_max_drift_bits": 1.0
+  },
+  "io:embed": {
+   "M_bits": 2.934,
+   "kurtosis": 3.28,
+   "tensors": 1,
+   "sampled_params_M": 5.2,
+   "sampled_M_max_drift_bits": 1.0
+  },
+  "io:lm_head": {
+   "M_bits": 3.937,
+   "kurtosis": 3.58,
+   "tensors": 1,
+   "sampled_params_M": 5.2,
+   "sampled_M_max_drift_bits": 1.0
+  },
+  "linear_attn:out": {
+   "M_bits": 3.56,
+   "kurtosis": 14.44,
+   "tensors": 48,
+   "sampled_params_M": 302.0,
+   "sampled_M_max_drift_bits": 2.002
+  },
+  "linear_attn:out:band0": {
+   "M_bits": 3.121,
+   "kurtosis": 32.36,
+   "tensors": 16,
+   "sampled_params_M": 100.7,
+   "sampled_M_max_drift_bits": 1.0
+  },
+  "linear_attn:out:band1": {
+   "M_bits": 3.623,
+   "kurtosis": 6.1,
+   "tensors": 16,
+   "sampled_params_M": 100.7,
+   "sampled_M_max_drift_bits": 2.001
+  },
+  "linear_attn:out:band2": {
+   "M_bits": 3.936,
+   "kurtosis": 4.86,
+   "tensors": 16,
+   "sampled_params_M": 100.7,
+   "sampled_M_max_drift_bits": 2.002
+  },
+  "linear_attn:qkv": {
+   "M_bits": 3.163,
+   "kurtosis": 3.44,
+   "tensors": 48,
+   "sampled_params_M": 251.7,
+   "sampled_M_max_drift_bits": 1.001
+  },
+  "linear_attn:qkv:band0": {
+   "M_bits": 2.996,
+   "kurtosis": 3.34,
+   "tensors": 16,
+   "sampled_params_M": 83.9,
+   "sampled_M_max_drift_bits": 1.0
+  },
+  "linear_attn:qkv:band1": {
+   "M_bits": 3.122,
+   "kurtosis": 3.44,
+   "tensors": 16,
+   "sampled_params_M": 83.9,
+   "sampled_M_max_drift_bits": 1.001
+  },
+  "linear_attn:qkv:band2": {
+   "M_bits": 3.372,
+   "kurtosis": 3.53,
+   "tensors": 16,
+   "sampled_params_M": 83.9,
+   "sampled_M_max_drift_bits": 1.001
+  },
+  "linear_attn:z": {
+   "M_bits": 3.163,
+   "kurtosis": 3.32,
+   "tensors": 48,
+   "sampled_params_M": 251.7,
+   "sampled_M_max_drift_bits": 1.001
+  },
+  "linear_attn:z:band0": {
+   "M_bits": 2.996,
+   "kurtosis": 3.23,
+   "tensors": 16,
+   "sampled_params_M": 83.9,
+   "sampled_M_max_drift_bits": 1.0
+  },
+  "linear_attn:z:band1": {
+   "M_bits": 3.184,
+   "kurtosis": 3.35,
+   "tensors": 16,
+   "sampled_params_M": 83.9,
+   "sampled_M_max_drift_bits": 1.001
+  },
+  "linear_attn:z:band2": {
+   "M_bits": 3.309,
+   "kurtosis": 3.37,
+   "tensors": 16,
+   "sampled_params_M": 83.9,
+   "sampled_M_max_drift_bits": 1.0
+  }
+ },
+ "family_M_spread_bits": 1.201,
+ "code_commit": "9967140",
+ "tree_dirty": true,
+ "wall_s": 56.5
+}

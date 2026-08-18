@@ -512,8 +512,11 @@
    "source": "prereg"
   },
   "logs/qwencapacity/meter27b.json": {
-   "exists": false,
-   "source": "results"
+   "bytes": 2756,
+   "exists": true,
+   "sha256": "3e874e083b94689646bb48a0027182395a941856a4758ff3e354d6a608d0b5c3",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwencuda/gen_qm1.json": {
    "bytes": 1430,

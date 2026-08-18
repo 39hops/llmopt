@@ -34579,3 +34579,64 @@ FENCES: weight-space quantity — the never-score-weights law caps
 every reading; no MODEL-2 rate table may cite M alone; desk,
 single sampling seed. Receipt: logs/qwencapacity/meter27b.json
 (force-added).
+## AMENDMENT QWEN-EFFORT-QUANT-0+CAPACITY-METER-1-CORRECTIONS (amends OBSERVATION QWEN-EFFORT-QUANT-0 and OBSERVATION QWEN-CAPACITY-METER-1): comparator misnamed, think-encoding fixed, MTP leaked into the meter aggregates, and the sampled-M stability rider FIRES — the family ordering does not survive, the depth/kurtosis structures do (2026-08-18, mac)
+
+GPT-seat review catches, every one verified in-house before
+adoption; frozen receipts stand, corrections book here.
+
+EFFORT-QUANT-0: (1) the heading's "external q6-class reference"
+is WRONG — the 30/30 comparator was the mlx q4 conversion at
+4.501 bpw (EFFORT-0's subject; q6 was converted later and never
+scored on these items). (2) think_tokens=0 on unterminated
+blocks encoded the OPPOSITE of what happened (the entire
+generation was deliberation); the frozen rows keep the old
+encoding disclosed here, and both effort drivers now book
+think_terminated + null-when-unterminated with the summary
+split into n_think_unterminated and
+mean_think_tokens_terminated. (3) CLAIM NARROWED as registered
+wording: "compression damages deliberation" reads as SEVERE
+LONG-HORIZON FAILURE OF ARM B RELATIVE TO THE EXTERNAL MLX Q4
+COMPARATOR on this item class — the pinned vendor teacher has
+not adjudicated these prompts; until it does, teacher-relative
+deliberation damage is unmeasured. (4) Tokenizer/template
+parity rider run: 60/60 paired prompts produce IDENTICAL
+template strings and token ids across the mlx and vendor
+tokenizers — the comparison is not a template artifact. (5)
+Prior-rationale correction carried to RK-CENSUS-0: rung-3's
+backend KL 4.2e-8 was A-CPU v A-CUDA PARITY, not A-v-vendor
+hidden-state fidelity; the R_k prior keeps only the monotone
+repair ladder as its rationale, confidence unchanged-to-weaker.
+
+CAPACITY-METER-1: (1) r1 CONTAMINATED — the group regexes did
+not anchor on model.language_model.layers, so mtp.layers.0 (an
+EXCLUDED module) leaked into the ffn (65 tensors, tower has 64)
+and full-attn (17 v 16) aggregates. r2
+(logs/qwencapacity/meter27b_r2.json, scoped regexes + exact
+count assertions 1/1/64x3/16x4/48x3) books: spread 1.201 bits,
+ordering full_attn:k 3.948 > io:lm_head 3.937 > full_attn:v
+3.818 > ffn:down 3.763 > linear:out 3.560 > ... > io:embed
+2.934 > ffn:up 2.747. The r1 booked row stands as the record of
+the contaminated run; r2 is the reading. r2's tree_dirty=True is
+in-flight edits to OTHER drivers (the meter's own producer file
+was committed pre-run at its recorded commit). (2) THE
+STABILITY RIDER FIRES: sampled-M drifts 1.0-2.0 bits under
+nested half/quarter subsampling — the SAME magnitude as the
+family spread — and cross-group comparisons are additionally
+confounded by element-count differences (a down_proj row is
+17,408 wide v 5,120). CONSEQUENCE: the family ORDERING is not
+robust at this sampling and no cross-family M claim survives
+(the r1/r2 "lm_head top" class of statement is retracted to
+sampled-M-at-1024-rows only). What SURVIVES: (a) the
+within-projection depth gradients (matched width and row count
+across bands — linear out/qkv/z all late-heavy in M); (b) the
+kurtosis readings (moment-based, not span-based): linear:out
+14.44 v everything else 3.2-5.1, and its DEPTH PROFILE INVERTS
+the M gradient (band kurtosis 32.4 -> 6.1 -> 4.9, EARLY-heavy)
+— outlier-pressure-as-span and outlier-pressure-as-tails are
+different dials and are now kept separate; (c) the headline
+diagnostic conclusion A FORTIORI: weight-space M cannot
+retrodict the functional ordering — it cannot even stabilize
+its own. (3) The registered natural-language FLATNESS component
+of the prior (spread within ~0.5 bits) is booked MISSED
+outright (1.201 measured); the mechanical NOT-REFUTED verdict
+of the bundled clause stands unchanged.

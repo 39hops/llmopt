@@ -88,15 +88,22 @@ def main():
             gen = out_ids[0][ids.shape[1]:]
             out = tok.decode(gen, skip_special_tokens=False)
             think, vis = ("", out)
-            if "</think>" in out:
+            terminated = "</think>" in out
+            if terminated:
                 think, vis = out.split("</think>", 1)
             ans = ep.parse_answer(vis)
             ok = bool(ans and ep.check(ans, it["truth"]))
+            # an UNTERMINATED think block books terminated=false with
+            # think_tokens=null — never 0 (the whole generation was
+            # deliberation; 0 encoded the opposite. EFFORT-QUANT-0's
+            # frozen rows carry the old encoding, disclosed by
+            # amendment)
             row = {"arm": ARM, "cell": cell, "id": it["id"],
                    "family": it["family"], "correct": ok,
                    "answer": ans, "truth": it["truth"],
-                   "think_tokens": len(tok.encode(think)) if think
-                   else 0,
+                   "think_terminated": terminated,
+                   "think_tokens": (len(tok.encode(think))
+                                    if terminated else None),
                    "out_tokens": int(len(gen)),
                    "truncated": bool(len(gen) >= MAX_TOK - 2),
                    "wall_s": round(wall, 1),
@@ -117,9 +124,13 @@ def main():
         summ["cells"][cell] = {
             "n": len(cr), "correct": sum(r["correct"] for r in cr),
             "truncated": sum(r["truncated"] for r in cr),
-            "mean_think_tokens": round(sum(r["think_tokens"]
-                                           for r in cr)
-                                       / max(len(cr), 1), 1),
+            "n_think_unterminated": sum(
+                1 for r in cr if not r.get("think_terminated", True)),
+            "mean_think_tokens_terminated": round(
+                sum(r["think_tokens"] for r in cr
+                    if r.get("think_tokens") is not None)
+                / max(sum(1 for r in cr
+                          if r.get("think_tokens") is not None), 1), 1),
             "mean_wall_s": round(sum(r["wall_s"] for r in cr)
                                  / max(len(cr), 1), 1)}
     with open(os.path.join(OUT, f"summary_quant_{ARM}.json"),

@@ -117,13 +117,17 @@ def main():
             wall = time.time() - t0
             think = ""
             vis = out
-            if "</think>" in out:
+            terminated = "</think>" in out
+            if terminated:
                 think, vis = out.split("</think>", 1)
             ans = parse_answer(vis)
             ok = bool(ans and check(ans, it["truth"]))
             row = {"cell": cell, "id": it["id"], "family": it["family"],
                    "correct": ok, "answer": ans, "truth": it["truth"],
-                   "think_tokens": len(tok.encode(think)) if think else 0,
+                   "think_terminated": terminated,
+                   "think_tokens": (len(tok.encode(think))
+                                    if terminated and think else 0
+                                    if terminated else None),
                    "out_tokens": len(tok.encode(out)),
                    "truncated": len(tok.encode(out)) >= MAX_TOK - 2,
                    "wall_s": round(wall, 1), "code_commit": commit,
@@ -143,8 +147,13 @@ def main():
             "n": len(cr),
             "correct": sum(r["correct"] for r in cr),
             "truncated": sum(r["truncated"] for r in cr),
-            "mean_think_tokens": round(
-                sum(r["think_tokens"] for r in cr) / max(len(cr), 1), 1),
+            "n_think_unterminated": sum(
+                1 for r in cr if not r.get("think_terminated", True)),
+            "mean_think_tokens_terminated": round(
+                sum(r["think_tokens"] for r in cr
+                    if r.get("think_tokens") is not None)
+                / max(sum(1 for r in cr
+                          if r.get("think_tokens") is not None), 1), 1),
             "mean_wall_s": round(
                 sum(r["wall_s"] for r in cr) / max(len(cr), 1), 1)}
     with open(os.path.join(OUT, "summary.json"), "w") as f:

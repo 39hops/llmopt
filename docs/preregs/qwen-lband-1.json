@@ -1,6 +1,6 @@
 {
   "name": "QWEN-LBAND-1",
-  "note": "Mechanical projection of PRE-REG QWEN-LBAND-1. Bands frozen: linear-attn layers ascending split 16/16/16 -> early = vendor layers 0-20, mid = 21-41, late = 42-62; each +0.4296 GiB exactly. Six arms: bands from base B and from base F (F/L-redundancy-aware conditional leg). Recovery on the B->C axis. best/second = the two largest band recoveries from that base. Floors per-contrast max.",
+  "note": "Mechanical projection of PRE-REG QWEN-LBAND-1. Bands frozen: linear-attn layers ascending split 16/16/16 -> early = vendor layers 0-20, mid = 21-41, late = 42-62; each +0.4296 GiB exactly. Six arms: bands from base B and from base F (F/L-redundancy-aware conditional leg). Recovery on the B->C axis. best/second = the two largest band recoveries from that base. FLOOR-BAR SEMANTICS, pinned: every *_floor_multiple metric is a RAW X-or-K gap in nats divided by the per-contrast f_X/f_K — never a recovery-fraction quantity; recovery-unit gaps report as separate observation fields (the refuted_if predicate reads the rec-unit gap and is the one rec-unit consumer). Floors per-contrast max.",
   "results_id": "2026-08-18-pre-reg-qwen-lband-1-depth",
   "registered": "2026-08-18",
   "machine": "mac",
@@ -18,7 +18,8 @@
     {"id": 3, "name": "BAND-STRUCTURE-F-X", "metric": "band_gap_floor_multiple_x_baseF", "population": "positions:corpus", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["FLe", "FLm", "FLl"], "description": "same from base F"},
     {"id": 4, "name": "BAND-STRUCTURE-B-K", "metric": "band_gap_floor_multiple_k_baseB", "population": "positions:prefixes", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["BLe", "BLm", "BLl"], "description": "K analogue from base B"},
     {"id": 5, "name": "CONDITIONING-X", "metric": "conditioning_gap_floor_multiple_x", "population": "positions:corpus", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["BLe", "BLm", "BLl", "FLe", "FLm", "FLl"], "description": "|dX(best B-band | F) - dX(same band | B)| / f_X > 5: the F repair changes what the band buys — cross-family interaction is depth-localized"},
-    {"id": 6, "name": "CONDITIONING-K", "metric": "conditioning_gap_floor_multiple_k", "population": "positions:prefixes", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["BLe", "BLm", "BLl", "FLe", "FLm", "FLl"], "description": "K analogue"}
+    {"id": 6, "name": "CONDITIONING-K", "metric": "conditioning_gap_floor_multiple_k", "population": "positions:prefixes", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["BLe", "BLm", "BLl", "FLe", "FLm", "FLl"], "description": "K analogue"},
+    {"id": 7, "name": "BAND-STRUCTURE-F-K", "metric": "band_gap_floor_multiple_k_baseF", "population": "positions:prefixes", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["FLe", "FLm", "FLl"], "description": "K analogue from base F (completes the prose's 'K conjunct-analogues as separate bars' for both bases)"}
   ],
   "receipts": [
     "logs/qwenattrib/compose_BLe.json",
