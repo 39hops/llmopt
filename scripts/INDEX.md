@@ -2960,6 +2960,8 @@ QWEN-IO-ATTRIB-1 observations builder + registered resolution.
 ### scratch/qwen_lband_adjudicate.py
 QWEN-LBAND-1 observations builder + registered resolution.
 
+- `_frozen_chain_sha(arm: str)` — Chain identity of a frozen source arm, derived from its
+- `compose_admissibility(a, c, rc_a, frozen) -> list` — Fail-closed checks that compose_<a>.json records the exact
 - `_m(value, metric, population, aggregation, provenance='')`
 - `build_observations(rc: dict, comp: dict) -> dict`
 - `resolution(outcomes: dict) -> tuple`
