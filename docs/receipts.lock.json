@@ -762,10 +762,9 @@
   "logs/qwenrouter/rk_census.json": {
    "bytes": 6114,
    "exists": true,
-   "local_only": true,
    "sha256": "ebc2aa06d371763cea9c07f5f9620c04a0c27f74fbd68515b6a4940c346724a6",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwenruntime/forward1_A.log": {
    "bytes": 973,

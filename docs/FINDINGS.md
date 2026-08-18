@@ -2391,3 +2391,14 @@ regime tag on every bullet is the fence.
   wording; arm contrasts normalized on A, never fidelity claims;
   floors are precision multiples, never significance. ([VERDICT
   QWEN-IO-ATTRIB-1](RESULTS.md#L34643 "id:2026-08-18-verdict-qwen-io-attrib-1-mixed").)
+- [SINGLE-SEED] [TEACHER-FORCED] The uniform-2-bit Qwen artifact is
+  NOT a faithful channel router for its teacher: teacher |z|-mass
+  captured by A's top-1024 FFN channels reads 0.11-0.21 across all
+  six sampled layers (bar 0.7, kill line 0.5 crossed everywhere),
+  and even oracle top-1024 selection leaves 32-63% reconstruction
+  error — the activation is not strongly top-k-compressible at
+  that k. Kills the banked resident-draft/hybrid program at one
+  CPU afternoon's cost. Fences: 454 positions, no sampling fence;
+  single arm; frozen layer set is 4 linear / 2 full attention
+  post label correction. ([VERDICT
+  QWEN-RK-CENSUS-0](RESULTS.md#L34734 "id:2026-08-18-verdict-qwen-rk-census-0-refuted").)

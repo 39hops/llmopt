@@ -1,0 +1,16 @@
+[0r] qualified: {'art_dir': '/Users/artin/qwen_whole0t/A', 'rung0': {'checked': 19, 'unchained': False}, 'conservation': {'keys': 1199}, 'census': {'w4': 402, 's16': 0, 'raw': 449, 'excluded': 348}, 'preflight': {'estimated_peak_bytes': 5869238016, 'available_bytes': 25604292608, 'safety_fraction': 0.8}}
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[rk] arm len 356 81s
+[rk] arm len 14 66s
+[rk] arm len 9 65s
+[rk] arm len 29 69s
+[rk] arm len 13 66s
+[rk] arm len 17 66s
+[rk] arm len 16 67s
+[rk] saved z_arm_L0 (454, 17408)
+[rk] saved z_arm_L21 (454, 17408)
+[rk] saved z_arm_L42 (454, 17408)
+[rk] saved z_arm_L11 (454, 17408)
+[rk] saved z_arm_L32 (454, 17408)
+[rk] saved z_arm_L55 (454, 17408)
+[rk] sidecar -> logs/qwenrouter/capture_arm_meta.json

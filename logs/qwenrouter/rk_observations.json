@@ -1,0 +1,47 @@
+{
+ "measurement_valid": true,
+ "arms": {
+  "A": {
+   "admissible": true
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0.1109,
+   "metric": "r_k_min_over_layers",
+   "population": "positions:corpus+prefixes",
+   "aggregation": "mean",
+   "provenance": "min over layers {0: 0.2091, 21: 0.1186, 42: 0.1394, 11: 0.1109, 32: 0.113, 55: 0.199}"
+  },
+  "refuted:r_k_min_over_layers": {
+   "value": 0.1109,
+   "metric": "r_k_min_over_layers",
+   "population": "positions:corpus+prefixes",
+   "aggregation": "mean",
+   "provenance": "min over layers {0: 0.2091, 21: 0.1186, 42: 0.1394, 11: 0.1109, 32: 0.113, 55: 0.199}"
+  }
+ },
+ "contrasts": {},
+ "per_layer_r_k_at_1024": {
+  "0": 0.2091,
+  "21": 0.1186,
+  "42": 0.1394,
+  "11": 0.1109,
+  "32": 0.113,
+  "55": 0.199
+ },
+ "provenance": {
+  "code_commit": "d46feb6",
+  "tree_dirty": false,
+  "census_receipt_sha256": "ebc2aa06d371763cea9c07f5f9620c04a0c27f74fbd68515b6a4940c346724a6",
+  "census_code_commit": "4cc06c7",
+  "capture_commits": {
+   "vendor": "7e3f473",
+   "arm": "01e45f8"
+  },
+  "capture_tree_dirty": {
+   "vendor": true,
+   "arm": true
+  }
+ }
+}

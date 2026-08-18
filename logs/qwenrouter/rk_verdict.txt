@@ -1,0 +1,4 @@
+BAR 1 ROUTER-FAITHFUL: NO-FIRE
+REGISTERED-PRIOR(faithful-router): REFUTED
+per-layer r_k@1024: {0: 0.2091, 21: 0.1186, 42: 0.1394, 11: 0.1109, 32: 0.113, 55: 0.199}
+PRODUCER d46feb6 dirty=False capture_dirty={'vendor': True, 'arm': True}

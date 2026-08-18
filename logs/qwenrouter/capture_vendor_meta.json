@@ -1,0 +1,26 @@
+{
+ "tag": "vendor",
+ "layers": [
+  0,
+  21,
+  42,
+  11,
+  32,
+  55
+ ],
+ "dtype": "float32",
+ "n_sequences": 7,
+ "token_lists_sha256": "25a028e5110fdcd4a35933d1d41266f4926793e0639463f86c66e48a340e3172",
+ "z_sha256": {
+  "z_vendor_L0": "d1b6df30273e027587acf9386f0cd0cda6a0c54b29ac89edc87e4a5611a9dd9a",
+  "z_vendor_L21": "68f10097646694200419e1a7e516d44261f186e7971e4e69c64a19cd996305d4",
+  "z_vendor_L42": "f154f7780387ae11de7471492a1eddf589c1291c989d8a2e6f76238a415035cf",
+  "z_vendor_L11": "581f8bd6477f1299bb6201809e37328ff04915cc59ea7d8af78a8b1837d278c9",
+  "z_vendor_L32": "0806815111e6bb3a184f6652ede5dd4cba764b4cafe3b569f41acbdaa3dea2e9",
+  "z_vendor_L55": "82598e88347d1e27ce147b33bba82d91412dbf58e16890bf052ea1e126e88cc9"
+ },
+ "code_commit": "7e3f473",
+ "tree_dirty": true,
+ "vendor_dir": "/Users/artin/qwen_vendor",
+ "vendor_index_sha256": "77042094076611b69791a610065f28b7013b8c621795fa86ddccc8bac7d1b9df"
+}

@@ -34731,3 +34731,68 @@ is what buys next-token CE (X). Near-additivity says the two ends
 repair different damage, not the same damage twice. Follow-ups
 belong behind the LBAND leg already registered.
 
+## VERDICT QWEN-RK-CENSUS-0: REFUTED — the 2-bit artifact is NOT a faithful channel router: R_k at k=1024 reads 0.11-0.21 on every sampled layer v the 0.7 bar, below the 0.5 kill line everywhere; the resident-draft/hybrid program dies for free (2026-08-18, mac)
+
+Registered as PRE-REG QWEN-RK-CENSUS-0 (RESULTS L34498) + machine
+projection docs/preregs/qwen-rk-census-0.json. Driver
+scratch/qwen_rk_census.py (capture legs + fail-closed sidecar
+protocol in analyze), committed adjudicator
+scratch/qwen_rk_adjudicate.py, producer d46feb6 dirty=False.
+Receipts: logs/qwenrouter/{capture_vendor_meta.json,
+capture_arm_meta.json, rk_census.json, rk_observations.json,
+rk_verdict.txt} + capture logs.
+
+MEASURED (454 positions = frozen 7-sequence token lists, coupled
+FFN channel z = down_proj input, fp32 capture, six frozen layers):
+- R_k (teacher |z|-mass captured by arm A's top-k channels) at
+  k=1024 of 17408: L0 0.209, L21 0.119, L42 0.139, L11 0.111,
+  L32 0.113, L55 0.199. Min 0.111. BAR 1 ROUTER-FAITHFUL (>= 0.7)
+  NO-FIRE; the registered kill line (< 0.5 on ANY layer) is
+  crossed on ALL SIX. Registered prior (house, medium): REFUTED.
+- Full ladder monotone in k; even at k=4096 (23% of channels)
+  R_k tops out at 0.44. Top-k set overlap (Jaccard) 0.09-0.23.
+- Reconstruction of the teacher FFN output from k=1024 channels
+  (relative error; teacher-oracle v arm-selected v random):
+  arm 0.51-0.87, teacher-top-|z| 0.32-0.63, contribution-ranked
+  (|z_i|*||Wd[:,i]||) within 0.005 of top-|z|, random 0.95-0.97.
+  A's selection beats random ~2-3x on mass but sits far from the
+  oracle; the oracle itself still leaves 32-63% error at k=1024,
+  so the activation is not strongly top-k-compressible at this k
+  even with perfect selection.
+
+READING: uniform-2-bit damage destroys channel-level agreement
+with the teacher even where the repair ladder shows logit-level
+recovery is cheap. A cannot serve as a channel router or
+resident draft for the teacher; the banked resident-draft/hybrid
+program is killed at the cost of one CPU afternoon, exactly the
+kill-for-free the pre-reg priced.
+
+FENCES + DISCLOSURES (receipt-auditor: no blockers; findings
+adopted):
+- Single arm, single seed for the random baseline (literal
+  20260818 in the analyzer, not in the receipt); point readings
+  on 454 positions, NO sampling fence.
+- Arm A v PINNED VENDOR (vendor leg verified free of the arm
+  runtime; arm leg chain-qualified 19/19 unchained=False). Every
+  sidecar sha (token lists, vendor index, artifact chain, all 12
+  z arrays) independently recomputed clean by the auditor.
+- Commit drift across legs: vendor capture 7e3f473, arm capture
+  01e45f8, census 4cc06c7, adjudication d46feb6 — driver blob
+  byte-identical at all four (docs-only diffs). Both capture legs
+  ran with tree_dirty=true (untracked-receipt churn, docs only);
+  the adjudicator's receipt now aggregates the sidecar commits
+  and dirty flags rather than masking them.
+- fp32 capture, a conservative deviation from the prose's fp16
+  pricing (registered JSON silent on dtype; docstring discloses).
+- Layer-32 family label corrected post-freeze: the frozen set is
+  4 linear / 2 full attention (not the registered 3/3); the min
+  is over the frozen indices; the full-attn family is n=2.
+- Two teacher-oracle columns (top-|z| and contribution-ranked)
+  where the prose registered one; both reported, they agree to
+  <0.005, neither is an exact subset optimum.
+
+Receipts force-added: the five logs/qwenrouter JSON/txt files +
+logs/qwenrouter_vendor.log, logs/qwenrouter_arm.log (the arm
+log is the chain-qualification evidence). z arrays (190 MiB/leg)
+stay untracked, regenerate-don't-download.
+

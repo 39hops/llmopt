@@ -1,0 +1,31 @@
+{
+ "tag": "arm",
+ "layers": [
+  0,
+  21,
+  42,
+  11,
+  32,
+  55
+ ],
+ "dtype": "float32",
+ "n_sequences": 7,
+ "token_lists_sha256": "25a028e5110fdcd4a35933d1d41266f4926793e0639463f86c66e48a340e3172",
+ "z_sha256": {
+  "z_arm_L0": "79da18d846a3199b3ab900e04823d981bf63649bbd23ac7633443fd202ab7db2",
+  "z_arm_L21": "45314a60251afd552d416deba57d43b3c10d683adca0cef2d14dc010a755fb39",
+  "z_arm_L42": "2db3b092068a466df914a9b759b7f65cef6997d2f168eae8d99666d2e6c4c614",
+  "z_arm_L11": "65b7470e23384ee4f90bb3e1757ff7c80d62fbc8de6ce86a5ab3cbcc40eeaf92",
+  "z_arm_L32": "94ce084a011313c7adae44a22e28fe2d73b4cce65c0df7d8de1f002a0d77fdae",
+  "z_arm_L55": "93150ce35e7140aaeecb84bba1c123f19570089dfa30743671cd3c5c3f9b8be5"
+ },
+ "code_commit": "01e45f8",
+ "tree_dirty": true,
+ "vendor_dir": "/Users/artin/qwen_vendor",
+ "vendor_index_sha256": "77042094076611b69791a610065f28b7013b8c621795fa86ddccc8bac7d1b9df",
+ "artifact": {
+  "dir": "/Users/artin/qwen_whole0t/A",
+  "arm": "A",
+  "chain_sha256": "1456f30af702210137a7b69804314a0d76483c984c3d6cd6a06d4a84f183b421"
+ }
+}

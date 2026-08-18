@@ -1,0 +1,15 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[rk] vendor len 356 72s
+[rk] vendor len 14 58s
+[rk] vendor len 9 58s
+[rk] vendor len 29 58s
+[rk] vendor len 13 58s
+[rk] vendor len 17 58s
+[rk] vendor len 16 58s
+[rk] saved z_vendor_L0 (454, 17408)
+[rk] saved z_vendor_L21 (454, 17408)
+[rk] saved z_vendor_L42 (454, 17408)
+[rk] saved z_vendor_L11 (454, 17408)
+[rk] saved z_vendor_L32 (454, 17408)
+[rk] saved z_vendor_L55 (454, 17408)
+[rk] sidecar -> logs/qwenrouter/capture_vendor_meta.json

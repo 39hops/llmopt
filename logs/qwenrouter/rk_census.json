@@ -1,0 +1,257 @@
+{
+ "gate": "QWEN-RK-CENSUS-0",
+ "layers": [
+  0,
+  21,
+  42,
+  11,
+  32,
+  55
+ ],
+ "ks": [
+  64,
+  256,
+  1024,
+  4096
+ ],
+ "per_layer": {
+  "0": {
+   "n_positions": 454,
+   "ks": {
+    "64": {
+     "jaccard": 0.2492,
+     "r_k": 0.0618,
+     "recon_arm": 0.6858,
+     "recon_teacher_topz": 0.6102,
+     "recon_teacher_contrib": 0.6109,
+     "recon_random": 0.9974
+    },
+    "256": {
+     "jaccard": 0.196,
+     "r_k": 0.1083,
+     "recon_arm": 0.6114,
+     "recon_teacher_topz": 0.4948,
+     "recon_teacher_contrib": 0.4931,
+     "recon_random": 0.9876
+    },
+    "1024": {
+     "jaccard": 0.1918,
+     "r_k": 0.2091,
+     "recon_arm": 0.5076,
+     "recon_teacher_topz": 0.3192,
+     "recon_teacher_contrib": 0.3141,
+     "recon_random": 0.9512
+    },
+    "4096": {
+     "jaccard": 0.2676,
+     "r_k": 0.4401,
+     "recon_arm": 0.3577,
+     "recon_teacher_topz": 0.1079,
+     "recon_teacher_contrib": 0.1055,
+     "recon_random": 0.7996
+    }
+   }
+  },
+  "21": {
+   "n_positions": 454,
+   "ks": {
+    "64": {
+     "jaccard": 0.1192,
+     "r_k": 0.0235,
+     "recon_arm": 0.9053,
+     "recon_teacher_topz": 0.7973,
+     "recon_teacher_contrib": 0.7974,
+     "recon_random": 0.998
+    },
+    "256": {
+     "jaccard": 0.1034,
+     "r_k": 0.05,
+     "recon_arm": 0.8716,
+     "recon_teacher_topz": 0.7222,
+     "recon_teacher_contrib": 0.721,
+     "recon_random": 0.992
+    },
+    "1024": {
+     "jaccard": 0.1072,
+     "r_k": 0.1186,
+     "recon_arm": 0.8134,
+     "recon_teacher_topz": 0.5627,
+     "recon_teacher_contrib": 0.561,
+     "recon_random": 0.9656
+    },
+    "4096": {
+     "jaccard": 0.2014,
+     "r_k": 0.3233,
+     "recon_arm": 0.6746,
+     "recon_teacher_topz": 0.2825,
+     "recon_teacher_contrib": 0.2818,
+     "recon_random": 0.8524
+    }
+   }
+  },
+  "42": {
+   "n_positions": 454,
+   "ks": {
+    "64": {
+     "jaccard": 0.1387,
+     "r_k": 0.0261,
+     "recon_arm": 0.8984,
+     "recon_teacher_topz": 0.7745,
+     "recon_teacher_contrib": 0.7757,
+     "recon_random": 0.9976
+    },
+    "256": {
+     "jaccard": 0.1509,
+     "r_k": 0.0603,
+     "recon_arm": 0.8414,
+     "recon_teacher_topz": 0.6774,
+     "recon_teacher_contrib": 0.6766,
+     "recon_random": 0.9916
+    },
+    "1024": {
+     "jaccard": 0.1488,
+     "r_k": 0.1394,
+     "recon_arm": 0.768,
+     "recon_teacher_topz": 0.5358,
+     "recon_teacher_contrib": 0.5334,
+     "recon_random": 0.9644
+    },
+    "4096": {
+     "jaccard": 0.2283,
+     "r_k": 0.3503,
+     "recon_arm": 0.6292,
+     "recon_teacher_topz": 0.2851,
+     "recon_teacher_contrib": 0.284,
+     "recon_random": 0.8482
+    }
+   }
+  },
+  "11": {
+   "n_positions": 454,
+   "ks": {
+    "64": {
+     "jaccard": 0.0905,
+     "r_k": 0.019,
+     "recon_arm": 0.9224,
+     "recon_teacher_topz": 0.7694,
+     "recon_teacher_contrib": 0.7695,
+     "recon_random": 0.9976
+    },
+    "256": {
+     "jaccard": 0.0798,
+     "r_k": 0.0439,
+     "recon_arm": 0.8817,
+     "recon_teacher_topz": 0.6648,
+     "recon_teacher_contrib": 0.6647,
+     "recon_random": 0.9907
+    },
+    "1024": {
+     "jaccard": 0.091,
+     "r_k": 0.1109,
+     "recon_arm": 0.8167,
+     "recon_teacher_topz": 0.4956,
+     "recon_teacher_contrib": 0.495,
+     "recon_random": 0.9633
+    },
+    "4096": {
+     "jaccard": 0.1845,
+     "r_k": 0.3129,
+     "recon_arm": 0.6721,
+     "recon_teacher_topz": 0.2374,
+     "recon_teacher_contrib": 0.237,
+     "recon_random": 0.8415
+    }
+   }
+  },
+  "32": {
+   "n_positions": 454,
+   "ks": {
+    "64": {
+     "jaccard": 0.0897,
+     "r_k": 0.0167,
+     "recon_arm": 0.9604,
+     "recon_teacher_topz": 0.8712,
+     "recon_teacher_contrib": 0.8716,
+     "recon_random": 0.9979
+    },
+    "256": {
+     "jaccard": 0.1003,
+     "r_k": 0.0431,
+     "recon_arm": 0.9289,
+     "recon_teacher_topz": 0.7915,
+     "recon_teacher_contrib": 0.7887,
+     "recon_random": 0.9914
+    },
+    "1024": {
+     "jaccard": 0.1118,
+     "r_k": 0.113,
+     "recon_arm": 0.8686,
+     "recon_teacher_topz": 0.627,
+     "recon_teacher_contrib": 0.6226,
+     "recon_random": 0.965
+    },
+    "4096": {
+     "jaccard": 0.2059,
+     "r_k": 0.3195,
+     "recon_arm": 0.7232,
+     "recon_teacher_topz": 0.3241,
+     "recon_teacher_contrib": 0.322,
+     "recon_random": 0.8544
+    }
+   }
+  },
+  "55": {
+   "n_positions": 454,
+   "ks": {
+    "64": {
+     "jaccard": 0.2174,
+     "r_k": 0.0502,
+     "recon_arm": 0.7791,
+     "recon_teacher_topz": 0.6336,
+     "recon_teacher_contrib": 0.633,
+     "recon_random": 0.9982
+    },
+    "256": {
+     "jaccard": 0.2375,
+     "r_k": 0.1023,
+     "recon_arm": 0.693,
+     "recon_teacher_topz": 0.5245,
+     "recon_teacher_contrib": 0.5245,
+     "recon_random": 0.9924
+    },
+    "1024": {
+     "jaccard": 0.2315,
+     "r_k": 0.199,
+     "recon_arm": 0.6109,
+     "recon_teacher_topz": 0.4148,
+     "recon_teacher_contrib": 0.4139,
+     "recon_random": 0.9669
+    },
+    "4096": {
+     "jaccard": 0.2912,
+     "r_k": 0.4153,
+     "recon_arm": 0.4928,
+     "recon_teacher_topz": 0.2387,
+     "recon_teacher_contrib": 0.238,
+     "recon_random": 0.8595
+    }
+   }
+  }
+ },
+ "z_files_sha256": {
+  "z_vendor_L0": "f383df3e2b240adb4d70f7abca6d71ee14cb473dbd82cce2cb064baabad40ee2",
+  "z_vendor_L21": "7c77e7a52b6acfd1ec3fa307491a6c7240185a36bfd7e06bb9e969328a0cb90d",
+  "z_vendor_L42": "b898bfdb86a260e5024cc8cea4be22caaa3090cee926bb4364988feb82de70bb",
+  "z_vendor_L11": "34656912925cae577b1af827bab41cc9afdf9026918fd693ffed68cdd7e44cf0",
+  "z_vendor_L32": "30c1d02cd773779b9698a10a8be3ca50f69ee732d821174256e9fa727e714bf8",
+  "z_vendor_L55": "339231e8438e0f66fb1126f0850e1e272ebc8af2de2a42847771281ade9b371e",
+  "z_arm_L0": "924733c28b7bd77678e93ced353df0ffaacf1a60ee7c330ebe8cb389048c2a6e",
+  "z_arm_L21": "71109c8e98119e470d0ded838b9d12d92cfdb9dd6d3ff15649785428430ff7c2",
+  "z_arm_L42": "66d1c314499785393ceff97e3612748bf4350b094e1ab7a29c9f6ab1b100e3f8",
+  "z_arm_L11": "9611d4950fa58ef4aa1d1b7ed5c6ac90db9fb3a946d6e9552a58a378ef9eaea2",
+  "z_arm_L32": "da8e67d1bebb18c242f71ca5c6d8accba7f1cfbb497d688f3f4c127de27f0a1e",
+  "z_arm_L55": "0c31d759eb340d26425b7a25396e2722c1b6b356b8142a9715422bb9f1b587bc"
+ },
+ "code_commit": "4cc06c7",
+ "tree_dirty": false
+}
