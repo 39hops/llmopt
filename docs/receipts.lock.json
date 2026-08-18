@@ -498,12 +498,18 @@
    "source": "prereg"
   },
   "logs/qwenattrib/ioattrib_observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2327,
+   "exists": true,
+   "sha256": "085db171eef4946201b86a9bff7144d79df0b6e42b17f6864d18740974b8b04d",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/ioattrib_verdict.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 338,
+   "exists": true,
+   "sha256": "e1709da6ca3db7130267e0e1d7f52af67df413fbb9bc71774d8cd88691f24212",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/lband_observations.json": {
    "exists": false,
@@ -665,7 +671,8 @@
    "source": "prereg"
   },
   "logs/qwenmodel1/score_E.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenmodel1/score_F.json": {
@@ -743,7 +750,8 @@
    "tracked": true
   },
   "logs/qwenrouter/capture_arm_meta.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenrouter/capture_vendor_meta.json": {
