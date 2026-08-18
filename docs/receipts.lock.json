@@ -461,11 +461,13 @@
    "source": "prereg"
   },
   "logs/qwenattrib/compose_D.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenattrib/compose_E.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenattrib/compose_F.json": {
@@ -515,6 +517,13 @@
    "bytes": 2756,
    "exists": true,
    "sha256": "3e874e083b94689646bb48a0027182395a941856a4758ff3e354d6a608d0b5c3",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwencapacity/meter27b_r2.json": {
+   "bytes": 3473,
+   "exists": true,
+   "sha256": "ef0cf704c7608e757c2331edea90b1c0a58706870690f14033bfa756df23dd38",
    "source": "results",
    "tracked": true
   },
@@ -651,7 +660,8 @@
    "source": "prereg"
   },
   "logs/qwenmodel1/score_D.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenmodel1/score_E.json": {
@@ -732,9 +742,18 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwenrouter/capture_arm_meta.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenrouter/capture_vendor_meta.json": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
   "logs/qwenrouter/rk_census.json": {
    "exists": false,
-   "source": "results"
+   "source": "prereg"
   },
   "logs/qwenruntime/forward1_A.log": {
    "bytes": 973,

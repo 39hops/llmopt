@@ -1,0 +1,37 @@
+{
+  "name": "QWEN-RK-CENSUS-0",
+  "note": "Mechanical projection of PRE-REG QWEN-RK-CENSUS-0. Single arm A v the pinned vendor teacher on the frozen token lists; frozen layer indices {0,21,42,11,32,55} (family label for 32 corrected to linear-attn post-freeze, disclosed); k ladder {64,256,1024,4096}. R_k = teacher-|z|-mass captured by A's top-k. The bar reads the MINIMUM R_k over sampled layers at k=1024 (fail-closed aggregation: the prior claims faithfulness everywhere sampled). Prior-rationale correction booked in AMENDMENT ...-CORRECTIONS: rung-3 backend KL was A-CPU v A-CUDA parity, not vendor fidelity — the prior rests on the monotone repair ladder only.",
+  "results_id": "2026-08-18-pre-reg-qwen-rk-census-0",
+  "registered": "2026-08-18",
+  "machine": "mac",
+  "arms": {
+    "A": {
+      "description": "WHOLE-0T arm A (uniform-2 W4), CPU reference z capture v pinned vendor teacher z capture"
+    }
+  },
+  "bars": [
+    {
+      "id": 1,
+      "name": "ROUTER-FAITHFUL",
+      "metric": "r_k_min_over_layers",
+      "population": "positions:corpus+prefixes",
+      "aggregation": "mean",
+      "direction": "above",
+      "value": 0.7,
+      "arms": ["A"],
+      "description": "min over the six sampled layers of mean R_k at k=1024 >= 0.7"
+    }
+  ],
+  "receipts": [
+    "logs/qwenrouter/capture_vendor_meta.json",
+    "logs/qwenrouter/capture_arm_meta.json",
+    "logs/qwenrouter/rk_census.json"
+  ],
+  "refuted_if": "The faithful-router prior is refuted if mean R_k at k=1024 reads below 0.5 on ANY sampled layer (raw per-layer values quoted; single-seed fence). Low R_k kills the resident-draft/hybrid program for free.",
+  "refuted_if_predicate": {
+    "measurement": "refuted:r_k_min_over_layers",
+    "direction": "below",
+    "value": 0.5
+  },
+  "registered_prior": "House, medium (weakened by the rationale correction): R_k >= 0.7 at k=1024 on every sampled layer — the monotone A->B->C repair ladder says A's representations track the reference class closely, and hot-channel identity is a coarser statistic than logits."
+}
