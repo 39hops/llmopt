@@ -192,7 +192,9 @@ def main():
     suf = "_smoke" if smoke else ""
     out_dir = f"logs/qwenmodel1{suf}"
     arm = os.environ["ARM"]
-    assert arm in ("A", "B", "C"), arm
+    # A/B/C = WHOLE-0T compile arms; F/L/Q = ATTN-ATTRIB-1
+    # recompositions (chains emitted by scratch/qwen_recompose.py)
+    assert arm in ("A", "B", "C", "F", "L", "Q"), arm
     art = os.path.expanduser(os.environ["ART_DIR"])
     os.makedirs(out_dir, exist_ok=True)
     rcpt_path = os.path.join(out_dir, f"score_{arm}.json")
