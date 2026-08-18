@@ -23,11 +23,57 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(
 
 SC = "logs/qwenmodel1"
 AT = "logs/qwenattrib"
+WH = "logs/qwenwhole"
 B_ARMS = ("BLe", "BLm", "BLl")
 F_ARMS = ("FLe", "FLm", "FLl")
 BASES = {"BLe": "B", "BLm": "B", "BLl": "B",
          "FLe": "F", "FLm": "F", "FLl": "F"}
 ALL = ("B", "C", "F") + B_ARMS + F_ARMS
+# frozen by PRE-REG QWEN-LBAND-1: 16/16/16 ascending linear-attn split
+BAND_LAYERS = {"e": sorted(range(0, 21)), "m": sorted(range(21, 42)),
+               "l": sorted(range(42, 63))}
+
+
+def _frozen_chain_sha(arm: str):
+    """Chain identity of a frozen source arm, derived from its
+    committed digest file — never a literal."""
+    p = os.path.join(WH, f"artifact_digest_{arm}.txt")
+    if not os.path.exists(p):
+        return None
+    return hashlib.sha256(open(p, "rb").read()).hexdigest()
+
+
+def compose_admissibility(a, c, rc_a, frozen) -> list:
+    """Fail-closed checks that compose_<a>.json records the exact
+    registered treatment. Returns a list of failure reasons."""
+    reasons = []
+    if c is None:
+        return ["compose receipt missing"]
+    if c.get("name") != a:
+        reasons.append(f"compose name {c.get('name')}")
+    rec = c.get("recipe", {})
+    if rec.get("base") != BASES[a]:
+        reasons.append(f"recipe base {rec.get('base')} != {BASES[a]}")
+    if rec.get("donor") != "C":
+        reasons.append(f"recipe donor {rec.get('donor')} != C")
+    if rec.get("mark") != ".linear_attn.":
+        reasons.append(f"recipe mark {rec.get('mark')}")
+    want_layers = BAND_LAYERS[a[-1]]
+    if sorted(rec.get("layers", [])) != want_layers:
+        reasons.append(f"recipe layers != frozen band {a[-1]}")
+    if c.get("promoted_keys") != 48:
+        reasons.append(f"promoted_keys {c.get('promoted_keys')} != 48")
+    q = rc_a.get("qualification", {})
+    if c.get("out_chain_sha256") != q.get("chain_sha256"):
+        reasons.append("compose out_chain != score qualification chain")
+    for role, src in (("base", BASES[a]), ("donor", "C")):
+        want = frozen.get(src)
+        got = c.get(role, {}).get("chain_sha256")
+        if want is None:
+            reasons.append(f"no frozen digest for {src}")
+        elif got != want:
+            reasons.append(f"{role} chain != frozen {src} digest")
+    return reasons
 
 
 def _m(value, metric, population, aggregation, provenance=""):
@@ -38,6 +84,11 @@ def _m(value, metric, population, aggregation, provenance=""):
 
 def build_observations(rc: dict, comp: dict) -> dict:
     arms = {}
+    frozen = {s: _frozen_chain_sha(s) for s in ("B", "C", "F")}
+    bytes_added = {a: (comp.get(a) or {}).get("bytes_added")
+                   for a in B_ARMS + F_ARMS}
+    iso = len(set(bytes_added.values())) == 1 \
+        and None not in bytes_added.values()
     for a in B_ARMS + F_ARMS:
         r = rc[a]
         reasons = []
@@ -48,9 +99,10 @@ def build_observations(rc: dict, comp: dict) -> dict:
         tv = r.get("traversal", {})
         if (tv.get("linear_attn"), tv.get("full_attn")) != (48, 16):
             reasons.append(f"traversal {tv}")
-        c = comp.get(a)
-        if c is None or c.get("name") != a:
-            reasons.append("compose receipt missing/mismatched")
+        reasons += compose_admissibility(a, comp.get(a), r, frozen)
+        if not iso:
+            reasons.append(f"bytes_added not equal across six: "
+                           f"{bytes_added}")
         arms[a] = {"admissible": not reasons}
         if reasons:
             arms[a]["reason"] = "; ".join(reasons)
@@ -79,7 +131,15 @@ def build_observations(rc: dict, comp: dict) -> dict:
     # marginal band values (raw nats): dX(band|base) = X_base - X_arm
     dX = {a: X[BASES[a]] - X[a] for a in B_ARMS + F_ARMS}
     dK = {a: K[BASES[a]] - K[a] for a in B_ARMS + F_ARMS}
-    obs_extra = {"dX": dX, "dK": dK}
+    # signed conditioning terms (descriptive; registered bars stay
+    # absolute): I_b = dX(band|F) - dX(band|B). Negative = the band
+    # buys less on top of F (redundant with F); positive = synergy.
+    I_X = {b: dX[f"FL{b}"] - dX[f"BL{b}"] for b in "eml"}
+    I_K = {b: dK[f"FL{b}"] - dK[f"BL{b}"] for b in "eml"}
+    obs_extra = {"dX": dX, "dK": dK,
+                 "conditioning_signed_x": I_X,
+                 "conditioning_signed_k": I_K,
+                 "bytes_added_per_arm": bytes_added}
 
     def band_gap(vals, arm_set):
         s = sorted((vals[a] for a in arm_set), reverse=True)
@@ -185,11 +245,15 @@ def main():
         ref = adjudicate_refutation(prereg, obs)
     else:
         ref = "UNADJUDICATED (alarm or B-X structure bar quiet)"
+    lines.append("SIGNED-CONDITIONING I_X "
+                 f"{ {b: round(v, 5) for b, v in obs['conditioning_signed_x'].items()} } "
+                 "I_K "
+                 f"{ {b: round(v, 5) for b, v in obs['conditioning_signed_k'].items()} }")
     lines.append(f"RESOLUTION {res}: {why}")
     lines.append(f"REGISTERED-PRIOR(flatness): {ref}")
     lines.append(f"PRODUCER {obs['provenance']['code_commit']}"
                  f" dirty={obs['provenance']['tree_dirty']}")
-    for line in lines[-3:]:
+    for line in lines[-4:]:
         print(line, flush=True)
     with open(os.path.join(AT, "lband_observations.json"), "w") as f:
         f.write(json.dumps(obs, indent=1) + "\n")

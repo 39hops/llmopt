@@ -10,23 +10,42 @@ lb = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(lb)
 
 
-def _receipt(X, K):
-    return {"smoke": False, "device_actual": "cpu",
-            "traversal": {"linear_attn": 48, "full_attn": 16},
-            "teacher": {"dir": "logs/qwenteacher_v2"},
-            "ce_teacher_nats": 1.064, "X": X, "K": K,
-            "f_X": 3.7e-5, "f_K": 2.6e-4, "v_live": 248077}
+def _receipt(X, K, chain=None):
+    r = {"smoke": False, "device_actual": "cpu",
+         "traversal": {"linear_attn": 48, "full_attn": 16},
+         "teacher": {"dir": "logs/qwenteacher_v2"},
+         "ce_teacher_nats": 1.064, "X": X, "K": K,
+         "f_X": 3.7e-5, "f_K": 2.6e-4, "v_live": 248077}
+    if chain is not None:
+        r["qualification"] = {"chain_sha256": chain}
+    return r
 
 
-def _run(band_x, band_k):
-    """band_x/band_k: dicts arm -> (X, K) for the six arms."""
+def _compose(a):
+    """Well-formed compose receipt matching the registered
+    treatment, with chains derived from the frozen digests."""
+    return {"name": a, "bytes_added": 461373440,
+            "recipe": {"base": lb.BASES[a], "donor": "C",
+                       "mark": ".linear_attn.",
+                       "layers": lb.BAND_LAYERS[a[-1]],
+                       "n_expected": 48},
+            "promoted_keys": 48,
+            "out_chain_sha256": f"chain-{a}",
+            "base": {"chain_sha256":
+                     lb._frozen_chain_sha(lb.BASES[a])},
+            "donor": {"chain_sha256": lb._frozen_chain_sha("C")}}
+
+
+def _run(band_x, band_k, break_arm=None):
+    """band_x/band_k: dicts arm -> X / K for the six arms."""
     from llmopt.lab.prereg import adjudicate_prereg, load
     rc = {"B": _receipt(0.834, 0.338), "C": _receipt(0.249, 0.162),
           "F": _receipt(0.520, 0.264)}
     for a in lb.B_ARMS + lb.F_ARMS:
-        rc[a] = _receipt(band_x[a], band_k[a])
-    comp = {a: {"name": a, "bytes_added": 461373440}
-            for a in lb.B_ARMS + lb.F_ARMS}
+        rc[a] = _receipt(band_x[a], band_k[a], chain=f"chain-{a}")
+    comp = {a: _compose(a) for a in lb.B_ARMS + lb.F_ARMS}
+    if break_arm:
+        comp[break_arm]["recipe"]["donor"] = "B"
     obs = lb.build_observations(rc, comp)
     prereg = load(os.path.join(REPO, "docs/preregs/qwen-lband-1.json"))
     out = {o.bar_id: o.outcome for o in adjudicate_prereg(prereg, obs)}
@@ -77,3 +96,26 @@ def test_conditioning_pairs_best_b_band():
     dX = obs["dX"]
     expect = abs(dX["FLl"] - dX["BLl"]) / obs["f_X"]
     assert abs(obs["measurements"]["5"]["value"] - expect) < 1e-9
+
+
+def test_admissibility_fails_closed_on_wrong_treatment():
+    bx = {"BLe": 0.80, "BLm": 0.75, "BLl": 0.60,
+          "FLe": 0.50, "FLm": 0.46, "FLl": 0.42}
+    bk = {"BLe": 0.33, "BLm": 0.30, "BLl": 0.25,
+          "FLe": 0.26, "FLm": 0.24, "FLl": 0.20}
+    _, obs, _ = _run(bx, bk, break_arm="BLm")
+    assert not obs["arms"]["BLm"]["admissible"]
+    assert "donor" in obs["arms"]["BLm"]["reason"]
+    assert obs["arms"]["BLe"]["admissible"]
+
+
+def test_signed_conditioning_terms():
+    bx = {"BLe": 0.80, "BLm": 0.75, "BLl": 0.60,
+          "FLe": 0.50, "FLm": 0.46, "FLl": 0.42}
+    bk = {"BLe": 0.33, "BLm": 0.30, "BLl": 0.25,
+          "FLe": 0.26, "FLm": 0.24, "FLl": 0.20}
+    _, obs, _ = _run(bx, bk)
+    dX = obs["dX"]
+    for b in "eml":
+        want = dX[f"FL{b}"] - dX[f"BL{b}"]
+        assert abs(obs["conditioning_signed_x"][b] - want) < 1e-12
