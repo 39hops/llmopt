@@ -2351,3 +2351,16 @@ regime tag on every bullet is the fence.
   unfalsifiable sha boolean, pooled-fence overstatement) were fixed
   first. ([VERDICT
   QWEN-TEACHER-0-LOCK](RESULTS.md#L33780 "id:2026-08-17-verdict-qwen-teacher-0-lock-teacher").)
+- [SINGLE-SEED] [TEACHER-FORCED] The MODEL-1 tree's first firing books
+  INSTRUMENT-ALARM, not an allocation: X_A = 1.061 nats sits 6% over
+  the pre-registered 1.0 uniform-damage gate, so no branch may fire —
+  while underneath the gate every precision step fires monotone
+  (B-over-A rel X 21.4%, C-over-B 70.2%, the LARGEST step is
+  attention, opposite in emphasis to the registered io prior, which
+  books UNADJUDICATED under the alarm per its own clean-gates clause).
+  Large-n corpus strata put A's flips at large margins (32/85 in
+  [2,5), 10/125 in [5,inf)) — bulk damage, not boundary near-ties.
+  Fences: point readings on 355/92 positions with no sampling
+  fence; teacher-distribution fidelity wording only; resolution of
+  the alarm fork is amendment-gated. ([VERDICT
+  QWEN-MODEL1-TREE](RESULTS.md#L33855 "id:2026-08-17-verdict-qwen-model1-tree-the-tree").)

@@ -553,9 +553,12 @@
    "source": "prereg"
   },
   "logs/qwenmodel1/tree_verdict.txt": {
+   "bytes": 488,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "local_only": true,
+   "sha256": "707d4e10d79cffc7424411a81d37f91599fc49004682e069f60ae6a639a3c85a",
+   "source": "results",
+   "tracked": false
   },
   "logs/qwenprobe/L32.jsonl": {
    "bytes": 901,

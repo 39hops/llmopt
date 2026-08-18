@@ -33852,3 +33852,91 @@ manifest.
 NEXT (critical path unchanged): scorer + docs/preregs/
 qwen-model1-tree.json projection -> X/K for A, B, C on the Mac
 CPU reference -> the tree adjudicates.
+## VERDICT QWEN-MODEL1-TREE: the tree books INSTRUMENT-ALARM at the registered uniform-damage gate — X_A = 1.061 nats over the 1.0 bar — while every precision step underneath it fires monotone; the registered T1 io prior is UNADJUDICATED under the alarm (2026-08-17, mac)
+
+Registered: PRE-REG QWEN-MODEL1-TREE + amendments -LOGIC/-METRIC/
+-PRIORS/-PINS/-KFENCE (refinement CLOSED before any score).
+Projection docs/preregs/qwen-model1-tree.json; scorer
+scratch/qwen_model1_score.py (producer 232737a for all three
+receipts, tree clean); walker scratch/qwen_tree_adjudicate.py
+(final adjudication producer 5f0e47c, dirty=False). Teacher =
+QWEN-TEACHER-0-LOCK records (code_commit 0ca4151, revision
+1d4bf0f2), consumed through the full -METRIC(8) refuse-list.
+Mac CPU reference leg only; device_actual cpu on every receipt.
+
+MEASURED (X = mean excess CE over teacher on corpus.txt, 355
+P-1 terms; K = mean forward KL(teacher||arm) over prefix
+positions, 92 terms; live vocab 248,077 of 248,320, masked
+padded rows booked):
+
+  arm  X (nats)   K (nats)   top1 corpus / prefixes
+  A    1.06108    0.47201    62.6% / 72.4%
+  B    0.83380    0.33772    66.6% / 74.5%
+  C    0.24865    0.16180    82.9% / 80.6%
+  CE_teacher recomputed 1.0640 nats (ALIGN-SANITY gate passes);
+  f_X 3.66e-5, f_K (max over arms) 2.58e-4; every step delta
+  sits thousands of sensitivity floors deep.
+
+BRANCH (mechanical, logs/qwenmodel1/tree_verdict.txt): BAR 2
+UNIFORM-DAMAGE-CLEAN NO-FIRE (X_A 1.06108 > 1.0) ->
+INSTRUMENT-ALARM, fail-closed, before any trigger is consulted.
+The -METRIC(5) gate was registered against a shared decode bug
+masquerading as parity; it fires 6% over its bar and the tree has
+no discretion to soften it. NO ALLOCATION CLAIM BOOKS. The
+registered T1 prior is UNADJUDICATED (the refuted_if clause reads
+only on clean gates; the walker's first emission mapped any
+non-T1 branch to REFUTED — prereg-auditor blocker, fixed at
+d180a6b before booking).
+
+UN-BOOKED CONTEXT UNDER THE ALARM (teacher-distribution fidelity
+wording only, never capability; quoted because the review fork
+needs it): all nine trigger bars fired individually — B-over-A
+rel X 21.4% / rel K 28.4%; C-over-B rel X 70.2% / rel K 52.1%;
+C-over-A rel X 76.6% / rel K 65.7%; anomaly gate clean (zero
+degradation conditions). The ladder is strictly monotone toward
+precision and the LARGEST step is attention (C-over-B), not io
+(B-over-A) — opposite in emphasis to the registered
+semantic-role prior, rhyming instead with STAR-PROFILE's
+attention-fragility lineage that -PRIORS(2) itself flagged.
+SAMPLING FENCE: 355/92 positions carry no registered sampling-
+uncertainty fence (the 5x floor is a record-sensitivity envelope,
+not a variance bound); bar 4's 0.214 v 0.20 is a 7% relative
+margin on 355 positions — step magnitudes are point readings.
+
+MARGIN-FLIP DIAGNOSTIC (-PRIORS(5); directional readings only in
+corpus bins with n >= 30 — the entire prefix table and the four
+corpus near-tie bins (n = 1,5,5,8) are under the small-n fence,
+raw counts in receipts): A flips 32/85 in margin [2,5) and 10/125
+in [5,inf) — large-margin flips, the bulk-damage signature, not
+boundary near-ties. B's io repair concentrates exactly there
+([2,5) 32->25, [5,inf) 10->2); C removes most of what remains
+([2,5) 4/85, [5,inf) 1/125).
+
+INSTRUMENT HONESTY (the alarm's own fork): the decode-oracle
+fixture read identical w4 values across arms where codecs matched
+(rel L2 0.322/0.334, the family-probe class; s16 0.10-0.11), all
+traversal censuses 48/16, and the repair ladder is monotone —
+evidence the scorer is honest and A's damage is real precision
+loss rather than a harness defect. The registered stop-for-review
+cannot distinguish those cases by design; resolution belongs to a
+pre-registered AMENDMENT re-scoping the gate (e.g. alarm only
+absent a monotone repair ladder), never to session discretion.
+D/E io recomposition does NOT auto-fire (tree stopped); the
+T2-shaped attention-attribution rung is the natural candidate
+next but requires its own registration.
+
+PROJECTION RESOLUTIONS (disclosed in the prereg note): (a)
+anomaly OR encoded as condition count; (b) K-side degradation
+floored by f_K symmetrically; (c) the -METRIC(8) re-encode
+fixture substituted by decode-v-vendor rel-L2 (refuse > 0.5) +
+rows-v-canonical bit-identity — frozen encoders train per-tensor
+on the compile device, so cross-device payload bit-identity is
+not a registered property. Auditors: receipt-auditor NO BLOCKERS
+(adopted: walker provenance block with consumed-receipt shas,
+derived device_actual, -uno dirty flag); prereg-auditor ONE
+BLOCKER (the refutation reading, fixed pre-booking as above).
+Receipts: logs/qwenmodel1/score_{A,B,C}.json,
+tree_observations.json, tree_verdict.txt — small text receipts
+force-added under the seedslad pattern (this entry books the
+why: they are the whole quantitative record of the first
+MODEL-1 scoring pass and total < 10 KB).

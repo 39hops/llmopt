@@ -1,0 +1,122 @@
+{
+ "measurement_valid": true,
+ "arms": {
+  "A": {
+   "admissible": true
+  },
+  "B": {
+   "admissible": true
+  },
+  "C": {
+   "admissible": true
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 1.063969937936565,
+   "metric": "ce_teacher_recomputed_nats",
+   "population": "positions:corpus",
+   "aggregation": "mean",
+   "provenance": "locked records, P-1"
+  },
+  "2": {
+   "value": 1.061077768279846,
+   "metric": "excess_ce_nats",
+   "population": "positions:corpus",
+   "aggregation": "mean",
+   "provenance": "score_A.json"
+  },
+  "4": {
+   "value": 0.21419784471365863,
+   "metric": "rel_excess_ce_improvement",
+   "population": "positions:corpus",
+   "aggregation": "mean",
+   "provenance": "score_A.json v score_B.json"
+  },
+  "6": {
+   "value": 6216.303723662313,
+   "metric": "excess_ce_delta_floor_multiple",
+   "population": "positions:corpus",
+   "aggregation": "ratio",
+   "provenance": "score_A.json v score_B.json"
+  },
+  "5": {
+   "value": 0.28452009004400364,
+   "metric": "rel_kl_improvement",
+   "population": "positions:prefixes",
+   "aggregation": "mean",
+   "provenance": "score_A.json v score_B.json"
+  },
+  "7": {
+   "value": 0.7017919914619939,
+   "metric": "rel_excess_ce_improvement",
+   "population": "positions:corpus",
+   "aggregation": "mean",
+   "provenance": "score_B.json v score_C.json"
+  },
+  "9": {
+   "value": 16004.376244450414,
+   "metric": "excess_ce_delta_floor_multiple",
+   "population": "positions:corpus",
+   "aggregation": "ratio",
+   "provenance": "score_B.json v score_C.json"
+  },
+  "8": {
+   "value": 0.5208961139370875,
+   "metric": "rel_kl_improvement",
+   "population": "positions:prefixes",
+   "aggregation": "mean",
+   "provenance": "score_B.json v score_C.json"
+  },
+  "10": {
+   "value": 0.7656675041671871,
+   "metric": "rel_excess_ce_improvement",
+   "population": "positions:corpus",
+   "aggregation": "mean",
+   "provenance": "score_A.json v score_C.json"
+  },
+  "12": {
+   "value": 22220.679968112727,
+   "metric": "excess_ce_delta_floor_multiple",
+   "population": "positions:corpus",
+   "aggregation": "ratio",
+   "provenance": "score_A.json v score_C.json"
+  },
+  "11": {
+   "value": 0.6572107947401393,
+   "metric": "rel_kl_improvement",
+   "population": "positions:prefixes",
+   "aggregation": "mean",
+   "provenance": "score_A.json v score_C.json"
+  },
+  "3": {
+   "value": 0.0,
+   "metric": "anomaly_condition_count",
+   "population": "arm_pairs:up_rate",
+   "aggregation": "count",
+   "provenance": "clean"
+  }
+ },
+ "contrasts": {},
+ "X": {
+  "A": 1.061077768279846,
+  "B": 0.8337971972407241,
+  "C": 0.2486450017137274
+ },
+ "K": {
+  "A": 0.47201350864849845,
+  "B": 0.3377161826658416,
+  "C": 0.16180113550153713
+ },
+ "f_X": 3.656201195156861e-05,
+ "f_K": 0.00025810825403943527,
+ "provenance": {
+  "code_commit": "5f0e47c",
+  "tree_dirty": false,
+  "receipt_sha256": {
+   "A": "5e81c5724a5a4511a1775ec4cd78879c540da44ead5db4a9458a019b8ac003dd",
+   "B": "b1d8312abf618571fda782ffc571eb04ddbd62500353f147e80a7eeb0599bf55",
+   "C": "63d52d0071cfbe31c21efe255867e0be5684556410c6cfc3a0f95c33a55f423c"
+  }
+ }
+}
