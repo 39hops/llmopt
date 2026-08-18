@@ -96,3 +96,8 @@ If everything checks, say so plainly and list what you verified. A
 receipt audit that says "looks fine" without naming the fields it
 traced has done nothing — the whole point is that these defects are
 invisible unless someone reads each field against the run.
+
+Report EVERY issue you find, including low-confidence ones. Do not
+filter for severity — filtering happens in the lead's verification
+pass. Mark a confidence (high/medium/low) per finding instead of
+dropping the weak ones.

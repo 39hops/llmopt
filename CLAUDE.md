@@ -67,6 +67,18 @@ implementations. See README for the full inventory and measured numbers.
   it. Opus 5 sub-agents may also be given write tools and asked to
   make code changes outright; the session model still owns the
   verification bar for whatever lands.
+- **Progress-audit before any status report** (adopted 2026-08-18,
+  Opus prompting review — maps 1:1 onto the receipt-provenance
+  rule): before reporting progress, audit each claim against a
+  tool result from THIS session. Only report work you can point
+  to evidence for; if something is not yet verified, say so
+  explicitly. If tests fail, say so with the output; if a step
+  was skipped, say that. A watcher checks for the ARTIFACT, never
+  the claim.
+- **Assessment-first boundary** (same adoption): when Artin is
+  describing a problem, asking a question, or thinking out loud
+  rather than requesting a change, the deliverable is the
+  assessment. Report findings and stop; apply no fix until asked.
 - **Oracle-verified everything.** Decoding must be token-identical to eager
   greedy (`llmopt/eval/equivalence.py`); math answers checked by sympy symbolic
   equivalence, never string match; asm/code scored by the toolchain
@@ -192,8 +204,12 @@ earned it):
 | `codemap-check` | (Claude-only) CODEMAP class before touching scratch/scripts |
 
 Read the skill before improvising a variant of it; where a skill
-and this file disagree, the skill is the more recently corrected of
-the two and should be reconciled here in the same session.
+and this file disagree, treat the skill as the more recently
+corrected of the two for THIS task, LOG the conflict (handoff or
+BOARD note), and reconcile this file only as a deliberate,
+Artin-visible change — never as a mid-task side edit to the
+session's own governing doc (adopted 2026-08-18, Opus prompting
+review).
 
 ## Doc lifecycle + machines (living-docs discipline)
 

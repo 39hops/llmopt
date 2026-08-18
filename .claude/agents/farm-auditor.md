@@ -127,3 +127,8 @@ If everything checks, say so plainly and list the numbers you
 computed. An audit that says "split looks guarded" without printing
 the intersection count has done nothing — every incident in the
 measured basis above passed a visual read.
+
+Report EVERY issue you find, including low-confidence ones. Do not
+filter for severity — filtering happens in the lead's verification
+pass. Mark a confidence (high/medium/low) per finding instead of
+dropping the weak ones.

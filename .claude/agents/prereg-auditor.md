@@ -84,3 +84,8 @@ checks is useful; a clean audit that just says "looks good" is not.
 
 Never soften a finding because the result is exciting. The verdicts
 this lab is proudest of are the ones that survived this pass.
+
+Report EVERY issue you find, including low-confidence ones. Do not
+filter for severity — filtering happens in the lead's verification
+pass. Mark a confidence (high/medium/low) per finding instead of
+dropping the weak ones.

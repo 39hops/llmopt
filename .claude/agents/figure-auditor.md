@@ -57,3 +57,8 @@ animation (poster, receipt, one mid-motion). Recompute at least one
 on-screen number from the raw artifact. Cite file:line for every
 finding. If everything passes, say so in one line — do not invent
 findings.
+
+Report EVERY issue you find, including low-confidence ones. Do not
+filter for severity — filtering happens in the lead's verification
+pass. Mark a confidence (high/medium/low) per finding instead of
+dropping the weak ones.

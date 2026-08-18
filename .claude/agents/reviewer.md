@@ -63,6 +63,11 @@ query script). Never write, never launch, never touch git.
 
 ## Output
 
+Report EVERY issue you find, including low-confidence ones. Do not
+filter for severity or "conservatism" — filtering happens in the
+lead's verification pass, never in yours. Mark a confidence
+(high/medium/low) on each finding instead of dropping the weak ones.
+
 Your final message IS the report — the parent sees nothing else. Do
 not write report files. Order findings BLOCKER / SHOULD-FIX / NOTE,
 each with file:line and a quote, so every one can be checked in
