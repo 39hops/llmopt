@@ -159,7 +159,8 @@ def main():
         f.write(json.dumps(new_man) + "\n")
 
     # canonical 19-row chain: manifest first, then shards in order
-    shards = sorted({e["shard"] for e in new_man.values()})
+    shards = sorted({e["shard"] for e in new_man.values()
+                     if e["codec"] != "excluded"})
     chain_rows = [(_sha(os.path.join(out, "manifest.json")),
                    "manifest.json")]
     chain_rows += [(_sha(os.path.join(out, s + ".bin")), s + ".bin")
