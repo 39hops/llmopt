@@ -2950,6 +2950,14 @@ Thin CLI over llmopt.lab.qartifact — the qualification ladder.
 
 - `main()`
 
+### scratch/qwen_recompose.py
+QWEN-ATTN-ATTRIB-1 recomposer: build arm F/L/Q as a KEY-LEVEL byte recomposition of two frozen WHOLE-0T artifacts (PRE-REG QWEN-ATTN-ATTRIB-1; the MODEL1-TREE recomposition rules ride: no Lloyd, no DP retraining, no recompression — every payload byte is copied from an already-frozen artifact).
+
+- `promoted_keys(base_man: dict, donor_man: dict, mark: str) -> list` — Keys the donor holds at a different codec than the base AND
+- `compose(base_man: dict, donor_man: dict, promote: set, read_base, read_donor, write_shard) -> dict` — Pure core: returns the new manifest. read_*(entry) -> bytes;
+- `_sha(p)`
+- `main()`
+
 ### scratch/qwen_runtime0r.py
 QWEN-RUNTIME-0R minimal CPU reference: decode a WHOLE-0T artifact per layer and generate.
 
