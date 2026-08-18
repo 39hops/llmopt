@@ -68,6 +68,11 @@ def main() -> int:
                          for b in range(len(gl))])
     allm = np.concatenate([mc, mp, mr])
     total = bins(allm)
+    # SCORED-STREAMS vector (prereg-audit B2, 2026-08-17): the
+    # registered metrics score corpus (X) and prefixes (K) only —
+    # rollout positions are not X/K-scored, so the small-n fence
+    # must be evaluated on this vector too, not only the pool
+    scored = bins(np.concatenate([mc, mp]))
     rec = {
         "gate": "teacher margin-bin census (TREE-PINS item 2)",
         "edges": [e if np.isfinite(e) else "inf" for e in EDGES],
@@ -77,9 +82,12 @@ def main() -> int:
                         "prefixes": int(mp.size),
                         "rollouts_live": int(mr.size),
                         "total": int(allm.size)},
+        "counts_scored_streams": scored,
         "small_n_fence": SMALL_N,
         "small_n_bins_total": [i for i, c in enumerate(total)
                                if c < SMALL_N],
+        "small_n_bins_scored_streams": [
+            i for i, c in enumerate(scored) if c < SMALL_N],
         "verified_record_sha256": shas,
         "teacher_code_commit": man["code_commit"],
         "revision": man["revision"],
