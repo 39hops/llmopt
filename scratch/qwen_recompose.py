@@ -32,6 +32,11 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.dirname(
     os.path.abspath(__file__))))
 
+# bands frozen by PRE-REG QWEN-LBAND-1: linear-attn layers ascending,
+# 16/16/16 -> vendor layer indices
+_BAND = {"e": set(range(0, 21)), "m": set(range(21, 42)),
+         "l": set(range(42, 63))}
+
 RECIPES = {
     "F": {"base": "B", "donor": "C", "mark": ".self_attn.",
           "n_expected": 64},
@@ -39,14 +44,34 @@ RECIPES = {
           "n_expected": 144},
     "Q": {"base": "A", "donor": "C", "mark": ".linear_attn.in_proj_qkv.",
           "n_expected": 48},
+    # QWEN-IO-ATTRIB-1: iso-byte 2x2 of the A->B io repair
+    "D": {"base": "A", "donor": "B", "mark": "embed_tokens.weight",
+          "n_expected": 1},
+    "E": {"base": "A", "donor": "B", "mark": "lm_head.weight",
+          "n_expected": 1},
 }
+for _b in "eml":
+    RECIPES[f"BL{_b}"] = {"base": "B", "donor": "C",
+                          "mark": ".linear_attn.", "layers": _BAND[_b],
+                          "n_expected": 48}
+    RECIPES[f"FL{_b}"] = {"base": "F", "donor": "C",
+                          "mark": ".linear_attn.", "layers": _BAND[_b],
+                          "n_expected": 48}
 
 
-def promoted_keys(base_man: dict, donor_man: dict, mark: str) -> list:
+def promoted_keys(base_man: dict, donor_man: dict, mark: str,
+                  layers=None) -> list:
     """Keys the donor holds at a different codec than the base AND
-    matching the recipe mark. Sorted for determinism."""
+    matching the recipe mark (and layer set, when the recipe names
+    one). Sorted for determinism."""
+    def in_band(k):
+        if layers is None:
+            return True
+        import re
+        m = re.search(r"layers\.(\d+)\.", k)
+        return m is not None and int(m.group(1)) in layers
     return sorted(k for k in donor_man
-                  if mark in k
+                  if mark in k and in_band(k)
                   and donor_man[k]["codec"] != base_man[k]["codec"])
 
 
@@ -126,7 +151,7 @@ def main():
         print(f"[rc] qualified {role}={arm}: {q['report']['census']}",
               flush=True)
     bm, dm = srcs["base"]["man"], srcs["donor"]["man"]
-    promote = promoted_keys(bm, dm, rec["mark"])
+    promote = promoted_keys(bm, dm, rec["mark"], rec.get("layers"))
     if len(promote) != rec["n_expected"]:
         raise SystemExit(f"REFUSING: {len(promote)} promoted keys, "
                          f"registered {rec['n_expected']}")
@@ -189,7 +214,8 @@ def main():
         raise SystemExit(f"REFUSING: {rcpt_path} exists")
     rcpt = {
         "name": name,
-        "recipe": rec,
+        "recipe": {k: (sorted(v) if isinstance(v, set) else v)
+                   for k, v in rec.items()},
         "base": {"arm": srcs["base"]["arm"],
                  "dir": srcs["base"]["dir"],
                  "chain_sha256": srcs["base"]["chain_sha"]},

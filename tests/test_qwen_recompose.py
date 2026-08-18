@@ -97,3 +97,28 @@ def test_recipes_match_registration():
     assert rc.RECIPES["L"]["n_expected"] == 144
     assert rc.RECIPES["Q"]["n_expected"] == 48
     assert rc.RECIPES["Q"]["base"] == "A"
+
+
+def test_new_recipes_match_registration():
+    assert rc.RECIPES["D"] == {"base": "A", "donor": "B",
+                               "mark": "embed_tokens.weight",
+                               "n_expected": 1}
+    assert rc.RECIPES["E"]["n_expected"] == 1
+    for b in "eml":
+        assert rc.RECIPES[f"BL{b}"]["n_expected"] == 48
+        assert rc.RECIPES[f"FL{b}"]["base"] == "F"
+    # bands partition the 48 linear layers, disjoint 16/16/16... by
+    # vendor index: 21+21+21 slots but only 48 are linear layers
+    e, m, l = (rc.RECIPES[f"BL{b}"]["layers"] for b in "eml")
+    assert not (e & m or m & l or e & l)
+
+
+def test_promoted_keys_band_filter():
+    base = {"model.layers.5.linear_attn.in_proj_qkv.weight":
+            {"codec": "w4"},
+            "model.layers.30.linear_attn.in_proj_qkv.weight":
+            {"codec": "w4"}}
+    donor = {k: {"codec": "s16"} for k in base}
+    got = rc.promoted_keys(base, donor, ".linear_attn.",
+                           layers=set(range(0, 21)))
+    assert got == ["model.layers.5.linear_attn.in_proj_qkv.weight"]
