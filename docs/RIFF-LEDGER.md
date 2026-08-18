@@ -6368,6 +6368,15 @@ honest status column).
   Attribution: Artin (the ask, and the "we have something in this
   repo" instinct — correct), house (the spec-decoding
   identification, exactness argument, fences).
+  UPDATE (2026-08-18, VERDICT QWEN-RK-CENSUS-0): the practical
+  program is DEAD for the current artifacts — A's channel-level
+  agreement with the teacher is refuted (R_k@1024 0.11-0.21 v bar
+  0.7 on all six sampled layers) and arm B already reads 0/60 in
+  free generation (EFFORT-QUANT-0), so the "can't-talk drafts at
+  ~0% acceptance" clause is the measured regime, not the tail
+  risk. The exactness argument stands (correctness was never at
+  stake); revive only with an artifact that passes a router/
+  free-generation screen first.
   CORRECTION (2026-08-17, same day, GPT seat): "degrades to
   baseline, never below" holds for TARGET SWEEPS/TOKEN only —
   end-to-end wall can lose, and the lab measured exactly that in
