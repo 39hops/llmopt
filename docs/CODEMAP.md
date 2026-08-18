@@ -338,7 +338,7 @@ Census: UNCITED 208, library 72, reproduce-pinned 10, results-cited 216, spec-ci
 | qwen | qwen_cuda_rung1.py | UNCITED | — | — | — | — |
 | qwen | qwen_cuda_rung2.py | UNCITED | — | — | — | — |
 | qwen | qwen_cuda_rung3.py | UNCITED | — | — | — | — |
-| qwen | qwen_cuda_rung4.py | spec-cited | specs | specs×1 | — | 1 |
+| qwen | qwen_cuda_rung4.py | spec-cited | specs | specs×1 | — | 3 |
 | qwen | qwen_displace_extract.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_family_probe.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_margin_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
