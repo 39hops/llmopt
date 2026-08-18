@@ -32,6 +32,11 @@ ALL = ("B", "C", "F") + B_ARMS + F_ARMS
 # frozen by PRE-REG QWEN-LBAND-1: 16/16/16 ascending linear-attn split
 BAND_LAYERS = {"e": sorted(range(0, 21)), "m": sorted(range(21, 42)),
                "l": sorted(range(42, 63))}
+# exact per-band spend, derived 2026-08-18 from the frozen B/F/C
+# manifests (sum of s16-minus-w4 lens over each band's 48 keys;
+# identical for all six arms). The prose's +0.4296 GiB is this
+# integer rounded.
+BAND_BYTES = 461276672
 
 
 def _frozen_chain_sha(arm: str):
@@ -63,6 +68,9 @@ def compose_admissibility(a, c, rc_a, frozen) -> list:
         reasons.append(f"recipe layers != frozen band {a[-1]}")
     if c.get("promoted_keys") != 48:
         reasons.append(f"promoted_keys {c.get('promoted_keys')} != 48")
+    if c.get("bytes_added") != BAND_BYTES:
+        reasons.append(f"bytes_added {c.get('bytes_added')} != "
+                       f"manifest-derived {BAND_BYTES}")
     q = rc_a.get("qualification", {})
     if c.get("out_chain_sha256") != q.get("chain_sha256"):
         reasons.append("compose out_chain != score qualification chain")

@@ -24,7 +24,7 @@ def _receipt(X, K, chain=None):
 def _compose(a):
     """Well-formed compose receipt matching the registered
     treatment, with chains derived from the frozen digests."""
-    return {"name": a, "bytes_added": 461373440,
+    return {"name": a, "bytes_added": lb.BAND_BYTES,
             "recipe": {"base": lb.BASES[a], "donor": "C",
                        "mark": ".linear_attn.",
                        "layers": lb.BAND_LAYERS[a[-1]],
