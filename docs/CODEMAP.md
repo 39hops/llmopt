@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 211, library 72, reproduce-pinned 10, results-cited 213, spec-cited 86, cited-but-library 60
+Census: UNCITED 212, library 72, reproduce-pinned 10, results-cited 213, spec-cited 86, cited-but-library 60
 
 ## scratch/
 
@@ -338,7 +338,7 @@ Census: UNCITED 211, library 72, reproduce-pinned 10, results-cited 213, spec-ci
 | qwen | qwen_cuda_rung1.py | UNCITED | — | — | — | — |
 | qwen | qwen_cuda_rung2.py | UNCITED | — | — | — | — |
 | qwen | qwen_cuda_rung3.py | UNCITED | — | — | — | — |
-| qwen | qwen_cuda_rung4.py | UNCITED | — | — | — | — |
+| qwen | qwen_cuda_rung4.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_displace_extract.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_family_probe.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_qualify.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 4 |
@@ -438,7 +438,7 @@ Census: UNCITED 211, library 72, reproduce-pinned 10, results-cited 213, spec-ci
 | vrm | vrm_ab.py | UNCITED | — | — | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS | RESULTS×1 | — | — |
-| wsl | wsl.sh | results-cited | RESULTS, specs | RESULTS×10, specs×21 | — | 4 |
+| wsl | wsl.sh | results-cited | RESULTS, specs | RESULTS×10, specs×21 | — | 5 |
 | xterm | xterm_probe.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 |
 | xtermdiet1 | xtermdiet1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | z1 | z1_gate.sh | UNCITED | — | — | — | — |
@@ -456,6 +456,7 @@ Census: UNCITED 211, library 72, reproduce-pinned 10, results-cited 213, spec-ci
 | anchor | anchor_guard.py | UNCITED | — | — | — | 1 |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | 2 |
 | arena | arena.py | UNCITED | — | — | — | — |
+| arena | arena_qwen.py | UNCITED | — | — | — | — |
 | autopsy | autopsy_int.py | UNCITED | — | — | — | — |
 | backfill | backfill_code_commit.py | spec-cited | specs | specs×3 | — | — |
 | bench | bench_adaptive.py | spec-cited | specs | specs×1 | — | — |

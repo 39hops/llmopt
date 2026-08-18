@@ -2921,6 +2921,13 @@ QWEN-FAMILY-PROBE-0: cheapest acceptable RATE per non-FFN family.
 - `probe_tensor(fam, name)` — Two passes over row-chunks so 1.27B-param tensors fit VRAM:
 - `main()`
 
+### scratch/qwen_margin_census.py
+Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-only per-bin position counts, booked once with the teacher lock, before any arm scores.
+
+- `margins(a)`
+- `bins(m)`
+- `main() -> int`
+
 ### scratch/qwen_qualify.py
 Thin CLI over llmopt.lab.qartifact — the qualification ladder.
 
