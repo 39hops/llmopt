@@ -34260,3 +34260,34 @@ item set through house arms B and C on the CUDA runtime
 (QWEN-EFFORT-QUANT-0, scratch/qwen_effort_quant.py, in flight on
 the 3080) — does compression damage the deliberation loop before
 the answers.
+## OBSERVATION QWEN-SCORER-WALL-0 + METAL-INT-MMA-0: the scorer is decode-bound (>=75% of per-layer wall at real shapes), and M-series Metal exposes NO integer simdgroup MMA — the CUDA int8-exact path has no Apple-GPU analogue; the Mac speed lever is decode, not GEMM (2026-08-18, mac)
+
+Two probes run on Artin's override of the Ozaki NO-GO (both
+surveyor-recommended as the cheapest deciders; ~10 min total).
+
+PROBE 1, wall split: five real tensor shapes (qkv/z/ffn classes,
+0.35B params) with SYNTHETIC w4 payloads — canonical dec_w4
+decode 0.73s v seq-356 fp32 GEMM 0.25s: decode >= 75% of the
+layer wall, and the measured ~80s full forward v this 12s-scale
+GEMM+decode estimate says attention/overhead eats the rest, so
+GEMM's true share is smaller still. CONSEQUENCE (Amdahl): a free
+exact GEMM saves under a quarter of scoring wall; the scorer's
+lever is DECODE (numpy codebook gather) — which is exactly the
+registered-but-unbuilt Metal direct-W4 leg's territory. Fences:
+synthetic payloads (decode cost is codec+shape-determined),
+single rep, indicative not booked-bar numbers.
+PROBE 2, compile oracle on Apple M3 Pro (applegpu_g15s, mlx
+metal_kernel): simdgroup_matrix<T,8,8> + simdgroup_multiply_
+accumulate COMPILES+RUNS for float/half/bfloat and REFUSES for
+int/short/char/int8_t. The RESULTS L24936 open question is
+ANSWERED: no integer simdgroup MMA on this silicon — the
+RIFF-1149 int8-MMA Metal leg is superseded-dead here, exact-on-
+Metal remains scalar-lane int64 (slow class), and the CUDA
+int8-tensor-core exactness result does not transport to Mac GPU.
+CONTEXT CORRECTION booked same day (dbfeb7a-adjacent): the
+CLAUDE.md doctrine line "int8-sliced beats native fp64" was an
+overcompression — receipts read exact arms at 1.07-1.35x fp64's
+WALL (accuracy-per-wall win, not speed); corrected in place.
+Survey nits carried for a future amendment pass: RESULTS L4015
+slice-product count (182 v 14^2=196 — triangular class, prose
+says k^2), L3956 "4.5x" rounds 4.59 down.
