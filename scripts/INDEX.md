@@ -2928,6 +2928,23 @@ Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-o
 - `bins(m)`
 - `main() -> int`
 
+### scratch/qwen_model1_score.py
+QWEN-MODEL1-TREE scorer: X/K for one artifact arm v the locked teacher.
+
+- `log_softmax(logits: np.ndarray) -> np.ndarray` — Row-wise log-softmax in fp64 with max subtraction (-METRIC 7).
+- `mean_ce(logits: np.ndarray, ids, v_live: int) -> float` — Mean CE over logits[:-1] v ids[1:], live vocab. NaN/inf REFUSE.
+- `mean_forward_kl(t_logits: np.ndarray, a_logits: np.ndarray, v_live: int) -> float` — Mean over positions of KL(teacher || arm), live vocab, on the
+- `perturb_ulp(a_fp16: np.ndarray, up: bool) -> np.ndarray` — Move every fp16 value one ulp toward +/- inf (the registered
+- `sensitivity_floor(fn, rec_fp16: np.ndarray) -> float` — max |fn(perturbed) - fn(record)| over the +-1ulp perturbations.
+- `margin_bin(m: float)`
+- `teacher_margins_top1(t_logits_fp16: np.ndarray, v_live: int)` — Teacher top1 ids and (top1-top2) logit margins, fp32 upcast,
+- `flip_table(t_top1, margins, a_top1)` — Per-margin-bin flip counts: [n_positions, n_flips] per bin.
+- `sha_arr(a: np.ndarray) -> str`
+- `fsha(p: str) -> str`
+- `refuse_list_checks(man: dict, tok, smoke: bool)` — The -METRIC (8) scorer refuse-list, fail-closed.
+- `load_record(name: str, man_rec: dict) -> np.ndarray`
+- `main()`
+
 ### scratch/qwen_qualify.py
 Thin CLI over llmopt.lab.qartifact — the qualification ladder.
 
@@ -2970,6 +2987,15 @@ QWEN-MODEL-1 teacher-baseline pass (frozen procedure, SPEC.md).
 Teacher v2d SIDECAR: cached-v-uncached gate on the locked rollout record (AMENDMENT QWEN-MODEL1-TREE-PINS item 3).
 
 - `main() -> int`
+
+### scratch/qwen_tree_adjudicate.py
+QWEN-MODEL1-TREE observations builder + mechanical tree walker.
+
+- `_m(value, metric, population, aggregation, provenance='')`
+- `build_observations(rc: dict) -> dict` — rc = {"A": receipt, "B": receipt, "C": receipt} -> observations.
+- `step_state(outcomes: dict, ids) -> str` — 'Y' all fire / 'N' any no-fire / 'U' otherwise-unresolved.
+- `walk(outcomes: dict) -> tuple` — outcomes: {bar_id: 'FIRE'|'NO-FIRE'|'UNRESOLVED'} -> (branch,
+- `main()`
 
 ### scratch/qwen_whole0t.py
 QWEN-WHOLE-0T compiler (PRE-REG RESULTS L32776 + -0T-ARMS).

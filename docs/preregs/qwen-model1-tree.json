@@ -1,0 +1,166 @@
+{
+  "name": "QWEN-MODEL1-TREE",
+  "note": "Mechanical projection of PRE-REG QWEN-MODEL1-TREE + amendments -LOGIC, -METRIC, -PRIORS, -PINS, -KFENCE (refinement CLOSED in -KFENCE). Registered numbers unchanged: 20% relative CE+KL conjunction, 5x fp16_record_sensitivity_floor fence, X_A > 1.0 uniform-damage alarm, single-digit-nats alignment precondition. Each material-improvement step is three bars (X-relative, K-relative, X-delta floor multiple) that must ALL fire; scripts/qwen_tree_walk.py maps bar outcomes to branch T1/T2/T3/T4/NONMONOTONIC/ALARM with zero discretion, in the -LOGIC evaluation order. Two projection resolutions, both fenced conservative: (a) the anomaly gate's 'either or both metrics' OR is encoded as anomaly_condition_count (count of reversed-direction 20%+floor conditions among B-v-A and C-v-B on X and K; any nonzero count books NONMONOTONIC); (b) the K-side degradation conditions use f_K (the -KFENCE floor) symmetrically with f_X. Degenerate X_Z <= 0 books via contrasts inadmissibility -> UNRESOLVED, per the registered stop-for-review rule. All X/K from the Mac CPU reference leg only (device rule -METRIC 6).",
+  "results_id": "2026-08-17-pre-reg-qwen-model1-tree-the",
+  "registered": "2026-08-17",
+  "machine": "mac",
+  "arms": {
+    "A": {
+      "description": "uniform-2 W4-everywhere artifact (WHOLE-0T arm A, 6.50 GiB)"
+    },
+    "B": {
+      "description": "guarded-io: A plus embed_tokens + lm_head at S16 (WHOLE-0T arm B, 7.09 GiB)"
+    },
+    "C": {
+      "description": "conservative: B plus all attention projections at S16 (WHOLE-0T arm C, 8.77 GiB)"
+    }
+  },
+  "bars": [
+    {
+      "id": 1,
+      "name": "ALIGN-SANITY",
+      "metric": "ce_teacher_recomputed_nats",
+      "population": "positions:corpus",
+      "aggregation": "mean",
+      "direction": "below",
+      "value": 10.0,
+      "arms": ["A", "B", "C"],
+      "description": "-METRIC (3) admissibility precondition: CE_teacher recomputed from the locked records on the logits[:-1] v ids[1:] alignment lands in single-digit nats; the misaligned pairing sits near log(V) ~ 12.4 and books INSTRUMENT-ALARM, never a score"
+    },
+    {
+      "id": 2,
+      "name": "UNIFORM-DAMAGE-CLEAN",
+      "metric": "excess_ce_nats",
+      "population": "positions:corpus",
+      "aggregation": "mean",
+      "direction": "below",
+      "value": 1.0,
+      "arms": ["A"],
+      "description": "-METRIC (5): X_A <= 1.0 nat or INSTRUMENT-ALARM — no branch may fire on a catastrophically damaged best arm"
+    },
+    {
+      "id": 3,
+      "name": "ANOMALY-CLEAN",
+      "metric": "anomaly_condition_count",
+      "population": "arm_pairs:up_rate",
+      "aggregation": "count",
+      "direction": "below",
+      "value": 0.5,
+      "arms": ["A", "B", "C"],
+      "description": "-LOGIC (2) anomaly gate: count of material-degradation conditions (B worse than A, C worse than B; 20% reversed conjunction legs on X or K, each past its 5x floor) must be zero, else NONMONOTONIC/UNRESOLVED"
+    },
+    {
+      "id": 4,
+      "name": "T1X-B-OVER-A",
+      "metric": "rel_excess_ce_improvement",
+      "population": "positions:corpus",
+      "aggregation": "mean",
+      "direction": "above",
+      "value": 0.2,
+      "arms": ["A", "B"],
+      "description": "(X_A - X_B) / X_A >= 0.20"
+    },
+    {
+      "id": 5,
+      "name": "T1K-B-OVER-A",
+      "metric": "rel_kl_improvement",
+      "population": "positions:prefixes",
+      "aggregation": "mean",
+      "direction": "above",
+      "value": 0.2,
+      "arms": ["A", "B"],
+      "description": "(K_A - K_B) / K_A >= 0.20, forward KL(teacher||arm), live vocab"
+    },
+    {
+      "id": 6,
+      "name": "T1F-B-OVER-A",
+      "metric": "excess_ce_delta_floor_multiple",
+      "population": "positions:corpus",
+      "aggregation": "ratio",
+      "direction": "above",
+      "value": 5.0,
+      "arms": ["A", "B"],
+      "description": "(X_A - X_B) / fp16_record_sensitivity_floor > 5"
+    },
+    {
+      "id": 7,
+      "name": "T2X-C-OVER-B",
+      "metric": "rel_excess_ce_improvement",
+      "population": "positions:corpus",
+      "aggregation": "mean",
+      "direction": "above",
+      "value": 0.2,
+      "arms": ["B", "C"],
+      "description": "(X_B - X_C) / X_B >= 0.20"
+    },
+    {
+      "id": 8,
+      "name": "T2K-C-OVER-B",
+      "metric": "rel_kl_improvement",
+      "population": "positions:prefixes",
+      "aggregation": "mean",
+      "direction": "above",
+      "value": 0.2,
+      "arms": ["B", "C"],
+      "description": "(K_B - K_C) / K_B >= 0.20"
+    },
+    {
+      "id": 9,
+      "name": "T2F-C-OVER-B",
+      "metric": "excess_ce_delta_floor_multiple",
+      "population": "positions:corpus",
+      "aggregation": "ratio",
+      "direction": "above",
+      "value": 5.0,
+      "arms": ["B", "C"],
+      "description": "(X_B - X_C) / fp16_record_sensitivity_floor > 5"
+    },
+    {
+      "id": 10,
+      "name": "T4X-C-OVER-A",
+      "metric": "rel_excess_ce_improvement",
+      "population": "positions:corpus",
+      "aggregation": "mean",
+      "direction": "above",
+      "value": 0.2,
+      "arms": ["A", "C"],
+      "description": "(X_A - X_C) / X_A >= 0.20 (the -LOGIC cumulative comparison)"
+    },
+    {
+      "id": 11,
+      "name": "T4K-C-OVER-A",
+      "metric": "rel_kl_improvement",
+      "population": "positions:prefixes",
+      "aggregation": "mean",
+      "direction": "above",
+      "value": 0.2,
+      "arms": ["A", "C"],
+      "description": "(K_A - K_C) / K_A >= 0.20"
+    },
+    {
+      "id": 12,
+      "name": "T4F-C-OVER-A",
+      "metric": "excess_ce_delta_floor_multiple",
+      "population": "positions:corpus",
+      "aggregation": "ratio",
+      "direction": "above",
+      "value": 5.0,
+      "arms": ["A", "C"],
+      "description": "(X_A - X_C) / fp16_record_sensitivity_floor > 5"
+    }
+  ],
+  "receipts": [
+    "logs/qwenmodel1/score_A.json",
+    "logs/qwenmodel1/score_B.json",
+    "logs/qwenmodel1/score_C.json",
+    "logs/qwenmodel1/tree_observations.json",
+    "logs/qwenmodel1/tree_verdict.txt"
+  ],
+  "refuted_if": "The registered house prior (the curve lands in the T1 branch: B materially improves A, C adds little over B) is REFUTED if the mechanical walker lands any branch other than T1 on clean gates. Separately, any gate alarm (bars 1-3) books INSTRUMENT-ALARM or NONMONOTONIC and no allocation claim exists.",
+  "refuted_if_predicate": {
+    "measurement": "refuted:t1_prior_fired",
+    "direction": "below",
+    "value": 0.5
+  },
+  "registered_prior": "House, confidence weak/medium (lowered by -TREE-PRIORS 2): T1 fires — B materially improves over A on semantic-role grounds (embeddings and lm_head directly define token geometry), C adds little over B. Conditional prior if T1 fires and D/E are built: D (embed repaired) > E (head repaired) per STAR-PROFILE lineage, adjudicated by the -PINS recovery-fraction metric with the -KFENCE symmetric floors."
+}
