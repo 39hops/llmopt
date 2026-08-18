@@ -2922,6 +2922,20 @@ CUDA leg rung 4: FUSED tower — every w4 Linear executes as a fused decode+GEMV
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
 
 
+### scratch/qwen_effort_probe.py
+QWEN-EFFORT-0 overnight probe: does the reasoning_effort knob change oracle-checked answer quality, and by how much?
+
+- `make_items(n)` — String-seeded sympy items with machine-checkable answers.
+- `parse_answer(text)`
+- `check(ans, truth)` — sympy symbolic equivalence, never string match; int family
+- `main()`
+
+### scratch/qwen_effort_quant.py
+QWEN-EFFORT-QUANT-0: does compression damage the deliberation loop before it damages answers?
+
+- `_load(name, rel)`
+- `main()`
+
 ### scratch/qwen_family_probe.py
 QWEN-FAMILY-PROBE-0: cheapest acceptable RATE per non-FFN family.
 
