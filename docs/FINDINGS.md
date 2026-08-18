@@ -2378,3 +2378,16 @@ regime tag on every bullet is the fence.
   wording only; floors are numerical-sensitivity multiples, never
   significance. ([VERDICT
   QWEN-ATTN-ATTRIB-1](RESULTS.md#L34115 "id:2026-08-18-verdict-qwen-attn-attrib-1-l").)
+- [SINGLE-SEED] [TEACHER-FORCED] The A-to-B io repair splits by
+  metric at exactly iso-byte spend (+0.2960 GiB each): the embed
+  swap (D) carries the CE recovery (rec_X 0.616 v E's 0.435,
+  gap +0.181) while the head swap (E) carries the KL recovery
+  (rec_K 0.777 v D's 0.325, gap -0.452, 235 f_K floors), and each
+  metric's recoveries sum to ~1 (near-additive: |I_X| 0.052,
+  |I_K| 0.102) — the two ends repair DIFFERENT damage. Frozen rule
+  reads MIXED/UNRESOLVED; the D>E prior survives on its X-only
+  predicate with the K leg opposite. Fences: point readings on
+  355/92 positions, no sampling fence; teacher-distribution
+  wording; arm contrasts normalized on A, never fidelity claims;
+  floors are precision multiples, never significance. ([VERDICT
+  QWEN-IO-ATTRIB-1](RESULTS.md#L34643 "id:2026-08-18-verdict-qwen-io-attrib-1-mixed").)

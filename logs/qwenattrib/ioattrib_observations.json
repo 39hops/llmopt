@@ -1,0 +1,94 @@
+{
+ "measurement_valid": true,
+ "arms": {
+  "D": {
+   "admissible": true
+  },
+  "E": {
+   "admissible": true
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0.0,
+   "metric": "bracket_violation_count",
+   "population": "arms:recomposed",
+   "aggregation": "count",
+   "provenance": "D/E X and K v [B-5f, A+5f]"
+  },
+  "2": {
+   "value": 0.18102909497424796,
+   "metric": "recovery_fraction_gap_x",
+   "population": "positions:corpus",
+   "aggregation": "mean",
+   "provenance": "rec_X(D) - rec_X(E), A->B axis"
+  },
+  "3": {
+   "value": 1125.331837179636,
+   "metric": "x_gap_floor_multiple",
+   "population": "positions:corpus",
+   "aggregation": "ratio",
+   "provenance": ""
+  },
+  "6": {
+   "value": 0.05154616629200737,
+   "metric": "interaction_abs_x",
+   "population": "positions:corpus",
+   "aggregation": "mean",
+   "provenance": ""
+  },
+  "4": {
+   "value": -0.45227147797157863,
+   "metric": "recovery_fraction_gap_k",
+   "population": "positions:prefixes",
+   "aggregation": "mean",
+   "provenance": ""
+  },
+  "5": {
+   "value": 235.32316057016558,
+   "metric": "k_gap_floor_multiple",
+   "population": "positions:prefixes",
+   "aggregation": "ratio",
+   "provenance": ""
+  },
+  "7": {
+   "value": 0.10242216286428585,
+   "metric": "interaction_abs_k",
+   "population": "positions:prefixes",
+   "aggregation": "mean",
+   "provenance": ""
+  },
+  "refuted:recovery_fraction_gap_x_floored": {
+   "value": 0.18102909497424796,
+   "metric": "recovery_fraction_gap_x_floored",
+   "population": "positions:corpus",
+   "aggregation": "mean",
+   "provenance": "emitted only past the 5 f_X floor"
+  }
+ },
+ "contrasts": {},
+ "X": {
+  "A": 1.061077768279846,
+  "B": 0.8337971972407241,
+  "D": 0.9210075636652013,
+  "E": 0.9621519597456438
+ },
+ "K": {
+  "A": 0.47201350864849845,
+  "B": 0.3377161826658416,
+  "D": 0.4283567594150567,
+  "E": 0.36761790930524957
+ },
+ "f_X": 3.656201195156861e-05,
+ "f_K": 0.00025810825403943527,
+ "provenance": {
+  "code_commit": "01e45f8",
+  "tree_dirty": false,
+  "receipt_sha256": {
+   "A": "5e81c5724a5a4511a1775ec4cd78879c540da44ead5db4a9458a019b8ac003dd",
+   "B": "b1d8312abf618571fda782ffc571eb04ddbd62500353f147e80a7eeb0599bf55",
+   "D": "1b88acf4073f3541911e9da8fa79708fa0dca40790eefe975bd5faad9989af2f",
+   "E": "d9f587383b54d27fab3342136482271938daa3b7943c5963e43765186ca65598"
+  }
+ }
+}

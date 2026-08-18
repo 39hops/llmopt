@@ -34640,3 +34640,94 @@ its own. (3) The registered natural-language FLATNESS component
 of the prior (spread within ~0.5 bits) is booked MISSED
 outright (1.201 measured); the mechanical NOT-REFUTED verdict
 of the bundled clause stands unchanged.
+## VERDICT QWEN-IO-ATTRIB-1: MIXED/UNRESOLVED by the frozen rule — the io repair SPLITS by metric: embed (D) carries the CE recovery, head (E) carries the KL recovery, near-additive on both (2026-08-18, mac)
+
+Registered as PRE-REG QWEN-IO-ATTRIB-1 (RESULTS L34340) + machine
+projection docs/preregs/qwen-io-attrib-1.json. Adjudicator
+scratch/qwen_ioattrib_adjudicate.py (4 fixtures green), producer
+01e45f8 dirty=False; observations
+logs/qwenattrib/ioattrib_observations.json, verdict lines
+logs/qwenattrib/ioattrib_verdict.txt.
+
+MEASURED (Mac CPU, fp16 record; A/B baselines from MODEL-1 night):
+- X (mean excess CE, nats, 355 corpus terms): A 1.06108, D 0.92101,
+  E 0.96215, B 0.83380. K (fwd KL, 92 prefix terms): A 0.47201,
+  D 0.42836, E 0.36762, B 0.33772.
+- Recovery on the A->B axis: rec_X(D)=0.616, rec_X(E)=0.435;
+  rec_K(D)=0.325, rec_K(E)=0.777.
+- BAR 1 SANITY-BRACKET-CLEAN FIRE (0 violations; all four D/E
+  readings inside [B-5f, A+5f]).
+- BAR 2 D-DOM-X FIRE (gap_x = +0.18103), BAR 3 floor FIRE
+  (|X_D-X_E| = 1125 f_X). BAR 4 D-DOM-K NO-FIRE (gap_k = -0.45227),
+  BAR 5 floor FIRE (|K_D-K_E| = 235 f_K, f_K = per-contrast max
+  over {A,B,D,E} = arm A's 2.581e-4 as registered; with B's floor
+  the multiple would read ~1150x — floor named per auditor note).
+- BAR 6 NEAR-ADDITIVE-X FIRE (|rec_X(D)+rec_X(E)-1| = 0.052),
+  BAR 7 NEAR-ADDITIVE-K FIRE (|rec_K(D)+rec_K(E)-1| = 0.102).
+
+RESOLUTION (frozen rule): MIXED/UNRESOLVED — D-dominance needs
+bars 2-5 all FIRE (bar 4 misses); E-dominance needs both gaps
+negative (gap_x is positive). The registered outcome is the split
+itself: the embedding swap recovers most of the CE damage, the
+head swap recovers most of the KL damage, and each metric's two
+recoveries sum to ~1 (near-additive, unlike the ATTN-ATTRIB
+redundancy). Iso-byte is receipt-exact: compose_D and compose_E
+each add 317,847,584 bytes (+0.2960 GiB), so the ranking inside
+each metric is a pure allocation reading at equal spend.
+
+REGISTERED PRIOR (D>E, STAR-PROFILE directional): NOT-REFUTED —
+on the X leg ONLY, which is all the registered predicate reads
+(refuted:recovery_fraction_gap_x_floored = +0.181, not below 0,
+emitted past the 5 f_X gate). The K leg reads the OPPOSITE
+direction past 235 floors; had the predicate been registered on
+K, it would have read REFUTED. The prior survives by the letter
+of its X-only predicate and no wider claim is made.
+
+FENCES (registered, carried):
+- Attribution of the A->B step only — never a MODEL-1 tree branch;
+  the MODEL-1 INSTRUMENT-ALARM verdict is untouched.
+- Point readings over 355 corpus / 92 prefix positions, single
+  arm each, NO sampling-uncertainty fence exists; the directional
+  sentences above are point readings, not distribution claims.
+- K is forward KL(teacher||arm) on teacher-forced prefixes —
+  teacher-distribution wording, not accuracy.
+- Base A is outside the registered fidelity regime; every
+  recovery fraction here is an ARM CONTRAST normalized on A, not
+  a fidelity statement about A.
+- Floors are fp16 record-sensitivity floors (+-1ulp), i.e.
+  precision floors, not statistical power.
+
+PROVENANCE DISCLOSURES (receipt-auditor + prereg-auditor, both
+clean of blockers; findings adopted):
+- Per-arm scorer commits differ: A/B scored at 232737a, D at
+  7e3f473, E at 01e45f8, compose at a66215b. Diffs verified
+  non-numeric (arm allowlist widened, chain_sha256 added to the
+  receipt, device_actual made derived; docs otherwise), so X/K
+  comparability holds; "frozen scorer" is amended to "frozen
+  numeric path" by this disclosure.
+- A/B receipts predate two receipt fixes: their device_actual is
+  a literal (true — the driver refuses non-cpu — but literal) and
+  they carry no qualification.chain_sha256, so the A/B rows are
+  not chain-tied to the compose base/donor shas the way D/E are.
+  D/E chains verified end-to-end: compose out_chain_sha256 ==
+  score qualification.chain_sha256 (284a1ae9../16873ca5..), 19-row
+  rung0 re-hash clean after the WSL->Mac transfer.
+- Composition ran on the 3080/WSL, scoring on Mac CPU only — the
+  scored contrast is same-device; the transfer is byte-verified
+  for D/E by the chain re-hash.
+- D/E differ from A in exactly one shard each (embed shard 3,
+  lm_head shard 18) plus manifest — recipe corroborated at the
+  byte level, lm_head confirmed untied.
+
+Receipts (force-added): logs/qwenmodel1/score_{D,E}.json,
+logs/qwenattrib/compose_{D,E}.json,
+logs/qwenattrib/ioattrib_{observations.json,verdict.txt},
+logs/qwenwhole/artifact_digest_{D,E}.txt.
+
+READING: the io story from ATTN-ATTRIB-1 ("io spend is per-byte
+efficient on K") now has a mechanism-shaped split: the OUTPUT head
+is what buys teacher-distribution match (K), the INPUT embedding
+is what buys next-token CE (X). Near-additivity says the two ends
+repair different damage, not the same damage twice. Follow-ups
+belong behind the LBAND leg already registered.
+
