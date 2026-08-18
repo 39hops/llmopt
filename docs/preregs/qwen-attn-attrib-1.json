@@ -1,0 +1,158 @@
+{
+  "name": "QWEN-ATTN-ATTRIB-1",
+  "note": "Mechanical projection of PRE-REG QWEN-ATTN-ATTRIB-1 (same session, registered before any recomposed artifact exists). Bars use static thresholds over derived scalars the observations builder computes from the frozen B/C receipts plus the three new arm receipts; floors are max over the arms compared. The dominance resolution rule (L-dominance iff bars 2-5 all fire; F-dominance iff bars 2 and 4 read below zero with 3 and 5 firing; else MIXED/UNRESOLVED) and the bracket-alarm stop are frozen in the prose entry.",
+  "results_id": "2026-08-17-pre-reg-qwen-attn-attrib-1",
+  "registered": "2026-08-17",
+  "machine": "mac",
+  "arms": {
+    "F": {
+      "description": "B + C's S16 payload for full-attn q/k/v/o (64 tensors, +0.3905 GiB)"
+    },
+    "L": {
+      "description": "B + C's S16 payload for linear-attn in_proj_qkv/in_proj_z/out_proj (144 tensors, +1.2888 GiB)"
+    },
+    "Q": {
+      "description": "A + C's S16 payload for linear-attn in_proj_qkv only (48 tensors, ~7.087 GiB total, iso-rate v B within 1.1%)"
+    }
+  },
+  "bars": [
+    {
+      "id": 1,
+      "name": "SANITY-BRACKET-CLEAN",
+      "metric": "bracket_violation_count",
+      "population": "arms:recomposed",
+      "aggregation": "count",
+      "direction": "below",
+      "value": 0.5,
+      "arms": ["F", "L"],
+      "description": "zero of {X_F, X_L, K_F, K_L} outside [C_value - 5*floor, B_value + 5*floor]; a violation is a recomposer instrument alarm and the rung stops"
+    },
+    {
+      "id": 2,
+      "name": "L-DOM-X",
+      "metric": "recovery_fraction_gap_x",
+      "population": "positions:corpus",
+      "aggregation": "mean",
+      "direction": "above",
+      "value": 0.0,
+      "arms": ["F", "L"],
+      "description": "R_X(L) - R_X(F) > 0"
+    },
+    {
+      "id": 3,
+      "name": "L-DOM-X-FLOOR",
+      "metric": "x_gap_floor_multiple",
+      "population": "positions:corpus",
+      "aggregation": "ratio",
+      "direction": "above",
+      "value": 5.0,
+      "arms": ["F", "L"],
+      "description": "|X_F - X_L| / f_X > 5"
+    },
+    {
+      "id": 4,
+      "name": "L-DOM-K",
+      "metric": "recovery_fraction_gap_k",
+      "population": "positions:prefixes",
+      "aggregation": "mean",
+      "direction": "above",
+      "value": 0.0,
+      "arms": ["F", "L"],
+      "description": "R_K(L) - R_K(F) > 0"
+    },
+    {
+      "id": 5,
+      "name": "L-DOM-K-FLOOR",
+      "metric": "k_gap_floor_multiple",
+      "population": "positions:prefixes",
+      "aggregation": "ratio",
+      "direction": "above",
+      "value": 5.0,
+      "arms": ["F", "L"],
+      "description": "|K_F - K_L| / f_K > 5"
+    },
+    {
+      "id": 6,
+      "name": "NEAR-ADDITIVE-X",
+      "metric": "interaction_abs_x",
+      "population": "positions:corpus",
+      "aggregation": "mean",
+      "direction": "below",
+      "value": 0.2,
+      "arms": ["F", "L"],
+      "description": "|R_X(F) + R_X(L) - 1| < 0.2"
+    },
+    {
+      "id": 7,
+      "name": "NEAR-ADDITIVE-K",
+      "metric": "interaction_abs_k",
+      "population": "positions:prefixes",
+      "aggregation": "mean",
+      "direction": "below",
+      "value": 0.2,
+      "arms": ["F", "L"],
+      "description": "|R_K(F) + R_K(L) - 1| < 0.2"
+    },
+    {
+      "id": 8,
+      "name": "IO-WINS-ISO-K",
+      "metric": "iso_k_gap_floor_multiple_io",
+      "population": "positions:prefixes",
+      "aggregation": "ratio",
+      "direction": "above",
+      "value": 5.0,
+      "arms": ["Q"],
+      "description": "(K_Q - K_B) / f_K > 5: matched-budget io spend beats attention spend on K"
+    },
+    {
+      "id": 9,
+      "name": "ATTN-WINS-ISO-K",
+      "metric": "iso_k_gap_floor_multiple_attn",
+      "population": "positions:prefixes",
+      "aggregation": "ratio",
+      "direction": "above",
+      "value": 5.0,
+      "arms": ["Q"],
+      "description": "(K_B - K_Q) / f_K > 5: attention spend beats io on K at matched budget"
+    },
+    {
+      "id": 10,
+      "name": "IO-WINS-ISO-X",
+      "metric": "iso_x_gap_floor_multiple_io",
+      "population": "positions:corpus",
+      "aggregation": "ratio",
+      "direction": "above",
+      "value": 5.0,
+      "arms": ["Q"],
+      "description": "(X_Q - X_B) / f_X > 5"
+    },
+    {
+      "id": 11,
+      "name": "ATTN-WINS-ISO-X",
+      "metric": "iso_x_gap_floor_multiple_attn",
+      "population": "positions:corpus",
+      "aggregation": "ratio",
+      "direction": "above",
+      "value": 5.0,
+      "arms": ["Q"],
+      "description": "(X_B - X_Q) / f_X > 5"
+    }
+  ],
+  "receipts": [
+    "logs/qwenattrib/compose_F.json",
+    "logs/qwenattrib/compose_L.json",
+    "logs/qwenattrib/compose_Q.json",
+    "logs/qwenmodel1/score_F.json",
+    "logs/qwenmodel1/score_L.json",
+    "logs/qwenmodel1/score_Q.json",
+    "logs/qwenattrib/attrib_observations.json",
+    "logs/qwenattrib/attrib_verdict.txt"
+  ],
+  "refuted_if": "Registered prior (i) — L carries more total recovery than F — is REFUTED if R_X(F) exceeds R_X(L) past the 5 f_X floor (bar 2 reads below zero while bar 3 fires); a gap inside the floor books UNADJUDICATED. A bar-1 bracket violation books INSTRUMENT-ALARM for the recomposer and no attribution claim exists.",
+  "refuted_if_predicate": {
+    "measurement": "refuted:recovery_fraction_gap_x_floored",
+    "direction": "below",
+    "value": 0.0
+  },
+  "registered_prior": "House: (i) L carries more total recovery than F (medium; 3.3x bytes, 48 of 64 layers); (ii) F beats L per byte on U_X (weak); (iii) near-additive, both |I| < 0.2 (weak/medium); (iv) iso-rate: IO-WINS-ISO-K fires (medium, io's measured 2.2x per-byte K efficiency), X side tie-within-floors or io (weak)."
+}

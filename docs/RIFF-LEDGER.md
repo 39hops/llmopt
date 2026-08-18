@@ -6536,3 +6536,17 @@ honest status column).
   number (identity can differ while captured mass stays high; the
   hybrid works iff R_k is high). Kill bar unchanged in spirit:
   low R_k kills the riff for free.
+
+- **BANKED (2026-08-17): per-byte allocation lens — total recovery and marginal value per byte are DIFFERENT orderings, and the tree's steps must be read in both** (GPT seat, on the MODEL1-TREE receipts; house re-derived every number).
+  The mapping/the math: an allocation step's worth is dQ/dBytes, not dQ. On the frozen receipts: io (A->B) +0.592 GiB buys 0.384 nat X/GiB and 0.227 nat K/GiB; attention (B->C) +1.680 GiB buys 0.348 and 0.105. Attention dominates TOTAL recovery (rel X 70.2% v 21.4%) while io is ~10% better per byte on X and ~2.2x on K. Both statements are true; only the per-byte one speaks to an allocator.
+  Measured anchors: VERDICT QWEN-MODEL1-TREE receipts (logs/qwenmodel1/); byte costs from the frozen WHOLE-0T artifacts; OBSERVATION QWEN-MODEL1-POSTHOC-DIAGNOSIS books the arithmetic.
+  Honest breaks: per-byte ratios divide two point readings (355/92 positions, no sampling fence) and inherit both ends' record-sensitivity floors; marginal value is measured at ONE operating point on a presumably concave curve — io's 2.2x K-efficiency at +0.59 GiB says nothing about the NEXT 0.59 GiB of io spend; family-mean efficiency can hide a high-value subset (in_proj_qkv may not equal the linear-attn average).
+  Testable residue: PRE-REG QWEN-ATTN-ATTRIB-1 (this session) carries U_X/U_K per arm and the iso-rate Q-v-B contrast as registered quantities.
+  Attribution: GPT seat (the lens + arithmetic), Artin (relay + "not the same thing as best allocation per byte"), house (verification, fences).
+
+- **BANKED (2026-08-17): future-tree gate design — split INSTRUMENT-ALARM from LOW-RATE-OUT-OF-RANGE** (GPT seat; Artin adopted; MODEL-2-class lesson, explicitly NOT applied to MODEL-1).
+  The mapping/the math: the MODEL-1 uniform-damage gate (X_A > 1.0 -> stop) conflates two states it cannot distinguish: shared instrument damage (all arms similarly bad) and a lowest-rate arm genuinely outside the fidelity regime while the ladder above it is healthy. Future trees should branch: X_A > 1 with all arms similarly bad -> INSTRUMENT-ALARM; X_A > 1 with X_B < 1 and X/K monotone decreasing -> LOW-RATE-OUT-OF-RANGE (drop A as baseline, allocate from the first admissible arm). The registered virtue being preserved: neither branch is chosen by session discretion after seeing scores.
+  Measured anchors: MODEL1-TREE fired the conflated gate at X_A=1.061 over a strictly monotone ladder — the exact case the split would have classified as LOW-RATE-OUT-OF-RANGE.
+  Honest breaks: "similarly bad" needs its own registered predicate (another threshold to freeze pre-look); a monotone ladder can coexist with an instrument defect that scales with codec rate (decode bug in the w4 path only would damage A>B>C monotonically!) — the split gate is better, not airtight; the near-miss temptation this bank exists to resist is re-scoping gates AFTER data (refused here for MODEL-1, permanently).
+  Testable residue: the next whole-model tree registration (MODEL-2 class) carries the two-gate design; its instrument-side discriminator should include a rate-independent oracle (e.g. one tensor family decoded to raw in the lowest-rate arm) so "damage tracks rate" can be separated from "decode bug tracks rate".
+  Attribution: GPT seat (the distinction + predicates), Artin (immutability ruling), house (the w4-only-bug counterexample, discriminator proposal).

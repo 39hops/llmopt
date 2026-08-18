@@ -33940,3 +33940,175 @@ tree_observations.json, tree_verdict.txt — small text receipts
 force-added under the seedslad pattern (this entry books the
 why: they are the whole quantitative record of the first
 MODEL-1 scoring pass and total < 10 KB).
+## OBSERVATION QWEN-MODEL1-POSTHOC-DIAGNOSIS: the alarm's fork read after the fact — real low-rate precision damage is far more plausible than a scorer defect; the io repair is the byte-EFFICIENT one; the alarm stays immutable and the gate lesson goes to FUTURE trees only (2026-08-17, mac)
+
+Post-hoc reading of VERDICT QWEN-MODEL1-TREE (Artin + GPT seat,
+23:23; every number re-derived in-house from the frozen receipts).
+NOTHING here amends the tree: the primary verdict REMAINS
+INSTRUMENT-ALARM, the 1.0-nat gate is NOT re-scoped for this
+dataset, and no allocation branch fires retroactively. An
+outcome-contingent gate amendment is exactly the move the tree was
+built to forbid.
+
+(1) DAMAGE IS REAL, NOT INSTRUMENT (diagnosis, not verdict): the
+three receipts share artifact-identity chains, canonical
+single-path decode (fixtures byte-shared where codecs match, rel
+L2 0.322/0.334 w4, 0.10-0.11 s16), full 64/48/16 traversal, and a
+strictly monotone A->B->C repair on both X and K. A shared decode
+defect reproduces damage; it does not hand back a monotone repair
+ladder keyed to which tensors were re-precisioned. Reading: arm A
+is OUTSIDE THE REGISTERED FIDELITY REGIME at 2.07 bpw — not
+"dead" (it generates at ~10 tok/s on CUDA); dead only as an
+admissible baseline for this allocation tree.
+
+(2) THE RATE-EFFICIENCY INVERSION (the observation's core): the
+tree's steps cost unequal bytes, so "attention is the giant"
+is a statement about TOTAL recovery, not allocation value.
+  io (A->B):        +0.592 GiB, dX 0.2273, dK 0.1343
+                    -> 0.384 nat X / GiB, 0.227 nat K / GiB
+  attention (B->C): +1.680 GiB, dX 0.5852, dK 0.1759
+                    -> 0.348 nat X / GiB, 0.105 nat K / GiB
+Per added byte, io is ~10% MORE CE-efficient and ~2.2x more
+KL-efficient; attention buys the dominant absolute recovery at
+2.8x the byte spend. Consequence: D/E (io attribution) is
+DEQUEUED BEHIND attention attribution, not killed — which of
+embed/head bought the unusually efficient 0.59 GiB matters.
+
+(3) FLIP MECHANISM SHARPENED (n>=30 corpus strata only): B's net
+top-1 gain is concentrated in the two LARGE-margin bins (32->25
+of 85 in [2,5); 10->2 of 125 in [5,inf)) while two mid-margin
+bins tick slightly WORSE (17->19 of 30, 24->26 of 46) — the io
+guard repairs high-confidence teacher decisions specifically,
+i.e. catastrophic confident mistakes, not near-tie shuffling.
+C then reduces flips broadly (4/85, 1/125 in the large bins).
+
+(4) PRIOR, DESCRIPTIVE READ: formally UNADJUDICATED (clean-gates
+clause). Descriptively the observed shape is strongly adverse to
+it — C-over-B (rel X 70.2%) dwarfs B-over-A (21.4%) where the
+prior said "C adds little". Weight space was codec-homogeneous
+across families (the family probe's own finding) and function
+space concentrates recovery in attention: a direct instance of
+weight-space intuition failing to locate functional sensitivity
+(identity-beats-aggregates lineage; STAR-PROFILE's attention
+fragility was the registered minority signal).
+
+(5) GATE LESSON, FUTURE TREES ONLY: the registered alarm
+conflates "instrument broken" with "lowest-rate arm genuinely
+outside the fidelity regime". A future tree (MODEL-2 class)
+should distinguish X_A > 1 with all arms similarly bad
+(INSTRUMENT-ALARM) from X_A > 1, X_B < 1, monotone X/K ladder
+(LOW-RATE-OUT-OF-RANGE: drop A as baseline, allocate from the
+first admissible arm). Registered here as a design lesson, not
+applied to MODEL-1.
+
+(6) THE HONEST HEADLINE: C at 8.77 GiB is closer to the vendor
+distribution, not at it — corpus CE 1.313 v teacher 1.064, top-1
+disagreement ~17% corpus / ~19% prefixes. "Uniform ~2-bit is
+outside the fidelity regime; a small io guard is extremely
+rate-efficient but insufficient; attention spend buys the
+dominant absolute recovery" — teacher-distribution fidelity
+wording throughout; no capability claim.
+
+Desk numbers for the next rung (from the frozen B/C manifests,
+key-level): the B->C promotion splits F = full-attn q/k/v/o
+(64 tensors, +0.3905 GiB) + L = linear-attn qkv/z/out (144
+tensors, +1.2888 GiB); linear in_proj_qkv ALONE is +0.5858 GiB —
+within 1.1% of the io spend, a structurally natural iso-rate arm
+with zero discretionary tensor picking. Fences: all point
+readings on 355/92 positions, no sampling fence registered;
+per-byte ratios inherit both ends' floors.
+## PRE-REG QWEN-ATTN-ATTRIB-1: what inside attention buys the B->C recovery — F v L family split plus the natural iso-rate arm, all byte-recompositions of frozen payloads, registered before any recomposed artifact exists (2026-08-17, mac)
+
+The T2-shaped follow-up, registered from arm B (X_B = 0.834 < 1.0
+— the attribution starts inside the registered admissibility
+region; the MODEL-1 tree remains INSTRUMENT-ALARM and nothing
+here fires or re-fires its branches). Design: Artin GO 23:23 +
+GPT seat's coarse-first decomposition; desk numbers from the
+frozen B/C manifests, derived in-house before this entry.
+
+ARMS (key-level byte recompositions of already-frozen WHOLE-0T
+payloads; no Lloyd, no DP retraining, no recompression):
+  F = B + C's S16 payload for full-attn q/k/v/o
+      (64 tensors, +0.3905 GiB over B)
+  L = B + C's S16 payload for linear-attn in_proj_qkv/in_proj_z/
+      out_proj (144 tensors, +1.2888 GiB over B)
+  Q = A + C's S16 payload for linear-attn in_proj_qkv only
+      (48 tensors, +0.5858 GiB over A -> ~7.087 GiB total,
+      within 1.1% of B's 7.093 GiB: the structurally natural
+      iso-rate contrast — same base A, matched byte budget,
+      io spend v attention spend — zero discretionary picking)
+  B, C, A re-use their frozen score receipts verbatim
+  (logs/qwenmodel1/score_*.json, producer 232737a) — same
+  scorer, same locked teacher; C = B + F's and L's promotions
+  jointly, by construction of the compile.
+
+RULES: each recomposition gets a regenerated manifest, key-set
+conservation against the vendor index, and a canonical ordered
+per-shard sha chain BEFORE scoring, booking source shas on both
+sides; scoring runs the frozen scorer path on the Mac CPU
+reference leg only, full -METRIC(8) refuse-list, one artifact
+resident at a time. Chat reads never gate.
+
+QUANTITIES (X/K as registered for MODEL-1; floors f_X, f_K by the
+same +-1ulp procedure, consumed as max over the arms compared):
+  recovery fractions (raw, unclamped, -KFENCE style):
+    R_X(Y) = (X_B - X_Y)/(X_B - X_C), Y in {F, L}; R_K analogue
+  per-byte marginal value:
+    U_X(Y) = (X_B - X_Y)/GiB_added(Y); U_K analogue
+  interaction (additivity residual, recovery-fraction units):
+    I_X = R_X(F) + R_X(L) - 1; I_K analogue
+  iso-rate gaps: X_Q - X_B, K_Q - K_B (positive = io spend wins)
+
+BARS (machine projection docs/preregs/qwen-attn-attrib-1.json):
+  1 SANITY-BRACKET-CLEAN: zero of {X_F, X_L, K_F, K_L} lands
+    outside [C_value - 5*floor, B_value + 5*floor] — a
+    recomposed arm outside the B..C bracket is an instrument
+    alarm for the recomposer, and the rung stops.
+  2/3 L-DOM-X: R_X(L) - R_X(F) > 0 AND |X_F - X_L| > 5 f_X
+  4/5 L-DOM-K: R_K(L) - R_K(F) > 0 AND |K_F - K_L| > 5 f_K
+    Resolution rule, frozen now: L-dominance claims only if
+    2-5 all fire; F-dominance only if 2 and 4 read below zero
+    with both floor bars firing; anything else books MIXED/
+    UNRESOLVED with the signs quoted.
+  6/7 NEAR-ADDITIVE: |I_X| < 0.2 and |I_K| < 0.2 — both fire =
+    the two attention systems repair independently at this
+    grain; either misses = interactive, and singleton tensor
+    labels are NOT trusted at the next grain down.
+  8/9 iso-rate K: (K_Q - K_B) > 5 f_K fires IO-WINS-ISO-K;
+      (K_B - K_Q) > 5 f_K fires ATTN-WINS-ISO-K; neither =
+      tie-within-floors.
+  10/11 iso-rate X: same pair on X with f_X.
+REGISTERED PRIOR (house, before any recomposed artifact exists):
+  (i) L carries more total recovery than F — R_X(L) > R_X(F)
+      (medium: L is 3.3x the bytes, 48 of 64 layers);
+  (ii) F beats L per byte on U_X (weak: global-attention layers
+      may be denser in value; directly contradicted if byte
+      share is all that matters);
+  (iii) near-additive, both |I| < 0.2 (weak/medium: the two
+      systems serve different sequence-mixing roles);
+  (iv) iso-rate: IO-WINS-ISO-K fires (medium — io's measured
+      2.2x per-byte K efficiency), X side tie-within-floors or
+      io (weak).
+REFUTED_IF: prior (i) is refuted if R_X(F) exceeds R_X(L) past
+the 5 f_X floor (predicate: recovery_fraction_gap_x <= 0 with
+the floor bar firing books the refutation; gap inside the floor
+books UNADJUDICATED). A bracket-alarm (bar 1) books
+INSTRUMENT-ALARM for the RECOMPOSER and no attribution claim
+exists — same clean-gates discipline as MODEL-1.
+FENCES THAT RIDE: point readings on 355/92 positions, no
+sampling-uncertainty fence registered (named, not hidden);
+per-byte ratios inherit both ends' floors; teacher-distribution
+fidelity wording only; Q's base A is outside the registered
+fidelity regime — Q-v-B is an iso-rate ARM contrast, never a
+MODEL-1 allocation branch; margin-flip tables report with the
+small-n fence exactly as in the MODEL-1 receipts.
+RECEIPTS: logs/qwenattrib/compose_{F,L,Q}.json,
+logs/qwenmodel1/score_{F,L,Q}.json (same scorer receipt shape),
+logs/qwenattrib/attrib_observations.json,
+logs/qwenattrib/attrib_verdict.txt.
+NEXT-GRAIN LADDER (banked, fires on the verdict): F-dominant ->
+split q/k/v/o; L-dominant -> split qkv/z/out and early/mid/late
+thirds; interactive -> stop, no singleton labels. D/E io
+attribution stays QUEUED behind this rung (the 0.59 GiB io
+repair is the byte-efficient one and its embed-v-head split
+still matters).
