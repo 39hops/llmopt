@@ -42,27 +42,34 @@ cm = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(cm)
 
 
+# TEXT-TOWER SCOPE (r2 correction, GPT catch verified in-house: the
+# r1 regexes leaked mtp.layers.0 — an EXCLUDED module — into the ffn
+# and full-attn aggregates: 65/17 tensors where the tower has 64/16).
+# Layer groups anchor on model.language_model.layers.; expected
+# counts asserted below.
+_L = r"^model\.language_model\.layers\.\d+"
 GROUPS = [
-    ("io:embed", r"language_model\.embed_tokens\.weight$"),
-    ("io:lm_head", r"^lm_head\.weight$"),
-    ("ffn:gate", r"\.mlp\.gate_proj\.weight$"),
-    ("ffn:up", r"\.mlp\.up_proj\.weight$"),
-    ("ffn:down", r"\.mlp\.down_proj\.weight$"),
-    ("full_attn:q", r"\.self_attn\.q_proj\.weight$"),
-    ("full_attn:k", r"\.self_attn\.k_proj\.weight$"),
-    ("full_attn:v", r"\.self_attn\.v_proj\.weight$"),
-    ("full_attn:o", r"\.self_attn\.o_proj\.weight$"),
-    ("linear_attn:qkv", r"\.linear_attn\.in_proj_qkv\.weight$"),
-    ("linear_attn:z", r"\.linear_attn\.in_proj_z\.weight$"),
-    ("linear_attn:out", r"\.linear_attn\.out_proj\.weight$"),
+    ("io:embed", r"^model\.language_model\.embed_tokens\.weight$", 1),
+    ("io:lm_head", r"^lm_head\.weight$", 1),
+    ("ffn:gate", _L + r"\.mlp\.gate_proj\.weight$", 64),
+    ("ffn:up", _L + r"\.mlp\.up_proj\.weight$", 64),
+    ("ffn:down", _L + r"\.mlp\.down_proj\.weight$", 64),
+    ("full_attn:q", _L + r"\.self_attn\.q_proj\.weight$", 16),
+    ("full_attn:k", _L + r"\.self_attn\.k_proj\.weight$", 16),
+    ("full_attn:v", _L + r"\.self_attn\.v_proj\.weight$", 16),
+    ("full_attn:o", _L + r"\.self_attn\.o_proj\.weight$", 16),
+    ("linear_attn:qkv", _L + r"\.linear_attn\.in_proj_qkv\.weight$", 48),
+    ("linear_attn:z", _L + r"\.linear_attn\.in_proj_z\.weight$", 48),
+    ("linear_attn:out", _L + r"\.linear_attn\.out_proj\.weight$", 48),
 ]
+EXPECTED = {g: n for g, _, n in GROUPS}
 LBAND = {("linear_attn", i): b for b, band in enumerate(
     ([*range(0, 21)], [*range(21, 42)], [*range(42, 63)]))
     for i in band}
 
 
 def group_of(name):
-    for g, pat in GROUPS:
+    for g, pat, _n in GROUPS:
         if re.search(pat, name):
             return g
     return None
@@ -71,7 +78,7 @@ def group_of(name):
 def main():
     from safetensors import safe_open
     os.makedirs(OUT, exist_ok=True)
-    rcpt_path = os.path.join(OUT, "meter27b.json")
+    rcpt_path = os.path.join(OUT, "meter27b_r2.json")
     if os.path.exists(rcpt_path):
         raise SystemExit(f"REFUSING: {rcpt_path} exists")
     idx_path = os.path.join(VDIR, "model.safetensors.index.json")
@@ -97,6 +104,15 @@ def main():
         rows = (list(range(R)) if R <= MAX_ROWS
                 else sorted(rng.sample(range(R), MAX_ROWS)))
         m, k = cm.meter(W[rows].float())
+        # SAMPLED-M stability rider (r2): M is a span/extreme
+        # statistic, so nested half/quarter subsamples bound its
+        # sampling sensitivity per tensor; per-group max drift books
+        if len(rows) > 64:
+            m_half, _ = cm.meter(W[rows[::2]].float())
+            m_quar, _ = cm.meter(W[rows[::4]].float())
+            drift = max(abs(m - m_half), abs(m - m_quar))
+        else:
+            drift = 0.0
         n = len(rows) * W.shape[1]
         keys = [g]
         lm = re.search(r"layers\.(\d+)\.", name)
@@ -105,20 +121,28 @@ def main():
             keys.append(f"{g}:band{band}")
         for key in keys:
             a = agg.setdefault(key, {"wm": 0.0, "wk": 0.0, "n": 0,
-                                     "tensors": 0})
+                                     "tensors": 0, "max_drift": 0.0})
             a["wm"] += m * n
             a["wk"] += k * n
             a["n"] += n
             a["tensors"] += 1
+            a["max_drift"] = max(a["max_drift"], drift)
         n_done += 1
         if n_done % 40 == 0:
             print(f"[cap] {n_done} tensors {time.time()-t0:.0f}s",
                   flush=True)
         del W
+    for g, exp in EXPECTED.items():
+        got = agg.get(g, {}).get("tensors", 0)
+        if got != exp:
+            raise SystemExit(f"REFUSING: group {g} matched {got} "
+                             f"tensors, tower has {exp}")
     groups = {key: {"M_bits": round(a["wm"] / a["n"], 3),
                     "kurtosis": round(a["wk"] / a["n"], 2),
                     "tensors": a["tensors"],
-                    "sampled_params_M": round(a["n"] / 1e6, 1)}
+                    "sampled_params_M": round(a["n"] / 1e6, 1),
+                    "sampled_M_max_drift_bits": round(a["max_drift"],
+                                                      3)}
               for key, a in sorted(agg.items())}
     fam = {k: v["M_bits"] for k, v in groups.items() if ":band" not in k}
     spread = max(fam.values()) - min(fam.values())

@@ -56,36 +56,71 @@ def frozen_token_lists():
 
 def capture(build_model, tag):
     """Run the frozen sequences through a model, capturing down_proj
-    INPUT (= z) at the sampled layers. Saves fp16 [n_positions, C]
-    per layer."""
+    INPUT (= z) at the sampled layers. Saves fp32 [n_positions, C]
+    per layer (fp16 would inject top-k sensitivity for ~2x space —
+    total is ~181 MiB/model, cheap) plus a capture-time PROVENANCE
+    SIDECAR the analyzer fails closed on."""
     import torch
     os.makedirs(OUT, exist_ok=True)
     for li in LAYERS:
         p = os.path.join(OUT, f"z_{tag}_L{li}.npy")
         if os.path.exists(p):
             raise SystemExit(f"REFUSING: {p} exists")
+    meta_path = os.path.join(OUT, f"capture_{tag}_meta.json")
+    if os.path.exists(meta_path):
+        raise SystemExit(f"REFUSING: {meta_path} exists")
     model = build_model()
     store = {li: [] for li in LAYERS}
 
     def make_hook(li):
         def h(module, args, kwargs):
             z = args[0] if args else kwargs["input"]
-            store[li].append(z.detach()[0].to(torch.float16).numpy())
+            store[li].append(z.detach()[0].float().numpy())
             return None
         return h
 
     for li in LAYERS:
         model.model.layers[li].mlp.down_proj.register_forward_pre_hook(
             make_hook(li), with_kwargs=True)
-    for ids in frozen_token_lists():
+    seqs = frozen_token_lists()
+    for ids in seqs:
         t = time.time()
         model(input_ids=torch.tensor([ids]), use_cache=False)
         print(f"[rk] {tag} len {len(ids)} {time.time()-t:.0f}s",
               flush=True)
+    shas = {}
     for li in LAYERS:
         z = np.concatenate(store[li])
-        np.save(os.path.join(OUT, f"z_{tag}_L{li}.npy"), z)
+        p = os.path.join(OUT, f"z_{tag}_L{li}.npy")
+        np.save(p, z)
+        shas[f"z_{tag}_L{li}"] = hashlib.sha256(
+            z.tobytes()).hexdigest()
         print(f"[rk] saved z_{tag}_L{li} {z.shape}", flush=True)
+    meta = {"tag": tag, "layers": list(LAYERS), "dtype": "float32",
+            "n_sequences": len(seqs),
+            "token_lists_sha256": hashlib.sha256(json.dumps(
+                seqs).encode()).hexdigest(),
+            "z_sha256": shas,
+            "code_commit": subprocess.check_output(
+                ["git", "rev-parse", "--short",
+                 "HEAD"]).decode().strip(),
+            "tree_dirty": bool(subprocess.check_output(
+                ["git", "status", "--porcelain",
+                 "-uno"]).decode().strip()),
+            "vendor_dir": VDIR,
+            "vendor_index_sha256": hashlib.sha256(open(os.path.join(
+                VDIR, "model.safetensors.index.json"),
+                "rb").read()).hexdigest()}
+    if tag == "arm":
+        art = os.path.expanduser(os.environ["ART_DIR"])
+        arm = os.path.basename(art.rstrip("/"))
+        chain = f"logs/qwenwhole/artifact_digest_{arm}.txt"
+        meta["artifact"] = {"dir": art, "arm": arm,
+                            "chain_sha256": hashlib.sha256(open(
+                                chain, "rb").read()).hexdigest()}
+    with open(meta_path, "w") as f:
+        f.write(json.dumps(meta, indent=1) + "\n")
+    print(f"[rk] sidecar -> {meta_path}", flush=True)
 
 
 def build_vendor():
@@ -113,6 +148,31 @@ def build_arm():
 def analyze():
     from safetensors import safe_open
     import torch
+    # FAIL-CLOSED protocol check: both capture sidecars must exist,
+    # agree on layers/dtype/token-list hash, match every z file's
+    # recomputed sha, and (arm side) name the artifact chain
+    metas = {}
+    for tag in ("vendor", "arm"):
+        mp = os.path.join(OUT, f"capture_{tag}_meta.json")
+        if not os.path.exists(mp):
+            raise SystemExit(f"REFUSING: no sidecar {mp}")
+        metas[tag] = json.load(open(mp))
+    tok_sha = hashlib.sha256(json.dumps(
+        frozen_token_lists()).encode()).hexdigest()
+    for tag, m in metas.items():
+        if m["layers"] != list(LAYERS) or m["dtype"] != "float32":
+            raise SystemExit(f"REFUSING: {tag} protocol mismatch "
+                             f"{m['layers']}/{m['dtype']}")
+        if m["token_lists_sha256"] != tok_sha:
+            raise SystemExit(f"REFUSING: {tag} token lists differ "
+                             "from the locked teacher lists")
+        for name, sha in m["z_sha256"].items():
+            z = np.load(os.path.join(OUT, name + ".npy"))
+            if hashlib.sha256(z.tobytes()).hexdigest() != sha:
+                raise SystemExit(f"REFUSING: {name} sha mismatch")
+            del z
+    if "artifact" not in metas["arm"]:
+        raise SystemExit("REFUSING: arm sidecar lacks artifact block")
     idx = json.load(open(os.path.join(
         VDIR, "model.safetensors.index.json")))["weight_map"]
     rng = np.random.default_rng(20260818)
@@ -126,8 +186,15 @@ def analyze():
                        device="cpu") as h:
             Wd = h.get_tensor(key).float().numpy()   # [5120, 17408]
         P, C = zt.shape
+        # selection strategies: arm top-|z|; teacher top-|z| (NOT an
+        # exact subset optimum — named honestly); teacher
+        # CONTRIBUTION ranking |z_i| * ||Wd[:,i]|| (the better greedy
+        # proxy for FFN-output mass; still not the combinatorial
+        # optimum); random-k
+        wd_col = np.linalg.norm(Wd, axis=0)          # [C]
         res = {k: {"jaccard": [], "r_k": [],
-                   "recon_arm": [], "recon_oracle": [],
+                   "recon_arm": [], "recon_teacher_topz": [],
+                   "recon_teacher_contrib": [],
                    "recon_random": []} for k in KS}
         for t in range(P):
             zt32 = zt[t].astype(np.float32)
@@ -136,16 +203,20 @@ def analyze():
             ynorm = float(np.linalg.norm(y)) or 1e-30
             amag = np.abs(za32)
             tmag = np.abs(zt32)
+            cmag = tmag * wd_col
             tsum = float(tmag.sum()) or 1e-30
             for k in KS:
                 Sa = np.argpartition(-amag, k)[:k]
                 St = np.argpartition(-tmag, k)[:k]
+                Sc = np.argpartition(-cmag, k)[:k]
                 Sr = rng.choice(C, k, replace=False)
                 inter = len(np.intersect1d(Sa, St,
                                            assume_unique=True))
                 res[k]["jaccard"].append(inter / (2 * k - inter))
                 res[k]["r_k"].append(float(tmag[Sa].sum()) / tsum)
-                for nm, S in (("recon_arm", Sa), ("recon_oracle", St),
+                for nm, S in (("recon_arm", Sa),
+                              ("recon_teacher_topz", St),
+                              ("recon_teacher_contrib", Sc),
                               ("recon_random", Sr)):
                     yS = Wd[:, S] @ zt32[S]
                     res[k][nm].append(
