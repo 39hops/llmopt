@@ -34291,3 +34291,49 @@ WALL (accuracy-per-wall win, not speed); corrected in place.
 Survey nits carried for a future amendment pass: RESULTS L4015
 slice-product count (182 v 14^2=196 — triangular class, prose
 says k^2), L3956 "4.5x" rounds 4.59 down.
+## OBSERVATION QWEN-EFFORT-QUANT-0: arm B collapses to 0/60 in free generation on items the external q6-class reference aces — the deliberation loop never terminates (30/30 unterminated think blocks at xhigh) — and arm C answers the owed residency question by OOM at build (2026-08-18, wsl+mac)
+
+The QWEN-EFFORT-0 item set (IDENTICAL items, imported generator,
+same string seed) through house arm B on the 3080 CUDA fused
+runtime (scratch/qwen_effort_quant.py, a786386; ~10.2 tok/s).
+FENCES: free-generation chat reads — COLOR, gates nothing; CUDA
+leg, so nothing here compares against the Mac CPU X/K quantities;
+single seed, greedy; non-frozen prompts; the external mlx q4
+30/30 comparison point is a DIFFERENT codec at ~4.5 bpw
+(external-artifact fence carried from EFFORT-0).
+
+MEASURED (B, 30 items/cell, MAX_TOK 3072):
+  nothink: 0/30 correct, 20/30 truncated, mean wall 250s
+  xhigh:   0/30 correct, 28/30 truncated, and 30/30 think blocks
+           NEVER CLOSE (think_tokens booked 0 because </think>
+           never appears — the model enters deliberation and does
+           not terminate within 3,072 tokens)
+When B does emit an answer line (nothink, non-truncated rows),
+the algebra is near-miss wrong — coherent product-rule structure
+with wrong coefficients.
+
+READING (color, but sharp): teacher-forced X_B = 0.834 looked
+"moderate"; free-generation competence on this item class is
+ZERO. Compression damages the DELIBERATION LOOP (termination,
+self-consistency over hundreds of steps) long before
+teacher-forced next-token fidelity looks catastrophic — the
+quantitative version of the qualitative A-v-B arena read, and a
+concrete instance of fluency-is-not-fidelity. Open (registered
+here as the natural rider): the same probe on C after any
+C-capable runtime exists.
+
+ARM C RESIDENCY, answered the loud way: build OOM'd (10 GiB
+card, "16.48 GiB allocated" at failure — C's 8.77 GiB payload +
+fp32 resident set exceeds the plan), matching the registered
+doubt (RESULTS L33735: "8.773 GiB payload v 8.86 free is not a
+plan"). The rung-3->rung-4 residency oracle for C reads NO under
+the current fused plan; a C attempt needs residency arithmetic
+first, exactly as registered.
+
+Rider corrections from the same-day survey pass (verified
+in-house): the handoff's "B+F artifact class" next-step is arm F
+itself (already scored — the open half is only runtime
+residency); the "F-class bytes v io iso-rate from base A" bank
+is arithmetically impossible at matched bytes (all of F = +0.39
+GiB v io's +0.59) — an F-based iso arm would need discretionary
+padding and is retired in that form.

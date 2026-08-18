@@ -1,0 +1,22 @@
+{
+ "arm": "B",
+ "n_items": 30,
+ "max_tok": 3072,
+ "code_commit": "a786386",
+ "cells": {
+  "nothink": {
+   "n": 30,
+   "correct": 0,
+   "truncated": 20,
+   "mean_think_tokens": 0.0,
+   "mean_wall_s": 250.0
+  },
+  "xhigh": {
+   "n": 30,
+   "correct": 0,
+   "truncated": 28,
+   "mean_think_tokens": 0.0,
+   "mean_wall_s": 295.8
+  }
+ }
+}
