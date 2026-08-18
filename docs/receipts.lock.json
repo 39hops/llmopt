@@ -434,6 +434,26 @@
    "exists": false,
    "source": "results"
   },
+  "logs/qwenattrib/attrib_observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/attrib_verdict.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/compose_F.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/compose_L.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/compose_Q.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwencuda/gen_qm1.json": {
    "bytes": 1430,
    "exists": true,
@@ -547,6 +567,18 @@
    "pending": true,
    "source": "prereg"
   },
+  "logs/qwenmodel1/score_F.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenmodel1/score_L.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenmodel1/score_Q.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwenmodel1/tree_observations.json": {
    "exists": true,
    "pending": true,
@@ -555,10 +587,9 @@
   "logs/qwenmodel1/tree_verdict.txt": {
    "bytes": 488,
    "exists": true,
-   "local_only": true,
    "sha256": "707d4e10d79cffc7424411a81d37f91599fc49004682e069f60ae6a639a3c85a",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwenprobe/L32.jsonl": {
    "bytes": 901,
