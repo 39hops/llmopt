@@ -82,9 +82,9 @@ def main():
     if os.path.exists(rcpt_path):
         raise SystemExit(f"REFUSING: {rcpt_path} exists")
     idx_path = os.path.join(VDIR, "model.safetensors.index.json")
-    got = hashlib.sha256(open(idx_path, "rb").read()).hexdigest()
-    if got != SHARD_INDEX_SHA:
-        raise SystemExit(f"REFUSING: shard index sha {got[:12]} != "
+    idx_sha = hashlib.sha256(open(idx_path, "rb").read()).hexdigest()
+    if idx_sha != SHARD_INDEX_SHA:
+        raise SystemExit(f"REFUSING: shard index sha {idx_sha[:12]} != "
                          f"locked {SHARD_INDEX_SHA[:12]}")
     wmap = json.load(open(idx_path))["weight_map"]
     agg = {}
@@ -147,7 +147,7 @@ def main():
     fam = {k: v["M_bits"] for k, v in groups.items() if ":band" not in k}
     spread = max(fam.values()) - min(fam.values())
     rcpt = {"gate": "QWEN-CAPACITY-METER-1 (diagnostic, never allocator)",
-            "vendor_dir": VDIR, "shard_index_sha256": got,
+            "vendor_dir": VDIR, "shard_index_sha256": idx_sha,
             "max_rows_sampled": MAX_ROWS,
             "groups": groups,
             "family_M_spread_bits": round(spread, 3),
