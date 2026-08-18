@@ -1,0 +1,138 @@
+{
+ "gate": "QWEN-CAPACITY-METER-1 (diagnostic, never allocator)",
+ "vendor_dir": "/Users/artin/qwen_vendor",
+ "shard_index_sha256": "77042094076611b69791a610065f28b7013b8c621795fa86ddccc8bac7d1b9df",
+ "max_rows_sampled": 1024,
+ "groups": {
+  "ffn:down": {
+   "M_bits": 3.766,
+   "kurtosis": 4.48,
+   "tensors": 65,
+   "sampled_params_M": 1158.7
+  },
+  "ffn:gate": {
+   "M_bits": 3.027,
+   "kurtosis": 3.33,
+   "tensors": 65,
+   "sampled_params_M": 340.8
+  },
+  "ffn:up": {
+   "M_bits": 2.75,
+   "kurtosis": 3.17,
+   "tensors": 65,
+   "sampled_params_M": 340.8
+  },
+  "full_attn:k": {
+   "M_bits": 3.888,
+   "kurtosis": 5.14,
+   "tensors": 17,
+   "sampled_params_M": 89.1
+  },
+  "full_attn:o": {
+   "M_bits": 3.35,
+   "kurtosis": 7.06,
+   "tensors": 17,
+   "sampled_params_M": 107.0
+  },
+  "full_attn:q": {
+   "M_bits": 3.052,
+   "kurtosis": 4.01,
+   "tensors": 17,
+   "sampled_params_M": 89.1
+  },
+  "full_attn:v": {
+   "M_bits": 3.825,
+   "kurtosis": 4.54,
+   "tensors": 17,
+   "sampled_params_M": 89.1
+  },
+  "io:embed": {
+   "M_bits": 2.934,
+   "kurtosis": 3.28,
+   "tensors": 1,
+   "sampled_params_M": 5.2
+  },
+  "io:lm_head": {
+   "M_bits": 3.937,
+   "kurtosis": 3.58,
+   "tensors": 1,
+   "sampled_params_M": 5.2
+  },
+  "linear_attn:out": {
+   "M_bits": 3.56,
+   "kurtosis": 14.44,
+   "tensors": 48,
+   "sampled_params_M": 302.0
+  },
+  "linear_attn:out:band0": {
+   "M_bits": 3.121,
+   "kurtosis": 32.36,
+   "tensors": 16,
+   "sampled_params_M": 100.7
+  },
+  "linear_attn:out:band1": {
+   "M_bits": 3.623,
+   "kurtosis": 6.1,
+   "tensors": 16,
+   "sampled_params_M": 100.7
+  },
+  "linear_attn:out:band2": {
+   "M_bits": 3.936,
+   "kurtosis": 4.86,
+   "tensors": 16,
+   "sampled_params_M": 100.7
+  },
+  "linear_attn:qkv": {
+   "M_bits": 3.163,
+   "kurtosis": 3.44,
+   "tensors": 48,
+   "sampled_params_M": 251.7
+  },
+  "linear_attn:qkv:band0": {
+   "M_bits": 2.996,
+   "kurtosis": 3.34,
+   "tensors": 16,
+   "sampled_params_M": 83.9
+  },
+  "linear_attn:qkv:band1": {
+   "M_bits": 3.122,
+   "kurtosis": 3.44,
+   "tensors": 16,
+   "sampled_params_M": 83.9
+  },
+  "linear_attn:qkv:band2": {
+   "M_bits": 3.372,
+   "kurtosis": 3.53,
+   "tensors": 16,
+   "sampled_params_M": 83.9
+  },
+  "linear_attn:z": {
+   "M_bits": 3.163,
+   "kurtosis": 3.32,
+   "tensors": 48,
+   "sampled_params_M": 251.7
+  },
+  "linear_attn:z:band0": {
+   "M_bits": 2.996,
+   "kurtosis": 3.23,
+   "tensors": 16,
+   "sampled_params_M": 83.9
+  },
+  "linear_attn:z:band1": {
+   "M_bits": 3.184,
+   "kurtosis": 3.35,
+   "tensors": 16,
+   "sampled_params_M": 83.9
+  },
+  "linear_attn:z:band2": {
+   "M_bits": 3.309,
+   "kurtosis": 3.37,
+   "tensors": 16,
+   "sampled_params_M": 83.9
+  }
+ },
+ "family_M_spread_bits": 1.187,
+ "code_commit": "2f42e68",
+ "tree_dirty": true,
+ "wall_s": 42.3
+}

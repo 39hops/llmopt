@@ -34530,3 +34530,52 @@ FENCES: weight/activation-space census — no capability claim;
 frozen positions only; desk class. RECEIPTS:
 logs/qwenrouter/rk_census.json. May run in the daytime window
 (CPU only) or overnight.
+## OBSERVATION QWEN-CAPACITY-METER-1: spread 1.187 bits EXCEEDS the 1.0 clause but the ordering is INCOHERENT with functional value — M stays a diagnostic; two real structures land anyway: linear-out heavy tails (kurtosis 14.4) and a monotone late-heavy depth gradient in every linear projection (2026-08-18, mac)
+
+The 27B cell (scratch/qwen_capacity27b.py, meter() imported
+verbatim from the frozen capacity_meter math; pinned vendor
+shards, shard-index sha asserted; <=1024 string-seeded rows per
+tensor; wall 42.3s, Mac CPU desk).
+
+MEASURED, M bits per family:projection (kurtosis in parens):
+  io:lm_head 3.937 (3.6) | full_attn:k 3.888 (5.1) |
+  full_attn:v 3.825 (4.5) | ffn:down 3.766 (4.5) |
+  linear:out 3.560 (14.4) | full_attn:o 3.350 (7.1) |
+  linear:qkv 3.163 | linear:z 3.163 | full_attn:q 3.052 |
+  ffn:gate 3.027 | io:embed 2.934 | ffn:up 2.750.
+  Family spread 1.187 bits. Depth bands (linear family, all
+  three projections): band0 < band1 < band2 monotone
+  (out 3.121/3.623/3.936; qkv 2.996/3.122/3.372; z
+  2.996/3.184/3.309).
+
+ADJUDICATION of the registered clause (prose, by its terms): the
+refutation required spread > 1.0 AND ordering matching the
+measured per-byte functional ordering. Spread fires; ordering
+does NOT — full-attn spans both extremes (k 3.888 v q 3.052),
+io spans both extremes (lm_head 3.937 top v embed 2.934
+near-bottom), while the FUNCTIONAL results put the F family
+first per byte on X and io first on K as coherent families.
+PRIOR NOT-REFUTED in letter; in spirit HALF-WRONG and booked so:
+M is not flat (the registered flatness guess misses), it is
+structured — but structured DIFFERENTLY from function, which is
+the strongest form of the diagnostic-not-allocator correction
+this cell was registered to test. Notably embed carries the
+LOWEST outlier pressure while its s16 repair is the most
+K-efficient byte measured — weight-space pressure
+anti-correlates with functional value exactly where MODEL-1's
+arc predicted such misalignment.
+
+TWO STRUCTURES BANKED FOR THE LIVE RUNGS: (1) linear_attn:out
+kurtosis 14.44 (4x every other family) — the one genuinely
+heavy-tailed projection; if any tensor class wants max-anchored
+codec treatment in a future rate table it is this one, subject
+to functional confirmation; (2) monotone LATE-HEAVY depth
+gradient in all three linear projections — a weight-space
+prediction now on record BEFORE QWEN-LBAND-1 scores depth
+functionally (LBAND's flat prior was registered before this
+meter ran, commit order e04fb5c -> this run; the meter datum is
+disclosed, not incorporated).
+FENCES: weight-space quantity — the never-score-weights law caps
+every reading; no MODEL-2 rate table may cite M alone; desk,
+single sampling seed. Receipt: logs/qwencapacity/meter27b.json
+(force-added).
