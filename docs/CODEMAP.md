@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 208, library 72, reproduce-pinned 10, results-cited 216, spec-cited 88, cited-but-library 60
+Census: UNCITED 208, library 72, reproduce-pinned 10, results-cited 218, spec-cited 88, cited-but-library 60
 
 ## scratch/
 
@@ -342,11 +342,13 @@ Census: UNCITED 208, library 72, reproduce-pinned 10, results-cited 216, spec-ci
 | qwen | qwen_displace_extract.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_family_probe.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_margin_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| qwen | qwen_model1_score.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | qwen | qwen_qualify.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 4 |
 | qwen | qwen_runtime0r.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_stream_probe.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
 | qwen | qwen_teacher_pass.py | library | RESULTS | RESULTS×1 | 1 | — |
 | qwen | qwen_teacher_sidecar.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| qwen | qwen_tree_adjudicate.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_whole0t.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 3 |
 | rank | rank_read.py | spec-cited | specs | specs×2 | — | 1 |
 | rat | rat_deploy.py | results-cited | RESULTS, specs | RESULTS×1, specs×5 | — | 3 |
@@ -453,7 +455,7 @@ Census: UNCITED 208, library 72, reproduce-pinned 10, results-cited 216, spec-ci
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
 |  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×12 | — | 1 |
-| adjudicate | adjudicate.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
+| adjudicate | adjudicate.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | 2 |
 | anchor | anchor_guard.py | UNCITED | — | — | — | 1 |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | 2 |
 | arena | arena.py | UNCITED | — | — | — | — |
