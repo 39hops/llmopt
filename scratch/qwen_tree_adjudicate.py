@@ -190,6 +190,19 @@ def main():
         if rc[a].get("smoke"):
             raise SystemExit(f"REFUSING: smoke receipt at real path {p}")
     obs = build_observations(rc)
+    # provenance: the walker's own executable identity + the exact
+    # receipt bytes it consumed (receipt-audit adoption 2026-08-17)
+    import hashlib
+    import subprocess
+    obs["provenance"] = {
+        "code_commit": subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"]).decode().strip(),
+        "tree_dirty": bool(subprocess.check_output(
+            ["git", "status", "--porcelain"]).decode().strip()),
+        "receipt_sha256": {
+            a: hashlib.sha256(open(os.path.join(
+                OUT, f"score_{a}.json"), "rb").read()).hexdigest()
+            for a in ("A", "B", "C")}}
     outcomes = {}
     lines = []
     for o in adjudicate_prereg(prereg, obs):
@@ -200,12 +213,22 @@ def main():
         lines.append(line)
         print(line, flush=True)
     branch, reason = walk(outcomes)
-    obs["measurements"]["refuted:t1_prior_fired"] = _m(
-        1.0 if branch == "T1" else 0.0, "t1_prior_fired",
-        "tree:branch", "indicator", "walker")
-    ref = adjudicate_refutation(prereg, obs)
+    # the refutation clause reads ONLY on clean gates ("REFUTED if the
+    # walker lands any branch other than T1 ON CLEAN GATES; a gate
+    # alarm books no allocation claim" — prereg-auditor blocker,
+    # 2026-08-17): under alarm/nonmonotonic/unresolved the prior is
+    # UNADJUDICATED and the predicate measurement is withheld.
+    if branch in ("T1", "T2", "T3", "T4"):
+        obs["measurements"]["refuted:t1_prior_fired"] = _m(
+            1.0 if branch == "T1" else 0.0, "t1_prior_fired",
+            "tree:branch", "indicator", "walker")
+        ref = adjudicate_refutation(prereg, obs)
+    else:
+        ref = "UNADJUDICATED (gate not clean — no allocation claim)"
     lines.append(f"BRANCH {branch}: {reason}")
     lines.append(f"REGISTERED-PRIOR(T1): {ref}")
+    lines.append(f"PRODUCER {obs['provenance']['code_commit']}"
+                 f" dirty={obs['provenance']['tree_dirty']}")
     print(lines[-2], flush=True)
     print(lines[-1], flush=True)
     with open(os.path.join(OUT, "tree_observations.json"), "w") as f:

@@ -457,7 +457,11 @@ def main():
     import subprocess
     rcpt = {
         "arm": arm, "artifact": art, "smoke": smoke,
-        "device_actual": "cpu",
+        # DERIVED from the resident parameters, never a literal
+        # (receipt-audit adoption 2026-08-17; RULE-ABLATE-1 class)
+        "device_actual": str(next(p.device for _, p
+                                  in model.named_parameters()
+                                  if not p.is_meta)),
         "code_commit": subprocess.check_output(
             ["git", "rev-parse", "--short", "HEAD"]).decode().strip(),
         "teacher": {"dir": TEACHER_DIR,
