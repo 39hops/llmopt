@@ -198,7 +198,7 @@ def main():
         "code_commit": subprocess.check_output(
             ["git", "rev-parse", "--short", "HEAD"]).decode().strip(),
         "tree_dirty": bool(subprocess.check_output(
-            ["git", "status", "--porcelain"]).decode().strip()),
+            ["git", "status", "--porcelain", "-uno"]).decode().strip()),
         "receipt_sha256": {
             a: hashlib.sha256(open(os.path.join(
                 OUT, f"score_{a}.json"), "rb").read()).hexdigest()
