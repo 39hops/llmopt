@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 210, library 72, reproduce-pinned 10, results-cited 216, spec-cited 86, cited-but-library 60
+Census: UNCITED 208, library 72, reproduce-pinned 10, results-cited 216, spec-cited 88, cited-but-library 60
 
 ## scratch/
 
@@ -338,7 +338,7 @@ Census: UNCITED 210, library 72, reproduce-pinned 10, results-cited 216, spec-ci
 | qwen | qwen_cuda_rung1.py | UNCITED | — | — | — | — |
 | qwen | qwen_cuda_rung2.py | UNCITED | — | — | — | — |
 | qwen | qwen_cuda_rung3.py | UNCITED | — | — | — | — |
-| qwen | qwen_cuda_rung4.py | UNCITED | — | — | — | 1 |
+| qwen | qwen_cuda_rung4.py | spec-cited | specs | specs×1 | — | 1 |
 | qwen | qwen_displace_extract.py | UNCITED | — | — | — | 1 |
 | qwen | qwen_family_probe.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_margin_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -457,7 +457,7 @@ Census: UNCITED 210, library 72, reproduce-pinned 10, results-cited 216, spec-ci
 | anchor | anchor_guard.py | UNCITED | — | — | — | 1 |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | 2 |
 | arena | arena.py | UNCITED | — | — | — | — |
-| arena | arena_qwen.py | UNCITED | — | — | — | — |
+| arena | arena_qwen.py | spec-cited | specs | specs×1 | — | — |
 | autopsy | autopsy_int.py | UNCITED | — | — | — | — |
 | backfill | backfill_code_commit.py | spec-cited | specs | specs×3 | — | — |
 | bench | bench_adaptive.py | spec-cited | specs | specs×1 | — | — |

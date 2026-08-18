@@ -3763,6 +3763,19 @@ Optimized WHOLE-0T decoders, parity-fixtured against qcodec.
 - `class W4Rows` (rows)
 - `class S16Rows` (rows)
 
+### llmopt/lab/qcuda.py
+CUDA decode primitives for the compressed-artifact tower.
+
+- `class _NoTriton` (constexpr, jit)
+- `class _NoTritonKernel`
+- `require_triton() -> None` — Raise the clear error before doing any GPU work.
+- `w4_decode_kernel(idx_ptr, cb_ptr, exp_ptr, out_ptr, n, BLK: tl.constexpr)`
+- `s16_gemv_kernel(code_ptr, lv_ptr, exp_ptr, x_ptr, y_ptr, C, BLK_C: tl.constexpr)` — s16 fused GEMV: HIGH nibble = EVEN element (qcodec
+- `w4_gemv_kernel(idx_ptr, cb_ptr, exp_ptr, x_ptr, y_ptr, C, BLK_C: tl.constexpr)` — One program per output row, fused decode+dot, fp32 acc.
+- `class W4Gpu` (decode_rows, gemv)
+- `class S16Gpu` (gemv)
+- `class FusedW4Linear` (forward)
+
 ### llmopt/lab/qrope.py
 RoPE value oracle — exact expectations, no thresholds.
 

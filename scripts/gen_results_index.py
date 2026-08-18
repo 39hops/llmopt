@@ -19,6 +19,7 @@ DST = Path("docs/results-index.jsonl")
 TYPE_RULES = [
     (r"^PRE-REG", "prereg"),
     (r"AMENDMENT|AMENDMENTS|RESTATEMENT|RETRACT", "amendment"),
+    (r"^OBSERVATION\b", "observation"),
     (r"\bNULL\b|VOID|DIES|DEAD|FAILS|NO-ADOPT|NO SPONTANEOUS", "null"),
     (r"BANKED", "banked"),
     (r"CLOSES|CLOSED|COMPLETES|VERDICT|BOOKS|ADJUDICAT", "verdict"),
