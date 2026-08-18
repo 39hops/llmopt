@@ -2402,3 +2402,18 @@ regime tag on every bullet is the fence.
   single arm; frozen layer set is 4 linear / 2 full attention
   post label correction. ([VERDICT
   QWEN-RK-CENSUS-0](RESULTS.md#L34734 "id:2026-08-18-verdict-qwen-rk-census-0-refuted").)
+- [SINGLE-SEED] [TEACHER-FORCED] LBAND-1 books INSTRUMENT-ALARM:
+  the late linear-attn band ADDED to the F repair reads 0.0037
+  nats WORSE than F on corpus X (96.59 f_X past the monotone-
+  repair bracket edge; receipt verified end-to-end — measured
+  interference, not a mixup). Every structure/conditioning bar
+  fires; the flatness predicate reads 0.506 rec units v its 0.2
+  threshold but stays deliberately UNADJUDICATED under the alarm
+  (code-frozen precedence, disclosed). Descriptive: repair value
+  from B is monotone EARLY-heavy (dX 0.401/0.105/0.028), the F/L
+  redundancy is depth-localized early (I_X(e) -0.229), mid is
+  mildly synergistic, and BLe beats F on both metrics absolutely
+  and per byte. Fences: point readings 355/92 positions, no
+  sampling fence; numerical floors never significance; same-commit
+  F re-score is the named residual. ([VERDICT
+  QWEN-LBAND-1](RESULTS.md#L34907 "id:2026-08-18-verdict-qwen-lband-1-instrument-alarm").)

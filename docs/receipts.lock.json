@@ -449,15 +449,18 @@
    "tracked": true
   },
   "logs/qwenattrib/compose_BLe.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenattrib/compose_BLl.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenattrib/compose_BLm.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenattrib/compose_D.json": {
@@ -476,15 +479,18 @@
    "source": "prereg"
   },
   "logs/qwenattrib/compose_FLe.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenattrib/compose_FLl.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenattrib/compose_FLm.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenattrib/compose_L.json": {
@@ -511,12 +517,23 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwenattrib/lband_compose2.log": {
+   "bytes": 1923,
+   "exists": true,
+   "sha256": "5e86bacc16fd38118c0fb345ed18048e0885d23f26593551c6606f1a19c0814d",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwenattrib/lband_observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3994,
+   "exists": true,
+   "sha256": "7ccb2a233755c4dd15902efbe1412777d57114d6a2ff6789a0bb97b99565c65d",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/lband_verdict.txt": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwencapacity/meter27b.json": {
@@ -656,15 +673,18 @@
    "source": "prereg"
   },
   "logs/qwenmodel1/score_BLe.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenmodel1/score_BLl.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenmodel1/score_BLm.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenmodel1/score_C.json": {
@@ -688,15 +708,18 @@
    "source": "prereg"
   },
   "logs/qwenmodel1/score_FLe.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenmodel1/score_FLl.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenmodel1/score_FLm.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwenmodel1/score_L.json": {

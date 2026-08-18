@@ -1,0 +1,30 @@
+[rc] qualified base=B: {'w4': 400, 's16': 2, 'raw': 449, 'excluded': 348}
+[rc] qualified donor=C: {'w4': 192, 's16': 210, 'raw': 449, 'excluded': 348}
+[rc] BLe: 48 keys, +0.4296 GiB
+[rc] self-qualified BLe: {'w4': 352, 's16': 50, 'raw': 449, 'excluded': 348}
+[rc] receipt -> logs/qwenattrib/compose_BLe.json wall 131.8s
+[rc] qualified base=B: {'w4': 400, 's16': 2, 'raw': 449, 'excluded': 348}
+[rc] qualified donor=C: {'w4': 192, 's16': 210, 'raw': 449, 'excluded': 348}
+[rc] BLm: 48 keys, +0.4296 GiB
+[rc] self-qualified BLm: {'w4': 352, 's16': 50, 'raw': 449, 'excluded': 348}
+[rc] receipt -> logs/qwenattrib/compose_BLm.json wall 107.9s
+[rc] qualified base=B: {'w4': 400, 's16': 2, 'raw': 449, 'excluded': 348}
+[rc] qualified donor=C: {'w4': 192, 's16': 210, 'raw': 449, 'excluded': 348}
+[rc] BLl: 48 keys, +0.4296 GiB
+[rc] self-qualified BLl: {'w4': 352, 's16': 50, 'raw': 449, 'excluded': 348}
+[rc] receipt -> logs/qwenattrib/compose_BLl.json wall 118.9s
+[rc] qualified base=F: {'w4': 336, 's16': 66, 'raw': 449, 'excluded': 348}
+[rc] qualified donor=C: {'w4': 192, 's16': 210, 'raw': 449, 'excluded': 348}
+[rc] FLe: 48 keys, +0.4296 GiB
+[rc] self-qualified FLe: {'w4': 288, 's16': 114, 'raw': 449, 'excluded': 348}
+[rc] receipt -> logs/qwenattrib/compose_FLe.json wall 78.6s
+[rc] qualified base=F: {'w4': 336, 's16': 66, 'raw': 449, 'excluded': 348}
+[rc] qualified donor=C: {'w4': 192, 's16': 210, 'raw': 449, 'excluded': 348}
+[rc] FLm: 48 keys, +0.4296 GiB
+[rc] self-qualified FLm: {'w4': 288, 's16': 114, 'raw': 449, 'excluded': 348}
+[rc] receipt -> logs/qwenattrib/compose_FLm.json wall 94.3s
+[rc] qualified base=F: {'w4': 336, 's16': 66, 'raw': 449, 'excluded': 348}
+[rc] qualified donor=C: {'w4': 192, 's16': 210, 'raw': 449, 'excluded': 348}
+[rc] FLl: 48 keys, +0.4296 GiB
+[rc] self-qualified FLl: {'w4': 288, 's16': 114, 'raw': 449, 'excluded': 348}
+[rc] receipt -> logs/qwenattrib/compose_FLl.json wall 88.6s

@@ -1,0 +1,154 @@
+{
+ "measurement_valid": true,
+ "arms": {
+  "BLe": {
+   "admissible": true
+  },
+  "BLm": {
+   "admissible": true
+  },
+  "BLl": {
+   "admissible": true
+  },
+  "FLe": {
+   "admissible": true
+  },
+  "FLm": {
+   "admissible": true
+  },
+  "FLl": {
+   "admissible": true
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 1.0,
+   "metric": "bracket_violation_count",
+   "population": "arms:recomposed",
+   "aggregation": "count",
+   "provenance": "six arms' X and K v [C-5f, base+5f]"
+  },
+  "2": {
+   "value": 8092.563739520046,
+   "metric": "band_gap_floor_multiple_x_baseB",
+   "population": "positions:corpus",
+   "aggregation": "ratio",
+   "provenance": "(best - second) band dX from B, over f_X"
+  },
+  "3": {
+   "value": 1203.3298598731972,
+   "metric": "band_gap_floor_multiple_x_baseF",
+   "population": "positions:corpus",
+   "aggregation": "ratio",
+   "provenance": ""
+  },
+  "4": {
+   "value": 396.7710787727844,
+   "metric": "band_gap_floor_multiple_k_baseB",
+   "population": "positions:prefixes",
+   "aggregation": "ratio",
+   "provenance": ""
+  },
+  "7": {
+   "value": 10.73880573662561,
+   "metric": "band_gap_floor_multiple_k_baseF",
+   "population": "positions:prefixes",
+   "aggregation": "ratio",
+   "provenance": ""
+  },
+  "5": {
+   "value": 6256.954511922549,
+   "metric": "conditioning_gap_floor_multiple_x",
+   "population": "positions:corpus",
+   "aggregation": "ratio",
+   "provenance": "best B-band on X = BLe"
+  },
+  "6": {
+   "value": 493.6862081367976,
+   "metric": "conditioning_gap_floor_multiple_k",
+   "population": "positions:prefixes",
+   "aggregation": "ratio",
+   "provenance": "best B-band on K = BLe"
+  }
+ },
+ "contrasts": {},
+ "X": {
+  "B": 0.8337971972407241,
+  "C": 0.2486450017137274,
+  "F": 0.5205010927831475,
+  "BLe": 0.43303403101351523,
+  "BLm": 0.7289144431766779,
+  "BLl": 0.8061106525710493,
+  "FLe": 0.34850477220127196,
+  "FLm": 0.39250093291963517,
+  "FLl": 0.5242153552962903
+ },
+ "K": {
+  "B": 0.3377161826658416,
+  "C": 0.16180113550153713,
+  "F": 0.2638134590200254,
+  "BLe": 0.24812584329315737,
+  "BLm": 0.33613070558247504,
+  "BLl": 0.28877092716619013,
+  "FLe": 0.22479615384817977,
+  "FLm": 0.24032161176652042,
+  "FLl": 0.22369607452482942
+ },
+ "f_X": 3.656201195156861e-05,
+ "f_K": 0.00010243963344996887,
+ "dX": {
+  "BLe": 0.40076316622720887,
+  "BLm": 0.10488275406404624,
+  "BLl": 0.027686544669674795,
+  "FLe": 0.17199632058187553,
+  "FLm": 0.12800015986351232,
+  "FLl": -0.0037142625131427742
+ },
+ "dK": {
+  "BLe": 0.08959033937268421,
+  "BLm": 0.0015854770833665377,
+  "BLl": 0.04894525549965145,
+  "FLe": 0.03901730517184562,
+  "FLm": 0.023491847253504977,
+  "FLl": 0.040117384495195973
+ },
+ "conditioning_signed_x": {
+  "e": -0.22876684564533334,
+  "m": 0.023117405799466084,
+  "l": -0.03140080718281757
+ },
+ "conditioning_signed_k": {
+  "e": -0.050573034200838585,
+  "m": 0.02190637017013844,
+  "l": -0.008827871004455479
+ },
+ "bytes_added_per_arm": {
+  "BLe": 461276672,
+  "BLm": 461276672,
+  "BLl": 461276672,
+  "FLe": 461276672,
+  "FLm": 461276672,
+  "FLl": 461276672
+ },
+ "rec_X_baseB": {
+  "BLe": 0.6848870589407524,
+  "BLm": 0.17924012738188103,
+  "BLl": 0.04731511712904005
+ },
+ "band_gap_rec_units_baseB": 0.5056469315588714,
+ "provenance": {
+  "code_commit": "07a9e50",
+  "tree_dirty": false,
+  "receipt_sha256": {
+   "B": "b1d8312abf618571fda782ffc571eb04ddbd62500353f147e80a7eeb0599bf55",
+   "C": "63d52d0071cfbe31c21efe255867e0be5684556410c6cfc3a0f95c33a55f423c",
+   "F": "2f0830bfd4a2c5635f64f6f21f25df407ab4898191805bbe003bb244b2118611",
+   "BLe": "f47000bad19497f688c100171b35810538c06dba8c8f724b33ba54f19cc35e68",
+   "BLm": "3d0d32ab87a05abc6b30ecfc967c2e530a2fbcb76adac3e5b46850f4e9558f30",
+   "BLl": "64a4be50389494a576d86dcf28a5e6141df2ac9e9324a39fb604fae94cbf6d57",
+   "FLe": "2981b8cc2dc0fc767a81ad7b972caa456287c5a5269e7379d95002723aef4e35",
+   "FLm": "8402fd48acd64a3cad8b906234d88685290007f896845e77231572507d82dc99",
+   "FLl": "5a020c27052b5caf29c5c858225840c0fba85b5b798e01bc838b579890e771a8"
+  }
+ }
+}

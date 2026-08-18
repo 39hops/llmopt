@@ -34904,3 +34904,140 @@ numbers change; vocabulary tightens and one derived column lands.
    commit drift is label-only. Future long drivers should capture
    start_commit + producer blob sha at process entry.
 
+## VERDICT QWEN-LBAND-1: INSTRUMENT-ALARM — one cell breaks the monotone-repair bracket: the late linear-attn band ADDED TO F reads 0.0037 nats WORSE than F on corpus X (96.59 f_X past the bracket edge); every structure and conditioning bar fires, flatness prior deliberately unadjudicated under the alarm (2026-08-18, mac)
+
+Registered as PRE-REG QWEN-LBAND-1 (RESULTS L34386) + machine
+projection docs/preregs/qwen-lband-1.json. Adjudicator
+scratch/qwen_lband_adjudicate.py (6 fixtures green; compose
+admissibility fail-closed incl. manifest-derived 461,276,672-byte
+spend), observations logs/qwenattrib/lband_observations.json,
+verdict lines lband_verdict.txt, producer HEAD 07a9e50
+dirty=False (adjudicator last touched at 44e3baa, an ancestor).
+
+MEASURED (Mac CPU, all nine score receipts same teacher block):
+- X: B 0.8338, C 0.24865, F 0.5205 | BLe 0.43303, BLm 0.72891,
+  BLl 0.80611 | FLe 0.3485, FLm 0.3925, FLl 0.52422.
+- K: B 0.33772, C 0.1618, F 0.26381 | BLe 0.24813, BLm 0.33613,
+  BLl 0.28877 | FLe 0.2248, FLm 0.24032, FLl 0.2237.
+- BAR 1 SANITY-BRACKET-CLEAN NO-FIRE: exactly one violation of
+  twelve checks — FLl X 0.52422 above the bracket edge
+  F + 5 f_X = 0.52068 by 96.59 f_X (and above F itself by
+  101.59 f_X). Both auditors verified the FLl receipt end-to-end
+  (unique chain c8c4ea93.. matching compose out-chain, census =
+  F's with exactly 48 keys flipped, X = CE_arm - CE_teacher
+  bit-exact, log corroborated): a MEASURED effect, not a mixup.
+- BARS 2-7 ALL FIRE: band structure on X from B (8093 f_X) and
+  F (1203 f_X), on K from B (397 f_K) and F (10.7 f_K);
+  conditioning on X (6257 f_X) and K (494 f_K), best base-B band
+  = BLe on both metrics (bar-6 tie rule: best-by-dK, moot here).
+
+PER-BAND TABLE (marginal value in nats; I = dX(band|F) -
+dX(band|B), negative = redundant with F, positive = synergy):
+
+  band  | dX|B    dX|F     I_X      | dK|B    dK|F    I_K
+  early | 0.40076 0.17200  -0.22877 | 0.08959 0.03902 -0.05057
+  mid   | 0.10488 0.12800  +0.02312 | 0.00159 0.02349 +0.02191
+  late  | 0.02769 -0.00371 -0.03140 | 0.04895 0.04012 -0.00883
+
+RESOLUTION (frozen walker, zero discretion): INSTRUMENT-ALARM.
+The bracket bar encoded "any band addition moves X toward C";
+the FLl cell measures that assumption false at small magnitude.
+The alarm verdict is immutable; diagnosis books separately
+(OBSERVATION below), and no bar is re-scoped post-hoc.
+
+REGISTERED PRIOR (flatness): UNADJUDICATED under the alarm. Full
+disclosure per prereg-auditor: the registered predicate
+band_gap_rec_units_baseB > 0.2 measures 0.5056 — it WOULD have
+booked the flatness prior REFUTED had bar 1 been clean. The
+alarm-suppresses-refutation precedence rule is code-frozen
+(committed 29d6b90, 15:02, before any band score existed at
+16:24) but was NOT written into the registered prose/JSON; it is
+disclosed here rather than applied silently. Resolution of the
+prior is amendment-gated on the alarm diagnosis, exactly the
+MODEL-1 precedent.
+
+FENCES (registered, carried):
+- Attribution class only — no MODEL-1 tree branch is touched.
+- Point readings, 355 corpus / 92 prefix terms, single arm each,
+  NO sampling fence: every floor multiple here is a fp16-ulp
+  NUMERICAL sensitivity statement (f_X 3.66e-5 nats, identical
+  across all nine receipts; f_K max-over-nine 1.02e-4), never
+  statistical significance. "Depth structure real" means "not
+  record-rounding noise", nothing stronger.
+- K is forward KL(teacher||arm), teacher-distribution wording.
+- Band definitions frozen pre-run, never re-cut (bands cover
+  vendor indices 0-62; layer 63 is full-attn, correctly outside
+  the 48-linear-attn partition — 3 x 48 keys = arm L's 144).
+- Composition ran on the 3080/WSL (compose receipts record
+  /home/a/... dirs), scoring Mac CPU only; NOT a cross-device
+  comparison — arm identity across the transfer is the chain
+  equality compose.out_chain_sha256 == score
+  qualification.chain_sha256, verified for all six, plus the
+  19-row rung0 re-hash Mac-side. Compose-side narrative evidence
+  = pulled log logs/qwenattrib/lband_compose2.log + those chains.
+
+PROVENANCE DISCLOSURES (both auditors, no blockers; adopted):
+- Scorer commit drift: bases A/B/C scored at 232737a, F/L/Q at
+  91d6d23, six band arms at 07a9e50. Diffs across the full range
+  verified non-numeric by both auditors independently (allowlist,
+  receipt chain_sha256 field, derived device_actual). The FLl-
+  over-F gap has NOT been shown to survive a same-commit F
+  re-score; disclosed as the named residual, with the same-commit
+  F re-score banked as the first diagnosis step.
+- Compose driver drift: F built at b8b0752, bands at 9e62edf;
+  compose() core byte-identical across (band filter + serialization
+  only). Recompose blob f3426f2e unchanged through every commit in
+  play.
+- BAND_BYTES 461276672 in the adjudicator was derived from the
+  frozen B/F/C manifests on the 3080 (sum s16-minus-w4 lens over
+  each band's 48 keys) and matches the independently registered
+  "+0.4296 GiB exactly" (461276672/2^30 = 0.42960); committed
+  15:44, before any band score existed.
+
+Receipts (force-added): logs/qwenattrib/compose_{BLe,BLm,BLl,
+FLe,FLm,FLl}.json, logs/qwenmodel1/score_{same six}.json,
+logs/qwenattrib/{lband_observations.json,lband_verdict.txt,
+lband_compose2.log}, logs/qwenwhole/artifact_digest_{same six}.txt.
+
+## OBSERVATION QWEN-LBAND-1-DIAGNOSIS: post-hoc read of the alarm and the (unscored) depth story — repair value is strongly EARLY-heavy from base B, the F/L redundancy is depth-localized in the early band, and the late band conditional on F is the negative-interference cell (2026-08-18, mac)
+
+Post-hoc companion to VERDICT QWEN-LBAND-1 (alarm immutable;
+nothing here is a registered bar outcome). Same receipts, same
+fences — point readings, numerical floors only, arm contrasts.
+
+1) DEPTH PROFILE FROM B (descriptive): dX = 0.401 / 0.105 / 0.028
+   early/mid/late — monotone EARLY-heavy, best-minus-second 0.506
+   in rec_X units. The registered flatness prior's predicate value
+   sits far past its 0.2 threshold; formal resolution waits on the
+   alarm amendment. Direction note: the capacity meter's
+   within-projection M gradient is LATE-heavy (r3, sampling-stable
+   as an ordering) — the functional repair value runs OPPOSITE to
+   outlier pressure at band grain, a second instance of the
+   meter's weight-space/function divergence (booked
+   CAPACITY-METER-1 class), kept as a qualitative contrast, not a
+   scored retrodiction.
+2) DEPTH-LOCALIZED REDUNDANCY (the CONDITIONING answer): the
+   ATTN-ATTRIB 1.49 redundancy lives mostly in the EARLY band —
+   I_X(early) = -0.229 (band worth 0.401 from B but only 0.172 on
+   top of F) and I_K(early) = -0.051. Mid is mildly SYNERGISTIC
+   on both metrics (+0.023, +0.022): repairing full attention
+   makes the mid linear band worth MORE, not less. Late is the
+   alarm cell: dX(late|F) = -0.0037 — adding C's late linear
+   payload to F slightly HURTS corpus CE while still helping K
+   (+0.040). Signed I table in the verdict.
+3) DEPLOYMENT-CANDIDATE READING (descriptive, iso-budget-ish,
+   never a registered bar): BLe (+0.4296 GiB over B) beats F
+   (+0.3905 GiB over B) on BOTH metrics absolutely — X 0.433 v
+   0.520, K 0.248 v 0.264 — and per byte: 0.933 v 0.802 X/GiB,
+   0.209 v 0.189 K/GiB. Aggregate arm L's efficiency was hiding
+   strong depth heterogeneity: a third of L's spend (its early
+   band) delivers 72% of L's X recovery (0.401 of L's 0.555 nats). Budgets are near, not
+   equal (+18% for BLe); no matched-bytes claim is made.
+4) ALARM DIAGNOSIS QUEUE (banked, in order): (a) same-commit F
+   re-score at the band scorer's commit — the 0.0037-nat cell's
+   only untested provenance axis; (b) FLl margin-strata read from
+   the already-booked flip tables; (c) if (a) reproduces, the
+   interference is real and the bracket bar's monotonicity
+   assumption retires for F-conditional arms in FUTURE preregs
+   (never retroactively).
+
