@@ -33740,3 +33740,39 @@ Receipts (explicit full paths, force-added before lock regen):
 logs/qwencuda/rung4_B_forward1.json,
 logs/qwencuda/rung4_B_qm700.json,
 logs/qwencuda/rung4_B_qm1400.json.
+
+## AMENDMENT QWEN-CUDA-S16-B-PAIRED: the "same commit" claim was false — closed by a paired rerun at one commit; two wordings narrowed (2026-08-17, 3080/WSL)
+
+Target: OBSERVATION QWEN-CUDA-S16-B (and -RUNG4). Caught by the
+GPT review seat, verified from the receipts:
+
+1. FALSE PAIRING CLAIM, closed. -S16-B stated the A/B comparison
+   was "same commit"; the receipts read A code_commit 5d7680a v B
+   132f63d (the S16 commit landed between the runs). Worse, the
+   -RUNG4 entry booked "code_commit 907c9df" while its own
+   receipt carries 5d7680a — a prose/receipt mismatch of exactly
+   the class the receipt-auditor exists for. CLOSED BY PAIRED
+   RERUN at HEAD 6982ab3, same prompt, same env, N_NEW=1400 both
+   arms (logs/qwencuda/rung4_A_qm1400_paired.json,
+   logs/qwencuda/rung4_B_qm1400_paired.json): the contrast
+   REPLICATES — A re-enters the tight state-restatement cycle
+   (9.9 tok/s), B executes the algebra, computes 2.998, flags
+   "greater than 1... doesn't make sense for a probability", and
+   restart-cycles (9.85 tok/s). The qualitative ordering survives
+   proper pairing.
+
+2. WORDING NARROWED (registered): "the severity shape tree prior
+   T1 predicted" overstates — T1 is a quantitative MODEL-1 event
+   (X/K with sensitivity fences), not a transcript read. The
+   claim is now: QUALITATIVELY CONSISTENT WITH T1'S PREREGISTERED
+   DIRECTION; it fires nothing. Likewise -RUNG4's "belongs to the
+   artifact, not a backend": what the two-backend reproduction
+   rules out is only the LINEAR-EXECUTION backend (materialize v
+   fused); generate machinery, KV cache, tokenizer, io paths, and
+   attention code are shared. The pinned teacher under the
+   identical protocol remains the only upgrade to
+   "compression-induced".
+
+Receipts (full paths, force-added before lock regen):
+logs/qwencuda/rung4_A_qm1400_paired.json,
+logs/qwencuda/rung4_B_qm1400_paired.json.
