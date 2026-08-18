@@ -2994,6 +2994,11 @@ QWEN-ATTN-ATTRIB-1 recomposer: build arm F/L/Q as a KEY-LEVEL byte recomposition
 - `_sha(p)`
 - `main()`
 
+### scratch/qwen_rk_adjudicate.py
+QWEN-RK-CENSUS-0 observations builder + adjudication.
+
+- `main()`
+
 ### scratch/qwen_rk_census.py
 QWEN-RK-CENSUS-0: is the 2-bit artifact a faithful ROUTER?
 
