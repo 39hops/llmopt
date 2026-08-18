@@ -2957,6 +2957,14 @@ QWEN-IO-ATTRIB-1 observations builder + registered resolution.
 - `resolution(outcomes: dict, meas: dict) -> tuple`
 - `main()`
 
+### scratch/qwen_lband_adjudicate.py
+QWEN-LBAND-1 observations builder + registered resolution.
+
+- `_m(value, metric, population, aggregation, provenance='')`
+- `build_observations(rc: dict, comp: dict) -> dict`
+- `resolution(outcomes: dict) -> tuple`
+- `main()`
+
 ### scratch/qwen_margin_census.py
 Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-only per-bin position counts, booked once with the teacher lock, before any arm scores.
 
@@ -3007,6 +3015,11 @@ QWEN-RK-CENSUS-0: is the 2-bit artifact a faithful ROUTER?
 - `build_vendor()`
 - `build_arm()`
 - `analyze()`
+- `main()`
+
+### scratch/qwen_rk_rider.py
+QWEN-RK-CENSUS-0 descriptive rider (post-verdict, never a gate).
+
 - `main()`
 
 ### scratch/qwen_runtime0r.py
