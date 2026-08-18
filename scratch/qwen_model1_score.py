@@ -199,7 +199,11 @@ def main():
                    "BLe", "BLm", "BLl", "FLe", "FLm", "FLl"), arm
     art = os.path.expanduser(os.environ["ART_DIR"])
     os.makedirs(out_dir, exist_ok=True)
-    rcpt_path = os.path.join(out_dir, f"score_{arm}.json")
+    # RESCORE=1 writes score_<ARM>_rescore.json alongside the frozen
+    # original (scorer-repeatability + provenance-closure runs; the
+    # frozen receipt is never opened for write)
+    resuf = "_rescore" if os.environ.get("RESCORE", "0") == "1" else ""
+    rcpt_path = os.path.join(out_dir, f"score_{arm}{resuf}.json")
     if os.path.exists(rcpt_path):
         raise SystemExit(f"REFUSING: {rcpt_path} exists")
 
@@ -464,6 +468,7 @@ def main():
     import subprocess
     rcpt = {
         "arm": arm, "artifact": art, "smoke": smoke,
+        "rescore": bool(resuf),
         # DERIVED from the resident parameters, never a literal
         # (receipt-audit adoption 2026-08-17; RULE-ABLATE-1 class)
         "device_actual": str(next(p.device for _, p
