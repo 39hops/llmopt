@@ -2340,3 +2340,14 @@ regime tag on every bullet is the fence.
   predicted; the pinned teacher under identical greedy prompting is
   the registered adjudicator. ([OBSERVATION
   QWEN-CUDA-S16-B](RESULTS.md#L33695 "id:2026-08-17-observation-qwen-cuda-s16-b-artifact").)
+- [SINGLE-SEED] [TEACHER-FORCED] The teacher v2d lock is ACCEPTED
+  through the full registered path: commit pin 0ca4151 exact, the
+  cached-v-uncached sidecar passes with perfect token equality
+  (4722/4722) and max rel L2 2.1e-4 v the 5e-3 bar (fp16-symmetric
+  quantization deviation disclosed), and the margin census books with
+  the small-n fence LIVE on the scored streams (corpus+prefixes bins
+  below 0.2 nats are all under 30 positions) — both auditors ran
+  pre-booking and their blockers (uncommitted census producer,
+  unfalsifiable sha boolean, pooled-fence overstatement) were fixed
+  first. ([VERDICT
+  QWEN-TEACHER-0-LOCK](RESULTS.md#L33780 "id:2026-08-17-verdict-qwen-teacher-0-lock-teacher").)

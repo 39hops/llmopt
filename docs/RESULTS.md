@@ -33776,3 +33776,79 @@ GPT review seat, verified from the receipts:
 Receipts (full paths, force-added before lock regen):
 logs/qwencuda/rung4_A_qm1400_paired.json,
 logs/qwencuda/rung4_B_qm1400_paired.json.
+
+## VERDICT QWEN-TEACHER-0-LOCK: teacher v2d ACCEPTED — commit pin exact, sidecar gate passes 23x inside the bar with perfect token equality, margin census booked with the small-n fence LIVE on scored streams (2026-08-17, mac)
+
+Resolves PRE-REG QWEN-TEACHER-0. Both auditors ran BEFORE this
+booking (prereg-auditor + receipt-auditor, Opus seats); every
+blocker they raised was fixed before this entry, every deviation
+they found is disclosed here.
+
+(1) COMMIT PIN (registered executable check): teacher_manifest
+code_commit = 0ca4151, exact. Traversal 64/48/16 executed,
+min_layer_calls 263, rope_calls 263, inv_freq_abs_sum 2.5271
+(nonzero — v1's failure affirmatively excluded). Records: corpus
+[356, 248320], prefixes [98, 248320], rollouts [256, 24, 248320]
+fp16, all sha256'd in the manifest; wall 22342s.
+
+(2) SIDECAR GATE (TREE-PINS item 3) PASSES
+(logs/qwenteacher_v2/sidecar_gate.json, driver
+scratch/qwen_teacher_sidecar.py at 6982ab3): the full generated
+batch teacher-forced no-cache through the identical streamed
+builder (byte-identical 0ca4151..HEAD, auditor-verified), 2988s.
+TOKEN EQUALITY FIRST: 4722/4722 live positions, zero mismatches.
+Norm bound: max over (b,t) rel L2 = 2.135e-4 v bar 5e-3 (23x
+inside; per-prompt max 2.14e-4, min 6.6e-5). The rollout record is
+ACCEPTED. Auditor-verified: batch reconstruction replays the
+RECORDED input_ids/mask tensors (no re-tokenization), eos padding
+and mask extension match generate's semantics exactly, scores are
+raw logits (empty processor list), scored positions causally
+precede all padding. DISCLOSED DEVIATIONS: (a) the no-cache
+reference was quantized fp16-then-fp32 before comparison —
+symmetric with the stored record but NOT the registered raw-fp32
+quantity (the registered reading would plausibly measure ~3-4e-4
+per the auditor's rms estimate; PASS is robust under either, ~14x
+margin); recorded in the receipt's reference_quantization field.
+(b) The sidecar asserted 64-layers/min>0 but did not book the
+48/16 family census in its own receipt (the pre-reg names it);
+the builder's fail-closed guards and the byte-identity to 0ca4151
+cover the risk; any re-emission adds the block. (c) Scope
+exceeded conservatively: registered 2-4 tokens, run over all 256
+steps. (d) The vendor dir revision was not re-asserted by the
+sidecar at run time (55-min window v the manifest's pinned
+1d4bf0f2); no evidence of change, field added on any re-emission.
+
+(3) MARGIN CENSUS (TREE-PINS item 2) BOOKED
+(logs/qwenteacher_v2/margin_census.json, producer
+scratch/qwen_margin_census.py at 3c4de8b, tree_dirty false,
+record shas verified AND recorded; the first census emission was
+REFUSED by the receipt-auditor for an uncommitted producer and an
+unfalsifiable verification boolean — re-emitted from the committed
+script, counts bit-identical, independently recomputed by the
+prereg-auditor). Frozen edges honored character-for-character.
+Counts: total [30,44,54,94,283,445,610,965,2651] over 5176
+positions (corpus 356 + prefixes 98 + rollout-live 4722).
+THE SMALL-N FENCE IS LIVE WHERE IT MATTERS (auditor catch B2):
+on the SCORED STREAMS (corpus+prefixes, the X/K basis) the bins
+are [4,7,7,11,40,66,62,114,143] — bins 0-3 (margins < 0.2) are
+ALL under 30 and carry no directional claim; pooled bin 0 sits at
+exactly 30, a knife edge stated as such. Flip-rate claims in the
+near-tie bins will rest on rollout-stream positions or report raw
+counts only.
+
+CARRIED FENCE, VERBATIM: no run is claimed to have passed qrope,
+including teacher v2d (frozen on the older call-count gate,
+prereg-tied to 0ca4151).
+
+Receipts force-added this commit (small text + the 24KB rel
+matrix, disclosed): logs/qwenteacher_v2/teacher_manifest.json,
+logs/qwenteacher_v2/sidecar_gate.json,
+logs/qwenteacher_v2/margin_census.json,
+logs/qwenteacher_v2/sidecar_rel.npy,
+logs/qwenteacher_v2/rollout_tokens.jsonl. The three large .npy
+logit records stay machine-local (logs doctrine), shas in the
+manifest.
+
+NEXT (critical path unchanged): scorer + docs/preregs/
+qwen-model1-tree.json projection -> X/K for A, B, C on the Mac
+CPU reference -> the tree adjudicates.

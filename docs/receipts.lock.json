@@ -588,6 +588,41 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwenteacher_v2/margin_census.json": {
+   "bytes": 1010,
+   "exists": true,
+   "sha256": "929036101252a03a038db016ce39b5984a18b686900e71fc738d4f1eec5fbe8c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenteacher_v2/rollout_tokens.jsonl": {
+   "bytes": 47263,
+   "exists": true,
+   "sha256": "5cf8d21469fdc7eba1a00c0317f22a262a965c017417935b718477cf64bb7fa3",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenteacher_v2/sidecar_gate.json": {
+   "bytes": 992,
+   "exists": true,
+   "sha256": "91923c0029da44ec31e977a6e8060973552775cc6d262ecd8d18e461fbbe1295",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenteacher_v2/sidecar_rel.npy": {
+   "bytes": 24704,
+   "exists": true,
+   "sha256": "9dcd63cb6a3be03a17eab8254d55d290d8e64a88badc4c30c4c5dbbfd3351b53",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenteacher_v2/teacher_manifest.json": {
+   "bytes": 22406,
+   "exists": true,
+   "sha256": "a29a74158b249bdb5ce0240bfd9246887d8c578f7489f9f996beafba53f2092f",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwenwhole/compile.jsonl": {
    "bytes": 7479,
    "exists": true,
