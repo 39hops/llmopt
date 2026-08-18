@@ -1,0 +1,140 @@
+{
+ "measurement_valid": true,
+ "arms": {
+  "F": {
+   "admissible": true
+  },
+  "L": {
+   "admissible": true
+  },
+  "Q": {
+   "admissible": true
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0.0,
+   "metric": "bracket_violation_count",
+   "population": "arms:recomposed",
+   "aggregation": "count",
+   "provenance": "X/K of F,L v [C-5f, B+5f]"
+  },
+  "2": {
+   "value": 0.4137516336979158,
+   "metric": "recovery_fraction_gap_x",
+   "population": "positions:corpus",
+   "aggregation": "mean",
+   "provenance": "R_X(L)-R_X(F)"
+  },
+  "3": {
+   "value": 6621.8368174574725,
+   "metric": "x_gap_floor_multiple",
+   "population": "positions:corpus",
+   "aggregation": "ratio",
+   "provenance": ""
+  },
+  "6": {
+   "value": 0.484570838863565,
+   "metric": "interaction_abs_x",
+   "population": "positions:corpus",
+   "aggregation": "mean",
+   "provenance": ""
+  },
+  "10": {
+   "value": 1746.2912562759218,
+   "metric": "iso_x_gap_floor_multiple_io",
+   "population": "positions:corpus",
+   "aggregation": "ratio",
+   "provenance": ""
+  },
+  "11": {
+   "value": -1746.2912562759218,
+   "metric": "iso_x_gap_floor_multiple_attn",
+   "population": "positions:corpus",
+   "aggregation": "ratio",
+   "provenance": ""
+  },
+  "4": {
+   "value": 0.44575599418120077,
+   "metric": "recovery_fraction_gap_k",
+   "population": "positions:prefixes",
+   "aggregation": "mean",
+   "provenance": "R_K(L)-R_K(F)"
+  },
+  "5": {
+   "value": 380.8546364957107,
+   "metric": "k_gap_floor_multiple",
+   "population": "positions:prefixes",
+   "aggregation": "ratio",
+   "provenance": ""
+  },
+  "7": {
+   "value": 0.28596522968555327,
+   "metric": "interaction_abs_k",
+   "population": "positions:prefixes",
+   "aggregation": "mean",
+   "provenance": ""
+  },
+  "8": {
+   "value": 404.66800389429704,
+   "metric": "iso_k_gap_floor_multiple_io",
+   "population": "positions:prefixes",
+   "aggregation": "ratio",
+   "provenance": ""
+  },
+  "9": {
+   "value": -404.66800389429704,
+   "metric": "iso_k_gap_floor_multiple_attn",
+   "population": "positions:prefixes",
+   "aggregation": "ratio",
+   "provenance": ""
+  },
+  "refuted:recovery_fraction_gap_x_floored": {
+   "value": 0.4137516336979158,
+   "metric": "recovery_fraction_gap_x_floored",
+   "population": "positions:corpus",
+   "aggregation": "mean",
+   "provenance": "emitted only past the 5 f_X floor"
+  }
+ },
+ "contrasts": {},
+ "X": {
+  "B": 0.8337971972407241,
+  "C": 0.2486450017137274,
+  "F": 0.5205010927831475,
+  "L": 0.27839341592193034,
+  "Q": 0.8976451190236041
+ },
+ "K": {
+  "B": 0.3377161826658416,
+  "C": 0.16180113550153713,
+  "F": 0.2638134590200254,
+  "L": 0.18539827227986805,
+  "Q": 0.4210343677484995
+ },
+ "f_X": 3.656201195156861e-05,
+ "f_K": 0.00020589269297510704,
+ "per_byte": {
+  "F": {
+   "gib_added": 0.3905,
+   "U_X_nat_per_gib": 0.8022848240125328,
+   "U_K_nat_per_gib": 0.18924918883649597
+  },
+  "L": {
+   "gib_added": 1.2888,
+   "U_X_nat_per_gib": 0.43094907778741137,
+   "U_K_nat_per_gib": 0.11818656123564222
+  }
+ },
+ "provenance": {
+  "code_commit": "91d6d23",
+  "tree_dirty": true,
+  "receipt_sha256": {
+   "B": "b1d8312abf618571fda782ffc571eb04ddbd62500353f147e80a7eeb0599bf55",
+   "C": "63d52d0071cfbe31c21efe255867e0be5684556410c6cfc3a0f95c33a55f423c",
+   "F": "2f0830bfd4a2c5635f64f6f21f25df407ab4898191805bbe003bb244b2118611",
+   "L": "c56e4b82526bc14bff552cdabd63035966686a50ff41d3da8dbe248f84529c5e",
+   "Q": "3a8339d38a6cd820d3ff9d64cade5c11e2cbdccbe0f9cff91d1fde8194b0590a"
+  }
+ }
+}

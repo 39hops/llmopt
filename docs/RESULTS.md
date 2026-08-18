@@ -34112,3 +34112,107 @@ thirds; interactive -> stop, no singleton labels. D/E io
 attribution stays QUEUED behind this rung (the 0.59 GiB io
 repair is the byte-efficient one and its embed-v-head split
 still matters).
+## VERDICT QWEN-ATTN-ATTRIB-1: L-DOMINANT — but the two attention families are REDUNDANT (recoveries sum to 1.49, both interaction bars miss), per-byte value inverts the dominance (F 1.9x L), and the iso-rate arm confirms io beats attention at matched budget on BOTH metrics (2026-08-18, mac)
+
+All eleven bars adjudicated mechanically
+(logs/qwenattrib/attrib_verdict.txt, producer 91d6d23; the
+provenance dirty=True flag's dirt was auto-generated docs —
+README honesty-ledger, figures.json, receipts lock — committed
+at fda0bfd; both scratch producers were committed and clean).
+Recompositions composed on the 3080 (compose receipts,
+self-qualified through the full qartifact ladder, bytes added
+exactly as registered: F +0.3905, L +1.2888, Q +0.5858 GiB);
+scored on the Mac CPU reference leg by the frozen scorer.
+
+MEASURED (X excess CE corpus, K forward KL prefixes, live vocab;
+frozen B/C receipts reused as registered):
+
+  arm  X        K        R_X     R_K     U_X nat/GiB  U_K
+  F    0.52050  0.26381  0.536   0.420   0.802        0.189
+  L    0.27839  0.18540  0.949   0.866   0.431        0.118
+  Q    0.89765  0.42103  (iso-rate arm v B 0.83380 / 0.33772)
+
+BARS: 1 bracket-clean FIRE; 2-5 L-dominance all FIRE (gaps
+0.4138 X / 0.4458 K, floor multiples 6622 / 381); 6/7
+near-additive both NO-FIRE (I_X 0.485, I_K 0.286 v 0.2); 8/10
+IO-WINS-ISO both FIRE (floor multiples 405 K / 1746 X); 9/11
+mirrors NO-FIRE. RESOLUTION: L-DOMINANT (registered rule).
+REGISTERED-PRIOR(i): NOT-REFUTED.
+
+THE THREE READINGS, in registered order:
+(1) L-DOMINANT: linear-attention precision carries the larger
+total share of the B->C recovery — R_X(L) = 0.949: L ALONE
+recovers 95% of the corpus excess-CE gap; F alone 54%.
+(2) REDUNDANT, not additive: single-family recoveries sum to
+1.49 (X) / 1.29 (K), so the joint repair (= C, normalized 1.0)
+is SUB-additive — either sequence-mixing system at S16
+substitutes for most of the other's damage. L-dominance is a
+RANKING AT THIS GRAIN, never a byte-allocation decomposition —
+any additive attribution language is refuted by bars 6/7. The
+next-grain ladder books BLOCKED-BY-INTERACTIVE (auditor-named):
+the registered L-dominant branch prescribes a qkv/z/out split,
+which is exactly the singleton-label class the interactive
+clause forbids; the more specific rule governs and no split
+fires. The early/mid/late depth-band split is an aggregate, not
+a singleton label, and is the one branch that arguably survives
+— it would need its own registration. Prior (iii)
+near-additivity MISSES (honest miss, weak/medium confidence).
+(3) ISO-RATE: at matched byte budget from the same base A
+(added bytes within 1.05%: +0.592 GiB io v +0.586 GiB
+attention-qkv; artifact TOTALS within 0.087%), io wins BOTH
+metrics
+(X 0.834 v 0.898, K 0.338 v 0.421) — the causal confirmation of
+the per-byte inversion the POSTHOC-DIAGNOSIS derived, now
+measured at matched budget rather than inferred from unequal
+steps. Prior (iv) fires, with the X side decisive rather than
+the registered tie-or-io.
+Per-byte ordering among the measured surfaces (descriptive, one
+operating point each): on X, F 0.802 > L 0.431 > io 0.384
+nat/GiB — full-attention is the most CE-efficient byte in the
+model, 2x everything else; on K, io 0.227 > F 0.189 > L 0.118 —
+io stays the most KL-efficient. The iso-rate arm does not
+contradict F's X lead: Q spent its budget on linear-attn qkv
+(L-class bytes), not F-class bytes. The natural follow-up artifact class is B+F
+(7.48 GiB, X 0.520, 54% of the recovery for 23% of the
+attention bytes) and the natural next iso-rate question is
+F-class bytes v io from base A — banked, not registered here.
+Prior (ii) as registered ("F beats L per byte on U_X")
+fires descriptively: 0.802 v 0.431, 1.9x.
+
+FENCES: point readings on 355/92 positions, no sampling-
+uncertainty fence (named); all claims teacher-distribution
+fidelity, never capability; Q-v-B is an iso-rate arm contrast
+and no MODEL-1 tree branch fired or re-fired; per-byte ratios
+are single-operating-point readings on a presumably concave
+curve; margin-flip strata carry the small-n fence in the
+receipts. Floor multiples are NUMERICAL-SENSITIVITY multiples,
+never significance statements.
+DISCLOSURES (prereg-auditor adoptions): (a) the adjudicator's
+f_K was a GLOBAL max over all five receipts rather than the
+registered per-contrast max — conservative on the fired
+dominance bars (bar 5 at the registered per-contrast floor is
+2972.5, stronger than the booked 380.9) and anti-conservative
+only on bar 1's bracket width, which the auditor re-ran with
+the tighter floor and it still fires clean; adjudicator fixed
+to per-contrast for future rungs, these receipts stand as
+emitted. (b) score_{F,L,Q} carry scorer commit 91d6d23 v the
+frozen A/B/C rows' 232737a — the interval's two touches are
+provenance-only (derived device_actual; arm allow-list), zero
+change to any scored quantity, so no cross-version comparison
+exists. (c) The booking commit force-adds the F/L/Q score
+receipts, compose receipts, chain files (artifact_digest_{F,L,Q}.txt — with the
+27B artifact dirs deleted these chains are the sole surviving
+byte-identity evidence), and adjudication artifacts (seedslad
+pattern; they are the whole quantitative record). (d) The
+frozen B/C rows carry the pre-derivation device_actual literal
+("cpu", scorer 232737a) — honest but asserted, not derived; the
+F/L/Q rows derive it from resident parameters. (e) The
+cross-machine transport (composed on the 3080, scored on the
+Mac) is chain-BOUND: the receipt-auditor recomputed all six
+chain shas locally and matched every compose receipt field;
+scoring itself is Mac-cpu-only throughout, so no cross-device
+comparison exists anywhere in the evidence chain. Auditors:
+prereg-auditor NO BLOCKERS (six should-fixes adopted here or in
+code); receipt-auditor NO BLOCKERS (four should-fixes adopted:
+chain sha now a scorer receipt field, recomposer alt-root
+isolation, disclosures (c)/(d)).

@@ -2364,3 +2364,17 @@ regime tag on every bullet is the fence.
   fence; teacher-distribution fidelity wording only; resolution of
   the alarm fork is amendment-gated. ([VERDICT
   QWEN-MODEL1-TREE](RESULTS.md#L33855 "id:2026-08-17-verdict-qwen-model1-tree-the-tree").)
+- [SINGLE-SEED] [TEACHER-FORCED] Attention attribution inside the
+  Qwen artifact ladder: linear attention carries the larger total
+  share of the B-to-C recovery (R_X 0.949 v full attention's 0.536)
+  but the two families are heavily REDUNDANT — single-family
+  recoveries sum to 1.49, both near-additive bars miss, so the
+  next-grain singleton split is BLOCKED-BY-INTERACTIVE; per byte the
+  ordering inverts (full attention 0.802 nat X/GiB, 1.9x linear's
+  0.431), and the discretion-free iso-rate arm (A + in_proj_qkv,
+  matched to B's io budget within 1.05%) confirms io beats attention
+  spend on BOTH metrics at matched bytes. Fences: point readings on
+  355/92 positions, no sampling fence; teacher-distribution fidelity
+  wording only; floors are numerical-sensitivity multiples, never
+  significance. ([VERDICT
+  QWEN-ATTN-ATTRIB-1](RESULTS.md#L34115 "id:2026-08-18-verdict-qwen-attn-attrib-1-l").)
