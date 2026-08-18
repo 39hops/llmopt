@@ -200,3 +200,12 @@ def test_prereg_document_validates():
     from llmopt.lab.prereg import load
     doc = load(os.path.join(REPO, "docs/preregs/qwen-model1-tree.json"))
     assert len(doc["bars"]) == 12
+
+
+def test_arm_dependent_f_k_does_not_invalidate():
+    rc = {a: _receipt(0.5, 0.4) for a in "ABC"}
+    rc["A"]["f_K"] = 2.6e-4
+    rc["B"]["f_K"] = 5.3e-5
+    obs = tr.build_observations(rc)
+    assert obs["measurement_valid"] is True
+    assert obs["f_K"] == pytest.approx(2.6e-4)

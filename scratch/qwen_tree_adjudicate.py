@@ -65,7 +65,11 @@ def build_observations(rc: dict) -> dict:
     for a in ("B", "C"):
         if rc[a]["teacher"] != base:
             valid, vreason = False, f"teacher identity differs in arm {a}"
-    for k in ("ce_teacher_nats", "f_X", "f_K", "v_live"):
+    # ce_teacher/f_X are teacher-record-only quantities and must agree
+    # bit-for-bit across receipts; f_K is arm-DEPENDENT by construction
+    # (K's perturbation response runs through each arm's logits), so it
+    # is consumed as max-over-arms, never equality-checked.
+    for k in ("ce_teacher_nats", "f_X", "v_live"):
         vals = {a: rc[a][k] for a in rc}
         if len(set(vals.values())) != 1:
             valid, vreason = False, f"{k} differs across receipts {vals}"
