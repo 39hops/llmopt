@@ -34337,3 +34337,196 @@ residency); the "F-class bytes v io iso-rate from base A" bank
 is arithmetically impossible at matched bytes (all of F = +0.39
 GiB v io's +0.59) — an F-based iso arm would need discretionary
 padding and is retired in that form.
+## PRE-REG QWEN-IO-ATTRIB-1: the A->B io repair decomposed — D (embed only) v E (head only), an exactly iso-byte 2x2, registered fresh post-MODEL-1 (2026-08-18, mac)
+
+A NEW registration. The old conditional T1 D/E rung did NOT fire
+(MODEL-1 booked INSTRUMENT-ALARM; no tree branch fired) — this
+rung attributes the measured A->B repair as its own question and
+reopens nothing in the frozen tree.
+
+ARMS (key-level byte recompositions, recomposer machinery as
+ATTN-ATTRIB-1): D = A + B's S16 embed_tokens payload; E = A + B's
+S16 lm_head payload. A and B re-use frozen receipts. EXACT
+iso-bytes by construction: embed and lm_head share shape
+[248320, 5120], so D and E each add +0.2960 GiB (the w4->s16
+payload delta), and D+E = B's +0.5920.
+QUANTITIES: X/K per arm (frozen scorer, Mac CPU only); recovery
+fractions on the A->B axis rec_X(Y) = (X_A - X_Y)/(X_A - X_B)
+and rec_K analogue, RAW AND UNCLAMPED; per-byte U (equal
+denominators — the per-byte ordering IS the recovery ordering
+here, stated to keep wording honest); interaction
+I_X = rec_X(D) + rec_X(E) - 1, I_K analogue. Floors f_X, f_K
+per-contrast max as corrected in the attrib adjudicator.
+BARS (machine projection docs/preregs/qwen-io-attrib-1.json,
+attn-attrib pattern): bracket-sanity (D/E X and K inside
+[B - 5f, A + 5f]); D-DOM-X/K gaps rec(D) - rec(E) above 0 with
+|X_D - X_E| and |K_D - K_E| floor bars; NEAR-ADDITIVE |I| < 0.2
+both metrics. Resolution rule frozen as in ATTN-ATTRIB-1
+(D-dominance iff all four dominance bars fire; E-dominance iff
+both gaps below zero past floors; else MIXED/UNRESOLVED).
+REGISTERED PRIOR (house): D > E — the STAR-PROFILE directional
+prior (input embedding fragile, output head cheap) carries as a
+PREDICTION, weak/medium (ternary house crystals, not W4 27B);
+near-additive I (weak — ATTN-ATTRIB measured heavy REDUNDANCY
+between attention families, so a redundant io pair would rhyme;
+genuinely uncertain). REFUTED_IF: the D>E prior is refuted if
+rec_X(E) exceeds rec_X(D) past the 5 f_X floor (predicate on the
+floored gap as in ATTN-ATTRIB-1); gap inside floor books
+UNADJUDICATED.
+FENCES: attribution of the A->B step only, never a MODEL-1
+branch; point readings 355/92 positions, no sampling fence;
+teacher-distribution wording; base A is outside the registered
+fidelity regime — D/E-v-A contrasts are arm contrasts.
+RECEIPTS: logs/qwenattrib/compose_{D,E}.json,
+logs/qwenmodel1/score_{D,E}.json, logs/qwenattrib/
+ioattrib_observations.json, ioattrib_verdict.txt.
+COST: 2 compose + 2 transfers + 2 scores (~40 min total). Runs
+on overnight GO, not before.
+
+## PRE-REG QWEN-LBAND-1: depth-band split of the linear-attention repair, interaction-aware six-arm design — band value both from base B and conditional on the cheap F repair (2026-08-18, mac)
+
+The one next-grain branch the ATTN-ATTRIB interactive clause
+permits (depth bands are aggregates, not singleton labels).
+Design incorporates the measured F/L redundancy: a B-only band
+split could be confounded by F remaining W4, so every band runs
+from BOTH bases.
+
+BANDS, frozen now: the 48 linear-attn layers sorted ascending,
+split 16/16/16 — early = layers 0-20, mid = 21-41, late = 42-62
+(the exact vendor layer indices; each band's in_proj_qkv/
+in_proj_z/out_proj promoted together). EXACTLY equal bytes:
++0.4296 GiB per band.
+ARMS (6): BLe, BLm, BLl (base B + band from C); FLe, FLm, FLl
+(base F + band from C — F is already-scored arm F, base for the
+conditional leg). B, F, C, L re-use frozen receipts.
+QUANTITIES: X/K per arm; band recovery on the B->C axis
+rec_X(arm) = (X_B - X_arm)/(X_B - X_C); marginal band value
+conditional on F: dX(band|F) = X_F - X_{FLband} v
+dX(band|B) = X_B - X_{BLband}; per-byte U (equal denominators
+across bands); floors per-contrast.
+BARS (docs/preregs/qwen-lband-1.json): BAND-STRUCTURE — the
+best-band-minus-second-band gap on X from base B above 5 f_X
+(fires = depth structure real; below = flat at this grain);
+same from base F; CONDITIONING — for the best base-B band,
+|dX(band|F) - dX(band|B)| above 5 f_X (fires = the F repair
+changes what the band buys, i.e. cross-family interaction is
+depth-localized); K conjunct-analogues as separate bars.
+REGISTERED PRIOR (house, weak throughout): flat-to-mild depth
+structure (the family probe found codec homogeneity across
+depth {2,12,22,33,42}); CONDITIONING fires (the 1.49 redundancy
+has to live somewhere, and depth-localized overlap is the
+simplest home). REFUTED_IF: the flatness prior is refuted if
+BAND-STRUCTURE from base B fires with best band exceeding
+second by more than 0.2 in rec_X units past the floor.
+FENCES: as IO-ATTRIB-1 (attribution, no tree branch, no
+sampling fence, teacher-distribution wording); band definitions
+never re-cut after a score exists.
+RECEIPTS: logs/qwenattrib/compose_{BLe,BLm,BLl,FLe,FLm,FLl}.json,
+logs/qwenmodel1/score_*.json same names,
+logs/qwenattrib/lband_observations.json, lband_verdict.txt.
+COST: 6 compose + transfers + 6 scores (~2 h). Overnight GO only.
+
+## PRE-REG QWEN-CAPACITY-METER-1: the banked capacity meter finally gets its 27B cell — M per family/projection as an OUTLIER-PRESSURE DIAGNOSTIC, retrodiction against the measured codec/value pattern; explicitly NOT an allocator (2026-08-18, mac)
+
+Adapts the 2026-07-29 capacity-meter pre-reg to the pinned
+vendor Qwen3.8-27B. TWO corrections carried in from review
+(GPT seat, verified in-house): the existing MODELS=qwen hook
+loads Qwen2.5-0.5B-Instruct, NOT the target (scratch/
+capacity_meter.py:68-71) — a NEW 27B cell reads the pinned
+vendor shards (revision 1d4bf0f2, shard-index sha asserted)
+streaming on the Mac CPU; and M = span_bits - code_entropy is a
+DISTRIBUTIONAL/CODEBOOK-PRESSURE dial, never a bitrate knee or
+functional allocator — MODEL-1's whole arc measured weight-space
+homogeneity coexisting with functional heterogeneity, so M's
+job here is RETRODICTION: does outlier pressure line up with
+the measured codec/value pattern (io most K-valuable per byte,
+F most X-valuable, W4 damage bulk/large-margin), or does it read
+flat where function is structured (the informative failure)?
+GRANULARITY: M per family x projection (embed, lm_head, ffn
+gate/up/down, full-attn q/k/v/o, linear-attn qkv/z/out), per
+depth-third for the linear family — never one whole-model
+scalar. Sampled rows per tensor with a string seed; sigma/2
+step as registered in the original.
+PRIOR (house, medium): M reads roughly FLAT across families
+(within ~0.5 bits) — consistent with the family probe's
+codec-homogeneity — i.e. the meter FAILS to retrodict the
+functional ordering, which books as evidence that
+distributional dials cannot allocate precision in this model
+class. REFUTED_IF: the flatness prior is refuted if family M
+spread exceeds 1.0 bits AND the ordering matches the measured
+per-byte functional ordering (F-class highest) — then M is a
+live allocator candidate for MODEL-2 (as ONE input, per the
+correction, never alone).
+FENCES: desk observation; weight-space quantity (the never-
+score-weights-by-weight-distance law caps every reading —
+retrodiction success would make M a candidate INPUT, never a
+verdict); no MODEL-2 rate table may cite M alone.
+RECEIPTS: logs/qwencapacity/meter27b.json. COST: Mac CPU
+streaming pass over sampled tensors, ~1-2 h, no GPU. May run
+in the daytime window (desk class).
+
+## PRE-REG QWEN-CAL-FEAS-0: calibration repair, feasibility + pricing ONLY — a fresh non-overlapping calibration corpus, per-tensor scale/objective frozen, MODEL-1 held out untouched; NO run without a separate GO (2026-08-18, mac)
+
+Registered corrections first (GPT seat, verified): the July
+calibration lineage contains NO repair receipt — CALIBRATION
+PROBE R1 (RESULTS L7943) is a DIAGNOSTIC (flips/token predicts
+snap robustness, Spearman 0.883), and the min ||xW - xWq||
+projection was "banked, not built" (L7736). No prior claim of
+having repaired this damage class exists, and none is made here.
+DESIGN TO BE PRICED (this pre-reg fires no model run): (1) a
+NEW calibration corpus, string-seeded, exclude=-guarded against
+every frozen MODEL-1 prompt/prefix/corpus string — calibrating
+on the frozen positions and rescoring them is test-set
+calibration and is FORBIDDEN here by construction; (2)
+objective: per-tensor block-scale adjustment minimizing
+||xW - xWq||^2 over calibration activations, sample count and
+tensor set frozen before any run; (3) teacher intermediate
+activations are NOT in the locked logit records — the vendor
+activation pass is a real cost, priced now: one streaming
+teacher-class pass over the calibration corpus at ~84 s per
+356-token forward (measured teacher wall), so a 50k-token
+corpus ~= 3.3 h Mac CPU, activations ~2 GB per layer-family
+capture plan; (4) evaluation: the frozen MODEL-1 X/K on the
+untouched eval, scored by the frozen scorer — the calibrated
+artifact is a NEW arm with its own chain and compose-class
+receipt. BARS deferred to the run pre-reg (this entry is
+feasibility; the run registers its own bars + priors on a
+separate GO). FENCES: any calibrated artifact is a new
+compression act (registered rate-table change class);
+teacher-distribution wording; no MODEL-1 tree branch.
+
+## PRE-REG QWEN-RK-CENSUS-0: the 2-bit-as-router kill test, priced and pinned — compressed A v PINNED VENDOR on teacher-forced prefixes, coupled FFN channels, R_k mass-captured plus reconstruction error v oracle and random (2026-08-18, mac)
+
+The RIFF-LEDGER bank (2-bit-as-router + its same-day correction)
+promoted to a registered census. PINNED DESIGN: (1) subject pair
+= artifact A's FFN channel activations v the PINNED VENDOR
+teacher's (revision 1d4bf0f2), never A-v-CPU-reference (that
+comparison is a backend parity test — the correction governs);
+(2) unit = the coupled intermediate channel i (gate_proj row i,
+up_proj row i, down_proj column i), hot signal z_i =
+act(W_gate_i h) * (W_up_i h); (3) positions = the frozen corpus
++ prefix token lists, teacher-forced (no new prompts); (4)
+quantities per layer-band: Jaccard overlap@k of top-|z| sets,
+R_k = teacher-mass captured by A's top-k (the decisive number),
+AND the reconstruction error of the teacher FFN OUTPUT using
+A-selected channels v teacher-oracle-selected v random-k (GPT
+extension, adopted at registration); (5) k ladder frozen: {64,
+256, 1024, 4096} of 17,408 channels.
+PRICED HONESTLY: vendor activations are NOT in the locked logit
+records — one instrumented streaming vendor pass over corpus +
+prefixes (~7 forwards, ~10-15 min Mac CPU) with per-layer z
+capture at sampled layers (frozen sample: linear-attn layers
+{0, 21, 42}, full-attn {11, 32, 55} — six layers, ~2.9 GB
+capture at fp16); one matching instrumented A pass (CPU
+reference, same layers). Total ~40 min Mac, no GPU.
+PRIOR (house, medium): R_k high (>= 0.7 at k=1024) — rung-3's
+backend KL and the monotone repair ladder both say A's hidden
+states track the reference closely, and hot-channel identity is
+a coarser statistic than logits. Low R_k kills the
+resident-draft/hybrid program for free. REFUTED_IF: the prior
+is refuted if R_k at k=1024 reads below 0.5 on any sampled
+layer band (raw counts quoted; single-seed fence).
+FENCES: weight/activation-space census — no capability claim;
+frozen positions only; desk class. RECEIPTS:
+logs/qwenrouter/rk_census.json. May run in the daytime window
+(CPU only) or overnight.

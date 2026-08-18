@@ -1,0 +1,39 @@
+{
+  "name": "QWEN-IO-ATTRIB-1",
+  "note": "Mechanical projection of PRE-REG QWEN-IO-ATTRIB-1 (fresh post-MODEL-1 registration; the frozen tree's conditional T1 rung did NOT fire and is not reopened). Recovery fractions on the A->B axis; D and E are exactly iso-byte (+0.2960 GiB each). Resolution rule frozen in the prose entry (D-dominance iff bars 2-5 all fire; E-dominance iff both gaps below zero with floors firing; else MIXED/UNRESOLVED). Floors per-contrast max as in the corrected attrib adjudicator.",
+  "results_id": "2026-08-18-pre-reg-qwen-io-attrib-1",
+  "registered": "2026-08-18",
+  "machine": "mac",
+  "arms": {
+    "D": {
+      "description": "A + B's S16 embed_tokens payload (+0.2960 GiB)"
+    },
+    "E": {
+      "description": "A + B's S16 lm_head payload (+0.2960 GiB)"
+    }
+  },
+  "bars": [
+    {"id": 1, "name": "SANITY-BRACKET-CLEAN", "metric": "bracket_violation_count", "population": "arms:recomposed", "aggregation": "count", "direction": "below", "value": 0.5, "arms": ["D", "E"], "description": "zero of {X_D, X_E, K_D, K_E} outside [B_value - 5*floor, A_value + 5*floor]"},
+    {"id": 2, "name": "D-DOM-X", "metric": "recovery_fraction_gap_x", "population": "positions:corpus", "aggregation": "mean", "direction": "above", "value": 0.0, "arms": ["D", "E"], "description": "rec_X(D) - rec_X(E) > 0 on the A->B axis"},
+    {"id": 3, "name": "D-DOM-X-FLOOR", "metric": "x_gap_floor_multiple", "population": "positions:corpus", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["D", "E"], "description": "|X_D - X_E| / f_X > 5"},
+    {"id": 4, "name": "D-DOM-K", "metric": "recovery_fraction_gap_k", "population": "positions:prefixes", "aggregation": "mean", "direction": "above", "value": 0.0, "arms": ["D", "E"], "description": "rec_K(D) - rec_K(E) > 0"},
+    {"id": 5, "name": "D-DOM-K-FLOOR", "metric": "k_gap_floor_multiple", "population": "positions:prefixes", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["D", "E"], "description": "|K_D - K_E| / f_K > 5"},
+    {"id": 6, "name": "NEAR-ADDITIVE-X", "metric": "interaction_abs_x", "population": "positions:corpus", "aggregation": "mean", "direction": "below", "value": 0.2, "arms": ["D", "E"], "description": "|rec_X(D) + rec_X(E) - 1| < 0.2"},
+    {"id": 7, "name": "NEAR-ADDITIVE-K", "metric": "interaction_abs_k", "population": "positions:prefixes", "aggregation": "mean", "direction": "below", "value": 0.2, "arms": ["D", "E"], "description": "|rec_K(D) + rec_K(E) - 1| < 0.2"}
+  ],
+  "receipts": [
+    "logs/qwenattrib/compose_D.json",
+    "logs/qwenattrib/compose_E.json",
+    "logs/qwenmodel1/score_D.json",
+    "logs/qwenmodel1/score_E.json",
+    "logs/qwenattrib/ioattrib_observations.json",
+    "logs/qwenattrib/ioattrib_verdict.txt"
+  ],
+  "refuted_if": "The registered D>E prior (STAR-PROFILE directional transport: embed repair beats head repair) is REFUTED if rec_X(E) exceeds rec_X(D) past the 5 f_X floor (bar 2 below zero while bar 3 fires); a gap inside the floor books UNADJUDICATED. A bar-1 bracket violation books INSTRUMENT-ALARM for the recomposer and no attribution claim exists.",
+  "refuted_if_predicate": {
+    "measurement": "refuted:recovery_fraction_gap_x_floored",
+    "direction": "below",
+    "value": 0.0
+  },
+  "registered_prior": "House: D > E in recovery (weak/medium — STAR-PROFILE ternary crystal anatomy transported as a prediction, not evidence: input embedding fragile, output head cheap); near-additive |I| < 0.2 (weak — the attention families measured heavily redundant, so io redundancy would rhyme; genuinely uncertain)."
+}

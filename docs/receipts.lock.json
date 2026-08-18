@@ -448,9 +448,41 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwenattrib/compose_BLe.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/compose_BLl.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/compose_BLm.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/compose_D.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/compose_E.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwenattrib/compose_F.json": {
    "exists": true,
    "pending": true,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/compose_FLe.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/compose_FLl.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/compose_FLm.json": {
+   "exists": false,
    "source": "prereg"
   },
   "logs/qwenattrib/compose_L.json": {
@@ -462,6 +494,26 @@
    "exists": true,
    "pending": true,
    "source": "prereg"
+  },
+  "logs/qwenattrib/ioattrib_observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/ioattrib_verdict.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/lband_observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/lband_verdict.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwencapacity/meter27b.json": {
+   "exists": false,
+   "source": "results"
   },
   "logs/qwencuda/gen_qm1.json": {
    "bytes": 1430,
@@ -578,14 +630,46 @@
    "pending": true,
    "source": "prereg"
   },
+  "logs/qwenmodel1/score_BLe.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenmodel1/score_BLl.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenmodel1/score_BLm.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwenmodel1/score_C.json": {
    "exists": true,
    "pending": true,
    "source": "prereg"
   },
+  "logs/qwenmodel1/score_D.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenmodel1/score_E.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwenmodel1/score_F.json": {
    "exists": true,
    "pending": true,
+   "source": "prereg"
+  },
+  "logs/qwenmodel1/score_FLe.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenmodel1/score_FLl.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenmodel1/score_FLm.json": {
+   "exists": false,
    "source": "prereg"
   },
   "logs/qwenmodel1/score_L.json": {
@@ -644,6 +728,10 @@
    "sha256": "67633085fabc592e50141ff386ab7b166685fd647ef8c9fcee2af99bd80eaba7",
    "source": "results",
    "tracked": true
+  },
+  "logs/qwenrouter/rk_census.json": {
+   "exists": false,
+   "source": "results"
   },
   "logs/qwenruntime/forward1_A.log": {
    "bytes": 973,

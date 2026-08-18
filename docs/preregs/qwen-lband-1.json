@@ -1,0 +1,46 @@
+{
+  "name": "QWEN-LBAND-1",
+  "note": "Mechanical projection of PRE-REG QWEN-LBAND-1. Bands frozen: linear-attn layers ascending split 16/16/16 -> early = vendor layers 0-20, mid = 21-41, late = 42-62; each +0.4296 GiB exactly. Six arms: bands from base B and from base F (F/L-redundancy-aware conditional leg). Recovery on the B->C axis. best/second = the two largest band recoveries from that base. Floors per-contrast max.",
+  "results_id": "2026-08-18-pre-reg-qwen-lband-1-depth",
+  "registered": "2026-08-18",
+  "machine": "mac",
+  "arms": {
+    "BLe": {"description": "B + C's S16 linear-attn payload, layers 0-20"},
+    "BLm": {"description": "B + C's S16 linear-attn payload, layers 21-41"},
+    "BLl": {"description": "B + C's S16 linear-attn payload, layers 42-62"},
+    "FLe": {"description": "F + C's S16 linear-attn payload, layers 0-20"},
+    "FLm": {"description": "F + C's S16 linear-attn payload, layers 21-41"},
+    "FLl": {"description": "F + C's S16 linear-attn payload, layers 42-62"}
+  },
+  "bars": [
+    {"id": 1, "name": "SANITY-BRACKET-CLEAN", "metric": "bracket_violation_count", "population": "arms:recomposed", "aggregation": "count", "direction": "below", "value": 0.5, "arms": ["BLe", "BLm", "BLl", "FLe", "FLm", "FLl"], "description": "zero of the six arms' X/K outside [C_value - 5*floor, base_value + 5*floor] (base = B or F per arm)"},
+    {"id": 2, "name": "BAND-STRUCTURE-B-X", "metric": "band_gap_floor_multiple_x_baseB", "population": "positions:corpus", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["BLe", "BLm", "BLl"], "description": "(best band X recovery - second band) / f_X > 5 from base B: depth structure real"},
+    {"id": 3, "name": "BAND-STRUCTURE-F-X", "metric": "band_gap_floor_multiple_x_baseF", "population": "positions:corpus", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["FLe", "FLm", "FLl"], "description": "same from base F"},
+    {"id": 4, "name": "BAND-STRUCTURE-B-K", "metric": "band_gap_floor_multiple_k_baseB", "population": "positions:prefixes", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["BLe", "BLm", "BLl"], "description": "K analogue from base B"},
+    {"id": 5, "name": "CONDITIONING-X", "metric": "conditioning_gap_floor_multiple_x", "population": "positions:corpus", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["BLe", "BLm", "BLl", "FLe", "FLm", "FLl"], "description": "|dX(best B-band | F) - dX(same band | B)| / f_X > 5: the F repair changes what the band buys — cross-family interaction is depth-localized"},
+    {"id": 6, "name": "CONDITIONING-K", "metric": "conditioning_gap_floor_multiple_k", "population": "positions:prefixes", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["BLe", "BLm", "BLl", "FLe", "FLm", "FLl"], "description": "K analogue"}
+  ],
+  "receipts": [
+    "logs/qwenattrib/compose_BLe.json",
+    "logs/qwenattrib/compose_BLm.json",
+    "logs/qwenattrib/compose_BLl.json",
+    "logs/qwenattrib/compose_FLe.json",
+    "logs/qwenattrib/compose_FLm.json",
+    "logs/qwenattrib/compose_FLl.json",
+    "logs/qwenmodel1/score_BLe.json",
+    "logs/qwenmodel1/score_BLm.json",
+    "logs/qwenmodel1/score_BLl.json",
+    "logs/qwenmodel1/score_FLe.json",
+    "logs/qwenmodel1/score_FLm.json",
+    "logs/qwenmodel1/score_FLl.json",
+    "logs/qwenattrib/lband_observations.json",
+    "logs/qwenattrib/lband_verdict.txt"
+  ],
+  "refuted_if": "The flatness prior is refuted if BAND-STRUCTURE-B-X fires with the best band exceeding the second by more than 0.2 in rec_X units past the floor (predicate below reads the rec-unit gap; a fire under 0.2 rec units books structure-without-refutation).",
+  "refuted_if_predicate": {
+    "measurement": "refuted:band_gap_rec_units_baseB",
+    "direction": "above",
+    "value": 0.2
+  },
+  "registered_prior": "House, weak throughout: flat-to-mild depth structure on X from base B (family probe measured codec homogeneity across depth); CONDITIONING-X fires (the measured 1.49 F/L redundancy has to live somewhere, and depth-localized overlap is the simplest home)."
+}
