@@ -33691,3 +33691,52 @@ still refused at io (S16 GPU path unbuilt).
 Receipts (explicit full paths, force-added BEFORE this lock
 regen): logs/qwencuda/rung4_forward1.json,
 logs/qwencuda/rung4_qm700.json.
+
+## OBSERVATION QWEN-CUDA-S16-B: artifact B runs (7.8 tok/s) — and the long-horizon failure has a PRECISION GRADIENT: A tight-loops, B computes/self-detects/restart-cycles (2026-08-17, 3080/WSL)
+
+S16 io path built and gated: S16Rows adopted into
+llmopt/lab/qcodec_fast with the full W4Rows slice battery as
+parity fixtures (26 tests green; the HIGH-nibble-equals-even
+convention is the specific bug the fixtures exist to catch); s16
+fused GEMV kernel with in-kernel bit-construction scales, 12-case
+in-process gate (3 shapes x random/exp-0/127/254) at rel <= 1e-5 v
+float64 on canonical dec_s16 — measured pass before B was touched.
+io dispatch refuses any codec outside {w4, s16} (the
+reinterpretation refusal from the B incident stands).
+
+MEASURED (logs/qwencuda/rung4_B_forward1.json): B (7.093 GiB
+payload; layers w4, io S16@4) FITS — build 58s, 1.90 GiB free
+after residency, forward1 2.96s, 32 coherent greedy tokens at
+0.129 s/tok = 7.76 tok/s. The preflight proved it, per AMENDMENT
+-SCOPE, not the subtraction. Top-5 differs from A on the same
+prompt (B: 'The'/'Thinking'/'Hmm'/'</think>'/'This', top-1 margin
+4.07 v A's 'The'/'Thinking'/'User'/'Let'/'用户' at 3.33) — io
+precision moves the distribution even at 15 tokens.
+
+THE RIDER (logs/qwencuda/rung4_B_qm700.json, rung4_B_qm1400.json;
+descriptive, n=1 prompt, greedy, gates nothing): on the identical
+QM prompt where A degrades into a tight 3-line repetition cycle by
+~400 tokens, B EXECUTES THE ALGEBRA: new_a = (1+e^{i pi/3})/2,
+polar expansion, magnitude arithmetic — then drops the /4, gets
+|new_a|^2 = 2.998, NOTICES ("that's greater than 1, which doesn't
+make sense for a probability"), and restarts the derivation — a
+long-period reconsider-cycle rather than A's short loop. Neither
+artifact reaches P(0)=3/4 in 1400 greedy tokens. Reading, fenced
+as qualitative: the failure severity ORDERS WITH IO PRECISION
+(A's W4 io: immediate attractor; B's S16 io: computation with
+self-monitoring that fails at arithmetic retention) — the shape
+the tree prior T1 predicted on semantic-role grounds. The teacher
+under identical prompting remains the registered adjudicator; a
+healthy model may also fail this under greedy.
+
+FENCES: single prompt family, greedy, no repetition penalty, n=1
+per cell; chat reads never gate; cross-artifact comparison here is
+within-device, within-driver, same commit — but still descriptive
+color until MODEL-1 scores it. C untested (residency: 8.773 GiB
+payload v 8.86 free is not a plan; fused residency arithmetic for
+C books before any attempt).
+
+Receipts (explicit full paths, force-added before lock regen):
+logs/qwencuda/rung4_B_forward1.json,
+logs/qwencuda/rung4_B_qm700.json,
+logs/qwencuda/rung4_B_qm1400.json.

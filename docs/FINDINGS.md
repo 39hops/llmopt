@@ -2331,3 +2331,12 @@ regime tag on every bullet is the fence.
   both CUDA implementations, so the candidate long-horizon failure
   belongs to the artifact, not a backend. ([OBSERVATION
   QWEN-CUDA-RUNG4](RESULTS.md#L33651 "id:2026-08-17-observation-qwen-cuda-rung4-fused-tower").)
+- [SINGLE-SEED] [DEVICE-SCOPED: 3080/WSL] The long-horizon failure
+  orders with io precision (qualitative, n=1 prompt, greedy): on the
+  same QM derivation, artifact A (W4 io) tight-loops by ~400 tokens
+  while artifact B (S16 io, runs at 7.8 tok/s via the adopted S16Rows
+  + fused s16 GEMV path) executes the algebra, detects its own >1
+  probability, and restart-cycles — the severity shape tree prior T1
+  predicted; the pinned teacher under identical greedy prompting is
+  the registered adjudicator. ([OBSERVATION
+  QWEN-CUDA-S16-B](RESULTS.md#L33695 "id:2026-08-17-observation-qwen-cuda-s16-b-artifact").)

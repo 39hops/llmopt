@@ -483,6 +483,27 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwencuda/rung4_B_forward1.json": {
+   "bytes": 906,
+   "exists": true,
+   "sha256": "1d910938b7e31f30d3dc7f00f9833a3de48d788dab4aeabe36ff92bb8c338dd0",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwencuda/rung4_B_qm1400.json": {
+   "bytes": 4112,
+   "exists": true,
+   "sha256": "fadf1fd8d94e96b6861f68a54489551d24fb0b697ff1993045bc7a3c346cc94a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwencuda/rung4_B_qm700.json": {
+   "bytes": 2531,
+   "exists": true,
+   "sha256": "4277889b832b7babef7650bb0fb5e3328828f5afe90a0e98ecc1b2d2c7674ddc",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwencuda/rung4_forward1.json": {
    "bytes": 926,
    "exists": true,

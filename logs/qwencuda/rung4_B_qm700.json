@@ -1,0 +1,35 @@
+{
+ "rung": 4,
+ "code_commit": "132f63d",
+ "device_actual": "NVIDIA GeForce RTX 3080",
+ "torch_version": "2.13.0+cu130",
+ "triton_version": "3.7.1",
+ "wsl": true,
+ "artifact": "B",
+ "prompt": "A qubit is in state (|0> + e^{i pi/3}|1>)/sqrt(2). We apply a Hadamard gate. What is the probability of measuring 0? Be concise, give the final number.",
+ "seq_len": 102,
+ "kernel_form": "fused",
+ "n_fused_linears": 400,
+ "logits_positions": "last_only",
+ "attn_exec": {
+  "linear_attn": 33648,
+  "full_attn": 11216
+ },
+ "vram_free_at_start_bytes": 9509535744,
+ "forward1_s": 6.119,
+ "top1_id": 760,
+ "top1_margin": 1.1593303680419922,
+ "env": {
+  "TORCH_DISABLE_NATIVE_JIT": "1",
+  "PYTORCH_CUDA_ALLOC_CONF": null
+ },
+ "gen": {
+  "n_new": 700,
+  "wall_s": 72.81,
+  "s_per_tok": 0.104,
+  "tok_s": 9.61,
+  "output": "The user is asking about a qubit state and the probability of measuring 0 after applying a Hadamard gate.\n\nLet me work through this step by step.\n\nThe initial state is (|0> + e^{i pi/3}|1>)/sqrt(2).\n\nLet me write this more clearly:\n- The state is (|0> + e^{i pi/3}|1>)/sqrt(2)\n- This is a superposition of |0> and |1> with a phase of pi/3 (60 degrees)\n- The amplitudes are 1/sqrt(2) for both |0> and |1>\n\nSo the initial state is:\na = 1/sqrt(2) for |0>\nb = e^{i pi/3} / sqrt(2) for |1>\n\nNow we apply a Hadamard gate.\n\nThe Hadamard gate transforms:\n|0> -> (|0> + |1>)/sqrt(2)\n|1> -> (|0> - |1>)/sqrt(2)\n\nSo if we have a state a|0> + b|1>, after applying H:\n- The new coefficients are:\n  new_a = (a + b)/sqrt(2)\n  new_b = (a - b)/sqrt(2)\n\nWait, let me think about this more carefully.\n\nThe Hadamard gate acts on a state a|0> + b|1>:\n- If we measure 0, the probability is |new_a|^2\n- If we measure 1, the probability is |new_b|^2\n\nLet me work through this:\nInitial state: a = 1/sqrt(2), b = e^{i pi/3} / sqrt(2)\n\nAfter applying H:\nnew_a = (a + b)/sqrt(2)\nnew_b = (a - b)/sqrt(2)\n\nLet me compute:\na = 1/sqrt(2)\nb = e^{i pi/3} / sqrt(2)\n\nnew_a = (1/sqrt(2) + e^{i pi/3} / sqrt(2)) / sqrt(2)\n= (1 + e^{i pi/3}) / 2\n\nnew_b = (1/sqrt(2) - e^{i pi/3} / sqrt(2)) / sqrt(2)\n= (1 - e^{i pi/3}) / 2\n\nSo the probability of measuring 0 is |new_a|^2 = (1 + e^{i pi/3})/2\n\nLet me compute this:\ne^{i pi/3} = cos(60\u00b0) + i sin(60\u00b0)\n= cos(60\u00b0) + i sin(60\u00b0)\n= 0.5 + i 0.866\n\nSo 1 + e^{i pi/3} = 1 + 0.5 + i 0.866 = 1.5 + i 0.866\n\n|new_a|^2 = (1.5 + i 0.866)^2\n= (1.5)^2 + (0.866)^2"
+ },
+ "vram_peak_alloc_bytes": 7758875648,
+ "vram_peak_reserved_bytes": 8264876032
+}
