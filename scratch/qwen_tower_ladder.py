@@ -513,6 +513,49 @@ def step_g():
                    "mem_before": m0, "mem_after": m1})
 
 
+# -------------------------------------------------------------- mem
+def step_mem():
+    """Memory-growth qualification (spec: M(N) = weights + KV/state(N)
+    + workspace + reserve): one 3072-token greedy generation with
+    alloc/reserved/free sampled at the named checkpoints. Gates the
+    freegen re-registration on the measured curve, not startup fit."""
+    p = rcpt_path("ladder_mem.json")
+    model, plan, routes, n_routes = build_tower()
+    ids, ids_sha = prompt_ids()
+    marks = (64, 256, 1024, 2048, 3072)
+    curve = []
+    with torch.no_grad():
+        out = model(input_ids=torch.tensor([ids]).cuda(),
+                    use_cache=True)
+        past = out.past_key_values
+        t = int(out.logits[0, -1].argmax())
+        torch.cuda.synchronize()
+        t0 = time.time()
+        for i in range(1, 3073):
+            out = model(input_ids=torch.tensor([[t]]).cuda(),
+                        past_key_values=past, use_cache=True)
+            past = out.past_key_values
+            t = int(out.logits[0, -1].argmax())
+            if i in marks:
+                torch.cuda.synchronize()
+                m = mem_obs()
+                m["n_generated"] = i
+                m["tok_s_so_far"] = round(i / (time.time() - t0), 3)
+                curve.append(m)
+                print(f"[tl] mem @{i}: alloc "
+                      f"{m['alloc']/2**30:.2f} GiB free "
+                      f"{m['free']/2**30:.2f} GiB "
+                      f"({m['tok_s_so_far']} tok/s)", flush=True)
+                if m["free"] < 256 * 2**20:
+                    raise SystemExit(f"REFUSING: free under 256 MiB "
+                                     f"at {i} tokens — freegen at "
+                                     f"3072 is not qualified")
+    write_rcpt(p, {"step": "mem", "curve": curve,
+                   "prompt_ids_sha": ids_sha,
+                   "residency_plan": plan, "route_counts": n_routes})
+
+
 if __name__ == "__main__":
     {"d": step_d, "e_old": step_e_old, "e_new": step_e_new,
-     "f_old": step_f_old, "f_new": step_f_new, "g": step_g}[STEP]()
+     "f_old": step_f_old, "f_new": step_f_new, "g": step_g,
+     "mem": step_mem}[STEP]()
