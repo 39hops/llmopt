@@ -2881,6 +2881,13 @@ QWEN-ATTN-ATTRIB-1 observations builder + deterministic reading.
 - `resolution(outcomes: dict, meas: dict) -> tuple`
 - `main()`
 
+### scratch/qwen_ble2_adjudicate.py
+QWEN-BLE-FREEGEN-2 adjudicator: fail-closed row gate, then bars.
+
+- `gate_rows(rows)` — Fail-closed row gate; returns the violation list (empty =
+- `adjudicate(rows)` — Recomputed counts + bar outcomes. Only call after gate passes.
+- `main()`
+
 ### scratch/qwen_capacity27b.py
 QWEN-CAPACITY-METER-1: the 27B cell — M = span_bits - code_entropy per family x projection on the PINNED vendor checkpoint, streaming.
 
@@ -3888,6 +3895,14 @@ Machine-readable pre-registration: bars a program can adjudicate.
 - `load(path: str | Path) -> dict`
 - `adjudicate_refutation(prereg: dict, obs: dict, bar_outcomes: list | None=None) -> str | None` — Score the structured refutation clause, if the pre-reg has one.
 - `adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]` — Deterministic adjudication of every bar against observations.
+
+### llmopt/lab/provenance.py
+Start-state run provenance, captured at process ENTRY.
+
+- `_root() -> str`
+- `_git(*args: str) -> str`
+- `start_provenance(critical_files) -> dict` — Capture at process entry: short HEAD, the LITERAL
+- `completion_commit() -> str` — Short HEAD at receipt-write time; recorded beside (never
 
 ### llmopt/lab/qartifact.py
 WHOLE-0T artifact qualification as a LIBRARY, not a workflow.
