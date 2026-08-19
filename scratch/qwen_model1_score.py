@@ -517,6 +517,16 @@ def main():
     if not smoke and (rcpt["traversal"]["linear_attn"],
                       rcpt["traversal"]["full_attn"]) != (48, 16):
         raise SystemExit(f"REFUSING receipt: traversal {rcpt['traversal']}")
+    # fail-closed nonfinite invariant (2026-08-18): a receipt with a
+    # non-finite scored quantity or a non-positive floor must never
+    # exist on disk
+    import math
+    for k in ("X", "K", "ce_teacher_nats"):
+        if not math.isfinite(rcpt[k]):
+            raise SystemExit(f"REFUSING: non-finite {k}={rcpt[k]}")
+    for k in ("f_X", "f_K"):
+        if not (math.isfinite(rcpt[k]) and rcpt[k] > 0):
+            raise SystemExit(f"REFUSING: floor {k}={rcpt[k]}")
     with open(rcpt_path, "w") as f:
         f.write(json.dumps(rcpt) + "\n")
     print(f"[m1] receipt -> {rcpt_path} wall {rcpt['wall_s']}s",

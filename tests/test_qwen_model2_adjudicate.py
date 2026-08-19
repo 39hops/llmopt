@@ -79,3 +79,29 @@ def test_transport_drift_without_crossover_failure():
     out, ref, obs = _run(x, REG["k"])
     assert out[2] == "FIRE" and out[4] == "NO-FIRE"
     assert ref == "NOT-REFUTED"
+
+
+def test_nonfinite_receipt_refused_by_consumer(tmp_path):
+    """A NaN X in a receipt on disk must refuse at the consumer even
+    if it somehow escaped the scorer's write-time invariant."""
+    import json as _json
+    import subprocess as sp
+    import sys as _sys
+    sc = tmp_path / "logs" / "qwenmodel2"
+    sc.mkdir(parents=True)
+    pd = tmp_path / "docs" / "preregs"
+    pd.mkdir(parents=True)
+    import shutil
+    shutil.copy(os.path.join(REPO,
+                             "docs/preregs/qwen-model2-alloc-1.json"),
+                pd / "qwen-model2-alloc-1.json")
+    r = _receipt(float("nan"), 0.2, chain="c")
+    (sc / "score_PX.json").write_text(_json.dumps(r))
+    for a in ("PK", "FLe", "C"):
+        (sc / f"score_{a}.json").write_text(
+            _json.dumps(_receipt(0.3, 0.2, chain="c")))
+    p = sp.run([_sys.executable,
+                os.path.join(REPO, "scratch/qwen_model2_adjudicate.py")],
+               capture_output=True, text=True, cwd=tmp_path)
+    assert p.returncode != 0
+    assert "REFUSING" in (p.stderr + p.stdout)

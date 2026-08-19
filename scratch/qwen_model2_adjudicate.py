@@ -122,8 +122,9 @@ def build_observations(rc, comp):
                 "mean", f"dK(PK|FLe) v registered {REG_DK_LATE}"),
         "refuted:crossover_min_signed_floor_multiple": _m(
             min(gx, gk), "crossover_min_signed_floor_multiple",
-            "positions:corpus-m2", "ratio",
-            "min of the two signed crossover multiples"),
+            "contrasts:crossover-m2", "ratio",
+            "min over the corpus-X and prefix-K signed multiples "
+            "(composite objective, not a single-surface read)"),
     }
     obs = {"measurement_valid": valid,
            "arms": {a: {"admissible": True} for a in
@@ -151,6 +152,15 @@ def main():
         rc[a] = json.load(open(p))
         if rc[a].get("smoke"):
             raise SystemExit(f"REFUSING: smoke receipt {p}")
+        # consumer-side nonfinite refusal, independent of the
+        # scorer's write-time invariant
+        import math
+        for k in ("X", "K", "ce_teacher_nats"):
+            if not math.isfinite(rc[a][k]):
+                raise SystemExit(f"REFUSING: non-finite {k} in {p}")
+        for k in ("f_X", "f_K"):
+            if not (math.isfinite(rc[a][k]) and rc[a][k] > 0):
+                raise SystemExit(f"REFUSING: bad floor {k} in {p}")
     for a in ("PX", "PK"):
         p = os.path.join(AT, f"compose_{a}.json")
         comp[a] = json.load(open(p)) if os.path.exists(p) else None

@@ -6623,3 +6623,36 @@ honest status column).
   inference" instinct), GPT seat (census formalization, block
   hierarchy, M_k), house (RK-shape, linear-state-as-router
   candidate, fences).
+- **BANKED (2026-08-18): FULL-ATTN-UPLIFT — turn the hybrid into
+  (more of) a Transformer: convert linear-attention layers to
+  softmax attention and ask what it buys the model's behavior**
+  (Artin's "can we turn this thing into a Transformer?" ask; house
+  formalization).
+  The mapping: the vendor tower is 48 linear / 16 full. The
+  conversion direction the literature travels is full->linear
+  (linearizing distillation, e.g. LoLCATs-class); Artin's arrow is
+  the REVERSE: uplift k linear layers to softmax attention —
+  initialize q/k/v/out from the linear layer's projections where
+  shapes permit, then FUNCTION-SPACE distill against the locked
+  teacher (never weight matching — house law) so the swapped layer
+  reproduces the original computation before any capability
+  question is asked. Variants: full swap; "gradient" swap = a
+  learned per-layer gate blending linear and softmax paths (the
+  gate schedule over depth is the dial); depth-targeted swap using
+  the LBAND result (early-linear carries the most repair value —
+  is early also where softmax expressivity would bind?).
+  Honest breaks (house): O(N^2) cost lands exactly where
+  ATTN-ROUTER-CENSUS is trying to remove it — the two banks pull
+  opposite directions on purpose (uplift asks what expressivity is
+  WORTH, routing asks what it COSTS); the vendor chose the hybrid
+  deliberately and uptraining beyond distillation-parity is a
+  training program, not an inference rung; any behavior claim
+  needs the free-generation screen class, not teacher-forced only.
+  Cheap first fragment: ONE layer swapped + distilled to
+  teacher-parity on the frozen corpus (feasibility + wall-clock
+  pricing), before any capability arm. Oracle: X/K on a held-out
+  surface + token-identical greedy equivalence for the unswapped
+  path.
+  Attribution: Artin (the uplift arrow, "effect on thinking"
+  framing), house (init-from-linear + distill-to-parity shape,
+  depth-targeting link, fences).
