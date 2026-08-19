@@ -6595,6 +6595,13 @@ honest status column).
   per family, priced ~one Mac evening, no compose).
   Attribution: Artin (the ask), GPT seat (three-level formalization,
   teacherless variant), house (fences, census framing, pricing).
+  MEASURED 2026-08-19 (VERDICT QWEN-RESIDUAL-STRUCTURE-0): level 1
+  DEAD (conditional-mean ceiling 0.086% max over 402 tensors) and
+  the teacherless GLOBAL-table dequantizer DEAD (leave-one-out
+  family cosine ~ 0.0015); level 2 NARROWED to per-tensor targeted
+  corrections on early attention write-back projections (o_proj L3
+  low-rank, out_proj L0 heavy tail — ~2 MB patch class); level 3
+  (function-space, CAL-FEAS) untouched by the census.
 - **BANKED (2026-08-18): ATTN-ROUTER-CENSUS — can a cheap router
   find where exact full attention wants to look?** (Artin's
   graph/vector-DB-attention ask; GPT formalization; house fences).

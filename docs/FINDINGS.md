@@ -2431,3 +2431,13 @@ regime tag on every bullet is the fence.
   numerical sensitivity, never significance; transport bands are
   registered science widths. ([VERDICT
   QWEN-MODEL2-ALLOC-1](RESULTS.md#L35183 "id:2026-08-19-verdict-qwen-model2-alloc-1-all").)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] The
+  w4 quantization residual of arm A is conditional-mean-optimal
+  noise almost everywhere probed (level-1 dequantization ceiling
+  0.086% max variance reduction across 402 tensors; no globally
+  learnable decode table — leave-one-out family cosine ~ 0.0015),
+  with localized structure only in early attention write-back
+  projections (o_proj L3 low-rank 9.4% top-16 energy; out_proj L0
+  heavy tail 21%); weight-space census only, single artifact, w4
+  codec only, any promotion requires held-out X/K. ([VERDICT
+  QWEN-RESIDUAL-STRUCTURE-0](RESULTS.md#L35486 "id:2026-08-19-verdict-qwen-residual-structure-0-not").)

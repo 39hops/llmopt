@@ -1,0 +1,5 @@
+Vendor shard identity check, 2026-08-19 ~12:00 EDT (mac).
+Source of truth: huggingface.co/api/models/Qwen/Qwen3.8-27B/tree/1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0 (LFS oids).
+Local: logs/qwenresidual/vendor_shard_sha256.txt (shasum -a 256 over ~/qwen_vendor).
+Result: 18/18 model-*.safetensors sha256 EQUAL the upstream lfs.oid values at the pinned revision; filename set equals the index weight_map set.
+The RESIDUAL-STRUCTURE-0 census therefore read byte-identical vendor weights to Qwen/Qwen3.8-27B@1d4bf0f2.

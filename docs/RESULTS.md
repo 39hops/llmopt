@@ -35483,3 +35483,108 @@ GPT-relay catches, each verified in-house):
    logs/qwenresidual/vendor_shard_sha256.txt (18 shards + index)
    and the sidecar books with the census receipt.
 
+## VERDICT QWEN-RESIDUAL-STRUCTURE-0: NOT-REFUTED, structure is real but LOCALIZED — level-1 conditional-mean decode is dead (median gain 0.065%, max 0.086% across all 402 tensors), the family-consensus table reads 0.1222 v the 0.5 bar (post-hoc leave-one-out ~ 0.0015: the registered number was self-inclusion), and the only structure found IN THE 12-TENSOR SVD SAMPLE plus the one tail tensor sits in early attention write-back projections (2026-08-19, mac)
+
+Adjudicates PRE-REG QWEN-RESIDUAL-STRUCTURE-0 (RESULTS L35327) as
+amended by -EXECUTION (machine wsl->mac, 12-tensor SVD sample
+governs, bar 5 relabeled self-inclusive family-consensus).
+Producer scratch/qwen_residual_census.py, LAUNCHED at fa4bc82
+(pinned: producer blob 937dce1e at both launch and completion
+HEAD); receipt code_commit 04e8bd2 was recorded at summary write
+while two docs-only commits landed mid-run (RESULTS + index files
+only; zero instrument files in the fa4bc82..04e8bd2 diff).
+Receipt tree_dirty=true: docs/receipts.lock.json modification
+plus the untracked vendor-sha sidecar; no tracked source file
+differed from HEAD. Wall 1734.5 s, 402/402 w4 tensors, Mac CPU
+only; the registered beside-BLE-FREEGEN concurrency fence carries
+in machine-corrected form (the GPU screen runs on the 3080, this
+census ran on the Mac — fully disjoint machines, and no gate
+comparison touches either).
+
+MEASURED (logs/qwenresidual/census_A.json + census_rows_A.jsonl;
+arm A qualified, rung0 19/19 chained, conservation 1199 keys.
+Vendor oracle: logs/qwenresidual/vendor_shard_sha256.txt, 18
+shards + index, hand-hashed to a sidecar and then VERIFIED
+byte-identical to the upstream LFS oids of Qwen/Qwen3.8-27B at
+the pinned revision 1d4bf0f2 —
+logs/qwenresidual/vendor_upstream_check.txt; the driver itself
+pins only the index sha, so the shard identity rests on this
+sidecar pair):
+- BAR 1 SANITY: PASS, stated precisely: artifact qualification
+  clean, every residual finite (enforced by the producer's
+  refuse-on-nonfinite, not a receipt field), smoke isolated to
+  _smoke paths. The pre-reg's "rows decoder == canonical" clause
+  is VACUOUS for this producer — it decodes through the single
+  canonical llmopt.lab.qcodec path and has no second decoder to
+  compare; the census math is pinned instead by
+  tests/test_qwen_residual_census.py (green pre-launch, one real
+  catch: tail_energy tie-inflation, fixed before launch).
+- BAR 2 LEVEL-1 NO-FIRE: median conditional-mean variance
+  reduction 0.000646 (0.065%) v the 5% bar; MAX across all 402
+  tensors 0.00086 (0.086%) — the measured ceiling. The
+  k-means-style vector codebook is already
+  conditional-mean-optimal: "better dequantization" is DEAD for
+  this codec.
+- BAR 3 LEVEL-2 FIRE: 1 of the 12 sampled tensors —
+  layers.3.self_attn.o_proj top-16 singular energy 9.45% >= 5%
+  (next closest in sample: layers.4.linear_attn.out_proj, 4.24%).
+  Localized low-rank residual structure exists; per the
+  registered fence, nothing is claimed for the 390 unsampled
+  tensors.
+- BAR 4 TAIL FIRE: 1 of 402 tensors —
+  layers.0.linear_attn.out_proj, top-1% entries carry 21.1% >=
+  20% of residual energy (median tensor: 11.0%).
+- BAR 5 GLOBAL-TABLE NO-FIRE: median self-inclusive
+  family-consensus cosine 0.1222 v the 0.5 bar (the 402-value
+  median includes the two singleton io families whose
+  self-cosines are trivially 1.0). Post-hoc leave-one-out color
+  (scratch/qwen_residual_loo.py at 2e0b0ba with full derived
+  provenance incl. tables_npz_sha256 ebc27588..;
+  logs/qwenresidual/loo_A.json; regenerated once to add
+  provenance, numbers asserted identical): median LOO cosine
+  0.0015 over 400 scored tensors — the 0.1222 was
+  self-inclusion; cross-layer predictability of the conditional
+  tables is ABSENT. The bar resolves on 0.1222 alone; the LOO
+  number never substitutes.
+- Baseline damage map: median rel_l2(R) 0.337 across the 402 w4
+  tensors.
+- REFUTED-IF (bars 2-5 all NO-FIRE): NOT met (3 and 4 fire).
+
+REGISTERED-PRIOR SCORECARD: right on bar 2 only; wrong on 3
+(structure exists), 4 (a heavy-tail tensor exists), and 5 (the
+predicted "learnable global bias" does not exist).
+
+READING (weight-space census; FENCES explicit: single artifact A,
+w4 codec only — the 449 raw and 348 excluded tensors and every
+s16/io tensor are unprobed; the weight-distance law caps every
+sentence — no capability is claimed and any promotion runs
+through X/K on a held-out surface): the residual is
+conditional-mean-optimal noise almost everywhere probed; the
+exceptions concentrate where the network writes attention output
+back into the residual stream at its entrance (L0 linear
+out_proj heavy tail, L3 self_attn o_proj low-rank). The
+RESIDUAL-RECON bank narrows accordingly: level 1 dead, the
+teacherless global-table dequantizer dead, level 2 alive only as
+PER-TENSOR TARGETED corrections on named early-attn tensors (a
+rank-16 patch on o_proj L3 costs ~2 MB; a top-1% sparse patch on
+out_proj L0 similar) — whether any of that moves X/K is
+CAL-FEAS/MODEL-class territory, not this census.
+
+RECEIPT-AUDITOR ADOPTIONS (blocker fixed pre-booking, the
+MODEL-1 pattern): docs/receipts.lock.json had locked the vendor
+sidecar MID-WRITE (495 of 1877 bytes) — relocked complete with
+an --accept reason in this commit. loo_A.json originally carried
+no provenance — producer extended, receipt regenerated,
+cosines/median asserted bit-identical. BANKED forward hardening
+(producer stays frozen as record): refuse-if-exists for
+rows/npz paths, receipts record the git-status text not a bare
+dirty bool, and long drivers record start_commit at process
+entry (this run's completion-time code_commit is the disclosed
+deviation that motivates it).
+
+Receipts (force-added, small text): census_A.json,
+census_rows_A.jsonl, loo_A.json, vendor_shard_sha256.txt,
+vendor_upstream_check.txt. tables_A.npz (1.6 MB binary) stays
+untracked per the logs doctrine; it is pinned by sha in
+loo_A.json (ebc27588..).
+

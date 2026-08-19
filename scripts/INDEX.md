@@ -3023,6 +3023,11 @@ QWEN-RESIDUAL-STRUCTURE-0: weight-space census of R = W_vendor - decode(A).
 - `svd_fracs(R: np.ndarray)`
 - `main()`
 
+### scratch/qwen_residual_loo.py
+Leave-one-out family-pool cosine for RESIDUAL-STRUCTURE-0 (post-hoc color registered in AMENDMENT -EXECUTION item 3; never feeds bar 5).
+
+- `main()`
+
 ### scratch/qwen_rk_adjudicate.py
 QWEN-RK-CENSUS-0 observations builder + adjudication.
 
