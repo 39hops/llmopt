@@ -35632,3 +35632,83 @@ runtime residency (representation bytes per tensor v
 mem_get_info) before build. Unblocking program spec'd at
 docs/superpowers/specs/2026-08-19-qcuda-tower-runtime.md.
 
+## OBSERVATION QWEN-TOWER-EQUIVALENCE-0: the qcuda-tower runtime is numerically equivalent to the frozen rung4 runtime on BLe and 12.7x faster where the abort bled — full ladder d-g PASS (route conservation observed 352+49+1 = 402; e parity abs 14.1x / rel-L2 7.3x inside frozen tolerances; f cache + old-new token2 identical; g 7.11 tok/s v the abort row's 0.56) (2026-08-19, wsl)
+
+Instrument qualification for the runtime built after
+QWEN-BLE-FREEGEN-1-ABORT (spec
+docs/superpowers/specs/2026-08-19-qcuda-tower-runtime.md; Artin GO;
+no RESULTS pre-registration — this is an equivalence LADDER, each
+step gated by thresholds frozen before it ran, not a science rung;
+the freegen science re-registers separately on this runtime). New
+runtime: llmopt/lab/qcuda_tower.py (FusedS16Linear + s16 row-decode
+kernel + exact-conservation verify_routes + plan-before-build
+residency), driver scratch/qwen_tower_ladder.py; old runtime = the
+frozen rung4 build (s16 decoder tensors dense FP32). s16 routing
+was the ONLY variable: raw tensors stayed dense FP32, w4 stayed
+FusedW4Linear, io stayed on its dedicated paths.
+
+LADDER (receipts logs/qcudatower/ladder_{d,e_old,e,f_old,f,g}.json,
+each carrying start_commit + literal git-status + file blob shas at
+process entry; kernels previously parity-gated in qualify_r2:
+synthetic e=0/e=200 edges bit-exact, real-tensor GEMV <=4.4e-7,
+prefill 2-chunk branch 9.7e-7):
+- d CALIBRATION: 2-layer hidden-state stub (io excluded by
+  construction), dense-s16 v fused-s16 on identical layers: abs
+  2.67e-5, rel-L2 1.14e-6. Tolerances FROZEN from the precommitted
+  formula before e ran: T_abs 2.67e-4, T_rel_l2 1.14e-5.
+- e FORWARD PARITY (prefill path): 50-token frozen prompt; both
+  runtimes' heads evaluate the LAST position only (identical
+  convention, asserted in both sources), so the comparison is the
+  full ~248k-logit vector at that ONE position while the decoder
+  stack runs the full 50-token prefill through all 402 tensors:
+  abs 1.90e-5 (14.1x inside T_abs), rel-L2 1.55e-6 (7.3x inside
+  T_rel_l2), top1 identical at the compared position. The receipt
+  key top1_identical_all_positions overstates this by its name
+  (one-element comparison; rename banked for the next run — the
+  frozen file is not edited). Old-runtime traversal receipted
+  48+16; the new runtime's traversal is inferred from the
+  identical config, not receipted (forward fix banked). OBSERVED route conservation:
+  352 FusedW4Linear + 49 FusedS16Linear (48 decoder + head) + 1
+  cpu_compressed_rows (embed) = all 402 compressed 2D tensors
+  accounted exactly once (the qualify_r2 route_census was a
+  MANIFEST census; this is the runtime map).
+- f DECODE/GEMV PARITY: (A) new-runtime cached token2 v uncached
+  token2 abs 1.14e-5 (cache correctness); (B) new cached v OLD
+  cached token2 abs 9.1e-6; greedy tokens identical (220, 18).
+- g SPEED + RESIDENCY: 32 cached tokens at 7.11 tok/s v the
+  abort row's receipted 0.56 (logs/qweneffort/quant_rows_BLe.jsonl
+  tok_s field; same arm/machine, different prompt class — the
+  12.7x is the honest ratio of those two receipts, not a matched
+  benchmark). Cross-arm context only: B's w4-only runtime read
+  ~10.2 tok/s (RESULTS L34298, different arm and driver) — BLe
+  pays its 48 extra fused-s16 GEMVs per token. Observed: alloc
+  7.35 GiB, reserved 8.06 GiB, free 0.75 GiB; planned compressed
+  residency 6.87 GiB, computed before any payload landed (~1.1
+  GiB of context was already resident; not an empty card).
+
+RECEIPT-AUDITOR ADOPTIONS (pre-booking): the two headline
+precision fixes above (14.1x/7.3x split; one-position top1);
+qualify_r2's kernel gates ran on an earlier qcuda_tower blob
+(05b7d9dc at 8689309) than the ladder (a55aae50 at 676fa8e) —
+the diff is verify_routes-only (exempt -> dedicated_routes), no
+kernel/GEMV/prefill code touched, auditor-verified; only ladder_d
+receipts art_dir (the five other steps qualified the same
+artifact via the same chain each run but did not write
+art_dir/manifest_sha256 — per-step fields banked as forward fix);
+ladder_f's route conservation is enforced by the build assert but
+not receipted as counts (e and g receipt them).
+
+FENCES: equivalence shown for BLe on the 3080 at these
+prompt/token counts; the 2.8x qualify_r2 GEMV microbench stays
+kernel-level (whole-model recovery is g's 12.7x, and B-class
+w4-only throughput is NOT claimed for BLe). free 0.75 GiB at
+gen32 means the MEMORY-GROWTH qualification (M(N) at increasing
+lengths) is REQUIRED before any 3072-token freegen prereg — the
+spec names it and it has not run. Old-runtime B comparisons
+remain behavioral context only.
+
+UNLOCKED (spec): equivalence is banked, so the placement-aware
+planner generalization and kernel-geometry work may proceed as
+phase 2; the BLE-FREEGEN re-registration names THIS runtime and a
+NEW output path when it fires.
+

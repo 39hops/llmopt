@@ -15,7 +15,7 @@ never co-resident on the 10 GiB card):
          frozen step-e tolerances via the precommitted formula
          T_rel = max(10 * d_rel, 1e-5), T_abs = max(10 * d_abs,
          1e-4)  -> logs/qcudatower/ladder_d.json
-  e_old  full rung4 BLe build, forward-1 on the frozen 64-token
+  e_old  full rung4 BLe build, forward-1 on the frozen 50-token
          prompt, logits saved  -> ladder_e_old.json + e_old_logits.npy
   e_new  full tower build: verify_routes (exact conservation,
          dedicated io routes) + plan_residency (GPU subset; CPU
