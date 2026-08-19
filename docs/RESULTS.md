@@ -35113,3 +35113,70 @@ score_FLl_rescore.json, logs/qwenmodel1_rescore_{F,FLl}.log.
    fixtures in tests/test_prereg_schema.py. MODEL-2-class preregs
    MUST use it; LBAND-1 stands untouched.
 
+## PRE-REG QWEN-MODEL2-ALLOC-1: the third-pick crossover at exact iso-spend on a HELD-OUT surface — from FLe, does the next 461,276,672 bytes buy X with the mid band and K with the late band, as the F-conditioned LBAND table predicts? (2026-08-18, mac)
+
+Design: docs/superpowers/specs/2026-08-19-model2-design.md (r3).
+Machine projection: docs/preregs/qwen-model2-alloc-1.json — the
+FIRST prereg carrying the executable two-gate law (gate_class on
+every bar; refutation_precedence names sanity bars only; both
+shipped + fixtured 2026-08-18).
+
+INSTRUMENT: X/K scorer (scratch/qwen_model1_score.py class, Mac
+CPU only, fp16 records, +-1ulp sensitivity floors, small-n fence
+30) pointed at the HELD-OUT surface evals/qwen_model2/ (frozen +
+disjointness-asserted pre-compose, commit before this entry): the
+locked vendor teacher (revision 1d4bf0f2, commit-pin class
+0ca4151) runs ONCE over the new corpus/prefixes; its manifest
+record shas are pinned BEFORE any P_X/P_K compose and quoted at
+booking. The MODEL-1 surface is the DEVELOPMENT surface (it
+selected this policy) and adjudicates nothing here.
+
+ARMS (2 new composes on the 3080, base FLe, donor C, band keys
+frozen as in LBAND):
+- P_X = FLe + mid-linear band (layers 21-41, 48 keys)
+- P_K = FLe + late-linear band (layers 42-62, 48 keys)
+Each adds exactly 461,276,672 bytes (manifest-derived). Scored on
+the held-out surface alongside FLe and C (rescored there — their
+frozen receipts are development-surface numbers).
+
+BARS (docs/preregs/qwen-model2-alloc-1.json):
+1. SANITY-TREATMENT (gate_class sanity): zero compose-
+   admissibility violations across P_X/P_K (base/donor/mark/
+   frozen band layers/48 keys/exact derived bytes/chain
+   identity) and both scored on cpu with traversal 48/16.
+2. CROSSOVER-X (range): X(P_K) - X(P_X) above 5 f_X — mid is
+   the X pick at equal spend.
+3. CROSSOVER-K (range): K(P_X) - K(P_K) above 5 f_K — late is
+   the K pick at equal spend.
+4. TRANSPORT-X (range): |dX(P_X|FLe) - 0.128| below 0.05 nats
+   (the F-conditioned mid marginal transports to the FLe base
+   AND the new surface; band is a science band, never a floor).
+5. TRANSPORT-K (range): |dK(P_K|FLe) - 0.0401| below 0.03 nats.
+REFUTED-IF: the transport prior is refuted if EITHER crossover
+leg reads REVERSED past 5 floors on the held-out surface
+(predicate: min of the two signed crossover floor-multiples
+below -5). A both-legs inversion books additionally as the
+stronger kill in prose. refutation_precedence: bar 1 only
+(sanity); range excursions NEVER suppress refutation.
+
+REGISTERED PRIOR (house + GPT seat, medium): both crossover legs
+fire (the conditional table transports in sign); transport bands
+hold within +-0.05/+-0.03 (weaker — surface change + one
+stacking level both untested). Bars 2-3 firing with 4-5 missing
+books TRANSPORT-DRIFT, not failure of the allocation reading.
+
+FENCES: Mac CPU only, same-device; point readings on the new
+surface (positions counted at teacher-pass time, small-n fence
+30 applies per stratum), single arm each, NO sampling fence —
+floors are numerical sensitivity, bands are registered science
+widths; teacher-distribution wording for K; attribution class,
+no MODEL-1 tree branch touched; band definitions frozen (LBAND
+freeze carries); desk absolutes from the development surface are
+color only, never bars. NOT-RUN books if the teacher pass or
+either compose fails qualification; no monotonicity assumption
+anywhere (LBAND R4 lesson — interference is a range outcome).
+
+COST (desk): 1 teacher pass over ~450 new positions (~30-60 min
+Mac), 2 composes (~2 min each, 3080), 4 held-out scores (~8 min
+each, Mac, one resident at a time). Under 2.5 h wall total.
+

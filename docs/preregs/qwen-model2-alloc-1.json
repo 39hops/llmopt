@@ -1,0 +1,41 @@
+{
+  "name": "QWEN-MODEL2-ALLOC-1",
+  "note": "Mechanical projection of PRE-REG QWEN-MODEL2-ALLOC-1. First prereg carrying the executable two-gate law: every bar declares gate_class; refutation_precedence names sanity bars only (validator-enforced). All X/K quantities are HELD-OUT-surface readings (evals/qwen_model2, frozen pre-compose); the MODEL-1 surface is the development surface and adjudicates nothing. dX(P|FLe) = X(FLe) - X(P) on the new surface, K analogue. Crossover floor-multiples are signed: (X_PK - X_PX)/f_X and (K_PX - K_PK)/f_K, floors per-contrast max over the four held-out receipts. Transport deviations are absolute nats v the registered F-conditioned marginals (0.128 X-mid, 0.0401 K-late) — science bands, never floors. Refutation predicate: min of the two signed crossover floor-multiples; below -5 = either leg materially reversed = the registered crossover failed. Both-legs inversion books as the stronger kill in prose only.",
+  "results_id": "2026-08-18-pre-reg-qwen-model2-alloc-1",
+  "registered": "2026-08-18",
+  "machine": "mac",
+  "arms": {
+    "PX": {"description": "FLe + C's S16 mid-linear band (layers 21-41, 48 keys, +461276672 bytes exactly)"},
+    "PK": {"description": "FLe + C's S16 late-linear band (layers 42-62, 48 keys, +461276672 bytes exactly)"},
+    "FLe": {"description": "frozen FLe artifact rescored on the held-out surface (marginal base)"},
+    "C": {"description": "frozen C artifact rescored on the held-out surface (ladder endpoint, desk color)"}
+  },
+  "bars": [
+    {"id": 1, "name": "SANITY-TREATMENT", "gate_class": "sanity", "metric": "compose_violation_count", "population": "arms:recomposed", "aggregation": "count", "direction": "below", "value": 0.5, "arms": ["PX", "PK"], "description": "zero compose-admissibility violations (base FLe/donor C/mark/frozen band layers/48 keys/exact 461276672 bytes/chain identity) and cpu traversal 48/16 on all four held-out receipts"},
+    {"id": 2, "name": "CROSSOVER-X", "gate_class": "range", "metric": "crossover_gap_floor_multiple_x", "population": "positions:corpus-m2", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["PX", "PK"], "description": "(X_PK - X_PX)/f_X above 5: mid is the X pick at equal spend"},
+    {"id": 3, "name": "CROSSOVER-K", "gate_class": "range", "metric": "crossover_gap_floor_multiple_k", "population": "positions:prefixes-m2", "aggregation": "ratio", "direction": "above", "value": 5.0, "arms": ["PX", "PK"], "description": "(K_PX - K_PK)/f_K above 5: late is the K pick at equal spend"},
+    {"id": 4, "name": "TRANSPORT-X", "gate_class": "range", "metric": "transport_dev_x_nats", "population": "positions:corpus-m2", "aggregation": "mean", "direction": "below", "value": 0.05, "arms": ["PX", "FLe"], "description": "|dX(PX|FLe) - 0.128| below 0.05 nats (science band)"},
+    {"id": 5, "name": "TRANSPORT-K", "gate_class": "range", "metric": "transport_dev_k_nats", "population": "positions:prefixes-m2", "aggregation": "mean", "direction": "below", "value": 0.03, "arms": ["PK", "FLe"], "description": "|dK(PK|FLe) - 0.0401| below 0.03 nats (science band)"}
+  ],
+  "receipts": [
+    "logs/qwenteacher_m2/teacher_manifest.json",
+    "logs/qwenattrib/compose_PX.json",
+    "logs/qwenattrib/compose_PK.json",
+    "logs/qwenmodel2/score_PX.json",
+    "logs/qwenmodel2/score_PK.json",
+    "logs/qwenmodel2/score_FLe.json",
+    "logs/qwenmodel2/score_C.json",
+    "logs/qwenattrib/model2_observations.json",
+    "logs/qwenattrib/model2_verdict.txt"
+  ],
+  "refuted_if": "The transport prior is refuted if EITHER crossover leg reads reversed past 5 floors on the held-out surface (predicate: min of the two signed crossover floor-multiples below -5). Both-legs inversion books additionally as the stronger kill in prose. Range excursions never suppress this; only bar 1 (sanity) does, via refutation_precedence.",
+  "refuted_if_predicate": {
+    "measurement": "refuted:crossover_min_signed_floor_multiple",
+    "direction": "below",
+    "value": -5.0
+  },
+  "refutation_precedence": {
+    "suppressed_unless_bars_fire": [1]
+  },
+  "registered_prior": "House + GPT seat, medium: both crossover legs fire (the F-conditioned LBAND table transports in sign to the FLe base and the new surface); transport bands hold within 0.05/0.03 nats (weaker prior — surface change and one stacking level both untested). Bars 2-3 firing with 4-5 missing books TRANSPORT-DRIFT, not allocation failure."
+}
