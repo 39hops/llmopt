@@ -6675,3 +6675,36 @@ honest status column).
   shapes, strict parity gate, never promote from intuition; phase-2
   work behind the qcuda-tower routing fix (spec
   2026-08-19-qcuda-tower-runtime).
+- **BANKED (2026-08-19): UNSLOTH-MATERIALIZATION — temporary-state
+  elimination as the unifying speed/memory lever** (Artin's unsloth
+  pointer; GPT seat analysis w/ citations; house mapping). Unsloth's
+  "2x faster / 70% less VRAM" decomposes into: fused kernels that
+  never materialize intermediates, checkpoint activations offloaded
+  to pinned system RAM with double-buffered reload, Cut Cross
+  Entropy (never materialize the [T x V] logits — at Qwen's ~248k
+  vocab that is ~4 GB per 8k tokens), and sequence packing with
+  cached attention metadata. None of it changes what the model IS;
+  all of it changes what the execution graph MATERIALIZES — the
+  exact defect class of the same-day BLE-FREEGEN abort (0.87 GiB
+  s16 payload materialized as 6.875 GiB dense FP32; 12.7x recovered
+  by decoding-as-consumed). The unifying trade, candidate house
+  law once a second measured instance lands: pay bytes now v pay
+  computation later, under a fidelity constraint — gradient
+  checkpointing, the residual correction-field idea, sparse-KV
+  routing, and compressed-weight decode are all instances.
+  Named residues, cheapest first:
+  (1) DESK: padding-fraction census on house training batches
+  (train_mathnative bucketing) — packing's win is proportional to
+  measured waste; (2) decode-ahead DOUBLE-BUFFERING in the
+  streaming scorers/runtimes (prefetch layer i+1's payload while
+  layer i computes — CPU scorer and CUDA tower both eligible);
+  (3) plan_residency -> general MEMORY PLANNER (tensor x codec x
+  placement x representation, activations included) — already
+  spec'd for weights in 2026-08-19-qcuda-tower-runtime, this bank
+  widens the ambition; (4) the decomposed benchmark (HF/TRL+FA2 v
+  unsloth, feature-by-feature, dVRAM/dwall per mechanism) — PARKED,
+  3080-days class, needs its own GO. FENCES: their 2x/70% is
+  workload-conditional (HF's own table: 12-74%); VRAM moved to
+  host RAM is not memory saved; their 2x inference claim is v
+  transformers-native, NOT v our qcuda tower — never quote their
+  numbers as portable without a paired in-house run.
