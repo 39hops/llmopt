@@ -1,0 +1,45 @@
+{
+ "name": "QWEN-BLE-FREEGEN-2",
+ "note": "Mechanical projection of PRE-REG QWEN-BLE-FREEGEN-2 (RESULTS, 2026-08-19, commit 168a5e1 pre-launch). Transcribed to machine form AFTER the RESULTS registration but BEFORE any receipt exists (the screen was mid-run on the 3080); bars, prior, and fences are verbatim from the booked text, transcription disclosed at booking. Counts recomputed from rows by scratch/qwen_ble2_adjudicate.py (fail-closed row gate), never from the driver summary. A minimal FIRE reads 'escaped B's total collapse', never 'fixed the deliberation loop'; 1/60 is not deployment-ready.",
+ "results_id": "2026-08-19-pre-reg-qwen-ble-freegen-2",
+ "registered": "2026-08-19",
+ "machine": "wsl",
+ "arms": {
+  "BLe": {
+   "description": "BLe artifact on the qcuda-tower runtime (equivalence banked, OBSERVATION QWEN-TOWER-EQUIVALENCE-0); 30 items/cell, cells nothink+xhigh, MAX_TOK 3072, greedy"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "TERMINATION",
+   "gate_class": "range",
+   "metric": "xhigh_terminated_count",
+   "population": "rows:xhigh",
+   "aggregation": "count",
+   "direction": "above",
+   "value": 0.5,
+   "arms": ["BLe"],
+   "description": "closed think blocks at xhigh >= 1/30 (B: 0/30)"
+  },
+  {
+   "id": 2,
+   "name": "COMPETENCE",
+   "gate_class": "range",
+   "metric": "total_correct_count",
+   "population": "rows:both-cells",
+   "aggregation": "count",
+   "direction": "above",
+   "value": 0.5,
+   "arms": ["BLe"],
+   "description": "total correct across both cells >= 1/60 (B: 0/60)"
+  }
+ ],
+ "receipts": [
+  "logs/qweneffort2/tower_rows_BLe.jsonl",
+  "logs/qweneffort2/summary_tower_BLe.json",
+  "logs/qweneffort2/ble2_adjudication.json"
+ ],
+ "refuted_if": "both bars NO-FIRE (0/60 correct AND 0/30 xhigh terminations): the early-band repair does not reach the deliberation loop; BLe stays a scored reference arm, not promoted toward deployment",
+ "registered_prior": "bar 1 FIRES (some think blocks terminate); bar 2 called FIRE at low single digits correct; termination recovers before correctness (carried unchanged from FREEGEN-1 — it predated any BLe free-generation evidence)"
+}

@@ -1,9 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [],
-  "reason": "first local materialization of the 3080-side BLE-FREEGEN abort receipts (verbatim pull of ble_freegen.log + quant_rows_BLe.jsonl; remote originals unchanged)"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -438,6 +434,13 @@
    "exists": false,
    "source": "results"
   },
+  "logs/qcudatower/ladder_mem.json": {
+   "bytes": 1828,
+   "exists": true,
+   "sha256": "106d0844de57de3a7d077c677466e11fbad459e85cb62b4bbec33de567d67c41",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwenattrib/attrib_observations.json": {
    "bytes": 3455,
    "exists": true,
@@ -682,15 +685,21 @@
   "logs/qweneffort/ble_freegen.log": {
    "bytes": 1543,
    "exists": true,
-   "local_only": true,
    "sha256": "259ca1855834d6ab7658baebef670c9bbb92f42d8bad1ab586d14ca3a743205f",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qweneffort/quant_rows_B.jsonl": {
    "bytes": 21661,
    "exists": true,
    "sha256": "4bedd2a013c1ea9ec2e30afc6023bf34f314123062104de677c7a766f552caee",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qweneffort/quant_rows_BLe.jsonl": {
+   "bytes": 382,
+   "exists": true,
+   "sha256": "c183723c87f2c549608e8166e1b701e71c2b1556a7700e56e2a1f9855e4d9f37",
    "source": "results",
    "tracked": true
   },
@@ -700,6 +709,18 @@
    "sha256": "1cb7218de4b30d0408c0fadf9087f1fa87fd1b5de4c06c31c1323e5738cd798b",
    "source": "results",
    "tracked": true
+  },
+  "logs/qweneffort2/ble2_adjudication.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qweneffort2/summary_tower_BLe.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qweneffort2/tower_rows_BLe.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/qwenmodel1/score_A.json": {
    "exists": true,
