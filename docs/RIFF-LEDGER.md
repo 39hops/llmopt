@@ -6567,3 +6567,59 @@ honest status column).
   Honest breaks (house): conditioning is not consciousness in any load-bearing sense the lab can measure — the same mechanism explains a thermostat reading its setpoint; the MoE contrast does not hold as awareness — a routed model's ROUTER conditions on the full context too, and dense-v-sparse changes which FFN weights fire, not what information the decision conditions on; house language rule keeps ledger claims mechanistic (plain technical language, booked 2026-08-12). The relativity analogy is an ANALOGY-AS-METHOD (charter-legal) — no physics claim.
   Testable residue: the measurable fragment is instruction-following-into-behavior dose-response curves (already live) and, if ever wanted, a matched dense-v-MoE effort-knob transport test on open checkpoints — banked, unregistered.
   Attribution: Artin (frame-of-reference/consciousness riff, MoE-sparsity contrast), house (mechanistic counter-notes, thermostat break, dose anchors).
+- **BANKED (2026-08-18): RESIDUAL-RECON — the quantization residual
+  as a compressible correction field** (Artin's "fabricate/guess the
+  missing 16 digits" ask; GPT formalization; house fences).
+  The mapping: with the vendor BF16 resident during research, the
+  residual R = W_teacher - W_A is computable per tensor. Three
+  levels of "fake precision": (1) better dequantization (bin-center
+  -> conditional-mean decode), (2) structured weight-space
+  correction W_A + R_cheap where R_cheap is low-rank/sparse (rank-16
+  UV^T on a 500MB tensor = tens of MB — precision as a correction
+  field), (3) function-space correction (choose tiny R so
+  f_{Q(W)+R} tracks f_W on calibration data — CAL-FEAS-0 territory,
+  registration already parked). A teacherless variant: train a
+  residual predictor g(Q(W), context) shipped WITH the artifact (a
+  small neural dequantizer applied blockwise at layer-load in the
+  streaming runtime, not per-matmul).
+  Cheap first tests (desk, no model run): SVD spectrum of R per
+  family, sparse-tail fraction, block entropy, neighbor-conditioned
+  predictability, residual entropy conditioned on the W4 code.
+  HOUSE FENCE (the law that bites): weight-space compressibility of
+  R is a STRUCTURE CENSUS only — never score capability by weight
+  distance; any promotion claim runs through MODEL-1/2 X/K on a
+  held-out surface. The measured hook: the repair ladder's per-byte
+  table gives exact targets to beat (a 30MB correction beating the
+  461MB band promotion would be the headline).
+  Testable residue: RESIDUAL-STRUCTURE-0 census (spectra + tails
+  per family, priced ~one Mac evening, no compose).
+  Attribution: Artin (the ask), GPT seat (three-level formalization,
+  teacherless variant), house (fences, census framing, pricing).
+- **BANKED (2026-08-18): ATTN-ROUTER-CENSUS — can a cheap router
+  find where exact full attention wants to look?** (Artin's
+  graph/vector-DB-attention ask; GPT formalization; house fences).
+  The mapping: only 16/64 layers are quadratic full attention (48
+  linear) — the target is not "replace attention", it is "route the
+  16". Record exact attention masses a_{t,j} from the teacher on
+  frozen sequences; for candidate cheap routers (recency, block
+  summary cosine, hidden-state similarity, LINEAR-ATTENTION STATE
+  similarity — the in-model router candidate, approximate-K, graph
+  links) measure M_k = attention mass captured by the router's
+  top-k candidate set. RK-CENSUS shape exactly: M_256 ~ 0.95 ->
+  build sparse/hierarchical attention (block-summary retrieval,
+  attention-B-tree, GPU/RAM/SSD tiers with coalesced block reads);
+  M_256 ~ 0.25 -> kill before any engineering. The architectural
+  hook is house-specific: the interleaved linear-attn state already
+  summarizes history — the cheap substrate may BE the index for the
+  expensive one.
+  Fences: teacher-forced capture on frozen lists; per-layer,
+  per-head reads; no SSD/graph implementation before the census;
+  block-level (not token-level) retrieval is the mechanical
+  candidate; oracle = recorded exact attention, later
+  token-identical greedy equivalence for any implementation.
+  Testable residue: ATTN-ROUTER-CENSUS-0 (capture + router ladder,
+  priced ~one Mac session on the resident vendor).
+  Attribution: Artin (graph/tensor-db attention, "algorithmic
+  inference" instinct), GPT seat (census formalization, block
+  hierarchy, M_k), house (RK-shape, linear-state-as-router
+  candidate, fences).
