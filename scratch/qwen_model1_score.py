@@ -45,7 +45,11 @@ if TEACHER_DIR not in TEACHER_PINS:
                      f"dir {TEACHER_DIR}")
 TEACHER_COMMIT = TEACHER_PINS[TEACHER_DIR]
 REVISION = "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
-EV = "evals/qwen_model1"
+# eval payload dir follows the teacher surface (source-frozen map,
+# same fail-closed shape as TEACHER_PINS)
+EV_BY_TEACHER = {"logs/qwenteacher_v2": "evals/qwen_model1",
+                 "logs/qwenteacher_m2": "evals/qwen_model2"}
+EV = EV_BY_TEACHER[TEACHER_DIR]
 MARGIN_EDGES = [0.0, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0, 2.0, 5.0, float("inf")]
 SMALL_N = 30
 
@@ -165,7 +169,13 @@ def refuse_list_checks(man: dict, tok, smoke: bool):
     mans = [p for p in glob.glob("logs/**/teacher_manifest.json",
                                  recursive=True)
             if "quarantine" not in p and "_smoke" not in p]
-    if mans != [os.path.join(TEACHER_DIR, "teacher_manifest.json")]:
+    # every found manifest must belong to a source-pinned teacher
+    # dir, and the selected TEACHER_DIR's must be among them (two
+    # pinned surfaces coexist since the m2 held-out pass)
+    allowed = {os.path.join(d, "teacher_manifest.json")
+               for d in TEACHER_PINS}
+    if not set(mans) <= allowed or \
+            os.path.join(TEACHER_DIR, "teacher_manifest.json") not in mans:
         raise SystemExit(f"REFUSING: teacher manifests found {mans}")
     # eval payload identity
     for f, k in (("corpus.txt", "corpus_sha256"),
