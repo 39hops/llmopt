@@ -8,9 +8,12 @@ family pool WITH THE TENSOR REMOVED.
     .venv/bin/python scratch/qwen_residual_loo.py
 Receipt: logs/qwenresidual/loo_A.json (append-refused).
 """
+import hashlib
 import json
 import os
+import subprocess
 import sys
+import time
 
 import numpy as np
 
@@ -24,14 +27,17 @@ VDIR = os.path.expanduser(os.environ.get("VENDOR_DIR", "~/qwen_vendor"))
 
 
 def main():
+    t0 = time.time()
     out = "logs/qwenresidual/loo_A.json"
     if os.path.exists(out):
         raise SystemExit(f"REFUSING: {out} exists")
+    chain = "logs/qwenwhole/artifact_digest_A.txt"
     q = qartifact.qualify_artifact(
-        ART, os.path.join(VDIR, "model.safetensors.index.json"),
-        "logs/qwenwhole/artifact_digest_A.txt")
+        ART, os.path.join(VDIR, "model.safetensors.index.json"), chain)
     MAN = q["manifest"]
-    z = np.load("logs/qwenresidual/tables_A.npz")
+    npz_path = "logs/qwenresidual/tables_A.npz"
+    tables_sha = hashlib.sha256(open(npz_path, "rb").read()).hexdigest()
+    z = np.load(npz_path)
     names = [k[len("tab_"):] for k in z.files if k.startswith("tab_")]
 
     handles, counts = {}, {}
@@ -72,7 +78,17 @@ def main():
             float(a @ pool) / (na * npn)
 
     vals = [v for v in loo.values() if v is not None]
-    summ = {"n": len(names), "n_scored": len(vals),
+    summ = {"arm": "A",
+            "code_commit": subprocess.check_output(
+                ["git", "rev-parse", "--short", "HEAD"]).decode().strip(),
+            "tree_dirty": bool(subprocess.check_output(
+                ["git", "status", "--porcelain"]).decode().strip()),
+            "qualification": q["report"],
+            "chain_sha256": hashlib.sha256(
+                open(chain, "rb").read()).hexdigest(),
+            "tables_npz_sha256": tables_sha,
+            "wall_s": round(time.time() - t0, 1),
+            "n": len(names), "n_scored": len(vals),
             "n_singleton": sum(v is None for v in loo.values()),
             "median_loo_cosine": float(np.median(vals)),
             "loo_cosines": loo}
