@@ -498,6 +498,16 @@
    "pending": true,
    "source": "prereg"
   },
+  "logs/qwenattrib/compose_PK.json": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/compose_PX.json": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
   "logs/qwenattrib/compose_Q.json": {
    "exists": true,
    "pending": true,
@@ -532,6 +542,16 @@
    "tracked": true
   },
   "logs/qwenattrib/lband_verdict.txt": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/model2_observations.json": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
+  "logs/qwenattrib/model2_verdict.txt": {
    "exists": true,
    "pending": true,
    "source": "prereg"
@@ -751,6 +771,26 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwenmodel2/score_C.json": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
+  "logs/qwenmodel2/score_FLe.json": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
+  "logs/qwenmodel2/score_PK.json": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
+  "logs/qwenmodel2/score_PX.json": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
   "logs/qwenprobe/L32.jsonl": {
    "bytes": 901,
    "exists": true,
@@ -830,6 +870,11 @@
    "sha256": "e462184d6c1f5ef0a9c62bf459562451dd6e53e379159b6a6d0af76f6445866b",
    "source": "results",
    "tracked": true
+  },
+  "logs/qwenteacher_m2/teacher_manifest.json": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
   },
   "logs/qwenteacher_v2/margin_census.json": {
    "bytes": 1010,
