@@ -45,12 +45,31 @@ b. REAL BLe s16 tensor GEMV v canonical dec_s16 @ x on
    representative qkv/z/out shapes;
 c. microbench: current dense-FP32 fallback v compressed s16 GEMV;
 d. 2-layer mechanism smoke;
-e. full BLe forward-1: finite + traversal + top1 parity against
-   the old runtime;
+e. full BLe forward-1 NUMERICAL parity against the old runtime:
+   finite + traversal + top1 identical + full-logit max error /
+   rel-L2 under a frozen tolerance (top1 alone can agree while
+   the other 248k logits diverge materially);
 f. 2-token cached check;
 g. gen32 speed check.
-Only then RE-REGISTER the 30+30 freegen screen naming the NEW
-runtime, on a NEW output path. Old and new rows never merge; the
+Plus, before any 3072-token freegen relaunch: qualify MEMORY
+GROWTH, not just startup fit — M(N) = weights + KV/state(N) +
+workspace + reserve; measure alloc/reserved/free at increasing
+generation lengths first. Only then RE-REGISTER the 30+30 freegen
+screen naming the NEW runtime, on a NEW output path.
+
+Routing invariant is EXACT CONSERVATION (r2 hardening): the set
+of compressed 2D manifest keys must equal the fused-module keys,
+each on its codec's exact class, no missing/duplicate/unexpected/
+wrong-codec routes; per-key route map lands in the qualification
+receipt (verify_routes; the earlier no-detected-fallthrough sweep
+could be evaded by a bad name_fn or omitted module). For the
+old-v-new BLe equivalence rung, raw tensors STAY dense FP32 so
+s16 routing is the only variable; the placement-aware
+generalization (role x codec x placement x representation table —
+embed CPU row-lookup, decoder/lm_head GPU fused, raw dense-dtype
+policy) comes AFTER equivalence is banked. The ~2.8x GEMV
+microbench is kernel-level only — the whole-model recovery
+prediction stays unquantified until gen32. Old and new rows never merge; the
 old B numbers remain behavioral context until runtime equivalence
 is proven.
 

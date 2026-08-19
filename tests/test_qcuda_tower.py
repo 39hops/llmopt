@@ -59,18 +59,43 @@ def _toy_model():
     return m
 
 
-def test_assert_no_fallthrough_raises_on_compressed_dense():
+def test_verify_routes_raises_on_compressed_dense():
     man = {"a.weight": {"codec": "s16", "shape": [4, 4]},
            "b.weight": {"codec": "raw", "shape": [4, 4]}}
     with pytest.raises(RuntimeError, match="fell through to dense"):
-        qt.assert_no_fallthrough(_toy_model(), man,
-                                 name_fn=lambda p: p + ".weight")
+        qt.verify_routes(_toy_model(), man,
+                         name_fn=lambda p: p + ".weight")
 
 
-def test_assert_no_fallthrough_passes_raw_and_unlisted():
-    man = {"b.weight": {"codec": "raw", "shape": [4, 4]}}
-    assert qt.assert_no_fallthrough(_toy_model(), man,
-                                    name_fn=lambda p: p + ".weight") == 0
+def test_verify_routes_conservation_catches_missing_module():
+    """The exact-conservation upgrade: a compressed manifest key with
+    NO corresponding module at all (bad name_fn / omitted layer) must
+    fail, not evade — the old no-fallthrough sweep passed this."""
+    man = {"ghost.weight": {"codec": "s16", "shape": [4, 4]},
+           "b.weight": {"codec": "raw", "shape": [4, 4]}}
+    m = torch.nn.Sequential()
+    m.add_module("b", torch.nn.Linear(4, 4, bias=False))
+    with pytest.raises(RuntimeError, match="route conservation failed"):
+        qt.verify_routes(m, man, name_fn=lambda p: p + ".weight")
+
+
+def test_verify_routes_passes_raw_only_and_exempt():
+    man = {"b.weight": {"codec": "raw", "shape": [4, 4]},
+           "io.weight": {"codec": "s16", "shape": [4, 4]}}
+    m = torch.nn.Sequential()
+    m.add_module("b", torch.nn.Linear(4, 4, bias=False))
+    # io handled by a dedicated path (no module named io) -> exempt
+    assert qt.verify_routes(m, man, name_fn=lambda p: p + ".weight",
+                            exempt=("io.weight",)) == {}
+
+
+def test_expected_compressed_selects_2d_w4_s16_only():
+    man = {"a": {"codec": "w4", "shape": [8, 8]},
+           "b": {"codec": "s16", "shape": [8, 8]},
+           "c": {"codec": "raw", "shape": [8, 8]},
+           "d": {"codec": "s16", "shape": [64]},
+           "e": {"codec": "excluded", "shape": [8, 8]}}
+    assert qt.expected_compressed(man) == {"a": "w4", "b": "s16"}
 
 
 def test_fused_s16_linear_shape_contract_no_cuda():

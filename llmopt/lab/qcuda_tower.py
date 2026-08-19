@@ -137,27 +137,52 @@ def plan_residency(entries, free_bytes: int, reserve_frac: float = 0.15):
     return plan
 
 
-def assert_no_fallthrough(model, manifest: dict, name_fn=None) -> int:
-    """The executable invariant: after module surgery, no module that
-    the manifest marks w4/s16 may remain an ordinary nn.Linear.
+def expected_compressed(manifest: dict) -> dict:
+    """Manifest keys that MUST run compressed: every 2D w4/s16 entry.
+    Returns {key: codec}."""
+    return {k: e["codec"] for k, e in manifest.items()
+            if isinstance(e, dict) and e.get("codec") in ("w4", "s16")
+            and len(e.get("shape", [])) == 2}
+
+
+def verify_routes(model, manifest: dict, name_fn=None,
+                  exempt=()) -> dict:
+    """The executable invariant, as EXACT CONSERVATION (not merely
+    "no detected fallthrough" — a bad name_fn or missing module must
+    fail, not evade): the set of compressed 2D manifest keys equals
+    the set of fused-module keys, each on its codec's exact class
+    (w4 -> FusedW4Linear, s16 -> FusedS16Linear), no missing,
+    duplicate, unexpected, or wrong-codec route. `exempt` names
+    manifest keys handled by dedicated non-nn.Module paths (e.g. an
+    embed row-gather); they must still not survive as nn.Linear.
     name_fn maps a module path to its manifest key (identity when
-    None). Returns the number of compressed-routed modules checked."""
-    checked = 0
+    None). Returns the per-key route map for the receipt."""
+    want = expected_compressed(manifest)
+    cls_of = {"w4": FusedW4Linear, "s16": FusedS16Linear}
+    routes: dict[str, str] = {}
     for path, mod in model.named_modules():
-        if not isinstance(mod, torch.nn.Linear):
-            continue
         key = (name_fn(path) if name_fn else path)
-        e = manifest.get(key if isinstance(key, str) else "")
-        if e is None:
-            continue
-        if e.get("codec") in ("w4", "s16"):
-            raise RuntimeError(
-                f"REFUSING: compressed tensor {key} ({e['codec']}) "
-                f"fell through to dense nn.Linear at {path}")
-    for path, mod in model.named_modules():
         if isinstance(mod, (FusedW4Linear, FusedS16Linear)):
-            checked += 1
-    return checked
+            if key in routes:
+                raise RuntimeError(f"REFUSING: duplicate route {key}")
+            routes[key] = type(mod).__name__
+        elif isinstance(mod, torch.nn.Linear) and key in want:
+            raise RuntimeError(
+                f"REFUSING: compressed tensor {key} ({want[key]}) "
+                f"fell through to dense nn.Linear at {path}")
+    need = {k: v for k, v in want.items() if k not in exempt}
+    missing = sorted(set(need) - set(routes))
+    unexpected = sorted(set(routes) - set(want))
+    if missing or unexpected:
+        raise RuntimeError(f"REFUSING: route conservation failed — "
+                           f"missing {missing[:5]} ({len(missing)}), "
+                           f"unexpected {unexpected[:5]} "
+                           f"({len(unexpected)})")
+    wrong = sorted(k for k in routes
+                   if routes[k] != cls_of[want[k]].__name__)
+    if wrong:
+        raise RuntimeError(f"REFUSING: wrong-codec routes {wrong[:5]}")
+    return routes
 
 
 def fused_module(entry: dict, buf: bytes):
