@@ -35422,3 +35422,64 @@ significance); "interference reappears" is a two-surface
 DESCRIPTION, not an adjudicated claim — a registered
 interference rung would need its own bars.
 
+## AMENDMENT QWEN-MODEL2-FOURTH-PICK-SIGN: the observation's convention sentence and one reading are wrong — the values are house-convention improvements (base minus repaired, positive = improvement), so mid|PK IMPROVES K; arithmetic unchanged (2026-08-19, mac)
+
+Amends OBSERVATION QWEN-MODEL2-FOURTH-PICK (RESULTS L35392;
+GPT-relay catch, verified in-house against the receipts). The
+booked table's VALUES are correct and unchanged:
+  late | PX:  dX = -0.01433   dK = +0.03380
+  mid  | PK:  dX = +0.06653   dK = +0.01381
+but they are computed base-minus-result (X_PX - X_C etc.), which
+is the house improvement convention used by every LBAND/MODEL-2
+marginal (positive = the added band IMPROVES the metric). The
+observation's "positive = the added band increases the quantity"
+sentence inverts that and its mid|PK reading followed the wrong
+sign: dK = +0.01381 means the mid band IMPROVES K on the way to
+C, not "costs K".
+
+CORRECTED READING (descriptive, same fences): mid|PK improves
+BOTH metrics (dX +0.0665, dK +0.0138) — C strictly dominates PK
+on the held-out surface, and PK is not on any frontier once C
+exists. late|PX is the genuine trade: X worsens (-0.0143, the
+interference sign) while K improves (+0.0338). The Pareto
+comparison at the four-arm frontier is PX v C — PX holds the
+best X (0.3806 v 0.3950), C the best K (0.2000 v 0.2338) — and
+the "endpoint on neither metric's frontier from its own
+predecessor" sentence of the observation is WITHDRAWN for the PK
+side (C dominates its PK predecessor); it survives only as the
+PX-side statement that finishing the tower from PX costs X.
+
+## AMENDMENT QWEN-RESIDUAL-STRUCTURE-0-EXECUTION: registered machine was wrong (wsl -> mac), one internal sample-count typo, and bar 5 relabeled before receipts land; bars and producer unchanged (2026-08-19, mac)
+
+Amends PRE-REG QWEN-RESIDUAL-STRUCTURE-0 (RESULTS L35327),
+disclosed BEFORE the census receipt exists (the run is in flight;
+GPT-relay catches, each verified in-house):
+
+1. EXECUTION DEVIATION: the pre-reg registered "3080 WSL, CPU
+   only". The 3080's ~/qwen_vendor holds tokenizer/config only —
+   the 52 GB vendor BF16 shards and arm A both reside on the MAC,
+   so the census launched there (Mac CPU, arm A re-verified
+   against the frozen artifact_digest_A chain pre-launch, smoke
+   receipt on _smoke paths). CPU-only weight-space arithmetic —
+   no gate, no X/K, no cross-device comparison is touched; the
+   machine line is corrected, not rewritten in place.
+2. SAMPLE-COUNT TYPO: the FENCES paragraph says "20-tensor
+   sample"; the instrument paragraph and the committed producer's
+   SVD_SAMPLE_SPEC say 12. The producer (committed fa4bc82,
+   pre-launch) governs: 12 tensors.
+3. BAR 5 RELABEL: the family pool is count-weighted over ALL
+   tensors of the family INCLUDING the target, so the registered
+   quantity is a SELF-INCLUSIVE family-consensus similarity, not
+   cross-layer predictability (a tensor contributes to the pool
+   it is compared against). The bar's number and threshold stand
+   as registered; only the name sharpens. A post-hoc leave-one-out
+   pool cosine will be computed alongside the booking from the
+   saved per-tensor tables plus per-tensor code counts (counts
+   recomputable from A's payloads alone; no vendor reread) and
+   reported as descriptive color, never substituted into bar 5.
+4. VENDOR ORACLE PIN: R's oracle is the vendor BF16 bytes, which
+   the pre-reg pinned only through the vendor index path. The
+   actual shard bytes are being hashed to
+   logs/qwenresidual/vendor_shard_sha256.txt (18 shards + index)
+   and the sidecar books with the census receipt.
+
