@@ -35387,3 +35387,38 @@ GPU job (disjoint resources, no gate comparison touches either);
 SMOKE mode writes census_smoke paths only. If the vendor read or
 decode alarms, book INSTRUMENT-NOT-RUN.
 
+## OBSERVATION QWEN-MODEL2-FOURTH-PICK: the fourth-pick conditional marginals fall out of the booked receipts (C = PX+late = PK+mid) — from PX, the late band WORSENS X (-0.0143) while buying K (+0.0338); no new run, POST-HOC and descriptive only (2026-08-19, mac)
+
+DERIVED, not measured fresh: every number below is arithmetic on
+the four frozen MODEL2 receipts (logs/qwenmodel2/score_*.json,
+VERDICT QWEN-MODEL2-ALLOC-1) using the census-lattice identities
+C = PX + late-band = PK + mid-band. NOTHING here was
+pre-registered; no bar reads these; a PROSPECTIVE fourth-pick
+claim would require a fresh surface, exactly like MODEL-2 itself.
+
+Conditional marginals on the held-out surface (positive = the
+added band increases the quantity; X and K are losses, so
+negative dX is an improvement):
+  late | PX:  dX = -0.01433   dK = +0.03380
+  mid  | PK:  dX = +0.06653   dK = +0.01381
+
+READING (descriptive): from the X-optimal three-pick state PX,
+spending the fourth 461,276,672 bytes on the late band makes
+corpus-X WORSE by 0.0143 nats — the LBAND interference cell that
+did not reproduce at the third pick (+0.0065, sub-centinat)
+reappears at the fourth, above a centinat — while buying the
+usual prefix-K (+0.0338 toward C's best-of-four K). Symmetric
+read: from PK, the mid band costs K (+0.0138) on the way to C's
+X. The endpoint C is on neither metric's frontier from its own
+predecessor: at the fourth pick the two metrics are in direct
+trade, which is why PX beats C on X (booked unregistered contrast)
+while C keeps the best K.
+
+FENCES: post-hoc arithmetic on booked receipts, single surface,
+single arm per cell, no floors re-derived (the receipts' f_X/f_K
+carry; both dX values are hundreds of f_X, the dK values
+tens-to-hundreds of f_K — numerical-sensitivity fences, never
+significance); "interference reappears" is a two-surface
+DESCRIPTION, not an adjudicated claim — a registered
+interference rung would need its own bars.
+
