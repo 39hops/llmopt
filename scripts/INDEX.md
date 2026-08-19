@@ -2991,6 +2991,15 @@ QWEN-MODEL1-TREE scorer: X/K for one artifact arm v the locked teacher.
 - `load_record(name: str, man_rec: dict) -> np.ndarray`
 - `main()`
 
+### scratch/qwen_model2_adjudicate.py
+QWEN-MODEL2-ALLOC-1 observations builder + adjudication.
+
+- `_m(value, metric, population, aggregation, provenance='')`
+- `_frozen_chain_sha(arm)`
+- `compose_violations(a, c, rc_a, frozen)`
+- `build_observations(rc, comp)`
+- `main()`
+
 ### scratch/qwen_qualify.py
 Thin CLI over llmopt.lab.qartifact — the qualification ladder.
 
