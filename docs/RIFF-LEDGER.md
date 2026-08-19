@@ -6733,3 +6733,40 @@ honest status column).
   run; CCE is inapplicable to our full-logit teacher ORACLE records
   but applies to any large-vocab hard-target LM training generally
   (full-distribution KL is a different, though chunkable, object).
+- **BANKED (2026-08-19): CHEAP-READOUT-CENSUS — does a low-precision
+  head preserve the teacher's token choice inside a small candidate
+  set?** (GPT seat, out of the 2k-tok/s roofline discussion; house
+  pricing). Qwen's lm_head is 1.27B weights, functionally important
+  (io attribution: head carries prefix-K) AND touched every token —
+  a bandwidth floor no kernel removes. The census: R_k = P(teacher
+  top1 inside the CHEAP head's top-k) and teacher-mass captured, for
+  k in {16, 64, 256, 1024}, cheap head = arm A's w4 lm_head rows v
+  the fp16 teacher records. ZERO new model runs: teacher logits
+  records (logs/qwenteacher_v2 + _m2) and A's head payload already
+  exist; the census is arithmetic on saved artifacts + one w4
+  decode. If R_256 ~ 1, a coarse-route-then-exact-rerank readout
+  (static 248k vectors — a CLEANER retrieval problem than the
+  attention vector-DB riff) replaces the full-precision 248k sweep.
+  FENCES: candidate-set recall is NOT generation equivalence
+  (sampling/margins live in the tail); the RK-census lesson carries
+  — measure capture before building any router; per-surface, both
+  X and K classes of positions reported separately.
+- **BANKED (2026-08-19): TRAFFIC-BUDGETED-ARCH — prototype the
+  bytes-moved-per-accepted-token objective at HOUSE scale** (Artin's
+  "what could we even get" + GPT's architecture sketch; house
+  scoping). The 2k-tok/s regime needs the assumption killed that
+  one emitted token costs one full weight pass; published parts
+  exist (speculative decoding 2-3x, Medusa 2.2-3.6x, MoD, DeepSeek
+  V3's 671B-total/37B-active + multi-token objective) but nobody
+  trains 27B here. The HOUSE version: train small conditional-
+  capacity models (mathnative substrate, sympy oracle) with the
+  explicit objective L_teacher + lambda * bytes_moved, and measure
+  the metric the whole program points at: TEACHER FIDELITY PER BYTE
+  MOVED PER ACCEPTED TOKEN. The allocation results (io/early-band
+  value, metric-split, band marginals) become design data, not just
+  compression facts. FENCES: multiplicative speedup stacks (route x
+  speculate x kernel) multiply BEST cases — the factors degrade
+  each other's ceiling (routed targets change drafter fidelity;
+  acceptance falls on hard tokens); any capability claim runs
+  through the oracle, never through weight/byte counts; 27B-scale
+  training is out of scope on house hardware, permanently.
