@@ -3892,6 +3892,21 @@ RoPE value oracle — exact expectations, no thresholds.
 - `check_inv_freq(actual, theta: float, dim: int, rtol: float=1e-05) -> None`
 - `check_cos_sin(cos, sin, theta: float, dim: int, positions=POSITIONS, rtol: float=0.0001) -> None` — cos/sin: [..., n_pos, dim] as emitted by the rotary module
 
+### llmopt/lab/qscore.py
+X/K scoring core for the Qwen artifact tree (lab adoption).
+
+- `log_softmax(logits: np.ndarray) -> np.ndarray` — Row-wise log-softmax in fp64 with max subtraction (-METRIC 7).
+- `mean_ce(logits: np.ndarray, ids, v_live: int) -> float` — Mean CE over logits[:-1] v ids[1:], live vocab. NaN/inf REFUSE.
+- `mean_forward_kl(t_logits: np.ndarray, a_logits: np.ndarray, v_live: int) -> float` — Mean over positions of KL(teacher || arm), live vocab, on the
+- `perturb_ulp(a_fp16: np.ndarray, up: bool) -> np.ndarray` — Move every fp16 value one ulp toward +/- inf (the registered
+- `sensitivity_floor(fn, rec_fp16: np.ndarray) -> float` — max |fn(perturbed) - fn(record)| over the +-1ulp perturbations.
+- `margin_bin(m: float)`
+- `teacher_margins_top1(t_logits_fp16: np.ndarray, v_live: int)` — Teacher top1 ids and (top1-top2) logit margins, fp32 upcast,
+- `flip_table(t_top1, margins, a_top1)` — Per-margin-bin flip counts: [n_positions, n_flips] per bin.
+- `sha_arr(a: np.ndarray) -> str`
+- `fsha(p: str) -> str`
+- `teacher_receipt_block(man_t: dict, teacher_dir: str) -> dict` — Teacher provenance block for a scorer receipt, with the renamed
+
 ### llmopt/lab/runfiles.py
 Moved to llmopt.runs.runfiles (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 
