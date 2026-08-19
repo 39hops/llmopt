@@ -35588,3 +35588,47 @@ vendor_upstream_check.txt. tables_A.npz (1.6 MB binary) stays
 untracked per the logs doctrine; it is pinned by sha in
 loo_A.json (ebc27588..).
 
+## OBSERVATION QWEN-BLE-FREEGEN-1-ABORT: OPERATIONAL/RESOURCE ABORT, bars UNADJUDICATED — the fused runtime routes only w4 to compressed execution, so BLe's 48 promoted s16 tensors ran as 6.875 GiB dense FP32 and the screen paced at 0.56 tok/s (one row in 91 min); killed on Artin's GO after 1 of 60 items (2026-08-19, wsl)
+
+Closes the FIRST ATTEMPT at PRE-REG QWEN-BLE-FREEGEN-1 (RESULTS
+L35281) without adjudication. The pre-reg's INSTRUMENT-NOT-RUN
+clause named OOM specifically and is NOT stretched to cover this:
+the instrument RAN and produced one valid row. Both bars are
+UNADJUDICATED — no bar outcome of any kind is booked, and the
+pre-reg stays open for a re-registered screen on a qualified
+runtime (the replacement pre-reg will name its runtime
+explicitly; rows are never merged across runtimes).
+
+WHAT HAPPENED (all preserved: logs/qweneffort/ble_freegen.log,
+quant_rows_BLe.jsonl — 1 row, killed cleanly, GPU freed to
+305 MiB): item #0 (nothink, diff family) generated to the 3072
+token wall in 5467.9 s = 0.56 tok/s v B's 10.2 on the same
+driver and machine — an ~18x pace collapse projecting the 60-item
+screen at 3-4 days. The row itself is DESCRIPTIVE instrument
+evidence only (correct=false on a truncated generation; it feeds
+no bar and will not be reused in the replacement screen).
+
+MECHANISM (verified at source, scratch/qwen_cuda_rung4.py, before
+this booking): the module surgery replaces only decoder nn.Linears
+whose manifest codec == "w4" with FusedW4Linear (L318); every
+other layer param falls through to cpu_decode(...).cuda() as
+ordinary dense FP32 (L338). B had exactly 2 s16 tensors (io, both
+handled by dedicated paths — the s16 lm_head runs the fused
+GEMV). BLe adds 48 promoted s16 decoder tensors: 1,845,493,760
+weights x 4 bytes = 6.875 GiB of dense FP32 materialized from a
+0.873 GiB s16 payload, on a 10 GiB card already carrying the w4
+tower — the census arithmetic from compose_BLe (461,276,672
+bytes added s16-v-w4) confirms the tensor count and byte figures.
+nvidia-smi read 9,924 MiB used at 100% util during the crawl;
+the paging/system-memory-traffic profile is an open diagnosis
+item for the runtime rebuild, not asserted here.
+
+READING: an instrument gap, not a BLe property — no free-gen
+quantity of BLe was measured beyond the one descriptive row. The
+executable invariant this incident buys: a compressed 2D layer
+tensor must NEVER silently fall through to dense nn.Linear; the
+replacement runtime fails closed on that condition and plans
+runtime residency (representation bytes per tensor v
+mem_get_info) before build. Unblocking program spec'd at
+docs/superpowers/specs/2026-08-19-qcuda-tower-runtime.md.
+

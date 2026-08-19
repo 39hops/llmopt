@@ -6663,3 +6663,15 @@ honest status column).
   Attribution: Artin (the uplift arrow, "effect on thinking"
   framing), house (init-from-linear + distill-to-parity shape,
   depth-targeting link, fences).
+- **BANKED (2026-08-19): W4-GROUP-DOT — one-index/4-weight kernel
+  dot for the w4 GEMV** (GPT seat, out of the BLE-FREEGEN abort's
+  runtime review). The w4 codec stores one u8 index per GROUP of 4
+  weights, but the current qcuda GEMV logically reloads that index
+  for four scalar elements; a variant that loads the index once and
+  dots the 4-vector against 4 x elements may cut instruction/gather
+  overhead. Same shape for s16: one u8 packs TWO codes sharing a
+  block scale — load once, unpack hi/lo, two multiplies. Fences:
+  benchmark against the current parity-gated qcuda kernels on real
+  shapes, strict parity gate, never promote from intuition; phase-2
+  work behind the qcuda-tower routing fix (spec
+  2026-08-19-qcuda-tower-runtime).

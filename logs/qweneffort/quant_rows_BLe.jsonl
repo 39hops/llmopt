@@ -1,0 +1,1 @@
+{"arm": "BLe", "cell": "nothink", "id": 0, "family": "diff", "correct": false, "answer": null, "truth": "9*(-x**4*sin(x) + 8*x**3*cos(x) + 12*x**2*sin(x) - 2*exp(x)*sin(x))", "think_terminated": false, "think_tokens": null, "out_tokens": 3072, "truncated": true, "wall_s": 5467.9, "tok_s": 0.56, "code_commit": "679f335", "device_actual": "NVIDIA GeForce RTX 3080", "greedy": true}

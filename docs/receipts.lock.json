@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "first local materialization of the 3080-side BLE-FREEGEN abort receipts (verbatim pull of ble_freegen.log + quant_rows_BLe.jsonl; remote originals unchanged)"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -675,6 +679,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qweneffort/ble_freegen.log": {
+   "bytes": 1543,
+   "exists": true,
+   "local_only": true,
+   "sha256": "259ca1855834d6ab7658baebef670c9bbb92f42d8bad1ab586d14ca3a743205f",
+   "source": "results",
+   "tracked": false
+  },
   "logs/qweneffort/quant_rows_B.jsonl": {
    "bytes": 21661,
    "exists": true,
@@ -836,34 +848,30 @@
   "logs/qwenresidual/census_A.json": {
    "bytes": 34182,
    "exists": true,
-   "local_only": true,
    "sha256": "e31d39d4500a98f2f63bd1d13119efe2eff231fa5bf207ba79a78b4dff02c83b",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwenresidual/loo_A.json": {
    "bytes": 32817,
    "exists": true,
-   "local_only": true,
    "sha256": "259f79ef9e7587c952ff72d5e2aa0b8d66a701901e1a3d018e98c0551ff8a968",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwenresidual/vendor_shard_sha256.txt": {
    "bytes": 1877,
    "exists": true,
-   "local_only": true,
    "sha256": "ae25069ded106a79232e481566db0a9292bc7ce00890a34f339eb7b8ac55ca0b",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwenresidual/vendor_upstream_check.txt": {
    "bytes": 513,
    "exists": true,
-   "local_only": true,
    "sha256": "123d48e3e172e5ff937054e97ee08d71363a92892fe9b26e7029579b8b6a7e67",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwenrouter/capture_arm_meta.json": {
    "exists": true,
