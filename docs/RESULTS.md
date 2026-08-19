@@ -35712,3 +35712,51 @@ planner generalization and kernel-geometry work may proceed as
 phase 2; the BLE-FREEGEN re-registration names THIS runtime and a
 NEW output path when it fires.
 
+## PRE-REG QWEN-BLE-FREEGEN-2: the BLe free-generation deployment screen, re-registered on the QCUDA-TOWER runtime (equivalence banked; the FREEGEN-1 attempt closed unadjudicated on the dense-fallthrough runtime) (2026-08-19, wsl)
+
+Re-registration of the screen PRE-REG QWEN-BLE-FREEGEN-1 opened
+and OBSERVATION -ABORT closed without adjudication. The QUESTION
+and BARS are unchanged; the INSTRUMENT is new and named:
+
+Instrument: scratch/qwen_effort_tower.py — same items (imported
+QWEN-EFFORT-0 generator, same string seed), cells (nothink,
+xhigh), N=30/cell, MAX_TOK 3072, greedy, eos pair, row schema —
+but the model builds through qwen_tower_ladder.build_tower(),
+the qcuda-tower runtime whose old-v-new equivalence is banked
+(OBSERVATION QWEN-TOWER-EQUIVALENCE-0: e parity 14.1x/7.3x
+inside frozen tolerances, f token2 identical, g 7.11 tok/s) and
+whose memory growth to 3072 tokens is qualified by
+logs/qcudatower/ladder_mem.json BEFORE this registration. Rows
+land on the FRESH path logs/qweneffort2/tower_rows_BLe.jsonl —
+the FREEGEN-1 abort row is descriptive evidence only and never
+merges with these rows. Artifact ~/qwen_whole0t/BLe, identity
+re-checked against the frozen chain by the build's qualifier.
+
+BARS (identical to FREEGEN-1):
+1. TERMINATION: closed think blocks at xhigh >= 1/30 (B: 0/30).
+2. COMPETENCE: total correct across both cells >= 1/60 (B: 0/60).
+
+REFUTED-IF: both bars NO-FIRE — the early-band repair does not
+reach the deliberation loop; BLe stays a scored reference arm and
+is NOT promoted toward deployment.
+
+REGISTERED PRIOR: carried unchanged from FREEGEN-1 (it predated
+any BLe free-generation evidence and the one abort row feeds no
+bar): bar 1 FIRES, bar 2 called FIRE at low single digits;
+termination recovers before correctness.
+
+FENCES: free-generation chat reads on the CUDA leg; a bar-2 FIRE
+at 1/60 reads "escaped total collapse", NEVER deployment
+readiness (deployment promotion needs its own registered case);
+single seed, greedy, non-frozen prompts; the B comparison rows
+(logs/qweneffort/quant_rows_B.jsonl) were produced by the OLD
+rung4 runtime — runtime equivalence on BLe is banked, but the B
+rows themselves were never re-run on the tower, so B-v-BLe reads
+carry a runtime-provenance caveat alongside the arm difference;
+external mlx q4 fence carried. Memory-growth qualified:
+ladder_mem.json curve flat to 3072 tokens (alloc 7.35 -> 7.72
+GiB, free floor 0.65 GiB, sustained ~9.9 tok/s), so the wall
+estimate is ~3-5 h; if the run dies operationally, book the
+attempt honestly and keep bars unadjudicated (the FREEGEN-1
+pattern).
+

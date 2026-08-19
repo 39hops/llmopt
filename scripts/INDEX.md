@@ -2949,6 +2949,12 @@ QWEN-EFFORT-QUANT-0: does compression damage the deliberation loop before it dam
 - `_load(name, rel)`
 - `main()`
 
+### scratch/qwen_effort_tower.py
+Free-generation screen on the QCUDA-TOWER runtime (the BLE-FREEGEN-2 instrument; spec 2026-08-19-qcuda-tower-runtime).
+
+- `_load(name, rel)`
+- `main()`
+
 ### scratch/qwen_family_probe.py
 QWEN-FAMILY-PROBE-0: cheapest acceptable RATE per non-FFN family.
 
@@ -3111,6 +3117,7 @@ qcuda-tower qualification ladder, steps d-g (3080; spec 2026-08-19-qcuda-tower-r
 - `step_f_old()`
 - `step_f_new()`
 - `step_g()`
+- `step_mem()` — Memory-growth qualification (spec: M(N) = weights + KV/state(N)
 
 ### scratch/qwen_tree_adjudicate.py
 QWEN-MODEL1-TREE observations builder + mechanical tree walker.
