@@ -57,6 +57,11 @@ for _b in "eml":
     RECIPES[f"FL{_b}"] = {"base": "F", "donor": "C",
                           "mark": ".linear_attn.", "layers": _BAND[_b],
                           "n_expected": 48}
+# QWEN-MODEL2-ALLOC-1: third-pick arms from base FLe
+RECIPES["PX"] = {"base": "FLe", "donor": "C", "mark": ".linear_attn.",
+                 "layers": _BAND["m"], "n_expected": 48}
+RECIPES["PK"] = {"base": "FLe", "donor": "C", "mark": ".linear_attn.",
+                 "layers": _BAND["l"], "n_expected": 48}
 
 
 def promoted_keys(base_man: dict, donor_man: dict, mark: str,

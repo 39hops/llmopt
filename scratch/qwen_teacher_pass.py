@@ -40,8 +40,14 @@ import torch
 SMOKE = os.environ.get("SMOKE", "0") == "1"
 SUF = "_smoke" if SMOKE else ""
 VDIR = os.path.expanduser("~/qwen_vendor")
-OUT = f"logs/qwenteacher_v2{SUF}"       # v1 quarantined (zeroed RoPE)
-EV = "evals/qwen_model1"
+# TEACHER_OUT/EV_DIR envs added 2026-08-18 for the MODEL-2 held-out
+# surface (logs/qwenteacher_m2 over evals/qwen_model2); defaults
+# unchanged — the frozen v2 pass is reproducible verbatim.
+OUT = os.environ.get("TEACHER_OUT",
+                     f"logs/qwenteacher_v2{SUF}")  # v1 quarantined
+if SMOKE and not OUT.endswith("_smoke"):
+    OUT += "_smoke"
+EV = os.environ.get("EV_DIR", "evals/qwen_model1")
 REVISION = "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
 MAX_NEW = 8 if SMOKE else 256
 

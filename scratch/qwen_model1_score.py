@@ -33,8 +33,16 @@ import time
 
 import numpy as np
 
-TEACHER_DIR = "logs/qwenteacher_v2"
-TEACHER_COMMIT = "0ca4151"
+# Per-surface teacher pins (2026-08-18, MODEL-2 held-out surface):
+# TEACHER_DIR selects the surface; the commit pin is looked up from
+# this source-frozen map, never from an env, so a wrong-teacher run
+# still fails closed. m2 pin filled when its pass lands.
+TEACHER_DIR = os.environ.get("TEACHER_DIR", "logs/qwenteacher_v2")
+TEACHER_PINS = {"logs/qwenteacher_v2": "0ca4151"}
+if TEACHER_DIR not in TEACHER_PINS:
+    raise SystemExit(f"REFUSING: no source-frozen pin for teacher "
+                     f"dir {TEACHER_DIR}")
+TEACHER_COMMIT = TEACHER_PINS[TEACHER_DIR]
 REVISION = "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
 EV = "evals/qwen_model1"
 MARGIN_EDGES = [0.0, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0, 2.0, 5.0, float("inf")]
@@ -190,13 +198,16 @@ def load_record(name: str, man_rec: dict) -> np.ndarray:
 def main():
     smoke = os.environ.get("SMOKE", "0") == "1"
     suf = "_smoke" if smoke else ""
-    out_dir = f"logs/qwenmodel1{suf}"
+    # OUT_DIR selects the receipt surface (logs/qwenmodel2 for the
+    # held-out MODEL-2 scores); smoke isolation composes on top
+    out_dir = os.environ.get("OUT_DIR", "logs/qwenmodel1") + suf
     arm = os.environ["ARM"]
     # A/B/C = WHOLE-0T compile arms; F/L/Q = ATTN-ATTRIB-1; D/E =
     # IO-ATTRIB-1; BL*/FL* = LBAND-1 (chains emitted by
     # scratch/qwen_recompose.py)
     assert arm in ("A", "B", "C", "F", "L", "Q", "D", "E",
-                   "BLe", "BLm", "BLl", "FLe", "FLm", "FLl"), arm
+                   "BLe", "BLm", "BLl", "FLe", "FLm", "FLl",
+                   "PX", "PK"), arm
     art = os.path.expanduser(os.environ["ART_DIR"])
     os.makedirs(out_dir, exist_ok=True)
     # RESCORE=1 writes score_<ARM>_rescore.json alongside the frozen
