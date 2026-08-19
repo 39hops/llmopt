@@ -21,10 +21,9 @@ from __future__ import annotations
 import torch
 
 from llmopt.lab.qcodec import BLOCK, expected_len
-from llmopt.lab.qcuda import (HAVE_TRITON, S16Gpu, W4Gpu,  # noqa: F401
-                              FusedW4Linear, require_triton, tl, triton)
-
-SUB127_F32 = 5.877471754111438e-39  # exact fp32 2^-127 (qcuda.SUB127)
+from llmopt.lab.qcuda import (HAVE_TRITON, S16Gpu, SUB127,  # noqa: F401
+                              W4Gpu, FusedW4Linear, require_triton,
+                              tl, triton)
 
 
 @triton.jit
@@ -36,7 +35,7 @@ def s16_decode_kernel(code_ptr, lv_ptr, exp_ptr, out_ptr, n,
     offs = pid * BLK + tl.arange(0, BLK)
     m = offs < n
     e = tl.load(exp_ptr + offs // 128, mask=m, other=127).to(tl.int32)
-    s = tl.where(e == 0, SUB127_F32,
+    s = tl.where(e == 0, SUB127,
                  (e << 23).to(tl.float32, bitcast=True))
     byte = tl.load(code_ptr + offs // 2, mask=m, other=0).to(tl.int32)
     nib = tl.where(offs % 2 == 0, byte >> 4, byte & 0xF)
