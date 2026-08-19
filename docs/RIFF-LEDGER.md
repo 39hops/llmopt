@@ -6692,19 +6692,44 @@ honest status column).
   computation later, under a fidelity constraint — gradient
   checkpointing, the residual correction-field idea, sparse-KV
   routing, and compressed-weight decode are all instances.
+  The candidate law, stated operationally (GPT correction 2026-08-19:
+  "pay bytes v compute" was too narrow — fusion reduces both):
+  MINIMIZE MATERIALIZED DATA MOVEMENT subject to fidelity + latency
+  constraints; never materialize a representation unless the next
+  computation needs it. Tower abort/recovery = first measured
+  instance; an independent second mechanism required before any
+  THEORY row.
   Named residues, cheapest first:
   (1) DESK: padding-fraction census on house training batches
-  (train_mathnative bucketing) — packing's win is proportional to
-  measured waste; (2) decode-ahead DOUBLE-BUFFERING in the
-  streaming scorers/runtimes (prefetch layer i+1's payload while
-  layer i computes — CPU scorer and CUDA tower both eligible);
+  (train_mathnative bucketing) — an OPPORTUNITY census, zero GPU
+  cost; realized wall recovery depends on linear-v-attention mix,
+  length distribution, and packed-kernel overhead, so packed wall
+  is measured AFTER the census, never inferred from it;
+  (2) DOUBLE-BUFFERING, two distinct shapes: the CPU streaming
+  scorer can literally prefetch payload i+1 during layer i; the
+  CUDA tower's payloads are already VRAM-resident, so its version
+  is decode-AHEAD (decode row chunk i+1 into workspace B while the
+  GEMM consumes chunk A, swap) — profile before assuming overlap
+  wins, decode and GEMM may contend for SM/bandwidth;
   (3) plan_residency -> general MEMORY PLANNER (tensor x codec x
   placement x representation, activations included) — already
   spec'd for weights in 2026-08-19-qcuda-tower-runtime, this bank
   widens the ambition; (4) the decomposed benchmark (HF/TRL+FA2 v
   unsloth, feature-by-feature, dVRAM/dwall per mechanism) — PARKED,
-  3080-days class, needs its own GO. FENCES: their 2x/70% is
-  workload-conditional (HF's own table: 12-74%); VRAM moved to
-  host RAM is not memory saved; their 2x inference claim is v
-  transformers-native, NOT v our qcuda tower — never quote their
-  numbers as portable without a paired in-house run.
+  3080-days class, needs its own GO.
+  SPEED ROOFLINE (the 2k tok/s joke, priced): BLe's compressed GPU
+  payload ~7.38 GB against the 3080's ~760 GB/s gives a fantasy
+  one-pass-per-token decode ceiling ~103 tok/s before any
+  compute/attention/overhead; 2k tok/s would need ~14.8 TB/s of
+  weight streaming. Kernel work has real headroom from ~10 tok/s,
+  but breaking the one-weight-pass-per-token wall is ALGORITHMIC
+  AMORTIZATION — speculative/multi-token acceptance (the house's
+  banked spec-decoding = gate-law thread), never endlessly faster
+  scalar GEMV.
+  FENCES: their 2x/70% is workload-conditional (HF's own table:
+  12-74%); VRAM moved to host RAM is not memory saved; their 2x
+  inference claim is v transformers-native, NOT v our qcuda tower —
+  never quote their numbers as portable without a paired in-house
+  run; CCE is inapplicable to our full-logit teacher ORACLE records
+  but applies to any large-vocab hard-target LM training generally
+  (full-distribution KL is a different, though chunkable, object).
