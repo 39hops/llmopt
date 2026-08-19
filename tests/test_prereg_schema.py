@@ -10,6 +10,7 @@ the booked verdict, one of them is wrong and the suite says so.
 import copy
 import json
 import pathlib
+import sys
 
 import pytest
 
@@ -294,3 +295,31 @@ def test_precedence_without_outcomes_raises():
     doc = _prec_doc()
     with pytest.raises(PreregSchemaError):
         adjudicate_refutation(doc, _prec_obs(0.11))
+
+
+def test_precedence_end_to_end_through_cli(tmp_path):
+    """Integration: scripts/adjudicate.py must compute bar outcomes
+    BEFORE the refutation clause — a precedence-bearing prereg
+    through the canonical CLI (the five library fixtures above
+    cannot catch a mis-ordered entry point)."""
+    import subprocess as sp
+    doc = _prec_doc()
+    obs = _prec_obs(0.11)  # bar 1 misses; predicate would hit
+    pp, op = tmp_path / "p.json", tmp_path / "o.json"
+    pp.write_text(json.dumps(doc))
+    op.write_text(json.dumps(obs))
+    r = sp.run([sys.executable, str(ROOT / "scripts" / "adjudicate.py"),
+                str(pp), str(op)], capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr
+    assert "UNADJUDICATED (precedence: bar 1" in r.stdout
+
+
+def test_precedence_bool_and_duplicate_ids_refused():
+    bad = _prec_doc()
+    bad["refutation_precedence"]["suppressed_unless_bars_fire"] = [True]
+    with pytest.raises(PreregSchemaError):
+        validate(bad)
+    bad2 = _prec_doc()
+    bad2["refutation_precedence"]["suppressed_unless_bars_fire"] = [1, 1]
+    with pytest.raises(PreregSchemaError):
+        validate(bad2)

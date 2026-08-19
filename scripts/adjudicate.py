@@ -34,16 +34,20 @@ def main() -> int:
     a = ap.parse_args()
     prereg = load(a.prereg)
     obs = json.loads(Path(a.observations).read_text())
-    r = adjudicate_refutation(prereg, obs)
-    if r is not None:
-        print(f"REFUTED-IF: {r}")
+    # bars first: refutation_precedence (if registered) reads bar
+    # outcomes, so the refutation line prints after the bars it may
+    # depend on
+    outcomes = adjudicate_prereg(prereg, obs)
     unresolved = 0
-    for o in adjudicate_prereg(prereg, obs):
+    for o in outcomes:
         line = f"BAR {o.bar_id} {o.bar_name}: {o.outcome}"
         if o.reasons:
             line += " [" + "; ".join(o.reasons) + "]"
             unresolved += 1
         print(line)
+    r = adjudicate_refutation(prereg, obs, bar_outcomes=outcomes)
+    if r is not None:
+        print(f"REFUTED-IF: {r}")
     return 0 if unresolved == 0 else 2
 
 

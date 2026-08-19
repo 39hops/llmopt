@@ -161,9 +161,14 @@ def validate(doc: dict) -> dict:
         ids = prec["suppressed_unless_bars_fire"]
         _require(bool(isinstance(ids, list) and ids),
                  "suppressed_unless_bars_fire must be a non-empty list")
+        _require(len(set(ids)) == len(ids),
+                 "suppressed_unless_bars_fire has duplicate bar ids")
         bar_ids = {b.get("id") for b in doc.get("bars", [])
                    if isinstance(b, dict)}
         for i in ids:
+            _require(type(i) is int,
+                     f"precedence bar id {i!r} must be an int "
+                     f"(bools refused: True == 1)")
             _require(i in bar_ids,
                      f"refutation_precedence names unknown bar {i!r}")
     _require(bool(isinstance(doc["arms"], dict) and doc["arms"]),
