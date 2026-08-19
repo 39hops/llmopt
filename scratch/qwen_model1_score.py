@@ -38,7 +38,8 @@ import numpy as np
 # this source-frozen map, never from an env, so a wrong-teacher run
 # still fails closed. m2 pin filled when its pass lands.
 TEACHER_DIR = os.environ.get("TEACHER_DIR", "logs/qwenteacher_v2")
-TEACHER_PINS = {"logs/qwenteacher_v2": "0ca4151"}
+TEACHER_PINS = {"logs/qwenteacher_v2": "0ca4151",
+                "logs/qwenteacher_m2": "ae4b3a2"}
 if TEACHER_DIR not in TEACHER_PINS:
     raise SystemExit(f"REFUSING: no source-frozen pin for teacher "
                      f"dir {TEACHER_DIR}")
