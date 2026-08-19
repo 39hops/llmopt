@@ -1,143 +1,103 @@
-# MODEL-2 design spec (design phase only — registration and launch go through /rung on Artin's GO)
+# MODEL-2 design spec, r2 (design phase only — registration and launch go through /rung on Artin's GO)
 
-Written 2026-08-18 evening on Artin's design GO. Evidence base:
-MODEL-1 tree (INSTRUMENT-ALARM), ATTN-ATTRIB-1, IO-ATTRIB-1,
-LBAND-1 (+alarm diagnosis closure), RK-CENSUS-0, CAPACITY-METER-1
-r2/r3, EFFORT-QUANT-0. Everything below cites booked numbers only.
+Written 2026-08-18 evening on Artin's design GO; r2 same evening
+after a GPT identity catch (verified in-house against the census
+algebra) killed r1's arm set. Evidence base: MODEL-1 tree,
+ATTN-ATTRIB-1, IO-ATTRIB-1, LBAND-1 (+diagnosis closure),
+RK-CENSUS-0, CAPACITY-METER-1 r2/r3, EFFORT-QUANT-0. Booked
+numbers only.
+
+## 0. The r1 identity bug (recorded so it cannot recur)
+
+r1 proposed P1 = "BLe + io". But BLe is BASE B + early band, and
+B is A + the io pair — io is ALREADY INSIDE every B-based arm.
+Census algebra from the receipts: A 402/0 (w4/s16), B 400/2,
+BLe 352/50, FLe 288/114. So "BLe + io" is the EXISTING BLe
+artifact (X 0.433 measured), and r1's desk prediction
+X ~ 0.206 subtracted the io recovery TWICE from B. Likewise
+"P1 + F" is the existing FLe (X 0.3485 measured). Neither is a
+new experiment. Lesson: desk-price arms on the CENSUS LATTICE
+(which keys are s16 in the composed artifact), never on named
+payload sums.
 
 ## 1. What MODEL-2 is
 
-MODEL-1 asked "how damaged is the 2-bit artifact, and does repair
-attribute?" — answered: badly damaged (X_A 1.061, alarm), repair
-attributes with strong structure (io splits by end and metric;
-attention redundant across families; linear repair early-heavy;
-one interference cell). MODEL-2 is the ALLOCATION instrument: given
-a byte budget over repair primitives, does a REGISTERED allocation
-policy beat the flat/aggregate policies at matched spend?
+The allocation instrument: fix B as the allocation baseline
+(io always in — both per-byte orderings put io in the first two
+picks with early-linear); the first two additional picks under
+EITHER metric objective are early-linear + full-attn, whose
+frozen state is FLe (X 0.3485, K 0.2248, measured). MODEL-2 asks
+the THIRD-PICK question at exact iso-spend: which band does the
+next 461,276,672 bytes buy the most of which metric?
 
-## 2. Frozen inputs (already booked, reused verbatim)
+## 2. Arms (prospective, exact-spend, both NEW census states)
 
-- Teacher lock 0ca4151 (v2d), corpus/prefix token lists, X/K
-  scorer (Mac CPU, fp16 record, sensitivity floors), the
-  small-n=30 fence, margin bins.
-- Repair primitives with measured per-byte value (frozen
-  receipts): io pair D/E (0.5920 GiB), full-attn F (0.3905), BLe
-  (0.4296), BLm/BLl, L (1.2887), C-payload family.
-- Standing reference arm: BLe (Artin ruling 2026-08-18; NOT a
-  deployment default — free-gen screen required first).
+- P_X = FLe + mid-linear band   (FLe state + BLm payload keys)
+- P_K = FLe + late-linear band  (FLe state + BLl payload keys)
+Each adds exactly 461,276,672 bytes (manifest-derived constant,
+already the adjudicator's BAND_BYTES). Neither census state
+exists yet (P_X: 240 w4/162 s16; P_K same counts, different
+keys). C is the ENDPOINT of this ladder (FLe + mid + late), not
+a matched control — C's frozen receipts anchor the far end.
 
-## 3. Design requirements (all earned this week, each cites its
-   incident)
+## 3. Registered predictions (transport of the F-conditioned
+   LBAND marginals — this is the science)
 
-R1. TWO-GATE SPLIT (banked at MODEL-1): separate
-    INSTRUMENT-ALARM (data-integrity/assumption breach:
-    bracket, teacher identity, traversal) from
-    LOW-RATE-OUT-OF-RANGE (a registered quantity landing outside
-    its predicted band). MODEL-1 conflated them; LBAND's
-    monotonicity assumption became an alarm that suppressed a
-    clean refutation. MODEL-2 bars carry a "gate_class" note
-    field: sanity gates may suppress refutation; range gates
-    never do.
-R2. refutation_precedence REQUIRED in the machine JSON
-    (engine + CLI shipped a2899e5; five library fixtures + one
-    end-to-end CLI fixture). The precedence names ONLY
-    sanity-class bars.
-R3. REGISTERED OBJECTIVE for any combined ordering: X/GiB and
-    K/GiB orderings DISAGREE on io's rank (X: early-linear 0.933
-    > full-attn 0.802 > io 0.384 > late-linear 0.064; K: io
-    0.227 > early-linear 0.209 > full-attn 0.189 > late-linear
-    0.114). MODEL-2 must register the objective BEFORE pricing
-    arms. Candidate: report X-primary and K-primary allocations
-    as SEPARATE registered arms rather than a weighted scalar —
-    a weighting constant would be a free parameter with no
-    booked justification.
-R4. NO MONOTONICITY ASSUMPTION in sanity brackets for
-    conditional arms: LBAND's FLl cell measured negative
-    marginal X on top of F (bit-identical on pair rescore).
-    Sanity brackets widen to [min(C, base) - 5f, max(base, A) +
-    5f] or drop the upper edge for stacked arms; interference is
-    a RESULT, not an instrument failure. (Forward-only; LBAND
-    stands.)
-R5. Launch invariants (earned 2026-08-18): full-path markers;
-    interpreter pinned in every remote command; compose gate
-    (admissibility minus score-chain) runs pre-score; derived
-    byte spend from manifests, committed before receipts.
-R6. Auditor pair pre-booking, claim_lint with prereg+obs, all
-    receipts force-added at booking, code_commit pinned. Scorer
-    RESCORE mode exists for repeatability checks.
+From the booked conditional table: dX(mid|F) = 0.128,
+dX(late|F) = -0.0037; dK(mid|F) = 0.0235, dK(late|F) = 0.0401.
+If the F-conditioned effects transport to the FLe base:
+- X(P_X) ~ 0.3485 - 0.128  = 0.2205  (would BEAT C's X 0.2486
+  at 74% of C's linear spend — the headline if it holds)
+- K(P_K) ~ 0.2248 - 0.0401 = 0.1847  (improves FLe, NOT
+  predicted to beat C's K 0.1618)
+PRIMARY EXACT-SPEND CROSSOVER (the registered claim):
+  X(P_X) < X(P_K)  AND  K(P_K) < K(P_X)
+— mid is the X pick, late is the K pick, at identical bytes.
+Prediction failure is interaction/transport science (the
+conditioning table does not transport one level up), NEVER an
+instrument alarm.
 
-## 4. Candidate arm sets (desk-priced, nothing composed yet)
+## 4. Bars sketch (frozen at /rung; gate_class now EXECUTABLE —
+   shipped in llmopt/lab/prereg.py with validation + fixtures)
 
-Budget anchor: B's io spend class (~0.59 GiB) and the ~1.0-1.3
-GiB class where BLe+io combinations live.
+- SANITY bars (gate_class "sanity"; the ONLY bars
+  refutation_precedence may name — validator enforces this):
+  teacher identity, traversal 48/16, compose admissibility
+  (base FLe / donor C / band keys / promoted 48 / derived
+  461276672 bytes / chain identity), finite readings. NO
+  behavioral X/K brackets in sanity — r1 had a C-anchored
+  bracket that would have ALARMED ON THE HEADLINE SUCCESS
+  (X(P_X) beating C). Behavioral excursions are RANGE outcomes.
+- RANGE bars (gate_class "range"): the two crossover conjuncts
+  (X and K legs as separate bars, floor-multiple form); transport
+  bands |X(P_X) - 0.2205| etc. as SEPARATE interference-science
+  bars with a registered nat-band, never floors-as-significance.
+- refuted_if predicate: the transport prior is refuted if the
+  crossover INVERTS on both metrics past floors (late beats mid
+  on X AND mid beats late on K). Precedence: sanity bars only.
 
-ARM SET ALPHA ("policy v aggregate", X-primary, ~1.02 GiB):
-- P_X = BLe + io pair (0.4296 + 0.5920 = 1.0216 GiB): the
-  X-primary policy stacks the two highest X/GiB primitives.
-- AGG = L-aggregate truncated? NO — no 1.02 GiB aggregate
-  exists; the honest aggregate control is B+F (existing
-  0.9825 GiB class, X 0.520 measured as F) — near-iso, disclose
-  the 4% byte gap, or compose a fresh matched control.
-- Predicted (from additivity found in IO-ATTRIB, near-additive
-  bars): X(P_X) if independent ~ B - 0.401 - 0.227 = 0.206
-  v C 0.249 — a POLICY ARM PRICED TO BEAT C's X at 40% of C's
-  spend. That is the headline question: does allocation beat
-  uniform upgrade.
-- Interference risk is the science: LBAND says stacking is not
-  free (FLl cell). The near-additivity bars from IO-ATTRIB are
-  the registered prediction; their failure is the finding.
+## 5. Costs (desk)
 
-ARM SET BETA ("K-primary", ~0.59-1.02 GiB): io pair alone is
-already measured (that IS B). K-primary adds BLe to io: same
-composite as ALPHA — the two objectives CONVERGE on the same
-first two picks, differing only in order. This collapses ALPHA/
-BETA into ONE composite arm + the registered per-metric
-predictions. Cheaper design: 1 new compose (BLe+io = "P1"), one
-score, against frozen B, C, F, BLe receipts.
+2 composes on the 3080 (FLe exists there as base; ~2 min each +
+transfers), 2 scores on Mac (~8 min each), auditor pair. Well
+under 1.5 h wall. No GPU-heavy jobs.
 
-ARM SET GAMMA (optional second rung): P1 + F (~1.41 GiB) — does
-the third pick still pay after redundancy? Predicted X ~ 0.206 -
-(F's conditional value | early-linear repaired). The I_X(e) =
--0.229 redundancy says F's value conditional on BLe is ~0.17,
-not 0.28 — a REGISTERED interaction prediction, first real test
-of transporting the conditioning table.
+## 6. Separate threads (explicitly OUT of this rung)
 
-## 5. Bars sketch (to be frozen at /rung registration)
-
-- SANITY (gate_class: sanity, in precedence list): teacher
-  identity, traversal 48/16, R4-widened bracket, compose
-  admissibility (base/donor/mark/keys/derived bytes).
-- PRIMARY (gate_class: range): X(P1) below X(C) (allocation
-  beats uniform at 40% spend) — FIRE = the headline.
-- ADDITIVITY (range): |X(P1) - (X_B - dX_BLe - dX_io)| within a
-  registered band (5f floor multiple for the numerical read + a
-  0.05-nat interference band for the science read, SEPARATE
-  bars — floors are never significance).
-- K analogues as separate bars; per-metric, no combined scalar.
-- refuted_if: the allocation prior is refuted if X(P1) reads
-  ABOVE B - 0.5*(dX_BLe + dX_io) (less than half the independent
-  prediction materializes — interference dominates allocation).
-  Predicate on the P1 receipt; precedence: sanity bars only.
-
-## 6. Costs (desk)
-
-1 compose on 3080 (~2 min + transfer), 1 score on Mac (~8 min),
-GAMMA doubles it. Auditor pair per booking. Total wall well under
-an hour per rung. No GPU-heavy or long jobs; fits any window.
+- BLe free-generation screen: separate deployment OBSERVATION;
+  frozen MODEL-2 registration first so it cannot steer arm
+  selection.
+- OPTIONAL mechanism rung (bank): compose ALe (A + early band,
+  no io) to complete the A/B/ALe/BLe 2x2 and measure the
+  io x early-linear interaction — existing data CANNOT test that
+  additivity because every early reading is conditional on io
+  being present (B-based). Register only if the interaction
+  question earns a slot.
+- Meter/kurtosis stays diagnostic, never allocator (booked 2x).
 
 ## 7. Open decisions for Artin (before /rung)
 
-1. ALPHA/BETA collapse to composite P1 (BLe + io): approve the
-   single-composite design v separate per-objective arms?
-2. GAMMA (P1 + F) same night or second rung?
-3. Control choice: frozen B+F-class receipts as near-iso control
-   (disclose 4% byte gap) v composing a fresh matched control.
-4. The free-gen screen for BLe deployment promotion — separate
-   observation, or fold as a rider on the P1 rung (one mlx/CUDA
-   generation smoke, EFFORT-QUANT harness exists)?
-
-## 8. What this spec is NOT
-
-Not a registration (no bars frozen here), not a launch, no
-composes armed. The kurtosis/meter thread stays out of MODEL-2's
-gates (diagnostic, never allocator — booked twice).
+1. Approve the P_X / P_K third-pick crossover design (r2).
+2. Transport-band width for the range bars (suggest +-0.05 nats
+   around the desk predictions, stated as science bands).
+3. ALe mechanism 2x2: bank only, or register alongside?

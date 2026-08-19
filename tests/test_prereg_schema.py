@@ -239,6 +239,7 @@ def test_refutation_clause_is_machine_scored():
 def _prec_doc():
     doc = json.loads(json.dumps(load(
         ROOT / "docs" / "preregs" / "qwen-rk-census-0.json")))
+    doc["bars"][0]["gate_class"] = "sanity"
     doc["refutation_precedence"] = {"suppressed_unless_bars_fire": [1]}
     return doc
 
@@ -323,3 +324,20 @@ def test_precedence_bool_and_duplicate_ids_refused():
     bad2["refutation_precedence"]["suppressed_unless_bars_fire"] = [1, 1]
     with pytest.raises(PreregSchemaError):
         validate(bad2)
+
+
+def test_precedence_requires_sanity_gate_class():
+    """Two-gate law executable: a range bar (or an unclassed bar)
+    can never suppress refutation."""
+    bad = _prec_doc()
+    bad["bars"][0]["gate_class"] = "range"
+    with pytest.raises(PreregSchemaError):
+        validate(bad)
+    bad2 = _prec_doc()
+    del bad2["bars"][0]["gate_class"]
+    with pytest.raises(PreregSchemaError):
+        validate(bad2)
+    bad3 = _prec_doc()
+    bad3["bars"][0]["gate_class"] = "typo"
+    with pytest.raises(PreregSchemaError):
+        validate(bad3)

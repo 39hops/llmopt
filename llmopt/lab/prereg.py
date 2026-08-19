@@ -102,7 +102,17 @@ REQUIRED_KEYS = PREREG_KEYS - {"note", "refuted_if_predicate",
 # reads FIRE; otherwise the caller receives UNADJUDICATED with the
 # blocking bar named. Requires refuted_if_predicate.
 BAR_KEYS = {"id", "name", "metric", "population", "aggregation",
-            "direction", "value", "arms", "description", "conjuncts"}
+            "direction", "value", "arms", "description", "conjuncts",
+            "gate_class"}
+# gate_class (optional): "sanity" (identity/provenance/traversal/
+# finiteness/treatment-contract checks — MAY suppress refutation via
+# refutation_precedence) or "range" (a registered scientific
+# quantity landing outside its predicted band — NEVER suppresses
+# refutation; an excursion is a result). Two-gate law, banked at
+# MODEL-1 and made executable 2026-08-18: behavioral X/K brackets
+# must not be sanity gates, or a headline success can read as an
+# instrument alarm (the LBAND lesson, forward-only).
+GATE_CLASSES = ("sanity", "range")
 # conjuncts (optional): additional predicates that must ALL hold for
 # the bar to FIRE, each {"measurement": <obs key>, "direction",
 # "value"} sharing the bar's metric contract. Added 2026-08-16
@@ -165,12 +175,18 @@ def validate(doc: dict) -> dict:
                  "suppressed_unless_bars_fire has duplicate bar ids")
         bar_ids = {b.get("id") for b in doc.get("bars", [])
                    if isinstance(b, dict)}
+        by_id = {b.get("id"): b for b in doc.get("bars", [])
+                 if isinstance(b, dict)}
         for i in ids:
             _require(type(i) is int,
                      f"precedence bar id {i!r} must be an int "
                      f"(bools refused: True == 1)")
             _require(i in bar_ids,
                      f"refutation_precedence names unknown bar {i!r}")
+            _require(by_id[i].get("gate_class") == "sanity",
+                     f"refutation_precedence bar {i} must declare "
+                     f"gate_class 'sanity' — range bars never "
+                     f"suppress refutation")
     _require(bool(isinstance(doc["arms"], dict) and doc["arms"]),
              "arms must be a non-empty object")
     _require(isinstance(doc["receipts"], list),
@@ -185,9 +201,14 @@ def validate(doc: dict) -> dict:
         unknown = set(bar) - BAR_KEYS
         _require(not unknown,
                  f"bar {bar.get('id')}: unknown keys {sorted(unknown)}")
-        missing = (BAR_KEYS - {"description", "conjuncts"}) - set(bar)
+        missing = (BAR_KEYS - {"description", "conjuncts",
+                               "gate_class"}) - set(bar)
         _require(not missing,
                  f"bar {bar.get('id')}: missing keys {sorted(missing)}")
+        if "gate_class" in bar:
+            _require(bar["gate_class"] in GATE_CLASSES,
+                     f"bar {bar.get('id')}: gate_class "
+                     f"{bar['gate_class']!r} not in {GATE_CLASSES}")
         _require(bar["id"] not in seen_ids, f"duplicate bar id {bar['id']}")
         seen_ids.add(bar["id"])
         _require(bar["direction"] in DIRECTIONS,
