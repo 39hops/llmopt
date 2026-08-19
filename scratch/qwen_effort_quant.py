@@ -30,7 +30,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(
     os.path.abspath(__file__))))
 
 ARM = os.environ["ARM"]
-assert ARM in ("A", "B", "C", "F", "L", "Q"), ARM
+assert ARM in ("A", "B", "C", "F", "L", "Q", "BLe"), ARM
 os.environ.setdefault("ART_DIR", os.path.expanduser(f"~/qwen_whole0t/{ARM}"))
 MAX_TOK = int(os.environ.get("MAX_TOK", "3072"))
 N = int(os.environ.get("N_ITEMS", "30"))

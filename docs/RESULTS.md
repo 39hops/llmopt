@@ -35278,3 +35278,49 @@ model2_observations.json,model2_verdict.txt,m2_compose.log},
 logs/qwenwhole/artifact_digest_{PX,PK}.txt,
 logs/qwenteacher_m2_pass.log.
 
+## PRE-REG QWEN-BLE-FREEGEN-1: does the early-linear repair move BLe past B's free-generation collapse (0/60, 30/30 unterminated think blocks)? The deployment screen for the standing reference arm (2026-08-19, wsl)
+
+BLe was GO'd as the standing reference arm (RESULTS L35074 rider)
+with a free-generation screen required BEFORE any deployment
+promotion. This registers that screen.
+
+Instrument: scratch/qwen_effort_quant.py, ARM=BLe, on the 3080
+CUDA fused runtime — the SAME driver, item set (imported
+QWEN-EFFORT-0 generator, same string seed), cells (nothink,
+xhigh), N=30 items/cell, MAX_TOK 3072, greedy — that produced
+B's EFFORT-QUANT-0 rows. Driver delta from the a786386 blob that
+ran B: the ARM allowlist gains "BLe" (one tuple literal; no
+numeric path touched). Artifact ~/qwen_whole0t/BLe on the 3080,
+identity checked against the frozen artifact_digest_BLe chain at
+launch. Comparison column: B's booked rows
+(logs/qweneffort/quant_rows_B.jsonl), same machine, same runtime
+class.
+
+BARS:
+1. TERMINATION: closed think blocks at xhigh >= 1/30 (B: 0/30 —
+   every think block ran to the token wall).
+2. COMPETENCE: total correct across both cells >= 1/60 (B: 0/60).
+
+REFUTED-IF: both bars NO-FIRE (0/60 correct AND 30/30
+unterminated at xhigh) — the early-band repair does not reach the
+deliberation loop; BLe stays a scored reference arm and is NOT
+promoted toward deployment; the promotion question closes
+negative for the current artifact set.
+
+REGISTERED PRIOR: partial repair — bar 1 FIRES (some think
+blocks terminate; the early band carries the corpus-X structure
+the loop leans on), bar 2 is a coin flip the house calls FIRE at
+low single digits correct. Termination recovers before
+correctness.
+
+FENCES: free-generation chat reads on the CUDA leg — COLOR for
+capability claims, but the DEPLOYMENT decision registered here is
+gated on these bars by design; nothing here compares against Mac
+CPU X/K quantities; single seed, greedy, non-frozen prompts;
+external mlx q4 30/30 remains a different-codec external
+artifact (fence carried from EFFORT-0/EFFORT-QUANT-0). If the
+BLe build OOMs on the 10 GiB card, book INSTRUMENT-NOT-RUN
+(residency), not a bar outcome. No no-op precondition cell: the
+harness is unchanged from the run that produced the comparison
+rows; the only delta is the arm payload itself.
+
