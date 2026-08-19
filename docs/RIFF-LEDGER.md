@@ -6740,13 +6740,28 @@ honest status column).
   (io attribution: head carries prefix-K) AND touched every token —
   a bandwidth floor no kernel removes. The census: R_k = P(teacher
   top1 inside the CHEAP head's top-k) and teacher-mass captured, for
-  k in {16, 64, 256, 1024}, cheap head = arm A's w4 lm_head rows v
-  the fp16 teacher records. ZERO new model runs: teacher logits
-  records (logs/qwenteacher_v2 + _m2) and A's head payload already
-  exist; the census is arithmetic on saved artifacts + one w4
-  decode. If R_256 ~ 1, a coarse-route-then-exact-rerank readout
-  (static 248k vectors — a CLEANER retrieval problem than the
-  attention vector-DB riff) replaces the full-precision 248k sweep.
+  k in {16, 64, 256, 1024}, cheap head = arm A's w4 lm_head rows.
+  CORRECTED IN PLACE same day (GPT fatal design check, verified at
+  source): the census is NOT zero-run — cheap-head logits =
+  W4_head @ h and no run ever froze final hidden states (the
+  teacher pass saves logits arrays only; scorer receipts save
+  aggregates). The cheapest valid shape is the ARM-STATE census:
+  rerun A on the frozen MODEL-1/MODEL-2 positions saving PRE-head
+  hidden states (minutes-class on the Mac CPU — A's MODEL-1
+  scoring wall was ~483 s), hold each h_A fixed, compute candidate
+  sets under the w4 head, read the teacher's desired token/mass
+  from the frozen teacher logits, and optionally apply the vendor
+  head to the SAME h_A as a control — separating BODY-STATE damage
+  from READOUT ranking damage. The head-only oracle on TEACHER h
+  would need a teacher rerun; not paid first. Two claim levels,
+  never conflated: (1) w4 FULL-VOCAB proposal + exact top-k rerank
+  — R_k validates this (cheap w4 sweep replaces an expensive
+  high-precision sweep); (2) SUBLINEAR router/index + exact rerank
+  — the thing that avoids scanning 248k rows at all; level-1 R_k
+  does NOT prove level 2, whose static-vector router gets its own
+  census if level 1 reads well. Still ahead of ATTN-ROUTER in the
+  queue: static vocab vectors + frozen teacher distributions =
+  the cleaner routing problem.
   FENCES: candidate-set recall is NOT generation equivalence
   (sampling/margins live in the tail); the RK-census lesson carries
   — measure capture before building any router; per-surface, both
@@ -6760,8 +6775,12 @@ honest status column).
   V3's 671B-total/37B-active + multi-token objective) but nobody
   trains 27B here. The HOUSE version: train small conditional-
   capacity models (mathnative substrate, sympy oracle) with the
-  explicit objective L_teacher + lambda * bytes_moved, and measure
-  the metric the whole program points at: TEACHER FIDELITY PER BYTE
+  traffic objective stated as a CONSTRAINED problem (minimize bytes
+  moved subject to fidelity <= epsilon, or sweep explicit traffic
+  budgets) reported as the Pareto curve of teacher fidelity v
+  measured bytes/token — a lambda-weighted sum is a toy-optimizer
+  convenience, never the scientific readout (lambda arbitrariness).
+  The metric the whole program points at: TEACHER FIDELITY PER BYTE
   MOVED PER ACCEPTED TOKEN. The allocation results (io/early-band
   value, metric-split, band marginals) become design data, not just
   compression facts. FENCES: multiplicative speedup stacks (route x
