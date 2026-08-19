@@ -83,3 +83,14 @@ A only). No runs in flight anywhere.
 2. Whether BLe-class arms (early-band-only spend) enter the next
    registered ladder as a standing arm.
 3. 51GB logs triage + WSL artifact cleanup remain banked.
+
+POSTSCRIPT (same evening): diagnosis step (a) CLOSED — F+FLl pair
+rescore bit-identical at one producer commit (AMENDMENT ...-DIAGNOSIS-A);
+BLe = standing reference arm (deployment gated on free-gen screen);
+prereg engine now machine-encodes alarm->refutation precedence
+(refutation_precedence field + 5 fixtures — REQUIRED for MODEL-2
+preregs). CORRECTION to "allocation story (io > attention >
+late-linear)" above: the ordering is METRIC-SPECIFIC (X/GiB:
+early-linear > full-attn > io > late-linear; K/GiB: io >
+early-linear > full-attn > late-linear) — a combined ordering needs
+a registered objective (AMENDMENT ...-DIAGNOSIS-A-WORDING).

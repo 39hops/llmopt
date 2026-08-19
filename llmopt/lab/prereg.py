@@ -87,11 +87,20 @@ _DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 PREREG_KEYS = {"name", "results_id", "registered", "machine", "arms",
                "bars", "receipts", "refuted_if", "registered_prior",
-               "note", "refuted_if_predicate"}
+               "note", "refuted_if_predicate", "refutation_precedence"}
 # note is OPTIONAL prose; every other top-level key is required. A
 # retrospective encoding of an already-booked verdict MUST say so in
 # note — a pre-reg written after receipts exist is not a pre-reg.
-REQUIRED_KEYS = PREREG_KEYS - {"note", "refuted_if_predicate"}
+REQUIRED_KEYS = PREREG_KEYS - {"note", "refuted_if_predicate",
+                               "refutation_precedence"}
+# refutation_precedence (optional): machine-encoded alarm ->
+# refutation precedence, adopted forward-only after QWEN-LBAND-1
+# (2026-08-18) where the rule lived in adjudicator code and had to
+# be disclosed at booking instead of read from the registration.
+# Shape: {"suppressed_unless_bars_fire": [<bar id>, ...]} — the
+# refutation predicate is adjudicated ONLY when every named bar
+# reads FIRE; otherwise the caller receives UNADJUDICATED with the
+# blocking bar named. Requires refuted_if_predicate.
 BAR_KEYS = {"id", "name", "metric", "population", "aggregation",
             "direction", "value", "arms", "description", "conjuncts"}
 # conjuncts (optional): additional predicates that must ALL hold for
@@ -143,6 +152,20 @@ def validate(doc: dict) -> dict:
                  "refuted_if_predicate direction")
         _require(isinstance(rp["value"], (int, float)),
                  "refuted_if_predicate value must be numeric")
+    prec = doc.get("refutation_precedence")
+    if prec is not None:
+        _require(rp is not None,
+                 "refutation_precedence requires refuted_if_predicate")
+        _require(set(prec) == {"suppressed_unless_bars_fire"},
+                 f"refutation_precedence keys {sorted(prec)}")
+        ids = prec["suppressed_unless_bars_fire"]
+        _require(bool(isinstance(ids, list) and ids),
+                 "suppressed_unless_bars_fire must be a non-empty list")
+        bar_ids = {b.get("id") for b in doc.get("bars", [])
+                   if isinstance(b, dict)}
+        for i in ids:
+            _require(i in bar_ids,
+                     f"refutation_precedence names unknown bar {i!r}")
     _require(bool(isinstance(doc["arms"], dict) and doc["arms"]),
              "arms must be a non-empty object")
     _require(isinstance(doc["receipts"], list),
@@ -186,16 +209,37 @@ def load(path: str | Path) -> dict:
     return validate(json.loads(Path(path).read_text()))
 
 
-def adjudicate_refutation(prereg: dict, obs: dict) -> str | None:
+def adjudicate_refutation(prereg: dict, obs: dict,
+                          bar_outcomes: list | None = None) -> str | None:
     """Score the structured refutation clause, if the pre-reg has one.
 
     Returns "REFUTED" / "NOT-REFUTED", or None when the document
     carries only prose refuted_if (hand adjudication, disclosed) or
     the named measurement is absent. Contract mismatches raise, as
-    everywhere else."""
+    everywhere else.
+
+    When the document registers refutation_precedence, the caller
+    MUST pass bar_outcomes (the adjudicate_prereg result): the
+    predicate is scored only if every named bar reads FIRE;
+    otherwise the return is "UNADJUDICATED (precedence: ...)" naming
+    the blocking bar. Omitting bar_outcomes on such a document
+    raises — precedence registered but not consulted is the exact
+    silent-rule failure the field exists to prevent."""
     rp = prereg.get("refuted_if_predicate")
     if rp is None:
         return None
+    prec = prereg.get("refutation_precedence")
+    if prec is not None:
+        if bar_outcomes is None:
+            raise PreregSchemaError(
+                "refutation_precedence registered: adjudicate_refutation"
+                " needs bar_outcomes")
+        by_id = {o.bar_id: o.outcome for o in bar_outcomes}
+        for i in prec["suppressed_unless_bars_fire"]:
+            _require(i in by_id, f"precedence bar {i} not adjudicated")
+            if by_id[i] != "FIRE":
+                return (f"UNADJUDICATED (precedence: bar {i} "
+                        f"{by_id[i]})")
     m = obs.get("measurements", {}).get(rp["measurement"])
     if m is None:
         return None

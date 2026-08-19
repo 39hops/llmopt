@@ -35082,3 +35082,34 @@ fences — point readings, numerical floors only, arm contrasts.
 Receipts (force-added): logs/qwenmodel1/score_F_rescore.json,
 score_FLl_rescore.json, logs/qwenmodel1_rescore_{F,FLl}.log.
 
+## AMENDMENT QWEN-LBAND-1-DIAGNOSIS-A-WORDING (amends AMENDMENT QWEN-LBAND-1-DIAGNOSIS-A): two rider phrasings tightened; the allocation ordering is METRIC-SPECIFIC, never one list (2026-08-18, mac)
+
+1) Rider phrasing (GPT catch, no numbers change): "the teacher's
+   corpus tokens" reads as "corpus next-token targets"; "without
+   hurting argmax agreement anywhere" reads as "without hurting
+   argmax agreement on either measured surface" (corpus and
+   prefixes are the only surfaces measured).
+2) ALLOCATION ORDERING IS METRIC-SPECIFIC (correction to session
+   shorthand that reached handoff 2026-08-18-2's next-steps line
+   as a single combined list; the ledger entries carry no such
+   list). Per-byte orderings from the booked receipts:
+   X/GiB: early-linear 0.933 > full-attn 0.802 > io 0.384 >
+   late-linear 0.064.
+   K/GiB: io 0.227 > early-linear 0.209 > full-attn 0.189 >
+   late-linear 0.114.
+   The two orderings DISAGREE on io's rank; any combined ordering
+   used by a future ladder (MODEL-2 class) requires an explicitly
+   registered objective/weighting over X and K, registered before
+   the run.
+3) Engine support for the forward-only precedence rule SHIPPED
+   (this commit): llmopt/lab/prereg.py accepts an optional
+   refutation_precedence field ({"suppressed_unless_bars_fire":
+   [bar ids]}); validation requires refuted_if_predicate and known
+   bar ids; adjudicate_refutation scores the predicate only when
+   every named bar FIREs, returns UNADJUDICATED naming the
+   blocking bar otherwise, and RAISES if precedence is registered
+   but bar outcomes are not supplied (a registered-but-unconsulted
+   rule is the failure the field exists to prevent). Five
+   fixtures in tests/test_prereg_schema.py. MODEL-2-class preregs
+   MUST use it; LBAND-1 stands untouched.
+

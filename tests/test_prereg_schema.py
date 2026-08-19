@@ -229,3 +229,68 @@ def test_refutation_clause_is_machine_scored():
     # counterfactual: a 10% gap must not refute
     obs["measurements"]["refuted:scalar_within"]["value"] = 0.10
     assert adjudicate_refutation(_prereg_0s(), obs) == "NOT-REFUTED"
+
+
+# --- refutation_precedence (added 2026-08-18, forward-only after
+# QWEN-LBAND-1: the alarm->refutation precedence rule must live in
+# the registered JSON, not only in adjudicator code) ---
+
+def _prec_doc():
+    doc = json.loads(json.dumps(load(
+        ROOT / "docs" / "preregs" / "qwen-rk-census-0.json")))
+    doc["refutation_precedence"] = {"suppressed_unless_bars_fire": [1]}
+    return doc
+
+
+def test_precedence_validates_and_requires_predicate():
+    validate(_prec_doc())
+    bad = _prec_doc()
+    del bad["refuted_if_predicate"]
+    with pytest.raises(PreregSchemaError):
+        validate(bad)
+
+
+def test_precedence_refuses_unknown_bar_and_bad_shape():
+    bad = _prec_doc()
+    bad["refutation_precedence"]["suppressed_unless_bars_fire"] = [99]
+    with pytest.raises(PreregSchemaError):
+        validate(bad)
+    bad2 = _prec_doc()
+    bad2["refutation_precedence"] = {"typo_key": [1]}
+    with pytest.raises(PreregSchemaError):
+        validate(bad2)
+
+
+def _prec_obs(rk):
+    m = {"metric": "r_k_min_over_layers",
+         "population": "positions:corpus+prefixes",
+         "aggregation": "mean", "value": rk}
+    return {"measurement_valid": True,
+            "arms": {"A": {"admissible": True}},
+            "measurements": {"1": dict(m),
+                             "refuted:r_k_min_over_layers": dict(m)}}
+
+
+def test_precedence_suppresses_refutation_when_bar_misses():
+    from llmopt.lab.prereg import adjudicate_refutation
+    doc = _prec_doc()
+    obs = _prec_obs(0.11)          # bar 1 (>=0.7) misses; predicate <0.5 hits
+    outs = adjudicate_prereg(doc, obs)
+    r = adjudicate_refutation(doc, obs, bar_outcomes=outs)
+    assert r.startswith("UNADJUDICATED (precedence: bar 1")
+
+
+def test_precedence_passes_through_when_bar_fires():
+    from llmopt.lab.prereg import adjudicate_refutation
+    doc = _prec_doc()
+    obs = _prec_obs(0.75)          # bar fires; predicate (<0.5) misses
+    outs = adjudicate_prereg(doc, obs)
+    assert adjudicate_refutation(doc, obs, bar_outcomes=outs) == \
+        "NOT-REFUTED"
+
+
+def test_precedence_without_outcomes_raises():
+    from llmopt.lab.prereg import adjudicate_refutation
+    doc = _prec_doc()
+    with pytest.raises(PreregSchemaError):
+        adjudicate_refutation(doc, _prec_obs(0.11))
