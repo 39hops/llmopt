@@ -2854,6 +2854,12 @@ Scalar 4-bit PTQ arms (the tournament's missing bracket point): P4 powers-of-two
 - `nf4_rows(w: torch.Tensor, k: int=16) -> torch.Tensor` — Equal-mass quantile codebook per channel (NF4-style, but on
 - `main() -> None`
 
+### scratch/qcuda_tower_qualify.py
+qcuda-tower qualification ladder, steps a-c (3080; spec 2026-08-19-qcuda-tower-runtime).
+
+- `synth_case(R, C, exp_lo, exp_hi, seed)`
+- `main()`
+
 ### scratch/quat_commutant.py
 Symmetry ladder S1 cell 1 (pre-reg 2026-07-28): quaternionic anti-commutant mass of FFN gate matrices. Structures I,J,K = left quaternion-unit action on 4-channel groups (I^2=J^2=K^2=-1, IJ=K); P(W) = (W - IWI - JWJ - KWK)/4; anti-mass = 1 - ||P(W)||^2/||W||^2 (0.75 = fully generic, 0 = exactly quaternionic-linear). Synthetic controls run FIRST (must read 0.0 / ~0.75) — instrument fence. Real crystals: adjacent 4-grouping + 20 random-grouping nulls.
 
@@ -3899,6 +3905,18 @@ CUDA decode primitives for the compressed-artifact tower.
 - `class W4Gpu` (decode_rows, gemv)
 - `class S16Gpu` (gemv)
 - `class FusedW4Linear` (forward)
+
+### llmopt/lab/qcuda_tower.py
+Reusable CUDA tower: codec dispatch + FusedS16Linear + residency plan.
+
+- `s16_decode_kernel(code_ptr, lv_ptr, exp_ptr, out_ptr, n, BLK: tl.constexpr)` — Row-decode for s16 payload slices: HIGH nibble = EVEN element
+- `s16_decode_rows(pay: S16Gpu, lo: int, hi: int)` — Decode rows [lo, hi) of an S16Gpu payload to fp32 on device.
+- `class FusedS16Linear` (forward)
+- `route_codec(codec: str) -> str` — Total, fail-closed codec routing. 'excluded' tensors are not
+- `runtime_bytes(entry: dict) -> int` — Bytes the SELECTED representation occupies at runtime (the
+- `plan_residency(entries, free_bytes: int, reserve_frac: float=0.15)` — Sum planned runtime bytes over manifest entries and refuse if
+- `assert_no_fallthrough(model, manifest: dict, name_fn=None) -> int` — The executable invariant: after module surgery, no module that
+- `fused_module(entry: dict, buf: bytes)` — Materialize the fused module for a manifest entry (CUDA).
 
 ### llmopt/lab/qrope.py
 RoPE value oracle — exact expectations, no thresholds.
