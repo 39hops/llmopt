@@ -35324,3 +35324,66 @@ BLe build OOMs on the 10 GiB card, book INSTRUMENT-NOT-RUN
 harness is unchanged from the run that produced the comparison
 rows; the only delta is the arm payload itself.
 
+## PRE-REG QWEN-RESIDUAL-STRUCTURE-0: is the quantization residual R = W_vendor - decode(A) structured or noise? Weight-space census, no compose, no capability claim (2026-08-19, wsl)
+
+The RESIDUAL-RECON bank's testable residue (RIFF-LEDGER L6570):
+before any correction artifact exists, measure whether R carries
+exploitable structure at the three registered levels. HOUSE FENCE
+carried verbatim: weight-space compressibility is a STRUCTURE
+CENSUS only — never score capability by weight distance; any
+promotion claim runs through MODEL-1/2 X/K on a held-out surface.
+
+Instrument: scratch/qwen_residual_census.py (committed before
+launch), 3080 WSL, CPU only, arm A (~/qwen_whole0t/A, qualified
+against the frozen artifact_digest_A chain) v vendor BF16
+(~/qwen_vendor). Per w4 tensor: R = W_vendor - decode(payload)
+through llmopt.lab.qcodec only. Quantities, all descriptive:
+1. rel_l2(R) per tensor (baseline damage map).
+2. CONDITIONAL-MEAN DECODE CEILING (riff level 1): per-tensor
+   variance reduction from replacing codebook[idx] with
+   E[vendor_normalized | idx] (exact per-code conditional mean,
+   256x4 table per tensor; tables saved to an npz sidecar).
+3. LOW-RANK (riff level 2): top-16/64/256 singular-energy
+   fractions of R on a fixed 12-tensor sample (early/late layer
+   per family, named in the producer's SVD_SAMPLE_SPEC).
+4. SPARSE TAIL: energy fraction of the top 1% |R| entries.
+5. CROSS-LAYER PREDICTABILITY: cosine of each tensor's
+   conditional-mean table v its family-pooled table (is a global
+   learned decode table plausible?).
+
+BARS (descriptive census: bars classify the readings, no
+capability semantics):
+1. SANITY (gate_class sanity): decode fixture passes (rows
+   decoder == canonical on the fixture tensors), artifact chain
+   qualifies, every consumed R finite; any failure books
+   INSTRUMENT-ALARM, readings unadjudicated.
+2. LEVEL-1 STRUCTURE: median per-tensor conditional-mean variance
+   reduction >= 5% (below that the codebook is already
+   conditional-mean-optimal and level 1 is dead for this codec).
+3. LEVEL-2 STRUCTURE: any sampled tensor with top-16 singular
+   energy >= 5% of ||R||_F^2.
+4. TAIL STRUCTURE: any tensor with top-1% entries carrying >= 20%
+   of residual energy.
+5. GLOBAL-TABLE: median cross-layer table cosine >= 0.5.
+
+REFUTED-IF: bars 2-5 ALL NO-FIRE — R reads as unstructured
+quantization noise at every probed level; the RESIDUAL-RECON
+bank's levels 1-2 are marked dead for the current w4 codec in the
+ledger (level 3, function-space correction, is CAL-FEAS territory
+and is NOT adjudicated by this census).
+
+REGISTERED PRIOR: bar 2 NO-FIRE (the k-means-style vector
+codebook is trained on the data it encodes; conditional-mean gain
+should be < 5%), bar 3 NO-FIRE (residual ~ white), bar 4 NO-FIRE,
+bar 5 FIRE (whatever bias exists is family-global, cosine high) —
+i.e. the house predicts "mostly noise, but the bias that exists
+is learnable," and the interesting outcome is any FIRE on 2-4.
+
+FENCES: weight-space only — nothing here compares to X/K or any
+capability number; single artifact (A), w4 codec only (s16/io not
+probed); SVD on the named 20-tensor sample only, never claimed
+for unsampled tensors; CPU census beside the running BLE-FREEGEN
+GPU job (disjoint resources, no gate comparison touches either);
+SMOKE mode writes census_smoke paths only. If the vendor read or
+decode alarms, book INSTRUMENT-NOT-RUN.
+

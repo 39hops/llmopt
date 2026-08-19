@@ -3013,6 +3013,16 @@ QWEN-ATTN-ATTRIB-1 recomposer: build arm F/L/Q as a KEY-LEVEL byte recomposition
 - `_sha(p)`
 - `main()`
 
+### scratch/qwen_residual_census.py
+QWEN-RESIDUAL-STRUCTURE-0: weight-space census of R = W_vendor - decode(A).
+
+- `fsha(p)`
+- `w4_parts(buf: bytes, shape)` — Scales, codebook, and group indices of a w4 payload (layout
+- `cond_mean_stats(Wv: np.ndarray, buf: bytes, shape)` — Level-1 ceiling: variance reduction from the exact per-code
+- `tail_energy(R: np.ndarray, frac=0.01)`
+- `svd_fracs(R: np.ndarray)`
+- `main()`
+
 ### scratch/qwen_rk_adjudicate.py
 QWEN-RK-CENSUS-0 observations builder + adjudication.
 
