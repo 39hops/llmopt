@@ -146,18 +146,26 @@ def expected_compressed(manifest: dict) -> dict:
 
 
 def verify_routes(model, manifest: dict, name_fn=None,
-                  exempt=()) -> dict:
+                  dedicated_routes=None) -> dict:
     """The executable invariant, as EXACT CONSERVATION (not merely
     "no detected fallthrough" — a bad name_fn or missing module must
-    fail, not evade): the set of compressed 2D manifest keys equals
-    the set of fused-module keys, each on its codec's exact class
-    (w4 -> FusedW4Linear, s16 -> FusedS16Linear), no missing,
-    duplicate, unexpected, or wrong-codec route. `exempt` names
-    manifest keys handled by dedicated non-nn.Module paths (e.g. an
-    embed row-gather); they must still not survive as nn.Linear.
+    fail, not evade): EVERY compressed 2D manifest key is accounted
+    exactly once, either as a fused module of its codec's exact
+    class (w4 -> FusedW4Linear, s16 -> FusedS16Linear) or as an
+    entry in `dedicated_routes` ({key: label} for tensors executed
+    by explicit non-nn.Module paths, e.g. embed ->
+    "cpu_compressed_rows"). No missing, duplicate, unexpected,
+    wrong-codec, or double-counted route; a dedicated key must not
+    ALSO appear as a fused module, and dedicated keys must be a
+    subset of the compressed set (no smuggling unrelated names).
     name_fn maps a module path to its manifest key (identity when
-    None). Returns the per-key route map for the receipt."""
+    None). Returns the complete per-key route map for the receipt."""
     want = expected_compressed(manifest)
+    ded = dict(dedicated_routes or {})
+    smuggled = sorted(set(ded) - set(want))
+    if smuggled:
+        raise RuntimeError(f"REFUSING: dedicated_routes not in the "
+                           f"compressed set: {smuggled[:5]}")
     cls_of = {"w4": FusedW4Linear, "s16": FusedS16Linear}
     routes: dict[str, str] = {}
     for path, mod in model.named_modules():
@@ -165,13 +173,15 @@ def verify_routes(model, manifest: dict, name_fn=None,
         if isinstance(mod, (FusedW4Linear, FusedS16Linear)):
             if key in routes:
                 raise RuntimeError(f"REFUSING: duplicate route {key}")
+            if key in ded:
+                raise RuntimeError(f"REFUSING: {key} is dedicated "
+                                   f"({ded[key]}) AND fused-routed")
             routes[key] = type(mod).__name__
         elif isinstance(mod, torch.nn.Linear) and key in want:
             raise RuntimeError(
                 f"REFUSING: compressed tensor {key} ({want[key]}) "
                 f"fell through to dense nn.Linear at {path}")
-    need = {k: v for k, v in want.items() if k not in exempt}
-    missing = sorted(set(need) - set(routes))
+    missing = sorted(set(want) - set(routes) - set(ded))
     unexpected = sorted(set(routes) - set(want))
     if missing or unexpected:
         raise RuntimeError(f"REFUSING: route conservation failed — "
@@ -182,7 +192,7 @@ def verify_routes(model, manifest: dict, name_fn=None,
                    if routes[k] != cls_of[want[k]].__name__)
     if wrong:
         raise RuntimeError(f"REFUSING: wrong-codec routes {wrong[:5]}")
-    return routes
+    return {**routes, **ded}
 
 
 def fused_module(entry: dict, buf: bytes):

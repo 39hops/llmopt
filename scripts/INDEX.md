@@ -2857,7 +2857,8 @@ Scalar 4-bit PTQ arms (the tournament's missing bracket point): P4 powers-of-two
 ### scratch/qcuda_tower_qualify.py
 qcuda-tower qualification ladder, steps a-c (3080; spec 2026-08-19-qcuda-tower-runtime).
 
-- `synth_case(R, C, exp_lo, exp_hi, seed)`
+- `_fsha(rel)`
+- `synth_case(R, C, exps, seed)` — exps: explicit uint8 array (len n//128) — edge claims name
 - `main()`
 
 ### scratch/quat_commutant.py
@@ -3091,6 +3092,25 @@ QWEN-MODEL-1 teacher-baseline pass (frozen procedure, SPEC.md).
 Teacher v2d SIDECAR: cached-v-uncached gate on the locked rollout record (AMENDMENT QWEN-MODEL1-TREE-PINS item 3).
 
 - `main() -> int`
+
+### scratch/qwen_tower_ladder.py
+qcuda-tower qualification ladder, steps d-g (3080; spec 2026-08-19-qcuda-tower-runtime; GO 2026-08-19).
+
+- `_fsha(rel)`
+- `rcpt_path(name)`
+- `write_rcpt(p, obj)`
+- `load_r4()`
+- `man_and_payload()`
+- `prompt_ids()`
+- `step_d()` — 2-layer hidden-state stub: the SAME two early layers built
+- `step_e_old()`
+- `build_tower()` — Full BLe build through the qcuda_tower dispatcher.
+- `mem_obs()`
+- `step_e_new()`
+- `greedy2(model, ids)` — Two greedy tokens WITH cache; returns (tok1, tok2, logits2).
+- `step_f_old()`
+- `step_f_new()`
+- `step_g()`
 
 ### scratch/qwen_tree_adjudicate.py
 QWEN-MODEL1-TREE observations builder + mechanical tree walker.
@@ -3915,7 +3935,8 @@ Reusable CUDA tower: codec dispatch + FusedS16Linear + residency plan.
 - `route_codec(codec: str) -> str` — Total, fail-closed codec routing. 'excluded' tensors are not
 - `runtime_bytes(entry: dict) -> int` — Bytes the SELECTED representation occupies at runtime (the
 - `plan_residency(entries, free_bytes: int, reserve_frac: float=0.15)` — Sum planned runtime bytes over manifest entries and refuse if
-- `assert_no_fallthrough(model, manifest: dict, name_fn=None) -> int` — The executable invariant: after module surgery, no module that
+- `expected_compressed(manifest: dict) -> dict` — Manifest keys that MUST run compressed: every 2D w4/s16 entry.
+- `verify_routes(model, manifest: dict, name_fn=None, dedicated_routes=None) -> dict` — The executable invariant, as EXACT CONSERVATION (not merely
 - `fused_module(entry: dict, buf: bytes)` — Materialize the fused module for a manifest entry (CUDA).
 
 ### llmopt/lab/qrope.py

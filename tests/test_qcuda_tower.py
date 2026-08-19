@@ -79,14 +79,23 @@ def test_verify_routes_conservation_catches_missing_module():
         qt.verify_routes(m, man, name_fn=lambda p: p + ".weight")
 
 
-def test_verify_routes_passes_raw_only_and_exempt():
+def test_verify_routes_dedicated_accounts_every_key():
     man = {"b.weight": {"codec": "raw", "shape": [4, 4]},
            "io.weight": {"codec": "s16", "shape": [4, 4]}}
     m = torch.nn.Sequential()
     m.add_module("b", torch.nn.Linear(4, 4, bias=False))
-    # io handled by a dedicated path (no module named io) -> exempt
-    assert qt.verify_routes(m, man, name_fn=lambda p: p + ".weight",
-                            exempt=("io.weight",)) == {}
+    # io handled by a dedicated non-module path -> labeled route
+    got = qt.verify_routes(
+        m, man, name_fn=lambda p: p + ".weight",
+        dedicated_routes={"io.weight": "cpu_compressed_rows"})
+    assert got == {"io.weight": "cpu_compressed_rows"}
+    # a dedicated key that is NOT in the compressed set is smuggling
+    with pytest.raises(RuntimeError, match="not in the compressed set"):
+        qt.verify_routes(m, man, name_fn=lambda p: p + ".weight",
+                         dedicated_routes={"b.weight": "dense"})
+    # omitting the dedicated label leaves io unaccounted -> fail
+    with pytest.raises(RuntimeError, match="route conservation failed"):
+        qt.verify_routes(m, man, name_fn=lambda p: p + ".weight")
 
 
 def test_expected_compressed_selects_2d_w4_s16_only():
