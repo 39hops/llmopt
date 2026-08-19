@@ -6761,7 +6761,21 @@ honest status column).
   does NOT prove level 2, whose static-vector router gets its own
   census if level 1 reads well. Still ahead of ATTN-ROUTER in the
   queue: static vocab vectors + frozen teacher distributions =
-  the cleaner routing problem.
+  the cleaner routing problem. Design hardenings (GPT, pre-launch):
+  PRE-HEAD state is defined OPERATIONALLY — the literal tensor
+  entering lm_head, captured by hook, never a guessed API field;
+  identity fixture gates everything (captured h_A through the w4
+  head must reproduce native A logits/top1 under frozen tolerance
+  BEFORE any R_k is computed); the reading is three-object on
+  identical frozen positions — T (frozen teacher logits), A_W
+  (w4_head @ h_A), A_T (vendor_head @ h_A) — where the R_k gap
+  A_W-v-A_T isolates readout-representation loss conditional on
+  the same state, and what remains under A_T reads as upstream
+  body-state damage seen through the vendor head, NOT an additive
+  causal decomposition; M_k mass capture + teacher-margin-
+  stratified R_k ride along free; if promoted to a rung, LEVEL-2-GO
+  thresholds freeze BEFORE h_A is produced (never post-hoc "R_256
+  looks good enough").
   FENCES: candidate-set recall is NOT generation equivalence
   (sampling/margins live in the tail); the RK-census lesson carries
   — measure capture before building any router; per-surface, both
@@ -6776,7 +6790,8 @@ honest status column).
   trains 27B here. The HOUSE version: train small conditional-
   capacity models (mathnative substrate, sympy oracle) with the
   traffic objective stated as a CONSTRAINED problem (minimize bytes
-  moved subject to fidelity <= epsilon, or sweep explicit traffic
+  moved subject to L_teacher <= epsilon — loss below a ceiling, or
+  equivalently fidelity F >= F_min; or sweep explicit traffic
   budgets) reported as the Pareto curve of teacher fidelity v
   measured bytes/token — a lambda-weighted sum is a toy-optimizer
   convenience, never the scientific readout (lambda arbitrariness).
@@ -6789,3 +6804,21 @@ honest status column).
   acceptance falls on hard tokens); any capability claim runs
   through the oracle, never through weight/byte counts; 27B-scale
   training is out of scope on house hardware, permanently.
+- **BANKED (2026-08-19): OPERAND-PROVIDER-LAW — every registered
+  metric enumerates its mathematical operands and the exact frozen
+  artifact/provider for each; a missing provider refuses the
+  prereg** (GPT seat; house adoption case). Caught twice in one day
+  at review time instead of design time: MODEL-2 r1's arm algebra
+  (BLe already contained io — the operand existed but its content
+  was double-counted) and the CHEAP-READOUT "zero-run" claim
+  (logits_cheap = W4_head @ h, and NO artifact provides h — the
+  operand had no provider at all). Executable residue: extend the
+  machine prereg schema (llmopt/lab/prereg.py) so each registered
+  measurement may carry operands: [{name, provider: <frozen path
+  or committed producer>}], and claim_lint/prereg validation
+  refuses a registered measurement whose operand names a provider
+  that does not exist. Design-time refusal, review-time relief.
+  FENCES: the field proves existence, not sufficiency (a provider
+  can exist and still be the wrong surface/precision — fences and
+  auditors keep that job); retrofit is forward-only, never applied
+  to booked preregs.
