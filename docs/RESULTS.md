@@ -35180,3 +35180,101 @@ COST (desk): 1 teacher pass over ~450 new positions (~30-60 min
 Mac), 2 composes (~2 min each, 3080), 4 held-out scores (~8 min
 each, Mac, one resident at a time). Under 2.5 h wall total.
 
+## VERDICT QWEN-MODEL2-ALLOC-1: ALL FIVE BARS FIRE on the held-out surface — the third-pick crossover holds (mid buys X, late buys K at identical spend) and both transport bands hold; prior NOT-REFUTED; first verdict adjudicated under registered-JSON precedence (2026-08-19, mac)
+
+Registered as PRE-REG QWEN-MODEL2-ALLOC-1 (RESULTS L35116,
+commit 8dd4f1d 21:39) + docs/preregs/qwen-model2-alloc-1.json —
+the first registration carrying executable gate_class +
+refutation_precedence; the engine (llmopt/lab/prereg.py) read the
+precedence from the document and scored the refutation predicate
+only after the sanity bar fired. Registration-before-run verified
+in git order by the prereg-auditor: prereg 21:39 < teacher pass
+21:43-23:07 < composes 23:11/23:13 < scores 23:36-00:23.
+Adjudicator scratch/qwen_model2_adjudicate.py (5 fixtures),
+producer c3bf93a dirty=False.
+
+MEASURED (held-out surface evals/qwen_model2: 361 corpus terms,
+72 prefix terms; Mac CPU; one teacher pass ae4b3a2, all four
+receipts identical teacher block, scorer bbc79b8 on all four):
+- X: PX 0.38063, PK 0.46149, FLe 0.46801, C 0.39496.
+- K: PX 0.23383, PK 0.21384, FLe 0.24413, C 0.20003.
+- BAR 1 SANITY-TREATMENT FIRE (zero violations: recipes, frozen
+  bands, 48 keys, exact 461,276,672 bytes both arms, compose
+  out-chains == score chains, base/donor chains == frozen
+  FLe/C digests, cpu, traversal 48/16).
+- BAR 2 CROSSOVER-X FIRE: (X_PK - X_PX) = 0.0809 nats = 3874 f_X.
+- BAR 3 CROSSOVER-K FIRE: (K_PX - K_PK) = 0.0200 nats = 122 f_K.
+  FENCE, adjacent by rule: floors are +-1ulp record-sensitivity
+  numbers, NOT statistical margins — these are point readings on
+  361/72 positions, single arm each, no sampling fence exists;
+  the K leg especially (72 positions) carries no significance
+  claim.
+- BAR 4 TRANSPORT-X FIRE inside its registered +-0.05 band:
+  dX(PX|FLe) = 0.0874 v registered 0.128 (deviation 0.0406 —
+  19% headroom). The F-conditioned mid marginal transports in
+  SIGN and MAGNITUDE-CLASS, not in value: the held-out surface
+  delivers 68% of the development-surface marginal.
+- BAR 5 TRANSPORT-K FIRE: dK(PK|FLe) = 0.0303 v registered
+  0.0401 (deviation 0.0098 of 0.03).
+- REGISTERED PRIOR: NOT-REFUTED (min signed crossover multiple
+  +122, predicate needs below -5; precedence consulted bar 1
+  FIRE first, from the registration, through the engine).
+
+READING (registered claim): allocation is metric-specific and
+PREDICTABLE one stacking level up — the third pick is the mid
+band if you are buying corpus-X and the late band if you are
+buying prefix-K, at identical bytes, exactly as the LBAND
+F-conditioned table said. Transport color (no bars): the late
+band's X marginal flipped sign (+0.0065 held-out v -0.0037
+development — the LBAND interference cell did NOT reproduce on
+the new surface; surface-dependent, small, both inside a
+centinat); the mid band's K marginal halved (0.0103 v 0.0235).
+
+UNREGISTERED CONTRAST (labeled per auditor; no bar reads it):
+X(PX) 0.3806 < X(C) 0.3950 on the held-out surface — the
+two-band policy beats the full-upgrade endpoint on X with 96 of
+144 linear-band keys promoted — while the direction REVERSES on
+K (C 0.2000 is the best K of all four; 0.0138 below PK). A
+"beats the endpoint" headline from one of two metrics would be a
+selective read; both directions book together.
+
+PROVENANCE DISCLOSURES (both auditors, no blockers; adopted):
+- Four-commit chain: teacher ae4b3a2, compose d8e7c70, scorer
+  bbc79b8 (all four arms identical), adjudicator c3bf93a. Every
+  boundary diff verified non-numeric by both auditors (env
+  plumbing, pins, nonfinite guard, receipt lock only); math
+  functions untouched across the span.
+- The prereg's "commit-pin class 0ca4151" phrase: the m2 pass
+  actually printed ae4b3a2; the 0ca4151->ae4b3a2 delta is
+  TEACHER_OUT/EV_DIR path routing with unchanged defaults.
+- The surface freeze (a505adb 21:37) was followed by ONE
+  post-registration edit (ae4b3a2 21:43): prompts.jsonl
+  schema-only ({text} -> {cat,prompt}, string byte-identical),
+  before the teacher consumed it; rollouts feed no bar (SPEC
+  marks them optional color) and corpus/prefixes were untouched.
+  The pre-reg's "commit before this entry" sentence is amended
+  by this disclosure.
+- Scorer edited in place twice post-registration, pre-scores
+  (results-cited file; per-receipt code_commit fields keep the
+  MODEL-1 lineage recoverable) — the third surface extension of
+  this scratch driver; lab adoption is the standing alternative
+  and is banked for the next surface.
+- C's development-surface receipt predates chain_sha256; its
+  cross-surface identity rests on the git-tracked
+  artifact_digest_C.txt (unmodified since 2026-08-17), not a
+  receipt field. FLe closes at receipt level on both surfaces
+  (ea0e56ca..).
+- f_K in the observations = max over the four arms (C's
+  1.64e-4), MORE conservative than the per-contrast max
+  (1.30e-4 would read 153 floors); labeled here.
+- teacher.corpus_sha/prefix_sha in receipts are RECORD (logits
+  array) shas, not input-file shas; both classes checked at run
+  time, rename banked for the next scorer touch.
+
+Receipts (force-added): logs/qwenmodel2/score_{PX,PK,FLe,C}.json,
+logs/qwenteacher_m2/teacher_manifest.json,
+logs/qwenattrib/{compose_PX.json,compose_PK.json,
+model2_observations.json,model2_verdict.txt,m2_compose.log},
+logs/qwenwhole/artifact_digest_{PX,PK}.txt,
+logs/qwenteacher_m2_pass.log.
+

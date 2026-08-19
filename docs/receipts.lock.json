@@ -872,9 +872,11 @@
    "tracked": true
   },
   "logs/qwenteacher_m2/teacher_manifest.json": {
+   "bytes": 4261,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "8ff336b7f254196f079723ad354e4a6302b5ef29ac82d0ebe0b7d9f9ae82a6cb",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenteacher_v2/margin_census.json": {
    "bytes": 1010,

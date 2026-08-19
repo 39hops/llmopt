@@ -1,0 +1,90 @@
+{
+ "measurement_valid": true,
+ "arms": {
+  "PX": {
+   "admissible": true
+  },
+  "PK": {
+   "admissible": true
+  },
+  "FLe": {
+   "admissible": true
+  },
+  "C": {
+   "admissible": true
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0.0,
+   "metric": "compose_violation_count",
+   "population": "arms:recomposed",
+   "aggregation": "count",
+   "provenance": "clean"
+  },
+  "2": {
+   "value": 3873.545411323428,
+   "metric": "crossover_gap_floor_multiple_x",
+   "population": "positions:corpus-m2",
+   "aggregation": "ratio",
+   "provenance": "(X_PK - X_PX)/f_X, signed"
+  },
+  "3": {
+   "value": 121.8973885141333,
+   "metric": "crossover_gap_floor_multiple_k",
+   "population": "positions:prefixes-m2",
+   "aggregation": "ratio",
+   "provenance": "(K_PX - K_PK)/f_K, signed"
+  },
+  "4": {
+   "value": 0.040621481631850975,
+   "metric": "transport_dev_x_nats",
+   "population": "positions:corpus-m2",
+   "aggregation": "mean",
+   "provenance": "dX(PX|FLe) v registered 0.128"
+  },
+  "5": {
+   "value": 0.009806874365587442,
+   "metric": "transport_dev_k_nats",
+   "population": "positions:prefixes-m2",
+   "aggregation": "mean",
+   "provenance": "dK(PK|FLe) v registered 0.0401"
+  },
+  "refuted:crossover_min_signed_floor_multiple": {
+   "value": 121.8973885141333,
+   "metric": "crossover_min_signed_floor_multiple",
+   "population": "contrasts:crossover-m2",
+   "aggregation": "ratio",
+   "provenance": "min over the corpus-X and prefix-K signed multiples (composite objective, not a single-surface read)"
+  }
+ },
+ "contrasts": {},
+ "X": {
+  "PX": 0.38062861258256064,
+  "PK": 0.46149321521390907,
+  "FLe": 0.46800713095070967,
+  "C": 0.39495689839579584
+ },
+ "K": {
+  "PX": 0.23382561357002477,
+  "PK": 0.21383694641646184,
+  "FLe": 0.2441300720508744,
+  "C": 0.20002708190829635
+ },
+ "f_X": 2.0876120980783952e-05,
+ "f_K": 0.00016397945351590004,
+ "dX_PX_given_FLe": 0.08737851836814903,
+ "dX_PK_given_FLe": 0.006513915736800602,
+ "dK_PX_given_FLe": 0.010304458480849626,
+ "dK_PK_given_FLe": 0.030293125634412554,
+ "provenance": {
+  "code_commit": "c3bf93a",
+  "tree_dirty": false,
+  "receipt_sha256": {
+   "PX": "044217d5297168418687901249a39c3fb4b878ce7c7da3d2a19e5afe5e025a10",
+   "PK": "ec11467d624bd1a2781e219ed95294c8ac35b324db0f4619cf8479965958be53",
+   "FLe": "317a5c2aa2e43a510a010627bf1db8270d752f92cfe6a2047154cb9d7d1e4e15",
+   "C": "4daa28d208721a344a52012fb510bcdc050de3eeb31135d8323f7f84bc651616"
+  }
+ }
+}

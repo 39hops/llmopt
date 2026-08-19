@@ -1,0 +1,10 @@
+[rc] qualified base=FLe: {'w4': 288, 's16': 114, 'raw': 449, 'excluded': 348}
+[rc] qualified donor=C: {'w4': 192, 's16': 210, 'raw': 449, 'excluded': 348}
+[rc] PX: 48 keys, +0.4296 GiB
+[rc] self-qualified PX: {'w4': 240, 's16': 162, 'raw': 449, 'excluded': 348}
+[rc] receipt -> logs/qwenattrib/compose_PX.json wall 190.3s
+[rc] qualified base=FLe: {'w4': 288, 's16': 114, 'raw': 449, 'excluded': 348}
+[rc] qualified donor=C: {'w4': 192, 's16': 210, 'raw': 449, 'excluded': 348}
+[rc] PK: 48 keys, +0.4296 GiB
+[rc] self-qualified PK: {'w4': 240, 's16': 162, 'raw': 449, 'excluded': 348}
+[rc] receipt -> logs/qwenattrib/compose_PK.json wall 137.5s

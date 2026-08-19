@@ -1,0 +1,10 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[tp] corpus (362, 248320) 72s
+[tp] prefix len 14 57s
+[tp] prefix len 12 57s
+[tp] prefix len 13 57s
+[tp] prefix len 15 59s
+[tp] prefix len 12 58s
+[tp] prefix len 12 57s
+[tp] rollout 86 steps 4617s
+[tp] LOCKED -> logs/qwenteacher_m2/teacher_manifest.json wall 5035.0s

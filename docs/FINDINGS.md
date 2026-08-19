@@ -2417,3 +2417,17 @@ regime tag on every bullet is the fence.
   sampling fence; numerical floors never significance; same-commit
   F re-score is the named residual. ([VERDICT
   QWEN-LBAND-1](RESULTS.md#L34907 "id:2026-08-18-verdict-qwen-lband-1-instrument-alarm").)
+- [SINGLE-SEED] [TEACHER-FORCED] The third-pick allocation crossover
+  HOLDS on a held-out surface, all five bars firing under the first
+  registered-JSON precedence adjudication: from the FLe state, the
+  next 461MB buys corpus-X with the mid linear band (dX 0.0874 v
+  late's 0.0065) and prefix-K with the late band (dK 0.0303 v mid's
+  0.0103) at identical bytes — the LBAND F-conditioned table
+  transports in sign and magnitude-class (X marginal at 68% of the
+  development value, inside its registered band). Unregistered
+  two-direction color: the two-band policy beats endpoint C on X
+  (0.3806 v 0.3950) while C keeps the best K. Fences: point
+  readings on 361/72 positions, no sampling fence; floors are
+  numerical sensitivity, never significance; transport bands are
+  registered science widths. ([VERDICT
+  QWEN-MODEL2-ALLOC-1](RESULTS.md#L35183 "id:2026-08-19-verdict-qwen-model2-alloc-1-all").)
