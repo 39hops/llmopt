@@ -3027,6 +3027,12 @@ QWEN-LOOP-STATE-0 adjudicator: preconditions + bars recomputed from the persiste
 - `item3_pairs(arr, pj)` — Bar-2 primitives: per successive-anchor pair x offset, top1
 - `main()`
 
+### scratch/qwen_loop_state_color2.py
+QWEN-LOOP-STATE-0 second descriptive color pass (unregistered, gates nothing; external-review asks, 2026-08-20): recomputed from the SAME sha-pinned npz primitives as the booked verdict, written to a NEW receipt (loopstate_color2.json) — the booked observations file is frozen and is not touched.
+
+- `load(rid)`
+- `main()`
+
 ### scratch/qwen_margin_census.py
 Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-only per-bin position counts, booked once with the teacher lock, before any arm scores.
 

@@ -57,6 +57,18 @@
    "reason": "X is measured on the corpus surface and K on prefixes; the io split confounds metric with evaluation surface. Say corpus-X / prefix-K recovery.",
    "superseded_by": "2026-08-18-amendment-qwen-rk-io-attrib-capacity",
    "scope": "io[- ]?attrib|embed|lm_head"
+  },
+  {
+   "pattern": "deep inside the (head's )?decision cell",
+   "reason": "Raw top1-top2 logit margin is not geometric distance to the decision boundary ((z_y-z_j)/||w_y-w_j||, needs head row norms). Corrected by AMENDMENT QWEN-LOOP-STATE-0-COLOR2 (2026-08-20).",
+   "scope": "loop-state|LOOP-STATE|decision cell",
+   "superseded_by": "2026-08-20-amendment-qwen-loop-state-0-color2"
+  },
+  {
+   "pattern": "not (merely )?unlucky sampling",
+   "reason": "Greedy decoding is deterministic; the sampling framing was wrong. Corrected reading: the deterministic correction policy itself substantially repeats (AMENDMENT QWEN-LOOP-STATE-0-COLOR2, 2026-08-20).",
+   "scope": "retry|LOOP-STATE|loop-state",
+   "superseded_by": "2026-08-20-amendment-qwen-loop-state-0-color2"
   }
  ]
 }

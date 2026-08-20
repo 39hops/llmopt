@@ -795,15 +795,47 @@
    "source": "results",
    "tracked": true
   },
-  "logs/qwenloopstate/loopstate_rows.jsonl": {
+  "logs/qwenloopstate/driver.log": {
+   "bytes": 748,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "e11973e36b5c34dd3edfee40f9796be32e604109f701ff68b58829fe0e5e9848",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenloopstate/loopstate_color2.json": {
+   "bytes": 2502,
+   "exists": true,
+   "sha256": "6a99bef799824b2a2b286ff9835bd6fd0dd8aa2fddc8753f1cd69c36f2c97c88",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenloopstate/loopstate_observations.json": {
+   "bytes": 3257,
+   "exists": true,
+   "sha256": "e15993a602d2bc711ad5929292d80bc7cfbda0c3a4f1261706946284f3e9a006",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenloopstate/loopstate_rows.jsonl": {
+   "bytes": 3076,
+   "exists": true,
+   "sha256": "c8f3fcfc085a7e84055f6b1fa0e8a90eb80cc209408f370d3e3098455da777c5",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenloopstate/loopstate_summary.json": {
+   "bytes": 1197,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "796a8cc4afb137422bb23b2a84274f0316575a74077ff9d801988beb9b687d51",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenloopstate/remote_sha256.txt": {
+   "bytes": 708,
+   "exists": true,
+   "sha256": "2cbd8db654d695a286fc35899de1b681d89c8380f89cddfdeb5a018624252047",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel1/score_A.json": {
    "exists": true,

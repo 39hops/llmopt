@@ -7085,3 +7085,40 @@ honest status column).
   representation-restart in the [[no-regret-retry-controller]]
   branch. Hidden-state-recurrence amendment (2026-08-20) partially
   served: pooled + k-split cosine landed; layerwise stays unrun.
+- **BANKED (2026-08-20): CONVEX-CELL FACT + MARGIN-IS-NOT-DEPTH law**
+  (GPT seat, LOOP-STATE-0 review; verified in-house). Each
+  linear-head argmax region {h : (Wh)_y >= (Wh)_j for all j} is a
+  convex polyhedral cell, so the same winner at two h endpoints
+  implies the straight segment between them stays in the cell —
+  while the model's actual trajectory between the states need not
+  follow that segment. And raw logit margin z_y - z_j is NOT
+  distance to the y/j boundary — that is (z_y - z_j)/||w_y - w_j||
+  and needs head row norms. Any future "deep in the cell" claim
+  measures normalized boundary distance or does not say depth
+  (deny-listed; AMENDMENT QWEN-LOOP-STATE-0-COLOR2).
+- **BANKED (2026-08-20): SYMBOLIC-DYNAMICS wording law for loop
+  readings** (GPT seat). What LOOP-STATE-0 measured is a PERIODIC
+  SYMBOLIC (token) ORBIT over a drifting hidden state: q(h) =
+  argmax Wh is periodic at L while h only approximately recurs.
+  "Quotient dynamics" is the stronger unmeasured claim that the
+  transition descends to equivalence classes (q o F = G o q) —
+  never use it for this result class. Companion wording fence:
+  BLe's tower is hybrid attention, so hidden drift is attributed to
+  "context/state continuing to evolve each lap" — never
+  specifically to KV-cache accumulation (full-attn KV, linear-attn
+  recurrent state, and positional context all evolve).
+- **BANK PROMOTION (2026-08-20): artifact digest in
+  start_provenance is a MUST-FIX before the next registered run**
+  (Grok + GPT seats converging on receipt-audit S2): no receipt
+  field currently distinguishes which weights ran beyond ART_DIR
+  resolution. Implemented same day in llmopt/lab/provenance.py —
+  see the commit this bank rides in; the next driver consumes it.
+- **BANK NOTE (2026-08-20): LOOP-STATE-0 calibration + convergence
+  color** (external-review asks, receipted in loopstate_color2.json):
+  homologous cosine 0.998/0.984 v nonhomologous baseline 0.32-0.54
+  (the recurrence contrast is huge; the 0.99 bar was
+  uncalibrated-strict, informs the next registration's thresholds);
+  item-3 successive-attempt JS medians fall monotonically 1.9e-4 ->
+  2.8e-6 (the retry loop DEEPENS across attempts — new color for
+  the [[no-regret-retry-controller]]: later interventions face a
+  more converged policy, earlier intervention is cheaper).

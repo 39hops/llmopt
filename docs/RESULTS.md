@@ -36442,3 +36442,74 @@ remote_sha256.txt} (small text receipts force-added, seedslad
 exception; why: they are the adjudication basis, < 40KB total);
 npz arrays stay on the 3080, untracked, sha-pinned in the rows
 and remote_sha256.txt (fa12f05b..., 79e1041d..., 6319d6ce...).
+
+
+## AMENDMENT QWEN-LOOP-STATE-0-COLOR2: phase-shift calibration shows the recurrence contrast is huge (homologous cosine 0.998/0.984 v nonhomologous baseline ~0.32-0.54); two color wordings corrected (raw margin is not decision-boundary depth; greedy determinism replaces the sampling framing); JS tails and per-attempt convergence receipted (2026-08-20, wsl)
+
+Amends VERDICT QWEN-LOOP-STATE-0 (L36345). Registered bars and
+outcomes UNCHANGED (bar 1 NO-FIRE knife-edge, bar 2 FIRE,
+NOT-REFUTED). This entry (a) books a second unregistered color
+pass from the same sha-pinned npz primitives
+(scratch/qwen_loop_state_color2.py; receipt
+logs/qwenloopstate/loopstate_color2.json, npz shas re-asserted
+inside it), (b) corrects two color wordings after external review
+(GPT seat, verified in-house against the new receipt), and (c)
+lists the verdict's receipt paths explicitly so the lock
+generator's path regex can freeze them (the booked entry named
+them in brace-expansion shorthand, which docs/receipts.lock.json's
+extractor cannot parse — Grok seat catch): the adjudication basis
+is logs/qwenloopstate/loopstate_rows.jsonl,
+logs/qwenloopstate/loopstate_summary.json,
+logs/qwenloopstate/loopstate_observations.json,
+logs/qwenloopstate/driver.log,
+logs/qwenloopstate/remote_sha256.txt, and now
+logs/qwenloopstate/loopstate_color2.json.
+
+MEASURED (color2, unregistered, gates nothing):
+- CALIBRATION (the effect size the uncalibrated 0.99 threshold
+  lacked): median cos(h_p, h_{p+L+delta}) for delta in
+  {1,2,4,8,16,32, L/2} sits at 0.32-0.54 on both exact-orbit
+  items, v homologous delta=0 medians 0.9981 (item 0) and 0.9835
+  (item 4). Homologous recurrence is far outside the
+  nonhomologous baseline; "approximate recurrence" in the verdict
+  means approximate RELATIVE TO EXACT, not weak relative to
+  chance. The frozen 0.99 bar remains the registered gate; this
+  contrast is its missing calibration context.
+- PAIR-ENDPOINT MARGINS (correction of the booked color's
+  base-endpoint-only margins): item 4 low-cosine pairs carry
+  pair-min raw margin median 9.13 (min 6.79) across BOTH
+  endpoints; item 0's low pairs are more moderate (pair-min
+  median 5.68, min 4.28). The rest-group minimum reaches 0.024
+  (item 4) — one homologous pair sits at near-zero margin yet
+  keeps its top1.
+- JS TAILS + PER-ATTEMPT STRUCTURE (item 3): quantiles q50
+  1.7e-5, q90 0.011, q95 0.053, q99 0.25, max 0.67 nats — the
+  median is not the whole story; a thin tail of positions does
+  move. Per successive-attempt pair: median JS falls
+  monotonically 1.9e-4 -> 3.1e-5 -> 1.2e-5 -> 2.8e-6 with top1
+  agreement 0.9375 then 1.0/1.0/1.0 — successive restarts become
+  progressively MORE similar; the loop deepens across attempts.
+
+WORDING CORRECTIONS (reading corrections; dead phrases added to
+docs/claims.deny.json in this commit):
+1. The booked color sentence "it stays deep inside the head's
+   decision cell" over-read raw logit margin as geometric depth.
+   Raw margin z_top1 - z_top2 is not distance to the decision
+   boundary (that is (z_y - z_j)/||w_y - w_j|| and needs the head
+   row norms, unmeasured here). Corrected reading: the same
+   greedy token is produced despite substantial h variation, at
+   positions whose RAW margins are high at both endpoints;
+   geometric cell depth is unmeasured.
+2. The booked reading sentence "correction failure there is not
+   unlucky sampling" framed a greedy, deterministic process in
+   sampling terms. Corrected reading: the deterministic
+   correction policy itself substantially repeats across
+   attempts (and per the color above, converges).
+
+Scope unchanged: per-specimen, captured positions only, BLe xhigh
+greedy on the 3080, n=1 trajectory per item. Exact fact worth
+carrying (banked in RIFF-LEDGER): each linear-head argmax region
+is a convex polyhedral cell, so same winner at two h endpoints
+implies the straight segment between them stays in the cell —
+while saying nothing about the model's actual path between the
+two states.
