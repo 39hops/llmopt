@@ -605,6 +605,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwencheapread/census_arrays_A.npz": {
+   "bytes": 8642008,
+   "exists": true,
+   "local_only": true,
+   "sha256": "8912d27533dbec860891b3cded8fc445c34e3040ece2003d10e59ea6af180549",
+   "source": "results",
+   "tracked": false
+  },
   "logs/qwencheapread/census_observations.json": {
    "bytes": 821,
    "exists": true,
@@ -960,6 +968,14 @@
    "sha256": "1e6c3214022edd6026b43b31ecf3a86bf17c1b8ddfb9e367ff8612a08950d39b",
    "source": "results",
    "tracked": true
+  },
+  "logs/qwenmips/mips_observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenmips/mips_receipt.json": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/qwenmodel1/score_A.json": {
    "exists": true,

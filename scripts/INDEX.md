@@ -3074,6 +3074,16 @@ Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-o
 - `bins(m)`
 - `main() -> int`
 
+### scratch/qwen_mips_census.py
+QWEN-MIPS-CENSUS-0 driver: exact Cauchy-Schwarz branch-and-bound top-256 over k-means-clustered decoded W4 lm_head rows (PRE-REG in docs/RESULTS.md; machine projection docs/preregs/ qwen-mips-census-0.json). Mac, CPU, plain .venv — no model load.
+
+- `string_seed(tag)`
+- `load_head()`
+- `kmeans(W, K, seed)` — Minibatch k-means, k-means++ init on a sample, fp32 assign /
+- `certify_query(zrow, h, C, radii, groups)` — Branch-and-bound for one query (fp32 scores, fp64 bounds).
+- `topk_ids_tie(z_row)`
+- `main()`
+
 ### scratch/qwen_model1_score.py
 QWEN-MODEL1-TREE scorer: X/K for one artifact arm v the locked teacher.
 

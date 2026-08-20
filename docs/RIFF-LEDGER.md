@@ -7193,12 +7193,17 @@ honest status column).
   Guiding formulation (GPT): "successful complex systems combine
   strongly constrained structure formed early with local negative
   feedback that continuously keeps their dynamics inside a viable
-  region." The measured basis already in the ledger: BLe's
-  detect-retry loops are a FAILED HOMEOSTAT — the instability
-  SENSOR survives compression (self-error text, detection intact)
-  while the ACTUATOR is gone (retry policy stuck at JS ~1e-5,
-  convergent across attempts; single-token actuation measured
-  insufficient at the tested doses). The umbrella therefore asks
+  region." The measured basis already in the ledger, stated as a
+  FAILED-FEEDBACK PATTERN (corrected in place 2026-08-20, GPT
+  seat: internal sensor/controller/actuator decomposition is
+  UNMEASURED — do not claim a causal internal sensor, and the
+  actuation capacity is not literally gone since perturbations do
+  redirect trajectories): error-indicating information remains
+  OBSERVABLE in the stream (explicit self-error text), while the
+  effective ENDOGENOUS corrective response is insufficient/stuck
+  (retry policy at JS ~1e-5, convergent across attempts;
+  vendor-informed single-token exogenous actuation insufficient at
+  the tested doses). The umbrella therefore asks
   for: (1) cheap online instability signals (recurrence detectors,
   local margin/entropy trajectories, hidden-state recurrence —
   all instruments this program already built); (2) actuation
@@ -7208,9 +7213,19 @@ honest status column).
   measurable dynamics, not vibes. Subsumes/links
   [[no-regret-retry-controller]], [[sequential-resource-control]],
   [[jspace-preservation-census]]; the LOOP-STATE chain is its
-  measurement arm. Next concrete rung when picked up: close the
-  loop ONCE — detector fire triggers a registered non-token
-  actuation (precision escalation is the house favorite: the
-  detect-retry pathology is compression-induced, so the natural
-  homeostat raises precision exactly while the instability signal
-  is active, then relaxes).
+  measurement arm. OPERATIONAL FIRST LADDER (GPT seat, adopted — operational
+  before metaphorical): (1) external recurrence detector (built);
+  (2) ACTUATOR QUALIFICATION — verify a precision/state escalation
+  applied at a frozen recurrence event has useful authority at
+  all; (3) closed-loop controller — always-low v always-high v
+  detector-controlled escalation, with an explicit hysteresis/exit
+  rule, scored on oracle correctness + recurrence + bytes/wall.
+  The registered win condition: detector-controlled fidelity ~
+  always-high at materially lower resource cost. The detect-retry
+  pathology is COMPRESSION-ASSOCIATED (observed under compressed
+  BLe; an intact-body matched counterfactual would be needed for a
+  causal claim), which keeps precision escalation a strongly
+  motivated actuator HYPOTHESIS, not an established mechanism.
+  Analogy fence: the initial-conditions/dynamical-systems analogy
+  and the cybernetic negative-feedback analogy stay DISTINCT until
+  feedback is actually installed and measured.
