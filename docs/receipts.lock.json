@@ -584,6 +584,34 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwencheapread/artifact_identity.txt": {
+   "bytes": 439,
+   "exists": true,
+   "sha256": "914a1a2396d243855fde25165fe7dc3bd4e0b4b79cadfe4ad928b80a39ccedc9",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwencheapread/census_A.json": {
+   "bytes": 4531,
+   "exists": true,
+   "sha256": "4acf5f593408b62e493db093b846a61e8a688b8e846b518fb81dde2e9c46617e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwencheapread/census_A.log": {
+   "bytes": 2029,
+   "exists": true,
+   "sha256": "1cc489a526d45098293710d4c7c1d7fae8e570b3a245a2201b5390b7725e257b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwencheapread/census_observations.json": {
+   "bytes": 821,
+   "exists": true,
+   "sha256": "c8a7019fc14efc2e5cb7e8e93ac2cccdfdd3ba2708a2dd6d44dc445a44891cc5",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwencuda/gen_qm1.json": {
    "bytes": 1430,
    "exists": true,
