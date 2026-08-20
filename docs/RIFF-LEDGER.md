@@ -6992,3 +6992,37 @@ honest status column).
   classification: same cycle / new cycle / semantic restart /
   nonrepeating wrong / eos wrong / correct — unregistered color,
   gates nothing.
+- **BANK AMENDMENT (2026-08-19): LOOP-STATE-READOUT pre-registration
+  hardenings, fixed before any registration** (GPT seat; operand-
+  provider law applied at design time — the law's first scheduled
+  win). (1) OPERAND/PROVIDER: frozen teacher logits DO NOT EXIST for
+  BLe's self-generated loop prefixes — "teacher-style margin" in the
+  bank means only the margin FORMULA applied to BLe's own logits and
+  gets renamed LOCAL top1-top2 margin; intact-teacher preference at
+  loop states requires a new vendor forward on the exact prefix and
+  is priced separately. The cheap intermediate: W_BLe @ h_BLe v
+  W_vendor @ h_BLe isolates head representation conditional on the
+  same damaged loop state and is NOT teacher behavior — never
+  labeled as such. (2) RUNTIME IDENTITY: CHEAP-READOUT's capture
+  fixture qualified the CPU/reference path on arm A; LOOP-STATE runs
+  on the qcuda-tower with a fused s16 lm_head — same concept, NOT
+  the same qualified instrument. A tower-specific capture identity
+  fixture is required: captured h_t through the fused lm_head must
+  reproduce the native tower last-position logits/top1 under a
+  tolerance frozen in the prereg before any loop-state metric is
+  read. (3) STORAGE: sparse h/logit windows around detector/
+  self-error/retry events with exact token-position alignment, never
+  blanket per-token dumps. (4) METRIC SHAPE: compare distributions
+  at pre-error / error / retry / repeated-step positions — local
+  margin, entropy, top-k Jaccard/churn, KL/JS movement, rank
+  trajectory of the relevant tokens — built to discriminate "the
+  error flag moved almost no actionable policy" from "alternatives
+  entered the distribution but greedy still chose the same top1."
+  (5) MECHANISTIC LADDER, cheap-first: BLe head on BLe h -> vendor
+  head on the same h -> full vendor body on the exact loop prefix
+  only if the first two legs leave the question open.
+  CYCLE-IMPULSE WORDING FENCE carried with it: impulse FIRE/NO-FIRE
+  reads "locally escapable v locally restoring under the registered
+  token-space perturbation" — never noise-floor v sharp-geometry;
+  that deeper diagnosis belongs to loop-state/internal measurements,
+  not token-space impulses.
