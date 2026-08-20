@@ -37697,3 +37697,50 @@ logs/qwenalttok/alttok_rows.jsonl,
 logs/qwenalttok/alttok_observations.json,
 logs/qwenalttok/alttok_observations_offline.json.
 
+## AMENDMENT QWEN-HOMEO-ACTUATOR-0-BAR4-SCOPE (amends AMENDMENT QWEN-HOMEO-ACTUATOR-0-DIAGNOSIS-SCOPE): the functional-corruption hypothetical does not leave bar 4 standing — its registered population includes the HOT branches (2026-08-20, mac)
+
+Correction to clause 2 of -DIAGNOSIS-SCOPE, caught at review. That
+clause said a functional-corruption diagnosis would leave "bar 4's
+zero standing on REFRESH evidence alone." Wrong as a statement
+about the REGISTERED bar: bar 4's population is branches:6 (3
+HOT-HIGH + 3 REFRESH-HIGH) by registration, so invalidating the
+HOT arm invalidates bar 4 AS REGISTERED and the refutation that
+fired through it — both would need a reassessment amendment.
+What a functional-corruption diagnosis would leave standing
+unchanged: bar 1 (sanity), bar 3 (REFRESH-AUTHORITY 0/3, no
+restore in its path), and bar 5's REFRESH half. The demotion
+conclusion would then rest on bar 3's registered miss plus
+whatever the reassessment salvages, not on bar 4. Layout/perf
+diagnosis: everything stands, as before.
+
+## AMENDMENT QWEN-ALTTOKEN-CONTROL-0-FREEZE-PROTOCOL (amends PRE-REG QWEN-ALTTOKEN-CONTROL-0): params sidecar stays immutable (control_table.json is the phase-1 receipt, exact bytes required in HEAD before treatment); numeric match-quality gate and derivation preconditions added pre-run; prior wording narrowed (2026-08-20, mac)
+
+Pre-run protocol corrections, before any derivation fires.
+
+1. TABLE FREEZE, corrected: the registered plan mutated the
+   already-committed params sidecar (control_table: null ->
+   populated). The sidecar stays IMMUTABLE. Phase 1
+   (derivation-only, on GO) writes the five control ids to
+   logs/qwenalttok/control_table.json and COMMITS it; phase 2 (the
+   treatment run, separate GO) REQUIRES that receipt's exact bytes
+   in HEAD at start (sha recorded and asserted) and re-derives,
+   refusing on any mismatch. Phase 1 stops before treatment so the
+   table can be audited independently.
+2. MATCH-QUALITY GATE (registered BEFORE any value is derived):
+   per locus, abs_gap_error = |(z[ble_top1] - z[c*]) - g*| must be
+   <= 0.05 logits. Any locus failing books CONTROL-MATCH-FAILED
+   and NO branches run — the deterministic argmin always returns a
+   token, so admissibility needs its own bar.
+3. DERIVATION PRECONDITIONS: before selecting any control,
+   argmax(BLe head at h) must equal the frozen ble_token AND
+   argmax(vendor head at h) must equal the frozen vendor_token,
+   5/5 loci; any miss refuses (source-identity check on the pinned
+   h against both attested heads).
+4. PRIOR WORDING: the registered prior's rationale reads as if
+   token-genericity were established. Narrowed: recurrence-return
+   has been ROBUST across the perturbation families measured so
+   far (temperature bursts, one vendor-informed token, one-band
+   weight escalation); token-genericity at these loci is exactly
+   what this control tests. Prior numbers unchanged (bar 1 5/5,
+   bar 2 0/5).
+

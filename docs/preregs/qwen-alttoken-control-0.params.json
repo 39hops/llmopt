@@ -1,5 +1,5 @@
 {
- "note": "Frozen parameters for PRE-REG QWEN-ALTTOKEN-CONTROL-0. The five control token ids are DERIVED on the 3080 from the pinned sources below by the committed derivation step and written into control_table (currently null = not yet derived) plus receipt logs/qwenalttok/control_table.json, committed BEFORE any branch fires; the driver re-derives at start and refuses on mismatch.",
+ "note": "Frozen parameters for PRE-REG QWEN-ALTTOKEN-CONTROL-0. IMMUTABLE (per AMENDMENT -FREEZE-PROTOCOL): the five control ids live ONLY in the committed phase-1 receipt logs/qwenalttok/control_table.json; phase 2 requires that receipt's exact bytes in HEAD at start and re-derives, refusing on mismatch. control_table stays null here permanently.",
  "loci_source": "docs/preregs/qwen-headswap-impulse-0.params.json (injections: items 0,3,4, five positions, frozen vendor/ble tokens)",
  "control_token_rule": {
   "logits": "full BLe s16-head logit vector z at the pinned loop-state h (LOOP-STATE-1-HEADSWAP decode path)",
@@ -27,5 +27,13 @@
   "per locus: control_id, ble_rank, achieved_gap, target_gap, abs_gap_error, exclusion_set_sizes",
   "artifact identity: BLe dir chain, vendor slice attestation, loop-state npz shas"
  ],
- "run_gate": "explicit Artin 3080 GO only (registered under the mac-only window)"
+ "run_gate": "explicit Artin 3080 GO only (registered under the mac-only window)",
+ "match_quality_gate": {
+  "abs_gap_error_max_logits": 0.05,
+  "on_fail": "CONTROL-MATCH-FAILED booked, no branches run"
+ },
+ "derivation_preconditions": [
+  "argmax(BLe head at pinned h) == frozen ble_token, 5/5",
+  "argmax(vendor head at pinned h) == frozen vendor_token, 5/5"
+ ]
 }

@@ -2874,6 +2874,12 @@ Symmetry ladder S1 cell 1 (pre-reg 2026-07-28): quaternionic anti-commutant mass
 Symmetry ladder S1 cells 2-3 (pre-reg 2026-07-28): project the wfloor d256 gates onto the quaternionic commutant (deletes 75% of gate mass), gate the projected init, then warm-train 1 epoch. Arm a: lambda=0; arm b: commutation penalty summed over I,J,K, ramped 0.1->1.0. R3 recipe verbatim otherwise. Usage: ARM=a|b python scratch/quat_convert.py
 
 
+### scratch/qwen_alttok_derive.py
+QWEN-ALTTOKEN-CONTROL-0 phase-1 derivation (DERIVATION-ONLY, no treatment): the five BLe-gap-matched non-vendor control tokens at the frozen HEADSWAP-IMPULSE loci, per the registered rule (PRE-REG + AMENDMENT -FREEZE-PROTOCOL in docs/RESULTS.md; rule and gate in docs/preregs/qwen-alttoken-control-0.params.json).
+
+- `_load(name, rel)`
+- `main()`
+
 ### scratch/qwen_attrib_adjudicate.py
 QWEN-ATTN-ATTRIB-1 observations builder + deterministic reading.
 
