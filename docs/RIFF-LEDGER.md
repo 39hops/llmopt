@@ -6917,3 +6917,40 @@ honest status column).
   empirical gate BEFORE importing any of that theory: if the cheap
   readout's candidate sets don't contain the teacher's argmax at
   high recall, MIPS machinery has nothing to stand on here.
+- **BANKED (2026-08-19): JSPACE-PRESERVATION-CENSUS — does
+  quantization preferentially damage workspace-like
+  deliberate-reasoning representations even when teacher-forced X/K
+  improve?** (Artin's global-workspace question + GPT seat
+  tightening; Anthropic global-workspace/Jacobian-lens research as
+  the published anchor). DEFINITIONS TIGHTENED AT BANK TIME (house's
+  first chat framing was loose, corrected here): the residual
+  stream is NOT a J-space — it is the shared activation fabric; the
+  published J-space is a privileged, limited subspace of
+  verbalizable internal patterns found with the Jacobian lens
+  (reportable, deliberately controllable, causally used, broadly
+  connected) and most residual states do not qualify. The think/CoT
+  channel is NOT J-space either — the published work explicitly
+  distinguishes workspace from scratchpad; Qwen think is an
+  external scratchpad that may expose workspace-relevant content.
+  The autopsy reading stays HYPOTHESIS: explicit "I'm wrong" text
+  shows error INFORMATION survives compression; it does not prove
+  successful workspace broadcast or failed specialist recruitment —
+  circuit language waits on an internal/causal measurement. THE
+  CENSUS: if a Qwen J-space analogue is findable, compare
+  vendor/A/BLe on frozen math states — projection preservation
+  first, causal preservation later — and ask whether SMALL
+  workspace-targeted corrections beat whole-tensor s16 (the
+  RESIDUAL-RECON question restated in a privileged basis).
+  LADDER, cheap-first: reproduce a published open implementation on
+  a small open model -> small Qwen-family model -> only then price
+  27B; qcuda needs NO autograd if workspace directions are
+  discovered offline and monitored/intervened at inference.
+  LONG-ARC PAYOFF: small high-fidelity control/workspace channel +
+  aggressively compressed conditional bulk specialists — a
+  Global-Workspace-inspired ARCHITECTURE, and a stronger one than
+  calling the residual stream a workspace. FENCES: benign
+  brain-analogy under the charter (analysis frame for our models'
+  representations, zero organism capability); target model is
+  dense/non-MoE with a HYBRID linear/full attention stack (house's
+  own ATTN-ATTRIB families), never described as vanilla all-full
+  attention.
