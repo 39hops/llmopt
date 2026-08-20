@@ -28,6 +28,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(
     os.path.abspath(__file__))))
+from llmopt.lab.provenance import start_provenance  # noqa: E402
 
 OUT = "logs/qwenhomeo"
 PARAMS = "docs/preregs/qwen-homeo-actuator-0.params.json"
@@ -108,6 +109,9 @@ def main():
     from transformers import AutoTokenizer
     tok = AutoTokenizer.from_pretrained(tl.VDIR)
     params = json.load(open(PARAMS))
+    assert (params["detector"]["WIN"], params["detector"]["LAG_MAX"],
+            params["detector"]["T_MIN"]) == (WIN, LAG_MAX, T_MIN)
+    assert params["detector"]["escape_window_tokens"] == ESC_WIN
     items_reg = params["items"]
     frozen = {}
     for i in items_reg:
@@ -146,7 +150,8 @@ def main():
                      and len(cont) == len(frozen[i]) - t)
             b["exact"] = exact
             n_rl_exact += exact
-            checks = (("exact", exact),)
+            checks = (("exact", exact), ("event_t", t),
+                      ("cont_tokens", len(cont)))
         else:
             ids_full = frozen[i][:t] + cont
             fires = [f for f in detector_fires(ids_full, t + 1)
@@ -165,7 +170,13 @@ def main():
                       "eos_terminated": bool(cont and cont[-1] in eos),
                       "think_terminated": term, "correct": ok})
             checks = (("escaped_300", escaped), ("correct", ok),
-                      ("first_post_fire", b["first_post_fire"]))
+                      ("first_post_fire", b["first_post_fire"]),
+                      ("post_fires_n", len(fires)),
+                      ("event_t", t), ("cont_tokens", len(cont)),
+                      ("eos_terminated", b["eos_terminated"]),
+                      ("think_terminated", term),
+                      ("gen_sha256", hashlib.sha256(
+                          json.dumps(cont).encode()).hexdigest()))
         branches.append(b)
         pr = prod[(arm, i)]
         for fld, mine in checks:
@@ -199,10 +210,19 @@ def main():
     obs = {
         "note": "independent offline recomputation from token-ID "
                 "sidecars; producer outcome fields non-authoritative "
-                "(compared, listed under producer_mismatches); "
-                "correctness independently decoded with the vendor "
-                "tokenizer and re-run through parse + sympy; both "
+                "(compared field-by-field, listed under "
+                "producer_mismatches); correctness independently "
+                "decoded with the vendor tokenizer and scored by the "
+                "consumer's own extraction + per-family sympy "
+                "equivalence; DISCLOSED: the detector_fires "
+                "implementation is deliberately the frozen detector "
+                "verbatim (shared with the producer) — bars 2/3/4 "
+                "recompute its inputs from sidecars but do not "
+                "cross-check the detector algorithm itself; both "
                 "artifact chains verified",
+        "start": start_provenance(
+            ["scratch/qwen_homeo_adjudicate.py",
+             "scratch/qwen_effort_probe.py", PARAMS, PREREG]),
         "measurement_valid": valid,
         "arms": {a: {"admissible": valid, "reason": reason}
                  for a in ("REFRESH-LOW", "HOT-HIGH", "REFRESH-HIGH")},
