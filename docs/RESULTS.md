@@ -36966,3 +36966,46 @@ both observations, color, driver.log, remote shas — small text)
 and the five token-ID sidecars (~80KB total, seedslad exception:
 they are the adjudication basis; every number above is
 recomputable from them).
+
+
+## AMENDMENT QWEN-HEADSWAP-IMPULSE-0-WORDING: orbit color restated at receipt precision (4/5 new exact periodic tails, one non-periodic; "lands in a cycle" withdrawn for that branch), the controller reading narrowed to the measured arm, and a stale provenance string in the frozen offline receipt attested (2026-08-20, wsl)
+
+Amends VERDICT QWEN-HEADSWAP-IMPULSE-0 (L36833). Bars, counts,
+and adjudication UNCHANGED. External review (GPT seat, verified
+in-house against the receipts).
+
+1. ORBIT COLOR AT RECEIPT PRECISION: the supported statements are
+   5/5 recurrence-return; 0/3 exact-orbit-item branches rejoin the
+   original exact orbit; 0/2 item-3 branches return to the frozen
+   G3 landmark; 4/5 show a NEW exact periodic tail under the
+   stated census (cap 400 / window 800) and ONE tail
+   (item 3 @1223) is non-periodic under those caps.
+   NEW-RECURRENCE is broader than "new cycle" — any summary saying
+   all five "land in a cycle" overstates the fifth branch. Gap
+   precision: returns of 33/34/35 are NEAR the 32-token detector
+   floor (one to three tokens above it), not literally at it.
+2. CONTROLLER READING NARROWED: the measured arm is
+   vendor-informed one-token intervention at five selected
+   disagreement loci, n=1 each — it failed to repair and every
+   branch re-entered recurrence within 300 tokens. Generic, top-2,
+   oracle-informed, and adversarial single-token arms are
+   UNMEASURED (the matched alternate-token control is its own
+   registration). Multi-token and state-level arms are
+   better-motivated; one-token arms as a class are NOT ruled out.
+   The riff-ledger outcome bank is corrected in place this commit.
+3. STALE PROVENANCE STRING, ATTESTED WITHOUT MUTATION: the frozen
+   logs/qwenhsimpulse/impulse_observations_offline.json carries
+   measurement-2 provenance "sympy oracle re-run offline on the
+   producer-parsed answers" — written before the receipt-audit fix;
+   the committed consumer that produced the frozen file's numbers
+   independently decodes the sidecar ids and re-parses (verdict
+   MEASURED block describes the corrected path). The receipt stays
+   frozen; the correction lives in
+   logs/qwenhsimpulse/provenance_correction.txt (force-added this
+   commit) and here. The 0/5 result is unchanged under both paths.
+
+Carried synthesis (scoped to the measured doses and specimens):
+micro-perturbations can strongly redirect trajectory IDENTITY
+while the recurrence TENDENCY survives — the specific orbit is
+fragile, the recurrent failure regime is robust, and recurrence is
+not the same thing as exact periodicity.

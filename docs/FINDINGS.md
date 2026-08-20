@@ -2493,9 +2493,10 @@ regime tag on every bullet is the fence.
   A single vendor-informed token forced at each of the five measured
   head-disagreement points on BLe's frozen loop trajectories re-enters
   recurrence in 5/5 branches (gaps 33-176 tokens, three at the 32-token
-  detector floor) yet rejoins the ORIGINAL orbit in 0/5 — every branch
-  lands in a cycle the frozen trajectory never visited, none terminates
-  or reaches correctness (0/5, cap-limited); recurrence-CLASS robust,
+  detector floor) yet rejoins the ORIGINAL orbit in 0/5 — 4/5 land in
+  NEW exact periodic tails under the stated census, one tail is
+  non-periodic under its caps; none terminates or reaches correctness
+  (0/5, cap-limited); recurrence-CLASS robust,
   specific orbit fragile; the registered "cannot redirect" gloss was
   narrowed at booking (CYCLE-IMPULSE precedent); adjudicated by an
   independent offline consumer recomputing everything from token-ID

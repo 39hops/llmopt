@@ -7163,10 +7163,14 @@ honest status column).
   L36833): 5/5 recurrence-return, 0/5 original-orbit rejoin, 0/5
   repair (cap-limited). The [[no-regret-retry-controller]] law
   extends: random bursts AND one informed token both reshuffle
-  WHICH cycle, never whether there is one — single-token
-  interventions of any information content are now the measured-out
-  dose class; the next controller arms are multi-token /
-  state-level (drift amplification, representation restart). The
+  WHICH cycle, never whether there is one — measured for the
+  vendor-informed one-token arm at the five registered loci (n=1
+  each; generic/top-2/oracle/adversarial one-token arms UNMEASURED,
+  the alternate-token control is its own registration); multi-token
+  and state-level arms (drift amplification, representation
+  restart) are better-motivated, one-token arms as a class are not
+  ruled out — corrected in place 2026-08-20 per AMENDMENT
+  QWEN-HEADSWAP-IMPULSE-0-WORDING. The
   matched alternate-token control (generic v vendor-informed, same
   positions) stays a separate registration. Ladder leg 3 (vendor
   body) remains priced, unregistered — its motivation now runs

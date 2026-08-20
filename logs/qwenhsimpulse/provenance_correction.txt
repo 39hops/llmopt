@@ -1,0 +1,11 @@
+Correction note (2026-08-20, appended after booking; the frozen
+receipt impulse_observations_offline.json is NOT mutated):
+
+Its measurements["2"].provenance string reads "sympy oracle re-run
+offline on the producer-parsed answers". That string is STALE: it
+predates the receipt-audit fix. The committed consumer that wrote
+the frozen file's numbers (scratch/qwen_hsimpulse_adjudicate.py at
+the booking commit) independently decodes each sidecar's token ids
+with the vendor tokenizer, re-parses, and re-runs the sympy oracle;
+the producer's answer field is never used. Result unchanged under
+both paths: 0/5 correct.
