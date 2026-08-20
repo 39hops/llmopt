@@ -35855,3 +35855,56 @@ the banked queue (per-tensor targeted patches from
 RESIDUAL-STRUCTURE-0's localization; CHEAP-READOUT census), each
 needing its own registration.
 
+
+## OBSERVATION QWEN-BLE2-XHIGH-AUTOPSY: the 3072-token xhigh loops are detect-retry limit cycles — error detection survives compression, error CORRECTION does not; two of three sampled trajectories end in exact verbatim token cycles (period 88 and 242), the third in semantic full-restart cycling (2026-08-19, wsl)
+
+Descriptive autopsy of the VERDICT QWEN-BLE-FREEGEN-2 xhigh cell
+(L35764); gates nothing, registers nothing. The screen rows persist
+no raw generations (banked forward fix TRAJECTORY-SIDECAR), but
+greedy decoding on the fixed runtime + artifact is deterministic, so
+scratch/qwen_ble2_autopsy.py regenerated three xhigh rows (ids 0
+diff, 3 expand, 4 int — one per family) with full token-ID capture
+and asserted identity against the frozen rows before reporting:
+identity_ok=true on all three (out_tokens, think_terminated,
+truncated all match). Receipts: logs/qweneffort2_probe/
+traj_xhigh_{0,3,4}.json (token ids, sha, decoded text, identity
+block); probe ran at 15f8c23 on the fresh probe path, frozen screen
+receipts untouched.
+
+MEASURED (per trajectory, from the token ids):
+- #0 diff: healthy start — the first derivative of 9x^4 sin(x) is
+  computed CORRECTLY (36x^3 sin + 9x^4 cos) — then the exp(x)cos(x)
+  product rule comes out wrong, the model flags it ("Wait:", "No,",
+  "Let's use product rule") and regenerates the SAME wrong line
+  verbatim. From token ~1048 the trajectory is an EXACT 88-token
+  cycle repeated to the cap (~2000 tokens of verbatim repetition).
+  Unique-8-gram fraction: 0.78 in the first 500 tokens, 0.10 in the
+  last 500.
+- #4 int: recalls the reduction formula for x^n e^(ax) with a
+  corrupted term (x^n/ax where x^n/a belongs), applies it, senses
+  the error ("I think I'm making an error. Let me reconsider."),
+  re-derives the SAME corrupted formula — the formula line repeats
+  25 times. From token ~1378 the tail is an EXACT 242-token cycle.
+  Unique-8-grams 0.59 -> 0.29.
+- #3 expand: no exact token cycle. (x-4)(x+4)=x^2-4 lands correctly
+  (after one successful small self-correction early), the final
+  4-term multiply comes out wrong, the model notices ("Hmm, I'm not
+  sure about the coefficient") and RESTARTS the whole computation —
+  6 full restarts of the same pipeline, each failing at the same
+  multiply. Semantic cycling without verbatim periodicity:
+  unique-8-grams 0.80 -> 0.58.
+
+READING (descriptive): the failure is not degeneration into noise
+and not loss of the error-detection behavior — all three
+trajectories contain correct partial computation and explicit
+self-flagging. What compression removed is the ability to produce a
+DIFFERENT candidate on retry: under greedy decoding the corrupted
+weights make detect -> retry -> same-output a fixed point, so the
+trajectory falls into an attractor (verbatim at period 88/242 in
+two cases, orbit-level in the third). Consistent with the
+FREEGEN-1 abort row's single-item read and the 2026-08-17
+qualitative precision-gradient note on B (computes/self-detects/
+restart-cycles). n=3, one arm, greedy-only; whether sampling
+(temperature) escapes the attractor is unmeasured and would need
+its own registration.
+
