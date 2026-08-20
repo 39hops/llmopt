@@ -7350,3 +7350,25 @@ honest status column).
   head-set containment fact is banked as its own lead: candidate
   sets survive compression at near-tie states — a cheap-readout
   and precision-doctrine data point.
+- **BANKED (2026-08-20): TOPSET-OVERLAP CENSUS — observation-only
+  BLe v vendor top-set geometry at the five frozen loop-state h,
+  BEFORE any alternate-token redesign is chosen** (GPT seat +
+  house; priced trivial: reuses the qwen_alttok_derive.py logit
+  machinery, CPU minutes, no tower, no branches). Per locus,
+  persisted primitives: top-K recall/Jaccard between the two heads
+  for K = 1..256; both rank lists; rank correlation over the
+  union; the FIRST non-special BLe token outside vendor's top-256
+  and its logit gap to BLe top1 (the gap boundary the failed
+  control ran into); both recomputed argmaxes; per-token exclusion
+  attribution (special v vendor-top-256). Hypothesis it prices:
+  compression may preserve the CANDIDATE MANIFOLD while perturbing
+  within-set ordering — if so, the candidate set, not the argmax,
+  is the compression-stable object, and that geometry chooses the
+  next control design. Redesign triage updated per the same
+  review: "widen tolerance" DEMOTED outright (12-19 logits is not
+  a match); rank-matched control likely hits the same
+  incompatibility (the near-top region is inside the exclusion
+  union); the plausible next causal control drops the
+  vendor-top-256 exclusion and is framed NARROWLY as "exact
+  vendor-token identity v another equally BLe-plausible
+  candidate", never "vendor-information v non-vendor-information".

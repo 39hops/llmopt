@@ -37795,3 +37795,30 @@ inside an Artin GO relayed for phase 1 explicitly
 (derivation-only); nothing armed after; both bars NOT-RUN book
 under the window/protocol fence, not as measurements.
 
+## AMENDMENT QWEN-ALTTOKEN-CONTROL-0-CONTAINMENT-WORDING (amends VERDICT QWEN-ALTTOKEN-CONTROL-0): the containment claim narrows to what the receipt primitives support; magnitudes restated as gate multiples; argmax preconditions restated as implied-by-refusal (2026-08-20, mac)
+
+Wording corrections at review; no measurement or receipt changes.
+
+1. CONTAINMENT, narrowed. The receipt records, per locus, the measured fact: NO
+   ELIGIBLE token — outside the union of {BLe top1, vendor token,
+   the ~40 special/eos ids, the vendor-head top-256} — lies within
+   12.18-18.61 logits of BLe's top1. Because specials were excluded
+   in the same union and per-token exclusion attribution was not
+   persisted, the literal claim "EVERY BLe token within ~12 logits
+   is in vendor's top-256" (full set containment) is stronger than
+   the primitives; a handful of near-top ids could in principle be
+   specials rather than vendor-top-256 members. The defensible
+   statement: the BLe near-top candidate region at these five h is
+   covered by the exclusion union, dominated by the vendor-top-256
+   term. The overlap census (banked) measures the exact overlap
+   with persisted primitives.
+2. MAGNITUDE: "three orders of magnitude past the 0.05 gate"
+   restates as 244-372x the gate (12.18/0.05 to 18.61/0.05).
+   control_ble_rank values are 0-based descending ranks.
+3. PRECONDITIONS: the verdict said the argmax checks "pass 5/5
+   (from the receipt)". The receipt does not persist the
+   recomputed argmaxes; the checks are IMPLIED by successful
+   derivation (the script refuses on any mismatch before writing).
+   Forward fix: derivation-class receipts persist both recomputed
+   argmaxes per locus.
+

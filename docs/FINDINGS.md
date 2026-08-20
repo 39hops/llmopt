@@ -2536,13 +2536,16 @@ regime tag on every bullet is the fence.
 
 - [SINGLE-SEED] [qwen] [wsl] [compression] [trajectory-control] At
   all five frozen near-tie loci of the loop-state program, the
-  compressed BLe head's near-top candidate set is CONTAINED in the
-  vendor head's top-256: every BLe token within ~12 logits of BLe's
-  top1 is inside vendor's top-256, so the registered gap-matched
+  compressed BLe head's near-top candidate region is COVERED by the
+  registered exclusion union (dominated by the vendor-head top-256;
+  specials excluded in the same union, per-token attribution not
+  persisted — exact overlap goes to the banked census), so the
+  registered gap-matched
   non-vendor control token does not exist (best admissible match
-  12.18-18.61 logits off v a 0.05 gate, controls at BLe rank
-  204-223) and QWEN-ALTTOKEN-CONTROL-0 books CONTROL-MATCH-FAILED
-  with zero branches run — the two heads agree not only on argmax
-  (HEADSWAP) but on which ~200 tokens are candidates at all (these
-  five h only; head-space only).
+  12.18-18.61 logits off, 244-372x the 0.05 gate; controls at
+  0-based BLe rank 204-223) and QWEN-ALTTOKEN-CONTROL-0 books CONTROL-MATCH-FAILED
+  with zero branches run — consistent with the two heads agreeing
+  not only on argmax (HEADSWAP) but broadly on the near-top
+  candidate region (these five h only; head-space only; exact
+  overlap unmeasured pending the census).
   ([VERDICT QWEN-ALTTOKEN-CONTROL-0](RESULTS.md#L37747 "id:2026-08-20-verdict-qwen-alttoken-control-0-control").)

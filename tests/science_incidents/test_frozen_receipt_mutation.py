@@ -273,6 +273,20 @@ LEGACY_BOOKED_UNLOCKED = {
 }
 
 
+# receipts a booked NOT-RUN entry legitimately never wrote.
+# PINNED, shrink-only: (prereg -> exact receipt paths). The excuse
+# holds only while the file is ABSENT; if it appears it must lock.
+NOT_RUN_ABSENT = {
+    "docs/preregs/qwen-alttoken-control-0.json": {
+        # VERDICT QWEN-ALTTOKEN-CONTROL-0: CONTROL-MATCH-FAILED,
+        # zero treatment branches fired
+        "logs/qwenalttok/alttok_rows.jsonl",
+        "logs/qwenalttok/alttok_observations.json",
+        "logs/qwenalttok/alttok_observations_offline.json",
+    },
+}
+
+
 def test_booked_prereg_receipts_are_sha_locked():
     """BOOKING-TIME INVARIANT (2026-08-20): every receipt path a
     BOOKED prereg declares must resolve to exists + sha256 in the
@@ -300,11 +314,18 @@ def test_booked_prereg_receipts_are_sha_locked():
             if rel in allowed:
                 continue
             rec = lock.get(rel, {})
-            # a booked NOT-RUN (e.g. CONTROL-MATCH-FAILED) leaves
-            # declared treatment receipts legitimately absent —
-            # those stay visible as prereg-awaiting-run. The
-            # invariant bites when the file EXISTS without a sha.
-            if rec.get("exists") and not rec.get("sha256"):
+            # NOT-RUN bookings leave named treatment receipts
+            # legitimately absent — but ONLY the exact identities
+            # pinned in NOT_RUN_ABSENT (shrink-only) are excused.
+            # Every other booked receipt must exist AND be
+            # sha-locked; a blanket absent-is-fine rule reopened
+            # the missing-receipt gap for completed bookings
+            # (caught at review, 2026-08-20).
+            if rel in NOT_RUN_ABSENT.get(rel_p, set()):
+                if not rec.get("exists"):
+                    continue
+                # the file appeared: the excuse expires, sha required
+            if not (rec.get("exists") and rec.get("sha256")):
                 problems.append(f"{rel_p}: {rel}")
     assert not problems, (
         "booked prereg receipts with no locked sha (cite the full "
