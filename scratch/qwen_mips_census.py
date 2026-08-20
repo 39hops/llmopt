@@ -163,7 +163,9 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     rcpt_path = os.path.join(OUT, "mips_receipt.json")
     obs_path = os.path.join(OUT, "mips_observations.json")
-    for p in (rcpt_path, obs_path):
+    guards = [rcpt_path, obs_path] + [
+        os.path.join(OUT, f"mips_index_K{K}.npz") for K in K_GRID]
+    for p in guards:
         if os.path.exists(p):
             raise SystemExit(f"REFUSING: {p} exists")
     qsha = hashlib.sha256(open(QUERIES, "rb").read()).hexdigest()
@@ -235,8 +237,6 @@ def main():
             f"{SEED_TAG}-K{K}"))
         groups = [np.where(assign == j)[0] for j in range(K)]
         ip = os.path.join(OUT, f"mips_index_K{K}.npz")
-        if os.path.exists(ip):
-            raise SystemExit(f"REFUSING: {ip} exists")
         np.savez_compressed(ip, centers=C, radii=radii,
                             assign=assign)
         index_shas[str(K)] = hashlib.sha256(
@@ -286,7 +286,7 @@ def main():
             # index bytes: fp64 centroids + radius + posting
             # offset per cluster, plus 4-byte row ids for the
             # posting lists actually visited (modeled, descriptive)
-            idx_bytes = K * (5120 * 8 + 8 + 8)
+            idx_bytes = K * (W.shape[1] * 8 + 8 + 8)
             res[tag] = {
                 "n_queries": int(sel.sum()),
                 "rows_visited": {
@@ -323,9 +323,10 @@ def main():
                   "decoded-W4 fp32 scorer"}
     with open(rcpt_path, "w") as f:
         f.write(json.dumps(rc, indent=1) + "\n")
-    if SMOKE:
-        print("[mc] smoke done", flush=True)
-        return 0
+    # smoke exercises the observations/adjudication block too
+    # (receipt-audit S2): it writes into the smoke dir and skips
+    # only the prereg adjudication (whose bars name the real
+    # populations)
     total_cells = sum(r["n"] for r in results.values())
     exact_cells = sum(r["exact"] for r in results.values())
     fracs = {K: r["per_pop"]["corpus_X"]["fraction_q50"]
@@ -367,6 +368,10 @@ def main():
                               "EVERY K refutes)"}}}
     with open(obs_path, "w") as f:
         f.write(json.dumps(obs, indent=1) + "\n")
+    if SMOKE:
+        print("[mc] smoke done (obs written to smoke dir)",
+              flush=True)
+        return 0
     from llmopt.lab.prereg import (adjudicate_prereg,
                                    adjudicate_refutation,
                                    load as load_prereg)
