@@ -7288,11 +7288,20 @@ honest status column).
   both; 48 routes changed class W4->s16, so even a several-x
   per-route s16 penalty bounds well under 7x), and BLe previously
   sustained ~9.9 tok/s down to ~0.65 GiB free so headroom alone is
-  out. First read comes free from the HOMEO receipts: HOT v
-  REFRESH-HIGH wall_s per item — same tower, same routes, different
-  reconstructed state; both slow = BLem runtime perf pathology,
-  REFRESH recovers = restored-state layout/path. Then a narrow
-  probe on the 48 promoted mid-band shapes: W4 v s16 GEMV timing,
-  kernel/launch profile, memory trajectory — the banked qcuda
+  out. CORRECTED IN PLACE (2026-08-20, GPT seat, house-verified
+  same day): (a) route count is not a cost bound at all — the 48
+  promoted tensors are ~1.8B weights, ~0.443 GiB under the ~2 bpw
+  W4 vector codec v ~0.873 GiB s16 (delta = the receipted
+  0.4296 GiB), so the byte growth is ~2x on those routes — still
+  short of 7x by itself, but a severe s16 kernel/occupancy
+  pathology on those shapes remains open; (b) the HOMEO receipts
+  do NOT cleanly separate HOT v REFRESH decode rate — HOT's wall_s
+  starts after state restore (continuation only) while
+  REFRESH-HIGH's includes BLem teacher-forced prefill, so
+  restored-state v BLem-global attribution is CONFOUNDED in those
+  rows. The surviving observation: HOT BLem continuation ~1.5
+  tok/s v BLe >= ~10 tok/s, cause UNDIAGNOSED. Causal diagnosis
+  belongs to the dedicated perf probe with separate prefill/decode
+  timers and per-shape W4 v s16 GEMV profiling — the banked qcuda
   packed-pair s16 kernel + geometry sweep slot is directly
   relevant. No kernel changes while any registered run is live.
