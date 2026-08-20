@@ -176,9 +176,14 @@ def main():
         "measurement_valid": all_valid,
         "arms": {"BLe": {
             "admissible": all_valid,
-            "reason": "3/3 rows, P1 sha identity on all items, "
-                      "P2 fixture bit-exact 24/24, P3 anchor census "
-                      "exact, refuse-if-exists held"}},
+            # derived from the recomputed preconditions, never a
+            # literal: each clause names its measured basis
+            "reason": (f"{len(rows)}/3 rows; "
+                       f"P1={[pre[r]['P1'] for r in (0, 4, 3)]}; "
+                       f"P2 fixture "
+                       f"{sum(sum(1 for x in byid[r]['fixture'] if x['top1_identical'] and x['max_abs_diff'] == 0.0) for r in (0, 4, 3))}"
+                       f"/24 bit-exact; "
+                       f"P3={pre[3].get('P3')}")}},
         "measurements": {},
         "detail": meas}
     if not all_valid:
@@ -222,8 +227,13 @@ def main():
                           "median full-vocab JS in nats (fp64 "
                           "softmax, natural log), compared below "
                           "0.05"}
-    with open(os.path.join(OUT, "loopstate_observations.json"),
-              "w") as f:
+    obs_path = os.path.join(OUT, "loopstate_observations.json")
+    if os.path.exists(obs_path) and os.environ.get(
+            "OBS_OVERWRITE") != "1":
+        raise SystemExit(f"REFUSING: {obs_path} exists "
+                         "(set OBS_OVERWRITE=1 to re-adjudicate; "
+                         "never after the verdict is booked)")
+    with open(obs_path, "w") as f:
         f.write(json.dumps(obs, indent=1) + "\n")
     sys.path.insert(0, os.path.dirname(os.path.dirname(
         os.path.abspath(__file__))))

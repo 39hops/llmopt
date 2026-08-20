@@ -1,6 +1,6 @@
 {
  "name": "QWEN-LOOP-STATE-0-PARAMS",
- "note": "Frozen capture sets and preconditions for PRE-REG QWEN-LOOP-STATE-0, split out of qwen-loop-state-0.json 2026-08-20 post-run as a MECHANICAL schema fix (llmopt.lab.prereg.validate rejects unknown top-level keys). Values verbatim from the pre-launch registration commit b02c5df; the authoritative registration is the RESULTS text at that commit.",
+ "note": "Frozen capture sets and preconditions for PRE-REG QWEN-LOOP-STATE-0, split out of qwen-loop-state-0.json 2026-08-20 post-run as a MECHANICAL schema fix (llmopt.lab.prereg.validate rejects unknown top-level keys). capture/preconditions values verbatim from the pre-launch registration commit b02c5df (bar-contract string edits are disclosed in qwen-loop-state-0.json's note); the authoritative registration is the RESULTS text at that commit.",
  "capture": {
   "item0": {
    "period": 88,

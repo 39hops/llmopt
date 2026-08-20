@@ -1,6 +1,6 @@
 {
  "name": "QWEN-LOOP-STATE-0",
- "note": "Mechanical projection of PRE-REG QWEN-LOOP-STATE-0 (RESULTS, 2026-08-20). Transcribed alongside the RESULTS registration, before any run; bars verbatim. Capture sets, anchors, and preconditions derived from the FROZEN autopsy sidecars logs/qweneffort2_probe/traj_xhigh_{0,3,4}.json. Frozen capture sets / preconditions moved verbatim to qwen-loop-state-0.params.json post-run (mechanical schema fix, values unchanged from b02c5df).",
+ "note": "Mechanical projection of PRE-REG QWEN-LOOP-STATE-0 (RESULTS L36233, committed b02c5df pre-launch). Restructured post-run to pass llmopt.lab.prereg.validate: capture/preconditions moved verbatim to qwen-loop-state-0.params.json; bar THRESHOLDS (0.99 / 0.80 / 0.05) and conjunctive semantics unchanged, but the bar contract STRINGS were edited to bind observation keys \u2014 bars[0].metric renamed min_over_items_median_cosine_homologous -> min_over_items_median_cosine; bars[1] split from compound metric/direction/value ('top1_agreement_frac AND median_js_nats', 'above; below', [0.8,0.05]) into a scalar bar plus a conjuncts block. The authoritative registration is the RESULTS text at b02c5df.",
  "results_id": "2026-08-20-pre-reg-qwen-loop-state-0",
  "registered": "2026-08-20",
  "machine": "wsl",
