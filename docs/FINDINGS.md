@@ -2454,6 +2454,7 @@ regime tag on every bullet is the fence.
   its top-256 candidates at 98.03% of corpus positions (knife-edge over the
   registered 0.98 bar, one-position resolution) and 100% of prefix positions,
   carrying ~96% of teacher mass; the vendor head on identical hidden states
-  nets out only 2 of 7 corpus misses at k=256, so the miss is body-state, not
-  readout ranking; level-2 router census unlocked; one artifact, one surface.
+  nets out only 2 of 7 corpus misses at k=256 (no per-position masks, no
+  set-inclusion claim; sign flips at k=1024), reading as a small readout
+  contribution on top of upstream body-state; level-2 router census unlocked; one artifact, one surface.
   ([VERDICT QWEN-CHEAP-READOUT-0](RESULTS.md#L36036 "id:2026-08-19-verdict-qwen-cheap-readout-0-both").)

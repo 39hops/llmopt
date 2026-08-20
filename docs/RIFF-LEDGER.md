@@ -6954,3 +6954,41 @@ honest status column).
   dense/non-MoE with a HYBRID linear/full attention stack (house's
   own ATTN-ATTRIB families), never described as vanilla all-full
   attention.
+- **BANKED (2026-08-19): LOOP-STATE-READOUT — capture the literal
+  pre-head h_t ALONG BLe's loop trajectories and measure the
+  actionable distribution around self-error/retry points** (GPT
+  seat bridge, post CHEAP-READOUT-0). CHEAP-READOUT measured
+  teacher-forced MODEL-1 states on arm A; FREEGEN measured BLe's
+  self-generated xhigh states; together they support "single-step
+  candidate information surprisingly robust, long-horizon
+  self-conditioned behavior catastrophically fragile" — they do
+  NOT establish that all damage lives in recurrent dynamics, and
+  they do not exclude readout failure on OFF-MANIFOLD loop states.
+  The bridge census: along regenerated loop trajectories, capture
+  h_t at and around detect/retry points ("Wait", "Let me
+  reconsider") and read top-k composition, teacher-style margin,
+  entropy, and candidate-set overlap before v after — does the
+  self-error text CHANGE the actionable distribution, or have the
+  alternative candidates disappeared from the head's view? Directly
+  connects the trajectory-control program to the
+  [[jspace-preservation-census]] hypothesis. Cheap: the tower
+  runtime regenerates loops deterministically; a head-input hook is
+  the same instrument CHEAP-READOUT already built.
+- **BANK AMENDMENT (2026-08-19): CHEAP-READOUT level-2 census
+  reports the PARETO of R_256 v rows/bytes TOUCHED, never router
+  recall alone** (GPT seat). The point of level 2 is sublinear
+  traffic; a router with high recall that still touches most of the
+  248k rows buys nothing. Also carried: level-1's knife-edge bar
+  crossing (0.98034 by one position) is the least informative part
+  of the verdict — the descriptive shape (7 corpus misses at k=256,
+  1 at k=1024, prefix at ceiling, ~96% teacher mass) is what design
+  decisions should read.
+- **BANK NOTE (2026-08-19): CYCLE-IMPULSE reading law, fixed before
+  receipts land** (GPT seat review of the prereg; run live,
+  untouched): bar-1 FIRE means at least one run escaped the FROZEN
+  recurrence criterion — never "attractor fixed"; bar-2 FIRE means
+  one correct perturbed trajectory, nothing more. At booking, the
+  token sidecars get a descriptive post-impulse basin
+  classification: same cycle / new cycle / semantic restart /
+  nonrepeating wrong / eos wrong / correct — unregistered color,
+  gates nothing.
