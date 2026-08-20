@@ -499,6 +499,22 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwenalttok/alttok_observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenalttok/alttok_observations_offline.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenalttok/alttok_rows.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenalttok/control_table.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwenattrib/attrib_observations.json": {
    "bytes": 3455,
    "exists": true,

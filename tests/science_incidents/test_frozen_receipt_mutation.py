@@ -235,3 +235,73 @@ def test_present_but_pending_receipts_are_only_the_legacy_set():
         "booked-and-present receipts with no locked sha (cite the "
         "full path in RESULTS so the lock can freeze it):\n  "
         + "\n  ".join(sorted(new)))
+
+
+def test_brace_annotations_do_not_fabricate_paths():
+    """NEGATIVE fixture: filename-like tokens inside parenthetical
+    annotations must not become cited paths."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import gen_receipt_lock as g
+    text = ("logs/d/{a.json (compare rows.jsonl, see spare.txt), "
+            "b.json}")
+    assert set(g.expand_braces(text)) == {"logs/d/a.json",
+                                          "logs/d/b.json"}
+
+
+# booked preregs whose declared receipts predate scanner-visible
+# citation and therefore hold no locked sha. PINNED: shrink-only.
+LEGACY_BOOKED_UNLOCKED = {
+    "docs/preregs/qwen-ble-freegen-2.json":
+        {"logs/qweneffort2/summary_tower_BLe.json"},
+    "docs/preregs/qwen-cycle-impulse-0.json":
+        {"logs/qwencycle/impulse_rows.jsonl",
+         "logs/qwencycle/impulse_summary.json"},
+    "docs/preregs/qwen-lband-1.json":
+        {"logs/qwenmodel1/score_BLe.json",
+         "logs/qwenmodel1/score_BLm.json",
+         "logs/qwenmodel1/score_BLl.json",
+         "logs/qwenmodel1/score_FLe.json",
+         "logs/qwenmodel1/score_FLm.json",
+         "logs/qwenmodel1/score_FLl.json"},
+    "docs/preregs/qwen-loop-state-1-headswap.json":
+        {"logs/qwenloopstate1/headswap_observations.json"},
+    "docs/preregs/qwen-model1-tree.json":
+        {"logs/qwenmodel1/tree_observations.json"},
+    "docs/preregs/stream-wdistill-0.json":
+        {"logs/streamwd/run_B1.log",
+         "logs/streamwd/run_B1_repair.log"},
+}
+
+
+def test_booked_prereg_receipts_are_sha_locked():
+    """BOOKING-TIME INVARIANT (2026-08-20): every receipt path a
+    BOOKED prereg declares must resolve to exists + sha256 in the
+    lock — independent of how the booking prose cited it. A prereg
+    is booked when a verdict/null row links its results_id."""
+    import glob as _glob
+    idx = [json.loads(l) for l in
+           (ROOT / "docs" / "results-index.jsonl").read_text()
+           .splitlines() if l.strip()]
+    booked_ids = set()
+    for r in idx:
+        if r.get("type") in ("verdict", "null"):
+            booked_ids.update(r.get("links") or [])
+    lock = _locked()
+    problems = []
+    for p in sorted(_glob.glob(str(ROOT / "docs/preregs/*.json"))):
+        if p.endswith(".params.json"):
+            continue
+        d = json.loads(Path(p).read_text())
+        if d.get("results_id") not in booked_ids:
+            continue
+        rel_p = str(Path(p).relative_to(ROOT))
+        allowed = LEGACY_BOOKED_UNLOCKED.get(rel_p, set())
+        for rel in d.get("receipts", []):
+            if rel in allowed:
+                continue
+            if not lock.get(rel, {}).get("sha256"):
+                problems.append(f"{rel_p}: {rel}")
+    assert not problems, (
+        "booked prereg receipts with no locked sha (cite the full "
+        "path in the booking so the lock freezes it):\n  "
+        + "\n  ".join(problems))

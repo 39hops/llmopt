@@ -1,0 +1,55 @@
+{
+ "name": "QWEN-ALTTOKEN-CONTROL-0",
+ "note": "Mechanical projection of PRE-REG QWEN-ALTTOKEN-CONTROL-0 (RESULTS, 2026-08-20), transcribed alongside the RESULTS registration, before any run. BLe-gap-matched non-vendor-head control token at the five frozen HEADSWAP-IMPULSE loci; derivation rule and pinned sources in qwen-alttoken-control-0.params.json; the five control ids are derived on the 3080 and committed into the params sidecar BEFORE any branch fires (driver refuses on mismatch). Runs only on explicit Artin 3080 GO.",
+ "results_id": "2026-08-20-pre-reg-qwen-alttoken-control-0",
+ "registered": "2026-08-20",
+ "machine": "wsl",
+ "arms": {
+  "BLe": {
+   "description": "single BLe-gap-matched non-vendor control token injected at each of the 5 registered disagreement loci on BLe greedy xhigh replays; qcuda-tower; one branch per locus; HEADSWAP-IMPULSE replay/detector/cap semantics verbatim"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "RECONVERGENCE",
+   "gate_class": "range",
+   "metric": "n_reconverged_branches",
+   "population": "branches:5 (one per registered disagreement locus)",
+   "aggregation": "count",
+   "direction": "above",
+   "value": 3.5,
+   "arms": [
+    "BLe"
+   ],
+   "description": ">= 4 of 5 branches re-enter recurrence (frozen detector, cap-free, fail-closed on ambiguous — identical definition and threshold to HEADSWAP-IMPULSE bar 1)"
+  },
+  {
+   "id": 2,
+   "name": "REPAIR",
+   "gate_class": "range",
+   "metric": "n_correct_branches",
+   "population": "branches:5 (one per registered disagreement locus)",
+   "aggregation": "count",
+   "direction": "above",
+   "value": 0.5,
+   "arms": [
+    "BLe"
+   ],
+   "description": ">= 1 branch ends with a correct final answer (sympy oracle, independent offline consumer authoritative)"
+  }
+ ],
+ "receipts": [
+  "logs/qwenalttok/control_table.json",
+  "logs/qwenalttok/alttok_rows.jsonl",
+  "logs/qwenalttok/alttok_observations.json",
+  "logs/qwenalttok/alttok_observations_offline.json"
+ ],
+ "refuted_if": "bar 1 counts <= 2 of 5: recurrence-return at these loci depends on which token is injected; the token-generic reading dies and the vendor/control contrast becomes the live object (interpretation asymmetry registered: a low count shows a difference but does not uniquely identify vendor information — the match is BLe head-space logit gap only)",
+ "refuted_if_predicate": {
+  "measurement": "1",
+  "direction": "below",
+  "value": 2.5
+ },
+ "registered_prior": "bar 1 FIRES at 5/5 (recurrence-class robustness is token-generic across every perturbation family measured so far); bar 2 NO-FIRE at 0/5. Informative outcomes: any non-reconverging branch, and the orbit color either way"
+}

@@ -89,7 +89,13 @@ def cited_paths() -> dict[str, str]:
     declared by docs/preregs/*.json (structured receipt references —
     closes the bare-filename gap); a declared path may legitimately
     not exist yet (PENDING, the run has not fired) and is not
-    ratcheted, but once it exists its sha is locked like any other."""
+    ratcheted. A prereg-declared path that EXISTS also stays
+    pending (sha-less) until a booking cites it in RESULTS in a
+    scanner-visible form — deliberately, because sha-ing a
+    prereg-declared file can freeze a mid-run write (caught live
+    2026-08-16). The booking-time invariant lives in
+    tests/science_incidents/test_frozen_receipt_mutation.py:
+    every receipt of a BOOKED prereg must end up sha-locked."""
     text = RESULTS.read_text()
     out = {m.group(0): "results" for m in CITE.finditer(text)}
     out.update({p: "results" for p in expand_braces(text)})

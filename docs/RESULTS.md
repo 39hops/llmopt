@@ -37590,3 +37590,110 @@ timers). The science verdict is untouched: escape/repair outcomes
 gate nothing on speed, and the 0/6 result carries whichever
 explanation the probe lands on.
 
+## AMENDMENT QWEN-HOMEO-ACTUATOR-0-DIAGNOSIS-SCOPE (amends AMENDMENT QWEN-HOMEO-ACTUATOR-0-RUNTIME-WORDING): two clauses tightened — "no oracle can exist" becomes "no registered reference continuation"; the verdict does NOT pre-survive every possible perf diagnosis (2026-08-20, mac)
+
+Two wording corrections to the -RUNTIME-WORDING amendment, caught
+at review; no measurement changes.
+
+1. "no token-exact oracle exists or can exist" overstated a
+   modality claim. Correct form: THIS EXPERIMENT has no registered
+   token-exact reference continuation for F(W_BLem, S^BLe) — the
+   registration defined none, and none can be derived from its
+   frozen artifacts. Whether some future registration could
+   construct a cross-tower reference (e.g. a bitwise state-transfer
+   fixture) is left open, not foreclosed.
+2. "the 0/6 result carries whichever explanation the probe lands
+   on" was too strong. Correct form: a LAYOUT/PERFORMANCE
+   diagnosis leaves the verdict untouched (outcomes gate nothing
+   on speed); a diagnosis of FUNCTIONAL corruption in the
+   cross-tower restored state would put the HOT arm's treatment
+   validity in question and would require a reassessment amendment
+   naming which HOT readings survive — the REFRESH arm (0/3,
+   internally consistent BLem state, no restore in its path) and
+   therefore bar 4's zero would stand on REFRESH evidence alone,
+   but HOT-specific claims would not auto-survive. The
+   BLEM-DECODE-PERF probe therefore carries a verdict-relevant
+   stake, not only a runtime one.
+
+## PRE-REG QWEN-ALTTOKEN-CONTROL-0: is the vendor-informed token's effect at the five frozen loci token-generic — a BLe-gap-matched NON-VENDOR control token injected at the identical points, same detector, same caps (2026-08-20, wsl)
+
+The matched control HEADSWAP-IMPULSE-0 left as its named separate
+registration. Question: the vendor-informed single token produced
+5/5 recurrence-return and 0/5 original-orbit rejoin; does a
+DETERMINISTIC, perturbation-matched, NON-vendor token at the same
+five loci produce the same signature (token-generic redirection),
+or not.
+
+INSTRUMENT.
+- Substrate: the five frozen disagreement loci of
+  QWEN-HEADSWAP-IMPULSE-0 (items 0, 3, 4; positions and frozen
+  vendor/BLe tokens pinned in
+  docs/preregs/qwen-headswap-impulse-0.params.json), replayed on
+  the qcuda tower under BLe, P1-verified prefix replay, single
+  forced token at the locus, greedy to eos or the 3072 cap —
+  HEADSWAP-IMPULSE machinery and semantics VERBATIM (detector
+  WIN=32/LAG_MAX=512/T_MIN=544, cap-free fires, RECONVERGED =
+  any post-injection fire, AMBIGUOUS fail-closed).
+- CONTROL TOKEN RULE (deterministic, frozen at registration;
+  this is a BLe-GAP-MATCHED NON-VENDOR-HEAD CONTROL, not an
+  arbitrary "generic" token). Per locus, from the pinned
+  loop-state h and the artifacts already attested by the booked
+  legs: compute the full BLe s16-head logit vector z (the
+  LOOP-STATE-1-HEADSWAP decode path) and the vendor-head top-256
+  id set at that h (the attested vendor slice). Let g* =
+  z[ble_top1] - z[vendor_token] (the vendor token's BLe-logit gap,
+  the perturbation size being matched). EXCLUDE: the BLe top1, the
+  vendor token, every special/eos token id, and the vendor-head
+  top-256 at that h. Among remaining ids choose the one minimizing
+  |(z[ble_top1] - z[c]) - g*|; ties break to the LOWER token id.
+- TABLE FREEZE (two-phase, mac-window compliant): the five control
+  token ids are DERIVED on the 3080 from the pinned sources by a
+  committed derivation step and written into
+  docs/preregs/qwen-alttoken-control-0.params.json plus receipt
+  logs/qwenalttok/control_table.json — committed BEFORE any branch
+  fires; the driver re-derives at start and REFUSES on any
+  mismatch (the impulse injection-table pattern). The receipt
+  carries per locus: control id, its BLe rank and gap, the target
+  gap g*, the achieved |gap - g*|, the exclusion-set sizes, and
+  artifact identity for BLe, the vendor slice, and the npz shas.
+
+BARS.
+- BAR 1 RECONVERGENCE: n_reconverged >= 4 of 5 (identical
+  definition and threshold to HEADSWAP-IMPULSE bar 1).
+- BAR 2 REPAIR: n_correct >= 1 of 5 (sympy oracle, independent
+  offline consumer authoritative).
+
+REFUTED-IF: bar 1 counts <= 2 of 5 — recurrence-return at these
+loci depends on which token is injected; the token-generic reading
+dies and the vendor/control CONTRAST becomes the live object.
+
+REGISTERED PRIOR: bar 1 FIRES at 5/5 (recurrence-class robustness
+is token-generic: temperature bursts, one informed token, and a
+one-band weight escalation all failed to escape); bar 2 NO-FIRE at
+0/5. Informative outcomes: any non-reconverging branch, and the
+orbit color either way.
+
+INTERPRETATION ASYMMETRY (registered now so the reading cannot
+drift): >= 4/5 control returns STRONGLY DEMOTES vendor specificity
+of the recurrence-return signature (a matched non-vendor token
+does the same thing). <= 2/5 shows a vendor/control DIFFERENCE but
+does NOT uniquely identify vendor information — the match is on
+BLe head-space logit gap only; embedding-space and dynamical
+perturbation magnitudes remain unmatched, and a difference could
+ride those. No bar compares the two rungs directly; the contrast
+is prose color with this asymmetry attached.
+
+FENCES: wsl, one machine, one commit; runs only on explicit Artin
+3080 GO (registration under the mac-only window). Five branches,
+n=1 per locus, per-branch claims only; RECONVERGED says nothing
+about which cycle (orbit classification rides as color with its
+caps stated: original-orbit rejoin v new-recurrence, return gaps,
+CYCLE-comparable gap<=300 field); escape is not repair; no
+vendor-capability claim; thresholds first-registration; cap 3072;
+window kills book INSTRUMENT-NOT-RUN with streamed partial rows;
+SMOKE writes to smoke paths only. Receipts (declared for the lock):
+logs/qwenalttok/control_table.json,
+logs/qwenalttok/alttok_rows.jsonl,
+logs/qwenalttok/alttok_observations.json,
+logs/qwenalttok/alttok_observations_offline.json.
+

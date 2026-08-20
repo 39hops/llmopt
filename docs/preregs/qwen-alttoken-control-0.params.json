@@ -1,0 +1,31 @@
+{
+ "note": "Frozen parameters for PRE-REG QWEN-ALTTOKEN-CONTROL-0. The five control token ids are DERIVED on the 3080 from the pinned sources below by the committed derivation step and written into control_table (currently null = not yet derived) plus receipt logs/qwenalttok/control_table.json, committed BEFORE any branch fires; the driver re-derives at start and refuses on mismatch.",
+ "loci_source": "docs/preregs/qwen-headswap-impulse-0.params.json (injections: items 0,3,4, five positions, frozen vendor/ble tokens)",
+ "control_token_rule": {
+  "logits": "full BLe s16-head logit vector z at the pinned loop-state h (LOOP-STATE-1-HEADSWAP decode path)",
+  "target_gap": "g* = z[ble_top1] - z[vendor_token]",
+  "exclusions": [
+   "ble_top1",
+   "vendor_token",
+   "all special/eos token ids (vendor tokenizer all_special_ids)",
+   "vendor-head top-256 ids at the same h (attested vendor slice)"
+  ],
+  "objective": "argmin over remaining ids of |(z[ble_top1] - z[c]) - g*|",
+  "tie_break": "lower token id"
+ },
+ "detector": {
+  "kind": "self-recurrence 32-gram, HEADSWAP-IMPULSE implementation verbatim",
+  "WIN": 32,
+  "LAG_MAX": 512,
+  "T_MIN": 544
+ },
+ "generation_cap_tokens": 3072,
+ "decoding": "greedy",
+ "control_table": null,
+ "control_table_receipt": "logs/qwenalttok/control_table.json",
+ "receipt_fields_required": [
+  "per locus: control_id, ble_rank, achieved_gap, target_gap, abs_gap_error, exclusion_set_sizes",
+  "artifact identity: BLe dir chain, vendor slice attestation, loop-state npz shas"
+ ],
+ "run_gate": "explicit Artin 3080 GO only (registered under the mac-only window)"
+}
