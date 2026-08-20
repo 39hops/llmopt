@@ -7162,9 +7162,12 @@ honest status column).
 - **BANK OUTCOME (2026-08-20): HEADSWAP-IMPULSE-0 booked** (RESULTS
   L36833): 5/5 recurrence-return, 0/5 original-orbit rejoin, 0/5
   repair (cap-limited). The [[no-regret-retry-controller]] law
-  extends: random bursts AND one informed token both reshuffle
-  WHICH cycle, never whether there is one — measured for the
-  vendor-informed one-token arm at the five registered loci (n=1
+  extends: measured micro-perturbations (random bursts, one
+  vendor-informed token) redirect trajectory/recurrent-pattern
+  IDENTITY while the recurrence tendency survives — no durable
+  escape or repair demonstrated (recurrence != exact periodicity;
+  one impulse tail was non-periodic under its caps) — measured for
+  the vendor-informed one-token arm at the five registered loci (n=1
   each; generic/top-2/oracle/adversarial one-token arms UNMEASURED,
   the alternate-token control is its own registration); multi-token
   and state-level arms (drift amplification, representation
@@ -7175,3 +7178,39 @@ honest status column).
   positions) stays a separate registration. Ladder leg 3 (vendor
   body) remains priced, unregistered — its motivation now runs
   through trajectory-formation causality, not local readout.
+- **BANKED (2026-08-20): HOMEOSTATIC-INFERENCE umbrella — can
+  inference be given cheap internal instability signals plus
+  inference-time negative feedback (computation, precision,
+  routing) that pushes the dynamics back into a productive
+  regime?** (Artin + GPT seat; framed from cybernetics and
+  physical self-regulating systems — stars, equilibrium,
+  attractors, the double-pendulum initial-conditions observation
+  that early structure constrains what a system can become while
+  local feedback regulates how it behaves after. CHARTER FENCE
+  RESTATED: biological systems entered this conversation as
+  CONCEPTS ONLY — the lab builds no bio or chem capability, ever;
+  cybernetic/physics framings are the admissible methods.)
+  Guiding formulation (GPT): "successful complex systems combine
+  strongly constrained structure formed early with local negative
+  feedback that continuously keeps their dynamics inside a viable
+  region." The measured basis already in the ledger: BLe's
+  detect-retry loops are a FAILED HOMEOSTAT — the instability
+  SENSOR survives compression (self-error text, detection intact)
+  while the ACTUATOR is gone (retry policy stuck at JS ~1e-5,
+  convergent across attempts; single-token actuation measured
+  insufficient at the tested doses). The umbrella therefore asks
+  for: (1) cheap online instability signals (recurrence detectors,
+  local margin/entropy trajectories, hidden-state recurrence —
+  all instruments this program already built); (2) actuation
+  levers beyond token space (precision escalation per the banked
+  precision-as-escalation runtime program, routing, representation
+  restart, drift amplification); (3) a viability region defined by
+  measurable dynamics, not vibes. Subsumes/links
+  [[no-regret-retry-controller]], [[sequential-resource-control]],
+  [[jspace-preservation-census]]; the LOOP-STATE chain is its
+  measurement arm. Next concrete rung when picked up: close the
+  loop ONCE — detector fire triggers a registered non-token
+  actuation (precision escalation is the house favorite: the
+  detect-retry pathology is compression-induced, so the natural
+  homeostat raises precision exactly while the instability signal
+  is active, then relaxes).

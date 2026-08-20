@@ -133,7 +133,11 @@ def certify_query(zrow, h, C, radii, groups):
     visited_clusters = 0
     for j in order:
         tau = best_scores[-1]
-        if tau >= U[j]:
+        # STRICT inequality: on tau == U[j] an unseen equal-score
+        # lower-id row could still enter the top-256 under the
+        # frozen tie rule, so equality must scan (tie-safety,
+        # external review pre-rerun)
+        if tau > U[j]:
             break
         rows = groups[j]
         if rows.size == 0:
@@ -193,6 +197,36 @@ def main():
     gt = {qi: topk_ids_tie(Z[qi]) for qi in range(len(H))}
     print(f"[mc] scores + brute ground truth {time.time()-t0:.0f}s",
           flush=True)
+    # REGISTERED SMALL-VOCAB QUALIFICATION (prereg mechanism
+    # fixture, second clause): first SMALLV rows as the whole
+    # vocab, ALL queries, EVERY registered K, 100% certified-v-
+    # brute top-256 equality through the SAME production path.
+    # Any miss exits INSTRUMENT-INVALID before the census.
+    qual = {}
+    if not SMOKE:
+        Wq = W[:SMALLV]
+        Zq = Z[:, :SMALLV]
+        gtq = {qi: topk_ids_tie(Zq[qi]) for qi in range(len(H))}
+        for K in K_GRID:
+            Cq, rq, aq = kmeans(Wq, K, string_seed(
+                f"{SEED_TAG}-qual-K{K}"))
+            gq = [np.where(aq == j)[0] for j in range(K)]
+            okn = 0
+            for qi in range(len(H)):
+                ids, _, _ = certify_query(Zq[qi], H[qi], Cq, rq,
+                                          gq)
+                okn += int(np.array_equal(np.sort(ids),
+                                          np.sort(gtq[qi])))
+            qual[str(K)] = {"exact": okn, "n": len(H)}
+            print(f"[mc] QUAL smallv K={K} exact {okn}/{len(H)}",
+                  flush=True)
+            if okn != len(H):
+                rc = {"start": START, "INSTRUMENT-INVALID":
+                      f"small-vocab qualification failed at K={K}: "
+                      f"{okn}/{len(H)}", "qual": qual}
+                with open(rcpt_path, "w") as f:
+                    f.write(json.dumps(rc, indent=1) + "\n")
+                raise SystemExit("INSTRUMENT-INVALID")
     results = {}
     index_shas = {}
     for K in K_GRID:
@@ -249,7 +283,10 @@ def main():
             sel = np.array([p == tag for p in pop])
             rv = rows_v[sel]
             frac = rv / n
-            idx_bytes = K * (5120 * 8 + 8)
+            # index bytes: fp64 centroids + radius + posting
+            # offset per cluster, plus 4-byte row ids for the
+            # posting lists actually visited (modeled, descriptive)
+            idx_bytes = K * (5120 * 8 + 8 + 8)
             res[tag] = {
                 "n_queries": int(sel.sum()),
                 "rows_visited": {
@@ -259,9 +296,12 @@ def main():
                     "max": int(rv.max())},
                 "fraction_q50": float(np.quantile(frac, .5)),
                 "modeled_bytes_q50": float(
-                    np.quantile(rv, .5) * bytes_per_row
+                    np.quantile(rv, .5) * (bytes_per_row + 4)
                     + idx_bytes),
-                "index_bytes": idx_bytes}
+                "index_bytes": idx_bytes,
+                "modeled_ratio_q50": float(
+                    (np.quantile(rv, .5) * (bytes_per_row + 4)
+                     + idx_bytes) / (n * bytes_per_row))}
         results[str(K)] = {"exact": exact_n, "n": len(H),
                            "per_pop": res,
                            "wall_s": round(time.time() - t0, 1)}
@@ -274,6 +314,7 @@ def main():
           "smoke": SMOKE, "n_vocab": n,
           "bytes_per_row_w4": bytes_per_row,
           "queries_npz_sha256": qsha,
+          "smallv_qualification": qual,
           "index_npz_sha256": index_shas,
           "results": results,
           "note": "byte figures are MODELED visitation (index + "

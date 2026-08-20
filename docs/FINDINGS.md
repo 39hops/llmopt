@@ -2492,7 +2492,7 @@ regime tag on every bullet is the fence.
 - [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] [FREE-RUN-GATED]
   A single vendor-informed token forced at each of the five measured
   head-disagreement points on BLe's frozen loop trajectories re-enters
-  recurrence in 5/5 branches (gaps 33-176 tokens, three at the 32-token
+  recurrence in 5/5 branches (gaps 33-176 tokens, three NEAR the 32-token
   detector floor) yet rejoins the ORIGINAL orbit in 0/5 — 4/5 land in
   NEW exact periodic tails under the stated census, one tail is
   non-periodic under its caps; none terminates or reaches correctness
