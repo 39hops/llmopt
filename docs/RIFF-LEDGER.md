@@ -7280,3 +7280,19 @@ honest status column).
   (already dominant at K=4096). House prior called the null;
   its prefix-prunes-better clause was wrong (median visitation
   bit-identical; tails differ by a few rows).
+- **BANKED (2026-08-20): BLEM-DECODE-PERF probe — BLem decodes ~7x
+  slower than BLe on the qcuda tower (HOT item0: 3072 tokens at
+  ~1.5 tok/s v BLe's ~11 tok/s same run, same driver loop) and the
+  cheap explanations fail arithmetic** (GPT seat + house, live
+  HOMEO-ACTUATOR-0 observation): total fused routes identical (401
+  both; 48 routes changed class W4->s16, so even a several-x
+  per-route s16 penalty bounds well under 7x), and BLe previously
+  sustained ~9.9 tok/s down to ~0.65 GiB free so headroom alone is
+  out. First read comes free from the HOMEO receipts: HOT v
+  REFRESH-HIGH wall_s per item — same tower, same routes, different
+  reconstructed state; both slow = BLem runtime perf pathology,
+  REFRESH recovers = restored-state layout/path. Then a narrow
+  probe on the 48 promoted mid-band shapes: W4 v s16 GEMV timing,
+  kernel/launch profile, memory trajectory — the banked qcuda
+  packed-pair s16 kernel + geometry sweep slot is directly
+  relevant. No kernel changes while any registered run is live.
