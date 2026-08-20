@@ -37,6 +37,7 @@ from llmopt.lab.provenance import (completion_commit,  # noqa: E402
                                    start_provenance)
 
 SMOKE = os.environ.get("SMOKE") == "1"
+os.environ.setdefault("STEP", "n/a")
 ROOT_ART = os.path.expanduser(os.environ.get("ART_ROOT",
                                              "~/qwen_whole0t"))
 BLE_DIR = os.path.join(ROOT_ART, "BLe")
