@@ -7026,3 +7026,22 @@ honest status column).
   token-space perturbation" — never noise-floor v sharp-geometry;
   that deeper diagnosis belongs to loop-state/internal measurements,
   not token-space impulses.
+- **BANK AMENDMENT (2026-08-19): LOOP-STATE-READOUT metric law —
+  the clean attractor measurement is CYCLE-ALIGNED, never
+  adjacent-position** (GPT seat, second tightening). Raw KL/JS
+  between pre-error/error/retry positions is temporally confounded:
+  each is a different next-token task after a different prefix —
+  those stay as descriptive event-window color only. The clean
+  comparison is homologous-state recurrence: on exact loops,
+  logits/distributions at t v t+88 and t v t+242 at corresponding
+  cycle positions; on the semantic-restart item, align repeated
+  computation landmarks (the failed step) across restarts. Report
+  JS/KL, top-k overlap, top1 equality, margin/entropy deltas ACROSS
+  HOMOLOGOUS ATTEMPTS. Correction response is quantified by
+  comparing successive retry attempts at the same semantic step:
+  repeated "I'm wrong" with P_retry(i) ~ P_retry(i+1) is the strong
+  evidence of a stuck actionable policy. The vendor-head-on-BLe-h
+  leg runs chunked/offline over the sparse captured states — tower
+  residency stays untouched. Standing note: OPERAND-PROVIDER is
+  prospectively useful but human-enforced until the prereg-schema
+  operands field lands (banked forward fix).
