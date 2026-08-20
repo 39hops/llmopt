@@ -95,8 +95,11 @@ def _move_state(obj, device, _seen=None):
     elif isinstance(obj, list):
         out = [_move_state(v, device, _seen) for v in obj]
     elif isinstance(obj, tuple):
-        out = tuple(_move_state(v, device, _seen) for v in obj)
-    elif isinstance(obj, (int, float, str, bool, type(None))):
+        elems = [_move_state(v, device, _seen) for v in obj]
+        out = (type(obj)(*elems) if hasattr(obj, "_fields")
+               else type(obj)(elems))
+    elif isinstance(obj, (int, float, str, bool, type(None),
+                          torch.dtype, torch.device)):
         out = obj
     elif hasattr(obj, "__dict__"):
         out = object.__new__(type(obj))
