@@ -4,9 +4,17 @@ counts recomputed from the token-ID sidecars alone
 (PRIMITIVE-EVIDENCE — the producer's in-run outcome fields are
 non-authoritative and only compared against, never used).
 Correctness decodes each sidecar's ids with the vendor tokenizer
-and re-runs parse + sympy independently. Both artifact chains (BLe
-and BLem, 18 shards each) verified against their qualified digest
-files.
+and runs answer extraction + sympy equivalence implemented HERE,
+never the producer's parse_answer/check helpers (the item
+generator is shared deliberately — it defines the frozen task; the
+scoring path is not). Equivalence is per-family: exact zero
+difference for diff/expand, modulo an additive constant for the
+int family only (the producer applies the constant allowance to
+all families; disagreements surface as producer_mismatches).
+Receipt shape is hard-checked: exactly 9 sidecars, unique
+arm x item cells over {REFRESH-LOW,HOT-HIGH,REFRESH-HIGH} x items.
+Both artifact chains (BLe and BLem, 18 shards each) verified
+against their qualified digest files.
 
     .venv/bin/python scratch/qwen_homeo_adjudicate.py        (3080)
 """
@@ -15,6 +23,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(
@@ -36,6 +45,27 @@ def _load(name, rel):
     sys.modules[name] = mod
     spec.loader.exec_module(mod)
     return mod
+
+
+def extract_answer(text):
+    """Independent extraction: the last ANSWER: line's expression."""
+    m = re.findall(r"ANSWER:\s*(.+)", text)
+    return m[-1].strip().rstrip(".") if m else None
+
+
+def oracle(ans, truth, family):
+    """Independent sympy equivalence: exact zero for diff/expand,
+    modulo an additive constant for the int family only."""
+    import sympy as sp
+    x = sp.Symbol("x")
+    try:
+        d = sp.simplify(sp.sympify(ans, locals={"x": x})
+                        - sp.sympify(truth, locals={"x": x}))
+        if d == 0:
+            return True
+        return family == "int" and d.is_constant() is True
+    except Exception:
+        return False
 
 
 def detector_fires(ids, start_at):
@@ -126,8 +156,9 @@ def main():
                               skip_special_tokens=False)
             term = "</think>" in text
             vis = text.split("</think>", 1)[1] if term else text
-            ans = ep.parse_answer(vis)
-            ok = bool(ans and ep.check(ans, items[i]["truth"]))
+            ans = extract_answer(vis)
+            ok = bool(ans and oracle(ans, items[i]["truth"],
+                                     items[i]["family"]))
             b.update({"escaped_300": escaped,
                       "post_fires_n": len(fires),
                       "first_post_fire": fires[0] if fires else None,
@@ -149,8 +180,11 @@ def main():
     n_hot = sum(b["escaped_300"] for b in hot)
     n_ref = sum(b["escaped_300"] for b in ref)
     n_ok = sum(b["correct"] for b in hot + ref)
+    cells = sorted((b["arm"], b["item"]) for b in branches)
+    want_cells = sorted((a, i) for i in items_reg for a in
+                        ("REFRESH-LOW", "HOT-HIGH", "REFRESH-HIGH"))
     valid = (n_rl_exact == len(items_reg) == 3 and ev_match
-             and len(hot) == len(ref) == 3
+             and len(branches) == 9 and cells == want_cells
              and all(c["checked"] == 18 and not c["mismatched"]
                      for c in chains))
     reason = (f"RL exact {n_rl_exact}/3, event table match "
@@ -194,8 +228,18 @@ def main():
                       "sidecar text")},
         "branches": branches,
         "producer_mismatches": mismatches,
+        "producer_mismatches_n": len(mismatches),
+        "receipt_shape": {"sidecars": len(branches),
+                          "cells_ok": cells == want_cells},
         "artifact_verification": chains,
         "event_table_match": ev_match}
+    if mismatches:
+        print(f"PRODUCER-MISMATCH ALERT: {len(mismatches)} field(s) "
+              "disagree with the rows file — offline values are "
+              "authoritative, but every mismatch must be disclosed "
+              "in the booking:", flush=True)
+        for m in mismatches:
+            print(f"  {m}", flush=True)
     p = os.path.join(OUT, "homeo_observations_offline.json")
     if os.path.exists(p) and os.environ.get("OBS_OVERWRITE") != "1":
         raise SystemExit(f"REFUSING: {p} exists")
