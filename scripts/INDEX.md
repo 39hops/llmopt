@@ -3010,6 +3010,23 @@ QWEN-LBAND-1 observations builder + registered resolution.
 - `resolution(outcomes: dict) -> tuple`
 - `main()`
 
+### scratch/qwen_loop_state.py
+QWEN-LOOP-STATE-0 driver: observation-only greedy regeneration of the three frozen BLe xhigh loop trajectories with sparse pre-head hidden-state capture (PRE-REG in docs/RESULTS.md; frozen capture sets, anchors, and precondition shas live in docs/preregs/qwen-loop-state-0.json).
+
+- `_load(name, rel)`
+- `first_fire(ids)` — First position where the frozen 32-gram detector fires on the
+- `capture_positions(pj, frozen_ids)` — Frozen capture set per item id -> sorted position list, plus
+- `run_item(model, tok, it, cap_pos, full_pos, eos)`
+- `main()`
+
+### scratch/qwen_loop_state_adjudicate.py
+QWEN-LOOP-STATE-0 adjudicator: preconditions + bars recomputed from the persisted primitives (npz arrays + rows), never from the driver's in-run numbers (PRIMITIVE-EVIDENCE doctrine).
+
+- `load(rid)`
+- `cosines(arr, rid)` — Bar-1 primitive: cosine(h_p, h_{p+kL}) for k in {1,2} over the
+- `item3_pairs(arr, pj)` — Bar-2 primitives: per successive-anchor pair x offset, top1
+- `main()`
+
 ### scratch/qwen_margin_census.py
 Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-only per-bin position counts, booked once with the teacher lock, before any arm scores.
 
