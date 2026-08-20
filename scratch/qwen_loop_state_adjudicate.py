@@ -121,6 +121,52 @@ def main():
                 else "NO-FIRE")
     else:
         bar2 = "INSTRUMENT-INVALID"
+    # descriptive color (unregistered, gates nothing): k-split
+    # cosine distributions and margin/entropy at low-cosine pairs,
+    # recomputed from the same pinned npz so every color number in
+    # the verdict has a receipt
+    if valid[0] and valid[4]:
+        color = {}
+        for rid, (L, base) in HOMOLOGOUS.items():
+            arr, _ = load(rid)
+            pos = {int(p): i for i, p in
+                   enumerate(arr["positions"])}
+            h = arr["h"].astype(np.float64)
+
+            def cos(p, q):
+                x, y = h[pos[p]], h[pos[q]]
+                return float(x @ y / (np.linalg.norm(x)
+                                      * np.linalg.norm(y)))
+
+            ck = {}
+            for k in (1, 2):
+                cs = np.array([cos(p, p + k * L) for p in base])
+                ck[f"k{k}"] = {
+                    "median": float(np.median(cs)),
+                    "q10": float(np.quantile(cs, 0.1)),
+                    "min": float(cs.min()),
+                    "frac_ge_0.99": float((cs >= 0.99).mean())}
+            cs1 = np.array([cos(p, p + L) for p in base])
+            idx = [pos[p] for p in base]
+            lo = cs1 < 0.9
+            m, e = arr["local_margin"], arr["entropy"]
+            ck["low_pairs_k1"] = {
+                "n_below_0.9": int(lo.sum()),
+                "margin_median_low": (float(np.median(m[idx][lo]))
+                                      if lo.any() else None),
+                "margin_median_rest": float(np.median(m[idx][~lo])),
+                "entropy_median_low": (float(np.median(e[idx][lo]))
+                                       if lo.any() else None)}
+            color[f"item{rid}"] = ck
+        meas["color_unregistered"] = color
+        # P3 measured hit list for the receipt (derivable but
+        # explicit beats derivable)
+        arr3, _ = load(3)
+        ids3 = arr3["gen_token_ids"].tolist()
+        g3 = pj["capture"]["item3"]["anchor_gram_g3"]
+        meas["p3_measured_hits"] = [
+            t for t in range(len(ids3) - 32)
+            if ids3[t:t + 32] == g3]
     all_valid = all(valid.values())
     obs = {
         "note": "preconditions and bars recomputed from the "
