@@ -36,6 +36,8 @@ ART = os.path.expanduser(os.environ.get("ART_DIR",
                                         "~/qwen_whole0t/BLe"))
 VDIR = os.path.expanduser(os.environ.get("VENDOR_DIR",
                                          "~/qwen_vendor"))
+VSLICE = os.path.expanduser(os.environ.get(
+    "VENDOR_SLICE", "~/qwen_vendor_lmhead"))
 IN = "logs/qwenloopstate"
 OUT = "logs/qwenalttok"
 HS_PARAMS = "docs/preregs/qwen-headswap-impulse-0.params.json"
@@ -70,7 +72,8 @@ def main():
          "scratch/qwen_loop_state_headswap.py",
          "llmopt/lab/qcodec_fast.py", HS_PARAMS, AT_PARAMS,
          "docs/preregs/qwen-alttoken-control-0.json"],
-        artifacts={"BLe": ART, "vendor": VDIR})
+        artifacts={"BLe": ART, "vendor_slice": VSLICE,
+                   "vendor_checkout": VDIR})
     rows = [json.loads(x) for x in
             open(os.path.join(IN, "loopstate_rows.jsonl"))]
     byid = {r["id"]: r for r in rows}
@@ -83,7 +86,14 @@ def main():
     tok = AutoTokenizer.from_pretrained(VDIR)
     specials = set(int(i) for i in tok.all_special_ids) | set(EOS_IDS)
 
-    Wv = hs.vendor_head()
+    # the 3080's vendor dir holds tokenizer only; the attested
+    # lm_head slice is the vendor head here (HEADSWAP-IMPULSE
+    # pattern, tensor-byte identity attested in
+    # logs/qwenloopstate1/vendor_slice_attestation.txt)
+    from safetensors import safe_open
+    with safe_open(os.path.join(VSLICE, "lm_head.safetensors"),
+                   framework="pt", device="cpu") as f:
+        Wv = f.get_tensor("lm_head.weight").float().numpy()
     Wb = hs.ble_head_rows()
     V = Wb.R
     print(f"[ad] vendor head {Wv.shape}, ble rows {V}", flush=True)
