@@ -41,6 +41,7 @@ MAX_TOK = 256 if SMOKE else 3072
 ITEM_IDS = (0, 4, 3)  # primary rigid orbits first, contrast last
 OUT = "logs/qwenloopstate_smoke" if SMOKE else "logs/qwenloopstate"
 PREREG = "docs/preregs/qwen-loop-state-0.json"
+PARAMS = "docs/preregs/qwen-loop-state-0.params.json"
 FROZEN = "logs/qweneffort2_probe/traj_xhigh_{i}.json"
 WIN, LAG_MAX, T_MIN = 32, 512, 544  # frozen CYCLE detector (color)
 EVENT_HALF = 16
@@ -196,7 +197,7 @@ def main():
     from transformers import AutoTokenizer
     ep = _load("qwen_effort_probe", "scratch/qwen_effort_probe.py")
     tl = _load("qwen_tower_ladder", "scratch/qwen_tower_ladder.py")
-    pj = json.load(open(PREREG))
+    pj = json.load(open(PARAMS))
     frozen = {i: json.load(open(FROZEN.format(i=i)))
               for i in ITEM_IDS}
     frozen_ids = {i: frozen[i]["gen_token_ids"] for i in ITEM_IDS}
@@ -209,7 +210,7 @@ def main():
          "scratch/qwen_tower_ladder.py",
          "scratch/qwen_effort_probe.py",
          "llmopt/lab/qcuda_tower.py", "llmopt/lab/qcuda.py",
-         PREREG])
+         PREREG, PARAMS])
     cap, full3 = capture_positions(pj, frozen_ids)
     tok = AutoTokenizer.from_pretrained(tl.VDIR)
     model, plan, routes, n_routes = tl.build_tower()

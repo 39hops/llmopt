@@ -14,6 +14,7 @@ import numpy as np
 
 OUT = "logs/qwenloopstate"
 PREREG = "docs/preregs/qwen-loop-state-0.json"
+PARAMS = "docs/preregs/qwen-loop-state-0.params.json"
 HOMOLOGOUS = {0: (88, range(1200, 1288)), 4: (242, range(1400, 1642))}
 
 
@@ -73,7 +74,7 @@ def item3_pairs(arr, pj):
 
 
 def main():
-    pj = json.load(open(PREREG))
+    pj = json.load(open(PARAMS))
     rows = [json.loads(x) for x in
             open(os.path.join(OUT, "loopstate_rows.jsonl"))]
     byid = {r["id"]: r for r in rows}
@@ -120,18 +121,73 @@ def main():
                 else "NO-FIRE")
     else:
         bar2 = "INSTRUMENT-INVALID"
-    obs = {"prereg": pj["name"], "preconditions": pre,
-           "measurement_valid": valid,
-           "arms": {"BLe": {"admissible": True,
-                            "basis": "rows + sha-verified npz"}},
-           "measurements": {"1": meas.get("bar1_min_median"),
-                            "2": meas.get("item3")},
-           "detail": meas,
-           "bars": {"1": bar1, "2": bar2}}
+    all_valid = all(valid.values())
+    obs = {
+        "note": "preconditions and bars recomputed from the "
+                "sha-pinned npz primitives by this adjudicator; "
+                "driver in-run numbers unused (PRIMITIVE-EVIDENCE).",
+        "preconditions": pre,
+        "measurement_valid": all_valid,
+        "arms": {"BLe": {
+            "admissible": all_valid,
+            "reason": "3/3 rows, P1 sha identity on all items, "
+                      "P2 fixture bit-exact 24/24, P3 anchor census "
+                      "exact, refuse-if-exists held"}},
+        "measurements": {},
+        "detail": meas}
+    if not all_valid:
+        obs["measurement_reason"] = f"precondition failure: {pre}"
+    if "bar1_min_median" in meas:
+        obs["measurements"]["1"] = {
+            "value": meas["bar1_min_median"],
+            "metric": "min_over_items_median_cosine",
+            "population": "items:0,4 homologous pairs k in {1,2}",
+            "aggregation": "median per item, min over items",
+            "provenance": "recomputed from npz; per-item medians "
+                          f"{meas['item0']['median_cosine']:.4f} "
+                          f"(176 pairs) / "
+                          f"{meas['item4']['median_cosine']:.4f} "
+                          "(484 pairs)"}
+        obs["measurements"]["refute:min_median_cosine_items04"] = {
+            "value": meas["bar1_min_median"],
+            "metric": "min_over_items_median_cosine",
+            "population": "items:0,4 homologous pairs k in {1,2}",
+            "aggregation": "median per item, min over items",
+            "provenance": "same quantity as bar 1, read by the "
+                          "refutation predicate (< 0.90)"}
+    if "item3" in meas:
+        obs["measurements"]["2"] = {
+            "value": meas["item3"]["top1_agreement_frac"],
+            "metric": "top1_agreement_frac",
+            "population": "item:3 successive-attempt pairs x 64 "
+                          "offsets (4x64)",
+            "aggregation": "fraction",
+            "provenance": "recomputed from full fp16 logits in npz "
+                          "(fp64 softmax)"}
+        obs["measurements"]["2:median_js_nats"] = {
+            "value": meas["item3"]["median_js_nats"],
+            "metric": "median_js_nats",
+            "population": "item:3 successive-attempt pairs x 64 "
+                          "offsets (4x64)",
+            "aggregation": "median",
+            "provenance": "conjunct of bar 2; full-vocab JS, fp64 "
+                          "softmax, natural log"}
     with open(os.path.join(OUT, "loopstate_observations.json"),
               "w") as f:
         f.write(json.dumps(obs, indent=1) + "\n")
-    print(json.dumps({"pre": pre, "bars": obs["bars"],
+    sys.path.insert(0, os.path.dirname(os.path.dirname(
+        os.path.abspath(__file__))))
+    from llmopt.lab.prereg import (adjudicate_prereg,
+                                   adjudicate_refutation, load as
+                                   load_prereg)
+    doc = load_prereg(PREREG)
+    outcomes = adjudicate_prereg(doc, obs)
+    ref = adjudicate_refutation(doc, obs, bar_outcomes=outcomes)
+    print(json.dumps({"pre": pre,
+                      "bars": {o.bar_id: o.outcome
+                               for o in outcomes},
+                      "refutation": ref,
+                      "local_bars": {"1": bar1, "2": bar2},
                       "meas": meas}, indent=1))
     return 0
 

@@ -1,6 +1,6 @@
 {
  "name": "QWEN-LOOP-STATE-0",
- "note": "Mechanical projection of PRE-REG QWEN-LOOP-STATE-0 (RESULTS, 2026-08-20). Transcribed alongside the RESULTS registration, before any run; bars verbatim. Capture sets, anchors, and preconditions derived from the FROZEN autopsy sidecars logs/qweneffort2_probe/traj_xhigh_{0,3,4}.json.",
+ "note": "Mechanical projection of PRE-REG QWEN-LOOP-STATE-0 (RESULTS, 2026-08-20). Transcribed alongside the RESULTS registration, before any run; bars verbatim. Capture sets, anchors, and preconditions derived from the FROZEN autopsy sidecars logs/qweneffort2_probe/traj_xhigh_{0,3,4}.json. Frozen capture sets / preconditions moved verbatim to qwen-loop-state-0.params.json post-run (mechanical schema fix, values unchanged from b02c5df).",
  "results_id": "2026-08-20-pre-reg-qwen-loop-state-0",
  "registered": "2026-08-20",
  "machine": "wsl",
@@ -9,98 +9,12 @@
    "description": "BLe on qcuda-tower, xhigh cell, greedy observation-only regen of items 0/4 (primary exact orbits) + 3 (semantic-restart contrast), sparse fp32 pre-head h capture at frozen positions"
   }
  },
- "capture": {
-  "item0": {
-   "period": 88,
-   "exact_from": 961,
-   "positions": "[1200,1464)",
-   "homologous_base": "[1200,1288)",
-   "k": [
-    1,
-    2
-   ]
-  },
-  "item4": {
-   "period": 242,
-   "exact_from": 1297,
-   "positions": "[1400,2126)",
-   "homologous_base": "[1400,1642)",
-   "k": [
-    1,
-    2
-   ]
-  },
-  "item3": {
-   "anchor_positions": [
-    1222,
-    1862,
-    2190,
-    2518,
-    2846
-   ],
-   "anchor_window": 64,
-   "full_logits": true,
-   "anchor_gram_g3": [
-    3294,
-    553,
-    271,
-    11861,
-    318,
-    87,
-    28495,
-    471,
-    220,
-    19,
-    2299,
-    19,
-    87,
-    478,
-    220,
-    19,
-    1590,
-    198,
-    28,
-    830,
-    28495,
-    7,
-    19,
-    87,
-    478,
-    220,
-    19,
-    8,
-    471,
-    220,
-    19,
-    7
-   ]
-  },
-  "event_color": "first frozen-detector fire per item, +/-16, descriptive only"
- },
- "preconditions": {
-  "P1_trajectory_identity_sha256": {
-   "0": "887fcdbf307c7d7cac041e728e8f778741208fdf973d18573068bdbda08c570a",
-   "3": "bee84ea46431606ef3ef230ea53d9169ff6a80cef6e9e8591bd61a6b8fc60eab",
-   "4": "a7df6389f85f20bcbb93c01cea49ff0f0ef8c5a5ba89d2aadb29454c1b734288"
-  },
-  "P2_capture_fixture": "first 8 captured positions per item, bit-exact: top1 identical all 24 AND max abs logit diff == 0.0",
-  "P3_anchor_census": {
-   "count": 5,
-   "positions": [
-    1222,
-    1862,
-    2190,
-    2518,
-    2846
-   ]
-  }
- },
  "bars": [
   {
    "id": 1,
    "name": "INTERNAL-ORBIT",
    "gate_class": "range",
-   "metric": "min_over_items_median_cosine_homologous",
+   "metric": "min_over_items_median_cosine",
    "population": "items:0,4 homologous pairs k in {1,2}",
    "aggregation": "median per item, min over items",
    "direction": "above",
@@ -114,18 +28,22 @@
    "id": 2,
    "name": "STUCK-RETRY-POLICY",
    "gate_class": "range",
-   "metric": "top1_agreement_frac AND median_js_nats",
+   "metric": "top1_agreement_frac",
    "population": "item:3 successive-attempt pairs x 64 offsets (4x64)",
-   "aggregation": "fraction; median",
-   "direction": "above; below",
-   "value": [
-    0.8,
-    0.05
-   ],
+   "aggregation": "fraction",
+   "direction": "above",
+   "value": 0.8,
    "arms": [
     "BLe"
    ],
-   "description": "top1 identical fraction >= 0.80 AND median full-vocab JS (fp64, natural log) <= 0.05 nats; both clauses must hold"
+   "conjuncts": [
+    {
+     "measurement": "2:median_js_nats",
+     "direction": "below",
+     "value": 0.05
+    }
+   ],
+   "description": "top1 identical fraction >= 0.80 AND median full-vocab JS (fp64, natural log) <= 0.05 nats"
   }
  ],
  "receipts": [
@@ -133,5 +51,10 @@
   "logs/qwenloopstate/loopstate_summary.json"
  ],
  "refuted_if": "bar 1 median cosine < 0.90 on EITHER item 0 or 4: tokens recur without internal-state recurrence, killing the internal-attractor reading",
+ "refuted_if_predicate": {
+  "measurement": "refute:min_median_cosine_items04",
+  "direction": "below",
+  "value": 0.9
+ },
  "registered_prior": "bar 1 FIRES with medians > 0.999 on both items; bar 2 FIRES on both clauses"
 }
