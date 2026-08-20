@@ -35974,3 +35974,61 @@ estimate ~18 runs x <= 6 min < 2 h, inside the nightly window;
 detector/impulse/escape parameters above are frozen — any change is
 a new registration.
 
+
+## PRE-REG QWEN-CHEAP-READOUT-0: does arm A's w4 head keep the teacher's token inside a small candidate set (the level-1 proposal census), and how much of the miss is readout v body-state? (2026-08-19, mac)
+
+Registers the CHEAP-READOUT-CENSUS bank (arm-state shape, all
+design hardenings carried; LEVEL-2-GO thresholds frozen HERE,
+before any h_A exists).
+
+Instrument: scratch/qwen_cheap_readout.py on the Mac CPU reference
+runtime. Surface: MODEL-1 (teacher logs/qwenteacher_v2, pin
+0ca4151; eval payload evals/qwen_model1; revision 1d4bf0f2 carried).
+Rerun arm A (~/qwen_whole0t/A) over the frozen corpus and prefix
+position sets, capturing the PRE-HEAD hidden state h_A by a forward
+hook on the lm_head input — the literal tensor entering lm_head,
+never a guessed API field. Three objects on identical positions:
+  T   = frozen teacher logits (corpus_logits.npy / prefix_logits.npy)
+  A_W = A's own w4 lm_head applied to h_A (native readout)
+  A_T = the VENDOR bf16 lm_head applied to the SAME h_A (control)
+Readings: R_k = P(teacher top1 in top-k of the object) and M_k =
+mean teacher probability mass captured by the top-k set, for k in
+{16, 64, 256, 1024}, reported separately for corpus (X-class) and
+prefix (K-class) positions, plus teacher-margin-stratified R_k on
+the frozen MARGIN_EDGES bins. The A_W-v-A_T gap isolates
+readout-representation loss conditional on the same state; what
+remains under A_T reads as upstream body-state damage seen through
+the vendor head — NOT an additive causal decomposition.
+
+IDENTITY FIXTURE (gate, precedes all readings): recompute A's
+logits through the captured h_A + w4 head and compare with the
+native A forward at the same positions — top1 identical at EVERY
+sampled position and max abs logit diff <= 1e-3; a fixture failure
+books INSTRUMENT-NOT-RUN, no R_k is read.
+
+BARS:
+1. PROPOSAL-VIABLE: R_256(A_W) >= 0.98 on BOTH position classes.
+2. READOUT-SMALL: R_256(A_T) - R_256(A_W) <= 0.01 on both classes
+   (the w4 readout costs at most 1 point of recall at k=256
+   conditional on identical state).
+
+LEVEL-2-GO (frozen now, pre-h_A): the sublinear-router census is
+GO only if bar 1 FIRES; level-1 R_k is never evidence for level 2 (bank law).
+
+REFUTED-IF: R_256(A_W) < 0.90 on either class — the cheap full-vocab
+proposal idea dies at practical k and MIPS imports have nothing to
+stand on for this artifact.
+
+REGISTERED PRIOR: bar 1 FIRES (R_256 >= 0.99 on X-class; K-class
+lower but above bar — the io attribution says the head carries
+prefix-K, so K-class is where a miss would live); bar 2 FIRES
+(most damage is body-state, not readout ranking).
+
+FENCES: candidate-set recall is NOT generation equivalence
+(sampling and margins live in the tail; the detect-retry autopsy is
+the standing example of tail behavior X/K never promised); one
+artifact (A), one surface (MODEL-1) — MODEL-2 transport is its own
+registration; CPU reference runtime only, no cross-device reads;
+h_A tensors are run exhaust (untracked, sha-pinned in the receipt);
+receipts land on logs/qwencheapread/ (fresh path).
+
