@@ -7045,3 +7045,31 @@ honest status column).
   residency stays untouched. Standing note: OPERAND-PROVIDER is
   prospectively useful but human-enforced until the prereg-schema
   operands field lands (banked forward fix).
+- **BANK AMENDMENT (2026-08-20): LOOP-STATE-READOUT specimen order +
+  hidden-state recurrence** (GPT seat, post CYCLE-IMPULSE booking).
+  Items 0 and 4 are the PRIMARY rigid-orbit specimens (0/192 bursts
+  escaped — the measured hard cases); item 3 is the loose
+  semantic-orbit CONTRAST, not the lead. Beyond homologous
+  logit/policy recurrence, capture homologous PRE-HEAD h at t, t+L,
+  t+2L... and report hidden-state recurrence too (cosine/relative
+  L2; layerwise only if cheap) — distinguishes an internal-state
+  orbit from mere output-policy recurrence. Controller note carried:
+  after CYCLE-IMPULSE, the temperature burst is the WEAK BASELINE
+  for exact orbits, not an equal-status NO-REGRET arm — structured
+  interventions (representation restart, alternate route,
+  precision escalation) carry the next controller branch.
+- **BANKED (2026-08-20): PRIMITIVE-EVIDENCE DOCTRINE — receipts
+  persist primitive evidence sufficient for independent
+  recomputation, and intervention caps must never disable
+  observation** (GPT seat; earned twice in one night). Measured
+  basis: the CYCLE-IMPULSE producer's run_escaped said 18/18; the
+  token-ID sidecars let the honest 5/18 be recovered by offline
+  replay WITHOUT a rerun — while the same driver's burst cap
+  silently disarmed the detector, making the final burst's escape
+  true by construction (the second face of the same defect: the
+  intervention limit turned off the measurement). Corollaries
+  already banked as forward fixes: escape/derived scoring lives in
+  adjudicators that recompute from primitives, never in the run
+  loop; per-run sidecars get refuse-if-exists guards; artifact shas
+  go in start_provenance. Pairs with [[trajectory-sidecar]] (the
+  bank whose first use made the recovery possible).
