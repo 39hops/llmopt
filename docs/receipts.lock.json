@@ -460,6 +460,10 @@
    "pending": true,
    "source": "prereg"
   },
+  "logs/qwenattrib/compose_BLem.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwenattrib/compose_BLl.json": {
    "exists": true,
    "pending": true,
@@ -802,6 +806,14 @@
    "sha256": "5f29696ac5830c142a01b4e716b1dccdc3cb226bf2b4009fa8e81e0f3a30d862",
    "source": "results",
    "tracked": true
+  },
+  "logs/qwenhomeo/homeo_observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwenhomeo/homeo_rows.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/qwenhsimpulse/driver.log": {
    "bytes": 1065,
@@ -1248,6 +1260,10 @@
    "sha256": "c9638b1a434d408075aef1e148fd9573f8f33237eda283c184aee5b4cda98255",
    "source": "results",
    "tracked": true
+  },
+  "logs/qwenwhole/artifact_digest_BLem.txt": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/qwenwhole/compile.jsonl": {
    "bytes": 7479,

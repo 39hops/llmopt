@@ -37246,3 +37246,101 @@ tracked regen surfaces (docs/receipts.lock.json, scripts/INDEX.md)
 and no modified instrument file; all four instrument files are
 pinned by sha256 in start provenance and match the committed
 tree.
+## PRE-REG QWEN-HOMEO-ACTUATOR-0: does a one-band precision escalation (BLe -> BLem) applied at a frozen recurrence event have any measurable authority over the loop — actuator qualification for the homeostatic program (2026-08-20, wsl)
+
+Stage 2 of the HOMEOSTATIC-INFERENCE operational ladder (bank
+2026-08-20; detector = stage 1, already built). Question: before any
+closed-loop controller is worth designing, does the strongest
+precision escalation that fits the 10GB card, applied AT a frozen
+recurrence event, do anything at all. Registered under the
+PRECISION-SWITCH STATE CONSISTENCY law: a weight switch that keeps
+the cache is a dynamically mixed-precision state machine and is
+named as such everywhere below.
+
+INSTRUMENT.
+- Substrate: the three frozen BLe greedy xhigh loop trajectories
+  from VERDICT QWEN-LOOP-STATE-0 (items 0, 3, 4; frozen sidecar
+  sha256 pinned in docs/preregs/qwen-homeo-actuator-0.params.json —
+  the loopstate_summary values). qcuda-tower runtime on the 3080.
+- HIGH ARM = BLem: B + L-early + L-mid band recomposition from the
+  frozen band payloads (one band beyond the standing reference arm
+  BLe; escalation dose +0.4296 GiB = the mid band's s16-minus-w4
+  delta; descriptive expectation dX ~ 0.105 nats from the LBAND
+  depth profile — NEVER a bar; BLem is C-ward band escalation, not
+  vendor precision). Built by the existing recomposer; digest
+  receipt logs/qwenwhole/artifact_digest_BLem.txt + compose receipt
+  logs/qwenattrib/compose_BLem.json before any continuation runs.
+- EVENT TABLE: per item, the FIRST frozen-detector fire position in
+  the frozen trajectory (32-gram self-recurrence detector, window
+  32, identical to the CYCLE-IMPULSE/HEADSWAP-IMPULSE frozen
+  detector). Derived at run start from the pinned sidecars (refuse
+  on sha mismatch), emitted to the receipt BEFORE the first
+  continuation — same freeze pattern as the impulse injection
+  table.
+- ARMS (matrix per the bank), one branch per item, continuation cap
+  3072 tokens, greedy:
+  LOW = the frozen trajectory itself (no new compute).
+  REFRESH-LOW (sanity gate): full greedy replay under BLe from
+  token 0 through cap; must reproduce the frozen sidecar tokens
+  EXACTLY, 3/3 items.
+  HOT-HIGH: replay under BLe to the event position, then swap
+  tower weights to BLem RETAINING the cached/recurrent state
+  (serialize state, free BLe tower, build BLem tower, restore
+  state), continue to eos/cap. The continuation computes
+  F(W_BLem, S^BLe) — stated in the receipt.
+  REFRESH-HIGH: full greedy generation under BLem from token 0 to
+  eos/cap (internally consistent high state; doubles as BLem's
+  free-generation probe on these items).
+- OUTCOME DEFINITIONS (frozen): HOT ESCAPE = no frozen-detector
+  fire within the 300-token window after the switch (the
+  CYCLE-IMPULSE quiet-window definition; behavior through cap
+  reported as color). REFRESH-CLEAN = no frozen-detector fire
+  anywhere in BLem's own stream through eos/cap. CORRECT = parsed
+  final answer passes the sympy oracle (independent offline
+  consumer authoritative, HEADSWAP-IMPULSE pattern).
+
+BARS.
+- GATE S (sanity, fail-closed): REFRESH-LOW reproduces the frozen
+  trajectory token-identically 3/3. Any miss books
+  INSTRUMENT-INVALID; no treatment cell is adjudicated.
+- BAR 1 HOT-AUTHORITY: n_hot_escaped >= 2 of 3.
+- BAR 2 REFRESH-AUTHORITY: n_refresh_clean >= 2 of 3.
+- BAR 3 ANY-AUTHORITY (the qualification floor): total across the
+  6 high-arm branches (escaped or clean) >= 1.
+- BAR 4 REPAIR: n_correct across the 6 high-arm branches >= 1.
+
+REFUTED-IF: bar 3 counts ZERO — six high-arm branches, zero
+escapes, zero clean regenerations: the one-band precision
+escalation has no measurable authority at these events and the
+precision actuator DEMOTES at this dose; the controller stage does
+not launch on this actuator.
+
+REGISTERED PRIOR: gate S passes; bar 1 NO-FIRE at 0/3 (mixed-state
+continuation, modest dose, every perturbation so far reconverged —
+0/192 bursts, 0/5 informed tokens); bar 2 NO-FIRE at 1/3; bar 3
+FIRES via a REFRESH branch (1-2 of 6); bar 4 NO-FIRE at 0/6. The
+informative outcomes: any HOT escape (a cheap actuator exists), or
+a bar-3 zero (refutation — demote and rethink the lever).
+
+FENCES. wsl only, one machine, one commit. n=1 per item,
+per-branch claims only; escape is not repair; RECONVERGED-class
+language says nothing about which cycle. One-way intervention
+(no high->low return; hysteresis enters only after authority is
+established). HOT v REFRESH contrast does NOT uniquely identify
+state-v-weight causality (bank narrowing carried); REFRESH-HIGH
+differs from LOW in weights AND history. The detect-retry
+pathology is compression-ASSOCIATED; nothing here claims a causal
+compression mechanism. No vendor-capability claim anywhere. BLem
+fidelity numbers are descriptive; scoring BLem on MODEL-1 is a
+separate desk. Thresholds (detector window 32, escape window 300,
+cap 3072, bar counts) are first-registration. Residency is a
+precondition: if the plan-before-build check rejects BLem on the
+10GB card (BLe run left 0.75 GiB free; the mid band adds ~0.43),
+book INSTRUMENT-NOT-RUN — a smaller dose is a NEW registration.
+Wall/window kills book INSTRUMENT-NOT-RUN with partial rows
+streamed. SMOKE mode writes to smoke paths only. Provenance:
+start_provenance(artifacts={BLe, BLem, vendor tokenizer dir});
+receipts under logs/qwenhomeo/; both auditors before booking.
+RUN GATE: fires only on explicit Artin 3080 GO — registration now,
+launch later.
+
