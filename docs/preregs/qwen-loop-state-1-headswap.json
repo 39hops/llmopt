@@ -1,0 +1,53 @@
+{
+ "name": "QWEN-LOOP-STATE-1-HEADSWAP",
+ "note": "Mechanical projection of PRE-REG QWEN-LOOP-STATE-1-HEADSWAP (RESULTS, 2026-08-20), transcribed alongside the RESULTS registration, before any run. Inputs are the sha-pinned npz of booked QWEN-LOOP-STATE-0; precondition P1 = npz shas equal the booked arrays_sha256.",
+ "results_id": "2026-08-20-pre-reg-qwen-loop-state-1-headswap",
+ "registered": "2026-08-20",
+ "machine": "wsl",
+ "arms": {
+  "BLe": {
+   "description": "offline head swap on the booked loop-state h: vendor lm_head (fp32) v BLe s16 lm_head on identical captured states; CPU only, no tower"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "STATE-ATTRIBUTION",
+   "gate_class": "range",
+   "metric": "vendor_top1_agreement_attempt_pairs",
+   "population": "item:3 successive-attempt pairs x 64 offsets (4x64)",
+   "aggregation": "fraction",
+   "direction": "above",
+   "value": 0.8,
+   "arms": [
+    "BLe"
+   ],
+   "description": "vendor-head top1 agreement across successive retry attempts >= 0.80"
+  },
+  {
+   "id": 2,
+   "name": "HEAD-AGREEMENT",
+   "gate_class": "range",
+   "metric": "vendor_v_ble_top1_agreement",
+   "population": "all captured positions (1409)",
+   "aggregation": "fraction",
+   "direction": "above",
+   "value": 0.9,
+   "arms": [
+    "BLe"
+   ],
+   "description": "vendor top1 == BLe in-run top1 on >= 0.90 of captured positions"
+  }
+ ],
+ "receipts": [
+  "logs/qwenloopstate1/headswap_receipt.json",
+  "logs/qwenloopstate1/headswap_observations.json"
+ ],
+ "refuted_if": "bar 1 measurement < 0.50: the vendor head breaks the retry repetition on identical states \u2014 stuckness substantially head-attributable",
+ "refuted_if_predicate": {
+  "measurement": "1",
+  "direction": "below",
+  "value": 0.5
+ },
+ "registered_prior": "both bars FIRE (M1 >= 0.95, M2 within 0.03 of the 0.984 BLe baseline); the head is a bystander"
+}

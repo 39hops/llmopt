@@ -36513,3 +36513,79 @@ is a convex polyhedral cell, so same winner at two h endpoints
 implies the straight segment between them stays in the cell —
 while saying nothing about the model's actual path between the
 two states.
+
+
+## PRE-REG QWEN-LOOP-STATE-1-HEADSWAP: does the stuck retry policy survive an INTACT vendor head on the same captured loop states (mechanistic ladder leg 2), and what is the NORMALIZED decision-boundary distance at the drifting positions? (2026-08-20, wsl)
+
+Leg 2 of the LOOP-STATE mechanistic ladder (banked 2026-08-19;
+priced-not-registered in QWEN-LOOP-STATE-0, now motivated by the
+state-v-token dissociation and the COLOR2 margin correction).
+Question: is the stuck retry policy attributable to BLe's
+compressed s16 head, or to the state itself? W_vendor @ h_BLe
+isolates head representation CONDITIONAL on the same damaged loop
+state — it is NOT teacher behavior and is never labeled as such
+(operand-provider law carried; the h are BLe's own free-run states,
+off the vendor manifold).
+
+Instrument: NEW offline driver scratch/qwen_loop_state_headswap.py
+on the 3080, CPU-only, no tower residency. Inputs: the three
+sha-pinned npz primitives of the booked QWEN-LOOP-STATE-0 run
+(precondition P1: recomputed npz sha256 must equal the booked
+rows' arrays_sha256 — fa12f05b..., 79e1041d..., 6319d6ce...),
+vendor lm_head.weight from the pinned vendor checkout (fp32
+chunked matmul, the CHEAP-READOUT vendor-control pattern), and
+BLe's s16 lm_head rows decoded through llmopt.lab.qcodec_fast
+.S16Rows from the artifact manifest. start_provenance MUST carry
+artifacts={BLe, vendor} via the new artifact_identity capture
+(first registered consumer of the must-fix).
+
+MEASUREMENTS:
+- M1 HEAD-AGREEMENT: fraction of all captured positions (297 +
+  759 + 353 = 1409) where vendor-head top1 on h equals BLe's
+  in-run top1 (from the fixture-certified stored top-256).
+- M2 VENDOR STUCK-RETRY: item 3, the registered 4
+  successive-attempt pairs x 64 homologous offsets — fraction of
+  pairs where the VENDOR head's top1 agrees across the pair
+  (BLe-head baseline from the booked verdict: 0.984).
+- M3 (descriptive, gates nothing): normalized decision-boundary
+  distance under the BLe head at the item-0/4 k=1 homologous pair
+  endpoints: d = (z_top1 - z_top2) / ||w_top1 - w_top2|| with z
+  the stored fixture-certified logits and w the decoded s16 head
+  rows; reported split by low-cosine (<0.9) v rest pairs, both
+  endpoints. This is the measured "depth" the COLOR2 correction
+  said was missing; raw-margin language stays deny-listed.
+
+BARS:
+1. STATE-ATTRIBUTION: M2 >= 0.80. FIRE = the stuck retry policy
+   survives an intact, uncompressed head on the identical states
+   — stuckness is state-attributable, not readout-attributable.
+2. HEAD-AGREEMENT: M1 >= 0.90. FIRE = the compressed head and the
+   vendor head read these off-manifold loop states to the same
+   greedy action at the k=1 level.
+
+REFUTED-IF: M2 < 0.50 — the vendor head breaks the retry
+repetition on the same states, attributing the stuck policy
+substantially to the compressed readout and redirecting the
+controller program at head repair before any state intervention.
+
+REGISTERED PRIOR: both bars FIRE (M1 >= 0.95, M2 within 0.03 of
+the 0.984 BLe baseline). Basis: CHEAP-READOUT-0's vendor control
+netted only 2 of 7 k=256 misses on teacher-forced states, and the
+COLOR2 pair-endpoint margins are large at the drifting positions;
+the house expects the head to be a bystander. The informative
+outcome is any leg breaking.
+
+FENCES: same three specimens, n=1 trajectory per item,
+per-specimen claims only, BLe xhigh greedy provenance inherited
+from the booked run; h are off-manifold free-run states — no
+vendor-capability or teacher-preference claim is expressible from
+this rung; comparisons are BLe-head v vendor-head on IDENTICAL h,
+never across trajectories or devices; M3 depth numbers are
+reported with the row-norm denominator stated and never as raw
+margins; thresholds are first-registration values (no calibration
+history) — a bar landing within 10% of its threshold books
+KNIFE-EDGE explicitly. Receipts: logs/qwenloopstate1/
+(fresh path; logs/qwenloopstate/ is lock-frozen and untouched):
+headswap_receipt.json + headswap_observations.json, small,
+force-added at booking. Wall: minutes (1409 x vocab fp32 matmuls,
+CPU); window fence ~15:00 EST — unfinished books NOT-RUN.
