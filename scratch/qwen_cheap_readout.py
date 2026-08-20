@@ -14,7 +14,7 @@ Model-build machinery and pure math are REUSED from
 scratch/qwen_model1_score.py by module load (no copy); this driver
 adds only capture + candidate-set readings.
 
-    ART_DIR=~/qwen_whole0t/A ARM=A .venv/bin/python \
+    ART_DIR=~/qwen_whole0t/A ARM=A .venv_teacher/bin/python \
         scratch/qwen_cheap_readout.py          (mac, cpu only)
     SMOKE=1 ...   # truncated, *_smoke paths only
 
