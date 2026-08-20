@@ -795,6 +795,16 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwenloopstate/loopstate_rows.jsonl": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
+  "logs/qwenloopstate/loopstate_summary.json": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
   "logs/qwenmodel1/score_A.json": {
    "exists": true,
    "pending": true,
