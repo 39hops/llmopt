@@ -46,7 +46,10 @@ SEED_TAG = "mips-census-0"
 KM_ITERS = 25
 KM_BATCH = 8192
 RAD_INFLATE = 1 + 1e-12
-U_INFLATE = 1 + 1e-9
+U_EPS = 1e-3  # ADDITIVE fp64 slack: covers fp32 score rounding
+# above a tight fp64 bound (measured excursion 1.3e-5 in smoke);
+# multiplicative inflation is sign-broken for negative bounds —
+# AMENDMENT QWEN-MIPS-CENSUS-0-BOUND
 SMALLV = 8192
 
 
@@ -122,7 +125,7 @@ def certify_query(zrow, h, C, radii, groups):
     algorithm would touch. Returns (top ids, rows visited,
     clusters visited)."""
     hn = np.linalg.norm(h.astype(np.float64))
-    U = (h.astype(np.float64) @ C.T + hn * radii) * U_INFLATE
+    U = h.astype(np.float64) @ C.T + hn * radii + U_EPS
     order = np.argsort(-U)
     best_scores = np.full(TOPK, -np.inf, np.float32)
     best_ids = np.full(TOPK, -1, np.int64)
@@ -214,7 +217,7 @@ def main():
         np.maximum.at(M, assign, Z.T.astype(np.float64))
         hn = np.linalg.norm(H.astype(np.float64), axis=1)
         Uall = (H.astype(np.float64) @ C.T
-                + hn[:, None] * radii[None, :]) * U_INFLATE
+                + hn[:, None] * radii[None, :] + U_EPS)
         bad = M.T > Uall
         if bad.any():
             fix_ok = False

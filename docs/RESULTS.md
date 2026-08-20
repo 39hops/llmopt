@@ -37093,3 +37093,21 @@ assignments npz) stays untracked, sha-pinned in the receipt.
 Wall estimate: clustering + 3 K sweeps + 454 x brute ground truth,
 well under the Mac's free afternoon; if interrupted, unfinished K
 cells book NOT-RUN.
+
+
+## AMENDMENT QWEN-MIPS-CENSUS-0-BOUND: the frozen multiplicative bound inflation (1 + 1e-9) is sign-broken for negative bounds and too small for fp32 score rounding — replaced PRE-RUN by additive fp64 slack U + 1e-3, caught by the registered mechanism fixture in smoke before any census read (2026-08-20, mac)
+
+Amends PRE-REG QWEN-MIPS-CENSUS-0 (registration commit 09420c0)
+BEFORE any real run; no census number exists yet. The smoke
+qualification fired the registered bound fixture: max member fp32
+score exceeded U_j by up to 1.3e-5 — two defects in the frozen
+formula: (a) multiplying by (1 + 1e-9) DECREASES a negative bound,
+(b) the scorer is fp32 while the bound is fp64, and a singleton
+cluster (r = 0) makes the bound exactly tight, so fp32 rounding
+alone crosses it. Correction, frozen here: U_j = h . c_j +
+||h|| r_j (fp64) + 1e-3 additive — 75x the measured excursion at
+logit scale. Radius inflation (nonnegative) stays multiplicative.
+The fixture itself is unchanged and still gates the census
+fail-closed; bars, K grid, thresholds, and every other frozen
+parameter unchanged. This is the qualification layer doing its
+job: the defect never touched a registered measurement.
