@@ -970,12 +970,18 @@
    "tracked": true
   },
   "logs/qwenmips/mips_observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 1205,
+   "exists": true,
+   "sha256": "7e8025c2e544d795911c935b0e652c716238dfb31aecd3b8c55a1513cfce0f19",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmips/mips_receipt.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3964,
+   "exists": true,
+   "sha256": "7a95f9e1c8f7ea4aca0b2c2ff0007d59c285f4d212557e82865b5297e5e79ce5",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel1/score_A.json": {
    "exists": true,

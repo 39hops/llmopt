@@ -1,0 +1,150 @@
+{
+ "start": {
+  "start_commit": "6d36562d",
+  "start_status_porcelain": " M docs/receipts.lock.json\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_mips_census.py": "ccbc4d267c8c8b9ad67365c6aec79fb74dbf00b9cb59cc1db5fd8b52229c62ec",
+   "llmopt/lab/qcodec_fast.py": "db01672f4a2f095b125f412464a239b89ce1283cbb1e12622c7e0d7863382eb6",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1",
+   "docs/preregs/qwen-mips-census-0.json": "bd37cb4ddf16824eced57c9fc7fffcc6ea7a791ab0ce963c6d8fdcacab7e4841"
+  },
+  "artifact_identity": {
+   "A": {
+    "art_dir_resolved": "/Users/artin/qwen_whole0t/A",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "13ba4b174102d95e2d8d58bf8c49242ea3ed6ff3eb4de087722a2d5a03858bdb",
+    "shards": {
+     "n": 18,
+     "total_bytes": 6980660224
+    }
+   }
+  }
+ },
+ "completion_commit": "d793d174",
+ "smoke": false,
+ "n_vocab": 248320,
+ "bytes_per_row_w4": 1320.0082474226804,
+ "queries_npz_sha256": "8912d27533dbec860891b3cded8fc445c34e3040ece2003d10e59ea6af180549",
+ "smallv_qualification": {
+  "256": {
+   "exact": 454,
+   "n": 454
+  },
+  "1024": {
+   "exact": 454,
+   "n": 454
+  },
+  "4096": {
+   "exact": 454,
+   "n": 454
+  }
+ },
+ "index_npz_sha256": {
+  "256": "a00033faada9c51fc7dbad7f95aae6414261ad70a8189e3966989f4e1ce37962",
+  "1024": "b8975c476c5e632d7dcf20e2f2d3477f081806f957c9449ace1ddd0a8d450f8a",
+  "4096": "91f354d8a10d5f672ce2ced83045a0ff9a7521090831716df6996015813ad8d7"
+ },
+ "results": {
+  "256": {
+   "exact": 454,
+   "n": 454,
+   "per_pop": {
+    "corpus_X": {
+     "n_queries": 356,
+     "rows_visited": {
+      "q50": 248192.0,
+      "q90": 248192.0,
+      "q95": 248192.0,
+      "max": 248193
+     },
+     "fraction_q50": 0.9994845360824742,
+     "modeled_bytes_q50": 339098110.94432986,
+     "index_bytes": 10489856,
+     "modeled_ratio_q50": 1.034515557444415
+    },
+    "prefix_K": {
+     "n_queries": 98,
+     "rows_visited": {
+      "q50": 248192.0,
+      "q90": 248192.3,
+      "q95": 248193.0,
+      "max": 248193
+     },
+     "fraction_q50": 0.9994845360824742,
+     "modeled_bytes_q50": 339098110.94432986,
+     "index_bytes": 10489856,
+     "modeled_ratio_q50": 1.034515557444415
+    }
+   },
+   "wall_s": 8.2
+  },
+  "1024": {
+   "exact": 454,
+   "n": 454,
+   "per_pop": {
+    "corpus_X": {
+     "n_queries": 356,
+     "rows_visited": {
+      "q50": 247635.0,
+      "q90": 247636.0,
+      "q95": 247636.0,
+      "max": 247637
+     },
+     "fraction_q50": 0.9972414626288659,
+     "modeled_bytes_q50": 369830206.3505154,
+     "index_bytes": 41959424,
+     "modeled_ratio_q50": 1.1282725846423178
+    },
+    "prefix_K": {
+     "n_queries": 98,
+     "rows_visited": {
+      "q50": 247635.0,
+      "q90": 247635.0,
+      "q95": 247636.0,
+      "max": 247637
+     },
+     "fraction_q50": 0.9972414626288659,
+     "modeled_bytes_q50": 369830206.3505154,
+     "index_bytes": 41959424,
+     "modeled_ratio_q50": 1.1282725846423178
+    }
+   },
+   "wall_s": 9.6
+  },
+  "4096": {
+   "exact": 454,
+   "n": 454,
+   "per_pop": {
+    "corpus_X": {
+     "n_queries": 356,
+     "rows_visited": {
+      "q50": 245542.0,
+      "q90": 245544.0,
+      "q95": 245544.0,
+      "max": 245547
+     },
+     "fraction_q50": 0.9888128221649485,
+     "modeled_bytes_q50": 492937329.08865976,
+     "index_bytes": 167837696,
+     "modeled_ratio_q50": 1.503845994208547
+    },
+    "prefix_K": {
+     "n_queries": 98,
+     "rows_visited": {
+      "q50": 245542.0,
+      "q90": 245543.0,
+      "q95": 245544.0,
+      "max": 245545
+     },
+     "fraction_q50": 0.9888128221649485,
+     "modeled_bytes_q50": 492937329.08865976,
+     "index_bytes": 167837696,
+     "modeled_ratio_q50": 1.503845994208547
+    }
+   },
+   "wall_s": 13.6
+  }
+ },
+ "note": "byte figures are MODELED visitation (index + visited-row w4 payload), never physical memory traffic; exact = exact under the offline decoded-W4 fp32 scorer"
+}

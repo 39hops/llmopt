@@ -2502,3 +2502,16 @@ regime tag on every bullet is the fence.
   independent offline consumer recomputing everything from token-ID
   sidecars.
   ([VERDICT QWEN-HEADSWAP-IMPULSE-0](RESULTS.md#L36833 "id:2026-08-20-verdict-qwen-headswap-impulse-0-bar").)
+- [NULL] [REGIME-SCOPED: measured deployment artifacts]
+  The exact-geometric LEVEL-2 route books its registered null: k-means
+  balls + Cauchy-Schwarz bounds certify the exact top-256 perfectly
+  (1362/1362 query-K cells) but barely prune at d=5120 — corpus q50
+  visitation 0.999/0.997/0.989 of the 248320-row vocab at K
+  256/1024/4096 (REFUTED-IF fires at >= 0.90 every K, knife-edge 9.87%
+  by a conservatively extended fence), and the MODELED byte ratio
+  exceeds 1 at every K (1.03-1.50): the index costs more than it
+  saves; offline exact counterfactual visitation census under the
+  decoded-W4 fp32 scorer, partially unblinded at K 256/1024 (disclosed
+  with its exposure receipt), prefix and corpus populations saturate
+  bit-identically.
+  ([VERDICT QWEN-MIPS-CENSUS-0](RESULTS.md#L37116 "id:2026-08-20-verdict-qwen-mips-census-0-the").)

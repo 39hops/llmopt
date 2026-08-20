@@ -1,0 +1,27 @@
+[mc] head decoded (248320, 5120) 3s bytes/row 1320.0
+[mc] scores + brute ground truth 10s
+[mc] QUAL smallv K=256 exact 454/454
+[mc] QUAL smallv K=1024 exact 454/454
+[mc] QUAL smallv K=4096 exact 454/454
+[mc] K=256 clustered 62s
+[mc] K=256 bound fixture PASS 1s
+[mc] K=256 exact 454/454 corpus q50 frac 0.999 prefix q50 frac 0.999 8s
+[mc] K=1024 clustered 227s
+[mc] K=1024 bound fixture PASS 1s
+[mc] K=1024 exact 454/454 corpus q50 frac 0.997 prefix q50 frac 0.997 10s
+[mc] K=4096 clustered 811s
+[mc] K=4096 bound fixture PASS 1s
+[mc] K=4096 exact 454/454 corpus q50 frac 0.989 prefix q50 frac 0.989 14s
+{
+ "bars": {
+  "1": "FIRE",
+  "2": "NO-FIRE"
+ },
+ "refutation": "REFUTED",
+ "fracs": {
+  "256": 0.9994845360824742,
+  "1024": 0.9972414626288659,
+  "4096": 0.9888128221649485
+ },
+ "bestK": "4096"
+}

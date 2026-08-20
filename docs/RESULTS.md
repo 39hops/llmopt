@@ -37111,3 +37111,138 @@ The fixture itself is unchanged and still gates the census
 fail-closed; bars, K grid, thresholds, and every other frozen
 parameter unchanged. This is the qualification layer doing its
 job: the defect never touched a registered measurement.
+
+
+## VERDICT QWEN-MIPS-CENSUS-0: THE REGISTERED NULL — certification is perfect (1362/1362 exact top-256) but the bounds barely prune: corpus q50 visitation 0.999/0.997/0.989 of the vocab at K 256/1024/4096, REFUTED-IF triggers (>= 0.90 at every K), and the MODELED byte ratio is above 1.0 at every K — the index costs more than it saves (2026-08-20, mac)
+
+Adjudication of PRE-REG QWEN-MIPS-CENSUS-0 (registered 09420c0 +
+pre-run AMENDMENT -BOUND) through llmopt.lab.prereg inside the
+driver (scratch/qwen_mips_census.py): bar 1 FIRE, bar 2 NO-FIRE,
+refutation predicate REFUTED — the exact-geometric level-2 route
+books its null exactly as the banked design said it should.
+
+QUALIFICATION (registered, in the production path, before any
+census read): small-vocab (first 8192 rows) certified-v-brute
+top-256 equality 454/454 queries at EVERY K in {256, 1024, 4096};
+the fp64 bound fixture (max member score <= U_j, every query x
+cluster x K) PASSED at all three K on the full vocab. The
+qualification builds its OWN small-vocab clusterings (seed tag
+"-qual-K{K}") — it certifies the mechanism through the same
+certify path, not the shipped census index; census exactness is
+independently checked against brute force per query-K cell (bar
+1). Frozen recipe constants (TOPK 256, k-means iters/batch, seed
+tag, radius/bound slacks incl. the amended U_EPS 1e-3) are not
+duplicated inside the receipt; they are recoverable exactly via
+the receipt's pinned driver sha.
+
+MEASURED:
+- Bar 1 CERTIFIED-EXACT (sanity): FIRE — 1362/1362 query-K cells
+  certify the exact brute-force top-256 on the full vocab (454
+  queries x 3 K). The Cauchy-Schwarz machinery is CORRECT.
+- Bar 2 TRAFFIC (range): NO-FIRE — corpus_X q50 rows-visited
+  fraction at the best K (4096, the registered argmin selection)
+  is 0.9888, nowhere near the 0.50 bar. All K: 0.9995 (256),
+  0.9972 (1024), 0.9888 (4096); prefix_K is not materially
+  different (same q50 fractions to 3 decimals).
+- REFUTED-IF TRIGGERS: the minimum q50 fraction over the grid,
+  0.9888, is >= 0.90 — the registered refutation predicate reads
+  REFUTED. The bounds force a near-full scan at d = 5120.
+- MODELED BYTES (descriptive, per the external-review carry;
+  nominal visitation accounting, never physical traffic): the
+  modeled ratio (index + visited-row w4 payload + posting
+  metadata) / (full-scan w4 payload) is ABOVE 1 at every K —
+  1.03 (256), 1.13 (1024), 1.50 (4096). The as-run accounting
+  ADDS 8 B/cluster posting offsets and 4 B/visited-row ids beyond
+  the registered formula; the registered formula alone gives
+  1.0315/1.1252/1.5008 — the direction does not depend on the
+  addition. Best-ROW K (4096) and
+  best-BYTE K (256) diverge, and even the byte-best cell loses:
+  under this recipe the index costs more than the visitation it
+  avoids.
+
+PROCESS DISCLOSURES (all carried from external review, on the
+record): (a) PARTIAL UNBLINDING — the first launch (mips0) was
+aborted pre-receipt for a registration-conformance gap (the
+small-vocab qualification was not yet implemented in the real
+path) AFTER COMPLETING TWO OF THE THREE K CELLS: its log
+(jobs/mips0.log, in-tree, the exposure receipt) shows K=256 at
+0.999 and K=1024 at 0.997 corpus q50 fraction, both with 454/454
+exactness and bound-fixture PASS — so two grid cells and the
+refutation predicate's direction were visible before the rerun;
+only K=4096 (the cell that sets bestK, bar 2, and the refutation
+margin) was blind. The frozen prereg, K grid, thresholds, and
+prior all predate the exposure; the post-exposure code changes
+were conformance/tie-safety/accounting fixes (no result-selected
+redesign); mips1 deterministically reproduced both exposed
+figures. The aborted run's output directory was deleted
+pre-receipt (the unconditional refuse-if-exists guards would
+otherwise have blocked the rerun). (b) INSTRUMENT CLASS — the driver
+precomputes the full score matrix once and SIMULATES sparse
+visitation by indexing the precomputed scores (identical numbers,
+one matmul): this is an offline EXACT COUNTERFACTUAL
+visitation/byte census, not a realized sparse runtime; had it
+won, gathered-row execution + scorer equivalence would have been
+the next rung. (c) The run started at 6d36562 and completed at
+d793d17 — the intervening commits are docs-only (RIFF-LEDGER +
+regen surfaces, verified by diff); every instrument file is
+pinned by start-provenance sha. (d) The pre-run -BOUND amendment
+replaced a sign-broken multiplicative bound inflation with
+additive +1e-3 fp64 slack; that slack is CONSERVATIVE ON THE
+REGISTERED QUERY SURFACE as certified by the fixture on these
+queries — not a universal floating-point error theorem. (e) The
+tie-safe strict stop (scan on tau == U) was fixed pre-rerun.
+
+READING (scoped to this recipe, this artifact, these query
+populations): exact candidate information may well exist in the
+head — CHEAP-READOUT showed the top-256 carries ~96% of the
+teacher mass — but ISOTROPIC Cauchy-Schwarz cluster geometry at
+d = 5120 is too loose to certify its LOCATION cheaply: cluster
+radii are so large relative to the score spread that nearly every
+cluster's upper bound survives until scanned. The exact-geometric
+level-2 route under this recipe (k-means balls + CS bounds) is
+CLOSED BY ITS OWN REGISTERED NULL. Not explored here and each a
+separate registration if ever wanted: anisotropic/score-aware
+geometry, larger or structured K (not before modeled index cost
+is priced — it already dominates at K=4096), and any
+approximate-recall route (which the banked design deliberately
+subordinated to the exact question).
+
+PRIOR: correct on both bars and on the q50 > 0.5 direction; the
+third registered clause ("prefix_K pruning somewhat better than
+corpus_X") was WRONG — the two populations' q50 fractions are
+BIT-IDENTICAL at every K (same row counts 248192/247635/245542):
+the near-full scan saturates both populations equally. The
+registered informative outcome (a K that prunes hard) did not
+occur. Honest-loss ledger entry, kept per house convention.
+
+FENCES carried: single artifact (A), Mac CPU, the two frozen
+query populations, no evaluation labels in the index, no transfer
+to s16 heads / other arms / the qcuda runtime; "exact" is exact
+under the offline decoded-W4 fp32 scorer only; all byte figures
+modeled visitation, never physical bandwidth; bar 2's miss is not
+knife-edge (0.9888 v 0.50); the refutation margin is 0.0888 above
+the 0.90 predicate — 9.87% relative to the threshold (8.98%
+relative to the measured value; under 10% on either convention,
+itself a close call against the 10% fence) — so the REFUTED call
+is flagged KNIFE-EDGE by EXTENDING the registered bar fence to
+the refutation predicate (the fence text names bars only; the
+extension is conservative and deliberate): a recipe pruning even
+slightly harder would have escaped refutation while still missing
+bar 2 by a mile. Construction note: the refutation measurement
+(min over the grid) and bar 2's measurement (the argmin-selected
+best K) are the same number by construction.
+
+Receipts (full paths for the lock):
+logs/qwenmips/mips_receipt.json (qualification block, per-K
+results, modeled ratios, index npz shas a00033fa.../b8975c47.../
+91f354d8...), logs/qwenmips/mips_observations.json,
+jobs/mips1.log and jobs/mips1.rc (the full-vocab bound-fixture
+PASS lines exist only in the arm log — the receipt evidences it only
+by fail-closed absence, so the log books as a receipt), and
+jobs/mips0.log (the exposure receipt for disclosure (a)) — small
+text, force-added; the three index npz files stay untracked,
+sha-pinned in the receipt. Start porcelain records two MODIFIED
+tracked regen surfaces (docs/receipts.lock.json, scripts/INDEX.md)
+and no modified instrument file; all four instrument files are
+pinned by sha256 in start provenance and match the committed
+tree.

@@ -1,0 +1,9 @@
+[mc] head decoded (248320, 5120) 3s bytes/row 1320.0
+[mc] scores + brute ground truth 11s
+[mc] K=256 clustered 67s
+[mc] K=256 bound fixture PASS 1s
+[mc] K=256 exact 454/454 corpus q50 frac 0.999 prefix q50 frac 0.999 8s
+[mc] K=1024 clustered 220s
+[mc] K=1024 bound fixture PASS 1s
+[mc] K=1024 exact 454/454 corpus q50 frac 0.997 prefix q50 frac 0.997 10s
+jobs/mips0.cmd: line 1: 35126 Terminated: 15          .venv/bin/python scratch/qwen_mips_census.py

@@ -7257,3 +7257,16 @@ honest status column).
   high arm and distinguish always-high-FROM-START from controlled
   hot/refresh switching; more precision is NOT assumed monotonic
   from the existing X/K results.
+- **BANK OUTCOME (2026-08-20): LEVEL-2 EXACT GEOMETRIC MIPS booked
+  as its own registered null** (RESULTS L37116): certification
+  machinery correct (1362/1362 exact), pruning absent (q50 0.989+
+  at every frozen K), modeled bytes ratio > 1 everywhere — under
+  isotropic k-means-ball Cauchy-Schwarz geometry at d=5120 the
+  bound is too loose to locate the candidate set cheaply. The
+  [[cheap-readout-census]] LEVEL-2 question stays open only
+  through DIFFERENT-geometry routes (anisotropic/score-aware
+  bounds, structured K) or approximate-recall routes — each its
+  own registration, none launched before pricing index cost
+  (already dominant at K=4096). House prior called the null;
+  its prefix-prunes-better clause was wrong (populations saturate
+  bit-identically).

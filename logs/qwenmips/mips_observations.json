@@ -1,0 +1,33 @@
+{
+ "note": "counts from the receipt's results block; best K = argmin corpus_X fraction_q50 per the registered selection metric",
+ "measurement_valid": true,
+ "arms": {
+  "A": {
+   "admissible": true,
+   "reason": "query npz sha pinned; artifact identity recorded; 1362 query-K cells"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 1362,
+   "metric": "n_query_K_cells_exact",
+   "population": "queries:454 x K:3 (full vocab)",
+   "aggregation": "count",
+   "provenance": "per-K exact counts {'256': 454, '1024': 454, '4096': 454}"
+  },
+  "2": {
+   "value": 0.9888128221649485,
+   "metric": "corpusX_q50_rows_visited_fraction_bestK",
+   "population": "corpus_X:356 at the best K of the frozen grid",
+   "aggregation": "median fraction",
+   "provenance": "best K 4096; all K {'256': 0.9994845360824742, '1024': 0.9972414626288659, '4096': 0.9888128221649485}"
+  },
+  "refute:corpusX_q50_fraction_minK": {
+   "value": 0.9888128221649485,
+   "metric": "corpusX_q50_rows_visited_fraction_bestK",
+   "population": "corpus_X:356 at the best K of the frozen grid",
+   "aggregation": "median fraction",
+   "provenance": "min over the K grid, read by the refutation predicate (>= 0.90 at EVERY K refutes)"
+  }
+ }
+}

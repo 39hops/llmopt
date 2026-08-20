@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 209, library 72, reproduce-pinned 10, results-cited 244, spec-cited 88, cited-but-library 60
+Census: UNCITED 209, library 72, reproduce-pinned 10, results-cited 245, spec-cited 88, cited-but-library 60
 
 ## scratch/
 
@@ -361,6 +361,7 @@ Census: UNCITED 209, library 72, reproduce-pinned 10, results-cited 244, spec-ci
 | qwen | qwen_loop_state_color2.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_loop_state_headswap.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | qwen | qwen_margin_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| qwen | qwen_mips_census.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | qwen | qwen_model1_score.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 6 |
 | qwen | qwen_model2_adjudicate.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_qualify.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 4 |
