@@ -7220,8 +7220,11 @@ honest status column).
   all; (3) closed-loop controller — always-low v always-high v
   detector-controlled escalation, with an explicit hysteresis/exit
   rule, scored on oracle correctness + recurrence + bytes/wall.
-  The registered win condition: detector-controlled fidelity ~
-  always-high at materially lower resource cost. The detect-retry
+  The CANDIDATE win condition (this is a BANK, not a
+  pre-registration — thresholds get numeric form only at
+  registration): detector-controlled fidelity comparable to
+  always-high at materially lower resource cost, both terms to be
+  frozen numerically in the prereg. The detect-retry
   pathology is COMPRESSION-ASSOCIATED (observed under compressed
   BLe; an intact-body matched counterfactual would be needed for a
   causal claim), which keeps precision escalation a strongly
@@ -7229,3 +7232,28 @@ honest status column).
   Analogy fence: the initial-conditions/dynamical-systems analogy
   and the cybernetic negative-feedback analogy stay DISTINCT until
   feedback is actually installed and measured.
+- **BANKED (2026-08-20): PRECISION-SWITCH STATE CONSISTENCY — a
+  live precision/weight switch that retains the cache is a
+  dynamically MIXED-PRECISION STATE MACHINE, never merely "high
+  precision when unstable"** (GPT seat; design law for any
+  [[homeostatic-inference]] actuator registration). At detector
+  time t the model carries model-dependent cached/recurrent state
+  S_t^BLe (full-attn KV, hybrid linear-attn recurrent state,
+  positional context); switching weights while keeping the cache
+  computes F(W_high, S_t^BLe), NOT the counterfactual
+  F(W_high, S_t^high) — and switching back later creates
+  mixed-history state. Valid instrument, but name it what it is.
+  Actuator qualification therefore SPLITS: LOW (continue BLe);
+  HOT-HIGH (switch the high-precision route from the detector
+  onward, PRESERVING the current BLe state); REFRESH-HIGH (at the
+  detector, replay/reconstruct the same prefix under the high arm
+  for an internally consistent state, then continue); optional
+  later BOUNDED-REFRESH (recompute only a recent window/state
+  slice). The mechanistic payoff of the split: HOT fails while
+  REFRESH succeeds = the accumulated damaged STATE carries the
+  pathology and future-weight repair arrives too late; HOT
+  succeeds = a cheap actuator exists; both fail = precision
+  escalation demotes. Closed-loop comparisons must name the exact
+  high arm and distinguish always-high-FROM-START from controlled
+  hot/refresh switching; more precision is NOT assumed monotonic
+  from the existing X/K results.
