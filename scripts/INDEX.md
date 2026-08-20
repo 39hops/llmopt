@@ -927,6 +927,7 @@ Rewrite generated regions in README.md from ledger truth.
 ### scripts/gen_receipt_lock.py
 Content-address every receipt path a booked entry cites.
 
+- `expand_braces(text: str) -> list[str]`
 - `sha256(p: Path) -> str`
 - `cited_paths() -> dict[str, str]` — path -> source. "results" = cited in RESULTS.md prose (absence
 - `build() -> dict`
