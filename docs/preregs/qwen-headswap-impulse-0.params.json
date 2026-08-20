@@ -1,0 +1,36 @@
+{
+ "name": "QWEN-HEADSWAP-IMPULSE-0-PARAMS",
+ "note": "Frozen injection table for PRE-REG QWEN-HEADSWAP-IMPULSE-0 (params sidecar from the start; the schema-conformant projection lives in qwen-headswap-impulse-0.json).",
+ "injections": [
+  {
+   "item": 0,
+   "pos": 556,
+   "ble_token": 30761,
+   "vendor_token": 1918
+  },
+  {
+   "item": 0,
+   "pos": 583,
+   "ble_token": 25,
+   "vendor_token": 11
+  },
+  {
+   "item": 4,
+   "pos": 1538,
+   "ble_token": 37781,
+   "vendor_token": 1380
+  },
+  {
+   "item": 3,
+   "pos": 1223,
+   "ble_token": 553,
+   "vendor_token": 8
+  },
+  {
+   "item": 3,
+   "pos": 1278,
+   "ble_token": 198,
+   "vendor_token": 87
+  }
+ ]
+}

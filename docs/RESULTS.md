@@ -36751,3 +36751,80 @@ review (GPT seat, verified in-house).
    headswap_depth256.json). Forward fix banked: evolve
    artifact_identity toward a shard-content root or an explicit
    qualified-digest-chain reference.
+
+
+## PRE-REG QWEN-HEADSWAP-IMPULSE-0: does a SINGLE vendor-informed token at the five measured head-disagreement points causally redirect BLe's loop trajectories, or do they reconverge to recurrence? (2026-08-20, wsl)
+
+The causal edge the -SCOPE amendment left open: HEADSWAP scored
+frozen states offline; this rung intervenes ONLINE. At each of the
+five registered vendor/BLe top1 disagreement points (receipted in
+logs/qwenloopstate1/headswap_disagreements.json), replay BLe
+greedy to that position, emit the VENDOR head's top1 for that ONE
+token, then return to BLe greedy — one independent branch per
+point, five branches. The points are exactly the measured
+least-converged loci: item 4 @1538 perturbs the rigid exact cycle,
+item 3 @1223/@1278 the first retry attempt, item 0 @556/@583 the
+basin-entry event window.
+
+Instrument: NEW driver scratch/qwen_headswap_impulse.py on the
+qcuda-tower runtime, artifact BLe, xhigh cell, MAX_TOK 3072, eos
+ids (248046, 248044). INJECTIONS (frozen here, computed from the
+pinned npz h + attested vendor slice — design on frozen
+primitives): item 0 pos 556: BLe token 30761 -> vendor 1918;
+item 0 pos 583: 25 -> 11; item 4 pos 1538: 37781 -> 1380;
+item 3 pos 1223: 553 -> 8; item 3 pos 1278: 198 -> 87. The
+driver recomputes each vendor token from the slice at run time
+and REFUSES if it differs from the frozen value. Prefix identity
+precondition P1: the replayed tokens [0, pos) must equal the
+frozen QWEN-LOOP-STATE-0 sidecar tokens exactly (sha over the
+prefix); the injected token must differ from the frozen token at
+pos. start_provenance carries artifacts={BLe, vendor slice}.
+Full token-ID sidecars per branch (TRAJECTORY-SIDECAR),
+refuse-if-exists.
+
+OUTCOME CLASSIFICATION (frozen): per branch, over the
+post-injection region (pos, end]:
+- RECONVERGED: the frozen 32-gram detector (WIN 32, lag 32..512,
+  cap-free, evaluated from position max(544, pos+32)) fires at
+  least once.
+- TERMINATED: eos before any fire.
+- AMBIGUOUS: token cap reached with no fire and no eos —
+  fail-closed: counts NOT reconverged for bar 1, disclosed as its
+  own class (exact-tail period test cap 400 / window 800 reported
+  as color).
+
+BARS:
+1. RECONVERGENCE: >= 4 of 5 branches RECONVERGED. FIRE = a single
+   vendor-informed token at the least-converged points cannot
+   redirect the trajectory — state/body attribution strengthened.
+2. REPAIR: >= 1 branch ends with a correct final answer (sympy
+   oracle, qwen_effort_probe parse/check; baseline 0/30 xhigh).
+
+REFUTED-IF: <= 2 of 5 branches RECONVERGED — single-token
+vendor-informed intervention redirects trajectories from the
+measured disagreement points, meaning head-history causality is
+large and the -SCOPE amendment's open edge closes AGAINST the
+state-attribution reading.
+
+REGISTERED PRIOR: bar 1 FIRES at 5/5 (every branch reconverges —
+the CYCLE-IMPULSE result showed 8 random tokens at T=0.7 could
+not escape the exact orbits; one informed token is a weaker dose
+in count, and the basin has already absorbed 192/192 random
+bursts on these items); bar 2 NO-FIRE. The informative outcome is
+any branch that does NOT reconverge, and WHERE.
+
+FENCES: same three specimens, n=1 branch per point (5 branches
+total), per-branch claims only; a reconverged branch says nothing
+about which cycle it lands in (basin taxonomy is color, stated
+caps); TERMINATED does not imply correct; no vendor-capability
+claim — the injected token is one argmax read, not vendor
+behavior; this is the vendor-specific arm ONLY — the
+matched alternate-token control (same positions, a generic
+perturbation token) is a SEPARATE registration if this rung
+leaves the vendor-specific question open; thresholds
+first-registration, no calibration history; window fence ~15:00
+EST — unfinished branches book NOT-RUN. Receipts:
+logs/qwenhsimpulse/ (fresh path): rows jsonl + per-branch
+traj sidecars + observations; small text force-added at booking,
+sidecars force-added under the seedslad exception (evidence
+basis).

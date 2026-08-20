@@ -1,0 +1,53 @@
+{
+ "name": "QWEN-HEADSWAP-IMPULSE-0",
+ "note": "Mechanical projection of PRE-REG QWEN-HEADSWAP-IMPULSE-0 (RESULTS, 2026-08-20), transcribed alongside the RESULTS registration, before any run. Injection table frozen from the pinned loop-state npz + attested vendor slice. Injection table in qwen-headswap-impulse-0.params.json.",
+ "results_id": "2026-08-20-pre-reg-qwen-headswap-impulse-0",
+ "registered": "2026-08-20",
+ "machine": "wsl",
+ "arms": {
+  "BLe": {
+   "description": "single vendor-top1 token injected at each of the 5 registered disagreement points on BLe greedy xhigh replays; qcuda-tower; one branch per point"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "RECONVERGENCE",
+   "gate_class": "range",
+   "metric": "n_reconverged_branches",
+   "population": "branches:5 (one per registered disagreement point)",
+   "aggregation": "count",
+   "direction": "above",
+   "value": 3.5,
+   "arms": [
+    "BLe"
+   ],
+   "description": ">= 4 of 5 branches re-enter recurrence (frozen detector, cap-free, fail-closed on ambiguous)"
+  },
+  {
+   "id": 2,
+   "name": "REPAIR",
+   "gate_class": "range",
+   "metric": "n_correct_branches",
+   "population": "branches:5 (one per registered disagreement point)",
+   "aggregation": "count",
+   "direction": "above",
+   "value": 0.5,
+   "arms": [
+    "BLe"
+   ],
+   "description": ">= 1 branch ends with a correct final answer (sympy oracle)"
+  }
+ ],
+ "receipts": [
+  "logs/qwenhsimpulse/impulse_rows.jsonl",
+  "logs/qwenhsimpulse/impulse_observations.json"
+ ],
+ "refuted_if": "<= 2 of 5 branches reconverge: single-token vendor-informed intervention redirects trajectories; head-history causality large",
+ "refuted_if_predicate": {
+  "measurement": "1",
+  "direction": "below",
+  "value": 2.5
+ },
+ "registered_prior": "bar 1 FIRES at 5/5, bar 2 NO-FIRE; the informative outcome is any non-reconverging branch and where"
+}
