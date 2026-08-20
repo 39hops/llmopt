@@ -1,7 +1,7 @@
 {
  "name": "QWEN-LOOP-STATE-1-HEADSWAP",
  "note": "Mechanical projection of PRE-REG QWEN-LOOP-STATE-1-HEADSWAP (RESULTS, 2026-08-20), transcribed alongside the RESULTS registration, before any run. Inputs are the sha-pinned npz of booked QWEN-LOOP-STATE-0; precondition P1 = npz shas equal the booked arrays_sha256.",
- "results_id": "2026-08-20-pre-reg-qwen-loop-state-1-headswap",
+ "results_id": "2026-08-20-pre-reg-qwen-loop-state-1",
  "registered": "2026-08-20",
  "machine": "wsl",
  "arms": {
