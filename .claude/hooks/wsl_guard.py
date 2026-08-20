@@ -182,7 +182,7 @@ if verb == "launch" or re.search(CHANGES_STATE, inner, re.X):
 READS_ONLY = re.compile(
     r"^[\s(]*((ls|tail|head|cat|wc|grep|pgrep|test|df|du|md5sum|"
     r"sha256sum|echo|pwd|which|stat|find|sleep|cd|nvidia-smi|free|"
-    r"uptime|nproc|date|hostname)\b|git\s+"
+    r"uptime|nproc|date|hostname|base64|jq|sort|uniq|cut|tr)\b|git\s+"
     r"(status|log|rev-parse|fetch|diff|show)\b|"
     r"mkdir\s+-p\s+(~/code/llmopt/)?logs/)")
 # a /dev/null redirect discards output; it cannot change the box, so

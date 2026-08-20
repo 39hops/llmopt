@@ -36228,3 +36228,115 @@ belongs in an adjudicator recomputing from sidecars (as done here),
 never in the run loop where caps and boundary conditions can leak
 into the definition.
 
+
+
+## PRE-REG QWEN-LOOP-STATE-0: along BLe's frozen detect-retry loop trajectories, is the recurrence an INTERNAL-state orbit (pre-head h recurs at the token period), and is the retry-attempt policy stuck (successive homologous retries carry the same actionable distribution)? (2026-08-20, wsl)
+
+The bridge rung the trajectory night pointed at (banks
+LOOP-STATE-READOUT + its hardenings + metric law + specimen order,
+RIFF-LEDGER 2026-08-19/20): CHEAP-READOUT measured teacher-forced
+MODEL-1 states; the autopsy measured token-space recurrence. This
+rung captures the literal pre-head hidden state h_t along the SAME
+frozen greedy xhigh trajectories and asks whether the measured
+token cycles are internal-state orbits or output-policy recurrence
+over drifting internal states, and whether successive retry
+attempts carry a stuck actionable policy.
+
+Instrument: NEW driver scratch/qwen_loop_state.py on the
+qcuda-tower runtime, artifact BLe, xhigh cell, greedy only,
+MAX_TOK 3072, items 0 (diff), 4 (int) as PRIMARY rigid-orbit
+specimens and item 3 (expand) as semantic-restart CONTRAST
+(specimen order per bank 2026-08-20). Observation-only: no
+impulses, no sampling — the regenerated trajectories must be the
+frozen autopsy trajectories exactly. h_t is the input to the fused
+s16 lm_head (post final norm), captured fp32 at registered sparse
+positions only (storage hardening: never blanket per-token dumps).
+Positions are 0-based indices into the generated ids.
+
+CAPTURE SETS (frozen; all derived from the FROZEN autopsy sidecars
+logs/qweneffort2_probe/traj_xhigh_{0,3,4}.json before this
+registration — design on frozen evidence, not on new data):
+- Item 0 (exact period 88 from position 961): positions
+  [1200, 1464) — three consecutive cycle copies, homologous pairs
+  (p, p+88) and (p, p+176) for p in [1200, 1288).
+- Item 4 (exact period 242 from position 1297): positions
+  [1400, 2126) — three copies, homologous pairs (p, p+242) and
+  (p, p+484) for p in [1400, 1642).
+- Item 3 (no exact cycle): the frozen 32-gram anchor G3 (token ids
+  listed in docs/preregs/qwen-loop-state-0.json) occurs exactly 5
+  times, at positions [1222, 1862, 2190, 2518, 2846] — the
+  repeated-restart landmark. Capture [a, a+64) at each anchor a;
+  homologous comparison = same offset o in [0, 64) across
+  successive anchors (attempt i v i+1), 4 successive pairs x 64
+  offsets. Item 3 additionally stores FULL fp16 logits at its 320
+  captured positions (JS needs full distributions; 320 positions
+  stays sparse).
+- Event color (descriptive, gates nothing): first fire of the
+  frozen CYCLE-IMPULSE detector (WIN 32, LAG 32..512, from 544,
+  cap-free) per item, capture +/-16 around it.
+At every captured position also record live: top-256 token ids +
+fp32 logits, logsumexp, entropy, and LOCAL top1-top2 margin
+(BLe's own logits; per OPERAND-PROVIDER no teacher logits exist
+for these self-generated prefixes and nothing here is labeled
+teacher behavior).
+
+PRECONDITIONS (any failure books INSTRUMENT-INVALID for the
+affected item; no bar is read on an invalid item):
+- P1 TRAJECTORY IDENTITY (the no-op precondition): the regenerated
+  ids with capture hooks installed must have sha256 equal to the
+  frozen autopsy gen_sha256 per item — 887fcdbf30..., bee84ea464...,
+  a7df6389f8... (full shas in the prereg JSON). A hook that
+  perturbs the trajectory invalidates the run before any metric.
+- P2 CAPTURE IDENTITY FIXTURE (tower-specific, per hardening 2):
+  at the first 8 captured positions per item, the captured h_t
+  re-fed through the same fused lm_head must reproduce the in-run
+  logits BIT-EXACTLY (top1 identical at all 24 fixture positions
+  AND max abs logit diff == 0.0). Same kernel, same input — any
+  nonzero diff means the capture point is not the head input.
+- P3 ANCHOR CENSUS: G3 occurs exactly 5 times in item 3's
+  regenerated ids at the frozen positions above.
+
+BARS:
+1. INTERNAL-ORBIT (items 0 and 4): median cosine(h_p, h_{p+kL})
+   over all registered homologous pairs (k in {1,2}) is >= 0.99 in
+   BOTH items. FIRE = the token cycle is an internal-state orbit
+   at the pre-head bottleneck, not merely output recurrence.
+2. STUCK-RETRY-POLICY (item 3): over the 4 successive-attempt
+   pairs x 64 homologous offsets, (a) fraction of position pairs
+   with identical greedy top1 >= 0.80 AND (b) median JS divergence
+   (fp64 softmax over the full vocab, natural log) <= 0.05 nats.
+   Both must hold to FIRE = successive retries carry the same
+   actionable distribution (P_retry(i) ~ P_retry(i+1), the strong
+   stuck-policy evidence per the metric-law bank).
+
+REFUTED-IF: bar 1 median cosine < 0.90 on EITHER item 0 or item 4
+— the tokens recur but the internal state does not, killing the
+internal-attractor reading of the autopsy and redirecting the
+controller program at output-layer dynamics instead of body state.
+
+REGISTERED PRIOR: bar 1 FIRES with medians > 0.999 on both items
+(the orbit is internal — KV prefixes differ across cycle copies
+but the loop has forgotten them); bar 2 FIRES on both clauses (the
+retry policy is stuck; correction is not merely unlucky sampling).
+The informative outcome is any leg that breaks.
+
+FENCES: single arm (BLe), xhigh cell, greedy, 3080 only, n=1
+trajectory per item — every claim is per-specimen and scoped to
+the captured positions; no capability claims; "internal orbit"
+never upgrades to "attractor in weight space" (wording fence
+carried from CYCLE-IMPULSE: token-space and state-space readings
+stay separate). Local margin is never called teacher margin. The
+mechanistic-ladder leg 2 (vendor head on the same captured h,
+offline, chunked) and leg 3 (vendor body on the exact prefix) are
+PRICED but not registered here — leg 2 runs as descriptive color
+only if bars 1-2 leave the readout question open, leg 3 is a
+separate registration. Cosine/JS thresholds are first-registration
+values with no calibration history; if a bar lands within 10% of
+its threshold the verdict says KNIFE-EDGE explicitly. Receipts:
+rows + observations under logs/qwenloopstate/ (fresh path; frozen
+qweneffort2/qwencycle/qweneffort2_probe paths untouched); h and
+logit arrays as untracked sha-pinned npz (PRIMITIVE-EVIDENCE:
+sufficient for independent offline recomputation of every bar).
+Wall estimate: 3 greedy regens x ~6 min + adjudication << the
+3080 window ending ~15:00 EST today; if the wall hits, unfinished
+items book NOT-RUN.

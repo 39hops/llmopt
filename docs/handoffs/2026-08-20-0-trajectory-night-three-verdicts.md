@@ -71,14 +71,17 @@ CHEAP-READOUT (on A + teacher-forced MODEL-1 states, readout
 quantization is a SMALL contributor to candidate recall loss;
 free-running BLe loop-state readout remains UNMEASURED — that
 scoping is deliberate, do not compress it to "damage upstream") ->
-CYCLE-IMPULSE (token-space perturbation moves BLe between recurrent
-trajectories, never out; exact orbits fully restoring). Every arrow
-points at LOOP-STATE-READOUT.
+CYCLE-IMPULSE (scoped: item 3's semantic-restart trajectory is
+locally ESCAPABLE at these doses, 5/96 bursts; the exact-token
+orbits 0/4 are locally RESTORING, 0/192 bursts; 0/18 runs reach
+repair or termination — four tails are non-periodic wrong, so
+"never out" would be false unless "out" meant the correct basin,
+which it does not). Every arrow points at LOOP-STATE-READOUT.
 
 ## Next session opens with
 
-1. This handoff -> BOARD -> RESULTS tail (4 entries after the
-   FREEGEN-2 prereg).
+1. Canonical resume order: resume-protocol memory -> BOARD -> this
+   handoff -> RESULTS tail (4 entries after the FREEGEN-2 prereg).
 2. LOOP-STATE-READOUT prereg (the deliberate next registration —
    GPT + house agree it deserves a fresh session, not a midnight
    launch). Everything needed is banked: operand/provider fix
@@ -91,7 +94,11 @@ points at LOOP-STATE-READOUT.
 3. Also unlocked/queued: LEVEL-2 router census (Pareto framing),
    ATTN-ROUTER-CENSUS, RESIDUAL targeted patch (needs BLe recensus
    if patching BLe), phase-2 runtime (Nsight profile FIRST).
-4. Artin decisions: LOOP-STATE GO; 3080 cleanup stays HOLD.
+4. Artin decisions: LOOP-STATE is the recommended next rung,
+   pending explicit Artin GO (correction 2026-08-20: earlier
+   wording attributed a GO the conversation did not contain);
+   3080 cleanup stays HOLD. [Update, same day: Artin confirmed GO
+   on both machines, 3080 window until ~15:00 EST.]
 
 ## Conditions that bite next session
 
