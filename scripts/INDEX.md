@@ -2888,6 +2888,12 @@ QWEN-BLE-FREEGEN-2 adjudicator: fail-closed row gate, then bars.
 - `adjudicate(rows)` — Recomputed counts + bar outcomes. Only call after gate passes.
 - `main()`
 
+### scratch/qwen_ble2_autopsy.py
+Unregistered autopsy probe: regenerate selected BLE-FREEGEN-2 xhigh rows with FULL token-ID + text capture (the frozen screen rows persist only parsed fields — banked forward fix TRAJECTORY-SIDECAR).
+
+- `_load(name, rel)`
+- `main()`
+
 ### scratch/qwen_capacity27b.py
 QWEN-CAPACITY-METER-1: the 27B cell — M = span_bits - code_entropy per family x projection on the PINNED vendor checkpoint, streaming.
 
