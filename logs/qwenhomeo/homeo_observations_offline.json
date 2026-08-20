@@ -1,0 +1,182 @@
+{
+ "note": "independent offline recomputation from token-ID sidecars; producer outcome fields non-authoritative (compared field-by-field, listed under producer_mismatches); correctness independently decoded with the vendor tokenizer and scored by the consumer's own extraction + per-family sympy equivalence; DISCLOSED: the detector_fires implementation is deliberately the frozen detector verbatim (shared with the producer) \u2014 bars 2/3/4 recompute its inputs from sidecars but do not cross-check the detector algorithm itself; both artifact chains verified",
+ "start": {
+  "start_commit": "3da99d3",
+  "start_status_porcelain": "?? COMPOSE_DE\n?? COMPOSE_FLQ2\n?? scratch/leancheck/OvershootTest.lean\n",
+  "interpreter": "/home/a/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_homeo_adjudicate.py": "183a418d49d96655ca4f0bec6158792befe649c0028c0175d6928f138310c70b",
+   "scratch/qwen_effort_probe.py": "04845e535e1c93210c85abf555acbf3b8d2fb366d81e8ebf2b59ae71d84f4279",
+   "docs/preregs/qwen-homeo-actuator-0.params.json": "12a1e67c1d8ab94b84654cd8428142a098301575b83d116e1244d3138278c0b1",
+   "docs/preregs/qwen-homeo-actuator-0.json": "02178e5904b39fc5778e4cfadc4ce6407a2ae29e1a74d4d6a9b53a97e703d1e0"
+  }
+ },
+ "measurement_valid": true,
+ "arms": {
+  "REFRESH-LOW": {
+   "admissible": true,
+   "reason": "RL exact 3/3, event table match True, sidecars 9/9, chains BLe 18/18 mismatched []; BLem 18/18 mismatched []"
+  },
+  "HOT-HIGH": {
+   "admissible": true,
+   "reason": "RL exact 3/3, event table match True, sidecars 9/9, chains BLe 18/18 mismatched []; BLem 18/18 mismatched []"
+  },
+  "REFRESH-HIGH": {
+   "admissible": true,
+   "reason": "RL exact 3/3, event table match True, sidecars 9/9, chains BLe 18/18 mismatched []; BLem 18/18 mismatched []"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 3,
+   "metric": "n_refresh_low_exact",
+   "population": "items:3 (frozen loop-state trajectories 0,3,4)",
+   "aggregation": "count",
+   "provenance": "offline exact comparison of sidecar cont v frozen ids"
+  },
+  "2": {
+   "value": 0,
+   "metric": "n_hot_escaped",
+   "population": "branches:3 (one HOT-HIGH branch per item)",
+   "aggregation": "count",
+   "provenance": "offline detector recomputation; [false, false, false]"
+  },
+  "3": {
+   "value": 0,
+   "metric": "n_refresh_escaped",
+   "population": "branches:3 (one REFRESH-HIGH branch per item)",
+   "aggregation": "count",
+   "provenance": "offline detector recomputation; [false, false, false]"
+  },
+  "4": {
+   "value": 0,
+   "metric": "n_high_escaped_total",
+   "population": "branches:6 (3 HOT-HIGH + 3 REFRESH-HIGH)",
+   "aggregation": "count",
+   "provenance": "sum of measurements 2 and 3"
+  },
+  "5": {
+   "value": 0,
+   "metric": "n_correct_branches",
+   "population": "branches:6 (3 HOT-HIGH + 3 REFRESH-HIGH)",
+   "aggregation": "count",
+   "provenance": "sympy oracle on independently decoded sidecar text"
+  }
+ },
+ "branches": [
+  {
+   "arm": "HOT-HIGH",
+   "item": 0,
+   "event_t": 569,
+   "cont_tokens": 3072,
+   "escaped_300": false,
+   "post_fires_n": 2956,
+   "first_post_fire": 570,
+   "eos_terminated": false,
+   "think_terminated": false,
+   "correct": false
+  },
+  {
+   "arm": "HOT-HIGH",
+   "item": 3,
+   "event_t": 544,
+   "cont_tokens": 3072,
+   "escaped_300": false,
+   "post_fires_n": 328,
+   "first_post_fire": 545,
+   "eos_terminated": false,
+   "think_terminated": false,
+   "correct": false
+  },
+  {
+   "arm": "HOT-HIGH",
+   "item": 4,
+   "event_t": 635,
+   "cont_tokens": 3072,
+   "escaped_300": false,
+   "post_fires_n": 2821,
+   "first_post_fire": 636,
+   "eos_terminated": false,
+   "think_terminated": false,
+   "correct": false
+  },
+  {
+   "arm": "REFRESH-HIGH",
+   "item": 0,
+   "event_t": 569,
+   "cont_tokens": 3072,
+   "escaped_300": false,
+   "post_fires_n": 183,
+   "first_post_fire": 570,
+   "eos_terminated": false,
+   "think_terminated": false,
+   "correct": false
+  },
+  {
+   "arm": "REFRESH-HIGH",
+   "item": 3,
+   "event_t": 544,
+   "cont_tokens": 3072,
+   "escaped_300": false,
+   "post_fires_n": 200,
+   "first_post_fire": 545,
+   "eos_terminated": false,
+   "think_terminated": false,
+   "correct": false
+  },
+  {
+   "arm": "REFRESH-HIGH",
+   "item": 4,
+   "event_t": 635,
+   "cont_tokens": 3072,
+   "escaped_300": false,
+   "post_fires_n": 2776,
+   "first_post_fire": 636,
+   "eos_terminated": false,
+   "think_terminated": false,
+   "correct": false
+  },
+  {
+   "arm": "REFRESH-LOW",
+   "item": 0,
+   "event_t": 569,
+   "cont_tokens": 2503,
+   "exact": true
+  },
+  {
+   "arm": "REFRESH-LOW",
+   "item": 3,
+   "event_t": 544,
+   "cont_tokens": 2528,
+   "exact": true
+  },
+  {
+   "arm": "REFRESH-LOW",
+   "item": 4,
+   "event_t": 635,
+   "cont_tokens": 2437,
+   "exact": true
+  }
+ ],
+ "producer_mismatches": [],
+ "producer_mismatches_n": 0,
+ "receipt_shape": {
+  "sidecars": 9,
+  "cells_ok": true
+ },
+ "artifact_verification": [
+  {
+   "dir": "/home/a/qwen_whole0t/BLe",
+   "checked": 18,
+   "mismatched": [],
+   "chain_file": "logs/qwenwhole/artifact_digest_BLe.txt"
+  },
+  {
+   "dir": "/home/a/qwen_whole0t/BLem",
+   "checked": 18,
+   "mismatched": [],
+   "chain_file": "logs/qwenwhole/artifact_digest_BLem.txt"
+  }
+ ],
+ "event_table_match": true
+}

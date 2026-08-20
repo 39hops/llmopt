@@ -37429,3 +37429,143 @@ exact-reproduction miss). BLem recipe added to the recomposer
 RECIPES table (base BLe, donor C, mid band, 48 keys — the additive
 pattern PX/PK used).
 
+## VERDICT QWEN-HOMEO-ACTUATOR-0: THE REGISTERED REFUTATION — six of six high-arm branches reconverge (bar 4 zero escapes), the one-band precision actuator DEMOTES at the BLem dose; sanity gate 3/3 exact; every branch's first escalated token IS the loop-continuing token (2026-08-20, wsl)
+
+Adjudication of PRE-REG QWEN-HOMEO-ACTUATOR-0 (registered 7d30ccb;
+amended pre-run by -REFRESH 254e756 and -BOUNDARY 3c5d202; run
+launched at c26ae07, no run had fired before either amendment) by
+the INDEPENDENT OFFLINE CONSUMER scratch/qwen_homeo_adjudicate.py
+— event table, sanity exactness, both escape counts, and
+correctness recomputed from the 9 token-ID sidecars alone, with
+answer extraction + per-family sympy equivalence implemented in
+the consumer (never the producer's scoring helpers). Producer
+fields compared: ZERO mismatches. Receipt shape hard-checked: 9
+sidecars, unique arm x item cells. Both artifact chains verified
+on the 3080: BLe 18/18, BLem 18/18 against their qualified digest
+files. Receipts (sha-verified both machines, manifest
+logs/qwenhomeo/remote_sha256.txt): logs/qwenhomeo/{homeo_rows.jsonl,
+homeo_summary.json, homeo_observations.json (producer,
+non-authoritative), homeo_observations_offline.json (the
+adjudication basis), homeo_event_table.json, driver.log,
+traj_RL_i0.json, traj_RL_i3.json, traj_RL_i4.json,
+traj_HOT_i0.json, traj_HOT_i3.json, traj_HOT_i4.json,
+traj_RH_i0.json, traj_RH_i3.json, traj_RH_i4.json,
+remote_sha256.txt}, plus logs/qwenattrib/compose_BLem.json and
+logs/qwenwhole/artifact_digest_BLem.txt (the prereg-declared BLem
+build receipts: 48 keys, +0.4296 GiB exactly, self-qualified,
+census 304 w4 / 98 s16).
+
+PRECONDITIONS (all pass): frozen sidecar shas 3/3; event table
+derived and receipted BEFORE any continuation ({0: 569, 3: 544,
+4: 635}, first frozen-detector fire per item, WIN=32/LAG_MAX=512/
+T_MIN=544, offline recomputation matches); residency plan accepted
+BLem on the 10GB card; boundary fixture 3/3 (restored-state
+next-token prediction equals frozen_ids[t] on every item).
+
+MEASURED (offline recomputation; bar language per the -REFRESH
+renumbering):
+- BAR 1 SANITY: FIRE at 3/3 — REFRESH-LOW (teacher-forced frozen
+  prefix through BLe + CPU-serializer roundtrip + free greedy
+  continuation, the identical reconstruction path the treatment
+  arms use) reproduces the frozen trajectories token-identically:
+  2503, 2528, 2437 continuation tokens, zero deviations. The
+  refutation predicate is therefore ADJUDICATED (not suppressed).
+- BAR 2 HOT-AUTHORITY: NO-FIRE at 0/3. BAR 3 REFRESH-AUTHORITY:
+  NO-FIRE at 0/3. BAR 4 ANY-AUTHORITY: NO-FIRE at 0/6. BAR 5
+  REPAIR: NO-FIRE at 0/6 — and CAP-LIMITED, not answered-and-wrong:
+  0/6 think-terminated, 0/6 eos, every branch ran to the 3072 cap,
+  five of six carry answer null and the sixth parsed only
+  prompt-echo text; no branch ever finished, so the zero says
+  nothing about answer quality.
+- REFUTED-IF FIRES: bar 4 counts ZERO. Per the registration: the
+  one-band precision escalation has no measurable authority at
+  these events; the precision actuator DEMOTES at this dose and
+  the controller stage does not launch on it.
+
+COLOR (receipt-derived, no bar): every one of the six high-arm
+branches re-fires the detector at exactly t+1 — the first
+post-boundary detector window (31 frozen tokens + the first
+escalated token) already matches an earlier gram. Concretely: in
+all six branches the escalated tower's FIRST free choice at the
+event is the IDENTICAL token the frozen BLe trajectory carries at
+that position, and the branches track the frozen stream for 14-157
+tokens before first divergence (HOT: 73/89/79; REFRESH:
+14/85/157). The one-band-escalated tower AGREES with the stuck
+local policy at the event — the HEADSWAP local-policy-preservation
+finding, reproduced at whole-tower grain and one band up. All six
+branches then remain in recurrence through the cap.
+
+READING (the four registered interpretation lanes, held): no HOT
+escape (event-time weight escalation shows no authority with
+retained BLe state at this dose); no REFRESH escape (a
+high-arm-consistent same-prefix state does not buy authority at
+this dose either — with NO component-level state attribution, per
+the -REFRESH scope); escape never occurred so trajectory-authority
+v repair separation was not exercised; and 0/6 is the REGISTERED
+ACTUATOR DEMOTION AT THE BLEM DOSE — one band, +0.4296 GiB,
+dX ~ 0.105 descriptive — NOT a universal precision-control null.
+Larger doses (BLl-ward, full C on hardware that fits it) and
+different actuator families (routing, representation restart,
+drift amplification per the umbrella bank) are separate
+registrations.
+
+PRIOR: right on bars 1, 2, 5; wrong on exactly ONE independent
+quantity — n_refresh_escaped (predicted 1/3, measured 0) — from
+which bar 4's miss follows arithmetically (bar 4 = bars 2 + 3 by
+construction; this is one miss, not two). Disclosure: the 1/3
+number was registered against the ORIGINAL REFRESH criterion
+(clean-through-cap) and carried unchanged when AMENDMENT -REFRESH
+unified the criterion to the 300-token post-event window; the
+measured zero refutes it under the unified criterion. The prior's
+rationale (a consistent higher-fidelity state as the best
+candidate for reaching the CYCLE semantic-restart escape class) is
+now measured insufficient at this dose.
+
+FENCES carried: three items, n=1 per item, per-branch claims only;
+one-way intervention (hysteresis never entered); HOT continuations
+are F(W_BLem, S^BLe) mixed-precision state-machine readings, named
+as such in every receipt row; the detect-retry pathology stays
+compression-ASSOCIATED; no vendor-capability claim; dose-scoped
+demotion only; thresholds were first-registration. Window fence:
+run completed inside an Artin-approved extension of the 3080
+window (approved before any cell was at risk).
+
+ADJUDICATION PROVENANCE + AUTHORITY DISCLOSURES: the prereg prose
+registered offline-consumer authority for CORRECT; this booking
+extends offline authority to ALL bars (the stricter direction) and
+states so here. The offline observations were re-emitted once with
+OBS_OVERWRITE=1 at adjudicator commit 3da99d3 after receipt-audit
+hardening (the first emission at 9d340ca lacked a provenance
+block; measured values identical across both emissions, zero
+producer mismatches both times); the shipped file carries its own
+start_provenance block (adjudicator + params + prereg shas). The
+adjudicator's detector_fires is the frozen detector VERBATIM
+(deliberately shared with the producer) — bars 2/3/4 recompute its
+inputs from sidecars but do not cross-check the detector algorithm
+itself; correctness (bar 5) is scored by consumer-local extraction
++ per-family sympy. Commit boundary: BLem composed at 3c5d202, run
+launched at c26ae07 — the only file that changed between them is
+the driver itself (serializer fix), no instrument file. The
+vendor_checkout artifact-identity row reads zero shards because
+that dir serves ONLY the tokenizer/chat template; weights came
+from BLe/BLem, both chain-verified. ALWAYS-HIGH (BLem free
+generation from token 0) was registered as optional color and NOT
+run — bar 3's zero says nothing about whether BLem loops under
+free generation from the prompt; that question was never asked.
+Item 3's event t=544 sits exactly at the detector's first
+evaluable position T_MIN — an earlier true recurrence there would
+be censored by construction (pinned pre-run).
+
+RUNTIME OBSERVATION (banked, not booked here): HOT continuations
+decoded ~7x slower than REFRESH on the same warmed BLem tower
+(1875-2020s v 270-280s per 3072 tokens, replicated 3/3) —
+restored-state-attribution strong per the BLEM-DECODE-PERF riff
+(RIFF-LEDGER, corrected twice in place same day); cause
+undiagnosed, dedicated perf probe banked. Disarming fact for the
+reader: REFRESH-LOW rode the SAME _move_state serializer roundtrip
+and reproduced the frozen tokens exactly 3/3 (and _move_state
+deep-copies, so RL's restore did not consume the state HOT later
+reused) — the restore path is functionally sound; the wall gap is
+a performance artifact, not state corruption. Wall numbers here
+are observational; the rung gates nothing on speed.
+

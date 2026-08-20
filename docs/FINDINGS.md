@@ -2516,3 +2516,20 @@ regime tag on every bullet is the fence.
   bit-identical at every K; tail visitation (q90/q95/max) differs by
   a few rows only.
   ([VERDICT QWEN-MIPS-CENSUS-0](RESULTS.md#L37116 "id:2026-08-20-verdict-qwen-mips-census-0-the").)
+
+- [NULL] [qwen] [wsl] [compression] [trajectory-control] A
+  one-band precision escalation (BLe -> BLem, +0.4296 GiB mid-band
+  s16, the largest dose fitting the 10GB card) has ZERO measured
+  authority over the frozen detect-retry loops at their first
+  detector-fire events: 0/6 high-arm branches escape the 300-token
+  post-event window — HOT (BLem weights on retained BLe state,
+  F(W_BLem, S^BLe)) 0/3 and same-prefix REFRESH (BLem-consistent
+  reconstructed state) 0/3 alike — and every branch's FIRST
+  escalated token is the identical loop-continuing token the frozen
+  BLe stream carries, with divergence only 14-157 tokens later; the
+  registered refutation fires and the precision actuator DEMOTES at
+  this dose (dose-scoped: not a universal precision-control null;
+  repair unmeasured — all branches cap-limited; sanity gate 3/3
+  exact through the same teacher-forced-prefix + serializer path
+  the treatment used).
+  ([VERDICT QWEN-HOMEO-ACTUATOR-0](RESULTS.md#L37432 "id:2026-08-20-verdict-qwen-homeo-actuator-0-the").)

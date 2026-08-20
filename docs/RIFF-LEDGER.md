@@ -7315,3 +7315,19 @@ honest status column).
   (dtype/shape/stride/contiguity/storage/device, module-local
   runtime state) plus per-layer timing, not numerical contents.
   No kernel changes while any registered run is live.
+- **BANK OUTCOME (2026-08-20): HOMEOSTATIC-INFERENCE stage 2
+  (actuator qualification) measured — the precision actuator
+  DEMOTES at the BLem dose** (VERDICT QWEN-HOMEO-ACTUATOR-0, the
+  registered refutation: 0/6 high-arm escapes, HOT and same-prefix
+  REFRESH alike, every branch's first escalated token identical to
+  the frozen loop-continuing token). Consequence for the ladder:
+  stage 3 (closed-loop controller) does NOT launch on one-band
+  precision escalation; the [[precision-switch-state-consistency]]
+  matrix performed exactly as designed (sanity gate 3/3 through
+  the treatment mechanics; both-fail branch taken). The umbrella
+  survives — its actuator FAMILY question is now sharpened:
+  larger precision doses need hardware that fits them, and the
+  non-precision levers (routing, representation restart, drift
+  amplification) are the live candidates. Dose fence: this null is
+  BLem-scoped; it neither closes precision escalation at larger
+  doses nor touches the other lever families.

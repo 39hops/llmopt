@@ -1,0 +1,12 @@
+{
+ "events": {
+  "0": 569,
+  "3": 544,
+  "4": 635
+ },
+ "WIN": 32,
+ "LAG_MAX": 512,
+ "T_MIN": 544,
+ "escape_window": 300,
+ "index_semantics": "fire t is a 1-based generated-token count: ids[t-WIN:t] matched an earlier window; ids[:t] therefore INCLUDES the event-completing token. The event boundary consumes exactly frozen_ids[:t]; every high-arm branch predicts token index t first."
+}

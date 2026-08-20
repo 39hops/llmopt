@@ -1,0 +1,55 @@
+{
+ "note": "outcomes computed from emitted ids inside the driver (frozen detector, 300-token escape window); sidecars permit independent offline recomputation; HOT-HIGH continuations compute F(W_BLem, S^BLe)",
+ "measurement_valid": true,
+ "arms": {
+  "REFRESH-LOW": {
+   "admissible": true,
+   "reason": "sanity gate 3/3 exact; event table + boundary fixture receipted before treatment"
+  },
+  "HOT-HIGH": {
+   "admissible": true,
+   "reason": "sanity gate 3/3 exact; event table + boundary fixture receipted before treatment"
+  },
+  "REFRESH-HIGH": {
+   "admissible": true,
+   "reason": "sanity gate 3/3 exact; event table + boundary fixture receipted before treatment"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 3,
+   "metric": "n_refresh_low_exact",
+   "population": "items:3 (frozen loop-state trajectories 0,3,4)",
+   "aggregation": "count",
+   "provenance": "driver primitives; offline consumer recomputes from sidecars before booking"
+  },
+  "2": {
+   "value": 0,
+   "metric": "n_hot_escaped",
+   "population": "branches:3 (one HOT-HIGH branch per item)",
+   "aggregation": "count",
+   "provenance": "driver primitives; offline consumer recomputes from sidecars before booking"
+  },
+  "3": {
+   "value": 0,
+   "metric": "n_refresh_escaped",
+   "population": "branches:3 (one REFRESH-HIGH branch per item)",
+   "aggregation": "count",
+   "provenance": "driver primitives; offline consumer recomputes from sidecars before booking"
+  },
+  "4": {
+   "value": 0,
+   "metric": "n_high_escaped_total",
+   "population": "branches:6 (3 HOT-HIGH + 3 REFRESH-HIGH)",
+   "aggregation": "count",
+   "provenance": "driver primitives; offline consumer recomputes from sidecars before booking"
+  },
+  "5": {
+   "value": 0,
+   "metric": "n_correct_branches",
+   "population": "branches:6 (3 HOT-HIGH + 3 REFRESH-HIGH)",
+   "aggregation": "count",
+   "provenance": "driver primitives; offline consumer recomputes from sidecars before booking"
+  }
+ }
+}

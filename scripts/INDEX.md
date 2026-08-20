@@ -3013,6 +3013,16 @@ QWEN-HOMEO-ACTUATOR-0 driver: one-band precision escalation (BLe -> BLem) applie
 - `score_row(arm, item, t, cont, frozen_prefix, ep, tok, eos, wall)` — Outcome primitives for one high-arm branch.
 - `main()`
 
+### scratch/qwen_homeo_adjudicate.py
+QWEN-HOMEO-ACTUATOR-0 independent offline adjudicator: every bar count, the event table, the sanity-gate exactness, and both escape counts recomputed from the token-ID sidecars alone (PRIMITIVE-EVIDENCE — the producer's in-run outcome fields are non-authoritative and only compared against, never used). Correctness decodes each sidecar's ids with the vendor tokenizer and runs answer extraction + sympy equivalence implemented HERE, never the producer's parse_answer/check helpers (the item generator is shared deliberately — it defines the frozen task; the scoring path is not). Equivalence is per-family: exact zero difference for diff/expand, modulo an additive constant for the int family only (the producer applies the constant allowance to all families; disagreements surface as producer_mismatches). Receipt shape is hard-checked: exactly 9 sidecars, unique arm x item cells over {REFRESH-LOW,HOT-HIGH,REFRESH-HIGH} x items. Both artifact chains (BLe and BLem, 18 shards each) verified against their qualified digest files.
+
+- `_load(name, rel)`
+- `extract_answer(text)` — Independent extraction: the last ANSWER: line's expression.
+- `oracle(ans, truth, family)` — Independent sympy equivalence: exact zero for diff/expand,
+- `detector_fires(ids, start_at)`
+- `verify_chain(art_dir, chain_file)`
+- `main()`
+
 ### scratch/qwen_hsimpulse_adjudicate.py
 QWEN-HEADSWAP-IMPULSE-0 independent offline adjudicator: every bar count, P1 check, and outcome class recomputed from the token-ID sidecars alone (PRIMITIVE-EVIDENCE — the producer's in-run outcome fields are non-authoritative and are only compared against, never used). Also: orbit classification (ORIGINAL-ORBIT-REJOIN v NEW-RECURRENCE v NO-RECURRENCE), CYCLE-comparable gap<=300 fields, and full 18-shard BLe artifact verification against the qualified digest chain.
 

@@ -1,0 +1,53 @@
+{
+ "start": {
+  "start_commit": "c26ae07",
+  "start_status_porcelain": "?? COMPOSE_DE\n?? COMPOSE_FLQ2\n?? scratch/leancheck/OvershootTest.lean\n",
+  "interpreter": "/home/a/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_homeo_actuator.py": "443634cc08c463bf5b2b5371e3ecbe909fa4093baeee41cacaab12f83fff4a88",
+   "scratch/qwen_tower_ladder.py": "4e8adf337de2f847b2cd2d7e83d10f3f20a57fc3f242d28d83bbf16c0e3fa0c4",
+   "scratch/qwen_effort_probe.py": "04845e535e1c93210c85abf555acbf3b8d2fb366d81e8ebf2b59ae71d84f4279",
+   "llmopt/lab/qcuda_tower.py": "a55aae50b307efd42c749ab69064df21476ec93d16ef7ae8b8bd274c701144d8",
+   "llmopt/lab/qcuda.py": "4fe810184cbc6a4a2c9ec7cf2bb0d00ee037cc2681e7aafc1fea3ecfa50c2d9b",
+   "docs/preregs/qwen-homeo-actuator-0.params.json": "12a1e67c1d8ab94b84654cd8428142a098301575b83d116e1244d3138278c0b1",
+   "docs/preregs/qwen-homeo-actuator-0.json": "02178e5904b39fc5778e4cfadc4ce6407a2ae29e1a74d4d6a9b53a97e703d1e0"
+  },
+  "artifact_identity": {
+   "BLe": {
+    "art_dir_resolved": "/home/a/qwen_whole0t/BLe",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "fc9347ef55164f3eed433e3345721942e3d2f7a5fefd186c68b118565dcdb49d",
+    "shards": {
+     "n": 18,
+     "total_bytes": 8077632064
+    }
+   },
+   "BLem": {
+    "art_dir_resolved": "/home/a/qwen_whole0t/BLem",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "8d70030b9269b425dcc03052e7fe0a6a98b470a5c60a599bbb1a4a3894f35dfd",
+    "shards": {
+     "n": 18,
+     "total_bytes": 8538908736
+    }
+   },
+   "vendor_checkout": {
+    "art_dir_resolved": "/home/a/qwen_vendor",
+    "manifest_file": "model.safetensors.index.json",
+    "manifest_sha256": "77042094076611b69791a610065f28b7013b8c621795fa86ddccc8bac7d1b9df",
+    "shards": {
+     "n": 0,
+     "total_bytes": 0
+    }
+   }
+  }
+ },
+ "completion_commit": "c26ae07",
+ "smoke": false,
+ "events": {
+  "0": 569,
+  "3": 544,
+  "4": 635
+ },
+ "n_rows": 9
+}

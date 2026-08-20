@@ -1,0 +1,29 @@
+[ha] event table {0: 569, 3: 544, 4: 635}
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[tl] tower fused {'w4': 352, 's16': 48}
+[tl] verify_routes OK: {'FusedW4Linear': 352, 'FusedS16Linear': 49, 'cpu_compressed_rows': 1}
+[ha] BLe tower up, routes {'FusedW4Linear': 352, 'FusedS16Linear': 49, 'cpu_compressed_rows': 1}
+[ha] RL item0 t=569 exact=True next_ok=True n=2503 219s
+[ha] RL item3 t=544 exact=True next_ok=True n=2528 226s
+[ha] RL item4 t=635 exact=True next_ok=True n=2437 214s
+[ha] BLe tower freed
+[tl] tower fused {'w4': 304, 's16': 96}
+[tl] verify_routes OK: {'FusedW4Linear': 304, 'FusedS16Linear': 97, 'cpu_compressed_rows': 1}
+[ha] BLem tower up, routes {'FusedW4Linear': 304, 'FusedS16Linear': 97, 'cpu_compressed_rows': 1}
+[ha] HOT item0 esc=False eos=False ok=False n=3072 2020s
+[ha] RH item0 esc=False eos=False ok=False n=3072 275s
+[ha] HOT item3 esc=False eos=False ok=False n=3072 1875s
+[ha] RH item3 esc=False eos=False ok=False n=3072 270s
+[ha] HOT item4 esc=False eos=False ok=False n=3072 1959s
+[ha] RH item4 esc=False eos=False ok=False n=3072 280s
+{
+ "bars": {
+  "1": "FIRE",
+  "2": "NO-FIRE",
+  "3": "NO-FIRE",
+  "4": "NO-FIRE",
+  "5": "NO-FIRE"
+ },
+ "refutation": "REFUTED"
+}
