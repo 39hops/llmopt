@@ -31,9 +31,10 @@ from llmopt.lab.provenance import (completion_commit,  # noqa: E402
                                    start_provenance)
 
 SMOKE = os.environ.get("SMOKE") == "1"
-ARM = "BLe"
 os.environ.setdefault("ART_DIR", os.path.expanduser(
-    f"~/qwen_whole0t/{ARM}"))
+    "~/qwen_whole0t/BLe"))
+# arm derived from the resolved artifact dir, never a free literal
+ARM = os.path.basename(os.environ["ART_DIR"].rstrip("/"))
 os.environ.setdefault("STEP", "n/a")
 VSLICE = os.path.expanduser(os.environ.get(
     "VENDOR_SLICE", "~/qwen_vendor_lmhead"))
@@ -185,8 +186,9 @@ def main():
          "scratch/qwen_effort_probe.py",
          "llmopt/lab/qcuda_tower.py", "llmopt/lab/qcuda.py",
          PARAMS, "docs/preregs/qwen-headswap-impulse-0.json"],
-        artifacts={"BLe": os.environ["ART_DIR"],
-                   "vendor_slice": VSLICE})
+        artifacts={ARM: os.environ["ART_DIR"],
+                   "vendor_slice": VSLICE,
+                   "vendor_checkout": tl.VDIR})
     recheck_vendor_tokens(json.load(open(PARAMS))["injections"])
     tok = AutoTokenizer.from_pretrained(tl.VDIR)
     model, plan, routes, n_routes = tl.build_tower()

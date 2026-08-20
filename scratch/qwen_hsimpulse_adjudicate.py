@@ -93,8 +93,16 @@ def verify_shards():
             "chain_file": CHAIN}
 
 
+def _tt(ids):
+    import torch
+    return torch.tensor(ids)
+
+
 def main():
     ep = _load("qwen_effort_probe", "scratch/qwen_effort_probe.py")
+    tl = _load("qwen_tower_ladder", "scratch/qwen_tower_ladder.py")
+    from transformers import AutoTokenizer
+    tok = AutoTokenizer.from_pretrained(tl.VDIR)
     inj = {(j["item"], j["pos"]): j
            for j in json.load(open(PARAMS))["injections"]}
     rows = [json.loads(l) for l in
@@ -125,11 +133,13 @@ def main():
             outcome = "TERMINATED"
         else:
             outcome = "AMBIGUOUS"
-        # correctness from the sidecar text is not stored; re-parse
-        # from re-decoded ids is tokenizer-dependent — use the
-        # sidecar row's answer field ONLY as producer claim and
-        # recompute the oracle on it
-        ans = r["answer"]
+        # independent correctness: decode the sidecar ids with the
+        # vendor tokenizer and re-run parse + sympy oracle — the
+        # producer's answer field is never used
+        text = tok.decode(_tt(ids), skip_special_tokens=False)
+        term = "</think>" in text
+        vis = text.split("</think>", 1)[1] if term else text
+        ans = ep.parse_answer(vis)
         ok = bool(ans and ep.check(ans, items[r["item"]]["truth"]))
         oc = orbit_class(r["item"], ids, pos, frozen, post)
         b = {"item": r["item"], "pos": pos, "p1": p1,
@@ -138,12 +148,17 @@ def main():
              "gap_le_300": (post[0] - pos) <= 300 if post else None,
              "eos_terminated": eos_end, "correct": ok}
         branches.append(b)
+        pr = prod[key]  # the rows-file row, which carries outcome
         for fld, mine in (("outcome", outcome),
                           ("p1_prefix_identical", p1),
-                          ("correct", ok)):
-            if r.get(fld) != mine and fld in r:
+                          ("correct", ok),
+                          ("return_gap", b["return_gap"])):
+            if fld not in pr:
                 mismatches.append((os.path.basename(sp), fld,
-                                   r.get(fld), mine))
+                                   "ABSENT-IN-PRODUCER", mine))
+            elif pr[fld] != mine:
+                mismatches.append((os.path.basename(sp), fld,
+                                   pr[fld], mine))
     n_rec = sum(b["outcome"] == "RECONVERGED" for b in branches)
     n_ok = sum(b["correct"] for b in branches)
     valid = (all(b["p1"] for b in branches)
