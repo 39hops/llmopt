@@ -6859,3 +6859,61 @@ honest status column).
   follow-ups; the 3080 has more free storage than the Mac so the
   pressure is low. Inventory-then-delete happens AFTER those rungs,
   under the standing BOARD housekeeping gate, on explicit GO.
+- **BANKED (2026-08-19): NO-REGRET-RETRY-CONTROLLER — a tiny online
+  controller over retry strategies, aimed squarely at the measured
+  detect-retry limit cycles** (GPT seat, from the BLE2-XHIGH-AUTOPSY
+  reading; Artin's market-maker frame). The autopsy showed BLe's
+  effective retry policy is w(same strategy)=1 forever even after
+  its own critic fires — the worst possible online learner. The
+  rung shape: greedy by default; when self-error is detected AND a
+  cycle detector says the trajectory is re-entering the same basin
+  (n-gram recurrence — trivially implementable, we measured exact
+  periods 88/242), a controller with a handful of strategy arms
+  (brief temperature burst, top-2 branch, alternate precision/
+  route, representation restart, symbolic check) picks an escape
+  move; the oracle scores the outcome; multiplicative-weights
+  update. Metric: correct attractor escapes per extra
+  tokens/bytes/wall. No 27B retraining, no new artifact. FENCES:
+  regret guarantees apply to the controller's decision problem,
+  never to correctness — settlement is always the oracle;
+  whether plain temperature alone escapes the attractor is the
+  cheaper prior question and needs its own registration first;
+  controller experiments start on the house substrate or as a
+  registered BLe retry rung, not as a deployment claim.
+- **BANKED (2026-08-19): SEQUENTIAL-RESOURCE-CONTROL imports — one
+  umbrella for the quant/control mathematics GPT ranked, unified by
+  "don't spend the expensive operation unless evidence says its
+  expected value exceeds its cost"** (GPT seat; Artin's CTA/market
+  riff — his read: the market is both the data stream and the
+  referee, which is online learning, not batch training). Members,
+  each needing its own registered rung before any is treated as
+  more than an analogy: (a) attractor-escape control — minimum
+  perturbation only when a retry orbit is detected, Lyapunov/
+  adaptive-control framing; (b) rate-distortion with ORACLE
+  distortion — R(D_X), R(D_K), R(D_trajectory) as the theoretical
+  ceiling question over the compression program, distortion in
+  function space never weight L2 (house law already); (c)
+  sequential hypothesis testing / optimal stopping — accumulate
+  evidence per token, stop thinking when extra compute stops
+  moving the answer; (d) HJB / inventory-control framing — compute
+  as capital, uncertainty as inventory, switching costs priced;
+  (e) filtering — compact recursive state z_t = f(z_{t-1}, x_t)
+  over cheap per-token observables (entropy, top1-top2 margin,
+  cycle score, retry count) instead of re-reading history. The
+  trajectory-preservation axis gives (b) its third distortion
+  coordinate. NOT copied from finance: proxy-P&L as reward —
+  settlement stays oracle correctness, the quant machinery is for
+  allocation/stopping/exploration only. Long-arc companion:
+  verified-progress-per-compute for theorem search (local oracles:
+  type-checks, finite cases, exact counterexamples) is the FA Law
+  restated over proof tactics — banked as a frame, no engine
+  commitment (charter: math + physics only, which this satisfies).
+- **BANK AMENDMENT (2026-08-19): CHEAP-READOUT-CENSUS gains the
+  MIPS framing** (GPT seat). The 248k-token output head is a
+  maximum-inner-product search; hashing/quantization/bandit MIPS
+  methods with approximation guarantees exist, and the quant shape
+  is cheap-scan-then-exact-price (248k -> ~1k cheap filter -> exact
+  head only there). CHEAP-READOUT's arm-state census is the
+  empirical gate BEFORE importing any of that theory: if the cheap
+  readout's candidate sets don't contain the teacher's argmax at
+  high recall, MIPS machinery has nothing to stand on here.
