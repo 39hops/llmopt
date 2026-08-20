@@ -172,3 +172,66 @@ def test_the_invariant_is_not_merely_failing_always(tmp_path):
     lock = {"receipt.jsonl": {"exists": True, "sha256": _sha(p)}}
     assert not [r for r, rec in lock.items()
                 if _sha(tmp_path / r) != rec["sha256"]]
+
+
+def test_brace_citations_expand_to_individual_paths():
+    """REGRESSION (2026-08-20, HOMEO booking): a RESULTS receipt list
+    written as logs/dir/{a.json, b.jsonl (annotation), ...} cited
+    NOTHING under the plain path regex, so booked receipts sat in the
+    lock as pending with no sha. Both brace forms must expand."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import gen_receipt_lock as g
+    # full-filename members, prose-wrapped, with annotations
+    text = ("Receipts: logs/qwenhomeo/{homeo_rows.jsonl,\n"
+            "homeo_observations.json (producer,\n"
+            "non-authoritative), traj_RL_i0.json,\n"
+            "remote_sha256.txt}, plus logs/x/plain.json")
+    got = set(g.expand_braces(text))
+    assert got == {"logs/qwenhomeo/homeo_rows.jsonl",
+                   "logs/qwenhomeo/homeo_observations.json",
+                   "logs/qwenhomeo/traj_RL_i0.json",
+                   "logs/qwenhomeo/remote_sha256.txt"}
+    # mid-filename affix form; multi-word prose members are ignored,
+    # never guessed into fabricated paths
+    text2 = ("logs/qwenattrib/compose_{BLe,BLm,BLl}.json and "
+             "logs/qwenmodel1/score_{same six}.json")
+    assert set(g.expand_braces(text2)) == {
+        "logs/qwenattrib/compose_BLe.json",
+        "logs/qwenattrib/compose_BLm.json",
+        "logs/qwenattrib/compose_BLl.json"}
+
+
+# prereg-declared receipts that exist but were never cited in a
+# scanner-visible form by their booking. PINNED legacy set: shrinking
+# it (by citing the path in an amendment, or a new booking) is
+# welcome; a NEW booking adding to it means its receipt citations are
+# invisible to the lock — cite the full paths in RESULTS instead.
+LEGACY_PRESENT_PENDING = {
+    "logs/qwencycle/impulse_rows.jsonl",
+    "logs/qwencycle/impulse_summary.json",
+    "logs/qweneffort2/summary_tower_BLe.json",
+    "logs/qwenloopstate1/headswap_observations.json",
+    "logs/qwenmodel1/score_BLe.json",
+    "logs/qwenmodel1/score_BLl.json",
+    "logs/qwenmodel1/score_BLm.json",
+    "logs/qwenmodel1/score_FLe.json",
+    "logs/qwenmodel1/score_FLl.json",
+    "logs/qwenmodel1/score_FLm.json",
+    "logs/qwenmodel1/tree_observations.json",
+    "logs/streamwd/run_B1.log",
+    "logs/streamwd/run_B1_repair.log",
+}
+
+
+def test_present_but_pending_receipts_are_only_the_legacy_set():
+    """RATCHET (2026-08-20): a receipt that EXISTS and stays
+    sha-less in the lock is evidence the record cannot freeze. New
+    bookings must cite receipt paths the scanner resolves (plain or
+    brace form) so their shas lock at booking time."""
+    pending = {k for k, v in _locked().items()
+               if v.get("exists") and v.get("pending")}
+    new = pending - LEGACY_PRESENT_PENDING
+    assert not new, (
+        "booked-and-present receipts with no locked sha (cite the "
+        "full path in RESULTS so the lock can freeze it):\n  "
+        + "\n  ".join(sorted(new)))

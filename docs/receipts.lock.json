@@ -314,6 +314,22 @@
    "source": "results",
    "tracked": false
   },
+  "logs/opus/gt3_proofs_traj.jsonl": {
+   "bytes": 170185514,
+   "exists": true,
+   "local_only": true,
+   "sha256": "963f80e273bbc064154776101c6e78780003de98ac7bdeb58f78b27a9d836077",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/opus/gt3_prose_traj.jsonl": {
+   "bytes": 109909119,
+   "exists": true,
+   "local_only": true,
+   "sha256": "9cc9e44f1332c9eff9d73384cea1f61f041a6d8887e8ee759713db171b8a1931",
+   "source": "results",
+   "tracked": false
+  },
   "logs/opus/gt4_dialog_traj.jsonl": {
    "bytes": 119060000,
    "exists": true,
@@ -434,6 +450,48 @@
    "exists": false,
    "source": "results"
   },
+  "logs/qcudatower/ladder_d.json": {
+   "bytes": 1232,
+   "exists": true,
+   "sha256": "2905d643e5baff99967684a063dada7a78b46ad01b293cdf8d091a663a9c7745",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qcudatower/ladder_e.json": {
+   "bytes": 1479,
+   "exists": true,
+   "sha256": "f29f7118b2ee486bbdd7a488eb46f1baf6eec5c821df49218518fb28e7241b0f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qcudatower/ladder_e_old.json": {
+   "bytes": 1056,
+   "exists": true,
+   "sha256": "70a3568a6a2782e0e66cffa597869d6eb1ef1b09bba5706fa6707e8c74d94166",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qcudatower/ladder_f.json": {
+   "bytes": 1154,
+   "exists": true,
+   "sha256": "5fe1f3927a45e4a2d8d080d4716244a14cbf2ad2bb6a8904c81d1a50890050c0",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qcudatower/ladder_f_old.json": {
+   "bytes": 935,
+   "exists": true,
+   "sha256": "ff38bab8f4a332db6d852e3feae68dcad5389f9a54a2ef8804409a4e08171c09",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qcudatower/ladder_g.json": {
+   "bytes": 1586,
+   "exists": true,
+   "sha256": "8692d5ca629f6ca8b228fdfaf42516ab3518ee33d559c40874a4e0de0a531d69",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qcudatower/ladder_mem.json": {
    "bytes": 1828,
    "exists": true,
@@ -456,9 +514,11 @@
    "tracked": true
   },
   "logs/qwenattrib/compose_BLe.json": {
+   "bytes": 777,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "1763afa7cf76814a5aed457c185aaa5476dc53bfca682c2ec3d20f873b9b481f",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_BLem.json": {
    "bytes": 794,
@@ -468,64 +528,88 @@
    "tracked": true
   },
   "logs/qwenattrib/compose_BLl.json": {
+   "bytes": 787,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "6cb4d23d9aee203652a1fce733af23fb758faecb642dc3afbf01f1fac825636d",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_BLm.json": {
+   "bytes": 787,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "b47947a7c18512e1472552e9c2b6b46c5f132f829417511349822f2cff9dd601",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_D.json": {
+   "bytes": 690,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "bd145233aaca39c02b6b551bbfc712ef8997df2f7caa161e0830d9bb9b640e39",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_E.json": {
+   "bytes": 684,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "fa882413f2a72f92cb32231c2218861b71321cbdfacd1161f3c093820f09f75d",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_F.json": {
+   "bytes": 684,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "21b3ee8a977b8879e7ddad18371d8f94911c92e82209bd788176582f16e840c2",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_FLe.json": {
+   "bytes": 777,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "b5366acece4f820c05ca971ece9a9d573156c51f4ee3cb5c4e9a5fa4f37e6e43",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_FLl.json": {
+   "bytes": 787,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "53526f0db81af595169ca3a80d76b58d97bdf01563da78c2c4977fd41a5872ea",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_FLm.json": {
+   "bytes": 787,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "962785fa9d33b35b1c14e509fe55ddde4045258d05ba61b7f55212d16e08bd30",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_L.json": {
+   "bytes": 690,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "bde5a0269f5a44cc49801e318d99451f1b56e4077530e816476cfcf7e2556cd6",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_PK.json": {
+   "bytes": 792,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "57aa0ad36f2aa13f51560733b0b22c315e51745be2a662e82953851703a5530d",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_PX.json": {
+   "bytes": 792,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "ae07b6748b1eb806f363c8cadf375feada9d1de9b0957d9d29dcbbf127207d22",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/compose_Q.json": {
+   "bytes": 698,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "3ef95068db8eb03fc2a722955b80ae0eb803cd4ce0644a7d6400364d5145bc3d",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/ioattrib_observations.json": {
    "bytes": 2327,
@@ -556,19 +640,32 @@
    "tracked": true
   },
   "logs/qwenattrib/lband_verdict.txt": {
+   "bytes": 484,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "7981544e7ad6bb86b89c48571e3ee97e6edd269859ae1bbfa2ca41908c94ca89",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenattrib/m2_compose.log": {
+   "bytes": 644,
+   "exists": true,
+   "sha256": "23d5b5dde33a5a611b98c5222819dc78eb48e415ccdb611769ffc8aed9885dc5",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/model2_observations.json": {
+   "bytes": 2423,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "13714ec321a20a41383dd49543afd2ee9fab65dc2bd937ea3993265afd64c334",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/model2_verdict.txt": {
+   "bytes": 266,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "1ab0f6ed79f3b3c7edfabbd009d33373acb47a3fa8c8d750062e661245f1ae6e",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwencapacity/meter27b.json": {
    "bytes": 2756,
@@ -810,20 +907,136 @@
    "source": "results",
    "tracked": true
   },
-  "logs/qwenhomeo/homeo_observations.json": {
+  "logs/qweneffort2_probe/traj_xhigh_0.json": {
+   "bytes": 32133,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "82467c39f7489367a06f9978c336c48dda45649ab5ae3adbb2dd0b8153213a3b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qweneffort2_probe/traj_xhigh_3.json": {
+   "bytes": 28102,
+   "exists": true,
+   "sha256": "262ee51d028b189d8085c5664b6ebfc60579fefcefb57ba5ef30ce032966d14e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qweneffort2_probe/traj_xhigh_4.json": {
+   "bytes": 30155,
+   "exists": true,
+   "sha256": "8680d411020a9359c66b0fd21e2035e8b9bc04f52ff280ade9f62789bedcea27",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/driver.log": {
+   "bytes": 1491,
+   "exists": true,
+   "sha256": "3fdbfaeba03bfd14b8c6ca19d56586789b07dd42398c9d535f4c583e0c221746",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/homeo_event_table.json": {
+   "bytes": 387,
+   "exists": true,
+   "sha256": "16e82f1117e7f110f8825db25d5dc06fd3d5887478cd76a7698746c492a9e218",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/homeo_observations.json": {
+   "bytes": 1946,
+   "exists": true,
+   "sha256": "278c2f837f0a5507d69be3964b9d3ce730982d71e9eebc149f6502c4ebaf3050",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/homeo_observations_offline.json": {
+   "bytes": 5195,
+   "exists": true,
+   "sha256": "17d22fe3ac95b9db6187d8e3eb2a4cc09e7e95594c136f39b5c5a5b780bc5599",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenhomeo/homeo_rows.jsonl": {
+   "bytes": 4132,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "c19793fa355de4c2cf5971cf80075ed5e52962edbd71a79b5c2e6c7fe1d44d06",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/homeo_summary.json": {
+   "bytes": 1929,
+   "exists": true,
+   "sha256": "8aae2c0051a7d762b38b90ab1635290fa241d5421cf614e5dece2cd81dbbe95c",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenhomeo/remote_sha256.txt": {
    "bytes": 1609,
    "exists": true,
    "sha256": "4267104aa69a715f371f58c021824382e458e48d1948ff7b2c8c8f36f76b9589",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/traj_HOT_i0.json": {
+   "bytes": 17240,
+   "exists": true,
+   "sha256": "6e46fab6e0d43d091d2ea67eedfe826b32ca7e14959184f7da72b1388b143f7f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/traj_HOT_i3.json": {
+   "bytes": 14904,
+   "exists": true,
+   "sha256": "9555c1af5950d2ed8af0240edcddf4f8f98a680194793356d54ac5d4eeefa5e9",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/traj_HOT_i4.json": {
+   "bytes": 16014,
+   "exists": true,
+   "sha256": "c2603aa5c1dd432f3393951d7f6d7cb185840db19058134ebe85259d9ff00b0d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/traj_RH_i0.json": {
+   "bytes": 16296,
+   "exists": true,
+   "sha256": "d3405c148932783698c2b2b935d195d24f74b4acae6c33c6c2a6bf531af03e9a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/traj_RH_i3.json": {
+   "bytes": 15000,
+   "exists": true,
+   "sha256": "a729a5b51522022e894e0f0d33eb59e0a1dda48b9773f56e9084e584f91a6dd4",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/traj_RH_i4.json": {
+   "bytes": 16021,
+   "exists": true,
+   "sha256": "90d8bd3570cfbb3895db47da74881a566951d9ed2f307ed1b702cb1b5b864f5a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/traj_RL_i0.json": {
+   "bytes": 13947,
+   "exists": true,
+   "sha256": "435ad30ca17f5371c935e11f3b46929d86a91efca729cd94cc0763ab246abe02",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/traj_RL_i3.json": {
+   "bytes": 12424,
+   "exists": true,
+   "sha256": "55f971286a07884ee40925bf5218944b793e4271f2ee5cd96b1e7402e78bbf71",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhomeo/traj_RL_i4.json": {
+   "bytes": 12628,
+   "exists": true,
+   "sha256": "6a12be4eea5d1c1650906971a0711d14de934c54d438f4f204956faf4057f2aa",
    "source": "results",
    "tracked": true
   },
@@ -1008,14 +1221,18 @@
    "tracked": true
   },
   "logs/qwenmodel1/score_A.json": {
+   "bytes": 1696,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "5e81c5724a5a4511a1775ec4cd78879c540da44ead5db4a9458a019b8ac003dd",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel1/score_B.json": {
+   "bytes": 1697,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "b1d8312abf618571fda782ffc571eb04ddbd62500353f147e80a7eeb0599bf55",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel1/score_BLe.json": {
    "exists": true,
@@ -1033,24 +1250,32 @@
    "source": "prereg"
   },
   "logs/qwenmodel1/score_C.json": {
+   "bytes": 1702,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "63d52d0071cfbe31c21efe255867e0be5684556410c6cfc3a0f95c33a55f423c",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel1/score_D.json": {
+   "bytes": 1780,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "1b88acf4073f3541911e9da8fa79708fa0dca40790eefe975bd5faad9989af2f",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel1/score_E.json": {
+   "bytes": 1780,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "d9f587383b54d27fab3342136482271938daa3b7943c5963e43765186ca65598",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel1/score_F.json": {
+   "bytes": 1698,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "2f0830bfd4a2c5635f64f6f21f25df407ab4898191805bbe003bb244b2118611",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel1/score_FLe.json": {
    "exists": true,
@@ -1075,14 +1300,18 @@
    "tracked": true
   },
   "logs/qwenmodel1/score_L.json": {
+   "bytes": 1702,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "c56e4b82526bc14bff552cdabd63035966686a50ff41d3da8dbe248f84529c5e",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel1/score_Q.json": {
+   "bytes": 1697,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "3a8339d38a6cd820d3ff9d64cade5c11e2cbdccbe0f9cff91d1fde8194b0590a",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel1/tree_observations.json": {
    "exists": true,
@@ -1097,24 +1326,32 @@
    "tracked": true
   },
   "logs/qwenmodel2/score_C.json": {
+   "bytes": 1807,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "4daa28d208721a344a52012fb510bcdc050de3eeb31135d8323f7f84bc651616",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel2/score_FLe.json": {
+   "bytes": 1813,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "317a5c2aa2e43a510a010627bf1db8270d752f92cfe6a2047154cb9d7d1e4e15",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel2/score_PK.json": {
+   "bytes": 1811,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "ec11467d624bd1a2781e219ed95294c8ac35b324db0f4619cf8479965958be53",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel2/score_PX.json": {
+   "bytes": 1808,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "044217d5297168418687901249a39c3fb4b878ce7c7da3d2a19e5afe5e025a10",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenprobe/L32.jsonl": {
    "bytes": 901,
@@ -1180,14 +1417,18 @@
    "tracked": true
   },
   "logs/qwenrouter/capture_arm_meta.json": {
+   "bytes": 1056,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "2a09a1079ee16d218f422453138c86670eef3e43a422abd859d7069b93b3d2c3",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenrouter/capture_vendor_meta.json": {
+   "bytes": 919,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "276de6facbd895f5a3f4b925af1a0aea44d57dde1749af897d38e1bf31f17031",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenrouter/rk_census.json": {
    "bytes": 6114,
@@ -1196,10 +1437,24 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwenrouter/rk_observations.json": {
+   "bytes": 1103,
+   "exists": true,
+   "sha256": "d04865e5c7e04547dc365c48d0c63225167ad14ce82be8050a79f57611a89a7b",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwenrouter/rk_rider.json": {
    "bytes": 1349,
    "exists": true,
    "sha256": "ddc8188fc5d3e24226258a14eab132dd79091363b802fa578c815d49913b391b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenrouter/rk_verdict.txt": {
+   "bytes": 237,
+   "exists": true,
+   "sha256": "3a0025cade94922a9bea4d823b1be3d92c974aa42ab5584bbef4abec59faa4ee",
    "source": "results",
    "tracked": true
   },
@@ -1277,6 +1532,20 @@
    "bytes": 1934,
    "exists": true,
    "sha256": "5f97619291835ed675a95e98134da28796d2c8819ca4d61c3d15ed7d2a26a63a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenwhole/artifact_digest_PK.txt": {
+   "bytes": 1934,
+   "exists": true,
+   "sha256": "e94e1c655b08a542010d180cc4089059fe83cb3f61432fdfe8f38a53f258d97a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenwhole/artifact_digest_PX.txt": {
+   "bytes": 1934,
+   "exists": true,
+   "sha256": "48a69a87e8522fab0914ac572b2d493ebb5b79f873fb006ff285a78140440a88",
    "source": "results",
    "tracked": true
   },
@@ -1402,10 +1671,38 @@
    "pending": true,
    "source": "prereg"
   },
+  "logs/streamwd/v2census_L12.jsonl": {
+   "bytes": 2486,
+   "exists": true,
+   "sha256": "64c4c882c1cda657032c7ad732ff5e31f925096902dbeaa7adf655ac69fd544c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/streamwd/v2census_L2.jsonl": {
+   "bytes": 2461,
+   "exists": true,
+   "sha256": "05df5768942daca1a7dcd03ff258872e150bac22ffb516cdbdf3854cedc16578",
+   "source": "results",
+   "tracked": true
+  },
   "logs/streamwd/v2census_L22.jsonl": {
    "bytes": 2481,
    "exists": true,
    "sha256": "8b373836b59008ba801580a7c82154325e93de60f9371fe21ff9523cee696498",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/streamwd/v2census_L33.jsonl": {
+   "bytes": 2479,
+   "exists": true,
+   "sha256": "f124e22319fad372f88d80d67f988a38ea46223d463efc0b43c8502611159096",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/streamwd/v2census_L42.jsonl": {
+   "bytes": 2487,
+   "exists": true,
+   "sha256": "b1fc2908959bc9aca3960b3e1c322258f788867c2833e6f2a45e21397c9fefaa",
    "source": "results",
    "tracked": true
   },

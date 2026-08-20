@@ -42,6 +42,37 @@ LOCK = ROOT / "docs" / "receipts.lock.json"
 # logs/<dir>/<file.ext> as cited in prose; kept deliberately narrow so
 # directory-only mentions ("receipts land in logs/foo/") are ignored.
 CITE = re.compile(r"\blogs/[A-Za-z0-9_.\-]+/[A-Za-z0-9_.\-]+\.[A-Za-z0-9]+\b")
+# brace-list citations — logs/<dir>/{a.ext, b.ext, ...} — expand to one
+# path per member. Whitespace/newlines inside the braces are prose
+# wrapping, not structure; members that do not look like filenames
+# (no extension) are ignored rather than guessed at.
+BRACE = re.compile(r"\blogs/[A-Za-z0-9_.\-]+/[A-Za-z0-9_.\-]*"
+                   r"\{[^{}]+\}[A-Za-z0-9_.\-]*")
+_MEMBER = re.compile(r"^[A-Za-z0-9_.\-]+$")
+_FILE = re.compile(r"^[A-Za-z0-9_.\-]+\.[A-Za-z0-9]+$")
+
+
+def expand_braces(text: str) -> list[str]:
+    out = []
+    for m in BRACE.finditer(text):
+        s = m.group(0)
+        head, rest = s[:s.index("{")], s[s.index("{") + 1:]
+        inner, tail = rest[:rest.rindex("}")], rest[rest.rindex("}") + 1:]
+        whole_name = head.endswith("/") and tail == ""
+        for part in inner.split(","):
+            toks = part.split()
+            if whole_name and toks:
+                # full-filename members may carry trailing prose
+                # annotations ("x.json (producer, ..."): first token
+                part = toks[0]
+            elif len(toks) == 1:
+                part = toks[0]
+            else:
+                continue  # multi-word prose ("same six"), not a name
+            if _MEMBER.fullmatch(part) and _FILE.fullmatch(
+                    (head + part + tail).rsplit("/", 1)[-1]):
+                out.append(head + part + tail)
+    return out
 
 
 def sha256(p: Path) -> str:
@@ -59,7 +90,9 @@ def cited_paths() -> dict[str, str]:
     closes the bare-filename gap); a declared path may legitimately
     not exist yet (PENDING, the run has not fired) and is not
     ratcheted, but once it exists its sha is locked like any other."""
-    out = {m.group(0): "results" for m in CITE.finditer(RESULTS.read_text())}
+    text = RESULTS.read_text()
+    out = {m.group(0): "results" for m in CITE.finditer(text)}
+    out.update({p: "results" for p in expand_braces(text)})
     # prereg-DECLARED paths win the pending classification while the
     # file does not exist, even when the registration prose also
     # names them (a pre-reg legitimately cites paths its run WILL
@@ -136,14 +169,17 @@ def main() -> int:
     if a.accept:
         payload["_last_accept"] = {"reason": a.accept, "paths": changed}
     LOCK.write_text(json.dumps(payload, indent=1, sort_keys=True) + "\n")
-    live = sum(1 for v in fresh.values() if v.get("exists"))
+    locked = sum(1 for v in fresh.values()
+                 if v.get("exists") and v.get("sha256"))
+    live_pending = sum(1 for v in fresh.values()
+                       if v.get("exists") and v.get("pending"))
     backlog = sum(1 for v in fresh.values()
                   if not v.get("exists") and v.get("source") == "results")
-    pending = sum(1 for v in fresh.values()
-                  if not v.get("exists") and v.get("source") == "prereg")
+    awaiting = sum(1 for v in fresh.values()
+                   if not v.get("exists") and v.get("source") == "prereg")
     print(f"{len(fresh)} cited receipt paths -> {LOCK.relative_to(ROOT)} "
-          f"({live} present, {backlog} cited-but-absent, "
-          f"{pending} prereg-pending)")
+          f"({locked} sha-locked, {live_pending} present-but-pending, "
+          f"{backlog} cited-but-absent, {awaiting} prereg-awaiting-run)")
     if changed:
         print(f"ACCEPTED {len(changed)} changed: {a.accept}")
     return 0

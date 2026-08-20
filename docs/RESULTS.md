@@ -37569,3 +37569,24 @@ reused) — the restore path is functionally sound; the wall gap is
 a performance artifact, not state corruption. Wall numbers here
 are observational; the rung gates nothing on speed.
 
+## AMENDMENT QWEN-HOMEO-ACTUATOR-0-RUNTIME-WORDING (amends VERDICT QWEN-HOMEO-ACTUATOR-0): the runtime observation's "performance artifact, not state corruption" narrows to "no evidence of corruption" — the sanity gate certifies the BLe-side roundtrip only (2026-08-20, mac)
+
+Wording correction to the RUNTIME OBSERVATION paragraph, caught at
+post-booking review; no bar, measurement, or receipt changes. The
+booked sentence inferred "the wall gap is a performance artifact,
+not state corruption" from REFRESH-LOW's 3/3 exactness. That
+inference overreaches: REFRESH-LOW certifies the serializer
+roundtrip UNDER BLe (save a BLe state, restore it, continue under
+BLe — token-exact). The slow arm is the CROSS-TOWER restore
+(F(W_BLem, S^BLe)), for which no token-exact oracle exists or can
+exist — its continuation has no registered ground truth. Corrected
+reading: the restore machinery shows NO EVIDENCE of corruption
+(the same code path is token-exact where an oracle exists), and
+the 7x HOT/REFRESH wall gap remains UNDIAGNOSED — performance
+pathology and subtle cross-tower state interaction are both open
+until the banked BLEM-DECODE-PERF probe separates them (physical
+cache properties, per-layer timing, separate prefill/decode
+timers). The science verdict is untouched: escape/repair outcomes
+gate nothing on speed, and the 0/6 result carries whichever
+explanation the probe lands on.
+

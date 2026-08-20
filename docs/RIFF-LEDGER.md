@@ -7314,7 +7314,12 @@ honest status column).
   rider: compare native v restored cache PHYSICAL properties
   (dtype/shape/stride/contiguity/storage/device, module-local
   runtime state) plus per-layer timing, not numerical contents.
-  No kernel changes while any registered run is live.
+  No kernel changes while any registered run is live. WORDING
+  (post-booking review): the HOMEO sanity gate certifies the
+  serializer roundtrip UNDER BLe only — say "no evidence of
+  corruption" for the cross-tower restore, never "proven
+  performance artifact"; the 7x gap stays undiagnosed until this
+  probe runs (AMENDMENT -RUNTIME-WORDING).
 - **BANK OUTCOME (2026-08-20): HOMEOSTATIC-INFERENCE stage 2
   (actuator qualification) measured — the precision actuator
   DEMOTES at the BLem dose** (VERDICT QWEN-HOMEO-ACTUATOR-0, the
