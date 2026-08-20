@@ -1,0 +1,133 @@
+{
+ "note": "QWEN-ALTTOKEN-CONTROL-0 phase-1 derivation receipt (the frozen control table; phase 2 requires these exact committed bytes and re-derives, refusing on mismatch)",
+ "start": {
+  "start_commit": "2b04854",
+  "start_status_porcelain": "?? COMPOSE_DE\n?? COMPOSE_FLQ2\n?? scratch/leancheck/OvershootTest.lean\n",
+  "interpreter": "/home/a/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_alttok_derive.py": "5d366bb5106c32349b7c13a62454f8f570ade4f31362231c1595ca3895e1e310",
+   "scratch/qwen_loop_state_headswap.py": "cea4616d74293926bc4097d055059958ec00e231aa57351274b7a02ef83b277f",
+   "llmopt/lab/qcodec_fast.py": "db01672f4a2f095b125f412464a239b89ce1283cbb1e12622c7e0d7863382eb6",
+   "docs/preregs/qwen-headswap-impulse-0.params.json": "d70b6844e76ca2aa365ea4955d9190173911c84a6b0d29ccdd849f0b8bdd4ad6",
+   "docs/preregs/qwen-alttoken-control-0.params.json": "7301bc35c01ec15bbaa980f3fb2eb0174d809435bdb530ab743d20f972c8ddb7",
+   "docs/preregs/qwen-alttoken-control-0.json": "ab573af084be3da38936eb70f83cdb88fcb2cad13ce7f0e4c4180ba994629c85"
+  },
+  "artifact_identity": {
+   "BLe": {
+    "art_dir_resolved": "/home/a/qwen_whole0t/BLe",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "fc9347ef55164f3eed433e3345721942e3d2f7a5fefd186c68b118565dcdb49d",
+    "shards": {
+     "n": 18,
+     "total_bytes": 8077632064
+    }
+   },
+   "vendor_slice": {
+    "art_dir_resolved": "/home/a/qwen_vendor_lmhead",
+    "manifest_file": "model.safetensors.index.json",
+    "manifest_sha256": "04fb8e6d6a2370483cc0aa472addc3bc2ad585ecdd201a425028114e5b2773f5",
+    "shards": {
+     "n": 1,
+     "total_bytes": 2542796896
+    }
+   },
+   "vendor_checkout": {
+    "art_dir_resolved": "/home/a/qwen_vendor",
+    "manifest_file": "model.safetensors.index.json",
+    "manifest_sha256": "77042094076611b69791a610065f28b7013b8c621795fa86ddccc8bac7d1b9df",
+    "shards": {
+     "n": 0,
+     "total_bytes": 0
+    }
+   }
+  }
+ },
+ "completion_commit": "2b04854",
+ "input_npz_sha256": {
+  "0": "fa12f05b680bc915ecfac46b5308dba9111e1c62fe9656c85a6a0f79da789895",
+  "3": "6319d6ce9b1e0ac67bb598c07736e302b22b45a338d3daeeece3cdb474b57917",
+  "4": "79e1041d2039d9f84a3f0b00aac4868bdce21424d64c5e008c2f0156c77ef104"
+ },
+ "gate": {
+  "abs_gap_error_max_logits": 0.05,
+  "all_pass": false
+ },
+ "status": "CONTROL-MATCH-FAILED",
+ "table": [
+  {
+   "item": 0,
+   "pos": 556,
+   "ble_token": 30761,
+   "vendor_token": 1918,
+   "control_id": 6643,
+   "control_ble_rank": 212,
+   "target_gap": 0.07814407348632812,
+   "achieved_gap": 12.555678367614746,
+   "abs_gap_error": 12.477534294128418,
+   "n_excluded": 265,
+   "n_vendor_top256": 256,
+   "n_specials": 9,
+   "gate_pass": false
+  },
+  {
+   "item": 0,
+   "pos": 583,
+   "ble_token": 25,
+   "vendor_token": 11,
+   "control_id": 417,
+   "control_ble_rank": 223,
+   "target_gap": 0.08433151245117188,
+   "achieved_gap": 12.264459609985352,
+   "abs_gap_error": 12.18012809753418,
+   "n_excluded": 265,
+   "n_vendor_top256": 256,
+   "n_specials": 9,
+   "gate_pass": false
+  },
+  {
+   "item": 4,
+   "pos": 1538,
+   "ble_token": 37781,
+   "vendor_token": 1380,
+   "control_id": 72606,
+   "control_ble_rank": 204,
+   "target_gap": 0.023944854736328125,
+   "achieved_gap": 14.616710662841797,
+   "abs_gap_error": 14.592765808105469,
+   "n_excluded": 265,
+   "n_vendor_top256": 256,
+   "n_specials": 9,
+   "gate_pass": false
+  },
+  {
+   "item": 3,
+   "pos": 1223,
+   "ble_token": 553,
+   "vendor_token": 8,
+   "control_id": 585,
+   "control_ble_rank": 221,
+   "target_gap": 0.0068531036376953125,
+   "achieved_gap": 18.618873596191406,
+   "abs_gap_error": 18.61202049255371,
+   "n_excluded": 265,
+   "n_vendor_top256": 256,
+   "n_specials": 9,
+   "gate_pass": false
+  },
+  {
+   "item": 3,
+   "pos": 1278,
+   "ble_token": 198,
+   "vendor_token": 87,
+   "control_id": 7891,
+   "control_ble_rank": 222,
+   "target_gap": 0.24185752868652344,
+   "achieved_gap": 12.8142728805542,
+   "abs_gap_error": 12.572415351867676,
+   "n_excluded": 265,
+   "n_vendor_top256": 256,
+   "n_specials": 9,
+   "gate_pass": false
+  }
+ ]
+}

@@ -299,7 +299,12 @@ def test_booked_prereg_receipts_are_sha_locked():
         for rel in d.get("receipts", []):
             if rel in allowed:
                 continue
-            if not lock.get(rel, {}).get("sha256"):
+            rec = lock.get(rel, {})
+            # a booked NOT-RUN (e.g. CONTROL-MATCH-FAILED) leaves
+            # declared treatment receipts legitimately absent —
+            # those stay visible as prereg-awaiting-run. The
+            # invariant bites when the file EXISTS without a sha.
+            if rec.get("exists") and not rec.get("sha256"):
                 problems.append(f"{rel_p}: {rel}")
     assert not problems, (
         "booked prereg receipts with no locked sha (cite the full "

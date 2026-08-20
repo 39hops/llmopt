@@ -2533,3 +2533,16 @@ regime tag on every bullet is the fence.
   exact through the same teacher-forced-prefix + serializer path
   the treatment used).
   ([VERDICT QWEN-HOMEO-ACTUATOR-0](RESULTS.md#L37432 "id:2026-08-20-verdict-qwen-homeo-actuator-0-the").)
+
+- [SINGLE-SEED] [qwen] [wsl] [compression] [trajectory-control] At
+  all five frozen near-tie loci of the loop-state program, the
+  compressed BLe head's near-top candidate set is CONTAINED in the
+  vendor head's top-256: every BLe token within ~12 logits of BLe's
+  top1 is inside vendor's top-256, so the registered gap-matched
+  non-vendor control token does not exist (best admissible match
+  12.18-18.61 logits off v a 0.05 gate, controls at BLe rank
+  204-223) and QWEN-ALTTOKEN-CONTROL-0 books CONTROL-MATCH-FAILED
+  with zero branches run — the two heads agree not only on argmax
+  (HEADSWAP) but on which ~200 tokens are candidates at all (these
+  five h only; head-space only).
+  ([VERDICT QWEN-ALTTOKEN-CONTROL-0](RESULTS.md#L37747 "id:2026-08-20-verdict-qwen-alttoken-control-0-control").)

@@ -7336,3 +7336,17 @@ honest status column).
   amplification) are the live candidates. Dose fence: this null is
   BLem-scoped; it neither closes precision escalation at larger
   doses nor touches the other lever families.
+- **BANK OUTCOME (2026-08-20): ALTERNATE-TOKEN CONTROL blocked by
+  its own admissibility gate — CONTROL-MATCH-FAILED, redesign is a
+  new registration** (VERDICT QWEN-ALTTOKEN-CONTROL-0): no
+  gap-matched non-vendor-head control exists at the five loci
+  because BLe's near-top set is contained in vendor's top-256
+  there. Redesign options, each a separate registration with its
+  confound named: (a) drop the vendor-top-256 exclusion (control
+  may then be vendor-plausible — weakens the vendor-specificity
+  contrast), (b) rank-matched instead of gap-matched control
+  (matches selection position, not perturbation size), (c) widen
+  the gap tolerance (unmatched perturbation magnitude). The
+  head-set containment fact is banked as its own lead: candidate
+  sets survive compression at near-tie states — a cheap-readout
+  and precision-doctrine data point.

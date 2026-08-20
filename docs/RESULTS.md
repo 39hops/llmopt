@@ -37744,3 +37744,54 @@ Pre-run protocol corrections, before any derivation fires.
    what this control tests. Prior numbers unchanged (bar 1 5/5,
    bar 2 0/5).
 
+## VERDICT QWEN-ALTTOKEN-CONTROL-0: CONTROL-MATCH-FAILED at every locus — no admissible gap-matched control exists outside the vendor-head top-256 (best abs_gap_error 12.18-18.61 logits v the 0.05 gate); bars NOT-RUN, zero branches fired; the blocking fact is itself a finding: BLe's near-top set sits inside the vendor top-256 at all five loci (2026-08-20, wsl)
+
+Phase-1 derivation outcome for PRE-REG QWEN-ALTTOKEN-CONTROL-0
+(registered e6def15; -FREEZE-PROTOCOL amendment 2cb061a committed
+BEFORE the derivation fired, including the 0.05-logit
+match-quality gate and both argmax preconditions). Receipt:
+logs/qwenalttok/control_table.json (status CONTROL-MATCH-FAILED,
+sha-verified both machines, sha-locked at booking; derivation
+provenance + npz shas inside). Derivation ran derivation-only and
+stopped, per protocol; NO treatment branch fired; bars 1 and 2
+book NOT-RUN, the refutation predicate is unadjudicated.
+
+MEASURED (from the receipt):
+- Preconditions PASS 5/5: BLe s16-head argmax reproduces the
+  frozen ble_token and the attested vendor-slice argmax reproduces
+  the frozen vendor_token at every pinned h.
+- Gate FAILS 5/5: per locus the registered argmin over admissible
+  ids returns abs_gap_error 12.48 / 12.18 / 14.59 / 18.61 / 12.57
+  logits against target gaps g* of 0.078 / 0.084 / 0.024 / 0.007 /
+  0.242 — three orders of magnitude past the 0.05 gate.
+- WHY (the finding): the selected controls sit at BLe descending
+  rank 204-223, i.e. the best admissible candidate is ~200 ranks
+  down. Every BLe token scoring within ~12 logits of BLe's top1 at
+  these h is EXCLUDED — overwhelmingly by the vendor-head top-256
+  exclusion. At all five loci the compressed head's near-top
+  candidate set is CONTAINED in the vendor head's top-256: the two
+  heads agree not only on the argmax (HEADSWAP) but on which
+  ~200 tokens are candidates at all. The registered exclusion set
+  and the registered match objective are jointly unsatisfiable at
+  near-tie loci.
+
+READING: the gate did exactly what it was registered to do — the
+deterministic argmin always returns a token, and without the gate
+the rung would have run five branches whose "matched" controls
+were 12-19 logits off, adjudicating nothing. The vendor-control
+question stays OPEN; any redesign (dropping the vendor-top-256
+exclusion, rank-matched instead of gap-matched controls, or a
+larger-gap tolerance with its confound named) is a NEW
+registration, not an in-place edit. PRIOR: unadjudicated — the
+registered prior addressed branch outcomes and no branch ran; the
+house did not register a prediction about control existence, and
+the containment fact was not anticipated.
+
+FENCES: five loci, three items; containment is measured at THESE
+five near-tie h only — no claim about head-set overlap elsewhere;
+head-space statement only (embedding/dynamical spaces untouched);
+no vendor-capability claim. Machines: derivation on the 3080
+inside an Artin GO relayed for phase 1 explicitly
+(derivation-only); nothing armed after; both bars NOT-RUN book
+under the window/protocol fence, not as measurements.
+

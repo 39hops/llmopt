@@ -512,8 +512,11 @@
    "source": "prereg"
   },
   "logs/qwenalttok/control_table.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 4062,
+   "exists": true,
+   "sha256": "567facffc78408cde9b6abd8f77c36f8c819c2e4cfcb45c22da4edce03cd3bdf",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenattrib/attrib_observations.json": {
    "bytes": 3455,
