@@ -85,3 +85,25 @@ def test_provenance_helper_shape():
     assert len(p["file_sha256"]["llmopt/lab/provenance.py"]) == 64
     with pytest.raises(FileNotFoundError):
         start_provenance(["no/such/file.py"])
+
+
+def test_provenance_artifact_identity(tmp_path):
+    from llmopt.lab.provenance import artifact_identity, start_provenance
+    art = tmp_path / "arm"
+    art.mkdir()
+    (art / "manifest.json").write_bytes(b'{"t": {"shard": "s0.bin"}}')
+    (art / "s0.bin").write_bytes(b"\x00" * 128)
+    (art / "s1.bin").write_bytes(b"\x00" * 64)
+    ident = artifact_identity(str(art))
+    assert ident["art_dir_resolved"] == str(art)
+    assert len(ident["manifest_sha256"]) == 64
+    assert ident["shards"] == {"n": 2, "total_bytes": 192}
+    p = start_provenance(["llmopt/lab/provenance.py"],
+                         artifacts={"A": str(art)})
+    assert p["artifact_identity"]["A"]["manifest_sha256"] == \
+        ident["manifest_sha256"]
+    # no artifacts arg -> key absent (old receipts' shape unchanged)
+    q = start_provenance(["llmopt/lab/provenance.py"])
+    assert "artifact_identity" not in q
+    with pytest.raises(FileNotFoundError):
+        artifact_identity(str(tmp_path / "nope"))
