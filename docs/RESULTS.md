@@ -36340,3 +36340,105 @@ sufficient for independent offline recomputation of every bar).
 Wall estimate: 3 greedy regens x ~6 min + adjudication << the
 3080 window ending ~15:00 EST today; if the wall hits, unfinished
 items book NOT-RUN.
+
+
+## VERDICT QWEN-LOOP-STATE-0: bar 1 NO-FIRE at 0.9701 KNIFE-EDGE (item 4's internal state only approximately recurs while its tokens repeat exactly); bar 2 FIRES at 98.4% top1 agreement / median JS 1.7e-5 nats (item 3's retry policy is stuck); on the exact-orbit specimens, token recurrence is exact while pre-head state recurrence is approximate (2026-08-20, wsl)
+
+Adjudication of PRE-REG QWEN-LOOP-STATE-0 (L36233, committed
+b02c5df pre-launch) through scratch/qwen_loop_state_adjudicate.py
+at 57cd895 (llmopt.lab.prereg.adjudicate_prereg +
+adjudicate_refutation on the machine projection) — preconditions
+and bars recomputed from the sha-pinned npz primitives, never from
+in-run numbers.
+
+PRECONDITIONS (all pass; measurement_valid true):
+- P1 trajectory identity: regenerated ids with capture hooks
+  sha-match the frozen autopsy sidecars — item 0 887fcdbf...,
+  item 4 a7df6389..., item 3 bee84ea4... — the capture hook is a
+  no-op on the trajectory.
+- P2 capture fixture: bit-exact 24/24 (8 positions x 3 items,
+  top1 identical, max abs logit diff 0.0 on the fused s16 head).
+  The fixture positions are the event-window positions (552-559 /
+  618-625 / 527-534), which sort before the homologous blocks —
+  "first 8 captured" by position order, receipt-audit N4.
+- P3 anchor census: measured hit list [1222, 1862, 2190, 2518,
+  2846], exactly the registered positions (emitted in
+  observations as p3_measured_hits).
+
+MEASURED (bars):
+- Bar 1 INTERNAL-ORBIT: NO-FIRE, KNIFE-EDGE (registered fence:
+  both sides of this bar sit within 10% of the uncalibrated
+  first-registration threshold). Median cosine(h_p, h_{p+kL})
+  over registered homologous pairs: item 0 = 0.9963 (176 pairs,
+  clears the 0.99 threshold by 0.0063), item 4 = 0.9701 (484
+  pairs, misses by 0.02); min over items 0.9701 < 0.99.
+  Refutation predicate: NOT-REFUTED (both medians >= 0.90).
+- Bar 2 STUCK-RETRY-POLICY: FIRE. Over 4 successive-attempt pairs
+  x 64 homologous offsets on item 3 (256 pairs): top1 agreement
+  0.984 >= 0.80 AND median full-vocab JS 1.68e-5 nats <= 0.05
+  (three orders of magnitude inside the bar, ~3000x). Successive
+  retry attempts carry the same actionable distribution
+  (P_retry(i) ~ P_retry(i+1)).
+
+DESCRIPTIVE COLOR (unregistered, gates nothing; every number
+below is receipted in loopstate_observations.json
+color_unregistered, recomputed from the same pinned npz): the
+homologous cosine DECREASES from k=1 to k=2 on both exact-orbit
+items — item 4: k=1 median 0.9835, k=2 median 0.9566, fraction of
+pairs >= 0.99 at k=2 is 0.0; item 0: 0.9981 -> 0.9945, frac >=
+0.99: 0.898 -> 0.818 — consistent with slow drift across cycle
+copies (two k points; the trend is suggestive, not established).
+On item 4 the 15 k=1 pairs below cosine 0.9 sit at HIGHER local
+top1-top2 margin (median 10.6) than the rest (9.3), entropy
+~0.001 (item 0's 5 low pairs: margin 6.0 v 9.6, entropy 0.021) —
+on item 4 the state variation is concentrated at confident
+positions, i.e. it stays deep inside the head's decision cell.
+
+READING (per-specimen, scoped to the captured positions): on the
+exact-orbit specimens (items 0 and 4), token recurrence is exact
+while pre-head state recurrence is approximate and decreasing
+with lag — the head maps measurably different states onto the
+same greedy token. On the contrast specimen (item 3), the
+actionable distribution at homologous retry steps is numerically
+the same distribution, so correction failure there is not unlucky
+sampling. No distributional-recurrence measurement exists on
+items 0/4 (full logits were registered for item 3 only), so any
+cross-specimen ranking of policy v state recurrence is NOT
+supported by this rung. For the controller program
+(NO-REGRET-RETRY bank): token-space perturbation was already the
+weak baseline; the item-4 color suggests the internal state is
+not frozen, making drift-amplifying interventions a natural
+priced arm next to representation-restart.
+
+PRIOR: half wrong. On bar 1 the prior predicted medians > 0.999 —
+measured 0.9963/0.9701, below the bar; the bar-2 prediction was
+correct.
+
+FENCES carried: single arm (BLe), xhigh cell, greedy, 3080 only,
+n=1 trajectory per item, per-specimen claims only, no capability
+claims; "internal orbit" language never upgrades to weight-space
+attractor claims; local margin is BLe's own logits, never teacher
+margin; the vendor-head ladder leg 2 was NOT run (bars resolved
+without it; it stays priced for a follow-up registration).
+
+PROVENANCE DISCLOSURES (both auditors pre-booking; receipt-audit
+found no blockers): (a) the driver that ran is f3aa8ef4... at
+99759db (start/completion commit identical, six file shas
+reproduce against that tree); the currently tracked driver
+differs only by the post-run PARAMS-path patch. (b) The prereg
+JSON the run pinned (05bd47f4... = the b02c5df version) was split
+post-run into a schema-conformant projection + params sidecar;
+capture/preconditions byte-identical, bar thresholds and
+conjunctive semantics unchanged, bar-contract string edits
+disclosed in the JSON notes. (c) The rows' arm/runtime fields are
+literals corroborated by the driver.log route counts
+(FusedW4Linear 352 / FusedS16Linear 49), but no receipt field
+records a WEIGHT digest of the loaded artifact — banked forward
+fix (artifact sha in start_provenance) applies; nothing in this
+chain distinguishes checkpoints except ART_DIR resolution.
+Receipts: logs/qwenloopstate/{loopstate_rows.jsonl,
+loopstate_summary.json, loopstate_observations.json, driver.log,
+remote_sha256.txt} (small text receipts force-added, seedslad
+exception; why: they are the adjudication basis, < 40KB total);
+npz arrays stay on the 3080, untracked, sha-pinned in the rows
+and remote_sha256.txt (fa12f05b..., 79e1041d..., 6319d6ce...).

@@ -2467,3 +2467,14 @@ regime tag on every bullet is the fence.
   tighter than greedy's); adjudicated by offline recomputation from token-ID
   sidecars after the in-run escape field was found inflated by a burst-cap
   artifact. ([VERDICT QWEN-CYCLE-IMPULSE-0](RESULTS.md#L36117 "id:2026-08-20-verdict-qwen-cycle-impulse-0-bar").)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] [FREE-RUN-GATED]
+  Along BLe's frozen greedy retry loops, pre-head state recurrence is only
+  approximate where token recurrence is exact — homologous-cycle cosine
+  medians 0.9963 (item 0) and 0.9701 (item 4, below the uncalibrated 0.99
+  bar, KNIFE-EDGE), decreasing from k=1 to k=2 with the item-4 variation
+  concentrated at high-margin positions — while on the semantic-restart item
+  successive retry attempts carry numerically the same distribution (98.4%
+  top1 agreement, median full-vocab JS 1.7e-5 nats): correction failure
+  there is not unlucky sampling; per-specimen claims only, no
+  policy-v-state ranking across specimens.
+  ([VERDICT QWEN-LOOP-STATE-0](RESULTS.md#L36345 "id:2026-08-20-verdict-qwen-loop-state-0-bar").)

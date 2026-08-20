@@ -1,0 +1,23 @@
+{
+ "start": {
+  "start_commit": "99759db",
+  "start_status_porcelain": "?? COMPOSE_DE\n?? COMPOSE_FLQ2\n?? scratch/leancheck/OvershootTest.lean\n",
+  "interpreter": "/home/a/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_loop_state.py": "f3aa8ef4f34d4ce047557c86275244fc918d9ff4dc1455fd9afe8d34b93aee00",
+   "scratch/qwen_tower_ladder.py": "4e8adf337de2f847b2cd2d7e83d10f3f20a57fc3f242d28d83bbf16c0e3fa0c4",
+   "scratch/qwen_effort_probe.py": "04845e535e1c93210c85abf555acbf3b8d2fb366d81e8ebf2b59ae71d84f4279",
+   "llmopt/lab/qcuda_tower.py": "a55aae50b307efd42c749ab69064df21476ec93d16ef7ae8b8bd274c701144d8",
+   "llmopt/lab/qcuda.py": "4fe810184cbc6a4a2c9ec7cf2bb0d00ee037cc2681e7aafc1fea3ecfa50c2d9b",
+   "docs/preregs/qwen-loop-state-0.json": "05bd47f44511780c333346f53cdb721e4de0e1572d483154b48842005dd0c02e"
+  }
+ },
+ "completion_commit": "99759db",
+ "smoke": false,
+ "prereg": "docs/preregs/qwen-loop-state-0.json",
+ "frozen_sidecar_shas": {
+  "0": "887fcdbf307c7d7cac041e728e8f778741208fdf973d18573068bdbda08c570a",
+  "4": "a7df6389f85f20bcbb93c01cea49ff0f0ef8c5a5ba89d2aadb29454c1b734288",
+  "3": "bee84ea46431606ef3ef230ea53d9169ff6a80cef6e9e8591bd61a6b8fc60eab"
+ }
+}

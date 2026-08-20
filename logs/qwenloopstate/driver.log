@@ -1,0 +1,9 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[tl] tower fused {'w4': 352, 's16': 48}
+[tl] verify_routes OK: {'FusedW4Linear': 352, 'FusedS16Linear': 49, 'cpu_compressed_rows': 1}
+[ls] tower up, routes {'FusedW4Linear': 352, 'FusedS16Linear': 49, 'cpu_compressed_rows': 1}
+[ls] #0 cap=297 p1=True fixture_bitexact=True gen=3072 278s
+[ls] #4 cap=759 p1=True fixture_bitexact=True gen=3072 264s
+[ls] #3 cap=353 p1=True fixture_bitexact=True gen=3072 284s
+[ls] done

@@ -7073,3 +7073,15 @@ honest status column).
   loop; per-run sidecars get refuse-if-exists guards; artifact shas
   go in start_provenance. Pairs with [[trajectory-sidecar]] (the
   bank whose first use made the recovery possible).
+- **BANK OUTCOME (2026-08-20): LOOP-STATE-READOUT registered and
+  adjudicated as QWEN-LOOP-STATE-0** (RESULTS L36345): internal-orbit
+  bar NO-FIRE KNIFE-EDGE (0.9963/0.9701 v 0.99, not in the 0.90
+  refuted band), stuck-retry bar FIRES (98.4% top1, JS 1.7e-5 nats).
+  All five prereg hardenings + the cycle-aligned metric law + the
+  specimen order executed as banked; the vendor-head ladder leg 2
+  stays priced, unrun. Controller note updated: item-4 color (state
+  variation at HIGH-margin positions, cosine decreasing with lag)
+  makes drift-amplifying intervention a priced arm beside
+  representation-restart in the [[no-regret-retry-controller]]
+  branch. Hidden-state-recurrence amendment (2026-08-20) partially
+  served: pooled + k-split cosine landed; layerwise stays unrun.

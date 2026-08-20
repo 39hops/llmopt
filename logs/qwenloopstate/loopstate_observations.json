@@ -1,0 +1,122 @@
+{
+ "note": "preconditions and bars recomputed from the sha-pinned npz primitives by this adjudicator; driver in-run numbers unused (PRIMITIVE-EVIDENCE).",
+ "preconditions": {
+  "0": {
+   "P1": true,
+   "P2": true
+  },
+  "4": {
+   "P1": true,
+   "P2": true
+  },
+  "3": {
+   "P1": true,
+   "P2": true,
+   "P3": true
+  }
+ },
+ "measurement_valid": true,
+ "arms": {
+  "BLe": {
+   "admissible": true,
+   "reason": "3/3 rows; P1=[True, True, True]; P2 fixture 24/24 bit-exact; P3=True"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0.9700804131299814,
+   "metric": "min_over_items_median_cosine",
+   "population": "items:0,4 homologous pairs k in {1,2}",
+   "aggregation": "median per item, min over items",
+   "provenance": "recomputed from npz; per-item medians 0.9963 (176 pairs) / 0.9701 (484 pairs)"
+  },
+  "refute:min_median_cosine_items04": {
+   "value": 0.9700804131299814,
+   "metric": "min_over_items_median_cosine",
+   "population": "items:0,4 homologous pairs k in {1,2}",
+   "aggregation": "median per item, min over items",
+   "provenance": "same quantity as bar 1, read by the refutation predicate (< 0.90)"
+  },
+  "2": {
+   "value": 0.984375,
+   "metric": "top1_agreement_frac",
+   "population": "item:3 successive-attempt pairs x 64 offsets (4x64)",
+   "aggregation": "fraction",
+   "provenance": "recomputed from full fp16 logits in npz (fp64 softmax)"
+  },
+  "2:median_js_nats": {
+   "value": 1.6799522544794903e-05,
+   "metric": "top1_agreement_frac",
+   "population": "item:3 successive-attempt pairs x 64 offsets (4x64)",
+   "aggregation": "fraction",
+   "provenance": "conjunct of bar 2 \u2014 the VALUE is the median full-vocab JS in nats (fp64 softmax, natural log), compared below 0.05"
+  }
+ },
+ "detail": {
+  "item0": {
+   "median_cosine": 0.9963256876425102,
+   "min_cosine": 0.6548169701910513,
+   "n_pairs": 176
+  },
+  "item4": {
+   "median_cosine": 0.9700804131299814,
+   "min_cosine": 0.5883622321870364,
+   "n_pairs": 484
+  },
+  "bar1_min_median": 0.9700804131299814,
+  "item3": {
+   "top1_agreement_frac": 0.984375,
+   "median_js_nats": 1.6799522544794903e-05,
+   "n_pairs": 256
+  },
+  "color_unregistered": {
+   "item0": {
+    "k1": {
+     "median": 0.9981038489640426,
+     "q10": 0.9911222734428368,
+     "min": 0.678201132397629,
+     "frac_ge_0.99": 0.8977272727272727
+    },
+    "k2": {
+     "median": 0.9944818325515088,
+     "q10": 0.9825643335453662,
+     "min": 0.6548169701910513,
+     "frac_ge_0.99": 0.8181818181818182
+    },
+    "low_pairs_k1": {
+     "n_below_0.9": 5,
+     "margin_median_low": 6.01325798034668,
+     "margin_median_rest": 9.630903244018555,
+     "entropy_median_low": 0.020976059138774872
+    }
+   },
+   "item4": {
+    "k1": {
+     "median": 0.9835295221576137,
+     "q10": 0.9352396362836951,
+     "min": 0.5883622321870364,
+     "frac_ge_0.99": 0.25206611570247933
+    },
+    "k2": {
+     "median": 0.9565909071215729,
+     "q10": 0.8623906300204681,
+     "min": 0.591170191284339,
+     "frac_ge_0.99": 0.0
+    },
+    "low_pairs_k1": {
+     "n_below_0.9": 15,
+     "margin_median_low": 10.60622501373291,
+     "margin_median_rest": 9.325538635253906,
+     "entropy_median_low": 0.0010503989178687334
+    }
+   }
+  },
+  "p3_measured_hits": [
+   1222,
+   1862,
+   2190,
+   2518,
+   2846
+  ]
+ }
+}
