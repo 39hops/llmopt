@@ -6822,3 +6822,40 @@ honest status column).
   can exist and still be the wrong surface/precision — fences and
   auditors keep that job); retrofit is forward-only, never applied
   to booked preregs.
+- **BANKED (2026-08-19): TRAJECTORY-SIDECAR — free-generation
+  instruments preserve the exact generated token IDs as a canonical
+  receipt sidecar (per-row offset/count/hash into one binary file;
+  decoded text derived on demand), forward-only** (GPT seat, from
+  the FREEGEN-2 null). The screen driver parsed answers and
+  discarded the raw generations, so the 30 xhigh rows that rode the
+  3072-token cap CANNOT be autopsied post hoc — the most
+  scientifically interesting bytes of the run were never persisted.
+  Cost ceiling is trivial (60 rows x 3072 int32 < 1 MB). FREEGEN-2's
+  own receipts stay frozen as booked; the fix applies to every
+  future freegen driver. Mitigation available meanwhile: greedy
+  decoding is deterministic on a fixed runtime + artifact, so any
+  single row can be regenerated verbatim for autopsy as an
+  unregistered probe.
+- **BANKED (2026-08-19): TRAJECTORY-PRESERVATION-AXIS — treat
+  free-run trajectory/attractor behavior as an INDEPENDENT
+  deployment axis that teacher-forced X/K fidelity is never assumed
+  to proxy** (GPT seat reading of the FREEGEN-2 null; house
+  concurs). Measured basis, one arm: BLe buys substantial scored-
+  stream X/K recovery over B yet shows zero registered free-run
+  recovery (0/30 terminations, 0/60 correct). One arm is evidence,
+  not a law — but every future deployment-promotion case must carry
+  its own free-run bar rather than inheriting one from scored-stream
+  wins. Corollary carried from the same review: FREEGEN-2 LOWERS the
+  prior on another early-attention repair as a direct behavior
+  rescue; the RESIDUAL targeted-patch follow-up stays interesting
+  specifically as "can structured correction directions succeed
+  where broad s16 precision did not", and any patching of BLe
+  (rather than A) requires a fresh residual census — the A/w4
+  residual structure does not transport to BLe's payload untested.
+- **BANKED (2026-08-19): 3080 artifact-garden cleanup ON HOLD by
+  Artin ruling — no broad cleanup until the dependent rungs drain**
+  (Artin + GPT seat, same review). A is needed by CHEAP-READOUT,
+  BLe by phase-2 runtime work, vendor/comparison artifacts by
+  follow-ups; the 3080 has more free storage than the Mac so the
+  pressure is low. Inventory-then-delete happens AFTER those rungs,
+  under the standing BOARD housekeeping gate, on explicit GO.
