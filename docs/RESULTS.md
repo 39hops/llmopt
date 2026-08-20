@@ -37344,3 +37344,52 @@ receipts under logs/qwenhomeo/; both auditors before booking.
 RUN GATE: fires only on explicit Artin 3080 GO — registration now,
 launch later.
 
+## AMENDMENT QWEN-HOMEO-ACTUATOR-0-REFRESH (amends PRE-REG QWEN-HOMEO-ACTUATOR-0): REFRESH arms re-registered as SAME-PREFIX reconstruction pre-run — the registered REFRESH-HIGH was ALWAYS-HIGH by another name; four external-review fixes, no run fired (2026-08-20, mac)
+
+External review of 7d30ccb caught four defects in the registration,
+each verified in-house and fixed BEFORE any run, compose, or 3080
+touch (the run gate never opened; nothing was unblinded).
+
+1. REFRESH-HIGH SEMANTICS (the blocker). As registered, REFRESH-HIGH
+   was free BLem generation from token 0 — that is ALWAYS-HIGH, not
+   the banked same-prefix refresh, and it would have adjudicated a
+   different question (does BLem loop on these items at all) under
+   the refresh label. Re-registered per the PRECISION-SWITCH bank:
+   teacher-force the frozen LOW prefix [0, event) through BLem to
+   reconstruct S_BLem(prefix_LOW), then free greedy continuation
+   from the event. REFRESH-LOW (sanity) now exercises the IDENTICAL
+   reconstruction path under BLe — teacher-forced prefix, then free
+   continuation that must reproduce the frozen tokens exactly — so
+   the sanity gate covers the treatment mechanics, not just replay
+   determinism. ALWAYS-HIGH (BLem free-gen from token 0) survives
+   as OPTIONAL descriptive color only, outside every bar and the
+   refutation predicate.
+2. UNIFIED ESCAPE CRITERION: both high arms now score the same
+   outcome — no frozen-detector fire within the 300-token
+   post-event window. The registered REFRESH criterion
+   (clean-through-cap on its own stream) died with the old arm
+   definition; ANY-AUTHORITY (bar 4) counts escapes under the one
+   criterion across all 6 branches.
+3. FAIL-CLOSED ENCODED, NOT JUST STATED: the JSON now carries
+   refutation_precedence {suppressed_unless_bars_fire: [1]} — the
+   refutation predicate is machine-adjudicated only when the
+   sanity gate fires, per the executable two-gate law
+   (QWEN-MODEL2-ALLOC-1 precedent). Prose already said fail-closed;
+   the machinery now enforces it.
+4. NUMBERING + PRIOR RATIONALE: the prose "GATE S + BARS 1-4"
+   collided with JSON ids 1-5; canonical numbering is the JSON's —
+   bar 1 = sanity gate, bars 2-5 = HOT-AUTHORITY /
+   REFRESH-AUTHORITY / ANY-AUTHORITY / REPAIR, refutation predicate
+   on bar 4. The prior's rationale sentence ("every perturbation so
+   far reconverged") overstated: CYCLE-IMPULSE's semantic-restart
+   item escaped at 5/18 while exact-orbit items sat at 0/192 —
+   escape is item-class-dependent, not unprecedented. The prior's
+   NUMBERS are unchanged (bar 2 at 0/3, bar 3 at 1/3, bar 4 fires
+   via a REFRESH branch, bar 5 at 0/6); only the stated reasoning
+   is corrected.
+
+Bars, thresholds, arms count, dose, fences, receipts paths, and the
+run gate (explicit Artin 3080 GO) are otherwise unchanged.
+docs/preregs/qwen-homeo-actuator-0.json re-validated against the
+schema after the edit.
+

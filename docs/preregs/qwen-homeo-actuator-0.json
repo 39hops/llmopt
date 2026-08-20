@@ -1,18 +1,18 @@
 {
  "name": "QWEN-HOMEO-ACTUATOR-0",
- "note": "Mechanical projection of PRE-REG QWEN-HOMEO-ACTUATOR-0 (RESULTS, 2026-08-20), transcribed alongside the RESULTS registration, before any run. Frozen sidecar shas, detector/window/cap constants, and arm build recipe in qwen-homeo-actuator-0.params.json. Runs only on explicit Artin 3080 GO.",
+ "note": "Mechanical projection of PRE-REG QWEN-HOMEO-ACTUATOR-0 (RESULTS, 2026-08-20), transcribed alongside the RESULTS registration, before any run. Frozen sidecar shas, detector/window/cap constants, and arm build recipe in qwen-homeo-actuator-0.params.json. Runs only on explicit Artin 3080 GO. ALWAYS-HIGH (BLem free generation from token 0) is OPTIONAL descriptive color only \u2014 outside every bar and the refutation predicate.",
  "results_id": "2026-08-20-pre-reg-qwen-homeo-actuator-0",
  "registered": "2026-08-20",
  "machine": "wsl",
  "arms": {
   "REFRESH-LOW": {
-   "description": "sanity gate: full greedy BLe replay from token 0 through cap; must reproduce the frozen sidecar tokens exactly, 3/3 items"
+   "description": "sanity gate exercising the treatment reconstruction path: teacher-force the frozen LOW prefix [0,event) through BLe to reconstruct S_BLe(prefix_LOW), then free greedy continuation to cap; continuation must reproduce the frozen sidecar tokens exactly, 3/3 items"
   },
   "HOT-HIGH": {
    "description": "BLe replay to the frozen event position, tower weights swapped to BLem retaining cached/recurrent state (F(W_BLem, S^BLe)), continue to eos/cap"
   },
   "REFRESH-HIGH": {
-   "description": "full greedy generation under BLem from token 0 to eos/cap (internally consistent high state)"
+   "description": "same-prefix refresh per the bank: teacher-force the frozen LOW prefix [0,event) through BLem to reconstruct S_BLem(prefix_LOW), then free greedy continuation from the event to eos/cap"
   }
  },
  "bars": [
@@ -48,7 +48,7 @@
    "id": 3,
    "name": "REFRESH-AUTHORITY",
    "gate_class": "range",
-   "metric": "n_refresh_clean",
+   "metric": "n_refresh_escaped",
    "population": "branches:3 (one REFRESH-HIGH branch per item)",
    "aggregation": "count",
    "direction": "above",
@@ -56,13 +56,13 @@
    "arms": [
     "REFRESH-HIGH"
    ],
-   "description": ">= 2 of 3 REFRESH-HIGH streams show no frozen-detector fire anywhere through eos/cap"
+   "description": ">= 2 of 3 REFRESH-HIGH branches escape (no frozen-detector fire within the 300-token post-event window \u2014 identical criterion to bar 2)"
   },
   {
    "id": 4,
    "name": "ANY-AUTHORITY",
    "gate_class": "range",
-   "metric": "n_high_escaped_or_clean_total",
+   "metric": "n_high_escaped_total",
    "population": "branches:6 (3 HOT-HIGH + 3 REFRESH-HIGH)",
    "aggregation": "count",
    "direction": "above",
@@ -71,7 +71,7 @@
     "HOT-HIGH",
     "REFRESH-HIGH"
    ],
-   "description": "qualification floor: at least 1 of the 6 high-arm branches escapes or regenerates clean"
+   "description": "qualification floor: at least 1 of the 6 high-arm branches escapes (300-token post-event window, both high arms)"
   },
   {
    "id": 5,
@@ -95,11 +95,16 @@
   "logs/qwenwhole/artifact_digest_BLem.txt",
   "logs/qwenattrib/compose_BLem.json"
  ],
- "refuted_if": "bar 4 counts zero: six high-arm branches, zero escapes, zero clean regenerations — the one-band precision escalation has no measurable authority at these events; the precision actuator demotes at this dose and the controller stage does not launch on it",
+ "refuted_if": "bar 4 counts zero: six high-arm branches, zero escapes under the 300-token post-event criterion \u2014 the one-band precision escalation has no measurable authority at these events; the precision actuator demotes at this dose and the controller stage does not launch on it. Adjudicated only if bar 1 (sanity) fires, per refutation_precedence.",
  "refuted_if_predicate": {
   "measurement": "4",
   "direction": "below",
   "value": 0.5
  },
- "registered_prior": "gate S passes; bar 2 NO-FIRE at 0/3; bar 3 NO-FIRE at 1/3; bar 4 FIRES via a REFRESH branch (1-2 of 6); bar 5 NO-FIRE at 0/6. Informative outcomes: any HOT escape (cheap actuator exists) or a bar-4 zero (refutation)"
+ "registered_prior": "bar 1 (sanity) passes; bar 2 NO-FIRE at 0/3 (mixed-state continuation, modest dose); bar 3 NO-FIRE at 1/3; bar 4 FIRES via a REFRESH branch (1-2 of 6); bar 5 NO-FIRE at 0/6. Rationale: rigid-orbit perturbations all reconverged (CYCLE 0/192 exact-orbit bursts, HEADSWAP-IMPULSE 0/5 informed tokens) but CYCLE's semantic-restart item escaped at 5/18 \u2014 escape is not unprecedented, it is item-class-dependent; a consistent higher-fidelity state is the house's best candidate for reaching it. Informative outcomes: any HOT escape (cheap actuator exists) or a bar-4 zero (refutation)",
+ "refutation_precedence": {
+  "suppressed_unless_bars_fire": [
+   1
+  ]
+ }
 }
