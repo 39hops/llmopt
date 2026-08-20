@@ -2458,3 +2458,12 @@ regime tag on every bullet is the fence.
   set-inclusion claim; sign flips at k=1024), reading as a small readout
   contribution on top of upstream body-state; level-2 router census unlocked; one artifact, one surface.
   ([VERDICT QWEN-CHEAP-READOUT-0](RESULTS.md#L36036 "id:2026-08-19-verdict-qwen-cheap-readout-0-both").)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] [FREE-RUN-GATED]
+  An 8-token temperature impulse (T 0.3/0.7) fired on recurrence detection
+  escapes BLe's retry loops in 5/18 runs — all on the loose semantic-restart
+  item, with the two exact-orbit items locally restoring in 192/192 bursts —
+  and never repairs (0/18 correct); the perturbation reshuffles which exact
+  cycle the trajectory inhabits (14/18 exact tails, periods 22..352, twice
+  tighter than greedy's); adjudicated by offline recomputation from token-ID
+  sidecars after the in-run escape field was found inflated by a burst-cap
+  artifact. ([VERDICT QWEN-CYCLE-IMPULSE-0](RESULTS.md#L36117 "id:2026-08-20-verdict-qwen-cycle-impulse-0-bar").)

@@ -710,6 +710,32 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwencycle/impulse_observations.json": {
+   "bytes": 1206,
+   "exists": true,
+   "local_only": true,
+   "sha256": "949f8b566aa7d61994a09e8fefe3acb093a6333101c7a7d1a715b41fafa789a7",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/qwencycle/impulse_rows.jsonl": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
+  "logs/qwencycle/impulse_summary.json": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
+  "logs/qwencycle/remote_sha256.txt": {
+   "bytes": 2537,
+   "exists": true,
+   "local_only": true,
+   "sha256": "8c48756b9ed4647a55f19ad460bbfab13ab849795e0031481db4bd1ca2c14e95",
+   "source": "results",
+   "tracked": false
+  },
   "logs/qweneffort/ble_freegen.log": {
    "bytes": 1543,
    "exists": true,
@@ -1027,6 +1053,13 @@
    "bytes": 22406,
    "exists": true,
    "sha256": "a29a74158b249bdb5ce0240bfd9246887d8c578f7489f9f996beafba53f2092f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenwhole/artifact_digest_BLe.txt": {
+   "bytes": 1934,
+   "exists": true,
+   "sha256": "c9638b1a434d408075aef1e148fd9573f8f33237eda283c184aee5b4cda98255",
    "source": "results",
    "tracked": true
   },

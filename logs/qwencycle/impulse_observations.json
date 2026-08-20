@@ -1,0 +1,26 @@
+{
+ "note": "counts recomputed OFFLINE from the token-ID sidecars: the frozen detector function applied cap-free over each full recorded sequence, escape = no fire in [burst_end, burst_end+300] with the window observed (fail-closed on unobserved windows). The driver's in-run run_escaped field is NOT used: it carries two artifacts (detector disarmed after the 16-burst cap makes the final burst's escape true by construction; strict end<f excluded zero-gap re-fires). Rows sha a85e7410..., verified 3080-v-mac.",
+ "measurement_valid": true,
+ "arms": {
+  "BLe": {
+   "admissible": true,
+   "reason": "18/18 rows present (2 temps x 3 seeds x 3 items), all detector-fired, runtime qcuda_tower, xhigh cell, refuse-if-exists held"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 5,
+   "metric": "n_escaped_runs",
+   "population": "runs:detector-fired",
+   "aggregation": "count",
+   "provenance": "offline recomputation from sidecars (5 runs, all item 3); driver field said 18/18, artifact disclosed"
+  },
+  "2": {
+   "value": 0,
+   "metric": "n_correct_runs",
+   "population": "runs:detector-fired",
+   "aggregation": "count",
+   "provenance": "correct field, sympy oracle via qwen_effort_probe.check"
+  }
+ }
+}

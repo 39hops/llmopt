@@ -1,0 +1,23 @@
+{
+ "name": "QWEN-CYCLE-IMPULSE-0",
+ "note": "Mechanical projection of PRE-REG QWEN-CYCLE-IMPULSE-0 (RESULTS, 2026-08-19, commit c663805 pre-launch). Transcribed after the RESULTS registration, before adjudication of the receipts; bars verbatim. Escape/detector/impulse definitions frozen in the RESULTS text; counts recomputed from impulse_rows.jsonl.",
+ "results_id": "2026-08-19-pre-reg-qwen-cycle-impulse-0",
+ "registered": "2026-08-19",
+ "machine": "wsl",
+ "arms": {"BLe": {"description": "BLe on qcuda-tower, xhigh cell, items 0/3/4, T in {0.3,0.7} x 3 seeds, frozen detector/impulse/escape"}},
+ "bars": [
+  {"id": 1, "name": "ESCAPE", "gate_class": "range",
+   "metric": "n_escaped_runs", "population": "runs:detector-fired",
+   "aggregation": "count", "direction": "above", "value": 0.5,
+   "arms": ["BLe"],
+   "description": ">= 1 escaped run out of the detector-fired runs"},
+  {"id": 2, "name": "REPAIR", "gate_class": "range",
+   "metric": "n_correct_runs", "population": "runs:detector-fired",
+   "aggregation": "count", "direction": "above", "value": 0.5,
+   "arms": ["BLe"],
+   "description": ">= 1 run ends with a correct final answer (sympy oracle)"}
+ ],
+ "receipts": ["logs/qwencycle/impulse_rows.jsonl", "logs/qwencycle/impulse_summary.json"],
+ "refuted_if": "bar 1 NO-FIRE: an 8-token temperature impulse at these doses cannot leave the attractor basin",
+ "registered_prior": "bar 1 FIRES (verbatim cycles are measure-zero under sampling), bar 2 NO-FIRE (escape without repair)"
+}

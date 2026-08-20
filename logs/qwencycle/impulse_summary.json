@@ -1,0 +1,16 @@
+{
+ "start": {
+  "start_commit": "2b5cbf6",
+  "start_status_porcelain": "?? COMPOSE_DE\n?? COMPOSE_FLQ2\n?? scratch/leancheck/OvershootTest.lean\n",
+  "interpreter": "/home/a/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_cycle_impulse.py": "8eeb3aa4daee004caa4deb618e2f1b92466e3ec80eece221706ee6c57a6b6d4f",
+   "scratch/qwen_tower_ladder.py": "4e8adf337de2f847b2cd2d7e83d10f3f20a57fc3f242d28d83bbf16c0e3fa0c4",
+   "scratch/qwen_effort_probe.py": "04845e535e1c93210c85abf555acbf3b8d2fb366d81e8ebf2b59ae71d84f4279",
+   "llmopt/lab/qcuda_tower.py": "a55aae50b307efd42c749ab69064df21476ec93d16ef7ae8b8bd274c701144d8",
+   "llmopt/lab/qcuda.py": "4fe810184cbc6a4a2c9ec7cf2bb0d00ee037cc2681e7aafc1fea3ecfa50c2d9b"
+  }
+ },
+ "completion_commit": "2b5cbf6",
+ "n_rows": 18
+}

@@ -36113,3 +36113,118 @@ proposal viability is never evidence for level 2 (the router census
 now unlocked must measure its own capture); CPU reference runtime
 only, no cross-device reads; n=356/98 positions, single surface, no seed dimension.
 
+
+## VERDICT QWEN-CYCLE-IMPULSE-0: BAR 1 FIRES AT 5/18 (all on the semantic-restart item), BAR 2 NO-FIRE at 0/18 — the exact-orbit items are locally INESCAPABLE at these doses (0 genuine escapes across 192 bursts on items 0 and 4); escape, where it happens, never becomes repair (2026-08-20, wsl)
+
+Adjudicates PRE-REG QWEN-CYCLE-IMPULSE-0 (registered c663805,
+committed pre-launch). Bars scored by the registered machinery
+(llmopt/lab/prereg.adjudicate_prereg; projection
+docs/preregs/qwen-cycle-impulse-0.json, a post-RESULTS transcription
+written before adjudication, disclosed in its note; observations
+logs/qwencycle/impulse_observations.json). Receipts pulled verbatim,
+sha-verified on both machines (logs/qwencycle/remote_sha256.txt).
+
+ADJUDICATION BASIS, disclosed up front (prereg-auditor blocker,
+verified line-by-line and adopted): the driver's in-run run_escaped
+field is NOT the adjudicated quantity. It carries two implementation
+artifacts relative to the frozen escape prose: (1) the detector is
+disarmed once the 16-burst cap is consumed, which makes the final
+burst's "escape" true by construction — and every run consumed the
+cap; (2) a strict end < f comparison excluded zero-gap re-fires (a
+detector fire on the first post-burst token scored as an escape).
+Because the sidecars carry complete token IDs and the detector is a
+pure function, the honest adjudication was recomputed OFFLINE: the
+frozen detector applied cap-free over each full sequence, escape =
+no fire in [burst_end, burst_end + 300] with the window observed,
+fail-closed on unobserved windows. The driver also carried an extra
+window_complete conjunct not in the prereg text (conservative; binds
+on nothing here — 0 incomplete windows). The frozen detector,
+impulse, and arm parameters themselves match the registration
+exactly (checked constant-by-constant).
+
+MEASURED (18 runs = T in {0.3, 0.7} x 3 seeds x items {0 diff,
+3 expand, 4 int}; the registered INSTRUMENT-NOT-RUN condition was
+checked and not triggered — the detector fired in 18/18 runs; every
+run consumed all 16 bursts):
+- BAR 1 ESCAPE: 5/18 runs escaped under the corrected computation
+  (>= 1 bar) -> FIRE. ALL FIVE are item 3 (expand, the
+  semantic-restart trajectory), one burst each (5/288 bursts total,
+  1.7%). Items 0 and 4 — the exact-orbit trajectories — produced
+  ZERO genuine escapes across their 192 bursts at either
+  temperature. (The driver's inflated field read 18/18; the
+  overwhelming majority of its "escapes" were the two artifacts.)
+- BAR 2 REPAIR: 0/18 correct (>= 1 bar) -> NO-FIRE. Zero eos, zero
+  closed think blocks, all trajectories ran to the 3072 cap; the
+  auditor confirmed the null answers are earned (no ANSWER: region
+  exists in any sidecar text), not parse misses.
+- SEED COLLAPSE, disclosed: at T=0.3 two replicate pairs produced
+  bit-identical 3072-token trajectories (identical gen_sha256), so
+  the 18 runs contain 16 distinct trajectories and effective n per
+  (T, item) cell at T=0.3 is below 3 — an 8-token burst at low
+  temperature can reproduce exactly. Further evidence against the
+  prior's measure-zero parenthetical.
+- REFUTED-IF (an escape-bar miss): does not trigger — bar 1 fired.
+- REGISTERED PRIOR: RIGHT ON THE BARS, WRONG ON THE MECHANISM. Both
+  bar outcomes were called before launch (escape without repair).
+  But the prior's stated mechanism — "most bursts leave the exact
+  orbit; verbatim cycles are measure-zero under sampling" — is
+  refuted: 1.7% of bursts escaped, none on the exact-orbit items.
+  An 8-token sample at T <= 0.7 re-enters recurrence within 300
+  tokens essentially always; the orbit family has large basins in
+  token space, and "measure-zero" was the wrong intuition for a
+  system that re-converges under greedy after the burst ends.
+
+WORDING FENCE (frozen pre-receipts, RIFF bank 8d31d77): bar-1 FIRE
+reads LOCALLY ESCAPABLE v locally restoring under the registered
+token-space perturbation — and with the corrected counts the honest
+summary is: locally escapable ONLY on the loose semantic-restart
+trajectory; locally RESTORING on both exact-orbit trajectories at
+these doses. No attractor-geometry or noise-floor diagnosis is made;
+that question belongs to loop-state internal measurements
+(LOOP-STATE-READOUT bank).
+
+DESCRIPTIVE COLOR (unregistered, from the 18 token-ID sidecars;
+gates nothing): post-impulse basin taxonomy, exact-period test on
+the last 800 tokens with period search to 400 (both stated because
+the count is cap-sensitive): 14/18 end in an EXACT token cycle —
+periods {22, 34, 88x2, 118, 128, 174, 202x2, 203, 242, 250, 252,
+352} — i.e. sometimes the original period (88, 242), usually a NEW
+period, twice a TIGHTER cycle (22, 34) than greedy ever produced on
+that item. 4/18 (all item 3) end non-periodic and wrong. The
+perturbation reshuffles WHICH cycle the trajectory inhabits without
+producing termination or correctness on any run.
+
+PROVENANCE: launched at 2b5cbf6; start_provenance block in
+impulse_summary.json (five dependency file shas verified against the
+commit's blobs by the receipt-auditor, interpreter, start
+porcelain); fresh path logs/qwencycle/, refuse-if-exists held on the
+rows (the per-run sidecar writes lack their own guard — forward
+fix); token-ID sidecars per run (TRAJECTORY-SIDECAR first registered
+use) are what made the corrected adjudication possible at all — all
+18 are transfer-attested (3080-side sha256 appended to
+remote_sha256.txt, Mac-side match 18/18) and force-added as the
+evidence basis under the seedslad small-text-receipt exception
+(~430 KB of token-ID streams; the adjudicated quantity is
+recomputed from them). ARM IDENTITY receipted post-hoc
+(receipt-auditor catch: the rows' arm field is an env literal):
+the 3080's ~/qwen_whole0t/BLe/manifest.json sha fc9347ef... matches
+logs/qwenwhole/artifact_digest_BLe.txt line 1 exactly, recorded in
+remote_sha256.txt; future drivers put the artifact sha in
+start_provenance. Detector
+early-onset disclosure carried from the driver commit: first fires
+at 569/544/635 v exact-cycle onsets ~1048/none/~1378 —
+restart-style phrase repetition already recurs, so bursts also
+perturbed pre-cycle repetition.
+
+FENCES CARRIED: n=3 items, one arm (BLe), xhigh only, single
+surface; escape is a TRAJECTORY property, never a capability claim;
+item 3's greedy baseline had no exact token cycle (its detector
+fired on restart-repetition, as disclosed at the driver commit);
+the 8-token/T<=0.7 dose is one point in perturbation space —
+stronger arms (representation restart, alternate route,
+controller-chosen moves) are the NO-REGRET-RETRY bank's territory
+and need their own registration. FORWARD FIX BANKED: escape scoring
+belongs in an adjudicator recomputing from sidecars (as done here),
+never in the run loop where caps and boundary conditions can leak
+into the definition.
+
