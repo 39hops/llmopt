@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 209, library 72, reproduce-pinned 10, results-cited 237, spec-cited 88, cited-but-library 60
+Census: UNCITED 210, library 72, reproduce-pinned 10, results-cited 238, spec-cited 88, cited-but-library 60
 
 ## scratch/
 
@@ -347,12 +347,14 @@ Census: UNCITED 209, library 72, reproduce-pinned 10, results-cited 237, spec-ci
 | qwen | qwen_cuda_rung4.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 5 |
 | qwen | qwen_cycle_impulse.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_displace_extract.py | UNCITED | — | — | — | 1 |
-| qwen | qwen_effort_probe.py | results-cited | RESULTS | RESULTS×1 | — | 4 |
+| qwen | qwen_effort_probe.py | results-cited | RESULTS | RESULTS×1 | — | 5 |
 | qwen | qwen_effort_quant.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
 | qwen | qwen_effort_tower.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_family_probe.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_ioattrib_adjudicate.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | qwen | qwen_lband_adjudicate.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| qwen | qwen_loop_state.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| qwen | qwen_loop_state_adjudicate.py | UNCITED | — | — | — | — |
 | qwen | qwen_margin_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_model1_score.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 6 |
 | qwen | qwen_model2_adjudicate.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
@@ -367,7 +369,7 @@ Census: UNCITED 209, library 72, reproduce-pinned 10, results-cited 237, spec-ci
 | qwen | qwen_stream_probe.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
 | qwen | qwen_teacher_pass.py | library | RESULTS | RESULTS×1 | 1 | 1 |
 | qwen | qwen_teacher_sidecar.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| qwen | qwen_tower_ladder.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
+| qwen | qwen_tower_ladder.py | results-cited | RESULTS | RESULTS×1 | — | 4 |
 | qwen | qwen_tree_adjudicate.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | qwen | qwen_whole0t.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 3 |
 | rank | rank_read.py | spec-cited | specs | specs×2 | — | 1 |
@@ -475,7 +477,7 @@ Census: UNCITED 209, library 72, reproduce-pinned 10, results-cited 237, spec-ci
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
 |  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×12 | — | 1 |
-| adjudicate | adjudicate.py | results-cited | RESULTS, specs | RESULTS×8, specs×7 | — | 14 |
+| adjudicate | adjudicate.py | results-cited | RESULTS, specs | RESULTS×8, specs×7 | — | 15 |
 | anchor | anchor_guard.py | UNCITED | — | — | — | 1 |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | 2 |
 | arena | arena.py | UNCITED | — | — | — | — |
