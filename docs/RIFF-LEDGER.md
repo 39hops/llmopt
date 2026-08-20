@@ -7304,4 +7304,14 @@ honest status column).
   belongs to the dedicated perf probe with separate prefill/decode
   timers and per-shape W4 v s16 GEMV profiling — the banked qcuda
   packed-pair s16 kernel + geometry sweep slot is directly
-  relevant. No kernel changes while any registered run is live.
+  relevant. SECOND CORRECTION same day (GPT seat): RH0 275s v HOT0
+  2020s does NOT yet separate restored-state from cold-tower —
+  HOT0 was also the freshly built BLem tower's first long
+  workload; RH0 ran on a warmed tower. The in-run natural control:
+  HOT3/HOT4 restore BLe states onto the ALREADY-WARMED BLem tower
+  — HOT3-slow/RH3-fast (replicated on item4) = restored-state
+  attribution strong; HOT3-fast = HOT0 was warmup. Probe design
+  rider: compare native v restored cache PHYSICAL properties
+  (dtype/shape/stride/contiguity/storage/device, module-local
+  runtime state) plus per-layer timing, not numerical contents.
+  No kernel changes while any registered run is live.
