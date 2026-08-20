@@ -7249,11 +7249,21 @@ honest status column).
   detector, replay/reconstruct the same prefix under the high arm
   for an internally consistent state, then continue); optional
   later BOUNDED-REFRESH (recompute only a recent window/state
-  slice). The mechanistic payoff of the split: HOT fails while
-  REFRESH succeeds = the accumulated damaged STATE carries the
-  pathology and future-weight repair arrives too late; HOT
-  succeeds = a cheap actuator exists; both fail = precision
-  escalation demotes. Closed-loop comparisons must name the exact
+  slice). The mechanistic payoff of the split (narrowed in place
+  2026-08-20, GPT seat): HOT fails while REFRESH succeeds = the
+  high arm's benefit REQUIRES a high-arm-consistent
+  reconstructed history/state — the low arm's accumulated
+  state/history is implicated, but state-v-weight causality is
+  NOT uniquely identified by this contrast alone; HOT succeeds =
+  a cheap actuator exists; both fail = precision escalation
+  demotes. REQUIRED SANITY FIXTURE before REFRESH-HIGH is
+  interpretable: REFRESH-LOW — replay the same prefix under BLe
+  itself, reconstruct its state, and the continuation must
+  reproduce the deterministic LOW baseline exactly. Qualification
+  matrix: LOW / REFRESH-LOW (sanity) / HOT-HIGH / REFRESH-HIGH.
+  First actuator qualification stays ONE-WAY (intervention
+  through eos/cap); high->low hysteresis enters only after
+  actuator authority is established. Closed-loop comparisons must name the exact
   high arm and distinguish always-high-FROM-START from controlled
   hot/refresh switching; more precision is NOT assumed monotonic
   from the existing X/K results.
@@ -7268,5 +7278,5 @@ honest status column).
   bounds, structured K) or approximate-recall routes — each its
   own registration, none launched before pricing index cost
   (already dominant at K=4096). House prior called the null;
-  its prefix-prunes-better clause was wrong (populations saturate
-  bit-identically).
+  its prefix-prunes-better clause was wrong (median visitation
+  bit-identical; tails differ by a few rows).

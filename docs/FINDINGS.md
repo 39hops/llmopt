@@ -2512,6 +2512,7 @@ regime tag on every bullet is the fence.
   exceeds 1 at every K (1.03-1.50): the index costs more than it
   saves; offline exact counterfactual visitation census under the
   decoded-W4 fp32 scorer, partially unblinded at K 256/1024 (disclosed
-  with its exposure receipt), prefix and corpus populations saturate
-  bit-identically.
+  with its exposure receipt), prefix and corpus MEDIAN visitation is
+  bit-identical at every K; tail visitation (q90/q95/max) differs by
+  a few rows only.
   ([VERDICT QWEN-MIPS-CENSUS-0](RESULTS.md#L37116 "id:2026-08-20-verdict-qwen-mips-census-0-the").)
