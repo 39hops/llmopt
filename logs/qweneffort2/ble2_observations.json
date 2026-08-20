@@ -1,0 +1,26 @@
+{
+ "note": "Observations for PRE-REG QWEN-BLE-FREEGEN-2, schema per llmopt/lab/prereg.py. Values recomputed from rows by scratch/qwen_ble2_adjudicate.py (fail-closed row gate PASSED, zero violations) — see logs/qweneffort2/ble2_adjudication.json; rows sha256 5f29696ac5830c142a01b4e716b1dccdc3cb226bf2b4009fa8e81e0f3a30d862 verified identical on both machines after pull.",
+ "measurement_valid": true,
+ "arms": {
+  "BLe": {
+   "admissible": true,
+   "reason": "60/60 rows, gate zero violations: 30/cell, unique ids 0..29 per cell, uniform arm=BLe runtime=qcuda_tower greedy device; screen ran to completion, no operational fault"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0,
+   "metric": "xhigh_terminated_count",
+   "population": "rows:xhigh",
+   "aggregation": "count",
+   "provenance": "ble2_adjudication.json xhigh_terminated, recomputed from rows"
+  },
+  "2": {
+   "value": 0,
+   "metric": "total_correct_count",
+   "population": "rows:both-cells",
+   "aggregation": "count",
+   "provenance": "ble2_adjudication.json total_correct, recomputed from rows"
+  }
+ }
+}

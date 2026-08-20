@@ -1,0 +1,4 @@
+5f29696ac5830c142a01b4e716b1dccdc3cb226bf2b4009fa8e81e0f3a30d862  logs/qweneffort2/tower_rows_BLe.jsonl
+a0ee8f9b44222cc9b371f85f85a4c73d66cae46a8a38ebafaf4dbe5c604a99e0  logs/qweneffort2/summary_tower_BLe.json
+4873c0e65192365996955ad74bf1f6b4a654c544ff7bdfdda3416c0dab63b8d1  logs/qweneffort2/ble2_screen.log
+# emitted by sha256sum on the 3080/WSL side over ssh (wsl.sh run), pulled 2026-08-19; Mac-side shasum matched all three

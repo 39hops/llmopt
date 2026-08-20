@@ -35760,3 +35760,98 @@ estimate is ~3-5 h; if the run dies operationally, book the
 attempt honestly and keep bars unadjudicated (the FREEGEN-1
 pattern).
 
+
+## VERDICT QWEN-BLE-FREEGEN-2: BOTH BARS NO-FIRE — REFUTED-IF triggers; the early-band repair does not reach the deliberation loop; BLe stays a scored reference arm, NOT promoted (2026-08-19, wsl)
+
+Adjudicates PRE-REG QWEN-BLE-FREEGEN-2 (RESULTS L35715). Screen ran
+to completion on the qcuda-tower runtime, 60/60 rows, no operational
+faults; the fail-closed row gate (scratch/qwen_ble2_adjudicate.py)
+passed with zero violations before any bar was read, and every count
+below is recomputed from the rows, never the driver summary. Bars
+scored by the registered machinery (llmopt/lab/prereg.adjudicate_prereg
+against docs/preregs/qwen-ble-freegen-2.json + the observations doc
+logs/qweneffort2/ble2_observations.json): bar 1 NO-FIRE, bar 2
+NO-FIRE. The REFUTED-IF clause is prose-form in this registration
+(no refuted_if_predicate), so the refutation sentence is
+hand-adjudicated and disclosed as such: the clause reads "both bars
+NO-FIRE", which is exactly the machine outcome.
+
+MEASURED (logs/qweneffort2/ble2_adjudication.json; rows sha256
+5f29696a..., verified identical Mac-v-3080 after pull):
+- BAR 1 TERMINATION: xhigh closed think blocks 0/30 v the >=1 bar
+  -> NO-FIRE. All 30 xhigh rows ran to the 3072-token cap
+  (out_tokens 3072 exactly, truncated=true, 30/30).
+- BAR 2 COMPETENCE: total correct 0/60 v the >=1 bar -> NO-FIRE.
+  Per cell: nothink 0/30, xhigh 0/30.
+- REFUTED-IF (both bars NO-FIRE) TRIGGERS: on this screen the
+  early-band s16 repair does not reach the deliberation loop. BLe
+  remains a scored reference arm and is NOT promoted toward
+  deployment.
+
+REGISTERED PRIOR: WRONG BOTH LEGS, on the record — the house
+predicted both bars would fire, competence at low single digits
+("termination recovers before correctness"). Neither recovered.
+Family record takes two misses.
+
+COLOR (unregistered, descriptive): the collapse is not uniform
+across cells. nothink: 15/30 rows DID stop before the cap (min
+out_tokens 718, emitted <|im_end|>, answer-shaped sympy-syntax
+expressions) — every one of them wrong; the other 15 hit the cap.
+xhigh: 30/30 hit the cap, mean wall 336.9 s/row. So under nothink
+BLe can terminate GENERATION about half the time with wrong math,
+while the xhigh instruction dose sends every row to the ceiling.
+think_terminated is structurally false in the nothink cell (no
+think channel opens); bar 1 reads the xhigh cell only, as
+registered. Families: diff 24, expand 16, int 20 across the 60.
+
+RUNTIME (color, gates nothing): sustained 9.04/9.13 tok/s mean
+(nothink/xhigh), matching the memory-growth qualification's sustained ~9.9
+tok/s (ladder_mem.json; ladder step g itself measured 7.11 tok/s), 16x the FREEGEN-1 abort's 0.56 tok/s dense-fallthrough. The
+tower runtime itself performed as qualified: route counts 352
+FusedW4Linear / 49 FusedS16Linear / 1 cpu_compressed_rows, residency
+plan fit (6.87 GiB of 7.53 GiB budget), no OOM, no fault. The screen's
+negative is an ARM result, not a runtime result.
+
+PROVENANCE: launched at 168a5e1 (start block in
+summary_tower_BLe.json: start_commit 168a5e1, pinned interpreter,
+runtime qcuda_tower, runtime_sha256 a55aae50...); 3080 tree verified
+clean at 168a5e1 during the run (operator check at launch, not a
+receipt field — the screen's start block carries no porcelain; the
+adjudicator's own receipt does: ble2_adjudication.json start block
+records start_commit 4bd9880, empty porcelain, file shas for the
+adjudicator and screen driver). DISCLOSED: the screen driver's
+start metadata is a commit+interpreter+one-hash subset of the
+ladder's full capture (regression noted at registration time);
+compensating check — the five dependency blobs were verified against
+168a5e1 at launch. Receipts pulled verbatim (sha-verified) to
+logs/qweneffort2/: tower_rows_BLe.jsonl, summary_tower_BLe.json,
+ble2_screen.log, ble2_adjudication.json; the 3080-side digests are
+receipted in logs/qweneffort2/remote_sha256.txt (WSL sha256sum output,
+all three match the Mac side). Adjudicator + fixtures were
+committed BEFORE receipts existed (ef6615d). Receipt-auditor
+should-fixes, disclosed: the screen driver appends into its rows
+path with a done-set rather than a refuse-if-exists guard (60 rows
+landed clean, no duplicates; guard is a banked forward fix alongside
+the residual producer's), and MAX_TOK/N_ITEMS are summary fields,
+not row fields — the 3072 cap is inferable from the rows (max
+out_tokens exactly 3072) but not receipted per-row. The screen log's
+"model is on meta" transformers warning is expected, not a fault:
+embed_tokens deliberately stays on meta because the embed runs
+through the cpu_compressed_rows path, so model.device reports meta
+while compute is on cuda.
+
+FENCES CARRIED: single seed, greedy, non-frozen prompts; free-gen
+chat reads on the CUDA leg; B comparison rows are OLD-runtime
+(runtime-provenance caveat on any B-v-BLe read); a hypothetical 1/60
+would have read "escaped total collapse", never deployment readiness
+— moot here, both bars missed at zero; external mlx q4 fence
+carried.
+
+WHAT THIS NARROWS: BLe's 48-tensor early-band s16 promotion (plus the 2 io s16 tensors; 49 fused s16 routes + cpu embed at runtime) buys
+scored-stream fidelity (the banked X/K improvements) but nothing measurable
+in free generation on this screen — the deliberation-loop failure
+of the w4 base survives the repair. Next candidate levers live in
+the banked queue (per-tensor targeted patches from
+RESIDUAL-STRUCTURE-0's localization; CHEAP-READOUT census), each
+needing its own registration.
+

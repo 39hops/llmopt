@@ -1,0 +1,46 @@
+{
+ "arm": "BLe",
+ "n_items": 30,
+ "max_tok": 3072,
+ "start": {
+  "start_commit": "168a5e1",
+  "interpreter": "/home/a/code/llmopt/.venv/bin/python",
+  "runtime": "qcuda_tower",
+  "runtime_sha256": "a55aae50b307efd42c749ab69064df21476ec93d16ef7ae8b8bd274c701144d8"
+ },
+ "route_counts": {
+  "FusedW4Linear": 352,
+  "FusedS16Linear": 49,
+  "cpu_compressed_rows": 1
+ },
+ "residency_plan": {
+  "per_route": {
+   "fused_s16": 1582798368,
+   "fused_w4": 5796724736
+  },
+  "total_bytes": 7379523104,
+  "free_bytes": 9511632896,
+  "reserve_frac": 0.15,
+  "budget_bytes": 8084887961,
+  "fits": true,
+  "cpu_bytes": {
+   "embed_compressed": 645632032
+  }
+ },
+ "cells": {
+  "nothink": {
+   "n": 30,
+   "correct": 0,
+   "truncated": 15,
+   "n_think_unterminated": 30,
+   "mean_wall_s": 231.7
+  },
+  "xhigh": {
+   "n": 30,
+   "correct": 0,
+   "truncated": 30,
+   "n_think_unterminated": 30,
+   "mean_wall_s": 336.9
+  }
+ }
+}

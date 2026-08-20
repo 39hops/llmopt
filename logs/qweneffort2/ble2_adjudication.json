@@ -1,0 +1,31 @@
+{
+ "xhigh_terminated": 0,
+ "total_correct": 0,
+ "per_cell": {
+  "nothink": {
+   "correct": 0,
+   "terminated": 0,
+   "truncated": 15
+  },
+  "xhigh": {
+   "correct": 0,
+   "terminated": 0,
+   "truncated": 30
+  }
+ },
+ "bar1_termination": "NO-FIRE",
+ "bar2_competence": "NO-FIRE",
+ "rows_sha256": "5f29696ac5830c142a01b4e716b1dccdc3cb226bf2b4009fa8e81e0f3a30d862",
+ "rows_path": "logs/qweneffort2/tower_rows_BLe.jsonl",
+ "n_rows": 60,
+ "start": {
+  "start_commit": "4bd9880",
+  "start_status_porcelain": "",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_ble2_adjudicate.py": "7c89be3cc233119b3b1f1a80e168689eefa9b2bceb180768ac722a7b7516aedc",
+   "scratch/qwen_effort_tower.py": "1a7e6d2a294bfb4249e802c41da21e632ef4707867dc8e9c4e804a9a91faca23"
+  }
+ },
+ "completion_commit": "4bd9880"
+}

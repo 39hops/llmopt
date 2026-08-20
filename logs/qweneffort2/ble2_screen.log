@@ -1,0 +1,85 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[tl] tower fused {'w4': 352, 's16': 48}
+[tl] verify_routes OK: {'FusedW4Linear': 352, 'FusedS16Linear': 49, 'cpu_compressed_rows': 1}
+[et] built BLe tower in 13s routes {'FusedW4Linear': 352, 'FusedS16Linear': 49, 'cpu_compressed_rows': 1}
+/home/a/code/llmopt/.venv/lib/python3.12/site-packages/transformers/generation/utils.py:2613: UserWarning: You are calling .generate() with the `input_ids` being on a device type different than your model's device. `input_ids` is on cuda, whereas the model is on meta. You may experience unexpected behaviors or slower generation. Please make sure that you have put `input_ids` to the correct device by calling for example input_ids = input_ids.to('meta') before running `.generate()`.
+  warnings.warn(
+[et] BLe nothink #0 diff ok=False term=False gen=3072 329s
+/home/a/code/llmopt/.venv/lib/python3.12/site-packages/transformers/generation/utils.py:2613: UserWarning: You are calling .generate() with the `input_ids` being on a device type different than your model's device. `input_ids` is on cuda, whereas the model is on meta. You may experience unexpected behaviors or slower generation. Please make sure that you have put `input_ids` to the correct device by calling for example input_ids = input_ids.to('meta') before running `.generate()`.
+  warnings.warn(
+[et] BLe nothink #1 diff ok=False term=False gen=2504 300s
+[et] BLe nothink #2 diff ok=False term=False gen=3072 349s
+[et] BLe nothink #3 expand ok=False term=False gen=3072 329s
+[et] BLe nothink #4 int ok=False term=False gen=3072 315s
+[et] BLe nothink #5 diff ok=False term=False gen=1256 141s
+[et] BLe nothink #6 expand ok=False term=False gen=831 91s
+[et] BLe nothink #7 expand ok=False term=False gen=909 104s
+[et] BLe nothink #8 expand ok=False term=False gen=3072 329s
+[et] BLe nothink #9 int ok=False term=False gen=3072 345s
+[et] BLe nothink #10 diff ok=False term=False gen=838 96s
+[et] BLe nothink #11 diff ok=False term=False gen=3072 346s
+[et] BLe nothink #12 expand ok=False term=False gen=3072 335s
+[et] BLe nothink #13 diff ok=False term=False gen=1711 171s
+[et] BLe nothink #14 expand ok=False term=False gen=813 95s
+[et] BLe nothink #15 int ok=False term=False gen=3072 339s
+[et] BLe nothink #16 expand ok=False term=False gen=718 80s
+[et] BLe nothink #17 diff ok=False term=False gen=3072 337s
+[et] BLe nothink #18 diff ok=False term=False gen=1272 147s
+[et] BLe nothink #19 int ok=False term=False gen=928 107s
+[et] BLe nothink #20 int ok=False term=False gen=3072 343s
+[et] BLe nothink #21 int ok=False term=False gen=1249 123s
+[et] BLe nothink #22 int ok=False term=False gen=3072 335s
+[et] BLe nothink #23 int ok=False term=False gen=3072 352s
+[et] BLe nothink #24 diff ok=False term=False gen=1038 110s
+[et] BLe nothink #25 int ok=False term=False gen=3072 344s
+[et] BLe nothink #26 diff ok=False term=False gen=955 106s
+[et] BLe nothink #27 diff ok=False term=False gen=833 93s
+[et] BLe nothink #28 expand ok=False term=False gen=805 90s
+[et] BLe nothink #29 int ok=False term=False gen=3072 370s
+[et] BLe xhigh #0 diff ok=False term=False gen=3072 331s
+[et] BLe xhigh #1 diff ok=False term=False gen=3072 319s
+[et] BLe xhigh #2 diff ok=False term=False gen=3072 350s
+[et] BLe xhigh #3 expand ok=False term=False gen=3072 344s
+[et] BLe xhigh #4 int ok=False term=False gen=3072 328s
+[et] BLe xhigh #5 diff ok=False term=False gen=3072 346s
+[et] BLe xhigh #6 expand ok=False term=False gen=3072 335s
+[et] BLe xhigh #7 expand ok=False term=False gen=3072 339s
+[et] BLe xhigh #8 expand ok=False term=False gen=3072 339s
+[et] BLe xhigh #9 int ok=False term=False gen=3072 323s
+[et] BLe xhigh #10 diff ok=False term=False gen=3072 337s
+[et] BLe xhigh #11 diff ok=False term=False gen=3072 359s
+[et] BLe xhigh #12 expand ok=False term=False gen=3072 337s
+[et] BLe xhigh #13 diff ok=False term=False gen=3072 305s
+[et] BLe xhigh #14 expand ok=False term=False gen=3072 354s
+[et] BLe xhigh #15 int ok=False term=False gen=3072 321s
+[et] BLe xhigh #16 expand ok=False term=False gen=3072 351s
+[et] BLe xhigh #17 diff ok=False term=False gen=3072 330s
+[et] BLe xhigh #18 diff ok=False term=False gen=3072 367s
+[et] BLe xhigh #19 int ok=False term=False gen=3072 320s
+[et] BLe xhigh #20 int ok=False term=False gen=3072 343s
+[et] BLe xhigh #21 int ok=False term=False gen=3072 335s
+[et] BLe xhigh #22 int ok=False term=False gen=3072 335s
+[et] BLe xhigh #23 int ok=False term=False gen=3072 328s
+[et] BLe xhigh #24 diff ok=False term=False gen=3072 361s
+[et] BLe xhigh #25 int ok=False term=False gen=3072 333s
+[et] BLe xhigh #26 diff ok=False term=False gen=3072 339s
+[et] BLe xhigh #27 diff ok=False term=False gen=3072 333s
+[et] BLe xhigh #28 expand ok=False term=False gen=3072 330s
+[et] BLe xhigh #29 int ok=False term=False gen=3072 335s
+{
+ "nothink": {
+  "n": 30,
+  "correct": 0,
+  "truncated": 15,
+  "n_think_unterminated": 30,
+  "mean_wall_s": 231.7
+ },
+ "xhigh": {
+  "n": 30,
+  "correct": 0,
+  "truncated": 30,
+  "n_think_unterminated": 30,
+  "mean_wall_s": 336.9
+ }
+}

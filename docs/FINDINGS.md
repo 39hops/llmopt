@@ -2441,3 +2441,11 @@ regime tag on every bullet is the fence.
   heavy tail 21%); weight-space census only, single artifact, w4
   codec only, any promotion requires held-out X/K. ([VERDICT
   QWEN-RESIDUAL-STRUCTURE-0](RESULTS.md#L35486 "id:2026-08-19-verdict-qwen-residual-structure-0-not").)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] [FREE-RUN-GATED]
+  On the qcuda-tower runtime (old-v-new equivalence banked), the BLe
+  free-generation screen missed both registered bars at zero: 0/30 xhigh
+  think blocks closed and 0/60 correct across cells, so the 48-tensor
+  early-band s16 repair does not reach the deliberation loop and BLe stays
+  a scored reference arm, not promoted toward deployment; single seed,
+  greedy, CUDA leg only. ([VERDICT
+  QWEN-BLE-FREEGEN-2](RESULTS.md#L35764 "id:2026-08-19-verdict-qwen-ble-freegen-2-both").)
