@@ -96,6 +96,7 @@ def test_provenance_artifact_identity(tmp_path):
     (art / "s1.bin").write_bytes(b"\x00" * 64)
     ident = artifact_identity(str(art))
     assert ident["art_dir_resolved"] == str(art)
+    assert ident["manifest_file"] == "manifest.json"
     assert len(ident["manifest_sha256"]) == 64
     assert ident["shards"] == {"n": 2, "total_bytes": 192}
     p = start_provenance(["llmopt/lab/provenance.py"],
@@ -105,5 +106,13 @@ def test_provenance_artifact_identity(tmp_path):
     # no artifacts arg -> key absent (old receipts' shape unchanged)
     q = start_provenance(["llmopt/lab/provenance.py"])
     assert "artifact_identity" not in q
+    # vendor HF checkouts identify by their safetensors index
+    v = tmp_path / "vendor"
+    v.mkdir()
+    (v / "model.safetensors.index.json").write_bytes(b'{}')
+    (v / "m.safetensors").write_bytes(b"\x00" * 32)
+    vid = artifact_identity(str(v))
+    assert vid["manifest_file"] == "model.safetensors.index.json"
+    assert vid["shards"] == {"n": 1, "total_bytes": 32}
     with pytest.raises(FileNotFoundError):
         artifact_identity(str(tmp_path / "nope"))

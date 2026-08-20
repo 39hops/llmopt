@@ -42,8 +42,18 @@ def artifact_identity(art_dir: str) -> dict:
     missing manifest — an artifact without one has no identity to
     record."""
     d = os.path.abspath(os.path.expanduser(art_dir))
-    man_p = os.path.join(d, "manifest.json")
-    ident = {"art_dir_resolved": d,
+    # house artifacts carry manifest.json; vendor HF checkouts carry
+    # model.safetensors.index.json — either names every tensor's
+    # shard and serves as the identity file
+    for name in ("manifest.json", "model.safetensors.index.json"):
+        man_p = os.path.join(d, name)
+        if os.path.isfile(man_p):
+            break
+    else:
+        raise FileNotFoundError(
+            f"{d}: no manifest.json or model.safetensors.index.json"
+            " — an artifact without one has no identity to record")
+    ident = {"art_dir_resolved": d, "manifest_file": name,
              "manifest_sha256": hashlib.sha256(
                  open(man_p, "rb").read()).hexdigest()}
     shards = sorted(f for f in os.listdir(d)
