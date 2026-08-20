@@ -35908,3 +35908,69 @@ restart-cycles). n=3, one arm, greedy-only; whether sampling
 (temperature) escapes the attractor is unmeasured and would need
 its own registration.
 
+
+## PRE-REG QWEN-CYCLE-IMPULSE-0: does a cycle-triggered temperature impulse escape BLe's detect-retry attractors, and does escape ever become correctness? (2026-08-19, wsl)
+
+The BLE2-XHIGH-AUTOPSY showed exact greedy limit cycles (periods 88
+and 242) with intact error detection. This rung tests the MINIMUM
+intervention: keep the trajectory greedy and bit-identical until a
+recurrence detector fires, sample a short temperature burst, return
+to greedy. Escape and repair are SEPARATE questions with separate
+bars.
+
+Instrument: scratch/qwen_cycle_impulse.py on the qcuda-tower
+runtime (equivalence banked), artifact BLe, xhigh cell, the three
+autopsied items (ids 0 diff, 3 expand, 4 int), MAX_TOK 3072.
+
+DETECTOR (frozen here): at each generated position t >= 544, fire
+iff the most recent 32 generated token IDs match exactly a 32-gram
+whose end lies in the previous 512 generated tokens (i.e. the
+window re-occurs with lag L, 32 <= L <= 512). Catches both measured
+periods (88, 242). Detector state resets after each burst.
+
+IMPULSE (frozen here): on detector fire, sample 8 tokens at
+temperature T with top-p 1.0, then return to greedy. Re-arm the
+detector immediately (multiple bursts per trajectory allowed, cap
+16 bursts).
+
+ARMS: T in {0.3, 0.7} x 3 RNG seeds (string-seeded torch generator
+"cycle-impulse-{T}-{seed}") x 3 items = 18 runs. Greedy portions
+carry no RNG dependence; runs differ only inside bursts.
+
+ESCAPE (frozen definition): a burst escapes iff the detector does
+not re-fire within 300 tokens after the burst ends (300 > both
+measured periods), or the trajectory terminates (eos) within those
+300 tokens. A run escapes iff any of its bursts escapes.
+
+BARS (evaluated over runs whose detector fired at least once; if
+NO run fires the detector anywhere, the rung books
+INSTRUMENT-NOT-RUN):
+1. ESCAPE: >= 1 escaped run out of the detector-fired runs
+   (greedy baseline: 0 by construction — greedy re-enters its
+   cycle deterministically).
+2. REPAIR: >= 1 run ends with a correct final answer (sympy oracle,
+   same parse/check as the screen; baseline 0/30 xhigh).
+
+REFUTED-IF: bar 1 NO-FIRE — an 8-token temperature impulse at these
+doses cannot leave the attractor basin; the cycle is deeper than
+token-level perturbation and the NO-REGRET-RETRY bank needs
+stronger arms (representation restart, alternate route) before a
+controller is worth building.
+
+REGISTERED PRIOR: bar 1 FIRES (most bursts leave the exact orbit —
+verbatim cycles are measure-zero under sampling), bar 2 NO-FIRE
+(the corrupted computation re-derives itself from any nearby
+prefix; escape without repair). The interesting outcome is the gap.
+
+FENCES: n=3 items, single arm (BLe), xhigh cell only; item #3 had
+NO exact token cycle in the autopsy, so its detector may stay
+silent — that books as a per-item DETECTOR-SILENT datum, not a
+failure; escape is a TRAJECTORY property, never a capability claim;
+correctness at 1 run reads "one escape reached a correct answer",
+nothing more; receipts carry full token-ID sidecars per run
+(TRAJECTORY-SIDECAR, first registered use) on the fresh path
+logs/qwencycle/; frozen screen and probe paths untouched; wall
+estimate ~18 runs x <= 6 min < 2 h, inside the nightly window;
+detector/impulse/escape parameters above are frozen — any change is
+a new registration.
+
