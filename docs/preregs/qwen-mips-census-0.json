@@ -1,0 +1,53 @@
+{
+ "name": "QWEN-MIPS-CENSUS-0",
+ "note": "Mechanical projection of PRE-REG QWEN-MIPS-CENSUS-0 (RESULTS, 2026-08-20), transcribed alongside the RESULTS registration, before any run. Clustering recipe/K grid/thresholds frozen in the RESULTS text; index is weight-only.",
+ "results_id": "2026-08-20-pre-reg-qwen-mips-census-0",
+ "registered": "2026-08-20",
+ "machine": "mac",
+ "arms": {
+  "A": {
+   "description": "exact Cauchy-Schwarz branch-and-bound top-256 over k-means-clustered decoded W4 lm_head rows of artifact A; queries = pinned CHEAP-READOUT census states; K grid {256,1024,4096}"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "CERTIFIED-EXACT",
+   "gate_class": "sanity",
+   "metric": "n_query_K_cells_exact",
+   "population": "queries:454 x K:3 (full vocab)",
+   "aggregation": "count",
+   "direction": "above",
+   "value": 1361.5,
+   "arms": [
+    "A"
+   ],
+   "description": "certified top-256 equals brute-force top-256 in 1362/1362 query-K cells"
+  },
+  {
+   "id": 2,
+   "name": "TRAFFIC",
+   "gate_class": "range",
+   "metric": "corpusX_q50_rows_visited_fraction_bestK",
+   "population": "corpus_X:356 at the best K of the frozen grid",
+   "aggregation": "median fraction",
+   "direction": "below",
+   "value": 0.5,
+   "arms": [
+    "A"
+   ],
+   "description": "corpus_X q50 rows_visited/248320 <= 0.50 at the best frozen K"
+  }
+ ],
+ "receipts": [
+  "logs/qwenmips/mips_receipt.json",
+  "logs/qwenmips/mips_observations.json"
+ ],
+ "refuted_if": "corpus_X q50 rows_visited fraction >= 0.90 at EVERY K in the grid: bounds force near-full scan; the exact-geometric level-2 route books its null",
+ "refuted_if_predicate": {
+  "measurement": "refute:corpusX_q50_fraction_minK",
+  "direction": "above",
+  "value": 0.9
+ },
+ "registered_prior": "bar 1 FIRES; bar 2 NO-FIRE (q50 > 0.5 at every K, prefix_K somewhat better); the informative outcome is any K that prunes hard"
+}

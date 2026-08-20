@@ -37009,3 +37009,87 @@ micro-perturbations can strongly redirect trajectory IDENTITY
 while the recurrence TENDENCY survives — the specific orbit is
 fragile, the recurrent failure regime is robust, and recurrence is
 not the same thing as exact periodicity.
+
+
+## PRE-REG QWEN-MIPS-CENSUS-0: can a Cauchy-Schwarz branch-and-bound over clustered W4 head rows CERTIFY the exact top-256 while visiting materially fewer rows than the full vocab (the LEVEL-2 exact geometric census)? (2026-08-20, mac)
+
+The LEVEL-2 registration the CHEAP-READOUT-0 verdict granted GO
+for, in the banked exact-geometric form (RIFF 2026-08-20): never
+approximate ANN — exactness is a PRECONDITION, so the scientific
+question is the COST TO CERTIFY the exact top-256, not recall.
+The measured claim class is "reduced exact row/byte visitation at
+N = 248320", never an empirical-asymptotic "sublinear".
+
+Instrument: NEW driver scratch/qwen_mips_census.py, Mac, CPU,
+plain .venv (no model load — head rows + saved query states only).
+- SCORER (named per hardening 2): the offline decoded-W4 fp32
+  scorer — lm_head rows decoded via
+  llmopt.lab.qcodec_fast.W4Rows from artifact A's manifest
+  (~/qwen_whole0t/A, w4, shape [248320, 5120]); score z = h @ W^T
+  in fp32. "Exact" in this rung means exact UNDER THIS SCORER;
+  qcuda-runtime equivalence is a separate question and no claim
+  here transfers to it. Ground truth: brute-force top-256 per
+  query under the SAME scorer, ties broken toward the lower token
+  id (frozen tie rule).
+- QUERIES: the sha-pinned CHEAP-READOUT-0 census states
+  (logs/qwencheapread/census_arrays_A.npz, sha 8912d275...,
+  pinned in the booked census_A.json): corpus_X 356 and prefix_K
+  98 queries, reported as separate populations.
+- CLUSTERING (weight-only, frozen HERE before any query result;
+  hardening: no query information enters the index): minibatch
+  k-means on the decoded fp32 rows; K grid {256, 1024, 4096};
+  k-means++ init; string seed "mips-census-0"; 25 iterations;
+  minibatch 8192. Centers kept fp64. Radius r_j = max over
+  members of ||w - c_j||_2 in fp64, inflated by (1 + 1e-12).
+- BOUND (hardening 1, fp64 conservative rounding): U_j = h . c_j
+  + ||h|| * r_j in fp64, inflated by (1 + 1e-9). MECHANISM
+  FIXTURE (qualification, must pass before any census read): for
+  every query and every cluster at every K, max member exact
+  score <= U_j; AND a small-vocab sub-problem (first 8192 rows)
+  books 100% top-256 equality v brute force for all 454 queries
+  at all K. Any fixture failure books INSTRUMENT-INVALID.
+- ALGORITHM: scan clusters in descending U; exact-score every row
+  of a scanned cluster; maintain the running top-256; STOP when
+  the 256th-best score tau >= max unscanned U — by Cauchy-Schwarz
+  this certifies the exact global top-256.
+- TRAFFIC ACCOUNTING (hardening 3): rows_visited per query, plus
+  MODELED bytes = index bytes (K x (5120 x 8 + 8), fp64 centroids
+  + radius, scanned per query) + visited-row w4 payload bytes
+  (derived from the manifest entry's stored length / R). All byte
+  numbers are NOMINAL/MODELED and are never presented as physical
+  memory traffic (hardening 4). Report q50/q90/q95/max
+  rows_visited and full modeled bytes, per population, per K.
+
+BARS:
+1. CERTIFIED-EXACT (gate_class sanity): certified top-256 equals
+   brute-force top-256 for 454/454 queries at every K on the FULL
+   vocab. This is the exactness precondition made a bar; its
+   failure is an instrument alarm, not a scientific excursion.
+2. TRAFFIC (gate_class range): at the best K in the frozen grid,
+   the corpus_X q50 of rows_visited / 248320 is <= 0.50.
+
+REFUTED-IF: corpus_X q50 rows_visited fraction >= 0.90 at EVERY K
+in the grid — the bounds force a near-full scan at this
+dimensionality and the exact-geometric level-2 route books its
+null (the banked design says book it plainly).
+
+REGISTERED PRIOR: bar 1 FIRES (exactness holds by construction +
+fixture); bar 2 NO-FIRE — the house expects 5120-dimensional
+cluster radii to be large relative to the score spread, q50 above
+0.5 at every K, with prefix_K pruning somewhat better than
+corpus_X. The informative outcome is any K that prunes hard.
+
+FENCES: single artifact (A), Mac CPU only, the two frozen query
+populations only; no evaluation labels touch the index; no
+transfer claim to s16 heads, other arms, or the qcuda runtime;
+traffic numbers are modeled visitation, never physical bandwidth;
+"best K" is selected by the registered metric (corpus_X q50) and
+reported for all K either way; thresholds first-registration —
+a bar within 10% of its threshold books KNIFE-EDGE explicitly.
+Receipts: logs/qwenmips/ (fresh path): mips_receipt.json +
+mips_observations.json + qualify block inside the receipt (small
+text, force-added at booking); the index itself (centroids/radii/
+assignments npz) stays untracked, sha-pinned in the receipt.
+Wall estimate: clustering + 3 K sweeps + 454 x brute ground truth,
+well under the Mac's free afternoon; if interrupted, unfinished K
+cells book NOT-RUN.
