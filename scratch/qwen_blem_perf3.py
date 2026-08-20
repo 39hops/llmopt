@@ -28,7 +28,7 @@ ROOT_ART = os.path.expanduser(os.environ.get("ART_ROOT",
 OUT = "logs/qwenblemperf"
 FROZEN = "logs/qweneffort2_probe/traj_xhigh_0.json"
 PREFIX_N = 569
-TOTAL_N = 1024
+TOTAL_N = int(os.environ.get("TOTAL_N", "1024"))
 SEG = 64
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -69,7 +69,9 @@ def main():
     import torch
     ha = _load("qwen_homeo_actuator", "scratch/qwen_homeo_actuator.py")
     os.makedirs(OUT, exist_ok=True)
-    rcpt_path = os.path.join(OUT, "perf3_receipt.json")
+    rcpt_path = os.path.join(OUT, f"perf3_receipt_{TOTAL_N}.json")
+    if TOTAL_N == 1024 and not os.path.exists(rcpt_path):
+        rcpt_path = os.path.join(OUT, "perf3_receipt.json")
     if os.path.exists(rcpt_path):
         raise SystemExit(f"REFUSING: {rcpt_path} exists")
     START = start_provenance(
@@ -112,15 +114,17 @@ def main():
     del past_a
     torch.cuda.empty_cache()
 
-    print("[b3] ARM B: cross, ballast x2 resident", flush=True)
-    ballast = [ha._move_state(cpu_ble, "cpu") for _ in range(2)]
-    past_b = ha._move_state(cpu_ble, "cuda")
-    rates_b = decode_segments(model, past_b, cur, TOTAL_N, SEG)
-    del past_b
-    torch.cuda.empty_cache()
+    if os.environ.get("SKIP_BALLAST") == "1":
+        rates_b = None
+    else:
+        print("[b3] ARM B: cross, ballast x2 resident", flush=True)
+        ballast = [ha._move_state(cpu_ble, "cpu") for _ in range(2)]
+        past_b = ha._move_state(cpu_ble, "cuda")
+        rates_b = decode_segments(model, past_b, cur, TOTAL_N, SEG)
+        del past_b, ballast
+        torch.cuda.empty_cache()
 
     print("[b3] ARM C: native, no ballast", flush=True)
-    del ballast
     past_c, cur_c = ha.prefill(model, pids + frozen[:PREFIX_N])
     rates_c = decode_segments(model, past_c, cur_c, TOTAL_N, SEG)
 
