@@ -7121,7 +7121,9 @@ honest status column).
   item-3 successive-attempt JS medians fall monotonically 1.9e-4 ->
   2.8e-6 (the retry loop DEEPENS across attempts — new color for
   the [[no-regret-retry-controller]]: later interventions face a
-  more converged policy, earlier intervention is cheaper).
+  more converged policy, so early intervention is BETTER-MOTIVATED;
+  matched-cost early-v-late efficacy is unmeasured — corrected in
+  place 2026-08-20 per AMENDMENT QWEN-LOOP-STATE-1-SCOPE).
 - **BANK OUTCOME (2026-08-20): mechanistic ladder leg 2 booked as
   QWEN-LOOP-STATE-1-HEADSWAP** (RESULTS L36594): both bars fire,
   prior correct — the intact vendor head reproduces the stuck

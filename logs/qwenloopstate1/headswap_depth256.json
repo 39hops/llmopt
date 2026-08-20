@@ -1,0 +1,34 @@
+{
+ "note": "min-over-top256 normalized distance d_min = min_j (z_top1 - z_j)/||w_top1 - w_j|| over stored top256 (j != top1) \u2014 a cheap UPPER BOUND on true argmax-cell depth (true depth minimizes over the full vocab); BLe s16 head rows; k=1 homologous endpoints",
+ "ble_head_shard": {
+  "shard": "model-00018-of-00018.safetensors",
+  "file_sha256": "30dc68f24d10924b474a6e7063f2393f303d43c965c844fca05a26db3f83ac6e",
+  "in_qualified_chain": true
+ },
+ "items": {
+  "0": {
+   "low": {
+    "n": 10,
+    "median": 4.768831173059439,
+    "min": 3.319239922765021
+   },
+   "rest": {
+    "n": 166,
+    "median": 7.5141798730267295,
+    "min": 0.9116082722405506
+   }
+  },
+  "4": {
+   "low": {
+    "n": 30,
+    "median": 7.53519512241623,
+    "min": 3.891294209643521
+   },
+   "rest": {
+    "n": 454,
+    "median": 7.412703690257751,
+    "min": 0.01924686762541773
+   }
+  }
+ }
+}

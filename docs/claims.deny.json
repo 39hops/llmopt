@@ -69,6 +69,18 @@
    "reason": "Greedy decoding is deterministic; the sampling framing was wrong. Corrected reading: the deterministic correction policy itself substantially repeats (AMENDMENT QWEN-LOOP-STATE-0-COLOR2, 2026-08-20).",
    "scope": "retry|LOOP-STATE|loop-state",
    "superseded_by": "2026-08-20-amendment-qwen-loop-state-0-color2"
+  },
+  {
+   "pattern": "readout repair (is )?measured out(?!.{0,40}local)",
+   "reason": "HEADSWAP was an offline conditional read of frozen h_BLe, not an online causal replacement; only the LOCAL/static reading is supported. Corrected by AMENDMENT QWEN-LOOP-STATE-1-SCOPE (2026-08-20).",
+   "scope": "loop-state|LOOP-STATE|headswap|HEADSWAP",
+   "superseded_by": "2026-08-20-amendment-qwen-loop-state-1-scope"
+  },
+  {
+   "pattern": "readout is a bystander",
+   "reason": "Supported only as a local/static claim on frozen BLe states; trajectory-level readout causality open. Corrected by AMENDMENT QWEN-LOOP-STATE-1-SCOPE (2026-08-20).",
+   "scope": "loop-state|LOOP-STATE|headswap|HEADSWAP",
+   "superseded_by": "2026-08-20-amendment-qwen-loop-state-1-scope"
   }
  ]
 }

@@ -36698,3 +36698,56 @@ Receipts: logs/qwenloopstate1/headswap_receipt.json,
 headswap_observations.json, headswap_disagreements.json,
 vendor_slice_attestation.txt, remote_sha256.txt (force-added;
 adjudication basis, < 15KB).
+
+
+## AMENDMENT QWEN-LOOP-STATE-1-SCOPE: the headswap is an OFFLINE CONDITIONAL read of frozen states, not an online causal head replacement — the bystander reading is rescoped to local/static; M3 renamed to the top1-v-top2 hyperplane distance and a min-over-top256 depth upper bound receipted; BLe head shard verified against the qualified digest chain (2026-08-20, wsl)
+
+Amends VERDICT QWEN-LOOP-STATE-1-HEADSWAP (L36594). Registered
+bars and outcomes UNCHANGED (both FIRE, prior correct). External
+review (GPT seat, verified in-house).
+
+1. SCOPE CORRECTION (reading correction; dead phrases deny-listed
+   this commit). The run scored the vendor head on FROZEN h_BLe —
+   states that were themselves generated downstream of prior
+   BLe-head token choices. What 99.6% static agreement
+   establishes: once these BLe loop states exist, the intact
+   vendor head reads them to the same greedy action. What it does
+   NOT establish: that the compressed readout played no role in
+   REACHING these states — one changed token alters every later
+   state, and the 5 measured disagreements sit exactly where the
+   policy is least converged (item 3's two in the FIRST retry
+   attempt; item 0's two in the basin-entry event window).
+   Corrected reading: static readout replacement is largely
+   measured out as a LOCAL explanation on frozen BLe loop states;
+   historical/trajectory-level readout causality remains OPEN and
+   is exactly what the next rung (HEADSWAP-IMPULSE, causal
+   single-token intervention at the five disagreement points)
+   tests.
+2. M3 RENAME + STRONGER BOUND (receipted,
+   logs/qwenloopstate1/headswap_depth256.json). The booked M3
+   d = (z_top1 - z_top2)/||w_top1 - w_top2|| is the distance to
+   the TOP1-v-TOP2 hyperplane, not necessarily the nearest
+   argmax-cell boundary; true cell depth is min over ALL j of
+   (z_top1 - z_j)/||w_top1 - w_j||. A high M3 cannot certify deep
+   cell membership; the d = 0.019 point DOES certify (by direct
+   arithmetic on the stored logits and decoded rows) that some
+   boundary sits <= 0.019 away. The cheap stronger bound, d_min over the
+   stored top-256 (an UPPER bound on true depth): item 0 low
+   median 4.77 / rest 7.51 (min 0.91); item 4 low 7.54 / rest
+   7.41 (min 0.019) — barely below the top2-only values, so
+   within the stored candidate set the top2 hyperplane is
+   typically also the nearest. Booked item-4 sentence rescopes to
+   "no closer to the TOP1-v-TOP2 boundary".
+3. CONVERGENCE WORDING: "early intervention is cheaper" (chat +
+   riff bank) overstates — matched-cost early-v-late efficacy is
+   unmeasured. Corrected: early intervention is BETTER-MOTIVATED
+   (the policy is least converged there); the riff bank is
+   corrected in place this commit.
+4. PROVENANCE HARDENING: artifact_identity records manifest sha +
+   shard count/bytes — a same-size shard substitution would pass
+   it. For THIS run the BLe lm_head shard's content sha
+   (30dc68f2...) is now verified present in the qualified digest
+   chain logs/qwenwhole/artifact_digest_BLe.txt (receipted in
+   headswap_depth256.json). Forward fix banked: evolve
+   artifact_identity toward a shard-content root or an explicit
+   qualified-digest-chain reference.
