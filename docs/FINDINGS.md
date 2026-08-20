@@ -2449,3 +2449,11 @@ regime tag on every bullet is the fence.
   a scored reference arm, not promoted toward deployment; single seed,
   greedy, CUDA leg only. ([VERDICT
   QWEN-BLE-FREEGEN-2](RESULTS.md#L35764 "id:2026-08-19-verdict-qwen-ble-freegen-2-both").)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] On the frozen
+  MODEL-1 surface, arm A's w4 lm_head keeps the teacher's top-1 token inside
+  its top-256 candidates at 98.03% of corpus positions (knife-edge over the
+  registered 0.98 bar, one-position resolution) and 100% of prefix positions,
+  carrying ~96% of teacher mass; the vendor head on identical hidden states
+  nets out only 2 of 7 corpus misses at k=256, so the miss is body-state, not
+  readout ranking; level-2 router census unlocked; one artifact, one surface.
+  ([VERDICT QWEN-CHEAP-READOUT-0](RESULTS.md#L36036 "id:2026-08-19-verdict-qwen-cheap-readout-0-both").)

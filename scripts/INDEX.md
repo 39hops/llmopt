@@ -2900,6 +2900,14 @@ QWEN-CAPACITY-METER-1: the 27B cell — M = span_bits - code_entropy per family 
 - `group_of(name)`
 - `main()`
 
+### scratch/qwen_cheap_readout.py
+QWEN-CHEAP-READOUT-0 driver: arm-state candidate-set census (PRE-REG in docs/RESULTS.md; bank CHEAP-READOUT-CENSUS).
+
+- `_load(name, rel)`
+- `rk_mk(t_logits_f32, obj_logits, v_live, ks=KS)` — R_k = P(teacher top1 in obj top-k); M_k = mean teacher mass
+- `rk_by_margin(t_logits_fp16, obj_logits, v_live, ms)` — Margin-stratified R_256 on the frozen MARGIN_EDGES bins;
+- `main()`
+
 ### scratch/qwen_cuda_rung0.py
 CUDA leg rung 0: toolchain + VRAM budget receipt (3080/WSL).
 

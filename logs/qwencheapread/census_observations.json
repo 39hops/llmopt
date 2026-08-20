@@ -1,0 +1,26 @@
+{
+ "note": "values from logs/qwencheapread/census_A.json (committed driver recomputation); identity fixture PASS bit-exact both classes",
+ "measurement_valid": true,
+ "arms": {
+  "A": {
+   "admissible": true,
+   "reason": "identity fixture PASS (top1 identical all positions, max abs diff 0.0 both classes); census 402 w4 conserved; teacher pin 0ca4151"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0.9803370786516854,
+   "metric": "min_R256_AW_over_classes",
+   "population": "positions:both-classes",
+   "aggregation": "min",
+   "provenance": "corpus_X 0.9803370787 (349/356), prefix_K 1.0"
+  },
+  "2": {
+   "value": 0.005617977528089901,
+   "metric": "max_R256_gap_AT_minus_AW",
+   "population": "positions:both-classes",
+   "aggregation": "max",
+   "provenance": "corpus gap 0.005618, prefix gap 0.000000"
+  }
+ }
+}

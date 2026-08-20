@@ -1,0 +1,16 @@
+[cr] qualified A: {'art_dir': '/Users/artin/qwen_whole0t/A', 'rung0': {'checked': 19, 'unchained': False}, 'conservation': {'keys': 1199}, 'census': {'w4': 402, 's16': 0, 'raw': 449, 'excluded': 348}, 'preflight': {'estimated_peak_bytes': 5869238016, 'available_bytes': 18459901952, 'safety_fraction': 0.8}}
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[cr] corpus forward 79s h (356, 5120)
+[cr] prefix 0 forward 65s
+[cr] prefix 1 forward 65s
+[cr] prefix 2 forward 65s
+[cr] prefix 3 forward 65s
+[cr] prefix 4 forward 65s
+[cr] prefix 5 forward 65s
+[cr] identity fixture PASS {'corpus': {'top1_identical_all': True, 'max_abs_diff': 0.0}, 'prefix': {'top1_identical_all': True, 'max_abs_diff': 0.0}}
+[cr] vendor head control 1s
+[cr] corpus_X A_W {'R_16': 0.9073033707865169, 'M_16': 0.865291148127768, 'n_miss_16': 33, 'R_64': 0.9466292134831461, 'M_64': 0.9192019858823259, 'n_miss_64': 19, 'R_256': 0.9803370786516854, 'M_256': 0.958837336322485, 'n_miss_256': 7, 'R_1024': 0.9971910112359551, 'M_1024': 0.9824431112358041, 'n_miss_1024': 1, 'n': 356}
+[cr] corpus_X A_T {'R_16': 0.9073033707865169, 'M_16': 0.8668720143999538, 'n_miss_16': 33, 'R_64': 0.9606741573033708, 'M_64': 0.9278826281730705, 'n_miss_64': 14, 'R_256': 0.9859550561797753, 'M_256': 0.9632989868142829, 'n_miss_256': 5, 'R_1024': 0.9943820224719101, 'M_1024': 0.9832581217085576, 'n_miss_1024': 2, 'n': 356}
+[cr] prefix_K A_W {'R_16': 0.9489795918367347, 'M_16': 0.8806577742693381, 'n_miss_16': 5, 'R_64': 0.9693877551020408, 'M_64': 0.927841057629678, 'n_miss_64': 3, 'R_256': 1.0, 'M_256': 0.9591179427181956, 'n_miss_256': 0, 'R_1024': 1.0, 'M_1024': 0.9767426842603748, 'n_miss_1024': 0, 'n': 98}
+[cr] prefix_K A_T {'R_16': 0.9693877551020408, 'M_16': 0.8910835397982352, 'n_miss_16': 3, 'R_64': 0.9897959183673469, 'M_64': 0.9331592495300232, 'n_miss_64': 1, 'R_256': 1.0, 'M_256': 0.9619883612736306, 'n_miss_256': 0, 'R_1024': 1.0, 'M_1024': 0.9785508598311765, 'n_miss_1024': 0, 'n': 98}
+[cr] -> logs/qwencheapread/census_A.json

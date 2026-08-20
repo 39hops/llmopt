@@ -36032,3 +36032,84 @@ registration; CPU reference runtime only, no cross-device reads;
 h_A tensors are run exhaust (untracked, sha-pinned in the receipt);
 receipts land on logs/qwencheapread/ (fresh path).
 
+
+## VERDICT QWEN-CHEAP-READOUT-0: BOTH BARS FIRE — arm A's w4 head keeps the teacher's token inside top-256 at 98.03% (corpus) / 100% (prefix), and at k=256 the readout costs at most 0.6 points of that recall conditional on identical state; LEVEL-2-GO granted; bar 1 fires by ONE position (2026-08-19, mac)
+
+Adjudicates PRE-REG QWEN-CHEAP-READOUT-0 (registered fb84023,
+committed pre-run). Bars scored by the registered machinery
+(llmopt/lab/prereg.adjudicate_prereg, projection
+docs/preregs/qwen-cheap-readout-0.json + observations
+logs/qwencheapread/census_observations.json); the projection is a
+post-RESULTS transcription written before the census receipt was
+read for adjudication, disclosed in its note.
+
+GATE FIRST: the identity fixture PASSED bit-exact on both classes —
+h_A recomputed through the w4 head reproduces the run's native
+logits with top1 identical at every position and max abs diff 0.0.
+Scope of the fixture, stated plainly: it is the SAME head code on
+the captured tensor, so 0.0 certifies capture-point and position
+alignment, never an independent numerical agreement. No R_k was
+read before this passed.
+
+MEASURED (logs/qwencheapread/census_A.json; driver committed
+a842c40/43adef0; SMOKE-qualified first; corpus n=356 positions,
+prefix n=98):
+- BAR 1 PROPOSAL-VIABLE: min R_256(A_W) over classes = 0.98034
+  (corpus_X 349/356; prefix_K 98/98 = 1.0) v the >= 0.98 bar ->
+  FIRE. KNIFE-EDGE, disclosed prominently: corpus fires by ONE
+  position — 348/356 would read 0.97753, under the bar — and the
+  bar excess is 0.046 binomial sigma, so the 0.98 crossing itself
+  carries NO resolution margin; the bar fires as registered and
+  adjudicated, nothing more. Separate observations (not confidence
+  in the crossing): prefix at ceiling, corpus tail small (7 misses
+  at k=256, 1 at k=1024).
+- BAR 2 READOUT-SMALL: max over classes of R_256(A_T) - R_256(A_W)
+  = 0.00562 (corpus; prefix gap 0.0) v the <= 0.01 bar -> FIRE.
+  Conditional on the same h_A, the vendor bf16 head NETS OUT only
+  2 of the w4 head's 7 corpus misses (n_miss counts 7 v 5; the
+  receipt stores no per-position masks, so set inclusion is not
+  claimed — and at k=1024 the sign flips, A_W 1 miss v A_T 2).
+  Most of the miss is upstream body-state seen through either head,
+  not readout ranking, AT K=256.
+- REFUTED-IF (R_256(A_W) < 0.90 on either class): does not trigger.
+- LEVEL-2-GO (frozen pre-h_A: bar 1 fires): GRANTED — the
+  sublinear-router census may be registered.
+
+Mass capture rides along: M_256(A_W) = 0.959 corpus / 0.959 prefix,
+M_1024 = 0.982 / 0.977 — a top-256 candidate set carries ~96% of
+the teacher's probability mass on both classes. Margin-stratified
+R_256 tables are in the receipt (small-n fence applies per bin; no
+directional claims made here).
+
+REGISTERED PRIOR: HALF RIGHT. Bar 2 called correctly (readout loss
+small; body-state dominates). Bar 1's shape was wrong twice: X-class
+was predicted >= 0.99 and measured 0.98034 (above bar, below the
+predicted number), and K-class was predicted the WEAKER class ("the
+head carries prefix-K, so K-class is where a miss would live") but
+measured at ceiling (1.0) — the misses live in the corpus stream,
+not the prefix stream.
+
+PROVENANCE: driver reuses the scorer's build machinery by module
+load (no copy-fork); interpreter .venv_teacher (the scorer's own —
+the docstring's .venv was corrected pre-run, 43adef0); teacher
+logs/qwenteacher_v2 pin 0ca4151; artifact qualified through the
+digest chain (402 w4, rung0 19 checked, conservation 1199 keys);
+qualification line receipted in the run's own stdout log
+(logs/qwencheapread/census_A.log); artifact identity receipted in
+logs/qwencheapread/artifact_identity.txt (manifest sha 13ba4b17...
+matches the digest chain's line 1 exactly — the receipt itself does
+not store the qualify report, a banked forward fix along with a
+margin_edges field and a per-position miss mask); eval-payload revision 1d4bf0f2
+carried; start porcelain at run time was ' M scripts/INDEX.md'
+(index regen only, not load-bearing), disclosed;
+start_provenance + completion_commit in the receipt; h arrays
+untracked npz, sha-pinned in the receipt.
+
+FENCES CARRIED: candidate-set recall is NOT generation equivalence
+(the detect-retry autopsy is the standing example of tail behavior
+scored streams never promised); one artifact (A), one surface
+(MODEL-1) — MODEL-2 transport is its own registration; level-1
+proposal viability is never evidence for level 2 (the router census
+now unlocked must measure its own capture); CPU reference runtime
+only, no cross-device reads; n=356/98 positions, single surface, no seed dimension.
+

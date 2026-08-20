@@ -1,0 +1,5 @@
+artifact identity for census_A (QWEN-CHEAP-READOUT-0):
+ART_DIR=~/qwen_whole0t/A
+manifest.json sha256 = 13ba4b174102d95e2d8d58bf8c49242ea3ed6ff3eb4de087722a2d5a03858bdb
+digest chain logs/qwenwhole/artifact_digest_A.txt line 1 = 13ba4b174102d95e2d8d58bf8c49242ea3ed6ff3eb4de087722a2d5a03858bdb  manifest.json
+qualify report (from census_A.log line 1): rung0 checked 19, conservation keys 1199, census w4 402 / s16 0 / raw 449 / excluded 348

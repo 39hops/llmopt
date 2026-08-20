@@ -1,0 +1,23 @@
+{
+ "name": "QWEN-CHEAP-READOUT-0",
+ "note": "Mechanical projection of PRE-REG QWEN-CHEAP-READOUT-0 (RESULTS, 2026-08-19, commit fb84023 pre-run). Transcribed AFTER the RESULTS registration and AFTER the driver commit but BEFORE the full census receipt was read for adjudication; bars verbatim. R values recomputed by the committed driver from captured h_A; identity fixture gated the run.",
+ "results_id": "2026-08-19-pre-reg-qwen-cheap-readout-0",
+ "registered": "2026-08-19",
+ "machine": "mac",
+ "arms": {"A": {"description": "arm A w4 artifact, streamed CPU reference, MODEL-1 surface, teacher v2 pin 0ca4151"}},
+ "bars": [
+  {"id": 1, "name": "PROPOSAL-VIABLE", "gate_class": "range",
+   "metric": "min_R256_AW_over_classes", "population": "positions:both-classes",
+   "aggregation": "min", "direction": "above", "value": 0.98,
+   "arms": ["A"],
+   "description": "R_256(A_W) >= 0.98 on BOTH position classes (min over classes compared to 0.98; direction 'above' here means >=, adjudicated at exactly-equal as FIRE per the registered text '>= 0.98')"},
+  {"id": 2, "name": "READOUT-SMALL", "gate_class": "range",
+   "metric": "max_R256_gap_AT_minus_AW", "population": "positions:both-classes",
+   "aggregation": "max", "direction": "below", "value": 0.01,
+   "arms": ["A"],
+   "description": "R_256(A_T) - R_256(A_W) <= 0.01 on both classes (max gap over classes)"}
+ ],
+ "receipts": ["logs/qwencheapread/census_A.json"],
+ "refuted_if": "R_256(A_W) < 0.90 on either class",
+ "registered_prior": "bar 1 fires with R_256 >= 0.99 on X-class and K-class lower but above bar; bar 2 fires (most damage body-state)"
+}

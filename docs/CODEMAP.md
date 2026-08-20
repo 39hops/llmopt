@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 209, library 72, reproduce-pinned 10, results-cited 236, spec-cited 88, cited-but-library 60
+Census: UNCITED 209, library 72, reproduce-pinned 10, results-cited 237, spec-cited 88, cited-but-library 60
 
 ## scratch/
 
@@ -339,6 +339,7 @@ Census: UNCITED 209, library 72, reproduce-pinned 10, results-cited 236, spec-ci
 | qwen | qwen_ble2_autopsy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_capacity27b.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | qwen | qwen_census_night.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| qwen | qwen_cheap_readout.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_cuda_rung0.py | UNCITED | — | — | — | — |
 | qwen | qwen_cuda_rung1.py | UNCITED | — | — | — | — |
 | qwen | qwen_cuda_rung2.py | UNCITED | — | — | — | — |
@@ -353,7 +354,7 @@ Census: UNCITED 209, library 72, reproduce-pinned 10, results-cited 236, spec-ci
 | qwen | qwen_ioattrib_adjudicate.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | qwen | qwen_lband_adjudicate.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_margin_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| qwen | qwen_model1_score.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 5 |
+| qwen | qwen_model1_score.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 6 |
 | qwen | qwen_model2_adjudicate.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_qualify.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 4 |
 | qwen | qwen_recompose.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
