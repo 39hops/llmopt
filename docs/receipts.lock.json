@@ -713,10 +713,9 @@
   "logs/qwencycle/impulse_observations.json": {
    "bytes": 1206,
    "exists": true,
-   "local_only": true,
    "sha256": "949f8b566aa7d61994a09e8fefe3acb093a6333101c7a7d1a715b41fafa789a7",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwencycle/impulse_rows.jsonl": {
    "exists": true,
@@ -731,10 +730,9 @@
   "logs/qwencycle/remote_sha256.txt": {
    "bytes": 2537,
    "exists": true,
-   "local_only": true,
    "sha256": "8c48756b9ed4647a55f19ad460bbfab13ab849795e0031481db4bd1ca2c14e95",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qweneffort/ble_freegen.log": {
    "bytes": 1543,
