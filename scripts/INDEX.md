@@ -2944,6 +2944,15 @@ CUDA leg rung 4: FUSED tower — every w4 Linear executes as a fused decode+GEMV
 - `build()`
 - `main()`
 
+### scratch/qwen_cycle_impulse.py
+QWEN-CYCLE-IMPULSE-0 driver: cycle-triggered temperature impulse on BLe xhigh trajectories (PRE-REG frozen parameters — detector, impulse, escape — live in docs/RESULTS.md; any change is a new registration).
+
+- `_load(name, rel)`
+- `detector_fire(ids, t)` — PRE-REG detector: at generated position t (1-based count of
+- `string_seed(tag)`
+- `run_one(model, tok, ep, it, temp, seed, eos)`
+- `main()`
+
 ### scratch/qwen_displace_extract.py
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
 
