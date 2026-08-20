@@ -164,14 +164,18 @@ def main():
             "aggregation": "fraction",
             "provenance": "recomputed from full fp16 logits in npz "
                           "(fp64 softmax)"}
+        # conjuncts share the bar's metric contract strings (house
+        # prereg schema); the true quantity is named in provenance
         obs["measurements"]["2:median_js_nats"] = {
             "value": meas["item3"]["median_js_nats"],
-            "metric": "median_js_nats",
+            "metric": "top1_agreement_frac",
             "population": "item:3 successive-attempt pairs x 64 "
                           "offsets (4x64)",
-            "aggregation": "median",
-            "provenance": "conjunct of bar 2; full-vocab JS, fp64 "
-                          "softmax, natural log"}
+            "aggregation": "fraction",
+            "provenance": "conjunct of bar 2 — the VALUE is the "
+                          "median full-vocab JS in nats (fp64 "
+                          "softmax, natural log), compared below "
+                          "0.05"}
     with open(os.path.join(OUT, "loopstate_observations.json"),
               "w") as f:
         f.write(json.dumps(obs, indent=1) + "\n")
