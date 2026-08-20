@@ -711,16 +711,37 @@
    "tracked": true
   },
   "logs/qweneffort2/ble2_adjudication.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 836,
+   "exists": true,
+   "sha256": "40c4f71c71c8b7e6fbfc2f233b6ad3c5bc4344843cc3ba6a8b4652ce38e29704",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qweneffort2/ble2_observations.json": {
+   "bytes": 1076,
+   "exists": true,
+   "sha256": "3097bf5e70e4edefa39972b79a17c4c7d1ce2e1ea9ee5351413e177620898096",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qweneffort2/remote_sha256.txt": {
+   "bytes": 429,
+   "exists": true,
+   "sha256": "d49a8b1a656586af53f04efcb5a10eb62108e5e58d03dfb5c1977c36e2edac1c",
+   "source": "results",
+   "tracked": true
   },
   "logs/qweneffort2/summary_tower_BLe.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qweneffort2/tower_rows_BLe.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 25450,
+   "exists": true,
+   "sha256": "5f29696ac5830c142a01b4e716b1dccdc3cb226bf2b4009fa8e81e0f3a30d862",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenmodel1/score_A.json": {
    "exists": true,
