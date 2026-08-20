@@ -99,6 +99,9 @@ def _tt(ids):
 
 
 def main():
+    os.environ.setdefault("STEP", "n/a")
+    os.environ.setdefault("ART_DIR", os.path.expanduser(
+        "~/qwen_whole0t/BLe"))
     ep = _load("qwen_effort_probe", "scratch/qwen_effort_probe.py")
     tl = _load("qwen_tower_ladder", "scratch/qwen_tower_ladder.py")
     from transformers import AutoTokenizer
