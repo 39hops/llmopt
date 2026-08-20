@@ -1,0 +1,26 @@
+{
+ "note": "offline head swap on the booked loop-state npz; P1 sha equality enforced at load; h are off-manifold free-run states, no teacher-behavior claim",
+ "measurement_valid": true,
+ "arms": {
+  "BLe": {
+   "admissible": true,
+   "reason": "npz shas match booked rows (3/3); artifact identity recorded for BLe+vendor"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0.984375,
+   "metric": "vendor_top1_agreement_attempt_pairs",
+   "population": "item:3 successive-attempt pairs x 64 offsets (4x64)",
+   "aggregation": "fraction",
+   "provenance": "vendor fp32 full-vocab argmax on captured h; pairs per the frozen anchor set"
+  },
+  "2": {
+   "value": 0.9964513839602555,
+   "metric": "vendor_v_ble_top1_agreement",
+   "population": "all captured positions (1409)",
+   "aggregation": "fraction",
+   "provenance": "agree 1404/1409; BLe top1 from fixture-certified stored top256"
+  }
+ }
+}

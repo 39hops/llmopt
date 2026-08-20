@@ -36589,3 +36589,112 @@ KNIFE-EDGE explicitly. Receipts: logs/qwenloopstate1/
 headswap_receipt.json + headswap_observations.json, small,
 force-added at booking. Wall: minutes (1409 x vocab fp32 matmuls,
 CPU); window fence ~15:00 EST — unfinished books NOT-RUN.
+
+
+## VERDICT QWEN-LOOP-STATE-1-HEADSWAP: BOTH BARS FIRE — the intact vendor head reproduces the stuck retry policy on the identical states (M2 0.9844, numerically the SAME fraction as BLe's own head) and agrees with BLe's top1 on 99.6% of captured loop states; stuckness is state-attributable, the compressed readout is a bystander (2026-08-20, wsl)
+
+Adjudication of PRE-REG QWEN-LOOP-STATE-1-HEADSWAP (registered and
+committed b43fd9f pre-run) through llmopt.lab.prereg
+.adjudicate_prereg inside the driver
+(scratch/qwen_loop_state_headswap.py); refutation predicate
+NOT-REFUTED. Precondition P1: all three input npz sha256 equal the
+booked QWEN-LOOP-STATE-0 arrays_sha256 (fa12f05b..., 79e1041d...,
+6319d6ce...), enforced at load. First registered consumer of
+artifact_identity: the receipt records BLe (manifest fc9347ef...,
+matching the artifact digest chain the tower runs pin; 18 shards,
+8.078 GB) and the vendor lm_head slice (index 04fb8e6d..., 1
+shard, 2.543 GB).
+
+MEASURED (observations file keys measurements by BAR id — bar 1
+carries M2, bar 2 carries M1):
+- Bar 1 STATE-ATTRIBUTION: FIRE. Vendor-head top1 agreement across
+  item 3's 4 successive-attempt pairs x 64 homologous offsets =
+  0.984375 >= 0.80 (23.0% above threshold, relative) — 252/256,
+  derived from the stored fraction over the registered 256-pair
+  population; the failing-pair list is receipted in
+  headswap_disagreements.json. This is numerically the SAME
+  fraction BLe's own head produced on these pairs (0.984375,
+  logs/qwenloopstate/loopstate_observations.json measurement "2";
+  verdict heading at RESULTS L36346). An intact, uncompressed head
+  applied to the identical captured states reproduces the stuck
+  retry policy.
+- Bar 2 HEAD-AGREEMENT: FIRE. Vendor top1 == BLe in-run top1 on
+  1404/1409 = 0.99645 >= 0.90 of all captured positions (item 0:
+  295/297, item 4: 758/759, item 3: 351/353). KNIFE-EDGE
+  arithmetic under the relative reading the LOOP-STATE-0 verdict
+  established: (0.99645 - 0.90)/0.90 = 10.7% — just OUTSIDE the
+  registered 10% band, by 0.7 points; under an absolute-band
+  reading it would sit inside. Stated rather than hidden: this bar
+  is fence-adjacent, though its FIRE is not in question at any
+  reading.
+- DISAGREEMENT DECOMPOSITION (receipted,
+  headswap_disagreements.json, recomputed from the pinned npz +
+  slice): the 5 vendor-v-BLe top1 disagreements sit at positions
+  556/583 (item 0, event window), 1538 (item 4), 1223/1278 (item
+  3 — anchor-window offsets 1 and 56 of the FIRST attempt).
+  Vendor failing attempt-pairs: (0,1),(0,56),(0,57),(0,58); BLe
+  in-run-top1 failing pairs: (0,56),(0,57),(0,58). THREE top1
+  bases exist and their bad-pair counts are 4 (BLe booked,
+  fp16-full-logit argmax) / 3 (BLe in-run fp32 top1) / 4 (vendor
+  fp32) — every failing pair under every basis lies in attempt
+  pair 0->1; attempts 1 through 4 are fully locked under all
+  three, consistent with the COLOR2 convergence color.
+- M3 (descriptive, gates nothing): normalized decision-boundary
+  distance d = (z_top1 - z_top2)/||w_top1 - w_top2|| (units of the
+  h-norm; no ||h|| is receipted, so no absolute-scale claim) under
+  the decoded s16 BLe head at the k=1 homologous endpoints —
+  item 0: low-cosine pairs median 4.77 (min 3.32) v rest 7.76
+  (min 0.91); item 4: low 7.67 (min 3.89) v rest 7.53 (min
+  0.019). The measured depth the COLOR2 correction called for:
+  item 4's drifting positions are no closer to the top1/top2
+  boundary than the rest; item 0's are somewhat closer; one
+  rest-pair endpoint at d 0.019 still repeats its token.
+
+READING (per-specimen, captured positions, off-manifold states):
+the stuck retry policy is attributable to the STATE, not the
+compressed readout — swapping in the uncompressed vendor head
+changes almost nothing about the greedy action on these loop
+states, and the little it changes is confined to the first retry
+attempt, before the loop has fully converged. Combined with
+LOOP-STATE-0: a periodic symbolic (token) orbit over a drifting
+hidden state, with the drift mapped to the same action by BOTH
+heads. The controller program's next lever is state intervention
+(drift amplification / representation restart), not readout
+repair. The vendor-body leg 3 (full vendor forward on the exact
+loop prefix) remains a separate registration.
+
+PRIOR: correct both bars (registered: M1 >= 0.95, M2 within 0.03
+of 0.984 — measured 0.99645 and 0.984375 exactly).
+
+FENCES carried: same three specimens, n=1 per item, per-specimen
+claims only; comparisons are BLe-head v vendor-head on IDENTICAL
+h, never across trajectories or devices; h are BLe free-run
+states off the vendor manifold — no vendor-capability or
+teacher-preference claim; W_vendor @ h_BLe is head representation
+conditional on the damaged state, never teacher behavior; M3
+depth reported with row-norm denominators, raw-margin depth
+language stays deny-listed; thresholds are first-registration
+values with no calibration history; run completed well inside the
+~15:00 EST window fence.
+
+PROVENANCE: offline CPU run on the 3080 at d314273 (receipt
+start/completion commits identical; porcelain shows three
+untracked scratch files only, no modified instrument). Vendor
+head bytes are an lm_head-only slice extracted same-day on the
+Mac from the pinned vendor checkout: TENSOR bytes sha-identical
+source-v-slice (d922b751..., asserted at extraction), slice file
+6866cf8a... measured equal on BOTH machines, source shard
+model-00018-of-00018 file sha 1d347950... — all receipted in
+logs/qwenloopstate1/vendor_slice_attestation.txt (closing the
+self-attestation gap both auditors flagged). The registered
+default VENDOR_DIR (~/qwen_vendor) holds tokenizer/config only on
+the 3080, so the run pointed VENDOR_DIR at the attested slice
+dir; disclosed here. Driver stdout was foreground (no arm log
+file); the disagreements receipt independently corroborates the
+per-item agreement counts. Forward fix banked: the driver's
+HOMOLOGOUS block duplicates params values (verified equal this
+run) and should derive from the params file on any re-run.
+Receipts: logs/qwenloopstate1/headswap_receipt.json,
+headswap_observations.json, headswap_disagreements.json,
+vendor_slice_attestation.txt, remote_sha256.txt (force-added;
+adjudication basis, < 15KB).

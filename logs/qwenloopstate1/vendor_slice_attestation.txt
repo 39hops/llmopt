@@ -1,0 +1,9 @@
+vendor lm_head slice attestation - QWEN-LOOP-STATE-1-HEADSWAP (2026-08-20)
+pinned vendor checkout shard (mac ~/qwen_vendor/model-00018-of-00018.safetensors) file sha256: 1d3479509e21494658f9b64d317f5ea8e55c4025d28c702d6c4d0b356ce8ea06
+lm_head.weight TENSOR bytes sha256 in source shard:        d922b751f014ee1139488cb94c0e164a1eb3da5c14048070ed1b784e00f92723
+lm_head.weight TENSOR bytes sha256 in extracted slice:      d922b751f014ee1139488cb94c0e164a1eb3da5c14048070ed1b784e00f92723
+tensor bytes IDENTICAL source v slice (asserted at write time, mac)
+slice file sha256 (mac ~/qwen_vendor_lmhead/lm_head.safetensors):  6866cf8adcccc4cc6a00e74bc025f1a774fb52103b70f2674d0288272951a733
+slice file sha256 (3080 ~/qwen_vendor_lmhead/lm_head.safetensors): 6866cf8adcccc4cc6a00e74bc025f1a774fb52103b70f2674d0288272951a733 (measured over wsl.sh 2026-08-20, twice: post-push verify and post-run)
+slice index.json sha256 (mac):  04fb8e6d6a2370483cc0aa472addc3bc2ad585ecdd201a425028114e5b2773f5
+slice index.json sha256 (3080): 04fb8e6d6a2370483cc0aa472addc3bc2ad585ecdd201a425028114e5b2773f5 (= headswap_receipt.json artifact_identity.vendor.manifest_sha256)

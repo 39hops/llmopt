@@ -2478,3 +2478,13 @@ regime tag on every bullet is the fence.
   there is not unlucky sampling; per-specimen claims only, no
   policy-v-state ranking across specimens.
   ([VERDICT QWEN-LOOP-STATE-0](RESULTS.md#L36345 "id:2026-08-20-verdict-qwen-loop-state-0-bar").)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] [FREE-RUN-GATED]
+  Swapping the uncompressed vendor lm_head onto BLe's identical captured
+  loop states changes almost nothing: 99.6% top1 agreement over all 1409
+  captured positions, and the vendor head reproduces the stuck retry
+  policy at numerically the same fraction as BLe's own head (0.984375);
+  every failing attempt-pair under every top1 basis lies in the FIRST
+  retry attempt — stuckness is state-attributable, the compressed readout
+  is a bystander; per-specimen, off-manifold states, no teacher-behavior
+  claim.
+  ([VERDICT QWEN-LOOP-STATE-1-HEADSWAP](RESULTS.md#L36594 "id:2026-08-20-verdict-qwen-loop-state-1-headswap").)

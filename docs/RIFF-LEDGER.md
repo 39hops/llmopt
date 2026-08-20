@@ -7122,3 +7122,17 @@ honest status column).
   2.8e-6 (the retry loop DEEPENS across attempts — new color for
   the [[no-regret-retry-controller]]: later interventions face a
   more converged policy, earlier intervention is cheaper).
+- **BANK OUTCOME (2026-08-20): mechanistic ladder leg 2 booked as
+  QWEN-LOOP-STATE-1-HEADSWAP** (RESULTS L36594): both bars fire,
+  prior correct — the intact vendor head reproduces the stuck
+  retry policy on identical states (0.984375, numerically the
+  BLe-head fraction) and agrees on 99.6% of captured positions;
+  every failing attempt-pair under every top1 basis lies in retry
+  attempt 0->1. The [[no-regret-retry-controller]] branch now has
+  readout repair MEASURED OUT at the k=1 level on these specimens;
+  state intervention (drift amplification / representation
+  restart) is the live lever. Ladder leg 3 (vendor body on the
+  exact loop prefix) stays priced, unregistered. Forward fix
+  banked: headswap driver derives HOMOLOGOUS geometry from the
+  params file on any re-run (literal-v-derived class, verified
+  equal this run).

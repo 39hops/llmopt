@@ -1,0 +1,87 @@
+{
+ "start": {
+  "start_commit": "d314273",
+  "start_status_porcelain": "?? COMPOSE_DE\n?? COMPOSE_FLQ2\n?? scratch/leancheck/OvershootTest.lean\n",
+  "interpreter": "/home/a/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_loop_state_headswap.py": "cea4616d74293926bc4097d055059958ec00e231aa57351274b7a02ef83b277f",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1",
+   "llmopt/lab/qcodec_fast.py": "db01672f4a2f095b125f412464a239b89ce1283cbb1e12622c7e0d7863382eb6",
+   "docs/preregs/qwen-loop-state-0.params.json": "f7125a545d5ff66bbcacb309127aae3426e6fb0fa84c95992c2e5c8d6ce52eb7",
+   "docs/preregs/qwen-loop-state-1-headswap.json": "c21f2fe1859bdeca9154e48c5aef987ef22da37dade7679fde84651621bdf956"
+  },
+  "artifact_identity": {
+   "BLe": {
+    "art_dir_resolved": "/home/a/qwen_whole0t/BLe",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "fc9347ef55164f3eed433e3345721942e3d2f7a5fefd186c68b118565dcdb49d",
+    "shards": {
+     "n": 18,
+     "total_bytes": 8077632064
+    }
+   },
+   "vendor": {
+    "art_dir_resolved": "/home/a/qwen_vendor_lmhead",
+    "manifest_file": "model.safetensors.index.json",
+    "manifest_sha256": "04fb8e6d6a2370483cc0aa472addc3bc2ad585ecdd201a425028114e5b2773f5",
+    "shards": {
+     "n": 1,
+     "total_bytes": 2542796896
+    }
+   }
+  }
+ },
+ "completion_commit": "d314273",
+ "smoke": false,
+ "input_npz_sha256": {
+  "0": "fa12f05b680bc915ecfac46b5308dba9111e1c62fe9656c85a6a0f79da789895",
+  "4": "79e1041d2039d9f84a3f0b00aac4868bdce21424d64c5e008c2f0156c77ef104",
+  "3": "6319d6ce9b1e0ac67bb598c07736e302b22b45a338d3daeeece3cdb474b57917"
+ },
+ "m1_total": {
+  "agree": 1404,
+  "n": 1409,
+  "frac": 0.9964513839602555
+ },
+ "m1_per_item": {
+  "0": {
+   "n": 297,
+   "agree": 295
+  },
+  "4": {
+   "n": 759,
+   "agree": 758
+  },
+  "3": {
+   "n": 353,
+   "agree": 351
+  }
+ },
+ "m2": 0.984375,
+ "m3_boundary_distance_descriptive": {
+  "item0": {
+   "low": {
+    "n": 10,
+    "median": 4.7688312994526605,
+    "min": 3.319240010738239
+   },
+   "rest": {
+    "n": 166,
+    "median": 7.756638172498791,
+    "min": 0.9116082076619443
+   }
+  },
+  "item4": {
+   "low": {
+    "n": 30,
+    "median": 7.667055361922554,
+    "min": 3.8912940938693628
+   },
+   "rest": {
+    "n": 454,
+    "median": 7.534069646725124,
+    "min": 0.019246867779082313
+   }
+  }
+ }
+}

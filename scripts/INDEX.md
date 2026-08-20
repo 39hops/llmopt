@@ -3033,6 +3033,15 @@ QWEN-LOOP-STATE-0 second descriptive color pass (unregistered, gates nothing; ex
 - `load(rid)`
 - `main()`
 
+### scratch/qwen_loop_state_headswap.py
+QWEN-LOOP-STATE-1-HEADSWAP driver: vendor lm_head v BLe s16 lm_head on the IDENTICAL captured loop states of the booked QWEN-LOOP-STATE-0 run (PRE-REG in docs/RESULTS.md; machine projection docs/preregs/qwen-loop-state-1-headswap.json).
+
+- `load_npz(rid, booked_sha)`
+- `vendor_head()` — Vendor lm_head.weight, fp32 (the CHEAP-READOUT vendor-control
+- `ble_head_rows()` — BLe's s16 lm_head as a lazy row decoder from the artifact
+- `vendor_top1(Wv, h)` — argmax over the full vocab, chunked over head rows.
+- `main()`
+
 ### scratch/qwen_margin_census.py
 Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-only per-bin position counts, booked once with the teacher lock, before any arm scores.
 
@@ -3947,7 +3956,8 @@ Start-state run provenance, captured at process ENTRY.
 
 - `_root() -> str`
 - `_git(*args: str) -> str`
-- `start_provenance(critical_files) -> dict` — Capture at process entry: short HEAD, the LITERAL
+- `artifact_identity(art_dir: str) -> dict` — Weight-artifact identity for a receipt: the RESOLVED absolute
+- `start_provenance(critical_files, artifacts=None) -> dict` — Capture at process entry: short HEAD, the LITERAL
 - `completion_commit() -> str` — Short HEAD at receipt-write time; recorded beside (never
 
 ### llmopt/lab/qartifact.py

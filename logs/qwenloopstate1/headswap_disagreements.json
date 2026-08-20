@@ -1,0 +1,50 @@
+{
+ "note": "post-audit disagreement decomposition, derived from the same pinned npz + vendor slice as headswap_receipt.json; BLe in-run top1 = top256_ids[:,0] (fp32, fixture-certified); the BOOKED LOOP-STATE-0 M2 top1 basis was fp16 full-logit argmax (adjudicator), a different rounding of the same states",
+ "disagree_positions": {
+  "0": [
+   556,
+   583
+  ],
+  "4": [
+   1538
+  ],
+  "3": [
+   1223,
+   1278
+  ]
+ },
+ "item3_bad_pairs": {
+  "vendor": [
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    56
+   ],
+   [
+    0,
+    57
+   ],
+   [
+    0,
+    58
+   ]
+  ],
+  "ble_inrun_top1": [
+   [
+    0,
+    56
+   ],
+   [
+    0,
+    57
+   ],
+   [
+    0,
+    58
+   ]
+  ]
+ }
+}
