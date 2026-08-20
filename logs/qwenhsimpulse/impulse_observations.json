@@ -1,0 +1,26 @@
+{
+ "note": "outcomes recomputed from emitted ids inside the driver (cap-free frozen detector; AMBIGUOUS fail-closed to not-reconverged); sidecars permit independent offline recomputation",
+ "measurement_valid": true,
+ "arms": {
+  "BLe": {
+   "admissible": true,
+   "reason": "P1 prefix identity 5/5; injection table verified against slice + npz at start"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 5,
+   "metric": "n_reconverged_branches",
+   "population": "branches:5 (one per registered disagreement point)",
+   "aggregation": "count",
+   "provenance": "outcome field per row; [\"RECONVERGED\", \"RECONVERGED\", \"RECONVERGED\", \"RECONVERGED\", \"RECONVERGED\"]"
+  },
+  "2": {
+   "value": 0,
+   "metric": "n_correct_branches",
+   "population": "branches:5 (one per registered disagreement point)",
+   "aggregation": "count",
+   "provenance": "sympy oracle via qwen_effort_probe.check"
+  }
+ }
+}

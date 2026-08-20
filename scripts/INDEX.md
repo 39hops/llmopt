@@ -2992,6 +2992,31 @@ QWEN-FAMILY-PROBE-0: cheapest acceptable RATE per non-FFN family.
 - `probe_tensor(fam, name)` — Two passes over row-chunks so 1.27B-param tensors fit VRAM:
 - `main()`
 
+### scratch/qwen_headswap_impulse.py
+QWEN-HEADSWAP-IMPULSE-0 driver: single vendor-top1 token injected at each of the 5 registered vendor/BLe disagreement points on BLe greedy xhigh replays (PRE-REG in docs/RESULTS.md; frozen injection table in docs/preregs/qwen-headswap-impulse-0.params.json).
+
+- `_load(name, rel)`
+- `detector_fires(ids, start_at)` — All fire positions of the frozen 32-gram detector over ids,
+- `recheck_vendor_tokens(inj)` — Recompute each vendor top1 from the attested slice + pinned
+- `run_branch(model, tok, ep, it, frozen_ids, inj, eos)`
+- `main()`
+
+### scratch/qwen_hsimpulse_adjudicate.py
+QWEN-HEADSWAP-IMPULSE-0 independent offline adjudicator: every bar count, P1 check, and outcome class recomputed from the token-ID sidecars alone (PRIMITIVE-EVIDENCE — the producer's in-run outcome fields are non-authoritative and are only compared against, never used). Also: orbit classification (ORIGINAL-ORBIT-REJOIN v NEW-RECURRENCE v NO-RECURRENCE), CYCLE-comparable gap<=300 fields, and full 18-shard BLe artifact verification against the qualified digest chain.
+
+- `_load(name, rel)`
+- `detector_fires(ids, start_at)`
+- `orbit_class(item, ids, pos, frozen_ids, fires_post)` — ORIGINAL-ORBIT-REJOIN: the item's original exact cycle
+- `verify_shards()`
+- `_tt(ids)`
+- `main()`
+
+### scratch/qwen_hsimpulse_color.py
+QWEN-HEADSWAP-IMPULSE-0 tail-period color producer (descriptive, gates nothing). The committed reproduction of the ad-hoc pass that wrote logs/qwenhsimpulse/impulse_color.json: if that file already exists, this script recomputes everything from the sidecars and ASSERTS equality with the existing receipt (repro mode); otherwise it writes the file.
+
+- `tail_period(ids, cap=400, window=800)`
+- `main()`
+
 ### scratch/qwen_ioattrib_adjudicate.py
 QWEN-IO-ATTRIB-1 observations builder + registered resolution.
 

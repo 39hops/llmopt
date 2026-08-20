@@ -36828,3 +36828,141 @@ logs/qwenhsimpulse/ (fresh path): rows jsonl + per-branch
 traj sidecars + observations; small text force-added at booking,
 sidecars force-added under the seedslad exception (evidence
 basis).
+
+
+## VERDICT QWEN-HEADSWAP-IMPULSE-0: bar 1 FIRES at 5/5 as RECURRENCE-RETURN — every vendor-informed single-token branch re-enters recurrence (gaps 33-176 tokens) — but ZERO of five rejoin the original orbit (5/5 NEW-RECURRENCE); bar 2 NO-FIRE (0/5 correct); the informed token redirects WHICH cycle, never whether there is one (2026-08-20, wsl)
+
+Adjudication of PRE-REG QWEN-HEADSWAP-IMPULSE-0 (registered and
+committed 360c19f pre-run) by the INDEPENDENT OFFLINE CONSUMER
+scratch/qwen_hsimpulse_adjudicate.py — every bar count, P1 check,
+and outcome recomputed from the token-ID sidecars alone; the
+producer's in-run outcome fields are non-authoritative (compared
+field-by-field against the rows file — outcome, P1, correctness,
+return gap — zero mismatches; the first consumer version's
+comparison was inert against the sidecar rows, caught by
+receipt-audit and fixed before booking). The tail-period color was
+first computed ad hoc; its committed producer
+scratch/qwen_hsimpulse_color.py re-derives it and asserts equality
+with the existing receipt (REPRO MATCH on the 3080). Reader note on
+the color: two tails carry periods NUMERICALLY NEAR the originals
+(88 with different token content than item 0's frozen cycle; 241 v
+item 4's 242) — the rejoin test scans for the frozen cycle segment
+verbatim anywhere post-injection and finds none, so these are
+near-period NEW cycles, not missed rejoins by labeling. Receipts (each named in full so the lock freezes it):
+logs/qwenhsimpulse/impulse_observations_offline.json (the
+adjudication basis), logs/qwenhsimpulse/impulse_rows.jsonl,
+logs/qwenhsimpulse/impulse_summary.json (start provenance, not an
+adjudication input), logs/qwenhsimpulse/impulse_observations.json
+(producer copy, non-authoritative),
+logs/qwenhsimpulse/impulse_color.json,
+logs/qwenhsimpulse/driver.log,
+logs/qwenhsimpulse/traj_i0_p556.json,
+logs/qwenhsimpulse/traj_i0_p583.json,
+logs/qwenhsimpulse/traj_i3_p1223.json,
+logs/qwenhsimpulse/traj_i3_p1278.json,
+logs/qwenhsimpulse/traj_i4_p1538.json,
+logs/qwenhsimpulse/remote_sha256.txt — all sha-verified both
+machines.
+
+INTERVENTION CLASS (wording fixed at review): this is a
+VENDOR-INFORMED FROZEN-STATE SINGLE-TOKEN INTERVENTION — the
+injected token is the vendor head's argmax on the PINNED
+QWEN-LOOP-STATE-0 h at that position (re-derived from the attested
+slice at start, refused on mismatch with the frozen table), forced
+after a token-exact prefix replay. The live branch does NOT
+re-capture h or run the vendor head online; nothing here is a live
+lm_head replacement.
+
+PRECONDITIONS (all pass): P1 prefix identity 5/5 — replayed tokens
+[0,pos) equal the frozen sidecar tokens exactly and the injected
+token differs from the frozen token at pos; injection table
+verified against slice + npz at start; FULL 18-shard BLe artifact
+verification against the qualified digest chain
+(logs/qwenwhole/artifact_digest_BLe.txt): 18/18 checked, zero
+mismatched (recomputed on the 3080, where the artifact lives) —
+the run's weights are the chain's weights, whole tower, not only
+the head shard.
+
+MEASURED (offline recomputation):
+- Bar 1 RECONVERGENCE: FIRE at 5/5 (bar >= 4). The registered
+  definition is RECURRENCE-RETURN — any frozen 32-gram detector
+  fire after the injection — NOT return to the original orbit.
+  Return gaps: 35, 33, 176, 88, 34 tokens (the minimum
+  measurable gap is 32, the detector window — three branches sit at
+  that floor, i.e. immediate re-entry); every gap <= 300, so
+  under CYCLE-IMPULSE's different (more permissive of escape)
+  definition — no re-fire within a 300-token quiet window — zero
+  branches escape either. Definitions differ
+  between the two rungs and both are stated so they compare
+  honestly.
+- ORBIT CLASSIFICATION (color per the registered basin-taxonomy
+  fence; the REJOIN TEST ITSELF is post-hoc, defined in the offline
+  adjudicator after the run):
+  0/5 ORIGINAL-ORBIT-REJOIN, 5/5 NEW-RECURRENCE — no branch's
+  post-injection stream ever contains the item's original frozen
+  cycle segment (nor, for item 3, the frozen G3 restart landmark).
+  Tail periods (cap 400 / window 800, stated): 179 and 88 (item 0,
+  the 88 with DIFFERENT content than the frozen cycle), 241 (item
+  4, v original 242), 25 (item 3), one tail non-periodic under the
+  caps.
+- Bar 2 REPAIR: NO-FIRE, 0/5 correct — the offline consumer
+  DECODES each sidecar's ids with the vendor tokenizer and re-runs
+  parse + sympy independently of the producer's answer field
+  (receipt-audit fix: the first consumer version reused the
+  producer parse; corrected and re-run before booking). Disclosed:
+  0/5 think-terminated and 0/5 eos — every branch ran to the 3072
+  cap, so bar 2 is CAP-LIMITED (no branch produced an answer to be
+  wrong about), not answered-and-wrong.
+
+REGISTERED-GLOSS NARROWING (the CYCLE-IMPULSE precedent, applied
+before booking): the pre-registration glossed bar-1 FIRE as "a
+single vendor-informed token at the least-converged points cannot
+redirect the trajectory — state/body attribution strengthened."
+That sentence does NOT survive the orbit color: the trajectory IS
+redirected at the orbit level in 5/5 branches (0/5 rejoin). Bar 1
+is booked ONLY under its frozen machine definition —
+recurrence-return — and the registered attribution gloss is
+narrowed to recurrence-class robustness below.
+
+READING (per-branch, five registered points, scoped): a single
+vendor-informed token at the measured least-converged loci
+REDIRECTS the trajectory at the orbit level — every branch lands
+in a cycle the frozen trajectory never visited — and NONE of that
+redirection escapes the recurrence class, restores termination, or
+reaches correctness. Same law CYCLE-IMPULSE measured for random
+temperature bursts, now for one informed token: perturbation
+reshuffles WHICH cycle, never whether there is one. What this
+strengthens is recurrence-CLASS robustness (the loop attractor
+family survives informed micro-intervention); the specific orbit
+is fragile, consistent with the drifting-state picture. What it
+does NOT establish: state/body attribution of the ORIGINAL
+trajectory's formation — the -SCOPE amendment's
+trajectory-level-causality edge narrows (informed single tokens at
+these five points do not redirect toward repair) but the
+matched alternate-token control (generic v vendor-informed token,
+same positions) remains the separate registration that would
+distinguish vendor information from generic perturbation.
+
+PRIOR: right on both bars (registered bar 1 FIRES at 5/5, bar 2
+NO-FIRE), mechanism intuition NOT supported at the orbit level —
+the prior's reasoning extrapolated CYCLE-IMPULSE's orbit stability
+("one informed token is a weaker dose"), and the 0/5
+original-orbit-rejoin result contradicts orbit-level stability
+even while the recurrence-class bar lands exactly as predicted.
+The registered "informative outcome" (a non-reconverging branch)
+did not occur.
+
+FENCES carried: five branches, n=1 per registered point,
+per-branch claims only; RECONVERGED says nothing about which cycle
+(the orbit classification carries that, with its caps stated);
+TERMINATED-implies-nothing clause unused (no branch terminated);
+no vendor-capability claim — one argmax read is not vendor
+behavior; thresholds first-registration; run completed inside the
+window fence. Neither bar lands within 10% of its threshold
+(5 v 3.5, relative margin 43%; bar 2 is a zero count).
+
+Receipts force-added under logs/qwenhsimpulse/ (rows, summary,
+both observations, color, driver.log, remote shas — small text)
+and the five token-ID sidecars (~80KB total, seedslad exception:
+they are the adjudication basis; every number above is
+recomputable from them).

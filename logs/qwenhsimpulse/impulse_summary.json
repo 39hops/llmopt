@@ -1,0 +1,39 @@
+{
+ "start": {
+  "start_commit": "170fd0e",
+  "start_status_porcelain": "?? COMPOSE_DE\n?? COMPOSE_FLQ2\n?? scratch/leancheck/OvershootTest.lean\n",
+  "interpreter": "/home/a/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_headswap_impulse.py": "78738a9ec0de985cab94ed8897283bb8272fc356fa4b87306db26210c7830245",
+   "scratch/qwen_tower_ladder.py": "4e8adf337de2f847b2cd2d7e83d10f3f20a57fc3f242d28d83bbf16c0e3fa0c4",
+   "scratch/qwen_effort_probe.py": "04845e535e1c93210c85abf555acbf3b8d2fb366d81e8ebf2b59ae71d84f4279",
+   "llmopt/lab/qcuda_tower.py": "a55aae50b307efd42c749ab69064df21476ec93d16ef7ae8b8bd274c701144d8",
+   "llmopt/lab/qcuda.py": "4fe810184cbc6a4a2c9ec7cf2bb0d00ee037cc2681e7aafc1fea3ecfa50c2d9b",
+   "docs/preregs/qwen-headswap-impulse-0.params.json": "d70b6844e76ca2aa365ea4955d9190173911c84a6b0d29ccdd849f0b8bdd4ad6",
+   "docs/preregs/qwen-headswap-impulse-0.json": "d507e99cb0d2ea4b8c440b2f90457ba1bfdda2e03ab07d0e1eb59d5c03f97e05"
+  },
+  "artifact_identity": {
+   "BLe": {
+    "art_dir_resolved": "/home/a/qwen_whole0t/BLe",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "fc9347ef55164f3eed433e3345721942e3d2f7a5fefd186c68b118565dcdb49d",
+    "shards": {
+     "n": 18,
+     "total_bytes": 8077632064
+    }
+   },
+   "vendor_slice": {
+    "art_dir_resolved": "/home/a/qwen_vendor_lmhead",
+    "manifest_file": "model.safetensors.index.json",
+    "manifest_sha256": "04fb8e6d6a2370483cc0aa472addc3bc2ad585ecdd201a425028114e5b2773f5",
+    "shards": {
+     "n": 1,
+     "total_bytes": 2542796896
+    }
+   }
+  }
+ },
+ "completion_commit": "170fd0e",
+ "smoke": false,
+ "n_branches": 5
+}

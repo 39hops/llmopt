@@ -7138,3 +7138,36 @@ honest status column).
   banked: headswap driver derives HOMOLOGOUS geometry from the
   params file on any re-run (literal-v-derived class, verified
   equal this run).
+- **BANKED (2026-08-20): LEVEL-2 EXACT GEOMETRIC MIPS CENSUS — the
+  preferred first level-2 registration is an EXACT
+  branch-and-bound top-256, never approximate ANN** (GPT seat;
+  Artin Mac GO 2026-08-20). Design: cluster the decoded W4 head
+  rows; each cluster stores center c_j and full-space radius r_j;
+  per query h the upper bound U_j = h . c_j + ||h|| r_j
+  (Cauchy-Schwarz) orders clusters; exact-score clusters in
+  descending U and STOP once the running kth score tau >= max
+  unscanned U — certifying the exact global top-256 with zero
+  additional fidelity loss. Qualification bar: 100% equality with
+  brute-force W4 top-256 on a small-vocab surface BEFORE any
+  full-surface read. Scientific output is the TRAFFIC Pareto
+  (bank amendment 2026-08-19): q50/q90/q95/max rows scanned and
+  actual payload+index bytes touched, per corpus/prefix
+  population. If high-dimensional bounds force a near-full scan,
+  BOOK THE NULL; if they prune hard, that is exact sublinear
+  readout. Index uses head rows only, no evaluation labels.
+  Clustering/index recipe + traffic thresholds FREEZE in the
+  prereg before any full-surface result is read. Links
+  [[cheap-readout-census]]; supersedes-in-preference any
+  approximate-recall router variant for the first registration.
+- **BANK OUTCOME (2026-08-20): HEADSWAP-IMPULSE-0 booked** (RESULTS
+  L36833): 5/5 recurrence-return, 0/5 original-orbit rejoin, 0/5
+  repair (cap-limited). The [[no-regret-retry-controller]] law
+  extends: random bursts AND one informed token both reshuffle
+  WHICH cycle, never whether there is one — single-token
+  interventions of any information content are now the measured-out
+  dose class; the next controller arms are multi-token /
+  state-level (drift amplification, representation restart). The
+  matched alternate-token control (generic v vendor-informed, same
+  positions) stays a separate registration. Ladder leg 3 (vendor
+  body) remains priced, unregistered — its motivation now runs
+  through trajectory-formation causality, not local readout.

@@ -1,0 +1,50 @@
+{
+ "note": "exact-tail period test on the impulse sidecars (cap 400 / window 800, stated); tail_cycle_occurs_in_frozen = the final period-L segment appears verbatim in the item frozen greedy trajectory; descriptive color, gates nothing",
+ "branches": [
+  {
+   "sidecar": "traj_i0_p556.json",
+   "item": 0,
+   "pos": 556,
+   "tail_period": 179,
+   "tail_cycle_occurs_in_frozen": false,
+   "return_gap": 35,
+   "outcome": "RECONVERGED"
+  },
+  {
+   "sidecar": "traj_i0_p583.json",
+   "item": 0,
+   "pos": 583,
+   "tail_period": 88,
+   "tail_cycle_occurs_in_frozen": false,
+   "return_gap": 33,
+   "outcome": "RECONVERGED"
+  },
+  {
+   "sidecar": "traj_i3_p1223.json",
+   "item": 3,
+   "pos": 1223,
+   "tail_period": null,
+   "tail_cycle_occurs_in_frozen": null,
+   "return_gap": 176,
+   "outcome": "RECONVERGED"
+  },
+  {
+   "sidecar": "traj_i3_p1278.json",
+   "item": 3,
+   "pos": 1278,
+   "tail_period": 25,
+   "tail_cycle_occurs_in_frozen": false,
+   "return_gap": 88,
+   "outcome": "RECONVERGED"
+  },
+  {
+   "sidecar": "traj_i4_p1538.json",
+   "item": 4,
+   "pos": 1538,
+   "tail_period": 241,
+   "tail_cycle_occurs_in_frozen": false,
+   "return_gap": 34,
+   "outcome": "RECONVERGED"
+  }
+ ]
+}

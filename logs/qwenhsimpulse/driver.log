@@ -1,0 +1,20 @@
+[hi] injection table verified against slice + npz
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[tl] tower fused {'w4': 352, 's16': 48}
+[tl] verify_routes OK: {'FusedW4Linear': 352, 'FusedS16Linear': 49, 'cpu_compressed_rows': 1}
+[hi] tower up, routes {'FusedW4Linear': 352, 'FusedS16Linear': 49, 'cpu_compressed_rows': 1}
+[hi] item0@556 RECONVERGED gap=35 eos=False ok=False gen=3072 270s
+[hi] item0@583 RECONVERGED gap=33 eos=False ok=False gen=3072 268s
+[hi] item4@1538 RECONVERGED gap=34 eos=False ok=False gen=3072 262s
+[hi] item3@1223 RECONVERGED gap=176 eos=False ok=False gen=3072 267s
+[hi] item3@1278 RECONVERGED gap=88 eos=False ok=False gen=3072 282s
+{
+ "bars": {
+  "1": "FIRE",
+  "2": "NO-FIRE"
+ },
+ "refutation": "NOT-REFUTED",
+ "n_reconverged": 5,
+ "n_correct": 0
+}

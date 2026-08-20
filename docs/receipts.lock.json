@@ -795,6 +795,90 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwenhsimpulse/driver.log": {
+   "bytes": 1065,
+   "exists": true,
+   "sha256": "f194ee3354e49aeeb5058092f38689e1528e879ffb93cb2e5ff087d96c9b040d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhsimpulse/impulse_color.json": {
+   "bytes": 1192,
+   "exists": true,
+   "sha256": "be3ecc1a4ceb234b7a9674195ab90dbd4dd1496281473c75c120d6e995539a19",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhsimpulse/impulse_observations.json": {
+   "bytes": 902,
+   "exists": true,
+   "sha256": "cab8a92cd488970c2ead3f2bc328d0b1e34eab735176c16e2ff65d177748003b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhsimpulse/impulse_observations_offline.json": {
+   "bytes": 2198,
+   "exists": true,
+   "sha256": "a7b288114ffc0c1159328a28043757def5a99c5f05b837195abe188cc610593e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhsimpulse/impulse_rows.jsonl": {
+   "bytes": 2936,
+   "exists": true,
+   "sha256": "7fd67d1dc7179dbba793e9768f58700265a6325d8e2b14519949eda9ad20ed29",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhsimpulse/impulse_summary.json": {
+   "bytes": 1632,
+   "exists": true,
+   "sha256": "0819670efce9e413eb22dc498013a9259c0fefa3c2cecdfe63140dd1aa276aaa",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhsimpulse/remote_sha256.txt": {
+   "bytes": 949,
+   "exists": true,
+   "sha256": "c6e82f2fb845f6e8bf7cf6e9a7a8ab56865ee4c4d9c46a7272004ebba529da33",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhsimpulse/traj_i0_p556.json": {
+   "bytes": 17084,
+   "exists": true,
+   "sha256": "181a506ebb8545020d20b8aa4594614fd685c763960ca00916281c33e5a40fb9",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhsimpulse/traj_i0_p583.json": {
+   "bytes": 17057,
+   "exists": true,
+   "sha256": "3b5348790ec657ffb93f780c7b647fbb306e9d1069dcf144340f604d4ab2d4c8",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhsimpulse/traj_i3_p1223.json": {
+   "bytes": 15099,
+   "exists": true,
+   "sha256": "fbcb6a3f92cc8aca8aff549c95e4bec4fd483e520489bfa435692e5d7d158053",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhsimpulse/traj_i3_p1278.json": {
+   "bytes": 14691,
+   "exists": true,
+   "sha256": "10114a4198cd516c544029d706685e566096cadee84ce2be74e2e53fefeaa324",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenhsimpulse/traj_i4_p1538.json": {
+   "bytes": 16069,
+   "exists": true,
+   "sha256": "c25fabd2467969fb8b308e24917d0c7f425275fdecddf5f5e7e99c784973ebab",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwenloopstate/driver.log": {
    "bytes": 748,
    "exists": true,
@@ -841,6 +925,13 @@
    "bytes": 875,
    "exists": true,
    "sha256": "f5aa0f266c996109be6583acce539dee70f9dbf1e04d6f042f227bc19a539e79",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenloopstate1/headswap_disagreements.json": {
+   "bytes": 662,
+   "exists": true,
+   "sha256": "a36cb7d472dc668dfaa22f2a2753bb0fe0e0e8d1e4024bfef1129fb15b1513aa",
    "source": "results",
    "tracked": true
   },

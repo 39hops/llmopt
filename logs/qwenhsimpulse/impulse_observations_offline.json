@@ -1,0 +1,89 @@
+{
+ "note": "independent offline recomputation from token-ID sidecars; producer outcome fields non-authoritative (compared, listed under producer_mismatches); full 18-shard BLe verification against the qualified digest chain",
+ "measurement_valid": true,
+ "arms": {
+  "BLe": {
+   "admissible": true,
+   "reason": "5/5 sidecars, P1 5/5, BLe shards 18/18 chain-verified, mismatched []"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 5,
+   "metric": "n_reconverged_branches",
+   "population": "branches:5 (one per registered disagreement point)",
+   "aggregation": "count",
+   "provenance": "offline detector recomputation from sidecars; [\"RECONVERGED\", \"RECONVERGED\", \"RECONVERGED\", \"RECONVERGED\", \"RECONVERGED\"]"
+  },
+  "2": {
+   "value": 0,
+   "metric": "n_correct_branches",
+   "population": "branches:5 (one per registered disagreement point)",
+   "aggregation": "count",
+   "provenance": "sympy oracle re-run offline on the producer-parsed answers"
+  }
+ },
+ "branches": [
+  {
+   "item": 0,
+   "pos": 556,
+   "p1": true,
+   "outcome": "RECONVERGED",
+   "orbit_class": "NEW-RECURRENCE",
+   "return_gap": 35,
+   "gap_le_300": true,
+   "eos_terminated": false,
+   "correct": false
+  },
+  {
+   "item": 0,
+   "pos": 583,
+   "p1": true,
+   "outcome": "RECONVERGED",
+   "orbit_class": "NEW-RECURRENCE",
+   "return_gap": 33,
+   "gap_le_300": true,
+   "eos_terminated": false,
+   "correct": false
+  },
+  {
+   "item": 3,
+   "pos": 1223,
+   "p1": true,
+   "outcome": "RECONVERGED",
+   "orbit_class": "NEW-RECURRENCE",
+   "return_gap": 176,
+   "gap_le_300": true,
+   "eos_terminated": false,
+   "correct": false
+  },
+  {
+   "item": 3,
+   "pos": 1278,
+   "p1": true,
+   "outcome": "RECONVERGED",
+   "orbit_class": "NEW-RECURRENCE",
+   "return_gap": 88,
+   "gap_le_300": true,
+   "eos_terminated": false,
+   "correct": false
+  },
+  {
+   "item": 4,
+   "pos": 1538,
+   "p1": true,
+   "outcome": "RECONVERGED",
+   "orbit_class": "NEW-RECURRENCE",
+   "return_gap": 34,
+   "gap_le_300": true,
+   "eos_terminated": false,
+   "correct": false
+  }
+ ],
+ "producer_mismatches": [],
+ "ble_shard_verification": {
+  "checked": 18,
+  "mismatched": [],
+  "chain_file": "logs/qwenwhole/artifact_digest_BLe.txt"
+ }
+}

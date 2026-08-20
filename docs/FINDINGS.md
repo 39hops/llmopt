@@ -2489,3 +2489,15 @@ regime tag on every bullet is the fence.
   causality stays open, per the -SCOPE amendment); per-specimen,
   off-manifold states, no teacher-behavior claim.
   ([VERDICT QWEN-LOOP-STATE-1-HEADSWAP](RESULTS.md#L36594 "id:2026-08-20-verdict-qwen-loop-state-1-headswap").)
+- [SINGLE-SEED] [REGIME-SCOPED: measured deployment artifacts] [FREE-RUN-GATED]
+  A single vendor-informed token forced at each of the five measured
+  head-disagreement points on BLe's frozen loop trajectories re-enters
+  recurrence in 5/5 branches (gaps 33-176 tokens, three at the 32-token
+  detector floor) yet rejoins the ORIGINAL orbit in 0/5 — every branch
+  lands in a cycle the frozen trajectory never visited, none terminates
+  or reaches correctness (0/5, cap-limited); recurrence-CLASS robust,
+  specific orbit fragile; the registered "cannot redirect" gloss was
+  narrowed at booking (CYCLE-IMPULSE precedent); adjudicated by an
+  independent offline consumer recomputing everything from token-ID
+  sidecars.
+  ([VERDICT QWEN-HEADSWAP-IMPULSE-0](RESULTS.md#L36833 "id:2026-08-20-verdict-qwen-headswap-impulse-0-bar").)
