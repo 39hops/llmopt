@@ -37393,3 +37393,39 @@ run gate (explicit Artin 3080 GO) are otherwise unchanged.
 docs/preregs/qwen-homeo-actuator-0.json re-validated against the
 schema after the edit.
 
+## AMENDMENT QWEN-HOMEO-ACTUATOR-0-BOUNDARY (amends PRE-REG QWEN-HOMEO-ACTUATOR-0): detector constants and event-boundary index semantics pinned numerically pre-launch; per-item boundary fixture added as implementation qualification — no treatment or bar changes (2026-08-20, mac)
+
+Pre-launch hardening per external review of 254e756, applied before
+any 3080 touch. The prose registration said "identical to the
+CYCLE-IMPULSE/HEADSWAP-IMPULSE frozen detector"; the params sidecar
+now pins the numbers and the index convention so HOT and REFRESH
+cannot differ by one token:
+
+- Detector constants: WIN=32, LAG_MAX=512, T_MIN=544 — verified
+  against the frozen implementation in
+  scratch/qwen_headswap_impulse.py (line-identical detector), not
+  taken from the review text.
+- Index semantics: fire t is a 1-based generated-token count
+  (ids[t-WIN:t] matched an earlier window), so frozen_ids[:t]
+  INCLUDES the event-completing token. The intervention boundary
+  consumes exactly frozen_ids[:t]; every high-arm branch predicts
+  token index t first. Escape criterion: no fire f with
+  t < f <= t+300 on the concatenated stream.
+- BOUNDARY FIXTURE (implementation qualification, per item, BEFORE
+  any treatment row — never a bar): (a) first detector fire
+  recomputed from the frozen sidecar equals the emitted event-table
+  t; (b) BLe state reconstructed through frozen_ids[:t] via
+  teacher-forced chunked prefill PLUS a serializer roundtrip (the
+  state save/restore path HOT-HIGH uses is inside the measured
+  sanity path); (c) the restored-state next-token prediction equals
+  frozen_ids[t]; (d) HOT-HIGH and REFRESH-HIGH continuations start
+  at that identical boundary.
+
+Bars, thresholds, arms, refutation predicate, precedence, and the
+registered prior are unchanged. Driver:
+scratch/qwen_homeo_actuator.py (sanity gate exits
+INSTRUMENT-INVALID before any treatment cell on any fixture or
+exact-reproduction miss). BLem recipe added to the recomposer
+RECIPES table (base BLe, donor C, mid band, 48 keys — the additive
+pattern PX/PK used).
+

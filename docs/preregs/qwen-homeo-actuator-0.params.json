@@ -1,15 +1,23 @@
 {
  "note": "Frozen parameters for PRE-REG QWEN-HOMEO-ACTUATOR-0. The event table (first frozen-detector fire position per item) is DERIVED at run start from the pinned sidecars below and emitted to the receipt before the first continuation; the driver refuses on any sha mismatch.",
- "items": [0, 3, 4],
+ "items": [
+  0,
+  3,
+  4
+ ],
  "frozen_sidecar_sha256": {
   "0": "887fcdbf307c7d7cac041e728e8f778741208fdf973d18573068bdbda08c570a",
   "3": "bee84ea46431606ef3ef230ea53d9169ff6a80cef6e9e8591bd61a6b8fc60eab",
   "4": "a7df6389f85f20bcbb93c01cea49ff0f0ef8c5a5ba89d2aadb29454c1b734288"
  },
  "detector": {
-  "kind": "self-recurrence 32-gram",
-  "window": 32,
-  "escape_window_tokens": 300
+  "kind": "self-recurrence 32-gram (identical implementation to CYCLE-IMPULSE / HEADSWAP-IMPULSE frozen detector)",
+  "WIN": 32,
+  "LAG_MAX": 512,
+  "T_MIN": 544,
+  "index_semantics": "fire t is a 1-based generated-token count: ids[t-WIN:t] matched an earlier window; ids[:t] therefore INCLUDES the event-completing token. The event boundary consumes exactly frozen_ids[:t]; every high-arm branch predicts token index t first.",
+  "escape_window_tokens": 300,
+  "escape_criterion": "no detector fire f with t < f <= t+300 on the concatenated stream frozen_ids[:t] + continuation (cap-free fires reported as color)"
  },
  "continuation_cap_tokens": 3072,
  "decoding": "greedy",
@@ -21,6 +29,15 @@
   "compose_receipt": "logs/qwenattrib/compose_BLem.json",
   "residency_precondition": "plan-before-build on the 10GB card; rejection books INSTRUMENT-NOT-RUN; a smaller dose is a NEW registration"
  },
- "state_machine_naming": "HOT-HIGH continuation computes F(W_BLem, S^BLe) — mixed-precision state machine, stated in receipts",
- "run_gate": "explicit Artin 3080 GO only"
+ "state_machine_naming": "HOT-HIGH continuation computes F(W_BLem, S^BLe) \u2014 mixed-precision state machine, stated in receipts",
+ "run_gate": "explicit Artin 3080 GO only",
+ "boundary_fixture": {
+  "note": "implementation qualification per external review of 254e756 \u2014 not a treatment or bar; runs per item BEFORE any treatment row",
+  "checks": [
+   "first detector fire recomputed from the frozen sidecar equals the emitted event-table t",
+   "BLe state reconstructed through frozen_ids[:t] (teacher-forced, chunked prefill + serializer roundtrip)",
+   "BLe next-token prediction at index t equals frozen_ids[t]",
+   "HOT-HIGH and REFRESH-HIGH continuations start at the identical boundary (predict index t)"
+  ]
+ }
 }

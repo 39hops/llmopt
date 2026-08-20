@@ -3001,6 +3001,18 @@ QWEN-HEADSWAP-IMPULSE-0 driver: single vendor-top1 token injected at each of the
 - `run_branch(model, tok, ep, it, frozen_ids, inj, eos)`
 - `main()`
 
+### scratch/qwen_homeo_actuator.py
+QWEN-HOMEO-ACTUATOR-0 driver: one-band precision escalation (BLe -> BLem) applied at the first frozen-detector fire of each frozen loop trajectory (PRE-REG + AMENDMENT -REFRESH in docs/RESULTS.md; constants and boundary semantics pinned in docs/preregs/qwen-homeo-actuator-0.params.json).
+
+- `_load(name, rel)`
+- `detector_fires(ids, start_at)` — All fire positions of the frozen 32-gram detector over ids,
+- `_move_state(obj, device, _seen=None)` — Deep-copy a cache/state object with every tensor moved to
+- `prefill(model, ids_all)` — Teacher-forced chunked prefill of ids_all[:-1]; returns
+- `continue_greedy(model, past, cur, n_max, eos)`
+- `sidecar(name, row, ids)`
+- `score_row(arm, item, t, cont, frozen_prefix, ep, tok, eos, wall)` — Outcome primitives for one high-arm branch.
+- `main()`
+
 ### scratch/qwen_hsimpulse_adjudicate.py
 QWEN-HEADSWAP-IMPULSE-0 independent offline adjudicator: every bar count, P1 check, and outcome class recomputed from the token-ID sidecars alone (PRIMITIVE-EVIDENCE — the producer's in-run outcome fields are non-authoritative and are only compared against, never used). Also: orbit classification (ORIGINAL-ORBIT-REJOIN v NEW-RECURRENCE v NO-RECURRENCE), CYCLE-comparable gap<=300 fields, and full 18-shard BLe artifact verification against the qualified digest chain.
 

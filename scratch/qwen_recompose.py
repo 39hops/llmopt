@@ -57,6 +57,9 @@ for _b in "eml":
     RECIPES[f"FL{_b}"] = {"base": "F", "donor": "C",
                           "mark": ".linear_attn.", "layers": _BAND[_b],
                           "n_expected": 48}
+# QWEN-HOMEO-ACTUATOR-0: one-band escalation from base BLe
+RECIPES["BLem"] = {"base": "BLe", "donor": "C", "mark": ".linear_attn.",
+                   "layers": _BAND["m"], "n_expected": 48}
 # QWEN-MODEL2-ALLOC-1: third-pick arms from base FLe
 RECIPES["PX"] = {"base": "FLe", "donor": "C", "mark": ".linear_attn.",
                  "layers": _BAND["m"], "n_expected": 48}
