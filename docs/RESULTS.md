@@ -40037,3 +40037,66 @@ per arm with per-call dose. Files: scratch/ex6temporal.py,
 docs/preregs/ex6-temporal-0.json,
 scripts/obs_from_receipt_ex6temporal.py.
 
+## AMENDMENT EX6-TEMPORAL-0-DOSE: pre-launch registration repairs from the prereg audit — dose census + admissibility clause, census probe fixed to witness decode, sealed stdout receipt registered (2026-08-21, mac)
+
+Amends PRE-REG EX6-TEMPORAL-0, BEFORE LAUNCH. Pre-read
+discipline: no real cell has fired; nothing treatment-side
+exists beyond the smoke run's sealed smoke_* paths, which stay
+unread. All items from a prereg-auditor pass on the registration
+commit fc660c6a, each verified in-house before adoption.
+
+1. DOSE CENSUS + ADMISSIBILITY (the auditor's substantive
+catch). "Equal dose by construction" holds per CALL, not per
+PROBLEM: a completion shorter than k generated tokens gives arm
+Zk ZERO dose on that problem (the count-k call never happens) —
+the census probe's own problem 0 sits at exactly 3 T=1 calls.
+This biases Delta_z3 (hence bar 4's max and bar 5's gap) toward
+zero by a mechanism unrelated to temporal sensitivity.
+Registered repair: the adapter counts zero-dose problems per Zk
+arm from the perprob streams (a row without the 'recall' key had
+no masked call); the contrasts for bars 3, 4, 5 are ADMISSIBLE
+only if each involved arm's zero-dose count is <= 36/360 pooled
+(10%); counts book as disclosures either way. A bar-4 FIRE
+produced by short generations is a dose artifact, not a
+launch-step effect — the clause prices it. Exercised end-to-end
+on synthetic receipts: 6/360 admissible, 46/360 books bars 4/5
+UNRESOLVED with the reason chain.
+
+2. CENSUS PROBE WITNESSES DECODE (auditor blocker). Bar 2's
+registered text claimed "then decode" but problem 0's completion
+is exactly 3 generated tokens — the predicate's decode clause
+passed vacuously (empty-slice all()). Probe moved to seed-7001
+problem idx 2 (completion runs past 3 tokens; prompt verified
+identical at n=4 and n=120), predicate tightened to
+len(after) >= 4. Bar 2 population string updated to
+seed7001:problem2:none in JSON and adapter. Smoke re-run:
+census 48/48 with first6_after_reset = z1, z2, z3, decode,
+decode, decode.
+
+3. SEALED STDOUT RECEIPT REGISTERED. treatment_stdout.log (the
+redirect target for run_gate's running-accuracy lines on sealed
+arms) was classified in prose but absent from the JSON receipts
+list — the one artifact holding raw treatment progress was
+outside the receipt lock. Added to receipts; also added to the
+driver's refuse-if-exists guard (it was append-opened across
+invocations).
+
+4. HYGIENE: census stage no longer streams its outcome row into
+the always-readable qual perprob file (PERPROB toggled off for
+the census call — the rescue/break secondary read needs no
+tmp_census filter); LOG/PERPROB env vars now assigned directly
+instead of setdefault (an inherited env var could silently
+redirect receipts off the registered paths).
+
+Auditor items NOT adopted, with reasons: tmp_ arm-label prefix
+kept (receipt compatibility, adapter bridges it); the
+instrument-copy identity concern is priced by bar 1's six
+cell-exact anchors plus the auditor's own line-identical diff of
+the gate math.
+
+Smoke qualification re-run after all edits: rc 0, census 48/48
+decode-witnessed, anchors path exercised, no treatment value
+printed. Files: scratch/ex6temporal.py,
+docs/preregs/ex6-temporal-0.json,
+scripts/obs_from_receipt_ex6temporal.py.
+

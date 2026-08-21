@@ -21,10 +21,10 @@ counter across the layer pass. Equal dose by construction: each
 Zk arm masks ONE temporal position across ALL 48 MoE layers.
 
 Stages, fail-closed in order:
-  census     seed 7001 problem 0 through the NONE predicate with
-             call-shape logging: every MoE block must record a
-             prompt-batch reset followed by z1, z2, z3 in order,
-             48/48. Outcome-blind (no gate result read or
+  census     seed 7001 problem idx 2 through the NONE predicate
+             with call-shape logging: every MoE block must record
+             a prompt-batch reset followed by z1, z2, z3 in order
+             then decode, 48/48. Outcome-blind (no gate result read or
              printed). Failure exits 3 before any anchor runs.
   qual       per seed: NONE, Z1. All 6 cells must match the
              booked LOC anchors CELL-EXACT. Any miss exits 3
@@ -58,9 +58,11 @@ QUAL = DIR / f"{PRE}qual.jsonl"
 TREAT = DIR / f"{PRE}treatment.jsonl"
 QUAL_PP = DIR / f"{PRE}qual_perprob.jsonl"
 TREAT_PP = DIR / f"{PRE}treatment_perprob.jsonl"
-os.environ.setdefault("LOG", str(QUAL))
-os.environ.setdefault("PERPROB", "1")
-os.environ.setdefault("PERPROB_LOG", str(QUAL_PP))
+# Direct assignment (not setdefault): an inherited env var must not
+# silently redirect receipts off the registered paths.
+os.environ["LOG"] = str(QUAL)
+os.environ["PERPROB"] = "1"
+os.environ["PERPROB_LOG"] = str(QUAL_PP)
 
 import scratch.moe_gt1_arm2 as m  # noqa: E402
 from llmopt.lab.provenance import (completion_commit,  # noqa: E402
@@ -156,7 +158,7 @@ def census_verdict(census, n_moe):
         prefill_idx = [i for i, (n, ph, _) in enumerate(calls)
                        if ph == "prefill" and n > 1]
         after = phases[prefill_idx[-1] + 1:] if prefill_idx else []
-        ok = (bool(prefill_idx) and len(after) >= 3
+        ok = (bool(prefill_idx) and len(after) >= 4
               and after[0] == "z1" and after[1] == "z2"
               and after[2] == "z3"
               and all(p == "decode" for p in after[3:]))
@@ -201,7 +203,8 @@ def run_arm(model, tok, problems, keep, seed, arm, log_path,
 
 
 def main():
-    for pth in (CENSUS, QUAL, TREAT, QUAL_PP, TREAT_PP):
+    for pth in (CENSUS, QUAL, TREAT, QUAL_PP, TREAT_PP,
+                DIR / f"{PRE}treatment_stdout.log"):
         if pth.exists():
             raise SystemExit(f"REFUSING: {pth} exists")
     DIR.mkdir(parents=True, exist_ok=True)
@@ -215,15 +218,22 @@ def main():
     keep = {int(li): set(v) for li, v in
             json.loads(Path(KEEPSET).read_text()).items()}
 
-    # Stage 1: call-position census — outcome-blind, problem 0 only.
+    # Stage 1: call-position census — outcome-blind, problem idx 2
+    # only (its completion runs past 3 generated tokens, so the
+    # decode label after z3 is actually witnessed; problem 0's is
+    # exactly 3 T=1 calls and cannot witness it). Perprob streaming
+    # is disabled for this stage so no census outcome row lands in
+    # the always-readable qual perprob stream.
     m.SEED = 7001
-    probe = make_dataset(N_EVAL, seed=7001)[:1]
+    probe = make_dataset(N_EVAL, seed=7001)[2:3]
     state, restore = instrument(model, keep, PREDS["NONE"])
     state["log_census"] = True
+    perprob_save, m.PERPROB = m.PERPROB, False
     try:
         m.run_gate(model, tok, probe, "tmp_census", state=state)
     finally:
         restore()
+        m.PERPROB = perprob_save
     verdict = census_verdict(state["census"], state["n_moe"])
     CENSUS.write_text(json.dumps(
         {"start": START, "verdict": verdict}, indent=1))

@@ -57,7 +57,7 @@ def main(run_dir):
                "aggregation": "count_of_6"}
     ms["2"] = {"value": census["n_ok"],
                "metric": "n_modules_temporal_law_ok",
-               "population": "seed7001:problem0:none",
+               "population": "seed7001:problem2:none",
                "aggregation": "count_of_48"}
     if n_exact == 6 and census.get("pass"):
         for arm in ("tmp_Z2", "tmp_Z3"):
@@ -88,6 +88,27 @@ def main(run_dir):
                    "population": "z2_v_z3:3seeds",
                    "aggregation": "pooled_sum"}
         ms["refutation:delta_z2"] = ms["3"]
+        # DOSE CENSUS (AMENDMENT -DOSE): a perprob row without the
+        # 'recall' key had zero masked calls on that problem — the
+        # count-k call never happened (completion too short). The
+        # contrast is admissible only under <= 36/360 (10%) per arm.
+        zero_dose = {"Z2": 0, "Z3": 0}
+        for line in (d / "treatment_perprob.jsonl").read_text() \
+                .splitlines():
+            r = json.loads(line)
+            arm = r["frac"].removeprefix("tmp_")
+            if arm in zero_dose and "recall" not in r:
+                zero_dose[arm] += 1
+        obs["dose_census"] = zero_dose
+        obs["contrasts"] = {}
+        for bar, arms_involved in (("3", ("Z2",)), ("4", ("Z2", "Z3")),
+                                   ("5", ("Z2", "Z3"))):
+            bad = [a for a in arms_involved if zero_dose[a] > 36]
+            obs["contrasts"][bar] = (
+                {"admissible": True} if not bad else
+                {"admissible": False,
+                 "reason": f"zero-dose problems over 10% pooled: "
+                           f"{ {a: zero_dose[a] for a in bad} }"})
     else:
         obs["measurement_valid"] = True
         for a in ("z2", "z3"):

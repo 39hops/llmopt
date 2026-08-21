@@ -362,6 +362,10 @@
    "exists": false,
    "source": "prereg"
   },
+  "logs/ex6temporal/treatment_stdout.log": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/funnel_wall/prec_sweep_step1_d64.log": {
    "bytes": 607,
    "exists": true,
