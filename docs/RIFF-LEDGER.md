@@ -3015,7 +3015,16 @@ deletion counts, draw expert ids uniformly within layer, breaking
 rank matching while holding placement — the one control cell not
 in the ledger; ex3_del_rand0 already matches layer AND rank by
 construction) and the demand-dose ladder at fixed rank class.
-(b) and (c) remain unregistered and unrun.] Attribution: Grok (sharpening), three Opus
+(b) and (c) remain unregistered and unrun.] [RESIDUE MEASURED
+SAME DAY — VERDICT EX5-LAYERMATCH-0 (RESULTS L37996, 2026-08-21):
+layer-only family 0/3 (median -3), fresh rank-window family 1/3
+(sums -12/+25/+10, range 37 — rand0's +28 was substantially a
+draw property), named crest replicates +43 3/3 on a virgin triple
+and beats 2/3 of its own rank class. The benefit is scoped to
+carrier IDENTITY. Remaining live: the fixed-rank-class dose
+ladder, slate items (b) TRAJ anatomy + (c) physics-gate scalpel —
+(b) is now the sharpest question: what distinguishes the named 80
+from same-window draws that do nothing or harm.] Attribution: Grok (sharpening), three Opus
 seats (audit findings), Artin (sanction + relay), Fable
 (verification + application).
 
@@ -3039,7 +3048,12 @@ seats (audit findings), Artin (sanction + relay), Fable
   "horizon structure" is not yet separated either; the frame's
   next honest discriminator is the per-layer-count-matched uniform
   arm / fixed-rank-class dose ladder named in the EX-ANAT-4 slate
-  update.] Scale corollary (Artin,
+  update. MEASURED 2026-08-21 (EX5-LAYERMATCH-0): layer-matched
+  identity draws do nothing (0/3) and the rank-window class is
+  draw-lottery (1/3, range 37) while the named carriers replicate
+  +43 — for the horizon frame this means the interface story
+  survives only in IDENTITY form: WHICH experts sit at the
+  interface matters, their rank/placement class does not.] Scale corollary (Artin,
   same exchange, measured side): closed-system math natives are
   scale-SENSITIVE not scale-maximal (113M/200M/400M excluded from
   every fit; width cliffs; tokens-per-width ceiling) — and the

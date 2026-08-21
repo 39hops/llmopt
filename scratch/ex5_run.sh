@@ -7,6 +7,16 @@
 . "$(dirname "$0")/lib/driver.sh"
 llmopt_cd
 
+# The frozen gt7_run.py appends unconditionally; a relaunch would
+# silently double the booked rows (receipt-audit finding, added
+# post-booking so the as-run driver sha in the observations doc
+# stays truthful — the run that produced the booked rows predates
+# this guard).
+[ -f logs/ex5/ex5.jsonl ] && {
+    echo "REFUSING: logs/ex5/ex5.jsonl exists (booked receipts)" >&2
+    exit 1
+}
+
 ARMSET="ex1_full128,ex3_del_invp,ex5_del_rank0,ex5_del_rank1,ex5_del_rank2,ex5_del_layer0,ex5_del_layer1,ex5_del_layer2"
 
 for SEED in 4001 5002 6003; do
