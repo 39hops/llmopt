@@ -7808,8 +7808,11 @@ honest status column).
   the phase-table route is DEAD for residency — held out and
   churn-charged, phase-static@K32 runs 1.6-4.7x WORSE than plain
   LRU@K48 (sharp target fails on all six traces) and loses to
-  same-K LRU on 4-5/6. The zero-fit read TRANSPORTS: warm
-  LRU@K48 = 65-95 MB/decode-token on unseen prompts. True
+  same-K LRU on 4-5/6. LRU DYNAMICS transport (rung-2 warm start
+  was train-half fitted; rung-1 empty-start numbers nearly
+  identical): warm LRU@K48 = 65-95 MB/decode-token on unseen
+  prompts. Phase info not nulled generally — PHASE@K48 edges LRU
+  on proofs; the DEAD call scopes to K32-replaces-K48. True
   BELADY-BYPASS ceiling shows ~2x implementable headroom over
   LRU at both budgets — in reuse structure, not phase tables.
   Implementation call now rests on: LRU@K48 (~6.4GB) + a
@@ -7824,9 +7827,14 @@ honest status column).
   BLe's top-256 is 245-249/256 inside vendor's top-256, zero
   specials. DROP-TOP256 REDESIGN PRICED DEAD: the first
   admissible outside token sits at BLe rank 204-223, 12.3-18.6
-  logits down — the exact CONTROL-MATCH-FAILED class. Live
-  direction: controls INSIDE the shared manifold (the other
-  equally-BLe-plausible top-8 candidate). Portable top-1024
+  logits down — the exact CONTROL-MATCH-FAILED class.
+  [CORRECTED 2026-08-21, AMENDMENT MORNING-BLOCK-WORDING: the
+  "rank-2 in-manifold control" first proposed here is the
+  TREATMENT — rank2 == vendor token at 5/5 loci (binary top-2
+  near-ties); rank-3 is 0/5 gap-matched under the +-0.05 law
+  (gaps 0.35-3.64 v targets 0.007-0.24). An identity-matched
+  third-token control DOES NOT EXIST at these specimens; the
+  thread parks or a tri-tie desk search finds fresh loci.] Portable top-1024
   sidecars for both heads at every locus live in the receipt —
   the census never needs the 3080 again (the sufficient-
   statistics lesson, applied).

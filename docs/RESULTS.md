@@ -38773,3 +38773,44 @@ these h only, no trajectory or causal claim; observation-only,
 gates nothing; the top-1024 sidecars are the frozen basis any
 redesign registration should cite as operands.
 
+## AMENDMENT MORNING-BLOCK-WORDING (targets: OBSERVATION ROUTE-DB-REPLAY-1 + OBSERVATION TOPSET-OVERLAP-0): three corrections — rung-2 LRU was train-half warm-started, "phase-table route dead" scopes to the registered K32-replacement target, and the proposed "BLe rank-2 in-manifold control" is the TREATMENT (rank2 == vendor token at 5/5 loci; rank-3 is 0/5 gap-matched) (2026-08-21, Mac, desk)
+
+External review (GPT seat), every number re-verified from the
+receipts before adoption:
+
+1. ROUTE-DB WORDING. Rung 2's "zero-fit LRU transports" is
+   technically false: LRU/LFU warm-started from the train-fit
+   plain table (scratch/routedb_replay2.py). Corrected sentence:
+   LRU DYNAMICS transport — the rung-2 warm start is train-half
+   fitted, and the independent rung-1 empty-start numbers
+   (91.0/80.9/103.7/80.9/88.4/63.7) are nearly identical to the
+   rung-2 held-out ones (88.0/75.4/95.0/82.2/84.0/65.1), which is
+   itself the transport evidence. "Phase-table route DEAD" scopes
+   to the REGISTERED SYSTEMS TARGET (frozen PHASE-STATIC@K32 does
+   not replace LRU@K48); phase information generally is NOT
+   nulled — held-out PHASE-STATIC@K48 still edges LRU on proofs
+   (76.9 v 82.2). BELADY-BYPASS is a clairvoyant PAGING gap, not
+   a physical ceiling (no compute/overlap model).
+2. TOPSET CONTROL DIRECTION CORRECTED. The verdict's "live
+   direction: the other equally-BLe-plausible top-8 candidate
+   (BLe rank-2)" is WRONG: at all five loci BLe rank-2 IS the
+   frozen vendor token (rec@2 = 1.0 with opposite argmaxes —
+   these are binary top-2 near-ties by construction), so the
+   proposed control is the treatment itself. And the nearest
+   third token (BLe rank-3) is gap-matched at ZERO of five loci
+   under the registered +-0.05 law: vendor gap -> rank-3 gap =
+   0.0781 -> 3.6365, 0.0843 -> 0.3488, 0.0240 -> 2.6174,
+   0.0068 -> 2.8380, 0.2418 -> 0.8269 (from the booked
+   sidecars). Consequence: an identity-matched third-token
+   control DOES NOT EXIST at these five specimens under the
+   registered law. The ALTTOKEN identity-control thread either
+   PARKS on these loci or a desk search finds fresh TRI-TIE loci
+   (vendor disagreement + a third non-special gap-matched
+   candidate), frozen before any branch. No registration until
+   Artin picks.
+3. DOMAIN-COUPLING SUMMARY NARROWED (bank fence already
+   correct): MOE-GT-5's verbal-expert necessity for masked math
+   proves CROSS-LABELLED FUNCTIONAL DEPENDENCE, not yet general
+   physics<->math capability transfer — the transport rung
+   remains the discriminator.
+
