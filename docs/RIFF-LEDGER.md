@@ -7689,3 +7689,68 @@ honest status column).
   symptom. Next honest discriminator: a mechanism rung on WHAT the
   carrier-routed prefill state gets wrong (state-space, not gate
   counts) — unregistered.
+- **BANKED (2026-08-21): EXPERTDB / ROUTE-DB — a control-plane
+  expert database for MoE residency/prefetch, with the exactness
+  boundary drawn so a bad prediction is a CACHE MISS, never a
+  wrong token** (Artin's riff, GPT sharpening, house corrections).
+  The mapping: for the 30B MoE, a per-(layer, expert) record —
+  exact weight location/bytes/sha, demand, PHASE AFFINITY (EX6
+  made phase a first-class coordinate: prompt-mask +47 v decode
+  -2), task fingerprint (5-domain traj breadth), carrier
+  membership, cache frequency, load cost. The ROUTER stays
+  authoritative for selection; the DB predicts residency and
+  prefetch only. Explicitly NOT generic RAG and NOT ANN-on-the-
+  exactness-boundary — the ledger carries two naive-vector
+  negatives that kill that route: QWEN-MIPS-CENSUS-0 (exact
+  5120-D head indexing visits q50 0.989+ of vocab, modeled bytes
+  > brute force) and QWEN-RK-CENSUS-0 (oracle dense top-k leaves
+  32-63% activation reconstruction error). Measured anchors:
+  EX5-LAYERMATCH (named identity transports while aggregate
+  rank/layer lenses fail — so the DB keys on IDENTITY, not
+  class), EX6-PHASE (phase asymmetry is real physics for a
+  phase-aware predictor), EX5-TRAJ-ANATOMY (demand, phase
+  fractions, first-touch already computed per slot). HOUSE
+  CORRECTIONS to the GPT draft: (a) the "causal ablation effect"
+  column is populated at MASK grain only (one mask, one dose) —
+  per-expert causal effect is UNMEASURED and EX5 specifically
+  showed aggregate proxies mislead; the schema must mark that
+  column unpopulated rather than bake in false precision; (b)
+  deployment honesty — the 4-bit MoE (17GB) is FULLY RESIDENT on
+  the 36GB Mac, so an expert cache prices for the 10GB 3080, for
+  bigger MoEs, or for BF16-grade artifacts, not for the current
+  Mac inference path. Testable residue, rung 1 ZERO-MODEL-COST
+  (desk, CPU): replay the frozen routing traces
+  (logs/opus/moe_gt1_traj_v2.jsonl + the five domain trajs)
+  through LRU / LFU / per-layer-LFU / phase-aware / prompt-route
+  predictors at several resident budgets; score bytes/token, miss
+  stalls at measured load costs (per-expert byte sizes exist in
+  the compose manifests), and 1/2/4-layer-ahead prefetch
+  precision/recall — prices whether the cache is worth building
+  before any implementation. Kin to compare when rung 1 books:
+  MoE-Infinity-class request-level expert caching, LFU +
+  speculative expert-prefetch work, PowerInfer, DejaVu,
+  LLM-in-a-Flash (exact-v-approximate boundary stated per kin).
+  Attribution: Artin (riff), GPT (control-plane framing + rung
+  design), house (negatives linkage, grain + deployment
+  corrections).
+- **BANKED (2026-08-21): IMPLICIT-EXPERTDB for the dense 27B —
+  activation/causal-fingerprint channel clusters as a
+  drafter/prefetch predictor UNDER the exact packed-BF16
+  verifier, never as the answer path** (Artin + GPT, same
+  exchange; extends [[DENSE-ROUTER READOUT]] and the EXACT-BF16
+  OUT-OF-CORE bank). The optimization target is COMMITTED TOKENS
+  PER EXPENSIVE BF16 SWEEP (the NInfer objective), with retrieved
+  channel groups predicting what to prefetch/draft while the
+  streamed exact target verifies — potentially composing with the
+  native MTP route rather than replacing it. Honest breaks
+  carried from the parent banks: clustering must be by
+  activation/causal fingerprint, never raw weight cosine (the
+  never-score-weights-by-weight-distance law); a dense tower has
+  no gate to read, so "routes to" needs operationalizing before
+  anything is testable; and the DejaVu-style skip route stays
+  dead under exactness — groups may only inform ORDER and
+  RESIDENCY, never omission. Residue: blocked behind the
+  out-of-core preflights; first cell is a fingerprint-stability
+  census (do channel clusters transport across the gate corpus v
+  the domain trajs?) at desk cost. Attribution: Artin (ask), GPT
+  (drafter framing), house (boundary + sequencing).
