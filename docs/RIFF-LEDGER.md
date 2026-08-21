@@ -8006,17 +8006,26 @@ honest status column).
   check, ranking).
   RESIDUE (a) AND (c) MEASURED (2026-08-21, VERDICT
   ROUTE-TIME-0): (a) fired — finite-horizon next-use prediction
-  beats the age-only hazard by median +0.041 AUC at H=8, growing
-  to +0.119 at H=64 (~half decayed frequency, rest gap
-  statistics; prev-token co-activation the WEAKEST baseline —
-  house mechanism call wrong); (c) failed 0/6 — learned eviction
-  at K32 loses to LRU@K48 everywhere and to plain LRU@K32 on
-  5/6 (fit-v-serve index-scale confound named, biases toward
-  the no-fire). Sharpened claim: temporal structure in expert
+  beats the age-only hazard by median +0.041 AUC at H=8 (~half a
+  count-saturating popularity term — "decayed frequency" updates
+  only on activation, so it is a function of count, not
+  token-time decay; prev-token co-activation the WEAKEST
+  baseline — house mechanism call wrong); (c) failed 0/6 —
+  learned eviction at K32 loses to LRU@K48 everywhere and to
+  same-budget LRU@K32 on 5/6. CORRECTED same day (AMENDMENT
+  -ISOLATION, outside audit): the original holdout was
+  stream-entangled and the closed loop could evict current-token
+  experts; the isolated + protected rerun reproduces both
+  readings (median +0.0406 v +0.0407; still 0/6, LRU@K32 loses
+  5/6), so the defects were not load-bearing. The
+  beyond-popularity component is LARGEST at short horizons
+  (H<=4, +0.042 median) not long ones; "prefetch territory" is
+  demoted to hypothesis (H64 AUC lives on ~4% never-reused
+  negatives). Sharpened claim: temporal structure in expert
   reuse is a PREDICTION resource, not (at this policy class) an
-  EVICTION resource; the H64 number points at prefetch, not
-  caching. New residue: victim-decision-conditional training
-  objective; prefetch head. Residue (b) MAGIC-TIME still open.
+  EVICTION resource. New residue: victim-decision-conditional
+  training objective; prefetch as hypothesis. Residue (b)
+  MAGIC-TIME still open.
   NOTHINK TRANSPORT MEASURED same day (OBSERVATION GRF-NOTHINK-0):
   the reweighting SURVIVES answering and the registered refutation
   does not trip — decode topic contrast STRENGTHENS to 0.1856

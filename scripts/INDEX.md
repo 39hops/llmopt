@@ -3498,6 +3498,12 @@ ROUTE-TIME-0 driver (desk, frozen pre-run): finite-horizon next-use prediction o
 - `closed_loop(events, w, mu, sd, k, eb)` — K=32 replay, learned eviction: evict cached expert with
 - `main()`
 
+### scratch/routedb_time0r.py
+ROUTE-TIME-0R (desk, frozen pre-run): isolated-stream rerun closing the three seams the outside audit found in the frozen scratch/routedb_time.py (results-cited, imported never edited):
+
+- `closed_loop_protected(train_events, test_events, policy, w, mu, sd, k, eb)` — Replay test_events with warm start fit on train_events.
+- `main()`
+
 ### scratch/rulepolicy0_census.py
 RULE-POLICY-0 rung 0 — label-coverage census (/desk shape).
 

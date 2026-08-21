@@ -2606,13 +2606,16 @@ regime tag on every bullet is the fence.
 - Expert-reuse temporal structure beyond recency is real offline and
   worthless in-loop at this class: finite-horizon next-use prediction
   (P(T<=H), strict past-only features, prompt holdout) beats an
-  age-only hazard by median +0.041 AUC at H=8 (six traces; ~half
-  decayed frequency, rest gap statistics, growing to +0.119 at H=64),
+  age-only hazard by median +0.041 AUC at H=8 (six traces; ~half a
+  count-saturating popularity term, the rest joint gap/prev-token/
+  phase/layer signal that is LARGEST at short horizons H<=4),
   yet closed-loop learned eviction at K32 loses to warm LRU@K48 on
-  6/6 and to plain LRU@K32 on 5/6 — the information is real, the
-  hazard-argmin policy transform loses it. [SINGLE-SEED]
+  6/6 and to same-budget LRU@K32 on 5/6 — the information is real,
+  the hazard-argmin policy transform loses it. Both readings
+  survived the isolated-stream + protected-eviction rerun
+  (AMENDMENT -ISOLATION: median +0.0406 v +0.0407). [SINGLE-SEED]
   [REGIME-SCOPED: measured deployment artifacts] Fences: logistic
   class + per-expert features only; token-event time; deterministic
-  even/odd prompt split; fit-v-serve index-scale confound named
-  (biases toward the observed no-fire).
+  even/odd prompt split; original run's holdout was
+  stream-entangled (corrected, not load-bearing).
   ([VERDICT ROUTE-TIME-0](RESULTS.md#L39278 "id:2026-08-21-verdict-route-time-0-temporal-structure").)

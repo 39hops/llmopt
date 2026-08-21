@@ -1,0 +1,424 @@
+{
+ "note": "ROUTE-TIME-0R: isolated even-train/odd-test streams (independent build_rows), current-token-protected closed loop, own protected LRU baselines; amendment evidence for ROUTE-TIME-0",
+ "start": {
+  "start_commit": "3e663541",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/routedb_time0r.py": "38922ab2ae49b1d073f39a663c5099207bdb490f87d865fbe98ba5424499a471",
+   "scratch/routedb_time.py": "4929e9795d777d59b88e88939f45b527c575f3af2a0e966e560b9e40dcbb8f3e",
+   "scratch/routedb_replay.py": "e380b95470a72d53d233a11f74e731b48d8254d2dfc81bee499164ef0891ef7c",
+   "logs/routetime/time0_receipt.json": "7a20ee374f055579b96a31f89b8992d64349ef5ff14a09bbc50a04d0e6d1adf7",
+   "logs/routedb/replay2_receipt.json": "41bd28430745a4c85f46c3ec1d7566230d6b0fcdfae07575fe623f934a836164"
+  }
+ },
+ "completion_commit": "3e663541",
+ "features": [
+  "age",
+  "freq",
+  "count",
+  "last_gap",
+  "mean_gap",
+  "prev_tok",
+  "phase",
+  "layer"
+ ],
+ "horizons": [
+  1,
+  2,
+  4,
+  8,
+  16,
+  32,
+  64
+ ],
+ "per_expert_bytes": 2654208.0,
+ "qualification": {
+  "q1": "pass",
+  "q2_n": 1000,
+  "q3_n": 200,
+  "rng_seed": 0,
+  "streams": "train and test audited independently"
+ },
+ "median_delta_H8_isolated": 0.0406,
+ "results": {
+  "math": {
+   "n_train_rows": 2373888,
+   "n_test_decode_rows": 508032,
+   "auc": {
+    "H1": {
+     "AGE-ONLY": 0.6818,
+     "AGE+FREQ": 0.6922,
+     "FULL": 0.7332,
+     "pos_frac": 0.3824
+    },
+    "H2": {
+     "AGE-ONLY": 0.6912,
+     "AGE+FREQ": 0.7041,
+     "FULL": 0.7382,
+     "pos_frac": 0.524
+    },
+    "H4": {
+     "AGE-ONLY": 0.6916,
+     "AGE+FREQ": 0.7069,
+     "FULL": 0.7313,
+     "pos_frac": 0.6456
+    },
+    "H8": {
+     "AGE-ONLY": 0.6783,
+     "AGE+FREQ": 0.6993,
+     "FULL": 0.7154,
+     "pos_frac": 0.7616
+    },
+    "H16": {
+     "AGE-ONLY": 0.6582,
+     "AGE+FREQ": 0.691,
+     "FULL": 0.7074,
+     "pos_frac": 0.8284
+    },
+    "H32": {
+     "AGE-ONLY": 0.6514,
+     "AGE+FREQ": 0.7119,
+     "FULL": 0.7317,
+     "pos_frac": 0.88
+    },
+    "H64": {
+     "AGE-ONLY": 0.7248,
+     "AGE+FREQ": 0.8372,
+     "FULL": 0.867,
+     "pos_frac": 0.9483
+    }
+   },
+   "delta_full_minus_age_H8": 0.0371,
+   "closed_loop_protected": {
+    "LEARNED_K32": {
+     "prefill": 260.07,
+     "decode": 222.97
+    },
+    "LRU_K32": {
+     "prefill": 250.77,
+     "decode": 191.62
+    },
+    "LRU_K48": {
+     "prefill": 169.69,
+     "decode": 85.51
+    }
+   }
+  },
+  "code": {
+   "n_train_rows": 1967616,
+   "n_test_decode_rows": 303360,
+   "auc": {
+    "H1": {
+     "AGE-ONLY": 0.7316,
+     "AGE+FREQ": 0.691,
+     "FULL": 0.7688,
+     "pos_frac": 0.3831
+    },
+    "H2": {
+     "AGE-ONLY": 0.6906,
+     "AGE+FREQ": 0.6666,
+     "FULL": 0.6923,
+     "pos_frac": 0.6304
+    },
+    "H4": {
+     "AGE-ONLY": 0.6766,
+     "AGE+FREQ": 0.6715,
+     "FULL": 0.686,
+     "pos_frac": 0.7339
+    },
+    "H8": {
+     "AGE-ONLY": 0.6758,
+     "AGE+FREQ": 0.6755,
+     "FULL": 0.6862,
+     "pos_frac": 0.7925
+    },
+    "H16": {
+     "AGE-ONLY": 0.6664,
+     "AGE+FREQ": 0.6825,
+     "FULL": 0.6908,
+     "pos_frac": 0.8437
+    },
+    "H32": {
+     "AGE-ONLY": 0.6642,
+     "AGE+FREQ": 0.7058,
+     "FULL": 0.7155,
+     "pos_frac": 0.8994
+    },
+    "H64": {
+     "AGE-ONLY": 0.6931,
+     "AGE+FREQ": 0.7628,
+     "FULL": 0.7883,
+     "pos_frac": 0.9439
+    }
+   },
+   "delta_full_minus_age_H8": 0.0104,
+   "closed_loop_protected": {
+    "LEARNED_K32": {
+     "prefill": 239.63,
+     "decode": 164.8
+    },
+    "LRU_K32": {
+     "prefill": 218.79,
+     "decode": 139.79
+    },
+    "LRU_K48": {
+     "prefill": 135.96,
+     "decode": 73.79
+    }
+   }
+  },
+  "phys": {
+   "n_train_rows": 2895360,
+   "n_test_decode_rows": 548736,
+   "auc": {
+    "H1": {
+     "AGE-ONLY": 0.6967,
+     "AGE+FREQ": 0.7271,
+     "FULL": 0.7623,
+     "pos_frac": 0.4676
+    },
+    "H2": {
+     "AGE-ONLY": 0.7074,
+     "AGE+FREQ": 0.7351,
+     "FULL": 0.7696,
+     "pos_frac": 0.5864
+    },
+    "H4": {
+     "AGE-ONLY": 0.6924,
+     "AGE+FREQ": 0.7224,
+     "FULL": 0.7513,
+     "pos_frac": 0.6995
+    },
+    "H8": {
+     "AGE-ONLY": 0.6847,
+     "AGE+FREQ": 0.7118,
+     "FULL": 0.7337,
+     "pos_frac": 0.7817
+    },
+    "H16": {
+     "AGE-ONLY": 0.6531,
+     "AGE+FREQ": 0.6929,
+     "FULL": 0.7127,
+     "pos_frac": 0.8445
+    },
+    "H32": {
+     "AGE-ONLY": 0.646,
+     "AGE+FREQ": 0.7039,
+     "FULL": 0.7235,
+     "pos_frac": 0.8926
+    },
+    "H64": {
+     "AGE-ONLY": 0.7334,
+     "AGE+FREQ": 0.8389,
+     "FULL": 0.8617,
+     "pos_frac": 0.9567
+    }
+   },
+   "delta_full_minus_age_H8": 0.049,
+   "closed_loop_protected": {
+    "LEARNED_K32": {
+     "prefill": 270.77,
+     "decode": 184.82
+    },
+    "LRU_K32": {
+     "prefill": 242.28,
+     "decode": 157.63
+    },
+    "LRU_K48": {
+     "prefill": 165.1,
+     "decode": 93.47
+    }
+   }
+  },
+  "proofs": {
+   "n_train_rows": 3009024,
+   "n_test_decode_rows": 806784,
+   "auc": {
+    "H1": {
+     "AGE-ONLY": 0.7214,
+     "AGE+FREQ": 0.7273,
+     "FULL": 0.7704,
+     "pos_frac": 0.4162
+    },
+    "H2": {
+     "AGE-ONLY": 0.7465,
+     "AGE+FREQ": 0.7565,
+     "FULL": 0.798,
+     "pos_frac": 0.5691
+    },
+    "H4": {
+     "AGE-ONLY": 0.7527,
+     "AGE+FREQ": 0.7641,
+     "FULL": 0.7984,
+     "pos_frac": 0.6815
+    },
+    "H8": {
+     "AGE-ONLY": 0.7462,
+     "AGE+FREQ": 0.7659,
+     "FULL": 0.7903,
+     "pos_frac": 0.7925
+    },
+    "H16": {
+     "AGE-ONLY": 0.7345,
+     "AGE+FREQ": 0.7621,
+     "FULL": 0.7824,
+     "pos_frac": 0.8655
+    },
+    "H32": {
+     "AGE-ONLY": 0.7219,
+     "AGE+FREQ": 0.7641,
+     "FULL": 0.7857,
+     "pos_frac": 0.9175
+    },
+    "H64": {
+     "AGE-ONLY": 0.7551,
+     "AGE+FREQ": 0.8307,
+     "FULL": 0.8625,
+     "pos_frac": 0.9607
+    }
+   },
+   "delta_full_minus_age_H8": 0.0441,
+   "closed_loop_protected": {
+    "LEARNED_K32": {
+     "prefill": 241.01,
+     "decode": 169.96
+    },
+    "LRU_K32": {
+     "prefill": 240.88,
+     "decode": 165.67
+    },
+    "LRU_K48": {
+     "prefill": 155.11,
+     "decode": 79.9
+    }
+   }
+  },
+  "prose": {
+   "n_train_rows": 1976832,
+   "n_test_decode_rows": 1424640,
+   "auc": {
+    "H1": {
+     "AGE-ONLY": 0.6906,
+     "AGE+FREQ": 0.6571,
+     "FULL": 0.712,
+     "pos_frac": 0.4513
+    },
+    "H2": {
+     "AGE-ONLY": 0.698,
+     "AGE+FREQ": 0.6605,
+     "FULL": 0.7176,
+     "pos_frac": 0.5534
+    },
+    "H4": {
+     "AGE-ONLY": 0.6966,
+     "AGE+FREQ": 0.6714,
+     "FULL": 0.7186,
+     "pos_frac": 0.6747
+    },
+    "H8": {
+     "AGE-ONLY": 0.6931,
+     "AGE+FREQ": 0.6865,
+     "FULL": 0.7247,
+     "pos_frac": 0.7892
+    },
+    "H16": {
+     "AGE-ONLY": 0.6878,
+     "AGE+FREQ": 0.701,
+     "FULL": 0.7324,
+     "pos_frac": 0.8784
+    },
+    "H32": {
+     "AGE-ONLY": 0.6902,
+     "AGE+FREQ": 0.7351,
+     "FULL": 0.7622,
+     "pos_frac": 0.9412
+    },
+    "H64": {
+     "AGE-ONLY": 0.692,
+     "AGE+FREQ": 0.7716,
+     "FULL": 0.7937,
+     "pos_frac": 0.9732
+    }
+   },
+   "delta_full_minus_age_H8": 0.0316,
+   "closed_loop_protected": {
+    "LEARNED_K32": {
+     "prefill": 329.72,
+     "decode": 186.0
+    },
+    "LRU_K32": {
+     "prefill": 336.26,
+     "decode": 178.86
+    },
+    "LRU_K48": {
+     "prefill": 230.18,
+     "decode": 81.31
+    }
+   }
+  },
+  "dialog": {
+   "n_train_rows": 2142336,
+   "n_test_decode_rows": 1453824,
+   "auc": {
+    "H1": {
+     "AGE-ONLY": 0.6801,
+     "AGE+FREQ": 0.6955,
+     "FULL": 0.7365,
+     "pos_frac": 0.5241
+    },
+    "H2": {
+     "AGE-ONLY": 0.6874,
+     "AGE+FREQ": 0.7041,
+     "FULL": 0.7469,
+     "pos_frac": 0.614
+    },
+    "H4": {
+     "AGE-ONLY": 0.6938,
+     "AGE+FREQ": 0.7156,
+     "FULL": 0.7571,
+     "pos_frac": 0.7043
+    },
+    "H8": {
+     "AGE-ONLY": 0.7054,
+     "AGE+FREQ": 0.7379,
+     "FULL": 0.7762,
+     "pos_frac": 0.8069
+    },
+    "H16": {
+     "AGE-ONLY": 0.7127,
+     "AGE+FREQ": 0.7657,
+     "FULL": 0.7979,
+     "pos_frac": 0.892
+    },
+    "H32": {
+     "AGE-ONLY": 0.7326,
+     "AGE+FREQ": 0.8065,
+     "FULL": 0.8349,
+     "pos_frac": 0.9492
+    },
+    "H64": {
+     "AGE-ONLY": 0.7364,
+     "AGE+FREQ": 0.836,
+     "FULL": 0.8641,
+     "pos_frac": 0.9763
+    }
+   },
+   "delta_full_minus_age_H8": 0.0708,
+   "closed_loop_protected": {
+    "LEARNED_K32": {
+     "prefill": 259.54,
+     "decode": 119.81
+    },
+    "LRU_K32": {
+     "prefill": 286.56,
+     "decode": 141.71
+    },
+    "LRU_K48": {
+     "prefill": 187.42,
+     "decode": 63.15
+    }
+   }
+  }
+ }
+}

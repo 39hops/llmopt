@@ -39355,3 +39355,63 @@ H64 FULL-AGE median +0.1191 says long-horizon reuse is the most
 predictable, which is prefetch territory, not eviction. Files:
 scratch/routedb_time.py, logs/routetime/time0_receipt.json.
 
+## AMENDMENT ROUTE-TIME-0-ISOLATION: outside-audit blocker closed by isolated-stream rerun — both bar readings SURVIVE (isolated median +0.0406 v entangled +0.0407; protected closed loop still 0/6) — attribution and "grows with H" corrected (2026-08-21, mac)
+
+Amends VERDICT ROUTE-TIME-0. Outside audit found a real holdout
+defect, verified in-house against the frozen driver: build_rows ran
+on the FULL alternating even/odd stream before the P%2 masks, so
+train-row features carried test-prompt history and train labels
+could resolve inside test prompts — q2/q3 certified global-stream
+causality, not holdout isolation. The verdict's "held-out" wording
+was too strong as booked.
+
+Rerun 0R (scratch/routedb_time0r.py, frozen at 3e663541 before the
+run; receipt logs/routetime/time0r_receipt.json, refuse-if-exists;
+q1/q2/q3 re-run per stream, receipted this time with sample sizes
+and seed): train_events = even prompts only, test_events = odd
+prompts only, build_rows called independently on each — which also
+closes the fit-full/serve-test index-scale confound named in the
+verdict. Closed loop additionally PROTECTS the current token's
+top-8 from eviction (the audit's second find, verified: the
+sequential per-expert loop could evict an expert required later in
+the same token, forcing an immediate re-miss), with its own
+protected LRU@K32/K48 baselines so the comparison is internally
+consistent; frozen replay2 numbers untouched.
+
+RESULT — the defect was not load-bearing. Isolated per-trace
+FULL minus AGE-ONLY at H=8: math +0.0371, code +0.0104, phys
++0.0490, proofs +0.0441, prose +0.0316, dialog +0.0708; median
++0.0406 v the entangled +0.0407. BAR 1's reading stands on clean
+isolation. Protected closed loop, decode MB/token
+(LEARNED@K32 / LRU@K32 / LRU@K48): math 223.0/191.6/85.5, code
+164.8/139.8/73.8, phys 184.8/157.6/93.5, proofs 170.0/165.7/79.9,
+prose 186.0/178.9/81.3, dialog 119.8/141.7/63.2. Learned still
+loses to LRU@K48 on 6/6 and to same-budget protected LRU@K32 on
+5/6 (dialog again the exception). BAR 2's no-fire stands with
+both confounds closed. Scope kept: the negative is about the
+registered hazard-argmin victim transform trained at activation
+times (inter-arrival) and applied to cache residents (residual
+lifetime) — that objective mismatch is now named as part of the
+scope, not measured apart.
+
+ATTRIBUTION CORRECTIONS (audit's third find, verified): (1) the
+"decayed frequency" feature updates only on own activation
+(frq = 0.99*frq + 1), making it a deterministic saturating
+function of use count, NOT token-time decay — read AGE+FREQ as
+age+popularity. (2) The verdict's "grows with H" sentence about
+the beyond-frequency component is RETRACTED: isolated
+FULL-(AGE+FREQ) medians are U-shaped (+0.0421, +0.0380, +0.0316,
++0.0232, +0.0201, +0.0207, +0.0268 for H=1..64), largest at
+SHORT horizons. What grows with H is FULL-AGE (+0.0502 to
++0.1175), which is mostly the popularity-like term; at H=64
+pos_frac is 0.96, so that AUC lives on rare never-reused
+negatives. (3) Consequently "prefetch territory" demotes from
+residue-with-a-number to hypothesis; the beyond-popularity signal
+(gaps + prev-token + phase + layer jointly; gaps NOT isolated) is
+strongest at H<=4 — eviction-adjacent horizons, which sharpens
+the puzzle of why the in-loop transform still loses.
+
+FINDINGS bullet and RIFF TIME bank corrected in place, this
+commit. Fences carried unchanged from the verdict. Files:
+scratch/routedb_time0r.py, logs/routetime/time0r_receipt.json.
+

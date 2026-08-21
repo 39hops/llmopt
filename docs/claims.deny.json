@@ -87,6 +87,12 @@
    "reason": "Cumulative first-N reading; equal-width windowed adjudication (rider3) shows the thinking topic contrast peaks in window 9:16 then declines. Surviving claim is the early-horizon regime difference only. Corrected by AMENDMENT GRF-NOTHINK-0-WINDOWS (2026-08-21).",
    "scope": "grf|GRF|horizon|time-as-structure|TIME-AS-STRUCTURE",
    "superseded_by": "2026-08-21-amendment-grf-nothink-0-windows-windowed"
+  },
+  {
+   "pattern": "gap statistics, growing to",
+   "reason": "The beyond-frequency AUC component is U-shaped in H, largest at H<=4; what grows with H is the popularity-dominated FULL-AGE delta. Corrected by AMENDMENT ROUTE-TIME-0-ISOLATION (2026-08-21).",
+   "scope": "route-time|ROUTE-TIME",
+   "superseded_by": "2026-08-21-amendment-route-time-0-isolation-outside"
   }
  ]
 }
