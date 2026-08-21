@@ -1863,6 +1863,19 @@ EX4-UNIF subject builder (PRE-REG EX4-UNIF, RESULTS L23592; ex3_build.py is resu
 - `report(name, deleted)`
 - `main()`
 
+### scratch/ex4_mask_census.py
+EX4 mask-composition census (desk, observation-only, zero GPU).
+
+- `deleted_slots(keepset)`
+- `main()`
+
+### scratch/ex5_build.py
+EX5-LAYERMATCH subject builder (the missing control cell after EX4-UNIF: fixed layer profile, rank-unrestricted identity).
+
+- `rank_family(j)`
+- `layer_family(j)`
+- `main()`
+
 ### scratch/exact1_small_cells.py
 EXACT1-SMALL: d8/d16 ladder+anchor cells on axiom's ENGINE-EXACT-1.
 
@@ -4034,7 +4047,8 @@ Machine-readable pre-registration: bars a program can adjudicate.
 - `class BarOutcome`
 - `_require(cond: bool, msg: str) -> None`
 - `validate(doc: dict) -> dict` — Validate a pre-reg document; returns it unchanged on success.
-- `load(path: str | Path) -> dict`
+- `verify_operands(doc: dict, root: str | Path) -> None` — OPERAND-PROVIDER law, v1: every registered operand's provider
+- `load(path: str | Path, operand_root: str | Path | None=None) -> dict` — Load + validate; when the document carries operands, also
 - `adjudicate_refutation(prereg: dict, obs: dict, bar_outcomes: list | None=None) -> str | None` — Score the structured refutation clause, if the pre-reg has one.
 - `adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]` — Deterministic adjudication of every bar against observations.
 

@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 210, library 72, reproduce-pinned 10, results-cited 250, spec-cited 88, cited-but-library 60
+Census: UNCITED 212, library 73, reproduce-pinned 10, results-cited 249, spec-cited 88, cited-but-library 61
 
 ## scratch/
 
@@ -105,8 +105,10 @@ Census: UNCITED 210, library 72, reproduce-pinned 10, results-cited 250, spec-ci
 | engine | engine_scale_export.py | spec-cited | specs | specs×1 | — | — |
 | ex1 | ex1_swap.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | ex2 | ex2_build.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
-| ex3 | ex3_build.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 |
-| ex4 | ex4_build.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
+| ex3 | ex3_build.py | library | RESULTS, specs | RESULTS×2, specs×1 | 2 | 2 |
+| ex4 | ex4_build.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 |
+| ex4 | ex4_mask_census.py | UNCITED | — | — | — | — |
+| ex5 | ex5_build.py | UNCITED | — | — | — | — |
 | exact | exact_twin_d56.py | spec-cited | specs | specs×1 | — | — |
 | exact1 | exact1_small_cells.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | exchange | exchange_test.py | results-cited | RESULTS | RESULTS×1 | — | — |
