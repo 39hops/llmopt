@@ -1,0 +1,205 @@
+{
+ "measurement_valid": true,
+ "start": {
+  "start_commit": "c51d9a9c",
+  "start_status_porcelain": " M docs/receipts.lock.json\n M scripts/INDEX.md\n?? scratch/ex5_observe.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/ex5_observe.py": "acb2942fcf33627877762906e3f471f3923f3444cafbd150875a0644edb84faf",
+   "scratch/ex5_run.sh": "082d9bbceca6a1c100ff615dd708cadb187ed909db0d45ff18e1080229409b02",
+   "scratch/gt7_run.py": "391c7602078cc5b98870700e815b4bddb28034f058a280502c1fd960d00c2de1",
+   "scratch/moe_gt1_arm2.py": "916b616af8e2f44daeb01dcd9ca4e7f60b4167d8c485b69158740b16c5dedd9f",
+   "scratch/ex5_build.py": "24de989a7c1ff4e18686ca276c83c1878cefd70a7b3291d4acf0f0caee5446cf"
+  }
+ },
+ "completion_commit": "c51d9a9c",
+ "audit_notes": {
+  "battery_field": "every receipt row carries battery='gt7', a literal inherited from the frozen gt7_run.py driver (results-cited, never edited); EX5 membership is defined by receipt path logs/ex5/ + seed sets {4001,5002,6003}/{1001}, NEVER by the battery field \u2014 grouping the corpus by battery=='gt7' pools EX3/EX4/EX5 cells",
+  "answers_log_seed": "ex5_answers.jsonl rows carry (arm, idx) only; the three seed passes append in launch order and are separable only by order \u2014 use ex5_perprob.jsonl (carries seed) for any per-seed answer analysis",
+  "model_identity": "moe_gt1_arm2.py loads by repo name with no revision pin; identity established by the single-snapshot cache + refs/main == d388dead... + per-file shas in logs/ex5/model_manifest.json (manifest built from the remote listing; .gitattributes and README are not loaded by the run)",
+  "perprob_frac_field": "the perprob 'frac' field holds the arm NAME (legacy field name from the fraction-sweep era)"
+ },
+ "reused_keepset_sha256": {
+  "checkpoints/ex1_full128.json": "ee7e07cc7ed328efbfd48a2053d30bb7c8e968a6c875a1d0de83d1cc380b40cd",
+  "checkpoints/ex3_del_invp.json": "72bf31eb44e60f3877c7de496e0987ce678d3561fe38922ff9a5cad978faef7e",
+  "checkpoints/ex3_del_rand0.json": "66ab9cb3be3528f647d0936c919269f2934062237597a0c5131d4cd4d59428c0"
+ },
+ "arms": {
+  "full128": {
+   "admissible": true
+  },
+  "named80": {
+   "admissible": true
+  },
+  "rank0": {
+   "admissible": true
+  },
+  "rank1": {
+   "admissible": true
+  },
+  "rank2": {
+   "admissible": true
+  },
+  "layer0": {
+   "admissible": true
+  },
+  "layer1": {
+   "admissible": true
+  },
+  "layer2": {
+   "admissible": true
+  }
+ },
+ "detail": {
+  "full_per_seed": {
+   "4001": 62,
+   "5002": 52,
+   "6003": 69
+  },
+  "named_deltas": [
+   17,
+   18,
+   8
+  ],
+  "rank_deltas": {
+   "ex5_del_rank0": [
+    -4,
+    -1,
+    -7
+   ],
+   "ex5_del_rank1": [
+    7,
+    17,
+    1
+   ],
+   "ex5_del_rank2": [
+    5,
+    7,
+    -2
+   ]
+  },
+  "layer_deltas": {
+   "ex5_del_layer0": [
+    1,
+    -1,
+    -3
+   ],
+   "ex5_del_layer1": [
+    5,
+    9,
+    1
+   ],
+   "ex5_del_layer2": [
+    -3,
+    2,
+    -5
+   ]
+  },
+  "rank_sums": [
+   -12,
+   25,
+   10
+  ],
+  "layer_sums": [
+   -3,
+   15,
+   -6
+  ],
+  "premium_deltas": {
+   "ex5_del_rank0": [
+    21,
+    19,
+    15
+   ],
+   "ex5_del_rank1": [
+    10,
+    1,
+    7
+   ],
+   "ex5_del_rank2": [
+    12,
+    11,
+    10
+   ]
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 2,
+   "metric": "n_exact_reproductions",
+   "population": "seed1001:full128+ex3_del_rand0",
+   "aggregation": "count_of_2",
+   "provenance": "logs/ex5/qual.jsonl v booked cells"
+  },
+  "2": {
+   "value": 0,
+   "metric": "n_masks_clearing_plus21",
+   "population": "layer_family:3masks",
+   "aggregation": "count_of_3",
+   "provenance": "sums [-3, 15, -6]"
+  },
+  "3": {
+   "value": 1,
+   "metric": "n_masks_clearing_plus21",
+   "population": "rank_family:3masks",
+   "aggregation": "count_of_3",
+   "provenance": "sums [-12, 25, 10]"
+  },
+  "4": {
+   "value": 13,
+   "metric": "median_delta_gap",
+   "population": "rank_v_layer:3v3masks",
+   "aggregation": "median_over_masks",
+   "provenance": "median 10 - -3"
+  },
+  "4:nonoverlap_margin": {
+   "value": -27,
+   "metric": "median_delta_gap",
+   "population": "rank_v_layer:3v3masks",
+   "aggregation": "median_over_masks",
+   "provenance": "min(rank) -12 - max(layer) 15"
+  },
+  "5": {
+   "value": 43,
+   "metric": "pooled_delta",
+   "population": "named80_v_full:3seeds",
+   "aggregation": "pooled_sum",
+   "provenance": "deltas [17, 18, 8]"
+  },
+  "5:n_positive_seeds": {
+   "value": 3,
+   "metric": "pooled_delta",
+   "population": "named80_v_full:3seeds",
+   "aggregation": "pooled_sum",
+   "provenance": "signs of [17, 18, 8]"
+  },
+  "6": {
+   "value": 2,
+   "metric": "n_masks_clearing_premium",
+   "population": "named_v_rank_family:3masks",
+   "aggregation": "count_of_3",
+   "provenance": "premium sums [55, 18, 33]"
+  },
+  "7": {
+   "value": 18,
+   "metric": "abs_median_dev_from_28",
+   "population": "rank_family:3masks",
+   "aggregation": "median_over_masks",
+   "provenance": "|10 - 28|"
+  },
+  "8": {
+   "value": 37,
+   "metric": "max_family_range",
+   "population": "both_families:worst",
+   "aggregation": "range_over_masks",
+   "provenance": "rank range 37, layer range 21"
+  },
+  "refutation:separation_median": {
+   "value": 13,
+   "metric": "separation_median",
+   "population": "rank_v_layer:3v3masks",
+   "aggregation": "median_over_masks",
+   "provenance": "10 - -3"
+  }
+ }
+}

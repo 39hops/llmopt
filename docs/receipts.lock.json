@@ -1,5 +1,11 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [
+   "logs/ex5/ex5_observations.json"
+  ],
+  "reason": "pre-booking audit repair: observations regenerated once (OBS_OVERWRITE=1, disclosed in the EX5-LAYERMATCH-0 verdict) to add moe_gt1_arm2 sha, reused keepset shas, and audit_notes; all values and bar outcomes identical"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -217,6 +223,51 @@
    "sha256": "35eace6dd6c0272ba6aa90ec9f10e11428d391a44253bba158f0b92188a28217",
    "source": "results",
    "tracked": true
+  },
+  "logs/ex4/mask_census.json": {
+   "bytes": 4933,
+   "exists": true,
+   "sha256": "2d60cbcbb012d40461f15ddaf9f373d9ad23c55f6aafca575671ba5feb7e02f2",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/ex5/ex5.jsonl": {
+   "bytes": 15106,
+   "exists": true,
+   "local_only": true,
+   "sha256": "8f47b9e478c5680112a0075427d2ac978a922d665c40bd185d4945de24d45675",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/ex5/ex5_observations.json": {
+   "bytes": 5288,
+   "exists": true,
+   "local_only": true,
+   "sha256": "bc2be9d128ab5f18c23115e2c081eb93ffea9d4d0cf53c063eff208ec278fd39",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/ex5/mask_manifest.json": {
+   "bytes": 17110,
+   "exists": true,
+   "sha256": "e4f40170b60e574f14a9e7772b2b3e0804c5f5438c51efb5888682eff5c2c0be",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/ex5/model_manifest.json": {
+   "bytes": 2098,
+   "exists": true,
+   "sha256": "3023388ae7e0f7f0b2ecc9e39bbec72700718fc4ca162b451e69d3782a344b8a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/ex5/qual.jsonl": {
+   "bytes": 1293,
+   "exists": true,
+   "local_only": true,
+   "sha256": "5a1f289f681186b44aed6723a756021e91601b2ac25d25847330a0092384c73d",
+   "source": "results",
+   "tracked": false
   },
   "logs/funnel_wall/prec_sweep_step1_d64.log": {
    "bytes": 607,

@@ -1883,6 +1883,11 @@ EX5 mask manifest (desk): the committed identity record for the six EX5 deletion
 - `deleted_slots(path)`
 - `main()`
 
+### scratch/ex5_observe.py
+EX5-LAYERMATCH-0 observations builder: derives every registered measurement from the streamed receipts (logs/ex5/qual.jsonl + logs/ex5/ex5.jsonl) and writes the observations document the machine adjudicator consumes. All definitions are the pre-reg's: Delta_m = sum over seeds 4001/5002/6003 of (gate_m - gate_full128); a mask CLEARS +21 when Delta >= 21 AND per-seed deltas same-sign 3/3.
+
+- `main()`
+
 ### scratch/exact1_small_cells.py
 EXACT1-SMALL: d8/d16 ladder+anchor cells on axiom's ENGINE-EXACT-1.
 

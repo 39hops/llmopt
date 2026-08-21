@@ -37993,3 +37993,127 @@ logs/ex5/ex5_observations.json (refuse-if-exists paths; a wall-kill
 books surviving cells + NOT-RUN for the rest). Wording fence: bars
 2/3/6 counts are of MASKS (mechanism units), never of cells.
 
+## VERDICT EX5-LAYERMATCH-0: carrier identity is the robust object — the crest replicates (+43, 3/3) and beats 2/3 of its own rank class, while the rank-family benefit does NOT transport (1/3 clear, draw range 37) and layer-only deletion books 0/3; registered prior wrong on bars 3, 4, and 7 (2026-08-21, Mac)
+
+Machine adjudication (scripts/adjudicate.py on
+docs/preregs/ex5-layermatch-0.json v logs/ex5/ex5_observations.json;
+observations derived by scratch/ex5_observe.py from the streamed
+rows, cross-checked by hand):
+
+- BAR 1 QUALIFICATION (sanity): FIRE, 2/2. On the re-downloaded
+  pinned snapshot (d388dead, per-file shas in
+  logs/ex5/model_manifest.json), seed-1001 full128 reproduced 59
+  {1:22, 2:19, 3:18} and old ex3_del_rand0 reproduced 70
+  {1:26, 2:24, 3:20} — cell-exact against BOTH frozen receipt
+  files (logs/ex3/fresh.jsonl, logs/ex4/ex4.jsonl). The wiped and
+  re-downloaded artifact is instrument-identical.
+- BAR 2 LAYER-GENERIC: NO-FIRE, 0/3. Layer-only sums -3/+15/-6
+  (median -3): holding the named-80's exact per-layer deletion
+  counts while drawing identity uniformly does nothing.
+- BAR 3 RANK-FAMILY: NO-FIRE, 1/3. Fresh rank-window sums
+  -12/+25/+10: only rank1 clears (+25, signs 3/3); rank0 is
+  NEGATIVE 3/3 (-4/-1/-7). The historical rand0 (+28) read does
+  not transport to fresh draws of its own class.
+- BAR 4 FAMILY-SEPARATION: NO-FIRE. Median gap +13 (below +21) and
+  the non-overlap conjunct fails at margin -27 (min rank -12 v max
+  layer +15). The +13 direction is SUB-RESOLUTION and the per-mask
+  sums fully interleave (rank -12/+10/+25 v layer -6/-3/+15) — no
+  directional family claim books from this rung.
+- BAR 5 NAMED-CREST: FIRE. named80 - full = +17/+18/+8 = +43
+  pooled, signs 3/3, on the virgin triple 4001/5002/6003 — the
+  crest is now measured on SIX seeds total (+55 on 1001/2002/3003,
+  +43 here), never negative in any cell.
+- BAR 6 IDENTITY-PREMIUM: FIRE, 2/3. Pooled named-minus-rank-mask
+  +55 (v rank0, 3/3) and +33 (v rank2, 3/3) clear; +18 v rank1
+  does not. QUALIFIER (audit): the rank0 premium is mostly rank0
+  being harmful (-12 own Delta) rather than named80 being better
+  still — the honest read is "named80 beats two of three draws
+  from its own rank windows, a family whose own read is
+  draw-dominated (bar 8)", not a clean class-superiority claim.
+- BAR 7 RANK-TRANSPORT (range, non-suppressing): NO-FIRE,
+  excursion. |median(rank) - 28| = 18 > 10. Registered as a result:
+  the +28 was substantially a draw property, not a class property.
+- BAR 8 DRAW-SPREAD (range, diagnostic): FIRE. Rank-family range
+  37 (and layer range exactly 21) — the rank family read is
+  draw-dominated, which is precisely what bars 3/7 measured.
+
+REFUTED-IF: NOT-REFUTED (predicate 13 v the <10 floor, adjudicated
+under bar-1 precedence). The rank-local-over-inclusion hypothesis
+survives in a NARROWED form: separation from layer-only is
+direction-only, and the robust effect concentrates in carrier
+IDENTITY, not rank class.
+
+REGISTERED PRIOR SCORED (house, on the record): right on bars 1, 2,
+5 and the refutation predicate; WRONG on THREE bars {3, 4, 7}. Bar
+3: predicted 2/3+ clearing with medians high-teens-to-high-20s;
+measured 1/3, median +10. Bar 4: the prior predicted the MEDIAN
+clears with only the conjunct uncertain; the median itself failed
+(13 v 21) — not a lost coin flip, a wrong call. Bar 7: predicted
+hold; measured excursion 18. Bar 8 fired as predicted but for the
+WRONG FAMILY as primary: the prior named the layer family; measured
+rank range 37 v layer 21 — the rank family is the more
+draw-dominated. Right answer, wrong reason, on the record.
+
+READING. Three-way structure at fixed layer profile: layer-only
+identity draws do nothing (0/3, median -3); rank-window draws are
+draw-lottery (range 37, one mask +25, one -12); the named carriers
+are reliably positive everywhere (6/6 seeds across two triples) and
+beat their own rank class 2/3. The 2026-08-13 EX4-UNIF reading
+"over-inclusion scoped to the carriers' rank class" NARROWS: the
+benefit is scoped to the carrier IDENTITIES; their rank class
+contains both helpful and harmful draws at equal layer placement
+and window. FENCES: interpretation fence carried from registration
+- rank-window masks also delete ~1.8-2x the pooled demand of
+layer-only masks (2.35-2.60% v 1.26-1.42% demand share), so
+family-level contrasts read "rank-window/high-demand selection",
+never isolated rank causality; masks are the mechanism unit
+(n_mask=3 per family), seeds are paired repeats, and no claim here
+treats the 24 cells as independent; single-precision instrument
+(pinned 4-bit artifact) - PRECISION-CREST-TRANSPORT stays banked
+behind this verdict; full-model seed spread on the fresh triple is
+52-69 (wider than the old triple's 59-67), disclosed. Seeds
+4001/5002/6003 are now SPENT.
+
+RECEIPTS. logs/ex5/qual.jsonl (2 rows), logs/ex5/ex5.jsonl (24
+rows, 8 arms x 3 seeds, streamed), logs/ex5/ex5_observations.json;
+mask identity logs/ex5/mask_manifest.json; model identity
+logs/ex5/model_manifest.json; composition logs/ex4/mask_census.json
++ mask_census_ex5.json. Both auditors ran pre-booking; findings
+disclosed in the booking commit. AUDIT NOTES carried: (i) receipt
+rows bind to mask/model identity by arm-name convention through the
+two manifests, not by an in-row sha — verified sha-matching this
+run; next emitter should stamp a sha field; (ii) the machine
+refuted_if_predicate encodes only the separation floor, while the
+prose refuted_if also requires bar 3 firing — immaterial here (13
+>= 10 AND bar 3 NO-FIRE agree under either reading), never cite
+the machine predicate alone; (iii) the "4:nonoverlap_margin"
+observation carries bar 4's metric triple by the conjunct contract
+(conjuncts must match their bar's contract or adjudication raises),
+its provenance string names the true quantity. RECEIPT-AUDIT
+BLOCKER, resolved by disclosure (the frozen driver is never
+edited): every row carries battery='gt7', a literal inherited from
+the reused frozen gt7_run.py — the RULE-ABLATE shape reached by
+REUSE rather than copy. EX5 membership is defined by receipt path
+logs/ex5/ plus seed sets {4001,5002,6003}/{1001}, never by the
+battery field; grouping the corpus by battery=='gt7' pools
+EX3/EX4/EX5 cells (the qual rows are value-identical to the
+seed-1001 cells in logs/ex3/fresh.jsonl by design). Further
+receipt-audit disclosures, all carried in the observations doc's
+audit_notes: ex5_answers.jsonl is seed-separable by append order
+only (use ex5_perprob.jsonl, which carries seed); the model loads
+by repo name with no revision pin — identity established by the
+single-snapshot cache, refs/main == d388dead, and per-file shas
+(manifest built from the remote listing; .gitattributes/README not
+loaded); the perprob 'frac' field holds the arm NAME (legacy);
+scratch/moe_gt1_arm2.py (the actual instrument behind the thin
+gt7_run wrapper) is now hashed in start_provenance, and the three
+reused keepsets (ex1_full128, ex3_del_invp, ex3_del_rand0) carry
+sha256 in the observations doc. The observations file was
+regenerated once pre-booking (OBS_OVERWRITE=1) to add these
+provenance repairs; all measured values and all bar outcomes
+identical before and after. Follow-up (post-booking, so the as-run
+driver sha stays truthful): a refuse-if-exists guard lands in
+scratch/ex5_run.sh — the frozen driver appends unconditionally and
+a re-launch would silently double ex5.jsonl. Driver scratch/ex5_run.sh + frozen
+scratch/gt7_run.py; observations scratch/ex5_observe.py.
+
