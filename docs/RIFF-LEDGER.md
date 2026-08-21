@@ -8139,3 +8139,33 @@ honest status column).
   Attribution: Artin (Collatz frame + precision question +
   perfect-function sharpening), house (rewrite-dynamics mapping,
   doctrine cross-links), GPT (parity-as-predicate refinement).
+  REFINEMENT 2 (same day, Artin + GPT): three layers now named —
+  the task's rewrite RELATION R (math admits many next states,
+  unlike Collatz's unique successor), the learned POLICY pi
+  choosing among them, and the EVALUATOR E_I realizing the
+  choice. Determinism corrected: finite precision does NOT mean
+  nondeterministic orbits — a fixed implementation defines a
+  perfectly deterministic F; what MED measured is
+  CROSS-SCHEDULE NON-INVARIANCE (two implementations of the
+  same F disagree at sensitive near-ties), and the deterministic
+  integer battery is stronger precisely because its fixed
+  arithmetic/rounding/tie-break contract aims at bit-equality
+  ACROSS implementations, removing evaluator variation and
+  exposing the policy's dynamics alone. Artin's perfectibility
+  claim, banked: when the training corpus never NEEDS the
+  truncated digits, the model CAN be ideal on that closed system
+  — anchored by the precision doctrine (birth precision above
+  TF32 a non-factor: the data didn't need the digits) and the
+  calculated-model thesis (closed systems admit computable
+  weights); imperfection enters where rounding/truncation
+  matters or the case was never in the diet. His correlation
+  question (absorption x lr x training data) is HONEST-OPEN:
+  diet exposure share, lr schedules, and absorption were each
+  measured as separate levers in the mathnative threads, but
+  their joint correlation structure was never booked as one
+  experiment. Parity analogue re-scoped for a relation: predict
+  whether progress REQUIRES an expansion-family move v an
+  available contraction (family-level, not unique-rewrite).
+  Later exact-battery observables banked: excursion height,
+  transient length, basin structure, orbit merges, non-solving
+  cycles.
