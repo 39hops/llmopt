@@ -7607,3 +7607,43 @@ honest status column).
   number to check). Attribution: Artin (ask), GPT (design + MTP
   lead), Opus seats (survey + measurement), house (verification,
   ladder arithmetic, revival call).
+  BANK CORRECTIONS (2026-08-21, GPT seat review, house-verified
+  arithmetic; applied before any number becomes a design
+  constant): (1) DELTANET ROLLBACK — one pre-verify snapshot S0
+  is insufficient for PARTIAL rejection in one sweep: accepting a
+  k'-prefix needs the recurrent state AFTER that prefix, so
+  either per-depth snapshots S1..S3 (~3 x 75.5MB = 226MB, still
+  immaterial) or recompute-from-S0 during the same layer
+  residency visit (zero extra I/O, extra arithmetic only) — the
+  silent-bug note stands, the single-snapshot sufficiency claim
+  is corrected. (2) MTP E[tokens/sweep] = 2.37 assumed a CONSTANT
+  conditional acceptance 0.655 at every depth; an aggregate rate
+  cannot identify E — public Qwen3.8 Q4/Q8 traces show strongly
+  depth-dependent acceptance. 2.37 is an ILLUSTRATIVE assumption;
+  pricing requires our own BF16 P(A1), P(A2|A1), P(A3|A1,A2)
+  acceptance-length distribution. (3) RESIDENT SEMANTICS — the
+  ladder's "~2.6 tok/s at 28GB resident + lossless" conflated
+  two designs: 28GB of DECODED bf16 resident leaves ~21.7GB raw
+  = ~14.4GB compressed cold traffic (~1.4 tok/s at QD4 + E=2.37,
+  does not close); the promising shape is 28GB of the COMPRESSED
+  representation resident (49.7/1.51 = ~32.9GB packed, ~4.9GB
+  cold), which only works if the codec admits packed-to-GEMV
+  without a materialize-then-multiply pass that re-doubles
+  memory traffic. The decisive residue cell is therefore ONE
+  LAYER: lossless-packed weights -> direct/fused exact-BF16 GEMV,
+  scored as EFFECTIVE EXACT-BF16 GB/s, never compression ratio
+  alone (1.51x is an entropy ceiling, not an achieved
+  random-access runtime codec). (4) The 8.3GB/s QD4 figure
+  requalifies as cache-cold physical I/O before use. EXACTNESS
+  ORACLE defined now: the slow sequential one-token out-of-core
+  BF16 path, no MTP, is the reference; batched verify, packed
+  codec, MTP, and fused kernels must each reproduce its greedy
+  tokens; if batched DeltaNet arithmetic differs from sequential,
+  speculative positions are processed SEQUENTIALLY within each
+  layer residency visit rather than sacrificing exactness.
+  (5) DISK does not block bootstrap: shardwise transactional
+  encode -> decode/sha verify -> atomic promote -> delete source
+  shard fits in 17GiB free. Residue order updated: the
+  packed-GEMV one-layer cell is now residue (2) alongside the
+  streamed-GEMV timing probe; depth-conditional MTP acceptance
+  measurement joins the preflights.
