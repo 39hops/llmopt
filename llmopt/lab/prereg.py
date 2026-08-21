@@ -181,8 +181,29 @@ def validate(doc: dict) -> dict:
     if prec is not None:
         _require(rp is not None,
                  "refutation_precedence requires refuted_if_predicate")
-        _require(set(prec) == {"suppressed_unless_bars_fire"},
+        _require(bool({"suppressed_unless_bars_fire"} <= set(prec)
+                      <= {"suppressed_unless_bars_fire",
+                          "applies_only_if_bars_fire"}),
                  f"refutation_precedence keys {sorted(prec)}")
+        cond = prec.get("applies_only_if_bars_fire")
+        if cond is not None:
+            # EX5 seam: prose refutations of the form "refuted if
+            # bar N fires AND <predicate>" had no machine encoding
+            # — the predicate alone was scored. These bars are
+            # SCIENTIFIC conditions (any gate_class): when one does
+            # not FIRE the refutation route reads NOT-REFUTED with
+            # the condition named, distinct from sanity suppression
+            # (UNADJUDICATED — instrument invalid). Forward-only.
+            _require(bool(isinstance(cond, list) and cond
+                          and len(set(cond)) == len(cond)),
+                     "applies_only_if_bars_fire must be a non-empty "
+                     "list of unique bar ids")
+            declared = {b.get("id") for b in doc.get("bars", [])
+                        if isinstance(b, dict)}
+            for i in cond:
+                _require(type(i) is int and i in declared,
+                         f"applies_only_if_bars_fire names unknown "
+                         f"bar {i!r}")
         ids = prec["suppressed_unless_bars_fire"]
         _require(bool(isinstance(ids, list) and ids),
                  "suppressed_unless_bars_fire must be a non-empty list")
@@ -257,7 +278,16 @@ def validate(doc: dict) -> dict:
             _require(a in doc["arms"],
                      f"bar {bar['id']}: arm {a!r} not declared in arms")
         for cj in bar.get("conjuncts", []):
-            _require(set(cj) == {"measurement", "direction", "value"},
+            # EX5 seam: a conjunct measuring a DIFFERENT quantity
+            # than its bar (nonoverlap margin under a median-gap
+            # bar) was forced to carry the bar's metric triple —
+            # knowingly false metadata. Conjuncts may now declare
+            # their own metric/population/aggregation; absent, the
+            # bar's triple is inherited (old docs unchanged).
+            _require(bool({"measurement", "direction", "value"}
+                          <= set(cj)
+                          <= {"measurement", "direction", "value",
+                              "metric", "population", "aggregation"}),
                      f"bar {bar['id']}: conjunct keys {sorted(cj)}")
             _require(cj["direction"] in DIRECTIONS,
                      f"bar {bar['id']}: conjunct direction")
@@ -331,6 +361,11 @@ def adjudicate_refutation(prereg: dict, obs: dict,
             if by_id[i] != "FIRE":
                 return (f"UNADJUDICATED (precedence: bar {i} "
                         f"{by_id[i]})")
+        for i in prec.get("applies_only_if_bars_fire", []):
+            _require(i in by_id, f"condition bar {i} not adjudicated")
+            if by_id[i] != "FIRE":
+                return (f"NOT-REFUTED (condition: bar {i} "
+                        f"{by_id[i]})")
     m = obs.get("measurements", {}).get(rp["measurement"])
     if m is None:
         return None
@@ -403,7 +438,7 @@ def adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]:
                     (f"conjunct {cj['measurement']}: not-run",)))
                 break
             for key in ("metric", "population", "aggregation"):
-                if cm[key] != bar[key]:
+                if cm[key] != cj.get(key, bar[key]):
                     raise MetricContractError(
                         f"metric_{key}_mismatch",
                         f"bar {bar['id']} conjunct {cj['measurement']}")
@@ -413,7 +448,8 @@ def adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]:
                        provenance=cm.get("provenance", "")),
                 bar_value=float(cj["value"]),
                 direction=cj["direction"],
-                required_population=bar["population"])
+                required_population=cj.get("population",
+                                           bar["population"]))
             if cv == "NO-FIRE":
                 verdict = "NO-FIRE"
         else:

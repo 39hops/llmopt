@@ -397,3 +397,50 @@ def test_operandless_documents_are_unaffected():
     exactly as before."""
     doc = load(PREREG)
     assert "operands" not in doc
+
+
+# ---- adopted 2026-08-21 (EX5 seams): conditional refutation on
+# ---- non-sanity bars, and conjunct-local metric triples.
+
+def test_conditional_refutation_reads_not_refuted_when_bar_misses():
+    from llmopt.lab.prereg import adjudicate_refutation
+    doc = _prec_doc()
+    doc["refutation_precedence"]["applies_only_if_bars_fire"] = [2]
+    doc["bars"].append({"id": 2, "name": "R", "metric": "m2",
+                        "population": "p", "aggregation": "a",
+                        "direction": "above", "value": 5,
+                        "arms": list(doc["arms"])[:1],
+                        "gate_class": "range"})
+    validate(doc)
+    obs = _prec_obs(2)   # sanity bar fires
+    obs["measurements"]["2"] = {"value": 1, "metric": "m2",
+                                "population": "p", "aggregation": "a"}
+    outs = adjudicate_prereg(doc, obs)
+    r = adjudicate_refutation(doc, obs, outs)
+    assert r.startswith("NOT-REFUTED (condition: bar 2")
+    obs["measurements"]["2"]["value"] = 9   # condition bar fires
+    outs = adjudicate_prereg(doc, obs)
+    assert adjudicate_refutation(doc, obs, outs) in ("REFUTED",
+                                                     "NOT-REFUTED")
+    bad = _prec_doc()
+    bad["refutation_precedence"]["applies_only_if_bars_fire"] = [99]
+    with pytest.raises(PreregSchemaError):
+        validate(bad)
+
+
+def test_conjunct_may_carry_its_own_metric_triple():
+    doc = _prec_doc()
+    doc["bars"][0]["conjuncts"] = [
+        {"measurement": "1:margin", "direction": "above", "value": 0,
+         "metric": "margin", "population": "p", "aggregation": "a"}]
+    validate(doc)
+    obs = _prec_obs(9)
+    obs["measurements"]["1:margin"] = {
+        "value": 3, "metric": "margin", "population": "p",
+        "aggregation": "a"}
+    out = {o.bar_id: o for o in adjudicate_prereg(doc, obs)}
+    assert out[1].outcome == "FIRE"
+    # a conjunct-local triple is ENFORCED, not decorative
+    obs["measurements"]["1:margin"]["metric"] = "wrong"
+    with pytest.raises(MetricContractError):
+        adjudicate_prereg(doc, obs)
