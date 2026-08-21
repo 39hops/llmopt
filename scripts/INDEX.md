@@ -3407,6 +3407,17 @@ A3 (revival-sweep Tier A, 2026-07-31): rotation-instrument POSITIVE CONTROL. Run
 - `anti_mass(W, Jo, Ji)`
 - `main()`
 
+### scratch/routedb_basis.py
+ROUTE-BASIS census (EXPERTDB rung 3, desk, observation-only; representation, information boundary, priors, and metrics FROZEN here before any value is read). Frozen rung-1 module imported for traces/expert bytes, never edited.
+
+- `phase2(ph)`
+- `signatures()` — per (domain, prompt): prefill vec, decode vec (counts).
+- `nmf(X, r, iters=200, seed='route-basis-0')`
+- `project(x, Hm, iters=200)`
+- `topk_table(vec, k)`
+- `coverage(table, dec_vec)`
+- `main()`
+
 ### scratch/routedb_replay.py
 ROUTE-DB rung 1: frozen-trace expert-cache replay (desk, observation-only, zero model cost — the EXPERTDB bank's pricing rung). POLICIES AND PRICING CONSTANTS ARE FROZEN HERE, before any replay value is read (the commit carrying this file predates the receipt).
 

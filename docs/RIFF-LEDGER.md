@@ -7866,3 +7866,15 @@ honest status column).
   lands). If latent structure transports, the "vector DB" role
   is retrieval over compact route fingerprints for residency
   priors — ANN errors cost misses, never tokens.
+  RUNG 3 MEASURED (2026-08-21, OBSERVATION ROUTE-BASIS-0):
+  routing signatures are ~6-dimensional (PCA eff-rank 5.98);
+  under the prefill-only boundary NAMED-DOMAIN priors predict
+  held-out decode residency best (K48 coverage 0.939, latent-mix
+  r=16 close at 0.922, global/raw-prefill 0.75-0.76, oracle
+  0.980); cross-domain NN rate 0.0 at prompt grain — but the NMF
+  basis is genuinely CROSS-LABEL exactly in the math/phys/proofs
+  family (three blended components), the routing-level signature
+  of [[DOMAIN-CAPABILITY-COUPLING]]'s intuition. At r=16 latent
+  does not yet subsume named; open cells: r sweep + hybrid
+  residuals, and the static-prior + LRU composition replay for
+  honest MB/token.

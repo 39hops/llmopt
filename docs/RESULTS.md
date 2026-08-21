@@ -38814,3 +38814,55 @@ receipts before adoption:
    physics<->math capability transfer — the transport rung
    remains the discriminator.
 
+## OBSERVATION ROUTE-BASIS-0: routing signatures live in a ~6-dimensional space; under the prefill-only boundary NAMED-DOMAIN priors predict held-out decode residency best (K48 coverage 0.939) with LATENT-MIX close (0.922) and GLOBAL/RAW-PREFILL far behind (0.75-0.76); cross-domain NN rate is 0.0 at prompt grain — yet the NMF basis is genuinely cross-label inside the math/phys/proofs family (2026-08-21, Mac, desk)
+
+The EXPERTDB rung 3, run exactly as frozen (representation,
+information boundary, priors, and metrics committed in
+scratch/routedb_basis.py before any value was read; digest-stable
+NMF seed). Train = even prompt ids across all six slices pooled
+(360 prompts), test = odd ids (360); a predictor sees only
+train-fit artifacts plus the test prompt's OWN PREFILL routing.
+Receipt: logs/routedb/basis_receipt.json.
+
+READS:
+
+1. LOW-DIMENSIONAL ROUTING SPACE: PCA effective rank 5.98 over
+   6144 dims (top eigs 0.499/0.222/0.062/0.056/...). Prompt-level
+   routing is ~6-dimensional.
+2. PREDICTIVE LEG (decode-selection coverage / implied
+   MB/decode-token UPPER BOUND, static-table read where every
+   missed selection pays a full load — NOT comparable 1:1 with
+   the rung-2 dynamic LRU numbers, which cache their misses):
+      K32: NAMED-DOMAIN 0.8437 (159.3) > LATENT-MIX 0.8247
+           (178.7) >> GLOBAL 0.6097 / RAW-PREFILL 0.6051;
+           ORACLE 0.9170 (84.6).
+      K48: NAMED-DOMAIN 0.9393 (61.9) > LATENT-MIX 0.9219 (79.6)
+           >> GLOBAL 0.7610 / RAW-PREFILL 0.7486;
+           ORACLE 0.9801 (20.3).
+   Structure knowledge (named or latent) is worth ~0.18-0.23
+   coverage over global at K32 — the residency signal GPT's
+   reframe predicted is real. At r=16 the latent mixture does NOT
+   yet subsume the named-domain prior; named edges it at both K.
+3. CROSS-DOMAIN NN RATE = 0.0: every test signature's nearest
+   train neighbor is same-domain. At PROMPT grain the six slices
+   are fully separable — the latent framing wins on parsimony,
+   not on hidden mixing of prompts.
+4. THE BASIS ITSELF IS CROSS-LABEL where Artin's coupling
+   intuition says it should be: alongside near-pure components
+   (code 0.94/0.96, phys 0.94, math 0.82, dialog 0.88), the
+   math/phys/proofs family BLENDS — components at
+   math .46/proofs .30/phys .24, math .46/phys .30/proofs .22,
+   math .47/proofs .27/phys .20, and a code .52/phys .21/math .17
+   mode. Post-fit interpretation only, but the shared-substrate
+   read at the ROUTING level is visible exactly in the
+   quantitative-reasoning family.
+
+FENCES. Observation-only; gate-corpus slices, not workloads;
+coverage/MB figures are static-table upper bounds under the
+frozen boundary; one deterministic split; r=16 one setting (no
+sweep); labels applied after fitting; nothing here measures
+CAPABILITY transfer (that stays the DOMAIN-CAPABILITY-COUPLING
+transport rung). Next cells this prices: (a) latent-r sweep +
+hybrid latent-over-named residuals, (b) static-prior + LRU
+composition replay (the honest MB/token), both desk.
+
