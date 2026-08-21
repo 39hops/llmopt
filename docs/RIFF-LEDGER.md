@@ -7429,3 +7429,29 @@ honest status column).
   made this census machine-portable for CPU pennies. Same class as
   the stream-your-rows corollary: what a driver discards at emit
   time is what the next question needs.
+- **BANKED (2026-08-20): PRECISION-CREST-TRANSPORT — does the MoE
+  deletion crest survive quantization precision?** (Artin's ask
+  "find a way to isolate weight-quant-precisions with MoEs"; house
+  design + pricing; GPT sequencing). The mapping: every booked
+  EX-ANAT number lives on the 4-bit MLX artifact; a quant-precision
+  x deletion interaction has never been run (ledger searched
+  2026-08-20, zero hits). Design: a SELF-CONTAINED 6-bit family
+  (mlx-community/Qwen3-30B-A3B-6bit, ~24GB — runs on the 36GB Mac;
+  8-bit ~32GB refused under the one-resident-30B rule, bf16 ~60GB
+  impossible) re-running full + named80 + one rank mask + one layer
+  mask on the same seeds, comparing deletion EFFECTS across
+  precisions, never raw gates (instrument fences: gate comparisons
+  never cross instruments; sigma never transports across formats).
+  Measured anchors: 4-bit crest named80-full = +55 pooled
+  (RESULTS 22454); mask compositions frozen in
+  logs/ex5/mask_manifest.json. Honest breaks: a precision
+  difference in effect size confounds rounding of the router
+  logits with rounding of the expert weights — this design cannot
+  separate those two; and ~24GB more disk needs a cleanup pass
+  first (33GB free measured). Testable residue: if the crest
+  vanishes at 6-bit, the named-carrier interference story is
+  partly a quantization artifact; if it holds, the mechanism is
+  weight-precision-robust. SEQUENCED (GPT seat, adopted): do not
+  run until EX5-LAYERMATCH establishes whether there is a 4-bit
+  mechanism worth transporting. Attribution: Artin (ask), house
+  (design/pricing), GPT (sequencing fence).
