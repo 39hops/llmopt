@@ -1,0 +1,204 @@
+{
+ "name": "EX6-PHASE-0",
+ "results_id": "2026-08-21-pre-reg-ex6-phase-0-which",
+ "registered": "2026-08-21",
+ "machine": "mac",
+ "note": "Which phase carries the named-80 deletion crest? Delta_mode = sum over eval seeds 7001/8002/9003 of (gate_mode - gate_NONE), the NONE (unmasked) arm run fresh in-load as the paired baseline. Phase law = the traj capture's (GT1-TRAJ-CORR): T>1 router call = prefill (resets tail flag), first T==1 call = prompt_tail, later T==1 calls = decode; PROMPT masks prefill+prompt_tail, DECODE masks decode only. Signs 3/3 = per-seed deltas same-sign via each bar's signs conjunct (conjunct-local metric triples, first live use). Refutation uses applies_only_if_bars_fire (first live use): the decode-carry hypothesis is judged only when the wrapper qualification holds AND the ALL crest reproduces. INTERPRETATION FENCE: a fired bar 6 separation reads 'decode-phase masking carries more of the effect than prompt-phase masking at this mask and dose', not 'decode selections cause failure' \u2014 recruitment causality stays open; anatomy reads (failure enrichment) remain correlates.",
+ "arms": {
+  "none": {
+   "description": "MODE=NONE \u2014 router untouched, paired-full baseline, fresh per seed in-load"
+  },
+  "all": {
+   "description": "MODE=ALL \u2014 named-80 mask in every phase (static-deletion reproduction)"
+  },
+  "prompt": {
+   "description": "MODE=PROMPT \u2014 mask during prefill + prompt_tail only"
+  },
+  "decode": {
+   "description": "MODE=DECODE \u2014 mask during generated-token decode steps only"
+  }
+ },
+ "operands": [
+  {
+   "name": "named80_keepset",
+   "provider": "checkpoints/ex3_del_invp.json"
+  },
+  {
+   "name": "phase_instrument",
+   "provider": "scratch/ex6_phase.py"
+  },
+  {
+   "name": "frozen_gate_machinery",
+   "provider": "scratch/moe_gt1_arm2.py"
+  },
+  {
+   "name": "anatomy_basis",
+   "provider": "logs/ex5/traj_census.json"
+  },
+  {
+   "name": "rider_basis",
+   "provider": "logs/ex5/traj_rider.json"
+  },
+  {
+   "name": "model_manifest",
+   "provider": "logs/ex5/model_manifest.json"
+  }
+ ],
+ "receipts": [
+  "logs/ex6/qual.jsonl",
+  "logs/ex6/ex6.jsonl",
+  "logs/ex6/ex6_observations.json"
+ ],
+ "bars": [
+  {
+   "id": 1,
+   "name": "QUALIFICATION",
+   "gate_class": "sanity",
+   "metric": "n_exact_reproductions",
+   "population": "seed1001:none_v_full128+all_v_named80",
+   "aggregation": "count_of_2",
+   "direction": "above",
+   "value": 2,
+   "arms": [
+    "none",
+    "all"
+   ],
+   "description": "the NEW wrapper at seed 1001: MODE=NONE reproduces the booked full128 cell (59, {1:22,2:19,3:18}) and MODE=ALL reproduces the booked ex3_del_invp cell (78, {1:28,2:26,3:24}), cell-exact. Any mismatch = INSTRUMENT-INVALID, treatment does not fire."
+  },
+  {
+   "id": 2,
+   "name": "ALL-CREST",
+   "metric": "pooled_delta",
+   "population": "all_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 21,
+   "arms": [
+    "all",
+    "none"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "2:signs",
+     "direction": "above",
+     "value": 3,
+     "metric": "n_positive_seeds",
+     "population": "all_v_none:3seeds",
+     "aggregation": "count_of_3"
+    }
+   ],
+   "description": "the crest reproduces through the phase wrapper on the fresh triple: Delta_all >= +21, signs 3/3."
+  },
+  {
+   "id": 3,
+   "name": "DECODE-SUFFICIENCY",
+   "metric": "pooled_delta",
+   "population": "decode_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 21,
+   "arms": [
+    "decode",
+    "none"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "3:signs",
+     "direction": "above",
+     "value": 3,
+     "metric": "n_positive_seeds",
+     "population": "decode_v_none:3seeds",
+     "aggregation": "count_of_3"
+    }
+   ],
+   "description": "decode-only masking alone clears the crest bar: Delta_decode >= +21, signs 3/3."
+  },
+  {
+   "id": 4,
+   "name": "DECODE-RECAPTURE",
+   "gate_class": "range",
+   "metric": "abs_delta_gap",
+   "population": "all_v_decode:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "below",
+   "value": 10,
+   "arms": [
+    "all",
+    "decode",
+    "none"
+   ],
+   "description": "non-suppressing range: |Delta_all - Delta_decode| <= 10 \u2014 decode masking recaptures the full effect within the house pair floor."
+  },
+  {
+   "id": 5,
+   "name": "PROMPT-SUFFICIENCY",
+   "metric": "pooled_delta",
+   "population": "prompt_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 21,
+   "arms": [
+    "prompt",
+    "none"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "5:signs",
+     "direction": "above",
+     "value": 3,
+     "metric": "n_positive_seeds",
+     "population": "prompt_v_none:3seeds",
+     "aggregation": "count_of_3"
+    }
+   ],
+   "description": "prompt-phase masking alone clears the crest bar: Delta_prompt >= +21, signs 3/3."
+  },
+  {
+   "id": 6,
+   "name": "PHASE-SEPARATION",
+   "metric": "delta_gap",
+   "population": "decode_v_prompt:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 21,
+   "arms": [
+    "decode",
+    "prompt",
+    "none"
+   ],
+   "description": "Delta_decode - Delta_prompt >= +21: the decode phase carries measurably more of the effect."
+  },
+  {
+   "id": 7,
+   "name": "INTERACTION",
+   "gate_class": "range",
+   "metric": "abs_additivity_residual",
+   "population": "all_phases:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 21,
+   "arms": [
+    "all",
+    "prompt",
+    "decode",
+    "none"
+   ],
+   "description": "diagnostic: |Delta_all - (Delta_prompt + Delta_decode)| >= 21 flags non-additive phase interaction. An excursion is a result, never an alarm."
+  }
+ ],
+ "refuted_if": "The decode-carry hypothesis (from the EX5 anatomy: decode-time failure enrichment is the harm correlate) is REFUTED if, with the wrapper qualified (bar 1) and the crest reproducing (bar 2), decode-only masking yields nothing: Delta_decode <= 0 pooled. Judged only under bars 1 and 2 (precedence + condition).",
+ "refuted_if_predicate": {
+  "measurement": "refutation:delta_decode",
+  "direction": "below",
+  "value": 0
+ },
+ "refutation_precedence": {
+  "suppressed_unless_bars_fire": [
+   1
+  ],
+  "applies_only_if_bars_fire": [
+   2
+  ]
+ },
+ "registered_prior": "House, on the record, MEDIUM confidence (two anatomy reads pull opposite ways: selection mass is prefill-heavy, failure enrichment is decode-side; the prior follows the enrichment): bar 1 exact; bar 2 fires around the +43/+55 class; bar 3 FIRES (decode carries most); bar 4 holds; bar 5 does NOT fire (prompt-phase contribution small); bar 6 fires; bar 7 quiet (roughly additive). The named live alternative, on the record: the prefill-mass story \u2014 bar 5 fires and bar 3 does not \u2014 would invert the mechanism reading toward context-assembly harm rather than generation-time harm."
+}

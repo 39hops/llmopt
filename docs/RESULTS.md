@@ -38286,3 +38286,82 @@ design proceeds on reads 1/2 (phase signature + failure
 recruitment), which this amendment leaves strengthened; nothing in
 the design references rank8/low-margin.
 
+## PRE-REG EX6-PHASE-0: which phase carries the named-80 deletion crest — prompt-side or decode-side masking? (2026-08-21, Mac)
+
+QUESTION. EX5 established the named-carrier crest replicates
+([REPLICATED], 6/6 seeds) and EX5-TRAJ-ANATOMY-0 + its rider found
+the carriers prefill-mass-heavy yet uniquely FAILURE-ENRICHED at
+decode (prompt-normalized: +23% relative recruitment on failed
+prompts, the only group; rank masks flip negative). Those two reads
+pull opposite ways. This rung asks the causal question the anatomy
+cannot: does deleting the carriers during GENERATION carry the
+benefit, or does deleting them while the prompt is being read?
+
+INSTRUMENT. scratch/ex6_phase.py — a phase-scoped router patch over
+the FROZEN moe_gt1_arm2 machinery (imported, never edited): modes
+NONE (untouched), ALL (mask every phase), PROMPT (mask prefill +
+prompt_tail), DECODE (mask generated-token steps only). Phase law
+is the traj capture's (GT1-TRAJ-CORR): T>1 call = prefill and
+resets the per-layer tail flag; first 1-token call = prompt_tail;
+later 1-token calls = decode. Mask = the frozen named-80 deletion
+keepset (checkpoints/ex3_del_invp.json). Model = the pinned 4-bit
+snapshot (logs/ex5/model_manifest.json). Mechanism smoke run on
+smoke-isolated paths (logs/ex6/smoke*.jsonl): NONE masks zero
+calls, PROMPT recall 0.9691 over prefill calls only, DECODE recall
+0.9898 over decode calls only. Machine copy
+docs/preregs/ex6-phase-0.json carries the first live use of BOTH
+new schema fields (conjunct-local metric triples;
+applies_only_if_bars_fire).
+
+DEFINITIONS. Delta_mode = sum over eval seeds 7001/8002/9003 of
+(gate_mode - gate_NONE), the NONE arm run fresh in-load per seed.
+Seeds 7001/8002/9003 verified UNSPENT (zero RESULTS hits) at
+registration; spent by this rung. Signs 3/3 = per-seed deltas
+same-sign.
+
+ARMS. none / all / prompt / decode, 4 arms x 3 seeds = 12 fresh
+gates (~55 min) after a 2-gate qualification.
+
+BARS (machine-adjudicated):
+1. QUALIFICATION (sanity): the NEW wrapper at seed 1001 —
+   MODE=NONE reproduces the booked full128 cell (59, {22,19,18})
+   AND MODE=ALL reproduces the booked ex3_del_invp cell (78,
+   {28,26,24}), cell-exact, 2/2. Mismatch = INSTRUMENT-INVALID;
+   treatment does not fire.
+2. ALL-CREST: Delta_all >= +21, signs 3/3 — the crest reproduces
+   through the wrapper on the fresh triple.
+3. DECODE-SUFFICIENCY: Delta_decode >= +21, signs 3/3.
+4. DECODE-RECAPTURE (range, non-suppressing):
+   |Delta_all - Delta_decode| <= 10.
+5. PROMPT-SUFFICIENCY: Delta_prompt >= +21, signs 3/3.
+6. PHASE-SEPARATION: Delta_decode - Delta_prompt >= +21.
+7. INTERACTION (range, diagnostic):
+   |Delta_all - (Delta_prompt + Delta_decode)| >= 21 flags
+   non-additivity; an excursion is a result, never an alarm.
+
+REFUTED-IF (predicate; precedence bar 1, condition bar 2 — first
+live applies_only_if use): the decode-carry hypothesis is refuted
+if, with the wrapper qualified and the crest reproducing,
+Delta_decode <= 0 pooled.
+
+REGISTERED PRIOR (house, MEDIUM confidence — the two anatomy reads
+conflict and the prior follows the failure enrichment): bar 1
+exact; bar 2 fires in the +43/+55 class; bar 3 FIRES; bar 4 holds;
+bar 5 does NOT fire; bar 6 fires; bar 7 quiet. The named live
+alternative, on the record: the prefill-mass story — bar 5 fires
+and bar 3 does not — which would read as context-assembly harm
+rather than generation-time harm.
+
+FENCES. Mac only; single-precision pinned 4-bit instrument; one
+mask (the named 80) — phase results do not transport to other
+masks without a new registration; a fired bar 6 reads "decode-phase
+masking carries more of the effect at this mask and dose", never
+"decode selections cause failure" (recruitment causality open;
+anatomy stays correlational); masked-phase recall is
+phase-conditional and never comparable across modes; no random
+phase controls in this rung (identity-specific decode controls
+register only after the carrying phase is known — GPT sequencing,
+adopted). Receipts: logs/ex6/{qual.jsonl, ex6.jsonl,
+ex6_observations.json}, refuse-if-exists at the launcher; a
+wall-kill books surviving cells + NOT-RUN.
+

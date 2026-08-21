@@ -1900,6 +1900,12 @@ EX5-TRAJ-ANATOMY-0 prompt-normalized rider (desk, zero-cost, frozen by the commi
 - `mask_slots(name)`
 - `main()`
 
+### scratch/ex6_phase.py
+EX6-PHASE-0 driver: phase-scoped named-80 deletion (PRE-REG EX6-PHASE-0 in docs/RESULTS.md; machine copy docs/preregs/ex6-phase-0.json). The frozen moe_gt1_arm2 machinery is imported, never edited; the ONLY new instrument code is the phase-scoped router patch below.
+
+- `instrument_phase(model, keep, mode)`
+- `main()`
+
 ### scratch/exact1_small_cells.py
 EXACT1-SMALL: d8/d16 ladder+anchor cells on axiom's ENGINE-EXACT-1.
 
