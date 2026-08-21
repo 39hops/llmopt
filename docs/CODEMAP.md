@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 214, library 73, reproduce-pinned 10, results-cited 256, spec-cited 88, cited-but-library 61
+Census: UNCITED 214, library 73, reproduce-pinned 10, results-cited 257, spec-cited 88, cited-but-library 61
 
 ## scratch/
 
@@ -116,7 +116,7 @@ Census: UNCITED 214, library 73, reproduce-pinned 10, results-cited 256, spec-ci
 | ex5 | ex5_traj_rider.py | UNCITED | — | — | — | 1 |
 | ex5 | ex5_traj_rider2.py | UNCITED | — | — | — | — |
 | ex6 | ex6_observe.py | results-cited | RESULTS | RESULTS×2 | — | — |
-| ex6 | ex6_phase.py | results-cited | RESULTS | RESULTS×3 | — | 2 |
+| ex6 | ex6_phase.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | ex6 | ex6_run.sh | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | exact | exact_twin_d56.py | spec-cited | specs | specs×1 | — | — |
 | exact1 | exact1_small_cells.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
@@ -407,6 +407,7 @@ Census: UNCITED 214, library 73, reproduce-pinned 10, results-cited 256, spec-ci
 | rot | rot_convert.py | spec-cited | specs | specs×1 | — | — |
 | rot | rot_snap_anatomy.py | UNCITED | — | — | — | — |
 | rotinstr | rotinstr_control.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| routedb | routedb_replay.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | ruleablate1 | ruleablate1_driver.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | rulepolicy0 | rulepolicy0_census.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | run | run_snap_gates.sh | spec-cited | specs | specs×1 | — | — |

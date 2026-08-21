@@ -7754,3 +7754,14 @@ honest status column).
   census (do channel clusters transport across the gate corpus v
   the domain trajs?) at desk cost. Attribution: Artin (ask), GPT
   (drafter framing), house (boundary + sequencing).
+  RUNG 1 MEASURED (2026-08-21, OBSERVATION ROUTE-DB-REPLAY-0):
+  the cache concept PROMOTES at K=48 (~6.4GB: implementable
+  decode misses 26-100 MB/token, 3-12 ms QD4 stalls, all six
+  traces) and SPLITS at K=32 (phase-static clears 110 MB on 3/6).
+  The EX6 phase structure carries most of the exploitable
+  locality — a frozen phase-split table ties clairvoyant Belady
+  on math at K=48 — EXCEPT prose (below LRU; per-domain fallback
+  needed). Prev-token prefetch predictor 0.40-0.54
+  precision/recall, flat in lookahead depth. Self-fit fence: the
+  tables were built from the trace they replay; cross-trace
+  transport is the open cell before any implementation decision.

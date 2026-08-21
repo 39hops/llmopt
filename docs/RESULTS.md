@@ -38546,3 +38546,68 @@ GT1-era frozen file if a launcher ever omitted LOG=; every real
 invocation set it, and the fail-closed treatment gate would have
 caught a duplicate-append).
 
+## OBSERVATION ROUTE-DB-REPLAY-0: the expert-cache concept PROMOTES at K=48 (~6.4GB resident: every implementable policy holds decode misses at 26-100 MB/token, 3-12 ms QD4 stalls) and SPLITS at K=32 (phase-static clears the 110 MB bar on 3/6 traces); the EX6 phase structure is a systems lever — a frozen phase-split demand table matches the clairvoyant Belady ceiling on math at K=48 (2026-08-21, Mac, desk)
+
+The EXPERTDB bank's rung 1, run exactly as frozen (policies,
+budgets, pricing constants, and the promotion read were committed
+in scratch/routedb_replay.py at 66db693b BEFORE the replay fired).
+Zero model cost: 180 cache simulations (6 frozen traces x 6
+policies x 5 budgets) over the routing trajectories, per-expert
+bytes derived from the pinned snapshot's safetensors headers:
+2,654,208 B/expert (16.31 GB all experts). Receipt:
+logs/routedb/replay_receipt.json.
+
+PROMOTION READ, scored against the frozen bar (implementable
+policy at K<=32 holds DECODE misses under 110 MB/token; kill if
+everything implementable at K<=48 exceeds 220):
+
+- K=32 (~4.3GB expert-resident): SPLIT. PHASE-STATIC — separate
+  prefill/decode top-K tables swapped at the phase boundary —
+  clears on code (109.5), phys (94.0), proofs (98.2); misses on
+  math (132.4), dialog (122.8), prose (242.6). No other
+  implementable policy clears anywhere at K=32.
+- K=48 (~6.4GB expert-resident): PROMOTES everywhere. Best
+  implementable decode traffic 26.1-99.5 MB/token across all six
+  traces (QD4 stalls 3.1-12.0 ms). The kill bar is nowhere near
+  triggered.
+
+HEADLINE STRUCTURAL READ: PHASE-STATIC — a FROZEN offline table,
+no runtime adaptivity at all — matches or beats clairvoyant
+BELADY at K=32 on phys (94.0 v 94.2) and effectively ties Belady
+at K=48 on math (45.6 v 46.1). The EX6 phase asymmetry is not
+just mechanism physics; it is most of the exploitable routing
+locality. Exception that fences the claim: PROSE — phase tables
+there run BELOW plain LRU (242.6 v 194.6 at K=32) and leave a
+2.4x gap to Belady at K=48 (99.5 v 41.6); the prose trace has the
+weakest phase structure and any deployment would want a
+per-domain table or fallback.
+
+PREFETCH CENSUS (policy-independent temporal-locality ceiling):
+the previous-token same-layer predictor scores precision =
+recall = 0.40-0.54 (math 0.40, dialog 0.54) and is FLAT in
+lookahead depth (d=1/2/4 within 0.01) — pure temporal locality
+with no layer-distance decay, so multi-layer-ahead prefetch
+costs nothing extra in predictor quality.
+
+PRICING CONTEXT (constants frozen pre-run): stalls priced at the
+measured 4.2/8.3 GB/s SSD numbers; a 3080-class decode step for
+this MoE is tens of ms, so K=48's 3-12 ms QD4 stalls are
+overlap-absorbable while K=16's 35-59 ms are not.
+
+FENCES. Observation-only desk pricing, gates nothing. Traces are
+the gate corpus (120 prompts each) plus domain suites — not a
+deployment workload; the replay charges a full expert load per
+miss with no overlap model (stalls are upper bounds at the stated
+bandwidth); per-expert bytes uniform by construction (fused
+switch_mlp tensors / 128); STATIC/PHASE-STATIC tables were built
+from the SAME trace they replay (self-fit ceiling — a deployment
+table must transport across prompts, and the prose exception
+shows transport is not free); the promotion read priced the
+concept, not an implementation. Next causal candidates this
+prices: (a) cross-trace table transport (fit on math, replay on
+the other five — desk, same receipt machinery), (b) the 3080
+implementation decision at K=48, which belongs to Artin.
+
+RECEIPTS. logs/routedb/replay_receipt.json (driver
+scratch/routedb_replay.py, frozen at 66db693b).
+

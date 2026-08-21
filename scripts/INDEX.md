@@ -3400,6 +3400,15 @@ A3 (revival-sweep Tier A, 2026-07-31): rotation-instrument POSITIVE CONTROL. Run
 - `anti_mass(W, Jo, Ji)`
 - `main()`
 
+### scratch/routedb_replay.py
+ROUTE-DB rung 1: frozen-trace expert-cache replay (desk, observation-only, zero model cost — the EXPERTDB bank's pricing rung). POLICIES AND PRICING CONSTANTS ARE FROZEN HERE, before any replay value is read (the commit carrying this file predates the receipt).
+
+- `expert_bytes()` — Per-expert bytes from safetensors headers (fused switch_mlp
+- `load_events(path)` — [(prompt, pos, phase, [per-layer topk])] token events.
+- `replay(events, policy, k)`
+- `prefetch_census(events)` — Previous-token same-layer predictor at lookahead d (the
+- `main()`
+
 ### scratch/rulepolicy0_census.py
 RULE-POLICY-0 rung 0 — label-coverage census (/desk shape).
 
