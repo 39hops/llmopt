@@ -7754,14 +7754,53 @@ honest status column).
   census (do channel clusters transport across the gate corpus v
   the domain trajs?) at desk cost. Attribution: Artin (ask), GPT
   (drafter framing), house (boundary + sequencing).
-  RUNG 1 MEASURED (2026-08-21, OBSERVATION ROUTE-DB-REPLAY-0):
-  the cache concept PROMOTES at K=48 (~6.4GB: implementable
-  decode misses 26-100 MB/token, 3-12 ms QD4 stalls, all six
-  traces) and SPLITS at K=32 (phase-static clears 110 MB on 3/6).
-  The EX6 phase structure carries most of the exploitable
-  locality — a frozen phase-split table ties clairvoyant Belady
-  on math at K=48 — EXCEPT prose (below LRU; per-domain fallback
-  needed). Prev-token prefetch predictor 0.40-0.54
-  precision/recall, flat in lookahead depth. Self-fit fence: the
-  tables were built from the trace they replay; cross-trace
-  transport is the open cell before any implementation decision.
+  RUNG 1 MEASURED (2026-08-21, OBSERVATION ROUTE-DB-REPLAY-0 +
+  AMENDMENT -SIM): the registered K<=32 read SPLIT (phase-static
+  clears 110 MB on 3/6 traces); the robust descriptive read is
+  plain LRU@K48 (~6.4GB): 63.7-103.7 MB/decode-token on all six
+  traces with zero fitted table. Phase-split tables look strong
+  but their numbers are LOWER BOUNDS (phase-boundary table churn
+  uncharged) and the Belady variant they tied is insert-on-miss,
+  not a true ceiling; prefetch read = previous-token same-layer
+  reuse 0.40-0.54 (depth claim retracted — one predictor measured
+  thrice). Fences: self-fit tables; MB/token portable, ms columns
+  Mac-SSD only, 3080 stalls need their own NVMe->H2D measurement.
+  Rung 2: within-domain prompt holdouts with charged transitions
+  + BELADY-BYPASS, then the 6x6 transport matrix; sharp target =
+  transported phase knowledge making K32 behave like plain K48.
+- **BANKED (2026-08-21): DOMAIN-CAPABILITY-COUPLING — does domain
+  change the model's CAPABILITY, or only its routing?** (Artin's
+  ask, morning after the phase night: "physics/math domains
+  benefit each other first hand"). What the ledger actually
+  holds: domain-dependent ROUTING is measured six ways (the
+  gt2/gt3/gt4 trajectory suites, Jaccard lenses, the carriers'
+  4.3/5 domain breadth, ROUTE-DB's per-domain locality spread
+  with prose the outlier) — but CAPABILITY is measured on exactly
+  ONE domain (the 120-item math gate, sympy oracle). Every
+  deletion/phase verdict this week reads "capability" through
+  that single lens; whether the math-demand-derived named-80 are
+  math-specific or domain-general carriers is UNMEASURED. The
+  mapping (Artin's observation, made falsifiable): if domains
+  share substrate, a math-derived intervention should transport
+  to a non-math gate; if capability is domain-partitioned, the
+  same deletion should be neutral-or-harmful off-domain. Honest
+  breaks: "physics/math benefit each other" has no booked
+  same-instrument anchor yet (training-diet coupling results are
+  a different substrate — the small math-natives, not the 30B
+  MoE); a second domain gate needs its own ORACLE, and the house
+  has one ready-made candidate: code scored by the toolchain
+  (llmopt/codegen/llvm.py — assemble/run, no string match; native
+  clang exists on the Mac), while a physics gate would need a
+  generator + oracle built first (charter: physics is a standing
+  engine domain). Testable residue, in order: (1) desk census —
+  the carriers' routing share on the code/phys trajs is already
+  on disk (EX5-TRAJ breadth says they ARE routed off-domain;
+  count their demand share per domain); (2) the transport rung —
+  a code gate (toolchain oracle, fresh seeds) under full v
+  named-80-deletion v a control mask: does the math crest
+  transport to code capability? Same-instrument, same-machine,
+  paired. (3) only then the training-side coupling question
+  (diet mixing on the math natives — different substrate, its
+  own registration). Attribution: Artin (question + the coupling
+  intuition), house (falsifiable split routing-v-capability,
+  oracle inventory, residue order).
