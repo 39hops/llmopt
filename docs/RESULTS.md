@@ -39795,3 +39795,31 @@ failures; NOT-RUN for wall-killed arms; rows stream to
 logs/ex6loc/ (refuse-if-exists; SMOKE to smoke paths). Driver
 frozen by commit before launch.
 
+## AMENDMENT EX6-LOC-0-ADJUDICATION: two pre-read corrections — D1 rationale (a logic error, not a prior change) and anchor-qualification strictness (2026-08-21, mac)
+
+Amends PRE-REG EX6-LOC-0, booked pre-read (the LOC run is live;
+no arm value has been seen; the driver is unchanged and not
+restarted).
+
+1. D1 RATIONALE CORRECTED: the prereg's "stated risk to the
+prior" reasoned from D1 = 111/360 toward TOKEN1_ONLY
+sensitivity. That is a logic error: z1 is sampled from the
+prompt-batch logits BEFORE the first T=1 call exists, so the
+PROMPT mask's effect on z1's identity is caused ENTIRELY by the
+prompt-batch component. D1 is evidence of PROMPT-BATCH causal
+potency (consistent with the registered prior), not a risk
+signal for the token1 component. The numeric prior is unchanged
+(Delta_prefill >= 2/3 pooled PROMPT delta; Delta_token1 < 7);
+only the rationale sentence is rewritten.
+
+2. ANCHOR QUALIFICATION STRICTNESS: the prereg permitted one
+anchor seed to invalidate only itself while keeping pooled
+>= 24 / < 7 bars calibrated to 360 problems and the +47 crest —
+inconsistent, since a dropped seed changes the population the
+bars were priced on. Adjudication rule, registered now: ALL
+THREE NONE/PROMPT anchor seeds must reproduce their booked cells
+EXACTLY for any verdict-class LOC interpretation; any anchor
+miss books the run NOT-QUALIFIED (observation-class at best,
+taint named). The driver's per-seed skip and 2+-seed abort
+remain as receipts machinery only.
+

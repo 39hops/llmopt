@@ -8117,5 +8117,25 @@ honest status column).
   whether failures cluster where expansion is required (the
   "odd" class); (c) the standing exact-inference retest slot
   covers the precision half.
-  Attribution: Artin (Collatz frame + precision question), house
-  (rewrite-dynamics mapping, doctrine cross-links).
+  REFINEMENT (same day, review-adopted + Artin's follow-up):
+  expansion/contraction is the step OUTCOME; the true parity
+  analogue to search for is a cheap LOCAL STRUCTURAL PREDICATE
+  of the term that selects which rewrite family is required
+  (parity is computable without running the orbit — the analogue
+  must be too). The length census should carry token ratio AND
+  sympy AST measures (count_ops, tree depth) so text formatting
+  cannot masquerade as dynamics. Artin's sharpening: 3x+1 is a
+  PERFECT function on EXACT inputs (pure integers), so its
+  orbits are deterministic; a model is an imperfect function on
+  a lossy substrate, so its orbits are only approximately
+  deterministic — which connects the frame to the house's
+  deterministic integer battery (exact instruments have
+  Collatz-grade orbit determinism; float inference does not) and
+  to the exact-inference retest slot. Precision wording
+  corrected: today's MED lesson is FINITE-PRECISION /
+  EVALUATION-ORDER decision sensitivity on the 4-bit MLX stack —
+  dtype attribution (fp16 v 4-bit dequant v accumulation order)
+  was not measured.
+  Attribution: Artin (Collatz frame + precision question +
+  perfect-function sharpening), house (rewrite-dynamics mapping,
+  doctrine cross-links), GPT (parity-as-predicate refinement).
