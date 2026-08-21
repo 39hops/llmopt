@@ -312,10 +312,9 @@
   "logs/ex6loc/rider.json": {
    "bytes": 1591,
    "exists": true,
-   "local_only": true,
    "sha256": "2251ec56072c0d24aa1ed8e63c0c4f2590a117dadc42bf0b9c22ff140f6247f4",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/ex6med/qual2.jsonl": {
    "bytes": 17744,
