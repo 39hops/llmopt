@@ -8215,3 +8215,27 @@ honest status column).
   check), GPT (factorial design + collapse statistic), house
   (ledger verification: the statistic already exists as the
   absorption law's consolidation).
+  CORRECTION (same day, review-adopted): two overclaims above are
+  retracted in place. (1) "correlation instinct = measured
+  mechanism" overstates — LR x precision via eta*|g|/ulp(w) is a
+  measured TWO-AXIS mechanism and diet is an INDEPENDENTLY
+  measured third axis; diet joining the same sufficient statistic
+  is precisely the unrun joint hypothesis the factorial tests.
+  (2) "if blocked, architecture- or diet-blocked" dropped a
+  blocker: optimization reachability is separate, and the
+  absorption law itself shows numeric resolution CAN block
+  (low-LR updates at training time; near-tie decisions at
+  inference). Scoped precision claim: above-TF32 did not matter
+  for the TESTED birth regime; nothing establishes precision can
+  never block elsewhere. FOUR-GATE PERFECTIBILITY FRAME banked:
+  representability -> diet identification -> optimizer
+  reachability -> numerical realization (extra digits irrelevant
+  only once training-absorption AND inference-decision margins
+  are both adequate). Factorial statistic hierarchy registered:
+  cumulative surviving update mass is a CANDIDATE statistic, not
+  a definition of information (equal sum|delta| can differ in
+  cancellation/direction); ladder = intended-update survival
+  fraction -> realized/intended update norm -> directional net
+  rule-associated update. Named clean outcome: absorption curves
+  collapse but capability does NOT — which would isolate
+  optimization geometry/interference as the missing variable.
