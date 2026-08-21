@@ -2232,6 +2232,23 @@ Greedy-first adoption cell (pre-reg 2026-07-28 night): on the FULL production ga
 - `greedy(prompt, spend)`
 - `run(arm)`
 
+### scratch/grf_analyze.py
+GENERAL-ROUTING-FACTORIAL analysis (desk, observation-only; metrics FROZEN here before any value is read — the commit carrying this file predates the receipt).
+
+- `main()`
+
+### scratch/grf_capture.py
+GENERAL-ROUTING-FACTORIAL capture (observation-only; the banked riff's residue item 2). Runs the FROZEN corpus (logs/grf/corpus.json, emitted by the committed scratch/grf_corpus.py before any model call) through the pinned 4-bit MoE with the frozen moe_gt1 TRAJ instrumentation (imported, never edited): per-token routing rows (prompt id, layer, position, top-8, scores, phase, router entropy) stream to the traj file per prompt; the generated text (for a LATER, separately registered answer-identity leg — stored, not scored here) streams to a rows file.
+
+- `_load(name, rel)`
+- `main()`
+
+### scratch/grf_corpus.py
+GENERAL-ROUTING-FACTORIAL frozen corpus (the banked riff's residue item 1; Artin charter ruling 2026-08-21 admits benign conceptual biology/chemistry as first-class balanced topic levels).
+
+- `build()`
+- `main()`
+
 ### scratch/grpo_shaped.py
 Potential-shaped GRPO on the gen-6 champion (2026-07-21, Artin GO — 'ahead of metabolic v3'). The b-lever: reward bandwidth. r = verified * (1 + LAM * tanh((Phi(cur)-Phi(next))/SCALE)), Phi = -(count_ops + 40*n_Integral). Unverified stays 0 (oracle floor intact; Ng-shaping preserves optimal policy). Monkeypatches G.collect's r_of via a wrapped collect; everything else (driver, gates, rollback) is the production harness. Pre-registered against the plateau: solves flat by cycle 4 in every unshaped run — shaped must beat +2 solves over 12 cycles or the b-lever nulls.
 

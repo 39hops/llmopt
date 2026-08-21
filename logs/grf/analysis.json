@@ -1,0 +1,109 @@
+{
+ "note": "GRF analysis: similarity structure, matched-pair dissociation, leakage-controlled held-out prediction (metrics frozen pre-read)",
+ "start": {
+  "start_commit": "8d376a03",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/grf_analyze.py": "794092082c9f0fb369ff4c17e3bab99f4b1a4aa25b5a942218b3481199a770aa",
+   "scratch/grf_capture.py": "220775d100104c9148a14d028813b4f2b3201fc69d5bfab170f43ec034de919f",
+   "scratch/grf_corpus.py": "3e88e60f7dde083f1d11255c224bb45900486e2e6decaee4868bcf4ea3f4ab1a"
+  }
+ },
+ "completion_commit": "8d376a03",
+ "n_prompts": 200,
+ "chance": {
+  "topic": 0.125,
+  "form": 0.2,
+  "operation": 0.4
+ },
+ "similarity": {
+  "full": {
+   "topic": {
+    "within": 0.831,
+    "between": 0.6878,
+    "contrast": 0.1433
+   },
+   "form": {
+    "within": 0.7139,
+    "between": 0.7029,
+    "contrast": 0.011
+   },
+   "operation": {
+    "within": 0.7268,
+    "between": 0.6967,
+    "contrast": 0.0301
+   }
+  },
+  "prefill": {
+   "topic": {
+    "within": 0.8379,
+    "between": 0.7807,
+    "contrast": 0.0572
+   },
+   "form": {
+    "within": 0.8389,
+    "between": 0.7751,
+    "contrast": 0.0638
+   },
+   "operation": {
+    "within": 0.8023,
+    "between": 0.782,
+    "contrast": 0.0202
+   }
+  },
+  "decode": {
+   "topic": {
+    "within": 0.8167,
+    "between": 0.6662,
+    "contrast": 0.1505
+   },
+   "form": {
+    "within": 0.689,
+    "between": 0.6832,
+    "contrast": 0.0058
+   },
+   "operation": {
+    "within": 0.7083,
+    "between": 0.6752,
+    "contrast": 0.0331
+   }
+  }
+ },
+ "matched_pairs": {
+  "full": {
+   "same_content_diff_form": 0.9446,
+   "same_form_diff_content": 0.7016
+  },
+  "prefill": {
+   "same_content_diff_form": 0.8895,
+   "same_form_diff_content": 0.8341
+  },
+  "decode": {
+   "same_content_diff_form": 0.9374,
+   "same_form_diff_content": 0.6762
+  }
+ },
+ "heldout_centroid_acc": {
+  "full": {
+   "topic": 0.775,
+   "form": 0.69,
+   "operation": 0.495
+  },
+  "prefill": {
+   "topic": 0.665,
+   "form": 1.0,
+   "operation": 0.62
+  },
+  "decode": {
+   "topic": 0.76,
+   "form": 0.54,
+   "operation": 0.455
+  }
+ },
+ "nn_topic_acc": {
+  "full": 0.69,
+  "prefill": 0.36,
+  "decode": 0.68
+ }
+}

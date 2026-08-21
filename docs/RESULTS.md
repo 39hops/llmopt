@@ -38866,3 +38866,70 @@ transport rung). Next cells this prices: (a) latent-r sweep +
 hybrid latent-over-named residuals, (b) static-prior + LRU
 composition replay (the honest MB/token), both desk.
 
+## OBSERVATION GRF-0: routing tracks CONTENT at decode and FORM at prefill — topic separability is semantic, surviving full template control (held-out topic accuracy 0.775 v chance 0.125 with shared wrappers), while prefill routing predicts the FORM wrapper perfectly (1.0) and barely knows the topic (NN 0.36) (2026-08-21, Mac)
+
+The GENERAL-ROUTING-FACTORIAL's primary routing-only rung, run
+per the banked design and the 2026-08-21 charter ruling (benign
+conceptual bio/chem as balanced topic levels; evaluation/engine
+distinction; passive capture only). Corpus frozen pre-call
+(scratch/grf_corpus.py: 200 prompts, 8 topics x 5 propositions x
+5 forms, same proposition across forms, same wrappers across
+topics); capture via the frozen moe_gt1 TRAJ instrumentation
+(1,217,232 routing rows, three-phase labels); analysis metrics
+frozen pre-read (scratch/grf_analyze.py). Receipts:
+logs/grf/{corpus.json, traj.jsonl (untracked, 1.2M rows),
+rows.jsonl (untracked; completions stored UNSCORED),
+analysis.json}.
+
+THE TABLE (signature = L1-normalized 48x128 selection counts;
+contrast = within-group minus between-group mean cosine;
+prediction = leave-one-proposition-out nearest centroid):
+
+  variant  contrast topic/form/op   matched pairs        acc topic/form/op   nnTopic
+  full     0.1433 / 0.0110 / 0.0301  content .9446 v form .7016  0.775/0.69/0.495   0.69
+  prefill  0.0572 / 0.0638 / 0.0202  content .8895 v form .8341  0.665/1.00/0.62    0.36
+  decode   0.1505 / 0.0058 / 0.0331  content .9374 v form .6762  0.760/0.54/0.455   0.68
+
+READS:
+
+1. TOPIC SEPARABILITY IS SEMANTIC. With form wrappers SHARED
+   across topics by construction and the prompt's own proposition
+   excluded from every centroid, held-out topic prediction reads
+   0.775 (full) / 0.760 (decode) v chance 0.125. The
+   ROUTE-BASIS-0 domain separability was not a pure template
+   artifact — though NN topic accuracy 0.69 here (v the gate
+   corpora's effective 1.0) says templates were INFLATING it.
+2. THE PHASE SPLIT MIRRORS EX6's MECHANISM STORY: prefill routing
+   tracks the SURFACE — form contrast (0.0638) exceeds topic
+   (0.0572) there, and form is predicted PERFECTLY (1.00) from
+   prefill routing alone — while decode routing tracks CONTENT
+   (topic contrast 0.1505 v form 0.0058; form prediction
+   collapses to 0.54). The router reads the wrapper while
+   assembling context and routes the subject while generating.
+3. MATCHED-PAIR DISSOCIATION: same-content-different-form pairs
+   cohere at 0.944 (full) v same-form-different-content at 0.702
+   — routing space organizes by WHAT is asked, not how, once
+   generation starts.
+4. OPERATION is weakly carried (contrasts 0.02-0.03; accuracy
+   0.455-0.62 v empirical chance 0.40) — requested operation is a
+   minor routing factor at this grain.
+5. Bio/chem slices behaved as ordinary topic levels (balanced by
+   design; no per-topic anomaly in the similarity structure) —
+   the measurement leg worked exactly as the charter distinction
+   intends, zero capability surface touched.
+
+FENCES. Observation-only; one model, one corpus instantiation
+(5 propositions/topic — narrow per-topic sampling), one capture
+run; signatures are selection counts (no scores/weights);
+completions stored but UNSCORED — any answer-identity leg is a
+separate registration; operation is partially confounded with
+proposition by design (cycled, not fully crossed); "prefill
+predicts form perfectly" includes the wrapper's literal tokens
+being IN the prefill — that leg measures surface reading, which
+is the point, but it is not a claim about abstraction. Next
+cells this prices: (a) the answer-identity regression leg
+(frozen MCQ subset, answer letters already stored); (b)
+signature-grain refinement (per-layer contrasts: WHERE does
+topic replace form along depth); (c) the ROUTE-BASIS latent
+basis refit on this template-controlled corpus.
+

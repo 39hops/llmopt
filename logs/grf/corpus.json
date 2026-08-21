@@ -1,0 +1,1602 @@
+[
+ {
+  "pid": 0,
+  "topic": "astronomy",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. The planet with the most prominent rings is"
+ },
+ {
+  "pid": 1,
+  "topic": "astronomy",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Which planet in our solar system has the most prominent ring system?"
+ },
+ {
+  "pid": 2,
+  "topic": "astronomy",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Which planet in our solar system has the most prominent ring system?"
+ },
+ {
+  "pid": 3,
+  "topic": "astronomy",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Which planet in our solar system has the most prominent ring system?"
+ },
+ {
+  "pid": 4,
+  "topic": "astronomy",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Which planet in our solar system has the most prominent ring system? A) Saturn B) Mars C) Venus D) Mercury"
+ },
+ {
+  "pid": 5,
+  "topic": "astronomy",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "completion",
+  "prompt": "Complete the sentence. The Moon shows phases because"
+ },
+ {
+  "pid": 6,
+  "topic": "astronomy",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Why does the Moon show phases over the course of a month?"
+ },
+ {
+  "pid": 7,
+  "topic": "astronomy",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Why does the Moon show phases over the course of a month?"
+ },
+ {
+  "pid": 8,
+  "topic": "astronomy",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Why does the Moon show phases over the course of a month?"
+ },
+ {
+  "pid": 9,
+  "topic": "astronomy",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Why does the Moon show phases over the course of a month? A) clouds on the Moon block sunlight B) we see varying portions of its sunlit half C) Earth's shadow covers it each night D) its surface changes brightness"
+ },
+ {
+  "pid": 10,
+  "topic": "astronomy",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "completion",
+  "prompt": "Complete the sentence. Unlike a star, a planet"
+ },
+ {
+  "pid": 11,
+  "topic": "astronomy",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. How does a planet differ from a star?"
+ },
+ {
+  "pid": 12,
+  "topic": "astronomy",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "direct_qa",
+  "prompt": "Answer the question. How does a planet differ from a star?"
+ },
+ {
+  "pid": 13,
+  "topic": "astronomy",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. How does a planet differ from a star?"
+ },
+ {
+  "pid": 14,
+  "topic": "astronomy",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). How does a planet differ from a star? A) is made only of gas B) cannot have moons C) does not produce light by nuclear fusion D) is always larger"
+ },
+ {
+  "pid": 15,
+  "topic": "astronomy",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "completion",
+  "prompt": "Complete the sentence. The Sun is classified as a"
+ },
+ {
+  "pid": 16,
+  "topic": "astronomy",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Is the Sun classified as a planet, a star, or a galaxy?"
+ },
+ {
+  "pid": 17,
+  "topic": "astronomy",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Is the Sun classified as a planet, a star, or a galaxy?"
+ },
+ {
+  "pid": 18,
+  "topic": "astronomy",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Is the Sun classified as a planet, a star, or a galaxy?"
+ },
+ {
+  "pid": 19,
+  "topic": "astronomy",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Is the Sun classified as a planet, a star, or a galaxy? A) planet B) galaxy C) comet D) star"
+ },
+ {
+  "pid": 20,
+  "topic": "astronomy",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. Our solar system is located in the galaxy called the"
+ },
+ {
+  "pid": 21,
+  "topic": "astronomy",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. What galaxy contains our solar system?"
+ },
+ {
+  "pid": 22,
+  "topic": "astronomy",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. What galaxy contains our solar system?"
+ },
+ {
+  "pid": 23,
+  "topic": "astronomy",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. What galaxy contains our solar system?"
+ },
+ {
+  "pid": 24,
+  "topic": "astronomy",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). What galaxy contains our solar system? A) Milky Way B) Andromeda C) Whirlpool D) Sombrero"
+ },
+ {
+  "pid": 25,
+  "topic": "biology",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. For photosynthesis, plants absorb the gas"
+ },
+ {
+  "pid": 26,
+  "topic": "biology",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. What gas do plants absorb from the air for photosynthesis?"
+ },
+ {
+  "pid": 27,
+  "topic": "biology",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. What gas do plants absorb from the air for photosynthesis?"
+ },
+ {
+  "pid": 28,
+  "topic": "biology",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. What gas do plants absorb from the air for photosynthesis?"
+ },
+ {
+  "pid": 29,
+  "topic": "biology",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). What gas do plants absorb from the air for photosynthesis? A) helium B) carbon dioxide C) oxygen D) nitrogen"
+ },
+ {
+  "pid": 30,
+  "topic": "biology",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "completion",
+  "prompt": "Complete the sentence. Many leaves change color in autumn because"
+ },
+ {
+  "pid": 31,
+  "topic": "biology",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Why do leaves of many trees change color in autumn?"
+ },
+ {
+  "pid": 32,
+  "topic": "biology",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Why do leaves of many trees change color in autumn?"
+ },
+ {
+  "pid": 33,
+  "topic": "biology",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Why do leaves of many trees change color in autumn?"
+ },
+ {
+  "pid": 34,
+  "topic": "biology",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Why do leaves of many trees change color in autumn? A) sunlight turns red in autumn B) leaves absorb soil minerals that dye them C) green chlorophyll breaks down and other pigments show D) trees paint their leaves for warmth"
+ },
+ {
+  "pid": 35,
+  "topic": "biology",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "completion",
+  "prompt": "Complete the sentence. Unlike an animal cell, a plant cell has"
+ },
+ {
+  "pid": 36,
+  "topic": "biology",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. How does a plant cell differ from an animal cell?"
+ },
+ {
+  "pid": 37,
+  "topic": "biology",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "direct_qa",
+  "prompt": "Answer the question. How does a plant cell differ from an animal cell?"
+ },
+ {
+  "pid": 38,
+  "topic": "biology",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. How does a plant cell differ from an animal cell?"
+ },
+ {
+  "pid": 39,
+  "topic": "biology",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). How does a plant cell differ from an animal cell? A) no nucleus B) no membrane C) the ability to move on its own D) a rigid cell wall and chloroplasts"
+ },
+ {
+  "pid": 40,
+  "topic": "biology",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "completion",
+  "prompt": "Complete the sentence. A whale is classified as a"
+ },
+ {
+  "pid": 41,
+  "topic": "biology",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Is a whale classified as a fish, a mammal, or an amphibian?"
+ },
+ {
+  "pid": 42,
+  "topic": "biology",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Is a whale classified as a fish, a mammal, or an amphibian?"
+ },
+ {
+  "pid": 43,
+  "topic": "biology",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Is a whale classified as a fish, a mammal, or an amphibian?"
+ },
+ {
+  "pid": 44,
+  "topic": "biology",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Is a whale classified as a fish, a mammal, or an amphibian? A) mammal B) fish C) amphibian D) reptile"
+ },
+ {
+  "pid": 45,
+  "topic": "biology",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. Blood is pumped through the human body by the"
+ },
+ {
+  "pid": 46,
+  "topic": "biology",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. What organ pumps blood through the human body?"
+ },
+ {
+  "pid": 47,
+  "topic": "biology",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. What organ pumps blood through the human body?"
+ },
+ {
+  "pid": 48,
+  "topic": "biology",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. What organ pumps blood through the human body?"
+ },
+ {
+  "pid": 49,
+  "topic": "biology",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). What organ pumps blood through the human body? A) kidneys B) heart C) liver D) lungs"
+ },
+ {
+  "pid": 50,
+  "topic": "chemistry",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. A water molecule is made of the elements"
+ },
+ {
+  "pid": 51,
+  "topic": "chemistry",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. What two elements make up a water molecule?"
+ },
+ {
+  "pid": 52,
+  "topic": "chemistry",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. What two elements make up a water molecule?"
+ },
+ {
+  "pid": 53,
+  "topic": "chemistry",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. What two elements make up a water molecule?"
+ },
+ {
+  "pid": 54,
+  "topic": "chemistry",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). What two elements make up a water molecule? A) hydrogen and oxygen B) carbon and oxygen C) hydrogen and nitrogen D) sodium and chlorine"
+ },
+ {
+  "pid": 55,
+  "topic": "chemistry",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "completion",
+  "prompt": "Complete the sentence. Table salt dissolves readily in water because"
+ },
+ {
+  "pid": 56,
+  "topic": "chemistry",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Why does table salt dissolve readily in water?"
+ },
+ {
+  "pid": 57,
+  "topic": "chemistry",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Why does table salt dissolve readily in water?"
+ },
+ {
+  "pid": 58,
+  "topic": "chemistry",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Why does table salt dissolve readily in water?"
+ },
+ {
+  "pid": 59,
+  "topic": "chemistry",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Why does table salt dissolve readily in water? A) salt is a gas in disguise B) water molecules attract and surround its ions C) salt melts at room temperature D) water burns the salt away"
+ },
+ {
+  "pid": 60,
+  "topic": "chemistry",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "completion",
+  "prompt": "Complete the sentence. Unlike a covalent bond, an ionic bond involves"
+ },
+ {
+  "pid": 61,
+  "topic": "chemistry",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. How does an ionic bond differ from a covalent bond?"
+ },
+ {
+  "pid": 62,
+  "topic": "chemistry",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "direct_qa",
+  "prompt": "Answer the question. How does an ionic bond differ from a covalent bond?"
+ },
+ {
+  "pid": 63,
+  "topic": "chemistry",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. How does an ionic bond differ from a covalent bond?"
+ },
+ {
+  "pid": 64,
+  "topic": "chemistry",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). How does an ionic bond differ from a covalent bond? A) no electrons at all B) only atoms of the same element C) transfer of electrons between atoms D) sharing of electron pairs"
+ },
+ {
+  "pid": 65,
+  "topic": "chemistry",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "completion",
+  "prompt": "Complete the sentence. Oxygen gas is classified as an"
+ },
+ {
+  "pid": 66,
+  "topic": "chemistry",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Is oxygen gas classified as an element, a compound, or a mixture?"
+ },
+ {
+  "pid": 67,
+  "topic": "chemistry",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Is oxygen gas classified as an element, a compound, or a mixture?"
+ },
+ {
+  "pid": 68,
+  "topic": "chemistry",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Is oxygen gas classified as an element, a compound, or a mixture?"
+ },
+ {
+  "pid": 69,
+  "topic": "chemistry",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Is oxygen gas classified as an element, a compound, or a mixture? A) compound B) mixture C) alloy D) element"
+ },
+ {
+  "pid": 70,
+  "topic": "chemistry",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. The three common states of matter are"
+ },
+ {
+  "pid": 71,
+  "topic": "chemistry",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. What are the three common states of matter?"
+ },
+ {
+  "pid": 72,
+  "topic": "chemistry",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. What are the three common states of matter?"
+ },
+ {
+  "pid": 73,
+  "topic": "chemistry",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. What are the three common states of matter?"
+ },
+ {
+  "pid": 74,
+  "topic": "chemistry",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). What are the three common states of matter? A) solid, liquid, and gas B) hot, cold, and warm C) metal, plastic, and glass D) acid, base, and salt"
+ },
+ {
+  "pid": 75,
+  "topic": "everyday_science",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. A seesaw is an example of the simple machine called a"
+ },
+ {
+  "pid": 76,
+  "topic": "everyday_science",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. What simple machine is a seesaw an example of?"
+ },
+ {
+  "pid": 77,
+  "topic": "everyday_science",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. What simple machine is a seesaw an example of?"
+ },
+ {
+  "pid": 78,
+  "topic": "everyday_science",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. What simple machine is a seesaw an example of?"
+ },
+ {
+  "pid": 79,
+  "topic": "everyday_science",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). What simple machine is a seesaw an example of? A) screw B) wedge C) lever D) pulley"
+ },
+ {
+  "pid": 80,
+  "topic": "everyday_science",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "completion",
+  "prompt": "Complete the sentence. A metal spoon's handle becomes hot in soup because"
+ },
+ {
+  "pid": 81,
+  "topic": "everyday_science",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Why does a metal spoon in hot soup become hot at the handle?"
+ },
+ {
+  "pid": 82,
+  "topic": "everyday_science",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Why does a metal spoon in hot soup become hot at the handle?"
+ },
+ {
+  "pid": 83,
+  "topic": "everyday_science",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Why does a metal spoon in hot soup become hot at the handle?"
+ },
+ {
+  "pid": 84,
+  "topic": "everyday_science",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Why does a metal spoon in hot soup become hot at the handle? A) soup evaporates onto the handle B) light reflects into the handle C) the handle is always hotter than the bowl D) metal conducts heat along its length"
+ },
+ {
+  "pid": 85,
+  "topic": "everyday_science",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "completion",
+  "prompt": "Complete the sentence. Unlike boiling, evaporation"
+ },
+ {
+  "pid": 86,
+  "topic": "everyday_science",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. How does evaporation differ from boiling?"
+ },
+ {
+  "pid": 87,
+  "topic": "everyday_science",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "direct_qa",
+  "prompt": "Answer the question. How does evaporation differ from boiling?"
+ },
+ {
+  "pid": 88,
+  "topic": "everyday_science",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. How does evaporation differ from boiling?"
+ },
+ {
+  "pid": 89,
+  "topic": "everyday_science",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). How does evaporation differ from boiling? A) happens at the surface below the boiling point B) requires bubbles throughout the liquid C) only occurs in metals D) cools nothing down"
+ },
+ {
+  "pid": 90,
+  "topic": "everyday_science",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "completion",
+  "prompt": "Complete the sentence. Sound is classified as a"
+ },
+ {
+  "pid": 91,
+  "topic": "everyday_science",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Is sound classified as a mechanical wave or an electromagnetic wave?"
+ },
+ {
+  "pid": 92,
+  "topic": "everyday_science",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Is sound classified as a mechanical wave or an electromagnetic wave?"
+ },
+ {
+  "pid": 93,
+  "topic": "everyday_science",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Is sound classified as a mechanical wave or an electromagnetic wave?"
+ },
+ {
+  "pid": 94,
+  "topic": "everyday_science",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Is sound classified as a mechanical wave or an electromagnetic wave? A) static field B) mechanical wave C) electromagnetic wave D) light ray"
+ },
+ {
+  "pid": 95,
+  "topic": "everyday_science",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. Dropped objects fall toward the ground because of"
+ },
+ {
+  "pid": 96,
+  "topic": "everyday_science",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. What force pulls dropped objects toward the ground?"
+ },
+ {
+  "pid": 97,
+  "topic": "everyday_science",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. What force pulls dropped objects toward the ground?"
+ },
+ {
+  "pid": 98,
+  "topic": "everyday_science",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. What force pulls dropped objects toward the ground?"
+ },
+ {
+  "pid": 99,
+  "topic": "everyday_science",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). What force pulls dropped objects toward the ground? A) friction B) buoyancy C) gravity D) magnetism"
+ },
+ {
+  "pid": 100,
+  "topic": "factual_qa",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. Two hours contain a total of"
+ },
+ {
+  "pid": 101,
+  "topic": "factual_qa",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. How many minutes are there in two hours?"
+ },
+ {
+  "pid": 102,
+  "topic": "factual_qa",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. How many minutes are there in two hours?"
+ },
+ {
+  "pid": 103,
+  "topic": "factual_qa",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. How many minutes are there in two hours?"
+ },
+ {
+  "pid": 104,
+  "topic": "factual_qa",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). How many minutes are there in two hours? A) 240 minutes B) 120 minutes C) 60 minutes D) 100 minutes"
+ },
+ {
+  "pid": 105,
+  "topic": "factual_qa",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "completion",
+  "prompt": "Complete the sentence. The world uses time zones because"
+ },
+ {
+  "pid": 106,
+  "topic": "factual_qa",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Why do we set clocks to different time zones around the world?"
+ },
+ {
+  "pid": 107,
+  "topic": "factual_qa",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Why do we set clocks to different time zones around the world?"
+ },
+ {
+  "pid": 108,
+  "topic": "factual_qa",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Why do we set clocks to different time zones around the world?"
+ },
+ {
+  "pid": 109,
+  "topic": "factual_qa",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Why do we set clocks to different time zones around the world? A) the Sun orbits each country separately B) years have different lengths by region C) local noon differs as Earth rotates D) clocks run at different speeds by country"
+ },
+ {
+  "pid": 110,
+  "topic": "factual_qa",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "completion",
+  "prompt": "Complete the sentence. Unlike an encyclopedia, a dictionary mainly"
+ },
+ {
+  "pid": 111,
+  "topic": "factual_qa",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. How does a dictionary differ from an encyclopedia?"
+ },
+ {
+  "pid": 112,
+  "topic": "factual_qa",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "direct_qa",
+  "prompt": "Answer the question. How does a dictionary differ from an encyclopedia?"
+ },
+ {
+  "pid": 113,
+  "topic": "factual_qa",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. How does a dictionary differ from an encyclopedia?"
+ },
+ {
+  "pid": 114,
+  "topic": "factual_qa",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). How does a dictionary differ from an encyclopedia? A) contains only maps B) is organized by date C) excludes common words D) defines words rather than explaining subjects"
+ },
+ {
+  "pid": 115,
+  "topic": "factual_qa",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "completion",
+  "prompt": "Complete the sentence. The violin is classified as a"
+ },
+ {
+  "pid": 116,
+  "topic": "factual_qa",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Is the violin classified as a string, wind, or percussion instrument?"
+ },
+ {
+  "pid": 117,
+  "topic": "factual_qa",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Is the violin classified as a string, wind, or percussion instrument?"
+ },
+ {
+  "pid": 118,
+  "topic": "factual_qa",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Is the violin classified as a string, wind, or percussion instrument?"
+ },
+ {
+  "pid": 119,
+  "topic": "factual_qa",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Is the violin classified as a string, wind, or percussion instrument? A) string instrument B) wind instrument C) percussion instrument D) keyboard instrument"
+ },
+ {
+  "pid": 120,
+  "topic": "factual_qa",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. The capital city of Japan is"
+ },
+ {
+  "pid": 121,
+  "topic": "factual_qa",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. What is the capital city of Japan?"
+ },
+ {
+  "pid": 122,
+  "topic": "factual_qa",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. What is the capital city of Japan?"
+ },
+ {
+  "pid": 123,
+  "topic": "factual_qa",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. What is the capital city of Japan?"
+ },
+ {
+  "pid": 124,
+  "topic": "factual_qa",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). What is the capital city of Japan? A) Sapporo B) Tokyo C) Kyoto D) Osaka"
+ },
+ {
+  "pid": 125,
+  "topic": "geography",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. The longest river in South America is the"
+ },
+ {
+  "pid": 126,
+  "topic": "geography",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. What is the longest river in South America?"
+ },
+ {
+  "pid": 127,
+  "topic": "geography",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. What is the longest river in South America?"
+ },
+ {
+  "pid": 128,
+  "topic": "geography",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. What is the longest river in South America?"
+ },
+ {
+  "pid": 129,
+  "topic": "geography",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). What is the longest river in South America? A) Danube B) Mississippi C) Amazon D) Nile"
+ },
+ {
+  "pid": 130,
+  "topic": "geography",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "completion",
+  "prompt": "Complete the sentence. Coastal regions usually have milder winters because"
+ },
+ {
+  "pid": 131,
+  "topic": "geography",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Why do coastal regions usually have milder winters than continental interiors?"
+ },
+ {
+  "pid": 132,
+  "topic": "geography",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Why do coastal regions usually have milder winters than continental interiors?"
+ },
+ {
+  "pid": 133,
+  "topic": "geography",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Why do coastal regions usually have milder winters than continental interiors?"
+ },
+ {
+  "pid": 134,
+  "topic": "geography",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Why do coastal regions usually have milder winters than continental interiors? A) coasts receive more sunlight B) sea salt warms the air chemically C) winds always blow from land to sea D) oceans store heat and release it slowly"
+ },
+ {
+  "pid": 135,
+  "topic": "geography",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "completion",
+  "prompt": "Complete the sentence. Unlike an island, a peninsula is"
+ },
+ {
+  "pid": 136,
+  "topic": "geography",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. How does a peninsula differ from an island?"
+ },
+ {
+  "pid": 137,
+  "topic": "geography",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "direct_qa",
+  "prompt": "Answer the question. How does a peninsula differ from an island?"
+ },
+ {
+  "pid": 138,
+  "topic": "geography",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. How does a peninsula differ from an island?"
+ },
+ {
+  "pid": 139,
+  "topic": "geography",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). How does a peninsula differ from an island? A) connected to a mainland on one side B) completely surrounded by water C) always volcanic in origin D) found only in cold climates"
+ },
+ {
+  "pid": 140,
+  "topic": "geography",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "completion",
+  "prompt": "Complete the sentence. By rainfall, the Sahara is classified as a"
+ },
+ {
+  "pid": 141,
+  "topic": "geography",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Is the Sahara classified as a desert, a steppe, or a rainforest biome?"
+ },
+ {
+  "pid": 142,
+  "topic": "geography",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Is the Sahara classified as a desert, a steppe, or a rainforest biome?"
+ },
+ {
+  "pid": 143,
+  "topic": "geography",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Is the Sahara classified as a desert, a steppe, or a rainforest biome?"
+ },
+ {
+  "pid": 144,
+  "topic": "geography",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Is the Sahara classified as a desert, a steppe, or a rainforest biome? A) tundra B) desert C) steppe D) rainforest"
+ },
+ {
+  "pid": 145,
+  "topic": "geography",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. Part of the Europe-Asia boundary runs along the"
+ },
+ {
+  "pid": 146,
+  "topic": "geography",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Which mountain range separates Europe from Asia along part of their boundary?"
+ },
+ {
+  "pid": 147,
+  "topic": "geography",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Which mountain range separates Europe from Asia along part of their boundary?"
+ },
+ {
+  "pid": 148,
+  "topic": "geography",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Which mountain range separates Europe from Asia along part of their boundary?"
+ },
+ {
+  "pid": 149,
+  "topic": "geography",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Which mountain range separates Europe from Asia along part of their boundary? A) Andes B) Rockies C) Ural Mountains D) Alps"
+ },
+ {
+  "pid": 150,
+  "topic": "history",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. The Second World War ended in the year"
+ },
+ {
+  "pid": 151,
+  "topic": "history",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. In which year did the Second World War end?"
+ },
+ {
+  "pid": 152,
+  "topic": "history",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. In which year did the Second World War end?"
+ },
+ {
+  "pid": 153,
+  "topic": "history",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. In which year did the Second World War end?"
+ },
+ {
+  "pid": 154,
+  "topic": "history",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). In which year did the Second World War end? A) 1939 B) 1961 C) 1945 D) 1918"
+ },
+ {
+  "pid": 155,
+  "topic": "history",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "completion",
+  "prompt": "Complete the sentence. Ancient civilizations often arose near rivers because"
+ },
+ {
+  "pid": 156,
+  "topic": "history",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Why did ancient civilizations tend to arise near large rivers?"
+ },
+ {
+  "pid": 157,
+  "topic": "history",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Why did ancient civilizations tend to arise near large rivers?"
+ },
+ {
+  "pid": 158,
+  "topic": "history",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Why did ancient civilizations tend to arise near large rivers?"
+ },
+ {
+  "pid": 159,
+  "topic": "history",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Why did ancient civilizations tend to arise near large rivers? A) rivers blocked invading armies completely B) rivers were required for writing systems C) rivers made the climate colder D) rivers provided water and fertile soil for farming"
+ },
+ {
+  "pid": 160,
+  "topic": "history",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "completion",
+  "prompt": "Complete the sentence. Compared with hand copying, the printing press made books"
+ },
+ {
+  "pid": 161,
+  "topic": "history",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. How did the printing press differ from hand copying of books?"
+ },
+ {
+  "pid": 162,
+  "topic": "history",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "direct_qa",
+  "prompt": "Answer the question. How did the printing press differ from hand copying of books?"
+ },
+ {
+  "pid": 163,
+  "topic": "history",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. How did the printing press differ from hand copying of books?"
+ },
+ {
+  "pid": 164,
+  "topic": "history",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). How did the printing press differ from hand copying of books? A) far faster and cheaper to reproduce B) more expensive and rarer C) impossible to translate D) shorter in length"
+ },
+ {
+  "pid": 165,
+  "topic": "history",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "completion",
+  "prompt": "Complete the sentence. Historians classify the Renaissance as part of the"
+ },
+ {
+  "pid": 166,
+  "topic": "history",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Is the Renaissance classified as an ancient, medieval, or early modern period of European history?"
+ },
+ {
+  "pid": 167,
+  "topic": "history",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Is the Renaissance classified as an ancient, medieval, or early modern period of European history?"
+ },
+ {
+  "pid": 168,
+  "topic": "history",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Is the Renaissance classified as an ancient, medieval, or early modern period of European history?"
+ },
+ {
+  "pid": 169,
+  "topic": "history",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Is the Renaissance classified as an ancient, medieval, or early modern period of European history? A) industrial period B) early modern period C) ancient period D) prehistoric period"
+ },
+ {
+  "pid": 170,
+  "topic": "history",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. The wall that divided a European capital from 1961 to 1989 was the"
+ },
+ {
+  "pid": 171,
+  "topic": "history",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. What wall divided a European capital city from 1961 to 1989?"
+ },
+ {
+  "pid": 172,
+  "topic": "history",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. What wall divided a European capital city from 1961 to 1989?"
+ },
+ {
+  "pid": 173,
+  "topic": "history",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. What wall divided a European capital city from 1961 to 1989?"
+ },
+ {
+  "pid": 174,
+  "topic": "history",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). What wall divided a European capital city from 1961 to 1989? A) Great Wall B) Antonine Wall C) Berlin Wall D) Hadrian's Wall"
+ },
+ {
+  "pid": 175,
+  "topic": "literature",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. The play Romeo and Juliet was written by"
+ },
+ {
+  "pid": 176,
+  "topic": "literature",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Who wrote the play Romeo and Juliet?"
+ },
+ {
+  "pid": 177,
+  "topic": "literature",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Who wrote the play Romeo and Juliet?"
+ },
+ {
+  "pid": 178,
+  "topic": "literature",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Who wrote the play Romeo and Juliet?"
+ },
+ {
+  "pid": 179,
+  "topic": "literature",
+  "prop_idx": 0,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Who wrote the play Romeo and Juliet? A) Homer B) William Shakespeare C) Charles Dickens D) Jane Austen"
+ },
+ {
+  "pid": 180,
+  "topic": "literature",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "completion",
+  "prompt": "Complete the sentence. Poets often use metaphor because"
+ },
+ {
+  "pid": 181,
+  "topic": "literature",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Why do poets often use metaphor rather than literal description?"
+ },
+ {
+  "pid": 182,
+  "topic": "literature",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Why do poets often use metaphor rather than literal description?"
+ },
+ {
+  "pid": 183,
+  "topic": "literature",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Why do poets often use metaphor rather than literal description?"
+ },
+ {
+  "pid": 184,
+  "topic": "literature",
+  "prop_idx": 1,
+  "operation": "causal",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Why do poets often use metaphor rather than literal description? A) it is required by grammar B) it shortens every poem C) it links an idea to a vivid unrelated image D) it makes lines rhyme automatically"
+ },
+ {
+  "pid": 185,
+  "topic": "literature",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "completion",
+  "prompt": "Complete the sentence. Compared with a short story, a novel is"
+ },
+ {
+  "pid": 186,
+  "topic": "literature",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. How does a novel differ from a short story?"
+ },
+ {
+  "pid": 187,
+  "topic": "literature",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "direct_qa",
+  "prompt": "Answer the question. How does a novel differ from a short story?"
+ },
+ {
+  "pid": 188,
+  "topic": "literature",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. How does a novel differ from a short story?"
+ },
+ {
+  "pid": 189,
+  "topic": "literature",
+  "prop_idx": 2,
+  "operation": "comparison",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). How does a novel differ from a short story? A) always written in verse B) never fictional C) told only in first person D) longer and typically more complex in plot"
+ },
+ {
+  "pid": 190,
+  "topic": "literature",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "completion",
+  "prompt": "Complete the sentence. The Odyssey is classified as a work of"
+ },
+ {
+  "pid": 191,
+  "topic": "literature",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. Is an epic like the Odyssey classified as poetry, drama, or essay?"
+ },
+ {
+  "pid": 192,
+  "topic": "literature",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "direct_qa",
+  "prompt": "Answer the question. Is an epic like the Odyssey classified as poetry, drama, or essay?"
+ },
+ {
+  "pid": 193,
+  "topic": "literature",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. Is an epic like the Odyssey classified as poetry, drama, or essay?"
+ },
+ {
+  "pid": 194,
+  "topic": "literature",
+  "prop_idx": 3,
+  "operation": "classification",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). Is an epic like the Odyssey classified as poetry, drama, or essay? A) poetry B) drama C) essay D) journalism"
+ },
+ {
+  "pid": 195,
+  "topic": "literature",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "completion",
+  "prompt": "Complete the sentence. The sequence of events in a story is called the"
+ },
+ {
+  "pid": 196,
+  "topic": "literature",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "definition",
+  "prompt": "Answer with a one-sentence definition. What is the term for the sequence of events in a story?"
+ },
+ {
+  "pid": 197,
+  "topic": "literature",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "direct_qa",
+  "prompt": "Answer the question. What is the term for the sequence of events in a story?"
+ },
+ {
+  "pid": 198,
+  "topic": "literature",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "explain",
+  "prompt": "Explain the answer to this question in two sentences. What is the term for the sequence of events in a story?"
+ },
+ {
+  "pid": 199,
+  "topic": "literature",
+  "prop_idx": 4,
+  "operation": "recall",
+  "form": "mcq",
+  "prompt": "Choose the correct option (answer with the letter). What is the term for the sequence of events in a story? A) preface B) plot C) meter D) stanza"
+ }
+]

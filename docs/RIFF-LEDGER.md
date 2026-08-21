@@ -7933,3 +7933,16 @@ honest status column).
   template control? Attribution: Artin (the concern), GPT
   (factorial design), house (charter fence + the
   template-critique linkage to ROUTE-BASIS-0).
+  PRIMARY RUNG MEASURED same day (OBSERVATION GRF-0): topic
+  separability is SEMANTIC — held-out topic accuracy 0.775 v
+  chance 0.125 under full template control — but the gate
+  corpora's templates were inflating ROUTE-BASIS-0's purity (NN
+  topic 0.69 here v effectively 1.0 there). The phase split
+  mirrors EX6: prefill routing reads the FORM (predicted 1.00
+  from prefill alone), decode routing tracks the TOPIC (contrast
+  0.1505 v form 0.0058). Matched pairs: content-coherence 0.944
+  v form-coherence 0.702. Bio/chem slices behaved as ordinary
+  topic levels; measurement-only, zero capability surface. Open
+  cells: answer-identity leg (separate registration), per-layer
+  depth profile of the form->topic handoff, latent refit on the
+  template-controlled corpus.
