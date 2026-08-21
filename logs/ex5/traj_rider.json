@@ -1,0 +1,74 @@
+{
+ "note": "EX5 TRAJ rider: prompt-normalized decode recruitment, solved v failed (hypothesis generation only)",
+ "start": {
+  "start_commit": "0c75cbcd",
+  "start_status_porcelain": " M README.md\n M docs/figures.json\n M docs/receipts.lock.json\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/ex5_traj_rider.py": "57e68c9970930e9544d89b1f1528e9c8aea9c1e58d3db670a2100aad4bd75889",
+   "scratch/ex5_traj_census.py": "40d17076f049f43e8de13c7f9ef33e5c28cf8cc39e6e63d56a01985d0a27f67b"
+  }
+ },
+ "completion_commit": "0c75cbcd",
+ "n_prompts": 120,
+ "n_solved": 64,
+ "n_failed": 56,
+ "groups": {
+  "named80": {
+   "mean_rate_solved": 0.00902,
+   "mean_rate_failed": 0.01108,
+   "rate_gap_failed_minus_solved": 0.00206,
+   "incidence_solved": 1.0,
+   "incidence_failed": 1.0,
+   "incidence_saturated": true
+  },
+  "rank0": {
+   "mean_rate_solved": 0.02295,
+   "mean_rate_failed": 0.0223,
+   "rate_gap_failed_minus_solved": -0.00064,
+   "incidence_solved": 1.0,
+   "incidence_failed": 1.0,
+   "incidence_saturated": true
+  },
+  "rank1": {
+   "mean_rate_solved": 0.02651,
+   "mean_rate_failed": 0.0235,
+   "rate_gap_failed_minus_solved": -0.00301,
+   "incidence_solved": 1.0,
+   "incidence_failed": 1.0,
+   "incidence_saturated": true
+  },
+  "rank2": {
+   "mean_rate_solved": 0.02813,
+   "mean_rate_failed": 0.02544,
+   "rate_gap_failed_minus_solved": -0.0027,
+   "incidence_solved": 1.0,
+   "incidence_failed": 1.0,
+   "incidence_saturated": true
+  },
+  "layer0": {
+   "mean_rate_solved": 0.01381,
+   "mean_rate_failed": 0.01338,
+   "rate_gap_failed_minus_solved": -0.00043,
+   "incidence_solved": 1.0,
+   "incidence_failed": 1.0,
+   "incidence_saturated": true
+  },
+  "layer1": {
+   "mean_rate_solved": 0.00915,
+   "mean_rate_failed": 0.00934,
+   "rate_gap_failed_minus_solved": 0.00019,
+   "incidence_solved": 1.0,
+   "incidence_failed": 1.0,
+   "incidence_saturated": true
+  },
+  "layer2": {
+   "mean_rate_solved": 0.01736,
+   "mean_rate_failed": 0.01525,
+   "rate_gap_failed_minus_solved": -0.00211,
+   "incidence_solved": 1.0,
+   "incidence_failed": 1.0,
+   "incidence_saturated": true
+  }
+ }
+}

@@ -38230,3 +38230,59 @@ by read 3.
 RECEIPTS. logs/ex5/traj_census.json (frozen feature list in
 scratch/ex5_traj_census.py, committed 31b8d968 before the run).
 
+## AMENDMENT EX5-TRAJ-ANATOMY-0-RANK8 (target: OBSERVATION EX5-TRAJ-ANATOMY-0): rank8/low-margin retract as rank measurements (argpartition order is contract-undefined); phase/failure reads stand and the prompt-normalized rider STRENGTHENS the failure-recruitment read (2026-08-21, Mac, desk)
+
+External review (GPT seat) verified in-house, plus one house catch
+and one rider, all desk:
+
+1. RANK8 / LOW-MARGIN RETRACTED AS RANK MEASUREMENTS. The traj
+   capture (scratch/moe_gt1.py:90) stores topk straight from
+   mx.argpartition(...)[..., -k:], whose within-partition order MLX
+   documents as undefined; the census's rank = position-from-end
+   therefore measured storage order, not score rank, as a matter of
+   CONTRACT. Empirical disclosure from the artifact itself: 0 of
+   590,736 rows have non-ascending scores — on this build the
+   stored order was score order everywhere, so the two numbers are
+   reproducible as descriptive "bottom-2-of-top-8 score occupancy"
+   (an implementation-contingent reading). They are retracted as
+   rank/margin quantities; the near-boundary hypothesis returns to
+   UNMEASURED (and is lower-priority, not demoted-by-data — the
+   census's read 3 wording "predicts it null" is withdrawn). A true
+   margin needs top-9 capture (s8 - s9), which no current artifact
+   carries. All other census features (H, score, phase fractions,
+   normalized position, first-touch, ok-enrichment, core
+   co-routing, demand, breadth) do not depend on within-top-8
+   order and stand.
+2. RECORD FIXES. Phase prose: control decode fractions are
+   0.162-0.250 (layer1 is 0.1616; "0.21-0.25" was too narrow).
+   Freeze wording: feature definitions were frozen at commit
+   31b8d968 pre-read, and a 4-line execution fix (skip trailing
+   free-text probe rows lacking ok) landed between freeze and the
+   successful run — "features frozen pre-read; probe-row execution
+   fix before measurement" is the accurate sentence.
+3. HOUSE CATCH — PROMPT_TAIL. moe_gt1_traj_v2.jsonl carries only
+   {prefill, decode} phases (456,000 / 134,736): it predates the
+   prompt_tail split (reviewer fix of 2026-08-04 in the current
+   capture code), so its decode rows INCLUDE the one chat-template
+   tail step per prompt x layer (at most 5,760 rows, <= 4.3% of
+   decode). All decode-scoped census and rider numbers inherit
+   this dilution; it is shared identically by every group.
+4. PROMPT-NORMALIZED RIDER (frozen pre-read in its committed
+   script; receipt logs/ex5/traj_rider.json; hypothesis generation
+   only). Per prompt, group decode selections / (decode rows x 8),
+   compared unweighted over 64 solved v 56 failed prompts:
+   named80 is the ONLY group recruited more on failed prompts —
+   rate 0.01108 failed v 0.00902 solved (gap +0.00206, +23%
+   relative) — while all three rank masks flip NEGATIVE (gaps
+   -0.00064/-0.00301/-0.00270: recruited MORE on solved) and layer
+   groups sit near zero (+-0.002). So the booked -0.0352
+   row-weighted enrichment is not a length/weighting artifact: the
+   failure recruitment is BROAD across prompts and specific to the
+   named set. Binary incidence is saturated (1.0/1.0 for every
+   group x outcome) and uninformative, as pre-stated.
+
+Consequence for the queued causal rung: the phase-scoped deletion
+design proceeds on reads 1/2 (phase signature + failure
+recruitment), which this amendment leaves strengthened; nothing in
+the design references rank8/low-margin.
+

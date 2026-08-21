@@ -1894,6 +1894,12 @@ EX5 carrier TRAJ anatomy census (desk, observation-only, hypothesis generation O
 - `mask_slots(name)`
 - `main()`
 
+### scratch/ex5_traj_rider.py
+EX5-TRAJ-ANATOMY-0 prompt-normalized rider (desk, zero-cost, frozen by the commit carrying this file before any value is read).
+
+- `mask_slots(name)`
+- `main()`
+
 ### scratch/exact1_small_cells.py
 EXACT1-SMALL: d8/d16 ladder+anchor cells on axiom's ENGINE-EXACT-1.
 
