@@ -39647,3 +39647,64 @@ use), plus the registered per-seed cell-exact count gates.
 Everything else — cells, bars, priors, the semantics amendment,
 the D1=111 census — carries unchanged.
 
+## AMENDMENT EX6-MED-0-QUALFAIL-2: run 2 (stepwise) also fails token-ID qualification — seam localized to CROSS-PATH rounding, not call shapes; analyst unblinded by watcher design flaw (disclosed); interpretation stays sealed (2026-08-21, mac)
+
+Amends PRE-REG EX6-MED-0 and AMENDMENT -QUALFAIL. Run 2 (driver
+0f3c420b, stepwise decode preserving native call shapes) exited 3
+on the registered seed-7001 token-ID qualification: 11/240
+diagonal completions differ from the stream_generate native
+reference (qual2.jsonl, committed). PROCESS INCIDENT, disclosed:
+the watcher for run 2 dumped the cells log unconditionally, so
+the analyst has SEEN per-cell solve counts despite the
+qualification failure. No treatment value is interpreted or
+quoted in this entry, and per the prereg no verdict-class reading
+of run 2 can ever be blind again — any future use of run-2 cells
+is OBSERVATION-class at best, with this taint named.
+
+POSTMORTEM (qualification data only): the failure structure
+differs from run 1 and localizes the seam. (1) Count gates:
+NONE diagonals are cell-exact on ALL THREE seeds (64/61/66);
+PROMPT diagonals miss by +1 (7001: 80 v 79) and +2 (9003: 81 v
+79) with 8002 exact (80). (2) Token-ID failures split 3 NONE v 8
+PROMPT; the NONE three diverge LATE (positions 8-38, the fp
+near-tie class), while the PROMPT eight diverge at positions 1-2
+— immediately after the forced token, where the masked-softmax
+routing margins are tightest. (3) Run 2's stepwise loop and the
+stream_generate reference execute the same call shapes but
+different evaluation schedules (per-step .item() v pipelined
+async evaluation), which is the EX6-v1 lazy-graph-fusion
+sensitivity class: consistent with evaluation-order rounding at
+near-ties, with no specific kernel directly measured (this
+narrowing also corrects -QUALFAIL's wording, which over-asserted
+"batch-v-single rounding" as the mechanism; run 2 removed the
+batch-shape difference and flips persist at ~4.6%). CONCLUSION:
+token-level identity between ANY two generation code paths is
+not a reachable bar for this instrument on this substrate; count-
+level identity is (NONE 3/3 exact; PROMPT within +/-2 = the
+booked instrument-sigma class, but the prereg demanded EXACT).
+
+STATUS: per the prereg's fail-closed clause the instrument is
+invalid and no mediation reading books from run 2. The registered
+question stays open; three forward paths are enumerated for
+Artin's pick (no run fires before it):
+ (a) Book run-2 cells as a fenced OBSERVATION (unblinded,
+     count-qualified only on 8002, token-qualification failed) —
+     cheap, weak.
+ (b) Register run 3: ONE code path for every arm including the
+     native baselines (all-stepwise), qualification = count-level
+     identity to booked cells within a pre-registered +/-2
+     tolerance — requires an explicit bar-relaxation amendment
+     REGISTERED while unblinded, which must be named in any
+     eventual verdict.
+ (c) Retire the forcing harness and fire the ALREADY-BANKED
+     localization 2x2 instead (NONE / PREFILL-ONLY / TOKEN1-ONLY
+     / PROMPT): pure mask arms through the frozen EX6 driver
+     path, NO forced tokens, NO cross-path identity requirement —
+     the TOKEN1-ONLY arm answers the launch-step question
+     causally (does masking only z1's routing move the gate?),
+     which is the same mechanism question the mediation factorial
+     targeted, on a seam-free instrument.
+House recommendation: (c). Files: scratch/ex6med2.py,
+logs/ex6med/qual2.jsonl (committed), logs/ex6med/summary2.json +
+cells2.jsonl (untracked, sealed).
+
