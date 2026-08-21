@@ -39948,3 +39948,92 @@ masked only in early/mid/late layer bands. The current +21
 localizes to one token position but spans the whole depth.
 Files: scratch/ex6loc_rider.py, logs/ex6loc/rider.json.
 
+## PRE-REG EX6-TEMPORAL-0: isolated temporal masks z1 v z2 v z3 — is the launch step a special locus, or is +21 the first point on an early-token sensitivity curve? (2026-08-21, mac)
+
+Registered BEFORE any treatment cell fires. Machine projection:
+docs/preregs/ex6-temporal-0.json (validated); driver
+scratch/ex6temporal.py (frozen this commit); adapter
+scripts/obs_from_receipt_ex6temporal.py committed alongside.
+Fires ranked residue 1 from handoff 2026-08-21-3, registered
+follow-up axis (a) of AMENDMENT EX6-LOC-0-LEVELS.
+
+QUESTION. EX6-LOC-0 booked TOKEN1_ONLY at +21 pooled: masking
+the first generated token's routing (one temporal position
+across ALL 48 MoE layers) moves 21 of 360. Two readings, one
+discriminator: either z1 is a genuinely special launch-step
+locus, or every early token is worth the same class and +21 is
+merely the curve's first sample.
+
+DESIGN. Arms NONE / Z1 / Z2 / Z3, native generator path
+(m.run_gate), named-80 keepset (checkpoints/ex3_del_invp.json),
+greedy, seeds 7001/8002/9003, 120/seed. TEMPORAL LAW (extends
+AMENDMENT EX6-MED-0-SEMANTICS): a router call with n_tokens>1 is
+the prompt batch and RESETS a PER-MODULE T=1 counter (keyed by
+id(block), exactly like the frozen tail_done state — 48
+independent counters, never one global counter across the layer
+pass); each T=1 call increments its own module's counter; count
+1/2/3 = z1/z2/z3, later = decode. Zk masks the count-k call at
+EVERY block: equal dose by construction, one temporal position x
+48 layers per arm. Z1 is position-identical to LOC TOKEN1_ONLY.
+
+QUALIFICATION BRIDGE (fail-closed, in order):
+- BAR 2 CALL-POSITION-CENSUS (sanity): outcome-blind call-shape
+  census, seed 7001 problem 0 under the NONE predicate — 48/48
+  MoE blocks each record prompt-batch reset then z1, z2, z3 in
+  order then decode. Failure exits 3 before any anchor cell.
+- BAR 1 QUALIFICATION (sanity): all SIX anchor cells CELL-EXACT
+  against the booked LOC receipt (logs/ex6loc/ex6loc.jsonl):
+  NONE 64/61/66, Z1 74/66/72. ANY miss => driver exits 3 before
+  any Z2/Z3 cell runs or prints; NO verdict of any class on
+  Z2/Z3.
+
+TREATMENT BARS (pooled over 3 seeds, resolution floor ~7 solves;
+a pooled Delta_z2 in 11..13 books as UNRESOLVED band):
+- BAR 3 Z2-CURVE: Delta_z2 >= +14 (two thirds of Z1's +21),
+  signs 3/3.
+- BAR 4 Z1-SPECIAL: max(Delta_z2, Delta_z3) <= +10 (conjunct:
+  each individually <= +10).
+- BAR 5 EARLY-DECAY-ORDER (range, diagnostic): Delta_z2 -
+  Delta_z3 >= 0; an excursion is a result, never an alarm.
+
+REFUTED-IF (predicate, suppressed unless bars 1 AND 2 fire): the
+house prior is REFUTED if Delta_z2 >= +14 pooled — +21 then
+reads as an early-token sensitivity curve's first point.
+
+REGISTERED PRIOR (house, MEDIUM): z1 IS special — its healed
+routing output is written into the KV/attention stream every
+later position consumes, and LOC's D1 potency (111/360) plus the
+joint-only rescue structure localize leverage at launch. Predict
+bar 4 fires (both deltas <= +10, likely single digits), bar 3
+does not, bar 5 holds. Named alternative on the record: a slowly
+decaying early-token curve (bar 3 fires, bar 4 does not), which
+demotes the launch-step story to position-generic early-decode
+fragility and makes the dose/position curve (residue 4) the next
+rung.
+
+SECONDARY REGISTERED READS (color, no bars; motivated by
+EX6-LOC-0-LEVELS difficulty-dependent interaction): per-level
+gate_per_level splits every arm; paired per-problem rescue/break
+tables Zk v NONE from the perprob streams.
+
+ARTIFACT VISIBILITY (/watch classes, registered here):
+census.json, qual.jsonl, qual_perprob.jsonl ALWAYS-READABLE;
+treatment.jsonl, treatment_perprob.jsonl, treatment_stdout.log
+SEALED-UNTIL-QUALIFICATION (rc 0), SEALED-FOREVER-ON-FAILURE
+otherwise. The driver redirects run_gate's running-accuracy
+progress lines to the sealed stdout file for treatment arms
+(fail-closed printing, the MED run-2 lesson).
+
+QUALIFICATION LADDER STATUS AT REGISTRATION: prereg JSON
+validates; driver syntax-checked; SMOKE run (4 problems, seed
+7001, smoke_* paths) exercised census + anchor + sealed
+treatment stages end-to-end rc 0 — census 48/48 modules ok
+(per-module reset then z1,z2,z3), no treatment value printed;
+adapter refuses smoke rows (rc 1 exercised); census_verdict
+counterexamples (global-counter shape, missing module,
+out-of-order) all caught in-line.
+Fences: Mac-only, single 4-bit instrument, one mask predicate
+per arm with per-call dose. Files: scratch/ex6temporal.py,
+docs/preregs/ex6-temporal-0.json,
+scripts/obs_from_receipt_ex6temporal.py.
+

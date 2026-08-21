@@ -1,0 +1,164 @@
+{
+ "name": "EX6-TEMPORAL-0",
+ "results_id": "2026-08-21-pre-reg-ex6-temporal-0-isolated",
+ "registered": "2026-08-21",
+ "machine": "mac",
+ "note": "Isolated temporal masks z1 v z2 v z3: is the launch step a special locus, or is TOKEN1's +21 the first point on an early-token sensitivity curve? Temporal law (extends EX6-MED-0-SEMANTICS): a router call with n_tokens>1 is the prompt batch and RESETS a PER-MODULE T=1 counter (keyed by id(block), exactly like the frozen tail_done state — 48 independent counters, never one global counter across the layer pass); each n_tokens==1 call increments its own module's counter; count 1/2/3 = z1/z2/z3. Zk arm = mask count-k call at EVERY MoE block: equal dose by construction, one temporal position across all 48 layers. Z1 is position-identical to LOC TOKEN1_ONLY. Delta_zk = pooled over seeds 7001/8002/9003 of (gate_zk - gate_NONE), 120/seed, native generator path (m.run_gate), named-80 keepset, greedy. Resolution law: the house pair floor is ~7 solves pooled; a pooled delta inside 11..13 sits between bar 3 (>=14) and bar 4 (<=10) and books honestly as UNRESOLVED band, no direction claim per seed below the floor. Artifact visibility (/watch): census.json, qual.jsonl, qual_perprob.jsonl ALWAYS-READABLE; treatment.jsonl, treatment_perprob.jsonl, treatment_stdout.log SEALED-UNTIL-QUALIFICATION (rc 0), SEALED-FOREVER-ON-FAILURE otherwise. Registered secondary reads (color, no bars, motivated by EX6-LOC-0-LEVELS difficulty dependence): per-level gate_per_level splits for every arm; paired per-problem rescue/break tables Zk v NONE from the perprob streams.",
+ "arms": {
+  "none": {
+   "description": "nothing masked — anchor arm, must reproduce LOC NONE 64/61/66 cell-exact"
+  },
+  "z1": {
+   "description": "mask the FIRST T=1 router call per MoE block after prompt reset (position-identical to LOC TOKEN1_ONLY) — anchor arm, must reproduce 74/66/72 cell-exact"
+  },
+  "z2": {
+   "description": "mask the SECOND T=1 call per block (generated z2's routing), one temporal position x 48 layers"
+  },
+  "z3": {
+   "description": "mask the THIRD T=1 call per block (generated z3's routing), one temporal position x 48 layers"
+  }
+ },
+ "operands": [
+  {
+   "name": "named80_keepset",
+   "provider": "checkpoints/ex3_del_invp.json"
+  },
+  {
+   "name": "temporal_instrument",
+   "provider": "scratch/ex6temporal.py"
+  },
+  {
+   "name": "frozen_gate_machinery",
+   "provider": "scratch/moe_gt1_arm2.py"
+  },
+  {
+   "name": "anchor_receipt",
+   "provider": "logs/ex6loc/ex6loc.jsonl"
+  }
+ ],
+ "receipts": [
+  "logs/ex6temporal/census.json",
+  "logs/ex6temporal/qual.jsonl",
+  "logs/ex6temporal/qual_perprob.jsonl",
+  "logs/ex6temporal/treatment.jsonl",
+  "logs/ex6temporal/treatment_perprob.jsonl",
+  "logs/ex6temporal/ex6temporal_observations.json"
+ ],
+ "bars": [
+  {
+   "id": 1,
+   "name": "QUALIFICATION",
+   "gate_class": "sanity",
+   "metric": "n_exact_reproductions",
+   "population": "anchors:none+z1:3seeds",
+   "aggregation": "count_of_6",
+   "direction": "above",
+   "value": 6,
+   "arms": [
+    "none",
+    "z1"
+   ],
+   "description": "strong qualification bridge, all six cells CELL-EXACT against the booked LOC receipt: NONE 64/61/66 and Z1 74/66/72 at seeds 7001/8002/9003. Any miss = INSTRUMENT-INVALID; the driver exits 3 before any Z2/Z3 cell runs and NO verdict of any class issues on Z2/Z3."
+  },
+  {
+   "id": 2,
+   "name": "CALL-POSITION-CENSUS",
+   "gate_class": "sanity",
+   "metric": "n_modules_temporal_law_ok",
+   "population": "seed7001:problem0:none",
+   "aggregation": "count_of_48",
+   "direction": "above",
+   "value": 48,
+   "arms": [
+    "none"
+   ],
+   "description": "outcome-blind call-shape census: 48/48 MoE blocks each record a prompt-batch (n_tokens>1) reset followed by z1, z2, z3 in order then decode — proving the counter is per-module, not global across the 48-layer pass. Failure exits 3 before anchors."
+  },
+  {
+   "id": 3,
+   "name": "Z2-CURVE",
+   "metric": "pooled_delta",
+   "population": "z2_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 14,
+   "arms": [
+    "z2",
+    "none"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "3:signs",
+     "direction": "above",
+     "value": 3,
+     "metric": "n_positive_seeds",
+     "population": "z2_v_none:3seeds",
+     "aggregation": "count_of_3"
+    }
+   ],
+   "description": "early-token-curve reading: Delta_z2 >= +14 (two thirds of Z1's anchored +21), signs 3/3 — the second generated token's routing is worth the same class as the first, z1 is not a special locus."
+  },
+  {
+   "id": 4,
+   "name": "Z1-SPECIAL",
+   "metric": "max_pooled_delta",
+   "population": "z2z3_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "below",
+   "value": 10,
+   "arms": [
+    "z2",
+    "z3",
+    "none"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "4:delta_z2",
+     "direction": "below",
+     "value": 10,
+     "metric": "pooled_delta",
+     "population": "z2_v_none:3seeds",
+     "aggregation": "pooled_sum"
+    },
+    {
+     "measurement": "4:delta_z3",
+     "direction": "below",
+     "value": 10,
+     "metric": "pooled_delta",
+     "population": "z3_v_none:3seeds",
+     "aggregation": "pooled_sum"
+    }
+   ],
+   "description": "launch-step-special reading: max(Delta_z2, Delta_z3) <= +10 (under half of Z1's +21) — later single-token positions buy materially less than the launch step at the identical dose."
+  },
+  {
+   "id": 5,
+   "name": "EARLY-DECAY-ORDER",
+   "gate_class": "range",
+   "metric": "delta_gap",
+   "population": "z2_v_z3:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 0,
+   "arms": [
+    "z2",
+    "z3",
+    "none"
+   ],
+   "description": "diagnostic ordering read: Delta_z2 - Delta_z3 >= 0 (sensitivity non-increasing with position). An excursion is a result, never an alarm."
+  }
+ ],
+ "refuted_if": "The house prior (z1 is a genuinely special launch-step locus) is REFUTED if, with the instrument qualified (bars 1 and 2), Delta_z2 >= +14 pooled — the +21 then reads as the first point on an early-token sensitivity curve, not a privileged launch step. Judged only under bars 1 and 2.",
+ "refuted_if_predicate": {
+  "measurement": "refutation:delta_z2",
+  "direction": "above",
+  "value": 14
+ },
+ "refutation_precedence": {
+  "suppressed_unless_bars_fire": [
+   1,
+   2
+  ]
+ },
+ "registered_prior": "House, on the record, MEDIUM confidence: z1 IS special — its healed routing output is written into the KV/attention stream that every later position consumes, and EX6-LOC's D1 potency (111/360) plus the joint-only rescue structure localize the leverage at launch; predict bar 4 FIRES (Delta_z2 and Delta_z3 both <= +10, likely single digits), bar 3 does not, bar 5 holds (z2 >= z3). The named live alternative, on the record: an early-token sensitivity curve decaying slowly from +21 — bar 3 fires, bar 4 does not — which would demote the launch-step story to position-generic early-decode fragility and make a dose/position curve (residue 4) the next rung."
+}
