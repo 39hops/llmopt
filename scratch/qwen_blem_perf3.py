@@ -69,7 +69,8 @@ def main():
     import torch
     ha = _load("qwen_homeo_actuator", "scratch/qwen_homeo_actuator.py")
     os.makedirs(OUT, exist_ok=True)
-    rcpt_path = os.path.join(OUT, f"perf3_receipt_{TOTAL_N}.json")
+    rcpt_path = os.path.join(OUT, f"perf3_receipt_{TOTAL_N}"
+                             + ("_rn" if os.environ.get("RESTORE_NATIVE") == "1" else "") + ".json")
     if TOTAL_N == 1024 and not os.path.exists(rcpt_path):
         rcpt_path = os.path.join(OUT, "perf3_receipt.json")
     if os.path.exists(rcpt_path):
@@ -108,11 +109,14 @@ def main():
     del pw
     torch.cuda.empty_cache()
 
-    print("[b3] ARM A: cross, no ballast", flush=True)
-    past_a = ha._move_state(cpu_ble, "cuda")
-    rates_a = decode_segments(model, past_a, cur, TOTAL_N, SEG)
-    del past_a
-    torch.cuda.empty_cache()
+    if os.environ.get("SKIP_CROSS") == "1":
+        rates_a = None
+    else:
+        print("[b3] ARM A: cross, no ballast", flush=True)
+        past_a = ha._move_state(cpu_ble, "cuda")
+        rates_a = decode_segments(model, past_a, cur, TOTAL_N, SEG)
+        del past_a
+        torch.cuda.empty_cache()
 
     if os.environ.get("SKIP_BALLAST") == "1":
         rates_b = None
@@ -124,8 +128,16 @@ def main():
         del past_b, ballast
         torch.cuda.empty_cache()
 
-    print("[b3] ARM C: native, no ballast", flush=True)
-    past_c, cur_c = ha.prefill(model, pids + frozen[:PREFIX_N])
+    if os.environ.get("RESTORE_NATIVE") == "1":
+        print("[b3] ARM C': native state ROUNDTRIPPED", flush=True)
+        past_c, cur_c = ha.prefill(model, pids + frozen[:PREFIX_N])
+        cpu_n = ha._move_state(past_c, "cpu")
+        del past_c
+        torch.cuda.empty_cache()
+        past_c = ha._move_state(cpu_n, "cuda")
+    else:
+        print("[b3] ARM C: native, no ballast", flush=True)
+        past_c, cur_c = ha.prefill(model, pids + frozen[:PREFIX_N])
     rates_c = decode_segments(model, past_c, cur_c, TOTAL_N, SEG)
 
     rcpt = {"note": "BLEM-DECODE-PERF phase-3: length scaling + "
