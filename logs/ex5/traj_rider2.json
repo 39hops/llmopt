@@ -1,0 +1,138 @@
+{
+ "note": "EX5 TRAJ rider v2: prompt_tail-corrected phase split (first old-decode row per (prompt,layer) reclassified); hypothesis generation only",
+ "start": {
+  "start_commit": "7bf4dea2",
+  "start_status_porcelain": " M README.md\n M docs/figures.json\n M docs/receipts.lock.json\n M docs/results-index.jsonl\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/ex5_traj_rider2.py": "a8a9ecd03ecafa0d4f3da665cf2d1d54068b77fc072b3895649d73dee2b9e1da",
+   "scratch/ex5_traj_rider.py": "57e68c9970930e9544d89b1f1528e9c8aea9c1e58d3db670a2100aad4bd75889"
+  }
+ },
+ "completion_commit": "7bf4dea2",
+ "n_prompts": 120,
+ "n_solved": 64,
+ "n_failed": 56,
+ "phases": {
+  "true_decode": {
+   "n_rows": 125856,
+   "base_ok_rowweighted": 0.3085,
+   "named80": {
+    "ok_enrich": -0.0483,
+    "mean_rate_solved": 0.0075,
+    "mean_rate_failed": 0.01071,
+    "rate_gap": 0.0032,
+    "rate_sd_solved": 0.00224,
+    "rate_sd_failed": 0.00172
+   },
+   "rank0": {
+    "ok_enrich": 0.0036,
+    "mean_rate_solved": 0.02262,
+    "mean_rate_failed": 0.02223,
+    "rate_gap": -0.00039,
+    "rate_sd_solved": 0.00173,
+    "rate_sd_failed": 0.001
+   },
+   "rank1": {
+    "ok_enrich": 0.0214,
+    "mean_rate_solved": 0.02642,
+    "mean_rate_failed": 0.02339,
+    "rate_gap": -0.00303,
+    "rate_sd_solved": 0.00227,
+    "rate_sd_failed": 0.00174
+   },
+   "rank2": {
+    "ok_enrich": 0.0145,
+    "mean_rate_solved": 0.02783,
+    "mean_rate_failed": 0.0253,
+    "rate_gap": -0.00253,
+    "rate_sd_solved": 0.00191,
+    "rate_sd_failed": 0.00212
+   },
+   "layer0": {
+    "ok_enrich": 0.005,
+    "mean_rate_solved": 0.01402,
+    "mean_rate_failed": 0.01343,
+    "rate_gap": -0.00059,
+    "rate_sd_solved": 0.00107,
+    "rate_sd_failed": 0.00084
+   },
+   "layer1": {
+    "ok_enrich": 0.0086,
+    "mean_rate_solved": 0.0092,
+    "mean_rate_failed": 0.00939,
+    "rate_gap": 0.00019,
+    "rate_sd_solved": 0.00122,
+    "rate_sd_failed": 0.00154
+   },
+   "layer2": {
+    "ok_enrich": 0.0214,
+    "mean_rate_solved": 0.01766,
+    "mean_rate_failed": 0.01526,
+    "rate_gap": -0.00241,
+    "rate_sd_solved": 0.00219,
+    "rate_sd_failed": 0.00225
+   }
+  },
+  "prompt_tail": {
+   "n_rows": 5760,
+   "base_ok_rowweighted": 0.5333,
+   "named80": {
+    "ok_enrich": 0.0009,
+    "mean_rate_solved": 0.0203,
+    "mean_rate_failed": 0.02023,
+    "rate_gap": -8e-05,
+    "rate_sd_solved": 0.00217,
+    "rate_sd_failed": 0.00241
+   },
+   "rank0": {
+    "ok_enrich": 0.0178,
+    "mean_rate_solved": 0.02568,
+    "mean_rate_failed": 0.0239,
+    "rate_gap": -0.00177,
+    "rate_sd_solved": 0.00215,
+    "rate_sd_failed": 0.00178
+   },
+   "rank1": {
+    "ok_enrich": 0.0172,
+    "mean_rate_solved": 0.02816,
+    "mean_rate_failed": 0.02627,
+    "rate_gap": -0.00188,
+    "rate_sd_solved": 0.00102,
+    "rate_sd_failed": 0.00158
+   },
+   "rank2": {
+    "ok_enrich": 0.0172,
+    "mean_rate_solved": 0.03035,
+    "mean_rate_failed": 0.02832,
+    "rate_gap": -0.00203,
+    "rate_sd_solved": 0.00196,
+    "rate_sd_failed": 0.00241
+   },
+   "layer0": {
+    "ok_enrich": 0.0116,
+    "mean_rate_solved": 0.01233,
+    "mean_rate_failed": 0.01177,
+    "rate_gap": -0.00056,
+    "rate_sd_solved": 0.00132,
+    "rate_sd_failed": 0.0013
+   },
+   "layer1": {
+    "ok_enrich": -0.0208,
+    "mean_rate_solved": 0.0083,
+    "mean_rate_failed": 0.00902,
+    "rate_gap": 0.00072,
+    "rate_sd_solved": 0.0022,
+    "rate_sd_failed": 0.00209
+   },
+   "layer2": {
+    "ok_enrich": 0.0025,
+    "mean_rate_solved": 0.0155,
+    "mean_rate_failed": 0.01535,
+    "rate_gap": -0.00016,
+    "rate_sd_solved": 0.00175,
+    "rate_sd_failed": 0.00136
+   }
+  }
+ }
+}

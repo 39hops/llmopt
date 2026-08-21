@@ -38403,3 +38403,33 @@ same registered receipt file — the failed v1 rows stay in place as
 the record. Bars, arms, seeds, and every other registered parameter
 are unchanged.
 
+## AMENDMENT EX5-TRAJ-ANATOMY-0-RIDER2 (target: AMENDMENT EX5-TRAJ-ANATOMY-0-RANK8): the tail-corrected rider STRENGTHENS the decode read — true-decode named80 enrichment -0.0483 and rate gap +0.00320, while the prompt_tail step carries nothing (2026-08-21, Mac, desk)
+
+Review-adopted pre-treatment correction (GPT seat): the v1 rider
+counted the mislabeled prompt_tail rows (first old-decode row per
+prompt x layer, 5,760 rows) inside decode. Rider v2 (frozen
+pre-read in its committed script; receipt logs/ex5/traj_rider2.json)
+splits them out. Hypothesis generation only, as before:
+
+- TRUE DECODE (125,856 rows, base_ok 0.3085): named80 enrichment
+  -0.0483 (deeper than the diluted -0.0352); prompt-normalized
+  rate gap failed-minus-solved +0.00320 (v +0.00206 diluted) —
+  1.5-1.9x the within-outcome between-prompt sd (solved 0.00224,
+  failed 0.00172), reported against dispersion rather than called
+  "broad" (per review: no per-prompt paired spread exists across
+  outcome classes). Every rank mask stays non-positive on the gap
+  (-0.00039/-0.00303/-0.00253).
+- PROMPT_TAIL (5,760 rows, base_ok 0.5333): named80 enrichment
+  +0.0009, gap -0.00008 — the chat-template tail step carries
+  NOTHING of the named-set failure association.
+
+Consequence: the EX6 registered prior (decode-carry, MEDIUM)
+stands STRENGTHENED; no prior amendment. EX6 bars unchanged.
+Fail-closed launch gate added to the treatment driver
+(scratch/ex6_run.sh): exactly two cell-exact v2 qualification rows
+and an absent treatment receipt, else no launch. Booking note
+carried forward (review): the phase arms are CAUSALLY ASYMMETRIC —
+DECODE preserves prompt-built state and the first-token
+prediction, intervening only once a generated token is fed back;
+PROMPT changes the inherited cache/state that decode then runs on.
+
