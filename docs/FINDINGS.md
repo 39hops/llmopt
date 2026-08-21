@@ -2566,16 +2566,23 @@ regime tag on every bullet is the fence.
   slowly.
   ([OBSERVATION QWEN-BLEM-DECODE-PERF-0](RESULTS.md#L37825 "id:2026-08-20-observation-qwen-blem-decode-perf-0").)
 
-- [SINGLE-SEED] [moe] [mac] [mechanism] At fixed layer profile the
-  MoE deletion benefit concentrates in carrier IDENTITY, not rank
-  class: the named-80 crest replicates on a virgin seed triple
-  (+43 pooled, 3/3, now 6/6 seeds across two triples) and beats
-  2/3 fresh masks drawn from its own rank windows, while the
-  rank-window family itself does NOT transport (1/3 clear, sums
-  -12/+25/+10, range 37 — the booked rand0 +28 was substantially
-  a draw property) and layer-only identity draws do nothing (0/3,
-  median -3). Fences: masks are the mechanism unit (n_mask=3 per
-  family); rank-window masks also delete ~1.8-2x the layer-only
-  demand share; single-precision pinned 4-bit instrument;
-  single mask-set per family class.
+- [REPLICATED] [moe] [mac] [capability] The named-80 carrier
+  deletion crest replicates: named80 - full is positive in 6/6
+  seeds across two INDEPENDENT seed triples (+55 pooled on
+  1001/2002/3003; +43 pooled on the virgin 4001/5002/6003, signs
+  3/3 each), on the pinned 4-bit instrument with a cell-exact
+  qualification. Replication route: second registered seed triple,
+  same device, same instrument.
+  ([VERDICT EX5-LAYERMATCH-0](RESULTS.md#L37996 "id:2026-08-21-verdict-ex5-layermatch-0-carrier-identity").)
+- [SINGLE-SEED] [moe] [mac] [mechanism] At fixed layer profile,
+  NAMED carrier identity is robust while rank-window membership
+  alone is insufficient (wording per AMENDMENT -WORDING; rank
+  neither established nor nulled): fresh rank-window masks
+  transport 1/3 (sums -12/+25/+10, range 37 — the booked rand0
+  +28 was substantially a draw property), layer-only identity
+  draws do nothing (0/3, median -3), and named80 beats 2/3 of its
+  own rank-window draws. Fences: one mask-set per family, n_mask=3
+  is the mechanism unit; rank-window masks also delete ~1.8-2x the
+  layer-only demand share (covariate, not matched); no directional
+  family claim (median gap +13 sub-resolution, ranges interleave).
   ([VERDICT EX5-LAYERMATCH-0](RESULTS.md#L37996 "id:2026-08-21-verdict-ex5-layermatch-0-carrier-identity").)

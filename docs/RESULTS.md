@@ -38117,3 +38117,32 @@ scratch/ex5_run.sh — the frozen driver appends unconditionally and
 a re-launch would silently double ex5.jsonl. Driver scratch/ex5_run.sh + frozen
 scratch/gt7_run.py; observations scratch/ex5_observe.py.
 
+## AMENDMENT EX5-LAYERMATCH-0-WORDING (target: VERDICT EX5-LAYERMATCH-0, RESULTS L37996): "identity, not rank class" narrows to "named carrier identity is robust; rank-window membership alone is insufficient" (2026-08-21, Mac, desk)
+
+External review (GPT seat) on the booked verdict, both points
+verified in-house against the adjudication before adoption:
+
+1. WORDING NARROWED. The verdict's headline gloss "carrier identity
+   is the robust object ... the benefit is scoped to the carrier
+   IDENTITIES" overstates what the bars adjudicated. Bar 4
+   (FAMILY-SEPARATION) NO-FIREd and the refutation predicate read
+   NOT-REFUTED — rank itself was neither established nor nulled.
+   The narrowed claim of record: NAMED CARRIER IDENTITY IS ROBUST
+   (replicated crest, identity premium 2/3); RANK-WINDOW MEMBERSHIP
+   ALONE IS INSUFFICIENT (1/3 transport, range 37). Statements of
+   the form "the benefit belongs to identity, not rank class" are
+   retired for this thread; rank's contribution remains open, and
+   the consistent frame is: the router selects a specific reusable
+   expert set whose effect depends on context the rank/layer
+   coordinates do not capture.
+2. FINDINGS MATURITY SPLIT. The single [SINGLE-SEED] bullet booked
+   with the verdict conflated two claims of different maturity
+   under GLOSSARY: the crest (named80 - full > 0 in 6/6 seeds
+   across two independent triples, +55 and +43 pooled — a named
+   replication route) is [REPLICATED]; the identity-v-rank
+   mechanism reading (one mask-set per family, n_mask=3) remains
+   [SINGLE-SEED]. The bullet is split accordingly in the same
+   commit and the generated honesty-ledger counts regenerate.
+
+No measured value, bar outcome, or refutation reading changes.
+
