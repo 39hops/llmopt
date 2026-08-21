@@ -7878,3 +7878,48 @@ honest status column).
   does not yet subsume named; open cells: r sweep + hybrid
   residuals, and the static-prior + LRU composition replay for
   honest MB/token.
+- **BANKED (2026-08-21): GENERAL-ROUTING-FACTORIAL — is routing
+  separability SEMANTIC or TEMPLATE-DRIVEN? An observation-only
+  factorial over (topic x linguistic form x requested operation)
+  on the frozen public MoE** (Artin's concern via GPT seat; house
+  verification + charter handling). The critique it operationalizes
+  is sharp and aimed at our own result: ROUTE-BASIS-0's
+  cross-domain-NN rate of 0.0 was measured on six GATE-CORPUS
+  slices that share templates within slice — math<->physics
+  coupling alone cannot answer Artin's question because those
+  corpora share nomenclature, symbolic syntax, and answer form,
+  and the ledger already holds form-sensitivity evidence (CE-400
+  format-BOUND; the EFFORT-tag trajectory result). The design:
+  a FROZEN benign prompt corpus factored explicitly across
+  TOPICS (history, geography, astronomy, literature/language,
+  everyday science, general factual QA) x FORMS (direct QA /
+  explain / definition / MCQ / completion) x OPERATIONS (recall /
+  causal explanation / comparison / classification), with MATCHED
+  PAIRS constructed so topic and wording dissociate. Primary rung
+  is ROUTING-ONLY: variance decomposition + similarity + held-out
+  prediction of fingerprints against topic v form v operation v
+  interactions. CHARTER HANDLING (explicit, not delegated): the
+  GPT draft floats "small benign conceptual biology/chemistry
+  slices if charter interpretation permits" — the house DEFAULT
+  here EXCLUDES them; the factorial dissociation works fully on
+  the benign-topic set above, and whether passive routing
+  observation on conceptual bio/chem prompts is inside the
+  "concepts as methods, zero harmful applicability" clause is an
+  ARTIN RULING, banked as an open decision, never a mid-task
+  interpretation. Non-negotiables carried verbatim: no training,
+  no fine-tuning, no tools, no domain solver, no generation
+  pipeline, no capability improvement, no
+  pathogen/wet-lab/synthesis/molecular-design content in any
+  slice; this is passive interpretability of a frozen public
+  model. If a capability leg is EVER justified it uses frozen
+  benign MCQ/exact-answer items with ANSWER IDENTITY as the
+  evaluator (no new domain engine), registered separately from
+  the observational rung. Testable residue: (1) corpus authoring
+  + freeze (committed prompt set with the factor table, before
+  any model call); (2) the traj-capture run (Mac, TRAJ=1
+  machinery, one pass); (3) the decomposition — does topic
+  survive form-matching, does form survive topic-matching, and
+  does the ROUTE-BASIS domain separability collapse under
+  template control? Attribution: Artin (the concern), GPT
+  (factorial design), house (charter fence + the
+  template-critique linkage to ROUTE-BASIS-0).
