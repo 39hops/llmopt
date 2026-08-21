@@ -8169,3 +8169,49 @@ honest status column).
   Later exact-battery observables banked: excursion height,
   transient length, basin structure, orbit merges, non-solving
   cycles.
+
+- **BANKED (2026-08-21): THE ABSORBED-INFORMATION COLLAPSE — do
+  exposure frequency, LR, and update precision jointly reduce to
+  one cumulative eta*|g|/ulp(w) statistic per rule?** (Artin's
+  "weren't absorption, lr, training data all correlated?" +
+  GPT's factorial design; ledger check first, per Artin's "chance
+  we tested this already" — partially YES).
+  Already measured (single-axis legs, all booked): THE ABSORPTION
+  LAW (absorbed fraction ~= c/LR, four decades, c ~= 2.8e-9) with
+  its consolidation ALREADY stating the joint knob — "LR and
+  precision are ONE knob: what matters is LR*|g|/ulp(w)";
+  CAP-V-TRAJ-2 (LR absorption floor below which steps/data buy
+  nothing); BASICS-DIET (exposure share redistributes resident
+  capability). Artin's correlation instinct is thus a measured
+  mechanism, not an open guess — what was NEVER run is the JOINT
+  test.
+  The unrun delta, banked as a rung design: controlled
+  closed-system factorial varying rule exposure frequency p, LR
+  eta, and accumulator/update precision at fixed architecture
+  and total compute; per rule family record exposure count,
+  gradient/update magnitudes, absorbed-update fraction,
+  cumulative surviving update mass, and held-out rule mastery;
+  the registered question is whether capability curves COLLAPSE
+  against a cumulative dimensionless statistic built from
+  eta*|g|/ulp(w) (the law predicts they should; a non-collapse
+  names the missing variable). Distinguish unseen INSTANCES from
+  absent/underidentified RULES — perfect generalization needs
+  every rule identified, not every instance seen.
+  Perfectibility wording tightened (GPT correction, adopted):
+  TF32~=FP32 shows precision ABOVE the regime's numeric
+  requirement is unnecessary; it does not show the current
+  architecture/width/optimizer reaches a perfect gate. The
+  calculated-model thesis remains an existential/compilation
+  program, not a closed empirical result. Artin's claim survives
+  as: perfectibility is not precision-blocked in our regime; it
+  may still be architecture- or diet-blocked.
+  Honest breaks: |g| distribution stability across exposure
+  frequencies is assumed by the law's derivation and unmeasured
+  at low p; rule-family gradient attribution needs per-rule
+  batches or gradient tagging (instrumentation cost unpriced).
+  Testable residue: the factorial above, desk-priceable via
+  /desk before any GPU spend.
+  Attribution: Artin (correlation instinct + tested-already
+  check), GPT (factorial design + collapse statistic), house
+  (ledger verification: the statistic already exists as the
+  absorption law's consolidation).
