@@ -39275,3 +39275,83 @@ anywhere in labels or features; cross-trace pooling forbidden
 (per-trace numbers, median for the bar). Driver frozen by commit
 before any value is read.
 
+## VERDICT ROUTE-TIME-0: temporal structure beyond age exists (BAR 1 fires, median delta-AUC +0.0407 at H=8) and does NOT buy a memory tier (BAR 2 0/6) — learned eviction at K32 underperforms plain recency in-loop (2026-08-21, mac)
+
+Per PRE-REG ROUTE-TIME-0 (driver scratch/routedb_time.py frozen at
+320c53ea before the run; receipt logs/routetime/time0_receipt.json).
+Qualification evidence is INFERENTIAL, not receipted: q1/q2/q3 are
+bare asserts placed before any bar is computed, so the receipt
+existing implies they passed — the run (plain interpreter, no -O)
+exited 0 with zero mismatches on the 1000-row next-use recompute
+and the 200-row truncated-stream feature recompute
+(numpy default_rng(0), sample draw coupled to trace order). q3
+audits the six stateful features; phase and layer are properties
+of the current event and were not separately audited.
+
+BAR 1 (INFO-BEYOND-AGE) FIRES: per-trace FULL minus AGE-ONLY AUC
+at H=8 on held-out decode rows = math +0.0384, code +0.0061,
+phys +0.0430, proofs +0.0465, prose +0.0259, dialog +0.0698;
+median +0.0407 >= 0.02. Registered prior (0.02-0.05, fires
+weakly) CORRECT. Decomposition across all horizons (medians,
+FULL-AGE / FULL-(AGE+FREQ)): H1 +0.0504/+0.0338, H2
++0.0497/+0.0310, H4 +0.0437/+0.0261, H8 +0.0407/+0.0194, H16
++0.0504/+0.0202, H32 +0.0721/+0.0257, H64 +0.1191/+0.0318 —
+roughly half the beyond-age signal is decayed frequency; the
+remainder (gap statistics + previous-token co-activation) is
+real at every horizon and GROWS with H. The prior's mechanism
+call (previous-token carries most of it) was WRONG in detail:
+prev-token ranks weakest of the three baselines (e.g. math H8
+rank_prevtok 0.6131 v rank_age 0.6784).
+
+BAR 2 (MEMORY-TIER, conditional, ran because BAR 1 fired) does
+NOT fire: 0/6 traces. Learned-eviction K32 decode MB/token v warm
+LRU@K48: math 273.5 v 88.0, code 220.4 v 75.4, phys 225.1 v 95.1,
+proofs 192.7 v 82.2, prose 217.4 v 84.1, dialog 135.0 v 65.1.
+Registered prior (does not fire) CORRECT. The sharper honest
+reading, against same-budget replay2 numbers: learned eviction is
+WORSE than plain LRU@K32 on 5/6 traces (e.g. math 273.5 v 202.8),
+beating it only on dialog (135.0 v 147.6). This answers the
+external audit's victim-relevance concern behaviorally: global
+all-expert AUC improved on every trace while in-loop eviction
+quality fell on five, so offline AUC over all activations is
+demonstrably not the eviction-relevant metric here. WHY the
+hazard argmin loses to recency at the victim decision is NOT
+measured in this rung (candidate-conditional AUC is unregistered
+residue, not a claim).
+
+Answer to the registered hard question: at this feature set and
+model class (logistic, per-expert past-only features), learned
+temporal structure does not rediscover recency — it measurably
+exceeds it offline at every horizon — but it does not buy a
+memory tier either, and in-loop it is mostly worse than recency.
+The information is real; the policy transform loses it. REFUTED-IF
+does not trip (BAR 1 fired).
+
+Named confound (receipt/prereg auditors, verified in-driver): the
+learned arm's features are FIT on full-stream event indices but
+SERVED in the closed loop on test-only-stream indices, so age/gap
+magnitudes sit on a different scale at serve time than the
+standardization saw — a confound that disadvantages the learned
+arm and biases TOWARD the observed BAR 2 no-fire. The arm
+comparison itself is fair (replay2 policies replay the same
+test-only stream); the margin (2.4-3.1x LRU@K48's bytes) dwarfs
+any plausible rescaling gain, but a re-run closing this seam is
+legitimate revival territory. Provenance pins the driver did not
+receipt (auditor items, pinned here): the BAR 2 baseline
+logs/routedb/replay2_receipt.json is git-tracked (frozen in-repo
+at 320c53ea); trace sha256 prefixes moe_gt1_traj_v2 6dbd4d198097d7c9,
+gt2_code 6084fe7971eaefa0, gt2_phys 7854050d2a3300b1, gt3_proofs
+963f80e273bbc064, gt3_prose 9cc9e44f1332c9ef, gt4_dialog
+e4bd7c13600ecc97; snapshot d388dead model.safetensors.index.json
+sha256 prefix d8c5294637ef27a9 (per_expert_bytes source).
+
+Fences carried: six frozen traces, token-event time only,
+deterministic even/odd prompt split (no seed variance), decode-
+phase scoring, per-trace numbers with the median only for the
+bar, logistic class scope. Residue for the bank, not registered:
+(a) hazard-ranking objective mismatch — train on victim-decision
+pairs (cache-conditional) rather than all activations; (b) the
+H64 FULL-AGE median +0.1191 says long-horizon reuse is the most
+predictable, which is prefetch territory, not eviction. Files:
+scratch/routedb_time.py, logs/routetime/time0_receipt.json.
+

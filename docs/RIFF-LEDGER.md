@@ -8004,6 +8004,19 @@ honest status column).
   structure, not wall-clock"), GPT (survival-curve and
   next-use-distribution formulations), house (inventory, novelty
   check, ranking).
+  RESIDUE (a) AND (c) MEASURED (2026-08-21, VERDICT
+  ROUTE-TIME-0): (a) fired — finite-horizon next-use prediction
+  beats the age-only hazard by median +0.041 AUC at H=8, growing
+  to +0.119 at H=64 (~half decayed frequency, rest gap
+  statistics; prev-token co-activation the WEAKEST baseline —
+  house mechanism call wrong); (c) failed 0/6 — learned eviction
+  at K32 loses to LRU@K48 everywhere and to plain LRU@K32 on
+  5/6 (fit-v-serve index-scale confound named, biases toward
+  the no-fire). Sharpened claim: temporal structure in expert
+  reuse is a PREDICTION resource, not (at this policy class) an
+  EVICTION resource; the H64 number points at prefetch, not
+  caching. New residue: victim-decision-conditional training
+  objective; prefetch head. Residue (b) MAGIC-TIME still open.
   NOTHINK TRANSPORT MEASURED same day (OBSERVATION GRF-NOTHINK-0):
   the reweighting SURVIVES answering and the registered refutation
   does not trip — decode topic contrast STRENGTHENS to 0.1856
@@ -8032,9 +8045,13 @@ honest status column).
   the thinking topic contrast peaking in window 9:16 (0.0867)
   then declining (0.0438, 0.0388), not strengthening. What
   survives sample-matched: the FIRST 8 decode tokens of thinking
-  routing are topic-free (0.0047) while answering's are already
-  topic-loaded (0.1331). The bridge demotes to a measured
-  early-horizon regime difference. Extractor audit: 32/40 stands,
+  routing carry near-zero topic contrast (0.0047; weak topic
+  information still decodable, LOPO 0.253 v 0.125 chance — topic
+  is not the organizing cosine axis) while answering's are
+  already topic-loaded (0.1331, LOPO 0.626). Magnitudes scoped
+  to the form-selected >=32-step cohort (n=99); the regime
+  comparison is paired within it. The bridge demotes to a
+  measured early-horizon regime difference. Extractor audit: 32/40 stands,
   all matches are "X) option" restatements, zero article-A prose
   false positives.
   [TIME-AS-STRUCTURE bank cross-link, same day: the GRF horizon

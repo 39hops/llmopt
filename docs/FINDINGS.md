@@ -2602,3 +2602,17 @@ regime tag on every bullet is the fence.
   triples; single 4-bit instrument, identity by cell-exact
   qualification evidence.
   ([VERDICT EX6-PHASE-0](RESULTS.md#L38436 "id:2026-08-21-verdict-ex6-phase-0-the-prompt").)
+
+- Expert-reuse temporal structure beyond recency is real offline and
+  worthless in-loop at this class: finite-horizon next-use prediction
+  (P(T<=H), strict past-only features, prompt holdout) beats an
+  age-only hazard by median +0.041 AUC at H=8 (six traces; ~half
+  decayed frequency, rest gap statistics, growing to +0.119 at H=64),
+  yet closed-loop learned eviction at K32 loses to warm LRU@K48 on
+  6/6 and to plain LRU@K32 on 5/6 — the information is real, the
+  hazard-argmin policy transform loses it. [SINGLE-SEED]
+  [REGIME-SCOPED: measured deployment artifacts] Fences: logistic
+  class + per-expert features only; token-event time; deterministic
+  even/odd prompt split; fit-v-serve index-scale confound named
+  (biases toward the observed no-fire).
+  ([VERDICT ROUTE-TIME-0](RESULTS.md#L39278 "id:2026-08-21-verdict-route-time-0-temporal-structure").)

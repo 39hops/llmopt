@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 215, library 73, reproduce-pinned 10, results-cited 267, spec-cited 88, cited-but-library 61
+Census: UNCITED 215, library 73, reproduce-pinned 10, results-cited 268, spec-cited 88, cited-but-library 61
 
 ## scratch/
 
@@ -417,8 +417,9 @@ Census: UNCITED 215, library 73, reproduce-pinned 10, results-cited 267, spec-ci
 | rot | rot_snap_anatomy.py | UNCITED | — | — | — | — |
 | rotinstr | rotinstr_control.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | routedb | routedb_basis.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| routedb | routedb_replay.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
-| routedb | routedb_replay2.py | results-cited | RESULTS | RESULTS×3 | — | — |
+| routedb | routedb_replay.py | results-cited | RESULTS | RESULTS×2 | — | 3 |
+| routedb | routedb_replay2.py | results-cited | RESULTS | RESULTS×4 | — | 1 |
+| routedb | routedb_time.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | ruleablate1 | ruleablate1_driver.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | rulepolicy0 | rulepolicy0_census.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | run | run_snap_gates.sh | spec-cited | specs | specs×1 | — | — |

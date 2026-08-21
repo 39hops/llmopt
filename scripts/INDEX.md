@@ -3486,6 +3486,18 @@ ROUTE-DB rung 2: within-domain prompt-holdout replay with the three -SIM correct
 - `replay(events, policy, k, t_plain, t_phase, eb)`
 - `main()`
 
+### scratch/routedb_time.py
+ROUTE-TIME-0 driver (desk, frozen pre-run): finite-horizon next-use prediction over the six frozen route traces, per PRE-REG ROUTE-TIME-0 (docs/RESULTS.md).
+
+- `dec(ph)`
+- `build_rows(events)` — Single causal pass. Returns feature matrix X, next-use gap T,
+- `fit_logistic(X, y, iters=150, lr=0.1)`
+- `predict(w, mu, sd, X)`
+- `auc(score, y)`
+- `qualify(events, X, T, EI, LE, rng)`
+- `closed_loop(events, w, mu, sd, k, eb)` — K=32 replay, learned eviction: evict cached expert with
+- `main()`
+
 ### scratch/rulepolicy0_census.py
 RULE-POLICY-0 rung 0 — label-coverage census (/desk shape).
 

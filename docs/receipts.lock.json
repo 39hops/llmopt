@@ -337,6 +337,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/grf/rider3.json": {
+   "bytes": 6025,
+   "exists": true,
+   "sha256": "7f6d5176befdb711e465a25701dc150f9fdb87d0ef2d9f9d0c404a13d8bc28f4",
+   "source": "results",
+   "tracked": true
+  },
   "logs/gt7/gt7.jsonl": {
    "bytes": 6029,
    "exists": true,
@@ -1763,6 +1770,14 @@
    "sha256": "724fa4da5038829c0de6486a7fd10dc3bc2304ba4969b9efa13d396fb73082e2",
    "source": "results",
    "tracked": true
+  },
+  "logs/routetime/time0_receipt.json": {
+   "bytes": 10722,
+   "exists": true,
+   "local_only": true,
+   "sha256": "7a20ee374f055579b96a31f89b8992d64349ef5ff14a09bbc50a04d0e6d1adf7",
+   "source": "results",
+   "tracked": false
   },
   "logs/ruleablate1/arms.jsonl": {
    "bytes": 674,
