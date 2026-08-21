@@ -39205,3 +39205,73 @@ prefill; cohort is 99/200 and form-skewed as disclosed; thinking
 capture is all-thinking (no answer phase). Files:
 scratch/grf_rider3.py, logs/grf/rider3.json.
 
+## PRE-REG ROUTE-TIME-0: does learned temporal structure in expert reuse add information beyond age, and does it buy a memory tier closed-loop? (2026-08-21, mac)
+
+First rung of the [[time-as-structure]] bank's residue (a): time as
+next-use horizon, never wall-clock. Reformulated per external
+review (GPT, adopted): the target is NOT a point estimate of
+next_use but FINITE-HORIZON reuse probabilities P(T <= H) for
+H in {1, 2, 4, 8, 16, 32, 64}, T measured in TOKEN EVENTS within a
+trace stream. Labels come from the frozen replay2 machinery
+(scratch/routedb_replay2.py next-use index — the Belady label
+factory); Belady agreement is QUALIFICATION only, never a bar.
+
+Instrument: desk replay over the six frozen route traces
+(logs/opus/{moe_gt1_traj_v2,gt2_code,gt2_phys,gt3_proofs,
+gt3_prose,gt4_dialog}). One row per (token event, layer,
+activated expert), DECODE-phase events only for scoring. Split =
+the replay2 deterministic prompt holdout (even prompt ids train,
+odd test; stated, not seeded). Features STRICT PAST-ONLY at event
+time: age (events since last use of (layer, expert)), decayed
+frequency (0.99 per own use, LFU kin), use count, last inter-use
+gap, mean inter-use gap, previous-token co-activation indicator
+(was this expert active for this layer at the immediately
+preceding token event), phase indicator, layer index. Model class:
+numpy logistic regression (standardized features, fixed epochs,
+fixed init), one model per H. Arms per H: AGE-ONLY (learned
+hazard on age alone — the rediscover-recency null), AGE+FREQ,
+FULL. Ranking baselines reported: raw age (LRU kin), decayed
+frequency (LFU kin), previous-token indicator. Metric: held-out
+AUC on test-prompt decode rows, per trace.
+
+Qualification (fail-closed, before any bar is read): (q1) label
+monotonicity — P(T <= H) nondecreasing in H on every trace; (q2)
+next-use labels agree with a direct recompute on a 1000-row
+sample; (q3) feature past-only audit — features at row i are
+recomputed from the event stream truncated at i on a 200-row
+sample, must match exactly.
+
+BAR 1 (INFO-BEYOND-AGE): median across the six traces of
+(FULL AUC - AGE-ONLY AUC) at H=8 on decode rows >= 0.02.
+BAR 2 (MEMORY-TIER, closed-loop; applies only if BAR 1 fires):
+replay at K=32 with eviction = evict the cached expert with the
+lowest predicted P(T <= 32) (model fit on train prompts only,
+features maintained online, implementable), charged the same
+per-expert bytes as replay2. Fires if learned@K32 decode MB/token
+<= warm LRU@K48 decode MB/token on >= 4 of 6 traces. If BAR 1
+no-fires, BAR 2 books NOT-RUN (conditional bar, the
+applies_only_if_bars_fire pattern).
+
+REFUTED-IF: BAR 1 no-fire refutes "expert reuse carries learnable
+temporal structure beyond recency" AT THIS feature set and model
+class (logistic, per-expert features); wording of any booking must
+carry that scope.
+
+REGISTERED PRIOR (house, on the record): BAR 1 FIRES weakly —
+median delta-AUC in 0.02-0.05, carried mostly by previous-token
+co-activation and gap statistics; BAR 2 does NOT fire — the ~2x
+Belady-bypass headroom (ROUTE-DB-REPLAY-1) is real but hazard
+ranking at K32 will not close the K48 LRU gap. Net read predicted:
+learned temporal structure exists but mostly rediscovers recency
+at cache-decision granularity.
+
+FENCES: Mac desk only; six frozen traces, no new capture; T in
+token events (48-layer events share one index — horizon is
+per-token, not per-activation); logistic class only, no deep
+model; single deterministic split, no seed variance to pool;
+decode-phase scoring only; per-expert bytes from the frozen
+d388dead snapshot via replay machinery; no wall-clock quantity
+anywhere in labels or features; cross-trace pooling forbidden
+(per-trace numbers, median for the bar). Driver frozen by commit
+before any value is read.
+
