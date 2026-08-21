@@ -52,13 +52,14 @@ def instrument_phase(model, keep, mode):
         for i, layer in enumerate(model.model.layers)
         if hasattr(layer.mlp, "gate") and hasattr(layer.mlp, "top_k")
     ]
-    masks, keepsets, tail_done = {}, {}, {}
+    masks, zeros, keepsets, tail_done = {}, {}, {}, {}
     for li, block in moe_layers:
         kept = keep[li]
         n_exp = block.gate.weight.shape[0]
         assert len(kept) >= block.top_k
         masks[id(block)] = mx.array(
             [0.0 if e in kept else float("-inf") for e in range(n_exp)])
+        zeros[id(block)] = mx.array([0.0] * n_exp)
         keepsets[id(block)] = kept
     cls = type(moe_layers[0][1])
     original = cls.__call__
@@ -82,22 +83,28 @@ def instrument_phase(model, keep, mode):
         return phase == "decode"
 
     def wrapped(self, x):
+        # EVERY call runs the frozen instrument's exact math with a
+        # phase-selected mask (zero vector when unmasked). The v1
+        # wrapper's unmasked branch skipped the want/.tolist() step;
+        # that forced evaluation changes MLX's lazy-graph fusion and
+        # the fp rounding downstream — qualification caught it as a
+        # 63 v booked 59 full-arm mismatch (ALL was cell-exact).
         logits = self.gate(x)
         k = self.top_k
         n_tokens = 1
         for d in logits.shape[:-1]:
             n_tokens *= d
         phase = phase_of(self, n_tokens)
-        if mask_now(phase):
-            want = mx.argpartition(logits, kth=-k, axis=-1)[..., -k:]
-            kept = keepsets[id(self)]
-            for picks in want.reshape(-1, k).tolist():
+        masked = mask_now(phase)
+        want = mx.argpartition(logits, kth=-k, axis=-1)[..., -k:]
+        kept = keepsets[id(self)]
+        for picks in want.reshape(-1, k).tolist():
+            if masked:
                 state["slots"] += k
                 state["hits"] += sum(1 for e in picks if e in kept)
-            gates = mx.softmax(logits + masks[id(self)], axis=-1,
-                               precise=True)
-        else:
-            gates = mx.softmax(logits, axis=-1, precise=True)
+        gates = mx.softmax(
+            logits + (masks[id(self)] if masked else zeros[id(self)]),
+            axis=-1, precise=True)
         inds = mx.argpartition(gates, kth=-k, axis=-1)[..., -k:]
         scores = mx.take_along_axis(gates, inds, axis=-1)
         if self.norm_topk_prob:

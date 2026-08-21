@@ -38365,3 +38365,41 @@ adopted). Receipts: logs/ex6/{qual.jsonl, ex6.jsonl,
 ex6_observations.json}, refuse-if-exists at the launcher; a
 wall-kill books surviving cells + NOT-RUN.
 
+## AMENDMENT EX6-PHASE-0-WRAPPER (target: PRE-REG EX6-PHASE-0): qualification bar 1 FAILED on the v1 wrapper — NONE read 63 v the booked 59 — and the failure is an MLX lazy-graph fusion effect, not a routing bug; wrapper v2 unifies the code paths; treatment did not fire (2026-08-21, Mac, pre-treatment)
+
+The sanity gate did exactly its job. First qualification pass
+(rows preserved in logs/ex6/qual.jsonl, arms ex6_qual_none /
+ex6_qual_all):
+
+- MODE=ALL: 78 {1:28, 2:26, 3:24}, masked recall 0.9752 —
+  CELL-EXACT against the booked ex3_del_invp seed-1001 cell.
+- MODE=NONE: 63 {1:24, 2:23, 3:16} v the booked full128 cell 59
+  {1:22, 2:19, 3:18} — FAIL.
+
+DIAGNOSIS. The v1 wrapper's unmasked branch skipped the frozen
+instrument's closed-loop-recall step (want = argpartition(logits);
+.tolist()). That .tolist() forces a lazy-graph evaluation inside
+every router call; without it MLX fuses the remaining graph
+differently and the downstream fp rounding drifts — a 4-solve
+full-arm shift with zero code touching the routing math. The
+masked branch shares the frozen path verbatim, which is why ALL
+reproduced to the last digit. Same instrument family as the
+booked MLX lazy-graph timing lesson (the bench that timed graph
+construction): graph STRUCTURE is part of the instrument.
+
+REPAIR (wrapper v2, committed with this amendment): every call now
+runs the frozen instrument's exact sequence — want + forced
+.tolist(), then softmax(logits + mask) — with the mask
+phase-selected between the named-80 -inf vector and an explicit
+zero vector; recall counters accumulate only on masked-phase calls
+(receipt semantics unchanged). NONE is thereby the frozen
+instrument with a zero mask, and every phase arm shares one code
+path.
+
+PROTOCOL. Per the registered bar-1 text, treatment did NOT fire; no
+treatment receipt exists. Qualification re-runs on wrapper v2 with
+new arm labels (ex6_qual_none_v2 / ex6_qual_all_v2) appended to the
+same registered receipt file — the failed v1 rows stay in place as
+the record. Bars, arms, seeds, and every other registered parameter
+are unchanged.
+
