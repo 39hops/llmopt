@@ -7830,3 +7830,31 @@ honest status column).
   sidecars for both heads at every locus live in the receipt —
   the census never needs the 3080 again (the sufficient-
   statistics lesson, applied).
+  REFRAME (2026-08-21, GPT seat post-rung-2, house-verified
+  anchor): per-DOMAIN tables are NOT the target architecture —
+  the six traces are evaluation slices, not a partition of the
+  model's function, and the ledger already holds the
+  cross-domain-coupling anchor (VERDICT MOE-GT-5, RESULTS L20179:
+  the union-of-bases mask resurrects the dead math core 0 -> 55
+  with mostly VERBAL experts; "math capability, masked, lives in
+  the verbal branch" — necessity across domain labels, exactly
+  what Artin's DOMAIN-CAPABILITY-COUPLING intuition names).
+  EXPERTDB reframed: COMPLETE metadata over all 48x128
+  identities; the route predictor is statistical —
+  score(layer, expert | x) = global_core + phase_residual +
+  latent_route_mixture(x) + temporal_reuse — with latent modes
+  LEARNED from routing fingerprints, never named by domain;
+  prompts may mix modes and components may cross labels
+  (labels are interpretation AFTER fitting, only). RUNG 3 (next,
+  zero model cost): ROUTE-BASIS census over prompt-level routing
+  signatures — frozen representation, effective rank / NMF-PCA
+  spectrum, component memberships, cross-domain nearest-neighbor
+  rate, and held-out demand prediction under four priors (global
+  / global+phase / named-domain / latent-mixture). The decisive
+  systems question unchanged — can transported structure make
+  K32 behave like plain LRU@K48 — now asked of SHARED LATENT
+  factors, with the rung-2 repairs retained (charged transitions,
+  Belady-bypass warm starts, honest async prefetch when it
+  lands). If latent structure transports, the "vector DB" role
+  is retrieval over compact route fingerprints for residency
+  priors — ANN errors cost misses, never tokens.
