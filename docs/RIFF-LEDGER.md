@@ -7647,3 +7647,33 @@ honest status column).
   packed-GEMV one-layer cell is now residue (2) alongside the
   streamed-GEMV timing probe; depth-conditional MTP acceptance
   measurement joins the preflights.
+  KIN UPDATE (2026-08-21, Artin sighting + GPT seat): NInfer added
+  as PRIMARY systems kin above AirLLM. AirLLM stays the
+  "larger-than-memory executes at all" existence proof; NInfer is
+  the specialization blueprint — from-scratch C++/CUDA,
+  checkpoint-closed to Qwen3.8, custom .ninfer artifact laid out
+  for execution, model-specific Gated-DeltaNet/small-T decode
+  kernels, CUDA-graph replay, native MTP3, resident packed
+  weights (~20GiB NVFP4). Observed on a 5090: ~71 tok/s MTP0,
+  ~151-220 tok/s MTP3, acceptance highly workload-dependent —
+  empirical support that the objective is COMMITTED TOKENS PER
+  TARGET WEIGHT TRAVERSAL, not raw draft acceptance (the same
+  three-number law as the 2026-08-17 correction). Distinctions
+  that fence the analogy: NInfer has NO offload — it does not
+  solve the memory deficit, and its artifact is lossy NVFP4 where
+  ours must stay bit-exact BF16. Transferable invariants to
+  price for Mac/Axiom: one fixed text target, mmap-able .axiom
+  artifact in execution order, separate T=1 / T=2..4-verify /
+  prefill kernels, explicit GDN running/chunk/snapshot contracts
+  with per-prefix state outputs, logical-v-physical byte
+  accounting, kernel-consumed lossless representation (never
+  safetensors-shaped materialization), eventually C++/Metal in
+  the hot path over high-level MLX. Mac-specific edge: unified
+  memory removes the obligatory host-to-device copy — price
+  direct Metal reads from resident/mmap packed pages + explicit
+  cold-page prefetch, but MEASURE macOS VM/page-fault behavior
+  rather than trusting mmap residency. Residue insert: a
+  NInfer-specific survey (artifact layout, GDN snapshot/chunk
+  contracts, MTP state handling, traffic accounting) runs AFTER
+  the EX6 receipts freeze; bank transferable invariants only,
+  never CUDA details.
