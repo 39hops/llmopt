@@ -1,11 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [
-   "logs/ex5/ex5_observations.json"
-  ],
-  "reason": "pre-booking audit repair: observations regenerated once (OBS_OVERWRITE=1, disclosed in the EX5-LAYERMATCH-0 verdict) to add moe_gt1_arm2 sha, reused keepset shas, and audit_notes; all values and bar outcomes identical"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -234,18 +228,16 @@
   "logs/ex5/ex5.jsonl": {
    "bytes": 15106,
    "exists": true,
-   "local_only": true,
    "sha256": "8f47b9e478c5680112a0075427d2ac978a922d665c40bd185d4945de24d45675",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/ex5/ex5_observations.json": {
    "bytes": 5288,
    "exists": true,
-   "local_only": true,
    "sha256": "bc2be9d128ab5f18c23115e2c081eb93ffea9d4d0cf53c063eff208ec278fd39",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/ex5/mask_manifest.json": {
    "bytes": 17110,
@@ -264,10 +256,9 @@
   "logs/ex5/qual.jsonl": {
    "bytes": 1293,
    "exists": true,
-   "local_only": true,
    "sha256": "5a1f289f681186b44aed6723a756021e91601b2ac25d25847330a0092384c73d",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/funnel_wall/prec_sweep_step1_d64.log": {
    "bytes": 607,
