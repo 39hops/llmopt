@@ -1922,6 +1922,11 @@ EX6-LOC-0 driver (frozen pre-launch): native-path localization 2x2 per PRE-REG E
 
 - `main()`
 
+### scratch/ex6loc_rider.py
+EX6-LOC-0 rescue-typology rider (desk, frozen pre-read of the typology): per-level mechanism split of the booked factorial from the existing perprob stream — no new inference.
+
+- `main()`
+
 ### scratch/ex6med.py
 EX6-MED-0 driver (frozen pre-launch): 2x2 mediation factorial per PRE-REG EX6-MED-0 (docs/RESULTS.md) — prompt-state {NONE, PROMPT-masked} x forced first token {z_NONE, z_PROMPT} on the frozen EX6 stack (scratch/moe_gt1_arm2.py gate, seeds 7001/8002/9003, named-80 keepset).
 

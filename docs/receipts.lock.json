@@ -305,8 +305,15 @@
   "logs/ex6loc/ex6loc.jsonl": {
    "bytes": 2641,
    "exists": true,
-   "local_only": true,
    "sha256": "fe1f50aa65296c7864bcc9c2da0281d25283895544d9c8c286c25e8ae3cc2fea",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/ex6loc/rider.json": {
+   "bytes": 1591,
+   "exists": true,
+   "local_only": true,
+   "sha256": "2251ec56072c0d24aa1ed8e63c0c4f2590a117dadc42bf0b9c22ff140f6247f4",
    "source": "results",
    "tracked": false
   },

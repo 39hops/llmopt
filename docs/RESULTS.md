@@ -39909,3 +39909,42 @@ unrelated to the run; code_commit for this entry is the driver
 freeze f343449e. Files: scratch/ex6loc.py,
 logs/ex6loc/ex6loc.jsonl.
 
+## AMENDMENT EX6-LOC-0-LEVELS: depth-multiplicity wording fence + the unbooked per-level mechanism split — interaction is difficulty-dependent, conjunctive at L1 and redundant/sub-additive at L3 (2026-08-21, mac)
+
+Amends VERDICT EX6-LOC-0. Two adoptions from external review,
+both verified against the booked receipts before adoption.
+
+1. WORDING FENCE (depth multiplicity): TOKEN1_ONLY masks the z1
+router call at EVERY MoE block — one temporal token position
+ACROSS ALL 48 LAYERS, not one top-8 assignment. "One token's
+routing" stays correct only with this fence; the verdict's "ONE
+routing decision" phrasing is superseded by this entry.
+
+2. PER-LEVEL SPLIT (recomputed from the booked gate_per_level
+dicts, pooled 3 seeds): L1 NONE 74 / PREFILL 73 / TOKEN1 77 /
+PROMPT 87 (deltas -1 / +3, interaction +11); L2 64/69/70/82
+(+5/+6, +7); L3 53/62/65/69 (+9/+12, -5). Pooled
+super-additivity is NOT uniform: canonical language is
+DIFFICULTY-DEPENDENT INTERACTION — strongly conjunctive at
+L1/L2, independent-with-partial-redundancy (sub-additive) at L3.
+
+3. RESCUE TYPOLOGY (desk rider scratch/ex6loc_rider.py, frozen
+pre-read with its question on the record; receipt
+logs/ex6loc/rider.json): the registered hypothesis adjudicates
+YES on both halves. Joint-only rescues (only the PROMPT
+conjunction solves) fall with level: 8 / 7 / 4 — L1's +11
+interaction is joint-only enrichment. Both-singles redundancy
+(either single arm suffices) rises with level: 3 / 4 / 7 — L3's
+-5 is overlap/saturation, compounded by PROMPT KEEPING only 3 of
+L3's 7 token1-only rescues. Break counts stay small and
+arm-ordered (PROMPT breaks 7/3/4 v PREFILL 9/5/5, TOKEN1 6/2/2).
+
+Mediator scope, restated: LOC establishes intervention effects;
+the attention/KV propagation story for WHY z1's routing
+compounds remains hypothesis, unbooked. REGISTERED FOLLOW-UP
+AXES (banked, unpriced, not fired): (a) temporal isolation —
+z1 v z2 v z3 single-token mask arms; (b) depth isolation — z1
+masked only in early/mid/late layer bands. The current +21
+localizes to one token position but spans the whole depth.
+Files: scratch/ex6loc_rider.py, logs/ex6loc/rider.json.
+

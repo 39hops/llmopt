@@ -1,0 +1,58 @@
+{
+ "note": "EX6-LOC rescue typology by level (desk, from the booked perprob stream)",
+ "start": {
+  "start_commit": "2b251c95",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/ex6loc_rider.py": "6f212d225fe32ab44a3c2edfa4f83089ab8ddd0ea5ebe81fe7a95b623c9f4374",
+   "scratch/ex6loc.py": "1eb9756c3d128135cc3f74aea44b7d2c9c6f6448b5a6da8ac5077e576d1261d7"
+  }
+ },
+ "completion_commit": "2b251c95",
+ "n_problems": 360,
+ "by_level": {
+  "1": {
+   "none_solved_base": 74,
+   "break_prefill": 9,
+   "break_token1": 6,
+   "break_prompt": 7,
+   "joint_only_rescue": 8,
+   "never_solved": 29,
+   "prefill_only_rescue": 5,
+   "prefill_only_kept_by_prompt": 5,
+   "both_singles_rescue": 3,
+   "both_singles_kept_by_prompt": 3,
+   "token1_only_rescue": 6,
+   "token1_only_kept_by_prompt": 4
+  },
+  "2": {
+   "none_solved_base": 64,
+   "break_prefill": 5,
+   "break_token1": 2,
+   "break_prompt": 3,
+   "never_solved": 33,
+   "joint_only_rescue": 7,
+   "prefill_only_rescue": 6,
+   "prefill_only_kept_by_prompt": 6,
+   "both_singles_rescue": 4,
+   "both_singles_kept_by_prompt": 4,
+   "token1_only_rescue": 4,
+   "token1_only_kept_by_prompt": 4
+  },
+  "3": {
+   "none_solved_base": 53,
+   "break_prefill": 5,
+   "break_token1": 2,
+   "break_prompt": 4,
+   "token1_only_rescue": 7,
+   "token1_only_kept_by_prompt": 3,
+   "never_solved": 39,
+   "both_singles_rescue": 7,
+   "both_singles_kept_by_prompt": 7,
+   "joint_only_rescue": 4,
+   "prefill_only_rescue": 7,
+   "prefill_only_kept_by_prompt": 6
+  }
+ }
+}
