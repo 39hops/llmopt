@@ -305,10 +305,9 @@
   "logs/ex6med/zcensus.json": {
    "bytes": 493,
    "exists": true,
-   "local_only": true,
    "sha256": "c13cc00916b8500782e791cc35e5dc79556a65a6fbd6251ab7da55d9f6397550",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/funnel_wall/prec_sweep_step1_d64.log": {
    "bytes": 607,

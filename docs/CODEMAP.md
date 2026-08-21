@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 218, library 73, reproduce-pinned 10, results-cited 269, spec-cited 88, cited-but-library 61
+Census: UNCITED 218, library 73, reproduce-pinned 10, results-cited 270, spec-cited 88, cited-but-library 61
 
 ## scratch/
 
@@ -118,8 +118,9 @@ Census: UNCITED 218, library 73, reproduce-pinned 10, results-cited 269, spec-ci
 | ex6 | ex6_observe.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | ex6 | ex6_phase.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 3 |
 | ex6 | ex6_run.sh | results-cited | RESULTS | RESULTS×2 | — | 1 |
-| ex6med | ex6med.py | UNCITED | — | — | — | 2 |
-| ex6med | ex6med_idaudit.py | UNCITED | — | — | — | — |
+| ex6med | ex6med.py | UNCITED | — | — | — | 3 |
+| ex6med | ex6med_idaudit.py | UNCITED | — | — | — | 1 |
+| ex6med | ex6med_idaudit2.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | ex6med | ex6med_run.sh | UNCITED | — | — | — | — |
 | exact | exact_twin_d56.py | spec-cited | specs | specs×1 | — | — |
 | exact1 | exact1_small_cells.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
