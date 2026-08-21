@@ -341,3 +341,59 @@ def test_precedence_requires_sanity_gate_class():
     bad3["bars"][0]["gate_class"] = "typo"
     with pytest.raises(PreregSchemaError):
         validate(bad3)
+
+
+# ---- adopted 2026-08-20 (OPERAND-PROVIDER law, banked 2026-08-19):
+# ---- registered measurement operands must name a provider that
+# ---- exists on disk. Existence, never sufficiency; forward-only.
+
+def _op_doc(**over):
+    doc = json.loads(PREREG.read_text())
+    doc["operands"] = over.get(
+        "operands",
+        [{"name": "W_teacher", "provider": "llmopt/lab/prereg.py"}])
+    return doc
+
+
+def test_operands_shape_validates_and_dup_names_refused():
+    from llmopt.lab.prereg import verify_operands
+    doc = _op_doc()
+    validate(doc)
+    verify_operands(doc, ROOT)
+    dup = _op_doc(operands=[
+        {"name": "h", "provider": "llmopt/lab/prereg.py"},
+        {"name": "h", "provider": "llmopt/lab/metrics.py"}])
+    with pytest.raises(PreregSchemaError):
+        validate(dup)
+    absolute = _op_doc(operands=[{"name": "h", "provider": "/etc/x"}])
+    with pytest.raises(PreregSchemaError):
+        validate(absolute)
+    extra = _op_doc(operands=[{"name": "h",
+                               "provider": "llmopt/lab/prereg.py",
+                               "sufficient": True}])
+    with pytest.raises(PreregSchemaError):
+        validate(extra)
+
+
+def test_missing_provider_refuses_at_load(tmp_path):
+    """The CHEAP-READOUT shape: an operand whose provider is not on
+    disk must refuse the pre-reg at load time, not at review time."""
+    (tmp_path / "docs" / "preregs").mkdir(parents=True)
+    doc = _op_doc(operands=[
+        {"name": "h", "provider": "logs/nowhere/h_states.npz"}])
+    p = tmp_path / "docs" / "preregs" / "op-test.json"
+    p.write_text(json.dumps(doc))
+    with pytest.raises(PreregSchemaError, match="does not exist"):
+        load(p)
+    # same document passes once the provider materializes
+    target = tmp_path / "logs" / "nowhere"
+    target.mkdir(parents=True)
+    (target / "h_states.npz").write_bytes(b"x")
+    assert load(p)["operands"][0]["name"] == "h"
+
+
+def test_operandless_documents_are_unaffected():
+    """Forward-only: every booked pre-reg (no operands key) loads
+    exactly as before."""
+    doc = load(PREREG)
+    assert "operands" not in doc

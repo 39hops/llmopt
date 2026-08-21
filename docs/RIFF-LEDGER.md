@@ -3003,7 +3003,19 @@ prose modernized, THEORY row head de-contradicted, [NULL] scope
 alignment). EX-ANAT-4 SLATE BANKED here per bank-everything:
 (a) uniform-random deletion control, (b) carrier TRAJ anatomy on
 the named 80, (c) physics-gate scalpel transport — ordered, each
-pre-reg before fire. Attribution: Grok (sharpening), three Opus
+pre-reg before fire. [SLATE UPDATE 2026-08-20: item (a) is SPENT —
+PRE-REG EX4-UNIF (RESULTS 23592, 2026-08-09) -> VERDICT
+(RESULTS 28597, 2026-08-13): neither primary bar; unif0 +19 /
+unif1 -1 (split-draws knife-edge, |20| one solve under the +21
+bar); top-80 -26 with a 9.56% recall confound; EX4-COMPOSITION-1
+desk rider eliminated window overlap and read the demand-dose
+curve as non-monotone. Live residue after (a): the
+per-layer-count-matched UNIFORM arm (keep invp's exact per-layer
+deletion counts, draw expert ids uniformly within layer, breaking
+rank matching while holding placement — the one control cell not
+in the ledger; ex3_del_rand0 already matches layer AND rank by
+construction) and the demand-dose ladder at fixed rank class.
+(b) and (c) remain unregistered and unrun.] Attribution: Grok (sharpening), three Opus
 seats (audit findings), Artin (sanction + relay), Fable
 (verification + application).
 
@@ -3020,7 +3032,14 @@ seats (audit findings), Artin (sanction + relay), Fable
   interference removal, router over-inclusive at the carrier rank
   class) and its first testable consequence is already queued —
   EX-ANAT-4's uniform-random deletion control separates "horizon
-  structure" from "any deletion helps." Scale corollary (Artin,
+  structure" from "any deletion helps." [MEASURED 2026-08-13,
+  residue re-pointed 2026-08-20: EX4-UNIF answered NEITHER cleanly
+  — unif0 +19 v unif1 -1 is a split-draws knife-edge one solve
+  under the +21 bar, so "any deletion helps" is NOT supported and
+  "horizon structure" is not yet separated either; the frame's
+  next honest discriminator is the per-layer-count-matched uniform
+  arm / fixed-rank-class dose ladder named in the EX-ANAT-4 slate
+  update.] Scale corollary (Artin,
   same exchange, measured side): closed-system math natives are
   scale-SENSITIVE not scale-maximal (113M/200M/400M excluded from
   every fit; width cliffs; tokens-per-width ceiling) — and the
@@ -6821,7 +6840,14 @@ honest status column).
   FENCES: the field proves existence, not sufficiency (a provider
   can exist and still be the wrong surface/precision — fences and
   auditors keep that job); retrofit is forward-only, never applied
-  to booked preregs.
+  to booked preregs. RESIDUE LANDED (2026-08-20, mac-only session):
+  optional `operands` field shipped in llmopt/lab/prereg.py —
+  validate() checks shape (name/provider, repo-relative, unique),
+  verify_operands()/load() refuse a provider absent from disk with
+  the repo root inferred from the docs/preregs location; three
+  focused fixtures in tests/test_prereg_schema.py including the
+  CHEAP-READOUT missing-h shape. v1 is existence-only per the
+  fence; claim_lint wiring not yet done (open follow-up).
 - **BANKED (2026-08-19): TRAJECTORY-SIDECAR — free-generation
   instruments preserve the exact generated token IDs as a canonical
   receipt sidecar (per-row offset/count/hash into one binary file;
@@ -7044,7 +7070,11 @@ honest status column).
   leg runs chunked/offline over the sparse captured states — tower
   residency stays untouched. Standing note: OPERAND-PROVIDER is
   prospectively useful but human-enforced until the prereg-schema
-  operands field lands (banked forward fix).
+  operands field lands (banked forward fix). [LANDED 2026-08-20:
+  the operands field shipped in llmopt/lab/prereg.py — enforcement
+  is now machine-side at load time for any pre-reg that declares
+  operands; declaring them stays a house habit, not a schema
+  requirement.]
 - **BANK AMENDMENT (2026-08-20): LOOP-STATE-READOUT specimen order +
   hidden-state recurrence** (GPT seat, post CYCLE-IMPULSE booking).
   Items 0 and 4 are the PRIMARY rigid-orbit specimens (0/192 bursts
@@ -7322,7 +7352,14 @@ honest status column).
   probe runs (AMENDMENT -RUNTIME-WORDING). PROBE RAN SAME DAY,
   cause LOCALIZED (OBSERVATION QWEN-BLEM-DECODE-PERF-0):
   restored-cache x second-tower x cache-position>~1790 conjunction;
-  values/kernels/serializer all exonerated; benign branch of the
+  state values, layout/contiguity, s16-kernel cost, and serializer
+  FUNCTIONAL corruption all exonerated — but CPU-restored cache
+  provenance is itself condition (a) of the trigger conjunction, so
+  the roundtrip path stays causally implicated even though its
+  outputs are correct (WORDING CORRECTED 2026-08-20 post-review:
+  the earlier flat "serializer exonerated" overstated; second-build
+  causality stays observation-grade, allocator attribution
+  unmeasured); benign branch of the
   -DIAGNOSIS-SCOPE fork confirmed; phase-5 allocator-counter slot
   is the only remaining open item.
 - **BANK OUTCOME (2026-08-20): HOMEOSTATIC-INFERENCE stage 2
@@ -7377,3 +7414,18 @@ honest status column).
   vendor-top-256 exclusion and is framed NARROWLY as "exact
   vendor-token identity v another equally BLe-plausible
   candidate", never "vendor-information v non-vendor-information".
+  AMENDED (2026-08-20, mac-only session): NOT mac-runnable as
+  banked — verified: the loop-state npz primitives
+  (logs/qwenloopstate/loopstate_arrays_id*.npz) and the BLe head
+  rows (~/qwen_whole0t/BLe) exist only on the 3080; the Mac holds
+  only the vendor lm_head slice + tokenizer. Census stays queued
+  for a 3080 window (any npz transfer must preserve the booked
+  arrays_sha256 in loopstate_rows.jsonl). FORWARD LESSON banked
+  with it (GPT seat + house verification): derivation drivers
+  should PERSIST COMPACT SUFFICIENT STATISTICS at emit time —
+  qwen_alttok_derive.py computed the full Z/Zv logit matrices and
+  kept only the control-table scalars; a small
+  top-1024-per-head-per-locus sidecar (ids + logits) would have
+  made this census machine-portable for CPU pennies. Same class as
+  the stream-your-rows corollary: what a driver discards at emit
+  time is what the next question needs.

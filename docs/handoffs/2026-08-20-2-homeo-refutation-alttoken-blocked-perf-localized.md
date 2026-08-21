@@ -1,6 +1,8 @@
 # Handoff 2026-08-20-2: HOMEO books its registered refutation, ALTTOKEN blocked by its own gate (a finding), the 7x localized
 
-Seat: Fable 5 on the Mac; HEAD at close 897985f, both checkouts
+Seat: Fable 5 on the Mac; HEAD when this file was authored 897985f
+(final close HEAD = the handoff commit itself, 082aaa5; correction
+noted 2026-08-20 post-review), both checkouts
 lockstep; 3080 idle, nothing armed, no watchers live. Artin opened
 both machines through the evening; nothing runs overnight.
 
@@ -40,7 +42,9 @@ both machines through the evening; nothing runs overnight.
 - OBSERVATION QWEN-BLEM-DECODE-PERF-0 (2de2967, L37825): the HOMEO
   7x decode slowdown LOCALIZED by a five-phase elimination ladder —
   restored-cache x second-tower x cache-position>~1785-1849
-  conjunction; cross-tower values, serializer, contiguity, s16
+  conjunction; cross-tower values, serializer FUNCTION (outputs
+  correct; restored provenance itself remains condition (a) of
+  the trigger — wording tightened 2026-08-20), contiguity, s16
   kernel (~1.5x w4 per route), RAM ballast, first-tower restores
   all measured out; native-prefill immune through 3641; identical
   onset for cross and roundtripped-native states. Resolves the

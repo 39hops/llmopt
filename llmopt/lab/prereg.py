@@ -46,6 +46,11 @@ must fail loudly, not vanish):
                     "aggregation", "direction", "value",
                     "arms": [names], "description"?}]
   receipts        [repo-relative path str] — paths the run WILL write
+  operands        OPTIONAL [{name, provider}] — what the measurement
+                  algebra consumes and the exact frozen artifact or
+                  committed producer for each; load()/verify_operands
+                  REFUSE a provider absent from disk (existence, not
+                  sufficiency; forward-only — OPERAND-PROVIDER law)
   refuted_if      prose, required (falsifiability is not optional).
                   MAY additionally be structured: when the document
                   carries "refuted_if_predicate" ({"measurement",
@@ -87,12 +92,22 @@ _DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 PREREG_KEYS = {"name", "results_id", "registered", "machine", "arms",
                "bars", "receipts", "refuted_if", "registered_prior",
-               "note", "refuted_if_predicate", "refutation_precedence"}
+               "note", "refuted_if_predicate", "refutation_precedence",
+               "operands"}
 # note is OPTIONAL prose; every other top-level key is required. A
 # retrospective encoding of an already-booked verdict MUST say so in
 # note — a pre-reg written after receipts exist is not a pre-reg.
 REQUIRED_KEYS = PREREG_KEYS - {"note", "refuted_if_predicate",
-                               "refutation_precedence"}
+                               "refutation_precedence", "operands"}
+# operands (optional, forward-only — OPERAND-PROVIDER law, banked
+# 2026-08-19): [{"name": <what the measurement algebra consumes>,
+#                "provider": <repo-relative frozen artifact path or
+#                             committed producer script>}].
+# validate() checks shape only; verify_operands()/load() refuse a
+# registered operand whose provider path does not exist on disk.
+# The field proves PROVIDER EXISTENCE, not semantic sufficiency —
+# a present provider can still fail to determine the operand.
+# Never retrofitted onto booked pre-regs.
 # refutation_precedence (optional): machine-encoded alarm ->
 # refutation precedence, adopted forward-only after QWEN-LBAND-1
 # (2026-08-18) where the rule lived in adjudicator code and had to
@@ -194,6 +209,26 @@ def validate(doc: dict) -> dict:
     for p in doc["receipts"]:
         _require(bool(isinstance(p, str) and p and not p.startswith("/")),
                  f"receipt path {p!r} must be repo-relative")
+    ops = doc.get("operands")
+    if ops is not None:
+        _require(bool(isinstance(ops, list) and ops),
+                 "operands, when present, must be a non-empty list")
+        seen_ops = set()
+        for op in ops:
+            _require(bool(isinstance(op, dict)
+                          and set(op) == {"name", "provider"}),
+                     f"operand {op!r}: keys must be exactly "
+                     f"{{name, provider}}")
+            _require(bool(isinstance(op["name"], str) and op["name"]),
+                     "operand name must be a non-empty string")
+            _require(op["name"] not in seen_ops,
+                     f"duplicate operand name {op['name']!r}")
+            seen_ops.add(op["name"])
+            p = op["provider"]
+            _require(bool(isinstance(p, str) and p
+                          and not p.startswith("/")),
+                     f"operand {op['name']!r}: provider {p!r} must be "
+                     f"a repo-relative path")
     _require(bool(isinstance(doc["bars"], list) and doc["bars"]),
              "bars must be a non-empty list")
     seen_ids = set()
@@ -231,8 +266,38 @@ def validate(doc: dict) -> dict:
     return doc
 
 
-def load(path: str | Path) -> dict:
-    return validate(json.loads(Path(path).read_text()))
+def verify_operands(doc: dict, root: str | Path) -> None:
+    """OPERAND-PROVIDER law, v1: every registered operand's provider
+    must EXIST under root (a frozen artifact path or a committed
+    producer script). Design-time refusal for the class caught twice
+    at review time (MODEL-2 r1 arm algebra; CHEAP-READOUT's h with no
+    provider). Existence only — a present provider is not proof it
+    determines the operand."""
+    root = Path(root)
+    for op in doc.get("operands") or []:
+        _require((root / op["provider"]).exists(),
+                 f"operand {op['name']!r}: provider "
+                 f"{op['provider']!r} does not exist under {root} — "
+                 f"a registered measurement may not name a provider "
+                 f"that is not on disk")
+
+
+def load(path: str | Path, operand_root: str | Path | None = None) -> dict:
+    """Load + validate; when the document carries operands, also
+    enforce provider existence (root defaults to the repo root
+    inferred from the prereg path's docs/preregs location, else
+    cwd)."""
+    path = Path(path)
+    doc = validate(json.loads(path.read_text()))
+    if doc.get("operands"):
+        if operand_root is None:
+            parent = path.resolve().parent
+            operand_root = (parent.parent.parent
+                            if parent.name == "preregs"
+                            and parent.parent.name == "docs"
+                            else Path.cwd())
+        verify_operands(doc, operand_root)
+    return doc
 
 
 def adjudicate_refutation(prereg: dict, obs: dict,
