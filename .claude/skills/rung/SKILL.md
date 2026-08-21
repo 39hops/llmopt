@@ -116,8 +116,15 @@ scratch/wsl.sh run 'pgrep -af <driver> | grep -v pgrep; tail -1 logs/<rung>/*bir
 ```bash
 until scratch/wsl.sh run 'ls logs/<rung>.DONE' 2>/dev/null; do sleep 180; done
 ```
-as a background Bash call, with the receipt dump on the same line so
-the notification carries the numbers.
+as a background Bash call. Dump ALWAYS-READABLE artifacts
+(qualification receipts, rc, markers, registered pre-read
+censuses) on the same line so the notification carries them —
+but SEALED treatment values are gated MECHANICALLY on the run's
+rc/qualification inside the watcher command itself, and a mixed
+log interleaving both classes is never tailed. Full ritual and
+the visibility classes: the `/watch` skill (earned 2026-08-21,
+EX6-MED run 2 — an unconditional dump unblinded a
+qualification-failed run permanently).
 
 **A watcher watches; it does not launch.** Before arming one, confirm
 two things, or it will poll happily forever:

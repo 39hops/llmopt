@@ -26,8 +26,10 @@ metadata, perform ALL of these steps in order:
    target. Heading:
    `## VERDICT|PRE-REG|AMENDMENT <NAME>: <one-line claim> (<date>, <machine>)`
 2. **Regenerate the index**: `.venv/bin/python scripts/gen_results_index.py`.
-   Always run it yourself. The PostToolUse hook matches `Edit|Write`
-   only, so a heredoc append does NOT trigger it.
+   Always run it yourself. The ledger_regen PostToolUse hook now
+   matches `Edit|Write|Bash` and handles heredoc RESULTS appends,
+   but it is BEST-EFFORT (timeouts, hook failures fail open) — the
+   explicit generator step stays.
 3. **Link**: patch the new rows in place with
    `llmopt.lab.jsonl.read_jsonl` / `write_jsonl` — set `threads`
    (kebab-case program names) and `links` (related entry ids, not
@@ -60,6 +62,24 @@ metadata, perform ALL of these steps in order:
    a Claude-Session URL. Set `code_commit` on the new row = parent of
    the booking commit (`git rev-parse HEAD^` after committing), and
    verify `files` was auto-extracted.
+
+## Amendments (the extra moves on top of steps 0-5)
+
+An AMENDMENT runs the same ritual PLUS, in the same commit:
+- **`amends` field** in the index row, set to the TARGET entry's
+  id — assert the target id exists before writing (an amendment
+  without a target is the needs_link backlog being born).
+- **Deny-list entry** whenever the amendment is a READING
+  CORRECTION: add the dead phrase to docs/claims.deny.json with
+  scope + superseded_by (e.g. "converges", "grows with H" —
+  both 2026-08-21).
+- **Living-doc corrections IN PLACE**: if the corrected reading
+  is quoted in RIFF-LEDGER, THEORY, BOARD, or a FINDINGS bullet,
+  fix each occurrence in the same commit — named as a
+  correction, never silently (the /riff correction shapes).
+- **Pre-read discipline**: an amendment to a LIVE run's prereg
+  states explicitly what has and has not been seen, and books
+  BEFORE any sealed value is opened.
 
 ## Fences that travel with every booking
 

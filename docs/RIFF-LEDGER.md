@@ -8239,3 +8239,29 @@ honest status column).
   rule-associated update. Named clean outcome: absorption curves
   collapse but capability does NOT — which would isolate
   optimization geometry/interference as the missing variable.
+
+- **BANKED (2026-08-21): machine-readable ARTIFACT VISIBILITY
+  CLASSES in the prereg schema — always-readable /
+  sealed-until-qualification / sealed-forever-on-failure**
+  (house + GPT, from the EX6-MED watcher-unblinding incident).
+  The mapping: a prereg already declares bars, fences, and
+  operands; it should also declare, per output artifact, WHO MAY
+  READ IT WHEN. A watcher (or any consumer) then enforces
+  blinding mechanically from the prereg instead of from a
+  checklist — the /watch skill's classes, promoted from prose to
+  schema (llmopt/lab/prereg.py, next to `operands`).
+  Measured anchors: AMENDMENT EX6-MED-0-QUALFAIL-2 (the
+  unconditional watcher dump that permanently unblinded a
+  qualification-failed run); the receipt_freeze hook's
+  structured-reference lesson (prose-scraped citations leave
+  gaps that only machine-readable references close).
+  Honest breaks: enforcement is only as strong as the consumers
+  that honor the field; a Bash tail outside the ritual still
+  leaks — the schema makes the ritual checkable, not impossible
+  to bypass.
+  Testable residue: schema field + validator in prereg.py;
+  /watch reads it and generates the gated dump command;
+  receipt-auditor checks that sealed artifacts never appear in
+  session-visible logs before their gate.
+  Attribution: GPT (generalize-the-classes ask), house (incident
+  + schema placement), Artin (adopted the review).

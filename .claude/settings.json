@@ -38,6 +38,12 @@
             "command": ".venv/bin/python .claude/hooks/smoke_guard.py",
             "timeout": 15,
             "statusMessage": "Checking smoke path isolation"
+          },
+          {
+            "type": "command",
+            "command": ".venv/bin/python .claude/hooks/receipt_freeze.py",
+            "timeout": 10,
+            "statusMessage": "Checking booked-receipt immutability"
           }
         ]
       }
