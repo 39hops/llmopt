@@ -1,0 +1,9 @@
+{
+ "note": "outcome-blind edge census: forced z1 v EOS (stepwise() would consume a donor EOS unlike native generation; zero rows affected)",
+ "zcap_sha256": "ddd3b45153be7ccff0736a7c56ef7a045ad8aec24b6aaa861dbbe6fae09e30bb",
+ "eos_ids_checked": [
+  151645
+ ],
+ "forced_z1_eos": 0,
+ "n_rows": 720
+}
