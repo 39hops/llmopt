@@ -1888,6 +1888,12 @@ EX5-LAYERMATCH-0 observations builder: derives every registered measurement from
 
 - `main()`
 
+### scratch/ex5_traj_census.py
+EX5 carrier TRAJ anatomy census (desk, observation-only, hypothesis generation ONLY — outcome-conditioned desk findings gate nothing and register nothing; GPT-seat feature list, house freeze).
+
+- `mask_slots(name)`
+- `main()`
+
 ### scratch/exact1_small_cells.py
 EXACT1-SMALL: d8/d16 ladder+anchor cells on axiom's ENGINE-EXACT-1.
 

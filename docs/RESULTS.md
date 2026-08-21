@@ -38146,3 +38146,87 @@ verified in-house against the adjudication before adoption:
 
 No measured value, bar outcome, or refutation reading changes.
 
+## OBSERVATION EX5-TRAJ-ANATOMY-0: the named carriers are prefill-phase, early-position, failure-enriched-at-decode routing targets — the only group with negative decode success enrichment; the low-margin/near-boundary hypothesis gets no group-grain support (2026-08-21, Mac, desk)
+
+Hypothesis generation ONLY (registered as such in the frozen script
+header before any value was read — commit 31b8d968 predates the
+receipt): outcome-conditioned desk findings gate nothing; every
+candidate mechanism here requires a registered causal arm before it
+is a claim.
+
+INSTRUMENT. scratch/ex5_traj_census.py streaming
+logs/opus/moe_gt1_traj_v2.jsonl (the pooled math trajectory behind
+the demand table; 590,736 rows; trailing free-text probe rows
+excluded — no ok field) plus the five side-domain trajectories
+(code/phys/proofs/prose/dialog, T_DOMAIN=100 frozen). Groups:
+named80 (ex3_inv_pooled), the six frozen EX5 masks, OTHER
+(complement). Receipt: logs/ex5/traj_census.json.
+base P(ok | decode row) = 0.3184 (row-weighted over decode
+positions, so long failing generations weigh more than the 120-item
+gate rate — disclosed).
+
+THE TABLE (per group, selection-weighted):
+
+  group    sel/slot decF   H     score  rank8 lowM  npos  okEnr   core  firstT demand breadth
+  named80  1449.8   0.096  4.251 0.1250 4.44  0.239 0.374 -0.0352 0.927 0.128  0.0247 4.375
+  rank0    1386.4   0.212  4.252 0.1224 4.56  0.259 0.513 +0.0054 0.957 0.221  0.0235 4.388
+  rank1    1454.2   0.216  4.237 0.1222 4.57  0.248 0.499 +0.0226 0.952 0.173  0.0247 4.338
+  rank2    1528.7   0.224  4.250 0.1254 4.47  0.252 0.500 +0.0159 0.971 0.196  0.0260 4.425
+  layer0    828.7   0.216  4.228 0.1204 4.57  0.284 0.502 +0.0042 0.962 0.198  0.0141 3.337
+  layer1    738.1   0.162  4.256 0.1279 4.49  0.252 0.461 +0.0069 0.972 0.224  0.0126 3.750
+  layer2    831.7   0.250  4.219 0.1255 4.46  0.242 0.560 +0.0203 0.978 0.258  0.0142 3.375
+  OTHER     729.3   0.229  4.239 0.1251 4.50  0.250 0.503 -0.0011 0.958 0.243  0.8737 n/a
+
+READS (each a hypothesis, none a claim):
+
+1. PHASE SIGNATURE. named80 decode fraction 0.096 v 0.21-0.25 for
+   every control group; mean normalized position 0.374 v ~0.5;
+   first-touch 0.128 v 0.17-0.26. The carriers are prefill/early
+   objects — consistent with DESK EX-ANAT-3-0's 2.21x prefill tilt,
+   now shown to be a NAMED-set property, not a rank-class property
+   (the rank masks, drawn from the same windows, sit at control
+   values).
+2. FAILURE ENRICHMENT AT DECODE — the standout. P(ok | selected,
+   decode) - base: named80 -0.0352; every control group
+   NON-NEGATIVE (+0.0042..+0.0226); OTHER -0.0011. The named
+   carriers are the only group whose decode engagement concentrates
+   on FAILING problems. Candidate mechanism for the deletion crest:
+   removing them removes decode-time routing that is
+   failure-associated — "the router selects a specific reusable
+   expert set whose effect depends on routing context" (Artin's
+   frame) gets its first feature-level correlate: the context is
+   PHASE, and the harm correlate is decode-time engagement.
+   Direction of causality is exactly what a registered arm must
+   test (enrichment could be symptom, not cause: hard problems may
+   recruit them).
+3. LOW-MARGIN HYPOTHESIS NOT SUPPORTED at group grain: named80
+   low-margin (rank 7-8 of top-8) fraction 0.239 is the LOWEST of
+   all groups (controls 0.242-0.284). The TRAJ-v3 near-boundary
+   veto design should not be motivated by a group-level margin
+   excess; if pursued, it must target per-selection margins, and
+   this census predicts it null at group grain.
+4. Router H, score, rank8 are FLAT across groups (H 4.22-4.26,
+   score 0.120-0.128, rank8 4.44-4.57) — the router is not
+   detectably less confident about carriers; whatever distinguishes
+   them is not visible in selection strength.
+5. Domain breadth tracks demand class, not namedness: named 4.375 ~
+   rank family 4.34-4.43 >> layer groups 3.34-3.75. Consistent with
+   breadth being a rank/demand covariate.
+6. Core co-routing slightly LOWER for named (0.927 v 0.952-0.978)
+   — weak signal, direction: carriers co-occur with core experts a
+   bit less often.
+
+FENCES. Single trajectory corpus (the same one that built the
+demand table — circularity with demand-derived groups is inherent
+and disclosed); selection-weighted means, no per-slot dispersion
+read; outcome conditioning makes read 2 a correlate, never a
+mechanism; features frozen pre-read but group membership was known
+to the author — this is anatomy, not a blind test. Next causal
+candidates this prices: (a) phase-scoped deletion (delete carriers
+at DECODE only v PREFILL only — directly tests read 1/2's
+mechanism), (b) the TRAJ-v3 low-margin veto DEMOTED at group grain
+by read 3.
+
+RECEIPTS. logs/ex5/traj_census.json (frozen feature list in
+scratch/ex5_traj_census.py, committed 31b8d968 before the run).
+

@@ -88,6 +88,8 @@ def main():
     with open(TRAJ) as f:
         for line in f:
             r = json.loads(line)
+            if not isinstance(r["prompt"], int):
+                continue    # trailing free-text probe rows, no ok
             key = r["prompt"]
             if r["pos"] > maxpos.get(key, 0):
                 maxpos[key] = r["pos"]
@@ -108,6 +110,8 @@ def main():
     with open(TRAJ) as f:
         for line in f:
             r = json.loads(line)
+            if not isinstance(r["prompt"], int):
+                continue
             l, mp = r["layer"], max(maxpos[r["prompt"]], 1)
             np_ = r["pos"] / mp
             dec = r["phase"] == "decode"
