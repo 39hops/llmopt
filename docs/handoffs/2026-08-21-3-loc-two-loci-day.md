@@ -121,3 +121,32 @@ banks + 4 in-place corrections — with the review loop catching
 two real holdout/eviction defects (not load-bearing), two
 instrument failures (fail-closed as designed), and three wrong
 house priors, all booked.
+
+## Post-handoff addendum (same session, pre-compact)
+
+Automation review adopted at a07487c8 (after the 9feca301 close):
+- NEW `/watch` skill — sealed-watcher ritual (artifact visibility
+  classes; the MED unblinding is its origin incident). /rung
+  section 5's "receipt dump on the same line" now scoped to
+  always-readable artifacts and points at /watch.
+- receipt_freeze hook UPGRADED: authority = receipts.lock.json
+  sha-locked entries (prose scrape kept as supplement), now
+  covers Edit|Write too, fails CLOSED on an unreadable lock for
+  logs/ mutations. 8/8 harness cases pass.
+- /book: stale "Bash does not trigger the hook" sentence fixed
+  (ledger_regen matches Edit|Write|Bash; best-effort, explicit
+  generator step stays) + a new Amendments subsection (amends
+  field, deny-list, living-doc corrections, pre-read
+  discipline) — no separate /amend skill.
+- NEW `.claude/agents/wording-auditor.md` (read-only, Opus):
+  sentence-to-receipt proof obligations over six failure classes
+  (quantifier drift, trend, causal verbs, pooled-to-subgroup,
+  tested-to-universal, physical multiplicity). Spawn on drafts
+  before claim_lint+booking; supplements external review.
+- BANKED (RIFF): machine-readable artifact-visibility classes in
+  the prereg schema, so /watch enforces blinding from the prereg.
+
+Artin runs doctor + automation commands next; session clears
+after. Next session: resume protocol (BOARD -> this handoff ->
+RESULTS tail), then Artin's pick among the ranked residues
+(house suggests z1/z2/z3 temporal masks).
