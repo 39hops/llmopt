@@ -38992,3 +38992,36 @@ SEQUENCING (review-adopted): GRF-NOTHINK transport registers and
 runs BEFORE the per-layer depth profile; if the phase reweighting
 survives no-thinking, the depth rung maps it.
 
+## PRE-REG GRF-NOTHINK-0: does the phase-reweighting structure survive when the model ANSWERS instead of thinking? (2026-08-21, Mac)
+
+Registered transport of GRF-0, required by AMENDMENT
+GRF-0-CAPTURE: identical frozen corpus, identical instrumentation
+and MAX_TOKENS, the ONLY change is enable_thinking=False (the
+frozen MoE gate machinery's setting). Driver
+scratch/grf_capture2.py, committed before firing; analysis =
+the frozen grf_analyze metrics recomputed on the new capture
+(env-pathed variant, same code shape).
+
+REGISTERED EXPECTATIONS (house, on the record; adjudicated
+descriptively — observation-grade, no machine bars):
+E1. The reweighting DIRECTION survives: decode topic contrast >
+    decode form contrast, and prefill form contrast >= prefill
+    topic contrast.
+E2. Decode topic contrast lands LOWER than GRF-0's thinking-phase
+    0.1505 (answers are short and template-shaped: completion/MCQ
+    answers reintroduce form structure at decode) but stays > 2x
+    the decode form contrast.
+E3. The thinking census inverts: majority of completions
+    terminate before the 96-token ceiling and MCQ rows reach an
+    answer letter, unlocking the (separately registered)
+    answer-identity leg.
+REFUTED-IF (of the GRF-0 phase story's generality): decode form
+contrast >= decode topic contrast under no-thinking — the
+topic-dominant-decode read would then be a thinking-regime
+artifact, and GRF-0's scope narrows accordingly.
+
+FENCES. Same single model, corpus, capture grain as GRF-0; seeds
+none (greedy); receipts logs/grf/{traj_nothink, rows_nothink}
+.jsonl + analysis_nothink.json + rider-class census, all
+refuse-if-exists.
+
