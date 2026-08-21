@@ -2237,8 +2237,19 @@ GENERAL-ROUTING-FACTORIAL analysis (desk, observation-only; metrics FROZEN here 
 
 - `main()`
 
+### scratch/grf_analyze2.py
+GRF-NOTHINK analysis: byte-copy of the frozen grf_analyze.py with ONLY the three receipt paths changed (PRE-REG GRF-NOTHINK-0 transport discipline; the frozen original is results-cited and never edited).
+
+- `main()`
+
 ### scratch/grf_capture.py
 GENERAL-ROUTING-FACTORIAL capture (observation-only; the banked riff's residue item 2). Runs the FROZEN corpus (logs/grf/corpus.json, emitted by the committed scratch/grf_corpus.py before any model call) through the pinned 4-bit MoE with the frozen moe_gt1 TRAJ instrumentation (imported, never edited): per-token routing rows (prompt id, layer, position, top-8, scores, phase, router entropy) stream to the traj file per prompt; the generated text (for a LATER, separately registered answer-identity leg — stored, not scored here) streams to a rows file.
+
+- `_load(name, rel)`
+- `main()`
+
+### scratch/grf_capture2.py
+GRF-NOTHINK capture (registered transport of GRF-0: the ONLY change from the frozen scratch/grf_capture.py is enable_thinking=False in the chat template — the same knob the frozen MoE gate machinery uses — plus the receipt paths. Same frozen corpus, same instrumentation, same MAX_TOKENS.
 
 - `_load(name, rel)`
 - `main()`
@@ -2247,6 +2258,12 @@ GENERAL-ROUTING-FACTORIAL capture (observation-only; the banked riff's residue i
 GENERAL-ROUTING-FACTORIAL frozen corpus (the banked riff's residue item 1; Artin charter ruling 2026-08-21 admits benign conceptual biology/chemistry as first-class balanced topic levels).
 
 - `build()`
+- `main()`
+
+### scratch/grf_rider.py
+GRF-0 audit rider (desk, frozen pre-read): the six checks the external audit requested before any GRF successor rung.
+
+- `sha(p)`
 - `main()`
 
 ### scratch/grpo_shaped.py

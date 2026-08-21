@@ -39025,3 +39025,59 @@ none (greedy); receipts logs/grf/{traj_nothink, rows_nothink}
 .jsonl + analysis_nothink.json + rider-class census, all
 refuse-if-exists.
 
+## OBSERVATION GRF-NOTHINK-0: the phase-reweighting structure SURVIVES answering — decode topic contrast STRENGTHENS to 0.1856 (v thinking's 0.1505) at 2.7x the decode form contrast; E1/E3 hold, E2's lower-than call was wrong in the interesting direction, and the registered refutation does not trip: topic-dominant decode is NOT a thinking-regime artifact (2026-08-21, Mac)
+
+PRE-REG GRF-NOTHINK-0 run exactly as registered: identical frozen
+corpus and instrumentation, only enable_thinking=False changed
+(driver scratch/grf_capture2.py, committed pre-fire; analyzer
+scratch/grf_analyze2.py, a byte-copy of the frozen grf_analyze
+with only receipt paths changed). Receipts:
+logs/grf/{traj_nothink.jsonl (701,808 rows, untracked),
+rows_nothink.jsonl (untracked), analysis_nothink.json}.
+
+CENSUS FIRST (the capture-validity gate the thinking run failed):
+0/200 think markers, 20/200 at the 96-token ceiling (v 200/200),
+median generated length 30 tokens, 40/40 MCQ completions contain
+an answer letter. This capture ANSWERS.
+
+THE TABLE (same frozen metrics):
+
+  variant  contrast T/F/O           pairs content v form   acc T/F/O          nnT
+  full     0.1491/0.0398/0.0596     0.8985 v 0.6564        0.710/0.755/0.520  0.615
+  prefill  0.0473/0.0571/0.0177     0.9024 v 0.8616        0.655/1.00/0.615   0.38
+  decode   0.1856/0.0691/0.0468     0.7948 v 0.5108        0.700/0.705/0.445  0.61
+
+REGISTERED EXPECTATIONS ADJUDICATED (descriptive, as registered):
+- E1 HOLDS: decode topic > decode form (0.1856 v 0.0691) and
+  prefill form >= prefill topic (0.0571 v 0.0473). The
+  reweighting direction transports.
+- E2 SPLIT, wrong in the interesting half: the registered call
+  was decode topic contrast LOWER than thinking's 0.1505 (short
+  template-shaped answers reintroducing form); measured HIGHER,
+  0.1856. The right half held: 2.7x the decode form contrast
+  (bar was > 2x). Answering routing is MORE topic-organized than
+  thinking routing, not less — thinking trajectories apparently
+  dilute topic structure with generic deliberation routing.
+- E3 HOLDS: the census inverted; the (separately registered)
+  answer-identity leg is now unlocked with 40/40 MCQ letters on
+  disk.
+- REFUTED-IF does NOT trip (decode form 0.0691 << decode topic
+  0.1856): GRF-0's topic-dominant-decode read is not a
+  thinking-regime artifact; with the -CAPTURE amendment's scope,
+  the pair of captures now brackets BOTH regimes.
+
+Notable secondary: decode form contrast rose thinking -> answering
+(0.0058 -> 0.0691 — answers are literally form-shaped: letters,
+completions) yet topic still dominates; and same-content
+coherence at decode dropped (0.9374 -> 0.7948) while topic
+contrast ROSE — answer routing is more differentiated per
+proposition yet better clustered by subject.
+
+FENCES. As GRF-0 (single model, one corpus instantiation,
+operation confounded with prop_idx); greedy, no seeds; the
+thinking-v-answering comparison is BETWEEN CAPTURES (same
+prompts, same instrument, different template flag) and carries no
+per-token pairing; per-topic heterogeneity (factual_qa weakness)
+not yet recomputed for this capture — rider-class census carries
+to the next desk pass if the depth rung proceeds.
+

@@ -323,6 +323,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/grf/rider.json": {
+   "bytes": 4657,
+   "exists": true,
+   "sha256": "7444183b2eb0864b1ef067e1a2056f91010a633fd38507c952af7e1692f6a400",
+   "source": "results",
+   "tracked": true
+  },
   "logs/gt7/gt7.jsonl": {
    "bytes": 6029,
    "exists": true,

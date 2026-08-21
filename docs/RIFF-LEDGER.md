@@ -8004,3 +8004,14 @@ honest status column).
   structure, not wall-clock"), GPT (survival-curve and
   next-use-distribution formulations), house (inventory, novelty
   check, ranking).
+  NOTHINK TRANSPORT MEASURED same day (OBSERVATION GRF-NOTHINK-0):
+  the reweighting SURVIVES answering and the registered refutation
+  does not trip — decode topic contrast STRENGTHENS to 0.1856
+  (2.7x form) with a valid capture (0 think markers, 20/200
+  ceiling, 40/40 MCQ letters). House E2 call wrong in the
+  interesting direction: answering routing is MORE topic-organized
+  than thinking routing (deliberation dilutes topic structure).
+  The two captures now bracket both regimes; depth rung (where
+  along 48 layers does form hand off to topic) is unblocked, and
+  the answer-identity leg has its data on disk awaiting its own
+  registration.

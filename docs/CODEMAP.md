@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 216, library 73, reproduce-pinned 10, results-cited 261, spec-cited 88, cited-but-library 61
+Census: UNCITED 215, library 73, reproduce-pinned 10, results-cited 265, spec-cited 88, cited-but-library 61
 
 ## scratch/
 
@@ -186,9 +186,12 @@ Census: UNCITED 216, library 73, reproduce-pinned 10, results-cited 261, spec-ci
 | grav1b | grav1b_distance.py | UNCITED | — | — | — | — |
 | grav2 | grav2_spacetime.py | library | — | — | 1 | — |
 | greedy | greedy_first_gate.py | UNCITED | — | — | — | 1 |
-| grf | grf_analyze.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| grf | grf_capture.py | UNCITED | — | — | — | 1 |
-| grf | grf_corpus.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
+| grf | grf_analyze.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
+| grf | grf_analyze2.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| grf | grf_capture.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
+| grf | grf_capture2.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| grf | grf_corpus.py | results-cited | RESULTS | RESULTS×1 | — | 5 |
+| grf | grf_rider.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | grow | grow_decomp1.sh | UNCITED | — | — | — | — |
 | grpo | grpo_shaped.py | UNCITED | — | — | — | 1 |
 | gt2 | gt2_code_arm0.py | reproduce-pinned | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×1, specs×2 | — | — |
@@ -249,7 +252,7 @@ Census: UNCITED 216, library 73, reproduce-pinned 10, results-cited 261, spec-ci
 | metabolic | metabolic_v5.py | UNCITED | — | — | — | 2 |
 | metallicity | metallicity_diets.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | metallicity1 | metallicity1.sh | results-cited | RESULTS | RESULTS×2 | — | — |
-| moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×4, RESULTS×5, specs×4 | 2 | 5 |
+| moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×4, RESULTS×5, specs×4 | 2 | 6 |
 | moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×6, RESULTS×9, specs×4 | 1 | 6 |
 | morning | morning_run.sh | UNCITED | — | — | — | — |
 | mps | mps_sigma_gates.sh | UNCITED | — | — | — | — |
