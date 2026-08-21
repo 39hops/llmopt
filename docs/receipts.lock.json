@@ -302,6 +302,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/ex6med/zcensus.json": {
+   "bytes": 493,
+   "exists": true,
+   "local_only": true,
+   "sha256": "c13cc00916b8500782e791cc35e5dc79556a65a6fbd6251ab7da55d9f6397550",
+   "source": "results",
+   "tracked": false
+  },
   "logs/funnel_wall/prec_sweep_step1_d64.log": {
    "bytes": 607,
    "exists": true,
@@ -1781,10 +1789,9 @@
   "logs/routetime/time0r_receipt.json": {
    "bytes": 8392,
    "exists": true,
-   "local_only": true,
    "sha256": "276a9b3331880b0e777b60fbecd3d5ff670471d129e99d7445d0feceac33ba7e",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/ruleablate1/arms.jsonl": {
    "bytes": 674,

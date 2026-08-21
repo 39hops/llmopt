@@ -1917,6 +1917,26 @@ EX6-PHASE-0 driver: phase-scoped named-80 deletion (PRE-REG EX6-PHASE-0 in docs/
 - `instrument_phase(model, keep, mode)`
 - `main()`
 
+### scratch/ex6med.py
+EX6-MED-0 driver (frozen pre-launch): 2x2 mediation factorial per PRE-REG EX6-MED-0 (docs/RESULTS.md) — prompt-state {NONE, PROMPT-masked} x forced first token {z_NONE, z_PROMPT} on the frozen EX6 stack (scratch/moe_gt1_arm2.py gate, seeds 7001/8002/9003, named-80 keepset).
+
+- `instrument(model, keep, pred)` — Frozen ex6_phase wrapped-gate math, mask decision = pred(phase).
+- `prompt_text(tok, p)`
+- `cap_pass(model, tok, keep, START)`
+- `gen_forced(model, tok, text, forced)` — Forced launch: prompt ids + forced ids as one prompt, decode
+- `cells_pass(model, tok, keep, START)`
+- `main()`
+
+### scratch/ex6med_idaudit.py
+EX6-MED-0 exact-token-ID diagonal audit (frozen pre-treatment- read; run AFTER the cells run completes and BEFORE any treatment value is opened — it regenerates, it reads no cells.jsonl rows).
+
+- `main()`
+
+### scratch/ex6med_idaudit2.py
+EX6-MED-0 exact-token-ID diagonal audit v2 (frozen pre- treatment-read; supersedes the unrun v1, scratch/ex6med_idaudit.py, which compared only the min-length prefix and would pass an equal-prefix / different-length pair; v1 stays frozen unedited).
+
+- `main()`
+
 ### scratch/exact1_small_cells.py
 EXACT1-SMALL: d8/d16 ladder+anchor cells on axiom's ENGINE-EXACT-1.
 

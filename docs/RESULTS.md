@@ -39579,3 +39579,33 @@ TOKEN1-ONLY / PROMPT), which the corrected semantics make
 well-posed; the ex6med BATCH predicate already implements
 PREFILL-ONLY.
 
+## OBSERVATION EX6-MED-0-ZCENSUS: outcome-blind mediator census — D1 = 111/360 (gate PASSES; registered 30-90 prior band missed high), D4 = 124/360 (2026-08-21, mac)
+
+Booked BEFORE any treatment value is read (cells run live and
+sealed; source is the capture pass's zcap_sha.json, which the
+prereg registered as pre-read). Tracked receipt
+logs/ex6med/zcensus.json (z-table sha256 ddd3b451... re-verified
+at write time; capture start commit 94bd3306).
+
+First-token disagreement between the two mediator states,
+z_NONE v z_PROMPT, pooled over 3 seeds x 120 problems: D1 =
+111/360. Four-token-prefix disagreement: D4 = 124/360. The
+registered count gate (D1 >= 30, else adjudication moves to the
+K=4 design 0b) PASSES with a wide margin — K=1 forcing has
+leverage on ~31% of problems, and the K=4 extension stays
+dormant. Honest prior note: the registered prior placed D1 in
+30-90; 111 misses the band HIGH — the PROMPT mask changes the
+first-token choice on more problems than the house expected,
+which is itself consistent with prompt-phase masking being a
+strong intervention (direction, not magnitude, of the booked
+EX6-PHASE crest).
+
+Adjudication order, restated for the record (external review,
+adopted): frozen exact-token-ID audit v2 (scratch/
+ex6med_idaudit2.py — literal equality including length,
+superseding unrun v1's min-length-prefix comparison; verifies
+the z-table sha before use) -> registered diagonal/count
+qualification -> treatment read. Fences: census is a property of
+the frozen mediator table only; no oracle outcome, no cell
+count, and no routing statistic from the cells run informs it.
+

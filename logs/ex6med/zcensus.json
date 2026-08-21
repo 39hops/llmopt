@@ -1,0 +1,14 @@
+{
+ "note": "EX6-MED-0 outcome-blind mediator census (tracked receipt; derived from zcap_sha.json, z-table sha re-verified at write time; no treatment value read)",
+ "capture_start_commit": "94bd3306",
+ "zcap_sha256": "ddd3b45153be7ccff0736a7c56ef7a045ad8aec24b6aaa861dbbe6fae09e30bb",
+ "n_rows": 720,
+ "disagree_first_token_D1": 111,
+ "disagree_prefix4_D4": 124,
+ "gate_D1_ge_30": true,
+ "registered_prior_D1_band": [
+  30,
+  90
+ ],
+ "prior_miss": "D1=111 exceeds the registered 30-90 band"
+}
