@@ -2901,6 +2901,29 @@ Unregistered autopsy probe: regenerate selected BLE-FREEGEN-2 xhigh rows with FU
 - `_load(name, rel)`
 - `main()`
 
+### scratch/qwen_blem_perf.py
+BLEM-DECODE-PERF probe (observation-only, gates nothing; the banked riff's phase 1). Three sections, each streamed as it lands:
+
+- `_load(name, rel)`
+- `state_tensors(obj, path='state', _seen=None)` — (path, tensor) pairs reachable from a cache object.
+- `physicals(past)`
+- `decode(model, past, cur, n)`
+- `main()`
+
+### scratch/qwen_blem_perf2.py
+BLEM-DECODE-PERF phase-2 probe (observation-only): the exact cross-tower reproduction. Build BLe, prefill the frozen item-0 prefix to the HOMEO boundary, serialize the state to CPU with value statistics per tensor (fraction of fp32 subnormals, min |nonzero|, max |x|, mean |x|); free BLe; build BLem; restore that BLe state and decode 64 tokens (the HOMEO HOT configuration, timed); then prefill the same prefix natively under BLem and decode 64 (the RH configuration, timed); value stats for the native BLem state too. Receipt: logs/qwenblemperf/perf2_receipt.json.
+
+- `_load(name, rel)`
+- `value_stats(past, st)`
+- `main()`
+
+### scratch/qwen_blem_perf3.py
+BLEM-DECODE-PERF phase-3 probe (observation-only): is the 7x emergent with decode length or host-RAM pressure? BLem tower, the HOMEO item-0 boundary state (cross: BLe-generated), decode 1024 tokens with per-64-token segment rates, two arms:   A. cross state, no ballast   B. cross state, WITH ballast — two extra deep copies of the CPU      state resident (the HOMEO Phase-B RAM condition: three saved      states on a 16GB host) Then C: native BLem state, no ballast, 1024 tokens (control). Receipt: logs/qwenblemperf/perf3_receipt.json.
+
+- `_load(name, rel)`
+- `decode_segments(model, past, cur, total, seg)`
+- `main()`
+
 ### scratch/qwen_capacity27b.py
 QWEN-CAPACITY-METER-1: the 27B cell — M = span_bits - code_entropy per family x projection on the PINNED vendor checkpoint, streaming.
 

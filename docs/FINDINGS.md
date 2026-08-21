@@ -2549,3 +2549,19 @@ regime tag on every bullet is the fence.
   candidate region (these five h only; head-space only; exact
   overlap unmeasured pending the census).
   ([VERDICT QWEN-ALTTOKEN-CONTROL-0](RESULTS.md#L37747 "id:2026-08-20-verdict-qwen-alttoken-control-0-control").)
+
+- [MECHANISM-CONFIRMED] [qwen] [wsl] [runtime] The HOMEO 7x decode
+  slowdown is a RESTORED-CACHE x SECOND-TOWER x LENGTH conjunction,
+  not state corruption and not the s16 kernel: a cache state
+  restored via the CPU serializer onto a tower built after a
+  previous tower was freed collapses from ~12 to 0.74 tok/s once
+  the cache passes position ~1785-1849 (identical onset for
+  cross-tower and roundtripped-native states — values exonerated;
+  native-prefill state immune through 3641; s16 GEMV only ~1.5x w4
+  per route; first-tower restores flat to ~3072), consistent with
+  allocator block-pool degradation but allocator counters not
+  captured (phase-5 slot banked; no OOM warnings — distinct from
+  the 43x tripwire class); resolves the HOMEO diagnosis-scope
+  question to the benign branch, HOT tokens computed correctly,
+  slowly.
+  ([OBSERVATION QWEN-BLEM-DECODE-PERF-0](RESULTS.md#L37825 "id:2026-08-20-observation-qwen-blem-decode-perf-0").)

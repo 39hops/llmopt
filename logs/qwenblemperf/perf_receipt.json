@@ -1,0 +1,924 @@
+{
+ "note": "BLEM-DECODE-PERF phase-1 probe (observation-only): same-tower restore arms, state physicals, per-shape GEMV medians",
+ "start": {
+  "start_commit": "ed2697d",
+  "start_status_porcelain": "?? COMPOSE_DE\n?? COMPOSE_FLQ2\n?? scratch/leancheck/OvershootTest.lean\n",
+  "interpreter": "/home/a/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_blem_perf.py": "96f074070af955b0399f582156ccf97a8322b67807642510eb4918be5c12b375",
+   "scratch/qwen_homeo_actuator.py": "443634cc08c463bf5b2b5371e3ecbe909fa4093baeee41cacaab12f83fff4a88",
+   "scratch/qwen_tower_ladder.py": "4e8adf337de2f847b2cd2d7e83d10f3f20a57fc3f242d28d83bbf16c0e3fa0c4",
+   "llmopt/lab/qcuda_tower.py": "a55aae50b307efd42c749ab69064df21476ec93d16ef7ae8b8bd274c701144d8",
+   "llmopt/lab/qcuda.py": "4fe810184cbc6a4a2c9ec7cf2bb0d00ee037cc2681e7aafc1fea3ecfa50c2d9b"
+  },
+  "artifact_identity": {
+   "BLem": {
+    "art_dir_resolved": "/home/a/qwen_whole0t/BLem",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "8d70030b9269b425dcc03052e7fe0a6a98b470a5c60a599bbb1a4a3894f35dfd",
+    "shards": {
+     "n": 18,
+     "total_bytes": 8538908736
+    }
+   },
+   "BLe": {
+    "art_dir_resolved": "/home/a/qwen_whole0t/BLe",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "fc9347ef55164f3eed433e3345721942e3d2f7a5fefd186c68b118565dcdb49d",
+    "shards": {
+     "n": 18,
+     "total_bytes": 8077632064
+    }
+   }
+  }
+ },
+ "completion_commit": "ed2697d",
+ "prefix_n": 569,
+ "decode_n": 64,
+ "arms": {
+  "native": {
+   "tok_s": 11.730942238640264,
+   "wall_s": 5.455657243728638
+  },
+  "restored": {
+   "tok_s": 10.863357578947037,
+   "wall_s": 5.891364574432373
+  },
+  "restored_contig": {
+   "tok_s": 12.158545515486622,
+   "wall_s": 5.263787508010864
+  }
+ },
+ "token_identity": {
+  "native_v_restored": true,
+  "native_v_contig": true
+ },
+ "n_physical_diffs": 0,
+ "physical_diffs": [],
+ "gemv_micro": [
+  {
+   "key": "model.language_model.layers.21.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 208.6162567138672
+  },
+  {
+   "key": "model.language_model.layers.21.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 261.7835998535156
+  },
+  {
+   "key": "model.language_model.layers.21.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 257.25364685058594
+  },
+  {
+   "key": "model.language_model.layers.22.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 241.5180206298828
+  },
+  {
+   "key": "model.language_model.layers.22.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 205.75523376464844
+  },
+  {
+   "key": "model.language_model.layers.22.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 206.23207092285156
+  },
+  {
+   "key": "model.language_model.layers.24.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 241.5180206298828
+  },
+  {
+   "key": "model.language_model.layers.24.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 205.99365234375
+  },
+  {
+   "key": "model.language_model.layers.24.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 205.75523376464844
+  },
+  {
+   "key": "model.language_model.layers.25.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 241.75643920898438
+  },
+  {
+   "key": "model.language_model.layers.25.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 206.47048950195312
+  },
+  {
+   "key": "model.language_model.layers.25.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 206.7089080810547
+  },
+  {
+   "key": "model.language_model.layers.26.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 241.27960205078125
+  },
+  {
+   "key": "model.language_model.layers.26.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 206.47048950195312
+  },
+  {
+   "key": "model.language_model.layers.26.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 206.7089080810547
+  },
+  {
+   "key": "model.language_model.layers.28.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 241.75643920898438
+  },
+  {
+   "key": "model.language_model.layers.28.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 206.94732666015625
+  },
+  {
+   "key": "model.language_model.layers.28.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 206.7089080810547
+  },
+  {
+   "key": "model.language_model.layers.29.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 241.27960205078125
+  },
+  {
+   "key": "model.language_model.layers.29.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 248.43215942382812
+  },
+  {
+   "key": "model.language_model.layers.29.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 263.45252990722656
+  },
+  {
+   "key": "model.language_model.layers.30.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 242.47169494628906
+  },
+  {
+   "key": "model.language_model.layers.30.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 206.23207092285156
+  },
+  {
+   "key": "model.language_model.layers.30.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 207.1857452392578
+  },
+  {
+   "key": "model.language_model.layers.32.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 241.75643920898438
+  },
+  {
+   "key": "model.language_model.layers.32.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 205.99365234375
+  },
+  {
+   "key": "model.language_model.layers.32.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 206.47048950195312
+  },
+  {
+   "key": "model.language_model.layers.33.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 241.27960205078125
+  },
+  {
+   "key": "model.language_model.layers.33.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 206.47048950195312
+  },
+  {
+   "key": "model.language_model.layers.33.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 206.47048950195312
+  },
+  {
+   "key": "model.language_model.layers.34.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 241.75643920898438
+  },
+  {
+   "key": "model.language_model.layers.34.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 207.66258239746094
+  },
+  {
+   "key": "model.language_model.layers.34.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 207.42416381835938
+  },
+  {
+   "key": "model.language_model.layers.36.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 242.47169494628906
+  },
+  {
+   "key": "model.language_model.layers.36.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 207.1857452392578
+  },
+  {
+   "key": "model.language_model.layers.36.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 207.1857452392578
+  },
+  {
+   "key": "model.language_model.layers.37.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 242.71011352539062
+  },
+  {
+   "key": "model.language_model.layers.37.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 207.42416381835938
+  },
+  {
+   "key": "model.language_model.layers.37.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 143.7664031982422
+  },
+  {
+   "key": "model.language_model.layers.38.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 176.6681671142578
+  },
+  {
+   "key": "model.language_model.layers.38.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 141.38221740722656
+  },
+  {
+   "key": "model.language_model.layers.38.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 142.09747314453125
+  },
+  {
+   "key": "model.language_model.layers.40.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 177.14500427246094
+  },
+  {
+   "key": "model.language_model.layers.40.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 141.8590545654297
+  },
+  {
+   "key": "model.language_model.layers.40.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 141.38221740722656
+  },
+  {
+   "key": "model.language_model.layers.41.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 177.14500427246094
+  },
+  {
+   "key": "model.language_model.layers.41.linear_attn.in_proj_z.weight",
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 141.8590545654297
+  },
+  {
+   "key": "model.language_model.layers.41.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 142.3358917236328
+  },
+  {
+   "key": "model.language_model.layers.21.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 186.2049102783203
+  },
+  {
+   "key": "model.language_model.layers.21.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 163.79356384277344
+  },
+  {
+   "key": "model.language_model.layers.21.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 163.55514526367188
+  },
+  {
+   "key": "model.language_model.layers.22.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 187.15858459472656
+  },
+  {
+   "key": "model.language_model.layers.22.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 163.79356384277344
+  },
+  {
+   "key": "model.language_model.layers.22.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 163.3167266845703
+  },
+  {
+   "key": "model.language_model.layers.24.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 187.15858459472656
+  },
+  {
+   "key": "model.language_model.layers.24.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 163.55514526367188
+  },
+  {
+   "key": "model.language_model.layers.24.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 163.55514526367188
+  },
+  {
+   "key": "model.language_model.layers.25.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 147.81951904296875
+  },
+  {
+   "key": "model.language_model.layers.25.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 124.93133544921875
+  },
+  {
+   "key": "model.language_model.layers.25.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 125.885009765625
+  },
+  {
+   "key": "model.language_model.layers.26.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 149.4884490966797
+  },
+  {
+   "key": "model.language_model.layers.26.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 124.69291687011719
+  },
+  {
+   "key": "model.language_model.layers.26.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 125.16975402832031
+  },
+  {
+   "key": "model.language_model.layers.28.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 149.01161193847656
+  },
+  {
+   "key": "model.language_model.layers.28.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 125.16975402832031
+  },
+  {
+   "key": "model.language_model.layers.28.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 125.40817260742188
+  },
+  {
+   "key": "model.language_model.layers.29.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 149.4884490966797
+  },
+  {
+   "key": "model.language_model.layers.29.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 125.16975402832031
+  },
+  {
+   "key": "model.language_model.layers.29.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 125.40817260742188
+  },
+  {
+   "key": "model.language_model.layers.30.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 149.25003051757812
+  },
+  {
+   "key": "model.language_model.layers.30.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 125.40817260742188
+  },
+  {
+   "key": "model.language_model.layers.30.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 125.40817260742188
+  },
+  {
+   "key": "model.language_model.layers.32.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 185.48965454101562
+  },
+  {
+   "key": "model.language_model.layers.32.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 162.8398895263672
+  },
+  {
+   "key": "model.language_model.layers.32.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 162.8398895263672
+  },
+  {
+   "key": "model.language_model.layers.33.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 148.773193359375
+  },
+  {
+   "key": "model.language_model.layers.33.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 125.885009765625
+  },
+  {
+   "key": "model.language_model.layers.33.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 125.885009765625
+  },
+  {
+   "key": "model.language_model.layers.34.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 149.01161193847656
+  },
+  {
+   "key": "model.language_model.layers.34.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 125.40817260742188
+  },
+  {
+   "key": "model.language_model.layers.34.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 125.885009765625
+  },
+  {
+   "key": "model.language_model.layers.36.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 149.4884490966797
+  },
+  {
+   "key": "model.language_model.layers.36.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 125.64659118652344
+  },
+  {
+   "key": "model.language_model.layers.36.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 128.26919555664062
+  },
+  {
+   "key": "model.language_model.layers.37.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 193.8343048095703
+  },
+  {
+   "key": "model.language_model.layers.37.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 125.64659118652344
+  },
+  {
+   "key": "model.language_model.layers.37.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 125.64659118652344
+  },
+  {
+   "key": "model.language_model.layers.38.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 149.25003051757812
+  },
+  {
+   "key": "model.language_model.layers.38.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 125.64659118652344
+  },
+  {
+   "key": "model.language_model.layers.38.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 125.64659118652344
+  },
+  {
+   "key": "model.language_model.layers.40.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 149.25003051757812
+  },
+  {
+   "key": "model.language_model.layers.40.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 125.16975402832031
+  },
+  {
+   "key": "model.language_model.layers.40.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 125.64659118652344
+  },
+  {
+   "key": "model.language_model.layers.41.linear_attn.in_proj_qkv.weight",
+   "codec": "w4",
+   "shape": [
+    10240,
+    5120
+   ],
+   "median_us": 148.773193359375
+  },
+  {
+   "key": "model.language_model.layers.41.linear_attn.in_proj_z.weight",
+   "codec": "w4",
+   "shape": [
+    6144,
+    5120
+   ],
+   "median_us": 125.64659118652344
+  },
+  {
+   "key": "model.language_model.layers.41.linear_attn.out_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    6144
+   ],
+   "median_us": 125.64659118652344
+  }
+ ]
+}

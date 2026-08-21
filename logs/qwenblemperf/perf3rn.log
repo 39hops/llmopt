@@ -1,0 +1,59 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[tl] tower fused {'w4': 352, 's16': 48}
+[tl] verify_routes OK: {'FusedW4Linear': 352, 'FusedS16Linear': 49, 'cpu_compressed_rows': 1}
+[b3] BLe state captured, tower freed
+[tl] tower fused {'w4': 304, 's16': 96}
+[tl] verify_routes OK: {'FusedW4Linear': 304, 'FusedS16Linear': 97, 'cpu_compressed_rows': 1}
+[b3] BLem tower up
+[b3]   seg@8: 1.8 tok/s
+[b3] ARM C': native state ROUNDTRIPPED
+[b3]   seg@64: 10.72 tok/s
+[b3]   seg@128: 9.56 tok/s
+[b3]   seg@192: 12.14 tok/s
+[b3]   seg@256: 10.81 tok/s
+[b3]   seg@320: 12.13 tok/s
+[b3]   seg@384: 12.16 tok/s
+[b3]   seg@448: 11.95 tok/s
+[b3]   seg@512: 12.17 tok/s
+[b3]   seg@576: 11.86 tok/s
+[b3]   seg@640: 12.15 tok/s
+[b3]   seg@704: 12.16 tok/s
+[b3]   seg@768: 11.49 tok/s
+[b3]   seg@832: 12.15 tok/s
+[b3]   seg@896: 12.14 tok/s
+[b3]   seg@960: 12.14 tok/s
+[b3]   seg@1024: 12.15 tok/s
+[b3]   seg@1088: 11.99 tok/s
+[b3]   seg@1152: 9.76 tok/s
+[b3]   seg@1216: 11.27 tok/s
+[b3]   seg@1280: 3.3 tok/s
+[b3]   seg@1344: 1.46 tok/s
+[b3]   seg@1408: 1.42 tok/s
+[b3]   seg@1472: 1.38 tok/s
+[b3]   seg@1536: 1.34 tok/s
+[b3]   seg@1600: 1.29 tok/s
+[b3]   seg@1664: 1.27 tok/s
+[b3]   seg@1728: 1.19 tok/s
+[b3]   seg@1792: 1.13 tok/s
+[b3]   seg@1856: 1.07 tok/s
+[b3]   seg@1920: 1.05 tok/s
+[b3]   seg@1984: 1.02 tok/s
+[b3]   seg@2048: 1.0 tok/s
+[b3]   seg@2112: 0.97 tok/s
+[b3]   seg@2176: 0.98 tok/s
+[b3]   seg@2240: 0.97 tok/s
+[b3]   seg@2304: 0.97 tok/s
+[b3]   seg@2368: 1.0 tok/s
+[b3]   seg@2432: 1.01 tok/s
+[b3]   seg@2496: 0.92 tok/s
+[b3]   seg@2560: 0.87 tok/s
+[b3]   seg@2624: 0.85 tok/s
+[b3]   seg@2688: 0.83 tok/s
+[b3]   seg@2752: 0.81 tok/s
+[b3]   seg@2816: 0.8 tok/s
+[b3]   seg@2880: 0.79 tok/s
+[b3]   seg@2944: 0.78 tok/s
+[b3]   seg@3008: 0.75 tok/s
+[b3]   seg@3072: 0.74 tok/s
+[b3] receipt -> logs/qwenblemperf/perf3_receipt_3072_rn.json

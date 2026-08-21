@@ -7319,7 +7319,12 @@ honest status column).
   serializer roundtrip UNDER BLe only — say "no evidence of
   corruption" for the cross-tower restore, never "proven
   performance artifact"; the 7x gap stays undiagnosed until this
-  probe runs (AMENDMENT -RUNTIME-WORDING).
+  probe runs (AMENDMENT -RUNTIME-WORDING). PROBE RAN SAME DAY,
+  cause LOCALIZED (OBSERVATION QWEN-BLEM-DECODE-PERF-0):
+  restored-cache x second-tower x cache-position>~1790 conjunction;
+  values/kernels/serializer all exonerated; benign branch of the
+  -DIAGNOSIS-SCOPE fork confirmed; phase-5 allocator-counter slot
+  is the only remaining open item.
 - **BANK OUTCOME (2026-08-20): HOMEOSTATIC-INFERENCE stage 2
   (actuator qualification) measured — the precision actuator
   DEMOTES at the BLem dose** (VERDICT QWEN-HOMEO-ACTUATOR-0, the

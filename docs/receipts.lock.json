@@ -686,6 +686,48 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwenblemperf/perf2_receipt.json": {
+   "bytes": 61329,
+   "exists": true,
+   "sha256": "4b773f7a68e7cd338a9162428e2357144785de7263f613bcb6bcbb00453fcdfd",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenblemperf/perf3_receipt.json": {
+   "bytes": 1880,
+   "exists": true,
+   "sha256": "f8c702de2c8a454c61f05bc817f85fd56ce4d32769efa6ee2b42d42f8902e494",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenblemperf/perf3_receipt_3072.json": {
+   "bytes": 2282,
+   "exists": true,
+   "sha256": "52f3b645dedfa98c52aa9cd6bdfa74c8656a41ce4e1e358d07e968243df84029",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenblemperf/perf3_receipt_3072_rn.json": {
+   "bytes": 1857,
+   "exists": true,
+   "sha256": "23473478f341936c4efe6bdefaaafb517961c354a882844ceae2767761bbf3a5",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenblemperf/perf3rn.log": {
+   "bytes": 2120,
+   "exists": true,
+   "sha256": "a3b80a6d963b86a522dada94d307904906b5be18b002b19c59514f8d84ced74e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenblemperf/perf_receipt.json": {
+   "bytes": 18686,
+   "exists": true,
+   "sha256": "649cef3ddf42c4ae2eaea3a8583643ca698184bf63da1a904c7cda73bb4681b3",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwencapacity/meter27b.json": {
    "bytes": 2756,
    "exists": true,

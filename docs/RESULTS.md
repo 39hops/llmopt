@@ -37822,3 +37822,78 @@ Wording corrections at review; no measurement or receipt changes.
    Forward fix: derivation-class receipts persist both recomputed
    argmaxes per locus.
 
+## OBSERVATION QWEN-BLEM-DECODE-PERF-0: the HOMEO 7x decode slowdown localized — RESTORED cache state on a SECOND-BUILD tower collapses from ~12 to under 1 tok/s once the cache passes ~position 1790-1850, and decays monotonically from there; native-prefill state on the same tower is immune through 3641; cross-tower values, serializer mechanics, kernel class, contiguity, RAM ballast, and short-length restore are ALL measured out (2026-08-20, wsl)
+
+Observation-only probe chain (the banked BLEM-DECODE-PERF riff,
+phases 1-4 + the restored-native discriminator; gates nothing, no
+pre-registration, every number below is a receipt read). Receipts
+(sha-verified both machines):
+logs/qwenblemperf/perf_receipt.json,
+logs/qwenblemperf/perf2_receipt.json,
+logs/qwenblemperf/perf3_receipt.json,
+logs/qwenblemperf/perf3_receipt_3072.json,
+logs/qwenblemperf/perf3_receipt_3072_rn.json,
+logs/qwenblemperf/perf3rn.log. Drivers:
+scratch/qwen_blem_perf.py, qwen_blem_perf2.py, qwen_blem_perf3.py.
+
+ELIMINATION LADDER (each rung a measured null):
+1. Same-tower restore, 64 tokens: native 11.73 / restored 10.86 /
+   restored+forced-contiguous 12.16 tok/s, token-identical, ZERO
+   physical diffs (dtype/device/shape/stride/contiguity/offset)
+   between native and restored state.
+2. Kernel class: the 48 promoted mid-band shapes, 200-rep medians —
+   s16 206.8us v w4 138.0us per GEMV (~1.5x per route, ~4%
+   end-to-end). Not the cause.
+3. Exact HOT configuration (BLe state under BLem weights), 64
+   tokens: 11.43 tok/s v native 11.55. Cross-tower VALUES not the
+   cause; zero flagged value-profile tensors (no subnormal story;
+   fp32 subnormal fractions negligible in both states).
+4. Length to 1024 + RAM ballast (two extra resident CPU states):
+   all arms flat 10-12 tok/s. Neither alone is the cause.
+5. Length to 3072, cross state, second-build tower: flat ~11-12
+   through segment 19 (cache position ~1785), then 3.31 -> 1.47 ->
+   monotone decay to 0.73 tok/s at position 3641. Native-prefill
+   arm on the SAME tower, same session, same length: flat
+   11.3-12.1 throughout.
+6. DISCRIMINATOR: native-BLem state ROUNDTRIPPED through the CPU
+   serializer collapses at the same position band (onset segment 20, cache position ~1785-1849 — the identical band as the cross arm; terminal rate 0.74 tok/s at 3641) — so
+   the trigger is ANY restored state, not cross-tower values.
+
+SYNTHESIS (observation-grade): the collapse requires the
+conjunction (a) cache state restored via the CPU roundtrip rather
+than grown in place by prefill/decode, (b) a tower built AFTER a
+previous tower was built and freed in the same process (phase-A
+BLe REFRESH-LOW restores decoded flat to position ~3072 on the
+FIRST tower; every collapse observed sits on a second build), and
+(c) cache position past ~1790-1850. Consistent with CUDA allocator
+block-pool interaction — the restored cache's one-shot compact
+allocations plus the freed first tower's fragmented pool degrade
+the per-token cache-growth allocation path once blocks exhaust —
+but the allocator attribution is NOT measured (no memory_stats
+counters were captured; no alloc warnings fire, so this is
+distinct from the booked 43x OOM-warning tripwire class).
+RETRO-FIT: HOMEO's HOT walls decompose as ~1200 fast tokens +
+collapse (predicted ~1960s v measured 1875-2020s), and every
+HOMEO arm's speed is explained: RL restored-but-first-tower fast,
+RH prefill-native fast, HOT restored-second-tower slow.
+
+CONSEQUENCES: (i) the -RUNTIME-WORDING / -DIAGNOSIS-SCOPE class
+question resolves toward the benign branch — the slowdown is a
+runtime allocation pathology, orthogonal to state VALUES; the
+sanity-certified functional soundness stands and no
+treatment-validity reassessment is triggered (the HOT tokens were
+computed correctly, slowly). (ii) Future restored-state drivers on
+second builds either restart the process per tower, capture
+allocator counters, or pre-grow the cache. (iii) Phase 5 (banked,
+not run): torch.cuda.memory_stats before/during/after collapse,
+and an expandable-segments arm — noting that knob crashes the WSL
+driver and max_split_size_mb:128 is the in-tree default on this
+card.
+
+FENCES: one machine, one model family, one prefix (item-0
+boundary, 569 tokens), n=1 per arm; onset position bracketed
+1593-1790 by the 1024/3072 pair, not measured finer; "second
+build" and "restored" are the measured conjunction — no claim
+about which allocator mechanism; wall numbers gate nothing
+anywhere.
+

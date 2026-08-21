@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 210, library 72, reproduce-pinned 10, results-cited 247, spec-cited 88, cited-but-library 60
+Census: UNCITED 210, library 72, reproduce-pinned 10, results-cited 250, spec-cited 88, cited-but-library 60
 
 ## scratch/
 
@@ -338,6 +338,9 @@ Census: UNCITED 210, library 72, reproduce-pinned 10, results-cited 247, spec-ci
 | qwen | qwen_attrib_adjudicate.py | spec-cited | specs | specs×1 | — | 2 |
 | qwen | qwen_ble2_adjudicate.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
 | qwen | qwen_ble2_autopsy.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| qwen | qwen_blem_perf.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| qwen | qwen_blem_perf2.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| qwen | qwen_blem_perf3.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_capacity27b.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | qwen | qwen_census_night.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_cheap_readout.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -353,7 +356,7 @@ Census: UNCITED 210, library 72, reproduce-pinned 10, results-cited 247, spec-ci
 | qwen | qwen_effort_tower.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_family_probe.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | qwen | qwen_headswap_impulse.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
-| qwen | qwen_homeo_actuator.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| qwen | qwen_homeo_actuator.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
 | qwen | qwen_homeo_adjudicate.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_hsimpulse_adjudicate.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | qwen | qwen_hsimpulse_color.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -378,7 +381,7 @@ Census: UNCITED 210, library 72, reproduce-pinned 10, results-cited 247, spec-ci
 | qwen | qwen_stream_probe.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
 | qwen | qwen_teacher_pass.py | library | RESULTS | RESULTS×1 | 1 | 1 |
 | qwen | qwen_teacher_sidecar.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| qwen | qwen_tower_ladder.py | results-cited | RESULTS | RESULTS×1 | — | 8 |
+| qwen | qwen_tower_ladder.py | results-cited | RESULTS | RESULTS×1 | — | 11 |
 | qwen | qwen_tree_adjudicate.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | qwen | qwen_whole0t.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 3 |
 | rank | rank_read.py | spec-cited | specs | specs×2 | — | 1 |

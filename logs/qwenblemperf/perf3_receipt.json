@@ -1,0 +1,92 @@
+{
+ "note": "BLEM-DECODE-PERF phase-3: length scaling + RAM-pressure ballast on the cross-tower state",
+ "start": {
+  "start_commit": "11c0ee8",
+  "start_status_porcelain": "?? COMPOSE_DE\n?? COMPOSE_FLQ2\n?? scratch/leancheck/OvershootTest.lean\n",
+  "interpreter": "/home/a/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_blem_perf3.py": "8e0c419c8e7e0d75037e83f6ad88a5b26795853f5b412db1f62faf0a7ff21210",
+   "scratch/qwen_homeo_actuator.py": "443634cc08c463bf5b2b5371e3ecbe909fa4093baeee41cacaab12f83fff4a88",
+   "scratch/qwen_tower_ladder.py": "4e8adf337de2f847b2cd2d7e83d10f3f20a57fc3f242d28d83bbf16c0e3fa0c4",
+   "llmopt/lab/qcuda_tower.py": "a55aae50b307efd42c749ab69064df21476ec93d16ef7ae8b8bd274c701144d8"
+  },
+  "artifact_identity": {
+   "BLem": {
+    "art_dir_resolved": "/home/a/qwen_whole0t/BLem",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "8d70030b9269b425dcc03052e7fe0a6a98b470a5c60a599bbb1a4a3894f35dfd",
+    "shards": {
+     "n": 18,
+     "total_bytes": 8538908736
+    }
+   },
+   "BLe": {
+    "art_dir_resolved": "/home/a/qwen_whole0t/BLe",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "fc9347ef55164f3eed433e3345721942e3d2f7a5fefd186c68b118565dcdb49d",
+    "shards": {
+     "n": 18,
+     "total_bytes": 8077632064
+    }
+   }
+  }
+ },
+ "completion_commit": "11c0ee8",
+ "prefix_n": 569,
+ "total_n": 1024,
+ "seg": 64,
+ "rates_cross": [
+  10.36,
+  12.05,
+  11.43,
+  10.7,
+  12.04,
+  12.05,
+  10.59,
+  12.08,
+  11.92,
+  9.7,
+  11.26,
+  11.06,
+  9.57,
+  11.73,
+  11.69,
+  11.82
+ ],
+ "rates_cross_ballast": [
+  10.51,
+  11.9,
+  12.06,
+  12.07,
+  12.05,
+  12.06,
+  12.06,
+  12.06,
+  10.5,
+  9.69,
+  10.66,
+  12.07,
+  11.74,
+  11.88,
+  12.04,
+  11.73
+ ],
+ "rates_native": [
+  10.54,
+  12.05,
+  11.82,
+  11.34,
+  12.04,
+  9.81,
+  10.46,
+  12.03,
+  12.05,
+  12.04,
+  11.03,
+  12.03,
+  12.07,
+  11.34,
+  9.68,
+  9.83
+ ]
+}

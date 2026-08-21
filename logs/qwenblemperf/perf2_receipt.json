@@ -1,0 +1,2101 @@
+{
+ "note": "BLEM-DECODE-PERF phase-2: exact cross-tower reproduction with state value statistics",
+ "start": {
+  "start_commit": "a26b109",
+  "start_status_porcelain": "?? COMPOSE_DE\n?? COMPOSE_FLQ2\n?? scratch/leancheck/OvershootTest.lean\n",
+  "interpreter": "/home/a/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/qwen_blem_perf2.py": "c2543fdf2977ddaf97468865305e024a88726fd13ad3d65014b4ff66739600f9",
+   "scratch/qwen_blem_perf.py": "96f074070af955b0399f582156ccf97a8322b67807642510eb4918be5c12b375",
+   "scratch/qwen_homeo_actuator.py": "443634cc08c463bf5b2b5371e3ecbe909fa4093baeee41cacaab12f83fff4a88",
+   "scratch/qwen_tower_ladder.py": "4e8adf337de2f847b2cd2d7e83d10f3f20a57fc3f242d28d83bbf16c0e3fa0c4",
+   "llmopt/lab/qcuda_tower.py": "a55aae50b307efd42c749ab69064df21476ec93d16ef7ae8b8bd274c701144d8"
+  },
+  "artifact_identity": {
+   "BLem": {
+    "art_dir_resolved": "/home/a/qwen_whole0t/BLem",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "8d70030b9269b425dcc03052e7fe0a6a98b470a5c60a599bbb1a4a3894f35dfd",
+    "shards": {
+     "n": 18,
+     "total_bytes": 8538908736
+    }
+   },
+   "BLe": {
+    "art_dir_resolved": "/home/a/qwen_whole0t/BLe",
+    "manifest_file": "manifest.json",
+    "manifest_sha256": "fc9347ef55164f3eed433e3345721942e3d2f7a5fefd186c68b118565dcdb49d",
+    "shards": {
+     "n": 18,
+     "total_bytes": 8077632064
+    }
+   }
+  }
+ },
+ "completion_commit": "a26b109",
+ "prefix_n": 569,
+ "decode_n": 64,
+ "ble_native": {
+  "tok_s": 9.827970120766285
+ },
+ "cross_hot_config": {
+  "tok_s": 11.42715734347554
+ },
+ "blem_native": {
+  "tok_s": 11.550538743819352
+ },
+ "n_flagged": 0,
+ "flagged": [],
+ "stats_ble": {
+  "state.layers[0].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.1651387214660645e-05,
+   "max_abs": 53.06300354003906,
+   "mean_abs": 1.9819419384002686
+  },
+  "state.layers[0].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.2744438277211287e-10,
+   "max_abs": 35.74538040161133,
+   "mean_abs": 0.028784744441509247
+  },
+  "state.layers[1].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.028000593185425e-07,
+   "max_abs": 5.165765762329102,
+   "mean_abs": 0.1785968542098999
+  },
+  "state.layers[1].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.0243724231649995e-12,
+   "max_abs": 0.7341706156730652,
+   "mean_abs": 0.0004459773190319538
+  },
+  "state.layers[2].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.353925421833992e-07,
+   "max_abs": 5.244947910308838,
+   "mean_abs": 0.18748387694358826
+  },
+  "state.layers[2].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.949486058694383e-11,
+   "max_abs": 0.6442041993141174,
+   "mean_abs": 0.0003858937125187367
+  },
+  "state.layers[3].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.2945621342150844e-07,
+   "max_abs": 9.967470169067383,
+   "mean_abs": 0.962094247341156
+  },
+  "state.layers[3].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.384185791015625e-07,
+   "max_abs": 3.9838767051696777,
+   "mean_abs": 0.46277961134910583
+  },
+  "state.layers[4].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.7013163566589355e-06,
+   "max_abs": 4.579653739929199,
+   "mean_abs": 0.20420756936073303
+  },
+  "state.layers[4].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.531555934470191e-11,
+   "max_abs": 0.2749863266944885,
+   "mean_abs": 0.0004157602961640805
+  },
+  "state.layers[5].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.424551010131836e-05,
+   "max_abs": 6.759516716003418,
+   "mean_abs": 0.2296222746372223
+  },
+  "state.layers[5].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.5285116014850395e-11,
+   "max_abs": 0.23877137899398804,
+   "mean_abs": 0.00041505807894282043
+  },
+  "state.layers[6].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.80565494298935e-06,
+   "max_abs": 4.8144755363464355,
+   "mean_abs": 0.2527586817741394
+  },
+  "state.layers[6].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.910509664503905e-11,
+   "max_abs": 0.7467482686042786,
+   "mean_abs": 0.0004943603998981416
+  },
+  "state.layers[7].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.960464477539062e-07,
+   "max_abs": 11.926137924194336,
+   "mean_abs": 1.0098981857299805
+  },
+  "state.layers[7].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.6193599700927734e-07,
+   "max_abs": 4.921085834503174,
+   "mean_abs": 0.42872804403305054
+  },
+  "state.layers[8].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.2926757335662842e-06,
+   "max_abs": 5.706843376159668,
+   "mean_abs": 0.292212575674057
+  },
+  "state.layers[8].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.619106099193246e-10,
+   "max_abs": 0.29022401571273804,
+   "mean_abs": 0.0005934918881393969
+  },
+  "state.layers[9].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.444752216339111e-07,
+   "max_abs": 7.426527976989746,
+   "mean_abs": 0.27771368622779846
+  },
+  "state.layers[9].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.5175718714604e-12,
+   "max_abs": 0.8341156244277954,
+   "mean_abs": 0.0006741432007402182
+  },
+  "state.layers[10].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.555339157581329e-07,
+   "max_abs": 7.825405120849609,
+   "mean_abs": 0.29267600178718567
+  },
+  "state.layers[10].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.184119800105691e-11,
+   "max_abs": 0.7929009795188904,
+   "mean_abs": 0.0007122098468244076
+  },
+  "state.layers[11].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.679313628410455e-06,
+   "max_abs": 13.848251342773438,
+   "mean_abs": 1.036458134651184
+  },
+  "state.layers[11].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.470348358154297e-07,
+   "max_abs": 9.059147834777832,
+   "mean_abs": 0.40576043725013733
+  },
+  "state.layers[12].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.355345249176025e-06,
+   "max_abs": 8.34704875946045,
+   "mean_abs": 0.3234962522983551
+  },
+  "state.layers[12].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.5652192309498787e-10,
+   "max_abs": 0.7139503955841064,
+   "mean_abs": 0.0008223704644478858
+  },
+  "state.layers[13].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.927417755126953e-06,
+   "max_abs": 8.140080451965332,
+   "mean_abs": 0.31241267919540405
+  },
+  "state.layers[13].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.220303940703161e-10,
+   "max_abs": 0.8504070043563843,
+   "mean_abs": 0.0007718663546256721
+  },
+  "state.layers[14].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.215298056602478e-05,
+   "max_abs": 8.586369514465332,
+   "mean_abs": 0.35854607820510864
+  },
+  "state.layers[14].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.2246254628856673e-13,
+   "max_abs": 0.5640130043029785,
+   "mean_abs": 0.0008839400834403932
+  },
+  "state.layers[15].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.7606503155984683e-07,
+   "max_abs": 16.858491897583008,
+   "mean_abs": 1.063731074333191
+  },
+  "state.layers[15].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.987682819366455e-06,
+   "max_abs": 4.440814971923828,
+   "mean_abs": 0.4050591289997101
+  },
+  "state.layers[16].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.1047890186309814e-06,
+   "max_abs": 7.667964458465576,
+   "mean_abs": 0.35760554671287537
+  },
+  "state.layers[16].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.7738929899632772e-12,
+   "max_abs": 0.4511112868785858,
+   "mean_abs": 0.0009495119447819889
+  },
+  "state.layers[17].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.384666681289673e-05,
+   "max_abs": 9.134356498718262,
+   "mean_abs": 0.3875958323478699
+  },
+  "state.layers[17].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.7861623291537398e-10,
+   "max_abs": 0.5663403272628784,
+   "mean_abs": 0.0009996978333219886
+  },
+  "state.layers[18].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.1311064958572388e-06,
+   "max_abs": 8.90761947631836,
+   "mean_abs": 0.4208752512931824
+  },
+  "state.layers[18].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.521077011711895e-10,
+   "max_abs": 1.5741069316864014,
+   "mean_abs": 0.0013092047302052379
+  },
+  "state.layers[19].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.203749656677246e-07,
+   "max_abs": 17.3961238861084,
+   "mean_abs": 1.0746322870254517
+  },
+  "state.layers[19].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.7853453755378723e-06,
+   "max_abs": 6.682314872741699,
+   "mean_abs": 0.4405653178691864
+  },
+  "state.layers[20].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.583597183227539e-05,
+   "max_abs": 10.745763778686523,
+   "mean_abs": 0.6264705657958984
+  },
+  "state.layers[20].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.716422725119628e-10,
+   "max_abs": 1.033922791481018,
+   "mean_abs": 0.002485743025317788
+  },
+  "state.layers[21].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.940696716308594e-06,
+   "max_abs": 11.743103981018066,
+   "mean_abs": 0.5904463529586792
+  },
+  "state.layers[21].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.2919266484677792e-10,
+   "max_abs": 1.2383464574813843,
+   "mean_abs": 0.002108063781633973
+  },
+  "state.layers[22].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.5385448932647705e-05,
+   "max_abs": 10.587015151977539,
+   "mean_abs": 0.5064820051193237
+  },
+  "state.layers[22].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.2732925824820995e-10,
+   "max_abs": 0.5639758110046387,
+   "mean_abs": 0.0013006058288738132
+  },
+  "state.layers[23].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.2088567018508911e-06,
+   "max_abs": 19.529682159423828,
+   "mean_abs": 1.1103405952453613
+  },
+  "state.layers[23].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.205371856689453e-06,
+   "max_abs": 10.267033576965332,
+   "mean_abs": 0.5182245969772339
+  },
+  "state.layers[24].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.4677643775939941e-05,
+   "max_abs": 6.452093124389648,
+   "mean_abs": 0.5475956201553345
+  },
+  "state.layers[24].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.920747225829359e-10,
+   "max_abs": 0.8297920227050781,
+   "mean_abs": 0.0016870624385774136
+  },
+  "state.layers[25].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.106231689453125e-06,
+   "max_abs": 7.770944118499756,
+   "mean_abs": 0.5973749160766602
+  },
+  "state.layers[25].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 9.570157999405637e-10,
+   "max_abs": 0.6843186020851135,
+   "mean_abs": 0.001887246035039425
+  },
+  "state.layers[26].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 9.059906005859375e-06,
+   "max_abs": 8.122879028320312,
+   "mean_abs": 0.5509814620018005
+  },
+  "state.layers[26].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.9081198843196034e-09,
+   "max_abs": 0.6775306463241577,
+   "mean_abs": 0.0018851739587262273
+  },
+  "state.layers[27].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.66929258336313e-06,
+   "max_abs": 20.836894989013672,
+   "mean_abs": 1.1276309490203857
+  },
+  "state.layers[27].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.897615432739258e-07,
+   "max_abs": 25.64276885986328,
+   "mean_abs": 0.5935550928115845
+  },
+  "state.layers[28].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.43849353864789e-06,
+   "max_abs": 12.179351806640625,
+   "mean_abs": 0.5795320868492126
+  },
+  "state.layers[28].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.5280827431473085e-10,
+   "max_abs": 0.4460620880126953,
+   "mean_abs": 0.0021517635323107243
+  },
+  "state.layers[29].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.0170042514801025e-05,
+   "max_abs": 11.709714889526367,
+   "mean_abs": 0.5571076273918152
+  },
+  "state.layers[29].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.656612873077393e-10,
+   "max_abs": 0.5069578289985657,
+   "mean_abs": 0.0020249506924301386
+  },
+  "state.layers[30].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.1362135410308838e-05,
+   "max_abs": 9.973955154418945,
+   "mean_abs": 0.5885051488876343
+  },
+  "state.layers[30].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.892193151637912e-10,
+   "max_abs": 0.7838825583457947,
+   "mean_abs": 0.0021551763638854027
+  },
+  "state.layers[31].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 9.977090940083144e-07,
+   "max_abs": 21.627565383911133,
+   "mean_abs": 1.1306267976760864
+  },
+  "state.layers[31].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.4373016357421875e-06,
+   "max_abs": 32.081966400146484,
+   "mean_abs": 0.7032268643379211
+  },
+  "state.layers[32].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.644295692443848e-06,
+   "max_abs": 10.775463104248047,
+   "mean_abs": 0.5970026850700378
+  },
+  "state.layers[32].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.3425529838714283e-10,
+   "max_abs": 0.6892008781433105,
+   "mean_abs": 0.0023166874889284372
+  },
+  "state.layers[33].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.559755325317383e-06,
+   "max_abs": 11.494900703430176,
+   "mean_abs": 0.5982178449630737
+  },
+  "state.layers[33].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.8108630150948102e-09,
+   "max_abs": 0.43432432413101196,
+   "mean_abs": 0.002151883440092206
+  },
+  "state.layers[34].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.059340476989746e-05,
+   "max_abs": 10.622732162475586,
+   "mean_abs": 0.6268747448921204
+  },
+  "state.layers[34].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.4063061826163903e-10,
+   "max_abs": 0.7482041716575623,
+   "mean_abs": 0.0023974853102117777
+  },
+  "state.layers[35].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.3187874401410227e-06,
+   "max_abs": 20.348752975463867,
+   "mean_abs": 1.1846420764923096
+  },
+  "state.layers[35].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.082918167114258e-06,
+   "max_abs": 30.135290145874023,
+   "mean_abs": 0.7614872455596924
+  },
+  "state.layers[36].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.2009015083312988e-05,
+   "max_abs": 9.516267776489258,
+   "mean_abs": 0.8880088925361633
+  },
+  "state.layers[36].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.6153295367971054e-10,
+   "max_abs": 1.2366727590560913,
+   "mean_abs": 0.004077521618455648
+  },
+  "state.layers[37].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.5789947509765625e-05,
+   "max_abs": 21.961505889892578,
+   "mean_abs": 0.8825249671936035
+  },
+  "state.layers[37].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.698675061196809e-09,
+   "max_abs": 1.62830650806427,
+   "mean_abs": 0.003390899859368801
+  },
+  "state.layers[38].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.3365020751953125e-05,
+   "max_abs": 9.084535598754883,
+   "mean_abs": 0.7098588943481445
+  },
+  "state.layers[38].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.820766091346741e-10,
+   "max_abs": 0.5808562636375427,
+   "mean_abs": 0.0019587352871894836
+  },
+  "state.layers[39].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.6566128730773926e-07,
+   "max_abs": 21.01122283935547,
+   "mean_abs": 1.2140239477157593
+  },
+  "state.layers[39].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.6193599700927734e-07,
+   "max_abs": 33.20158004760742,
+   "mean_abs": 0.7272466421127319
+  },
+  "state.layers[40].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.4036893844604492e-05,
+   "max_abs": 8.917266845703125,
+   "mean_abs": 0.7751979827880859
+  },
+  "state.layers[40].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.1956512436259743e-10,
+   "max_abs": 4.114916801452637,
+   "mean_abs": 0.0032077280338853598
+  },
+  "state.layers[41].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 9.961426258087158e-06,
+   "max_abs": 10.405842781066895,
+   "mean_abs": 0.7347461581230164
+  },
+  "state.layers[41].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.9312548782401961e-10,
+   "max_abs": 0.994735836982727,
+   "mean_abs": 0.0022389176301658154
+  },
+  "state.layers[42].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.8370490074157715e-05,
+   "max_abs": 9.328740119934082,
+   "mean_abs": 0.6838113069534302
+  },
+  "state.layers[42].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.3096723705530167e-09,
+   "max_abs": 0.4947088956832886,
+   "mean_abs": 0.0023427766282111406
+  },
+  "state.layers[43].keys": {
+   "numel": 635904,
+   "frac_zero": 6.290257715590997e-06,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.0682249416713603e-06,
+   "max_abs": 19.31837272644043,
+   "mean_abs": 1.153569221496582
+  },
+  "state.layers[43].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.980232238769531e-07,
+   "max_abs": 43.5445671081543,
+   "mean_abs": 0.8549953103065491
+  },
+  "state.layers[44].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.9355287551879883e-06,
+   "max_abs": 12.881529808044434,
+   "mean_abs": 0.7198776006698608
+  },
+  "state.layers[44].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.363862380456055e-11,
+   "max_abs": 0.5379410982131958,
+   "mean_abs": 0.002586214104667306
+  },
+  "state.layers[45].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.8731606006622314e-06,
+   "max_abs": 11.625215530395508,
+   "mean_abs": 0.6807565689086914
+  },
+  "state.layers[45].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.4551915228366852e-10,
+   "max_abs": 0.6213849782943726,
+   "mean_abs": 0.0020933737978339195
+  },
+  "state.layers[46].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.410052835941315e-05,
+   "max_abs": 10.052176475524902,
+   "mean_abs": 0.7194205522537231
+  },
+  "state.layers[46].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.415631167844822e-09,
+   "max_abs": 0.5566735863685608,
+   "mean_abs": 0.002213167492300272
+  },
+  "state.layers[47].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.86522912979126e-06,
+   "max_abs": 14.740589141845703,
+   "mean_abs": 1.1761600971221924
+  },
+  "state.layers[47].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.129243850708008e-07,
+   "max_abs": 38.83180236816406,
+   "mean_abs": 0.9767264127731323
+  },
+  "state.layers[48].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.930662155151367e-06,
+   "max_abs": 7.9589738845825195,
+   "mean_abs": 0.8001548647880554
+  },
+  "state.layers[48].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.8205863483444773e-09,
+   "max_abs": 0.7007489204406738,
+   "mean_abs": 0.002577943028882146
+  },
+  "state.layers[49].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.2878870368003845e-05,
+   "max_abs": 13.15871810913086,
+   "mean_abs": 0.8553467988967896
+  },
+  "state.layers[49].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.458548695853494e-10,
+   "max_abs": 0.47412577271461487,
+   "mean_abs": 0.0026345299556851387
+  },
+  "state.layers[50].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.36766242980957e-05,
+   "max_abs": 12.257112503051758,
+   "mean_abs": 0.883407711982727
+  },
+  "state.layers[50].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.512979712156806e-10,
+   "max_abs": 0.419268935918808,
+   "mean_abs": 0.002868261421099305
+  },
+  "state.layers[51].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.039626896381378e-07,
+   "max_abs": 14.819133758544922,
+   "mean_abs": 1.251449465751648
+  },
+  "state.layers[51].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.1920928955078125e-06,
+   "max_abs": 41.55766296386719,
+   "mean_abs": 1.1909610033035278
+  },
+  "state.layers[52].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.041459083557129e-06,
+   "max_abs": 12.401004791259766,
+   "mean_abs": 1.3367904424667358
+  },
+  "state.layers[52].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.371454557869583e-10,
+   "max_abs": 2.4723548889160156,
+   "mean_abs": 0.009239074774086475
+  },
+  "state.layers[53].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.8770179748535156e-05,
+   "max_abs": 13.595626831054688,
+   "mean_abs": 1.389824628829956
+  },
+  "state.layers[53].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.4904542306767325e-09,
+   "max_abs": 2.215243339538574,
+   "mean_abs": 0.007958663627505302
+  },
+  "state.layers[54].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 0.00012117624282836914,
+   "max_abs": 14.306544303894043,
+   "mean_abs": 1.2067352533340454
+  },
+  "state.layers[54].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.3673642218492432e-09,
+   "max_abs": 1.6546822786331177,
+   "mean_abs": 0.0052000791765749454
+  },
+  "state.layers[55].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.2759119272232056e-07,
+   "max_abs": 15.186391830444336,
+   "mean_abs": 1.199283242225647
+  },
+  "state.layers[55].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.337860107421875e-06,
+   "max_abs": 30.480342864990234,
+   "mean_abs": 1.2299060821533203
+  },
+  "state.layers[56].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.245208740234375e-06,
+   "max_abs": 12.96666145324707,
+   "mean_abs": 1.5215603113174438
+  },
+  "state.layers[56].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.103640094399452e-09,
+   "max_abs": 1.8721890449523926,
+   "mean_abs": 0.010382331907749176
+  },
+  "state.layers[57].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 0.00010114908218383789,
+   "max_abs": 14.495165824890137,
+   "mean_abs": 1.6158279180526733
+  },
+  "state.layers[57].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.535671228542924e-09,
+   "max_abs": 2.263887882232666,
+   "mean_abs": 0.008410646580159664
+  },
+  "state.layers[58].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.3556873202323914e-05,
+   "max_abs": 15.180171966552734,
+   "mean_abs": 1.373835802078247
+  },
+  "state.layers[58].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.1816815081999721e-08,
+   "max_abs": 5.219487190246582,
+   "mean_abs": 0.007624432444572449
+  },
+  "state.layers[59].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.827910404652357e-06,
+   "max_abs": 14.706245422363281,
+   "mean_abs": 1.1554181575775146
+  },
+  "state.layers[59].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.2782554626464844e-06,
+   "max_abs": 70.62901306152344,
+   "mean_abs": 1.8857728242874146
+  },
+  "state.layers[60].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.0510127544403076e-05,
+   "max_abs": 34.81321334838867,
+   "mean_abs": 1.7038447856903076
+  },
+  "state.layers[60].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.778101968585304e-10,
+   "max_abs": 2.912763833999634,
+   "mean_abs": 0.014385838061571121
+  },
+  "state.layers[61].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.37607479095459e-06,
+   "max_abs": 13.170907974243164,
+   "mean_abs": 1.3174775838851929
+  },
+  "state.layers[61].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.725290298461914e-09,
+   "max_abs": 2.0970301628112793,
+   "mean_abs": 0.00596191780641675
+  },
+  "state.layers[62].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.9474496841430664e-05,
+   "max_abs": 24.418123245239258,
+   "mean_abs": 1.5667121410369873
+  },
+  "state.layers[62].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.094430657211376e-10,
+   "max_abs": 3.618319034576416,
+   "mean_abs": 0.009351923130452633
+  },
+  "state.layers[63].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.172325134277344e-07,
+   "max_abs": 11.600996017456055,
+   "mean_abs": 1.1606367826461792
+  },
+  "state.layers[63].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.0526349544525146e-06,
+   "max_abs": 80.35160827636719,
+   "mean_abs": 3.5738632678985596
+  }
+ },
+ "stats_blem": {
+  "state.layers[0].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.1651387214660645e-05,
+   "max_abs": 53.06300354003906,
+   "mean_abs": 1.9819419384002686
+  },
+  "state.layers[0].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.2744438277211287e-10,
+   "max_abs": 35.74538040161133,
+   "mean_abs": 0.028784744441509247
+  },
+  "state.layers[1].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.028000593185425e-07,
+   "max_abs": 5.165765762329102,
+   "mean_abs": 0.1785968542098999
+  },
+  "state.layers[1].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.0243724231649995e-12,
+   "max_abs": 0.7341706156730652,
+   "mean_abs": 0.0004459773190319538
+  },
+  "state.layers[2].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.353925421833992e-07,
+   "max_abs": 5.244947910308838,
+   "mean_abs": 0.18748387694358826
+  },
+  "state.layers[2].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.949486058694383e-11,
+   "max_abs": 0.6442041993141174,
+   "mean_abs": 0.0003858937125187367
+  },
+  "state.layers[3].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.2945621342150844e-07,
+   "max_abs": 9.967470169067383,
+   "mean_abs": 0.962094247341156
+  },
+  "state.layers[3].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.384185791015625e-07,
+   "max_abs": 3.9838767051696777,
+   "mean_abs": 0.46277961134910583
+  },
+  "state.layers[4].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.7013163566589355e-06,
+   "max_abs": 4.579653739929199,
+   "mean_abs": 0.20420756936073303
+  },
+  "state.layers[4].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.531555934470191e-11,
+   "max_abs": 0.2749863266944885,
+   "mean_abs": 0.0004157602961640805
+  },
+  "state.layers[5].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.424551010131836e-05,
+   "max_abs": 6.759516716003418,
+   "mean_abs": 0.2296222746372223
+  },
+  "state.layers[5].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.5285116014850395e-11,
+   "max_abs": 0.23877137899398804,
+   "mean_abs": 0.00041505807894282043
+  },
+  "state.layers[6].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.80565494298935e-06,
+   "max_abs": 4.8144755363464355,
+   "mean_abs": 0.2527586817741394
+  },
+  "state.layers[6].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.910509664503905e-11,
+   "max_abs": 0.7467482686042786,
+   "mean_abs": 0.0004943603998981416
+  },
+  "state.layers[7].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.960464477539062e-07,
+   "max_abs": 11.926137924194336,
+   "mean_abs": 1.0098981857299805
+  },
+  "state.layers[7].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.6193599700927734e-07,
+   "max_abs": 4.921085834503174,
+   "mean_abs": 0.42872804403305054
+  },
+  "state.layers[8].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.2926757335662842e-06,
+   "max_abs": 5.706843376159668,
+   "mean_abs": 0.292212575674057
+  },
+  "state.layers[8].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.619106099193246e-10,
+   "max_abs": 0.29022401571273804,
+   "mean_abs": 0.0005934918881393969
+  },
+  "state.layers[9].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.444752216339111e-07,
+   "max_abs": 7.426527976989746,
+   "mean_abs": 0.27771368622779846
+  },
+  "state.layers[9].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.5175718714604e-12,
+   "max_abs": 0.8341156244277954,
+   "mean_abs": 0.0006741432007402182
+  },
+  "state.layers[10].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.555339157581329e-07,
+   "max_abs": 7.825405120849609,
+   "mean_abs": 0.29267600178718567
+  },
+  "state.layers[10].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.184119800105691e-11,
+   "max_abs": 0.7929009795188904,
+   "mean_abs": 0.0007122098468244076
+  },
+  "state.layers[11].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.679313628410455e-06,
+   "max_abs": 13.848251342773438,
+   "mean_abs": 1.036458134651184
+  },
+  "state.layers[11].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.470348358154297e-07,
+   "max_abs": 9.059147834777832,
+   "mean_abs": 0.40576043725013733
+  },
+  "state.layers[12].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.355345249176025e-06,
+   "max_abs": 8.34704875946045,
+   "mean_abs": 0.3234962522983551
+  },
+  "state.layers[12].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.5652192309498787e-10,
+   "max_abs": 0.7139503955841064,
+   "mean_abs": 0.0008223704644478858
+  },
+  "state.layers[13].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.927417755126953e-06,
+   "max_abs": 8.140080451965332,
+   "mean_abs": 0.31241267919540405
+  },
+  "state.layers[13].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.220303940703161e-10,
+   "max_abs": 0.8504070043563843,
+   "mean_abs": 0.0007718663546256721
+  },
+  "state.layers[14].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.215298056602478e-05,
+   "max_abs": 8.586369514465332,
+   "mean_abs": 0.35854607820510864
+  },
+  "state.layers[14].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.2246254628856673e-13,
+   "max_abs": 0.5640130043029785,
+   "mean_abs": 0.0008839400834403932
+  },
+  "state.layers[15].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.7606503155984683e-07,
+   "max_abs": 16.858491897583008,
+   "mean_abs": 1.063731074333191
+  },
+  "state.layers[15].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.987682819366455e-06,
+   "max_abs": 4.440814971923828,
+   "mean_abs": 0.4050591289997101
+  },
+  "state.layers[16].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.1047890186309814e-06,
+   "max_abs": 7.667964458465576,
+   "mean_abs": 0.35760554671287537
+  },
+  "state.layers[16].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.7738929899632772e-12,
+   "max_abs": 0.4511112868785858,
+   "mean_abs": 0.0009495119447819889
+  },
+  "state.layers[17].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.384666681289673e-05,
+   "max_abs": 9.134356498718262,
+   "mean_abs": 0.3875958323478699
+  },
+  "state.layers[17].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.7861623291537398e-10,
+   "max_abs": 0.5663403272628784,
+   "mean_abs": 0.0009996978333219886
+  },
+  "state.layers[18].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.1311064958572388e-06,
+   "max_abs": 8.90761947631836,
+   "mean_abs": 0.4208752512931824
+  },
+  "state.layers[18].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.521077011711895e-10,
+   "max_abs": 1.5741069316864014,
+   "mean_abs": 0.0013092047302052379
+  },
+  "state.layers[19].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.203749656677246e-07,
+   "max_abs": 17.3961238861084,
+   "mean_abs": 1.0746322870254517
+  },
+  "state.layers[19].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.7853453755378723e-06,
+   "max_abs": 6.682314872741699,
+   "mean_abs": 0.4405653178691864
+  },
+  "state.layers[20].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.583597183227539e-05,
+   "max_abs": 10.745763778686523,
+   "mean_abs": 0.6264705657958984
+  },
+  "state.layers[20].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.716422725119628e-10,
+   "max_abs": 1.033922791481018,
+   "mean_abs": 0.002485743025317788
+  },
+  "state.layers[21].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.3500452041625977e-05,
+   "max_abs": 11.049787521362305,
+   "mean_abs": 0.5959253311157227
+  },
+  "state.layers[21].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.220055416226387e-10,
+   "max_abs": 1.5117746591567993,
+   "mean_abs": 0.0021334579214453697
+  },
+  "state.layers[22].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.592141628265381e-06,
+   "max_abs": 10.20677661895752,
+   "mean_abs": 0.5123182535171509
+  },
+  "state.layers[22].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.5425030142068863e-09,
+   "max_abs": 0.8098949193954468,
+   "mean_abs": 0.0013372605899348855
+  },
+  "state.layers[23].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.670959020178998e-06,
+   "max_abs": 19.654632568359375,
+   "mean_abs": 1.1119736433029175
+  },
+  "state.layers[23].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.384185791015625e-07,
+   "max_abs": 10.65890884399414,
+   "mean_abs": 0.5404077768325806
+  },
+  "state.layers[24].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.218169927597046e-06,
+   "max_abs": 7.401217460632324,
+   "mean_abs": 0.5832959413528442
+  },
+  "state.layers[24].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.31050767196939e-10,
+   "max_abs": 0.8198734521865845,
+   "mean_abs": 0.0018421056447550654
+  },
+  "state.layers[25].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.2740492820739746e-05,
+   "max_abs": 9.387791633605957,
+   "mean_abs": 0.6490291357040405
+  },
+  "state.layers[25].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.11549921814003e-10,
+   "max_abs": 1.1384024620056152,
+   "mean_abs": 0.0021464242599904537
+  },
+  "state.layers[26].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.828938007354736e-06,
+   "max_abs": 9.285039901733398,
+   "mean_abs": 0.5970171093940735
+  },
+  "state.layers[26].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.9685907065868378e-09,
+   "max_abs": 0.8746565580368042,
+   "mean_abs": 0.0021588229574263096
+  },
+  "state.layers[27].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.3976346053823363e-06,
+   "max_abs": 21.03336524963379,
+   "mean_abs": 1.132906198501587
+  },
+  "state.layers[27].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.172325134277344e-07,
+   "max_abs": 27.27534294128418,
+   "mean_abs": 0.6209976077079773
+  },
+  "state.layers[28].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.57702374458313e-05,
+   "max_abs": 11.202138900756836,
+   "mean_abs": 0.6064866185188293
+  },
+  "state.layers[28].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.882583920506889e-11,
+   "max_abs": 0.58553546667099,
+   "mean_abs": 0.0023861287627369165
+  },
+  "state.layers[29].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 9.831390343606472e-06,
+   "max_abs": 12.917984008789062,
+   "mean_abs": 0.6034768223762512
+  },
+  "state.layers[29].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.5868613090219696e-09,
+   "max_abs": 0.6239344477653503,
+   "mean_abs": 0.0022540984209626913
+  },
+  "state.layers[30].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.145541995763779e-05,
+   "max_abs": 9.01965045928955,
+   "mean_abs": 0.6365163922309875
+  },
+  "state.layers[30].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.134594640461728e-10,
+   "max_abs": 0.9968041181564331,
+   "mean_abs": 0.0024201262276619673
+  },
+  "state.layers[31].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.8668361008167267e-06,
+   "max_abs": 21.88978385925293,
+   "mean_abs": 1.136523962020874
+  },
+  "state.layers[31].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.045665264129639e-06,
+   "max_abs": 33.67523193359375,
+   "mean_abs": 0.7297350764274597
+  },
+  "state.layers[32].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.470348358154297e-08,
+   "max_abs": 9.256275177001953,
+   "mean_abs": 0.6361425518989563
+  },
+  "state.layers[32].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.965396899729967e-10,
+   "max_abs": 0.8697830438613892,
+   "mean_abs": 0.0025758016854524612
+  },
+  "state.layers[33].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.3974647521972656e-06,
+   "max_abs": 11.930389404296875,
+   "mean_abs": 0.6540949940681458
+  },
+  "state.layers[33].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.7479351299698465e-10,
+   "max_abs": 0.5749224424362183,
+   "mean_abs": 0.002392660593613982
+  },
+  "state.layers[34].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.611855208873749e-05,
+   "max_abs": 10.572982788085938,
+   "mean_abs": 0.6721677184104919
+  },
+  "state.layers[34].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.729372449219227e-10,
+   "max_abs": 0.8869567513465881,
+   "mean_abs": 0.0026951360050588846
+  },
+  "state.layers[35].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.97100881300139e-07,
+   "max_abs": 20.550031661987305,
+   "mean_abs": 1.187035083770752
+  },
+  "state.layers[35].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.8477439880371094e-06,
+   "max_abs": 31.527061462402344,
+   "mean_abs": 0.7882096767425537
+  },
+  "state.layers[36].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.513429641723633e-06,
+   "max_abs": 10.897331237792969,
+   "mean_abs": 0.9343597292900085
+  },
+  "state.layers[36].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.7381864836352179e-09,
+   "max_abs": 1.4182957410812378,
+   "mean_abs": 0.004430378321558237
+  },
+  "state.layers[37].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.1421740055084229e-05,
+   "max_abs": 26.077590942382812,
+   "mean_abs": 0.9629433751106262
+  },
+  "state.layers[37].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.610931719246537e-10,
+   "max_abs": 2.293151378631592,
+   "mean_abs": 0.003685140050947666
+  },
+  "state.layers[38].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.4463744163513184e-05,
+   "max_abs": 10.991345405578613,
+   "mean_abs": 0.7730475664138794
+  },
+  "state.layers[38].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.661851708640199e-10,
+   "max_abs": 0.670589804649353,
+   "mean_abs": 0.0022116471081972122
+  },
+  "state.layers[39].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.1579182910281816e-06,
+   "max_abs": 21.397024154663086,
+   "mean_abs": 1.211548089981079
+  },
+  "state.layers[39].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.258487701416016e-07,
+   "max_abs": 34.2618293762207,
+   "mean_abs": 0.7536927461624146
+  },
+  "state.layers[40].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.423541784286499e-05,
+   "max_abs": 9.80958080291748,
+   "mean_abs": 0.8542268872261047
+  },
+  "state.layers[40].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.498120126899096e-10,
+   "max_abs": 4.26255464553833,
+   "mean_abs": 0.0033560555893927813
+  },
+  "state.layers[41].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 5.438923835754395e-07,
+   "max_abs": 11.05935001373291,
+   "mean_abs": 0.7891843914985657
+  },
+  "state.layers[41].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.4357440236700825e-10,
+   "max_abs": 1.1765979528427124,
+   "mean_abs": 0.0024700434878468513
+  },
+  "state.layers[42].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.1167099475860596e-05,
+   "max_abs": 8.662339210510254,
+   "mean_abs": 0.7033873796463013
+  },
+  "state.layers[42].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.6079866327345371e-09,
+   "max_abs": 0.5000935196876526,
+   "mean_abs": 0.0024104926269501448
+  },
+  "state.layers[43].keys": {
+   "numel": 635904,
+   "frac_zero": 6.290257715590997e-06,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.9980058116052533e-06,
+   "max_abs": 19.689659118652344,
+   "mean_abs": 1.1560231447219849
+  },
+  "state.layers[43].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.384185791015625e-07,
+   "max_abs": 48.1455078125,
+   "mean_abs": 0.8725775480270386
+  },
+  "state.layers[44].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.894635200500488e-05,
+   "max_abs": 12.902083396911621,
+   "mean_abs": 0.7444302439689636
+  },
+  "state.layers[44].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.4933037018625157e-10,
+   "max_abs": 0.49190524220466614,
+   "mean_abs": 0.0026607615873217583
+  },
+  "state.layers[45].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.043081283569336e-06,
+   "max_abs": 11.680869102478027,
+   "mean_abs": 0.7021805047988892
+  },
+  "state.layers[45].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.517914931057021e-10,
+   "max_abs": 0.6352688670158386,
+   "mean_abs": 0.002164517529308796
+  },
+  "state.layers[46].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.0502676963806152e-05,
+   "max_abs": 9.829534530639648,
+   "mean_abs": 0.7436346411705017
+  },
+  "state.layers[46].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.905618773889728e-09,
+   "max_abs": 0.7778803706169128,
+   "mean_abs": 0.002259056316688657
+  },
+  "state.layers[47].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.73646377940895e-06,
+   "max_abs": 15.843599319458008,
+   "mean_abs": 1.1729543209075928
+  },
+  "state.layers[47].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.621703505516052e-07,
+   "max_abs": 41.48271179199219,
+   "mean_abs": 0.9847459197044373
+  },
+  "state.layers[48].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.11679458618164e-05,
+   "max_abs": 8.293851852416992,
+   "mean_abs": 0.8216153979301453
+  },
+  "state.layers[48].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.5959820132138702e-09,
+   "max_abs": 0.7374971508979797,
+   "mean_abs": 0.0026817526668310165
+  },
+  "state.layers[49].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.6372413635253906e-05,
+   "max_abs": 12.663007736206055,
+   "mean_abs": 0.8802875280380249
+  },
+  "state.layers[49].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.3039660724275564e-10,
+   "max_abs": 0.503925621509552,
+   "mean_abs": 0.002719814656302333
+  },
+  "state.layers[50].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.7653913497924805e-05,
+   "max_abs": 12.506929397583008,
+   "mean_abs": 0.8987218737602234
+  },
+  "state.layers[50].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.231401116276515e-10,
+   "max_abs": 0.40336892008781433,
+   "mean_abs": 0.0029458391945809126
+  },
+  "state.layers[51].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 6.432171630876837e-07,
+   "max_abs": 14.946502685546875,
+   "mean_abs": 1.2475078105926514
+  },
+  "state.layers[51].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.0728836059570312e-06,
+   "max_abs": 43.12531661987305,
+   "mean_abs": 1.1993862390518188
+  },
+  "state.layers[52].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.689659595489502e-05,
+   "max_abs": 12.917157173156738,
+   "mean_abs": 1.352015733718872
+  },
+  "state.layers[52].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 1.271565793103946e-06,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.5930967656174744e-09,
+   "max_abs": 2.335676908493042,
+   "mean_abs": 0.009409010410308838
+  },
+  "state.layers[53].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.4409422874450684e-05,
+   "max_abs": 13.301399230957031,
+   "mean_abs": 1.412196397781372
+  },
+  "state.layers[53].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.0295480024069548e-09,
+   "max_abs": 2.325253486633301,
+   "mean_abs": 0.008142397738993168
+  },
+  "state.layers[54].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 9.930133819580078e-05,
+   "max_abs": 14.509147644042969,
+   "mean_abs": 1.228821039199829
+  },
+  "state.layers[54].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.0272530182330328e-11,
+   "max_abs": 1.67831289768219,
+   "mean_abs": 0.005261166021227837
+  },
+  "state.layers[55].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.005192871161853e-06,
+   "max_abs": 14.715401649475098,
+   "mean_abs": 1.1973289251327515
+  },
+  "state.layers[55].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.5795230865478516e-06,
+   "max_abs": 29.74709701538086,
+   "mean_abs": 1.237807273864746
+  },
+  "state.layers[56].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.461407661437988e-05,
+   "max_abs": 12.984114646911621,
+   "mean_abs": 1.5480221509933472
+  },
+  "state.layers[56].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.93826870904013e-09,
+   "max_abs": 1.957014799118042,
+   "mean_abs": 0.01048998162150383
+  },
+  "state.layers[57].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.616379737854004e-05,
+   "max_abs": 14.328246116638184,
+   "mean_abs": 1.6377044916152954
+  },
+  "state.layers[57].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.4924596548080444e-10,
+   "max_abs": 2.2246479988098145,
+   "mean_abs": 0.008301806636154652
+  },
+  "state.layers[58].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.2665987014770508e-05,
+   "max_abs": 14.990303993225098,
+   "mean_abs": 1.4003597497940063
+  },
+  "state.layers[58].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.149072527885437e-10,
+   "max_abs": 5.16586971282959,
+   "mean_abs": 0.007640149910002947
+  },
+  "state.layers[59].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.33341849468161e-08,
+   "max_abs": 14.436047554016113,
+   "mean_abs": 1.1562985181808472
+  },
+  "state.layers[59].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 7.152557373046875e-07,
+   "max_abs": 73.90657043457031,
+   "mean_abs": 1.8903700113296509
+  },
+  "state.layers[60].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.0700117349624634e-05,
+   "max_abs": 36.951744079589844,
+   "mean_abs": 1.7544105052947998
+  },
+  "state.layers[60].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 8.11269273981452e-10,
+   "max_abs": 2.8685779571533203,
+   "mean_abs": 0.014628786593675613
+  },
+  "state.layers[61].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 3.5256147384643555e-05,
+   "max_abs": 13.776851654052734,
+   "mean_abs": 1.3490960597991943
+  },
+  "state.layers[61].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.3572401808280574e-09,
+   "max_abs": 2.2922472953796387,
+   "mean_abs": 0.006033761892467737
+  },
+  "state.layers[62].conv_states": {
+   "numel": 40960,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.0265579223632812e-06,
+   "max_abs": 25.403846740722656,
+   "mean_abs": 1.6002769470214844
+  },
+  "state.layers[62].recurrent_states": {
+   "numel": 786432,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 2.323076842003502e-09,
+   "max_abs": 4.000346660614014,
+   "mean_abs": 0.00957255344837904
+  },
+  "state.layers[63].keys": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 1.2652041050387197e-06,
+   "max_abs": 11.760605812072754,
+   "mean_abs": 1.1593245267868042
+  },
+  "state.layers[63].values": {
+   "numel": 635904,
+   "frac_zero": 0.0,
+   "frac_subnormal_of_nonzero": 0.0,
+   "min_abs_nonzero": 4.291534423828125e-06,
+   "max_abs": 92.70586395263672,
+   "mean_abs": 3.6053695678710938
+  }
+ }
+}
