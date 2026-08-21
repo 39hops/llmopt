@@ -7816,3 +7816,17 @@ honest status column).
   per-machine I/O measurement (3080 NVMe->H2D unmeasured); the
   6x6 domain matrix moot for residency, still live for
   [[DOMAIN-CAPABILITY-COUPLING]].
+  CENSUS MEASURED (2026-08-21, OBSERVATION TOPSET-OVERLAP-0, run
+  on the 3080 short-test window): the hypothesis CONFIRMS — the
+  candidate manifold survives compression (top-256 recall
+  0.957-0.973, Jaccard 0.918-0.947, Spearman 0.979-0.983; top-8
+  shared 0.875-1.0) while rec@1 = 0 at all five near-tie loci.
+  BLe's top-256 is 245-249/256 inside vendor's top-256, zero
+  specials. DROP-TOP256 REDESIGN PRICED DEAD: the first
+  admissible outside token sits at BLe rank 204-223, 12.3-18.6
+  logits down — the exact CONTROL-MATCH-FAILED class. Live
+  direction: controls INSIDE the shared manifold (the other
+  equally-BLe-plausible top-8 candidate). Portable top-1024
+  sidecars for both heads at every locus live in the receipt —
+  the census never needs the 3080 again (the sufficient-
+  statistics lesson, applied).

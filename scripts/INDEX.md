@@ -3302,6 +3302,13 @@ Teacher v2d SIDECAR: cached-v-uncached gate on the locked rollout record (AMENDM
 
 - `main() -> int`
 
+### scratch/qwen_topset_census.py
+TOPSET-OVERLAP census (observation-only, gates nothing; the banked spec of 2026-08-20, run per its own text): BLe v vendor top-set geometry at the five frozen loop-state h, BEFORE any alternate-token redesign is chosen. Reuses the frozen qwen_alttok_derive machinery by import (never edited); logits recomputed the identical chunked way.
+
+- `_load(name, rel)`
+- `spearman(ra, rb)`
+- `main()`
+
 ### scratch/qwen_tower_ladder.py
 qcuda-tower qualification ladder, steps d-g (3080; spec 2026-08-19-qcuda-tower-runtime; GO 2026-08-19).
 

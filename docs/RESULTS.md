@@ -38718,3 +38718,58 @@ RECEIPTS. logs/routedb/replay2_receipt.json (driver
 scratch/routedb_replay2.py, frozen pre-run; imports the frozen
 rung-1 module).
 
+## OBSERVATION TOPSET-OVERLAP-0: compression preserves the CANDIDATE MANIFOLD while flipping the argmax — BLe v vendor top-256 recall 0.957-0.973 (Jaccard 0.918-0.947, Spearman rho 0.979-0.983) at all five frozen loci, with rec@1 = 0 by construction; the first BLe non-special token outside vendor's top-256 sits at BLe rank 204-223 and 12.3-18.6 logits below top1, exactly the failed control class (2026-08-21, 3080)
+
+The banked census (2026-08-20 spec), run per its own text on the
+3080 (short-test window, Artin GO "windows open"): the frozen
+qwen_alttok_derive machinery imported unedited, logits recomputed
+the identical chunked way over the five frozen loop-state h; both
+argmaxes reproduce the frozen ble/vendor tokens at every locus
+(match_frozen 5/5). Receipt logs/qwentopset/topset_census.json
+(sha 2d5df6d0... identical on both machines), carrying the
+PORTABLE top-1024 id+logit lists for BOTH heads at every locus —
+the sufficient-statistics lesson applied: this geometry never
+needs the 3080 again.
+
+THE TABLE (per locus: recall@K of the smaller-K overlap, both
+heads):
+
+  locus        rec@1  rec@8  rec@64  rec@256  jac@256  rho
+  item0@556    0.0    1.0    1.0     0.9648   0.9321   0.9829
+  item0@583    0.0    1.0    0.9375  0.9727   0.9468   0.9817
+  item4@1538   0.0    1.0    0.9688  0.9648   0.9321   0.9809
+  item3@1223   0.0    0.875  0.9688  0.9648   0.9321   0.9785
+  item3@1278   0.0    1.0    0.9531  0.9570   0.9176   0.9808
+
+READS:
+
+1. THE BANKED HYPOTHESIS CONFIRMS AT THESE LOCI: the candidate
+   set, not the argmax, is the compression-stable object. rec@1 =
+   0 everywhere (these are the five near-tie divergence loci by
+   construction) while the top-8 is 87.5-100% shared and the
+   top-256 is ~96-97% shared with rank correlation 0.98.
+2. EXCLUSION ATTRIBUTION closes the containment account: of BLe's
+   top-256, 245-249 sit inside vendor's top-256, ZERO are
+   specials, and only 7-11 are free — the ALTTOKEN exclusion
+   union was vendor-top-256-dominated, as -CONTAINMENT-WORDING
+   narrowed.
+3. THE DROP-TOP256 REDESIGN IS PRICED HONESTLY AND LOOKS DEAD:
+   the first admissible token outside vendor's top-256 sits at
+   BLe rank 204-223 with a 12.3-18.6 logit gap to top1 —
+   numerically the same class as the booked CONTROL-MATCH-FAILED
+   errors (12.18-18.61). Dropping the exclusion buys a "control"
+   that is deeply implausible under BLe itself; the comparison
+   would read "vendor token v a token BLe barely considers",
+   which is not the registered question.
+4. THE LIVE REDESIGN DIRECTION this leaves: controls INSIDE the
+   preserved manifold — e.g. the BLe rank-2 candidate at each
+   locus ("exact vendor-token identity v the other equally
+   BLe-plausible candidate within the shared top-8"), which the
+   top-8 overlap (0.875-1.0) shows exists at every locus. Design
+   choice stays Artin's.
+
+FENCES. Five loci from two specimens — head-space geometry at
+these h only, no trajectory or causal claim; observation-only,
+gates nothing; the top-1024 sidecars are the frozen basis any
+redesign registration should cite as operands.
+
