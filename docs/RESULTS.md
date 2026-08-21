@@ -39823,3 +39823,89 @@ miss books the run NOT-QUALIFIED (observation-class at best,
 taint named). The driver's per-seed skip and 2+-seed abort
 remain as receipts machinery only.
 
+## VERDICT EX6-LOC-0: no single component carries the crest — prefill +13, token1 +21, super-additive interaction +13 (13+21=34 < 47); the house prior wrong 3/3, and one token's routing moves +21 solves (2026-08-21, mac)
+
+Per PRE-REG EX6-LOC-0 and AMENDMENT -ADJUDICATION. QUALIFIED at
+verdict class under the amended strict rule: all three anchor
+seeds cell-exact through the new driver — NONE 64/61/66, PROMPT
+79/80/79 (receipt logs/ex6loc/ex6loc.jsonl, driver frozen
+f343449e, sole commit touching the file; keepset sha verified).
+The PROMPT diagonal reproduces the booked crest exactly: pooled
+238 v 191 = +47.
+
+REGISTERED READS (pooled /360, per-seed dicts in the receipt;
+paired per-problem transitions from the perprob stream):
+  Delta_prefill  = +13 (per seed +5/+2/+6, 3/3 positive;
+                   transitions 32 fail->solve v 19 solve->fail)
+  Delta_token1   = +21 (per seed +10/+5/+6, 3/3 positive;
+                   31 v 10)
+  Interaction    = +13 (super-additive: 13 + 21 = 34 < 47)
+  Necessity      : PROMPT-TOKEN1 = +26, PROMPT-PREFILL = +34
+                   (registered reads with NO carry bar — 24
+                   applies only to the component deltas; stating
+                   this to bar any post-hoc bar swap)
+BAR ADJUDICATION: neither component CARRIES (>= 24: prefill 13
+no, token1 21 no); neither is NO-EFFECT (< 7); both book as
+measured partials. REFUTED-IF (both < 7 with the diagonal at
++47) does not trip. Single-component localization RESOLVED
+NEGATIVE: the crest is a super-additive conjunction of
+prompt-batch healing and token1-routing healing.
+
+PRIOR ADJUDICATION — WRONG 3/3 (registered text quoted): (1)
+"Delta_prefill >= 2/3 of the pooled PROMPT delta" (~31):
+measured 13. (2) "Delta_token1 below 7": measured 21 — masking
+ONE routing decision (the first generated token's top-8) moves
++21 of 360, the cleanest arm in the factorial by transition
+purity (31 rescues v 10 breaks; PREFILL_ONLY: 32 v 19). (3)
+"interaction small": measured +13, equal to the whole prefill
+component and 28% of the crest.
+
+AMENDMENT SELF-ADJUDICATION (auditor catch, adopted): the
+-ADJUDICATION amendment's D1 correction rewrote the prereg's
+risk sentence — and the DELETED sentence ("if Delta_token1
+lands >= 7 the house updates toward launch-step sensitivity")
+is the one the data vindicated. The amendment's mechanism claim
+stands (z1's IDENTITY is fixed by the prompt batch; D1 = 111/360
+is prompt-batch potency), but its inference that token1
+sensitivity was therefore unlikely is REFUTED: changing how the
+already-chosen z1 is ROUTED — identity untouched — moves +21
+solves. The house updates as the original sentence required:
+launch-step ROUTING sensitivity is real and large.
+
+Mechanism reading (bounded): the vendor full-128 routing damages
+the gate through at least two loci — the prompt-resident state
+AND the first generated token's routing — and their joint
+healing is worth more than the sum, i.e. a cleanly-routed z1
+feeding a cleanly-built prompt state compounds. What z1-routing
+healing does mechanically (its output feeds every later
+position's attention) is the next question, not this booking.
+
+FENCES carried: Mac-only, single 4-bit instrument (identity by
+the 3/3 cell-exact anchors), greedy, one mask PREDICATE per arm
+with per-call dose (masked-call counts necessarily differ across
+arms — that is the manipulation; the prereg's "one dose" reads
+per-call), pooled bars with per-seed dicts, resolution law:
+seed-8002's prefill +2 is below the ~7-solve floor and carries
+no individual direction claim (the pooled +13 with 3/3 signs is
+the read). Receipts: ex6loc.jsonl force-added with this booking
+(small text receipt, logs doctrine); the 172KB perprob stream
+stays untracked and regenerates by rerunning the frozen driver
+(deterministic greedy path; the 3/3 cell-exact anchors are the measured reproducibility evidence).
+Receipt-audit items, adopted as disclosures (no blocker): the
+start block pins the four instrument-file shas but passes no
+artifacts= identity for the weights — the model NAME is
+recoverable from the sha-pinned moe_gt1_arm2.py literal
+(mlx-community/Qwen3-30B-A3B-4bit), and which local checkout
+answered it has no independent receipt evidence (future drivers
+pass artifacts=); the TOKEN1_ONLY arm label reads via the
+corrected semantics ONLY (it masks the prompt_tail call =
+generated z1's routing — a reader of ex6loc.jsonl alone must
+take the arm names through AMENDMENT EX6-MED-0-SEMANTICS); the
+start->completion commit drift (f343449e -> 5555377e) is
+docs-only, verified by diff; "named80" in the recall field is
+the established family label (the keepset holds 123-128 experts
+per layer). meta.completion_commit is a riff-ledger commit
+unrelated to the run; code_commit for this entry is the driver
+freeze f343449e. Files: scratch/ex6loc.py,
+logs/ex6loc/ex6loc.jsonl.
+

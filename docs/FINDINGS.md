@@ -2619,3 +2619,17 @@ regime tag on every bullet is the fence.
   even/odd prompt split; original run's holdout was
   stream-entangled (corrected, not load-bearing).
   ([VERDICT ROUTE-TIME-0](RESULTS.md#L39278 "id:2026-08-21-verdict-route-time-0-temporal-structure").)
+
+- The prefill-poisoning crest is a super-additive conjunction, not a
+  single-component effect: masking only the prompt batch heals +13
+  pooled solves, masking only the first generated token's routing
+  heals +21, together +47 (interaction +13; 13+21=34 < 47), with all
+  six anchor cells reproduced exactly through the new driver. One
+  routing decision on one token carries nearly half the crest — the
+  house prior was wrong on all three registered clauses (prefill
+  dominant, token1 null, interaction small). [MECHANISM-CONFIRMED]
+  [REGIME-SCOPED: measured deployment artifacts] Fences: single
+  4-bit instrument, greedy, named-80 keepset, pooled n=3 seeds with
+  3/3 sign consistency; TOKEN1_ONLY reads via the corrected
+  prompt_tail semantics (it masks generated z1's routing).
+  ([VERDICT EX6-LOC-0](RESULTS.md#L39826 "id:2026-08-21-verdict-ex6-loc-0-no-single").)

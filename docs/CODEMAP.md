@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 218, library 73, reproduce-pinned 10, results-cited 270, spec-cited 88, cited-but-library 61
+Census: UNCITED 218, library 73, reproduce-pinned 10, results-cited 272, spec-cited 88, cited-but-library 61
 
 ## scratch/
 
@@ -116,12 +116,14 @@ Census: UNCITED 218, library 73, reproduce-pinned 10, results-cited 270, spec-ci
 | ex5 | ex5_traj_rider.py | UNCITED | — | — | — | 1 |
 | ex5 | ex5_traj_rider2.py | UNCITED | — | — | — | — |
 | ex6 | ex6_observe.py | results-cited | RESULTS | RESULTS×2 | — | — |
-| ex6 | ex6_phase.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 3 |
+| ex6 | ex6_phase.py | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | 3 |
 | ex6 | ex6_run.sh | results-cited | RESULTS | RESULTS×2 | — | 1 |
-| ex6med | ex6med.py | UNCITED | — | — | — | 3 |
+| ex6loc | ex6loc.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| ex6med | ex6med.py | UNCITED | — | — | — | 5 |
 | ex6med | ex6med_idaudit.py | UNCITED | — | — | — | 1 |
 | ex6med | ex6med_idaudit2.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | ex6med | ex6med_run.sh | UNCITED | — | — | — | — |
+| ex6med2 | ex6med2.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | exact | exact_twin_d56.py | spec-cited | specs | specs×1 | — | — |
 | exact1 | exact1_small_cells.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | exchange | exchange_test.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -259,7 +261,7 @@ Census: UNCITED 218, library 73, reproduce-pinned 10, results-cited 270, spec-ci
 | metallicity | metallicity_diets.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | metallicity1 | metallicity1.sh | results-cited | RESULTS | RESULTS×2 | — | — |
 | moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×4, RESULTS×5, specs×4 | 2 | 6 |
-| moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×6, RESULTS×10, specs×4 | 1 | 7 |
+| moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×6, RESULTS×12, specs×4 | 1 | 9 |
 | morning | morning_run.sh | UNCITED | — | — | — | — |
 | mps | mps_sigma_gates.sh | UNCITED | — | — | — | — |
 | muon | muon_3ep_d256.py | UNCITED | — | — | — | 1 |

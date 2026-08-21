@@ -1917,6 +1917,11 @@ EX6-PHASE-0 driver: phase-scoped named-80 deletion (PRE-REG EX6-PHASE-0 in docs/
 - `instrument_phase(model, keep, mode)`
 - `main()`
 
+### scratch/ex6loc.py
+EX6-LOC-0 driver (frozen pre-launch): native-path localization 2x2 per PRE-REG EX6-LOC-0 — which physical component of the EX6-PROMPT mask carries the +47 crest.
+
+- `main()`
+
 ### scratch/ex6med.py
 EX6-MED-0 driver (frozen pre-launch): 2x2 mediation factorial per PRE-REG EX6-MED-0 (docs/RESULTS.md) — prompt-state {NONE, PROMPT-masked} x forced first token {z_NONE, z_PROMPT} on the frozen EX6 stack (scratch/moe_gt1_arm2.py gate, seeds 7001/8002/9003, named-80 keepset).
 
@@ -1925,6 +1930,14 @@ EX6-MED-0 driver (frozen pre-launch): 2x2 mediation factorial per PRE-REG EX6-ME
 - `cap_pass(model, tok, keep, START)`
 - `gen_forced(model, tok, text, forced)` — Forced launch: prompt ids + forced ids as one prompt, decode
 - `cells_pass(model, tok, keep, START)`
+- `main()`
+
+### scratch/ex6med2.py
+EX6-MED-0 run-2 cells driver (frozen pre-launch): the registered stepwise-decode fallback after run 1's qualification failure (AMENDMENT EX6-MED-0-QUALFAIL — the appended-position batch seam broke token identity on 12/240 diagonals).
+
+- `eos_set(tok)`
+- `stepwise(model, tok, ids, forced, budget)` — Batch prompt through a prompt cache, feed `forced` as a true
+- `native_ids(model, tok, keep, text, S, budget)`
 - `main()`
 
 ### scratch/ex6med_idaudit.py

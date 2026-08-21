@@ -302,6 +302,29 @@
    "source": "results",
    "tracked": true
   },
+  "logs/ex6loc/ex6loc.jsonl": {
+   "bytes": 2641,
+   "exists": true,
+   "local_only": true,
+   "sha256": "fe1f50aa65296c7864bcc9c2da0281d25283895544d9c8c286c25e8ae3cc2fea",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/ex6med/qual2.jsonl": {
+   "bytes": 17744,
+   "exists": true,
+   "sha256": "3be3f8f0e782fff10aa8179ba43ef6c28bc937c40d6418347d0b46784dd2fd70",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/ex6med/summary2.json": {
+   "bytes": 1256,
+   "exists": true,
+   "local_only": true,
+   "sha256": "4629c74cba528ff851bdf64635cf3a4d0020579ab5f07962a91fdc34fbaffe6d",
+   "source": "results",
+   "tracked": false
+  },
   "logs/ex6med/zcensus.json": {
    "bytes": 493,
    "exists": true,

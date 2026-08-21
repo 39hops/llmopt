@@ -1,0 +1,13 @@
+{"arm": "loc_NONE", "seed": 7001, "n_eval": 120, "gate_ok": 64, "gate_per_level": {"1": 25, "2": 21, "3": 18}, "masked_recall_named80": null, "gate_s": 262.1}
+{"arm": "loc_PROMPT", "seed": 7001, "n_eval": 120, "gate_ok": 79, "gate_per_level": {"1": 28, "2": 26, "3": 25}, "masked_recall_named80": 0.9714, "gate_s": 265.8}
+{"arm": "loc_PREFILL_ONLY", "seed": 7001, "n_eval": 120, "gate_ok": 69, "gate_per_level": {"1": 25, "2": 22, "3": 22}, "masked_recall_named80": 0.9712, "gate_s": 257.2}
+{"arm": "loc_TOKEN1_ONLY", "seed": 7001, "n_eval": 120, "gate_ok": 74, "gate_per_level": {"1": 26, "2": 23, "3": 25}, "masked_recall_named80": 0.9816, "gate_s": 262.3}
+{"arm": "loc_NONE", "seed": 8002, "n_eval": 120, "gate_ok": 61, "gate_per_level": {"1": 24, "2": 20, "3": 17}, "masked_recall_named80": null, "gate_s": 278.0}
+{"arm": "loc_PROMPT", "seed": 8002, "n_eval": 120, "gate_ok": 80, "gate_per_level": {"1": 31, "2": 28, "3": 21}, "masked_recall_named80": 0.9715, "gate_s": 272.8}
+{"arm": "loc_PREFILL_ONLY", "seed": 8002, "n_eval": 120, "gate_ok": 63, "gate_per_level": {"1": 22, "2": 23, "3": 18}, "masked_recall_named80": 0.9713, "gate_s": 270.9}
+{"arm": "loc_TOKEN1_ONLY", "seed": 8002, "n_eval": 120, "gate_ok": 66, "gate_per_level": {"1": 26, "2": 22, "3": 18}, "masked_recall_named80": 0.9819, "gate_s": 267.1}
+{"arm": "loc_NONE", "seed": 9003, "n_eval": 120, "gate_ok": 66, "gate_per_level": {"1": 25, "2": 23, "3": 18}, "masked_recall_named80": null, "gate_s": 265.0}
+{"arm": "loc_PROMPT", "seed": 9003, "n_eval": 120, "gate_ok": 79, "gate_per_level": {"1": 28, "2": 28, "3": 23}, "masked_recall_named80": 0.9717, "gate_s": 280.0}
+{"arm": "loc_PREFILL_ONLY", "seed": 9003, "n_eval": 120, "gate_ok": 72, "gate_per_level": {"1": 26, "2": 24, "3": 22}, "masked_recall_named80": 0.9715, "gate_s": 275.8}
+{"arm": "loc_TOKEN1_ONLY", "seed": 9003, "n_eval": 120, "gate_ok": 72, "gate_per_level": {"1": 25, "2": 25, "3": 22}, "masked_recall_named80": 0.9819, "gate_s": 275.5}
+{"meta": {"note": "EX6-LOC-0 run meta", "start": {"start_commit": "f343449e", "start_status_porcelain": " M docs/receipts.lock.json\n M scripts/INDEX.md\n", "interpreter": "/Users/artin/code/llmopt/.venv/bin/python", "file_sha256": {"scratch/ex6loc.py": "1eb9756c3d128135cc3f74aea44b7d2c9c6f6448b5a6da8ac5077e576d1261d7", "scratch/ex6med.py": "683f61d618417d11c261594ba6be0ff3b3fb0f2e1824c8ade133d431f352ac01", "scratch/moe_gt1_arm2.py": "916b616af8e2f44daeb01dcd9ca4e7f60b4167d8c485b69158740b16c5dedd9f", "checkpoints/ex3_del_invp.json": "72bf31eb44e60f3877c7de496e0987ce678d3561fe38922ff9a5cad978faef7e"}}, "completion_commit": "5555377e", "invalid_seeds": []}}
