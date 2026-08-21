@@ -1774,10 +1774,9 @@
   "logs/routetime/time0_receipt.json": {
    "bytes": 10722,
    "exists": true,
-   "local_only": true,
    "sha256": "7a20ee374f055579b96a31f89b8992d64349ef5ff14a09bbc50a04d0e6d1adf7",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/ruleablate1/arms.jsonl": {
    "bytes": 674,
