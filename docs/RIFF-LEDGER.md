@@ -7677,3 +7677,15 @@ honest status column).
   contracts, MTP state handling, traffic accounting) runs AFTER
   the EX6 receipts freeze; bank transferable invariants only,
   never CUDA details.
+- **BANK UPDATE (2026-08-21): the horizon frame's interface story
+  gets a PHASE coordinate** (VERDICT EX6-PHASE-0, RESULTS 38436).
+  The named carriers' harm lives in CONTEXT ASSEMBLY: masking them
+  during the prompt phase alone recaptures the full deletion crest
+  (+47 v +48), masking them during generation does nothing (-2,
+  sub-floor), effects additive. For the horizon frame: what
+  crosses the interface while the state is being BUILT decides
+  usable v interfering; by generation time the damage is already
+  in the state. EX5's decode-time failure enrichment demoted to
+  symptom. Next honest discriminator: a mechanism rung on WHAT the
+  carrier-routed prefill state gets wrong (state-space, not gate
+  counts) — unregistered.

@@ -219,13 +219,13 @@
     "parts": [
       {
         "label": "Replicated",
-        "value": 41,
+        "value": 42,
         "entity": "champion",
         "note": "holds at n≥3 paired seeds"
       },
       {
         "label": "Mechanism confirmed",
-        "value": 58,
+        "value": 59,
         "entity": "shared",
         "note": "the cause was isolated"
       },
@@ -248,6 +248,6 @@
         "note": "we were wrong, in writing"
       }
     ],
-    "fence": "docs/FINDINGS.md · 283 curated claims · recounted from the source at build time"
+    "fence": "docs/FINDINGS.md · 285 curated claims · recounted from the source at build time"
   }
 }

@@ -1,11 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [
-   "logs/ex6/qual.jsonl"
-  ],
-  "reason": "pre-booking audit repair: EX6 observations regenerated once (OBS_OVERWRITE=1, disclosed in the verdict) to add the keepset sha; all values and bar outcomes identical"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,

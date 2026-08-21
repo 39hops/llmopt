@@ -121,6 +121,12 @@ def instrument_phase(model, keep, mode):
 
 
 def main():
+    # Receipt-audit follow-up (post-booking, so the as-run sha in the
+    # observations start block stays truthful): the inherited m.LOG
+    # default is a GT1-era frozen file; refuse anything outside the
+    # EX6 receipt directory.
+    if not str(m.LOG).startswith("logs/ex6/"):
+        raise SystemExit(f"REFUSING: LOG {m.LOG} outside logs/ex6/")
     from mlx_lm import load
 
     from llmopt.mathgen.problems import make_dataset
