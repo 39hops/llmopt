@@ -2586,3 +2586,19 @@ regime tag on every bullet is the fence.
   layer-only demand share (covariate, not matched); no directional
   family claim (median gap +13 sub-resolution, ranges interleave).
   ([VERDICT EX5-LAYERMATCH-0](RESULTS.md#L37996 "id:2026-08-21-verdict-ex5-layermatch-0-carrier-identity").)
+
+- [MECHANISM-CONFIRMED] [moe] [mac] [mechanism] The named-80
+  deletion crest is carried by the PROMPT PHASE: masking the
+  carriers during prefill + prompt_tail alone recaptures the full
+  effect (+47 pooled v ALL's +48, signs 3/3, |gap| 1 descriptive),
+  while decode-only masking yields nothing (-2, below the
+  resolution floor) — the decode-carry hypothesis booked its
+  registered refutation and the pre-named context-assembly
+  alternative won; the two phase effects compose additively
+  (residual 3). EX5's decode failure enrichment is thereby a
+  symptom, not a cause. Fences: one mask, one dose, phase arms
+  causally asymmetric (DECODE preserves prompt-built state and
+  first-token prediction); crest now 9/9 seeds across three
+  triples; single 4-bit instrument, identity by cell-exact
+  qualification evidence.
+  ([VERDICT EX6-PHASE-0](RESULTS.md#L38436 "id:2026-08-21-verdict-ex6-phase-0-the-prompt").)

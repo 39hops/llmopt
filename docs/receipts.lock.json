@@ -1,5 +1,11 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [
+   "logs/ex6/qual.jsonl"
+  ],
+  "reason": "pre-booking audit repair: EX6 observations regenerated once (OBS_OVERWRITE=1, disclosed in the verdict) to add the keepset sha; all values and bar outcomes identical"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -257,6 +263,48 @@
    "bytes": 1293,
    "exists": true,
    "sha256": "5a1f289f681186b44aed6723a756021e91601b2ac25d25847330a0092384c73d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/ex5/traj_census.json": {
+   "bytes": 3799,
+   "exists": true,
+   "sha256": "f78ade27fa2bfcfd20dcee1e2817ce99bd228a93757d0614c3b6a719e5e1417d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/ex5/traj_rider.json": {
+   "bytes": 2163,
+   "exists": true,
+   "sha256": "66cdd08ef74c117cd8b5e1c06041be064e2944c4277cf29b29a6a3295b2de1c8",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/ex5/traj_rider2.json": {
+   "bytes": 3651,
+   "exists": true,
+   "sha256": "15321bd169ef9d7c4dd41646e965cffcdf75cf049864d4fff617c63bf8fbd40e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/ex6/ex6.jsonl": {
+   "bytes": 3004,
+   "exists": true,
+   "sha256": "fc4e8b4ba94defb37c99a65307fd28d1e987596b721ae31278e0701a1171b1b3",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/ex6/ex6_observations.json": {
+   "bytes": 3229,
+   "exists": true,
+   "sha256": "bc5e8233e2f48b49a8b0f3d2782d6626941b9e280245739003a58589c9cf7794",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/ex6/qual.jsonl": {
+   "bytes": 1017,
+   "exists": true,
+   "sha256": "08f63a04e5cef95245898de4fd8d3b2d8b339f3fe2149e255632289ac7767954",
    "source": "results",
    "tracked": true
   },

@@ -1,0 +1,135 @@
+{
+ "measurement_valid": true,
+ "start": {
+  "start_commit": "a56c80e8",
+  "start_status_porcelain": " M README.md\n M docs/figures.json\n M docs/receipts.lock.json\n M scripts/INDEX.md\n?? scratch/ex6_observe.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/ex6_observe.py": "91bde1f9cc00e376ee12be228705081185441cc2f32b2c5368a9ed09496a5701",
+   "scratch/ex6_phase.py": "1ab13f70349b7c254ff40612ad4d3543827734c22d9b0ab804debed1658ab5b2",
+   "scratch/ex6_run.sh": "b8b3d73abc527a11b89045043e1724113a3134e5bbe1f2edd9d370e0d767196a",
+   "scratch/moe_gt1_arm2.py": "916b616af8e2f44daeb01dcd9ca4e7f60b4167d8c485b69158740b16c5dedd9f"
+  }
+ },
+ "completion_commit": "a56c80e8",
+ "keepset_sha256": {
+  "checkpoints/ex3_del_invp.json": "72bf31eb44e60f3877c7de496e0987ce678d3561fe38922ff9a5cad978faef7e"
+ },
+ "arms": {
+  "none": {
+   "admissible": true
+  },
+  "all": {
+   "admissible": true
+  },
+  "prompt": {
+   "admissible": true
+  },
+  "decode": {
+   "admissible": true
+  }
+ },
+ "detail": {
+  "none_per_seed": {
+   "7001": 64,
+   "8002": 61,
+   "9003": 66
+  },
+  "deltas": {
+   "all": [
+    16,
+    18,
+    14
+   ],
+   "prompt": [
+    15,
+    19,
+    13
+   ],
+   "decode": [
+    1,
+    -3,
+    0
+   ]
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 2,
+   "metric": "n_exact_reproductions",
+   "population": "seed1001:none_v_full128+all_v_named80",
+   "aggregation": "count_of_2",
+   "provenance": "logs/ex6/qual.jsonl v2 rows v booked cells"
+  },
+  "2": {
+   "value": 48,
+   "metric": "pooled_delta",
+   "population": "all_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "provenance": "deltas [16, 18, 14]"
+  },
+  "2:signs": {
+   "value": 3,
+   "metric": "n_positive_seeds",
+   "population": "all_v_none:3seeds",
+   "aggregation": "count_of_3",
+   "provenance": "signs of [16, 18, 14]"
+  },
+  "3": {
+   "value": -2,
+   "metric": "pooled_delta",
+   "population": "decode_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "provenance": "deltas [1, -3, 0]"
+  },
+  "3:signs": {
+   "value": 1,
+   "metric": "n_positive_seeds",
+   "population": "decode_v_none:3seeds",
+   "aggregation": "count_of_3",
+   "provenance": "signs of [1, -3, 0]"
+  },
+  "4": {
+   "value": 50,
+   "metric": "abs_delta_gap",
+   "population": "all_v_decode:3seeds",
+   "aggregation": "pooled_sum",
+   "provenance": "|48 - -2|"
+  },
+  "5": {
+   "value": 47,
+   "metric": "pooled_delta",
+   "population": "prompt_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "provenance": "deltas [15, 19, 13]"
+  },
+  "5:signs": {
+   "value": 3,
+   "metric": "n_positive_seeds",
+   "population": "prompt_v_none:3seeds",
+   "aggregation": "count_of_3",
+   "provenance": "signs of [15, 19, 13]"
+  },
+  "6": {
+   "value": -49,
+   "metric": "delta_gap",
+   "population": "decode_v_prompt:3seeds",
+   "aggregation": "pooled_sum",
+   "provenance": "-2 - 47"
+  },
+  "7": {
+   "value": 3,
+   "metric": "abs_additivity_residual",
+   "population": "all_phases:3seeds",
+   "aggregation": "pooled_sum",
+   "provenance": "|48 - (47 + -2)|"
+  },
+  "refutation:delta_decode": {
+   "value": -2,
+   "metric": "delta_decode",
+   "population": "decode_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "provenance": "pooled [1, -3, 0]"
+  }
+ }
+}

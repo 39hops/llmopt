@@ -1900,6 +1900,17 @@ EX5-TRAJ-ANATOMY-0 prompt-normalized rider (desk, zero-cost, frozen by the commi
 - `mask_slots(name)`
 - `main()`
 
+### scratch/ex5_traj_rider2.py
+EX5 TRAJ rider v2 — prompt_tail-corrected (desk, frozen by this commit before any value is read; hypothesis generation only).
+
+- `mask_slots(name)`
+- `main()`
+
+### scratch/ex6_observe.py
+EX6-PHASE-0 observations builder: derives every registered measurement from logs/ex6/qual.jsonl (v2 rows) + logs/ex6/ex6.jsonl for the machine adjudicator. Delta_mode = sum over seeds 7001/8002/9003 of (gate_mode - gate_none), per the pre-reg.
+
+- `main()`
+
 ### scratch/ex6_phase.py
 EX6-PHASE-0 driver: phase-scoped named-80 deletion (PRE-REG EX6-PHASE-0 in docs/RESULTS.md; machine copy docs/preregs/ex6-phase-0.json). The frozen moe_gt1_arm2 machinery is imported, never edited; the ONLY new instrument code is the phase-scoped router patch below.
 

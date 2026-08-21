@@ -38433,3 +38433,116 @@ DECODE preserves prompt-built state and the first-token
 prediction, intervening only once a generated token is fed back;
 PROMPT changes the inherited cache/state that decode then runs on.
 
+## VERDICT EX6-PHASE-0: THE PROMPT PHASE CARRIES THE CREST — prompt-only masking recaptures the whole effect (+47 v ALL's +48, signs 3/3) while decode-only masking does nothing (-2); the decode-carry hypothesis books its REGISTERED REFUTATION and the pre-named context-assembly alternative wins (2026-08-21, Mac)
+
+Machine adjudication (scripts/adjudicate.py on
+docs/preregs/ex6-phase-0.json v logs/ex6/ex6_observations.json;
+observations by scratch/ex6_observe.py, hand-cross-checked):
+
+- BAR 1 QUALIFICATION (sanity): FIRE, 2/2 — wrapper v2 cell-exact
+  on both anchors (NONE 59 {22,19,18} = booked full128; ALL 78
+  {28,26,24} = booked ex3_del_invp; the v1 failure and its MLX
+  lazy-graph diagnosis are on the record in AMENDMENT -WRAPPER,
+  and the fail-closed launch gate re-verified both cells before
+  any treatment token).
+- BAR 2 ALL-CREST: FIRE. Delta_all = +16/+18/+14 = +48, signs 3/3
+  — the crest reproduces through the phase wrapper on its THIRD
+  independent seed triple (now +55/+43/+48; 9/9 seeds positive).
+- BAR 3 DECODE-SUFFICIENCY: NO-FIRE. Delta_decode = +1/-3/0 = -2 —
+  NO DETECTABLE EFFECT: |-2| sits far under the ~7-solve/1.5-sigma
+  resolution floor, signs 1/3. Never read as "decode masking
+  hurts"; decode-only masking of the named 80 yields nothing.
+- BAR 4 DECODE-RECAPTURE: NO-FIRE, excursion 50 v the <=10 range
+  (mechanically implied by bar 3's null).
+- BAR 5 PROMPT-SUFFICIENCY: FIRE. Delta_prompt = +15/+19/+13 =
+  +47, signs 3/3. DESCRIPTIVE post-hoc figure, not a registered
+  bar: |Delta_all - Delta_prompt| = 1 — prompt-phase masking
+  recaptures the crest to within one solve of ALL.
+- BAR 6 PHASE-SEPARATION: NO-FIRE, and the measurement is INVERTED
+  at -49 v the registered decode-minus-prompt >= +21. The REVERSE
+  direction was not registered as a bar; as a measured excursion
+  its arithmetic is robust — per-seed prompt-minus-decode
+  +14/+22/+13, 3/3, each above the resolution floor.
+- BAR 7 INTERACTION: NO-FIRE — additivity residual 3; the two
+  phase effects compose linearly at this dose.
+- REFUTED-IF: REFUTED. delta_decode = -2 <= 0, adjudicated under
+  precedence (bar 1 FIRE) and condition (bar 2 FIRE) — the first
+  live applies_only_if_bars_fire adjudication, end to end.
+
+REGISTERED PRIOR SCORED (house, on the record): the MEDIUM-
+confidence decode-carry prior scored 3 HITS / 4 MISSES (audit
+count). Hits: bars 1, 2, 7. Misses: bar 3 (expected decode
+sufficiency; measured -2), bar 4 (expected recapture <= 10;
+measured 50), bar 5 (expected no prompt sufficiency; measured +47
+signs 3/3), bar 6 (expected positive separation; measured -49) —
+misses 4 and 6 are mechanically implied by 3 and 5, not
+independent evidence, but they count.
+Bars 1/2/7 were called correctly. The winner is the NAMED
+ALTERNATIVE registered in the same prior sentence: "the
+prefill-mass story — bar 5 fires and bar 3 does not — would
+invert the mechanism reading toward context-assembly harm rather
+than generation-time harm." That is exactly what measured, and it
+was on the page before the run.
+
+READING. The named carriers hurt during CONTEXT ASSEMBLY: masking
+them while the PROMPT PHASE runs — prefill plus the prompt_tail
+step, never "prefill" alone (the PROMPT arm masks both; the
+prompt_tail step's own failure association measured nil in
+RIDER2, a separate receipt) — yields the full deletion benefit;
+masking them while tokens are generated yields nothing. The causal asymmetry note (registered pre-run,
+review-adopted): DECODE mode preserves the prompt-built state AND
+the first-token prediction — its first possible intervention is
+when a generated token is fed back; PROMPT mode changes the
+inherited cache/state that decode then runs on. So the phase arms
+are causally asymmetric, and "prompt carries the effect" means the
+carriers' damage is already present in the assembled state before
+the first generated token. The EX5 anatomy's decode-time failure
+enrichment is thereby diagnosed a SYMPTOM, not a cause: carriers
+engage at decode disproportionately on failing trajectories, but
+removing that engagement repairs nothing — the failure was seeded
+upstream. FENCES: one mask (the named 80), one dose — phase
+results do not transport to other masks without a new
+registration; single-precision 4-bit instrument — MODEL IDENTITY
+by evidence, not by receipt: the loader carries no revision pin
+(moe_gt1_arm2.MODEL is a repo name), and the pin claim rests on
+the single-snapshot cache plus the bar-1 cell-exact reproduction
+of two booked cells, which is strong indirect evidence the same
+snapshot loaded; "prompt
+carries the effect" never becomes "prefill selections cause
+failure" (the arm masks ROUTING, and what changes is the entire
+downstream state trajectory); masked-phase recall values are
+phase-conditional and never comparable across modes; seeds
+7001/8002/9003 now SPENT.
+
+RECEIPTS. logs/ex6/qual.jsonl (4 rows: the v1 FAILED pair
+preserved as record + the v2 cell-exact pair), logs/ex6/ex6.jsonl
+(12 rows, streamed), logs/ex6/ex6_observations.json; instrument
+scratch/ex6_phase.py (v2) + scratch/ex6_run.sh (fail-closed gate;
+its GATE line opens jobs/ex6run.log); frozen machinery
+scratch/moe_gt1_arm2.py imported unmodified;
+scratch/ex6_observe.py (untracked at run time, sha recorded in the
+observations start block) commits with this booking. Both auditors
+ran pre-booking; findings disclosed in the booking commit.
+DISCLOSURES: the pre-reg smoke line said PROMPT recall covers
+"prefill calls only" — PROMPT masks prefill AND prompt_tail
+(wording slip in the registration, not a measurement error); the
+WRAPPER amendment's lazy-graph diagnosis is corroborated by wall
+time (v1 NONE gate_s 100.2 v v2 NONE 266.8 — the forced .tolist()
+evaluation cost, visible in the qualification receipt itself);
+the registered smoke rows are V1-WRAPPER artifacts (3 modes, no
+ALL smoke), superseded by the v2 qualification + treatment;
+instrument hashes in the observations start block were taken
+post-run — the commit-boundary check compensates (treatment
+spanned 7bf4dea2..a56c80e8, whose diff touches ZERO instrument
+files, and moe_gt1_arm2.py is clean v HEAD); the keepset content
+is pinned in the observations doc (sha 72bf31eb..., matching the
+file the run read) and the keepset json commits with this
+booking; the observations file was regenerated once pre-booking
+(OBS_OVERWRITE=1, this repair) with all values and bar outcomes
+identical. Follow-up landing post-booking so the as-run
+instrument sha stays truthful: a LOG-path floor assert in
+ex6_phase.py (the inherited default LOG would append into a
+GT1-era frozen file if a launcher ever omitted LOG=; every real
+invocation set it, and the fail-closed treatment gate would have
+caught a duplicate-append).
+
