@@ -1,0 +1,78 @@
+{
+ "note": "GRF-NOTHINK audit rider: correct-producer provenance, strict MCQ extraction census, matched-horizon thinking-v-answering contrasts",
+ "start": {
+  "start_commit": "d46840fa",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/grf_rider2.py": "40045757408d88708847e2e055c71e1cecd10015dc06e0c799999dc6ed99a362",
+   "scratch/grf_capture2.py": "0e1e932eb88adfc76c2cb2732ce47037931bf676968ee54f2f74d4d2c5d9391e",
+   "scratch/grf_analyze2.py": "c4394ffe76a21eb1282b7ffd292c65010e1ee44bc7e5ddfe5a7a9d065e5a6ba9",
+   "scratch/grf_corpus.py": "3e88e60f7dde083f1d11255c224bb45900486e2e6decaee4868bcf4ea3f4ab1a"
+  }
+ },
+ "completion_commit": "d46840fa",
+ "provenance": {
+  "traj_nothink_sha256": "2fe865fcebc566fc8ba5bdc6ca0df06a3dca7ce991881bf5a6e61a4485ce62a0",
+  "rows_nothink_sha256": "d83ac7c82b6909fa5c041bd54f99b92674e5fe8ce525d2f66a160f708a069c47",
+  "traj_rows": 701808,
+  "phase_counts": {
+   "prefill": 324432,
+   "prompt_tail": 9600,
+   "decode": 367776
+  },
+  "n_layers": 48,
+  "n_prompts": 200,
+  "gen_len_median": 30,
+  "n_at_ceiling": 20
+ },
+ "mcq_strict_extraction": {
+  "regex": "(?:^|answer\\s+is\\s+|answer\\s*[:\\-]\\s*)\\s*\\**\\s*([A-D])\\b",
+  "n_mcq": 40,
+  "n_anchored_answer": 32,
+  "letters": {
+   "A": 10,
+   "B": 6,
+   "C": 9,
+   "D": 7
+  }
+ },
+ "matched_horizon_contrasts": {
+  "nothink": {
+   "N8": {
+    "topic": 0.1441,
+    "form": 0.0987
+   },
+   "N16": {
+    "topic": 0.1663,
+    "form": 0.0809
+   },
+   "N24": {
+    "topic": 0.1752,
+    "form": 0.0769
+   },
+   "N32": {
+    "topic": 0.1797,
+    "form": 0.0708
+   }
+  },
+  "thinking": {
+   "N8": {
+    "topic": 0.0025,
+    "form": 0.0513
+   },
+   "N16": {
+    "topic": 0.0468,
+    "form": 0.0462
+   },
+   "N24": {
+    "topic": 0.0653,
+    "form": 0.0362
+   },
+   "N32": {
+    "topic": 0.0662,
+    "form": 0.0373
+   }
+  }
+ }
+}

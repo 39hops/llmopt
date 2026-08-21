@@ -39081,3 +39081,57 @@ per-token pairing; per-topic heterogeneity (factual_qa weakness)
 not yet recomputed for this capture — rider-class census carries
 to the next desk pass if the depth rung proceeds.
 
+## AMENDMENT GRF-NOTHINK-0-RECEIPTS (target: OBSERVATION GRF-NOTHINK-0): provenance defect disclosed and repaired by rider; "stronger topic organization" narrowed to the contrast metric; two treatment fences recorded; and the matched-horizon rider finds the regime difference PRESENT FROM THE FIRST 8 DECODE TOKENS — thinking starts topic-free and converges, answering routes topic immediately (2026-08-21, Mac, desk)
+
+External audit (GPT seat) + the frozen rider
+(scratch/grf_rider2.py, receipt logs/grf/rider2.json):
+
+1. PROVENANCE DEFECT, disclosed not rewritten: grf_analyze2.py's
+   start block fingerprints grf_capture.py (inherited from the
+   byte-copied original) — the ACTUAL producer of its inputs is
+   grf_capture2.py. The rider receipt pins the true producer and
+   the durable NOTHINK provenance: traj_nothink sha + 701,808
+   rows, phase counts, 48 layers / 200 prompts covered, gen-len
+   median 30, 20/200 at ceiling.
+2. STRICT MCQ EXTRACTION (frozen regex, first anchored letter):
+   32/40 MCQ completions carry an anchored answer; 8 book
+   NO-ANSWER. The prior census's "40/40 contain a letter" was
+   letter-presence, not answer-anchoring — answer-identity
+   readiness is 32/40 under the frozen extractor, and scoring
+   remains a separate registration.
+3. WORDING NARROWED: "answering makes topic organization
+   stronger" holds for the REGISTERED CONTRAST METRIC only
+   (0.1505 -> 0.1856); held-out topic centroid accuracy FELL
+   0.760 -> 0.700 and form accuracy ROSE 0.54 -> 0.705. The
+   geometry CHANGED — tighter topic clustering by contrast,
+   less centroid-separable, more form-visible — not uniformly
+   strengthened.
+4. TREATMENT FENCES recorded: (a) enable_thinking=False acts by
+   CHANGING THE GENERATION TEMPLATE (an explicit empty think
+   scaffold), so the PREFILL is directly treated too — prefill
+   contrasts differ between captures (0.0572/0.0638 v
+   0.0473/0.0571) consistently with that; (b) vendor guidance
+   warns against greedy thinking-mode decoding, so GRF-0's
+   thinking-regime reads scope to the REGISTERED greedy/96-token
+   configuration, never to deliberation generally.
+5. MATCHED-HORIZON RIDER (decode-only contrasts on the first N
+   decode tokens, both captures):
+
+     N    thinking T/F        nothink T/F
+     8    0.0025 / 0.0513     0.1441 / 0.0987
+     16   0.0468 / 0.0462     0.1663 / 0.0809
+     24   0.0653 / 0.0362     0.1752 / 0.0769
+     32   0.0662 / 0.0373     0.1797 / 0.0708
+
+   The thinking-v-answering difference is NOT an artifact of long
+   generations adding traffic: it is maximal at the START.
+   Thinking-mode decode routing begins essentially TOPIC-FREE
+   (0.0025 at N=8 — the generic deliberation opening) and
+   converges toward topic structure with generation time;
+   answering routes the topic from the first tokens. This is a
+   TIME-RESOLVED routing signature — the [[TIME-AS-STRUCTURE]]
+   bank's first measured bridge: topic-informativeness of routing
+   as a function of position-in-generation is a regime property.
+
+No booked value or expectation adjudication changes.
+
