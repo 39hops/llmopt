@@ -1,0 +1,67 @@
+{
+ "note": "EX5 pinned model snapshot manifest",
+ "repo": "mlx-community/Qwen3-30B-A3B-4bit",
+ "revision": "d388dead1515f5e085ef7a0431dd8fadf0886c57",
+ "files": {
+  ".gitattributes": {
+   "sha256": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930",
+   "bytes": 1570
+  },
+  "README.md": {
+   "sha256": "7e7d124f25a1edbb6acda5bf6f60905356607d87ab93b2961166a262ad2fabe7",
+   "bytes": 897
+  },
+  "added_tokens.json": {
+   "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+   "bytes": 707
+  },
+  "config.json": {
+   "sha256": "5a5fdac36fffb64ead4a539e0cd4ca865105a01298d62f3346e407c25e6ff3e6",
+   "bytes": 1190
+  },
+  "merges.txt": {
+   "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+   "bytes": 1671853
+  },
+  "model-00001-of-00004.safetensors": {
+   "sha256": "18e9a14cae093ba31a9033f065a9815d048dd46ee5b3550a4804f0c11edc5d40",
+   "bytes": 5319507366
+  },
+  "model-00002-of-00004.safetensors": {
+   "sha256": "b4d2137faf0903ab2bdaeebda18e8ce201af08c6a07bc732ed2d437cf327e321",
+   "bytes": 5364678660
+  },
+  "model-00003-of-00004.safetensors": {
+   "sha256": "345483f1cd9ba445a764330cccf3f5545c59bbc02f4ec38eac842f200e445ddc",
+   "bytes": 5274790383
+  },
+  "model-00004-of-00004.safetensors": {
+   "sha256": "2d41885ffa0a1f4edd67def6208573d92afdbbf6f49eee39a13a16fb89bad956",
+   "bytes": 1215804259
+  },
+  "model.safetensors.index.json": {
+   "sha256": "d8c5294637ef27a946db4c76f708895fa4907f96e93d5a0c8c0f1ca995ec9db9",
+   "bytes": 119557
+  },
+  "special_tokens_map.json": {
+   "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+   "bytes": 613
+  },
+  "tokenizer.json": {
+   "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+   "bytes": 11422654
+  },
+  "tokenizer_config.json": {
+   "sha256": "253153d0738ceb4c668d2eff957714dd2bea0b56de772a9fdccd96cbf517e6a0",
+   "bytes": 9706
+  },
+  "vocab.json": {
+   "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+   "bytes": 2776833
+  }
+ },
+ "versions": {
+  "mlx": "0.31.2",
+  "mlx-lm": "0.31.3"
+ }
+}

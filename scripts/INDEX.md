@@ -1876,6 +1876,13 @@ EX5-LAYERMATCH subject builder (the missing control cell after EX4-UNIF: fixed l
 - `layer_family(j)`
 - `main()`
 
+### scratch/ex5_manifest.py
+EX5 mask manifest (desk): the committed identity record for the six EX5 deletion masks, so the prereg's operands consume a COMMITTED artifact rather than ephemeral gitignored checkpoint files.
+
+- `sha(p)`
+- `deleted_slots(path)`
+- `main()`
+
 ### scratch/exact1_small_cells.py
 EXACT1-SMALL: d8/d16 ladder+anchor cells on axiom's ENGINE-EXACT-1.
 

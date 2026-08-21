@@ -37897,3 +37897,99 @@ build" and "restored" are the measured conjunction — no claim
 about which allocator mechanism; wall numbers gate nothing
 anywhere.
 
+## PRE-REG EX5-LAYERMATCH-0: fixed layer profile, rank-unrestricted identity — the missing EX4-UNIF control cell (2026-08-20, Mac)
+
+QUESTION. EX4-UNIF left the uniform read split (unif0 +19 v unif1 -1,
+one solve under the +21 bar) with layer profile, rank class, and
+demand share all varying at once between draws. This rung holds the
+layer profile fixed at the named-80's exact per-layer deletion
+counts and varies ONLY expert identity within layer, in two
+families: rank-window-matched (the frozen ex3 draw rule, fresh
+seeds) v layer-only uniform. Does the rank-matched benefit (+28
+booked, rand0) come from rank-window/high-demand selection, or does
+layer placement + count alone reproduce it?
+
+INSTRUMENT. The 120-item mathgen L1-3 gate (scratch/gt7_run.py,
+one 30B load per seed, PERPROB=1), model
+mlx-community/Qwen3-30B-A3B-4bit PINNED at revision
+d388dead1515f5e085ef7a0431dd8fadf0886c57 (re-downloaded 2026-08-20
+after the local snapshot was wiped; full per-file sha256 manifest +
+mlx 0.31.2 / mlx-lm 0.31.3 in logs/ex5/model_manifest.json). Eval
+seeds 4001/5002/6003 — verified UNSPENT (zero RESULTS hits) before
+registration. Masks: six frozen keepsets, exact deleted slots +
+keepset/source shas committed in logs/ex5/mask_manifest.json
+(builder scratch/ex5_build.py, deterministic string seeds, named
+carriers EXCLUDED from every draw — the mask census caught 1 named
+slot inside ex4_del_unif1 and 2 inside ex4_del_top80); pairwise
+family overlap 8-12/80 (rank) and 1-2/80 (layer), so n_mask=3 is
+three genuine draws. Composition receipts:
+logs/ex4/mask_census.json + mask_census_ex5.json — demand_share
+reproduces the booked recall figures exactly (2.47/1.63/1.08/9.56%),
+pinning the instrument identity.
+
+DEFINITIONS (registered). Delta_m = sum over the three eval seeds of
+(gate_m - gate_full128), per mask. A mask CLEARS a threshold when
+its Delta meets it AND its three per-seed deltas are same-sign 3/3.
+Masks are the mechanism replication unit (n_mask=3 per family);
+seeds are paired repeats; 24 cells are never n=24 independent
+evidence.
+
+ARMS. full128, named80 (ex3_del_invp), rank0/1/2 (ex5_del_rank*),
+layer0/1/2 (ex5_del_layer*). 8 arms x 3 seeds = 24 fresh gates
+(~2h), preceded by a QUALIFICATION pass.
+
+BARS (machine copy docs/preregs/ex5-layermatch-0.json — first live
+use of the operands field; providers verified at load):
+1. QUALIFICATION (sanity): seed-1001 full128 reproduces 59 AND old
+   ex3_del_rand0 reproduces 70, cell-exact, on the pinned snapshot.
+   Any mismatch = INSTRUMENT-INVALID; EX5 aborts pre-treatment and
+   the session pivots to STABILITY-ATLAS. 2/2 to pass.
+2. LAYER-GENERIC: >=2/3 layer masks clear +21. FIRE = layer-profile
+   deletion alone helps.
+3. RANK-FAMILY: >=2/3 rank masks clear +21. FIRE = the rand0 class
+   transports (rand0 was not a lucky mask).
+4. FAMILY-SEPARATION: median(rank Delta) - median(layer Delta) >=
+   +21 AND min(rank) > max(layer) (non-overlap conjunct). Median
+   clearing with overlapping ranges books as direction-only.
+5. NAMED-CREST: named80 - full >= +21 pooled, signs 3/3, on the
+   fresh triple.
+6. IDENTITY-PREMIUM: >=2/3 rank masks with pooled
+   (named80 - rank_mask) >= +21 and signs 3/3.
+7. RANK-TRANSPORT (range, non-suppressing): |median(rank Delta) -
+   28| <= 10 — the booked rand0 read as a range prediction, never
+   an instrument anchor; an excursion is a result.
+8. DRAW-SPREAD (range, diagnostic): within-family range >= 21 in
+   either family flags that family's read as draw-dominated (the
+   unif0/unif1 lesson as a registered gate). Its FIRE does NOT
+   suppress bar 4 when bar 4's non-overlap conjunct holds.
+
+REFUTED-IF (predicate registered, precedence: adjudicated only when
+bar 1 holds): rank-local over-inclusion is refuted if the rank
+family clears (bar 3) while median(rank) - median(layer) < 10 (the
+~1.5-sigma house pair floor) — layer placement + count reproduce
+the rank-matched benefit; over-inclusion is generic at this
+profile.
+
+REGISTERED PRIOR (house, on the record): bar 1 exact (zero-drift
+precedent, EX4-UNIF riders); bar 5 fires; bar 3 fires at 2/3+ with
+medians high-teens-to-high-20s; bar 2 does NOT fire (layer family 0
+to low teens, one mask near zero); bar 4 fires on median, the
+non-overlap conjunct a coin flip; bar 7 holds; bar 8 fires for the
+layer family. Net: rank-window/high-demand selection matters beyond
+layer placement; the refutation predicate does not trip.
+
+FENCES. Mac only, this session; no 3080/WSL. Single-precision
+instrument: every number lives on the pinned 4-bit artifact; no
+cross-precision comparison (PRECISION-CREST-TRANSPORT is banked and
+SEQUENCED behind this rung). INTERPRETATION FENCE (registered):
+rank-window masks also delete ~2x the pooled demand of layer-only
+masks (2.35-2.60% v 1.26-1.42% demand share, census) — a family
+separation reads "rank-window/high-demand selection matters beyond
+layer placement", never "rank causally isolated"; demand share is a
+disclosed covariate, not a matched variable. Seeds 4001/5002/6003
+are virgin at registration and spent by this rung. Receipts:
+logs/ex5/qual.jsonl, logs/ex5/ex5.jsonl,
+logs/ex5/ex5_observations.json (refuse-if-exists paths; a wall-kill
+books surviving cells + NOT-RUN for the rest). Wording fence: bars
+2/3/6 counts are of MASKS (mechanism units), never of cells.
+

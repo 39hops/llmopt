@@ -1,0 +1,224 @@
+{
+ "name": "EX5-LAYERMATCH-0",
+ "results_id": "2026-08-20-pre-reg-ex5-layermatch-0-fixed",
+ "registered": "2026-08-20",
+ "machine": "mac",
+ "note": "The missing EX4-UNIF control cell: fixed layer profile, rank-unrestricted identity. Delta_m = sum over eval seeds 4001/5002/6003 of (gate_m - gate_full), per mask; a mask CLEARS a bar when its Delta meets the threshold AND its per-seed deltas are 3/3 same-sign. Masks are the mechanism replication unit (n_mask=3 per family); eval seeds are paired repeats; the 24 cells are never n=24 independent evidence. INTERPRETATION FENCE (registered): rank-window masks also delete ~2x the pooled demand of layer-only masks (manifest: 2.35-2.60% v 1.26-1.42% demand share), so a family separation reads 'rank-window/high-demand selection matters beyond layer placement', never 'rank rank-causally isolated'. Bar 8 DRAW-SPREAD is diagnostic: its FIRE flags a family read as draw-dominated but does NOT suppress bar 3 when bar 3's non-overlap conjunct holds. Bar 7 RANK-TRANSPORT is a non-suppressing range prediction on the historical +28 (rand0), not an instrument anchor.",
+ "arms": {
+  "full128": {
+   "description": "all-128 keepset (checkpoints/ex1_full128.json), the paired baseline in every Delta"
+  },
+  "named80": {
+   "description": "named-80 carrier deletion (checkpoints/ex3_del_invp.json)"
+  },
+  "rank0": {
+   "description": "fresh rank-window-matched mask ex5_del_rank0 (seed ex5-rank-0, manifest sha)"
+  },
+  "rank1": {
+   "description": "fresh rank-window-matched mask ex5_del_rank1 (seed ex5-rank-1)"
+  },
+  "rank2": {
+   "description": "fresh rank-window-matched mask ex5_del_rank2 (seed ex5-rank-2)"
+  },
+  "layer0": {
+   "description": "layer-only uniform mask ex5_del_layer0 (seed ex5-layer-0)"
+  },
+  "layer1": {
+   "description": "layer-only uniform mask ex5_del_layer1 (seed ex5-layer-1)"
+  },
+  "layer2": {
+   "description": "layer-only uniform mask ex5_del_layer2 (seed ex5-layer-2)"
+  }
+ },
+ "operands": [
+  {
+   "name": "mask_identities",
+   "provider": "logs/ex5/mask_manifest.json"
+  },
+  {
+   "name": "mask_composition",
+   "provider": "logs/ex4/mask_census_ex5.json"
+  },
+  {
+   "name": "named_carriers",
+   "provider": "checkpoints/ex3_inv_pooled.json"
+  },
+  {
+   "name": "pooled_demand_table",
+   "provider": "checkpoints/moe_gt1_arm0.json"
+  },
+  {
+   "name": "gate_instrument",
+   "provider": "scratch/gt7_run.py"
+  },
+  {
+   "name": "mask_producer",
+   "provider": "scratch/ex5_build.py"
+  }
+ ],
+ "receipts": [
+  "logs/ex5/qual.jsonl",
+  "logs/ex5/ex5.jsonl",
+  "logs/ex5/ex5_observations.json"
+ ],
+ "bars": [
+  {
+   "id": 1,
+   "name": "QUALIFICATION",
+   "gate_class": "sanity",
+   "metric": "n_exact_reproductions",
+   "population": "seed1001:full128+ex3_del_rand0",
+   "aggregation": "count_of_2",
+   "direction": "above",
+   "value": 2,
+   "arms": [
+    "full128"
+   ],
+   "description": "seed-1001 full128 must reproduce 59 and old ex3_del_rand0 must reproduce 70, cell-exact, on the pinned re-downloaded snapshot. Any mismatch = INSTRUMENT-INVALID, EX5 aborts pre-treatment, pivot to STABILITY-ATLAS."
+  },
+  {
+   "id": 2,
+   "name": "LAYER-GENERIC",
+   "metric": "n_masks_clearing_plus21",
+   "population": "layer_family:3masks",
+   "aggregation": "count_of_3",
+   "direction": "above",
+   "value": 2,
+   "arms": [
+    "layer0",
+    "layer1",
+    "layer2",
+    "full128"
+   ],
+   "description": ">=2/3 layer masks each Delta >= +21 with per-seed signs 3/3: layer-profile deletion alone helps."
+  },
+  {
+   "id": 3,
+   "name": "RANK-FAMILY",
+   "metric": "n_masks_clearing_plus21",
+   "population": "rank_family:3masks",
+   "aggregation": "count_of_3",
+   "direction": "above",
+   "value": 2,
+   "arms": [
+    "rank0",
+    "rank1",
+    "rank2",
+    "full128"
+   ],
+   "description": ">=2/3 rank masks each Delta >= +21 with signs 3/3: was historical rand0 a lucky mask?"
+  },
+  {
+   "id": 4,
+   "name": "FAMILY-SEPARATION",
+   "metric": "median_delta_gap",
+   "population": "rank_v_layer:3v3masks",
+   "aggregation": "median_over_masks",
+   "direction": "above",
+   "value": 21,
+   "arms": [
+    "rank0",
+    "rank1",
+    "rank2",
+    "layer0",
+    "layer1",
+    "layer2",
+    "full128"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "4:nonoverlap_margin",
+     "direction": "above",
+     "value": 1
+    }
+   ],
+   "description": "median(rank Delta) - median(layer Delta) >= +21 AND min(rank Delta) > max(layer Delta) (non-overlap conjunct, margin >= 1). Median clearing with overlapping ranges books as direction-only, not a FIRE."
+  },
+  {
+   "id": 5,
+   "name": "NAMED-CREST",
+   "metric": "pooled_delta",
+   "population": "named80_v_full:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 21,
+   "arms": [
+    "named80",
+    "full128"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "5:n_positive_seeds",
+     "direction": "above",
+     "value": 3
+    }
+   ],
+   "description": "named80 - full >= +21 pooled with signs 3/3 on the fresh triple: the crest itself replicates off seeds 1001/2002/3003."
+  },
+  {
+   "id": 6,
+   "name": "IDENTITY-PREMIUM",
+   "metric": "n_masks_clearing_premium",
+   "population": "named_v_rank_family:3masks",
+   "aggregation": "count_of_3",
+   "direction": "above",
+   "value": 2,
+   "arms": [
+    "named80",
+    "rank0",
+    "rank1",
+    "rank2"
+   ],
+   "description": "for >=2/3 rank masks, pooled (named80 - rank_mask) >= +21 with signs 3/3: carrier identity beats its own rank class."
+  },
+  {
+   "id": 7,
+   "name": "RANK-TRANSPORT",
+   "gate_class": "range",
+   "metric": "abs_median_dev_from_28",
+   "population": "rank_family:3masks",
+   "aggregation": "median_over_masks",
+   "direction": "below",
+   "value": 10,
+   "arms": [
+    "rank0",
+    "rank1",
+    "rank2",
+    "full128"
+   ],
+   "description": "non-suppressing range prediction: |median(rank Delta) - 28| <= 10 (the booked rand0 read transports to fresh masks and fresh seeds). An excursion is a result, never an instrument alarm."
+  },
+  {
+   "id": 8,
+   "name": "DRAW-SPREAD",
+   "gate_class": "range",
+   "metric": "max_family_range",
+   "population": "both_families:worst",
+   "aggregation": "range_over_masks",
+   "direction": "above",
+   "value": 21,
+   "arms": [
+    "rank0",
+    "rank1",
+    "rank2",
+    "layer0",
+    "layer1",
+    "layer2",
+    "full128"
+   ],
+   "description": "diagnostic: within-family mask range >= 21 in either family flags that family's read as draw-dominated (the unif0/unif1 lesson as a registered gate). Does NOT suppress bar 4 when bar 4's non-overlap conjunct holds."
+  }
+ ],
+ "refuted_if": "The rank-local over-inclusion hypothesis is REFUTED if the rank family clears (bar 3 FIRES) while family separation fails at the resolution floor: median(rank Delta) - median(layer Delta) < 10 (below the ~1.5-sigma house pair resolution) \u2014 i.e. layer placement + count reproduces the rank-matched benefit and over-inclusion is generic at this layer profile, not rank-local. Adjudicated only when the sanity qualification holds (precedence).",
+ "refuted_if_predicate": {
+  "measurement": "refutation:separation_median",
+  "direction": "below",
+  "value": 10
+ },
+ "refutation_precedence": {
+  "suppressed_unless_bars_fire": [
+   1
+  ]
+ },
+ "registered_prior": "House, on the record: bar 1 passes exact (the gate reproduced zero-drift once before, EX4-UNIF riders); bar 5 fires (crest is real, +55 on the old triple); bar 3 fires at 2/3 or 3/3 with medians in the high teens-to-high-20s (rand0/rand1 class transports); bar 2 does NOT fire (layer family lands 0 to low teens, at least one mask near zero); bar 4 fires on median but the non-overlap conjunct is genuinely uncertain (coin flip); bar 7 holds; bar 8 fires for the layer family (uniform draws spread, the unif0/unif1 precedent). Net prediction: rank-window/high-demand selection matters beyond layer placement, and the refutation predicate does NOT trip."
+}
