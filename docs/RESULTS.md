@@ -39524,3 +39524,58 @@ capture and cell receipts stream per problem to
 logs/ex6med/ (refuse-if-exists; SMOKE to smoke_* paths). Driver
 frozen by commit before launch.
 
+## AMENDMENT EX6-MED-0-SEMANTICS: pre-read correction of the causal boundary from the capture shape census — interpretation renamed, one prior rationale withdrawn, numeric prior and driver unchanged (2026-08-21, mac)
+
+Amends PRE-REG EX6-MED-0, booked BEFORE any treatment value is
+read (the cells run is live; nothing from cells.jsonl,
+cells.log, qual.jsonl, or summary.json has been opened; the only
+run artifacts read are the outcome-blind capture pass and its
+shape census, which the prereg registered as pre-read).
+
+CORRECTED PHASE SEMANTICS (measured, capture shape census, both
+states, seed 7001 problem 0): mlx_lm processes the ENTIRE prompt
+as one batch call per layer (n_tokens=61 'prefill' x48) and
+token-1 is sampled from that batch's last-position logits. The
+first T=1 call therefore routes GENERATED token z1 (producing
+token-2 logits), not the last prompt position. Consequently, for
+the booked EX6-PHASE-0 instrument: EX6-PROMPT = prompt-batch mask
+PLUS token-1-routing mask; EX6-DECODE begins at token-2's routing
+and NEVER masked z1's routing. This is a scope note on the
+EX6-PHASE-0 verdict's arm definitions, not a change to any of its
+numbers.
+
+INTERPRETATION RENAMES (the live 2x2 is preserved; cells and
+bars unchanged):
+- (PROMPT, z_NONE) - (NONE, z_NONE), BAR 1's contrast, is the
+  PROMPT intervention's DIRECT / non-first-token-identity
+  pathway: it bundles prompt-position routing and z1's own
+  routing, and must not be read as pure "prompt-built state".
+- (NONE, z_PROMPT) - (NONE, z_NONE), BAR 2's contrast, remains
+  first-token-IDENTITY mediation, unchanged.
+
+PRIOR RATIONALE WITHDRAWN, NUMBER KEPT: the registered prior's
+supporting sentence "one launch token cannot account for +47 when
+DECODE masking of EVERY generated token moved -2" is withdrawn —
+under corrected semantics DECODE never masked z1's routing, so
+the EX6-DECODE null does not constrain a token-1-specific
+mechanism. The numeric prior itself (BAR 1 fires >= 2/3 Delta,
+BAR 2 < 1/3 Delta, D1 in 30-90) stands unchanged on the record.
+
+STATE DEFINITION AMENDED: the forcing implementation processes
+prompt + forced z as one batch, so the comparison state in the
+crossed cells is the state AFTER mediator consumption, not
+"before any generated token is consumed" as the prereg's abstract
+definition read.
+
+DIAGNOSTIC SCOPE NOTE: token-identity qualification is
+implemented for seed 7001 (as registered); the 8002/9003
+diagonals gate on cell-exact counts only, so no all-seed
+token-identity table exists to report descriptively.
+
+REGISTERED FOLLOW-UP (banked, not fired): if the direct pathway
+carries the crest, the decisive localization rung is a clean 2x2
+of prompt-batch mask x token1-routing mask (NONE / PREFILL-ONLY /
+TOKEN1-ONLY / PROMPT), which the corrected semantics make
+well-posed; the ex6med BATCH predicate already implements
+PREFILL-ONLY.
+
