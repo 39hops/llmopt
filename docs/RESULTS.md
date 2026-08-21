@@ -38611,3 +38611,60 @@ implementation decision at K=48, which belongs to Artin.
 RECEIPTS. logs/routedb/replay_receipt.json (driver
 scratch/routedb_replay.py, frozen at 66db693b).
 
+## AMENDMENT ROUTE-DB-REPLAY-0-SIM (target: OBSERVATION ROUTE-DB-REPLAY-0): five simulator/wording repairs — the robust pricing read is plain LRU@K48 (63.7-103.7 MB/decode-token, all six traces, zero fitted table); phase-static numbers are lower bounds (uncharged phase-boundary table churn); the Belady variant is not a ceiling; the prefetch depth claim retracts; K48 "promotes" is descriptive, the registered K<=32 read SPLIT (2026-08-21, Mac, desk)
+
+External review (GPT seat), each point verified against the
+receipt and the frozen driver before adoption:
+
+1. ROBUST READ RESTATED. Plain LRU at K=48 — no fitted table, no
+   phase knowledge — already holds decode misses at
+   91.0 / 80.9 / 103.7 / 80.9 / 88.4 / 63.7 MB/token on
+   math/code/phys/proofs/prose/dialog. That zero-fit row is the
+   pricing result least exposed to the fences below. The
+   observation's "best implementable 26.1-99.5" also mis-picked
+   prose (LRU 88.4 beats phase-static 99.5 there); per-trace best
+   implementable is 45.6/33.5/26.1/31.0/88.4/42.6. And "every
+   implementable policy 26-100 at K48" in the bank overstated:
+   several K48 policies exceed 100 (phys LRU 103.7 among them) —
+   the sentence is now "LRU@K48 works across all six".
+2. PHASE-STATIC TRANSITION CHURN UNCHARGED. The static policies
+   test table membership only; swapping the prefill table for the
+   decode table at each phase boundary loads the table DIFFERENCE
+   (up to K=48 x 2.654 MB x diff-fraction per boundary, per
+   layer) and the simulator charged zero for it. All PHASE-STATIC
+   numbers are therefore LOWER BOUNDS; a corrected replay must
+   charge exact table-difference bytes (with a separate credited
+   read only if a deadline/overlap model proves the churn hidden
+   under prefill).
+3. BELADY VARIANT IS NOT A CEILING. The implemented Belady is
+   insert-on-miss with clairvoyant eviction, while the static
+   policies effectively bypass (miss-stream without insertion)
+   and start preloaded — a strictly larger policy class.
+   "Phase-static ties/beats the clairvoyant ceiling" RETRACTS to
+   "ties/beats the insert-on-miss Belady variant"; a
+   BELADY-BYPASS with equal warm-start semantics, asserted <=
+   every implementable policy, is required before any ceiling
+   sentence returns.
+4. PREFETCH DEPTH CLAIM RETRACTED. The d=1/2/4 arms all consult
+   the same previous-token same-layer set (d only excludes layers
+   < d), so "flat in lookahead depth" measured one predictor
+   three times. The real booked read: previous-token same-layer
+   reuse = 0.40-0.54 precision/recall. A depth claim needs an
+   async deadline replay that charges false-positive bytes and
+   asks whether predicted reads complete before each layer
+   executes.
+5. REGISTERED-V-DESCRIPTIVE. The frozen promotion read named
+   K<=32; it SPLIT (phase-static 3/6). "Promotes at K=48" is a
+   descriptive post-hoc reading — kept, labeled as such; the kill
+   bar remains untriggered. Portability fence added: MB/token is
+   the portable quantity; the ms stall columns are Mac-SSD-priced
+   and never attach to a 3080 claim — once 3080 work resumes,
+   expert-sized NVMe->host->pinned-H2D under concurrent decode is
+   the number to measure before any implementation call.
+
+Next rung re-pointed (review-adopted): within-domain deterministic
+prompt holdouts FIRST (fit STATIC/PHASE-STATIC on train prompts,
+replay unseen same-domain prompts, all six traces), then the 6x6
+cross-domain transport matrix; sharp target = can transported,
+correctly-charged phase knowledge make K32 behave like plain K48.
+
