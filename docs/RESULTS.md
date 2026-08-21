@@ -39708,3 +39708,90 @@ House recommendation: (c). Files: scratch/ex6med2.py,
 logs/ex6med/qual2.jsonl (committed), logs/ex6med/summary2.json +
 cells2.jsonl (untracked, sealed).
 
+## PRE-REG EX6-LOC-0: which physical component of EX6-PROMPT carries the +47 crest — native-path 2x2 of prompt-batch mask x token1-routing mask (2026-08-21, mac)
+
+Supersedes the mediation approach: EX6-MED-0 is RETIRED as a
+failed forcing instrument (two qualification failures, -QUALFAIL
+and -QUALFAIL-2); it will not be rescued with a post-unblind
+relaxed bar, and run-2 cells stay sealed except as explicitly
+tainted observation if ever needed. Postmortem fence, narrowed
+per external review: the TWO TESTED forcing-v-native code paths
+failed exact token identity under numerical/evaluation-order
+sensitivity — no claim generalizes to any two generation code
+paths. The D1 = 111/360 census stands as a valid DESCRIPTIVE
+intervention->z1 effect (the PROMPT mask changes the first-token
+choice on ~31% of problems), not as mediation evidence.
+
+Interpretation note, registered up front: TOKEN1_ONLY is NOT
+first-token-identity mediation. z1 is sampled from the
+prompt-batch logits BEFORE the first T=1 call; masking that call
+changes the ROUTING of the already-fixed z1 (and thereby
+token2+), never z1's identity. This rung asks which physical
+component of the EX6-PROMPT intervention carries the crest.
+
+Corrected semantics carried (frozen scratch/ex6_phase.py is
+results-cited and stays untouched; its docstring label
+"prompt_tail (the one that predicts the first token)" is
+superseded by the measured mlx_lm behavior booked in AMENDMENT
+EX6-MED-0-SEMANTICS): the prompt batch routes all prompt tokens
+and produces z1's logits; the first T=1 call routes GENERATED z1
+and produces z2's logits. The label prompt_tail is kept for
+receipt compatibility only, and the new driver's docstring
+carries the corrected definition.
+
+Instrument: the frozen EX6 stack, NATIVE generation path only —
+no forced tokens anywhere. scratch/moe_gt1_arm2.py run_gate,
+120 problems/seed, seeds 7001/8002/9003, named-80 keepset
+(sha 72bf31eb...), same MODEL/MAX_TOKENS/oracle, greedy. Arms
+(mask predicate over the frozen wrapper's phases):
+  NONE          no call masked
+  PREFILL_ONLY  mask phase == prefill (the prompt batch)
+  TOKEN1_ONLY   mask phase == prompt_tail (= generated z1's
+                routing)
+  PROMPT        mask both (the booked EX6-PROMPT arm)
+Arm order per seed: NONE, PROMPT first (qualification), then
+PREFILL_ONLY, TOKEN1_ONLY.
+
+QUALIFICATION (fail-closed, blocks the two NEW arms): NONE must
+reproduce 64/61/66 and PROMPT 79/80/79 EXACTLY per seed, through
+this driver. These arms run the same code path as the booked EX6
+cells (same wrapper math, same generator), so exact counts are
+the demonstrated-reachable bar (EX6 itself requalified
+cell-exact). A mismatched seed invalidates that seed; a mismatch
+on 2+ seeds invalidates the run.
+
+PRIMARY READS (pooled across qualified seeds, per-seed dicts and
+signs booked alongside; paired per-problem transition tables for
+each contrast):
+  Delta_prefill = PREFILL_ONLY - NONE
+  Delta_token1  = TOKEN1_ONLY - NONE
+  Interaction   = PROMPT - PREFILL_ONLY - TOKEN1_ONLY + NONE
+  Necessity     = PROMPT - TOKEN1_ONLY (prefill component's
+                  necessity) and PROMPT - PREFILL_ONLY (token1
+                  component's necessity)
+BARS: a component CARRIES if its pooled delta >= 24 (half the
+booked +47); below 7 pooled solves reads as NO-EFFECT (resolution
+law); between is a measured partial. Components are not
+exclusive; the interaction books whatever additivity lands.
+
+REFUTED-IF: Delta_prefill < 7 AND Delta_token1 < 7 while the
+PROMPT diagonal reproduces +47 — the crest would be carried only
+by the conjunction, refuting single-component localization (an
+admissible, bookable outcome).
+
+REGISTERED PRIOR (house, on the record): the prompt-batch
+component carries it — Delta_prefill >= 2/3 of the pooled PROMPT
+delta, Delta_token1 below 7 (one routing step on one token
+should not move a 120-problem gate), interaction small. Stated
+risk to the prior: the D1 census showed the PROMPT mask flips z1
+on 31% of problems, and z1's ROUTING is the sole difference
+between PREFILL_ONLY and PROMPT — if Delta_token1 lands >= 7 the
+house updates toward launch-step sensitivity.
+
+FENCES: Mac only, single 4-bit instrument; identity by the
+cell-exact qualification arms; greedy only; one mask, one dose;
+pooled bars with per-seed dicts; oracle timeouts book as
+failures; NOT-RUN for wall-killed arms; rows stream to
+logs/ex6loc/ (refuse-if-exists; SMOKE to smoke paths). Driver
+frozen by commit before launch.
+
