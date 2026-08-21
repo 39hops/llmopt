@@ -1050,6 +1050,12 @@ QWEN-WHOLE-0T compile receipt -> typed observations.
 - `observations(summary: dict) -> dict`
 - `main() -> int`
 
+### scripts/obs_from_receipt_ex6temporal.py
+Observations adapter for PRE-REG EX6-TEMPORAL-0.
+
+- `rows(path)`
+- `main(run_dir)`
+
 ### scripts/plot_gt1_crest.py
 GT-1 crest small-multiples — the gallery Wanted figure (2026-08-08).
 
@@ -1953,6 +1959,14 @@ EX6-MED-0 exact-token-ID diagonal audit (frozen pre-treatment- read; run AFTER t
 ### scratch/ex6med_idaudit2.py
 EX6-MED-0 exact-token-ID diagonal audit v2 (frozen pre- treatment-read; supersedes the unrun v1, scratch/ex6med_idaudit.py, which compared only the min-length prefix and would pass an equal-prefix / different-length pair; v1 stays frozen unedited).
 
+- `main()`
+
+### scratch/ex6temporal.py
+EX6-TEMPORAL-0 driver (frozen pre-launch): isolated temporal masks z1 v z2 v z3 per PRE-REG EX6-TEMPORAL-0 — is the launch step a special locus, or the first point on an early-token sensitivity curve?
+
+- `instrument(model, keep, pred)` — Frozen ex6_phase wrapped-gate math; mask decision = pred(phase),
+- `census_verdict(census, n_moe)` — 48/48 modules: prompt-batch reset then z1, z2, z3 in order.
+- `run_arm(model, tok, problems, keep, seed, arm, log_path, sealed_stdout=None)`
 - `main()`
 
 ### scratch/exact1_small_cells.py

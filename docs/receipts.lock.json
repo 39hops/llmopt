@@ -338,6 +338,30 @@
    "source": "results",
    "tracked": true
   },
+  "logs/ex6temporal/census.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6temporal/ex6temporal_observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6temporal/qual.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6temporal/qual_perprob.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6temporal/treatment.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6temporal/treatment_perprob.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/funnel_wall/prec_sweep_step1_d64.log": {
    "bytes": 607,
    "exists": true,
