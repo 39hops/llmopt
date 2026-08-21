@@ -38668,3 +38668,53 @@ replay unseen same-domain prompts, all six traces), then the 6x6
 cross-domain transport matrix; sharp target = can transported,
 correctly-charged phase knowledge make K32 behave like plain K48.
 
+## OBSERVATION ROUTE-DB-REPLAY-1: under honest accounting the phase-table story COLLAPSES and the zero-fit read survives — held-out plain LRU@K48 = 65-95 MB/decode-token on all six traces, while transported+churn-charged phase-static@K32 runs 1.6-4.7x WORSE than LRU@K48 (the sharp target fails everywhere); true BELADY-BYPASS ceiling shows ~2x headroom over LRU (2026-08-21, Mac, desk)
+
+The EXPERTDB rung 2, run exactly as frozen (design committed in
+scratch/routedb_replay2.py before any value was read; frozen rung-1
+driver imported, never edited). Within-domain prompt holdout: even
+prompt ids fit every table and warm start, odd ids replay; static
+policies charged exact per-layer table-difference bytes at every
+phase boundary; BELADY-BYPASS (clairvoyant eviction WITH optional
+insertion and clairvoyant warm start) asserted <= every
+implementable policy on every (trace, K, phase) — the assertion
+held throughout. Receipt: logs/routedb/replay2_receipt.json.
+
+READS:
+
+1. THE SHARP TARGET FAILS DECISIVELY. Transported, churn-charged
+   PHASE-STATIC@K32 v plain warm LRU@K48, decode MB/token ratios:
+   math 2.46, code 4.67, phys 1.89, proofs 1.64, prose 3.28,
+   dialog 2.23. Phase knowledge at K32 does not buy the K48 tier
+   — it is not even close.
+2. RUNG 1'S PHASE-STATIC NUMBERS WERE MOSTLY ARTIFACT, exactly as
+   the -SIM amendment suspected: self-fit + free churn. Held out
+   and charged, phase-static loses to plain LRU at the SAME K on
+   4/6 traces at K32 (proofs and dialog marginal wins) and 5/6 at
+   K48. The EX6 phase asymmetry is real mechanism physics, but at
+   this grain it does not convert into a deployable static
+   residency table.
+3. THE ZERO-FIT READ TRANSPORTS. Warm LRU@K48 on UNSEEN prompts:
+   88.0 / 75.4 / 95.0 / 82.2 / 84.0 / 65.1 MB/decode-token
+   (math/code/phys/proofs/prose/dialog) — within a few MB of the
+   rung-1 full-trace numbers. This is the robust pricing fact the
+   implementation call should rest on.
+4. TRUE CEILING: BELADY-BYPASS lands 65.5-93.1 at K32 and
+   27.8-45.5 at K48 — plain LRU is ~2x off optimum at both
+   budgets, so a smarter IMPLEMENTABLE policy has real headroom,
+   but the headroom is in recency/reuse structure, not in frozen
+   phase tables.
+
+FENCES. Observation-only desk pricing; gate corpus traces, not
+deployment workloads; MB/token portable, stall-time claims need
+per-machine I/O measurement (3080 NVMe->H2D still unmeasured);
+even/odd is one deterministic split (no split-seed sweep); the
+6x6 cross-domain matrix was NOT run — within-domain transport
+already killed the phase-table route, so cross-domain transport
+of those tables is moot for residency (it stays interesting for
+the DOMAIN-CAPABILITY-COUPLING question, a different bank).
+
+RECEIPTS. logs/routedb/replay2_receipt.json (driver
+scratch/routedb_replay2.py, frozen pre-run; imports the frozen
+rung-1 module).
+

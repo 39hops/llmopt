@@ -3409,6 +3409,14 @@ ROUTE-DB rung 1: frozen-trace expert-cache replay (desk, observation-only, zero 
 - `prefetch_census(events)` — Previous-token same-layer predictor at lookahead d (the
 - `main()`
 
+### scratch/routedb_replay2.py
+ROUTE-DB rung 2: within-domain prompt-holdout replay with the three -SIM corrections (desk, observation-only; design frozen by this commit before any value is read). routedb_replay.py is results-cited/frozen — imported for load_events/expert_bytes, never edited.
+
+- `phase2(ph)`
+- `fit_tables(events, k)` — Train-prompt top-K tables: plain and per-phase.
+- `replay(events, policy, k, t_plain, t_phase, eb)`
+- `main()`
+
 ### scratch/rulepolicy0_census.py
 RULE-POLICY-0 rung 0 — label-coverage census (/desk shape).
 

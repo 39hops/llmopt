@@ -1,0 +1,303 @@
+{
+ "note": "ROUTE-DB rung 2: within-domain prompt holdout (even fit / odd test), charged phase-boundary table churn, BELADY-BYPASS warm-start optimum asserted <= implementables",
+ "start": {
+  "start_commit": "684040b9",
+  "start_status_porcelain": " M docs/results-index.jsonl\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/routedb_replay2.py": "132f530c3ae88a53777ed40c00aef8656fa434d389dbdea618527948d3a87a75",
+   "scratch/routedb_replay.py": "e380b95470a72d53d233a11f74e731b48d8254d2dfc81bee499164ef0891ef7c"
+  }
+ },
+ "completion_commit": "684040b9",
+ "per_expert_bytes": 2654208.0,
+ "budgets_K": [
+  32,
+  48
+ ],
+ "holdout": "prompt_id_even_train_odd_test",
+ "results": {
+  "math": {
+   "K32": {
+    "LRU": {
+     "prefill": 258.26,
+     "decode": 202.79
+    },
+    "LFU": {
+     "prefill": 296.83,
+     "decode": 277.89
+    },
+    "STATIC": {
+     "prefill": 295.05,
+     "decode": 268.68
+    },
+    "PHASE-STATIC": {
+     "prefill": 304.16,
+     "decode": 216.38
+    },
+    "BELADY-BYPASS": {
+     "prefill": 158.87,
+     "decode": 90.4
+    }
+   },
+   "K48": {
+    "LRU": {
+     "prefill": 173.57,
+     "decode": 87.97
+    },
+    "LFU": {
+     "prefill": 149.87,
+     "decode": 169.08
+    },
+    "STATIC": {
+     "prefill": 150.11,
+     "decode": 168.14
+    },
+    "PHASE-STATIC": {
+     "prefill": 170.0,
+     "decode": 158.48
+    },
+    "BELADY-BYPASS": {
+     "prefill": 90.4,
+     "decode": 43.93
+    }
+   },
+   "sharp_target_phase32_over_lru48": 2.46
+  },
+  "code": {
+   "K32": {
+    "LRU": {
+     "prefill": 226.75,
+     "decode": 145.57
+    },
+    "LFU": {
+     "prefill": 300.19,
+     "decode": 247.33
+    },
+    "STATIC": {
+     "prefill": 326.65,
+     "decode": 347.78
+    },
+    "PHASE-STATIC": {
+     "prefill": 340.2,
+     "decode": 351.91
+    },
+    "BELADY-BYPASS": {
+     "prefill": 132.57,
+     "decode": 65.53
+    }
+   },
+   "K48": {
+    "LRU": {
+     "prefill": 139.45,
+     "decode": 75.41
+    },
+    "LFU": {
+     "prefill": 164.96,
+     "decode": 123.52
+    },
+    "STATIC": {
+     "prefill": 193.47,
+     "decode": 218.97
+    },
+    "PHASE-STATIC": {
+     "prefill": 213.55,
+     "decode": 297.22
+    },
+    "BELADY-BYPASS": {
+     "prefill": 74.2,
+     "decode": 43.05
+    }
+   },
+   "sharp_target_phase32_over_lru48": 4.667
+  },
+  "phys": {
+   "K32": {
+    "LRU": {
+     "prefill": 250.71,
+     "decode": 164.69
+    },
+    "LFU": {
+     "prefill": 308.14,
+     "decode": 238.27
+    },
+    "STATIC": {
+     "prefill": 299.08,
+     "decode": 277.28
+    },
+    "PHASE-STATIC": {
+     "prefill": 312.08,
+     "decode": 179.89
+    },
+    "BELADY-BYPASS": {
+     "prefill": 154.7,
+     "decode": 85.35
+    }
+   },
+   "K48": {
+    "LRU": {
+     "prefill": 168.51,
+     "decode": 95.05
+    },
+    "LFU": {
+     "prefill": 157.87,
+     "decode": 138.62
+    },
+    "STATIC": {
+     "prefill": 154.02,
+     "decode": 173.93
+    },
+    "PHASE-STATIC": {
+     "prefill": 173.37,
+     "decode": 139.36
+    },
+    "BELADY-BYPASS": {
+     "prefill": 87.2,
+     "decode": 45.54
+    }
+   },
+   "sharp_target_phase32_over_lru48": 1.893
+  },
+  "proofs": {
+   "K32": {
+    "LRU": {
+     "prefill": 249.11,
+     "decode": 175.31
+    },
+    "LFU": {
+     "prefill": 285.93,
+     "decode": 202.35
+    },
+    "STATIC": {
+     "prefill": 285.7,
+     "decode": 195.66
+    },
+    "PHASE-STATIC": {
+     "prefill": 276.36,
+     "decode": 134.47
+    },
+    "BELADY-BYPASS": {
+     "prefill": 147.57,
+     "decode": 80.86
+    }
+   },
+   "K48": {
+    "LRU": {
+     "prefill": 158.88,
+     "decode": 82.19
+    },
+    "LFU": {
+     "prefill": 150.19,
+     "decode": 109.48
+    },
+    "STATIC": {
+     "prefill": 152.93,
+     "decode": 105.63
+    },
+    "PHASE-STATIC": {
+     "prefill": 152.28,
+     "decode": 76.87
+    },
+    "BELADY-BYPASS": {
+     "prefill": 82.62,
+     "decode": 35.64
+    }
+   },
+   "sharp_target_phase32_over_lru48": 1.636
+  },
+  "prose": {
+   "K32": {
+    "LRU": {
+     "prefill": 345.27,
+     "decode": 187.6
+    },
+    "LFU": {
+     "prefill": 436.03,
+     "decode": 272.36
+    },
+    "STATIC": {
+     "prefill": 419.38,
+     "decode": 304.1
+    },
+    "PHASE-STATIC": {
+     "prefill": 299.3,
+     "decode": 275.51
+    },
+    "BELADY-BYPASS": {
+     "prefill": 204.14,
+     "decode": 93.11
+    }
+   },
+   "K48": {
+    "LRU": {
+     "prefill": 237.96,
+     "decode": 84.05
+    },
+    "LFU": {
+     "prefill": 226.66,
+     "decode": 119.65
+    },
+    "STATIC": {
+     "prefill": 229.16,
+     "decode": 150.96
+    },
+    "PHASE-STATIC": {
+     "prefill": 177.2,
+     "decode": 131.78
+    },
+    "BELADY-BYPASS": {
+     "prefill": 113.61,
+     "decode": 38.57
+    }
+   },
+   "sharp_target_phase32_over_lru48": 3.278
+  },
+  "dialog": {
+   "K32": {
+    "LRU": {
+     "prefill": 295.76,
+     "decode": 147.61
+    },
+    "LFU": {
+     "prefill": 313.61,
+     "decode": 150.0
+    },
+    "STATIC": {
+     "prefill": 314.76,
+     "decode": 155.65
+    },
+    "PHASE-STATIC": {
+     "prefill": 246.22,
+     "decode": 144.88
+    },
+    "BELADY-BYPASS": {
+     "prefill": 172.95,
+     "decode": 69.74
+    }
+   },
+   "K48": {
+    "LRU": {
+     "prefill": 193.34,
+     "decode": 65.11
+    },
+    "LFU": {
+     "prefill": 142.24,
+     "decode": 61.27
+    },
+    "STATIC": {
+     "prefill": 141.46,
+     "decode": 67.86
+    },
+    "PHASE-STATIC": {
+     "prefill": 131.8,
+     "decode": 66.89
+    },
+    "BELADY-BYPASS": {
+     "prefill": 89.58,
+     "decode": 27.82
+    }
+   },
+   "sharp_target_phase32_over_lru48": 2.225
+  }
+ }
+}

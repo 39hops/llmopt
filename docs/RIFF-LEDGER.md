@@ -7804,3 +7804,15 @@ honest status column).
   own registration). Attribution: Artin (question + the coupling
   intuition), house (falsifiable split routing-v-capability,
   oracle inventory, residue order).
+  RUNG 2 MEASURED (2026-08-21, OBSERVATION ROUTE-DB-REPLAY-1):
+  the phase-table route is DEAD for residency — held out and
+  churn-charged, phase-static@K32 runs 1.6-4.7x WORSE than plain
+  LRU@K48 (sharp target fails on all six traces) and loses to
+  same-K LRU on 4-5/6. The zero-fit read TRANSPORTS: warm
+  LRU@K48 = 65-95 MB/decode-token on unseen prompts. True
+  BELADY-BYPASS ceiling shows ~2x implementable headroom over
+  LRU at both budgets — in reuse structure, not phase tables.
+  Implementation call now rests on: LRU@K48 (~6.4GB) + a
+  per-machine I/O measurement (3080 NVMe->H2D unmeasured); the
+  6x6 domain matrix moot for residency, still live for
+  [[DOMAIN-CAPABILITY-COUPLING]].
