@@ -12,4 +12,4 @@ PASS=cap .venv/bin/python scratch/ex6med.py 2>&1 | tee logs/ex6med/cap.log
 test "${PIPESTATUS[0]}" -eq 0 || exit 1
 PASS=cells .venv/bin/python scratch/ex6med.py 2>&1 | tee logs/ex6med/cells.log
 test "${PIPESTATUS[0]}" -eq 0 || exit 1
-mark_done logs/ex6med/ex6med.DONE
+mark_done logs/ex6med/ex6med.DONE 0
