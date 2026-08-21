@@ -7528,3 +7528,82 @@ honest status column).
   anchors yet; residue is the pricing desk (adapter parameter
   count, corpus size, Mac wall). Attribution: Artin (ask), house
   (breaks + narrowed form).
+- **BANKED (2026-08-21): EXACT-BF16 OUT-OF-CORE 27B — AirLLM as
+  existence proof, MTP self-speculation as the revival key for the
+  dead RESIDENT-DRAFT/STREAMED-VERIFY program** (Artin's ask via
+  the AirLLM sighting; GPT seat design; two Opus survey/measurement
+  agents; house verification). QUANTITATIVE FEASIBILITY NOTE, all
+  numbers measured on this Mac or config-derived with sources:
+  - PREMISE CORRECTION: the full BF16 dense checkpoint is ALREADY
+    LOCAL (~/qwen_vendor, 55.56GB, 18 shards, 64 layers, 26.9B
+    text params, bfloat16) including the trained MTP tensors
+    (~0.85GB; shipped separately as model_mtp.safetensors
+    upstream — absent from the main safetensors index, so an
+    index grep wrongly reads "no MTP head").
+  - TEXT-ONLY COLD PATH IS 49.7GB, not 54-55.6: the 5.9GB vision
+    tower never pages in on text decode (free 11% GPT left on
+    the table). DeltaNet blocks are BIGGER than full-attention
+    blocks (0.703 v 0.682GB); the 48 linear layers are 33.7GB of
+    the stack and ARE the streaming problem — "skip the cheap
+    linear layers" intuition is backwards.
+  - MEASURED: M3 Pro (150GB/s class, spec-inferred), 36GiB;
+    SSD 4.2GB/s single-stream, 8.3GB/s at queue depth 4 (parallel
+    reads are a 1.98x lever); BF16 lossless ceiling 1.51x
+    (10.6 bits/weight order-0, two independent tensors agree to
+    0.3%; mantissa byte exactly incompressible at 8.000 bits, all
+    headroom in the 37-value exponent plane, 2.39x alone;
+    byte-split before zstd is worth 1.10 b/w free); DISK IS THE
+    BINDING CONSTRAINT: 17GiB free cannot hold a 35.6GB lossless
+    re-encode beside the 55.6GB source (delete-after-compress or
+    external volume is a precondition).
+  - HONEST LADDER (tok/s): naive stream 0.12-0.14; +MTP
+    (third-party acceptance 65.5% at k=3, E[tokens/sweep]=2.37 —
+    NOT k+1) ~0.3; +4-stream reads ~0.6-0.7; +lossless 1.51x and
+    28GB resident ~2.6 — only the FULL stack approaches the
+    full-resident BF16 ceiling of ~3.0 tok/s (which itself does
+    not fit in RAM); the house lossy 6.98GB tower ceilings at
+    ~21.5 tok/s resident. The exact path's entire value is the
+    token-equivalence guarantee arm A explicitly does not book
+    (WHOLE-0T fences, RESULTS L32980).
+  - DELTANET ROLLBACK (good news + the likeliest silent bug):
+    speculative verify needs ONE pre-verify state snapshot,
+    48 layers x 1.57MB = 75.5MB bf16 (151MB fp32) = 0.25-0.5% of
+    a sweep — immaterial. But DeltaNet state is ORDER-DEPENDENT
+    and NOT truncatable like KV: any implementation that
+    truncates it like a cache produces wrong-but-plausible tokens
+    with no crash. Full-attention KV (16 layers, 65.5KB/token)
+    truncates normally.
+  - KIN SCORED AGAINST EXACTNESS: Apple LLM-in-a-flash bundling
+    transfers, its ReLU-sparsity payload does not (SwiGLU here);
+    PowerInfer-2 pipelining transfers, TurboSparse does not;
+    DejaVu does not (approximate by construction); MTP/EAGLE
+    self-draft transfers COMPLETELY (acceptance prices speed,
+    never correctness); llama.cpp mmap + DeepSpeed prefetch are
+    the plumbing. Field tripwire: ollama#17776 measured MTP
+    variants SLOWER than non-MTP on Apple Metal (draft cost >
+    savings — the exact three-number booking law from the
+    2026-08-17 correction at the resident-draft bank: acceptance,
+    sweeps/token, AND end-to-end wall).
+  - REVIVAL: the RESIDENT-DRAFT/STREAMED-VERIFY bank (2026-08-17,
+    marked DEAD 2026-08-18 v QWEN-RK-CENSUS-0) revives — both
+    failed screens indicted artifact A as router/generator; a
+    VENDOR-TRAINED MTP head bypasses both. Links: dense no-router
+    control bank (2026-08-16, same model, revision pin), 2-bit
+    router riff (exactness kills its DejaVu route independently),
+    cross-model KV bank (same 48/16 hybrid fence), standing
+    per-token-offload caution (this bank answers it with measured
+    stream numbers, not assumption).
+  Honest breaks: unified bandwidth spec-inferred (Metal
+  measurement forbidden during the live EX6 run); acceptance is a
+  third-party INT8 figure, unmeasured for BF16; MLX batched
+  multi-position DeltaNet verify EXISTENCE unverified; AirLLM
+  publishes zero tok/s numbers (nothing to counter-book).
+  Testable residue, in order: (1) preflights — mtp.* tensor
+  shapes, MLX DeltaNet batched-verify support, disk-space
+  decision; (2) a one-layer streamed-GEMV timing probe (cold
+  mmap v resident, both stream counts) prices the pager without
+  building it; (3) if numbers hold, the Axiom/MLX pager design
+  doc. AirLLM counter-run explicitly NOT queued (no published
+  number to check). Attribution: Artin (ask), GPT (design + MTP
+  lead), Opus seats (survey + measurement), house (verification,
+  ladder arithmetic, revival call).
