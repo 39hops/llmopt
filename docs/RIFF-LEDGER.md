@@ -7946,3 +7946,61 @@ honest status column).
   cells: answer-identity leg (separate registration), per-layer
   depth profile of the form->topic handoff, latent refit on the
   template-controlled corpus.
+- **BANKED (2026-08-21): TIME-AS-STRUCTURE — explicit learned
+  representations of causal order, horizon, budget, and
+  time-to-future-use, as opposed to positional order or
+  timestamps** (Artin's frame, GPT co-development; house
+  assessment + inventory). "Time" here means PARTIAL ORDER /
+  HORIZON / BUDGET, never seconds; no race-condition, security,
+  or vulnerability work under this bank, ever. IN-HOUSE INVENTORY
+  (where the concept already lives implicitly, verified in the
+  ledger): search-engine node budgets and solve-at-fixed-budget
+  economics (L4 failures are 10/11 WALL timeouts —
+  expression-size economics; size-cap pruning arms); the magic
+  estimator's cost/variance slots ("prediction pays only where
+  variance lives"); EX6's phase asymmetry (prompt v decode is a
+  causal-order coordinate, now measured twice); ROUTE-DB's
+  temporal locality (LRU beat every fitted table; the
+  Belady-bypass machinery already computes EXACT next-use
+  distances as its eviction key); the prev-token prefetch ceiling
+  0.40-0.54; training-side temporal structure (capability leads
+  settling, rho 0.979; the LR absorption floor; schedule
+  direction a non-factor). The pattern across all of them: the
+  house MEASURES temporal structure constantly but has never made
+  TIME-TO-EVENT the prediction target. NOVELTY ASSESSMENT
+  (house): genuinely new as a target; nothing booked predicts a
+  time-to-X distribution. Two candidate formulations, ranked:
+  (1) ROUTE-TIME — from the frozen routing traces, the exact
+  next-use distance of every (layer, expert) at every step is
+  already computable (the replay2 next_use machinery IS the label
+  factory); the falsifiable claim is clean: routing
+  history/prefill features predict time-to-next-use better than
+  recency (LRU rank) and popularity (demand rank) baselines on
+  held-out prompts, scored by rank correlation + top-K
+  eviction-decision agreement with Belady. Zero model cost,
+  frozen labels, desk-runnable — THE RECOMMENDED FIRST RUNG, and
+  it feeds the EXPERTDB latent predictor directly (a
+  time-to-next-use head is the principled replacement for the
+  dead phase tables). (2) MAGIC-TIME — replace/augment the
+  solved-at-budget binary with a SOLVE-BY-BUDGET SURVIVAL CURVE
+  over node horizons, learning a distribution of logical
+  time-to-solution from root features; oracle-verifiable via the
+  existing sympy pipeline and priced by the existing
+  wall-timeout economics, but needs the search corpus + estimator
+  retrain — SECOND, behind a desk census of whether solve-time
+  variance is even predictable from root features (the
+  magic-estimator bank's own law: prediction pays only where
+  variance lives). Honest breaks: ROUTE-TIME's labels are
+  workload-conditional (gate-corpus traces; the GRF captures add
+  a template-controlled workload); a learned time-to-use head
+  that only rediscovers recency is the null outcome and must be
+  reported as such; nothing here claims biological/temporal
+  cognition — plain-language rule applies. Testable residue:
+  (a) ROUTE-TIME label-factory desk rung (predict-v-recency-v-
+  popularity, held-out); (b) the MAGIC-TIME variance census;
+  (c) if (a) beats recency, wire the head into the EXPERTDB
+  rung-2 replay as a fifth implementable policy and re-ask the
+  K32-v-K48 question. Attribution: Artin (frame + "time as
+  structure, not wall-clock"), GPT (survival-curve and
+  next-use-distribution formulations), house (inventory, novelty
+  check, ranking).
