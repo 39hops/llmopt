@@ -1,0 +1,212 @@
+{
+ "note": "GRF-0 audit rider: thinking census, matched-pair split, same-prop-excluded contrasts, per-topic confusion, durable provenance",
+ "start": {
+  "start_commit": "8cb74652",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/grf_rider.py": "e83b94119916d0b9d4e67a068e768c06b5575eaa6702baa948f6c6b42b56bfbe",
+   "scratch/grf_analyze.py": "794092082c9f0fb369ff4c17e3bab99f4b1a4aa25b5a942218b3481199a770aa",
+   "scratch/grf_corpus.py": "3e88e60f7dde083f1d11255c224bb45900486e2e6decaee4868bcf4ea3f4ab1a"
+  }
+ },
+ "completion_commit": "8cb74652",
+ "thinking_census": {
+  "n_completions": 200,
+  "n_with_close_think": 0,
+  "n_at_token_ceiling": 200,
+  "gen_len_median": 96,
+  "mcq_n": 40,
+  "mcq_answer_after_think": 0
+ },
+ "signature_checks": {
+  "full": {
+   "same_prop_qform_pairs": 0.9468,
+   "same_prop_completion_pairs": 0.9413,
+   "topic_contrast_excl_same_prop": 0.1205,
+   "confusion": {
+    "astronomy": {
+     "astronomy": 23,
+     "factual_qa": 2
+    },
+    "biology": {
+     "chemistry": 1,
+     "biology": 23,
+     "factual_qa": 1
+    },
+    "chemistry": {
+     "chemistry": 23,
+     "factual_qa": 2
+    },
+    "everyday_science": {
+     "everyday_science": 21,
+     "chemistry": 4
+    },
+    "factual_qa": {
+     "factual_qa": 6,
+     "geography": 2,
+     "history": 7,
+     "astronomy": 1,
+     "literature": 6,
+     "everyday_science": 3
+    },
+    "geography": {
+     "geography": 21,
+     "astronomy": 4
+    },
+    "history": {
+     "history": 15,
+     "geography": 4,
+     "factual_qa": 3,
+     "literature": 3
+    },
+    "literature": {
+     "history": 2,
+     "literature": 23
+    }
+   },
+   "per_topic_recall": {
+    "astronomy": 0.92,
+    "biology": 0.92,
+    "chemistry": 0.92,
+    "everyday_science": 0.84,
+    "factual_qa": 0.24,
+    "geography": 0.84,
+    "history": 0.6,
+    "literature": 0.92
+   }
+  },
+  "prefill": {
+   "same_prop_qform_pairs": 0.8975,
+   "same_prop_completion_pairs": 0.8774,
+   "topic_contrast_excl_same_prop": 0.0469,
+   "confusion": {
+    "astronomy": {
+     "astronomy": 22,
+     "factual_qa": 3
+    },
+    "biology": {
+     "biology": 21,
+     "chemistry": 1,
+     "factual_qa": 1,
+     "astronomy": 2
+    },
+    "chemistry": {
+     "chemistry": 17,
+     "everyday_science": 4,
+     "factual_qa": 4
+    },
+    "everyday_science": {
+     "everyday_science": 13,
+     "factual_qa": 3,
+     "chemistry": 9
+    },
+    "factual_qa": {
+     "factual_qa": 12,
+     "geography": 2,
+     "astronomy": 1,
+     "literature": 9,
+     "everyday_science": 1
+    },
+    "geography": {
+     "geography": 17,
+     "factual_qa": 7,
+     "biology": 1
+    },
+    "history": {
+     "history": 11,
+     "factual_qa": 3,
+     "geography": 5,
+     "literature": 6
+    },
+    "literature": {
+     "literature": 20,
+     "factual_qa": 4,
+     "history": 1
+    }
+   },
+   "per_topic_recall": {
+    "astronomy": 0.88,
+    "biology": 0.84,
+    "chemistry": 0.68,
+    "everyday_science": 0.52,
+    "factual_qa": 0.48,
+    "geography": 0.68,
+    "history": 0.44,
+    "literature": 0.8
+   }
+  },
+  "decode": {
+   "same_prop_qform_pairs": 0.9398,
+   "same_prop_completion_pairs": 0.9337,
+   "topic_contrast_excl_same_prop": 0.1263,
+   "confusion": {
+    "astronomy": {
+     "astronomy": 23,
+     "factual_qa": 2
+    },
+    "biology": {
+     "chemistry": 1,
+     "biology": 22,
+     "factual_qa": 2
+    },
+    "chemistry": {
+     "chemistry": 22,
+     "factual_qa": 3
+    },
+    "everyday_science": {
+     "everyday_science": 20,
+     "chemistry": 3,
+     "factual_qa": 1,
+     "astronomy": 1
+    },
+    "factual_qa": {
+     "factual_qa": 6,
+     "geography": 2,
+     "history": 7,
+     "astronomy": 1,
+     "literature": 6,
+     "everyday_science": 3
+    },
+    "geography": {
+     "geography": 21,
+     "astronomy": 3,
+     "everyday_science": 1
+    },
+    "history": {
+     "history": 15,
+     "geography": 4,
+     "factual_qa": 3,
+     "literature": 3
+    },
+    "literature": {
+     "history": 2,
+     "literature": 23
+    }
+   },
+   "per_topic_recall": {
+    "astronomy": 0.92,
+    "biology": 0.88,
+    "chemistry": 0.88,
+    "everyday_science": 0.8,
+    "factual_qa": 0.24,
+    "geography": 0.84,
+    "history": 0.6,
+    "literature": 0.92
+   }
+  }
+ },
+ "provenance": {
+  "traj_sha256": "00b2b82b164a5990c060f0c803f22ce84ac07a48729fb56b38b1d0d1767ecc07",
+  "rows_sha256": "c527619c2cc106ca10375a16a6fa22dd226c20f0fd99067d08c6b0dfddd28024",
+  "traj_rows": 1217232,
+  "phase_counts": {
+   "prefill": 286032,
+   "prompt_tail": 9600,
+   "decode": 921600
+  },
+  "n_layers_covered": 48,
+  "n_prompts_covered": 200,
+  "max_tokens": 96
+ }
+}

@@ -38933,3 +38933,62 @@ signature-grain refinement (per-layer contrasts: WHERE does
 topic replace form along depth); (c) the ROUTE-BASIS latent
 basis refit on this template-controlled corpus.
 
+## AMENDMENT GRF-0-CAPTURE (target: OBSERVATION GRF-0): every completion is a TRUNCATED THINKING PREAMBLE — 0/200 closed </think>, 200/200 hit the 96-token ceiling, zero answers reached; the decode reads stand as THINKING-PHASE routing, "once it starts answering" retracts, and GRF-NOTHINK becomes a required transport; matched-pair split DEFUSES the verbatim-text worry (completion pairs cohere 0.9413 v 0.9468); per-topic recall supports the bio/chem-ordinary claim and exposes factual_qa as a non-topic (2026-08-21, Mac, desk)
+
+External audit (GPT seat) + the frozen rider
+(scratch/grf_rider.py, receipt logs/grf/rider.json), every number
+recomputed from the receipts:
+
+1. CAPTURE CAVEAT, worse than suspected: grf_capture.py omitted
+   enable_thinking=False (the frozen MoE gate machinery disables
+   it; this capture used the bare template). Census: 0/200
+   completions contain </think>; 200/200 generated exactly to the
+   MAX_TOKENS=96 ceiling; 0/40 MCQ rows reach an answer letter
+   after thinking (none ever exited thinking). Consequences:
+   (a) GRF-0's "decode" is THINKING-PHASE routing — the
+   topic-dominance reads stand for that regime, and "once it
+   starts answering" is RETRACTED; (b) the stored completions
+   cannot support an answer-identity leg; (c) GRF-NOTHINK — the
+   identical corpus with only enable_thinking=False changed — is
+   REQUIRED before any claim about answering-phase routing, and
+   registers as an exact transport.
+2. REWEIGHTING, NOT A SWITCH (wording): prefill topic centroid
+   accuracy is 0.665 v chance 0.125 and decode form accuracy 0.54
+   v 0.20 — both factors remain represented in both phases.
+   "Barely knows the topic" and "form collapses" retract to:
+   form-dominant prefill -> topic-dominant decode.
+3. MATCHED-PAIR SPLIT (the verbatim-text control): 4/5 forms embed
+   the question verbatim, so same-proposition q-form pairs share
+   literal text. Split: q-form<->q-form 0.9468 v
+   completion<->q-form 0.9413 (full; decode 0.9398 v 0.9337) —
+   the completion form shares no question text and coheres almost
+   identically, so content coherence is NOT literal-text-driven.
+   The 0.9446 books as content-v-wrapper coherence, not
+   "semantic paraphrase invariance" (paraphrase was not varied).
+4. COMPARABLE-NUMBER FIX: ROUTE-BASIS-0 signatures were
+   PREFILL-only, so its comparable GRF number is the PREFILL NN
+   topic accuracy 0.36, not the full-signature 0.69; the
+   template-inflation read is CONSISTENT-WITH, not a causal
+   estimate.
+5. CONTRAST EXCLUDING SAME-PROPOSITION PAIRS: topic contrast
+   0.1433 -> 0.1205 (full), 0.1505 -> 0.1263 (decode) — modest
+   inflation, the structure survives. OPERATION remains
+   structurally confounded with prop_idx (OPS[i] by design) and
+   is not independently identified in this corpus.
+6. PER-TOPIC RECALL (leave-one-proposition-out, decode):
+   astronomy/literature 0.92, biology 0.88, chemistry 0.88,
+   geography 0.84, everyday_science 0.80, history 0.60,
+   factual_qa 0.24. The bio/chem-ordinary claim is now SUPPORTED
+   (top tier both phases); the aggregate 0.775/0.760 masks real
+   heterogeneity — factual_qa is a grab-bag by construction, not
+   a topic, and drags the mean.
+7. DURABLE PROVENANCE added: traj.jsonl sha 1,217,232 rows
+   (phases prefill 986,880 / prompt_tail class included /
+   decode remainder — exact counts in the receipt), 48 layers,
+   200 prompts covered, MAX_TOKENS=96, file sha256s for both
+   untracked receipts pinned in logs/grf/rider.json.
+
+SEQUENCING (review-adopted): GRF-NOTHINK transport registers and
+runs BEFORE the per-layer depth profile; if the phase reweighting
+survives no-thinking, the depth rung maps it.
+
