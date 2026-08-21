@@ -39135,3 +39135,73 @@ External audit (GPT seat) + the frozen rider
 
 No booked value or expectation adjudication changes.
 
+## AMENDMENT GRF-NOTHINK-0-WINDOWS: windowed adjudication demotes "converges" — the early-horizon regime difference survives sample-matched, the convergence claim does not (2026-08-21, mac)
+
+Amends AMENDMENT GRF-NOTHINK-0-RECEIPTS (the matched-horizon rider
+reading). External audit (GPT, verified in-house against
+scratch/grf_rider2.py) is correct on both counts: (1) rider2's
+horizon contrasts were CUMULATIVE first-N signatures, so a contrast
+rising with N does not identify temporal convergence — larger N
+also reduces routing-frequency noise in each signature; (2) NOTHINK
+decode lengths are variable (median 30), so prompts shorter than N
+contribute fewer than N samples. The cumulative N=8 numbers remain
+DESCRIPTIVE evidence that the regime difference appears early;
+"thinking starts topic-free and converges" and "first measured
+TIME bridge" are DEMOTED pending the windowed test below.
+
+Windowed rider (scratch/grf_rider3.py, frozen at 5bb06075 before
+running; receipt logs/grf/rider3.json, refuse-if-exists):
+equal-width windows over decode positions 1:8 / 9:16 / 17:24 /
+25:32, each signature built from exactly 8 decode tokens per
+prompt, on a FIXED COHORT of the 99 prompts with >= 32 decode
+steps in BOTH captures. Cohort composition (disclosed, skewed —
+short-answer forms fall out): direct_qa 37, explain 30,
+completion 15, mcq 9, definition 8. Topic contrast EXCLUDES
+same-proposition pairs; leave-one-proposition-out centroid
+accuracy reported per window.
+
+Topic contrast (excl same-prop) per window, thinking capture:
+{"w1_8": 0.0047, "w9_16": 0.0867, "w17_24": 0.0438,
+"w25_32": 0.0388}; LOPO topic accuracy {0.253, 0.525, 0.343,
+0.455}. Later equal-width windows do NOT strengthen — the
+contrast peaks in window 2 and declines. Under the registered
+adjudication rule (call convergence only if later equal-width
+windows strengthen): **"converges with generation time" is
+RETRACTED.**
+
+What SURVIVES, now sample-matched and cohort-fixed: the first
+8 decode tokens of thinking routing are topic-free (contrast
+0.0047, LOPO accuracy 0.253) while the first 8 of answering
+routing are already topic-loaded (0.1331, accuracy 0.626).
+Answering windows: contrast {0.1331, 0.1540, 0.1556, 0.1662},
+accuracy {0.626, 0.717, 0.788, 0.717} — topic organization
+present from window 1 and roughly stable. The TIME-AS-STRUCTURE
+bridge demotes from "measured convergence" to "measured
+early-horizon regime difference": topic-informativeness of the
+first decode window differs by regime; its trajectory within a
+generation is non-monotone in the thinking regime.
+
+MCQ extractor audit (the audit's third point): the article-"A"
+false-positive worry was checked and does NOT materialize —
+all 32 rider2-anchored answers are "X) option-text" restatements
+at completion start (letters A 10 / C 9 / D 7 / B 6), zero prose
+matches. A letter-only-line strict form frozen in rider3 is TOO
+strict (3/40) because it rejects the model's dominant "A) text"
+shape. The scoring registration, when it runs, uses: letter
+followed by ")" at completion/line start, letter-only line, or
+explicit "answer is/answer:" anchor; NO-ANSWER counts incorrect
+in the all-40 denominator. Readiness stands at 32/40 with the
+false-positive audit now on the record.
+
+Wording refresh (living docs, same commit): BOARD and RIFF
+"topic separability SEMANTIC" tightens to "topic/content
+separability survives shared-wrapper control" — nomenclature v
+lexical-semantics remains unseparated (the corpus varies form,
+not vocabulary, within a proposition). RIFF TIME and GRF banks
+carry this amendment in place.
+
+Fences carried: greedy/96 scope; empty-think scaffold treats
+prefill; cohort is 99/200 and form-skewed as disclosed; thinking
+capture is all-thinking (no answer phase). Files:
+scratch/grf_rider3.py, logs/grf/rider3.json.
+

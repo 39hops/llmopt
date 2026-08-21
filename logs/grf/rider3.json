@@ -1,0 +1,269 @@
+{
+ "note": "GRF horizon-window rider: eligibility census, equal-width sample-matched windows on a fixed >=32-step cohort, same-prop-excluded contrasts + LOPO accuracy per window, strict MCQ census",
+ "start": {
+  "start_commit": "5bb06075",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/grf_rider3.py": "da1877d5ed3aa5eadf0896f24ef4e5c630fc1fa41b9bb4c08ddd4cf997cefc18",
+   "scratch/grf_rider2.py": "40045757408d88708847e2e055c71e1cecd10015dc06e0c799999dc6ed99a362",
+   "scratch/grf_capture2.py": "0e1e932eb88adfc76c2cb2732ce47037931bf676968ee54f2f74d4d2c5d9391e",
+   "scratch/grf_corpus.py": "3e88e60f7dde083f1d11255c224bb45900486e2e6decaee4868bcf4ea3f4ab1a"
+  }
+ },
+ "completion_commit": "5bb06075",
+ "provenance": {
+  "traj_sha256": "00b2b82b164a5990c060f0c803f22ce84ac07a48729fb56b38b1d0d1767ecc07",
+  "traj_nothink_sha256": "2fe865fcebc566fc8ba5bdc6ca0df06a3dca7ce991881bf5a6e61a4485ce62a0"
+ },
+ "eligibility": {
+  "nothink": {
+   "N8": {
+    "n": 184,
+    "by_topic": {
+     "astronomy": 23,
+     "biology": 22,
+     "chemistry": 24,
+     "everyday_science": 23,
+     "factual_qa": 23,
+     "geography": 23,
+     "history": 24,
+     "literature": 22
+    },
+    "by_form": {
+     "completion": 40,
+     "definition": 40,
+     "direct_qa": 40,
+     "explain": 40,
+     "mcq": 24
+    }
+   },
+   "N16": {
+    "n": 138,
+    "by_topic": {
+     "astronomy": 19,
+     "biology": 14,
+     "chemistry": 20,
+     "everyday_science": 19,
+     "factual_qa": 14,
+     "geography": 18,
+     "history": 18,
+     "literature": 16
+    },
+    "by_form": {
+     "definition": 19,
+     "direct_qa": 38,
+     "explain": 40,
+     "completion": 30,
+     "mcq": 11
+    }
+   },
+   "N24": {
+    "n": 123,
+    "by_topic": {
+     "astronomy": 16,
+     "biology": 13,
+     "chemistry": 17,
+     "everyday_science": 16,
+     "factual_qa": 12,
+     "geography": 17,
+     "history": 17,
+     "literature": 15
+    },
+    "by_form": {
+     "direct_qa": 37,
+     "explain": 39,
+     "completion": 22,
+     "definition": 16,
+     "mcq": 9
+    }
+   },
+   "N32": {
+    "n": 99,
+    "by_topic": {
+     "astronomy": 13,
+     "biology": 10,
+     "chemistry": 13,
+     "everyday_science": 12,
+     "factual_qa": 11,
+     "geography": 13,
+     "history": 13,
+     "literature": 14
+    },
+    "by_form": {
+     "direct_qa": 37,
+     "explain": 30,
+     "definition": 8,
+     "mcq": 9,
+     "completion": 15
+    }
+   }
+  },
+  "thinking": {
+   "N8": {
+    "n": 200,
+    "by_topic": {
+     "astronomy": 25,
+     "biology": 25,
+     "chemistry": 25,
+     "everyday_science": 25,
+     "factual_qa": 25,
+     "geography": 25,
+     "history": 25,
+     "literature": 25
+    },
+    "by_form": {
+     "completion": 40,
+     "definition": 40,
+     "direct_qa": 40,
+     "explain": 40,
+     "mcq": 40
+    }
+   },
+   "N16": {
+    "n": 200,
+    "by_topic": {
+     "astronomy": 25,
+     "biology": 25,
+     "chemistry": 25,
+     "everyday_science": 25,
+     "factual_qa": 25,
+     "geography": 25,
+     "history": 25,
+     "literature": 25
+    },
+    "by_form": {
+     "completion": 40,
+     "definition": 40,
+     "direct_qa": 40,
+     "explain": 40,
+     "mcq": 40
+    }
+   },
+   "N24": {
+    "n": 200,
+    "by_topic": {
+     "astronomy": 25,
+     "biology": 25,
+     "chemistry": 25,
+     "everyday_science": 25,
+     "factual_qa": 25,
+     "geography": 25,
+     "history": 25,
+     "literature": 25
+    },
+    "by_form": {
+     "completion": 40,
+     "definition": 40,
+     "direct_qa": 40,
+     "explain": 40,
+     "mcq": 40
+    }
+   },
+   "N32": {
+    "n": 200,
+    "by_topic": {
+     "astronomy": 25,
+     "biology": 25,
+     "chemistry": 25,
+     "everyday_science": 25,
+     "factual_qa": 25,
+     "geography": 25,
+     "history": 25,
+     "literature": 25
+    },
+    "by_form": {
+     "completion": 40,
+     "definition": 40,
+     "direct_qa": 40,
+     "explain": 40,
+     "mcq": 40
+    }
+   }
+  }
+ },
+ "cohort_ge32_both": {
+  "n": 99,
+  "by_topic": {
+   "astronomy": 13,
+   "biology": 10,
+   "chemistry": 13,
+   "everyday_science": 12,
+   "factual_qa": 11,
+   "geography": 13,
+   "history": 13,
+   "literature": 14
+  },
+  "by_form": {
+   "direct_qa": 37,
+   "explain": 30,
+   "definition": 8,
+   "mcq": 9,
+   "completion": 15
+  }
+ },
+ "windows_nothink": {
+  "w1_8": {
+   "topic_contrast_excl_same_prop": 0.1331,
+   "form_contrast_excl_same_prop": 0.0694,
+   "topic_lopo_centroid_acc": 0.626,
+   "form_lopo_centroid_acc": 0.758
+  },
+  "w9_16": {
+   "topic_contrast_excl_same_prop": 0.154,
+   "form_contrast_excl_same_prop": 0.025,
+   "topic_lopo_centroid_acc": 0.717,
+   "form_lopo_centroid_acc": 0.485
+  },
+  "w17_24": {
+   "topic_contrast_excl_same_prop": 0.1556,
+   "form_contrast_excl_same_prop": 0.0133,
+   "topic_lopo_centroid_acc": 0.788,
+   "form_lopo_centroid_acc": 0.424
+  },
+  "w25_32": {
+   "topic_contrast_excl_same_prop": 0.1662,
+   "form_contrast_excl_same_prop": 0.0069,
+   "topic_lopo_centroid_acc": 0.717,
+   "form_lopo_centroid_acc": 0.364
+  }
+ },
+ "windows_thinking": {
+  "w1_8": {
+   "topic_contrast_excl_same_prop": 0.0047,
+   "form_contrast_excl_same_prop": 0.0545,
+   "topic_lopo_centroid_acc": 0.253,
+   "form_lopo_centroid_acc": 0.97
+  },
+  "w9_16": {
+   "topic_contrast_excl_same_prop": 0.0867,
+   "form_contrast_excl_same_prop": 0.0407,
+   "topic_lopo_centroid_acc": 0.525,
+   "form_lopo_centroid_acc": 0.707
+  },
+  "w17_24": {
+   "topic_contrast_excl_same_prop": 0.0438,
+   "form_contrast_excl_same_prop": 0.0796,
+   "topic_lopo_centroid_acc": 0.343,
+   "form_lopo_centroid_acc": 0.677
+  },
+  "w25_32": {
+   "topic_contrast_excl_same_prop": 0.0388,
+   "form_contrast_excl_same_prop": 0.042,
+   "topic_lopo_centroid_acc": 0.455,
+   "form_lopo_centroid_acc": 0.646
+  }
+ },
+ "mcq_strict": {
+  "line_regex": "^\\s*\\**\\s*([A-D])\\**\\s*[.):]?\\s*$",
+  "anchor_regex": "(?:answer\\s+is|answer\\s*[:\\-])\\s*\\**\\s*([A-D])\\b",
+  "n_mcq": 40,
+  "n_strict_answer": 3,
+  "n_no_answer": 37,
+  "letters": {
+   "D": 1,
+   "B": 1,
+   "A": 1
+  }
+ }
+}

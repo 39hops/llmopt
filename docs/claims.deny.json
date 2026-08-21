@@ -81,6 +81,12 @@
    "reason": "Supported only as a local/static claim on frozen BLe states; trajectory-level readout causality open. Corrected by AMENDMENT QWEN-LOOP-STATE-1-SCOPE (2026-08-20).",
    "scope": "loop-state|LOOP-STATE|headswap|HEADSWAP",
    "superseded_by": "2026-08-20-amendment-qwen-loop-state-1-scope"
+  },
+  {
+   "pattern": "starts topic-free and converges",
+   "reason": "Cumulative first-N reading; equal-width windowed adjudication (rider3) shows the thinking topic contrast peaks in window 9:16 then declines. Surviving claim is the early-horizon regime difference only. Corrected by AMENDMENT GRF-NOTHINK-0-WINDOWS (2026-08-21).",
+   "scope": "grf|GRF|horizon|time-as-structure|TIME-AS-STRUCTURE",
+   "superseded_by": "2026-08-21-amendment-grf-nothink-0-windows-windowed"
   }
  ]
 }

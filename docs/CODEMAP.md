@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 215, library 73, reproduce-pinned 10, results-cited 266, spec-cited 88, cited-but-library 61
+Census: UNCITED 215, library 73, reproduce-pinned 10, results-cited 267, spec-cited 88, cited-but-library 61
 
 ## scratch/
 
@@ -186,13 +186,14 @@ Census: UNCITED 215, library 73, reproduce-pinned 10, results-cited 266, spec-ci
 | grav1b | grav1b_distance.py | UNCITED | — | — | — | — |
 | grav2 | grav2_spacetime.py | library | — | — | 1 | — |
 | greedy | greedy_first_gate.py | UNCITED | — | — | — | 1 |
-| grf | grf_analyze.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
+| grf | grf_analyze.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
 | grf | grf_analyze2.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
-| grf | grf_capture.py | results-cited | RESULTS | RESULTS×2 | — | 4 |
-| grf | grf_capture2.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
-| grf | grf_corpus.py | results-cited | RESULTS | RESULTS×1 | — | 6 |
+| grf | grf_capture.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 4 |
+| grf | grf_capture2.py | results-cited | RESULTS | RESULTS×3 | — | 2 |
+| grf | grf_corpus.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 7 |
 | grf | grf_rider.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| grf | grf_rider2.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| grf | grf_rider2.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| grf | grf_rider3.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | grow | grow_decomp1.sh | UNCITED | — | — | — | — |
 | grpo | grpo_shaped.py | UNCITED | — | — | — | 1 |
 | gt2 | gt2_code_arm0.py | reproduce-pinned | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×1, specs×2 | — | — |

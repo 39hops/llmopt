@@ -8025,8 +8025,25 @@ honest status column).
   empty-think scaffold treats PREFILL too; GRF-0 scopes to
   greedy/96; MCQ answer-identity readiness is 32/40 under the
   frozen anchored extractor.
+  CORRECTION (2026-08-21, AMENDMENT GRF-NOTHINK-0-WINDOWS): the
+  rider2 horizon numbers were CUMULATIVE first-N signatures, so
+  "converges with generation time" is RETRACTED — equal-width
+  sample-matched windows on a fixed >=32-step cohort (n=99) show
+  the thinking topic contrast peaking in window 9:16 (0.0867)
+  then declining (0.0438, 0.0388), not strengthening. What
+  survives sample-matched: the FIRST 8 decode tokens of thinking
+  routing are topic-free (0.0047) while answering's are already
+  topic-loaded (0.1331). The bridge demotes to a measured
+  early-horizon regime difference. Extractor audit: 32/40 stands,
+  all matches are "X) option" restatements, zero article-A prose
+  false positives.
   [TIME-AS-STRUCTURE bank cross-link, same day: the GRF horizon
   rider delivered the bank's first measured instance — see the
   GRF bank's RECEIPTS entry; routing topic-informativeness as a
   function of generation position differs by regime, which is a
-  time-indexed observable no wall clock touches.]
+  time-indexed observable no wall clock touches. DEMOTED
+  2026-08-21 (AMENDMENT GRF-NOTHINK-0-WINDOWS): the cumulative-N
+  reading did not survive equal-width windowed adjudication —
+  the bank's measured instance is now the EARLY-HORIZON regime
+  difference (first-window topic contrast 0.0047 thinking v
+  0.1331 answering, sample-matched), not convergence.]
