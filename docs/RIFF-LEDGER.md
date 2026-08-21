@@ -7469,3 +7469,62 @@ honest status column).
   run until EX5-LAYERMATCH establishes whether there is a 4-bit
   mechanism worth transporting. Attribution: Artin (ask), house
   (design/pricing), GPT (sequencing fence).
+- **BANKED (2026-08-21): DENSE-ROUTER READOUT — if the MoE router
+  "knows" a reusable carrier set, can the same structure be read
+  out of a DENSE model, and is a router FOR a dense model
+  possible?** (Artin's ask, 2:26 AM post-EX5: "can there be a
+  router for non-moe models? are its dense layers similar to
+  experts?"; house formalization). The mapping: a dense FFN is one
+  always-on expert; the published kin (MoEfication — post-hoc
+  clustering of FFN neurons into co-activating groups + a learned
+  selector; contextual sparsity/DejaVu — per-input activation
+  sparsity predictable from the previous layer) says dense layers
+  DO carry implicit expert structure. Three standing house banks
+  already touch this and this bank links them: the dense no-router
+  control (Qwen3.8-27B bank, 2026-08-16 — deletion-crest absence
+  prediction), the functional co-routed dense-block bank, and the
+  resident-draft contextual-sparsity riff whose honest break is
+  the load-bearing one here: A DENSE TOWER HAS NO DISCRETE GATE TO
+  READ — "routes to" must be OPERATIONALIZED (top activation mass?
+  largest |contribution| to the residual?) before any carrier
+  claim is testable. Measured anchors: EX5-TRAJ-ANATOMY-0 gives
+  the feature template a dense readout must reproduce (phase
+  signature, failure enrichment) for the analogy to hold. Honest
+  breaks: the MoE carrier result is about a TRAINED router's
+  selections; an imposed post-hoc clustering on a dense model
+  tests a different object (house-built structure, not
+  vendor-trained structure), so a null there would NOT refute the
+  MoE finding; activation-group deletion in a dense model has no
+  clean keepset semantics (neurons overlap groups). Testable
+  residue: (1) the already-banked dense no-router deletion
+  control; (2) MoEfication-lite on the house dense tower — cluster
+  FFN activations on the gate corpus, delete the top co-activating
+  "implicit carrier" group, paired gate v random-group deletion —
+  a genuinely new rung, desk-priceable first (cluster stability
+  census before any gate). Attribution: Artin (ask + the "router
+  knowledgeable" frame), GPT (context-dependence phrasing), house
+  (kin links, breaks, residue).
+- **BANKED (2026-08-21): CROSS-MODEL EXPERT TRANSPLANT — extract
+  implicit experts from the dense 27B and graft into the
+  Qwen3-30B-A3B MoE** (Artin's ask, same exchange; house pricing).
+  The honest breaks come first because they are load-bearing:
+  (1) SHAPE INCOMPATIBILITY — A3B experts are narrow MLPs on a
+  2048-d stream; the dense tower's FFN lives on a much wider
+  stream; no slice of the dense FFN drops into an expert slot
+  without a learned projection, at which point the object is a
+  DISTILLED expert, not an extracted one; (2) the two models have
+  different tokenizers/training corpora, so "the same function"
+  must be verified by the oracle on outputs, never by weight
+  geometry (the never-score-weights-by-weight-distance law);
+  (3) the house cannot train 27B-scale, so any graft is
+  frozen-weight surgery + small learned adapters at most. Viable
+  narrowed form worth pricing: FUNCTION-level transplant — distill
+  a dense-model capability slice into ONE new expert of the MoE
+  (train only that expert's weights + router bias on an
+  oracle-verified corpus, everything else frozen) and gate it
+  paired v an untrained-expert control. This is a capability-graft
+  rung, several steps behind the anatomy program; parked behind
+  EX5 slate (b)/(c) and PRECISION-CREST-TRANSPORT. No measured
+  anchors yet; residue is the pricing desk (adapter parameter
+  count, corpus size, Mac wall). Attribution: Artin (ask), house
+  (breaks + narrowed form).
