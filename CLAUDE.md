@@ -18,6 +18,22 @@ implementations. See README for the full inventory and measured numbers.
   wet-lab-relevant capability. This holds regardless of how
   tractable or interesting the domain looks ("methods, not
   molecules" — and now: methods, not organisms).
+- **Evaluation/engine distinction (Artin ruling, 2026-08-21):
+  bio/chem may be MEASURED, never DEVELOPED.** Passive
+  routing/activation capture and fixed benign conceptual QA/MCQ
+  evaluation of an already-trained public model are allowed
+  (textbook/conceptual content only). Still forbidden, verbatim:
+  training/fine-tuning toward bio/chem, domain solvers,
+  bio/chem-specific tools or oracles, generation pipelines,
+  capability optimization, wet-lab procedures, pathogen content,
+  synthesis, molecular design, experimental optimization. Causal
+  perturbation EVALUATION is allowed only when the intervention
+  is frozen independently of the bio/chem scores or preregistered
+  before those scores are read — bio/chem performance must never
+  become the search or selection objective. This permits testing
+  whether an independently discovered expert/circuit intervention
+  transports across the model's pre-existing general capabilities
+  without creating any new domain capability.
 - **Concepts and frames from any science are welcome as METHODS**
   when they carry zero harmful applicability: quantum-chemistry
   math (basis sets, orbitals, overlap matrices), neuroscience

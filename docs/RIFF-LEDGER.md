@@ -7906,7 +7906,17 @@ honest status column).
   observation on conceptual bio/chem prompts is inside the
   "concepts as methods, zero harmful applicability" clause is an
   ARTIN RULING, banked as an open decision, never a mid-task
-  interpretation. Non-negotiables carried verbatim: no training,
+  interpretation. [RULED 2026-08-21, same day: Artin includes
+  benign conceptual biology and chemistry as FIRST-CLASS BALANCED
+  topic levels; the charter gains the evaluation/engine
+  distinction (CLAUDE.md, "measured, never developed") with every
+  hard prohibition retained verbatim and the anti-Goodhart fence:
+  bio/chem performance is never a search/selection objective, and
+  causal-perturbation evaluation requires the intervention frozen
+  independently of (or preregistered before reading) the bio/chem
+  scores. Content stays textbook/conceptual; propositions and
+  factorial cells freeze before any model call.]
+  Non-negotiables carried verbatim: no training,
   no fine-tuning, no tools, no domain solver, no generation
   pipeline, no capability improvement, no
   pathogen/wet-lab/synthesis/molecular-design content in any
