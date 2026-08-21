@@ -39609,3 +39609,41 @@ qualification -> treatment read. Fences: census is a property of
 the frozen mediator table only; no oracle outcome, no cell
 count, and no routing statistic from the cells run informs it.
 
+## AMENDMENT EX6-MED-0-QUALFAIL: run 1 qualification FAILED — 12/240 seed-7001 diagonals not token-identical (appended-position batch seam); treatment sealed unread; registered stepwise fallback fires (2026-08-21, mac)
+
+Amends PRE-REG EX6-MED-0. The cells run (driver frozen 94bd3306)
+exited 3 on its registered qualification: 12 of 240 seed-7001
+diagonal completions were not string-identical to the frozen-path
+native completions (qual.jsonl; failures on BOTH diagonals,
+including the fully UNMASKED (NONE, z_NONE) cells — e.g. idx
+8/21/39/55/95 on NONE), and one count-gate diagonal missed by one
+solve (8002/PROMPT 79 v booked 80). Per the prereg's fail-closed
+clause, NO treatment value was read: cells.jsonl and summary.json
+from run 1 are sealed as frozen evidence and will not be opened;
+the watcher output containing them was discarded unread.
+
+DIAGNOSIS (structural, no treatment data): the harness appended
+the forced token to the prompt batch, so the batch kernel runs
+62 rows where the native path runs 61 rows + a T=1 call. NONE
+cells carry no mask at all, so the divergences are the MLX
+batch-v-single rounding seam at the appended position — the
+pre-registered "known seam", the EX6-v1 lazy-fusion incident
+class, and the fp16 near-tie non-bug family. The smoke's 8/8
+identity was a small-sample pass; at 240 the seam's per-problem
+flip rate is ~5%.
+
+REGISTERED FALLBACK FIRES: the prereg named the stepwise-decode
+harness as the abort path. Run 2 (driver scratch/ex6med2.py,
+frozen before launch) reproduces the NATIVE call shapes exactly —
+prompt processed as one batch via a prompt cache, the forced
+token fed as a true T=1 call, greedy argmax single-token steps
+after — so the original EX6 PROMPT mask predicate (prefill +
+prompt_tail) applies verbatim to the S=PROMPT cells and no BATCH
+predicate exists in run 2. Qualification hardened per the
+standing external-review items: seed-7001 diagonals compared as
+LITERAL token-ID sequences including length (the idaudit2
+criterion, now in the run path; z-table sha verified before
+use), plus the registered per-seed cell-exact count gates.
+Everything else — cells, bars, priors, the semantics amendment,
+the D1=111 census — carries unchanged.
+
