@@ -8015,3 +8015,18 @@ honest status column).
   along 48 layers does form hand off to topic) is unblocked, and
   the answer-identity leg has its data on disk awaiting its own
   registration.
+  RECEIPTS AMENDMENT + HORIZON RIDER (2026-08-21, AMENDMENT
+  GRF-NOTHINK-0-RECEIPTS): the thinking-v-answering difference is
+  maximal at the START of decode — thinking routing begins
+  topic-free (contrast 0.0025 at N=8 v answering's 0.1441) and
+  converges with generation time. First measured
+  [[TIME-AS-STRUCTURE]] bridge: topic-informativeness of routing
+  v position-in-generation is a regime property. Fences: the
+  empty-think scaffold treats PREFILL too; GRF-0 scopes to
+  greedy/96; MCQ answer-identity readiness is 32/40 under the
+  frozen anchored extractor.
+  [TIME-AS-STRUCTURE bank cross-link, same day: the GRF horizon
+  rider delivered the bank's first measured instance — see the
+  GRF bank's RECEIPTS entry; routing topic-informativeness as a
+  function of generation position differs by regime, which is a
+  time-indexed observable no wall clock touches.]

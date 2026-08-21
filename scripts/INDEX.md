@@ -2266,6 +2266,14 @@ GRF-0 audit rider (desk, frozen pre-read): the six checks the external audit req
 - `sha(p)`
 - `main()`
 
+### scratch/grf_rider2.py
+GRF-NOTHINK audit rider (desk, frozen pre-read): the receipt seams from the 4530e49d audit.
+
+- `sha(p)`
+- `load_meta(path)`
+- `horizon_contrasts(traj_path, meta, tok_budgets)` — decode-only signatures truncated to the first N decode
+- `main()`
+
 ### scratch/grpo_shaped.py
 Potential-shaped GRPO on the gen-6 champion (2026-07-21, Artin GO — 'ahead of metabolic v3'). The b-lever: reward bandwidth. r = verified * (1 + LAM * tanh((Phi(cur)-Phi(next))/SCALE)), Phi = -(count_ops + 40*n_Integral). Unverified stays 0 (oracle floor intact; Ng-shaping preserves optimal policy). Monkeypatches G.collect's r_of via a wrapped collect; everything else (driver, gates, rollback) is the production harness. Pre-registered against the plateau: solves flat by cycle 4 in every unshaped run — shaped must beat +2 solves over 12 cycles or the b-lever nulls.
 
