@@ -8073,3 +8073,49 @@ honest status column).
   the bank's measured instance is now the EARLY-HORIZON regime
   difference (first-window topic contrast 0.0047 thinking v
   0.1331 answering, sample-matched), not convergence.]
+
+- **BANKED (2026-08-21): "Haven't we tried this with the mathnative
+  models? Like Collatz — 3x+1, odd/even; some prompts re-input
+  return LESS text than input. What is odd/even in our case? Did
+  precision matter — fp16 training loss as why the model is
+  imperfect?"** (Artin, the EX6-MED postmortem afternoon).
+  The mapping: a mathnative derivation IS a rewrite dynamical
+  system — each step maps expression -> expression, and solving =
+  reaching a normal form (the fixed point). The Collatz analog is
+  real: CONTRACTION steps (simplify, cancel, integrate-termwise)
+  are the x/2 moves; EXPANSION steps (series expand, split, the
+  banked euler-move / Liouville-jailbreak family) are the 3x+1
+  moves that GROW the term before a later contraction pays it
+  back. "Odd/even" in our case = whether the current expression
+  admits a direct contraction or needs an expansion move first —
+  a property of the term, as parity is of the integer.
+  Termination of mixed expand/contract chains is exactly the
+  Collatz-shaped open question; our farms dodge it with step
+  budgets and honest-UNDECIDED oracles.
+  Measured anchors: euler-move/ceiling-mover family banked (series
+  continent, 2026-07-21); step-model = associative memory of
+  state->rewrite pairs (2026-07-17); no Collatz-like LENGTH
+  census has ever been run (output/input token ratio per level is
+  unmeasured — honest gap).
+  Precision half: the house precision doctrine (CLOSED
+  2026-07-24) says birth precision above TF32 is a NON-FACTOR for
+  capability — "fp16 training loss makes the model imperfect" is
+  not supported in our regime; imperfection is structural, not
+  numeric. BUT today's EX6-MED postmortem adds the complement:
+  fp16 near-ties flip token DECISIONS across evaluation
+  schedules (11/240 diagonals, flips at masked-softmax tight
+  margins) — precision is a DECISION-STABILITY lever even where
+  it is not a capability lever. That lands exactly on the
+  doctrine's one named retest slot (exact-mode gate v rounded
+  gate, same weights, when exact inference lands).
+  Honest breaks: no measured Collatz dynamics in any booked
+  result; the parity analogy is a frame, not a law; completion
+  length is confounded by problem level and format.
+  Testable residue: (a) desk census of output/input length ratio
+  over the frozen gate batteries, by level and by solve/fail;
+  (b) classify solved traces by expansion-move usage and test
+  whether failures cluster where expansion is required (the
+  "odd" class); (c) the standing exact-inference retest slot
+  covers the precision half.
+  Attribution: Artin (Collatz frame + precision question), house
+  (rewrite-dynamics mapping, doctrine cross-links).
