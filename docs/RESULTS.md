@@ -42268,3 +42268,54 @@ decisions (the class a stock-vocab scorer could ever touch);
 scorer correctness at longer contexts rides on the same masked
 math, untested beyond the bench shapes.
 
+## OBSERVATION MATH-CYBER-1-LONGCTX-0: natural long-context training exposure EXISTS on the frozen TRAIN band — 464/2712 legal actions (17.1%) exceed 512 tokens, spread across every bin (128 / 254 / 61 at 1024/2048/4096), and 21 actions (0.8%) exceed even 4096, so the overflow law is load-bearing at ANY context choice (2026-08-22, Mac)
+
+The TRAIN-sidecar exposure census the -DESIGN freeze scheduled,
+generated ONLY from the frozen TRAIN band (seeds 9200-9249, L4-7,
+200 episodes — first materialization of that band; CALIBRATION
+9100-9109 untouched, ADAPT/HOLDOUT still ungenerated). Instrument:
+scratch/mathworld1_longctx_census.py (greedy-hce walk under the
+frozen world constants: 12-decision budget, 60 s wall cap);
+receipt: logs/mathworld1/longctx_census.jsonl (200 per-episode
+rows + meta; wall 737.6 s). Lengths are full scoring sequences
+("Current: {parent}\nHints: none\nStep: {child}\n") under the
+grammar-closed proposal (ATOMS + per-byte fallback); all 2712
+sequences are ASCII (non_ascii_sequences = 0), so the char/byte
+distinction is moot on this band too.
+
+MEASURED EXPOSURE (2712 legal actions across 200 episodes):
+  <=512:      2248  (82.9%)
+  513-1024:    128  ( 4.7%)
+  1025-2048:   254  ( 9.4%)
+  2049-4096:    61  ( 2.2%)
+  >4096:        21  ( 0.8%)
+Greedy solved 187/200 (policy color, not capability).
+
+RULINGS THIS PRICES:
+(a) The long-context CANDIDATE's exposure gate is SATISFIABLE
+NATURALLY: 443 actions in the 513-4096 range exist on this one
+50-seed band without manufacturing anything from calibration
+fixtures; extending the band (by a booked range extension per the
+-DESIGN freeze) scales exposure linearly in expectation. No
+synthetic long-example generator is needed.
+(b) ctx=4096 is NOT a closure: 0.8% of natural TRAIN actions
+exceed it, so the frozen overflow law (model-failure instrument
+event, never silent hce) is load-bearing in EVERY context
+configuration, not just a small-ctx compromise. "Full coverage at
+4096" remains a CALIBRATION-trajectory fact only.
+(c) The compact-policy-interface alternative stays open but is no
+longer forced: the choice between ctx=4096 birth (measured
+training cost: grad-ckpt mandatory at batch 8, ~10 s/step,
+SCOREQAL-0) and a compact interface (e.g. truncated/windowed
+conditioning with a registered truncation law) is now a priced
+design decision for the rung prereg, with the exposure numbers
+and the step-cost numbers both on the page.
+
+FENCES. Exposure is greedy-trajectory-conditional (a learned
+policy shifts the visited-state distribution; the tail shares are
+estimates for policies near greedy, not invariants). Bin counts
+are actions, not unique states. The census persists per-episode
+bin summaries, not transition rows — the training farm proper
+re-runs under the eventual prereg with its own receipts. Desk
+numbers predict instruments; the farm's own census governs.
+

@@ -696,6 +696,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/longctx_census.jsonl": {
+   "bytes": 15472,
+   "exists": true,
+   "sha256": "f96a975f9aa8525a20b803c886be1f253615ce615db1c44d740eb4ee1f385581",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/scoreqal.json": {
    "bytes": 2136,
    "exists": true,

@@ -2855,3 +2855,15 @@ regime tag on every bullet is the fence.
   scoring (~15-30 s) with a measurement attached now, and 8x4096
   training OOMs without grad checkpointing (10.2 s/step with).
   ([OBSERVATION MATH-CYBER-1-SCOREQAL-0](RESULTS.md#L42207 "id:2026-08-22-observation-math-cyber-1-scoreqal-0").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search]
+  Natural long-context exposure exists on the frozen TRAIN band
+  (9200-9249, first materialization): 464/2712 legal actions
+  (17.1%) exceed 512 tokens across every bin (128/254/61 at
+  1024/2048/4096) — the ctx=4096 exposure gate is satisfiable
+  without manufacturing from calibration fixtures — and 21
+  actions (0.8%) exceed even 4096, making the frozen overflow
+  law load-bearing at any context choice ("full coverage at
+  4096" is a calibration-trajectory fact only). Exposure is
+  greedy-trajectory-conditional.
+  ([OBSERVATION MATH-CYBER-1-LONGCTX-0](RESULTS.md#L42271 "id:2026-08-22-observation-math-cyber-1-longctx-0").)

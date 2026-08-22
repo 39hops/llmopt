@@ -1,0 +1,201 @@
+{"episode_id": "L4-s9200", "outcome": "solved", "bins": {"<=512": 11}}
+{"episode_id": "L4-s9201", "outcome": "solved", "bins": {"<=512": 7, "<=1024": 1}}
+{"episode_id": "L4-s9202", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9203", "outcome": "solved", "bins": {"<=512": 24, "<=1024": 4}}
+{"episode_id": "L4-s9204", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L4-s9205", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9206", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9207", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9208", "outcome": "solved", "bins": {"<=512": 11}}
+{"episode_id": "L4-s9209", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9210", "outcome": "solved", "bins": {"<=512": 7, "<=1024": 1}}
+{"episode_id": "L4-s9211", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9212", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9213", "outcome": "solved", "bins": {"<=512": 7, "<=1024": 1}}
+{"episode_id": "L4-s9214", "outcome": "solved", "bins": {"<=512": 10}}
+{"episode_id": "L4-s9215", "outcome": "budget_exhausted", "bins": {"<=512": 60, "<=2048": 12, "<=1024": 6}}
+{"episode_id": "L4-s9216", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L4-s9217", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L4-s9218", "outcome": "solved", "bins": {"<=512": 12}}
+{"episode_id": "L4-s9219", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9220", "outcome": "solved", "bins": {"<=512": 13}}
+{"episode_id": "L4-s9221", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L4-s9222", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L4-s9223", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9224", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L4-s9225", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L4-s9226", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L4-s9227", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L4-s9228", "outcome": "budget_exhausted", "bins": {"<=512": 90}}
+{"episode_id": "L4-s9229", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9230", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9231", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L4-s9232", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L4-s9233", "outcome": "solved", "bins": {"<=512": 10}}
+{"episode_id": "L4-s9234", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9235", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9236", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L4-s9237", "outcome": "budget_exhausted", "bins": {"<=512": 72, "<=1024": 12}}
+{"episode_id": "L4-s9238", "outcome": "solved", "bins": {"<=512": 12}}
+{"episode_id": "L4-s9239", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L4-s9240", "outcome": "budget_exhausted", "bins": {"<=512": 84}}
+{"episode_id": "L4-s9241", "outcome": "solved", "bins": {"<=512": 15}}
+{"episode_id": "L4-s9242", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L4-s9243", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9244", "outcome": "solved", "bins": {"<=512": 10}}
+{"episode_id": "L4-s9245", "outcome": "solved", "bins": {"<=512": 29, "<=1024": 1}}
+{"episode_id": "L4-s9246", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L4-s9247", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L4-s9248", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L4-s9249", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L5-s9200", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9201", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9202", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9203", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L5-s9204", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9205", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9206", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9207", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L5-s9208", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9209", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L5-s9210", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L5-s9211", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9212", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L5-s9213", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L5-s9214", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9215", "outcome": "solved", "bins": {"<=512": 4}}
+{"episode_id": "L5-s9216", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L5-s9217", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L5-s9218", "outcome": "solved", "bins": {"<=512": 4}}
+{"episode_id": "L5-s9219", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L5-s9220", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L5-s9221", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L5-s9222", "outcome": "solved", "bins": {"<=512": 4}}
+{"episode_id": "L5-s9223", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9224", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9225", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L5-s9226", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9227", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9228", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L5-s9229", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9230", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L5-s9231", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9232", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9233", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9234", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9235", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9236", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9237", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9238", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L5-s9239", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9240", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9241", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L5-s9242", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9243", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L5-s9244", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L5-s9245", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9246", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L5-s9247", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9248", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L5-s9249", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L6-s9200", "outcome": "budget_exhausted", "bins": {"<=512": 11, "<=1024": 13, "<=2048": 9, ">4096": 20, "<=4096": 16}}
+{"episode_id": "L6-s9201", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9202", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L6-s9203", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L6-s9204", "outcome": "budget_exhausted", "bins": {"<=512": 19, "<=1024": 45, "<=4096": 4, "<=2048": 9}}
+{"episode_id": "L6-s9205", "outcome": "solved", "bins": {"<=512": 4}}
+{"episode_id": "L6-s9206", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L6-s9207", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L6-s9208", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9209", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L6-s9210", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L6-s9211", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L6-s9212", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L6-s9213", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L6-s9214", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9215", "outcome": "solved", "bins": {"<=512": 10}}
+{"episode_id": "L6-s9216", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L6-s9217", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L6-s9218", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9219", "outcome": "solved", "bins": {"<=2048": 1, "<=1024": 4, "<=512": 2}}
+{"episode_id": "L6-s9220", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L6-s9221", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9222", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9223", "outcome": "budget_exhausted", "bins": {"<=512": 5, "<=2048": 18, "<=1024": 8, "<=4096": 23}}
+{"episode_id": "L6-s9224", "outcome": "budget_exhausted", "bins": {"<=512": 72, "<=1024": 12}}
+{"episode_id": "L6-s9225", "outcome": "budget_exhausted", "bins": {"<=2048": 203, "<=1024": 7, ">4096": 1, "<=4096": 18}}
+{"episode_id": "L6-s9226", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9227", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L6-s9228", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L6-s9229", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L6-s9230", "outcome": "solved", "bins": {"<=512": 4}}
+{"episode_id": "L6-s9231", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9232", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L6-s9233", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9234", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9235", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L6-s9236", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L6-s9237", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L6-s9238", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L6-s9239", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9240", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L6-s9241", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L6-s9242", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9243", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9244", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L6-s9245", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9246", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L6-s9247", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L6-s9248", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L6-s9249", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L7-s9200", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L7-s9201", "outcome": "solved", "bins": {"<=512": 10}}
+{"episode_id": "L7-s9202", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L7-s9203", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L7-s9204", "outcome": "solved", "bins": {"<=512": 4}}
+{"episode_id": "L7-s9205", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L7-s9206", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L7-s9207", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L7-s9208", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L7-s9209", "outcome": "solved", "bins": {"<=2048": 1, "<=1024": 2, "<=512": 3}}
+{"episode_id": "L7-s9210", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L7-s9211", "outcome": "budget_exhausted", "bins": {"<=512": 78}}
+{"episode_id": "L7-s9212", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L7-s9213", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L7-s9214", "outcome": "solved", "bins": {"<=512": 13}}
+{"episode_id": "L7-s9215", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L7-s9216", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L7-s9217", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L7-s9218", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L7-s9219", "outcome": "solved", "bins": {"<=512": 16, "<=1024": 2}}
+{"episode_id": "L7-s9220", "outcome": "solved", "bins": {"<=512": 14, "<=1024": 1}}
+{"episode_id": "L7-s9221", "outcome": "solved", "bins": {"<=512": 10}}
+{"episode_id": "L7-s9222", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L7-s9223", "outcome": "solved", "bins": {"<=512": 10}}
+{"episode_id": "L7-s9224", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L7-s9225", "outcome": "budget_exhausted", "bins": {"<=512": 64, "<=1024": 4}}
+{"episode_id": "L7-s9226", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L7-s9227", "outcome": "solved", "bins": {"<=1024": 1, "<=512": 5}}
+{"episode_id": "L7-s9228", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L7-s9229", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L7-s9230", "outcome": "budget_exhausted", "bins": {"<=512": 98}}
+{"episode_id": "L7-s9231", "outcome": "solved", "bins": {"<=512": 5}}
+{"episode_id": "L7-s9232", "outcome": "solved", "bins": {"<=512": 6}}
+{"episode_id": "L7-s9233", "outcome": "solved", "bins": {"<=1024": 2, "<=512": 6}}
+{"episode_id": "L7-s9234", "outcome": "solved", "bins": {"<=2048": 1, "<=1024": 1, "<=512": 5}}
+{"episode_id": "L7-s9235", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L7-s9236", "outcome": "solved", "bins": {"<=512": 4}}
+{"episode_id": "L7-s9237", "outcome": "solved", "bins": {"<=512": 4}}
+{"episode_id": "L7-s9238", "outcome": "solved", "bins": {"<=512": 10}}
+{"episode_id": "L7-s9239", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L7-s9240", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L7-s9241", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L7-s9242", "outcome": "budget_exhausted", "bins": {"<=512": 132}}
+{"episode_id": "L7-s9243", "outcome": "solved", "bins": {"<=512": 8}}
+{"episode_id": "L7-s9244", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L7-s9245", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L7-s9246", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L7-s9247", "outcome": "solved", "bins": {"<=512": 9}}
+{"episode_id": "L7-s9248", "outcome": "solved", "bins": {"<=512": 7}}
+{"episode_id": "L7-s9249", "outcome": "solved", "bins": {"<=512": 10}}
+{"meta": {"episodes": 200, "actions": 2712, "solved": 187, "bins_total": {"<=512": 2248, "<=1024": 128, "<=2048": 254, "<=4096": 61, ">4096": 21}, "non_ascii_sequences": 0, "wall_s": 737.6, "start": {"start_commit": "98b40160", "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_longctx_census.py\n?? scratch/mathworld1_scoreqal.py\n", "interpreter": "/Users/artin/code/llmopt/.venv/bin/python", "file_sha256": {"scratch/mathworld1_longctx_census.py": "7f9fbc0f71b115e24994534709f62f4262f7d687765a327b1619629e530ce8ba", "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87", "llmopt/mathgen/problems.py": "9f1dcac61712696b2b7f9e65585d33d26865edf6b60f338977f09a792fe51215", "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61"}}, "completion_commit": "5526f381"}}
