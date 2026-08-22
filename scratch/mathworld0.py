@@ -124,13 +124,18 @@ def run_episode(episode_id, root, sink, script=None):
                          "transition_wall_ms": round(
                              (time.monotonic() - t0) * 1000, 1)})
             break
+        # action identity = rule name + child hash: rule names are
+        # NOT unique within a legal set (one rule, many loci), so a
+        # replayable receipt must pin the (name, child) pair
         if script is None:
             name, child = min(
                 acts, key=lambda nc: (hce(nc[1]), nc[0], nc[1].key()))
         else:
             if step_id >= len(script) or script[step_id] is None:
                 break
-            match = [nc for nc in acts if nc[0] == script[step_id]]
+            match = [nc for nc in acts
+                     if f"{nc[0]}#{state_hash(nc[1])}"
+                     == script[step_id]]
             if not match:
                 rows.append({"episode_id": episode_id,
                              "step_id": step_id,
@@ -151,7 +156,8 @@ def run_episode(episode_id, root, sink, script=None):
         rows.append({"episode_id": episode_id, "step_id": step_id,
                      "state_before_hash": before,
                      "legal_action_set_hash": aset_hash,
-                     "n_legal": len(acts), "chosen_action": name,
+                     "n_legal": len(acts),
+                     "chosen_action": f"{name}#{state_hash(child)}",
                      "state_after_hash": state_hash(state),
                      "outcome": outcome,
                      "transition_wall_ms": round(
