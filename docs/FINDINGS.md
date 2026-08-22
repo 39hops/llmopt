@@ -2841,3 +2841,17 @@ regime tag on every bullet is the fence.
   optimizer state); runtime ctx overflow in a primary arm is a
   model-failure instrument event, never silent hce.
   ([AMENDMENT MATH-CYBER-1-DESK-0-DESIGN](RESULTS.md#L42145 "id:2026-08-22-amendment-math-cyber-1-desk-0-b-b").)
+
+- [SINGLE-SEED] [DEVICE-SCOPED] [REGIME-SCOPED: calculus search]
+  The cached scorer qualifies exactly and loses anyway: T=1
+  cached continuation matches full teacher-forced scores to
+  9.8e-6 with 16/16 argmax agreement (random weights, scorer
+  mechanics only), but runs ~30x SLOWER than full batched
+  forwards on mps at every ctx 512-4096 (launch-overhead-bound)
+  — execution law = full batched teacher-forced forwards,
+  KV-reuse closed-rejected with a named revival condition
+  (offset-causal batched prefill, faster device, re-qualified).
+  Measured corollaries: world wall (147 s/40 eps) dominates
+  scoring (~15-30 s) with a measurement attached now, and 8x4096
+  training OOMs without grad checkpointing (10.2 s/step with).
+  ([OBSERVATION MATH-CYBER-1-SCOREQAL-0](RESULTS.md#L42207 "id:2026-08-22-observation-math-cyber-1-scoreqal-0").)

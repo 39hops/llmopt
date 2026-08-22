@@ -42204,3 +42204,67 @@ divergence is a booking error). The TRAIN sidecar census that
 follows this booking generates ONLY the 9200-9249 band. Nothing
 here adjudicates the PERFECT prior.
 
+## OBSERVATION MATH-CYBER-1-SCOREQAL-0: the cached scorer QUALIFIES exactly (max |delta| 9.8e-6, argmax 16/16) and is REJECTED anyway — T=1 cached stepping runs ~30x SLOWER than full batched teacher-forced scoring on mps (launch-overhead-bound); full forwards adopted as the execution law; training at 8x4096 OOMs without grad checkpointing (2026-08-22, Mac)
+
+The qualification and microbench the -KV amendment registered.
+Instrument: scratch/mathworld1_scoreqal.py — RANDOM-WEIGHT MicroLM
+(BIRTH_SEED=77, stock base vocab-40, fp32, mps), no trained model,
+no capability claim anywhere in this entry. Receipt:
+logs/mathworld1/scoreqal.json. First launch OOM'd mid-bench (mps
+allocator churn from shape-growing T=1 KV steps reached the 47.7
+GiB watermark) with no receipt written; the rerun adds periodic
+empty_cache, a 2-candidate cached bench (per-candidate wall
+reported; per-candidate cost is candidate-independent), and
+per-cell OOM capture.
+
+QUAL (registered bars, both PASS): over the 16 joint-stock-
+eligible calibration decisions (98 candidates), full teacher-forced
+score v causal-prefix prefill + ONE-TOKEN cached continuation
+(newline included): max |score delta| = 9.8e-6 (fp32 kernel
+noise), candidate-argmax agreement 16/16 = 100%. The T=1 cached
+path is CORRECT.
+
+BENCH (and the reversal): per-candidate scoring wall, parent
+prefix = ctx/2, child = ctx/2, K candidates:
+  ctx  512: full 0.016 s v cached 0.482 s   (30x)
+  ctx 1024: full 0.037 s v cached 1.099 s   (30x)
+  ctx 2048: full 0.096 s v cached 2.740 s   (29x)
+  ctx 4096: full 0.327 s v cached 8.688 s   (27x)
+T=1 stepping is mps-launch-overhead-bound (one kernel dispatch
+per token per layer); the 1.5x token-position saving is
+irrelevant at four orders of magnitude fewer dispatches on the
+full path. RULING: the KV-reuse CANDIDATE is CLOSED-REJECTED on
+this device class — the execution law for scoring is FULL BATCHED
+TEACHER-FORCED FORWARDS (exactly causal by construction, no
+cached-path hazard). Revival condition: a batched-prefill
+multi-token cached path with offset causal masking, re-qualified
+under the same bars, on a device where it measures faster.
+
+Scoring cost in context: at the calibration median (256-token
+sequences) a full forward is ~0.016 s, so scoring all 725
+calibration actions is ~15-30 s-class — against the measured
+147 s world wall for the same 40 episodes, the WORLD dominates
+scoring; that claim now carries a measurement instead of a
+position count.
+
+TRAINING BENCH (fwd+bwd, batch 8 x ctx, fp32, mps):
+  ctx  512: plain 0.34 s | grad-ckpt 0.87 s
+  ctx 1024: plain 0.80 s | grad-ckpt 1.09 s
+  ctx 2048: plain 2.25 s | grad-ckpt 3.10 s
+  ctx 4096: plain OOM (47.7 GiB watermark) | grad-ckpt 10.24 s
+A ctx=4096 training run on this Mac REQUIRES grad checkpointing
+at batch 8, at ~10 s/step — a real cost input to the long-context
+CANDIDATE decision.
+
+FENCES. Random weights; every number is scorer/optimizer
+MECHANICS, never capability (the untrained-boot fence: no
+tolerance bar may ever be calibrated on these numbers). Walls are
+this Mac, fp32, stated shapes, single run each — mps wall
+variance is real, so treat as one significant figure. Memory
+"delta" fields are allocator deltas, not true peaks (mps has no
+peak-stat API here); the 4096 plain-train OOM is the hard
+evidence. The qualification covers only the 16 joint-eligible
+decisions (the class a stock-vocab scorer could ever touch);
+scorer correctness at longer contexts rides on the same masked
+math, untested beyond the bench shapes.
+

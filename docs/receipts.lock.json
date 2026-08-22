@@ -696,6 +696,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/scoreqal.json": {
+   "bytes": 2136,
+   "exists": true,
+   "sha256": "e116b989e10b554b409222fae7b715e1c93bc848616b93bf1fbef4aa97a60a3e",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/states.jsonl": {
    "bytes": 105338,
    "exists": true,

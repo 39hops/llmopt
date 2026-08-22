@@ -1,0 +1,85 @@
+{
+ "device": "mps",
+ "birth_seed": 77,
+ "vocab": 40,
+ "qual": {
+  "decisions": 16,
+  "candidates_scored": 98,
+  "max_abs_delta": 9.775161743164062e-06,
+  "argmax_agree": 16,
+  "argmax_agree_pct": 100.0
+ },
+ "bench": {
+  "512": {
+   "score_full_perK_wall_s": 0.016,
+   "score_full_mem_delta_mb": 0.0,
+   "score_cached_perK_wall_s": 0.482,
+   "score_cached_mem_delta_mb": 25.5,
+   "train_fwd_bwd_8x": {
+    "ckpt_False": {
+     "wall_s": 0.341,
+     "peak_delta_mb": 187.3
+    },
+    "ckpt_True": {
+     "wall_s": 0.873,
+     "peak_delta_mb": 403.9
+    }
+   }
+  },
+  "1024": {
+   "score_full_perK_wall_s": 0.037,
+   "score_full_mem_delta_mb": -0.0,
+   "score_cached_perK_wall_s": 1.099,
+   "score_cached_mem_delta_mb": 26.6,
+   "train_fwd_bwd_8x": {
+    "ckpt_False": {
+     "wall_s": 0.802,
+     "peak_delta_mb": 381.6
+    },
+    "ckpt_True": {
+     "wall_s": 1.09,
+     "peak_delta_mb": 252.6
+    }
+   }
+  },
+  "2048": {
+   "score_full_perK_wall_s": 0.096,
+   "score_full_mem_delta_mb": -0.0,
+   "score_cached_perK_wall_s": 2.74,
+   "score_cached_mem_delta_mb": 66.8,
+   "train_fwd_bwd_8x": {
+    "ckpt_False": {
+     "wall_s": 2.245,
+     "peak_delta_mb": 718.4
+    },
+    "ckpt_True": {
+     "wall_s": 3.102,
+     "peak_delta_mb": 565.7
+    }
+   }
+  },
+  "4096": {
+   "score_full_perK_wall_s": 0.327,
+   "score_full_mem_delta_mb": -0.0,
+   "score_cached_perK_wall_s": 8.688,
+   "score_cached_mem_delta_mb": 111.0,
+   "train_fwd_bwd_8x": {
+    "ckpt_False": "OOM: MPS backend out of memory (MPS allocated: 44.24 GiB, other allocations: 3.03 GiB",
+    "ckpt_True": {
+     "wall_s": 10.244,
+     "peak_delta_mb": 162.4
+    }
+   }
+  }
+ },
+ "start": {
+  "start_commit": "98b40160",
+  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_longctx_census.py\n?? scratch/mathworld1_scoreqal.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_scoreqal.py": "0cf84f6c863673c494242159e41d386fad32840f66cffb21afc6a491443a2ae4",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61"
+  }
+ },
+ "completion_commit": "98b40160"
+}
