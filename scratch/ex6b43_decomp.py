@@ -17,7 +17,10 @@ frozen masked-gate math (softmax over logits + -inf mask, then
 argpartition top8, then renorm — verbatim ex6depth1 semantics).
 Logged per problem: term norms, pairwise cosines, |delta| both as
 the sum and directly as |masked_out - native_out| (residual =
-exactness check); native p_71 raw and renormalized mass; top-16
+agreement check; the single-expert switch_mlp calls group the
+quantized matmuls differently from the batched top-8 call, so the
+residual is finite-precision-scale, never zero); native p_71 raw
+and renormalized mass; top-16
 logit values (post-hoc margins); BOTH selectors on the SAME
 logits — argsort top-8 and argpartition top-8 — plus the actual
 masked top-8 and entrant (pays the tie-adjudication precondition
@@ -62,12 +65,16 @@ def instrument(model, keep):
         for i, layer in enumerate(model.model.layers)
         if hasattr(layer.mlp, "gate") and hasattr(layer.mlp, "top_k")
     ]
-    masks, keepsets, t1_count, blk_band = {}, {}, {}, {}
+    masks, zeros, keepsets, t1_count, blk_band = {}, {}, {}, {}, {}
     for bp, (li, block) in enumerate(moe_layers):
         kept = keep[li]
         n_exp = block.gate.weight.shape[0]
+        # float32 mask/zeros added on BOTH paths — verbatim frozen
+        # ex6depth1 gate math, so native and masked softmax run at
+        # the same (upcast) precision the booked intervention used
         masks[id(block)] = mx.array(
             [0.0 if e in kept else float("-inf") for e in range(n_exp)])
+        zeros[id(block)] = mx.array([0.0] * n_exp)
         keepsets[id(block)] = kept
         blk_band[id(block)] = bp
     cls = type(moe_layers[0][1])
@@ -102,7 +109,8 @@ def instrument(model, keep):
         for d in logits.shape[:-1]:
             n_tokens *= d
         phase = phase_of(self, n_tokens)
-        gates = mx.softmax(logits, axis=-1, precise=True)
+        gates = mx.softmax(logits + zeros[id(self)],
+                           axis=-1, precise=True)
         inds = mx.argpartition(gates, kth=-k, axis=-1)[..., -k:]
         scores = mx.take_along_axis(gates, inds, axis=-1)
         if self.norm_topk_prob:
@@ -187,9 +195,13 @@ def main():
     if OUT.exists():
         raise SystemExit(f"REFUSING: {OUT} exists")
     DIR.mkdir(parents=True, exist_ok=True)
+    from huggingface_hub import snapshot_download
+    art_dir = snapshot_download(m.MODEL,
+                                allow_patterns=["*.json"])
     START = start_provenance(
         ["scratch/ex6b43_decomp.py", "scratch/moe_gt1_arm2.py",
-         KEEPSET])
+         KEEPSET],
+        artifacts={"model": art_dir})
     from mlx_lm import generate, load
 
     from llmopt.mathgen.problems import make_dataset
