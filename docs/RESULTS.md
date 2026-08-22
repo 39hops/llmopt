@@ -40246,3 +40246,19 @@ start_commit == completion_commit 809c8d33, clean worktree.
 Files: scratch/ex6temporal.py,
 scripts/obs_from_receipt_ex6temporal.py.
 
+## AMENDMENT EX6-TEMPORAL-0-RECEIPTS: perprob streams tracked after all — the booking-time lock invariant fired on the machine prereg's declared receipt list (2026-08-21, mac)
+
+Amends VERDICT EX6-TEMPORAL-0, wording + receipt-set only; no
+number changes. The verdict's "the perprob streams stay
+untracked" sentence followed the LOC precedent, but this rung's
+MACHINE prereg declares logs/ex6temporal/qual_perprob.jsonl
+and logs/ex6temporal/treatment_perprob.jsonl in its receipts
+list, and the
+booking-time invariant (test_booked_prereg_receipts_are_sha_locked,
+2026-08-20) correctly refused a booked prereg with unlocked
+declared receipts. They are 79KB + 85KB text — inside the
+small-text-receipt exception — and carry the registered
+rescue/break secondary reads, so they are force-added and
+sha-locked with this amendment. The superseded sentence is the
+LOC-precedent default, not a claim about the data. Guard
+verdict: working as designed, not a flake.

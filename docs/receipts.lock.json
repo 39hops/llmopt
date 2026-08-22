@@ -360,9 +360,11 @@
    "tracked": true
   },
   "logs/ex6temporal/qual_perprob.jsonl": {
+   "bytes": 78822,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "c30eadd0b6985055359bda76d7e17fb48f207b2c802d139f8afdbd3aa2769ef5",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6temporal/treatment.jsonl": {
    "bytes": 1468,
@@ -372,9 +374,11 @@
    "tracked": true
   },
   "logs/ex6temporal/treatment_perprob.jsonl": {
+   "bytes": 84565,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "2325f1211876dd3f1f789964bbdc8808f306469375059742946acb79ab0ca6a9",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6temporal/treatment_stdout.log": {
    "bytes": 582,
