@@ -2739,3 +2739,21 @@ regime tag on every bullet is the fence.
   0.160 of the normalized MLP input, residual-stream ratio
   unpaid.
   ([VERDICT EX6-B43-KNIFE-0](RESULTS.md#L41427 "id:2026-08-22-verdict-ex6-b43-knife-0-the").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search]
+  MATH-CYBER rung 0 lives: the MATHWORLD legal-action contract
+  (receipt wrapper over successors(), fixed nine-field
+  transition schema, 12-decision logical budget + 60s wall
+  safety cap) passes deterministic-replay qualification 101/101
+  causal rows identical over 40 L4-7 episodes, 35/40 solved by
+  scripted greedy-hce; the replay bar caught two real contract
+  bugs before passing (rule names non-unique within a legal set;
+  wall_cap termination timing-dependent) — action identity is
+  now name#child_hash and replay identity is scoped to the
+  causal chain. Measured v desk: branching median 7 v 3-3.5
+  (desk was root-only, self-flagged conservative), decision wall
+  p90 4.25s v 2.05s (greedy steers into expensive states,
+  confirming the fixed-logical-budget ruling). Python
+  instrument; the frozen receipt interface is the handoff
+  artifact for the axiom C++ replica desk, one rung behind.
+  ([OBSERVATION MATH-CYBER-0-RUNG0](RESULTS.md#L41540 "id:2026-08-22-observation-math-cyber-0-rung0-the").)

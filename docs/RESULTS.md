@@ -41537,3 +41537,76 @@ when resumed, operates per-example on d_del(x) with E/R
 controls, never on an averaged direction. Color adjudicates
 nothing; sets are seed-union counts on n=360.
 
+## OBSERVATION MATH-CYBER-0-RUNG0: the MATHWORLD contract LIVES — 40 L4-7 episodes through the receipt-wrapped legal-action world, deterministic-replay qualification 101/101 causal rows IDENTICAL, 35/40 solved by scripted greedy-hce inside the 12-decision budget (2026-08-22, mac, python; Artin GO on record)
+
+Rung 0 of the banked MATH-CYBER program, implemented exactly to
+the promoted desk contract (OBSERVATION MATHWORLD-DESK-0 +
+AMENDMENT -BUDGET; legal-action world, proposal-mode stays
+banked): scratch/mathworld0.py wraps
+llmopt/search/derivation.py successors() with (a) order-stable
+legal-action sets (sorted by (rule name, child key); action
+identity = name#child_hash), (b) the FIXED rung-0 receipt
+schema (episode_id, step_id, state_before_hash,
+legal_action_set_hash, n_legal, chosen_action,
+state_after_hash, outcome, transition_wall_ms — verified
+field-for-field on all 203 rows by the receipt-auditor), (c)
+fixed logical budget 12 decisions primary + 60 s wall SAFETY
+cap, and (d) the deterministic-replay qualification, fail-closed
+exit 3. Policy = scripted greedy hce (deterministic tie-break);
+NO model in the loop — rung 0 qualifies the WORLD.
+
+NAMED BAR (in the driver committed before the run): every
+causal-chain row must replay field-identical (wall excluded).
+MEASURED: PASS — 102 active rows over 40 episodes (L4-L7 x
+seeds 9100-9109), 101/101 causal rows identical on replay; the
+single excluded row is the one wall_cap safety marker
+(L6-s9100 reached the 60 s cap AT its final budgeted decision —
+the exclusion is one un-taken step, not a dropped comparison;
+the replay of that episode ends at script end with outcome
+"ongoing", and the verdict's outcomes dict reads the ACTIVE run
+only). Outcomes: 35 solved / 4 budget_exhausted / 1 wall_cap.
+Chain integrity 0 breaks (state_after[k] == state_before[k+1]
+across all episodes).
+
+THE REPLAY BAR EARNED ITS KEEP TWICE before passing (both
+failures booked as the record, fixes committed before reruns):
+(1) SMOKE: rule NAMES are not unique within a legal set (one
+rule, many loci) — a name-scripted replay resolved the wrong
+child. Contract fix: action identity = name#child_hash.
+(2) FULL RUN 1: wall_cap termination is timing-dependent (the
+replay ran faster on the warm rule cache and the cap never
+re-fired). Contract fix: replay identity is defined over the
+CAUSAL chain; wall_cap marker rows are safety events, excluded
+and disclosed (wall_cap_rows_excluded_from_identity).
+
+MEASURED v DESK (the desk fence pays out): branching median 7
+per decision (max 22) v desk's 3-3.5 root median — the desk
+counted root+depth-1 only and flagged itself conservative;
+decision wall med 481 ms, p90 4.25 s, max 11.3 s v desk p90
+2.05 s — greedy steers INTO expensive states, confirming the
+-BUDGET ruling that wall-only budgets would endogenously
+confound an ACTIVE arm. Total battery wall 147.3 s
+(cross-checked: sum of per-row walls == the meta's independent
+clock).
+
+Receipt-auditor (Opus, pre-booking): no blockers, no
+should-fix; notes adopted — meta prose budget note is a literal
+pinned by the driver sha (next revision emits structured
+budget fields); 16-hex action-hash injectivity is
+collision-negligible at <=22-action sets; N2/N4 disclosure
+sentences folded above.
+
+FENCES: single machine (Mac), python instrument, greedy-hce
+policy only — solve rates are POLICY-scoped, not world
+capability; episode set is 40 problems seeds 9100-9109 (string
+seeds), not a registered benchmark; the wall figures are this
+Mac with a warm-ish rule cache; NEXT (per the standing plan):
+the frozen observable interface (this receipt schema + these
+receipts) is the handoff artifact for an independent C++
+replica-backend desk in a SEPARATE Windows axiom session —
+axiom stays one contract rung behind by design. Edge-cutting
+control ladder (ACTIVE/ORDERED/DELAYED/SHUFFLED) remains
+banked, unimplemented. Receipts: logs/mathworld0/{active.jsonl,
+replay.jsonl, replay_verdict.json} force-added. Files:
+scratch/mathworld0.py.
+

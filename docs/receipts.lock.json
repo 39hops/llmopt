@@ -640,6 +640,27 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld0/active.jsonl": {
+   "bytes": 32725,
+   "exists": true,
+   "sha256": "ef19fc7ba1124898ed6a262dcf822266a8e6470d76c739daae712dfbd075b530",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld0/replay.jsonl": {
+   "bytes": 32381,
+   "exists": true,
+   "sha256": "c611ec10b34f9a944846397596d878ad9c0189f42515da5965a46cc1399f1006",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld0/replay_verdict.json": {
+   "bytes": 734,
+   "exists": true,
+   "sha256": "c7f9221dcb86d007cb3c0dd8c1ed96adf12ce599d33af4a090a368d4efd1a35d",
+   "source": "results",
+   "tracked": true
+  },
   "logs/merge_space1/driver.log": {
    "exists": false,
    "source": "results"

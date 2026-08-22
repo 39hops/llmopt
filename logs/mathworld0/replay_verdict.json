@@ -1,0 +1,24 @@
+{
+ "episodes": 40,
+ "rows": 102,
+ "wall_cap_rows_excluded_from_identity": 1,
+ "replay_identical_rows": 101,
+ "mismatches": [],
+ "pass": true,
+ "outcomes": {
+  "solved": 35,
+  "wall_cap": 1,
+  "budget_exhausted": 4
+ },
+ "start": {
+  "start_commit": "620da3bf",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld0.py": "4c130625535aa73ca10cdc368213d2d875862d324eb3796508feab5dd30c52d4",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/mathgen/problems.py": "9f1dcac61712696b2b7f9e65585d33d26865edf6b60f338977f09a792fe51215"
+  }
+ },
+ "completion_commit": "620da3bf"
+}

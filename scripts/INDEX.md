@@ -2610,6 +2610,15 @@ Mass-on-valid (spec 2026-07-28 rung 2): teacher-forced sequence probability mass
 
 - `seq_logprob(model, cur, nxt)`
 
+### scratch/mathworld0.py
+MATH-CYBER-0 rung 0: the MATHWORLD minimal contract as a receipt wrapper over the standing legal-action enumerator (llmopt/search/derivation.py successors()), per OBSERVATION MATHWORLD-DESK-0 + AMENDMENT -BUDGET.
+
+- `sha(text: str) -> str`
+- `state_hash(state: State) -> str`
+- `legal_actions(state: State)` — Admitted actions, order-stable: sorted by (name, child key).
+- `run_episode(episode_id, root, sink, script=None)` — One episode. script=None -> greedy-hce policy (ACTIVE);
+- `main()`
+
 ### scratch/matryoshka_r1.py
 Matryoshka rung 1 (pre-reg 2026-07-28 night): joint loss CE(W) + CE(STE P_C8(W)) — one crystal whose OWN circulant projection must also work. 1 warm epoch from wfloor d256 on MPS. Implementation: parametrize gate weights with a toggleable STE projection (flag off -> raw W; flag on -> W + (P(W)-W) .detach(), i.e. forward uses P(W), gradient flows to W). Gates BOTH tiers at the end; saves the single weight tensor.
 
