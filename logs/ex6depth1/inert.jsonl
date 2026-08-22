@@ -1,0 +1,1 @@
+{"arm": "dep_Z1_L32_39", "seed": 7001, "n_eval": 120, "gate_ok": 64, "gate_per_level": {"1": 25, "2": 21, "3": 18}, "masked_recall_named80": 1.0, "gate_s": 269.3}

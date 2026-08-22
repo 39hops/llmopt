@@ -1,0 +1,7 @@
+{"arm": "dep_NONE", "seed": 7001, "n_eval": 120, "gate_ok": 64, "gate_per_level": {"1": 25, "2": 21, "3": 18}, "masked_recall_named80": null, "gate_s": 253.1}
+{"arm": "dep_Z1_LATE", "seed": 7001, "n_eval": 120, "gate_ok": 70, "gate_per_level": {"1": 28, "2": 21, "3": 21}, "masked_recall_named80": 0.985, "gate_s": 249.3}
+{"arm": "dep_NONE", "seed": 8002, "n_eval": 120, "gate_ok": 61, "gate_per_level": {"1": 24, "2": 20, "3": 17}, "masked_recall_named80": null, "gate_s": 270.5}
+{"arm": "dep_Z1_LATE", "seed": 8002, "n_eval": 120, "gate_ok": 69, "gate_per_level": {"1": 29, "2": 24, "3": 16}, "masked_recall_named80": 0.9851, "gate_s": 270.7}
+{"arm": "dep_NONE", "seed": 9003, "n_eval": 120, "gate_ok": 66, "gate_per_level": {"1": 25, "2": 23, "3": 18}, "masked_recall_named80": null, "gate_s": 265.3}
+{"arm": "dep_Z1_LATE", "seed": 9003, "n_eval": 120, "gate_ok": 71, "gate_per_level": {"1": 26, "2": 25, "3": 20}, "masked_recall_named80": 0.9852, "gate_s": 269.6}
+{"meta": {"note": "EX6-DEPTH-1 qual meta", "anchor_misses": [], "start": {"start_commit": "1b65b71a", "start_status_porcelain": "", "interpreter": "/Users/artin/code/llmopt/.venv/bin/python", "file_sha256": {"scratch/ex6depth1.py": "88274f90b885f1ecda9ab3103d17d5ef96e82a75b7ef48303cf9927465d033ad", "scratch/moe_gt1_arm2.py": "916b616af8e2f44daeb01dcd9ca4e7f60b4167d8c485b69158740b16c5dedd9f", "checkpoints/ex3_del_invp.json": "72bf31eb44e60f3877c7de496e0987ce678d3561fe38922ff9a5cad978faef7e"}}, "completion_commit": "089a84da"}}

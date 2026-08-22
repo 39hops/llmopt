@@ -40731,3 +40731,144 @@ state_before_hash, legal_action_set_hash, chosen_action,
 state_after_hash, solved/admission outcome, transition_wall_ms).
 Proposal-mode later adds explicit rejection classes.
 
+## AMENDMENT EX6-DEPTH-1-DESK-INERTNESS: "bit-inert" narrowed — the zero-demand lemma is ALGEBRAICALLY inert under the configured operator, and the run's check establishes BEHAVIORAL inertness only (2026-08-22, mac)
+
+Amends OBSERVATION EX6-DEPTH-1-DESK (Artin + GPT review, adopted
+before the EX6-DEPTH-1 verdict is read against it). The desk
+entry's "bit-inert" and "the split is analytically exact"
+overstate: under norm_topk_prob=True the masked and unmasked
+computations are ALGEBRAICALLY equal when the native top-8 is
+fully kept (identical selected set; top-k renormalization
+cancels the partition change), but softmax(logits) and
+softmax(logits + mask) are DISTINCT finite-precision
+computations — algebraic equality does not establish bit
+equality (the MED near-tie schedule-sensitivity lesson).
+Canonical wording: zero-demand masks are ALGEBRAICALLY INERT
+under the configured operator; the registered seed-7001
+Z1_L32_39 cell (gate == 64 exactly, recall 1.0) establishes
+BEHAVIORAL inertness at the outcome level; bit identity would
+need a logit/token-equality rider that no receipt here carries.
+The DERIVED status of the 32-39 v 40-47 split carries the same
+scope: derived at outcome level, not proven at bit level. This
+does not touch the B43/B46 interpretation (those arms mask
+non-inert blocks). Files: none (wording only).
+
+## VERDICT EX6-DEPTH-1: the launch-step effect localizes to ONE MoE ROUTING LOCUS — z1 x block-position 43 books +20 (bar 5 fires), block 46 books +1; the pair is per-problem outcome-identical to the whole late band (2026-08-22, mac)
+
+Adjudicated by the registered pipeline
+(scripts/obs_from_receipt_ex6depth1.py -> scripts/adjudicate.py,
+exit 0), quoted verbatim:
+
+BAR 1 QUALIFICATION: FIRE
+BAR 2 BAND-CENSUS: FIRE
+BAR 3 INERTNESS-CHECK: FIRE
+BAR 4 PAIR-CARRIES: FIRE
+BAR 5 SINGLE-CARRIES: FIRE
+BAR 6 PAIR-NET-INTERACTION: NO-FIRE
+REFUTED-IF: NOT-REFUTED
+
+QUALIFICATION: census 288/288 (6 arms x 48 modules, per-arm mask
+flags exact); INERTNESS-CHECK 2/2 — the seed-7001 Z1_L32_39 cell
+reads gate 64 EXACTLY with masked recall 1.0, the desk
+derivation's behavioral prediction confirmed (scope per
+AMENDMENT EX6-DEPTH-1-DESK-INERTNESS: behavioral, not bit,
+inertness); anchors 6/6 CELL-EXACT (NONE 64/61/66, Z1_LATE
+70/69/71 reproducing the EX6-DEPTH-0 receipts).
+
+TREATMENT (pooled over seeds 7001/8002/9003, 120/seed, named-80
+gate, v NONE 191; per-seed dicts are the checksum):
+  Z1_B43    70/70/71 = 211: Delta = +20, signs +6/+9/+5 (3/3)
+  Z1_B46    63/62/67 = 192: Delta = +1 (inside the ~7 floor)
+  Z1_B43_46 70/69/71 = 210: Delta = +19, signs +6/+8/+5 —
+  numerically the Z1_LATE cells, and per-problem OUTCOME-
+  IDENTICAL to the full 16-block late band (0/360 ok-flips).
+BAR 5 fires: max single = +20 >= +13. BAR 4 fires (+19, 3/3).
+BAR 6 quiet: pooled net residual |19 - (20 + 1)| = 2
+(registered per-level residual disclosure: L1 +1, L2 -1, L3 -2
+from the per-level dicts below).
+
+THE CHAIN CLOSES AT ONE ROUTING LOCUS: LOC (+21 = one temporal
+position x 48 layers) -> TEMPORAL (launch step only) -> DEPTH
+(late 16 blocks, +19) -> DEPTH-1: the crest's token1 component
+localizes to the router call for GENERATED z1 at 0-indexed MoE
+block-position 43. Unit fence: this is one routing LOCUS per
+problem (360 such router invocations across the pooled gate,
+each a top-8 selection/mixture where the mask removes the one
+native outside-keepset slot and renormalizes) — never "one
+expert assignment" or one event in total.
+Rescue/break: B43 20 rescues, 0 breaks (the only arm in the
+family with rescues and zero breaks); B43 differs from the pair on 3/360 problems;
+Z1_LATE 20 rescues 1 break.
+
+MATCHED-DISPLACEMENT CONTRAST (unregistered color, labeled as
+such): B43 and B46 match in POOLED-MEAN displacement (recall
+0.875 exactly on 360/360 problems v mean 0.869-0.878; ~12.5%
+excluded mass each) but the B46 distribution is heterogeneous
+per problem (56/360 zero-displacement, 60/360 double at 0.75,
+244/360 at 0.875) — equal call dose, matched-mean (not
+per-problem-matched) realized displacement, +20 v +1. Within
+this pair the displacement-VOLUME account of -SCOPE is
+controlled at the pooled mean and fails: the effect is
+LOCUS-SPECIFIC and not
+explained by displacement volume. Block identity/depth and
+displaced-expert identity change TOGETHER between B43 and B46,
+so expert identity is NOT yet isolated — separating block
+leverage from carrier identity needs a same-B43 matched-identity
+intervention (named below).
+
+PER-LEVEL SPLIT (registered secondary read; pooled dicts): L1
+NONE 74 / LATE 83 / B43 82 / B46 74 / pair 83; L2
+64/70/71/64/70; L3 53/57/58/54/57. B43 tracks the late band at
+every level (d43 = +8/+7/+5 v dLATE +9/+6/+4).
+
+PRIOR ADJUDICATION: registered prior predicted bar 4 fires (the
+pair carries ~99% of native displacement) — RIGHT; no lean was
+registered between the singles, and the data resolves them
+maximally asymmetric (+20 v +1); bar 6 predicted quiet — right
+at pooled net. Family record on direction calls: 2-for-6.
+
+Reading (bounded): healing the top-8 selection of generated z1
+at block 43 (replacing exactly one demanded outside-keepset
+expert slot per token) reproduces the entire late-band effect;
+the same-shaped displacement at block 46 does nothing. WHY block
+43's slot is load-bearing (which expert, what its output feeds,
+KV/attention mediation) remains HYPOTHESIS — identity of the
+demanded expert is not recorded in these receipts. NAMED NEXT
+OBSERVABLES (registered here, unfired): (a) an outcome-blind
+identity census — WHICH outside-keepset expert(s) the B43 router
+natively selects across the 360 problems (frequency, whether one
+invariant identity, and the mask-replacement expert if
+recoverable); no causal identity claim from the census alone;
+(b) if concentrated, a same-B43 matched-identity intervention to
+separate block leverage from carrier identity.
+
+FENCES carried: Mac-only, single 4-bit instrument (identity by
+288/288 census + 6/6 anchors + the inertness cell), greedy,
+one temporal-call position x 1-2 layers per arm, displacement
+disclosed not matched across ALL arms (matched in pooled mean
+within the B43/B46 pair; per-arm recalls: B43 0.875 exact, B46
+0.8688-0.8781, pair 0.8807/0.8818/0.8823, Z1_LATE
+0.9850/0.9851/0.9852); Delta_46 = +1
+carries no direction claim; the matched-displacement contrast is
+unregistered color; block 41's 6/2880 native slots stayed
+unmasked in every single-block arm. Receipts:
+logs/ex6depth1/{census.json, inert.jsonl, qual.jsonl,
+treatment.jsonl, treatment_stdout.log,
+ex6depth1_observations.json, qual_perprob.jsonl,
+treatment_perprob.jsonl} force-added with this booking (the
+machine prereg declares the perprob streams, -RECEIPTS
+precedent). Provenance: start block sha-pins driver/gate/
+keepset; start_commit 1b65b71a; completion commits differ per
+stage meta (qual 089a84da, treatment 88053405) — BOTH drifts
+docs-only (verified by diff: RESULTS/index/FINDINGS only, no
+instrument file); worktree clean at start.
+Receipt-audit disclosures (no blocker): the inertness cell's 120
+per-problem rows land in qual_perprob.jsonl (7 arm x seed cells
+there, not 6 — distinguishable by the frac field; future
+drivers give the inert stream its own path); the model id
+reaches the receipts only through the sha-pinned moe_gt1_arm2.py
+literal (standing artifacts= disclosure, still unpaid); all nine
+treatment gate_ok values independently corroborated from the
+sealed stdout accuracies by the auditor. Files:
+scratch/ex6depth1.py, scripts/obs_from_receipt_ex6depth1.py.
+

@@ -2686,3 +2686,21 @@ regime tag on every bullet is the fence.
   root+depth-1 only] Fences: desk numbers are predictions; the
   contract's own receipts book measured values at rung 0.
   ([OBSERVATION MATHWORLD-DESK-0](RESULTS.md#L40648 "id:2026-08-22-observation-mathworld-desk-0-rung-0").)
+
+- **The launch step is one MoE routing locus**: masking generated
+  z1's router call at 0-indexed block-position 43 alone books +20
+  pooled (signs 3/3, 20 rescues v 0 breaks) — the entire late-band
+  effect — while block 46 books +1 under matched-mean ~12.5%
+  displacement, and the {43,46} pair is per-problem
+  outcome-identical to the full 16-block late band (0/360 flips).
+  The crest's token1 component is now one temporal position x one
+  layer's top-8 selection; the displacement-volume account fails
+  within the matched pair (unregistered color), but block and
+  displaced-expert identity move together, so carrier identity is
+  not yet isolated. [MECHANISM-CONFIRMED] [REGIME-SCOPED: measured
+  deployment artifacts] Fences: single 4-bit instrument, greedy,
+  named-80 keepset, n=3 seeds 120/seed; inertness lemma
+  behavioral-not-bit (AMENDMENT -DESK-INERTNESS); demanded-expert
+  identity unrecorded — identity census + same-block
+  matched-identity intervention are the named next observables.
+  ([VERDICT EX6-DEPTH-1](RESULTS.md#L40756 "id:2026-08-22-verdict-ex6-depth-1-the-launch").)
