@@ -8422,6 +8422,17 @@ honest status column).
   Controller (sensors over mastery/surprise/update-absorption
   eta*|g|/ulp(w); actuators over diet/LR/difficulty/replay/
   horizon). Cite via /cite when a THEORY row lands.
+  STATUS UPDATE (2026-08-22, in place): rung 0 IS MEASURED —
+  OBSERVATION MATH-CYBER-0-RUNG0 (python, Artin GO): the
+  legal-action contract lives on successors(), replay
+  qualification 101/101 causal rows, 35/40 L4-7 episodes solved
+  by scripted greedy-hce under the fixed 12-decision budget;
+  action identity = name#child_hash and wall_cap-as-safety-event
+  are now CONTRACT SEMANTICS (both earned by replay-bar
+  failures). Control ladder + proposal-mode remain banked,
+  unimplemented. The frozen receipt interface is the axiom
+  C++-replica handoff artifact; axiom stays one contract rung
+  behind by design.
 
 - **BANKED (2026-08-22): MATH-BASIS / prerequisite-basis
   hypothesis — the z1 x B43 routing locus selects/preserves a
