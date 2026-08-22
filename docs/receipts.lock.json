@@ -316,6 +316,38 @@
    "source": "results",
    "tracked": true
   },
+  "logs/ex6b43knife/census.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6b43knife/ex6b43knife_observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6b43knife/hnorms.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6b43knife/qual.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6b43knife/qual_perprob.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6b43knife/treatment.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6b43knife/treatment_perprob.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6b43knife/treatment_stdout.log": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/ex6depth/census.json": {
    "bytes": 27692,
    "exists": true,
