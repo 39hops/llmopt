@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 275, spec-cited 89, cited-but-library 61
+Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 277, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -118,6 +118,7 @@ Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 275, spec-ci
 | ex6 | ex6_observe.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | ex6 | ex6_phase.py | results-cited | RESULTS, specs | RESULTS×5, specs×2 | — | 3 |
 | ex6 | ex6_run.sh | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| ex6depth | ex6depth.py | results-cited | RESULTS | RESULTS×4 | — | 1 |
 | ex6loc | ex6loc.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | ex6loc | ex6loc_rider.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | ex6med | ex6med.py | spec-cited | specs | specs×1 | — | 5 |
@@ -125,7 +126,7 @@ Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 275, spec-ci
 | ex6med | ex6med_idaudit2.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | ex6med | ex6med_run.sh | UNCITED | — | — | — | — |
 | ex6med2 | ex6med2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
-| ex6temporal | ex6temporal.py | results-cited | RESULTS | RESULTS×10 | — | 1 |
+| ex6temporal | ex6temporal.py | results-cited | RESULTS | RESULTS×10 | — | 2 |
 | exact | exact_twin_d56.py | spec-cited | specs | specs×1 | — | — |
 | exact1 | exact1_small_cells.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | exchange | exchange_test.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -263,7 +264,7 @@ Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 275, spec-ci
 | metallicity | metallicity_diets.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | metallicity1 | metallicity1.sh | results-cited | RESULTS | RESULTS×2 | — | — |
 | moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×4, RESULTS×5, specs×4 | 2 | 6 |
-| moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×6, RESULTS×12, specs×4 | 1 | 10 |
+| moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×6, RESULTS×12, specs×4 | 1 | 11 |
 | morning | morning_run.sh | UNCITED | — | — | — | — |
 | mps | mps_sigma_gates.sh | UNCITED | — | — | — | — |
 | muon | muon_3ep_d256.py | UNCITED | — | — | — | 1 |
@@ -522,7 +523,7 @@ Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 275, spec-ci
 | family | file | class | cited by | doc citations | imports | mentions |
 |---|---|---|---|---|---|---|
 |  | __init__.py | results-cited | RESULTS, specs | RESULTS×1, specs×12 | — | 1 |
-| adjudicate | adjudicate.py | results-cited | RESULTS, specs | RESULTS×14, specs×7 | — | 18 |
+| adjudicate | adjudicate.py | results-cited | RESULTS, specs | RESULTS×14, specs×7 | — | 19 |
 | anchor | anchor_guard.py | UNCITED | — | — | — | 1 |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | 2 |
 | arena | arena.py | UNCITED | — | — | — | — |
@@ -650,6 +651,7 @@ Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 275, spec-ci
 | moe | moe_router_stats.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 4 |
 | obs | obs_from_receipt_0s.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | obs | obs_from_receipt_0t.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| obs | obs_from_receipt_ex6depth.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | obs | obs_from_receipt_ex6temporal.py | results-cited | RESULTS | RESULTS×6 | — | — |
 | plot | plot_gt1_crest.py | spec-cited | specs | specs×2 | — | — |
 | plot | plot_identity_crest.py | spec-cited | specs | specs×2 | — | — |

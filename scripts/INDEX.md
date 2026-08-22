@@ -1050,6 +1050,13 @@ QWEN-WHOLE-0T compile receipt -> typed observations.
 - `observations(summary: dict) -> dict`
 - `main() -> int`
 
+### scripts/obs_from_receipt_ex6depth.py
+Observations adapter for PRE-REG EX6-DEPTH-0.
+
+- `rows(path)`
+- `demand_excess_band(demand)` — Per band: z1 outside-fraction minus mean(z2,z3) fraction.
+- `main(run_dir)`
+
 ### scripts/obs_from_receipt_ex6temporal.py
 Observations adapter for PRE-REG EX6-TEMPORAL-0.
 
@@ -1921,6 +1928,15 @@ EX6-PHASE-0 observations builder: derives every registered measurement from logs
 EX6-PHASE-0 driver: phase-scoped named-80 deletion (PRE-REG EX6-PHASE-0 in docs/RESULTS.md; machine copy docs/preregs/ex6-phase-0.json). The frozen moe_gt1_arm2 machinery is imported, never edited; the ONLY new instrument code is the phase-scoped router patch below.
 
 - `instrument_phase(model, keep, mode)`
+- `main()`
+
+### scratch/ex6depth.py
+EX6-DEPTH-0 driver (frozen pre-launch): z1 depth-band masks per PRE-REG EX6-DEPTH-0 — where along the 48 MoE layers does z1-routing healing live?
+
+- `pred_for(arm)` — (phase, band_pos) -> masked. band_pos = order of appearance
+- `instrument(model, keep, pred)` — Frozen ex6temporal wrapped-gate math; mask decision =
+- `census_verdict(census, n_moe, arm)` — Temporal law per module AND masked flags match the arm's
+- `run_arm(model, tok, problems, keep, seed, arm, log_path, sealed_stdout=None, log_demand=False)`
 - `main()`
 
 ### scratch/ex6loc.py
