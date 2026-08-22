@@ -8319,3 +8319,51 @@ honest status column).
   band-overlap count, named before either fires).
   Attribution: Artin (census ask + alignment hypothesis), house
   (instrument shape).
+
+- **BANKED (2026-08-21): CYBERNETIC-MATH / MATH-CYBER-0 — a true
+  closed causal loop for the math models, where the model's ACTION
+  determines its next mathematical state and diet** (Artin, GPT
+  co-shaping the frame; inspired by Cortical CL1/DishBrain
+  closed-loop embodiment; BANK ONLY, no desk/prereg/code until
+  Artin returns post-OS-update).
+  The mapping: ordinary supervised loss v a causal loop are
+  DIFFERENT LEARNING REGIMES. Small exact rewrite world: state =
+  canonical expression; action = rewrite family + locus; the exact
+  oracle returns legality / equivalence / solved / complexity /
+  cycle feedback WITHOUT revealing the correct action; online
+  updates allowed within trajectories. The loop closes because the
+  model's action selects its next state and thereby its own
+  training stream.
+  Future factorial (banked design, unpriced): OFFLINE / ENV-LOOP /
+  DIET-LOOP / FULL-CYBER at matched transitions, tokens, optimizer
+  steps, device — plus the critical REPLAY arm trained OFFLINE on
+  the exact experience stream FULL-CYBER generated. ONLINE > REPLAY
+  isolates the value of causal feedback/order; REPLAY ~= ONLINE
+  says the loop mainly discovered a better curriculum. Later
+  extensions: exact next-state/world-model prediction head;
+  homeostatic difficulty controller; LR/diet controller reading
+  update absorption eta*|g|/ulp(w) (ABSORBED-INFORMATION bank).
+  Measured anchors: none yet — the frame is unmeasured; nearest
+  kin are the expert-iteration LOOP-LOG rounds (model-generated
+  data, but not action-conditioned state), the RULE-POLICY-0
+  label-timing census (engine-recoverable feedback), and the
+  Collatz/rewrite-dynamics bank (relation/policy/evaluator split).
+  Registered informal prior, on the record because it was called
+  loudly (Artin, pre-work): FULL-CYBER "scores perfectly" — the
+  loop wins outright. House counter-prior: the REPLAY arm is the
+  dangerous control; curriculum-discovery may carry most of the
+  gain (the family's direction-call record is 1-for-5).
+  Honest breaks: DishBrain-class embodiment claims are contested
+  in the literature — the analogy is a design generator, not
+  evidence; "cycle feedback without the correct action" must be
+  audited against the verified-AND-distinct law (identity rewrites
+  and trivial cycles are the known reward-hack class, bit three
+  times); online-updates-within-trajectory collides with the mps
+  run-level nondeterminism fence (paired arms must share
+  substrate noise in-run).
+  Testable residue: the four-arm-plus-REPLAY factorial with
+  matched budgets; the discriminating contrast is ONLINE v REPLAY
+  on the same experience bytes.
+  Attribution: Artin (loop vision + perfect-score prediction),
+  GPT (factorial + REPLAY control shaping), house (fences,
+  kin-mapping, counter-prior).
