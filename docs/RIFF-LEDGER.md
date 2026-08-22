@@ -8470,3 +8470,52 @@ honest status column).
   the primitive-dependency transport corpus.
   Attribution: Artin (hypothesis + the insane-arc energy), GPT
   (prediction triple + fences), house (census design).
+
+- **BANKED (2026-08-22): B43-JSPACE-BRIDGE — z1 x B43 routing as
+  a possible WRITER/GATE into a J-space-like high-downstream-gain
+  subspace** (Artin + GPT relay of Anthropic's 2026 J-space work;
+  NOT RUN; citation to be /cite-verified before any THEORY row —
+  the house has not independently checked the paper).
+  The mapping (terminology fenced): B43 is NOT claimed to be
+  "the J-space" or one mathematical-primitive expert. The
+  relayed frame: J-space = a privileged global-workspace-like
+  representation set found by the Jacobian lens
+  J_l = E[d h_final / d h_l], readout ~ unembed(J_l @ h_l),
+  carrying silent intermediate math steps and causally mediating
+  higher-order reasoning. The plausible connection: the z1 x B43
+  routing locus may WRITE into such a high-downstream-gain
+  subspace — which would explain +20 v +1 GEOMETRICALLY (matched
+  local displacement, unmatched downstream gain) without any
+  semantic claim.
+  Measured anchors: EX6-DEPTH-1 (+20/+1 at matched-mean
+  displacement, locus-specific); none yet on the J side (no
+  Jacobian quantity has been computed on this Qwen).
+  Banked design ladder (unpriced, unfired): (1) capture
+  native-v-B43 and native-v-B46 post-MoE residual deltas
+  delta_43, delta_46 at the exact locus; (2) outcome-blind
+  fit/approximate a Jacobian-lens transport on the same Qwen;
+  FIRST DISCRIMINATOR = downstream gain G_l = |J_l delta_l| /
+  |delta_l| — matched local displacement with G_43 >> G_46 is
+  the geometric explanation; (3) stronger causal rung IF a
+  workspace subspace qualifies: decompose delta_43 into
+  P_J delta_43 + (I - P_J) delta_43 and patch J-parallel v
+  J-orthogonal separately — J-parallel reproducing the rescue
+  while orthogonal does not = direct mediation evidence; (4)
+  cross with MATH-BASIS task structure (noting its census read
+  FLAT at the current gate's grain) — only after geometry +
+  causal projection + task structure does "mathematical basis
+  representation" become canonical vocabulary.
+  Honest breaks (counter-fence, on the record): the relayed
+  J-space sits in a model-specific INTERMEDIATE layer band while
+  B43 is LATE in this 48-block MoE stack — structural analogy
+  motivated, direct identity UNMEASURED; the Jacobian lens on a
+  4-bit MoE with routing discontinuities is itself an
+  instrument-design question (J through top-k selection is
+  piecewise); everything here is relayed description of external
+  work until /cite verifies it.
+  Testable residue: the four-step ladder above; step 1 is a
+  cheap capture probe, step 2 is the first real instrument
+  build.
+  Attribution: Artin (the bridge ask), GPT (gain discriminator +
+  projection-patching design + counter-fence), house (fences,
+  MoE-discontinuity caveat, cite gate).
