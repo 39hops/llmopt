@@ -41093,3 +41093,72 @@ mediation.
 Order after the desk/control rung: J-space GAIN/linearization.
 MATH-CYBER stays separate, Artin-GO only.
 
+## OBSERVATION EX6-B43-CONTROL-DESK-0: matched-rank kept-expert deletion is ILL-POSED at B43 (kept expert holds rank 0 on 1/360 rows); the five-arm causal component decomposition is well-posed and its local counterfactual computes in ONE outcome-blind execution at ~0.26% FLOP overhead (2026-08-22, desk census on the frozen idcensus receipt)
+
+Thresholds named BEFORE counting (on the record): T1 — the
+queued matched-rank KEPT-expert deletion is viable only if a
+kept expert holds rank 0 on >=90% of B43 rows, else ill-posed
+and the substitution design is promoted; T2 — the one-execution
+five-arm decomposition is promoted only if the outside expert is
+unique and the entrant well-defined on 360/360; T3 — priced
+cheap-class if the decomposition's overhead is <1% of a z1 MoE
+call under the stated cost model.
+
+COUNTS (deterministic, from logs/ex6b43id/idcensus.jsonl, 360
+rows, + checkpoints/ex3_del_invp.json):
+- T1 KILL: rank-0 holder is expert 71 (excluded) on 359/360 and
+  kept expert 118 on 1/360 — a "matched-rank kept expert" does
+  not exist on 99.7% of rows. The rank-matched deletion control
+  dies at this locus. Revival condition: a locus where a kept
+  expert shares the target's rank at comparable frequency.
+- T2 PROMOTE: outside-top8 count is EXACTLY 1 on 360/360 and
+  replacement_next_kept is defined on 360/360 (19 distinct
+  entrant identities; 90 x112, 102 x69, 92 x38, 3 x32, 10 x21,
+  ...) — every arm below is well-defined per problem with no
+  tie-breaking convention needed on the outside side.
+- T3 CHEAP: because the B43 arm has NO upstream intervention,
+  native and masked worlds enter block 43 with the IDENTICAL
+  hidden state h, so the full local counterfactual of every arm
+  computes inside one native forward: evaluate E_i(h) for the
+  native top-8 plus the entrant (9 expert FFN evals at one call
+  of one block v the native 48x8 per z1 step, ~+0.26%; cost
+  model = expert FFN evals only, router/attention/generation
+  overhead ignored — generation count identical to the idcensus
+  run, so predicted wall ~= idcensus wall).
+
+DESIGN PROMOTED (for the later gate-visible prereg; nothing
+gate-visible runs here): causal component-decomposition arms
+NATIVE / DROP71 (remove p_71*E_71 only, no renorm, no entrant) /
+RENORM7 (remove E_71 + renormalize shared seven, no entrant) /
+SLOT-SUBSTITUTE (actual would-be entrant's output at expert
+71's NATIVE coefficient, no renorm) / FULL-MASK (the booked
+intervention, anchor +20) — preregistered against the frozen
+FULL-MASK anchor with exact per-arm gate semantics, adjudicating
+which co-moving component (deletion / entrant / renorm) is
+sufficient or necessary BEFORE any semantic or J-space claim.
+Fixed control-expert substitutions (identity specificity) follow
+after, not instead.
+
+NEXT INSTRUMENT (outcome-blind, promoted by T2/T3): the
+decomposition census — per problem at (B43, z1) log
+d_del = -p_71*E_71(h), d_entrant = p'_r*E_r(h),
+d_renorm = sum_C (p'_i - p_i)*E_i(h); term norms, pairwise
+cosines, total |delta|; native E71 normalized mass and margin;
+BOTH argsort and argpartition selections on the SAME logits plus
+the actual masked top-8/entrant. One run pays the tie-
+adjudication precondition AND the dose census of AMENDMENT
+EX6-B43-IDENTITY-0-SCOPE simultaneously.
+
+FENCES: desk numbers are predictions about the instruments, not
+measurements; counts are scoped to the exact artifacts named
+(360-row idcensus receipt, argsort ranking — the argsort-v-
+argpartition tie fence carries: rank-0-holder identity at B43 is
+tie-robust there because the census and demand.json agree
+exactly at block 43, but the 1/360 kept-rank-0 row is a
+single-row reading); "one execution" holds ONLY for the B43-
+family arms (no upstream intervention; never chain through a
+masked block); the rescue x replacement / E71-mass join stays
+descriptive post-hoc color, adjudicating nothing. Files:
+scratch/ex6b43_idcensus.py (source receipt),
+checkpoints/ex3_del_invp.json.
+

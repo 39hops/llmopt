@@ -2704,3 +2704,19 @@ regime tag on every bullet is the fence.
   identity unrecorded — identity census + same-block
   matched-identity intervention are the named next observables.
   ([VERDICT EX6-DEPTH-1](RESULTS.md#L40756 "id:2026-08-22-verdict-ex6-depth-1-the-launch").)
+
+- [NULL] [REGIME-SCOPED: tested MoE recipes]
+  The matched-rank kept-expert deletion control dies on a desk
+  census before implementation: at (block 43, z1) a KEPT expert
+  holds rank 0 on 1/360 rows (excluded expert 71 holds it on
+  359/360), so "delete the matched-rank kept expert" is undefined
+  on 99.7% of the corpus. Promoted instead: the five-arm causal
+  component decomposition (NATIVE / DROP71 / RENORM7 /
+  SLOT-SUBSTITUTE / FULL-MASK) — outside-top8 count is exactly 1
+  and the entrant well-defined on 360/360 (19 identities), and
+  with no upstream intervention every arm's local counterfactual
+  computes inside one outcome-blind execution (~+0.26% FLOPs,
+  expert-FFN cost model). Revival for rank-matching: a locus
+  where a kept expert shares the target's rank at comparable
+  frequency.
+  ([OBSERVATION EX6-B43-CONTROL-DESK-0](RESULTS.md#L41096 "id:2026-08-22-observation-ex6-b43-control-desk-0").)
