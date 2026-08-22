@@ -41381,3 +41381,46 @@ Machine prereg: docs/preregs/ex6-b43-knife-0.json (bars 1-5,
 refutation predicate, precedence [1,2,5]); adapter:
 scripts/obs_from_receipt_ex6b43knife.py.
 
+## AMENDMENT EX6-B43-KNIFE-0-BAR5: cancellation-proof composition bar, h_pre scope correction, and a bar-4 wording fence — adopted MID-RUN WHILE TREATMENT REMAINED SEALED (GPT review of the live run; no treatment value had been read) (2026-08-22)
+
+Targets: PRE-REG EX6-B43-KNIFE-0 (above). The run was live at
+adoption; the treatment receipts were sealed and unread (rc-gated
+watcher, sealed stdout), qual/census/hnorms are always-readable
+by registration. The driver was NOT touched (frozen pre-launch).
+
+(1) BAR 5 REWRITTEN, cancellation-proof: the pooled form
+|pooled FULL_SUM - 211| <= 3 could falsely pass under seed
+cancellation (65/75/71 pools to 211). New registered form:
+sum over seeds of |FULL_SUM_s - FULL_DIRECT_s| <= 3, the
+FULL_DIRECT cells independently pinned 70/70/71 by bar 1.
+Synthetic fixture e (per-seed gaps 5/5/0, pooled gap 0) now
+NO-FIRES bar 5 and suppresses adjudication; fixtures b/c/d
+unchanged. MANDATORY SECONDARY DISCLOSURE added: paired
+FULL_SUM-v-FULL_DIRECT per-problem ok flips from the perprob
+receipts; if flips are numerous despite count agreement,
+"faithful" is scoped to pooled gate accuracy only.
+
+(2) h_pre SCOPE: the driver logs ||x|| where x is the input to
+the MoE block — which the decoder layer feeds as
+post_attention_layernorm(h_residual). The smoke reading
+|delta|/||h_pre|| ~0.19 is therefore |delta| relative to the
+RMSNorm-NORMALIZED MLP input, NOT to the residual stream.
+Canonical measured doses: ~0.56 of the native MoE write, ~0.19
+of the normalized MLP input; true |delta|/||h_residual|| stays
+UNPAID and belongs to a decoder-layer-level capture (J-space
+work). The hnorms field name is scoped accordingly at booking.
+
+(3) BAR 4 WORDING FENCE: a bar-4 fire establishes failure of
+the POOLED CARRY CLASS for NO_D, not universal or per-seed
+necessity; all three seed deltas are disclosed before the word
+"necessary" appears in any verdict, and "necessary" is always
+qualified "within this exact measured decomposition, pooled
+carry class".
+
+(4) Adapter docstring corrected (refutation fires at >= 1, not
+"above 0"); executable prereg was already correct. Fixture set
+a-e frozen in the session scratchpad; outcomes booked here:
+a qual-fail suppression, b happy-path NOT-REFUTED, c inversion
+REFUTED, d composition-broken suppressed, e seed-cancellation
+suppressed.
+

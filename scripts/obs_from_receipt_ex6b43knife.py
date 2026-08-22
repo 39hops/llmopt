@@ -3,10 +3,11 @@
 Bar 1 anchors from qual.jsonl, bar 2 from census.json (5 arms x
 48 modules), bars 3-5 and the refutation predicate from
 treatment.jsonl + qual.jsonl pooled deltas (NATIVE pooled anchor
-191, FULL pooled anchor 211). Refuses smoke rows and partial
-populations. The refutation predicate knife_inversion is 1 iff
-Delta_D_ONLY <= +9 AND Delta_NO_D >= +13, else 0 (prereg
-direction 'above 0').
+191). Bar 5 is the cancellation-proof per-seed form (AMENDMENT
+EX6-B43-KNIFE-0-BAR5): sum over seeds of |FULL_SUM_s -
+FULL_DIRECT_s|. Refuses smoke rows and partial populations. The
+refutation predicate knife_inversion is 1 iff Delta_D_ONLY <= +9
+AND Delta_NO_D >= +13, else 0; the prereg fires it at >= 1.
 
     .venv/bin/python scripts/obs_from_receipt_ex6b43knife.py \
         logs/ex6b43knife > logs/ex6b43knife/ex6b43knife_observations.json
@@ -76,6 +77,10 @@ def main(run_dir):
         d_d, d_nod = sum(dz["D_ONLY"]), sum(dz["NO_D"])
         full_sum_pooled = sum(treat[("kn_FULL_SUM", s)]["gate_ok"]
                               for s in SEEDS)
+        perseed_gap = sum(
+            abs(treat[("kn_FULL_SUM", s)]["gate_ok"]
+                - qual[("kn_FULL_DIRECT", s)]["gate_ok"])
+            for s in SEEDS)
         ms["3"] = {"value": d_d, "metric": "pooled_delta",
                    "population": "d_only_v_native:3seeds",
                    "aggregation": "pooled_sum"}
@@ -87,9 +92,9 @@ def main(run_dir):
         ms["4"] = {"value": d_nod, "metric": "pooled_delta",
                    "population": "no_d_v_native:3seeds",
                    "aggregation": "pooled_sum"}
-        ms["5"] = {"value": abs(full_sum_pooled - FULL_POOLED),
-                   "metric": "abs_pooled_gap_to_full_anchor",
-                   "population": "full_sum_v_booked_211:3seeds",
+        ms["5"] = {"value": perseed_gap,
+                   "metric": "sum_abs_perseed_gap_to_full_direct",
+                   "population": "full_sum_v_full_direct:perseed:3seeds",
                    "aggregation": "pooled_sum"}
         ms["refutation:knife_inversion"] = {
             "value": int(d_d <= 9 and d_nod >= 13),
@@ -97,7 +102,10 @@ def main(run_dir):
             "population": "d_only+no_d_v_native:3seeds",
             "aggregation": "pooled_sum"}
         obs["color"] = {"delta_d_only": d_d, "delta_no_d": d_nod,
+                        "perseed_deltas": dz,
                         "pooled_full_sum": full_sum_pooled,
+                        "abs_pooled_gap_to_211":
+                            abs(full_sum_pooled - FULL_POOLED),
                         "knife_interaction":
                             full_sum_pooled - 191 - (d_d + d_nod)}
     else:

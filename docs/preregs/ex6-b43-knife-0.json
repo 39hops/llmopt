@@ -133,15 +133,16 @@
    "id": 5,
    "name": "SUM-COMPOSITION",
    "gate_class": "sanity",
-   "metric": "abs_pooled_gap_to_full_anchor",
-   "population": "full_sum_v_booked_211:3seeds",
+   "metric": "sum_abs_perseed_gap_to_full_direct",
+   "population": "full_sum_v_full_direct:perseed:3seeds",
    "aggregation": "pooled_sum",
    "direction": "below",
    "value": 3,
    "arms": [
-    "full_sum"
+    "full_sum",
+    "full_direct"
    ],
-   "description": "the additive fp32 path reproduces the direct masked outcome: |pooled FULL_SUM - 211| <= 3 (composition noise only). If this NO-FIRES, the D_ONLY/NO_D reads carry a named additive-path fence and bars 3/4 book UNRESOLVED, not fired."
+   "description": "the additive fp32 path reproduces the direct masked outcome PER SEED, cancellation-proof (AMENDMENT EX6-B43-KNIFE-0-BAR5, adopted while treatment was sealed): sum over seeds of |FULL_SUM_s - FULL_DIRECT_s| <= 3, where the FULL_DIRECT cells are independently pinned 70/70/71 by bar 1. If this NO-FIRES, the D_ONLY/NO_D reads carry a named additive-path fence and bars 3/4 book UNRESOLVED, not fired. Mandatory secondary disclosure: paired FULL_SUM-v-FULL_DIRECT per-problem ok flips from the perprob receipts; if flips are numerous despite count agreement, 'faithful' is scoped to pooled gate accuracy only."
   }
  ],
  "refuted_if": "The deletion-vector account is REFUTED if, with the instrument qualified and the additive path faithful (bars 1, 2, 5), the knife inverts: Delta_D_ONLY <= +9 AND Delta_NO_D >= +13 \u2014 the +20 would ride the entrant+renorm vector (46% of |delta| by norm), and the single-expert-deletion story would be geometry without behavioral leverage. Judged only under bars 1, 2, and 5.",
