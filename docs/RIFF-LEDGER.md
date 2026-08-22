@@ -8521,9 +8521,24 @@ honest status column).
   instrument-design question (J through top-k selection is
   piecewise); everything here is relayed description of external
   work until /cite verifies it.
-  Testable residue: the four-step ladder above; step 1 is a
-  cheap capture probe, step 2 is the first real instrument
-  build.
+  CORRECTED IN PLACE (2026-08-22, AMENDMENT
+  EX6-B43-IDENTITY-0-SCOPE, house-verified v the idcensus
+  receipt): delta_43 is the NET POST-MoE REROUTING DELTA of
+  excluding expert 71 — deleted term + variable-entrant term +
+  kept-expert renormalization term — NEVER "expert 71's output
+  displacement direction"; the ladder gains a step (0)
+  outcome-blind DOSE CENSUS (native normalized removed mass,
+  router margins, actual masked entrant, common-expert
+  reweighting, post-MoE delta norm; B43/B46 matched slot COUNT
+  only, ranks 0 v 2-7, removed mass unmeasured — "same-sized
+  write" deny-listed) with the argsort-v-argpartition dual-
+  selector precondition; and a TEMPORAL FENCE: same-token
+  J-gain null does not refute later KV/autoregressive
+  mediation.
+  Testable residue: step (0) dose census, then the five-step
+  ladder above; step 1 is a cheap capture probe, step 2 is the
+  first real instrument build.
   Attribution: Artin (the bridge ask), GPT (gain discriminator +
-  projection-patching design + counter-fence), house (fences,
-  MoE-discontinuity caveat, cite gate).
+  projection-patching design + counter-fence + delta
+  decomposition + temporal fence), house (fences,
+  MoE-discontinuity caveat, cite gate, receipt recount).

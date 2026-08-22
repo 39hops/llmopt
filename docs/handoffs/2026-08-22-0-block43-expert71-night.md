@@ -89,12 +89,19 @@ expert 71 without the matched-identity intervention.
 
 ## Next session — ranked (Artin picks)
 
-1. SAME-B43 MATCHED-IDENTITY INTERVENTION (the naming-fence
-   gate): at (layer 43, z1), delete a matched-rank KEPT
-   expert's slot at the identical dose — separates
-   slot-position leverage from expert-71 identity. Cheap (4
-   arms x 3 seeds class). Only after it may expert 71 get any
-   functional description.
+1. SAME-B43 CONTROL RUNG — DESK CONTROL DESIGN FIRST (amended
+   post-handoff, AMENDMENT EX6-B43-IDENTITY-0-SCOPE): the
+   "matched-rank KEPT expert" deletion may be ILL-POSED (expert
+   71 is uniquely top-1; no kept expert matches rank 0). Strong
+   candidate: expert-OUTPUT SUBSTITUTION preserving E71's native
+   router weight/slot, plus any router-deletion control.
+   PRECONDITIONS: dual-selector (argsort+argpartition+actual
+   masked top-8) tie adjudication on the same logits; outcome-
+   blind dose census (removed mass, margins, entrant, kept-
+   expert reweighting, post-MoE delta norm). Only after the
+   causal control may expert 71 get any functional description
+   — and even then no semantic label without the L4+ transport
+   corpus (MATH-BASIS fence).
 2. J-SPACE GAIN rung (B43-JSPACE-BRIDGE steps 1-2): capture
    delta_43/delta_46, qualify the linearization through
    piecewise top-k, read G_43 v G_46. First real instrument

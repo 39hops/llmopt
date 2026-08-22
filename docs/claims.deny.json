@@ -105,6 +105,12 @@
             "reason": "Pooled additivity residual 0 hides per-level residuals L1 -6 / L2 +1 / L3 +5 that cancel. Say 'no registered large pooled NET interaction (|I|<14)'; difficulty-dependent interaction/cancellation open.",
             "superseded_by": "2026-08-22-amendment-ex6-depth-0-scope-per",
             "scope": "ex6[- ]?depth|depth[- ]band|z1.*band"
+        },
+        {
+            "pattern": "same-sized write|expert 71's output displacement direction",
+            "reason": "B43/B46 matched displaced-SLOT COUNT only; B43 removes the rank-0 expert (359/360) while B46 removes ranks 2-7 — removed router mass and |delta| unmeasured. delta_43 is the NET post-MoE rerouting delta (deleted + entrant + renormalization terms), not one expert's output direction.",
+            "superseded_by": "2026-08-22-amendment-ex6-b43-identity-0-scope-endpoint",
+            "scope": "b43|block[- ]?43|expert 71|jspace|j[- ]space"
         }
     ]
 }

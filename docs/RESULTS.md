@@ -41010,3 +41010,86 @@ sha matches the committed blob.
 Receipts: logs/ex6b43id/idcensus.jsonl force-added with this
 booking. Files: scratch/ex6b43_idcensus.py.
 
+## AMENDMENT EX6-B43-IDENTITY-0-SCOPE: endpoint and bridge wording corrections (GPT review of HEAD 5cd2838e, each point house-verified against the frozen idcensus receipt before adoption) (2026-08-22)
+
+Targets: OBSERVATION EX6-B43-IDENTITY-0 (above), the
+B43-JSPACE-BRIDGE bank, and the next-session queue in handoff
+2026-08-22-0. Receipt recount run this session (same
+logs/ex6b43id/idcensus.jsonl, deterministic): B43 outside id =
+71 on 360/360, argsort rank 0 on 359/360 and rank 1 once; B46
+outside ranks all in 2-7 (2/4/124/106/61/66 at ranks
+2/3/4/5/6/7), never rank 0 or 1; B41 rank 7 only (2 rows).
+
+(a) CANONICAL ENDPOINT WORDING. The B43 mask is a SINGLE-EXPERT-
+DELETION INTERVENTION: at generated z1, block-position 43's
+keepset excludes only expert 71, the invariant outside-top8
+member 360/360 and argsort top-1 359/360. Say that, not an
+unqualified "expert 71's top-1 slot". The +20 does NOT yet
+isolate expert 71's FUNCTION: masking 71 also (i) admits a
+variable replacement expert (90/102/92/... per the census) and
+(ii) renormalizes the shared seven kept experts' gate weights.
+Three co-moving changes, one measured net effect.
+
+(b) J-BRIDGE DELTA DEFINITION (retracts one sentence of the
+observation's READING: "delta_43 is expert 71's output
+displacement direction"). delta_43 is the NET POST-MoE REROUTING
+DELTA induced by excluding expert 71, decomposing exactly as
+delta = -p_71*E_71(h) + p'_r*E_r(h)
+        + sum_{i != 71} (p'_i - p_i)*E_i(h)
+(deleted term, entrant term, renormalization term over the
+shared kept experts; p = native gates, p' = masked-renormalized
+gates). Any J-GAIN rung captures and decomposes these terms
+BEFORE attributing gain to E_71 itself.
+
+(c) DOSE CAVEAT (extends the EX6-DEPTH-1 matched-displacement
+fence). B43 v B46 were matched on displaced-SLOT COUNT (pooled
+mean) ONLY. The identity census shows the arms remove different
+RANKS: B43 deletes the rank-0 expert (359/360) while B46
+deletions are ranks 2-7 — so removed ROUTER MASS and |delta| are
+unmeasured and plausibly differ substantially. "Same-sized
+write" is deny-listed in this thread's scope. Before J-GAIN, an
+outcome-blind census measures per problem: native normalized
+removed mass, router margins, the actual masked-arm entrant,
+common-expert reweighting, and post-MoE delta norm.
+
+(d) TIE-DISCREPANCY PROMOTED. The argsort-v-argpartition count
+disagreement (disclosure 1 of the observation) is promoted from
+optional cleanup to PRECONDITION for any rank-matched control:
+on the SAME logits/execution record, log both selectors plus the
+actual masked top-8, resolving operator-tie v cross-path
+schedule effects, before any control keyed to rank is registered.
+
+(e) CONTROL DESIGN CONSTRAINT. The queued "matched-rank KEPT
+expert" deletion may be ILL-POSED at B43: expert 71 is uniquely
+top-1, so no kept expert matches its rank. Desk control design
+comes BEFORE any prereg. Strong candidate: same-B43
+EXPERT-OUTPUT SUBSTITUTION preserving expert 71's native router
+weight and slot — replace E_71(h) with preregistered control
+expert output(s) — alongside any router-deletion control; this
+separates function identity from rank/replacement/renorm, which
+router deletion cannot.
+
+(f) CHEAP DESCRIPTIVE FIRST (post-hoc color only, adjudicates
+nothing): join the frozen 20 B43 rescues with replacement
+identity, expert-71 margin/weight, and top-8 composition.
+Rescues spanning replacement identities would lend support to
+the removal-of-E71 account; concentration would redirect the
+next design.
+
+(g) NAMING FENCE RESTATED. Same-B43 identity causality ALONE
+does not permit semantic labels. MATH-BASIS-0-CENSUS fired FLAT
+at the depth-1 grain — cheapest support absent but
+resolution-limited; the L4+ dependency-factorialized transport
+corpus remains the real semantic/prerequisite test. Functional
+words (arithmetic/division/basis) stay blocked.
+
+(h) J-LENS TEMPORAL FENCE (added to the bridge bank). An
+ordinary J-lens read from B43's z1 to the final layer at z1
+probes SAME-TOKEN workspace transport; the +20 ultimately
+propagates across future generated tokens, so a same-token
+J-gain null does NOT by itself refute later KV/autoregressive
+mediation.
+
+Order after the desk/control rung: J-space GAIN/linearization.
+MATH-CYBER stays separate, Artin-GO only.
+
