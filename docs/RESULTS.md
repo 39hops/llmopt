@@ -41516,3 +41516,24 @@ treatment_stdout.log, ex6b43knife_observations.json}
 force-added with this booking. Files: scratch/ex6b43_knife.py,
 scripts/obs_from_receipt_ex6b43knife.py.
 
+## OBSERVATION EX6-B43-KNIFE-0-OVERLAP: D_ONLY rescues the SAME failures as the full mask — rescue-set overlap 17 of 20, Jaccard 0.81 (2026-08-22, zero-cost post-hoc join on the frozen knife perprob receipts; COLOR ONLY, no bar, no new claim)
+
+Registered as descriptive color per the GPT post-verdict review;
+deterministic recompute from
+logs/ex6b43knife/{qual,treatment}_perprob.jsonl (frozen with the
+verdict). Rescue sets over the 3-seed union of NATIVE failures:
+|R_D_ONLY| = 18, |R_FULL_DIRECT| = 20, |R_NO_D| = 7.
+- D v FULL: |R_D n R_F| = 17, D-only-not-F = 1, F-not-D = 3,
+  Jaccard 0.81 — the deletion vector rescues substantially the
+  SAME problem set as the full mask, distinguishing
+  same-failures sufficiency from merely matching net carry.
+- NO_D v FULL: 4 of NO_D's 7 rescues lie in R_F (3 outside);
+  D n NO_D = 4.
+CANONICAL-OBJECT WORDING (adopted from the same review): the
+mechanistic object is the STATE-DEPENDENT weighted contribution
+d_del(x) = -p_71(x) * E_71(h_x) at (z1, B43) — per-example, not
+one fixed "expert-71 vector". The banked J-space GAIN rung,
+when resumed, operates per-example on d_del(x) with E/R
+controls, never on an averaged direction. Color adjudicates
+nothing; sets are seed-union counts on n=360.
+
