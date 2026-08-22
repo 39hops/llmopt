@@ -148,7 +148,7 @@
  "refuted_if_predicate": {
   "measurement": "refutation:knife_inversion",
   "direction": "above",
-  "value": 0
+  "value": 1
  },
  "refutation_precedence": {
   "suppressed_unless_bars_fire": [
