@@ -2638,6 +2638,18 @@ MATH-CYBER-1 semantic corpus exporter for the axiom interchange layer (AX-MATHWO
 - `split_label(label: str)` — (rule, rule_target sstr | None) from an enumerator label.
 - `main()`
 
+### scratch/mathworld1_longctx_census.py
+MATH-CYBER-1 TRAIN-sidecar long-context exposure census (AMENDMENT MATH-CYBER-1-DESK-0-DESIGN band freeze: TRAIN = seeds 9200-9249, generated here for the first time; disjoint from CALIBRATION 9100-9109 and the ungenerated ADAPT/HOLDOUT bands).
+
+- `main()`
+
+### scratch/mathworld1_scoreqal.py
+MATH-CYBER-1 cached-scorer qualification + runtime microbench (AMENDMENT MATH-CYBER-1-SUBSTRATE-DESK-0-KV registration). NO TRAINED MODEL: a fresh random-weight MicroLM (seeded birth, BIRTH_SEED=77, stock base vocab) is the instrument — the qualification tests SCORER MECHANICS, not capability.
+
+- `full_score(model, ids_prefix, ids_child, dev)`
+- `cached_score(model, past, prefix_len, ids_child, dev)` — past = KV of the causal prefix prefill; T=1 steps only.
+- `main()`
+
 ### scratch/mathworld1_substrate_desk.py
 MATH-CYBER-1 fresh-substrate desk (no model loaded, no vocab shipped): price a GRAMMAR-CLOSED tokenizer — the existing ATOMS multi-char vocabulary plus a deterministic single-byte fallback token per uncovered character — against (a) the 725 calibration actions of the frozen rung-0 trajectories and (b) the standing MathNative base training diet.
 
