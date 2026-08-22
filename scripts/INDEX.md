@@ -1936,6 +1936,12 @@ EX6-PHASE-0 driver: phase-scoped named-80 deletion (PRE-REG EX6-PHASE-0 in docs/
 - `instrument_phase(model, keep, mode)`
 - `main()`
 
+### scratch/ex6b43_idcensus.py
+EX6-B43 identity census (registered observable (a) of VERDICT EX6-DEPTH-1): WHICH outside-keepset expert(s) does the B43 router natively select at z1 — and what replacement enters under the mask?
+
+- `instrument(model, keep)`
+- `main()`
+
 ### scratch/ex6depth.py
 EX6-DEPTH-0 driver (frozen pre-launch): z1 depth-band masks per PRE-REG EX6-DEPTH-0 — where along the 48 MoE layers does z1-routing healing live?
 
