@@ -41236,3 +41236,52 @@ residual is machine-exact after S1's fix; S4 adopted as the
 artifact pin). Receipts: logs/ex6b43decomp/decomp.jsonl
 (force-added). Files: scratch/ex6b43_decomp.py.
 
+## AMENDMENT EX6-B43-DECOMP-0-SCOPE: norm-arithmetic retraction ("~12% is entrant+renorm" wrong — the combined non-deletion vector is 46% of |delta|), J-dose scope narrowed to the block WRITE, and the five naturalistic arms are NOT the exact D/E/R decomposition (GPT review of 2fbc51cf, recomputed from the frozen receipt) (2026-08-22)
+
+Targets: OBSERVATION EX6-B43-DECOMP-0 (above) and the five-arm
+design of OBSERVATION EX6-B43-CONTROL-DESK-0.
+
+(1) NORM ARITHMETIC RETRACTED: the observation's reading said
+"~12% of |delta| is entrant+renorm". Wrong arithmetic —
+|d_del|/|delta| = 0.884 does not make the complement 11.6%,
+because near-orthogonal norms do not subtract linearly.
+Recomputed per row from the frozen receipt's logged norms and
+cosines (deterministic): ||d_entrant + d_renorm|| / ||delta||
+med 0.457, range 0.330-0.586 — the combined non-deletion vector
+is ~46% of the write. Pythagorean composition check:
+(||delta||^2 - sum_i ||d_i||^2) / ||delta||^2 med 0.0122,
+range -0.053 to +0.054. Canonical wording: deletion is the
+LARGEST component; the three components are near-orthogonal;
+no percent-of-delta complement talk.
+
+(2) J-DOSE SCOPE: |delta|/|native block output| = 0.559
+establishes a large perturbation relative to B43's MoE WRITE,
+not necessarily to the residual-stream state at that point —
+||h_pre||, ||h_post||, and delta/residual ratios are unmeasured
+(the knife driver logs them). LINEARIZATION QUAL stays
+mandatory regardless: the top-k intervention is finite and
+piecewise whatever the ratio reads.
+
+(3) ARM SEMANTICS: the desk five arms (DROP71 / RENORM7 /
+SLOT-SUBSTITUTE / ...) are NOT an exact component
+sufficiency/necessity decomposition — SLOT-SUBSTITUTE runs the
+entrant at expert 71's native coefficient (~0.236) where the
+measured FULL entrant term uses p'_r (~0.079), and RENORM7's
+seven-way coefficients differ from FULL's entrant-present
+renorm. They are NATURALISTIC/function-identity controls and
+move to a separate later rung. The first CAUSAL rung is the
+exact activation-component knife at (B43, z1) on the shared
+native h: NATIVE / D-ONLY (native + d_del) / NO-D (native +
+d_entrant + d_renorm) / FULL (native + all three; must
+reproduce the frozen B43 +20 anchor). D-ONLY carry = deletion-
+vector sufficiency; NO-D null = deletion-vector necessity —
+WITHIN this exact measured decomposition, and explicitly
+ACTIVATION-SPACE interventions, not necessarily normalized
+router-realizable states.
+
+(4) PRIOR FENCE: geometry gives a prior only — D is locally
+largest, but a smaller E/R vector could carry greater
+behavioral or Jacobian leverage; norm magnitude adjudicates
+nothing before treatment. After the knife, J-space GAIN
+transports D/E/R separately, not just net delta.
+
