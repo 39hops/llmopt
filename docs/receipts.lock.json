@@ -303,36 +303,60 @@
    "tracked": true
   },
   "logs/ex6depth/census.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 27692,
+   "exists": true,
+   "sha256": "006f41dcae843b0ca0fefb65052ccec6fad13f6812639487f4740b88915e8cc2",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6depth/demand.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 5247,
+   "exists": true,
+   "sha256": "24a4375d59cccdedcc035ab95cc00e439d40e114e948cf26eff540321768785b",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6depth/ex6depth_observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 1792,
+   "exists": true,
+   "sha256": "0ca96427cf1cf3cff29336f2871a6aaedde362eebcaab16feb7b198eb1a31f4a",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6depth/qual.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 966,
+   "exists": true,
+   "sha256": "94b70529f589a8ae860dc1092c09cf83f2f82d67dc285b682d7f7715700d9d4b",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6depth/qual_perprob.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 80262,
+   "exists": true,
+   "sha256": "2bb1a98b570d7c965d16eadfd549dacb36a3823bc42a0a9cd5a457c6109966e3",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6depth/treatment.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 1984,
+   "exists": true,
+   "sha256": "578c90fd48e7dbb0c7ffcdd52e1c5a124ce5e0566294bedbd7ce83ce8012c214",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6depth/treatment_perprob.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 132271,
+   "exists": true,
+   "sha256": "dfd122a59c5bc36ce3243527db45b72b8c095bdbd1dacf079d6dd6285af62e7c",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6depth/treatment_stdout.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 873,
+   "exists": true,
+   "sha256": "523d6dace73edb36ffa6999a500fe8177de88c13e8ed06429a9f41390194a02a",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6loc/ex6loc.jsonl": {
    "bytes": 2641,
