@@ -2654,8 +2654,10 @@ regime tag on every bullet is the fence.
 - **z1's launch-step healing lives in the LAST 16 MoE layers**:
   band-masked z1 routing (blocks 32-47) alone books +19 of Z1_ALL's
   +21 (signs +6/+8/+5, 3/3) while early/mid bands book -3/+5 (floor
-  noise), with additivity residual exactly 0 — depth-localized,
-  additive, no cross-band conjunction. The late band is the
+  noise), with pooled additivity residual exactly 0 —
+  depth-localized with no registered large pooled NET interaction
+  (per-level residuals -6/+1/+5 cancel; difficulty-dependent
+  interaction open, see AMENDMENT -SCOPE). The late band is the
   near-pure-rescue arm (20 rescues v 1 break). Registered color:
   the demand map ANTI-aligns (z1's excess carrier demand is
   early-band, 2.56% v 0.50% late) and displacement does not order

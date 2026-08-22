@@ -40496,3 +40496,46 @@ one block), corroborated by two independent code paths
 (demand.json predicts all measured band recalls). Files: scratch/ex6depth.py,
 scripts/obs_from_receipt_ex6depth.py.
 
+## AMENDMENT EX6-DEPTH-0-SCOPE: per-level additivity residuals cancel (no-large-pooled-NET-interaction, not "no conjunction"), alignment read narrowed to demand-volume accounts, demand-v-recall estimand split (2026-08-22, mac)
+
+Amends VERDICT EX6-DEPTH-0 (Artin + GPT review; every number
+receipt-verified in-house before adoption). Scope/wording
+corrections only; no bar outcome changes.
+
+1. ADDITIVITY WORDING. The verdict's "the bands compose
+additively, no cross-band conjunction" over-reads the pooled
+residual. Per-level residuals from the booked gate_per_level
+dicts: L1 -6, L2 +1, L3 +5 — CANCELLING to the pooled 0.
+Canonical reading: no registered large pooled NET interaction
+(|I| < 14); difficulty-dependent interaction/cancellation
+remains OPEN. This is also the natural account of the booked
+per-level color (LATE alone L1-heaviest +9/+6/+4 while Z1_ALL
+is L3-heaviest +3/+6/+12): the full-depth conjunction buys its
+extra hard-problem solves where the bands' net cancels. The
+"additive / no conjunction" phrasing is superseded by this
+entry.
+
+2. ALIGNMENT SCOPE. The demand anti-alignment (excess carrier
+demand EARLY, healing LATE) rules against a simple
+demand-VOLUME / displacement-MAGNITUDE account only — NOT
+against all carrier-family mechanisms: the late band's excluded
+carrier IDENTITIES could carry greater causal leverage per slot
+despite lower volume. "Intrinsic position x depth sensitivity"
+stays a CANDIDATE reading, never promoted beyond that by this
+data.
+
+3. ESTIMAND SPLIT (receipt-disclosure narrowing). The verdict's
+"demand.json predicts all measured band recalls / two
+independent code paths" sentence is superseded: demand.json is
+the NONE-path NATIVE demand; treatment masked_recall is
+CLOSED-LOOP under the mask (earlier masked z1 layers alter later
+z1 routing within the same forward). Different estimands.
+Measured gaps (native v treated): EARLY 3.23% v 3.12%, LATE
+1.58% v 1.49% excluded mass. The within-z1 rerouting shift is
+itself banked as possible mechanistic color (the mask slightly
+REDUCES downstream out-of-keepset demand at z1), unadjudicated.
+
+Fences unchanged; the verdict's bars, deltas, and prior
+adjudication stand as booked. Files:
+logs/ex6depth/treatment.jsonl, logs/ex6depth/demand.json.
+

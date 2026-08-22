@@ -99,6 +99,12 @@
             "reason": "EX6-TEMPORAL arms are matched on temporal-call dose only; realized routing displacement differs ~2.1x (z1 excluded mass 1.82% v 0.86-0.88% at z2/z3). Say 'identical temporal-call dose'.",
             "superseded_by": "2026-08-21-amendment-ex6-temporal-0-scope-equal",
             "scope": "ex6[- ]?temporal|z1|z2|z3|temporal mask"
+        },
+        {
+            "pattern": "bands compose additively|no cross-band conjunction",
+            "reason": "Pooled additivity residual 0 hides per-level residuals L1 -6 / L2 +1 / L3 +5 that cancel. Say 'no registered large pooled NET interaction (|I|<14)'; difficulty-dependent interaction/cancellation open.",
+            "superseded_by": "2026-08-22-amendment-ex6-depth-0-scope-per",
+            "scope": "ex6[- ]?depth|depth[- ]band|z1.*band"
         }
     ]
 }
