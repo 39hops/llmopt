@@ -2633,3 +2633,20 @@ regime tag on every bullet is the fence.
   3/3 sign consistency; TOKEN1_ONLY reads via the corrected
   prompt_tail semantics (it masks generated z1's routing).
   ([VERDICT EX6-LOC-0](RESULTS.md#L39826 "id:2026-08-21-verdict-ex6-loc-0-no-single").)
+
+- **The launch step is special, not merely early**: masking the
+  SECOND or THIRD generated token's routing (one temporal position
+  across all 48 MoE layers, the identical design dose as token1)
+  buys nothing — Delta_z2 = -3 pooled (inside the ~7-solve floor),
+  Delta_z3 = 0 with the paired per-problem read outcome-identical
+  to baseline (0 rescues, 0 breaks in 360) — while z1's +21
+  reproduced cell-exact through the new per-module-counter
+  instrument (6/6 anchors, recall to four decimals). The early-token
+  sensitivity curve alternative is absent: the shape is a step
+  function, +21 at z1, nothing after. [MECHANISM-CONFIRMED]
+  [REGIME-SCOPED: measured deployment artifacts] Fences: single
+  4-bit instrument, greedy, named-80 keepset, pooled n=3 seeds;
+  dose-validity clause satisfied at 0/360 zero-dose both arms; the
+  bar-5 ordering read books TIE (|gap| < 7); WHY z1 is privileged
+  (KV/attention mediation) stays hypothesis.
+  ([VERDICT EX6-TEMPORAL-0](RESULTS.md#L40150 "id:2026-08-21-verdict-ex6-temporal-0-the-launch").)

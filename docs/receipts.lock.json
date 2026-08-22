@@ -339,32 +339,54 @@
    "tracked": true
   },
   "logs/ex6temporal/census.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 8384,
+   "exists": true,
+   "local_only": true,
+   "sha256": "edd0d232f7481409671893db63c225f9901d17e3ea8bd28aafe0334bf7d368a3",
+   "source": "results",
+   "tracked": false
   },
   "logs/ex6temporal/ex6temporal_observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2057,
+   "exists": true,
+   "local_only": true,
+   "sha256": "f6745cb66c17e1c2c9e05970a76808969764bd9ff9e3bf7e0ea0b261147c9b04",
+   "source": "results",
+   "tracked": false
   },
   "logs/ex6temporal/qual.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 954,
+   "exists": true,
+   "local_only": true,
+   "sha256": "58b10fb84839b22e259e18239ce65c83d861061979f722b23eb1cf00e2c66e9e",
+   "source": "results",
+   "tracked": false
   },
   "logs/ex6temporal/qual_perprob.jsonl": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/ex6temporal/treatment.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 1468,
+   "exists": true,
+   "local_only": true,
+   "sha256": "8c2af2b615f9aacd042872f563b466a191a33facdba9bd9ec4e7b48cfce10ae8",
+   "source": "results",
+   "tracked": false
   },
   "logs/ex6temporal/treatment_perprob.jsonl": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/ex6temporal/treatment_stdout.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 582,
+   "exists": true,
+   "local_only": true,
+   "sha256": "5a52cf12bf1a46c03c678cf6e5d4d07f34728702fc5e0f9b1b589bcc70fb47b3",
+   "source": "results",
+   "tracked": false
   },
   "logs/funnel_wall/prec_sweep_step1_d64.log": {
    "bytes": 607,

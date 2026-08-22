@@ -40147,3 +40147,102 @@ with Delta_z2 = +3 books REFUTED with bar 3 NO-FIRE; (C) gap +1
 books bar 5 NO-FIRE. Files: docs/preregs/ex6-temporal-0.json,
 scripts/obs_from_receipt_ex6temporal.py.
 
+## VERDICT EX6-TEMPORAL-0: the launch step IS special — z2 and z3 masks buy nothing (Delta_z2 -3, Delta_z3 0 v z1's +21), bar 4 fires, prior NOT refuted; house prior right on 2 of 3 registered legs (bar 5's ordering leg books TIE) (2026-08-21, mac)
+
+Adjudicated by the registered pipeline (adapter
+scripts/obs_from_receipt_ex6temporal.py -> scripts/adjudicate.py,
+exit 0), quoted verbatim:
+
+BAR 1 QUALIFICATION: FIRE
+BAR 2 CALL-POSITION-CENSUS: FIRE
+BAR 3 Z2-CURVE: NO-FIRE
+BAR 4 Z1-SPECIAL: FIRE
+BAR 5 EARLY-DECAY-ORDER: NO-FIRE
+BAR 6 DOSE-VALIDITY: FIRE
+REFUTED-IF: NOT-REFUTED
+
+QUALIFICATION (bar 1): all six anchor cells CELL-EXACT — NONE
+64/61/66, Z1 74/66/72 at seeds 7001/8002/9003, reproducing the
+booked EX6-LOC-0 receipt through the new per-module-counter
+instrument; Z1's masked recall reproduces LOC TOKEN1_ONLY's to
+four decimals per seed (0.9816/0.9819/0.9819, receipt-verified
+both files) — the Z1 predicate hits the identical position set. CENSUS (bar 2): 48/48 MoE blocks record prompt-batch
+reset then z1, z2, z3 then decode on the registered probe
+(seed-7001 problem idx 2). DOSE (bar 6): zero-dose problems
+0/360 for BOTH Z2 and Z3 — every completion ran past 3 generated
+tokens (the detector establishes >= 3 generated tokens per
+problem — a masked count-3 call occurred);
+no dose confound.
+
+TREATMENT (pooled over 3 seeds, 120/seed; per-seed dicts are the
+checksum):
+  Z2 65/58/65 = 188 v NONE 191: Delta_z2 = -3 (signs +1/-3/-1,
+  1/3 positive) — inside the ~7-solve floor, no direction claim.
+  Z3 64/61/66 = 191 v NONE 191: Delta_z3 = 0 — and the paired
+  per-problem read is 0 rescues, 0 breaks across all 360
+  problems: outcome-identical to NONE problem-by-problem.
+  max(Delta_z2, Delta_z3) = 0 <= +10: BAR 4 FIRES.
+BAR 5 books the exact gap -3: |gap| < 7 = TIE, no ordering
+direction claimed (registered tie band).
+
+INSTRUMENT-APPLIED evidence for the null arms (this is not a
+no-op mask): Z2/Z3 rows carry masked_recall_named80 0.991 with
+nonzero slot counts — the mask predicate fired on one T=1 call
+per block per problem (the same one-position-x-48-layers design
+dose as Z1, per the bar-2 census plus construction); the vendor
+top-8 at z2/z3 already sits 99.1% inside the named-80 keepset,
+and the ~0.9% of forced re-picks flipped not one CORRECTNESS
+outcome at z3 (4/360 completions differ in text by gen_len,
+0/360 in ok; Z2: 14/360 text, 5/360 ok — the 1-rescue/4-break
+table above).
+
+PER-LEVEL SPLIT (registered secondary read; pooled dicts): L1
+NONE 74 / Z1 77 / Z2 73 / Z3 74; L2 64/70/62/64; L3 53/65/53/53.
+Z1's +21 is difficulty-tilted (dZ1 = +3/+6/+12 by level, L3
+carries over half) while Z2/Z3 are flat-null at every level.
+RESCUE/BREAK (registered secondary read): Z1 31 rescues (14 at
+L3) v 10 breaks; Z2 1 rescue v 4 breaks; Z3 0 v 0.
+
+PRIOR ADJUDICATION — RIGHT ON 2 OF 3 registered legs. The
+registered prior predicted, in full: bar 4 to fire ("Delta_z2
+and Delta_z3 both <= +10, likely single digits"), bar 3 not to
+fire, and a positive bar-5 outcome ("resolved decay order at
+the +7 floor"). Measured: bars 4 and 3 as predicted, both
+delta magnitudes single-digit; the miss is bar 5 — the gap -3
+books TIE, not the predicted resolved decay order. The
+registered alternative ("an early-token sensitivity curve
+decaying slowly from +21") is also absent: the measured shape is
+a step function, +21 at z1 and nothing distinguishable from
+noise after.
+
+READING (bounded by the mediator fence): the +21 is not
+early-token fragility — it is launch-step-specific. Changing how
+the SECOND or THIRD generated token is routed, at the identical
+one-position-x-48-layers dose, moves nothing distinguishable
+from noise, and z3's masking is outcome-identical per problem.
+Whatever z1-routing healing does, it acts at the single position
+where the prompt-built state first becomes a generated
+trajectory. WHY z1's position is privileged (KV/attention
+propagation of its healed output) remains HYPOTHESIS — this rung
+establishes position-specificity of the intervention effect, not
+the mediator. Ranked residue 2 (z1 depth bands) is now the live
+discriminator.
+
+FENCES carried: Mac-only, single 4-bit instrument (identity by
+the 6/6 cell-exact anchors), greedy, one mask predicate per arm
+with per-call dose, pooled bars with per-seed dicts; Delta_z2 =
+-3 and the bar-5 gap are inside the resolution floor and carry
+no direction claim; dose-validity clause satisfied at 0/360 so
+the contrast guards never engaged. Receipts:
+logs/ex6temporal/{census.json, qual.jsonl, treatment.jsonl,
+treatment_stdout.log, ex6temporal_observations.json} force-added
+with this booking (the stdout log is 582 bytes and independently
+corroborates all six treatment cells from its running-accuracy
+lines)
+(small text receipts, logs doctrine); the perprob streams stay
+untracked and regenerate from the frozen driver. Provenance:
+start block sha-pins the driver, gate machinery, and keepset;
+start_commit == completion_commit 809c8d33, clean worktree.
+Files: scratch/ex6temporal.py,
+scripts/obs_from_receipt_ex6temporal.py.
+

@@ -1,0 +1,596 @@
+{
+ "start": {
+  "start_commit": "809c8d33",
+  "start_status_porcelain": "",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/ex6temporal.py": "ab00f763d498710e9766e5e2aacdcc6e5cc301e1828468e78336b40c2e982473",
+   "scratch/moe_gt1_arm2.py": "916b616af8e2f44daeb01dcd9ca4e7f60b4167d8c485b69158740b16c5dedd9f",
+   "checkpoints/ex3_del_invp.json": "72bf31eb44e60f3877c7de496e0987ce678d3561fe38922ff9a5cad978faef7e"
+  }
+ },
+ "verdict": {
+  "n_moe_seen": 48,
+  "n_ok": 48,
+  "required": 48,
+  "pass": true,
+  "per_module": {
+   "0": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "1": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "2": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "3": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "4": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "5": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "6": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "7": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "8": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "9": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "10": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "11": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "12": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "13": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "14": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "15": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "16": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "17": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "18": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "19": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "20": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "21": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "22": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "23": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "24": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "25": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "26": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "27": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "28": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "29": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "30": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "31": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "32": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "33": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "34": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "35": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "36": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "37": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "38": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "39": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "40": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "41": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "42": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "43": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "44": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "45": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "46": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   },
+   "47": {
+    "ok": true,
+    "n_calls": 30,
+    "first6_after_reset": [
+     "z1",
+     "z2",
+     "z3",
+     "decode",
+     "decode",
+     "decode"
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "measurement_valid": true,
+ "arms": {
+  "none": {
+   "admissible": true
+  },
+  "z1": {
+   "admissible": true
+  },
+  "z2": {
+   "admissible": true
+  },
+  "z3": {
+   "admissible": true
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 6,
+   "metric": "n_exact_reproductions",
+   "population": "anchors:none+z1:3seeds",
+   "aggregation": "count_of_6"
+  },
+  "2": {
+   "value": 48,
+   "metric": "n_modules_temporal_law_ok",
+   "population": "seed7001:problem2:none",
+   "aggregation": "count_of_48"
+  },
+  "3": {
+   "value": -3,
+   "metric": "pooled_delta",
+   "population": "z2_v_none:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "3:signs": {
+   "value": 1,
+   "metric": "n_positive_seeds",
+   "population": "z2_v_none:3seeds",
+   "aggregation": "count_of_3"
+  },
+  "4": {
+   "value": 0,
+   "metric": "max_pooled_delta",
+   "population": "z2z3_v_none:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "4:delta_z2": {
+   "value": -3,
+   "metric": "pooled_delta",
+   "population": "z2_v_none:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "4:delta_z3": {
+   "value": 0,
+   "metric": "pooled_delta",
+   "population": "z3_v_none:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "5": {
+   "value": -3,
+   "metric": "delta_gap",
+   "population": "z2_v_z3:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "refutation:max_delta_z2_z3": {
+   "value": 0,
+   "metric": "max_pooled_delta",
+   "population": "z2z3_v_none:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "6": {
+   "value": 0,
+   "metric": "max_zero_dose_problems",
+   "population": "z2z3_perprob:3seeds",
+   "aggregation": "pooled_count"
+  },
+  "6:zero_dose_z2": {
+   "value": 0,
+   "metric": "zero_dose_problems",
+   "population": "z2_perprob:3seeds",
+   "aggregation": "pooled_count"
+  },
+  "6:zero_dose_z3": {
+   "value": 0,
+   "metric": "zero_dose_problems",
+   "population": "z3_perprob:3seeds",
+   "aggregation": "pooled_count"
+  }
+ },
+ "dose_census": {
+  "Z2": 0,
+  "Z3": 0
+ },
+ "contrasts": {
+  "3": {
+   "admissible": true
+  },
+  "4": {
+   "admissible": true
+  },
+  "5": {
+   "admissible": true
+  }
+ }
+}

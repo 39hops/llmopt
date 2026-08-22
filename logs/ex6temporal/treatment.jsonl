@@ -1,0 +1,7 @@
+{"arm": "tmp_Z2", "seed": 7001, "n_eval": 120, "gate_ok": 65, "gate_per_level": {"1": 25, "2": 21, "3": 19}, "masked_recall_named80": 0.9914, "gate_s": 252.6}
+{"arm": "tmp_Z3", "seed": 7001, "n_eval": 120, "gate_ok": 64, "gate_per_level": {"1": 25, "2": 21, "3": 18}, "masked_recall_named80": 0.9912, "gate_s": 252.4}
+{"arm": "tmp_Z2", "seed": 8002, "n_eval": 120, "gate_ok": 58, "gate_per_level": {"1": 23, "2": 19, "3": 16}, "masked_recall_named80": 0.9911, "gate_s": 269.7}
+{"arm": "tmp_Z3", "seed": 8002, "n_eval": 120, "gate_ok": 61, "gate_per_level": {"1": 24, "2": 20, "3": 17}, "masked_recall_named80": 0.991, "gate_s": 272.5}
+{"arm": "tmp_Z2", "seed": 9003, "n_eval": 120, "gate_ok": 65, "gate_per_level": {"1": 25, "2": 22, "3": 18}, "masked_recall_named80": 0.9916, "gate_s": 267.6}
+{"arm": "tmp_Z3", "seed": 9003, "n_eval": 120, "gate_ok": 66, "gate_per_level": {"1": 25, "2": 23, "3": 18}, "masked_recall_named80": 0.9914, "gate_s": 266.8}
+{"meta": {"note": "EX6-TEMPORAL-0 run meta", "start": {"start_commit": "809c8d33", "start_status_porcelain": "", "interpreter": "/Users/artin/code/llmopt/.venv/bin/python", "file_sha256": {"scratch/ex6temporal.py": "ab00f763d498710e9766e5e2aacdcc6e5cc301e1828468e78336b40c2e982473", "scratch/moe_gt1_arm2.py": "916b616af8e2f44daeb01dcd9ca4e7f60b4167d8c485b69158740b16c5dedd9f", "checkpoints/ex3_del_invp.json": "72bf31eb44e60f3877c7de496e0987ce678d3561fe38922ff9a5cad978faef7e"}}, "completion_commit": "809c8d33"}}

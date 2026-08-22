@@ -1,0 +1,6 @@
+{"arm": "tmp_NONE", "seed": 7001, "n_eval": 120, "gate_ok": 64, "gate_per_level": {"1": 25, "2": 21, "3": 18}, "masked_recall_named80": null, "gate_s": 251.1}
+{"arm": "tmp_Z1", "seed": 7001, "n_eval": 120, "gate_ok": 74, "gate_per_level": {"1": 26, "2": 23, "3": 25}, "masked_recall_named80": 0.9816, "gate_s": 254.5}
+{"arm": "tmp_NONE", "seed": 8002, "n_eval": 120, "gate_ok": 61, "gate_per_level": {"1": 24, "2": 20, "3": 17}, "masked_recall_named80": null, "gate_s": 271.8}
+{"arm": "tmp_Z1", "seed": 8002, "n_eval": 120, "gate_ok": 66, "gate_per_level": {"1": 26, "2": 22, "3": 18}, "masked_recall_named80": 0.9819, "gate_s": 274.2}
+{"arm": "tmp_NONE", "seed": 9003, "n_eval": 120, "gate_ok": 66, "gate_per_level": {"1": 25, "2": 23, "3": 18}, "masked_recall_named80": null, "gate_s": 267.5}
+{"arm": "tmp_Z1", "seed": 9003, "n_eval": 120, "gate_ok": 72, "gate_per_level": {"1": 25, "2": 25, "3": 22}, "masked_recall_named80": 0.9819, "gate_s": 278.1}
