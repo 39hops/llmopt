@@ -1057,6 +1057,12 @@ Observations adapter for PRE-REG EX6-DEPTH-0.
 - `demand_excess_band(demand)` — Per band: z1 outside-fraction minus mean(z2,z3) fraction.
 - `main(run_dir)`
 
+### scripts/obs_from_receipt_ex6depth1.py
+Observations adapter for PRE-REG EX6-DEPTH-1.
+
+- `rows(path)`
+- `main(run_dir)`
+
 ### scripts/obs_from_receipt_ex6temporal.py
 Observations adapter for PRE-REG EX6-TEMPORAL-0.
 
@@ -1932,6 +1938,15 @@ EX6-PHASE-0 driver: phase-scoped named-80 deletion (PRE-REG EX6-PHASE-0 in docs/
 
 ### scratch/ex6depth.py
 EX6-DEPTH-0 driver (frozen pre-launch): z1 depth-band masks per PRE-REG EX6-DEPTH-0 — where along the 48 MoE layers does z1-routing healing live?
+
+- `pred_for(arm)` — (phase, band_pos) -> masked. band_pos = order of appearance
+- `instrument(model, keep, pred)` — Frozen ex6temporal wrapped-gate math; mask decision =
+- `census_verdict(census, n_moe, arm)` — Temporal law per module AND masked flags match the arm's
+- `run_arm(model, tok, problems, keep, seed, arm, log_path, sealed_stdout=None, log_demand=False)`
+- `main()`
+
+### scratch/ex6depth1.py
+EX6-DEPTH-1 driver (frozen pre-launch): z1 single-block masks per PRE-REG EX6-DEPTH-1 — does the late band's +19 localize to the routing decisions at blocks 43 and 46?
 
 - `pred_for(arm)` — (phase, band_pos) -> masked. band_pos = order of appearance
 - `instrument(model, keep, pred)` — Frozen ex6temporal wrapped-gate math; mask decision =

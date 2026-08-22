@@ -358,6 +358,38 @@
    "source": "results",
    "tracked": true
   },
+  "logs/ex6depth1/census.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6depth1/ex6depth1_observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6depth1/inert.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6depth1/qual.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6depth1/qual_perprob.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6depth1/treatment.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6depth1/treatment_perprob.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ex6depth1/treatment_stdout.log": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/ex6loc/ex6loc.jsonl": {
    "bytes": 2641,
    "exists": true,
