@@ -40698,3 +40698,36 @@ implementation waits on Artin's GO per the freeze-scope
 instruction. Files: llmopt/search/derivation.py (read),
 data/micromodel_atoms_shard0.jsonl (counted).
 
+## AMENDMENT MATHWORLD-DESK-0-BUDGET: successors() is a legal-action enumerator (adopt the legal-action world, bank proposal-mode for later); logical-step budgets are primary, wall is the safety cap; rung-0 receipt schema fixed (2026-08-22, mac)
+
+Amends OBSERVATION MATHWORLD-DESK-0 (Artin + GPT review). Three
+adoptions, no count changes.
+
+1. API SEMANTICS. successors() is a verified LEGAL-ACTION
+ENUMERATOR, not a step(state, proposed_action) admission API: it
+silently filters illegal/identity/timed-out candidates and
+yields only admitted (rule@locus, child) pairs. ADOPTED for
+MATH-CYBER-0: a chess-like LEGAL-ACTION world — MathNative
+chooses among exact admitted actions. Proposal/rejection mode
+(the model emits a candidate and the world adjudicates it, with
+explicit rejection classes) is BANKED as a later contract
+extension, not built now.
+
+2. BUDGET CORRECTION. The desk entry's "the loop budget must be
+WALL-based, never transition-count-based" is superseded: the
+p90 2.05 s tail establishes wall as a THROUGHPUT/SAFETY
+constraint, but a wall-only treatment budget would endogenously
+vary the number of decisions/optimizer updates when the ACTIVE
+arm steers into expensive states — a confound on the causal-edge
+question itself. Canonical: primary rungs use FIXED LOGICAL
+budgets (decisions / optimizer updates / horizon) with a hard
+wall SAFETY CAP; per-step wall and timeouts are recorded;
+wall-budgeted performance is a separate downstream regime, never
+the identification rung.
+
+3. RUNG-0 RECEIPT SCHEMA (minimal, fixed now so causal ordering
+is intrinsic from the first row): (episode_id, step_id,
+state_before_hash, legal_action_set_hash, chosen_action,
+state_after_hash, solved/admission outcome, transition_wall_ms).
+Proposal-mode later adds explicit rejection classes.
+

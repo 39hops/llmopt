@@ -2678,7 +2678,10 @@ regime tag on every bullet is the fence.
   3-3.5 at L4-7 (max 9, 15% single-action) — adequate; L1-3 is
   corridor-thin (median 2, 35% single-action); admission wall
   median 51 ms at L4-7 but p90 2.05 s — the heurisch tail makes
-  wall-clock, not transition count, the loop's budget unit.
+  wall-clock the throughput/safety constraint (per AMENDMENT
+  -BUDGET: primary rungs budget by fixed logical decisions with a
+  hard wall safety cap — wall-only budgets endogenously confound
+  the causal-edge question).
   [DESK-PRICED] [REGIME-SCOPED: this Mac, seed-7001 samples,
   root+depth-1 only] Fences: desk numbers are predictions; the
   contract's own receipts book measured values at rung 0.
