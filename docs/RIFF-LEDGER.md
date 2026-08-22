@@ -8433,6 +8433,23 @@ honest status column).
   unimplemented. The frozen receipt interface is the axiom
   C++-replica handoff artifact; axiom stays one contract rung
   behind by design.
+  ESTIMAND REFINEMENT (2026-08-22 evening, in place, per
+  AMENDMENT MATH-CYBER-1-DESK-0-COVERAGE): the bank's single
+  REPLAY arm splits into three registered estimands — (i)
+  ORDERED-REPLAY with identical experience/order/immediate
+  updates = RECONSTRUCTION QUALIFICATION, not a causal contrast;
+  (ii) fixed-experience DELAYED/SHUFFLED replay = the
+  optimization timing/order estimand (the bank's REPLAY arm
+  proper); (iii) interactive ACTIVE v no/delayed online update =
+  the total closed-loop feedback effect (the bank's ONLINE >
+  REPLAY contrast), where experience may diverge endogenously.
+  Learning signal frozen pre-prereg: terminal-success-gated
+  trajectory updates (legality is not feedback; hce stays
+  baseline/diagnostic, never the silent reward). The informal
+  perfect-score registration pinned no seed band; seeds
+  9100-9109 are now CALIBRATION (instrument design used them),
+  and confirmatory PERFECT adjudication runs on a fresh
+  post-freeze seed band.
 
 - **BANKED (2026-08-22): RRUN — sha-pinned sandboxed remote
   execution for the 3080/WSL leg** (GPT proposal via Artin;

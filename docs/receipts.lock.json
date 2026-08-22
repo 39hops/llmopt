@@ -682,6 +682,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/substrate_desk.json": {
+   "bytes": 1730,
+   "exists": true,
+   "sha256": "140bb6a2e3469dd4de48b40dfbd6008c6598f1cb6eab8ff92d6c92993553a45d",
+   "source": "results",
+   "tracked": true
+  },
   "logs/merge_space1/driver.log": {
    "exists": false,
    "source": "results"

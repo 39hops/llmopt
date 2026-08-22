@@ -2774,6 +2774,31 @@ regime tag on every bullet is the fence.
   closure claim for any fixed atom list. Pair-fit also fails:
   38.2% of encodable scoring sequences exceed ctx=512 (K prices
   compute, not context); conservative fallback leaves the stock
-  checkpoint controlling 16/101 decisions.
+  checkpoint controlling 16/101 decisions — a figure whose booked
+  criterion was vocab-completeness only; the -COVERAGE amendment
+  measured the registered joint criterion (encodes AND fits
+  ctx<=512) at the same 16/101 (corpus co-occurrence, not
+  identity; ctx512-only is 66/101), killed the stock checkpoint
+  as a primary rung (parked as partial-domain color), marked
+  seeds 9100-9109 CALIBRATION (confirmatory PERFECT adjudication
+  moves to a fresh post-freeze seed band), and froze the
+  learning-signal estimands (reconstruction qualification v
+  timing/order v total closed-loop) before any prereg.
   ([OBSERVATION MATH-CYBER-1-DESK-0](RESULTS.md#L41654 "id:2026-08-22-observation-math-cyber-1-desk-0"),
-  [AMENDMENT MATH-CYBER-1-DESK-0-INTERFACE](RESULTS.md#L41744 "id:2026-08-22-amendment-math-cyber-1-desk-0").)
+  [AMENDMENT MATH-CYBER-1-DESK-0-INTERFACE](RESULTS.md#L41744 "id:2026-08-22-amendment-math-cyber-1-desk-0"),
+  [AMENDMENT MATH-CYBER-1-DESK-0-COVERAGE](RESULTS.md#L41832 "id:2026-08-22-amendment-math-cyber-1-desk-0-b").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search]
+  Fresh-substrate desk, no model loaded: a grammar-closed
+  tokenizer (existing ATOMS + deterministic single-byte fallback
+  per uncovered char — no fixture-conditioned atom additions)
+  encodes 100% of the 725 calibration actions, and ctx=4096 is
+  the smallest bucket with full coverage (725/725 actions,
+  101/101 decisions, 40/40 episodes; ctx=512 covers only 41/101
+  decisions). The base training diet (103,595 rows) loses
+  nothing and regains its 388 skipped out-of-language rows (all
+  <=512 tokens). Promoted: fresh birth on this substrate at
+  ctx=4096, with a frozen runtime overflow law required before
+  treatment (learned policies can leave the calibration
+  trajectories).
+  ([OBSERVATION MATH-CYBER-1-SUBSTRATE-DESK-0](RESULTS.md#L41920 "id:2026-08-22-observation-math-cyber-1-substrate-desk").)

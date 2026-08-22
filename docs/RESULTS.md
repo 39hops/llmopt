@@ -41829,3 +41829,149 @@ spec (their dd70ae0/365e87a/9d4933c) has not been read house-side;
 the exporter and its relay wait on the box, and nothing in this
 amendment depends on that spec.
 
+## AMENDMENT MATH-CYBER-1-DESK-0-COVERAGE: the 16/101 model-control figure was VOCAB-COMPLETE only — the joint stock-eligible count (vocab AND ctx<=512) is measured and happens to equal it at 16/101; stock checkpoint KILLED as a primary rung; seeds 9100-9109 marked CALIBRATION; learning-signal estimands fixed before any prereg (2026-08-22, Mac)
+
+Amends AMENDMENT MATH-CYBER-1-DESK-0-INTERFACE (same day), on
+outside review (GPT, relayed by Artin; each point house-verified).
+
+(a) COVERAGE CRITERION BUG, corrected. The census script's
+whole-decision gate rejected a decision only on TOKENIZER failure;
+it did not reject encodable pair sequences longer than 512. The
+booked "16/101 model-controlled" is therefore the VOCAB-COMPLETE
+count, not stock-context model control. Recomputed from the frozen
+receipt (logs/mathworld1/census.jsonl, per-action rows; no re-walk
+needed), three registered definitions:
+  - vocab_complete (every legal candidate's sequence encodes):
+    16/101 decisions, 15/40 episodes;
+  - ctx512_complete (every ENCODABLE candidate sequence <= 512;
+    context-only criterion, encodability ignored): 66/101
+    decisions, 37/40 episodes;
+  - joint_stock_eligible (every candidate encodes AND fits 512):
+    16/101 decisions, 15/40 episodes.
+The joint count EQUALS the vocab-complete count on this corpus:
+every vocab-complete decision's sequences all fit 512 (long
+sequences and unencodable states co-occur at the deep L6-7
+states). The booked 16/101 number survives, with its criterion
+corrected from "encodable" to "encodable AND fits"; that this is
+a coincidence of the corpus, not an identity, is the point of
+booking the split.
+
+(b) SCOPE WORDING for >512: the implementation can technically
+execute longer sequences (RoPE is dynamic; ctx is not
+hard-enforced at inference), so sequences over 512 are OUTSIDE
+THE TRAINED/REGISTERED CONTEXT CONTRACT, not physically
+unscorable. All coverage claims use that phrasing.
+
+(c) STOCK CHECKPOINT KILLED AS PRIMARY RUNG. With joint
+stock-eligibility at 16/101 decisions, a stock-checkpoint
+treatment rung would be an hce-dominated hybrid; no treatment
+rung is spent on it and no checkpoint is loaded. The stock static
+probe is PARKED as optional partial-domain COLOR only (revival:
+if a fresh-substrate rung needs a stock baseline on the 16
+eligible decisions, it may run as color, never as an arm).
+
+(d) EVALUATION SCOPE — CALIBRATION MARKING. The original
+registration (RIFF-LEDGER, CYBERNETIC-MATH bank, 2026-08-21) reads
+"Registered informal prior ... FULL-CYBER 'scores perfectly'" and
+pins NO seed band. Seeds 9100-9109 (the rung-0 40) have now been
+used throughout instrument design (branching census, encodability,
+pair-fit, coverage) and are marked CALIBRATION. The literal
+PERFECT bar on them is preserved as registered/descriptive color;
+CONFIRMATORY adjudication of the PERFECT prediction runs on a
+FRESH deterministic L4-7 seed band, frozen only AFTER the
+tokenizer/context/update-law freeze, and that fresh root band is
+audited against the training diet (contamination census) before
+any treatment touches it.
+
+(e) SCORE POLICY: the registered sequence log-prob score S(c|s)
+stays primary. A pre-model MINLEN candidate policy (choose the
+shortest-sequence candidate, deterministic tie-break) is added as
+a registered CONTROL for autoregressive length bias. No
+post-score normalization decision is made now, and none may be
+made after scores are seen.
+
+(f) LEARNING-SIGNAL DESK (pre-prereg, frozen now): legality is
+not feedback — every enumerated action is already legal. The
+preferred minimal environment signal is TERMINAL-SUCCESS-GATED
+trajectory updates: solved-within-logical-horizon gates positive
+training on the trajectory's chosen transitions; failed
+trajectories are not promoted. hce may remain a baseline/
+diagnostic policy but must never silently become the reward.
+Estimand nomenclature fixed, reconciled with the CYBERNETIC-MATH
+bank's factorial: (i) ORDERED-REPLAY with identical experience,
+order, and immediate updates = RECONSTRUCTION QUALIFICATION (the
+learner-side twin of the world replay bar; nothing varies); (ii)
+fixed-experience DELAYED or SHUFFLED replay = the optimization
+timing/order estimand (the bank's REPLAY arm, now split by what
+it varies); (iii) interactive ACTIVE v no/delayed online update =
+the total closed-loop feedback effect, where experience may
+diverge endogenously (the bank's ONLINE > REPLAY contrast). The
+bank row is updated in place with this refinement in the same
+commit.
+
+FENCES. All counts derive from the frozen census receipt over the
+calibration trajectories (greedy-visited legal sets); coverage is
+trajectory-conditional. The axiom semantic exporter remains
+BLOCKED at write time: four connection retries failed ("no route
+to host"; ARP incomplete at the configured address — the box is
+not answering at the link layer), so axiom's finalized interchange
+spec is still unread house-side. Nothing here depends on it.
+
+## OBSERVATION MATH-CYBER-1-SUBSTRATE-DESK-0: a grammar-closed tokenizer (ATOMS + deterministic byte fallback) encodes 100% of calibration actions, and ctx=4096 covers 725/725 actions, 101/101 decisions, 40/40 episodes; the training diet admits 388 new rows (all <=512 tokens) — the fresh-birth substrate is priced, no model loaded (2026-08-22, Mac)
+
+Fresh-substrate desk per outside review: do NOT build vocabulary
+by appending corpus-discovered names (`I`, `Subs`, `u_`,
+`fresnelc`) — a fixture-conditioned atom list re-breaks on the
+next unseen identifier. Proposed substrate: the existing ATOMS
+multi-char vocabulary (scaffold, function atoms, digits) plus a
+DETERMINISTIC SINGLE-BYTE FALLBACK token per uncovered character —
+grammar-closed over the frozen sstr language, encodes unseen
+identifiers by construction. Instrument:
+scratch/mathworld1_substrate_desk.py; receipt:
+logs/mathworld1/substrate_desk.json (wall 163.7 s). The walk
+re-enumerates all 40 frozen episodes and asserts
+legal_action_set_hash equality row-by-row against
+logs/mathworld0/active.jsonl before counting (binding check,
+abort-on-mismatch; none fired). No model was loaded; no vocab was
+shipped — this desk prices a design.
+
+(1) CALIBRATION ACTIONS (725, all encodable by construction):
+full pair-sequence lengths under the proposal — median 256, p90
+1672, max 3931 tokens (v stock 256/1663/3534 over its encodable
+615: byte fallback adds ~0-11% length on fallback-heavy states).
+
+(2) FIT BY CONTEXT (actions / decisions / episodes, whole-decision
+= every legal candidate fits):
+  ctx  512: 430/725, 41/101, 34/40
+  ctx 1024: 544/725, 78/101, 38/40
+  ctx 2048: 668/725, 86/101, 38/40
+  ctx 4096: 725/725, 101/101, 40/40
+  ctx 8192: same as 4096.
+ctx=4096 is the smallest bucket with FULL calibration coverage.
+
+(3) TRAINING DIET (base load: data/micromodel_chains_shard*.jsonl
++ data/step_chains.jsonl, 103,595 rows): stock strict encoding
+admits 103,207 rows (median 46, p90 109, max 501 — all within the
+512 cap); the proposal newly admits the 388 currently-skipped
+out-of-language rows (median 97, p90 128, max 236 — ALL fit 512).
+The byte-fallback substrate costs nothing on the existing diet and
+recovers every skipped row.
+
+PROMOTED: fresh birth on the grammar-closed tokenizer at ctx=4096
+(the priced floor for full calibration coverage). REQUIRED BEFORE
+TREATMENT: a frozen runtime overflow law — a learned policy can
+visit states OUTSIDE greedy's calibration trajectories, so
+sequences beyond the trained context need a registered
+fallback/abort rule regardless of the 100% calibration figure.
+
+FENCES. Coverage numbers are trajectory-conditional (the legal
+sets greedy-hce visited); the byte-fallback length model counts
+one token per uncovered byte with no merges (a real byte-level
+vocab may differ by merge choices — this desk prices the
+no-merge floor... i.e. the WORST case for length). Diet numbers
+are scoped to the named base shards at their on-disk state
+(103,595 rows); flag-gated diet extensions (poly/series/l8/gen7)
+were not counted. Desk numbers are predictions about instruments,
+not measurements of them; the birth's own encoder census governs
+at training time.
+

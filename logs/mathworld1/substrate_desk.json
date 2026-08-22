@@ -1,0 +1,67 @@
+{
+ "proposed_tokenizer": "ATOMS greedy longest-match + deterministic single-byte fallback per uncovered char (grammar-closed over sstr; no fixture-conditioned atoms)",
+ "calibration_actions": 725,
+ "pair_seq_tokens_proposed": {
+  "med": 256,
+  "p90": 1672,
+  "max": 3931
+ },
+ "fit_by_ctx": {
+  "512": {
+   "actions": 430,
+   "decisions": 41,
+   "episodes": 34
+  },
+  "1024": {
+   "actions": 544,
+   "decisions": 78,
+   "episodes": 38
+  },
+  "2048": {
+   "actions": 668,
+   "decisions": 86,
+   "episodes": 38
+  },
+  "4096": {
+   "actions": 725,
+   "decisions": 101,
+   "episodes": 40
+  },
+  "8192": {
+   "actions": 725,
+   "decisions": 101,
+   "episodes": 40
+  }
+ },
+ "decisions_total": 101,
+ "episodes_total": 40,
+ "diet_rows_total": 103595,
+ "diet_stock_encoded": {
+  "n": 103207,
+  "med": 46,
+  "p90": 109,
+  "max": 501,
+  "le512": 103207
+ },
+ "diet_newly_admitted": {
+  "n": 388,
+  "med": 97,
+  "p90": 128,
+  "max": 236,
+  "le512": 388
+ },
+ "wall_s": 163.7,
+ "start": {
+  "start_commit": "4a3347d3",
+  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_substrate_desk.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_substrate_desk.py": "0a5ed78eb52d8b6f6821ec82214664d1dcc179d7a6e600b6561d2e4d5d9d3fe9",
+   "scratch/mathworld0.py": "4c130625535aa73ca10cdc368213d2d875862d324eb3796508feab5dd30c52d4",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/mathgen/problems.py": "9f1dcac61712696b2b7f9e65585d33d26865edf6b60f338977f09a792fe51215",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61"
+  }
+ },
+ "completion_commit": "4a3347d3"
+}
