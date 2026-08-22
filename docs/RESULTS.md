@@ -40872,3 +40872,51 @@ treatment gate_ok values independently corroborated from the
 sealed stdout accuracies by the auditor. Files:
 scratch/ex6depth1.py, scripts/obs_from_receipt_ex6depth1.py.
 
+## OBSERVATION MATH-BASIS-0-CENSUS: the frozen B43 rescues carry NO engine-vocabulary prerequisite signature at this gate's grain — profiles flat v matched non-rescued failures, and the instrument's resolution is the finding (2026-08-22, mac, zero-model census)
+
+Rescue-anatomy census on the frozen EX6-DEPTH-1 receipts (MATH-
+BASIS-0 residue (a)). Thresholds named BEFORE counting:
+enrichment anchor = an engine rule with >= 2x winning-path
+incidence in rescued v level-matched non-rescued AND present in
+>= 10/20 rescues; flat = primitive-level signature absent;
+engine solve coverage < 70% = inconclusive-by-instrument.
+
+DESIGN. The 20 B43 rescues (levels 8/7/5 across L1-3) v a
+2x level-matched sample of the 149 non-rescued NONE-failures
+(seeded string draw "mathbasis-0", n=40). Every problem solved
+by the standing calculus engine (llmopt.search.engine.solve,
+zero neural network); features = winning-path rule set, depth,
+first rule, kind. Coverage: 20/20 rescued solved, 39/40
+matched — census conclusive at instrument level.
+
+RESULT — FLAT at the named thresholds. Rule incidence rescued v
+matched: l_direct 0.70 v 0.74 (ratio 0.94), i_linear_basis 0.20
+v 0.13 (ratio 1.56, n=4 — under both halves of the bar),
+i_heurisch 0.10 v 0.10. Winning-path depth median 1 v 1. First
+rule and kind mixes match (limit-heavy both: 14/20 v 29/39). NO
+enrichment anchor.
+
+READING (bounded, per the banked prediction triple): the
+primitive-basis account loses its CHEAPEST support at this
+grain; the orchestration account is not contradicted; nothing
+is adjudicated — because the RESOLUTION FENCE dominates:
+winning paths at this gate's L1-3 problems are depth-1-dominated
+(median 1; l_direct alone solves 70%+), so "prerequisite/
+dominator structure" is nearly degenerate on this corpus and
+the engine vocabulary barely discriminates. The banked break
+stands doubly: a null under this vocabulary does not rule out a
+basis in a different decomposition, AND this corpus cannot
+express deep prerequisite structure at all. The discriminating
+instrument is the banked primitive-dependency transport corpus
+(L4+ / factorialized dependencies), not a rerun of this census.
+
+FENCES: descriptive anatomy on unblinded rescue labels (the
+rescue/non-rescue split was known before counting; thresholds
+were named before the counts); engine vocabulary = the house
+successors() rule set; sample = the exact frozen (seed, idx)
+sets, receipts logs/ex6depth1/*_perprob.jsonl; scratch working
+file logs/ex6depth1/mathbasis_census_scratch.json (untracked
+exhaust). Files: llmopt/search/engine.py (read),
+logs/ex6depth1/qual_perprob.jsonl,
+logs/ex6depth1/treatment_perprob.jsonl.
+

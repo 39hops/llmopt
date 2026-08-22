@@ -8459,10 +8459,12 @@ honest status column).
   not finding. Naming fence: no "division/algebra expert" talk
   without the expert-identity census x rescue-structure cross
   AND a same-B43 matched-identity intervention.
-  Testable residue: (a) rescue-anatomy census on the frozen 20
-  B43 rescues v level-matched non-rescued failures (rule
-  incidence, minimal derivation depth, first necessary rewrite,
-  dominator rules — exact machinery, fired 2026-08-22); (b) the
+  Testable residue: (a) rescue-anatomy census — FIRED 2026-08-22
+  same day, OBSERVATION MATH-BASIS-0-CENSUS: FLAT at the named
+  thresholds (no engine-vocabulary enrichment; depth-1-dominated
+  corpus, resolution fence dominates — cheapest support absent,
+  nothing adjudicated; the transport corpus is the real
+  instrument); (b) the
   outcome-blind B43 expert-identity census; (c) if (a) enriches
   AND (b) concentrates, the matched-identity intervention; (d)
   the primitive-dependency transport corpus.
