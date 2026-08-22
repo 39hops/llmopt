@@ -40308,3 +40308,81 @@ unqualified "identical design dose" in this thread's scope.
 Files: logs/ex6temporal/qual.jsonl,
 logs/ex6temporal/treatment.jsonl.
 
+## PRE-REG EX6-DEPTH-0: z1 depth-band masks early/mid/late — where along the 48 MoE layers does z1-routing healing live? (2026-08-21, mac)
+
+Registered BEFORE any band cell fires. Machine projection:
+docs/preregs/ex6-depth-0.json (validated); driver
+scratch/ex6depth.py (frozen this commit); adapter
+scripts/obs_from_receipt_ex6depth.py committed alongside. Fires
+ranked residue 2 (handoff 2026-08-21-3), registered follow-up
+axis (b) of AMENDMENT EX6-LOC-0-LEVELS.
+
+DESIGN. Arms NONE / Z1_ALL / Z1_EARLY (MoE blocks 0-15 by order
+of appearance) / Z1_MID (16-31) / Z1_LATE (32-47); band arms
+mask generated z1's routing in their 16 blocks only. Temporal
+law identical to EX6-TEMPORAL-0 (per-module T=1 counter). Same
+native path, named-80 keepset, greedy, seeds 7001/8002/9003,
+120/seed. Dose language per AMENDMENT EX6-TEMPORAL-0-SCOPE: band
+arms carry ONE THIRD of Z1_ALL's temporal-CALL dose, mutually
+exclusive, summing to ALL's position set; realized displacement
+per band DISCLOSED via per-band masked_recall, never assumed
+equal.
+
+QUALIFICATION BRIDGE (fail-closed, in order): BAR 2 BAND-CENSUS
+(sanity) — one outcome-blind probe pass PER ARM predicate on
+seed-7001 problem idx 2: 48 modules x 5 arms = 240 cells, each
+requiring the temporal law (decode witnessed) AND masked flags
+exactly the arm's registered band at z1, nowhere else; failure
+exits 3 before anchors. BAR 1 QUALIFICATION (sanity) — all six
+anchor cells CELL-EXACT against the booked EX6-TEMPORAL-0
+receipt (NONE 64/61/66, Z1_ALL 74/66/72); any miss exits 3
+before any band cell runs or prints.
+
+TREATMENT BARS (pooled, ~7-solve floor; max-band delta in 11..13
+books UNRESOLVED band): BAR 3 LOCALIZED max(band deltas) >= +14;
+BAR 4 DISTRIBUTED every band delta <= +10 (conjuncts); BAR 5
+ADDITIVITY (range, diagnostic) |Delta_all - sum(bands)| >= 14
+flags cross-band interaction.
+
+REFUTED-IF (predicate, suppressed unless bars 1 AND 2 fire): the
+house prior (depth-DISTRIBUTED) is REFUTED if one band alone
+reaches +14.
+
+REGISTERED PRIOR (house, MEDIUM-LOW — this family's priors are
+1-for-4 on direction calls): DISTRIBUTED, bar 4 fires, because
+z1's representation at every depth is written into that layer's
+KV entry and consumed at the matching depth; weak lean Z1_LATE
+largest. Named alternative: LOCALIZED (bar 3 fires), in which
+case the registered alignment read becomes the mechanism
+discriminator.
+
+DEMAND CENSUS + ALIGNMENT READ (registered pre-fire, from the
+RIFF banks of this date): NONE arms capture an outcome-blind
+48x3 native-demand map (per block and z1/z2/z3: top-8 slots,
+outside-named80 count; logs/ex6depth/demand.json, written before
+any band cell fires in receipt order). Alignment read (color, no
+bar): demand-excess band = argmax over bands of [z1
+outside-fraction minus mean(z2,z3)]; causal band = argmax band
+delta, defined only if bar 3 fires; report coincidence + both
+rank orderings.
+
+SECONDARY REGISTERED READS: per-level splits every arm; paired
+rescue/break tables band v NONE; per-band excluded-mass
+disclosure. ARTIFACT VISIBILITY (/watch): census.json,
+demand.json, qual.jsonl, qual_perprob.jsonl ALWAYS-READABLE;
+treatment.jsonl, treatment_perprob.jsonl, treatment_stdout.log
+SEALED-UNTIL-QUALIFICATION (rc 0), SEALED-FOREVER-ON-FAILURE
+otherwise.
+
+QUALIFICATION LADDER AT REGISTRATION: prereg validates; SMOKE rc
+0 — per-arm census 5x48/48 with band masks exact (EARLY masks
+blocks 0-15 only, MID/LATE verified equally), demand map 144
+keys, anchors path exercised, no treatment value printed; census
+counterexamples (off-by-one band, z2 mask leak, NONE with a
+mask) all caught in-line; synthetic adjudicator fixtures:
+localized-late REFUTES, distributed books bar 4 FIRE, anchor
+miss books bands UNRESOLVED with REFUTED-IF UNADJUDICATED.
+Fences: Mac-only, single 4-bit instrument, greedy. Files:
+scratch/ex6depth.py, docs/preregs/ex6-depth-0.json,
+scripts/obs_from_receipt_ex6depth.py.
+

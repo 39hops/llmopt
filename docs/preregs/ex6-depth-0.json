@@ -1,0 +1,176 @@
+{
+ "name": "EX6-DEPTH-0",
+ "results_id": "2026-08-21-pre-reg-ex6-depth-0-z1",
+ "registered": "2026-08-21",
+ "machine": "mac",
+ "note": "z1 depth bands: where along the 48 MoE layers does z1-routing healing live? Ranked residue 2 (handoff 2026-08-21-3), registered follow-up axis (b) of AMENDMENT EX6-LOC-0-LEVELS. Arms NONE / Z1_ALL / Z1_EARLY (MoE blocks 0-15 by order of appearance) / Z1_MID (16-31) / Z1_LATE (32-47); band arms mask generated z1's routing in their 16 blocks only. Temporal law identical to EX6-TEMPORAL-0 (per-module T=1 counter keyed by id(block)). Delta_band = pooled over seeds 7001/8002/9003 of (gate_band - gate_NONE), 120/seed, native generator path, named-80 keepset, greedy. DOSE LANGUAGE (per AMENDMENT EX6-TEMPORAL-0-SCOPE): band arms carry ONE THIRD of Z1_ALL's temporal-CALL dose (one position x 16 layers), mutually exclusive and summing to ALL's position set; realized displacement per band is DISCLOSED via per-band masked_recall and is not assumed equal across bands. Resolution law: ~7-solve pooled floor; a max-band delta in 11..13 books as UNRESOLVED band. Artifact visibility (/watch): census.json, demand.json, qual.jsonl, qual_perprob.jsonl ALWAYS-READABLE; treatment.jsonl, treatment_perprob.jsonl, treatment_stdout.log SEALED-UNTIL-QUALIFICATION (rc 0), SEALED-FOREVER-ON-FAILURE otherwise. DEMAND CENSUS + ALIGNMENT READ (registered pre-fire, from the RIFF bank 2026-08-21): the NONE arms capture an outcome-blind 48x3 native-demand map (per band_pos and zk: top-8 slots and outside-named80 count, router reads only, written to demand.json before any band cell fires in receipt order). Registered alignment read (color, no bar): (i) the demand-excess band = argmax over the three bands of [z1 outside-fraction minus mean(z2,z3) outside-fraction]; (ii) the causal band = argmax Delta_band, defined only when bar 3 fires; report whether they coincide, plus the rank ordering of the three bands on both measures. Registered secondary reads (color, no bars): per-level gate_per_level splits every arm; paired per-problem rescue/break tables band v NONE from the perprob streams; per-band excluded-mass disclosure.",
+ "arms": {
+  "none": {
+   "description": "nothing masked — anchor arm, must reproduce 64/61/66 cell-exact (EX6-TEMPORAL-0 receipt)"
+  },
+  "z1_all": {
+   "description": "z1 masked at all 48 MoE blocks — anchor arm, position-identical to EX6-TEMPORAL-0 Z1, must reproduce 74/66/72 cell-exact"
+  },
+  "z1_early": {
+   "description": "z1 masked at MoE blocks 0-15 only (order of appearance)"
+  },
+  "z1_mid": {
+   "description": "z1 masked at MoE blocks 16-31 only"
+  },
+  "z1_late": {
+   "description": "z1 masked at MoE blocks 32-47 only"
+  }
+ },
+ "operands": [
+  {
+   "name": "named80_keepset",
+   "provider": "checkpoints/ex3_del_invp.json"
+  },
+  {
+   "name": "depth_instrument",
+   "provider": "scratch/ex6depth.py"
+  },
+  {
+   "name": "frozen_gate_machinery",
+   "provider": "scratch/moe_gt1_arm2.py"
+  },
+  {
+   "name": "anchor_receipt",
+   "provider": "logs/ex6temporal/qual.jsonl"
+  }
+ ],
+ "receipts": [
+  "logs/ex6depth/census.json",
+  "logs/ex6depth/demand.json",
+  "logs/ex6depth/qual.jsonl",
+  "logs/ex6depth/qual_perprob.jsonl",
+  "logs/ex6depth/treatment.jsonl",
+  "logs/ex6depth/treatment_perprob.jsonl",
+  "logs/ex6depth/treatment_stdout.log",
+  "logs/ex6depth/ex6depth_observations.json"
+ ],
+ "bars": [
+  {
+   "id": 1,
+   "name": "QUALIFICATION",
+   "gate_class": "sanity",
+   "metric": "n_exact_reproductions",
+   "population": "anchors:none+z1all:3seeds",
+   "aggregation": "count_of_6",
+   "direction": "above",
+   "value": 6,
+   "arms": [
+    "none",
+    "z1_all"
+   ],
+   "description": "all six anchor cells CELL-EXACT against the booked EX6-TEMPORAL-0 receipt: NONE 64/61/66 and Z1_ALL 74/66/72 at seeds 7001/8002/9003. Any miss = INSTRUMENT-INVALID; the driver exits 3 before any band cell runs and NO verdict of any class issues on the bands."
+  },
+  {
+   "id": 2,
+   "name": "BAND-CENSUS",
+   "gate_class": "sanity",
+   "metric": "n_module_arm_cells_ok",
+   "population": "seed7001:problem2:all5arms",
+   "aggregation": "count_of_240",
+   "direction": "above",
+   "value": 240,
+   "arms": [
+    "none",
+    "z1_all",
+    "z1_early",
+    "z1_mid",
+    "z1_late"
+   ],
+   "description": "outcome-blind call/mask census, one probe pass per arm predicate: 48 modules x 5 arms = 240 cells, each requiring the temporal law (reset, z1, z2, z3, then decode witnessed) AND masked flags exactly matching the arm's registered band at phase z1 and nowhere else (0 modules for NONE, 48 for Z1_ALL, the named 16 per band). Failure exits 3 before anchors."
+  },
+  {
+   "id": 3,
+   "name": "LOCALIZED",
+   "metric": "max_pooled_delta",
+   "population": "bands_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 14,
+   "arms": [
+    "z1_early",
+    "z1_mid",
+    "z1_late",
+    "none"
+   ],
+   "description": "depth-localized reading: max(Delta_early, Delta_mid, Delta_late) >= +14 (two thirds of Z1_ALL's anchored +21) — one 16-layer band alone carries the launch-step healing class."
+  },
+  {
+   "id": 4,
+   "name": "DISTRIBUTED",
+   "metric": "max_pooled_delta",
+   "population": "bands_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "below",
+   "value": 10,
+   "arms": [
+    "z1_early",
+    "z1_mid",
+    "z1_late",
+    "none"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "4:delta_early",
+     "direction": "below",
+     "value": 10,
+     "metric": "pooled_delta",
+     "population": "z1early_v_none:3seeds",
+     "aggregation": "pooled_sum"
+    },
+    {
+     "measurement": "4:delta_mid",
+     "direction": "below",
+     "value": 10,
+     "metric": "pooled_delta",
+     "population": "z1mid_v_none:3seeds",
+     "aggregation": "pooled_sum"
+    },
+    {
+     "measurement": "4:delta_late",
+     "direction": "below",
+     "value": 10,
+     "metric": "pooled_delta",
+     "population": "z1late_v_none:3seeds",
+     "aggregation": "pooled_sum"
+    }
+   ],
+   "description": "distributed reading: every band delta <= +10 (under half of +21) — no single 16-layer band reproduces the effect class; the healing is depth-distributed or requires cross-band conjunction."
+  },
+  {
+   "id": 5,
+   "name": "ADDITIVITY",
+   "gate_class": "range",
+   "metric": "abs_additivity_residual",
+   "population": "all_v_bandsum:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 14,
+   "arms": [
+    "z1_all",
+    "z1_early",
+    "z1_mid",
+    "z1_late",
+    "none"
+   ],
+   "description": "diagnostic: |Delta_all - (Delta_early + Delta_mid + Delta_late)| >= 14 flags a strong cross-band interaction (the LOC precedent: the crest was a conjunction). An excursion is a result, never an alarm."
+  }
+ ],
+ "refuted_if": "The house prior (z1 healing is depth-DISTRIBUTED across the 48 layers) is REFUTED if, with the instrument qualified (bars 1 and 2), one band alone reaches the +14 class: max(Delta_early, Delta_mid, Delta_late) >= +14 pooled. Judged only under bars 1 and 2.",
+ "refuted_if_predicate": {
+  "measurement": "refutation:max_band_delta",
+  "direction": "above",
+  "value": 14
+ },
+ "refutation_precedence": {
+  "suppressed_unless_bars_fire": [
+   1,
+   2
+  ]
+ },
+ "registered_prior": "House, on the record, MEDIUM-LOW confidence (this family's priors are 1-for-4 on direction calls): DISTRIBUTED — bar 4 fires (every band <= +10), because z1's representation at EVERY layer depth is written into that layer's KV entry and consumed by later positions at the matching depth, giving no single band a privileged channel; weak lean that Z1_LATE reads largest of the three (deeper representations sit closer to the emitted token and to the carrier family's measured L3 leverage). The named live alternative, on the record: LOCALIZED — bar 3 fires in one band, in which case the registered alignment read against the demand census (does the causal band coincide with the band of z1's excess outside-keepset demand?) becomes the mechanism discriminator between intrinsic-sensitivity and family-demand readings (AMENDMENT EX6-TEMPORAL-0-SCOPE clue)."
+}
