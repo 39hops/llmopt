@@ -8490,20 +8490,28 @@ honest status column).
   Measured anchors: EX6-DEPTH-1 (+20/+1 at matched-mean
   displacement, locus-specific); none yet on the J side (no
   Jacobian quantity has been computed on this Qwen).
-  Banked design ladder (unpriced, unfired): (1) capture
-  native-v-B43 and native-v-B46 post-MoE residual deltas
-  delta_43, delta_46 at the exact locus; (2) outcome-blind
-  fit/approximate a Jacobian-lens transport on the same Qwen;
-  FIRST DISCRIMINATOR = downstream gain G_l = |J_l delta_l| /
-  |delta_l| — matched local displacement with G_43 >> G_46 is
-  the geometric explanation; (3) stronger causal rung IF a
-  workspace subspace qualifies: decompose delta_43 into
-  P_J delta_43 + (I - P_J) delta_43 and patch J-parallel v
-  J-orthogonal separately — J-parallel reproducing the rescue
-  while orthogonal does not = direct mediation evidence; (4)
-  cross with MATH-BASIS task structure (noting its census read
-  FLAT at the current gate's grain) — only after geometry +
-  causal projection + task structure does "mathematical basis
+  CORRECTED LADDER (2026-08-22 in-place, superseding the first
+  draft's global-projector design — paper section J-Space defines
+  J-space as points expressible as SPARSE NONNEGATIVE
+  combinations of J-lens vectors, typically k <= 25: a union of
+  k-dimensional cones / sparse subframe, NOT one linear subspace
+  with a global orthogonal P_J; the P_J-v-(I-P_J) mediation rung
+  is retracted before ever firing): (1) GAIN — capture post-MoE
+  native-v-B43/B46 deltas, compare G_l = |J_l delta_l| /
+  |delta_l|, called DOWNSTREAM LINEAR GAIN, never J-space
+  membership; (2) LINEARIZATION QUAL — compare J_l delta_l
+  against the actually observed downstream/final residual delta;
+  top-k MoE makes the finite intervention piecewise/nonlinear,
+  so the Jacobian approximation itself must qualify before any
+  gain number is read; (3) J-CONTENT — sparse nonnegative
+  decomposition of each delta over that layer's J-lens vectors,
+  comparing reconstruction/coefficient structure B43 v B46 and
+  rescue v non-rescue; (4) MEDIATION — intervene on the
+  implicated sparse J-lens coordinates via paper-faithful
+  coordinate manipulation, never a fictitious global projection;
+  (5) cross with MATH-BASIS prerequisite structure (its census
+  read FLAT at the current gate's grain) — only after geometry +
+  causal coordinates + task structure does "mathematical basis
   representation" become canonical vocabulary.
   Honest breaks (counter-fence, on the record): the relayed
   J-space sits in a model-specific INTERMEDIATE layer band while
