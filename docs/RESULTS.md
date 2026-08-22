@@ -40920,3 +40920,93 @@ exhaust). Files: llmopt/search/engine.py (read),
 logs/ex6depth1/qual_perprob.jsonl,
 logs/ex6depth1/treatment_perprob.jsonl.
 
+## OBSERVATION EX6-B43-IDENTITY-0: the B43 outside-keepset demand is ONE INVARIANT EXPERT — id 71, demanded on 360/360 problems and ranked TOP-1 by the router in 359/360; B46's demand is diffuse (2026-08-22, mac, outcome-blind census)
+
+The registered observable (a) of VERDICT EX6-DEPTH-1, fired as
+an outcome-blind census: NONE predicate (nothing masked), native
+generation, max_tokens=2, NO oracle call anywhere — per problem
+the driver logs, at phase z1 for block-positions 41/43/46, the
+top-16 router-ranked expert ids, the top-8 members outside the
+named-80 keepset, and the recoverable would-be replacement (the
+highest-ranked KEPT expert outside the native top-8; recoverable
+because the -inf mask preserves kept-expert relative order under
+norm_topk_prob). Seeds 7001/8002/9003, 120/seed, 360 problems.
+
+COUNTS:
+- BLOCK 43: outside count = exactly 1 on 360/360 problems, and
+  the outside expert is ID 71 EVERY TIME — ranked 0 (top-1) in
+  the top-16 on 359/360, rank 1 once. The would-be replacement
+  VARIES (90 x112, 102 x69, 92 x38, 3 x32, 10 x21, ...): the
+  mask deletes a constant identity and admits a variable one.
+- BLOCK 46: diffuse — outside count 0 on 58, 1 on 241, 2 on 61;
+  identities 38 (290) and 83 (73); ranks 2-7, mode 4-5. No
+  invariant identity, never top-1.
+- BLOCK 41: outside on 2/360 only (id 76, rank 7) — consistent
+  with its 6/2880 slot count in the DEPTH-0 demand census.
+
+READING (bounded, naming fence in force): the EX6-DEPTH-1
+matched-displacement asymmetry (+20 v +1) now has an identity
+shape: masking B43 removes EXPERT 71's top-1 participation at
+the z1 call on every problem, while masking B46 removes
+variable, mid-rank identities. Per the MATH-BASIS naming fence,
+expert 71 gets NO semantic label ("division expert" class talk
+stays forbidden) — what is established is invariance and rank,
+not function. Causality of the IDENTITY (v the block) is NOT
+established here; the named next rung is the same-B43
+matched-identity intervention (delete a matched-rank KEPT
+expert's slot at the same locus at the same dose), which this
+concentration makes well-posed. The B43-JSPACE-BRIDGE ladder
+gains its concrete target: delta_43 is expert 71's output
+displacement direction.
+
+FENCES: outcome-blind by construction (no oracle, no gate
+number exists in the receipt); identities are model+keepset
+specific (named-80 keepset checkpoints/ex3_del_invp.json, 4-bit
+instrument); replacement recoverability is derived under the
+algebraic-inertness scope (AMENDMENT EX6-DEPTH-1-DESK-INERTNESS:
+algebraic, behavioral-checked, never bit); KEEPSET STRUCTURE READ
+(from the frozen keepset file, deterministic): layer 43's
+keepset excludes EXACTLY ONE expert — id 71 (127/128 kept);
+layer 46 excludes {38, 83}; layer 41 excludes {71, 76, 86, 97,
+99}. Therefore the EX6-DEPTH-1 B43 arm was, by construction, the
+SINGLE-EXPERT deletion of (layer 43, expert 71) from z1 routing
+— the +20 is already a one-expert, one-token, one-layer causal
+measurement, and the block-v-identity confound named in the
+verdict partially dissolves (nothing else could have been
+deleted at that locus). The remaining control is slot-v-identity:
+delete a matched-rank KEPT expert's slot at the same locus and
+dose. Expert 71 is also in layer 41's excluded set, and there the
+router demands it on 0/360 problems (layer 41's only outside
+demand was id 76, 2/360) — same expert id, different layer,
+zero demand: the id-71 demand is a property of the (layer 43,
+z1) locus, not of the id across layers (expert ids are
+per-layer banks; same-id-across-layers is a numbering
+coincidence, not an identity claim). Receipt-audit items, adopted as disclosures (no blocker):
+(1) CROSS-INSTRUMENT COUNT DISAGREEMENT at the diffuse blocks:
+this census reads 41 = 2 and 46 = 363 outside slots where the
+booked DEPTH-0 demand.json reads 6 and 364 (block 43: 360 = 360
+exact). Both runs counted 2880 z1 slots/block on the identical
+corpus; the smoke-v-real byte-identity of this driver's rows
+shows the path is run-deterministic, so run noise is a weak
+candidate. The named candidate cause (unadjudicated): the two
+instruments rank with different operators — demand.json's
+counter uses mx.argpartition (the same operator the masked
+instrument's selection uses, so IT governs the intervention's
+dose accounting) while this census ranks by mx.argsort — which
+are set-identical except at exact fp ties, the known 4-bit
+near-tie class. ~5 of 8,640 slots disagreeing is tie-scale. The
+B43 headline is unaffected (exact agreement); block-41/46
+figures from THIS census carry the argsort fence.
+(2) replacement_next_kept is SINGULAR: on block 46's 61 rows
+with two outside experts, only the first entrant is recorded —
+block-46 replacement readings are partial (block 43 always has
+exactly one, complete).
+(3) Block-46 replacement/top16 readings do NOT transport to a
+combined-mask arm (a B43 mask upstream changes block 46's
+input — the never-chain-through-a-masked-block fence).
+(4) The driver was untracked at run time (start block records
+?? honestly); it is committed WITH this booking and the receipt
+sha matches the committed blob.
+Receipts: logs/ex6b43id/idcensus.jsonl force-added with this
+booking. Files: scratch/ex6b43_idcensus.py.
+
