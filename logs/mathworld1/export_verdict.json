@@ -1,0 +1,29 @@
+{
+ "frozen_world_commit": "620da3bf",
+ "episodes": 40,
+ "state_rows": 102,
+ "decision_rows": 101,
+ "action_rows": 725,
+ "row_classes": {
+  "decision": 101,
+  "wall_cap_marker": 1
+ },
+ "binding": "all rows byte-equal to frozen active.jsonl (abort-on-mismatch; none fired)",
+ "wall_s": 150.2,
+ "sha256": {
+  "states.jsonl": "7e17a5c0ae6d704f789e73f221f4ba2d25300497ea8c81fb10d1e45a2247c963",
+  "actions.jsonl": "63fb894221907c8c27a570906b0a381d73df2f5ff392b7efe23faaadf8e7a046"
+ },
+ "start": {
+  "start_commit": "e2c18bd9",
+  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_export.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_export.py": "9c4b55607ceb17f54fc899da5f4871b4e457ac5941e654365167ef36f0ab8726",
+   "scratch/mathworld0.py": "4c130625535aa73ca10cdc368213d2d875862d324eb3796508feab5dd30c52d4",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/mathgen/problems.py": "9f1dcac61712696b2b7f9e65585d33d26865edf6b60f338977f09a792fe51215"
+  }
+ },
+ "completion_commit": "e2c18bd9"
+}

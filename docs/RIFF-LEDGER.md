@@ -8445,7 +8445,13 @@ honest status column).
   REPLAY contrast), where experience may diverge endogenously.
   Learning signal frozen pre-prereg: terminal-success-gated
   trajectory updates (legality is not feedback; hce stays
-  baseline/diagnostic, never the silent reward). The informal
+  baseline/diagnostic, never the silent reward), refined same
+  evening to EPISODE GRANULARITY (AMENDMENT
+  MATH-CYBER-1-SUBSTRATE-DESK-0-SCOPE): terminal success is
+  known only post-episode, so the active arm is ACTIVE-EPISODIC
+  (retroactive positive updates on chosen transitions, landing
+  before the next episode) and terminal-success learning is
+  never called within-trajectory adaptation. The informal
   perfect-score registration pinned no seed band; seeds
   9100-9109 are now CALIBRATION (instrument design used them),
   and confirmatory PERFECT adjudication runs on a fresh

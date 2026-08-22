@@ -41975,3 +41975,124 @@ were not counted. Desk numbers are predictions about instruments,
 not measurements of them; the birth's own encoder census governs
 at training time.
 
+## AMENDMENT MATH-CYBER-1-SUBSTRATE-DESK-0-SCOPE: ctx=4096 demoted PROMOTED -> CANDIDATE (no >512 training exposure exists in the diet — the long tail would evaluate OOD), byte-fallback closure law fixed (per UTF-8 byte, not per char), KV-reuse scoring priced at 1.5x, and the learning signal is frozen at EPISODE granularity (2026-08-22, Mac)
+
+Amends OBSERVATION MATH-CYBER-1-SUBSTRATE-DESK-0 (same day), on
+outside review (GPT, relayed by Artin; each point house-verified).
+
+(a) PROMOTED -> CANDIDATE. ctx=4096 is the smallest context BUCKET
+covering all 725 calibration candidate sequences; it is not yet a
+qualified birth substrate, because the measured base diet has ZERO
+training exposure above 512 tokens (stock max 501; the 388 newly
+admitted rows max 236). A model instantiated at ctx=4096 but
+trained only on short sequences would score the 1.7k-3.9k
+calibration tail OUT OF DISTRIBUTION. The birth is CANDIDATE
+pending three priced items: (i) a long-context training-exposure
+design/census — and long examples, if needed, are derived from the
+normal generator on FRESH training seed bands, NEVER from the
+9100-9109 calibration fixtures; (ii) compute+memory pricing at
+512/1024/2048/4096 (KV cache for the 19M reference shape d=384,
+L=8 runs 2*L*d*4 B = 24.6 KB/token fp32, so a 4096-token sequence
+holds ~101 MB KV and a K=22 candidate batch ~2.2 GB fp32 — half
+that bf16; attention FLOPs quadratic in length; model stated, not
+measured); (iii) the frozen runtime overflow law (unchanged
+requirement).
+
+(b) BYTE-FALLBACK CLOSURE LAW. The desk's prop_len charged one
+token per uncovered PYTHON CHARACTER (n += 1), counting UTF-8
+byte length only in a side statistic. On this corpus every payload
+is ASCII (1 char = 1 byte), so the booked lengths stand; but the
+SHIPPED tokenizer must define its closure law exactly: existing
+ATOMS greedy longest-match + true deterministic UTF-8 byte
+fallback (one token per byte, 256 fallback ids). If any non-ASCII
+payload ever appears, the census reruns under the byte law before
+that corpus is used.
+
+(c) KV-REUSE PRICING (execution only; score semantics untouched).
+The registered score stays the full conditional sequence log-prob.
+Scoring a decision as ONE parent-prefix prefill ("Current:
+{parent}\nHints: none\nStep: ") + K child continuations on the
+shared KV cache v K independent full forwards, counted in token
+positions over all 101 calibration decisions from the exported
+corpus: full 478,827 v KV-reuse 320,143 — 1.5x. Modest because
+deep-state children dominate length. Both variants produce
+identical conditionals; adopt KV-reuse as the execution default.
+"Mac-minutes" stands regardless: at 19M params the full-forward
+variant is ~2*19e6*4.8e5 ~ 1.8e13 FLOPs (seconds-class on the Mac
+GPU); the WORLD's successors() wall (~147 s/40 episodes) remains
+the dominant cost.
+
+(d) LEARNING-SIGNAL TEMPORAL CORRECTION. Terminal success is
+known only AFTER an episode, so terminal-success-gated training
+cannot support an act -> transition -> immediate-update ->
+next-decision (within-episode) interpretation, and rung 1's
+update law is frozen at EPISODE GRANULARITY. Estimand names,
+superseding the -COVERAGE wording where they differ: (i)
+ACTIVE-EPISODIC — run episode; terminal success gates retroactive
+positive updates on its chosen transitions; update lands BEFORE
+the next episode; (ii) ORDERED-REPLAY — exact ACTIVE episodes and
+order, same episode-boundary updates = reconstruction
+qualification; (iii) fixed-experience DELAYED/SHUFFLED replay =
+optimizer timing/order estimands; (iv) ACTIVE-EPISODIC v
+interactive NO-UPDATE/FROZEN = total closed-loop adaptation
+effect, later experience free to diverge endogenously.
+Terminal-success learning is never called "within-trajectory
+adaptation". hce stays baseline/diagnostic, never the reward. The
+CYBERNETIC-MATH bank row is updated in place in the same commit.
+
+FENCES. KV pricing counts token positions under the proposed
+tokenizer on the exported calibration corpus (trajectory-
+conditional, cost model = position count, kernel/batching
+constants ignored). Memory numbers are the stated closed-form
+model for the 19M reference shape, unmeasured. Nothing here loads
+a model.
+
+## OBSERVATION MATH-CYBER-1-EXPORT-0: the semantic interchange corpus for the axiom replica desk is emitted and bound — 102 state rows + 725 action rows, every row byte-equal to its frozen active.jsonl binding fields, world sources asserted identical to code_commit 620da3bf (2026-08-22, Mac)
+
+The house-side exporter the axiom interchange spec asked for
+(their docs/specs/2026-08-22-mathworld-interchange.md, final
+through their 9d4933c, read house-side after the network block
+cleared). Instrument: scratch/mathworld1_export.py. Corpus:
+logs/mathworld1/states.jsonl (102 rows: 101 decision + 1
+wall_cap_marker; no dead-end or presolved markers occur in this
+corpus) and logs/mathworld1/actions.jsonl (725 rows, one per
+legal action, child-deduplicated by the frozen enumerator).
+Verdict receipt: logs/mathworld1/export_verdict.json. Wall 150.2 s.
+
+Guarantees, as run:
+- FROZEN WORLD: scratch/mathworld0.py,
+  llmopt/search/derivation.py, llmopt/mathgen/problems.py each
+  asserted BYTE-IDENTICAL to their content at MATH-CYBER-0's
+  code_commit=620da3bf before any emission (git show comparison;
+  abort path untraveled).
+- BINDING: per decision row, all four backend-local fields
+  byte-equal to the frozen active.jsonl row —
+  state_before_hash, legal_action_set_hash,
+  chosen_action_backend_local (raw string, verbatim),
+  state_after_hash — plus n_legal equality and unique chosen
+  match; abort-on-mismatch, none fired across 101 decisions.
+  The frozen active/replay/coldreplay evidence was read, never
+  written.
+- SEMANTICS: all expression payloads are sympy sstr text.
+  rule/rule_target derive from the enumerator's own labels
+  ("{rule}@{sstr(target)}"; algebra moves bare -> rule_target
+  null); for multi-limit Integral peeling the label carries the
+  exact synthetic Integral(function, innermost_limit) handed to
+  the primitive, which is the spec's rule_target semantics. A
+  label with two '@' aborts (none occurred; sstr emits no '@' on
+  this corpus).
+
+Corpus shas (also in the verdict receipt and receipts.lock):
+  states.jsonl  7e17a5c0ae6d704f789e73f221f4ba2d25300497ea8c81fb10d1e45a2247c963
+  actions.jsonl 63fb894221907c8c27a570906b0a381d73df2f5ff392b7efe23faaadf8e7a046
+
+FENCES. The corpus is EVIDENCE-BOUND, not transport-certified:
+axiom's admission ladder (parse + per-payload round-trip, their
+N2) runs on their side — sstr surface compatibility is
+fixture-gated there, and nothing here claims their parser admits
+these payloads. Binding equality is disclosed as a separate check
+and is never a parity claim (their soundness contract). The
+wall_cap_marker row carries no legal set (platform event,
+excluded from parity by both sides' bookings). Relay
+2026-08-22-1 hands the exact paths + shas to the axiom seat.
+

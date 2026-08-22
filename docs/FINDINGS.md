@@ -2797,8 +2797,29 @@ regime tag on every bullet is the fence.
   101/101 decisions, 40/40 episodes; ctx=512 covers only 41/101
   decisions). The base training diet (103,595 rows) loses
   nothing and regains its 388 skipped out-of-language rows (all
-  <=512 tokens). Promoted: fresh birth on this substrate at
-  ctx=4096, with a frozen runtime overflow law required before
-  treatment (learned policies can leave the calibration
-  trajectories).
-  ([OBSERVATION MATH-CYBER-1-SUBSTRATE-DESK-0](RESULTS.md#L41920 "id:2026-08-22-observation-math-cyber-1-substrate-desk").)
+  <=512 tokens). Demoted PROMOTED -> CANDIDATE by the -SCOPE
+  amendment: the diet has zero >512 training exposure (stock max
+  501), so a ctx=4096 birth would score the 1.7k-3.9k
+  calibration tail OOD — candidate pending long-context exposure
+  design (fresh seed bands, never the 9100-9109 fixtures),
+  compute/memory pricing, and the frozen overflow law. Same
+  amendment: shipped closure law = true UTF-8 byte fallback
+  (ASCII corpus makes booked lengths stand), KV-reuse scoring
+  priced 1.5x (identical conditionals; world wall still
+  dominates), and the update law frozen at EPISODE granularity
+  (ACTIVE-EPISODIC naming; terminal-success gating cannot claim
+  within-episode adaptation).
+  ([OBSERVATION MATH-CYBER-1-SUBSTRATE-DESK-0](RESULTS.md#L41920 "id:2026-08-22-observation-math-cyber-1-substrate-desk"),
+  [AMENDMENT MATH-CYBER-1-SUBSTRATE-DESK-0-SCOPE](RESULTS.md#L41978 "id:2026-08-22-amendment-math-cyber-1-substrate-desk").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search]
+  The axiom semantic interchange corpus is live: a cold exporter
+  re-walked the frozen rung-0 receipts with world sources
+  byte-asserted to code_commit 620da3bf and emitted sstr
+  payloads for 102 state rows + 725 legal-action rows
+  (rule/rule_target split from the enumerator's own
+  "rule@sstr(target)" labels), every decision row byte-equal to
+  its four frozen binding fields (abort-on-mismatch, none
+  fired). Evidence-bound, not transport-certified — axiom's
+  parse + round-trip admission ladder runs on their side.
+  ([OBSERVATION MATH-CYBER-1-EXPORT-0](RESULTS.md#L42050 "id:2026-08-22-observation-math-cyber-1-export-0").)

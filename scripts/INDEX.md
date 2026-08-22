@@ -2630,6 +2630,14 @@ MATH-CYBER-1 interface census (AMENDMENT MATH-CYBER-1-DESK-0 -INTERFACE): full L
 - `sha(t: str) -> str`
 - `main()`
 
+### scratch/mathworld1_export.py
+MATH-CYBER-1 semantic corpus exporter for the axiom interchange layer (AX-MATHWORLD-REPLICA-DESK-0, axiom spec docs/specs/2026-08-22-mathworld-interchange.md frozen through their 9d4933c). Cold-process re-walk of the frozen rung-0 ACTIVE receipts that emits the SEMANTIC payloads the hash-only receipts cannot carry: sympy sstr text of every state, rule_target, and legal-set child, plus the four backend-local binding fields byte-equal to the frozen rows.
+
+- `sha(t: str) -> str`
+- `assert_frozen_world()`
+- `split_label(label: str)` — (rule, rule_target sstr | None) from an enumerator label.
+- `main()`
+
 ### scratch/mathworld1_substrate_desk.py
 MATH-CYBER-1 fresh-substrate desk (no model loaded, no vocab shipped): price a GRAMMAR-CLOSED tokenizer — the existing ATOMS multi-char vocabulary plus a deterministic single-byte fallback token per uncovered character — against (a) the 725 calibration actions of the frozen rung-0 trajectories and (b) the standing MathNative base training diet.
 

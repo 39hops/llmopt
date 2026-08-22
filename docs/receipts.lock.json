@@ -675,10 +675,31 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/actions.jsonl": {
+   "bytes": 612328,
+   "exists": true,
+   "sha256": "63fb894221907c8c27a570906b0a381d73df2f5ff392b7efe23faaadf8e7a046",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/census.jsonl": {
    "bytes": 144816,
    "exists": true,
    "sha256": "307f007ed20343b5305509e3431f0133f660743745b44d0d70061234b14a722e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/export_verdict.json": {
+   "bytes": 1132,
+   "exists": true,
+   "sha256": "c4b9351ed7a7a31814d03d356e1697f18b07fdcb864a9e3b765b17daca1fa754",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/states.jsonl": {
+   "bytes": 105338,
+   "exists": true,
+   "sha256": "7e17a5c0ae6d704f789e73f221f4ba2d25300497ea8c81fb10d1e45a2247c963",
    "source": "results",
    "tracked": true
   },
