@@ -1050,6 +1050,12 @@ QWEN-WHOLE-0T compile receipt -> typed observations.
 - `observations(summary: dict) -> dict`
 - `main() -> int`
 
+### scripts/obs_from_receipt_ex6b43knife.py
+Observations adapter for PRE-REG EX6-B43-KNIFE-0.
+
+- `rows(path)`
+- `main(run_dir)`
+
 ### scripts/obs_from_receipt_ex6depth.py
 Observations adapter for PRE-REG EX6-DEPTH-0.
 
@@ -1946,6 +1952,14 @@ EX6-B43 decomposition census (the NEXT INSTRUMENT of OBSERVATION EX6-B43-CONTROL
 EX6-B43 identity census (registered observable (a) of VERDICT EX6-DEPTH-1): WHICH outside-keepset expert(s) does the B43 router natively select at z1 — and what replacement enters under the mask?
 
 - `instrument(model, keep)`
+- `main()`
+
+### scratch/ex6b43_knife.py
+EX6-B43-KNIFE-0 driver (frozen pre-launch): exact activation-component knife at (block-position 43, z1) per PRE-REG EX6-B43-KNIFE-0 — is the deletion vector d_del sufficient and necessary for the B43 +20?
+
+- `instrument(model, keep, arm, hnorm_sink=None)` — Frozen ex6depth1 gate math on every call (float32 zeros/mask
+- `census_verdict(census, n_moe, arm)` — Temporal law per module AND knife flags exactly (z1, bp43)
+- `run_arm(model, tok, problems, keep, seed, arm, log_path, sealed_stdout=None)`
 - `main()`
 
 ### scratch/ex6depth.py

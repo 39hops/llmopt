@@ -41285,3 +41285,99 @@ behavioral or Jacobian leverage; norm magnitude adjudicates
 nothing before treatment. After the knife, J-space GAIN
 transports D/E/R separately, not just net delta.
 
+## PRE-REG EX6-B43-KNIFE-0: is the deletion vector d_del sufficient and necessary for the B43 +20 — the exact activation-component knife NATIVE / D-ONLY / NO-D / FULL at (block-position 43, z1) (2026-08-22, mac)
+
+QUESTION. OBSERVATION EX6-B43-DECOMP-0 decomposed the B43 mask's
+local write exactly: delta = d_del + d_entrant + d_renorm,
+machine-exact, deletion largest (|d_del|/|delta| med 0.884) but
+the combined non-deletion vector 46% of |delta| (AMENDMENT
+-DECOMP-0-SCOPE). Which component carries the +20 rescue
+OUTCOME? This rung applies the exact measured terms as
+activation-space interventions on the shared native h.
+
+INSTRUMENT. mlx-community/Qwen3-30B-A3B-4bit (manifest-pinned),
+named-80 keepset checkpoints/ex3_del_invp.json, greedy gate via
+scratch/moe_gt1_arm2.run_gate, seeds 7001/8002/9003, 120/seed,
+N=360. Frozen ex6depth1 gate math on every path (float32
+zeros/mask add before softmax, argpartition top-8,
+norm_topk_prob renorm). Per problem, at the single (z1,
+block-position 43) MoE call and nowhere else, the wrapped block
+computes the native output, the verbatim masked output, and the
+three fp32 terms (native top-8, entrant, kept-seven), then
+returns per arm:
+  NATIVE      the native output (nothing added);
+  FULL_DIRECT the verbatim masked-path output (identical math
+              to the booked Z1_B43 arm) — QUALIFICATION arm;
+  D_ONLY      (native + d_del)             cast to native dtype;
+  NO_D        (native + d_entrant + d_renorm)         cast same;
+  FULL_SUM    (native + d_del + d_entrant + d_renorm) cast same.
+D_ONLY, NO_D, FULL_SUM are ACTIVATION-SPACE interventions, not
+necessarily normalized router-realizable states (registered
+wording). Driver additionally logs, outcome-blind per problem:
+||h_pre|| (block input), ||native out||, |delta|, and
+|delta|/||h_pre|| — the -DECOMP-0-SCOPE residual-stream dose
+debt. Stages fail-closed: knife-position census (every arm
+touches exactly the (z1, bp43) call, temporal law on all 48
+modules) -> anchors -> sealed treatment; sealed stdout redirect
+for treatment arms; receipts under logs/ex6b43knife/
+(refuse-if-exists, SMOKE=1 smoke_ paths).
+
+ANCHORS (cell-exact, numbers already on the page — booked
+EX6-DEPTH-1 receipts): NATIVE must read 64/61/66
+(seeds 7001/8002/9003; logs/ex6depth1/qual.jsonl dep_NONE) and
+FULL_DIRECT must read 70/70/71 (logs/ex6depth1/treatment.jsonl
+dep_Z1_B43). Any miss => exit 3, treatment arms do not run, NO
+verdict on D_ONLY/NO_D/FULL_SUM.
+
+BARS (pooled over 360; NATIVE pooled anchor 191, FULL pooled
+anchor 211, the +20):
+1. QUAL — all 6 anchor cells cell-exact (count_of_6 == 6).
+2. KNIFE-CENSUS — all 5 arms pass the call-position census
+   (temporal law on 48/48 modules; knife/mask applied at
+   exactly {(z1, bp43)} for the four intervened arms, nowhere
+   for NATIVE).
+3. D-SUFFICIENCY — pooled D_ONLY - 191 >= +13: the deletion
+   vector alone carries the effect (threshold matches the
+   EX6-DEPTH-1 carry bar).
+4. D-NECESSITY — pooled NO_D - 191 <= +9: the combined
+   entrant+renorm vector does not carry it (matches the
+   EX6-DEPTH-1 non-carry bar). +10..+12 books UNRESOLVED for
+   the affected bar, not a fire.
+5. SUM-COMPOSITION — |pooled FULL_SUM - 211| <= 3: the additive
+   fp32 path reproduces the direct masked outcome to within
+   composition noise; if this bar NO-FIRES, D_ONLY/NO_D reads
+   carry a named additive-path fence and bars 3/4 book
+   UNRESOLVED, not fired.
+
+REFUTED-IF (the deletion-vector account dies): pooled
+D_ONLY - 191 <= +9 AND pooled NO_D - 191 >= +13 — the outcome
+rides the entrant+renorm vector, not the deletion. Suppressed
+unless bars 1, 2, AND 5 fire (adjudication requires anchors,
+census, and a faithful additive path).
+
+REGISTERED PRIOR (house, on the record): bars 3, 4, 5 all FIRE
+— the deletion of expert 71's contribution is sufficient and
+the E+R vector inert on outcome, with the additive path
+faithful. Confidence moderate, and the geometry prior
+adjudicates nothing (AMENDMENT -DECOMP-0-SCOPE (4)): the named
+alternative is E/R behavioral leverage exceeding its 46% norm
+share. Being wrong here is bookable either way.
+
+SECONDARY READS (registered, non-adjudicating): per-level gate
+splits; rescue/break tables per arm v NATIVE; the ||h||-ratio
+census (dose scope); FULL_SUM - (D_ONLY + NO_D - 191) as the
+knife-interaction read.
+
+FENCES: single 4-bit instrument, greedy, named-80 keepset,
+n=3 seeds x 120, one machine (Mac), in-run paired arms only (mps
+run-level nondeterminism — no cross-run bit precondition; the
+anchor bars compare GATE COUNTS, the booked cell-exact
+precedent, not weights or bits); activation-space intervention
+scope as worded above; dtype-cast rounding at the knife return
+is part of the intervention (disclosed, not controlled);
+per-level and rescue/break reads are color unless a bar names
+them; wall-kill books NOT-RUN, never a partial verdict.
+Machine prereg: docs/preregs/ex6-b43-knife-0.json (bars 1-5,
+refutation predicate, precedence [1,2,5]); adapter:
+scripts/obs_from_receipt_ex6b43knife.py.
+

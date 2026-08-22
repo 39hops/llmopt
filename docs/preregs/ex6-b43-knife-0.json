@@ -1,0 +1,161 @@
+{
+ "name": "EX6-B43-KNIFE-0",
+ "results_id": "2026-08-22-pre-reg-ex6-b43-knife-0",
+ "registered": "2026-08-22",
+ "machine": "mac",
+ "note": "Exact activation-component knife at (block-position 43, z1): OBSERVATION EX6-B43-DECOMP-0 decomposed the B43 mask's local write machine-exactly as delta = d_del + d_entrant + d_renorm (deletion largest, |d_del|/|delta| med 0.884; combined non-deletion vector 46% of |delta| per AMENDMENT -DECOMP-0-SCOPE). This rung applies the exact measured terms as ACTIVATION-SPACE interventions on the shared native h (not necessarily normalized router-realizable states) and asks which component carries the +20 rescue OUTCOME. Arms NATIVE / FULL_DIRECT (verbatim masked math, qualification) / D_ONLY (native + d_del) / NO_D (native + d_entrant + d_renorm) / FULL_SUM (native + all three). Frozen ex6depth1 gate math everywhere (float32 zeros/mask add, argpartition top-8, norm_topk_prob renorm); knife terms fp32, cast to native activation dtype at return (the cast is part of the intervention, disclosed). Delta_arm = pooled over seeds 7001/8002/9003 of (gate_arm - gate_NATIVE), 120/seed, named-80 keepset, greedy. Pooled anchors on the page: NATIVE 191, FULL 211 (+20). Resolution law: pooled delta in +10..+12 books the affected bar UNRESOLVED, not fired. Driver logs outcome-blind per problem at the knife call: ||h_pre||, ||native out||, |delta|, |delta|/||h_pre|| (the -DECOMP-0-SCOPE residual-stream dose debt). Artifact visibility (/watch): census.json, qual.jsonl, qual_perprob.jsonl, hnorms.jsonl ALWAYS-READABLE; treatment.jsonl, treatment_perprob.jsonl, treatment_stdout.log SEALED-UNTIL-QUALIFICATION (rc 0), SEALED-FOREVER-ON-FAILURE otherwise. Registered secondary reads (color, no bars): per-level gate splits; rescue/break tables arm v NATIVE; the ||h||-ratio census; knife interaction FULL_SUM - (D_ONLY + NO_D - 191).",
+ "arms": {
+  "native": {
+   "description": "nothing intervened \u2014 anchor, must reproduce 64/61/66 cell-exact (EX6-DEPTH-1 qual receipt dep_NONE)"
+  },
+  "full_direct": {
+   "description": "verbatim masked-path output at (z1, bp43) \u2014 identical math to the booked dep_Z1_B43 arm; anchor, must reproduce 70/70/71 cell-exact (EX6-DEPTH-1 treatment receipt)"
+  },
+  "d_only": {
+   "description": "native + d_del at (z1, bp43): the deletion vector alone (-p_71 * E_71(h)), cast to native activation dtype"
+  },
+  "no_d": {
+   "description": "native + d_entrant + d_renorm at (z1, bp43): the combined non-deletion vector (46% of |delta| by norm), cast to native activation dtype"
+  },
+  "full_sum": {
+   "description": "native + d_del + d_entrant + d_renorm: the additive-path reconstruction of the full mask; composition check v the FULL_DIRECT anchor"
+  }
+ },
+ "operands": [
+  {
+   "name": "named80_keepset",
+   "provider": "checkpoints/ex3_del_invp.json"
+  },
+  {
+   "name": "knife_instrument",
+   "provider": "scratch/ex6b43_knife.py"
+  },
+  {
+   "name": "frozen_gate_machinery",
+   "provider": "scratch/moe_gt1_arm2.py"
+  },
+  {
+   "name": "anchor_receipt_native",
+   "provider": "logs/ex6depth1/qual.jsonl"
+  },
+  {
+   "name": "anchor_receipt_full",
+   "provider": "logs/ex6depth1/treatment.jsonl"
+  },
+  {
+   "name": "decomposition_census",
+   "provider": "logs/ex6b43decomp/decomp.jsonl"
+  }
+ ],
+ "receipts": [
+  "logs/ex6b43knife/census.json",
+  "logs/ex6b43knife/qual.jsonl",
+  "logs/ex6b43knife/qual_perprob.jsonl",
+  "logs/ex6b43knife/hnorms.jsonl",
+  "logs/ex6b43knife/treatment.jsonl",
+  "logs/ex6b43knife/treatment_perprob.jsonl",
+  "logs/ex6b43knife/treatment_stdout.log",
+  "logs/ex6b43knife/ex6b43knife_observations.json"
+ ],
+ "bars": [
+  {
+   "id": 1,
+   "name": "QUALIFICATION",
+   "gate_class": "sanity",
+   "metric": "n_exact_reproductions",
+   "population": "anchors:native+full_direct:3seeds",
+   "aggregation": "count_of_6",
+   "direction": "above",
+   "value": 6,
+   "arms": [
+    "native",
+    "full_direct"
+   ],
+   "description": "all six anchor cells CELL-EXACT against the booked EX6-DEPTH-1 receipts: NATIVE 64/61/66, FULL_DIRECT 70/70/71. Any miss exits 3 before any knife cell runs; NO verdict of any class on D_ONLY/NO_D/FULL_SUM."
+  },
+  {
+   "id": 2,
+   "name": "KNIFE-CENSUS",
+   "gate_class": "sanity",
+   "metric": "n_module_arm_cells_ok",
+   "population": "seed7001:problem2:all5arms",
+   "aggregation": "count_of_240",
+   "direction": "above",
+   "value": 240,
+   "arms": [
+    "native",
+    "full_direct",
+    "d_only",
+    "no_d",
+    "full_sum"
+   ],
+   "description": "outcome-blind call-position census, one probe pass per arm predicate: 48 modules x 5 arms = 240 cells (temporal law with decode witnessed AND the knife/mask applied at exactly {(z1, bp43)} for the four intervened arms, nowhere for NATIVE, nowhere else for any arm). Failure exits 3 before anchors."
+  },
+  {
+   "id": 3,
+   "name": "D-SUFFICIENCY",
+   "metric": "pooled_delta",
+   "population": "d_only_v_native:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 13,
+   "arms": [
+    "d_only",
+    "native"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "3:signs",
+     "direction": "above",
+     "value": 3,
+     "metric": "n_positive_seeds",
+     "population": "d_only_v_native:3seeds",
+     "aggregation": "count_of_3"
+    }
+   ],
+   "description": "the deletion vector alone carries the effect's class: Delta_D_ONLY >= +13 (the EX6-DEPTH-1 carry threshold), signs 3/3."
+  },
+  {
+   "id": 4,
+   "name": "D-NECESSITY",
+   "metric": "pooled_delta",
+   "population": "no_d_v_native:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "below",
+   "value": 9,
+   "arms": [
+    "no_d",
+    "native"
+   ],
+   "description": "the combined entrant+renorm vector does not carry it: Delta_NO_D <= +9 \u2014 deletion is necessary within this exact measured decomposition. +10..+12 books UNRESOLVED."
+  },
+  {
+   "id": 5,
+   "name": "SUM-COMPOSITION",
+   "gate_class": "sanity",
+   "metric": "abs_pooled_gap_to_full_anchor",
+   "population": "full_sum_v_booked_211:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "below",
+   "value": 3,
+   "arms": [
+    "full_sum"
+   ],
+   "description": "the additive fp32 path reproduces the direct masked outcome: |pooled FULL_SUM - 211| <= 3 (composition noise only). If this NO-FIRES, the D_ONLY/NO_D reads carry a named additive-path fence and bars 3/4 book UNRESOLVED, not fired."
+  }
+ ],
+ "refuted_if": "The deletion-vector account is REFUTED if, with the instrument qualified and the additive path faithful (bars 1, 2, 5), the knife inverts: Delta_D_ONLY <= +9 AND Delta_NO_D >= +13 \u2014 the +20 would ride the entrant+renorm vector (46% of |delta| by norm), and the single-expert-deletion story would be geometry without behavioral leverage. Judged only under bars 1, 2, and 5.",
+ "refuted_if_predicate": {
+  "measurement": "refutation:knife_inversion",
+  "direction": "above",
+  "value": 0
+ },
+ "refutation_precedence": {
+  "suppressed_unless_bars_fire": [
+   1,
+   2,
+   5
+  ]
+ },
+ "registered_prior": "House, on the record, MEDIUM confidence (family record on direction calls: 2-for-6): bars 3, 4, and 5 all FIRE \u2014 the deletion of expert 71's contribution is sufficient, the E+R vector inert on outcome, the additive path faithful. The geometry prior adjudicates nothing (AMENDMENT -DECOMP-0-SCOPE (4)); the named live alternative is E/R behavioral leverage exceeding its norm share \u2014 a smaller vector aimed at a higher-gain direction, which is exactly the J-space-bridge geometry question, and booking it would redirect the bridge's GAIN rung at the E/R components."
+}
