@@ -41651,3 +41651,93 @@ correct here because mismatches = 0, but a multi-field mismatch
 on one row would double-count; next driver revision counts
 matched rows directly (the cold-replay script already does).
 
+## OBSERVATION MATH-CYBER-1-DESK-0: rung 1 desk census — headroom real (100% of decisions choice-bearing), choose-among-K priced at Mac-minutes, the PERFECT bar is ill-posed without a reachability certificate, and 16.5% of L4-5 child states are unencodable by the stock MathNative vocabulary (2026-08-22, Mac)
+
+Desk census before any rung-1 prereg (MathNative enters the loop).
+Thresholds were named BEFORE counting: (T1) kill if choice-bearing
+decisions on greedy-failed episodes < ~20%; (T2) redesign the
+interface if max-K x child-token-length exceeds the MathNative
+context (512); (T3) /probe first if a full 40-episode scored eval
+exceeds Mac-minutes class; (T4) the PERFECT bar is well-posed only
+if oracle-reachability within the 12-decision budget is certified
+for all 40 episodes.
+
+Artifacts counted: logs/mathworld0/active.jsonl (frozen, 102 rows,
+40 episodes L4-7, seeds 9100-9109) plus fresh deterministic
+re-walks of the same world (scratch-free, in-line desk arithmetic;
+world = llmopt/search/derivation.py successors(), tokenizer =
+llmopt/train/mathnative.py MathTokenizer, base ATOMS vocab).
+
+T1 HEADROOM — PASS. All 101 recorded decisions are choice-bearing
+(n_legal >= 2 on 101/101). K histogram: median 7, mean 7.18, max 22.
+The 5 greedy-hce failures each carry real choices: L4-s9104 cycles
+at constant K=7 for all 12 decisions (greedy loop, not a forced
+line); L6-s9100 hit the wall cap amid K 15-22 states; the other
+three exhausted the budget at K 5-7. A learner has something to
+choose everywhere.
+
+T2 INTERFACE — PASS, with one decisive exception (below). Root
+states in infix form (str(expr)) encode 40/40 under the stock
+tokenizer: median 52 tokens, max 202. Child states along L4-5
+greedy trajectories: max 287 tokens. Max K=22 children x 287
+tokens fits ctx=512 per child trivially; a full choose-among-K
+scoring pass is 725 child forwards for the entire 40-episode
+suite (19M-class model: seconds).
+
+T3 COST — PASS. The world dominates: measured active wall was
+147.3 s for 40 episodes (transition wall median 481 ms, p90
+4.25 s, max 11.3 s — successors() at L6-7 is the expensive part,
+not the model). An ACTIVE-ONLINE v ORDERED-REPLAY paired rung is
+~2x world wall + a minutes-class fine-tune: Mac-afternoon.
+
+T4 PERFECT BAR — ILL-POSED AS 40/40 TODAY. A bounded best-first
+oracle search (hce-ordered, depth <= 12, 30 s + 4000-node cap per
+problem) on the 5 greedy-failed episodes expanded only 5-20 nodes
+each before the 30 s wall (successors() cost, not search logic)
+and found no solution: reachability within 12 decisions is
+UNCERTIFIED for those 5, in both directions. Consequences: (a)
+Artin's registered PERFECT prediction on ACTIVE-ONLINE cannot be
+adjudicated as "40/40 solved" until either a certificate run
+lands (deep memoized search, overnight class at ~0.5-4 s/node) or
+the bar is scoped to the 35 certificate-carrying episodes (the
+greedy trajectory IS the certificate for those 35); (b) the clean
+rung-1 bar is "solves >= greedy's 35 with no regression, gains
+itemized", with the 5 uncertified episodes reported separately.
+
+NEW FACT (substrate decision) — 41/248 (16.5%) of child states on
+L4-5 greedy trajectories are UNENCODABLE by the stock vocabulary:
+every failure is the imaginary unit `I` (exp-form rewrites of
+trig) or `Subs(`/`u_` (u-substitution states). The strict encoder
+raises (by design, the 2026-07-24 silent-drop lesson). So a stock
+mathnative checkpoint cannot score one-sixth of legal actions at
+all. The prereg must choose: (i) fresh or re-birthed model with
+VOCAB_EXTRA atoms covering `I`, `Subs(`, `u_` (VOCAB_EXTRA appends
+order-stably, but existing checkpoints are tied to their vocab
+size and cannot load across), or (ii) a registered fallback rule
+for unscorable actions (e.g. rank last, deterministic tie-break)
+so the stock checkpoint stays usable. This is the desk answer to
+the "existing checkpoint v fresh birth" question: existing
+checkpoints are usable ONLY with a registered fallback; full
+coverage requires a vocab-extended birth.
+
+FENCES. Desk numbers are predictions about instruments, not
+measurements of them: the encodability figure is scoped to L4-5
+greedy trajectories (248 children counted; L6-7 children were not
+walked — exp-form `I` states appear MORE likely at L6-7 trig
+density, so 16.5% is a floor estimate, not a ceiling). The
+reachability search is INCONCLUSIVE, never "unreachable" — it
+priced the certificate, it did not produce one. Wall numbers are
+Mac wall-clock on this checkout, single run, no seed fence needed
+(deterministic world). The token-length model counts tokenizer
+atoms only (no scaffold overhead; the Current:/Step: scaffold adds
+a fixed ~4 atoms per candidate). No model was loaded; no model
+number appears here.
+
+PROMOTED: rung-1 shape = frozen-checkpoint choose-among-K policy
+eval first (cheapest model-in-loop rung; scores each legal child
+as the Step: RHS, argmax, registered fallback for unscorable
+children), THEN the ACTIVE-ONLINE v ORDERED-REPLAY learning pair.
+PARKED with revival condition: the 40/40 PERFECT adjudication
+revives when a reachability-certificate run books (overnight
+class, memoized dedup search on the 5 uncertified episodes).
+

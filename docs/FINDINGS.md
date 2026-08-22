@@ -2757,3 +2757,19 @@ regime tag on every bullet is the fence.
   instrument; the frozen receipt interface is the handoff
   artifact for the axiom C++ replica desk, one rung behind.
   ([OBSERVATION MATH-CYBER-0-RUNG0](RESULTS.md#L41540 "id:2026-08-22-observation-math-cyber-0-rung0-the").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search]
+  Rung 1 desk: the MATHWORLD choice structure is real (all 101
+  recorded decisions carry n_legal>=2, K median 7 max 22) and a
+  choose-among-K frozen-checkpoint policy eval is Mac-minutes
+  (725 child scorings, child text max 287 tokens, ctx 512), but
+  the 40/40 PERFECT adjudication is ill-posed today (reachability
+  within 12 decisions uncertified for the 5 greedy-failed
+  episodes; the 30s bounded search expanded only 5-20 nodes —
+  successors() wall, inconclusive both directions), and 41/248
+  (16.5%, floor estimate, L4-5 walk) of child states are
+  unencodable by the stock MathNative vocabulary (imaginary unit
+  `I`, `Subs(`/`u_`): a stock checkpoint needs a registered
+  unscorable-action fallback, full coverage needs a
+  vocab-extended birth.
+  ([OBSERVATION MATH-CYBER-1-DESK-0](RESULTS.md#L41654 "id:2026-08-22-observation-math-cyber-1-desk-0").)
