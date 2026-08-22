@@ -2669,3 +2669,17 @@ regime tag on every bullet is the fence.
   not matched; DISTRIBUTED house prior refuted as registered;
   KV/attention mediation stays hypothesis.
   ([VERDICT EX6-DEPTH-0](RESULTS.md#L40389 "id:2026-08-21-verdict-ex6-depth-0-z1-healing").)
+
+- **MATH-CYBER rung 0 is a wrapper, not a build**: the closed-loop
+  MATHWORLD's transition function already exists as the standing
+  calculus engine's successors() (declarative rule@locus actions,
+  fork-timeboxed, sympy edge-verified, identity rejected by
+  construction). Desk census on real states: branching median
+  3-3.5 at L4-7 (max 9, 15% single-action) — adequate; L1-3 is
+  corridor-thin (median 2, 35% single-action); admission wall
+  median 51 ms at L4-7 but p90 2.05 s — the heurisch tail makes
+  wall-clock, not transition count, the loop's budget unit.
+  [DESK-PRICED] [REGIME-SCOPED: this Mac, seed-7001 samples,
+  root+depth-1 only] Fences: desk numbers are predictions; the
+  contract's own receipts book measured values at rung 0.
+  ([OBSERVATION MATHWORLD-DESK-0](RESULTS.md#L40648 "id:2026-08-22-observation-mathworld-desk-0-rung-0").)

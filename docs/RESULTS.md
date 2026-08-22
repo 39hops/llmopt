@@ -40645,3 +40645,56 @@ Mac-only, single 4-bit instrument, greedy. Files:
 scratch/ex6depth1.py, docs/preregs/ex6-depth-1.json,
 scripts/obs_from_receipt_ex6depth1.py.
 
+## OBSERVATION MATHWORLD-DESK-0: rung 0 PROMOTED — the transition function already exists (llmopt/search successors()), branching is adequate at L4-7 (median 3-3.5), and the binding constraint is the admission-oracle WALL TAIL, not machinery (2026-08-22, mac, desk census)
+
+Desk census pricing MATH-CYBER-0 rung 0 (the MATHWORLD minimal
+contract: transition function + admission rule + transition
+receipt). Thresholds named BEFORE counting: branching in 2-100
+promotes / ~1 kills (corridor) / >1000 parks; identity fraction
+>= 50% kills; admission median > 100 ms class forces redesign.
+
+COUNTS (against the named thresholds):
+1. THE TRANSITION FUNCTION IS ALREADY BUILT. llmopt/search/
+derivation.py successors() IS the contract core: (rule@locus)
+declarative actions, per-rule fork timeboxes, sympy verify_edge
+admission, identity rejected by construction (seen-key dedup),
+immutable State(expr, plies, history). The standing calculus
+engine raced it to 316/360. Rung 0 = a RECEIPT WRAPPER
+((episode_id, step_id), state hashes, one row per admitted/
+rejected transition) — not new machinery.
+2. BRANCHING (real states through the real engine, root +
+depth-1): levels 1-3 (n=60, seed 7001): median 2 root actions,
+21/60 single-action — corridor-adjacent, thin. Levels 4-7
+(n=48, seed 7001): median 3.0-3.5 per level, mean 3.8, max 9,
+only 7/48 single-action; depth-1 median holds. INSIDE the 2-100
+band: PROMOTE, with the world's interesting band at L4+.
+3. IDENTITY / ADMISSION: 0 identity transitions in the output by
+construction; the frozen 6,000-row one-ply atom shard
+(data/micromodel_atoms_shard0.jsonl, 7 rule families, 6000
+distinct states) has 0 string-identity rows.
+4. ADMISSION WALL (successors() full-verify wall per state, this
+Mac): L1-3 median 5 ms, p90 55 ms; L4-7 median 51 ms, p90
+2.05 s, max 3.97 s (the heurisch class). Median passes the named
+bar; THE TAIL IS THE BINDING CONSTRAINT — at the L4-7 tail,
+transition cost is paid in seconds, so a closed-loop run's
+budget must be WALL-based, never transition-count-based, and
+the transition receipt must record per-transition wall.
+
+DESIGN CONSEQUENCES (carried into any MATH-CYBER-0 prereg):
+episodes live at L4+ (L1-3 is a corridor); the contract's
+receipt row records wall + admission outcome; the loop budget is
+wall-clock; the timebox law already lives inside successors()
+(fork boxes, pathology #7/#10 lineage) and transfers for free.
+
+FENCES: sample n=60 (L1-3) + n=48 (L4-7), seed 7001, root and
+one depth-1 expansion only — branching beyond ply 1 uncounted
+(sibling-memoized rule cache makes deep counts cheaper than
+root counts, so these are conservative); cost model = wall on
+this Mac with the in-process rule cache warm-ish, not a
+cross-device constant; desk numbers are predictions about the
+instrument, the contract's own receipts book the measured
+values when rung 0 runs. DESK ONLY: no contract code written —
+implementation waits on Artin's GO per the freeze-scope
+instruction. Files: llmopt/search/derivation.py (read),
+data/micromodel_atoms_shard0.jsonl (counted).
+
