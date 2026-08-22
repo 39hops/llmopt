@@ -204,7 +204,16 @@ def main():
         for eid, root in episodes:
             script = [r["chosen_action"] for r in active_rows[eid]]
             rep = run_episode(eid, root, f, script=script)
-            a, b = active_rows[eid], rep
+            # replay identity is defined over the CAUSAL chain:
+            # wall_cap marker rows are timing events (the safety
+            # cap can fire in one run and not its replay — the
+            # warm rule cache alone changes wall), so they are
+            # excluded from the comparison and disclosed in the
+            # verdict; every logical row (decisions, dead_end,
+            # solved markers) must match field-for-field
+            a = [r for r in active_rows[eid]
+                 if r["outcome"] != "wall_cap"]
+            b = [r for r in rep if r["outcome"] != "wall_cap"]
             if len(a) != len(b):
                 mismatches.append((eid, "row_count", len(a), len(b)))
                 continue
@@ -220,9 +229,12 @@ def main():
             "start": START,
             "completion_commit": completion_commit()}}) + "\n")
     n_rows = sum(len(v) for v in active_rows.values())
+    n_wall = sum(1 for v in active_rows.values()
+                 for r in v if r["outcome"] == "wall_cap")
     verdict = {
         "episodes": len(episodes), "rows": n_rows,
-        "replay_identical_rows": n_rows - len(mismatches),
+        "wall_cap_rows_excluded_from_identity": n_wall,
+        "replay_identical_rows": n_rows - n_wall - len(mismatches),
         "mismatches": mismatches[:50],
         "pass": not mismatches,
         "outcomes": {o: sum(1 for v in active_rows.values()
