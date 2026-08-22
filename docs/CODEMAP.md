@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 280, spec-cited 89, cited-but-library 61
+Census: UNCITED 218, library 73, reproduce-pinned 10, results-cited 280, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -118,7 +118,8 @@ Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 280, spec-ci
 | ex6 | ex6_observe.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | ex6 | ex6_phase.py | results-cited | RESULTS, specs | RESULTS×5, specs×2 | — | 3 |
 | ex6 | ex6_run.sh | results-cited | RESULTS | RESULTS×2 | — | 1 |
-| ex6b43 | ex6b43_idcensus.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| ex6b43 | ex6b43_decomp.py | UNCITED | — | — | — | — |
+| ex6b43 | ex6b43_idcensus.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | ex6depth | ex6depth.py | results-cited | RESULTS | RESULTS×7 | — | 2 |
 | ex6depth1 | ex6depth1.py | results-cited | RESULTS | RESULTS×7 | — | 1 |
 | ex6loc | ex6loc.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
@@ -266,7 +267,7 @@ Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 280, spec-ci
 | metallicity | metallicity_diets.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | metallicity1 | metallicity1.sh | results-cited | RESULTS | RESULTS×2 | — | — |
 | moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×4, RESULTS×5, specs×4 | 2 | 6 |
-| moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×6, RESULTS×14, specs×4 | 1 | 13 |
+| moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×6, RESULTS×14, specs×4 | 1 | 14 |
 | morning | morning_run.sh | UNCITED | — | — | — | — |
 | mps | mps_sigma_gates.sh | UNCITED | — | — | — | — |
 | muon | muon_3ep_d256.py | UNCITED | — | — | — | 1 |

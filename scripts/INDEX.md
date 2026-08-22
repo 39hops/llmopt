@@ -1936,6 +1936,12 @@ EX6-PHASE-0 driver: phase-scoped named-80 deletion (PRE-REG EX6-PHASE-0 in docs/
 - `instrument_phase(model, keep, mode)`
 - `main()`
 
+### scratch/ex6b43_decomp.py
+EX6-B43 decomposition census (the NEXT INSTRUMENT of OBSERVATION EX6-B43-CONTROL-DESK-0): the full local counterfactual of the B43 mask, computed inside ONE outcome-blind native execution per problem.
+
+- `instrument(model, keep)`
+- `main()`
+
 ### scratch/ex6b43_idcensus.py
 EX6-B43 identity census (registered observable (a) of VERDICT EX6-DEPTH-1): WHICH outside-keepset expert(s) does the B43 router natively select at z1 — and what replacement enters under the mask?
 
