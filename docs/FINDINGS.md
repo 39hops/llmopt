@@ -2805,8 +2805,13 @@ regime tag on every bullet is the fence.
   compute/memory pricing, and the frozen overflow law. Same
   amendment: shipped closure law = true UTF-8 byte fallback
   (ASCII corpus makes booked lengths stand), KV-reuse scoring
-  priced 1.5x (identical conditionals; world wall still
-  dominates), and the update law frozen at EPISODE granularity
+  priced 1.5x in token positions — CORRECTED by the -KV
+  amendment: MicroLM's cached path is causal only at T=1
+  (is_causal=False whenever past is set), so cached scoring is a
+  CANDIDATE gated on a registered no-trained-model qualification
+  (max score delta + 100% argmax agreement), and the
+  world-dominates runtime claim is retracted pending a measured
+  microbench — and the update law frozen at EPISODE granularity
   (ACTIVE-EPISODIC naming; terminal-success gating cannot claim
   within-episode adaptation).
   ([OBSERVATION MATH-CYBER-1-SUBSTRATE-DESK-0](RESULTS.md#L41920 "id:2026-08-22-observation-math-cyber-1-substrate-desk"),
@@ -2823,3 +2828,16 @@ regime tag on every bullet is the fence.
   fired). Evidence-bound, not transport-certified — axiom's
   parse + round-trip admission ladder runs on their side.
   ([OBSERVATION MATH-CYBER-1-EXPORT-0](RESULTS.md#L42050 "id:2026-08-22-observation-math-cyber-1-export-0").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search]
+  Rung-1 design frozen before any band generation or outcome:
+  seed bands CALIBRATION 9100-9109 / TRAIN sidecar 9200-9249 /
+  ADAPT 9300-9309 / HOLDOUT 9400-9409 (pairwise disjoint;
+  HOLDOUT never trains); PERFECT operationalized as PRIMARY
+  final-policy HOLDOUT 40/40 with acquisition-40/40 separately
+  reported; success-gated dose frozen (one AdamW step lr 1e-4
+  per SOLVED episode at episode boundary, failed episodes zero
+  gradient, child-token mean CE with newline, persistent
+  optimizer state); runtime ctx overflow in a primary arm is a
+  model-failure instrument event, never silent hce.
+  ([AMENDMENT MATH-CYBER-1-DESK-0-DESIGN](RESULTS.md#L42145 "id:2026-08-22-amendment-math-cyber-1-desk-0-b-b").)

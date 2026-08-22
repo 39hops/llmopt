@@ -123,6 +123,12 @@
             "reason": "That count's booked criterion was encodability only (vocab-complete). The registered stock-eligibility criterion is joint (encodes AND fits ctx<=512): measured joint = 16/101, equal on this corpus by co-occurrence, not identity. Name the criterion when quoting the number; >512 is outside the trained/registered context contract, not physically unscorable.",
             "superseded_by": "2026-08-22-amendment-math-cyber-1-desk-0-b",
             "scope": "math[- ]?cyber|mathworld|model[- ]controlled"
+        },
+        {
+            "pattern": "identical conditionals|world('s)?( successors\\(\\))? wall (still )?(remains |stays )?dominat",
+            "reason": "MicroLM's cached path is causal only at T=1 (is_causal=False whenever past is set): chunked cached scoring leaks future child tokens, so cached and full conditionals are NOT established identical (qualification registered, unrun). Runtime dominance was a position-count argument ignoring O(T^2) attention; retracted pending the measured microbench.",
+            "superseded_by": "2026-08-22-amendment-math-cyber-1-substrate-desk-b",
+            "scope": "math[- ]?cyber|mathworld|kv[- ]?reuse|cached scor"
         }
     ]
 }

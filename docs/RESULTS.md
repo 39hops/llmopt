@@ -42096,3 +42096,111 @@ wall_cap_marker row carries no legal set (platform event,
 excluded from parity by both sides' bookings). Relay
 2026-08-22-1 hands the exact paths + shas to the axiom seat.
 
+## AMENDMENT MATH-CYBER-1-SUBSTRATE-DESK-0-KV: cached scoring is BLOCKED as adopted — MicroLM's past path is causal only at T=1 (is_causal=False whenever past is set, llmopt/train/mathnative.py:121-123), so "KV-reuse adopted, identical conditionals" retracts to "1.5x token-position reduction CANDIDATE pending a no-trained-model qualification"; "world dominates regardless" retracts pending runtime measurement; exporter dependency closure narrowed (2026-08-22, Mac)
+
+Amends AMENDMENT MATH-CYBER-1-SUBSTRATE-DESK-0-SCOPE (same day),
+on outside review (GPT, relayed by Artin; house-verified against
+source).
+
+(a) CACHED-SCORER BLOCKER, verified at source. MicroLM's
+attention computes is_causal=(mask is None and past is None): a
+MULTI-TOKEN chunk forwarded with a nonempty past gets NO causal
+mask over the chunk — every chunk position attends to later chunk
+positions, leaking future child tokens into earlier conditionals.
+The cached path is causal only for one-token steps (T=1: nothing
+to leak). The -SCOPE amendment's "adopt KV-reuse as the execution
+default ... identical conditionals" is RETRACTED to: 1.5x
+token-position reduction CANDIDATE. Adoption requires a
+no-trained-model qualification, registered now: RANDOM-WEIGHT
+model, full teacher-forced scoring v prefix-prefill + ONE-TOKEN
+cached continuation through the terminating newline, over
+calibration decisions; bars = registered max |score delta| and
+100% candidate-argmax agreement. Multi-token chunked continuation
+stays forbidden until offset causal masking exists and passes the
+same qualification.
+
+(b) RUNTIME RETRACTION. "'Mac-minutes' stands regardless ... the
+WORLD's successors() wall remains the dominant cost" was a
+position-count argument that ignored attention's O(T^2) and real
+kernel walls. RETRACTED pending a measured random-weight Mac
+microbench at ctx 512/1024/2048/4096: full v correctly-cached
+scoring (wall + peak memory) and the intended training
+forward/backward path (with and without grad checkpointing).
+Dominance claims return only with those numbers attached.
+
+(c) EXPORTER DEPENDENCY CLOSURE, narrowed (documentation only,
+no evidence drift): the frozen-source assertion set of
+scratch/mathworld1_export.py omitted llmopt/search/rules.py,
+which derivation.py imports (CORE_RULES/INT_RULES/LIM_RULES/
+MACRO_RULES). Verified house-side: rules.py is blob-identical
+between 620da3bf and current HEAD (git diff --quiet), so the
+emitted corpus is unaffected and no rerun is needed. The booked
+guarantee narrows from "every world source file" to "the three
+asserted files, with rules.py verified identical out-of-band";
+any future exporter run must include rules.py (and any further
+transitive world imports) in its explicit assertion set. The
+exporter script itself is frozen results-cited evidence and is
+not edited.
+
+## AMENDMENT MATH-CYBER-1-DESK-0-DESIGN: experiment bands, optimizer dose, PERFECT operationalization, and the overflow law are FROZEN before any band is generated or any outcome seen (2026-08-22, Mac)
+
+Amends AMENDMENT MATH-CYBER-1-DESK-0-COVERAGE (same day), on
+outside review (GPT, relayed by Artin). Everything here is frozen
+BEFORE the TRAIN sidecar band is farmed and before any
+ADAPT/HOLDOUT root exists. No model has been born or loaded.
+
+(a) SEED BANDS (deterministic string-seeded generator,
+make_integrate(level, seed), L4-7 unless stated):
+  - CALIBRATION = seeds 9100-9109 (the rung-0 40; consumed by
+    instrument design; descriptive/registered color only).
+  - TRAIN sidecar band = seeds 9200-9249 (legal-transition
+    farming for training exposure, long-context census included;
+    may be extended only by a booked entry naming the extension
+    range BEFORE farming it).
+  - ADAPT band = seeds 9300-9309 (40 episodes; the online
+    experience stream for ACTIVE-EPISODIC and its controls).
+  - HOLDOUT band = seeds 9400-9409 (40 episodes; frozen-final
+    evaluation only — no model update may ever be computed from a
+    HOLDOUT episode).
+  Bands are pairwise disjoint by construction. ADAPT and HOLDOUT
+  roots are NOT generated today; their first materialization is
+  the diet-contamination audit run of the eventual prereg.
+  ACTIVE-EPISODIC and NO-UPDATE/FROZEN arms share theta_0 AND the
+  identical ADAPT episode order.
+
+(b) PERFECT OPERATIONALIZATION (of the registered informal
+"scores perfectly" prior, CYBERNETIC-MATH bank): PRIMARY =
+final-policy HOLDOUT 40/40 solved (theta_final frozen after the
+ADAPT stream, no updates during HOLDOUT). SEPARATELY REPORTED =
+acquisition 40/40 on the ADAPT stream itself (online, updates
+between episodes). Both use the fixed 12-decision logical budget.
+Neither substitutes for the other; the prereg quotes both.
+
+(c) SUCCESS-GATED OPTIMIZER DOSE (frozen before any band
+generation): update granularity = EPISODE BOUNDARY, exactly one
+optimizer step after each SOLVED ADAPT episode; FAILED episodes
+contribute zero gradient and zero optimizer-state change (no
+negative signal, no step); loss = mean token cross-entropy over
+the chosen transitions' CHILD tokens (terminating newline
+included; prompt/prefix tokens masked out), averaged over the
+episode's decisions; optimizer = AdamW, lr 1e-4, betas (0.9,
+0.95), weight_decay 0.0, no LR schedule; optimizer state PERSISTS
+across episodes within an arm and is part of theta_0's shared
+initialization (zero state at start). Any change to these
+constants after ADAPT roots exist is a new rung, not a tweak.
+
+(d) OVERFLOW LAW (primary model arm): a runtime context overflow
+(any candidate's scoring sequence exceeding the trained/registered
+context at a decision) NEVER silently invokes hce. It books as a
+MODEL FAILURE / instrument event: the decision is unscorable by
+the model, the episode terminates unsolved for the model arm with
+outcome model_ctx_overflow, and the count is disclosed per arm.
+hce substitution on overflow is permitted only in an explicitly
+labeled hybrid COLOR arm, never in a primary arm.
+
+FENCES. These are design constants, not measurements; the rung
+prereg that uses them must quote them verbatim (a silent
+divergence is a booking error). The TRAIN sidecar census that
+follows this booking generates ONLY the 9200-9249 band. Nothing
+here adjudicates the PERFECT prior.
+
