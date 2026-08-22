@@ -8434,6 +8434,44 @@ honest status column).
   C++-replica handoff artifact; axiom stays one contract rung
   behind by design.
 
+- **BANKED (2026-08-22): RRUN — sha-pinned sandboxed remote
+  execution for the 3080/WSL leg** (GPT proposal via Artin;
+  concept banked, adopt INCREMENTALLY, nothing built).
+  The shape: `rrun cuda <sha>` / `rrun cpu <sha>` / `rrun msvc
+  <sha>` — Mac hands the WSL runner a GIT SHA (never a working
+  tree), the runner executes inside a disposable Docker worker
+  (CPU or RTX3080 via nvidia container toolkit) with no network
+  and no host mounts; the Windows/MSVC test runner stays a
+  SEPARATE non-admin seat (VM/snapshot class) because
+  torch.compile's MSVC leg cannot live in a Linux container.
+  WHY THE HOUSE LIKES IT (mapped to booked incidents): the
+  sha-pinned interface kills the sync-drift class outright
+  (verify-pulls-by-HEAD-hash, the dirty-step_chains silent-abort
+  incident); a baked image pins the knob doctrine in one place
+  (max_split_size_mb:128, TORCH_DISABLE_NATIVE_JIT=1, MSYS
+  toolchain paths) instead of per-driver env incantations;
+  disposable workers make the remote leg stateless, which is
+  the WSL-as-thin-execution-target doctrine enforced by
+  construction rather than by discipline.
+  HONEST COSTS, on the record: image maintenance is a new
+  standing chore (CUDA/toolkit/torch version pins drift);
+  Docker images and layer cache eat C: through the vhdx that
+  never shrinks (the WSL disk reality — budget before adopting);
+  the Windows VM/snapshot runner is the heaviest third and
+  PARKED until the other two earn their keep; container
+  overhead on the 3080 must be measured once (expected ~nil for
+  long jobs, but the house books, never assumes).
+  ADOPTION ORDER banked: (1) the rrun INTERFACE alone —
+  sha-checkout-then-run wrapper over the existing wsl.sh, no
+  Docker, immediate sync-drift payoff; (2) the CPU Docker
+  worker (cheap to validate the image discipline); (3) the CUDA
+  worker; (4) the MSVC seat, only if MSVC-leg incidents recur.
+  Fence: all of this is Artin's own two machines on his home
+  network — the sandbox is for reproducibility and blast-radius
+  hygiene, not because anything here is untrusted.
+  Attribution: GPT (architecture), Artin (the ask + relay),
+  house (incident mapping, adoption order, cost fences).
+
 - **BANKED (2026-08-22): MATH-BASIS / prerequisite-basis
   hypothesis — the z1 x B43 routing locus selects/preserves a
   reusable computational basis of primitive mathematical

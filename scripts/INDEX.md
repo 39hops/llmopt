@@ -2619,6 +2619,11 @@ MATH-CYBER-0 rung 0: the MATHWORLD minimal contract as a receipt wrapper over th
 - `run_episode(episode_id, root, sink, script=None)` — One episode. script=None -> greedy-hce policy (ACTIVE);
 - `main()`
 
+### scratch/mathworld0_coldreplay.py
+MATH-CYBER-0 rung 0, cold-process replay qualification (GPT post-booking fence): replay the FROZEN ACTIVE receipts of OBSERVATION MATH-CYBER-0-RUNG0 in a FRESH python process with a cold derivation _RULE_CACHE, comparing every causal field except transition_wall_ms. Bridges same-process replay (the booked 101/101) to PROCESS-INDEPENDENT replay, ahead of any python -> C++ parity claim. No new treatment claim; the frozen driver scratch/mathworld0.py is imported, never edited.
+
+- `main()`
+
 ### scratch/matryoshka_r1.py
 Matryoshka rung 1 (pre-reg 2026-07-28 night): joint loss CE(W) + CE(STE P_C8(W)) — one crystal whose OWN circulant projection must also work. 1 warm epoch from wfloor d256 on MPS. Implementation: parametrize gate weights with a toggleable STE projection (flag off -> raw W; flag on -> W + (P(W)-W) .detach(), i.e. forward uses P(W), gradient flows to W). Gates BOTH tiers at the end; saves the single weight tensor.
 

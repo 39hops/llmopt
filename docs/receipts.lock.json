@@ -647,6 +647,20 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld0/coldreplay.jsonl": {
+   "bytes": 32811,
+   "exists": true,
+   "sha256": "c6ea1d9369adb0b1938ec598fe20659e0a506ffc6118182345df4357bff36e84",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld0/coldreplay_verdict.json": {
+   "bytes": 719,
+   "exists": true,
+   "sha256": "346bcf23d90b8a49a2bc570833893b82818ca3a0072771dd736d2b026ca9c026",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld0/replay.jsonl": {
    "bytes": 32381,
    "exists": true,

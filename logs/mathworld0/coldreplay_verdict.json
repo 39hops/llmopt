@@ -1,0 +1,19 @@
+{
+ "episodes": 40,
+ "causal_rows": 101,
+ "matched_rows": 101,
+ "mismatches": [],
+ "pass": true,
+ "start": {
+  "start_commit": "08887ab0",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld0_coldreplay.py": "d67161e9731350519174348299aa41c9bee9ca375ff32000136e5ff067dfaea8",
+   "scratch/mathworld0.py": "4c130625535aa73ca10cdc368213d2d875862d324eb3796508feab5dd30c52d4",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/mathgen/problems.py": "9f1dcac61712696b2b7f9e65585d33d26865edf6b60f338977f09a792fe51215"
+  }
+ },
+ "completion_commit": "08887ab0"
+}

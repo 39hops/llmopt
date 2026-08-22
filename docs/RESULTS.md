@@ -41610,3 +41610,44 @@ banked, unimplemented. Receipts: logs/mathworld0/{active.jsonl,
 replay.jsonl, replay_verdict.json} force-added. Files:
 scratch/mathworld0.py.
 
+## AMENDMENT MATH-CYBER-0-RUNG0-SCOPE: wall cap is a BETWEEN-DECISION check (one-decision overshoot possible), hashes are BACKEND-LOCAL replay identities (never cross-language canonical), and the cold-process replay qualification PASSES 101/101 (2026-08-22, mac; GPT handoff-fence review, house-verified)
+
+Amends OBSERVATION MATH-CYBER-0-RUNG0 before any axiom relay.
+
+(1) WALL-CAP SEMANTICS: WALL_CAP_S is checked BETWEEN decisions,
+so it is not a hard per-episode 60 s ceiling — one
+legal_actions() call may overshoot it (the L6-s9100 cap row
+fired at the check after the overshooting call). Canonical
+wording: "between-decision safety cap, one-decision overshoot
+possible"; a hard outer deadline is a later contract revision if
+needed. Wall stays excluded from causal parity either way.
+
+(2) HASH SCOPE: state/action/action-set hashes are
+SYMPY-REPRESENTATION-NATIVE (srepr / State.key, 16-hex truncated
+sha256). They are valid BACKEND-LOCAL replay identities — which
+is all rung 0 claims — and are NOT cross-language canonical
+identities. The axiom C++ replica handoff distinguishes
+backend-local receipt IDs from mathematical cross-backend
+equivalence; C++ is never required to emulate sympy printers.
+Cross-backend parity, when it runs, compares world BEHAVIOR
+(action sets as mathematical objects, solved outcomes, chain
+structure), not hash strings.
+
+(3) COLD-PROCESS REPLAY QUALIFICATION (run before this booking,
+scratch/mathworld0_coldreplay.py): the frozen ACTIVE receipts
+replayed in a FRESH python interpreter with a cold derivation
+rule cache — 101/101 causal rows field-identical (matched rows
+counted DIRECTLY per the auditor hardening note, not derived by
+subtraction). Same-process replay is now bridged to
+PROCESS-INDEPENDENT replay; the remaining gap to C++ parity is
+the language boundary only. No new treatment claim. Receipts:
+logs/mathworld0/{coldreplay.jsonl, coldreplay_verdict.json}
+force-added with this amendment.
+
+(4) FUTURE-DRIVER NOTE (booked, no retro-edit of the frozen
+driver): the rung-0 verdict's replay_identical_rows is derived
+by subtraction (n_rows - n_wall - len(mismatch tuples)) —
+correct here because mismatches = 0, but a multi-field mismatch
+on one row would double-count; next driver revision counts
+matched rows directly (the cold-replay script already does).
+
