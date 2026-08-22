@@ -41162,3 +41162,77 @@ descriptive post-hoc color, adjudicating nothing. Files:
 scratch/ex6b43_idcensus.py (source receipt),
 checkpoints/ex3_del_invp.json.
 
+## OBSERVATION EX6-B43-DECOMP-0: the B43 mask's local write decomposes as deletion-dominated and near-orthogonal — |d_del|/|delta| median 0.884 (0.818-0.949), entrant and renorm terms each ~2.7 v |delta| 8.9, all pairwise |cos| <= 0.10 — and the write is LARGE: |delta| is 56% of the native block-output norm (2026-08-22, mac, outcome-blind one-execution census, 360 problems)
+
+The NEXT INSTRUMENT of OBSERVATION EX6-B43-CONTROL-DESK-0,
+fired: scratch/ex6b43_decomp.py computes the full local
+counterfactual of the B43 mask inside one outcome-blind native
+execution per problem (no upstream intervention, so native and
+masked worlds share the identical h into block 43; the wrapped
+call always returns the NATIVE output; max_tokens=2; no oracle
+call anywhere). Gate math is VERBATIM the frozen ex6depth1
+semantics on both paths (float32 zeros/mask add before softmax
+— a first run with a bf16 native softmax was caught by the
+receipt-auditor as a precision mismatch v the booked
+intervention, deleted unbooked, and re-run after the fix; its
+headline numbers were within noise of the ones below). Seeds
+7001/8002/9003, 120/seed, 360 rows; model weights pinned by
+manifest sha (artifact_identity, 4 shards, 17.2GB).
+
+DECOMPOSITION (per problem at (B43, z1), fp32 terms):
+  d_del     = -p_71 * E_71(h)
+  d_entrant =  p'_r * E_r(h)
+  d_renorm  =  sum_C (p'_i - p_i) * E_i(h)
+- EXACT to machine precision: |d_del + d_entrant + d_renorm -
+  (masked_out - native_out)| max 1.6e-6 v |delta| ~8.9
+  (relative ~2e-7) — the identity holds in the instrument's own
+  arithmetic (the single-expert switch_mlp calls reproduce the
+  batched top-8 per-expert results bit-consistently here).
+- NORMS: |d_del| med 7.92 (5.31-10.52), |d_entrant| med 2.72,
+  |d_renorm| med 2.77, |delta| med 8.92 (6.28-11.91).
+  |d_del|/|delta| med 0.884, range 0.818-0.949 on 360/360.
+- GEOMETRY: the three terms are near-orthogonal (|cos| <= 0.10
+  across all pairs, medians ~0.00-0.02) — norms compose
+  Pythagorean-style; no term partially cancels another.
+- DOSE (pays the AMENDMENT EX6-B43-IDENTITY-0-SCOPE census):
+  expert 71's native renormalized coefficient med 0.236
+  (0.186-0.314), raw softmax mass med ~0.09; entrant
+  coefficient med 0.079; kept-seven renorm uplift total med
+  0.160; |delta|/|native block output| med 0.559 (0.474-0.753)
+  — the mask rewrites over HALF the block-43 output norm. The
+  B46 comparison of removed mass remains unmeasured (this census
+  is B43-only); the deny-listed matched-write phrasing stays
+  blocked.
+- TIE PRECONDITION (dual selectors on the SAME logits):
+  argsort top-8 == argpartition top-8 on 360/360. In this run's
+  world zero rows sit on an exact rank-8/9 logit tie (46 rows
+  within 0.02); the deleted first run's world had 23 exact ties
+  and the selectors STILL agreed 360/360 there — agreement is
+  measured, not assumed, but tie counts are world-specific
+  (the h entering B43 differs with gate precision), so the
+  block-41/46 cross-instrument disagreement stays open; B43
+  rank-matched readings are tie-clean in the booked world.
+
+READING (bounded): the local write is deletion-DOMINATED
+geometrically — but ~12% of |delta| is entrant+renorm, and
+sufficiency/necessity for the +20 RESCUE outcome is exactly the
+five-arm component rung's question (NATIVE / DROP71 / RENORM7 /
+SLOT-SUBSTITUTE / FULL-MASK), not this census's. A
+J-linearization caveat is now measured: |delta|/|native| ~0.56
+is NOT a small perturbation, so the B43-JSPACE-BRIDGE
+LINEARIZATION QUAL step is load-bearing before any J-gain
+number is read.
+
+FENCES: outcome-blind (native output returned, no gate number
+exists); one-execution counterfactual valid ONLY because B43 has
+no upstream intervention (never chain through a masked block);
+quantities are model+keepset+4-bit-instrument specific; norms
+are fp32 readings of a quantized fp16-activation model; the
+zeros-add world is the booked instrument's world (ex6depth1
+NONE-arm identical math). Receipt-auditor ran on the first
+run's receipts (S1 precision mismatch adopted as the fix above;
+S2 adopted as the tie disclosure; S3 resolved by measurement —
+residual is machine-exact after S1's fix; S4 adopted as the
+artifact pin). Receipts: logs/ex6b43decomp/decomp.jsonl
+(force-added). Files: scratch/ex6b43_decomp.py.
+

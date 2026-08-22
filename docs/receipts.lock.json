@@ -302,6 +302,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/ex6b43decomp/decomp.jsonl": {
+   "bytes": 683272,
+   "exists": true,
+   "sha256": "b24f4321b8dd60dafd4b03d482d6fa7db49a97e3cae4e660fa964599749a5401",
+   "source": "results",
+   "tracked": true
+  },
   "logs/ex6b43id/idcensus.jsonl": {
    "bytes": 167596,
    "exists": true,
