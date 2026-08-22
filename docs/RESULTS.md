@@ -40539,3 +40539,109 @@ Fences unchanged; the verdict's bars, deltas, and prior
 adjudication stand as booked. Files:
 logs/ex6depth/treatment.jsonl, logs/ex6depth/demand.json.
 
+## OBSERVATION EX6-DEPTH-1-DESK: the 32-39 v 40-47 late split is analytically determined by frozen receipts — z1's late-band displacement lives in THREE blocks (41: 6, 43: 360, 46: 364 of 2880 slots), and zero-demand masks are exactly inert under norm_topk_prob (2026-08-22, mac, zero-cost census)
+
+Desk census over booked receipts (logs/ex6depth/demand.json,
+VERDICT EX6-DEPTH-0), no run fired. Two facts:
+
+1. INERTNESS LEMMA (analytic, model-config-verified): with
+norm_topk_prob=True (config: true, top_k 8) and the native top-8
+fully inside the named-80 keepset at a block, the -inf keepset
+mask changes NOTHING at that block — the top-8 set is identical
+and the top-k renormalization cancels the partition-function
+shift exactly. A zero-outside-demand block's z1 mask is
+bit-inert PROVIDED its input is native (no upstream mask
+divergence).
+
+2. PER-BLOCK z1 DEMAND CENSUS (late band, pooled 3 seeds x 120,
+2880 slots/block): blocks 32-40, 42, 44, 45, 47 = 0 outside
+slots; block 41 = 6; block 43 = 360 (exactly one slot per token,
+every token); block 46 = 364. The late band's entire ~1.58%
+native displacement is three blocks, dominated by 43 and 46.
+
+CONSEQUENCE for the queued 32-39 v 40-47 split: Z1_L32_39 has
+all-zero native demand and no upstream mask, hence == NONE
+bit-exact (Delta 0); in the Z1_LATE arm blocks 32-39 are inert,
+hence Z1_L40_47 == Z1_LATE (Delta +19, the booked cells). The
+split needs no machine; it is booked here as DERIVED. The live
+localization question moves to single blocks: does the +19
+localize to the routing decisions at blocks 43 and 46 — one
+temporal position x one-to-two layers? That rung (EX6-DEPTH-1)
+is registered separately with an empirical inertness-check cell.
+
+Fences: the lemma's zero-demand premise is NATIVE-path (a
+closed-loop mask upstream can awaken a downstream block — the
+derivation never chains through a masked non-inert block);
+demand identities (WHICH outside experts blocks 43/46 demand)
+are not recorded in the booked census. Files:
+logs/ex6depth/demand.json (frozen).
+
+## PRE-REG EX6-DEPTH-1: single-block z1 masks at blocks 43 and 46 — does the late band's +19 localize to one or two routing decisions? (2026-08-22, mac)
+
+Registered BEFORE any single-block cell fires. Machine
+projection docs/preregs/ex6-depth-1.json (validated); driver
+scratch/ex6depth1.py frozen this commit; adapter
+scripts/obs_from_receipt_ex6depth1.py alongside. Motivated by
+OBSERVATION EX6-DEPTH-1-DESK (the 32-39 v 40-47 split is
+DERIVED: blocks 41/43/46 carry the late band's whole native z1
+displacement; zero-demand masks exactly inert under
+norm_topk_prob).
+
+DESIGN. Arms NONE / Z1_LATE (anchors, must reproduce the booked
+EX6-DEPTH-0 cells 64/61/66 and 70/69/71 CELL-EXACT) / Z1_B43 /
+Z1_B46 / Z1_B43_46; plus a seed-7001 Z1_L32_39 INERTNESS-CHECK
+cell whose derived expectation is exactly the booked NONE cell
+(gate 64, masked recall 1.0) — always-readable because its
+expected value is already public. Same temporal law, native
+path, named-80 keepset, greedy, seeds 7001/8002/9003, 120/seed.
+Single-block arms are one temporal-call position x 1-2 layers;
+displacement disclosed via masked_recall; block 41's 6/2880
+native slots disclosed as unmasked residue.
+
+BRIDGE (fail-closed order): BAR 2 census 288/288 (6 arms x 48
+modules, temporal law + exact per-arm mask flags) -> BAR 3
+inertness 2/2 (gate == 64 AND recall == 1.0; a miss refutes the
+lemma's application and exits 3) -> BAR 1 anchors 6/6. Any miss
+exits 3 before any single-block cell runs or prints.
+
+TREATMENT BARS (pooled, ~7 floor; pair delta 10..12 books
+UNRESOLVED band): BAR 4 PAIR-CARRIES Delta_43_46 >= +13 (two
+thirds of the booked +19), signs 3/3; BAR 5 SINGLE-CARRIES
+max(Delta_43, Delta_46) >= +13; BAR 6 PAIR-NET-INTERACTION
+(range) |Delta_pair - (Delta_43 + Delta_46)| >= 13, pooled NET
+only per AMENDMENT EX6-DEPTH-0-SCOPE — per-level residuals are a
+registered disclosure, no bar.
+
+REFUTED-IF (suppressed unless bars 1, 2, 3 fire): the house
+prior (the {43,46} pair carries the late band's healing) is
+REFUTED if Delta_43_46 <= +9 pooled — the +19 would then ride on
+block 41 and/or closed-loop rerouting outside the pair.
+
+REGISTERED PRIOR (house, MEDIUM-LOW; family direction-call
+record 1-for-5): bar 4 FIRES — the pair holds ~99% of the late
+band's native z1 displacement (724 of 730 outside slots); NO
+registered lean between the singles; bar 6 quiet at pooled net.
+Named alternative: pair <= +9, refuting a displacement-sited
+account from inside the family the anti-alignment color already
+wounded.
+
+SECONDARY REGISTERED READS (color, no bars): per-level splits
+every arm; per-level pair-additivity residuals; paired
+rescue/break tables arm v NONE; per-arm excluded mass. ARTIFACT
+VISIBILITY (/watch): census.json, inert.jsonl, qual.jsonl,
+qual_perprob.jsonl ALWAYS-READABLE; treatment.jsonl,
+treatment_perprob.jsonl, treatment_stdout.log
+SEALED-UNTIL-QUALIFICATION (rc 0), SEALED-FOREVER-ON-FAILURE
+otherwise.
+
+QUALIFICATION LADDER AT REGISTRATION: prereg validates; SMOKE
+rc 0 — census 6x48/48 with per-arm masked blocks exact (B43
+masks only block 43, B46 only 46, pair both, L32_39 its eight),
+smoke inert cell already reads recall 1.0, anchors path
+exercised, no treatment value printed; synthetic adjudicator
+fixtures: pair-carries FIRES, pair-fails REFUTES, inertness-miss
+books singles UNRESOLVED with REFUTED-IF UNADJUDICATED. Fences:
+Mac-only, single 4-bit instrument, greedy. Files:
+scratch/ex6depth1.py, docs/preregs/ex6-depth-1.json,
+scripts/obs_from_receipt_ex6depth1.py.
+

@@ -1,0 +1,183 @@
+{
+ "name": "EX6-DEPTH-1",
+ "results_id": "2026-08-22-pre-reg-ex6-depth-1-single",
+ "registered": "2026-08-22",
+ "machine": "mac",
+ "note": "Single-block z1 masks: does the late band's +19 localize to the routing decisions at blocks 43 and 46? Motivated by OBSERVATION EX6-DEPTH-1-DESK: the late band's native z1 displacement is three blocks (41: 6, 43: 360, 46: 364 of 2880 slots), and zero-demand masks are exactly inert under norm_topk_prob (the 32-39 v 40-47 split is DERIVED, not run). Arms NONE / Z1_LATE (anchors) / Z1_B43 / Z1_B46 / Z1_B43_46; plus a seed-7001 Z1_L32_39 INERTNESS-CHECK cell whose derived expectation is exactly the booked NONE cell (64, recall 1.0). Temporal law identical to EX6-TEMPORAL-0. Delta_arm = pooled over seeds 7001/8002/9003 of (gate_arm - gate_NONE), 120/seed, native path, named-80 keepset, greedy. Dose language per AMENDMENT EX6-TEMPORAL-0-SCOPE: single-block arms are one temporal-call position x 1-2 layers; realized displacement DISCLOSED via masked_recall (desk census predicts ~1 forced slot per token at each of 43/46 native-path; closed-loop may differ, the disclosure is the measurement). Block 41's 6/2880 native slots are DISCLOSED as unmasked residue of the late band. Resolution law: ~7-solve floor; a pooled pair delta in 10..12 books as UNRESOLVED band. Per AMENDMENT EX6-DEPTH-0-SCOPE, bar 6 reads pooled NET interaction only; per-level additivity residuals are a REGISTERED DISCLOSURE (no bar). Artifact visibility (/watch): census.json, inert.jsonl, qual.jsonl, qual_perprob.jsonl ALWAYS-READABLE (the inert cell's expected value is the already-booked NONE cell); treatment.jsonl, treatment_perprob.jsonl, treatment_stdout.log SEALED-UNTIL-QUALIFICATION (rc 0), SEALED-FOREVER-ON-FAILURE otherwise. Registered secondary reads (color, no bars): per-level gate_per_level splits every arm; per-level additivity residuals for the pair; paired per-problem rescue/break tables arm v NONE from the perprob streams; per-arm excluded-mass disclosure.",
+ "arms": {
+  "none": {
+   "description": "nothing masked — anchor, must reproduce 64/61/66 cell-exact (EX6-DEPTH-0 qual receipt)"
+  },
+  "z1_late": {
+   "description": "z1 masked at blocks 32-47 — anchor, must reproduce 70/69/71 cell-exact (EX6-DEPTH-0 treatment receipt)"
+  },
+  "z1_l32_39": {
+   "description": "z1 masked at blocks 32-39, seed 7001 only — inertness-lemma check: derived expectation gate 64 exactly, masked recall 1.0"
+  },
+  "z1_b43": {
+   "description": "z1 masked at block 43 only (native demand: exactly 1 outside slot per token)"
+  },
+  "z1_b46": {
+   "description": "z1 masked at block 46 only (native demand: 364/2880 outside slots)"
+  },
+  "z1_b43_46": {
+   "description": "z1 masked at blocks 43 and 46"
+  }
+ },
+ "operands": [
+  {
+   "name": "named80_keepset",
+   "provider": "checkpoints/ex3_del_invp.json"
+  },
+  {
+   "name": "single_block_instrument",
+   "provider": "scratch/ex6depth1.py"
+  },
+  {
+   "name": "frozen_gate_machinery",
+   "provider": "scratch/moe_gt1_arm2.py"
+  },
+  {
+   "name": "anchor_receipt_none",
+   "provider": "logs/ex6depth/qual.jsonl"
+  },
+  {
+   "name": "anchor_receipt_late",
+   "provider": "logs/ex6depth/treatment.jsonl"
+  },
+  {
+   "name": "desk_demand_census",
+   "provider": "logs/ex6depth/demand.json"
+  }
+ ],
+ "receipts": [
+  "logs/ex6depth1/census.json",
+  "logs/ex6depth1/inert.jsonl",
+  "logs/ex6depth1/qual.jsonl",
+  "logs/ex6depth1/qual_perprob.jsonl",
+  "logs/ex6depth1/treatment.jsonl",
+  "logs/ex6depth1/treatment_perprob.jsonl",
+  "logs/ex6depth1/treatment_stdout.log",
+  "logs/ex6depth1/ex6depth1_observations.json"
+ ],
+ "bars": [
+  {
+   "id": 1,
+   "name": "QUALIFICATION",
+   "gate_class": "sanity",
+   "metric": "n_exact_reproductions",
+   "population": "anchors:none+z1late:3seeds",
+   "aggregation": "count_of_6",
+   "direction": "above",
+   "value": 6,
+   "arms": [
+    "none",
+    "z1_late"
+   ],
+   "description": "all six anchor cells CELL-EXACT against the booked EX6-DEPTH-0 receipts: NONE 64/61/66, Z1_LATE 70/69/71. Any miss exits 3 before any single-block cell runs; NO verdict of any class on the singles."
+  },
+  {
+   "id": 2,
+   "name": "BAND-CENSUS",
+   "gate_class": "sanity",
+   "metric": "n_module_arm_cells_ok",
+   "population": "seed7001:problem2:all6arms",
+   "aggregation": "count_of_288",
+   "direction": "above",
+   "value": 288,
+   "arms": [
+    "none",
+    "z1_late",
+    "z1_l32_39",
+    "z1_b43",
+    "z1_b46",
+    "z1_b43_46"
+   ],
+   "description": "outcome-blind call/mask census, one probe pass per arm predicate: 48 modules x 6 arms = 288 cells (temporal law with decode witnessed AND masked flags exactly the arm's registered blocks at z1, nowhere else). Failure exits 3 before the inertness check."
+  },
+  {
+   "id": 3,
+   "name": "INERTNESS-CHECK",
+   "gate_class": "sanity",
+   "metric": "n_inertness_checks_ok",
+   "population": "seed7001:z1_l32_39",
+   "aggregation": "count_of_2",
+   "direction": "above",
+   "value": 2,
+   "arms": [
+    "z1_l32_39"
+   ],
+   "description": "the desk derivation's empirical check: the seed-7001 Z1_L32_39 cell reads gate 64 EXACTLY (the booked NONE cell) AND masked recall 1.0. Both must hold (2/2); a miss refutes the inertness lemma's application here and exits 3 before anchors — the single-block arms' interpretation depends on it."
+  },
+  {
+   "id": 4,
+   "name": "PAIR-CARRIES",
+   "metric": "pooled_delta",
+   "population": "b43_46_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 13,
+   "arms": [
+    "z1_b43_46",
+    "none"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "4:signs",
+     "direction": "above",
+     "value": 3,
+     "metric": "n_positive_seeds",
+     "population": "b43_46_v_none:3seeds",
+     "aggregation": "count_of_3"
+    }
+   ],
+   "description": "the two-block pair alone reproduces the late band's class: Delta_43_46 >= +13 (two thirds of the booked +19), signs 3/3."
+  },
+  {
+   "id": 5,
+   "name": "SINGLE-CARRIES",
+   "metric": "max_pooled_delta",
+   "population": "b43+b46_v_none:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 13,
+   "arms": [
+    "z1_b43",
+    "z1_b46",
+    "none"
+   ],
+   "description": "one single block alone reaches the class: max(Delta_43, Delta_46) >= +13 — the launch-step healing would then localize to ONE routing decision at one layer."
+  },
+  {
+   "id": 6,
+   "name": "PAIR-NET-INTERACTION",
+   "gate_class": "range",
+   "metric": "abs_additivity_residual",
+   "population": "pair_v_singlesum:3seeds",
+   "aggregation": "pooled_sum",
+   "direction": "above",
+   "value": 13,
+   "arms": [
+    "z1_b43_46",
+    "z1_b43",
+    "z1_b46",
+    "none"
+   ],
+   "description": "diagnostic, pooled NET only (per AMENDMENT EX6-DEPTH-0-SCOPE): |Delta_43_46 - (Delta_43 + Delta_46)| >= 13 flags a strong pooled net interaction between the two blocks; per-level residuals book as disclosure either way. An excursion is a result, never an alarm."
+  }
+ ],
+ "refuted_if": "The house prior (the {43,46} pair carries the late band's healing) is REFUTED if, with the instrument qualified and the lemma checked (bars 1, 2, 3), the pair books nothing: Delta_43_46 <= +9 pooled — the +19 would then ride on block 41's 6 native slots and/or closed-loop rerouting outside the pair, and the localization story stops at the band. Judged only under bars 1, 2, and 3.",
+ "refuted_if_predicate": {
+  "measurement": "refutation:delta_pair",
+  "direction": "below",
+  "value": 9
+ },
+ "refutation_precedence": {
+  "suppressed_unless_bars_fire": [
+   1,
+   2,
+   3
+  ]
+ },
+ "registered_prior": "House, on the record, MEDIUM-LOW confidence (family record on direction calls: 1-for-5): bar 4 FIRES — the pair carries the +19 class, because it holds ~99% of the late band's native z1 displacement (724 of 730 outside slots); NO registered lean between the singles (no measured basis to order 43 v 46); bar 5 open either way; bar 6 quiet at pooled net. The named live alternative, on the record: the pair books <= +9 and the healing rides closed-loop rerouting or block 41 — which would refute a displacement-sited account of the late band from inside the family that the anti-alignment color already wounded."
+}
