@@ -8422,3 +8422,49 @@ honest status column).
   Controller (sensors over mastery/surprise/update-absorption
   eta*|g|/ulp(w); actuators over diet/LR/difficulty/replay/
   horizon). Cite via /cite when a THEORY row lands.
+
+- **BANKED (2026-08-22): MATH-BASIS / prerequisite-basis
+  hypothesis — the z1 x B43 routing locus selects/preserves a
+  reusable computational basis of primitive mathematical
+  transformations from which later reasoning composes**
+  (Artin, the frame; GPT sharpening; MATH-BASIS-0).
+  The mapping: do NOT equate school subject with layer depth,
+  and do NOT say B43 "stores arithmetic." The sharper reading of
+  VERDICT EX6-DEPTH-1 (+20 at z1 x block 43, matched-volume B46
+  inert, intervention BEFORE downstream composition rescues) is
+  that the locus gates a PRIMITIVE-TRANSFORMATION BASIS whose
+  availability later reasoning depends on — which would explain
+  early-position leverage without any topic story.
+  Measured anchors: EX6-DEPTH-1 (+20/+1 at matched-mean
+  displacement, pair outcome-identical to the late band);
+  EX6-TEMPORAL-0 (launch-step specificity); BASICS-DIET-1
+  format-distance transfer (competence radiates by format, a
+  prior datum consistent with basis-not-topic structure).
+  Registered predictions, on the record: (1) PRIMITIVE-BASIS
+  account — the B43 effect associates with specific prerequisite
+  rules and transports UPWARD to harder tasks requiring them;
+  (2) ORCHESTRATION account — primitives themselves unaffected,
+  effect emerges only with compositional depth; (3)
+  INSTRUMENT-SPECIFIC account — no transfer outside the current
+  gate. A future transport corpus factorializes PRIMITIVE
+  DEPENDENCIES (prerequisite/dominator rules), never mere
+  arithmetic/algebra/calculus labels.
+  Honest breaks: "prerequisite structure" is defined relative to
+  the house engine's rule vocabulary (successors()), not the
+  model's internal features — a null under this vocabulary does
+  not rule out a basis in a different decomposition; the
+  conceptual bridge to MATH-CYBER (MathWorld exposes exact legal
+  rewrite primitives; the neural policy may select an internal
+  action basis over analogous transformations) is HYPOTHESIS,
+  not finding. Naming fence: no "division/algebra expert" talk
+  without the expert-identity census x rescue-structure cross
+  AND a same-B43 matched-identity intervention.
+  Testable residue: (a) rescue-anatomy census on the frozen 20
+  B43 rescues v level-matched non-rescued failures (rule
+  incidence, minimal derivation depth, first necessary rewrite,
+  dominator rules — exact machinery, fired 2026-08-22); (b) the
+  outcome-blind B43 expert-identity census; (c) if (a) enriches
+  AND (b) concentrates, the matched-identity intervention; (d)
+  the primitive-dependency transport corpus.
+  Attribution: Artin (hypothesis + the insane-arc energy), GPT
+  (prediction triple + fences), house (census design).
