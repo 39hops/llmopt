@@ -8265,3 +8265,57 @@ honest status column).
   session-visible logs before their gate.
   Attribution: GPT (generalize-the-classes ask), house (incident
   + schema placement), Artin (adopted the review).
+
+- **BANKED (2026-08-21): TEMPORAL-DISPLACEMENT-MATCH control —
+  equal FORCED native-topk replacements at z1/z2/z3, independent
+  of named80 recall** (Artin, post AMENDMENT EX6-TEMPORAL-0-SCOPE).
+  The mapping: EX6-TEMPORAL-0's arms matched temporal-CALL dose
+  but not realized displacement — the named-80 mask replaced
+  ~2.09x more native expert slots at z1 (excluded top-8 mass
+  1.82% v 0.86-0.88% at z2/z3, booked recalls). The control:
+  a deterministic perturbation that forces an EQUAL NUMBER of
+  native-top8 replacements at each temporal position (e.g. demote
+  the top-1 pick to the vendor's rank-9 expert at N fixed layers,
+  N identical across z1/z2/z3), decoupling position from
+  displacement magnitude. If z1's advantage survives
+  displacement-matching, temporal sensitivity is intrinsic; if it
+  vanishes, TEMPORAL-0's step was carrier-family-demand-shaped.
+  Measured anchors: VERDICT EX6-TEMPORAL-0 (step +21/-3/0);
+  AMENDMENT -SCOPE (the 2.09x displacement gap).
+  Honest breaks: forced replacements are a DIFFERENT perturbation
+  family from keepset masking — a null would not directly rescope
+  the named-80 result, only the intrinsic-sensitivity reading;
+  replacement choice (rank-9 v random-kept) is itself a design
+  degree of freedom that needs registering.
+  Testable residue: 4-arm rung (NONE + forced-k at z1/z2/z3, same
+  seeds/gate), bar on Delta_z1_forced v Delta_z2_forced at
+  matched replacement counts.
+  Attribution: Artin (the control ask + the scope correction that
+  motivates it), house (recall arithmetic + design sketch).
+
+- **BANKED (2026-08-21): outcome-blind per-layer z1/z2/z3
+  NATIVE-DEMAND census — where along the 48 layers does z1's
+  excess carrier demand live, and does it align with the causal
+  depth band?** (Artin, same review). The mapping: the ~2.1x
+  excess outside-keepset demand at z1 is a POOLED-over-layers
+  number; an unmasked (NONE-arm) capture of per-layer,
+  per-temporal-position native top-8 hits against the named-80
+  keepset is outcome-blind, cheap (one NONE pass with counters),
+  and produces a 48 x 3 demand map. If the layers where z1
+  over-demands the carrier family COINCIDE with the depth band
+  that carries the +21 (ranked residue 2, z1 depth masks), the
+  demand map becomes a cheap predictor of causal locus —
+  family-demand explanation (b) gains mechanism; misalignment
+  supports intrinsic-sensitivity (a).
+  Measured anchors: AMENDMENT EX6-TEMPORAL-0-SCOPE (pooled 2.09x
+  gap); EX6-LOC-0-LEVELS (difficulty-dependent structure that a
+  per-layer read could stratify).
+  Honest breaks: demand is correlational — alignment would be
+  suggestive, never causal on its own; the census reads the
+  UNMASKED router, so it cannot see mask-induced rerouting
+  cascades.
+  Testable residue: 48x3 census + registered alignment read
+  against the depth-band rung's verdict (rank correlation or
+  band-overlap count, named before either fires).
+  Attribution: Artin (census ask + alignment hypothesis), house
+  (instrument shape).

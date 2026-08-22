@@ -2636,7 +2636,7 @@ regime tag on every bullet is the fence.
 
 - **The launch step is special, not merely early**: masking the
   SECOND or THIRD generated token's routing (one temporal position
-  across all 48 MoE layers, the identical design dose as token1)
+  across all 48 MoE layers, the identical temporal-call dose as token1; realized displacement differs ~2.1x, see AMENDMENT -SCOPE)
   buys nothing — Delta_z2 = -3 pooled (inside the ~7-solve floor),
   Delta_z3 = 0 with the paired per-problem read outcome-identical
   to baseline (0 rescues, 0 breaks in 360) — while z1's +21

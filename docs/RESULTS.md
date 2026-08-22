@@ -40262,3 +40262,49 @@ rescue/break secondary reads, so they are force-added and
 sha-locked with this amendment. The superseded sentence is the
 LOC-precedent default, not a claim about the data. Guard
 verdict: working as designed, not a flake.
+## AMENDMENT EX6-TEMPORAL-0-SCOPE: equal temporal-call dose, NOT equal realized routing displacement — z1's mask replaces ~2.1x more native expert slots; canonical wording rescoped to the named-mask intervention (2026-08-21, mac)
+
+Amends VERDICT EX6-TEMPORAL-0 (Artin review, receipt-verified
+in-house before adoption). Scope correction only; no bar outcome
+changes, no number changes.
+
+THE MEASURED GAP (from the booked masked_recall_named80 fields,
+logs/ex6temporal/{qual,treatment}.jsonl): Z1 recall
+0.9816/0.9819/0.9819, Z2 0.9914/0.9911/0.9916, Z3
+0.9912/0.9910/0.9914. Excluded native-top8 mass is therefore
+~1.82% at z1 v ~0.86%/0.88% at z2/z3 — the z1 mask forces ~2.09x
+more native expert-slot replacements than the later-position
+masks at the identical one-temporal-position-x-48-layers CALL
+dose. The arms are matched on temporal-call dose, NOT on
+realized routing displacement.
+
+CANONICAL WORDING (supersedes the verdict's dose sentences):
+- "identical design dose" reads IDENTICAL TEMPORAL-CALL DOSE.
+- The result: for the FIXED NAMED-80 MASK, the correctness
+  response is step-like — +21 at z1, no resolved benefit at
+  z2/z3. TEMPORAL-0 establishes position-specificity of THIS
+  NAMED-MASK INTERVENTION, not yet intrinsic temporal
+  sensitivity under displacement-matched perturbations.
+- Z3 is CORRECTNESS-IDENTICAL 360/360, not
+  trajectory-identical (4/360 completion-length differences,
+  already booked in the verdict).
+
+MECHANISTIC CLUE (registered as open, not adjudicated): the
+recall gap itself. At z1 the vendor router demands
+outside-keepset (named-carrier-family) experts at ~2.1x the
+later-position rate. Live explanations: (a) z1 is intrinsically
+more sensitive to routing perturbation; (b) the named carrier
+family is preferentially DEMANDED at z1 and the mask's leverage
+is family-demand-shaped; (c) both. TEMPORAL-0 cannot separate
+these — the displacement-match control and the per-layer demand
+census (banked this session, RIFF-LEDGER) are the named
+discriminators.
+
+Living-doc correction in the same commit: the FINDINGS bullet's
+"the identical design dose as token1" corrected to "the
+identical temporal-call dose as token1 (realized displacement
+differs ~2.1x, see -SCOPE)". Deny-list entry added for
+unqualified "identical design dose" in this thread's scope.
+Files: logs/ex6temporal/qual.jsonl,
+logs/ex6temporal/treatment.jsonl.
+

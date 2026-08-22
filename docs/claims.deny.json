@@ -1,98 +1,104 @@
 {
- "_doc": "Superseded readings \u2014 do not resurrect. Each entry is a regex the claim linter (llmopt/lab/claimlint.py) refuses in NEW verdict/analysis prose, with the booked correction that killed it. Add entries when a reading correction books; never delete one (the registry is provenance, like RIFF-LEDGER). Historical ledger text is NOT linted \u2014 only new drafts. Optional per-rule 'scope': a regex; the rule fires as ERROR only when the draft matches it (thread-scoped readings); scopeless rules are global.",
- "deny": [
-  {
-   "pattern": "near-isotropic",
-   "reason": "Refuted by own data: private D at r=296 captures 4.678x the random baseline \u2014 individual experts are substantially anisotropic.",
-   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-2",
-   "scope": "stream[- ]?wdistill|expert|V4"
-  },
-  {
-   "pattern": "misalignment is the (reason|cause|explanation)",
-   "reason": "Misalignment is the leading CANDIDATE, not measured. Efficiency at different ranks does not measure alignment (synthetic 1/i spectrum with no coordinate change reproduces a ~3x efficiency gap). Pending the C@296-v-D@296 rider and the overlap census.",
-   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
-   "scope": "stream[- ]?wdistill|expert|V4"
-  },
-  {
-   "pattern": "statistically indistinguishable",
-   "reason": "No distribution was measured. E's 1.067x capture proxy is 'close to random expectation', nothing stronger.",
-   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
-   "scope": "stream[- ]?wdistill|gauge|capture|subspace"
-  },
-  {
-   "pattern": "independent (gauge )?(evidence|support|confirmation)",
-   "reason": "E IS the registered gauge-control arm \u2014 convergent post-hoc evidence from the same arm, never independent. Independence requires a distinct registered source.",
-   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
-   "scope": "stream[- ]?wdistill|gauge|arm E"
-  },
-  {
-   "pattern": "matched[- ]bytes? scalar|scalar.{0,40}matched[- ]bytes?",
-   "reason": "No admissible scalar contrast exists in STREAM-WDISTILL-0: arm A serialized 19 bytes over B1. Scalar wording stays descriptive \u2014 never 'matched bytes', 'winner', or 'loses'.",
-   "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair",
-   "scope": "stream[- ]?wdistill|B1|arm A"
-  },
-  {
-   "pattern": "Lloyd-optimal",
-   "reason": "Booked overclaim: the k-means stage is Lloyd-ITERATED, not optimal; no optimality certificate exists.",
-   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-deltas-2"
-  },
-  {
-   "pattern": "exploits? \\d[\\d.]*x more structure",
-   "reason": "Efficiency ratios at different ranks carry a rank-position confound; a structure multiple between arms at unequal rank is not a measured quantity.",
-   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3"
-  },
-  {
-   "pattern": "RUN_TAG.{0,60}(graduat|invariant)",
-   "reason": "RUN_TAG is a mitigation only. The frozen-receipt invariant is the content-addressed lock (docs/receipts.lock.json) plus CI refusal.",
-   "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair"
-  },
-  {
-   "pattern": "even with perfect selection|exact (subset )?optim(um|al) selection",
-   "reason": "RK-CENSUS reconstruction references are HEURISTIC selections (teacher-top-|z|, contribution-ranked), not exact subset optima; the exact optimum is unmeasured.",
-   "superseded_by": "2026-08-18-amendment-qwen-rk-io-attrib-capacity",
-   "scope": "rk|router|top-k|recon"
-  },
-  {
-   "pattern": "embed carries (the )?CE|head carries (the )?KL",
-   "reason": "X is measured on the corpus surface and K on prefixes; the io split confounds metric with evaluation surface. Say corpus-X / prefix-K recovery.",
-   "superseded_by": "2026-08-18-amendment-qwen-rk-io-attrib-capacity",
-   "scope": "io[- ]?attrib|embed|lm_head"
-  },
-  {
-   "pattern": "deep inside the (head's )?decision cell",
-   "reason": "Raw top1-top2 logit margin is not geometric distance to the decision boundary ((z_y-z_j)/||w_y-w_j||, needs head row norms). Corrected by AMENDMENT QWEN-LOOP-STATE-0-COLOR2 (2026-08-20).",
-   "scope": "loop-state|LOOP-STATE|decision cell",
-   "superseded_by": "2026-08-20-amendment-qwen-loop-state-0-color2"
-  },
-  {
-   "pattern": "not (merely )?unlucky sampling",
-   "reason": "Greedy decoding is deterministic; the sampling framing was wrong. Corrected reading: the deterministic correction policy itself substantially repeats (AMENDMENT QWEN-LOOP-STATE-0-COLOR2, 2026-08-20).",
-   "scope": "retry|LOOP-STATE|loop-state",
-   "superseded_by": "2026-08-20-amendment-qwen-loop-state-0-color2"
-  },
-  {
-   "pattern": "readout repair (is )?measured out(?!.{0,40}local)",
-   "reason": "HEADSWAP was an offline conditional read of frozen h_BLe, not an online causal replacement; only the LOCAL/static reading is supported. Corrected by AMENDMENT QWEN-LOOP-STATE-1-SCOPE (2026-08-20).",
-   "scope": "loop-state|LOOP-STATE|headswap|HEADSWAP",
-   "superseded_by": "2026-08-20-amendment-qwen-loop-state-1-scope"
-  },
-  {
-   "pattern": "readout is a bystander",
-   "reason": "Supported only as a local/static claim on frozen BLe states; trajectory-level readout causality open. Corrected by AMENDMENT QWEN-LOOP-STATE-1-SCOPE (2026-08-20).",
-   "scope": "loop-state|LOOP-STATE|headswap|HEADSWAP",
-   "superseded_by": "2026-08-20-amendment-qwen-loop-state-1-scope"
-  },
-  {
-   "pattern": "starts topic-free and converges",
-   "reason": "Cumulative first-N reading; equal-width windowed adjudication (rider3) shows the thinking topic contrast peaks in window 9:16 then declines. Surviving claim is the early-horizon regime difference only. Corrected by AMENDMENT GRF-NOTHINK-0-WINDOWS (2026-08-21).",
-   "scope": "grf|GRF|horizon|time-as-structure|TIME-AS-STRUCTURE",
-   "superseded_by": "2026-08-21-amendment-grf-nothink-0-windows-windowed"
-  },
-  {
-   "pattern": "gap statistics, growing to",
-   "reason": "The beyond-frequency AUC component is U-shaped in H, largest at H<=4; what grows with H is the popularity-dominated FULL-AGE delta. Corrected by AMENDMENT ROUTE-TIME-0-ISOLATION (2026-08-21).",
-   "scope": "route-time|ROUTE-TIME",
-   "superseded_by": "2026-08-21-amendment-route-time-0-isolation-outside"
-  }
- ]
+    "_doc": "Superseded readings \u2014 do not resurrect. Each entry is a regex the claim linter (llmopt/lab/claimlint.py) refuses in NEW verdict/analysis prose, with the booked correction that killed it. Add entries when a reading correction books; never delete one (the registry is provenance, like RIFF-LEDGER). Historical ledger text is NOT linted \u2014 only new drafts. Optional per-rule 'scope': a regex; the rule fires as ERROR only when the draft matches it (thread-scoped readings); scopeless rules are global.",
+    "deny": [
+        {
+            "pattern": "near-isotropic",
+            "reason": "Refuted by own data: private D at r=296 captures 4.678x the random baseline \u2014 individual experts are substantially anisotropic.",
+            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-2",
+            "scope": "stream[- ]?wdistill|expert|V4"
+        },
+        {
+            "pattern": "misalignment is the (reason|cause|explanation)",
+            "reason": "Misalignment is the leading CANDIDATE, not measured. Efficiency at different ranks does not measure alignment (synthetic 1/i spectrum with no coordinate change reproduces a ~3x efficiency gap). Pending the C@296-v-D@296 rider and the overlap census.",
+            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
+            "scope": "stream[- ]?wdistill|expert|V4"
+        },
+        {
+            "pattern": "statistically indistinguishable",
+            "reason": "No distribution was measured. E's 1.067x capture proxy is 'close to random expectation', nothing stronger.",
+            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
+            "scope": "stream[- ]?wdistill|gauge|capture|subspace"
+        },
+        {
+            "pattern": "independent (gauge )?(evidence|support|confirmation)",
+            "reason": "E IS the registered gauge-control arm \u2014 convergent post-hoc evidence from the same arm, never independent. Independence requires a distinct registered source.",
+            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
+            "scope": "stream[- ]?wdistill|gauge|arm E"
+        },
+        {
+            "pattern": "matched[- ]bytes? scalar|scalar.{0,40}matched[- ]bytes?",
+            "reason": "No admissible scalar contrast exists in STREAM-WDISTILL-0: arm A serialized 19 bytes over B1. Scalar wording stays descriptive \u2014 never 'matched bytes', 'winner', or 'loses'.",
+            "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair",
+            "scope": "stream[- ]?wdistill|B1|arm A"
+        },
+        {
+            "pattern": "Lloyd-optimal",
+            "reason": "Booked overclaim: the k-means stage is Lloyd-ITERATED, not optimal; no optimality certificate exists.",
+            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-deltas-2"
+        },
+        {
+            "pattern": "exploits? \\d[\\d.]*x more structure",
+            "reason": "Efficiency ratios at different ranks carry a rank-position confound; a structure multiple between arms at unequal rank is not a measured quantity.",
+            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3"
+        },
+        {
+            "pattern": "RUN_TAG.{0,60}(graduat|invariant)",
+            "reason": "RUN_TAG is a mitigation only. The frozen-receipt invariant is the content-addressed lock (docs/receipts.lock.json) plus CI refusal.",
+            "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair"
+        },
+        {
+            "pattern": "even with perfect selection|exact (subset )?optim(um|al) selection",
+            "reason": "RK-CENSUS reconstruction references are HEURISTIC selections (teacher-top-|z|, contribution-ranked), not exact subset optima; the exact optimum is unmeasured.",
+            "superseded_by": "2026-08-18-amendment-qwen-rk-io-attrib-capacity",
+            "scope": "rk|router|top-k|recon"
+        },
+        {
+            "pattern": "embed carries (the )?CE|head carries (the )?KL",
+            "reason": "X is measured on the corpus surface and K on prefixes; the io split confounds metric with evaluation surface. Say corpus-X / prefix-K recovery.",
+            "superseded_by": "2026-08-18-amendment-qwen-rk-io-attrib-capacity",
+            "scope": "io[- ]?attrib|embed|lm_head"
+        },
+        {
+            "pattern": "deep inside the (head's )?decision cell",
+            "reason": "Raw top1-top2 logit margin is not geometric distance to the decision boundary ((z_y-z_j)/||w_y-w_j||, needs head row norms). Corrected by AMENDMENT QWEN-LOOP-STATE-0-COLOR2 (2026-08-20).",
+            "scope": "loop-state|LOOP-STATE|decision cell",
+            "superseded_by": "2026-08-20-amendment-qwen-loop-state-0-color2"
+        },
+        {
+            "pattern": "not (merely )?unlucky sampling",
+            "reason": "Greedy decoding is deterministic; the sampling framing was wrong. Corrected reading: the deterministic correction policy itself substantially repeats (AMENDMENT QWEN-LOOP-STATE-0-COLOR2, 2026-08-20).",
+            "scope": "retry|LOOP-STATE|loop-state",
+            "superseded_by": "2026-08-20-amendment-qwen-loop-state-0-color2"
+        },
+        {
+            "pattern": "readout repair (is )?measured out(?!.{0,40}local)",
+            "reason": "HEADSWAP was an offline conditional read of frozen h_BLe, not an online causal replacement; only the LOCAL/static reading is supported. Corrected by AMENDMENT QWEN-LOOP-STATE-1-SCOPE (2026-08-20).",
+            "scope": "loop-state|LOOP-STATE|headswap|HEADSWAP",
+            "superseded_by": "2026-08-20-amendment-qwen-loop-state-1-scope"
+        },
+        {
+            "pattern": "readout is a bystander",
+            "reason": "Supported only as a local/static claim on frozen BLe states; trajectory-level readout causality open. Corrected by AMENDMENT QWEN-LOOP-STATE-1-SCOPE (2026-08-20).",
+            "scope": "loop-state|LOOP-STATE|headswap|HEADSWAP",
+            "superseded_by": "2026-08-20-amendment-qwen-loop-state-1-scope"
+        },
+        {
+            "pattern": "starts topic-free and converges",
+            "reason": "Cumulative first-N reading; equal-width windowed adjudication (rider3) shows the thinking topic contrast peaks in window 9:16 then declines. Surviving claim is the early-horizon regime difference only. Corrected by AMENDMENT GRF-NOTHINK-0-WINDOWS (2026-08-21).",
+            "scope": "grf|GRF|horizon|time-as-structure|TIME-AS-STRUCTURE",
+            "superseded_by": "2026-08-21-amendment-grf-nothink-0-windows-windowed"
+        },
+        {
+            "pattern": "gap statistics, growing to",
+            "reason": "The beyond-frequency AUC component is U-shaped in H, largest at H<=4; what grows with H is the popularity-dominated FULL-AGE delta. Corrected by AMENDMENT ROUTE-TIME-0-ISOLATION (2026-08-21).",
+            "scope": "route-time|ROUTE-TIME",
+            "superseded_by": "2026-08-21-amendment-route-time-0-isolation-outside"
+        },
+        {
+            "pattern": "identical design dose|equal dose by construction",
+            "reason": "EX6-TEMPORAL arms are matched on temporal-call dose only; realized routing displacement differs ~2.1x (z1 excluded mass 1.82% v 0.86-0.88% at z2/z3). Say 'identical temporal-call dose'.",
+            "superseded_by": "2026-08-21-amendment-ex6-temporal-0-scope-equal",
+            "scope": "ex6[- ]?temporal|z1|z2|z3|temporal mask"
+        }
+    ]
 }
