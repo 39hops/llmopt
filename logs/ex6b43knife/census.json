@@ -1,0 +1,1518 @@
+{
+ "start": {
+  "start_commit": "08ce0239",
+  "start_status_porcelain": "",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/ex6b43_knife.py": "899dd92b47e6b8c099f09365a1c441c66ac2ae2efba47ece206b1068a6a383aa",
+   "scratch/moe_gt1_arm2.py": "916b616af8e2f44daeb01dcd9ca4e7f60b4167d8c485b69158740b16c5dedd9f",
+   "checkpoints/ex3_del_invp.json": "72bf31eb44e60f3877c7de496e0987ce678d3561fe38922ff9a5cad978faef7e"
+  },
+  "artifact_identity": {
+   "model": {
+    "art_dir_resolved": "/Users/artin/.cache/huggingface/hub/models--mlx-community--Qwen3-30B-A3B-4bit/snapshots/d388dead1515f5e085ef7a0431dd8fadf0886c57",
+    "manifest_file": "model.safetensors.index.json",
+    "manifest_sha256": "d8c5294637ef27a946db4c76f708895fa4907f96e93d5a0c8c0f1ca995ec9db9",
+    "shards": {
+     "n": 4,
+     "total_bytes": 17174780668
+    }
+   }
+  }
+ },
+ "verdicts": {
+  "NATIVE": {
+   "arm": "NATIVE",
+   "n_moe_seen": 48,
+   "n_ok": 48,
+   "required": 48,
+   "pass": true,
+   "per_module": {
+    "0": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "1": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "2": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "3": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "4": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "5": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "6": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "7": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "8": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "9": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "10": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "11": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "12": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "13": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "14": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "15": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "16": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "17": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "18": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "19": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "20": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "21": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "22": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "23": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "24": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "25": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "26": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "27": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "28": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "29": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "30": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "31": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "32": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "33": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "34": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "35": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "36": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "37": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "38": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "39": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "40": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "41": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "42": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "43": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "44": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "45": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "46": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "47": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    }
+   }
+  },
+  "FULL_DIRECT": {
+   "arm": "FULL_DIRECT",
+   "n_moe_seen": 48,
+   "n_ok": 48,
+   "required": 48,
+   "pass": true,
+   "per_module": {
+    "0": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "1": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "2": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "3": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "4": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "5": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "6": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "7": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "8": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "9": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "10": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "11": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "12": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "13": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "14": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "15": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "16": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "17": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "18": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "19": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "20": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "21": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "22": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "23": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "24": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "25": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "26": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "27": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "28": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "29": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "30": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "31": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "32": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "33": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "34": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "35": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "36": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "37": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "38": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "39": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "40": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "41": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "42": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "43": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": [
+      "z1"
+     ]
+    },
+    "44": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "45": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "46": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "47": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    }
+   }
+  },
+  "D_ONLY": {
+   "arm": "D_ONLY",
+   "n_moe_seen": 48,
+   "n_ok": 48,
+   "required": 48,
+   "pass": true,
+   "per_module": {
+    "0": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "1": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "2": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "3": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "4": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "5": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "6": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "7": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "8": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "9": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "10": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "11": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "12": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "13": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "14": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "15": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "16": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "17": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "18": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "19": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "20": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "21": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "22": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "23": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "24": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "25": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "26": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "27": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "28": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "29": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "30": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "31": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "32": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "33": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "34": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "35": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "36": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "37": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "38": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "39": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "40": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "41": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "42": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "43": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": [
+      "z1"
+     ]
+    },
+    "44": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "45": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "46": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "47": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    }
+   }
+  },
+  "NO_D": {
+   "arm": "NO_D",
+   "n_moe_seen": 48,
+   "n_ok": 48,
+   "required": 48,
+   "pass": true,
+   "per_module": {
+    "0": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "1": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "2": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "3": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "4": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "5": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "6": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "7": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "8": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "9": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "10": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "11": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "12": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "13": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "14": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "15": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "16": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "17": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "18": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "19": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "20": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "21": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "22": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "23": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "24": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "25": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "26": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "27": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "28": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "29": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "30": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "31": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "32": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "33": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "34": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "35": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "36": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "37": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "38": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "39": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "40": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "41": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "42": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "43": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": [
+      "z1"
+     ]
+    },
+    "44": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "45": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "46": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "47": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    }
+   }
+  },
+  "FULL_SUM": {
+   "arm": "FULL_SUM",
+   "n_moe_seen": 48,
+   "n_ok": 48,
+   "required": 48,
+   "pass": true,
+   "per_module": {
+    "0": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "1": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "2": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "3": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "4": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "5": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "6": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "7": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "8": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "9": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "10": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "11": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "12": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "13": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "14": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "15": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "16": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "17": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "18": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "19": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "20": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "21": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "22": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "23": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "24": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "25": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "26": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "27": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "28": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "29": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "30": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "31": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "32": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "33": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "34": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "35": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "36": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "37": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "38": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "39": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "40": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "41": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "42": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "43": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": [
+      "z1"
+     ]
+    },
+    "44": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "45": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "46": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    },
+    "47": {
+     "ok": true,
+     "law_ok": true,
+     "knife_ok": true,
+     "knife_phases": []
+    }
+   }
+  }
+ }
+}

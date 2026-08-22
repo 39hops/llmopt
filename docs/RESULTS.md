@@ -41424,3 +41424,95 @@ a qual-fail suppression, b happy-path NOT-REFUTED, c inversion
 REFUTED, d composition-broken suppressed, e seed-cancellation
 suppressed.
 
+## VERDICT EX6-B43-KNIFE-0: the deletion vector CARRIES — D_ONLY books +17 (signs 3/3), NO_D books +5 (below the carry class), and the additive path is outcome-IDENTICAL to the masked world (0/360 per-problem flips, per-seed gap 0). All five bars FIRE; NOT-REFUTED; registered prior right 3-for-3 (2026-08-22, mac, code_commit 08ce0239)
+
+Adjudicated mechanically (scripts/adjudicate.py v
+docs/preregs/ex6-b43-knife-0.json as amended by -BAR5):
+
+- BAR 1 QUALIFICATION: FIRE — NATIVE 64/61/66 and FULL_DIRECT
+  70/70/71, all 6 cells CELL-EXACT v the booked EX6-DEPTH-1
+  receipts.
+- BAR 2 KNIFE-CENSUS: FIRE — 240/240 (5 arms x 48 modules;
+  knife flags at (z1, bp43) only for intervened arms, nowhere
+  for NATIVE).
+- BAR 3 D-SUFFICIENCY: FIRE — D_ONLY 71/67/70 = 208, pooled
+  +17 v NATIVE 191 (per-seed +7/+6/+4, signs 3/3; outside the
+  +10..+12 band). The deletion vector alone, added to the
+  native output at the single (z1, block-position 43) call,
+  carries the launch-step effect's class.
+- BAR 4 D-NECESSITY: FIRE — NO_D 66/62/68 = 196, pooled +5
+  (per-seed +2/+1/+2, disclosed per the -BAR5 fence). The
+  combined entrant+renorm vector — 46% of |delta| by norm —
+  DOES NOT REACH THE POOLED CARRY CLASS. Registered wording:
+  this is failure of the pooled carry class, not universal or
+  per-seed necessity; +5 at 3/3 positive signs and 7 rescues /
+  2 breaks is sub-instrument (under the ~7-solve floor), never
+  "inert".
+- BAR 5 SUM-COMPOSITION (amended per-seed form): FIRE —
+  sum_s |FULL_SUM_s - FULL_DIRECT_s| = 0. Stronger than the
+  bar: FULL_SUM is per-problem OUTCOME-IDENTICAL to
+  FULL_DIRECT, 0/360 ok-flips (the mandatory -BAR5 disclosure;
+  per-level splits identical in every seed cell), so "faithful"
+  needs no pooled-only scoping. Both the retired pooled form
+  and the amended form evaluate 0 on these receipts — the
+  mid-run bar change was outcome-independent.
+- REFUTED-IF: NOT-REFUTED (D_ONLY +17 > +9; inversion
+  predicate 0).
+
+READING (canonical): at the crest's endpoint locus, removing
+expert 71's contribution FROM the block-43 output — with the
+router's realized mixture otherwise untouched (no entrant, no
+renorm) — reproduces the rescue class (+17 v the full mask's
++20); handing the model only the entrant+replacement
+reweighting does not (+5). Within this exact measured
+decomposition (activation-space interventions on the shared
+native h, pooled carry class), the deletion of E71's output is
+SUFFICIENT and the non-deletion components are NOT sufficient.
+Knife interaction -2 (17 + 5 = 22 v +20): mild sub-additivity,
+sub-instrument. Color: rescue/break v NATIVE — D_ONLY 18/1,
+NO_D 7/2, FULL_SUM 20/0 (FULL_DIRECT also 20/0, matching
+DEPTH-1's 20 rescues). Naming fence UNCHANGED: sufficiency of
+removing E71's output still licenses no semantic label for
+expert 71 (MATH-BASIS L4+ transport remains the semantic test);
+what it does license is redirecting the J-space GAIN rung at
+the DELETION component d_del specifically, transported
+alongside E and R separately per -DECOMP-0-SCOPE (4).
+
+DOSE (real-run hnorms, 1440 rows, prereg-auditor correction
+adopted — the smoke 0.19 is retired): |delta| median 0.559 of
+the native MoE write, 0.160 (0.120-0.209) of the
+RMSNorm-NORMALIZED MLP input (h_pre scope per -BAR5 (2));
+|delta|/||h_residual|| stays unpaid. The logged |delta| is the
+DIRECT mask delta, shared across arms by construction — it is
+never a per-arm knife dose (the per-term norms live in
+logs/ex6b43decomp/).
+
+AUDITS (both Opus, pre-booking; no blockers; adopted items):
+prereg-auditor — dose figure corrected to 0.160; NO_D wording
+as above; anchor receipts (ex6depth1) carry no
+artifact_identity block, so the same-weights assumption across
+anchor and knife runs is inherited not receipted (fenced: the
+anchor bars compare gate counts only, both runs Mac/mlx, same
+support shas); census.json does not record its seed/problem
+label (structure and count verified, label unreceipted).
+receipt-auditor — ANCHORS dict is a documented sibling literal
+(values hand-verified correct against both ex6depth1 receipts;
+next driver in the family derives or sha-pins them);
+masked_recall_named80 is inherited family naming debt (keepset
+is ex3_del_invp.json; value 0.875 = 7/8 corroborated against
+the booked B43 arm); adapter color literals 191/211 coincide
+with this run's own sums because the anchors passed (color
+only, bars are derived); mid-run commit drift qual 08ce0239 ->
+treatment 2965df61 is exactly the -BAR5 amendment, no
+instrument file changed (driver sha identical in both metas).
+
+FENCES: all PRE-REG + -BAR5 fences carry (activation-space
+scope, dtype-cast disclosure, pooled-carry-class necessity
+wording, single 4-bit instrument, greedy, named keepset, n=3
+seeds x 120, Mac-only, in-run paired arms). Receipts:
+logs/ex6b43knife/{census.json, qual.jsonl, qual_perprob.jsonl,
+treatment.jsonl, treatment_perprob.jsonl, hnorms.jsonl,
+treatment_stdout.log, ex6b43knife_observations.json}
+force-added with this booking. Files: scratch/ex6b43_knife.py,
+scripts/obs_from_receipt_ex6b43knife.py.
+

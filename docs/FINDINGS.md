@@ -2720,3 +2720,22 @@ regime tag on every bullet is the fence.
   where a kept expert shares the target's rank at comparable
   frequency.
   ([OBSERVATION EX6-B43-CONTROL-DESK-0](RESULTS.md#L41096 "id:2026-08-22-observation-ex6-b43-control-desk-0").)
+
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: tested MoE recipes]
+  The exact activation-component knife at (block 43, z1) books
+  the deletion vector as the carrier: adding only
+  d_del = -p_71*E_71(h) to the native block output reproduces
+  the launch-step rescue class (+17 pooled, signs 3/3, 18
+  rescues / 1 break), while the combined entrant+renorm vector
+  (46% of |delta| by norm) books +5 — below the pooled carry
+  class, sub-instrument, never "inert" — and the additive path
+  is per-problem outcome-identical to the direct mask (0/360
+  flips). Within this exact measured decomposition, removing
+  expert 71's output is sufficient and the co-moving routing
+  side-effects are not. Fences: activation-space interventions
+  on the shared native h, single 4-bit instrument, greedy,
+  named keepset, n=3 seeds x 120, Mac-only; naming fence for
+  expert 71 unchanged; dose scope 0.559 of the MoE write /
+  0.160 of the normalized MLP input, residual-stream ratio
+  unpaid.
+  ([VERDICT EX6-B43-KNIFE-0](RESULTS.md#L41427 "id:2026-08-22-verdict-ex6-b43-knife-0-the").)

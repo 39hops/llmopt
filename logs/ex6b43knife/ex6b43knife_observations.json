@@ -1,0 +1,88 @@
+{
+ "measurement_valid": true,
+ "arms": {
+  "native": {
+   "admissible": true
+  },
+  "full_direct": {
+   "admissible": true
+  },
+  "d_only": {
+   "admissible": true
+  },
+  "no_d": {
+   "admissible": true
+  },
+  "full_sum": {
+   "admissible": true
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 6,
+   "metric": "n_exact_reproductions",
+   "population": "anchors:native+full_direct:3seeds",
+   "aggregation": "count_of_6"
+  },
+  "2": {
+   "value": 240,
+   "metric": "n_module_arm_cells_ok",
+   "population": "seed7001:problem2:all5arms",
+   "aggregation": "count_of_240"
+  },
+  "3": {
+   "value": 17,
+   "metric": "pooled_delta",
+   "population": "d_only_v_native:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "3:signs": {
+   "value": 3,
+   "metric": "n_positive_seeds",
+   "population": "d_only_v_native:3seeds",
+   "aggregation": "count_of_3"
+  },
+  "4": {
+   "value": 5,
+   "metric": "pooled_delta",
+   "population": "no_d_v_native:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "5": {
+   "value": 0,
+   "metric": "sum_abs_perseed_gap_to_full_direct",
+   "population": "full_sum_v_full_direct:perseed:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "refutation:knife_inversion": {
+   "value": 0,
+   "metric": "knife_inversion_indicator",
+   "population": "d_only+no_d_v_native:3seeds",
+   "aggregation": "pooled_sum"
+  }
+ },
+ "color": {
+  "delta_d_only": 17,
+  "delta_no_d": 5,
+  "perseed_deltas": {
+   "D_ONLY": [
+    7,
+    6,
+    4
+   ],
+   "NO_D": [
+    2,
+    1,
+    2
+   ],
+   "FULL_SUM": [
+    6,
+    9,
+    5
+   ]
+  },
+  "pooled_full_sum": 211,
+  "abs_pooled_gap_to_211": 0,
+  "knife_interaction": -2
+ }
+}

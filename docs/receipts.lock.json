@@ -317,36 +317,60 @@
    "tracked": true
   },
   "logs/ex6b43knife/census.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 26556,
+   "exists": true,
+   "sha256": "cf50d9784321f266ce84ba3a4fb00f308b01b7de79981cb5821965112f2720e6",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6b43knife/ex6b43knife_observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 1615,
+   "exists": true,
+   "sha256": "927742283ef4d2ee054b9e8162f4edb7d2907f08e6cb3ea7bb1ff59b31c996fe",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6b43knife/hnorms.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 249555,
+   "exists": true,
+   "sha256": "c366f2ef4ad5da8e4d9dbaeccda5629d6461e014cb8afe75c99a9e9e1ce8d6f9",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6b43knife/qual.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2001,
+   "exists": true,
+   "sha256": "0c9f84016bcf3f728e1bf7f3bf60684dd70818ccf4c04609636b6fc1709b5a8d",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6b43knife/qual_perprob.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 81706,
+   "exists": true,
+   "sha256": "06a2bd5157517e8fe02044eaf0fbf912bd1bb529ace08a58a0c46bbd378788ce",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6b43knife/treatment.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2516,
+   "exists": true,
+   "sha256": "b2169e707f3ba4c6abb8ac2663ff2231f19d03473d6e2dbe2417d13b0ba1284e",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6b43knife/treatment_perprob.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 129024,
+   "exists": true,
+   "sha256": "ceb5334d21916255b30988b2d529b9d09544901d1784e619859040bc4b9463ea",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6b43knife/treatment_stdout.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 873,
+   "exists": true,
+   "sha256": "1e9712c61a50f3b6f863d2d8e9cefa7e39f287a1f61524c5dede8273b6a64ca0",
+   "source": "results",
+   "tracked": true
   },
   "logs/ex6depth/census.json": {
    "bytes": 27692,
