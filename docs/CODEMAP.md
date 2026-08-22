@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 285, spec-cited 89, cited-but-library 61
+Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 286, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -253,8 +253,9 @@ Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 285, spec-ci
 | margin | margin_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | margin | margin_vs_branching.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mass | mass_on_valid.py | spec-cited | specs | specs×4 | — | — |
-| mathworld0 | mathworld0.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
-| mathworld0 | mathworld0_coldreplay.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld0 | mathworld0.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
+| mathworld0 | mathworld0_coldreplay.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| mathworld1 | mathworld1_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | matryoshka | matryoshka_r1.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | matryoshka | matryoshka_r2.py | spec-cited | specs | specs×1 | — | — |
 | merge | merge_space1.sh | UNCITED | — | — | — | — |
@@ -515,7 +516,7 @@ Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 285, spec-ci
 | vrm | vrm_ab.py | UNCITED | — | — | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS | RESULTS×1 | — | — |
-| wsl | wsl.sh | results-cited | RESULTS, specs | RESULTS×10, specs×22 | — | 5 |
+| wsl | wsl.sh | results-cited | RESULTS, specs | RESULTS×10, specs×23 | — | 5 |
 | xterm | xterm_probe.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 |
 | xtermdiet1 | xtermdiet1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | z1 | z1_gate.sh | UNCITED | — | — | — | — |
@@ -610,7 +611,7 @@ Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 285, spec-ci
 | bench | bench_zx_r5.py | library | RESULTS | RESULTS×1 | 2 | 1 |
 | bench | bench_zx_r6.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | bench | bench_zx_r7.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| book | book.py | library | RESULTS, specs | RESULTS×5, specs×4 | 1 | — |
+| book | book.py | library | RESULTS, specs | RESULTS×4, specs×4 | 1 | — |
 | build | build_gen7_diet.py | UNCITED | — | — | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs | specs×8 | — | — |
 | cite | cite_lookup.py | UNCITED | — | — | — | — |
