@@ -8367,3 +8367,58 @@ honest status column).
   Attribution: Artin (loop vision + perfect-score prediction),
   GPT (factorial + REPLAY control shaping), house (fences,
   kin-mapping, counter-prior).
+
+  AMENDED IN PLACE (2026-08-22, Artin + GPT review, pre-work):
+  (i) MATHWORLD CONTRACT LAYER banked above the experiment: the
+  environment is a learner-independent closed-loop contract —
+  declarative actions, deterministic causal ordering, atomic
+  transition admission/rollback, observable receipts,
+  simulator/execution equivalence, logical time. MINIMAL VIABLE
+  CONTRACT (adopted): transition function + admission rule + one
+  transition receipt row, with canonical logical (episode_id,
+  step_id) and state hashes from rung 0 so causal ordering is
+  intrinsic to receipts. No CL-API-complete surface before
+  /desk. The verified-AND-distinct law becomes a CONTRACT
+  property (identity rewrites/trivial cycles rejected at
+  admission), checked once, not per experiment. MATH-CYBER-0 is
+  then ONE experiment implemented against the contract.
+  (ii) ONLINE-v-REPLAY CORRECTION (GPT, house-verified): the
+  original "ONLINE > REPLAY isolates causal feedback on the same
+  bytes" is NOT generally true — a deterministic learner
+  replaying the exact tuples, order, and immediate
+  per-transition updates from the same initial weights
+  reproduces ONLINE's update trajectory; that arm is a
+  RECONSTRUCTION/QUALIFICATION TWIN, not a treatment (fenced by
+  the mps run-level nondeterminism law: reproduction is
+  trajectory-class on Mac, bit-class only on deterministic
+  substrates). Superseding CONTROL LADDER, banked: ACTIVE-ONLINE
+  (act -> transition -> immediate update); ORDERED-REPLAY (exact
+  tuples/order/immediate updates — reconstruction control);
+  DELAYED-REPLAY (same tuples/order, updates delayed/chunked —
+  isolates within-trajectory adaptation timing); SHUFFLED-REPLAY
+  (same experience multiset, chronology removed — order/
+  curriculum sensitivity); and separately ADAPTIVE-DIET v
+  FIXED-DIET generated streams scored by training fresh
+  identical offline learners (value of loop-discovered data).
+  Frame: each arm CUTS AN EDGE in X_t = (s_t, theta_t, C_t) —
+  replay cuts theta_t -> future world; delayed replay also cuts
+  feedback_t -> theta_{t+1}; fixed diet cuts learner/controller
+  -> next experience distribution. The primary science question
+  becomes: WHICH FEEDBACK EDGE BUYS LEARNING? Artin's
+  perfect-score prediction stands as registered on ACTIVE-ONLINE;
+  the house counter-prior transfers to the ladder (curriculum
+  edge carries most of it).
+  (iii) SECOND NEUROAI ANCHOR: Patel et al., "A Computational
+  Perspective on NeuroAI and Synthetic Biological Intelligence"
+  (arXiv:2509.23896) — SOFTWARE NeuroAI only; organizes
+  neuro-symbolic reasoning, open-v-closed-loop learning,
+  RL/active inference, feedback-driven adaptation, homeostatic
+  regulation, stability/plasticity + experience replay. STANDING
+  THREAD FENCE, adopted verbatim: steal computational invariants
+  ONLY when they map to a measured learning problem — no spikes,
+  dendrites, FEP, organoids; no generic biomimicry. Sharpened
+  architecture: MathWorld (exact symbolic transition contract) /
+  MathNative (learned policy + optional next-state head) /
+  Controller (sensors over mastery/surprise/update-absorption
+  eta*|g|/ulp(w); actuators over diet/LR/difficulty/replay/
+  horizon). Cite via /cite when a THEORY row lands.
