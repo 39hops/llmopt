@@ -41741,3 +41741,91 @@ PARKED with revival condition: the 40/40 PERFECT adjudication
 revives when a reachability-certificate run books (overnight
 class, memoized dedup search on the 5 uncertified episodes).
 
+## AMENDMENT MATH-CYBER-1-DESK-0-INTERFACE: full L4-7 interface census — pair-fit FAILS for 38% of encodable scoring sequences (T2 corrected: K prices compute, not context), unencodability is 110/725 with a THIRD class (fresnelc), conservative-fallback model control is 16/101 decisions, and the PERFECT bar stands LITERAL (T4 corrected: reachability is interpretation evidence, never a prerequisite) (2026-08-22, Mac)
+
+Amends OBSERVATION MATH-CYBER-1-DESK-0 (same day), on outside
+review (GPT, relayed by Artin; each point house-verified by a new
+measured census). Instrument: scratch/mathworld1_census.py — a
+cold re-walk of all 40 frozen rung-0 episodes that re-enumerates
+every legal set and ASSERTS legal_action_set_hash equality
+row-by-row against the frozen logs/mathworld0/active.jsonl before
+counting (all 101 decisions bound; abort-on-mismatch, none fired).
+Receipt: logs/mathworld1/census.jsonl (725 action rows + summary
+meta; wall 153.8 s). Tokenizer = stock MathTokenizer, base ATOMS,
+strict mode. Scoring sequence measured is the registered
+static-probe prompt verbatim:
+"Current: {parent}\nHints: none\nStep: {child}\n".
+
+(a) T2 CORRECTED — the desk's "PASS" conflated two questions. K
+affects COMPUTE (batch width), not context; what must fit ctx=512
+is one (parent, child) scoring sequence, and the prior child-only
+figure (max 287 tokens) does not establish pair-fit. Measured
+pair sequences: median 256, p90 1663, max 3534 tokens; 235/615
+encodable sequences (38.2%) EXCEED ctx=512. A naive full-sequence
+scorer is out for over a third of actions; the prereg must pick a
+registered policy (truncation law, larger-ctx model, or a
+conditional form that fits) BEFORE any model loads.
+
+(b) ENCODABILITY, FULL L4-7 — 110/725 actions (15.2%) have an
+unencodable scoring sequence; the L4-5 figure (16.5% of children)
+is superseded by this full-grain number. Char classes: `I`
+(imaginary unit, 78), `S` (`Subs(`/`u_` substitution states, 20),
+and a THIRD class the L4-5 walk never saw: `f` = `fresnelc(`
+(Fresnel special-function antiderivatives, 12). Per review: no
+claim that adding `I`, `Subs(`, `u_` atoms yields full coverage —
+the special-function class is open-ended and any vocab-extension
+list must be derived from a full corpus census, not from the
+classes seen so far.
+
+(c) CONSERVATIVE-FALLBACK COVERAGE (new, decision-level): under
+the registered conservative rule — the model controls a decision
+only when the parent AND all K children encode, otherwise the
+WHOLE decision falls back to hce across all K (no per-action
+mixing) — the stock checkpoint controls 16/101 decisions and 15/40
+episodes fully. A stock-checkpoint static probe is therefore
+mostly an hce run wearing a model badge; model-controlled
+coverage books separately from solve counts, always.
+
+(d) T4 CORRECTED — the desk overreached. Artin's registered
+PERFECT bar is LITERAL: 40/40 observed ACTIVE-ONLINE solves. An
+observed 40/40 adjudicates it with no certificate needed;
+reachability evidence bears on INTERPRETATION (capability ceiling
+v budget ceiling) and on diagnosing a miss, never on whether the
+bar fired. "Solves >= greedy's 35 with zero regression" may book
+only as a separate SECONDARY carry bar, never as a replacement.
+Certificates may run in parallel; vocabulary fixed now: found
+path = REACHABLE certificate; UNREACHABLE only after exhaustive
+depth<=12 closure; timeout = UNCERTIFIED.
+
+(e) CAUSAL-PAIR CORRECTION (design, pre-prereg): ACTIVE-ONLINE v
+ORDERED-REPLAY with identical experience, order, and updates is a
+RECONSTRUCTION QUALIFICATION (the world-side replay bar's
+learner-side twin), not a causal contrast — nothing varies. The
+first causal timing cut is ACTIVE-ONLINE v DELAYED-REPLAY. And
+before that prereg the learning signal must be stated exactly:
+every enumerated action is already legal, so training on the
+chosen child is SELF-IMITATION unless the target is gated by an
+environmental outcome (e.g. solved-trajectory credit); the prereg
+names what signal updates weights and when, or it does not fire.
+
+(f) STATIC PROBE DESIGN (registered now, no model loaded): score
+S(c|s) = sum_t log p(c_t | exact Current/Hints/Step prompt,
+c_<t>) over the child tokens INCLUDING the terminating newline;
+argmax over encodable candidates; deterministic tie-break (score,
+action name, child key); no hce mixing inside a model-controlled
+decision; conservative whole-decision fallback per (c). Checkpoint
+selection requires pinning the exact file + sha256 + training
+lineage and auditing the 40 roots against its training diet
+(contamination census) BEFORE any score is read.
+
+FENCES. Census numbers are scoped to the frozen rung-0
+trajectories (the legal sets actually visited by greedy-hce);
+a different policy visits different states, so coverage numbers
+are trajectory-conditional. Token counts include the scaffold
+atoms of the quoted prompt and nothing else. The exporter for the
+axiom interchange corpus is BLOCKED at write time: the WSL box is
+unreachable (no route to host), so axiom's finalized interchange
+spec (their dd70ae0/365e87a/9d4933c) has not been read house-side;
+the exporter and its relay wait on the box, and nothing in this
+amendment depends on that spec.
+

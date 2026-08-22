@@ -2624,6 +2624,12 @@ MATH-CYBER-0 rung 0, cold-process replay qualification (GPT post-booking fence):
 
 - `main()`
 
+### scratch/mathworld1_census.py
+MATH-CYBER-1 interface census (AMENDMENT MATH-CYBER-1-DESK-0 -INTERFACE): full L4-7 pass over every legal action recorded in the frozen rung-0 ACTIVE receipts. For each of the 101 decisions the walk re-enumerates the legal set (asserting legal_action_set_hash equality row-by-row against logs/mathworld0/active.jsonl — a binding check, abort on mismatch) and, for every (parent, child) action, measures under the stock MathTokenizer (base ATOMS vocab, strict mode):
+
+- `sha(t: str) -> str`
+- `main()`
+
 ### scratch/matryoshka_r1.py
 Matryoshka rung 1 (pre-reg 2026-07-28 night): joint loss CE(W) + CE(STE P_C8(W)) — one crystal whose OWN circulant projection must also work. 1 warm epoch from wfloor d256 on MPS. Implementation: parametrize gate weights with a toggleable STE projection (flag off -> raw W; flag on -> W + (P(W)-W) .detach(), i.e. forward uses P(W), gradient flows to W). Gates BOTH tiers at the end; saves the single weight tensor.
 

@@ -108,9 +108,15 @@
         },
         {
             "pattern": "same-sized write|expert 71's output displacement direction",
-            "reason": "B43/B46 matched displaced-SLOT COUNT only; B43 removes the rank-0 expert (359/360) while B46 removes ranks 2-7 — removed router mass and |delta| unmeasured. delta_43 is the NET post-MoE rerouting delta (deleted + entrant + renormalization terms), not one expert's output direction.",
+            "reason": "B43/B46 matched displaced-SLOT COUNT only; B43 removes the rank-0 expert (359/360) while B46 removes ranks 2-7 \u2014 removed router mass and |delta| unmeasured. delta_43 is the NET post-MoE rerouting delta (deleted + entrant + renormalization terms), not one expert's output direction.",
             "superseded_by": "2026-08-22-amendment-ex6-b43-identity-0-scope",
             "scope": "b43|block[- ]?43|expert 71|jspace|j[- ]space"
+        },
+        {
+            "pattern": "PERFECT (bar|prediction) is ill-posed|16\\.5% of (L4-5 )?child states",
+            "reason": "T4 corrected: the PERFECT bar is LITERAL (40/40 observed ACTIVE-ONLINE solves); reachability is interpretation/ceiling evidence, never a prerequisite. Encodability full-grain figure is 110/725 actions (15.2%) with a third char class (fresnelc); the L4-5 16.5% child figure is superseded.",
+            "superseded_by": "2026-08-22-amendment-math-cyber-1-desk-0",
+            "scope": "math[- ]?cyber|mathworld|perfect"
         }
     ]
 }

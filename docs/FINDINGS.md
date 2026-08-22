@@ -2762,14 +2762,18 @@ regime tag on every bullet is the fence.
   Rung 1 desk: the MATHWORLD choice structure is real (all 101
   recorded decisions carry n_legal>=2, K median 7 max 22) and a
   choose-among-K frozen-checkpoint policy eval is Mac-minutes
-  (725 child scorings, child text max 287 tokens, ctx 512), but
-  the 40/40 PERFECT adjudication is ill-posed today (reachability
-  within 12 decisions uncertified for the 5 greedy-failed
-  episodes; the 30s bounded search expanded only 5-20 nodes —
-  successors() wall, inconclusive both directions), and 41/248
-  (16.5%, floor estimate, L4-5 walk) of child states are
-  unencodable by the stock MathNative vocabulary (imaginary unit
-  `I`, `Subs(`/`u_`): a stock checkpoint needs a registered
-  unscorable-action fallback, full coverage needs a
-  vocab-extended birth.
-  ([OBSERVATION MATH-CYBER-1-DESK-0](RESULTS.md#L41654 "id:2026-08-22-observation-math-cyber-1-desk-0").)
+  (725 child scorings); reachability within 12 decisions is
+  UNCERTIFIED for the 5 greedy-failed episodes (30s bounded
+  search expanded only 5-20 nodes — successors() wall,
+  inconclusive both directions). CORRECTED by the -INTERFACE
+  amendment (same day): the PERFECT bar stands LITERAL (40/40
+  observed ACTIVE-ONLINE solves; reachability is interpretation
+  evidence, never a prerequisite), and the full-grain
+  encodability figure is 110/725 actions (15.2%) with a THIRD
+  char class (`fresnelc(`) beside `I` and `Subs(`/`u_` — no
+  closure claim for any fixed atom list. Pair-fit also fails:
+  38.2% of encodable scoring sequences exceed ctx=512 (K prices
+  compute, not context); conservative fallback leaves the stock
+  checkpoint controlling 16/101 decisions.
+  ([OBSERVATION MATH-CYBER-1-DESK-0](RESULTS.md#L41654 "id:2026-08-22-observation-math-cyber-1-desk-0"),
+  [AMENDMENT MATH-CYBER-1-DESK-0-INTERFACE](RESULTS.md#L41744 "id:2026-08-22-amendment-math-cyber-1-desk-0").)
