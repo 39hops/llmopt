@@ -1,4 +1,10 @@
-# Handoff 2026-08-22-0: the block-43 night — the crest's token1 component resolves to ONE expert's top-1 slot at ONE locus, and three theory banks land around it
+# Handoff 2026-08-22-0: the block-43 night — the crest's token1 component resolves to a SINGLE-EXPERT DELETION at one locus, and three theory banks land around it
+
+(Heading + queue corrected post-handoff per AMENDMENT
+EX6-B43-IDENTITY-0-SCOPE: canonical endpoint = single-expert-
+DELETION intervention at z1 x B43 — E71 invariant outside-top8
+360/360, argsort top-1 359/360; function NOT isolated, entrant +
+kept-seven renormalization co-move with the deletion.)
 
 Seat: Fable 5 on the Mac, Artin home post-macOS-26.6.2 update,
 GPT reviews relayed continuously and every point house-verified
