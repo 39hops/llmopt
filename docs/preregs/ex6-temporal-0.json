@@ -140,26 +140,60 @@
    "population": "z2_v_z3:3seeds",
    "aggregation": "pooled_sum",
    "direction": "above",
-   "value": 0,
+   "value": 7,
    "arms": [
     "z2",
     "z3",
     "none"
    ],
-   "description": "diagnostic ordering read: Delta_z2 - Delta_z3 >= 0 (sensitivity non-increasing with position). An excursion is a result, never an alarm."
+   "description": "RESOLVED decay order at the house resolution floor: Delta_z2 - Delta_z3 >= +7. The exact gap books either way; |gap| < 7 is a tie (no ordering direction claimed — a +1 gap is not a prior win), gap <= -7 is a RESOLVED REVERSAL. An excursion is a result, never an alarm."
+  },
+  {
+   "id": 6,
+   "name": "DOSE-VALIDITY",
+   "gate_class": "sanity",
+   "metric": "max_zero_dose_problems",
+   "population": "z2z3_perprob:3seeds",
+   "aggregation": "pooled_count",
+   "direction": "below",
+   "value": 36,
+   "arms": [
+    "z2",
+    "z3"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "6:zero_dose_z2",
+     "direction": "below",
+     "value": 36,
+     "metric": "zero_dose_problems",
+     "population": "z2_perprob:3seeds",
+     "aggregation": "pooled_count"
+    },
+    {
+     "measurement": "6:zero_dose_z3",
+     "direction": "below",
+     "value": 36,
+     "metric": "zero_dose_problems",
+     "population": "z3_perprob:3seeds",
+     "aggregation": "pooled_count"
+    }
+   ],
+   "description": "dose-validity sanity: zero-dose problems (perprob rows without a masked call) <= 36/360 pooled (10%) for BOTH Z2 and Z3. Gates the refutation predicate via precedence — a dose-confounded delta must not be able to refute the prior while the same confound books bars 3/4/5 UNRESOLVED. The per-bar contrast admissibility guards stay in force unchanged."
   }
  ],
- "refuted_if": "The house prior (z1 is a genuinely special launch-step locus) is REFUTED if, with the instrument qualified (bars 1 and 2), Delta_z2 >= +14 pooled — the +21 then reads as the first point on an early-token sensitivity curve, not a privileged launch step. Judged only under bars 1 and 2.",
+ "refuted_if": "The house prior (z1 is a genuinely special launch-step locus) is REFUTED if, with the instrument qualified AND the dose valid (bars 1, 2, and 6), max(Delta_z2, Delta_z3) >= +14 pooled — ANY later single-token position worth the +14 class refutes z1-specialness, whatever the position ordering (a large z3 with a small z2 refutes it too). Judged only under bars 1, 2, and 6; a dose-confounded delta cannot refute. Bar 3 (Delta_z2 >= +14, signs 3/3) stays the specifically named slow-decay-curve alternative.",
  "refuted_if_predicate": {
-  "measurement": "refutation:delta_z2",
+  "measurement": "refutation:max_delta_z2_z3",
   "direction": "above",
   "value": 14
  },
  "refutation_precedence": {
   "suppressed_unless_bars_fire": [
    1,
-   2
+   2,
+   6
   ]
  },
- "registered_prior": "House, on the record, MEDIUM confidence: z1 IS special — its healed routing output is written into the KV/attention stream that every later position consumes, and EX6-LOC's D1 potency (111/360) plus the joint-only rescue structure localize the leverage at launch; predict bar 4 FIRES (Delta_z2 and Delta_z3 both <= +10, likely single digits), bar 3 does not, bar 5 holds (z2 >= z3). The named live alternative, on the record: an early-token sensitivity curve decaying slowly from +21 — bar 3 fires, bar 4 does not — which would demote the launch-step story to position-generic early-decode fragility and make a dose/position curve (residue 4) the next rung."
+ "registered_prior": "House, on the record, MEDIUM confidence: z1 IS special — its resulting representation is available to later attention and occurs maximally early, so it can influence the remaining trajectory (KV mediation itself remains HYPOTHESIS per EX6-LOC-0), and EX6-LOC's D1 potency (111/360) plus the joint-only rescue structure localize the leverage at launch; predict bar 4 FIRES (Delta_z2 and Delta_z3 both <= +10, likely single digits), bar 3 does not, bar 5 fires (resolved decay order at the +7 floor). The named live alternative, on the record: an early-token sensitivity curve decaying slowly from +21 — bar 3 fires, bar 4 does not — which would demote the launch-step story to position-generic early-decode fragility and make a dose/position curve (residue 4) the next rung."
 }

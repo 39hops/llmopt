@@ -87,7 +87,10 @@ def main(run_dir):
         ms["5"] = {"value": d2 - d3, "metric": "delta_gap",
                    "population": "z2_v_z3:3seeds",
                    "aggregation": "pooled_sum"}
-        ms["refutation:delta_z2"] = ms["3"]
+        ms["refutation:max_delta_z2_z3"] = {
+            "value": max(d2, d3), "metric": "max_pooled_delta",
+            "population": "z2z3_v_none:3seeds",
+            "aggregation": "pooled_sum"}
         # DOSE CENSUS (AMENDMENT -DOSE): a perprob row without the
         # 'recall' key had zero masked calls on that problem — the
         # count-k call never happened (completion too short). The
@@ -100,6 +103,18 @@ def main(run_dir):
             if arm in zero_dose and "recall" not in r:
                 zero_dose[arm] += 1
         obs["dose_census"] = zero_dose
+        ms["6"] = {"value": max(zero_dose.values()),
+                   "metric": "max_zero_dose_problems",
+                   "population": "z2z3_perprob:3seeds",
+                   "aggregation": "pooled_count"}
+        ms["6:zero_dose_z2"] = {"value": zero_dose["Z2"],
+                                "metric": "zero_dose_problems",
+                                "population": "z2_perprob:3seeds",
+                                "aggregation": "pooled_count"}
+        ms["6:zero_dose_z3"] = {"value": zero_dose["Z3"],
+                                "metric": "zero_dose_problems",
+                                "population": "z3_perprob:3seeds",
+                                "aggregation": "pooled_count"}
         obs["contrasts"] = {}
         for bar, arms_involved in (("3", ("Z2",)), ("4", ("Z2", "Z3")),
                                    ("5", ("Z2", "Z3"))):

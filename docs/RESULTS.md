@@ -40100,3 +40100,50 @@ printed. Files: scratch/ex6temporal.py,
 docs/preregs/ex6-temporal-0.json,
 scripts/obs_from_receipt_ex6temporal.py.
 
+## AMENDMENT EX6-TEMPORAL-0-REFUTATION: dose-validity sanity bar gates REFUTED-IF, refutation broadened to max(Dz2,Dz3), bar 5 raised to the resolution floor (2026-08-21, mac)
+
+Amends PRE-REG EX6-TEMPORAL-0, BEFORE LAUNCH (Artin adjudication
+review). Pre-read discipline: no real cell has fired; nothing
+treatment-side exists beyond unread smoke_* paths. Adjudication
+plumbing only — no driver change.
+
+1. DOSE GATES THE REFUTATION. -DOSE gated bars 3/4/5 by contrast
+admissibility but NOT the refutation predicate, which was
+suppressed only on bars 1+2 — a dose-invalid Z2 could book BAR 3
+UNRESOLVED while the same confounded Delta_z2 >= 14 still
+formally refuted the prior. New BAR 6 DOSE-VALIDITY (sanity):
+max zero-dose <= 36/360 pooled, conjuncts zero_dose_Z2 <= 36 AND
+zero_dose_Z3 <= 36; refutation_precedence now
+suppressed_unless_bars_fire [1, 2, 6]. The per-bar contrast
+guards stay in force unchanged.
+
+2. REFUTATION BROADENED. refuted_if predicate moves from
+Delta_z2 >= +14 to max(Delta_z2, Delta_z3) >= +14: ANY later
+single-token position worth the +14 class refutes z1-specialness
+— a large z3 with a small z2 refutes it too. BAR 3 stays
+Delta_z2 >= +14 with signs 3/3 as the specifically named
+slow-decay-curve alternative.
+
+3. BAR 5 AT THE RESOLUTION FLOOR. The ordering read claimed
+direction at a 0-solve threshold against the ~7-solve resolution
+law. Now: resolved decay order = Delta_z2 - Delta_z3 >= +7; the
+exact gap books either way; |gap| < 7 is a tie (a +1 ordering is
+not a prior win); gap <= -7 is a resolved reversal.
+
+4. WORDING (registered prior): "healed routing output is written
+into the KV/attention stream that every later position consumes"
+replaced with "resulting representation is available to later
+attention and occurs maximally early, so it can influence the
+remaining trajectory" — KV mediation remains HYPOTHESIS per
+EX6-LOC-0's mediator scope.
+
+Adapter emits the bar-6 measurements and
+refutation:max_delta_z2_z3. Synthetic adjudicator fixtures
+re-run, all three registered cases exact: (A) dose-invalid Z2
+(46/360) with Delta_z2 = +18 books bars 3/4/5 UNRESOLVED, bar 6
+NO-FIRE, REFUTED-IF UNADJUDICATED (precedence: bar 6) — a
+confounded delta cannot refute; (B) dose-valid Delta_z3 = +15
+with Delta_z2 = +3 books REFUTED with bar 3 NO-FIRE; (C) gap +1
+books bar 5 NO-FIRE. Files: docs/preregs/ex6-temporal-0.json,
+scripts/obs_from_receipt_ex6temporal.py.
+
