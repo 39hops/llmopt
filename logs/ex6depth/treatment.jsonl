@@ -1,0 +1,10 @@
+{"arm": "dep_Z1_EARLY", "seed": 7001, "n_eval": 120, "gate_ok": 63, "gate_per_level": {"1": 25, "2": 20, "3": 18}, "masked_recall_named80": 0.9688, "gate_s": 253.8}
+{"arm": "dep_Z1_MID", "seed": 7001, "n_eval": 120, "gate_ok": 66, "gate_per_level": {"1": 25, "2": 22, "3": 19}, "masked_recall_named80": 0.9884, "gate_s": 251.1}
+{"arm": "dep_Z1_LATE", "seed": 7001, "n_eval": 120, "gate_ok": 70, "gate_per_level": {"1": 28, "2": 21, "3": 21}, "masked_recall_named80": 0.985, "gate_s": 249.6}
+{"arm": "dep_Z1_EARLY", "seed": 8002, "n_eval": 120, "gate_ok": 60, "gate_per_level": {"1": 23, "2": 20, "3": 17}, "masked_recall_named80": 0.9688, "gate_s": 269.3}
+{"arm": "dep_Z1_MID", "seed": 8002, "n_eval": 120, "gate_ok": 62, "gate_per_level": {"1": 24, "2": 22, "3": 16}, "masked_recall_named80": 0.9889, "gate_s": 267.1}
+{"arm": "dep_Z1_LATE", "seed": 8002, "n_eval": 120, "gate_ok": 69, "gate_per_level": {"1": 29, "2": 24, "3": 16}, "masked_recall_named80": 0.9851, "gate_s": 270.7}
+{"arm": "dep_Z1_EARLY", "seed": 9003, "n_eval": 120, "gate_ok": 65, "gate_per_level": {"1": 25, "2": 20, "3": 20}, "masked_recall_named80": 0.9688, "gate_s": 269.7}
+{"arm": "dep_Z1_MID", "seed": 9003, "n_eval": 120, "gate_ok": 68, "gate_per_level": {"1": 26, "2": 23, "3": 19}, "masked_recall_named80": 0.9882, "gate_s": 263.2}
+{"arm": "dep_Z1_LATE", "seed": 9003, "n_eval": 120, "gate_ok": 71, "gate_per_level": {"1": 26, "2": 25, "3": 20}, "masked_recall_named80": 0.9852, "gate_s": 266.9}
+{"meta": {"note": "EX6-DEPTH-0 run meta", "start": {"start_commit": "3ceec933", "start_status_porcelain": "", "interpreter": "/Users/artin/code/llmopt/.venv/bin/python", "file_sha256": {"scratch/ex6depth.py": "7f458153bae98521b7f42c80293837c5daec95fdce0efb247d6e732653ab85fa", "scratch/moe_gt1_arm2.py": "916b616af8e2f44daeb01dcd9ca4e7f60b4167d8c485b69158740b16c5dedd9f", "checkpoints/ex3_del_invp.json": "72bf31eb44e60f3877c7de496e0987ce678d3561fe38922ff9a5cad978faef7e"}}, "completion_commit": "3ceec933"}}

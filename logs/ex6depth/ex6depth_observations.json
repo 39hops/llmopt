@@ -1,0 +1,89 @@
+{
+ "measurement_valid": true,
+ "arms": {
+  "none": {
+   "admissible": true
+  },
+  "z1_all": {
+   "admissible": true
+  },
+  "z1_early": {
+   "admissible": true
+  },
+  "z1_mid": {
+   "admissible": true
+  },
+  "z1_late": {
+   "admissible": true
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 6,
+   "metric": "n_exact_reproductions",
+   "population": "anchors:none+z1all:3seeds",
+   "aggregation": "count_of_6"
+  },
+  "2": {
+   "value": 240,
+   "metric": "n_module_arm_cells_ok",
+   "population": "seed7001:problem2:all5arms",
+   "aggregation": "count_of_240"
+  },
+  "3": {
+   "value": 19,
+   "metric": "max_pooled_delta",
+   "population": "bands_v_none:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "4": {
+   "value": 19,
+   "metric": "max_pooled_delta",
+   "population": "bands_v_none:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "4:delta_early": {
+   "value": -3,
+   "metric": "pooled_delta",
+   "population": "z1early_v_none:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "4:delta_mid": {
+   "value": 5,
+   "metric": "pooled_delta",
+   "population": "z1mid_v_none:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "4:delta_late": {
+   "value": 19,
+   "metric": "pooled_delta",
+   "population": "z1late_v_none:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "5": {
+   "value": 0,
+   "metric": "abs_additivity_residual",
+   "population": "all_v_bandsum:3seeds",
+   "aggregation": "pooled_sum"
+  },
+  "refutation:max_band_delta": {
+   "value": 19,
+   "metric": "max_pooled_delta",
+   "population": "bands_v_none:3seeds",
+   "aggregation": "pooled_sum"
+  }
+ },
+ "alignment_read": {
+  "demand_excess_by_band": {
+   "0": 0.025629340277777777,
+   "1": 0.0020724826388888885,
+   "2": 0.005045572916666666
+  },
+  "band_deltas": {
+   "early": -3,
+   "mid": 5,
+   "late": 19
+  },
+  "delta_all": 21
+ }
+}

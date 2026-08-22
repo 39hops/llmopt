@@ -40386,3 +40386,113 @@ Fences: Mac-only, single 4-bit instrument, greedy. Files:
 scratch/ex6depth.py, docs/preregs/ex6-depth-0.json,
 scripts/obs_from_receipt_ex6depth.py.
 
+## VERDICT EX6-DEPTH-0: z1 healing is depth-LOCALIZED to the LATE band — Delta early/mid/late = -3/+5/+19, additivity residual 0, house DISTRIBUTED prior REFUTED; registered color read: demand-excess band (early) misaligns with the causal band (2026-08-21, mac)
+
+Adjudicated by the registered pipeline
+(scripts/obs_from_receipt_ex6depth.py -> scripts/adjudicate.py,
+exit 0), quoted verbatim:
+
+BAR 1 QUALIFICATION: FIRE
+BAR 2 BAND-CENSUS: FIRE
+BAR 3 LOCALIZED: FIRE
+BAR 4 DISTRIBUTED: NO-FIRE
+BAR 5 ADDITIVITY: NO-FIRE
+REFUTED-IF: REFUTED
+
+QUALIFICATION: all six anchors CELL-EXACT (NONE 64/61/66, Z1_ALL
+74/66/72, reproducing the EX6-TEMPORAL-0 receipt); band census
+240/240 cells (5 arms x 48 modules — temporal law with decode
+witnessed AND masked flags exactly the registered band at z1,
+nowhere else, every arm).
+
+TREATMENT (pooled over seeds 7001/8002/9003, 120/seed on the
+named-80 keepset gate, v NONE 191; per-seed dicts are the
+checksum):
+  Z1_EARLY 63/60/65 = 188: Delta = -3 (inside the ~7 floor)
+  Z1_MID   66/62/68 = 196: Delta = +5 (inside the ~7 floor)
+  Z1_LATE  70/69/71 = 210: Delta = +19 — signs 3/3 (+6/+8/+5),
+  90% of Z1_ALL's +21, one 16-layer band (MoE blocks 32-47).
+BAR 3 fires (19 >= 14); BAR 4 does not; BAR 5's additivity
+residual is 0 (|21 - (-3 + 5 + 19)| = 0) — the bands compose
+additively, no cross-band conjunction (the LOC-style
+interaction is ABSENT along depth).
+
+PRIOR ADJUDICATION — REFUTED as registered: the DISTRIBUTED
+prior ("every band <= +10, because z1's representation at every
+depth is written into that layer's KV entry [...] and consumed
+at the matching depth") is wrong; the
+registered weak lean ("Z1_LATE reads largest of the three") was
+right on ordering. Family record on direction calls extends to
+1-for-5.
+
+ALIGNMENT READ (registered pre-fire; CORRELATIONAL COLOR, no
+bar, never causal on its own): MISALIGNED. Demand-excess band =
+EARLY (z1's excess outside-keepset demand by band: early 2.56%,
+mid 0.21%, late 0.50%) while the causal band is LATE. Both
+registered rank orderings, stated because they are NOT simple
+reversals: demand early > late > mid; causal late > mid > early.
+Where the router most over-demands the carrier family at z1 is
+not where healing pays; under the -SCOPE clue's frame this
+color favors reading (a), intrinsic position-x-depth
+sensitivity, over (b), family-demand-shaped leverage.
+
+DISPLACEMENT DISCLOSURE (per AMENDMENT EX6-TEMPORAL-0-SCOPE,
+per-band masked_recall, per seed): EARLY 0.9688/0.9688/0.9688
+(3.12% excluded mass), MID 0.9884/0.9889/0.9882 (mean 1.15%),
+LATE 0.9850/0.9851/0.9852 (mean 1.49%). Displacement does not
+order the band effect: EARLY forces ~2.1x more native
+replacements than LATE and books -3; MID has LESS excluded mass
+than LATE (1.15% v 1.49%) and books +5 v +19.
+
+PER-LEVEL SPLIT (registered secondary read; pooled dicts): L1
+NONE 74 / ALL 77 / EARLY 73 / MID 75 / LATE 83; L2
+64/70/60/67/70; L3 53/65/55/54/57. Registered color, unbooked
+mechanism: LATE alone is L1-heaviest (dL = +9/+6/+4) while
+Z1_ALL is L3-heaviest (+3/+6/+12) — the full-depth mask's
+hard-problem gains are not reproduced by the late band alone
+despite the matching pooled totals.
+RESCUE/BREAK (registered secondary read, paired v NONE): ALL 31
+rescues v 10 breaks; EARLY 8 v 11; MID 7 v 2; LATE 20 rescues v
+1 break — the late band is the near-pure-rescue arm.
+
+Reading (bounded): z1-routing healing pays where the launch
+token's LAST 16 MoE blocks route — the depth region that writes
+z1's final-stack representations. Combined with TEMPORAL-0
+(position-specific) the crest's token1 component now localizes
+to one temporal position x 16 late layers. WHY the late-band
+representation is the payload (KV consumed by later positions v
+direct shaping of the emitted trajectory) remains HYPOTHESIS —
+this rung establishes the depth locus of the intervention
+effect, not the mediator.
+
+FENCES carried: Mac-only, single 4-bit instrument (identity by
+the 6/6 anchors + 240/240 census), greedy, band arms are one
+temporal-call position x 16 layers (one third of Z1_ALL's
+temporal-call dose; realized displacement disclosed above, not
+matched); Delta_early and Delta_mid are inside the resolution
+floor and carry no individual direction claims; the alignment
+read is correlational color, never causal on its own (its bank's
+break stands). Receipts: logs/ex6depth/{census.json,
+demand.json, qual.jsonl, treatment.jsonl, treatment_stdout.log,
+ex6depth_observations.json, qual_perprob.jsonl,
+treatment_perprob.jsonl} force-added with this booking (six
+small text receipts plus the two per-problem streams at 80KB and
+132KB — the machine prereg declares the streams, tracked per the
+-RECEIPTS precedent). Provenance: start block sha-pins
+driver/gate/keepset; start_commit == completion_commit 3ceec933,
+clean worktree at run time.
+Receipt-audit items, adopted as disclosures (no blocker):
+qual.jsonl carries no provenance meta on the PASS path (the meta
+row lands in treatment.jsonl; census.json and demand.json each
+carry the identical start block) — future drivers write the qual
+meta unconditionally; the model weights are pinned only
+transitively via the sha-pinned moe_gt1_arm2.py literal
+(mlx-community/Qwen3-30B-A3B-4bit) — future drivers pass
+artifacts= (the standing TEMPORAL-0 disclosure, still unpaid);
+EARLY's recall 0.9688 exact across seeds is problem-independent
+by construction (the demand census shows early-band z1
+outside-counts are per-token constant, exactly 1 of 8 slots at
+one block), corroborated by two independent code paths
+(demand.json predicts all measured band recalls). Files: scratch/ex6depth.py,
+scripts/obs_from_receipt_ex6depth.py.
+
