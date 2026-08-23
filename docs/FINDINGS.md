@@ -2940,3 +2940,23 @@ regime tag on every bullet is the fence.
   subset ties 29/33 v 29/33. One dose point; ONLINE-v-REPLAY
   remains untested.
   ([VERDICT MATH-CYBER-1-ACTIVE-EPISODIC-0](RESULTS.md#L42884 "id:2026-08-23-verdict-math-cyber-1-active-episodic").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] One-deviation
+  repairability EXISTS on the theta_0
+  failure frontier but is neither universal nor loop-implied:
+  of the six FROZEN failed roots, 2 are ONE-DEV-REPAIRABLE
+  (L7-s9303 richly — 17/84 rescuing alternatives, min rank 2,
+  rank-2 rescues at 4 of 12 sites, giving the single-fork
+  top1-v-top2 COUNTERFACTUAL-CREDIT design a counted
+  outcome-differing target; L6-s9300 barely — 1/228 at rank 6,
+  an already-solved i_heurisch child theta_0 ranked last), 1 is
+  cleanly ONE-DEV-NOT-REPAIRABLE despite being a 2-state cycle
+  (L4-s9401, 147/147 exhausted, 0 censored), and 3 book
+  UNDECIDED (82/172 and 9/58 wall-censored; one
+  WORLD-NONCOMPARABLE legal-set mismatch at step 8 — the
+  _timeboxed load-dependence fence firing). Desk census, zero
+  training, frozen theta_0 continuations, reconstruction
+  world-bound 62 states with 53/53 argmax reproduction; bounds
+  ONLY the one-deviation + frozen-continuation repair class on
+  these six roots.
+  ([VERDICT MATH-CYBER-1-FRONTIER-DESK-0](RESULTS.md#L43136 "id:2026-08-23-verdict-math-cyber-1-frontier-desk").)

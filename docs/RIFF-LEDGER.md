@@ -8855,3 +8855,15 @@ honest status column).
   STATE (score full successor) v PROGRAM (score compact
   deterministic action program, exact E(s,a)==s'
   qualification).
+  MEASURED (2026-08-23, VERDICT MATH-CYBER-1-FRONTIER-DESK-0,
+  updates the FRONTIER-REPAIRABILITY bank above): the desk ran
+  on the six FROZEN theta_0 failures — 2 ONE-DEV-REPAIRABLE
+  (L7-s9303: 17/84 rescues, min rank 2, rank-2 rescues at 4/12
+  sites; L6-s9300: 1/228 at rank 6), 1 ONE-DEV-NOT-REPAIRABLE
+  (L4-s9401, itself a 2-state cycle — loop structure alone does
+  not imply a one-deviation escape), 3 UNDECIDED (censoring/
+  world mismatch). COUNTERFACTUAL-CREDIT's single-fork
+  top1-v-top2 best case is therefore NOT empty on this band: an
+  outcome-differing rank-2 fork is counted at L7-s9303 steps
+  0-3. Repairability priced; the treatment stays unproposed
+  without GO.

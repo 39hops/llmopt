@@ -43133,3 +43133,140 @@ identity is asserted per state, never assumed. No
 COUNTERFACTUAL-CREDIT treatment or prereg follows this desk
 without a fresh GO.
 
+## VERDICT MATH-CYBER-1-FRONTIER-DESK-0: repairable mass EXISTS — 2 of 6 failed roots are ONE-DEV-REPAIRABLE (L7-s9303 richly: 17/84 rescuing alternatives, min rank 2; L6-s9300 barely: 1/228, rank 6), 1 is cleanly ONE-DEV-NOT-REPAIRABLE (L4-s9401, 147/147 exhausted), 3 book UNDECIDED (2 wall-censored, 1 WORLD-NONCOMPARABLE at step 8) (2026-08-23, Mac)
+
+Adjudicates PRE-REG MATH-CYBER-1-FRONTIER-DESK-0 (4b2ae5af).
+One-shot, launch code_commit f60bece6, driver sha bc8926d1...
+(committed bytes == launched bytes; completion commit 05bf5f46,
+diff over the span docs-only, zero instrument files), smoke 8/8
+retained on smoke_ paths (smoke_frontier_desk_verdict.json:
+pass=true, 8 mechanism checks incl. tamper/mismatch-branch,
+structural-fork, memo-truncation, and live wall-censoring).
+Receipts: logs/mathworld1/frontier_desk.jsonl (689 fork + 6
+root + 1 meta rows) + frontier_desk_verdict.json; recorded
+trajectories read from the frozen logs/mathworld1/
+active_pair.jsonl (arm FROZEN). theta_0 52fd1aff... (sha
+derived in-receipt from the checkpoint bytes), device mps, 1444
+desk-world states materialized, zero training. No total-wall
+field is receipted; the per-fork charged continuation
+accounting totals 22,266 s across 689 forks, an OVERCOUNT of
+real wall because the 309 memo re-read rows repeat their
+first-computation charge.
+
+RECONSTRUCTION (binding, per prereg): 5 of 6 roots replayed
+with every recorded state_hash + legal_set_hash + recorded
+action bound — 54 bound decision states (12/12/9/12/9 per root
+v the recorded FROZEN step counts in active_pair.jsonl); the
+6th (L4-s9405) bound its first 8 recorded states (bound_sites 8
+in its root row) then hit a legal_set mismatch at step 8
+(regenerated dd7e9b32... v recorded a130dbd0..., n_legal 13
+both) and books WORLD-NONCOMPARABLE/UNDECIDED with ZERO forks,
+per the registered law — the measured _timeboxed legal-set
+load-dependence fence firing again, never silently substituted.
+62 bound states in total. Re-scored argmax agreement (REPORTED
+metadata, not a gate): 53/53 bound scored states reproduce the
+recorded top-1 choice. REGISTERED-FIELD DEVIATIONS DISCLOSED:
+(a) the registered per-fork "score deltas v the recorded
+rounded scores" were NOT persisted (argmax agreement is the
+retained reconstruction metadata); (b) per-fork "ctx events"
+are covered by the outcome field only (23 continuation rows
+terminate model_ctx_overflow); mid-continuation non-terminal
+ctx events do not exist under the overflow law (overflow always
+terminates).
+
+PER-ROOT (registered fields; fixed denominator 6):
+- L6-s9300 (ADAPT, budget_exhausted): ONE-DEV-REPAIRABLE.
+  12 bound states, 228/228 alternatives exhausted, 1 rescue
+  (0.44%): i_heurisch at step 0, theta_0 rank 6 of 6,
+  chosen-minus-forced margin 474.4 — the forced child is
+  ALREADY SOLVED (continuation depth 0). Rank-2 rescue: none.
+- L7-s9303 (ADAPT, budget_exhausted; enters a together/trigsimp
+  2-state cycle at step 1, per active_pair.jsonl):
+  ONE-DEV-REPAIRABLE, richly — 17/84 rescuing alternatives
+  (20.2%), rescues at steps 0-10, earliest step 0, min rank 2
+  (i_ansatz_exp, margin 6.42, continuation depth 8);
+  i_transcend_div (rank 3) rescues in ONE continuation decision
+  from either cycle state; RANK-2 RESCUES EXIST at 4 of its 12
+  sites (steps 0-3; from step 4 on the earliest rescuing rank
+  is 3). 1 fork censored.
+- L4-s9400 (HOLDOUT, wall_cap): UNDECIDED — 0 rescues observed
+  but 82 of 172 forks wall-censored (37 first-computation + 45
+  memo re-reads inheriting the same censored child keys; the
+  same expensive world that charged-wall-capped the original
+  episode); censoring is never converted to "not repairable".
+- L4-s9401 (HOLDOUT, budget_exhausted; enters a factor/expand
+  2-state cycle at step 4): ONE-DEV-NOT-REPAIRABLE, clean —
+  147/147 alternatives exhausted, 0 rescues, 0 censored.
+- L6-s9403 (HOLDOUT, model_ctx_overflow): UNDECIDED — 8 scored
+  + 1 structural site, 51 actionable + 7 STRUCTURAL-ONLY forks
+  (the single unscored ctx-overflow site at step 8, all 7
+  non-rescuing at horizon 3), 0 rescues either class, 9
+  censored (all first-computation).
+- L4-s9405 (HOLDOUT): WORLD-NONCOMPARABLE/UNDECIDED as above.
+  (Receipt note: its root row carries the reduced
+  classification/reason/bound_sites schema; the verdict-json
+  copy of the reason drops the "WORLD-NONCOMPARABLE:" prefix
+  that the jsonl row retains.)
+
+ADJUDICATION v REGISTERED PRIOR: ">=2 of 6 ONE-DEV-REPAIRABLE"
+FIRED (exactly 2). "Rank-2 rescues exist for at least one root"
+FIRED (L7-s9303). "Driven by the loop-class failures
+(L7-s9303, L4-s9400, L4-s9401)" is at most ONE-THIRD RIGHT:
+L7-s9303 (cycle) is the richest repairable root, but L4-s9401 —
+also a 2-state cycle — is the one CLEAN not-repairable root, so
+loop structure alone does not guarantee a one-deviation escape
+that frozen theta_0 converts; and L4-s9400, the third named
+loop root, is censored-UNDECIDED and does not test the clause.
+The "L6-s9403 actionable rescue less likely than structural"
+call is UNRESOLVABLE at 0 v 0 observed rescues under censoring.
+REFUTED-IF (0/6 repairable with 0 UNDECIDED) did not fire.
+
+WHAT THIS PRICES (registered purpose): the single-fork
+top1-v-top2 COUNTERFACTUAL-CREDIT design has a CONCRETE target
+on this band — at L7-s9303 steps 0-3 (4 of that root's 12
+decision sites) the rank-2 alternative solves within the
+frozen-continuation horizon where the chosen rank-1 path
+re-enters the 2-state cycle and exhausts budget, with the
+smallest chosen-v-forced margin in the rescue set (6.42 at
+step 0). An outcome-differing fork is counted, not
+hypothesized, at those 4 sites.
+
+DIAGNOSTIC COLOR (single instance, hypothesis-labelled): the
+L6-s9300 rescue is i_heurisch — an already-solved child
+(continuation depth 0) serialized as a dense closed form (256
+candidate tokens) — ranked LAST (6/6) by theta_0 at margin
+474.4. Whether successor length/predictability drives that rank
+is NOT measured here: at this site rank does not order with
+candidate length (a 310-token candidate ranks 5, a 188-token
+one ranks 2). The serialized-successor-score confound named in
+the TRANSITION-BASIS/ACTION-BASIS correction remains a
+HYPOTHESIS with this as one motivating instance; the registered
+length controls (MINLEN class) remain the test.
+
+FENCES. Single seed chain, single device (mps fp32), one-shot,
+six roots — per-root existence results, never rates that
+generalize beyond this band. UNDECIDED is a world-binding/
+timing-incompleteness class, not evidence of non-repairability.
+Wall instrument semantics (disclosed): per-continuation charged
+accounting (fresh paid set per continuation), cap 60 s checked
+BEFORE each decision — the registered one-decision overshoot
+admits charged values above 60 s on non-censored rows (77 rows,
+max 80.02 s observed); a state's first-materialization charge
+is recorded at its first materialization anywhere in the run,
+so a later root's continuation can be charged a duration
+measured under an earlier root (order-dependence within the one
+desk snapshot); censoring is a property of the forced CHILD KEY
+(memo re-reads inherit their first computation's timing), and
+all durations are load-sensitive under the idle-machine
+discipline. The scope fence of the prereg carries, extended
+from its registered null case to this desk's positive findings:
+this desk bounds ONLY the ONE-DEVIATION + frozen-theta_0-
+continuation repair class on these six roots; multi-deviation
+and learned-continuation repair remain OPEN, and no conclusion
+about counterfactual learning in general attaches. Memoized
+continuations are truncation re-reads of one deterministic
+computation, disclosed in the driver docstring; STRUCTURAL-ONLY
+forks never count toward actionable repairable mass. No
+COUNTERFACTUAL-CREDIT treatment or prereg follows without a
+fresh GO.
+

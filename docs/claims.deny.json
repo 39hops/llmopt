@@ -150,8 +150,8 @@
         },
         {
             "pattern": "median 76[- ]token (delta|action|label)|sparsity premise measurably holds",
-            "reason": "LONGCTX P2 medians measure the FULL scoring sequence (parent prefix + full child + newline), never action-label/residual length; delta sparsity in the engine is UNMEASURED.",
-            "superseded_by": "RIFF-LEDGER TRANSITION-BASIS CORRECTION 2026-08-23",
+            "reason": "LONGCTX P2 medians measure the FULL scoring sequence (parent prefix + full child + newline), never action-label/residual length; delta sparsity in the engine is UNMEASURED. Full retraction text: RIFF-LEDGER TRANSITION-BASIS CORRECTION 2026-08-23.",
+            "superseded_by": "2026-08-23-verdict-math-cyber-1-frontier-desk",
             "scope": "transition[- ]basis|action[- ]basis|visual[- ]ngram|delta"
         }
     ]
