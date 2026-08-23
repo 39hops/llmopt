@@ -8716,3 +8716,55 @@ honest status column).
   Companion note: ONLINE-v-REPLAY stays alive but DEPRIORITIZED
   — replay timing is weakly discriminating until the feedback
   operator itself produces a behavioral effect.
+
+- **BANKED (2026-08-23): TRANSITION-BASIS / VISUAL-NGRAM —
+  temporal information can be EDGE-LOCAL rather than
+  state-local, and video representation should carry transition
+  tokens, not only frame tokens** (Artin intuition, GPT
+  formalization, house bank). The claim: some semantic facts are
+  invariant to individual-frame content and distinguishable ONLY
+  from temporal order — direction, reversal, acceleration,
+  collision causality, handoff, appearance/disappearance — so a
+  bag/multiset of frames destroys them BY CONSTRUCTION (the
+  Tenet test: forward v reversed playback share the exact frame
+  set). Representations: ordered local tuples
+  G_k(t)=(F_t..F_{t+k-1}) (frame n-grams) or derived transition
+  operators Delta_t=Phi(F_t,F_{t+1}). Methodological connection:
+  MathWorld's state-v-edge distinction (action = name#child_hash
+  EDGE identity), TIME-AS-STRUCTURE (order/horizon first-class),
+  and the same question underneath all three — is the
+  computational object the state or the transition? Known prior
+  art the bank sits on (not novel machinery, novel framing for
+  this lab): optical flow / two-stream nets, motion history
+  images, 3D-conv tubelets, video transformers. Measured
+  anchors: NONE yet — this bank has no booked result; the
+  prior-art claims are literature, not house measurements.
+  Honest breaks: (1) modern video transformers already consume
+  ordered frame tokens, so "ordered beats bag" alone is not
+  news — the live question is the CHEAPNESS claim (transition
+  tokens as a smaller sufficient statistic per unit
+  accuracy/wall than dense full-frame processing); (2) per-frame
+  captioning pipelines may erase exactly the transition
+  information under study, so no "watching" claim attaches to
+  caption-then-summarize; (3) video is OUTSIDE the lab's two
+  standing engine domains (math/physics) — any rung here is a
+  methods/representation experiment on synthetic
+  oracle-verifiable data, never a movie-understanding
+  capability program. Testable residue (first rung, synthetic
+  and oracle-verifiable): generate short videos whose frame
+  MULTISET is identical across labels while temporal order
+  differs (LEFT-to-RIGHT v RIGHT-to-LEFT, expand v contract,
+  A-before-B v B-before-A, collision v its time reversal);
+  compare BAG (unordered pooled frames — information-
+  theoretically blind on matched-set pairs by construction, the
+  registered control), ORDERED-FRAMES (chronological frame
+  tokens), DELTA (pairwise transition tokens), K3 (local
+  three-frame tubelet); measure accuracy per input token and
+  per wall; the bank fires if DELTA/K3 recover temporal
+  direction at materially lower token/wall cost than
+  ORDERED-FRAMES. Future extension (banked, not designed):
+  hierarchical movie encoding = keyframe/state tokens +
+  transition tokens + shot/event summaries + long-range
+  retrieval. Attribution: Artin (the ask + the overlap/n-gram
+  intuition), GPT (formalization + arm taxonomy), house
+  (prior-art grounding, charter fence, control-arm framing).
