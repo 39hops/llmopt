@@ -8935,3 +8935,15 @@ honest status column).
   MATH-CYBER arms, prospective only — every existing
   argmax-controller verdict stands untouched; any future arm
   omitting the override must explicitly register why.
+  MEASURED + PARKED (2026-08-23, VERDICT
+  MATH-CYBER-1-LABEL-YIELD-0, updates the FAILURE-TRIGGERED
+  RETROSPECTIVE CREDIT bank above): the fresh-band yield census
+  came back NO-GO (house prior fired) — TERMINAL-FIRST +
+  theta_0 solves 76/80 on the sacrificial band, leaving 1
+  label-bearing failed episode and 4 distinct corrective facts
+  v the >=3 / >=5 GO bars. The operator is QUALIFIED (6/6) but
+  STARVED: label scarcity is baseline competence, not labeler
+  defect. Parked with registered revivals: a ~3x wider or
+  harder sacrificial band, or top-k>2 forking under a fresh
+  qualification on FUTURE bands only. Bands 9500-9519
+  permanently outcome-spent; treatment bands >= 9600.

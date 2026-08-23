@@ -2725,6 +2725,17 @@ MATH-CYBER-1 TERMINAL-DOMINANCE-0 terminal-miss census (PRE-REG MATH-CYBER-1-TER
 - `census_episode(eid, band, root, rec, outcome, world, scorer, sink, tamper_step=None)` — Replay + terminal census. Returns episode summary.
 - `main()`
 
+### scratch/mathworld1_yield.py
+MATH-CYBER-1 LABEL-YIELD-0 — sacrificial fresh-band census of retrospective-credit label supply (PRE-REG MATH-CYBER-1-LABEL-YIELD-0 as AMENDED by -DEDUP, 020a0d25).
+
+- `sha(t: str) -> str`
+- `class World` (legal)
+- `class Scorer` (score, rank_candidates)
+- `terminal_first_walk(root_state, world, scorer, budget)`
+- `label_episode(eid, root, world, scorer, sink)` — Walk + labeler; per-fork rows carry the dedup fact key.
+- `contamination_audit(episodes, exclude_bands=())` — Exact-match of root strings v birth diet + prior bands +
+- `main()`
+
 ### scratch/matryoshka_r1.py
 Matryoshka rung 1 (pre-reg 2026-07-28 night): joint loss CE(W) + CE(STE P_C8(W)) — one crystal whose OWN circulant projection must also work. 1 warm epoch from wfloor d256 on MPS. Implementation: parametrize gate weights with a toggleable STE projection (flag off -> raw W; flag on -> W + (P(W)-W) .detach(), i.e. forward uses P(W), gradient flows to W). Gates BOTH tiers at the end; saves the single weight tensor.
 

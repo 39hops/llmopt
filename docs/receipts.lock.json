@@ -799,12 +799,20 @@
    "tracked": false
   },
   "logs/mathworld1/yield_census.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 87600,
+   "exists": true,
+   "local_only": true,
+   "sha256": "ad46a2c1bfa671e418328e993d5e887a6c27a55b6641563767aaeb40008291cd",
+   "source": "results",
+   "tracked": false
   },
   "logs/mathworld1/yield_census_verdict.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2451,
+   "exists": true,
+   "local_only": true,
+   "sha256": "1b20debbdc4c33db8779c395d46b6f8969c4527f204b1d99803939ce0506b8b1",
+   "source": "results",
+   "tracked": false
   },
   "logs/merge_space1/driver.log": {
    "exists": false,

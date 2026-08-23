@@ -43813,3 +43813,89 @@ The prereg json's bar-2 description is updated to carry the
 pin in the same commit. Band verified still unmaterialized (no
 yield receipt, no seed-9500-9519 episode id in any receipt).
 
+## VERDICT MATH-CYBER-1-LABEL-YIELD-0: NO-GO — the house prior fires: on the 80-episode sacrificial band the TERMINAL-FIRST + theta_0 baseline solves 76/80 (L5/L6/L7 perfect 20/20; all 4 failures are L4 budget_exhausted), leaving 1 label-bearing failed episode (bar: >=3) and 4 distinct corrective facts (bar: >=5); the operator PARKS with its registered revival conditions (2026-08-23, Mac)
+
+Adjudicates PRE-REG MATH-CYBER-1-LABEL-YIELD-0 as amended
+(-DEDUP 020a0d25, -DEDUP-B 29501c49), one-shot under the
+outside GO granted after the -DEDUP-B green. Launch
+code_commit 1cdb0928, driver sha 82e32b0c... (committed bytes
+== launched bytes), smoke2 5/5 retained
+(smoke2_yield_census* — dedup-to-3-facts on the qual
+specimen, 11 raw rows, exactly 1 horizon-sensitive fact,
+solved-episode-no-forks, contamination detector reproducing
+the 11 known birth_diet flags after the SMOKE-only band
+self-exclusion; the first smoke's contamination check compared a band
+to itself, fixed pre-launch with a SMOKE-only band exclusion,
+receipts smoke_yield_census* retained). Receipts:
+logs/mathworld1/yield_census.jsonl +
+logs/mathworld1/yield_census_verdict.json.
+theta_0 52fd1aff... (derived), device mps, 167 desk-world
+states, zero training. The 9500-9519 band is now PERMANENTLY
+OUTCOME-SPENT for prospective work; future treatment bands
+draw from seeds >= 9600 (registered fence).
+
+CONTAMINATION (frozen law, disclosed never fixed): 19/80 roots
+flagged — all 19 birth_diet (12 L5 — the densest-farmed
+generator level — 4 L6, 3 L7), of which 3 also exact-match
+prior bands (L5-s9501=train:L5-s9238, L5-s9502=train:L5-s9248,
+L5-s9511=adapt:L5-s9305). Fixed denominator 80. NONE of the 4
+failed episodes and NOT the label-bearing episode is flagged.
+
+BASELINE (registered report, per-level dict sums checked):
+TERMINAL-FIRST + theta_0 solves 76/80 {L4 16, L5 20, L6 20,
+L7 20}; failures L4-s9503/9504/9507/9518, all budget_exhausted,
+0 wall_cap, 0 model_ctx_overflow, 0 censored forks anywhere.
+
+YIELD (registered units):
+- failed episodes with >=1 eligible rank-2 fork: 4/4 (each
+  produced 12 forks; 48 forks total = 10 rescuing + 38
+  non-rescuing observed, 0 censored, 0 overflow);
+- label-bearing failed episodes (PRIMARY): 1 (L4-s9507; 1/4 of
+  failures) — GO conjunct (a) >=3 does NOT fire;
+- distinct corrective facts, global, deduped per -DEDUP-B
+  (state_hash + child-hash suffixes): 4 — GO conjunct (b) >=5
+  does NOT fire;
+- raw emitted label rows (secondary workload color, never
+  evidence): 10, all from L4-s9507 = ONE episode cluster
+  (10 rows -> 4 facts: loop-recurrence collapse doing exactly
+  what -DEDUP registered);
+- horizon_sensitive_facts: 2 (both in L4-s9507 — the same
+  (state, chosen, forced) fact labels at longer horizons and
+  fails at shorter ones; reported, not split);
+- label anatomy (diagnostic): rescuing rank-2 forks at steps
+  0-9, margins 0.356 to 7.09, ALL continuation depth 2.
+
+ADJUDICATION: GO does NOT fire (1 < 3 and 4 < 5). REGISTERED
+HOUSE PRIOR (NO-GO, "expected 1-2 label-bearing failed
+episodes") FIRES — the refuted-if branch (both conjuncts
+firing) did not occur. Per the registered consequence the
+retrospective-credit operator PARKS with its named revival
+conditions: a wider sacrificial band (this census prices the
+need: at ~1 label-bearing episode per 80, bar (a) wants a
+band of roughly 3x this size or a harder mix), or an operator
+change (e.g. top-k>2 forking) which would require its own
+qualification — and the no-top-k-widening-after-seeing-this-
+band fence stands: any such change targets FUTURE bands under
+a fresh prereg only.
+
+READING (within-design): the dominant fact this census bought
+is not the label count but the BASELINE — TERMINAL-FIRST +
+theta_0 at 95% on a fresh band, with the entire failure mass
+in L4, the level that consumed the most decision steps on this
+band (67 decision rows over its 20 episodes v 20/22/21 for
+L5/L6/L7). The
+corrective-label scarcity is mostly SOLVE-RATE SUCCESS
+starving the failure-triggered operator of failures; the
+priced lever for label supply is band size or hardness, not
+the labeler.
+
+FENCES. Single seed chain, single device (mps fp32), one-shot;
+80-episode single draw — counts, never rates generalized past
+this band. Level-composition readings (the L4 concentration)
+are this band's draw. The 10-rows-to-4-facts collapse and the
+2 horizon-sensitive facts are single-episode anatomy.
+Contamination affects no failure and no label; the clean-subset
+question is therefore moot for the yield statistics. No
+training and no treatment prereg follow regardless of this
+outcome until Artin/GPT review these counts (registered STOP).
+

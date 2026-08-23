@@ -2995,3 +2995,20 @@ regime tag on every bullet is the fence.
   80 fresh sacrificial episodes 9500-9519; house prior NO-GO;
   band NOT generated pending Artin/GPT bar approval).
   ([VERDICT MATH-CYBER-1-RETRO-LABELER-QUAL-0](RESULTS.md#L43575 "id:2026-08-23-verdict-math-cyber-1-retro-labeler").)
+
+- [NULL] [REGIME-SCOPED: calculus search] LABEL-YIELD-0 books
+  NO-GO exactly as the registered house prior called: on the
+  80-episode sacrificial fresh band (9500-9519, now permanently
+  outcome-spent) the TERMINAL-FIRST + theta_0 baseline solves
+  76/80 (L5/L6/L7 perfect; all 4 failures L4 budget_exhausted,
+  the level consuming 67 decision rows v 20-22 elsewhere), so
+  the failure-triggered rank-2 labeler finds only 1
+  label-bearing episode (bar >=3) and 4 distinct corrective
+  facts under the -DEDUP-B hash-pinned key (bar >=5; 10 raw
+  rows = one episode cluster). Scarcity is solve-rate success
+  starving the operator, not labeler failure — the priced lever
+  is band size (~3x) or hardness. Operator PARKS per
+  registration; contamination 19/80 (all birth_diet, none a
+  failure); future treatment bands >= 9600; no training or
+  treatment prereg until Artin/GPT review.
+  ([VERDICT MATH-CYBER-1-LABEL-YIELD-0](RESULTS.md#L43816 "id:2026-08-23-verdict-math-cyber-1-label-yield").)
