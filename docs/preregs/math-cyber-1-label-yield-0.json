@@ -28,7 +28,7 @@
       "aggregation": "count",
       "direction": "above",
       "value": 4.5,
-      "description": "GO conjunct (b), AMENDED -DEDUP before band materialization: >=5 DISTINCT corrective preference facts, globally de-duplicated by exact (state_hash, chosen_action_identity, forced_rank2_action_identity); raw emitted-label rows are secondary workload color only (integer count above 4.5)"
+      "description": "GO conjunct (b), AMENDED -DEDUP + -DEDUP-B before band materialization: >=5 DISTINCT corrective preference facts, globally de-duplicated by exact (state_hash, chosen 16-hex child-hash suffix, forced_rank2 16-hex child-hash suffix) - the rung-0 identity hash, never the printed rule@target string; raw emitted-label rows are secondary workload color only (integer count above 4.5). Known: one L7-s9303-shaped loop episode scores 3 facts under this key (named in -DEDUP-B)."
     }
   ],
   "receipts": [

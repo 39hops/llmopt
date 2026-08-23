@@ -43778,3 +43778,38 @@ structured prereg json (docs/preregs/
 math-cyber-1-label-yield-0.json) is updated to the deduped
 metric in the same commit.
 
+## AMENDMENT MATH-CYBER-1-LABEL-YIELD-0-DEDUP-B: the dedup key is PINNED before it can drift — action identity = the 16-hex child-hash suffix (printed-form reordering never splits a fact), and the motivating example is corrected: under the registered triple key L7-s9303 scores 3 distinct facts, not 1 (2026-08-23, Mac)
+
+Amends AMENDMENT MATH-CYBER-1-LABEL-YIELD-0-DEDUP on its own
+audit (prereg-auditor, house-verified against
+retrolabel_qual receipts), still BEFORE any 9500-9519 root
+exists.
+
+(a) MOTIVATING-EXAMPLE CORRECTION: -DEDUP's motivation said
+L7-s9303's 11 rows are "ONE forced child" — true of the forced
+ACTION identity, but the REGISTERED key is the triple
+(state_hash, chosen, forced), under which L7-s9303 scores 3
+distinct facts (the entry state plus the two cycle states; 3
+distinct state_hashes in the receipt). The >=5 bar STANDS with
+this known: two loop episodes of this shape could clear
+conjunct (b). Accepted deliberately — distinct states are
+distinct decision contexts for a state-conditioned scorer, and
+conjunct (a)'s >=3 distinct EPISODES remains the diversity
+guard. Named here so the adjudication is never silently
+favorable.
+(b) IDENTITY PIN: chosen_action_identity and
+forced_rank2_action_identity are the 16-hex child-hash
+SUFFIXES of the recorded action ids (the rung-0
+name#child_hash identity's hash component); the printed rule@
+target string is display only — the qual receipts show the
+same forced identity printing 3 ways by term reordering, and a
+string-keyed dedup would inflate the fact count by print
+noise. state_hash as recorded.
+(c) The census-report list gains items: distinct corrective
+facts (global, primary for conjunct (b)) and
+horizon_sensitive_fact diagnostics; raw label rows stay
+secondary color (as -DEDUP registered).
+The prereg json's bar-2 description is updated to carry the
+pin in the same commit. Band verified still unmaterialized (no
+yield receipt, no seed-9500-9519 episode id in any receipt).
+
