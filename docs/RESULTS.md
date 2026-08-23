@@ -42456,3 +42456,112 @@ The 8x4096 rectangular training bench of SCOREQAL-0 stands as
 substrate color only — the real success-gated rung trains on
 <=512-token rows (LONGCTX-0-POPULATIONS) and never pays it.
 
+## PRE-REG MATH-CYBER-1-THETA0-BIRTH-0: one-shot theta_0 birth on the grammar-closed substrate + the frozen CALIBRATION liveness qualification (Artin GO on record, 2026-08-22 23:08 EDT) (2026-08-22, Mac)
+
+Scope per the outside gate: theta_0 birth + CALIBRATION liveness
+ONLY. No ADAPT/HOLDOUT materialization; axiom corpus relay stays
+parked; Mac only.
+
+INSTRUMENT — EXACT BIRTH RECIPE (one-shot; every constant frozen
+here before any weight exists):
+- Tokenizer (grammar-closed, shipped form): the standing ATOMS
+  list verbatim in its standing order (ids 0..39, pad=0 eos=1
+  unchanged) + 256 UTF-8 BYTE-FALLBACK ids appended (id 40+b for
+  byte b). Encode = greedy longest-match over ATOMS; any
+  uncovered character emits its UTF-8 bytes as fallback ids.
+  Vocab 296. No fixture-conditioned atoms.
+- Diet: the BASE load only — data/micromodel_chains_shard*.jsonl
+  (sorted glob) + data/step_chains.jsonl, at their current
+  on-disk state (103,595 rows; per-file sha256 recorded in the
+  birth receipt). NO TRAIN-9200-9249 mixing (weighting law:
+  none) — the positive-target census showed successful edges are
+  <=512 and the TRAIN band is reserved for episodic experience;
+  mixing farmed edges into the birth diet would blur the
+  ACTIVE-arm estimand. Dedup law: none beyond the diet's own
+  state (rows used as stored). Row text =
+  "Current: {cur}\nHints: none\nStep: {nxt}\n" + eos.
+- Sequence cap 512 (rows longer are dropped and COUNTED;
+  expected 0 given measured maxima 501/236).
+- Model: build_model(vocab=296, d=384, layers=8, heads=6,
+  ffn=1536, ctx=4096) — the standing 19M shape with the declared
+  4096 scoring window. fp32, mps, BIRTH_SEED=9001
+  (torch.manual_seed before construction), no INIT_SCALE/PERTURB.
+- Loss at birth: standard full-sequence next-token CE with pad
+  labels masked (the standing MathNative recipe). Child-token-
+  only masking is the EPISODIC dose law (-DESIGN (c)) and plays
+  no role at birth.
+- Optimizer: AdamW lr 3e-4, weight_decay 0.01 (standing recipe
+  values), OneCycleLR pct_start 0.03 over the full step count,
+  grad-norm clip 1.0, fixed BS=32 (nopack path: enc sorted by
+  length, per-epoch shuffle of batch starts by
+  random.Random(ep) — the historic epoch-seeded stream), EPOCHS=3.
+- Checkpoint law: the FINAL epoch-2 weights are theta_0, path
+  checkpoints/mathnative_19m_mw1_theta0.pt. NO selection of any
+  kind: calibration performance may never choose an epoch,
+  checkpoint, or hyperparameter. One-shot: a liveness failure
+  books theta_0 INSTRUMENT-NOT-LIVE and any redesign is a NEW
+  rung with a new name.
+- Qualification ladder before the full birth (/qualify):
+  path-isolated SMOKE birth (SMOKE=1: first 2000 diet rows, 1
+  epoch, smoke_ paths) + SMOKE liveness (2 L4 CALIBRATION
+  episodes) must run mechanism-complete first; smoke artifacts
+  never touch real paths.
+
+INSTRUMENT — LIVENESS TEST (first capability-bearing act of
+theta_0, frozen):
+- CALIBRATION band 9100-9109, L4-7, 40 episodes, 12-decision
+  budget, 60 s per-episode wall safety cap (frozen world
+  constants).
+- Policy: serial B=1 full teacher-forced scoring (EXECBENCH-0
+  law) of every legal candidate's
+  "Current: {parent}\nHints: none\nStep: {child}\n" sequence,
+  score = sum log p over child tokens including the terminating
+  newline; argmax; deterministic tie-break (score, rule name,
+  child key). No hce anywhere in the model arm.
+- Overflow law (-DESIGN (d)): any candidate sequence > 4096
+  tokens books the decision unscorable, episode terminates
+  model_ctx_overflow, counted and disclosed.
+- WORLD-SNAPSHOT DISCIPLINE (the measured _timeboxed drift):
+  fresh process, clean rule caches; MACHINE IDLE — no concurrent
+  llmopt/mps/CPU-heavy jobs during enumeration; enumeration and
+  scoring never overlap (per decision: enumerate fully, then
+  score); successors() wrapped in a COMPLETE state-keyed
+  legal-set cache; first materialization records (state hash,
+  ordered complete legal-set hash) and is thereafter IMMUTABLE
+  and shared; the eventual paired rung runs both arms from ONE
+  paired driver over the same snapshot cache. This is a REALIZED
+  EXPERIMENTAL WORLD SNAPSHOT, not a claim that the
+  wall-timeboxed engine is intrinsically deterministic.
+- Receipts: birth receipt (diet manifest + per-file sha256,
+  dropped-row count, epoch losses, wall, checkpoint sha256),
+  liveness receipt (per-episode outcome rows, every materialized
+  (state_hash, legal_set_hash) pair, overflow count, per-episode
+  solve dict). Provenance derived, never literal.
+
+BAR (registered at -POPULATIONS (d), unchanged): theta_0 solves
+>= 1/40 CALIBRATION episodes. Full 40-episode result reported
+either way.
+
+REFUTED-IF: 0/40 solved -> theta_0 INSTRUMENT-NOT-LIVE booked;
+STOP; no rescue, no tuning, no re-birth in this rung; no
+ADAPT/HOLDOUT generation.
+
+ON PASS: STOP after booking. ADAPT 9300-9309 / HOLDOUT 9400-9409
+stay ungenerated pending the next gate.
+
+REGISTERED PRIOR (house, on the record): PASS — the diet's
+Current/Step format is exactly the scoring prompt, so
+format-transfer should carry at least the shallow L4 episodes;
+the house expects the solve mass concentrated at L4-L5.
+Registered risk: byte-fallback ids are init-only (never trained
+above their diet frequency ~388 rows), so deep states lean on
+untrained embeddings.
+
+FENCES: single seed (BIRTH_SEED=9001), single device (Mac mps,
+fp32); mps run-level nondeterminism means NO cross-run
+bit-exact precondition (booked law) — the one-shot birth is the
+instrument, whatever it is. Liveness numbers are
+CALIBRATION-band color for instrument health, never the PERFECT
+adjudication (that lives on HOLDOUT per -DESIGN (b)). No
+comparison to hce is registered here (color may report it).
+
