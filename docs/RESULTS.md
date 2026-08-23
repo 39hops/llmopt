@@ -43014,3 +43014,122 @@ accounting, never a "beats the model" headline; a
 parity-corrected MINLEN comparison is future bankable work, not
 the next treatment.
 
+## PRE-REG MATH-CYBER-1-FRONTIER-DESK-0: one-deviation repairability census of the six FROZEN theta_0 failures — does ANY bound decision state carry a single forced legal deviation whose frozen-theta_0 continuation SOLVES within the remaining registered budget? (2026-08-23, Mac)
+
+Design frozen from Artin's directive (2026-08-23, verbatim scope)
+BEFORE any fork runs. Outcome-spent data only: the 9300/9400
+bands are already outcome-spent by ACTIVE-EPISODIC-0; no fresh
+band, no training, no axiom work. Prices the banked
+FRONTIER-REPAIRABILITY desk and the simplest (single-fork)
+COUNTERFACTUAL-CREDIT design.
+
+PRIMARY POPULATION (fixed denominator 6): the FROZEN theta_0
+failed roots only — ADAPT L6-s9300, L7-s9303; HOLDOUT L4-s9400,
+L4-s9401, L6-s9403, L4-s9405. ACTIVE-arm trajectories are
+secondary color only, never pooled into the primary denominator.
+
+INSTRUMENT. theta_0 immutable (checkpoint sha 52fd1aff...),
+grammar-closed tokenizer (GCTok, vocab 296), serial B=1 full
+teacher-forced scorer, tie-break (-score, name, child.key()),
+ctx 4096, overflow law unchanged (any candidate encoding beyond
+ctx at a decision = model_ctx_overflow event, never silent
+truncation). Fresh desk-world snapshot: ONE deterministic
+realized World cache for the whole desk, full-State.key()-keyed,
+semantic values, derivation._RULE_CACHE cleared before each new
+state's first successors() call, RULE_WALL 2.0 unchanged,
+idle-machine discipline. No optimizer exists in the driver.
+
+QUALIFICATION / RECONSTRUCTION (per root, before any fork).
+Replay the FROZEN receipt rows (logs/mathworld1/active_pair.jsonl)
+from the root: at every recorded decision-bearing state,
+regenerate successors and assert (1) recorded state_hash, (2)
+complete legal_set_hash + n_legal, (3) existence of the recorded
+chosen name#child_hash in the regenerated legal set; advance via
+the RECORDED chosen child, never a re-scored argmax. Recorded
+model_ctx_overflow states assert (1)+(2) and reproduce the
+overflow under the tokenizer. ANY mismatch books that root
+WORLD-NONCOMPARABLE/UNDECIDED — never a silently substituted
+fresh trajectory. Re-scoring all candidates at each bound state
+under theta_0 is fork METADATA (ranks, margins, score deltas v
+the recorded rounded scores, argmax agreement REPORTED) and
+never gates reconstruction (mps forwards are run-level
+nondeterministic across processes; world hashes are the binding
+contract).
+
+FORK CENSUS. At every bound decision-bearing state of each
+reconstructed FROZEN trajectory: exhaust every legal action
+EXCEPT the recorded theta_0 choice; force that one action; then
+continue with immutable theta_0 (same scorer/tie-break/ctx/
+overflow law), no learning, for exactly the remaining logical
+budget — forcing at zero-based step t leaves 12-(t+1) further
+decisions. A forced child that is already solved is a rescue at
+continuation depth 0. Repeated recorded states are forked at
+every visit (the horizon differs); the continuation from a given
+forced child is DETERMINISTIC (frozen policy + one realized
+world snapshot), so it is computed ONCE at the maximum needed
+horizon and re-read as a truncation at shorter horizons — a
+cache of the same computation, not a second experiment.
+
+CLASSIFICATION LAW (registered):
+- MODEL-ACTIONABLE fork: forced deviation at a state theta_0
+  actually SCORED (a recorded scored decision). Only these count
+  toward current COUNTERFACTUAL-CREDIT repairable mass.
+- STRUCTURAL-ONLY/INTERFACE-BLOCKED fork: forced rescue from a
+  recorded model_ctx_overflow state (theta_0 could not score the
+  legal set there). Reported separately, never pooled into
+  actionable mass.
+- WALL: per-continuation charged-wall accounting (fresh paid-set
+  per continuation; first-materialization charge + own scoring
+  wall; 60 s cap checked before each decision, registered
+  one-decision overshoot). Timing-censored forks are reported
+  explicitly as CENSORED and are NEVER converted into "not
+  repairable".
+
+PER-ROOT REPORT (registered fields): bound decision states /
+alternatives exhausted; any one-deviation rescue; earliest
+rescue step; number + fraction of rescuing alternatives; minimum
+theta_0 rank of a rescuing alternative (rank within the full
+recorded legal set, 1 = the recorded choice's rank position);
+whether RANK-2 rescues exist (prices the banked top1-v-top2
+single-fork COUNTERFACTUAL-CREDIT design); MODEL-ACTIONABLE v
+STRUCTURAL-ONLY rescue counts; unresolved/censored count. Per
+fork: root, step, state/legal-set hashes, forced action
+identity, theta_0 score + rank of the alternative, chosen-v-
+forced margin, candidate token lengths, remaining horizon,
+continuation outcome + depth, ctx events, censoring status.
+
+RESOLUTION LAW (registered, per root):
+- ONE-DEV-REPAIRABLE: at least one MODEL-ACTIONABLE forced
+  deviation + frozen continuation SOLVES within its horizon.
+- ONE-DEV-NOT-REPAIRABLE: ALL eligible alternatives exhaustively
+  observed (no censoring, no world mismatch) with no rescue.
+- UNDECIDED: any world-binding failure or timing incompleteness.
+SCOPE FENCE (registered): a null here bounds ONLY the
+ONE-DEVIATION + frozen-theta_0-continuation repair class on
+these six roots; multi-deviation and learned-continuation repair
+remain OPEN, and no conclusion about counterfactual learning in
+general attaches to any outcome of this desk.
+
+REGISTERED PRIOR (house, on the record): >=2 of the 6 roots
+ONE-DEV-REPAIRABLE, driven by the loop-class failures (L7-s9303,
+L4-s9400, L4-s9401 alternate between 2 recorded states — a
+single deviation exits the loop); L6-s9403 (overflow) actionable
+rescue LESS likely than its structural one; rank-2 rescues exist
+for at least one root.
+
+REFUTED-IF: 0/6 roots ONE-DEV-REPAIRABLE with 0 UNDECIDED
+refutes the prior and empties the single-fork
+COUNTERFACTUAL-CREDIT target on this band.
+
+FENCES. Single seed chain, single device (mps fp32), one-shot;
+receipts logs/mathworld1/frontier_desk.jsonl +
+frontier_desk_verdict.json, refuse-if-exists, SMOKE on smoke_
+paths against spent CALIBRATION liveness failures (L4-s9104
+budget_exhausted + L6-s9100 model_ctx_overflow from
+liveness.jsonl) exercising reconstruction, fork, memo-truncation,
+overflow-fork, and wall mechanisms before the real run. The desk
+world snapshot is THIS run's realized world; cross-run legal-set
+identity is asserted per state, never assumed. No
+COUNTERFACTUAL-CREDIT treatment or prereg follows this desk
+without a fresh GO.
+
