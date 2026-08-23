@@ -42881,3 +42881,116 @@ isolation preserved. Driver commit 377ae3eb (also implements
 the real mode behind the MW1_ACTIVE_GO gate; Artin GO 01:38 EDT
 + outside GO conditional on this green re-smoke are on record).
 
+## VERDICT MATH-CYBER-1-ACTIVE-EPISODIC-0: both adjudications FAIL — ACTIVE's final policy scores 36/40 HOLDOUT (Artin's PERFECT bar does not fire) and TIES FROZEN theta_0 exactly (36 v 36; the feedback direction does not fire): 38 success-gated updates changed 2 of 75 shared ADAPT decisions and 4 same-state HOLDOUT choices, all outcome-neutral (2026-08-23, Mac)
+
+Adjudicates PRE-REG MATH-CYBER-1-ACTIVE-EPISODIC-0 (73c063af)
+as amended (-WALL e0b9-family, -WALL-CONFORMANCE). One-shot,
+launch code_commit 599746dc (the previous launch attempt died on
+a NameError BEFORE any receipt was written — entry-block
+ordering; the fix is the whole diff of 599746dc, +5/-3
+commit-backed. PROCESS DEVIATION DISCLOSED: the pre-launch
+smoke3 requalification ran 10/10 but its receipts were deleted
+in cleanup before booking, so the launched driver sha
+97d3e135... had no RETAINED smoke receipt at launch; smoke4 —
+same sha, verified — reran 10/10 post-run with receipts kept
+(logs/mathworld1/smoke4_active_pair*), a post-hoc conformance
+record, not a pre-launch gate; the retained PRE-launch receipt
+is smoke2 at driver sha 9f6e58ee..., whose delta to the launched
+sha is the entry-block relocation alone — git diff
+377ae3eb..599746dc, no semantic change, so its qualification
+transfers). Receipts:
+logs/mathworld1/active_pair.jsonl + active_pair_verdict.json.
+theta_0 52fd1aff..., ACTIVE final 7a70123e..., 38 optimizer
+steps, device mps, 167 world states materialized.
+
+CONTAMINATION (frozen law, disclosed never fixed): 11/80 roots
+exact-match the birth diet (ADAPT: L5-s9301/02/05/07; HOLDOUT:
+L5-s9400/01/04/07, L7-s9400/02/09) — all L5/L7, the levels whose
+generator space the diet farms densest. No CALIBRATION, TRAIN,
+or cross-band duplicates. Primary denominators stay the fixed
+40s; clean subsets are secondary below.
+
+ADAPT (seed-major interleaved 9300-9309): ACTIVE 38/40
+{L4 10, L5 10, L6 9, L7 9} (dict sums 38), FROZEN 38/40
+(identical episode outcomes; paths differ — ACTIVE 75 v FROZEN
+76 ADAPT decision rows: on L6-s9305 ACTIVE's divergent choice
+solved in 1 decision where FROZEN took 2), acquisition = 38
+with 38 updates fired
+(loss median 0.524, grad-norm median 4.97 max 15.2, all
+finite). THE NEAR-NULL THAT MATTERS (recomputed from decision
+rows after the prereg-auditor caught the receipt field's grain):
+the verdict receipt's divergent_lockstep_steps counts
+DIFFERENT-STATE steps and read 0 on ADAPT; the CHOICE-level
+join over shared same-state decisions shows the updated policy
+chose differently from frozen theta_0 on 2 of 75 shared ADAPT
+decisions (L6-s9300 step 11, L6-s9305 step 0), both
+outcome-neutral. The success-gated dose at lr 1e-4 overwhelmingly
+reinforces choices the policy already makes.
+
+HOLDOUT (9400-9409, both final policies frozen, evaluated once):
+ACTIVE 36/40 {L4 7, L5 10, L6 9, L7 10}; FROZEN 36/40, same
+per-level dict; 14 different-state lockstep steps (the receipt
+field's grain) and 4 same-state CHOICE divergences (L4-s9400,
+L4-s9405, L7-s9401, L7-s9403), all OUTCOME-NEUTRAL — the only
+per-episode outcome difference is
+L4-s9405 (ACTIVE budget_exhausted v FROZEN wall_cap, a
+termination-mechanism difference in the timing class, not a
+solve difference). Failures (both arms): L4-s9400 wall_cap
+(charged wall 64.9/60.1 s — an expensive L4 world, honestly
+capped under the per-arm charged accounting), L4-s9401
+budget_exhausted, L6-s9403 model_ctx_overflow (the registered
+event), plus L4-s9405 per arm as above.
+
+ADJUDICATIONS (registered, both fail):
+1. ARTIN'S PERFECT: ACTIVE final policy 40/40 HOLDOUT ->
+   MEASURED 36/40. The bar does NOT fire. The registered
+   prediction (standing since the CYBERNETIC-MATH bank,
+   operationalized at -DESIGN (b)) is REFUTED at this
+   dose/band/substrate.
+2. FEEDBACK DIRECTION: ACTIVE > FROZEN on HOLDOUT -> 36 v 36,
+   strict inequality does NOT hold. The closed-loop feedback
+   claim books NOT-SUPPORTED at this dose (the prereg's
+   registered refutation branch).
+House counter-prior scored half: PERFECT-fails predicted right,
+feedback-positive predicted WRONG (the tie beat both priors).
+Family direction-call record updates accordingly.
+
+SECONDARY (clean subset, 33 HOLDOUT / 36 ADAPT episodes after
+contamination exclusion): ACTIVE 29/33 = FROZEN 29/33 (the tie
+is not contamination-driven); ADAPT ACTIVE 34/36.
+
+DIAGNOSTIC COLOR: MINLEN (shortest-candidate static policy, no
+model) solves 37/40 HOLDOUT — one MORE than either model arm —
+including L4-s9405 (its loop carries no wall accounting, so
+its 37 is not wall-comparable: disclosed instrument asymmetry;
+its three failures — L4-s9400, L4-s9401, L6-s9403 — are
+budget-class).
+Shortest-child is a strong structural heuristic in this world
+(short next state correlates with progress), which sharpens the
+standing question of what the learned scorer adds beyond
+length-adjacent structure — the registered length-bias control
+earning its slot.
+
+READING (within-design): at lr 1e-4 x 38 episode-boundary
+success-gated steps, self-imitation on an already-competent
+policy moved weights (sha differs; scores shifted; 2 ADAPT + 4
+HOLDOUT same-state choice divergences) but not OUTCOMES — no escape from the
+engine-trained failure frontier, and no degradation either. The
+bank's ONLINE-v-REPLAY discriminating contrast remains untested
+(this rung compared ACTIVE v NO-UPDATE, the total closed-loop
+effect, and found none at this dose).
+
+FENCES: single seed chain (theta_0 9001, bands 9300/9400),
+single device (mps, fp32), one-shot; mps run-level
+nondeterminism booked — the paired arms shared the run's
+substrate noise by lockstep construction, but no cross-run
+bit-exact claim attaches. Charged-wall outcomes (both wall_caps)
+are load-sensitive instrument events under the idle-machine
+discipline, disclosed per the timing class. The dose is ONE
+point in (lr, gating, granularity) space: this verdict refutes
+PERFECT and finds no feedback effect AT THIS POINT, and
+registers nothing about other doses. MINLEN's 37 is
+diagnostic-loop color with the wall asymmetry above. ADAPT
+acquisition numbers are stream-conditional (updates during the
+stream), never comparable to HOLDOUT numbers.
+

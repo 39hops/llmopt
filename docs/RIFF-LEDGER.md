@@ -8353,6 +8353,15 @@ honest status column).
   loop wins outright. House counter-prior: the REPLAY arm is the
   dangerous control; curriculum-discovery may carry most of the
   gain (the family's direction-call record is 1-for-5).
+  ADJUDICATED (2026-08-23, VERDICT
+  MATH-CYBER-1-ACTIVE-EPISODIC-0): the PERFECT prior is REFUTED
+  at the first measured dose (36/40 HOLDOUT) and the total
+  closed-loop feedback effect measured NULL (exact tie v frozen
+  theta_0, 36 v 36; 38 success-gated updates changed 6 choices
+  total, all outcome-neutral). Scope: one dose point (lr 1e-4,
+  episode-boundary, success-only), one seed chain; the
+  ONLINE-v-REPLAY discriminating contrast of this bank remains
+  UNTESTED — the adjudicated contrast was ACTIVE v NO-UPDATE.
   Honest breaks: DishBrain-class embodiment claims are contested
   in the literature — the analogy is a design generator, not
   evidence; "cycle feedback without the correct action" must be

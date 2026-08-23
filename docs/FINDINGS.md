@@ -2919,3 +2919,21 @@ regime tag on every bullet is the fence.
   worlds agree wherever they overlap (0 same-state/different-
   legal-set). Join conditioned on shared prefixes; color only.
   ([OBSERVATION MATH-CYBER-1-THETA0-HCE-JOIN-0](RESULTS.md#L42656 "id:2026-08-23-observation-math-cyber-1-theta0-hce").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search]
+  The first closed-loop rung returns a clean double null: ACTIVE
+  final policy 36/40 HOLDOUT (the registered PERFECT prediction
+  REFUTED at this dose/band/substrate) and an exact tie with
+  frozen theta_0 (36 v 36; feedback direction NOT-SUPPORTED —
+  the prereg's refutation branch). 38 success-gated lr 1e-4
+  episode-boundary updates changed only 2/75 shared ADAPT
+  decisions and 4 same-state HOLDOUT choices, all
+  outcome-neutral: self-imitation reinforced an already-competent
+  policy without moving its failure frontier, and without
+  degradation. House counter-prior scored half (PERFECT-fails
+  right, feedback-positive wrong). Color: the no-model MINLEN
+  control solved 37/40 (wall-accounting asymmetry disclosed);
+  contamination 11/80 roots (birth-diet, all L5/L7), clean
+  subset ties 29/33 v 29/33. One dose point; ONLINE-v-REPLAY
+  remains untested.
+  ([VERDICT MATH-CYBER-1-ACTIVE-EPISODIC-0](RESULTS.md#L42884 "id:2026-08-23-verdict-math-cyber-1-active-episodic").)

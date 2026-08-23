@@ -2633,6 +2633,7 @@ MATH-CYBER-1 ACTIVE-EPISODIC-0 lockstep paired driver (PRE-REG MATH-CYBER-1-ACTI
 - `class Arm` (score, update_on)
 - `run_pair(episodes, world, arms, tok, ctx_overrides, sink, stage, update_active=True)` — Lockstep: both arms walk each episode in parallel steps.
 - `main()`
+- `real_main(START, ck_sha, tok, dev, load, ep)` — REAL one-shot: contamination audit -> ADAPT (seed-major
 
 ### scratch/mathworld1_birth.py
 MATH-CYBER-1 theta_0 one-shot birth (PRE-REG MATH-CYBER-1-THETA0-BIRTH-0; prereg commit 6d013acf, BEFORE any weight existed). Grammar-closed tokenizer (ATOMS ids 0..39 + 256 UTF-8 byte-fallback ids = vocab 296), base diet only (micromodel_chains_shard*.jsonl + step_chains.jsonl), SEQ cap 512 (drops counted), build_model(296, ctx=4096), fp32 mps, BIRTH_SEED=9001, AdamW lr 3e-4 wd 0.01, OneCycle pct_start 0.03, clip 1.0, BS=32 nopack (length-sorted enc, per-epoch random.Random(ep) shuffle of batch starts — the historic stream), EPOCHS=3, final-epoch weights = theta_0, NO selection of any kind.

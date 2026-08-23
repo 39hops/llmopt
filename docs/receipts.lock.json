@@ -682,6 +682,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/active_pair.jsonl": {
+   "bytes": 156806,
+   "exists": true,
+   "sha256": "74594b4a0b06b542fe11aafae1f740dbaa83e4b2c69fb443cc963995dc914109",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/census.jsonl": {
    "bytes": 144816,
    "exists": true,
@@ -700,6 +707,13 @@
    "bytes": 1132,
    "exists": true,
    "sha256": "c4b9351ed7a7a31814d03d356e1697f18b07fdcb864a9e3b765b17daca1fa754",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/liveness.jsonl": {
+   "bytes": 26112,
+   "exists": true,
+   "sha256": "f6e4380fc38d5cff5102ce5af70daa3de94c1aa6691770992e68486cfbcce25e",
    "source": "results",
    "tracked": true
   },
@@ -730,6 +744,21 @@
    "sha256": "e116b989e10b554b409222fae7b715e1c93bc848616b93bf1fbef4aa97a60a3e",
    "source": "results",
    "tracked": true
+  },
+  "logs/mathworld1/smoke2_active_pair.jsonl": {
+   "bytes": 26661,
+   "exists": true,
+   "sha256": "1a4dcb16117308c4453a66c414df839d59152dcbfd7aa9eb3525dadbbe7080a6",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/smoke_active_pair.jsonl": {
+   "bytes": 26684,
+   "exists": true,
+   "local_only": true,
+   "sha256": "23bf486fdf1b44703b52a2c77755d3c3c849db5a3f1f754fc642c31b7ee069be",
+   "source": "results",
+   "tracked": false
   },
   "logs/mathworld1/states.jsonl": {
    "bytes": 105338,
