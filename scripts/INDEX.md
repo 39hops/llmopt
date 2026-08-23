@@ -2630,6 +2630,14 @@ MATH-CYBER-1 interface census (AMENDMENT MATH-CYBER-1-DESK-0 -INTERFACE): full L
 - `sha(t: str) -> str`
 - `main()`
 
+### scratch/mathworld1_execbench.py
+MATH-CYBER-1 execution pricing under REAL K/length profiles (outside-review ask after SCOREQAL-0: the accepted path is full teacher-forced scoring; SCOREQAL's "full" bench was SERIAL B=1 repeated K times — batching was never priced). RANDOM-WEIGHT mechanics only, no capability claims.
+
+- `class ByteFallbackTok` (encode)
+- `microbatches(items, budget)` — Greedy pack (idx, ids) into padded microbatches under a
+- `score_batch(model, batch, prefix_lens, dev)` — batch: list of (idx, full_ids); returns {idx: score}.
+- `main()`
+
 ### scratch/mathworld1_export.py
 MATH-CYBER-1 semantic corpus exporter for the axiom interchange layer (AX-MATHWORLD-REPLICA-DESK-0, axiom spec docs/specs/2026-08-22-mathworld-interchange.md frozen through their 9d4933c). Cold-process re-walk of the frozen rung-0 ACTIVE receipts that emits the SEMANTIC payloads the hash-only receipts cannot carry: sympy sstr text of every state, rule_target, and legal-set child, plus the four backend-local binding fields byte-equal to the frozen rows.
 
@@ -2640,6 +2648,11 @@ MATH-CYBER-1 semantic corpus exporter for the axiom interchange layer (AX-MATHWO
 
 ### scratch/mathworld1_longctx_census.py
 MATH-CYBER-1 TRAIN-sidecar long-context exposure census (AMENDMENT MATH-CYBER-1-DESK-0-DESIGN band freeze: TRAIN = seeds 9200-9249, generated here for the first time; disjoint from CALIBRATION 9100-9109 and the ungenerated ADAPT/HOLDOUT bands).
+
+- `main()`
+
+### scratch/mathworld1_longctx_census2.py
+MATH-CYBER-1 TRAIN-band exposure census v2 (outside-review correction of OBSERVATION MATH-CYBER-1-LONGCTX-0): the v1 census pooled ALL legal siblings at greedy-visited states — that is CANDIDATE-SCORING exposure, not training-target exposure. This re-walk of the frozen TRAIN band (seeds 9200-9249, L4-7, frozen world constants) separates two populations and adds incidence:
 
 - `main()`
 

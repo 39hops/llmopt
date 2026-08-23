@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 290, spec-cited 89, cited-but-library 61
+Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 292, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -256,8 +256,10 @@ Census: UNCITED 217, library 73, reproduce-pinned 10, results-cited 290, spec-ci
 | mathworld0 | mathworld0.py | results-cited | RESULTS | RESULTS×3 | — | 4 |
 | mathworld0 | mathworld0_coldreplay.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | mathworld1 | mathworld1_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_execbench.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_export.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_longctx_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_longctx_census2.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_scoreqal.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_substrate_desk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | matryoshka | matryoshka_r1.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
