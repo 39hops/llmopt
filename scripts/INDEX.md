@@ -2624,6 +2624,12 @@ MATH-CYBER-0 rung 0, cold-process replay qualification (GPT post-booking fence):
 
 - `main()`
 
+### scratch/mathworld1_birth.py
+MATH-CYBER-1 theta_0 one-shot birth (PRE-REG MATH-CYBER-1-THETA0-BIRTH-0; prereg commit 6d013acf, BEFORE any weight existed). Grammar-closed tokenizer (ATOMS ids 0..39 + 256 UTF-8 byte-fallback ids = vocab 296), base diet only (micromodel_chains_shard*.jsonl + step_chains.jsonl), SEQ cap 512 (drops counted), build_model(296, ctx=4096), fp32 mps, BIRTH_SEED=9001, AdamW lr 3e-4 wd 0.01, OneCycle pct_start 0.03, clip 1.0, BS=32 nopack (length-sorted enc, per-epoch random.Random(ep) shuffle of batch starts — the historic stream), EPOCHS=3, final-epoch weights = theta_0, NO selection of any kind.
+
+- `class GCTok` (encode)
+- `main()`
+
 ### scratch/mathworld1_census.py
 MATH-CYBER-1 interface census (AMENDMENT MATH-CYBER-1-DESK-0 -INTERFACE): full L4-7 pass over every legal action recorded in the frozen rung-0 ACTIVE receipts. For each of the 101 decisions the walk re-enumerates the legal set (asserting legal_action_set_hash equality row-by-row against logs/mathworld0/active.jsonl — a binding check, abort on mismatch) and, for every (parent, child) action, measures under the stock MathTokenizer (base ATOMS vocab, strict mode):
 
@@ -2644,6 +2650,12 @@ MATH-CYBER-1 semantic corpus exporter for the axiom interchange layer (AX-MATHWO
 - `sha(t: str) -> str`
 - `assert_frozen_world()`
 - `split_label(label: str)` — (rule, rule_target sstr | None) from an enumerator label.
+- `main()`
+
+### scratch/mathworld1_liveness.py
+MATH-CYBER-1 theta_0 CALIBRATION liveness qualification (PRE-REG MATH-CYBER-1-THETA0-BIRTH-0). Frozen test: CALIBRATION seeds 9100-9109 x L4-7 (40 episodes), 12-decision budget, 60 s per-episode wall safety cap; policy = serial B=1 full teacher-forced scoring of every legal candidate (score = sum log p over child tokens incl. terminating newline), argmax, tie-break (score, rule name, child key); overflow law: any candidate sequence > 4096 tokens -> decision unscorable, episode model_ctx_overflow. NO hce anywhere in the model arm. Bar: >= 1/40 solved; full result reported either way.
+
+- `sha(t: str) -> str`
 - `main()`
 
 ### scratch/mathworld1_longctx_census.py

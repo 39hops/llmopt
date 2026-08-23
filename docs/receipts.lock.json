@@ -703,6 +703,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/liveness_verdict.json": {
+   "bytes": 5638,
+   "exists": true,
+   "sha256": "e339bcd2073b2554d9349f8c80f82e6c66c04fae200d7ea7e5fe8553a0eb2575",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/longctx_census.jsonl": {
    "bytes": 15472,
    "exists": true,

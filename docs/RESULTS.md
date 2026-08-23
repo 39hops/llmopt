@@ -42565,3 +42565,91 @@ CALIBRATION-band color for instrument health, never the PERFECT
 adjudication (that lives on HOLDOUT per -DESIGN (b)). No
 comparison to hce is registered here (color may report it).
 
+## VERDICT MATH-CYBER-1-THETA0-BIRTH-0: theta_0 is LIVE — the one-shot birth solves 35/40 CALIBRATION (L4 9, L5 10, L6 6, L7 10), the bar (>=1/40) fires with 35x headroom (2026-08-22, Mac)
+
+Adjudicates PRE-REG MATH-CYBER-1-THETA0-BIRTH-0 (prereg commit
+6d013acf, BEFORE any weight existed; drivers committed
+deb6a593 and BYTE-IDENTICAL to the smoke-qualified form — the
+smoke and real receipts carry the same driver file_sha256, only
+the commit id moved; outside review confirmed the launched
+one-shot stands). One shot, no rescue, no selection, booked
+exactly as returned.
+
+BIRTH (receipt checkpoints/mathnative_19m_mw1_theta0.json):
+grammar-closed vocab 296 (ATOMS + UTF-8 byte fallback), base diet
+103,595 rows -> 103,595 encoded sequences, 0 dropped over the
+512 cap (the desk prediction exact: every row fits). 19.1M params,
+ctx=4096 declared, BIRTH_SEED=9001, fp32 mps, epoch losses
+0.5771 / 0.3613 / 0.3321, wall 1692.7 s. theta_0 sha256
+52fd1aff2c45fc5c... (full in receipts). Diet manifest per-file
+sha256 in the birth receipt. The 0-drop count is consistent with
+the 388 formerly-skipped out-of-language rows being admitted
+(388 is the SUBSTRATE-DESK-0 measured count; the birth receipt
+records only the encoded totals).
+
+ACCOUNTING NOTE (outside review, no rerun): the historic nopack
+BS=32 stream consumes 3237 x 32 = 103,584 rows/epoch; the same
+11 LONGEST encoded rows (token lengths 408, 410, 418, 440, 441,
+457, 485, 490, 493, 502, 502) are drop-last excluded every epoch
+because enc is length-sorted. Encoded population (103,595) and
+consumed population (103,584) are distinct; this is the
+preregistered historic stream, not a defect.
+
+LIVENESS (receipt logs/mathworld1/liveness_verdict.json +
+liveness.jsonl: 98 per-decision rows, 40 per-episode outcome
+rows, 1 overflow event row): CALIBRATION 9100-9109 x
+L4-7, frozen 12-decision budget, serial B=1 teacher-forced
+scoring, no hce anywhere. SOLVED 35/40: {L4: 9, L5: 10, L6: 6,
+L7: 10} (dict sums: 9+10+6+10 = 35). BAR >= 1/40: FIRES, 35x
+headroom. Registered prior (PASS, mass at L4-L5) RIGHT on
+direction, WRONG on shape: L5 and L7 are PERFECT 10/10 and the
+misses sit at L4 (1) and L6 (4).
+
+COLOR (unregistered hce comparison, permitted as color by the
+prereg fence): theta_0's five failed EPISODES are the same five
+as greedy-hce's rung-0 set (L4-s9104, L6-s9100, L6-s9101,
+L6-s9103, L6-s9108) — an OUTCOME-set identity whose termination
+MECHANISMS differ and CROSS-SWAP: theta_0 books L6-s9100
+model_ctx_overflow at step 2 (n_legal=11, a candidate sequence
+> 4096 — the registered model-failure/instrument event of
+-DESIGN (d), 1 of 40), L6-s9101 wall_cap (the 60 s safety cap —
+the wall-timeboxing hazard class firing once, disclosed), and
+L4-s9104 / L6-s9103 / L6-s9108 budget_exhausted; rung-0 greedy
+booked L6-s9100 wall_cap and L6-s9101 budget_exhausted (swapped
+v theta_0). So the honest decomposition of theta_0's 5 misses is
+3 budget-class + 1 context-window + 1 wall-cap. A frozen newborn
+matching the engine heuristic's SOLVE SET is consistent with the
+diet TEACHING the engine's preference ordering (the chains were
+engine-minted); whether theta_0 is hce-equivalent in CHOICE is a
+zero-cost per-decision join on the existing receipts, NOT run
+here.
+
+RECEIPT GAP DISCLOSED (receipt-auditor): the liveness verdict
+does not self-record its execution device; mps is established by
+the birth receipt's device field and the single-machine run, and
+the device field joins the driver-hardening list for the paired
+rung. World-snapshot discipline as registered: fresh process,
+idle machine, 85 states materialized once through the state-keyed
+cache, every (state_hash, ordered legal-set hash) pair recorded
+in the verdict receipt; enumeration never overlapped scoring.
+HARDENING CARRIED (outside note, pre-ACTIVE rung): the snapshot
+cache keys on the 16-hex state hash and stores first-materialized
+State objects — fine for this qualification; the paired-rung
+driver must key on full State.key() (semantic identity) and demote
+short hashes to receipt fields, so collision/stale-history
+metadata cannot become treatment machinery.
+
+DISPOSITION: theta_0 INSTRUMENT LIVE. STOP as preregistered:
+ADAPT 9300-9309 and HOLDOUT 9400-9409 stay UNGENERATED; the
+axiom corpus relay stays parked; nothing further runs without
+the next gate.
+
+FENCES: single seed, single device, one-shot (mps run-level
+nondeterminism booked — no cross-run bit-exact claim attaches to
+theta_0). CALIBRATION numbers are instrument-health color on an
+instrument-spent band, never the PERFECT adjudication (HOLDOUT,
+-DESIGN (b)). Smoke 2/2 was mechanism color and is outside this
+denominator. The failure-set identity with greedy-hce is COLOR at the
+OUTCOME level only (mechanisms differ, per above); choice-level
+equivalence is unmeasured here.
+

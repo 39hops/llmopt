@@ -2893,3 +2893,18 @@ regime tag on every bullet is the fence.
   measured); one frozen ACTIVE episode-boundary update is
   sub-second. Random-weight mechanics; untrained-boot fence.
   ([OBSERVATION MATH-CYBER-1-EXECBENCH-0](RESULTS.md#L42413 "id:2026-08-22-observation-math-cyber-1-execbench-0").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search]
+  theta_0 is LIVE: the one-shot grammar-closed birth (vocab 296,
+  ctx 4096 declared, base diet 103,595 rows encoded with 0 cap
+  drops, BIRTH_SEED 9001) solves 35/40 CALIBRATION under pure
+  choose-among-K teacher-forced scoring with no hce anywhere —
+  {L4 9, L5 10, L6 6, L7 10}, bar >=1/40 fires at 35x. COLOR:
+  the five failed episodes are greedy-hce's five at the OUTCOME
+  level only (mechanisms cross-swap: 3 budget, 1 ctx-overflow
+  at the registered law, 1 wall-cap); choice-level equivalence
+  unmeasured. Registered prior right on direction, wrong on
+  shape (L5/L7 perfect, misses at L4/L6). One-shot, no
+  selection; CALIBRATION is instrument-health color, never the
+  PERFECT adjudication; ADAPT/HOLDOUT stay ungenerated.
+  ([VERDICT MATH-CYBER-1-THETA0-BIRTH-0](RESULTS.md#L42568 "id:2026-08-22-verdict-math-cyber-1-theta0-birth").)

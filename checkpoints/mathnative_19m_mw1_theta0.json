@@ -1,0 +1,86 @@
+{
+ "smoke": false,
+ "birth_seed": 9001,
+ "vocab": 296,
+ "seq_cap": 512,
+ "bs": 32,
+ "lr": 0.0003,
+ "epochs": 3,
+ "diet_manifest": {
+  "data/micromodel_chains_shard0.jsonl": {
+   "sha256": "0d31c73b3723ea87c7ebd301cdded2e276065eb261efdede4fd339f59a02f9bc",
+   "bytes": 1098338
+  },
+  "data/micromodel_chains_shard1.jsonl": {
+   "sha256": "080dd1774e4378085d2a6ece3d5b027d591755458a8032a1f496db85ce964766",
+   "bytes": 1125184
+  },
+  "data/micromodel_chains_shard10.jsonl": {
+   "sha256": "a4cc56d0f52fe7c76d8ccdf17d3412fa5680c5238d30da39c2e09749e31cb36b",
+   "bytes": 2144247
+  },
+  "data/micromodel_chains_shard11.jsonl": {
+   "sha256": "e27db3e46fa579cd76b51e4af9eefdb367ff61192142444536c2e402b3775daf",
+   "bytes": 2150811
+  },
+  "data/micromodel_chains_shard2.jsonl": {
+   "sha256": "bf14049d3c452459bf736fef8e91dac213721e10067d2e996d712bf1f4425add",
+   "bytes": 1088874
+  },
+  "data/micromodel_chains_shard3.jsonl": {
+   "sha256": "091a12a730212511b1844148c66eadea328745c6288aecfb2444f9d421fcf580",
+   "bytes": 1108764
+  },
+  "data/micromodel_chains_shard4.jsonl": {
+   "sha256": "5c2b2be5134bebe7d237243ce9e9d2c7b98190a8045a722460258d07a0422cd8",
+   "bytes": 1098171
+  },
+  "data/micromodel_chains_shard5.jsonl": {
+   "sha256": "da1fa63a03162c8ebae62cbf665668072d1a759e515140affc202dd5edecdebc",
+   "bytes": 1076020
+  },
+  "data/micromodel_chains_shard6.jsonl": {
+   "sha256": "9aecec3134e25c2e016eb59bf18ae6f797795a0142c42eebe25a0de9980f8b05",
+   "bytes": 2117147
+  },
+  "data/micromodel_chains_shard7.jsonl": {
+   "sha256": "d1af0ed0ed858d016ed470d3e2cff00fa5c098ac28856b54fdbd4fed2a846c50",
+   "bytes": 2196195
+  },
+  "data/micromodel_chains_shard8.jsonl": {
+   "sha256": "7985e31b2583540f8ec174a9db709207dd51493c0b25e7e42034306176fd7030",
+   "bytes": 2130593
+  },
+  "data/micromodel_chains_shard9.jsonl": {
+   "sha256": "ba89db2b321fbdeac9f45fae3ff49d47b4f6bf78a3ef9dba634ee846f67f6a6b",
+   "bytes": 2120101
+  },
+  "data/step_chains.jsonl": {
+   "sha256": "3e89a97883627a45fb98294ef6f59fa514bdb3a79263a3c293c7066bd2139887",
+   "bytes": 1474006
+  }
+ },
+ "rows": 103595,
+ "sequences": 103595,
+ "dropped_over_cap": 0,
+ "epoch_losses": [
+  0.5771,
+  0.3613,
+  0.3321
+ ],
+ "n_params": 19108224,
+ "device": "mps",
+ "checkpoint": "checkpoints/mathnative_19m_mw1_theta0.pt",
+ "checkpoint_sha256": "52fd1aff2c45fc5c09edcd626ae8a3b883c87f594b0f151b04b46503eb36a4cf",
+ "wall_s": 1692.7,
+ "start": {
+  "start_commit": "deb6a593",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61"
+  }
+ },
+ "completion_commit": "deb6a593"
+}

@@ -1,0 +1,140 @@
+{"episode_id": "L4-s9100", "step_id": 0, "state_hash": "8d4763120c5c27fa", "legal_set_hash": "1f9f0636c2799629", "n_legal": 8, "chosen": "i_linear_basis@Integral(12*(10*x*cos(5*x**3 + x + 1) - (15*x**2 + 1)**2*sin(5*x**3 + x + 1))*cos(5*x**3 + x + 1)**2, x)#f954caba39b671e0", "score": -25.8721}
+{"episode_id": "L4-s9100", "outcome": "solved"}
+{"episode_id": "L4-s9101", "step_id": 0, "state_hash": "33caf6559ba4daef", "legal_set_hash": "3816ab0804039c22", "n_legal": 8, "chosen": "i_usub@Integral((12*x - 21*sin(7*x) - 3)*exp(2*x**2 - x + cos(7*x)), x)#107e80753c186aaf", "score": -4.326}
+{"episode_id": "L4-s9101", "step_id": 1, "state_hash": "107e80753c186aaf", "legal_set_hash": "45f8a1c3b2cb09cf", "n_legal": 3, "chosen": "i_linear_basis@Integral(3*exp(u_), u_)#ab1eee7aebc3cd75", "score": -0.4994}
+{"episode_id": "L4-s9101", "outcome": "solved"}
+{"episode_id": "L4-s9102", "step_id": 0, "state_hash": "4b04c537603961cf", "legal_set_hash": "f99167da7b6fe2d2", "n_legal": 7, "chosen": "i_unprod@Integral(-40*x*sin(x - 2) + 40*cos(x - 2), x)#929f4a7d1bdcd6ef", "score": -0.9205}
+{"episode_id": "L4-s9102", "outcome": "solved"}
+{"episode_id": "L4-s9103", "step_id": 0, "state_hash": "c346a4e1acb193a4", "legal_set_hash": "1b628d073f00ee25", "n_legal": 8, "chosen": "i_usub@Integral(9*(2*sqrt(x)*(9*x**2 + 2) + sqrt(3))*exp(sqrt(3)*sqrt(x) + 3*x**3 + 2*x + 2)/(2*sqrt(x)), x)#455e11bc788a6405", "score": -7.1335}
+{"episode_id": "L4-s9103", "step_id": 1, "state_hash": "455e11bc788a6405", "legal_set_hash": "7732303dfa32c66f", "n_legal": 3, "chosen": "i_linear_basis@Integral(9*exp(u_), u_)#33da622a5c8f374b", "score": -0.5619}
+{"episode_id": "L4-s9103", "outcome": "solved"}
+{"episode_id": "L4-s9104", "step_id": 0, "state_hash": "c3e165380671404d", "legal_set_hash": "dfa78f3fba966907", "n_legal": 7, "chosen": "i_sum@Integral(-189*x**2*sin(3*x + 2) + 126*x*cos(3*x + 2) + 36*(3*x - 1)**2*sin(6*x**2 - 4*x + 8) + 54*sin(3*x**2 - 2*x + 4)**2, x)#8fd2440ecdad0759", "score": -80.3392}
+{"episode_id": "L4-s9104", "step_id": 1, "state_hash": "8fd2440ecdad0759", "legal_set_hash": "bcb33d2c52361c2e", "n_legal": 17, "chosen": "i_const_factor@Integral(126*x*cos(3*x + 2), x)#8a19fe18af3c0681", "score": -91.8939}
+{"episode_id": "L4-s9104", "step_id": 2, "state_hash": "8a19fe18af3c0681", "legal_set_hash": "803fc883a2225477", "n_legal": 16, "chosen": "i_const_factor@Integral(36*(3*x - 1)**2*sin(6*x**2 - 4*x + 8), x)#bc2ff79297162aca", "score": -96.3425}
+{"episode_id": "L4-s9104", "step_id": 3, "state_hash": "bc2ff79297162aca", "legal_set_hash": "7a859c9a65637563", "n_legal": 15, "chosen": "i_const_factor@Integral(54*sin(3*x**2 - 2*x + 4)**2, x)#8e062da62f143bb1", "score": -97.0933}
+{"episode_id": "L4-s9104", "step_id": 4, "state_hash": "8e062da62f143bb1", "legal_set_hash": "9c3ccdd9be29d4ef", "n_legal": 13, "chosen": "i_const_factor@Integral(-189*x**2*sin(3*x + 2), x)#443c9e9882667280", "score": -105.3367}
+{"episode_id": "L4-s9104", "step_id": 5, "state_hash": "443c9e9882667280", "legal_set_hash": "0b6aeef98f0a5e67", "n_legal": 13, "chosen": "i_linear_basis@Integral(x*cos(3*x + 2), x)#d9b18ddd8e1cc263", "score": -110.6242}
+{"episode_id": "L4-s9104", "step_id": 6, "state_hash": "d9b18ddd8e1cc263", "legal_set_hash": "84c2aa516c242627", "n_legal": 8, "chosen": "i_linear_basis@Integral(x**2*sin(3*x + 2), x)#c374594428272c7d", "score": -71.8265}
+{"episode_id": "L4-s9104", "step_id": 7, "state_hash": "c374594428272c7d", "legal_set_hash": "a168abaa75e4de6a", "n_legal": 7, "chosen": "i_parts@Integral((3*x - 1)**2*sin(6*x**2 - 4*x + 8), x)#2a15770214b9a0ed", "score": -134.2062}
+{"episode_id": "L4-s9104", "step_id": 8, "state_hash": "2a15770214b9a0ed", "legal_set_hash": "7f424c07ce732ac9", "n_legal": 9, "chosen": "together#18a867f8a20f2043", "score": -218.3053}
+{"episode_id": "L4-s9104", "step_id": 9, "state_hash": "18a867f8a20f2043", "legal_set_hash": "d8689f8fcdc76895", "n_legal": 11, "chosen": "together#643b2a9d6ee3860c", "score": -153.4599}
+{"episode_id": "L4-s9104", "step_id": 10, "state_hash": "643b2a9d6ee3860c", "legal_set_hash": "29877bffd2cb49fd", "n_legal": 11, "chosen": "trigsimp#2a15770214b9a0ed", "score": -112.84}
+{"episode_id": "L4-s9104", "step_id": 11, "state_hash": "2a15770214b9a0ed", "legal_set_hash": "7f424c07ce732ac9", "n_legal": 9, "chosen": "together#18a867f8a20f2043", "score": -218.3053}
+{"episode_id": "L4-s9104", "outcome": "budget_exhausted"}
+{"episode_id": "L4-s9105", "step_id": 0, "state_hash": "e47d11c54452678f", "legal_set_hash": "b8c8a15fdc0390c4", "n_legal": 9, "chosen": "i_linear_basis@Integral(8*(-2*x*(4*x + 1)*log(x)*cos(4*x**2 + 2*x + 5) - sin(4*x**2 + 2*x + 5))/x, x)#99823d933fe8c94a", "score": -2.4117}
+{"episode_id": "L4-s9105", "outcome": "solved"}
+{"episode_id": "L4-s9106", "step_id": 0, "state_hash": "cb3b3907732027f2", "legal_set_hash": "7819266acb5fd37a", "n_legal": 7, "chosen": "i_sum@Integral(81*(3 - 12*x**2)*sin(x)*sin(4*x**3 - 3*x + 3) + 81*cos(x)*cos(4*x**3 - 3*x + 3), x)#553e79bd9f6f0eb8", "score": -23.5804}
+{"episode_id": "L4-s9106", "step_id": 1, "state_hash": "553e79bd9f6f0eb8", "legal_set_hash": "7c5f0cdb22b1aa07", "n_legal": 12, "chosen": "i_const_factor@Integral(81*cos(x)*cos(4*x**3 - 3*x + 3), x)#eeb7d05d3110fc10", "score": -22.0961}
+{"episode_id": "L4-s9106", "step_id": 2, "state_hash": "eeb7d05d3110fc10", "legal_set_hash": "4c01fcfe5c9b9fd1", "n_legal": 11, "chosen": "i_const_factor@Integral(81*(3 - 12*x**2)*sin(x)*sin(4*x**3 - 3*x + 3), x)#7b41f9d77fd80171", "score": -21.9871}
+{"episode_id": "L4-s9106", "step_id": 3, "state_hash": "7b41f9d77fd80171", "legal_set_hash": "0802cb9ef305ac12", "n_legal": 10, "chosen": "i_parts@Integral(cos(x)*cos(4*x**3 - 3*x + 3), x)#d007476075530d02", "score": -52.0664}
+{"episode_id": "L4-s9106", "step_id": 4, "state_hash": "d007476075530d02", "legal_set_hash": "62084de06a22bab4", "n_legal": 14, "chosen": "i_linear_basis@Integral(cos(x), x)#2de2402a261bc92a", "score": -31.4725}
+{"episode_id": "L4-s9106", "step_id": 5, "state_hash": "2de2402a261bc92a", "legal_set_hash": "223500f141b10cbc", "n_legal": 10, "chosen": "expand#23d08c058ff3dde4", "score": -6.671}
+{"episode_id": "L4-s9106", "outcome": "solved"}
+{"episode_id": "L4-s9107", "step_id": 0, "state_hash": "f540fee090ea0c0b", "legal_set_hash": "4ad2086f2bc5718b", "n_legal": 8, "chosen": "i_usub@Integral((81*x**2 + 36*cos(4*x) + 27)*exp(3*x**3 + 3*x + sin(4*x) + 2), x)#ecf3c3df9f2ba821", "score": -6.5926}
+{"episode_id": "L4-s9107", "step_id": 1, "state_hash": "ecf3c3df9f2ba821", "legal_set_hash": "330f368fd269ec90", "n_legal": 3, "chosen": "i_linear_basis@Integral(9*exp(u_), u_)#6afc698cdb6f724d", "score": -0.1751}
+{"episode_id": "L4-s9107", "outcome": "solved"}
+{"episode_id": "L4-s9108", "step_id": 0, "state_hash": "637eaa00f006a04c", "legal_set_hash": "f2e68bb1bfd2f877", "n_legal": 9, "chosen": "i_heurisch@Integral(5*(24*x + (12*x**2 + 1)**2)*exp(4*x**3 + x + 5), x)#4ac6b50a71809085", "score": -17.8152}
+{"episode_id": "L4-s9108", "outcome": "solved"}
+{"episode_id": "L4-s9109", "step_id": 0, "state_hash": "3d3c9ecaa9e71af6", "legal_set_hash": "e41e3a2cbc8ef8d4", "n_legal": 7, "chosen": "i_usub@Integral(2*(4*sin(4*x) - 1)*sin(x + cos(4*x) + 3), x)#26ffaa8862830788", "score": -5.143}
+{"episode_id": "L4-s9109", "step_id": 1, "state_hash": "26ffaa8862830788", "legal_set_hash": "95beea7ec5a76b99", "n_legal": 4, "chosen": "i_linear_basis@Integral(-2*sin(u_), u_)#39d9753430c961d6", "score": -0.2426}
+{"episode_id": "L4-s9109", "outcome": "solved"}
+{"episode_id": "L5-s9100", "step_id": 0, "state_hash": "e946f07d270aa9f5", "legal_set_hash": "ddbb5ed1a278b1f0", "n_legal": 5, "chosen": "i_sum@Integral(5 + 3/sqrt(1 - 9*x**2), x)#e3994788e53b7e11", "score": -0.2638}
+{"episode_id": "L5-s9100", "step_id": 1, "state_hash": "e3994788e53b7e11", "legal_set_hash": "f870b74bb41967d4", "n_legal": 5, "chosen": "i_const@Integral(5, x)#a26579d54c54ed5d", "score": -0.2392}
+{"episode_id": "L5-s9100", "step_id": 2, "state_hash": "a26579d54c54ed5d", "legal_set_hash": "17fd52e6e7087c5b", "n_legal": 3, "chosen": "i_inverse_trig@Integral(3/sqrt(1 - 9*x**2), x)#8e7c2cbae721be3f", "score": -0.0092}
+{"episode_id": "L5-s9100", "outcome": "solved"}
+{"episode_id": "L5-s9101", "step_id": 0, "state_hash": "27111ac9c7f80d95", "legal_set_hash": "1755692e1d9f6ed1", "n_legal": 7, "chosen": "i_sqrt_basis@Integral(6*(60*x**4 + 35*x**3 + 42*x**2 + 6*x - 7)/sqrt(3*x**2 + 2*x + 4), x)#56b66d9ffb4e58ca", "score": -18.542}
+{"episode_id": "L5-s9101", "outcome": "solved"}
+{"episode_id": "L5-s9102", "step_id": 0, "state_hash": "88ce7c8c507c8b5e", "legal_set_hash": "9253980d5f941e05", "n_legal": 8, "chosen": "i_heurisch@Integral(x**2*(21*log(5*x) + 7), x)#1883b8a4d0ae3c7d", "score": -0.0265}
+{"episode_id": "L5-s9102", "outcome": "solved"}
+{"episode_id": "L5-s9103", "step_id": 0, "state_hash": "8b2e5c3bfc5fe6d0", "legal_set_hash": "6da99ac469ca3253", "n_legal": 8, "chosen": "i_linear_basis@Integral((14*sin(3*x) + 21*cos(3*x))*exp(2*x), x)#807e026f69301104", "score": -0.0121}
+{"episode_id": "L5-s9103", "outcome": "solved"}
+{"episode_id": "L5-s9104", "step_id": 0, "state_hash": "24c452090d1ec1f3", "legal_set_hash": "84b8f1ff488963fb", "n_legal": 5, "chosen": "i_sqrt_basis@Integral((25*x**2 + 100*x + 3)/sqrt(x + 5), x)#bb1c997687ed3ebb", "score": -16.2643}
+{"episode_id": "L5-s9104", "outcome": "solved"}
+{"episode_id": "L5-s9105", "step_id": 0, "state_hash": "7a6243da3261374d", "legal_set_hash": "76a842f60bff5f92", "n_legal": 7, "chosen": "i_heurisch@Integral(((9*x**2 + 1)*(15*exp(3*x)*sin(x) + 5*exp(3*x)*cos(x) + 4) + 9)/(9*x**2 + 1), x)#304a5c44130abef6", "score": -6.2115}
+{"episode_id": "L5-s9105", "outcome": "solved"}
+{"episode_id": "L5-s9106", "step_id": 0, "state_hash": "6d5d2b559cab5470", "legal_set_hash": "a7ea5bbc8c03082f", "n_legal": 7, "chosen": "i_linear_basis@Integral(4*(3*sin(x) + cos(x))*exp(3*x), x)#e74ead0fab41f56d", "score": -0.0577}
+{"episode_id": "L5-s9106", "outcome": "solved"}
+{"episode_id": "L5-s9107", "step_id": 0, "state_hash": "be7b5179ded52dc3", "legal_set_hash": "c0aacfbee9adc349", "n_legal": 7, "chosen": "i_heurisch@Integral(7*log(3*x) + 7, x)#d47627a39c975a6f", "score": -0.0414}
+{"episode_id": "L5-s9107", "outcome": "solved"}
+{"episode_id": "L5-s9108", "step_id": 0, "state_hash": "6bf3c09a5c618a8b", "legal_set_hash": "4c0e6f7cd0b8c620", "n_legal": 4, "chosen": "i_sum@Integral(1 + 2/sqrt(1 - 4*x**2), x)#d059bc5b6bcdfcc6", "score": -0.4098}
+{"episode_id": "L5-s9108", "step_id": 1, "state_hash": "d059bc5b6bcdfcc6", "legal_set_hash": "aa2a175471ec8700", "n_legal": 4, "chosen": "i_const@Integral(1, x)#7b49109ecf070e63", "score": -0.0189}
+{"episode_id": "L5-s9108", "step_id": 2, "state_hash": "7b49109ecf070e63", "legal_set_hash": "e1e63594cf0cfdc4", "n_legal": 3, "chosen": "i_inverse_trig@Integral(2/sqrt(1 - 4*x**2), x)#cf714f69c0b9a68c", "score": -0.0078}
+{"episode_id": "L5-s9108", "outcome": "solved"}
+{"episode_id": "L5-s9109", "step_id": 0, "state_hash": "d07b3dca214a7ddc", "legal_set_hash": "78690511dde639c2", "n_legal": 7, "chosen": "i_heurisch@Integral(8*x**2*(3*log(x) + 2)*log(x), x)#060f1d12f87251b6", "score": -0.1125}
+{"episode_id": "L5-s9109", "outcome": "solved"}
+{"episode_id": "L6-s9100", "step_id": 0, "state_hash": "6568c976c9cf3bd4", "legal_set_hash": "cc9ee0b3523183d6", "n_legal": 6, "chosen": "i_parts@Integral((72*x**2 + sqrt(1 - x**2)*(9*x**2 + 1)*(18*x*log(5*x) + 9*x + 12*exp(2*x)*sin(3*x) + 18*exp(2*x)*cos(3*x) + log(4*x)**2 + 2*log(4*x) + 5) + 12*sqrt(1 - x**2) + 8)/(sqrt(1 - x**2)*(9*x**2 + 1)), x)#73cf1795b18f8a16", "score": -355.5796}
+{"episode_id": "L6-s9100", "step_id": 1, "state_hash": "73cf1795b18f8a16", "legal_set_hash": "8cce011c0eee6fa4", "n_legal": 8, "chosen": "i_parts@Integral(x*Integral((72*x**2 + sqrt(1 - x**2)*(9*x**2 + 1)*(18*x*log(5*x) + 9*x + 12*exp(2*x)*sin(3*x) + 18*exp(2*x)*cos(3*x) + log(4*x)**2 + 2*log(4*x) + 5) + 12*sqrt(1 - x**2) + 8)/(9*x**2 + 1), x)/(1 - x**2)**(3/2), x)#be9c6de7ed055bc7", "score": -653.6602}
+{"episode_id": "L6-s9100", "step_id": 2, "state_hash": "be9c6de7ed055bc7", "legal_set_hash": "2c21ae7000e82ede", "n_legal": 11, "event": "model_ctx_overflow"}
+{"episode_id": "L6-s9100", "outcome": "model_ctx_overflow"}
+{"episode_id": "L6-s9101", "step_id": 0, "state_hash": "35a2a7ed3838e62b", "legal_set_hash": "3b26a3821b187487", "n_legal": 6, "chosen": "i_parts@Integral((3*(x + 1)*(3*x - 1)*(4*x**2 + 1) + (4*x**2 + 1)*sqrt(3*x**2 - 2*x + 2)*(3*sqrt(3*x**2 - 2*x + 2) - 12*exp(2*x)*sin(3*x) + 8*exp(2*x)*cos(3*x) + 2*log(2*x)**2 + 4*log(2*x) + 1) + 6*sqrt(3*x**2 - 2*x + 2))/((4*x**2 + 1)*sqrt(3*x**2 - 2*x + 2)), x)#54978b5248b06ae6", "score": -371.821}
+{"episode_id": "L6-s9101", "step_id": 1, "state_hash": "54978b5248b06ae6", "legal_set_hash": "890f0102f80dce95", "n_legal": 8, "chosen": "i_const_factor@Integral(-8*x*Integral((3*(x + 1)*(3*x - 1)*(4*x**2 + 1) + (4*x**2 + 1)*sqrt(3*x**2 - 2*x + 2)*(3*sqrt(3*x**2 - 2*x + 2) - 12*exp(2*x)*sin(3*x) + 8*exp(2*x)*cos(3*x) + 2*log(2*x)**2 + 4*log(2*x) + 1) + 6*sqrt(3*x**2 - 2*x + 2))/sqrt(3*x**2 - 2*x + 2), x)/(4*x**2 + 1)**2, x)#4a739e54c2044dfb", "score": -391.546}
+{"episode_id": "L6-s9101", "step_id": 2, "state_hash": "4a739e54c2044dfb", "legal_set_hash": "a1ffc748bab0d7c9", "n_legal": 7, "chosen": "i_parts@Integral(x*Integral((3*(x + 1)*(3*x - 1)*(4*x**2 + 1) + (4*x**2 + 1)*sqrt(3*x**2 - 2*x + 2)*(3*sqrt(3*x**2 - 2*x + 2) - 12*exp(2*x)*sin(3*x) + 8*exp(2*x)*cos(3*x) + 2*log(2*x)**2 + 4*log(2*x) + 1) + 6*sqrt(3*x**2 - 2*x + 2))/sqrt(3*x**2 - 2*x + 2), x)/(4*x**2 + 1)**2, x)#c0e61de2c39c36fb", "score": -628.6742}
+{"episode_id": "L6-s9101", "step_id": 3, "state_hash": "c0e61de2c39c36fb", "legal_set_hash": "9a0c977c75c2e3c7", "n_legal": 4, "chosen": "i_parts@Integral((3*(x + 1)*(3*x - 1)*(4*x**2 + 1) + (4*x**2 + 1)*sqrt(3*x**2 - 2*x + 2)*(3*sqrt(3*x**2 - 2*x + 2) - 12*exp(2*x)*sin(3*x) + 8*exp(2*x)*cos(3*x) + 2*log(2*x)**2 + 4*log(2*x) + 1) + 6*sqrt(3*x**2 - 2*x + 2))/sqrt(3*x**2 - 2*x + 2), x)#6c210e8e2103a0c5", "score": -1399.7833}
+{"episode_id": "L6-s9101", "step_id": 4, "state_hash": "6c210e8e2103a0c5", "legal_set_hash": "11aab63f049859b9", "n_legal": 4, "chosen": "i_sum@Integral(3*(x + 1)*(3*x - 1)*(4*x**2 + 1) + (4*x**2 + 1)*sqrt(3*x**2 - 2*x + 2)*(3*sqrt(3*x**2 - 2*x + 2) - 12*exp(2*x)*sin(3*x) + 8*exp(2*x)*cos(3*x) + 2*log(2*x)**2 + 4*log(2*x) + 1) + 6*sqrt(3*x**2 - 2*x + 2), x)#bd6251d0cfa483e2", "score": -1716.0789}
+{"episode_id": "L6-s9101", "step_id": 5, "state_hash": "bd6251d0cfa483e2", "legal_set_hash": "853121c63053086b", "n_legal": 15, "chosen": "i_const_factor@Integral(3*(x + 1)*(3*x - 1)*(4*x**2 + 1), x)#22c80c1002ea8a23", "score": -1695.9293}
+{"episode_id": "L6-s9101", "outcome": "wall_cap"}
+{"episode_id": "L6-s9102", "step_id": 0, "state_hash": "3e1a7ba594e87043", "legal_set_hash": "cdf36e0e9ba6862c", "n_legal": 5, "chosen": "i_heurisch@Integral(36*exp(4*x)*sin(x) + 9*exp(4*x)*cos(x) + 5*log(4*x) + 7*log(5*x)**2 + 14*log(5*x) + 5, x)#b88a2c8384297f23", "score": -18.9496}
+{"episode_id": "L6-s9102", "outcome": "solved"}
+{"episode_id": "L6-s9103", "step_id": 0, "state_hash": "e2aceb714fceac63", "legal_set_hash": "8a533cbb8f69f14c", "n_legal": 7, "chosen": "expand#35d73286ad890398", "score": -61.3108}
+{"episode_id": "L6-s9103", "step_id": 1, "state_hash": "35d73286ad890398", "legal_set_hash": "3832c16dabb98255", "n_legal": 14, "chosen": "i_inverse_trig@Integral(2/sqrt(1 - x**2), x)#e86d827164de0333", "score": -10.7755}
+{"episode_id": "L6-s9103", "step_id": 2, "state_hash": "e86d827164de0333", "legal_set_hash": "e149507f13dda7c5", "n_legal": 11, "chosen": "i_const@Integral(5, x)#07150538362e584e", "score": -7.619}
+{"episode_id": "L6-s9103", "step_id": 3, "state_hash": "07150538362e584e", "legal_set_hash": "991ed2d1e6fdeb41", "n_legal": 10, "chosen": "i_const_factor@Integral(-4*sin(3*x**2 + 4*x), x)#4ca07f23af6fb918", "score": -26.163}
+{"episode_id": "L6-s9103", "step_id": 4, "state_hash": "4ca07f23af6fb918", "legal_set_hash": "642cf5cfa7d91863", "n_legal": 7, "chosen": "i_const_factor@Integral(-6*x*sin(3*x**2 + 4*x), x)#1e7b68b25e49d115", "score": -41.266}
+{"episode_id": "L6-s9103", "step_id": 5, "state_hash": "1e7b68b25e49d115", "legal_set_hash": "ff22399953e5c786", "n_legal": 6, "chosen": "trigsimp#e5c6a9fd378f7013", "score": -57.8908}
+{"episode_id": "L6-s9103", "step_id": 6, "state_hash": "e5c6a9fd378f7013", "legal_set_hash": "e71d2bd556941da5", "n_legal": 5, "chosen": "expand#1e7b68b25e49d115", "score": -50.1901}
+{"episode_id": "L6-s9103", "step_id": 7, "state_hash": "1e7b68b25e49d115", "legal_set_hash": "ff22399953e5c786", "n_legal": 6, "chosen": "trigsimp#e5c6a9fd378f7013", "score": -57.8908}
+{"episode_id": "L6-s9103", "step_id": 8, "state_hash": "e5c6a9fd378f7013", "legal_set_hash": "e71d2bd556941da5", "n_legal": 5, "chosen": "expand#1e7b68b25e49d115", "score": -50.1901}
+{"episode_id": "L6-s9103", "step_id": 9, "state_hash": "1e7b68b25e49d115", "legal_set_hash": "ff22399953e5c786", "n_legal": 6, "chosen": "trigsimp#e5c6a9fd378f7013", "score": -57.8908}
+{"episode_id": "L6-s9103", "step_id": 10, "state_hash": "e5c6a9fd378f7013", "legal_set_hash": "e71d2bd556941da5", "n_legal": 5, "chosen": "expand#1e7b68b25e49d115", "score": -50.1901}
+{"episode_id": "L6-s9103", "step_id": 11, "state_hash": "1e7b68b25e49d115", "legal_set_hash": "ff22399953e5c786", "n_legal": 6, "chosen": "trigsimp#e5c6a9fd378f7013", "score": -57.8908}
+{"episode_id": "L6-s9103", "outcome": "budget_exhausted"}
+{"episode_id": "L6-s9104", "step_id": 0, "state_hash": "916bb585f1535062", "legal_set_hash": "39e72765139d96db", "n_legal": 6, "chosen": "i_heurisch@Integral((7*x**4 + 56*x**3 + 65*x**2 + 14*x - 16)/(x**4 + 8*x**3 + 18*x**2 + 8*x + 1), x)#6cd4538a13cf8867", "score": -28.8923}
+{"episode_id": "L6-s9104", "outcome": "solved"}
+{"episode_id": "L6-s9105", "step_id": 0, "state_hash": "5c915fda56ae909b", "legal_set_hash": "c35fce977eab2ee6", "n_legal": 8, "chosen": "i_heurisch@Integral(((x**2 + 1)*((16*x + 4)*exp(2*x**2 + x + 2) + 5) + 9)/(x**2 + 1), x)#d16c0a3f19c7db15", "score": -4.4865}
+{"episode_id": "L6-s9105", "outcome": "solved"}
+{"episode_id": "L6-s9106", "step_id": 0, "state_hash": "b2d5425db19e138f", "legal_set_hash": "580db79ba4325caa", "n_legal": 7, "chosen": "i_heurisch@Integral(x*(9*x**3 - 6*x**2 + 10*x - 2)/(9*x**4 - 6*x**3 + 7*x**2 - 2*x + 1), x)#386cb940119f24f2", "score": -31.9895}
+{"episode_id": "L6-s9106", "outcome": "solved"}
+{"episode_id": "L6-s9107", "step_id": 0, "state_hash": "f7e1fa2a51794465", "legal_set_hash": "642cb3457d5e6ed2", "n_legal": 7, "chosen": "i_heurisch@Integral((40*x - 12)*exp(x*(5*x - 3)) - 27*exp(2*x)*sin(3*x) + 18*exp(2*x)*cos(3*x), x)#6ed7897a3c803442", "score": -12.2935}
+{"episode_id": "L6-s9107", "outcome": "solved"}
+{"episode_id": "L6-s9108", "step_id": 0, "state_hash": "3b3bf68216102423", "legal_set_hash": "62f41495b9bc95f7", "n_legal": 7, "chosen": "together#f7c15ac351bd239d", "score": -152.3853}
+{"episode_id": "L6-s9108", "step_id": 1, "state_hash": "f7c15ac351bd239d", "legal_set_hash": "9690ed0675b5584d", "n_legal": 6, "chosen": "factor#1dba2005333d3274", "score": -309.1958}
+{"episode_id": "L6-s9108", "step_id": 2, "state_hash": "1dba2005333d3274", "legal_set_hash": "10882b232b8f1266", "n_legal": 6, "chosen": "trigsimp#848b8fa35d2e2e80", "score": -269.9883}
+{"episode_id": "L6-s9108", "step_id": 3, "state_hash": "848b8fa35d2e2e80", "legal_set_hash": "e2187ffbff947167", "n_legal": 5, "chosen": "factor#1dba2005333d3274", "score": -270.3089}
+{"episode_id": "L6-s9108", "step_id": 4, "state_hash": "1dba2005333d3274", "legal_set_hash": "10882b232b8f1266", "n_legal": 6, "chosen": "trigsimp#848b8fa35d2e2e80", "score": -269.9883}
+{"episode_id": "L6-s9108", "step_id": 5, "state_hash": "848b8fa35d2e2e80", "legal_set_hash": "e2187ffbff947167", "n_legal": 5, "chosen": "factor#1dba2005333d3274", "score": -270.3089}
+{"episode_id": "L6-s9108", "step_id": 6, "state_hash": "1dba2005333d3274", "legal_set_hash": "10882b232b8f1266", "n_legal": 6, "chosen": "trigsimp#848b8fa35d2e2e80", "score": -269.9883}
+{"episode_id": "L6-s9108", "step_id": 7, "state_hash": "848b8fa35d2e2e80", "legal_set_hash": "e2187ffbff947167", "n_legal": 5, "chosen": "factor#1dba2005333d3274", "score": -270.3089}
+{"episode_id": "L6-s9108", "step_id": 8, "state_hash": "1dba2005333d3274", "legal_set_hash": "10882b232b8f1266", "n_legal": 6, "chosen": "trigsimp#848b8fa35d2e2e80", "score": -269.9883}
+{"episode_id": "L6-s9108", "step_id": 9, "state_hash": "848b8fa35d2e2e80", "legal_set_hash": "e2187ffbff947167", "n_legal": 5, "chosen": "factor#1dba2005333d3274", "score": -270.3089}
+{"episode_id": "L6-s9108", "step_id": 10, "state_hash": "1dba2005333d3274", "legal_set_hash": "10882b232b8f1266", "n_legal": 6, "chosen": "trigsimp#848b8fa35d2e2e80", "score": -269.9883}
+{"episode_id": "L6-s9108", "step_id": 11, "state_hash": "848b8fa35d2e2e80", "legal_set_hash": "e2187ffbff947167", "n_legal": 5, "chosen": "factor#1dba2005333d3274", "score": -270.3089}
+{"episode_id": "L6-s9108", "outcome": "budget_exhausted"}
+{"episode_id": "L6-s9109", "step_id": 0, "state_hash": "452b5adc84264d3c", "legal_set_hash": "37f0c02b29ec97a8", "n_legal": 7, "chosen": "i_unprod@Integral((6*x - 2)*exp(3*x**2 - 2*x + 3) + 10*exp(2*x)*sin(3*x) + 15*exp(2*x)*cos(3*x), x)#dbedcfd0635da74c", "score": -6.5358}
+{"episode_id": "L6-s9109", "step_id": 1, "state_hash": "dbedcfd0635da74c", "legal_set_hash": "9661803aab5d1909", "n_legal": 6, "chosen": "i_linear_basis@Integral(10*exp(2*x)*sin(3*x) + 15*exp(2*x)*cos(3*x), x)#1cea8255a23344f6", "score": -6.1101}
+{"episode_id": "L6-s9109", "outcome": "solved"}
+{"episode_id": "L7-s9100", "step_id": 0, "state_hash": "d7d52581e76ab0e9", "legal_set_hash": "ba55a2beb8c50708", "n_legal": 3, "chosen": "i_sqrt_basis@Integral(2/sqrt(x), x)#ab4e1248b9406c00", "score": -12.8122}
+{"episode_id": "L7-s9100", "outcome": "solved"}
+{"episode_id": "L7-s9101", "step_id": 0, "state_hash": "c5267eaf18fd655a", "legal_set_hash": "ccbcb4e302ce1da1", "n_legal": 7, "chosen": "i_const_factor@Integral(27*sqrt(6*x + 4), x)#37439435fccd2906", "score": -15.3493}
+{"episode_id": "L7-s9101", "step_id": 1, "state_hash": "37439435fccd2906", "legal_set_hash": "b94a8293c10786c9", "n_legal": 5, "chosen": "i_heurisch@Integral(sqrt(6*x + 4), x)#4767b3cd03482dd8", "score": -31.8414}
+{"episode_id": "L7-s9101", "outcome": "solved"}
+{"episode_id": "L7-s9102", "step_id": 0, "state_hash": "831916b512d019e9", "legal_set_hash": "f03b678c1b36ab0b", "n_legal": 8, "chosen": "i_linear_basis@Integral(2*log(4*x)*cos(2*x + 3) + sin(2*x + 3)/x, x)#1d39e521c52a9134", "score": -23.6255}
+{"episode_id": "L7-s9102", "outcome": "solved"}
+{"episode_id": "L7-s9103", "step_id": 0, "state_hash": "b227cea966617f8c", "legal_set_hash": "2860b0d871605038", "n_legal": 9, "chosen": "i_sum@Integral(2*(4*x - 3)*cos(2*x**2 - 3*x + 3) + 18, x)#698134647ac5a225", "score": -14.7325}
+{"episode_id": "L7-s9103", "step_id": 1, "state_hash": "698134647ac5a225", "legal_set_hash": "850eb49f98732af9", "n_legal": 10, "chosen": "i_const@Integral(18, x)#d3bb7500d5e72d43", "score": -15.4963}
+{"episode_id": "L7-s9103", "step_id": 2, "state_hash": "d3bb7500d5e72d43", "legal_set_hash": "e437111e161e047c", "n_legal": 9, "chosen": "i_linear_basis@Integral(2*(4*x - 3)*cos(2*x**2 - 3*x + 3), x)#f0bbfd7734d57bc1", "score": -13.5095}
+{"episode_id": "L7-s9103", "outcome": "solved"}
+{"episode_id": "L7-s9104", "step_id": 0, "state_hash": "9dbe205e29b03f69", "legal_set_hash": "8fad5a9a89190863", "n_legal": 5, "chosen": "i_linear_basis@Integral(-12*sin(2*x), x)#7343b07691505daa", "score": -3.5805}
+{"episode_id": "L7-s9104", "outcome": "solved"}
+{"episode_id": "L7-s9105", "step_id": 0, "state_hash": "a20e82470a93fb20", "legal_set_hash": "792bd3457a0042d1", "n_legal": 5, "chosen": "i_unprod@Integral(2*x*(3*x + 1)*cos(x*(3*x + 2)) + sin(x*(3*x + 2)), x)#4a933031fb713551", "score": -6.1614}
+{"episode_id": "L7-s9105", "outcome": "solved"}
+{"episode_id": "L7-s9106", "step_id": 0, "state_hash": "25cc6919d9a77613", "legal_set_hash": "1ed546329b0639a0", "n_legal": 6, "chosen": "together#f98cb8cc22e8a46c", "score": -58.3518}
+{"episode_id": "L7-s9106", "step_id": 1, "state_hash": "f98cb8cc22e8a46c", "legal_set_hash": "9de91070c4a220cc", "n_legal": 6, "chosen": "i_heurisch@Integral((sqrt(1 - x**2)*(12*x + 2*(4*x + 1)*exp(4*x**2 + 2*x + 5) - 7) + 6)/sqrt(1 - x**2), x)#d1eaedbd057639eb", "score": -63.4447}
+{"episode_id": "L7-s9106", "outcome": "solved"}
+{"episode_id": "L7-s9107", "step_id": 0, "state_hash": "c3cc1583599f4658", "legal_set_hash": "b3c09b2a0cfe1171", "n_legal": 5, "chosen": "i_const_factor@Integral(27*sqrt(3*x + 2), x)#f6b1719516eca91d", "score": -8.5551}
+{"episode_id": "L7-s9107", "step_id": 1, "state_hash": "f6b1719516eca91d", "legal_set_hash": "261a003123a41164", "n_legal": 3, "chosen": "i_heurisch@Integral(sqrt(3*x + 2), x)#bf0a74a48f3c2e99", "score": -34.2191}
+{"episode_id": "L7-s9107", "outcome": "solved"}
+{"episode_id": "L7-s9108", "step_id": 0, "state_hash": "1d7eddac40aae288", "legal_set_hash": "03c79b8035d941ff", "n_legal": 9, "chosen": "i_heurisch@Integral(6*((2*x + 3)*log(x*(2*x + 3))*log(log(x*(2*x + 3))) + (4*x + 3)*log(x))/(x*(2*x + 3)*log(x*(2*x + 3))), x)#130b348a9c83ccab", "score": -9.7381}
+{"episode_id": "L7-s9108", "outcome": "solved"}
+{"episode_id": "L7-s9109", "step_id": 0, "state_hash": "75d3b71f50b76e8a", "legal_set_hash": "468cd0d7bbb3eba4", "n_legal": 2, "chosen": "i_const@Integral(18, x)#36ebec90de528df7", "score": -2.1007}
+{"episode_id": "L7-s9109", "outcome": "solved"}
+{"meta": {"start": {"start_commit": "deb6a593", "start_status_porcelain": " M scripts/INDEX.md\n", "interpreter": "/Users/artin/code/llmopt/.venv/bin/python", "file_sha256": {"scratch/mathworld1_liveness.py": "7e0baa8bf1f04addb93e3b06a2d68cbf9bcca8f49fa61a52459666acb76378ca", "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad", "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87", "llmopt/mathgen/problems.py": "9f1dcac61712696b2b7f9e65585d33d26865edf6b60f338977f09a792fe51215", "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61"}}, "completion_commit": "deb6a593"}}
