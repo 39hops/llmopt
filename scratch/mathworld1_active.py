@@ -456,9 +456,6 @@ def main():
     return 0 if verdict["pass"] else 3
 
 
-if __name__ == "__main__":
-    sys.exit(main())
-
 
 def real_main(START, ck_sha, tok, dev, load, ep):
     """REAL one-shot: contamination audit -> ADAPT (seed-major
@@ -611,3 +608,8 @@ def real_main(START, ck_sha, tok, dev, load, ep):
           f"{verdict['minlen_diag']['solves']}/40 | "
           f"updates {active.updates}", flush=True)
     return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
