@@ -43270,3 +43270,108 @@ forks never count toward actionable repairable mass. No
 COUNTERFACTUAL-CREDIT treatment or prereg follows without a
 fresh GO.
 
+## OBSERVATION TRANSITION-BASIS-SPARSITY-RETRACTION-0: formal ledger ID for the RIFF-LEDGER TRANSITION-BASIS CORRECTION of 2026-08-23 — the "median 76-token delta / sparsity premise measurably holds" reading is RETRACTED (2026-08-23, Mac)
+
+Provenance anchor only (no new measurement): the LONGCTX P2
+medians (205 chosen edges, median 76, p90 137, max 437) measure
+the FULL scoring sequence — parent prefix + full child + newline
+— never action-label or residual length, so they are NOT
+evidence of delta sparsity; delta sparsity in this engine is
+UNMEASURED. The full four-point correction (dense-state
+training, rule@target incompleteness v same-label siblings,
+this retraction, and the narrowed overflow claim) lives in the
+RIFF-LEDGER TRANSITION-BASIS bank CORRECTION (commit dd63de1a).
+This entry exists so docs/claims.deny.json provenance resolves
+to the entry that WITHDREW the phrase.
+
+## PRE-REG MATH-CYBER-1-TERMINAL-DOMINANCE-0: terminal-miss census — at how many recorded theta_0-scored decision states was a terminal-solved child LEGAL, and did the argmax controller take it? (2026-08-23, Mac)
+
+Motivation (GPT source review of 4dbfc403, house-verified at
+scratch/mathworld1_active.py run_pair: candidates are scored,
+the argmax is selected, and is_solved(child) is checked only
+AFTER selection — no terminal filter exists, so the controller
+can walk away from an immediately available solved child; the
+FRONTIER L6-s9300 rescue was exactly such a child at theta_0
+rank 6/6). This census SEPARATES the controller-baseline defect
+(terminal misses, fixable by an exact override with no
+learning) from genuine counterfactual information (the
+L7-s9303 class, where the rescuing alternative needs
+continuation depth 8). NEW controller-baseline pricing, never a
+retroactive amendment of ACTIVE-EPISODIC-0 or any booked
+verdict. Zero training, outcome-spent data only, no fresh
+bands.
+
+POPULATION (fixed): every recorded theta_0-scored decision
+state — CALIBRATION liveness rows (logs/mathworld1/
+liveness.jsonl, 40 episodes, theta_0) + ADAPT and HOLDOUT
+FROZEN-arm rows (logs/mathworld1/active_pair.jsonl, arm FROZEN,
+80 episodes, weights = theta_0 by construction). ACTIVE-arm
+rows are EXCLUDED: the mid-stream weights that scored them are
+unrecoverable (only theta_0 and the final checkpoint exist), so
+their ranks cannot be reconstructed; exclusion disclosed with
+counts, never silently.
+
+INSTRUMENT. theta_0 immutable (52fd1aff...), GCTok, serial B=1
+teacher-forced scorer, tie-break (-score, name, child.key()),
+ctx 4096, overflow law; fresh desk-world snapshot
+(full-key-keyed, _RULE_CACHE cleared before each new state's
+first materialization, RULE_WALL 2.0, idle machine). Binding
+replay per episode exactly as FRONTIER-DESK-0 (state_hash +
+legal_set_hash + n_legal + recorded action existence asserted;
+advance by RECORDED child; any mismatch books that episode
+WORLD-NONCOMPARABLE for the census with its bound prefix
+counted and disclosed — L4-s9405 is expected to reproduce its
+step-8 mismatch).
+
+CENSUS FIELDS (registered, per decision state): terminal-child
+count in the legal set (is_solved on each child, a world
+predicate, no model); for states with >=1 terminal child:
+theta_0 rank of EVERY terminal child (full re-score of the
+legal set), whether the RECORDED chosen child was terminal,
+chosen-score minus best-terminal-score margin, and the eventual
+recorded episode outcome. A TERMINAL MISS = a state with >=1
+legal terminal child where the recorded choice was
+non-terminal.
+
+REPORT (registered): total decision states censused / with
+>=1 terminal child / terminal misses; misses by band and by
+eventual episode outcome (a miss in a still-solved episode
+costs decisions; a miss in a failed episode is a candidate
+proximate cause); rank distribution of missed terminal
+children; margin distribution. Registered invariant stated for
+the record: a solve-maximizing controller should
+deterministically select a terminal child before invoking the
+learned scorer — the census measures how far the shipped
+argmax controller is from that invariant.
+
+REGISTERED PRIOR (house): misses EXIST (the L6-s9300 step-0
+instance is already receipt-visible in FRONTIER-DESK-0) but are
+RARE among solved episodes (<5% of terminal-child states end in
+a miss that costs the episode); most terminal children are also
+theta_0's argmax (solved episodes' 35-38/40 rates require the
+controller usually taking them).
+
+REFUTED-IF: zero terminal misses across all censused states
+(then L6-s9300's step 0 must book WORLD-NONCOMPARABLE or show
+no terminal child, which its FRONTIER fork row contradicts —
+i.e. this branch also flags an instrument inconsistency).
+
+CONDITIONAL BANK (registered): if misses exist, TERMINAL-FIRST
+books in RIFF-LEDGER as the corrected controller baseline —
+exact terminal override (world predicate), learned scorer only
+when no immediate solved child exists, no HCE anywhere — as a
+BASELINE for future rungs, never a retroactive rescore of
+booked verdicts.
+
+FENCES. Single seed chain, single device (mps fp32), one-shot;
+receipts logs/mathworld1/terminal_census.jsonl +
+terminal_census_verdict.json, refuse-if-exists; SMOKE on smoke_
+paths (spent CALIBRATION episodes L4-s9100 solved + L4-s9104
+failed + a corrupted-hash tamper case) before the real run.
+Desk-world legal sets are THIS run's realized snapshot with
+per-state binding asserts; is_solved is the world's own
+predicate. Scoring happens ONLY at states with >=1 terminal
+child (cost control); rank fields exist only there. No
+treatment, no controller change, no training follows without a
+fresh GO.
+
