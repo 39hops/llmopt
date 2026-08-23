@@ -2663,6 +2663,19 @@ MATH-CYBER-1 semantic corpus exporter for the axiom interchange layer (AX-MATHWO
 - `split_label(label: str)` — (rule, rule_target sstr | None) from an enumerator label.
 - `main()`
 
+### scratch/mathworld1_frontier.py
+MATH-CYBER-1 FRONTIER-DESK-0 one-deviation repairability census (PRE-REG MATH-CYBER-1-FRONTIER-DESK-0, commit 4b2ae5af).
+
+- `sha(t: str) -> str`
+- `class World` (materialize, legal)
+- `class Scorer` (score, rank_candidates)
+- `run_continuation(start_state, world, scorer)` — Frozen theta_0 greedy walk from start_state at the MAXIMUM
+- `truncate(trace, horizon)` — Outcome of the memoized max-horizon continuation when only
+- `load_recorded(eid, stage)` — Recorded FROZEN decision rows for one root, step order.
+- `reconstruct(eid, root, rec, world, scorer)` — Binding replay of the recorded trajectory. Returns
+- `fork_root(eid, root, rec, world, scorer, sink, max_forks_per_site=None)`
+- `main()`
+
 ### scratch/mathworld1_liveness.py
 MATH-CYBER-1 theta_0 CALIBRATION liveness qualification (PRE-REG MATH-CYBER-1-THETA0-BIRTH-0). Frozen test: CALIBRATION seeds 9100-9109 x L4-7 (40 episodes), 12-decision budget, 60 s per-episode wall safety cap; policy = serial B=1 full teacher-forced scoring of every legal candidate (score = sum log p over child tokens incl. terminating newline), argmax, tie-break (score, rule name, child key); overflow law: any candidate sequence > 4096 tokens -> decision unscorable, episode model_ctx_overflow. NO hce anywhere in the model arm. Bar: >= 1/40 solved; full result reported either way.
 
