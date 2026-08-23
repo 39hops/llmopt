@@ -2624,6 +2624,15 @@ MATH-CYBER-0 rung 0, cold-process replay qualification (GPT post-booking fence):
 
 - `main()`
 
+### scratch/mathworld1_active.py
+MATH-CYBER-1 ACTIVE-EPISODIC-0 lockstep paired driver (PRE-REG MATH-CYBER-1-ACTIVE-EPISODIC-0, commit 73c063af). Two arms — ACTIVE-EPISODIC (success-gated episode-boundary updates) and FROZEN (theta_0, zero updates) — share theta_0, episode order, roots, budgets, overflow law, and ONE world snapshot, in ONE driver.
+
+- `sha(t: str) -> str`
+- `class World` (materialize, legal)
+- `class Arm` (score, update_on)
+- `run_pair(episodes, world, arms, tok, ctx_overrides, sink, stage, update_active=True)` — Lockstep: both arms walk each episode in parallel steps.
+- `main()`
+
 ### scratch/mathworld1_birth.py
 MATH-CYBER-1 theta_0 one-shot birth (PRE-REG MATH-CYBER-1-THETA0-BIRTH-0; prereg commit 6d013acf, BEFORE any weight existed). Grammar-closed tokenizer (ATOMS ids 0..39 + 256 UTF-8 byte-fallback ids = vocab 296), base diet only (micromodel_chains_shard*.jsonl + step_chains.jsonl), SEQ cap 512 (drops counted), build_model(296, ctx=4096), fp32 mps, BIRTH_SEED=9001, AdamW lr 3e-4 wd 0.01, OneCycle pct_start 0.03, clip 1.0, BS=32 nopack (length-sorted enc, per-epoch random.Random(ep) shuffle of batch starts — the historic stream), EPOCHS=3, final-epoch weights = theta_0, NO selection of any kind.
 
