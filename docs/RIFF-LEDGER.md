@@ -8768,3 +8768,40 @@ honest status column).
   retrieval. Attribution: Artin (the ask + the overlap/n-gram
   intuition), GPT (formalization + arm taxonomy), house
   (prior-art grounding, charter fence, control-arm framing).
+  IN-PLACE NOTE (2026-08-23, GPT + Artin follow-up, house
+  cross-link): treat the proposal explicitly as a TEMPORAL
+  CHANGE OF COORDINATES. For literal finite differences,
+  (F_0, Delta_0..Delta_{T-1}) is information-EQUIVALENT to
+  ordered frames (a bijection), while Delta-only carries a
+  constant-sequence/nullspace ambiguity — so the high-value arm
+  is ANCHOR+DELTA, never transition-only. The efficiency
+  hypothesis therefore requires COMPRESSIBILITY/SPARSITY of the
+  residual, not mere differencing: a dense residual has the same
+  dimensionality as a dense frame. Bar currency:
+  tokens/bytes/FLOPs/wall at MATCHED semantic accuracy.
+  First adversarial control: global camera motion (a global
+  transform makes every pixel-delta dense while the semantic
+  delta is one token, "pan left"); eventual decomposition =
+  global transform + local residual events. Cross-linked as the
+  general repo question STATE BASIS v TRANSITION BASIS.
+  HOUSE CASH-OUT (MathWorld, per-question): MathNative already
+  trains on edges (diet rows are cur/nxt pairs; the anchor is
+  the parent in the prompt) — but it SCORES dense states: every
+  candidate is a full child expression, and that is precisely
+  why the model_ctx_overflow failure class exists (L6-s9403,
+  L6-s9100: one long candidate encoding kills the whole
+  decision). The world's own delta representation already
+  exists — the action label "rule@target" — and is tiny and
+  closed-vocabulary. Testable residue added: an ACTION-SCORING
+  arm (score/emit rule@target deltas against the parent anchor,
+  world expands the state) v the standing STATE-SCORING arm,
+  same episodes, same oracle; deletes the overflow class by
+  construction and prices whether the transition basis is the
+  cheaper sufficient statistic IN OUR OWN ENGINE. Sparsity
+  premise measurably holds here: median chosen-edge target 76
+  tokens v multi-hundred-token child states
+  (LONGCTX-POPULATIONS). Attribution: Artin ("tell it once what
+  reality is, then how reality changes" + the per-question math
+  ask), GPT (change-of-coordinates note, nullspace caveat,
+  matched-accuracy currency, camera-motion control), house (the
+  overflow cash-out + action-scoring arm).
