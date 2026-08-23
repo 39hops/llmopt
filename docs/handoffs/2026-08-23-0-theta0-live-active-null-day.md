@@ -3,9 +3,9 @@
 Seat: Fable 5 on the Mac, Artin home (overnight session, GPT
 reviews relayed continuously, each point house-verified). HEAD at
 close = this handoff commit. Mac idle, 3080 idle (never touched —
-WSL was down most of the session with a Mac-side Local Network
-permission block, fixed by Artin), nothing armed, no watchers
-live. wsl-axiom seat opened by Artin with relay 2026-08-22-0;
+WSL/sshd was UP the whole session; the Mac's LAN access to it was
+blocked by the terminal app's macOS Local Network permission,
+which Artin re-granted), nothing armed, no watchers live. wsl-axiom seat opened by Artin with relay 2026-08-22-0;
 corpus-delivery relay 2026-08-22-1 written and PARKED (not yet
 delivered).
 
@@ -27,8 +27,10 @@ delivered).
   -POPULATIONS (eb734986): cached scorer correct (9.8e-6, 16/16)
   and REJECTED (~30x slower on mps); batching also loses
   (0.92x); execution law = serial B=1 full teacher-forced
-  forwards; training targets are ALL <=512 (205/205 solved-edge
-  census) so the 4096 window costs training nothing; >4096 tail
+  forwards; the measured TRAIN-band successful chosen-edge
+  population is 205/205 <=512 (LONGCTX-POPULATIONS P2 census; a
+  band-scoped measurement, not a universal training-target law)
+  so the 4096 window costs that training population nothing; >4096 tail
   is one-failed-episode concentrated; theta_0 liveness bar
   registered pre-birth.
 - PRE-REG THETA0-BIRTH-0 (6d013acf, before any weight) ->
@@ -78,11 +80,14 @@ delivered).
 
 1. **FRONTIER-REPAIRABILITY DESK** (the cheap decisive step):
    for the 4 HOLDOUT + 2 ADAPT failures, one-step-deviation +
-   frozen-theta_0-continuation census. If NO failure is locally
-   repairable, COUNTERFACTUAL-CREDIT's best case is bounded near
-   zero on this band and the interesting lever moves to
-   horizon/curriculum; if some are, the fork treatment has a
-   priced target. Zero model training; world-walk cost only.
+   frozen-theta_0-continuation census. A null desk bounds ONLY
+   the ONE-DEVIATION + frozen-theta_0-continuation repair class
+   on this band; multi-deviation and learned-continuation repair
+   stay OPEN, so COUNTERFACTUAL-CREDIT is not killed by a desk
+   null — its simplest (top1-v-top2 single-fork) design loses
+   its priced target. If some failures ARE repairable, the fork
+   treatment has a priced target. Zero model training;
+   world-walk cost only.
 2. Then COUNTERFACTUAL-CREDIT desk/prereg (dose-matched v
    success-only) — only if (1) shows repairable mass.
 3. Deliver relay 2026-08-22-1 (corpus) to the axiom seat
