@@ -8669,3 +8669,50 @@ honest status column).
   update. The shape is general search methodology; no
   chemistry-domain development, ever, under the standing
   charter.
+
+- **BANKED (2026-08-23): SUCCESS-ONLY-FIXED-POINT — the
+  self-confirming attractor of positive-only gating** (GPT
+  naming off the ACTIVE-EPISODIC-0 verdict; house-measured
+  anchors; a fixed-point-LIKE attractor, explicitly NOT an exact
+  parameter/policy fixed point). Measured anchors (VERDICT
+  MATH-CYBER-1-ACTIVE-EPISODIC-0): ACTIVE entered ADAPT at
+  38/40-class competence; all 38 successes produced
+  self-imitation updates and both failures produced zero
+  gradient; weights and scores moved, but observed same-state
+  top-1 movement was 2/75 ADAPT + 4 HOLDOUT, all
+  solve/fail-neutral; final paired solve indicators identical
+  36/40 (clean subset 29/33 tie). Mechanism: deterministic
+  argmax + positive-only success gating reinforces exactly the
+  already-selected successful actions, failed states receive no
+  direct corrective signal, and cross-state parameter
+  generalization is the only escape route. Registered
+  prediction: marginal frontier movement FALLS as initial
+  competence approaches ceiling. Fence: one dose, one substrate,
+  one seed chain — a measured attractor observation, not a
+  universal law.
+
+- **BANKED (2026-08-23): COUNTERFACTUAL-CREDIT — the next
+  discriminating feedback operator is information TOPOLOGY, not
+  a larger LR** (GPT proposal off the null; bank only). At a
+  state, choose alternatives OUTCOME-BLIND (e.g. frozen-policy
+  top-1 v top-2), force each once, continue BOTH with the same
+  frozen continuation policy over the remaining registered
+  horizon, and let the exact MathWorld solve/fail adjudicate the
+  fork; train preference ONLY from outcome-DIFFERING forks. hce
+  never the reward. Any future comparison against success-only
+  must match update/gradient dose. The question the bank holds:
+  can difference-bearing feedback move the frontier that
+  confirmation-only feedback measurably did not?
+
+- **BANKED (2026-08-23): FRONTIER-REPAIRABILITY — desk the
+  failed-case mechanism before any counterfactual treatment**
+  (GPT, bank only; design exact receipts before running). For
+  each failed trajectory: does ANY visited state carry a
+  one-step legal deviation that SOLVES when followed by frozen
+  theta_0 for the remaining registered horizon? Separates
+  locally policy-repairable failures from deeper
+  horizon/context/world limitations, and prices
+  COUNTERFACTUAL-CREDIT's best case before it runs.
+  Companion note: ONLINE-v-REPLAY stays alive but DEPRIORITIZED
+  — replay timing is weakly discriminating until the feedback
+  operator itself produces a behavioral effect.

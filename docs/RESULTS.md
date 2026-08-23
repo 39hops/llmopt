@@ -42994,3 +42994,23 @@ diagnostic-loop color with the wall asymmetry above. ADAPT
 acquisition numbers are stream-conditional (updates during the
 stream), never comparable to HOLDOUT numbers.
 
+## AMENDMENT MATH-CYBER-1-ACTIVE-EPISODIC-0-WORDING: "double null" -> "PERFECT refuted + feedback null"; the 6 divergences are OBSERVED SAME-STATE TOP-1 divergences (unshared post-divergence states admit no direct choice comparison); "no degradation" -> "no solve-count degradation" (2026-08-23, Mac)
+
+Amends VERDICT MATH-CYBER-1-ACTIVE-EPISODIC-0, outside review,
+wording only — no number changes. (a) PERFECT is a failed
+ENDPOINT PREDICTION; ACTIVE>FROZEN is the NULL CONTRAST; "double
+null" conflated the two classes and is retired as scientific
+characterization. (b) "38 updates changed 6 choices total"
+overstates the observable: the correct statement is 6 OBSERVED
+same-state top-1 divergences (2/75 shared ADAPT decisions + 4
+same-state HOLDOUT decisions); once trajectories diverge, the
+arms visit unshared states where no direct choice comparison
+exists, so total choice change is not observable at this grain.
+(c) "no degradation" narrows to "no SOLVE-COUNT degradation":
+paths and termination mechanisms did move (ACTIVE 75 v FROZEN 76
+ADAPT decisions; L4-s9405 mechanism split). (d) MINLEN fence
+restated: 37/40 is structural color under NON-PARITY wall
+accounting, never a "beats the model" headline; a
+parity-corrected MINLEN comparison is future bankable work, not
+the next treatment.
+
