@@ -8902,3 +8902,31 @@ honest status column).
   Attribution: GPT (operator design), Artin (relay + GO
   structure), house (anchors, breaks, terminal-defect
   separation).
+
+- **BANKED (2026-08-23): TERMINAL-FIRST — the corrected
+  controller baseline: exact terminal override before the
+  learned scorer** (GPT proposal off the FRONTIER L6-s9300
+  anatomy; house measured + banked; the TERMINAL-DOMINANCE-0
+  registered conditional, condition met). Law: if any legal
+  child is terminal-solved (the world's own is_solved
+  predicate, no model, no hce), a solve-maximizing controller
+  selects a terminal child deterministically; the learned
+  scorer is consulted ONLY when no immediate solved child
+  exists. Measured anchors (VERDICT
+  MATH-CYBER-1-TERMINAL-DOMINANCE-0, RESULTS L43378): 21/130
+  terminal-child states missed by the shipped argmax (all at
+  steps 0-1, 15 at rank 2), 2 episode-costing; derived exact:
+  theta_0 becomes 36/40 CALIBRATION / 39/40 FROZEN ADAPT /
+  36/40 HOLDOUT under the override. Honest breaks: baseline
+  for FUTURE rungs only — never a retroactive rescore of
+  booked verdicts (all booked numbers are measurements of the
+  argmax controller); on-path census, off-path terminal
+  children unmeasured; the override changes the controller's
+  exploration distribution, so any future learning rung
+  re-prices its own frontier. Testable residue: every future
+  MATH-CYBER controller arm carries TERMINAL-FIRST as its
+  default decision rule (or registers why not), and the
+  ACTION-BASIS desk should report terminal-recognition
+  separately from transition scoring. Attribution: GPT
+  (invariant + baseline design), house (census instrument,
+  counts, derivation), Artin (relay/GO).

@@ -43375,3 +43375,124 @@ child (cost control); rank fields exist only there. No
 treatment, no controller change, no training follows without a
 fresh GO.
 
+## VERDICT MATH-CYBER-1-TERMINAL-DOMINANCE-0: terminal misses EXIST and are an early-state, near-miss phenomenon — 21 misses at 130 terminal-child states (16.2%), every one at step 0 or 1, 15/21 with the terminal at rank 2; 2 misses cost their episodes (L6-s9103, L6-s9300), so an exact terminal override would raise theta_0 to 36/40 CALIBRATION and 39/40 FROZEN ADAPT with HOLDOUT unchanged (2026-08-23, Mac)
+
+Adjudicates PRE-REG MATH-CYBER-1-TERMINAL-DOMINANCE-0
+(a3759d06). One-shot, launch code_commit e7a67e63, driver sha
+adb0bd2c... (committed bytes == launched bytes; completion
+commit c20d3fee, span diff = one RIFF-LEDGER bank, zero
+instrument files; the pre-commit smoke ran the byte-identical
+untracked driver, identity carried by file_sha256), smoke 6/6
+retained on smoke_ paths (replay, tamper/mismatch branch,
+solved-episode last-decision-terminal invariant, scoring,
+argmax-report, field completeness). Receipts:
+logs/mathworld1/terminal_census.jsonl (265 state + 120 episode
++ 1 meta rows) + terminal_census_verdict.json; recorded
+trajectories from frozen liveness.jsonl (CALIBRATION, theta_0)
+and active_pair.jsonl (arm FROZEN, ADAPT/HOLDOUT). theta_0
+52fd1aff... (derived), device mps, wall 738 s (receipted),
+zero training. ACTIVE-arm decision rows EXCLUDED as registered:
+164 rows (mid-stream weights unrecoverable), disclosed here.
+
+CENSUS (registered fields; fixed population): 120 episodes
+replayed, 0 WORLD-NONCOMPARABLE (L4-s9405's step-8 mismatch
+did NOT reproduce this run — its recorded FROZEN trajectory
+bound all 9 states here, consistent with the load-dependence
+fence: the mismatch is run-conditional, not sticky), 265
+decision states censused, 130 with >=1 legal terminal child,
+109/130 recorded choices took a terminal (83.8%), 21 TERMINAL
+MISSES across 20 episodes. Re-scored argmax matches the
+recorded choice at 130/130 scored terminal-child states
+(REPORTED reconstruction metadata — a non-trivial cross-process
+reproduction under mps run-level nondeterminism; its uniformity
+means it contributed no discriminating signal, not that the
+check was unexercised).
+
+MISS ANATOMY: every miss is at step 0 (20) or step 1 (1) — the
+missed terminals are whole-integral direct solves available at
+or near the root. Best-terminal rank distribution over misses:
+rank 2 x15, rank 3 x4, rank 6 x1, rank 7 x1. Chosen-minus-
+best-terminal margins over the 21 misses: min 0.029 (L7-s9103 —
+a coin-flip distance from taking the solve), median 8.49, p90
+114.9, max 3322.3 (L6-s9103, the terminal ranked LAST at 7/7). By band: 7 CALIBRATION, 7 ADAPT,
+7 HOLDOUT; by eventual outcome: 19/21 in episodes that solved
+anyway (cost = extra decisions, the path-length class), 2/21 in
+budget_exhausted episodes — L6-s9103 (rank 7/7, margin 3322.3)
+and L6-s9300 (rank 6/6, margin 474.4; the FRONTIER-DESK-0
+rescue instance, here confirmed as a controller defect, not
+counterfactual information).
+
+DERIVED COUNTERFACTUAL (desk-exact by prefix identity): a
+TERMINAL-FIRST controller (exact world-predicate override
+before invoking the scorer) walks an identical prefix to the
+recorded trajectory until the first terminal-child state, then
+solves immediately. Applied to the recorded populations:
+CALIBRATION theta_0 35/40 -> 36/40 (L6-s9103 flips); FROZEN
+ADAPT 38/40 -> 39/40 (L6-s9300 flips); FROZEN HOLDOUT 36/40
+unchanged (none of its four failures has a terminal-child
+state on its bound recorded path). Both flipped misses sit at
+STEP 0, so the shared prefix is empty and the derivation is
+trivially exact for them. This is a zero-run
+derivation over the census rows, not a new experiment; it
+holds exactly because the override differs from the recorded
+controller only at terminal-child states and every recorded
+failure path contains at most its listed terminal states.
+
+ADJUDICATION v REGISTERED PRIOR: "misses EXIST" FIRED.
+Bar 2 carries a READING FORK, named here rather than silently
+resolved: the registered parenthetical — "<5% of terminal-child
+states end in a miss that costs the episode" — is the
+operative test and FIRES (2/130 = 1.5%; "costs the episode" is
+unambiguous, and such a miss cannot sit in a solved episode);
+the lead-in phrase "RARE among solved episodes" read as its own
+population gives 19/128 solved-episode terminal-child states
+missed = 14.8%, which would NOT fire <5%. The adjudication
+books on the parenthetical; both numbers stand above. "Most
+terminal children are also theta_0's argmax" FIRED under either
+denominator: 109/130 terminal-child STATES chose a terminal
+(83.8%), and 109 of 153 terminal CHILDREN sit at rank 1
+(71.2%; 21 states carry 2 terminals, 1 carries 3).
+REFUTED-IF (zero misses) did not fire. The registered
+invariant stands quantified: the shipped argmax controller is
+16.2% short of terminal dominance at terminal-child states,
+1.5% short in episode-outcome terms.
+
+CONDITIONAL BANK (registered condition met): TERMINAL-FIRST
+books in RIFF-LEDGER — exact terminal override via the world's
+own is_solved predicate, learned scorer only when no immediate
+solved child exists, no hce anywhere — as the corrected
+controller BASELINE for future rungs. Never a retroactive
+rescore of ACTIVE-EPISODIC-0 or any booked verdict; all booked
+numbers stand as measurements of the argmax controller.
+
+READING (within-design): the learned scorer's misses are
+concentrated exactly where FRONTIER color pointed — dense
+closed-form one-shot solutions near the root, usually ranked
+2nd by a small margin. Whether serialization
+length/predictability CAUSES the under-ranking remains
+UNMEASURED (the TRANSITION-BASIS/ACTION-BASIS hypothesis; the
+15 rank-2 near-misses are consistent with it but were not
+tested against a length control here). CONTAMINATION
+DISCLOSURE bearing on this paragraph: 6 of the 20 miss
+episodes (L5-s9301/02/05/07, L5-s9400, L5-s9407) are
+birth-diet-contaminated roots per the ACTIVE-EPISODIC-0 frozen
+audit, so miss-concentration readings carry that confound;
+NEITHER episode-costing miss (L6-s9103, L6-s9300) is
+contaminated, so the derived counterfactual above is untouched
+by it.
+
+FENCES. Single seed chain, single device (mps fp32), one-shot;
+existence/count results on these 120 recorded episodes, never
+rates beyond them. The census sees only states ON recorded
+trajectories — terminal children reachable off-path are
+invisible to it, so 16.2% is a lower-bound-flavored statement
+about recorded decision states only. Ranks/margins are theta_0
+re-scores in THIS process (mps run-level nondeterminism booked;
+argmax reproduction 130/130 reported above). The derived
+counterfactual is exact ONLY under the stated prefix-identity
+argument and the frozen-policy assumption; it books no claim
+about a terminal-override controller's behavior off these
+recorded paths. ACTIVE-arm exclusion (164 rows) is a scope
+limit, not a comparison. No controller change, no treatment,
+no training follows without a fresh GO.
+

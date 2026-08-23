@@ -2960,3 +2960,20 @@ regime tag on every bullet is the fence.
   ONLY the one-deviation + frozen-continuation repair class on
   these six roots.
   ([VERDICT MATH-CYBER-1-FRONTIER-DESK-0](RESULTS.md#L43136 "id:2026-08-23-verdict-math-cyber-1-frontier-desk").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] The theta_0
+  argmax controller misses LEGAL immediate solutions: 21 of 130
+  recorded terminal-child decision states (16.2%) chose a
+  non-terminal child — every miss at step 0-1, 15/21 with the
+  missed terminal at rank 2 (margins min 0.029 / median 8.49),
+  and 2 misses cost their episodes (L6-s9103 terminal ranked
+  7/7 at margin 3322; L6-s9300 = the FRONTIER rescue, hereby
+  reclassified controller defect, not counterfactual signal).
+  Desk-exact derivation: a TERMINAL-FIRST override (world
+  is_solved predicate before the learned scorer) lifts theta_0
+  to 36/40 CALIBRATION and 39/40 FROZEN ADAPT, HOLDOUT 36/40
+  unchanged. On-path census only (off-path terminals
+  invisible); 6/20 miss episodes are birth-diet-contaminated
+  but neither episode-costing miss is; no retroactive rescore
+  of booked verdicts.
+  ([VERDICT MATH-CYBER-1-TERMINAL-DOMINANCE-0](RESULTS.md#L43378 "id:2026-08-23-verdict-math-cyber-1-terminal-dominance").)
