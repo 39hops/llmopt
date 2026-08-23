@@ -147,6 +147,12 @@
             "reason": "PERFECT is a failed endpoint prediction and ACTIVE>FROZEN is the null contrast (never 'double null'); the 6 are OBSERVED same-state top-1 divergences only (unshared post-divergence states admit no comparison); MINLEN's 37/40 is non-parity wall-accounting color, never a beats-the-model claim.",
             "superseded_by": "2026-08-23-amendment-math-cyber-1-active-episodic-b-b",
             "scope": "math[- ]?cyber|mathworld|active[- ]episodic|minlen"
+        },
+        {
+            "pattern": "median 76[- ]token (delta|action|label)|sparsity premise measurably holds",
+            "reason": "LONGCTX P2 medians measure the FULL scoring sequence (parent prefix + full child + newline), never action-label/residual length; delta sparsity in the engine is UNMEASURED.",
+            "superseded_by": "RIFF-LEDGER TRANSITION-BASIS CORRECTION 2026-08-23",
+            "scope": "transition[- ]basis|action[- ]basis|visual[- ]ngram|delta"
         }
     ]
 }

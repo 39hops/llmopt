@@ -8805,3 +8805,53 @@ honest status column).
   ask), GPT (change-of-coordinates note, nullspace caveat,
   matched-accuracy currency, camera-motion control), house (the
   overflow cash-out + action-scoring arm).
+  CORRECTION (2026-08-23, GPT review, house-verified line-by-line
+  against source; the note above stands as record, four of its
+  claims are corrected here):
+  (1) "MathNative already trains on edges" RETRACTED as stated —
+  the corpus is EDGE-INDEXED but the trained representation is
+  DENSE-STATE: the LM sequence is "Current: {FULL parent}\n
+  Hints: none\nStep: {FULL child}\n" and inference scores full
+  child serializations. Training is not action/delta-based.
+  (2) "rule@target is the delta" OVERCLAIMED — rule@target is
+  NOT a complete action: multi-branch rules (i_parts (u,dv)
+  splits, i_usub candidates) emit several children under one
+  label (llmopt/search/derivation.py replay docstring: "Labels
+  are NOT unique... Replay therefore BACKTRACKS over all
+  same-label children"), which is exactly why rung-0 action
+  identity is name#child_hash. E(parent, rule@target) is not a
+  function; name#child_hash is unique but an opaque POINTER, not
+  a reconstructive program. A true ACTION-BASIS needs a compact
+  deterministic action PROGRAM a with exact qualification
+  E(s,a)==s'.
+  (3) "sparsity premise measurably holds (median 76-token
+  deltas)" RETRACTED — the LONGCTX P2 medians measure the FULL
+  scoring sequence (parent prefix + full child + newline), not
+  action-label or residual length. Delta sparsity in this engine
+  is UNMEASURED.
+  (4) "deletes the overflow class by construction" NARROWED —
+  compact unique actions remove CHILD-SERIALIZATION-induced
+  overflow only; the parent prefix still occupies ctx and
+  parent-context overflow survives. Any desk must first
+  decompose existing overflow specimens into parent-prefix
+  length v per-child scoring length v label length v candidate
+  program length.
+  CORRECTED RESIDUE — MATHWORLD ACTION-BASIS (the STATE-v-
+  TRANSITION-BASIS house instance), desk first, no model, no
+  run without GO: on the existing frozen semantic corpus
+  (states.jsonl/actions.jsonl), design the minimal COMPLETE
+  program schema (rule + branch parameters sufficient to
+  deterministically reconstruct exactly one child), require
+  unique/reconstructive coverage of EVERY candidate, report
+  token-length distributions and compression ratios v STATE
+  (overflow specimens especially), and quantify whether
+  program scoring removes the child-length nuisance the MINLEN
+  diagnostic exposed. Scientific motivation (GPT, adopted):
+  the current theta_0 score is the likelihood of an entire
+  serialized successor, CONFOUNDING transition quality with
+  successor textual length/predictability; ACTION-BASIS asks
+  for the likelihood of the transformation itself — possibly
+  worth more than the context savings. Arms if it ever runs:
+  STATE (score full successor) v PROGRAM (score compact
+  deterministic action program, exact E(s,a)==s'
+  qualification).
