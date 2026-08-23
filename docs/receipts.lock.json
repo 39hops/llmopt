@@ -710,6 +710,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/frontier_desk.jsonl": {
+   "bytes": 365374,
+   "exists": true,
+   "local_only": true,
+   "sha256": "01730e900e746ad78bc4ba9630df0d6fb0985bf26c60aea646416957d3cad5d2",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/liveness.jsonl": {
    "bytes": 26112,
    "exists": true,
