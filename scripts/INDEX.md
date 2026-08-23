@@ -2627,6 +2627,7 @@ MATH-CYBER-0 rung 0, cold-process replay qualification (GPT post-booking fence):
 ### scratch/mathworld1_active.py
 MATH-CYBER-1 ACTIVE-EPISODIC-0 lockstep paired driver (PRE-REG MATH-CYBER-1-ACTIVE-EPISODIC-0, commit 73c063af). Two arms — ACTIVE-EPISODIC (success-gated episode-boundary updates) and FROZEN (theta_0, zero updates) — share theta_0, episode order, roots, budgets, overflow law, and ONE world snapshot, in ONE driver.
 
+- `_finite(x) -> bool` — Nonfinite guard predicate (NaN, +/-inf).
 - `sha(t: str) -> str`
 - `class World` (materialize, legal)
 - `class Arm` (score, update_on)
