@@ -1,0 +1,72 @@
+{
+ "smoke": true,
+ "device": "mps",
+ "theta0_sha256": "52fd1aff2c45fc5c09edcd626ae8a3b883c87f594b0f151b04b46503eb36a4cf",
+ "active_final_sha256": "c60c71bfa435a09c2f76a14c4f3ec7c52974c154008aa736507bfa8de5fb90c4",
+ "optimizer_steps": 1,
+ "stage1": {
+  "ACTIVE": {
+   "L4-s9100": "solved",
+   "L4-s9104": "budget_exhausted"
+  },
+  "FROZEN": {
+   "L4-s9100": "solved",
+   "L4-s9104": "budget_exhausted"
+  }
+ },
+ "stage2_overflow": {
+  "ACTIVE": {
+   "L4-s9101": "model_ctx_overflow"
+  },
+  "FROZEN": {
+   "L4-s9101": "model_ctx_overflow"
+  }
+ },
+ "stage3_frozen_eval": {
+  "ACTIVE": {
+   "L4-s9100": "solved",
+   "L4-s9104": "budget_exhausted"
+  },
+  "FROZEN": {
+   "L4-s9100": "solved",
+   "L4-s9104": "budget_exhausted"
+  }
+ },
+ "stage4_wall_isolation": {
+  "FROZEN": {
+   "L4-s9100": "solved"
+  },
+  "DIVPROBE": {
+   "L4-s9100": "wall_cap"
+  }
+ },
+ "divergent_lockstep_steps": 11,
+ "stage1_divergent_steps": 0,
+ "world_states_materialized": 20,
+ "mechanism_checks": {
+  "active_update_count_exact": true,
+  "no_update_row_on_failed_episode": true,
+  "overflow_both_arms": true,
+  "final_ckpt_differs_theta0": true,
+  "divergent_states_seen": true,
+  "wall_isolation": true,
+  "nonfinite_guard_static": true,
+  "frozen_eval_matches_stage1_frozen": true,
+  "revisit_zero_recharge": true,
+  "other_arm_first_use_pays_once": true
+ },
+ "pass": true,
+ "start": {
+  "start_commit": "9827838c",
+  "start_status_porcelain": " M docs/receipts.lock.json\n M scratch/mathworld1_active.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_active.py": "9f6e58ee30a4b0067efd9cb58999a2deda3120a72c64d018b675742cdcbf2393",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/mathgen/problems.py": "9f1dcac61712696b2b7f9e65585d33d26865edf6b60f338977f09a792fe51215",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61"
+  }
+ },
+ "completion_commit": "9827838c"
+}

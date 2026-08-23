@@ -36,10 +36,12 @@ mechanism-complete on SPENT CALIBRATION seeds only —
 then a final FROZEN-evaluation pass over ep1+ep2 for both final
 policies (ACTIVE-final differs from theta_0 after the update —
 divergent states exercise the shared cache). Receipts on smoke_
-paths. The REAL mode (ADAPT 9300-9309 + HOLDOUT 9400-9409,
-contamination audit first) refuses to run unless
-MW1_ACTIVE_GO=1 — the launch GO gate; it is NOT armed by this
-commit.
+paths. The REAL mode (contamination audit -> ADAPT 9300-9309
+seed-major interleaved with episode-boundary updates -> HOLDOUT
+9400-9409 zero-update evaluation of both final policies ->
+MINLEN static diagnostic) runs only with MW1_ACTIVE_GO=1 —
+granted by Artin + outside GO after the persistent charged-wall
+re-smoke (10/10).
 
 Receipts: logs/mathworld1/{PRE}active_pair.jsonl (per-decision
 rows both arms + update rows + episode rows),
@@ -73,7 +75,8 @@ SMOKE = os.environ.get("SMOKE") == "1"
 if not SMOKE and os.environ.get("MW1_ACTIVE_GO") != "1":
     raise SystemExit("REFUSING: real mode needs MW1_ACTIVE_GO=1 "
                      "(launch GO gate); SMOKE=1 for qualification")
-PRE = "smoke_" if SMOKE else ""
+PRE = (f"smoke{os.environ.get('SMOKE_TAG', '')}_"
+       if SMOKE else "")   # SMOKE_TAG: new receipt path per requalification
 CKPT = Path("checkpoints/mathnative_19m_mw1_theta0.pt")
 ROWS = Path(f"logs/mathworld1/{PRE}active_pair.jsonl")
 VERDICT = Path(f"logs/mathworld1/{PRE}active_pair_verdict.json")
@@ -136,6 +139,10 @@ class Arm:
             weight_decay=0.0) if trainable else None)
         self.updates = 0
         self.inject_delay_s = 0.0   # smoke-only synthetic charge
+        # PERSISTENT across all run_pair calls (WALL amendment
+        # conformance): an arm pays a state's materialization
+        # wall once per EXPERIMENT, not once per episode
+        self.world_keys_paid = set()
 
     def score(self, prefix_ids, child_ids):
         ids = torch.tensor([prefix_ids + child_ids],
@@ -214,7 +221,6 @@ def run_pair(episodes, world, arms, tok, ctx_overrides, sink,
         # excluded. Cap checked BEFORE the next decision — the
         # registered one-decision overshoot semantics.
         charged = {a.name: a.inject_delay_s for a in arms}
-        paid_keys = {a.name: set() for a in arms}
         for a in arms:
             a.inject_delay_s = 0.0   # consumed once
         for step_id in range(MAX_DECISIONS):
@@ -242,9 +248,9 @@ def run_pair(episodes, world, arms, tok, ctx_overrides, sink,
                     continue
                 st = state[a.name]
                 k = st.key()
-                if k not in paid_keys[a.name]:
+                if k not in a.world_keys_paid:
                     charged[a.name] += world.walls.get(k, 0.0)
-                    paid_keys[a.name].add(k)
+                    a.world_keys_paid.add(k)
                 t_score = time.monotonic()
                 acts, ah = world.legal(st)
                 if not acts:
@@ -335,14 +341,13 @@ def main():
         m.eval()
         return m
 
-    if not SMOKE:
-        raise SystemExit("real mode not armed in this commit "
-                         "(contamination audit + GO ritual "
-                         "pending)")
-    # ---- SMOKE (spent CALIBRATION seeds only) ----
     def ep(lv, seed):
         p = make_integrate(lv, seed)
         return (f"L{lv}-s{seed}", sp.Integral(p._expr, X))
+
+    if not SMOKE:
+        return real_main(START, ck_sha, tok, dev, load, ep)
+    # ---- SMOKE (spent CALIBRATION seeds only) ----
 
     episodes = [ep(4, 9100), ep(4, 9104)]
     over_ep = ep(4, 9101)
@@ -394,6 +399,17 @@ def main():
     a_sha = hashlib.sha256(ACTIVE_CKPT.read_bytes()).hexdigest()
     upd_rows = [json.loads(l) for l in ROWS.open()
                 if '"row": "update"' in l]
+    ep_rows = [json.loads(l) for l in ROWS.open()
+               if '"row": "episode"' in l]
+
+    def wall_of(arm, stage, eid):
+        r = [x for x in ep_rows if x["arm"] == arm
+             and x["stage"] == stage and x["episode_id"] == eid]
+        assert len(r) == 1, (arm, stage, eid)
+        return r[0]["charged_wall_s"]
+
+    root_key_9100 = State(episodes[0][1]).key()
+    root_key_9104 = State(episodes[1][1]).key()
     checks = {
         "active_update_count_exact": active.updates == 1,
         "no_update_row_on_failed_episode": not any(
@@ -410,7 +426,15 @@ def main():
             _finite(x) for x in (float("nan"), float("inf"),
                                  -float("inf"))),
         "frozen_eval_matches_stage1_frozen":
-            res3["FROZEN"] == res1["FROZEN"]}
+            res3["FROZEN"] == res1["FROZEN"],
+        "revisit_zero_recharge":
+            wall_of("FROZEN", "frozen_eval_smoke", "L4-s9100")
+            < world.walls[root_key_9100] + 0.5
+            and wall_of("FROZEN", "adapt_smoke", "L4-s9100")
+            >= world.walls[root_key_9100] - 1e-9,
+        "other_arm_first_use_pays_once":
+            wall_of("DIVPROBE", "divergence_smoke", "L4-s9104")
+            >= world.walls[root_key_9104] - 1e-9}
     verdict = {
         "smoke": True, "device": dev,
         "theta0_sha256": ck_sha,
@@ -434,3 +458,156 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+def real_main(START, ck_sha, tok, dev, load, ep):
+    """REAL one-shot: contamination audit -> ADAPT (seed-major
+    interleaved 9300-9309) -> HOLDOUT (9400-9409, zero updates,
+    evaluated once per arm) -> MINLEN static diagnostic. Frozen
+    per PRE-REG MATH-CYBER-1-ACTIVE-EPISODIC-0 + -WALL."""
+    import glob
+    adapt = [ep(lv, s) for s in range(9300, 9310)
+             for lv in (4, 5, 6, 7)]
+    holdout = [ep(lv, s) for s in range(9400, 9410)
+               for lv in (4, 5, 6, 7)]
+    # --- contamination audit (frozen law; disclose, never fix) ---
+    diet_cur, diet_nxt = set(), set()
+    for fpath in (sorted(glob.glob(
+            "data/micromodel_chains_shard*.jsonl"))
+            + ["data/step_chains.jsonl"]):
+        for line in open(fpath):
+            r = json.loads(line)
+            diet_cur.add(r["cur"])
+            diet_nxt.add(r["nxt"])
+    calib = {str(sp.Integral(make_integrate(lv, s)._expr, X))
+             for lv in (4, 5, 6, 7) for s in range(9100, 9110)}
+    train_band = {str(sp.Integral(make_integrate(lv, s)._expr, X))
+                  for lv in (4, 5, 6, 7)
+                  for s in range(9200, 9250)}
+    contamination = {}
+    seen_roots = {}
+    for eid, root in adapt + holdout:
+        rs = str(root)
+        hits = []
+        if rs in diet_cur or rs in diet_nxt:
+            hits.append("birth_diet")
+        if rs in calib:
+            hits.append("calibration")
+        if rs in train_band:
+            hits.append("train_band")
+        if rs in seen_roots:
+            hits.append(f"duplicate_of:{seen_roots[rs]}")
+        seen_roots.setdefault(rs, eid)
+        if hits:
+            contamination[eid] = hits
+    print(f"[real] contamination: {len(contamination)} flagged "
+          f"root(s): {contamination}", flush=True)
+    world = World()
+    with ROWS.open("a") as f:
+        active = Arm("ACTIVE", load(), tok, dev, f,
+                     trainable=True)
+        frozen = Arm("FROZEN", load(), tok, dev, f,
+                     trainable=False)
+        arms = [active, frozen]
+        res_adapt, div_a = run_pair(adapt, world, arms, tok, {},
+                                    f, stage="adapt")
+        active.trainable = False   # theta_final frozen
+        res_hold, div_h = run_pair(holdout, world, arms, tok, {},
+                                   f, stage="holdout",
+                                   update_active=False)
+        # MINLEN static diagnostic on HOLDOUT (no model; same
+        # snapshot; chooses the shortest scoring sequence,
+        # tie-break (len, name, child key)); overflow law applies
+        minlen_out = {}
+        for eid, root in holdout:
+            st = State(root)
+            outcome = "budget_exhausted"
+            for step_id in range(MAX_DECISIONS):
+                if is_solved(st):
+                    outcome = "solved"
+                    break
+                world.materialize({st.key(): st})
+                acts, ah = world.legal(st)
+                if not acts:
+                    outcome = "dead_end"
+                    break
+                pre = tok.encode(f"Current: {str(st.expr)}\n"
+                                 f"Hints: none\nStep: ")
+                cand = []
+                over = False
+                for name, c in acts:
+                    cids = tok.encode(str(c.expr) + "\n")
+                    if len(pre) + len(cids) > CTX:
+                        over = True
+                        break
+                    cand.append((len(cids), name, c))
+                if over:
+                    outcome = "model_ctx_overflow"
+                    break
+                cand.sort(key=lambda t: (t[0], t[1], t[2].key()))
+                _, name, child = cand[0]
+                f.write(json.dumps({
+                    "arm": "MINLEN", "row": "decision",
+                    "stage": "holdout_diag", "ctx": CTX,
+                    "episode_id": eid, "step_id": step_id,
+                    "state_hash": sha(st.key()),
+                    "legal_set_hash": ah, "n_legal": len(acts),
+                    "chosen": f"{name}#{sha(child.key())}"})
+                    + "\n")
+                st = child
+                if is_solved(st):
+                    outcome = "solved"
+                    break
+            minlen_out[eid] = outcome
+            f.write(json.dumps({
+                "arm": "MINLEN", "row": "episode",
+                "stage": "holdout_diag", "episode_id": eid,
+                "outcome": outcome}) + "\n")
+        f.write(json.dumps({"meta": {
+            "start": START,
+            "completion_commit": completion_commit()}}) + "\n")
+    torch.save(active.model.state_dict(), ACTIVE_CKPT)
+    a_sha = hashlib.sha256(ACTIVE_CKPT.read_bytes()).hexdigest()
+
+    def solves(res, arm):
+        return sum(1 for o in res[arm].values() if o == "solved")
+
+    verdict = {
+        "smoke": False, "device": dev,
+        "theta0_sha256": ck_sha,
+        "active_final_sha256": a_sha,
+        "optimizer_steps": active.updates,
+        "contamination": contamination,
+        "adapt": {"ACTIVE": res_adapt["ACTIVE"],
+                  "FROZEN": res_adapt["FROZEN"],
+                  "acquisition_solves_active":
+                      solves(res_adapt, "ACTIVE"),
+                  "frozen_solves": solves(res_adapt, "FROZEN"),
+                  "divergent_lockstep_steps": div_a},
+        "holdout": {"ACTIVE": res_hold["ACTIVE"],
+                    "FROZEN": res_hold["FROZEN"],
+                    "active_final_solves":
+                        solves(res_hold, "ACTIVE"),
+                    "frozen_solves": solves(res_hold, "FROZEN"),
+                    "divergent_lockstep_steps": div_h},
+        "minlen_diag": {"outcomes": minlen_out,
+                        "solves": sum(1 for o in minlen_out
+                                      .values()
+                                      if o == "solved")},
+        "adjudication": {
+            "perfect_bar_active_holdout_40":
+                solves(res_hold, "ACTIVE") == 40,
+            "feedback_direction_active_gt_frozen":
+                solves(res_hold, "ACTIVE")
+                > solves(res_hold, "FROZEN")},
+        "world_states_materialized": len(world.cache),
+        "start": START,
+        "completion_commit": completion_commit()}
+    VERDICT.write_text(json.dumps(verdict, indent=1))
+    print(f"[real] ADAPT ACTIVE {solves(res_adapt, 'ACTIVE')}/40 "
+          f"FROZEN {solves(res_adapt, 'FROZEN')}/40 | HOLDOUT "
+          f"ACTIVE {solves(res_hold, 'ACTIVE')}/40 FROZEN "
+          f"{solves(res_hold, 'FROZEN')}/40 MINLEN "
+          f"{verdict['minlen_diag']['solves']}/40 | "
+          f"updates {active.updates}", flush=True)
+    return 0
