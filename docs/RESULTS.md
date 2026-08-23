@@ -42319,3 +42319,140 @@ bin summaries, not transition rows — the training farm proper
 re-runs under the eventual prereg with its own receipts. Desk
 numbers predict instruments; the farm's own census governs.
 
+## AMENDMENT MATH-CYBER-1-LONGCTX-0-POPULATIONS: the v1 census measured CANDIDATE-SCORING exposure, not training-target exposure — re-censused as two populations with incidence; the >4096 tail is 20/21 concentrated in ONE failed episode; SCOREQAL's "full batched" wording corrected (its bench was serial B=1); theta_0 liveness qualification registered pre-birth (2026-08-22, Mac)
+
+Amends OBSERVATION MATH-CYBER-1-LONGCTX-0 and corrects one
+SCOREQAL-0 phrase, on outside review (GPT, relayed by Artin).
+
+(a) POPULATION CORRECTION. v1 pooled ALL legal siblings at
+greedy-visited states: that is the population a SCORER must
+handle (candidate-scoring exposure), not the population the
+frozen success-gated dose TRAINS on (chosen transitions of
+solved episodes). MathNative chain diets train verified
+trajectory edges; legal siblings are never silently equal-
+preference training targets. Re-census (instrument
+scratch/mathworld1_longctx_census2.py, receipt
+logs/mathworld1/longctx_census2.json, same frozen TRAIN band
+9200-9249):
+  P1 ALL-LEGAL (scorer population): 2163 / 128 / 254 / 61 / 21 actions at <=512 / <=1024 / <=2048 / <=4096 / >4096 (2627 total); decision
+     incidence (any candidate at the decision > ctx):
+     102 (512), 53 (1024), 26 (2048), 7 (4096) of 349 decisions;
+     episode incidence: 20 / 8 / 4 / 2 of 200 episodes (the two
+     4096-trippers are L6-s9200 and L6-s9225, both
+     budget_exhausted).
+  P2 POSITIVE TARGETS (chosen edges of solved episodes only):
+     205 chosen edges from 188 solved episodes — ALL
+     205 are <=512 tokens (median 76, p90 137, max 437). The
+     success-gated training population needs NO long context;
+     long sequences occur only as scoring CANDIDATES at
+     failing/deep states.
+
+(b) CONCENTRATION. From the v1 per-episode receipt rows: 20 of
+the 21 >4096 actions sit in ONE episode (L6-s9200,
+budget_exhausted); the 21st is in L6-s9225 (also
+budget_exhausted). The v1 headline "0.8% of actions exceed 4096"
+is therefore an episode-tail fact, not a diffuse rate; the v2
+incidence numbers above are the honest grain for overflow-risk
+statements.
+
+(c) SCOREQAL WORDING. SCOREQAL-0's accepted path is FULL
+TEACHER-FORCED SCORING; its "full" bench ran SERIAL B=1 forwards
+repeated K times, so "full BATCHED forwards" overstated what was
+measured. Actual candidate batching under the real K/length
+profile is priced by OBSERVATION MATH-CYBER-1-EXECBENCH-0
+(booked alongside): serial v microbatched walls, correctness
+bars, and the one-ACTIVE-update bench. "Fully priced" for the
+4096-v-compact decision was premature until these; with them and
+the v2 census the substrate decision is made below.
+
+(d) THETA_0 LIVENESS QUALIFICATION (registered NOW, pre-birth):
+terminal-success-only learning has NO update signal if theta_0
+never solves. Registered bar: the newborn theta_0 (frozen, no
+updates) must solve >= 1/40 episodes on the spent CALIBRATION
+band 9100-9109 under the frozen 12-decision budget; the full
+solve count is reported either way. FAILURE = the instrument is
+NOT LIVE: no ADAPT/HOLDOUT generation and no treatment until a
+revised cold-start design (curriculum, warm-start diet, or
+hybrid bootstrap arm) is booked. CALIBRATION is already
+instrument-spent, which is exactly why it is the legal place for
+this qualification.
+
+(e) SUBSTRATE DECISION (4096-BIRTH, the simple form. Per the
+review's own preference rule (rare 4096 overflow -> prefer the
+simple birth over inventing a compact interface): declared
+context 4096 as the SCORING window; overflow (>4096, measured
+2/200 episodes, both already-failing) books as the frozen
+model-failure event; training runs on the NATURAL positive-target
+population, which is entirely <=512 (so the 8x4096 grad-ckpt
+cost is substrate color that the real rung never pays — updates
+bench at ~0.5-1.1 s). DISCLOSED LIMIT, replacing the old OOD
+framing: no long-context POSITIVE-TARGET exposure exists or can
+be manufactured from successful trajectories, so scores on
+>512-token candidates are extrapolation at ANY declared context;
+rung-1 capability claims ride on measured solves under the
+frozen budget, never on score calibration of the long tail. The
+long-context training-exposure design item of the -SCOPE
+amendment CLOSES as moot for the success-gated dose (revival: a
+step-local or preference-based signal that trains on non-chosen
+candidates)).
+
+FENCES. All census numbers greedy-trajectory-conditional. v1 v
+v2 are NOT bit-identical (2712 v 2627 actions; 187 v 188 solved;
+L7-s9230 flipped budget_exhausted -> solved): the world's rule
+timeboxes (_timeboxed in derivation.py) can drop a rule's
+rewrites under machine load, and both censuses ran beside mps
+jobs — legal sets are load-dependent at the timebox margin. This
+is the known timeboxed-rule economics, now measured as an
+instrument fence: censuses are point estimates, and any future
+parity-grade walk must run on an idle machine. The P2 conclusion
+is robust to it (all 205 edges <=512 with max 437 — a 75-token
+margin under the coarsest bin). Execution numbers are random-weight mechanics
+(untrained-boot fence: never calibrate a capability bar on
+them).
+
+## OBSERVATION MATH-CYBER-1-EXECBENCH-0: candidate batching buys NOTHING at this model size on mps — microbatched scoring 0.92x v serial B=1 over the real 101-decision/725-candidate profile (correctness 1.8e-5, argmax 101/101); real-profile scoring wall 55.6 s; one frozen ACTIVE optimizer update costs ~0.5-1.1 s (2026-08-22, Mac)
+
+The execution pricing the outside review required before freezing
+scorer batching. Instrument: scratch/mathworld1_execbench.py —
+RANDOM-WEIGHT MicroLM (BIRTH_SEED=77) on a mechanics realization
+of the grammar-closed vocabulary (stock ATOMS + 256 byte-fallback
+ids, vocab 296+), scoring the REAL calibration profile from the
+exported corpus (all 101 decisions, 725 candidates, actual
+K/length mix). Receipt: logs/mathworld1/execbench.json.
+
+SCORE: serial B=1 full teacher-forced forwards 55.6 s v
+right-padded microbatches under a 16,384-padded-token budget
+60.7 s — 0.92x: batching is a small LOSS at 19M-class on mps
+(padding waste plus no unfilled-device headroom to reclaim).
+Correctness across the two paths: max |score delta| 1.8e-5,
+per-decision argmax agreement 101/101. RULING: the frozen scorer
+execution law is SERIAL B=1 full teacher-forced forwards — the
+simplest correct form measured no slower than its alternatives
+(SCOREQAL-0 killed cached stepping at ~30x; this kills batching
+at 0.92x). Revival: re-price batching if the model grows past
+the mps saturation point or moves devices.
+
+Scoring in rung terms: 55.6 s for a full 40-episode candidate
+sweep at real lengths v the ~147 s world wall — the world still
+dominates, at ~2.6x rather than the earlier ~10x estimate from
+short-median arithmetic.
+
+UPDATE (one frozen ACTIVE update, -DESIGN dose shape:
+variable-length chosen transitions right-padded, child-token-only
+CE with prefix/pad labels masked, gradient accumulation, exactly
+one AdamW step lr 1e-4): median solved calibration episode
+(1 edge) 1.06 s, longest (3 edges, one microbatch) 0.46 s —
+episode-boundary updates are sub-second-class, negligible beside
+the world.
+
+FENCES. Random-weight mechanics; untrained-boot fence applies
+(no capability or tolerance bar may calibrate on these numbers).
+Single run each, mps wall, fp32, stated shapes and token budget.
+The accumulation weighting here (per-microbatch token-mean CE
+scaled by edge fraction) approximates the registered
+per-decision-mean law at equal edge lengths; the rung driver
+implements the registered normalization exactly and re-verifies.
+The 8x4096 rectangular training bench of SCOREQAL-0 stands as
+substrate color only — the real success-gated rung trains on
+<=512-token rows (LONGCTX-0-POPULATIONS) and never pays it.
+

@@ -2865,5 +2865,31 @@ regime tag on every bullet is the fence.
   actions (0.8%) exceed even 4096, making the frozen overflow
   law load-bearing at any context choice ("full coverage at
   4096" is a calibration-trajectory fact only). Exposure is
-  greedy-trajectory-conditional.
-  ([OBSERVATION MATH-CYBER-1-LONGCTX-0](RESULTS.md#L42271 "id:2026-08-22-observation-math-cyber-1-longctx-0").)
+  greedy-trajectory-conditional. CORRECTED by the -POPULATIONS
+  amendment: that population is CANDIDATE-SCORING exposure — the
+  success-gated TRAINING population (chosen edges of solved
+  episodes) is entirely <=512 tokens (205/205, max 437), the
+  >4096 tail is 20/21 concentrated in one failed episode
+  (incidence 7/349 decisions, 2/200 episodes), and the substrate
+  decision lands: 4096-birth as scoring window, training on
+  natural short positive targets, >512 candidate scores
+  disclosed as extrapolation at any declared context; theta_0
+  liveness bar registered pre-birth (>=1/40 on spent
+  CALIBRATION, failure = instrument not live). Same amendment
+  measures the timebox fence: legal sets are load-dependent at
+  the rule-timebox margin (v1 v v2 differ by 85 actions and one
+  flipped episode under concurrent mps load) — parity-grade
+  walks need an idle machine.
+  ([OBSERVATION MATH-CYBER-1-LONGCTX-0](RESULTS.md#L42271 "id:2026-08-22-observation-math-cyber-1-longctx-0"),
+  [AMENDMENT MATH-CYBER-1-LONGCTX-0-POPULATIONS](RESULTS.md#L42322 "id:2026-08-22-amendment-math-cyber-1-longctx-0").)
+
+- [SINGLE-SEED] [DEVICE-SCOPED] [REGIME-SCOPED: calculus search]
+  Scorer execution law settles on the SIMPLEST form: serial B=1
+  full teacher-forced forwards — cached stepping lost 30x
+  (SCOREQAL-0) and right-padded microbatching lost 8% (0.92x)
+  over the real 101-decision/725-candidate profile at 19M on mps
+  (correctness across paths 1.8e-5, argmax 101/101). Real-profile
+  scoring wall 55.6 s v ~147 s world (world dominates at ~2.6x,
+  measured); one frozen ACTIVE episode-boundary update is
+  sub-second. Random-weight mechanics; untrained-boot fence.
+  ([OBSERVATION MATH-CYBER-1-EXECBENCH-0](RESULTS.md#L42413 "id:2026-08-22-observation-math-cyber-1-execbench-0").)

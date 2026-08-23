@@ -689,6 +689,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/execbench.json": {
+   "bytes": 1251,
+   "exists": true,
+   "sha256": "eaa327c37e27e2cfecb0efc3ad7bab1182de2d3e690b3e52d02de59044208160",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/export_verdict.json": {
    "bytes": 1132,
    "exists": true,
@@ -700,6 +707,13 @@
    "bytes": 15472,
    "exists": true,
    "sha256": "f96a975f9aa8525a20b803c886be1f253615ce615db1c44d740eb4ee1f385581",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/longctx_census2.json": {
+   "bytes": 19320,
+   "exists": true,
+   "sha256": "5c7b001fae42d6dc2362d61109c0d1885f6e04e8868cd9d226413bf31cf682c8",
    "source": "results",
    "tracked": true
   },

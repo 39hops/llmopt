@@ -1,0 +1,1049 @@
+{
+ "p1_all_legal": {
+  "actions_bins": {
+   "<=512": 2163,
+   "<=1024": 128,
+   "<=2048": 254,
+   ">4096": 21,
+   "<=4096": 61
+  },
+  "decisions": 349,
+  "decision_incidence_over_ctx": {
+   "512": 102,
+   "1024": 53,
+   "2048": 26,
+   "4096": 7
+  },
+  "episode_incidence_over_ctx": {
+   "512": 20,
+   "1024": 8,
+   "2048": 4,
+   "4096": 2
+  }
+ },
+ "p2_positive_targets_solved_only": {
+  "episodes_solved": 188,
+  "chosen_edges": 205,
+  "bins": {
+   "<=512": 205
+  },
+  "med": 76,
+  "p90": 137,
+  "max": 437
+ },
+ "episodes": [
+  {
+   "episode_id": "L4-s9200",
+   "outcome": "solved",
+   "max_candidate_len": 372
+  },
+  {
+   "episode_id": "L4-s9201",
+   "outcome": "solved",
+   "max_candidate_len": 672
+  },
+  {
+   "episode_id": "L4-s9202",
+   "outcome": "solved",
+   "max_candidate_len": 279
+  },
+  {
+   "episode_id": "L4-s9203",
+   "outcome": "solved",
+   "max_candidate_len": 672
+  },
+  {
+   "episode_id": "L4-s9204",
+   "outcome": "solved",
+   "max_candidate_len": 363
+  },
+  {
+   "episode_id": "L4-s9205",
+   "outcome": "solved",
+   "max_candidate_len": 59
+  },
+  {
+   "episode_id": "L4-s9206",
+   "outcome": "solved",
+   "max_candidate_len": 420
+  },
+  {
+   "episode_id": "L4-s9207",
+   "outcome": "solved",
+   "max_candidate_len": 90
+  },
+  {
+   "episode_id": "L4-s9208",
+   "outcome": "solved",
+   "max_candidate_len": 298
+  },
+  {
+   "episode_id": "L4-s9209",
+   "outcome": "solved",
+   "max_candidate_len": 321
+  },
+  {
+   "episode_id": "L4-s9210",
+   "outcome": "solved",
+   "max_candidate_len": 706
+  },
+  {
+   "episode_id": "L4-s9211",
+   "outcome": "solved",
+   "max_candidate_len": 62
+  },
+  {
+   "episode_id": "L4-s9212",
+   "outcome": "solved",
+   "max_candidate_len": 125
+  },
+  {
+   "episode_id": "L4-s9213",
+   "outcome": "solved",
+   "max_candidate_len": 682
+  },
+  {
+   "episode_id": "L4-s9214",
+   "outcome": "solved",
+   "max_candidate_len": 199
+  },
+  {
+   "episode_id": "L4-s9215",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 1028
+  },
+  {
+   "episode_id": "L4-s9216",
+   "outcome": "solved",
+   "max_candidate_len": 164
+  },
+  {
+   "episode_id": "L4-s9217",
+   "outcome": "solved",
+   "max_candidate_len": 148
+  },
+  {
+   "episode_id": "L4-s9218",
+   "outcome": "solved",
+   "max_candidate_len": 342
+  },
+  {
+   "episode_id": "L4-s9219",
+   "outcome": "solved",
+   "max_candidate_len": 246
+  },
+  {
+   "episode_id": "L4-s9220",
+   "outcome": "solved",
+   "max_candidate_len": 229
+  },
+  {
+   "episode_id": "L4-s9221",
+   "outcome": "solved",
+   "max_candidate_len": 102
+  },
+  {
+   "episode_id": "L4-s9222",
+   "outcome": "solved",
+   "max_candidate_len": 274
+  },
+  {
+   "episode_id": "L4-s9223",
+   "outcome": "solved",
+   "max_candidate_len": 131
+  },
+  {
+   "episode_id": "L4-s9224",
+   "outcome": "solved",
+   "max_candidate_len": 305
+  },
+  {
+   "episode_id": "L4-s9225",
+   "outcome": "solved",
+   "max_candidate_len": 71
+  },
+  {
+   "episode_id": "L4-s9226",
+   "outcome": "solved",
+   "max_candidate_len": 155
+  },
+  {
+   "episode_id": "L4-s9227",
+   "outcome": "solved",
+   "max_candidate_len": 325
+  },
+  {
+   "episode_id": "L4-s9228",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 301
+  },
+  {
+   "episode_id": "L4-s9229",
+   "outcome": "solved",
+   "max_candidate_len": 59
+  },
+  {
+   "episode_id": "L4-s9230",
+   "outcome": "solved",
+   "max_candidate_len": 333
+  },
+  {
+   "episode_id": "L4-s9231",
+   "outcome": "solved",
+   "max_candidate_len": 273
+  },
+  {
+   "episode_id": "L4-s9232",
+   "outcome": "solved",
+   "max_candidate_len": 403
+  },
+  {
+   "episode_id": "L4-s9233",
+   "outcome": "solved",
+   "max_candidate_len": 191
+  },
+  {
+   "episode_id": "L4-s9234",
+   "outcome": "solved",
+   "max_candidate_len": 150
+  },
+  {
+   "episode_id": "L4-s9235",
+   "outcome": "solved",
+   "max_candidate_len": 251
+  },
+  {
+   "episode_id": "L4-s9236",
+   "outcome": "solved",
+   "max_candidate_len": 174
+  },
+  {
+   "episode_id": "L4-s9237",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 830
+  },
+  {
+   "episode_id": "L4-s9238",
+   "outcome": "solved",
+   "max_candidate_len": 340
+  },
+  {
+   "episode_id": "L4-s9239",
+   "outcome": "solved",
+   "max_candidate_len": 124
+  },
+  {
+   "episode_id": "L4-s9240",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 446
+  },
+  {
+   "episode_id": "L4-s9241",
+   "outcome": "solved",
+   "max_candidate_len": 229
+  },
+  {
+   "episode_id": "L4-s9242",
+   "outcome": "solved",
+   "max_candidate_len": 119
+  },
+  {
+   "episode_id": "L4-s9243",
+   "outcome": "solved",
+   "max_candidate_len": 353
+  },
+  {
+   "episode_id": "L4-s9244",
+   "outcome": "solved",
+   "max_candidate_len": 171
+  },
+  {
+   "episode_id": "L4-s9245",
+   "outcome": "solved",
+   "max_candidate_len": 519
+  },
+  {
+   "episode_id": "L4-s9246",
+   "outcome": "solved",
+   "max_candidate_len": 104
+  },
+  {
+   "episode_id": "L4-s9247",
+   "outcome": "solved",
+   "max_candidate_len": 165
+  },
+  {
+   "episode_id": "L4-s9248",
+   "outcome": "solved",
+   "max_candidate_len": 381
+  },
+  {
+   "episode_id": "L4-s9249",
+   "outcome": "solved",
+   "max_candidate_len": 61
+  },
+  {
+   "episode_id": "L5-s9200",
+   "outcome": "solved",
+   "max_candidate_len": 166
+  },
+  {
+   "episode_id": "L5-s9201",
+   "outcome": "solved",
+   "max_candidate_len": 126
+  },
+  {
+   "episode_id": "L5-s9202",
+   "outcome": "solved",
+   "max_candidate_len": 85
+  },
+  {
+   "episode_id": "L5-s9203",
+   "outcome": "solved",
+   "max_candidate_len": 70
+  },
+  {
+   "episode_id": "L5-s9204",
+   "outcome": "solved",
+   "max_candidate_len": 170
+  },
+  {
+   "episode_id": "L5-s9205",
+   "outcome": "solved",
+   "max_candidate_len": 45
+  },
+  {
+   "episode_id": "L5-s9206",
+   "outcome": "solved",
+   "max_candidate_len": 97
+  },
+  {
+   "episode_id": "L5-s9207",
+   "outcome": "solved",
+   "max_candidate_len": 77
+  },
+  {
+   "episode_id": "L5-s9208",
+   "outcome": "solved",
+   "max_candidate_len": 175
+  },
+  {
+   "episode_id": "L5-s9209",
+   "outcome": "solved",
+   "max_candidate_len": 71
+  },
+  {
+   "episode_id": "L5-s9210",
+   "outcome": "solved",
+   "max_candidate_len": 151
+  },
+  {
+   "episode_id": "L5-s9211",
+   "outcome": "solved",
+   "max_candidate_len": 118
+  },
+  {
+   "episode_id": "L5-s9212",
+   "outcome": "solved",
+   "max_candidate_len": 62
+  },
+  {
+   "episode_id": "L5-s9213",
+   "outcome": "solved",
+   "max_candidate_len": 107
+  },
+  {
+   "episode_id": "L5-s9214",
+   "outcome": "solved",
+   "max_candidate_len": 103
+  },
+  {
+   "episode_id": "L5-s9215",
+   "outcome": "solved",
+   "max_candidate_len": 60
+  },
+  {
+   "episode_id": "L5-s9216",
+   "outcome": "solved",
+   "max_candidate_len": 62
+  },
+  {
+   "episode_id": "L5-s9217",
+   "outcome": "solved",
+   "max_candidate_len": 170
+  },
+  {
+   "episode_id": "L5-s9218",
+   "outcome": "solved",
+   "max_candidate_len": 219
+  },
+  {
+   "episode_id": "L5-s9219",
+   "outcome": "solved",
+   "max_candidate_len": 155
+  },
+  {
+   "episode_id": "L5-s9220",
+   "outcome": "solved",
+   "max_candidate_len": 62
+  },
+  {
+   "episode_id": "L5-s9221",
+   "outcome": "solved",
+   "max_candidate_len": 200
+  },
+  {
+   "episode_id": "L5-s9222",
+   "outcome": "solved",
+   "max_candidate_len": 136
+  },
+  {
+   "episode_id": "L5-s9223",
+   "outcome": "solved",
+   "max_candidate_len": 96
+  },
+  {
+   "episode_id": "L5-s9224",
+   "outcome": "solved",
+   "max_candidate_len": 134
+  },
+  {
+   "episode_id": "L5-s9225",
+   "outcome": "solved",
+   "max_candidate_len": 58
+  },
+  {
+   "episode_id": "L5-s9226",
+   "outcome": "solved",
+   "max_candidate_len": 95
+  },
+  {
+   "episode_id": "L5-s9227",
+   "outcome": "solved",
+   "max_candidate_len": 163
+  },
+  {
+   "episode_id": "L5-s9228",
+   "outcome": "solved",
+   "max_candidate_len": 70
+  },
+  {
+   "episode_id": "L5-s9229",
+   "outcome": "solved",
+   "max_candidate_len": 101
+  },
+  {
+   "episode_id": "L5-s9230",
+   "outcome": "solved",
+   "max_candidate_len": 88
+  },
+  {
+   "episode_id": "L5-s9231",
+   "outcome": "solved",
+   "max_candidate_len": 183
+  },
+  {
+   "episode_id": "L5-s9232",
+   "outcome": "solved",
+   "max_candidate_len": 121
+  },
+  {
+   "episode_id": "L5-s9233",
+   "outcome": "solved",
+   "max_candidate_len": 123
+  },
+  {
+   "episode_id": "L5-s9234",
+   "outcome": "solved",
+   "max_candidate_len": 68
+  },
+  {
+   "episode_id": "L5-s9235",
+   "outcome": "solved",
+   "max_candidate_len": 114
+  },
+  {
+   "episode_id": "L5-s9236",
+   "outcome": "solved",
+   "max_candidate_len": 183
+  },
+  {
+   "episode_id": "L5-s9237",
+   "outcome": "solved",
+   "max_candidate_len": 91
+  },
+  {
+   "episode_id": "L5-s9238",
+   "outcome": "solved",
+   "max_candidate_len": 94
+  },
+  {
+   "episode_id": "L5-s9239",
+   "outcome": "solved",
+   "max_candidate_len": 150
+  },
+  {
+   "episode_id": "L5-s9240",
+   "outcome": "solved",
+   "max_candidate_len": 385
+  },
+  {
+   "episode_id": "L5-s9241",
+   "outcome": "solved",
+   "max_candidate_len": 223
+  },
+  {
+   "episode_id": "L5-s9242",
+   "outcome": "solved",
+   "max_candidate_len": 232
+  },
+  {
+   "episode_id": "L5-s9243",
+   "outcome": "solved",
+   "max_candidate_len": 221
+  },
+  {
+   "episode_id": "L5-s9244",
+   "outcome": "solved",
+   "max_candidate_len": 111
+  },
+  {
+   "episode_id": "L5-s9245",
+   "outcome": "solved",
+   "max_candidate_len": 149
+  },
+  {
+   "episode_id": "L5-s9246",
+   "outcome": "solved",
+   "max_candidate_len": 95
+  },
+  {
+   "episode_id": "L5-s9247",
+   "outcome": "solved",
+   "max_candidate_len": 126
+  },
+  {
+   "episode_id": "L5-s9248",
+   "outcome": "solved",
+   "max_candidate_len": 119
+  },
+  {
+   "episode_id": "L5-s9249",
+   "outcome": "solved",
+   "max_candidate_len": 98
+  },
+  {
+   "episode_id": "L6-s9200",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 19559
+  },
+  {
+   "episode_id": "L6-s9201",
+   "outcome": "solved",
+   "max_candidate_len": 289
+  },
+  {
+   "episode_id": "L6-s9202",
+   "outcome": "solved",
+   "max_candidate_len": 333
+  },
+  {
+   "episode_id": "L6-s9203",
+   "outcome": "solved",
+   "max_candidate_len": 311
+  },
+  {
+   "episode_id": "L6-s9204",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 3207
+  },
+  {
+   "episode_id": "L6-s9205",
+   "outcome": "solved",
+   "max_candidate_len": 215
+  },
+  {
+   "episode_id": "L6-s9206",
+   "outcome": "solved",
+   "max_candidate_len": 250
+  },
+  {
+   "episode_id": "L6-s9207",
+   "outcome": "solved",
+   "max_candidate_len": 505
+  },
+  {
+   "episode_id": "L6-s9208",
+   "outcome": "solved",
+   "max_candidate_len": 104
+  },
+  {
+   "episode_id": "L6-s9209",
+   "outcome": "solved",
+   "max_candidate_len": 288
+  },
+  {
+   "episode_id": "L6-s9210",
+   "outcome": "solved",
+   "max_candidate_len": 267
+  },
+  {
+   "episode_id": "L6-s9211",
+   "outcome": "solved",
+   "max_candidate_len": 335
+  },
+  {
+   "episode_id": "L6-s9212",
+   "outcome": "solved",
+   "max_candidate_len": 269
+  },
+  {
+   "episode_id": "L6-s9213",
+   "outcome": "solved",
+   "max_candidate_len": 315
+  },
+  {
+   "episode_id": "L6-s9214",
+   "outcome": "solved",
+   "max_candidate_len": 472
+  },
+  {
+   "episode_id": "L6-s9215",
+   "outcome": "solved",
+   "max_candidate_len": 164
+  },
+  {
+   "episode_id": "L6-s9216",
+   "outcome": "solved",
+   "max_candidate_len": 333
+  },
+  {
+   "episode_id": "L6-s9217",
+   "outcome": "solved",
+   "max_candidate_len": 197
+  },
+  {
+   "episode_id": "L6-s9218",
+   "outcome": "solved",
+   "max_candidate_len": 180
+  },
+  {
+   "episode_id": "L6-s9219",
+   "outcome": "solved",
+   "max_candidate_len": 1408
+  },
+  {
+   "episode_id": "L6-s9220",
+   "outcome": "solved",
+   "max_candidate_len": 203
+  },
+  {
+   "episode_id": "L6-s9221",
+   "outcome": "solved",
+   "max_candidate_len": 166
+  },
+  {
+   "episode_id": "L6-s9222",
+   "outcome": "solved",
+   "max_candidate_len": 178
+  },
+  {
+   "episode_id": "L6-s9223",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 3986
+  },
+  {
+   "episode_id": "L6-s9224",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 653
+  },
+  {
+   "episode_id": "L6-s9225",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 4254
+  },
+  {
+   "episode_id": "L6-s9226",
+   "outcome": "solved",
+   "max_candidate_len": 87
+  },
+  {
+   "episode_id": "L6-s9227",
+   "outcome": "solved",
+   "max_candidate_len": 450
+  },
+  {
+   "episode_id": "L6-s9228",
+   "outcome": "solved",
+   "max_candidate_len": 315
+  },
+  {
+   "episode_id": "L6-s9229",
+   "outcome": "solved",
+   "max_candidate_len": 146
+  },
+  {
+   "episode_id": "L6-s9230",
+   "outcome": "solved",
+   "max_candidate_len": 251
+  },
+  {
+   "episode_id": "L6-s9231",
+   "outcome": "solved",
+   "max_candidate_len": 161
+  },
+  {
+   "episode_id": "L6-s9232",
+   "outcome": "solved",
+   "max_candidate_len": 267
+  },
+  {
+   "episode_id": "L6-s9233",
+   "outcome": "solved",
+   "max_candidate_len": 163
+  },
+  {
+   "episode_id": "L6-s9234",
+   "outcome": "solved",
+   "max_candidate_len": 154
+  },
+  {
+   "episode_id": "L6-s9235",
+   "outcome": "solved",
+   "max_candidate_len": 256
+  },
+  {
+   "episode_id": "L6-s9236",
+   "outcome": "solved",
+   "max_candidate_len": 182
+  },
+  {
+   "episode_id": "L6-s9237",
+   "outcome": "solved",
+   "max_candidate_len": 221
+  },
+  {
+   "episode_id": "L6-s9238",
+   "outcome": "solved",
+   "max_candidate_len": 172
+  },
+  {
+   "episode_id": "L6-s9239",
+   "outcome": "solved",
+   "max_candidate_len": 174
+  },
+  {
+   "episode_id": "L6-s9240",
+   "outcome": "solved",
+   "max_candidate_len": 195
+  },
+  {
+   "episode_id": "L6-s9241",
+   "outcome": "solved",
+   "max_candidate_len": 251
+  },
+  {
+   "episode_id": "L6-s9242",
+   "outcome": "solved",
+   "max_candidate_len": 158
+  },
+  {
+   "episode_id": "L6-s9243",
+   "outcome": "solved",
+   "max_candidate_len": 167
+  },
+  {
+   "episode_id": "L6-s9244",
+   "outcome": "solved",
+   "max_candidate_len": 265
+  },
+  {
+   "episode_id": "L6-s9245",
+   "outcome": "solved",
+   "max_candidate_len": 207
+  },
+  {
+   "episode_id": "L6-s9246",
+   "outcome": "solved",
+   "max_candidate_len": 313
+  },
+  {
+   "episode_id": "L6-s9247",
+   "outcome": "solved",
+   "max_candidate_len": 246
+  },
+  {
+   "episode_id": "L6-s9248",
+   "outcome": "solved",
+   "max_candidate_len": 102
+  },
+  {
+   "episode_id": "L6-s9249",
+   "outcome": "solved",
+   "max_candidate_len": 105
+  },
+  {
+   "episode_id": "L7-s9200",
+   "outcome": "solved",
+   "max_candidate_len": 220
+  },
+  {
+   "episode_id": "L7-s9201",
+   "outcome": "solved",
+   "max_candidate_len": 188
+  },
+  {
+   "episode_id": "L7-s9202",
+   "outcome": "solved",
+   "max_candidate_len": 483
+  },
+  {
+   "episode_id": "L7-s9203",
+   "outcome": "solved",
+   "max_candidate_len": 195
+  },
+  {
+   "episode_id": "L7-s9204",
+   "outcome": "solved",
+   "max_candidate_len": 61
+  },
+  {
+   "episode_id": "L7-s9205",
+   "outcome": "solved",
+   "max_candidate_len": 253
+  },
+  {
+   "episode_id": "L7-s9206",
+   "outcome": "solved",
+   "max_candidate_len": 449
+  },
+  {
+   "episode_id": "L7-s9207",
+   "outcome": "solved",
+   "max_candidate_len": 101
+  },
+  {
+   "episode_id": "L7-s9208",
+   "outcome": "solved",
+   "max_candidate_len": 106
+  },
+  {
+   "episode_id": "L7-s9209",
+   "outcome": "solved",
+   "max_candidate_len": 1906
+  },
+  {
+   "episode_id": "L7-s9210",
+   "outcome": "solved",
+   "max_candidate_len": 108
+  },
+  {
+   "episode_id": "L7-s9211",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 469
+  },
+  {
+   "episode_id": "L7-s9212",
+   "outcome": "solved",
+   "max_candidate_len": 251
+  },
+  {
+   "episode_id": "L7-s9213",
+   "outcome": "solved",
+   "max_candidate_len": 108
+  },
+  {
+   "episode_id": "L7-s9214",
+   "outcome": "solved",
+   "max_candidate_len": 127
+  },
+  {
+   "episode_id": "L7-s9215",
+   "outcome": "solved",
+   "max_candidate_len": 410
+  },
+  {
+   "episode_id": "L7-s9216",
+   "outcome": "solved",
+   "max_candidate_len": 169
+  },
+  {
+   "episode_id": "L7-s9217",
+   "outcome": "solved",
+   "max_candidate_len": 119
+  },
+  {
+   "episode_id": "L7-s9218",
+   "outcome": "solved",
+   "max_candidate_len": 122
+  },
+  {
+   "episode_id": "L7-s9219",
+   "outcome": "solved",
+   "max_candidate_len": 802
+  },
+  {
+   "episode_id": "L7-s9220",
+   "outcome": "solved",
+   "max_candidate_len": 555
+  },
+  {
+   "episode_id": "L7-s9221",
+   "outcome": "solved",
+   "max_candidate_len": 178
+  },
+  {
+   "episode_id": "L7-s9222",
+   "outcome": "solved",
+   "max_candidate_len": 206
+  },
+  {
+   "episode_id": "L7-s9223",
+   "outcome": "solved",
+   "max_candidate_len": 279
+  },
+  {
+   "episode_id": "L7-s9224",
+   "outcome": "solved",
+   "max_candidate_len": 229
+  },
+  {
+   "episode_id": "L7-s9225",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 517
+  },
+  {
+   "episode_id": "L7-s9226",
+   "outcome": "solved",
+   "max_candidate_len": 453
+  },
+  {
+   "episode_id": "L7-s9227",
+   "outcome": "solved",
+   "max_candidate_len": 633
+  },
+  {
+   "episode_id": "L7-s9228",
+   "outcome": "solved",
+   "max_candidate_len": 307
+  },
+  {
+   "episode_id": "L7-s9229",
+   "outcome": "solved",
+   "max_candidate_len": 477
+  },
+  {
+   "episode_id": "L7-s9230",
+   "outcome": "solved",
+   "max_candidate_len": 400
+  },
+  {
+   "episode_id": "L7-s9231",
+   "outcome": "solved",
+   "max_candidate_len": 52
+  },
+  {
+   "episode_id": "L7-s9232",
+   "outcome": "solved",
+   "max_candidate_len": 141
+  },
+  {
+   "episode_id": "L7-s9233",
+   "outcome": "solved",
+   "max_candidate_len": 526
+  },
+  {
+   "episode_id": "L7-s9234",
+   "outcome": "solved",
+   "max_candidate_len": 1744
+  },
+  {
+   "episode_id": "L7-s9235",
+   "outcome": "solved",
+   "max_candidate_len": 210
+  },
+  {
+   "episode_id": "L7-s9236",
+   "outcome": "solved",
+   "max_candidate_len": 57
+  },
+  {
+   "episode_id": "L7-s9237",
+   "outcome": "solved",
+   "max_candidate_len": 61
+  },
+  {
+   "episode_id": "L7-s9238",
+   "outcome": "solved",
+   "max_candidate_len": 298
+  },
+  {
+   "episode_id": "L7-s9239",
+   "outcome": "solved",
+   "max_candidate_len": 218
+  },
+  {
+   "episode_id": "L7-s9240",
+   "outcome": "solved",
+   "max_candidate_len": 255
+  },
+  {
+   "episode_id": "L7-s9241",
+   "outcome": "solved",
+   "max_candidate_len": 112
+  },
+  {
+   "episode_id": "L7-s9242",
+   "outcome": "budget_exhausted",
+   "max_candidate_len": 380
+  },
+  {
+   "episode_id": "L7-s9243",
+   "outcome": "solved",
+   "max_candidate_len": 275
+  },
+  {
+   "episode_id": "L7-s9244",
+   "outcome": "solved",
+   "max_candidate_len": 111
+  },
+  {
+   "episode_id": "L7-s9245",
+   "outcome": "solved",
+   "max_candidate_len": 393
+  },
+  {
+   "episode_id": "L7-s9246",
+   "outcome": "solved",
+   "max_candidate_len": 211
+  },
+  {
+   "episode_id": "L7-s9247",
+   "outcome": "solved",
+   "max_candidate_len": 246
+  },
+  {
+   "episode_id": "L7-s9248",
+   "outcome": "solved",
+   "max_candidate_len": 106
+  },
+  {
+   "episode_id": "L7-s9249",
+   "outcome": "solved",
+   "max_candidate_len": 158
+  }
+ ],
+ "wall_s": 734.6,
+ "start": {
+  "start_commit": "d76610e9",
+  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_longctx_census2.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_longctx_census2.py": "b761b010e4ad65ca51b0880f06b70a1365d824ff41220033f96d190b628e09b2",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/mathgen/problems.py": "9f1dcac61712696b2b7f9e65585d33d26865edf6b60f338977f09a792fe51215",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61"
+  }
+ },
+ "completion_commit": "d76610e9"
+}

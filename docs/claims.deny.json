@@ -129,6 +129,12 @@
             "reason": "MicroLM's cached path is causal only at T=1 (is_causal=False whenever past is set): chunked cached scoring leaks future child tokens, so cached and full conditionals are NOT established identical (qualification registered, unrun). Runtime dominance was a position-count argument ignoring O(T^2) attention; retracted pending the measured microbench.",
             "superseded_by": "2026-08-22-amendment-math-cyber-1-substrate-desk-b",
             "scope": "math[- ]?cyber|mathworld|kv[- ]?reuse|cached scor"
+        },
+        {
+            "pattern": "full batched (teacher-forced )?forwards|17\\.1% (of .{0,20})?exceed 512",
+            "reason": "SCOREQAL's accepted path is full TEACHER-FORCED scoring; its bench was serial B=1 (batching measured separately at 0.92x \u2014 a small loss \u2014 EXECBENCH-0, serial is the frozen law). The 17.1%-exceed-512 figure is the CANDIDATE-SCORING population; the success-gated TRAINING population is 205/205 <=512 (POPULATIONS amendment). Name the population when quoting exposure.",
+            "superseded_by": "2026-08-22-amendment-math-cyber-1-longctx-0",
+            "scope": "math[- ]?cyber|mathworld|scoreqal|longctx"
         }
     ]
 }

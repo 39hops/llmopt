@@ -1,0 +1,42 @@
+{
+ "device": "mps",
+ "birth_seed": 77,
+ "vocab": 296,
+ "token_budget": 16384,
+ "score": {
+  "decisions": 101,
+  "candidates": 725,
+  "serial_wall_s": 55.6,
+  "batched_wall_s": 60.69,
+  "speedup": 0.92,
+  "batched_mem_delta_mb": 0.0,
+  "max_abs_delta": 1.811981201171875e-05,
+  "argmax_agree": "101/101"
+ },
+ "update": {
+  "median_episode": {
+   "episode": "L4-s9108",
+   "edges": 1,
+   "microbatches": 1,
+   "wall_s": 1.061
+  },
+  "longest_episode": {
+   "episode": "L4-s9106",
+   "edges": 3,
+   "microbatches": 1,
+   "wall_s": 0.463
+  }
+ },
+ "start": {
+  "start_commit": "d76610e9",
+  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_execbench.py\n?? scratch/mathworld1_longctx_census2.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_execbench.py": "2b160305f6457bf2fc4d3cbaa0df0a64227b199d465c1c019ecd5f7d97c5359a",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "logs/mathworld1/states.jsonl": "7e17a5c0ae6d704f789e73f221f4ba2d25300497ea8c81fb10d1e45a2247c963",
+   "logs/mathworld1/actions.jsonl": "63fb894221907c8c27a570906b0a381d73df2f5ff392b7efe23faaadf8e7a046"
+  }
+ },
+ "completion_commit": "d76610e9"
+}
