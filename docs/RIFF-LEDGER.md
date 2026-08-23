@@ -8641,6 +8641,19 @@ honest status column).
     during ADAPT, so its frontier is the harder prediction).
     Do NOT retrain MAGIC for this — the historical-prediction
     test is only meaningful with the frozen historical artifact.
+    PIN PROTOCOL (hardened 2026-08-23, pre-PROSPECT): before any
+    PROSPECT scoring, ONE historically canonical MAGIC artifact
+    is pinned by exact path + sha256, estimator/version lineage,
+    feature-extractor code sha, normalization, hardness scalar
+    definition, and a frozen support/OOD rule — selected on
+    HISTORICAL PEDIGREE only, never by CALIBRATION/HOLDOUT
+    correlation; no version switching after the pin. PROSPECT
+    scores are computed and sha-sealed AFTER the target roots
+    materialize but BEFORE any policy outcome on them exists,
+    and stay inaccessible to treatment. NOTE: the first
+    ACTIVE-EPISODIC HOLDOUT band (9400-9409) launches WITHOUT a
+    sealed PROSPECT (no pin existed pre-launch), so PROSPECT
+    targets a FUTURE fresh band; RETRO stays descriptive.
   Conceptual bridge, METHODOLOGY-ONLY (charter fence, verbatim):
   cheap structural hardness surrogate -> reduced/local candidate
   space -> exact oracle adjudication -> adaptive/variational

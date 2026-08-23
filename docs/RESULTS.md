@@ -42859,3 +42859,25 @@ same-state/different-legal-set count. Full ranking similarity
 over complete legal sets) is UNMEASURED and would be a separate
 zero-run join on the stored scores if ever wanted.
 
+## AMENDMENT MATH-CYBER-1-ACTIVE-EPISODIC-0-WALL-CONFORMANCE: paid-state identity moved to PERSISTENT per-arm experiment state (a cached state revisited in a later episode was being recharged despite no rematerialization); re-smoked 10/10 with two new no-fresh-data checks (2026-08-23, Mac)
+
+Implementation conformance to AMENDMENT -WALL, not a new
+estimand. The driver's paid_keys set was episode-local while
+World.cache persists across episodes/stages, so a revisited
+state was recharged its materialization wall without any
+rematerialization. Fixed: Arm.world_keys_paid persists across
+ALL run_pair calls of the paired experiment; each episode's
+charged_wall_s starts at zero; on state use an arm pays
+world.walls[k] iff that ARM has never paid k in the experiment;
+repeat use by the same arm is free; another arm's first use of a
+cached state pays exactly the one recorded duration; scoring
+charge stays episode-local; updates stay excluded. Re-smoke
+(new receipt path logs/mathworld1/smoke2_active_pair.jsonl —
+the prior smoke receipts are booked evidence and stay frozen):
+10/10 mechanism checks, adding revisit_zero_recharge (same arm,
+later stage, cached root: no second materialization charge) and
+other_arm_first_use_pays_once, with the injected-delay wall
+isolation preserved. Driver commit 377ae3eb (also implements
+the real mode behind the MW1_ACTIVE_GO gate; Artin GO 01:38 EDT
++ outside GO conditional on this green re-smoke are on record).
+
