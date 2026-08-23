@@ -42653,3 +42653,150 @@ denominator. The failure-set identity with greedy-hce is COLOR at the
 OUTCOME level only (mechanisms differ, per above); choice-level
 equivalence is unmeasured here.
 
+## OBSERVATION MATH-CYBER-1-THETA0-HCE-JOIN-0: zero-run choice join — theta_0 matches greedy-hce's exact action on 36/48 shared decision states (75%), every divergence is a rule-FAMILY divergence, and the outcome-set identity survives 25% different choices (2026-08-23, Mac)
+
+The banked zero-cost join, COLOR/interpretation only (no rung
+constant changes; both inputs frozen receipts). Join law: rows
+from logs/mathworld1/liveness.jsonl (theta_0, 84 unique decision
+(state_hash, legal_set_hash) keys) and logs/mathworld0/active.jsonl
+(greedy-hce rung 0, 64 unique keys) joined ONLY where BOTH hashes
+match; repeated states deduplicated (no key carried two distinct
+choices in either arm — multi-choice keys 0).
+
+MEASURED: 48 shared states, and every shared state carries the
+IDENTICAL legal-set hash (same-state/different-legal-set = 0 —
+the two runs' worlds agree wherever they overlap, despite the
+booked load-dependent timebox hazard). On the 48 joined pairs:
+exact name#child_hash agreement 36/48 (75%); child-only
+agreement 36/48; rule-family agreement 36/48 — the three
+measures COINCIDE, so every one of the 12 divergences is a
+different rule FAMILY producing a different child, never the
+same rule at a different locus or a different label for the same
+child.
+
+READING (color): theta_0 is NOT choice-equivalent to the engine
+heuristic. It reproduces hce's preference ordering on 75% of
+shared decisions and takes a different rule family on the other
+25%, yet lands the exact same 35/40 outcome set — consistent
+with the diet teaching a NEIGHBORHOOD of the engine's policy
+whose differences are outcome-neutral on this band. The next
+rung's question sharpens accordingly: success-only closed-loop
+adaptation tests whether an engine-trained policy can move OFF
+the engine's observed failure frontier, not merely mimic it.
+
+FENCES. Join covers only states BOTH policies visited (48 of
+84/64 — divergent trajectories leave the join immediately, so
+the 75% is conditioned on still-shared prefixes). Hash-keyed at
+the registered 16-hex grain (collision risk negligible at n=148
+but nonzero; the hardened full-key join belongs to the paired
+rung's receipts). Color only; adjudicates nothing.
+
+## PRE-REG MATH-CYBER-1-ACTIVE-EPISODIC-0: the first closed-loop rung — ACTIVE-EPISODIC v theta_0-FROZEN, lockstep paired driver, two independent adjudications (Artin's PERFECT on HOLDOUT; feedback direction ACTIVE > FROZEN); ADAPT/HOLDOUT NOT materialized at registration (2026-08-23, Mac)
+
+Registered BEFORE any ADAPT/HOLDOUT root exists. Bands frozen at
+-DESIGN (a): ADAPT = seeds 9300-9309, HOLDOUT = seeds 9400-9409,
+L4-7. This prereg + its smoke STOP before materialization; the
+bands first exist at the contamination-audit stage of the launch,
+under a separate GO.
+
+ARMS (share theta_0 = checkpoint sha 52fd1aff2c45fc5c..., episode
+order, roots, 12-decision budget, 60 s wall cap, overflow law,
+one lockstep driver, one world snapshot):
+- ACTIVE-EPISODIC: after each SOLVED ADAPT episode, exactly one
+  update per the frozen dose (-DESIGN (c) as sharpened at
+  -SUBSTRATE-DESK-0-SCOPE (d)): child-token mean CE including the
+  terminating newline, per-decision means averaged EQUALLY across
+  the episode's decisions, one AdamW step lr 1e-4, betas (0.9,
+  0.95), weight_decay 0, optimizer state persistent from zero;
+  FAILED episodes = ZERO optimizer activity. Training sequences
+  run up to ctx 4096 — the birth SEQ_CAP=512 does NOT apply to
+  episodic updates. A nonfinite loss/grad or a backward OOM is a
+  TREATMENT INSTRUMENT FAILURE: STOP the rung, book it; never
+  fall back, truncate, or skip-and-continue.
+- FROZEN: theta_0 with zero updates, scored on the identical
+  stream.
+
+EPISODE ORDER (frozen): seed-major interleaved —
+s9300: L4, L5, L6, L7; s9301: L4, L5, L6, L7; ... s9309: L7.
+HOLDOUT evaluation uses the analogous seed-major order
+(s9400: L4..L7; ...), zero updates in every arm.
+
+ADJUDICATIONS (two, independent; both on HOLDOUT with the final
+frozen policies):
+1. ARTIN'S PERFECT (primary operationalization, -DESIGN (b)):
+   ACTIVE's final frozen policy solves 40/40 HOLDOUT. PASS/FAIL
+   on its own; acquisition solves on the ADAPT stream reported
+   separately, never merged.
+2. FEEDBACK DIRECTION: ACTIVE final-policy HOLDOUT solves >
+   theta_0-FROZEN HOLDOUT solves (strict). Independent of (1):
+   a 40/40 v 40/40 tie PASSES PERFECT and FAILS feedback; 39 v
+   34 FAILS PERFECT and SUPPORTS feedback.
+REFUTED-IF (feedback): ACTIVE <= FROZEN on HOLDOUT books the
+closed-loop feedback claim NOT-SUPPORTED at this dose/band (the
+bank's counter-prior direction). PERFECT adjudicates only
+Artin's registered prediction, PASS or FAIL as measured.
+
+REGISTERED PRIORS: Artin — PERFECT (40/40, standing since the
+bank). House counter-prior — feedback direction positive but
+PERFECT fails: the theta_0 frontier (35/40-class) moves by a few
+episodes, not to closure; the L6 monster class stays unsolved
+within 12 decisions. On the record, family direction-call record
+carried honestly (KNIFE 3-for-3; wider EX6 2-for-6).
+
+WORLD-SNAPSHOT DISCIPLINE (hardened per the carried notes):
+- ONE lockstep paired driver; at each logical step it collects
+  both arms' needed current states, dedups and sorts by FULL
+  State.key(), and materializes every missing world state BEFORE
+  scoring either arm.
+- The complete-world cache keys on FULL State.key() and stores
+  semantic (rule label, child expr) pairs; 16-hex hashes are
+  RECEIPT fields only, never lookup keys.
+- Before each NEW state's first successors() materialization the
+  driver clears derivation._RULE_CACHE, so a prior state's
+  load-induced rule timeout can never become sticky
+  missing-moves in a later state's legal set. RULE_WALL stays
+  2.0 s (unchanged — the engine's registered constant).
+- Arm-local State metadata (plies, history) is reconstructed on
+  cache hits; the cache carries semantics, not trajectory state.
+- Machine idle; world enumeration never concurrent with scoring
+  or training.
+- Execution device recorded IN the receipt (the theta_0 receipt
+  gap, fixed).
+
+RECEIPTS per arm: per-decision rows (episode, step, full-key-
+derived state hash, legal-set hash, chosen action, outcome,
+overflow events); ACTIVE additionally per-update rows (update
+index, loss, grad norm, trajectory edge count); final checkpoint
+sha256 + optimizer step count; device; provenance derived.
+
+CONTAMINATION LAW (frozen BEFORE fresh roots exist): at
+materialization, every ADAPT/HOLDOUT root is exact-matched
+against the birth diet's cur/nxt strings, the CALIBRATION roots,
+the TRAIN band roots, and EACH OTHER; every match is DISCLOSED,
+never replaced or reseeded; the primary denominator stays the
+fixed 40; a clean-subset reading books as secondary color.
+
+DIAGNOSTICS (color, frozen): MINLEN static candidate policy on
+HOLDOUT (length-bias control, -COVERAGE (e)); hce remains
+color/baseline, never reward, never fallback (overflow in a
+primary arm stays the registered model-failure event).
+
+QUALIFICATION (before any launch GO): mechanism-complete SMOKE
+on already-spent CALIBRATION/synthetic paths ONLY (no fresh
+seeds): at least one ACTIVE success + real update, one failed
+zero-update episode, divergent ACTIVE/FROZEN states exercising
+the shared snapshot cache, one overflow-path exercise
+(synthetic), and a final frozen evaluation pass; smoke receipts
+path-isolated; receipt-auditor on the smoke receipts before this
+prereg's booking commit is final. Full suite green.
+
+FENCES: single seed pair (theta_0 9001 + the frozen bands),
+single device (Mac mps, fp32), mps run-level nondeterminism
+booked (no cross-run bit-exact claim; the paired arms share the
+run's substrate noise by the lockstep design). CALIBRATION
+numbers never enter either adjudication. HOLDOUT is evaluated
+ONCE per arm; no update may ever be computed from a HOLDOUT
+episode. Wall-cap rows are timing events per the standing
+contract. STOP after this prereg + smoke: seeds 9300-9309 and
+9400-9409 are NOT generated.
+

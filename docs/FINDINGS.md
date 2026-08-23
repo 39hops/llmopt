@@ -2908,3 +2908,14 @@ regime tag on every bullet is the fence.
   selection; CALIBRATION is instrument-health color, never the
   PERFECT adjudication; ADAPT/HOLDOUT stay ungenerated.
   ([VERDICT MATH-CYBER-1-THETA0-BIRTH-0](RESULTS.md#L42568 "id:2026-08-22-verdict-math-cyber-1-theta0-birth").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search]
+  Zero-run choice join: theta_0 matches greedy-hce's exact
+  action on 36/48 shared decision states (75%), every divergence
+  a different rule FAMILY producing a different child, and the
+  identical 35/40 outcome set survives the 25% different choices
+  — the diet taught a NEIGHBORHOOD of the engine policy whose
+  differences are outcome-neutral on this band; the two runs'
+  worlds agree wherever they overlap (0 same-state/different-
+  legal-set). Join conditioned on shared prefixes; color only.
+  ([OBSERVATION MATH-CYBER-1-THETA0-HCE-JOIN-0](RESULTS.md#L42656 "id:2026-08-23-observation-math-cyber-1-theta0-hce").)
