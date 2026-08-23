@@ -43572,3 +43572,173 @@ mechanism-complete smoke; no fresh-band run occurs under this
 prereg, and label counts here are QUALIFICATION artifacts on
 spent data, never yield evidence.
 
+## VERDICT MATH-CYBER-1-RETRO-LABELER-QUAL-0: labeler QUALIFIED 6/6 bars — the frozen TERMINAL-FIRST + theta_0 operator reproduces the L7-s9303 outcome-differing rank-2 fork (11/12 rank-2 forks label there, all the SAME forced child re-encountered around the 2-cycle; FRONTIER's theta_0-only continuations converted 4), zero-label/overflow/censor paths clean, and L6-s9300 SOLVES live under the terminal override (2026-08-23, Mac)
+
+Adjudicates PRE-REG MATH-CYBER-1-RETRO-LABELER-QUAL-0 (booked
+at 61fdbc96). One-shot; the qualification run IS the
+registered mechanism-complete smoke of the labeler. Receipts:
+logs/mathworld1/retrolabel_qual.jsonl +
+retrolabel_qual_verdict.json; driver
+scratch/mathworld1_retrolabel.py. PROCESS DISCLOSURE (receipt
+audit): the run executed at start_commit == completion_commit
+61fdbc96 with the driver UNTRACKED; identity is bound by the
+receipt's start-provenance file_sha256 (f3e07ea5...), which
+equals the bytes committed immediately after at 924652d3.
+theta_0 52fd1aff... (derived), device mps, zero training,
+outcome-spent episodes only.
+
+BARS (all registered, all FIRED):
+B1 BINDING: the L7-s9303 TERMINAL-FIRST walk reproduced the
+   recorded FROZEN trajectory — 12/12 state and legal-set
+   hashes bind — and failed budget_exhausted.
+B2 TARGET: >=1 outcome-differing label emitted at L7-s9303 with
+   the step-0 forced identity equal to the FRONTIER-DESK-0
+   rank-2 rescue (i_ansatz_exp...#child_hash, matched
+   receipt-to-receipt).
+B3 ZERO-LABEL: L4-s9401 failed and emitted 0 labels from its
+   12 rank-2 forks.
+B4 OVERFLOW: L6-s9403 reproduced model_ctx_overflow, 0 labels,
+   and no negative-label field exists anywhere in the receipt
+   ROW schema (the verdict json's bar NAME carries the word).
+B5 CENSOR ISOLATION: the injected 61 s charge on the L4-s9401
+   censor_qual re-walk's step-0 fork produced censored status
+   and NO label. INTERPRETIVE CAVEAT (audit-adopted): that
+   fork is non-labeling in the uncensored walk too
+   (budget_exhausted at depth 11), so the observation shows the
+   censored path emitting no label — suppression of a LIVE
+   label is qualified by construction only, not by observation.
+B6 TERMINAL-FIRST LIVE: L6-s9300 SOLVED at step 0 with
+   scorer_invoked=false — the TERMINAL-DOMINANCE-0 derived
+   counterfactual executed, not just derived.
+
+BEYOND THE BARS (registered-prior direction, reported): the
+prior said B2's label set is "at least steps 0-3, possibly
+more"; measured 11 of 12 rank-2 forks label (all steps except
+step 11, horizon 0). DIVERSITY CAVEAT: the walk visits only 3
+distinct states (root, then the 2-cycle), so the 11 labels are
+ONE forced child identity (...#08b31ff3) re-encountered at
+successive visits, with 3 distinct margins — one corrective
+fact, not eleven. All 11 solve at continuation depth 1 (the
+rank-2 i_ansatz_exp child exposes an immediate terminal that
+TERMINAL-FIRST takes; the four FRONTIER rescues from these
+forks needed depth 8 under theta_0-only continuations, and the
+remaining rank-2 forks there exhausted their shrinking horizons
+without solving); label margins run 6.42 to 21.08.
+Qualification label counts are instrument artifacts
+on spent data, never yield evidence — the fresh-band yield
+census (own prereg) is the pricing instrument.
+
+INSTRUMENT NOTES (receipt audit, adopted): (a) the receipt's
+scorer_invoked field reads false on the L6-s9403 overflow row
+although the scorer WAS entered (it aborted during candidate
+encoding under the overflow law) — its scorer_invoked_states
+count of 8 undercounts that definitional reading by one, and
+the event field is the disambiguator; (b) charged_wall_s is
+order-dependent across walks (the world records
+first-measurement walls; the censor_qual re-walk of L4-s9401
+charged 29.45 v 29.85 s), and L6-s9403's 54.66 s sits ~5 s
+under the 60 s cap — B4's overflow outcome is load-adjacent on
+a busier machine (idle-machine discipline held here).
+
+FENCES. Single device (mps fp32), single seed chain, one-shot;
+four spent roots + one injected re-walk, mechanism existence
+results only. The operator never consults rank 3+, never emits
+negatives, and never labels censored/overflow/noncomparable
+forks — overflow and censoring observed, live-label
+suppression by construction (B5 caveat above). An
+already-solved rank-2 child short-circuits to a depth-0 label
+without a policy walk — registered here as UNEXERCISED code (no
+depth-0 label occurred), to re-qualify if a fresh band hits it.
+Receipts are refuse-if-exists. No fresh band exists under this
+prereg; band materialization is gated on Artin/GPT approval of
+the registered YIELD bars.
+
+## PRE-REG MATH-CYBER-1-LABEL-YIELD-0: sacrificial fresh-band census of retrospective-credit label supply under the qualified TERMINAL-FIRST + theta_0 labeler — GO/NO-GO bars for a training rung registered BEFORE the band exists; BAND NOT YET MATERIALIZED (2026-08-23, Mac)
+
+Per outside GO on edff502f (Decision 3). This prereg registers
+the DESIGN and the GO/NO-GO bars only; the band is generated
+ONLY after Artin/GPT approve these bars ("bring back the
+proposed yield bars before materializing the new band"). No
+training on this band, ever.
+
+BAND (registered, not generated): YIELD = L4-L7 x seeds
+9500-9519, 80 episodes, seed-major interleaved order. Disjoint
+by construction from BIRTH_SEED 9001, CALIBRATION 9100-9109,
+TRAIN 9200-9249, ADAPT 9300-9309, HOLDOUT 9400-9409. The band
+is SACRIFICIAL: permanently outcome-spent for all prospective
+claims the moment the census reads it, and all future
+treatment ADAPT/HOLDOUT bands draw from seeds >= 9600.
+Contamination law carries: exact-match audit v the birth diet
+and all prior bands, disclosed with a fixed denominator, never
+reseeded.
+
+OPERATOR (frozen, qualified 6/6 at RETRO-LABELER-QUAL-0):
+controller = TERMINAL-FIRST + theta_0 (52fd1aff...), the
+labeler exactly as qualified — failure-triggered, rank-2 only,
+outcome-blind, frozen TERMINAL-FIRST continuation over the
+exact remaining horizon, labels only on outcome-differing
+forks, censored/overflow/noncomparable = no label, no
+negatives, hce nowhere. Budget 12, charged wall 60 s,
+ctx 4096, world-snapshot discipline unchanged. Zero training.
+
+CENSUS REPORT (registered, primary unit = EPISODES):
+1. TERMINAL-FIRST baseline solves/failures (per level dict +
+   total over the fixed 80);
+2. failed episodes with >=1 eligible rank-2 fork (a
+   scorer-invoked state with a rank-2 candidate);
+3. failed episodes with >=1 USABLE corrective label (the
+   PRIMARY pricing statistic, count and fraction of failures);
+4. total usable labels (secondary, CLUSTERED count — labels
+   within one episode are one cluster, never independent
+   evidence);
+5. censoring/noncomparability counts;
+6. label locations/ranks(=2 by construction)/margins/depths as
+   diagnostic color.
+
+GO/NO-GO BARS (proposed here for Artin/GPT approval, frozen
+before any band row exists):
+GO fires iff BOTH:
+  (a) >=3 failed episodes each carry >=1 usable
+      outcome-differing rank-2 label, AND
+  (b) >=5 usable labels in total (clustered count reported
+      beside it).
+NO-GO otherwise: the operator PARKS with named revival
+conditions (a wider sacrificial band, or an operator change
+such as top-k>2 forking — which would need its own
+qualification) and NO training rung is designed against this
+supply.
+Rationale registered with the bar: the dose-matched
+COUNTERFACTUAL-CREDIT comparison needs enough label-bearing
+FAILED EPISODES to fire preference updates on more than one
+root; historical base rates (5/40 CALIBRATION, 2/40 ADAPT,
+4/40 HOLDOUT argmax-controller failures; 1 label-bearing root
+among the 6 FROZEN failures; TERMINAL-FIRST removes some
+failures) make ~2-8 failures and 1-3 label-bearing episodes
+the plausible range on 80 episodes — the GO bar is set at the
+optimistic edge DELIBERATELY, so a NO-GO is the honest default
+outcome unless the fresh band is label-richer than the spent
+bands were.
+
+REGISTERED PRIOR (house, on the record): NO-GO — expected 1-2
+label-bearing failed episodes on 80 (below bar (a)); the
+likeliest path to a training rung is a wider band, and this
+census prices exactly how much wider.
+
+REFUTED-IF (of the prior): GO fires.
+
+WHAT FOLLOWS: on GO, return to Artin/GPT with the counts;
+only then design dose-matched COUNTERFACTUAL-CREDIT v an
+appropriate control on NEW (>=9600) bands, with its own
+prereg. On NO-GO, the operator parks as above. In neither case
+does any treatment or training run under THIS prereg, and the
+treatment design is never conditioned on future
+treatment-band/HOLDOUT outcomes.
+
+FENCES. Single device (mps fp32), single seed chain, one-shot
+census when it runs; receipts logs/mathworld1/yield_census.jsonl
++ yield_census_verdict.json, refuse-if-exists; smoke on smoke_
+paths against spent seeds before the real census; auditors
+before the census verdict books. The 80-episode band is a
+single draw — yield numbers are that band's counts, never rates
+generalized past it.
+

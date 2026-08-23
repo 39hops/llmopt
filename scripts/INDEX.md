@@ -2692,6 +2692,16 @@ MATH-CYBER-1 TRAIN-band exposure census v2 (outside-review correction of OBSERVA
 
 - `main()`
 
+### scratch/mathworld1_retrolabel.py
+MATH-CYBER-1 RETRO-LABELER-QUAL-0 — failure-triggered retrospective-credit labeler, mechanism qualification on outcome-spent data (PRE-REG MATH-CYBER-1-RETRO-LABELER-QUAL-0, booked at 61fdbc96).
+
+- `sha(t: str) -> str`
+- `class World` (legal)
+- `class Scorer` (score, rank_candidates)
+- `terminal_first_walk(root_state, world, scorer, budget, inject_delay_s=0.0)` — One frozen TERMINAL-FIRST + theta_0 walk. steps keep the
+- `label_episode(eid, stage, root, world, scorer, sink, inject_fork_step=None)`
+- `main()`
+
 ### scratch/mathworld1_scoreqal.py
 MATH-CYBER-1 cached-scorer qualification + runtime microbench (AMENDMENT MATH-CYBER-1-SUBSTRATE-DESK-0-KV registration). NO TRAINED MODEL: a fresh random-weight MicroLM (seeded birth, BIRTH_SEED=77, stock base vocab) is the instrument — the qualification tests SCORER MECHANICS, not capability.
 

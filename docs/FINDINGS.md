@@ -2977,3 +2977,21 @@ regime tag on every bullet is the fence.
   but neither episode-costing miss is; no retroactive rescore
   of booked verdicts.
   ([VERDICT MATH-CYBER-1-TERMINAL-DOMINANCE-0](RESULTS.md#L43378 "id:2026-08-23-verdict-math-cyber-1-terminal-dominance").)
+
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] The
+  failure-triggered retrospective-credit LABELER is qualified
+  6/6 registered bars on outcome-spent data under the frozen
+  TERMINAL-FIRST + theta_0 operator: binds the recorded
+  L7-s9303 trajectory 12/12, reproduces the FRONTIER rank-2
+  outcome-differing fork receipt-to-receipt, emits zero labels
+  on the no-rescue root (L4-s9401) and the overflow root
+  (L6-s9403), never emits negatives, censored forks emit no
+  label (live-label suppression by construction only), and
+  L6-s9300 SOLVES live at step 0 under the terminal override.
+  Diversity caveat: the 11 qualification labels are ONE forced
+  child around a 2-cycle — one corrective fact. Yield pricing
+  belongs to the registered LABEL-YIELD-0 band census (bars:
+  GO iff >=3 label-bearing failed episodes AND >=5 labels on
+  80 fresh sacrificial episodes 9500-9519; house prior NO-GO;
+  band NOT generated pending Artin/GPT bar approval).
+  ([VERDICT MATH-CYBER-1-RETRO-LABELER-QUAL-0](RESULTS.md#L43575 "id:2026-08-23-verdict-math-cyber-1-retro-labeler").)

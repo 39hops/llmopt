@@ -746,6 +746,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/retrolabel_qual.jsonl": {
+   "bytes": 42066,
+   "exists": true,
+   "local_only": true,
+   "sha256": "0d4f92cdb98e45537324330d5ea8e955880e21c647e2b7665919c85ec5acd452",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/scoreqal.json": {
    "bytes": 2136,
    "exists": true,
@@ -789,6 +797,14 @@
    "sha256": "8fee0d5c0caa6a7f2d58e5c65e7022d0c88c8e700203d6eae720fb208c19f657",
    "source": "results",
    "tracked": false
+  },
+  "logs/mathworld1/yield_census.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/mathworld1/yield_census_verdict.json": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/merge_space1/driver.log": {
    "exists": false,

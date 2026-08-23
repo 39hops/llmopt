@@ -1,0 +1,40 @@
+{
+  "name": "MATH-CYBER-1-LABEL-YIELD-0",
+  "note": "Structured projection of the prose pre-reg (RESULTS, PRE-REG MATH-CYBER-1-LABEL-YIELD-0). Band 9500-9519 NOT materialized; census runs only after Artin/GPT approve the GO/NO-GO bars. Receipt paths declared here so the lock classifies them prereg-pending, not booked-without-evidence.",
+  "results_id": "2026-08-23-pre-reg-math-cyber-1-label",
+  "registered": "2026-08-23",
+  "machine": "mac",
+  "arms": {
+    "TERMINAL-FIRST-theta0": {
+      "description": "frozen qualified operator: terminal override + theta_0 scorer + failure-triggered rank-2 labeler"
+    }
+  },
+  "bars": [
+    {
+      "id": 1,
+      "name": "GO-EPISODES",
+      "metric": "label_bearing_failed_episodes",
+      "population": "yield:9500:9519",
+      "aggregation": "count",
+      "direction": "above",
+      "value": 2.5,
+      "description": "GO conjunct (a): >=3 failed episodes each with >=1 usable outcome-differing rank-2 label (integer count above 2.5)"
+    },
+    {
+      "id": 2,
+      "name": "GO-LABELS",
+      "metric": "usable_labels_total",
+      "population": "yield:9500:9519",
+      "aggregation": "count",
+      "direction": "above",
+      "value": 4.5,
+      "description": "GO conjunct (b): >=5 usable labels total, clustered count reported beside it (integer count above 4.5)"
+    }
+  ],
+  "receipts": [
+    "logs/mathworld1/yield_census.jsonl",
+    "logs/mathworld1/yield_census_verdict.json"
+  ],
+  "refuted_if": "Of the house NO-GO prior: both GO conjuncts fire.",
+  "registered_prior": "House: NO-GO - expected 1-2 label-bearing failed episodes on 80 (below conjunct (a))."
+}
