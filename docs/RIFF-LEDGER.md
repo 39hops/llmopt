@@ -8930,3 +8930,8 @@ honest status column).
   separately from transition scoring. Attribution: GPT
   (invariant + baseline design), house (census instrument,
   counts, derivation), Artin (relay/GO).
+  ADOPTED (2026-08-23, Artin-relayed outside GO on edff502f):
+  TERMINAL-FIRST is the DEFAULT controller for all future
+  MATH-CYBER arms, prospective only — every existing
+  argmax-controller verdict stands untouched; any future arm
+  omitting the override must explicitly register why.
