@@ -8867,3 +8867,38 @@ honest status column).
   outcome-differing rank-2 fork is counted at L7-s9303 steps
   0-3. Repairability priced; the treatment stays unproposed
   without GO.
+
+- **BANKED (2026-08-23): FAILURE-TRIGGERED RETROSPECTIVE CREDIT
+  — the preferred next feedback operator: fork only on failure,
+  only at the pre-existing top-2, only where outcomes differ**
+  (GPT proposal off the FRONTIER-DESK-0 counts, house bank; no
+  prereg, no treatment yet). Design: run an episode with the
+  frozen/pre-update policy; on FAILURE only, revisit the
+  recorded states and test the OUTCOME-BLIND pre-existing
+  top-2 alternative under the same remaining horizon and the
+  pre-update continuation policy; only an outcome-DIFFERING
+  fork (chosen fails, alternative solves) creates a pairwise
+  preference label; censored or world-noncomparable forks
+  create NO label. hce never the reward. Measured anchors
+  (FRONTIER-DESK-0, RESULTS L43136): the design's target class
+  is non-empty on the spent band — rank-2 outcome-differing
+  forks exist at L7-s9303 steps 0-3 (min margin 6.42), and the
+  rescuing information there is GENUINELY counterfactual (the
+  rank-2 winner needs continuation depth 8, invisible to the
+  world at the decision). Honest breaks: (1) L6-s9300's rescue
+  is NOT this class — an already-solved legal child missed by
+  the argmax controller is a TERMINAL-DOMINANCE controller
+  defect (see PRE-REG MATH-CYBER-1-TERMINAL-DOMINANCE-0), and
+  must never be used to justify deep-k exploration; (2) any
+  future comparison against success-only updating must be
+  dose-matched (the COUNTERFACTUAL-CREDIT bank's standing
+  fence); (3) label yield on this band is small (4 sites, one
+  root) — a fresh-band yield census prices the operator before
+  any training. Testable residue: mechanism-complete smoke +
+  prereg of the fork-labeler on outcome-spent data; the
+  discriminating question stays the COUNTERFACTUAL-CREDIT
+  bank's — can difference-bearing feedback move the frontier
+  that confirmation-only feedback measurably did not?
+  Attribution: GPT (operator design), Artin (relay + GO
+  structure), house (anchors, breaks, terminal-defect
+  separation).
