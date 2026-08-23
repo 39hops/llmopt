@@ -135,6 +135,12 @@
             "reason": "SCOREQAL's accepted path is full TEACHER-FORCED scoring; its bench was serial B=1 (batching measured separately at 0.92x \u2014 a small loss \u2014 EXECBENCH-0, serial is the frozen law). The 17.1%-exceed-512 figure is the CANDIDATE-SCORING population; the success-gated TRAINING population is 205/205 <=512 (POPULATIONS amendment). Name the population when quoting exposure.",
             "superseded_by": "2026-08-22-amendment-math-cyber-1-longctx-0",
             "scope": "math[- ]?cyber|mathworld|scoreqal|longctx"
+        },
+        {
+            "pattern": "reproduces hce's preference ordering|preference ordering on 75",
+            "reason": "The join measured TOP-1 action agreement only (36/48); nothing was observed about ordering over non-chosen candidates. Say 'matches hce's top-1 action on 75%'; full ranking similarity is unmeasured.",
+            "superseded_by": "2026-08-23-amendment-math-cyber-1-theta0-hce",
+            "scope": "math[- ]?cyber|mathworld|hce[- ]join"
         }
     ]
 }

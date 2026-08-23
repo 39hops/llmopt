@@ -49,6 +49,7 @@ rows both arms + update rows + episode rows),
 """
 import hashlib
 import json
+import math
 import os
 import sys
 import time
@@ -84,6 +85,11 @@ CTX = 4096
 X = sp.Symbol("x")
 
 
+def _finite(x) -> bool:
+    """Nonfinite guard predicate (NaN, +/-inf)."""
+    return math.isfinite(x)
+
+
 def sha(t: str) -> str:
     return hashlib.sha256(t.encode()).hexdigest()[:16]
 
@@ -93,15 +99,20 @@ class World:
 
     def __init__(self):
         self.cache = {}   # State.key() -> [(name, child_expr)]
+        self.walls = {}   # State.key() -> first-materialization s
 
     def materialize(self, keys_states):
         """keys_states: {full_key: representative State} for every
-        state both arms need this step; enumerate missing ones."""
+        state both arms need this step; enumerate missing ones.
+        Records each state's first-materialization wall — the
+        CHARGED-WALL unit each arm pays once on first use."""
         for k in sorted(set(keys_states) - set(self.cache)):
             derivation._RULE_CACHE.clear()
             st = keys_states[k]
+            t0 = time.monotonic()
             acts = sorted(successors(st),
                           key=lambda nc: (nc[0], nc[1].key()))
+            self.walls[k] = time.monotonic() - t0
             self.cache[k] = [(n, c.expr) for n, c in acts]
 
     def legal(self, st: State):
@@ -124,6 +135,7 @@ class Arm:
             model.parameters(), lr=1e-4, betas=(0.9, 0.95),
             weight_decay=0.0) if trainable else None)
         self.updates = 0
+        self.inject_delay_s = 0.0   # smoke-only synthetic charge
 
     def score(self, prefix_ids, child_ids):
         ids = torch.tensor([prefix_ids + child_ids],
@@ -133,7 +145,7 @@ class Arm:
         lp = torch.log_softmax(logits[0].float(), -1)
         s = sum(lp[len(prefix_ids) + i - 1, t].item()
                 for i, t in enumerate(child_ids))
-        if s != s:                        # nonfinite score guard
+        if not _finite(s):                # nonfinite score guard
             print("[FAIL] nonfinite candidate score", flush=True)
             sys.exit(4)
         return s
@@ -193,7 +205,18 @@ def run_pair(episodes, world, arms, tok, ctx_overrides, sink,
         alive = {a.name: True for a in arms}
         outcome = {a.name: "budget_exhausted" for a in arms}
         traj = {a.name: [] for a in arms}
-        t_ep = {a.name: time.monotonic() for a in arms}
+        # CHARGED WALL, per arm per episode: each arm pays a
+        # state's first-materialization wall ONCE on its own
+        # first use of that state, plus only its OWN candidate
+        # scoring wall; shared states charge the same recorded
+        # duration to both arms independently; one arm's private
+        # cost never reaches the other; updates (post-episode)
+        # excluded. Cap checked BEFORE the next decision — the
+        # registered one-decision overshoot semantics.
+        charged = {a.name: a.inject_delay_s for a in arms}
+        paid_keys = {a.name: set() for a in arms}
+        for a in arms:
+            a.inject_delay_s = 0.0   # consumed once
         for step_id in range(MAX_DECISIONS):
             need = {}
             for a in arms:
@@ -204,7 +227,7 @@ def run_pair(episodes, world, arms, tok, ctx_overrides, sink,
                     outcome[a.name] = "solved"
                     alive[a.name] = False
                     continue
-                if time.monotonic() - t_ep[a.name] > WALL_CAP_S:
+                if charged[a.name] > WALL_CAP_S:
                     outcome[a.name] = "wall_cap"
                     alive[a.name] = False
                     continue
@@ -218,10 +241,16 @@ def run_pair(episodes, world, arms, tok, ctx_overrides, sink,
                 if not alive[a.name]:
                     continue
                 st = state[a.name]
+                k = st.key()
+                if k not in paid_keys[a.name]:
+                    charged[a.name] += world.walls.get(k, 0.0)
+                    paid_keys[a.name].add(k)
+                t_score = time.monotonic()
                 acts, ah = world.legal(st)
                 if not acts:
                     outcome[a.name] = "dead_end"
                     alive[a.name] = False
+                    charged[a.name] += time.monotonic() - t_score
                     continue
                 parent = str(st.expr)
                 pre_ids = tok.encode(
@@ -236,6 +265,7 @@ def run_pair(episodes, world, arms, tok, ctx_overrides, sink,
                 if over:
                     outcome[a.name] = "model_ctx_overflow"
                     alive[a.name] = False
+                    charged[a.name] += time.monotonic() - t_score
                     sink.write(json.dumps({
                         "arm": a.name, "row": "decision",
                         "stage": stage, "ctx": ctx,
@@ -260,6 +290,7 @@ def run_pair(episodes, world, arms, tok, ctx_overrides, sink,
                     "score": round(s_best, 4)}) + "\n")
                 traj[a.name].append((pre_ids, cids))
                 state[a.name] = child
+                charged[a.name] += time.monotonic() - t_score
                 if is_solved(child):
                     outcome[a.name] = "solved"
                     alive[a.name] = False
@@ -268,7 +299,9 @@ def run_pair(episodes, world, arms, tok, ctx_overrides, sink,
             sink.write(json.dumps({
                 "arm": a.name, "row": "episode", "stage": stage,
                 "episode_id": eid,
-                "outcome": outcome[a.name]}) + "\n")
+                "outcome": outcome[a.name],
+                "charged_wall_s": round(charged[a.name], 3)})
+                + "\n")
             if (update_active and a.trainable
                     and outcome[a.name] == "solved"):
                 a.update_on(traj[a.name], eid)
@@ -340,6 +373,14 @@ def main():
                            [frozen, divarm], tok, {}, f,
                            stage="divergence_smoke",
                            update_active=False)
+        # WALL-ISOLATION stage: inject a synthetic 61 s charge
+        # into DIVPROBE only; it must wall_cap while FROZEN
+        # completes — one arm's cost can never cap the other
+        divarm.inject_delay_s = 61.0
+        res4, _ = run_pair([ep(4, 9100)], world,
+                           [frozen, divarm], tok, {}, f,
+                           stage="wall_isolation_smoke",
+                           update_active=False)
         # final frozen evaluation of BOTH final policies
         for a in arms:
             a.trainable = False
@@ -362,6 +403,12 @@ def main():
             for n in ("ACTIVE", "FROZEN")),
         "final_ckpt_differs_theta0": a_sha != ck_sha,
         "divergent_states_seen": div2 >= 1,
+        "wall_isolation": (
+            res4["DIVPROBE"]["L4-s9100"] == "wall_cap"
+            and res4["FROZEN"]["L4-s9100"] == "solved"),
+        "nonfinite_guard_static": not any(
+            _finite(x) for x in (float("nan"), float("inf"),
+                                 -float("inf"))),
         "frozen_eval_matches_stage1_frozen":
             res3["FROZEN"] == res1["FROZEN"]}
     verdict = {
@@ -371,6 +418,7 @@ def main():
         "optimizer_steps": active.updates,
         "stage1": res1, "stage2_overflow": res2,
         "stage3_frozen_eval": res3,
+        "stage4_wall_isolation": res4,
         "divergent_lockstep_steps": div2,
         "stage1_divergent_steps": div1,
         "world_states_materialized": len(world.cache),

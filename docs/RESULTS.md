@@ -42800,3 +42800,62 @@ episode. Wall-cap rows are timing events per the standing
 contract. STOP after this prereg + smoke: seeds 9300-9309 and
 9400-9409 are NOT generated.
 
+## AMENDMENT MATH-CYBER-1-ACTIVE-EPISODIC-0-WALL: the paired driver's wall cap was CROSS-ARM CONTAMINATED (shared clocks charged each arm for the other's computation) — replaced pre-launch with per-arm CHARGED WALL, re-smoked 8/8 including an injected-delay isolation proof; nonfinite guard fixed to math.isfinite (2026-08-23, Mac)
+
+Amends PRE-REG MATH-CYBER-1-ACTIVE-EPISODIC-0, on outside review
+(GPT, relayed by Artin), BEFORE any fresh band exists and before
+any launch GO. Nothing sealed was opened; the change is to the
+qualification-stage driver only.
+
+(a) WALL BLOCKER. run_pair() started both arms' episode clocks
+together and checked ordinary elapsed wall, so shared enumeration
+and the OTHER arm's scoring counted against each arm; after
+divergence an expensive ACTIVE path could wall-cap FROZEN.
+Replaced with CHARGED WALL, preserving the registered 60 s
+per-arm safety semantics: the world records each state's
+FIRST-MATERIALIZATION wall; an arm is charged that recorded
+duration ONCE on its own first use of the state (shared states
+charge the same duration to both arms independently;
+one-arm-only states never charge the other arm), plus only its
+OWN candidate-scoring wall; post-episode updates are excluded;
+the cap is checked BEFORE the next decision (the registered
+one-decision overshoot). Every episode row now carries
+charged_wall_s.
+
+(b) RE-SMOKE (smoke_ paths regenerated; receipts
+logs/mathworld1/smoke_active_pair.jsonl + verdict): 8/8
+mechanism checks, now including WALL ISOLATION — a synthetic
+61 s charge injected into one arm of a divergent pair produced
+wall_cap in THAT arm while the uninjected arm SOLVED the same
+episode in the same lockstep run; and a static nonfinite-guard
+qualification (NaN, +inf, -inf all rejected). Prior checks
+(exact update count, zero-update failed episode, overflow both
+arms, genuine divergence, frozen-eval reproducibility) all
+stand.
+
+(c) NONFINITE GUARD: the score guard's s != s caught NaN only;
+now math.isfinite (catches +/-inf), qualified statically in the
+smoke — no fresh data.
+
+FENCES. The charged-wall instrument is an ACCOUNTING law over
+measured materialization/scoring durations, not a claim that
+wall_cap outcomes are deterministic (durations remain
+load-sensitive; the idle-machine discipline stands). ADAPT/
+HOLDOUT remain unmaterialized; the launch GO gate is unchanged.
+
+## AMENDMENT MATH-CYBER-1-THETA0-HCE-JOIN-0-WORDING: 36/48 establishes TOP-1 ACTION agreement, not "preference ordering" — full ranking similarity is unmeasured (2026-08-23, Mac)
+
+Amends OBSERVATION MATH-CYBER-1-THETA0-HCE-JOIN-0 (same family,
+outside review). The join compared each policy's single CHOSEN
+action per shared state; it observed nothing about either
+policy's ordering over the non-chosen candidates. "Reproduces
+hce's preference ordering on 75%" therefore overstates the
+measurement and is corrected to: theta_0 matches greedy-hce's
+TOP-1 ACTION on 36/48 shared decision states (75%). Preserved
+unchanged: the 75% figure, the all-12-divergences-cross-family
+finding, the identical outcome set, and the 0
+same-state/different-legal-set count. Full ranking similarity
+(e.g. rank correlation of theta_0's scores against hce's values
+over complete legal sets) is UNMEASURED and would be a separate
+zero-run join on the stored scores if ever wanted.
+

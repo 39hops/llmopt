@@ -8614,3 +8614,36 @@ honest status column).
   projection-patching design + counter-fence + delta
   decomposition + temporal fence), house (fences,
   MoE-discontinuity caveat, cite gate, receipt recount).
+
+- **BANKED (2026-08-23): MAGIC-CYBER-HARDNESS — the difficulty
+  estimator meets the MATHWORLD frontier** (Artin's call on the
+  theta_0 verdict night — "isn't this exactly what the magic
+  predictor said for the difficulty of the questions?" — GPT
+  design shaping, house fences; BANK ONLY, no run).
+  The observation that seeds it: theta_0's misses are
+  INSTANCE-picked, not level-picked (L7 10/10 while L4/L6 carry
+  the five failures — the magic-estimator lesson that variance
+  lives at identifiable hard instances, booked across the judge
+  slots). Two-stage design, frozen at bank time:
+  - RETRO (descriptive, zero-risk): join the FROZEN historical
+    MAGIC checkpoint's hardness scores against the CALIBRATION
+    solve/fail pattern, WITH a support audit first — the
+    estimator was trained on engine-search features whose
+    support may not cover MATHWORLD L6/L7 states; OOD/support
+    status must be reported per level, and the prior
+    MAGIC-CURRICULUM transport-failure scar is carried
+    explicitly (the estimator has FAILED a transport test
+    before; that scar is the prior, not a footnote).
+  - PROSPECT (the real test): predictions for the future HOLDOUT
+    band computed and SEALED before any HOLDOUT outcome exists
+    and never visible to treatment; PRIMARY target = the FROZEN
+    arm's solve/fail rank (ACTIVE secondary — its policy moves
+    during ADAPT, so its frontier is the harder prediction).
+    Do NOT retrain MAGIC for this — the historical-prediction
+    test is only meaningful with the frozen historical artifact.
+  Conceptual bridge, METHODOLOGY-ONLY (charter fence, verbatim):
+  cheap structural hardness surrogate -> reduced/local candidate
+  space -> exact oracle adjudication -> adaptive/variational
+  update. The shape is general search methodology; no
+  chemistry-domain development, ever, under the standing
+  charter.
