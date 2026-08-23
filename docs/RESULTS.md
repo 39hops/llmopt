@@ -43742,3 +43742,39 @@ before the census verdict books. The 80-episode band is a
 single draw — yield numbers are that band's counts, never rates
 generalized past it.
 
+## AMENDMENT MATH-CYBER-1-LABEL-YIELD-0-DEDUP: GO clause (b) re-based from raw label rows to DISTINCT corrective preference facts (global dedup on (state_hash, chosen, forced_rank2)) — the qualification's own diversity finding showed row count is not an information bar; BAND STILL UNMATERIALIZED (2026-08-23, Mac)
+
+Amends PRE-REG MATH-CYBER-1-LABEL-YIELD-0 on outside review
+(GPT, relayed by Artin), BEFORE any 9500-9519 root exists
+(verified: no yield receipt path exists and no seed-9500-9519
+episode id appears in any receipt). Motivation from
+RETRO-LABELER-QUAL-0's own diversity caveat: L7-s9303 emitted
+11 label rows that are ONE forced child re-encountered around a
+2-cycle — raw emitted-row count measures loop recurrence, not
+corrective information.
+
+REGISTERED CHANGES (all before any band row exists):
+(a) GO bar becomes: GO iff BOTH
+    1. >=3 DISTINCT failed episodes each with >=1 usable
+       outcome-differing rank-2 label (unchanged), AND
+    2. >=5 DISTINCT corrective preference facts, globally
+       de-duplicated by exact (state_hash,
+       chosen_action_identity, forced_rank2_action_identity) —
+       repeated visits to the same exact pair count ONCE
+       regardless of step or loop recurrence.
+(b) Raw emitted-label count demotes to SECONDARY workload/dose
+    color, never independent evidence.
+(c) New registered diagnostic horizon_sensitive_fact: when the
+    same (state, chosen, forced) fact is encountered under
+    multiple remaining horizons and its label status DIFFERS
+    across them, report it explicitly; such recurrence is NEVER
+    split into multiple facts (theta's scorer does not observe
+    horizon — representational color for a future learner).
+UNCHANGED, verbatim intent: episode-level primary statistic,
+the 80-episode sacrificial 9500-9519 band, contamination law,
+top-2-only operator (no top-k widening after seeing this band),
+house NO-GO prior, and the >=9600 future-band fence. The
+structured prereg json (docs/preregs/
+math-cyber-1-label-yield-0.json) is updated to the deduped
+metric in the same commit.
+

@@ -22,13 +22,13 @@
     },
     {
       "id": 2,
-      "name": "GO-LABELS",
-      "metric": "usable_labels_total",
+      "name": "GO-DISTINCT-FACTS",
+      "metric": "distinct_corrective_facts",
       "population": "yield:9500:9519",
       "aggregation": "count",
       "direction": "above",
       "value": 4.5,
-      "description": "GO conjunct (b): >=5 usable labels total, clustered count reported beside it (integer count above 4.5)"
+      "description": "GO conjunct (b), AMENDED -DEDUP before band materialization: >=5 DISTINCT corrective preference facts, globally de-duplicated by exact (state_hash, chosen_action_identity, forced_rank2_action_identity); raw emitted-label rows are secondary workload color only (integer count above 4.5)"
     }
   ],
   "receipts": [
