@@ -43496,3 +43496,79 @@ recorded paths. ACTIVE-arm exclusion (164 rows) is a scope
 limit, not a comparison. No controller change, no treatment,
 no training follows without a fresh GO.
 
+## PRE-REG MATH-CYBER-1-RETRO-LABELER-QUAL-0: mechanism qualification of the FAILURE-TRIGGERED RETROSPECTIVE-CREDIT LABELER on outcome-spent data — must reproduce the known L7-s9303 outcome-differing rank-2 fork under the frozen TERMINAL-FIRST + theta_0 operator, with zero-label, overflow, and censoring paths qualified (2026-08-23, Mac)
+
+Per outside GO on edff502f (Decision 2). Zero training,
+outcome-spent episodes only, no fresh band, no treatment.
+
+OPERATOR UNDER QUALIFICATION (frozen): controller =
+TERMINAL-FIRST + theta_0 — at each state, if any legal child is
+terminal-solved (world is_solved predicate, no model, no hce),
+deterministically select the minimal terminal under (name,
+child.key()); otherwise invoke the theta_0 scorer (serial B=1,
+tie-break (-score, name, child.key()), ctx 4096, overflow law —
+which by construction can fire only at scorer-invoked states).
+Budget 12 decisions, charged wall 60 s per episode/continuation
+(fresh paid set, cap checked before each decision, registered
+one-decision overshoot). LABELER: run the episode normally; on
+FAILURE only, visit each recorded scorer-invoked state in order,
+select the PRE-EXISTING theta_0 rank-2 child OUTCOME-BLIND
+(from the episode's own stored scored list; no re-scoring, no
+deeper scan — rank 3+ is never consulted), force it once, then
+continue under the SAME frozen TERMINAL-FIRST + theta_0 policy
+for exactly 12-(t+1) further decisions. A preference label is
+emitted ONLY when the original episode failed and the rank-2
+continuation SOLVES. Censored, ctx-overflow, or
+world-noncomparable forks emit NO LABEL, never a negative.
+
+QUALIFICATION EPISODES (all outcome-spent, all with zero
+terminal-child states on their recorded paths per
+TERMINAL-DOMINANCE-0 — so the TERMINAL-FIRST walk should
+coincide with the recorded argmax trajectory — except B6's):
+L7-s9303 (the known label bearer), L4-s9401 (the known
+no-rescue root), L6-s9403 (the overflow root), L6-s9300 (the
+terminal-miss root, B6), plus a censoring stage on a separate
+re-walk.
+
+BARS (registered before any run):
+B1 BINDING: the L7-s9303 TERMINAL-FIRST walk reproduces the
+   recorded FROZEN trajectory (all 12 state hashes bind) and
+   fails budget_exhausted.
+B2 TARGET REPRODUCTION: the labeler emits >=1 outcome-differing
+   label at L7-s9303, and the step-0 label's forced action
+   identity equals the FRONTIER-DESK-0 rank-2 rescue
+   (i_ansatz_exp...#child_hash, matched on name#child_hash).
+B3 ZERO-LABEL PATH: the L4-s9401 walk fails and the labeler
+   emits ZERO labels (FRONTIER measured no rescuing alternative
+   at any rank; its rank-2 forks must not manufacture one).
+B4 OVERFLOW PATH: the L6-s9403 walk reproduces
+   model_ctx_overflow; zero labels; no negative label exists
+   anywhere in the receipts (the row schema carries none).
+B5 CENSOR ISOLATION: a synthetic 61 s injected charge on a
+   designated L4-s9401 re-walk fork produces censored status
+   and NO label.
+B6 TERMINAL-FIRST LIVE: L6-s9300 SOLVES at step 0 under the
+   override (the TERMINAL-DOMINANCE-0 derived counterfactual
+   executed live) and therefore invokes the labeler not at all.
+
+REGISTERED PRIOR (house): all six bars fire; B2's label set at
+L7-s9303 is at least steps 0-3 (the FRONTIER rank-2 rescues),
+possibly more (TERMINAL-FIRST continuations can only convert
+additional rescues where a continuation walks past a missed
+terminal, never fewer).
+
+REFUTED-IF: B2 fails with B1 passing — the operator cannot
+reproduce a fork that exhaustive enumeration already proved
+exists, i.e. an instrument defect; any bar failure blocks the
+YIELD prereg from proceeding to band materialization.
+
+FENCES. Single device (mps fp32), one-shot; receipts
+logs/mathworld1/retrolabel_qual.jsonl +
+retrolabel_qual_verdict.json, refuse-if-exists. Binding asserts
+against recorded rows where trajectories are predicted to
+coincide book WORLD-NONCOMPARABLE on mismatch, never
+substitution. This qualification is the labeler's
+mechanism-complete smoke; no fresh-band run occurs under this
+prereg, and label counts here are QUALIFICATION artifacts on
+spent data, never yield evidence.
+
