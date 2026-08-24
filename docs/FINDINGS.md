@@ -3051,3 +3051,23 @@ regime tag on every bullet is the fence.
   4.3-5.2 uncensored) — successor desks budget the world
   separately.
   ([VERDICT MATH-CYBER-1-REGRET-LDS-DESK-0](RESULTS.md#L44369 "id:2026-08-24-verdict-math-cyber-1-regret-lds").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] The wall-lifted
+  closure re-read resolves REGRET-LDS's censored half on the
+  PARK branch: all three previously censored roots reach the
+  full 96-expansion budget (max wall 898.9 s v the 3600 s
+  emergency cap, which never fired) and NONE solves at any
+  deviation count — the combined six-root picture is now
+  root-level fully observed (502 expansions / 6,308 scores):
+  5/6 exhaust 96 unsolved, 1/6 solves via its known
+  single-deviation rescue, ZERO multi-deviation solutions.
+  Naive theta_0-ranked REGRET-LDS PARKS at the 96-expansion
+  scale; next branch = ACTION-BASIS / value-quality. Measured
+  time split (superseding the calls/s inference): world
+  materialization is 73-89% of search wall — the symbolic
+  world, not the 19M model, is the binding cost of MathWorld
+  search. Copy-modification defects disclosed (inherited
+  provenance head hashing the parent driver — run identity
+  established by git; stale docstring; wall_cap_s unreceipted),
+  all fixed forward in the booking commit.
+  ([VERDICT MATH-CYBER-1-REGRET-WALLLIFT-0](RESULTS.md#L44619 "id:2026-08-24-verdict-math-cyber-1-regret-walllift").)

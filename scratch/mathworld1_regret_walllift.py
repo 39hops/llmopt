@@ -13,16 +13,10 @@ override at expansion (terminal edges cost 0 and carry rank tag
 "T"), depth cap 12 (nodes at depth 12 never expand),
 transposition table on full State.key() with the registered
 strictly-lower-cost reopen law, overflow-unscorable states book
-state-censored (search continues), 300 s charged instrument wall
+state-censored (search continues), 3600 s emergency wall
 per episode, unique-expansion ladder 12/24/48/96 with primary
 read at 96. Zero training; frozen theta_0 ranks siblings only.
 
-Population: the six residual budget failures (CYCLE-ESCAPE
-LOWER_BOUND(12) set). SMOKE=1 (spent data): terminal-at-root
-(L4-s9100), greedy-solvable discrepancy-0 (L5-s9100), forced
-pullback on the loop episode L7-s9303 (must solve with >=1
-non-rank-1 decision, >=1 pullback, >=1 transposition hit),
-synthetic reopen-law unit, ladder accounting, censor injection.
 Population: L6-s9108, L4-s9401, L4-s9504 only. SMOKE=1:
 terminal-at-root (L4-s9100), the booked L7-s9303 pullback solve
 reproducing g=1/depth 2 under the lifted wall, split-accumulator
@@ -311,7 +305,7 @@ def main():
         raise SystemExit(f"MISSING theta_0: {CKPT}")
     ROWS.parent.mkdir(parents=True, exist_ok=True)
     START = start_provenance(
-        ["scratch/mathworld1_regret.py",
+        ["scratch/mathworld1_regret_walllift.py",
          "scratch/mathworld1_birth.py",
          "llmopt/search/derivation.py",
          "llmopt/mathgen/problems.py",
@@ -378,6 +372,7 @@ def main():
         f.write(json.dumps({"meta": {
             "theta0_sha256": ck_sha, "device": dev,
             "smoke": SMOKE, "expansion_cap": EXPANSION_CAP,
+            "wall_cap_s": WALL_CAP_S,
             "ladder": LADDER, "max_depth": MAX_DEPTH,
             "start": START,
             "completion_commit": completion_commit()}}) + "\n")

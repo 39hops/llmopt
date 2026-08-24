@@ -71,15 +71,27 @@ representation insufficiency NOT established (censoring).
 Retrospective-credit harvest PARKED (label starvation is
 competence, not labeler defect).
 
+## Post-handoff addendum (same day, Artin GO on point 2)
+
+- PRE-REG REGRET-WALLLIFT-0 (d30e84f4) -> VERDICT (booked
+  after dual audit): the censored half CLOSES on the PARK
+  branch — all 3 roots reach 96 expansions, 0 solves at any
+  deviation count; measured split: world materialization
+  73-89% of wall (the symbolic world is the binding search
+  cost, not the model). REGRET-LDS parks at the 96-expansion
+  scale; decision point 2 is RESOLVED and removed below.
+  Copy-modification provenance defect (inherited parent hash)
+  caught by receipt-auditor, disclosed, fixed forward.
+
 ## Next session — decision points for Artin/GPT (nothing armed)
 
 1. Rank-neutral/canonical-order control desk (cheap, spent
    data): does theta_0's ordering beat generic enumeration at
    matched budgets? NOTE: the registered trigger ("rescue
    mass") was NOT met — needs a fresh GO on fresh reasoning.
-2. Wall-lifted re-read of the 3 REGRET-censored episodes
-   (9108/9401/9504) with world/model time receipted
-   SEPARATELY — resolves the censored half of the 96 read.
+   (Weakened further by the walllift closure: there is no
+   rescue mass for ordering to explain at this scale.)
+2. [RESOLVED same day — see addendum] Wall-lifted re-read.
 3. ACTION-BASIS desk (the overflow/interface lever, banked
    with corrected residue).
 4. MAGIC-CYBER-HARDNESS RETRO pin walk (pedigree-only).

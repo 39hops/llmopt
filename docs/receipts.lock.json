@@ -769,6 +769,14 @@
    "source": "results",
    "tracked": false
   },
+  "logs/mathworld1/regret_walllift.jsonl": {
+   "bytes": 2127,
+   "exists": true,
+   "local_only": true,
+   "sha256": "afe8005efa94107a9539390da421b5298fdd9700fec42ec49502c689b22510f2",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/retrolabel_qual.jsonl": {
    "bytes": 42066,
    "exists": true,

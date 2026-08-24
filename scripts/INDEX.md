@@ -2724,6 +2724,18 @@ MATH-CYBER-1 REGRET-LDS-DESK-0 (PRE-REG booked at 5e7c2cbc). Rank-weighted limit
 - `_finish(eid, outcome, solved, stats, charged, sink, ladder_solves, table)`
 - `main()`
 
+### scratch/mathworld1_regret_walllift.py
+MATH-CYBER-1 REGRET-WALLLIFT-0 (PRE-REG booked at d30e84f4). Closure re-read of the three REGRET-LDS-DESK-0 wall-censored roots under a lifted 3600 s emergency wall, with world successor-materialization time and theta_0 scoring time accumulated SEPARATELY (their sum is the charged wall the kill checks). Every search law preserved from the parent (mathworld1_regret.py): Rank-weighted limited-discrepancy GRAPH search over the realized world snapshot: edge cost = rank-1 (rank-only, never raw scores; no cross-parent score comparison), frontier popped by (path_discrepancy, path_depth, State.key()), TERMINAL-FIRST hard override at expansion (terminal edges cost 0 and carry rank tag "T"), depth cap 12 (nodes at depth 12 never expand), transposition table on full State.key() with the registered strictly-lower-cost reopen law, overflow-unscorable states book state-censored (search continues), 3600 s emergency wall per episode, unique-expansion ladder 12/24/48/96 with primary read at 96. Zero training; frozen theta_0 ranks siblings only.
+
+- `sha(t)`
+- `class World` (legal)
+- `class Scorer` (score, rank)
+- `regret_search(root, world, scorer, sink, eid, inject_delay_s=0.0)` — One REGRET-LDS episode. Returns episode dict.
+- `_root_edge(table, k)` — First edge under the root on k's current backpointer
+- `_path(table, solved)`
+- `_finish(eid, outcome, solved, stats, walls, sink, ladder_solves, table)`
+- `main()`
+
 ### scratch/mathworld1_retrolabel.py
 MATH-CYBER-1 RETRO-LABELER-QUAL-0 — failure-triggered retrospective-credit labeler, mechanism qualification on outcome-spent data (PRE-REG MATH-CYBER-1-RETRO-LABELER-QUAL-0, booked at 61fdbc96).
 

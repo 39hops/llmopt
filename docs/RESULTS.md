@@ -44616,3 +44616,111 @@ stands as booked, and this entry reports the closure
 separately. STOP after booking; decision points #1/#3/#4/#5
 untouched.
 
+## VERDICT MATH-CYBER-1-REGRET-WALLLIFT-0: the censored half CLOSES on the PARK branch — all three previously wall-censored roots reach the full 96-expansion budget under the lifted wall and NONE solves at any deviation count (0/3, no multi-deviation solutions anywhere); the measured time split confirms world materialization at 73-89% of wall; naive theta_0-ranked REGRET-LDS PARKS at the 96-expansion scale (2026-08-24, Mac)
+
+Adjudicates PRE-REG MATH-CYBER-1-REGRET-WALLLIFT-0 (d30e84f4).
+One-shot, launch code_commit 2baa6ac2, driver sha 55370c9a...
+(committed bytes == launched bytes), smoke 6/6 retained
+(terminal-at-root, the booked L7-s9303 pullback solve
+reproduced g=1/depth 2 under the lifted wall, split-sum check,
+split-fields-present, emergency-kill via 3601 s injection,
+ladder accounting). TWO COPY-MODIFICATION DEFECTS DISCLOSED (receipt-auditor
+BLOCKER + outside review; neither alters any measured value):
+(a) RECEIPT-PROVENANCE INHERITANCE, the RULE-ABLATE-1 class:
+the launched driver's start_provenance list still named the
+PARENT (scratch/mathworld1_regret.py), so the receipts'
+file_sha256 head entry hashes an instrument that contributed
+nothing to this run and never hashes the one that did. Run
+identity is instead established by git, outside the receipt:
+committed bytes at launch commit 2baa6ac2 (sha 55370c9a...)
+== the on-disk driver unchanged post-run, and the
+92302251..2baa6ac2 span adds only this driver. The smoke ran
+the identical untracked bytes (verified by the same sha), but
+the receipts alone cannot show it — disclosed as a provenance
+gap, receipts never edited. (b) STALE DOCSTRING: a stale wall
+value ("300 s charged instrument wall"), a stale population
+line ("the six residual budget failures"), and a superseded
+parent SMOKE plan survived in prose while the
+EXECUTABLE constants were correct (WALL_CAP_S 3600.0, POP =
+the three roots; the smoke's SYNTH-censor tripped only at a
+3601 s injection, and the real max wall 898.9 s books
+EXPANSION_CAP, both receipt-proving the lifted wall was live
+— though wall_cap_s itself was not a meta field, a further
+receipt gap). All four defects (provenance head, missing
+wall_cap_s, model_calls absent from jsonl rows, docstring)
+are fixed in the booking commit for future runs; this run's
+receipts stand as written. Receipts:
+logs/mathworld1/regret_walllift.jsonl +
+regret_walllift_verdict.json. theta_0 52fd1aff..., device mps,
+zero training, spent roots only.
+
+MEASURED (fixed denominator 3):
+- L6-s9108 EXPANSION_CAP unsolved: 96 expansions, 1,966
+  candidate scores, world 655.8 s v model 243.0 s (73% world),
+  wall 898.9 s, frontier peaked 1,788, 31 pullbacks.
+- L4-s9401 EXPANSION_CAP unsolved: 96 expansions, 1,164
+  scores, world 390.1 v model 46.1 s (89% world), 64 pullbacks,
+  388 transposition hits.
+- L4-s9504 EXPANSION_CAP unsolved: 96 expansions, 1,054
+  scores, world 360.1 v model 60.8 s (86% world), 40 pullbacks.
+No solve at ANY rank or deviation count; ladder empty at every
+rung; reopens 0 (expanded-only counter, as in the parent);
+aggregate 4,184 edges = 4,184 scores. The emergency wall never
+fired (max wall 898.9 s v 3600 s cap) — the stopping condition
+was the scientific 96-expansion cap on all three, as the desk
+pricing predicted (its projected TOTALS to reach 96 were
+775/462/394 s; measured 898.9/436.2/420.9 — per-root deltas
++16.0% / -5.6% / +6.8%, one root OVER-projected: the desk
+model was accurate to within ~16%). State-level color:
+L6-s9108 carries 2 state_censored rows (model_ctx_overflow —
+unscorable expansions under the standing overflow law, search
+continued), 0 elsewhere; "fully observed" below is root-level
+(every root ran to its 96-expansion cap) with those two
+unscored states disclosed.
+
+ADJUDICATION (registered interpretation, frozen pre-launch):
+"0/3 multi-deviation solves WITH all three reaching 96" is
+measured exactly -> naive theta_0-ranked REGRET-LDS PARKS at
+the 96-expansion scale; greedy-control-as-primary-plateau is
+substantially weakened, and the next branch is ACTION-BASIS /
+value-quality. No root censored -> no UNRESOLVED residue: the
+REGRET question is CLOSED at this scale. REGISTERED PRIOR
+(all three reach 96, 0/3 multi-deviation) FIRED on both
+clauses. Receipt note: the verdict json's bars field inherits
+the PARENT'S bar names (its "WEAKENED: true" reflects 0
+solves on this 3-root population); the registered
+interpretation branches of THIS prereg govern, as adjudicated
+above.
+
+COMBINED PICTURE (this entry + REGRET-LDS-DESK-0, which
+stands as booked): across all six residual budget failures the
+completed 96-expansion search volume is now FULLY OBSERVED —
+5/6 exhaust 96 expansions unsolved, 1/6 (L4-s9518) solves via
+its known single-deviation rescue, and ZERO multi-deviation
+solutions were found anywhere — the completed picture spans
+502 expansions / 6,308 scored candidates (214+2,124 from the
+parent's uncensored roots + 288 expansions and 4,184 scores
+here; counting the
+parent's superseded partial walks too, 676 / 8,540). theta_0's retained ranks 2..K, given
+regret/backtracking at this scale, navigate NOTHING beyond
+what single-deviation analysis already found.
+
+INSTRUMENT (measured split, superseding the calls/s
+inference): world materialization is 73-89% of wall on these
+episodes — the dominant cost of MathWorld search is the
+symbolic world, not the 19M model. Any future search rung
+budgets and parallelizes the WORLD (successor enumeration),
+and model-side optimizations are second-order here.
+
+FENCES. Single device (mps fp32), single seed chain, one
+realized world snapshot (fresh World this run; charges are
+recorded first-materialization durations), one-shot; counts on
+these three roots, never rates. "PARKS at the 96-expansion
+scale" is scale-scoped: nothing here bounds wider budgets,
+though the world-cost measurement prices them (each ~100
+expansions costs ~7-15 min/episode wall at this world). The
+stale-docstring disclosure above is documentation-only. No
+rank-neutral control, no MAGIC, no ACTION-BASIS change, no
+fresh seeds under this entry; decision points #1/#3/#4/#5
+remain untouched for Artin/GPT.
+
