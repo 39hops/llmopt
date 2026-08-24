@@ -761,6 +761,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/regret_lds_desk.jsonl": {
+   "bytes": 2686,
+   "exists": true,
+   "local_only": true,
+   "sha256": "8fd4bcad35bc36d352b425ae7c34c158aaee9da9819c63555e8c20cee2fb980c",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/retrolabel_qual.jsonl": {
    "bytes": 42066,
    "exists": true,

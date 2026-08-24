@@ -3032,3 +3032,22 @@ regime tag on every bullet is the fence.
   the best zero-training controller: 11 episodes (3 wall, 2
   overflow, 6 budget).
   ([VERDICT MATH-CYBER-1-CYCLE-ESCAPE-DESK-0](RESULTS.md#L44120 "id:2026-08-24-verdict-math-cyber-1-cycle-escape").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] REGRET-LDS
+  (rank-weighted limited-discrepancy graph search over frozen
+  theta_0 sibling rankings, zero training) shows NO OBSERVED
+  multi-deviation navigation on the six residual budget
+  failures: sole solve = the known L4-s9518 rank-3
+  one-deviation rescue rediscovered ([3,1,T], discrepancy 2, 22
+  expansions); highest fully observed common ladder rung = 24
+  expansions at 1/6; the 96-expansion primary read is PARTIAL
+  (3/6 wall-censored at 38-73 expansions, censoring never
+  converted to failure). Weakens greedy-control-as-the-plateau
+  within observed volume (388 expansions, 4,356 scored
+  candidates); representation insufficiency NOT established.
+  Instrument result: score cost model held (11.2/expansion v
+  ~15.6 priced) but non-model world time is a material
+  unbudgeted wall share (censored episodes 2.1-2.7 calls/s v
+  4.3-5.2 uncensored) — successor desks budget the world
+  separately.
+  ([VERDICT MATH-CYBER-1-REGRET-LDS-DESK-0](RESULTS.md#L44369 "id:2026-08-24-verdict-math-cyber-1-regret-lds").)

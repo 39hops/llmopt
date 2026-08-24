@@ -44366,3 +44366,156 @@ not policy-rollout); wall figures are device-scoped color.
 STOP after booking — no fresh-seed treatment, no
 rank-neutral control run, no MAGIC arm without fresh GO.
 
+## VERDICT MATH-CYBER-1-REGRET-LDS-DESK-0: WEAK/BETWEEN, censoring-qualified — REGRET-LDS shows NO OBSERVED multi-deviation navigation and its sole solve rediscovers the known L4-s9518 rank-3 one-deviation rescue (ranks [3,1,T], discrepancy 2, 22 expansions); the highest FULLY OBSERVED common ladder rung is 24 expansions at 1/6, the 96-expansion primary read is PARTIAL (3/6 wall-censored at 38-73 expansions), and non-model world time is a material unbudgeted share of the binding wall (2026-08-24, Mac)
+
+Adjudicates PRE-REG MATH-CYBER-1-REGRET-LDS-DESK-0 (5e7c2cbc).
+One-shot, launch code_commit 1e1de515, driver sha fa379d44...
+(committed bytes == launched bytes), smoke 6/6 retained
+(terminal-at-root, greedy-discrepancy-0 — L5-s9100 solving
+depth 1 through the terminal its recorded argmax controller
+missed, which makes it a SECOND terminal-at-root exercise, not
+a multi-edge rank-1 path: 5 distinct mechanisms, not 6 —
+forced-pullback L7-s9303 solve at g=1 in 4 expansions,
+reopen-law unit (a SYNTHETIC re-implementation of the rule on a
+hand-built dict, never the search's own reopen branch, which
+was UNTRIGGERED in smoke and real alike: reopens=0 everywhere),
+ladder accounting, censor path). Receipts:
+logs/mathworld1/regret_lds_desk.jsonl +
+regret_lds_desk_verdict.json. theta_0 52fd1aff..., device mps,
+zero training, spent episodes only.
+
+MEASURED (fixed denominator 6; per-episode search accounting as
+registered):
+- L4-s9518 SOLVED: depth 3, rank sequence [3, 1, T], total
+  discrepancy 2, 1 non-rank-1 decision, max rank 3, found at
+  expansion 22 (ladder: solves at the 24/48/96 reads, misses
+  12), 11 pullbacks, 62 transposition hits, 200 model calls,
+  38.7 s. This is the YIELD-AUTOPSY-0-measured rank-3 step-0
+  deviation (autopsy_fork_census.json: L4-s9518's ONLY solving
+  fork across its 12 sites, full_depth 2, so 1+2 = depth 3
+  exactly) rediscovered by the search — the registered
+  rediscovery clause applies: it counts toward the solve total
+  and NOT toward the multi-deviation clause.
+- L4-s9104 EXPANSION_CAP unsolved: 96 expansions, 1006 model
+  calls, 254 transposition hits, 56 pullbacks, frontier peaked
+  at 700.
+- L4-s9503 EXPANSION_CAP unsolved: 96 expansions, 918 calls,
+  250 hits, 46 pullbacks.
+- L6-s9108 CENSORED_WALL at 38 expansions (306.8 s), L4-s9401
+  CENSORED_WALL at 63 (303.0 s), L4-s9504 CENSORED_WALL at 73
+  (300.0 s) — the registered instrument-wall law books these
+  CENSORED at their expansion counts, never navigation
+  failures; the 96-expansion primary read is therefore
+  INCOMPLETE for half the population (the world's
+  materialization tail, not model cost, dominates these
+  episodes' walls).
+- Reopens: 0 everywhere — scoped to what the counter measures:
+  no already-EXPANDED state was re-reached at strictly lower
+  discrepancy (a lower-cost rediscovery of an unexpanded
+  frontier node relaxes silently and is not counted). Pullbacks
+  were frequent (8-56/episode) — the search genuinely switched
+  subtrees — but the REGISTERED per-solve pullback LOCATIONS
+  and causing-branch receipts were NOT emitted (scalar counts
+  only); disclosed as a registered-field shortfall.
+
+ADJUDICATION (registered bars): STRONG does not fire (1 solve
+< 3; 0 multi-deviation paths). WEAK FIRES (1-2/6 solve, at the
+PARTIAL 96 read — robust to the censoring direction: censoring
+can only hide additional solves, and additional solves cannot
+un-fire WEAK below 3).
+CONTROLLER-HYPOTHESIS-WEAKENED (0/6) does not fire — but the
+honest reading of its non-firing is tempered by censoring:
+within the OBSERVED search volume (4,356 edges generated =
+4,356 candidate scores, 388 unique expansions across the six),
+NOT
+ONE multi-deviation solution was found, and the only solve is
+a one-deviation rediscovery. REGISTERED PRIOR, quoted in
+full and scored clause-by-clause: "WEAK — 2/6 solve at 96
+(L4-s9518 via its known discrepancy-2 rank-3 root deviation
+cheaply, plus ONE of the five others, likeliest L4-s9504 or
+L6-s9108, needing >=2 deviations); L4-s9401 and L4-s9503 ...
+predicted UNSOLVED at 96." Scored: the 9518 mechanism call was
+EXACT (g=2, found at 22 expansions); the second solve was NOT
+OBSERVED — and both named candidates (9504, 9108) were
+wall-censored before the 96 read, so that clause is
+UNRESOLVED, never refuted; the 9401/9503 unsolved call is
+CONFIRMED for 9503 (fully observed at 96) and UNRESOLVED for
+9401 (censored at 63). Half confirmed, half unresolved.
+
+COMMON-BUDGET LADDER (the strongest fully observed result;
+derived, per outside review): rung 12 = 0/6 FULLY OBSERVED
+(every episode reached >=12 expansions or terminated; 9518's
+solve lands at 22); rung 24 = 1/6 FULLY OBSERVED (9518 solved
+at 22; all five others reached >=38 expansions unsolved); rung
+48 PARTIAL (L6-s9108 censored at 38); rung 96 PARTIAL
+(9108/9401/9504 censored at 38/63/73). The 96 figure of 1/6 is
+therefore a PARTIAL/CENSORED read and is never quoted without
+this label.
+
+INSTRUMENT RESULT (elevated, per outside review; decomposition
+audit-corrected): the registered score prediction HELD — the
+two full-cap episodes cost 1,006 and 918 candidate scores at 96
+expansions, under the ~1,500-per-episode desk model (measured
+11.2 scores/expansion v ~15.6 implied) — but the WALL model
+failed: the charged wall is one scalar (materialization +
+scoring, no receipted split), and the censored episodes ran at
+2.1-2.7 model calls/s against 4.3-5.2 for the uncensored ones,
+so a material share of their walls is NON-MODEL time (the world
+materialization/timebox tail) — at the fastest observed scoring
+rate, scoring accounts for only about half of L6-s9108's 306.8 s.
+The 300 s instrument wall thereby censored half the population
+before the registered expansion budget. Any wider-budget
+successor desk must budget (and receipt) the world separately
+from the model.
+
+THE PLAIN ANSWER (the desk's registered question, censoring-
+qualified): REGRET-LDS shows no observed multi-deviation
+navigation; its sole solve rediscovered the known s9518 rank-3
+one-deviation rescue. This WEAKENS greedy-control-as-primary-
+plateau — within everything actually explored, ranks 2..K
+bought back only what single-deviation analysis already found —
+but representation insufficiency is NOT established, because
+3/6 primary searches were wall-censored before the registered
+96-expansion budget and the registered law forbids converting
+censoring into navigation failure. The scientific fork is
+NARROWED (branch 1, greedy-is-the-plateau, is weakened), not
+resolved. FALSIFIERS (named): a wall-lifted re-read of the
+censored three finding multi-deviation solves would move the
+verdict toward branch (2); a matched-budget rank-neutral
+control out-solving theta_0 ordering would refute even the
+weak-focus claim; neither is run here.
+
+WHAT FOLLOWS (none run; note the registered control-law
+TRIGGER — "if the desk shows rescue mass" — was NOT met, so
+the control below is proposed on fresh reasoning, not
+inherited registration): a matched-budget rank-neutral/
+canonical-order control (same graph search, sibling order by
+(name, child.key())) would price whether theta_0's ordering
+adds anything over generic enumeration at these budgets; if it
+matches, the program's lever moves fully to representation
+(ACTION-BASIS) or a value/hardness heuristic
+(MAGIC-CYBER-HARDNESS prospect, pin protocol unchanged, still
+never selected on these outcomes). A wall-lifted re-read of
+the three censored episodes is a legitimate separate desk
+(instrument wall was safety, not science).
+
+FENCES. Single device (mps fp32), single seed chain, one
+realized world snapshot, one-shot; counts on these six
+episodes, never rates. Charged walls are MODELED charges (one
+World shared across episodes; a revisited state is charged its
+recorded first-computation duration, so later episodes' walls
+are neither deflated by caching nor measured elapsed time) —
+load-bearing here because the wall censored half the
+population, and any successor desk receipts world and model
+time separately. Depth fence 12 is a construction property
+(nodes at depth 12 never expand), not a measured bound. The instrument wall (300 s) censored
+3/6 before the expansion cap — the multi-deviation null is
+scoped to the OBSERVED volume, and no claim attaches to the
+unexplored remainder. Depth fence 12 held everywhere (no
+solution used a longer derivation horizon). Search receipts
+(explored dead/loop branches, failed greedy edges, the 9518
+alternative edge) are retained for future analysis; no
+training from them without a fresh prereg. Wall figures are
+device-scoped color. No rank-neutral control, no MAGIC arm,
+no fresh seeds without GO.
+
