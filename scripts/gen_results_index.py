@@ -120,7 +120,7 @@ for idx, ln in enumerate(header_lines):
     # landed keep their curation via the old undated slug.
     prev = old.get(eid) or old.get(slug(title, None), {})
     for k in ("threads", "verdict", "amends", "superseded_by", "links",
-              "code_commit"):
+              "code_commit", "files"):
         if k in prev:
             e[k] = prev[k]
     if "amends" in e:
