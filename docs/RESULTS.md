@@ -44030,3 +44030,90 @@ this entry is the registration of the analysis, not a prereg'd
 run. Native-horizon labels only; no standardized-horizon read
 counts toward any yield figure.
 
+## PRE-REG MATH-CYBER-1-CYCLE-ESCAPE-DESK-0: does an exact-repeat-triggered escape rule (mask already-emitted actions at a revisited state, world-level bookkeeping, no learning) solve the spent failures the frozen argmax controller loops on? Thresholds frozen before any count (2026-08-23, Mac)
+
+Per the accepted YIELD-AUTOPSY-0 recommendation (Artin/GPT).
+Zero training, spent episodes only, no fresh seeds.
+
+CONTROLLER UNDER TEST (registered; TERMINAL-FIRST preserved):
+CYCLE-ESCAPE = TERMINAL-FIRST + theta_0 + per-episode memory M
+mapping State.key() -> set of action identities (name#child_hash)
+already emitted from that state THIS episode. At each state s:
+if s is an EXACT repeat (its key is in M), mask exactly the
+identities already emitted from s and choose among the REMAINING
+actions — terminal override first, then theta_0 argmax (standing
+scorer, tie-break, ctx 4096, overflow law over the remaining
+set); if no actions remain, the episode books CYCLE_EXHAUSTED.
+On a FIRST visit nothing is masked — masking is never proactive
+(a child having occurred earlier in the episode does not mask
+it). The chosen identity is recorded into M every decision.
+Budget 12 decisions (primary, unchanged), charged wall 60 s,
+one-decision overshoot. Controller hash = sha256 of the
+registered rule text + theta_0 sha; all depth receipts under
+this controller are d(s', M), controller-hash scoped (the
+YIELD-AUTOPSY-0 scope law).
+
+DEPTH/OUTCOME REPRESENTATION (registered): per episode —
+EXACT(d) when solved in d decisions; LOWER_BOUND(12) for
+budget_exhausted (a lower bound only; the memoryless
+revisit-implies-nontermination deduction does NOT apply to a
+memory-bearing walk, so INFINITY is never assigned here);
+CYCLE_EXHAUSTED; CENSORED for wall_cap; model_ctx_overflow and
+dead_end as their own events. Never collapsed.
+
+POPULATION (fixed, 15 = every spent argmax-controller failure):
+CALIBRATION L4-s9104, L6-s9100, L6-s9101, L6-s9103, L6-s9108;
+FROZEN L6-s9300, L7-s9303, L4-s9400, L4-s9401, L6-s9403,
+L4-s9405; YIELD L4-s9503, L4-s9504, L4-s9507, L4-s9518.
+LOOP-CLASS (ex ante, from the frozen receipts' recorded exact
+state_hash revisits, booked in YIELD-AUTOPSY-0): L4-s9104,
+L6-s9103, L6-s9108, L7-s9303, L4-s9400, L4-s9401, L4-s9503,
+L4-s9507, L4-s9518 (9 of 15). TERMINAL-FLIP class (booked at
+TERMINAL-DOMINANCE-0): L6-s9300, L6-s9103.
+
+REGRESSION LAW (registered, analytic + verified in-run):
+YIELD-AUTOPSY-0 booked that NO spent solved trajectory revisits
+a state, so the mask cannot trigger on any spent solved episode
+and CYCLE-ESCAPE's walk there is identical to the argmax
+controller's by construction — regression exposure on spent
+data is ZERO. The driver additionally reports, per episode,
+the step of first divergence from the recorded failed
+trajectory and its cause (terminal override v mask), as
+binding color.
+
+BARS (frozen before any count):
+B1 LOOP-CLASS: >=5 of the 9 loop-class failures book EXACT(d)
+   (solved) under CYCLE-ESCAPE.
+B2 TOTAL FRONTIER: >=5 of the 15 book EXACT(d).
+REFUTED-IF: <=1 of 15 solves — the escape rule is not the
+lever and the cycle-escape thread PARKS with the count.
+PROMOTION LAW: B1 and B2 both firing make CYCLE-ESCAPE a
+PROMOTED CANDIDATE controller; becoming the default (the
+TERMINAL-FIRST path) requires a fresh prereg and Artin GO —
+never this desk alone.
+
+REGISTERED PRIOR (house, on the record): 5-7 of 15 solve —
+near-certain the 2 terminal-flips (L6-s9300, L6-s9103); likely
+L7-s9303 and L4-s9507 (measured rank-2/3 single-deviation
+escapes whose continuations the mask can only help); genuinely
+open L4-s9104, L6-s9108, L4-s9401, L4-s9503, L4-s9518 (no
+single-deviation rescue measured, but the escape walk is
+multi-deviation — unmeasured territory); expected unchanged the
+wall/overflow class (L6-s9100, L6-s9101, L4-s9400, L6-s9403,
+L4-s9405 — their failures are not cycle-caused).
+
+FENCES. Single device (mps fp32), single seed chain, one-shot;
+receipts logs/mathworld1/cycle_escape_desk.jsonl +
+cycle_escape_desk_verdict.json, refuse-if-exists; SMOKE on
+smoke_ paths first (mechanism-complete: identical-walk check on
+a no-revisit solved episode, terminal-override-flip check,
+mask-trigger + escape check, cycle_exhausted path via a
+synthetic fully-masked state, censor semantics) — smoke
+episodes are spent and may overlap the population (all outcomes
+already spent; the bars are aggregate counts registered here,
+before any CYCLE-ESCAPE walk exists). Auditor before booking.
+Outcomes are counts on these 15 episodes under THIS controller
+hash on THIS world snapshot — never rates, never cross-run
+wall claims. No treatment, no training, no default-controller
+change follows without fresh GO.
+
