@@ -685,10 +685,9 @@
   "logs/mathworld1/actionprog_qual_srepr.json": {
    "bytes": 6505,
    "exists": true,
-   "local_only": true,
    "sha256": "b891df57d29e5d992741ada680911e90608e750dfa0dc7732e6af84374982d3b",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/mathworld1/actions.jsonl": {
    "bytes": 612328,
@@ -833,10 +832,9 @@
   "logs/mathworld1/srepr_export_verdict.json": {
    "bytes": 1584,
    "exists": true,
-   "local_only": true,
    "sha256": "d7a993950ead68fbca5010e4960c2206902b7f75fa84c8c238f3ee8e9819954a",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/mathworld1/states.jsonl": {
    "bytes": 105338,
