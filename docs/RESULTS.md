@@ -44213,3 +44213,156 @@ overlapped the spent population as registered. No
 default-controller change, no treatment, no training follows
 without fresh GO.
 
+## PRE-REG MATH-CYBER-1-REGRET-LDS-DESK-0: does theta_0 already contain the navigation signal the greedy controller throws away? Rank-weighted limited-discrepancy graph search over the six residual budget failures — every law frozen before any solve is read (2026-08-24, Mac)
+
+Per Artin/GPT directive off the CYCLE-ESCAPE stop (HEAD
+04c8c32d). Zero training, zero fresh seeds, spent data only.
+The scientific fork this desk adjudicates: (1) REGRET search
+solves residual budget failures cheaply -> theta_0 carries
+latent useful ranking information and GREEDY CONTROL is the
+plateau; (2) solves appear only near exhaustive expansion ->
+theta_0 signal weak, a value/hardness heuristic becomes the
+lever; (3) no solves within a meaningfully broad bounded
+search -> the learned policy/representation is the plateau,
+not greediness.
+
+POPULATION (fixed denominator 6, verified against the
+CYCLE-ESCAPE-DESK-0 receipts' LOWER_BOUND(12) set): L4-s9104,
+L6-s9108, L4-s9401, L4-s9503, L4-s9504, L4-s9518. Wall-class
+(L6-s9101, L4-s9400, L4-s9405) and overflow-class (L6-s9100,
+L6-s9403) episodes are OUT of the navigation denominator and
+may be reported only as separately-labeled color. Known
+one-deviation anatomy carried in (FRONTIER + YIELD-AUTOPSY):
+L4-s9401 and L4-s9503 are exhaustively one-deviation-
+irreparable; L4-s9518 carries a known rank-3 single-deviation
+rescue; L4-s9504 deep-k undecided; L4-s9104/L6-s9108
+unmeasured.
+
+CONTROLLER UNDER TEST (registered): REGRET-LDS =
+best-first graph search over the realized world snapshot.
+- successors() is the transition oracle; TERMINAL-FIRST stays
+  a hard override: on expanding a state, if any legal child is
+  terminal-solved the episode SOLVES there (depth = path
+  edges + 1), no scoring at that state.
+- Otherwise frozen theta_0 (52fd1aff...) ranks the full legal
+  set (standing serial scorer, tie-break (-score, name,
+  child.key()), ctx 4096, overflow law: an unscorable
+  expansion books that STATE overflow-censored, never a dead
+  end, and the search continues elsewhere).
+- DISCREPANCY LAW (chosen blind, registered with its
+  rationale): local cost of taking the rank-r sibling = r-1;
+  path discrepancy = sum of local costs; the pure rank-1 path
+  costs 0. Chosen over unit-cost-per-deviation because it
+  encodes DECREASING trust in deeper ranks (one rank-3 = two
+  rank-2s) and the house evidence (argmax reproduction,
+  rank-2 near-miss mass) supports graded sibling trust;
+  rank-only, never raw scores — theta_0 log-scores are
+  established as SIBLING rankings only, and no cross-parent
+  score is ever compared (no global score queue).
+- Frontier pop order (deterministic, registered):
+  (path_discrepancy, path_depth, State.key()).
+- Depth fence: solution depth (edges from root) <= 12, the
+  standing mathematical budget — a win can never be explained
+  by a longer derivation horizon. Nodes at depth 12 are not
+  expanded.
+- TRANSPOSITION TABLE keyed by full State.key() within the one
+  realized snapshot, storing legal-set hash, expanded flag,
+  ranked actions, per-edge explored status, backpointer, best
+  discrepancy-cost-to-reach, and solved/censored status.
+  REOPEN LAW (registered): a state re-reached at STRICTLY
+  lower discrepancy cost updates its best cost and re-enters
+  the frontier (its children's path costs improve); equal or
+  higher cost never reopens. Cycles fall out of the graph
+  (a revisited state is a transposition hit, never
+  re-expanded at equal-or-worse cost); no separate
+  CYCLE-ESCAPE heuristic exists in this controller.
+- EXPANSION LADDER (frozen): report solves at cumulative
+  UNIQUE-STATE-EXPANSION budgets 12 / 24 / 48 / 96; the
+  PRIMARY read is 96. An expansion = the first materialization
+  + full sibling scoring of one state. First-discovery
+  expansion count is recorded per solve.
+- Instrument wall (safety only, disclosed): 300 s charged
+  wall per episode search (first-materialization + own
+  scoring charges, checked before each expansion); a wall stop
+  books the episode CENSORED at its expansion count, never a
+  navigation failure.
+
+COST CENSUS (desk model, registered as a PREDICTION): recorded
+n_legal over these episodes' states spans 4-16 (median ~8), so
+96 expansions price at <= ~1,500 serial candidate scores per
+episode, ~6x one CYCLE-ESCAPE walk; the instrument reports its
+own counts (unique expansions, legal edges generated, model
+scores, frontier pops, transposition hits, max frontier size,
+solution depth, wall as device-scoped color) and the measured
+numbers govern.
+
+BARS (frozen before any solve is read):
+STRONG (greedy-is-the-plateau): >=3/6 solve at depth <=12
+  within 96 unique expansions AND >=2 of the solved paths
+  carry >=2 non-rank-1 decisions (the rediscovery clause: a
+  solve whose path has <=1 non-rank-1 decision — e.g.
+  L4-s9518's known rank-3 rescue — counts toward the 3 but
+  never toward the >=2-deviation clause).
+WEAK/BETWEEN: 1-2/6 solve at 96, or >=3 solve but the
+  >=2-deviation clause fails.
+CONTROLLER-HYPOTHESIS-WEAKENED: 0/6 at 96 expansions.
+REFUTED-IF (of the regret-controller story): 0/6 — theta_0's
+retained alternatives do not navigate these failures even with
+pullback; the plateau is the policy/representation, and the
+follow-up moves to representation (ACTION-BASIS) or a
+value/hardness heuristic, each under its own prereg.
+Per-solve registered receipts: exact rank sequence (e.g.
+1,1,2,1,3), non-rank-1 count, max rank used, total
+discrepancy, pullback locations (frontier pops that switched
+subtrees), the branch whose exhaustion caused each pullback,
+and expansions at first discovery.
+
+REGISTERED PRIOR (house, on the record): WEAK — 2/6 solve at
+96 (L4-s9518 via its known discrepancy-2 rank-3 root deviation
+cheaply, plus ONE of the five others, likeliest L4-s9504 or
+L6-s9108, needing >=2 deviations); L4-s9401 and L4-s9503
+(exhaustive one-dev zeros with 2-cycle anatomy) predicted
+UNSOLVED at 96 — the multi-deviation space around a cycle is
+where theta_0's ranking was already seen wandering.
+
+CONTROL LAW (registered, not run here): if the desk shows
+rescue mass, a matched-budget rank-neutral/canonical-order
+control (same graph search, sibling order by (name,
+child.key()) instead of theta_0 rank) prices whether theta_0
+FOCUSES the search — a follow-up desk under its own
+registration; nothing in this desk's adjudication depends on
+it, and it is not derived here to avoid contaminating the
+first read.
+
+MAGIC-CYBER-HARDNESS FENCE (read-only): the banked prospect
+and its pin protocol stand; no MAGIC artifact is selected or
+scored in this desk, and any future REGRET-LDS+MAGIC arm
+requires pedigree-only artifact selection, a sibling-ranking
+validity check for the frozen predictor (problem-hardness
+prediction is not automatically sibling-child ranking), and
+its own prereg against REGRET-LDS-theta_0-only at identical
+budgets. Never triggered by these six outcomes.
+
+LEARNING OFF: no gradient updates. Solved-after-greedy-failure
+trajectories retain full oracle-backed receipts (failed greedy
+edges, successful alternatives, depth, rank/discrepancy
+structure, explored dead/loop branches) as FUTURE analysis
+material; training from search-generated supervision is a
+separate rung under its own prereg.
+
+FENCES. Single device (mps fp32), single seed chain, one
+realized world snapshot, one-shot; receipts
+logs/mathworld1/regret_lds_desk.jsonl +
+regret_lds_desk_verdict.json, refuse-if-exists; SMOKE on
+smoke_ paths (mechanism-complete: solved-at-root terminal
+override, a known greedy-solvable episode solving at
+discrepancy 0, a forced pullback on a spent loop episode,
+transposition-hit and reopen-law exercise, ladder accounting,
+censor path) before the real run; auditors before booking.
+Counts on these six episodes under THIS controller on THIS
+snapshot — never rates; depth receipts are d(s', search
+state)-free by construction (the search is exhaustive-ordered,
+not policy-rollout); wall figures are device-scoped color.
+STOP after booking — no fresh-seed treatment, no
+rank-neutral control run, no MAGIC arm without fresh GO.
+
