@@ -45672,3 +45672,86 @@ travel; the v3 ordinal-tie question is superseded for v4 (preorder
 positions are distinct by construction) and stays open only for
 the retired v3 coordinate. Dual audit before booking.
 
+## PRE-REG MATH-CYBER-1-ACTION-BASIS-v2-DESK-0: length desk for the qualified v4 semantic program serialization — fresh PROMOTE-RAW bars and an opcode-normalized counterfactual, all frozen before counting (2026-08-24, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-24). Counting only: zero
+model, zero training, zero fresh seeds, zero search, zero MAGIC.
+Population = the frozen 101 decisions / 725 actions already
+qualified by ACTION-SEMANTICS-QUAL-0; binding/semantic
+qualification is INHERITED, and the desk re-asserts corpus hashes
+and counts (abort on any mismatch — this desk measures length
+only).
+
+INSTRUMENT. scratch/mathworld1_abv2desk.py (committed with this
+prereg before the run), importing the QUALIFIED v4 encode from
+scratch/mathworld1_actionsem.py (no copy drift). FROZEN
+model-facing serialization, existing GCTok exactly, no new opcode
+atoms in this desk:
+  algebra                      "{rule}\n"
+  sited branch-deterministic   "{rule} {kind}{ordinal}\n"
+  i_parts (u always stated)    "i_parts {kind}{ordinal} u{k}\n"
+  fenced i_unprod, branch>0    "i_unprod {kind}{ordinal} b{k}\n"
+Parent prefix = the v1 desk formula for comparability:
+"Current: {state}\nHints: none\nStep: ". Child baseline = the
+frozen v1 sstr child + newline, joined by (episode, step,
+child_hash).
+
+PROMOTE-RAW BARS (frozen before counting):
+1. program max <= 32 GCTok tokens.
+2. ZERO ACTION-INDUCED 512-overflow decisions. A decision whose
+   parent prefix cannot fit even a one-token action
+   (prefix + 1 > 512) is PARENT-ONLY and reported separately —
+   it can never fail this bar; the bar counts only decisions
+   where prefix + 1 <= 512 yet at least one actual v4 program
+   pushes prefix + program over 512.
+3. p90 across decisions of (max candidate program length - min
+   candidate program length) <= 8 tokens.
+
+OPCODE-NORMALIZED COUNTERFACTUAL (registered BEFORE any raw
+length is read; descriptive accounting only, not a tokenizer or
+model change): normalized_len = raw_len - GCTok(rule_name) + 1 —
+the rule-id contribution replaced by exactly one hypothetical
+token, site/parameter tokens unchanged. TRIGGER LAW: if bar 3
+(RAW span) fails but the opcode normalization reduces the p90
+within-decision span by >= 50%, the residue classifies
+TOKENIZER-NAMING and the desk STOPS before any training; the
+next candidate is an action-opcode vocabulary desk. PROMOTE is
+never rescored under the hypothetical tokenizer.
+
+ADJUDICATION LAW (frozen): all three RAW bars fire -> PROMOTE:
+ACTION-BASIS advances to a STATE-v-PROGRAM scoring DESIGN (design
+only; no scoring run authorized by this desk). Bars 1+2 fire but
+bar 3 fails WITHOUT the opcode trigger -> HOLD, report the actual
+nuisance. Bar 1 fails (max > 32) or bar 2 fails materially ->
+PARK the current serialization, naming which field causes it.
+
+REGISTERED ANATOMY (report-only): program med/p90/max and median
+compression vs the frozen full-child serialization; parent-prefix
+med/p90/max and combined parent+program fit at 512 and 4096;
+within-decision span med/p90/max (raw and normalized); per-rule
+program lengths; program field decomposition (rule/site/param
+token summaries); i_unprod's fenced actions separately (count +
+lengths).
+
+REGISTERED PRIOR (house): bars 1 and 2 fire (site+param fields
+are O(digits); the longest rule id is ~a dozen GCTok chars);
+bar 3 is the at-risk bar — within one decision the rule ids vary
+from 5-char "euler" to 14-char "i_const_factor", so the raw span
+is dominated by rule-name length, and if it fails the opcode
+trigger fires (>= 50% span reduction), classifying the residue
+TOKENIZER-NAMING. Parent-only >512 decisions exist (the v1 desk
+measured 15/102 states with prefix > 512) and are reported
+separately, never against bar 2.
+
+FENCES. Deterministic desk (GCTok fixed; program recomputation
+inherits the ACTION-SEMANTICS laws and their fences: sympy
+1.14.0, first-preorder sites, u_choice per the frozen i_parts
+law, i_unprod candidate index); Mac idle, single process; scoped
+to the exact frozen artifacts named (states_srepr, actions_srepr,
+states, actions jsonl); receipt logs/mathworld1/abv2_desk.json
+refuse-if-exists; no frozen receipt touched. Desk numbers are
+predictions about any future instrument; the instrument's own
+counts govern when one runs. NOT authorized here: any tokenizer
+change, any opcode vocabulary, any scoring run, any training.
+Dual audit before booking.
+
