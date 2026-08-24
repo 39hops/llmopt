@@ -46012,3 +46012,116 @@ qualified v4 ActionProgram under a pinned engine; it precedes any
 STATE-v-PROGRAM training so both arms share identical underlying
 mathematical transitions. Dual audit before booking.
 
+## PRE-REG MATH-CYBER-1-PROGRAM-DIET-COVERAGE-0: how much of theta0's exact 103,595-row birth diet deterministically relabels from (cur, nxt) into the qualified v4 ActionProgram under the pinned engine? (2026-08-24, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-24). This census gates any
+STATE-v-PROGRAM paired training: both eventual arms must share
+identical underlying mathematical transitions. Zero model, zero
+training, zero fresh seeds, zero search evaluation, zero MAGIC.
+
+POPULATION (frozen, abort on mismatch): EXACTLY theta0's
+historical birth diet — the 12 data/micromodel_chains_shard*.jsonl
+files + data/step_chains.jsonl, every sha256 equal to the theta0
+birth manifest (checkpoints/mathnative_19m_mw1_theta0.json
+diet_manifest), total rows == 103,595. Source filename preserved
+per row. Pre-run pricing (in-session, benign): 76,863 unique cur,
+83,202 unique (cur, nxt).
+
+PRIOR ART (carried, never substituted): RULE-POLICY-0-CENSUS
+(RESULTS L30806) measured 47.58% engine-recoverable action-label
+coverage on the broader 164,896-row excised diet (knife-edge KILL
+at its <50% bar; think-field union 65.8% = its RESHAPE band),
+including history-dependent integration-constant rows;
+DIET-AMBIGUITY-1 (L28562) measured genuine one-to-many next-step
+support (15.7% of rows share a prompt with another distinct valid
+answer). The exact theta0 population under the CURRENT
+ActionProgram + CURRENT engine is a new question.
+
+INSTRUMENT. scratch/mathworld1_pdcov.py (committed with this
+prereg before the run). PHASE A anatomy (no world calls): rows,
+unique cur, unique pairs, duplicate multiplicity, multi-nxt cur —
+by source file and level; policy multimodality is NOT a label
+error. PHASE B relabel, FROZEN LAWS: dedupe by exact parent; the
+deployed legal set (default non-macro successors(), cache
+cleared, sympy 1.14.0, pinned producer/rules shas) materialized
+ONCE per parent and reused across its historical nxts; parent
+visible round-trip sp.sstr(sp.sympify(cur)) == cur required
+before any program (else parent_nonroundtrip); child match =
+EXACT string equality nxt == sstr(child), no simplify rescue;
+classification classes: unique_program / ambiguous_program (>1
+matching child or >1 derivable program) / target_mismatch /
+outside_v4_qualified_domain (derivation touches a nested/
+multi-limit or definite-integral site — the ACTION-SEMANTICS
+vacuous legs, never counted qualified here) / no_engine_edge
+subtyped {constant_offset, equivalent_serialization, rule_gap,
+unresolved} / parent_nonroundtrip / censored_load_sensitive /
+unparseable_nxt. Censoring law: any parent with an unmatched nxt
+gets ONE cold re-materialization; child-key multiset divergence
+books ALL its rows censored_load_sensitive. Symbolic-equivalence
+subtypes are DESCRIPTIVE ONLY, never primary coverage; think/
+level metadata is failure anatomy only. Streaming: one jsonl row
+per parent as results land (a killed run keeps finished parents);
+multiprocessing workers (fork, per-process SIGALRM timeboxes),
+idle Mac.
+
+PRIMARY MEASURES (registered): ROW-WEIGHTED and
+UNIQUE-(cur,nxt)-WEIGHTED unique_program coverage; both
+decomposed by source file, level, recovered rule, and parent
+multiplicity; i_unprod recovered exposure and branch>0 exposure
+reported explicitly (its branch parameter remains opaque).
+
+DECISION LAW (frozen BEFORE any aggregate count is read; fresh
+thresholds justified by the paired-model data requirement, not
+inherited from RULE-POLICY-0's 80/50): the paired experiment
+drops unrelabelable rows from BOTH arms, so what matters is a
+large, source-balanced matched subset at birth-scale statistics
+(theta0 trained on 103,595 rows; a paired arm below ~25k rows
+leaves the historical regime entirely).
+- REUSE fires iff row-weighted unique_program >= 60% AND
+  unique-pair-weighted >= 50% AND at least one source class
+  (micromodel shards pooled, or step_chains) reaches >= 70%
+  row-weighted — a clean matched subset of >= ~60k rows exists.
+- RESHAPE fires iff row-weighted unique_program is in [25%, 60%)
+  OR coverage is heavily source-skewed (some source class >= 70%
+  while the pooled number misses REUSE) — build the matched
+  subset from covered strata only, under its own prereg.
+- REFARM fires iff row-weighted unique_program < 25% — the
+  historical diet cannot support the paired design; a fresh
+  program-labeled band needs its own GO.
+Ambiguous_program rows are NOT coverage but are reported with the
+DIET-AMBIGUITY-1 cross-reference (policy multimodality expected).
+
+REGISTERED PRIOR (house): RESHAPE. Reasoning on the record:
+RULE-POLICY-0 measured 47.58% on a related diet, and the current
+engine + exact-string law is stricter in places (no think-field
+credit) while the v4 program is more capable in others
+(site/u_choice addressing); the step_chains source (world-walk
+adjacent) should relabel far better than the micromodel shards
+(which carry history-dependent constants). Named uncertainty:
+whether parent round-trip failures are material on this diet
+(the corpus str==sstr census passed 102/102 but that was a
+different population).
+
+FENCES. Deterministic apart from load-sensitive rule timeboxes
+(censoring law above; idle Mac, single job); population scoped to
+the sha-pinned manifest; receipts logs/mathworld1/
+{pdc_anatomy.json, pdc_relabel.jsonl, pdc_verdict.json}
+refuse-if-exists, smoke twins on smoke_* paths; no frozen receipt
+touched; no Axiom substitute for the primary result. /qualify:
+SMOKE=1 (60 parents, smoke paths) must complete green before the
+real launch; the real run streams and is monitored. NOT
+authorized here: training, model loads, tokenizer changes, any
+matched-subset materialization (that is the RESHAPE/REUSE
+follow-up's own prereg). HANDOFF NOTE FOR THE NEXT DESIGN RUNG
+(registered now, per outside instruction): any eventual
+STATE-v-PROGRAM primary experiment uses the SAME ActionGCTok/
+vocab, BYTE-IDENTICAL initialization, the SAME underlying row
+IDs, the SAME batch membership/order constructed BEFORE target
+serialization, the SAME optimizer steps/schedule; the two target
+encodings are never independently length-sorted; the loss law is
+separately preregistered BEFORE training — recommended primary:
+prefix-masked, per-row-normalized continuation CE as the causal
+representation test, historical full-sequence LM loss as a rider
+only. No training is authorized by this coverage desk. Dual audit
+before booking.
+
