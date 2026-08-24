@@ -56,7 +56,13 @@ metadata, perform ALL of these steps in order:
    git-TRACKED files, so a script staged in the same commit is
    invisible to a regen run before it and `test_codemap_inventory`
    goes red on the next suite. Commit the entry, re-run
-   `gen_codemap.py` and `gen_index.py`, commit the map. PUBLIC REPO:
+   `gen_codemap.py` and `gen_index.py`, commit the map.
+   **Receipt-lock ordering (2026-08-24, bit twice)**: when the
+   booking force-adds a receipt (`git add -f logs/...`), run
+   `gen_receipt_lock.py` AFTER that staging and commit the lock in
+   the same (or the follow-up map) commit — a lock generated before
+   the force-add records the receipt local_only/untracked and the
+   stale row rides into history. PUBLIC REPO:
    end the message with exactly
    `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>` and NEVER
    a Claude-Session URL. Set `code_commit` on the new row = parent of

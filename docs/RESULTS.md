@@ -45859,3 +45859,73 @@ cannot shrink the prefix by construction). NOT authorized here:
 tokenizer changes, opcode vocabulary, scoring runs, training.
 Dual audit before booking.
 
+## PRE-REG MATH-CYBER-1-ACTION-OPCODE-QUAL-0: does a tokenizer EXTENSION (ActionGCTok — reserved rule opcodes appended after the frozen 296-token GCTok) implement the booked opcode counterfactual exactly, with zero legacy drift? (2026-08-24, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-24). This rung qualifies
+that the REAL tokenizer implements the ACTION-BASIS-v2-DESK-0
+opcode-normalized counterfactual; the predicted lengths are
+ALREADY BOOKED and are not a new discovery here. Zero model, zero
+training, zero fresh seeds, zero search, zero MAGIC.
+
+INSTRUMENT. scratch/mathworld1_actiontok.py (committed with this
+prereg before the run): class ActionGCTok extends the frozen
+GCTok — base atoms ids 0..39 unchanged, byte fallback stays ids
+40..295, reserved opcodes "<r:{rule_name}>" appended at ids 296+
+in the standing engine order CORE + MACRO + INT + LIM + ALGEBRA;
+reserved atoms match as explicit literal strings only (no
+retokenization of raw rule-name substrings). v5 serialization =
+the frozen v2-desk serialization with the rule name replaced by
+its reserved atom. Historical GCTok is never mutated.
+
+BARS (frozen):
+1. LEGACY-ID fires iff every historical id 0..295 keeps identical
+   meaning: base atom list unchanged, n_base 40 unchanged, all
+   reserved ids >= 296 and mutually distinct.
+2. LEGACY-ENCODING fires iff old GCTok and ActionGCTok produce
+   token-identical id sequences over the FULL theta0 birth diet
+   (every cur and nxt string of data/micromodel_chains_shard*
+   .jsonl + data/step_chains.jsonl, file sha256s pinned in the
+   receipt) AND every frozen MathWorld parent/child string
+   (states.jsonl state_before/state_after, actions.jsonl child).
+3. OPCODE fires iff every rule used by the 725-action corpus maps
+   to exactly one unique new token, zero collision or shadowing.
+4. PROGRAM fires iff all 725 qualified v4 programs serialize
+   under v5 (opcode present in the id stream) and tokenizer-
+   round-trip exactly (decode(encode(s)) == s), zero failures.
+5. COUNTERFACTUAL-REPRO fires iff the real ActionGCTok reproduces
+   the registered prediction EXACTLY: program med/p90/max ==
+   5/8/8, within-decision span p90 == 6 (same percentile law as
+   the v2 desk), and zero action-induced 512-overflow decisions
+   (parent prefix token-identical under bar 2; parent-only
+   decisions reported separately as before).
+REFUTED-IF: any legacy mismatch (the extension is not an
+extension), any round-trip failure, or any deviation from the
+booked counterfactual numbers (the counterfactual accounting was
+wrong).
+
+REGISTERED PRIOR (house): all five bars fire. The counterfactual
+law was raw - GCTok(rule) + 1 and the v5 serialization implements
+exactly that substitution; legacy drift would require a diet or
+corpus string containing a literal "<r:...>" reserved atom, which
+the math text cannot produce. Named uncertainty: none material —
+this is an implementation-fidelity rung.
+
+FENCES. Deterministic; Mac idle, single process; scoped to the
+exact artifacts named (diet shards sha-pinned in the receipt,
+frozen MathWorld corpus files); receipt
+logs/mathworld1/actiontok_qual.json refuse-if-exists; no frozen
+receipt touched; historical GCTok untouched (extension only). The
+ACTION-SEMANTICS fences travel (sympy 1.14.0, v4 laws). NOT
+authorized here: any training, any model load, any diet
+relabeling. STANDING NEXT CANDIDATE (registered, needs its own
+GO): PROGRAM-DIET-COVERAGE-0 — census how much of the exact
+theta0 birth diet deterministically relabels from (cur, nxt) into
+the qualified v4 ActionProgram under a pinned engine; that desk
+precedes any STATE-v-PROGRAM training so both arms share
+identical underlying transitions. PAIRED-DESIGN NOTE (registered
+for the future rung): opcode extension changes vocab/output-head
+size, so primary STATE-v-PROGRAM arms use the SAME extended
+tokenizer/vocab, SAME initialization, SAME rows/order/optimizer
+law; old theta0 is historical reference, never the primary paired
+control. Dual audit before booking.
+
