@@ -43899,3 +43899,134 @@ question is therefore moot for the yield statistics. No
 training and no treatment prereg follow regardless of this
 outcome until Artin/GPT review these counts (registered STOP).
 
+## OBSERVATION MATH-CYBER-1-YIELD-AUTOPSY-0: exhaustive fork census of the four LABEL-YIELD-0 failures — 3 of 4 are LIMIT CYCLES under the frozen deterministic controller (a state revisit proves non-termination), k-widening saturates at 2 label episodes ever, and across ALL 240 spent episodes exact state revisits occur ONLY in failed trajectories; harvest PARKS, the priced next lever is CYCLE-ESCAPE (2026-08-23, Mac)
+
+Spent-band autopsy directed by Artin/GPT after the LABEL-YIELD-0
+NO-GO; analysis-first (chat report), booked on request with two
+registered wording amendments adopted. Zero training, zero fresh
+seeds; the 9500-9519 band stays spent. Instrument: exhaustive
+all-rank one-deviation census of L4-s9503/9504/9507/9518 —
+binding replay (4/4 episodes bound, 48/48 sites reproduce the
+recorded argmax, chosen always rank 1), every legal alternative
+forced, frozen TERMINAL-FIRST + theta_0 continuations, memo =
+full-State.key()-keyed max-horizon walk truncated exactly to
+native horizons (valid BECAUSE the controller is horizon-blind
+and deterministic and the world is one realized snapshot;
+State.key() verified expr-only srepr). Driver
+scratch/mathworld1_autopsy.py (sha 1dda8b85..., verbatim copy of
+the scratchpad driver that executed; its OUT path constant is
+the only environment-specific line) + receipt
+logs/mathworld1/autopsy_fork_census.json (sha 39963e96...,
+git add -f'd small-text receipt, the seedslad exception). Two
+skeptical audits (statistical + counterfactual semantics, Opus)
+ran before this booking; their surviving objections are folded
+in below and their two kills of house readings are named.
+
+PER-FAILURE (360 forks total; ranks <=3 carry ZERO censoring in
+all four episodes):
+- L4-s9503: 7 distinct states/12 (limit cycle), 71/71
+  alternatives exhausted, 0 rescues, 0 censored —
+  ONE-DEV-NOT-REPAIRABLE at every rank, the one clean
+  exhaustive zero.
+- L4-s9504: 12 distinct states (NO loop, monotone descent), 0
+  rescues observed; ranks <=3 fully observed so it is a DECIDED
+  non-label for top-2/top-3 designs; deep-k (>=4) is UNDECIDED
+  with 14 natively-censored forks (41 at full horizon), and
+  that censoring is traversal-order/load-dependent — not
+  reproducible by construction.
+- L4-s9507: 4 distinct states/12 (strict 2-cycle steps 2-11),
+  13 native rescues at ranks {2:10, 3:1, 5:2} — but only 5
+  distinct forced children at ~3 effective sites
+  (pseudo-replication named by audit; the "margin range" is
+  largely 0.356/7.093 repeated by the cycle); rank-5 rescues
+  carry margins 84.1/89.4.
+- L4-s9518: 7 distinct states/12 (limit cycle), single rescue:
+  rank 3, step 0, margin 69.6 — invisible to top-2.
+
+HYPOTHETICAL YIELD BY k (native horizon): k=2 -> 1 episode / 4
+facts / 48 forks; k=3 -> 2 / 6 / 96; k=4 -> 2 / 6 / 144;
+k=6 -> 2 / 8 / 235; k=8 -> 2 / 8 / 299; exhaustive -> 2 / 8 /
+360. Widening saturates at k=3: deeper ranks add facts, never
+episodes.
+
+HORIZON (T3 as blind-amended: distinct DEDUP-B facts at >=2
+native horizons): 244 distinct facts, 39 horizon-testable (35
+after dropping 4 censored-v-censored pairs), 2 change rescue
+status (5.1%) — both the SAME forced child (fa49e207..., a
+depth-2 solve failing only at h<=1): 2 registered facts, ONE
+causal event. REDESIGN-HORIZON does not fire at the frozen
+>1/3 bar. AUDIT-ADOPTED REFRAME: under a frozen deterministic
+state-only controller the label 1[d(child)<=h] is monotone in h
+BY CONSTRUCTION, so this census measures the mask-binding RATE
+(a design-relative magnitude), never "target well-definedness";
+and the binary within-horizon label itself reads h — horizon
+conditioning at the label layer. Registered schema consequence:
+any future harvest stores the horizon-free solve depth d(s')
+with h>=d as an eligibility mask at harvest time. SCOPE (Artin
+amendment 2, registered): d(s') is well-defined ONLY for the
+current stationary TERMINAL-FIRST + theta_0 controller; a
+controller with episode memory (CYCLE-ESCAPE class) makes
+continuation identity (State.key, controller-memory) and any
+depth receipt d(s', M), controller-hash scoped.
+
+MECHANISMS (evidence-backed): s9503 limit cycle +
+one-deviation-closure (exhaustive zero); s9504 no-loop, no
+repair at k<=3, deep class open (censoring unreproducible);
+s9507 loop with escapes at ranks 2/3/5 — the house
+"near-miss v truncation margin dichotomy" was REFUTED by its
+own data (audit: s9507's rank-5 margins 84/89 exceed s9518's
+69.6) and sub-0.5 margins are unreplicated mps forwards (no
+inference-repeatability fence measured in-tree); s9518 top-2
+truncation + loop.
+
+THE ZERO-MODEL FACT THAT PRICES THE NEXT DESK: across ALL 240
+spent episodes (liveness 40, FROZEN adapt+holdout 80, yield 80,
+per their frozen receipts), exact state_hash revisits within a
+trajectory occur ONLY in FAILED episodes — 9 of the 15
+spent failures revisit (liveness L4-s9104, L6-s9103, L6-s9108;
+yield L4-s9503/9507/9518; FROZEN L7-s9303, L4-s9400, L4-s9401),
+zero solved episodes do. An exact-repeat-triggered escape rule
+therefore CANNOT alter any spent solved trajectory: regression
+exposure on spent data is zero by construction.
+
+STATISTICS (Artin amendment 1, registered wording): the frozen
+gate was plug-in P(>=3 label-bearing episodes) >= 0.8 with
+Jeffreys 95% endpoints REPORTED, never CI-floor >= 0.8. Under
+that gate D1 (top-2 mixed, p-hat 1/80) clears at n=480 (0.94)
+and post-hoc D3 (top-3 mixed, 2/80) clears at n=240 (0.94) —
+conjunct (a) only. PARK stands anyway because: D3's k was
+chosen after seeing s9518's rank (winner's curse; the booked
+no-widening fence names the move), no design prices the JOINT
+GO bar (the >=5-distinct-fact conjunct is episode-clustered:
+this band's 10 rows collapse to 4 facts from one episode),
+Jeffreys endpoints span ~0 to ~1 for every design (floors
+0.004-0.37 at the quoted n), L4-only conditioning multiplies
+p-hat by shrinking the denominator over the SAME two events,
+and the controller defect (cycles) dominates research priority.
+It is NOT claimed that every design failed the frozen numerical
+gate. Contamination note: the 19/80 flagged (all solved, none
+L4) bias the mixed-band rate DOWNWARD, so D1 and L4-only
+designs are biased in opposite directions.
+
+DECISION (Artin/GPT accepted): retrospective-credit HARVEST
+PARKS in all five priced shapes; the priced next experiment is
+the CYCLE-ESCAPE desk on the 15 spent failures (own prereg,
+thresholds frozen before counting). Axiom boundary: the
+replica (at 9d4933c, manifest stage) could certify a fork
+census once Tier-A parity lands AND the interchange carries the
+structured (rule, rule_target, child) action surface — display
+labels cannot reconstruct one child (same-label siblings);
+threads stay causally separate.
+
+FENCES. Single seed chain, single device (mps fp32), one
+process, one realized world snapshot; fork continuations are
+this-snapshot facts (binding asserts cover recorded
+trajectories only); censored-fork sets are load-sensitive and
+NOT reproducible by construction; all counts are these 4 (or
+15, or 240) episodes', never rates. The autopsy executed from
+the session scratchpad before booking was requested — the
+committed driver is the byte-verbatim record of what ran, and
+this entry is the registration of the analysis, not a prereg'd
+run. Native-horizon labels only; no standardized-horizon read
+counts toward any yield figure.
+
