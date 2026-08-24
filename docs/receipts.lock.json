@@ -810,6 +810,35 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/pdc_anatomy.json": {
+   "bytes": 4134,
+   "exists": true,
+   "sha256": "3cc39e9b92875f04030148343ab0cf42e448323804e47c94909e0d72ccbaf4a0",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/pdc_relabel.jsonl": {
+   "bytes": 15970572,
+   "exists": true,
+   "local_only": true,
+   "sha256": "b38b79f27da2dc23216f0ddf717d42f38bcaa3147def168ac850d8676166b470",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/mathworld1/pdc_unprod_exposure.json": {
+   "bytes": 146,
+   "exists": true,
+   "sha256": "6adade6dc07c8e4eb239496caee4650b1e7b8ebb8b084cc7830a6017007460ca",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/pdc_verdict.json": {
+   "bytes": 3829,
+   "exists": true,
+   "sha256": "8eeba938f6a8ec3b3b7e9bf7e15d4b5744f5bc664b6fa6bf460e3f021e73b461",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/regret_lds_desk.jsonl": {
    "bytes": 2686,
    "exists": true,

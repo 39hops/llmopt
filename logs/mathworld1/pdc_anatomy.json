@@ -1,0 +1,213 @@
+{
+ "rows": 103595,
+ "unique_cur": 76863,
+ "unique_pairs": 83202,
+ "dup_multiplicity_hist": {
+  "12": 39,
+  "1": 74130,
+  "6": 410,
+  "4": 832,
+  "3": 1537,
+  "5": 559,
+  "7": 328,
+  "2": 4977,
+  "8": 210,
+  "10": 48,
+  "13": 3,
+  "9": 87,
+  "11": 25,
+  "17": 1,
+  "14": 6,
+  "16": 4,
+  "39": 1,
+  "15": 4,
+  "32": 1
+ },
+ "cur_with_multi_nxt": 3576,
+ "per_file": {
+  "data/micromodel_chains_shard0.jsonl": {
+   "rows": 5360,
+   "unique_cur": 5197,
+   "unique_pairs": 5360,
+   "multimodal_cur": 625,
+   "levels": {
+    "1": 1558,
+    "2": 2078,
+    "3": 577,
+    "4": 420,
+    "5": 727
+   }
+  },
+  "data/micromodel_chains_shard1.jsonl": {
+   "rows": 5447,
+   "unique_cur": 5282,
+   "unique_pairs": 5447,
+   "multimodal_cur": 626,
+   "levels": {
+    "1": 1528,
+    "2": 2040,
+    "3": 619,
+    "4": 456,
+    "5": 804
+   }
+  },
+  "data/micromodel_chains_shard10.jsonl": {
+   "rows": 10368,
+   "unique_cur": 9962,
+   "unique_pairs": 10368,
+   "multimodal_cur": 1035,
+   "levels": {
+    "1": 2867,
+    "2": 4114,
+    "3": 1145,
+    "4": 855,
+    "5": 1387
+   }
+  },
+  "data/micromodel_chains_shard11.jsonl": {
+   "rows": 10441,
+   "unique_cur": 10021,
+   "unique_pairs": 10441,
+   "multimodal_cur": 1052,
+   "levels": {
+    "1": 2946,
+    "2": 4105,
+    "3": 1228,
+    "4": 828,
+    "5": 1334
+   }
+  },
+  "data/micromodel_chains_shard2.jsonl": {
+   "rows": 5332,
+   "unique_cur": 5168,
+   "unique_pairs": 5332,
+   "multimodal_cur": 610,
+   "levels": {
+    "1": 1502,
+    "2": 2071,
+    "3": 571,
+    "4": 423,
+    "5": 765
+   }
+  },
+  "data/micromodel_chains_shard3.jsonl": {
+   "rows": 5353,
+   "unique_cur": 5195,
+   "unique_pairs": 5353,
+   "multimodal_cur": 607,
+   "levels": {
+    "1": 1487,
+    "2": 2123,
+    "3": 555,
+    "4": 468,
+    "5": 720
+   }
+  },
+  "data/micromodel_chains_shard4.jsonl": {
+   "rows": 5367,
+   "unique_cur": 5203,
+   "unique_pairs": 5367,
+   "multimodal_cur": 633,
+   "levels": {
+    "1": 1560,
+    "2": 2050,
+    "3": 587,
+    "4": 417,
+    "5": 753
+   }
+  },
+  "data/micromodel_chains_shard5.jsonl": {
+   "rows": 5286,
+   "unique_cur": 5094,
+   "unique_pairs": 5286,
+   "multimodal_cur": 637,
+   "levels": {
+    "1": 1602,
+    "2": 2058,
+    "3": 558,
+    "4": 390,
+    "5": 678
+   }
+  },
+  "data/micromodel_chains_shard6.jsonl": {
+   "rows": 10257,
+   "unique_cur": 9836,
+   "unique_pairs": 10257,
+   "multimodal_cur": 1018,
+   "levels": {
+    "1": 2893,
+    "2": 4065,
+    "3": 1099,
+    "4": 861,
+    "5": 1339
+   }
+  },
+  "data/micromodel_chains_shard7.jsonl": {
+   "rows": 10599,
+   "unique_cur": 10198,
+   "unique_pairs": 10599,
+   "multimodal_cur": 1077,
+   "levels": {
+    "1": 2861,
+    "2": 4197,
+    "3": 1271,
+    "4": 942,
+    "5": 1328
+   }
+  },
+  "data/micromodel_chains_shard8.jsonl": {
+   "rows": 10410,
+   "unique_cur": 9989,
+   "unique_pairs": 10410,
+   "multimodal_cur": 1090,
+   "levels": {
+    "1": 2975,
+    "2": 4073,
+    "3": 1183,
+    "4": 777,
+    "5": 1402
+   }
+  },
+  "data/micromodel_chains_shard9.jsonl": {
+   "rows": 10325,
+   "unique_cur": 9895,
+   "unique_pairs": 10325,
+   "multimodal_cur": 1056,
+   "levels": {
+    "1": 2899,
+    "2": 4116,
+    "3": 1139,
+    "4": 771,
+    "5": 1400
+   }
+  },
+  "data/step_chains.jsonl": {
+   "rows": 9050,
+   "unique_cur": 5308,
+   "unique_pairs": 6609,
+   "multimodal_cur": 1480,
+   "levels": {
+    "2": 2205,
+    "3": 1690,
+    "4": 1443,
+    "5": 1992,
+    "6": 881,
+    "7": 520,
+    "8": 319
+   }
+  }
+ },
+ "manifest_sha_ok": true,
+ "start": {
+  "start_commit": "84c1d5cc",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_pdcov.py": "dd9774db061b62abf0f86132edfe2e8589833adf3f9a53ce87a08190ba0a1915",
+   "scratch/mathworld1_actionsem.py": "c79462129730328592ee2cc909fc563076afe80542dd2a745ce88ceef3e9c23b",
+   "scratch/mathworld1_srepr_export.py": "9cd1b729acd7ede732cd68ca69059b5b6d3d67ce60098bcd7734486e14b35d05",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58"
+  }
+ }
+}

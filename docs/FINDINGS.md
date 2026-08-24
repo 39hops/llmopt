@@ -3170,3 +3170,14 @@ regime tag on every bullet is the fence.
   rung, lengths not a new discovery; fences: future diets must stay
   literal-"<"-free or re-run the legacy bar; paired STATE-v-PROGRAM
   arms must share the extended vocab/init/rows. RESULTS.md#L45932
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] REUSE fires on theta0's
+  exact 103,595-row birth diet: 70.78% row-weighted / 71.62%
+  edge-weighted relabels deterministically into a unique v4
+  ActionProgram (micromodel shards 72.0% pooled, step_chains 58.0% —
+  inverting the registered prior's source ordering); no_engine_edge
+  22.5% (unresolved 13,730 + integration-constant offsets 9,267),
+  parent str-round-trip failures 6.71%; matched paired-training subset
+  = 73,324 rows; i_unprod branch>0 exposure is MATERIAL in the diet
+  (1,002/2,894 pairs on 2-sibling sites) so its semantics decision
+  gates the matched-subset prereg; zero ambiguous/target/outside-v4
+  classes. RESULTS.md#L46128

@@ -2771,6 +2771,17 @@ MATH-CYBER-1 TRAIN-band exposure census v2 (outside-review correction of OBSERVA
 
 - `main()`
 
+### scratch/mathworld1_pdcov.py
+MATH-CYBER-1 PROGRAM-DIET-COVERAGE-0 — census: how much of theta0's EXACT historical birth diet deterministically relabels from (cur, nxt) into the fully-qualified v4 ActionProgram under the pinned engine? Zero model, zero training, zero fresh seeds, zero search evaluation, zero MAGIC.
+
+- `sha(t: str) -> str`
+- `_legal(cur: str)` — Materialize the deployed legal set for one parent string.
+- `_programs_for(parent, rule, child_key)` — All v4 programs producing child_key under (rule).
+- `work(item)`
+- `_rt_ok(cur: str) -> bool`
+- `_subtype_nomatch(parent, legal, nxt)`
+- `main()`
+
 ### scratch/mathworld1_regret.py
 MATH-CYBER-1 REGRET-LDS-DESK-0 (PRE-REG booked at 5e7c2cbc). Rank-weighted limited-discrepancy GRAPH search over the realized world snapshot: edge cost = rank-1 (rank-only, never raw scores; no cross-parent score comparison), frontier popped by (path_discrepancy, path_depth, State.key()), TERMINAL-FIRST hard override at expansion (terminal edges cost 0 and carry rank tag "T"), depth cap 12 (nodes at depth 12 never expand), transposition table on full State.key() with the registered strictly-lower-cost reopen law, overflow-unscorable states book state-censored (search continues), 300 s charged instrument wall per episode, unique-expansion ladder 12/24/48/96 with primary read at 96. Zero training; frozen theta_0 ranks siblings only.
 
@@ -2846,6 +2857,13 @@ MATH-CYBER-1 TERMINAL-DOMINANCE-0 terminal-miss census (PRE-REG MATH-CYBER-1-TER
 - `class Scorer` (score, rank_candidates)
 - `load_recorded(source, eid, stage)`
 - `census_episode(eid, band, root, rec, outcome, world, scorer, sink, tamper_step=None)` — Replay + terminal census. Returns episode summary.
+- `main()`
+
+### scratch/mathworld1_unprod_probe.py
+*(no docstring)*
+
+- `sha(t)`
+- `probe(args)`
 - `main()`
 
 ### scratch/mathworld1_yield.py

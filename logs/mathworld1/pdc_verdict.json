@@ -1,0 +1,137 @@
+{
+ "smoke": false,
+ "population_rows": 103595,
+ "aggregated_rows": 103595,
+ "aggregated_pairs": 83202,
+ "row_weighted_class": {
+  "no_engine_edge": 23287,
+  "unique_program": 73324,
+  "parent_nonroundtrip": 6955,
+  "censored_load_sensitive": 29
+ },
+ "pair_weighted_class": {
+  "no_engine_edge": 17351,
+  "unique_program": 59587,
+  "parent_nonroundtrip": 6241,
+  "censored_load_sensitive": 23
+ },
+ "row_weighted_coverage_unique_program": 0.7078,
+ "pair_weighted_coverage_unique_program": 0.7162,
+ "no_engine_edge_subtypes": {
+  "unresolved": 13730,
+  "constant_offset": 9267,
+  "equivalent_serialization": 290
+ },
+ "by_source_file": {
+  "data/micromodel_chains_shard0.jsonl": {
+   "no_engine_edge": 1213,
+   "unique_program": 3861,
+   "parent_nonroundtrip": 286
+  },
+  "data/micromodel_chains_shard1.jsonl": {
+   "unique_program": 3916,
+   "no_engine_edge": 1207,
+   "parent_nonroundtrip": 321,
+   "censored_load_sensitive": 3
+  },
+  "data/micromodel_chains_shard10.jsonl": {
+   "unique_program": 7434,
+   "no_engine_edge": 2332,
+   "parent_nonroundtrip": 600,
+   "censored_load_sensitive": 2
+  },
+  "data/micromodel_chains_shard11.jsonl": {
+   "unique_program": 7533,
+   "no_engine_edge": 2339,
+   "parent_nonroundtrip": 568,
+   "censored_load_sensitive": 1
+  },
+  "data/micromodel_chains_shard2.jsonl": {
+   "unique_program": 3866,
+   "no_engine_edge": 1173,
+   "parent_nonroundtrip": 292,
+   "censored_load_sensitive": 1
+  },
+  "data/micromodel_chains_shard3.jsonl": {
+   "no_engine_edge": 1239,
+   "unique_program": 3810,
+   "parent_nonroundtrip": 304
+  },
+  "data/micromodel_chains_shard4.jsonl": {
+   "unique_program": 3864,
+   "no_engine_edge": 1227,
+   "parent_nonroundtrip": 275,
+   "censored_load_sensitive": 1
+  },
+  "data/micromodel_chains_shard5.jsonl": {
+   "no_engine_edge": 1244,
+   "unique_program": 3782,
+   "parent_nonroundtrip": 260
+  },
+  "data/micromodel_chains_shard6.jsonl": {
+   "no_engine_edge": 2289,
+   "unique_program": 7385,
+   "parent_nonroundtrip": 579,
+   "censored_load_sensitive": 4
+  },
+  "data/micromodel_chains_shard7.jsonl": {
+   "unique_program": 7643,
+   "no_engine_edge": 2327,
+   "parent_nonroundtrip": 626,
+   "censored_load_sensitive": 3
+  },
+  "data/micromodel_chains_shard8.jsonl": {
+   "no_engine_edge": 2370,
+   "unique_program": 7501,
+   "parent_nonroundtrip": 538,
+   "censored_load_sensitive": 1
+  },
+  "data/micromodel_chains_shard9.jsonl": {
+   "no_engine_edge": 2290,
+   "unique_program": 7478,
+   "parent_nonroundtrip": 556,
+   "censored_load_sensitive": 1
+  },
+  "data/step_chains.jsonl": {
+   "unique_program": 5251,
+   "parent_nonroundtrip": 1750,
+   "no_engine_edge": 2037,
+   "censored_load_sensitive": 12
+  }
+ },
+ "recovered_rule_hist": {
+  "i_heurisch": 18946,
+  "i_sum": 10822,
+  "i_const": 14932,
+  "expand": 716,
+  "i_linear_basis": 21095,
+  "i_unprod": 3123,
+  "i_log_power": 55,
+  "i_inverse_trig": 3159,
+  "i_ansatz_exp": 10,
+  "i_parts": 3,
+  "i_usub": 19,
+  "together": 7,
+  "i_sqrt_basis": 31,
+  "i_const_factor": 402,
+  "i_transcend_div": 4
+ },
+ "i_unprod_exposure": {
+  "rows": 3123
+ },
+ "n_workers": 9,
+ "wall_s": 2524.9,
+ "start": {
+  "start_commit": "84c1d5cc",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_pdcov.py": "dd9774db061b62abf0f86132edfe2e8589833adf3f9a53ce87a08190ba0a1915",
+   "scratch/mathworld1_actionsem.py": "c79462129730328592ee2cc909fc563076afe80542dd2a745ce88ceef3e9c23b",
+   "scratch/mathworld1_srepr_export.py": "9cd1b729acd7ede732cd68ca69059b5b6d3d67ce60098bcd7734486e14b35d05",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58"
+  }
+ },
+ "completion_commit": "84c1d5cc"
+}

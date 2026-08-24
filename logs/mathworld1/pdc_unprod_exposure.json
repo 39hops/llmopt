@@ -1,0 +1,9 @@
+{
+ "i_unprod_rows": 2894,
+ "unique_parents": 2888,
+ "max_siblings_per_site_hist": {
+  "1": 1892,
+  "2": 996
+ },
+ "branch_gt0_exposed_rows": 1002
+}

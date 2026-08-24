@@ -46125,3 +46125,129 @@ representation test, historical full-sequence LM loss as a rider
 only. No training is authorized by this coverage desk. Dual audit
 before booking.
 
+## VERDICT MATH-CYBER-1-PROGRAM-DIET-COVERAGE-0: REUSE FIRES — 70.78% of theta0's exact 103,595-row birth diet (71.62% of unique edges) relabels deterministically into a unique v4 ActionProgram; the micromodel shards relabel at 72.0% pooled while step_chains lags at 58.0% (the registered prior's RESHAPE call AND its source-ordering reasoning were both wrong); the matched paired-training subset is 73,324 rows (2026-08-24, Mac)
+
+Per PRE-REG MATH-CYBER-1-PROGRAM-DIET-COVERAGE-0 (committed with
+the producer at 84c1d5cc before the run; population, relabel/
+censoring laws, and the REUSE/RESHAPE/REFARM decision law all
+frozen there). Receipts logs/mathworld1/{pdc_anatomy.json,
+pdc_relabel.jsonl (76,863 streamed parent rows),
+pdc_verdict.json}; relabel-phase wall 2,524.9 s at 9 workers
+(Phase A anatomy excluded from that clock), idle Mac.
+
+POPULATION GATES: all 13 file sha256s equal the theta0 birth
+manifest; 103,595 rows exactly; abort-on-mismatch, none fired.
+
+PHASE A ANATOMY (registered): 76,863 unique cur; 83,202 unique
+(cur, nxt); 74,130 pairs appear once (multiplicity tail to 39);
+3,576 cur carry >1 distinct nxt (policy multimodality, NOT label
+error — DIET-AMBIGUITY-1 cross-reference).
+
+PHASE B CLASSIFICATION (row-weighted | unique-pair-weighted):
+- unique_program 73,324 (70.78%) | 59,587 (71.62%)
+- no_engine_edge 23,287 (22.48%) | 17,351 — subtypes (row):
+  unresolved 13,730; constant_offset 9,267 (the
+  history-dependent integration-constant class the prior art
+  named); equivalent_serialization 290 (descriptive only, NEVER
+  counted as coverage).
+- parent_nonroundtrip 6,955 (6.71%) | 6,241 — the diet's own
+  str() round-trip failures; these rows cannot receive a program
+  under the frozen law.
+- censored_load_sensitive 29 | 23. Zero ambiguous_program, zero
+  target_mismatch, zero outside_v4_qualified_domain, zero
+  unparseable_nxt, zero rule_gap (all Counter-grounded zeros:
+  each class is reachable in the classifier and absent from the
+  receipt).
+
+BY SOURCE (row-weighted unique_program): micromodel shards
+0.7118-0.7251 across all 12 (pooled 68,073/94,545 = 72.00%);
+step_chains 5,251/9,050 = 58.02%.
+
+RECOVERED-RULE ANATOMY: i_linear_basis 21,095; i_heurisch
+18,946; i_const 14,932; i_sum 10,822; i_inverse_trig 3,159;
+i_unprod 3,123; i_const_factor 402; expand 716; the remaining
+families < 100 each (incl. i_parts 3 — by-parts rows in this
+diet largely fall in no_engine_edge, consistent with their
+history-dependent constants). i_unprod EXPOSURE (registered
+fence; branch parameter opaque): 3,123 recovered rows = 2,894
+unique (cur, nxt) pairs on 2,888 parents; branch>0 exposure by a
+separate registered-measure probe (branch>0 exposure is a
+PRIMARY registered measure the main receipt omitted; the probe
+itself is a POST-HOC adopted scratchpad diagnostic — untracked at
+run time, committed in this booking commit, and its receipt is a
+FOURTH artifact beyond the prereg's registered three, disclosed
+as such;
+scratch/mathworld1_unprod_probe.py, adopted from the scratchpad,
+re-materializing those parents' legal sets; the probe wrote
+/tmp/unprod_exposure.json and the receipt at
+logs/mathworld1/pdc_unprod_exposure.json is a disclosed
+hand-copy of it, force-added under the small-text-receipt
+exception; its keys are named *_rows but are PAIR-keyed —
+i_unprod_rows 2,894 and branch_gt0_exposed_rows 1,002 count
+unique (cur, nxt) pairs): 996 of
+2,888 parents carry a 2-sibling i_unprod site, exposing 1,002 of
+the 2,894 pairs (34.6%) to the OPAQUE branch parameter — a
+MATERIAL exposure unlike the decision corpus's 1/13, so the
+i_unprod-semantics decision cannot be deferred past the
+matched-subset prereg (any i_unprod row in the matched subset
+either gets semantic branch treatment or is excluded under a
+frozen law).
+
+DECISION (frozen law): REUSE FIRES — row-weighted 70.78% >= 60%,
+unique-pair-weighted 71.62% >= 50%, and the pooled micromodel
+source class 72.00% >= 70%. The matched subset — 73,324 rows
+drawn from all 13 sources, proportional to source (per-shard
+unique_program rate 0.7118-0.7251; step_chains 58.02%) — exceeds
+the ~60k birth-scale requirement. RESHAPE and REFARM do not
+fire.
+
+REGISTERED-PRIOR ACCOUNTING (wrong twice, booked): the prior
+called RESHAPE (band [25%, 60%)) — measured 70.78% lands in
+REUSE. The prior's mechanism ("step_chains should relabel far
+better than the micromodel shards") is INVERTED by measurement:
+step_chains is the WORSE source (58.0% v 72.0%). The prior's
+named uncertainty (parent round-trip materiality) was real:
+6.71% of rows fail it.
+
+READING (scoped): the paired STATE-v-PROGRAM experiment has its
+data: 73,324 rows over which BOTH arms can train on identical
+transitions — one arm targeting the historical full nxt rewrite,
+one targeting the <= 8-token v4 ActionProgram (under its v5
+opcode serialization, ACTION-OPCODE-QUAL-0). Matched-subset
+materialization is NOT run here (its own prereg). The
+no_engine_edge mass (22.5%) is dominated by unresolved +
+constant_offset — engine-gap anatomy, not label noise; think
+metadata was not consulted for any primary count.
+
+RECEIPT NOTES (receipt-auditor, adopted): 723 unique_program rows
+(584 pairs; expand 716 + together 7 rows) are whole-expression
+algebra moves with site None by design — the site law never
+applied to them. The no_engine_edge subtype split (9,267 v 290)
+is first-matching-child order-dependent — descriptive only,
+coverage unaffected. The driver carries a second, direct
+censoring path for a raising world call; it never fired (all 29
+censored rows are remat_divergence). The smoke anatomy file holds
+full-population content (Phase A is not smoke-gated) — filename
+distinguishes it; the real verdict carries smoke: false. The
+probe receipt keys are misnamed (pair-keyed *_rows; threshold is
+sites with >1 sibling, i.e. a nonzero branch index exists).
+
+FENCES. Deterministic apart from load-sensitive rule timeboxes
+(frozen censoring law; 29 rows censored, never converted);
+population scoped to the sha-pinned manifest; sympy 1.14.0 and
+all ACTION-SEMANTICS fences travel (first-preorder sites,
+u_choice law, i_unprod candidate index, nested/definite legs
+vacuous — zero outside_v4 rows observed); receipts
+refuse-if-exists, smoke twins on smoke_ paths; no frozen receipt
+touched; no Axiom substitute used. Streamed rows survive kills
+(the checkpoint selection-effect rule). NOT authorized here:
+training, model loads, matched-subset materialization, tokenizer
+changes. The HANDOFF NOTE for the next design rung is registered
+in the prereg verbatim (same ActionGCTok/vocab, byte-identical
+init, same row IDs, batch membership/order before target
+serialization, same optimizer steps/schedule, no independent
+length-sorting, prefix-masked
+per-row-normalized continuation CE preregistered separately;
+full-sequence LM loss as rider only; no training authorized).
+Dual audit before booking.
+
