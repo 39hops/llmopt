@@ -2785,6 +2785,14 @@ MATH-CYBER-1 SREPR-EXPORT-0 — versioned srepr interchange re-export of the fro
 - `qualified_srepr(st: State) -> str` — State.key() with the round-trip identity asserted, or abort.
 - `main()`
 
+### scratch/mathworld1_stateobs.py
+MATH-CYBER-1 STATE-OBSERVABILITY-DESK-0 — is the evaluation structure that str(expr) omits ACTION-RELEVANT on the 26 SREPR-newly-bound decisions, or interchange-only?
+
+- `sha(t: str) -> str`
+- `legal_profile(expr)` — (label multiset, child-key multiset, terminal key set,
+- `diff_fields(pe, pv, chosen_hash)` — Names of behavioral fields that differ between the two
+- `main()`
+
 ### scratch/mathworld1_substrate_desk.py
 MATH-CYBER-1 fresh-substrate desk (no model loaded, no vocab shipped): price a GRAMMAR-CLOSED tokenizer — the existing ATOMS multi-char vocabulary plus a deterministic single-byte fallback token per uncovered character — against (a) the 725 calibration actions of the frozen rung-0 trajectories and (b) the standing MathNative base training diet.
 

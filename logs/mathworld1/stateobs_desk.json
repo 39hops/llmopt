@@ -1,0 +1,619 @@
+{
+ "population": 26,
+ "alias_witnesses": 0,
+ "behaviorally_identical": 0,
+ "visible_gate_fail": 26,
+ "unstable": 0,
+ "bar_STATE_ALIAS_fires": false,
+ "rows": [
+  {
+   "decision": [
+    "L4-s9100",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9103",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    1
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    3
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    5
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    7
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    9
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    11
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9105",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9106",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9106",
+    2
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9108",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L4-s9109",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L5-s9101",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L5-s9106",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L6-s9101",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L6-s9103",
+    1
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L6-s9103",
+    3
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L6-s9103",
+    5
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L6-s9103",
+    7
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L6-s9103",
+    9
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L6-s9103",
+    11
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L6-s9108",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L6-s9108",
+    1
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L7-s9103",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  },
+  {
+   "decision": [
+    "L7-s9108",
+    0
+   ],
+   "visible_gate": false,
+   "key_equal": false,
+   "is_solved": [
+    false,
+    false
+   ],
+   "unsolved_nodes": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "class": "visible_gate_fail"
+  }
+ ],
+ "start": {
+  "start_commit": "82681fc1",
+  "start_status_porcelain": " M docs/receipts.lock.json\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_stateobs.py": "6adbf7c6e4bf2533bd9ac949c477609390ed5f485ef71df50ca175f788dc38fb",
+   "scratch/mathworld1_srepr_export.py": "9cd1b729acd7ede732cd68ca69059b5b6d3d67ce60098bcd7734486e14b35d05",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87"
+  }
+ },
+ "completion_commit": "82681fc1"
+}

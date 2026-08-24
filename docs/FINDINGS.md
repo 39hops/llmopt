@@ -3119,3 +3119,13 @@ regime tag on every bullet is the fence.
   decisions — an encoder ADDRESSING residue, not a schema or corpus
   defect (zero wrong_child / collision / out-of-range).
   RESULTS.md#L45054
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] theta0's state observation is
+  NOT incomplete on the 26 srepr-blocked decisions: the exact engine
+  state prints the frozen visible string verbatim 26/26 (its
+  canonicalization prints differently 0/26; sympify is not
+  idempotent-under-sstr), and zero visible strings map to two distinct
+  states across the population (16 distinct states, two 6x cycle
+  repeats) — the evaluation structure was lost by interchange parsers,
+  never hidden from the model; STATE-ALIAS bar no-fires vacuously
+  (no comparable pair; behavioral half unmeasured) and ACTION-SITE
+  qualification proceeds ahead of state naming. RESULTS.md#L45227

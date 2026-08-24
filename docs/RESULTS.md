@@ -45224,3 +45224,83 @@ one-limit Integral, so the next ActionProgram targets the engine's
 actual operator application site, never the label target string),
 any length desk, any model scoring. Dual audit before booking.
 
+## OBSERVATION MATH-CYBER-1-STATE-OBSERVABILITY-DESK-0: STATE-ALIAS does NOT fire — 0/26 witnesses, and more strongly, NO same-visible-string pair exists: the exact engine state PRINTS the frozen v1 string verbatim on 26/26 while its canonical reconstruction prints a different string on 26/26 — the model was never shown an ambiguous state; the evaluation structure was lost by interchange PARSERS, not by the observation (2026-08-24, Mac)
+
+Per PRE-REG MATH-CYBER-1-STATE-OBSERVABILITY-DESK-0 (committed
+with the driver at 82681fc1 before the run). Receipt
+logs/mathworld1/stateobs_desk.json.
+
+FROZEN BAR (quoted): "STATE-ALIAS FIRES iff >=1
+same-visible-string pair reproducibly differs in legal child-key
+multiset OR terminal/chosen-edge semantics (rule-label multiset,
+terminal-child set, chosen-edge availability, is_solved)."
+
+MEASURED (population = the 26 state_hash-noncomparable decisions
+of ACTIONPROG-QUAL-0, driver-asserted; they span 16 distinct
+visible states — two episodes each repeat one state 6x, a cycle
+signature):
+- alias_witnesses 0, behaviorally_identical 0, visible_gate_fail
+  26, unstable 0; bar_STATE_ALIAS_fires = false.
+- All 26 pairs fail the alias-witness gate, and the in-session
+  side census (disclosed diagnostic, not persisted) resolves which
+  side: sstr(exact srepr-reconstructed parent) == the frozen v1
+  string on 26/26; sstr(sympify(v1 string)) == the v1 string on
+  0/26. The gate therefore failed only because CANONICALIZATION
+  CHANGES THE PRINTOUT. A second in-session diagnostic (also
+  auditor-reproduced, not persisted) checked ACROSS decisions:
+  the 26 decisions carry 16 distinct v1 strings and ZERO strings
+  map to more than one distinct state_before_hash — so within
+  this population, same visible string always means same exact
+  engine state.
+- Legal-set regeneration was never reached: the gate excludes
+  every pair before profiling, exactly as registered. The bar
+  therefore no-fires VACUOUSLY — the behavioral half of the alias
+  question (do legal sets/terminals/chosen edges differ between
+  same-string states?) is UNMEASURED on this population, because
+  no same-string pair exists to measure. is_solved and
+  Integral/Derivative node censuses sit constant and pairwise
+  equal across all 26 rows (color only; a constant field
+  discriminates nothing).
+- Named driver-design lesson (receipt-auditor): sympify is not
+  idempotent-under-sstr on this population (it re-distributes
+  coefficients, e.g. 12*(10*x*... -> 120*x*...), so the gate's
+  second leg can never pass for a distributed-coefficient
+  integrand; any future alias hunt must build its candidate pairs
+  without a re-canonicalizing round-trip.
+
+ADJUDICATION (frozen law): STATE-ALIAS NO-FIRE (vacuously — zero
+witnesses because zero comparable pairs, per above). Frozen
+interpretation branch: the evaluation structure is an
+INTERCHANGE/ADDRESSING issue on this population; proceed to
+ACTION-SITE qualification. The stronger reading (color, scoped to
+this population): the sstr text theta0 receives distinguishes
+exact from canonical on all 26 pairs — the unevaluated
+factorization is literally printed (e.g. "9*(...)") — and no
+visible string is shared by two distinct states across the 26
+decisions, so parent-side partial observability gains zero
+evidence here and STATE-BASIS/state naming is NOT elevated ahead
+of ACTION-SITE work.
+
+REGISTERED-PRIOR ACCOUNTING: the house prior (no fire, 0/26) is
+CORRECT in adjudication, and its stated uncertainty channel
+(i_const_factor might see factor structure) was never tested — the
+gate closed every pair before a legal set was generated, so the
+prior's mechanism sentence ("legal sets should agree") remains
+UNMEASURED on this population, not confirmed.
+
+FENCES. Counting/regeneration desk: deterministic apart from
+load-sensitive timeboxes (reproduction law armed, never needed —
+zero profiled pairs); Mac idle; scoped to the exact frozen
+artifacts named (actionprog_qual.json population, states.jsonl,
+states_srepr.jsonl); zero model calls, zero training, zero fresh
+seeds; no frozen receipt touched. The injectivity color is scoped
+to exact-v-canonical PAIRS on these 26 decisions — it is not a
+global injectivity claim over all reachable states. NOT authorized
+and not run: the ACTION-SITE ActionProgram (the outside note
+stands — integration labels are not universally literal parent
+subtrees; multi-limit Integrals rewrite through a synthesized
+innermost one-limit Integral, so the next ActionProgram targets
+the engine's actual operator application site, never the label
+target string), any length desk, any model scoring, any encoder
+repair. Dual audit before booking.
+

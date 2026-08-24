@@ -699,10 +699,9 @@
   "logs/mathworld1/actions_srepr.jsonl": {
    "bytes": 2176939,
    "exists": true,
-   "local_only": true,
    "sha256": "6a5d62dbb130493d6954652eb5a353de98bd17c85d0a9e8386f2877941ab0997",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/mathworld1/active_pair.jsonl": {
    "bytes": 156806,
@@ -836,6 +835,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/stateobs_desk.json": {
+   "bytes": 7590,
+   "exists": true,
+   "local_only": true,
+   "sha256": "a48f9efa7d52b0dc7094f08d94d40a5454dd07df6270960a1b95775c21786198",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/states.jsonl": {
    "bytes": 105338,
    "exists": true,
@@ -846,10 +853,9 @@
   "logs/mathworld1/states_srepr.jsonl": {
    "bytes": 291678,
    "exists": true,
-   "local_only": true,
    "sha256": "42a91c22c56516eb8913f4ace0bb3968a8c4f9dcbdec4baa0913bea18837783a",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/mathworld1/substrate_desk.json": {
    "bytes": 1730,
