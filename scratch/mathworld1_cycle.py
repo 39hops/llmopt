@@ -293,7 +293,13 @@ def main():
         for eid, lv, seed, stage in plan:
             ep = cycle_escape_walk(root(lv, seed), world,
                                    scorer, f, eid)
-            # divergence color v recorded trajectory
+            # divergence color v recorded trajectory; flush
+            # BEFORE re-reading ROWS or the walk's buffered
+            # rows are invisible and div is vacuously None
+            # (the CYCLE-ESCAPE-DESK-0 run shipped with that
+            # defect; its receipts' null field is disclosed in
+            # the verdict and the color was recomputed there)
+            f.flush()
             rec = recorded_hashes(eid, stage)
             walked = [json.loads(l)["state_hash"] for l in
                       open(ROWS) if l.strip()
@@ -332,10 +338,11 @@ def main():
                                      f, "SYNTH-censor",
                                      inject_delay_s=61.0)
             checks = {
+                # outcome-only: the divergence conjunct was
+                # vacuous pre-flush-fix and a 1-decision walk
+                # cannot exercise it anyway
                 "identical_walk_solved":
-                    results["L4-s9100"]["outcome"] == "solved"
-                    and results["L4-s9100"]
-                    ["first_divergence_step"] is None,
+                    results["L4-s9100"]["outcome"] == "solved",
                 # divergence field is STATE-grain; the terminal
                 # flip diverges in ACTION at step 0 (state
                 # prefix identical), so assert the step-0

@@ -44117,3 +44117,99 @@ hash on THIS world snapshot — never rates, never cross-run
 wall claims. No treatment, no training, no default-controller
 change follows without fresh GO.
 
+## VERDICT MATH-CYBER-1-CYCLE-ESCAPE-DESK-0: BOTH BARS MISS — CYCLE-ESCAPE solves 4 of the 15 spent failures (B2 wanted >=5; loop-class 3/9 v B1's >=5), the REFUTED-IF (<=1) also does not fire, and the house prior (5-7) missed low: the escape converts exactly the episodes whose single-deviation rescues were already measured, and none of the open multi-deviation loop cases (2026-08-24, Mac)
+
+Adjudicates PRE-REG MATH-CYBER-1-CYCLE-ESCAPE-DESK-0
+(edef875c). One-shot, launch code_commit ae57212e, driver sha
+4c32faa1... (committed bytes == launched bytes), smoke 6/6 on
+smoke2_ paths — with two audit-adopted caveats: the
+identical_walk check's divergence conjunct was VACUOUS (the
+flush defect below) and its episode is a 1-decision walk, so
+the zero-regression claim rests on the registered analytic law
+(no spent solved trajectory revisits a state), never on that
+check; and the first smoke's terminal-flip check misread the
+STATE-grain divergence field for an ACTION-grain divergence
+(check fixed; both smokes book L6-s9300 solved EXACT d=1
+identically, so the mechanism reading is receipt-backed, though
+the pre-fix driver bytes were never committed — inferred from
+receipts, not a byte diff; smoke_ receipts retained). Receipts:
+logs/mathworld1/cycle_escape_desk.jsonl +
+cycle_escape_desk_verdict.json. theta_0 52fd1aff...,
+controller_hash e0646628... (rule text + theta_0 sha; all depth
+receipts d(s', M) are scoped to it), device mps, 109 desk-world
+states, zero training.
+
+MEASURED (fixed denominator 15; per-episode depth receipts as
+registered, never collapsed):
+- SOLVED, EXACT(d): L6-s9300 d=1 and L6-s9103 d=1 (the two
+  registered terminal-flips — the TERMINAL-DOMINANCE derived
+  counterfactuals now executed on both); L7-s9303 d=5 (first
+  mask at step 3, escape converts); L4-s9507 d=7 (first mask at
+  step 4, escape converts).
+- LOWER_BOUND(12): L4-s9104 (mask fired step 11), L6-s9108
+  (step 4; its charged wall 66.8 s ran past the 60 s cap under
+  the registered before-decision check + one-decision overshoot
+  and the episode still completed its budget — wall and budget
+  classes are not disjoint on wall time), L4-s9401 (steps 6,
+  9), L4-s9503 (steps 7, 9), L4-s9504 (NO mask fired — the
+  no-loop descent, unchanged), L4-s9518 (steps 7, 11). The
+  escape TRIGGERED in five of these and the walk still
+  exhausted budget — masking redirects, it does not navigate.
+- CENSORED: L6-s9101 (84.5 s), L4-s9400 (67.2 s, mask fired
+  step 5), L4-s9405 (61.8 s) — the wall class, as predicted
+  unchanged in kind.
+- MODEL_CTX_OVERFLOW: L6-s9100, L6-s9403 — unchanged.
+- CYCLE_EXHAUSTED: none observed.
+DIVERGENCE COLOR — INSTRUMENT DEFECT DISCLOSED AND RECOMPUTED
+(prereg-auditor blocker, house-verified): the receipt field
+first_divergence_step is VACUOUSLY null on all 15 — the driver
+re-read the receipt file before flushing its buffered rows, so
+the comparison saw an empty walk (mathworld1_cycle.py, fixed in
+the booking commit; the shipped receipts predate the fix and
+their null field is NOT evidence). The registered "cause" field
+was likewise never emitted; the decision rows' mode/chosen
+fields are the substitute record. RECOMPUTED from the retained
+decision rows v the recorded trajectories (the numbers below
+are the binding color of record): 7 walks diverge at the STATE
+grain, each exactly ONE step after its first mask — L6-s9108 at
+step 5, L7-s9303 at 4, L4-s9400 at 6, L4-s9401 at 7, L4-s9503
+at 8, L4-s9507 at 5, L4-s9518 at 8; the two terminal flips
+diverge by early termination (walked length 1 v recorded 12);
+the remaining six walks track their recorded prefixes
+identically for their full length. The escape demonstrably
+LEAVES the recorded trajectory wherever it fires.
+
+ADJUDICATION (registered bars): B1 loop-class >=5/9 does NOT
+fire (3/9: L6-s9103, L7-s9303, L4-s9507). B2 total >=5/15 does
+NOT fire (4/15). REFUTED-IF <=1/15 does NOT fire (4 > 1).
+CYCLE-ESCAPE is NOT promoted (the promotion law required B1
+and B2). REGISTERED PRIOR (5-7 solves) MISSED low at 4: the
+"likely" pair (L7-s9303, L4-s9507) both hit, the two
+terminal-flips hit, and the five "genuinely open"
+multi-deviation cases went 0/5 — the informative miss. The
+family direction-call record updates.
+
+READING (within-design): exact-repeat masking is a REAL but
+PARTIAL lever — it converts loop failures that already carried
+a measured single-deviation escape (the mask forces the walk
+onto it), gains the frontier 4 solves for zero training, and
+converts NOTHING that required novel multi-step navigation
+after the escape: theta_0's scorer, once off its argmax path,
+does not find solutions it never ranked first. The residual
+spent frontier under the best zero-training controller
+measured so far is 11 episodes: 3 wall-censored, 2 overflow
+(interface class), 6 budget-exhausted. Masking ADDS zero model
+calls (world bookkeeping only; a masked decision still scores
+its remaining set as any decision would).
+
+FENCES. Single device (mps fp32), single seed chain, one-shot,
+one realized desk-world snapshot, one controller hash; counts
+on these 15 spent episodes, never rates; LOWER_BOUND(12) is a
+lower bound only (no non-termination deduction attaches to a
+memory-bearing walk); censored outcomes are load-sensitive
+(idle-machine discipline held; L6-s9101's 84.5 s is this
+snapshot's charge, not a portable number); smoke episodes
+overlapped the spent population as registered. No
+default-controller change, no treatment, no training follows
+without fresh GO.
+

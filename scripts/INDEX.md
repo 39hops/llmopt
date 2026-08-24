@@ -2635,6 +2635,16 @@ MATH-CYBER-1 ACTIVE-EPISODIC-0 lockstep paired driver (PRE-REG MATH-CYBER-1-ACTI
 - `main()`
 - `real_main(START, ck_sha, tok, dev, load, ep)` — REAL one-shot: contamination audit -> ADAPT (seed-major
 
+### scratch/mathworld1_autopsy.py
+LABEL-YIELD-0 spent-band autopsy (chat analysis only, no repo mutation): exhaustive one-deviation rescue census of the four L4 failures under frozen TERMINAL-FIRST + theta_0 continuations. Outputs JSON to the scratchpad. Spent seeds only, zero training.
+
+- `sha(t)`
+- `class World` (legal)
+- `class Scorer` (score, rank)
+- `tf_walk(st, world, scorer, budget)`
+- `truncate(tr, h)`
+- `main()`
+
 ### scratch/mathworld1_birth.py
 MATH-CYBER-1 theta_0 one-shot birth (PRE-REG MATH-CYBER-1-THETA0-BIRTH-0; prereg commit 6d013acf, BEFORE any weight existed). Grammar-closed tokenizer (ATOMS ids 0..39 + 256 UTF-8 byte-fallback ids = vocab 296), base diet only (micromodel_chains_shard*.jsonl + step_chains.jsonl), SEQ cap 512 (drops counted), build_model(296, ctx=4096), fp32 mps, BIRTH_SEED=9001, AdamW lr 3e-4 wd 0.01, OneCycle pct_start 0.03, clip 1.0, BS=32 nopack (length-sorted enc, per-epoch random.Random(ep) shuffle of batch starts — the historic stream), EPOCHS=3, final-epoch weights = theta_0, NO selection of any kind.
 
@@ -2645,6 +2655,16 @@ MATH-CYBER-1 theta_0 one-shot birth (PRE-REG MATH-CYBER-1-THETA0-BIRTH-0; prereg
 MATH-CYBER-1 interface census (AMENDMENT MATH-CYBER-1-DESK-0 -INTERFACE): full L4-7 pass over every legal action recorded in the frozen rung-0 ACTIVE receipts. For each of the 101 decisions the walk re-enumerates the legal set (asserting legal_action_set_hash equality row-by-row against logs/mathworld0/active.jsonl — a binding check, abort on mismatch) and, for every (parent, child) action, measures under the stock MathTokenizer (base ATOMS vocab, strict mode):
 
 - `sha(t: str) -> str`
+- `main()`
+
+### scratch/mathworld1_cycle.py
+MATH-CYBER-1 CYCLE-ESCAPE-DESK-0 (PRE-REG booked at edef875c). CYCLE-ESCAPE controller = TERMINAL-FIRST + theta_0 + per-episode memory M: State.key() -> set of action identities already emitted from that state this episode. On an EXACT repeated state, mask exactly the already-emitted identities and choose among the remainder (terminal override first, then theta_0 argmax over the remaining set; overflow law over the remaining set); no actions remaining = CYCLE_EXHAUSTED. First visits are never masked. Budget 12, charged wall 60 s, ctx 4096. Depth receipts: EXACT(d) / LOWER_BOUND(12) / CYCLE_EXHAUSTED / CENSORED / model_ctx_overflow / dead_end — never collapsed. Population: the 15 spent argmax-controller failures. Divergence color: per episode, step of first divergence from the recorded failed trajectory + cause (terminal_override v mask v none). Zero training; d(s', M) receipts are controller-hash scoped.
+
+- `sha(t)`
+- `class World` (legal)
+- `class Scorer` (score, rank)
+- `cycle_escape_walk(root, world, scorer, sink, eid, inject_delay_s=0.0)` — One CYCLE-ESCAPE episode. Returns episode dict.
+- `recorded_hashes(eid, stage)`
 - `main()`
 
 ### scratch/mathworld1_execbench.py

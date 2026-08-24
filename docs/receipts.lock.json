@@ -689,12 +689,27 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/autopsy_fork_census.json": {
+   "bytes": 107039,
+   "exists": true,
+   "sha256": "39963e962b2513e2335e88dae58ef183db779857edca5ada5fdf7cdc70c1dff7",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/census.jsonl": {
    "bytes": 144816,
    "exists": true,
    "sha256": "307f007ed20343b5305509e3431f0133f660743745b44d0d70061234b14a722e",
    "source": "results",
    "tracked": true
+  },
+  "logs/mathworld1/cycle_escape_desk.jsonl": {
+   "bytes": 38504,
+   "exists": true,
+   "local_only": true,
+   "sha256": "c8e791a357d0107dea71dc49ae7e733f22863ff8a76c0f31038cdc8adf391615",
+   "source": "results",
+   "tracked": false
   },
   "logs/mathworld1/execbench.json": {
    "bytes": 1251,

@@ -3012,3 +3012,23 @@ regime tag on every bullet is the fence.
   failure); future treatment bands >= 9600; no training or
   treatment prereg until Artin/GPT review.
   ([VERDICT MATH-CYBER-1-LABEL-YIELD-0](RESULTS.md#L43816 "id:2026-08-23-verdict-math-cyber-1-label-yield").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] CYCLE-ESCAPE
+  (exact-repeat-triggered action masking over TERMINAL-FIRST +
+  theta_0, zero training, zero added model calls) is a REAL but
+  PARTIAL controller lever: it solves 4 of the 15 spent
+  argmax-controller failures — both terminal-flips (EXACT d=1)
+  plus exactly the two loop episodes whose single-deviation
+  escapes were already measured (L7-s9303 d=5, L4-s9507 d=7) —
+  and converts NONE of the five open multi-deviation loop cases
+  (masking redirects, it does not navigate; theta_0 off its
+  argmax path does not find solutions it never ranked first).
+  Both frozen bars miss (3/9 loop-class, 4/15 total v >=5), no
+  promotion; house prior (5-7) missed low at 4. Recomputed
+  divergence color: every firing escape leaves the recorded
+  trajectory one step after its first mask (the shipped
+  receipts' null divergence field was a flush defect, disclosed
+  and recomputed in the entry). Residual spent frontier under
+  the best zero-training controller: 11 episodes (3 wall, 2
+  overflow, 6 budget).
+  ([VERDICT MATH-CYBER-1-CYCLE-ESCAPE-DESK-0](RESULTS.md#L44120 "id:2026-08-24-verdict-math-cyber-1-cycle-escape").)
