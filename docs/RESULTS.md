@@ -45155,3 +45155,72 @@ encoder repair (needs its own registered qualification), the
 ACTION-BASIS-v2 length desk (separate blind thresholds + approval),
 STATE-v-PROGRAM scoring, axiom relay updates.
 
+## PRE-REG MATH-CYBER-1-STATE-OBSERVABILITY-DESK-0: on the 26 srepr-newly-bound decisions, does the evaluation structure omitted by str(expr) change ANYTHING the world does — legal set, terminals, chosen edge — or is it interchange-only? (2026-08-24, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-24), assessment-first
+residue of SREPR-EXPORT-0: those 26 decisions have exact engine
+states whose evaluation structure is unrecoverable from the
+sstr text the model receives. Before treating state naming as
+separate cleanup, measure whether the omitted structure is
+ACTION-RELEVANT. Zero model, zero training, zero fresh seeds; a
+counting/regeneration desk on frozen artifacts only.
+
+INSTRUMENT. scratch/mathworld1_stateobs.py (committed before the
+run). Population fixed: the 26 noncomparable decisions of
+ACTIONPROG-QUAL-0 (all why=state_hash; driver aborts if the
+receipt disagrees). Per decision: EXACT parent =
+srepr_inverse(versioned srepr row, hash-asserted);
+VISIBLE-CANONICAL parent = sympify(frozen v1 sstr row).
+Alias-witness gate: both must print the identical model-visible
+string (sstr(exact) == frozen v1 string == sstr(visible));
+gate-failures book visible_gate_fail and cannot witness. Compared:
+State.key equality (EXPECTED to differ by construction — color,
+never a witness), is_solved, Integral/Derivative node censuses,
+n_legal, rule-label multiset, legal child-key multiset,
+terminal-child key set, frozen chosen-edge availability
+(chosen_child_hash in generated child hashes).
+derivation._RULE_CACHE.clear() before every successors() call.
+Reproduction law (rule timeboxes are load-sensitive): any
+behavioral difference must reproduce identically in a cold
+same-order repeat AND an order-reversed repeat before
+classification; non-reproducing differences book UNSTABLE,
+excluded from the bar, counted.
+
+BAR (frozen): STATE-ALIAS FIRES iff >=1 same-visible-string pair
+reproducibly differs in legal child-key multiset OR
+terminal/chosen-edge semantics (rule-label multiset,
+terminal-child set, chosen-edge availability, is_solved). One
+witness establishes that the model observation is insufficient to
+determine the engine transition state. Prevalence (how many of 26)
+reports as count/color, never as the bar.
+
+INTERPRETATION (frozen before the count):
+- >=1 structural alias: elevate STATE-BASIS/state naming AHEAD of
+  any STATE-v-PROGRAM model rung; the representation plateau now
+  includes parent-side partial observability.
+- 0/26: the evaluation structure is an interchange/addressing
+  issue on this population; proceed to ACTION-SITE qualification.
+
+REGISTERED PRIOR (house): STATE-ALIAS does NOT fire (0/26
+witnesses). The unevaluated nodes are arithmetic factorizations
+(9*(...) v canonical); the rule enumerator dispatches on operator
+structure (Integral/Derivative nodes), which the canonicalization
+preserves, so legal sets should agree up to child-key identity
+after each rule's own sympify pass. Low confidence: i_const_factor
+literally keys on factor structure, and it appears in the
+SREPR-EXPORT-0 failure anatomy (15/85) — if any rule sees the
+unevaluated factorization, that one does.
+
+FENCES. Deterministic apart from load-sensitive timeboxes (handled
+by the reproduction law); Mac idle, single process; scoped to the
+exact frozen artifacts named (actionprog_qual.json population
+list, states.jsonl, states_srepr.jsonl); receipt
+logs/mathworld1/stateobs_desk.json refuse-if-exists; no frozen
+receipt touched. NOT authorized here: any encoder/addressing
+repair (the ACTION-SITE ActionProgram — outside note stands:
+integration labels are not universally literal parent subtrees,
+multi-limit Integrals rewrite through a synthesized innermost
+one-limit Integral, so the next ActionProgram targets the engine's
+actual operator application site, never the label target string),
+any length desk, any model scoring. Dual audit before booking.
+
