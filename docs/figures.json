@@ -225,7 +225,7 @@
       },
       {
         "label": "Mechanism confirmed",
-        "value": 64,
+        "value": 65,
         "entity": "shared",
         "note": "the cause was isolated"
       },
@@ -248,6 +248,6 @@
         "note": "we were wrong, in writing"
       }
     ],
-    "fence": "docs/FINDINGS.md · 309 curated claims · recounted from the source at build time"
+    "fence": "docs/FINDINGS.md · 310 curated claims · recounted from the source at build time"
   }
 }

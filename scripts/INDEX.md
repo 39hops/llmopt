@@ -2644,6 +2644,14 @@ MATH-CYBER-1 ACTIONPROG-QUAL-1 — the qualified semantic ActionProgram decoder 
 - `occurrences(parent, target)`
 - `main()`
 
+### scratch/mathworld1_actionsite.py
+MATH-CYBER-1 ACTION-SITE-QUAL-0 — ActionProgram v3 decoder qualification: the program addresses the engine's ACTUAL operator application site, never a parsed display-label target.
+
+- `sha(t: str) -> str`
+- `sites_of(parent, kind)` — Canonically ordered operator sites of one kind.
+- `apply_at(parent, rule_name, node)` — Engine-law candidate child keys for (rule, site): peel
+- `main()`
+
 ### scratch/mathworld1_active.py
 MATH-CYBER-1 ACTIVE-EPISODIC-0 lockstep paired driver (PRE-REG MATH-CYBER-1-ACTIVE-EPISODIC-0, commit 73c063af). Two arms — ACTIVE-EPISODIC (success-gated episode-boundary updates) and FROZEN (theta_0, zero updates) — share theta_0, episode order, roots, budgets, overflow law, and ONE world snapshot, in ONE driver.
 

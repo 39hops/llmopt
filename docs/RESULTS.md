@@ -45389,3 +45389,100 @@ receipt touched. If 725/725 qualifies, STOP — the next decision
 ACTION-BASIS-v2 length desk) is Artin/GPT's, not this rung's.
 Dual audit before booking.
 
+## VERDICT MATH-CYBER-1-ACTION-SITE-QUAL-0: the v3 site-addressed ActionProgram is FULLY QUALIFIED — 101/101 decisions bind and 725/725 actions decode to the exact frozen child with zero wrong_child / collision / out-of-range / unaddressable-site, and the theta0-view census passes 102/102 (str == sstr == frozen v1 string); branching is concentrated in i_parts (2026-08-24, Mac)
+
+Per PRE-REG MATH-CYBER-1-ACTION-SITE-QUAL-0 (committed with the
+driver at 7e6faca3 before the run). Receipt
+logs/mathworld1/actionsite_qual.json.
+
+BAR ADJUDICATION (frozen law):
+1. BIND FIRES: noncomparable == 0 — 101/101 decisions bind (state
+   hash + legal child-hash multiset vs the frozen corpus). The
+   101 denominator is the frozen corpus's decision-row count
+   (SREPR-EXPORT-0 bar 1; actions_srepr.jsonl spans exactly 101
+   distinct decisions), not a field of this receipt; qualified ==
+   725 over those rows is what excludes the receipt's empty
+   noncomparable list meaning "nothing read".
+2. QUAL FIRES: qualified == 725; wrong_child 0, collision 0,
+   out_of_range 0, unaddressable_site 0. Every program is unique
+   per distinct child within its parent (collision 0 is that
+   check). This closes the 85-failure addressing residue of
+   SREPR-EXPORT-0: the same 725 actions that split 640/85 under
+   label-target addressing decode 725/0 under engine-site
+   addressing.
+3. HOUSEKEEPING FIRES: 102/102 corpus states satisfy str(exact)
+   == sp.sstr(exact) == the frozen v1 state_before string — the
+   theta0 str() view and the interchange sstr() view coincide on
+   this corpus.
+
+ANATOMY (registered, report-only):
+- site kinds: 402 Integral-sited actions, 323 whole-expression
+  algebra actions (site None); zero Derivative- or Limit-SITED
+  ACTIONS (the receipt censuses qualified actions' sites, not the
+  corpus states' operator inventory). The 323 algebra actions exercise the BRANCH round-trip
+  only (their encode and decode paths reduce to the same bare-rule
+  accepted set by construction); ordinal addressing is tested by
+  the 402 Integral-sited actions alone.
+- site ordinals (over the 402 Integral-sited actions; sums 402):
+  0 x292, 1 x22, 2 x21, 3 x24, 4 x22, 5 x18, 6 x3 —
+  multi-integral parents are real and the ordinal coordinate is
+  exercised through ordinal 6.
+- nested/multi-limit Integral actions: 0. The engine's peel-and-
+  rewrap law is IMPLEMENTED in the decoder verbatim but exercised
+  by ZERO corpus actions — that leg is qualified vacuously here
+  and stays open until a corpus containing multi-limit sites
+  tests it.
+- multi-site (same-valued occurrence) actions: 0 — first-
+  occurrence canonicalization was never needed on this corpus.
+- branch_index: 0 x583, 1 x100, 2 x41, 3 x1. branch > 0 comes
+  from exactly two rule families: i_parts (141) and i_unprod (1)
+  — every other family is branch-deterministic given (rule,
+  site). Qualified actions by rule: i_parts 256, expand 88,
+  euler 79, factor 62, together 38, i_heurisch 37, cancel 35,
+  i_const_factor 34, i_sum 21, trigsimp 20, i_linear_basis 15,
+  i_unprod 13, i_usub 7, i_transcend_div 5, i_ansatz_exp 5,
+  i_sqrt_basis 5, i_const 2, i_apart 2, powsimp 1 (sums 725).
+
+REGISTERED-PRIOR ACCOUNTING: the house prior (all three bars,
+725/725) is CORRECT, including one of its two named uncertainty
+channels (algebra moves reduced to the bare-rule accepted set:
+323 actions passed through it). The other channel — ordinal
+stability under count_ops ties — is UNMEASURED here: the receipt
+carries no tie census; determinism rests on the srepr tiebreak by
+construction, and that leg travels with the nested-vacuity fence.
+
+READING (scoped): the action-representation blocker chain is now
+CLOSED end-to-end on the frozen corpus — state identity
+(SREPR-EXPORT-0) -> observation sufficiency (STATE-OBSERVABILITY,
+no-fire) -> site-addressed program semantics (this rung, 725/725).
+A compact semantic coordinate (rule, (kind, ordinal), branch)
+reconstructs every frozen decision exactly, with branching
+semantics confined to i_parts + one i_unprod action. Whether to
+semantically parameterize those branching rules before the blind
+ACTION-BASIS-v2 length desk is the next decision and is NOT taken
+here.
+
+RECEIPT LIMITATIONS (receipt-auditor, disclosed rather than
+rewriting the ran driver): (a) the receipt's
+housekeeping_str_sstr field is a typed literal "102/102" — the
+pass/fail half is honest (the census loop covers every state row
+and aborts to a BLOCKED receipt on any mismatch) but the
+denominator is not derived; verified this run against the corpus
+row count (wc -l states_srepr.jsonl = 102); any re-run derives it
+from len(states). (b) The per-action nested flag quantifies over
+all candidates of the matched site rather than the matched
+candidate — inert here (zero candidates anywhere set it), fixed
+at next reuse.
+
+FENCES. Deterministic census apart from load-sensitive rule
+timeboxes (binding gate re-asserted the frozen legal set per
+decision; zero flakes observed — noncomparable 0); Mac idle,
+zero model calls, zero training, zero fresh seeds, zero length
+counting, no MAGIC, no search rerun. Scoped to the exact frozen
+artifacts named (states_srepr.jsonl, actions_srepr.jsonl,
+states.jsonl); receipt refuse-if-exists; no frozen receipt
+touched. branch_index is explicitly NOT claimed as the final
+model-facing semantic branch representation (prereg law). The
+nested-Integral vacuity fence above travels with any reuse of
+this decoder. Dual audit before booking.
+

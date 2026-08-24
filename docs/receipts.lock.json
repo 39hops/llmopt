@@ -703,6 +703,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/actionsite_qual.json": {
+   "bytes": 1600,
+   "exists": true,
+   "local_only": true,
+   "sha256": "3758dd05a490930572645078c8c3b1ba91797e777620effed19548ee2cb1fe4b",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/active_pair.jsonl": {
    "bytes": 156806,
    "exists": true,
@@ -838,10 +846,9 @@
   "logs/mathworld1/stateobs_desk.json": {
    "bytes": 7590,
    "exists": true,
-   "local_only": true,
    "sha256": "a48f9efa7d52b0dc7094f08d94d40a5454dd07df6270960a1b95775c21786198",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/mathworld1/states.jsonl": {
    "bytes": 105338,

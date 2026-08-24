@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 222, library 73, reproduce-pinned 10, results-cited 303, spec-cited 89, cited-but-library 61
+Census: UNCITED 222, library 73, reproduce-pinned 10, results-cited 304, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -258,6 +258,7 @@ Census: UNCITED 222, library 73, reproduce-pinned 10, results-cited 303, spec-ci
 | mathworld1 | mathworld1_actionbasis_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_actionprog.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | mathworld1 | mathworld1_actionprog2.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| mathworld1 | mathworld1_actionsite.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_active.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_autopsy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_birth.py | UNCITED | — | — | — | 9 |
@@ -273,7 +274,7 @@ Census: UNCITED 222, library 73, reproduce-pinned 10, results-cited 303, spec-ci
 | mathworld1 | mathworld1_regret_walllift.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_retrolabel.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_scoreqal.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_srepr_export.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
+| mathworld1 | mathworld1_srepr_export.py | results-cited | RESULTS | RESULTS×3 | — | 2 |
 | mathworld1 | mathworld1_stateobs.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_substrate_desk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_terminal.py | UNCITED | — | — | — | — |

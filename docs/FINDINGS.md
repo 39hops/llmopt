@@ -3129,3 +3129,13 @@ regime tag on every bullet is the fence.
   never hidden from the model; STATE-ALIAS bar no-fires vacuously
   (no comparable pair; behavioral half unmeasured) and ACTION-SITE
   qualification proceeds ahead of state naming. RESULTS.md#L45227
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The v3 site-addressed
+  ActionProgram (rule, (kind, ordinal-among-atoms), branch) is FULLY
+  qualified on the frozen corpus: 101/101 decisions bind, 725/725
+  actions decode to the exact frozen child, zero
+  wrong_child/collision/out-of-range/unaddressable — closing the
+  85-failure label-target residue; branching confined to i_parts (141)
+  + i_unprod (1); theta0 str() view == interchange sstr() view 102/102;
+  fences: nested multi-limit Integral law qualified VACUOUSLY (0 corpus
+  actions), ordinal-tie leg unmeasured, branch_index not yet the
+  model-facing representation. RESULTS.md#L45392
