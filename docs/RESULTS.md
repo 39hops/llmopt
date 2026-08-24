@@ -44519,3 +44519,100 @@ training from them without a fresh prereg. Wall figures are
 device-scoped color. No rank-neutral control, no MAGIC arm,
 no fresh seeds without GO.
 
+## PRE-REG MATH-CYBER-1-REGRET-WALLLIFT-0: closing the censored half of REGRET-LDS-DESK-0 — the same search, a lifted safety wall, and world-materialization v theta_0-scoring time MEASURED separately rather than inferred (2026-08-24, Mac)
+
+Per Artin/GPT GO on decision point #2 only (HEAD d9d94ddb).
+This is CLOSURE of the censored REGRET question, NOT a new
+search design: every scientific law of REGRET-LDS-DESK-0
+(5e7c2cbc) is preserved byte-for-byte in intent — frozen
+theta_0 (52fd1aff...), TERMINAL-FIRST hard override, (r-1)
+discrepancy cost, frontier order (path_discrepancy, path_depth,
+State.key()), transposition + strictly-lower-cost reopen law,
+depth <= 12, expansion cap 96, ladder 12/24/48/96, overflow
+law, rank-only scoring (no cross-parent score comparison).
+Zero training, zero fresh seeds, no MAGIC, no canonical/
+rank-neutral control, no ACTION-BASIS change.
+
+POPULATION (fixed, 3): L6-s9108, L4-s9401, L4-s9504 — exactly
+the roots CENSORED_WALL in REGRET-LDS-DESK-0 (at 38/63/73
+expansions). The three already-decided roots (L4-s9518 solved,
+L4-s9104 and L4-s9503 EXPANSION_CAP) are NOT re-run; their
+booked outcomes stand.
+
+WHAT CHANGES (declared, because the wall law changes after
+seeing censoring — hence a separate prereg):
+(a) SAFETY WALL lifted from 300 s to 3600 s per episode,
+    frozen here BEFORE launch. Desk pricing behind the number
+    (registered as a prediction): the censored episodes ran at
+    ~8.1 / ~4.8 / ~4.1 charged seconds per expansion
+    (306.8/38, 303.0/63, 300.0/73), projecting ~775 / ~462 /
+    ~394 s to reach 96 expansions; 3600 s is ~4.6x the worst
+    projection, so the scientific stopping condition is
+    overwhelmingly expected to be the 96-expansion cap. The
+    wall remains a FINITE EMERGENCY KILL, never a scientific
+    bar; a root that still hits it books CENSORED for that
+    root, never a navigation failure.
+(b) TIME SPLIT MEASURED, not inferred: every episode row
+    carries world_materialization_s (successor() enumeration
+    charged at each state's first materialization) and
+    model_scoring_s (candidate encoding + forward passes)
+    accumulated as SEPARATE accumulators, plus their sum as
+    the charged wall the cap is checked against. The
+    REGRET-LDS-DESK-0 calls/s inference is superseded by
+    direct measurement. All existing logical counters
+    (expansions, edges, model calls, pops, transposition hits,
+    reopens, pullbacks, max frontier, ladder, solution depth,
+    rank sequence, discrepancy) are retained unchanged.
+Nothing else changes. The driver is a copy-modified sibling of
+scratch/mathworld1_regret.py, so it re-qualifies from scratch
+(new smoke + receipt-auditor on its first real receipts).
+
+PRIMARY QUESTION (registered): among the three previously
+censored roots, how many REACH 96 expansions, and how many
+discover a NOVEL MULTI-DEVIATION solution (>=2 non-rank-1
+decisions) at depth <= 12?
+
+INTERPRETATION (frozen before any read, per the directive):
+- >=1 genuine multi-deviation solve -> REGRET/navigation
+  signal REVIVED; report its rank sequence, discrepancy, and
+  discovery expansion, and STOP before any control.
+- 0/3 multi-deviation solves WITH all three reaching 96 ->
+  naive theta_0-ranked REGRET-LDS PARKS at the 96-expansion
+  scale; greedy-control-as-primary-plateau is substantially
+  weakened and the next branch becomes ACTION-BASIS /
+  value-quality.
+- any root still censored before 96 -> UNRESOLVED for that
+  root; never converted to failure.
+A single-deviation solve (like the booked L4-s9518
+rediscovery) counts toward "reached/solved" reporting but NOT
+toward the multi-deviation clause.
+
+REGISTERED PRIOR (house, on the record): all three reach 96
+(the wall projection says they will) and 0/3 produce a
+multi-deviation solve — i.e. the PARK branch fires. Confidence
+moderate on the reach clause (world cost could superlinearly
+grow with depth), higher on the zero-multi-deviation clause
+(388 expansions of prior search produced none, and these three
+carry no measured single-deviation rescue either).
+
+REFUTED-IF (of that prior): any multi-deviation solve appears,
+or any root fails to reach 96 within 3600 s.
+
+FENCES. Single device (mps fp32), single seed chain, one
+realized world snapshot per run, one-shot; receipts
+logs/mathworld1/regret_walllift.jsonl +
+regret_walllift_verdict.json, refuse-if-exists; SMOKE on
+smoke_ paths first (mechanism-complete: the split accumulators
+sum to the charged wall, a known terminal-at-root solve, the
+booked L7-s9303 pullback solve reproducing g=1/depth 2 under
+the lifted wall, ladder accounting, emergency-kill path via
+injected charge); dual audit (prereg + receipt) before
+booking. Counts on these three episodes under this snapshot,
+never rates; walls are modeled charges (recorded
+first-materialization durations, one World per run) and remain
+device-scoped color even when split. Outcomes here amend
+nothing in REGRET-LDS-DESK-0 — that verdict's partial 96 read
+stands as booked, and this entry reports the closure
+separately. STOP after booking; decision points #1/#3/#4/#5
+untouched.
+
