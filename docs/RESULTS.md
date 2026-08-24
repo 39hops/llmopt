@@ -45486,3 +45486,84 @@ model-facing semantic branch representation (prereg law). The
 nested-Integral vacuity fence above travels with any reuse of
 this decoder. Dual audit before booking.
 
+## PRE-REG MATH-CYBER-1-ACTION-SEMANTICS-QUAL-0: ActionProgram v4 — does replacing i_parts' candidate branch with a semantic u_choice, under a first-preorder site coordinate, still reconstruct all 725 frozen actions exactly? (2026-08-24, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-24). Goal: convert the
+fully-qualified v3 candidate-ID program into a model-facing
+semantic program where the dominant branching family's choice has
+stable mathematical meaning. Zero model, zero training, zero fresh
+seeds, zero length counting, no MAGIC, no search.
+
+INSTRUMENT. scratch/mathworld1_actionsem.py (committed with this
+prereg before the run). Deltas over the qualified v3, both laws
+FROZEN here:
+1. i_parts u_choice: the frozen i_parts implementation emits one
+   child per integrand-Mul factor index with diff(factor, x) != 0,
+   u = that factor. u_choice = the ordinal of the chosen factor
+   among ELIGIBLE factors (du != 0) in the Mul's stored argument
+   order. The decoder re-resolves the site from the program and
+   applies EXACTLY that u choice — rebuilds u*Integral(dv, x) -
+   Integral(Integral(dv, x)*du, x), rewraps nested limits per the
+   engine law, xreplaces — never enumerating children and picking
+   by frozen hash. AMBIGUOUS-U law: two distinct eligible u
+   choices producing the same accepted child key are censused; a
+   frozen action not uniquely attributable to one u books the
+   ambiguous_u failure class; encoder canonicalization is lowest
+   eligible ordinal.
+2. Site coordinate: ordinal = rank by FIRST PREORDER OCCURRENCE
+   among the structurally unique operator nodes of the rule's kind
+   (the order a reader of the visible string encounters them),
+   replacing v3's (count_ops, srepr) sort; value-level xreplace
+   semantics unchanged. The receipt censuses every qualified
+   action whose ordinal identity differs from the v3 coordinate,
+   and site enumeration asserts bijection with atoms() (abort on
+   mismatch).
+i_unprod stays a deterministic candidate index THIS RUNG (13/725
+actions, 1 observed branch>0) — fenced explicitly rather than
+given premature semantics; all non-i_parts families keep the v3
+accepted-set branch under the v4 site coordinate.
+
+BARS (frozen):
+1. BIND fires iff 101/101 frozen decisions bind
+   (noncomparable == 0; denominator = the corpus decision count,
+   SREPR-EXPORT-0 bar 1).
+2. QUAL fires iff qualified == 725 with zero wrong_child, zero
+   program_collision, zero branch_out_of_range, zero
+   unaddressable_site, zero ambiguous_u.
+3. IPARTS-SEMANTIC fires iff all 256 i_parts actions reconstruct
+   from (rule, site, u_choice) with no child-key branch ordinal
+   anywhere in their decode path.
+REFUTED-IF: any ambiguous_u (u identity is not a faithful
+coordinate on this corpus), any unaddressable_site under the
+preorder law, any wrong_child/collision/out-of-range.
+
+ANATOMY (report-only, registered): u_choice histogram;
+eligible-factor count per i_parts action; every case where two
+distinct u choices produce the same accepted child (count + first
+20); site_identity_changes_v4_vs_v3 (programs whose ordinal
+differs under the preorder law); nested/multi-limit action count
+(the v3 vacuity fence carries unless newly exercised).
+
+REGISTERED PRIOR (house): all three bars fire; u_choice histogram
+concentrates on ordinal 0-1 (two-factor products dominate by-parts
+corpora); site_identity_changes small but possibly nonzero
+(count_ops order and reading order disagree exactly when a later-
+printed integral is simpler); zero ambiguous u (identical
+eligible factors in one Mul are collapsed by sympy's power
+gathering before i_parts sees them — low confidence, this is the
+named uncertainty channel).
+
+FENCES. Deterministic apart from load-sensitive rule timeboxes
+(binding gate re-asserts the frozen legal set per decision; a
+flake books noncomparable, never a false qualification); Mac idle,
+single process; scoped to the exact frozen artifacts named
+(states_srepr.jsonl, actions_srepr.jsonl); receipt
+logs/mathworld1/actionsem_qual.json refuse-if-exists; no frozen
+receipt touched. u_choice is claimed model-facing for i_parts
+ONLY; the i_unprod fence and the nested-vacuity fence travel; the
+ordinal-tie question of v3 is superseded for v4 by the preorder
+law (positions are distinct by construction) but stays open for
+the v3 coordinate. If qualified, book/push/STOP — the blind
+ACTION-BASIS-v2 combined parent+program length desk is the next
+rung and is NOT authorized here. Dual audit before booking.
+
