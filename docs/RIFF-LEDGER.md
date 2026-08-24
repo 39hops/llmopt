@@ -8947,3 +8947,15 @@ honest status column).
   harder sacrificial band, or top-k>2 forking under a fresh
   qualification on FUTURE bands only. Bands 9500-9519
   permanently outcome-spent; treatment bands >= 9600.
+  MEASURED (2026-08-24, OBSERVATION
+  MATH-CYBER-1-ACTION-BASIS-DESK-0, updates the corrected
+  ACTION-BASIS residue above): the minimal (label,
+  sibling-index) program schema is COMPLETE (725/725, all 242
+  same-label collisions index-resolved) at 5.75x median
+  compression — but NOT promoted: targets-as-serialized-
+  sub-expressions keep the tail dense (program CV 1.69 > child
+  1.20; MINLEN confound survives) and the parent prefix (p90
+  555 tokens) is outside any action basis. Live refinement:
+  schema v2 with INDEXED targets (bounded length by
+  construction) + the parent-side state-naming lever, each
+  under its own blind-threshold desk.

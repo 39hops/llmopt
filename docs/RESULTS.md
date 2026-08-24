@@ -44744,3 +44744,79 @@ had auto-extracted the PARENT driver
 scratch/mathworld1_regret_walllift.py, derived surfaces
 regenerated.
 
+## OBSERVATION MATH-CYBER-1-ACTION-BASIS-DESK-0: the (label, sibling-index) program basis is COMPLETE on all 725 corpus actions and compresses the median action 5.75x — but neither threshold-pair member both fires: the program TAIL stays expression-dense (rule targets are sub-expressions; program CV 1.69 exceeds the child CV 1.20) and the 512 fit fails mostly on the PARENT PREFIX, which no action basis can shrink by construction (2026-08-24, Mac)
+
+Per Artin GO (decision point 3) on the TRANSITION-BASIS
+corrected residue. Zero model, zero world walks: pure counting
+on the frozen semantic corpus (logs/mathworld1/states.jsonl,
+102 rows / actions.jsonl, 725 rows; GCTok token units).
+THRESHOLDS FROZEN BEFORE COUNTING (scratchpad, this session):
+PROMOTE iff (a) median program <= 25% of median child
+serialization AND (b) max(parent prefix + program) <= 512 on
+the top decile of actions by child tokens; KILL iff
+completeness fails or median compression < 2x; ambiguity
+census, CV-based MINLEN-nuisance read, and on-corpus overflow
+report registered alongside. Census driver preserved at the
+scratchpad (actionbasis_census.py); numbers below are its
+output verbatim.
+
+SCHEMA (designed blind to lengths): P(a) = (display_label,
+sibling_index k) with k the action's position among same-label
+siblings in the world's sorted legal set; serialization
+"label#k\n" (k omitted when the label is unique).
+E(s, P) = the k-th same-label child.
+
+MEASURED (725 actions, 101 decisions):
+- COMPLETENESS: 0 failures — every action reconstructs
+  uniquely; 242 actions (33%) sit in same-label collision
+  groups (59 pairs, 40 triples, 1 quadruple), all resolved by
+  the index.
+- LENGTHS: program med 28 / p90 152 / max 560, CV 1.69; child
+  med 161 / p90 1,108 / max 3,323, CV 1.20. Median compression
+  5.75x; per-action median ratio 9.3x.
+- THRESHOLD (a) FIRES: 28 <= 40.25.
+- THRESHOLD (b) does NOT fire: top-decile max(prefix +
+  program) = 1,118 > 512. DECOMPOSITION (registered ill-posing
+  named): the parent prefix ALONE runs med 78 / p90 555 / max
+  1,087, and 15/102 corpus states exceed 512 on the prefix
+  before any candidate is appended — the (b) bar as frozen
+  conflates parent-side and action-side length, and the parent
+  side is untouchable by ANY action basis by construction. On
+  the action side proper, the program max (560) still exceeds
+  512 alone in the extreme because rule_target is serialized as
+  a full sub-expression — the "delta" is not small when the
+  target is half the state.
+- MINLEN-NUISANCE READ: programs do NOT remove the length
+  confound — program CV (1.69) EXCEEDS child CV (1.20); the
+  target serialization reintroduces expression length into the
+  action token stream.
+- ON-CORPUS OVERFLOW: zero corpus decisions exceed 4096 with
+  prefix + any candidate (the calibration corpus never
+  overflowed; the booked overflow specimens live in
+  HOLDOUT/liveness episodes outside this corpus — a scope
+  limit of the desk, not evidence about them).
+
+ADJUDICATION (frozen law): NOT PROMOTED ((b) fails), NOT
+KILLED (complete, 5.75x >= 2x). The desk lands BETWEEN with a
+named mechanism: the display-label basis compresses typical
+actions ~6x but its tail is still expression-dense because
+TARGETS ARE SUB-EXPRESSIONS. REGISTERED REVIVAL (the
+refinement the numbers point at): schema v2 = (rule,
+target_index, sibling_index) — index the target into the
+state's enumerable candidate-target list instead of
+serializing it — under its own desk with fresh blind
+thresholds; that schema's length is O(digits), bounded by
+construction, and would also flatten the program CV. Parent-
+prefix length is a SEPARATE lever (state naming/compression)
+outside the action basis entirely.
+
+FENCES. Counting desk: deterministic, scoped to the exact
+frozen corpus named (102 states / 725 actions, the CALIBRATION
+export at world commit 620da3bf); GCTok tokens; desk numbers
+are predictions about any future instrument, and the
+instrument's own counts govern when one runs. Threshold (b)'s
+parent-prefix conflation is booked here as a lesson, not
+silently rescored. No model was loaded, no training, no fresh
+seeds; the STATE-v-PROGRAM scoring rung (E(s,a)==s'
+qualification) stays unproposed without GO.
+

@@ -3071,3 +3071,21 @@ regime tag on every bullet is the fence.
   established by git; stale docstring; wall_cap_s unreceipted),
   all fixed forward in the booking commit.
   ([VERDICT MATH-CYBER-1-REGRET-WALLLIFT-0](RESULTS.md#L44619 "id:2026-08-24-verdict-math-cyber-1-regret-walllift").)
+
+- [SINGLE-SEED] [REGIME-SCOPED: calculus search] The
+  (label, sibling-index) ACTION-BASIS program schema is
+  COMPLETE on all 725 frozen-corpus actions (242 same-label
+  collisions all resolved by the index) and compresses the
+  median action 5.75x (program med 28 v child med 161 GCTok
+  tokens) — but the desk lands BETWEEN, not promoted: the
+  program TAIL stays expression-dense because rule targets are
+  serialized sub-expressions (program CV 1.69 > child CV 1.20,
+  so the MINLEN length confound is NOT removed), and the frozen
+  512-fit bar failed mostly on the PARENT PREFIX (p90 555, 15/
+  102 states > 512 before any candidate), which no action basis
+  can shrink by construction. Registered revival: schema v2 =
+  (rule, target_index, sibling_index) with the target INDEXED
+  not serialized — bounded length by construction — under its
+  own blind-threshold desk; parent-prefix length is a separate
+  state-naming lever.
+  ([OBSERVATION MATH-CYBER-1-ACTION-BASIS-DESK-0](RESULTS.md#L44747 "id:2026-08-24-observation-math-cyber-1-action-basis").)
