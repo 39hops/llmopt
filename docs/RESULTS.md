@@ -45567,3 +45567,108 @@ the v3 coordinate. If qualified, book/push/STOP — the blind
 ACTION-BASIS-v2 combined parent+program length desk is the next
 rung and is NOT authorized here. Dual audit before booking.
 
+## VERDICT MATH-CYBER-1-ACTION-SEMANTICS-QUAL-0: the v4 semantic ActionProgram is FULLY QUALIFIED — 101/101 decisions bind, 725/725 actions reconstruct exactly, all 256 i_parts actions decode from a semantic u_choice with ZERO ambiguity, and the first-preorder site coordinate changes 104 program identities without creating any ambiguity (2026-08-24, Mac)
+
+Per PRE-REG MATH-CYBER-1-ACTION-SEMANTICS-QUAL-0 (committed with
+the driver at a3750828 before the run). Receipt
+logs/mathworld1/actionsem_qual.json.
+
+BAR ADJUDICATION (frozen law):
+1. BIND FIRES: noncomparable == 0 — 101/101 decisions bind (both
+   denominators, 101 and 725, are the corpus counts of
+   SREPR-EXPORT-0 bar 1).
+2. QUAL FIRES: qualified == 725; wrong_child 0, collision 0,
+   out_of_range 0, unaddressable_site 0, ambiguous_u 0.
+3. IPARTS-SEMANTIC FIRES: the u_choice histogram sums to exactly
+   256 — every i_parts action reconstructed from (rule, site,
+   u_choice) with the decoder re-resolving the site from the
+   program and building u*Integral(dv, x) - Integral(
+   Integral(dv, x)*du, x) directly from the chosen factor. The
+   "no child-key branch ordinal in the i_parts decode path"
+   clause is a CODE-PATH fact, not a receipt field: in the
+   committed driver the i_parts decode arm indexes
+   iparts_children by u ordinal only, and the accepted-set/
+   branch_keys machinery appears exclusively in the non-i_parts
+   arm (verified by the prereg auditor line-by-line).
+
+ANATOMY (registered, report-only):
+- u_choice: 0 x115, 1 x99, 2 x41, 3 x1 (sums 256).
+- eligible x-dependent factors per i_parts action: 1 x16, 2 x116,
+  3 x120, 4 x4 (sums 256 — this pre-failure census is the true
+  denominator; the u_choice histogram is the success count, and
+  the two agreeing at 256 is what makes bar 3 total) —
+  three-factor products are as common as two-factor ones in this
+  corpus, and the single u_choice=3 action sits at one of the
+  four 4-eligible-factor actions.
+- ambiguous-u cases: 0 — no two distinct u choices produced the
+  same accepted child anywhere in the corpus, so u identity is a
+  faithful coordinate here.
+- site_identity_changes_v4_vs_v3: 104 — the first-preorder
+  (reading-order) coordinate assigns a different ordinal than
+  v3's (count_ops, srepr) sort for 104 of the 402 Integral-sited
+  actions (denominator from ACTION-SITE-QUAL-0's
+  site_kind_hist.I, not a field of this receipt; the transport is
+  legal because site KIND is fixed by the rule family,
+  independent of the ordinal law, so the 402 is invariant between
+  v3 and v4).
+  It creates NO ambiguity (site enumeration asserts bijection
+  with atoms(); zero unaddressable) — the two laws are both
+  valid coordinates and the census quantifies how much program
+  identity depends on the choice; v4's reading-order law is the
+  one carried forward as model-legible.
+- nested/multi-limit actions: 0 — the v3 vacuity fence CARRIES
+  unchanged (the peel-and-rewrap law remains implemented and
+  data-untested).
+
+REGISTERED-PRIOR ACCOUNTING: all three bars fired as predicted.
+The named uncertainty channel (ambiguous u from repeated equal
+factors) measured empty — but via the mechanism the prior itself
+suggested (sympy gathers equal factors into powers before i_parts
+sees them), so it is confirmed on this corpus, not proven in
+general. The u-concentration guess (ordinals 0-1 dominate:
+214/256) held; site_identity_changes at 104/402 is larger than
+the prior's "small but possibly nonzero" — booked against the
+prior's wording.
+
+READING (scoped): the model-facing semantic action layer now
+exists end-to-end on the frozen corpus: P = (rule, (kind,
+first-preorder ordinal), u_choice | branch), where the only
+non-semantic parameter left is i_unprod's candidate index (13
+actions, 1 branch>0 — explicitly fenced this rung) and the
+zero-branch families need no parameter at all (i_unprod counts —
+13 actions, 1 branch>0 — are the v3 census carried in the
+prereg, not fields of this receipt). Next rung (NOT
+authorized here): the blind ACTION-BASIS-v2 combined
+parent+program length desk.
+
+RECEIPT LIMITATIONS (receipt-auditor, adopted as disclosures):
+(a) SYMPY-VERSION SCOPE: both v4 laws lean on sympy internals
+(atoms/arg-traversal order for the site ordinal; the Mul's stored
+argument order for u_choice) and the receipt does not pin the
+sympy version — this qualification is scoped to sympy 1.14.0
+(verified in-session); any re-run records sympy.__version__ in the
+receipt. (b) DECODE-INDEPENDENCE SCOPE: encode and decode share
+one in-process regeneration (the decode arm re-derives its site
+and children from parent + program, but from the same live
+objects), so the 725/725 establishes PROGRAM UNIQUENESS AND
+ADDRESSABILITY under the frozen laws, not a cross-process
+round-trip; the mathematical identity of the reconstruction is
+carried instead by the auditor's argument-for-argument comparison
+of iparts_children against the frozen i_parts rule
+(character-identical emission). (c) iparts_children peels where
+the rule unpacks: on a DEFINITE integral the frozen rule emits
+nothing while the reconstruction would build u-options — vacuous
+on this corpus (zero definite-limit tuples), guarded at next
+reuse.
+
+FENCES. Deterministic apart from load-sensitive rule timeboxes
+(binding gate per decision; zero flakes — noncomparable 0); Mac
+idle, single process, zero model calls, zero training, zero fresh seeds, zero
+length counting, no MAGIC, no search. Scoped to the exact frozen
+artifacts named (states_srepr.jsonl, actions_srepr.jsonl); receipt
+refuse-if-exists; no frozen receipt touched. u_choice semantics
+claimed for i_parts ONLY; i_unprod fence and nested-vacuity fence
+travel; the v3 ordinal-tie question is superseded for v4 (preorder
+positions are distinct by construction) and stays open only for
+the retired v3 coordinate. Dual audit before booking.
+

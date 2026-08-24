@@ -704,8 +704,12 @@
    "tracked": true
   },
   "logs/mathworld1/actionsem_qual.json": {
-   "exists": false,
-   "source": "results"
+   "bytes": 1084,
+   "exists": true,
+   "local_only": true,
+   "sha256": "00b8a1b6597d47d2ecfd82763659f2a2406e72fca9c637bdc3f74382a24c965f",
+   "source": "results",
+   "tracked": false
   },
   "logs/mathworld1/actionsite_qual.json": {
    "bytes": 1600,

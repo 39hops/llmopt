@@ -3139,3 +3139,13 @@ regime tag on every bullet is the fence.
   fences: nested multi-limit Integral law qualified VACUOUSLY (0 corpus
   actions), ordinal-tie leg unmeasured, branch_index not yet the
   model-facing representation. RESULTS.md#L45392
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The v4 SEMANTIC
+  ActionProgram (rule, (kind, first-preorder ordinal), u_choice |
+  branch) is fully qualified: 725/725 exact reconstruction, all 256
+  i_parts actions decode from a mathematically meaningful u_choice
+  (which factor is u; ordinal among eligible x-dependent factors) with
+  ZERO ambiguous-u anywhere; reading-order site coordinate changes
+  104/402 ordinals vs v3 with no ambiguity; fences: scoped to sympy
+  1.14.0, decode shares in-process regeneration (uniqueness +
+  addressability, not a cross-process round-trip), i_unprod stays a
+  candidate index, nested leg still vacuous. RESULTS.md#L45570

@@ -1,0 +1,38 @@
+{
+ "qualified": 725,
+ "wrong_child": 0,
+ "collision": 0,
+ "out_of_range": 0,
+ "unaddressable_site": 0,
+ "ambiguous_u": 0,
+ "noncomparable_decisions": [],
+ "failures": [],
+ "u_choice_hist": {
+  "1": 99,
+  "0": 115,
+  "2": 41,
+  "3": 1
+ },
+ "eligible_factors_per_iparts_action": {
+  "2": 116,
+  "1": 16,
+  "3": 120,
+  "4": 4
+ },
+ "ambiguous_u_cases": [],
+ "n_ambiguous_u_cases": 0,
+ "site_identity_changes_v4_vs_v3": 104,
+ "nested_multilimit_actions": 0,
+ "start": {
+  "start_commit": "a3750828",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_actionsem.py": "c79462129730328592ee2cc909fc563076afe80542dd2a745ce88ceef3e9c23b",
+   "scratch/mathworld1_srepr_export.py": "9cd1b729acd7ede732cd68ca69059b5b6d3d67ce60098bcd7734486e14b35d05",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58"
+  }
+ },
+ "completion_commit": "a3750828"
+}

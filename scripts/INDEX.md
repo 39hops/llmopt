@@ -2644,6 +2644,19 @@ MATH-CYBER-1 ACTIONPROG-QUAL-1 — the qualified semantic ActionProgram decoder 
 - `occurrences(parent, target)`
 - `main()`
 
+### scratch/mathworld1_actionsem.py
+MATH-CYBER-1 ACTION-SEMANTICS-QUAL-0 — ActionProgram v4: model-facing semantic program. Two deltas over the qualified v3 (scratch/mathworld1_actionsite.py, ACTION-SITE-QUAL-0):
+
+- `sha(t: str) -> str`
+- `preorder(expr)`
+- `sites_preorder(parent, kind)` — Structurally unique operator sites ranked by first preorder
+- `sites_v3(parent, kind)`
+- `peel(node)` — Engine nested-Integral law: (inner target, nested flag).
+- `rewrap(node, rewrite, nested)`
+- `apply_at(parent, rule_name, node)` — Engine-law candidate child keys for (rule, site).
+- `iparts_children(parent, node)` — (eligible ordinal -> child key, nested flag) applying each
+- `main()`
+
 ### scratch/mathworld1_actionsite.py
 MATH-CYBER-1 ACTION-SITE-QUAL-0 — ActionProgram v3 decoder qualification: the program addresses the engine's ACTUAL operator application site, never a parsed display-label target.
 
