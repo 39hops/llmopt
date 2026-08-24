@@ -2624,6 +2624,15 @@ MATH-CYBER-0 rung 0, cold-process replay qualification (GPT post-booking fence):
 
 - `main()`
 
+### scratch/mathworld1_abv2desk.py
+MATH-CYBER-1 ACTION-BASIS-v2-DESK-0 — length desk for the qualified v4 semantic ActionProgram serialization. Counting only: zero model, zero training, zero fresh seeds, zero search.
+
+- `sha(t: str) -> str`
+- `tlen(s: str) -> int`
+- `pct(xs, q)`
+- `summ(xs)`
+- `main()`
+
 ### scratch/mathworld1_actionbasis_census.py
 *(no docstring)*
 

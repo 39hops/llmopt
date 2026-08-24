@@ -45755,3 +45755,107 @@ counts govern when one runs. NOT authorized here: any tokenizer
 change, any opcode vocabulary, any scoring run, any training.
 Dual audit before booking.
 
+## VERDICT MATH-CYBER-1-ACTION-BASIS-v2-DESK-0: bars 1+2 FIRE (program max 19 <= 32; ZERO action-induced 512 overflows) but bar 3 FAILS on within-decision span (p90 12 > 8) — and the pre-registered opcode counterfactual fires exactly at threshold (span p90 halves, 12 -> 6, reduction 0.500): the residue classifies TOKENIZER-NAMING, the desk STOPS, and the next candidate is an action-opcode vocabulary desk (2026-08-24, Mac)
+
+Per PRE-REG MATH-CYBER-1-ACTION-BASIS-v2-DESK-0 (committed with
+the producer at 81077494 before the run; serialization, bars,
+counterfactual law, and adjudication law all frozen there).
+Receipt logs/mathworld1/abv2_desk.json (driver
+scratch/mathworld1_abv2desk.py, receipt-pinned sha 0b60dcd1...;
+start porcelain showed only non-load-bearing scripts/INDEX.md
+dirt). Population inherited from ACTION-SEMANTICS-QUAL-0 (101
+decisions / 725 actions; binding re-asserted per decision by
+abort-on-mismatch code paths, so the evidence that none fired is
+RUN COMPLETION — an abort writes no receipt — not a recorded
+receipt field).
+
+BAR ADJUDICATION (frozen law):
+1. FIRES: program max 19 <= 32 (med 12, p90 14). Median
+   compression vs the frozen full-child serialization: 13.42x
+   (child med 161, p90 1,108, max 3,323).
+2. FIRES: ZERO action-induced 512-overflow decisions. 14
+   decisions are PARENT-ONLY (prefix + 1 > 512) and are reported
+   separately per the frozen law, never against this bar. On
+   fitting decisions the program never pushes a sequence over
+   512: 555/725 actions fit at 512 in full (prefix + program) and
+   725/725 fit at 4096; the 170 non-fitting actions all sit
+   inside the 14 parent-only decisions, where no program can fit
+   by construction (guaranteed by the empty action-induced list).
+3. FAILS: within-decision span p90 = 12 > 8 (med 8, max 13).
+   OPCODE TRIGGER (frozen before counting): under the registered
+   counterfactual (rule id -> exactly one hypothetical token;
+   site/param unchanged) the span p90 drops 12 -> 6, reduction
+   0.500, meeting the >= 50% trigger EXACTLY at threshold.
+   Classification per the frozen law: TOKENIZER-NAMING — the desk
+   STOPS before any training; the next candidate is an
+   action-opcode vocabulary desk. PROMOTE is NOT rescored under
+   the hypothetical tokenizer (normalized numbers are descriptive
+   color: program med 5 / p90 8 / max 8; span p90 6).
+
+MECHANISM (the field decomposition says it outright): the rule-id
+field costs med 7 / p90 10 / max 15 GCTok tokens while the entire
+semantic content costs at most 6 (site exactly 3 on every sited
+action; param 0-3). The program's length variance is rule-NAME
+variance ("euler" 5 chars v "i_const_factor" 14), not semantic
+variance — per-rule program lengths are near-constant within each
+family (e.g. i_parts med = p90 = max = 14; i_const_factor
+med = p90 = max = 18).
+
+ANATOMY (registered): parent prefix med 74 / p90 555 / max 1,084
+— the parent-side lever is untouched by any action basis
+(unchanged reading from the v1 desk). i_unprod fenced: 13
+actions, med 12 / max 15 (its one branch>0 action carries " b1").
+Per-rule table and field summaries in the receipt.
+
+REGISTERED-PRIOR ACCOUNTING: all four prior components held —
+bars 1+2 fired, bar 3 failed via rule-name dominance, the opcode
+trigger fired, and parent-only >512 decisions exist (measured 14
+of 101 decisions here v the prior's "15/102 states" — same
+finding, decision-population framing). The prior did not
+anticipate the trigger landing
+EXACTLY at its 0.500 threshold; booked as measured (a strict-
+inequality law would have adjudicated HOLD instead — the frozen
+text says ">= 50%", so the trigger fires, and the sensitivity is
+disclosed rather than argued after the fact).
+
+ADJUDICATION (composed from the two frozen laws, which are
+jointly exhaustive): the ADJUDICATION LAW's HOLD branch covers
+bar-3 failure "WITHOUT the opcode trigger" only; this outcome
+lands in the TRIGGER LAW instead, quoted: "if bar 3 (RAW span)
+fails but the opcode normalization reduces the p90
+within-decision span by >= 50%, the residue classifies
+TOKENIZER-NAMING and the desk STOPS before any training."
+Result: TOKENIZER-NAMING, STOP before training. Next candidate: an action-opcode vocabulary desk
+(one atom per rule id; own prereg, own blind thresholds, needs
+GO). STATE-v-PROGRAM scoring design is NOT unlocked (that
+required all three RAW bars).
+
+RECEIPT LIMITATIONS (receipt-auditor, disclosed): (a) the
+provenance list omits scratch/mathworld1_birth.py — GCTok, the
+sole measurement primitive; pinned here instead: sha256
+90dbf312bc42c4ee... , on-disk == git show 81077494 (and the file
+is CODEMAP-class UNCITED until this booking's regen). (b) The
+four frozen input corpora are not hashed in this receipt; all
+four are sha-locked in docs/receipts.lock.json and matched
+on-disk at audit time. (c) sympy version not recorded in the
+receipt; verified 1.14.0 in-session (the prereg fence). (d) The
+driver's serialization code emits " b{k}" for ANY sited
+non-i_parts rule with branch>0 — general law; the corpus made it
+i_unprod-only, exactly as the prereg fenced. Any re-run derives
+(a)-(c) into the receipt.
+
+FENCES. Deterministic desk (GCTok fixed; programs recomputed via
+the imported qualified v4 encode — sympy 1.14.0 scope and all
+ACTION-SEMANTICS fences travel); Mac idle, single process; zero
+model calls, zero training, zero fresh seeds, zero search, zero
+MAGIC; scoped to the exact frozen artifacts named
+(states_srepr.jsonl, actions_srepr.jsonl, states.jsonl,
+actions.jsonl); receipt
+refuse-if-exists; no frozen receipt touched. Desk numbers are
+predictions about any future instrument; the instrument's own
+counts govern when one runs. The 14 parent-only decisions restate
+the standing parent-side finding (a separate lever, ACTION-BASIS
+cannot shrink the prefix by construction). NOT authorized here:
+tokenizer changes, opcode vocabulary, scoring runs, training.
+Dual audit before booking.
+

@@ -1,0 +1,237 @@
+{
+ "decisions": 101,
+ "actions": 725,
+ "bars": {
+  "bar1_program_max_le_32": true,
+  "bar2_zero_action_induced_512_overflow": true,
+  "bar3_decision_span_p90_le_8": false
+ },
+ "program_len": {
+  "med": 12,
+  "p90": 14,
+  "max": 19
+ },
+ "child_len": {
+  "med": 161,
+  "p90": 1108,
+  "max": 3323
+ },
+ "median_compression": 13.42,
+ "parent_prefix_len": {
+  "med": 74,
+  "p90": 555,
+  "max": 1084
+ },
+ "fit512_actions": 555,
+ "fit4096_actions": 725,
+ "parent_only_over_512_decisions": [
+  [
+   "L6-s9100",
+   3
+  ],
+  [
+   "L6-s9100",
+   4
+  ],
+  [
+   "L6-s9100",
+   5
+  ],
+  [
+   "L6-s9100",
+   6
+  ],
+  [
+   "L6-s9100",
+   7
+  ],
+  [
+   "L6-s9100",
+   8
+  ],
+  [
+   "L6-s9100",
+   9
+  ],
+  [
+   "L6-s9100",
+   10
+  ],
+  [
+   "L6-s9101",
+   1
+  ],
+  [
+   "L6-s9101",
+   3
+  ],
+  [
+   "L6-s9101",
+   5
+  ],
+  [
+   "L6-s9101",
+   7
+  ],
+  [
+   "L6-s9101",
+   9
+  ],
+  [
+   "L6-s9101",
+   11
+  ]
+ ],
+ "action_induced_over_512_decisions": [],
+ "decision_span_raw": {
+  "med": 8,
+  "p90": 12,
+  "max": 13
+ },
+ "decision_span_raw_p90": 12,
+ "decision_span_opcode_normalized": {
+  "med": 6,
+  "p90": 6,
+  "max": 6
+ },
+ "decision_span_norm_p90": 6,
+ "opcode_span_reduction_p90": 0.5,
+ "program_len_opcode_normalized": {
+  "med": 5,
+  "p90": 8,
+  "max": 8
+ },
+ "per_rule_program_len": {
+  "cancel": {
+   "med": 7,
+   "p90": 7,
+   "max": 7
+  },
+  "euler": {
+   "med": 6,
+   "p90": 6,
+   "max": 6
+  },
+  "expand": {
+   "med": 7.0,
+   "p90": 7,
+   "max": 7
+  },
+  "factor": {
+   "med": 7.0,
+   "p90": 7,
+   "max": 7
+  },
+  "i_const_factor": {
+   "med": 18.0,
+   "p90": 18,
+   "max": 18
+  },
+  "i_linear_basis": {
+   "med": 18,
+   "p90": 18,
+   "max": 18
+  },
+  "i_parts": {
+   "med": 14.0,
+   "p90": 14,
+   "max": 14
+  },
+  "i_usub": {
+   "med": 10,
+   "p90": 10,
+   "max": 10
+  },
+  "together": {
+   "med": 9.0,
+   "p90": 9,
+   "max": 9
+  },
+  "i_sum": {
+   "med": 9,
+   "p90": 9,
+   "max": 9
+  },
+  "i_unprod": {
+   "med": 12,
+   "p90": 12,
+   "max": 15
+  },
+  "i_transcend_div": {
+   "med": 19,
+   "p90": 19,
+   "max": 19
+  },
+  "trigsimp": {
+   "med": 9.0,
+   "p90": 9,
+   "max": 9
+  },
+  "i_heurisch": {
+   "med": 14,
+   "p90": 14,
+   "max": 14
+  },
+  "i_ansatz_exp": {
+   "med": 16,
+   "p90": 16,
+   "max": 16
+  },
+  "i_sqrt_basis": {
+   "med": 16,
+   "p90": 16,
+   "max": 16
+  },
+  "i_const": {
+   "med": 11.0,
+   "p90": 11,
+   "max": 11
+  },
+  "i_apart": {
+   "med": 11.0,
+   "p90": 11,
+   "max": 11
+  },
+  "powsimp": {
+   "med": 8,
+   "p90": 8,
+   "max": 8
+  }
+ },
+ "field_tokens": {
+  "rule": {
+   "med": 7,
+   "p90": 10,
+   "max": 15
+  },
+  "site": {
+   "med": 3,
+   "p90": 3,
+   "max": 3
+  },
+  "param": {
+   "med": 0,
+   "p90": 3,
+   "max": 3
+  }
+ },
+ "i_unprod_fenced": {
+  "med": 12,
+  "p90": 12,
+  "max": 15
+ },
+ "i_unprod_n": 13,
+ "start": {
+  "start_commit": "81077494",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_abv2desk.py": "0b60dcd1d8edb8883e29f0ee0776872e9224218c32e552de42878504da801f32",
+   "scratch/mathworld1_actionsem.py": "c79462129730328592ee2cc909fc563076afe80542dd2a745ce88ceef3e9c23b",
+   "scratch/mathworld1_srepr_export.py": "9cd1b729acd7ede732cd68ca69059b5b6d3d67ce60098bcd7734486e14b35d05",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58"
+  }
+ },
+ "completion_commit": "81077494"
+}

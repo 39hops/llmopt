@@ -3149,3 +3149,14 @@ regime tag on every bullet is the fence.
   1.14.0, decode shares in-process regeneration (uniqueness +
   addressability, not a cross-process round-trip), i_unprod stays a
   candidate index, nested leg still vacuous. RESULTS.md#L45570
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The v4 semantic program
+  serialization measures med 12 / max 19 GCTok tokens (13.4x median
+  compression v the full child; zero action-induced 512 overflows; the
+  14 over-512 decisions are parent-prefix-only) but the within-decision
+  candidate span FAILS its bar (p90 12 > 8) and the pre-registered
+  opcode counterfactual fires exactly at threshold (span p90 12 -> 6,
+  reduction 0.500 >= 50%): the length nuisance is TOKENIZER-NAMING —
+  rule ids cost med 7 / max 15 tokens against <= 6 for all semantic
+  content — so the desk STOPS pre-training; next candidate is an
+  action-opcode vocabulary desk; PROMOTE never rescored under the
+  hypothetical tokenizer. RESULTS.md#L45758

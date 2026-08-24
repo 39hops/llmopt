@@ -676,8 +676,12 @@
    "tracked": true
   },
   "logs/mathworld1/abv2_desk.json": {
-   "exists": false,
-   "source": "results"
+   "bytes": 3468,
+   "exists": true,
+   "local_only": true,
+   "sha256": "6a38c6a4235dac75a0d439a6e803c95461487a43bf67f28632e7a657f0a4f7af",
+   "source": "results",
+   "tracked": false
   },
   "logs/mathworld1/actionprog_qual.json": {
    "bytes": 2681,
