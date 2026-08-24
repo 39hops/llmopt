@@ -675,6 +675,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/actionprog_qual.json": {
+   "bytes": 2681,
+   "exists": true,
+   "sha256": "365c4168c1a4b1bb59786d7f686ca7473255224ea50733605e91848a17338b6d",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/actions.jsonl": {
    "bytes": 612328,
    "exists": true,

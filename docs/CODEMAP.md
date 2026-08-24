@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 222, library 73, reproduce-pinned 10, results-cited 298, spec-cited 89, cited-but-library 61
+Census: UNCITED 222, library 73, reproduce-pinned 10, results-cited 300, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -255,6 +255,8 @@ Census: UNCITED 222, library 73, reproduce-pinned 10, results-cited 298, spec-ci
 | mass | mass_on_valid.py | spec-cited | specs | specs×4 | — | — |
 | mathworld0 | mathworld0.py | results-cited | RESULTS | RESULTS×3 | — | 4 |
 | mathworld0 | mathworld0_coldreplay.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| mathworld1 | mathworld1_actionbasis_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_actionprog.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_active.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_autopsy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_birth.py | UNCITED | — | — | — | 9 |
@@ -660,7 +662,7 @@ Census: UNCITED 222, library 73, reproduce-pinned 10, results-cited 298, spec-ci
 | gen | gen_readme.py | spec-cited | specs | specs×24 | — | 2 |
 | gen | gen_receipt_lock.py | library | — | — | 1 | — |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
-| gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×2, specs×12 | — | 5 |
+| gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×3, specs×12 | — | 5 |
 | gen | gen_scoreboard.py | UNCITED | — | — | — | — |
 | gen | gen_syndrome_labels.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | grow | grow_mathnative.py | library | specs | specs×1 | 1 | 1 |

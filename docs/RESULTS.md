@@ -44820,3 +44820,97 @@ silently rescored. No model was loaded, no training, no fresh
 seeds; the STATE-v-PROGRAM scoring rung (E(s,a)==s'
 qualification) stays unproposed without GO.
 
+## AMENDMENT MATH-CYBER-1-ACTION-BASIS-DESK-0-QUAL: three qualification corrections (outside review) — "725/725 reconstruct uniquely" was UNVERIFIED at booking (the census initialized completeness_fail and never measured it; no decoder existed), the CV claim narrows to a length-nuisance proxy, and two index-hygiene defects are root-caused (2026-08-24, Mac)
+
+Amends OBSERVATION MATH-CYBER-1-ACTION-BASIS-DESK-0 on outside
+review (GPT, relayed by Artin), house-verified against the
+census source.
+(1) COMPLETENESS RETRACTED AS MEASURED: the booked "COMPLETENESS:
+0 failures — every action reconstructs uniquely" was a
+BY-CONSTRUCTION argument reported as a measurement —
+mathworld1_actionbasis_census.py initializes completeness_fail=0
+and never updates it; no E(s,P) decoder existed and no decoded
+child was compared to the frozen child. The claim books
+UNVERIFIED as of that entry; the NOT-KILLED half of its
+adjudication (which leaned on completeness) is therefore
+UNSUPPORTED there, while NOT-PROMOTED stands unchanged
+(threshold (b) failed independently). The semantic decoder
+qualification that replaces it books separately
+(OBSERVATION MATH-CYBER-1-ACTIONPROG-QUAL-0, same commit).
+(2) CV WORDING NARROWED: program CV 1.69 > child CV 1.20
+establishes that program-LENGTH variability/tail remains under
+the display-label schema — a length-nuisance PROXY not removed;
+whether a future PROGRAM-scoring model empirically inherits the
+MINLEN bias is UNMEASURED.
+(3) INDEX HYGIENE, root-caused not hand-patched: (a) the
+walllift verdict row's files field reverted to the parent
+driver after FIXSCOPE because gen_results_index re-extracts
+files from entry prose on every regen and files was not in the
+curation-preserved key set — the generator now preserves a
+curated files field (scripts/gen_results_index.py), and the row
+is repointed durably; (b) the action-basis row's code_commit
+pinned the booking commit's PARENT (72c15494), which does not
+contain the census producer — repointed to 3d703688 (the commit
+that introduced the producer), and the producer-first rule is
+adopted: qualification/desk producers commit BEFORE their run
+so the pin is always a containing commit (the ACTIONPROG
+producer below followed it: committed at d449a8dc, run after).
+
+
+## OBSERVATION MATH-CYBER-1-ACTIONPROG-QUAL-0: the semantic ActionProgram decoder QUALIFIES — 533/533 decodable frozen actions reconstruct their exact child (0 wrong-child, 0 collisions, 0 out-of-range) from (rule, AST-address, branch) with no frozen-row operand; the blocker is UPSTREAM of the schema: 26/101 corpus decisions fail the state-string round-trip (sympify(state_before) does not reproduce State.key()), excluding 192 actions at the binding gate (2026-08-24, Mac)
+
+Per the ACTION-BASIS-DESK-0-QUAL review. Producer
+scratch/mathworld1_actionprog.py committed BEFORE the run
+(d449a8dc, sha 6abb62d7...); receipt
+logs/mathworld1/actionprog_qual.json; zero model, zero
+training; idle-machine world regeneration with _RULE_CACHE
+cleared per decision.
+
+SCHEMA QUALIFIED: P = (rule_id, target_address, branch_index)
+with target_address = first-occurrence preorder AST coordinate
+of the target in the PARENT (resolved semantically at decode:
+the coordinate names a subexpression, never a serialized
+string) and branch_index = position among same-(rule, target)
+siblings sorted by child State.key() (canonical semantic sort).
+decode(parent, P) operands: the parent expression and the
+frozen rule implementation's own generated labels — the
+recorded child string/hash served ONLY as the comparison
+oracle. Registered contract met on every decodable action:
+exactly one legal child, sha(decoded key) == frozen child_hash,
+distinct frozen children from one parent produced distinct
+programs (0 collisions).
+
+MEASURED: 75/101 decisions bind (state_hash + full legal-set
+child_hash multiset both reproduce); on those, 533/533 actions
+QUALIFY with fail=0 across every rule family — including the
+122 actions whose targets occur at MULTIPLE AST addresses
+(multiplicity census 1:195 / 2:4 / 3:116 / 6:2), where
+first-occurrence canonicalization decoded the right child every
+time (value-level rewriting confirmed on-corpus). Branch-index
+anatomy: 0 x414, 1 x83, 2 x36 — branch parameters are tiny.
+THE BINDING GAP (the actual finding beyond the pass): 26/101
+decisions (192 actions) are WORLD-NONCOMPARABLE at the FIRST
+gate — sympify(state_before_string) does not reproduce the
+original State.key() (srepr-level round-trip failure of the
+exported str() serialization; every mismatch is state_hash
+class, ZERO legal-set mismatches once a state binds). The
+frozen corpus's string serialization UNDER-DETERMINES state
+identity for a quarter of its decisions — a corpus/interchange
+interface limit (bears directly on the axiom interchange
+contract, which shares this serialization), NOT a decoder
+defect: no decode was attempted on unbound parents, so their
+qualification status is UNDECIDED, never failed.
+
+FENCES. Deterministic counting + world regeneration on the
+frozen corpus (102 states / 725 actions, world commit
+620da3bf) in ONE process under the idle-machine discipline;
+legal sets remain timebox-load-sensitive in general (the
+booked fence), though zero legal-set mismatches occurred here.
+Anatomy only — NO length thresholds were measured under this
+entry (the v2 length desk needs its own blind thresholds and
+a round-trip-complete state serialization first, e.g. srepr
+export). The 533/533 pass qualifies the SCHEMA's semantics,
+not any model's ability to emit it; the STATE-v-PROGRAM
+scoring rung stays unproposed without GO.
+
+

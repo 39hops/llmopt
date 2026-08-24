@@ -3074,9 +3074,10 @@ regime tag on every bullet is the fence.
 
 - [SINGLE-SEED] [REGIME-SCOPED: calculus search] The
   (label, sibling-index) ACTION-BASIS program schema is
-  COMPLETE on all 725 frozen-corpus actions (242 same-label
-  collisions all resolved by the index) and compresses the
-  median action 5.75x (program med 28 v child med 161 GCTok
+  compresses the median action 5.75x (its booked completeness
+  claim was UNVERIFIED-as-measured and is corrected by the
+  -QUAL amendment; the semantic decoder qualification is the
+  bullet below) (program med 28 v child med 161 GCTok
   tokens) — but the desk lands BETWEEN, not promoted: the
   program TAIL stays expression-dense because rule targets are
   serialized sub-expressions (program CV 1.69 > child CV 1.20,
@@ -3089,3 +3090,22 @@ regime tag on every bullet is the fence.
   own blind-threshold desk; parent-prefix length is a separate
   state-naming lever.
   ([OBSERVATION MATH-CYBER-1-ACTION-BASIS-DESK-0](RESULTS.md#L44747 "id:2026-08-24-observation-math-cyber-1-action-basis").)
+
+- [MECHANISM-CONFIRMED] [REGIME-SCOPED: calculus search] The
+  semantic ActionProgram schema (rule, first-occurrence AST
+  address, child-key-sorted branch index) decoder-QUALIFIES on
+  the frozen corpus: 533/533 decodable actions reconstruct
+  their exact child with zero wrong-child/collision/range
+  failures and no frozen-row operand — including all 122
+  multi-occurrence-target actions (first-occurrence
+  canonicalization held; branch indices are tiny: 0/1/2 only).
+  The real blocker is UPSTREAM: 26/101 corpus decisions (192
+  actions) fail the state-string round-trip
+  (sympify(state_before) does not reproduce State.key()) — the
+  exported str() serialization under-determines state identity
+  for a quarter of decisions, an interchange-contract limit
+  (srepr export is the fix) that also bears on the axiom
+  corpus. Anatomy only; no lengths measured; v2 length desk
+  needs round-trip-complete serialization + blind thresholds
+  first.
+  ([OBSERVATION MATH-CYBER-1-ACTIONPROG-QUAL-0](RESULTS.md#L44860 "id:2026-08-24-observation-math-cyber-1-actionprog-qual").)

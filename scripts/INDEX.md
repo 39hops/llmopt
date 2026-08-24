@@ -2628,6 +2628,14 @@ MATH-CYBER-0 rung 0, cold-process replay qualification (GPT post-booking fence):
 *(no docstring)*
 
 
+### scratch/mathworld1_actionprog.py
+MATH-CYBER-1 ACTIONPROG-QUAL-0 — semantic ActionProgram decoder qualification on the frozen corpus (per outside review of ACTION-BASIS-DESK-0; no lengths are measured here).
+
+- `sha(t)`
+- `preorder(expr)`
+- `occurrences(parent, target)`
+- `main()`
+
 ### scratch/mathworld1_active.py
 MATH-CYBER-1 ACTIVE-EPISODIC-0 lockstep paired driver (PRE-REG MATH-CYBER-1-ACTIVE-EPISODIC-0, commit 73c063af). Two arms — ACTIVE-EPISODIC (success-gated episode-boundary updates) and FROZEN (theta_0, zero updates) — share theta_0, episode order, roots, budgets, overflow law, and ONE world snapshot, in ONE driver.
 
