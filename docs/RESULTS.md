@@ -44914,3 +44914,79 @@ not any model's ability to emit it; the STATE-v-PROGRAM
 scoring rung stays unproposed without GO.
 
 
+## PRE-REG MATH-CYBER-1-SREPR-EXPORT-0: versioned srepr interchange re-export of the frozen rung-0 corpus + ActionProgram decoder re-qualification against it (2026-08-24, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-24): repair the state
+serialization identity gap booked in ACTIONPROG-QUAL-0 (26/101
+decisions where sympify(sstr state) fails to reproduce the frozen
+State.key()) by a NEW VERSIONED export, never by mutating the
+frozen v1 corpus. Scope: this export + the decoder re-run ONLY. No
+v2 token-length desk, no model, no training, no fresh seeds.
+
+INSTRUMENT. scratch/mathworld1_srepr_export.py — a disclosed
+copy-modification of the frozen v1 exporter
+(scratch/mathworld1_export.py): identical cold re-walk of
+logs/mathworld0/active.jsonl under the frozen world (every world
+source asserted byte-identical to code_commit 620da3bf; identical
+four-field byte-equal binding gates per decision row and marker
+gates per marker row), with exactly these deltas: (1) every
+serialized state/child string is State.key() (sp.srepr) instead of
+sp.sstr, (2) each emitted string carries an IN-PROCESS round-trip
+assert sp.srepr(sp.sympify(s)) == s (abort on first failure — zero
+silent canonicalization or substitution by construction), (3) new
+receipt paths logs/mathworld1/{states_srepr.jsonl,
+actions_srepr.jsonl, srepr_export_verdict.json}, refuse-if-exists,
+(4) the v1 corpus files' sha256 recorded before AND after the run
+and asserted unchanged. Then
+scratch/mathworld1_actionprog2.py — the ACTIONPROG-QUAL-0 decoder
+with ONLY the three corpus/receipt paths and the header changed
+(receipt logs/mathworld1/actionprog_qual_srepr.json) — re-runs the
+already-qualified semantic ActionProgram qualification against the
+versioned corpus. Producers committed BEFORE the real run
+(producer-first rule); no SMOKE mode needed: the run is
+seconds-class, deterministic, and writes only refuse-if-exists
+paths.
+
+BARS.
+1. EXPORT-COMPLETE fires iff the exporter exits 0 with 102 state
+   rows / 101 decision rows / 725 action rows, row classes equal
+   to the v1 export verdict's, and every binding gate passed
+   (abort-on-mismatch design: exit 0 IS the pass).
+2. ROUND-TRIP fires iff every emitted string passed the in-process
+   srepr round-trip assert (exit 0) AND an offline re-read of
+   states_srepr.jsonl reproduces sha(sympify(state_before)) ==
+   state_before_hash on 102/102 rows.
+3. V1-FROZEN fires iff the v1 sha256 before == after (recorded in
+   the receipt).
+4. DECODER-BIND fires iff actionprog2 reports 101/101 decisions
+   bound (noncomparable == 0).
+5. DECODER-QUAL fires iff 725/725 actions decode to the exact
+   frozen child: qualified == 725, failed == 0, with the
+   branch-index and target-multiplicity anatomy reported.
+
+REFUTED-IF: any round-trip assert fires (bar 2 dead — srepr does
+NOT close the identity gap and the interchange needs a deeper
+repair), or any binding gate fires (the world re-walk is no longer
+reproducible), or the decoder books any wrong_child /
+program_collision / branch_out_of_range failure on the bound
+corpus (the ACTIONPROG-QUAL-0 schema qualification does not
+transport to the full corpus).
+
+REGISTERED PRIOR (house): all five bars fire. srepr is the state
+identity by definition (State.key() IS sp.srepr), so the only
+failure channel left is sympify failing to invert srepr on some
+node class, which the in-process assert would catch on row one.
+The 26 v1 failures were a parser-ambiguity artifact of sstr, not a
+world property; the decoder already reconstructed 533/533 on every
+bound decision, and binding is the only thing that changes.
+
+FENCES. Mac only, zero model calls, zero training, deterministic
+(no seed fence; scoped to the exact artifacts named:
+logs/mathworld0/active.jsonl re-walk, 102/101/725 expected rows).
+The frozen v1 corpus (states.jsonl, actions.jsonl) and every other
+booked receipt stay byte-untouched. This prereg does NOT authorize
+any v2 length desk (ACTION-BASIS-v2 needs its own blind
+thresholds under separate approval), any STATE-v-PROGRAM scoring,
+or any axiom relay update. Verdict books after prereg-auditor AND
+receipt-auditor pass (dual audit standard).
+
