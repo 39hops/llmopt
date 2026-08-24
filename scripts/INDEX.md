@@ -2733,7 +2733,7 @@ MATH-CYBER-1 REGRET-WALLLIFT-0 (PRE-REG booked at d30e84f4). Closure re-read of 
 - `regret_search(root, world, scorer, sink, eid, inject_delay_s=0.0)` — One REGRET-LDS episode. Returns episode dict.
 - `_root_edge(table, k)` — First edge under the root on k's current backpointer
 - `_path(table, solved)`
-- `_finish(eid, outcome, solved, stats, walls, sink, ladder_solves, table)`
+- `_finish(eid, outcome, solved, stats, walls, sink, ladder_solves, table, scorer)`
 - `main()`
 
 ### scratch/mathworld1_retrolabel.py

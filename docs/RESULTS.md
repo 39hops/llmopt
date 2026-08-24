@@ -44724,3 +44724,23 @@ rank-neutral control, no MAGIC, no ACTION-BASIS change, no
 fresh seeds under this entry; decision points #1/#3/#4/#5
 remain untouched for Artin/GPT.
 
+## AMENDMENT MATH-CYBER-1-REGRET-WALLLIFT-0-FIXSCOPE: the verdict's "all four defects ... are fixed in the booking commit" overclaimed by one — the model_calls-into-jsonl producer was NOT fixed there; it is fixed now, smoke-requalified, and the structured files reference is repointed to the walllift driver (2026-08-24, Mac)
+
+Amends VERDICT MATH-CYBER-1-REGRET-WALLLIFT-0 (Artin review).
+The booking commit fixed the provenance head, added wall_cap_s
+to the meta row, and cleaned the stale docstring — but the
+fourth listed defect (model_calls absent from jsonl episode
+rows; assigned to the in-memory dict AFTER the row write) was
+still present. Corrected in this commit: _finish now emits
+model_calls (scorer.calls delta) in every episode row;
+smoke-requalified 6/6 on smoke2_ paths with model_calls ==
+edges verified in the rows (24 == 24 on the L7-s9303 exercise;
+receipts smoke2_regret_walllift*). The booked run's receipts
+stand as written (model_calls for that run lives only in its
+verdict json, as its verdict discloses). Also corrected in the
+same commit: the walllift verdict's results-index files field
+had auto-extracted the PARENT driver
+(scratch/mathworld1_regret.py); repointed to
+scratch/mathworld1_regret_walllift.py, derived surfaces
+regenerated.
+

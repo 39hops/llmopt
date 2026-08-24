@@ -1,0 +1,100 @@
+{
+ "smoke": true,
+ "device": "mps",
+ "theta0_sha256": "52fd1aff2c45fc5c09edcd626ae8a3b883c87f594b0f151b04b46503eb36a4cf",
+ "episodes": {
+  "L4-s9100": {
+   "row": "episode",
+   "episode_id": "L4-s9100",
+   "outcome": "SOLVED",
+   "model_calls": 0,
+   "world_materialization_s": 1.629,
+   "model_scoring_s": 0.0,
+   "charged_wall_s": 1.629,
+   "ladder_solved_at": [
+    12,
+    24,
+    48,
+    96
+   ],
+   "expansions": 1,
+   "edges": 0,
+   "pops": 1,
+   "transposition_hits": 0,
+   "reopens": 0,
+   "pullbacks": 0,
+   "max_frontier": 1,
+   "censored_states": 0,
+   "solution_depth": 1,
+   "total_discrepancy": 0,
+   "rank_sequence": [
+    "T"
+   ],
+   "non_rank1_decisions": 0,
+   "max_rank_used": 1,
+   "first_discovery_expansions": 1
+  },
+  "L7-s9303": {
+   "row": "episode",
+   "episode_id": "L7-s9303",
+   "outcome": "SOLVED",
+   "model_calls": 24,
+   "world_materialization_s": 14.789,
+   "model_scoring_s": 1.143,
+   "charged_wall_s": 15.932,
+   "ladder_solved_at": [
+    12,
+    24,
+    48,
+    96
+   ],
+   "expansions": 4,
+   "edges": 24,
+   "pops": 4,
+   "transposition_hits": 11,
+   "reopens": 0,
+   "pullbacks": 1,
+   "max_frontier": 13,
+   "censored_states": 0,
+   "solution_depth": 2,
+   "total_discrepancy": 1,
+   "rank_sequence": [
+    2,
+    "T"
+   ],
+   "non_rank1_decisions": 1,
+   "max_rank_used": 2,
+   "first_discovery_expansions": 4
+  }
+ },
+ "solved": [
+  "L4-s9100",
+  "L7-s9303"
+ ],
+ "solved_total": 2,
+ "multi_deviation_solves": [],
+ "bars": null,
+ "mechanism_checks": {
+  "terminal_at_root_solves": true,
+  "pullback_reproduces_9303": true,
+  "split_sums_to_charged": true,
+  "both_split_fields_present": true,
+  "emergency_kill": true,
+  "ladder_accounting": true
+ },
+ "pass": true,
+ "world_states": 5,
+ "start": {
+  "start_commit": "5fae5fb3",
+  "start_status_porcelain": " M scratch/mathworld1_regret_walllift.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_regret_walllift.py": "bf3a474e0a0186ae171df459457d65de83f6a64c7ab4a8aee493cf6ae896f41f",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/mathgen/problems.py": "9f1dcac61712696b2b7f9e65585d33d26865edf6b60f338977f09a792fe51215",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61"
+  }
+ },
+ "completion_commit": "5fae5fb3"
+}

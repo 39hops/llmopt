@@ -153,7 +153,7 @@ def regret_search(root, world, scorer, sink, eid,
         if world_s + model_s > WALL_CAP_S:
             return _finish(eid, "CENSORED_WALL", None, stats,
                            (world_s, model_s), sink,
-                           ladder_solves, table)
+                           ladder_solves, table, scorer)
         g, depth, k = heapq.heappop(frontier)
         stats["pops"] += 1
         node = table[k]
@@ -166,7 +166,7 @@ def regret_search(root, world, scorer, sink, eid,
         if stats["expansions"] >= EXPANSION_CAP:
             return _finish(eid, "EXPANSION_CAP", None, stats,
                            (world_s, model_s), sink,
-                           ladder_solves, table)
+                           ladder_solves, table, scorer)
         # pullback detection: root-edge subtree of this pop
         sub = _root_edge(table, k)
         if last_subtree is not None and sub != last_subtree:
@@ -199,7 +199,7 @@ def regret_search(root, world, scorer, sink, eid,
                     ladder_solves.setdefault(th, True)
             return _finish(eid, "SOLVED", solved, stats,
                            (world_s, model_s), sink,
-                           ladder_solves, table)
+                           ladder_solves, table, scorer)
         world_s += time.monotonic() - t0
         t1 = time.monotonic()
         scored = scorer.rank(node["state"], acts)
@@ -238,7 +238,7 @@ def regret_search(root, world, scorer, sink, eid,
             heapq.heappush(frontier, (ng, nd, ck))
     return _finish(eid, "FRONTIER_EXHAUSTED", None, stats,
                    (world_s, model_s), sink, ladder_solves,
-                   table)
+                   table, scorer)
 
 
 def _root_edge(table, k):
@@ -263,10 +263,12 @@ def _path(table, solved):
 
 
 def _finish(eid, outcome, solved, stats, walls, sink,
-            ladder_solves, table):
+            ladder_solves, table, scorer):
     world_s, model_s = walls
     row = {"row": "episode", "episode_id": eid,
            "outcome": outcome,
+           "model_calls": (scorer.calls
+                           - stats["model_calls_at_start"]),
            "world_materialization_s": round(world_s, 3),
            "model_scoring_s": round(model_s, 3),
            "charged_wall_s": round(world_s + model_s, 3),
