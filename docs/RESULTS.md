@@ -45051,3 +45051,107 @@ verdict). The interchange consequence travels to the parked axiom
 relay: any consumer of this corpus must use the versioned adaptive
 inverse, never a plain parser.
 
+## VERDICT MATH-CYBER-1-SREPR-EXPORT-0: state identity is REPAIRED — 101/101 decisions bind under the versioned srepr corpus (bars 1-4 fire) — but bar 5 is REFUTED: 85/725 actions still fail to decode, all target_not_in_parent, all confined to the 26 newly-bound decisions whose parents carry unevaluated nodes; 640/725 adjudicable, zero regressions on the previously-bound 75 (2026-08-24, Mac)
+
+Per PRE-REG MATH-CYBER-1-SREPR-EXPORT-0 as amended
+(SREPR-EXPORT-0-INVERSE). Producers committed before each run
+(8338654c prereg + originals; b52f7c8b amendment + adaptive
+inverse); export receipt logs/mathworld1/srepr_export_verdict.json
+(completion_commit b52f7c8b), decoder receipt
+logs/mathworld1/actionprog_qual_srepr.json.
+
+BAR ADJUDICATION (frozen law):
+1. EXPORT-COMPLETE FIRES: exit 0; 102 state rows / 101 decision
+   rows / 725 action rows; row classes {decision: 101,
+   wall_cap_marker: 1} equal to the v1 export verdict's; every
+   binding gate passed (abort-on-mismatch design, none fired);
+   every world source asserted byte-identical to code_commit
+   620da3bf (recorded in the receipt).
+2. ROUND-TRIP FIRES (under the amended inverse law): all 928
+   emitted strings passed the in-process srepr_inverse assert
+   (928 = 725 children + 102 state_before + 101 state_after; the
+   amendment's 827 counted the 102+725 unique strings of the
+   diagnostic walk, which emits no separate state_after), and the
+   offline re-read reproduced
+   sha(srepr(srepr_inverse(state_before))) == state_before_hash on
+   102/102 state rows (in-session recompute, not persisted;
+   independently reproduced 102/102 by the prereg auditor).
+3. V1-FROZEN FIRES: states.jsonl 7e17a5c0..., actions.jsonl
+   63fb8942... identical before and after (recorded in the export
+   receipt).
+4. DECODER-BIND FIRES: noncomparable == 0 — 101/101 decisions
+   bind (v1: 75/101). The serialization identity blocker of
+   ACTIONPROG-QUAL-0 is closed.
+5. DECODER-QUAL REFUTED: qualified 640, failed 85 (not 725/0).
+   All 85 are target_not_in_parent; by rule family: i_parts 47,
+   i_const_factor 15, i_heurisch 10, i_linear_basis 5, i_usub 2,
+   i_sum 2, i_transcend_div 1, i_ansatz_exp 1, i_sqrt_basis 1,
+   i_unprod 1. The three REGISTERED refuted-if classes are all
+   ZERO — no wrong_child, no program_collision, no
+   branch_out_of_range — so the schema itself did not fail to
+   transport; addressing fails UPSTREAM of the schema. Diagnostic
+   recount (in-session recompute over states_srepr/actions_srepr,
+   outcome-complete, not persisted — the receipt itself carries
+   only a 50-row failure sample, all 50 target_not_in_parent):
+   all 85 sit in exactly the 26 decisions that were noncomparable
+   in v1 and bind only now; the 75 previously-bound decisions
+   contribute 0 failures and their 533 actions all still qualify
+   (640 = 533 + 107 newly-qualified actions on the 26).
+   Corroboration from receipts alone (prereg auditor): the corpus
+   carries 192 actions on the 26 decisions and 533 off them —
+   matching v1's qualified=533 and 85 = 192 - 107 exactly.
+   branch_index anatomy on the qualified set: 0 x521, 1 x83,
+   2 x36. target_occurrence_multiplicity {1: 195, 2: 4, 3: 116,
+   6: 2} (sums 317): this field counts TARGETED actions that
+   reached address resolution, and is byte-identical to v1's —
+   consistent with every newly-bound targeted action failing
+   before an address was assigned; it is NOT a qualified-set
+   census.
+
+NAMED MECHANISM (the residue): the newly-bound parents contain
+UNEVALUATED nodes (the SREPR-EXPORT-0-INVERSE finding), and the
+encoder resolves rule targets by structural equality of the
+plain-sympified (canonical) target against the parent's preorder
+nodes — a canonical target cannot structurally equal an
+unevaluated subtree, so first-occurrence ADDRESSING fails before
+any branch logic runs. The blocker has therefore MOVED, not
+vanished: state identity is solved by the adaptive inverse; target
+addressing on evaluation-structure-bearing parents is the next
+repair, and it is an ENCODER address-scheme question (e.g.
+matching parent nodes by canonicalized comparison while keeping
+the address itself in the parent's own tree), not a corpus or
+binding question.
+
+REGISTERED-PRIOR ACCOUNTING: the amended prior said all five bars
+fire; bar 5 refuted it. Both priors of this rung were wrong in
+part (original: plain sympify inverts srepr; amended: full 725
+decode) — booked on the record.
+
+DUAL AUDIT: prereg-auditor and receipt-auditor both ran before
+this booking; neither raised a blocker; their should-fixes are
+adopted in this text (recount provenance named, multiplicity
+caption re-scoped, refuted-if trigger accounting added) or
+disclosed below.
+
+RECEIPT LIMITATIONS (receipt-auditor, both verified in-session,
+disclosed rather than rewriting ran drivers): (a) the decoder
+receipt's provenance list omits scratch/mathworld1_srepr_export.py,
+whose imported srepr_inverse determines every qualified/failed
+outcome — its sha is pinned by the export receipt in the same
+booking (9cd1b729...) and both receipts share
+completion_commit b52f7c8b; (b) the export receipt does not record
+the input corpus sha (logs/mathworld0/active.jsonl, git-tracked,
+sha256 ef19fc7b...). Any re-run driver adds both to its
+start_provenance list.
+
+FENCES. Deterministic census, Mac, zero model calls, zero
+training; scoped to the exact versioned artifacts named
+(states_srepr.jsonl 42a91c22..., actions_srepr.jsonl 6a5d62db...,
+both sha-pinned in the export receipt); frozen v1 corpus and every
+prior receipt byte-untouched. The 85 failures are addressing
+failures booked against the encoder scheme, never converted to
+world or corpus defects. NOT authorized here and not run: any
+encoder repair (needs its own registered qualification), the
+ACTION-BASIS-v2 length desk (separate blind thresholds + approval),
+STATE-v-PROGRAM scoring, axiom relay updates.
+

@@ -682,12 +682,28 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/actionprog_qual_srepr.json": {
+   "bytes": 6505,
+   "exists": true,
+   "local_only": true,
+   "sha256": "b891df57d29e5d992741ada680911e90608e750dfa0dc7732e6af84374982d3b",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/actions.jsonl": {
    "bytes": 612328,
    "exists": true,
    "sha256": "63fb894221907c8c27a570906b0a381d73df2f5ff392b7efe23faaadf8e7a046",
    "source": "results",
    "tracked": true
+  },
+  "logs/mathworld1/actions_srepr.jsonl": {
+   "bytes": 2176939,
+   "exists": true,
+   "local_only": true,
+   "sha256": "6a5d62dbb130493d6954652eb5a353de98bd17c85d0a9e8386f2877941ab0997",
+   "source": "results",
+   "tracked": false
   },
   "logs/mathworld1/active_pair.jsonl": {
    "bytes": 156806,
@@ -814,12 +830,28 @@
    "source": "results",
    "tracked": false
   },
+  "logs/mathworld1/srepr_export_verdict.json": {
+   "bytes": 1584,
+   "exists": true,
+   "local_only": true,
+   "sha256": "d7a993950ead68fbca5010e4960c2206902b7f75fa84c8c238f3ee8e9819954a",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/states.jsonl": {
    "bytes": 105338,
    "exists": true,
    "sha256": "7e17a5c0ae6d704f789e73f221f4ba2d25300497ea8c81fb10d1e45a2247c963",
    "source": "results",
    "tracked": true
+  },
+  "logs/mathworld1/states_srepr.jsonl": {
+   "bytes": 291678,
+   "exists": true,
+   "local_only": true,
+   "sha256": "42a91c22c56516eb8913f4ace0bb3968a8c4f9dcbdec4baa0913bea18837783a",
+   "source": "results",
+   "tracked": false
   },
   "logs/mathworld1/substrate_desk.json": {
    "bytes": 1730,

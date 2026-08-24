@@ -1,0 +1,440 @@
+{
+ "qualified": 640,
+ "failed": 85,
+ "noncomparable_decisions": [],
+ "fail_by_rule": {
+  "i_const_factor": 15,
+  "i_linear_basis": 5,
+  "i_parts": 47,
+  "i_usub": 2,
+  "i_transcend_div": 1,
+  "i_sum": 2,
+  "i_heurisch": 10,
+  "i_ansatz_exp": 1,
+  "i_sqrt_basis": 1,
+  "i_unprod": 1
+ },
+ "failures": [
+  {
+   "decision": [
+    "L4-s9100",
+    0
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9100",
+    0
+   ],
+   "rule": "i_linear_basis",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9100",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9100",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9103",
+    0
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9103",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9103",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9103",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9103",
+    0
+   ],
+   "rule": "i_usub",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    1
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    1
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    3
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    3
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    5
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    5
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    7
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    7
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    9
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    9
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    11
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9104",
+    11
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9105",
+    0
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9105",
+    0
+   ],
+   "rule": "i_linear_basis",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9105",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9105",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9105",
+    0
+   ],
+   "rule": "i_transcend_div",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9106",
+    0
+   ],
+   "rule": "i_sum",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9106",
+    2
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9106",
+    2
+   ],
+   "rule": "i_heurisch",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9106",
+    2
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9108",
+    0
+   ],
+   "rule": "i_ansatz_exp",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9108",
+    0
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9108",
+    0
+   ],
+   "rule": "i_heurisch",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9108",
+    0
+   ],
+   "rule": "i_linear_basis",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9108",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9108",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9109",
+    0
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9109",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9109",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L4-s9109",
+    0
+   ],
+   "rule": "i_usub",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L5-s9101",
+    0
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L5-s9101",
+    0
+   ],
+   "rule": "i_heurisch",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L5-s9101",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L5-s9101",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L5-s9101",
+    0
+   ],
+   "rule": "i_sqrt_basis",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L5-s9106",
+    0
+   ],
+   "rule": "i_const_factor",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L5-s9106",
+    0
+   ],
+   "rule": "i_linear_basis",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L5-s9106",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L5-s9106",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  },
+  {
+   "decision": [
+    "L6-s9101",
+    0
+   ],
+   "rule": "i_parts",
+   "why": "target_not_in_parent"
+  }
+ ],
+ "target_occurrence_multiplicity": {
+  "1": 195,
+  "2": 4,
+  "3": 116,
+  "6": 2
+ },
+ "branch_index_hist": {
+  "0": 521,
+  "1": 83,
+  "2": 36
+ },
+ "start": {
+  "start_commit": "b52f7c8b",
+  "start_status_porcelain": " M docs/receipts.lock.json\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_actionprog2.py": "183faee20770af4810fddf6f43885c9a6d29e48219d23074fd9b585f945094ca",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87"
+  }
+ },
+ "completion_commit": "b52f7c8b"
+}

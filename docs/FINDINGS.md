@@ -3109,3 +3109,13 @@ regime tag on every bullet is the fence.
   needs round-trip-complete serialization + blind thresholds
   first.
   ([OBSERVATION MATH-CYBER-1-ACTIONPROG-QUAL-0](RESULTS.md#L44860 "id:2026-08-24-observation-math-cyber-1-actionprog-qual").)
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] State serialization identity is
+  REPAIRED by the versioned srepr corpus under a per-node adaptive
+  inverse (plain sympify canonicalizes the world's unevaluated nodes,
+  18/827; blanket evaluate(False) breaks the canonical majority,
+  771/827): 101/101 decisions bind (v1 75/101) and 640/725 actions
+  decode exactly, zero regressions; the residual 85 failures are all
+  target_not_in_parent on the 26 newly-bound unevaluated-parent
+  decisions — an encoder ADDRESSING residue, not a schema or corpus
+  defect (zero wrong_child / collision / out-of-range).
+  RESULTS.md#L45054

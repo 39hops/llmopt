@@ -2636,6 +2636,14 @@ MATH-CYBER-1 ACTIONPROG-QUAL-0 — semantic ActionProgram decoder qualification 
 - `occurrences(parent, target)`
 - `main()`
 
+### scratch/mathworld1_actionprog2.py
+MATH-CYBER-1 ACTIONPROG-QUAL-1 — the qualified semantic ActionProgram decoder re-run against the VERSIONED SREPR corpus (states_srepr.jsonl / actions_srepr.jsonl, SREPR-EXPORT-0). Decoder logic identical to scratch/mathworld1_actionprog.py (ACTIONPROG-QUAL-0) except for exactly these disclosed deltas: the three corpus/receipt paths, this header, and the PARENT parse — state_before is now srepr and is rebuilt with srepr_inverse (imported from scratch.mathworld1_srepr_export; AMENDMENT SREPR-EXPORT-0-INVERSE), the exact verified inverse, instead of plain sp.sympify. Generated-label rule targets stay plain-sympify semantic matching, unchanged from the qualified decoder. No lengths are measured here.
+
+- `sha(t)`
+- `preorder(expr)`
+- `occurrences(parent, target)`
+- `main()`
+
 ### scratch/mathworld1_active.py
 MATH-CYBER-1 ACTIVE-EPISODIC-0 lockstep paired driver (PRE-REG MATH-CYBER-1-ACTIVE-EPISODIC-0, commit 73c063af). Two arms — ACTIVE-EPISODIC (success-gated episode-boundary updates) and FROZEN (theta_0, zero updates) — share theta_0, episode order, roots, budgets, overflow law, and ONE world snapshot, in ONE driver.
 
@@ -2763,6 +2771,18 @@ MATH-CYBER-1 cached-scorer qualification + runtime microbench (AMENDMENT MATH-CY
 
 - `full_score(model, ids_prefix, ids_child, dev)`
 - `cached_score(model, past, prefix_len, ids_child, dev)` — past = KV of the causal prefix prefill; T=1 steps only.
+- `main()`
+
+### scratch/mathworld1_srepr_export.py
+MATH-CYBER-1 SREPR-EXPORT-0 — versioned srepr interchange re-export of the frozen rung-0 corpus (per outside GO 2026-08-24).
+
+- `sha(t: str) -> str`
+- `fsha(p: Path) -> str`
+- `assert_frozen_world()`
+- `split_label(label: str)`
+- `_build(node)`
+- `srepr_inverse(s: str)` — Exact inverse of sp.srepr on this corpus: rebuilds the expr
+- `qualified_srepr(st: State) -> str` — State.key() with the round-trip identity asserted, or abort.
 - `main()`
 
 ### scratch/mathworld1_substrate_desk.py
