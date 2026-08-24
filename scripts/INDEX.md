@@ -2674,6 +2674,15 @@ MATH-CYBER-1 ACTION-SITE-QUAL-0 — ActionProgram v3 decoder qualification: the 
 - `apply_at(parent, rule_name, node)` — Engine-law candidate child keys for (rule, site): peel
 - `main()`
 
+### scratch/mathworld1_actiontok.py
+MATH-CYBER-1 ACTION-OPCODE-QUAL-0 — ActionGCTok: a tokenizer EXTENSION (never a mutation) of the frozen GCTok, plus its qualification. Qualifies that the real tokenizer implements the already-booked ACTION-BASIS-v2 opcode counterfactual without legacy drift; the predicted lengths are NOT a new discovery.
+
+- `class ActionGCTok` (encode, decode)
+- `sha(t: str) -> str`
+- `fsha(p: str) -> str`
+- `pct(xs, q)`
+- `main()`
+
 ### scratch/mathworld1_active.py
 MATH-CYBER-1 ACTIVE-EPISODIC-0 lockstep paired driver (PRE-REG MATH-CYBER-1-ACTIVE-EPISODIC-0, commit 73c063af). Two arms — ACTIVE-EPISODIC (success-gated episode-boundary updates) and FROZEN (theta_0, zero updates) — share theta_0, episode order, roots, budgets, overflow law, and ONE world snapshot, in ONE driver.
 

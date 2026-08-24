@@ -45929,3 +45929,86 @@ tokenizer/vocab, SAME initialization, SAME rows/order/optimizer
 law; old theta0 is historical reference, never the primary paired
 control. Dual audit before booking.
 
+## VERDICT MATH-CYBER-1-ACTION-OPCODE-QUAL-0: ActionGCTok is a drift-free EXTENSION and implements the booked counterfactual EXACTLY — all five bars fire: 207,190 diet strings + 929 MathWorld strings token-identical to legacy, 19 corpus rules one unique opcode each, 725/725 programs round-trip, and program med/p90/max = 5/8/8 with span p90 = 6 and zero action-induced 512 overflow, reproducing the registered prediction number-for-number (2026-08-24, Mac)
+
+Per PRE-REG MATH-CYBER-1-ACTION-OPCODE-QUAL-0 (committed with the
+driver at ac6c0716 before the run). Receipt
+logs/mathworld1/actiontok_qual.json. This rung qualifies
+IMPLEMENTATION FIDELITY of the already-booked
+ACTION-BASIS-v2-DESK-0 counterfactual — the lengths are not a new
+discovery.
+
+BAR ADJUDICATION (frozen law):
+1. LEGACY-ID FIRES: base atoms 0..39 unchanged, n_base 40, byte
+   fallback ids 40..295 untouched; all 36 reserved opcodes at ids
+   296..331, mutually distinct (vocab 296 -> 332).
+2. LEGACY-ENCODING FIRES: zero mismatches over 207,190 birth-diet
+   cur/nxt strings (all 12 shard files + step_chains — 13 files,
+   sha256s pinned in the receipt) and 929 frozen MathWorld
+   parent/child strings — old GCTok and ActionGCTok are
+   token-identical on every historical string.
+3. OPCODE FIRES: all 19 corpus rules map to one unique reserved
+   token each ("<r:{rule}>"), appended in the standing engine
+   order CORE+MACRO+INT+LIM+ALGEBRA; raw rule-name substrings are
+   never retokenized (reserved atoms match as explicit literals
+   only).
+4. PROGRAM FIRES: 725/725 qualified v4 programs serialize under
+   v5 with the opcode present in the id stream and
+   decode(encode(s)) == s exactly; zero round-trip failures.
+5. COUNTERFACTUAL-REPRO FIRES: program med 5 / p90 8 / max 8;
+   within-decision span p90 = 6 (same percentile law as the v2
+   desk); zero action-induced 512-overflow decisions (14
+   parent-only decisions report separately; equality with the v2
+   desk's 14 is a cross-rung read, ACTION-BASIS-v2-DESK-0 bar 2). This is
+   the registered v2-desk prediction reproduced number-for-number
+   by the real tokenizer.
+
+REGISTERED-PRIOR ACCOUNTING: the prior (all five bars, no
+material uncertainty) is CORRECT.
+
+READING (scoped): the TOKENIZER-NAMING residue of
+ACTION-BASIS-v2-DESK-0 is closed by construction — under
+ActionGCTok every within-decision length difference is now
+semantic (site/param digits), not rule-name spelling, and a full
+semantic action costs at most 8 tokens against a median
+161-token child rewrite. The extension adds 36 output-head slots
+(vocab 332), which is exactly why the registered PAIRED-DESIGN
+note stands: primary STATE-v-PROGRAM arms must share the SAME
+extended tokenizer/vocab, SAME initialization, SAME
+rows/order/optimizer law; old theta0 is historical reference,
+never the primary paired control.
+
+RECEIPT LIMITATIONS AND SCOPE NOTES (receipt-auditor, adopted):
+(a) the four MathWorld corpus inputs carry no sha in this receipt
+(the diet files do) — mitigated two ways: the driver re-derives
+and BINDS against them per decision (abort-on-mismatch), and all
+four are git-tracked and sha-locked in docs/receipts.lock.json
+(the auditor's "untracked" aside is corrected here: git ls-files
+lists all four); a re-run adds a corpus_file_sha256 block.
+(b) The OPCODE bar's uniqueness line is a membership check; the
+duplicate-name guard is the recomputed 36-unique OPCODE_ORDER
+(auditor-verified), and the anti-shadowing evidence lives in
+LEGACY-ENCODING plus the structural argument: no base atom
+contains "<", so legacy text always byte-fell-back at "<" and
+only a literal "<r:{rule}>" occurrence can change tokenization —
+and an auditor scan of all 412,397 corpus+diet string values
+found ZERO containing "<" at all. Residual fence: a FUTURE diet
+containing a literal "<r:" would tokenize differently under the
+two tokenizers; any diet built for the extended vocab asserts
+its text is "<"-free or re-runs bar 2.
+
+FENCES. Deterministic; Mac idle, single process; zero model
+calls, zero training, zero fresh seeds, zero search, zero MAGIC;
+scoped to the exact artifacts named (diet shard sha256s pinned in
+the receipt; frozen MathWorld corpus files; ACTION-SEMANTICS
+fences travel — sympy 1.14.0, v4 laws, i_unprod candidate index,
+nested-leg vacuity); historical GCTok bytes untouched (extension
+class only); receipt refuse-if-exists; no frozen receipt touched.
+NOT authorized here and not run: training, model loads, diet
+relabeling. STANDING NEXT CANDIDATE (needs its own GO):
+PROGRAM-DIET-COVERAGE-0 — census how much of the exact theta0
+birth diet deterministically relabels from (cur, nxt) into the
+qualified v4 ActionProgram under a pinned engine; it precedes any
+STATE-v-PROGRAM training so both arms share identical underlying
+mathematical transitions. Dual audit before booking.
+

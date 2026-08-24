@@ -725,8 +725,11 @@
    "tracked": true
   },
   "logs/mathworld1/actiontok_qual.json": {
-   "exists": false,
-   "source": "results"
+   "bytes": 3091,
+   "exists": true,
+   "sha256": "241f4146fe9620c5ac1cba063d1de0fca8ed40eae5994e6acad04fdd17e3f179",
+   "source": "results",
+   "tracked": true
   },
   "logs/mathworld1/active_pair.jsonl": {
    "bytes": 156806,

@@ -1,0 +1,76 @@
+{
+ "bars": {
+  "LEGACY_ID": true,
+  "LEGACY_ENCODING": true,
+  "OPCODE": true,
+  "PROGRAM": true,
+  "COUNTERFACTUAL_REPRO": true
+ },
+ "vocab_size_new": 332,
+ "n_reserved": 36,
+ "opcode_order_source": "CORE+MACRO+INT+LIM+ALGEBRA standing order",
+ "corpus_rules": [
+  "cancel",
+  "euler",
+  "expand",
+  "factor",
+  "i_ansatz_exp",
+  "i_apart",
+  "i_const",
+  "i_const_factor",
+  "i_heurisch",
+  "i_linear_basis",
+  "i_parts",
+  "i_sqrt_basis",
+  "i_sum",
+  "i_transcend_div",
+  "i_unprod",
+  "i_usub",
+  "powsimp",
+  "together",
+  "trigsimp"
+ ],
+ "n_diet_strings": 207190,
+ "n_mathworld_strings": 929,
+ "legacy_mismatches": 0,
+ "diet_file_sha256": {
+  "data/micromodel_chains_shard0.jsonl": "0d31c73b3723ea87c7ebd301cdded2e276065eb261efdede4fd339f59a02f9bc",
+  "data/micromodel_chains_shard1.jsonl": "080dd1774e4378085d2a6ece3d5b027d591755458a8032a1f496db85ce964766",
+  "data/micromodel_chains_shard10.jsonl": "a4cc56d0f52fe7c76d8ccdf17d3412fa5680c5238d30da39c2e09749e31cb36b",
+  "data/micromodel_chains_shard11.jsonl": "e27db3e46fa579cd76b51e4af9eefdb367ff61192142444536c2e402b3775daf",
+  "data/micromodel_chains_shard2.jsonl": "bf14049d3c452459bf736fef8e91dac213721e10067d2e996d712bf1f4425add",
+  "data/micromodel_chains_shard3.jsonl": "091a12a730212511b1844148c66eadea328745c6288aecfb2444f9d421fcf580",
+  "data/micromodel_chains_shard4.jsonl": "5c2b2be5134bebe7d237243ce9e9d2c7b98190a8045a722460258d07a0422cd8",
+  "data/micromodel_chains_shard5.jsonl": "da1fa63a03162c8ebae62cbf665668072d1a759e515140affc202dd5edecdebc",
+  "data/micromodel_chains_shard6.jsonl": "9aecec3134e25c2e016eb59bf18ae6f797795a0142c42eebe25a0de9980f8b05",
+  "data/micromodel_chains_shard7.jsonl": "d1af0ed0ed858d016ed470d3e2cff00fa5c098ac28856b54fdbd4fed2a846c50",
+  "data/micromodel_chains_shard8.jsonl": "7985e31b2583540f8ec174a9db709207dd51493c0b25e7e42034306176fd7030",
+  "data/micromodel_chains_shard9.jsonl": "ba89db2b321fbdeac9f45fae3ff49d47b4f6bf78a3ef9dba634ee846f67f6a6b",
+  "data/step_chains.jsonl": "3e89a97883627a45fb98294ef6f59fa514bdb3a79263a3c293c7066bd2139887"
+ },
+ "programs": 725,
+ "roundtrip_fail": 0,
+ "serialize_fail": 0,
+ "program_len": {
+  "med": 5,
+  "p90": 8,
+  "max": 8
+ },
+ "decision_span_p90": 6,
+ "action_induced_512": [],
+ "parent_only_512": 14,
+ "start": {
+  "start_commit": "ac6c0716",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "scratch/mathworld1_actionsem.py": "c79462129730328592ee2cc909fc563076afe80542dd2a745ce88ceef3e9c23b",
+   "scratch/mathworld1_srepr_export.py": "9cd1b729acd7ede732cd68ca69059b5b6d3d67ce60098bcd7734486e14b35d05",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58"
+  }
+ },
+ "completion_commit": "ac6c0716"
+}

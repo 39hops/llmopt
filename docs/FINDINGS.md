@@ -3160,3 +3160,13 @@ regime tag on every bullet is the fence.
   content — so the desk STOPS pre-training; next candidate is an
   action-opcode vocabulary desk; PROMOTE never rescored under the
   hypothetical tokenizer. RESULTS.md#L45758
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] ActionGCTok (36 reserved
+  rule opcodes appended after the frozen 296-token GCTok, ids 296-331,
+  vocab 332) is a drift-free EXTENSION: token-identical to legacy over
+  all 207,190 birth-diet strings + 929 frozen MathWorld strings,
+  725/725 v4 programs round-trip, and it reproduces the booked opcode
+  counterfactual number-for-number (program med/p90/max 5/8/8, span
+  p90 6, zero action-induced 512 overflow) — implementation-fidelity
+  rung, lengths not a new discovery; fences: future diets must stay
+  literal-"<"-free or re-run the legacy bar; paired STATE-v-PROGRAM
+  arms must share the extended vocab/init/rows. RESULTS.md#L45932
