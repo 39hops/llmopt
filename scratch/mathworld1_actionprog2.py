@@ -1,11 +1,15 @@
 """MATH-CYBER-1 ACTIONPROG-QUAL-1 — the qualified semantic
 ActionProgram decoder re-run against the VERSIONED SREPR corpus
 (states_srepr.jsonl / actions_srepr.jsonl, SREPR-EXPORT-0).
-Decoder logic byte-identical to scratch/mathworld1_actionprog.py
-(ACTIONPROG-QUAL-0); only the three corpus/receipt paths and
-this header differ. state_before is now srepr, so
-sp.sympify(state_before) is expected to reproduce State.key()
-on every decision; no lengths are measured here.
+Decoder logic identical to scratch/mathworld1_actionprog.py
+(ACTIONPROG-QUAL-0) except for exactly these disclosed deltas:
+the three corpus/receipt paths, this header, and the PARENT
+parse — state_before is now srepr and is rebuilt with
+srepr_inverse (imported from scratch.mathworld1_srepr_export;
+AMENDMENT SREPR-EXPORT-0-INVERSE), the exact verified inverse,
+instead of plain sp.sympify. Generated-label rule targets stay
+plain-sympify semantic matching, unchanged from the qualified
+decoder. No lengths are measured here.
 
 Canonical ActionProgram P = (rule_id, target_address,
 branch_index):
@@ -58,6 +62,7 @@ import llmopt.search.derivation as derivation  # noqa: E402
 from llmopt.lab.provenance import (completion_commit,  # noqa: E402
                                    start_provenance)
 from llmopt.search.derivation import State, successors  # noqa: E402
+from scratch.mathworld1_srepr_export import srepr_inverse  # noqa: E402
 
 OUT = Path("logs/mathworld1/actionprog_qual_srepr.json")
 
@@ -101,7 +106,7 @@ def main():
     nonfirst_targets = 0
     for key in sorted(acts):
         st_row = states[key]
-        parent_expr = sp.sympify(st_row["state_before"])
+        parent_expr = srepr_inverse(st_row["state_before"])
         parent = State(parent_expr)
         if sha(parent.key()) != st_row["state_before_hash"]:
             noncomparable.append(

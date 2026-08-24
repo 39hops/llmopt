@@ -12,8 +12,20 @@ corpus is frozen evidence and is never written; its sha256 is
 recorded before and after the run as proof.
 
 Qualification asserted IN-PROCESS per emitted string (abort, never
-skip): sp.srepr(sp.sympify(s)) == s AND s == the live object's
-State.key(). Binding gates identical to v1: every decision row
+skip): srepr_inverse(s) rebuilds an expr with sp.srepr == s
+exactly, AND s == the live object's State.key(). The inverse is
+per-node adaptive (AMENDMENT SREPR-EXPORT-0-INVERSE): the corpus
+mixes evaluated-canonical nodes with unevaluated ones
+(make_integrate builds evaluate=False products; 18/827 walk
+strings), so neither plain sympify (canonicalizes those 18) nor a
+blanket evaluate(False) reconstruction (Integral's constructor
+inserts a Mul(1, .) wrapper; 771/827 mismatch) is an inverse.
+srepr_inverse parses the constructor string with ast, rebuilds
+bottom-up, and per node takes whichever of
+{default-evaluate, evaluate(False)} reproduces that node's
+unparsed source exactly, asserting the root string equal to the
+input — zero silent canonicalization by construction.
+Binding gates identical to v1: every decision row
 byte-equal to frozen active.jsonl on state_before_hash,
 legal_action_set_hash, chosen_action_backend_local,
 state_after_hash; marker rows on state_before_hash (+ the
@@ -29,6 +41,7 @@ srepr_export_verdict.json} (refuse-if-exists).
 
     .venv/bin/python scratch/mathworld1_srepr_export.py       (Mac)
 """
+import ast
 import hashlib
 import json
 import subprocess
@@ -86,12 +99,49 @@ def split_label(label: str):
     return label, None
 
 
+_NS = {n: getattr(sp, n) for n in dir(sp) if not n.startswith("_")}
+
+
+def _build(node):
+    if isinstance(node, ast.Call):
+        fn = _NS[node.func.id]
+        args = [_build(a) for a in node.args]
+        want = ast.unparse(node)
+        e = fn(*args)
+        if sp.srepr(e) == want:
+            return e
+        with sp.evaluate(False):
+            e = fn(*args)
+        if sp.srepr(e) == want:
+            return e
+        raise ValueError(f"NODE IRRECONSTRUCTIBLE: {want[:90]}")
+    if isinstance(node, ast.Constant):
+        return node.value
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.USub):
+        return -_build(node.operand)
+    if isinstance(node, ast.Name):
+        return _NS[node.id]
+    raise ValueError(f"UNEXPECTED AST NODE {ast.dump(node)[:90]}")
+
+
+def srepr_inverse(s: str):
+    """Exact inverse of sp.srepr on this corpus: rebuilds the expr
+    node-by-node, choosing per node whichever of default-evaluate /
+    evaluate(False) reproduces that node's source, and asserts the
+    root srepr equals the input string."""
+    e = _build(ast.parse(s, mode="eval").body)
+    if sp.srepr(e) != s:
+        raise ValueError(f"ROOT MISMATCH: {s[:90]}")
+    return e
+
+
 def qualified_srepr(st: State) -> str:
     """State.key() with the round-trip identity asserted, or abort."""
     s = st.key()
-    rt = sp.srepr(sp.sympify(s))
-    if rt != s:
-        raise SystemExit(f"ROUND-TRIP FAILURE: {s[:120]}...")
+    try:
+        srepr_inverse(s)
+    except ValueError as ex:
+        raise SystemExit(f"ROUND-TRIP FAILURE: {ex}")
     return s
 
 

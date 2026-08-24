@@ -44990,3 +44990,64 @@ thresholds under separate approval), any STATE-v-PROGRAM scoring,
 or any axiom relay update. Verdict books after prereg-auditor AND
 receipt-auditor pass (dual audit standard).
 
+## AMENDMENT SREPR-EXPORT-0-INVERSE: the registered round-trip law (plain sympify inverts srepr) is REFUTED pre-completion — the corpus mixes evaluated and UNEVALUATED nodes, and the export re-launches under a verified per-node adaptive inverse (2026-08-24, Mac)
+
+Target: PRE-REG MATH-CYBER-1-SREPR-EXPORT-0. Status when booked:
+the first export launch ABORTED on its own in-process round-trip
+assert (bar 2's REFUTED-IF clause, firing exactly as registered);
+zero receipt files completed (the two partial jsonl fragments from
+the aborted run were deleted; the verdict receipt was never
+written; the frozen v1 corpus untouched). No sealed value exists
+in this rung — the run is a deterministic census and its only
+outputs are the qualification counts themselves, so this amendment
+re-registers the inverse law BEFORE any completed artifact is
+read.
+
+WHAT THE ABORT MEASURED (diagnostic walk, 827 strings = 102
+states + 725 legal children):
+- plain sp.sympify fails the srepr round-trip on 18/827: the
+  frozen world holds UNEVALUATED nodes (make_integrate builds
+  constant-factored products with evaluate=False, e.g.
+  Mul(Integer(9), Add(Mul(Integer(-1), Integer(21), ...), ...));
+  sympify's constructors re-evaluate and collapse them (9*21 ->
+  189). The ACTIONPROG-QUAL-0 blocker was therefore NOT purely an
+  sstr parser artifact: state identity depends on evaluation
+  structure that any re-evaluating parser destroys, srepr or sstr
+  alike.
+- blanket evaluate(False) reconstruction fails 771/827: sympy's
+  Integral constructor inserts a Mul(Integer(1), .) wrapper under
+  evaluate(False), corrupting exactly the evaluated-canonical
+  majority.
+
+RE-REGISTERED INVERSE (the corrected bar-2 law): srepr_inverse in
+scratch/mathworld1_srepr_export.py parses the srepr string with
+Python ast, rebuilds bottom-up, and per node accepts whichever of
+{default-evaluate, evaluate(False)} construction reproduces that
+node's unparsed source exactly, then asserts the ROOT srepr equals
+the input string (abort otherwise). Zero silent canonicalization
+or substitution is enforced by the exact string equality at every
+node and at the root. Diagnostic pre-run: 827/827 strings invert.
+The decoder re-run driver (scratch/mathworld1_actionprog2.py)
+imports this same srepr_inverse for its parent parse; its
+generated-label target matching is unchanged from the qualified
+ACTIONPROG-QUAL-0 decoder.
+
+BARS: unchanged from the prereg except bar 2's inverse law, which
+now reads: ROUND-TRIP fires iff every emitted string passed the
+in-process srepr_inverse assert (exit 0) AND an offline re-read of
+states_srepr.jsonl reproduces sha(srepr(srepr_inverse(
+state_before))) == state_before_hash on 102/102 rows. REGISTERED
+PRIOR (updated, on the record): all five bars fire under the
+adaptive inverse; the original prior's mechanism sentence ("the 26
+v1 failures were a parser-ambiguity artifact of sstr, not a world
+property") is RETRACTED as stated — the failures are a
+serialization-evaluation-structure property of the world's own
+states, which the adaptive inverse handles and plain parsing
+cannot.
+
+FENCES: unchanged from the prereg (Mac, zero model, deterministic,
+frozen v1 untouched, no length desk, dual audit before the
+verdict). The interchange consequence travels to the parked axiom
+relay: any consumer of this corpus must use the versioned adaptive
+inverse, never a plain parser.
+
