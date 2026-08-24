@@ -45304,3 +45304,88 @@ the engine's actual operator application site, never the label
 target string), any length desk, any model scoring, any encoder
 repair. Dual audit before booking.
 
+## PRE-REG MATH-CYBER-1-ACTION-SITE-QUAL-0: ActionProgram v3 — does a program addressing the engine's ACTUAL operator application site (never the label target string) decode all 725 frozen actions exactly? (2026-08-24, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-24), the ACTION-SITE branch
+of the STATE-OBSERVABILITY frozen interpretation. Zero model, zero
+training, zero fresh seeds, zero length counting, no MAGIC, no
+search rerun.
+
+INSTRUMENT. scratch/mathworld1_actionsite.py (committed with this
+prereg before the run). Schema P = (rule_id, operator_site,
+branch_index):
+- operator_site = (kind, ordinal), kind in {D, I, L} per rule
+  family (Derivative/Integral/Limit), None for whole-expression
+  algebra moves; ordinal indexes the node among parent.atoms(Kind)
+  sorted by (count_ops, srepr) — a total deterministic order.
+  atoms() is a set, so structurally equal occurrences are ONE
+  site, which is exactly the engine's value-level xreplace
+  semantics; FROZEN LAW: when more than one distinct site
+  reproduces a frozen child, the encoder takes the LOWEST ordinal
+  (first-occurrence canonicalization, qualified as-is rather than
+  inventing occurrence semantics the engine does not possess), and
+  the multiplicity is censused.
+- Nested/multi-limit Integral law reproduced from
+  derivation.successors verbatim: the rule applies to the
+  synthesized innermost one-limit Integral(function, limits[0]),
+  the rewrite rewraps as Integral(rewrite, *limits[1:]), the child
+  is parent.xreplace({site: new_node}). The synthetic inner target
+  is RULE SEMANTICS, never part of the program.
+- branch_index = the child's position among the ACCEPTED children
+  of (rule, site), child-key-sorted; accepted = site-derived
+  candidate keys intersected with the regenerated engine legal set
+  for that rule (reproducing verify/dedup filtering without
+  re-implementing it). Deterministic; explicitly NOT claimed as
+  the final model-facing semantic branch representation.
+- Decoder operands: exact parent (srepr_inverse of the versioned
+  corpus) + frozen rule implementations + program; the frozen
+  child hash is the comparison oracle only. Binding gates per
+  decision as in ACTIONPROG-QUAL-0/1 (state hash + legal
+  child-hash multiset), abort classes counted.
+
+HOUSEKEEPING CENSUS (same commit, report-only, BLOCKING): on all
+102 corpus states, str(exact) == sp.sstr(exact) == the frozen v1
+state_before string — theta0 receives str() while the interchange
+writes sstr(); any mismatch writes a BLOCKED receipt and aborts
+qualification.
+
+BARS (frozen):
+1. BIND fires iff 101/101 decisions bind (noncomparable == 0).
+2. QUAL fires iff qualified == 725 with zero wrong_child, zero
+   program_collision (programs unique per distinct child within
+   each parent), zero branch_out_of_range, zero
+   unaddressable_site.
+3. HOUSEKEEPING fires iff 102/102 states pass the str/sstr/v1
+   equality census.
+REFUTED-IF: any unaddressable_site (the engine-site law does not
+cover the corpus), any wrong_child or collision (the v3 schema is
+not a faithful action coordinate), or any housekeeping mismatch
+(theta0's str() view diverges from the interchange sstr() view).
+
+ANATOMY (report-only, registered): site kind histogram, site
+ordinal histogram, nested/multi-limit Integral action count,
+multi-site (same-valued occurrence) action count, branch-index
+histogram, qualified actions by rule family, and which rule
+families produce branch > 0.
+
+REGISTERED PRIOR (house): all three bars fire, 725/725. The v2
+failures were pure label-target addressing (85 target_not_in_
+parent, zero schema failures); v3 addresses sites the way the
+engine itself enumerates them, and the accepted-set intersection
+inherits the engine's own filtering. Residual uncertainty:
+ordinal stability under count_ops ties is handled by the srepr
+tiebreak, and algebra moves reduce to the bare-rule accepted set
+— the least-exercised path.
+
+FENCES. Deterministic apart from load-sensitive rule timeboxes
+(idle Mac, single process; the binding gate re-asserts the frozen
+legal set before any counting, so a timebox flake books
+noncomparable, never a false qualification). Scoped to the exact
+frozen artifacts named (states_srepr.jsonl, actions_srepr.jsonl,
+states.jsonl for the housekeeping census). Receipt
+logs/mathworld1/actionsite_qual.json refuse-if-exists; no frozen
+receipt touched. If 725/725 qualifies, STOP — the next decision
+(semantically parameterizing the branching rules before the blind
+ACTION-BASIS-v2 length desk) is Artin/GPT's, not this rung's.
+Dual audit before booking.
+
