@@ -46251,3 +46251,86 @@ per-row-normalized continuation CE preregistered separately;
 full-sequence LM loss as rider only; no training authorized).
 Dual audit before booking.
 
+## PRE-REG MATH-CYBER-1-I-UNPROD-SEMANTICS-DESK-0: can i_unprod's opaque child-sort branch be replaced by a compact rule-native semantic parameter, censused over the 2,894 PDC-matched edges? (2026-08-24, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-24), assessment-first
+residue of PROGRAM-DIET-COVERAGE-0: paired STATE-v-PROGRAM
+training is NOT authorized while 34.6% of i_unprod supervision
+uses opaque child-sort branch identity. Zero model, zero
+training, zero fresh seeds. Nothing is implemented by this desk —
+it only establishes whether a semantic scheme EXISTS.
+
+POPULATION (fixed, hash-bound to PDC): the unique i_unprod
+(cur, nxt) edges classed unique_program in pdc_relabel.jsonl —
+expected exactly 2,888 parents / 2,894 edges (the PDC exposure
+receipt's counts); abort on mismatch.
+
+INSTRUMENT. scratch/mathworld1_unprodsem.py (committed with this
+prereg before the run). The frozen i_unprod implementation
+(llmopt/search/rules.py L693-756) makes exactly three generative
+choices per candidate: the additive TERM of the integrand, the
+transcendental ATOM (sin/cos/exp node) within that term, and the
+GUESS FAMILY (1 = table A = cof*H(u); 2 = integrate-cofactor
+A = (int cof)*fn); candidates dedup by srepr(A) with an emission
+cap of 6. The desk replicates that loop with instrumentation,
+coordinatizing the atom as its ordinal among the term's
+transcendental atoms SORTED BY SREPR (the engine iterates a set —
+the sorted ordinal is the deterministic candidate coordinate),
+and PARITY-GATES every parent: the replica's emitted candidate
+set must equal the frozen rule's own output set (any mismatch
+books parity_fail, excluded from scheme scoring, counted).
+
+REGISTERED SCHEMES: S1 = (term_index, atom_ordinal, family);
+S2 = (term_index, family); S3 = (term_index). A populated edge is
+COVERED under a scheme iff its matched child's coordinate
+(lexicographically lowest over generating traces, multi-trace
+censused) collides with NO sibling child of the same parent.
+
+STABILITY CENSUS (registered): distinct-A count per site;
+any site with distinct candidates > the emission cap 6 is a
+SET-ORDER MEMBERSHIP HAZARD (which 6 survive could depend on set
+iteration order) — counted as its own class.
+
+BARS (frozen before counting):
+1. SCHEME-EXISTS fires iff some registered scheme covers 100% of
+   the parity-passed branch-exposed edges (n_frozen > 1) with
+   zero collisions, AND its serialization cost class is
+   i_parts-like (<= 3 coordinate fields, each a small ordinal —
+   S1 is the largest admissible shape).
+2. STABLE fires iff cap-hazard edges == 0 (no site exceeds the
+   emission cap pre-dedup).
+KILL: no registered scheme covers the branch-exposed population.
+UNRESOLVED: coverage complete but cap hazards > 0 (a scheme
+exists but the engine's own emission membership is not provably
+order-independent — the decision then needs an engine-side
+fence, not just a coordinate).
+
+DECISION PRICING (frozen): if SCHEME-EXISTS fires -> the next
+rung is a qualification (the ACTION-SEMANTICS pattern) adopting
+the winning scheme; if KILL -> price the two registered
+alternatives: (a) retain opaque branch under an explicit primary
+fence, or (b) exclude affected i_unprod rows SYMMETRICALLY from
+both paired arms — costed against the PDC numbers (3,123 rows =
+4.3% of the 73,324-row matched subset; branch-exposed-only
+exclusion ~1,002 edges).
+
+REGISTERED PRIOR (house): S1 fires with zero collisions (the
+family-2 guess produces a structurally different A than family 1
+for the same (term, atom), and sibling children of one parent
+almost always come from different terms); STABLE at risk — the
+cap 6 exists because some sites DO generate many candidates, so
+a nonzero cap-hazard count is plausible; S3 likely collides
+(one term can host two atoms or two families).
+
+FENCES. Deterministic desk (sorted-atom coordinates; the parity
+gate is the guard against replica drift — the dual-copy hazard
+of replicating rule internals is accepted BECAUSE the gate
+re-derives the frozen rule's output per parent and any
+divergence excludes the edge); Mac idle; scoped to the exact
+artifacts named (pdc_relabel.jsonl, the sha-pinned diet, rules.py
+at the pinned sha); receipt logs/mathworld1/unprodsem_desk.json
+refuse-if-exists; no frozen receipt touched. sympy 1.14.0 scope
+travels. NOT authorized: implementing any scheme, any tokenizer
+change, any training, the paired experiment itself. Dual audit
+before booking.
+
