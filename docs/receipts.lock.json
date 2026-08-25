@@ -752,6 +752,34 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/axfixture/actions.jsonl": {
+   "bytes": 2774760,
+   "exists": true,
+   "sha256": "829b2cd044ad1f410176ce3b8f46af63065d4a866240253b06163a50255d8111",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/axfixture/axfixture_manifest.json": {
+   "bytes": 1765,
+   "exists": true,
+   "sha256": "7bd70c17da5b1e43c3370f099250d9d47324a899591608ec7921e28363c5891e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/axfixture/parents.jsonl": {
+   "bytes": 182357,
+   "exists": true,
+   "sha256": "bc15cacd3d52ab64921acb4b63427b3f6e493c7595d2111a7b490dbc5fdce4aa",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/axfixture/unprod_stress.jsonl": {
+   "bytes": 933048,
+   "exists": true,
+   "sha256": "e13bea64759a7cea67e0c512e8169f4e79978d7acd9d5e2ac2f5adf8ff6e79c6",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/census.jsonl": {
    "bytes": 144816,
    "exists": true,

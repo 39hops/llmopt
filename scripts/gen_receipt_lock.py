@@ -41,12 +41,13 @@ RESULTS = ROOT / "docs" / "RESULTS.md"
 LOCK = ROOT / "docs" / "receipts.lock.json"
 # logs/<dir>/<file.ext> as cited in prose; kept deliberately narrow so
 # directory-only mentions ("receipts land in logs/foo/") are ignored.
-CITE = re.compile(r"\blogs/[A-Za-z0-9_.\-]+/[A-Za-z0-9_.\-]+\.[A-Za-z0-9]+\b")
+CITE = re.compile(
+    r"\blogs/(?:[A-Za-z0-9_.\-]+/)+[A-Za-z0-9_.\-]+\.[A-Za-z0-9]+\b")
 # brace-list citations — logs/<dir>/{a.ext, b.ext, ...} — expand to one
 # path per member. Whitespace/newlines inside the braces are prose
 # wrapping, not structure; members that do not look like filenames
 # (no extension) are ignored rather than guessed at.
-BRACE = re.compile(r"\blogs/[A-Za-z0-9_.\-]+/[A-Za-z0-9_.\-]*"
+BRACE = re.compile(r"\blogs/(?:[A-Za-z0-9_.\-]+/)+[A-Za-z0-9_.\-]*"
                    r"\{[^{}]+\}[A-Za-z0-9_.\-]*")
 _MEMBER = re.compile(r"^[A-Za-z0-9_.\-]+$")
 _FILE = re.compile(r"^[A-Za-z0-9_.\-]+\.[A-Za-z0-9]+$")
@@ -97,8 +98,15 @@ def cited_paths() -> dict[str, str]:
     tests/science_incidents/test_frozen_receipt_mutation.py:
     every receipt of a BOOKED prereg must end up sha-locked."""
     text = RESULTS.read_text()
-    out = {m.group(0): "results" for m in CITE.finditer(text)}
-    out.update({p: "results" for p in expand_braces(text)})
+
+    def norm(p: str) -> str:
+        # a doubled prefix in prose ("logs/x/logs/x/f.log", one
+        # historical typo at RESULTS L2421) cites the file at the
+        # LAST logs/ root; no real receipt nests a logs/ dir.
+        return p[p.rindex("logs/"):] if "/logs/" in p else p
+
+    out = {norm(m.group(0)): "results" for m in CITE.finditer(text)}
+    out.update({norm(p): "results" for p in expand_braces(text)})
     # prereg-DECLARED paths win the pending classification while the
     # file does not exist, even when the registration prose also
     # names them (a pre-reg legitimately cites paths its run WILL
