@@ -3216,3 +3216,15 @@ regime tag on every bullet is the fence.
   the durable relay carries a transparent pre-delivery amendment to
   param_kind none|u_choice|term_index. Delivery stays Artin-manual.
   RESULTS.md#L46685
+
+- [SINGLE-SEED] [math-cyber] [mac] MATCHED-SUBSET materialization
+  NO-FIRE at 73,323/73,324: the neutral paired artifact
+  reconstructs and exactly replays the FINAL canonical
+  ActionProgram on every emitted row (tok round-trip and collision
+  bars clean; STATE p50 17 v PROGRAM p50 5 tokens, descriptive),
+  but ONE historical i_heurisch edge is engine-irreproducible —
+  sp.integrate now emits the expanded-log spelling, byte-identical
+  to the i_linear_basis child, so seen-dedup removes the edge (0
+  hits in 25 fresh-interpreter samples); artifact stays
+  UNQUALIFIED, denominator not shrunk; decision (registered
+  censoring class v hold) is Artin/GPT's. RESULTS.md#L47013

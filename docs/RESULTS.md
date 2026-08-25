@@ -46782,7 +46782,8 @@ follow-up 9d656c94; reply
 docs/relay/2026-08-25-0-mathcyber-action-abi-reply.md; independent
 implementation frozen pre-fixture at 66661b9 (== e8051d7 after
 their docs-only remote rebase, per their provenance note); receipt
-logs/action_abi/action_abi_qual.json.
+action_abi_qual.json under their repo's logs/action_abi/ directory
+(an AXIOM-repo path, not a house receipt).
 
 COUNTER-VERIFIED HOUSE-SIDE (recomputed from their receipt, not
 accepted from their tables):
@@ -47008,4 +47009,119 @@ data/matsub_pairs.jsonl and logs/mathworld1/matsub_receipt.json
 are DELETED before relaunch (registered output paths of an
 unbooked run; refuse-if-exists guards stay unconditional). All
 other prereg text, bars, pins, and fences stand unchanged.
+
+## VERDICT MATH-CYBER-1-MATCHED-SUBSET-MATERIALIZE-0: NO-FIRE at 73,323/73,324 — the amended fresh-seed retry law recovered 19 of 20 pooled-pass failures, but ONE historical i_heurisch edge is not re-materializable by the current engine under 25 sampled interpreter hash seeds; the artifact is NOT booked as qualified and the denominator is NOT shrunk (2026-08-25, Mac)
+
+Per PRE-REG MATH-CYBER-1-MATCHED-SUBSET-MATERIALIZE-0 and
+AMENDMENT -RETRY (both committed before their runs). Receipts
+logs/mathworld1/matsub_receipt.json + matsub_run.log (the run's
+stdout, force-added with this booking — it carries the pooled-pass
+error classes and the matched-rows census that the json receipt
+does not; relaunched run, whose start_commit == the recorded
+completion_commit field 8cda3885, the lock-accept commit that
+preceded launch). Producer prereg'd at e64141f7, amended at
+5e8b5662 (that commit also modified the producer); the sha that
+RAN is pinned in the receipt's start block and equals the
+committed 5e8b5662 content.
+
+BAR ADJUDICATION (frozen law):
+1. POPULATION-EXACT NO-FIRE: rows_emitted 73,323 (expected
+   73,324); matching itself was exact — the source scan found
+   73,324 matched rows / 58,988 parents (matsub_run.log line 1),
+   and the one missing row is a decode failure, not a population
+   mismatch.
+2. FINAL-REPLAY NO-FIRE: decode(cur, program) == nxt for
+   73,323/73,324; residual decode_errors {rule_absent: 1}.
+3. TOK-ROUNDTRIP FIRES: zero round-trip failures, zero literal
+   "<" rows.
+4. NO-COLLISION FIRES: zero same-(cur, program)-different-nxt.
+NO-OPAQUE is not adjudicated (its law requires bars 1-4).
+Per REFUTED-IF: the artifact is NOT booked as qualified. It
+remains on disk (data/matsub_pairs.jsonl, sha256 94ff1624...,
+47,142,919 bytes, untracked) explicitly labeled UNQUALIFIED
+INTERMEDIATE — no training input status.
+
+RETRY-LAW ACCOUNTING (the amendment worked as frozen): the pooled
+pass failed 20 parents ({unaddressable: 10, rule_absent: 9,
+det_ambiguous: 1}, matsub_run.log — a DIFFERENT failure set than the first run's
+5, confirming the shared-hash-seed lottery); fresh-subprocess
+retries recovered 19/20 (histogram: 15 on attempt 1, 2 on
+attempt 2, 1 each on attempts 3 and 5), 1 exhausted after 8.
+
+THE RESIDUAL ROW (diagnosed to mechanism, in-session):
+data/step_chains.jsonl source_line 8146 (0-indexed; file line
+8147) — cur
+"Integral(4*log(3*x)*cos(x) + 4*sin(x)/x, x)", historical nxt
+"4*log(3*x)*sin(x)", PDC-classed unique_program under rule
+i_heurisch on 2026-08-24. Today sp.integrate returns the
+expanded-log spelling 4*log(x)*sin(x) + 4*log(3)*sin(x), which is
+byte-identical to the i_linear_basis child at the same parent, so
+successors' seen-dedup suppresses the i_heurisch edge entirely
+(rule_absent — no edge exists to address; MEASURED in-session:
+i_linear_basis(parent) and i_heurisch(parent) return
+srepr-identical single results, and i_linear_basis precedes
+i_heurisch in CORE_RULES order). 25 fresh-interpreter samples (9
+in-run + a PYTHONHASHSEED 0-15 sweep; samples, not guaranteed
+distinct seeds): the historical spelling appeared 0 times. The first run's OTHER
+i_heurisch failures did flip across fresh processes (four of its
+five decoded in one serial cold pass; its fifth, the shard2
+line-4317 row, reproduced in 2 of 3 fresh probes and recovered
+under the new law here), which is what the retry law exists for; this row's emission looks stable-unreachable in
+the current environment, not merely rare.
+
+READING (scoped): materialization machinery is sound — 73,323
+rows reconstruct their FINAL canonical program and replay exactly,
+per-source counts match PDC on every file except step_chains
+(-1), and program/token laws hold everywhere emitted. The blocker
+is a single ENGINE-EMISSION reproducibility loss in the
+historical diet (the checkpoint selection-effect's cousin: the
+diet recorded a nondeterministic spelling the engine no longer
+emits). DECISION FOR ARTIN/GPT (no action taken here, per the
+frozen never-shrink law): (a) amend the population law to add a
+registered censoring class (engine_irreproducible_emission, n=1,
+row carried in the artifact with a class flag and excluded-with-
+disclosure from the paired denominator), then re-run to a clean
+booking; or (b) hold the blocker. Option (a) mirrors PDC's own
+censored_load_sensitive precedent (n=29 there).
+
+MEASUREMENTS (descriptive, from the receipt): emitted uniques
+59,586 pairs / 58,987 cur (each -1 v population, the residual
+row); per_rule headline i_heurisch 18,945 / i_linear_basis
+21,095 / i_const 14,932 / i_sum 10,822 / i_unprod 3,123 /
+i_inverse_trig 3,159; param_kind {none: 70,197, term_index:
+3,123, u_choice: 3} (i_parts is nearly absent from the matched
+diet — 3 rows — a fact the paired design should know); token
+dists STATE p50/p90/p99/max 17/32/57/219 v PROGRAM 5/5/8/8
+(ActionGCTok, descriptive only); overlap flags: corpus_state 18,
+corpus_edge 18, band_calibration 38, band_adapt 75, band_holdout
+36, band_holdout_diag 16 (band keys are the receipts' own
+band/stage vocabulary); TRAIN band not annotatable from frozen
+receipts (registered limitation).
+NOTE: the per-rule/param_kind/token/overlap numbers above are the
+EMITTED-73,323 view of an unqualified artifact — they are cited
+for design awareness, not booked as the final artifact's numbers.
+
+RECEIPT-AUDIT DISCLOSURES (adopted): the json receipt does not
+name the failing row (bare class counter) — its full identity is
+booked here verbatim and a re-run emits failing pairs into the
+receipt; the shipped retry_hist is keyed by ATTEMPT NUMBER, not
+the amendment's registered per-rule keying (same content volume,
+different field — a re-run keys by rule too); the pre-retry error
+census reaches the record via the force-added matsub_run.log, not
+the json; the receipt-lock's _last_accept trail is overwritten by
+regeneration — the accept reason survives in commit 8cda3885 and
+the amendment text; the smoke invocation ran pre-launch
+(mechanism classes W/det-sited/u_choice/term_index all exercised)
+and its *_smoke outputs were removed afterward, so no on-disk
+smoke evidence remains.
+
+FENCES. All prereg fences carried (neutral single artifact,
+historical order, no sorting/batching/shuffle/model; sympy
+1.14.0; descriptive lengths; annotation limitations as
+registered). The first run's outputs were deleted under AMENDMENT
+-RETRY with a receipt-lock --accept (commit 8cda3885). The
+i_heurisch process-hash-seed emission nondeterminism fence now
+also covers stable-unreachability (this row). NOT run: paired
+design, training, model loads, fresh eval seeds, Axiom anything.
+Dual audit before booking. After booking: STOP.
 

@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 313, spec-cited 89, cited-but-library 61
+Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 314, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -257,16 +257,16 @@ Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 313, spec-ci
 | mathworld0 | mathworld0_coldreplay.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | mathworld1 | mathworld1_abv2desk.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_actionbasis_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_actionfinal.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| mathworld1 | mathworld1_actionfinal.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | mathworld1 | mathworld1_actionprog.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | mathworld1 | mathworld1_actionprog2.py | results-cited | RESULTS | RESULTS×2 | — | — |
-| mathworld1 | mathworld1_actionsem.py | results-cited | RESULTS | RESULTS×2 | — | 5 |
+| mathworld1 | mathworld1_actionsem.py | results-cited | RESULTS | RESULTS×2 | — | 6 |
 | mathworld1 | mathworld1_actionsite.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| mathworld1 | mathworld1_actiontok.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| mathworld1 | mathworld1_actiontok.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | mathworld1 | mathworld1_active.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_autopsy.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_axfixture.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_birth.py | results-cited | RESULTS | RESULTS×2 | — | 10 |
+| mathworld1 | mathworld1_axfixture.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| mathworld1 | mathworld1_birth.py | results-cited | RESULTS | RESULTS×2 | — | 11 |
 | mathworld1 | mathworld1_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_cycle.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_execbench.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -275,17 +275,18 @@ Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 313, spec-ci
 | mathworld1 | mathworld1_liveness.py | UNCITED | — | — | — | — |
 | mathworld1 | mathworld1_longctx_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_longctx_census2.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_matsub.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_pdcov.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_regret.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
 | mathworld1 | mathworld1_regret_walllift.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_retrolabel.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_scoreqal.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_srepr_export.py | results-cited | RESULTS | RESULTS×3 | — | 8 |
+| mathworld1 | mathworld1_srepr_export.py | results-cited | RESULTS | RESULTS×3 | — | 9 |
 | mathworld1 | mathworld1_stateobs.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_substrate_desk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_terminal.py | UNCITED | — | — | — | — |
 | mathworld1 | mathworld1_unprod_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_unprodsem.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
+| mathworld1 | mathworld1_unprodsem.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
 | mathworld1 | mathworld1_yield.py | UNCITED | — | — | — | — |
 | matryoshka | matryoshka_r1.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | matryoshka | matryoshka_r2.py | spec-cited | specs | specs×1 | — | — |

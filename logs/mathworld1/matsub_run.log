@@ -1,0 +1,80 @@
+[msm] matched rows=73324 parents=58988
+[msm] retry parents=20 errs={'unaddressable': 10, 'rule_absent': 9, 'det_ambiguous': 1}
+[msm] post-retry errs={'rule_absent': 1} hist={2: 2, 5: 1, 1: 15, 3: 1, 'exhausted': 1}
+{
+ "smoke": false,
+ "rows_emitted": 73323,
+ "unique_pairs": 59586,
+ "unique_cur": 58987,
+ "decode_errors": {
+  "rule_absent": 1
+ },
+ "retry_hist": {
+  "2": 2,
+  "5": 1,
+  "1": 15,
+  "3": 1,
+  "exhausted": 1
+ },
+ "per_rule": {
+  "i_heurisch": 18945,
+  "i_sum": 10822,
+  "i_const": 14932,
+  "expand": 716,
+  "i_linear_basis": 21095,
+  "i_unprod": 3123,
+  "i_log_power": 55,
+  "i_inverse_trig": 3159,
+  "i_ansatz_exp": 10,
+  "i_parts": 3,
+  "i_usub": 19,
+  "together": 7,
+  "i_sqrt_basis": 31,
+  "i_const_factor": 402,
+  "i_transcend_div": 4
+ },
+ "param_kind": {
+  "none": 70197,
+  "term_index": 3123,
+  "u_choice": 3
+ },
+ "overlap_counts": {
+  "overlap_band_adapt": 75,
+  "overlap_corpus_state": 18,
+  "overlap_corpus_edge": 18,
+  "overlap_band_calibration": 38,
+  "overlap_band_holdout": 36,
+  "overlap_band_holdout_diag": 16
+ },
+ "train_band_note": "TRAIN band has no state hashes in any frozen receipt (bins-only census); train overlap NOT annotatable here",
+ "token_dist": {
+  "state_view": {
+   "p50": 17,
+   "p90": 32,
+   "p99": 57,
+   "max": 219
+  },
+  "program_view": {
+   "p50": 5,
+   "p90": 5,
+   "p99": 8,
+   "max": 8
+  },
+  "note": "descriptive only"
+ },
+ "literal_lt_rows": 0,
+ "artifact": {
+  "path": "data/matsub_pairs.jsonl",
+  "sha256": "94ff1624018aa88d0e8640ebaf86684a7ea3b35e7918b4a44acad85a4a24c690",
+  "bytes": 47142919
+ },
+ "manifest_rows": 103595,
+ "bars": {
+  "POPULATION_EXACT": false,
+  "FINAL_REPLAY": false,
+  "TOK_ROUNDTRIP": true,
+  "NO_COLLISION": true
+ },
+ "completion_commit": "8cda3885"
+}
+[msm] expected rows 73324 (smoke informational)

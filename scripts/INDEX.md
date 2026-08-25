@@ -2792,6 +2792,17 @@ MATH-CYBER-1 TRAIN-band exposure census v2 (outside-review correction of OBSERVA
 
 - `main()`
 
+### scratch/mathworld1_matsub.py
+MATH-CYBER-1 MATCHED-SUBSET-MATERIALIZE-0 — the ONE neutral paired artifact for the PDC matched population.
+
+- `sha(t: str) -> str`
+- `fsha(p) -> str`
+- `vis(key: str) -> str`
+- `derive_programs(item)` — One parent: (cur, {nxt: rule}) -> per-nxt canonical program
+- `load_population()`
+- `overlap_sets()`
+- `main()`
+
 ### scratch/mathworld1_pdcov.py
 MATH-CYBER-1 PROGRAM-DIET-COVERAGE-0 — census: how much of theta0's EXACT historical birth diet deterministically relabels from (cur, nxt) into the fully-qualified v4 ActionProgram under the pinned engine? Zero model, zero training, zero fresh seeds, zero search evaluation, zero MAGIC.
 
