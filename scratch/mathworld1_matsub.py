@@ -271,21 +271,37 @@ def main():
                 programs[(cur, nxt)] = row
                 if "err" in row:
                     errs[row["err"]] += 1
-    # ONE registered cold retry for failed parents
+    # Registered retry law (AMENDMENT -RETRY): failed parents get
+    # up to 8 FRESH-SUBPROCESS attempts — a new interpreter per
+    # attempt, so each samples a new hash seed (fork workers
+    # inherit the launcher's; i_heurisch emission is
+    # hash-seed-nondeterministic between equal spellings).
+    import subprocess
+    retry_hist = Counter()
     retry = sorted({cur for (cur, nxt), r in programs.items()
                     if "err" in r})
-    if retry:
-        print(f"[msm] retry parents={len(retry)} errs={dict(errs)}",
-              flush=True)
-        with ctx.Pool(9) as pool:
-            for cur, res in zip(retry, pool.imap(
-                    derive_programs,
-                    [(c, need[c]) for c in retry], chunksize=4)):
+    print(f"[msm] retry parents={len(retry)} errs={dict(errs)}",
+          flush=True)
+    for cur in retry:
+        for attempt in range(1, 9):
+            p = subprocess.run(
+                [sys.executable, __file__, "--pair"],
+                input=json.dumps([cur, need[cur]]),
+                capture_output=True, text=True)
+            if p.returncode != 0:
+                continue
+            res = json.loads(p.stdout)
+            if all("err" not in r for r in res.values()):
                 for nxt, row in res.items():
                     programs[(cur, nxt)] = row
-        errs = Counter(r["err"] for r in programs.values()
-                       if "err" in r)
-    print(f"[msm] post-retry errs={dict(errs)}", flush=True)
+                retry_hist[attempt] += 1
+                break
+        else:
+            retry_hist["exhausted"] += 1
+    errs = Counter(r["err"] for r in programs.values()
+                   if "err" in r)
+    print(f"[msm] post-retry errs={dict(errs)} "
+          f"hist={dict(retry_hist)}", flush=True)
 
     corpus_states, corpus_edges, bands = overlap_sets()
     per_src = Counter()
@@ -351,6 +367,7 @@ def main():
         "rows_emitted": emitted,
         "unique_pairs": uniq_pairs, "unique_cur": uniq_cur,
         "decode_errors": dict(errs),
+        "retry_hist": dict(retry_hist),
         "per_source": dict(per_src),
         "per_rule": dict(per_rule),
         "param_kind": dict(per_pk),
@@ -387,4 +404,8 @@ def main():
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "--pair":
+        cur, want = json.loads(sys.stdin.read())
+        print(json.dumps(derive_programs((cur, want))))
+        sys.exit(0)
     sys.exit(main())

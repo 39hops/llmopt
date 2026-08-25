@@ -46961,3 +46961,51 @@ to the next prereg and are NOT touched here. After booking: dual
 audit, commit/push, STOP — no paired design or training in this
 rung.
 
+## AMENDMENT MATH-CYBER-1-MATCHED-SUBSET-MATERIALIZE-0-RETRY: first run booked 73,319/73,324 (bars 1+2 no-fire) — all 5 failures are i_heurisch process-hash-seed emission nondeterminism; the registered "cold retry" was implemented pooled, corrected to fresh-subprocess; retry law re-frozen before relaunch (2026-08-25, Mac)
+
+Target: PRE-REG MATH-CYBER-1-MATCHED-SUBSET-MATERIALIZE-0.
+Written BEFORE the relaunch; no sealed value beyond the failed
+first-run receipt has been opened.
+
+WHAT THE FIRST RUN MEASURED (disclosed): rows_emitted 73,319,
+decode_errors {unaddressable: 3, rule_absent: 2}, all five failed
+rows i_heurisch; TOK-ROUNDTRIP and NO-COLLISION fired; bars 1+2
+did not. Diagnosis, measured in-session: 4/5 decode exactly in a
+single serial fresh process; the fifth (shard2 line 4317)
+reproduced the historical child in 2 of 3 fresh interpreter
+probes — sympy heurisch emits one of two mathematically
+equivalent antiderivative spellings depending on per-process hash
+randomization (fork-pool workers INHERIT the launcher's hash
+seed, so the whole first run — including its pooled "retry" —
+sampled ONE seed; a different launcher seed would fail a
+different subset).
+
+INSTRUMENT DEVIATION (named): the prereg registered "ONE cold
+retry pass"; the shipped driver ran the retry under the same
+9-way fork pool — same process hash seed, not cold. That is an
+implementation defect against the registered law, corrected now.
+
+RE-FROZEN RETRY LAW (before relaunch): rows failing the pooled
+pass are retried in FRESH SUBPROCESSES (new interpreter, new hash
+seed), up to 8 attempts per parent, attempts counted in the
+receipt (per-rule retry histogram). A row still failing after 8
+fresh-seed attempts is a BLOCKER exactly as pre-registered — the
+denominator never shrinks. This is retry-until-reachable of a
+nondeterministically emitted ENGINE EDGE, not search over
+programs: the program is derived from the historical child and
+its decode is verified inside the emitting process; program
+identity is unaffected by which spelling a given process emits.
+
+NEW FENCE (travels with the artifact): i_heurisch emission is
+process-hash-seed nondeterministic between mathematically equal
+spellings; a consumer replaying decode(cur, program) in its own
+process may see the alternate spelling for such rows — replay
+validity is certified in the emitting process. This does not
+touch training use (training never replays the engine).
+
+HOUSEKEEPING (disclosed): the first run's
+data/matsub_pairs.jsonl and logs/mathworld1/matsub_receipt.json
+are DELETED before relaunch (registered output paths of an
+unbooked run; refuse-if-exists guards stay unconditional). All
+other prereg text, bars, pins, and fences stand unchanged.
+
