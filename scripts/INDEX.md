@@ -2888,6 +2888,23 @@ MATH-CYBER-1 fresh-substrate desk (no model loaded, no vocab shipped): price a G
 - `sha(t: str) -> str`
 - `main()`
 
+### scratch/mathworld1_svpbirth.py
+MATH-CYBER-1 SVP-BIRTH-0 — the paired STATE-v-PROGRAM birth driver (production) + the path-isolated MPS backward smoke.
+
+- `fsha(p) -> str`
+- `sha_b(b: bytes) -> str`
+- `batch_plan(row_ids)` — The SVP-DESIGN-0 target-blind law, verbatim.
+- `encode_row(r, view)`
+- `make_batch(rows, view, dev)`
+- `masked_loss(logits, ids, mask)`
+- `load_arms(dev)`
+- `preflight()`
+- `env_block(dev)`
+- `make_opt(model, total_steps)`
+- `train_step(model, opt, sched, ids, mask)`
+- `smoke()`
+- `production()`
+
 ### scratch/mathworld1_svpdesign.py
 MATH-CYBER-1 STATE-v-PROGRAM DESIGN-0 — design-qualification smoke harness. Verifies the five frozen design mechanisms with ZERO training: (1) frozen-init determinism + pin, (2) target-blind batch-plan determinism, (3) sequence-cap census, (4) prefix-masked per-row-normalized CE arithmetic v an independent hand loop, (5) one forward pass per arm (no backward, no optimizer).
 

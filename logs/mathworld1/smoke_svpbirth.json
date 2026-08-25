@@ -1,0 +1,110 @@
+{
+ "mode": "smoke",
+ "env": {
+  "torch": "2.12.1",
+  "python": "3.12.4",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "mps_available": true,
+  "mps_env": {},
+  "device": "mps"
+ },
+ "batches": [
+  {
+   "batch": "top_state",
+   "order": [
+    "STATE",
+    "PROGRAM"
+   ],
+   "n_rows": 32,
+   "STATE": {
+    "loss": 5.959888458251953,
+    "grad_norm": 5.229351997375488,
+    "seq_len": 441,
+    "finite": true
+   },
+   "PROGRAM": {
+    "loss": 6.068613052368164,
+    "grad_norm": 7.590763092041016,
+    "seq_len": 223,
+    "finite": true
+   }
+  },
+  {
+   "batch": "top_prog",
+   "order": [
+    "PROGRAM",
+    "STATE"
+   ],
+   "n_rows": 32,
+   "PROGRAM": {
+    "loss": 3.5217604637145996,
+    "grad_norm": 6.115376949310303,
+    "seq_len": 223,
+    "finite": true
+   },
+   "STATE": {
+    "loss": 4.166740417480469,
+    "grad_norm": 4.1714959144592285,
+    "seq_len": 441,
+    "finite": true
+   }
+  },
+  {
+   "batch": "tail12",
+   "order": [
+    "STATE",
+    "PROGRAM"
+   ],
+   "n_rows": 12,
+   "STATE": {
+    "loss": 3.9818966388702393,
+    "grad_norm": 3.8908305168151855,
+    "seq_len": 69,
+    "finite": true
+   },
+   "PROGRAM": {
+    "loss": 2.947416305541992,
+    "grad_norm": 5.652119159698486,
+    "seq_len": 44,
+    "finite": true
+   }
+  }
+ ],
+ "wall_s": 4.96,
+ "params_changed": {
+  "STATE": 59,
+  "PROGRAM": 59
+ },
+ "arms_diverged": true,
+ "sched_step_counts": {
+  "STATE": 2,
+  "PROGRAM": 2
+ },
+ "mps_allocated_bytes": 2484979200,
+ "peak_rss_mb": 1010,
+ "init_sha_after": "18597944400e061f797755175d31a06690e378d8141c687606724b95a7d0a86c",
+ "bars": {
+  "ON_MPS": true,
+  "LOSSES_FINITE": true,
+  "GRADS_FINITE": true,
+  "PARAMS_CHANGED_INDEP": true,
+  "STEP_COUNTS_MATCH": true,
+  "ALTERNATION_EXERCISED": true,
+  "NO_OOM_FALLBACK": true,
+  "INIT_UNCHANGED": true,
+  "NO_PRODUCTION_PATHS": true
+ },
+ "start": {
+  "start_commit": "622b58c5",
+  "start_status_porcelain": " M docs/receipts.lock.json\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpbirth.py": "d2f783d5b65839c5b024521d38588c281f92c26c0a440d9c1b79af47fbe298b3",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "622b58c5"
+}

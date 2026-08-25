@@ -936,6 +936,13 @@
    "source": "results",
    "tracked": false
   },
+  "logs/mathworld1/smoke_svpbirth.json": {
+   "bytes": 2567,
+   "exists": true,
+   "sha256": "b86c8cbf909b6bda23e37129d0ddcb7c14f01ef8ee89def447af9f3821153a78",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/srepr_export_verdict.json": {
    "bytes": 1584,
    "exists": true,

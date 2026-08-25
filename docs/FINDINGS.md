@@ -3267,3 +3267,17 @@ regime tag on every bullet is the fence.
   training rows, a named confound the paired-birth prereg must
   carry; bytes sha-pinned, world never re-enumerated downstream.
   RESULTS.md#L47746
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The paired-birth
+  instrument is fully qualified end-to-end: the MPS backward smoke
+  passes all 9 bars (both 19M arms resident and updating
+  independently through real backward/clip/AdamW/OneCycle on the
+  longest real batches, ~1.65 s/paired stress step, 2.48 GB MPS;
+  production init byte-unchanged; zero production paths); the
+  production hard-assertion chain (full-hash pins, plan sha,
+  73,324 unique rows, 0 cap violations) exercised; u_choice/
+  term_index diagnostic strata frozen pre-weights (0/72 u_choice
+  labels — distractor-only) and NO directional outcome prior was
+  supplied before weights, recorded; production 6,876-step birth
+  ARMED behind one explicit GO with a single registered pre-launch
+  fix candidate (asserts to SystemExit). RESULTS.md#L48019

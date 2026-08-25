@@ -47964,7 +47964,8 @@ tensor-bitwise equal; independent parameter storage, optimizer
 objects, scheduler objects; identical optimizer hyperparameters;
 exactly 6,876 scheduled steps; production output paths
 (checkpoints/svp_state.pt, svp_program.pt,
-logs/mathworld1/svpbirth_receipt.json) refuse-if-exists.
+svpbirth_receipt.json under logs/mathworld1/, created only by
+the production run) refuse-if-exists.
 
 PATH-ISOLATED MPS BACKWARD SMOKE (run under THIS GO): disposable
 copies of both models from the frozen init + disposable
@@ -48014,4 +48015,107 @@ tokenizer are consumed as frozen bytes only; compute accounting
 (tokens, target tokens, wall, memory) reported per arm at birth,
 never equalized. Dual audit before booking; after booking
 commit/push STOP.
+
+## VERDICT MATH-CYBER-1-SVP-BIRTH-0: birth driver + MPS backward smoke QUALIFIED — all 9 smoke bars pass (both arms resident and updating independently on MPS through real backward/AdamW/OneCycle on the stress batches; production init byte-unchanged; zero production paths touched); the production birth is armed pending ONE explicit GO (2026-08-25, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-BIRTH-0 (committed with the driver
+at 622b58c5 before the smoke; pins, laws, strata, and all 9 bars
+frozen there). Receipt logs/mathworld1/smoke_svpbirth.json
+(completion_commit 622b58c5). Zero production optimizer steps
+were taken; the production path exists in the same committed
+driver behind SVPBIRTH_PRODUCTION=1 and was NOT invoked.
+
+BAR ADJUDICATION (frozen law; all 9 PASS):
+1. ON-MPS: every parameter of both models on mps (established
+   by the driver's device assert; the receipt field itself is a
+   literal — a re-run derives it).
+2. LOSSES-FINITE: all six arm-batches finite (top-STATE batch
+   S 5.96/P 6.07 at seq 441/223; top-PROGRAM batch P 3.52/S 4.17
+   post-update; 12-row tail S 3.98/P 2.95 — values are
+   one-to-three-update noise, no meaning beyond finiteness).
+3. GRADS-FINITE: all clip_grad_norm_ values finite (3.9-7.6;
+   the coded check is NaN-only — inf would pass it — the
+   observed values are genuinely finite; a re-run tightens the
+   check).
+4. PARAMS-CHANGED-INDEP: 59/59 tensors changed in EACH arm and
+   the arms DIVERGED from each other (independent storage
+   asserted by data_ptr check at load).
+5. STEP-COUNTS-MATCH: scheduler last_epoch 2 == 2 across arms
+   (the registered OneCycle final-step guard law at smoke
+   total_steps=3).
+6. ALTERNATION-EXERCISED: order STATE-first / PROGRAM-first /
+   STATE-first across the three steps.
+7. NO-OOM-FALLBACK: clean run — definitionally true by abort
+   semantics (any error kills the run before the receipt is
+   written; the field is a literal, disclosed).
+8. INIT-UNCHANGED: checkpoints/svp_init.pt sha after smoke ==
+   the frozen pin 18597944... byte-exact.
+9. NO-PRODUCTION-PATHS: svp_state.pt / svp_program.pt /
+   svpbirth_receipt.json all absent after smoke.
+
+PREFLIGHT (the production hard-assertion chain, exercised by
+the smoke because both modes share it — ASSERT-ONLY, not
+receipted: the values below are certified by non-exit and were
+additionally recomputed by the prereg-auditor; the production
+birth records them into its receipt): all four FULL upstream shas
+recomputed and exact (paired a943ba7f..., episodes cb90ff0f...,
+decisions f63100a6..., init 18597944...); the 6,876-step
+target-blind batch plan re-derived and sha-exact (4c0441b7...);
+73,324 unique row IDs; 0 cap-512 violations in either arm;
+bitwise init equality + independent parameter storage asserted
+at load.
+
+MEASUREMENTS (descriptive only): smoke wall 4.96 s for 3 paired
+lockstep steps on the WORST batches (~1.65 s/paired-step at
+stress length — a naive ceiling extrapolation is ~3.2 h for
+6,876 steps; the stress batches are the length MAXIMA by
+construction, so production wall sits below that ceiling); torch.mps allocated 2.48 GB at close;
+process RSS ~1.0 GB. Env recorded in the receipt: torch 2.12.1,
+Python 3.12.4, macOS arm64, mps available, device mps; the
+MPS/PYTORCH env-var capture is EMPTY (none set).
+
+REGISTERED PRE-WEIGHTS RECORD (carried from the prereg, now
+booked): the u_choice/term_index diagnostic strata are frozen
+(55/17 u_choice-present/absent decisions, 0/72 u_choice labels,
+3/69 term_index-present/absent, 2 term_index labels —
+u_choice appears in this band only as distractors); the i_usub
+residue stays unrepaired and banked behind the experiment; the
+text-only downstream law is in force; NO directional
+PROGRAM-v-STATE outcome prior was supplied before weights and
+none is registered on Artin's behalf — this absence is on the
+record and will not be backfilled.
+
+READING (scoped): the full production mechanism — dual-resident
+MPS training with real backward, clipping, AdamW, OneCycle, and
+alternating arm order — is exercised and clean on the worst real
+batches; SVP-DESIGN-0's forward-only feasibility gap is closed.
+The production 6,876-step paired birth is ARMED: one explicit GO
+launches it with zero design drift (any instrument-bug fix
+first books an amendment and requalifies).
+
+RECEIPT-AUDIT DISCLOSURES (adopted): the hard checks are mostly
+bare asserts — under python -O they vanish, including the one
+backing ON_MPS (this run's interpreter had no -O/PYTHONOPTIMIZE,
+receipt-evidenced); the registered PRE-LAUNCH FIX CANDIDATE is
+converting the pre-step-0 asserts to SystemExit (or recording
+sys.flags.optimize) via the prereg's own amendment+requalify
+lane before the production GO. The device-fallback half of bar 7
+rests on the EMPTY mps_env capture (PYTORCH_ENABLE_MPS_FALLBACK
+unset), not on the bar literal. Bar 2's post-update evidence is
+the descending finite losses of the LATER batches (no forward
+was re-run after the third step). The bitwise-equality and
+storage-independence asserts are near-vacuous as coded (same sd
+object; positional zip) — satisfying the registered text but not
+load-bearing; the production receipt records the values.
+Auditor cross-corroboration: the stress batches' 441/223 seq
+maxima equal the SVP-DESIGN cap census maxima — they really are
+the longest real rows.
+
+FENCES. All prereg fences carried: smoke outputs only under the
+smoke_ path, smoke weights never persisted or consumable;
+production refuse-if-exists guards untouched; eval band /
+training artifact / schema / tokenizer consumed as frozen bytes
+only; memory and wall numbers descriptive; compute accounting at
+birth reported per arm, never equalized. Dual audit before
+booking; after booking commit/push STOP.
 

@@ -1,0 +1,10 @@
+{
+ "name": "MATH-CYBER-1-SVP-BIRTH-0",
+ "results_id": "2026-08-25-pre-reg-math-cyber-1-svp-b",
+ "registered": "2026-08-25",
+ "machine": "mac",
+ "note": "Smoke receipt (this rung's evidence). The production birth receipt path is declared in the prereg prose and fires only on its own explicit GO.",
+ "receipts": [
+  "logs/mathworld1/smoke_svpbirth.json"
+ ]
+}
