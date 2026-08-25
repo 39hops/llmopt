@@ -2908,6 +2908,7 @@ MATH-CYBER-1 SVP-BIRTH-0 — the paired STATE-v-PROGRAM birth driver (production
 - `make_batch(rows, view, dev)`
 - `masked_loss(logits, ids, mask)`
 - `load_arms(dev)`
+- `protect_9001()`
 - `preflight()`
 - `env_block(dev)`
 - `make_opt(model, total_steps)`

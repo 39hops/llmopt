@@ -3334,3 +3334,15 @@ regime tag on every bullet is the fence.
   blocks), per-pair p<.05 not required, magnitude
   descriptive-only at n=3, no pooling of the 216 repeated
   decisions; each birth needs its own GO. RESULTS.md#L48621
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The replication birth
+  instrument is armed: SVPBIRTH_SEED plumbing accepts only the
+  two law-registered seeds (10001/11001) with full-hash init
+  mapping, per-seed refuse-if-exists paths, and bidirectional
+  byte-protection of every seed-9001 production artifact; the
+  seed-10001 MPS backward smoke re-fires all 9 bars with
+  identical structure (batch selection, seq lens, byte-identical
+  mps allocation) and init-appropriate different losses; the
+  audited diff contains zero seed-dependent changes beyond init
+  mapping/output names; each replication birth still needs its
+  own explicit GO. RESULTS.md#L48765

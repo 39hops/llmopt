@@ -48723,8 +48723,10 @@ CHANGES (scratch/mathworld1_svpbirth.py, this commit):
   init (the existing gate, unchanged).
 - Per-seed unique refuse-if-exists production paths:
   checkpoints/svp_{state,program}_s{SEED}.pt,
-  logs/mathworld1/svpbirth_s{SEED}_receipt.json; isolated smoke
-  receipts logs/mathworld1/smoke_svpbirth_s{SEED}.json.
+  and (per seed) svpbirth_s10001_receipt.json /
+  svpbirth_s11001_receipt.json under logs/mathworld1/; isolated
+  smoke receipts smoke_svpbirth_s10001.json /
+  smoke_svpbirth_s11001.json in the same directory.
 - SEED-9001 HARD PROTECTION: on any replication seed, the three
   seed-9001 production artifacts (init 18597944..., svp_state.pt
   8e0a22f2..., svp_program.pt d9db0049...) are sha-asserted
@@ -48759,4 +48761,65 @@ FENCES. Mac; zero replication training; each replication
 production run still needs its own explicit GO; dual audit
 before booking (specifically hunting accidental seed-dependent
 changes); after booking commit/push STOP.
+
+## VERDICT MATH-CYBER-1-SVP-BIRTH-0-REPSEED: the seed-parameterized birth instrument REQUALIFIES — all 9 smoke bars fire through the SEED=10001 path (disposable arms from the frozen s10001 init, real backward/AdamW/OneCycle on the same stress batches), every seed-9001 artifact byte-protected; zero replication production steps (2026-08-25, Mac)
+
+Per AMENDMENT MATH-CYBER-1-SVP-BIRTH-0-REPSEED (committed with
+the parameterized driver at 139f0721 before the requalifying
+run; the REPLICATION-DESIGN-0 amendment lane). Receipt
+logs/mathworld1/smoke_svpbirth_s10001.json (completion_commit
+139f0721). The seed-9001 smoke/production receipts stand frozen
+at their own paths.
+
+RE-ADJUDICATION (all 9 bars FIRE at SEED 10001): ON_MPS derived;
+LOSSES/GRADS finite under the -HARDEN law (loss gated before
+backward, error_if_nonfinite clip); PARAMS-CHANGED-INDEP 59/59 +
+arms diverged; STEP-COUNTS 2==2 (guard law); ALTERNATION S/P/S;
+NO-OOM-FALLBACK clean; INIT-UNCHANGED — svp_init_s10001.pt sha
+after smoke == the booked pin 65ee3e20... byte-exact;
+NO-PRODUCTION-PATHS — the s10001 production paths
+(svp_state_s10001.pt / svp_program_s10001.pt /
+svpbirth_s10001_receipt.json) all absent. As the registered
+prior predicted, the batch losses DIFFER from the seed-9001
+smoke (smoke_svpbirth2.json; different init — e.g. tail
+S 3.98->4.02, P 2.95->2.85) while every structural value matches
+(seq lens 441/223/69/44, 59/59 tensors, mps allocation
+BYTE-IDENTICAL at 2,484,979,200). Wall 4.05 s, RSS 1,106 MB.
+
+SEED PLUMBING VERIFIED (the amendment's whole surface):
+SVPBIRTH_SEED accepts ONLY {9001-default, 10001, 11001} — any
+other value hard-exits before model construction (registered
+seeds via the gate; a non-numeric value dies at int() parse); the init mapping is
+full-hash-gated before model construction; per-seed
+refuse-if-exists paths; the SEED-9001 PROTECTION gates
+(init 18597944..., svp_state 8e0a22f2..., svp_program
+d9db0049...) asserted byte-unchanged BEFORE and AFTER the smoke
+— all passed. The batch plan remains the seed-independent
+4c0441b7... law (never re-seeded by the model-init seed), and
+every other production-law constant is untouched.
+
+REGISTERED-PRIOR ACCOUNTING: CORRECT (bars fire; losses differ
+by init; structure invariant).
+
+READING (scoped): the replication instrument is armed. Each
+replication production birth still needs its own explicit GO:
+    SVPBIRTH_SEED=10001 SVPBIRTH_PRODUCTION=1
+        .venv/bin/python scratch/mathworld1_svpbirth.py
+(and 11001 likewise), followed by per-pair scoring under the
+frozen law. Nothing else changes between this smoke and those
+births.
+
+RECEIPT-AUDIT DISCLOSURES (adopted): no stdout log was captured
+for this smoke (the receipt is the record; the next arm tees);
+the NO_OOM_FALLBACK literal carries unchanged from the booked
+seed-9001 lineage with the same abort-semantics backing; the
+amendment's template-style path text was rewritten to concrete
+per-seed names so the receipt-lock stops scraping a phantom
+"s{SEED}" row.
+
+FENCES. All SVP-BIRTH-0 + -HARDEN + REPLICATION-DESIGN-0 fences
+carried; zero replication training under this GO; smoke outputs
+isolated at the s10001 smoke path only; dual audit (hunting
+seed-dependent changes beyond init mapping/output names) before
+booking; after booking commit/push STOP.
 

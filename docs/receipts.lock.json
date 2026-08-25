@@ -950,6 +950,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/smoke_svpbirth_s10001.json": {
+   "bytes": 2650,
+   "exists": true,
+   "sha256": "caff1797c6ae9a67e1e00e0171e2cf53621c78fddd6ab01da45f31bbc7919862",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/srepr_export_verdict.json": {
    "bytes": 1584,
    "exists": true,

@@ -1,0 +1,113 @@
+{
+ "mode": "smoke",
+ "seed": 10001,
+ "init_path": "checkpoints/svp_init_s10001.pt",
+ "env": {
+  "torch": "2.12.1",
+  "python": "3.12.4",
+  "optimize_flag": 0,
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "mps_available": true,
+  "mps_env": {},
+  "device": "mps"
+ },
+ "batches": [
+  {
+   "batch": "top_state",
+   "order": [
+    "STATE",
+    "PROGRAM"
+   ],
+   "n_rows": 32,
+   "STATE": {
+    "loss": 6.041205406188965,
+    "grad_norm": 5.415306091308594,
+    "seq_len": 441,
+    "finite": true
+   },
+   "PROGRAM": {
+    "loss": 5.933870315551758,
+    "grad_norm": 7.481328010559082,
+    "seq_len": 223,
+    "finite": true
+   }
+  },
+  {
+   "batch": "top_prog",
+   "order": [
+    "PROGRAM",
+    "STATE"
+   ],
+   "n_rows": 32,
+   "PROGRAM": {
+    "loss": 3.525230646133423,
+    "grad_norm": 6.022764682769775,
+    "seq_len": 223,
+    "finite": true
+   },
+   "STATE": {
+    "loss": 4.149765491485596,
+    "grad_norm": 4.513939380645752,
+    "seq_len": 441,
+    "finite": true
+   }
+  },
+  {
+   "batch": "tail12",
+   "order": [
+    "STATE",
+    "PROGRAM"
+   ],
+   "n_rows": 12,
+   "STATE": {
+    "loss": 4.024972915649414,
+    "grad_norm": 4.053070545196533,
+    "seq_len": 69,
+    "finite": true
+   },
+   "PROGRAM": {
+    "loss": 2.8512697219848633,
+    "grad_norm": 5.780824661254883,
+    "seq_len": 44,
+    "finite": true
+   }
+  }
+ ],
+ "wall_s": 4.05,
+ "params_changed": {
+  "STATE": 59,
+  "PROGRAM": 59
+ },
+ "arms_diverged": true,
+ "sched_step_counts": {
+  "STATE": 2,
+  "PROGRAM": 2
+ },
+ "mps_allocated_bytes": 2484979200,
+ "peak_rss_mb": 1106,
+ "init_sha_after": "65ee3e2028a6ae0f3fa4d9d1e305a45153379100ebb73b052d9eb3378aaf55af",
+ "bars": {
+  "ON_MPS": true,
+  "LOSSES_FINITE": true,
+  "GRADS_FINITE": true,
+  "PARAMS_CHANGED_INDEP": true,
+  "STEP_COUNTS_MATCH": true,
+  "ALTERNATION_EXERCISED": true,
+  "NO_OOM_FALLBACK": true,
+  "INIT_UNCHANGED": true,
+  "NO_PRODUCTION_PATHS": true
+ },
+ "start": {
+  "start_commit": "139f0721",
+  "start_status_porcelain": " M docs/receipts.lock.json\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "139f0721"
+}

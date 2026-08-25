@@ -286,7 +286,7 @@ Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 320, spec-ci
 | mathworld1 | mathworld1_stateobs.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_substrate_desk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svpadj.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_svpbirth.py | results-cited | RESULTS | RESULTS×3 | — | 2 |
+| mathworld1 | mathworld1_svpbirth.py | results-cited | RESULTS | RESULTS×5 | — | 2 |
 | mathworld1 | mathworld1_svpdesign.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svpeval.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svprep.py | results-cited | RESULTS | RESULTS×1 | — | — |
