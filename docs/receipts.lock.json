@@ -978,6 +978,27 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpeval/decisions.jsonl": {
+   "bytes": 225120,
+   "exists": true,
+   "sha256": "f63100a62f3091d544750d679483009a473261c587f3165241406a86253858c6",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpeval/episodes.jsonl": {
+   "bytes": 7400,
+   "exists": true,
+   "sha256": "cb90ff0f6d655cfe5dc20f091da0597b1bb0e23a4d0c23355a997e8849c61dd8",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpeval/svpeval_receipt.json": {
+   "bytes": 3413,
+   "exists": true,
+   "sha256": "6e32581b05257313ca64fb39acbbd28ed8bfca7f76886f91728ebe5c4d59ea85",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/terminal_census.jsonl": {
    "bytes": 136996,
    "exists": true,

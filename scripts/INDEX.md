@@ -2899,6 +2899,16 @@ MATH-CYBER-1 STATE-v-PROGRAM DESIGN-0 — design-qualification smoke harness. Ve
 - `encode_row(tok, r, view)`
 - `main()`
 
+### scratch/mathworld1_svpeval.py
+MATH-CYBER-1 SVP-EVALBAND-0 — materialize + qualify the frozen primary evaluation band (seeds 9600-9619 x L4-L7, 80 episodes) under the exact 101-corpus trajectory law (mathworld0 greedy-hce, 12-decision budget, 60s wall cap), emitting a SEMANTIC treatment-neutral candidate artifact: every legal candidate carries child_sstr AND its canonical FINAL ActionProgram + program_text. Zero model, zero training.
+
+- `sha(t: str) -> str`
+- `fsha(p) -> str`
+- `run_episode(root)` — The 101-corpus ACTIVE law verbatim: greedy-hce, 12-decision
+- `stable_legal_set(state)` — COMPLETE-LEGAL-SET operational law: enumerate twice with a
+- `derive_program(parent, rule, child_key, accepted)` — AX-FIXTURE program derivation, keyed by exact child key.
+- `main()`
+
 ### scratch/mathworld1_terminal.py
 MATH-CYBER-1 TERMINAL-DOMINANCE-0 terminal-miss census (PRE-REG MATH-CYBER-1-TERMINAL-DOMINANCE-0, commit a3759d06).
 

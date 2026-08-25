@@ -47743,3 +47743,136 @@ AdamW + OneCycle with BOTH models resident on mps (SVP-DESIGN
 proved forward feasibility only); smoke artifacts can never
 touch the production init/checkpoints.
 
+## VERDICT MATH-CYBER-1-SVP-EVALBAND-0: the frozen primary evaluation band is QUALIFIED — all 8 bars fire: 80/80 episodes accounted (74 solved), 82 solved-episode decisions, 72 primary-eligible after 4 schema-scope and 6 freshness exclusions, every primary-stratum candidate dual-represented and replay-exact; bytes sha-pinned (2026-08-25, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-EVALBAND-0 (committed with the
+producer at 26bc82d4 before the run; trajectory law, freshness
+law, exclusion precedence, and all 8 bars frozen there).
+Receipts logs/mathworld1/svpeval/{episodes.jsonl (sha256
+cb90ff0f...), decisions.jsonl (f63100a6...),
+svpeval_receipt.json}, force-added — these bytes ARE the frozen
+band; birth and adjudication consume them and MUST NOT
+re-enumerate the world.
+
+BAR ADJUDICATION (frozen law; all FIRE):
+1. EPISODE-POPULATION: 80/80 seed/level identities in the
+   manifest — outcomes {solved: 74, budget_exhausted: 3,
+   wall_cap: 3}; solved by level L4 17 / L5 20 / L6 19 / L7 18.
+2. LABEL-IN-SET: 0 labeled actions outside their bound legal
+   set (label_missing 0).
+3. COMPLETE-LEGAL-SET: zero legal_set_unstable among the
+   checked solved-episode decisions (the double-enumeration law
+   observed no instability — the i_heurisch flake class did NOT
+   surface in-process; unsolved-episode decisions are excluded
+   before this check by the frozen precedence).
+4. PROGRAM-REPLAY: every candidate program of every
+   primary-eligible decision reconstructs its exact child.
+5. NO-PROGRAM-COLLISION: 0.
+6. TOK-ROUNDTRIP: 0 failures.
+7. CONTEXT-FIT: 0 overflows (max scoring string: STATE 676 /
+   PROGRAM 147 tokens v ctx 4096).
+SCOPE OF BARS 5-7 (disclosed): candidates are checked up to a
+decision's FIRST failure, so the 4 excluded decisions carry
+PARTIAL candidate lists (9 enumerated candidates were never
+bar-checked); every candidate of every PRIMARY decision was
+fully checked, which is what the primary band requires.
+8. FRESHNESS: the 72-decision primary denominator contains zero
+   training-parent overlaps; overlap counted separately below.
+
+ACCOUNTING (first-failed-cause precedence, frozen): 82
+solved-episode decisions -> 72 primary-eligible; exclusions:
+program_det_ambiguous 4, training_parent_overlap 6 (edge overlap
+5, reported separately, non-gating); unsolved-episode decisions
+(36 budget_exhausted + 26 wall_cap) never enter the solved
+denominator. Nothing silently dropped.
+
+SCHEMA-SCOPE FINDING (the 4 exclusions, diagnosed to mechanism
+in-session): on 4 parents — all decision_index 0: L4-s9603,
+L4-s9618, L7-s9608, L7-s9619 — i_usub emits TWO accepted
+children at a single site (L7-s9619 also shows i_parts 3-way,
+which u_choice handles) — a deterministic-labeled rule behaving
+multi-candidate. This leg was VACUOUS in the 725-action corpus
+(single-SITE branching there was confined to i_parts/i_unprod —
+i_const_factor branched only across distinct sites, which the
+site coordinate resolves; i_usub single-site branching was 0),
+so the
+canonical schema's (rule, site) carries no parameter for it; per
+the standing vacuity fence those decisions are EXCLUDED WITH
+COUNT, not represented. NAMED RESIDUE (not authorized here): an
+i_usub semantic parameter (the u-substitution choice, analogous
+to u_choice) would need its own desk + qualification rung before
+such rows can enter any program-addressed population.
+
+MEASUREMENTS (descriptive, primary-eligible stratum): legal-set
+size p50/p90/max 7/9/10; single-sibling 0 / multi-sibling 72
+(every primary decision is a real ranking problem); per-rule
+candidate mix headline i_parts 110 / expand 57 / factor 52 /
+cancel 50 / i_heurisch 36 / i_unprod 5; param_kind {none: 394,
+u_choice: 110, term_index: 5} — NOTE the eval mixture is
+u_choice-rich (110/509 = 21.6% of primary candidates) while the
+TRAINING mixture carries u_choice on 3 of 73,324 rows (the
+SVP-DESIGN-0 scope fence) — a LIVE CONFOUND for the PROGRAM arm
+that the paired-birth prereg must carry as a named constraint,
+not a footnote; token dists STATE p50/p90/max 117/268/676 v
+PROGRAM 56/93/147; overlaps: training_parent 6, training_edge 5,
+corpus725_state 0, corpus725 labeled-edge 0 (the edge leg was
+omitted by the driver and computed at booking time from the
+axfixture edge set — 0/72); solved rate 74/80 v the CALIBRATION band's
+35/40 under the same law . REGISTERED-PRIOR ACCOUNTING: the
+falsifiable leg (all 8 bars fire) is CORRECT; the comparability
+and i_heurisch legs were registered without numeric thresholds
+(unfalsifiable as written) and are reported as observations:
+74/80 v 35/40, and the instability prediction did NOT fire.
+
+READING (scoped, per the registered scope language): this band
+measures sibling ranking of the frozen successful-trajectory
+chosen action — not globally optimal action value and not
+solve-rate improvement. The primary denominator is 72 paired
+decisions, all multi-sibling. The paired birth is now gated only
+by its own prereg/driver, which must re-pin: paired artifact sha
+a943ba7f..., eval shas cb90ff0f/f63100a6, svp_init.pt sha
+18597944..., torch 2.12.1, device/platform, the 6,876-step
+batch-plan sha 4c0441b7... — and must include a path-isolated
+mps smoke exercising backward + AdamW + OneCycle with both
+models resident (SVP-DESIGN proved forward only), never touching
+the production init.
+
+RECEIPT-AUDIT DISCLOSURES (adopted): (a) cur is the VISIBLE
+PRINT, not a faithful state key — for 25/72 primary rows
+sstr(sympify(cur)) != cur, and for 3 rows the labeled child is
+not reachable by re-enumerating sympify(cur); this is exactly
+the STATE-OBSERVABILITY print-form class and is HARMLESS under
+the freeze-bytes law (both arms consume cur/child_sstr/
+program_text as TEXT; no sanctioned consumer sympifies or
+re-enumerates), but the artifact carries no srepr companion —
+the paired-birth prereg must treat cur as prompt text only, and
+any future consumer needing state identity requires a
+regenerated band with srepr/state-hash companions (named
+residue, not authorized). Freshness is print-form-robust
+(auditor re-checked under sstr-normalization: still 0/72). (b)
+The 4 excluded rows' candidate lists are TRUNCATED at first
+failure and their labels were never label-checked (bar 2 is
+enforced on the 78 completed rows; the auditor verified the
+substance across all 82). (c) Three bars are coded over the
+primary set they define (tautological as coded; the auditor
+re-verified the substance over all 82 rows by recomputation — 0
+unstable legal sets anywhere, all 4 derivation failures
+correctly excluded); a re-run uses count-based bars. (d) Which
+3 episodes hit the 60s wall cap is timing-dependent — the
+frozen bytes are the band, but the wall-cap episode identities
+would not reproduce; only excluded decisions are affected. (e)
+MAX_DECISIONS=12 / WALL_CAP_S=60 values live in the sha-pinned
+mathworld0.py, not the receipt.
+
+FENCES. Zero trained-model inference, zero optimizer updates,
+svp_init.pt untouched; the 101-corpus trajectory law inherited
+verbatim (greedy-hce, 12-decision budget, 60s wall cap,
+make_integrate roots — no new policy); freshness law registered
+before any 9600-9619 state was inspected; sympy 1.14.0 / macOS
+arm64 recorded in the receipt; exclusions never silently
+dropped; the diagnostic rider may use overlap/excluded rows but
+they never enter the primary fresh denominator; MRR stays
+secondary and is never McNemar-adjudicated. Dual audit before
+booking; after booking commit/push STOP — the paired-birth
+prereg/driver needs its own GO.
+

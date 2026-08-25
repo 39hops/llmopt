@@ -3253,3 +3253,17 @@ regime tag on every bullet is the fence.
   continuation-token compute ratio STATE/PROGRAM = 3.63x is
   reported, never equalized; birth/eval/training each need their
   own GO. RESULTS.md#L47520
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The frozen STATE-v-PROGRAM
+  primary evaluation band exists and is qualified: 80/80 episodes
+  under the exact 101-corpus greedy-hce law (74 solved), 72
+  primary-eligible multi-sibling decisions with every candidate
+  dual-represented (child_sstr + canonical program) and
+  replay-exact, zero training-parent overlap in the primary
+  denominator; two live findings booked with it — i_usub emits
+  two children at one site on 4 fresh parents (a corpus-vacuous
+  leg, excluded-with-count; i_usub semantic parameter = named
+  residue) and the eval mixture is u_choice-rich (110/509) v 3
+  training rows, a named confound the paired-birth prereg must
+  carry; bytes sha-pinned, world never re-enumerated downstream.
+  RESULTS.md#L47746
