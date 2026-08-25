@@ -47610,3 +47610,136 @@ prereg) and its sha must be re-pinned in the birth prereg
 commit. Dual audit before booking; after booking commit/push
 and STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-EVALBAND-0: materialize + qualify the frozen primary evaluation band (seeds 9600-9619 x L4-L7) under the exact 101-corpus trajectory law — bytes frozen, world never re-enumerated downstream (2026-08-25, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-25). ZERO trained-model
+inference, ZERO optimizer updates, no model loaded (svp_init.pt
+untouched; tokenizer/context checks only, which cannot reveal
+treatment efficacy). SVP-DESIGN-0's adjudication (a8356c2f,
+verdict 906c40ec) is PRESERVED UNCHANGED: fresh seeds 9600-9619,
+L4-L7, 80 episodes; primary = complete-legal-set top-1 ranking;
+secondary = MRR (secondary ONLY — never adjudicated with
+McNemar); score = mean continuation logprob; summed logprob =
+length-bias rider; paired top-1 test = exact two-sided McNemar
+alpha .05; PROMOTE-PROGRAM iff PROGRAM top1 > STATE top1 AND
+p < .05; STATE-WIN mirrored; else INCONCLUSIVE.
+
+FRESHNESS CLARIFICATION (outcome-blind, registered BEFORE any
+9600-9619 state is inspected or materialized): seed freshness
+does not guarantee state freshness. PRIMARY-eval eligibility
+EXCLUDES any decision whose exact visible cur occurs in the
+sha-pinned 73,324-row training artifact (data/matsub_paired.jsonl,
+a943ba7f...). Counted as training_parent_overlap; exact
+(cur, child) training-edge overlap is reported SEPARATELY and
+does not itself gate. Neither is ever silently dropped; the
+diagnostic rider may retain overlap rows outside the primary
+fresh denominator.
+
+TRAJECTORY LAW (the 101-corpus law, inherited verbatim, no new
+policy): roots = sp.Integral(make_integrate(level, seed)._expr,
+x) for seed in 9600..9619, level in 4..7; scripted deterministic
+greedy-hce policy, chosen = min(acts, key=(hce(child), name,
+child.key())); legal set = mathworld0.legal_actions (successors
+sorted by (name, child key); children are globally unique within
+a set by the enumerator's seen-dedup); fixed 12-decision budget;
+60s per-episode wall safety cap; outcomes
+solved/dead_end/budget_exhausted/wall_cap. Labels = the
+trajectory-chosen action of each decision belonging to a SOLVED
+episode. Producer/world dependencies pinned via start_provenance
+(mathworld0.py, derivation.py, rules.py, problems.py, the
+program-derivation chain, actiontok) + sympy version recorded.
+
+SEMANTIC, TREATMENT-NEUTRAL ARTIFACT. Candidate identity =
+unique semantic child (proposal multiplicity collapses; the
+enumerator already emits each child once, tagged by its first
+emitting rule label). For EVERY legal candidate both frozen
+representations are emitted: child_sstr AND canonical
+ActionProgram structured fields + program_text (ActionGCTok-332).
+Duplicate (parent, program) -> SAME child is bookkeeping;
+(parent, program) -> DIFFERENT children is a BLOCKER.
+
+INSTRUMENT. scratch/mathworld1_svpeval.py (committed with this
+prereg before the run). Outputs under logs/mathworld1/svpeval/
+(refuse-if-exists): episodes.jsonl (master eval manifest — ALL
+80 requested seed/level identities, whether solved, failed,
+censored, or excluded; no episode disappears), decisions.jsonl
+(per solved-episode decision: seed, level, episode_id,
+decision_index, cur, labeled child + labeled canonical program,
+FULL legal semantic candidate set with both representations,
+episode outcome, primary_eligible, exclusion_class),
+svpeval_receipt.json. Per-decision COMPLETE-LEGAL-SET
+operational law: the legal set is enumerated TWICE (rule cache
+cleared between) and must agree as a (name, child-key) multiset;
+disagreement books legal_set_unstable and excludes the decision
+from primary (counted). Program derivation and replay use the
+AX-FIXTURE laws verbatim (first-preorder site first-match;
+u_choice map; parity-gated term map; deterministic
+single-accepted-child; decode from structured fields must
+reproduce the exact child).
+
+HARD BARS (frozen; all must fire to qualify the band):
+1. EPISODE-POPULATION: exactly 20x4 = 80 requested seed/level
+   episode identities accounted for in the manifest.
+2. LABEL-IN-SET: every emitted labeled action is exactly a
+   member of its bound full legal semantic set.
+3. COMPLETE-LEGAL-SET: zero unstable/partial legal sets inside
+   the primary denominator; failures counted by cause.
+4. PROGRAM-REPLAY: every candidate canonical program exactly
+   reconstructs its semantic child under the FINAL schema
+   (failures excluded-with-count from primary; zero required
+   among primary-eligible decisions' candidates).
+5. NO-PROGRAM-COLLISION: zero same-parent (cur, program) ->
+   different-child collisions anywhere in the artifact.
+6. TOK-ROUNDTRIP: every program_text round-trips under the
+   frozen ActionGCTok-332.
+7. CONTEXT-FIT: every STATE and PROGRAM scoring string (prefix +
+   candidate + eos) fits ctx=4096 with zero truncation; any
+   overflow books explicitly.
+8. FRESHNESS: the primary denominator excludes exact
+   training-parent overlap under the law above; parent and edge
+   overlap counts reported separately.
+REFUTED-IF: any bar fails — the band does not qualify; the
+failure books honestly.
+
+REPORTED (never changing eligibility post hoc): solved/unsolved
+by level; total v primary-eligible decisions; legal-set size
+p50/p90/max; 1-sibling v >1-sibling decisions; per-rule and
+param_kind distributions; STATE and PROGRAM candidate
+token-length distributions; exclusions by exact FIRST-failed
+cause (frozen precedence: unsolved episode -> legal_set_unstable
+-> program derivation/replay failure -> training_parent_overlap);
+training-parent and training-edge overlaps; overlap with the
+725-action diagnostic corpus (states + edges); label/program
+ambiguity counts.
+
+FREEZE BYTES, NOT REGENERATION: once qualified, the artifacts
+are sha256-pinned in the receipt and force-added; birth and
+adjudication consume THOSE BYTES and MUST NOT re-enumerate the
+world to reconstruct candidates or labels.
+
+SCOPE LANGUAGE (registered): this evaluation measures sibling
+ranking of the frozen successful-trajectory chosen action — not
+globally optimal action value and not solve-rate improvement.
+
+REGISTERED PRIOR (house): all 8 bars fire; solved count lands in
+a band comparable to the 9100 CALIBRATION band (35/40 episodes
+solved in the mathworld0 ACTIVE greedy-hce run, the same law —
+this band has 80 episodes); the
+i_heurisch emission-instability class may surface in the
+double-enumeration check (excluded-with-count if so, prediction
+not requirement).
+
+FENCES. Mac; deterministic apart from wall caps/timeboxes (all
+exclusions counted, never silent); sympy 1.14.0; no model, no
+training, no svp_init.pt scoring; artifacts are small text
+receipts (git add -f under logs/mathworld1/svpeval/, the why =
+they ARE the frozen eval band); dual audit before booking; after
+booking commit/push STOP. STANDING NEXT (needs its own GO): the
+paired-birth prereg/driver, which must re-pin the paired
+artifact sha, eval artifact shas, svp_init.pt sha, torch 2.12.1,
+device/platform, and the 6,876-step batch-plan sha — and must
+include a path-isolated smoke that actually exercises backward +
+AdamW + OneCycle with BOTH models resident on mps (SVP-DESIGN
+proved forward feasibility only); smoke artifacts can never
+touch the production init/checkpoints.
+
