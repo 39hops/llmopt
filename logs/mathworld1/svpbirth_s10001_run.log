@@ -1,0 +1,39 @@
+/Users/artin/code/llmopt/scratch/mathworld1_svpbirth.py:238: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:839.)
+  gate(math.isfinite(float(loss)), "NON-FINITE LOSS")
+[svpbirth] step 0/6876 S=6.0301 P=5.9249
+[svpbirth] step 200/6876 S=0.4880 P=0.1093
+[svpbirth] step 400/6876 S=0.2309 P=0.0682
+[svpbirth] step 600/6876 S=0.1033 P=0.0830
+[svpbirth] step 800/6876 S=0.1441 P=0.0649
+[svpbirth] step 1000/6876 S=0.0852 P=0.0492
+[svpbirth] step 1200/6876 S=0.1061 P=0.0718
+[svpbirth] step 1400/6876 S=0.0708 P=0.0628
+[svpbirth] step 1600/6876 S=0.0668 P=0.0789
+[svpbirth] step 1800/6876 S=0.0700 P=0.0583
+[svpbirth] step 2000/6876 S=0.0430 P=0.1058
+[svpbirth] step 2200/6876 S=0.0666 P=0.0775
+[svpbirth] step 2400/6876 S=0.0497 P=0.0382
+[svpbirth] step 2600/6876 S=0.0134 P=0.0333
+[svpbirth] step 2800/6876 S=0.0398 P=0.0362
+[svpbirth] step 3000/6876 S=0.0102 P=0.0355
+[svpbirth] step 3200/6876 S=0.0407 P=0.0378
+[svpbirth] step 3400/6876 S=0.0272 P=0.0474
+[svpbirth] step 3600/6876 S=0.0240 P=0.0266
+[svpbirth] step 3800/6876 S=0.0399 P=0.0488
+[svpbirth] step 4000/6876 S=0.0256 P=0.0332
+[svpbirth] step 4200/6876 S=0.0212 P=0.0413
+[svpbirth] step 4400/6876 S=0.0071 P=0.0169
+[svpbirth] step 4600/6876 S=0.0176 P=0.0272
+[svpbirth] step 4800/6876 S=0.0030 P=0.0101
+[svpbirth] step 5000/6876 S=0.0247 P=0.0235
+[svpbirth] step 5200/6876 S=0.0037 P=0.0161
+[svpbirth] step 5400/6876 S=0.0141 P=0.0133
+[svpbirth] step 5600/6876 S=0.0096 P=0.0208
+[svpbirth] step 5800/6876 S=0.0108 P=0.0100
+[svpbirth] step 6000/6876 S=0.0015 P=0.0063
+[svpbirth] step 6200/6876 S=0.0271 P=0.0237
+[svpbirth] step 6400/6876 S=0.0066 P=0.0110
+[svpbirth] step 6600/6876 S=0.0045 P=0.0051
+[svpbirth] step 6800/6876 S=0.0212 P=0.0308
+[svpbirth] DONE
