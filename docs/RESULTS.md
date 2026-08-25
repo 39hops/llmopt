@@ -48618,3 +48618,85 @@ per-seed output paths via the amendment+requalify lane at that
 GO — registered here, implemented there); dual audit before
 booking; after booking commit/push STOP.
 
+## VERDICT MATH-CYBER-1-SVP-REPLICATION-DESIGN-0: the n=3 replication design is QUALIFIED — seeds 10001/11001 frozen by the registered law, both new inits generated deterministic and sha-pinned BEFORE any replication outcome exists, resolution language frozen; zero training (2026-08-25, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-REPLICATION-DESIGN-0 (committed
+with the producer at 97d9e18e before the run). Receipt
+logs/mathworld1/svprep_design.json (completion_commit 97d9e18e).
+The seed-9001 realization's booking (PROMOTE-PROGRAM, single
+paired realization) is untouched — no maturity or magnitude
+rewrite.
+
+BAR ADJUDICATION (all 4 FIRE):
+1. SEED-LAW: seeds = 9001 + 1000k for k=1,2 -> 10001, 11001
+   (deterministic, outcome-blind; gate-enforced).
+2. INIT-DETERMINISM: each new init bitwise-repeatable across two
+   in-process seed-pinned builds; sha256-pinned —
+   checkpoints/svp_init_s10001.pt 65ee3e20...,
+   svp_init_s11001.pt ee5f397e....
+3. INIT-DISTINCT: the three inits (9001's 18597944...,
+   s10001, s11001) pairwise distinct by sha.
+4. NO-PRODUCTION-TOUCH: FIRES on its gate-enforced component —
+   the seed-9001 init sha byte-unchanged, asserted pre AND post
+   generation; the remaining components (booked checkpoints
+   unwritten — mtimes predate the run; no replication birth path
+   exists) were EXTERNALLY OBSERVED at booking, not
+   gate-enforced (a per-seed birth driver gates them).
+
+FROZEN WITH THIS BOOKING (the pre-outcome record): the full
+treatment-preservation list (identical artifact/tokenizer/
+architecture/batch-plan-law — the plan is seed-independent, sha
+4c0441b7... per the seed-9001 birth receipt — optimizer/scheduler/loss/EOS/topology/final-epoch/
+text-only laws; only intended between-pair difference =
+initialization seed); the same frozen 72-decision band and
+scoring law for every pair (task sampling held fixed to isolate
+training-realization variance); and the RESOLUTION LANGUAGE —
+REPLICATED-DIRECTION iff PROGRAM top-1 > STATE top-1 in all
+three paired births, any reversal OR TIE booked prominently and
+blocking the claim; per-pair p<.05 NOT required; magnitude =
+median/range of delta_k, descriptive at n=3; the 216 decision
+observations are never pooled as independent units; the only
+registered aggregate inferential rider is the pair-level exact
+sign test (floor p = 0.25 at 3/3 — underpowered by
+construction, rider only); descriptive per-decision cross-birth
+consistency rider. The i_usub 4-decision and training-parent
+6-decision exclusions and the u_choice distribution-shift
+constraint carry unchanged; no controller-deployment result may
+alter this law.
+
+REGISTERED-PRIOR ACCOUNTING: the prior (all four design bars
+fire) is CORRECT. No directional or magnitude prior about the
+seed-10001/11001 outcomes is registered, consistent with the
+standing no-prior-supplied record.
+
+READING (scoped): the replication is armed at the design level —
+two frozen inits exist that no outcome influenced, and the
+adjudication vocabulary for n=3 is on the books before a second
+weight exists. Each additional paired birth requires its own
+explicit production GO and receipt exactly like seed 9001; the
+birth driver gains SVPBIRTH_SEED + per-seed output paths through
+the amendment+requalify lane at that GO.
+
+RECEIPT-AUDIT CORROBORATION + DISCLOSURES (adopted): BOTH new
+inits regenerate BIT-EXACTLY in a fresh interpreter (the
+cross-process property the births need — the driver's gate was
+in-process only), and the driver's recipe at seed 9001
+regenerates the frozen 18597944... init bit-exactly, proving one
+construction differing only in seed across all three arms;
+n_params 19,135,872 verified for both new inits. Disclosed: the
+receipt carries no env block — the init pins are
+torch-version-scoped, pinned here at booking (torch 2.12.1,
+Python 3.12.4, macOS arm64, CPU generation); the
+NO-PRODUCTION-TOUCH gate is weaker than its name (booked
+checkpoints existence-checked, not sha-gated — auditor confirmed
+both byte-unchanged externally; the per-seed birth driver
+sha-gates them); no smoke mode (single-shot producer,
+refuse-if-exists is the protection).
+
+FENCES. Mac; zero training under this GO; new init files
+untracked (shas booked here + receipt; the design receipt
+itself is force-added with this booking); the receipt's
+INIT_DETERMINISM field is a gate-backed literal (disclosed; the
+per-seed birth lane derives it); dual audit before
+booking; after booking commit/push STOP.
+

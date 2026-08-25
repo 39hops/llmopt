@@ -1020,6 +1020,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svprep_design.json": {
+   "bytes": 1313,
+   "exists": true,
+   "sha256": "503bb8735f7fc4a622506c3a4b12698f6452be74f5184f13c0637bad41801dd5",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/terminal_census.jsonl": {
    "bytes": 136996,
    "exists": true,

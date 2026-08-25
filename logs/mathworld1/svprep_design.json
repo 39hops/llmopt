@@ -1,0 +1,32 @@
+{
+ "seed_law": "9001 + 1000k, k in (1, 2)",
+ "seeds": [
+  10001,
+  11001
+ ],
+ "init_sha256": {
+  "9001": "18597944400e061f797755175d31a06690e378d8141c687606724b95a7d0a86c",
+  "10001": "65ee3e2028a6ae0f3fa4d9d1e305a45153379100ebb73b052d9eb3378aaf55af",
+  "11001": "ee5f397edf19fca9b826b5f5ec5e30591e10f9fcaceb26524c5fbe73f47f3cf9"
+ },
+ "bars": {
+  "SEED_LAW": true,
+  "INIT_DETERMINISM": true,
+  "INIT_DISTINCT": true,
+  "NO_PRODUCTION_TOUCH": true
+ },
+ "start": {
+  "start_commit": "97d9e18e",
+  "start_status_porcelain": " M docs/receipts.lock.json\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svprep.py": "5e6c2f65ccda9a5886028d000efe04834beff903af5fb7e80b60d33197c188e2",
+   "scratch/mathworld1_svpbirth.py": "253999f5776ce7863efd2a08443fb32ab53bb1ce8429815222051584bac57072",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "97d9e18e"
+}

@@ -2936,6 +2936,13 @@ MATH-CYBER-1 SVP-EVALBAND-0 — materialize + qualify the frozen primary evaluat
 - `derive_program(parent, rule, child_key, accepted)` — AX-FIXTURE program derivation, keyed by exact child key.
 - `main()`
 
+### scratch/mathworld1_svprep.py
+MATH-CYBER-1 SVP-REPLICATION-DESIGN-0 — freeze the two additional paired-birth inits (seed law 9001 + 1000k, k=1,2 -> 10001, 11001) BEFORE any replication outcome exists. Zero training.
+
+- `fsha(p) -> str`
+- `state_bytes(seed, vocab)`
+- `main()`
+
 ### scratch/mathworld1_terminal.py
 MATH-CYBER-1 TERMINAL-DOMINANCE-0 terminal-miss census (PRE-REG MATH-CYBER-1-TERMINAL-DOMINANCE-0, commit a3759d06).
 

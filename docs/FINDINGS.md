@@ -3321,3 +3321,16 @@ regime tag on every bullet is the fence.
   births; scope fences: this-mixture treatment claim only,
   u_choice measured as distractor behavior, sibling ranking not
   solve-rate. RESULTS.md#L48429
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The n=3 replication is
+  armed at the design level with zero outcome contamination: seeds
+  10001/11001 fixed by the registered deterministic law
+  (9001+1000k), both inits frozen and sha-pinned pre-outcome
+  (cross-process bit-exact regeneration verified, and the same
+  recipe at seed 9001 regenerates the original init bit-exactly —
+  one construction, seed the only difference), and the resolution
+  language frozen before any second weight: REPLICATED-DIRECTION
+  requires PROGRAM > STATE in all three pairs (reversal OR tie
+  blocks), per-pair p<.05 not required, magnitude
+  descriptive-only at n=3, no pooling of the 216 repeated
+  decisions; each birth needs its own GO. RESULTS.md#L48621
