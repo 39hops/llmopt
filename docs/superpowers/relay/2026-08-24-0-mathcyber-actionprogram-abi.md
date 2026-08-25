@@ -120,3 +120,47 @@ delivery/schedule as usual; nothing here mutates Axiom from the
 llmopt seat. Tranche A only; B/C wait for their own GO. The
 i_unprod fence, the nested-leg vacuity fence, and the
 sympy-1.14.0 scope fence travel with the fixture.
+
+## AMENDMENT 2026-08-24 (house, pre-delivery): i_unprod is now SEMANTIC — canonical ACTION-FINAL schema supersedes the opaque `branch` above
+
+Written BEFORE delivery, after ACTION-FINAL-QUAL-0 booked (commit
+5bc7c6c5, RESULTS tail). The relay body above is preserved as
+written — it correctly reflects what was known at authoring time;
+this section supersedes its i_unprod description for the Tranche A
+implementation. Everything in the body not touching i_unprod/branch
+stands unchanged.
+
+Canonical ActionProgram (qualified 725/725 corpus + 2,894/2,894 PDC
+i_unprod edges; the schema below is the single vocabulary):
+
+```text
+deterministic: (rule, site)
+i_parts:       (rule, site, u_choice)
+i_unprod:      (rule, site, term_index)
+site:          (kind, first-preorder unique ordinal)
+```
+
+Therefore in the Tranche A ABI:
+
+```text
+param_kind = none|u_choice|term_index
+```
+
+- term_index = ordinal of the additive term of the (inner)
+  integrand Add attacked by the frozen i_unprod rule
+  (I-UNPROD-SEMANTICS-DESK-0 S3 law).
+- NO opaque child-key branch remains in the canonical decode law:
+  deterministic actions carry a single-accepted-child assert;
+  i_parts decodes by u_choice; i_unprod decodes by term_index
+  through rule semantics. Never select children by key/hash.
+- The body's "1,002 of 2,894 branch>0 exposure" measurement stays
+  a true historical fact about the OLD opaque index; under
+  term_index that exposure is resolved semantically
+  (2,894/2,894 decode exactly, zero collisions).
+- Fences carried unchanged: nested/multi-limit Integral peel is
+  rule semantics and that leg remains VACUOUS (never
+  data-exercised); definite-integral leg likewise vacuous; sympy
+  1.14.0 scope.
+
+The interchange fixture (follow-up commit, per the qualification
+target above) is emitted under THIS canonical schema.
