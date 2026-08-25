@@ -2866,6 +2866,14 @@ MATH-CYBER-1 TERMINAL-DOMINANCE-0 terminal-miss census (PRE-REG MATH-CYBER-1-TER
 - `probe(args)`
 - `main()`
 
+### scratch/mathworld1_unprodsem.py
+MATH-CYBER-1 I-UNPROD-SEMANTICS-DESK-0 — can i_unprod's opaque child-sort branch be replaced by a compact rule-native semantic parameter (the i_parts.u_choice analogue)? Zero model, zero training, zero fresh seeds.
+
+- `sha(t: str) -> str`
+- `trace_unprod(f, x)` — Instrumented replica of the frozen i_unprod loop: yields
+- `work(item)`
+- `main()`
+
 ### scratch/mathworld1_yield.py
 MATH-CYBER-1 LABEL-YIELD-0 — sacrificial fresh-band census of retrospective-credit label supply (PRE-REG MATH-CYBER-1-LABEL-YIELD-0 as AMENDED by -DEDUP, 020a0d25).
 

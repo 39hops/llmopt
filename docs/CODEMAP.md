@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 310, spec-cited 89, cited-but-library 61
+Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 311, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -283,6 +283,7 @@ Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 310, spec-ci
 | mathworld1 | mathworld1_substrate_desk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_terminal.py | UNCITED | — | — | — | — |
 | mathworld1 | mathworld1_unprod_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_unprodsem.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_yield.py | UNCITED | — | — | — | — |
 | matryoshka | matryoshka_r1.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | matryoshka | matryoshka_r2.py | spec-cited | specs | specs×1 | — | — |

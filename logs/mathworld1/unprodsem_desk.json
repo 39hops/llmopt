@@ -1,0 +1,34 @@
+{
+ "population_parents": 2888,
+ "population_edges": 2894,
+ "matched_edges": 2894,
+ "parity_fail_edges": 0,
+ "branch_exposed_edges_n_frozen_gt1": 981,
+ "multitrace_children": 0,
+ "cap_hazard_edges_distinctA_gt6": 0,
+ "distinct_A_hist": {
+  "1": 1913,
+  "2": 981
+ },
+ "scheme_cover": {
+  "S1": 2894,
+  "S2": 2894,
+  "S3": 2894
+ },
+ "scheme_collide": {
+  "S1": 0,
+  "S2": 0,
+  "S3": 0
+ },
+ "start": {
+  "start_commit": "2506df58",
+  "start_status_porcelain": " M docs/receipts.lock.json\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_unprodsem.py": "9f6a17324ea31691fe240682b431fcc0a53af18b898c6dc73a143cc0fc5f3609",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87"
+  }
+ },
+ "completion_commit": "2506df58"
+}

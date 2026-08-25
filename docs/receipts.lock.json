@@ -928,6 +928,13 @@
    "source": "results",
    "tracked": false
   },
+  "logs/mathworld1/unprodsem_desk.json": {
+   "bytes": 936,
+   "exists": true,
+   "sha256": "9ce3984f95bb89448de7d6d4dfae89e2bddc4e0b203ef6138c230ab40ced0637",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/yield_census.jsonl": {
    "bytes": 87600,
    "exists": true,

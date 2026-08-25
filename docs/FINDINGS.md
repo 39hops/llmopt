@@ -3181,3 +3181,14 @@ regime tag on every bullet is the fence.
   (1,002/2,894 pairs on 2-sibling sites) so its semantics decision
   gates the matched-subset prereg; zero ambiguous/target/outside-v4
   classes. RESULTS.md#L46128
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] i_unprod's opaque branch is
+  replaceable by ONE semantic ordinal: over all 2,894 PDC-matched
+  edges (2,888 parents, parity-gated 0 failures against the frozen
+  rule), even the minimal scheme S3 = which-additive-term covers
+  everything with zero collisions (S1/S2 too); distinct candidates
+  per site never exceed 2, so the emission-cap set-order hazard is
+  vacuous; the desk's branch-exposed count (981, matched-site raw
+  emission) and PDC's (1,002, any-site accepted) differ by definition
+  on three axes, both stand; next: term_index qualification rung, then
+  the fully semantic program basis gates the paired experiment.
+  RESULTS.md#L46337
