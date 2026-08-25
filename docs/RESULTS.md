@@ -46443,3 +46443,76 @@ STATE-v-PROGRAM training remains NOT authorized until the
 i_unprod qualification rung lands and the loss law is separately
 preregistered. Dual audit before booking.
 
+## PRE-REG MATH-CYBER-1-ACTION-FINAL-QUAL-0: the canonical SEMANTIC ActionProgram — does adopting i_unprod's desk-selected term_index close the last opaque branch with zero regression on everything already qualified? (2026-08-24, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-24): the final i_unprod
+term-index qualification, then handoff and STOP. Zero model, zero
+training, zero fresh seeds, zero search, no paired-diet
+materialization, no Axiom fixture, no relay delivery, no MAGIC,
+no geometry experiments.
+
+CANONICAL SCHEMA (frozen here; this vocabulary supersedes the
+v4/v5 split for all future sessions):
+    deterministic action:  (rule, site)
+    i_parts:               (rule, site, u_choice)
+    i_unprod:              (rule, site, term_index)
+    site:                  (operator kind, first-preorder unique
+                            ordinal)
+term_index = the ordinal of the additive term of the (inner)
+integrand Add attacked by the frozen i_unprod rule — the
+I-UNPROD-SEMANTICS-DESK-0 S3 law, IMPORTED from the desk driver
+(scratch.mathworld1_unprodsem.trace_unprod), never re-derived,
+so law identity holds by construction; the desk driver's sha is
+in this producer's provenance. Site law unchanged from
+ACTION-SEMANTICS. Serialization stays ActionGCTok opcode +
+fields. Decoders reconstruct through RULE SEMANTICS only
+(iparts_children; term-grouped parity-gated i_unprod traces;
+deterministic actions require exactly ONE accepted child at
+their site) — never by enumerating children and selecting on
+child key/hash.
+
+INSTRUMENT. scratch/mathworld1_actionfinal.py (committed with
+this prereg before the run). Leg 1: the frozen 101/725 corpus,
+full binding gates as every prior rung. Leg 2: PDC's matched
+unique i_unprod edges (count-gated 2,888 parents / 2,894 edges).
+Per-site i_unprod parity gate (replica trace set == frozen rule
+output) on both legs.
+
+BARS (frozen):
+1. CORPUS-REGRESSION fires iff all 725 corpus actions decode
+   exactly under the canonical schema with zero
+   wrong_child/ambiguous/collision/unaddressable/parity_fail —
+   every previously qualified decode preserved.
+2. PDC-TERMINDEX fires iff all 2,894 PDC i_unprod edges decode
+   exactly from (parent, rule, site, term_index), zero failures.
+3. NO-OPAQUE-BRANCH (derived, never a literal): the driver
+   carries no child-key-sorted branch path for ANY family —
+   i_parts decodes by u_choice, i_unprod by term_index,
+   deterministic actions by a single-accepted-child assert — so
+   the property holds iff bars 1 and 2 both fire.
+REFUTED-IF: any corpus regression (the term_index adoption broke
+something previously qualified), any PDC decode failure (the
+desk's S3 result does not survive contact with actual decoding),
+or any deterministic action with more than one accepted child at
+its site (an unfenced branching family exists).
+
+REGISTERED PRIOR (house): all three bars fire. The desk measured
+S3 unique/collision-free over the full PDC population and
+multitrace 0; the corpus's 13 i_unprod actions are a subset
+regime of the same rule; the only novel assert is the
+deterministic-single-child one, which held implicitly in every
+prior qualification (branch 0 everywhere outside
+i_parts/i_unprod).
+
+FENCES. Deterministic apart from load-sensitive timeboxes
+(parity gate books failures, never silent); Mac idle; sympy
+1.14.0 scope, nested/multi-limit and definite-integral vacuity
+fences CONTINUE unless genuinely exercised (any exercised case
+books its own class and is not counted qualified); receipt
+logs/mathworld1/actionfinal_qual.json refuse-if-exists; no
+frozen receipt touched; population and diet binding as in the
+desk (count gates; hashes pinned upstream by the theta0 manifest
+and PDC receipts). After booking: /handoff (compaction anchor
+2026-08-24-2) and STOP — nothing else starts. Dual audit before
+booking.
+
