@@ -48119,3 +48119,69 @@ only; memory and wall numbers descriptive; compute accounting at
 birth reported per arm, never equalized. Dual audit before
 booking; after booking commit/push STOP.
 
+## AMENDMENT MATH-CYBER-1-SVP-BIRTH-0-HARDEN: pre-launch instrument hardening only — assert gates become unconditional hard exits, non-finite values abort before optimizer mutation, production completion gates + full compute accounting added; every scientific/design law of 622b58c5/ab7172ce unchanged (2026-08-25, Mac)
+
+Target: PRE-REG MATH-CYBER-1-SVP-BIRTH-0 (and its booked smoke
+verdict at ab7172ce, which stands verbatim). Per outside GO (GPT
+via Artin, 2026-08-25): the prereg's own registered
+amendment+requalify lane, exercising the pre-launch fix
+candidate the smoke booking named. NO production birth under
+this GO; zero production optimizer steps.
+
+INSTRUMENT CHANGES (scratch/mathworld1_svpbirth.py, this commit;
+hardening ONLY — no frozen threshold/value/law changes, no data
+rematerialization, no sympy/world replay, no eval modification,
+no i_usub repair, no u_choice reweighting, no model update):
+1. Every experiment-critical bare assert replaced by an
+   unconditional gate() hard exit (SystemExit) that survives
+   python -O: unique-row-ID count, batch-plan sha, 6,876 planned
+   steps, zero cap violations, step-0 tensor equality,
+   independent parameter storage, both-models-on-MPS,
+   independent optimizer/scheduler objects, hyperparameter
+   equality, smoke tail size + epoch checks. env block now also
+   records sys.flags.optimize.
+2. Non-finite aborts BEFORE optimizer mutation in the shared
+   train_step: loss finiteness gated before backward;
+   clip_grad_norm_(..., 1.0, error_if_nonfinite=True) plus a
+   math.isfinite gate on the returned norm before
+   optimizer.step(). The smoke GRADS bar's NaN-only gn==gn test
+   is replaced by math.isfinite (rejects +-Inf). A failed finite
+   check is a run failure — never continue, never emit
+   checkpoints.
+3. Production completion hard gates BEFORE any checkpoint write:
+   len(losses) == 6,876 in BOTH arms; scheduler terminal state
+   exactly TOTAL_STEPS-1 in both arms (the frozen OneCycle
+   final-step guard law) and equal between arms; every recorded
+   loss finite. No silent short run can emit qualified
+   checkpoints.
+4. Complete per-arm compute accounting in the production receipt
+   (recorded, never equalized): padded tensor tokens
+   (ids.numel()), continuation target tokens (mask.sum()), wall
+   seconds, peak RSS, MPS allocated memory, plus a preflight
+   block.
+5. All production paths, upstream pins (paired/eval/init/plan
+   full hashes), the target-blind schedule, and every registered
+   law remain byte/law identical. ON_MPS is now a DERIVED
+   receipt field (the gate's own value), retiring the two
+   bar-literal disclosures of the smoke booking.
+
+REQUALIFICATION (frozen): the exact path-isolated MPS stress
+smoke re-runs under the hardened implementation — both resident
+models, real backward/AdamW/OneCycle, longest STATE batch,
+longest PROGRAM batch, the 12-row epoch-0 tail, alternating
+order — and ALL 9 smoke bars re-adjudicate under the stronger
+finite/hard-exit law. New smoke receipt path
+logs/mathworld1/smoke_svpbirth2.json (the booked
+smoke_svpbirth.json is frozen evidence of the pre-hardening
+run). REFUTED-IF: any re-adjudicated bar fails — the birth stays
+unlaunched pending a further amendment.
+
+REGISTERED PRIOR (house): all 9 bars re-fire with values
+statistically indistinguishable from the first smoke (same
+batches, same init, same laws; only gate plumbing changed).
+
+FENCES. Mac; dual audit before booking; after booking
+commit/push STOP. If clean, the standing next GO is UNCHANGED:
+SVPBIRTH_PRODUCTION=1 .venv/bin/python
+scratch/mathworld1_svpbirth.py — with no further design changes.
+

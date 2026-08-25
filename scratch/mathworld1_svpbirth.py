@@ -27,6 +27,7 @@ production plan is untouched).
 """
 import hashlib
 import json
+import math
 import os
 import platform
 import random
@@ -45,6 +46,12 @@ from llmopt.train.mathnative import build_model  # noqa: E402
 from scratch.mathworld1_actiontok import ActionGCTok  # noqa: E402
 
 PRODUCTION = os.environ.get("SVPBIRTH_PRODUCTION") == "1"
+
+
+def gate(cond, msg):
+    """Hard exit that survives python -O (never a bare assert)."""
+    if not cond:
+        raise SystemExit(f"GATE FAILED: {msg}")
 
 PINS = {
     "data/matsub_paired.jsonl":
@@ -72,7 +79,7 @@ TOK = ActionGCTok()
 CK_STATE = Path("checkpoints/svp_state.pt")
 CK_PROGRAM = Path("checkpoints/svp_program.pt")
 RECEIPT = Path("logs/mathworld1/svpbirth_receipt.json")
-SMOKE_RECEIPT = Path("logs/mathworld1/smoke_svpbirth.json")
+SMOKE_RECEIPT = Path("logs/mathworld1/smoke_svpbirth2.json")
 
 
 def fsha(p) -> str:
@@ -131,12 +138,12 @@ def load_arms(dev):
         m.load_state_dict(sd)
         arms[view] = m.to(dev)
     a, b = arms["STATE"], arms["PROGRAM"]
-    assert all(torch.equal(x.cpu(), y.cpu()) for (_, x), (_, y) in
-               zip(sorted(a.state_dict().items()),
-                   sorted(b.state_dict().items()))), "INIT UNEQUAL"
-    assert not any(x.data_ptr() == y.data_ptr()
-                   for x, y in zip(a.parameters(), b.parameters())
-                   ), "SHARED STORAGE"
+    gate(all(torch.equal(x.cpu(), y.cpu()) for (_, x), (_, y) in
+             zip(sorted(a.state_dict().items()),
+                 sorted(b.state_dict().items()))), "INIT UNEQUAL")
+    gate(not any(x.data_ptr() == y.data_ptr()
+                 for x, y in zip(a.parameters(), b.parameters())),
+         "SHARED STORAGE")
     return arms
 
 
@@ -149,23 +156,24 @@ def preflight():
             raise SystemExit(f"PIN MISMATCH {p}")
     rows = [json.loads(l) for l in open("data/matsub_paired.jsonl")]
     ids_all = [r["row_id"] for r in rows]
-    assert len(set(ids_all)) == 73324 == len(ids_all), "ROW IDS"
+    gate(len(set(ids_all)) == 73324 == len(ids_all), "ROW IDS")
     plan = batch_plan(ids_all)
-    assert sha_b(json.dumps(plan).encode()) == PLAN_SHA, "PLAN SHA"
-    assert len(plan) == TOTAL_STEPS, "STEPS"
+    gate(sha_b(json.dumps(plan).encode()) == PLAN_SHA, "PLAN SHA")
+    gate(len(plan) == TOTAL_STEPS, "STEPS")
     over = 0
     for r in rows:
         for view in ("STATE", "PROGRAM"):
             p, c = encode_row(r, view)
             if len(p) + len(c) > CAP:
                 over += 1
-    assert over == 0, f"CAP VIOLATIONS {over}"
+    gate(over == 0, f"CAP VIOLATIONS {over}")
     return rows, plan
 
 
 def env_block(dev):
     return {"torch": torch.__version__,
             "python": sys.version.split()[0],
+            "optimize_flag": sys.flags.optimize,
             "platform": platform.platform(),
             "mps_available": torch.backends.mps.is_available(),
             "mps_env": {k: v for k, v in os.environ.items()
@@ -184,8 +192,11 @@ def make_opt(model, total_steps):
 def train_step(model, opt, sched, ids, mask):
     logits = model(ids)
     loss = masked_loss(logits, ids, mask)
+    gate(math.isfinite(float(loss)), "NON-FINITE LOSS")
     loss.backward()
-    gn = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+    gn = torch.nn.utils.clip_grad_norm_(
+        model.parameters(), 1.0, error_if_nonfinite=True)
+    gate(math.isfinite(float(gn)), "NON-FINITE GRAD NORM")
     opt.step()
     if sched.last_epoch < sched.total_steps - 1:
         sched.step()
@@ -206,9 +217,9 @@ def smoke():
         raise SystemExit("MPS UNAVAILABLE")
     dev = torch.device("mps")
     arms = load_arms(dev)
-    for m in arms.values():
-        assert all(p.device.type == "mps"
-                   for p in m.parameters()), "NOT ON MPS"
+    on_mps = all(p.device.type == "mps"
+                 for m in arms.values() for p in m.parameters())
+    gate(on_mps, "NOT ON MPS")
     opts = {v: make_opt(arms[v], 3) for v in arms}
     by_id = {r["row_id"]: r for r in rows}
     # stress batches: longest-STATE batch, longest-PROGRAM batch,
@@ -222,7 +233,8 @@ def smoke():
     top_prog = [by_id[i] for i in sorted(
         plens, key=plens.get, reverse=True)[:BS]]
     tail = [by_id[i] for i in plan[2291][2]]
-    assert len(tail) == 12, "TAIL"
+    gate(len(tail) == 12, "TAIL SIZE")
+    gate(plan[2291][0] == 0, "TAIL EPOCH")
     before = {v: [p.detach().cpu().clone()
                   for p in arms[v].parameters()]
               for v in arms}
@@ -276,12 +288,12 @@ def smoke():
             resource.RUSAGE_SELF).ru_maxrss // (1 << 20),
         "init_sha_after": init_after,
         "bars": {
-            "ON_MPS": True,
+            "ON_MPS": on_mps,
             "LOSSES_FINITE": all(
                 r[v]["finite"] for r in results
                 for v in ("STATE", "PROGRAM")),
             "GRADS_FINITE": all(
-                r[v]["grad_norm"] == r[v]["grad_norm"]
+                math.isfinite(r[v]["grad_norm"])
                 for r in results for v in ("STATE", "PROGRAM")),
             "PARAMS_CHANGED_INDEP": all(
                 c > 0 for c in changed.values()) and diverged,
@@ -321,12 +333,13 @@ def production():
     arms = load_arms(dev)
     opts = {v: make_opt(arms[v], TOTAL_STEPS) for v in arms}
     o_s, o_p = opts["STATE"][0], opts["PROGRAM"][0]
-    assert o_s is not o_p and opts["STATE"][1] is not opts[
-        "PROGRAM"][1], "SHARED OPT"
-    assert o_s.defaults == o_p.defaults, "HYPERPARAM MISMATCH"
+    gate(o_s is not o_p and opts["STATE"][1] is not opts[
+        "PROGRAM"][1], "SHARED OPT")
+    gate(o_s.defaults == o_p.defaults, "HYPERPARAM MISMATCH")
     by_id = {r["row_id"]: r for r in rows}
     losses = {"STATE": [], "PROGRAM": []}
     tok_counts = {"STATE": 0, "PROGRAM": 0}
+    cont_tokens = {"STATE": 0, "PROGRAM": 0}
     walls = {"STATE": 0.0, "PROGRAM": 0.0}
     t0 = time.time()
     for step, (ep, bi, ids_chunk) in enumerate(plan):
@@ -340,11 +353,22 @@ def production():
                                  opts[view][1], ids, mask)
             losses[view].append(loss)
             tok_counts[view] += int(ids.numel())
+            cont_tokens[view] += int(mask.sum())
             walls[view] += time.time() - tv
         if step % 200 == 0:
             print(f"[svpbirth] step {step}/{TOTAL_STEPS} "
                   f"S={losses['STATE'][-1]:.4f} "
                   f"P={losses['PROGRAM'][-1]:.4f}", flush=True)
+    # completion hard gates BEFORE any checkpoint is written
+    for v in ("STATE", "PROGRAM"):
+        gate(len(losses[v]) == TOTAL_STEPS,
+             f"SHORT RUN {v} {len(losses[v])}")
+        gate(all(math.isfinite(x) for x in losses[v]),
+             f"NON-FINITE LOSS HISTORY {v}")
+    gate(opts["STATE"][1].last_epoch
+         == opts["PROGRAM"][1].last_epoch
+         == TOTAL_STEPS - 1,
+         "SCHED TERMINAL STATE (OneCycle guard law)")
     for v, ck in (("STATE", CK_STATE), ("PROGRAM", CK_PROGRAM)):
         torch.save({k: t.cpu() for k, t in
                     arms[v].state_dict().items()}, ck)
@@ -358,7 +382,17 @@ def production():
             v: [round(sum(losses[v][e * 2292:(e + 1) * 2292])
                       / 2292, 5) for e in range(EPOCHS)]
             for v in losses},
-        "tokens_processed": tok_counts,
+        "preflight": {"rows": len(rows), "plan_sha": PLAN_SHA,
+                      "cap_violations": 0,
+                      "note": "invariants enforced by gate() hard "
+                              "exits; receipt existence = pass"},
+        "tokens_processed_padded": tok_counts,
+        "continuation_target_tokens": cont_tokens,
+        "peak_rss_mb": resource.getrusage(
+            resource.RUSAGE_SELF).ru_maxrss // (1 << 20),
+        "mps_allocated_bytes": (
+            int(torch.mps.current_allocated_memory())
+            if torch.backends.mps.is_available() else None),
         "arm_wall_s": {v: round(w, 1) for v, w in walls.items()},
         "wall_s": round(time.time() - t0, 1),
         "checkpoints": {str(CK_STATE): fsha(CK_STATE),
