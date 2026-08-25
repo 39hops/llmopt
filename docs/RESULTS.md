@@ -46770,3 +46770,194 @@ of any kind. After booking: STOP — MATCHED-SUBSET-MATERIALIZE-0
 prereg is the standing next and needs its own GO. Dual audit
 before booking.
 
+## OBSERVATION MATH-CYBER-1-AX-ABI-COUNTERBOOK-0: Axiom Tranche A reply ingested and counter-verified — ActionProgram is independently implementable and internally sound in Axiom (native bars fire, zero collisions, 491/725 key structure reproduced), but broad backend-independent portability is NOT established: transport/order admission dominates every interchange denominator (2026-08-25, Mac)
+
+Scoped counter-book ingestion per outside GO (GPT via Artin,
+2026-08-25). The canonical llmopt ActionProgram schema is NOT
+reopened or modified by anything here.
+
+AXIOM EVIDENCE (their repo, Mac checkout, read-only): verdict
+commit b90cad71e21b2e4393098a89acc1be8b18ddfb59 + provenance
+follow-up 9d656c94; reply
+docs/relay/2026-08-25-0-mathcyber-action-abi-reply.md; independent
+implementation frozen pre-fixture at 66661b9 (== e8051d7 after
+their docs-only remote rebase, per their provenance note); receipt
+logs/action_abi/action_abi_qual.json.
+
+COUNTER-VERIFIED HOUSE-SIDE (recomputed from their receipt, not
+accepted from their tables):
+- Fixture integrity: their pinned sha256 for
+  parents/actions/unprod_stress EQUAL our axfixture manifest
+  values byte-for-byte; counts 101/725/2,894 pin_ok.
+- Core counters SUM: A4_PASS 7 + roundtrip_divergence 703 +
+  unsupported_rule 11 + legal_set_child_mismatch 4 = 725 exact;
+  parents 101 rows / 64 unique, A1 byte-round-trip admits 6
+  unique, 58 divergent unique (6+58=64 exact).
+- Stress counters SUM: 77 + 2,711 + 99 (term_index_mismatch) + 7
+  (site_ordinal_mismatch) = 2,894 exact; zero unaddressable, zero
+  undecided, zero same-program/different-child collisions on
+  either leg; 491/725 distinct program keys and
+  fixture-internal same-key/different-child 0 both reproduce our
+  booking independently.
+- Tier-B decomposition arithmetic: 41 ordering-only + 17
+  structural = 58 core divergent uniques; 2,227 + 268 = 2,495
+  stress divergent uniques — internally consistent (their Tier-B
+  numbers themselves are their measurement, not re-derived here).
+
+HOUSE READING (narrow, registered): the ABI transports as a LAW —
+an independent engine implemented (rule, site, u_choice |
+term_index) from law text alone, pre-fixture-frozen, and its
+native bars all fire with zero decode collisions. What does NOT
+transport is the STATE SPELLING: admission (their sstr printer
+zoo envelope + a smaller genuine constructor/canonicalization
+class, e.g. numeric-coefficient distribution over Add altering
+stored Mul factor lists) dominates every cross-engine
+denominator (6/64 core parents, 183/2,894 stress rows admitted).
+On admitted rows the 99 term_index / 7 site_ordinal mismatches
+are the pre-fenced stored-arg-order divergence — a measurement,
+as registered in the relay. This is NOT evidence of a
+universal/canonical cross-engine ISA and is not claimed as one;
+portability beyond SymPy-stored-order engines remains
+UNMEASURED-where-unadmitted. No house representation change is
+made or warranted by this result.
+
+CAVEATS (theirs, disclosed): receipt git_sha is
+c154ac1...-dirty (run from a dirty tree; their booking commit and
+provenance note pin the frozen implementation lineage); their
+legal-set measurement on the 6 admitted parents (house 11 v axiom
+21 children, 7 shared) is a first-look asymmetry measurement,
+not a parity claim.
+
+BANKED, NOT LIVE: Axiom's generic sympy-order printer extension
+proposal (their Tier-B payoff bound: ~47/64 core, ~2,620/2,888
+stress unique-parent admission, structural class ~27% residual
+floor) — banked in RIFF-LEDGER this commit; it needs its own GO,
+is not the current rung, and does NOT gate the paired
+STATE-v-PROGRAM experiment.
+
+FENCES. Read-only ingestion (zero Axiom mutation from this seat);
+counter-verification limited to counter sums, fixture-sha
+equality, and key-structure reproduction — Axiom's Tier-B class
+assignments and admission classifier are their instrument;
+cross-engine ordinal comparisons remain measurements, never bugs;
+sympy 1.14.0 / stored-arg-order fences travel. Next rung in the
+same session: MATCHED-SUBSET-MATERIALIZE-0 (own prereg below,
+does not wait on Axiom).
+
+## PRE-REG MATH-CYBER-1-MATCHED-SUBSET-MATERIALIZE-0: ONE neutral paired artifact for the 73,324-row PDC matched population — every emitted row must reconstruct its FINAL canonical ActionProgram and replay decode(cur, program)=nxt exactly (2026-08-25, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-25), after the Axiom
+counter-book observation above. Zero training, zero model loads,
+zero fresh evaluation seeds, zero search. Representation-neutral
+materialization ONLY: no separate arm files, no sorting by either
+target length, no batch membership/order, no shuffle, no
+optimizer/model choices — those belong to the subsequent
+paired-design prereg.
+
+POPULATION (frozen): exactly the PDC unique_program row
+population — expected 73,324 historical rows / 59,587 unique
+(cur, nxt) pairs / 58,988 unique cur, preserving source
+multiplicity across all 13 theta0 birth-manifest files
+(12 micromodel shards + data/step_chains.jsonl). Upstream pins
+recorded in the receipt before materialization: every source file
+sha256 must equal the theta0 birth manifest
+(checkpoints/mathnative_19m_mw1_theta0.json diet_manifest, total
+103,595); sha256 of logs/mathworld1/pdc_relabel.jsonl,
+pdc_verdict.json, actionfinal_qual.json, and
+axfixture/axfixture_manifest.json pinned.
+
+ARTIFACT (frozen shape): ONE neutral jsonl,
+data/matsub_pairs.jsonl (UNTRACKED — file-handoff convention;
+receipt carries its sha256 + row count), rows emitted in
+historical source order (manifest file order, then line order).
+Each row: row_id, source_file, source_line, level, source
+metadata (source/hints/think fields where the historical row has
+them), cur, state_target = historical nxt (full state),
+canonical ActionProgram structured fields (rule, site_kind,
+site_ordinal, param_kind in none|u_choice|term_index,
+param_index), program_text under ActionGCTok vocab 332, and
+overlap annotation flags (below). row_id law (frozen):
+sha16(f"{source_file}:{source_line}:{cur}:{nxt}") — immutable
+source identity + content; repeated historical rows are PRESERVED
+(distinct source_line => distinct row_id), never deduplicated.
+
+INSTRUMENT. scratch/mathworld1_matsub.py (committed with this
+prereg before the run; SMOKE mode writes only *_smoke paths).
+Program reconstruction and replay use the ACTION-FINAL decode
+laws verbatim (iparts_children u_choice map; parity-gated
+trace_unprod term map; deterministic single-accepted-child;
+first-preorder site law, first matching site) in the
+visible-string domain (parent = sympify(cur), which PDC's
+unique_program class already certifies round-trips
+sstr(sympify(cur)) == cur). Fork pool, streamed intermediate
+progress, failed parents get ONE registered cold retry pass
+before adjudication (the PDC censoring shape); any survivor
+failure is a BLOCKER, never dropped and never a shrunken
+denominator.
+
+BARS (frozen):
+1. POPULATION-EXACT fires iff emitted rows == 73,324 AND
+   per-source-file counts equal PDC's booked by_source_file
+   unique_program dict EXACTLY and unique (cur,nxt) == 59,587,
+   unique cur == 58,988.
+2. FINAL-REPLAY fires iff decode(cur, program) == nxt exactly for
+   73,324/73,324 emitted rows under the final canonical schema,
+   through rule semantics only. Any discrepancy is a blocker to
+   artifact booking.
+3. TOK-ROUNDTRIP fires iff every program_text encodes/decodes
+   byte-identically under ActionGCTok AND zero cur/nxt strings
+   contain a literal "<" (the tokenizer legacy fence).
+4. NO-COLLISION fires iff zero same-(cur, program)-different-nxt
+   pairs exist across the whole artifact.
+5. NO-OPAQUE (derived, never a literal): no branch field exists
+   anywhere in the emitted schema and no child-key-sorted path
+   generates any semantic field — holds iff bars 1-4 fire (same
+   driver-law property as ACTION-FINAL/AX-FIXTURE).
+REFUTED-IF: any bar fails — the artifact is not booked; a failure
+class books its own entry.
+
+ANNOTATIONS (carried on rows, NEVER conditioning inclusion):
+- overlap_corpus_state / overlap_corpus_edge: exact
+  visible-string identity v the frozen 725-action qualification
+  corpus (states.jsonl state_before set; axfixture parent->
+  child_sstr edge set).
+- overlap_band_{calibration,adapt,holdout}:
+  sha16(srepr(sympify(cur))) membership in the state_hash sets
+  harvested from frozen receipts (terminal_census.jsonl band
+  rows; active_pair.jsonl stage rows). LIMITATION (registered):
+  this is canonical-form identity — an exact-print state with
+  unevaluated structure could evade the hash match; and the
+  TRAIN band (seeds 9200-9249) has NO state hashes in any frozen
+  receipt (its census stored bins only), so train-band overlap is
+  NOT ANNOTATABLE here and is disclosed as such, not silently
+  omitted. The later design rung preregs clean evaluation on top
+  of these flags.
+
+RECEIPT logs/mathworld1/matsub_receipt.json (refuse-if-exists):
+total rows, unique (cur,nxt), unique cur, source-by-source
+counts, per-rule and param_kind family counts, target-token
+distributions for BOTH views (STATE = nxt tokens, PROGRAM =
+program_text tokens, ActionGCTok; p50/p90/p99/max — DESCRIPTIVE
+ONLY, no selection acts on them), overlap flag counts, artifact
+sha256 + bytes.
+
+REGISTERED PRIOR (house): all bars fire, with the named risk that
+this is the FIRST full decode of the population's
+deterministic/i_parts strata (ACTION-FINAL's scope fence said
+exactly that — its rung decoded the corpus plus the PDC i_unprod
+stratum); the corpus decoded 725/725 across all families under
+identical laws, so the prior stands, and bar 2 exists precisely
+to catch a population-scale counterexample.
+
+FENCES. Mac, fork-pool real script file (never stdin
+multiprocessing); deterministic apart from load-sensitive
+timeboxes (parity/timeout failures counted per class; the single
+cold retry is registered above; anything surviving it books as a
+blocker, never censored silently); sympy 1.14.0 scope;
+nested/multi-limit and definite-integral vacuity fences continue;
+target-length numbers are descriptive; the artifact is
+paired-design INPUT — batching/shuffle/split/loss law all belong
+to the next prereg and are NOT touched here. After booking: dual
+audit, commit/push, STOP — no paired design or training in this
+rung.
+
