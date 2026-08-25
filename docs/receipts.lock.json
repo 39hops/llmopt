@@ -985,6 +985,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpbirth_receipt.json": {
+   "bytes": 2384,
+   "exists": true,
+   "sha256": "996b74c4b39a2a21c760977189644aa7b622b7c3bf88e003baa98edd9dd327e0",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpdesign_receipt.json": {
    "bytes": 1908,
    "exists": true,

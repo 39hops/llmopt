@@ -48260,3 +48260,95 @@ downstream law; no directional outcome prior; per-arm compute
 reported never equalized; memory/wall descriptive). Dual audit
 before booking; after booking commit/push STOP.
 
+## VERDICT MATH-CYBER-1-SVP-BIRTH-0-PRODUCTION: the paired STATE-v-PROGRAM birth COMPLETED under the frozen law — 6,876/6,876 optimizer steps in BOTH arms, every hard gate passed, both checkpoints written and sha-pinned; NO evaluation performed and no directional reading taken (2026-08-25, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-BIRTH-0 + AMENDMENT -HARDEN
+(production launched exactly as frozen at cdc4c915, launch
+recorded pre-fire in the session; driver byte-identical to the
+requalified 0d8e8ff5 content). Receipts
+logs/mathworld1/svpbirth_receipt.json + svpbirth_run.log (the
+run's stdout, force-added — carries the step-series incl.
+step 0). Zero design/data/loss/
+optimizer/instrumentation changes between smoke and production.
+
+COMPLETION (the hardened gates are the adjudication — the
+production receipt records no per-gate booleans by design;
+receipt existence certifies the gate chain, and the auditor
+re-verified the gate placement in the committed code): all preflight pins exact
+(paired a943ba7f..., eval cb90ff0f/f63100a6 untouched by any
+scoring, init 18597944..., plan 4c0441b7... re-derived); 73,324
+unique rows; 0 cap violations; step-0 bitwise equality +
+independent storage/optimizers/schedulers; per-step non-finite
+gates (loss before backward, error_if_nonfinite clip before
+step) never fired across 13,752 arm-updates; completion gates:
+len(losses) == 6,876 in BOTH arms, all recorded losses finite,
+scheduler terminal state 6,875 == TOTAL_STEPS-1 in both arms
+(the frozen OneCycle guard law). Checkpoints written AFTER the
+gates: checkpoints/svp_state.pt sha256 8e0a22f2...,
+checkpoints/svp_program.pt sha256 d9db0049... (76,561,588 and 76,561,718 bytes,
+fp32 state_dicts of build_model(332, ctx=4096)).
+
+TRAINING RECORD (descriptive ONLY — the prereg forbids raw
+training loss as a comparison, the arms' losses live on
+DIFFERENT token distributions, and no directional outcome prior
+exists; none is invented now): epoch-mean continuation CE
+STATE [0.2472, 0.0288, 0.0105] / PROGRAM [0.1370, 0.0376,
+0.0206]; step-0 losses 5.9401/6.0773 (run log line 4) match the
+frozen-init design-receipt forwards to printed precision.
+
+COMPUTE ACCOUNTING (per arm, reported never equalized): padded
+tensor tokens STATE 28,570,176 v PROGRAM 18,413,640 (1.55x;
+the smaller-than-3.63x gap is INFERRED to reflect the shared
+prefix dominating padded length — not separately measured); continuation TARGET tokens
+STATE 4,871,751 v PROGRAM 1,341,459 (3.63x, matching the
+design-desk ratio exactly); arm wall STATE 2,306.6 s v PROGRAM
+1,594.5 s; total wall 3,901.9 s (65 min — under the 3.2 h smoke
+ceiling as expected); peak RSS 3,383 MB; mps allocated at close 1.018 GB (decimal); env torch 2.12.1 / Python 3.12.4 / macOS arm64 / mps /
+optimize_flag 0.
+
+READING (scoped, deliberately minimal): two 19M models now
+exist whose INTENDED difference set is exactly the target
+representation (full difference enumeration: continuation token
+streams, hence per-step gradients and every downstream weight;
+per-step arm execution ORDER alternates by parity as registered;
+plus substrate-level mps nondeterminism, which is not
+arm-symmetric-guaranteed) — same init bytes, same rows, same
+batch membership/order, same optimizer/scheduler law and step
+count. Whether
+the PROGRAM representation ranks true siblings better is
+UNMEASURED: the frozen 9600-9619 evaluation bytes were NOT
+opened by any trained-model scoring, and adjudication (the
+McNemar law frozen in SVP-DESIGN-0) waits for its own GO.
+
+RECEIPT-AUDIT CORROBORATION + DISCLOSURES (adopted): the
+padded-token and continuation-token totals RECOMPUTE BIT-EXACTLY
+from the frozen corpus + registered plan (they depend on every
+batch's max length in order, so the match certifies the run
+consumed the registered plan in the registered order); all 59
+tensors differ pairwise across init/STATE/PROGRAM with
+state-v-program max|delta| 0.164 exceeding each arm's drift from
+init (0.119/0.143) — the signature of two independent trainings,
+booked as a structural check, not a capability statement;
+step-0 losses match the design-receipt forwards to all printed
+digits (the init really was the starting point). Disclosed:
+plan_sha/cap_violations are gate-backed literals in the receipt
+(auditor recomputed both; a future driver writes the computed
+values); the per-step loss lists are discarded — epoch means +
+the 35-line log are the surviving loss record; the run log has
+no refuse guard (a relaunch would clobber it; checkpoints/receipt
+guards refuse).
+
+FENCES. The text-only downstream law held (training consumed the
+sha-pinned artifact; sympy/world never replayed); checkpoints
+are FINAL-EPOCH weights, no selection; the checkpoints are
+untracked (file-handoff convention; shas + sizes booked here and
+in the receipt); mps run-level nondeterminism doctrine applies —
+this birth is a single realization, and cross-run weight-sha
+comparisons are invalid on mps; the u_choice distribution-shift
+constraint and i_usub exclusions travel unchanged into
+adjudication; no directional outcome prior was supplied before
+weights and none is registered after them. NEXT (own GO):
+SVP-ADJUDICATION — score both arms on the frozen band under the
+frozen law. Dual audit before booking; after booking commit/push
++ process census, STOP.
+

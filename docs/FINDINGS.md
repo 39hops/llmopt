@@ -3294,3 +3294,16 @@ regime tag on every bullet is the fence.
   bit-identical to the pre-hardening run (single last-value ULP
   divergence = the standing mps nondeterminism); production birth
   stays armed behind the unchanged GO. RESULTS.md#L48188
+
+- [SINGLE-SEED] [math-cyber] [mac] The paired STATE-v-PROGRAM
+  production birth COMPLETED under the frozen causal law:
+  6,876/6,876 optimizer steps in both arms from the shared
+  bitwise-pinned init, all hardened gates clean, checkpoints
+  sha-pinned; the padded/continuation token totals recompute
+  bit-exactly from the frozen plan (order-certifying), and
+  state-v-program weight separation exceeds each arm's drift from
+  init (independent trainings); epoch losses are descriptive only
+  (different token distributions — never a comparison), the
+  9600-9619 eval bytes remain unopened by trained-model scoring,
+  and no directional outcome prior exists on either side of the
+  weights; adjudication needs its own GO. RESULTS.md#L48263
