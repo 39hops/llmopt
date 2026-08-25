@@ -47238,3 +47238,112 @@ law only; dual audit before booking; after booking commit/push
 and STOP — no paired STATE-v-PROGRAM design or training in this
 rung.
 
+## VERDICT MATH-CYBER-1-MATCHED-SUBSET-MATERIALIZE-0-CENSOR: QUALIFIED — all 8 amended bars fire with K=0: 73,324 historical / 73,324 paired-eligible / 0 engine-irreproducible; the registered prior is REFUTED (the step_chains i_heurisch row decoded in the seed-0 main pass), and the censoring law goes on the books UNTRIGGERED (2026-08-25, Mac)
+
+Per AMENDMENT MATH-CYBER-1-MATCHED-SUBSET-MATERIALIZE-0-CENSOR
+(committed with the producer at 9d703425 before the run; ontology,
+censoring law, deterministic PYTHONHASHSEED 0..15 ladder, and all
+8 bars frozen there). Receipts logs/mathworld1/matsub2_receipt.json +
+matsub2_run.log (the run's stdout, force-added — carries the
+seed-0 failure census; post-run completion_commit equals the
+start commit 9d703425, HEAD unmoved during the run). The MSM-0 NO-FIRE verdict at
+0f3bf02b stands verbatim as historical evidence.
+
+BAR ADJUDICATION (frozen law; all FIRE):
+1. MASTER-POPULATION: 73,324 historical identities in
+   data/matsub_master.jsonl, source order, no silent drop.
+2. ACCOUNTING: 73,324 paired_eligible + 0 excluded + 0 blocker
+   rows = 73,324.
+3. FINAL-REPLAY: every paired-eligible row decoded
+   decode(cur, program) == nxt exactly in its emitting process.
+4. EXCLUSION-SOUNDNESS: vacuously clean — zero censored rows,
+   zero blockers; the exclusion_rows list is empty.
+5. TOK-ROUNDTRIP: 0 failures; 0 literal-"<" rows.
+6. NO-COLLISION: 0.
+7. NO-OPAQUE (derived): holds via bars 3+4.
+8. PDC-MULTIPLICITY: per-source counts equal PDC's booked
+   unique_program dict exactly on all 13 files.
+DUAL DENOMINATORS (kept prominently, per the amendment): 73,324
+historical PDC-matched SOURCE ROWS (59,587 distinct (cur,nxt)
+transitions behind them); 73,324 current exact paired-eligible;
+K = 0 engine-irreproducible emissions. The paired view
+data/matsub_paired.jsonl is byte-identical to the master
+(sha256 a943ba7f... for both, 51,982,858 bytes each) — the
+expected consequence of K=0; the two files remain distinct
+registered artifacts with distinct roles.
+
+REGISTERED-PRIOR ACCOUNTING (wrong, on the record): the house
+predicted the step_chains source_line 8146 i_heurisch row would
+remain excluded. MEASURED: it decoded in the seed-0 POOLED MAIN
+PASS (successful_hash_seed 0, attempt 0, program
+"<r:i_heurisch> I0"). The MSM-0-era evidence (0 hits in 25
+fresh-interpreter samples including a PYTHONHASHSEED 0-15 sweep)
+and this result together are CONSISTENT WITH warm/fork-inherited
+interpreter state (sympy cache/assumption history in a pool
+worker) mattering beyond the hash seed — a fresh seed-0 process
+suppressed the edge while a forked seed-0 worker emitted it. The
+co-varying factors (fork inheritance, warm caches, parent
+processing order, harness path) were NOT separated; no experiment
+here isolates warmth.
+
+HONEST RESIDUAL (named, travels as a fence): the hash-seed
+ladder pins the SEED but pool-worker cache history is
+scheduling/timing-dependent, so "deterministic environment" is
+only partially achieved — a re-run could route rows to retries
+differently (or, in principle, exhaust where this run succeeded).
+What IS frozen is the artifact itself: sha256-pinned content,
+every row's replay verified in its emitting process, and
+successful_hash_seed/attempt recorded per retried row. The
+censoring law remains on the books, general and mechanism-based,
+for any future materialization that does hit an exhaustion.
+
+RETRY ACCOUNTING: 7 parents failed the seed-0 main pass
+({unaddressable: 5, rule_absent: 2}, run log); the ladder
+recovered all 7 (per-rule: i_heurisch 6, i_linear_basis 1 — the
+spelling instability is not heurisch-exclusive; seed histogram:
+seed 1 x4, seed 3 x1, seed 6 x2); zero exhaustions. The receipt's
+retry counters are PER-(cur,nxt)-EDGE (7); the artifact carries 8
+retried ROWS (verified: one retried step_chains edge appears at
+two source lines — ordinary row/edge multiplicity, 8 = 7 edges +
+1 duplicate row; at row grain seed 1 carries 5 and i_heurisch 7).
+
+MEASUREMENTS (descriptive, scope explicit, now on a QUALIFIED
+artifact): STATE target tokens p50/p90/p99/max 17/32/57/219 v
+PROGRAM 5/5/8/8 (ActionGCTok); param_kind {none: 70,198 — one
+more than the carried prior-run figure 70,197, the recovered row;
+term_index: 3,123, u_choice: 3} — the paired experiment cannot
+claim broad evidence specifically for i_parts operand semantics
+(3 rows); deterministic/no-param actions dominate; overlap flags
+(descriptive, never conditioning inclusion): corpus_state 18,
+corpus_edge 18, band_calibration 38, band_adapt 75, band_holdout
+36, band_holdout_diag 16; TRAIN band not annotatable from frozen
+receipts (registered limitation carried).
+
+READING (scoped): the neutral paired artifact EXISTS and is
+QUALIFIED — every one of the 73,324 historical PDC-matched rows
+carries a FINAL canonical ActionProgram that exactly replays its
+historical transition, with dual-denominator accounting, symmetric
+eligibility for both future arms, and per-row provenance
+(row_id law, source identity, retry seed/attempt). The paired
+STATE-v-PROGRAM experiment is now gated ONLY by its own
+design/loss prereg. NOT started here.
+
+FENCES. All amendment fences carried (neutral artifacts,
+historical source order, no sorting/batching/shuffle/model, sympy
+1.14.0, descriptive lengths, annotation limitations); replay
+validity is certified in the emitting process (the MSM-0 fence:
+a consumer's fresh process may see an alternate spelling for
+emission-unstable rows — irrelevant to training, which never
+replays the engine); warm-state residual nondeterminism as named
+above; artifacts untracked (file-handoff), shas + byte sizes in
+the receipt; receipt refuse-if-exists respected; no frozen
+receipt touched. Receipt-audit disclosures (adopted): the run
+started with a docs-regen-dirty tree (receipts.lock/INDEX only —
+recorded in the receipt's own porcelain field, no instrument
+drift); the driver's collision branch would skip a row from the
+master file rather than writing a flagged row (untriggered — 0
+collisions, 73,324 master lines — a re-run writes flagged rows
+instead). NOT run: paired design, training, model loads,
+fresh eval seeds, Axiom anything. Dual audit before booking.
+After booking: commit/push, STOP.
+

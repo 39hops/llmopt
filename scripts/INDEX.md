@@ -2803,6 +2803,13 @@ MATH-CYBER-1 MATCHED-SUBSET-MATERIALIZE-0 — the ONE neutral paired artifact fo
 - `overlap_sets()`
 - `main()`
 
+### scratch/mathworld1_matsub2.py
+MATH-CYBER-1 MATCHED-SUBSET-MATERIALIZE-0-CENSOR — amended re-materialization under the general engine-irreproducible-emission censoring law and a DETERMINISTIC hash-seed ladder.
+
+- `pair_at_seed(cur, want, seed)`
+- `alt_edge_exists(cur, nxt, seed)` — ANY current legal edge (any rule) whose child prints nxt,
+- `main()`
+
 ### scratch/mathworld1_pdcov.py
 MATH-CYBER-1 PROGRAM-DIET-COVERAGE-0 — census: how much of theta0's EXACT historical birth diet deterministically relabels from (cur, nxt) into the fully-qualified v4 ActionProgram under the pinned engine? Zero model, zero training, zero fresh seeds, zero search evaluation, zero MAGIC.
 

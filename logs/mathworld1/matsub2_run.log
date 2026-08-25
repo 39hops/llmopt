@@ -1,0 +1,109 @@
+[msm2] rows=73324 parents=58988 seed=0 main pass
+[msm2] seed-0 failures parents=7 classes={'unaddressable': 5, 'rule_absent': 2}
+{
+ "historical_rows": 73324,
+ "paired_eligible": 73324,
+ "excluded_engine_irreproducible": 0,
+ "blocker_rows": 0,
+ "exclusion_rows": [],
+ "blocker_detail": [],
+ "retry_by_rule": {
+  "i_heurisch": 6,
+  "i_linear_basis": 1
+ },
+ "retry_seed_hist": {
+  "6": 2,
+  "3": 1,
+  "1": 4
+ },
+ "per_source_excluded": {},
+ "per_rule": {
+  "i_heurisch": 18946,
+  "i_sum": 10822,
+  "i_const": 14932,
+  "expand": 716,
+  "i_linear_basis": 21095,
+  "i_unprod": 3123,
+  "i_log_power": 55,
+  "i_inverse_trig": 3159,
+  "i_ansatz_exp": 10,
+  "i_parts": 3,
+  "i_usub": 19,
+  "together": 7,
+  "i_sqrt_basis": 31,
+  "i_const_factor": 402,
+  "i_transcend_div": 4
+ },
+ "param_kind": {
+  "none": 70198,
+  "term_index": 3123,
+  "u_choice": 3
+ },
+ "overlap_counts": {
+  "overlap_band_adapt": 75,
+  "overlap_corpus_state": 18,
+  "overlap_corpus_edge": 18,
+  "overlap_band_calibration": 38,
+  "overlap_band_holdout": 36,
+  "overlap_band_holdout_diag": 16
+ },
+ "token_dist": {
+  "state_view": {
+   "p50": 17,
+   "p90": 32,
+   "p99": 57,
+   "max": 219
+  },
+  "program_view": {
+   "p50": 5,
+   "p90": 5,
+   "p99": 8,
+   "max": 8
+  },
+  "note": "descriptive only"
+ },
+ "literal_lt_rows": 0,
+ "tok_roundtrip_fail": 0,
+ "ladder": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15
+ ],
+ "artifacts": {
+  "master": {
+   "path": "data/matsub_master.jsonl",
+   "sha256": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+   "bytes": 51982858
+  },
+  "paired": {
+   "path": "data/matsub_paired.jsonl",
+   "sha256": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+   "bytes": 51982858
+  }
+ },
+ "manifest_rows": 103595,
+ "bars": {
+  "MASTER_POPULATION": true,
+  "ACCOUNTING": true,
+  "FINAL_REPLAY": true,
+  "EXCLUSION_SOUNDNESS": true,
+  "TOK_ROUNDTRIP": true,
+  "NO_COLLISION": true,
+  "PDC_MULTIPLICITY": true,
+  "NO_OPAQUE": true
+ },
+ "completion_commit": "9d703425"
+}

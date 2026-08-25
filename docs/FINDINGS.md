@@ -3228,3 +3228,15 @@ regime tag on every bullet is the fence.
   hits in 25 fresh-interpreter samples); artifact stays
   UNQUALIFIED, denominator not shrunk; decision (registered
   censoring class v hold) is Artin/GPT's. RESULTS.md#L47013
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The neutral paired
+  artifact is QUALIFIED under the amended censoring ontology with
+  K=0: all 73,324 historical PDC-matched rows are paired-eligible
+  (59,587 distinct transitions), every row exactly replaying its
+  FINAL canonical ActionProgram; the registered prior (one
+  engine-irreproducible i_heurisch row) was REFUTED — the row
+  decoded in the seed-0 pooled main pass, evidence consistent with
+  warm/fork-inherited interpreter state mattering beyond the hash
+  seed (factors not separated); censoring law banked untriggered;
+  paired STATE-v-PROGRAM now gated only by its own design/loss
+  prereg. RESULTS.md#L47241

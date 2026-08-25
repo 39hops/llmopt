@@ -845,6 +845,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/matsub2_receipt.json": {
+   "bytes": 4443,
+   "exists": true,
+   "local_only": true,
+   "sha256": "30aaf2419f9bf5e6ad37d13c5cd308af95f350db25c1d54913cc600e791cbe67",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/matsub_receipt.json": {
    "bytes": 3929,
    "exists": true,
