@@ -48524,3 +48524,97 @@ world/sympy anywhere in the scorer; text-only law held;
 checkpoints/eval bytes unmutated (post-run sha re-assert);
 process census at close. After booking: commit/push, STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-REPLICATION-DESIGN-0: the n=3 paired-birth replication design — two additional init seeds frozen by a deterministic outcome-blind law, resolution language frozen before any second weight exists (2026-08-25, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-25): design/prereg only,
+NO training. The seed-9001 realization stays booked exactly as
+is — PROMOTE-PROGRAM, SINGLE paired realization (STATE 45/72 =
+62.5% v PROGRAM 65/72 = 90.3%, delta +27.8 pp, discordant 0/20,
+exact McNemar p = 1.9073e-06, MRR .726/.948) — its maturity and
+magnitude claims are NOT rewritten here.
+
+PURPOSE (registered): estimate whether the PROGRAM-v-STATE
+direction and magnitude survive independent weight
+initialization / mps training realizations. NOT a redesign, NOT
+a new representation experiment.
+
+SEED LAW (deterministic, outcome-blind, frozen): the paired
+birth seeds are the arithmetic progression 9001 + 1000k;
+k=0 is the booked realization; k=1,2 give SEED 10001 and SEED
+11001 — the two additional paired births, n=3 total. No other
+seed may be substituted.
+
+TREATMENT (preserved exactly; only intended between-pair
+difference = initialization seed): same sha-pinned 73,324-row
+artifact (a943ba7f...); same ActionGCTok-332; same
+build_model(332, ctx=4096); same target-blind batch-plan LAW
+(the plan derives from row_ids + epoch seed strings only, so it
+is IDENTICAL across pairs — sha 4c0441b7...); same BS=32, 3
+epochs, 6,876 steps; same AdamW 3e-4 / wd .01, OneCycle
+pct_start .03, clip 1.0; same prefix-masked per-row-normalized
+continuation CE with the same EOS law; same alternating arm
+execution topology; same final-epoch checkpoint law; same
+text-only downstream law. Within each pair: one newly generated
+frozen init (torch.manual_seed(SEED)), loaded bitwise-identically
+into STATE and PROGRAM, independent models/optimizers, exact
+same batches/order/exposures.
+
+PRIMARY REPLICATION EVALUATION: the SAME frozen 72-decision band
+(cb90ff0f/f63100a6) under the SAME scoring/adjudication law
+(mean continuation logprob, pessimistic top-1, exact McNemar per
+pair) — task sampling intentionally held fixed to isolate
+training-realization variance. Recorded per pair: STATE top1,
+PROGRAM top1, delta_pp, discordant counts, McNemar p, both MRRs,
+summed-lp rider, u_choice/term_index riders, compute accounting.
+
+RESOLUTION LANGUAGE (frozen NOW, before any seed-2/3 outcome):
+- REPLICATED-DIRECTION iff PROGRAM top-1 > STATE top-1 in ALL
+  THREE paired births. Any reversal (or tie) is booked
+  prominently and BLOCKS the replicated-direction claim.
+- Per-pair p<.05 is NOT required for replication success — the
+  question is the distribution/consistency of the paired
+  treatment effect across births.
+- Magnitude reporting: median and range of delta_k across the
+  three pairs, DESCRIPTIVE at n=3. The 216 decision observations
+  are NEVER pooled into an ordinary unpaired significance test
+  (decisions repeat across births and are not independent
+  units).
+- The ONLY registered aggregate inferential rider: the exact
+  pair-level two-sided sign test on sign(delta_k), n=3
+  (acknowledged floor p = 0.25 two-sided at 3/3 — underpowered
+  by construction, reported as a rider, never the primary
+  language).
+- Descriptive rider: per-decision cross-birth consistency (which
+  of the 72 decisions flip arms across births).
+
+CARRIED UNCHANGED: the 4 i_usub-schema exclusions and 6
+training-parent exclusions (schema NOT repaired during
+replication); the u_choice distribution-shift constraint; no
+controller-deployment result may alter this replication law.
+
+INSTRUMENT (this rung): scratch/mathworld1_svprep.py (committed
+with this prereg) — generates and freezes BOTH new inits NOW
+(checkpoints/svp_init_s10001.pt, svp_init_s11001.pt), before any
+outcome exists. Receipt logs/mathworld1/svprep_design.json
+(refuse-if-exists). DESIGN BARS (all must fire):
+1. SEED-LAW: the two seeds equal 9001+1000k for k=1,2.
+2. INIT-DETERMINISM: each new init bitwise-repeatable across two
+   in-process builds; sha256-pinned in the receipt.
+3. INIT-DISTINCT: the three inits (18597944..., s10001, s11001)
+   pairwise distinct by sha.
+4. NO-PRODUCTION-TOUCH: seed-9001 init/checkpoints/receipts
+   byte-unchanged; no birth path created.
+REFUTED-IF: any bar fails.
+
+REGISTERED PRIOR (house, this rung only): all four design bars
+fire. NO directional or magnitude prior about seeds 10001/11001
+outcomes is registered — consistent with the standing
+no-prior-supplied record.
+
+FENCES. Mac; zero training under this GO; each additional paired
+birth requires its own explicit production GO and receipt
+exactly like seed 9001 (the birth driver gains SVPBIRTH_SEED +
+per-seed output paths via the amendment+requalify lane at that
+GO — registered here, implemented there); dual audit before
+booking; after booking commit/push STOP.
+
