@@ -47347,3 +47347,173 @@ instead). NOT run: paired design, training, model loads,
 fresh eval seeds, Axiom anything. Dual audit before booking.
 After booking: commit/push, STOP.
 
+## PRE-REG MATH-CYBER-1-STATE-v-PROGRAM-DESIGN-0: the causal paired-birth design — target representation is the ONLY intended treatment; all laws frozen before any weight exists (2026-08-25, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-25): design/prereg only.
+NO training, no real optimizer update on the 73,324-row artifact,
+no model selection, no evaluation of any trained model under this
+GO. The smoke harness verifies masks, batch identity, init
+equality, and loss arithmetic only.
+
+UPSTREAM (frozen, sha-gated at every consumption): MSM-0-CENSOR
+verdict 2ba028a4; data/matsub_paired.jsonl, sha256 a943ba7f...
+(pinned in logs/mathworld1/matsub2_receipt.json), 73,324 source
+rows / 59,587 distinct transitions, K=0, FINAL canonical
+ActionProgram only, ActionGCTok vocab 332. The MSM warm/fork/
+hash-state reproducibility residue travels as PROVENANCE ONLY:
+training consumes the sha-pinned artifact and MUST NOT
+regenerate/replay the symbolic engine to reconstruct targets.
+
+TREATMENT (the one variable):
+    shared prefix:        "Current: {cur}\nHints: none\nStep: "
+    STATE continuation:   "{nxt}\n"
+    PROGRAM continuation: canonical program_text
+Both arms: same ActionGCTok vocab 332; same architecture
+build_model(332, ctx=4096) (llmopt/train/mathnative.py, ~19M);
+same sequence-cap law; same row IDs and exposure counts; same
+batch membership/order; same optimizer/scheduler hyperparameters
+and optimizer-step count.
+
+EOS LAW (identical both arms): continuation token stream =
+encode(text) + [eos], where STATE text = nxt + "\n" and PROGRAM
+text = program_text (already newline-terminated); the terminal
+eos PARTICIPATES in T_i. Shared prefix tokens contribute ZERO
+primary loss.
+
+SEQUENCE-CAP LAW: cap 512 (the historical theta0 regime), model
+ctx 4096. DESK CENSUS (this session, deterministic, full
+artifact): max prefix 220, max STATE sequence 441, max PROGRAM
+sequence 223, rows over cap in EITHER arm = 0 — so ZERO drops,
+zero treatment-specific drops, no exclusion law needed; the
+birth asserts this census (hard-exit on any over-cap row).
+
+INITIALIZATION: ONE frozen initial state_dict —
+torch.manual_seed(9001); build_model(332, ctx=4096); state_dict
+saved to checkpoints/svp_init.pt and sha256-pinned at the birth
+prereg commit. BOTH arms load that exact tensor state; the birth
+asserts per-tensor bitwise equality of both loaded models before
+step 0 (hard-exit on any mismatch). Old theta0 / vocab-296 is
+historical reference only, never the primary control.
+
+BATCH PLAN (frozen, target-blind): built and persisted BEFORE
+target serialization, derived ONLY from the row_id set and seed
+strings — no STATE or PROGRAM target length may influence batch
+membership or order. Law: rows keyed by row_id (unique,
+sha-derived, stable tie-break); for epoch e in {0,1,2} the order
+is random.Random(f"svp-epoch-{e}").shuffle of the row_id-sorted
+list; batches = consecutive chunks of BS=32; the 73,324 mod 32
+tail (12 rows) is RETAINED as its own final batch each epoch —
+no silent drop; 2,292 steps/epoch, 6,876 optimizer steps total.
+The permitted prefix-only bucketing option is WAIVED (no
+bucketing of any kind — simpler and strictly target-blind). The
+same plan artifact drives BOTH arms; the same deterministic
+per-epoch shuffle applies to both. Historical theta0's
+full-target enc.sort(key=len) is NOT inherited by either arm.
+
+PRIMARY TRAINING OBJECTIVE (identical law both arms):
+prefix-masked continuation-only CE, normalized per row before
+averaging rows:
+    L_i = -(1/T_i) * sum_t log p(y_it | x_i, y_i,<t)
+    L   = (1/B) * sum_i L_i
+with T_i = continuation length INCLUDING the terminal eos.
+Ordinary full-sequence/token-weighted LM loss is logged as a
+HISTORICAL RIDER only — it never drives optimization or
+selection.
+
+OPTIMIZER REGIME (frozen; the historical theta0 regime, assessed
+pre-outcome with no reason found to change it): AdamW lr 3e-4,
+wd 0.01, OneCycle pct_start 0.03 over the 6,876 total steps,
+grad clip 1.0, 3 epochs, FINAL-epoch weights, no early stopping,
+no selection of any kind. One independent optimizer+scheduler
+per arm, identical hyperparameters, identical step count.
+
+EXECUTION TOPOLOGY: single paired lockstep process on the Mac —
+both ~19M fp32 models resident with independent
+optimizers/schedulers, consuming the SAME batch each step;
+per-step arm execution order ALTERNATES by step parity (even
+steps STATE first, odd steps PROGRAM first) to reduce
+machine-order bias. Feasibility desk: 2 models + 2 AdamW states
+~ 0.5 GB before activations — far inside the 36 GB Mac; the
+smoke harness records observed peak memory as the measured
+confirmation. Topology is frozen here; it does not change
+mid-birth.
+
+REPRESENTATION ADJUDICATION (frozen BEFORE weights exist):
+- Raw training loss is NEVER the primary comparison (the arms'
+  losses are over different token distributions).
+- PRIMARY EFFICACY: same-parent complete-legal-set sibling
+  ranking on a FRESH preregistered band — seeds 9600-9619 x
+  L4-L7 (80 episodes) under the standing MATH-CYBER freshness
+  law (9600+ unused anywhere). The eval corpus is materialized
+  by the frozen world engine and sha-pinned in a SEPARATE
+  pre-birth commit (its own step under the birth GO); label law
+  = the trajectory-chosen action of each solved-episode decision
+  (the 101-decision corpus law); eligibility = decisions whose
+  full legal set binds (engine parity/timebox failures book as
+  excluded decisions, counted, never silently dropped).
+- SCORES, per frozen evaluation parent and EVERY legal action a:
+      STATE score(a)   = mean continuation log p(exact child
+                         sstr(a) + "\n" + eos | prefix(parent))
+      PROGRAM score(a) = mean continuation log p(program_text(a)
+                         + eos | prefix(parent))
+  Primary normalization = MEAN continuation logprob; RAW SUMMED
+  logprob is a registered length-bias rider only.
+- PRIMARY STATISTIC: top-1 accuracy (the labeled action ranks
+  first; ties broken pessimistically against the arm). Secondary
+  registered: MRR of the labeled action.
+- PAIRED TEST: exact two-sided McNemar over per-decision top-1
+  agreement/disagreement between arms, alpha = 0.05.
+- THRESHOLDS (derived without any model outcome):
+      PROMOTE-PROGRAM iff PROGRAM top-1 > STATE top-1 AND
+          McNemar p < 0.05;
+      STATE-WIN mirrored;
+      else INCONCLUSIVE (booked as such).
+- The 725-action frozen corpus is a DIAGNOSTIC RIDER only (it
+  shaped representation development and overlaps the training
+  artifact in 18 rows) — never the primary efficacy set.
+
+SCOPE FENCE (registered): the matched artifact's param_kind
+mixture is {none: 70,198, term_index: 3,123, u_choice: 3}. Any
+eventual PROGRAM win supports the canonical ActionProgram
+treatment AT THIS MEASURED MIXTURE; it does NOT establish a
+broad standalone i_parts.u_choice benefit from three rows.
+
+COMPUTE ACCOUNTING (report, never equalize): per arm — total
+tokens processed, continuation/target tokens, wall time, peak
+memory where available. Equal row exposures / optimizer steps is
+the primary causal regime; PROGRAM's lower compute is a
+representation CONSEQUENCE. Any compute-matched rider needs its
+own future prereg.
+
+INSTRUMENT (this rung): scratch/mathworld1_svpdesign.py — the
+design-qualification smoke harness (committed with this prereg).
+It must (receipt logs/mathworld1/svpdesign_receipt.json,
+refuse-if-exists): (1) build the init twice from seed 9001 and
+assert bitwise state_dict equality, writing checkpoints/
+svp_init.pt + its sha; (2) derive the full 3-epoch batch plan
+twice and assert byte-identity, recording its sha and step
+counts (2,292/epoch, 6,876 total, 12-row tail); (3) run the full
+cap census (must reproduce 441/223/0-over); (4) verify mask/loss
+arithmetic: harness masked per-row-normalized CE against an
+independent hand loop on sample rows (fp64 agreement); (5) one
+forward pass per arm on one real batch, NO backward, NO
+optimizer step, loss finite, peak memory recorded. SMOKE-CLASS
+BARS: all five must pass for the design to book QUALIFIED;
+failure books honestly.
+
+REFUTED-IF (this rung): any harness bar fails, or the desk
+census contradicts the numbers frozen above.
+
+REGISTERED PRIOR (house): all five harness bars pass; the design
+is implementable as frozen. No prediction about the eventual
+representation outcome is registered here — that belongs to the
+birth prereg's prior.
+
+FENCES. Mac; zero training; checkpoints/svp_init.pt is the only
+weight artifact created and is untrained-by-construction (saved
+before any forward); artifact consumption sha-gated; sympy is
+NOT loaded by the birth path (targets come from the artifact
+only); dual audit before booking; after booking commit/push and
+STOP — the birth itself, the eval-band materialization, and any
+training need their own GO.
+
