@@ -3346,3 +3346,13 @@ regime tag on every bullet is the fence.
   audited diff contains zero seed-dependent changes beyond init
   mapping/output names; each replication birth still needs its
   own explicit GO. RESULTS.md#L48765
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The first replication
+  paired birth (seed 10001) completes under the frozen law:
+  6,876/6,876 steps both arms, all -HARDEN completion gates
+  pass, both token-accounting dicts bit-identical to the
+  seed-9001 realization (the batch plan is seed-independent),
+  losses and RSS differ only at the realization level, every
+  seed-9001 artifact byte-unchanged; the weights stay UNSCORED
+  until the seed-11001 birth exists (registered blinding order)
+  and no STATE-v-PROGRAM claim is made. RESULTS.md#L48826
