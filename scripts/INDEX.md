@@ -2713,6 +2713,18 @@ LABEL-YIELD-0 spent-band autopsy (chat analysis only, no repo mutation): exhaust
 - `truncate(tr, h)`
 - `main()`
 
+### scratch/mathworld1_axfixture.py
+MATH-CYBER-1 AX-FIXTURE-0 — the frozen ActionProgram interchange fixture for Axiom Tranche A (AX-MATHCYBER-ACTIONPROGRAM-FIXTURE-0).
+
+- `sha(t: str) -> str`
+- `fsha(p: Path) -> str`
+- `serialize(rule, kind, ordinal, pkind, pindex)`
+- `build_core(tok)`
+- `replay_core(parents_rows, action_rows)` — Decode every action row from STRUCTURED FIELDS ALONE.
+- `load_stress_population()`
+- `stress_work(item)` — Emit + replay stress rows for one parent. Returns rows,
+- `main()`
+
 ### scratch/mathworld1_birth.py
 MATH-CYBER-1 theta_0 one-shot birth (PRE-REG MATH-CYBER-1-THETA0-BIRTH-0; prereg commit 6d013acf, BEFORE any weight existed). Grammar-closed tokenizer (ATOMS ids 0..39 + 256 UTF-8 byte-fallback ids = vocab 296), base diet only (micromodel_chains_shard*.jsonl + step_chains.jsonl), SEQ cap 512 (drops counted), build_model(296, ctx=4096), fp32 mps, BIRTH_SEED=9001, AdamW lr 3e-4 wd 0.01, OneCycle pct_start 0.03, clip 1.0, BS=32 nopack (length-sorted enc, per-epoch random.Random(ep) shuffle of batch starts — the historic stream), EPOCHS=3, final-epoch weights = theta_0, NO selection of any kind.
 

@@ -46682,3 +46682,91 @@ ACTION-FINAL-QUAL-0 commit 5bc7c6c5. After booking: STOP —
 matched-subset materialization prereg is the standing next and
 needs its own GO. Dual audit before booking.
 
+## VERDICT MATH-CYBER-1-AX-FIXTURE-0: the Axiom Tranche A interchange fixture is EMITTED and self-qualified — all five bars fire: 101 parents / 725 actions with 725/725 structured-field replay and zero collisions, all 2,894 i_unprod stress edges replay exactly from term_index, every program_text round-trips under ActionGCTok (2026-08-24, Mac)
+
+Per PRE-REG MATH-CYBER-1-AX-FIXTURE-0 (committed with the producer
+at 4a4e09d2 before the run; bars and full-stratum choice frozen
+there). Receipts logs/mathworld1/axfixture/{parents.jsonl,
+actions.jsonl, unprod_stress.jsonl, axfixture_manifest.json};
+per-file sha256 pinned in the manifest (parents bc15cacd...,
+actions 829b2cd0..., stress e13bea64...).
+
+BAR ADJUDICATION (frozen law):
+1. CORE-COUNTS FIRES: exactly 101 parent rows / 725 action rows;
+   binding gates (state hash + legal-set Counter v the frozen
+   srepr corpus) hard-exit, none tripped.
+2. CORE-REPLAY FIRES: 725 ok / 0 fail — every core child
+   reproduced from the STRUCTURED FIELDS ALONE (rule, site_kind,
+   site_ordinal, param_kind, param_index) through rule semantics
+   (u_choice map, parity-gated term map, single-accepted-child
+   deterministic decode).
+3. CORE-NO-COLLISION FIRES: 0 within-parent duplicate-program /
+   different-child collisions.
+4. STRESS-REPLAY FIRES: 2,894/2,894 PDC-matched i_unprod edges
+   emitted and replayed exactly from (site_ordinal, term_index)
+   in the visible-string domain; whys counter EMPTY — zero
+   nested/definite site skips, zero parity skips, zero
+   unaddressable. Denominator SEPARATE from the core
+   full-legal-set denominator, as registered.
+5. TOK-ROUNDTRIP FIRES: 0 round-trip failures over all core
+   (hard-gated, opcode-id presence included) and stress
+   program_text strings.
+NO-HIDDEN-BRANCH (derived): holds — bars 1-4 fire and the
+committed producer contains no child-key-sorted generation path
+for any semantic field (same driver-law property as
+ACTION-FINAL-QUAL-0 bar 3).
+
+MEASUREMENTS (not bars): visible_match 101/101 — sstr of the
+srepr-inverted parent equals the original v1 visible string on
+every corpus parent (recorded per row, never normalized). Program
+keys are NOT injective over the legal set: 491/725 distinct
+(parent, rule, site, param) tuples — 50 within-parent program
+keys carry multiple rows, ALL mapping to the SAME child (that is
+bar 3's exact clause, same-program/different-child = 0; historical
+corpus multiplicity, e.g. distinct rule_target labels collapsing
+to one child); the program is a well-defined map to children, not
+a bijection with the legal set — Axiom's parity ladder should not
+assume 1:1. Core binding gates and core tok round-trip are
+HARD-EXIT (no receipted counter; run completion is the evidence),
+the stress leg carries counters — the asymmetry is registered.
+Fixture size 3,720 rows / ~3.7MiB total. Parent rows keep
+historical (episode, step) multiplicity: 101 rows / 64 unique
+parent_id (identical hash = identical srepr, verified).
+
+REGISTERED-PRIOR ACCOUNTING: the prior (all bars fire) is CORRECT.
+
+READING (scoped): the frozen ActionProgram interchange fixture
+for Axiom Tranche A (AX-MATHCYBER-ACTION-ABI-0) EXISTS and is
+self-qualified; the durable relay 2026-08-24-0 carries a
+transparent pre-delivery amendment superseding its opaque
+i_unprod branch description with the canonical schema
+(param_kind = none|u_choice|term_index), citing
+ACTION-FINAL-QUAL-0 (5bc7c6c5). Delivery to Axiom remains
+Artin-manual; the qualification ladder on their side (admission,
+parity, replay, ordinal mismatch as measurement) is theirs to
+run. Structured fields are the semantic identity; program_text is
+a serialization diagnostic.
+
+FENCES. Deterministic apart from load-sensitive timeboxes (zero
+parity skips observed); Mac idle; sympy 1.14.0 scope;
+nested/multi-limit and definite-integral legs stay VACUOUS (the
+stress leg's skip counter observed zero such sites among matched
+parents' Integral sites); stress parent domain is sympify(cur)
+(the PDC visible-string law) with first-preorder site ordinals of
+that parsed parent — Axiom ordinal mismatches remain a measured
+quantity on their side; fixture files are SMALL TEXT RECEIPTS
+force-added under logs/mathworld1/axfixture/ (seedslad pattern;
+the why is this entry: they ARE the deliverable interchange
+artifact). Receipt-audit disclosures: the manifest's
+start_provenance omits two dependency files the tok bar runs
+through — pinned here at booking time instead
+(scratch/mathworld1_birth.py sha16 90dbf312bc42c4ee, the GCTok
+base; llmopt/lab/provenance.py sha16 4a5b39a9bb7d1451); a re-run
+adds them to the producer list. The stress leg's three skip/why
+branches observed zero events, so the skip accounting itself is
+untested by this run. NOT run and not authorized: Axiom mutation, relay
+delivery itself, matched-subset materialization, model/training
+of any kind. After booking: STOP — MATCHED-SUBSET-MATERIALIZE-0
+prereg is the standing next and needs its own GO. Dual audit
+before booking.
+

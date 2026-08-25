@@ -1,0 +1,45 @@
+{
+ "core": {
+  "parents": 101,
+  "actions": 725,
+  "collisions": 0,
+  "replay_ok": 725,
+  "replay_fail": 0,
+  "visible_match": 101
+ },
+ "stress": {
+  "rows": 2894,
+  "replay_fail": 0,
+  "whys": {},
+  "tok_roundtrip_fail": 0,
+  "denominator_note": "separate from core full-legal-set"
+ },
+ "files": {
+  "parents.jsonl": "bc15cacd3d52ab64921acb4b63427b3f6e493c7595d2111a7b490dbc5fdce4aa",
+  "actions.jsonl": "829b2cd044ad1f410176ce3b8f46af63065d4a866240253b06163a50255d8111",
+  "unprod_stress.jsonl": "e13bea64759a7cea67e0c512e8169f4e79978d7acd9d5e2ac2f5adf8ff6e79c6"
+ },
+ "bars": {
+  "CORE_COUNTS": true,
+  "CORE_NO_COLLISION": true,
+  "CORE_REPLAY": true,
+  "STRESS_REPLAY": true,
+  "TOK_ROUNDTRIP": true
+ },
+ "start": {
+  "start_commit": "4a4e09d2",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_axfixture.py": "a1de1532c0fddc91e934d59fd371ce1dc4571dda5d537f139ed4e6c66845ade3",
+   "scratch/mathworld1_actionfinal.py": "978298d58f543a26e8a42214a455aa56ce4ad208ae246f1e9d5960334f2f8963",
+   "scratch/mathworld1_unprodsem.py": "9f6a17324ea31691fe240682b431fcc0a53af18b898c6dc73a143cc0fc5f3609",
+   "scratch/mathworld1_actionsem.py": "c79462129730328592ee2cc909fc563076afe80542dd2a745ce88ceef3e9c23b",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_srepr_export.py": "9cd1b729acd7ede732cd68ca69059b5b6d3d67ce60098bcd7734486e14b35d05",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58"
+  }
+ },
+ "completion_commit": "4a4e09d2"
+}

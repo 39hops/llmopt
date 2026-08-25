@@ -3203,3 +3203,16 @@ regime tag on every bullet is the fence.
   (nested/definite legs) continue; the representation arc is CLOSED
   and the paired STATE-v-PROGRAM experiment is gated only by its own
   preregs. RESULTS.md#L46519
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The frozen ActionProgram
+  interchange fixture for Axiom Tranche A exists and is
+  self-qualified: full 101-parent / 725-action corpus with 725/725
+  structured-field replay and zero same-program/different-child
+  collisions, plus all 2,894 PDC i_unprod stress edges replaying
+  exactly from term_index (separate denominator); ActionGCTok
+  program_text round-trips everywhere but is a serialization
+  diagnostic — structured fields are the semantic identity; program
+  keys are a map to children, not a bijection (491/725 distinct);
+  the durable relay carries a transparent pre-delivery amendment to
+  param_kind none|u_choice|term_index. Delivery stays Artin-manual.
+  RESULTS.md#L46685
