@@ -1,0 +1,72 @@
+{
+ "init": {
+  "bitwise_repeat_ok": true,
+  "both_arms_load_equal": true,
+  "sha256": "18597944400e061f797755175d31a06690e378d8141c687606724b95a7d0a86c",
+  "n_params": 19135872,
+  "path": "checkpoints/svp_init.pt"
+ },
+ "batch_plan": {
+  "deterministic_ok": true,
+  "sha256": "4c0441b7858349230a5d0791517712008d3b61670491dfcde8204a0a139d6f54",
+  "steps_per_epoch": 2292,
+  "total_steps": 6876,
+  "tail_rows": 12,
+  "bs": 32,
+  "epochs": 3
+ },
+ "cap_census": {
+  "rows": 73324,
+  "cap": 512,
+  "max_prefix": 220,
+  "max_state_seq": 441,
+  "max_program_seq": 223,
+  "over_cap_either": 0,
+  "state_cont_tokens_total": 1623917,
+  "program_cont_tokens_total": 447153
+ },
+ "loss_check": {
+  "hand_loop_agree": true,
+  "prefix_fully_masked": true,
+  "per_row": [
+   6.146299,
+   6.155837,
+   6.212696
+  ]
+ },
+ "forward": {
+  "STATE": {
+   "loss": 5.940114974975586,
+   "seq_len": 112,
+   "wall_s": 0.19,
+   "finite": true
+  },
+  "PROGRAM": {
+   "loss": 6.0772705078125,
+   "seq_len": 68,
+   "wall_s": 0.12,
+   "finite": true
+  }
+ },
+ "peak_rss_mb": 1463,
+ "bars": {
+  "INIT": true,
+  "BATCH_PLAN": true,
+  "CAP": true,
+  "LOSS": true,
+  "FORWARD": true
+ },
+ "start": {
+  "start_commit": "a8356c2f",
+  "start_status_porcelain": " M docs/receipts.lock.json\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpdesign.py": "7ed2c0d5d6a47a250447940bd05b41e2f3bd666c947b382e972aada0b843a202",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "a8356c2f"
+}

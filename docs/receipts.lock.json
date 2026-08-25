@@ -971,6 +971,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpdesign_receipt.json": {
+   "bytes": 1908,
+   "exists": true,
+   "sha256": "59f6b5c768764abf94a228a37fa1d05f11dc738328db21449148f2b4c050bae9",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/terminal_census.jsonl": {
    "bytes": 136996,
    "exists": true,

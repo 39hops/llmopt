@@ -2888,6 +2888,17 @@ MATH-CYBER-1 fresh-substrate desk (no model loaded, no vocab shipped): price a G
 - `sha(t: str) -> str`
 - `main()`
 
+### scratch/mathworld1_svpdesign.py
+MATH-CYBER-1 STATE-v-PROGRAM DESIGN-0 — design-qualification smoke harness. Verifies the five frozen design mechanisms with ZERO training: (1) frozen-init determinism + pin, (2) target-blind batch-plan determinism, (3) sequence-cap census, (4) prefix-masked per-row-normalized CE arithmetic v an independent hand loop, (5) one forward pass per arm (no backward, no optimizer).
+
+- `sha_bytes(b: bytes) -> str`
+- `fsha(p) -> str`
+- `state_bytes(model) -> bytes`
+- `batch_plan(row_ids)` — Target-blind plan: row_id-sorted, per-epoch seeded shuffle,
+- `masked_loss(logits, ids, mask)` — Prefix-masked per-row-normalized continuation CE.
+- `encode_row(tok, r, view)`
+- `main()`
+
 ### scratch/mathworld1_terminal.py
 MATH-CYBER-1 TERMINAL-DOMINANCE-0 terminal-miss census (PRE-REG MATH-CYBER-1-TERMINAL-DOMINANCE-0, commit a3759d06).
 

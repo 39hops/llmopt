@@ -3240,3 +3240,16 @@ regime tag on every bullet is the fence.
   seed (factors not separated); censoring law banked untriggered;
   paired STATE-v-PROGRAM now gated only by its own design/loss
   prereg. RESULTS.md#L47241
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The STATE-v-PROGRAM
+  causal paired-birth design is frozen and mechanically qualified
+  before any weight exists: shared bitwise-pinned init (19.1M,
+  build_model(332, ctx=4096)), target-blind deterministic batch
+  plan (6,876 steps, 12-row tail retained), zero over-cap rows in
+  either arm (max 441 v 223 of cap 512), prefix-masked
+  per-row-normalized continuation CE verified against a hand
+  loop, and outcome-blind sibling-ranking adjudication on a fresh
+  9600-9619 band (McNemar 0.05; 725 corpus demoted to rider);
+  continuation-token compute ratio STATE/PROGRAM = 3.63x is
+  reported, never equalized; birth/eval/training each need their
+  own GO. RESULTS.md#L47520

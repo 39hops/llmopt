@@ -47517,3 +47517,96 @@ only); dual audit before booking; after booking commit/push and
 STOP — the birth itself, the eval-band materialization, and any
 training need their own GO.
 
+## VERDICT MATH-CYBER-1-STATE-v-PROGRAM-DESIGN-0: the causal paired-birth design is QUALIFIED — all five harness bars pass (frozen init bitwise-deterministic and pinned, target-blind batch plan deterministic at 6,876 steps, zero over-cap rows in either arm, masked loss law verified against an independent hand loop, both arms forward finite); zero training performed (2026-08-25, Mac)
+
+Per PRE-REG MATH-CYBER-1-STATE-v-PROGRAM-DESIGN-0 (committed
+with the harness at a8356c2f before the qualifying run). Receipt
+logs/mathworld1/svpdesign_receipt.json (completion_commit
+a8356c2f). PROCESS DISCLOSURE: a harness invocation
+was run once BEFORE the prereg commit; its outputs were deleted
+and its receipt is not available for comparison. The harness is
+deterministic on CPU apart from wall-time, RSS, and provenance
+fields, so the bar booleans are reproducible; the booked run is
+the post-commit one, and the ordering slip is disclosed, not
+hidden.
+
+BAR ADJUDICATION (frozen law; all PASS):
+1. INIT: two seed-9001 builds of build_model(332, ctx=4096) are
+   BITWISE identical; checkpoints/svp_init.pt written (sha256
+   18597944..., 19,135,872 params, untrained by construction);
+   both arms load it and every tensor compares equal — the
+   birth's step-0 assert exercised.
+2. BATCH-PLAN: the full 3-epoch target-blind plan derives
+   byte-identically twice (sha256 4c0441b7...); 2,292
+   steps/epoch, 6,876 total, 12-row tail retained.
+3. CAP: full-artifact census reproduces the frozen numbers —
+   max prefix 220, max STATE sequence 441, max PROGRAM sequence
+   223, rows over cap 512 in EITHER arm = 0 (zero drops, zero
+   treatment-specific drops).
+4. LOSS: the reduction arithmetic of the prefix-masked
+   per-row-normalized continuation CE verified against an
+   independent fp64 re-derivation over the same logits/mask (toy
+   2-layer model — this validates the gather/normalize/average
+   law, not the arm model path); prefix positions carry exactly
+   zero mask.
+5. FORWARD: one real first-plan-batch forward per arm from the
+   frozen init, no backward, no optimizer step; losses finite
+   (STATE 5.94 @ seq 112, PROGRAM 6.08 @ seq 68 — untrained
+   noise-level numbers, no meaning beyond finiteness).
+
+MEASUREMENTS (descriptive): continuation-token totals per epoch
+STATE 1,623,917 v PROGRAM 447,153 (3.63x — the compute
+consequence the prereg registers for REPORTING, never
+equalization); measured harness peak RSS 1,463 MB with five models and the
+full parsed artifact resident but NO optimizer state or backward
+activations allocated — the feasibility basis remains the
+prereg's registered desk estimate, which this number does not
+contradict.
+
+READING (scoped): every law the birth needs is frozen and
+mechanically verified — treatment-only representation contrast,
+shared frozen init, target-blind shared batch plan, identical
+continuation-CE law with eos-in-T_i, historical optimizer regime,
+lockstep alternating-order topology, and the pre-weights
+adjudication law (fresh 9600-9619 band, complete-legal-set
+sibling ranking, mean-logprob primary, McNemar alpha 0.05,
+outcome-blind PROMOTE/INCONCLUSIVE/STATE-WIN thresholds; the
+725 corpus demoted to diagnostic rider). The birth itself, the
+eval-band materialization, and training are NOT run and NOT
+authorized here — each needs its own GO under the standing
+sequence.
+
+REGISTERED-PRIOR ACCOUNTING: the prior (all five bars pass) is
+CORRECT.
+
+FENCES. All prereg fences carried: zero optimizer updates on the
+73,324-row artifact (the only weight artifact is the untrained
+pinned init); artifact consumption sha-gated (a943ba7f...
+asserted before any read); the MSM reproducibility residue
+travels as provenance only — sympy is pulled in TRANSITIVELY by
+the tokenizer module import, but the engine is never replayed and
+every target comes from the sha-gated artifact (the prereg's
+fence is birth-path-scoped and holds in substance); scope fence on the param_kind mixture
+{none: 70,198, term_index: 3,123, u_choice: 3} carried verbatim
+into the adjudication law; compute-matched comparisons need
+their own future prereg.
+
+RECEIPT-AUDIT DISCLOSURES (adopted; the birth driver fixes all
+three): the receipt omits the PAIRED sha it gated on (checked
+then discarded — a reader must consult the committed constant;
+the birth records it derived), omits torch version/platform/
+device (measured post-hoc: torch 2.12.1, macOS arm64, CPU — the
+init sha pin is torch-version-scoped and a torch upgrade
+invalidates it silently; auditor reproduced the init sha in a
+fresh interpreter on this stack), and the harness writes the
+init before later hard-exits could fire (an abort would orphan
+it against the refuse guard; did not fire). The CAP bar's
+441/223 literals had no persisted upstream receipt (a
+session-transient census) — the receipt-auditor recomputed both
+independently from the artifact, confirming them; this receipt
+is now their durable record. checkpoints/svp_init.pt is the
+PRODUCTION shared init (no smoke suffix by design, per this
+prereg) and its sha must be re-pinned in the birth prereg
+commit. Dual audit before booking; after booking commit/push
+and STOP.
+
