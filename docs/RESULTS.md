@@ -48352,3 +48352,77 @@ SVP-ADJUDICATION — score both arms on the frozen band under the
 frozen law. Dual audit before booking; after booking commit/push
 + process census, STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-ADJUDICATION-0: mechanical execution of the SVP-DESIGN-0 adjudication law on the frozen band — instrument registration only, every scientific threshold inherited verbatim (2026-08-25, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-25). No design amendments,
+no training, no generation/search/world replay/sympify/
+canonicalization — the frozen candidate BYTES are scored, nothing
+else. All thresholds inherited from SVP-DESIGN-0 (a8356c2f) and
+not modifiable after scoring.
+
+IMMUTABLE INPUTS (full hashes recomputed + hard-gated before
+either model loads):
+    checkpoints/svp_state.pt
+      8e0a22f29074ee819a3936748f27939022ac9b974989c988fa1d3f6f0694c060
+    checkpoints/svp_program.pt
+      d9db0049b135f326eb8fa2d9f74e7c067516e49ae597ecaac11ecae1dfc57853
+    logs/mathworld1/svpeval/episodes.jsonl   cb90ff0f... (full pin
+      in the driver)
+    logs/mathworld1/svpeval/decisions.jsonl  f63100a6... (full pin
+      in the driver)
+    primary denominator: the 72 frozen primary_eligible decisions.
+
+SCORING LAW (verbatim): shared prompt "Current: {cur}\nHints:
+none\nStep: "; STATE scores child_sstr + "\n" + eos; PROGRAM
+scores program_text + eos; score(a) = (1/T_a) sum_t log
+p(y_t | x, y_<t) — mean continuation logprob, eos in T_a,
+ActionGCTok-332. Execution: one process, one device (mps), fixed
+deterministic order (decisions in frozen file order; per
+decision STATE arm scored first, then PROGRAM — reported; the
+candidate order inside a decision is the frozen band order and
+is never changed).
+
+PRIMARY ENDPOINT (frozen): pessimistic top-1 of the labeled
+action (any tie for first counts AGAINST the arm); exact
+two-sided McNemar on per-decision top-1 correctness between
+arms, alpha = 0.05.
+    PROMOTE-PROGRAM iff PROGRAM top1 > STATE top1 AND p < .05
+    STATE-WIN mirrored
+    otherwise INCONCLUSIVE
+REGISTERED RIDERS (explain, never override): MRR; raw summed
+continuation logprob (length-bias rider) with its own top-1;
+u_choice strata (has-candidate 55 v none 17); term_index strata
+(3 v 69; labeled 2); the 725 corpus NOT run here. CARRIED
+CONSTRAINTS verbatim: 4 i_usub-schema decisions + 6
+training-parent overlaps excluded pre-birth; n = 72; training
+u_choice targets 3; fresh primary u_choice candidates 110/509;
+labeled primary u_choice actions 0 — any PROGRAM behavior on
+u_choice here is behavior against DISTRACTORS, not direct
+success on labeled u_choice targets.
+
+INSTRUMENT. scratch/mathworld1_svpadj.py (committed with this
+prereg before scoring). Outputs logs/mathworld1/svpadj/
+(refuse-if-exists): scores.jsonl — per-decision per-arm
+candidate scores (mean and summed), ranks, top-1 correctness,
+PERSISTED BEFORE any aggregate is computed — and
+svpadj_receipt.json.
+
+HARD GATES: all four input hashes exact; 72/72 primary decisions
+accounted; every frozen candidate scored exactly once per arm;
+all logprobs finite; exactly one labeled candidate per decision;
+per-decision candidate counts equal the frozen band's
+n_candidates; no model/world mutation (checkpoints opened
+read-only, shas re-asserted after scoring); no silent exclusion.
+REFUTED-IF: any gate fails — no verdict is computed.
+
+REGISTERED PRIOR: none directional — the standing record (booked
+twice) is that no PROGRAM-v-STATE outcome prior was supplied
+before weights, and none is invented now. House prior for this
+rung only: all hard gates pass.
+
+FENCES. Mac, mps, single session; the verdict is computed
+MECHANICALLY from the frozen law after the per-decision rows are
+on disk; dual audit of the raw rows + McNemar arithmetic before
+booking; commit/push + process census then STOP; no second
+training seed, no model modification before the booking.
+
