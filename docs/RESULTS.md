@@ -47125,3 +47125,116 @@ also covers stable-unreachability (this row). NOT run: paired
 design, training, model loads, fresh eval seeds, Axiom anything.
 Dual audit before booking. After booking: STOP.
 
+## AMENDMENT MATH-CYBER-1-MATCHED-SUBSET-MATERIALIZE-0-CENSOR: general engine-irreproducible-emission censoring law + deterministic hash-seed ladder registered; re-materialization to a master population artifact with dual denominators (2026-08-25, Mac)
+
+Target: PRE-REG MATH-CYBER-1-MATCHED-SUBSET-MATERIALIZE-0 (and
+its -RETRY amendment). Per outside GO (GPT via Artin,
+2026-08-25): option (a) — do not hold the representation
+experiment on the one booked historical edge. The NO-FIRE VERDICT
+at 0f3bf02b is PRESERVED verbatim as historical evidence; nothing
+here rewrites it into a pass. Committed with the new producer
+BEFORE the amended run.
+
+AMENDED ONTOLOGY (frozen):
+    historical PDC-matched population = all 73,324 source rows
+    paired-eligible population = rows whose FINAL canonical
+        ActionProgram is reconstructed AND exactly replayed by
+        the frozen current engine under the deterministic
+        reproducibility law below
+    engine_irreproducible_emission = historical PDC-matched row
+        whose exact historical transition cannot be
+        exposed/replayed by the current engine under that law
+
+CENSORING LAW (general, mechanism-based — NEVER hardcoded to any
+row; the known step_chains row is the registered example, not the
+definition). A row enters engine_irreproducible_emission ONLY if
+ALL of:
+1. genuine member of the sha-pinned 73,324 PDC unique_program
+   population (manifest + PDC pins re-gated);
+2. source cur and nxt intact (source-scan under pinned shas);
+3. the expected FINAL canonical program cannot reproduce exact
+   nxt because the required current legal edge is
+   absent/dedup-suppressed in EVERY registered environment (only
+   the absence classes rule_absent/unaddressable qualify);
+4. NO alternative FINAL canonical ActionProgram (any rule, any
+   site) exactly reproduces that same nxt — checked by full
+   successor enumeration in every registered environment; if an
+   alternative edge exists the row is a BLOCKER class, not
+   censorable;
+5. mathematical equivalence or alternate spelling NEVER upgrades
+   to paired eligibility.
+Collision, ambiguous semantic decode, tokenizer failure, wrong
+child, malformed program, and source/hash mismatch remain
+BLOCKERS and cannot pass through this class.
+
+DETERMINISTIC REPRODUCIBILITY LAW (replaces the -RETRY random
+fresh-seed law for this and future materializations): main pass
+runs under PYTHONHASHSEED=0 (asserted at start); failures walk
+the ORDERED ladder PYTHONHASHSEED = 1..15, one fresh subprocess
+per seed, first-success semantics, finite stop at 16
+environments total. DISCLOSED PRIOR INFORMATION: the previous
+run's post-hoc PYTHONHASHSEED 0-15 sweep on the residual row (0
+hits) motivated this ladder's range; that sweep is prior
+knowledge, and NO exclusion count is registered as required —
+K is measured, not assumed.
+
+INSTRUMENT. scratch/mathworld1_matsub2.py (this commit; the
+MSM-0 driver scratch/mathworld1_matsub.py stays FROZEN as booked
+evidence and is reused verbatim via import/--pair subprocess).
+Outputs (refuse-if-exists): data/matsub_master.jsonl (ALL 73,324
+historical identities, source order, with paired_eligible /
+exclusion_class / exclusion_reason / successful_hash_seed /
+attempt, ActionProgram fields where eligible),
+data/matsub_paired.jsonl (the neutral paired view, eligible rows
+only — the exclusion applies SYMMETRICALLY to both future STATE
+and PROGRAM arms; STATE never trains on a row PROGRAM cannot
+represent), receipt logs/mathworld1/matsub2_receipt.json (both
+artifact sha256s, exclusion rows named with mechanism, retry
+seed histogram AND per-rule retry keying per the -RETRY
+registration).
+
+BARS (frozen; amended qualified booking iff ALL fire):
+1. MASTER-POPULATION: exactly 73,324 historical identities in
+   the master artifact, no silent drop.
+2. ACCOUNTING: paired_eligible + excluded_by_registered_class
+   == 73,324 with zero blocker rows.
+3. FINAL-REPLAY: every paired-eligible row decodes
+   decode(cur, program) == nxt exactly.
+4. EXCLUSION-SOUNDNESS: every censored row satisfies the full
+   frozen definition (conditions 1-5) and is named with its
+   mechanism in the receipt.
+5. TOK-ROUNDTRIP: clean over every paired-eligible program_text;
+   zero literal-"<" cur/nxt.
+6. NO-COLLISION: zero same-(cur, program)-different-nxt.
+7. NO-OPAQUE (derived, never a literal): no child-key-sorted
+   path generates any semantic field; holds iff bars 3+4 hold.
+8. PDC-MULTIPLICITY: per-source historical counts reproduce
+   PDC's booked by_source_file unique_program dict exactly; the
+   eligible view differs only by the named exclusions.
+REFUTED-IF: any bar fails — no qualified booking; the failure
+books honestly.
+
+REGISTERED PRIOR (house): all bars fire with the step_chains
+i_heurisch row (source_line 8146) the expected exclusion — a
+PREDICTION about K's membership, not a registered requirement;
+the measured K under the deterministic law books either way. The
+final report keeps BOTH denominators prominently (73,324
+historical; N paired-eligible; K engine-irreproducible) — N is
+never relabeled as the population.
+
+CARRIED MEASUREMENTS (scope explicit, from the unqualified prior
+run): STATE target p50/p90/max 17/32/219 v PROGRAM 5/5/8;
+u_choice only 3 rows (the paired experiment cannot claim broad
+evidence specifically for i_parts operand semantics); term_index
+3,123; deterministic/no-param actions dominate (70,197); overlap
+annotations descriptive, never conditioning inclusion.
+
+FENCES. All MSM-0 fences carried (neutral artifacts, historical
+order, no sorting/batching/shuffle/model, sympy 1.14.0,
+descriptive lengths, annotation limitations); seed-0 main pass
+may fail rows the OS-random first run passed — that is the
+ladder's job, and residual failures adjudicate under the frozen
+law only; dual audit before booking; after booking commit/push
+and STOP — no paired STATE-v-PROGRAM design or training in this
+rung.
+
