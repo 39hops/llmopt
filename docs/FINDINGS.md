@@ -3356,3 +3356,15 @@ regime tag on every bullet is the fence.
   seed-9001 artifact byte-unchanged; the weights stay UNSCORED
   until the seed-11001 birth exists (registered blinding order)
   and no STATE-v-PROGRAM claim is made. RESULTS.md#L48826
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The second replication
+  paired birth (seed 11001) completes under the frozen law:
+  6,876/6,876 steps both arms, all -HARDEN completion gates
+  pass, token accounting bit-identical to seeds 9001 and 10001
+  (seed-independent batch plan), realization-level quantities
+  (losses, RSS, wall) differ as expected, seed-9001 artifacts
+  gate-asserted and seed-10001 externally verified byte-unchanged;
+  all three paired births now exist and BOTH replication pairs
+  stay unscored pending the scoring GO under the frozen
+  72-decision law and the preregistered n=3 resolution.
+  RESULTS.md#L48911

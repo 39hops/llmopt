@@ -48908,3 +48908,94 @@ sha-pinned artifact; sympy/world never replayed); frozen
 constraint carry; dual audit before booking; after booking
 commit/push STOP.
 
+## VERDICT MATH-CYBER-1-SVP-REPLICATION-BIRTH-11001: the second replication paired birth COMPLETES under the frozen law — 6,876/6,876 steps both arms from the frozen s11001 init, token accounting bit-identical to both prior realizations, every seed-9001 artifact gate-asserted and the seed-10001 set externally re-verified byte-unchanged; BOTH replication pairs remain unscored (2026-08-25, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-BIRTH-0 (+ -HARDEN + -REPSEED
+amendments) and PRE-REG MATH-CYBER-1-SVP-REPLICATION-DESIGN-0.
+Per outside GO (GPT via Artin, 2026-08-25): birth seed 11001
+ONLY; no evaluation/scoring/model comparison during or after
+this birth. Instrument frozen at 650c2a5b (start_commit ==
+completion_commit, clean tree); driver sha c0bed95e...
+BYTE-IDENTICAL to the file that ran the seed-10001 birth and to
+the REPSEED-requalified 139f0721 content — zero code change
+between the two replication births (the fp `float(loss)`
+UserWarning recurred as at seed 10001 and was, per the GO, not
+grounds for a between-replication patch). Receipt
+logs/mathworld1/svpbirth_s11001_receipt.json; stdout log
+logs/mathworld1/svpbirth_s11001_run.log (teed; the log path
+carries no refuse guard — the standing disclosure carries).
+
+COMPLETION GATES (the -HARDEN law, receipt existence = pass):
+6,876/6,876 recorded losses per arm, every loss finite,
+scheduler terminal exactly 6,875 in both arms and equal between
+arms. Cap-violations 0 is a PREFLIGHT gate; per-step S/P
+alternation by parity is a code property of the frozen driver
+(smoke-gated at requalification, not a production gate); no
+OOM-fallback gate exists in production (none fired — device mps
+throughout). Wall 3,814.2 s (STATE arm 2,253.0 s, PROGRAM
+1,560.3 s; seed 9001 took 3,901.9 s, seed 10001 3,898.6 s on
+the same substrate).
+
+TREATMENT-PRESERVATION (gate-compared + receipt-verified):
+paired artifact a943ba7f..., plan_sha 4c0441b7..., and BOTH
+TOKEN-accounting dicts BIT-IDENTICAL to the seed-9001 and
+seed-10001 production receipts — tokens_processed_padded STATE
+28,570,176 / PROGRAM 18,413,640; continuation_target_tokens
+STATE 4,871,751 / PROGRAM 1,341,459 (batch plan and encoding
+seed-independent, exactly as registered; PROGRAM again consumed
+3.63x fewer continuation-target tokens by construction).
+Realization-level quantities differ as expected: epoch mean
+losses (STATE epoch-1 0.24133 v 0.24718/0.24545; PROGRAM
+0.14026 v 0.13703/0.13416), peak RSS 3,420 MB (v 3,383/2,889),
+wall. Only
+intended treatment difference: init (svp_init_s11001.pt
+ee5f397e..., pin-gated pre-construction).
+
+PRIOR-REALIZATION PROTECTION: the three seed-9001 artifacts
+(init 18597944..., svp_state.pt 8e0a22f2..., svp_program.pt
+d9db0049...) sha-asserted byte-unchanged before AND after the
+run by the driver's gates; the three seed-10001 artifacts (init
+65ee3e20..., svp_state_s10001.pt 11855118...,
+svp_program_s10001.pt 395dfd53...) verified byte-unchanged
+EXTERNALLY — shasum'd in-session at launch preflight (session
+tool record, no artifact) and independently recomputed at
+booking by the receipt auditor (the driver gates only the 9001
+set, per the REPSEED disclosure; no write path to the s10001
+set exists — per-seed suffixed paths).
+
+PRODUCTS (untracked final-epoch weights, no selection; shas the
+record):
+checkpoints/svp_state_s11001.pt 041b3b047df80ff825ddbcff28c879de04586b9616600eb1196ff7cf69ad4973
+checkpoints/svp_program_s11001.pt 3305782548b8e1f2b7a0b63d44ecf79a44c94301f692ba9b93fbdc255c3a13b7
+
+RECEIPT-AUDIT DISCLOSURES (adopted): plan_sha/cap_violations/
+total_steps are gate-backed literals in the receipt (the gates
+hard-exit, so a receipt that exists cannot carry them false).
+The run log does not echo the seed/init sha (the receipt's pins
+are the evidence). Receipt + run log force-added under the
+small-text-receipts exception (logs doctrine), the why booked
+here.
+
+REGISTERED-PRIOR ACCOUNTING: no directional or magnitude prior
+about this realization's outcome is registered (standing
+no-prior-supplied record). The unregistered house expectation
+(completion under the frozen law, structure invariant, losses
+differing by init) held again, stated as such.
+
+READING (scoped): all three paired births now exist and ALL
+REPLICATION WEIGHTS REMAIN UNSCORED — nothing about STATE v
+PROGRAM at seeds 10001/11001 is known or claimed here. Next,
+each on its own separate GO: per-pair scoring of both
+replication pairs under the frozen 72-decision law, then the
+preregistered n=3 resolution: REPLICATED-DIRECTION iff PROGRAM top-1 > STATE
+top-1 in seeds 9001, 10001, AND 11001; any tie or reversal
+blocks.
+
+FENCES. Mac/mps (run-level nondeterministic; the realization is
+the unit, per design); no evaluation/scoring under this GO;
+text-only downstream law carries; frozen 72-decision band
+untouched; i_usub 4-decision + training-parent 6-decision
+exclusions and the u_choice distribution-shift constraint
+carry; dual audit before booking; after booking commit/push
+STOP.
+
