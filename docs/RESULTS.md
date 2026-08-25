@@ -48426,3 +48426,101 @@ on disk; dual audit of the raw rows + McNemar arithmetic before
 booking; commit/push + process census then STOP; no second
 training seed, no model modification before the booking.
 
+## VERDICT MATH-CYBER-1-SVP-ADJUDICATION-0: PROMOTE-PROGRAM — under the pre-registered law the PROGRAM representation ranks the true sibling first on 65/72 frozen decisions v STATE's 45/72, with a STRICTLY DOMINANT discordant split (0 STATE-only v 20 PROGRAM-only correct) and exact two-sided McNemar p = 1.9e-06 << .05 (2026-08-25, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-ADJUDICATION-0 (committed with the
+scorer at 928d95a5 before scoring; every threshold inherited
+verbatim from SVP-DESIGN-0 and untouched after scoring).
+Receipts logs/mathworld1/svpadj/{scores.jsonl (sha256
+66b7cead..., per-decision rows persisted BEFORE any aggregate),
+svpadj_receipt.json}. All four input pins asserted exact before
+model load AND re-asserted after scoring (checkpoints opened
+read-only, unmutated). Hard gates all passed: 72/72 decisions,
+every frozen candidate scored once per arm, all logprobs finite,
+exactly one label per decision, candidate counts equal the
+frozen band, no silent exclusion. Wall 6.1 s on mps; execution
+order fixed and reported (STATE first per decision; frozen
+candidate order unchanged).
+
+PRIMARY (frozen law, mechanical): pessimistic top-1 of the
+labeled action under mean continuation logprob —
+    STATE   45/72 (62.5%)
+    PROGRAM 65/72 (90.3%)
+    discordant: STATE-only-correct 0, PROGRAM-only-correct 20
+    exact two-sided McNemar p = 1.9073e-06, alpha .05
+    => PROMOTE-PROGRAM (PROGRAM top1 > STATE top1 AND p < .05).
+The discordant split is one-sided: on every decision STATE gets
+right, PROGRAM also gets right; PROGRAM additionally solves 20
+that STATE misses. (McNemar hand-check: b=0, c=20, p =
+2 * 0.5^20 = 1.907e-06.) ROBUSTNESS (audit-measured): zero exact
+score ties anywhere (the pessimistic tie law never bound); the
+smallest label-v-best-rival margin is 0.042 (STATE) / 0.105
+(PROGRAM) with zero decisions within 0.01 — no count sits near a
+coin flip, so the split is not fragile to mps float noise; an
+independent CPU hand-loop re-score of 18 candidate-arm pairs
+agreed with the mps scorer to 1.2e-06.
+
+REGISTERED RIDERS (explain, never override):
+- MRR: STATE 0.726 v PROGRAM 0.948.
+- Summed-logprob (length-bias rider): STATE 57/72 v PROGRAM
+  65/72 (discordant 2 v 10) — 13 of STATE's 27 mean-lp misses
+  become correct under raw sums while ONE correct becomes a miss
+  (45 - 1 + 13 = 57), i.e. a substantial share of STATE's
+  mean-lp misses are length-normalization artifacts on its long
+  targets; PROGRAM is invariant in the STRONG sense — the
+  IDENTICAL 65 decisions are correct under both normalizations
+  (zero flips either way).
+- u_choice strata: has-u_choice-candidate 35/55 v 52/55;
+  no-u_choice 10/17 v 13/17. Per the carried constraint (0
+  labeled u_choice actions; 3 training u_choice targets;
+  110/509 candidates), the u_choice-present result is behavior
+  against DISTRACTORS, not direct success on labeled u_choice
+  targets — and the PROGRAM gap is NOT confined to that stratum.
+- term_index strata: present 2/3 v 2/3; labeled-term_index 2/2 v
+  2/2 (tiny n, no signal either way).
+- The 725-action diagnostic corpus was NOT run (registered
+  optional; not exercised).
+
+SCOPE (carried verbatim, the fences that bound this claim):
+single paired birth: the DIRECTION and its significance are
+established WITHIN this realization (20-0 discordant, p =
+1.9e-06, margins >= 0.042); the MAGNITUDE is unreplicated
+pending n>=3 paired births (the standing resolution-law shape); the measured mixture is
+param_kind {none-dominant, term_index 3,123, u_choice 3} in
+training and the band's own mixture at eval — the win supports
+the canonical ActionProgram treatment AT THIS MIXTURE, not a
+broad i_parts.u_choice-target claim; 4 i_usub-schema decisions
+and 6 training-parent overlaps were excluded pre-birth (n=72);
+the evaluation measures sibling ranking of the frozen
+successful-trajectory chosen action, not globally optimal action
+value and not solve-rate; equal-exposure causal regime — PROGRAM
+also consumed 3.63x fewer target tokens (compute is a
+consequence, reported at birth, never equalized).
+
+READING (scoped): the registered causal question — do two
+identical 19M models learn the same transitions differently when
+the answer is a <= 8-token canonical instruction v a full-state
+rewrite — resolves PROMOTE-PROGRAM on this band: the semantic
+ActionProgram representation produces strictly better sibling
+ranking, at lower target-token cost, from identical
+data/init/optimizer exposure. Next steps (each its own GO, none
+started): seed replication (the standing n>=3 resolution-law
+shape) and/or controller deployment of the PROGRAM head; the
+banked I-USUB-SEMANTICS-DESK now unblocks on the Artin side.
+
+RECEIPT-AUDIT DISCLOSURES (adopted; every aggregate recomputed
+independently from the raw rows and identical): n_primary/MRR
+denominators are gate-backed literals; the scorer produced no
+run log (the receipt is the record); scored logprobs are a
+single mps realization — a re-derivation must not be
+preregistered bit-exact; right-padding safety rests on the
+causal-mask path plus the continuation slice never reaching a
+pad target (auditor-verified by reading, not gated — a re-run
+gates it).
+
+FENCES. Dual audit of the raw per-decision rows and the McNemar
+arithmetic before booking; no training, no generation, no
+world/sympy anywhere in the scorer; text-only law held;
+checkpoints/eval bytes unmutated (post-run sha re-assert);
+process census at close. After booking: commit/push, STOP.
+

@@ -3307,3 +3307,17 @@ regime tag on every bullet is the fence.
   9600-9619 eval bytes remain unopened by trained-model scoring,
   and no directional outcome prior exists on either side of the
   weights; adjudication needs its own GO. RESULTS.md#L48263
+
+- [SINGLE-SEED] [math-cyber] [mac] PROMOTE-PROGRAM: under the
+  fully pre-registered causal paired design, the canonical
+  semantic ActionProgram target beats full-state rewriting at
+  sibling ranking on the frozen fresh band — top-1 65/72 v 45/72
+  with a strictly one-sided discordant split (20-0, PROGRAM never
+  loses a decision STATE wins), exact McNemar p = 1.9e-06, MRR
+  0.948 v 0.726, zero score ties and min margin 0.042 (not
+  float-fragile), at 3.63x fewer target tokens from identical
+  init/data/optimizer exposure; direction+significance are
+  within-realization — magnitude unreplicated pending n>=3 paired
+  births; scope fences: this-mixture treatment claim only,
+  u_choice measured as distractor behavior, sibling ranking not
+  solve-rate. RESULTS.md#L48429
