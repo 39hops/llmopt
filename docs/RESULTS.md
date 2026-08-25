@@ -46516,3 +46516,88 @@ and PDC receipts). After booking: /handoff (compaction anchor
 2026-08-24-2) and STOP — nothing else starts. Dual audit before
 booking.
 
+## VERDICT MATH-CYBER-1-ACTION-FINAL-QUAL-0: the canonical SEMANTIC ActionProgram is FULLY QUALIFIED — all three bars fire: 725/725 corpus actions decode exactly with zero regression under the new schema, all 2,894 PDC i_unprod edges decode exactly from semantic term_index, and NO opaque child-key-sorted branch remains in the decode law across the frozen 725-action corpus and the PDC i_unprod stratum (2026-08-24, Mac)
+
+Per PRE-REG MATH-CYBER-1-ACTION-FINAL-QUAL-0 (committed with the
+producer at 307d8d96 before the run; the canonical schema and
+all three bars frozen there). Receipt
+logs/mathworld1/actionfinal_qual.json.
+
+CANONICAL SCHEMA (now the single vocabulary — supersedes the
+v4-semantics/v5-serialization split):
+    deterministic action:  (rule, site)
+    i_parts:               (rule, site, u_choice)
+    i_unprod:              (rule, site, term_index)
+    site:                  (operator kind, first-preorder unique
+                            ordinal)
+serialized via ActionGCTok opcodes ("<r:i_unprod> I0 t2\n"
+shape). term_index is the I-UNPROD-SEMANTICS-DESK-0 S3 law,
+IMPORTED from the desk driver (trace_unprod) — law identity by
+construction, desk-driver sha in this receipt's provenance.
+
+BAR ADJUDICATION (frozen law):
+1. CORPUS-REGRESSION FIRES: corpus counter {ok: 725}, failure
+   list empty — zero wrong_child / ambiguous / collision /
+   unaddressable / parity_fail. Every previously qualified
+   decode is preserved under the new schema, including the
+   deterministic single-accepted-child assert that replaced the
+   residual branch machinery for every non-parameterized family.
+2. PDC-TERMINDEX FIRES: 2,894/2,894 edges decode exactly from
+   (parent, rule, site, term_index) through rule semantics
+   (population count-gated 2,888/2,894). PARITY ACCOUNTING per
+   leg: the corpus leg books parity_fail as its own class (0
+   observed); the PDC leg SKIPS a non-parity site without a
+   counter — full 2,894/2,894 edge coverage is what certifies
+   no load-bearing site failed parity there; a re-run adds the
+   counter.
+3. NO-OPAQUE-BRANCH FIRES (derived, per the frozen law — never a
+   literal): the driver contains no child-key-sorted selection
+   path for ANY family; i_parts decodes by u_choice, i_unprod by
+   term_index, deterministic actions by the single-accepted-
+   child assert (its failures fold into the ambiguous counter
+   with a det tag — empty here); the bar is the conjunction of
+   bars 1 and 2, both true. SCOPE: this is a DRIVER-LAW property
+   measured on the corpus (all families) and the PDC i_unprod
+   stratum — the 73,324-row population's i_parts/deterministic
+   strata were not decoded in this rung. One child-key sort
+   exists in the driver and is BINDING-ONLY (the legal-set
+   Counter comparison sorts gen for determinism; no decode
+   indexes it). ANSWER TO THE REGISTERED QUESTION: within the
+   measured legs, no opaque candidate/child-sort branch remains.
+   Supplementary in-session diagnostic (disclosed, not in the
+   receipt): the i_unprod decode's accepted-set intersection was
+   never load-bearing — 13/13 corpus term-candidate sets, zero
+   intersection-pruned — so the corpus i_unprod decode is
+   rule-semantics-only in the airtight sense; a re-run records
+   n_intersection_pruned.
+
+REGISTERED-PRIOR ACCOUNTING: the prior (all three bars) is
+CORRECT, including the deterministic-single-child assert holding
+everywhere it was implicitly assumed before.
+
+READING (scoped): the representation arc is CLOSED — the
+model-facing action layer is semantic end-to-end: every decision
+in both the frozen corpus and the 73,324-row matched-diet
+population's i_unprod stratum reconstructs from (rule, site,
+semantic parameter) alone, in <= 8 ActionGCTok tokens (imported: ACTION-OPCODE-QUAL-0's
+corpus measurement of the pre-term_index programs; term_index
+serializations share the u_choice shape so the class carries,
+but this rung measured no lengths). The
+paired STATE-v-PROGRAM experiment is now blocked only by its own
+preregs (matched-subset materialization, then design/loss law) —
+NOT run here.
+
+FENCES. Deterministic apart from load-sensitive timeboxes
+(parity gates; zero fired); Mac idle; sympy 1.14.0 scope;
+nested/multi-limit and definite-integral vacuity fences CONTINUE
+(the PDC leg EXCLUDES such sites by construction — the limit
+filter skips them before any decode — so the fence is
+unexercised by design there; the corpus leg observed none); population/diet hashes pinned
+upstream (theta0 manifest, PDC receipts) with count gates here;
+receipt refuse-if-exists; no frozen receipt touched; zero
+model/training/fresh seeds/search. NOT run and not authorized:
+paired-diet materialization, Axiom fixture, relay delivery,
+MAGIC, geometry experiments, training of any kind. This booking
+is followed by /handoff (2026-08-24-2) and STOP. Dual audit
+before booking.
+

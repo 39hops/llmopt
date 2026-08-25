@@ -2637,6 +2637,15 @@ MATH-CYBER-1 ACTION-BASIS-v2-DESK-0 — length desk for the qualified v4 semanti
 *(no docstring)*
 
 
+### scratch/mathworld1_actionfinal.py
+MATH-CYBER-1 ACTION-FINAL-QUAL-0 — the canonical SEMANTIC ActionProgram (v5-FINAL): qualify i_unprod's desk-selected term_index parameter and certify that NO opaque child-sort branch remains anywhere in the model-facing population.
+
+- `sha(t: str) -> str`
+- `unprod_term_children(parent, node)` — term_index -> set of candidate child KEYS from the frozen
+- `qualify_corpus()`
+- `pdc_work(item)`
+- `main()`
+
 ### scratch/mathworld1_actionprog.py
 MATH-CYBER-1 ACTIONPROG-QUAL-0 — semantic ActionProgram decoder qualification on the frozen corpus (per outside review of ACTION-BASIS-DESK-0; no lengths are measured here).
 

@@ -3192,3 +3192,14 @@ regime tag on every bullet is the fence.
   on three axes, both stand; next: term_index qualification rung, then
   the fully semantic program basis gates the paired experiment.
   RESULTS.md#L46337
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The CANONICAL semantic
+  ActionProgram — (rule, site) | i_parts +u_choice | i_unprod
+  +term_index, site = (kind, first-preorder ordinal) — is fully
+  qualified: 725/725 corpus actions decode with zero regression, all
+  2,894 PDC i_unprod edges decode exactly from term_index
+  (parity-gated), and no opaque child-key branch remains in the decode
+  law across the measured legs (accepted-set intersection verified
+  never load-bearing, 13/13 corpus term-sets unpruned); vacuity fences
+  (nested/definite legs) continue; the representation arc is CLOSED
+  and the paired STATE-v-PROGRAM experiment is gated only by its own
+  preregs. RESULTS.md#L46519
