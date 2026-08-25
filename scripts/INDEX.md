@@ -2891,6 +2891,7 @@ MATH-CYBER-1 fresh-substrate desk (no model loaded, no vocab shipped): price a G
 ### scratch/mathworld1_svpbirth.py
 MATH-CYBER-1 SVP-BIRTH-0 — the paired STATE-v-PROGRAM birth driver (production) + the path-isolated MPS backward smoke.
 
+- `gate(cond, msg)` — Hard exit that survives python -O (never a bare assert).
 - `fsha(p) -> str`
 - `sha_b(b: bytes) -> str`
 - `batch_plan(row_ids)` — The SVP-DESIGN-0 target-blind law, verbatim.

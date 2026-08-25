@@ -48185,3 +48185,78 @@ commit/push STOP. If clean, the standing next GO is UNCHANGED:
 SVPBIRTH_PRODUCTION=1 .venv/bin/python
 scratch/mathworld1_svpbirth.py — with no further design changes.
 
+## VERDICT MATH-CYBER-1-SVP-BIRTH-0-HARDEN: the hardened instrument REQUALIFIES — all 9 smoke bars re-fire under the gate/strict-finite law with values matching the pre-hardening smoke to printed precision; the production birth remains ARMED behind the unchanged GO (2026-08-25, Mac)
+
+Per AMENDMENT MATH-CYBER-1-SVP-BIRTH-0-HARDEN (committed with
+the hardened driver at 0d8e8ff5 before the requalifying run; the
+prereg's own amendment+requalify lane). Receipt
+logs/mathworld1/smoke_svpbirth2.json (completion_commit
+0d8e8ff5). The pre-hardening smoke receipt and its booking stand
+frozen. Zero production optimizer steps.
+
+RE-ADJUDICATION (all 9 bars FIRE under the stronger law):
+ON_MPS now DERIVED from the gate's own value; GRADS-FINITE under
+math.isfinite (rejects +-Inf); LOSSES-FINITE carried by the
+train_step math.isfinite gate BEFORE backward (the per-batch
+receipt field keeps the bounded form) plus clip_grad_norm_
+error_if_nonfinite=True before optimizer.step; PARAMS-CHANGED-INDEP 59/59 both arms + arms
+diverged (the init-equality and storage-independence gates stay
+near-vacuous as coded — same sd object, positional zip — the
+carried disclosure from the first booking); STEP-COUNTS 2==2 (frozen guard law); ALTERNATION
+S/P/S; NO-OOM-FALLBACK clean; INIT-UNCHANGED byte-exact
+(18597944...); NO-PRODUCTION-PATHS clean. Agreement with the
+pre-hardening smoke, measured precisely: 11 of 12 arm-batch
+values BIT-IDENTICAL (losses e.g. top-STATE S 5.9599/P 6.0686
+agree to 4dp and beyond),
+the single divergence the LAST value computed (tail PROGRAM grad
+norm, 8.4e-8 relative — single-ULP scale, exactly the standing
+mps run-level-nondeterminism doctrine; observed agreement, never
+a cross-run bit-exactness claim). Wall 4.09 s; RSS
+1,038 MB; mps 2.48 GB; env now records optimize_flag 0.
+
+HARDENING VERIFIED IN PLACE (all five amendment items landed in
+the committed driver): gate() hard exits on every registered
+invariant (survive python -O); non-finite aborts before any
+optimizer mutation; production completion gates (6,876 losses
+per arm, finite history, scheduler terminal state
+TOTAL_STEPS-1 both arms) sit BEFORE the checkpoint writes;
+per-arm compute accounting (padded tokens, continuation target
+tokens, wall, peak RSS, mps memory, preflight block) added to
+the production receipt; no frozen threshold/value/law touched —
+pins, schedule, treatment, adjudication all byte/law identical.
+
+REGISTERED-PRIOR ACCOUNTING: the prior (all 9 bars re-fire with
+values indistinguishable from the first smoke) is CORRECT.
+
+READING (scoped): the pre-launch fix candidate named in the
+SVP-BIRTH-0 booking is executed and requalified; ONE of that
+booking's two bar literals is retired (ON_MPS now derived) — the
+NO_OOM_FALLBACK literal REMAINS, resting as before on abort
+semantics plus the empty mps_env capture; the finite gates now
+precede optimizer mutation. The production
+6,876-step paired birth remains ARMED behind the UNCHANGED
+standing GO: SVPBIRTH_PRODUCTION=1 .venv/bin/python
+scratch/mathworld1_svpbirth.py — no further design changes.
+
+RECEIPT-AUDIT DISCLOSURES (adopted): the driver now carries ZERO
+executable asserts (grep-verified; only docstring matches); the
+NO_OOM_FALLBACK literal's abort-semantics justification was
+re-verified against the new gate placement (no gate sits between
+the last training step and the receipt write, so receipt
+existence = no abort); the per-batch "finite" field is
+hand-rolled (bounded at 1e9, NaN-only on gn) but unreachable-if-
+wrong because train_step's math.isfinite gates precede it; smoke
+does not early-refuse on pre-existing production artifacts (it
+would record NO_PRODUCTION_PATHS false — all three confirmed
+absent this run); receipt existence does NOT imply bars passed —
+the bars dict is the adjudication record; smoke2 adds the
+optimize_flag field the first receipt lacks (schemas not
+field-for-field comparable).
+
+FENCES. All SVP-BIRTH-0 fences carried unchanged (smoke path
+isolation — new receipt path smoke_svpbirth2.json, the old one
+frozen; production refuse-if-exists untouched; text-only
+downstream law; no directional outcome prior; per-arm compute
+reported never equalized; memory/wall descriptive). Dual audit
+before booking; after booking commit/push STOP.
+

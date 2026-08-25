@@ -3281,3 +3281,16 @@ regime tag on every bullet is the fence.
   supplied before weights, recorded; production 6,876-step birth
   ARMED behind one explicit GO with a single registered pre-launch
   fix candidate (asserts to SystemExit). RESULTS.md#L48019
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The birth instrument is
+  HARDENED and requalified: zero executable asserts remain (all
+  registered invariants are SystemExit gates that survive
+  python -O, optimize_flag receipted), non-finite losses/grads
+  abort BEFORE any optimizer mutation (error_if_nonfinite clip),
+  production completion gates (6,876 finite losses per arm +
+  scheduler terminal law) precede checkpoint writes, and full
+  per-arm compute accounting lands in the production receipt; the
+  requalifying MPS smoke re-fires all 9 bars with 11/12 values
+  bit-identical to the pre-hardening run (single last-value ULP
+  divergence = the standing mps nondeterminism); production birth
+  stays armed behind the unchanged GO. RESULTS.md#L48188

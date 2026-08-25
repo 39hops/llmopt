@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 222, library 73, reproduce-pinned 10, results-cited 317, spec-cited 89, cited-but-library 61
+Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 318, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -285,7 +285,7 @@ Census: UNCITED 222, library 73, reproduce-pinned 10, results-cited 317, spec-ci
 | mathworld1 | mathworld1_srepr_export.py | results-cited | RESULTS | RESULTS×3 | — | 11 |
 | mathworld1 | mathworld1_stateobs.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_substrate_desk.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_svpbirth.py | UNCITED | — | — | — | — |
+| mathworld1 | mathworld1_svpbirth.py | results-cited | RESULTS | RESULTS×3 | — | — |
 | mathworld1 | mathworld1_svpdesign.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svpeval.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_terminal.py | UNCITED | — | — | — | — |
