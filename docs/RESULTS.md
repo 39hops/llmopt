@@ -48700,3 +48700,63 @@ INIT_DETERMINISM field is a gate-backed literal (disclosed; the
 per-seed birth lane derives it); dual audit before
 booking; after booking commit/push STOP.
 
+## AMENDMENT MATH-CYBER-1-SVP-BIRTH-0-REPSEED: the birth instrument is parameterized over the two preregistered replication seeds ONLY — seed-mapped frozen inits, per-seed refuse-if-exists paths, hard protection of every seed-9001 production artifact; scientific birth law untouched (2026-08-25, Mac)
+
+Target: PRE-REG MATH-CYBER-1-SVP-BIRTH-0 (+ -HARDEN), per
+PRE-REG MATH-CYBER-1-SVP-REPLICATION-DESIGN-0's registered
+amendment lane. Per outside GO (GPT via Artin, 2026-08-25):
+instrument plumbing only, ZERO replication production steps.
+
+CHANGES (scratch/mathworld1_svpbirth.py, this commit):
+- SVPBIRTH_SEED env selects the paired-birth seed. Unset -> the
+  booked seed-9001 lineage (legacy paths, byte-frozen behavior).
+  Otherwise ONLY the registered replication seeds are accepted —
+  a gate() hard-exits on any other value. No arbitrary seed
+  input exists.
+- Frozen init mapping (full hashes, gate-compared before model
+  construction):
+    10001 -> checkpoints/svp_init_s10001.pt
+      65ee3e2028a6ae0f3fa4d9d1e305a45153379100ebb73b052d9eb3378aaf55af
+    11001 -> checkpoints/svp_init_s11001.pt
+      ee5f397edf19fca9b826b5f5ec5e30591e10f9fcaceb26524c5fbe73f47f3cf9
+  STATE/PROGRAM still load tensor-bitwise equal from the mapped
+  init (the existing gate, unchanged).
+- Per-seed unique refuse-if-exists production paths:
+  checkpoints/svp_{state,program}_s{SEED}.pt,
+  logs/mathworld1/svpbirth_s{SEED}_receipt.json; isolated smoke
+  receipts logs/mathworld1/smoke_svpbirth_s{SEED}.json.
+- SEED-9001 HARD PROTECTION: on any replication seed, the three
+  seed-9001 production artifacts (init 18597944..., svp_state.pt
+  8e0a22f2..., svp_program.pt d9db0049...) are sha-asserted
+  byte-unchanged BEFORE the run and AFTER (smoke and production
+  both); this path can never overwrite or rewrite them.
+- EVERYTHING ELSE INVARIANT and still gate-compared exactly as
+  the seed-9001 law: paired artifact sha, ActionGCTok-332,
+  build_model architecture, 73,324 rows, batch-plan sha
+  4c0441b7... (the plan derives from row_ids + epoch strings
+  only and is IDENTICAL across all three pairs — never re-seeded
+  by the model-init seed), 6,876 steps, BS 32 / 3 epochs, AdamW
+  3e-4 / wd .01, OneCycle .03, clip 1.0, continuation-only
+  per-row-normalized CE with eos, alternating arm order,
+  text-only targets, the -HARDEN completion/finite gates, full
+  compute accounting.
+
+REQUALIFICATION (frozen): the real-MPS backward stress smoke
+re-runs THROUGH the parameterized path at SEED 10001 —
+disposable models from svp_init_s10001, the same three stress
+batches, all 9 instrument bars re-adjudicated — writing only
+logs/mathworld1/smoke_svpbirth_s10001.json. REFUTED-IF: any bar
+fails, any seed-9001 protection gate fires, or the dual audit
+finds a seed-dependent change beyond the init mapping and output
+names.
+
+REGISTERED PRIOR (house): all 9 bars fire at seed 10001; the
+first-batch losses will DIFFER from the seed-9001 smoke (a
+different init is the point) while everything structural
+matches.
+
+FENCES. Mac; zero replication training; each replication
+production run still needs its own explicit GO; dual audit
+before booking (specifically hunting accidental seed-dependent
+changes); after booking commit/push STOP.
+

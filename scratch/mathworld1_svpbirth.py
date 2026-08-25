@@ -46,6 +46,32 @@ from llmopt.train.mathnative import build_model  # noqa: E402
 from scratch.mathworld1_actiontok import ActionGCTok  # noqa: E402
 
 PRODUCTION = os.environ.get("SVPBIRTH_PRODUCTION") == "1"
+# Replication plumbing (AMENDMENT -REPSEED): SVPBIRTH_SEED selects
+# a preregistered paired-birth seed. Unset -> the booked seed-9001
+# lineage (legacy paths, frozen). Only the two registered
+# replication seeds are accepted otherwise.
+SEED = int(os.environ.get("SVPBIRTH_SEED", "9001"))
+INIT_BY_SEED = {
+    9001: ("checkpoints/svp_init.pt",
+           "18597944400e061f797755175d31a06690e378d8141c68760"
+           "6724b95a7d0a86c"),
+    10001: ("checkpoints/svp_init_s10001.pt",
+            "65ee3e2028a6ae0f3fa4d9d1e305a45153379100ebb73b052"
+            "d9eb3378aaf55af"),
+    11001: ("checkpoints/svp_init_s11001.pt",
+            "ee5f397edf19fca9b826b5f5ec5e30591e10f9fcaceb26524"
+            "c5fbe73f47f3cf9"),
+}
+# seed-9001 production artifacts are hard-protected from any
+# replication run: byte-asserted before AND after.
+S9001_PROTECT = {
+    "checkpoints/svp_state.pt":
+        "8e0a22f29074ee819a3936748f27939022ac9b974989c988fa"
+        "1d3f6f0694c060",
+    "checkpoints/svp_program.pt":
+        "d9db0049b135f326eb8fa2d9f74e7c067516e49ae597ecaac1"
+        "1ecae1dfc57853",
+}
 
 
 def gate(cond, msg):
@@ -76,10 +102,13 @@ LR = 3e-4
 TOTAL_STEPS = 6876
 TOK = ActionGCTok()
 
-CK_STATE = Path("checkpoints/svp_state.pt")
-CK_PROGRAM = Path("checkpoints/svp_program.pt")
-RECEIPT = Path("logs/mathworld1/svpbirth_receipt.json")
-SMOKE_RECEIPT = Path("logs/mathworld1/smoke_svpbirth2.json")
+SUF = "" if SEED == 9001 else f"_s{SEED}"
+CK_STATE = Path(f"checkpoints/svp_state{SUF}.pt")
+CK_PROGRAM = Path(f"checkpoints/svp_program{SUF}.pt")
+RECEIPT = Path(f"logs/mathworld1/svpbirth{SUF}_receipt.json")
+SMOKE_RECEIPT = Path(
+    "logs/mathworld1/smoke_svpbirth2.json" if SEED == 9001
+    else f"logs/mathworld1/smoke_svpbirth{SUF}.json")
 
 
 def fsha(p) -> str:
@@ -131,7 +160,7 @@ def masked_loss(logits, ids, mask):
 
 
 def load_arms(dev):
-    sd = torch.load(PINS_INIT, weights_only=True)
+    sd = torch.load(PINS_INIT, weights_only=True)  # seed-mapped init
     arms = {}
     for view in ("STATE", "PROGRAM"):
         m = build_model(TOK.vocab_size, ctx=4096)
@@ -147,10 +176,24 @@ def load_arms(dev):
     return arms
 
 
-PINS_INIT = "checkpoints/svp_init.pt"
+gate(SEED in INIT_BY_SEED, f"UNREGISTERED SEED {SEED}")
+PINS_INIT, PINS_INIT_SHA = INIT_BY_SEED[SEED]
+PINS = dict(PINS)
+PINS.pop("checkpoints/svp_init.pt", None)
+PINS[PINS_INIT] = PINS_INIT_SHA
+
+
+def protect_9001():
+    if SEED == 9001:
+        return
+    for p, h in S9001_PROTECT.items():
+        gate(fsha(p) == h, f"SEED-9001 ARTIFACT MUTATED {p}")
+    gate(fsha(INIT_BY_SEED[9001][0]) == INIT_BY_SEED[9001][1],
+         "SEED-9001 INIT MUTATED")
 
 
 def preflight():
+    protect_9001()
     for p, h in PINS.items():
         if fsha(p) != h:
             raise SystemExit(f"PIN MISMATCH {p}")
@@ -275,8 +318,10 @@ def smoke():
     except Exception:
         mps_alloc = None
     init_after = fsha(PINS_INIT)
+    protect_9001()
     receipt = {
-        "mode": "smoke",
+        "mode": "smoke", "seed": SEED,
+        "init_path": PINS_INIT,
         "env": env_block(dev),
         "batches": results,
         "wall_s": wall,
@@ -303,8 +348,7 @@ def smoke():
                                       for r in results]
                 == ["STATE", "PROGRAM", "STATE"],
             "NO_OOM_FALLBACK": True,  # any OOM/error aborts run
-            "INIT_UNCHANGED": init_after
-                == PINS["checkpoints/svp_init.pt"],
+            "INIT_UNCHANGED": init_after == PINS_INIT_SHA,
             "NO_PRODUCTION_PATHS": not CK_STATE.exists()
                 and not CK_PROGRAM.exists()
                 and not RECEIPT.exists(),
@@ -372,8 +416,10 @@ def production():
     for v, ck in (("STATE", CK_STATE), ("PROGRAM", CK_PROGRAM)):
         torch.save({k: t.cpu() for k, t in
                     arms[v].state_dict().items()}, ck)
+    protect_9001()
     receipt = {
-        "mode": "production", "env": env_block(dev),
+        "mode": "production", "seed": SEED,
+        "init_path": PINS_INIT, "env": env_block(dev),
         "pins": {p: fsha(p) for p in PINS},
         "plan_sha": PLAN_SHA, "total_steps": TOTAL_STEPS,
         "sched_step_counts": {v: int(opts[v][1].last_epoch)
