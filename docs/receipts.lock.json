@@ -1,6 +1,16 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [
+   "logs/mathworld1/matsub_receipt.json"
+  ],
+  "reason": "AMENDMENT MSM-0-RETRY: first-run outputs of an UNBOOKED prereg deleted before registered relaunch (refuse-if-exists guards unconditional)"
+ },
  "receipts": {
+  "logs/action_abi/action_abi_qual.json": {
+   "exists": false,
+   "source": "results"
+  },
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
    "exists": true,
@@ -844,6 +854,10 @@
    "sha256": "5c7b001fae42d6dc2362d61109c0d1885f6e04e8868cd9d226413bf31cf682c8",
    "source": "results",
    "tracked": true
+  },
+  "logs/mathworld1/matsub_receipt.json": {
+   "exists": false,
+   "source": "results"
   },
   "logs/mathworld1/pdc_anatomy.json": {
    "bytes": 4134,
