@@ -8979,3 +8979,10 @@ honest status column).
   Honest breaks: the payoff bound is Axiom's Tier-B diagnosis, not a house re-derivation; the structural class is real transport loss no printer fixes; lifting admission does not test portability beyond SymPy-stored-order engines; nothing here gates the paired STATE-v-PROGRAM experiment.
   Testable residue: after extension, does unique-parent admission reach the Tier-B bound, and do term_index/site_ordinal mismatch rates on the enlarged admitted set stay at the stored-arg-order-divergence level measured today (99/2,894 and 7/2,894)?
   Attribution: Axiom seat (proposal + Tier-B bound); house (bank, counter-book, fences). Needs its own GO on the Axiom side; no llmopt work item.
+
+- **BANKED (2026-08-25): I-USUB-SEMANTICS-DESK — a semantic u-substitution parameter for i_usub, gated BEHIND the STATE-v-PROGRAM experiment** (house, from the SVP-EVALBAND-0 finding; Artin/GPT gate).
+  The mapping / the math: on 4 fresh 9600-9619 parents i_usub emits TWO accepted children at a single site, so the canonical (rule, site) carries no parameter for it — the same shape i_parts had before u_choice; the natural candidate parameter is the substitution choice (which u the rule tried), read from the rule's own generative loop like trace_unprod.
+  Measured anchors: VERDICT MATH-CYBER-1-SVP-EVALBAND-0 (4/82 solved-episode decisions excluded with count; i_usub single-site branching 0 in the 725 corpus, leg previously vacuous).
+  Honest breaks: NOT runnable before the paired experiment — the residue was discovered through the primary evaluation band, so repairing the schema against it would turn that band into development data; any repaired schema needs a NEW untouched primary band; nothing here touches the frozen training artifact or canonical schema.
+  Testable residue: does a (rule, site, sub_choice) parameter decode all i_usub multi-child sites with zero collisions on a fresh band, corpus-regression clean, like ACTION-FINAL did for term_index?
+  Attribution: house (finding + bank); gated on Artin's GO after STATE-v-PROGRAM adjudication.

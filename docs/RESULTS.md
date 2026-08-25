@@ -47876,3 +47876,142 @@ secondary and is never McNemar-adjudicated. Dual audit before
 booking; after booking commit/push STOP — the paired-birth
 prereg/driver needs its own GO.
 
+## PRE-REG MATH-CYBER-1-SVP-BIRTH-0: the production paired-birth driver + path-isolated MPS backward smoke — full-hash pins, text-only downstream law, u_choice strata frozen pre-weights; production launch NOT under this GO (2026-08-25, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-25): prereg + driver +
+smoke ONLY. ZERO production optimizer steps on the 73,324-row
+paired birth under this GO; one explicit future GO launches the
+already-frozen production birth, with no design change between
+smoke and production except an amendment-and-requalified fix of
+a demonstrated instrument bug.
+
+UPSTREAM PINS (FULL hashes, recomputed + asserted by the driver
+before any model or optimizer construction):
+    data/matsub_paired.jsonl
+      a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8
+      (73,324 rows)
+    logs/mathworld1/svpeval/episodes.jsonl
+      cb90ff0f6d655cfe5dc20f091da0597b1bb0e23a4d0c23355a997e8849c61dd8
+    logs/mathworld1/svpeval/decisions.jsonl
+      f63100a62f3091d544750d679483009a473261c587f3165241406a86253858c6
+      (72 primary decisions)
+    checkpoints/svp_init.pt
+      18597944400e061f797755175d31a06690e378d8141c687606724b95a7d0a86c
+    batch plan (re-derived, sha-asserted)
+      4c0441b7858349230a5d0791517712008d3b61670491dfcde8204a0a139d6f54
+      (2,292 steps/epoch, 6,876 total, 12-row tail)
+    stack: torch 2.12.1, macOS arm64, MPS production device.
+The birth receipt records torch version, Python version,
+platform, MPS availability, MPS/PYTORCH environment variables,
+device, source commit, and dirty-tree state.
+
+EVALUATION FINDINGS CHANGE NO PRIMARY LAW:
+- i_usub multi-child-site residue: the four 9600-9619 decisions
+  stay excluded under the preregistered schema-scope fence;
+  i_usub is NOT repaired before this experiment; the canonical
+  ActionProgram, the training artifact, and the 9600-9619
+  primary band are NOT modified. Reason (registered): the
+  residue was discovered THROUGH the primary evaluation band —
+  repairing against it would make that band development data.
+  I-USUB-SEMANTICS-DESK is BANKED behind this experiment
+  (RIFF-LEDGER, this commit); any repaired schema requires a NEW
+  untouched primary evaluation band.
+- u_choice DISTRIBUTION-SHIFT CONSTRAINT (carried prominently):
+  training contains only 3 u_choice target rows; the primary
+  eval candidate pool contains 110/509 u_choice actions. This is
+  a treatment-relevant distribution-shift constraint on
+  interpretation, never grounds for post-hoc exclusion.
+
+FROZEN DIAGNOSTIC STRATA (derived from the frozen eval bytes
+BEFORE any trained weight exists; interpretation riders ONLY —
+they never alter the 72-decision primary denominator, the
+McNemar test, or the PROMOTE/STATE-WIN law; no subgroup result
+may override the registered primary adjudication):
+    primary decisions with >=1 u_choice candidate:   55
+    primary decisions with no u_choice candidate:    17
+    labeled actions with param_kind = u_choice:       0
+    labeled actions with param_kind != u_choice:     72
+    primary decisions with >=1 term_index candidate:  3
+    primary decisions with no term_index candidate:  69
+    labeled actions with param_kind = term_index:     2
+Diagnostic top-1/MRR are reported per stratum (u_choice-present
+v absent; term_index-present v absent; labeled-term_index).
+Note frozen with the strata: NO labeled action is u_choice —
+u_choice enters this band only as DISTRACTOR candidates, so the
+u_choice stratum measures distractor handling, not u_choice
+target competence.
+
+TEXT-ONLY DOWNSTREAM LAW (frozen): from this point through birth
+and adjudication, cur, state_target, child_sstr, and
+program_text are immutable frozen TEXT. No downstream consumer
+may sympify, regenerate, canonicalize, or re-enumerate them. The
+25/72 visible-print non-roundtrips and 3
+re-enumeration-unreachable labels are PROVENANCE FENCES, not
+exclusions.
+
+PRODUCTION TREATMENT (exactly SVP-DESIGN-0, unchanged): same
+frozen init; same ActionGCTok-332; same architecture
+build_model(332, ctx=4096); same 73,324 row exposures; same
+target-blind batch plan; same 6,876 steps; same
+AdamW 3e-4 / wd .01 / OneCycle pct_start .03 / clip 1.0 law;
+same alternating per-step arm order; STATE target =
+state_target + newline + eos, PROGRAM target = program_text +
+eos; loss = prefix-masked per-row-normalized continuation CE
+with eos in T_i. HARD ASSERTIONS before step 0 (all in the
+committed driver): every pin sha exact; 73,324 unique row IDs;
+0 cap violations in either arm; both loaded models
+tensor-bitwise equal; independent parameter storage, optimizer
+objects, scheduler objects; identical optimizer hyperparameters;
+exactly 6,876 scheduled steps; production output paths
+(checkpoints/svp_state.pt, svp_program.pt,
+logs/mathworld1/svpbirth_receipt.json) refuse-if-exists.
+
+PATH-ISOLATED MPS BACKWARD SMOKE (run under THIS GO): disposable
+copies of both models from the frozen init + disposable
+optimizers/schedulers; real frozen-artifact rows; real masked
+continuation loss; backward + clip_grad_norm_(1.0) + AdamW.step
++ OneCycleLR.step + zero_grad; both models resident on MPS
+simultaneously; smoke sequence = highest-token real STATE batch
+(32 rows), highest-token real PROGRAM batch (32 rows), and the
+production 12-row epoch-0 tail; alternating order exercised
+(STATE-first, PROGRAM-first, STATE-first). Smoke-batch selection
+inspects sequence lengths — registered as an operational stress
+choice that never changes the production batch plan. Smoke
+output ONLY logs/mathworld1/smoke_svpbirth.json; smoke weights
+never persisted, never consumable as initialization.
+
+SMOKE BARS (frozen; all must pass):
+1. both models truly on MPS;
+2. losses finite before and after updates (all six arm-batches);
+3. gradients finite;
+4. parameters actually change and the two arms diverge
+   (independent updates);
+5. optimizer/scheduler step counts match between arms (== 2
+   under the historical OneCycle final-step guard at smoke
+   total_steps=3 — the guard law is the birth's own);
+6. alternating execution-order code path exercised;
+7. no OOM / device fallback / error (any aborts the run);
+8. production init sha UNCHANGED after smoke;
+9. no production checkpoint/receipt path created.
+Wall time and torch.mps.current_allocated_memory() / process RSS
+recorded — DESCRIPTIVE ONLY.
+REFUTED-IF: any smoke bar fails, or any hard assertion fires —
+the birth does not launch until amendment + requalification.
+
+OUTCOME PRIOR (registered exactly as instructed): NO directional
+PROGRAM-v-STATE outcome prior was supplied by Artin/GPT before
+weights, and the house registers none on his behalf. This
+absence is recorded here pre-birth and will not be backfilled
+after training. House prior for THIS rung only: all 9 smoke bars
+pass.
+
+FENCES. Mac; zero production optimizer steps under this GO;
+smoke touches no production path (bar 9 + refuse-if-exists);
+production launch = one explicit future GO with zero design
+drift (any instrument-bug fix books an amendment and
+requalifies); the eval band, training artifact, schema, and
+tokenizer are consumed as frozen bytes only; compute accounting
+(tokens, target tokens, wall, memory) reported per arm at birth,
+never equalized. Dual audit before booking; after booking
+commit/push STOP.
+
