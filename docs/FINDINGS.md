@@ -3413,3 +3413,19 @@ regime tag on every bullet is the fence.
   objects; true target-length asymmetry ~4.8x at median stays
   the named competing mechanism — no "more mechanism" claim;
   magnitudes never pooled across bands. RESULTS.md#L49580
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] SCORING-LENGTH-PLAUSIBLE
+  (desk, frozen 50% criterion): summed-lp (alpha=0) halves the
+  median PROGRAM-STATE top-1 gap in both bands (21 to 9, 20 to 8)
+  yet PROGRAM stays strictly ahead in all 30 band x birth x alpha
+  cells — evaluation normalization carries roughly half the gap
+  MAGNITUDE and none of the DIRECTION; PROGRAM rankings are
+  near alpha-invariant (0-6 rank changes) while STATE gains
+  monotonically toward alpha=0 (16-23); the advantage persists in
+  the modest-length-spread stratum (6/6 cells) and in modest-T
+  i_heurisch; PROGRAM's three never-right decisions are the
+  longest-by-median STATE targets (trigsimp/together); registered
+  house prior on the vocabulary was WRONG (booked); scope:
+  evaluation normalization only, training length/entropy still
+  confounded; PROGRAM-PAD + OPAQUE-SHORT-ACTION causal controls
+  banked, nothing trained. RESULTS.md#L49799

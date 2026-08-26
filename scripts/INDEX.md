@@ -2951,6 +2951,14 @@ MATH-CYBER-1 SVP-GENERALIZATION-SCORE-0 — ONE joint scorer: all three paired b
 - `pin_all()`
 - `main()`
 
+### scratch/mathworld1_svpldesk.py
+MATH-CYBER-1 SVP-LENGTH-CONTROL-DESK-0 — desk-only triage of the length/factorization mechanism from FROZEN score artifacts. No model inference, no training, no checkpoint load, no task generation. Bands stay separate surfaces throughout.
+
+- `fsha(p) -> str`
+- `rank_metrics(scores, li)` — The booked pessimistic law, restated for desk use on
+- `load_rows()` — Returns {band: {seed: [row,...]}} with rows in band file
+- `main()`
+
 ### scratch/mathworld1_svprep.py
 MATH-CYBER-1 SVP-REPLICATION-DESIGN-0 — freeze the two additional paired-birth inits (seed law 9001 + 1000k, k=1,2 -> 10001, 11001) BEFORE any replication outcome exists. Zero training.
 

@@ -49796,3 +49796,138 @@ bands never pooled; dual audit (calculations + interpretation
 language) before booking; after booking commit/push, census,
 STOP.
 
+## VERDICT MATH-CYBER-1-SVP-LENGTH-CONTROL-DESK-0: SCORING-LENGTH-PLAUSIBLE by the frozen criterion — alpha=0 (the booked summed-lp rider) halves the median PROGRAM-STATE gap in BOTH bands (21 to 9 old, 20 to 8 new) — while PROGRAM stays directionally ahead in every birth, both bands, at EVERY grid alpha; the registered house prior on the vocabulary was WRONG (2026-08-26, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-LENGTH-CONTROL-DESK-0 (desk script
+committed at aec76ce3 BEFORE any desk number; grid, bins,
+vocabulary, and the 50% materiality criterion all frozen there).
+DESK ONLY: zero model inference, zero training, zero checkpoint
+reads; all inputs full-hash pinned (svpgen scores 174cdc0e...,
+inspectable sets 200f49fa..., the three first-band score files,
+first-band decisions f63100a6...). Receipt
+logs/mathworld1/svpldesk/desk_receipt.json (completion_commit
+aec76ce3); per-decision anatomy
+logs/mathworld1/svpldesk/anatomy.jsonl; stdout
+logs/mathworld1/svpldesk_run.log. ENDPOINT GATES passed: the
+desk ranker reproduced every booked top1/rank at alpha=1 and
+every booked summed-lp rider top1/rank at alpha=0, all 906
+decision-arm-birth blocks, before any table was built. Bands
+kept separate throughout; 72- and 79-row surfaces never pooled.
+
+Q1 — ALPHA GRID (top-1 by alpha 0/.25/.5/.75/1):
+old band: STATE 57/54/52/48/45 (9001), 55/52/51/47/43 (10001),
+  55/52/49/47/44 (11001); PROGRAM 65/65/65/65/65, 66/65/65/65/
+  65, 64/65/65/65/65.
+new band: STATE 63/61/61/60/54, 65/62/61/60/56, 61/60/59/55/50;
+  PROGRAM 71/73/73/73/74, 69/68/69/70/69, 70/71/72/72/72.
+The asymmetry is the finding: PROGRAM rankings are nearly
+ALPHA-INVARIANT (0-6 decisions change rank across the whole
+grid per cell) while STATE gains monotonically toward alpha=0
+(16-23 decisions change rank), i.e. mean-normalization
+penalizes STATE candidates specifically — consistent with
+per-token normalization amplifying noise over long
+heterogeneous-length candidate sets. Post-hoc best grid alpha
+(descriptive upper bound only, never an adjudicating scorer):
+alpha=0 for every STATE cell; PROGRAM's best-alpha exceeds its
+alpha=1 value by 0-1 solves, with total grid spread up to 3
+(new-9001: 71 at alpha=0 to 74 at alpha=1). Median gap by alpha — old 9/13/14/18/21, new
+8/11/12/13/20.
+
+RESOLUTION (frozen vocabulary applied mechanically): alpha=0
+materially closes in BOTH bands (old 9 <= 0.5x21; new 8 <=
+0.5x20) => SCORING-LENGTH-PLAUSIBLE, by the registered
+precedence, EVEN THOUGH program_ahead_everywhere is also true
+(PROGRAM top-1 strictly greater in all 3 births x 2 bands x 5
+alphas = 30/30 cells). Both facts book together: evaluation
+normalization is load-bearing for the gap MAGNITUDE (roughly
+half of it at the medians) and load-bearing for NONE of the
+DIRECTION. Scope (frozen): this speaks ONLY to evaluation
+normalization nuisance; training-target length/entropy remains
+confounded; nothing here establishes semantic factorization.
+
+REGISTERED-PRIOR ACCOUNTING: WRONG on the vocabulary — the
+house predicted SCORING-LENGTH-INSUFFICIENT, correctly
+predicting the direction holding at every alpha AND the gap
+narrowing toward alpha=0, but failing to price that the
+narrowing would cross the registered 50% line. The prior's
+mechanism reading was right; its verdict call was wrong. On the
+record.
+
+Q2 — INSPECTABLE SETS (new band, persisted identities):
+program3_state0 (n=11): labeled STATE T p50 31 (min 21), STATE
+T-ratio p50 6.6 — longer targets and wider spreads than
+average, rules i_heurisch 6 / i_linear_basis 2 / others 3.
+program_wrong3 (n=3): the three PROGRAM-never-right decisions
+are trigsimp 1 / together 2 with the longest-by-median labeled
+STATE targets among the sets (p50 97; the single longest row,
+104, sits in remaining) — PROGRAM's rare failures are not
+short-target artifacts. state_correct3 (n=42): labeled STATE T
+p50 25, ratio p50 4.4 — STATE succeeds where targets are
+shorter, but the overlap with program3_state0 ranges is large;
+length separates the sets only weakly. remaining (n=23): T p50
+31, ratio p50 6.4.
+
+Q3 — RATIO STRATA (bins frozen pre-compute; r = STATE
+candidate T max/min): r<=2 is NEAR-EMPTY (old n=3, new n=1;
+all arms perfect in all births — reported, not interpreted;
+per the prereg the low-variation question STOPS there rather
+than re-binning). 2<r<=4: old n=24 PROGRAM 21/22/20 v STATE
+15/16/18; new n=27 PROGRAM 24/21/24 v STATE 17/20/19 — PROGRAM
+leads in ALL 6 of 6 band-birth cells at modest length
+variation (the narrowest, new-10001, by margin 1). r>4: old n=45
+PROGRAM 41/40/42 v STATE 27/24/23; new n=51 PROGRAM 49/47/47 v
+STATE 36/35/30 — the gap is LARGEST where spreads are widest.
+Descriptive: length spread amplifies the advantage but does not
+create all of it.
+
+Q4 — RULE FAMILIES (cells n>=5; tiny cells stay tiny in the
+receipt): i_heurisch (old n=34, new n=29): PROGRAM 33/34/32 v
+STATE 21/21/21 and 28/27/27 v 18/20/17 at MODEST labeled-T (p50
+29) — the strongest robust gain, not a long-target family.
+i_linear_basis (old 24, new 22): PROGRAM 22/22/22 v 15/14/14
+and 22/22/22 v 20/17/18 — PROGRAM near-ceiling both bands.
+i_sqrt_basis (old n=5: 4/4/4 v 3/3/4; new n=11: 10/9/11 v
+6/9/7) — mixed, tied cells in both bands. i_unprod (new n=5):
+5/4/5 v 5/4/4 — near-tied, tiny.
+ANSWERS to the registered questions: program3_state0 cases are
+NOT merely the longest STATE targets (their T p50 31 sits near
+the band median 29; the longest-by-median targets are in
+program_wrong3); they lean toward wider-than-median spreads,
+WEAKLY (ratio p50 6.6 v 5.6 for the new band as a whole —
+recomputed from anatomy, not a receipt field; the separation is
+modest); robust PROGRAM gains REMAIN in the
+modest-T i_heurisch family and the 2<r<=4 stratum. Mechanism
+clues, not causal conclusions.
+
+FUTURE CAUSAL CONTROL (design BANKED, nothing trained or
+chosen): the desk localizes the live confound to the
+TRAINING-side short/low-entropy channel (B) v semantics (A) —
+the scoring-side channel (C) is now priced (about half the
+magnitude, none of the direction). PROGRAM-PAD (canonical
+program + deterministic null filler toward STATE length; probes
+raw token burden; filler does not match STATE entropy —
+disclosed) and OPAQUE-SHORT-ACTION (stable opaque code at
+PROGRAM length; probes compact identity v compositional
+factorization; codebook/generalization limits — disclosed)
+banked in RIFF-LEDGER this commit; treatment selection waits
+for its own GO.
+
+RECEIPT-AUDIT DISCLOSURES (adopted): the receipt's dist "p50/
+p90" are nearest-rank-FLOOR quantiles, not interpolated medians
+(they coincide with true medians on every cited cell; e.g. old
+band ratio 4.778 by convention v 4.812 true). The pessimistic
+tie law is VACUOUS on this surface — zero exact or near ties
+(<1e-5) across all 27,600 label-rival comparisons — and the
+6-decimal sum_lp serialization (<=3.2e-7 mean-lp rounding)
+provably cannot flip any rank. Cross-birth alignment gates
+cover STATE T and label_index; episode-id order and PROGRAM T
+were verified drift-free externally by the auditor.
+
+FENCES. Desk only; no efficacy denominator touched (72 and 79
+stand); alpha=1 mean-lp REMAINS the registered primary
+everywhere — no alpha promotion; no new inferential claim, no
+p-values on desk strata; no controller deployment; no i_usub
+repair; bands never pooled; dual audit before booking; receipts
+force-added small-text; after booking commit/push, census,
+STOP.
+
