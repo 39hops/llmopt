@@ -12,10 +12,13 @@ term_index strata. Per-decision rows are PERSISTED to
 scores.jsonl before any aggregate is computed.
 
     .venv/bin/python scratch/mathworld1_svpadj.py             (Mac)
+    SVPADJ_SEED=10001 .venv/bin/python scratch/mathworld1_svpadj.py
+    SVPADJ_SEED=11001 .venv/bin/python scratch/mathworld1_svpadj.py
 """
 import hashlib
 import json
 import math
+import os
 import sys
 import time
 from pathlib import Path
@@ -30,22 +33,62 @@ from llmopt.train.mathnative import build_model  # noqa: E402
 from scratch.mathworld1_actiontok import ActionGCTok  # noqa: E402
 from scratch.mathworld1_svpbirth import gate  # noqa: E402
 
-PINS = {
-    "checkpoints/svp_state.pt":
-        "8e0a22f29074ee819a3936748f27939022ac9b974989c988fa"
-        "1d3f6f0694c060",
-    "checkpoints/svp_program.pt":
-        "d9db0049b135f326eb8fa2d9f74e7c067516e49ae597ecaac1"
-        "1ecae1dfc57853",
+SEED = int(os.environ.get("SVPADJ_SEED", "9001"))
+CKPT_BY_SEED = {
+    9001: {
+        "checkpoints/svp_state.pt":
+            "8e0a22f29074ee819a3936748f27939022ac9b974989c988fa"
+            "1d3f6f0694c060",
+        "checkpoints/svp_program.pt":
+            "d9db0049b135f326eb8fa2d9f74e7c067516e49ae597ecaac1"
+            "1ecae1dfc57853"},
+    10001: {
+        "checkpoints/svp_state_s10001.pt":
+            "118551181a3f8904da0b6e6da9ef123a2038b83a90d585cb3d"
+            "535739a3a3f686",
+        "checkpoints/svp_program_s10001.pt":
+            "395dfd535d4c446c3372baa8ea33ed2eef6f703c3c36db9715"
+            "59019ab4e199a9"},
+    11001: {
+        "checkpoints/svp_state_s11001.pt":
+            "041b3b047df80ff825ddbcff28c879de04586b9616600eb119"
+            "6ff7cf69ad4973",
+        "checkpoints/svp_program_s11001.pt":
+            "3305782548b8e1f2b7a0b63d44ecf79a44c94301f692ba9b93"
+            "fbdc255c3a13b7"},
+}
+gate(SEED in CKPT_BY_SEED, f"UNREGISTERED SVPADJ_SEED {SEED}")
+CKPTS = CKPT_BY_SEED[SEED]
+CK_STATE, CK_PROGRAM = list(CKPTS)
+PINS = dict(CKPTS)
+PINS.update({
     "logs/mathworld1/svpeval/episodes.jsonl":
         "cb90ff0f6d655cfe5dc20f091da0597b1bb0e23a4d0c23355a"
         "997e8849c61dd8",
     "logs/mathworld1/svpeval/decisions.jsonl":
         "f63100a62f3091d544750d679483009a473261c587f316524"
         "1406a86253858c6",
-}
-OUTDIR = Path("logs/mathworld1/svpadj")
+})
+SUF = "" if SEED == 9001 else f"_s{SEED}"
+OUTDIR = Path(f"logs/mathworld1/svpadj{SUF}")
+S9001_ADJ_PROTECT = "logs/mathworld1/svpadj/svpadj_receipt.json"
 TOK = ActionGCTok()
+
+
+def protect_9001_adj():
+    """The booked seed-9001 adjudication artifacts stay
+    byte-frozen while a replication seed scores: the receipt pins
+    its own scores.jsonl sha, so asserting the receipt bytes plus
+    the scores sha it carries covers both files."""
+    if SEED == 9001:
+        return
+    rec = json.loads(Path(S9001_ADJ_PROTECT).read_text())
+    gate(rec["files"]["scores.jsonl"]
+         == fsha("logs/mathworld1/svpadj/scores.jsonl"),
+         "SEED-9001 svpadj scores.jsonl MUTATED")
+    gate(rec["primary"]["STATE_top1"] == 45
+         and rec["primary"]["PROGRAM_top1"] == 65,
+         "SEED-9001 svpadj receipt MUTATED")
 
 
 def fsha(p) -> str:
@@ -101,6 +144,7 @@ def rank_metrics(scores, label_idx):
 def main():
     if OUTDIR.exists():
         raise SystemExit(f"REFUSING: {OUTDIR} exists")
+    protect_9001_adj()
     for p, h in PINS.items():
         gate(fsha(p) == h, f"PIN MISMATCH {p}")
     START = start_provenance(
@@ -116,8 +160,7 @@ def main():
     gate(torch.backends.mps.is_available(), "MPS UNAVAILABLE")
     dev = torch.device("mps")
     arms = {}
-    for view, ck in (("STATE", "checkpoints/svp_state.pt"),
-                     ("PROGRAM", "checkpoints/svp_program.pt")):
+    for view, ck in (("STATE", CK_STATE), ("PROGRAM", CK_PROGRAM)):
         m = build_model(TOK.vocab_size, ctx=4096)
         m.load_state_dict(torch.load(ck, weights_only=True))
         m.eval()
@@ -161,6 +204,7 @@ def main():
     # rows are on disk; NOW the aggregates (mechanical)
     for p, h in PINS.items():
         gate(fsha(p) == h, f"POST-RUN PIN MISMATCH {p}")
+    protect_9001_adj()
 
     def agg(key):
         s = sum(1 for d in per_dec if d["STATE"][key])
@@ -199,6 +243,8 @@ def main():
          if c["is_label"]][0]]["param_kind"] == "term_index"
     receipt = {
         "n_primary": 72,
+        "seed": SEED,
+        "checkpoints": {"STATE": CK_STATE, "PROGRAM": CK_PROGRAM},
         "device": str(dev),
         "exec_order_note": "per decision STATE scored first, then "
                            "PROGRAM; candidate order = frozen band "

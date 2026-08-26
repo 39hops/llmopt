@@ -48999,3 +48999,72 @@ exclusions and the u_choice distribution-shift constraint
 carry; dual audit before booking; after booking commit/push
 STOP.
 
+## AMENDMENT MATH-CYBER-1-SVP-ADJUDICATION-0-REPSEED: the frozen scorer is parameterized over the two replication checkpoint pairs ONLY — full-hash checkpoint mappings, per-seed refuse-if-exists output dirs, seed-9001 adjudication artifacts byte-protected; scoring law untouched (2026-08-26, Mac)
+
+Target: PRE-REG MATH-CYBER-1-SVP-ADJUDICATION-0, per PRE-REG
+MATH-CYBER-1-SVP-REPLICATION-DESIGN-0's frozen same-band
+same-law scoring requirement. Per outside GO (GPT via Artin,
+2026-08-26, MATH-CYBER-1-SVP-REPLICATION-SCORE-0): score BOTH
+replication pairs under one committed instrument before
+interpreting either; both pairs UNSCORED at GO entry.
+
+CHANGES (scratch/mathworld1_svpadj.py, this commit):
+- SVPADJ_SEED env selects the checkpoint pair. Unset -> the
+  booked seed-9001 lineage (legacy paths; its output dir exists,
+  so the refuse-if-exists guard makes a rerun impossible).
+  Otherwise ONLY the registered replication seeds 10001/11001
+  are accepted — gate() hard-exits on any other value.
+- Frozen checkpoint mapping (full hashes, gate-compared before
+  load):
+    10001 -> checkpoints/svp_state_s10001.pt 11855118... /
+             svp_program_s10001.pt 395dfd53...
+    11001 -> checkpoints/svp_state_s11001.pt 041b3b04... /
+             svp_program_s11001.pt 33057825...
+  (the shas booked with each birth verdict, verbatim).
+- Per-seed refuse-if-exists output dirs
+  logs/mathworld1/svpadj_s10001/ and svpadj_s11001/ (scores.jsonl
+  + receipt each, raw rows persisted before aggregates exactly
+  as the seed-9001 scorer does).
+- SEED-9001 ADJUDICATION PROTECTION: on any replication seed,
+  the booked svpadj receipt's scores.jsonl sha is re-asserted
+  against the frozen scores file and the booked 45/65 primary
+  counts asserted unchanged, BEFORE and AFTER scoring.
+- EVERYTHING ELSE UNTOUCHED — the diff removes only the two
+  9001 checkpoint pin literals, the fixed OUTDIR literal, and
+  the fixed checkpoint tuple in the arm-load loop; frozen
+  prompt/candidate encoding, teacher-forced scoring, EOS
+  inclusion, mean-continuation-logprob primary, summed-lp rider,
+  pessimistic top-1/tie law, candidate ordering, rank/MRR,
+  mcnemar_exact, alpha .05, PROMOTE-PROGRAM/STATE-WIN/
+  INCONCLUSIVE thresholds, u_choice/term_index strata, finite
+  gates, 72-decision denominator, eval-band pins cb90ff0f/
+  f63100a6, and the no-sympy/no-world/no-generation law are
+  byte-identical hunks.
+
+FROZEN RUN PLAN (both envelopes under this committed scorer,
+neither interpreted before both exist):
+    SVPADJ_SEED=10001 .venv/bin/python scratch/mathworld1_svpadj.py
+    SVPADJ_SEED=11001 .venv/bin/python scratch/mathworld1_svpadj.py
+Then independent audit of both raw score sets recomputing top-1
+counts, delta_pp, discordants, exact McNemar, MRR, summed-lp and
+strata riders from scores.jsonl rows; then the ALREADY-FROZEN
+n=3 resolution (REPLICATION-DESIGN-0): REPLICATED-DIRECTION iff
+PROGRAM top-1 > STATE top-1 in seeds 9001 (immutable booked
+45/72 v 65/72, delta +27.8pp, discordant 0/20), 10001, AND
+11001; any tie or reversal blocks; per-seed p<.05 NOT required;
+magnitude descriptive (delta per seed, median, range); the 216
+repeated decisions NEVER pooled as independent; pair-level exact
+sign test rider only (two-sided floor p=.25 at 3/3);
+per-decision cross-birth consistency rider descriptive only.
+
+REGISTERED PRIOR (house): standing no-directional-prior record
+carries — no prior on the replication outcomes is registered.
+Instrument-level: both runs complete with all gates firing and
+the seed-9001 adjudication artifacts byte-unchanged.
+
+FENCES. Mac/mps; no training, no checkpoint mutation, no i_usub
+repair, no new eval band, no controller deployment; dual audit
+(raw per-seed score files + n=3 arithmetic, and the
+parameterization diff for scoring-law drift) before booking;
+after booking commit/push, process census, STOP.
+
