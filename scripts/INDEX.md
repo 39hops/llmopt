@@ -2917,6 +2917,14 @@ MATH-CYBER-1 SVP-BIRTH-0 — the paired STATE-v-PROGRAM birth driver (production
 - `smoke()`
 - `production()`
 
+### scratch/mathworld1_svpcovdesk.py
+MATH-CYBER-1 SVP-ACTION-COVERAGE-DESK-0 — outcome-independent census of exact semantic whole-action tuple coverage: training target actions (73,324 rows) onto the labeled and all-candidate actions of BOTH frozen eval bands. No model scores consumed, no model loaded, no training. Prices whether an OPAQUE whole-action categorical code would confound the causal control with OOV exposure.
+
+- `fsha(p) -> str`
+- `tup(d)`
+- `band_census(path, n_expected, train_tup, train_txt)`
+- `main()`
+
 ### scratch/mathworld1_svpdesign.py
 MATH-CYBER-1 STATE-v-PROGRAM DESIGN-0 — design-qualification smoke harness. Verifies the five frozen design mechanisms with ZERO training: (1) frozen-init determinism + pin, (2) target-blind batch-plan determinism, (3) sequence-cap census, (4) prefix-masked per-row-normalized CE arithmetic v an independent hand loop, (5) one forward pass per arm (no backward, no optimizer).
 

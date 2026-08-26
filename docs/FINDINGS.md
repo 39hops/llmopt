@@ -3429,3 +3429,21 @@ regime tag on every bullet is the fence.
   evaluation normalization only, training length/entropy still
   confounded; PROGRAM-PAD + OPAQUE-SHORT-ACTION causal controls
   banked, nothing trained. RESULTS.md#L49799
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] REDESIGN-REQUIRED
+  (coverage desk): the 73,324-row training set collapses to just
+  33 distinct whole-action tuples, and ~32% of eval-band scoring
+  candidates are whole-action OOV (entire rule families
+  cancel/euler/factor/i_apart/trigsimp never appear as training
+  targets), with one trigsimp-labeled OOV decision per band — so
+  an opaque whole-action categorical control would confound
+  compact identity with OOV exposure and is blocked pending
+  redesign (full-space or atom-level code assignment;
+  renamed-atoms arm inherits coverage exactly); bounding fact:
+  zero decisions on either band are decided by coverage alone
+  (every covered label faces a covered rival); the
+  program_wrong3 trigsimp/together anatomy re-reads as EXPOSURE
+  SCARCITY (0- and 7-target rules), and the H(child|state,
+  action)->0 schema-history reading is consistent with the
+  record (u_choice/term_index added exactly where needed; i_usub
+  the measured exception). RESULTS.md#L49993

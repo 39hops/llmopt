@@ -49990,3 +49990,100 @@ booking commit/push, census, STOP. This desk gates the
 OPAQUE-SHORT-ACTION bank (RIFF-LEDGER 2026-08-26) — the bank's
 Honest breaks gain whatever this census measures.
 
+## VERDICT MATH-CYBER-1-SVP-ACTION-COVERAGE-DESK-0: REDESIGN-REQUIRED — the training set contains only 33 distinct whole-action tuples, ~32% of all scoring candidates in BOTH frozen bands are whole-action OOV (160/509 old, 183/562 new), and each band carries one OOV-labeled decision (trigsimp); an opaque whole-action categorical control as originally banked would confound compact identity with OOV exposure (2026-08-26, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-ACTION-COVERAGE-DESK-0 (committed
+with the census producer at 015b93a1 BEFORE the band-side count;
+the training-side pre-read disclosed there). Zero model access.
+Receipt logs/mathworld1/svpcovdesk_receipt.json
+(completion_commit 015b93a1); stdout
+logs/mathworld1/svpcovdesk_run.log. The tuple census and the
+program_text census agreed row-by-row (hard gate).
+
+MEASURED COVERAGE (whole-action tuple = (rule, site_kind,
+site_ordinal, param_kind, param_index)):
+TRAINING: 73,324 rows collapse to 33 distinct whole-action
+tuples and 33 distinct program_texts; labeled-rule exposure is
+extremely skewed — i_linear_basis 21,095 / i_heurisch 18,946 /
+i_const 14,932 / i_sum 10,822 ... together 7, i_transcend_div
+4, i_parts 3, trigsimp 0, and cancel/euler/factor/i_apart 0
+(never a training TARGET while common as eval CANDIDATES).
+OLD BAND (72 primary): labeled 71 covered / 1 OOV (the trigsimp
+label L4-s9609:0); candidates 349 covered / 160 OOV (31.4%);
+distinct candidate tuples 15 of 21 covered (labeled tuples 7 of
+8); OOV candidate rules
+cancel 50 / factor 52 / euler 35 / i_parts 10 / i_apart 8 /
+trigsimp 5.
+NEW BAND (79 primary): labeled 78 / 1 OOV (trigsimp
+L6-s9702:0); candidates 379 / 183 OOV (32.6%); tuples 15 of 22
+(labeled 10 of 11); OOV rules cancel 57 / euler 49 / factor 51 / i_parts 11 /
+i_apart 6 / trigsimp 9.
+
+RESOLUTION (frozen vocabulary, quoted: OPAQUE-IDENTIFIABLE-AS-
+DESIGNED iff labeled OOV == 0 AND candidate OOV == 0 in BOTH
+bands; REDESIGN-REQUIRED otherwise): the condition fails on all
+four counts => REDESIGN-REQUIRED. The
+OPAQUE-SHORT-ACTION control as banked (categorical IDs over
+training-observed whole actions) is NOT identifiable: roughly a
+third of every decision's rivals would carry untrained
+embeddings, turning "compact identity v composition" into
+"trained v untrained code" for free. REGISTERED-PRIOR
+ACCOUNTING: CORRECT (REDESIGN-REQUIRED predicted, with the
+NEW-band trigsimp labeled-OOV named in advance from the
+disclosed pre-read; the OLD-band trigsimp label L4-s9609:0 was
+NOT predicted).
+
+POST-HOC DESCRIPTIVE ADDENDUM (computed at booking from frozen
+bytes, labeled as unregistered): in NEITHER band is any
+decision decided by coverage alone — 0 decisions where the
+label is covered and ALL rivals are OOV; 71/72 and 78/79
+decisions pit a covered label against at least one covered
+rival. So while the PROGRAM arm plausibly down-ranks
+never-target rule atoms by exposure prior (a real, now-priced
+deflationary channel for part of its win), that prior CANNOT
+by itself decide a single decision on either band. It also
+sharpens the trigsimp/together program_wrong3 anatomy: those
+are 0- and 7-exposure rules — EXPOSURE SCARCITY, not
+demonstrated low action informativeness (all involved rules are
+deterministic given (rule, site); H(child | state, action) = 0
+on every qualified frozen set — 725/725 actions reconstruct
+with zero ambiguity, RESULTS.md#L45570 — with the i_usub
+two-child residue precisely the surviving measured exception).
+
+READING (scoped): the H(S'|S,A)->0 framing matches the
+representation history exactly — (rule, site) sufficed while
+deterministic, u_choice/term_index were added exactly where
+extra coordinates were needed to identify the child, and i_usub
+is a schema-scope failure precisely because (rule, site) leaves
+two accepted children. The coverage census adds the missing
+half of the picture: the ActionProgram advantage operates over
+a TINY observed action vocabulary (33 tuples) with a heavy
+exposure prior, so any causal control must equalize exposure
+support, not just length. THE CONTROL REDESIGN (banked, not
+launched): assign opaque codes by a deterministic
+outcome-blind law over the FULL enumerable action space (or at
+the compositional-atom level), so every eval candidate's code
+is as trained/untrained as its canonical counterpart; the
+three-way treatment (canonical / renamed-atoms-compositional /
+opaque-whole-action) is the right ladder and the renamed-atoms
+arm is now the cleanest middle rung because it inherits
+coverage exactly.
+
+RECEIPT-AUDIT DISCLOSURES (adopted): the receipt's rows=73,324
+and the 72/79 expected-primary values are gate-backed literals
+(each hard-gated against the counted value; the auditor
+line-counted all three inputs independently); the census logic
+was reproduced bit-exactly by an independently written script;
+exactly one is_label per primary record across all 151 records
+(the label-index pick is unambiguous); run-start porcelain
+" M scripts/INDEX.md" only.
+
+FENCES. Desk only; no training, no checkpoint access, no band
+or denominator changes, no efficacy claim touched, no i_usub
+repair; the addendum is
+descriptive and unregistered (labeled); dual audit before
+booking; receipt force-added small-text; after booking
+commit/push, census, STOP. OPAQUE-SHORT birth stays blocked
+until a redesigned control is preregistered with its own
+untouched band.
+
