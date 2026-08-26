@@ -49577,3 +49577,118 @@ dual audit (237 raw rows + all aggregate arithmetic) before
 booking; receipts force-added small-text; after booking
 commit/push, process census, STOP.
 
+## VERDICT MATH-CYBER-1-SVP-GENERALIZATION-SCORE-0: GENERALIZES-DIRECTION — PROGRAM top-1 beats STATE top-1 in all three paired births on the SECOND, never-before-seen task band (9001: 74v54; 10001: 69v56; 11001: 72v50 of 79), median delta +25.3pp, range +16.5 to +27.8pp; one committed scorer, 237 raw rows persisted before any aggregate (2026-08-26, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GENERALIZATION-SCORE-0 (scorer
+committed at cbba528c, pre-inference source-audit fixes at
+1b575bf4 — row-count gate re-read from the persisted file,
+per-arm flip counts; all BEFORE any checkpoint load) implementing
+the law frozen at VERDICT MATH-CYBER-1-SVP-GENERALIZATION-BAND-0.
+Receipt logs/mathworld1/svpgen/svpgen_receipt.json
+(completion_commit 1b575bf4); raw rows
+logs/mathworld1/svpgen/scores.jsonl 174cdc0e... (237 rows);
+inspectable sets logs/mathworld1/svpgen/inspectable_sets.json
+200f49fa...; stdout log logs/mathworld1/svpgen_run.log. Wall
+18.9 s, one process, fixed birth order 9001 -> 10001 -> 11001,
+one pair resident at a time, scoring primitives IMPORTED from
+the frozen first-band scorer.
+
+PER-BIRTH PRIMARY (pessimistic top-1 of 79; house-recomputed
+independently from the raw rows, exact match to receipt):
+  9001:  STATE 54/79, PROGRAM 74/79, delta +25.3pp, discordant
+    0 STATE-only / 20 PROGRAM-only, McNemar p rider 1.9e-06,
+    MRR .786/.962.
+  10001: STATE 56/79, PROGRAM 69/79, delta +16.5pp, discordant
+    3/16, p rider 4.4e-03, MRR .805/.930.
+  11001: STATE 50/79, PROGRAM 72/79, delta +27.8pp, discordant
+    0/22, p rider 4.8e-07, MRR .758/.945.
+
+RESOLUTION (frozen law applied mechanically by the scorer and
+re-applied by hand at booking): PROGRAM top-1 > STATE top-1 in
+9001 AND 10001 AND 11001 — no tie, no reversal =>
+GENERALIZES-DIRECTION. Median delta +25.3pp, range +16.5 to
++27.8pp (per-pair p<.05 was NOT required; all three clear it as
+riders anyway, the weakest at 4.4e-03 with the first nonzero
+STATE-only discordants seen anywhere in the program, 3). The
+237 rows are never pooled as independent; old-band (+27.8/+30.6/
++29.2 on 72) and new-band magnitudes are separate task-band
+measurements, never combined into a fake n.
+
+HARD GATES (all fired): 79 unique identities per birth,
+identity ORDER identical across births, 237 rows in memory AND
+re-counted from the persisted file, every candidate scored once
+per arm per birth (CAND-COUNT gate + the imported
+single-batch-per-decision law), one label per decision, all
+logprobs finite, all six checkpoint hashes and both band hashes
+unchanged pre-load AND post-score. DISCLOSED: the gates are
+in-process hard exits with no receipt gates-dict — the evidence
+that they fired is that the run completed and wrote the receipt
+(same evidentiary class as the -HARDEN births); run-start
+porcelain " M docs/receipts.lock.json / M scripts/INDEX.md"
+(both non-instrument doc files from the prior booking's regen).
+
+REGISTERED RIDERS (descriptive; never altering the verdict):
+summed-lp top-1 63/71, 65/69, 61/70 — same direction every
+birth; mean-v-sum flips per arm STATE 9/9/11 v PROGRAM 5/4/4
+(mean-lp normalization flips STATE more). u_choice-present
+stratum (n=61): PROGRAM leads 58v42 / 56v45 / 57v39;
+u_choice-absent (n=18): 16v12 / 13v11 / 15v11 — direction holds
+in both strata, all births. Labeled param_kind none (n=74):
+PROGRAM 69/65/67 v STATE 49/52/46; term_index (n=5): 5v5, 4v4,
+5v4. TRUE continuation-target lengths (prompt excluded, derived
+from frozen bytes per the registered clarification — the
+svpeval2 84/58 p50s are full-sequence lengths): labeled STATE T
+p50 29 / p90 60 / max 104 v labeled PROGRAM T p50 6 / p90 6 /
+max 9 (nearest-rank-floor quantiles, the scorer's own dist
+convention) — the target-length asymmetry is ~4.8x at the
+median on this band (a band-level ratio, distinct from the
+3.63x TRAINING asymmetry)
+and REMAINS the named competing mechanism. Cross-birth
+correctness: PROGRAM correct in all 3 births on 66/79 decisions
+(0-of-3: 3) v STATE 42/79 (0-of-3: 18); inspectable sets
+PERSISTED as mathematical objects (parent + labeled action
+records): program3_state0 n=11, program_wrong3 n=3,
+state_correct3 n=42.
+
+ATTRIBUTION FENCE (carried; recomposed wording, semantics
+unchanged v the band prereg — "continuation-target asymmetry"
+there): under equal row/update
+exposure, compact canonical ActionProgram supervision is a
+substantially better training coordinate for frozen sibling
+ranking than full successor-state supervision — and the
+experiment cannot yet separate semantic factorization from
+shorter/lower-entropy targets, reduced length-normalization
+nuisance, or their combination; the 3.63x training
+continuation-token asymmetry remains a competing mechanism. The
+result is NOT described as proving programs intrinsically
+contain "more mechanism."
+
+REGISTERED-PRIOR ACCOUNTING: no directional prior was registered
+(standing record); the instrument-level prior (gates fire, 237
+rows, pins unchanged) is CORRECT.
+
+READING (scoped): the replicated ActionProgram advantage
+GENERALIZES ACROSS TASK SAMPLING — all three births, trained
+once and frozen, carry their direction onto a band whose 79
+decisions have zero visible-cur overlap with training or the
+first eval band (the BAND-0 booked novelty law; the
+first-eval-band half re-verified by this booking's audit, the
+training half carried from the band booking). Seed 10001 is the honest attenuation case
+(+16.5pp, 3 STATE-only discordants) — the direction is
+unanimous, the magnitude varies by realization and band, and
+magnitude claims stay descriptive. Scope fences carry from the
+band booking: sibling ranking not solve-rate; this-param_kind-
+mixture claim only (labeled u_choice remains 0 on this band);
+one world/tokenizer/architecture.
+
+FENCES. Mac/mps; zero training, zero band rematerialization, no
+i_usub repair; text-only scoring (primitives imported from the
+frozen scorer, no generation/sympy/world); the launch command
+used env -u SVPADJ_SEED -u SVPBIRTH_SEED per the pre-inference
+audit's import-chain note (session record only — the run log
+carries no command header; the auditor separately verified the
+import path performs no writes regardless); dual audit (237
+raw rows + aggregate arithmetic) before booking; receipts
+force-added small-text; after booking commit/push, census,
+STOP.
+

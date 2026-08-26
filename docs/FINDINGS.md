@@ -3398,3 +3398,18 @@ regime tag on every bullet is the fence.
   frozen before any trained model saw them, and the
   GENERALIZES-DIRECTION resolution language registered
   pre-materialization. RESULTS.md#L49354
+
+- [REPLICATED] [math-cyber] [mac] GENERALIZES-DIRECTION: the
+  replicated ActionProgram advantage carries onto a second,
+  never-before-seen task band (79 fresh decisions, zero
+  visible-cur overlap with training or the first band) in all
+  three frozen births — PROGRAM top-1 74/69/72 v STATE 54/56/50
+  of 79 (deltas +25.3/+16.5/+27.8pp, median +25.3), per-pair
+  McNemar riders 1.9e-06/4.4e-03/4.8e-07; seed 10001 is the
+  honest attenuation case with the program's first nonzero
+  STATE-only discordants (3); direction holds in both u_choice
+  strata; PROGRAM correct in all 3 births on 66/79 v STATE
+  42/79, inspectable failure sets persisted as mathematical
+  objects; true target-length asymmetry ~4.8x at median stays
+  the named competing mechanism — no "more mechanism" claim;
+  magnitudes never pooled across bands. RESULTS.md#L49580

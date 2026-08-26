@@ -2944,6 +2944,13 @@ MATH-CYBER-1 SVP-GENERALIZATION-BAND-0 — materialize + qualify the SECOND, unt
 - `fsha(p) -> str`
 - `main()`
 
+### scratch/mathworld1_svpgenadj.py
+MATH-CYBER-1 SVP-GENERALIZATION-SCORE-0 — ONE joint scorer: all three paired births (9001, 10001, 11001 in that fixed order) teacher-force scored on the frozen SECOND band (79 primary decisions, seeds 9700-9719) under the byte-frozen first-band scoring law. Zero training, zero generation, zero sympy/world.
+
+- `fsha(p) -> str`
+- `pin_all()`
+- `main()`
+
 ### scratch/mathworld1_svprep.py
 MATH-CYBER-1 SVP-REPLICATION-DESIGN-0 — freeze the two additional paired-birth inits (seed law 9001 + 1000k, k=1,2 -> 10001, 11001) BEFORE any replication outcome exists. Zero training.
 
