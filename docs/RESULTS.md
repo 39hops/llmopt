@@ -50087,3 +50087,142 @@ commit/push, census, STOP. OPAQUE-SHORT birth stays blocked
 until a redesigned control is preregistered with its own
 untouched band.
 
+## OBSERVATION MATH-CYBER-1-SVP-TOKEN-CHANNEL-DESK-0: the review correction is CONFIRMED — every rule is ONE dedicated action-only opcode ID under ActionGCTok, so a renamed-atoms arm is a vocabulary permutation, not a semantic-surface ablation; the banked three-way ladder's first contrast is REDUNDANT and is superseded by a FACTOR-OPAQUE v HASH-OPAQUE design (2026-08-26, Mac)
+
+Identifiability desk only — no training, no checkpoint, no eval
+band, no efficacy claim. Census producer
+scratch/mathworld1_svptokdesk.py committed at c71a8962 before
+the run; receipt logs/mathworld1/svptokdesk_receipt.json
+(completion_commit c71a8962, paired artifact pin a943ba7f...);
+stdout logs/mathworld1/svptokdesk_run.log.
+
+TOKENIZER PATH VERIFIED (scratch/mathworld1_actiontok.py L71-97):
+ActionGCTok appends 36 reserved "<r:{rule}>" atoms as SINGLE
+dedicated token IDs (296+i), matched longest-first before byte
+fallback; the model trains FROM SCRATCH (fresh embeddings). The
+human-readable rule spelling therefore never reaches the model
+— "renaming" rule atoms permutes which scratch-initialized
+embedding row each rule gets, which is distribution-identical
+to a seed change. The banked canonical-v-renamed-atoms contrast
+identifies NOTHING about semantic surface. Confirmed empirically
+by the channel census over all 73,324 training rows (roundtrip
+gate on every row):
+  rule_opcode: 15 distinct IDs used, ALL action-only (0
+    occurrences in state targets or prompts).
+  site_kind: "I" (byte token 113) is action-only in practice —
+    0 state/prompt occurrences; the leading space is shared.
+  site_ordinal: digit byte tokens 0/1/2/3 HEAVILY shared with
+    STATE text (e.g. "0": 61,932 program v 6,262 state + 9,852
+    prompt; "2": 867 v 70,529 + 85,070).
+  param_marker: "t" action-only (3,123); "u" shared (3 program
+    v 247 state + 228 prompt); param_index digits shared.
+  separator "\n": shared by construction.
+So the only cross-channel token sharing is digits, space,
+newline, and "u" — space and newline are structurally shared
+(formatting, no identifiability signal), leaving digits and "u"
+as the only empirically shared carriers; the rule/site-kind
+coordinates are already dedicated-channel. (Site-bearing rows:
+72,601 of 73,324 — the 723 site_kind "W" rows EMIT no site
+coordinate at all (program_text is opcode+newline), so nothing
+is uncensused. The RECEIPT is the record for the full
+15-opcode table; the stdout log truncates each channel to 12
+rows.) Distinguishing the five concepts the review
+named: human-readable SPELLING is invisible (opcode IDs);
+TOKEN-ID IDENTITY is the real carrier; CROSS-CHANNEL SHARING
+exists only in the ordinal/param digit channels; REUSABLE
+FACTORIZATION is the (rule, site, param) coordinate structure
+recurring across states; WHOLE-ACTION IDENTITY is the 33-tuple
+inventory (coverage desk).
+
+FRAMING REFINEMENT (adopted): H(S'|S,A)=0 is transition
+SUFFICIENCY, necessary but not sufficient for a useful learned
+action coordinate — a per-state sibling INDEX is also
+transition-sufficient yet carries no reusable structure (the
+chess contrast: per-position legal-move index v from/to/
+promotion coordinates; compiler IR: opcode+operands v basic-
+block-local instruction numbers). The representation objective
+is the conjunction: (1) transition sufficiency, (2) compactness,
+(3) REUSABLE FACTORIZATION — coordinates recurring meaningfully
+across states. The current ActionProgram has all three; the
+coverage + channel censuses show which is untested causally:
+(3) v compact-arbitrary-identity. Exposure-scarcity wording
+stays correlational: trigsimp/together failures are CONSISTENT
+WITH 0/7-target exposure, not proven caused by it; H(S'|S,A)=0
+concerns execution sufficiency, never ease of learning P(A|S).
+
+SUPERSEDING CONTROL DESIGN (banked; RIFF bank amended in place
+this commit; nothing trained):
+Common dedicated CODE ALPHABET: 34 new reserved single-ID
+atoms — <c:0>..<c:31> (32 code symbols), <c:pad>, <c:end> —
+appended to ActionGCTok in ALL arms, so vocab (332+34=366) and
+parameter count are ARM-IDENTICAL; the canonical arm simply
+never emits them (disclosed as present-but-unused).
+FIXED WIDTH W=8 code tokens per action including the <c:end>
+terminal, both opaque arms; the model eos law must match the
+canonical arm's convention (if eos is appended on top, true
+width is 9 — state the convention in the birth prereg). The
+canonical program distribution is p50 6 / p90 6 / max 9 / mean
+6.098 tokens incl. opcode+eos, so W=8 sits ABOVE p90 — a real
+lengthening, priced honestly: 3 epochs x 8 x 73,324 =
+1,759,776 continuation-target tokens v canonical PROGRAM's
+1,341,459 (a 3-epoch total, logs/mathworld1/
+svpbirth_receipt.json) = the opaque arms train on 1.31x MORE
+program-target tokens than canonical, still 2.77x under
+STATE's 4,871,751. LENGTH LAW: both opaque arms byte-identical
+width, so their MUTUAL contrast is exactly matched; their
+contrast v canonical carries a +31% target-length delta,
+disclosed (an earlier draft of this booking stated this delta
+reversed — caught by the pre-booking audit; the corrected
+direction is the one here).
+FACTOR-OPAQUE: per-coordinate deterministic codes —
+  token 1-2: rule code = 2 symbols from
+    sha256("factor-rule-" + rule),
+  token 3: site_kind code, token 4-5: site_ordinal as two base-
+    32 digits, token 6: param_kind code, token 7: param_index
+    base-32 digit, token 8: <c:end>; absent coordinates =
+    <c:pad>.
+  Preserves factor boundaries and cross-state reuse; removes
+  spelling AND all digit-sharing with STATE text (dedicated
+  alphabet). Defined for ANY legal tuple, any future band.
+HASH-OPAQUE: whole-tuple code — first 7 base-32 symbols of
+  sha256("hash-action-" + canonical program_text) + <c:end>.
+  Destroys coordinate factorization (adjacent tuples map to
+  unrelated codes) while using the SAME alphabet at the SAME
+  width with NO dedicated unseen whole-action vocabulary
+  (32^7 = 3.4e10 code space; collision gate at materialization;
+  mapping law frozen NOW, before any future band exists —
+  outcome-blind by construction).
+Coverage guarantee (from the censuses): every code SYMBOL is
+exposed in training in both arms (FACTOR: symbol frequency >=
+coordinate frequency; HASH: ~uniform over the alphabet across
+33 observed tuples — the alphabet, not the tuple, is the unit
+of exposure, so fresh-band actions are OOV in neither arm).
+WHAT EACH CONTRAST IDENTIFIES: FACTOR v HASH (the clean pair —
+same length, same alphabet, same exposure law) = reusable
+factorization v compact arbitrary identity, the question the
+renamed-atoms arm could not ask; CANONICAL v FACTOR = residual
+digit-sharing + length delta only (a small rider, near-null
+expected). This supersedes renamed-atoms v opaque-whole-token,
+which confounded with OOV (coverage desk) and with init
+permutation (this desk).
+
+SMALLEST NEXT PREREGISTERED EXPERIMENT (recommended, own GO):
+three single-arm births at ONE shared frozen init under the
+extended 366 vocab — CANONICAL-366 / FACTOR-OPAQUE /
+HASH-OPAQUE — same 73,324 rows, same seed-independent batch
+plan, same optimizer/loss law (~32 min each on mps); scored on
+a THIRD untouched eval band (seed law 9800+, materialized after
+the encodings are frozen) under the frozen text scoring law;
+resolution language frozen pre-birth on the FACTOR v HASH
+contrast. n=1 realization first (direction-only reading fenced),
+replication seeds by the standing +1000k law if direction
+lands.
+
+FENCES. Desk only; the census is deterministic and scoped to
+the pinned artifact + tokenizer at c71a8962; no efficacy claim
+touched; the standing attribution fence carries (nothing here
+separates training length/entropy from semantics — that is
+what the proposed births are FOR); dual audit before booking;
+receipt force-added small-text; after booking commit/push,
+census, STOP.
+

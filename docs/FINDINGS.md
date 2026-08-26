@@ -3447,3 +3447,19 @@ regime tag on every bullet is the fence.
   action)->0 schema-history reading is consistent with the
   record (u_choice/term_index added exactly where needed; i_usub
   the measured exception). RESULTS.md#L49993
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The renamed-atoms
+  control arm is RETIRED as unidentifiable: ActionGCTok encodes
+  each rule as one dedicated action-only opcode ID (15/15 used
+  opcodes have zero STATE/prompt occurrences across 73,324 rows)
+  and the model trains from scratch, so renaming rule atoms is a
+  vocabulary permutation distribution-identical to a seed change;
+  cross-channel token sharing is confined to digit/space/newline/
+  "u" byte tokens; superseding design banked — a 34-token
+  dedicated code alphabet with FACTOR-OPAQUE (per-coordinate
+  codes, preserves cross-state reuse) v HASH-OPAQUE (whole-tuple
+  sha code, destroys factorization) at matched width 8 (+31%
+  target-length v canonical, priced; a reversed-direction draft
+  of that delta was caught by the pre-booking audit); the
+  H(S'|S,A)=0 framing is refined to the triple sufficiency/
+  compactness/reusable-factorization. RESULTS.md#L50090

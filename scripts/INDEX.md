@@ -2974,6 +2974,12 @@ MATH-CYBER-1 SVP-REPLICATION-DESIGN-0 — freeze the two additional paired-birth
 - `state_bytes(seed, vocab)`
 - `main()`
 
+### scratch/mathworld1_svptokdesk.py
+MATH-CYBER-1 SVP-TOKEN-CHANNEL-DESK-0 — identifiability census of ActionProgram token channels: which token IDs carry rule / site kind / site ordinal / param kind / param index / separators in the 73,324 training program targets, and how much each ID is ALSO exposed through STATE-view text (state targets + shared prompts). Pure counting; no model, no training.
+
+- `fsha(p) -> str`
+- `main()`
+
 ### scratch/mathworld1_terminal.py
 MATH-CYBER-1 TERMINAL-DOMINANCE-0 terminal-miss census (PRE-REG MATH-CYBER-1-TERMINAL-DOMINANCE-0, commit a3759d06).
 
