@@ -72,11 +72,14 @@ ROT = {0: ["CANONICAL", "FACTOR", "HASH"],
        1: ["FACTOR", "HASH", "CANONICAL"],
        2: ["HASH", "CANONICAL", "FACTOR"]}
 INIT_CK = Path("checkpoints/svp_fh_init_s12001.pt")
+# pinned at first (double-build-gated) creation, 2026-08-26:
+INIT_SHA = ("e21be542c998ccb63021f1241faecd46c322448a4ee25750"
+            "dbbe8608af7aabe0")
 CKS = {"CANONICAL": Path("checkpoints/svp_fh_canonical_s12001.pt"),
        "FACTOR": Path("checkpoints/svp_fh_factor_s12001.pt"),
        "HASH": Path("checkpoints/svp_fh_hash_s12001.pt")}
 RECEIPT = Path("logs/mathworld1/svpfhbirth_s12001_receipt.json")
-SMOKE_RECEIPT = Path("logs/mathworld1/smoke_svpfhbirth.json")
+SMOKE_RECEIPT = Path("logs/mathworld1/smoke_svpfhbirth2.json")
 TOK = ActionGCTok()
 PRODUCTION = os.environ.get("SVPFH_PRODUCTION") == "1"
 
@@ -99,8 +102,11 @@ def ensure_init():
         b1 = state_bytes(SEED)
         b2 = state_bytes(SEED)
         gate(b1 == b2, "INIT NONDETERMINISTIC")
+        gate(hashlib.sha256(b1).hexdigest() == INIT_SHA,
+             "INIT SHA != PIN")
         INIT_CK.write_bytes(b1)
-    return fsha(INIT_CK)
+    gate(fsha(INIT_CK) == INIT_SHA, "INIT != PINNED SHA")
+    return INIT_SHA
 
 
 def load_rows():
@@ -148,27 +154,32 @@ def load_arm_models(dev, init_sha):
     sd = torch.load(INIT_CK, weights_only=True)
     arms = {}
     n_params = None
+    n_bitwise = 0
     for a in ARMS:
         m = build_model(VOCAB, ctx=4096)
         m.load_state_dict(sd)
         for k, v in m.state_dict().items():
             gate(torch.equal(v.cpu(), sd[k]), f"INIT DRIFT {a}")
+            n_bitwise += 1
         np_ = sum(p.numel() for p in m.parameters())
         if n_params is None:
             n_params = np_
         gate(np_ == n_params, "PARAM COUNT DRIFT")
         arms[a] = m.to(dev)
-    return arms, n_params
+    return arms, n_params, n_bitwise
 
 
 def run(plan, rows_by_id, dev, init_sha, n_steps, tag):
-    arms, n_params = load_arm_models(dev, init_sha)
+    arms, n_params, n_bitwise = load_arm_models(dev, init_sha)
     opts = {a: make_opt(arms[a], n_steps) for a in ARMS}
     losses = {a: [] for a in ARMS}
+    gnorms = {a: [] for a in ARMS}
     tok_padded = {a: 0 for a in ARMS}
     tok_cont = {a: 0 for a in ARMS}
     order_counts = {i: 0 for i in range(3)}
     wall = {a: 0.0 for a in ARMS}
+    lockstep_checks = 0
+    peak_mps = 0
     for step, (e, bi, ids_) in enumerate(plan[:n_steps]):
         rows = [rows_by_id[i] for i in ids_]
         order = ROT[step % 3]
@@ -179,24 +190,34 @@ def run(plan, rows_by_id, dev, init_sha, n_steps, tag):
             tok_padded[a] += int(ids.numel())
             tok_cont[a] += int(mask.sum())
             opt, sched = opts[a]
-            l, _ = train_step(arms[a], opt, sched, ids, mask)
+            l, gn = train_step(arms[a], opt, sched, ids, mask)
             losses[a].append(l)
+            gnorms[a].append(gn)
             wall[a] += time.monotonic() - t0
+        peak_mps = max(peak_mps,
+                       torch.mps.current_allocated_memory())
         counts = {a: opts[a][1].last_epoch for a in ARMS}
         gate(len(set(counts.values())) == 1,
              f"STEP-COUNT DRIFT {counts}")
+        lockstep_checks += 1
         if step % 200 == 0 or step == n_steps - 1:
             print(f"[svpfh:{tag}] step {step}/{n_steps} " +
                   " ".join(f"{a[0]}={losses[a][-1]:.4f}"
                            for a in ARMS), flush=True)
+    finite_checked = 0
     for a in ARMS:
         gate(len(losses[a]) == n_steps, f"LOSS COUNT {a}")
         gate(all(math.isfinite(x) for x in losses[a]),
              f"NON-FINITE {a}")
+        finite_checked += len(losses[a])
         gate(opts[a][1].last_epoch == n_steps - 1,
              f"SCHED TERMINAL {a}")
-    return arms, losses, tok_padded, tok_cont, order_counts, \
-        wall, n_params
+    stats = {"lockstep_checks": lockstep_checks,
+             "finite_losses_checked": finite_checked,
+             "bitwise_tensors_compared": n_bitwise,
+             "peak_mps_allocated_bytes": peak_mps}
+    return arms, losses, gnorms, tok_padded, tok_cont, \
+        order_counts, wall, n_params, stats
 
 
 def main():
@@ -207,6 +228,10 @@ def main():
     else:
         if SMOKE_RECEIPT.exists():
             raise SystemExit(f"REFUSING: {SMOKE_RECEIPT} exists")
+        for p in list(CKS.values()) + [RECEIPT]:
+            if p.exists():
+                raise SystemExit(
+                    f"REFUSING: production path {p} exists")
     START = start_provenance(
         ["scratch/mathworld1_svpfhbirth.py",
          "scratch/mathworld1_svpbirth.py",
@@ -226,25 +251,31 @@ def main():
 
     t0 = time.time()
     if not PRODUCTION:
-        n = 2
-        arms, losses, tp, tc, oc, wall, n_params = run(
-            plan, rows_by_id, dev, init_sha, n, "smoke")
+        n = 3
+        arms, losses, gnorms, tp, tc, oc, wall, n_params, \
+            stats = run(plan, rows_by_id, dev, init_sha, n,
+                        "smoke")
         receipt = {
             "mode": "smoke", "seed": SEED, "vocab": VOCAB,
             "n_params": n_params, "init_sha": init_sha,
             "plan_sha": plan_sha, "steps": n,
-            "losses": losses, "tokens_padded": tp,
+            "losses": losses, "grad_norms": gnorms,
+            "tokens_padded": tp,
             "tokens_continuation": tc,
             "order_counts": {str(k): v for k, v in oc.items()},
             "bars": {
-                "INIT_BITWISE_ALL_ARMS": True,
+                "INIT_BITWISE_ALL_ARMS":
+                    stats["bitwise_tensors_compared"] == 3 * 59,
                 "VOCAB_340": VOCAB == 340,
-                "PARAM_EQUAL": True,
+                "PARAM_EQUAL": n_params == 19142016,
                 "PLAN_SHA_MATCH": plan_sha == PLAN_SHA,
-                "FH_T9_INVERSE": True,
-                "ROTATION_EXERCISED": oc[0] >= 1 and oc[1] >= 1,
-                "FINITE": True,
-                "STEP_LOCKSTEP": True,
+                "FH_T9_INVERSE":
+                    tc["FACTOR"] == tc["HASH"] == 9 * 32 * n,
+                "ROTATION_EXERCISED": all(
+                    oc[i] >= 1 for i in range(3)),
+                "FINITE":
+                    stats["finite_losses_checked"] == 3 * n,
+                "STEP_LOCKSTEP": stats["lockstep_checks"] == n,
                 "NO_PRODUCTION_PATHS": not any(
                     p.exists() for p in CKS.values())
                 and not RECEIPT.exists(),
@@ -256,8 +287,8 @@ def main():
         print(json.dumps(receipt["bars"], indent=1), flush=True)
         return 0
 
-    arms, losses, tp, tc, oc, wall, n_params = run(
-        plan, rows_by_id, dev, init_sha, TOTAL_STEPS, "prod")
+    arms, losses, gnorms, tp, tc, oc, wall, n_params, stats = \
+        run(plan, rows_by_id, dev, init_sha, TOTAL_STEPS, "prod")
     # completion gates BEFORE checkpoint writes
     for a in ARMS:
         gate(len(losses[a]) == TOTAL_STEPS, f"INCOMPLETE {a}")
@@ -279,10 +310,19 @@ def main():
         "order_counts": {str(k): v for k, v in oc.items()},
         "arm_wall_s": {a: round(wall[a], 1) for a in ARMS},
         "wall_s": round(time.time() - t0, 1),
+        "losses": {a: [round(x, 5) for x in losses[a]]
+                   for a in ARMS},
+        "grad_norm_summary": {a: {
+            "p50": round(sorted(gnorms[a])[len(gnorms[a]) // 2],
+                         5),
+            "max": round(max(gnorms[a]), 5)} for a in ARMS},
+        "lockstep_checks": stats["lockstep_checks"],
+        "bitwise_tensors_compared":
+            stats["bitwise_tensors_compared"],
         "peak_rss_mb": resource.getrusage(
             resource.RUSAGE_SELF).ru_maxrss // (1024 * 1024),
-        "mps_allocated_bytes":
-            torch.mps.current_allocated_memory(),
+        "peak_mps_allocated_bytes":
+            stats["peak_mps_allocated_bytes"],
         "env": {"torch": torch.__version__,
                 "device": str(dev)},
         "checkpoints": {str(CKS[a]): fsha(CKS[a]) for a in ARMS},
