@@ -60,6 +60,8 @@ CKPT_BY_SEED = {
 gate(SEED in CKPT_BY_SEED, f"UNREGISTERED SVPADJ_SEED {SEED}")
 CKPTS = CKPT_BY_SEED[SEED]
 CK_STATE, CK_PROGRAM = list(CKPTS)
+gate("state" in CK_STATE and "program" in CK_PROGRAM,
+     "ARM MAPPING")
 PINS = dict(CKPTS)
 PINS.update({
     "logs/mathworld1/svpeval/episodes.jsonl":
@@ -77,18 +79,19 @@ TOK = ActionGCTok()
 
 def protect_9001_adj():
     """The booked seed-9001 adjudication artifacts stay
-    byte-frozen while a replication seed scores: the receipt pins
-    its own scores.jsonl sha, so asserting the receipt bytes plus
-    the scores sha it carries covers both files."""
+    byte-frozen while a replication seed scores: the receipt file
+    is full-hash pinned, and the scores.jsonl sha it carries is
+    re-asserted against the frozen scores file."""
     if SEED == 9001:
         return
+    gate(fsha(S9001_ADJ_PROTECT)
+         == "b35b4177a1a30c09b934a7b0157aa2f20edcce3bcdbf819f67"
+            "f1b287c8de1d24",
+         "SEED-9001 svpadj receipt MUTATED")
     rec = json.loads(Path(S9001_ADJ_PROTECT).read_text())
     gate(rec["files"]["scores.jsonl"]
          == fsha("logs/mathworld1/svpadj/scores.jsonl"),
          "SEED-9001 svpadj scores.jsonl MUTATED")
-    gate(rec["primary"]["STATE_top1"] == 45
-         and rec["primary"]["PROGRAM_top1"] == 65,
-         "SEED-9001 svpadj receipt MUTATED")
 
 
 def fsha(p) -> str:
