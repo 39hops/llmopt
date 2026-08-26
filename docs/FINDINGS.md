@@ -3499,3 +3499,18 @@ regime tag on every bullet is the fence.
   candidates); yield ran below the registered regime (69 v
   ~75-85, booked); no trained model has touched the bytes;
   triple birth is the next separate GO. RESULTS.md#L50521
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The three-arm
+  mechanism birth (CANONICAL-340 / FACTOR / HASH, seed 12001)
+  completes in lockstep: 6,876 steps per arm from one
+  bit-identical shared vocab-340 init (177 tensor comparisons),
+  per-batch optimizer lockstep gated every step, rotation
+  exactly 2,292 per order; CANONICAL's continuation-token totals
+  are bit-identical to the prior PROGRAM lineage while FACTOR
+  and HASH land exactly at the priced fixed-width totals
+  (1,979,748, byte-identical to each other); a pre-launch audit
+  caught the smoke-created unpinned init AND two hardcoded-true
+  bar fields in the first smoke receipt (frozen-as-record,
+  superseded by a 9/9 derived-counter smoke); all three
+  checkpoints remain UNSCORED pending the single preregistered
+  joint scoring GO. RESULTS.md#L50712

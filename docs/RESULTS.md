@@ -50709,3 +50709,118 @@ exploratory top-1s, no svpeval3 dependency; dual audit (smoke
 pre-launch; receipt post-run) before booking; after booking
 commit/push, census, STOP.
 
+## VERDICT MATH-CYBER-1-SVP-FACTOR-HASH-BIRTH-0: the three-arm mechanism birth COMPLETES under the frozen law — 6,876 lockstep steps x 3 arms from one bit-identical vocab-340 init (seed 12001), CANONICAL's continuation-token count bit-identical to the prior PROGRAM lineage and FACTOR/HASH exactly at the priced fixed-width totals; ALL THREE CHECKPOINTS UNSCORED (2026-08-26, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-FACTOR-HASH-DESIGN-0 (4b4400ec) +
+AMENDMENT -BIRTH-0 (driver at 7df2d021; smoke-audit fixes at
+64535d66 — init sha PINNED and gated on both create/load paths,
+smoke refuses on existing production paths, 3-step all-orders
+smoke, derived counters on the four substantive bars
+(INIT-BITWISE/FINITE/LOCKSTEP/T9 — VOCAB/PARAM/
+NO-PRODUCTION-PATHS remain constant checks, and the entry
+refuse-guard makes the last unable to fail in smoke), per-step
+losses + grad-norm summary + tracked peak mps persisted — all
+BEFORE launch; the requalifying smoke fired 9/9 with step-0
+losses identical to production's at the 5 decimal places the
+production receipt records). Per the GO: TRAINING
+ONLY — zero scoring, zero exploratory top-1s, no svpeval3
+dependency anywhere in the driver (auditor-verified zero
+references). Receipt logs/mathworld1/svpfhbirth_s12001_receipt.
+json (start_commit == completion_commit 64535d66); stdout
+logs/mathworld1/svpfhbirth_s12001_run.log.
+
+COMPLETION (all gates fired; receipt existence = pass): 6,876
+recorded losses per arm, all finite (finiteness re-gated over
+all 20,628), scheduler terminal 6,875 in every arm, per-batch
+optimizer LOCKSTEP gate fired 6,876/6,876 times, execution
+rotation exactly 2,292 steps per order, same batch consumed by
+all three arms before advancing. Wall 4,818.3 s total (arm
+walls 1,595.8 / 1,615.2 / 1,606.0 — no systematic arm cost
+asymmetry); peak RSS 2,312 MB, peak mps 1,128,479,744 B.
+
+SHARED-INIT + EQUALITY GATES: one init
+checkpoints/svp_fh_init_s12001.pt e21be542... (double-build
+determinism-gated at creation, sha PINNED in the driver,
+re-gated at production load), loaded into all three arms with
+177 = 3x59 tensor-bitwise equality comparisons; n_params
+19,142,016 gate-equal across arms (= 19,135,872 + 8x768 code
+rows); vocab 340 everywhere; batch plan gate-asserted ==
+4c0441b7... (the seed-independent SVP-DESIGN-0 law, never
+re-derived per arm).
+
+COMPUTE ACCOUNTING (honest, never an efficacy comparison):
+continuation-target tokens CANONICAL 1,341,459 —
+BIT-IDENTICAL to the prior PROGRAM lineage's 3-epoch total — a
+cross-run consistency check that the canonical target law
+carried over exactly (near-guaranteed given identical rows,
+tokenizer, and plan; still worth verifying); FACTOR = HASH = 1,979,748 = the SVP-CODE-QUALIFY
+pricing exactly (T=9 x 73,324 x 3). Padded tokens CANONICAL
+18,413,640 (also bit-identical to the prior PROGRAM arm),
+FACTOR = HASH = 18,808,660 (byte-identical to each other —
+fixed width holds through the whole run). Per-row F/H gates
+held over all 73,324 rows (in-domain, exact semantic inverse,
+T=9). Epoch mean losses (DESCRIPTIVE ONLY — raw CE magnitudes
+are never compared across representations as efficacy; target
+distributions differ): CANONICAL 0.13587/0.03686/0.02056,
+FACTOR 0.12581/0.02860/0.01599, HASH 0.16563/0.02970/0.01598.
+Grad norms (PRE-CLIP, the clip_grad_norm_ return; clip 1.0
+applied after) p50 0.269/0.201/0.208, max 9.0/14.4/5.9.
+
+PRODUCTS (untracked final-epoch weights, shas the record):
+checkpoints/svp_fh_canonical_s12001.pt 1913b53c50ed938b1430628c3e14435c80abbf74eb5aa2d945b9f74339c08a3f
+checkpoints/svp_fh_factor_s12001.pt 82f4f0d76fce2dc887ec09df2757e4213bed05d9d595d149ed48ca1798bc03dd
+checkpoints/svp_fh_hash_s12001.pt e2b7479549f2cc2fa9c156e253fc054f43f57631bac65c75d2ff01f1d237fae3
+
+DISCLOSURES (adopted from the pre-launch audit + this booking):
+the shared init was CREATED during the first smoke run (the
+pre-launch auditor's blocker) — resolved by pinning its sha as
+a driver constant gated on both the create and load paths, so
+production adopted a pinned artifact, not whatever was on disk;
+the first smoke receipt (smoke_svpfhbirth.json) predates the
+fixes and carries TWO PROVABLY FALSE BAR FIELDS about its own
+run — FH_T9_INVERSE was a hardcoded True literal (the
+RULE-ABLATE-1 class) and ROTATION_EXERCISED read true while its
+own order_counts records order-2 at 0 — in addition to
+NO_PRODUCTION_PATHS not covering the init path; that receipt
+stays frozen-as-record, superseded; smoke_svpfhbirth2.json (9/9, all three rotation orders)
+does NOT close that bar-coverage gap either — the RESOLUTION is
+the pinned-sha gate on both the create and load paths (the pin
+value was ADOPTED from the smoke-created artifact, whose
+double-build determinism gate fired at creation), so no
+unpinned init can ever be adopted; ensure_init still runs
+before the mode branch (a fresh checkout's smoke would recreate
+the init, gated to the pin). The requalifying smoke is 3 steps
+at path smoke_svpfhbirth2.json — both post-registration
+instrument changes v the amendment's "2-step /
+smoke_svpfhbirth.json" text, landed at 64535d66 (strengthening;
+the driver docstring's old path line is stale-as-record);
+run-start porcelain
+" M docs/receipts.lock.json / M scripts/INDEX.md"
+(non-instrument regen files); the fp float(loss) UserWarning
+recurred as in every prior birth, not patched; smoke OneCycle
+runs a 3-step compressed schedule, not the production LR
+trajectory (intrinsic to a bounded smoke, stated).
+
+REGISTERED-PRIOR ACCOUNTING: CORRECT — smoke bars all fire,
+production completes lockstep, CANONICAL exposure differs from
+fixed-width F/H exactly as priced.
+
+READING (scoped): the mechanism realization exists and is
+SEALED — none of the three checkpoints has produced a single
+logit against the third band; nothing about FACTOR v HASH is
+known or claimed. Next separate GO: load all three frozen
+checkpoints jointly and apply the preregistered scoring law
+once (pessimistic top-1, exact McNemar rider law, the
+FACTOR-WIN/HASH-WIN/INCONCLUSIVE language, the mean==sum hard
+gate for the fixed-width arms, coverage/thin-atom riders as
+clarified at the -BIRTH-0 amendment).
+
+FENCES. Mac/mps (run-level nondeterministic; realization is the
+unit); single-realization regardless of outcome — replications
+13001/14001 only under the frozen seed law and their own GOs;
+zero scoring under this GO; no arm restarted or stitched (one
+continuous process; start_commit == completion_commit ==
+64535d66, no commit boundary crossed); dual audit
+before booking; receipts force-added small-text; after booking
+commit/push, census, STOP.
+
