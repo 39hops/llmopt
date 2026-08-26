@@ -1055,6 +1055,27 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpeval2/decisions.jsonl": {
+   "bytes": 652966,
+   "exists": true,
+   "sha256": "89efbe0ea447ee937c0c130d5419112921a2dd6c2159c6c2112cfd5e92f79315",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpeval2/episodes.jsonl": {
+   "bytes": 7406,
+   "exists": true,
+   "sha256": "584c7acc2c779e01eab9293a94ab91b5930e5a19d93d318801cd93d808ade50d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpeval2_run.log": {
+   "bytes": 6245,
+   "exists": true,
+   "sha256": "a681dd5fce1623f0bfad7378e6ce547971b921f57b60c69559bbcac2195df795",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svprep_design.json": {
    "bytes": 1313,
    "exists": true,

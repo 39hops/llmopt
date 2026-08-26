@@ -1,0 +1,228 @@
+[svpeval2] L4-s9700: solved (1 decisions)
+[svpeval2] L4-s9701: solved (1 decisions)
+[svpeval2] L4-s9702: solved (2 decisions)
+[svpeval2] L4-s9703: budget_exhausted (12 decisions)
+[svpeval2] L4-s9704: solved (2 decisions)
+[svpeval2] L4-s9705: solved (1 decisions)
+[svpeval2] L4-s9706: solved (1 decisions)
+[svpeval2] L4-s9707: solved (2 decisions)
+[svpeval2] L4-s9708: solved (1 decisions)
+[svpeval2] L4-s9709: solved (1 decisions)
+[svpeval2] L4-s9710: solved (1 decisions)
+[svpeval2] L4-s9711: budget_exhausted (12 decisions)
+[svpeval2] L4-s9712: solved (1 decisions)
+[svpeval2] L4-s9713: solved (1 decisions)
+[svpeval2] L4-s9714: solved (1 decisions)
+[svpeval2] L4-s9715: solved (1 decisions)
+[svpeval2] L4-s9716: solved (1 decisions)
+[svpeval2] L4-s9717: budget_exhausted (12 decisions)
+[svpeval2] L4-s9718: solved (1 decisions)
+[svpeval2] L4-s9719: solved (1 decisions)
+[svpeval2] L5-s9700: solved (1 decisions)
+[svpeval2] L5-s9701: solved (1 decisions)
+[svpeval2] L5-s9702: solved (1 decisions)
+[svpeval2] L5-s9703: solved (1 decisions)
+[svpeval2] L5-s9704: solved (1 decisions)
+[svpeval2] L5-s9705: solved (1 decisions)
+[svpeval2] L5-s9706: solved (1 decisions)
+[svpeval2] L5-s9707: solved (1 decisions)
+[svpeval2] L5-s9708: solved (1 decisions)
+[svpeval2] L5-s9709: solved (1 decisions)
+[svpeval2] L5-s9710: solved (1 decisions)
+[svpeval2] L5-s9711: solved (1 decisions)
+[svpeval2] L5-s9712: solved (1 decisions)
+[svpeval2] L5-s9713: solved (1 decisions)
+[svpeval2] L5-s9714: solved (1 decisions)
+[svpeval2] L5-s9715: solved (1 decisions)
+[svpeval2] L5-s9716: solved (1 decisions)
+[svpeval2] L5-s9717: solved (1 decisions)
+[svpeval2] L5-s9718: solved (1 decisions)
+[svpeval2] L5-s9719: solved (1 decisions)
+[svpeval2] L6-s9700: solved (1 decisions)
+[svpeval2] L6-s9701: solved (1 decisions)
+[svpeval2] L6-s9702: solved (4 decisions)
+[svpeval2] L6-s9703: solved (1 decisions)
+[svpeval2] L6-s9704: solved (1 decisions)
+[svpeval2] L6-s9705: wall_cap (9 decisions)
+[svpeval2] L6-s9706: solved (1 decisions)
+[svpeval2] L6-s9707: solved (1 decisions)
+[svpeval2] L6-s9708: solved (1 decisions)
+[svpeval2] L6-s9709: solved (2 decisions)
+[svpeval2] L6-s9710: solved (2 decisions)
+[svpeval2] L6-s9711: solved (1 decisions)
+[svpeval2] L6-s9712: solved (1 decisions)
+[svpeval2] L6-s9713: solved (1 decisions)
+[svpeval2] L6-s9714: solved (1 decisions)
+[svpeval2] L6-s9715: solved (1 decisions)
+[svpeval2] L6-s9716: solved (1 decisions)
+[svpeval2] L6-s9717: solved (1 decisions)
+[svpeval2] L6-s9718: solved (1 decisions)
+[svpeval2] L6-s9719: solved (1 decisions)
+[svpeval2] L7-s9700: solved (2 decisions)
+[svpeval2] L7-s9701: solved (1 decisions)
+[svpeval2] L7-s9702: solved (1 decisions)
+[svpeval2] L7-s9703: solved (1 decisions)
+[svpeval2] L7-s9704: solved (1 decisions)
+[svpeval2] L7-s9705: solved (2 decisions)
+[svpeval2] L7-s9706: solved (1 decisions)
+[svpeval2] L7-s9707: solved (1 decisions)
+[svpeval2] L7-s9708: solved (1 decisions)
+[svpeval2] L7-s9709: solved (1 decisions)
+[svpeval2] L7-s9710: solved (1 decisions)
+[svpeval2] L7-s9711: solved (1 decisions)
+[svpeval2] L7-s9712: budget_exhausted (12 decisions)
+[svpeval2] L7-s9713: solved (1 decisions)
+[svpeval2] L7-s9714: solved (3 decisions)
+[svpeval2] L7-s9715: solved (1 decisions)
+[svpeval2] L7-s9716: solved (2 decisions)
+[svpeval2] L7-s9717: solved (1 decisions)
+[svpeval2] L7-s9718: solved (1 decisions)
+[svpeval2] L7-s9719: solved (1 decisions)
+{
+ "band": {
+  "seeds": [
+   9700,
+   9719
+  ],
+  "levels": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "law": "SVP-EVALBAND-0 trajectory law verbatim (greedy-hce, 12-decision budget, 60s wall cap); producer imports run_episode/stable_legal_set/derive_program from the frozen first-band module"
+ },
+ "episodes": {
+  "requested": 80,
+  "accounted": 80,
+  "outcomes": {
+   "solved": 75,
+   "budget_exhausted": 4,
+   "wall_cap": 1
+  },
+  "solved_by_level": {
+   "L4": 17,
+   "L5": 20,
+   "L6": 19,
+   "L7": 19
+  }
+ },
+ "decisions": {
+  "solved_episode_total": 88,
+  "primary_eligible": 79,
+  "exclusions_first_cause": {
+   "episode_budget_exhausted": 48,
+   "program_det_ambiguous": 3,
+   "training_parent_overlap": 5,
+   "episode_wall_cap": 9,
+   "oldeval_parent_overlap": 1
+  },
+  "ambiguity_counts": {
+   "det_ambiguous": 3
+  },
+  "label_missing": 0
+ },
+ "legal_set_size": {
+  "p50": 7,
+  "p90": 9,
+  "max": 12
+ },
+ "single_sibling": 0,
+ "multi_sibling": 79,
+ "per_rule": {
+  "cancel": 57,
+  "euler": 49,
+  "expand": 63,
+  "factor": 51,
+  "i_const_factor": 36,
+  "i_heurisch": 34,
+  "i_parts": 125,
+  "i_usub": 21,
+  "together": 36,
+  "trigsimp": 9,
+  "i_linear_basis": 26,
+  "i_ansatz_exp": 4,
+  "i_sum": 18,
+  "i_unprod": 9,
+  "i_transcend_div": 5,
+  "i_sqrt_basis": 11,
+  "i_apart": 6,
+  "i_inverse_trig": 2
+ },
+ "labeled_per_rule": {
+  "i_heurisch": 29,
+  "i_usub": 3,
+  "i_linear_basis": 22,
+  "i_unprod": 5,
+  "i_sqrt_basis": 11,
+  "i_inverse_trig": 2,
+  "trigsimp": 1,
+  "i_const_factor": 1,
+  "together": 3,
+  "i_transcend_div": 2
+ },
+ "param_kind": {
+  "none": 428,
+  "u_choice": 125,
+  "term_index": 9
+ },
+ "labeled_param_kind": {
+  "none": 74,
+  "term_index": 5
+ },
+ "has_u_choice_candidate": 61,
+ "labeled_u_choice": 0,
+ "has_term_index_candidate": 8,
+ "labeled_term_index": 5,
+ "token_dist": {
+  "state_view": {
+   "p50": 122,
+   "p90": 282,
+   "max": 811
+  },
+  "program_view": {
+   "p50": 57,
+   "p90": 106,
+   "max": 143
+  },
+  "labeled_state": {
+   "p50": 84,
+   "p90": 147,
+   "max": 225
+  },
+  "labeled_program": {
+   "p50": 58,
+   "p90": 106,
+   "max": 140
+  }
+ },
+ "overlaps": {
+  "training_parent_overlap": 5,
+  "training_edge_overlap": 4,
+  "oldeval_parent_overlap": 1,
+  "oldeval_edge_overlap": 1
+ },
+ "srepr_dupes_in_band": 0,
+ "collisions": 0,
+ "tok_roundtrip_fail": 0,
+ "ctx_overflow": 0,
+ "env": {
+  "sympy": "1.14.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit"
+ },
+ "bars": {
+  "EPISODE_POPULATION": true,
+  "LABEL_IN_SET": true,
+  "COMPLETE_LEGAL_SET": true,
+  "PROGRAM_REPLAY": true,
+  "NO_PROGRAM_COLLISION": true,
+  "TOK_ROUNDTRIP": true,
+  "CONTEXT_FIT": true,
+  "TASK_NOVELTY": true
+ },
+ "completion_commit": "4feacbea",
+ "files": {
+  "episodes.jsonl": "584c7acc2c779e01eab9293a94ab91b5930e5a19d93d318801cd93d808ade50d",
+  "decisions.jsonl": "89efbe0ea447ee937c0c130d5419112921a2dd6c2159c6c2112cfd5e92f79315"
+ }
+}
