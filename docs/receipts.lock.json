@@ -1146,6 +1146,20 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svptokdesk_receipt.json": {
+   "bytes": 6029,
+   "exists": true,
+   "sha256": "d20c9dcb8b3c5c1bb0f1a100cf93b1eeb8212b486ca322286cd870b0aa5b550d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svptokdesk_run.log": {
+   "bytes": 4745,
+   "exists": true,
+   "sha256": "27013c89f62aa3a6ffe1e0fcfc1efb30c382895325bf56fe1d31141e2c15ffc6",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/terminal_census.jsonl": {
    "bytes": 136996,
    "exists": true,

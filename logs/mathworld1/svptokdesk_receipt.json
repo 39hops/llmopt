@@ -1,0 +1,298 @@
+{
+ "rows": 73324,
+ "summary": {
+  "rule_opcode": {
+   "distinct_ids": 15,
+   "action_only_ids": 15,
+   "shared_ids": 0
+  },
+  "site_kind": {
+   "distinct_ids": 2,
+   "action_only_ids": 1,
+   "shared_ids": 1
+  },
+  "site_ordinal": {
+   "distinct_ids": 4,
+   "action_only_ids": 0,
+   "shared_ids": 4
+  },
+  "param_marker": {
+   "distinct_ids": 3,
+   "action_only_ids": 1,
+   "shared_ids": 2
+  },
+  "param_index": {
+   "distinct_ids": 4,
+   "action_only_ids": 0,
+   "shared_ids": 4
+  },
+  "separator": {
+   "distinct_ids": 1,
+   "action_only_ids": 0,
+   "shared_ids": 1
+  }
+ },
+ "channels": {
+  "rule_opcode": [
+   {
+    "id": 309,
+    "atom": "<r:i_linear_basis>",
+    "program_count": 21095,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 314,
+    "atom": "<r:i_heurisch>",
+    "program_count": 18946,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 304,
+    "atom": "<r:i_const>",
+    "program_count": 14932,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 316,
+    "atom": "<r:i_sum>",
+    "program_count": 10822,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 310,
+    "atom": "<r:i_inverse_trig>",
+    "program_count": 3159,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 307,
+    "atom": "<r:i_unprod>",
+    "program_count": 3123,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 324,
+    "atom": "<r:expand>",
+    "program_count": 716,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 317,
+    "atom": "<r:i_const_factor>",
+    "program_count": 402,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 312,
+    "atom": "<r:i_log_power>",
+    "program_count": 55,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 311,
+    "atom": "<r:i_sqrt_basis>",
+    "program_count": 31,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 319,
+    "atom": "<r:i_usub>",
+    "program_count": 19,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 308,
+    "atom": "<r:i_ansatz_exp>",
+    "program_count": 10,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 327,
+    "atom": "<r:together>",
+    "program_count": 7,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 313,
+    "atom": "<r:i_transcend_div>",
+    "program_count": 4,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 320,
+    "atom": "<r:i_parts>",
+    "program_count": 3,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   }
+  ],
+  "site_kind": [
+   {
+    "id": 26,
+    "atom": " ",
+    "program_count": 72601,
+    "state_target_count": 260783,
+    "prompt_count": 365053,
+    "action_only": false
+   },
+   {
+    "id": 113,
+    "atom": "I",
+    "program_count": 72601,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   }
+  ],
+  "site_ordinal": [
+   {
+    "id": 30,
+    "atom": "0",
+    "program_count": 61932,
+    "state_target_count": 6262,
+    "prompt_count": 9852,
+    "action_only": false
+   },
+   {
+    "id": 31,
+    "atom": "1",
+    "program_count": 9724,
+    "state_target_count": 32441,
+    "prompt_count": 50406,
+    "action_only": false
+   },
+   {
+    "id": 32,
+    "atom": "2",
+    "program_count": 867,
+    "state_target_count": 70529,
+    "prompt_count": 85070,
+    "action_only": false
+   },
+   {
+    "id": 33,
+    "atom": "3",
+    "program_count": 78,
+    "state_target_count": 47826,
+    "prompt_count": 46037,
+    "action_only": false
+   }
+  ],
+  "param_marker": [
+   {
+    "id": 26,
+    "atom": " ",
+    "program_count": 3126,
+    "state_target_count": 260783,
+    "prompt_count": 365053,
+    "action_only": false
+   },
+   {
+    "id": 156,
+    "atom": "t",
+    "program_count": 3123,
+    "state_target_count": 0,
+    "prompt_count": 0,
+    "action_only": true
+   },
+   {
+    "id": 157,
+    "atom": "u",
+    "program_count": 3,
+    "state_target_count": 247,
+    "prompt_count": 228,
+    "action_only": false
+   }
+  ],
+  "param_index": [
+   {
+    "id": 31,
+    "atom": "1",
+    "program_count": 2151,
+    "state_target_count": 32441,
+    "prompt_count": 50406,
+    "action_only": false
+   },
+   {
+    "id": 30,
+    "atom": "0",
+    "program_count": 969,
+    "state_target_count": 6262,
+    "prompt_count": 9852,
+    "action_only": false
+   },
+   {
+    "id": 32,
+    "atom": "2",
+    "program_count": 5,
+    "state_target_count": 70529,
+    "prompt_count": 85070,
+    "action_only": false
+   },
+   {
+    "id": 33,
+    "atom": "3",
+    "program_count": 1,
+    "state_target_count": 47826,
+    "prompt_count": 46037,
+    "action_only": false
+   }
+  ],
+  "separator": [
+   {
+    "id": 27,
+    "atom": "\n",
+    "program_count": 73324,
+    "state_target_count": 73324,
+    "prompt_count": 146648,
+    "action_only": false
+   }
+  ]
+ },
+ "distinct_state_ids": 37,
+ "distinct_prompt_ids": 41,
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8"
+ },
+ "start": {
+  "start_commit": "c71a8962",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svptokdesk.py": "d13d8d58d047921a41c56e280ee004197d069668c9b4f5651710ed523d1fdbdb",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "c71a8962"
+}
