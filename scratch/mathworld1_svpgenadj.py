@@ -165,6 +165,8 @@ def main():
     # all raw rows are on disk; hard gates, THEN aggregates
     n_rows = sum(len(v) for v in per_birth.values())
     gate(n_rows == 3 * N_PRIMARY, f"ROW COUNT {n_rows}")
+    n_disk = sum(1 for _ in open(OUTDIR / "scores.jsonl"))
+    gate(n_disk == 3 * N_PRIMARY, f"DISK ROW COUNT {n_disk}")
     for seed in BIRTH_ORDER:
         sids = [(x["episode_id"], x["decision_index"])
                 for x in per_birth[seed]]
@@ -186,8 +188,9 @@ def main():
         recs = per_birth[seed]
         s1, p1, b, c = agg(recs, "top1")
         ss, ps, bs, cs = agg(recs, "top1_sum_rider")
-        flips = sum(1 for d in recs for v in ("STATE", "PROGRAM")
-                    if d[v]["top1"] != d[v]["top1_sum_rider"])
+        flips = {v: sum(1 for d in recs
+                        if d[v]["top1"] != d[v]["top1_sum_rider"])
+                 for v in ("STATE", "PROGRAM")}
         deltas[seed] = 100.0 * (p1 - s1) / N_PRIMARY
         primary[seed] = {
             "STATE_top1": s1, "PROGRAM_top1": p1,
