@@ -49201,3 +49201,153 @@ decisions never pooled; dual audit (parameterization diff
 pre-run + raw score sets and n=3 arithmetic pre-booking); after
 booking commit/push, process census, STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-GENERALIZATION-BAND-0: materialize + qualify a SECOND untouched task-sampling evaluation band (seeds 9700-9719 x L4-L7) before any trained model sees it, and freeze the GENERALIZES-DIRECTION resolution language now — zero model inference, zero training (2026-08-26, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-26). Upstream frozen:
+VERDICT MATH-CYBER-1-SVP-REPLICATION-SCORE-0 =
+REPLICATED-DIRECTION on the ONE fixed 72-decision band (9001
+65v45, 10001 65v43, 11001 65v44; median +29.2pp, range +27.8 to
++30.6). This rung tests nothing about weights; it freezes an
+independent task-sampling band so cross-task generalization can
+be scored later under a law registered before the band's bytes
+meet any checkpoint.
+
+SEED LAW (registered before inspecting any 9700+ state): seeds
+9700-9719 x levels L4-L7 = 80 requested episodes; chosen by
+deterministic spacing (+100) from the used 9600-9619 band, not
+outcome selection. COLLISION SCAN (run before generation, booked
+here): a repo-wide grep over docs/, scratch/, scripts/, llmopt/,
+and logs/mathworld1/ finds ZERO "s97xx" episode identities and
+zero seed-97xx usages; every numeric hit for 9700-9719 is a
+float decimal (e.g. -399.9709, 0.9701) or a RESULTS line number
+(9711/39711). The band is fresh.
+
+INSTRUMENT (scratch/mathworld1_svpeval2.py, committed with this
+prereg BEFORE materialization): the SVP-EVALBAND-0 trajectory
+law VERBATIM BY CONSTRUCTION — run_episode (greedy-hce
+min(hce, name, key), 12-decision budget, 60s wall cap),
+stable_legal_set (double enumeration, cleared rule cache), and
+derive_program (AX-FIXTURE program derivation) are IMPORTED from
+the frozen first-band module scratch/mathworld1_svpeval.py, not
+copied; same world/problem generator (make_integrate),
+ActionGCTok-332, ctx 4096, sympy/env pins recorded in receipt.
+No policy/model participates. Treatment carried LITERALLY:
+deterministic (rule, site); i_parts (rule, site, u_choice);
+i_unprod (rule, site, term_index). i_usub is NOT repaired —
+fresh single-site multi-child i_usub classifies under the
+already-named schema-scope residue (program_* first-cause
+exclusion, counted), exactly as the first band; any future
+repaired-i_usub experiment needs a new treatment version AND its
+own untouched band. New vs first band: cur_srepr / child_srepr /
+labeled_child_srepr captured from the LIVE objects before
+serialization — provenance/state-identity metadata ONLY;
+downstream STATE/PROGRAM scoring stays governed by the frozen
+TEXT law and may not replace prompt/target strings with
+regenerated expressions. Candidate identity = unique semantic
+child; (parent, program) -> different child is a hard blocker;
+duplicate (parent, program) -> same child is bookkeeping.
+
+FRESHNESS/GENERALIZATION LAW (visible-text, no sympify of old
+print strings): the second-band primary denominator EXCLUDES,
+with first-cause accounting (precedence: unsolved episode ->
+legal_set_unstable -> program_* -> tok_roundtrip ->
+program_collision -> context_overflow -> label_not_in_set ->
+training_parent_overlap -> oldeval_parent_overlap):
+ 1. exact visible-cur overlap with the 73,324-row training
+    population (a943ba7f...);
+ 2. exact visible-cur overlap with the original 9600-9619 band's
+    decisions (f63100a6..., consumed as frozen bytes);
+ 3. current ActionProgram schema-scope failures (unresolved
+    multi-child i_usub and kin);
+ 4. incomplete/unstable legal sets or other frozen instrument
+    failures.
+Separately REPORTED, never merged into exclusion: training
+parent overlap, training labeled-edge overlap, oldeval parent
+overlap, oldeval labeled-edge overlap, corpus-725 state overlap,
+and cur_srepr duplicate count INSIDE the new band.
+
+BARS (adjudicated on the receipt, no trained checkpoint loaded):
+ 1. EPISODE-POPULATION: all 80 requested identities accounted
+    (solved/budget/wall/dead-end alike).
+ 2. LABEL-IN-SET: labeled child present exactly once in every
+    surviving candidate set.
+ 3. COMPLETE-LEGAL-SET: no primary row with an unstable legal
+    set.
+ 4. PROGRAM-REPLAY: no primary row with a program_* derivation/
+    replay failure.
+ 5. NO-PROGRAM-COLLISION: zero (parent, program) -> different
+    child events.
+ 6. TOK-ROUNDTRIP: every program_text roundtrips under frozen
+    ActionGCTok-332.
+ 7. CONTEXT-FIT: every STATE and PROGRAM scoring string fits ctx
+    4096.
+ 8. TASK-NOVELTY: every PRIMARY decision has zero
+    training-parent AND zero oldeval-parent visible-cur overlap.
+
+DESCRIPTIVE ANATOMY (registered now; cannot alter inclusion
+after inspection): solved/unsolved by level; total/eligible
+decisions + exclusions by exact cause; legal-set size
+p50/p90/max; single v multi sibling; candidate + labeled-action
+counts by rule and by param_kind; has-u_choice-candidate /
+labeled-u_choice / has-term_index / labeled-term_index counts;
+STATE + PROGRAM candidate token length p50/p90/max; labeled
+STATE + PROGRAM target length distributions; training + oldeval
+overlap counts; current i_usub ambiguity count; srepr duplicate
+count.
+
+SECOND-BAND RESOLUTION LANGUAGE (frozen NOW, before the six
+existing checkpoints may touch these bytes):
+GENERALIZES-DIRECTION iff, on the new frozen primary
+denominator, PROGRAM top-1 > STATE top-1 for seed 9001 AND seed
+10001 AND seed 11001. Any tie or reversal blocks. Per-pair
+McNemar p<.05 is NOT required for the cross-task generalization
+claim; each exact p is reported as a rider. Report delta_9001 /
+delta_10001 / delta_11001, median delta, range delta, MRR per
+pair, summed-logprob rider. Decisions x births are NEVER pooled
+as independent observations; original-band and new-band
+magnitudes are separate task-band measurements — their rows are
+never pooled into a fake n.
+
+MECHANISM RIDERS (descriptive only, never alternate verdicts;
+registered now): correctness + discordants by labeled rule
+family; by param_kind; has_u_choice_candidate present/absent;
+label-target token length + within-decision candidate-length
+anatomy; mean-lp v summed-lp top-1 flip counts; per-decision
+cross-birth correctness vectors; after scoring, PERSIST the
+actual parent/action records for {PROGRAM 3/3 & STATE 0/3},
+{PROGRAM wrong 3/3}, {STATE correct 3/3} so failure sets are
+inspectable as mathematical objects. These riders may motivate a
+later LENGTH-CONTROL or rule-specific desk but may never
+redefine the generalization verdict.
+
+UNRESOLVED ATTRIBUTION (carried verbatim into this prereg): the
+replicated experiment establishes that, under equal row/update
+exposure, compact canonical ActionProgram supervision is a
+substantially better training coordinate for frozen sibling
+ranking than full successor-state supervision. It does not yet
+identify whether the advantage is caused by semantic
+factorization, shorter/lower-entropy targets, reduced
+length-normalization nuisance, or their combination. The known
+3.63x continuation-target asymmetry remains an unresolved
+competing mechanism. The existing result is NOT described as
+proving that programs intrinsically contain "more mechanism."
+
+REGISTERED PRIOR (house): all 8 bars fire; solved-episode yield
+and primary count land in the same regime as the first band
+(~72 of ~82 decisions surviving) with a small nonzero
+training-parent overlap excluded; zero program collisions.
+
+REFUTED-IF (instrument level): any bar NO-FIREs, any seed
+collision surfaces, or the artifact requires post-inspection
+inclusion changes.
+
+FENCES. Mac; zero model inference and zero training under this
+GO; materialize ONCE, freeze bytes + full shas; the six trained
+checkpoints stay forbidden from these bytes until the band and
+this law are booked; no i_usub repair; dual audit (raw artifact
++ bar calculations) before booking; after booking commit/push,
+process census, STOP. Standing next (own GO): parameterize the
+frozen scorer over this band, score all three paired births
+under one committed scorer, apply GENERALIZES-DIRECTION
+mechanically.
+
