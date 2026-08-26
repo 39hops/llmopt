@@ -49931,3 +49931,62 @@ repair; bands never pooled; dual audit before booking; receipts
 force-added small-text; after booking commit/push, census,
 STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-ACTION-COVERAGE-DESK-0: outcome-independent census of whole-action tuple coverage — training targets onto both frozen eval bands — pricing OOV confound for any OPAQUE whole-action categorical control; zero model access (2026-08-26, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-26): before any
+OPAQUE-SHORT birth, census exact semantic whole-action tuple
+coverage from the frozen 73,324 training targets onto the
+labeled and all-candidate actions of both frozen eval bands. If
+whole-action coverage is incomplete enough to confound an
+opaque categorical code with OOV exposure, REDESIGN the control
+before training. Desk consumes NO model scores and loads NO
+checkpoint — outcome-independent by construction.
+
+PRE-READ DISCLOSURE (stated before this prereg commits): while
+grounding the assessment the house already inspected the
+TRAINING side — 33 distinct whole-action tuples across 73,324
+rows; labeled-rule counts including trigsimp 0 and together 7.
+The BAND-side coverage (which candidates/labels fall outside
+those 33) has NOT been inspected and is what this desk
+adjudicates.
+
+INSTRUMENT (scratch/mathworld1_svpcovdesk.py, committed with
+this prereg BEFORE the census runs): whole-action tuple =
+(rule, site_kind, site_ordinal, param_kind, param_index) — the
+canonical ActionProgram coordinates; program_text (its
+serialization) censused in parallel with a hard gate that the
+two censuses agree row-by-row. Inputs full-hash pinned:
+training artifact a943ba7f..., old band decisions f63100a6...,
+new band decisions 89efbe0e.... Per band (72 / 79 primary,
+gate-checked): labeled covered/OOV counts, all-candidate
+covered/OOV counts, distinct-tuple coverage, OOV rules, and the
+full OOV labeled records (episode, rule, program_text).
+
+RESOLUTION VOCABULARY (frozen now):
+OPAQUE-IDENTIFIABLE-AS-DESIGNED iff labeled OOV == 0 AND
+candidate OOV == 0 in BOTH bands (an opaque categorical code
+over training-observed whole actions would cover every scoring
+candidate). REDESIGN-REQUIRED otherwise — the opaque control
+as originally banked would confound compact-identity with OOV
+exposure, and the control design must change (e.g. code
+assignment over the full reachable action space by a
+deterministic law, or compositional-atom-level codes) before
+any birth.
+
+REGISTERED PRIOR (house): REDESIGN-REQUIRED — trigsimp appears
+0 times in training targets while a trigsimp-labeled decision
+exists on the new band (program_wrong3 anatomy), so at least
+one labeled OOV is near-certain, and candidate OOV should be
+substantial (33 training tuples v wider band action variety).
+
+REFUTED-IF (instrument): the tuple/text censuses diverge, any
+pin mismatches, or a count cannot be reproduced from the frozen
+rows.
+
+FENCES. Mac; desk only — no training, no checkpoint load, no
+band changes, no efficacy claim touched, no i_usub repair;
+bands reported separately; dual audit before booking; after
+booking commit/push, census, STOP. This desk gates the
+OPAQUE-SHORT-ACTION bank (RIFF-LEDGER 2026-08-26) — the bank's
+Honest breaks gain whatever this census measures.
+
