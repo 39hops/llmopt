@@ -1,0 +1,220 @@
+[svpeval3] L4-s9800: budget_exhausted (12 decisions)
+[svpeval3] L4-s9801: solved (1 decisions)
+[svpeval3] L4-s9802: solved (2 decisions)
+[svpeval3] L4-s9803: solved (1 decisions)
+[svpeval3] L4-s9804: solved (1 decisions)
+[svpeval3] L4-s9805: budget_exhausted (12 decisions)
+[svpeval3] L4-s9806: solved (1 decisions)
+[svpeval3] L4-s9807: solved (1 decisions)
+[svpeval3] L4-s9808: solved (2 decisions)
+[svpeval3] L4-s9809: solved (1 decisions)
+[svpeval3] L4-s9810: solved (1 decisions)
+[svpeval3] L4-s9811: solved (1 decisions)
+[svpeval3] L4-s9812: solved (1 decisions)
+[svpeval3] L4-s9813: solved (1 decisions)
+[svpeval3] L4-s9814: solved (1 decisions)
+[svpeval3] L4-s9815: solved (2 decisions)
+[svpeval3] L4-s9816: budget_exhausted (12 decisions)
+[svpeval3] L4-s9817: budget_exhausted (12 decisions)
+[svpeval3] L4-s9818: solved (1 decisions)
+[svpeval3] L4-s9819: solved (1 decisions)
+[svpeval3] L5-s9800: solved (1 decisions)
+[svpeval3] L5-s9801: solved (1 decisions)
+[svpeval3] L5-s9802: solved (1 decisions)
+[svpeval3] L5-s9803: solved (1 decisions)
+[svpeval3] L5-s9804: solved (1 decisions)
+[svpeval3] L5-s9805: solved (1 decisions)
+[svpeval3] L5-s9806: solved (1 decisions)
+[svpeval3] L5-s9807: solved (1 decisions)
+[svpeval3] L5-s9808: solved (1 decisions)
+[svpeval3] L5-s9809: solved (1 decisions)
+[svpeval3] L5-s9810: solved (1 decisions)
+[svpeval3] L5-s9811: solved (1 decisions)
+[svpeval3] L5-s9812: solved (1 decisions)
+[svpeval3] L5-s9813: solved (1 decisions)
+[svpeval3] L5-s9814: solved (1 decisions)
+[svpeval3] L5-s9815: solved (1 decisions)
+[svpeval3] L5-s9816: solved (1 decisions)
+[svpeval3] L5-s9817: solved (1 decisions)
+[svpeval3] L5-s9818: solved (1 decisions)
+[svpeval3] L5-s9819: solved (1 decisions)
+[svpeval3] L6-s9800: solved (1 decisions)
+[svpeval3] L6-s9801: solved (1 decisions)
+[svpeval3] L6-s9802: solved (1 decisions)
+[svpeval3] L6-s9803: solved (1 decisions)
+[svpeval3] L6-s9804: solved (1 decisions)
+[svpeval3] L6-s9805: solved (1 decisions)
+[svpeval3] L6-s9806: solved (1 decisions)
+[svpeval3] L6-s9807: solved (1 decisions)
+[svpeval3] L6-s9808: solved (1 decisions)
+[svpeval3] L6-s9809: solved (1 decisions)
+[svpeval3] L6-s9810: solved (1 decisions)
+[svpeval3] L6-s9811: solved (1 decisions)
+[svpeval3] L6-s9812: solved (1 decisions)
+[svpeval3] L6-s9813: budget_exhausted (12 decisions)
+[svpeval3] L6-s9814: solved (1 decisions)
+[svpeval3] L6-s9815: solved (1 decisions)
+[svpeval3] L6-s9816: solved (1 decisions)
+[svpeval3] L6-s9817: solved (1 decisions)
+[svpeval3] L6-s9818: solved (1 decisions)
+[svpeval3] L6-s9819: budget_exhausted (12 decisions)
+[svpeval3] L7-s9800: solved (1 decisions)
+[svpeval3] L7-s9801: solved (1 decisions)
+[svpeval3] L7-s9802: budget_exhausted (12 decisions)
+[svpeval3] L7-s9803: budget_exhausted (12 decisions)
+[svpeval3] L7-s9804: solved (1 decisions)
+[svpeval3] L7-s9805: solved (1 decisions)
+[svpeval3] L7-s9806: solved (1 decisions)
+[svpeval3] L7-s9807: solved (1 decisions)
+[svpeval3] L7-s9808: solved (1 decisions)
+[svpeval3] L7-s9809: solved (1 decisions)
+[svpeval3] L7-s9810: solved (1 decisions)
+[svpeval3] L7-s9811: solved (1 decisions)
+[svpeval3] L7-s9812: solved (1 decisions)
+[svpeval3] L7-s9813: solved (1 decisions)
+[svpeval3] L7-s9814: solved (1 decisions)
+[svpeval3] L7-s9815: solved (1 decisions)
+[svpeval3] L7-s9816: solved (1 decisions)
+[svpeval3] L7-s9817: solved (1 decisions)
+[svpeval3] L7-s9818: solved (1 decisions)
+[svpeval3] L7-s9819: solved (1 decisions)
+{
+ "band": {
+  "seeds": [
+   9800,
+   9819
+  ],
+  "levels": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "law": "first-band trajectory law verbatim by import (greedy-hce, 12-decision, 60s wall); FACTOR/HASH from the qualified svpcode module"
+ },
+ "episodes": {
+  "requested": 80,
+  "accounted": 80,
+  "outcomes": {
+   "budget_exhausted": 8,
+   "solved": 72
+  },
+  "solved_by_level": {
+   "L4": 16,
+   "L5": 20,
+   "L6": 18,
+   "L7": 18
+  }
+ },
+ "decisions": {
+  "solved_episode_total": 75,
+  "primary_eligible": 69,
+  "exclusions_first_cause": {
+   "episode_budget_exhausted": 96,
+   "training_parent_overlap": 5,
+   "program_det_ambiguous": 1
+  },
+  "ambiguity_counts": {
+   "det_ambiguous": 1
+  },
+  "label_missing": 0
+ },
+ "legal_set_size": {
+  "p50": 7,
+  "p90": 9,
+  "max": 10
+ },
+ "single_sibling": 0,
+ "multi_sibling": 69,
+ "per_rule": {
+  "cancel": 50,
+  "euler": 41,
+  "expand": 55,
+  "factor": 46,
+  "i_linear_basis": 34,
+  "i_sum": 21,
+  "i_unprod": 16,
+  "together": 28,
+  "i_heurisch": 32,
+  "i_const_factor": 34,
+  "i_parts": 97,
+  "i_usub": 14,
+  "i_ansatz_exp": 4,
+  "trigsimp": 3,
+  "i_sqrt_basis": 8,
+  "i_apart": 5,
+  "i_inverse_trig": 2,
+  "i_transcend_div": 4
+ },
+ "labeled_per_rule": {
+  "i_linear_basis": 27,
+  "i_unprod": 5,
+  "i_heurisch": 27,
+  "i_usub": 2,
+  "i_sqrt_basis": 6,
+  "i_inverse_trig": 2
+ },
+ "labeled_param_kind": {
+  "none": 64,
+  "term_index": 5
+ },
+ "param_kind": {
+  "none": 381,
+  "term_index": 16,
+  "u_choice": 97
+ },
+ "has_u_choice_candidate": 48,
+ "has_term_index_candidate": 12,
+ "token_dist": {
+  "state_view": {
+   "p50": 119,
+   "p90": 245,
+   "max": 604
+  },
+  "program_view": {
+   "p50": 56,
+   "p90": 92,
+   "max": 122
+  }
+ },
+ "overlaps": {
+  "training_parent_overlap": 5,
+  "training_edge_overlap": 5
+ },
+ "coverage_riders": {
+  "labeled_tuple_covered": 69,
+  "labeled_tuple_oov": 0,
+  "decisions_all_candidates_covered": 3,
+  "decisions_with_oov_candidate": 66,
+  "candidate_oov_count": 154,
+  "candidate_total": 494
+ },
+ "collisions": 0,
+ "tok_roundtrip_fail": 0,
+ "ctx_overflow": 0,
+ "code_domain_fail": 0,
+ "factor_roundtrip_fail": 0,
+ "hash_roundtrip_fail": 0,
+ "env": {
+  "sympy": "1.14.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit"
+ },
+ "bars": {
+  "EPISODE_POPULATION": true,
+  "LABEL_IN_SET": true,
+  "COMPLETE_LEGAL_SET": true,
+  "PROGRAM_REPLAY": true,
+  "NO_PROGRAM_COLLISION": true,
+  "TOK_ROUNDTRIP": true,
+  "CONTEXT_FIT": true,
+  "TASK_NOVELTY": true,
+  "FACTOR_CODE_ROUNDTRIP": true,
+  "HASH_CODE_ROUNDTRIP": true,
+  "CODE_DOMAIN_FIT": true
+ },
+ "completion_commit": "4b4400ec",
+ "files": {
+  "episodes.jsonl": "cb57dd356dad46abbc69dde8c33a6c187010bf5c26cddc06b66118b0a869fde7",
+  "decisions.jsonl": "2ff5433249622df9d421cf8014131b3907092a943040bb7b20f46f1afffb7efa"
+ }
+}

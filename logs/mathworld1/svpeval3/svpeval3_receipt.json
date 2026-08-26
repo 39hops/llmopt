@@ -1,0 +1,162 @@
+{
+ "band": {
+  "seeds": [
+   9800,
+   9819
+  ],
+  "levels": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "law": "first-band trajectory law verbatim by import (greedy-hce, 12-decision, 60s wall); FACTOR/HASH from the qualified svpcode module"
+ },
+ "episodes": {
+  "requested": 80,
+  "accounted": 80,
+  "outcomes": {
+   "budget_exhausted": 8,
+   "solved": 72
+  },
+  "solved_by_level": {
+   "L4": 16,
+   "L5": 20,
+   "L6": 18,
+   "L7": 18
+  }
+ },
+ "decisions": {
+  "solved_episode_total": 75,
+  "primary_eligible": 69,
+  "exclusions_first_cause": {
+   "episode_budget_exhausted": 96,
+   "training_parent_overlap": 5,
+   "program_det_ambiguous": 1
+  },
+  "ambiguity_counts": {
+   "det_ambiguous": 1
+  },
+  "label_missing": 0
+ },
+ "legal_set_size": {
+  "p50": 7,
+  "p90": 9,
+  "max": 10
+ },
+ "single_sibling": 0,
+ "multi_sibling": 69,
+ "per_rule": {
+  "cancel": 50,
+  "euler": 41,
+  "expand": 55,
+  "factor": 46,
+  "i_linear_basis": 34,
+  "i_sum": 21,
+  "i_unprod": 16,
+  "together": 28,
+  "i_heurisch": 32,
+  "i_const_factor": 34,
+  "i_parts": 97,
+  "i_usub": 14,
+  "i_ansatz_exp": 4,
+  "trigsimp": 3,
+  "i_sqrt_basis": 8,
+  "i_apart": 5,
+  "i_inverse_trig": 2,
+  "i_transcend_div": 4
+ },
+ "labeled_per_rule": {
+  "i_linear_basis": 27,
+  "i_unprod": 5,
+  "i_heurisch": 27,
+  "i_usub": 2,
+  "i_sqrt_basis": 6,
+  "i_inverse_trig": 2
+ },
+ "labeled_param_kind": {
+  "none": 64,
+  "term_index": 5
+ },
+ "param_kind": {
+  "none": 381,
+  "term_index": 16,
+  "u_choice": 97
+ },
+ "has_u_choice_candidate": 48,
+ "has_term_index_candidate": 12,
+ "token_dist": {
+  "state_view": {
+   "p50": 119,
+   "p90": 245,
+   "max": 604
+  },
+  "program_view": {
+   "p50": 56,
+   "p90": 92,
+   "max": 122
+  }
+ },
+ "overlaps": {
+  "training_parent_overlap": 5,
+  "training_edge_overlap": 5
+ },
+ "coverage_riders": {
+  "labeled_tuple_covered": 69,
+  "labeled_tuple_oov": 0,
+  "decisions_all_candidates_covered": 3,
+  "decisions_with_oov_candidate": 66,
+  "candidate_oov_count": 154,
+  "candidate_total": 494
+ },
+ "collisions": 0,
+ "tok_roundtrip_fail": 0,
+ "ctx_overflow": 0,
+ "code_domain_fail": 0,
+ "factor_roundtrip_fail": 0,
+ "hash_roundtrip_fail": 0,
+ "env": {
+  "sympy": "1.14.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit"
+ },
+ "bars": {
+  "EPISODE_POPULATION": true,
+  "LABEL_IN_SET": true,
+  "COMPLETE_LEGAL_SET": true,
+  "PROGRAM_REPLAY": true,
+  "NO_PROGRAM_COLLISION": true,
+  "TOK_ROUNDTRIP": true,
+  "CONTEXT_FIT": true,
+  "TASK_NOVELTY": true,
+  "FACTOR_CODE_ROUNDTRIP": true,
+  "HASH_CODE_ROUNDTRIP": true,
+  "CODE_DOMAIN_FIT": true
+ },
+ "start": {
+  "start_commit": "4b4400ec",
+  "start_status_porcelain": "",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpeval3.py": "42100547f12b5ee1f4593be9818c4dfb93778079e020e6e329af626cb0f44631",
+   "scratch/mathworld1_svpeval.py": "4c5e5ec9f97446680c7ea962850efc34c361f87120a23c0aa0a6159b74cc3786",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld0.py": "4c130625535aa73ca10cdc368213d2d875862d324eb3796508feab5dd30c52d4",
+   "scratch/mathworld1_axfixture.py": "a1de1532c0fddc91e934d59fd371ce1dc4571dda5d537f139ed4e6c66845ade3",
+   "scratch/mathworld1_actionfinal.py": "978298d58f543a26e8a42214a455aa56ce4ad208ae246f1e9d5960334f2f8963",
+   "scratch/mathworld1_unprodsem.py": "9f6a17324ea31691fe240682b431fcc0a53af18b898c6dc73a143cc0fc5f3609",
+   "scratch/mathworld1_actionsem.py": "c79462129730328592ee2cc909fc563076afe80542dd2a745ce88ceef3e9c23b",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_srepr_export.py": "9cd1b729acd7ede732cd68ca69059b5b6d3d67ce60098bcd7734486e14b35d05",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58",
+   "llmopt/mathgen/problems.py": "9f1dcac61712696b2b7f9e65585d33d26865edf6b60f338977f09a792fe51215",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "4b4400ec",
+ "files": {
+  "episodes.jsonl": "cb57dd356dad46abbc69dde8c33a6c187010bf5c26cddc06b66118b0a869fde7",
+  "decisions.jsonl": "2ff5433249622df9d421cf8014131b3907092a943040bb7b20f46f1afffb7efa"
+ }
+}

@@ -1104,6 +1104,27 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpeval3/decisions.jsonl": {
+   "bytes": 559940,
+   "exists": true,
+   "sha256": "2ff5433249622df9d421cf8014131b3907092a943040bb7b20f46f1afffb7efa",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpeval3/episodes.jsonl": {
+   "bytes": 7448,
+   "exists": true,
+   "sha256": "cb57dd356dad46abbc69dde8c33a6c187010bf5c26cddc06b66118b0a869fde7",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpeval3_run.log": {
+   "bytes": 6185,
+   "exists": true,
+   "sha256": "fe0b6a86246d44ef6f2b97458e4563c392ffc2e5c0fb1b941714b813baadf371",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpgen/inspectable_sets.json": {
    "bytes": 18894,
    "exists": true,
