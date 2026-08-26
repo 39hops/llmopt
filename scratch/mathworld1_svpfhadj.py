@@ -98,6 +98,7 @@ def main():
          "INIT PIN")
     START = start_provenance(
         ["scratch/mathworld1_svpfhadj.py",
+         "scratch/mathworld1_svpfhbirth.py",
          "scratch/mathworld1_svpadj.py",
          "scratch/mathworld1_svpbirth.py",
          "scratch/mathworld1_svpcode.py",
@@ -181,19 +182,23 @@ def main():
     gate(n_disk == N_PRIMARY, "DISK ROWS")
 
     # 6. hard gates
+    n_t9 = n_rank_id = n_order_id = 0
     for rec in recs:
         for a in ("FACTOR", "HASH"):
             gate(all(t == 9 for t in rec[a]["T"]), f"T!=9 {a}")
+            n_t9 += len(rec[a]["T"])
             li = rec["label_index"]
             m_rank = rank_metrics(rec[a]["mean_lp"], li)
             s_rank = rank_metrics(rec[a]["sum_lp"], li)
             gate(m_rank == s_rank, f"MEAN!=SUM RANK {a}")
+            n_rank_id += 1
             # full-ordering identity incl. pessimistic ties
             mo = sorted(range(len(rec[a]["mean_lp"])),
                         key=lambda i: (-rec[a]["mean_lp"][i], i))
             so = sorted(range(len(rec[a]["sum_lp"])),
                         key=lambda i: (-rec[a]["sum_lp"][i], i))
             gate(mo == so, f"ORDER MISMATCH {a}")
+            n_order_id += 1
         for a in ARMS:
             gate(all(isinstance(x, float) for x in
                      rec[a]["mean_lp"]), "SCORE TYPE")
@@ -244,14 +249,18 @@ def main():
             "note": "descriptive bridge only; length/"
                     "token-channel law differs from F/H"},
         "gates": {
-            "T9_ALL": True, "MEAN_SUM_RANK_IDENTITY": True,
-            "FULL_ORDER_IDENTITY": True,
-            "note": "gate-enforced hard exits; receipt "
-                    "existence = pass"},
+            "T9_candidates_checked": n_t9,
+            "rank_identity_checks": n_rank_id,
+            "full_order_identity_checks": n_order_id,
+            "note": "gate-enforced hard exits; counts are the "
+                    "checks that ran"},
         "wall_s": round(time.time() - t0, 1),
         "files": {"scores.jsonl": raw_sha},
         "pins": {p: fsha(p) for p in BAND} | {
-            p: fsha(p) for p, _ in CKPTS.values()},
+            p: fsha(p) for p, _ in CKPTS.values()} | {
+            "checkpoints/svp_fh_init_s12001.pt":
+                fsha("checkpoints/svp_fh_init_s12001.pt"),
+            TRAIN_TUP_SRC: fsha(TRAIN_TUP_SRC)},
         "start": START, "completion_commit": completion_commit()}
     (OUTDIR / "svpfhadj_receipt.json").write_text(
         json.dumps(receipt, indent=1))
