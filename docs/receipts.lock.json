@@ -1104,6 +1104,27 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpldesk/anatomy.jsonl": {
+   "bytes": 167922,
+   "exists": true,
+   "sha256": "71b6610ac18d93a403bda90ee007b73bb453a5a0234922376c1c42711a646966",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpldesk/desk_receipt.json": {
+   "bytes": 22704,
+   "exists": true,
+   "sha256": "c66b0e27c110e6d979894e3997ab838257440f0edb8dd34e82a5f612ba89c91a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpldesk_run.log": {
+   "bytes": 2722,
+   "exists": true,
+   "sha256": "404242600be1b6e4b0b4fc47dd4df3a568516867355a61dc4ebbb8a11d7a4193",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svprep_design.json": {
    "bytes": 1313,
    "exists": true,

@@ -1,0 +1,197 @@
+{
+ "resolution": {
+  "vocabulary": {
+   "SCORING-LENGTH-PLAUSIBLE": "a fixed grid alpha halves the median PROGRAM-STATE top1 gap in BOTH bands",
+   "SCORING-LENGTH-INSUFFICIENT": "PROGRAM directionally ahead in all births, both bands, at EVERY grid alpha",
+   "MIXED": "otherwise"
+  },
+  "alphas_that_materially_close": [
+   0.0
+  ],
+  "program_ahead_everywhere": true,
+  "verdict": "SCORING-LENGTH-PLAUSIBLE",
+  "scope": "evaluation-normalization nuisance ONLY; training-target length/entropy remains confounded regardless of outcome"
+ },
+ "q1_gap_medians": {
+  "old": {
+   "0.0": {
+    "per_seed": [
+     8,
+     11,
+     9
+    ],
+    "median": 9
+   },
+   "0.25": {
+    "per_seed": [
+     11,
+     13,
+     13
+    ],
+    "median": 13
+   },
+   "0.5": {
+    "per_seed": [
+     13,
+     14,
+     16
+    ],
+    "median": 14
+   },
+   "0.75": {
+    "per_seed": [
+     17,
+     18,
+     18
+    ],
+    "median": 18
+   },
+   "1.0": {
+    "per_seed": [
+     20,
+     22,
+     21
+    ],
+    "median": 21
+   }
+  },
+  "new": {
+   "0.0": {
+    "per_seed": [
+     8,
+     4,
+     9
+    ],
+    "median": 8
+   },
+   "0.25": {
+    "per_seed": [
+     12,
+     6,
+     11
+    ],
+    "median": 11
+   },
+   "0.5": {
+    "per_seed": [
+     12,
+     8,
+     13
+    ],
+    "median": 12
+   },
+   "0.75": {
+    "per_seed": [
+     13,
+     10,
+     17
+    ],
+    "median": 13
+   },
+   "1.0": {
+    "per_seed": [
+     20,
+     13,
+     22
+    ],
+    "median": 20
+   }
+  }
+ },
+ "q3": {
+  "old": {
+   "r<=2": {
+    "n": 3,
+    "9001": {
+     "STATE": 3,
+     "PROGRAM": 3
+    },
+    "10001": {
+     "STATE": 3,
+     "PROGRAM": 3
+    },
+    "11001": {
+     "STATE": 3,
+     "PROGRAM": 3
+    }
+   },
+   "2<r<=4": {
+    "n": 24,
+    "9001": {
+     "STATE": 15,
+     "PROGRAM": 21
+    },
+    "10001": {
+     "STATE": 16,
+     "PROGRAM": 22
+    },
+    "11001": {
+     "STATE": 18,
+     "PROGRAM": 20
+    }
+   },
+   "r>4": {
+    "n": 45,
+    "9001": {
+     "STATE": 27,
+     "PROGRAM": 41
+    },
+    "10001": {
+     "STATE": 24,
+     "PROGRAM": 40
+    },
+    "11001": {
+     "STATE": 23,
+     "PROGRAM": 42
+    }
+   }
+  },
+  "new": {
+   "r<=2": {
+    "n": 1,
+    "9001": {
+     "STATE": 1,
+     "PROGRAM": 1
+    },
+    "10001": {
+     "STATE": 1,
+     "PROGRAM": 1
+    },
+    "11001": {
+     "STATE": 1,
+     "PROGRAM": 1
+    }
+   },
+   "2<r<=4": {
+    "n": 27,
+    "9001": {
+     "STATE": 17,
+     "PROGRAM": 24
+    },
+    "10001": {
+     "STATE": 20,
+     "PROGRAM": 21
+    },
+    "11001": {
+     "STATE": 19,
+     "PROGRAM": 24
+    }
+   },
+   "r>4": {
+    "n": 51,
+    "9001": {
+     "STATE": 36,
+     "PROGRAM": 49
+    },
+    "10001": {
+     "STATE": 35,
+     "PROGRAM": 47
+    },
+    "11001": {
+     "STATE": 30,
+     "PROGRAM": 47
+    }
+   }
+  }
+ }
+}
