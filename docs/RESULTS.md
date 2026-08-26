@@ -49692,3 +49692,107 @@ raw rows + aggregate arithmetic) before booking; receipts
 force-added small-text; after booking commit/push, census,
 STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-LENGTH-CONTROL-DESK-0: desk-only triage of the length/factorization mechanism from frozen score artifacts — fixed alpha grid, frozen strata bins, frozen resolution vocabulary and materiality criterion, all registered before any desk number is computed (2026-08-26, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-26). DESK ONLY: no model
+inference, no training, no task generation, no checkpoint load.
+Upstream frozen: REPLICATED-DIRECTION (72-decision band) and
+GENERALIZES-DIRECTION (79-decision band, deltas +25.3165/
++16.4557/+27.8481pp; labeled continuation T STATE 29/60/104 v
+PROGRAM 6/6/9). The attribution fence is unchanged and this desk
+cannot close it — it triages only the EVALUATION-NORMALIZATION
+leg; training-target length/entropy remains confounded
+regardless of outcome.
+
+INPUT LAW (full-hash pinned before analysis; desk consumes
+frozen score/metadata bytes only): svpgen/scores.jsonl
+174cdc0e... (237 rows), svpgen/inspectable_sets.json
+200f49fa... (set identities NOT redefined), the three booked
+first-band score files (66b7cead / dc0d7c24 / 1ac585a8), and
+the first-band decisions f63100a6... (labeled-rule join, text
+fields only). Bands stay SEPARATE surfaces; 72- and 79-decision
+rows are never pooled. None of the six checkpoints is read.
+
+INSTRUMENT (scratch/mathworld1_svpldesk.py, committed with this
+prereg BEFORE any desk output exists). The desk ranker restates
+the booked pessimistic law and is ENDPOINT-GATED: at alpha=1 it
+must reproduce every booked top1/rank, at alpha=0 every booked
+summed-lp rider top1/rank, across all 906 (302 decision-arm
+pairs x 3 births) blocks — any mismatch hard-exits.
+
+Q1 (length-normalization sensitivity): score_alpha =
+sum_lp / T**alpha on the FIXED grid {0, .25, .5, .75, 1} (0 =
+booked summed-lp rider, 1 = booked mean-lp primary). No
+continuous-alpha optimization; no alpha is promoted to a
+primary. Per band x birth x arm x alpha: top1, MRR, top1 flips
+v alpha=1, decisions with any rank change across the grid; plus
+the best fixed grid-alpha per cell labeled post-hoc descriptive
+upper bound only.
+
+Q2 (where does length matter): per decision — labeled T both
+views, STATE candidate T min/max/range/ratio, labeled-minus-
+best-rival T, label mean-lp and sum-lp margins over best rival,
+correctness across the alpha grid; characterized over the
+PERSISTED inspectable sets (program3_state0 n=11, program_wrong3
+n=3, state_correct3 n=42, remaining) — identities from
+inspectable_sets.json, not recomputed. Descriptive distributions
+only; no p-values, no causal language.
+
+Q3 (low-length-nuisance strata; bins frozen HERE, before any
+desk number): STATE candidate T max/min ratio bins <=2, >2-<=4,
+>4 — absolute and interpretable, not outcome-selected. If a bin
+is empty/near-empty it is reported as such and the stratum
+question STOPS there — no outcome-driven re-binning. Per viable
+stratum: STATE/PROGRAM top-1 for all three births, both bands
+separately. Descriptive; may NOT redefine any efficacy claim.
+
+Q4 (rule-family triage): labeled rule family x length anatomy,
+both bands, all cells reported with their n (tiny cells stay
+visibly tiny), attention on i_heurisch / i_linear_basis /
+i_sqrt_basis / i_unprod / i_usub. Mechanism clues, not causal
+conclusions.
+
+DESK RESOLUTION VOCABULARY (frozen NOW, with the materiality
+criterion): an alpha MATERIALLY CLOSES the gap iff the median
+over births of (PROGRAM top1 - STATE top1) at that alpha is
+<= 50% of the alpha=1 median gap, in BOTH bands at the SAME
+alpha. SCORING-LENGTH-PLAUSIBLE iff some fixed grid alpha
+materially closes. SCORING-LENGTH-INSUFFICIENT iff PROGRAM
+remains directionally ahead (top1 strictly greater) in all
+three births, both bands, at EVERY grid alpha. MIXED otherwise.
+This resolution speaks ONLY to evaluation normalization;
+SCORING-LENGTH-INSUFFICIENT does NOT establish semantic
+factorization.
+
+FUTURE CAUSAL CONTROL — DESIGN BANK ONLY (no training, no
+selection now): candidate controls to separate (A) semantic/
+compositional structure, (B) short/low-entropy supervision,
+(C) scoring-normalization nuisance — PROGRAM-PAD (canonical
+program + deterministic semantically-null filler toward STATE
+length; probes raw token burden; DISCLOSED limit: easy filler
+does not match STATE entropy) and OPAQUE-SHORT-ACTION (stable
+opaque action code at PROGRAM length; probes compact identity v
+compositional factorization; DISCLOSED limit: codebook/
+generalization). Treatment choice waits on this desk's outcome;
+banked in RIFF-LEDGER at booking.
+
+OUTPUTS: logs/mathworld1/svpldesk/{anatomy.jsonl,
+desk_receipt.json} (refuse-if-exists), all per-band/per-seed
+alpha tables + decision-level anatomy frozen in the receipt.
+
+REGISTERED PRIOR (house, on the record): the endpoint gates
+pass; PROGRAM stays directionally ahead at every grid alpha in
+both bands (the alpha=0 riders already showed direction holding
+at summed-lp), i.e. SCORING-LENGTH-INSUFFICIENT — while the gap
+narrows toward alpha=0.
+
+REFUTED-IF (instrument): any endpoint gate fails, any pin
+mismatches, or a booked number cannot be reproduced from the
+desk's own tables.
+
+FENCES. Mac; desk only; no changed efficacy denominator; no new
+inferential claim; no controller deployment; no i_usub repair;
+bands never pooled; dual audit (calculations + interpretation
+language) before booking; after booking commit/push, census,
+STOP.
+
