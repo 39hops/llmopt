@@ -2973,6 +2973,13 @@ MATH-CYBER-1 SVP-FACTOR-HASH-DESIGN-0 — materialize + qualify the THIRD untouc
 - `fsha(p) -> str`
 - `main()`
 
+### scratch/mathworld1_svpfhadj.py
+MATH-CYBER-1 SVP-FACTOR-HASH-SCORE-0 — ONE joint scoring run: the three sealed seed-12001 checkpoints (CANONICAL-340 / FACTOR / HASH) teacher-force scored on the frozen third band (69 primary decisions) under the preregistered law. Zero training, zero generation, zero sympy, zero re-enumeration; frozen candidate bytes only.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `main()`
+
 ### scratch/mathworld1_svpfhbirth.py
 MATH-CYBER-1 SVP-FACTOR-HASH-BIRTH-0 — the frozen three-arm mechanism birth: CANONICAL-340 / FACTOR-OPAQUE / HASH-OPAQUE from ONE bit-identical shared vocab-340 init (seed 12001), one target-blind batch plan, one frozen optimization law. ZERO scoring; no dependency on the third band anywhere in this file.
 

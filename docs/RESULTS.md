@@ -50925,3 +50925,119 @@ dual audit (scorer source pre-inference where practical +
 receipt/raw-rows post-run) before booking; receipts force-added
 small-text; after booking commit/push, census, STOP.
 
+## VERDICT MATH-CYBER-1-SVP-FACTOR-HASH-SCORE-0: INCONCLUSIVE by the frozen law — FACTOR 60/69 v HASH 61/69 (discordant 3 FACTOR-only / 4 HASH-only, exact McNemar p = 1.0), the two coordinate systems are not distinguished in this single realization; CANONICAL-340 bridge 62/69; all hard gates fired including full mean/sum ordering identity on both fixed-width arms (2026-08-26, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-FACTOR-HASH-SCORE-0 (scorer at
+c1fc2ab6, source-audit fixes at fead1453 — init/training pins
+into the receipt, derived gate counters, birth driver in the
+provenance set — all BEFORE any checkpoint load; the
+c1fc2ab6..fead1453 diff touches ONLY the scorer file and only
+those three surfaces, resolution law/gates/scoring path/
+anti-peeking order untouched, auditor-verified; pre-inference
+source audit returned no blockers) applying the law frozen at
+SVP-FACTOR-HASH-DESIGN-0 exactly once. One joint run (receipted scoring wall 3.4 s —
+timed from after hash verification and model loads), mechanical
+anti-peeking order held: raw rows written and
+hashed, hard gates, aggregate, verdict, receipt — all BEFORE
+any rider or per-decision inspection. Receipt
+logs/mathworld1/svpfhadj/svpfhadj_receipt.json
+(completion_commit fead1453); raw rows scores.jsonl
+480256238f1861b2b7a732710f5826c8dc309d6472e7956d76c41fd1ef72d162
+(69 rows); riders.json + inspectable_sets.json; stdout
+logs/mathworld1/svpfhadj_run.log.
+
+PRIMARY (pessimistic top-1 of 69, mean continuation logprob;
+house-recomputed independently from the raw rows, exact match):
+FACTOR 60/69, HASH 61/69; discordant 3 FACTOR-only / 4
+HASH-only; exact two-sided McNemar p = 1.0; MRR FACTOR .932 /
+HASH .940. RESOLUTION (mechanical): neither win condition holds
+=> INCONCLUSIVE. Per the frozen language this is NOT converted
+into equivalence and NOT read as "compact identity suffices" —
+that claim would need a preregistered equivalence design. The
+realization is SINGLE-REALIZATION; replications 13001/14001
+remain available under the frozen seed law, each its own GO.
+
+HARD GATES (all fired; derived counters in receipt): 69 rows on
+disk re-counted; T=9 on all 988 F/H candidate scorings (494
+candidates x 2 arms); mean/sum rank identity 138/138
+decision-arm checks; FULL candidate-ordering identity 138/138
+(fixed width makes sum equal 9 x mean up to float reduction
+order — the identity itself is what was gate-checked, and it
+held on all 138; the F/H contrast is normalization-free by
+construction, per the registered gate); every stored
+factor/hash code roundtripped; param count 19,142,016 per arm
+(gate-enforced in-run; not a receipt field — flagged for the
+next application of this instrument);
+all pins unchanged (band, three checkpoints, shared init,
+training artifact).
+
+CANONICAL BRIDGE (descriptive only; length/token-channel law
+differs; never touches the F/H verdict): top-1 62/69, MRR .947,
+summed-lp rider 62 with 0 TOP-1 flips (the full candidate
+ordering differs under mean v sum on 49/69 decisions, as
+expected off fixed width — order stability is an F/H-only
+property). Qualitatively the
+vocab-340 canonical bridge reproduces the prior canonical
+PROGRAM lineage's strength on this new untouched task sample
+(no cross-band percentage comparison implied — different
+tasks). Descriptively, all three arms land within 2 solves of
+each other (a bridge observation, carrying no inferential
+weight in the F/H adjudication).
+
+REGISTERED RIDERS (computed after the verdict froze):
+COVERAGE: all-covered n=3 — C 3 / F 3 / H 2; >=1-OOV-rival
+n=66 — C 59 / F 57 / H 59; by OOV count no monotone pattern
+(descriptive). Registered interpretation carried: this stratum
+measures ranking in legal sets containing unseen whole-action
+combinations, never unseen-correct-action selection.
+THIN-ATOM (<c:7>, FACTOR training exposure 57): touched n=43 —
+F 38 v H 36; untouched n=26 — F 22 v H 25. FACTOR is not
+differentially losing on thin-atom decisions (it is slightly
+AHEAD there and behind on untouched) — the exposure skew did
+not visibly mediate the (null) difference; stated
+descriptively, no significance claimed.
+RULE ANATOMY: the 7 discordants are i_heurisch 4 /
+i_linear_basis 2 / i_unprod 1 — spread, not concentrated. Label
+margins read SYMMETRICALLY: on the FACTOR side 6 of 7 |margins|
+< 0.22 with one large save (L7-s9800, 0.658); the HASH side
+carries two large saves of its own (L6-s9801 0.457, L7-s9812
+0.577) — 3 of 7 discordants are decisively held by one arm, not
+uniformly near-ties. Inspectable sets
+persisted with margins/coverage/thin flags; both_wrong n=5,
+both_correct n=57.
+
+REGISTERED-PRIOR ACCOUNTING: the instrument-level prior (gates
+fire, 69 rows, pins unchanged) is CORRECT; no directional F/H
+prior existed (standing record), and none was derived from
+training losses.
+
+READING (scoped, within the first-realization fence): in this
+one realization, explicit/local reusable action coordinates DID
+NOT SEPARATE from the same whole-action information behind a
+fixed invertible scrambling under the registered criterion.
+This run contains NO successor-state comparator and says
+nothing about the STATE-v-action-coordinate leg of the standing
+hypothesis; what it addresses is only the coordinate-SURFACE
+leg, and there this realization does not establish that the
+explicit compositional surface is load-bearing at this scale —
+and equally does not establish that it is not (the design has 7
+discordants of power; non-distinction is not a measured null).
+Live alternatives stated in the prereg remain live: the tiny
+observed action support (33 distinct tuples over 73,324 rows,
+booked at the coverage desk RESULTS.md#L49993) may leave
+factorization nothing to compress on this
+distribution, and token-frequency/conditional-predictability
+mediation is untested. Natural next desks (banked, not run):
+repeat at a larger action support, which separates the
+tiny-support alternative from the coordinate question; and the
+replication seeds 13001/14001 under the frozen law, each its
+own GO.
+
+FENCES. Mac/mps; single realization; zero training, zero
+checkpoint mutation, zero new band; INCONCLUSIVE never becomes
+an equivalence claim; the 69 denominator frozen; CANONICAL
+comparisons descriptive under the standing length/normalization
+attribution fence; dual audit before booking; receipts
+force-added small-text; after booking commit/push, census,
+STOP.
+

@@ -3514,3 +3514,19 @@ regime tag on every bullet is the fence.
   superseded by a 9/9 derived-counter smoke); all three
   checkpoints remain UNSCORED pending the single preregistered
   joint scoring GO. RESULTS.md#L50712
+
+- [SINGLE-SEED] [math-cyber] [mac] INCONCLUSIVE (frozen law,
+  mechanical): explicit/local action coordinates (FACTOR) did
+  not separate from the same whole-action information behind a
+  fixed invertible Feistel scrambling (HASH) on the fresh
+  69-decision band — 60/69 v 61/69, discordant 3/4, exact
+  McNemar p=1.0, MRR .932/.940 — under a normalization-free
+  fixed-width contrast (mean/sum full-ordering identity gated
+  138/138); CANONICAL-340 bridge 62/69 (descriptive); thin-atom
+  and OOV-rival riders show no visible mediation; scope: single
+  realization, never an equivalence claim, never "compact
+  identity suffices"; live alternatives — 33-tuple training
+  support may leave factorization nothing to compress, and
+  token-statistics mediation untested; next desks banked
+  (larger action support; replication seeds 13001/14001).
+  RESULTS.md#L50928
