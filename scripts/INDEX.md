@@ -2967,6 +2967,12 @@ MATH-CYBER-1 SVP-GENERALIZATION-BAND-0 — materialize + qualify the SECOND, unt
 - `fsha(p) -> str`
 - `main()`
 
+### scratch/mathworld1_svpeval3.py
+MATH-CYBER-1 SVP-FACTOR-HASH-DESIGN-0 — materialize + qualify the THIRD untouched evaluation band (seeds 9800-9819 x L4-L7, 80 episodes) under the exact first-band trajectory law, with the qualified FACTOR/HASH code bars added. Zero model inference, zero training, zero checkpoint access.
+
+- `fsha(p) -> str`
+- `main()`
+
 ### scratch/mathworld1_svpgenadj.py
 MATH-CYBER-1 SVP-GENERALIZATION-SCORE-0 — ONE joint scorer: all three paired births (9001, 10001, 11001 in that fixed order) teacher-force scored on the frozen SECOND band (79 primary decisions, seeds 9700-9719) under the byte-frozen first-band scoring law. Zero training, zero generation, zero sympy/world.
 

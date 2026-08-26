@@ -50370,3 +50370,151 @@ excluded from bands as before); dual audit before booking;
 receipt force-added small-text; after booking commit/push,
 census, STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-FACTOR-HASH-DESIGN-0: the complete mechanism experiment frozen before its band exists — three-arm birth law (CANONICAL-340 / FACTOR-OPAQUE / HASH-OPAQUE, one shared init, seed law 12001+1000k), FACTOR-v-HASH primary contrast with resolution language, riders, and the third untouched band's law + bars (2026-08-26, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-26). ZERO training, zero
+checkpoint loads under this GO; after band qualification the
+rung STOPS — the triple birth is a separate GO. Committed with
+the band producer BEFORE any seed-9800+ state is generated.
+
+FROZEN CAUSAL QUESTION: given two equally compact, equally
+long, invertibly equivalent action representations carrying the
+EXACT SAME whole-action identity, does explicitly exposing
+reusable action coordinates improve learned sibling ranking?
+FACTOR = explicit/local rule+site+parameter coordinates; HASH =
+the same information behind a fixed nonlinear invertible
+permutation. Registered wording: HASH destroys the
+explicit/local ALIGNMENT of the factors while preserving
+whole-action information exactly — never "destroys
+information/factorization".
+
+ARMS (all frozen at SVP-CODE-QUALIFY-0's encoding law, commit
+ad7df05c): CANONICAL-340 (existing canonical ActionProgram
+serialization on the vocab-340 model — a BRIDGE/CALIBRATION arm
+to the PROGRAM lineage, not an equally clean causal contrast:
+its continuation-length/token-channel law differs);
+FACTOR-OPAQUE and HASH-OPAQUE (8 code tokens + standing EOS,
+T=9 exactly, HASH(A)=P(F(A)), P the frozen 4-round Feistel).
+PRIMARY CAUSAL CONTRAST: FACTOR v HASH ONLY.
+
+BIRTH LAW (all three arms): ONE bit-identical shared vocab-340
+initialization; SEED LAW frozen now, before any outcome exists
+— mechanism realization 0: seed 12001; future replications (if
+later authorized): 13001, 14001 (the standing +1000k
+progression; repo scan clean for all three). Same 73,324 frozen
+rows (a943ba7f...), same target-blind batch plan law (row_id
+sort + epoch-string shuffle, BS 32, 3 epochs — seed-independent
+as booked), same 19M architecture/ctx 4096, same AdamW 3e-4 /
+wd .01 / OneCycle pct_start .03 / clip 1.0
+error_if_nonfinite, same continuation-only per-row-normalized
+CE with the standing EOS convention, same optimizer-update
+count, same final-epoch checkpoint law, vocab 340 and parameter
+count identical across arms. All transformation code and
+artifact hashes hard-pinned in the birth driver at its own GO.
+ARM EXECUTION ORDER (frozen): rotate by step index — step%3==0:
+CANONICAL,FACTOR,HASH; ==1: FACTOR,HASH,CANONICAL; ==2:
+HASH,CANONICAL,FACTOR; the same batch is consumed by all three
+arms before advancing; no arm-dependent batching or reseeding.
+
+PRIMARY SCORING LAW (on the third frozen band, at its own GO):
+teacher-forced frozen candidate continuations, fixed candidate
+order, pessimistic top-1 ties, MRR descriptive, exact two-sided
+McNemar, alpha .05. HARD INSTRUMENT GATE: FACTOR and HASH have
+identical T=9, so mean-logprob ranking must equal summed-lp
+ranking decision-by-decision in BOTH opaque arms — any
+disagreement is an instrument failure, never a scientific
+result.
+
+RESOLUTION LANGUAGE (frozen now): FACTOR-WIN iff FACTOR top-1 >
+HASH top-1 AND exact two-sided McNemar p < .05; HASH-WIN iff
+HASH top-1 > FACTOR top-1 AND p < .05; INCONCLUSIVE otherwise.
+INCONCLUSIVE, numerical equality, or p >= .05 is NEVER
+translated into "compact identity suffices" — that claim would
+require a separately preregistered equivalence/noninferiority
+design. The first mechanism birth is SINGLE-REALIZATION
+regardless of outcome; no "factorization replicated" language
+until the frozen +1000k replications later fire.
+
+MECHANISTIC RIDERS (registered before band generation;
+descriptive only, never denominator-altering): per-decision
+whole-action coverage against the 33-tuple training support —
+labeled tuple covered/OOV; decisions all-covered v >=1-OOV;
+candidate OOV count/fraction. Interpretation rider: FACTOR
+advantage concentrated on OOV-action cases is CONSISTENT WITH
+reusable-coordinate compositional extrapolation; FACTOR
+advantage also on all-covered cases reads as factorization
+useful inside whole-action support. Tiny strata stay
+descriptive. THIN-ATOM RIDER (outcome-independent, from the
+booked exposure census only): FACTOR min atom exposure 57 v
+HASH 46,391; if error heterogeneity later aligns with thin
+FACTOR atoms it is reported as a plausible treatment-side
+scarcity mechanism, never a denominator edit; FACTOR is NOT
+rebalanced.
+
+THIRD BAND (materialized ONCE by
+scratch/mathworld1_svpeval3.py, this commit): seed law 9800-9819
+x L4-L7 (repo-wide collision scan clean: zero s98xx identities;
+zero 12001/13001/14001 usages). Trajectory/controller/candidate
+machinery IMPORTED from the frozen first-band module (greedy-hce,
+12-decision budget, 60s wall, stable-legal-set double
+enumeration, current ActionProgram treatment, i_usub unresolved
+schema fence, text-only downstream scoring); FACTOR/HASH
+encode/decode imported from the qualified svpcode module.
+PRIMARY TASK NOVELTY: exact visible-cur exclusion against the
+training artifact AND both prior bands (f63100a6 / 89efbe0e);
+edge overlaps reported separately, never merged. Every
+enumerated candidate must additionally sit in the qualified
+code domain and FACTOR- and HASH-roundtrip exactly (SEPARATE
+per-encoding failure counters); ANY out-of-qualified-domain
+coordinate (ordinal/param > 62, OR a site_kind outside {W, I})
+is a registered instrument NO-FIRE via the band-wide
+CODE-DOMAIN-FIT bar (code_domain exclusions are first-caused
+before the primary stratum forms, so the operative gate is
+band-wide, stricter than primary-only) — the encoding is NOT
+widened after seeing the band. NOVELTY-SET SCOPE: exclusion
+sets are the FULL row populations of the training artifact and
+both prior bands (eligible and excluded rows alike), strictly
+more conservative than eligible-only. Bytes + full shas frozen
+exactly once;
+no post-inspection inclusion changes.
+
+THIRD-BAND BARS (registered before materialization):
+ 1 EPISODE-POPULATION (80/80 accounted)
+ 2 LABEL-IN-SET
+ 3 COMPLETE-LEGAL-SET (over ALL enumerated decisions)
+ 4 PROGRAM-REPLAY / transition sufficiency
+ 5 NO-PROGRAM-COLLISION
+ 6 TOK-ROUNDTRIP
+ 7 CONTEXT-FIT
+ 8 TASK-NOVELTY v training + BOTH earlier bands
+ 9 FACTOR-CODE-ROUNDTRIP
+ 10 HASH-CODE-ROUNDTRIP
+ 11 CODE-DOMAIN-FIT
+i_usub ambiguity keeps its first-cause program_* schema
+exclusion. BAR-CLASS DISCLOSURE (registered): bars 4 and 8 are
+TAUTOLOGICAL as coded (evaluated over the primary stratum whose
+membership their conditions define — the band-2 lineage shape);
+their substantive facts are adjudicated at booking by EXTERNAL
+recomputation over the full enumerated population, exactly as
+the band-2 booking did; bar 3 is non-tautological here (all
+enumerated decisions). Bars 9 and 10 carry SEPARATE
+per-encoding failure counters.
+
+REGISTERED PRIOR (house): band yield in the prior regime (~75+
+solved episodes, ~75-85 primary decisions), all 11 bars fire,
+zero code-domain/roundtrip failures (every coordinate ever
+observed is <=3 v the 62 bound), small parent-overlap
+exclusions. NO directional prior on FACTOR v HASH is registered
+— the resolution language alone will adjudicate.
+
+REFUTED-IF (instrument): any bar NO-FIREs, a seed collision
+surfaces, the band requires post-inspection inclusion changes,
+or a code overflow appears in the primary stratum.
+
+FENCES. Mac; zero training and zero checkpoint instantiation
+against the band bytes under this GO; the triple birth and its
+scoring are separate GOs; bands never pooled; dual audit (band
+producer pre-run + raw band post-run) before booking; receipts
+force-added small-text; after booking commit/push, census,
+STOP.
+
