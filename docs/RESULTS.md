@@ -49482,3 +49482,98 @@ version + its own untouched band); scoring under the frozen
 TEXT law only; dual audit before booking; receipts force-added
 small-text; after booking commit/push, census, STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-GENERALIZATION-SCORE-0: ONE joint scorer over all three paired births on the frozen second band — 237 raw rows before any aggregate, then GENERALIZES-DIRECTION applied mechanically; zero training (2026-08-26, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-26). The scientific law is
+already frozen at VERDICT MATH-CYBER-1-SVP-GENERALIZATION-BAND-0
+(band bytes 584c7acc/89efbe0e, primary n = 79, resolution
+language, riders, attribution fence); this rung implements it
+mechanically. This prereg + the scorer commit BEFORE any
+checkpoint is loaded.
+
+INSTRUMENT (scratch/mathworld1_svpgenadj.py, this commit): a NEW
+dedicated joint scorer — the booked first-band adjudication
+outputs (logs/mathworld1/svpadj*, all three) are not written,
+repurposed, or overwritten. The scoring law is the first-band
+law BY IMPORT: score_decision (frozen prompt "Current: {cur}\n
+Hints: none\nStep: ", teacher-forced frozen candidate bytes,
+STATE = child_sstr+"\n"+EOS / PROGRAM = program_text+EOS, mean
+continuation logprob primary, finite gate), rank_metrics
+(pessimistic ties), and mcnemar_exact are imported from
+scratch/mathworld1_svpadj.py — no reimplementation. STATE scored
+then PROGRAM within each decision; frozen candidate order; no
+generation/sympy/world replay anywhere in the module.
+
+INPUT PINS (full-hash gated before any model load AND re-gated
+after scoring): band episodes 584c7acc..., decisions
+89efbe0e...; six checkpoints — 9001 STATE 8e0a22f2... / PROGRAM
+d9db0049...; 10001 STATE 11855118... / PROGRAM 395dfd53...;
+11001 STATE 041b3b04... / PROGRAM 33057825....
+
+RUN SHAPE: ONE joint run, fixed birth order 9001 -> 10001 ->
+11001; one STATE+PROGRAM pair resident at a time (memory), all
+three under the SAME committed scorer and process. Raw artifact
+logs/mathworld1/svpgen/scores.jsonl (refuse-if-exists dir)
+persists ALL 237 rows (3 x 79) BEFORE any aggregate: each row
+carries birth_seed, episode_id, decision_index, cur,
+n_candidates, label_index, labeled rule/param_kind/child_sstr/
+program_text, and per-arm mean/sum score vectors, T, rank,
+top1, summed-lp riders.
+
+HARD GATES: 79 unique primary identities per birth; identical
+identity ORDER across births; 237 total rows; every candidate
+scored once per arm per birth (single batch per decision, the
+imported law); exactly one label per decision; all logprobs
+finite; all six checkpoint hashes AND both band hashes
+unchanged post-score.
+
+AGGREGATES (only after rows are on disk), per birth: STATE
+top-1/79, PROGRAM top-1/79, delta_pp, STATE-only/PROGRAM-only
+discordants, exact McNemar p (RIDER), MRR both arms, summed-lp
+top-1 + mean-v-sum flip anatomy. Then the frozen law verbatim:
+GENERALIZES-DIRECTION iff PROGRAM top-1 > STATE top-1 for 9001
+AND 10001 AND 11001; any tie or reversal blocks; per-pair p<.05
+NOT required. Report delta_9001/delta_10001/delta_11001, median,
+range. The 237 rows are never pooled as independent; old-band
+and new-band magnitudes are never combined into a fake n.
+
+LENGTH-SEMANTICS CLARIFICATION (pre-inference, non-mutating):
+the svpeval2 receipt's state_seq_tokens/program_seq_tokens
+INCLUDE the shared prompt — its labeled p50 84/58 are full
+scoring-sequence lengths, not continuation-target lengths. Those
+descriptive values stand; the registered target-length rider is
+derived here directly from frozen bytes: STATE T =
+len(TOK.encode(child_sstr+"\n"))+1, PROGRAM T =
+len(TOK.encode(program_text))+1. No inclusion/exclusion changes.
+
+MECHANISM RIDERS (descriptive only, never altering the verdict;
+all registered at the band prereg): labeled rule family;
+labeled param_kind; u_choice-candidate present/absent; true
+continuation-target T distributions; per-decision candidate-T
+min/max spread; mean-lp v sum-lp top-1 flip counts; per-decision
+cross-birth correctness vectors; and PERSISTED inspectable
+records (logs/mathworld1/svpgen/inspectable_sets.json) for
+{PROGRAM correct 3/3 & STATE wrong 3/3}, {PROGRAM wrong 3/3},
+{STATE correct 3/3} — parent/action records as mathematical
+objects, not counts.
+
+ATTRIBUTION FENCE (verbatim carry): the current experiment
+cannot separate semantic factorization from shorter/
+lower-entropy targets, reduced length-normalization nuisance, or
+their combination; the 3.63x training continuation-token
+asymmetry remains a competing mechanism.
+
+REGISTERED PRIOR (house): standing no-directional-prior record
+carries — the frozen resolution language alone adjudicates.
+Instrument-level: all gates fire, 237 rows land, pins unchanged.
+
+REFUTED-IF (instrument level): any hard gate fails, row count or
+identity order drifts, any pin mutates, or an aggregate cannot
+be reproduced from the raw rows.
+
+FENCES. Mac/mps; zero training, zero band rematerialization, no
+i_usub repair; the scorer source is audited BEFORE inference;
+dual audit (237 raw rows + all aggregate arithmetic) before
+booking; receipts force-added small-text; after booking
+commit/push, process census, STOP.
+
