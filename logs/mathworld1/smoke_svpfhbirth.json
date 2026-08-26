@@ -1,0 +1,65 @@
+{
+ "mode": "smoke",
+ "seed": 12001,
+ "vocab": 340,
+ "n_params": 19142016,
+ "init_sha": "e21be542c998ccb63021f1241faecd46c322448a4ee25750dbbe8608af7aabe0",
+ "plan_sha": "4c0441b7858349230a5d0791517712008d3b61670491dfcde8204a0a139d6f54",
+ "steps": 2,
+ "losses": {
+  "CANONICAL": [
+   6.174844264984131,
+   3.9210450649261475
+  ],
+  "FACTOR": [
+   5.951104164123535,
+   3.5974555015563965
+  ],
+  "HASH": [
+   6.013355731964111,
+   4.611547470092773
+  ]
+ },
+ "tokens_padded": {
+  "CANONICAL": 7200,
+  "FACTOR": 7296,
+  "HASH": 7296
+ },
+ "tokens_continuation": {
+  "CANONICAL": 393,
+  "FACTOR": 576,
+  "HASH": 576
+ },
+ "order_counts": {
+  "0": 1,
+  "1": 1,
+  "2": 0
+ },
+ "bars": {
+  "INIT_BITWISE_ALL_ARMS": true,
+  "VOCAB_340": true,
+  "PARAM_EQUAL": true,
+  "PLAN_SHA_MATCH": true,
+  "FH_T9_INVERSE": true,
+  "ROTATION_EXERCISED": true,
+  "FINITE": true,
+  "STEP_LOCKSTEP": true,
+  "NO_PRODUCTION_PATHS": true
+ },
+ "wall_s": 3.8,
+ "start": {
+  "start_commit": "7df2d021",
+  "start_status_porcelain": " M docs/receipts.lock.json\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpfhbirth.py": "a1f53d01eda8599fcf714683fdae11b799a696f32d3b9fb5f4bc1bfec9dddcce",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "7df2d021"
+}

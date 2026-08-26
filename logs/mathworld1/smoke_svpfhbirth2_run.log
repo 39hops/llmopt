@@ -1,0 +1,16 @@
+/Users/artin/code/llmopt/scratch/mathworld1_svpbirth.py:238: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:839.)
+  gate(math.isfinite(float(loss)), "NON-FINITE LOSS")
+[svpfh:smoke] step 0/3 C=6.1748 F=5.9511 H=6.0134
+[svpfh:smoke] step 2/3 C=2.5863 F=2.5074 H=3.7048
+{
+ "INIT_BITWISE_ALL_ARMS": true,
+ "VOCAB_340": true,
+ "PARAM_EQUAL": true,
+ "PLAN_SHA_MATCH": true,
+ "FH_T9_INVERSE": true,
+ "ROTATION_EXERCISED": true,
+ "FINITE": true,
+ "STEP_LOCKSTEP": true,
+ "NO_PRODUCTION_PATHS": true
+}

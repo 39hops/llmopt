@@ -1,0 +1,40 @@
+/Users/artin/code/llmopt/scratch/mathworld1_svpbirth.py:238: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:839.)
+  gate(math.isfinite(float(loss)), "NON-FINITE LOSS")
+[svpfh:prod] step 0/6876 C=6.1748 F=5.9511 H=6.0134
+[svpfh:prod] step 200/6876 C=0.1398 F=0.1241 H=0.1479
+[svpfh:prod] step 400/6876 C=0.0672 F=0.0581 H=0.0509
+[svpfh:prod] step 600/6876 C=0.0845 F=0.0814 H=0.0682
+[svpfh:prod] step 800/6876 C=0.0570 F=0.0449 H=0.0553
+[svpfh:prod] step 1000/6876 C=0.0523 F=0.0527 H=0.0395
+[svpfh:prod] step 1200/6876 C=0.0787 F=0.0531 H=0.0596
+[svpfh:prod] step 1400/6876 C=0.0465 F=0.0507 H=0.0468
+[svpfh:prod] step 1600/6876 C=0.0643 F=0.0553 H=0.0720
+[svpfh:prod] step 1800/6876 C=0.0438 F=0.0460 H=0.0461
+[svpfh:prod] step 2000/6876 C=0.0486 F=0.0487 H=0.0651
+[svpfh:prod] step 2200/6876 C=0.0778 F=0.0645 H=0.0621
+[svpfh:prod] step 2400/6876 C=0.0442 F=0.0179 H=0.0476
+[svpfh:prod] step 2600/6876 C=0.0327 F=0.0222 H=0.0226
+[svpfh:prod] step 2800/6876 C=0.0306 F=0.0143 H=0.0244
+[svpfh:prod] step 3000/6876 C=0.0297 F=0.0245 H=0.0232
+[svpfh:prod] step 3200/6876 C=0.0272 F=0.0253 H=0.0174
+[svpfh:prod] step 3400/6876 C=0.0590 F=0.0470 H=0.0323
+[svpfh:prod] step 3600/6876 C=0.0276 F=0.0201 H=0.0279
+[svpfh:prod] step 3800/6876 C=0.0446 F=0.0253 H=0.0307
+[svpfh:prod] step 4000/6876 C=0.0152 F=0.0168 H=0.0090
+[svpfh:prod] step 4200/6876 C=0.0400 F=0.0236 H=0.0224
+[svpfh:prod] step 4400/6876 C=0.0194 F=0.0125 H=0.0090
+[svpfh:prod] step 4600/6876 C=0.0262 F=0.0211 H=0.0251
+[svpfh:prod] step 4800/6876 C=0.0171 F=0.0113 H=0.0164
+[svpfh:prod] step 5000/6876 C=0.0234 F=0.0171 H=0.0130
+[svpfh:prod] step 5200/6876 C=0.0166 F=0.0225 H=0.0168
+[svpfh:prod] step 5400/6876 C=0.0203 F=0.0132 H=0.0223
+[svpfh:prod] step 5600/6876 C=0.0128 F=0.0177 H=0.0128
+[svpfh:prod] step 5800/6876 C=0.0155 F=0.0158 H=0.0178
+[svpfh:prod] step 6000/6876 C=0.0054 F=0.0037 H=0.0036
+[svpfh:prod] step 6200/6876 C=0.0150 F=0.0150 H=0.0286
+[svpfh:prod] step 6400/6876 C=0.0070 F=0.0075 H=0.0058
+[svpfh:prod] step 6600/6876 C=0.0034 F=0.0058 H=0.0027
+[svpfh:prod] step 6800/6876 C=0.0508 F=0.0177 H=0.0174
+[svpfh:prod] step 6875/6876 C=0.0031 F=0.0014 H=0.0012
+[svpfh] DONE
