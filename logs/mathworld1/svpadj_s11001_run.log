@@ -1,0 +1,58 @@
+{
+ "n_primary": 72,
+ "seed": 11001,
+ "checkpoints": {
+  "STATE": "checkpoints/svp_state_s11001.pt",
+  "PROGRAM": "checkpoints/svp_program_s11001.pt"
+ },
+ "device": "mps",
+ "exec_order_note": "per decision STATE scored first, then PROGRAM; candidate order = frozen band order",
+ "primary": {
+  "STATE_top1": 44,
+  "PROGRAM_top1": 65,
+  "discordant_state_only": 0,
+  "discordant_program_only": 21,
+  "mcnemar_exact_two_sided_p": 9.5367431640625e-07,
+  "alpha": 0.05,
+  "verdict": "PROMOTE-PROGRAM"
+ },
+ "riders": {
+  "MRR": {
+   "STATE": 0.7205357142857143,
+   "PROGRAM": 0.9414351851851852
+  },
+  "summed_lp_top1": {
+   "STATE": 55,
+   "PROGRAM": 64,
+   "discordant": [
+    1,
+    10
+   ]
+  },
+  "stratum_u_choice_present": {
+   "n": 55,
+   "STATE_top1": 36,
+   "PROGRAM_top1": 51
+  },
+  "stratum_u_choice_absent": {
+   "n": 17,
+   "STATE_top1": 8,
+   "PROGRAM_top1": 14
+  },
+  "stratum_term_index_present": {
+   "n": 3,
+   "STATE_top1": 1,
+   "PROGRAM_top1": 2
+  },
+  "stratum_labeled_term_index": {
+   "n": 2,
+   "STATE_top1": 1,
+   "PROGRAM_top1": 2
+  }
+ },
+ "wall_s": 5.1,
+ "files": {
+  "scores.jsonl": "1ac585a822349cf37e3f264accecc6041193b19fa083f6f7023d369b8c0eaf3f"
+ },
+ "completion_commit": "468f19da"
+}

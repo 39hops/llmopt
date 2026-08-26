@@ -1,0 +1,77 @@
+{
+ "n_primary": 72,
+ "seed": 10001,
+ "checkpoints": {
+  "STATE": "checkpoints/svp_state_s10001.pt",
+  "PROGRAM": "checkpoints/svp_program_s10001.pt"
+ },
+ "device": "mps",
+ "exec_order_note": "per decision STATE scored first, then PROGRAM; candidate order = frozen band order",
+ "primary": {
+  "STATE_top1": 43,
+  "PROGRAM_top1": 65,
+  "discordant_state_only": 0,
+  "discordant_program_only": 22,
+  "mcnemar_exact_two_sided_p": 4.76837158203125e-07,
+  "alpha": 0.05,
+  "verdict": "PROMOTE-PROGRAM"
+ },
+ "riders": {
+  "MRR": {
+   "STATE": 0.7146494708994708,
+   "PROGRAM": 0.9414351851851852
+  },
+  "summed_lp_top1": {
+   "STATE": 55,
+   "PROGRAM": 66,
+   "discordant": [
+    0,
+    11
+   ]
+  },
+  "stratum_u_choice_present": {
+   "n": 55,
+   "STATE_top1": 35,
+   "PROGRAM_top1": 53
+  },
+  "stratum_u_choice_absent": {
+   "n": 17,
+   "STATE_top1": 8,
+   "PROGRAM_top1": 12
+  },
+  "stratum_term_index_present": {
+   "n": 3,
+   "STATE_top1": 1,
+   "PROGRAM_top1": 1
+  },
+  "stratum_labeled_term_index": {
+   "n": 2,
+   "STATE_top1": 1,
+   "PROGRAM_top1": 1
+  }
+ },
+ "wall_s": 5.1,
+ "files": {
+  "scores.jsonl": "dc0d7c24ba210bec268c776c92f19eb1db193a83d8f8efd6d250d0cc53f32212"
+ },
+ "pins": {
+  "checkpoints/svp_state_s10001.pt": "118551181a3f8904da0b6e6da9ef123a2038b83a90d585cb3d535739a3a3f686",
+  "checkpoints/svp_program_s10001.pt": "395dfd535d4c446c3372baa8ea33ed2eef6f703c3c36db971559019ab4e199a9",
+  "logs/mathworld1/svpeval/episodes.jsonl": "cb90ff0f6d655cfe5dc20f091da0597b1bb0e23a4d0c23355a997e8849c61dd8",
+  "logs/mathworld1/svpeval/decisions.jsonl": "f63100a62f3091d544750d679483009a473261c587f3165241406a86253858c6"
+ },
+ "start": {
+  "start_commit": "468f19da",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpadj.py": "2598d258d74b0d5d604104a3a495c6e2471c41cbf656a8935a2d9180a6d22209",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "468f19da"
+}
