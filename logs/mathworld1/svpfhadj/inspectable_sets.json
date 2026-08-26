@@ -1,0 +1,1214 @@
+{
+ "factor_correct_hash_wrong": [
+  {
+   "episode_id": "L4-s9802",
+   "decision_index": 0,
+   "cur": "Integral((8*x + 6*cos(3*x) + 6)*exp(2*x**2 + 3*x + sin(3*x) + 1) + 180*exp(12*x + 4), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    0,
+    "term_index",
+    1
+   ],
+   "candidate_tuples": [
+    [
+     "cancel",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "expand",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "factor",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_heurisch",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "together",
+     "W",
+     -1,
+     "none",
+     -1
+    ]
+   ],
+   "oov_rivals": 3,
+   "n_candidates": 8,
+   "thin_atom": true,
+   "FACTOR_label_margin": 0.024171,
+   "HASH_label_margin": -0.032598
+  },
+  {
+   "episode_id": "L4-s9807",
+   "decision_index": 0,
+   "cur": "Integral(-12*x*(3*x**2 - 2)*sin(2*x*(x**2 - 2)) + 6*cos(2*x*(x**2 - 2)), x)",
+   "labeled_tuple": [
+    "i_linear_basis",
+    "I",
+    0,
+    "none",
+    -1
+   ],
+   "candidate_tuples": [
+    [
+     "cancel",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "expand",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "factor",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_linear_basis",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "together",
+     "W",
+     -1,
+     "none",
+     -1
+    ]
+   ],
+   "oov_rivals": 3,
+   "n_candidates": 8,
+   "thin_atom": true,
+   "FACTOR_label_margin": 0.002577,
+   "HASH_label_margin": -0.051677
+  },
+  {
+   "episode_id": "L7-s9800",
+   "decision_index": 0,
+   "cur": "Integral(3*sqrt(x + 2), x)",
+   "labeled_tuple": [
+    "i_heurisch",
+    "I",
+    0,
+    "none",
+    -1
+   ],
+   "candidate_tuples": [
+    [
+     "i_const_factor",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_heurisch",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     0
+    ],
+    [
+     "i_sqrt_basis",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_usub",
+     "I",
+     0,
+     "none",
+     -1
+    ]
+   ],
+   "oov_rivals": 0,
+   "n_candidates": 5,
+   "thin_atom": true,
+   "FACTOR_label_margin": 0.658343,
+   "HASH_label_margin": -0.029622
+  }
+ ],
+ "hash_correct_factor_wrong": [
+  {
+   "episode_id": "L5-s9813",
+   "decision_index": 0,
+   "cur": "Integral(sqrt(6)*(60*x**2 + 12*x + 8)/sqrt(x), x)",
+   "labeled_tuple": [
+    "i_heurisch",
+    "I",
+    0,
+    "none",
+    -1
+   ],
+   "candidate_tuples": [
+    [
+     "cancel",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "expand",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "factor",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_const_factor",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_heurisch",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     0
+    ],
+    [
+     "i_sqrt_basis",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "together",
+     "W",
+     -1,
+     "none",
+     -1
+    ]
+   ],
+   "oov_rivals": 2,
+   "n_candidates": 9,
+   "thin_atom": true,
+   "FACTOR_label_margin": -0.179109,
+   "HASH_label_margin": 0.165894
+  },
+  {
+   "episode_id": "L6-s9800",
+   "decision_index": 0,
+   "cur": "Integral((7*x**4 + 14*x**3 + 55*x**2 + 16*x + 32)/(x**4 + 2*x**3 + 7*x**2 + 6*x + 9), x)",
+   "labeled_tuple": [
+    "i_heurisch",
+    "I",
+    0,
+    "none",
+    -1
+   ],
+   "candidate_tuples": [
+    [
+     "expand",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "factor",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_apart",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_heurisch",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     0
+    ]
+   ],
+   "oov_rivals": 2,
+   "n_candidates": 6,
+   "thin_atom": false,
+   "FACTOR_label_margin": -0.069702,
+   "HASH_label_margin": 0.192457
+  },
+  {
+   "episode_id": "L6-s9801",
+   "decision_index": 0,
+   "cur": "Integral((10*x**3 + 30*x**2 + 23*x + 1)/(2*(x**3 + 3*x**2 + 3*x + 1)), x)",
+   "labeled_tuple": [
+    "i_heurisch",
+    "I",
+    0,
+    "none",
+    -1
+   ],
+   "candidate_tuples": [
+    [
+     "cancel",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "expand",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "factor",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_apart",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_const_factor",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_heurisch",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     0
+    ]
+   ],
+   "oov_rivals": 3,
+   "n_candidates": 8,
+   "thin_atom": false,
+   "FACTOR_label_margin": -0.21493,
+   "HASH_label_margin": 0.457353
+  },
+  {
+   "episode_id": "L7-s9812",
+   "decision_index": 0,
+   "cur": "Integral(2*((2*x + 3)*log(2*x + 3) + 2*(x**2 + 1)*atan(x))/((2*x + 3)*(x**2 + 1)), x)",
+   "labeled_tuple": [
+    "i_linear_basis",
+    "I",
+    0,
+    "none",
+    -1
+   ],
+   "candidate_tuples": [
+    [
+     "cancel",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "expand",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "factor",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_const_factor",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_linear_basis",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     2
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     0
+    ]
+   ],
+   "oov_rivals": 3,
+   "n_candidates": 8,
+   "thin_atom": false,
+   "FACTOR_label_margin": -0.093974,
+   "HASH_label_margin": 0.577111
+  }
+ ],
+ "both_wrong": [
+  {
+   "episode_id": "L4-s9801",
+   "decision_index": 0,
+   "cur": "Integral(-80*x*(3*x**2 + 1)*sin(4*x*(x**2 + 1)) + 20*cos(4*x*(x**2 + 1)), x)",
+   "labeled_tuple": [
+    "i_linear_basis",
+    "I",
+    0,
+    "none",
+    -1
+   ],
+   "candidate_tuples": [
+    [
+     "cancel",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "expand",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "factor",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_linear_basis",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "together",
+     "W",
+     -1,
+     "none",
+     -1
+    ]
+   ],
+   "oov_rivals": 3,
+   "n_candidates": 8,
+   "thin_atom": true,
+   "FACTOR_label_margin": -0.051255,
+   "HASH_label_margin": -0.504811
+  },
+  {
+   "episode_id": "L4-s9812",
+   "decision_index": 0,
+   "cur": "Integral(160*x**2*exp(4*x**2) + 4*(27*x**2 - 6)*cos(3*x**3 - 2*x + 2) + 20*exp(4*x**2), x)",
+   "labeled_tuple": [
+    "i_linear_basis",
+    "I",
+    0,
+    "none",
+    -1
+   ],
+   "candidate_tuples": [
+    [
+     "cancel",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "expand",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "factor",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_linear_basis",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     2
+    ],
+    [
+     "together",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "trigsimp",
+     "W",
+     -1,
+     "none",
+     -1
+    ]
+   ],
+   "oov_rivals": 4,
+   "n_candidates": 10,
+   "thin_atom": true,
+   "FACTOR_label_margin": -0.200802,
+   "HASH_label_margin": -0.352954
+  },
+  {
+   "episode_id": "L5-s9819",
+   "decision_index": 0,
+   "cur": "Integral(9*sqrt(2)*(14*x**3 + 8*x**2 - 9*x + 1)/(2*sqrt(3*x + 2)), x)",
+   "labeled_tuple": [
+    "i_sqrt_basis",
+    "I",
+    0,
+    "none",
+    -1
+   ],
+   "candidate_tuples": [
+    [
+     "cancel",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "expand",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_const_factor",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_heurisch",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     0
+    ],
+    [
+     "i_sqrt_basis",
+     "I",
+     0,
+     "none",
+     -1
+    ]
+   ],
+   "oov_rivals": 1,
+   "n_candidates": 7,
+   "thin_atom": true,
+   "FACTOR_label_margin": -0.771888,
+   "HASH_label_margin": -0.108204
+  },
+  {
+   "episode_id": "L6-s9814",
+   "decision_index": 0,
+   "cur": "Integral((x**4 - 4*x**3 + 5*x**2 - 4*x + 6)/(x**4 - 4*x**3 + 8*x**2 - 8*x + 4), x)",
+   "labeled_tuple": [
+    "i_heurisch",
+    "I",
+    0,
+    "none",
+    -1
+   ],
+   "candidate_tuples": [
+    [
+     "expand",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "factor",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_apart",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_heurisch",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     1
+    ],
+    [
+     "i_parts",
+     "I",
+     0,
+     "u_choice",
+     0
+    ]
+   ],
+   "oov_rivals": 2,
+   "n_candidates": 6,
+   "thin_atom": false,
+   "FACTOR_label_margin": -0.149102,
+   "HASH_label_margin": -0.302914
+  },
+  {
+   "episode_id": "L7-s9814",
+   "decision_index": 0,
+   "cur": "Integral(21*x**2*log(x)**2 + 14*x**2*log(x) + (-16*x - 6)*sin(x*(4*x + 3)) + 12*cos(2*x)*cos(sin(2*x)), x)",
+   "labeled_tuple": [
+    "i_heurisch",
+    "I",
+    0,
+    "none",
+    -1
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "expand",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_heurisch",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     0
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "together",
+     "W",
+     -1,
+     "none",
+     -1
+    ]
+   ],
+   "oov_rivals": 1,
+   "n_candidates": 7,
+   "thin_atom": true,
+   "FACTOR_label_margin": -0.274531,
+   "HASH_label_margin": -0.480442
+  }
+ ],
+ "both_correct_n": 57,
+ "cfh_vectors": {
+  "L4-s9801:0": [
+   0,
+   0,
+   0
+  ],
+  "L4-s9802:0": [
+   1,
+   1,
+   0
+  ],
+  "L4-s9802:1": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9803:0": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9804:0": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9806:0": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9807:0": [
+   0,
+   1,
+   0
+  ],
+  "L4-s9808:0": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9808:1": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9809:0": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9810:0": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9811:0": [
+   0,
+   1,
+   1
+  ],
+  "L4-s9812:0": [
+   0,
+   0,
+   0
+  ],
+  "L4-s9813:0": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9814:0": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9815:0": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9815:1": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9818:0": [
+   1,
+   1,
+   1
+  ],
+  "L4-s9819:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9800:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9802:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9803:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9804:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9805:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9806:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9807:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9809:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9810:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9811:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9812:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9813:0": [
+   0,
+   0,
+   1
+  ],
+  "L5-s9814:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9818:0": [
+   1,
+   1,
+   1
+  ],
+  "L5-s9819:0": [
+   0,
+   0,
+   0
+  ],
+  "L6-s9800:0": [
+   1,
+   0,
+   1
+  ],
+  "L6-s9801:0": [
+   1,
+   0,
+   1
+  ],
+  "L6-s9802:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9803:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9804:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9805:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9806:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9807:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9808:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9809:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9810:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9811:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9812:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9814:0": [
+   1,
+   0,
+   0
+  ],
+  "L6-s9815:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9816:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9817:0": [
+   1,
+   1,
+   1
+  ],
+  "L6-s9818:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9800:0": [
+   1,
+   1,
+   0
+  ],
+  "L7-s9801:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9804:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9805:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9806:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9807:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9808:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9809:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9810:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9811:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9812:0": [
+   1,
+   0,
+   1
+  ],
+  "L7-s9813:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9814:0": [
+   0,
+   0,
+   0
+  ],
+  "L7-s9816:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9817:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9818:0": [
+   1,
+   1,
+   1
+  ],
+  "L7-s9819:0": [
+   1,
+   1,
+   1
+  ]
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "primary": {
+  "FACTOR_top1": 60,
+  "HASH_top1": 61,
+  "discordant_factor_only": 3,
+  "discordant_hash_only": 4,
+  "mcnemar_exact_two_sided_p": 1.0,
+  "alpha": 0.05,
+  "verdict": "INCONCLUSIVE",
+  "MRR": {
+   "FACTOR": 0.932367149758454,
+   "HASH": 0.9396135265700483
+  }
+ },
+ "canonical_bridge": {
+  "top1": 62,
+  "MRR": 0.9468599033816425,
+  "summed_lp_top1_rider": 62,
+  "mean_v_sum_flips": 0,
+  "note": "descriptive bridge only; length/token-channel law differs from F/H"
+ }
+}
+{
+ "riders": {
+  "coverage": {
+   "n": 3,
+   "CANONICAL_top1": 3,
+   "FACTOR_top1": 3,
+   "HASH_top1": 2
+  },
+  "ge1_oov": {
+   "n": 66,
+   "CANONICAL_top1": 59,
+   "FACTOR_top1": 57,
+   "HASH_top1": 59
+  },
+  "thin": {
+   "atom": "<c:7>",
+   "touched": {
+    "n": 43,
+    "CANONICAL_top1": 36,
+    "FACTOR_top1": 38,
+    "HASH_top1": 36
+   },
+   "untouched": {
+    "n": 26,
+    "CANONICAL_top1": 26,
+    "FACTOR_top1": 22,
+    "HASH_top1": 25
+   }
+  }
+ },
+ "inspectable_sizes": {
+  "factor_correct_hash_wrong": 3,
+  "hash_correct_factor_wrong": 4,
+  "both_wrong": 5,
+  "both_correct_n": 57
+ }
+}

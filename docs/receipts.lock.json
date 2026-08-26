@@ -1132,6 +1132,20 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpfhadj/svpfhadj_receipt.json": {
+   "bytes": 2744,
+   "exists": true,
+   "sha256": "76c2a729967fc5a9185222a9c11867f669e6eec71989cbc729cf5e35f47413c5",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpfhadj_run.log": {
+   "bytes": 1080,
+   "exists": true,
+   "sha256": "c720cd457f5b4b2d2542bd3af1efb06237b128d1e223f0eac915855d755129c5",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpfhbirth_s12001_run.log": {
    "bytes": 2365,
    "exists": true,

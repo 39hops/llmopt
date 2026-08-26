@@ -1,0 +1,165 @@
+{
+ "coverage": {
+  "all_covered": {
+   "n": 3,
+   "CANONICAL_top1": 3,
+   "FACTOR_top1": 3,
+   "HASH_top1": 2
+  },
+  "ge1_oov_rival": {
+   "n": 66,
+   "CANONICAL_top1": 59,
+   "FACTOR_top1": 57,
+   "HASH_top1": 59
+  },
+  "by_oov_count": {
+   "0": {
+    "n": 3,
+    "CANONICAL_top1": 3,
+    "FACTOR_top1": 3,
+    "HASH_top1": 2
+   },
+   "1": {
+    "n": 14,
+    "CANONICAL_top1": 12,
+    "FACTOR_top1": 12,
+    "HASH_top1": 12
+   },
+   "2": {
+    "n": 19,
+    "CANONICAL_top1": 18,
+    "FACTOR_top1": 16,
+    "HASH_top1": 18
+   },
+   "3": {
+    "n": 31,
+    "CANONICAL_top1": 28,
+    "FACTOR_top1": 28,
+    "HASH_top1": 28
+   },
+   "4": {
+    "n": 1,
+    "CANONICAL_top1": 0,
+    "FACTOR_top1": 0,
+    "HASH_top1": 0
+   },
+   "5": {
+    "n": 1,
+    "CANONICAL_top1": 1,
+    "FACTOR_top1": 1,
+    "HASH_top1": 1
+   }
+  }
+ },
+ "thin_atom": {
+  "atom": "<c:7>",
+  "touched": {
+   "n": 43,
+   "CANONICAL_top1": 36,
+   "FACTOR_top1": 38,
+   "HASH_top1": 36
+  },
+  "untouched": {
+   "n": 26,
+   "CANONICAL_top1": 26,
+   "FACTOR_top1": 22,
+   "HASH_top1": 25
+  }
+ },
+ "labeled_rule": {
+  "i_heurisch": {
+   "n": 27,
+   "CANONICAL_top1": 25,
+   "FACTOR_top1": 22,
+   "HASH_top1": 24
+  },
+  "i_inverse_trig": {
+   "n": 2,
+   "CANONICAL_top1": 2,
+   "FACTOR_top1": 2,
+   "HASH_top1": 2
+  },
+  "i_linear_basis": {
+   "n": 27,
+   "CANONICAL_top1": 24,
+   "FACTOR_top1": 24,
+   "HASH_top1": 24
+  },
+  "i_sqrt_basis": {
+   "n": 6,
+   "CANONICAL_top1": 5,
+   "FACTOR_top1": 5,
+   "HASH_top1": 5
+  },
+  "i_unprod": {
+   "n": 5,
+   "CANONICAL_top1": 4,
+   "FACTOR_top1": 5,
+   "HASH_top1": 4
+  },
+  "i_usub": {
+   "n": 2,
+   "CANONICAL_top1": 2,
+   "FACTOR_top1": 2,
+   "HASH_top1": 2
+  }
+ },
+ "labeled_param_kind": {
+  "none": {
+   "n": 64,
+   "CANONICAL_top1": 58,
+   "FACTOR_top1": 55,
+   "HASH_top1": 57
+  },
+  "term_index": {
+   "n": 5,
+   "CANONICAL_top1": 4,
+   "FACTOR_top1": 5,
+   "HASH_top1": 4
+  }
+ },
+ "legal_set_size": {
+  "4": {
+   "n": 4,
+   "CANONICAL_top1": 4,
+   "FACTOR_top1": 4,
+   "HASH_top1": 4
+  },
+  "5": {
+   "n": 5,
+   "CANONICAL_top1": 5,
+   "FACTOR_top1": 5,
+   "HASH_top1": 4
+  },
+  "6": {
+   "n": 9,
+   "CANONICAL_top1": 9,
+   "FACTOR_top1": 7,
+   "HASH_top1": 8
+  },
+  "7": {
+   "n": 21,
+   "CANONICAL_top1": 19,
+   "FACTOR_top1": 19,
+   "HASH_top1": 19
+  },
+  "8": {
+   "n": 20,
+   "CANONICAL_top1": 17,
+   "FACTOR_top1": 17,
+   "HASH_top1": 17
+  },
+  "9": {
+   "n": 8,
+   "CANONICAL_top1": 7,
+   "FACTOR_top1": 7,
+   "HASH_top1": 8
+  },
+  "10": {
+   "n": 2,
+   "CANONICAL_top1": 1,
+   "FACTOR_top1": 1,
+   "HASH_top1": 1
+  }
+ }
+}
