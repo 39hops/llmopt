@@ -1,0 +1,113 @@
+{
+ "alphabet": [
+  "<c:0>",
+  "<c:1>",
+  "<c:2>",
+  "<c:3>",
+  "<c:4>",
+  "<c:5>",
+  "<c:6>",
+  "<c:7>"
+ ],
+ "width": 8,
+ "eos_law": "payload + standing model EOS; T = 9 for every action, both opaque arms",
+ "vocab": {
+  "base": 332,
+  "code_atoms": 8,
+  "total": 340
+ },
+ "domain": {
+  "rules": 36,
+  "kinds": 2,
+  "ordinal": [
+   -1,
+   62
+  ],
+  "param_kinds": 3,
+  "param_index": [
+   -1,
+   62
+  ],
+  "scoped_not_proven": true,
+  "overflow_law": "hard-exit NO-FIRE"
+ },
+ "bars": {
+  "FACTOR_INJECTIVE": true,
+  "HASH_BIJECTIVE": true,
+  "ZERO_F_COLLISIONS": true,
+  "ZERO_H_COLLISIONS": true,
+  "ROUNDTRIP_EXACT": true,
+  "SAME_WIDTH_ALPHABET": true,
+  "ALL_OBSERVED_ENCODE_DECODE": true,
+  "note": "all gate-enforced hard exits; receipt existence = pass"
+ },
+ "domain_enumeration_size": 884736,
+ "observed_actions": {
+  "train": 73324,
+  "old": 567,
+  "new": 621
+ },
+ "exposure_train": {
+  "FACTOR": {
+   "per_atom": {
+    "<c:0>": 303480,
+    "<c:1>": 177859,
+    "<c:2>": 64192,
+    "<c:3>": 4721,
+    "<c:4>": 11627,
+    "<c:5>": 21497,
+    "<c:6>": 3159,
+    "<c:7>": 57
+   },
+   "zero_exposure_atoms": 0,
+   "min_nonzero": 57,
+   "p10": 57,
+   "median": 21497,
+   "max": 303480
+  },
+  "HASH": {
+   "per_atom": {
+    "<c:0>": 110491,
+    "<c:1>": 73801,
+    "<c:2>": 68498,
+    "<c:3>": 46391,
+    "<c:4>": 61978,
+    "<c:5>": 90843,
+    "<c:6>": 50935,
+    "<c:7>": 83655
+   },
+   "zero_exposure_atoms": 0,
+   "min_nonzero": 46391,
+   "p10": 46391,
+   "median": 73801,
+   "max": 110491
+  }
+ },
+ "pricing": {
+  "T_per_action": 9,
+  "continuation_tokens_per_epoch": 659916,
+  "continuation_tokens_3_epochs": 1979748,
+  "canonical_program_3_epochs": 1341459,
+  "state_3_epochs": 4871751,
+  "ratio_v_canonical_program": 1.4758,
+  "ratio_v_state": 2.4608
+ },
+ "rank_identity_registration": "fixed width => mean-lp ranking == summed-lp ranking per decision in both opaque arms; any disagreement is an instrument bug (hard gate in the future scorer)",
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpeval/decisions.jsonl": "f63100a62f3091d544750d679483009a473261c587f3165241406a86253858c6",
+  "logs/mathworld1/svpeval2/decisions.jsonl": "89efbe0ea447ee937c0c130d5419112921a2dd6c2159c6c2112cfd5e92f79315"
+ },
+ "start": {
+  "start_commit": "ad7df05c",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "ad7df05c"
+}
