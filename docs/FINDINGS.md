@@ -3318,7 +3318,9 @@ regime tag on every bullet is the fence.
   float-fragile), at 3.63x fewer target tokens from identical
   init/data/optimizer exposure; direction+significance are
   within-realization — magnitude unreplicated pending n>=3 paired
-  births; scope fences: this-mixture treatment claim only,
+  births (RESOLVED 2026-08-26: direction REPLICATED in all three
+  paired births, see the REPLICATED bullet at RESULTS.md#L49071);
+  scope fences: this-mixture treatment claim only,
   u_choice measured as distractor behavior, sibling ranking not
   solve-rate. RESULTS.md#L48429
 
@@ -3368,3 +3370,17 @@ regime tag on every bullet is the fence.
   stay unscored pending the scoring GO under the frozen
   72-decision law and the preregistered n=3 resolution.
   RESULTS.md#L48911
+
+- [REPLICATED] [math-cyber] [mac] REPLICATED-DIRECTION: the
+  ActionProgram-over-state advantage holds in all three
+  independent paired births under one frozen artifact, batch
+  plan, eval band, and byte-frozen scoring law — PROGRAM top-1
+  65/72 in every realization v STATE 45/43/44 (deltas +27.8 /
+  +30.6 / +29.2pp, median +29.2), zero STATE-only discordants in
+  any pair, per-pair exact McNemar p 1.9e-06 / 4.8e-07 / 9.5e-07
+  (p<.05 not required by the frozen law); cross-birth rider:
+  PROGRAM correct in all 3 births on 63/72 decisions v STATE
+  38/72, and on 15/72 PROGRAM is right in all three while STATE
+  is right in none; magnitude descriptive at n=3, 216 repeated
+  decisions never pooled, band/mixture/not-solve-rate and 3.63x
+  token-asymmetry fences carry. RESULTS.md#L49071

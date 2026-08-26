@@ -2891,6 +2891,7 @@ MATH-CYBER-1 fresh-substrate desk (no model loaded, no vocab shipped): price a G
 ### scratch/mathworld1_svpadj.py
 MATH-CYBER-1 SVP-ADJUDICATION-0 — mechanical scoring of the completed STATE and PROGRAM births on the frozen 72-decision primary band under the SVP-DESIGN-0 law. Zero training, zero generation, zero world/sympy anywhere: frozen candidate BYTES are teacher-force scored, nothing else.
 
+- `protect_9001_adj()` — The booked seed-9001 adjudication artifacts stay
 - `fsha(p) -> str`
 - `mcnemar_exact(b, c)` — Exact two-sided binomial McNemar. b = only-A-correct,
 - `score_decision(model, dev, cur, conts)` — Teacher-force one decision: one batch, all candidates.

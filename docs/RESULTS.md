@@ -49068,3 +49068,136 @@ repair, no new eval band, no controller deployment; dual audit
 parameterization diff for scoring-law drift) before booking;
 after booking commit/push, process census, STOP.
 
+## VERDICT MATH-CYBER-1-SVP-REPLICATION-SCORE-0: REPLICATED-DIRECTION — PROGRAM top-1 beats STATE top-1 in ALL THREE paired births (9001: 65v45; 10001: 65v43; 11001: 65v44 of 72), median delta +29.2pp, range +27.8 to +30.6pp; both replication envelopes opened under one committed scorer (2026-08-26, Mac)
+
+Per AMENDMENT MATH-CYBER-1-SVP-ADJUDICATION-0-REPSEED (scorer
+parameterized + committed at 8a817923, audit fixes at 468f19da,
+BEFORE either envelope opened; diff audited for scoring-law
+drift — every scoring/ranking/statistical hunk byte-identical
+to the booked seed-9001 scorer; independently reproducible as
+`git diff 928d95a5 468f19da -- scratch/mathworld1_svpadj.py`,
+which touches only seed selection, checkpoint mapping, OUTDIR,
+the arm-mapping gate, and protect_9001_adj) and the resolution
+law frozen at PRE-REG
+MATH-CYBER-1-SVP-REPLICATION-DESIGN-0 before any replication
+weight existed. Receipts logs/mathworld1/svpadj_s10001/ and
+svpadj_s11001/ (scores.jsonl persisted before aggregates, each;
+completion_commit 468f19da both).
+
+PER-SEED PRIMARY (pessimistic top-1 of 72; house-recomputed
+from the raw scores.jsonl rows independently of the receipts,
+exact match):
+  seed 9001  (immutable booked): STATE 45/72, PROGRAM 65/72,
+    delta +27.8pp, discordant 0 STATE-only / 20 PROGRAM-only,
+    exact McNemar p = 1.9e-06 (SVP-ADJUDICATION-0).
+  seed 10001: STATE 43/72, PROGRAM 65/72, delta +30.6pp,
+    discordant 0/22, exact McNemar p = 4.77e-07,
+    scorer verdict PROMOTE-PROGRAM.
+  seed 11001: STATE 44/72, PROGRAM 65/72, delta +29.2pp,
+    discordant 0/21, exact McNemar p = 9.54e-07,
+    scorer verdict PROMOTE-PROGRAM.
+
+N=3 RESOLUTION (frozen language, applied mechanically):
+PROGRAM top-1 > STATE top-1 in seeds 9001 AND 10001 AND 11001 —
+no tie, no reversal => REPLICATED-DIRECTION. Magnitude
+(descriptive at n=3, per the frozen law): delta_9001 +27.8pp,
+delta_10001 +30.6pp, delta_11001 +29.2pp; median +29.2pp, range
++27.8 to +30.6pp. Per-seed p<.05 was NOT required by the law;
+all three pairs individually clear it anyway. The 216 repeated
+decisions are NOT pooled as independent observations. Pair-level
+exact sign-test rider: 3/3 same direction, two-sided p = 0.25
+(the registered floor — underpowered by construction, rider
+only).
+
+RIDERS (each seed; never overriding primary): MRR 10001
+STATE .715 / PROGRAM .941; 11001 STATE .721 / PROGRAM .941
+(9001 was .726/.948). Summed-lp top-1 10001 55/66 (discordant
+0/11), 11001 55/64 (discordant 1/10) — same direction as
+primary. Strata (10001): u_choice-present n=55 STATE 35 /
+PROGRAM 53, u_choice-absent n=17 8/12, term_index-present n=3
+1/1, labeled-term_index n=2 1/1. Strata (11001):
+u_choice-present n=55 STATE 36 / PROGRAM 51, u_choice-absent
+n=17 8/14, term_index-present n=3 1/2, labeled-term_index n=2
+1/2. PER-DECISION CROSS-BIRTH
+CONSISTENCY (descriptive rider, decisions aligned by
+episode_id/decision_index across all three births): PROGRAM
+correct in all 3 births on 63/72 decisions (0-of-3 on 5, 1-of-3
+on 2, 2-of-3 on 2); STATE correct in all 3 on 38/72 (0-of-3 on
+23, 1-of-3 on 4, 2-of-3 on 7); on 15/72 decisions PROGRAM is
+correct in ALL three births while STATE is correct in NONE.
+
+INSTRUMENT ACCOUNTING: both runs completed all gates (72/72
+rows, finite logprobs, pin + post-run pin checks); the frozen
+eval band (cb90ff0f/f63100a6) and both REPLICATION checkpoint
+pairs gate-verified by full sha before load (the seed-9001 pair
+was gate-verified at its own booking; here its adjudication
+artifacts, not its weights, are what these runs touch-test);
+per-pair birth compute accounting lives in the three birth
+verdicts (token dicts bit-identical across pairs); the booked
+seed-9001
+adjudication artifacts full-hash-protected before and after
+each replication scoring (receipt pin b35b4177...,
+scores.jsonl sha re-asserted) — byte-unchanged. Wall ~5 s per
+seed. Raw score files: svpadj_s10001/scores.jsonl dc0d7c24...,
+svpadj_s11001/scores.jsonl 1ac585a8....
+
+DISCLOSURES (adopted): the REPSEED amendment prose described the
+9001-adjudication protection as asserting the booked 45/65
+counts; the audit-fix commit 468f19da replaced that with a
+STRICTLY STRONGER full-file sha gate on the receipt (b35b4177...)
+— shipped behavior as described here, amendment prose stale on
+that clause. Both scoring receipts record start porcelain
+" M scripts/INDEX.md" — a hook-regenerated one-line docstring
+index entry for the new protect function, committed with this
+booking; no instrument file was dirty. The ADJUDICATION-0
+disclosures carry: single-mps-realization logprobs, right-padding
+safety verified by reading, scorer stdout teed to
+svpadj_s10001_run.log / svpadj_s11001_run.log (no refuse guard
+on log paths; the logs are the receipt echo, no independent
+stdout witness for seed/device — the pins carry the evidence).
+The scorer is results-cited and was edited IN PLACE (the
+extend-don't-fork rule): the seed-9001 scoring bytes stay
+recoverable by sha bb9e18af... + start_commit 928d95a5 pinned
+in its own receipt, not by the current working tree. The
+9001-v-replication comparison spans the 928d95a5..468f19da code
+boundary; the receipt auditor re-derived the seed-9001
+aggregates from its frozen rows under the CURRENT code path and
+got exact agreement — the law is unchanged across the boundary.
+
+REGISTERED-PRIOR ACCOUNTING: no directional or magnitude prior
+was ever registered for the replication outcomes (standing
+no-prior-supplied record) — the direction result is adjudicated
+by the frozen resolution language alone, not against a house
+prediction.
+
+READING (scoped): the causal STATE-v-PROGRAM finding REPLICATES
+in direction across three independent paired initializations
+under one frozen artifact, one seed-independent batch plan, one
+frozen eval band, and one byte-frozen scoring law: representing
+the SAME 73,324 transitions as canonical action PROGRAMS rather
+than raw successor STATES yields higher decision top-1 in every
+realization, with PROGRAM's absolute top-1 identical (65/72) in
+all three and zero STATE-only discordants in any. Magnitude
+stays descriptive at n=3. Scope fences carry from
+ADJUDICATION-0: one world/tokenizer/architecture; the
+72-decision band with its registered exclusions (4
+i_usub-schema + 6 training-parent) and the u_choice
+distribution-shift constraint; the result supports the
+canonical ActionProgram treatment AT THIS param_kind MIXTURE,
+not a broad i_parts.u_choice-target claim; it measures sibling
+ranking of the frozen chosen action, not globally optimal
+action value and not solve-rate; PROGRAM consumed 3.63x fewer
+continuation-target tokens per birth (equal rows/steps, compute
+reported never equalized);
+cross-birth consistency shows the failure set is largely the
+same decisions each time (band-limited, not realization noise).
+Next (each its own GO): controller deployment of the PROGRAM
+head; I-USUB-SEMANTICS-DESK stays banked behind experiment.
+
+FENCES. Mac/mps; zero training, zero checkpoint mutation, no
+i_usub repair, no new eval band, no controller deployment under
+this GO; text-only scoring (no sympy/world/generation); the 216
+decisions never pooled; dual audit (parameterization diff
+pre-run + raw score sets and n=3 arithmetic pre-booking); after
+booking commit/push, process census, STOP.
+
