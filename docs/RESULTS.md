@@ -50636,3 +50636,76 @@ HELD post-run: zero s98xx identities outside this band's own
 artifacts, zero 12001/13001/14001 usages. After booking
 commit/push, census, STOP.
 
+## AMENDMENT MATH-CYBER-1-SVP-FACTOR-HASH-BIRTH-0: the three-arm birth driver is registered with two interpretation clarifications adopted from review — tokenwise-statistics-as-treatment and the OOV-rival rider rewording; instrument plumbing only, zero training in this commit (2026-08-26, Mac)
+
+Target: PRE-REG MATH-CYBER-1-SVP-FACTOR-HASH-DESIGN-0
+(4b4400ec). Per outside GO (GPT via Artin, 2026-08-26,
+FACTOR-HASH-BIRTH-0): training only; ZERO scoring against the
+third band; the birth driver carries NO dependency on the
+svpeval3 bytes at all.
+
+INTERPRETATION CLARIFICATIONS (adopted, no redesign):
+1. FACTOR and HASH do NOT have identical target-token exposure
+   DISTRIBUTIONS (FACTOR min atom 57 v HASH 46,391). Their
+   fixed common properties are whole-action information, fixed
+   width, alphabet, vocab/parameter count, rows, batch/update
+   law, EOS/T. The differing tokenwise/autoregressive
+   statistics induced by explicit alignment v Feistel
+   scrambling are PART OF THE TREATMENT — a later HASH-WIN must
+   NOT be auto-read as "factorization is harmful" without
+   addressing token-frequency/conditional-predictability
+   mediation.
+2. Third-band coverage (labeled OOV 0/69, >=1-OOV-rival 66/69)
+   means the band does NOT directly test selection of an unseen
+   correct whole-action tuple. The rider reads: FACTOR-v-HASH
+   heterogeneity on the 66/69 stratum measures generalization
+   in legal sets CONTAINING unseen whole-action combinations —
+   it does not demonstrate selection of an OOV correct action.
+No denominator or resolution change.
+
+DRIVER (scratch/mathworld1_svpfhbirth.py, this commit): law by
+IMPORT — batch_plan/make_opt/train_step/gate from the frozen
+svpbirth driver (the -HARDEN finite/clip/scheduler laws travel
+inside train_step); factor/hash encode+decode from the
+qualified svpcode module. Vocab-340 model in all arms (code
+atoms = ids 332..339; CANONICAL never emits them). ONE shared
+init: checkpoints/svp_fh_init_s12001.pt, double-build
+determinism gate at creation, sha re-gated at load, and every
+arm's loaded state_dict gate-compared TENSOR-BITWISE to the
+init; parameter counts gate-equal. Per-row target gates: tuple
+in-domain, factor/hash exact semantic inverse, len(F)=len(H)=9
+including EOS. Batch plan: the seed-independent SVP-DESIGN-0
+law, gate-asserted == 4c0441b7... (no target-dependent
+sorting/bucketing). Per-step: rotation table exactly as
+preregistered, same batch consumed by all three arms before
+advancing, each arm its OWN AdamW+OneCycle, scheduler step
+counts gate-equal across arms after EVERY batch. Production
+completion gates (per-arm 6,876 losses, all finite, scheduler
+terminal) fire BEFORE any checkpoint write. Per-seed
+refuse-if-exists production paths
+(checkpoints/svp_fh_{canonical,factor,hash}_s12001.pt +
+receipt); smoke writes ONLY
+logs/mathworld1/smoke_svpfhbirth.json and gates that no
+production path exists.
+
+REQUALIFICATION (frozen): a 2-step MPS smoke through the exact
+production run() path — bars: init bitwise across arms, vocab
+340, param equality, plan sha, C/F/H construction with T=9 +
+inverse, rotation exercised, finite losses/grads, per-batch
+optimizer lockstep, no production paths written. Smoke is
+audited BEFORE the production launch; smoke observations are
+never production observations.
+
+REGISTERED PRIOR (house): smoke bars all fire; production
+completes 6,876 lockstep steps per arm with CANONICAL
+continuation-token exposure differing from fixed-width F/H
+(reported honestly; raw CE magnitudes are never compared across
+representations as efficacy — target distributions differ).
+
+FENCES. Mac/mps; failure of any arm mid-production preserves
+the failed receipt and STOPS for adjudication (no per-arm
+restart, no checkpoint stitching); zero scoring, zero
+exploratory top-1s, no svpeval3 dependency; dual audit (smoke
+pre-launch; receipt post-run) before booking; after booking
+commit/push, census, STOP.
+
