@@ -3481,3 +3481,21 @@ regime tag on every bullet is the fence.
   program target tokens / 2.461x under STATE; three-arm birth
   designed with deterministic order rotation and frozen freeze
   order, nothing launched. RESULTS.md#L50229
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The FACTOR-v-HASH
+  mechanism experiment is fully armed under a strict freeze
+  order: three-arm birth law (CANONICAL-340/FACTOR/HASH, one
+  shared init, seed law 12001+1000k, deterministic order
+  rotation), FACTOR-WIN/HASH-WIN/INCONCLUSIVE resolution
+  language (with the registered prohibition on reading
+  INCONCLUSIVE as "compact identity suffices"), coverage and
+  thin-atom riders all frozen at 4b4400ec BEFORE the third
+  untouched band existed; the band then qualified with all 11
+  bars (69 primary of 75 decisions from seeds 9800-9819, zero
+  training/band1/band2 parent overlap, the single exclusion the
+  known two-child i_usub residue, zero FACTOR/HASH roundtrip or
+  domain failures over all 531 candidates, labeled tuples 69/69
+  training-covered with 66/69 decisions carrying OOV
+  candidates); yield ran below the registered regime (69 v
+  ~75-85, booked); no trained model has touched the bytes;
+  triple birth is the next separate GO. RESULTS.md#L50521

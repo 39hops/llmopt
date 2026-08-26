@@ -50518,3 +50518,121 @@ producer pre-run + raw band post-run) before booking; receipts
 force-added small-text; after booking commit/push, census,
 STOP.
 
+## VERDICT MATH-CYBER-1-SVP-FACTOR-HASH-DESIGN-0: the third untouched band QUALIFIES — all 11 registered bars fire, 69 primary decisions from seeds 9800-9819 (72/80 episodes solved), zero training/band1/band2 parent overlap in the denominator, every candidate FACTOR- and HASH-roundtrips inside the qualified domain with zero failures; the complete mechanism-birth law and resolution language were frozen BEFORE these bytes existed (2026-08-26, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-FACTOR-HASH-DESIGN-0 (committed
+with the band producer at 4b4400ec BEFORE materialization; the
+pre-commit design/source audit's fixes — split per-encoding
+roundtrip counters, widened domain NO-FIRE wording, novelty-set
+scope clause, restored param_kind census — landed in that
+commit). Zero training; zero checkpoint instantiated against
+these bytes. Receipt logs/mathworld1/svpeval3/
+svpeval3_receipt.json (completion_commit 4b4400ec); stdout
+logs/mathworld1/svpeval3_run.log.
+
+FROZEN BYTES (the record; no trained model has touched them):
+logs/mathworld1/svpeval3/episodes.jsonl cb57dd356dad46abbc69dde8c33a6c187010bf5c26cddc06b66118b0a869fde7
+logs/mathworld1/svpeval3/decisions.jsonl 2ff5433249622df9d421cf8014131b3907092a943040bb7b20f46f1afffb7efa
+
+BAR ADJUDICATION (all 11 FIRE):
+ 1 EPISODE-POPULATION: 80/80 accounted — 72 solved, 8
+    budget_exhausted (zero wall caps); solved by level L4 16 /
+    L5 20 / L6 18 / L7 18.
+ 2 LABEL-IN-SET: label_missing 0.
+ 3 COMPLETE-LEGAL-SET: zero legal_set_unstable over ALL 75
+    enumerated solved-episode decisions (non-tautological form,
+    the band-3 strengthening).
+ 4 PROGRAM-REPLAY: exactly 1 program_* row in the full 75
+    (first-caused, excluded) — independently re-derived at
+    booking as the KNOWN single-site TWO-CHILD i_usub residue
+    (i_usub emits 2 accepted children on
+    Integral(6*cos(2*x)*cos(sin(2*x)), x); same class as bands
+    1 and 2; i_usub NOT repaired, per the frozen treatment).
+ 5 NO-PROGRAM-COLLISION: 0.
+ 6 TOK-ROUNDTRIP: 0 failures.
+ 7 CONTEXT-FIT: 0 overflows (max scoring string 604 of ctx
+    4096).
+ 8 TASK-NOVELTY: 0/69 primary cur in the training population,
+    band 1, or band 2 (externally recomputed over the full
+    populations at booking, per the registered tautological-bar
+    disclosure; 5 training-parent overlaps excluded
+    first-cause; zero band1/band2 overlaps occurred at all).
+ 9 FACTOR-CODE-ROUNDTRIP: 0 failures (separate counter).
+ 10 HASH-CODE-ROUNDTRIP: 0 failures (separate counter).
+ 11 CODE-DOMAIN-FIT: 0 out-of-domain coordinates band-wide —
+    band-wide = all 531 enumerated candidates across the 75
+    solved-episode decisions (unsolved-episode decisions are
+    episode-first excluded and never enumerated; bars 3 and 11
+    share this scope); max observed ordinal 0 / param_index 4
+    v the 62 bound; both encodings invert exactly on every
+    stored code.
+
+DENOMINATOR: 75 solved-episode decisions -> 69 PRIMARY
+(exclusions first-cause: 1 program_det_ambiguous i_usub
+residue, 5 training_parent_overlap). Unsolved episodes carried
+96 decisions (all budget), accounted episode-first.
+Reported-never-merged: training edge overlap 5; band1/band2
+parent AND edge overlaps all 0.
+
+ANATOMY (registered fields): legal-set p50 7 / p90 9 / max 10;
+single-sibling 0 / multi 69; labeled rules i_linear_basis 27 /
+i_heurisch 27 / i_sqrt_basis 6 / i_unprod 5 / i_usub 2 /
+i_inverse_trig 2; labeled param_kind none 64 / term_index 5 /
+u_choice 0 (the u_choice distribution shift RECURS: 48/69
+decisions carry u_choice candidates, 0 labeled; candidate
+param_kind none 381 / u_choice 97 / term_index 16); token
+lengths STATE p50 119 / p90 245 / max 604, PROGRAM p50 56 /
+p90 92 / max 122.
+
+COVERAGE RIDERS (registered pre-generation; the mechanism
+experiment's strata): labeled whole-action tuple covered 69/69
+(labeled OOV 0 — unlike band 2 there is no OOV-labeled
+decision); decisions with all candidates covered 3, with >=1
+OOV candidate 66; candidate OOV 154/494 (31.2% — the same
+regime as bands 1-2). The OOV-concentration rider therefore has
+a large stratum (66) and a tiny all-covered stratum (3, stays
+visibly tiny and descriptive).
+
+RECEIPT-AUDIT DISCLOSURES (adopted): rows first-caused inside
+the candidate loop serialize their PARTIAL candidate list with
+no truncation flag — the one program_det_ambiguous row
+(L7-s9815:0) carries 5 enumerated candidates of a larger legal
+set, so whole-file candidate statistics (531) differ from the
+primary stratum (494); every receipt statistic is computed over
+the primary stratum only (auditor-verified). The 725-corpus
+overlap rider of the band-2 producer is intentionally absent —
+the registered novelty sets are training + both prior bands
+exactly. The receipt's band.seeds [9800, 9819] is an endpoint
+pair; episodes.jsonl carries all 20 seeds.
+exclusions_first_cause mixes the 96 unsolved-episode decision
+count (never written as rows) with per-decision classes — the
+75-row denominator closes as 75 = 69 + 1 + 5.
+
+REGISTERED-PRIOR ACCOUNTING: CORRECT on bars/codes (all 11
+fire, zero code failures, small parent overlap); the yield ran
+BELOW the predicted regime (69 primary v predicted ~75-85; 72
+solved v ~75+) — prior partially wrong on yield, stated. No
+directional FACTOR-v-HASH prior exists (standing record).
+
+READING (scoped): the mechanism experiment is fully armed under
+the registered freeze order — encoding law (SVP-CODE-QUALIFY-0)
+-> birth/scoring/resolution prereg + third-band law (4b4400ec)
+-> band bytes (this booking) — with the band materialized ONCE
+and never seen by any trained model. Next separate GO: the
+triple-arm birth (CANONICAL-340 / FACTOR / HASH, seed 12001,
+shared init, rotation law), then scoring under the frozen
+FACTOR-v-HASH resolution language. NOTHING blocks that birth at
+the instrument level.
+
+FENCES. Mac; zero training and zero checkpoint loads under this
+GO; the 69 denominator is FROZEN — no post-inspection inclusion
+changes; i_usub stays unrepaired; encoding never widened
+against band contents; bands never pooled; dual audit before
+booking; receipts force-added small-text (decisions.jsonl
+carries srepr + code companions — same class as, and smaller
+than, the band-2 file already force-added (560 KB v 653 KB),
+the why recorded here). The registered seed-collision scan
+HELD post-run: zero s98xx identities outside this band's own
+artifacts, zero 12001/13001/14001 usages. After booking
+commit/push, census, STOP.
+
