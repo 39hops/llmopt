@@ -1,0 +1,128 @@
+[svpgen] birth 9001: 79 decisions scored
+[svpgen] birth 10001: 79 decisions scored
+[svpgen] birth 11001: 79 decisions scored
+{
+ "n_primary": 79,
+ "n_rows": 237,
+ "birth_order": [
+  9001,
+  10001,
+  11001
+ ],
+ "device": "mps",
+ "primary": {
+  "9001": {
+   "STATE_top1": 54,
+   "PROGRAM_top1": 74,
+   "delta_pp": 25.3165,
+   "discordant_state_only": 0,
+   "discordant_program_only": 20,
+   "mcnemar_exact_two_sided_p_rider": 1.9073486328125e-06,
+   "MRR": {
+    "STATE": 0.7863170584689573,
+    "PROGRAM": 0.9620253164556962
+   },
+   "summed_lp_top1": {
+    "STATE": 63,
+    "PROGRAM": 71,
+    "discordant": [
+     3,
+     11
+    ]
+   },
+   "mean_v_sum_top1_flips": {
+    "STATE": 9,
+    "PROGRAM": 5
+   }
+  },
+  "10001": {
+   "STATE_top1": 56,
+   "PROGRAM_top1": 69,
+   "delta_pp": 16.4557,
+   "discordant_state_only": 3,
+   "discordant_program_only": 16,
+   "mcnemar_exact_two_sided_p_rider": 0.004425048828125,
+   "MRR": {
+    "STATE": 0.8046769686010192,
+    "PROGRAM": 0.9300783604581073
+   },
+   "summed_lp_top1": {
+    "STATE": 65,
+    "PROGRAM": 69,
+    "discordant": [
+     5,
+     9
+    ]
+   },
+   "mean_v_sum_top1_flips": {
+    "STATE": 9,
+    "PROGRAM": 4
+   }
+  },
+  "11001": {
+   "STATE_top1": 50,
+   "PROGRAM_top1": 72,
+   "delta_pp": 27.8481,
+   "discordant_state_only": 0,
+   "discordant_program_only": 22,
+   "mcnemar_exact_two_sided_p_rider": 4.76837158203125e-07,
+   "MRR": {
+    "STATE": 0.7576154857800428,
+    "PROGRAM": 0.9451476793248946
+   },
+   "summed_lp_top1": {
+    "STATE": 61,
+    "PROGRAM": 70,
+    "discordant": [
+     2,
+     11
+    ]
+   },
+   "mean_v_sum_top1_flips": {
+    "STATE": 11,
+    "PROGRAM": 4
+   }
+  }
+ },
+ "resolution": {
+  "law": "GENERALIZES-DIRECTION iff PROGRAM top1 > STATE top1 in all three births; tie or reversal blocks; per-pair p<.05 not required (rider only)",
+  "verdict": "GENERALIZES-DIRECTION",
+  "deltas_pp": {
+   "9001": 25.3165,
+   "10001": 16.4557,
+   "11001": 27.8481
+  },
+  "median_delta_pp": 25.3165,
+  "range_delta_pp": [
+   16.4557,
+   27.8481
+  ]
+ },
+ "wall_s": 18.9,
+ "files": {
+  "scores.jsonl": "174cdc0eceb3599ac8808a68f1cab9d45efde4ba96361b74c8caf474d91abbfd",
+  "inspectable_sets.json": "200f49fa471758e070499c8f9af6d38e33c2ee52f6ccaf0385cedca86833b9e7"
+ },
+ "completion_commit": "1b575bf4"
+}
+{
+ "resolution": {
+  "law": "GENERALIZES-DIRECTION iff PROGRAM top1 > STATE top1 in all three births; tie or reversal blocks; per-pair p<.05 not required (rider only)",
+  "verdict": "GENERALIZES-DIRECTION",
+  "deltas_pp": {
+   "9001": 25.3165,
+   "10001": 16.4557,
+   "11001": 27.8481
+  },
+  "median_delta_pp": 25.3165,
+  "range_delta_pp": [
+   16.4557,
+   27.8481
+  ]
+ },
+ "inspectable_set_sizes": {
+  "program3_state0": 11,
+  "program_wrong3": 3,
+  "state_correct3": 42
+ }
+}

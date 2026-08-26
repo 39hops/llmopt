@@ -1,0 +1,512 @@
+{
+ "program3_state0": [
+  {
+   "episode_id": "L4-s9704",
+   "decision_index": 0,
+   "cur": "Integral(6*(-8*x + 7*sin(7*x) - 1)*sin(4*x**2 + x + cos(7*x) + 5), x)",
+   "labeled_rule": "i_usub",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "Subs(Integral(-6*sin(u_), u_), u_, 4*x**2 + x + cos(7*x) + 5)",
+   "labeled_program_text": "<r:i_usub> I0\n"
+  },
+  {
+   "episode_id": "L4-s9710",
+   "decision_index": 0,
+   "cur": "Integral(9*((8*x + 1)*sin(x) + cos(x))*exp(4*x**2 + x + 1), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "9*E*exp(x)*exp(4*x**2)*sin(x)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L4-s9716",
+   "decision_index": 0,
+   "cur": "Integral((32 - 80*exp(9*x - 3))*exp(4 - 4*x), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "-8*exp(4 - 4*x) - 16*exp(6)*exp(5*x - 5)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L5-s9705",
+   "decision_index": 0,
+   "cur": "Integral((162*x**5 - 3*x**3 - 18*x)/sqrt(2*x**3 - x), x)",
+   "labeled_rule": "i_sqrt_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "sqrt(2*x**3 - x)*(18*x**3 + 12*x)",
+   "labeled_program_text": "<r:i_sqrt_basis> I0\n"
+  },
+  {
+   "episode_id": "L6-s9707",
+   "decision_index": 0,
+   "cur": "Integral((3*x**4 - 6*x**3 + 7*x**2 - 4*x + 4)/(x**4 - 2*x**3 + 3*x**2 - 2*x + 1), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "3*x + (2*x - 1)/(x**2 - x + 1)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L6-s9708",
+   "decision_index": 0,
+   "cur": "Integral((4*x**4 - 8*x**3 + 12*x**2 - 6*x + 3)/(2*(x**4 - 2*x**3 + 3*x**2 - 2*x + 1)), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "2*x - 1/(2*x**2 - 2*x + 2)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L6-s9710",
+   "decision_index": 0,
+   "cur": "Integral(((9*x**2 + 1)*((30*x - 5)*exp(3*x**2 - x + 1) + 18*exp(2*x)*sin(x) + 9*exp(2*x)*cos(x) + 2) + 27)/(9*x**2 + 1), x)",
+   "labeled_rule": "i_transcend_div",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "Integral((30*E*x - 5*E)*exp(-x)*exp(3*x**2) + 18*exp(2*x)*sin(x) + 9*exp(2*x)*cos(x) + 2 + 27/(9*x**2 + 1), x)",
+   "labeled_program_text": "<r:i_transcend_div> I0\n"
+  },
+  {
+   "episode_id": "L6-s9712",
+   "decision_index": 0,
+   "cur": "Integral(3*(16*x**4 - 8*x**3 + 3*x**2 - 14*x + 4)/(16*x**4 - 8*x**3 + 9*x**2 - 2*x + 1), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "3*x + (9*x + 9)/(8*x**2 - 2*x + 2)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L6-s9719",
+   "decision_index": 0,
+   "cur": "Integral(2*(30*x**4 + 15*x**3 + 43*x**2 - 3*x + 18)/(16*x**4 + 8*x**3 + 25*x**2 + 6*x + 9), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "15*x/4 + (31*x + 57)/(64*x**2 + 16*x + 48)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L7-s9700",
+   "decision_index": 1,
+   "cur": "Integral((20 - 20*x)*sin(2*x**2 - 4*x) + 1/(x + 4), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "log(x + 4) + 5*cos(2*x**2 - 4*x)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L7-s9701",
+   "decision_index": 0,
+   "cur": "Integral(6*(2*x + 1)*cos(log(2*x*(x + 1)))/(x*(x + 1)), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "6*sin(log(x**2 + x) + log(2))",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  }
+ ],
+ "program_wrong3": [
+  {
+   "episode_id": "L6-s9702",
+   "decision_index": 0,
+   "cur": "Integral(sqrt(2)*(45*x**2/2 + sqrt(6*x + 2)*(30*x*sqrt(6*x + 2) + 2*(5*x + 2)*cos(5*x**2 + 4*x + 2))/2 + 45/2)/sqrt(3*x + 1), x)",
+   "labeled_rule": "trigsimp",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "Integral(sqrt(2)*(45*x**2/2 + sqrt(6*x + 2)*(30*x*sqrt(6*x + 2) + (10*x + 4)*cos(5*x**2 + 4*x + 2))/2 + 45/2)/sqrt(3*x + 1), x)",
+   "labeled_program_text": "<r:trigsimp>\n"
+  },
+  {
+   "episode_id": "L6-s9709",
+   "decision_index": 0,
+   "cur": "Integral(4*x*cos(x**2 - 3*x + 1) - 6*cos(x**2 - 3*x + 1) + 2 + 15/sqrt(1 - 9*x**2), x)",
+   "labeled_rule": "together",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "Integral((4*x*sqrt(1 - 9*x**2)*cos(x**2 - 3*x + 1) - 6*sqrt(1 - 9*x**2)*cos(x**2 - 3*x + 1) + 2*sqrt(1 - 9*x**2) + 15)/sqrt(1 - 9*x**2), x)",
+   "labeled_program_text": "<r:together>\n"
+  },
+  {
+   "episode_id": "L7-s9714",
+   "decision_index": 1,
+   "cur": "Subs(Integral(-2*u_*tan(u_) + 2*log(cos(u_)), u_), u_, 3*x)",
+   "labeled_rule": "together",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "Subs(Integral(2*(-u_*tan(u_) + log(cos(u_))), u_), u_, 3*x)",
+   "labeled_program_text": "<r:together>\n"
+  }
+ ],
+ "state_correct3": [
+  {
+   "episode_id": "L4-s9702",
+   "decision_index": 0,
+   "cur": "Integral(7*(4*sqrt(x)*(5*x - 2) + sqrt(7))*exp(sqrt(7)*sqrt(x) + 5*x**2 - 4*x + 4)/(2*sqrt(x)), x)",
+   "labeled_rule": "i_usub",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "Subs(Integral(7*exp(u_), u_), u_, sqrt(7)*sqrt(x) + 5*x**2 - 4*x + 4)",
+   "labeled_program_text": "<r:i_usub> I0\n"
+  },
+  {
+   "episode_id": "L4-s9702",
+   "decision_index": 1,
+   "cur": "Subs(Integral(7*exp(u_), u_), u_, sqrt(7)*sqrt(x) + 5*x**2 - 4*x + 4)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "Subs(7*exp(u_), u_, sqrt(7)*sqrt(x) + 5*x**2 - 4*x + 4)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L4-s9704",
+   "decision_index": 1,
+   "cur": "Subs(Integral(-6*sin(u_), u_), u_, 4*x**2 + x + cos(7*x) + 5)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "Subs(6*cos(u_), u_, 4*x**2 + x + cos(7*x) + 5)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L4-s9706",
+   "decision_index": 0,
+   "cur": "Integral((72*x + 48*(3*x**2 + 1)**2)*exp(4*x**3 + 4*x + 3), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "(36*x**2 + 12)*exp(4*x**3 + 4*x + 3)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L4-s9707",
+   "decision_index": 1,
+   "cur": "6*cos(2*x**2 + cos(9*x)) + Integral(270*x*exp(x)*cos(5*x**2 + x + 1) + 27*exp(x)*sin(5*x**2 + x + 1) + 27*exp(x)*cos(5*x**2 + x + 1), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "27*exp(x)*sin(5*x**2 + x + 1) + 6*cos(2*x**2 + cos(9*x))",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L4-s9708",
+   "decision_index": 0,
+   "cur": "Integral(980*exp(28*x + 12), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "35*exp(28*x + 12)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L4-s9712",
+   "decision_index": 0,
+   "cur": "Integral(7*(-4*sqrt(x) + sqrt(7))*cos(sqrt(7)*sqrt(x) - 2*x + 1)/(2*sqrt(x)), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "7*sin(sqrt(7)*sqrt(x) - 2*x + 1)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L4-s9718",
+   "decision_index": 0,
+   "cur": "Integral(x**4*(16*x*cos(4*x + 3) + 20*sin(4*x + 3)), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "4*x**5*sin(4*x + 3)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L5-s9700",
+   "decision_index": 0,
+   "cur": "Integral(3*sqrt(2)*exp(3*x)*sin(3*x + pi/4), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "3*sqrt(2)*(exp(3*x)*sin(3*x + pi/4)/6 - exp(3*x)*cos(3*x + pi/4)/6)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L5-s9701",
+   "decision_index": 0,
+   "cur": "Integral(-7*exp(4*x)*sin(x) + 28*exp(4*x)*cos(x) + 9*log(x)**2 + 18*log(x), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "9*x*log(x)**2 + 7*exp(4*x)*cos(x)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L5-s9702",
+   "decision_index": 0,
+   "cur": "Integral(((5*x**2 + 5)*(-4*exp(x)*sin(4*x) + exp(x)*cos(4*x) + 1) + 7)/(x**2 + 1), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "5*x + 5*exp(x)*cos(4*x) + 7*atan(x)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L5-s9703",
+   "decision_index": 0,
+   "cur": "Integral(4*(12*x**3 - 8*x**2 + 6*x - 1)/sqrt(4*x**2 + 1), x)",
+   "labeled_rule": "i_sqrt_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "sqrt(4*x**2 + 1)*(4*x**2 - 4*x + 4)",
+   "labeled_program_text": "<r:i_sqrt_basis> I0\n"
+  },
+  {
+   "episode_id": "L5-s9704",
+   "decision_index": 0,
+   "cur": "Integral((20*x**2 + 19)/(4*x**2 + 1), x)",
+   "labeled_rule": "i_inverse_trig",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "5*x + 7*atan(2*x)",
+   "labeled_program_text": "<r:i_inverse_trig> I0\n"
+  },
+  {
+   "episode_id": "L5-s9707",
+   "decision_index": 0,
+   "cur": "Integral(9*(100*x**3 + 45*x**2 - 24*x + 34)/(2*sqrt(5*x**3 - 2*x + 5)), x)",
+   "labeled_rule": "i_sqrt_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "(36*x + 27)*sqrt(5*x**3 - 2*x + 5)",
+   "labeled_program_text": "<r:i_sqrt_basis> I0\n"
+  },
+  {
+   "episode_id": "L5-s9709",
+   "decision_index": 0,
+   "cur": "Integral(9*(-sin(x) + 4*cos(x))*exp(4*x), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "9*exp(4*x)*cos(x)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L5-s9710",
+   "decision_index": 0,
+   "cur": "Integral(18*x*(log(x) + 1)*log(x), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "9*x**2*log(x)**2",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L5-s9712",
+   "decision_index": 0,
+   "cur": "Integral((96*x**4 - 28*x**3 + 108*x**2 - 3*x + 17)/sqrt(3*x**2 - x + 3), x)",
+   "labeled_rule": "i_sqrt_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "sqrt(3*x**2 - x + 3)*(8*x**3 + 6*x + 2)",
+   "labeled_program_text": "<r:i_sqrt_basis> I0\n"
+  },
+  {
+   "episode_id": "L5-s9713",
+   "decision_index": 0,
+   "cur": "Integral((7*x**4 + 10*x**3 + 10*x**2 + 16*x + 4)/sqrt(x**3 + 2*x + 1), x)",
+   "labeled_rule": "i_sqrt_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "(2*x**2 + 4*x)*sqrt(x**3 + 2*x + 1)",
+   "labeled_program_text": "<r:i_sqrt_basis> I0\n"
+  },
+  {
+   "episode_id": "L5-s9714",
+   "decision_index": 0,
+   "cur": "Integral(9*(4*sin(x) + cos(x))*exp(4*x), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "9*exp(4*x)*sin(x)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L5-s9716",
+   "decision_index": 0,
+   "cur": "Integral(7*(-sin(x) + 3*cos(x))*exp(3*x), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "7*exp(3*x)*cos(x)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L5-s9718",
+   "decision_index": 0,
+   "cur": "Integral((20*x**2 + 7)/(4*x**2 + 1), x)",
+   "labeled_rule": "i_inverse_trig",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "5*x + atan(2*x)",
+   "labeled_program_text": "<r:i_inverse_trig> I0\n"
+  },
+  {
+   "episode_id": "L6-s9700",
+   "decision_index": 0,
+   "cur": "Integral((16*x - 2)*cos(4*x**2 - x + 1), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "2*sin(4*x**2 - x + 1)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L6-s9702",
+   "decision_index": 1,
+   "cur": "Integral(sqrt(2)*(45*x**2/2 + sqrt(6*x + 2)*(30*x*sqrt(6*x + 2) + (10*x + 4)*cos(5*x**2 + 4*x + 2))/2 + 45/2)/sqrt(3*x + 1), x)",
+   "labeled_rule": "i_const_factor",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "sqrt(2)*Integral((45*x**2/2 + sqrt(6*x + 2)*(30*x*sqrt(6*x + 2) + (10*x + 4)*cos(5*x**2 + 4*x + 2))/2 + 45/2)/sqrt(3*x + 1), x)",
+   "labeled_program_text": "<r:i_const_factor> I0\n"
+  },
+  {
+   "episode_id": "L6-s9703",
+   "decision_index": 0,
+   "cur": "Integral(24*x*exp(4*x**2 + 3) + 6*log(4*x)**2 + 12*log(4*x), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "6*x*log(4*x)**2 + 3*exp(4*x**2 + 3)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L6-s9709",
+   "decision_index": 1,
+   "cur": "Integral((4*x*sqrt(1 - 9*x**2)*cos(x**2 - 3*x + 1) - 6*sqrt(1 - 9*x**2)*cos(x**2 - 3*x + 1) + 2*sqrt(1 - 9*x**2) + 15)/sqrt(1 - 9*x**2), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "2*x + 2*sin(x**2 - 3*x + 1) + 5*asin(3*x)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L6-s9711",
+   "decision_index": 0,
+   "cur": "Integral((50*x - 5)*cos(5*x**2 - x + 2), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "5*sin(5*x**2 - x + 2)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L6-s9713",
+   "decision_index": 0,
+   "cur": "Integral((sqrt(1 - 9*x**2)*((8 - 16*x)*sin(2*x**2 - 2*x + 5) + 3) + 21)/sqrt(1 - 9*x**2), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "3*x + 4*cos(2*x**2 - 2*x + 5) + 7*asin(3*x)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L6-s9714",
+   "decision_index": 0,
+   "cur": "Integral((40*x + 16)*exp(5*x**2 + 4*x + 1), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "4*exp(5*x**2 + 4*x + 1)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L6-s9718",
+   "decision_index": 0,
+   "cur": "Integral(-36*exp(4*x)*sin(4*x) + 36*exp(4*x)*cos(4*x) + 15*log(x) + 8*log(3) + 16 + 5/sqrt(1 - x**2), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "15*x*log(x) + x + 8*x*log(3) + 9*exp(4*x)*cos(4*x) + 5*asin(x)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L7-s9702",
+   "decision_index": 0,
+   "cur": "Integral((2 - 12*x)*sin(3*x**2 - x + 3), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "2*cos(3*x**2 - x + 3)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L7-s9703",
+   "decision_index": 0,
+   "cur": "Integral(2*(4*x + 3)/sqrt(2*x**2 + 3*x + 3), x)",
+   "labeled_rule": "i_sqrt_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "4*sqrt(2*x**2 + 3*x + 3)",
+   "labeled_program_text": "<r:i_sqrt_basis> I0\n"
+  },
+  {
+   "episode_id": "L7-s9705",
+   "decision_index": 0,
+   "cur": "Integral(-18*x**2*log(x)*sin(3*x) + 12*x*log(x)*cos(3*x) + 6*x*cos(3*x) - 3*exp(cos(x))*sin(x), x)",
+   "labeled_rule": "i_unprod",
+   "labeled_param_kind": "term_index",
+   "labeled_child_sstr": "3*exp(cos(x)) + Integral(-18*x**2*log(x)*sin(3*x) + 12*x*log(x)*cos(3*x) + 6*x*cos(3*x), x)",
+   "labeled_program_text": "<r:i_unprod> I0 t0\n"
+  },
+  {
+   "episode_id": "L7-s9705",
+   "decision_index": 1,
+   "cur": "3*exp(cos(x)) + Integral(-18*x**2*log(x)*sin(3*x) + 12*x*log(x)*cos(3*x) + 6*x*cos(3*x), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "6*x**2*log(x)*cos(3*x) + 3*exp(cos(x))",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L7-s9708",
+   "decision_index": 0,
+   "cur": "Integral(-12*x*sin(2*x)*cos(cos(2*x)) + 6*sin(cos(2*x)), x)",
+   "labeled_rule": "i_unprod",
+   "labeled_param_kind": "term_index",
+   "labeled_child_sstr": "6*x*sin(cos(2*x))",
+   "labeled_program_text": "<r:i_unprod> I0 t1\n"
+  },
+  {
+   "episode_id": "L7-s9710",
+   "decision_index": 0,
+   "cur": "Integral((3*x*log(-x) + (9*x**2 + 1)*atan(3*x))/(x*(9*x**2 + 1)), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "log(-x)*atan(3*x)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L7-s9713",
+   "decision_index": 0,
+   "cur": "Integral(30*exp(5*x), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "6*exp(5*x)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L7-s9714",
+   "decision_index": 2,
+   "cur": "Subs(Integral(2*(-u_*tan(u_) + log(cos(u_))), u_), u_, 3*x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "Subs(2*u_*log(cos(u_)), u_, 3*x)",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  },
+  {
+   "episode_id": "L7-s9715",
+   "decision_index": 0,
+   "cur": "Integral(4*(-2*x*(3*x - 1)*sin(log(3*x**2 - 2*x + 1)) + (3*x**2 - 2*x + 1)*cos(log(3*x**2 - 2*x + 1)))/(3*x**2 - 2*x + 1), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "4*x*cos(log(3*x**2 - 2*x + 1))",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L7-s9716",
+   "decision_index": 0,
+   "cur": "Integral(-12*log(2*x)*sin(sin(3*x))*cos(3*x) + 4*cos(sin(3*x))/x, x)",
+   "labeled_rule": "i_unprod",
+   "labeled_param_kind": "term_index",
+   "labeled_child_sstr": "4*log(x)*cos(sin(3*x)) + Integral(-12*log(2)*sin(sin(3*x))*cos(3*x), x)",
+   "labeled_program_text": "<r:i_unprod> I0 t0\n"
+  },
+  {
+   "episode_id": "L7-s9717",
+   "decision_index": 0,
+   "cur": "Integral((2*(x + 1)*(x**2 + 1)*atan(x) + (x**2 + 2*x + 4)*log(x**2 + 2*x + 4))/((x**2 + 1)*(x**2 + 2*x + 4)), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "log(x**2 + 2*x + 4)*atan(x)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L7-s9718",
+   "decision_index": 0,
+   "cur": "Integral(4*((2*x - 3)*(9*x**2 + 1)*atan(3*x) + 3*(x**2 - 3*x + 3)*log(x**2 - 3*x + 3))/((9*x**2 + 1)*(x**2 - 3*x + 3)), x)",
+   "labeled_rule": "i_linear_basis",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "4*log(x**2 - 3*x + 3)*atan(3*x)",
+   "labeled_program_text": "<r:i_linear_basis> I0\n"
+  },
+  {
+   "episode_id": "L7-s9719",
+   "decision_index": 0,
+   "cur": "Integral(5/tan(x), x)",
+   "labeled_rule": "i_heurisch",
+   "labeled_param_kind": "none",
+   "labeled_child_sstr": "5*log(sin(x))",
+   "labeled_program_text": "<r:i_heurisch> I0\n"
+  }
+ ]
+}

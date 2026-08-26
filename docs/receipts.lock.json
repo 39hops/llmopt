@@ -1076,6 +1076,34 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpgen/inspectable_sets.json": {
+   "bytes": 18894,
+   "exists": true,
+   "sha256": "200f49fa471758e070499c8f9af6d38e33c2ee52f6ccaf0385cedca86833b9e7",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpgen/scores.jsonl": {
+   "bytes": 301665,
+   "exists": true,
+   "sha256": "174cdc0eceb3599ac8808a68f1cab9d45efde4ba96361b74c8caf474d91abbfd",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpgen/svpgen_receipt.json": {
+   "bytes": 16047,
+   "exists": true,
+   "sha256": "ac17dc1bf64ad9c84bf40b99937a3d124590de3b4e40d1583eab9eee0ce44e96",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpgen_run.log": {
+   "bytes": 2747,
+   "exists": true,
+   "sha256": "0803cba7f7a7d9efde8eb3468ab882aeee2e3335a6d996468bdd862edb22ab8e",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svprep_design.json": {
    "bytes": 1313,
    "exists": true,
