@@ -49351,3 +49351,134 @@ frozen scorer over this band, score all three paired births
 under one committed scorer, apply GENERALIZES-DIRECTION
 mechanically.
 
+## VERDICT MATH-CYBER-1-SVP-GENERALIZATION-BAND-0: the second untouched evaluation band QUALIFIES — all 8 registered bars fire, 79 primary decisions from seeds 9700-9719 (75/80 episodes solved), zero training-parent and zero oldeval-parent overlap in the primary denominator, bytes frozen before any trained model sees them (2026-08-26, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GENERALIZATION-BAND-0 (committed
+with the producer at 4feacbea BEFORE materialization; seed
+collision scan booked there — band fresh). Zero model inference,
+zero training. Receipt logs/mathworld1/svpeval2/
+svpeval2_receipt.json (completion_commit 4feacbea); stdout log
+logs/mathworld1/svpeval2_run.log.
+
+FROZEN BYTES (the record; the six trained checkpoints were
+forbidden from these bytes throughout and remain so until the
+scoring GO):
+logs/mathworld1/svpeval2/episodes.jsonl 584c7acc2c779e01eab9293a94ab91b5930e5a19d93d318801cd93d808ade50d
+logs/mathworld1/svpeval2/decisions.jsonl 89efbe0ea447ee937c0c130d5419112921a2dd6c2159c6c2112cfd5e92f79315
+
+BAR ADJUDICATION (all 8 FIRE):
+ 1. EPISODE-POPULATION: 80/80 identities accounted — 75 solved,
+    4 budget_exhausted, 1 wall_cap; solved by level L4 17 /
+    L5 20 / L6 19 / L7 19.
+ 2. LABEL-IN-SET: label_missing 0.
+ 3. COMPLETE-LEGAL-SET: zero legal_set_unstable among the 88
+    enumerated solved-episode decisions (the double-enumeration
+    law; the 57 unsolved-episode decisions are excluded
+    episode-first and never stability-tested).
+ 4. PROGRAM-REPLAY: zero program_* exclusions in the PRIMARY
+    stratum (the 3 program_det_ambiguous rows are excluded
+    first-cause, below).
+ 5. NO-PROGRAM-COLLISION: 0 — no (parent, program) mapped to
+    two different children.
+ 6. TOK-ROUNDTRIP: 0 failures under frozen ActionGCTok-332.
+ 7. CONTEXT-FIT: 0 overflows over every enumerated candidate
+    (max PRIMARY-stratum scoring string 811 tokens of ctx 4096).
+ 8. TASK-NOVELTY: every one of the 79 primary decisions has
+    zero training-parent AND zero oldeval-parent visible-cur
+    overlap (gate-computed over the full primary stratum).
+
+DENOMINATOR ACCOUNTING (first-cause, per the registered
+precedence): 88 solved-episode decisions -> 79 PRIMARY. Excluded:
+3 program_det_ambiguous — each independently re-derived at
+booking as the KNOWN single-site TWO-CHILD i_usub schema-scope
+residue (i_usub emits 2 accepted children at one site on
+Integral(720*sin(6*x)**3*cos(6*x), x),
+Integral(96*sin(2*x+4)**3*cos(2*x+4), x), and the L7-s9716
+log-trig row — same class as the first band's 4 i_usub
+exclusions; i_usub NOT repaired, per the frozen treatment);
+5 training_parent_overlap; 1 oldeval_parent_overlap. Unsolved
+episodes carried 57 decisions (48 budget, 9 wall), accounted and
+excluded episode-first. REPORTED-NEVER-MERGED overlaps among
+otherwise-clean rows: training parent 5 / training labeled-edge
+4; oldeval parent 1 / oldeval labeled-edge 1; 725-corpus STATE
+overlap 0 (checked against logs/mathworld1/states.jsonl — 102
+rows, 65 distinct state_before; the receipt's Counter drops
+never-fired keys, so this 0 is externally recomputed at
+booking, not a receipt field). cur_srepr duplicates INSIDE the
+band: 0 over all 88 solved-episode decisions (recomputed on the
+79-primary population too: 0).
+
+DESCRIPTIVE ANATOMY (registered pre-run; frozen here): legal-set
+size p50 7 / p90 9 / max 12; single-sibling 0 / multi-sibling 79
+(every primary decision is a real ranking). Candidate counts by
+rule: i_parts 125, expand 63, cancel 57, factor 51, euler 49,
+i_const_factor 36, together 36, i_heurisch 34, i_linear_basis
+26, i_usub 21, i_sum 18, i_sqrt_basis 11, trigsimp 9, i_unprod
+9, i_apart 6, i_transcend_div 5, i_ansatz_exp 4, i_inverse_trig
+2. Labeled actions by rule: i_heurisch 29, i_linear_basis 22,
+i_sqrt_basis 11, i_unprod 5, i_usub 3, together 3,
+i_transcend_div 2, i_inverse_trig 2, trigsimp 1, i_const_factor
+1. Param_kind (candidates): none 428, u_choice 125, term_index
+9; labeled: none 74, term_index 5, u_choice 0 — the u_choice
+distribution-shift constraint RECURS in this band
+(has-u_choice-candidate on 61/79 decisions, labeled-u_choice 0;
+has-term_index 8, labeled-term_index 5). Token lengths: STATE
+candidates p50 122 / p90 282 / max 811, PROGRAM candidates p50
+57 / p90 106 / max 143; labeled STATE p50 84 / p90 147 / max
+225, labeled PROGRAM p50 58 / p90 106 / max 140 — the
+length/entropy asymmetry named in the unresolved-attribution
+paragraph is present here too and stays a competing mechanism,
+not a defect.
+
+INSTRUMENT IDENTITY: run_episode / stable_legal_set /
+derive_program executed FROM the frozen first-band module
+(imported, not copied — one law, one source); same world
+generator, sympy 1.14.0, macOS arm64; upstream pins gate-checked
+(paired artifact a943ba7f..., first-band decisions f63100a6...
+consumed as frozen bytes for the novelty sets, never sympified).
+srepr companions (cur/child/labeled) captured from the LIVE
+objects pre-serialization — provenance metadata only; the frozen
+TEXT scoring law governs all downstream use.
+
+RECEIPT-AUDIT DISCLOSURES (adopted): bars 3/4/8 are TAUTOLOGICAL
+as coded — they evaluate over the primary stratum, whose
+membership is defined by the very conditions they test, so the
+receipt's `true` is not evidence for them. The substantive
+measurements were recomputed EXTERNALLY at booking over the
+non-tautological populations: legal_set_unstable 0 of 88;
+program_* exclusions exactly the 3 first-caused rows of 88;
+primary-cur overlap 0/79 v the 73,324-row training population
+(58,988 distinct cur) and 0/79 v the first band's 81 distinct
+cur — both auditors reproduced these independently. The
+`overlaps` dict accumulates over the 85 rows reaching the
+overlap branch (the 3 program-failed rows checked separately:
+none overlap). The upstream pin shas (a943ba7f/f63100a6) are
+hard SystemExit gates in the producer, enforced at run, not
+echoed as receipt fields; logs/mathworld1/states.jsonl is read
+without a sha gate (git-tracked, recoverable at 4feacbea).
+Receipt start porcelain " M scripts/INDEX.md" (hook-regenerated
+doc index, non-instrument).
+
+REGISTERED-PRIOR ACCOUNTING: CORRECT on every named component —
+all 8 bars fire, small nonzero training-parent overlap (5)
+excluded, zero collisions; yield ran ~9% above the registered
+regime on both legs (79 primary of 88 v predicted ~72 of ~82).
+
+READING (scoped): a second, independently sampled, byte-frozen
+task band now exists with its GENERALIZES-DIRECTION resolution
+language already on the books (prereg L-anchored above):
+PROGRAM top-1 > STATE top-1 on the new frozen primary
+denominator for ALL of seeds 9001/10001/11001, tie or reversal
+blocks, per-pair p as rider only, no pooling of decisions x
+births, no pooling of band magnitudes. Nothing about weights is
+claimed here. Standing next (own GO): parameterize the frozen
+scorer over this band, score all three paired births under one
+committed scorer, apply the law mechanically.
+
+FENCES. Mac; the band's primary denominator is FROZEN at 79 —
+no post-inspection inclusion changes (the anatomy above is
+descriptive); i_usub stays unrepaired (repair = new treatment
+version + its own untouched band); scoring under the frozen
+TEXT law only; dual audit before booking; receipts force-added
+small-text; after booking commit/push, census, STOP.
+

@@ -3384,3 +3384,17 @@ regime tag on every bullet is the fence.
   is right in none; magnitude descriptive at n=3, 216 repeated
   decisions never pooled, band/mixture/not-solve-rate and 3.63x
   token-asymmetry fences carry. RESULTS.md#L49071
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] A second untouched
+  task-sampling evaluation band (seeds 9700-9719, +100 spacing
+  law, collision-scanned fresh) qualifies with all 8 registered
+  bars: 79 primary decisions of 88 (75/80 episodes solved),
+  zero training-parent and zero oldeval-parent visible-cur
+  overlap in the denominator (5+1 overlapping rows excluded
+  first-cause, edge overlaps reported never merged), the 3
+  schema exclusions independently re-derived as the known
+  two-child i_usub residue, u_choice distribution shift recurs
+  (61/79 decisions carry u_choice candidates, 0 labeled), bytes
+  frozen before any trained model saw them, and the
+  GENERALIZES-DIRECTION resolution language registered
+  pre-materialization. RESULTS.md#L49354

@@ -2938,6 +2938,12 @@ MATH-CYBER-1 SVP-EVALBAND-0 — materialize + qualify the frozen primary evaluat
 - `derive_program(parent, rule, child_key, accepted)` — AX-FIXTURE program derivation, keyed by exact child key.
 - `main()`
 
+### scratch/mathworld1_svpeval2.py
+MATH-CYBER-1 SVP-GENERALIZATION-BAND-0 — materialize + qualify the SECOND, untouched task-sampling evaluation band (seeds 9700-9719 x L4-L7, 80 episodes) under the exact SVP-EVALBAND-0 trajectory law (mathworld0 greedy-hce, 12-decision budget, 60s wall cap), before ANY trained model touches it. Zero model inference, zero training.
+
+- `fsha(p) -> str`
+- `main()`
+
 ### scratch/mathworld1_svprep.py
 MATH-CYBER-1 SVP-REPLICATION-DESIGN-0 — freeze the two additional paired-birth inits (seed law 9001 + 1000k, k=1,2 -> 10001, 11001) BEFORE any replication outcome exists. Zero training.
 
