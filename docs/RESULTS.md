@@ -50824,3 +50824,104 @@ continuous process; start_commit == completion_commit ==
 before booking; receipts force-added small-text; after booking
 commit/push, census, STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-FACTOR-HASH-SCORE-0: one joint scoring run of the three sealed seed-12001 checkpoints on the frozen third band — mechanical anti-peeking order, the frozen FACTOR-WIN/HASH-WIN/INCONCLUSIVE law applied exactly once (2026-08-26, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-26). The adjudication law
+was frozen at PRE-REG SVP-FACTOR-HASH-DESIGN-0 (4b4400ec) and
+clarified at AMENDMENT -BIRTH-0; this rung applies it once. No
+retraining, no checkpoint mutation, no new band, no tuning.
+
+PRE-INFERENCE RESEARCHER'S READ (on the record before any
+logit): (1) the primary contrast asks whether explicit/local
+reusable action coordinates (FACTOR) beat the same whole-action
+information behind a fixed invertible scrambling (HASH) at
+matched width/alphabet/vocab/rows/update-law, for frozen sibling
+ranking. (2) FACTOR-WIN = explicit coordinates improved learning
+in this ONE realization; HASH-WIN = the chosen alignment
+underperformed its scrambled counterpart in this one
+realization (token-frequency/conditional-predictability
+mediation stays live either way); INCONCLUSIVE = this
+realization does not distinguish the two coordinate systems
+under the registered criterion — never "compact identity
+suffices". (3) Most important attribution limitation:
+FACTOR-v-HASH changes coordinate alignment AND the tokenwise
+frequency/conditional-predictability geometry that alignment
+induces — whole-action information, width, alphabet, shape,
+rows, and update law are matched; token marginals are NOT. Band
+limitation carried: labels 69/69 training-covered; 66/69
+decisions carry >=1 OOV rival — the band tests ranking in legal
+sets CONTAINING unseen whole-action combinations, not selection
+of an unseen correct whole-action. No outcome prediction is
+made, and none is derived from training losses.
+
+INSTRUMENT (scratch/mathworld1_svpfhadj.py, committed with this
+prereg BEFORE any checkpoint load): scoring primitives
+score_decision / rank_metrics / mcnemar_exact IMPORTED from the
+frozen first-band scorer — same prompt law, teacher-forced
+frozen candidate bytes, fixed candidate order, pessimistic
+top-1 ties, exact two-sided McNemar, alpha .05. Targets:
+CANONICAL = frozen program_text+EOS; FACTOR/HASH = the band's
+STORED factor_code/hash_code fields mapped to code-token ids
+332..339 + EOS — no regeneration, no sympify, no
+re-enumeration; every stored code roundtrip-gated against the
+row tuple before scoring. Input pins (full sha, pre-load AND in
+receipt): band episodes cb57dd35... / decisions 2ff54332...;
+checkpoints canonical 1913b53c... / factor 82f4f0d7... / hash
+e2b74795...; shared init e21be542...; training artifact
+a943ba7f... (coverage-rider support only). Param count
+19,142,016 gate-checked per arm; vocab 340.
+
+MECHANICAL ANTI-PEEKING ORDER (frozen in code): verify hashes ->
+load all three models -> score ALL 69 decisions with no
+per-decision output -> write raw scores.jsonl -> hash it ->
+hard gates -> primary F/H aggregate -> mechanically assign the
+preregistered verdict -> write receipt -> ONLY THEN rider/
+anatomy summaries (separate riders.json/inspectable_sets.json).
+No early stopping, no partial top-1s.
+
+HARD GATES (any failure = INSTRUMENT FAILURE, the scientific
+adjudication does not run): 69 primary rows, unique ids, one
+label each, same candidate count across arms per decision (one
+frozen candidate list consumed by all three), every FACTOR and
+HASH code roundtrips, T==9 for every F/H candidate, and — per
+decision, separately for F and H — the FULL candidate ordering
+by mean_lp equals the ordering by sum_lp including pessimistic
+tie handling; all scores finite (inside the imported law).
+
+RESOLUTION (frozen, verbatim): FACTOR-WIN iff FACTOR top-1 >
+HASH top-1 AND exact two-sided McNemar p < .05; HASH-WIN iff
+HASH top-1 > FACTOR top-1 AND p < .05; INCONCLUSIVE otherwise.
+Alpha unchanged; no pooled tests; INCONCLUSIVE is never
+converted to equivalence; SINGLE-REALIZATION regardless of
+outcome. CANONICAL is scored in the same joint run as a
+DESCRIPTIVE bridge only (top-1, MRR, summed-lp rider, flips) —
+it never alters the F/H verdict, and its comparison to the old
+bands is qualitative only (different task samples).
+
+REGISTERED RIDERS (computed strictly after the receipt):
+coverage strata all-covered (n=3) v >=1-OOV-rival (n=66) +
+by-OOV-count, under the registered interpretation (generalization
+in legal sets containing unseen combinations, NOT unseen-correct
+-action selection); thin-atom rider on <c:7> (FACTOR training
+exposure 57, threshold frozen pre-band) — decisions whose
+candidates touch the thin atom, never removed; labeled rule /
+param_kind / legal-set-size anatomy, descriptive, no
+significance fishing. Inspectable sets persisted:
+factor_correct_hash_wrong / hash_correct_factor_wrong /
+both_wrong (+ both_correct count) with margins, coverage, and
+thin-atom flags, plus per-decision C/F/H correctness vectors —
+for mechanism inspection AFTER the verdict is frozen.
+
+REGISTERED PRIOR (house): instrument-level only — all gates
+fire, 69 rows land, pins unchanged. NO directional F/H prior
+(standing record); no prediction from training loss.
+
+REFUTED-IF (instrument): any hard gate fails, any pin
+mismatches, or an aggregate cannot be reproduced from the raw
+rows.
+
+FENCES. Mac/mps; one joint run; zero training/mutation/new-band;
+dual audit (scorer source pre-inference where practical +
+receipt/raw-rows post-run) before booking; receipts force-added
+small-text; after booking commit/push, census, STOP.
+
