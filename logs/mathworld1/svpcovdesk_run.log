@@ -1,0 +1,79 @@
+{
+ "training": {
+  "rows": 73324,
+  "distinct_whole_action_tuples": 33,
+  "distinct_program_texts": 33,
+  "labeled_rule_counts": {
+   "i_linear_basis": 21095,
+   "i_heurisch": 18946,
+   "i_const": 14932,
+   "i_sum": 10822,
+   "i_inverse_trig": 3159,
+   "i_unprod": 3123,
+   "expand": 716,
+   "i_const_factor": 402,
+   "i_log_power": 55,
+   "i_sqrt_basis": 31,
+   "i_usub": 19,
+   "i_ansatz_exp": 10,
+   "together": 7,
+   "i_transcend_div": 4,
+   "i_parts": 3
+  }
+ },
+ "old_band": {
+  "n_primary": 72,
+  "labeled_covered": 71,
+  "labeled_oov": 1,
+  "candidates_covered": 349,
+  "candidates_oov": 160,
+  "distinct_candidate_tuples": 21,
+  "distinct_candidate_tuples_covered": 15,
+  "distinct_labeled_tuples": 8,
+  "distinct_labeled_tuples_covered": 7,
+  "oov_candidate_rules": {
+   "cancel": 50,
+   "euler": 35,
+   "factor": 52,
+   "i_parts": 10,
+   "trigsimp": 5,
+   "i_apart": 8
+  },
+  "oov_labeled_records": [
+   {
+    "episode_id": "L4-s9609",
+    "decision_index": 0,
+    "rule": "trigsimp",
+    "program_text": "<r:trigsimp>\n"
+   }
+  ]
+ },
+ "new_band": {
+  "n_primary": 79,
+  "labeled_covered": 78,
+  "labeled_oov": 1,
+  "candidates_covered": 379,
+  "candidates_oov": 183,
+  "distinct_candidate_tuples": 22,
+  "distinct_candidate_tuples_covered": 15,
+  "distinct_labeled_tuples": 11,
+  "distinct_labeled_tuples_covered": 10,
+  "oov_candidate_rules": {
+   "cancel": 57,
+   "euler": 49,
+   "factor": 51,
+   "i_parts": 11,
+   "trigsimp": 9,
+   "i_apart": 6
+  },
+  "oov_labeled_records": [
+   {
+    "episode_id": "L6-s9702",
+    "decision_index": 0,
+    "rule": "trigsimp",
+    "program_text": "<r:trigsimp>\n"
+   }
+  ]
+ },
+ "completion_commit": "015b93a1"
+}
