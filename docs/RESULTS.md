@@ -50226,3 +50226,147 @@ what the proposed births are FOR); dual audit before booking;
 receipt force-added small-text; after booking commit/push,
 census, STOP.
 
+## VERDICT MATH-CYBER-1-SVP-CODE-QUALIFY-0: the FACTOR/HASH encoding pair QUALIFIES — injective FACTOR payload and 4-round Feistel HASH bijection over the full 884,736-tuple scoped domain, zero collisions, exact inverse roundtrip, every observed action (73,324 training + 1,188 band candidates) encodes/decodes in both arms, zero zero-exposure code atoms; the truncated-sha HASH is replaced by the reviewer's injective-permutation construction (2026-08-26, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-26): encoding
+qualification only, zero training, zero checkpoint access, zero
+new band. Producer scratch/mathworld1_svpcode.py committed at
+ad7df05c BEFORE the qualification run; receipt
+logs/mathworld1/svpcode_receipt.json (completion_commit
+ad7df05c); stdout logs/mathworld1/svpcode_run.log. This
+supersedes the truncated-sha HASH-OPAQUE of the TOKEN-CHANNEL
+booking (L50090) with the review's injective construction:
+HASH(A) = P(F(A)), P a keyed bijection — collision-free by
+construction, not probabilistically.
+
+FROZEN ENCODING LAW (all constants fixed before any third band
+exists): code alphabet = 8 dedicated atoms <c:0>..<c:7>; vocab
+332+8 = 340 in ALL arms; NO <c:end> and NO pad token — the
+payload is always exactly 8 symbols and the STANDING model EOS
+terminates it, so T = 9 for every action in both opaque arms
+(the review's preferred EOS accounting). FACTOR F(A) = [r1 r2 |
+k | o1 o2 | pk | x1 x2]: rule index (0..35) as two base-8
+digits, site_kind (W=0/I=1), site_ordinal+1 (0..63) as two
+digits, param_kind (0..2), param_index+1 (0..63) as two digits
+— injective with factor boundaries preserved. HASH = 4-round
+balanced Feistel on the 24-bit payload (12/12 halves, round
+function sha256("svp-feistel-r{i}-{x}") mod 2^12, constants
+frozen here) — mixes ACROSS positions (position-wise renaming
+explicitly rejected as boundary-preserving), bijective on all
+2^24 payloads, decode = inverse rounds.
+
+DOMAIN (SCOPED, NOT PROVEN — the review's option 3): rule in
+OPCODE_ORDER (36); site_kind in {W = no-site sentinel, I};
+site_ordinal and param_index in {-1} u [0, 62] (sentinel
+encodes as value+1). The engine does not hard-bound preorder
+ordinals, so the bound is a REGISTERED SCOPE: any out-of-domain
+action HARD-EXITS (instrument NO-FIRE), never truncates.
+Measured reality across all frozen artifacts: max ordinal 3,
+max param_index 3, kinds {I, W} only — the 0..62 scope carries
+>15x headroom over everything ever observed.
+
+BAR ADJUDICATION (bars 1-5 gate-enforced hard exits, receipt
+existence = pass, run completed RC=0; bar 6 is a DESIGN
+REGISTRATION for the future scorer, not measured here):
+ 1 FACTOR-INJECTIVE: exhaustive 36x2x64x3x64 = 884,736-tuple
+   enumeration, zero collisions, width/alphabet gated per
+   tuple.
+ 2 HASH-BIJECTIVE: same exhaustive enumeration through P and
+   P^-1, zero collisions, exact roundtrip; plus a 173-point
+   deterministic stride SAMPLE of the 2^24 Feistel space
+   (feistel^-1(feistel(v)) == v; the bijection property itself
+   holds by the Feistel construction independent of the round
+   function; MEASURED exhaustively only on the 884,736-tuple
+   qualified domain — 7.6% of the 2^24 space — which is the
+   only region the treatment can reach, out-of-domain
+   hard-exiting).
+ 3 ROUNDTRIP-EXACT + ALL-OBSERVED: every training action
+   (73,324 ROWS) and every band CANDIDATE (old 567 over 82
+   decision records, new 621 over 88 — different grain from the
+   training count, disclosed) is in-domain and encodes/decodes
+   exactly under BOTH encodings.
+ 4 SAME-WIDTH/SAME-ALPHABET: 8 symbols over the same 8 atoms,
+   every action, both arms.
+ 5 EXPOSURE (per-atom training-target counts; both dicts sum to
+   586,592 = 8 x 73,324): FACTOR — zero zero-exposure atoms,
+   min 57 (<c:7>), upper-mid order statistic 21,497 (true
+   median of the 8 counts: 16,562), max 303,480 (skew is a
+   property OF the factor structure: rare high digits
+   concentrate on rare coordinates); HASH — zero zero-exposure
+   atoms, min 46,391, upper-mid 73,801 (true median 71,149.5),
+   max 110,491 (near-uniform, as mixing predicts). LABELING
+   DISCLOSURE: the receipt's "median" field is the 5th of 8
+   sorted counts and its "p10" field duplicates the unfiltered
+   minimum — order statistics, not interpolated percentiles;
+   the true medians are stated here. The FACTOR spread is
+   5,324x (<c:7> 57 v <c:0> 303,480) v HASH's 2.4x —
+   zero-exposure is barred, THINNESS is not: 57 occurrences of
+   an atom is thin, and the birth prereg should register a
+   FACTOR-arm rider watching whether errors concentrate on
+   thin-atom actions. Base-8 makes adequate
+   alphabet exposure REAL rather than probabilistic — the
+   base-32 truncated design this replaces would have risked
+   thin atoms; identifiability was preferred over W (W stayed 8
+   anyway).
+ 6 FIXED-WIDTH RANK IDENTITY (registered for the future
+   scorer): with all candidate T identical, mean-lp ranking ==
+   summed-lp ranking per decision in both opaque arms; any
+   disagreement is an instrument bug (hard gate in that
+   scorer). This also REMOVES the length-normalization nuisance
+   channel from the FACTOR-v-HASH contrast entirely — the
+   contrast is alpha-free by construction.
+
+ENTROPY WORDING (registered, per the review): a deterministic
+bijection PRESERVES whole-action identity entropy; the
+treatment alters the TOKENWISE/autoregressive conditional
+structure. HASH is never described as matching "entropy per
+token."
+
+PRICING (recomputed from the actual law; the canonical/STATE
+comparators are transcribed literals verified against
+logs/mathworld1/svpbirth_receipt.json at booking, not pinned by
+the producer; vocab base 332 likewise verified against
+ActionGCTok().vocab_size at booking): T=9 per action; 659,916
+continuation-target tokens/epoch; 1,979,748 over 3 epochs =
+1.476x canonical PROGRAM's 1,341,459, and 2.461x UNDER STATE's
+4,871,751. Both opaque arms byte-identical in length law; the
+canonical bridge arm carries this +48% target-token delta,
+disclosed (the canonical arm is a bridge/calibration arm, not
+an equally clean causal contrast — its token channels and
+length law differ; the PRIMARY confirmatory contrast is FACTOR
+v HASH).
+
+EXPERIMENTAL HIERARCHY (designed, NOT launched, each element
+awaiting its own GO): CANONICAL-340 / FACTOR-OPAQUE /
+HASH-OPAQUE from ONE bit-identical shared init at vocab 340,
+one frozen target-blind batch plan, same architecture/rows/
+batches/optimizer/scheduler/per-row continuation-only CE/EOS
+law/update count/final-checkpoint law; execution order ROTATED
+deterministically by step index modulo 3 so no arm is
+systematically first on mps. Freeze order (registered): encoding
+law (this booking) -> training law + primary contrast +
+resolution language + third-band deterministic seed law (birth
+prereg) -> THEN materialize/qualify the third untouched band
+under the existing trajectory/candidate law and schema fences
+-> then birth -> then scoring. No code width, mapping,
+inclusion rule, or resolution language may be tuned against
+third-band contents. First realization is SINGLE-REALIZATION;
+a strong FACTOR>HASH motivates two frozen-init replications
+(+1000k seed law) before any "replicated" language. FALSIFIERS
+(registered): FACTOR ~ HASH => compact exact identity
+sufficient, reusable factorization not load-bearing at this
+scale; FACTOR > HASH => reusable coordinate structure causally
+useful under matched width/action information; HASH > FACTOR =>
+the factorization imposes harmful inductive bias or arbitrary
+identity is easier for this teacher distribution. CANONICAL
+comparisons stay secondary under the standing length/
+normalization attribution fence.
+
+FENCES. Mac; zero training, zero checkpoint loads, zero new
+band under this GO; the qualified domain is scoped with
+overflow NO-FIRE; H(S'|S,A)=0 holds over the qualified domain
+by the schema's measured record (725/725; i_usub residue
+excluded from bands as before); dual audit before booking;
+receipt force-added small-text; after booking commit/push,
+census, STOP.
+

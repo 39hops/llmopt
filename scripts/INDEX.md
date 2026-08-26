@@ -2917,6 +2917,21 @@ MATH-CYBER-1 SVP-BIRTH-0 — the paired STATE-v-PROGRAM birth driver (production
 - `smoke()`
 - `production()`
 
+### scratch/mathworld1_svpcode.py
+MATH-CYBER-1 SVP-CODE-QUALIFY-0 — the FACTOR-OPAQUE / HASH-OPAQUE encoding pair, defined and qualified BEFORE any birth prereg or third-band materialization. Zero training, zero checkpoint access, zero new band.
+
+- `fsha(p) -> str`
+- `in_domain(rule, sk, so, pk, pi)`
+- `factor_symbols(rule, sk, so, pk, pi)` — F(A): 8 base-8 symbols, factor boundaries preserved.
+- `factor_decode(sym)`
+- `sym_to_int(sym)`
+- `int_to_sym(v)`
+- `_round(i, x)`
+- `feistel(v, inverse=False)`
+- `hash_symbols(rule, sk, so, pk, pi)`
+- `hash_decode(sym)`
+- `main()`
+
 ### scratch/mathworld1_svpcovdesk.py
 MATH-CYBER-1 SVP-ACTION-COVERAGE-DESK-0 — outcome-independent census of exact semantic whole-action tuple coverage: training target actions (73,324 rows) onto the labeled and all-candidate actions of BOTH frozen eval bands. No model scores consumed, no model loaded, no training. Prices whether an OPAQUE whole-action categorical code would confound the causal control with OOV exposure.
 

@@ -3463,3 +3463,21 @@ regime tag on every bullet is the fence.
   of that delta was caught by the pre-booking audit); the
   H(S'|S,A)=0 framing is refined to the triple sufficiency/
   compactness/reusable-factorization. RESULTS.md#L50090
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] The FACTOR/HASH
+  causal-control encoding pair qualifies: injective
+  factor-boundary payload and 4-round Feistel bijection
+  (HASH = P(F(A)), review's injective-permutation construction
+  replacing truncated sha) verified collision-free with exact
+  inverse over the full 884,736-tuple scoped domain (overflow =
+  registered NO-FIRE; >15x headroom over every observed
+  coordinate), every training action and band candidate
+  encodes/decodes in both arms, base-8 alphabet gives zero
+  zero-exposure atoms (FACTOR skew 5,324x disclosed with a
+  registered thin-atom rider for the birth prereg; HASH
+  near-uniform), fixed width 8 + standing EOS makes the FACTOR
+  v HASH contrast alpha-free by construction (mean==sum
+  ranking, registered scorer gate), priced at 1.476x canonical
+  program target tokens / 2.461x under STATE; three-arm birth
+  designed with deterministic order rotation and frozen freeze
+  order, nothing launched. RESULTS.md#L50229
