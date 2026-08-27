@@ -1034,10 +1034,24 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpchal/blocks.jsonl": {
+   "bytes": 78432,
+   "exists": true,
+   "sha256": "21e7e635244574266ec876c1c8c76f8d7d2a77e20c2f6680d3ee48db372c4d10",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpchal/svpchal_receipt.json": {
    "bytes": 2675,
    "exists": true,
    "sha256": "0f58517b79e5da2b1414c4132772518d911dc694fb1eb231540b5f472853aa1c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpchal2/svpchal2_receipt.json": {
+   "bytes": 9600,
+   "exists": true,
+   "sha256": "680e69d70e72cb24a1552e4ef563d55edd84f289cb70b54df8ee1931e2935efe",
    "source": "results",
    "tracked": true
   },

@@ -1,0 +1,378 @@
+{
+ "smoke": false,
+ "prereg": "MATH-CYBER-1-SVP-STRICT-GRID-CHALLENGE-DESIGN-1",
+ "n_horizon": 720,
+ "smoke_receipt_sha": "252576da604110ff7ab86edd9d50dd0caf4d7ed2e56de1c2490af20a29594f45",
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpeval/decisions.jsonl": "f63100a62f3091d544750d679483009a473261c587f3165241406a86253858c6",
+  "logs/mathworld1/svpeval2/decisions.jsonl": "89efbe0ea447ee937c0c130d5419112921a2dd6c2159c6c2112cfd5e92f79315",
+  "logs/mathworld1/svpeval3/decisions.jsonl": "2ff5433249622df9d421cf8014131b3907092a943040bb7b20f46f1afffb7efa",
+  "logs/mathworld1/svpgriddesk_receipt.json": "ec9cb9b870d2515e7959025f7f3cbfcee7309a6dc90b880d3176d3e2ccf72edc",
+  "logs/mathworld1/svpgriddesk2_receipt.json": "f0184b01c36017bcb93ed4b715e41e015999075c4da7976e11adc5cae28e6977",
+  "logs/mathworld1/svpgriddesk3_receipt.json": "26389ebb8d68f45447d9676b9c188ea86ab9dd70ec71329fe6ae268cfc34080f",
+  "logs/mathworld1/svpgriddesk4_receipt.json": "8439fc636fcf5c6e18a7dd75a76642cfe088e7eeeaf1e9f1243c5bb0cf08610f",
+  "logs/mathworld1/svpchal/blocks.jsonl": "21e7e635244574266ec876c1c8c76f8d7d2a77e20c2f6680d3ee48db372c4d10",
+  "logs/mathworld1/svpchal/svpchal_receipt.json": "0f58517b79e5da2b1414c4132772518d911dc694fb1eb231540b5f472853aa1c",
+  "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0"
+ },
+ "verdict": "CHALLENGE MATERIALIZED",
+ "stratum_qualified_counts": {
+  "CH-F3|t1": 28,
+  "CH-F3|t2": 40,
+  "CH-F3|t3": 36,
+  "CH-F4|t1": 114,
+  "CH-F4|t2": 52,
+  "CH-F4|t3": 102
+ },
+ "block_fail_census": {},
+ "qualified_terms_census": {
+  "1": 142,
+  "2": 92,
+  "3": 138,
+  "0": 204,
+  "4": 116,
+  "5": 28
+ },
+ "wall_s": 1394.4,
+ "n_blocks_selected": 72,
+ "n_states": 216,
+ "n_primary_states": 144,
+ "site_role_census": {
+  "control-I1": 24,
+  "control-I0": 24,
+  "robustness-I1": 72,
+  "heldout-I1": 48,
+  "covered-I0": 48
+ },
+ "d_before_census": {
+  "CH-F3|t1|x**x": 6,
+  "CH-F3|t1|1/(x + log(x))": 6,
+  "CH-F3|t2|x**x": 6,
+  "CH-F3|t2|1/(x + log(x))": 6,
+  "CH-F3|t3|x**x": 6,
+  "CH-F3|t3|1/(x + log(x))": 6,
+  "CH-F4|t1|x**x": 6,
+  "CH-F4|t1|1/(x + log(x))": 6,
+  "CH-F4|t2|x**x": 6,
+  "CH-F4|t2|1/(x + log(x))": 6,
+  "CH-F4|t3|x**x": 6,
+  "CH-F4|t3|1/(x + log(x))": 6
+ },
+ "min_hce_ties_census": {
+  "1": 123,
+  "2": 93
+ },
+ "legal_set_size_census": {
+  "3": 30,
+  "4": 69,
+  "2": 12,
+  "5": 36,
+  "6": 51,
+  "7": 18
+ },
+ "target_integrand_overlap": {
+  "training": 0,
+  "bands": 0
+ },
+ "codeword_anatomy": {
+  "I1t2:factor": {
+   "code": [
+    1,
+    3,
+    1,
+    0,
+    2,
+    2,
+    0,
+    3
+   ],
+   "nearest_hamming": 1,
+   "nearest_codewords": [
+    "i_unprod I 0 term_index 2",
+    "i_unprod I 1 term_index 0",
+    "i_unprod I 1 term_index 1"
+   ],
+   "longest_shared_prefix": 7,
+   "per_position_support": [
+    {
+     "position": 0,
+     "symbol": 1,
+     "training_rows_with_symbol": 42350,
+     "distinct_symbols_in_training": 3
+    },
+    {
+     "position": 1,
+     "symbol": 3,
+     "training_rows_with_symbol": 3123,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 2,
+     "symbol": 1,
+     "training_rows_with_symbol": 72601,
+     "distinct_symbols_in_training": 2
+    },
+    {
+     "position": 3,
+     "symbol": 0,
+     "training_rows_with_symbol": 73324,
+     "distinct_symbols_in_training": 1
+    },
+    {
+     "position": 4,
+     "symbol": 2,
+     "training_rows_with_symbol": 9724,
+     "distinct_symbols_in_training": 5
+    },
+    {
+     "position": 5,
+     "symbol": 2,
+     "training_rows_with_symbol": 3123,
+     "distinct_symbols_in_training": 3
+    },
+    {
+     "position": 6,
+     "symbol": 0,
+     "training_rows_with_symbol": 73324,
+     "distinct_symbols_in_training": 1
+    },
+    {
+     "position": 7,
+     "symbol": 3,
+     "training_rows_with_symbol": 5,
+     "distinct_symbols_in_training": 5
+    }
+   ]
+  },
+  "I1t2:hash": {
+   "code": [
+    7,
+    4,
+    0,
+    7,
+    7,
+    4,
+    0,
+    2
+   ],
+   "nearest_hamming": 5,
+   "nearest_codewords": [
+    "i_const I 0 none -1",
+    "i_linear_basis I 0 none -1",
+    "i_unprod I 0 term_index 2",
+    "i_log_power I 1 none -1"
+   ],
+   "longest_shared_prefix": 2,
+   "per_position_support": [
+    {
+     "position": 0,
+     "symbol": 7,
+     "training_rows_with_symbol": 1005,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 1,
+     "symbol": 4,
+     "training_rows_with_symbol": 38,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 2,
+     "symbol": 0,
+     "training_rows_with_symbol": 32481,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 3,
+     "symbol": 7,
+     "training_rows_with_symbol": 21650,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 4,
+     "symbol": 7,
+     "training_rows_with_symbol": 20518,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 5,
+     "symbol": 4,
+     "training_rows_with_symbol": 388,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 6,
+     "symbol": 0,
+     "training_rows_with_symbol": 17192,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 7,
+     "symbol": 2,
+     "training_rows_with_symbol": 16958,
+     "distinct_symbols_in_training": 8
+    }
+   ]
+  },
+  "I1t3:factor": {
+   "code": [
+    1,
+    3,
+    1,
+    0,
+    2,
+    2,
+    0,
+    4
+   ],
+   "nearest_hamming": 1,
+   "nearest_codewords": [
+    "i_unprod I 0 term_index 3",
+    "i_unprod I 1 term_index 0",
+    "i_unprod I 1 term_index 1"
+   ],
+   "longest_shared_prefix": 7,
+   "per_position_support": [
+    {
+     "position": 0,
+     "symbol": 1,
+     "training_rows_with_symbol": 42350,
+     "distinct_symbols_in_training": 3
+    },
+    {
+     "position": 1,
+     "symbol": 3,
+     "training_rows_with_symbol": 3123,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 2,
+     "symbol": 1,
+     "training_rows_with_symbol": 72601,
+     "distinct_symbols_in_training": 2
+    },
+    {
+     "position": 3,
+     "symbol": 0,
+     "training_rows_with_symbol": 73324,
+     "distinct_symbols_in_training": 1
+    },
+    {
+     "position": 4,
+     "symbol": 2,
+     "training_rows_with_symbol": 9724,
+     "distinct_symbols_in_training": 5
+    },
+    {
+     "position": 5,
+     "symbol": 2,
+     "training_rows_with_symbol": 3123,
+     "distinct_symbols_in_training": 3
+    },
+    {
+     "position": 6,
+     "symbol": 0,
+     "training_rows_with_symbol": 73324,
+     "distinct_symbols_in_training": 1
+    },
+    {
+     "position": 7,
+     "symbol": 4,
+     "training_rows_with_symbol": 1,
+     "distinct_symbols_in_training": 5
+    }
+   ]
+  },
+  "I1t3:hash": {
+   "code": [
+    6,
+    0,
+    4,
+    0,
+    1,
+    2,
+    7,
+    5
+   ],
+   "nearest_hamming": 5,
+   "nearest_codewords": [
+    "i_ansatz_exp I 0 none -1",
+    "i_const_factor I 1 none -1"
+   ],
+   "longest_shared_prefix": 2,
+   "per_position_support": [
+    {
+     "position": 0,
+     "symbol": 6,
+     "training_rows_with_symbol": 2795,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 1,
+     "symbol": 0,
+     "training_rows_with_symbol": 2811,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 2,
+     "symbol": 4,
+     "training_rows_with_symbol": 3679,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 3,
+     "symbol": 0,
+     "training_rows_with_symbol": 31,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 4,
+     "symbol": 1,
+     "training_rows_with_symbol": 11506,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 5,
+     "symbol": 2,
+     "training_rows_with_symbol": 157,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 6,
+     "symbol": 7,
+     "training_rows_with_symbol": 10879,
+     "distinct_symbols_in_training": 8
+    },
+    {
+     "position": 7,
+     "symbol": 5,
+     "training_rows_with_symbol": 5996,
+     "distinct_symbols_in_training": 8
+    }
+   ]
+  }
+ },
+ "blocks_sha": "a50da492b2447b3bd10fd0409dd17d3d77ca57b4b4accbc6a703880c34a57fea",
+ "decisions_sha": "1e3a5ef0483a7ee4970aa84c1f3d1dcc9171b8376cc6281e81d2b301a8f80d69",
+ "start": {
+  "start_commit": "274310c2",
+  "start_status_porcelain": " M docs/receipts.lock.json\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpchal2.py": "150129d8addc66b46e4f58b4676c7d4465cb0994ffe28e049ccd978b9011ad74",
+   "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0",
+   "scratch/mathworld1_svpeval.py": "4c5e5ec9f97446680c7ea962850efc34c361f87120a23c0aa0a6159b74cc3786",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_actionsem.py": "c79462129730328592ee2cc909fc563076afe80542dd2a745ce88ceef3e9c23b",
+   "scratch/mathworld1_actionfinal.py": "978298d58f543a26e8a42214a455aa56ce4ad208ae246f1e9d5960334f2f8963",
+   "scratch/mathworld1_unprodsem.py": "9f6a17324ea31691fe240682b431fcc0a53af18b898c6dc73a143cc0fc5f3609",
+   "scratch/mathworld0.py": "4c130625535aa73ca10cdc368213d2d875862d324eb3796508feab5dd30c52d4",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "274310c2"
+}
