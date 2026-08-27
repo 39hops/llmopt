@@ -3567,3 +3567,20 @@ regime tag on every bullet is the fence.
   valid under its registered marginal convention, engine
   legality/teacher selection of the 3 cells undetermined.
   RESULTS.md#L51192
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] Strict-grid
+  constructibility pilot (exact-engine, sacrificial, zero model):
+  the held-out i_unprod cells (I1 term2/term3) ARE constructible
+  as genuine unique teacher-selected labels under the ordinary
+  legal-set/hce law — 52 and 32 distinct burned parents, 2
+  construction families each, all six covered controls feasible
+  from the same families (A CLEAN-GRID-FEASIBLE on the frozen
+  SPACE-3+4 union); route required real heurisch blockers
+  (op-cap/inner-Integral) plus small non-integrable distractors
+  controlling site ordinal via canonical Add order (spaces 1/2
+  resolved C, space 3 D on the family-diversity clause);
+  i_parts NOT constructible in any of the four spaces (heurisch
+  or `together` always outranks); scope: constructibility facts
+  only, never difficulty/learnability, all 566 pilot parents
+  burned, final challenge + inferential law preregistered later.
+  RESULTS.md#L51335

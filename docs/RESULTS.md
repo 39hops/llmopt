@@ -51331,3 +51331,187 @@ selection of the 3 cells UNDETERMINED; the prior desk's numbers
 remain correct under its registered convention — this is a
 READING requalification, not a retraction of counts; after
 booking commit/push, census, STOP.
+
+## OBSERVATION MATH-CYBER-1-SVP-STRICT-GRID-CONSTRUCTIBILITY-DESK-0: A CLEAN-GRID-FEASIBLE for the i_unprod strict grid — held-out I1 term2/term3 arise as genuine unique teacher-selected labels (52 / 32 distinct burned parents, 2 construction families each) with all six covered controls feasible from the same families; four frozen constructor spaces resolved C / C / D / A-on-union; i_parts NOT constructible in any tried space (2026-08-27, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-27): assessment +
+sacrificial exact-engine constructibility pilot. Zero
+checkpoint/model access, zero inference, zero training, zero
+scoring of any arm; the pilot inspected exact-engine outputs
+only. ALL 566 pilot parents (168 + 148 + 220 + 30 attempts) are
+BURNED: none may enter a final challenge. Instruments
+scratch/mathworld1_svpgriddesk{,2,3,4}.py — each space's
+constructor grid and gates COMMITTED BEFORE its first run
+(53d73458 / 08d62560 / 3fa02d7a / 6dacb0b7, SPACE-4 rerun under
+audit fixes at e8c82d88); the shared A/B/C/D
+thresholds, success definition, and precedence were frozen in the
+v1 driver docstring before any attempt anywhere. Receipts
+logs/mathworld1/svpgriddesk{,2,3,4}_receipt.json (attempt-level
+rows with parent sstr/sha, signatures, outcomes). Training pin
+a943ba7f gate-fired in each space; the held-out/covered grid was
+re-derived from the training artifact and gate-checked each run.
+
+LABEL-VALIDITY LAW (held everywhere): a success requires the full
+frozen chain on the final parent expression — stable legal-set
+enumeration (double-enumeration law), exact ActionProgram
+derivation for EVERY candidate in the set, and the target cell
+being the teacher argmin under the standing (hce, name, key) law
+— never an assigned label. Site ordinals and term indices were
+MEASURED from the final parent (first-preorder-unique site law /
+canonical Add order), never assumed; intent was computed
+deterministically pre-teacher (measured target-site ordinal x the
+within-rule minimal-hce component). HCE/controller scoring was
+never modified.
+
+SPACE HISTORY (each verdict mechanical under the frozen rule):
+- SPACE-1 (168 attempts): C-on-space — 168/168 lost to
+  i_heurisch (chosen at the ordinal-0 site in 90 attempts and
+  ordinal-1 in 78). Driver's account, not a receipt field: the
+  v1 blocking terms sin(x^2)/exp(x^2) and distractors exp(x)/x,
+  sin(x)/x all admit sympy special-function antiderivatives
+  (Fresnel S, erfi, Ei, Si).
+  The registered house expectation (D or B) was WRONG on this
+  space; heurisch dominance was named as a risk but the blocking
+  terms failed.
+- SPACE-2 (148 attempts; the real heurisch blockers per
+  rules.py's own gate — count_ops > 100 or inner Integral):
+  teacher selection now works — 143/148 successes, term indices
+  0-4 reached (term4 lies outside the six frozen covered control
+  cells) — but in all 144 U-F3 attempts the measured target
+  ordinal was 0 and both held-out I1 cells stayed at zero
+  (receipt held_out_zero) => C-on-space; the canonical-Add
+  explanation (the op-heavy blocker sorting after the target) is
+  the driver's account, not separately measured.
+  (Two process disclosures: the originally committed blocker
+  sizes failed the >100-op gate BEFORE any attempt ran — zero
+  examples under the failed freeze — and were raised in a
+  committed pre-run amendment at 08d62560; the space's first
+  execution was killed by a 10-minute shell wall at attempt
+  78/148 with no receipt written, and the deterministic space
+  was rerun from the start in one process.)
+- SPACE-3 (220 attempts; distractor axis = SMALL heurisch-proof
+  integrands — sp.integrate returns an unevaluated Integral,
+  filtered by i_heurisch's F.has(Integral) gate — x**x and
+  1/(x+log(x)) sort BEFORE the target giving ordinal 1, and
+  sin(sin(x)) sorts AFTER it giving matched ordinal-0 controls
+  from the same family/parameters): 216/216 U-F3v3 attempts
+  succeeded (of 220 in the space; the 4 P-F3 i_parts attempts
+  failed),
+  held-out I1 term2 48 / term3 28, all six covered controls hit
+  — but ONE family => D TOO-SCARCE mechanically (the frozen
+  >= 2-family diversity clause doing its construct-validity
+  job).
+- SPACE-4 (30 attempts; second family U-F4 = the two-pair
+  construction ported to the small distractors; union verdict
+  law over SPACE-3 + SPACE-4 frozen in the committed driver
+  BEFORE this space ran): 30/30 successes =>
+  A CLEAN-GRID-FEASIBLE on the union.
+
+FINAL GRID (union, distinct burned parents; every listed cell
+>= 2 families except term4 cells):
+  covered I0: term0 12, term1 24, term2 26, term3 16 (term4 4,
+  single family);
+  covered I1: term0 24, term1 48 (term4 8, single family);
+  HELD-OUT I1: term2 52, term3 32.
+Both held-out cells FEASIBLE (>= 5 parents, >= 2 families); all
+six covered controls feasible; family overlap = both families;
+held-out-only families: none. Zero duplicate parents and zero
+duplicate visible states within each space (receipt fields), and
+the rerun SPACE-4 receipt's union-scoped recount over all 250
+SPACE-3+4 rows is also 0/0; the 566-row four-space union carries
+566 distinct parent shas (checked at booking, not a receipt
+field). Failure anatomy:
+SPACE-3 has 4 chosen_other (P-F3 i_parts, all lost to
+`together`) and SPACE-4 zero; SPACE-2 has 4 chosen_other (P-F2
+i_parts, also to `together`) plus 1 legal_set_unstable; SPACE-1's
+168 are all chosen_other to i_heurisch. Zero wall_cap outcomes
+anywhere (the registered 120 s per-attempt cap never fired) and
+zero program-derivation failures in scored attempts (the
+registered term_ambiguous risk never materialized).
+
+i_PARTS (SECONDARY, per the GO never allowed to gate): NOT
+constructible in any tried space — 0 successes across all four.
+On heurisch-solvable Mul integrands heurisch wins (-100); on the
+op-blocked m*Q forms `together` outranked i_parts in all 8
+attempts. The u_choice held-out cell (i_parts I1 u_choice0)
+remains without a demonstrated construction; any future i_parts
+challenge needs a new construction idea, not parameter tuning of
+these.
+
+FINGERPRINTS (template-separability assessment, registered
+requirement): (1) distractor identity <-> target ordinal is
+PERFECTLY correlated in SPACE-3/4 (x**x, 1/(x+log(x)) -> I1;
+sin(sin(x)) -> I0) — inherent, because the sibling site DEFINES
+the ordinal; consequence: held-out (I1) v covered-I0 successes
+are separable by distractor surface. The clean contrast is
+WITHIN ordinal 1: covered I1 term0/1 v held-out I1 term2/3 share
+family and distractor distributions and differ by the
+(P, T, c, k) parameters that move the winner's canonical term
+position — a deterministic constructor makes the cell a function
+of template parameters by construction, so a final challenge
+must randomize nuisance parameters within cell and report this
+separability honestly. (2) In SPACE-3/4, where chosen == intended by the success
+definition, achieved indices span 0-4 with mass at 1-2 (SPACE-3
+I1: 20/40/48/28/8) — targeting is LOSSY as registered (canonical
+ordering assigns indices; the constructor only biases them).
+
+CHALLENGE-METRIC ASSESSMENT (design only, nothing frozen): the
+future primary unit SHOULD be the held-out generalization
+penalty difference — penalty_F = accF(covered) - accF(held-out)
+v penalty_H likewise, interest in penalty_F < penalty_H — which
+partially controls generic synthetic-distribution difficulty;
+the within-ordinal-1 stratum is the cleanest paired frame
+(term0/1 v term2/3, same families/distractors). Population
+sizing established by this pilot: 52 and 32 distinct parents for
+the two held-out cells from the 250-attempt SPACE-3+4 union
+(about 21 and 13 per 100 grid points), and fresh
+populations must use NEW parameter values (all 566 pilot
+parents burned). Paired per-parent constructions look feasible
+(same (P,T,c,w,D) with k toggled moves the index) but were not
+built. Any inferential law is preregistered AFTER this pilot
+and BEFORE final challenge bytes exist — none is frozen here.
+
+INTERPRETATION FENCE (carried verbatim in scope): a future
+FACTOR advantage on held-out grid cells would support "explicit
+typed action-factor alignment helps recombine previously trained
+within-rule coordinates" — it would NOT establish broad OOD math
+generalization, semantic geometry among rule IDs, universal
+compositionality, or solve-rate improvement; the rule ID remains
+a categorical OPCODE_ORDER code. A HASH advantage or null would
+concern this frozen grid-completion problem only.
+
+DECISION (mechanical, frozen union law): A CLEAN-GRID-FEASIBLE
+— sufficient diverse held-out labels + matched covered controls
+exist under the ordinary teacher law for the i_unprod grid.
+Recommended next GO: freeze the final challenge constructor
+(fresh parameter ranges, nuisance randomization within cell,
+paired covered/held-out cells, the penalty contrast) as its own
+pre-registration; nothing generated under this GO counts.
+
+DISCLOSURES (receipt audit, adopted): the first SPACE-4 receipt
+omitted its OWN driver from start_provenance (a string-
+substitution derivation from v3 kept v3's file list) — the
+auditor's blocker; fixed at e8c82d88 (self-pin first, SPACE-3
+receipt sha pinned with a space-identity gate, duplicate counts
+rescoped to the 250-row union) and the space deterministically
+rerun with identical numbers. TWO superseded SPACE-4 receipts
+exist (moved out of logs/, preserved in the session scratchpad):
+the first from the unfixed driver, the second because a failed
+fix-script chain moved the receipt and reran the still-unfixed
+driver before the fixes actually landed — three executions total,
+all 30/30 with identical cell tallies. Also noted by the auditor:
+v2's op gate covers log(x)*Q but not atan(x)*Q (auditor
+recomputed both atan forms > 100, so the space was blocked as
+intended); v1's receipt carries no space label (filename
+disambiguates). The GO's interpretation-fence wording is carried
+from the GO message itself (chat), not a repo artifact — the
+fence text above is the booking's rendering of it.
+
+FENCES. Exact-engine desk pilot; deterministic given the frozen
+grids (sympy canonical ordering is version-pinned by the
+environment); zero model access anywhere; success counts are
+CONSTRUCTIBILITY facts, never difficulty or learnability claims;
+the four receipts carry every attempt row including failures; no
+final challenge bytes exist; i_parts scope as stated; pilot
+parents burned by listing (parent shas in receipts); after
+booking commit/push, census, STOP.
