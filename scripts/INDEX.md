@@ -3015,6 +3015,16 @@ MATH-CYBER-1 SVP-REPLICATION-DESIGN-0 — freeze the two additional paired-birth
 - `state_bytes(seed, vocab)`
 - `main()`
 
+### scratch/mathworld1_svpsuppdesk.py
+MATH-CYBER-1 SVP-SUPPORT-OPPORTUNITY-DESK-0 — outcome-independent census of the frozen training/eval support behind the FACTOR/HASH null: exact semantic tuple frequency structure of the 73,324 training targets (entropy, effective support, HHI, per-coordinate and joint supports) plus a five-class OOV hierarchy over every labeled action, rival action, and decision in all three frozen eval bands. No model loaded, no scores consumed, no training, no new task generation.
+
+- `fsha(p) -> str`
+- `tup(d)`
+- `quantile(sorted_vals, q)`
+- `classify(t, train_tup, train_rules, field_support)`
+- `band_census(path, n_expected, train_tup, train_rules, field_support)`
+- `main()`
+
 ### scratch/mathworld1_svptokdesk.py
 MATH-CYBER-1 SVP-TOKEN-CHANNEL-DESK-0 — identifiability census of ActionProgram token channels: which token IDs carry rule / site kind / site ordinal / param kind / param index / separators in the 73,324 training program targets, and how much each ID is ALSO exposed through STATE-view text (state targets + shared prompts). Pure counting; no model, no training.
 
