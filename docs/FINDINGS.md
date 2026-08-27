@@ -3584,3 +3584,18 @@ regime tag on every bullet is the fence.
   only, never difficulty/learnability, all 566 pilot parents
   burned, final challenge + inferential law preregistered later.
   RESULTS.md#L51335
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] CHALLENGE NO-FIRE
+  (strict-grid final challenge, frozen law): all 240 fresh
+  CH-F3/CH-F4 bases qualified with zero block failures (the
+  pilot construction recipe is fully robust on fresh
+  parameters), but stratum CH-F4|t1 filled only 4 of the frozen
+  N=12 — the fresh two-pair bank's term-index distribution
+  shifted under the parameter change (CH-F4 t0..t5 =
+  24/4/12/20/28/8) exactly where the registered transport
+  sentence placed the risk, and the NO-FIRE law did its job; no
+  substitution, no pooling, no N revision; zero challenge
+  decision bytes exist and the frozen scoring/inferential law is
+  unconsumed; scope: instrument-population result, never a
+  FACTOR/HASH claim; successor design options booked as
+  assessment, each its own GO. RESULTS.md#L51720

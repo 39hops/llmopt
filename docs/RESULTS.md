@@ -51716,3 +51716,96 @@ after inspection; pilot parents burned; a mid-run crash leaves a partial
 refuse-if-exists directory whose manual delete + deterministic
 rerun is NOT a retry (the horizon is frozen); after booking
 commit/push, census, STOP.
+
+## VERDICT MATH-CYBER-1-SVP-STRICT-GRID-CHALLENGE-DESIGN-0: CHALLENGE NO-FIRE by the frozen law — all 240 fresh bases qualified with zero block failures, but stratum CH-F4|t1 filled 4 of the frozen N=12 (fresh-bank term-index distribution shifted under the parameter change the registered prior named); no substitution, no N-lowering, zero challenge decision bytes exist (2026-08-27, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-STRICT-GRID-CHALLENGE-DESIGN-0
+(committed with the driver at 9da97a4e BEFORE any byte was
+generated; design audit pre-commit caught and fixed a fatal
+horizon-arithmetic error — the first draft's CH-F4 "12*2*2 = 96"
+was 48 — plus seven should-fixes, all folded and disclosed in
+the prereg text). One deterministic materialization run
+(receipted wall 353.3 s), anti-peeking order held: freeze ->
+design audit -> commit -> materialize -> qualify -> mechanical
+NO-FIRE. Zero model/checkpoint access anywhere. Receipt
+logs/mathworld1/svpchal/svpchal_receipt.json (completion_commit
+9da97a4e); blocks.jsonl carries all 240 base records — its
+sha256 is BOOKED HERE because the NO-FIRE receipt branch carries
+no blocks_sha field (receipt-audit should-fix; the frozen
+receipt is not edited):
+21e7e635244574266ec876c1c8c76f8d7d2a77e20c2f6680d3ee48db372c4d10.
+decisions.jsonl was NEVER written — no challenge decision bytes
+exist to leak. The 566-pilot-parent novelty gate and the
+horizon-uniqueness gate fired in-run (SystemExit gates; receipt
+existence = pass — neither is a receipt field, disclosed).
+
+RESULT (mechanical): every one of the 240 bases QUALIFIED — all
+720 parents (240 x 3, derived — valid because zero bases failed)
+passed the full svpeval3-mirrored candidate law with teacher
+label i_unprod, identical term index across the three distractor
+variants, and measured ordinals 1/1/0 — these per-variant facts
+are IMPLIED by the pass predicate (any violation sets a
+first-cause fail on the block row; blocks.jsonl carries no
+per-variant ordinal/rule fields) — (block_fail_census empty; the pilot's construction recipe is
+fully robust on the fresh banks). But the frozen selection
+requires 12 blocks per {family x term cell 1|2|3}, and the
+qualified stratum counts are CH-F3 t1/t2/t3 = 32/40/38 (all
+clear) v CH-F4 t1/t2/t3 = 4/12/20 — CH-F4|t1 = 4 < 12 =>
+CHALLENGE NO-FIRE, STOP. No stratum substitution, no family
+pooling, no N revision (all frozen prohibitions).
+
+REGISTERED-PRIOR ACCOUNTING: the prior's FILL clause ("strata
+fill at N=12") is WRONG; its other clauses were only partially
+tested — the semantic and pin gates ran pre-construction and
+passed, while the novelty/leakage gates sit after selection and
+were never reached on the NO-FIRE path — and the prereg's own
+transport sentence is the diagnosis it registered in advance:
+"the term cell is a deterministic function of parameters, so
+these are proxies, not sampling estimates" and "the NO-FIRE law
+is the protection if the transport fails."
+It failed exactly there: the fresh CH-F4 frequency pairs
+((4,5)/(5,4)/(5,3)/(3,4) v the pilot's (2,3)) and
+higher-degree P banks moved the winner's canonical position
+away from term 1 (full fresh census per family: CH-F3 t0..t5 =
+10/32/40/38/16/8; CH-F4 = 24/4/12/20/28/8 — CH-F4 mass moved to
+t0/t4; t3 at 20 landed above the ~18 forecast while t2 at 12
+sat exactly on the bar, 0.67x forecast).
+Descriptive, from blocks.jsonl; the mechanism (canonical Add
+sort under changed frequencies/degrees) is the driver's account,
+not separately measured.
+
+WHAT SURVIVES FOR THE NEXT DESIGN (assessment, nothing armed):
+the qualification recipe is 240/240 on fresh parameters — the
+scarce resource is TERM-1 CONTROL yield in the two-pair family,
+not held-out constructibility (CH-F4 held-out strata t2/t3 =
+12/20 — t2 exactly at the bar with zero margin, t3 clear;
+CH-F3 everything clear). Options for
+a successor prereg, each requiring its own GO: (a) enlarge only
+the CH-F4 bank with parameters chosen to restore t1 mass (a NEW
+frozen horizon, priced from this run's fresh census rather than
+the pilot's); (b) redefine the control group as term-matched
+within family without requiring t1 from both families; (c) drop
+the CH-F4 t1 stratum requirement explicitly. Each is a LAW
+change and none was exercised — this run books the honest
+NO-FIRE its own law demanded.
+
+FROZEN-LAW RESIDUE THAT REMAINS VALID: the scoring + inferential
+law registered in the prereg (held-out McNemar primary, matched
+site-drop sign test with the STRONG-FACTOR/STRONG-HASH
+conjunction, calibration, bridge, codeword rider, checkpoint sha
+pins) is UNCONSUMED — no byte was scored and no envelope opened;
+a successor design may re-register it verbatim or amend it
+openly, since no challenge bytes exist that could have informed
+it.
+
+FENCES. Mac; deterministic given the frozen horizon; the 240
+qualified parents (720 constructed states) are BURNED for any
+final challenge, same as the pilot's 566 (they were inspected at
+qualification); zero model access; the NO-FIRE is an
+instrument-population result, never a claim about FACTOR/HASH;
+i_parts still parked; the prereg's SCOPE fence carries forward
+to any successor (two fixed held-out semantic action cells under
+one frozen HASH permutation — never breadth across unseen action
+types, never broad OOD generalization); next design gets its own
+GO and prereg;
+after booking commit/push, census, STOP.
