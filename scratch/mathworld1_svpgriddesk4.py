@@ -1,7 +1,8 @@
 """MATH-CYBER-1 SVP-STRICT-GRID-CONSTRUCTIBILITY-DESK-0, SPACE-4 —
 fourth frozen constructor space, committed BEFORE its first run.
-SPACE-3 (svpgriddesk3_receipt.json) achieved 216/216 successes
-with both held-out cells rich (I1 term2 48 / term3 28) and all
+SPACE-3 (svpgriddesk3_receipt.json) achieved 216/216 U-F3v3
+family successes (216 of its 220 attempts; the 4 non-successes
+are secondary P-F3 rows) with both held-out cells rich (I1 term2 48 / term3 28) and all
 six covered controls hit, but resolved D TOO-SCARCE mechanically:
 every success came from the single U-F3v3 family and the frozen
 feasibility clause requires >= 2 families. SPACE-4 adds the
@@ -20,10 +21,11 @@ cannot integrate (sp.integrate returns an unevaluated Integral,
 filtered by i_heurisch's own F.has(Integral) gate): x**x and
 1/(x + log(x)) sort BEFORE the target (target ordinal 1 — the
 held-out band), sin(sin(x)) sorts AFTER it (target ordinal 0 —
-matched covered controls from the SAME family/parameters). Same
-success definition and A/B/C/D thresholds/precedence as v1
-(docstring of scratch/mathworld1_svpgriddesk.py), applied to THIS
-space. Zero model access; pilot parents BURNED.
+matched covered controls from the SAME family/parameters).
+Success definition and A/B/C/D thresholds/precedence from v1
+(docstring of scratch/mathworld1_svpgriddesk.py), applied to the
+SPACE-3 union SPACE-4 success set per the union law above. Zero
+model access; pilot parents BURNED.
 
 FROZEN SPACE-4 (deterministic, each grid point once):
   U-F4: state = Integral(f_t, x) + Integral(D, x), where
@@ -85,7 +87,8 @@ def main():
         F = sp.integrate(D, X)
         gate(F.has(sp.Integral), f"DISTRACTOR INTEGRABLE {D}")
     START = start_provenance(
-        ["scratch/mathworld1_svpgriddesk3.py",
+        ["scratch/mathworld1_svpgriddesk4.py",
+         "scratch/mathworld1_svpgriddesk3.py",
          "scratch/mathworld1_svpgriddesk2.py",
          "scratch/mathworld1_svpgriddesk.py",
          "scratch/mathworld1_svpeval.py",
@@ -97,6 +100,7 @@ def main():
          "llmopt/lab/provenance.py"])
     gate(PRIOR.exists(), "SPACE-3 RECEIPT MISSING")
     prior = json.loads(PRIOR.read_text())
+    gate(prior.get("space") == "SPACE-3", "PRIOR NOT SPACE-3")
     space = build_space4()
     gate(len(space) == 30, f"SPACE SIZE {len(space)}")
     rows = []
@@ -137,8 +141,11 @@ def main():
             succ[cell].add(r["parent_sstr"])
             succ_fams[cell].add(r["family"])
             fam_cells[r["family"]].add(cell)
-    dup_parent = len(rows) - len({r["parent_sha"] for r in rows})
-    dup_sstr = len(rows) - len({r["parent_sstr"] for r in rows})
+    union_rows = rows + prior["attempts"]
+    dup_parent = len(union_rows) - len(
+        {r["parent_sha"] for r in union_rows})
+    dup_sstr = len(union_rows) - len(
+        {r["parent_sstr"] for r in union_rows})
 
     def feasible(c):
         return len(succ[c]) >= 5 and len(succ_fams[c]) >= 2
@@ -193,7 +200,8 @@ def main():
         "duplicate_visible_state_count": dup_sstr,
         "n_attempts": len(rows),
         "attempts": rows,
-        "pins": {str(PAIRED): fsha(PAIRED)},
+        "pins": {str(PAIRED): fsha(PAIRED),
+                 str(PRIOR): fsha(PRIOR)},
         "start": START, "completion_commit": completion_commit()}
     RECEIPT.write_text(json.dumps(receipt, indent=1))
     out = {k: v for k, v in receipt.items()
