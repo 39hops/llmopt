@@ -1,0 +1,4789 @@
+{
+ "frozen_precedence": "WHOLE-COVERED > NEW-RULE > NEW-SITE > NEW-PARAMETER > STRICT-WITHIN-RULE-RECOMBINATION > CROSS-RULE-PARAM-RECOMBINATION; R=rule, S=(site_kind,site_ordinal), P=(param_kind,param_index); support = the 73,324 training targets; prior marginal five-field class carried alongside as provenance; population = primary-eligible decisions only (72/79/69)",
+ "training": {
+  "rows": 73324,
+  "whole_support": [
+   "expand W -1 none -1",
+   "i_ansatz_exp I 0 none -1",
+   "i_const I 0 none -1",
+   "i_const_factor I 0 none -1",
+   "i_const_factor I 1 none -1",
+   "i_heurisch I 0 none -1",
+   "i_heurisch I 1 none -1",
+   "i_heurisch I 2 none -1",
+   "i_heurisch I 3 none -1",
+   "i_inverse_trig I 0 none -1",
+   "i_inverse_trig I 1 none -1",
+   "i_inverse_trig I 3 none -1",
+   "i_linear_basis I 0 none -1",
+   "i_linear_basis I 1 none -1",
+   "i_linear_basis I 2 none -1",
+   "i_linear_basis I 3 none -1",
+   "i_log_power I 0 none -1",
+   "i_log_power I 1 none -1",
+   "i_parts I 0 u_choice 0",
+   "i_parts I 0 u_choice 1",
+   "i_parts I 1 u_choice 1",
+   "i_sqrt_basis I 0 none -1",
+   "i_sqrt_basis I 2 none -1",
+   "i_sum I 0 none -1",
+   "i_transcend_div I 0 none -1",
+   "i_unprod I 0 term_index 0",
+   "i_unprod I 0 term_index 1",
+   "i_unprod I 0 term_index 2",
+   "i_unprod I 0 term_index 3",
+   "i_unprod I 1 term_index 0",
+   "i_unprod I 1 term_index 1",
+   "i_usub I 0 none -1",
+   "together W -1 none -1"
+  ],
+  "n_whole": 33,
+  "n_rules": 15,
+  "n_sites": 5,
+  "n_params": 7,
+  "n_rule_site_pairs": 28,
+  "n_rule_param_pairs": 19,
+  "per_rule_grid": {
+   "expand": {
+    "sites": [
+     "('W', -1)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 1,
+    "seen": 1
+   },
+   "i_ansatz_exp": {
+    "sites": [
+     "('I', 0)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 1,
+    "seen": 1
+   },
+   "i_const": {
+    "sites": [
+     "('I', 0)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 1,
+    "seen": 1
+   },
+   "i_const_factor": {
+    "sites": [
+     "('I', 0)",
+     "('I', 1)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 2,
+    "seen": 2
+   },
+   "i_heurisch": {
+    "sites": [
+     "('I', 0)",
+     "('I', 1)",
+     "('I', 2)",
+     "('I', 3)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 4,
+    "seen": 4
+   },
+   "i_inverse_trig": {
+    "sites": [
+     "('I', 0)",
+     "('I', 1)",
+     "('I', 3)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 3,
+    "seen": 3
+   },
+   "i_linear_basis": {
+    "sites": [
+     "('I', 0)",
+     "('I', 1)",
+     "('I', 2)",
+     "('I', 3)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 4,
+    "seen": 4
+   },
+   "i_log_power": {
+    "sites": [
+     "('I', 0)",
+     "('I', 1)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 2,
+    "seen": 2
+   },
+   "i_parts": {
+    "sites": [
+     "('I', 0)",
+     "('I', 1)"
+    ],
+    "params": [
+     "('u_choice', 0)",
+     "('u_choice', 1)"
+    ],
+    "grid": 4,
+    "seen": 3
+   },
+   "i_sqrt_basis": {
+    "sites": [
+     "('I', 0)",
+     "('I', 2)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 2,
+    "seen": 2
+   },
+   "i_sum": {
+    "sites": [
+     "('I', 0)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 1,
+    "seen": 1
+   },
+   "i_transcend_div": {
+    "sites": [
+     "('I', 0)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 1,
+    "seen": 1
+   },
+   "i_unprod": {
+    "sites": [
+     "('I', 0)",
+     "('I', 1)"
+    ],
+    "params": [
+     "('term_index', 0)",
+     "('term_index', 1)",
+     "('term_index', 2)",
+     "('term_index', 3)"
+    ],
+    "grid": 8,
+    "seen": 6
+   },
+   "i_usub": {
+    "sites": [
+     "('I', 0)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 1,
+    "seen": 1
+   },
+   "together": {
+    "sites": [
+     "('W', -1)"
+    ],
+    "params": [
+     "('none', -1)"
+    ],
+    "grid": 1,
+    "seen": 1
+   }
+  },
+  "latent_strict_cells": [
+   "i_parts I 1 u_choice 0",
+   "i_unprod I 1 term_index 2",
+   "i_unprod I 1 term_index 3"
+  ],
+  "n_latent_strict_cells": 3
+ },
+ "bands": {
+  "band1": {
+   "n_primary": 72,
+   "labels": {
+    "WHOLE-COVERED": 71,
+    "NEW-RULE": 1
+   },
+   "rivals": {
+    "NEW-RULE": 149,
+    "WHOLE-COVERED": 278,
+    "NEW-PARAMETER": 10
+   },
+   "decisions_containing": {
+    "WHOLE-COVERED": 72,
+    "NEW-RULE": 65,
+    "NEW-PARAMETER": 10
+   },
+   "semantic_x_marginal_crosstab": {
+    "WHOLE-COVERED | WHOLE-COVERED": 349,
+    "NEW-RULE | NEW-RULE": 150,
+    "NEW-PARAMETER | RECOMBINATION-OOV": 10
+   },
+   "strict_recombination_records": [],
+   "noncovered_actions": [
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": true,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    }
+   ]
+  },
+  "band2": {
+   "n_primary": 79,
+   "labels": {
+    "WHOLE-COVERED": 78,
+    "NEW-RULE": 1
+   },
+   "rivals": {
+    "NEW-RULE": 171,
+    "WHOLE-COVERED": 301,
+    "NEW-PARAMETER": 11
+   },
+   "decisions_containing": {
+    "WHOLE-COVERED": 79,
+    "NEW-RULE": 72,
+    "NEW-PARAMETER": 10
+   },
+   "semantic_x_marginal_crosstab": {
+    "WHOLE-COVERED | WHOLE-COVERED": 379,
+    "NEW-RULE | NEW-RULE": 172,
+    "NEW-PARAMETER | RECOMBINATION-OOV": 11
+   },
+   "strict_recombination_records": [],
+   "noncovered_actions": [
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": true,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 3",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    }
+   ]
+  },
+  "band3": {
+   "n_primary": 69,
+   "labels": {
+    "WHOLE-COVERED": 69
+   },
+   "rivals": {
+    "NEW-RULE": 145,
+    "WHOLE-COVERED": 271,
+    "NEW-PARAMETER": 9
+   },
+   "decisions_containing": {
+    "WHOLE-COVERED": 69,
+    "NEW-RULE": 66,
+    "NEW-PARAMETER": 9
+   },
+   "semantic_x_marginal_crosstab": {
+    "WHOLE-COVERED | WHOLE-COVERED": 340,
+    "NEW-RULE | NEW-RULE": 145,
+    "NEW-PARAMETER | RECOMBINATION-OOV": 8,
+    "NEW-PARAMETER | NEW-FACTOR-VALUE": 1
+   },
+   "strict_recombination_records": [],
+   "noncovered_actions": [
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_unprod I 0 term_index 4",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "trigsimp W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_apart I 0 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "euler W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    },
+    {
+     "tuple": "cancel W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "factor W -1 none -1",
+     "class": "NEW-RULE",
+     "is_label": false,
+     "rs_seen": false,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": true
+    },
+    {
+     "tuple": "i_parts I 0 u_choice 2",
+     "class": "NEW-PARAMETER",
+     "is_label": false,
+     "rs_seen": true,
+     "rp_seen": false,
+     "s_marginal_seen": true,
+     "p_marginal_seen": false
+    }
+   ]
+  }
+ },
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpeval/decisions.jsonl": "f63100a62f3091d544750d679483009a473261c587f3165241406a86253858c6",
+  "logs/mathworld1/svpeval2/decisions.jsonl": "89efbe0ea447ee937c0c130d5419112921a2dd6c2159c6c2112cfd5e92f79315",
+  "logs/mathworld1/svpeval3/decisions.jsonl": "2ff5433249622df9d421cf8014131b3907092a943040bb7b20f46f1afffb7efa"
+ },
+ "start": {
+  "start_commit": "09bfa598",
+  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_svpsemdesk.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpsemdesk.py": "9fb33232cd75cee8917a3aeaf882c88ef6ae63290e02b25f22059ded6db98a23",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "09bfa598"
+}

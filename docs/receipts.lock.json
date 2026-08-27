@@ -1209,6 +1209,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpsemdesk_receipt.json": {
+   "bytes": 108774,
+   "exists": true,
+   "sha256": "cc1665a84006642deb3df66dc999a9b2ece6bd7f993f7a5e66b4f57936618fe2",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpsuppdesk_receipt.json": {
    "bytes": 5304,
    "exists": true,
