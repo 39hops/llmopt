@@ -3015,6 +3015,17 @@ MATH-CYBER-1 SVP-REPLICATION-DESIGN-0 — freeze the two additional paired-birth
 - `state_bytes(seed, vocab)`
 - `main()`
 
+### scratch/mathworld1_svpsemdesk.py
+MATH-CYBER-1 SVP-SEMANTIC-SUPPORT-QUAL-0 — semantic-factor support census amending the marginal-field convention of SVP-SUPPORT-OPPORTUNITY-DESK-0. Support-analysis ontology only: R = rule, S = (site_kind, site_ordinal), P = (param_kind, param_index); the trained FACTOR encoding is untouched. No model loaded, no scores consumed, no training, no new task generation.
+
+- `fsha(p) -> str`
+- `tup(d)`
+- `rsp(t)`
+- `class Support` (add, semantic_class, marginal_class, flags)
+- `tkey(t)`
+- `band_census(path, n_expected, sup)`
+- `main()`
+
 ### scratch/mathworld1_svpsuppdesk.py
 MATH-CYBER-1 SVP-SUPPORT-OPPORTUNITY-DESK-0 — outcome-independent census of the frozen training/eval support behind the FACTOR/HASH null: exact semantic tuple frequency structure of the 73,324 training targets (entropy, effective support, HHI, per-coordinate and joint supports) plus a five-class OOV hierarchy over every labeled action, rival action, and decision in all three frozen eval bands. No model loaded, no scores consumed, no training, no new task generation.
 
