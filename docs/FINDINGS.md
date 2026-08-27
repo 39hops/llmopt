@@ -3530,3 +3530,19 @@ regime tag on every bullet is the fence.
   token-statistics mediation untested; next desks banked
   (larger action support; replication seeds 13001/14001).
   RESULTS.md#L50928
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] Support-opportunity
+  census (deterministic, auditor-recomputed):
+  none of the three scored SVP bands (220 primary decisions)
+  tested selection of an unseen whole-action combination —
+  labels RECOMBINATION-OOV 0/220; training support is 33 tuples
+  with effective support exp(H)=7.94, top-5 mass 83.6%,
+  HHI 0.159; recombination-OOV rival mass is 29 and confined to
+  the i_parts u_choice family; frozen decision rule (5%
+  threshold, named before counting) resolves B: design a
+  prospective OOV-LABEL/RECOMBINATION challenge before spending
+  replication seeds 13001/14001; scope: deterministic census of
+  the pinned artifacts, primary-eligible decisions only, marginal
+  field-support convention, zero model access — prices
+  opportunity, never explains the INCONCLUSIVE.
+  RESULTS.md#L51045

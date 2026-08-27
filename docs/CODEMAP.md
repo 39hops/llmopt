@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 329, spec-cited 89, cited-but-library 61
+Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 330, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -286,7 +286,7 @@ Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 329, spec-ci
 | mathworld1 | mathworld1_stateobs.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_substrate_desk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svpadj.py | results-cited | RESULTS | RESULTS×6 | — | 2 |
-| mathworld1 | mathworld1_svpbirth.py | results-cited | RESULTS | RESULTS×5 | — | 9 |
+| mathworld1 | mathworld1_svpbirth.py | results-cited | RESULTS | RESULTS×5 | — | 10 |
 | mathworld1 | mathworld1_svpcode.py | results-cited | RESULTS | RESULTS×1 | — | 3 |
 | mathworld1 | mathworld1_svpcovdesk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svpdesign.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -298,6 +298,7 @@ Census: UNCITED 221, library 73, reproduce-pinned 10, results-cited 329, spec-ci
 | mathworld1 | mathworld1_svpgenadj.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svpldesk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svprep.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_svpsuppdesk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svptokdesk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_terminal.py | UNCITED | — | — | — | — |
 | mathworld1 | mathworld1_unprod_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |

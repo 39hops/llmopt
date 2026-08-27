@@ -51041,3 +51041,150 @@ attribution fence; dual audit before booking; receipts
 force-added small-text; after booking commit/push, census,
 STOP.
 
+
+## OBSERVATION MATH-CYBER-1-SVP-SUPPORT-OPPORTUNITY-DESK-0: none of the three scored SVP bands on the record (220 primary decisions) tested selection of an unseen whole-action combination — labels RECOMBINATION-OOV 0/220 across all three frozen bands; training support is 33 tuples with effective support exp(H)=7.94 and top-5 mass 83.6%; frozen decision rule resolves B: design a prospective OOV-LABEL/RECOMBINATION challenge before replications (2026-08-27, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-27): assessment + frozen-
+artifact census only. Zero model/checkpoint access, zero training,
+zero new task generation. Instrument
+scratch/mathworld1_svpsuppdesk.py; receipt
+logs/mathworld1/svpsuppdesk_receipt.json. All four pin gates fired
+in-run (receipt existence = pass; digests recorded: training
+shard a943ba7f..., band1/2/3 decisions f63100a6... /
+89efbe0e... / 2ff54332...). Classification precedence and the
+decision thresholds were FROZEN before counting (scratchpad,
+quoted below); the registered OUTSIDE hypothesis was B.
+
+FROZEN LAW (before any count): exclusive precedence WHOLE-COVERED
+> NEW-RULE > NEW-FACTOR-VALUE > RECOMBINATION-OOV, field support =
+MARGINAL per-field value support among the 73,324 training
+TARGETS; RULE-COVERED-OOV reported as the nonexclusive union of
+the last two. Decision: B iff pooled RECOMBINATION-OOV labels
+< 5% of 220; A iff >= 5% pooled and >= 1 in each of >= 2 bands; C
+only if the census exposes an issue a recombination challenge
+cannot address (e.g. ~zero recombination-class tuples constructible
+in candidate space, or pin failure).
+
+TRAINING SUPPORT (73,324 targets; house cross-checked against the
+coverage desk RESULTS.md#L49993 — distinct tuples 33 matches):
+distinct whole-action tuples 33; top1/top5/top10 cumulative mass
+23.4% / 83.6% / 97.2%; tuple-frequency order statistics
+(NEAREST-RANK over the 33 frequencies) p10 = 1, median = 36,
+p90 = 10,822, max = 17,160 (i_linear_basis I 0 none -1); Shannon
+entropy H(tuple) = 2.072 nats, effective support exp(H) = 7.94;
+HHI = 0.159. Per-coordinate support: rule 15, site_kind 2
+(I 72,601 / W 723), site_ordinal 5 ({0,1,2,3,-1}; 0 carries
+61,932), param_kind 3 (none 70,198 / term_index 3,123 /
+u_choice 3), param_index 5 ({-1,0,1,2,3}; -1 carries 70,198).
+Joint supports: rule x site 28, rule x param_kind 15,
+rule x site x param_kind 28. Seven tuples appear exactly once;
+param_kind u_choice has THREE total training occurrences.
+
+BAND CLASSIFICATION (primary decisions only; labels / rivals):
+band1 (n=72): labels 71 WHOLE-COVERED + 1 NEW-RULE (trigsimp, per the prior
+coverage desk's oov_labeled_records),
+RECOMBINATION-OOV 0; rivals 278 W / 149 NEW-RULE / 10 RECOMB.
+band2 (n=79): labels 78 W + 1 NEW-RULE (trigsimp), RECOMB 0;
+rivals 301 W / 171 NEW-RULE / 11 RECOMB.
+band3 (n=69): labels 69/69 W (matches the booked census), RECOMB
+0; rivals 271 W / 145 NEW-RULE / 8 RECOMB / 1 NEW-FACTOR-VALUE
+(session-side read of the pinned decision file — class counts
+only in this receipt: i_unprod term_index 4, index value 4 absent
+from the marginal param_index support).
+Decision flags: >=1 RECOMB-OOV rival 10 / 10 / 8; >=1 NEW-RULE
+rival 65 / 72 / 66; only-whole-covered candidate sets 7 / 7 / 3.
+Cross-check (bands 1-2, the ones the coverage desk censused):
+class totals sum exactly to its covered/OOV splits — band1
+149+10+1 = 160 candidate-OOV, band2 171+11+1 = 183.
+
+THE CENTRAL ANSWER: SVP-FACTOR-HASH-SCORE-0 — and the other two
+scored bands on the record (svpeval/svpeval2, the pinned artifact
+set) — never tested prediction of a correct unseen
+whole-action combination. Labels RECOMBINATION-OOV = 0/220 pooled
+(0/72, 0/79, 0/69). The two NEW-RULE labels (both trigsimp, bands
+1-2) are unlearnable-by-composition cells, not recombination
+tests, and band3 — the only band the F/H verdict consumed — has
+zero OOV labels of any class. Every RECOMBINATION-class OOV
+exposure in the scored record is RIVAL-side ranking pressure (the
+only label-side OOV exposures are those two NEW-RULE cells).
+Moreover the recombination-OOV rival mass is 29 (10/11/8 per
+band), and session-side inspection of the pinned decision files
+(rival tuple identities are not receipt fields) attributes all 29
+to ONE rule family: i_parts u_choice recombinations — 10/10/8 of
+(i_parts,I,0,u_choice,2) plus one (i_parts,I,0,u_choice,3) in
+band2 — the
+natural trajectory distribution barely generates recombination
+candidates at all, let alone recombination labels.
+
+REPRESENTATION CAVEAT (registered in the GO, carried): FACTOR
+exposes FIELD BOUNDARIES — reusable decomposition and positional
+alignment of (rule, site, param) — but the rule coordinate is the
+standing OPCODE_ORDER categorical index (a code fact of the
+frozen driver family, not a receipt field) serialized as two base-8
+digits; numeric proximity between rule indices is NOT registered
+semantic similarity. The INCONCLUSIVE at RESULTS.md#L50928
+therefore bears only on reusable decomposition / field alignment,
+NOT on semantically meaningful geometry inside each field — no
+semantic-geometry claim was made or is licensed either way.
+
+ASSESSMENT (the desk question): did the frozen support create
+meaningful opportunities for reusable factorization to beat
+memorized whole-action identity? On the LABEL side: no —
+218 of 220 scored labels lie inside the 33-tuple training
+support (the 2 exceptions are the NEW-RULE trigsimp cells), and
+that support is concentrated: exp(H) = 7.94, top-5 mass 83.6%
+(frequency-weighted quantities, per the fence below). On the RIVAL side: weak and narrow — recombination
+ranking pressure exists but is confined to one thin family
+(u_choice: 3 training occurrences). This does not convert the
+INCONCLUSIVE into an explanation (single realization; the frozen
+non-equivalence language stands; the earlier replicated/
+generalized STATE-v-PROGRAM result is untouched — its arms shared
+one representation class and its registered contrast is not
+stated in terms of recombination labels). It PRICES the opportunity: the design gave
+factorization little room to demonstrate compositional
+generalization, consistent with (never demonstrating) the
+tiny-support alternative already named live in the F/H prereg.
+
+DECISION (mechanical, by the frozen rule): 0/220 < 5% and the C
+escape does not fire (recombination-class tuples ARE constructible
+— i_parts u_choice family exists; pins clean) => B. RECOMMEND:
+design a prospective OOV-LABEL / RECOMBINATION challenge before
+spending seeds 13001/14001 — replications at this support would
+add power on a contrast the support barely instantiates. The
+frozen threshold selects recommendation B — the outside
+hypothesis's recommendation; its learnability clause (that the
+support CAN be learned by memorization) was not and cannot be
+tested by this desk (zero model access). Thresholds, not priors,
+decided; the registered house position was neutral. Design desk (own GO): construct decision items whose
+LABEL is a recombination-class tuple (held-out (rule, site,
+param) combinations with every field value trained), which
+requires deliberate episode/label construction rather than
+natural trajectory sampling — that design work is NOT authorized
+under this GO and was not begun.
+
+FENCES. Desk census, deterministic, scoped to the exact pinned
+artifacts (row counts 73,324 / 72 / 79 / 69); no model output
+consumed anywhere; field support is the MARGINAL convention
+(per-rule conditional support is strictly tighter and would
+reclassify some rivals from RECOMBINATION-OOV to
+NEW-FACTOR-VALUE, i.e. would only LOWER the recombination counts
+— stated, not computed); order statistics are
+nearest-rank; "effective support" is exp(Shannon H), a
+frequency-weighted quantity, never a claim about what the model
+learned; POPULATION: the band censuses cover PRIMARY-ELIGIBLE
+decisions only (files hold 82/88/75 rows; 10/9/6 non-primary
+decisions excluded, matching the frozen n_primary of every prior
+booking on these bands) — the driver docstring's "every ...
+decision" means primary-eligible, and the receipt carries class
+counts, not that restriction (receipt-audit should-fix, disclosed
+here); the two NEW-RULE label identities are receipt fields of
+the PRIOR coverage desk, not this one; the joint supports
+rule x site (28) and rule x site x param_kind (28) COINCIDE —
+param_kind is fully determined by (rule, site) in the training
+targets, so the third joint adds no independent evidence;
+deterministic zero-model census, so no smoke mode (rerun is
+bit-identical, auditor-confirmed); the 5% threshold and A/B/C rule were frozen before
+counting (the frozen text is quoted in this entry's FROZEN LAW
+paragraph; the receipt carries the precedence string — the
+threshold text lived session-side, a weaker freeze than a
+committed prereg, disclosed); after booking commit/push, census, STOP.
