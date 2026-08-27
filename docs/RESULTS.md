@@ -51515,3 +51515,204 @@ the four receipts carry every attempt row including failures; no
 final challenge bytes exist; i_parts scope as stated; pilot
 parents burned by listing (parent shas in receipts); after
 booking commit/push, census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-STRICT-GRID-CHALLENGE-DESIGN-0: the final prospective strict-recombination challenge — matched site-pair blocks over fresh disjoint U-F3v3/U-F4 banks, N=12 per {family x term cell} frozen from burned-pilot pricing, full scoring + inferential law frozen BEFORE any challenge byte exists (2026-08-27, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-27). Zero model/checkpoint
+access, zero inference under this GO; the NEXT GO alone opens the
+sealed seed12001 checkpoints and scores the frozen challenge
+exactly once. i_parts stays PARKED (zero pilot constructions) and
+never enters this challenge.
+
+RESEARCHER'S READ (on the record before execution): (1) matched
+site-pair blocks are supported by the burned pilot — in SPACE-3/4
+the same target integrand succeeded under all three distractors
+with the small non-integrable pair (x**x, 1/(x+log(x))) measured
+at target ordinal 1 and sin(sin(x)) at ordinal 0, with identical
+term indices across variants (per-index success counts identical
+across the three distractor columns of distractor_x_cell). (2)
+Fresh disjoint banks exist: CH-F3 is disjoint from the pilot on
+all three of P (degree 4-5 v 2-3), c ({4,5} v {2,3}), and inert
+polys; CH-F4 disjointness is COMBINATION-level, carried by the
+frequency axis ((a,b) never equals the pilot's (2,3)) with no
+pilot (P1,P2) pair reused. (3) Remaining fingerprint,
+carried: within a block the I0/I1 contrast is realized by the
+sibling distractor (inherent — the sibling DEFINES the ordinal);
+across blocks the term cell is a deterministic function of
+template parameters; both stay disclosed and the primary matched
+contrast (same base integrand, same term, site moved) is exactly
+the design that neutralizes the base-integrand surface. (4)
+Pilot pricing (per base target, U-F3v3: t1 20/72, t2 24/72, t3
+14/72; U-F4: t1 4/10, t2 2/10, t3 2/10): the outside N=20 per
+{family x term cell} is NOT supported for U-F4 t2/t3 at any
+reasonable horizon (96 fresh U-F4 bases price ~19 expected);
+FROZEN NOW, before any generation: N = 12 per stratum, never
+lowered after bytes are inspected.
+
+FROZEN FRESH CONSTRUCTOR HORIZON (deterministic, disjoint from
+every pilot parameter combination; every base attempted and
+accounted, no retry-until-success):
+  CH-F3 (U-F3v3 lineage), 144 bases:
+    f_t = expand(d/dx[P*T(c*x)]) + Integral(w, x) + first-k polys
+    P in {x^4, x^3+x^2, x^4+x, x^5, x^3+x, x^4+x^2}; T in
+    {sin, cos}; c in {4, 5}; w in {exp(x)/x, sin(x)/x}; k in
+    {0,1,2} over fresh polys (2*x, 5*x^2). 6*2*2*2*3 = 144.
+  CH-F4 (U-F4 lineage), 96 bases:
+    f_t = expand(d/dx[P1*sin(a*x)]) + expand(d/dx[P2*cos(b*x)])
+          + Integral(w, x)
+    (P1,P2) in {(x^4+x^2,x), (x^3+x^2,x), (x^4,x^2), (x^5,x),
+    (x^4,x^3), (x^2+x,x^3), (x^5,x^2), (x^3+x,x^2), (x^4+x,x),
+    (x^5,x^3), (x^3+x^2,x^2), (x^4,x^2+x)}; (a,b) in {(4,5),
+    (5,4), (5,3), (3,4)}; w in {exp(x)/x, sin(x)/x}.
+    12*4*2 = 96 (horizon size 240 verified by EXECUTING the bank
+    builder before commit, not by reading the multiplication —
+    the first draft's 12*2*2 "=96" was arithmetically 48, caught
+    by the pre-commit design audit; bank widened on the fresh
+    frequency axis and the pilot-shared pair (x^4,x) replaced).
+  240 bases x 3 distractor variants (x**x, 1/(x+log(x)),
+  sin(sin(x))) = 720 qualification parents. base_signature =
+  the family tag + parameter string, unique per base.
+
+BLOCK QUALIFICATION (per base, all model-free, mirrored from the
+frozen svpeval3 candidate law): each of the THREE parents
+Integral(f_t,x) + Integral(D,x) must independently pass stable
+legal-set enumeration, exact ActionProgram derivation for every
+candidate, token roundtrip, context fit (CTX 4096), code domain,
+FACTOR and HASH roundtrip; the teacher argmin (hce, name, key)
+must be i_unprod in all three; the measured term_index must be
+IDENTICAL across all three and the measured site ordinals must
+be 1 for both small-D variants and 0 for sin(sin(x)); labels are
+NEVER assigned from constructor intent. Blocks with common term
+index outside {1,2,3} are recorded, never selected. A block
+fails if ANY of its three parents fails (first-cause recorded;
+a base's later variants are NOT attempted after its first
+failing variant — 720 is the parent budget, and the accounting
+unit is the base).
+
+SELECTION (mechanical, zero outcome information): stratify
+qualified blocks by {family x common term cell in {1,2,3}}; in
+each stratum order by SHA256(base_signature) hex and take the
+first 12; if ANY stratum has < 12, the challenge books
+CHALLENGE NO-FIRE and STOPS (no substitution, no pooling).
+D_before assignment (which small distractor is the PRIMARY I1
+parent): within each selected stratum, in hash order, alternate
+x**x / 1/(x+log(x)) starting with x**x — deterministic and
+exactly 6/6 balanced by construction (asserted). The unused
+small-D variant is retained as a qualified ROBUSTNESS artifact,
+excluded from primary scoring.
+
+CELL GROUPS (frozen): CONTROL-SITE-SHIFT = term1 blocks (I0/t1
+covered, I1/t1 covered); STRICT-t2 = I0/t2 covered v I1/t2
+HELD-OUT; STRICT-t3 likewise. Final primary bytes: 72 blocks x 2
+matched states = 144 states (48 held-out I1, 48 matched covered
+I0 same-term, 48 term1 site-shift controls) + 72 robustness
+states flagged non-primary.
+
+All novelty reference artifacts are SHA-PINNED in the driver
+(training shard, the three band decisions files, the four pilot
+receipts) and gate-checked before any construction; a novelty or
+balance failure writes a GATE-REFUTED receipt before exiting (a
+bookable refutation, per REFUTED-IF). The teacher tuple's
+site_kind/param_kind must equal (I, term_index) in every variant
+before a block enters a stratum.
+
+NOVELTY / LEAKAGE GATES (hard): every selected parent's visible
+cur has ZERO exact overlap with the 73,324 training curs, band1
+(72+10 rows' curs), band2, band3 curs, and ALL 566 burned pilot
+parent sstrs; zero duplicate selected parents; zero duplicate
+base signatures; target-integrand overlap with training/bands
+reported separately (report, not gate). Frozen artifact:
+logs/mathworld1/svpchal/ blocks.jsonl + decisions.jsonl
+(svpeval3-compatible rows: cur, candidates with
+program_text/factor_code/hash_code/is_label + block_id, family,
+term_cell, site_role in {heldout-I1, covered-I0, control-I1,
+control-I0, robustness-I1}, d_before, base_signature) +
+svpchal_receipt.json. Scoring later consumes bytes only.
+
+SEMANTIC GATES (recomputed in-run from the pinned training
+artifact): (i_unprod, I, 1, term_index, 2/3) absent from the
+73,324 targets with (rule,site) and (rule,param) covered =>
+STRICT-WITHIN-RULE-RECOMBINATION under the booked semantic
+ontology; the six covered cells present.
+
+FROZEN SCORING + INFERENTIAL LAW (registered here, BEFORE any
+challenge byte exists; the next GO applies it exactly once to
+the three sealed seed12001 checkpoints — CANONICAL-340
+descriptive bridge, FACTOR and HASH primary; no 13001/14001
+under that rung; checkpoint identities PINNED now: canonical
+1913b53c50ed938b1430628c3e14435c80abbf74eb5aa2d945b9f74339c08a3f,
+factor
+82f4f0d76fce2dc887ec09df2757e4213bed05d9d595d149ed48ca1798bc03dd,
+hash
+e2b7479549f2cc2fa9c156e253fc054f43f57631bac65c75d2ff01f1d237fae3,
+shared init
+e21be542c998ccb63021f1241faecd46c322448a4ee25750dbbe8608af7aabe0):
+  ABSOLUTE HELD-OUT PRIMARY: denominator = the 48 selected
+  heldout-I1 states (t2+t3, both families); pessimistic top-1 on
+  mean continuation logprob (frozen svpadj primitives); exact
+  two-sided McNemar, alpha .05. HELDOUT-FACTOR-WIN iff FACTOR
+  top1 > HASH top1 AND p < .05; HELDOUT-HASH-WIN symmetric;
+  HELDOUT-INCONCLUSIVE otherwise.
+  MATCHED TRANSFER ENDPOINT: for each of the 48 strict blocks
+  and each arm, site_drop_arm = top1(covered I0/tk) -
+  top1(held-out I1/tk) in {-1,0,1}; q = site_drop_HASH -
+  site_drop_FACTOR; exact two-sided sign test on nonzero q
+  (NEW primitive, registered here by definition: exact binomial
+  two-sided p over the nonzero-q count with success = q > 0,
+  p0 = 1/2 — no such function exists in the frozen svpadj
+  module and the scorer implements exactly this definition),
+  alpha .05; report positive/negative/zero q and exact p.
+  q > 0 means HASH loses more when the same target moves from
+  covered I0 to held-out I1, i.e. favors FACTOR. STRONG-FACTOR
+  iff HELDOUT-FACTOR-WIN AND sign-test p < .05 with positive q
+  strictly outnumbering negative q; STRONG-HASH symmetric
+  (HELDOUT-HASH-WIN AND p < .05 AND negative q strictly
+  outnumbering positive). Anything else books
+  MIXED/INCONCLUSIVE, never a forced mechanism win.
+  COVERED SITE-SHIFT CALIBRATION: same site-drop anatomy on the
+  24 term1 blocks, DESCRIPTIVE only (prices generic site-move
+  sensitivity with no recombination); no effect there is never
+  read as equivalence.
+  CANONICAL BRIDGE: scored on all final states, descriptive
+  only, never touches the F/H adjudication.
+  CODEWORD ANATOMY RIDER (computed in THIS GO, outcome-
+  independent, model-free): for each held-out cell's FACTOR and
+  HASH code v the 33 training-target codes — nearest Hamming
+  distance, longest shared prefix, per-position token support,
+  nearest whole codeword(s). Attribution rider only; inclusion
+  never altered by codeword convenience.
+
+SCOPE (carried verbatim-in-substance from the GO): the
+experiment evaluates diverse parent-state generalization for TWO
+fixed held-out semantic action cells under one frozen HASH
+permutation; it does not establish breadth across many unseen
+action types. The interpretation fence of the constructibility
+booking carries: a FACTOR result speaks to recombining
+previously trained within-rule coordinates, never to broad OOD
+math generalization, semantic geometry among rule IDs, universal
+compositionality, or solve rates.
+
+REGISTERED PRIOR (house): instrument-level — strata fill at
+N=12 (expected yields ~2-4x the bar for U-F3v3, ~1.5x for U-F4
+t2/t3), all gates fire, zero novelty overlaps. The yield
+forecast TRANSPORTS pilot term-index rates across a full
+parameter shift (P degrees, c, polys, frequencies all changed);
+the term cell is a deterministic function of parameters, so
+these are proxies, not sampling estimates — the NO-FIRE law is
+the protection if the transport fails. NO directional
+FACTOR/HASH prediction (standing record; the F/H INCONCLUSIVE at
+band3 gives no directional prior here).
+
+REFUTED-IF (instrument): any stratum under 12 (books NO-FIRE),
+any novelty-gate hit, any semantic-gate failure, or a receipt
+aggregate not reproducible from rows.
+
+FENCES. Mac; deterministic given the frozen horizon; anti-
+peeking order enforced (freeze -> design audit -> commit ->
+materialize -> qualify -> select -> freeze bytes -> dual audit ->
+book -> STOP); zero model/checkpoint loading anywhere under this
+GO; N and all laws frozen before generation and never revised
+after inspection; pilot parents burned; a mid-run crash leaves a partial
+refuse-if-exists directory whose manual delete + deterministic
+rerun is NOT a retry (the horizon is frozen); after booking
+commit/push, census, STOP.

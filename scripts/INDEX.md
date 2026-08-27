@@ -2917,6 +2917,14 @@ MATH-CYBER-1 SVP-BIRTH-0 — the paired STATE-v-PROGRAM birth driver (production
 - `smoke()`
 - `production()`
 
+### scratch/mathworld1_svpchal.py
+MATH-CYBER-1 SVP-STRICT-GRID-CHALLENGE-DESIGN-0 — materialize + qualify the FINAL prospective strict-recombination challenge under the frozen law (prereg committed with this driver BEFORE any byte is generated). Zero model/checkpoint access, zero inference; scoring happens under the NEXT GO only.
+
+- `fsha(p) -> str`
+- `build_horizon()`
+- `qualify_parent(f_t, D)` — svpeval3-mirrored candidate law on one constructed parent.
+- `main()`
+
 ### scratch/mathworld1_svpcode.py
 MATH-CYBER-1 SVP-CODE-QUALIFY-0 — the FACTOR-OPAQUE / HASH-OPAQUE encoding pair, defined and qualified BEFORE any birth prereg or third-band materialization. Zero training, zero checkpoint access, zero new band.
 
