@@ -3000,6 +3000,17 @@ MATH-CYBER-1 SVP-GENERALIZATION-SCORE-0 — ONE joint scorer: all three paired b
 - `pin_all()`
 - `main()`
 
+### scratch/mathworld1_svpgriddesk.py
+MATH-CYBER-1 SVP-STRICT-GRID-CONSTRUCTIBILITY-DESK-0 — SACRIFICIAL exact-engine constructibility pilot for the 3 latent strict cells (semantic-support result frozen at b2199346). Zero model/checkpoint access, zero inference, zero training, zero scoring. Pilot parents are BURNED: they may never enter a final challenge.
+
+- `sha16(t: str) -> str`
+- `fsha(p) -> str`
+- `ckey(cell)`
+- `build_space()` — The frozen product grids, in deterministic order.
+- `intended_cell(parent, node, target_rule)` — Deterministic pre-teacher intent: within the target rule at
+- `run_attempt(fam, target_rule, sig, target_f, distract)`
+- `main()`
+
 ### scratch/mathworld1_svpldesk.py
 MATH-CYBER-1 SVP-LENGTH-CONTROL-DESK-0 — desk-only triage of the length/factorization mechanism from FROZEN score artifacts. No model inference, no training, no checkpoint load, no task generation. Bands stay separate surfaces throughout.
 
