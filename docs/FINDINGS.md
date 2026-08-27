@@ -3617,3 +3617,20 @@ regime tag on every bullet is the fence.
   doctrine); scope: two held-out cells, one frozen HASH
   permutation, scoring is the next GO's single joint run.
   RESULTS.md#L52017
+
+- [SINGLE-SEED] [math-cyber] [mac] MIXED/INCONCLUSIVE (frozen
+  joint law, mechanical): the strict-grid challenge did not
+  jointly distinguish FACTOR from HASH — held-out 7/48 v 6/48
+  (McNemar p=1.0); the matched-transfer sign test fired NEGATIVE
+  (0+/6-/42 zero, p=0.03125) but every nonzero-q block is a HASH
+  covered-to-heldout gain off a covered-I0 floor of 0/48, and
+  the frozen conjunction (needs HELDOUT-HASH-WIN) correctly
+  refused STRONG-HASH; the constructor distribution is a FLOOR
+  regime for all arms (CANONICAL held-out 4/48; CH-F4 strict
+  cells 0 everywhere); descriptive residue: FACTOR is the only
+  arm with zero t1 site-shift loss (19/24 both sites) and leads
+  CH-F3 t2 6/12; scope: single realization, one frozen HASH
+  permutation, two held-out cells, no equivalence from null,
+  earlier STATE-v-PROGRAM result untouched; next question banked
+  (challenge distribution nearer the natural manifold), own GO.
+  RESULTS.md#L52132

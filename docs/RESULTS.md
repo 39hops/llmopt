@@ -52128,3 +52128,135 @@ for any future design; the two held-out cells and one frozen
 HASH permutation bound every future claim (no breadth); zero
 model access under this GO; i_parts parked; after booking
 commit/push, census, STOP.
+
+## VERDICT MATH-CYBER-1-SVP-STRICT-GRID-CHALLENGE-SCORE-0: MIXED/INCONCLUSIVE by the frozen joint law — held-out FACTOR 7/48 v HASH 6/48 (McNemar p=1.0, HELDOUT-INCONCLUSIVE); the matched-transfer sign test fired NEGATIVE (q 0+/6-/42 zero, p=0.03125) but on a floor-driven anatomy (HASH covered-I0 = 0/48) and the joint conjunction correctly refuses STRONG-HASH; the challenge is far harder than the natural band for every arm (2026-08-27, Mac)
+
+Per the DESIGN-1 frozen inferential law (prereg 274310c2) applied
+exactly once by scratch/mathworld1_svpchalscore.py (committed at
+ae1b3fd2 BEFORE any checkpoint load; pre-inference source audit
+returned zero blockers — label-separation, pairing, q-direction,
+sign-test identity all verified; three should-fixes folded
+pre-commit: post-run pin re-gates, block homogeneity/role gates,
+re-derived structural census in the receipt). ONE joint run,
+anti-peeking order held mechanically: pins -> load -> blind
+score of all 216 states -> raw scores written and hashed ->
+hard gates -> absolute held-out -> matched transfer -> joint
+verdict -> receipt -> only then riders. Zero training, zero
+checkpoint mutation, zero regeneration, zero sympy. Receipt
+logs/mathworld1/svpchalscore/svpchalscore_receipt.json (wall_s
+9.3 is SCORING-ONLY wall, timed after pin checks and model
+loads); raw rows scores.jsonl (216, sha in receipt); riders.json +
+inspectable_sets.json written post-receipt.
+
+HARD GATES (all fired): challenge/checkpoint/init pins verified
+pre- AND post-run; structure re-derived from row metadata (216
+rows; roles heldout-I1 48 / covered-I0 48 / control-I1 24 /
+control-I0 24 / robustness-I1 72; 144 primary; 72 blocks x3,
+term/family-homogeneous, roles distinct; strict 48 = 24 CH-F3 +
+24 CH-F4 = 24 t2 + 24 t3; 216 unique curs); T=9 on all 2,004
+F/H candidate scorings (1,002 candidates x 2 arms); mean/sum
+rank identity and full-order identity 432/432 state-arm checks
+(NEAR-VACUOUS by construction for the fixed-width arms — T=9
+makes sum = 9 x mean, so these gates only catch a length-gate
+escape; disclosed, as at the natural-band scoring);
+FACTOR/HASH roundtrip on every stored code; param count
+19,142,016 per arm; finiteness everywhere.
+
+PRIMARY 1 — ABSOLUTE HELD-OUT (48 heldout-I1 states, frozen
+denominator): FACTOR 7/48, HASH 6/48; discordant 4 FACTOR-only /
+3 HASH-only; exact McNemar p = 1.0 => HELDOUT-INCONCLUSIVE.
+MRR (descriptive) FACTOR .489 / HASH .425.
+
+PRIMARY 2 — MATCHED TRANSFER (48 strict blocks): q > 0 in 0
+blocks, q < 0 in 6, q = 0 in 42; exact sign p = 0.03125
+(significant, NEGATIVE direction — nominally HASH-favoring).
+Registered transition anatomy (the caveat the GO pre-named):
+FACTOR covered->heldout cc/cw/wc/ww = 7/1/0/40; HASH =
+0/0/6/42. HASH solved ZERO of the 48 covered-I0 strict states,
+so its site-drop cannot be positive (floor); every nonzero-q block is a HASH wc block (one of the six also
+carries FACTOR's single cw, making that q = -2). The frozen test was
+NOT altered; the frozen JOINT law adjudicates: STRONG-HASH
+requires HELDOUT-HASH-WIN, which did not fire => the
+sign-significant result cannot convert.
+
+FROZEN JOINT RESOLUTION (mechanical): MIXED/INCONCLUSIVE — the
+matched challenge did not jointly distinguish the representations
+under the registered absolute-plus-transfer criterion. No rescue
+test, no pooling with the natural band, no equivalence reading.
+
+t1 CALIBRATION (24 covered/covered blocks, descriptive,
+post-verdict): CANONICAL I0 24/24 -> I1 16/24 (drop 8, entirely
+cw); FACTOR 19/24 at BOTH sites (cc 19, cw 0, wc 0 — zero
+site-shift loss on trained cells); HASH I0 7/24 -> I1 11/24
+(drop -4; per family: CH-F3 cc 7/ww 5 symmetric, CH-F4 I0 0/12
+with wc 4). Read (descriptive): FACTOR is the only arm whose
+trained-cell competence transfers across the site move without
+loss on this synthetic distribution; HASH's covered-side
+performance collapses on CH-F4 states; CANONICAL is
+site-asymmetric (perfect at I0, -8 at I1).
+
+FAMILY/TERM ANATOMY (held-out, descriptive, each n=12): CH-F3
+t2 = C3/F6/H3; CH-F3 t3 = C1/F1/H3; CH-F4 t2 and t3 = 0 for ALL
+arms. Pooled: t2 C3/F6/H3, t3 C1/F1/H3, CH-F3 C4/F7/H6, CH-F4
+0/0/0. Every held-out solve in the experiment lives in CH-F3;
+the CH-F4 synthetic states (two-pair construction, high-degree
+polynomials, fresh frequencies) are unsolved by every arm in
+every role except the t1 cells — there CANONICAL/FACTOR solve
+at both sites and HASH solves 4 at I1 only (its CH-F4
+covered-I0 side is 0/12). No
+subgroup significance claimed.
+
+CANONICAL BRIDGE (descriptive): held-out 4/48, covered-I0
+strict 8/48, MRR .479, matched-transfer drop +4. The natural
+band's ~87-90% regime does not remotely transport to this
+constructor distribution for any representation.
+
+ROBUSTNESS RIDER (72 alternate-I1 states, inspected
+post-receipt): strict robustness-I1 totals C6/F7/H6 of 48 —
+FACTOR and HASH match the primary held-out exactly (7 and 6),
+CANONICAL differs by 2 (4 -> 6), so the F/H conclusion is not
+visibly sensitive to which small distractor was primary;
+by-distractor splits differ by <= 2 solves for the two primary
+arms in both sets, while CANONICAL splits 0/24 (x**x sibling) v
+4/24 (1/(x+log(x))) on the primary held-out states. Robustness
+duplicates were never combined with the primary denominator.
+
+INSPECTABLES (persisted post-verdict): heldout F-only (4),
+H-only (3), both-wrong (38), both-correct n=3; q<0 blocks (6,
+all from HASH wc transitions); full q rows with block pairing.
+
+READING (scoped, within the frozen fences): the strict-grid
+challenge produced a FLOOR regime — the constructor distribution
+(synthetic two-integral states with non-integrable distractors
+and high-degree pair expansions) is far outside the natural
+trajectory distribution all three arms were trained on, and
+held-out accuracy collapsed to 8-15% for every representation.
+Under the registered criterion the representations are NOT
+jointly distinguished. The significant negative sign test is
+fully accounted for by HASH's covered-side floor (a baseline
+artifact the design's own registered anatomy exposed); it is not
+read as HASH generalizing better, and equally the descriptive
+FACTOR patterns (t1 zero-loss transfer, CH-F3 t2 6/12 v 3/12)
+are not converted into a win the primary law did not grant.
+What this changes about the action-coordinate/chess hypothesis:
+nothing is licensed in either direction on the coordinate-
+surface leg at this scale — the designed test was jointly
+underpowered by distribution shift (both arms near floor on
+held-out AND covered strict cells), and the earlier
+replicated/generalized STATE-v-PROGRAM result remains untouched.
+The honest next question (banked, not run, own GO): a challenge
+distribution closer to the natural trajectory manifold (or a
+training diet that includes constructor-like states) so covered
+baselines sit high enough for the transfer contrast to have
+room; and the standing tiny-support alternative (33 tuples)
+remains live.
+
+FENCES. Mac/mps; single realization, single frozen HASH
+permutation, two held-out cells — no breadth claim, no
+equivalence from null, never "compact identity suffices"; the
+q sign test's significance is reported with its floor anatomy
+and never re-tested or rescued; robustness states excluded from
+all primary denominators; CANONICAL comparisons descriptive;
+dual audit before booking; receipts force-added small-text
+(scores.jsonl 216 rows included); after booking commit/push,
+census, STOP.
