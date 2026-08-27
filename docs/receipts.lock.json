@@ -1055,6 +1055,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpchalscore/svpchalscore_receipt.json": {
+   "bytes": 3132,
+   "exists": true,
+   "sha256": "92bcd84edec981163ce588cae8d28364b9cc3f6eb849acafa719954cc49c2209",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpcode_receipt.json": {
    "bytes": 2926,
    "exists": true,

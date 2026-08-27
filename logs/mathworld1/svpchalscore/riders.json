@@ -1,0 +1,174 @@
+{
+ "t1_calibration": {
+  "overall": {
+   "n_blocks": 24,
+   "CANONICAL": {
+    "cc": 16,
+    "cw": 8,
+    "wc": 0,
+    "ww": 0,
+    "drop": 8
+   },
+   "FACTOR": {
+    "cc": 19,
+    "cw": 0,
+    "wc": 0,
+    "ww": 5,
+    "drop": 0
+   },
+   "HASH": {
+    "cc": 7,
+    "cw": 0,
+    "wc": 4,
+    "ww": 13,
+    "drop": -4
+   }
+  },
+  "CH-F3": {
+   "n_blocks": 12,
+   "CANONICAL": {
+    "cc": 9,
+    "cw": 3,
+    "wc": 0,
+    "ww": 0,
+    "drop": 3
+   },
+   "FACTOR": {
+    "cc": 11,
+    "cw": 0,
+    "wc": 0,
+    "ww": 1,
+    "drop": 0
+   },
+   "HASH": {
+    "cc": 7,
+    "cw": 0,
+    "wc": 0,
+    "ww": 5,
+    "drop": 0
+   }
+  },
+  "CH-F4": {
+   "n_blocks": 12,
+   "CANONICAL": {
+    "cc": 7,
+    "cw": 5,
+    "wc": 0,
+    "ww": 0,
+    "drop": 5
+   },
+   "FACTOR": {
+    "cc": 8,
+    "cw": 0,
+    "wc": 0,
+    "ww": 4,
+    "drop": 0
+   },
+   "HASH": {
+    "cc": 0,
+    "cw": 0,
+    "wc": 4,
+    "ww": 8,
+    "drop": -4
+   }
+  }
+ },
+ "heldout_family_term": {
+  "CH-F3 t2": {
+   "n": 12,
+   "CANONICAL_top1": 3,
+   "FACTOR_top1": 6,
+   "HASH_top1": 3
+  },
+  "CH-F3 t3": {
+   "n": 12,
+   "CANONICAL_top1": 1,
+   "FACTOR_top1": 1,
+   "HASH_top1": 3
+  },
+  "CH-F4 t2": {
+   "n": 12,
+   "CANONICAL_top1": 0,
+   "FACTOR_top1": 0,
+   "HASH_top1": 0
+  },
+  "CH-F4 t3": {
+   "n": 12,
+   "CANONICAL_top1": 0,
+   "FACTOR_top1": 0,
+   "HASH_top1": 0
+  }
+ },
+ "heldout_pooled": {
+  "t2": {
+   "n": 24,
+   "CANONICAL_top1": 3,
+   "FACTOR_top1": 6,
+   "HASH_top1": 3
+  },
+  "t3": {
+   "n": 24,
+   "CANONICAL_top1": 1,
+   "FACTOR_top1": 1,
+   "HASH_top1": 3
+  },
+  "CH-F3": {
+   "n": 24,
+   "CANONICAL_top1": 4,
+   "FACTOR_top1": 7,
+   "HASH_top1": 6
+  },
+  "CH-F4": {
+   "n": 24,
+   "CANONICAL_top1": 0,
+   "FACTOR_top1": 0,
+   "HASH_top1": 0
+  }
+ },
+ "covered_I0_strict": {
+  "n": 48,
+  "CANONICAL_top1": 8,
+  "FACTOR_top1": 8,
+  "HASH_top1": 0
+ },
+ "robustness_strict_I1": {
+  "n": 48,
+  "CANONICAL_top1": 6,
+  "FACTOR_top1": 7,
+  "HASH_top1": 6
+ },
+ "robustness_by_distractor": {
+  "1/(x + log(x))": {
+   "n": 24,
+   "CANONICAL_top1": 3,
+   "FACTOR_top1": 3,
+   "HASH_top1": 4
+  },
+  "x**x": {
+   "n": 24,
+   "CANONICAL_top1": 3,
+   "FACTOR_top1": 4,
+   "HASH_top1": 2
+  }
+ },
+ "heldout_primary_by_distractor": {
+  "1/(x + log(x))": {
+   "n": 24,
+   "CANONICAL_top1": 4,
+   "FACTOR_top1": 4,
+   "HASH_top1": 3
+  },
+  "x**x": {
+   "n": 24,
+   "CANONICAL_top1": 0,
+   "FACTOR_top1": 3,
+   "HASH_top1": 3
+  }
+ },
+ "canonical_bridge": {
+  "heldout": 4,
+  "covered_I0_strict": 8,
+  "MRR_heldout": 0.4791666666666667,
+  "transfer_drop": 4
+ }
+}

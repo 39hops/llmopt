@@ -1,0 +1,3011 @@
+{
+ "heldout_F_correct_H_wrong": [
+  {
+   "block_id": "CH-F3-t2-04",
+   "base_signature": "D1|CH-F3|P=x**5 + x**3|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 2,
+   "cur": "Integral(x**x, x) + Integral(-7*x**5*sin(7*x) + 5*x**4*cos(7*x) + 11*x**4 - 7*x**3*sin(7*x) + 3*x**2*cos(7*x) + 3*x + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     5
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": 0.940374,
+   "HASH_label_margin": -0.14075
+  },
+  {
+   "block_id": "CH-F3-t2-05",
+   "base_signature": "D1|CH-F3|P=x**4 + x**3|T=sin|c=7|w=exp(x)/x|k=0",
+   "family": "CH-F3",
+   "term": 2,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(7*x**4*cos(7*x) + 4*x**3*sin(7*x) + 7*x**3*cos(7*x) + 3*x**2*sin(7*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": 0.650113,
+   "HASH_label_margin": -2.152565
+  },
+  {
+   "block_id": "CH-F3-t2-11",
+   "base_signature": "D1|CH-F3|P=x**4 + x**3|T=cos|c=7|w=exp(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 2,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(-7*x**4*sin(7*x) + 11*x**4 - 7*x**3*sin(7*x) + 4*x**3*cos(7*x) + 3*x**2*cos(7*x) + 3*x + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": 0.772471,
+   "HASH_label_margin": -0.893578
+  },
+  {
+   "block_id": "CH-F3-t3-07",
+   "base_signature": "D1|CH-F3|P=x**4 + x**3|T=sin|c=7|w=exp(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(7*x**4*cos(7*x) + 4*x**3*sin(7*x) + 7*x**3*cos(7*x) + 3*x**2*sin(7*x) + 3*x + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": 0.018323,
+   "HASH_label_margin": -1.456931
+  }
+ ],
+ "heldout_H_correct_F_wrong": [
+  {
+   "block_id": "CH-F3-t3-00",
+   "base_signature": "D1|CH-F3|P=x**6|T=sin|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(7*x**6*cos(7*x) + 6*x**5*sin(7*x) + 11*x**4 + 3*x + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ]
+   ],
+   "n_candidates": 2,
+   "FACTOR_label_margin": -0.399493,
+   "HASH_label_margin": 0.171647
+  },
+  {
+   "block_id": "CH-F3-t3-01",
+   "base_signature": "D1|CH-F3|P=x**5 + x**3|T=sin|c=7|w=sin(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(7*x**5*cos(7*x) + 5*x**4*sin(7*x) + 7*x**3*cos(7*x) + 3*x**2*sin(7*x) + 3*x + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.827833,
+   "HASH_label_margin": 0.459475
+  },
+  {
+   "block_id": "CH-F3-t3-03",
+   "base_signature": "D1|CH-F3|P=x**6 + x**2|T=sin|c=7|w=sin(x)/x|k=0",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(7*x**6*cos(7*x) + 6*x**5*sin(7*x) + 7*x**2*cos(7*x) + 2*x*sin(7*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ]
+   ],
+   "n_candidates": 3,
+   "FACTOR_label_margin": -0.468565,
+   "HASH_label_margin": 0.899115
+  }
+ ],
+ "heldout_both_wrong": [
+  {
+   "block_id": "CH-F3-t2-00",
+   "base_signature": "D1|CH-F3|P=x**6 + x**2|T=cos|c=7|w=sin(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 2,
+   "cur": "Integral(x**x, x) + Integral(-7*x**6*sin(7*x) + 6*x**5*cos(7*x) - 7*x**2*sin(7*x) + 2*x*cos(7*x) + 3*x + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ]
+   ],
+   "n_candidates": 3,
+   "FACTOR_label_margin": -0.443056,
+   "HASH_label_margin": -4.628761
+  },
+  {
+   "block_id": "CH-F3-t2-01",
+   "base_signature": "D1|CH-F3|P=x**5 + x**3|T=sin|c=7|w=sin(x)/x|k=0",
+   "family": "CH-F3",
+   "term": 2,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(7*x**5*cos(7*x) + 5*x**4*sin(7*x) + 7*x**3*cos(7*x) + 3*x**2*sin(7*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.409996,
+   "HASH_label_margin": -4.144241
+  },
+  {
+   "block_id": "CH-F3-t2-06",
+   "base_signature": "D1|CH-F3|P=x**5 + x**2|T=cos|c=7|w=exp(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 2,
+   "cur": "Integral(x**x, x) + Integral(-7*x**5*sin(7*x) + 5*x**4*cos(7*x) - 7*x**2*sin(7*x) + 2*x*cos(7*x) + 3*x + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.736677,
+   "HASH_label_margin": -4.600373
+  },
+  {
+   "block_id": "CH-F3-t2-07",
+   "base_signature": "D1|CH-F3|P=x**5 + x|T=cos|c=7|w=sin(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 2,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(-7*x**5*sin(7*x) + 5*x**4*cos(7*x) - 7*x*sin(7*x) + 3*x + cos(7*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.437496,
+   "HASH_label_margin": -4.026086
+  },
+  {
+   "block_id": "CH-F3-t2-08",
+   "base_signature": "D1|CH-F3|P=x**5 + x**2|T=cos|c=6|w=exp(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 2,
+   "cur": "Integral(x**x, x) + Integral(-6*x**5*sin(6*x) + 5*x**4*cos(6*x) - 6*x**2*sin(6*x) + 2*x*cos(6*x) + 3*x + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ]
+   ],
+   "n_candidates": 5,
+   "FACTOR_label_margin": -0.677463,
+   "HASH_label_margin": -4.505709
+  },
+  {
+   "block_id": "CH-F3-t2-09",
+   "base_signature": "D1|CH-F3|P=x**5 + x**2|T=cos|c=7|w=sin(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 2,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(-7*x**5*sin(7*x) + 5*x**4*cos(7*x) - 7*x**2*sin(7*x) + 2*x*cos(7*x) + 3*x + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ]
+   ],
+   "n_candidates": 3,
+   "FACTOR_label_margin": -0.437301,
+   "HASH_label_margin": -3.784229
+  },
+  {
+   "block_id": "CH-F3-t3-02",
+   "base_signature": "D1|CH-F3|P=x**5 + x|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(-7*x**5*sin(7*x) + 5*x**4*cos(7*x) + 11*x**4 - 7*x*sin(7*x) + 3*x + cos(7*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.964736,
+   "HASH_label_margin": -1.229492
+  },
+  {
+   "block_id": "CH-F3-t3-04",
+   "base_signature": "D1|CH-F3|P=x**6 + x**2|T=cos|c=6|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(-6*x**6*sin(6*x) + 6*x**5*cos(6*x) + 11*x**4 - 6*x**2*sin(6*x) + 2*x*cos(6*x) + 3*x + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.944732,
+   "HASH_label_margin": -0.260777
+  },
+  {
+   "block_id": "CH-F3-t3-05",
+   "base_signature": "D1|CH-F3|P=x**6 + x**2|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(-7*x**6*sin(7*x) + 6*x**5*cos(7*x) + 11*x**4 - 7*x**2*sin(7*x) + 2*x*cos(7*x) + 3*x + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ]
+   ],
+   "n_candidates": 3,
+   "FACTOR_label_margin": -0.859873,
+   "HASH_label_margin": -0.387619
+  },
+  {
+   "block_id": "CH-F3-t3-06",
+   "base_signature": "D1|CH-F3|P=x**5 + x|T=sin|c=6|w=exp(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(6*x**5*cos(6*x) + 5*x**4*sin(6*x) + 6*x*cos(6*x) + 3*x + sin(6*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ]
+   ],
+   "n_candidates": 5,
+   "FACTOR_label_margin": -0.378117,
+   "HASH_label_margin": -2.417969
+  },
+  {
+   "block_id": "CH-F3-t3-08",
+   "base_signature": "D1|CH-F3|P=x**5 + x**2|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(-7*x**5*sin(7*x) + 5*x**4*cos(7*x) + 11*x**4 - 7*x**2*sin(7*x) + 2*x*cos(7*x) + 3*x + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ]
+   ],
+   "n_candidates": 3,
+   "FACTOR_label_margin": -0.974878,
+   "HASH_label_margin": -0.492943
+  },
+  {
+   "block_id": "CH-F3-t3-09",
+   "base_signature": "D1|CH-F3|P=x**6 + x**2|T=sin|c=7|w=exp(x)/x|k=0",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(7*x**6*cos(7*x) + 6*x**5*sin(7*x) + 7*x**2*cos(7*x) + 2*x*sin(7*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.454587,
+   "HASH_label_margin": -1.396826
+  },
+  {
+   "block_id": "CH-F3-t3-10",
+   "base_signature": "D1|CH-F3|P=x**5 + x|T=sin|c=7|w=exp(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(7*x**5*cos(7*x) + 5*x**4*sin(7*x) + 7*x*cos(7*x) + 3*x + sin(7*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ]
+   ],
+   "n_candidates": 5,
+   "FACTOR_label_margin": -0.28838,
+   "HASH_label_margin": -2.443959
+  },
+  {
+   "block_id": "CH-F3-t3-11",
+   "base_signature": "D1|CH-F3|P=x**5 + x**3|T=sin|c=6|w=sin(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(6*x**5*cos(6*x) + 5*x**4*sin(6*x) + 6*x**3*cos(6*x) + 3*x**2*sin(6*x) + 3*x + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ]
+   ],
+   "n_candidates": 5,
+   "FACTOR_label_margin": -1.280027,
+   "HASH_label_margin": -4.142787
+  },
+  {
+   "block_id": "CH-F4-t2-00",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**4|a=7|b=4|T1=cos|T2=sin|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(x**x, x) + Integral(-7*x**6*sin(7*x) + 6*x**5*cos(7*x) + 4*x**4*cos(4*x) + 4*x**3*sin(4*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.38618,
+   "HASH_label_margin": -5.07879
+  },
+  {
+   "block_id": "CH-F4-t2-01",
+   "base_signature": "D1|CH-F4|P1=x**6 + x**3|P2=x|a=6|b=7|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(6*x**6*cos(6*x) + 6*x**5*sin(6*x) + 6*x**3*cos(6*x) + 3*x**2*sin(6*x) - 7*x*sin(7*x) + cos(7*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 6,
+   "FACTOR_label_margin": -0.557767,
+   "HASH_label_margin": -3.674819
+  },
+  {
+   "block_id": "CH-F4-t2-02",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x|a=7|b=6|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(x**x, x) + Integral(7*x**6*cos(7*x) + 6*x**5*sin(7*x) - 6*x*sin(6*x) + cos(6*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 5,
+   "FACTOR_label_margin": -0.562932,
+   "HASH_label_margin": -6.534895
+  },
+  {
+   "block_id": "CH-F4-t2-03",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x|a=6|b=7|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(6*x**6*cos(6*x) + 6*x**5*sin(6*x) - 7*x*sin(7*x) + cos(7*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 5,
+   "FACTOR_label_margin": -0.535872,
+   "HASH_label_margin": -5.189815
+  },
+  {
+   "block_id": "CH-F4-t2-04",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**2|a=4|b=7|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(x**x, x) + Integral(4*x**6*cos(4*x) + 6*x**5*sin(4*x) - 7*x**2*sin(7*x) + 2*x*cos(7*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.665919,
+   "HASH_label_margin": -5.842272
+  },
+  {
+   "block_id": "CH-F4-t2-05",
+   "base_signature": "D1|CH-F4|P1=x**4 + x**3|P2=x|a=4|b=7|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(4*x**4*cos(4*x) + 4*x**3*sin(4*x) + 4*x**3*cos(4*x) + 3*x**2*sin(4*x) - 7*x*sin(7*x) + cos(7*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 6,
+   "FACTOR_label_margin": -0.496621,
+   "HASH_label_margin": -4.25719
+  },
+  {
+   "block_id": "CH-F4-t2-06",
+   "base_signature": "D1|CH-F4|P1=x**6 + x**3|P2=x|a=6|b=5|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(x**x, x) + Integral(6*x**6*cos(6*x) + 6*x**5*sin(6*x) + 6*x**3*cos(6*x) + 3*x**2*sin(6*x) - 5*x*sin(5*x) + cos(5*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 7,
+   "FACTOR_label_margin": -0.68898,
+   "HASH_label_margin": -5.521735
+  },
+  {
+   "block_id": "CH-F4-t2-07",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x|a=6|b=7|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(6*x**6*cos(6*x) + 6*x**5*sin(6*x) - 7*x*sin(7*x) + cos(7*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.479857,
+   "HASH_label_margin": -4.316267
+  },
+  {
+   "block_id": "CH-F4-t2-08",
+   "base_signature": "D1|CH-F4|P1=x**6 + x|P2=x|a=5|b=6|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(x**x, x) + Integral(5*x**6*cos(5*x) + 6*x**5*sin(5*x) - 6*x*sin(6*x) + 5*x*cos(5*x) + sin(5*x) + cos(6*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ]
+   ],
+   "n_candidates": 7,
+   "FACTOR_label_margin": -0.629475,
+   "HASH_label_margin": -5.07655
+  },
+  {
+   "block_id": "CH-F4-t2-09",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**3|a=7|b=4|T1=cos|T2=sin|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(-7*x**6*sin(7*x) + 6*x**5*cos(7*x) + 4*x**3*cos(4*x) + 3*x**2*sin(4*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 3,
+   "FACTOR_label_margin": -0.197943,
+   "HASH_label_margin": -3.951432
+  },
+  {
+   "block_id": "CH-F4-t2-10",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**4|a=6|b=5|T1=cos|T2=sin|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(x**x, x) + Integral(-6*x**6*sin(6*x) + 6*x**5*cos(6*x) + 5*x**4*cos(5*x) + 4*x**3*sin(5*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 3,
+   "FACTOR_label_margin": -0.179352,
+   "HASH_label_margin": -4.664814
+  },
+  {
+   "block_id": "CH-F4-t2-11",
+   "base_signature": "D1|CH-F4|P1=x**5 + x**3|P2=x|a=5|b=6|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(5*x**5*cos(5*x) + 5*x**4*sin(5*x) + 5*x**3*cos(5*x) + 3*x**2*sin(5*x) - 6*x*sin(6*x) + cos(6*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 6,
+   "FACTOR_label_margin": -0.556746,
+   "HASH_label_margin": -3.605478
+  },
+  {
+   "block_id": "CH-F4-t3-00",
+   "base_signature": "D1|CH-F4|P1=x**6 + x|P2=x**2|a=4|b=7|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(4*x**6*cos(4*x) + 6*x**5*sin(4*x) - 7*x**2*sin(7*x) + 4*x*cos(4*x) + 2*x*cos(7*x) + sin(4*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ]
+   ],
+   "n_candidates": 6,
+   "FACTOR_label_margin": -0.979674,
+   "HASH_label_margin": -5.430487
+  },
+  {
+   "block_id": "CH-F4-t3-01",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**5|a=5|b=6|T1=cos|T2=sin|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(-5*x**6*sin(5*x) + 6*x**5*cos(5*x) + 6*x**5*cos(6*x) + 5*x**4*sin(6*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 3,
+   "FACTOR_label_margin": -0.778392,
+   "HASH_label_margin": -4.199174
+  },
+  {
+   "block_id": "CH-F4-t3-02",
+   "base_signature": "D1|CH-F4|P1=x**5 + x|P2=x**3|a=6|b=5|T1=cos|T2=sin|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(-6*x**5*sin(6*x) + 5*x**4*cos(6*x) + 5*x**3*cos(5*x) + 3*x**2*sin(5*x) - 6*x*sin(6*x) + cos(6*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 6,
+   "FACTOR_label_margin": -1.041549,
+   "HASH_label_margin": -4.676238
+  },
+  {
+   "block_id": "CH-F4-t3-03",
+   "base_signature": "D1|CH-F4|P1=x**6 + x**3|P2=x|a=7|b=4|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(7*x**6*cos(7*x) + 6*x**5*sin(7*x) + 7*x**3*cos(7*x) + 3*x**2*sin(7*x) - 4*x*sin(4*x) + cos(4*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 6,
+   "FACTOR_label_margin": -1.237352,
+   "HASH_label_margin": -3.942403
+  },
+  {
+   "block_id": "CH-F4-t3-04",
+   "base_signature": "D1|CH-F4|P1=x**5 + x**3|P2=x|a=7|b=6|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(7*x**5*cos(7*x) + 5*x**4*sin(7*x) + 7*x**3*cos(7*x) + 3*x**2*sin(7*x) - 6*x*sin(6*x) + cos(6*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 6,
+   "FACTOR_label_margin": -1.082687,
+   "HASH_label_margin": -5.27944
+  },
+  {
+   "block_id": "CH-F4-t3-05",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**5|a=4|b=7|T1=cos|T2=sin|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(-4*x**6*sin(4*x) + 6*x**5*cos(4*x) + 7*x**5*cos(7*x) + 5*x**4*sin(7*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.694417,
+   "HASH_label_margin": -4.453617
+  },
+  {
+   "block_id": "CH-F4-t3-06",
+   "base_signature": "D1|CH-F4|P1=x**6 + x|P2=x|a=7|b=6|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(7*x**6*cos(7*x) + 6*x**5*sin(7*x) - 6*x*sin(6*x) + 7*x*cos(7*x) + sin(7*x) + cos(6*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ]
+   ],
+   "n_candidates": 6,
+   "FACTOR_label_margin": -1.336695,
+   "HASH_label_margin": -5.234145
+  },
+  {
+   "block_id": "CH-F4-t3-07",
+   "base_signature": "D1|CH-F4|P1=x**5 + x**3|P2=x**2|a=4|b=7|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(4*x**5*cos(4*x) + 5*x**4*sin(4*x) + 4*x**3*cos(4*x) + 3*x**2*sin(4*x) - 7*x**2*sin(7*x) + 2*x*cos(7*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ]
+   ],
+   "n_candidates": 5,
+   "FACTOR_label_margin": -1.160453,
+   "HASH_label_margin": -3.818619
+  },
+  {
+   "block_id": "CH-F4-t3-08",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**3 + x|a=5|b=6|T1=cos|T2=sin|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(-5*x**6*sin(5*x) + 6*x**5*cos(5*x) + 6*x**3*cos(6*x) + 3*x**2*sin(6*x) + 6*x*cos(6*x) + sin(6*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     6
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     2
+    ]
+   ],
+   "n_candidates": 7,
+   "FACTOR_label_margin": -0.93677,
+   "HASH_label_margin": -4.564334
+  },
+  {
+   "block_id": "CH-F4-t3-09",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**2|a=6|b=7|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(6*x**6*cos(6*x) + 6*x**5*sin(6*x) - 7*x**2*sin(7*x) + 2*x*cos(7*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.876726,
+   "HASH_label_margin": -4.668882
+  },
+  {
+   "block_id": "CH-F4-t3-10",
+   "base_signature": "D1|CH-F4|P1=x**5 + x**3|P2=x**2|a=5|b=6|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(x**x, x) + Integral(5*x**5*cos(5*x) + 5*x**4*sin(5*x) + 5*x**3*cos(5*x) + 3*x**2*sin(5*x) - 6*x**2*sin(6*x) + 2*x*cos(6*x) + Integral(sin(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     4
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     1
+    ]
+   ],
+   "n_candidates": 6,
+   "FACTOR_label_margin": -0.969453,
+   "HASH_label_margin": -5.096653
+  },
+  {
+   "block_id": "CH-F4-t3-11",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**5|a=6|b=7|T1=cos|T2=sin|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "cur": "Integral(1/(x + log(x)), x) + Integral(-6*x**6*sin(6*x) + 6*x**5*cos(6*x) + 7*x**5*cos(7*x) + 5*x**4*sin(7*x) + Integral(exp(x)/x, x), x)",
+   "labeled_tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "candidate_tuples": [
+    [
+     "euler",
+     "W",
+     -1,
+     "none",
+     -1
+    ],
+    [
+     "i_sum",
+     "I",
+     1,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     1,
+     "term_index",
+     0
+    ]
+   ],
+   "n_candidates": 4,
+   "FACTOR_label_margin": -0.744333,
+   "HASH_label_margin": -4.435471
+  }
+ ],
+ "heldout_both_correct_n": 3,
+ "q_positive_blocks": [],
+ "q_negative_blocks": [
+  {
+   "block_id": "CH-F3-t2-02",
+   "base_signature": "D1|CH-F3|P=x**4 + x**3|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 1,
+   "c1_F": 1,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -1,
+   "covered_cur": "Integral(-7*x**4*sin(7*x) + 11*x**4 - 7*x**3*sin(7*x) + 4*x**3*cos(7*x) + 3*x**2*cos(7*x) + 3*x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "heldout_cur": "Integral(x**x, x) + Integral(-7*x**4*sin(7*x) + 11*x**4 - 7*x**3*sin(7*x) + 4*x**3*cos(7*x) + 3*x**2*cos(7*x) + 3*x + Integral(sin(x)/x, x), x)"
+  },
+  {
+   "block_id": "CH-F3-t2-03",
+   "base_signature": "D1|CH-F3|P=x**5 + x**3|T=cos|c=6|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 1,
+   "c1_F": 1,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -1,
+   "covered_cur": "Integral(-6*x**5*sin(6*x) + 5*x**4*cos(6*x) + 11*x**4 - 6*x**3*sin(6*x) + 3*x**2*cos(6*x) + 3*x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "heldout_cur": "Integral(1/(x + log(x)), x) + Integral(-6*x**5*sin(6*x) + 5*x**4*cos(6*x) + 11*x**4 - 6*x**3*sin(6*x) + 3*x**2*cos(6*x) + 3*x + Integral(sin(x)/x, x), x)"
+  },
+  {
+   "block_id": "CH-F3-t2-10",
+   "base_signature": "D1|CH-F3|P=x**6|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 1,
+   "c1_F": 1,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -1,
+   "covered_cur": "Integral(-7*x**6*sin(7*x) + 6*x**5*cos(7*x) + 11*x**4 + 3*x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "heldout_cur": "Integral(x**x, x) + Integral(-7*x**6*sin(7*x) + 6*x**5*cos(7*x) + 11*x**4 + 3*x + Integral(sin(x)/x, x), x)"
+  },
+  {
+   "block_id": "CH-F3-t3-00",
+   "base_signature": "D1|CH-F3|P=x**6|T=sin|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 1,
+   "c1_F": 0,
+   "drop_F": 1,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -2,
+   "covered_cur": "Integral(7*x**6*cos(7*x) + 6*x**5*sin(7*x) + 11*x**4 + 3*x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "heldout_cur": "Integral(x**x, x) + Integral(7*x**6*cos(7*x) + 6*x**5*sin(7*x) + 11*x**4 + 3*x + Integral(sin(x)/x, x), x)"
+  },
+  {
+   "block_id": "CH-F3-t3-01",
+   "base_signature": "D1|CH-F3|P=x**5 + x**3|T=sin|c=7|w=sin(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -1,
+   "covered_cur": "Integral(7*x**5*cos(7*x) + 5*x**4*sin(7*x) + 7*x**3*cos(7*x) + 3*x**2*sin(7*x) + 3*x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "heldout_cur": "Integral(1/(x + log(x)), x) + Integral(7*x**5*cos(7*x) + 5*x**4*sin(7*x) + 7*x**3*cos(7*x) + 3*x**2*sin(7*x) + 3*x + Integral(sin(x)/x, x), x)"
+  },
+  {
+   "block_id": "CH-F3-t3-03",
+   "base_signature": "D1|CH-F3|P=x**6 + x**2|T=sin|c=7|w=sin(x)/x|k=0",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -1,
+   "covered_cur": "Integral(7*x**6*cos(7*x) + 6*x**5*sin(7*x) + 7*x**2*cos(7*x) + 2*x*sin(7*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "heldout_cur": "Integral(1/(x + log(x)), x) + Integral(7*x**6*cos(7*x) + 6*x**5*sin(7*x) + 7*x**2*cos(7*x) + 2*x*sin(7*x) + Integral(sin(x)/x, x), x)"
+  }
+ ],
+ "q_rows_all": [
+  {
+   "block_id": "CH-F3-t2-00",
+   "base_signature": "D1|CH-F3|P=x**6 + x**2|T=cos|c=7|w=sin(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t2-01",
+   "base_signature": "D1|CH-F3|P=x**5 + x**3|T=sin|c=7|w=sin(x)/x|k=0",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t2-02",
+   "base_signature": "D1|CH-F3|P=x**4 + x**3|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 1,
+   "c1_F": 1,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -1
+  },
+  {
+   "block_id": "CH-F3-t2-03",
+   "base_signature": "D1|CH-F3|P=x**5 + x**3|T=cos|c=6|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 1,
+   "c1_F": 1,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -1
+  },
+  {
+   "block_id": "CH-F3-t2-04",
+   "base_signature": "D1|CH-F3|P=x**5 + x**3|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 1,
+   "c1_F": 1,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t2-05",
+   "base_signature": "D1|CH-F3|P=x**4 + x**3|T=sin|c=7|w=exp(x)/x|k=0",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 1,
+   "c1_F": 1,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t2-06",
+   "base_signature": "D1|CH-F3|P=x**5 + x**2|T=cos|c=7|w=exp(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t2-07",
+   "base_signature": "D1|CH-F3|P=x**5 + x|T=cos|c=7|w=sin(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t2-08",
+   "base_signature": "D1|CH-F3|P=x**5 + x**2|T=cos|c=6|w=exp(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t2-09",
+   "base_signature": "D1|CH-F3|P=x**5 + x**2|T=cos|c=7|w=sin(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t2-10",
+   "base_signature": "D1|CH-F3|P=x**6|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 1,
+   "c1_F": 1,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -1
+  },
+  {
+   "block_id": "CH-F3-t2-11",
+   "base_signature": "D1|CH-F3|P=x**4 + x**3|T=cos|c=7|w=exp(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 2,
+   "c0_F": 1,
+   "c1_F": 1,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t3-00",
+   "base_signature": "D1|CH-F3|P=x**6|T=sin|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 1,
+   "c1_F": 0,
+   "drop_F": 1,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -2
+  },
+  {
+   "block_id": "CH-F3-t3-01",
+   "base_signature": "D1|CH-F3|P=x**5 + x**3|T=sin|c=7|w=sin(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -1
+  },
+  {
+   "block_id": "CH-F3-t3-02",
+   "base_signature": "D1|CH-F3|P=x**5 + x|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t3-03",
+   "base_signature": "D1|CH-F3|P=x**6 + x**2|T=sin|c=7|w=sin(x)/x|k=0",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 1,
+   "drop_H": -1,
+   "q": -1
+  },
+  {
+   "block_id": "CH-F3-t3-04",
+   "base_signature": "D1|CH-F3|P=x**6 + x**2|T=cos|c=6|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t3-05",
+   "base_signature": "D1|CH-F3|P=x**6 + x**2|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t3-06",
+   "base_signature": "D1|CH-F3|P=x**5 + x|T=sin|c=6|w=exp(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t3-07",
+   "base_signature": "D1|CH-F3|P=x**4 + x**3|T=sin|c=7|w=exp(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 1,
+   "c1_F": 1,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t3-08",
+   "base_signature": "D1|CH-F3|P=x**5 + x**2|T=cos|c=7|w=sin(x)/x|k=2",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t3-09",
+   "base_signature": "D1|CH-F3|P=x**6 + x**2|T=sin|c=7|w=exp(x)/x|k=0",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t3-10",
+   "base_signature": "D1|CH-F3|P=x**5 + x|T=sin|c=7|w=exp(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F3-t3-11",
+   "base_signature": "D1|CH-F3|P=x**5 + x**3|T=sin|c=6|w=sin(x)/x|k=1",
+   "family": "CH-F3",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-00",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**4|a=7|b=4|T1=cos|T2=sin|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-01",
+   "base_signature": "D1|CH-F4|P1=x**6 + x**3|P2=x|a=6|b=7|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-02",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x|a=7|b=6|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-03",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x|a=6|b=7|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-04",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**2|a=4|b=7|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-05",
+   "base_signature": "D1|CH-F4|P1=x**4 + x**3|P2=x|a=4|b=7|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-06",
+   "base_signature": "D1|CH-F4|P1=x**6 + x**3|P2=x|a=6|b=5|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-07",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x|a=6|b=7|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-08",
+   "base_signature": "D1|CH-F4|P1=x**6 + x|P2=x|a=5|b=6|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-09",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**3|a=7|b=4|T1=cos|T2=sin|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-10",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**4|a=6|b=5|T1=cos|T2=sin|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t2-11",
+   "base_signature": "D1|CH-F4|P1=x**5 + x**3|P2=x|a=5|b=6|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 2,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-00",
+   "base_signature": "D1|CH-F4|P1=x**6 + x|P2=x**2|a=4|b=7|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-01",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**5|a=5|b=6|T1=cos|T2=sin|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-02",
+   "base_signature": "D1|CH-F4|P1=x**5 + x|P2=x**3|a=6|b=5|T1=cos|T2=sin|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-03",
+   "base_signature": "D1|CH-F4|P1=x**6 + x**3|P2=x|a=7|b=4|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-04",
+   "base_signature": "D1|CH-F4|P1=x**5 + x**3|P2=x|a=7|b=6|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-05",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**5|a=4|b=7|T1=cos|T2=sin|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-06",
+   "base_signature": "D1|CH-F4|P1=x**6 + x|P2=x|a=7|b=6|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-07",
+   "base_signature": "D1|CH-F4|P1=x**5 + x**3|P2=x**2|a=4|b=7|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-08",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**3 + x|a=5|b=6|T1=cos|T2=sin|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-09",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**2|a=6|b=7|T1=sin|T2=cos|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-10",
+   "base_signature": "D1|CH-F4|P1=x**5 + x**3|P2=x**2|a=5|b=6|T1=sin|T2=cos|w=sin(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  },
+  {
+   "block_id": "CH-F4-t3-11",
+   "base_signature": "D1|CH-F4|P1=x**6|P2=x**5|a=6|b=7|T1=cos|T2=sin|w=exp(x)/x",
+   "family": "CH-F4",
+   "term": 3,
+   "c0_F": 0,
+   "c1_F": 0,
+   "drop_F": 0,
+   "c0_H": 0,
+   "c1_H": 0,
+   "drop_H": 0,
+   "q": 0
+  }
+ ]
+}
