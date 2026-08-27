@@ -1,0 +1,55 @@
+{
+ "prereg": "MATH-CYBER-1-SVP-STRICT-GRID-CHALLENGE-DESIGN-0",
+ "n_horizon": 240,
+ "stratum_qualified_counts": {
+  "CH-F3|t1": 32,
+  "CH-F3|t2": 40,
+  "CH-F3|t3": 38,
+  "CH-F4|t1": 4,
+  "CH-F4|t2": 12,
+  "CH-F4|t3": 20
+ },
+ "block_fail_census": {},
+ "qualified_terms_census": {
+  "1": 36,
+  "2": 52,
+  "3": 58,
+  "0": 34,
+  "4": 44,
+  "5": 16
+ },
+ "wall_s": 353.3,
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpeval/decisions.jsonl": "f63100a62f3091d544750d679483009a473261c587f3165241406a86253858c6",
+  "logs/mathworld1/svpeval2/decisions.jsonl": "89efbe0ea447ee937c0c130d5419112921a2dd6c2159c6c2112cfd5e92f79315",
+  "logs/mathworld1/svpeval3/decisions.jsonl": "2ff5433249622df9d421cf8014131b3907092a943040bb7b20f46f1afffb7efa",
+  "logs/mathworld1/svpgriddesk_receipt.json": "ec9cb9b870d2515e7959025f7f3cbfcee7309a6dc90b880d3176d3e2ccf72edc",
+  "logs/mathworld1/svpgriddesk2_receipt.json": "f0184b01c36017bcb93ed4b715e41e015999075c4da7976e11adc5cae28e6977",
+  "logs/mathworld1/svpgriddesk3_receipt.json": "26389ebb8d68f45447d9676b9c188ea86ab9dd70ec71329fe6ae268cfc34080f",
+  "logs/mathworld1/svpgriddesk4_receipt.json": "8439fc636fcf5c6e18a7dd75a76642cfe088e7eeeaf1e9f1243c5bb0cf08610f"
+ },
+ "verdict": "CHALLENGE NO-FIRE",
+ "short_strata": [
+  "CH-F4|t1"
+ ],
+ "start": {
+  "start_commit": "9da97a4e",
+  "start_status_porcelain": "",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0",
+   "scratch/mathworld1_svpeval.py": "4c5e5ec9f97446680c7ea962850efc34c361f87120a23c0aa0a6159b74cc3786",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_actionsem.py": "c79462129730328592ee2cc909fc563076afe80542dd2a745ce88ceef3e9c23b",
+   "scratch/mathworld1_actionfinal.py": "978298d58f543a26e8a42214a455aa56ce4ad208ae246f1e9d5960334f2f8963",
+   "scratch/mathworld1_unprodsem.py": "9f6a17324ea31691fe240682b431fcc0a53af18b898c6dc73a143cc0fc5f3609",
+   "scratch/mathworld0.py": "4c130625535aa73ca10cdc368213d2d875862d324eb3796508feab5dd30c52d4",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "9da97a4e"
+}

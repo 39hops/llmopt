@@ -1034,6 +1034,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpchal/svpchal_receipt.json": {
+   "bytes": 2675,
+   "exists": true,
+   "sha256": "0f58517b79e5da2b1414c4132772518d911dc694fb1eb231540b5f472853aa1c",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpcode_receipt.json": {
    "bytes": 2926,
    "exists": true,
