@@ -52013,3 +52013,118 @@ zero model/checkpoint access; a mid-run crash's manual delete +
 deterministic rerun is not a retry; all DESIGN-1 qualification
 parents are burned for any future design regardless of outcome;
 after booking commit/push, census, STOP.
+
+## VERDICT MATH-CYBER-1-SVP-STRICT-GRID-CHALLENGE-DESIGN-1: CHALLENGE MATERIALIZED — all six strata filled (CH-F3 t1/t2/t3 = 28/40/36, CH-F4 = 114/52/102 v the frozen N=12), 720/720 fresh bases qualified with zero block failures, 72 matched blocks / 144 primary decisions frozen with exact gated structure; the challenge bytes are SEALED UNSCORED (2026-08-27, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-STRICT-GRID-CHALLENGE-DESIGN-1
+(committed with the driver at 274310c2 BEFORE any byte; pre-
+commit design audit returned zero blockers and seven should-
+fixes, all folded into the committed text/driver — smoke
+staleness gate, literal pins for the DESIGN-0 receipt and
+builder, CH-F3 freshness gates, per-source novelty counts,
+GATE-REFUTED receipt paths, pricing rewording, carried DESIGN-0
+enumeration). Anti-peeking order held: assessment -> law +
+banks -> design audit -> commit -> path-isolated smoke ->
+one production materialization -> qualify -> census -> fill
+gate -> mechanical selection -> frozen bytes. ZERO
+model/checkpoint access anywhere; scoring is the next GO's one
+joint run.
+
+SMOKE (registered qualification; the selection/emission path had
+never executed — DESIGN-0's NO-FIRE returned first): 6 burned
+DESIGN-0 bases, N=1, wrote only under
+logs/mathworld1/svpchal2_smoke/, exercised qualification,
+selection, D assignment, emission, count gates, and both shas;
+green; the production entry gated on the smoke receipt AND its
+recorded driver sha (staleness gate); smoke receipt sha carried
+in the production receipt (252576da...).
+
+RESULT (mechanical): production receipt
+logs/mathworld1/svpchal2/svpchal2_receipt.json
+(completion_commit 274310c2 = start_commit; run-start porcelain
+" M docs/receipts.lock.json" — a non-instrument regen file;
+wall 1,394.4 s). All 720 fresh
+bases QUALIFIED (block_fail_census empty — the construction
+recipe is now 960/960 across DESIGN-0 + DESIGN-1 fresh bases);
+qualified stratum counts CH-F3 t1/t2/t3 = 28/40/36, CH-F4 =
+114/52/102 — every stratum >= the frozen N=12 => fill gate
+FIRES. Selection first-12 by sig sha per stratum; D_before
+exact 6/6 x**x / 1/(x+log(x)) in all 6 strata (12 family x term
+x D census cells, each 6; gated).
+FROZEN CHALLENGE BYTES: decisions.jsonl (sha 1e3a5ef0...,
+receipt field), 216 states = 144 primary (48 heldout-I1 t2+t3 +
+48 covered-I0 t2+t3 + 24 control-I0 + 24 control-I1 at t1,
+role census gated exactly) + 72 robustness-I1 flagged
+non-primary; blocks.jsonl (720 rows, sha a50da492..., receipt
+field). Novelty: zero exact cur overlap against training, all
+three bands, the 566 pilot parents, and the 720 reconstructed
+DESIGN-0 parents — gated refute-on-any-hit; the per-source
+count dict is persisted only on the SMOKE receipt (production
+zeros are established by the gate passing, and were recomputed
+at booking from the frozen files: 720/720 distinct signatures,
+0 duplicate target integrands, 216/216 distinct selected curs);
+selected
+target-integrand overlap with training/band curs 0/0 (report
+field).
+
+REGISTERED-PRIOR ACCOUNTING: the fill clause is CORRECT this
+time — but the transport caveat proved out AGAIN, per stratum:
+CH-F4 t1 priced ~24 measured 114 (4.75x the pricing, favorable);
+CH-F4 t2 priced 6-10x bar (72-120) measured 52 (4.3x, BELOW the
+registered band — the one downward miss); CH-F4 t3 priced 72-120
+measured 102 (inside); CH-F3 t1 priced ~32 measured 28, t2 40
+exact, t3 38 priced measured 36. Term-index proportions moved
+both above and below their proxies across strata; the pricing
+register's non-IID caveat stands as the permanent reading. Full fresh
+census (blocks.jsonl): pooled t0..t5 = 204/142/92/138/116/28.
+
+CODEWORD ANATOMY RIDER (persisted at materialization,
+outcome-independent, model-free — attribution rider only): the
+held-out FACTOR codes sit at nearest Hamming distance 1 with
+longest shared prefix 7 of 8 from the training-target codes
+(I1t2 nearest: i_unprod I0t2 and I1t0; I1t3 likewise), i.e. the
+explicit surface makes the held-out cells one-symbol edits of
+trained codewords; the held-out HASH codes sit at nearest
+Hamming 5 with longest shared prefix 2 (nearest codewords from
+UNRELATED rules). The thin final-position FACTOR support is on
+the record: the held-out I1t2 code's last symbol appears in 5
+training rows, I1t3's in 1. Frozen scope: this characterizes the
+CODE GEOMETRY only, predicts nothing, and inclusion was never
+conditioned on it.
+
+ARTIFACT INTEGRITY DECISION (explicit, per the logs doctrine):
+decisions.jsonl (1.2 MB) and blocks.jsonl (259 KB) exceed the
+small-text force-add exception and stay UNTRACKED; their
+integrity anchor is the production receipt's decisions_sha /
+blocks_sha fields — the receipt itself is force-added and
+lock-registered, so the bytes are content-addressed from the
+repo side. The next GO's scorer MUST gate on decisions_sha
+before any load. Further receipt-audit notes carried as scoring
+obligations: the frozen rows SHIP is_label (the answer key) —
+the scorer's prompt construction must never expose it; the
+teacher hce values are NOT in the bytes (min_hce_ties is a
+receipt census only, re-derivable solely by re-running the
+committed qualifier); the smoke staleness gate covered the
+driver sha only, with the full dependency file_sha256 dicts
+verified identical between smoke and production receipts by the
+auditor; the qualification failure branches carry no runtime
+evidence on this horizon (zero bases failed).
+
+INFERENTIAL LAW (registered at the prereg, untouched by this
+run): the next GO scores the three pinned sealed seed12001
+checkpoints exactly once on the frozen bytes — absolute held-out
+McNemar primary on the 48 heldout-I1 states, matched-transfer
+exact sign test on q over the 48 strict blocks with the
+STRONG-FACTOR/STRONG-HASH conjunction, t1 calibration
+descriptive, CANONICAL-340 descriptive bridge. Nothing in this
+materialization consumed or informed it; no logit exists.
+
+FENCES. Mac; deterministic given the frozen horizon; challenge
+bytes frozen — the next GO consumes decisions.jsonl BYTES ONLY
+(sha-gated) and applies the law once; all 720 DESIGN-1 bases
+(2,160 constructed parents — the full budget, since zero bases
+failed under first-fail accounting) are burned
+for any future design; the two held-out cells and one frozen
+HASH permutation bound every future claim (no breadth); zero
+model access under this GO; i_parts parked; after booking
+commit/push, census, STOP.

@@ -3599,3 +3599,21 @@ regime tag on every bullet is the fence.
   unconsumed; scope: instrument-population result, never a
   FACTOR/HASH claim; successor design options booked as
   assessment, each its own GO. RESULTS.md#L51720
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] CHALLENGE
+  MATERIALIZED (DESIGN-1, frozen law, sealed unscored): all six
+  strata filled (CH-F3 28/40/36, CH-F4 114/52/102 v N=12) over
+  720/720 qualified fresh bases; 72 matched site-pair blocks /
+  144 primary decisions frozen with exact gated structure (48
+  held-out I1 t2/t3, 48 matched covered I0, 24+24 t1
+  calibration, D balance 6/6 per stratum) + 72 robustness
+  states; zero overlap with training/bands/566 pilot/720
+  DESIGN-0 burned parents; codeword rider: held-out FACTOR codes
+  are Hamming-1/prefix-7 edits of trained codewords, HASH codes
+  Hamming-5/prefix-2 (code geometry only, predicts nothing);
+  transport caveat proved again per stratum (CH-F4 t1 4.75x its
+  pricing, t2 below its registered band); bytes anchored by
+  receipt decisions_sha (1.2 MB file untracked per logs
+  doctrine); scope: two held-out cells, one frozen HASH
+  permutation, scoring is the next GO's single joint run.
+  RESULTS.md#L52017
